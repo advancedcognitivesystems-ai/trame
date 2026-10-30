@@ -135,13 +135,19 @@ const body = (deps: Deps) => {
   const BLOCK_TYPES = new Set<string>(Object.values(BlockType))
 
   /** Runs every instance, twice each, and checks the laws. */
-  function runViews(c: Compilation): { documents: Document[]; failures: ViewFailure[] } {
+  /**
+   * Runs the views on a compilation: each document, and what breaks a law. Each view runs twice only when the laws are
+   * played (trame test-kinds, which every shipment of Trame runs): a build runs it once. Without the views of each node,
+   * only those of the project and its modules run (a day of history in an export).
+   */
+  function runViews(c: Compilation, opts: { twice?: boolean; perNode?: boolean } = {}): { documents: Document[]; failures: ViewFailure[] } {
     const documents: Document[] = []
     const failures: ViewFailure[] = []
     const fail = (view: string, law: string, example: string) => {
       if (!failures.some((f) => f.view === view && f.law === law)) failures.push({ view, law, example })
     }
     for (const inst of instances(c)) {
+      if (opts.perNode === false && inst.arg.node) continue
       const run = () => inst.def.run(c, inst.arg)
       let out
       try {
@@ -165,7 +171,7 @@ const body = (deps: Deps) => {
       if (written.notSerial) fail(inst.def.name, VIEW_LAWS.serial, inst.id)
       if (written.unknownBlock !== undefined) fail(inst.def.name, VIEW_LAWS.serial, messages.unknownBlockType(written.unknownBlock))
       try {
-        if (!same([JSON.stringify({ ...document, ...run() }), JSON.stringify({ ...document, ...out })])) {
+        if (opts.twice && !same([JSON.stringify({ ...document, ...run() }), JSON.stringify({ ...document, ...out })])) {
           fail(inst.def.name, VIEW_LAWS.deterministic, messages.twoRunsTwoDocuments(inst.id))
         }
       } catch (e) {

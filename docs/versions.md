@@ -2,7 +2,7 @@
 
 *The releases of the components on 30 October 2026, newest first. A project runs the release its configuration pins.*
 
-> **76 releases of 1 component; 50 releases on a language of their own**
+> **77 releases of 1 component; 50 releases on a language of their own**
 
 ## Trame on the command line
 
@@ -10,6 +10,7 @@ Each release, newest first: what changed, the release that assembled it, and whe
 
 | Release | Released on | What changes | Assembled by | Language |
 |---|---|---|---|---|
+| [Generation 77](releases.md#G77) | 30 October 2026 | A build does less: a view runs once (twice when the laws are played), one search finds a node's way to every goal, date formatters are kept, a directory listed in memory does not walk its tree, a file is hashed again only once changed; a run is told apart by the declarations of the nodes it wires as by their bodies; a day of history runs no view of a node | [Generation 76](releases.md#G76) | shared |
 | [Generation 76](releases.md#G76) | 30 October 2026 | A graph compiled at a day before today judges evidence as it was given (the code and the engine of that day are not known); a day of history in an export carries its documents and figures, not the views of each node | [Generation 75](releases.md#G75) | shared |
 | [Generation 75](releases.md#G75) | 30 October 2026 | Dates are real: evidence counts from the day it was given; an export offers the last seven days of the project's history (a version released, evidence given), each with what had been proven by then and what was given that day, the documents that differ only by the date carried once; the day of the scenarios is the 30th of October; the view journal tells the project's history day by day | [Generation 74](releases.md#G74) | shared |
 | [Generation 74](releases.md#G74) | 30 October 2026 | A run is kept: a scenario played is given back while the code it wires and the files its project reads are as they were (in the process in the scenarios, on disk under .trame/runs on a machine, by engine); the reading of TypeScript and the syntax elements' readings are kept the same way, the kinds' laws in the process; the doctor asks that a run be kept until a file changes | [Generation 73](releases.md#G73) | shared |

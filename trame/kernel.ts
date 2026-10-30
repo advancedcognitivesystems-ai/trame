@@ -489,6 +489,8 @@ export interface Q {
   count(): number
   /** The shortest path, following edges both ways. */
   path(to: View | AnyNode, via?: string[]): View[] | undefined
+  /** The shortest path to each of these nodes, in their order, from one search: as `path` gives each (g77 on). */
+  paths?(to: readonly (View | AnyNode)[], via?: string[]): (View[] | undefined)[]
 }
 
 export interface EdgeInfo {

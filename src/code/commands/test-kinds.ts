@@ -43,7 +43,7 @@ const body = (deps: Deps): Handler => {
     if (failed.length || imports.length) return { status: deps.exitStatus.failure, body: undefined }
     const decls = checkViewDecls()
     const { comp } = await prepare(o)
-    const { failures } = runViews(comp)
+    const { failures } = runViews(comp, { twice: true })
     const viewFailures = [...decls, ...failures]
     terminal.write(messages.viewLaws(sortedViews().length, o.today))
     for (const v of sortedViews()) {

@@ -116,7 +116,7 @@ const body = (deps: Deps) => {
   const { meta, isNode, refOf, ownerOf, guard, getPath, overlaps, Hole, Contested, RESERVED } = deps.prelude.internal
   const { messages } = deps
   const { wholeNode } = deps.syntax
-  const { any } = deps.counts
+  const { any, zero } = deps.counts
   const { head } = deps.sequences
   const { optional } = deps.texts
 
@@ -310,6 +310,35 @@ const body = (deps: Deps) => {
 
     // Queries --------------------------------------------------------------------
 
+    /**
+     * The shortest path from these nodes to each goal, following edges both ways (derived edges aside, and only those
+     * named when some are): one breadth-first search, whose tree is the one a search stopping at each goal would build.
+     */
+    function searchFrom(set: AnyNode[], goals: AnyNode[], via?: string[]): (View[] | undefined)[] {
+      const prev = new Map<AnyNode, AnyNode | null>(set.map((n) => [n, null]))
+      const queue = [...set]
+      const wanted = new Set(goals)
+      let found = zero
+      for (let at = zero; at < queue.length && found < wanted.size; at++) {
+        const n = queue[at]
+        if (wanted.has(n)) found++
+        for (const e of touches(n)) {
+          if (e.derived || (via && !via.includes(e.name))) continue
+          const next = e.from === n ? e.to : e.to === n ? e.from : undefined
+          if (next && !prev.has(next)) {
+            prev.set(next, n)
+            queue.push(next)
+          }
+        }
+      }
+      return goals.map((goal) => {
+        if (!prev.has(goal)) return undefined
+        const out: AnyNode[] = []
+        for (let c: AnyNode | null = goal; c; c = prev.get(c) ?? null) out.unshift(c)
+        return out.map((x) => (touch(x), view(x)))
+      })
+    }
+
     const q = (list: AnyNode[]): Q => {
       const set = [...new Set(list)].sort((a, b) => refOf(a).localeCompare(refOf(b)))
       const step = (dir: Direction, name?: string) =>
@@ -348,28 +377,8 @@ const body = (deps: Deps) => {
         },
         exists: () => (set.forEach(touch), any(set)),
         count: () => (set.forEach(touch), set.length),
-        path: (to, via) => {
-          const goal = toNode(to)
-          const prev = new Map<AnyNode, AnyNode | null>(set.map((n) => [n, null]))
-          const queue = [...set]
-          while (queue.length) {
-            const n = queue.shift()!
-            if (n === goal) {
-              const out: AnyNode[] = []
-              for (let c: AnyNode | null = n; c; c = prev.get(c) ?? null) out.unshift(c)
-              return out.map((x) => (touch(x), view(x)))
-            }
-            for (const e of touches(n)) {
-              if (e.derived || (via && !via.includes(e.name))) continue
-              const next = e.from === n ? e.to : e.to === n ? e.from : undefined
-              if (next && !prev.has(next)) {
-                prev.set(next, n)
-                queue.push(next)
-              }
-            }
-          }
-          return undefined
-        },
+        path: (to, via) => head(searchFrom(set, [toNode(to)], via)),
+        paths: (to, via) => searchFrom(set, to.map(toNode), via),
       }
     }
 

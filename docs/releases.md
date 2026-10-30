@@ -1535,6 +1535,27 @@ Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Ge
 - Released by: trame
 - Releases: [Trame on the command line](architecture.md#TrameCli)
 - Assembled by: [Generation 75](#G75)
+- Assembled: [Generation 77](#G77)
+
+<a id="G77"></a>
+
+### Generation 77
+
+`G77` · `src/releases.ts:1128`
+
+A build does less: a view runs once (twice when the laws are played), one search finds a node's way to every goal, date formatters are kept, a directory listed in memory does not walk its tree, a file is hashed again only once changed; a run is told apart by the declarations of the nodes it wires as by their bodies; a day of history runs no view of a node
+
+Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Generation 76](#G76).
+
+- Version: `g77`
+- Released on: 30 October 2026
+- Fingerprint: `18d8a17fa9d099a8`
+- Language: the repository's, shared
+- Language archived: `9966fe46b969be85`
+
+- Released by: trame
+- Releases: [Trame on the command line](architecture.md#TrameCli)
+- Assembled by: [Generation 76](#G76)
 
 <a id="G8"></a>
 

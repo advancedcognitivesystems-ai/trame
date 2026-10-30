@@ -16,8 +16,10 @@ export default defineView({
     const intro = [say.whyTheShortestPathFrom(), doc.ref(start), say.whyToAGoal()]
     if (c.kindOf(start).root) return { title, intro, blocks: [doc.para(doc.ref(start), say.whyIsAGoalItIsThe())] }
     const roots = c.all().where((v) => c.kindOf(v).root).nodes()
-    const path = sequences.head(roots
-      .map((r) => c.from(start).path(r))
+    // One search to every goal when the engine offers it (g77): the paths are those each search would find.
+    const from = c.from(start)
+    const found = from.paths ? from.paths(roots) : roots.map((r) => from.path(r))
+    const path = sequences.head(found
       .filter((p): p is View[] => !!p)
       .sort((a, b) => a.length - b.length))
     if (!path) return { title, intro, blocks: [doc.para(doc.ref(start), say.whyIsConnectedToNoGoal())] }

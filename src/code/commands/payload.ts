@@ -51,7 +51,7 @@ const body = (deps: Deps): Handler => async (req) => {
    * the graph changes, they are all there).
    */
   const atAnotherDate = (x: Ctx, today: Payload, historyOnly: boolean): Payload => {
-    const made = deps.payload.makePayload(x.c, x.comp, views(o, x.comp))
+    const made = deps.payload.makePayload(x.c, x.comp, views(o, x.comp, { perNode: !historyOnly }))
     const daily = (doc: Document) => doc.id !== DocumentName.snapshot && doc.group !== ViewGroup.node
     const p = historyOnly ? { ...made, machine: {}, documents: made.documents.filter(daily) } : made
     const same = sameAs(p, today)

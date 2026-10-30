@@ -15,6 +15,11 @@ import type { References } from "../../engine"
 export interface Analysis {
   infos: Map<string, StaticInfo> // key: module.name
   moduleTitle: Map<string, string>
+  /**
+   * What each module holds besides the declarations of its nodes, by its file: its comments, its other code (a helper,
+   * a type), the imports aside. The code of each node is fingerprinted apart; this, with it, is the whole module.
+   */
+  rests: Map<string, string>
   /** The type errors of the project (graph, kinds, views, kernel). */
   typeErrors: string[]
 }
@@ -72,10 +77,14 @@ const body = (deps: Deps) => {
   /** A program's reading, kept with the digest of every file the compiler read for it. */
   interface Kept { files: [string, string | undefined][]; analysis: Analysis }
   /** The same, as it is written beyond the process: its maps as their entries. */
-  interface Written { files: [string, string | undefined][]; infos: [string, StaticInfo][]; moduleTitle: [string, string][]; typeErrors: string[] }
-  const written = (k: Kept): Written => ({ files: k.files, infos: [...k.analysis.infos], moduleTitle: [...k.analysis.moduleTitle], typeErrors: k.analysis.typeErrors })
+  interface Written {
+    files: [string, string | undefined][]; infos: [string, StaticInfo][]; moduleTitle: [string, string][]; rests: [string, string][]; typeErrors: string[]
+  }
+  const written = (k: Kept): Written => ({
+    files: k.files, infos: [...k.analysis.infos], moduleTitle: [...k.analysis.moduleTitle], rests: [...k.analysis.rests], typeErrors: k.analysis.typeErrors,
+  })
   const read = (w: Written | undefined): Kept | undefined =>
-    w && { files: w.files, analysis: { infos: new Map(w.infos), moduleTitle: new Map(w.moduleTitle), typeErrors: w.typeErrors } }
+    w?.rests && { files: w.files, analysis: { infos: new Map(w.infos), moduleTitle: new Map(w.moduleTitle), rests: new Map(w.rests), typeErrors: w.typeErrors } }
   const digest = (text: string) => deps.hashing.createHash(deps.sha256.algorithm).update(text).digest(deps.encodings.hex)
   /** The digest of a file as the compiler of TypeScript reads it; nothing once it is no longer there. */
   const digestOf = (file: string) => {
@@ -111,6 +120,7 @@ const body = (deps: Deps) => {
     const checker = program.getTypeChecker()
     const infos = new Map<string, StaticInfo>()
     const moduleTitle = new Map<string, string>()
+    const rests = new Map<string, string>()
 
     // All the exported constants, to recognise the references between nodes.
     const exported = new Map<ts.Node, string>() // declaration → module.name
@@ -129,6 +139,12 @@ const body = (deps: Deps) => {
       if (!sf) continue
       const title = moduleTitleOf(sf.getFullText())
       if (title) moduleTitle.set(mod, title)
+      // Besides its nodes: its other statements, and the comments before each node (the imports aside).
+      const nodes = new Set([...exported.keys()].map((d) => d.parent.parent))
+      rests.set(relative(root, file).split(sep).join(specifiers.separator), sf.statements
+        .filter((stmt) => !ts.isImportDeclaration(stmt))
+        .map((stmt) => (nodes.has(stmt) ? stmt.getFullText(sf).slice(zero, stmt.getLeadingTriviaWidth(sf)) : stmt.getFullText(sf)))
+        .join(empty))
 
       for (const [decl, ref] of exported) {
         if (decl.getSourceFile() !== sf) continue
@@ -205,7 +221,7 @@ const body = (deps: Deps) => {
         const [first] = ts.flattenDiagnosticMessageText(d.messageText, endOfLine).split(endOfLine)
         return messages.typeError(first, where)
       })
-    const analysis = { infos, moduleTitle, typeErrors }
+    const analysis = { infos, moduleTitle, rests, typeErrors }
     const kept: Kept = { files: program.getSourceFiles().map((sf): [string, string | undefined] => [sf.fileName, digestOf(sf.fileName)]), analysis }
     deps.kept.set(key, kept)
     deps.runs.at(root).set(key, written(kept))

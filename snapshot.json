@@ -9101,7 +9101,7 @@
       "fields": {
         "owner": "trame",
         "context": "A build of Trame played its scenarios 2,030 times: Poselia's eleven times, the example's thirty-six, for a hundred seconds of the hundred and forty; a shipment compiles Trame's graph a dozen times with the same code.",
-        "consequences": "A scenario is played again only when the code it wires or a file its project reads has changed: a body changed plays again the scenarios that wire it, any other file all of them.",
+        "consequences": "A scenario is played again only when the code it wires or a file its project reads has changed: a body or the declaration of a node changed plays again the scenarios that wire it, any other file (a kind, a helper in a module, a file of another project) all of them.",
         "rejected": {
           "Playing every scenario at every compilation": "the same code on the same files gives the same result; a shipment took thirty-six minutes"
         }
@@ -10881,6 +10881,20 @@
         "fingerprint": "f1f5af94b6e4092f",
         "language": "shared",
         "archive": "8115939989b9fc6b"
+      }
+    },
+    {
+      "id": "releases.G77",
+      "kind": "release",
+      "title": "Generation 77",
+      "fields": {
+        "owner": "trame",
+        "version": "g77",
+        "date": "2026-10-30",
+        "what": "A build does less: a view runs once (twice when the laws are played), one search finds a node's way to every goal, date formatters are kept, a directory listed in memory does not walk its tree, a file is hashed again only once changed; a run is told apart by the declarations of the nodes it wires as by their bodies; a day of history runs no view of a node",
+        "fingerprint": "18d8a17fa9d099a8",
+        "language": "shared",
+        "archive": "9966fe46b969be85"
       }
     },
     {
@@ -22722,6 +22736,16 @@
     {
       "from": "releases.G76",
       "to": "releases.G75",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G77",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G77",
+      "to": "releases.G76",
       "kind": "assembledBy"
     },
     {

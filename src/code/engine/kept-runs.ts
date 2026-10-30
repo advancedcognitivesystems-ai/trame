@@ -22,9 +22,23 @@ export interface Deps {
 
 const body = (deps: Deps): KeptRuns => {
   const { join, relative } = deps.paths
-  const { existsSync, readFileSync, readdirSync } = deps.reading
+  const { existsSync, readFileSync, readdirSync, statSync } = deps.reading
   const skipped = new Set(deps.scope.skipped)
   const hash = (data: string | Buffer) => deps.hashing.createHash(deps.sha256.algorithm).update(data).digest(deps.encodings.hex)
+
+  /**
+   * The digest of each file read, with its size and the time it was changed when the file system says them: read and
+   * hashed again only once one of them changed (a file system that does not say them, in memory, is read each time).
+   */
+  const digests = new Map<string, { size: number; changed: number; digest: string }>()
+  const digestOf = (file: string): string => {
+    const { size, mtimeMs: changed } = statSync(file) as { size?: number; mtimeMs?: number }
+    const known = digests.get(file)
+    if (known && known.size === size && known.changed === changed) return known.digest
+    const digest = hash(readFileSync(file))
+    if (size !== undefined && changed !== undefined) digests.set(file, { size, changed, digest })
+    return digest
+  }
 
   /** Every file under a directory, by its path, but the directories skipped and what is left out (files or directories). */
   const filesUnder = (dir: string, left: ReadonlySet<string>): string[] =>
@@ -36,9 +50,10 @@ const body = (deps: Deps): KeptRuns => {
     })
 
   return {
-    open(root, read, left) {
+    open(root, read, left, instead = new Map()) {
       const files = [...new Set(read.flatMap((dir) => filesUnder(dir, left)))].sort()
-      const state = hash(JSON.stringify(files.map((file) => [relative(root, file), hash(readFileSync(file))])))
+      const besides = [...instead].sort(([a], [b]) => a.localeCompare(b)).map(([name, text]) => [name, hash(text)])
+      const state = hash(JSON.stringify([...files.map((file) => [relative(root, file), digestOf(file)]), ...besides]))
       const kept = deps.store.at(root)
       const keyOf = (key: string) => hash(state + key)
       return { get: (key) => kept.get(keyOf(key)), set: (key, value) => kept.set(keyOf(key), value) }

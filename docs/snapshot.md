@@ -3534,7 +3534,7 @@ Technical choice · `RunsByWhatTheyRead` · **held**
 
 - Decided by: trame
 - Context: A build of Trame played its scenarios 2,030 times: Poselia's eleven times, the example's thirty-six, for a hundred seconds of the hundred and forty; a shipment compiles Trame's graph a dozen times with the same code.
-- Consequences: A scenario is played again only when the code it wires or a file its project reads has changed: a body changed plays again the scenarios that wire it, any other file all of them.
+- Consequences: A scenario is played again only when the code it wires or a file its project reads has changed: a body or the declaration of a node changed plays again the scenarios that wire it, any other file (a kind, a helper in a module, a file of another project) all of them.
 - Rejected: Playing every scenario at every compilation, the same code on the same files gives the same result; a shipment took thirty-six minutes
 - Chooses: The runs of a project
 - In: Local, Test
@@ -4962,6 +4962,20 @@ Release · `G76`
 - Language archived: 8115939989b9fc6b
 - Releases: Trame on the command line
 - Assembled by: Generation 75
+
+### Generation 77
+
+Release · `G77`
+
+- Released by: trame
+- Version: g77
+- Released on: 2026-10-30
+- What changes: A build does less: a view runs once (twice when the laws are played), one search finds a node's way to every goal, date formatters are kept, a directory listed in memory does not walk its tree, a file is hashed again only once changed; a run is told apart by the declarations of the nodes it wires as by their bodies; a day of history runs no view of a node
+- Fingerprint: 18d8a17fa9d099a8
+- Language: shared
+- Language archived: 9966fe46b969be85
+- Releases: Trame on the command line
+- Assembled by: Generation 76
 
 ### Generation 8
 

@@ -116,6 +116,8 @@ export interface Loaded {
   /** The nodes created by the modules of the project without being exported. */
   anonymous: AnyNode[]
   infos: Map<AnyNode, StaticInfo>
+  /** What each module holds besides its nodes, by its file (from the project's root). */
+  rests: Map<string, string>
   typeErrors: string[]
   evidence: Map<string, Evidence[]>
   /** The records of evidence whose seal no longer matches what they say: not counted, each an error. */
@@ -284,7 +286,7 @@ const body = (deps: Deps) => {
     // Where each library's name leads, for the TypeScript compiler: its sources as they are on disk.
     const { imports, separator, pattern } = deps.specifiers
     const paths = Object.fromEntries(libraries.map((lib) => [imports + lib.name + separator + pattern, [join(lib.root, sources, pattern)]]))
-    const { infos: analysis, moduleTitle, typeErrors } = analyze(modules, extra, root, paths)
+    const { infos: analysis, moduleTitle, rests, typeErrors } = analyze(modules, extra, root, paths)
     // The nodes of the project and of its libraries: those their modules export. The registry of the kernel is shared
     // by the whole process (another project may be loaded into it): it is not read in full.
     const before = allNodes().length
@@ -310,7 +312,7 @@ const body = (deps: Deps) => {
     const bodies = bodiesOf(root, nodes, infos)
     return {
       code: codeOf(root, nodes, infos),
-      root, modules: own.map((m) => m.module), moduleTitle, nodes, anonymous, infos, typeErrors, ...readEvidence(root), installed: loadInstalled(root),
+      root, modules: own.map((m) => m.module), moduleTitle, nodes, anonymous, infos, rests, typeErrors, ...readEvidence(root), installed: loadInstalled(root),
       engine: dirs.engine === undefined ? undefined : deps.engines.recorded(dirs.engine),
       libraries: libraries.map(({ name, root: at, path, version, files }) => ({ name, root: at, path, version, modules: files.map((m) => m.module) })),
       bodies: new Map([...bodies].map(([language, { sources }]) => [language, sources])),
@@ -722,9 +724,10 @@ const body = (deps: Deps) => {
     // Filled after the bodies are checked, before anything is run.
     const refused = new Set<AnyNode>()
     // The runs of the project: those of its scenarios already played, given back while what they read is as it was.
-    // Left out of what they read: the files that are bodies of its nodes, told apart by the code each run wires, and
-    // what the project writes itself (its documents, its graph and snapshot, its programs, its evidence, its
-    // artefacts and deliveries), which none of its runs reads. The prelude beside its kinds is read with them.
+    // Left out of what they read: the files that are bodies of its nodes and the declarations of its nodes, told apart
+    // by the code each run wires (of each module, what it holds besides its nodes is read in its place), and what the
+    // project writes itself (its documents, its graph and snapshot, its programs, its evidence, its artefacts and
+    // deliveries), which none of its runs reads. The prelude beside its kinds is read with them.
     const read = projectDirs(l.root)
     const { documents, graph, snapshot, output, evidence, prelude } = deps.layout
     const written = (kind: string, field: string) =>
@@ -733,9 +736,10 @@ const body = (deps: Deps) => {
       ...[...l.bodies.values()].flat().filter((b) => !b.inline).map((b) => b.file),
       ...[documents, graph, snapshot, output, evidence].map((p) => join(l.root, p)),
       ...written(KindName.artifact, ArtifactField.path), ...written(KindName.delivery, DeliveryField.output),
+      ...[...l.rests.keys()].map((file) => join(l.root, file)),
     ])
     const preludes = read.kinds.map((k) => join(dirname(k), prelude))
-    const kept = deps.runs.open(l.root, [l.root, ...l.libraries.map((lib) => lib.root), ...read.kinds, ...read.views, ...preludes], left)
+    const kept = deps.runs.open(l.root, [l.root, ...l.libraries.map((lib) => lib.root), ...read.kinds, ...read.views, ...preludes], left, l.rests)
     // Evidence counts from the day it was given: the graph compiled at an earlier date has not seen it yet.
     const given = new Map([...l.evidence].map(([ref, records]) => [ref, records.filter((e) => e.at <= today || e.at.startsWith(today))]))
     const g: GraphImpl = makeGraph({

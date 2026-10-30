@@ -197,8 +197,9 @@ const body = (deps: Deps) => {
     return at(o, o.today)
   }
 
-  function views(o: Options, comp: Compilation): Document[] {
-    const { documents, failures } = runViews(comp)
+  /** The documents of the views (with those of each node, unless said otherwise); a view that breaks a law refuses. */
+  function views(o: Options, comp: Compilation, opts: { perNode?: boolean } = {}): Document[] {
+    const { documents, failures } = runViews(comp, opts)
     if (failures.length) refuse(o, failures.map((f: ViewFailure) => messages.viewRefused(f.view, f.law, f.example)))
     return documents
   }

@@ -323,9 +323,10 @@ export interface KeptRuns {
   /**
    * The runs kept for a project, its root and the directories it reads given, and what is left out of them (files or
    * directories: those the code of its nodes covers, whose fingerprints already tell their runs apart, and what the
-   * project writes itself). Opened again once files have changed, it gives back only what was kept for them as they are.
+   * project writes itself), and what is read in place of some of them (of a module, what it holds besides its nodes).
+   * Opened again once files have changed, it gives back only what was kept for them as they are.
    */
-  open(root: string, read: readonly string[], left: ReadonlySet<string>): RunsOfAProject
+  open(root: string, read: readonly string[], left: ReadonlySet<string>, instead?: ReadonlyMap<string, string>): RunsOfAProject
 }
 export interface RunStore {
   /** The runs kept for a project, by the key that already tells them apart (what each ran, the files as they were). */

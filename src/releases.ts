@@ -1121,3 +1121,18 @@ export const G76 = release({
   archive: "8115939989b9fc6b",
   assembledBy: G75,
 })
+
+/**
+ * Generation 77
+ */
+export const G77 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g77",
+  date: "2026-10-30",
+  what: "A build does less: a view runs once (twice when the laws are played), one search finds a node's way to every goal, date formatters are kept, a directory listed in memory does not walk its tree, a file is hashed again only once changed; a run is told apart by the declarations of the nodes it wires as by their bodies; a day of history runs no view of a node",
+  fingerprint: "18d8a17fa9d099a8",
+  language: "shared",
+  archive: "9966fe46b969be85",
+  assembledBy: G76,
+})

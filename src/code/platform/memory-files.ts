@@ -43,6 +43,36 @@ const body: BodyOf<typeof MemoryFiles> = ({ paths, temporary, diff, file, events
       : []
     return [...new Set([...memory, ...disk])].sort()
   }
+  /** Whether a directory of the disk holds a file still there, at any depth (a link to a directory is not followed). */
+  const holdsFile = (dir: string): boolean =>
+    readdirSync(dir, { withFileTypes: true }).some((e) => {
+      const path = join(dir, e.name)
+      if (gone(path)) return false
+      if (e.isDirectory()) return holdsFile(path)
+      return isFileThere(path)
+    })
+  /** A file, or a link to a file, of the disk. */
+  const isFileThere = (path: string): boolean => {
+    try {
+      return statSync(path).isFile()
+    } catch {
+      return false
+    }
+  }
+  /**
+   * The names right under a directory that hold a file, written in memory or on the disk: what a listing of all its
+   * files gives at its first level, without listing them all (a project's packages hold thousands).
+   */
+  const children = (dir: string): string[] => {
+    const memory = inMemory(dir).map((f) => sequences.head(relative(dir, f).split(sep)) ?? f)
+    const disk = onDisk(dir) && statSync(dir).isDirectory()
+      ? readdirSync(dir, { withFileTypes: true }).filter((e) => {
+        const path = join(dir, e.name)
+        return !gone(path) && (e.isDirectory() ? holdsFile(path) : isFileThere(path))
+      }).map((e) => e.name)
+      : []
+    return [...new Set([...memory, ...disk])].sort()
+  }
   const read = (path: string): string => {
     const known = files.get(path)
     if (known !== undefined) return known
@@ -76,10 +106,9 @@ const body: BodyOf<typeof MemoryFiles> = ({ paths, temporary, diff, file, events
     }) as never,
     readdirSync: ((p: unknown, options?: { recursive?: boolean; withFileTypes?: boolean }) => {
       const dir = at(p)
-      const all = listing(dir)
       const names = options?.recursive
-        ? [...new Set(all.flatMap((f) => [f, ...ancestors(f)]))].sort()
-        : [...new Set(all.map((f) => sequences.head(f.split(sep)) ?? f))].sort()
+        ? [...new Set(listing(dir).flatMap((f) => [f, ...ancestors(f)]))].sort()
+        : children(dir)
       // With their types, as Node gives them: a name, and what it is.
       return options?.withFileTypes
         ? names.map((name) => ({ name, parentPath: dir, isFile: () => !isDirectory(join(dir, name)), isDirectory: () => isDirectory(join(dir, name)) }))

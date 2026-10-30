@@ -216,8 +216,9 @@ each generation. So the order matters:
 Do not edit `src/`, `kinds/`, `views/`, `trame/`, `std/src/`, the example or Poselia while an advance runs: its builds
 would read two different graphs. Since g74 a run is kept (a scenario played, the reading of TypeScript, the examples of
 the syntax elements): given back while the code it wires and the files its project reads are as they were, in
-`.trame/runs` on a machine, one directory per engine. A build of Trame takes about a minute and a half after a change
-(the scenarios that read what changed are played again), under twenty seconds when nothing changed. Deleting
+`.trame/runs` on a machine, one directory per engine. A build of Trame takes about seventy seconds from nothing, ten
+when nothing changed, and in between plays again only the scenarios that wire what changed (a body or a node's
+declaration; any other file, a kind or a helper in a module, plays them all). Deleting
 `.trame/runs` only costs time; never commit it. When the two builds differ, the advance stops and writes them all into `differences.diff`; read it,
 then `--accept` if they are wanted (the promoted generation keeps them), or fix the graph and advance again.
 

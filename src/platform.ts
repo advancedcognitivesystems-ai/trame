@@ -453,7 +453,7 @@ export const RunsByWhatTheyRead = binding({
   follows: [Strategy],
   serves: [ReplaceableTechnology],
   context: "A build of Trame played its scenarios 2,030 times: Poselia's eleven times, the example's thirty-six, for a hundred seconds of the hundred and forty; a shipment compiles Trame's graph a dozen times with the same code.",
-  consequences: "A scenario is played again only when the code it wires or a file its project reads has changed: a body changed plays again the scenarios that wire it, any other file all of them.",
+  consequences: "A scenario is played again only when the code it wires or a file its project reads has changed: a body or the declaration of a node changed plays again the scenarios that wire it, any other file (a kind, a helper in a module, a file of another project) all of them.",
   rejected: { "Playing every scenario at every compilation": "the same code on the same files gives the same result; a shipment took thirty-six minutes" },
 })
 

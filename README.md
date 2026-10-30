@@ -465,6 +465,14 @@ next: 138 seconds before, about 95 for the first build after a change, 17 for th
 compiles Trame's graph a dozen times with the same code, went from 36 minutes (g73) to under 10 (g74), then about 6
 (g76).
 
+Since g77 a build does less again. A view runs once (twice only when the laws are played, by `trame test-kinds`,
+which every shipment of Trame runs); the way from a node to a goal is one search to all goals instead of one per
+goal; date formatters are made once per language; a directory listed in memory no longer walks its whole tree; a
+file is hashed again only once its size or its time changed. And a run is told apart by the declarations of the nodes
+it wires as by their bodies: of each module, only what it holds besides its nodes (its comments, a helper, a type) is
+read for all, so changing a node plays again only the scenarios that wire it. A build of Trame from nothing went from
+90 to about 70 seconds, a build without change from 15 to 10, after a change to one body about 25.
+
 Since g75 **dates are real**. Evidence counts from the day it was given: the graph compiled at an earlier date
 (`--at`) has not seen it yet, as it had not then. Until g74, Trame, std and the example were built at a fixed date,
 17 October, so that their documents would not change from day to day; but the evidence given on the 29th counted in

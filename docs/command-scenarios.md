@@ -191,7 +191,7 @@ trame advance, in Trame's repository: the generation in place builds the librari
 |---|---|
 | trame advance stops at the first build that fails | passed |
 | The generation in place builds first | passed |
-| The candidate is accepted (  ✓ trame runs g77 \|   ✓ reservations runs g77 \| Advance succeeded.) | passed |
+| The candidate is accepted (  ✓ trame runs g78 \|   ✓ reservations runs g78 \| Advance succeeded.) | passed |
 | With --promote, it is frozen as the next generation, its origin written, the pin moved | passed |
 | The generation frozen records the fingerprint of its engine, by which evidence names it | passed |
 

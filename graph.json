@@ -517,7 +517,7 @@
       "id": "architecture.Browser",
       "kind": "environment",
       "title": "Browser",
-      "source": "src/architecture.ts:476",
+      "source": "src/architecture.ts:477",
       "fields": {
         "owner": "trame"
       },
@@ -527,7 +527,7 @@
       "id": "architecture.Bundler",
       "kind": "port",
       "title": "Bundler",
-      "source": "src/architecture.ts:391",
+      "source": "src/architecture.ts:392",
       "fields": {
         "owner": "trame",
         "declaredEffects": [
@@ -540,7 +540,7 @@
       "id": "architecture.Clock",
       "kind": "port",
       "title": "Clock",
-      "source": "src/architecture.ts:375",
+      "source": "src/architecture.ts:376",
       "fields": {
         "owner": "trame",
         "declaredEffects": [
@@ -553,7 +553,7 @@
       "id": "architecture.CommandLine",
       "kind": "port",
       "title": "Command line",
-      "source": "src/architecture.ts:426",
+      "source": "src/architecture.ts:427",
       "fields": {
         "owner": "trame",
         "declaredEffects": [
@@ -566,7 +566,7 @@
       "id": "architecture.Compression",
       "kind": "port",
       "title": "Compression",
-      "source": "src/architecture.ts:403",
+      "source": "src/architecture.ts:404",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -577,7 +577,7 @@
       "id": "architecture.Decompression",
       "kind": "port",
       "title": "Decompression",
-      "source": "src/architecture.ts:453",
+      "source": "src/architecture.ts:454",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -622,7 +622,7 @@
       "id": "architecture.FileTrees",
       "kind": "port",
       "title": "File trees",
-      "source": "src/architecture.ts:420",
+      "source": "src/architecture.ts:421",
       "fields": {
         "owner": "trame",
         "declaredEffects": [
@@ -650,7 +650,7 @@
       "id": "architecture.GraphFeed",
       "kind": "port",
       "title": "Feed of the graph",
-      "source": "src/architecture.ts:447",
+      "source": "src/architecture.ts:448",
       "fields": {
         "owner": "trame",
         "declaredEffects": [
@@ -675,7 +675,7 @@
       "id": "architecture.HttpServer",
       "kind": "port",
       "title": "HTTP server",
-      "source": "src/architecture.ts:385",
+      "source": "src/architecture.ts:386",
       "fields": {
         "owner": "trame",
         "declaredEffects": [
@@ -688,7 +688,7 @@
       "id": "architecture.KeptResults",
       "kind": "port",
       "title": "Results kept",
-      "source": "src/architecture.ts:342",
+      "source": "src/architecture.ts:343",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -699,7 +699,7 @@
       "id": "architecture.KeptRuns",
       "kind": "port",
       "title": "Runs kept",
-      "source": "src/architecture.ts:351",
+      "source": "src/architecture.ts:352",
       "fields": {
         "owner": "trame",
         "declaredEffects": [
@@ -713,7 +713,7 @@
       "id": "architecture.KnownEffects",
       "kind": "rule",
       "title": "Effects come from the vocabulary",
-      "source": "src/architecture.ts:588",
+      "source": "src/architecture.ts:589",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -738,7 +738,7 @@
       "id": "architecture.Local",
       "kind": "environment",
       "title": "Local",
-      "source": "src/architecture.ts:461",
+      "source": "src/architecture.ts:462",
       "fields": {
         "owner": "trame"
       },
@@ -762,7 +762,7 @@
       "id": "architecture.OnlyCommandsWrite",
       "kind": "rule",
       "title": "Only commands write",
-      "source": "src/architecture.ts:518",
+      "source": "src/architecture.ts:519",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -785,7 +785,7 @@
       "id": "architecture.PackageReports",
       "kind": "port",
       "title": "Reports on packages",
-      "source": "src/architecture.ts:397",
+      "source": "src/architecture.ts:398",
       "fields": {
         "owner": "trame",
         "declaredEffects": [
@@ -799,7 +799,7 @@
       "id": "architecture.PageApp",
       "kind": "component",
       "title": "The page in a browser",
-      "source": "src/architecture.ts:495",
+      "source": "src/architecture.ts:496",
       "fields": {
         "owner": "trame",
         "language": "typescript",
@@ -813,7 +813,7 @@
       "id": "architecture.PageMemory",
       "kind": "port",
       "title": "Memory of the page",
-      "source": "src/architecture.ts:441",
+      "source": "src/architecture.ts:442",
       "fields": {
         "owner": "trame",
         "declaredEffects": [
@@ -827,7 +827,7 @@
       "id": "architecture.PageWindow",
       "kind": "port",
       "title": "Window of the page",
-      "source": "src/architecture.ts:435",
+      "source": "src/architecture.ts:436",
       "fields": {
         "owner": "trame",
         "declaredEffects": [
@@ -862,7 +862,7 @@
       "id": "architecture.Process",
       "kind": "port",
       "title": "Process",
-      "source": "src/architecture.ts:364",
+      "source": "src/architecture.ts:365",
       "fields": {
         "owner": "trame",
         "declaredEffects": [
@@ -875,7 +875,7 @@
       "id": "architecture.ProcessLog",
       "kind": "port",
       "title": "Process log",
-      "source": "src/architecture.ts:574",
+      "source": "src/architecture.ts:575",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -886,7 +886,7 @@
       "id": "architecture.Programs",
       "kind": "port",
       "title": "Programs",
-      "source": "src/architecture.ts:414",
+      "source": "src/architecture.ts:415",
       "fields": {
         "owner": "trame",
         "declaredEffects": [
@@ -900,7 +900,7 @@
       "id": "architecture.RenderingWithoutGraph",
       "kind": "rule",
       "title": "Rendering does not read the graph",
-      "source": "src/architecture.ts:507",
+      "source": "src/architecture.ts:508",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -930,7 +930,7 @@
       "id": "architecture.Resources",
       "kind": "port",
       "title": "Page resources",
-      "source": "src/architecture.ts:408",
+      "source": "src/architecture.ts:409",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -941,7 +941,7 @@
       "id": "architecture.RunStore",
       "kind": "port",
       "title": "Where runs are kept",
-      "source": "src/architecture.ts:358",
+      "source": "src/architecture.ts:359",
       "fields": {
         "owner": "trame",
         "declaredEffects": [
@@ -955,7 +955,7 @@
       "id": "architecture.ServerLog",
       "kind": "port",
       "title": "Server log",
-      "source": "src/architecture.ts:580",
+      "source": "src/architecture.ts:581",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -965,7 +965,7 @@
     {
       "id": "architecture.Signatures",
       "kind": "port",
-      "source": "src/architecture.ts:334",
+      "source": "src/architecture.ts:335",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -989,7 +989,7 @@
       "id": "architecture.Terminal",
       "kind": "port",
       "title": "Terminal",
-      "source": "src/architecture.ts:370",
+      "source": "src/architecture.ts:371",
       "fields": {
         "owner": "trame",
         "declaredEffects": [
@@ -1002,7 +1002,7 @@
       "id": "architecture.TerminalLog",
       "kind": "port",
       "title": "Terminal log",
-      "source": "src/architecture.ts:568",
+      "source": "src/architecture.ts:569",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -1013,7 +1013,7 @@
       "id": "architecture.Test",
       "kind": "environment",
       "title": "Test",
-      "source": "src/architecture.ts:470",
+      "source": "src/architecture.ts:471",
       "fields": {
         "owner": "trame",
         "evaluates": true
@@ -1024,7 +1024,7 @@
       "id": "architecture.Timer",
       "kind": "port",
       "title": "Timer",
-      "source": "src/architecture.ts:380",
+      "source": "src/architecture.ts:381",
       "fields": {
         "owner": "trame",
         "declaredEffects": [
@@ -1037,7 +1037,7 @@
       "id": "architecture.TrameCli",
       "kind": "component",
       "title": "Trame on the command line",
-      "source": "src/architecture.ts:482",
+      "source": "src/architecture.ts:483",
       "fields": {
         "owner": "trame",
         "language": "typescript",
@@ -1064,7 +1064,7 @@
       "id": "architecture.WriteLog",
       "kind": "port",
       "title": "Write log",
-      "source": "src/architecture.ts:562",
+      "source": "src/architecture.ts:563",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -1316,7 +1316,7 @@
           "status": "passed"
         },
         {
-          "name": "The candidate is accepted (  ✓ trame runs g77 |   ✓ reservations runs g77 | Advance succeeded.)",
+          "name": "The candidate is accepted (  ✓ trame runs g78 |   ✓ reservations runs g78 | Advance succeeded.)",
           "status": "passed"
         },
         {
@@ -12128,7 +12128,7 @@
       "fields": {
         "owner": "trame",
         "context": "A build of Trame played its scenarios 2,030 times: Poselia's eleven times, the example's thirty-six, for a hundred seconds of the hundred and forty; a shipment compiles Trame's graph a dozen times with the same code.",
-        "consequences": "A scenario is played again only when the code it wires or a file its project reads has changed: a body changed plays again the scenarios that wire it, any other file all of them.",
+        "consequences": "A scenario is played again only when the code it wires or a file its project reads has changed: a body or the declaration of a node changed plays again the scenarios that wire it, any other file (a kind, a helper in a module, a file of another project) all of them.",
         "rejected": {
           "Playing every scenario at every compilation": "the same code on the same files gives the same result; a shipment took thirty-six minutes"
         }
@@ -14176,6 +14176,22 @@
       "diagnostics": []
     },
     {
+      "id": "releases.G77",
+      "kind": "release",
+      "title": "Generation 77",
+      "source": "src/releases.ts:1128",
+      "fields": {
+        "owner": "trame",
+        "version": "g77",
+        "date": "2026-10-30",
+        "what": "A build does less: a view runs once (twice when the laws are played), one search finds a node's way to every goal, date formatters are kept, a directory listed in memory does not walk its tree, a file is hashed again only once changed; a run is told apart by the declarations of the nodes it wires as by their bodies; a day of history runs no view of a node",
+        "fingerprint": "18d8a17fa9d099a8",
+        "language": "shared",
+        "archive": "9966fe46b969be85"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "releases.G8",
       "kind": "release",
       "title": "Generation 8",
@@ -15153,7 +15169,7 @@
         "owner": "trame"
       },
       "result": {
-        "code": "9427460f"
+        "code": "c974bb2a"
       },
       "diagnostics": []
     },
@@ -15167,7 +15183,7 @@
         "owner": "trame"
       },
       "result": {
-        "code": "f3442365"
+        "code": "13356db4"
       },
       "diagnostics": []
     },
@@ -15183,7 +15199,7 @@
       },
       "result": {
         "path": "out/local/trame-cli.ts",
-        "code": "74a41e0f"
+        "code": "4bbb02f9"
       },
       "diagnostics": []
     },
@@ -15237,7 +15253,7 @@
       },
       "result": {
         "path": "trame-page.html",
-        "code": "921b613b"
+        "code": "02048b70"
       },
       "diagnostics": []
     },
@@ -29979,6 +29995,16 @@
     {
       "from": "releases.G76",
       "to": "releases.G75",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G77",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G77",
+      "to": "releases.G76",
       "kind": "assembledBy"
     },
     {

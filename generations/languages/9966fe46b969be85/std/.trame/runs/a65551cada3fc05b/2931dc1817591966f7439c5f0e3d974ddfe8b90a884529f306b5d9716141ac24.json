@@ -1,0 +1,1 @@
+[{"name":"A preference set is read back, another stays unset","status":"passed"},{"name":"What the voice says is heard, in its language","status":"passed"},{"name":"The screen is kept awake, then released","status":"passed"},{"name":"Time turned by hand calls each frame started with the seconds since its start, until it stops","status":"passed"}]
