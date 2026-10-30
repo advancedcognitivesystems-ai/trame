@@ -747,7 +747,7 @@ Consequences: The words of a document are said once, by the renderer; a new form
 
 ### Every language is read alike, with tree-sitter
 
-`ReadLanguagesAlike` · `src/syntax.ts:290` · status: **held**
+`ReadLanguagesAlike` · `src/syntax.ts:291` · status: **held**
 
 A language is a node of the graph: its grammar, its queries, the escapes of its texts, examples of what must be found. One reader reads every body with it, and knows the captures of the queries, not the node types of any grammar.
 
@@ -768,7 +768,7 @@ Consequences: The checks of a body are the same for every language; the queries 
 
 ### tree-sitter says what it keeps aside
 
-`PredicatesAsTreeSitterReadsThem` · `src/syntax.ts:307` · status: **held**
+`PredicatesAsTreeSitterReadsThem` · `src/syntax.ts:308` · status: **held**
 
 The predicates of a query that tree-sitter does not evaluate are those tree-sitter itself keeps aside when it compiles the query: no pattern of Trame's looks for them.
 

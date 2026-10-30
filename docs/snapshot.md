@@ -1198,7 +1198,7 @@ Decision · `Fingerprint`
 Decision · `KeptRunsScope`
 
 - Decided by: trame
-- Value: { skipped: node_modules, .git, .trame, generations, kept: 2000 }
+- Value: { skipped: node_modules, .git, .trame, generations, kept: 10000 }
 - Rejected: The code each run wires, alone, a scenario reads files besides the code it runs (the example's documents, Poselia's evidence): kept by its code alone, it would say what the files no longer say; The time each file was changed, a build writes again files that do not change, and an advance rewrites the example's documents as they were: every run would be played again
 
 ### The days of history a page offers
@@ -4977,6 +4977,20 @@ Release · `G77`
 - Releases: Trame on the command line
 - Assembled by: Generation 76
 
+### Generation 78
+
+Release · `G78`
+
+- Released by: trame
+- Version: g78
+- Released on: 2026-10-30
+- What changes: The reading of a program by TypeScript is kept apart from its check: a body changed checks the program again but reads its modules again only when one of them changed; what a body says is kept for its text in its project, beyond the process
+- Fingerprint: d2b150f6bb34c5fb
+- Language: shared
+- Language archived: 9966fe46b969be85
+- Releases: Trame on the command line
+- Assembled by: Generation 77
+
 ### Generation 8
 
 Release · `G8`
@@ -5688,9 +5702,9 @@ Function · `BodyChecks` · **held**
 Function · `SyntaxReader` · **held**
 
 - Owner: trame
-- Parameters: { trees: architecture.SyntaxTrees, captures: syntax.Captures, roles: syntax.LiteralRoles, categories: syntax.LiteralCategories, display: syntax.LiteralDisplay, treeSitter: standards.TreeSitterApi, gnu: std/text.GnuPositions, ecma: std/ecmascript.EcmaScript, textFile: std/text.TextFile, encodings: std/system.NodeEncodings, reading: architecture.FileReading, kept: architecture.KeptResults, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts }
+- Parameters: { trees: architecture.SyntaxTrees, captures: syntax.Captures, roles: syntax.LiteralRoles, categories: syntax.LiteralCategories, display: syntax.LiteralDisplay, treeSitter: standards.TreeSitterApi, gnu: std/text.GnuPositions, ecma: std/ecmascript.EcmaScript, textFile: std/text.TextFile, encodings: std/system.NodeEncodings, reading: architecture.FileReading, kept: architecture.KeptResults, runs: architecture.RunStore, layout: conventions.Layout, paths: architecture.Paths, hashing: architecture.Hashing, sha256: std/algorithms.Sha256, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts }
 - Serves: A specification that runs, A single source of truth
-- Depends on: Syntax trees, Captures, Roles of a literal, Categories of literals, How a literal is shown, tree-sitter API, File reading, Results kept
+- Depends on: Syntax trees, Captures, Roles of a literal, Categories of literals, How a literal is shown, tree-sitter API, File reading, Results kept, Where runs are kept, Project layout, Paths, Hashing
 
 ### Roles of a literal
 

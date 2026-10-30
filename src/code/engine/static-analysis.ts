@@ -74,38 +74,50 @@ const body = (deps: Deps) => {
     return title !== empty && !title.includes(endOfLine) && !title.includes(optional(head(commentEnd))) ? title : undefined
   }
 
-  /** A program's reading, kept with the digest of every file the compiler read for it. */
-  interface Kept { files: [string, string | undefined][]; analysis: Analysis }
-  /** The same, as it is written beyond the process: its maps as their entries. */
-  interface Written {
-    files: [string, string | undefined][]; infos: [string, StaticInfo][]; moduleTitle: [string, string][]; rests: [string, string][]; typeErrors: string[]
-  }
-  const written = (k: Kept): Written => ({
-    files: k.files, infos: [...k.analysis.infos], moduleTitle: [...k.analysis.moduleTitle], rests: [...k.analysis.rests], typeErrors: k.analysis.typeErrors,
-  })
-  const read = (w: Written | undefined): Kept | undefined =>
-    w?.rests && { files: w.files, analysis: { infos: new Map(w.infos), moduleTitle: new Map(w.moduleTitle), rests: new Map(w.rests), typeErrors: w.typeErrors } }
+  /**
+   * What is kept of a program, with the digest of each file it depends on: its reading (the nodes of its modules, their
+   * titles, what each module holds besides them), which depends on its modules alone; its check (the type errors),
+   * which depends on every file the compiler read. A body changed checks the program again, and reads nothing again.
+   */
+  interface Reading { infos: Map<string, StaticInfo>; moduleTitle: Map<string, string>; rests: Map<string, string> }
+  interface Kept<T> { files: [string, string | undefined][]; found: T }
+  /** A reading as it is written beyond the process: its maps as their entries. */
+  interface WrittenReading { infos: [string, StaticInfo][]; moduleTitle: [string, string][]; rests: [string, string][] }
+  const writtenReading = (r: Reading): WrittenReading => ({ infos: [...r.infos], moduleTitle: [...r.moduleTitle], rests: [...r.rests] })
+  const readReading = (w: WrittenReading): Reading => ({ infos: new Map(w.infos), moduleTitle: new Map(w.moduleTitle), rests: new Map(w.rests) })
   const digest = (text: string) => deps.hashing.createHash(deps.sha256.algorithm).update(text).digest(deps.encodings.hex)
   /** The digest of a file as the compiler of TypeScript reads it; nothing once it is no longer there. */
   const digestOf = (file: string) => {
     const text = ts.sys.readFile(file)
     return text === undefined ? undefined : digest(text)
   }
+  const digestsOf = (files: readonly string[]): [string, string | undefined][] => files.map((file) => [file, digestOf(file)])
+  /** What was kept under a key, in the process or beyond it, while every file it depends on is as it was. */
+  const keptUnder = <T, W>(root: string, key: string, from: (w: W) => T): T | undefined => {
+    const known = (deps.kept.get(key) as Kept<T> | undefined) ?? ((w) => w && { files: w.files, found: from(w.found) })(deps.runs.at(root).get(key) as Kept<W> | undefined)
+    if (!known || !known.files.every(([file, seen]) => digestOf(file) === seen)) return undefined
+    deps.kept.set(key, known)
+    return known.found
+  }
+  const keep = <T, W>(root: string, key: string, files: [string, string | undefined][], found: T, written: W) => {
+    deps.kept.set(key, { files, found })
+    deps.runs.at(root).set(key, { files, found: written })
+  }
 
   /**
    * `modules`: the modules of the graph, each with its name (a library's module carries the library's name). `extra`:
    * other files to check (the views, which nothing imports). `paths`: where the name of each library leads, for the
-   * compiler: to its sources as they are on disk, whatever link the import map of the package goes through. The same
-   * program read again in the process, while every file the compiler read is as it was, gives the reading kept.
+   * compiler: to its sources as they are on disk, whatever link the import map of the package goes through. Read again
+   * while its modules are as they were, a program gives the reading kept; checked again while every file the compiler
+   * read is as it was, the check kept.
    */
   function analyze(modules: { file: string; module: string }[], extra: string[], root: string, paths: Record<string, string[]> = {}): Analysis {
     const files = modules.map((m) => m.file)
-    const key = digest(JSON.stringify([ts.version, root, modules, extra, paths, options.types]))
-    const known = (deps.kept.get(key) as Kept | undefined) ?? read(deps.runs.at(root).get(key) as Written | undefined)
-    if (known && known.files.every(([file, seen]) => digestOf(file) === seen)) {
-      deps.kept.set(key, known)
-      return known.analysis
-    }
+    const checkKey = digest(JSON.stringify([ts.version, root, modules, extra, paths, options.types]))
+    const readKey = digest(JSON.stringify([[ts.version, root, modules, paths]]))
+    const keptReading = keptUnder<Reading, WrittenReading>(root, readKey, readReading)
+    const keptCheck = keptUnder<string[], string[]>(root, checkKey, (errors) => errors)
+    if (keptReading && keptCheck) return { ...keptReading, typeErrors: keptCheck }
     const program = ts.createProgram([...files, ...extra], {
       target: ts.ScriptTarget.ES2022,
       module: ts.ModuleKind.ESNext,
@@ -117,6 +129,23 @@ const body = (deps: Deps) => {
       types: [...options.types],
       paths,
     })
+    const reading = keptReading ?? readProgram(program, modules, root)
+    if (!keptReading) keep(root, readKey, digestsOf(files), reading, writtenReading(reading))
+    const typeErrors = keptCheck ?? ts.getPreEmitDiagnostics(program)
+      .filter((d) => d.category === ts.DiagnosticCategory.Error && (!d.file || !d.file.fileName.includes(specifiers.packages)))
+      .map((d) => {
+        const where = d.file && d.start !== undefined
+          ? reference(relative(root, d.file.fileName), lineNumber(d.file.getLineAndCharacterOfPosition(d.start).line))
+          : undefined
+        const [first] = ts.flattenDiagnosticMessageText(d.messageText, endOfLine).split(endOfLine)
+        return messages.typeError(first, where)
+      })
+    if (!keptCheck) keep(root, checkKey, digestsOf(program.getSourceFiles().map((sf) => sf.fileName)), typeErrors, typeErrors)
+    return { ...reading, typeErrors }
+  }
+
+  /** What a program's modules declare: each node, its title and what it names; each module's title and what it holds besides its nodes. */
+  function readProgram(program: ts.Program, modules: { file: string; module: string }[], root: string): Reading {
     const checker = program.getTypeChecker()
     const infos = new Map<string, StaticInfo>()
     const moduleTitle = new Map<string, string>()
@@ -212,20 +241,7 @@ const body = (deps: Deps) => {
         infos.set(ref, info)
       }
     }
-    const typeErrors = ts.getPreEmitDiagnostics(program)
-      .filter((d) => d.category === ts.DiagnosticCategory.Error && (!d.file || !d.file.fileName.includes(specifiers.packages)))
-      .map((d) => {
-        const where = d.file && d.start !== undefined
-          ? reference(relative(root, d.file.fileName), lineNumber(d.file.getLineAndCharacterOfPosition(d.start).line))
-          : undefined
-        const [first] = ts.flattenDiagnosticMessageText(d.messageText, endOfLine).split(endOfLine)
-        return messages.typeError(first, where)
-      })
-    const analysis = { infos, moduleTitle, rests, typeErrors }
-    const kept: Kept = { files: program.getSourceFiles().map((sf): [string, string | undefined] => [sf.fileName, digestOf(sf.fileName)]), analysis }
-    deps.kept.set(key, kept)
-    deps.runs.at(root).set(key, written(kept))
-    return analysis
+    return { infos, moduleTitle, rests }
   }
 
   return { analyze }

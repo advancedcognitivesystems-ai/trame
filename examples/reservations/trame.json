@@ -9,5 +9,5 @@
   "libraries": {
     "std": "../../std"
   },
-  "engine": "../../generations/g77"
+  "engine": "../../generations/g78"
 }

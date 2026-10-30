@@ -1,0 +1,1 @@
+{"literals":[],"imports":[{"module":"../../../../trame/kernel","typeOnly":false,"computed":false,"line":4},{"module":"../../platform","typeOnly":true,"computed":false,"line":5}],"globals":[{"name":"performance","line":9}],"entry":true,"parameters":[],"outputs":[],"errors":[]}

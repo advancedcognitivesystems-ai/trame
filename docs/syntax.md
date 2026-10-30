@@ -10,7 +10,7 @@
 
 ### Captures
 
-`Captures` · `src/syntax.ts:132`
+`Captures` · `src/syntax.ts:133`
 
 The names a language's queries give to what they catch, each with what the reader does with it: the contract between a language node and the reader. A capture whose name is not here is ignored (tree-sitter's convention: those that start with _ only serve a predicate).
 
@@ -51,7 +51,7 @@ Source: Trame, the contract between the language nodes and the syntax reader; lo
 
 ### Categories of literals
 
-`LiteralCategories` · `src/syntax.ts:222`
+`LiteralCategories` · `src/syntax.ts:223`
 
 How the catalogue sorts the literals it lists: the first category whose rule a literal meets is its own. A hint to sort the catalogue, not a truth about the value. A rule may name the kinds of literal it takes, patterns its text must all match (a number's text is its value), and a pattern of the line it appears on.
 
@@ -78,7 +78,7 @@ How the catalogue sorts the literals it lists: the first category whose rule a l
 
 ### How a literal is shown
 
-`LiteralDisplay` · `src/syntax.ts:245`
+`LiteralDisplay` · `src/syntax.ts:246`
 
 The catalogue shows a literal as written, and the line it appears on, cut when they are too long.
 
@@ -96,7 +96,7 @@ The catalogue shows a literal as written, and the line it appears on, cut when t
 
 ### tree-sitter says what it keeps aside
 
-`PredicatesAsTreeSitterReadsThem` · `src/syntax.ts:307` · status: **held**
+`PredicatesAsTreeSitterReadsThem` · `src/syntax.ts:308` · status: **held**
 
 The predicates of a query that tree-sitter does not evaluate are those tree-sitter itself keeps aside when it compiles the query: no pattern of Trame's looks for them.
 
@@ -118,7 +118,7 @@ Consequences: The port SyntaxTrees gives, for a query, the predicates tree-sitte
 
 ### Every language is read alike, with tree-sitter
 
-`ReadLanguagesAlike` · `src/syntax.ts:290` · status: **held**
+`ReadLanguagesAlike` · `src/syntax.ts:291` · status: **held**
 
 A language is a node of the graph: its grammar, its queries, the escapes of its texts, examples of what must be found. One reader reads every body with it, and knows the captures of the queries, not the node types of any grammar.
 
@@ -141,7 +141,7 @@ Consequences: The checks of a body are the same for every language; the queries 
 
 ### Checks of a body
 
-`BodyChecks` · `src/syntax.ts:278` · status: **held**
+`BodyChecks` · `src/syntax.ts:279` · status: **held**
 
 What a body may touch, read on its reading, the same for every language: the prelude's public API only as a value import; no other module of the project (a hidden dependency: declare it as a parameter); the platform (a package, a built-in module, a computed load, a global that reaches outside) only for the kinds that may touch it. A file body exports what it gives; a body follows the grammar of its language. A refused body is never run.
 
@@ -157,14 +157,14 @@ What a body may touch, read on its reading, the same for every language: the pre
 
 ### Syntax reader
 
-`SyntaxReader` · `src/syntax.ts:260` · status: **held**
+`SyntaxReader` · `src/syntax.ts:261` · status: **held**
 
 Reads a body with the grammar and the queries of its language: the literals, the imports, what may reach outside, whether it gives something, and where it does not follow the grammar. It parses each file once in the process, again only when its text changed; an inline body is read in the property of its declaration. It knows the captures, and nothing of any grammar.
 
 - Owner: trame
-- Parameters: `trees` ← [Syntax trees](architecture.md#SyntaxTrees) · `captures` ← [Captures](#Captures) · `roles` ← [Roles of a literal](#LiteralRoles) · `categories` ← [Categories of literals](#LiteralCategories) · `display` ← [How a literal is shown](#LiteralDisplay) · `treeSitter` ← [tree-sitter API](standards.md#TreeSitterApi) · `gnu` ← [Positions in a file](../std/docs/text.md#GnuPositions) · `ecma` ← [ECMAScript](../std/docs/ecmascript.md#EcmaScript) · `textFile` ← [Text file](../std/docs/text.md#TextFile) · `encodings` ← [Node.js character encodings](../std/docs/system.md#NodeEncodings) · `reading` ← [File reading](architecture.md#FileReading) · `kept` ← [Results kept](architecture.md#KeptResults) · `counts` ← [Counts](../std/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/docs/algebra.md#Texts)
+- Parameters: `trees` ← [Syntax trees](architecture.md#SyntaxTrees) · `captures` ← [Captures](#Captures) · `roles` ← [Roles of a literal](#LiteralRoles) · `categories` ← [Categories of literals](#LiteralCategories) · `display` ← [How a literal is shown](#LiteralDisplay) · `treeSitter` ← [tree-sitter API](standards.md#TreeSitterApi) · `gnu` ← [Positions in a file](../std/docs/text.md#GnuPositions) · `ecma` ← [ECMAScript](../std/docs/ecmascript.md#EcmaScript) · `textFile` ← [Text file](../std/docs/text.md#TextFile) · `encodings` ← [Node.js character encodings](../std/docs/system.md#NodeEncodings) · `reading` ← [File reading](architecture.md#FileReading) · `kept` ← [Results kept](architecture.md#KeptResults) · `runs` ← [Where runs are kept](architecture.md#RunStore) · `layout` ← [Project layout](conventions.md#Layout) · `paths` ← [Paths](architecture.md#Paths) · `hashing` ← [Hashing](architecture.md#Hashing) · `sha256` ← [SHA-256](../std/docs/algorithms.md#Sha256) · `counts` ← [Counts](../std/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/docs/algebra.md#Texts)
 - Body: `./code/syntax/reader.ts` (typescript)
-- Effects: read
+- Effects: keeps, read
 - Serves: [A specification that runs](product.md#ExecutableSpecification), [A single source of truth](product.md#SingleSource)
 - Verified by: [A body is read and checked](command-scenarios.md#BodiesReadAndChecked)
 - Used by: [A body is read and checked](command-scenarios.md#BodiesReadAndChecked), [Drivers](languages.md#Drivers), [Page](page.md#Page)
@@ -177,7 +177,7 @@ Reads a body with the grammar and the queries of its language: the literals, the
 
 ### Roles of a literal
 
-`LiteralRoles` · `src/syntax.ts:169`
+`LiteralRoles` · `src/syntax.ts:170`
 
 What a literal does, from its place in the code, and how the catalogue says it. A language catches each place with a capture named role.<role>. The role of a literal is the smallest role capture that holds it; between two of the same size, the first role here. A literal that no role capture holds is "other".
 

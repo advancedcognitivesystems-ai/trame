@@ -1,0 +1,1 @@
+{"literals":[],"imports":[],"globals":[],"entry":false,"parameters":[{"name":"name","line":6},{"name":"size","line":10},{"name":"backup_retention_days","line":14},{"name":"address","line":18}],"outputs":[{"name":"url","line":30}],"errors":[]}

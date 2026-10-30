@@ -191,7 +191,7 @@ trame advance, in Trame's repository: the generation in place builds the librari
 |---|---|
 | trame advance stops at the first build that fails | passed |
 | The generation in place builds first | passed |
-| The candidate is accepted (  ✓ trame runs g78 \|   ✓ reservations runs g78 \| Advance succeeded.) | passed |
+| The candidate is accepted (  ✓ trame runs g79 \|   ✓ reservations runs g79 \| Advance succeeded.) | passed |
 | With --promote, it is frozen as the next generation, its origin written, the pin moved | passed |
 | The generation frozen records the fingerprint of its engine, by which evidence names it | passed |
 
@@ -226,16 +226,16 @@ The reader finds the literals of a body with their roles, through tree-sitter; t
 | A file body that exports nothing is refused | passed |
 | A text that does not follow the grammar is refused, with its places | passed |
 
-<details><summary>The code it runs: 6 nodes</summary>
+<details><summary>The code it runs: 8 nodes</summary>
 
-[tree-sitter in WebAssembly](platform.md#WebTreeSitter), [Node paths](platform.md#NodePaths), [Files in memory, over the disk](platform.md#MemoryFiles), [Results kept in the process](platform.md#ResultsInTheProcess), [Syntax reader](syntax.md#SyntaxReader), [Checks of a body](syntax.md#BodyChecks)
+[tree-sitter in WebAssembly](platform.md#WebTreeSitter), [Node paths](platform.md#NodePaths), [Files in memory, over the disk](platform.md#MemoryFiles), [Results kept in the process](platform.md#ResultsInTheProcess), [Runs kept in the process](platform.md#RunsInTheProcess), [SHA-256 hashes](platform.md#NodeHashing), [Syntax reader](syntax.md#SyntaxReader), [Checks of a body](syntax.md#BodyChecks)
 
 </details>
 
 - Owner: trame
 - Parameters: `reader` ← [Syntax reader](syntax.md#SyntaxReader) · `checks` ← [Checks of a body](syntax.md#BodyChecks) · `typescript` ← [TypeScript](typescript.md#TypeScript) · `samples` ← [Bodies the reader is given](#BodySamples) · `driver` ← [Messages of the drivers](messages.md#DriverMessages) · `gnu` ← [Positions in a file](../std/docs/text.md#GnuPositions) · `counts` ← [Counts](../std/docs/algebra.md#Counts) · `messages` ← [Messages of the scenarios](messages.md#ScenarioMessages)
 - Body: inline, in the declaration
-- Effects: read
+- Effects: keeps, read
 - Verifies: [Syntax reader](syntax.md#SyntaxReader), [Checks of a body](syntax.md#BodyChecks), [tree-sitter in WebAssembly](platform.md#WebTreeSitter)
 - In: [Test](architecture.md#Test)
 

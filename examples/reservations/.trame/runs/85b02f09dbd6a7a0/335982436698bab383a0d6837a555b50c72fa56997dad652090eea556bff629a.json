@@ -1,0 +1,1 @@
+{"literals":[],"imports":[{"module":"../../../../trame/kernel","typeOnly":true,"computed":false,"line":4},{"module":"../infra","typeOnly":true,"computed":false,"line":5}],"globals":[{"name":"process","line":9},{"name":"fetch","line":11}],"entry":true,"parameters":[],"outputs":[],"errors":[]}

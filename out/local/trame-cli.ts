@@ -205,7 +205,7 @@ const texts = await body_texts({ empty: "", space: " ", ellipsis: "…", wordBou
 // "The fingerprint of an engine" · function
 const engineFingerprint = await body_engineFingerprint({ layout, advancement, language: typeScript, project, reading: diskReading, paths: nodePaths, hashing: nodeHashing, sha256, encodings: nodeEncodings, fingerprint, json: jsonFormatting, sequences, texts, values: valueTypes })
 // "What tells a project's runs apart" · decision
-const keptRunsScope = {"skipped":["node_modules",".git",".trame","generations"],"kept":2000}
+const keptRunsScope = {"skipped":["node_modules",".git",".trame","generations"],"kept":10000}
 // "Runs kept on disk" · implementation, for "Where runs are kept"
 const runsOnDisk = await body_runsOnDisk({ layout, files: engineFiles, engines: engineFingerprint, scope: keptRunsScope, encodings: nodeEncodings })
 // "Documentation comment" · decision
@@ -273,7 +273,7 @@ const literalDisplay = {"value":{"longest":70,"kept":67},"context":{"longest":11
 // "tree-sitter API" · standard
 const treeSitterApi = {"firstRow":0,"firstColumn":0}
 // "Syntax reader" · function
-const syntaxReader = await body_syntaxReader({ trees: webTreeSitter, captures, roles: literalRoles, categories: literalCategories, display: literalDisplay, treeSitter: treeSitterApi, gnu: gnuPositions, ecma: ecmaScript, textFile, encodings: nodeEncodings, reading: diskReading, kept: resultsInTheProcess, counts, sequences, texts })
+const syntaxReader = await body_syntaxReader({ trees: webTreeSitter, captures, roles: literalRoles, categories: literalCategories, display: literalDisplay, treeSitter: treeSitterApi, gnu: gnuPositions, ecma: ecmaScript, textFile, encodings: nodeEncodings, reading: diskReading, kept: resultsInTheProcess, runs: runsOnDisk, layout, paths: nodePaths, hashing: nodeHashing, sha256, counts, sequences, texts })
 // "The prelude's public API" · decision
 const preludeApi = {"directory":"/trame/","endings":["/trame/kernel","/trame/kernel.ts","/trame/kernel.js"]}
 // "Messages of the drivers" · message catalog

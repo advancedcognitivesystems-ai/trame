@@ -1556,6 +1556,27 @@ Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Ge
 - Released by: trame
 - Releases: [Trame on the command line](architecture.md#TrameCli)
 - Assembled by: [Generation 76](#G76)
+- Assembled: [Generation 78](#G78)
+
+<a id="G78"></a>
+
+### Generation 78
+
+`G78` · `src/releases.ts:1143`
+
+The reading of a program by TypeScript is kept apart from its check: a body changed checks the program again but reads its modules again only when one of them changed; what a body says is kept for its text in its project, beyond the process
+
+Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Generation 77](#G77).
+
+- Version: `g78`
+- Released on: 30 October 2026
+- Fingerprint: `d2b150f6bb34c5fb`
+- Language: the repository's, shared
+- Language archived: `9966fe46b969be85`
+
+- Released by: trame
+- Releases: [Trame on the command line](architecture.md#TrameCli)
+- Assembled by: [Generation 77](#G77)
 
 <a id="G8"></a>
 

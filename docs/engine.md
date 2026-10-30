@@ -51,7 +51,7 @@ A run kept (a scenario played) is given back while what it ran and the files the
 | Case | Value |
 |---|---|
 | skipped | node_modules, .git, .trame, generations |
-| kept | 2000 |
+| kept | 10000 |
 
 - Decided by: trame
 - Rejected: The code each run wires, alone, a scenario reads files besides the code it runs (the example's documents, Poselia's evidence): kept by its code alone, it would say what the files no longer say; The time each file was changed, a build writes again files that do not change, and an advance rewrites the example's documents as they were: every run would be played again
@@ -145,7 +145,7 @@ The plan of a component for an environment, written as a program by the driver o
 - Owner: trame
 - Parameters: `line` ← [Trame's commands](conventions.md#TrameCommands) · `values` ← [Types of values](../std/docs/algebra.md#ValueTypes) · `layout` ← [Project layout](conventions.md#Layout) · `paths` ← [Paths](architecture.md#Paths) · `wiring` ← [Wiring](#Wiring) · `prelude` ← [Prelude](architecture.md#Prelude) · `drivers` ← [Drivers](languages.md#Drivers) · `texts` ← [Texts](../std/docs/algebra.md#Texts) · `messages` ← [Messages of the compiler](messages.md#CompilerMessages)
 - Body: `./code/engine/assembly.ts` (typescript)
-- Effects: execution, read
+- Effects: execution, keeps, read
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Verified by: [A component assembled](command-scenarios.md#ComponentAssembled)
 - Used by: [Assembler](commands.md#Assembler), [Deliver](commands.md#Deliver), [Ship](commands.md#Ship)
@@ -226,7 +226,7 @@ Watches the project, recompiles it at each save, pushes the updated page.
 - Owner: trame
 - Parameters: `service` ← [What trame dev serves](#DevService) · `uri` ← [URI](../std/docs/web.md#Uri) · `line` ← [Trame's commands](conventions.md#TrameCommands) · `nodeEvents` ← [Node.js events](../std/docs/system.md#NodeEvents) · `layout` ← [Project layout](conventions.md#Layout) · `http` ← [HTTP](../std/docs/web.md#Http) · `mediaTypes` ← [Media types](../std/docs/web.md#MediaTypes) · `events` ← [Server-sent events](../std/docs/web.md#ServerSentEvents) · `terminal` ← [Terminal](architecture.md#Terminal) · `codeLines` ← [Code lines](text.md#CodeLines) · `file` ← [Text file](../std/docs/text.md#TextFile) · `clock` ← [Clock](architecture.md#Clock) · `timer` ← [Timer](architecture.md#Timer) · `debounce` ← [Debouncing of saves](product.md#DevDebounce) · `httpServer` ← [HTTP server](architecture.md#HttpServer) · `reading` ← [File reading](architecture.md#FileReading) · `paths` ← [Paths](architecture.md#Paths) · `project` ← [Project](#Project) · `bundle` ← [Date bundle](#DateBundle) · `differences` ← [Differences](#Differences) · `page` ← [Page](page.md#Page) · `pageRendering` ← [Rendering in the page](rendering.md#PageRendering) · `counts` ← [Counts](../std/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/docs/algebra.md#Texts) · `dates` ← [Dates](messages.md#Dates) · `language` ← [Language](messages.md#Language) · `messages` ← [Messages of trame dev](messages.md#DevMessages)
 - Body: `./code/engine/dev-server.ts` (typescript)
-- Effects: network, process, read, terminal, time
+- Effects: keeps, network, process, read, terminal, time
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Verified by: [trame dev](command-scenarios.md#DevFollowsTheGraph)
 - Used by: [Start trame dev](commands.md#Dev)
@@ -326,7 +326,7 @@ Tests each kind on nodes drawn at random, and its resolution on sets of claims; 
 - Owner: trame
 - Parameters: `kept` ← [Results kept](architecture.md#KeptResults) · `drivers` ← [Drivers](languages.md#Drivers) · `preludeApi` ← [The prelude's public API](conventions.md#PreludeApi) · `specifiers` ← [Node.js module specifiers](../std/docs/system.md#NodeModuleSpecifiers) · `layout` ← [Project layout](conventions.md#Layout) · `samples` ← [Nodes drawn per kind](product.md#SampleCount) · `claimSets` ← [Claim sets](product.md#ClaimSets) · `generator` ← [Pseudo-random generator](#Generator) · `owners` ← [Owners drawn at random](product.md#SampledOwners) · `sampled` ← [Values drawn by the laws](product.md#SampledValues) · `iso` ← [ISO 8601 dates](../std/docs/measures.md#Iso8601) · `references` ← [References](#References) · `reading` ← [File reading](architecture.md#FileReading) · `paths` ← [Paths](architecture.md#Paths) · `project` ← [Project](#Project) · `graph` ← [Graph](#GraphApi) · `prelude` ← [Prelude](architecture.md#Prelude) · `counts` ← [Counts](../std/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/docs/algebra.md#Texts) · `messages` ← [Messages of the laws](messages.md#LawMessages) · `declaration` ← [Complete declaration](laws.md#CompleteDeclaration) · `answers` ← [Answers without crashing](laws.md#AnswersWithoutCrashing) · `owned` ← [A blocking hole has an owner](laws.md#BlockingHoleHasOwner) · `evidence` ← [Without evidence, the status is unknown](laws.md#UnknownWithoutEvidence) · `same` ← [Same input, same answer](laws.md#SameInputSameAnswer) · `orderFree` ← [The resolution does not depend on the order](laws.md#OrderFree) · `closed` ← [The resolution returns only what it is given](laws.md#ClosedResolution)
 - Body: `./code/engine/laws.ts` (typescript)
-- Effects: execution, read
+- Effects: execution, keeps, read
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Used by: [Preparation](commands.md#Preparation), [Test the laws](commands.md#TestKinds), [The laws of the kinds hold](scenarios.md#KindLaws)
 - Applies: [The laws are requirements](#LawsAreRequirements), [A change to a node is a claim](principles.md#ChangesAreClaims), [A key is made of its parts](principles.md#KeysOfParts), [A library is imported by its name](principles.md#LibrariesByName), [The prelude and the compiler know no kind of node](principles.md#NoKindInTheCore), [The prelude: the runtime of the language](principles.md#PreludeLayer), [Without evidence, a status is unknown](principles.md#UnknownWithoutEvidence), [Kinds and views: the vocabulary, as reviewed files](principles.md#VocabularyLayer)
@@ -376,7 +376,7 @@ The compiled graph in the intermediate format, for the page. It carries the lang
 - Owner: trame
 - Parameters: `layout` ← [Project layout](conventions.md#Layout) · `candidateDates` ← [Candidate dates](product.md#CandidateDates) · `history` ← [The days of history a page offers](#PageHistory) · `iso` ← [ISO 8601 dates](../std/docs/measures.md#Iso8601) · `clock` ← [Clock](architecture.md#Clock) · `machine` ← [Machine outputs](#MachineOutputs) · `views` ← [Views](#Views) · `language` ← [Language](messages.md#Language) · `texts` ← [Texts](../std/docs/algebra.md#Texts) · `values` ← [Types of values](../std/docs/algebra.md#ValueTypes) · `counts` ← [Counts](../std/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/docs/algebra.md#Sequences)
 - Body: `./code/engine/payload.ts` (typescript)
-- Effects: execution, read, time
+- Effects: execution, keeps, read, time
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Verified by: [The graph in the intermediate format](command-scenarios.md#PayloadOfTheGraph)
 - Used by: [Payload](commands.md#EmitPayload)
@@ -490,7 +490,7 @@ Loads them, lists their instances, runs them under their laws.
 - Owner: trame
 - Parameters: `drivers` ← [Drivers](languages.md#Drivers) · `rank` ← [Default rank](conventions.md#DefaultRank) · `groupOrder` ← [Order of the view groups](conventions.md#ViewGroupOrder) · `ids` ← [Names of the documents](conventions.md#DocumentIds) · `uri` ← [URI](../std/docs/web.md#Uri) · `layout` ← [Project layout](conventions.md#Layout) · `loader` ← [Module loader](architecture.md#ModuleLoader) · `reading` ← [File reading](architecture.md#FileReading) · `paths` ← [Paths](architecture.md#Paths) · `prelude` ← [Prelude](architecture.md#Prelude) · `project` ← [Project](#Project) · `output` ← [Messages of the outputs](messages.md#OutputMessages) · `messages` ← [Messages of the views](messages.md#ViewMessages) · `declaration` ← [Complete declaration of a view](laws.md#CompleteViewDeclaration) · `answers` ← [Answers without crashing](laws.md#AnswersWithoutCrashing) · `same` ← [Same input, same answer](laws.md#SameInputSameAnswer) · `serial` ← [Produces only the intermediate format](laws.md#IntermediateFormatOnly)
 - Body: `./code/engine/views.ts` (typescript)
-- Effects: execution, read
+- Effects: execution, keeps, read
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Used by: [The laws, tested by their command](command-scenarios.md#LawsTested), [Preparation](commands.md#Preparation), [Render a view](commands.md#RenderView), [Test the laws](commands.md#TestKinds), [View by its name](commands.md#ViewByName), [Payload](#PayloadBuilder)
 - Applies: [The laws are requirements](#LawsAreRequirements), [The language receives the graph's values](#TheLanguageReceivesTheGraph), [The traversal API is the only way to read the graph](principles.md#OneWayToRead), [Kinds and views: the vocabulary, as reviewed files](principles.md#VocabularyLayer)
@@ -507,7 +507,7 @@ The plan: what to build, in which order, with which implementation for each port
 - Owner: trame
 - Parameters: `steps` ← [Names of steps](conventions.md#StepNames) · `references` ← [Trame references](conventions.md#ReferenceSyntax) · `values` ← [Types of values](../std/docs/algebra.md#ValueTypes) · `layout` ← [Project layout](conventions.md#Layout) · `paths` ← [Paths](architecture.md#Paths) · `prelude` ← [Prelude](architecture.md#Prelude) · `drivers` ← [Drivers](languages.md#Drivers) · `sequences` ← [Sequences](../std/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/docs/algebra.md#Texts) · `messages` ← [Messages of the compiler](messages.md#CompilerMessages)
 - Body: `./code/engine/wiring.ts` (typescript)
-- Effects: execution, read
+- Effects: execution, keeps, read
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Used by: [Assembly](#Assembly), [Compiler](#Compiler)
 - Applies: [An undecided value blocks; it does not crash](principles.md#UndecidedBlocks)

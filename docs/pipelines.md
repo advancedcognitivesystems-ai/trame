@@ -280,6 +280,6 @@ flowchart TB
 | 100 | prove | [The resolution does not depend on the order](laws.md#OrderFree) | — | [The language serves what it says](sdlc.md#LanguageServed) via [Complete declaration](laws.md#CompleteDeclaration) | **held** |  |
 | 101 | prove | [Without evidence, the status is unknown](laws.md#UnknownWithoutEvidence) | — | [The language serves what it says](sdlc.md#LanguageServed) via [Complete declaration](laws.md#CompleteDeclaration) | **held** |  |
 | 102 | deploy | [Advance](commands.md#Advance) | itself | — | **held** | 30 October 2026 by claude  |
-| 103 | record | [The next generation](sdlc.md#NextGeneration) | — | — | **held** | 30 October 2026 by claude `evidence/shipments/NextGeneration-2026-10-30-5feadc65.json` |
+| 103 | record | [The next generation](sdlc.md#NextGeneration) | — | — | **held** | 30 October 2026 by claude `evidence/shipments/NextGeneration-2026-10-30-fffedc76.json` |
 
 `trame ship NextGeneration --by <name>`

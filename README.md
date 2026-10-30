@@ -471,7 +471,11 @@ goal; date formatters are made once per language; a directory listed in memory n
 file is hashed again only once its size or its time changed. And a run is told apart by the declarations of the nodes
 it wires as by their bodies: of each module, only what it holds besides its nodes (its comments, a helper, a type) is
 read for all, so changing a node plays again only the scenarios that wire it. A build of Trame from nothing went from
-90 to about 70 seconds, a build without change from 15 to 10, after a change to one body about 25.
+90 to about 70 seconds, a build without change from 15 to 10, after a change to one body about 25. Since g78 the
+reading of a program by TypeScript is kept apart from its check: a body changed checks the program again, but reads
+its modules again only when one of them changed; and what a body says (its literals, its imports) is kept for its
+text in its project, so a file is parsed by tree-sitter only once it changed. From nothing a build takes about 60
+seconds, without change about 6, after a change to one body about 13; shipping a generation, about 4 minutes.
 
 Since g75 **dates are real**. Evidence counts from the day it was given: the graph compiled at an earlier date
 (`--at`) has not seen it yet, as it had not then. Until g74, Trame, std and the example were built at a fixed date,

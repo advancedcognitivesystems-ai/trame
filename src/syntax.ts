@@ -7,12 +7,13 @@ import { catalog } from "../kinds/catalog"
 import { fn } from "../kinds/function"
 import { adr } from "../kinds/adr"
 import { ExecutableSpecification, SingleSource } from "./product"
-import { SyntaxTrees, FileReading, KeptResults } from "./architecture"
+import { SyntaxTrees, FileReading, KeptResults, RunStore, Paths, Hashing } from "./architecture"
 import { TreeSitterApi } from "./standards"
 import { GnuPositions, TextFile } from "#std/text"
 import { EcmaScript } from "#std/ecmascript"
+import { Sha256 } from "#std/algorithms"
 import { NodeEncodings, NodeModuleSpecifiers } from "#std/system"
-import { PreludeApi } from "./conventions"
+import { PreludeApi, Layout } from "./conventions"
 import { Counts, Sequences, Texts } from "#std/algebra"
 import { Language, DriverMessages } from "./messages"
 import type { Shortening } from "#std/code/algebra/texts"
@@ -263,7 +264,7 @@ export const SyntaxReader = fn({
   deps: {
     trees: SyntaxTrees, captures: Captures, roles: LiteralRoles, categories: LiteralCategories, display: LiteralDisplay,
     treeSitter: TreeSitterApi, gnu: GnuPositions, ecma: EcmaScript, textFile: TextFile, encodings: NodeEncodings, reading: FileReading,
-    kept: KeptResults, counts: Counts, sequences: Sequences, texts: Texts,
+    kept: KeptResults, runs: RunStore, layout: Layout, paths: Paths, hashing: Hashing, sha256: Sha256, counts: Counts, sequences: Sequences, texts: Texts,
   },
   body: code.file<typeof import("./code/syntax/reader").default>("./code/syntax/reader.ts"),
 })

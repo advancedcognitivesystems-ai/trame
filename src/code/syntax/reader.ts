@@ -5,7 +5,7 @@
 
 import { LiteralKind } from "../../../trame/kernel"
 import type { ProvidedBy } from "../../../trame/kernel"
-import type { FileReading, KeptResults, SyntaxCapture, SyntaxPoint, SyntaxTrees } from "../../architecture"
+import type { FileReading, Hashing, KeptResults, Layout, Paths, RunStore, SyntaxCapture, SyntaxPoint, SyntaxTrees } from "../../architecture"
 import type { EcmaScript } from "#std/ecmascript"
 import type { GnuPositions, TextFile } from "#std/text"
 import type { NodeEncodings } from "#std/system"
@@ -28,6 +28,13 @@ export interface Deps {
   reading: FileReading
   /** Where the files parsed are kept while the process runs, each with its text. */
   kept: KeptResults
+  /** Where what a body was read to say is kept beyond the process, by the project it belongs to (on a machine, on disk). */
+  runs: RunStore
+  /** What names a project's root (its configuration), where readings are kept. */
+  layout: Layout
+  paths: Paths
+  hashing: Hashing
+  sha256: { algorithm: string }
   counts: ProvidedBy<typeof Counts>
   sequences: ProvidedBy<typeof Sequences>
   texts: ProvidedBy<typeof Texts>
@@ -304,12 +311,39 @@ const body = (deps: Deps) => {
     return p
   }
 
-  /** Reads a body: a file, or the inline body of a declaration. A file that is not there reads nothing. */
+  /** The project a file belongs to: the nearest directory above it that holds a configuration; nothing outside any. */
+  const projects = new Map<string, string | undefined>()
+  const projectOf = (dir: string): string | undefined => {
+    if (projects.has(dir)) return projects.get(dir)
+    const up = deps.paths.dirname(dir)
+    const found = reading.existsSync(deps.paths.join(dir, deps.layout.configuration)) ? dir : up === dir ? undefined : projectOf(up)
+    projects.set(dir, found)
+    return found
+  }
+  const digest = (text: string) => deps.hashing.createHash(deps.sha256.algorithm).update(text).digest(encodings.hex)
+
+  /**
+   * Reads a body: a file, or the inline body of a declaration. A file that is not there reads nothing. What it says is
+   * kept for its text, in the process and, in its project, beyond it: a file read before is not parsed again.
+   */
   function readSource(language: LanguageDescription, source: BodySource): Reading {
     if (!reading.existsSync(source.file)) return nothing()
+    const text = String(reading.readFileSync(source.file, encodings.utf8))
+    const key = digest(JSON.stringify([language.grammar, language.queries, source.inline, text]))
+    const project = projectOf(deps.paths.dirname(source.file))
+    const store = project === undefined ? undefined : deps.runs.at(project)
+    const id = JSON.stringify([[key]])
+    const known = (kept.get(id) ?? store?.get(key)) as Reading | undefined
+    if (known) {
+      kept.set(id, known)
+      return known
+    }
     const p = parsedFile(language, source.file)
     const r = source.inline ? inlineBody(p, source.inline.line, source.inline.field) : whole(p.text)
-    return r ? readIn(language, p, r) : nothing()
+    const found = r ? readIn(language, p, r) : nothing()
+    kept.set(id, found)
+    store?.set(key, found)
+    return found
   }
 
   /** Reads a text: whole, or the inline body of the declaration on this line. */

@@ -1136,3 +1136,18 @@ export const G77 = release({
   archive: "9966fe46b969be85",
   assembledBy: G76,
 })
+
+/**
+ * Generation 78
+ */
+export const G78 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g78",
+  date: "2026-10-30",
+  what: "The reading of a program by TypeScript is kept apart from its check: a body changed checks the program again but reads its modules again only when one of them changed; what a body says is kept for its text in its project, beyond the process",
+  fingerprint: "d2b150f6bb34c5fb",
+  language: "shared",
+  archive: "9966fe46b969be85",
+  assembledBy: G77,
+})

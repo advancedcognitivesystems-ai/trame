@@ -2,7 +2,7 @@
 
 *The releases of the components on 30 October 2026, newest first. A project runs the release its configuration pins.*
 
-> **77 releases of 1 component; 50 releases on a language of their own**
+> **78 releases of 1 component; 50 releases on a language of their own**
 
 ## Trame on the command line
 
@@ -10,6 +10,7 @@ Each release, newest first: what changed, the release that assembled it, and whe
 
 | Release | Released on | What changes | Assembled by | Language |
 |---|---|---|---|---|
+| [Generation 78](releases.md#G78) | 30 October 2026 | The reading of a program by TypeScript is kept apart from its check: a body changed checks the program again but reads its modules again only when one of them changed; what a body says is kept for its text in its project, beyond the process | [Generation 77](releases.md#G77) | shared |
 | [Generation 77](releases.md#G77) | 30 October 2026 | A build does less: a view runs once (twice when the laws are played), one search finds a node's way to every goal, date formatters are kept, a directory listed in memory does not walk its tree, a file is hashed again only once changed; a run is told apart by the declarations of the nodes it wires as by their bodies; a day of history runs no view of a node | [Generation 76](releases.md#G76) | shared |
 | [Generation 76](releases.md#G76) | 30 October 2026 | A graph compiled at a day before today judges evidence as it was given (the code and the engine of that day are not known); a day of history in an export carries its documents and figures, not the views of each node | [Generation 75](releases.md#G75) | shared |
 | [Generation 75](releases.md#G75) | 30 October 2026 | Dates are real: evidence counts from the day it was given; an export offers the last seven days of the project's history (a version released, evidence given), each with what had been proven by then and what was given that day, the documents that differ only by the date carried once; the day of the scenarios is the 30th of October; the view journal tells the project's history day by day | [Generation 74](releases.md#G74) | shared |

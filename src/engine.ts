@@ -250,7 +250,7 @@ export const Compiler = fn({
  */
 export const KeptRunsScope = decision<{ skipped: string[]; kept: number }>({
   owner: "trame",
-  value: { skipped: ["node_modules", ".git", ".trame", "generations"], kept: 2000 },
+  value: { skipped: ["node_modules", ".git", ".trame", "generations"], kept: 10000 },
   rejected: {
     "The code each run wires, alone": "a scenario reads files besides the code it runs (the example's documents, Poselia's evidence): kept by its code alone, it would say what the files no longer say",
     "The time each file was changed": "a build writes again files that do not change, and an advance rewrites the example's documents as they were: every run would be played again",

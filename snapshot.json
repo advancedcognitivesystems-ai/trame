@@ -3512,7 +3512,7 @@
             ".trame",
             "generations"
           ],
-          "kept": 2000
+          "kept": 10000
         },
         "rejected": {
           "The code each run wires, alone": "a scenario reads files besides the code it runs (the example's documents, Poselia's evidence): kept by its code alone, it would say what the files no longer say",
@@ -10898,6 +10898,20 @@
       }
     },
     {
+      "id": "releases.G78",
+      "kind": "release",
+      "title": "Generation 78",
+      "fields": {
+        "owner": "trame",
+        "version": "g78",
+        "date": "2026-10-30",
+        "what": "The reading of a program by TypeScript is kept apart from its check: a body changed checks the program again but reads its modules again only when one of them changed; what a body says is kept for its text in its project, beyond the process",
+        "fingerprint": "d2b150f6bb34c5fb",
+        "language": "shared",
+        "archive": "9966fe46b969be85"
+      }
+    },
+    {
       "id": "releases.G8",
       "kind": "release",
       "title": "Generation 8",
@@ -12457,6 +12471,11 @@
           "encodings": "std/system.NodeEncodings",
           "reading": "architecture.FileReading",
           "kept": "architecture.KeptResults",
+          "runs": "architecture.RunStore",
+          "layout": "conventions.Layout",
+          "paths": "architecture.Paths",
+          "hashing": "architecture.Hashing",
+          "sha256": "std/algorithms.Sha256",
           "counts": "std/algebra.Counts",
           "sequences": "std/algebra.Sequences",
           "texts": "std/algebra.Texts"
@@ -22749,6 +22768,16 @@
       "kind": "assembledBy"
     },
     {
+      "from": "releases.G78",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G78",
+      "to": "releases.G77",
+      "kind": "assembledBy"
+    },
+    {
       "from": "releases.G8",
       "to": "architecture.TrameCli",
       "kind": "component"
@@ -24491,6 +24520,26 @@
     {
       "from": "syntax.SyntaxReader",
       "to": "architecture.KeptResults",
+      "kind": "deps"
+    },
+    {
+      "from": "syntax.SyntaxReader",
+      "to": "architecture.RunStore",
+      "kind": "deps"
+    },
+    {
+      "from": "syntax.SyntaxReader",
+      "to": "conventions.Layout",
+      "kind": "deps"
+    },
+    {
+      "from": "syntax.SyntaxReader",
+      "to": "architecture.Paths",
+      "kind": "deps"
+    },
+    {
+      "from": "syntax.SyntaxReader",
+      "to": "architecture.Hashing",
       "kind": "deps"
     },
     {
