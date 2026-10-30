@@ -1,0 +1,12 @@
+{
+  "kinds": [
+    "../../kinds"
+  ],
+  "views": [
+    "../../views"
+  ],
+  "libraries": {
+    "std": "../../std"
+  },
+  "engine": "../../generations/g58"
+}

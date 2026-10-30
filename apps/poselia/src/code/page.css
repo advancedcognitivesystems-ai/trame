@@ -1,0 +1,85 @@
+/* The home page: a column the width of a phone, the app's name and the languages, the poses, then the sequence step by
+   step. No value is written here: the colours and the measures are the variables of the decisions "Colours" and
+   "Measures". */
+
+body { margin: var(--none); background: var(--paper); color: var(--ink); font-family: var(--font); line-height: var(--leading); }
+.top, main { max-width: var(--page-width); margin: var(--none) auto; padding: var(--gutter); }
+.top h1 { margin: var(--none); font-size: var(--text-title); color: var(--accent); }
+.top p { margin: var(--none); color: var(--muted); }
+.languages { display: flex; gap: var(--gap-small); margin-top: var(--gap); }
+.languages button { font: inherit; font-size: var(--text-small); padding: var(--button-pad); border-radius: var(--radius); border: var(--border-width) solid var(--line); background: var(--paper); color: var(--ink); cursor: pointer; }
+.languages .current { background: var(--accent); border-color: var(--accent); color: var(--paper); }
+.poses ul { list-style: none; padding: var(--none); margin: var(--none); }
+.poses li { padding: var(--gap-small) var(--none); border-bottom: var(--border-width) solid var(--line); }
+.sanskrit { display: block; font-size: var(--text-small); color: var(--muted); font-style: italic; }
+.sequence small { margin-left: var(--gap-small); font-size: var(--text-small); color: var(--muted); font-weight: normal; }
+.step { margin-bottom: var(--gap); }
+.step p { margin: var(--none); }
+.breath { margin-left: var(--gap-small); font-size: var(--text-small); color: var(--accent); }
+.poses li, .step { display: flex; align-items: center; gap: var(--gap); }
+.poses .figure { width: var(--thumbnail); height: var(--thumbnail); flex: none; }
+.step .figure { width: var(--step-drawing); height: var(--step-drawing); flex: none; }
+.figure line { stroke-linecap: round; }
+.figure .floor { stroke: var(--line); }
+.figure .far { stroke: var(--far); }
+.figure .trunk, .figure .head, .figure .near { stroke: var(--ink); }
+.figure .outline { stroke: var(--paper); }
+.figure .arm { stroke: var(--accent); }
+.top button, .controls button, .actions button { font: inherit; font-size: var(--text-small); padding: var(--button-pad); border-radius: var(--radius); border: var(--border-width) solid var(--line); background: var(--paper); color: var(--ink); cursor: pointer; }
+.actions button:first-child, .controls button:first-child, .controls button:first-child + button { background: var(--accent); border-color: var(--accent); color: var(--paper); }
+.controls button[aria-pressed="true"] { border-color: var(--mark); color: var(--mark-ink); background: var(--mark-soft); }
+.actions { display: flex; flex-wrap: wrap; gap: var(--gap-small); margin: var(--gap) var(--none); }
+.actions button:disabled { opacity: var(--faded); cursor: not-allowed; }
+.player { max-width: var(--page-width); margin: var(--none) auto; padding: var(--gutter); position: relative; }
+.player .top { display: flex; align-items: center; gap: var(--gap); padding: var(--none); }
+.player .top h1 { font-size: var(--text-heading); }
+.progress { height: var(--progress-height); background: var(--line); border-radius: var(--radius); background-image: linear-gradient(var(--accent), var(--accent)); background-repeat: no-repeat; background-size: calc(var(--progress) * var(--full)) var(--full); }
+.said { margin-top: var(--gap); min-height: var(--said-height); }
+.said small { display: block; color: var(--muted); font-size: var(--text-small); }
+.done { color: var(--accent); font-weight: bold; }
+.controls { display: flex; gap: var(--gap-small); }
+.settings { max-width: var(--page-width); margin: var(--none) auto; padding: var(--gutter); }
+.settings .top { display: flex; align-items: center; gap: var(--gap); padding: var(--none); }
+.settings .top h1 { font-size: var(--text-heading); }
+.phases { list-style: none; padding: var(--none); margin: var(--none); }
+.phases li { display: flex; align-items: center; gap: var(--gap-small); padding: var(--gap-small) var(--none); border-bottom: var(--border-width) solid var(--line); }
+.phases li span { flex: auto; }
+.phases li b { min-width: var(--seconds-width); text-align: center; }
+.settings button { font: inherit; padding: var(--button-pad); border-radius: var(--radius); border: var(--border-width) solid var(--line); background: var(--paper); color: var(--ink); cursor: pointer; }
+.settings .current { background: var(--accent); border-color: var(--accent); color: var(--paper); }
+.measure { margin: var(--gap) var(--none); }
+.measure small { margin-left: var(--gap); color: var(--muted); }
+.settings .tap { width: var(--tap-size); height: var(--tap-size); border-radius: var(--radius); background: var(--accent); border-color: var(--accent); color: var(--paper); touch-action: manipulation; }
+.top > button { margin-top: var(--gap); }
+.stage { position: relative; height: var(--stage-height); border-radius: var(--stage-radius); background: var(--stage); overflow: hidden; touch-action: none; margin: var(--gap) var(--none); }
+.stage canvas { position: absolute; inset: var(--none); width: var(--full); height: var(--full); display: block; }
+.badge { position: absolute; left: var(--gap); top: var(--gap); background: var(--paper); border: var(--border-width) solid var(--line); border-radius: var(--badge-radius); padding: var(--badge-pad); display: grid; pointer-events: none; max-width: var(--badge-width); }
+.badge small { color: var(--muted); font-size: var(--text-small); }
+.views { position: absolute; right: var(--gap); top: var(--gap); display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--gap-small); max-width: var(--views-width); }
+.views button { font: inherit; font-size: var(--text-small); padding: var(--button-pad); border-radius: var(--radius); border: var(--border-width) solid var(--line); background: var(--paper); color: var(--ink); cursor: pointer; }
+.lungs { position: absolute; left: var(--gap); bottom: var(--gap); width: var(--lungs-size); height: var(--lungs-size); border-radius: var(--radius); border: var(--ring-width) solid var(--accent); display: grid; place-items: center; background: var(--paper); pointer-events: none; }
+.lungs span { width: var(--full); height: var(--full); border-radius: var(--radius); background: var(--accent); transform: scale(calc(var(--lungs-least) + var(--lungs-range) * var(--lungs))); }
+.said .held { display: block; color: var(--accent); font-size: var(--text-small); font-weight: bold; }
+.composer { max-width: var(--page-width); margin: var(--none) auto; padding: var(--gutter); }
+.composer .top { display: flex; align-items: center; gap: var(--gap); padding: var(--none); }
+.composer .top h1 { font-size: var(--text-heading); }
+.composer > p { color: var(--muted); }
+.counters { list-style: none; padding: var(--none); margin: var(--none); }
+.counters li { display: flex; align-items: center; gap: var(--gap-small); padding: var(--gap-small) var(--none); border-bottom: var(--border-width) solid var(--line); }
+.counters li span { flex: auto; }
+.counters li b { min-width: var(--seconds-width); text-align: center; }
+.counters button { font: inherit; padding: var(--button-pad); border-radius: var(--radius); border: var(--border-width) solid var(--line); background: var(--paper); color: var(--ink); cursor: pointer; }
+.chosen, .library { list-style: none; padding: var(--none); margin: var(--none); display: grid; grid-template-columns: repeat(auto-fill, minmax(var(--card-width), var(--fraction))); gap: var(--gap-small); }
+.chosen button, .library button { font: inherit; font-size: var(--text-small); width: var(--full); height: var(--full); display: grid; justify-items: center; gap: var(--gap-small); padding: var(--gap-small); border-radius: var(--badge-radius); border: var(--border-width) solid var(--line); background: var(--paper); color: var(--ink); cursor: pointer; }
+.chosen button { border-color: var(--accent); }
+.chosen .figure, .library .figure { width: var(--card-figure); height: var(--card-figure); }
+.library .sanskrit { font-size: var(--text-small); }
+.problems { color: var(--warning); padding-left: var(--gutter); }
+.note { color: var(--warning); font-size: var(--text-small); }
+.labels { position: absolute; inset: var(--none); pointer-events: none; overflow: hidden; }
+.label { position: absolute; left: var(--none); top: var(--none); transform: translate(calc(var(--x) * var(--pixel)), calc(var(--y) * var(--pixel))) translate(var(--centre), var(--centre)); display: flex; align-items: center; gap: var(--label-gap); padding: var(--label-pad); border-radius: var(--radius); background: var(--paper); color: var(--ink); border: var(--border-width) solid var(--line); font-size: var(--text-label); line-height: var(--label-leading); white-space: nowrap; }
+.label b, .marks b { display: inline-grid; place-items: center; min-width: var(--label-number); height: var(--label-number); border-radius: var(--radius); background: var(--mark-soft); color: var(--mark-ink); font-size: var(--text-number); }
+.label.degrees { padding: var(--degrees-pad); background: var(--mark); color: var(--mark-on); border-color: transparent; font-weight: bold; }
+.marks { list-style: none; padding: var(--none); margin: var(--gap) var(--none) var(--none); display: grid; gap: var(--gap-small); font-size: var(--text-small); }
+.marks li { display: flex; gap: var(--gap-small); align-items: baseline; }
+.marks b { flex: none; }

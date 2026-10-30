@@ -1,0 +1,43 @@
+# Written by trame ship from the graph, for the shipment "A preview" of apps/poselia
+# Do not edit: edit the graph, then ship.
+name: A preview
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+permissions:
+  contents: read
+jobs:
+  ship:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+        working-directory: "."
+      - run: npm ci
+        working-directory: std
+      - run: npm ci
+        working-directory: apps/poselia
+      - run: npx playwright install --with-deps chromium
+        working-directory: std
+      - run: "../../trame.sh ship Preview --by \"${{ github.actor }}\""
+        working-directory: apps/poselia
+      - id: delivered
+        uses: actions/upload-artifact@v4
+        with:
+          name: Preview
+          path: |
+            apps/poselia/dist/poselia.html
+          retention-days: 30
+      - run: "../../trame.sh evidence PageFile passed --by \"${{ github.actor }}\" --url \"${{ steps.delivered.outputs.artifact-url }}\""
+        working-directory: apps/poselia
+      - uses: actions/upload-artifact@v4
+        if: "always()"
+        with:
+          name: Preview-evidence
+          path: apps/poselia/evidence
+          retention-days: 90

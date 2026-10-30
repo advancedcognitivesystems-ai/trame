@@ -1,0 +1,52 @@
+[
+  {
+    "node": "stage.ThreePackage",
+    "at": "2026-10-26",
+    "source": "audit",
+    "value": 0
+  },
+  {
+    "node": "stage.ThreePackage",
+    "at": "2026-10-26",
+    "source": "outdated",
+    "value": 0,
+    "note": "0.186.1"
+  },
+  {
+    "node": "stage.ThreeTypes",
+    "at": "2026-10-26",
+    "source": "audit",
+    "value": 0
+  },
+  {
+    "node": "stage.ThreeTypes",
+    "at": "2026-10-26",
+    "source": "outdated",
+    "value": 0
+  },
+  {
+    "node": "stage.ThreePackage",
+    "at": "2026-10-29",
+    "source": "audit",
+    "value": 0
+  },
+  {
+    "node": "stage.ThreePackage",
+    "at": "2026-10-29",
+    "source": "outdated",
+    "value": 0,
+    "note": "0.186.1"
+  },
+  {
+    "node": "stage.ThreeTypes",
+    "at": "2026-10-29",
+    "source": "audit",
+    "value": 0
+  },
+  {
+    "node": "stage.ThreeTypes",
+    "at": "2026-10-29",
+    "source": "outdated",
+    "value": 0
+  }
+]

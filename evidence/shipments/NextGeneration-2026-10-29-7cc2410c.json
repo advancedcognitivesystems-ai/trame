@@ -1,0 +1,1872 @@
+{
+  "shipment": "sdlc.NextGeneration",
+  "title": "The next generation",
+  "target": "generation",
+  "at": "2026-10-29",
+  "by": "claude",
+  "signature": "attribution",
+  "artifacts": [
+    {
+      "node": "sdlc.EngineCandidate",
+      "path": "out/local/trame-cli.ts",
+      "fingerprint": "6c8242e8bccb9c58a44f387f517bf8cc3f2fa9a92988bbb88857b2ae8b1951df"
+    },
+    {
+      "node": "sdlc.GraphPage",
+      "path": "trame-page.html",
+      "fingerprint": "739713c55cb08b9fe054bf4be0e642da6062ef997dc30ee4176d5408cf13e50a"
+    },
+    {
+      "node": "sdlc.PageProgram",
+      "path": "out/browser/page-app.ts",
+      "fingerprint": "39bfb9c36d1fcfbe8dd06e2dcf4842718d8d083603eb17c4cd447c30ebcca4b8"
+    }
+  ],
+  "foundations": {
+    "problems": 0
+  },
+  "obligations": [
+    {
+      "node": "sdlc.EngineCandidate",
+      "kind": "artifact",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "sdlc.EngineCandidate",
+          "at": "2026-10-27",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "2ae911683fa467365551ed9208b2fe9d35c48f2ebb3a7430948cc958737539ec",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.EngineCandidate",
+          "at": "2026-10-28",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "a2e5ecb8888a5c4c2826a367e36f8a69342f82deaa98fd980c93bb69f64a595e",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.EngineCandidate",
+          "at": "2026-10-28",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "dda44a0139cc1a53df62f91f62fe33e28cd5336005e93a7e8e2fca4bd25ae131",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.EngineCandidate",
+          "at": "2026-10-28",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "d00856039869657e3a92620cad186200a840e0ef93b599f04b1fa0c92c378bb0",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.EngineCandidate",
+          "at": "2026-10-29",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "3542abcdeaa44ca3feffb62bb74e2654fdfaf582b814b51df5ee9ece7d3657bb",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.EngineCandidate",
+          "at": "2026-10-29",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "01b8183b2ed704259f2666b5bbfd4b216bb648948bd7d9ffabfc17d960282360",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.EngineCandidate",
+          "at": "2026-10-29",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "c987841483379b680132eb00a87948cb939f94ef2a264e1812fa4471c3dad8f2",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.EngineCandidate",
+          "at": "2026-10-29",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "6dbda9a343d5bcb04baaccfe9741c118815d499c95e48654795780cd07b9786f",
+          "code": "d19eb752",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.EngineCandidate",
+          "at": "2026-10-29",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "f8409826fc50e3fb5bc773ac47104972dc1966def3b3182762cc33a79c67e326",
+          "code": "722602b5",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.EngineCandidate",
+          "at": "2026-10-29",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "6c8242e8bccb9c58a44f387f517bf8cc3f2fa9a92988bbb88857b2ae8b1951df",
+          "code": "3f24f154",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "7892d9a176b6ca8f",
+          "seal": "eaa4dbb68e2aaa493633eb284289012fa69eba8928252cf0c159475d47027614"
+        }
+      ]
+    },
+    {
+      "node": "sdlc.GraphPage",
+      "kind": "artifact",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "sdlc.GraphPage",
+          "at": "2026-10-29",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "08aa1d66db2756cb40f94e7196655e566b521b894e3aa1d4057082ab248c2608",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.GraphPage",
+          "at": "2026-10-29",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "c890aa8c4cfcfdd85eaca45f775a2950fe95f423b5e16741512797df7dbc6219",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.GraphPage",
+          "at": "2026-10-29",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "29462fa438335ecfa34dd31b2df30494e36c7b154d020e4169a96ab657650d1d",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.GraphPage",
+          "at": "2026-10-29",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "185ea7e7a2493208fbca0995b7791ddddd2a82a932bfaaeabd89251129f9ee7e",
+          "code": "d1de2ee4",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.GraphPage",
+          "at": "2026-10-29",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "8dbba8adc5bb766af153124009cf2c6c8cf7970dd8a97ab41330ca1b4bfb9eb6",
+          "code": "668a7713",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.GraphPage",
+          "at": "2026-10-29",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "739713c55cb08b9fe054bf4be0e642da6062ef997dc30ee4176d5408cf13e50a",
+          "code": "9b1baaa9",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "7892d9a176b6ca8f",
+          "seal": "212c4688cf81949aae1f3f2ab9e373bc3e34e85b6feae827c676609466dbea7c"
+        }
+      ]
+    },
+    {
+      "node": "sdlc.PageProgram",
+      "kind": "artifact",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "sdlc.PageProgram",
+          "at": "2026-10-29",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "39bfb9c36d1fcfbe8dd06e2dcf4842718d8d083603eb17c4cd447c30ebcca4b8",
+          "code": "d3aa2d94",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "7892d9a176b6ca8f",
+          "seal": "a263c0fd97645bdd96e0c0f0088231e4a53ca6a31045a48136782c80ee5cee53"
+        }
+      ]
+    },
+    {
+      "node": "principles.EngineLayer",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "architecture.TrameCli"
+    },
+    {
+      "node": "principles.WordsInCatalogs",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "messages.PlatformMessages"
+    },
+    {
+      "node": "principles.LibrariesAreProjects",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "libraries.LibraryOfAModule"
+    },
+    {
+      "node": "principles.GraphInTypeScript",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "conventions.DocComment"
+    },
+    {
+      "node": "documents.PunctuationOfTheLanguage",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "messages.Language"
+    },
+    {
+      "node": "messages.CountsInTheLanguage",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "messages.Lists"
+    },
+    {
+      "node": "principles.KeysOfParts",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "engine.StaticAnalysis"
+    },
+    {
+      "node": "principles.LibrariesByName",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "engine.Project"
+    },
+    {
+      "node": "principles.NoKindInTheCore",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "engine.Project"
+    },
+    {
+      "node": "principles.VocabularyLayer",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "engine.Project"
+    },
+    {
+      "node": "principles.DataAsDatasets",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "engine.Fingerprints"
+    },
+    {
+      "node": "engine.TheLanguageReceivesTheGraph",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "engine.GraphApi"
+    },
+    {
+      "node": "principles.OneWayToRead",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "engine.GraphApi"
+    },
+    {
+      "node": "principles.EveryLiteralDeclared",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "syntax.SyntaxReader"
+    },
+    {
+      "node": "principles.NoLiteralInTheLanguage",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "syntax.SyntaxReader"
+    },
+    {
+      "node": "syntax.PredicatesAsTreeSitterReadsThem",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "syntax.SyntaxReader"
+    },
+    {
+      "node": "syntax.ReadLanguagesAlike",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "syntax.SyntaxReader"
+    },
+    {
+      "node": "principles.PreludeLayer",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "conventions.PreludeApi"
+    },
+    {
+      "node": "principles.NoHiddenDecision",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "syntax.BodyChecks"
+    },
+    {
+      "node": "languages.ReadBackWhatIsWritten",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "languages.Drivers"
+    },
+    {
+      "node": "principles.UndecidedBlocks",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "engine.Wiring"
+    },
+    {
+      "node": "principles.ChangesAreClaims",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "engine.Compiler"
+    },
+    {
+      "node": "principles.GraphLayer",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "engine.Compiler"
+    },
+    {
+      "node": "engine.LawsAreRequirements",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "engine.Laws"
+    },
+    {
+      "node": "principles.UnknownWithoutEvidence",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "engine.Laws"
+    },
+    {
+      "node": "principles.HistoryInTheSource",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "engine.Lock"
+    },
+    {
+      "node": "rendering.MeaningThenLook",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "rendering.Common"
+    },
+    {
+      "node": "principles.GenerationLayer",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "generations.AcceptCandidate"
+    },
+    {
+      "node": "principles.TrameBuildsTrame",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "generations.AcceptCandidate"
+    },
+    {
+      "node": "principles.OneOutputPerReader",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "engine.Assembly"
+    },
+    {
+      "node": "rendering.OneRendererManySyntaxes",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "rendering.FileRendering"
+    },
+    {
+      "node": "principles.DeliveredByTheGraph",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "delivery.DeliveredStyle"
+    },
+    {
+      "node": "page.StyleThroughVariables",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "page.Theme"
+    },
+    {
+      "node": "std/tooling.ToolingAsPorts",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "std/tooling.NodeProgramCommands"
+    },
+    {
+      "node": "browser.ThePageIsAssembled",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "browser.ExplorerFigures"
+    },
+    {
+      "node": "architecture.KnownEffects",
+      "kind": "rule",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureRuled",
+      "via": "architecture.KnownEffects"
+    },
+    {
+      "node": "architecture.OnlyCommandsWrite",
+      "kind": "rule",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureRuled",
+      "via": "architecture.OnlyCommandsWrite"
+    },
+    {
+      "node": "architecture.RenderingWithoutGraph",
+      "kind": "rule",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureRuled",
+      "via": "architecture.RenderingWithoutGraph"
+    },
+    {
+      "node": "sdlc.CandidateKeepsTheLaws",
+      "kind": "check",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "sdlc.CandidateKeepsTheLaws",
+          "at": "2026-10-27",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "b5b56e7d",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.CandidateKeepsTheLaws",
+          "at": "2026-10-28",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "7de8d08e",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.CandidateKeepsTheLaws",
+          "at": "2026-10-28",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "da0d9d7e",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.CandidateKeepsTheLaws",
+          "at": "2026-10-28",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "ab764b43",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.CandidateKeepsTheLaws",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "4b02460b",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.CandidateKeepsTheLaws",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "30e6588d",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.CandidateKeepsTheLaws",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "013d6291",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.CandidateKeepsTheLaws",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "36d0ab22",
+          "code": "ac7bfd14",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.CandidateKeepsTheLaws",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "fb0f4efe",
+          "code": "8fbc0ba3",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.CandidateKeepsTheLaws",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "8e8f4da2",
+          "code": "dadbec48",
+          "engine": "7892d9a176b6ca8f",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "7d16dceb430c3ed3a33b41b628407f51fdc5652cf2f91617ee0527f2752bf41a"
+        }
+      ],
+      "obligation": "sdlc.CandidateChecked",
+      "via": "sdlc.EngineCandidate"
+    },
+    {
+      "node": "sdlc.CandidateRunsOnTheMachine",
+      "kind": "check",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 0,
+          "fingerprint": "4b02460b",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 0,
+          "fingerprint": "30e6588d",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "013d6291",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "36d0ab22",
+          "code": "be80985f",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "fb0f4efe",
+          "code": "37f39c48",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "8e8f4da2",
+          "code": "3d338393",
+          "engine": "7892d9a176b6ca8f",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "a66b7e146585163f56940f181ddce0078430c37efd24ceb7188d9267a3aaca37"
+        }
+      ],
+      "obligation": "sdlc.CandidateChecked",
+      "via": "sdlc.EngineCandidate"
+    },
+    {
+      "node": "sdlc.GraphPageOpens",
+      "kind": "check",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 0,
+          "fingerprint": "d877bed6",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "e4b91282",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "091a29ef",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "646a5050",
+          "code": "cae603c5",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "4ce78061",
+          "code": "cae603c5",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "e75879e0",
+          "code": "cae603c5",
+          "engine": "7892d9a176b6ca8f",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "b2938c4b31f50451fced79f73cb04cd8fc04be877dbe0433d5ccc621b8318f61"
+        }
+      ],
+      "obligation": "sdlc.CandidateChecked",
+      "via": "sdlc.GraphPage"
+    },
+    {
+      "node": "packages.TsxPackage",
+      "kind": "package",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "packages.TsxPackage",
+          "at": "2026-10-23",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "packages.TsxPackage",
+          "at": "2026-10-23",
+          "source": "outdated",
+          "value": 0
+        },
+        {
+          "node": "packages.TsxPackage",
+          "at": "2026-10-29",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "packages.TsxPackage",
+          "at": "2026-10-29",
+          "source": "outdated",
+          "value": 0
+        }
+      ],
+      "obligation": "sdlc.EnginePackagesSafe",
+      "via": "platform.TsxLoader"
+    },
+    {
+      "node": "packages.TypeScriptPackage",
+      "kind": "package",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "packages.TypeScriptPackage",
+          "at": "2026-10-23",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "packages.TypeScriptPackage",
+          "at": "2026-10-23",
+          "source": "outdated",
+          "value": 0,
+          "note": "latest 7.0.2, held below 7.0.0"
+        },
+        {
+          "node": "packages.TypeScriptPackage",
+          "at": "2026-10-29",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "packages.TypeScriptPackage",
+          "at": "2026-10-29",
+          "source": "outdated",
+          "value": 0,
+          "note": "latest 7.0.2, held below 7.0.0"
+        }
+      ],
+      "obligation": "sdlc.EnginePackagesSafe",
+      "via": "platform.RealTypeScript"
+    },
+    {
+      "node": "packages.NodeTypes",
+      "kind": "package",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "packages.NodeTypes",
+          "at": "2026-10-23",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "packages.NodeTypes",
+          "at": "2026-10-23",
+          "source": "outdated",
+          "value": 0,
+          "note": "latest 26.6.5, held below 23.0.0"
+        },
+        {
+          "node": "packages.NodeTypes",
+          "at": "2026-10-29",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "packages.NodeTypes",
+          "at": "2026-10-29",
+          "source": "outdated",
+          "value": 0,
+          "note": "latest 26.6.6, held below 23.0.0"
+        }
+      ],
+      "obligation": "sdlc.EnginePackagesSafe",
+      "via": "platform.RealTypeScript"
+    },
+    {
+      "node": "packages.TypeScriptGrammar",
+      "kind": "package",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "packages.TypeScriptGrammar",
+          "at": "2026-10-23",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "packages.TypeScriptGrammar",
+          "at": "2026-10-23",
+          "source": "outdated",
+          "value": 0
+        },
+        {
+          "node": "packages.TypeScriptGrammar",
+          "at": "2026-10-29",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "packages.TypeScriptGrammar",
+          "at": "2026-10-29",
+          "source": "outdated",
+          "value": 0
+        }
+      ],
+      "obligation": "sdlc.EnginePackagesSafe",
+      "via": "typescript.TypeScript"
+    },
+    {
+      "node": "packages.WebTreeSitterPackage",
+      "kind": "package",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "packages.WebTreeSitterPackage",
+          "at": "2026-10-23",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "packages.WebTreeSitterPackage",
+          "at": "2026-10-23",
+          "source": "outdated",
+          "value": 0
+        },
+        {
+          "node": "packages.WebTreeSitterPackage",
+          "at": "2026-10-29",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "packages.WebTreeSitterPackage",
+          "at": "2026-10-29",
+          "source": "outdated",
+          "value": 0
+        }
+      ],
+      "obligation": "sdlc.EnginePackagesSafe",
+      "via": "platform.WebTreeSitter"
+    },
+    {
+      "node": "packages.CssGrammar",
+      "kind": "package",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "packages.CssGrammar",
+          "at": "2026-10-23",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "packages.CssGrammar",
+          "at": "2026-10-23",
+          "source": "outdated",
+          "value": 0
+        },
+        {
+          "node": "packages.CssGrammar",
+          "at": "2026-10-29",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "packages.CssGrammar",
+          "at": "2026-10-29",
+          "source": "outdated",
+          "value": 0
+        }
+      ],
+      "obligation": "sdlc.EnginePackagesSafe",
+      "via": "html.CssStyleSheets"
+    },
+    {
+      "node": "packages.HclGrammar",
+      "kind": "package",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "packages.HclGrammar",
+          "at": "2026-10-23",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "packages.HclGrammar",
+          "at": "2026-10-23",
+          "source": "outdated",
+          "value": 0
+        },
+        {
+          "node": "packages.HclGrammar",
+          "at": "2026-10-29",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "packages.HclGrammar",
+          "at": "2026-10-29",
+          "source": "outdated",
+          "value": 0
+        }
+      ],
+      "obligation": "sdlc.EnginePackagesSafe",
+      "via": "terraform.Terraform"
+    },
+    {
+      "node": "packages.EsbuildPackage",
+      "kind": "package",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "packages.EsbuildPackage",
+          "at": "2026-10-23",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "packages.EsbuildPackage",
+          "at": "2026-10-23",
+          "source": "outdated",
+          "value": 0
+        },
+        {
+          "node": "packages.EsbuildPackage",
+          "at": "2026-10-29",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "packages.EsbuildPackage",
+          "at": "2026-10-29",
+          "source": "outdated",
+          "value": 0
+        }
+      ],
+      "obligation": "sdlc.EnginePackagesSafe",
+      "via": "platform.Esbuild"
+    },
+    {
+      "node": "packages.HtmlGrammar",
+      "kind": "package",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "packages.HtmlGrammar",
+          "at": "2026-10-23",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "packages.HtmlGrammar",
+          "at": "2026-10-23",
+          "source": "outdated",
+          "value": 0
+        },
+        {
+          "node": "packages.HtmlGrammar",
+          "at": "2026-10-29",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "packages.HtmlGrammar",
+          "at": "2026-10-29",
+          "source": "outdated",
+          "value": 0
+        }
+      ],
+      "obligation": "sdlc.EnginePackagesSafe",
+      "via": "html.HtmlMarkup"
+    },
+    {
+      "node": "std/tooling.PlaywrightPackage",
+      "kind": "package",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "std/tooling.PlaywrightPackage",
+          "at": "2026-10-29",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "std/tooling.PlaywrightPackage",
+          "at": "2026-10-29",
+          "source": "outdated",
+          "value": 0,
+          "note": "1.64.1"
+        }
+      ],
+      "obligation": "sdlc.EnginePackagesSafe",
+      "via": "std/tooling.PlaywrightBrowser"
+    },
+    {
+      "node": "command-scenarios.CommandLineChooses",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "platform.NodeCommandLine",
+      "outcome": [
+        {
+          "name": "Nothing typed, or an option first, is the build",
+          "status": "passed"
+        },
+        {
+          "name": "\"adrs\" goes to the command that takes any word, with the names of the others",
+          "status": "passed"
+        },
+        {
+          "name": "Without such a command, \"nothing-named-so\" is refused",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.EngineReckons",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "engine.Cycles",
+      "outcome": [
+        {
+          "name": "A cycle is found once, where the search closes it",
+          "status": "passed"
+        },
+        {
+          "name": "The same seed draws the same numbers",
+          "status": "passed"
+        },
+        {
+          "name": "Another seed draws others",
+          "status": "passed"
+        },
+        {
+          "name": "An integer drawn between 1 and 6 stays between them",
+          "status": "passed"
+        },
+        {
+          "name": "A value has the same fingerprint whatever the order of its keys",
+          "status": "passed"
+        },
+        {
+          "name": "A value changed has another fingerprint",
+          "status": "passed"
+        },
+        {
+          "name": "engine.Compiler gives its module and its identifier",
+          "status": "passed"
+        },
+        {
+          "name": "std/algebra gives its library and its own name",
+          "status": "passed"
+        },
+        {
+          "name": "A line of the TypeScript API is written src/engine.ts:10",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.CompileExample",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "platform.TsxLoader",
+      "outcome": [
+        {
+          "name": "TypeScript accepts the example",
+          "status": "passed"
+        },
+        {
+          "name": "The example has 107 nodes, 3 scenarios among them",
+          "status": "passed"
+        },
+        {
+          "name": "No error in the example",
+          "status": "passed"
+        },
+        {
+          "name": "The scenarios of the example hold",
+          "status": "passed"
+        },
+        {
+          "name": "Loaded again, the example reads the same: what the compiler of TypeScript read is kept",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.ShipmentsRun",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "platform.NodeHashing",
+      "outcome": [
+        {
+          "name": "RunnersWritten: its files written by their writers, shipped, with a dossier",
+          "status": "passed"
+        },
+        {
+          "name": "What trame ship built carries the code it was made from",
+          "status": "passed"
+        },
+        {
+          "name": "Each record of evidence carries a seal that matches what it says",
+          "status": "passed"
+        },
+        {
+          "name": "A record changed by hand no longer matches its seal: it is not counted, and the compiler says which",
+          "status": "passed"
+        },
+        {
+          "name": "Preview, in a dry run: delivered, checked by its program, it would ship; no dossier",
+          "status": "passed"
+        },
+        {
+          "name": "trame evidence records OnAPhone, made by hand, attributed to whoever gives it",
+          "status": "passed"
+        },
+        {
+          "name": "someone-else, who is not of the role, is refused",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.DocumentWords",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "messages.Lists",
+      "outcome": [
+        {
+          "name": "A day is written 17 October 2026, short and as its month",
+          "status": "passed"
+        },
+        {
+          "name": "Items are joined as \"kinds, views and the prelude\"",
+          "status": "passed"
+        },
+        {
+          "name": "A duration is written in the largest unit it is a whole number of",
+          "status": "passed"
+        },
+        {
+          "name": "A ratio is written 50%, an amount CHF 20",
+          "status": "passed"
+        },
+        {
+          "name": "A character nobody sees is shown escaped; a plain text as it is",
+          "status": "passed"
+        },
+        {
+          "name": "The marks between parts are those of en-GB",
+          "status": "passed"
+        },
+        {
+          "name": "1.9.0 comes before 1.10.0",
+          "status": "passed"
+        },
+        {
+          "name": "The releases that break are counted by major version, by minor version before 1.0",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.BodiesReadAndChecked",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "platform.WebTreeSitter",
+      "outcome": [
+        {
+          "name": "The reader finds the 2 literals of a body, with their roles",
+          "status": "passed"
+        },
+        {
+          "name": "A body that imports ./limits is refused: a hidden dependency",
+          "status": "passed"
+        },
+        {
+          "name": "A body that reaches the platform through fetch is refused, unless its kind may touch it",
+          "status": "passed"
+        },
+        {
+          "name": "A file body that exports nothing is refused",
+          "status": "passed"
+        },
+        {
+          "name": "A text that does not follow the grammar is refused, with its places",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.ComponentAssembled",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "typescript.TypeScriptWriter",
+      "outcome": [
+        {
+          "name": "For Local, a program in TypeScript is written, nothing to provision",
+          "status": "passed"
+        },
+        {
+          "name": "For Production, its infrastructure is written in Terraform",
+          "status": "passed"
+        },
+        {
+          "name": "Without an environment, the assembly is refused and says how to ask for it",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.AdvanceInMemory",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "engine.EngineFingerprint",
+      "outcome": [
+        {
+          "name": "trame advance stops at the first build that fails",
+          "status": "passed"
+        },
+        {
+          "name": "The generation in place builds first",
+          "status": "passed"
+        },
+        {
+          "name": "The candidate is accepted (  ✓ trame-auto runs g72 |   ✓ reservations runs g72 | Advance succeeded.)",
+          "status": "passed"
+        },
+        {
+          "name": "With --promote, it is frozen as the next generation, its origin written, the pin moved",
+          "status": "passed"
+        },
+        {
+          "name": "The generation frozen records the fingerprint of its engine, the one its origin says",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.BuildLikeBefore",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "engine.CompilationApi",
+      "outcome": [
+        {
+          "name": "The build succeeds",
+          "status": "passed"
+        },
+        {
+          "name": "The summary is shown",
+          "status": "passed"
+        },
+        {
+          "name": "graph.json and snapshot.json are written as the engine in place wrote them",
+          "status": "passed"
+        },
+        {
+          "name": "24 documents in Markdown, figures included, as the engine in place wrote them",
+          "status": "passed"
+        },
+        {
+          "name": "26 files written, identical to those of the engine in place",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.KindLaws",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "engine.Laws",
+      "outcome": [
+        {
+          "name": "38 kinds out of 38 respect all their laws",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.LibraryReleased",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "generations.ReleaseRecords",
+      "outcome": [
+        {
+          "name": "In the example, where a value is still to decide, a release is refused",
+          "status": "passed"
+        },
+        {
+          "name": "In the library, 99.0.0 is frozen: its graph, its code, its documents",
+          "status": "passed"
+        },
+        {
+          "name": "Its record is written in the library's module of releases",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.PackagesAudited",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "commands.Audit",
+      "outcome": [
+        {
+          "name": "trame audit keeps 12 answers of the registry as evidence, none vulnerable",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.ViewsInTheTerminal",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "rendering.TextFigures",
+      "outcome": [
+        {
+          "name": "trame view adrs writes the view in plain text",
+          "status": "passed"
+        },
+        {
+          "name": "trame adrs writes the same",
+          "status": "passed"
+        },
+        {
+          "name": "A figure is drawn as text, Reservations API in it",
+          "status": "passed"
+        },
+        {
+          "name": "Asked in JSON, the view is the intermediate format",
+          "status": "passed"
+        },
+        {
+          "name": "\"nothing-named-so\", neither a command nor a view, is refused",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.PageOfTheGraph",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "platform.Esbuild",
+      "outcome": [
+        {
+          "name": "The page is titled \"Reservations graph\"",
+          "status": "passed"
+        },
+        {
+          "name": "The page carries the graph, packed",
+          "status": "passed"
+        },
+        {
+          "name": "As a fragment, the page leaves its document out",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.PageDelivered",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "commands.Deliver",
+      "outcome": [
+        {
+          "name": "trame deliver writes the page of PoseliaPage, one document",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.DevFollowsTheGraph",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "platform.NodeTimer",
+      "outcome": [
+        {
+          "name": "trame dev serves the page, titled after the project",
+          "status": "passed"
+        },
+        {
+          "name": "It serves the graph, at every date the engine compiled",
+          "status": "passed"
+        },
+        {
+          "name": "A file written under the project is seen; the graph, compiled again, is announced on the stream",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.PageExported",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "engine.DateBundle",
+      "outcome": [
+        {
+          "name": "The dates are compiled in a fresh process of the engine",
+          "status": "passed"
+        },
+        {
+          "name": "trame export writes trame-page.html, titled after the project",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.PayloadOfTheGraph",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "engine.Differences",
+      "outcome": [
+        {
+          "name": "The payload holds 107 nodes and 245 documents",
+          "status": "passed"
+        },
+        {
+          "name": "Each document is rendered in Markdown, in text and in HTML",
+          "status": "passed"
+        },
+        {
+          "name": "The figures of the HTML are drawn in SVG",
+          "status": "passed"
+        },
+        {
+          "name": "Two payloads alike differ in nothing",
+          "status": "passed"
+        },
+        {
+          "name": "A node removed, the difference says so",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.DoctorAsks",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "commands.Doctor",
+      "outcome": [
+        {
+          "name": "trame doctor asks 7 questions of the machine, and each is answered",
+          "status": "passed"
+        },
+        {
+          "name": "A program that does not print what it was given fails the doctor, which says so",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.DeclarationsPublished",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "commands.Publish",
+      "outcome": [
+        {
+          "name": "trame publish freezes 99 declarations in trame.lock",
+          "status": "passed"
+        },
+        {
+          "name": "Published again, nothing is new",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.ComponentRun",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "commands.Run",
+      "outcome": [
+        {
+          "name": "trame run runs the program it assembled",
+          "status": "passed"
+        },
+        {
+          "name": "It exits with the program's status, 3",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.SnapshotTaken",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "commands.TakeSnapshot",
+      "outcome": [
+        {
+          "name": "trame snapshot writes snapshot.json as the build of the engine in place wrote it",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.LawsTested",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "commands.TestKinds",
+      "outcome": [
+        {
+          "name": "trame test-kinds says the laws of each of the 38 kinds and 17 views hold",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.ManifestWritten",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "commands.WriteManifest",
+      "outcome": [
+        {
+          "name": "trame manifest writes where #std/* leads",
+          "status": "passed"
+        },
+        {
+          "name": "The link leads to the version of std the application pins",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "sdlc.OpeningTheGraphPage",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "sdlc.OpenTheGraphPage",
+      "outcome": [
+        {
+          "name": "A graph page that shows everything passes, and says so",
+          "status": "passed"
+        },
+        {
+          "name": "A graph page whose figure is not drawn, raising an error, fails and says why",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "generations.AcceptCandidate",
+      "kind": "requirement",
+      "status": "held",
+      "evidence": [],
+      "obligation": "sdlc.LanguageServed",
+      "via": "product.SeverityOrder"
+    },
+    {
+      "node": "product.SeverityOrder",
+      "kind": "requirement",
+      "status": "held",
+      "evidence": [],
+      "obligation": "sdlc.LanguageServed",
+      "via": "product.SeverityOrder"
+    },
+    {
+      "node": "shipping.ShipOnlyWhatHolds",
+      "kind": "requirement",
+      "status": "held",
+      "evidence": [],
+      "obligation": "sdlc.LanguageServed",
+      "via": "product.SeverityOrder"
+    },
+    {
+      "node": "libraries.LibraryOfAModule",
+      "kind": "requirement",
+      "status": "held",
+      "evidence": [],
+      "obligation": "sdlc.LanguageServed",
+      "via": "libraries.LibraryOfAModule"
+    },
+    {
+      "node": "libraries.ReleaseIsSettled",
+      "kind": "requirement",
+      "status": "held",
+      "evidence": [],
+      "obligation": "sdlc.LanguageServed",
+      "via": "libraries.LibraryOfAModule"
+    },
+    {
+      "node": "laws.AnswersWithoutCrashing",
+      "kind": "requirement",
+      "status": "held",
+      "evidence": [],
+      "obligation": "sdlc.LanguageServed",
+      "via": "laws.CompleteDeclaration"
+    },
+    {
+      "node": "laws.BlockingHoleHasOwner",
+      "kind": "requirement",
+      "status": "held",
+      "evidence": [],
+      "obligation": "sdlc.LanguageServed",
+      "via": "laws.CompleteDeclaration"
+    },
+    {
+      "node": "laws.ClosedResolution",
+      "kind": "requirement",
+      "status": "held",
+      "evidence": [],
+      "obligation": "sdlc.LanguageServed",
+      "via": "laws.CompleteDeclaration"
+    },
+    {
+      "node": "laws.CompleteDeclaration",
+      "kind": "requirement",
+      "status": "held",
+      "evidence": [],
+      "obligation": "sdlc.LanguageServed",
+      "via": "laws.CompleteDeclaration"
+    },
+    {
+      "node": "laws.CompleteViewDeclaration",
+      "kind": "requirement",
+      "status": "held",
+      "evidence": [],
+      "obligation": "sdlc.LanguageServed",
+      "via": "laws.CompleteDeclaration"
+    },
+    {
+      "node": "laws.IntermediateFormatOnly",
+      "kind": "requirement",
+      "status": "held",
+      "evidence": [],
+      "obligation": "sdlc.LanguageServed",
+      "via": "laws.CompleteDeclaration"
+    },
+    {
+      "node": "laws.SameInputSameAnswer",
+      "kind": "requirement",
+      "status": "held",
+      "evidence": [],
+      "obligation": "sdlc.LanguageServed",
+      "via": "laws.CompleteDeclaration"
+    },
+    {
+      "node": "laws.OrderFree",
+      "kind": "requirement",
+      "status": "held",
+      "evidence": [],
+      "obligation": "sdlc.LanguageServed",
+      "via": "laws.CompleteDeclaration"
+    },
+    {
+      "node": "laws.UnknownWithoutEvidence",
+      "kind": "requirement",
+      "status": "held",
+      "evidence": [],
+      "obligation": "sdlc.LanguageServed",
+      "via": "laws.CompleteDeclaration"
+    }
+  ],
+  "deployed": [
+    "commands.Advance"
+  ]
+}

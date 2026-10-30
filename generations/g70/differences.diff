@@ -1,0 +1,79 @@
+diff -ru /tmp/an2YsY/reference/reservations/graph.json /tmp/an2YsY/candidate/reservations/graph.json
+--- /tmp/an2YsY/reference/reservations/graph.json	2026-10-29 16:06:13.592910389 +0100
++++ /tmp/an2YsY/candidate/reservations/graph.json	2026-10-29 16:24:03.626436149 +0100
+@@ -1399,7 +1399,8 @@
+         "path": "out/local/reservations-api.ts"
+       },
+       "result": {
+-        "path": "out/local/reservations-api.ts"
++        "path": "out/local/reservations-api.ts",
++        "code": "fa44536c"
+       },
+       "diagnostics": [
+         "warning: Not built yet: trame ship builds it"
+@@ -1473,7 +1474,8 @@
+         "path": "out/production/reservations-api.ts"
+       },
+       "result": {
+-        "path": "out/production/reservations-api.ts"
++        "path": "out/production/reservations-api.ts",
++        "code": "49598004"
+       },
+       "diagnostics": [
+         "warning: Not built yet: trame ship builds it"
+diff -ru /tmp/an2YsY/reference/trame-auto/graph.json /tmp/an2YsY/candidate/trame-auto/graph.json
+--- /tmp/an2YsY/reference/trame-auto/graph.json	2026-10-29 16:13:29.333627992 +0100
++++ /tmp/an2YsY/candidate/trame-auto/graph.json	2026-10-29 16:32:15.133507379 +0100
+@@ -14656,7 +14656,9 @@
+       "fields": {
+         "owner": "trame"
+       },
+-      "result": {},
++      "result": {
++        "code": "ac7bfd14"
++      },
+       "diagnostics": []
+     },
+     {
+@@ -14668,7 +14670,9 @@
+       "fields": {
+         "owner": "trame"
+       },
+-      "result": {},
++      "result": {
++        "code": "be80985f"
++      },
+       "diagnostics": []
+     },
+     {
+@@ -14682,7 +14686,8 @@
+         "path": "out/local/trame-cli.ts"
+       },
+       "result": {
+-        "path": "out/local/trame-cli.ts"
++        "path": "out/local/trame-cli.ts",
++        "code": "d19eb752"
+       },
+       "diagnostics": []
+     },
+@@ -14735,7 +14740,8 @@
+         "media": "text/html; charset=utf-8"
+       },
+       "result": {
+-        "path": "trame-page.html"
++        "path": "trame-page.html",
++        "code": "d1de2ee4"
+       },
+       "diagnostics": []
+     },
+@@ -14761,7 +14767,9 @@
+       "fields": {
+         "owner": "trame"
+       },
+-      "result": {},
++      "result": {
++        "code": "cae603c5"
++      },
+       "diagnostics": []
+     },
+     {

@@ -1,0 +1,12 @@
+{
+  "published": {
+    "annulation.AnnulerSansStress": "30399bfbd51573ef",
+    "annulation.CriteresRemboursement": "c55ccc21d91cf523",
+    "annulation.DelaiGratuit": "f9628f0ec5346ae5",
+    "annulation.FraisTardifs": "7aa9e0a8ec9ff77d",
+    "annulation.PrestataireIdempotent": "5f4d07557c6fda91",
+    "annulation.RemboursementImmediat": "17f4c45b3e1339f2",
+    "annulation.Rembourser": "065c0d6bd7deaa66",
+    "juridique.PlafondFrais": "ae3a5952269ba962"
+  }
+}

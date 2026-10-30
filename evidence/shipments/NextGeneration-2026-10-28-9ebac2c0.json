@@ -1,0 +1,182 @@
+{
+  "shipment": "sdlc.NextGeneration",
+  "title": "The next generation",
+  "target": "generation",
+  "at": "2026-10-28",
+  "by": "claude",
+  "signature": "attribution",
+  "artifacts": [
+    {
+      "node": "sdlc.EngineCandidate",
+      "path": "out/local/trame-cli.ts",
+      "fingerprint": "a2e5ecb8888a5c4c2826a367e36f8a69342f82deaa98fd980c93bb69f64a595e"
+    }
+  ],
+  "obligations": [
+    {
+      "node": "sdlc.EngineCandidate",
+      "kind": "artifact",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "sdlc.EngineCandidate",
+          "at": "2026-10-27",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "2ae911683fa467365551ed9208b2fe9d35c48f2ebb3a7430948cc958737539ec",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.EngineCandidate",
+          "at": "2026-10-28",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "a2e5ecb8888a5c4c2826a367e36f8a69342f82deaa98fd980c93bb69f64a595e",
+          "by": "claude",
+          "signature": "attribution"
+        }
+      ]
+    },
+    {
+      "node": "architecture.KnownEffects",
+      "kind": "rule",
+      "status": "held",
+      "owner": "trame",
+      "evidence": []
+    },
+    {
+      "node": "architecture.OnlyCommandsWrite",
+      "kind": "rule",
+      "status": "held",
+      "owner": "trame",
+      "evidence": []
+    },
+    {
+      "node": "architecture.RenderingWithoutGraph",
+      "kind": "rule",
+      "status": "held",
+      "owner": "trame",
+      "evidence": []
+    },
+    {
+      "node": "generations.AcceptCandidate",
+      "kind": "requirement",
+      "status": "held",
+      "evidence": []
+    },
+    {
+      "node": "libraries.LibraryOfAModule",
+      "kind": "requirement",
+      "status": "held",
+      "evidence": []
+    },
+    {
+      "node": "libraries.ReleaseIsSettled",
+      "kind": "requirement",
+      "status": "held",
+      "evidence": []
+    },
+    {
+      "node": "product.SeverityOrder",
+      "kind": "requirement",
+      "status": "held",
+      "evidence": []
+    },
+    {
+      "node": "scenarios.BuildLikeBefore",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "outcome": [
+        {
+          "name": "The build succeeds",
+          "status": "passed"
+        },
+        {
+          "name": "The summary is shown",
+          "status": "passed"
+        },
+        {
+          "name": "25 files written, identical to those of the engine in place",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.CompileExample",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "outcome": [
+        {
+          "name": "TypeScript accepts the example",
+          "status": "passed"
+        },
+        {
+          "name": "The example has 94 nodes, 3 scenarios among them",
+          "status": "passed"
+        },
+        {
+          "name": "No error in the example",
+          "status": "passed"
+        },
+        {
+          "name": "The scenarios of the example hold",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.KindLaws",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "outcome": [
+        {
+          "name": "36 kinds out of 36 respect all their laws",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "sdlc.CandidateKeepsTheLaws",
+      "kind": "check",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "sdlc.CandidateKeepsTheLaws",
+          "at": "2026-10-27",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "b5b56e7d",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.CandidateKeepsTheLaws",
+          "at": "2026-10-28",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "7de8d08e",
+          "by": "claude",
+          "signature": "attribution"
+        }
+      ]
+    },
+    {
+      "node": "shipping.ShipOnlyWhatHolds",
+      "kind": "requirement",
+      "status": "held",
+      "evidence": []
+    }
+  ],
+  "deployed": [
+    "commands.Advance"
+  ]
+}

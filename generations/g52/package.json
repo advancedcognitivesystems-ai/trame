@@ -1,0 +1,30 @@
+{
+  "name": "trame-auto",
+  "version": "1.0.0",
+  "description": "Trame described by Trame: the engine is a graph, and Trame assembles it",
+  "scripts": {
+    "check": "tsc -p .",
+    "trame": "bash trame.sh",
+    "build": "bash trame.sh build",
+    "test-kinds": "bash trame.sh test-kinds",
+    "advance": "bash advance.sh",
+    "candidate": "tsx out/local/trame-cli.ts"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@tree-sitter-grammars/tree-sitter-hcl": "1.2.0",
+    "@types/node": "22.20.5",
+    "esbuild": "0.28.2",
+    "tree-sitter-css": "0.25.0",
+    "tree-sitter-html": "0.23.2",
+    "tree-sitter-typescript": "0.23.2",
+    "tsx": "4.23.15",
+    "typescript": "6.0.3",
+    "web-tree-sitter": "0.27.1"
+  },
+  "type": "module",
+  "imports": {
+    "#trame/internal": "./trame/internal.ts",
+    "#trame/kernel": "./trame/kernel.ts"
+  }
+}

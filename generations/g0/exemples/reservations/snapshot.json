@@ -1,0 +1,1093 @@
+{
+  "at": "2026-10-17",
+  "nodes": [
+    {
+      "id": "annulation.AnnulerSansStress",
+      "kind": "goal",
+      "title": "Annuler sans stress",
+      "fields": {}
+    },
+    {
+      "id": "annulation.CriteresRemboursement",
+      "kind": "acceptance",
+      "title": "Critères de remboursement",
+      "status": "tenu",
+      "fields": {
+        "owner": "lea",
+        "criteria": "(fonction)"
+      }
+    },
+    {
+      "id": "annulation.DelaiGratuit",
+      "kind": "decision",
+      "title": "Délai d'annulation gratuite",
+      "fields": {
+        "owner": "lea",
+        "value": {
+          "rapide": 300,
+          "normale": 600,
+          "ultra": 900
+        },
+        "review": "2027-03",
+        "range": [
+          300,
+          1200
+        ],
+        "rejected": {
+          "30 min": "bloque les bornes aux heures de pointe"
+        }
+      }
+    },
+    {
+      "id": "annulation.FraisTardifs",
+      "kind": "decision",
+      "title": "Frais d'annulation tardive",
+      "fields": {
+        "owner": "lea",
+        "value": 0.5,
+        "rejected": {
+          "100 %": "perçu comme punitif"
+        }
+      }
+    },
+    {
+      "id": "annulation.PrestataireIdempotent",
+      "kind": "assumption",
+      "title": "Prestataire idempotent",
+      "status": "inconnu",
+      "fields": {
+        "owner": "karim",
+        "expires": "2026-12-01"
+      }
+    },
+    {
+      "id": "annulation.RemboursementImmediat",
+      "kind": "slo",
+      "title": "Remboursement immédiat",
+      "status": "inconnu",
+      "fields": {
+        "owner": "karim",
+        "signal": "refunds.initiated.latency",
+        "percentile": 99,
+        "threshold": 2,
+        "window": 3600
+      }
+    },
+    {
+      "id": "annulation.Rembourser",
+      "kind": "requirement",
+      "title": "Remboursement à l'annulation",
+      "status": "tenu",
+      "fields": {
+        "rule": "(fonction)"
+      }
+    },
+    {
+      "id": "api.AnnulerReservation",
+      "kind": "entry",
+      "title": "Annuler une réservation",
+      "status": "tenu",
+      "fields": {
+        "owner": "karim",
+        "declencheur": {
+          "type": "http",
+          "methode": "POST",
+          "chemin": "/reservations/:id/annulation"
+        },
+        "deps": {
+          "reservations": "architecture.LectureReservations",
+          "annulations": "architecture.Annulations",
+          "paiement": "architecture.Paiement",
+          "avance": "api.AvanceAvant",
+          "rembourser": "(fonction)"
+        },
+        "body": {
+          "file": "./code/annuler-reservation.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
+      "id": "api.AvanceAvant",
+      "kind": "function",
+      "title": "Avance d'une annulation",
+      "status": "inconnu",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "horloge": "architecture.Horloge"
+        },
+        "body": "(fonction)"
+      }
+    },
+    {
+      "id": "api.FinGratuite",
+      "kind": "function",
+      "title": "Fin de l'annulation gratuite",
+      "status": "inconnu",
+      "fields": {
+        "owner": "lea",
+        "deps": {
+          "delai": "annulation.DelaiGratuit"
+        },
+        "body": "(fonction)",
+        "synchrone": true
+      }
+    },
+    {
+      "id": "api.LireReservation",
+      "kind": "entry",
+      "title": "Lire une réservation",
+      "status": "tenu",
+      "fields": {
+        "owner": "karim",
+        "declencheur": {
+          "type": "http",
+          "methode": "GET",
+          "chemin": "/reservations/:id"
+        },
+        "deps": {
+          "reservations": "architecture.LectureReservations",
+          "finGratuite": "api.FinGratuite"
+        },
+        "body": {
+          "file": "./code/lire-reservation.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
+      "id": "architecture.Annulations",
+      "kind": "port",
+      "title": "Enregistrement des annulations",
+      "fields": {
+        "owner": "karim",
+        "effets": [
+          "lecture",
+          "écriture",
+          "asynchrone"
+        ]
+      }
+    },
+    {
+      "id": "architecture.ApiReservations",
+      "kind": "component",
+      "title": "API réservations",
+      "fields": {
+        "owner": "karim",
+        "langage": "typescript",
+        "deps": {
+          "exposition": "architecture.ExpositionHttp"
+        }
+      }
+    },
+    {
+      "id": "architecture.Base",
+      "kind": "port",
+      "title": "Base de données",
+      "fields": {
+        "owner": "karim",
+        "effets": [
+          "lecture",
+          "écriture",
+          "asynchrone"
+        ]
+      }
+    },
+    {
+      "id": "architecture.BaseEnLecture",
+      "kind": "port",
+      "title": "Base en lecture",
+      "fields": {
+        "owner": "karim",
+        "effets": [
+          "lecture",
+          "asynchrone"
+        ]
+      }
+    },
+    {
+      "id": "architecture.ExpositionHttp",
+      "kind": "port",
+      "title": "Exposition HTTP",
+      "fields": {
+        "owner": "karim",
+        "effets": [
+          "réseau",
+          "asynchrone"
+        ]
+      }
+    },
+    {
+      "id": "architecture.Horloge",
+      "kind": "port",
+      "title": "Horloge",
+      "fields": {
+        "owner": "karim",
+        "effets": [
+          "temps"
+        ]
+      }
+    },
+    {
+      "id": "architecture.JournalPaiements",
+      "kind": "port",
+      "title": "Journal des paiements",
+      "fields": {
+        "owner": "karim",
+        "effets": []
+      }
+    },
+    {
+      "id": "architecture.LectureReservations",
+      "kind": "port",
+      "title": "Lecture des réservations",
+      "fields": {
+        "owner": "karim",
+        "effets": [
+          "lecture",
+          "asynchrone"
+        ]
+      }
+    },
+    {
+      "id": "architecture.LectureSansEcriture",
+      "kind": "rule",
+      "title": "Une lecture n'écrit rien",
+      "status": "tenu",
+      "fields": {
+        "owner": "karim",
+        "check": "(fonction)"
+      }
+    },
+    {
+      "id": "architecture.Paiement",
+      "kind": "port",
+      "title": "Prestataire de paiement",
+      "fields": {
+        "owner": "karim",
+        "effets": [
+          "réseau",
+          "tiers",
+          "asynchrone"
+        ]
+      }
+    },
+    {
+      "id": "architecture.PortHttp",
+      "kind": "decision",
+      "title": "Port HTTP de l'API",
+      "fields": {
+        "owner": "karim",
+        "value": 4180
+      }
+    },
+    {
+      "id": "architecture.TiersVerifies",
+      "kind": "rule",
+      "title": "Tout appel à un tiers est vérifié",
+      "status": "tenu",
+      "fields": {
+        "owner": "karim",
+        "check": "(fonction)"
+      }
+    },
+    {
+      "id": "architecture.UtilitairesSansMonde",
+      "kind": "rule",
+      "title": "Les utilitaires ne touchent pas le monde",
+      "status": "tenu",
+      "fields": {
+        "owner": "karim",
+        "check": "(fonction)"
+      }
+    },
+    {
+      "id": "infra.AnnulationsSql",
+      "kind": "implementation",
+      "title": "Annulations en SQL",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "base": "architecture.Base"
+        },
+        "body": {
+          "file": "./code/annulations-sql.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
+      "id": "infra.BaseFichier",
+      "kind": "implementation",
+      "title": "Base SQLite locale",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "chemin": "infra.CheminBaseLocale",
+          "schema": "infra.SchemaReservations",
+          "reservations": "infra.ReservationsInitiales"
+        },
+        "body": {
+          "file": "./code/base-sqlite.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
+      "id": "infra.BaseMemoire",
+      "kind": "implementation",
+      "title": "Base SQLite en mémoire",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "chemin": "infra.CheminBaseTest",
+          "schema": "infra.SchemaReservations",
+          "reservations": "infra.ReservationsInitiales"
+        },
+        "body": {
+          "file": "./code/base-sqlite.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
+      "id": "infra.BasePostgres",
+      "kind": "implementation",
+      "title": "Base Postgres de production",
+      "fields": {
+        "owner": "karim",
+        "body": {
+          "file": "./code/base-postgres.ts",
+          "language": "typescript"
+        },
+        "variables": {
+          "nom": "infra.NomBase",
+          "taille": "infra.TailleBase",
+          "sauvegardes_jours": "infra.RetentionSauvegardes"
+        },
+        "provision": {
+          "file": "./infra/base-postgres",
+          "language": "hcl"
+        }
+      }
+    },
+    {
+      "id": "infra.CheminBaseLocale",
+      "kind": "decision",
+      "title": "Fichier de la base locale",
+      "fields": {
+        "owner": "karim",
+        "value": ".donnees/reservations.db"
+      }
+    },
+    {
+      "id": "infra.CheminBaseTest",
+      "kind": "decision",
+      "title": "Base de test",
+      "fields": {
+        "owner": "karim",
+        "value": ":memory:"
+      }
+    },
+    {
+      "id": "infra.HorlogeArretee",
+      "kind": "implementation",
+      "title": "Horloge arrêtée",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "instant": "infra.InstantDeTest"
+        },
+        "body": "(fonction)"
+      }
+    },
+    {
+      "id": "infra.HorlogeSysteme",
+      "kind": "implementation",
+      "title": "Horloge du système",
+      "fields": {
+        "owner": "karim",
+        "body": "(fonction)"
+      }
+    },
+    {
+      "id": "infra.InstantDeTest",
+      "kind": "decision",
+      "title": "Instant de test",
+      "fields": {
+        "owner": "karim",
+        "value": "2026-10-20T10:00:00.000Z"
+      }
+    },
+    {
+      "id": "infra.Local",
+      "kind": "environment",
+      "title": "Local",
+      "fields": {
+        "owner": "karim"
+      }
+    },
+    {
+      "id": "infra.NomBase",
+      "kind": "decision",
+      "title": "Nom de la base de production",
+      "fields": {
+        "owner": "karim",
+        "value": "reservations"
+      }
+    },
+    {
+      "id": "infra.PaiementHttp",
+      "kind": "implementation",
+      "title": "Prestataire réel",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "url": "infra.UrlPrestataire"
+        },
+        "body": {
+          "file": "./code/paiement-http.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
+      "id": "infra.PaiementSimule",
+      "kind": "implementation",
+      "title": "Prestataire simulé",
+      "fields": {
+        "owner": "karim",
+        "body": "(fonction)"
+      }
+    },
+    {
+      "id": "infra.Production",
+      "kind": "environment",
+      "title": "Production",
+      "fields": {
+        "owner": "karim"
+      }
+    },
+    {
+      "id": "infra.ReservationsInitiales",
+      "kind": "decision",
+      "title": "Réservations initiales",
+      "fields": {
+        "owner": "karim",
+        "value": [
+          {
+            "id": "R1",
+            "borne": "normale",
+            "prix": 20,
+            "debut": "2026-10-20T12:00:00.000Z",
+            "statut": "active"
+          },
+          {
+            "id": "R2",
+            "borne": "rapide",
+            "prix": 30,
+            "debut": "2026-10-20T10:04:00.000Z",
+            "statut": "active"
+          },
+          {
+            "id": "R3",
+            "borne": "ultra",
+            "prix": 40,
+            "debut": "2026-10-20T11:00:00.000Z",
+            "statut": "active"
+          }
+        ]
+      }
+    },
+    {
+      "id": "infra.ReservationsSql",
+      "kind": "implementation",
+      "title": "Réservations en SQL",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "base": "architecture.BaseEnLecture"
+        },
+        "body": {
+          "file": "./code/reservations-sql.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
+      "id": "infra.RetentionSauvegardes",
+      "kind": "decision",
+      "title": "Rétention des sauvegardes",
+      "fields": {
+        "owner": "karim",
+        "value": 7,
+        "range": [
+          7,
+          35
+        ]
+      }
+    },
+    {
+      "id": "infra.SchemaReservations",
+      "kind": "function",
+      "title": "Schéma des réservations",
+      "status": "inconnu",
+      "fields": {
+        "owner": "karim",
+        "body": "(fonction)",
+        "synchrone": true
+      }
+    },
+    {
+      "id": "infra.ServeurNode",
+      "kind": "implementation",
+      "title": "Serveur HTTP Node",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "port": "architecture.PortHttp"
+        },
+        "body": {
+          "file": "./code/serveur-node.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
+      "id": "infra.TailleBase",
+      "kind": "decision",
+      "title": "Taille de la base de production",
+      "fields": {
+        "owner": "karim",
+        "value": {
+          "cpu": 2,
+          "memoire_go": 4
+        }
+      }
+    },
+    {
+      "id": "infra.Test",
+      "kind": "environment",
+      "title": "Test",
+      "fields": {
+        "owner": "karim"
+      }
+    },
+    {
+      "id": "infra.UrlPrestataire",
+      "kind": "decision",
+      "title": "Adresse du prestataire de paiement",
+      "fields": {
+        "owner": "karim",
+        "value": "https://paiements.example.com/v1"
+      }
+    },
+    {
+      "id": "juridique.PlafondFrais",
+      "kind": "decision",
+      "title": "Plafond légal des frais d'annulation",
+      "fields": {
+        "owner": "karim",
+        "value": "TODO"
+      }
+    },
+    {
+      "id": "scenarios.ScenarioAnnulationRepetee",
+      "kind": "scenario",
+      "title": "Annuler deux fois ne rembourse qu'une fois",
+      "status": "tenu",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "annuler": "api.AnnulerReservation",
+          "journal": "architecture.JournalPaiements",
+          "rembourser": "(fonction)",
+          "initiales": "infra.ReservationsInitiales",
+          "instant": "infra.InstantDeTest"
+        },
+        "body": "(fonction)"
+      }
+    },
+    {
+      "id": "scenarios.ScenarioConformite",
+      "kind": "scenario",
+      "title": "Chaque réservation est remboursée selon la règle",
+      "status": "tenu",
+      "fields": {
+        "owner": "lea",
+        "deps": {
+          "annuler": "api.AnnulerReservation",
+          "rembourser": "(fonction)",
+          "initiales": "infra.ReservationsInitiales",
+          "instant": "infra.InstantDeTest"
+        },
+        "body": "(fonction)"
+      }
+    },
+    {
+      "id": "scenarios.ScenarioLecture",
+      "kind": "scenario",
+      "title": "Lire une réservation",
+      "status": "tenu",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "lire": "api.LireReservation",
+          "initiales": "infra.ReservationsInitiales",
+          "delai": "annulation.DelaiGratuit"
+        },
+        "body": "(fonction)"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "from": "annulation.CriteresRemboursement",
+      "to": "annulation.Rembourser",
+      "kind": "accepts"
+    },
+    {
+      "from": "annulation.FraisTardifs",
+      "to": "juridique.PlafondFrais",
+      "kind": "bounded"
+    },
+    {
+      "from": "annulation.RemboursementImmediat",
+      "to": "annulation.Rembourser",
+      "kind": "constrains"
+    },
+    {
+      "from": "annulation.Rembourser",
+      "to": "annulation.AnnulerSansStress",
+      "kind": "refines"
+    },
+    {
+      "from": "annulation.Rembourser",
+      "to": "annulation.PrestataireIdempotent",
+      "kind": "assumes"
+    },
+    {
+      "from": "api.AnnulerReservation",
+      "to": "annulation.Rembourser",
+      "kind": "serves"
+    },
+    {
+      "from": "api.AnnulerReservation",
+      "to": "architecture.ApiReservations",
+      "kind": "in"
+    },
+    {
+      "from": "api.AnnulerReservation",
+      "to": "architecture.LectureReservations",
+      "kind": "deps"
+    },
+    {
+      "from": "api.AnnulerReservation",
+      "to": "architecture.Annulations",
+      "kind": "deps"
+    },
+    {
+      "from": "api.AnnulerReservation",
+      "to": "architecture.Paiement",
+      "kind": "deps"
+    },
+    {
+      "from": "api.AnnulerReservation",
+      "to": "api.AvanceAvant",
+      "kind": "deps"
+    },
+    {
+      "from": "api.AnnulerReservation",
+      "to": "annulation.Rembourser",
+      "kind": "deps"
+    },
+    {
+      "from": "api.AvanceAvant",
+      "to": "architecture.Horloge",
+      "kind": "deps"
+    },
+    {
+      "from": "api.FinGratuite",
+      "to": "annulation.Rembourser",
+      "kind": "serves"
+    },
+    {
+      "from": "api.FinGratuite",
+      "to": "annulation.DelaiGratuit",
+      "kind": "deps"
+    },
+    {
+      "from": "api.LireReservation",
+      "to": "annulation.AnnulerSansStress",
+      "kind": "serves"
+    },
+    {
+      "from": "api.LireReservation",
+      "to": "architecture.ApiReservations",
+      "kind": "in"
+    },
+    {
+      "from": "api.LireReservation",
+      "to": "architecture.LectureReservations",
+      "kind": "deps"
+    },
+    {
+      "from": "api.LireReservation",
+      "to": "api.FinGratuite",
+      "kind": "deps"
+    },
+    {
+      "from": "architecture.ApiReservations",
+      "to": "architecture.ExpositionHttp",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.AnnulationsSql",
+      "to": "architecture.Annulations",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.AnnulationsSql",
+      "to": "infra.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.AnnulationsSql",
+      "to": "infra.Local",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.AnnulationsSql",
+      "to": "infra.Production",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.AnnulationsSql",
+      "to": "architecture.Base",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.BaseFichier",
+      "to": "architecture.Base",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.BaseFichier",
+      "to": "architecture.BaseEnLecture",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.BaseFichier",
+      "to": "infra.Local",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.BaseFichier",
+      "to": "infra.CheminBaseLocale",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.BaseFichier",
+      "to": "infra.SchemaReservations",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.BaseFichier",
+      "to": "infra.ReservationsInitiales",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.BaseMemoire",
+      "to": "architecture.Base",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.BaseMemoire",
+      "to": "architecture.BaseEnLecture",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.BaseMemoire",
+      "to": "infra.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.BaseMemoire",
+      "to": "infra.CheminBaseTest",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.BaseMemoire",
+      "to": "infra.SchemaReservations",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.BaseMemoire",
+      "to": "infra.ReservationsInitiales",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.BasePostgres",
+      "to": "architecture.Base",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.BasePostgres",
+      "to": "architecture.BaseEnLecture",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.BasePostgres",
+      "to": "infra.Production",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.BasePostgres",
+      "to": "infra.NomBase",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.BasePostgres",
+      "to": "infra.TailleBase",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.BasePostgres",
+      "to": "infra.RetentionSauvegardes",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.HorlogeArretee",
+      "to": "architecture.Horloge",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.HorlogeArretee",
+      "to": "infra.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.HorlogeArretee",
+      "to": "infra.InstantDeTest",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.HorlogeSysteme",
+      "to": "architecture.Horloge",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.HorlogeSysteme",
+      "to": "infra.Local",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.HorlogeSysteme",
+      "to": "infra.Production",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.PaiementHttp",
+      "to": "architecture.Paiement",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.PaiementHttp",
+      "to": "infra.Production",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.PaiementHttp",
+      "to": "infra.UrlPrestataire",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.PaiementSimule",
+      "to": "architecture.Paiement",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.PaiementSimule",
+      "to": "architecture.JournalPaiements",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.PaiementSimule",
+      "to": "infra.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.PaiementSimule",
+      "to": "infra.Local",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.ReservationsSql",
+      "to": "architecture.LectureReservations",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.ReservationsSql",
+      "to": "infra.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.ReservationsSql",
+      "to": "infra.Local",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.ReservationsSql",
+      "to": "infra.Production",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.ReservationsSql",
+      "to": "architecture.BaseEnLecture",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.ServeurNode",
+      "to": "architecture.ExpositionHttp",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.ServeurNode",
+      "to": "infra.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.ServeurNode",
+      "to": "infra.Local",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.ServeurNode",
+      "to": "infra.Production",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.ServeurNode",
+      "to": "architecture.PortHttp",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ScenarioAnnulationRepetee",
+      "to": "api.AnnulerReservation",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.ScenarioAnnulationRepetee",
+      "to": "infra.Test",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.ScenarioAnnulationRepetee",
+      "to": "api.AnnulerReservation",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ScenarioAnnulationRepetee",
+      "to": "architecture.JournalPaiements",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ScenarioAnnulationRepetee",
+      "to": "annulation.Rembourser",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ScenarioAnnulationRepetee",
+      "to": "infra.ReservationsInitiales",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ScenarioAnnulationRepetee",
+      "to": "infra.InstantDeTest",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ScenarioConformite",
+      "to": "api.AnnulerReservation",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.ScenarioConformite",
+      "to": "annulation.Rembourser",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.ScenarioConformite",
+      "to": "infra.Test",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.ScenarioConformite",
+      "to": "api.AnnulerReservation",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ScenarioConformite",
+      "to": "annulation.Rembourser",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ScenarioConformite",
+      "to": "infra.ReservationsInitiales",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ScenarioConformite",
+      "to": "infra.InstantDeTest",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ScenarioLecture",
+      "to": "api.LireReservation",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.ScenarioLecture",
+      "to": "infra.Test",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.ScenarioLecture",
+      "to": "api.LireReservation",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ScenarioLecture",
+      "to": "infra.ReservationsInitiales",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ScenarioLecture",
+      "to": "annulation.DelaiGratuit",
+      "kind": "deps"
+    },
+    {
+      "from": "annulation.CriteresRemboursement",
+      "to": "annulation.DelaiGratuit",
+      "kind": "uses"
+    },
+    {
+      "from": "annulation.Rembourser",
+      "to": "annulation.DelaiGratuit",
+      "kind": "uses"
+    },
+    {
+      "from": "annulation.Rembourser",
+      "to": "annulation.FraisTardifs",
+      "kind": "uses"
+    }
+  ],
+  "open": [
+    {
+      "node": "juridique.PlafondFrais",
+      "what": "Décider « Plafond légal des frais d'annulation »",
+      "owner": "karim"
+    }
+  ]
+}

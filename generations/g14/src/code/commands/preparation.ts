@@ -1,0 +1,149 @@
+// What all commands share: reading the options, checking and compiling the project, refusing cleanly.
+// It started as a port of the bootstrap's command line (trame/cli.ts): same options, same order of checks.
+
+import type { Compilation, Document, ProvidedBy, Severity, View } from "../../../trame/kernel"
+import type { Clock, Process, Terminal } from "../../architecture"
+import type { CommandMessages } from "../../messages"
+import type { Api as CompilerApi, Compiled, Loaded } from "../engine/compiler"
+import type { Api as CompilationApi } from "../engine/compilation-api"
+import type { Api as LawsApi, KindReport } from "../engine/laws"
+import type { Api as ViewsApi, ViewFailure } from "../engine/views"
+import type { Api as LockApi } from "../engine/lock"
+import type { Api as CommonApi } from "../rendering/common"
+
+export interface Deps {
+  compiler: CompilerApi
+  compilationApi: CompilationApi
+  laws: LawsApi
+  views: ViewsApi
+  lock: LockApi
+  common: CommonApi
+  terminal: Terminal
+  currentProcess: Process
+  clock: Clock
+  /** The sort of problems: the rule of the requirement "Sort problems by severity". */
+  severityOrder: (severity: Severity) => number
+  devPort: number
+  /** The status the command returns to the system (POSIX). */
+  exitStatus: { success: number; failure: number }
+  messages: ProvidedBy<typeof CommandMessages>
+}
+
+export interface Options {
+  root: string
+  command: string
+  /** --at YYYY-MM-DD: the graph as it is (or will be) in force on that date. */
+  today: string
+  format?: string
+  port: number
+  fragment: boolean
+  envName?: string
+  all: boolean
+  /** What remains once the options are read. */
+  args: string[]
+}
+
+export type Ctx = { c: Compiled; comp: Compilation }
+
+const body = (deps: Deps) => {
+  const { load, compileAt, loadKinds } = deps.compiler
+  const { makeCompilation } = deps.compilationApi
+  const { checkKinds, checkImports } = deps.laws
+  const { loadViews, runViews, checkViewDecls } = deps.views
+  const { checkLock, readLock } = deps.lock
+  const { locate } = deps.common
+  const { terminal, messages } = deps
+
+  function options(command: string, raw: string[]): Options {
+    const argv = [...raw]
+    const take = (flag: string) => {
+      const i = argv.indexOf(flag)
+      return i >= 0 ? argv.splice(i, 2)[1] : undefined
+    }
+    const has = (flag: string) => {
+      const i = argv.indexOf(flag)
+      return i >= 0 ? (argv.splice(i, 1), true) : false
+    }
+    const today = take("--at") ?? deps.clock.today()
+    const format = take("--format")
+    const port = Number(take("--port") ?? deps.devPort)
+    const fragment = has("--fragment")
+    const envName = take("--env")
+    const all = has("--all")
+    return { root: deps.currentProcess.cwd(), command, today, format, port, fragment, envName, all, args: argv }
+  }
+
+  const pad = (s: string, n: number) => s + " ".repeat(Math.max(1, n - s.length))
+
+  function printLaws(reports: KindReport[], verbose: boolean) {
+    const failed = reports.filter((r) => r.failures.length)
+    if (verbose) {
+      terminal.write(messages.kindLaws(reports.length, reports[0]?.samples ?? 0))
+      for (const r of reports) {
+        if (!r.failures.length) {
+          terminal.write("  " + pad(r.kind.name, 14) + messages.lawsHold())
+          continue
+        }
+        r.failures.forEach((f, i) => {
+          terminal.write("  " + pad(i === 0 ? r.kind.name : "", 14) + messages.lawFailed(f.law))
+          terminal.write("  " + pad("", 16) + messages.lawCounterexample(f.example, f.count))
+        })
+      }
+    }
+    return failed
+  }
+
+  /** Refuses (exit status failure): on the error output for `payload`, otherwise on the standard output. */
+  function refuse(o: Options, lines: string[]): never {
+    for (const l of lines) (o.command === "payload" ? terminal.error : terminal.write)(l)
+    return terminal.exit(deps.exitStatus.failure)
+  }
+
+  let loaded: Loaded | undefined
+
+  /** Imports, laws of kinds and views, TypeScript, compilation, trame.lock. */
+  async function prepare(o: Options): Promise<Ctx> {
+    await loadKinds(o.root)
+    await loadViews(o.root)
+    const imports = checkImports(o.root)
+    const kindsRefused = printLaws(checkKinds(o.today), false)
+    const viewsRefused = checkViewDecls()
+    if (imports.length || kindsRefused.length || viewsRefused.length) {
+      refuse(o, [
+        ...imports.map((i) => messages.importRefused(i)),
+        ...kindsRefused.map((r) => messages.kindRefused(r.kind.name, r.failures.map((f) => f.law))),
+        ...viewsRefused.map((f) => messages.viewRefused(f.view, f.law, f.example)),
+        ...(kindsRefused.length ? [messages.kindLawDetails()] : []),
+      ])
+    }
+    loaded = await load(o.root)
+    if (loaded.typeErrors.length) refuse(o, [messages.typeScriptRefuses(), ...loaded.typeErrors.map((e) => `  ${e}`)])
+    return await at(o, o.today)
+  }
+
+  /** Compiles the already loaded graph at a date, with trame.lock. */
+  async function at(o: Options, date: string): Promise<Ctx> {
+    const c = await compileAt(loaded!, date)
+    const lockIssues = checkLock(c, o.root)
+    c.diags.push(...lockIssues)
+    c.diags.sort((a, b) => deps.severityOrder(a.severity) - deps.severityOrder(b.severity))
+    const published = new Set(Object.keys(readLock(o.root).published))
+    c.published = published
+    c.lockIssues = lockIssues
+    return { c, comp: makeCompilation(c, { published, lockIssues, views: deps.views.sortedViews() }) }
+  }
+
+  function views(o: Options, comp: Compilation): Document[] {
+    const { documents, failures } = runViews(comp)
+    if (failures.length) refuse(o, failures.map((f: ViewFailure) => messages.viewRefused(f.view, f.law, f.example)))
+    return documents
+  }
+
+  const markdownContext = (docs: Document[]) => ({ locate: locate(docs), files: new Map(docs.map((d) => [d.id, d.file])) })
+
+  return { options, pad, printLaws, refuse, prepare, at, views, markdownContext }
+}
+
+export type Api = ReturnType<typeof body>
+export type { View }
+export default body

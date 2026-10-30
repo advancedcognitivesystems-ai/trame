@@ -1,0 +1,24 @@
+diff -ru ex0/docs/couches.md ex1/docs/couches.md
+--- ex0/docs/couches.md	2026-10-17 17:22:10.490240102 +0200
++++ ex1/docs/couches.md	2026-10-17 17:22:45.050882290 +0200
+@@ -172,7 +172,7 @@
+   classDef violé fill:#f9e3e1,stroke:#ad2a22,color:#17202a
+   classDef inconnu fill:#e9edf0,stroke:#65707c,color:#17202a
+   classDef neutre fill:#ffffff,stroke:#5a6672,color:#17202a
+-  style n24,n25,n26,n53 stroke-dasharray: 4 3
++  style n24,n25,n26,n53 stroke-dasharray:4 3
+   style n25 opacity:0.5
+ ```
+ 
+diff -ru ex0/docs/recoupements.md ex1/docs/recoupements.md
+--- ex0/docs/recoupements.md	2026-10-17 17:22:10.490348794 +0200
++++ ex1/docs/recoupements.md	2026-10-17 17:22:45.050905807 +0200
+@@ -19,7 +19,7 @@
+   classDef violé fill:#f9e3e1,stroke:#ad2a22,color:#17202a
+   classDef inconnu fill:#e9edf0,stroke:#65707c,color:#17202a
+   classDef neutre fill:#ffffff,stroke:#5a6672,color:#17202a
+-  style n1,n2,n3 stroke-dasharray: 4 3
++  style n1,n2,n3 stroke-dasharray:4 3
+ ```
+ 
+ > Recoupement sur `value.ultra` de [Délai d'annulation gratuite](annulation.md#DelaiGratuit), entre [Délai des bornes ultra](comite.md#DelaiUltra) et [Délai ultra demandé par le support](support.md#DelaiUltraSupport) : [Délai des bornes ultra](comite.md#DelaiUltra) l'emporte (validé par lea, responsable de « Délai d'annulation gratuite » ; voir [Validation du délai ultra](comite.md#ValidationDelaiUltra)).

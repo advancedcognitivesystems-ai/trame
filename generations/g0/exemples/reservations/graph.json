@@ -1,0 +1,1388 @@
+{
+  "generated": "2026-10-17",
+  "nodes": [
+    {
+      "id": "annulation.AnnulerSansStress",
+      "kind": "goal",
+      "title": "Annuler sans stress",
+      "source": "src/annulation.ts:16",
+      "fields": {},
+      "diagnostics": []
+    },
+    {
+      "id": "annulation.CriteresRemboursement",
+      "kind": "acceptance",
+      "title": "Critères de remboursement",
+      "source": "src/annulation.ts:75",
+      "status": "tenu",
+      "fields": {
+        "owner": "lea",
+        "criteria": "(fonction)"
+      },
+      "result": [
+        {
+          "name": "Annuler deux heures avant ne coûte rien",
+          "status": "validé"
+        },
+        {
+          "name": "Pile sur le délai, le conducteur est remboursé",
+          "status": "validé"
+        },
+        {
+          "name": "Quatre minutes avant, il paie les frais tardifs",
+          "status": "validé"
+        },
+        {
+          "name": "Sur une borne rapide, six minutes avant suffisent",
+          "status": "validé"
+        },
+        {
+          "name": "Sur une borne ultra, quinze minutes avant suffisent",
+          "status": "validé"
+        },
+        {
+          "name": "Jamais plus que le prix payé",
+          "status": "validé"
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "annulation.DelaiGratuit",
+      "kind": "decision",
+      "title": "Délai d'annulation gratuite",
+      "source": "src/annulation.ts:25",
+      "fields": {
+        "owner": "lea",
+        "value": {
+          "rapide": 300,
+          "normale": 600,
+          "ultra": 900
+        },
+        "review": "2027-03",
+        "range": [
+          300,
+          1200
+        ],
+        "rejected": {
+          "30 min": "bloque les bornes aux heures de pointe"
+        }
+      },
+      "amendedBy": [
+        {
+          "by": "comite.DelaiUltra",
+          "paths": [
+            "value.ultra"
+          ]
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "annulation.FraisTardifs",
+      "kind": "decision",
+      "title": "Frais d'annulation tardive",
+      "source": "src/annulation.ts:37",
+      "fields": {
+        "owner": "lea",
+        "value": 0.5,
+        "rejected": {
+          "100 %": "perçu comme punitif"
+        }
+      },
+      "diagnostics": [
+        "avertissement: Plafond non vérifiable : « Plafond légal des frais d'annulation » n'est pas décidé"
+      ]
+    },
+    {
+      "id": "annulation.PrestataireIdempotent",
+      "kind": "assumption",
+      "title": "Prestataire idempotent",
+      "source": "src/annulation.ts:48",
+      "status": "inconnu",
+      "fields": {
+        "owner": "karim",
+        "expires": "2026-12-01"
+      },
+      "diagnostics": [
+        "avertissement: Vérifier l'hypothèse avant le 1er décembre 2026 (dans 45 jours)"
+      ]
+    },
+    {
+      "id": "annulation.RemboursementImmediat",
+      "kind": "slo",
+      "title": "Remboursement immédiat",
+      "source": "src/annulation.ts:65",
+      "status": "inconnu",
+      "fields": {
+        "owner": "karim",
+        "signal": "refunds.initiated.latency",
+        "percentile": 99,
+        "threshold": 2,
+        "window": 3600
+      },
+      "diagnostics": [
+        "avertissement: Aucune mesure de production branchée"
+      ]
+    },
+    {
+      "id": "annulation.Rembourser",
+      "kind": "requirement",
+      "title": "Remboursement à l'annulation",
+      "source": "src/annulation.ts:54",
+      "status": "tenu",
+      "fields": {
+        "rule": "(fonction)"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "api.AnnulerReservation",
+      "kind": "entry",
+      "title": "Annuler une réservation",
+      "source": "src/api.ts:48",
+      "status": "tenu",
+      "fields": {
+        "owner": "karim",
+        "declencheur": {
+          "type": "http",
+          "methode": "POST",
+          "chemin": "/reservations/:id/annulation"
+        },
+        "deps": {
+          "reservations": "architecture.LectureReservations",
+          "annulations": "architecture.Annulations",
+          "paiement": "architecture.Paiement",
+          "avance": "api.AvanceAvant",
+          "rembourser": "(fonction)"
+        },
+        "body": {
+          "file": "./code/annuler-reservation.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "api.AvanceAvant",
+      "kind": "function",
+      "title": "Avance d'une annulation",
+      "source": "src/api.ts:25",
+      "status": "inconnu",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "horloge": "architecture.Horloge"
+        },
+        "body": "(fonction)"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "api.FinGratuite",
+      "kind": "function",
+      "title": "Fin de l'annulation gratuite",
+      "source": "src/api.ts:13",
+      "status": "inconnu",
+      "fields": {
+        "owner": "lea",
+        "deps": {
+          "delai": "annulation.DelaiGratuit"
+        },
+        "body": "(fonction)",
+        "synchrone": true
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "api.LireReservation",
+      "kind": "entry",
+      "title": "Lire une réservation",
+      "source": "src/api.ts:35",
+      "status": "tenu",
+      "fields": {
+        "owner": "karim",
+        "declencheur": {
+          "type": "http",
+          "methode": "GET",
+          "chemin": "/reservations/:id"
+        },
+        "deps": {
+          "reservations": "architecture.LectureReservations",
+          "finGratuite": "api.FinGratuite"
+        },
+        "body": {
+          "file": "./code/lire-reservation.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "architecture.Annulations",
+      "kind": "port",
+      "title": "Enregistrement des annulations",
+      "source": "src/architecture.ts:71",
+      "fields": {
+        "owner": "karim",
+        "effets": [
+          "lecture",
+          "écriture",
+          "asynchrone"
+        ]
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "architecture.ApiReservations",
+      "kind": "component",
+      "title": "API réservations",
+      "source": "src/architecture.ts:106",
+      "fields": {
+        "owner": "karim",
+        "langage": "typescript",
+        "deps": {
+          "exposition": "architecture.ExpositionHttp"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "architecture.Base",
+      "kind": "port",
+      "title": "Base de données",
+      "source": "src/architecture.ts:53",
+      "fields": {
+        "owner": "karim",
+        "effets": [
+          "lecture",
+          "écriture",
+          "asynchrone"
+        ]
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "architecture.BaseEnLecture",
+      "kind": "port",
+      "title": "Base en lecture",
+      "source": "src/architecture.ts:59",
+      "fields": {
+        "owner": "karim",
+        "effets": [
+          "lecture",
+          "asynchrone"
+        ]
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "architecture.ExpositionHttp",
+      "kind": "port",
+      "title": "Exposition HTTP",
+      "source": "src/architecture.ts:95",
+      "fields": {
+        "owner": "karim",
+        "effets": [
+          "réseau",
+          "asynchrone"
+        ]
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "architecture.Horloge",
+      "kind": "port",
+      "title": "Horloge",
+      "source": "src/architecture.ts:89",
+      "fields": {
+        "owner": "karim",
+        "effets": [
+          "temps"
+        ]
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "architecture.JournalPaiements",
+      "kind": "port",
+      "title": "Journal des paiements",
+      "source": "src/architecture.ts:83",
+      "fields": {
+        "owner": "karim",
+        "effets": []
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "architecture.LectureReservations",
+      "kind": "port",
+      "title": "Lecture des réservations",
+      "source": "src/architecture.ts:65",
+      "fields": {
+        "owner": "karim",
+        "effets": [
+          "lecture",
+          "asynchrone"
+        ]
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "architecture.LectureSansEcriture",
+      "kind": "rule",
+      "title": "Une lecture n'écrit rien",
+      "source": "src/architecture.ts:118",
+      "status": "tenu",
+      "fields": {
+        "owner": "karim",
+        "check": "(fonction)"
+      },
+      "result": [],
+      "diagnostics": []
+    },
+    {
+      "id": "architecture.Paiement",
+      "kind": "port",
+      "title": "Prestataire de paiement",
+      "source": "src/architecture.ts:77",
+      "fields": {
+        "owner": "karim",
+        "effets": [
+          "réseau",
+          "tiers",
+          "asynchrone"
+        ]
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "architecture.PortHttp",
+      "kind": "decision",
+      "title": "Port HTTP de l'API",
+      "source": "src/architecture.ts:100",
+      "fields": {
+        "owner": "karim",
+        "value": 4180
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "architecture.TiersVerifies",
+      "kind": "rule",
+      "title": "Tout appel à un tiers est vérifié",
+      "source": "src/architecture.ts:141",
+      "status": "tenu",
+      "fields": {
+        "owner": "karim",
+        "check": "(fonction)"
+      },
+      "result": [],
+      "diagnostics": []
+    },
+    {
+      "id": "architecture.UtilitairesSansMonde",
+      "kind": "rule",
+      "title": "Les utilitaires ne touchent pas le monde",
+      "source": "src/architecture.ts:130",
+      "status": "tenu",
+      "fields": {
+        "owner": "karim",
+        "check": "(fonction)"
+      },
+      "result": [],
+      "diagnostics": []
+    },
+    {
+      "id": "comite.DelaiUltra",
+      "kind": "amendment",
+      "title": "Délai des bornes ultra",
+      "source": "src/comite.ts:12",
+      "fields": {
+        "owner": "lea",
+        "why": "décidé au comité produit du 15 octobre",
+        "from": "2026-10-15",
+        "patch": {
+          "value": {
+            "ultra": 900
+          }
+        }
+      },
+      "active": true,
+      "diagnostics": []
+    },
+    {
+      "id": "comite.LancementUltra",
+      "kind": "amendment",
+      "title": "Lancement des bornes ultra",
+      "source": "src/comite.ts:29",
+      "fields": {
+        "owner": "lea",
+        "why": "promotion de lancement des bornes ultra",
+        "from": "2026-11-01",
+        "until": "2026-12-31",
+        "patch": {
+          "rule": "(fonction)"
+        }
+      },
+      "active": false,
+      "diagnostics": []
+    },
+    {
+      "id": "comite.ValidationDelaiUltra",
+      "kind": "approval",
+      "title": "Validation du délai ultra",
+      "source": "src/comite.ts:19",
+      "fields": {
+        "owner": "lea",
+        "why": "comité produit du 15 octobre, après la demande du support"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "infra.AnnulationsSql",
+      "kind": "implementation",
+      "title": "Annulations en SQL",
+      "source": "src/infra.ts:150",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "base": "architecture.Base"
+        },
+        "body": {
+          "file": "./code/annulations-sql.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "infra.BaseFichier",
+      "kind": "implementation",
+      "title": "Base SQLite locale",
+      "source": "src/infra.ts:114",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "chemin": "infra.CheminBaseLocale",
+          "schema": "infra.SchemaReservations",
+          "reservations": "infra.ReservationsInitiales"
+        },
+        "body": {
+          "file": "./code/base-sqlite.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "infra.BaseMemoire",
+      "kind": "implementation",
+      "title": "Base SQLite en mémoire",
+      "source": "src/infra.ts:102",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "chemin": "infra.CheminBaseTest",
+          "schema": "infra.SchemaReservations",
+          "reservations": "infra.ReservationsInitiales"
+        },
+        "body": {
+          "file": "./code/base-sqlite.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "infra.BasePostgres",
+      "kind": "implementation",
+      "title": "Base Postgres de production",
+      "source": "src/infra.ts:126",
+      "fields": {
+        "owner": "karim",
+        "body": {
+          "file": "./code/base-postgres.ts",
+          "language": "typescript"
+        },
+        "variables": {
+          "nom": "infra.NomBase",
+          "taille": "infra.TailleBase",
+          "sauvegardes_jours": "infra.RetentionSauvegardes"
+        },
+        "provision": {
+          "file": "./infra/base-postgres",
+          "language": "hcl"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "infra.CheminBaseLocale",
+      "kind": "decision",
+      "title": "Fichier de la base locale",
+      "source": "src/infra.ts:60",
+      "fields": {
+        "owner": "karim",
+        "value": ".donnees/reservations.db"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "infra.CheminBaseTest",
+      "kind": "decision",
+      "title": "Base de test",
+      "source": "src/infra.ts:55",
+      "fields": {
+        "owner": "karim",
+        "value": ":memory:"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "infra.HorlogeArretee",
+      "kind": "implementation",
+      "title": "Horloge arrêtée",
+      "source": "src/infra.ts:172",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "instant": "infra.InstantDeTest"
+        },
+        "body": "(fonction)"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "infra.HorlogeSysteme",
+      "kind": "implementation",
+      "title": "Horloge du système",
+      "source": "src/infra.ts:161",
+      "fields": {
+        "owner": "karim",
+        "body": "(fonction)"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "infra.InstantDeTest",
+      "kind": "decision",
+      "title": "Instant de test",
+      "source": "src/infra.ts:50",
+      "fields": {
+        "owner": "karim",
+        "value": "2026-10-20T10:00:00.000Z"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "infra.Local",
+      "kind": "environment",
+      "title": "Local",
+      "source": "src/infra.ts:24",
+      "fields": {
+        "owner": "karim"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "infra.NomBase",
+      "kind": "decision",
+      "title": "Nom de la base de production",
+      "source": "src/infra.ts:65",
+      "fields": {
+        "owner": "karim",
+        "value": "reservations"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "infra.PaiementHttp",
+      "kind": "implementation",
+      "title": "Prestataire réel",
+      "source": "src/infra.ts:208",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "url": "infra.UrlPrestataire"
+        },
+        "body": {
+          "file": "./code/paiement-http.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "infra.PaiementSimule",
+      "kind": "implementation",
+      "title": "Prestataire simulé",
+      "source": "src/infra.ts:184",
+      "fields": {
+        "owner": "karim",
+        "body": "(fonction)"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "infra.Production",
+      "kind": "environment",
+      "title": "Production",
+      "source": "src/infra.ts:29",
+      "fields": {
+        "owner": "karim"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "infra.ReservationsInitiales",
+      "kind": "decision",
+      "title": "Réservations initiales",
+      "source": "src/infra.ts:37",
+      "fields": {
+        "owner": "karim",
+        "value": [
+          {
+            "id": "R1",
+            "borne": "normale",
+            "prix": 20,
+            "debut": "2026-10-20T12:00:00.000Z",
+            "statut": "active"
+          },
+          {
+            "id": "R2",
+            "borne": "rapide",
+            "prix": 30,
+            "debut": "2026-10-20T10:04:00.000Z",
+            "statut": "active"
+          },
+          {
+            "id": "R3",
+            "borne": "ultra",
+            "prix": 40,
+            "debut": "2026-10-20T11:00:00.000Z",
+            "statut": "active"
+          }
+        ]
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "infra.ReservationsSql",
+      "kind": "implementation",
+      "title": "Réservations en SQL",
+      "source": "src/infra.ts:138",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "base": "architecture.BaseEnLecture"
+        },
+        "body": {
+          "file": "./code/reservations-sql.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "infra.RetentionSauvegardes",
+      "kind": "decision",
+      "title": "Rétention des sauvegardes",
+      "source": "src/infra.ts:76",
+      "fields": {
+        "owner": "karim",
+        "value": 7,
+        "range": [
+          7,
+          35
+        ]
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "infra.SchemaReservations",
+      "kind": "function",
+      "title": "Schéma des réservations",
+      "source": "src/infra.ts:89",
+      "status": "inconnu",
+      "fields": {
+        "owner": "karim",
+        "body": "(fonction)",
+        "synchrone": true
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "infra.ServeurNode",
+      "kind": "implementation",
+      "title": "Serveur HTTP Node",
+      "source": "src/infra.ts:219",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "port": "architecture.PortHttp"
+        },
+        "body": {
+          "file": "./code/serveur-node.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "infra.TailleBase",
+      "kind": "decision",
+      "title": "Taille de la base de production",
+      "source": "src/infra.ts:70",
+      "fields": {
+        "owner": "karim",
+        "value": {
+          "cpu": 2,
+          "memoire_go": 4
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "infra.Test",
+      "kind": "environment",
+      "title": "Test",
+      "source": "src/infra.ts:18",
+      "fields": {
+        "owner": "karim"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "infra.UrlPrestataire",
+      "kind": "decision",
+      "title": "Adresse du prestataire de paiement",
+      "source": "src/infra.ts:81",
+      "fields": {
+        "owner": "karim",
+        "value": "https://paiements.example.com/v1"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "juridique.PlafondFrais",
+      "kind": "decision",
+      "title": "Plafond légal des frais d'annulation",
+      "source": "src/juridique.ts:10",
+      "fields": {
+        "owner": "karim",
+        "value": "TODO"
+      },
+      "diagnostics": [
+        "bloquant: Décider « Plafond légal des frais d'annulation »"
+      ]
+    },
+    {
+      "id": "scenarios.ScenarioAnnulationRepetee",
+      "kind": "scenario",
+      "title": "Annuler deux fois ne rembourse qu'une fois",
+      "source": "src/scenarios.ts:30",
+      "status": "tenu",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "annuler": "api.AnnulerReservation",
+          "journal": "architecture.JournalPaiements",
+          "rembourser": "(fonction)",
+          "initiales": "infra.ReservationsInitiales",
+          "instant": "infra.InstantDeTest"
+        },
+        "body": "(fonction)"
+      },
+      "result": [
+        {
+          "name": "La première annulation rembourse selon la règle",
+          "status": "validé"
+        },
+        {
+          "name": "La seconde rend le même remboursement",
+          "status": "validé"
+        },
+        {
+          "name": "Le prestataire n'est appelé qu'une fois",
+          "status": "validé"
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "scenarios.ScenarioConformite",
+      "kind": "scenario",
+      "title": "Chaque réservation est remboursée selon la règle",
+      "source": "src/scenarios.ts:51",
+      "status": "tenu",
+      "fields": {
+        "owner": "lea",
+        "deps": {
+          "annuler": "api.AnnulerReservation",
+          "rembourser": "(fonction)",
+          "initiales": "infra.ReservationsInitiales",
+          "instant": "infra.InstantDeTest"
+        },
+        "body": "(fonction)"
+      },
+      "result": [
+        {
+          "name": "R1 (normale, 120 min avant) : 20 CHF",
+          "status": "validé"
+        },
+        {
+          "name": "R2 (rapide, 4 min avant) : 15 CHF",
+          "status": "validé"
+        },
+        {
+          "name": "R3 (ultra, 60 min avant) : 40 CHF",
+          "status": "validé"
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "scenarios.ScenarioLecture",
+      "kind": "scenario",
+      "title": "Lire une réservation",
+      "source": "src/scenarios.ts:12",
+      "status": "tenu",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "lire": "api.LireReservation",
+          "initiales": "infra.ReservationsInitiales",
+          "delai": "annulation.DelaiGratuit"
+        },
+        "body": "(fonction)"
+      },
+      "result": [
+        {
+          "name": "Une réservation existante est rendue",
+          "status": "validé"
+        },
+        {
+          "name": "Avec la fin de l'annulation gratuite",
+          "status": "validé"
+        },
+        {
+          "name": "Une réservation inconnue rend 404",
+          "status": "validé"
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "support.DelaiUltraSupport",
+      "kind": "amendment",
+      "title": "Délai ultra demandé par le support",
+      "source": "src/support.ts:11",
+      "fields": {
+        "owner": "karim",
+        "why": "plaintes reçues par le support",
+        "from": "2026-10-10",
+        "patch": {
+          "value": {
+            "ultra": 720
+          }
+        }
+      },
+      "active": true,
+      "diagnostics": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "annulation.CriteresRemboursement",
+      "to": "annulation.Rembourser",
+      "kind": "accepts"
+    },
+    {
+      "from": "annulation.FraisTardifs",
+      "to": "juridique.PlafondFrais",
+      "kind": "bounded"
+    },
+    {
+      "from": "annulation.RemboursementImmediat",
+      "to": "annulation.Rembourser",
+      "kind": "constrains"
+    },
+    {
+      "from": "annulation.Rembourser",
+      "to": "annulation.AnnulerSansStress",
+      "kind": "refines"
+    },
+    {
+      "from": "annulation.Rembourser",
+      "to": "annulation.PrestataireIdempotent",
+      "kind": "assumes"
+    },
+    {
+      "from": "api.AnnulerReservation",
+      "to": "annulation.Rembourser",
+      "kind": "serves"
+    },
+    {
+      "from": "api.AnnulerReservation",
+      "to": "architecture.ApiReservations",
+      "kind": "in"
+    },
+    {
+      "from": "api.AnnulerReservation",
+      "to": "architecture.LectureReservations",
+      "kind": "deps"
+    },
+    {
+      "from": "api.AnnulerReservation",
+      "to": "architecture.Annulations",
+      "kind": "deps"
+    },
+    {
+      "from": "api.AnnulerReservation",
+      "to": "architecture.Paiement",
+      "kind": "deps"
+    },
+    {
+      "from": "api.AnnulerReservation",
+      "to": "api.AvanceAvant",
+      "kind": "deps"
+    },
+    {
+      "from": "api.AnnulerReservation",
+      "to": "annulation.Rembourser",
+      "kind": "deps"
+    },
+    {
+      "from": "api.AvanceAvant",
+      "to": "architecture.Horloge",
+      "kind": "deps"
+    },
+    {
+      "from": "api.FinGratuite",
+      "to": "annulation.Rembourser",
+      "kind": "serves"
+    },
+    {
+      "from": "api.FinGratuite",
+      "to": "annulation.DelaiGratuit",
+      "kind": "deps"
+    },
+    {
+      "from": "api.LireReservation",
+      "to": "annulation.AnnulerSansStress",
+      "kind": "serves"
+    },
+    {
+      "from": "api.LireReservation",
+      "to": "architecture.ApiReservations",
+      "kind": "in"
+    },
+    {
+      "from": "api.LireReservation",
+      "to": "architecture.LectureReservations",
+      "kind": "deps"
+    },
+    {
+      "from": "api.LireReservation",
+      "to": "api.FinGratuite",
+      "kind": "deps"
+    },
+    {
+      "from": "architecture.ApiReservations",
+      "to": "architecture.ExpositionHttp",
+      "kind": "deps"
+    },
+    {
+      "from": "comite.DelaiUltra",
+      "to": "annulation.DelaiGratuit",
+      "kind": "amends"
+    },
+    {
+      "from": "comite.LancementUltra",
+      "to": "annulation.Rembourser",
+      "kind": "amends",
+      "active": false
+    },
+    {
+      "from": "comite.ValidationDelaiUltra",
+      "to": "comite.DelaiUltra",
+      "kind": "approves"
+    },
+    {
+      "from": "infra.AnnulationsSql",
+      "to": "architecture.Annulations",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.AnnulationsSql",
+      "to": "infra.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.AnnulationsSql",
+      "to": "infra.Local",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.AnnulationsSql",
+      "to": "infra.Production",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.AnnulationsSql",
+      "to": "architecture.Base",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.BaseFichier",
+      "to": "architecture.Base",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.BaseFichier",
+      "to": "architecture.BaseEnLecture",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.BaseFichier",
+      "to": "infra.Local",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.BaseFichier",
+      "to": "infra.CheminBaseLocale",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.BaseFichier",
+      "to": "infra.SchemaReservations",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.BaseFichier",
+      "to": "infra.ReservationsInitiales",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.BaseMemoire",
+      "to": "architecture.Base",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.BaseMemoire",
+      "to": "architecture.BaseEnLecture",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.BaseMemoire",
+      "to": "infra.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.BaseMemoire",
+      "to": "infra.CheminBaseTest",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.BaseMemoire",
+      "to": "infra.SchemaReservations",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.BaseMemoire",
+      "to": "infra.ReservationsInitiales",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.BasePostgres",
+      "to": "architecture.Base",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.BasePostgres",
+      "to": "architecture.BaseEnLecture",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.BasePostgres",
+      "to": "infra.Production",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.BasePostgres",
+      "to": "infra.NomBase",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.BasePostgres",
+      "to": "infra.TailleBase",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.BasePostgres",
+      "to": "infra.RetentionSauvegardes",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.HorlogeArretee",
+      "to": "architecture.Horloge",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.HorlogeArretee",
+      "to": "infra.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.HorlogeArretee",
+      "to": "infra.InstantDeTest",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.HorlogeSysteme",
+      "to": "architecture.Horloge",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.HorlogeSysteme",
+      "to": "infra.Local",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.HorlogeSysteme",
+      "to": "infra.Production",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.PaiementHttp",
+      "to": "architecture.Paiement",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.PaiementHttp",
+      "to": "infra.Production",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.PaiementHttp",
+      "to": "infra.UrlPrestataire",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.PaiementSimule",
+      "to": "architecture.Paiement",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.PaiementSimule",
+      "to": "architecture.JournalPaiements",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.PaiementSimule",
+      "to": "infra.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.PaiementSimule",
+      "to": "infra.Local",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.ReservationsSql",
+      "to": "architecture.LectureReservations",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.ReservationsSql",
+      "to": "infra.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.ReservationsSql",
+      "to": "infra.Local",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.ReservationsSql",
+      "to": "infra.Production",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.ReservationsSql",
+      "to": "architecture.BaseEnLecture",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.ServeurNode",
+      "to": "architecture.ExpositionHttp",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.ServeurNode",
+      "to": "infra.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.ServeurNode",
+      "to": "infra.Local",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.ServeurNode",
+      "to": "infra.Production",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.ServeurNode",
+      "to": "architecture.PortHttp",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ScenarioAnnulationRepetee",
+      "to": "api.AnnulerReservation",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.ScenarioAnnulationRepetee",
+      "to": "infra.Test",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.ScenarioAnnulationRepetee",
+      "to": "api.AnnulerReservation",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ScenarioAnnulationRepetee",
+      "to": "architecture.JournalPaiements",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ScenarioAnnulationRepetee",
+      "to": "annulation.Rembourser",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ScenarioAnnulationRepetee",
+      "to": "infra.ReservationsInitiales",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ScenarioAnnulationRepetee",
+      "to": "infra.InstantDeTest",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ScenarioConformite",
+      "to": "api.AnnulerReservation",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.ScenarioConformite",
+      "to": "annulation.Rembourser",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.ScenarioConformite",
+      "to": "infra.Test",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.ScenarioConformite",
+      "to": "api.AnnulerReservation",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ScenarioConformite",
+      "to": "annulation.Rembourser",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ScenarioConformite",
+      "to": "infra.ReservationsInitiales",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ScenarioConformite",
+      "to": "infra.InstantDeTest",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ScenarioLecture",
+      "to": "api.LireReservation",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.ScenarioLecture",
+      "to": "infra.Test",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.ScenarioLecture",
+      "to": "api.LireReservation",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ScenarioLecture",
+      "to": "infra.ReservationsInitiales",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ScenarioLecture",
+      "to": "annulation.DelaiGratuit",
+      "kind": "deps"
+    },
+    {
+      "from": "support.DelaiUltraSupport",
+      "to": "annulation.DelaiGratuit",
+      "kind": "amends"
+    },
+    {
+      "from": "annulation.CriteresRemboursement",
+      "to": "annulation.DelaiGratuit",
+      "kind": "uses",
+      "inferred": true
+    },
+    {
+      "from": "annulation.Rembourser",
+      "to": "annulation.DelaiGratuit",
+      "kind": "uses",
+      "inferred": true
+    },
+    {
+      "from": "annulation.Rembourser",
+      "to": "annulation.FraisTardifs",
+      "kind": "uses",
+      "inferred": true
+    },
+    {
+      "from": "comite.DelaiUltra",
+      "to": "support.DelaiUltraSupport",
+      "kind": "overlaps",
+      "derived": true
+    }
+  ],
+  "resolutions": [
+    {
+      "target": "annulation.DelaiGratuit",
+      "paths": [
+        "value.ultra"
+      ],
+      "claimants": [
+        "comite.DelaiUltra",
+        "support.DelaiUltraSupport"
+      ],
+      "outcome": "appliqué",
+      "applied": [
+        "comite.DelaiUltra"
+      ],
+      "reason": "validé par lea, responsable de « Délai d'annulation gratuite »",
+      "because": [
+        "comite.ValidationDelaiUltra"
+      ]
+    }
+  ],
+  "diagnostics": []
+}

@@ -1,0 +1,9 @@
+{
+  "kinds": [
+    "../../kinds"
+  ],
+  "views": [
+    "../../views"
+  ],
+  "engine": "../../generations/g40"
+}

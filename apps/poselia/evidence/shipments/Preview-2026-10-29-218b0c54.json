@@ -1,0 +1,563 @@
+{
+  "shipment": "sdlc.Preview",
+  "title": "A preview",
+  "target": "preview",
+  "at": "2026-10-29",
+  "by": "claude",
+  "signature": "attribution",
+  "artifacts": [
+    {
+      "node": "sdlc.PageFile",
+      "path": "dist/poselia.html",
+      "fingerprint": "a2ad54a8d1f1f17038da1239c7056eae7f6234f30b7bcaa03d415ecd2cf25bf3"
+    }
+  ],
+  "foundations": {
+    "problems": 0
+  },
+  "obligations": [
+    {
+      "node": "sdlc.PageFile",
+      "kind": "artifact",
+      "status": "held",
+      "owner": "ghalaax",
+      "evidence": [
+        {
+          "node": "sdlc.PageFile",
+          "source": "deployed",
+          "fingerprint": "b4e893f38a3f8600579b04e32b130d757ef52ffe253952e7de3412b0a17ed751",
+          "at": "2026-10-27",
+          "value": 1,
+          "by": "claude",
+          "signature": "attribution",
+          "note": "Published as a claude.ai artifact (version 11)",
+          "url": "https://claude.ai/artifact/RMTniA6qYS1hMLJDJm92HY"
+        },
+        {
+          "node": "sdlc.PageFile",
+          "at": "2026-10-27",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "f8d0c1352aa55f15376f8504a7ff28d306ee672e33757ea2e572306e3b4aa54e",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.PageFile",
+          "source": "deployed",
+          "fingerprint": "f8d0c1352aa55f15376f8504a7ff28d306ee672e33757ea2e572306e3b4aa54e",
+          "at": "2026-10-27",
+          "value": 1,
+          "by": "claude",
+          "signature": "attribution",
+          "note": "Published as a claude.ai artifact (version 12)",
+          "url": "https://claude.ai/artifact/RMTniA6qYS1hMLJDJm92HY"
+        },
+        {
+          "node": "sdlc.PageFile",
+          "at": "2026-10-28",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "c08db2f7bdfe9ae5af5a9b20c0c12707f782b44acbc1bb13e526ef7eaed27d2d",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.PageFile",
+          "source": "deployed",
+          "fingerprint": "c08db2f7bdfe9ae5af5a9b20c0c12707f782b44acbc1bb13e526ef7eaed27d2d",
+          "at": "2026-10-28",
+          "value": 1,
+          "by": "claude",
+          "signature": "attribution",
+          "note": "Published as a claude.ai artifact (version 13)",
+          "url": "https://claude.ai/artifact/RMTniA6qYS1hMLJDJm92HY"
+        },
+        {
+          "node": "sdlc.PageFile",
+          "at": "2026-10-28",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "9d9de8fabd5c32403d4d5398901284ac4e4923724ea5f29d3bb2a9180c7250bf",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.PageFile",
+          "source": "deployed",
+          "fingerprint": "9d9de8fabd5c32403d4d5398901284ac4e4923724ea5f29d3bb2a9180c7250bf",
+          "at": "2026-10-28",
+          "value": 1,
+          "by": "claude",
+          "signature": "attribution",
+          "note": "Published as a claude.ai artifact (version 14)",
+          "url": "https://claude.ai/artifact/RMTniA6qYS1hMLJDJm92HY"
+        },
+        {
+          "node": "sdlc.PageFile",
+          "at": "2026-10-28",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "e3227e8013293bd521b43180d759336dda96e3e51e582b69911facbdf1015183",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.PageFile",
+          "source": "deployed",
+          "fingerprint": "e3227e8013293bd521b43180d759336dda96e3e51e582b69911facbdf1015183",
+          "at": "2026-10-28",
+          "value": 1,
+          "by": "claude",
+          "signature": "attribution",
+          "note": "Published as a claude.ai artifact (version 15)",
+          "url": "https://claude.ai/artifact/RMTniA6qYS1hMLJDJm92HY"
+        },
+        {
+          "node": "sdlc.PageFile",
+          "at": "2026-10-29",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "a2ad54a8d1f1f17038da1239c7056eae7f6234f30b7bcaa03d415ecd2cf25bf3",
+          "code": "a7620ce9",
+          "by": "claude",
+          "signature": "attribution"
+        }
+      ]
+    },
+    {
+      "node": "sdlc.PageOpens",
+      "kind": "check",
+      "status": "held",
+      "owner": "ghalaax",
+      "evidence": [
+        {
+          "node": "sdlc.PageOpens",
+          "at": "2026-10-27",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "2997a1de",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.PageOpens",
+          "at": "2026-10-28",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "21a0c6b0",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.PageOpens",
+          "at": "2026-10-28",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "438e68f9",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.PageOpens",
+          "at": "2026-10-28",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "c56b68fe",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.PageOpens",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "913ed6cd",
+          "code": "f855d037",
+          "by": "claude",
+          "signature": "attribution"
+        }
+      ],
+      "obligation": "sdlc.CodeVerifiedSaid",
+      "via": "stage.BrowserStage"
+    },
+    {
+      "node": "scenarios.HomeLanguage",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "ghalaax",
+      "evidence": [],
+      "obligation": "sdlc.CodeVerifiedSaid",
+      "via": "app.CarriedContent",
+      "outcome": [
+        {
+          "name": "Without a choice, the app speaks the device's language",
+          "status": "passed"
+        },
+        {
+          "name": "The home page shows every pose and every sequence the app carries",
+          "status": "passed"
+        },
+        {
+          "name": "Each pose of the home page is drawn",
+          "status": "passed"
+        },
+        {
+          "name": "The cues name the leg that leads the first round",
+          "status": "passed"
+        },
+        {
+          "name": "Choosing French writes the page again in French",
+          "status": "passed"
+        },
+        {
+          "name": "The choice is kept on the device",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.BodyStaysOnTheFloor",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "ghalaax",
+      "evidence": [],
+      "obligation": "sdlc.CodeVerifiedSaid",
+      "via": "body.BodyAt",
+      "outcome": [
+        {
+          "name": "At every moment of the practice, the body rests on the floor somewhere",
+          "status": "passed"
+        },
+        {
+          "name": "No part of the body goes under the floor deeper than a step may sink",
+          "status": "passed"
+        },
+        {
+          "name": "A leg that steps skims the floor: no foot rises higher than the sequence lifts it",
+          "status": "passed"
+        },
+        {
+          "name": "Wherever the hands rest during the practice, they rest in one place",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.HoldThePoses",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "ghalaax",
+      "evidence": [],
+      "obligation": "sdlc.CodeVerifiedSaid",
+      "via": "settings.VoiceChoice",
+      "outcome": [
+        {
+          "name": "The composer opens with a sequence drawn by lot, as long as asked, that makes sense",
+          "status": "passed"
+        },
+        {
+          "name": "Drawn again, another sequence, that makes sense too",
+          "status": "passed"
+        },
+        {
+          "name": "A pose too far from the last one is shown as a jump, and the sequence cannot be practised",
+          "status": "passed"
+        },
+        {
+          "name": "Taken out again, the sequence can be practised",
+          "status": "passed"
+        },
+        {
+          "name": "Practised, the player is named after the sequence composed",
+          "status": "passed"
+        },
+        {
+          "name": "While a pose is held, the body does not move",
+          "status": "passed"
+        },
+        {
+          "name": "A hold says the breaths left: as many as asked at its start",
+          "status": "passed"
+        },
+        {
+          "name": "As each hold starts, the voice says what to do in the pose",
+          "status": "passed"
+        },
+        {
+          "name": "The voice turned off, nothing more is said, and the player says so",
+          "status": "passed"
+        },
+        {
+          "name": "The bowl rings as each movement starts and once more at the end",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.PersonSettings",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "ghalaax",
+      "evidence": [],
+      "obligation": "sdlc.CodeVerifiedSaid",
+      "via": "settings.VoiceChoice",
+      "outcome": [
+        {
+          "name": "Two steps longer, the breath in lasts a second more, kept on the device",
+          "status": "passed"
+        },
+        {
+          "name": "Three taps measure the breath: in and out",
+          "status": "passed"
+        },
+        {
+          "name": "A practice follows the person's breath",
+          "status": "passed"
+        },
+        {
+          "name": "The cues turned off, the voice says only the breath",
+          "status": "passed"
+        },
+        {
+          "name": "The default breath forgets the person's",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.LearnTheSequence",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "ghalaax",
+      "evidence": [],
+      "obligation": "sdlc.CodeVerifiedSaid",
+      "via": "settings.MarksChoice",
+      "outcome": [
+        {
+          "name": "Learning a sequence holds each pose the breaths a sequence learnt holds, after its movement",
+          "status": "passed"
+        },
+        {
+          "name": "The landmarks of a pose are drawn and listed while it is held, the same while it stays still",
+          "status": "passed"
+        },
+        {
+          "name": "Hidden, the landmarks are drawn no more, and the choice is kept on the device",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.DrawnSequencesMakeSense",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "ghalaax",
+      "evidence": [],
+      "obligation": "sdlc.CodeVerifiedSaid",
+      "via": "practice.PracticeOf",
+      "outcome": [
+        {
+          "name": "Every sequence drawn is as long as asked",
+          "status": "passed"
+        },
+        {
+          "name": "Every sequence drawn makes sense",
+          "status": "passed"
+        },
+        {
+          "name": "The same seed draws the same sequence",
+          "status": "passed"
+        },
+        {
+          "name": "Different seeds draw different sequences",
+          "status": "passed"
+        },
+        {
+          "name": "Played, every sequence drawn keeps the body on the floor: never floating, never under it deeper than a step may sink",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.PracticeFollowsTheBreath",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "ghalaax",
+      "evidence": [],
+      "obligation": "sdlc.CodeVerifiedSaid",
+      "via": "practice.PracticeOf",
+      "outcome": [
+        {
+          "name": "Playing a sequence shows its player, named after it",
+          "status": "passed"
+        },
+        {
+          "name": "A breath and a half in, the second step, the lungs filling",
+          "status": "passed"
+        },
+        {
+          "name": "Each step is said aloud as it starts, in the app's language",
+          "status": "passed"
+        },
+        {
+          "name": "In a practice that flows, the landmarks of the pose the body goes to are drawn on it and follow it as it moves",
+          "status": "passed"
+        },
+        {
+          "name": "A pause holds the practice: time passes, nothing moves",
+          "status": "passed"
+        },
+        {
+          "name": "Resumed, it goes on from where it was",
+          "status": "passed"
+        },
+        {
+          "name": "At the end, the practice is done",
+          "status": "passed"
+        },
+        {
+          "name": "The screen is kept awake while the practice plays, and may sleep when it pauses or ends",
+          "status": "passed"
+        },
+        {
+          "name": "Back, the home page again",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "sdlc.OpeningThePage",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "ghalaax",
+      "evidence": [],
+      "obligation": "sdlc.CodeVerifiedSaid",
+      "via": "sdlc.OpenThePage",
+      "outcome": [
+        {
+          "name": "Without the page delivered, the check fails and says where it should be",
+          "status": "passed"
+        },
+        {
+          "name": "A page that shows everything passes, and says so",
+          "status": "passed"
+        },
+        {
+          "name": "A page without landmarks, raising an error, fails and says why in each language",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "sdlc.PlacingThePage",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "ghalaax",
+      "evidence": [],
+      "obligation": "sdlc.CodeVerifiedSaid",
+      "via": "sdlc.PlaceThePage",
+      "outcome": [
+        {
+          "name": "Nothing built, nothing placed",
+          "status": "passed"
+        },
+        {
+          "name": "The page built is placed where it is served",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "stage.ThreePackage",
+      "kind": "package",
+      "status": "held",
+      "owner": "ghalaax",
+      "evidence": [
+        {
+          "node": "stage.ThreePackage",
+          "at": "2026-10-26",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "stage.ThreePackage",
+          "at": "2026-10-26",
+          "source": "outdated",
+          "value": 0,
+          "note": "0.186.1"
+        },
+        {
+          "node": "stage.ThreePackage",
+          "at": "2026-10-29",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "stage.ThreePackage",
+          "at": "2026-10-29",
+          "source": "outdated",
+          "value": 0,
+          "note": "0.186.1"
+        }
+      ],
+      "obligation": "sdlc.PackagesSafe",
+      "via": "stage.BrowserStage"
+    },
+    {
+      "node": "stage.ThreeTypes",
+      "kind": "package",
+      "status": "held",
+      "owner": "ghalaax",
+      "evidence": [
+        {
+          "node": "stage.ThreeTypes",
+          "at": "2026-10-26",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "stage.ThreeTypes",
+          "at": "2026-10-26",
+          "source": "outdated",
+          "value": 0
+        },
+        {
+          "node": "stage.ThreeTypes",
+          "at": "2026-10-29",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "stage.ThreeTypes",
+          "at": "2026-10-29",
+          "source": "outdated",
+          "value": 0
+        }
+      ],
+      "obligation": "sdlc.PackagesSafe",
+      "via": "stage.BrowserStage"
+    },
+    {
+      "node": "sdlc.AdrsServeTheProduct",
+      "kind": "rule",
+      "status": "held",
+      "owner": "ghalaax",
+      "evidence": [],
+      "obligation": "sdlc.RulesHeld",
+      "via": "sdlc.AdrsServeTheProduct"
+    },
+    {
+      "node": "sdlc.CodeServesTheProduct",
+      "kind": "rule",
+      "status": "held",
+      "owner": "ghalaax",
+      "evidence": [],
+      "obligation": "sdlc.RulesHeld",
+      "via": "sdlc.CodeServesTheProduct"
+    }
+  ],
+  "deployed": [
+    "sdlc.PlaceThePage"
+  ]
+}

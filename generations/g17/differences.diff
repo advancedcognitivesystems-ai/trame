@@ -1,0 +1,12 @@
+diff -ru self0/docs/literals.md self1/docs/literals.md
+--- self0/docs/literals.md	2026-10-18 22:04:31.706371935 +0200
++++ self1/docs/literals.md	2026-10-18 22:05:07.672857907 +0200
+@@ -4,6 +4,8 @@
+ 
+ > **442 literals to specify in 38 bodies, 54 of them already declared by a constant · 481 declared by a type**
+ 
++Refused by the project (trame.json): `0`, `1`, `-1`, `""`. Written in a body without a structure, a standard or a type to declare them, they are errors.
++
+ ## By category
+ 
+ | Category | To specify | Examples |

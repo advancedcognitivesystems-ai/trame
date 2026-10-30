@@ -1,0 +1,75 @@
+diff -ru /tmp/6gqekL/reference/trame-auto/docs/literals.md /tmp/6gqekL/candidate/trame-auto/docs/literals.md
+--- /tmp/6gqekL/reference/trame-auto/docs/literals.md	2026-10-23 15:35:16.430756267 +0200
++++ /tmp/6gqekL/candidate/trame-auto/docs/literals.md	2026-10-23 15:37:03.734399482 +0200
+@@ -56,3 +56,71 @@
+ | [Messages of the platform](messages.md#PlatformMessages) | 8 | `` `Unknown command: ${…}` `` `` `warning: a promise was rejected without being awaited (${…})` `` `"In test, the engine starts no process"` |
+ 
+ ## By body
++
++## In the language
++
++The kinds and the views the project writes are files, not nodes: the values written in them have no node to belong to, and are reported here without being errors. Their words are in catalogs already.
++
++> **818 literals in 48 files of the language**
++
++| Category | Literals | Examples |
++|---|---|---|
++| identifier | 419 | `"acceptance"` `"accepts"` `"example"` |
++| number | 197 | `60` `45` `70` |
++| separator | 158 | `""` `"; "` `"."` |
++| template | 19 | `` ` for ${…}` `` `` `value.${…}` `` `` `command ${…}` `` |
++| text | 11 | `" and "` `"from "` `" to "` |
++| regular expression | 8 | `/^Record<\s*(\w+)/` `/[\u00a0\u2028\u2029]/g` `/[\u0000-\u001f\u00a0\u2028\u2029]/` |
++| sentence | 5 | `` `not in force on ${…}` `` `"replaced by "` `"discarded in favour of "` |
++| file | 1 | `"trame.lock"` |
++
++| File | Literals | Most frequent values |
++|---|---|---|
++| `kinds/language.ts` | 78 | `"string"` ×6 `"object"` ×5 `"queries"` ×5 `"escapes"` ×3 `"examples"` ×3 |
++| `kinds/structure.ts` | 58 | `0` ×11 `1` ×4 `""` ×3 `"laws"` ×3 `"operations"` ×3 |
++| `engine-views/literals.ts` | 57 | `0` ×8 `1` ×7 `" "` ×3 `"."` ×3 `-1` ×2 |
++| `kinds/syntax.ts` | 41 | `"string"` ×5 `"constants"` ×3 `"examples"` ×3 `"object"` ×3 `", "` ×2 |
++| `kinds/release.ts` | 40 | `"date"` ×5 `"component"` ×4 `0` ×4 `"fingerprint"` ×3 `"language"` ×3 |
++| `kinds/decision.ts` | 35 | `"value"` ×8 `0` ×5 `1` ×4 `"number"` ×3 `"range"` ×3 |
++| `kinds/amendment.ts` | 31 | `1` ×5 `"apply"` ×3 `"patch"` ×3 `0` ×3 `"."` ×2 |
++| `kinds/pattern.ts` | 30 | `0` ×3 `"follows"` ×2 `"requires"` ×2 `"source"` ×2 `"string"` ×2 |
++| `kinds/package.ts` | 28 | `""` ×7 `"packageName"` ×4 `"version"` ×4 `0` ×4 `" "` ×2 |
++| `kinds/binding.ts` | 27 | `"environments"` ×3 `"consequences"` ×2 `"context"` ×2 `"follows"` ×2 `"function"` ×2 |
++| `engine-views/versions.ts` | 26 | `0` ×4 `"release"` ×3 `"component"` ×2 `"language"` ×2 `"own"` ×2 |
++| `views/assembly.ts` | 23 | `1` ×3 `", "` ×2 `0` ×2 `-1` `" · "` |
++| `views/history.ts` | 23 | `0` ×5 `""` ×4 `"."` ×3 `" · "` ×2 `` `${…}:${…}` `` ×2 |
++| `kinds/port.ts` | 18 | `", "` ×4 `"environment"` ×2 `"implements"` ×2 `1` ×2 `"—"` |
++| `kinds/standard.ts` | 18 | `1` ×3 `"constants"` ×2 `"object"` ×2 `"source"` ×2 `"string"` ×2 |
++| `kinds/slo.ts` | 15 | `"duration"` ×2 `-1` `" of "` `" under "` `"p"` |
++| `kinds/adr.ts` | 14 | `"appliedBy"` ×2 `"consequences"` ×2 `"context"` ×2 `"rejected"` ×2 `""` |
++| `kinds/component.ts` | 14 | `", "` ×2 `"entry"` ×2 `"environment"` ×2 `"in"` ×2 `""` |
++| `views/choices.ts` | 14 | `"environment"` ×2 `0` ×2 `"—"` `", "` `"binding"` |
++| `views/review.ts` | 14 | `"."` ×2 `" · "` `" = "` `""` `"function"` |
++| `kinds/entry-point.ts` | 13 | `"goal"` ×2 `"requirement"` ×2 `"trigger"` ×2 `"component"` `"object"` |
++| `kinds/requirement.ts` | 13 | `"rule"` ×3 `"accepts"` ×2 `"requirement"` ×2 `"assumption"` `"goal"` |
++| `kinds/scenario.ts` | 12 | `"scenario"` ×2 `""` `"component"` `"entry"` `"environment"` |
++| `views/lib/claims.ts` | 12 | `" and "` `", "` `", to be settled by "` `"an owner yet to be named"` `"applied"` |
++| `kinds/function.ts` | 11 | `", "` `"asynchronous"` `"component"` `"function"` `"goal"` |
++| `views/schedule.ts` | 11 | `""` ×4 `0` ×3 `"schedule"` `"today"` `` `${…} · ${…}${…}` `` |
++| `kinds/implementation.ts` | 10 | `", "` `"chooses"` `"environment"` `"environments"` `"implementation"` |
++| `views/impact.ts` | 10 | `"."` ×2 `1` ×2 `""` `"graph"` `"impact"` |
++| `kinds/vocabulary.ts` | 9 | `"words"` ×4 `"object"` `"string"` `"vocabulary"` `1` |
++| `views/layers.ts` | 9 | `0` ×2 `1` ×2 `"graph"` `"in"` `"layers"` |
++| `views/overlaps.ts` | 9 | `0` ×2 `", "` `"graph"` `"overlaps"` `` `${…} · ${…}` `` |
++| `views/summary.ts` | 9 | `" · "` `""` `"edge"` `"module"` `"node"` |
++| `kinds/acceptance.ts` | 8 | `""` `"acceptance"` `"accepts"` `"criterion"` `"example"` |
++| `kinds/catalog.ts` | 8 | `"messages"` ×2 `"."` `"catalog"` `"decision"` `"ts"` |
++| `views/adrs.ts` | 8 | `0` ×2 `", "` `"adr"` `"adrs"` `"appliedBy"` |
++| `views/timeline.ts` | 8 | `"timeline"` ×2 `-1` `-14` `"."` `0` |
++| `views/why.ts` | 8 | `` `${…}\|${…}` `` ×3 `"graph"` `"why"` `0` `1` |
++| `kinds/assumption.ts` | 6 | `"assumption"` `"day"` `"yes"` `0` `50` |
++| `kinds/rule.ts` | 6 | `": "` `"check"` `"rule"` `"ts"` `` `${…}:${…}` `` |
++| `views/snapshot.ts` | 6 | `" · "` ×3 `", "` `"out"` `20` |
++| `kinds/approval.ts` | 5 | `": "` `"amendment"` `"approval"` `"approves"` `75` |
++| `views/module.ts` | 5 | `" from "` `""` `"module"` `1` `10` |
++| `kinds/repeal.ts` | 4 | `""` `"apply"` `"repeal"` `72` |
++| `kinds/stylesheet.ts` | 4 | `"decision"` `"function"` `"stylesheet"` `145` |
++| `views/owners.ts` | 4 | `""` `"owners"` `"unassigned"` `30` |
++| `views/index.ts` | 3 | `"."` `"index"` `10` |
++| `kinds/goal.ts` | 2 | `"goal"` `10` |
++| `kinds/environment.ts` | 1 | `160` |

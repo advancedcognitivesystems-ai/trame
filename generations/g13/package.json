@@ -1,0 +1,7 @@
+{
+  "type": "module",
+  "imports": {
+    "#trame/internal": "./trame/internal.ts",
+    "#trame/kernel": "./trame/kernel.ts"
+  }
+}

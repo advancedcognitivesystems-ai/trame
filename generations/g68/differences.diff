@@ -1,0 +1,101 @@
+diff -ru /tmp/lXGjAw/reference/trame-auto/docs/pipelines.md /tmp/lXGjAw/candidate/trame-auto/docs/pipelines.md
+--- /tmp/lXGjAw/reference/trame-auto/docs/pipelines.md	2026-10-28 13:22:40.629040775 +0100
++++ /tmp/lXGjAw/candidate/trame-auto/docs/pipelines.md	2026-10-28 13:24:25.993443233 +0100
+@@ -14,12 +14,48 @@
+ flowchart TB
+   n0["The candidate engine<br/><small>Artefact</small>"]:::held
+   n1["Trame on the command line<br/><small>Component</small>"]:::neutral
+-  n2["Advance<br/><small>Entry point</small>"]:::unknown
+-  n3["The next generation<br/><small>Shipment</small>"]:::held
+-  n2 -->|Part of| n1
++  n2["The candidate plays the laws<br/><small>Check</small>"]:::held
++  n3["Test the laws<br/><small>Entry point</small>"]:::unknown
++  n4["Effects come from the vocabulary<br/><small>Architecture rule</small>"]:::held
++  n5["Only commands write<br/><small>Architecture rule</small>"]:::held
++  n6["Rendering does not read the graph<br/><small>Architecture rule</small>"]:::held
++  n7["tsx<br/><small>Package</small>"]:::held
++  n8["TypeScript<br/><small>Package</small>"]:::held
++  n9["Types of Node.js<br/><small>Package</small>"]:::held
++  n10["Grammar of TypeScript<br/><small>Package</small>"]:::held
++  n11["web-tree-sitter<br/><small>Package</small>"]:::held
++  n12["Grammar of CSS<br/><small>Package</small>"]:::held
++  n13["Grammar of HCL<br/><small>Package</small>"]:::held
++  n14["esbuild<br/><small>Package</small>"]:::held
++  n15["Grammar of HTML<br/><small>Package</small>"]:::held
++  n16["The described engine compiles the example<br/><small>Scenario</small>"]:::held
++  n17["The laws of the kinds hold<br/><small>Scenario</small>"]:::held
++  n18["The build writes the same documents as the engine in place<br/><small>Scenario</small>"]:::held
++  n19["Accept a candidate<br/><small>Requirement</small>"]:::held
++  n20["Sort problems by severity<br/><small>Requirement</small>"]:::held
++  n21["Ship only what holds<br/><small>Requirement</small>"]:::held
++  n22["What belongs to a library<br/><small>Requirement</small>"]:::held
++  n23["A release is settled<br/><small>Requirement</small>"]:::held
++  n24["Answers without crashing<br/><small>Requirement</small>"]:::held
++  n25["A blocking hole has an owner<br/><small>Requirement</small>"]:::held
++  n26["The resolution returns only what it is given<br/><small>Requirement</small>"]:::held
++  n27["Complete declaration<br/><small>Requirement</small>"]:::held
++  n28["Complete declaration of a view<br/><small>Requirement</small>"]:::held
++  n29["Produces only the intermediate format<br/><small>Requirement</small>"]:::held
++  n30["Same input, same answer<br/><small>Requirement</small>"]:::held
++  n31["The resolution does not depend on the order<br/><small>Requirement</small>"]:::held
++  n32["Without evidence, the status is unknown<br/><small>Requirement</small>"]:::held
++  n33["Advance<br/><small>Entry point</small>"]:::unknown
++  n34["The next generation<br/><small>Shipment</small>"]:::held
++  n33 -->|Part of| n1
++  n33 -->|Depends on| n19
++  n3 -->|Part of| n1
++  n31 -->|Refines| n30
++  n2 -->|Checks| n0
++  n2 -->|Run by| n3
+   n0 -->|Produced by| n1
+-  n3 -->|Ships| n0
+-  n3 -->|Deployed by| n2
++  n34 -->|Ships| n0
++  n34 -->|Deployed by| n33
+   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
+   classDef blocked fill:#fbf0d9,stroke:#9a6200,color:#17202a
+   classDef violated fill:#f9e3e1,stroke:#ad2a22,color:#17202a
+@@ -32,8 +68,40 @@
+ |  | Stage | Step | Run by | Why | Status | Latest evidence |
+ |---|---|---|---|---|---|---|
+ | 1 | produce | [The candidate engine](sdlc.md#EngineCandidate) · `out/local/trame-cli.ts` | [Trame on the command line](architecture.md#TrameCli) | — | **held** | 28 October 2026 by claude  |
+-| 2 | prove | [The candidate engine](sdlc.md#EngineCandidate) | — | the shipment | **held** | 28 October 2026 by claude  |
+-| 3 | deploy | [Advance](commands.md#Advance) | itself | — | **unknown** | 28 October 2026 by claude  |
+-| 4 | record | [The next generation](sdlc.md#NextGeneration) | — | — | **held** | 28 October 2026 by claude `evidence/shipments/NextGeneration-2026-10-28-6a25c9e7.json` |
++| 2 | check | [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws) | [Test the laws](commands.md#TestKinds), signed by [Trame's maintainers](sdlc.md#Maintainers) | — | **held** | passed, 28 October 2026 by claude  |
++| 3 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
++| 4 | prove | [The candidate engine](sdlc.md#EngineCandidate) | — | the shipment | **held** | 28 October 2026 by claude  |
++| 5 | prove | [Effects come from the vocabulary](architecture.md#KnownEffects) | — | [The rules of the architecture hold](sdlc.md#ArchitectureRuled) | **held** |  |
++| 6 | prove | [Only commands write](architecture.md#OnlyCommandsWrite) | — | [The rules of the architecture hold](sdlc.md#ArchitectureRuled) | **held** |  |
++| 7 | prove | [Rendering does not read the graph](architecture.md#RenderingWithoutGraph) | — | [The rules of the architecture hold](sdlc.md#ArchitectureRuled) | **held** |  |
++| 8 | prove | [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws) | [Test the laws](commands.md#TestKinds), signed by [Trame's maintainers](sdlc.md#Maintainers) | [The candidate is checked by programs](sdlc.md#CandidateChecked) via [The candidate engine](sdlc.md#EngineCandidate) | **held** | passed, 28 October 2026 by claude  |
++| 9 | prove | [tsx](packages.md#TsxPackage) | — | [The packages are safe](sdlc.md#EnginePackagesSafe) via [tsx loader](platform.md#TsxLoader) | **held** | 23 October 2026 by   |
++| 10 | prove | [TypeScript](packages.md#TypeScriptPackage) | — | [The packages are safe](sdlc.md#EnginePackagesSafe) via [TypeScript compiler](platform.md#RealTypeScript) | **held** | 23 October 2026 by   |
++| 11 | prove | [Types of Node.js](packages.md#NodeTypes) | — | [The packages are safe](sdlc.md#EnginePackagesSafe) via [TypeScript compiler](platform.md#RealTypeScript) | **held** | 23 October 2026 by   |
++| 12 | prove | [Grammar of TypeScript](packages.md#TypeScriptGrammar) | — | [The packages are safe](sdlc.md#EnginePackagesSafe) via [TypeScript](typescript.md#TypeScript) | **held** | 23 October 2026 by   |
++| 13 | prove | [web-tree-sitter](packages.md#WebTreeSitterPackage) | — | [The packages are safe](sdlc.md#EnginePackagesSafe) via [tree-sitter in WebAssembly](platform.md#WebTreeSitter) | **held** | 23 October 2026 by   |
++| 14 | prove | [Grammar of CSS](packages.md#CssGrammar) | — | [The packages are safe](sdlc.md#EnginePackagesSafe) via [CSS style sheets](html.md#CssStyleSheets) | **held** | 23 October 2026 by   |
++| 15 | prove | [Grammar of HCL](packages.md#HclGrammar) | — | [The packages are safe](sdlc.md#EnginePackagesSafe) via [Terraform](terraform.md#Terraform) | **held** | 23 October 2026 by   |
++| 16 | prove | [esbuild](packages.md#EsbuildPackage) | — | [The packages are safe](sdlc.md#EnginePackagesSafe) via [esbuild](platform.md#Esbuild) | **held** | 23 October 2026 by   |
++| 17 | prove | [Grammar of HTML](packages.md#HtmlGrammar) | — | [The packages are safe](sdlc.md#EnginePackagesSafe) via [HTML markup](html.md#HtmlMarkup) | **held** | 23 October 2026 by   |
++| 18 | prove | [The described engine compiles the example](scenarios.md#CompileExample) | — | [The engine is verified](sdlc.md#EngineVerified) via [Compiler](engine.md#Compiler) | **held** |  |
++| 19 | prove | [The laws of the kinds hold](scenarios.md#KindLaws) | — | [The engine is verified](sdlc.md#EngineVerified) via [Laws](engine.md#Laws) | **held** |  |
++| 20 | prove | [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore) | — | [The engine is verified](sdlc.md#EngineVerified) via [Build](commands.md#Build) | **held** |  |
++| 21 | prove | [Accept a candidate](generations.md#AcceptCandidate) | — | [The language serves what it says](sdlc.md#LanguageServed) via [Sort problems by severity](product.md#SeverityOrder) | **held** |  |
++| 22 | prove | [Sort problems by severity](product.md#SeverityOrder) | — | [The language serves what it says](sdlc.md#LanguageServed) | **held** |  |
++| 23 | prove | [Ship only what holds](shipping.md#ShipOnlyWhatHolds) | — | [The language serves what it says](sdlc.md#LanguageServed) via [Sort problems by severity](product.md#SeverityOrder) | **held** |  |
++| 24 | prove | [What belongs to a library](libraries.md#LibraryOfAModule) | — | [The language serves what it says](sdlc.md#LanguageServed) | **held** |  |
++| 25 | prove | [A release is settled](libraries.md#ReleaseIsSettled) | — | [The language serves what it says](sdlc.md#LanguageServed) via [What belongs to a library](libraries.md#LibraryOfAModule) | **held** |  |
++| 26 | prove | [Answers without crashing](laws.md#AnswersWithoutCrashing) | — | [The language serves what it says](sdlc.md#LanguageServed) via [Complete declaration](laws.md#CompleteDeclaration) | **held** |  |
++| 27 | prove | [A blocking hole has an owner](laws.md#BlockingHoleHasOwner) | — | [The language serves what it says](sdlc.md#LanguageServed) via [Complete declaration](laws.md#CompleteDeclaration) | **held** |  |
++| 28 | prove | [The resolution returns only what it is given](laws.md#ClosedResolution) | — | [The language serves what it says](sdlc.md#LanguageServed) via [Complete declaration](laws.md#CompleteDeclaration) | **held** |  |
++| 29 | prove | [Complete declaration](laws.md#CompleteDeclaration) | — | [The language serves what it says](sdlc.md#LanguageServed) | **held** |  |
++| 30 | prove | [Complete declaration of a view](laws.md#CompleteViewDeclaration) | — | [The language serves what it says](sdlc.md#LanguageServed) via [Complete declaration](laws.md#CompleteDeclaration) | **held** |  |
++| 31 | prove | [Produces only the intermediate format](laws.md#IntermediateFormatOnly) | — | [The language serves what it says](sdlc.md#LanguageServed) via [Complete declaration](laws.md#CompleteDeclaration) | **held** |  |
++| 32 | prove | [Same input, same answer](laws.md#SameInputSameAnswer) | — | [The language serves what it says](sdlc.md#LanguageServed) via [Complete declaration](laws.md#CompleteDeclaration) | **held** |  |
++| 33 | prove | [The resolution does not depend on the order](laws.md#OrderFree) | — | [The language serves what it says](sdlc.md#LanguageServed) via [Complete declaration](laws.md#CompleteDeclaration) | **held** |  |
++| 34 | prove | [Without evidence, the status is unknown](laws.md#UnknownWithoutEvidence) | — | [The language serves what it says](sdlc.md#LanguageServed) via [Complete declaration](laws.md#CompleteDeclaration) | **held** |  |
++| 35 | deploy | [Advance](commands.md#Advance) | itself | — | **unknown** | 28 October 2026 by claude  |
++| 36 | record | [The next generation](sdlc.md#NextGeneration) | — | — | **held** | 28 October 2026 by claude `evidence/shipments/NextGeneration-2026-10-28-6a25c9e7.json` |
+ 
+ `trame ship NextGeneration --by <name>`

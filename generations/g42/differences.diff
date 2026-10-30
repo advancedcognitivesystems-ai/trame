@@ -1,0 +1,84 @@
+diff -ru /tmp/dSHKVF/reference/trame-auto/docs/packages.md /tmp/dSHKVF/candidate/trame-auto/docs/packages.md
+--- /tmp/dSHKVF/reference/trame-auto/docs/packages.md	2026-10-23 14:40:57.158784704 +0200
++++ /tmp/dSHKVF/candidate/trame-auto/docs/packages.md	2026-10-23 14:42:11.810304875 +0200
+@@ -47,7 +47,7 @@
+ 
+ - Name: `tree-sitter-css` https://www.npmjs.com/package/tree-sitter-css
+ - Version: `0.23.2`
+-- Installed: not read by this engine
++- Installed: `0.23.2`
+ - Vulnerabilities: none known (2026-10-23)
+ - Latest version: 0.25.0 (2026-10-23)
+ 
+@@ -65,7 +65,7 @@
+ 
+ - Name: `esbuild` https://www.npmjs.com/package/esbuild
+ - Version: `0.23.1`
+-- Installed: not read by this engine
++- Installed: `0.23.1`
+ - Vulnerabilities: moderate: esbuild enables any website to send any requests to the development server and read the response (2026-10-23) https://github.com/advisories/GHSA-67mh-4wv8-2f99
+ - Latest version: 0.28.2 (2026-10-23)
+ 
+@@ -83,7 +83,7 @@
+ 
+ - Name: `@tree-sitter-grammars/tree-sitter-hcl` https://www.npmjs.com/package/@tree-sitter-grammars/tree-sitter-hcl
+ - Version: `1.2.0`
+-- Installed: not read by this engine
++- Installed: `1.2.0`
+ - Vulnerabilities: none known (2026-10-23)
+ - Latest version: this one (2026-10-23)
+ 
+@@ -99,7 +99,7 @@
+ 
+ - Name: `tree-sitter-html` https://www.npmjs.com/package/tree-sitter-html
+ - Version: `0.23.2`
+-- Installed: not read by this engine
++- Installed: `0.23.2`
+ - Vulnerabilities: none known (2026-10-23)
+ - Latest version: this one (2026-10-23)
+ 
+@@ -117,7 +117,7 @@
+ 
+ - Name: `@types/node` https://www.npmjs.com/package/@types/node
+ - Version: `22.7.5`
+-- Installed: not read by this engine
++- Installed: `22.7.5`
+ - Vulnerabilities: none known (2026-10-23)
+ - Latest version: 26.6.5 (2026-10-23)
+ 
+@@ -135,7 +135,7 @@
+ 
+ - Name: `tsx` https://www.npmjs.com/package/tsx
+ - Version: `4.19.2`
+-- Installed: not read by this engine
++- Installed: `4.19.2`
+ - Vulnerabilities: moderate: esbuild (2026-10-23)
+ - Latest version: 4.23.15 (2026-10-23)
+ 
+@@ -151,7 +151,7 @@
+ 
+ - Name: `tree-sitter-typescript` https://www.npmjs.com/package/tree-sitter-typescript
+ - Version: `0.23.2`
+-- Installed: not read by this engine
++- Installed: `0.23.2`
+ - Vulnerabilities: none known (2026-10-23)
+ - Latest version: this one (2026-10-23)
+ 
+@@ -169,7 +169,7 @@
+ 
+ - Name: `typescript` https://www.npmjs.com/package/typescript
+ - Version: `5.6.3`
+-- Installed: not read by this engine
++- Installed: `5.6.3`
+ - Vulnerabilities: none known (2026-10-23)
+ - Latest version: 7.0.2 (2026-10-23)
+ 
+@@ -187,7 +187,7 @@
+ 
+ - Name: `web-tree-sitter` https://www.npmjs.com/package/web-tree-sitter
+ - Version: `0.27.0`
+-- Installed: not read by this engine
++- Installed: `0.27.0`
+ - Vulnerabilities: none known (2026-10-23)
+ - Latest version: 0.27.1 (2026-10-23)
+ 

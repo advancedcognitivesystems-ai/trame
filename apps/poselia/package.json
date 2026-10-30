@@ -1,0 +1,13 @@
+{
+  "name": "poselia",
+  "private": true,
+  "type": "module",
+  "imports": {
+    "#ci/*": "./.trame/ci/src/*.ts",
+    "#std/*": "./.trame/std/src/*.ts"
+  },
+  "dependencies": {
+    "@types/three": "0.186.0",
+    "three": "0.186.0"
+  }
+}

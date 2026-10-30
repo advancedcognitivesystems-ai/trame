@@ -1,0 +1,1 @@
+[{"name":"The same seed draws the same numbers, a text the same seed","status":"passed"},{"name":"Another seed draws others","status":"passed"},{"name":"Integers drawn between 1 and 6 stay between them, and reach both","status":"passed"},{"name":"An element is drawn by its weight: one that weighs nothing never is; nothing from a list that weighs nothing","status":"passed"}]

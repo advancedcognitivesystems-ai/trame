@@ -1,0 +1,2627 @@
+{
+  "at": "2026-10-17",
+  "nodes": [
+    {
+      "id": "api.CancelReservation",
+      "kind": "entry",
+      "title": "Cancel a reservation",
+      "status": "held",
+      "fields": {
+        "owner": "karim",
+        "trigger": {
+          "type": "http",
+          "method": "POST",
+          "path": "/reservations/:id/cancellation"
+        },
+        "deps": {
+          "reservations": "architecture.ReservationReading",
+          "cancellations": "architecture.Cancellations",
+          "payment": "architecture.Payment",
+          "leadTime": "api.LeadTime",
+          "refund": "(function)",
+          "key": "architecture.CancellationKey",
+          "http": "standards.Http",
+          "messages": "messages.ApiMessages"
+        },
+        "body": {
+          "file": "./code/cancel-reservation.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
+      "id": "api.FreeCancellationEnd",
+      "kind": "function",
+      "title": "End of free cancellation",
+      "status": "unknown",
+      "fields": {
+        "owner": "lea",
+        "deps": {
+          "freePeriod": "cancellation.FreeCancellationPeriod"
+        },
+        "body": "(function)",
+        "synchronous": true
+      }
+    },
+    {
+      "id": "api.LeadTime",
+      "kind": "function",
+      "title": "Lead time of a cancellation",
+      "status": "unknown",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "clock": "architecture.Clock"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "api.ReadReservation",
+      "kind": "entry",
+      "title": "Read a reservation",
+      "status": "held",
+      "fields": {
+        "owner": "karim",
+        "trigger": {
+          "type": "http",
+          "method": "GET",
+          "path": "/reservations/:id"
+        },
+        "deps": {
+          "reservations": "architecture.ReservationReading",
+          "freeCancellationEnd": "api.FreeCancellationEnd",
+          "http": "standards.Http",
+          "messages": "messages.ApiMessages"
+        },
+        "body": {
+          "file": "./code/read-reservation.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
+      "id": "architecture.CancellationKey",
+      "kind": "decision",
+      "title": "Key of a cancellation's refund",
+      "fields": {
+        "owner": "karim",
+        "value": "cancellation-"
+      }
+    },
+    {
+      "id": "architecture.Cancellations",
+      "kind": "port",
+      "title": "Cancellation records",
+      "fields": {
+        "owner": "karim",
+        "declaredEffects": [
+          "read",
+          "write",
+          "asynchronous"
+        ]
+      }
+    },
+    {
+      "id": "architecture.Clock",
+      "kind": "port",
+      "title": "Clock",
+      "fields": {
+        "owner": "karim",
+        "declaredEffects": [
+          "time"
+        ]
+      }
+    },
+    {
+      "id": "architecture.Database",
+      "kind": "port",
+      "title": "Database",
+      "fields": {
+        "owner": "karim",
+        "declaredEffects": [
+          "read",
+          "write",
+          "asynchronous"
+        ]
+      }
+    },
+    {
+      "id": "architecture.Dialect",
+      "kind": "port",
+      "title": "SQL dialect",
+      "fields": {
+        "owner": "karim",
+        "declaredEffects": []
+      }
+    },
+    {
+      "id": "architecture.HttpExposure",
+      "kind": "port",
+      "title": "HTTP exposure",
+      "fields": {
+        "owner": "karim",
+        "declaredEffects": [
+          "network",
+          "asynchronous"
+        ]
+      }
+    },
+    {
+      "id": "architecture.HttpPort",
+      "kind": "decision",
+      "title": "HTTP port of the API",
+      "fields": {
+        "owner": "karim",
+        "value": 4180
+      }
+    },
+    {
+      "id": "architecture.Payment",
+      "kind": "port",
+      "title": "Payment provider",
+      "fields": {
+        "owner": "karim",
+        "declaredEffects": [
+          "network",
+          "third-party",
+          "asynchronous"
+        ]
+      }
+    },
+    {
+      "id": "architecture.PaymentLog",
+      "kind": "port",
+      "title": "Payment log",
+      "fields": {
+        "owner": "karim",
+        "declaredEffects": []
+      }
+    },
+    {
+      "id": "architecture.ReadOnlyDatabase",
+      "kind": "port",
+      "title": "Read-only database",
+      "fields": {
+        "owner": "karim",
+        "declaredEffects": [
+          "read",
+          "asynchronous"
+        ]
+      }
+    },
+    {
+      "id": "architecture.ReadWithoutWrite",
+      "kind": "rule",
+      "title": "A read writes nothing",
+      "status": "held",
+      "fields": {
+        "owner": "karim",
+        "check": "(function)"
+      }
+    },
+    {
+      "id": "architecture.ReservationReading",
+      "kind": "port",
+      "title": "Reservation reading",
+      "fields": {
+        "owner": "karim",
+        "declaredEffects": [
+          "read",
+          "asynchronous"
+        ]
+      }
+    },
+    {
+      "id": "architecture.ReservationsApi",
+      "kind": "component",
+      "title": "Reservations API",
+      "fields": {
+        "owner": "karim",
+        "language": "typescript",
+        "deps": {
+          "exposure": "architecture.HttpExposure"
+        }
+      }
+    },
+    {
+      "id": "architecture.ThirdPartiesVerified",
+      "kind": "rule",
+      "title": "Every call to a third party is verified",
+      "status": "held",
+      "fields": {
+        "owner": "karim",
+        "check": "(function)"
+      }
+    },
+    {
+      "id": "architecture.UtilitiesWithoutWorld",
+      "kind": "rule",
+      "title": "Utilities do not touch the world",
+      "status": "held",
+      "fields": {
+        "owner": "karim",
+        "check": "(function)"
+      }
+    },
+    {
+      "id": "cancellation.CancelWithoutStress",
+      "kind": "goal",
+      "title": "Cancel without stress",
+      "fields": {}
+    },
+    {
+      "id": "cancellation.FreeCancellationPeriod",
+      "kind": "decision",
+      "title": "Free cancellation period",
+      "fields": {
+        "owner": "lea",
+        "value": {
+          "fast": 300,
+          "normal": 600,
+          "ultra": 900
+        },
+        "review": "2027-03",
+        "range": [
+          300,
+          1200
+        ],
+        "rejected": {
+          "30 min": "blocks the chargers at peak hours"
+        }
+      }
+    },
+    {
+      "id": "cancellation.IdempotentProvider",
+      "kind": "assumption",
+      "title": "Idempotent payment provider",
+      "status": "unknown",
+      "fields": {
+        "owner": "karim",
+        "expires": "2026-12-01"
+      }
+    },
+    {
+      "id": "cancellation.ImmediateRefund",
+      "kind": "slo",
+      "title": "Immediate refund",
+      "status": "unknown",
+      "fields": {
+        "owner": "karim",
+        "signal": "refunds.initiated.latency",
+        "percentile": 99,
+        "threshold": 2,
+        "window": 3600
+      }
+    },
+    {
+      "id": "cancellation.LateFee",
+      "kind": "decision",
+      "title": "Late cancellation fee",
+      "fields": {
+        "owner": "lea",
+        "value": 0.5,
+        "rejected": {
+          "100%": "perceived as punitive"
+        }
+      }
+    },
+    {
+      "id": "cancellation.Refund",
+      "kind": "requirement",
+      "title": "Refund on cancellation",
+      "status": "held",
+      "fields": {
+        "rule": "(function)"
+      }
+    },
+    {
+      "id": "cancellation.RefundCriteria",
+      "kind": "acceptance",
+      "title": "Refund criteria",
+      "status": "held",
+      "fields": {
+        "owner": "lea",
+        "criteria": "(function)"
+      }
+    },
+    {
+      "id": "infra.BackupRetention",
+      "kind": "decision",
+      "title": "Backup retention",
+      "fields": {
+        "owner": "karim",
+        "value": 7,
+        "range": [
+          7,
+          35
+        ]
+      }
+    },
+    {
+      "id": "infra.CancellationsSql",
+      "kind": "function",
+      "title": "Cancellations in SQL",
+      "status": "unknown",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "database": "architecture.Database",
+          "dialect": "architecture.Dialect",
+          "tables": "infra.ReservationTables",
+          "cancelled": "infra.CancelledStatus"
+        },
+        "body": {
+          "file": "./code/cancellations-sql.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
+      "id": "infra.CancelledStatus",
+      "kind": "decision",
+      "title": "Status of a cancelled reservation",
+      "fields": {
+        "owner": "karim",
+        "value": "cancelled"
+      }
+    },
+    {
+      "id": "infra.DatabaseAddress",
+      "kind": "decision",
+      "title": "Production database address",
+      "fields": {
+        "owner": "karim",
+        "value": "postgres://%s.internal:5432/%s"
+      }
+    },
+    {
+      "id": "infra.DatabaseName",
+      "kind": "decision",
+      "title": "Production database name",
+      "fields": {
+        "owner": "karim",
+        "value": "reservations"
+      }
+    },
+    {
+      "id": "infra.DatabaseSize",
+      "kind": "decision",
+      "title": "Production database size",
+      "fields": {
+        "owner": "karim",
+        "value": {
+          "cpu": 2,
+          "memory_gb": 4
+        }
+      }
+    },
+    {
+      "id": "infra.FileDatabase",
+      "kind": "implementation",
+      "title": "Local SQLite database",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "path": "infra.LocalDatabasePath",
+          "tables": "infra.ReservationTables",
+          "dialect": "architecture.Dialect",
+          "reservations": "infra.InitialReservations",
+          "sqlite": "standards.Sqlite"
+        },
+        "body": {
+          "file": "./code/sqlite-database.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
+      "id": "infra.HttpPayment",
+      "kind": "implementation",
+      "title": "Real payment provider",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "url": "infra.ProviderUrl",
+          "api": "standards.PaymentProviderApi",
+          "http": "standards.Http",
+          "mediaTypes": "standards.MediaTypes",
+          "uri": "standards.Uri",
+          "messages": "messages.ApiMessages"
+        },
+        "body": {
+          "file": "./code/http-payment.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
+      "id": "infra.HttpServerChoice",
+      "kind": "binding",
+      "title": "Node's HTTP server",
+      "status": "unknown",
+      "fields": {
+        "owner": "karim",
+        "context": "The API is a handful of routes: Node's server is enough, and the scenarios call it as clients would.",
+        "rejected": {
+          "A web framework": "a dependency for routing that the route syntax already declares"
+        }
+      }
+    },
+    {
+      "id": "infra.InitialReservations",
+      "kind": "decision",
+      "title": "Initial reservations",
+      "fields": {
+        "owner": "karim",
+        "value": [
+          {
+            "id": "R1",
+            "charger": "normal",
+            "price": 20,
+            "start": "2026-10-20T12:00:00.000Z",
+            "status": "active"
+          },
+          {
+            "id": "R2",
+            "charger": "fast",
+            "price": 30,
+            "start": "2026-10-20T10:04:00.000Z",
+            "status": "active"
+          },
+          {
+            "id": "R3",
+            "charger": "ultra",
+            "price": 40,
+            "start": "2026-10-20T11:00:00.000Z",
+            "status": "active"
+          }
+        ]
+      }
+    },
+    {
+      "id": "infra.InMemoryDatabase",
+      "kind": "implementation",
+      "title": "In-memory SQLite database",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "path": "infra.TestDatabasePath",
+          "tables": "infra.ReservationTables",
+          "dialect": "architecture.Dialect",
+          "reservations": "infra.InitialReservations",
+          "sqlite": "standards.Sqlite"
+        },
+        "body": {
+          "file": "./code/sqlite-database.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
+      "id": "infra.Local",
+      "kind": "environment",
+      "title": "Local",
+      "fields": {
+        "owner": "karim"
+      }
+    },
+    {
+      "id": "infra.LocalDatabase",
+      "kind": "binding",
+      "title": "A SQLite file on the developer's machine",
+      "status": "unknown",
+      "fields": {
+        "owner": "karim",
+        "context": "A developer runs the service without installing a database server; the reservations survive a restart.",
+        "rejected": {
+          "Postgres in a container": "one more thing to install and start for a prototype"
+        }
+      }
+    },
+    {
+      "id": "infra.LocalDatabasePath",
+      "kind": "decision",
+      "title": "Local database file",
+      "fields": {
+        "owner": "karim",
+        "value": ".data/reservations.db"
+      }
+    },
+    {
+      "id": "infra.NodeServer",
+      "kind": "implementation",
+      "title": "Node HTTP server",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "port": "architecture.HttpPort",
+          "http": "standards.Http",
+          "mediaTypes": "standards.MediaTypes",
+          "uri": "standards.Uri",
+          "routes": "standards.RouteSyntax",
+          "ending": "infra.ResponseEnding",
+          "messages": "messages.ApiMessages"
+        },
+        "body": {
+          "file": "./code/node-server.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
+      "id": "infra.PostgresDatabase",
+      "kind": "implementation",
+      "title": "Production Postgres database",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "messages": "messages.ApiMessages"
+        },
+        "body": {
+          "file": "./code/postgres-database.ts",
+          "language": "typescript"
+        },
+        "variables": {
+          "name": "infra.DatabaseName",
+          "size": "infra.DatabaseSize",
+          "backup_retention_days": "infra.BackupRetention",
+          "address": "infra.DatabaseAddress"
+        },
+        "provision": {
+          "file": "./infra/postgres-database",
+          "language": "hcl"
+        }
+      }
+    },
+    {
+      "id": "infra.PostgresDialect",
+      "kind": "function",
+      "title": "PostgreSQL's dialect",
+      "status": "unknown",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "types": "sql.PostgresSql",
+          "parameter": "sql.PostgresParameter",
+          "definition": "sql.ColumnDefinition",
+          "createTable": "sql.CreateTable",
+          "countRows": "sql.CountRows",
+          "insertRow": "sql.InsertRow",
+          "selectRows": "sql.SelectRows",
+          "updateRows": "sql.UpdateRows",
+          "columnEquals": "sql.ColumnEquals"
+        },
+        "body": {
+          "file": "./code/sql-dialect.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
+      "id": "infra.Production",
+      "kind": "environment",
+      "title": "Production",
+      "fields": {
+        "owner": "karim"
+      }
+    },
+    {
+      "id": "infra.ProductionDatabase",
+      "kind": "binding",
+      "title": "Postgres in production",
+      "status": "unknown",
+      "fields": {
+        "owner": "karim",
+        "context": "Several instances of the service write at once, and the provider keeps the backups.",
+        "consequences": "Provisioned by Terraform with the graph's values; its statements come from PostgreSQL's dialect, which cannot be mixed with SQLite's. The prototype ships no Postgres driver yet.",
+        "rejected": {
+          "SQLite in production": "one writer at a time, and the backups would be ours"
+        }
+      }
+    },
+    {
+      "id": "infra.ProviderApi",
+      "kind": "binding",
+      "title": "The provider's API in production",
+      "status": "unknown",
+      "fields": {
+        "owner": "karim",
+        "context": "Refunds go through the payment provider, over HTTPS, with an idempotency key."
+      }
+    },
+    {
+      "id": "infra.ProviderUrl",
+      "kind": "decision",
+      "title": "Payment provider address",
+      "fields": {
+        "owner": "karim",
+        "value": "https://payments.example.com/v1"
+      }
+    },
+    {
+      "id": "infra.RealClock",
+      "kind": "binding",
+      "title": "The system clock elsewhere",
+      "status": "unknown",
+      "fields": {
+        "owner": "karim",
+        "context": "Outside the scenarios, the fee is computed at the real instant."
+      }
+    },
+    {
+      "id": "infra.ReservationsSql",
+      "kind": "function",
+      "title": "Reservations in SQL",
+      "status": "unknown",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "database": "architecture.ReadOnlyDatabase",
+          "dialect": "architecture.Dialect",
+          "tables": "infra.ReservationTables"
+        },
+        "body": {
+          "file": "./code/reservations-sql.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
+      "id": "infra.ReservationTables",
+      "kind": "decision",
+      "title": "Tables of the service",
+      "fields": {
+        "owner": "karim",
+        "value": {
+          "reservations": {
+            "name": "reservations",
+            "key": "id",
+            "columns": {
+              "id": "text",
+              "charger": "text",
+              "price": "number",
+              "start": "text",
+              "status": "text"
+            }
+          },
+          "refunds": {
+            "name": "refunds",
+            "key": "reservation",
+            "columns": {
+              "reservation": "text",
+              "amount": "number",
+              "reference": "text"
+            },
+            "references": {
+              "reservation": {
+                "table": "reservations",
+                "column": "id"
+              }
+            }
+          },
+          "status": "status",
+          "count": "n"
+        }
+      }
+    },
+    {
+      "id": "infra.ResponseEnding",
+      "kind": "decision",
+      "title": "End of a response",
+      "fields": {
+        "owner": "karim",
+        "value": "\n"
+      }
+    },
+    {
+      "id": "infra.ScenarioClock",
+      "kind": "binding",
+      "title": "A stopped clock in the scenarios",
+      "status": "unknown",
+      "fields": {
+        "owner": "karim",
+        "context": "The cancellation fee depends on the time left before the start: a scenario needs the same instant every time."
+      }
+    },
+    {
+      "id": "infra.ScenarioDatabase",
+      "kind": "binding",
+      "title": "An in-memory SQLite database for the scenarios",
+      "status": "unknown",
+      "fields": {
+        "owner": "karim",
+        "context": "Every scenario starts from the initial reservations and leaves nothing behind.",
+        "rejected": {
+          "A shared file": "a scenario would see what the previous one wrote"
+        }
+      }
+    },
+    {
+      "id": "infra.SimulatedPayment",
+      "kind": "function",
+      "title": "Simulated payment provider",
+      "status": "unknown",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "prefix": "infra.SimulatedReference"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "infra.SimulatedProvider",
+      "kind": "binding",
+      "title": "A simulated payment provider outside production",
+      "status": "unknown",
+      "fields": {
+        "owner": "karim",
+        "context": "Refunds must be tried without money moving, and a scenario reads the calls that were made.",
+        "rejected": {
+          "The provider's sandbox": "a network call in every scenario, and an account to keep"
+        }
+      }
+    },
+    {
+      "id": "infra.SimulatedReference",
+      "kind": "decision",
+      "title": "References of the simulated provider",
+      "fields": {
+        "owner": "karim",
+        "value": "simulated-"
+      }
+    },
+    {
+      "id": "infra.SqliteDialect",
+      "kind": "function",
+      "title": "SQLite's dialect",
+      "status": "unknown",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "types": "sql.SqliteSql",
+          "parameter": "sql.SqliteParameter",
+          "definition": "sql.ColumnDefinition",
+          "createTable": "sql.CreateTable",
+          "countRows": "sql.CountRows",
+          "insertRow": "sql.InsertRow",
+          "selectRows": "sql.SelectRows",
+          "updateRows": "sql.UpdateRows",
+          "columnEquals": "sql.ColumnEquals"
+        },
+        "body": {
+          "file": "./code/sql-dialect.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
+      "id": "infra.SqlRepositories",
+      "kind": "binding",
+      "title": "Reservations and cancellations as repositories over SQL",
+      "status": "unknown",
+      "fields": {
+        "owner": "karim",
+        "context": "Reading a reservation and cancelling one ask for the domain's records, never for SQL: the repositories turn them into statements over a database port, whichever database answers it.",
+        "consequences": "The repositories hold no driver and write no SQL: they ask the dialect port for their statements, and the database port runs them. Changing the database changes its choice (the driver and the dialect together), not them.",
+        "rejected": {
+          "Statements in the entry points": "the cancellation would know the tables and the dialect"
+        }
+      }
+    },
+    {
+      "id": "infra.StoppedClock",
+      "kind": "function",
+      "title": "Stopped clock",
+      "status": "unknown",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "instant": "infra.TestInstant"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "infra.SystemClock",
+      "kind": "implementation",
+      "title": "System clock",
+      "fields": {
+        "owner": "karim",
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "infra.Test",
+      "kind": "environment",
+      "title": "Test",
+      "fields": {
+        "owner": "karim"
+      }
+    },
+    {
+      "id": "infra.TestDatabasePath",
+      "kind": "decision",
+      "title": "Test database",
+      "fields": {
+        "owner": "karim",
+        "value": ":memory:"
+      }
+    },
+    {
+      "id": "infra.TestInstant",
+      "kind": "decision",
+      "title": "Test instant",
+      "fields": {
+        "owner": "karim",
+        "value": "2026-10-20T10:00:00.000Z"
+      }
+    },
+    {
+      "id": "legal.FeeCap",
+      "kind": "decision",
+      "title": "Legal cap on cancellation fees",
+      "fields": {
+        "owner": "karim",
+        "value": "TODO"
+      }
+    },
+    {
+      "id": "messages.ApiMessages",
+      "kind": "catalog",
+      "title": "Messages of the API",
+      "fields": {
+        "owner": "karim",
+        "messages": "(function)"
+      }
+    },
+    {
+      "id": "messages.Language",
+      "kind": "decision",
+      "title": "Language",
+      "fields": {
+        "owner": "karim",
+        "value": {
+          "tag": "en-GB"
+        }
+      }
+    },
+    {
+      "id": "messages.ScenarioChecks",
+      "kind": "catalog",
+      "title": "Checks of the scenarios",
+      "fields": {
+        "owner": "lea",
+        "messages": "(function)"
+      }
+    },
+    {
+      "id": "patterns.AbstractFactory",
+      "kind": "pattern",
+      "title": "Abstract Factory",
+      "status": "held",
+      "fields": {
+        "owner": "karim",
+        "source": "E. Gamma, R. Helm, R. Johnson, J. Vlissides, Design Patterns (1994), Abstract Factory",
+        "requires": {
+          "family": true
+        }
+      }
+    },
+    {
+      "id": "patterns.Adapter",
+      "kind": "pattern",
+      "title": "Adapter",
+      "status": "held",
+      "fields": {
+        "owner": "karim",
+        "source": "A. Cockburn, Hexagonal architecture (ports and adapters), 2005",
+        "url": "https://alistair.cockburn.us/hexagonal-architecture/",
+        "requires": {
+          "platform": true
+        }
+      }
+    },
+    {
+      "id": "patterns.Repository",
+      "kind": "pattern",
+      "title": "Repository",
+      "status": "held",
+      "fields": {
+        "owner": "karim",
+        "source": "M. Fowler, Patterns of Enterprise Application Architecture (2002), Repository",
+        "url": "https://martinfowler.com/eaaCatalog/repository.html",
+        "requires": {
+          "pure": true,
+          "layered": true
+        }
+      }
+    },
+    {
+      "id": "patterns.Strategy",
+      "kind": "pattern",
+      "title": "Strategy",
+      "status": "held",
+      "fields": {
+        "owner": "karim",
+        "source": "E. Gamma, R. Helm, R. Johnson, J. Vlissides, Design Patterns (1994), Strategy",
+        "requires": {
+          "pure": true
+        }
+      }
+    },
+    {
+      "id": "principles.RefundOnce",
+      "kind": "adr",
+      "title": "A cancellation refunds once",
+      "status": "held",
+      "fields": {
+        "owner": "karim",
+        "context": "A driver's phone repeats a request when the network drops; the provider must not refund twice.",
+        "consequences": "The refund is recorded with the cancellation, in one transaction; a repeated request finds it and returns it without calling the provider.",
+        "rejected": {
+          "Locking the reservation while refunding": "the lock is lost with the connection, and the provider is outside the transaction"
+        }
+      }
+    },
+    {
+      "id": "principles.SecretsOutOfTheGraph",
+      "kind": "adr",
+      "title": "Secrets stay out of the graph",
+      "status": "unknown",
+      "fields": {
+        "owner": "karim",
+        "context": "The graph is read by many people, and every value of it shows in the documents and the page.",
+        "consequences": "Without a key in the environment, the real provider makes no call and says why.",
+        "rejected": {
+          "The key as a decision": "every document and the page would show it"
+        }
+      }
+    },
+    {
+      "id": "scenarios.ComplianceScenario",
+      "kind": "scenario",
+      "title": "Every reservation is refunded according to the rule",
+      "status": "held",
+      "fields": {
+        "owner": "lea",
+        "deps": {
+          "cancel": "api.CancelReservation",
+          "refund": "(function)",
+          "initial": "infra.InitialReservations",
+          "instant": "infra.TestInstant",
+          "says": "messages.ScenarioChecks"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "scenarios.ReadScenario",
+      "kind": "scenario",
+      "title": "Read a reservation",
+      "status": "held",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "read": "api.ReadReservation",
+          "initial": "infra.InitialReservations",
+          "freePeriod": "cancellation.FreeCancellationPeriod",
+          "unknown": "scenarios.UnknownReservation",
+          "http": "standards.Http",
+          "says": "messages.ScenarioChecks"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "scenarios.RepeatedCancellationScenario",
+      "kind": "scenario",
+      "title": "Cancelling twice refunds only once",
+      "status": "held",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "cancel": "api.CancelReservation",
+          "log": "architecture.PaymentLog",
+          "refund": "(function)",
+          "initial": "infra.InitialReservations",
+          "instant": "infra.TestInstant",
+          "http": "standards.Http",
+          "says": "messages.ScenarioChecks"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "scenarios.UnknownReservation",
+      "kind": "decision",
+      "title": "Unknown reservation",
+      "fields": {
+        "owner": "karim",
+        "value": "R404"
+      }
+    },
+    {
+      "id": "sql.ColumnDefinition",
+      "kind": "syntax",
+      "title": "Column definition",
+      "status": "held",
+      "fields": {
+        "owner": "karim",
+        "section": "CREATE TABLE: column definitions and constraints",
+        "constants": {},
+        "deps": {
+          "standard": "sql.Sql"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "id",
+              "TEXT",
+              true
+            ],
+            "output": "id TEXT PRIMARY KEY"
+          },
+          {
+            "input": [
+              "price",
+              "REAL",
+              false
+            ],
+            "output": "price REAL NOT NULL"
+          },
+          {
+            "input": [
+              "reservation",
+              "TEXT",
+              true,
+              {
+                "table": "reservations",
+                "column": "id"
+              }
+            ],
+            "output": "reservation TEXT PRIMARY KEY REFERENCES reservations(id)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sql.ColumnEquals",
+      "kind": "syntax",
+      "title": "Condition on a column",
+      "status": "held",
+      "fields": {
+        "owner": "karim",
+        "section": "Comparison predicates",
+        "constants": {},
+        "deps": {
+          "standard": "sql.Sql"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "id",
+              "?"
+            ],
+            "output": "id = ?"
+          },
+          {
+            "input": [
+              "id",
+              "$2"
+            ],
+            "output": "id = $2"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sql.CountRows",
+      "kind": "syntax",
+      "title": "Count",
+      "status": "held",
+      "fields": {
+        "owner": "karim",
+        "section": "SELECT with an aggregate function",
+        "constants": {},
+        "deps": {
+          "standard": "sql.Sql"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "reservations",
+              "n"
+            ],
+            "output": "SELECT count(*) AS n FROM reservations"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sql.CreateTable",
+      "kind": "syntax",
+      "title": "Table creation",
+      "status": "held",
+      "fields": {
+        "owner": "karim",
+        "section": "CREATE TABLE",
+        "constants": {},
+        "deps": {
+          "standard": "sql.Sql",
+          "list": "sql.SqlList"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "refunds",
+              [
+                "reservation TEXT PRIMARY KEY",
+                "amount REAL NOT NULL"
+              ]
+            ],
+            "output": "CREATE TABLE IF NOT EXISTS refunds (reservation TEXT PRIMARY KEY, amount REAL NOT NULL)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sql.InsertRow",
+      "kind": "syntax",
+      "title": "Insertion",
+      "status": "held",
+      "fields": {
+        "owner": "karim",
+        "section": "INSERT",
+        "constants": {},
+        "deps": {
+          "standard": "sql.Sql",
+          "list": "sql.SqlList"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "refunds",
+              [
+                "reservation",
+                "amount"
+              ],
+              [
+                "?",
+                "?"
+              ]
+            ],
+            "output": "INSERT INTO refunds (reservation, amount) VALUES (?, ?)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sql.PostgresParameter",
+      "kind": "syntax",
+      "title": "PostgreSQL parameter",
+      "status": "held",
+      "fields": {
+        "owner": "karim",
+        "section": "Positional parameters ($n)",
+        "constants": {},
+        "deps": {
+          "standard": "sql.PostgresSql"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              0
+            ],
+            "output": "$1"
+          },
+          {
+            "input": [
+              2
+            ],
+            "output": "$3"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sql.PostgresSql",
+      "kind": "standard",
+      "title": "PostgreSQL's dialect",
+      "fields": {
+        "owner": "karim",
+        "source": "PostgreSQL: Value Expressions, Positional Parameters ($n); Numeric Types (double precision); Character Types (text)",
+        "url": "https://www.postgresql.org/docs/current/sql-expressions.html#SQL-EXPRESSIONS-PARAMETERS-POSITIONAL",
+        "constants": {
+          "parameter": {
+            "value": "$",
+            "meaning": "Opens a positional parameter: then its position"
+          },
+          "first": {
+            "value": 1,
+            "meaning": "The position of the first parameter"
+          },
+          "text": {
+            "value": "TEXT",
+            "meaning": "The type of a column of text"
+          },
+          "number": {
+            "value": "DOUBLE PRECISION",
+            "meaning": "The type of a column of numbers (an 8-byte floating point number, as SQLite's REAL)"
+          }
+        }
+      }
+    },
+    {
+      "id": "sql.SelectRows",
+      "kind": "syntax",
+      "title": "Selection",
+      "status": "held",
+      "fields": {
+        "owner": "karim",
+        "section": "SELECT",
+        "constants": {},
+        "deps": {
+          "standard": "sql.Sql",
+          "list": "sql.SqlList"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              [
+                "id",
+                "status"
+              ],
+              "reservations",
+              "id = ?"
+            ],
+            "output": "SELECT id, status FROM reservations WHERE id = ?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sql.Sql",
+      "kind": "standard",
+      "title": "SQL",
+      "fields": {
+        "owner": "karim",
+        "source": "ISO/IEC 9075 (SQL): SELECT, INSERT, UPDATE, CREATE TABLE; CREATE TABLE IF NOT EXISTS, as SQLite and PostgreSQL both accept it",
+        "url": "https://www.postgresql.org/docs/current/sql-commands.html",
+        "constants": {
+          "space": {
+            "value": " ",
+            "meaning": "Separates the words of a statement"
+          },
+          "comma": {
+            "value": ",",
+            "meaning": "Separates the items of a list (columns, values, definitions)"
+          },
+          "open": {
+            "value": "(",
+            "meaning": "Opens a list of columns, of values or of definitions"
+          },
+          "close": {
+            "value": ")",
+            "meaning": "Closes it"
+          },
+          "equals": {
+            "value": "=",
+            "meaning": "Compares a column with a value, or gives it one"
+          },
+          "select": {
+            "value": "SELECT",
+            "meaning": "Reads columns"
+          },
+          "from": {
+            "value": "FROM",
+            "meaning": "Names the table read"
+          },
+          "where": {
+            "value": "WHERE",
+            "meaning": "Introduces the condition the rows must meet"
+          },
+          "insertInto": {
+            "value": "INSERT INTO",
+            "meaning": "Adds a row to a table"
+          },
+          "values": {
+            "value": "VALUES",
+            "meaning": "Introduces the values of the row"
+          },
+          "update": {
+            "value": "UPDATE",
+            "meaning": "Changes rows of a table"
+          },
+          "set": {
+            "value": "SET",
+            "meaning": "Introduces the columns changed"
+          },
+          "createTable": {
+            "value": "CREATE TABLE IF NOT EXISTS",
+            "meaning": "Creates a table, unless it exists"
+          },
+          "primaryKey": {
+            "value": "PRIMARY KEY",
+            "meaning": "The column that identifies a row"
+          },
+          "notNull": {
+            "value": "NOT NULL",
+            "meaning": "A column that always has a value"
+          },
+          "references": {
+            "value": "REFERENCES",
+            "meaning": "A column whose value is the key of a row of another table"
+          },
+          "countAll": {
+            "value": "count(*)",
+            "meaning": "The number of rows"
+          },
+          "as": {
+            "value": "AS",
+            "meaning": "Names a result column"
+          }
+        }
+      }
+    },
+    {
+      "id": "sql.SqliteParameter",
+      "kind": "syntax",
+      "title": "SQLite parameter",
+      "status": "held",
+      "fields": {
+        "owner": "karim",
+        "section": "Parameters (?)",
+        "constants": {},
+        "deps": {
+          "standard": "sql.SqliteSql"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              0
+            ],
+            "output": "?"
+          },
+          {
+            "input": [
+              2
+            ],
+            "output": "?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sql.SqliteSql",
+      "kind": "standard",
+      "title": "SQLite's dialect",
+      "fields": {
+        "owner": "karim",
+        "source": "SQLite: SQL As Understood By SQLite, Parameters (?); Datatypes In SQLite (TEXT, REAL)",
+        "url": "https://www.sqlite.org/lang_expr.html#varparam",
+        "constants": {
+          "parameter": {
+            "value": "?",
+            "meaning": "A parameter: the next value given with the statement"
+          },
+          "text": {
+            "value": "TEXT",
+            "meaning": "The type of a column of text"
+          },
+          "number": {
+            "value": "REAL",
+            "meaning": "The type of a column of numbers (an 8-byte floating point number)"
+          }
+        }
+      }
+    },
+    {
+      "id": "sql.SqlList",
+      "kind": "syntax",
+      "title": "List",
+      "status": "held",
+      "fields": {
+        "owner": "karim",
+        "section": "Lists of columns and values",
+        "constants": {},
+        "deps": {
+          "standard": "sql.Sql"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              [
+                "id",
+                "charger"
+              ]
+            ],
+            "output": "id, charger"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sql.UpdateRows",
+      "kind": "syntax",
+      "title": "Update",
+      "status": "held",
+      "fields": {
+        "owner": "karim",
+        "section": "UPDATE",
+        "constants": {},
+        "deps": {
+          "standard": "sql.Sql",
+          "list": "sql.SqlList"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "reservations",
+              [
+                "status = ?"
+              ],
+              "id = ?"
+            ],
+            "output": "UPDATE reservations SET status = ? WHERE id = ?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "standards.Http",
+      "kind": "standard",
+      "title": "HTTP",
+      "fields": {
+        "owner": "karim",
+        "source": "RFC 9110, HTTP Semantics: § 9 methods, § 15 status codes, § 8.3 Content-Type, § 11.6.2 Authorization; RFC 6750, § 2.1 (Bearer)",
+        "url": "https://www.rfc-editor.org/rfc/rfc9110",
+        "constants": {
+          "ok": {
+            "value": 200,
+            "meaning": "The request succeeded"
+          },
+          "notFound": {
+            "value": 404,
+            "meaning": "Nothing answers at this address, or nothing has this identifier"
+          },
+          "serverError": {
+            "value": 500,
+            "meaning": "The server failed"
+          },
+          "unavailable": {
+            "value": 503,
+            "meaning": "The service cannot answer for now"
+          },
+          "post": {
+            "value": "POST",
+            "meaning": "Asks the server to act"
+          },
+          "contentType": {
+            "value": "content-type",
+            "meaning": "The media type of the body"
+          },
+          "authorization": {
+            "value": "authorization",
+            "meaning": "The credentials of the caller"
+          },
+          "bearer": {
+            "value": "Bearer ",
+            "meaning": "The scheme of a token and its space, before the token"
+          },
+          "scheme": {
+            "value": "http",
+            "meaning": "The scheme of the address the server listens at"
+          }
+        }
+      }
+    },
+    {
+      "id": "standards.MediaTypes",
+      "kind": "standard",
+      "title": "Media types",
+      "fields": {
+        "owner": "karim",
+        "source": "IANA media types registry; RFC 8259, § 11 (application/json)",
+        "url": "https://www.iana.org/assignments/media-types/",
+        "constants": {
+          "json": {
+            "value": "application/json",
+            "meaning": "A body written in JSON"
+          },
+          "jsonUtf8": {
+            "value": "application/json; charset=utf-8",
+            "meaning": "The same, its encoding said"
+          }
+        }
+      }
+    },
+    {
+      "id": "standards.PaymentProviderApi",
+      "kind": "standard",
+      "title": "API of the payment provider",
+      "fields": {
+        "owner": "karim",
+        "source": "The payment provider's API, version 1: refunds",
+        "constants": {
+          "refunds": {
+            "value": "refunds",
+            "meaning": "The path of a refund"
+          },
+          "idempotencyKey": {
+            "value": "idempotency-key",
+            "meaning": "The header of the key: the provider makes one refund per key"
+          }
+        }
+      }
+    },
+    {
+      "id": "standards.RouteSyntax",
+      "kind": "standard",
+      "title": "Paths of entry points",
+      "fields": {
+        "owner": "karim",
+        "source": "Trame, the trigger of an HTTP entry point (kinds/entry-point.ts, http)",
+        "constants": {
+          "separator": {
+            "value": "/",
+            "meaning": "Separates the segments of a path"
+          },
+          "parameter": {
+            "value": ":",
+            "meaning": "Begins a segment that is a parameter: what follows is its name"
+          }
+        }
+      }
+    },
+    {
+      "id": "standards.Sqlite",
+      "kind": "standard",
+      "title": "SQLite",
+      "fields": {
+        "owner": "karim",
+        "source": "SQLite: In-Memory Databases; SQL As Understood By SQLite (BEGIN, COMMIT, ROLLBACK)",
+        "url": "https://www.sqlite.org/inmemorydb.html",
+        "constants": {
+          "memory": {
+            "value": ":memory:",
+            "meaning": "The name that opens a database in memory, new each time"
+          },
+          "begin": {
+            "value": "BEGIN",
+            "meaning": "Starts a transaction"
+          },
+          "commit": {
+            "value": "COMMIT",
+            "meaning": "Makes its writes last"
+          },
+          "rollback": {
+            "value": "ROLLBACK",
+            "meaning": "Undoes them"
+          }
+        }
+      }
+    },
+    {
+      "id": "standards.Uri",
+      "kind": "standard",
+      "title": "URI",
+      "fields": {
+        "owner": "karim",
+        "source": "RFC 3986, § 3 Syntax components; RFC 6761, § 6.3 (localhost)",
+        "url": "https://www.rfc-editor.org/rfc/rfc3986",
+        "constants": {
+          "schemeEnd": {
+            "value": ":",
+            "meaning": "Ends the scheme"
+          },
+          "authority": {
+            "value": "//",
+            "meaning": "Opens the host and its port"
+          },
+          "portSeparator": {
+            "value": ":",
+            "meaning": "Separates the host from its port"
+          },
+          "pathSeparator": {
+            "value": "/",
+            "meaning": "Separates the segments of a path"
+          },
+          "query": {
+            "value": "?",
+            "meaning": "Opens the query, after the path"
+          },
+          "localhost": {
+            "value": "localhost",
+            "meaning": "The machine itself"
+          }
+        }
+      }
+    }
+  ],
+  "edges": [
+    {
+      "from": "api.CancelReservation",
+      "to": "cancellation.Refund",
+      "kind": "serves"
+    },
+    {
+      "from": "api.CancelReservation",
+      "to": "architecture.ReservationsApi",
+      "kind": "in"
+    },
+    {
+      "from": "api.CancelReservation",
+      "to": "architecture.ReservationReading",
+      "kind": "deps"
+    },
+    {
+      "from": "api.CancelReservation",
+      "to": "architecture.Cancellations",
+      "kind": "deps"
+    },
+    {
+      "from": "api.CancelReservation",
+      "to": "architecture.Payment",
+      "kind": "deps"
+    },
+    {
+      "from": "api.CancelReservation",
+      "to": "api.LeadTime",
+      "kind": "deps"
+    },
+    {
+      "from": "api.CancelReservation",
+      "to": "cancellation.Refund",
+      "kind": "deps"
+    },
+    {
+      "from": "api.CancelReservation",
+      "to": "architecture.CancellationKey",
+      "kind": "deps"
+    },
+    {
+      "from": "api.CancelReservation",
+      "to": "standards.Http",
+      "kind": "deps"
+    },
+    {
+      "from": "api.CancelReservation",
+      "to": "messages.ApiMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "api.FreeCancellationEnd",
+      "to": "cancellation.Refund",
+      "kind": "serves"
+    },
+    {
+      "from": "api.FreeCancellationEnd",
+      "to": "cancellation.FreeCancellationPeriod",
+      "kind": "deps"
+    },
+    {
+      "from": "api.LeadTime",
+      "to": "architecture.Clock",
+      "kind": "deps"
+    },
+    {
+      "from": "api.ReadReservation",
+      "to": "cancellation.CancelWithoutStress",
+      "kind": "serves"
+    },
+    {
+      "from": "api.ReadReservation",
+      "to": "architecture.ReservationsApi",
+      "kind": "in"
+    },
+    {
+      "from": "api.ReadReservation",
+      "to": "architecture.ReservationReading",
+      "kind": "deps"
+    },
+    {
+      "from": "api.ReadReservation",
+      "to": "api.FreeCancellationEnd",
+      "kind": "deps"
+    },
+    {
+      "from": "api.ReadReservation",
+      "to": "standards.Http",
+      "kind": "deps"
+    },
+    {
+      "from": "api.ReadReservation",
+      "to": "messages.ApiMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "architecture.ReservationsApi",
+      "to": "architecture.HttpExposure",
+      "kind": "deps"
+    },
+    {
+      "from": "cancellation.ImmediateRefund",
+      "to": "cancellation.Refund",
+      "kind": "constrains"
+    },
+    {
+      "from": "cancellation.LateFee",
+      "to": "legal.FeeCap",
+      "kind": "bounded"
+    },
+    {
+      "from": "cancellation.Refund",
+      "to": "cancellation.CancelWithoutStress",
+      "kind": "refines"
+    },
+    {
+      "from": "cancellation.Refund",
+      "to": "cancellation.IdempotentProvider",
+      "kind": "assumes"
+    },
+    {
+      "from": "cancellation.RefundCriteria",
+      "to": "cancellation.Refund",
+      "kind": "accepts"
+    },
+    {
+      "from": "infra.CancellationsSql",
+      "to": "architecture.Cancellations",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.CancellationsSql",
+      "to": "architecture.Database",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.CancellationsSql",
+      "to": "architecture.Dialect",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.CancellationsSql",
+      "to": "infra.ReservationTables",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.CancellationsSql",
+      "to": "infra.CancelledStatus",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.FileDatabase",
+      "to": "architecture.Database",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.FileDatabase",
+      "to": "architecture.ReadOnlyDatabase",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.FileDatabase",
+      "to": "infra.LocalDatabasePath",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.FileDatabase",
+      "to": "infra.ReservationTables",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.FileDatabase",
+      "to": "architecture.Dialect",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.FileDatabase",
+      "to": "infra.InitialReservations",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.FileDatabase",
+      "to": "standards.Sqlite",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.HttpPayment",
+      "to": "architecture.Payment",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.HttpPayment",
+      "to": "infra.ProviderUrl",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.HttpPayment",
+      "to": "standards.PaymentProviderApi",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.HttpPayment",
+      "to": "standards.Http",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.HttpPayment",
+      "to": "standards.MediaTypes",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.HttpPayment",
+      "to": "standards.Uri",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.HttpPayment",
+      "to": "messages.ApiMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.HttpServerChoice",
+      "to": "infra.NodeServer",
+      "kind": "chooses"
+    },
+    {
+      "from": "infra.HttpServerChoice",
+      "to": "infra.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.HttpServerChoice",
+      "to": "infra.Local",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.HttpServerChoice",
+      "to": "infra.Production",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.HttpServerChoice",
+      "to": "patterns.Adapter",
+      "kind": "follows"
+    },
+    {
+      "from": "infra.InMemoryDatabase",
+      "to": "architecture.Database",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.InMemoryDatabase",
+      "to": "architecture.ReadOnlyDatabase",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.InMemoryDatabase",
+      "to": "infra.TestDatabasePath",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.InMemoryDatabase",
+      "to": "infra.ReservationTables",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.InMemoryDatabase",
+      "to": "architecture.Dialect",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.InMemoryDatabase",
+      "to": "infra.InitialReservations",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.InMemoryDatabase",
+      "to": "standards.Sqlite",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.LocalDatabase",
+      "to": "infra.FileDatabase",
+      "kind": "chooses"
+    },
+    {
+      "from": "infra.LocalDatabase",
+      "to": "infra.SqliteDialect",
+      "kind": "chooses"
+    },
+    {
+      "from": "infra.LocalDatabase",
+      "to": "infra.Local",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.LocalDatabase",
+      "to": "patterns.AbstractFactory",
+      "kind": "follows"
+    },
+    {
+      "from": "infra.NodeServer",
+      "to": "architecture.HttpExposure",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.NodeServer",
+      "to": "architecture.HttpPort",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.NodeServer",
+      "to": "standards.Http",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.NodeServer",
+      "to": "standards.MediaTypes",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.NodeServer",
+      "to": "standards.Uri",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.NodeServer",
+      "to": "standards.RouteSyntax",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.NodeServer",
+      "to": "infra.ResponseEnding",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.NodeServer",
+      "to": "messages.ApiMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.PostgresDatabase",
+      "to": "architecture.Database",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.PostgresDatabase",
+      "to": "architecture.ReadOnlyDatabase",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.PostgresDatabase",
+      "to": "messages.ApiMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.PostgresDatabase",
+      "to": "infra.DatabaseName",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.PostgresDatabase",
+      "to": "infra.DatabaseSize",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.PostgresDatabase",
+      "to": "infra.BackupRetention",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.PostgresDatabase",
+      "to": "infra.DatabaseAddress",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.PostgresDialect",
+      "to": "architecture.Dialect",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.PostgresDialect",
+      "to": "sql.PostgresSql",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.PostgresDialect",
+      "to": "sql.PostgresParameter",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.PostgresDialect",
+      "to": "sql.ColumnDefinition",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.PostgresDialect",
+      "to": "sql.CreateTable",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.PostgresDialect",
+      "to": "sql.CountRows",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.PostgresDialect",
+      "to": "sql.InsertRow",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.PostgresDialect",
+      "to": "sql.SelectRows",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.PostgresDialect",
+      "to": "sql.UpdateRows",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.PostgresDialect",
+      "to": "sql.ColumnEquals",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.ProductionDatabase",
+      "to": "infra.PostgresDatabase",
+      "kind": "chooses"
+    },
+    {
+      "from": "infra.ProductionDatabase",
+      "to": "infra.PostgresDialect",
+      "kind": "chooses"
+    },
+    {
+      "from": "infra.ProductionDatabase",
+      "to": "infra.Production",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.ProductionDatabase",
+      "to": "patterns.AbstractFactory",
+      "kind": "follows"
+    },
+    {
+      "from": "infra.ProviderApi",
+      "to": "infra.HttpPayment",
+      "kind": "chooses"
+    },
+    {
+      "from": "infra.ProviderApi",
+      "to": "infra.Production",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.ProviderApi",
+      "to": "patterns.Adapter",
+      "kind": "follows"
+    },
+    {
+      "from": "infra.RealClock",
+      "to": "infra.SystemClock",
+      "kind": "chooses"
+    },
+    {
+      "from": "infra.RealClock",
+      "to": "infra.Local",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.RealClock",
+      "to": "infra.Production",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.RealClock",
+      "to": "patterns.Adapter",
+      "kind": "follows"
+    },
+    {
+      "from": "infra.ReservationsSql",
+      "to": "architecture.ReservationReading",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.ReservationsSql",
+      "to": "architecture.ReadOnlyDatabase",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.ReservationsSql",
+      "to": "architecture.Dialect",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.ReservationsSql",
+      "to": "infra.ReservationTables",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.ScenarioClock",
+      "to": "infra.StoppedClock",
+      "kind": "chooses"
+    },
+    {
+      "from": "infra.ScenarioClock",
+      "to": "infra.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.ScenarioClock",
+      "to": "patterns.Strategy",
+      "kind": "follows"
+    },
+    {
+      "from": "infra.ScenarioDatabase",
+      "to": "infra.InMemoryDatabase",
+      "kind": "chooses"
+    },
+    {
+      "from": "infra.ScenarioDatabase",
+      "to": "infra.SqliteDialect",
+      "kind": "chooses"
+    },
+    {
+      "from": "infra.ScenarioDatabase",
+      "to": "infra.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.ScenarioDatabase",
+      "to": "patterns.AbstractFactory",
+      "kind": "follows"
+    },
+    {
+      "from": "infra.SimulatedPayment",
+      "to": "architecture.Payment",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.SimulatedPayment",
+      "to": "architecture.PaymentLog",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.SimulatedPayment",
+      "to": "infra.SimulatedReference",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.SimulatedProvider",
+      "to": "infra.SimulatedPayment",
+      "kind": "chooses"
+    },
+    {
+      "from": "infra.SimulatedProvider",
+      "to": "infra.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.SimulatedProvider",
+      "to": "infra.Local",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.SimulatedProvider",
+      "to": "patterns.Strategy",
+      "kind": "follows"
+    },
+    {
+      "from": "infra.SqliteDialect",
+      "to": "architecture.Dialect",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.SqliteDialect",
+      "to": "sql.SqliteSql",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.SqliteDialect",
+      "to": "sql.SqliteParameter",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.SqliteDialect",
+      "to": "sql.ColumnDefinition",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.SqliteDialect",
+      "to": "sql.CreateTable",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.SqliteDialect",
+      "to": "sql.CountRows",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.SqliteDialect",
+      "to": "sql.InsertRow",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.SqliteDialect",
+      "to": "sql.SelectRows",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.SqliteDialect",
+      "to": "sql.UpdateRows",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.SqliteDialect",
+      "to": "sql.ColumnEquals",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.SqlRepositories",
+      "to": "infra.ReservationsSql",
+      "kind": "chooses"
+    },
+    {
+      "from": "infra.SqlRepositories",
+      "to": "infra.CancellationsSql",
+      "kind": "chooses"
+    },
+    {
+      "from": "infra.SqlRepositories",
+      "to": "infra.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.SqlRepositories",
+      "to": "infra.Local",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.SqlRepositories",
+      "to": "infra.Production",
+      "kind": "environments"
+    },
+    {
+      "from": "infra.SqlRepositories",
+      "to": "patterns.Repository",
+      "kind": "follows"
+    },
+    {
+      "from": "infra.StoppedClock",
+      "to": "architecture.Clock",
+      "kind": "implements"
+    },
+    {
+      "from": "infra.StoppedClock",
+      "to": "infra.TestInstant",
+      "kind": "deps"
+    },
+    {
+      "from": "infra.SystemClock",
+      "to": "architecture.Clock",
+      "kind": "implements"
+    },
+    {
+      "from": "messages.ApiMessages",
+      "to": "messages.Language",
+      "kind": "language"
+    },
+    {
+      "from": "messages.ScenarioChecks",
+      "to": "messages.Language",
+      "kind": "language"
+    },
+    {
+      "from": "principles.RefundOnce",
+      "to": "cancellation.CancelWithoutStress",
+      "kind": "serves"
+    },
+    {
+      "from": "principles.RefundOnce",
+      "to": "api.CancelReservation",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.RefundOnce",
+      "to": "architecture.CancellationKey",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.RefundOnce",
+      "to": "scenarios.RepeatedCancellationScenario",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.SecretsOutOfTheGraph",
+      "to": "cancellation.CancelWithoutStress",
+      "kind": "serves"
+    },
+    {
+      "from": "principles.SecretsOutOfTheGraph",
+      "to": "infra.HttpPayment",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "scenarios.ComplianceScenario",
+      "to": "api.CancelReservation",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.ComplianceScenario",
+      "to": "cancellation.Refund",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.ComplianceScenario",
+      "to": "infra.Test",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.ComplianceScenario",
+      "to": "api.CancelReservation",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ComplianceScenario",
+      "to": "cancellation.Refund",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ComplianceScenario",
+      "to": "infra.InitialReservations",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ComplianceScenario",
+      "to": "infra.TestInstant",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ComplianceScenario",
+      "to": "messages.ScenarioChecks",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ReadScenario",
+      "to": "api.ReadReservation",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.ReadScenario",
+      "to": "infra.Test",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.ReadScenario",
+      "to": "api.ReadReservation",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ReadScenario",
+      "to": "infra.InitialReservations",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ReadScenario",
+      "to": "cancellation.FreeCancellationPeriod",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ReadScenario",
+      "to": "scenarios.UnknownReservation",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ReadScenario",
+      "to": "standards.Http",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ReadScenario",
+      "to": "messages.ScenarioChecks",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.RepeatedCancellationScenario",
+      "to": "api.CancelReservation",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.RepeatedCancellationScenario",
+      "to": "infra.Test",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.RepeatedCancellationScenario",
+      "to": "api.CancelReservation",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.RepeatedCancellationScenario",
+      "to": "architecture.PaymentLog",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.RepeatedCancellationScenario",
+      "to": "cancellation.Refund",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.RepeatedCancellationScenario",
+      "to": "infra.InitialReservations",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.RepeatedCancellationScenario",
+      "to": "infra.TestInstant",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.RepeatedCancellationScenario",
+      "to": "standards.Http",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.RepeatedCancellationScenario",
+      "to": "messages.ScenarioChecks",
+      "kind": "deps"
+    },
+    {
+      "from": "sql.ColumnDefinition",
+      "to": "sql.Sql",
+      "kind": "standard"
+    },
+    {
+      "from": "sql.ColumnDefinition",
+      "to": "sql.Sql",
+      "kind": "deps"
+    },
+    {
+      "from": "sql.ColumnEquals",
+      "to": "sql.Sql",
+      "kind": "standard"
+    },
+    {
+      "from": "sql.ColumnEquals",
+      "to": "sql.Sql",
+      "kind": "deps"
+    },
+    {
+      "from": "sql.CountRows",
+      "to": "sql.Sql",
+      "kind": "standard"
+    },
+    {
+      "from": "sql.CountRows",
+      "to": "sql.Sql",
+      "kind": "deps"
+    },
+    {
+      "from": "sql.CreateTable",
+      "to": "sql.Sql",
+      "kind": "standard"
+    },
+    {
+      "from": "sql.CreateTable",
+      "to": "sql.Sql",
+      "kind": "deps"
+    },
+    {
+      "from": "sql.CreateTable",
+      "to": "sql.SqlList",
+      "kind": "deps"
+    },
+    {
+      "from": "sql.InsertRow",
+      "to": "sql.Sql",
+      "kind": "standard"
+    },
+    {
+      "from": "sql.InsertRow",
+      "to": "sql.Sql",
+      "kind": "deps"
+    },
+    {
+      "from": "sql.InsertRow",
+      "to": "sql.SqlList",
+      "kind": "deps"
+    },
+    {
+      "from": "sql.PostgresParameter",
+      "to": "sql.PostgresSql",
+      "kind": "standard"
+    },
+    {
+      "from": "sql.PostgresParameter",
+      "to": "sql.PostgresSql",
+      "kind": "deps"
+    },
+    {
+      "from": "sql.SelectRows",
+      "to": "sql.Sql",
+      "kind": "standard"
+    },
+    {
+      "from": "sql.SelectRows",
+      "to": "sql.Sql",
+      "kind": "deps"
+    },
+    {
+      "from": "sql.SelectRows",
+      "to": "sql.SqlList",
+      "kind": "deps"
+    },
+    {
+      "from": "sql.SqliteParameter",
+      "to": "sql.SqliteSql",
+      "kind": "standard"
+    },
+    {
+      "from": "sql.SqliteParameter",
+      "to": "sql.SqliteSql",
+      "kind": "deps"
+    },
+    {
+      "from": "sql.SqlList",
+      "to": "sql.Sql",
+      "kind": "standard"
+    },
+    {
+      "from": "sql.SqlList",
+      "to": "sql.Sql",
+      "kind": "deps"
+    },
+    {
+      "from": "sql.UpdateRows",
+      "to": "sql.Sql",
+      "kind": "standard"
+    },
+    {
+      "from": "sql.UpdateRows",
+      "to": "sql.Sql",
+      "kind": "deps"
+    },
+    {
+      "from": "sql.UpdateRows",
+      "to": "sql.SqlList",
+      "kind": "deps"
+    },
+    {
+      "from": "cancellation.Refund",
+      "to": "cancellation.FreeCancellationPeriod",
+      "kind": "uses"
+    },
+    {
+      "from": "cancellation.Refund",
+      "to": "cancellation.LateFee",
+      "kind": "uses"
+    },
+    {
+      "from": "cancellation.RefundCriteria",
+      "to": "cancellation.FreeCancellationPeriod",
+      "kind": "uses"
+    }
+  ],
+  "open": [
+    {
+      "node": "legal.FeeCap",
+      "what": "Decide \"Legal cap on cancellation fees\"",
+      "owner": "karim"
+    }
+  ]
+}

@@ -1,0 +1,1371 @@
+diff -ru self0/docs/litteraux.md self1/docs/litteraux.md
+--- self0/docs/litteraux.md	2026-10-17 13:34:18.261159165 +0200
++++ self1/docs/litteraux.md	2026-10-17 13:35:08.702210952 +0200
+@@ -9,14 +9,14 @@
+ | Catégorie | À spécifier | Exemples |
+ |---|---|---|
+ | identifiant | 230 | `"s"` `"errors"` `"ok"` |
+-| phrase | 207 | ``assemblé · ${…} nœuds construits · écrit : ${…}`` ``Assemblage refusé : le graphe a ${…} erreur${…}.`` ``Assemblage refusé :`` |
+-| séparateur | 197 | `", "` ``  ${…} · ${…}`` ``${…} (${…})`` |
++| phrase | 207 | `` `assemblé · ${…} nœuds construits · écrit : ${…}` `` `` `Assemblage refusé : le graphe a ${…} erreur${…}.` `` `` `Assemblage refusé :` `` |
++| séparateur | 197 | `", "` `` `  ${…} · ${…}` `` `` `${…} (${…})` `` |
+ | nombre | 60 | `14` `2` `16` |
+-| gabarit | 55 | ``écrit : ${…}`` ``imports · ${…}`` ``${…} refusé${…}`` |
+-| fichier | 49 | `"/"` ``publié : ${…} déclarations figées dans trame.lock`` `".ts"` |
++| gabarit | 55 | `` `écrit : ${…}` `` `` `imports · ${…}` `` `` `${…} refusé${…}` `` |
++| fichier | 49 | `"/"` `` `publié : ${…} déclarations figées dans trame.lock` `` `".ts"` |
+ | expression régulière | 35 | `/^\/\*\*\s*([^*\n]+?)\s*\*\//` `/\s+/g` `/([a-z0-9])([A-Z])/g` |
+ | texte | 33 | `"(aucune)"` `"(aucun)"` `"$1-$2"` |
+-| balisage | 9 | ``Usage : trame ${…} <composant> --env <environnement>`` ``<link rel="preconnect" href="${…}"><link rel="preconnect" href="${…` ``<div class="app">   <aside class="side">     <div class="brand">  …` |
++| balisage | 9 | `` `Usage : trame ${…} <composant> --env <environnement>` `` `` `<link rel="preconnect" href="${…}"><link rel="preconnect" href="${… `` `` `<div class="app">   <aside class="side">     <div class="brand">  … `` |
+ 
+ ## Valeurs répétées
+ 
+@@ -142,19 +142,19 @@
+ | 30 | `"XMLHttpRequest"` | identifiant | `const WORLD = new Set(["fetch", "process", "require", "globalThis", "setTimeout", "setInterval", "setImmedi…` |
+ | 30 | `"WebSocket"` | identifiant | `const WORLD = new Set(["fetch", "process", "require", "globalThis", "setTimeout", "setInterval", "setImmedi…` |
+ | 30 | `"localStorage"` | identifiant | `const WORLD = new Set(["fetch", "process", "require", "globalThis", "setTimeout", "setInterval", "setImmedi…` |
+-| 35 | ``Accès à la plateforme (« ${…} ») : réservé aux implémentations ; p…` | phrase | `if (!ctx.ambient) out.push({ severity: "erreur", what: `Accès à la plateforme (« ${what} ») : réservé aux i…` |
++| 35 | `` `Accès à la plateforme (« ${…} ») : réservé aux implémentations ; p… `` | phrase | ``if (!ctx.ambient) out.push({ severity: "erreur", what: `Accès à la plateforme (« ${what} ») : réservé aux i…`` |
+ | 39 | `/\.(ts\|js)$/` | expression régulière | `const s = spec.replace(/\.(ts\|js)$/, "")` |
+ | 40 | `"/trame/kernel"` | fichier | `if (s.endsWith("/trame/kernel")) return` |
+-| 41 | `"."` | séparateur | `if (s.startsWith(".")) out.push({ severity: "erreur", what: `Dépendance cachée : le corps importe « ${spec}…` |
+-| 41 | ``Dépendance cachée : le corps importe « ${…} » ; déclarez-la comme …` | phrase | `if (s.startsWith(".")) out.push({ severity: "erreur", what: `Dépendance cachée : le corps importe « ${spec}…` |
++| 41 | `"."` | séparateur | ``if (s.startsWith(".")) out.push({ severity: "erreur", what: `Dépendance cachée : le corps importe « ${spec}…`` |
++| 41 | `` `Dépendance cachée : le corps importe « ${…} » ; déclarez-la comme … `` | phrase | ``if (s.startsWith(".")) out.push({ severity: "erreur", what: `Dépendance cachée : le corps importe « ${spec}…`` |
+ | 67 | `"import() d'un chemin calculé"` | phrase | `else world("import() d'un chemin calculé")` |
+-| 73 | ``${…}.${…}`` | séparateur | `const call = `${n.expression.text}.${n.name.text}`` |
++| 73 | `` `${…}.${…}` `` | séparateur | `` const call = `${n.expression.text}.${n.name.text}` `` |
+ | 74 | `"Date.now"` | identifiant | `if (call === "Date.now" \|\| call === "Math.random") world(call)` |
+ | 74 | `"Math.random"` | identifiant | `if (call === "Date.now" \|\| call === "Math.random") world(call)` |
+ | 75 | `"Date"` | identifiant | `} else if (ts.isNewExpression(n) && ts.isIdentifier(n.expression) && n.expression.text === "Date" && !n.arg…` |
+ | 76 | `"new Date()"` | phrase | `world("new Date()")` |
+-| 89 | ``n:${…}`` | gabarit | `const admitted = new Set(deps.admis.map((v) => (typeof v === "number" ? `n:${v}` : `s:${v}`)))` |
+-| 89 | ``s:${…}`` | gabarit | `const admitted = new Set(deps.admis.map((v) => (typeof v === "number" ? `n:${v}` : `s:${v}`)))` |
++| 89 | `` `n:${…}` `` | gabarit | ``const admitted = new Set(deps.admis.map((v) => (typeof v === "number" ? `n:${v}` : `s:${v}`)))`` |
++| 89 | `` `s:${…}` `` | gabarit | ``const admitted = new Set(deps.admis.map((v) => (typeof v === "number" ? `n:${v}` : `s:${v}`)))`` |
+ | 93 | `"regex"` | identifiant | `if (kind === "regex") return "expression régulière"` |
+ | 93 | `"expression régulière"` | phrase | `if (kind === "regex") return "expression régulière"` |
+ | 94 | `"nombre"` | identifiant | `if (kind === "nombre") return /writeHead\|status\|statut\|code/i.test(near) && /^[1-5]\d\d$/.test(text) ? "cod…` |
+@@ -183,19 +183,19 @@
+ | 103 | `"texte"` | identifiant | `return kind === "gabarit" ? "gabarit" : "texte"` |
+ | 110 | `"node"` | identifiant | `strict: true, esModuleInterop: true, noEmit: true, skipLibCheck: true, types: ["node"],` |
+ | 129 | `"?"` | séparateur | `return "?"` |
+-| 134 | ``${…}.${…} (${…})`` | séparateur | `return `${ownerName(d!)}.${sym.name} (${where(d!)})`` |
++| 134 | `` `${…}.${…} (${…})` `` | séparateur | `` return `${ownerName(d!)}.${sym.name} (${where(d!)})` `` |
+ | 143 | `"typeof (ECMAScript)"` | texte | `if (ts.isTypeOfExpression(other)) return "typeof (ECMAScript)"` |
+-| 146 | ``${…} (${…})`` | séparateur | `if (t.aliasSymbol && elsewhere(t.aliasSymbol.declarations?.[0])) return `${t.aliasSymbol.name} (${where(t.a…` |
+-| 152 | ``${…} (${…})`` | séparateur | `if (t!.aliasSymbol && elsewhere(t!.aliasSymbol.declarations?.[0])) return `${t!.aliasSymbol.name} (${where(…` |
++| 146 | `` `${…} (${…})` `` | séparateur | ``if (t.aliasSymbol && elsewhere(t.aliasSymbol.declarations?.[0])) return `${t.aliasSymbol.name} (${where(t.a…`` |
++| 152 | `` `${…} (${…})` `` | séparateur | ``if (t!.aliasSymbol && elsewhere(t!.aliasSymbol.declarations?.[0])) return `${t!.aliasSymbol.name} (${where(…`` |
+ | 166 | `"name"` | identifiant | `const fn = sig?.declaration && "name" in sig.declaration && sig.declaration.name ? (sig.declaration.name as…` |
+ | 166 | `"?"` | séparateur | `const fn = sig?.declaration && "name" in sig.declaration && sig.declaration.name ? (sig.declaration.name as…` |
+-| 167 | ``${…}(${…}) (${…})`` | séparateur | `return `${fn}(${param.name}) (${where(d!)})`` |
++| 167 | `` `${…}(${…}) (${…})` `` | séparateur | `` return `${fn}(${param.name}) (${where(d!)})` `` |
+ | 176 | `"\n"` | séparateur | `const text = sf.text.split("\n")[lineOf(n) - 1]?.trim() ?? ""` |
+ | 177 | `110` | nombre | `return text.length > 110 ? text.slice(0, 107) + "…" : text` |
+ | 177 | `107` | nombre | `return text.length > 110 ? text.slice(0, 107) + "…" : text` |
+ | 177 | `"…"` | séparateur | `return text.length > 110 ? text.slice(0, 107) + "…" : text` |
+-| 180 | ``n:${…}`` | gabarit | `const isAdmitted = admitted.has(typeof raw === "number" ? `n:${raw}` : `s:${raw}`)` |
+-| 180 | ``s:${…}`` | gabarit | `const isAdmitted = admitted.has(typeof raw === "number" ? `n:${raw}` : `s:${raw}`)` |
++| 180 | `` `n:${…}` `` | gabarit | ``const isAdmitted = admitted.has(typeof raw === "number" ? `n:${raw}` : `s:${raw}`)`` |
++| 180 | `` `s:${…}` `` | gabarit | ``const isAdmitted = admitted.has(typeof raw === "number" ? `n:${raw}` : `s:${raw}`)`` |
+ | 181 | `"texte"` | identifiant | `const by = !isAdmitted && (kind === "texte" \|\| kind === "nombre") ? declaredBy(n as ts.Expression, raw, sf)…` |
+ | 181 | `"nombre"` | identifiant | `const by = !isAdmitted && (kind === "texte" \|\| kind === "nombre") ? declaredBy(n as ts.Expression, raw, sf)…` |
+ | 182 | `70` | nombre | `const shown = value.length > 70 ? value.slice(0, 67) + "…" : value` |
+@@ -210,84 +210,84 @@
+ | 209 | `"-"` | séparateur | `push(neg ? n.parent : n, "nombre", (neg ? "-" : "") + n.getText(sf), v)` |
+ | 212 | `"nombre"` | identifiant | `if (ts.isBigIntLiteral(n)) { push(n, "nombre", n.getText(sf), n.getText(sf)); return }` |
+ | 213 | `"regex"` | identifiant | `if (ts.isRegularExpressionLiteral(n)) { push(n, "regex", n.getText(sf), n.getText(sf)); return }` |
+-| 216 | `"gabarit"` | identifiant | `if (statics.join("").trim()) push(n, "gabarit", "`" + statics.join("${…}") + "`", statics.join("…"))` |
+-| 216 | `"`"` | séparateur | `if (statics.join("").trim()) push(n, "gabarit", "`" + statics.join("${…}") + "`", statics.join("…"))` |
+-| 216 | `"${…}"` | séparateur | `if (statics.join("").trim()) push(n, "gabarit", "`" + statics.join("${…}") + "`", statics.join("…"))` |
+-| 216 | `"…"` | séparateur | `if (statics.join("").trim()) push(n, "gabarit", "`" + statics.join("${…}") + "`", statics.join("…"))` |
++| 216 | `"gabarit"` | identifiant | ``if (statics.join("").trim()) push(n, "gabarit", "`" + statics.join("${…}") + "`", statics.join("…"))`` |
++| 216 | ``"`"`` | séparateur | ``if (statics.join("").trim()) push(n, "gabarit", "`" + statics.join("${…}") + "`", statics.join("…"))`` |
++| 216 | `"${…}"` | séparateur | ``if (statics.join("").trim()) push(n, "gabarit", "`" + statics.join("${…}") + "`", statics.join("…"))`` |
++| 216 | `"…"` | séparateur | ``if (statics.join("").trim()) push(n, "gabarit", "`" + statics.join("${…}") + "`", statics.join("…"))`` |
+ | 229 | `"field"` | identifiant | `if (!("field" in s)) {` |
+-| 249 | ``${…}: ${…}`` | séparateur | `...Object.entries(step.constantes ?? {}).map(([k, v]) => `${/^[\p{L}_$][\p{L}\d_$]*$/u.test(k) ? k : JSON.s…` |
+-| 249 | `/^[\p{L}_$][\p{L}\d_$]*$/u` | expression régulière | `...Object.entries(step.constantes ?? {}).map(([k, v]) => `${/^[\p{L}_$][\p{L}\d_$]*$/u.test(k) ? k : JSON.s…` |
+-| 250 | ``${…}: ${…}`` | séparateur | `...step.deps.map((d) => (d.param === d.name ? d.param : `${d.param}: ${d.name}`)),` |
++| 249 | `` `${…}: ${…}` `` | séparateur | ``...Object.entries(step.constantes ?? {}).map(([k, v]) => `${/^[\p{L}_$][\p{L}\d_$]*$/u.test(k) ? k : JSON.s…`` |
++| 249 | `/^[\p{L}_$][\p{L}\d_$]*$/u` | expression régulière | ``...Object.entries(step.constantes ?? {}).map(([k, v]) => `${/^[\p{L}_$][\p{L}\d_$]*$/u.test(k) ? k : JSON.s…`` |
++| 250 | `` `${…}: ${…}` `` | séparateur | ``...step.deps.map((d) => (d.param === d.name ? d.param : `${d.param}: ${d.name}`)),`` |
+ | 251 | `", "` | séparateur | `].join(", ")` |
+ | 254 | `"typescript"` | identifiant | `language: "typescript",` |
+ | 255 | `".ts"` | fichier | `extensions: [".ts"],` |
+-| 258 | ``Corps introuvable : ${…}`` | phrase | `if (!existsSync(file)) return [{ severity: "erreur", what: `Corps introuvable : ${file.replace(ctx.root + "…` |
+-| 258 | `"/"` | fichier | `if (!existsSync(file)) return [{ severity: "erreur", what: `Corps introuvable : ${file.replace(ctx.root + "…` |
++| 258 | `` `Corps introuvable : ${…}` `` | phrase | ``if (!existsSync(file)) return [{ severity: "erreur", what: `Corps introuvable : ${file.replace(ctx.root + "…`` |
++| 258 | `"/"` | fichier | ``if (!existsSync(file)) return [{ severity: "erreur", what: `Corps introuvable : ${file.replace(ctx.root + "…`` |
+ | 263 | `"Le fichier du corps doit exporter le corps par défaut (export defa…` | phrase | `if (!hasDefault) out.push({ severity: "erreur", what: "Le fichier du corps doit exporter le corps par défau…` |
+-| 270 | `"corps.ts"` | fichier | `return checkTree(ts.createSourceFile("corps.ts", `const corps = ${source}`, ts.ScriptTarget.ES2022, true), …` |
+-| 270 | ``const corps = ${…}`` | phrase | `return checkTree(ts.createSourceFile("corps.ts", `const corps = ${source}`, ts.ScriptTarget.ES2022, true), …` |
+-| 282 | ``${…}.ts`` | fichier | `const path = join(a.out, `${name}.ts`)` |
++| 270 | `"corps.ts"` | fichier | ``return checkTree(ts.createSourceFile("corps.ts", `const corps = ${source}`, ts.ScriptTarget.ES2022, true), …`` |
++| 270 | `` `const corps = ${…}` `` | phrase | ``return checkTree(ts.createSourceFile("corps.ts", `const corps = ${source}`, ts.ScriptTarget.ES2022, true), …`` |
++| 282 | `` `${…}.ts` `` | fichier | ``const path = join(a.out, `${name}.ts`)`` |
+ | 284 | `/\\/g` | expression régulière | `const r = relative(a.out, to).replace(/\\/g, "/")` |
+ | 284 | `"/"` | fichier | `const r = relative(a.out, to).replace(/\\/g, "/")` |
+-| 285 | `"."` | séparateur | `return r.startsWith(".") ? r : `./${r}`` |
+-| 285 | ``./${…}`` | fichier | `return r.startsWith(".") ? r : `./${r}`` |
+-| 288 | ``// Généré par `${…}` (graphe du ${…}). Ne pas modifier : modifiez …` | fichier | ``// Généré par \`${a.command}\` (graphe du ${a.host.today}). Ne pas modifier : modifiez le graphe.`,` |
+-| 289 | ``// Composant « ${…} » · environnement « ${…} ».`` | fichier | ``// Composant « ${title(a.component)} » · environnement « ${title(a.env)} ».`,` |
+-| 290 | ``// Chaque nœud est construit une fois, après ce dont il dépend. Le…` | fichier | ``// Chaque nœud est construit une fois, après ce dont il dépend. Les choix d'implémentation sont écrits ici…` |
+-| 291 | ``// seules les valeurs du graphe (décisions, règles) sont lues au d…` | fichier | ``// seules les valeurs du graphe (décisions, règles) sont lues au démarrage, à la date du jour.`,` |
+-| 293 | ``import { boot } from ${…}`` | gabarit | ``import { boot } from ${JSON.stringify(rel(join(dirname(a.prelude), "boot")))}`,` |
+-| 293 | `"boot"` | identifiant | ``import { boot } from ${JSON.stringify(rel(join(dirname(a.prelude), "boot")))}`,` |
+-| 295 | ``const rt = await boot({ root: new URL(${…}, import.meta.url).pathn…` | phrase | ``const rt = await boot({ root: new URL(${JSON.stringify(rel(a.host.root) + "/")}, import.meta.url).pathname…` |
+-| 295 | `"/"` | fichier | ``const rt = await boot({ root: new URL(${JSON.stringify(rel(a.host.root) + "/")}, import.meta.url).pathname…` |
+-| 300 | ``, pour ${…}`` | gabarit | `const via = step.via.length ? `, pour ${step.via.map((v) => `« ${title(v)} »`).join(", ")}` : ""` |
+-| 300 | ``« ${…} »`` | séparateur | `const via = step.via.length ? `, pour ${step.via.map((v) => `« ${title(v)} »`).join(", ")}` : ""` |
+-| 300 | `", "` | séparateur | `const via = step.via.length ? `, pour ${step.via.map((v) => `« ${title(v)} »`).join(", ")}` : ""` |
+-| 301 | ``// « ${…} » · ${…}${…}`` | fichier | `lines.push(`// « ${title(step.node)} » · ${kind}${via}`)` |
+-| 303 | ``const ${…} = await rt.valeur(${…})`` | phrase | `if (step.how === "valeur") lines.push(`const ${step.name} = await rt.valeur(${ref})`)` |
+-| 306 | ``const ${…} = await (await rt.corps(${…}))({${…}})`` | phrase | `lines.push(`const ${step.name} = await (await rt.corps(${ref}))({${args ? ` ${args} ` : ""}})`)` |
+-| 313 | ``const demarre = await rt.start(${…}, {`` | phrase | ``const demarre = await rt.start(${JSON.stringify(refOf(a.component))}, {`,` |
+-| 314 | ``  ${…}: ${…},`` | séparateur | `...a.entries.map((e) => `  ${JSON.stringify(refOf(e))}: ${entryName(e)},`),` |
+-| 315 | ``})`` | séparateur | ``})`,` |
+-| 316 | ``const adresse = (demarre as { adresse?: string } \| undefined)?.adr…` | phrase | ``const adresse = (demarre as { adresse?: string } \| undefined)?.adresse`,` |
+-| 317 | ``console.log(`« ${…} » · ${…} · graphe du ${rt.date}${adresse ? ` ·…` | phrase | ``console.log(\`« ${title(a.component)} » · ${title(a.env)} · graphe du \${rt.date}\${adresse ? \` · \${adre…` |
++| 285 | `"."` | séparateur | `` return r.startsWith(".") ? r : `./${r}` `` |
++| 285 | `` `./${…}` `` | fichier | `` return r.startsWith(".") ? r : `./${r}` `` |
++| 288 | `` `// Généré par `${…}` (graphe du ${…}). Ne pas modifier : modifiez … `` | fichier | `` `// Généré par \`${a.command}\` (graphe du ${a.host.today}). Ne pas modifier : modifiez le graphe.`, `` |
++| 289 | `` `// Composant « ${…} » · environnement « ${…} ».` `` | fichier | `` `// Composant « ${title(a.component)} » · environnement « ${title(a.env)} ».`, `` |
++| 290 | `` `// Chaque nœud est construit une fois, après ce dont il dépend. Le… `` | fichier | `` `// Chaque nœud est construit une fois, après ce dont il dépend. Les choix d'implémentation sont écrits ici… `` |
++| 291 | `` `// seules les valeurs du graphe (décisions, règles) sont lues au d… `` | fichier | `` `// seules les valeurs du graphe (décisions, règles) sont lues au démarrage, à la date du jour.`, `` |
++| 293 | `` `import { boot } from ${…}` `` | gabarit | `` `import { boot } from ${JSON.stringify(rel(join(dirname(a.prelude), "boot")))}`, `` |
++| 293 | `"boot"` | identifiant | `` `import { boot } from ${JSON.stringify(rel(join(dirname(a.prelude), "boot")))}`, `` |
++| 295 | `` `const rt = await boot({ root: new URL(${…}, import.meta.url).pathn… `` | phrase | `` `const rt = await boot({ root: new URL(${JSON.stringify(rel(a.host.root) + "/")}, import.meta.url).pathname… `` |
++| 295 | `"/"` | fichier | `` `const rt = await boot({ root: new URL(${JSON.stringify(rel(a.host.root) + "/")}, import.meta.url).pathname… `` |
++| 300 | `` `, pour ${…}` `` | gabarit | ``const via = step.via.length ? `, pour ${step.via.map((v) => `« ${title(v)} »`).join(", ")}` : ""`` |
++| 300 | `` `« ${…} »` `` | séparateur | ``const via = step.via.length ? `, pour ${step.via.map((v) => `« ${title(v)} »`).join(", ")}` : ""`` |
++| 300 | `", "` | séparateur | ``const via = step.via.length ? `, pour ${step.via.map((v) => `« ${title(v)} »`).join(", ")}` : ""`` |
++| 301 | `` `// « ${…} » · ${…}${…}` `` | fichier | ``lines.push(`// « ${title(step.node)} » · ${kind}${via}`)`` |
++| 303 | `` `const ${…} = await rt.valeur(${…})` `` | phrase | ``if (step.how === "valeur") lines.push(`const ${step.name} = await rt.valeur(${ref})`)`` |
++| 306 | `` `const ${…} = await (await rt.corps(${…}))({${…}})` `` | phrase | ``lines.push(`const ${step.name} = await (await rt.corps(${ref}))({${args ? ` ${args} ` : ""}})`)`` |
++| 313 | `` `const demarre = await rt.start(${…}, {` `` | phrase | `` `const demarre = await rt.start(${JSON.stringify(refOf(a.component))}, {`, `` |
++| 314 | `` `  ${…}: ${…},` `` | séparateur | ``...a.entries.map((e) => `  ${JSON.stringify(refOf(e))}: ${entryName(e)},`),`` |
++| 315 | `` `})` `` | séparateur | `` `})`, `` |
++| 316 | `` `const adresse = (demarre as { adresse?: string } \| undefined)?.adr… `` | phrase | `` `const adresse = (demarre as { adresse?: string } \| undefined)?.adresse`, `` |
++| 317 | `` `console.log(`« ${…} » · ${…} · graphe du ${rt.date}${adresse ? ` ·… `` | phrase | `` `console.log(\`« ${title(a.component)} » · ${title(a.env)} · graphe du \${rt.date}\${adresse ? \` · \${adre… `` |
+ | 320 | `"\n"` | séparateur | `return [{ path, content: lines.join("\n") }]` |
+ | 333 | `/\\/g` | expression régulière | `const r = relative(a.out, to).replace(/\\/g, "/")` |
+ | 333 | `"/"` | fichier | `const r = relative(a.out, to).replace(/\\/g, "/")` |
+-| 334 | `"."` | séparateur | `return r.startsWith(".") ? r : `./${r}`` |
+-| 334 | ``./${…}`` | fichier | `return r.startsWith(".") ? r : `./${r}`` |
+-| 341 | ``« ${…} » : déclaration introuvable`` | phrase | `if (!file \|\| !id) throw new Error(`« ${title(n)} » : déclaration introuvable`)` |
+-| 349 | ``, pour ${…}`` | gabarit | `const via = step.via.length ? `, pour ${step.via.map((v) => `« ${title(v)} »`).join(", ")}` : ""` |
+-| 349 | ``« ${…} »`` | séparateur | `const via = step.via.length ? `, pour ${step.via.map((v) => `« ${title(v)} »`).join(", ")}` : ""` |
+-| 349 | `", "` | séparateur | `const via = step.via.length ? `, pour ${step.via.map((v) => `« ${title(v)} »`).join(", ")}` : ""` |
+-| 350 | ``// « ${…} » · ${…}${…}`` | fichier | `steps.push(`// « ${title(step.node)} » · ${kind}${via}`)` |
+-| 353 | `"json"` | identifiant | `steps.push("json" in f ? `const ${step.name} = ${f.json}` : `const ${step.name} = fige.valeur(${declare(ste…` |
+-| 353 | ``const ${…} = ${…}`` | gabarit | `steps.push("json" in f ? `const ${step.name} = ${f.json}` : `const ${step.name} = fige.valeur(${declare(ste…` |
+-| 353 | ``const ${…} = fige.valeur(${…})`` | gabarit | `steps.push("json" in f ? `const ${step.name} = ${f.json}` : `const ${step.name} = fige.valeur(${declare(ste…` |
+-| 357 | ``({${…}})`` | séparateur | `const call = `({${args ? ` ${args} ` : ""}})`` |
++| 334 | `"."` | séparateur | `` return r.startsWith(".") ? r : `./${r}` `` |
++| 334 | `` `./${…}` `` | fichier | `` return r.startsWith(".") ? r : `./${r}` `` |
++| 341 | `` `« ${…} » : déclaration introuvable` `` | phrase | ``if (!file \|\| !id) throw new Error(`« ${title(n)} » : déclaration introuvable`)`` |
++| 349 | `` `, pour ${…}` `` | gabarit | ``const via = step.via.length ? `, pour ${step.via.map((v) => `« ${title(v)} »`).join(", ")}` : ""`` |
++| 349 | `` `« ${…} »` `` | séparateur | ``const via = step.via.length ? `, pour ${step.via.map((v) => `« ${title(v)} »`).join(", ")}` : ""`` |
++| 349 | `", "` | séparateur | ``const via = step.via.length ? `, pour ${step.via.map((v) => `« ${title(v)} »`).join(", ")}` : ""`` |
++| 350 | `` `// « ${…} » · ${…}${…}` `` | fichier | ``steps.push(`// « ${title(step.node)} » · ${kind}${via}`)`` |
++| 353 | `"json"` | identifiant | ``steps.push("json" in f ? `const ${step.name} = ${f.json}` : `const ${step.name} = fige.valeur(${declare(ste…`` |
++| 353 | `` `const ${…} = ${…}` `` | gabarit | ``steps.push("json" in f ? `const ${step.name} = ${f.json}` : `const ${step.name} = fige.valeur(${declare(ste…`` |
++| 353 | `` `const ${…} = fige.valeur(${…})` `` | gabarit | ``steps.push("json" in f ? `const ${step.name} = ${f.json}` : `const ${step.name} = fige.valeur(${declare(ste…`` |
++| 357 | `` `({${…}})` `` | séparateur | `` const call = `({${args ? ` ${args} ` : ""}})` `` |
+ | 359 | `"file"` | identifiant | `if ("file" in src) {` |
+-| 360 | ``import corps_${…} from ${…}`` | phrase | `bodyImports.push(`import corps_${step.name} from ${JSON.stringify(rel(src.file))}`)` |
+-| 361 | ``const ${…} = await corps_${…}${…}`` | phrase | `steps.push(`const ${step.name} = await corps_${step.name}${call}`)` |
+-| 363 | ``const ${…} = await fige.corps(${…})${…}`` | phrase | `steps.push(`const ${step.name} = await fige.corps(${declare(step.node)})${call}`)` |
+-| 366 | ``fige.donnees(${…}, ${…}, ${…})`` | gabarit | `const frozenData = [...(a.figeLues ?? [])].map(([n, json]) => `fige.donnees(${declare(n)}, ${JSON.stringify…` |
+-| 369 | ``${…}: ${…}`` | séparateur | `const deps = a.componentDeps.map((d) => (d.param === nameOf(d.node) ? d.param : `${d.param}: ${nameOf(d.nod…` |
+-| 369 | `", "` | séparateur | `const deps = a.componentDeps.map((d) => (d.param === nameOf(d.node) ? d.param : `${d.param}: ${nameOf(d.nod…` |
++| 360 | `` `import corps_${…} from ${…}` `` | phrase | ``bodyImports.push(`import corps_${step.name} from ${JSON.stringify(rel(src.file))}`)`` |
++| 361 | `` `const ${…} = await corps_${…}${…}` `` | phrase | ``steps.push(`const ${step.name} = await corps_${step.name}${call}`)`` |
++| 363 | `` `const ${…} = await fige.corps(${…})${…}` `` | phrase | ``steps.push(`const ${step.name} = await fige.corps(${declare(step.node)})${call}`)`` |
++| 366 | `` `fige.donnees(${…}, ${…}, ${…})` `` | gabarit | ``const frozenData = [...(a.figeLues ?? [])].map(([n, json]) => `fige.donnees(${declare(n)}, ${JSON.stringify…`` |
++| 369 | `` `${…}: ${…}` `` | séparateur | ``const deps = a.componentDeps.map((d) => (d.param === nameOf(d.node) ? d.param : `${d.param}: ${nameOf(d.nod…`` |
++| 369 | `", "` | séparateur | ``const deps = a.componentDeps.map((d) => (d.param === nameOf(d.node) ? d.param : `${d.param}: ${nameOf(d.nod…`` |
+ | 370 | `" ; "` | séparateur | `const changes = a.changes?.length ? a.changes.join(" ; ") : "aucun"` |
+ | 370 | `"aucun"` | identifiant | `const changes = a.changes?.length ? a.changes.join(" ; ") : "aucun"` |
+-| 372 | ``// Généré par `${…}` (graphe du ${…}). Ne pas modifier : modifiez …` | fichier | ``// Généré par \`${a.command}\` (graphe du ${a.host.today}). Ne pas modifier : modifiez le graphe.`,` |
+-| 373 | ``// Composant « ${…} » · environnement « ${…} ».`` | fichier | ``// Composant « ${title(a.component)} » · environnement « ${title(a.env)} ».`,` |
+-| 374 | ``// Programme figé : l'ordre de construction, les choix d'implément…` | fichier | ``// Programme figé : l'ordre de construction, les choix d'implémentation et les valeurs du graphe sont écri…` |
+-| 375 | ``// il ne compile pas le graphe au démarrage. Changements datés que…` | fichier | ``// il ne compile pas le graphe au démarrage. Changements datés que ce programme ne verra pas : ${changes}.`,` |
+-| 377 | ``import { fige } from ${…}`` | gabarit | ``import { fige } from ${JSON.stringify(rel(a.prelude))}`,` |
+-| 378 | ``import { ${…} } from ${…}`` | gabarit | `...[...declarations].sort(([x], [y]) => x.localeCompare(y)).map(([file, ids]) => `import { ${[...ids].sort(…` |
+-| 378 | `", "` | séparateur | `...[...declarations].sort(([x], [y]) => x.localeCompare(y)).map(([file, ids]) => `import { ${[...ids].sort(…` |
+-| 381 | ``// Ce que lisent les règles, tel qu'en vigueur le ${…}.`` | fichier | `...(frozenData.length ? [`// Ce que lisent les règles, tel qu'en vigueur le ${a.host.today}.`, ...frozenDat…` |
+-| 384 | ``const demarre = (await fige.demarrer(${…}, { ${…} }, [`` | phrase | ``const demarre = (await fige.demarrer(${comp}, { ${deps} }, [`,` |
+-| 385 | ``  { titre: ${…}, champs: ${…}, valeur: ${…} },`` | gabarit | `...a.entries.map((e) => `  { titre: ${JSON.stringify(title(e))}, champs: ${JSON.stringify(a.entryFields.get…` |
+-| 386 | ``])) as { adresse?: string; code?: number } \| undefined`` | texte | ``])) as { adresse?: string; code?: number } \| undefined`,` |
+-| 387 | ``if (demarre?.adresse) console.log(`« ${…} » · ${…} · ${demarre.adr…` | gabarit | ``if (demarre?.adresse) console.log(\`« ${title(a.component)} » · ${title(a.env)} · \${demarre.adresse}\`)`,` |
+-| 388 | ``if (demarre?.code !== undefined) process.exitCode = demarre.code`` | texte | ``if (demarre?.code !== undefined) process.exitCode = demarre.code`,` |
+-| 391 | ``${…}.ts`` | fichier | `return [{ path: join(a.out, `${name}.ts`), content: lines.join("\n") }]` |
+-| 391 | `"\n"` | séparateur | `return [{ path: join(a.out, `${name}.ts`), content: lines.join("\n") }]` |
++| 372 | `` `// Généré par `${…}` (graphe du ${…}). Ne pas modifier : modifiez … `` | fichier | `` `// Généré par \`${a.command}\` (graphe du ${a.host.today}). Ne pas modifier : modifiez le graphe.`, `` |
++| 373 | `` `// Composant « ${…} » · environnement « ${…} ».` `` | fichier | `` `// Composant « ${title(a.component)} » · environnement « ${title(a.env)} ».`, `` |
++| 374 | `` `// Programme figé : l'ordre de construction, les choix d'implément… `` | fichier | `` `// Programme figé : l'ordre de construction, les choix d'implémentation et les valeurs du graphe sont écri… `` |
++| 375 | `` `// il ne compile pas le graphe au démarrage. Changements datés que… `` | fichier | `` `// il ne compile pas le graphe au démarrage. Changements datés que ce programme ne verra pas : ${changes}.`, `` |
++| 377 | `` `import { fige } from ${…}` `` | gabarit | `` `import { fige } from ${JSON.stringify(rel(a.prelude))}`, `` |
++| 378 | `` `import { ${…} } from ${…}` `` | gabarit | ``...[...declarations].sort(([x], [y]) => x.localeCompare(y)).map(([file, ids]) => `import { ${[...ids].sort(…`` |
++| 378 | `", "` | séparateur | ``...[...declarations].sort(([x], [y]) => x.localeCompare(y)).map(([file, ids]) => `import { ${[...ids].sort(…`` |
++| 381 | `` `// Ce que lisent les règles, tel qu'en vigueur le ${…}.` `` | fichier | ``...(frozenData.length ? [`// Ce que lisent les règles, tel qu'en vigueur le ${a.host.today}.`, ...frozenDat…`` |
++| 384 | `` `const demarre = (await fige.demarrer(${…}, { ${…} }, [` `` | phrase | `` `const demarre = (await fige.demarrer(${comp}, { ${deps} }, [`, `` |
++| 385 | `` `  { titre: ${…}, champs: ${…}, valeur: ${…} },` `` | gabarit | ``...a.entries.map((e) => `  { titre: ${JSON.stringify(title(e))}, champs: ${JSON.stringify(a.entryFields.get…`` |
++| 386 | `` `])) as { adresse?: string; code?: number } \| undefined` `` | texte | `` `])) as { adresse?: string; code?: number } \| undefined`, `` |
++| 387 | `` `if (demarre?.adresse) console.log(`« ${…} » · ${…} · ${demarre.adr… `` | gabarit | `` `if (demarre?.adresse) console.log(\`« ${title(a.component)} » · ${title(a.env)} · \${demarre.adresse}\`)`, `` |
++| 388 | `` `if (demarre?.code !== undefined) process.exitCode = demarre.code` `` | texte | `` `if (demarre?.code !== undefined) process.exitCode = demarre.code`, `` |
++| 391 | `` `${…}.ts` `` | fichier | ``return [{ path: join(a.out, `${name}.ts`), content: lines.join("\n") }]`` |
++| 391 | `"\n"` | séparateur | ``return [{ path: join(a.out, `${name}.ts`), content: lines.join("\n") }]`` |
+ 
+ </details>
+ 
+@@ -303,106 +303,106 @@
+ | 188 | `".ts"` | fichier | `meta(v).module = basename(file, ".ts")` |
+ | 201 | `".ts"` | fichier | `root, modules: files.map((f) => basename(f, ".ts")), moduleTitle, nodes, anonymous, infos, typeErrors, evid…` |
+ | 217 | `"typescript"` | identifiant | `language = "typescript"` |
+-| 219 | ``${…}:${…}:${…}`` | séparateur | `source = { key: `${info.file}:${info.line}:${k}`, file: join(root, info.file), line: info.line, field: k }` |
++| 219 | `` `${…}:${…}:${…}` `` | séparateur | ``source = { key: `${info.file}:${info.line}:${k}`, file: join(root, info.file), line: info.line, field: k }`` |
+ | 265 | `"graphe"` | identifiant | `const error = (node: AnyNode, what: string, owner?: string) => diags.push({ severity: "erreur", origin: "gr…` |
+-| 268 | ``Nœud « ${…} » sans nom : exportez-le`` | phrase | `error(n, `Nœud « ${meta(n).def.label.one} » sans nom : exportez-le`)` |
+-| 281 | ``Arête obligatoire « ${…} » manquante`` | phrase | `error(n, `Arête obligatoire « ${spec.label} » manquante`)` |
++| 268 | `` `Nœud « ${…} » sans nom : exportez-le` `` | phrase | ``error(n, `Nœud « ${meta(n).def.label.one} » sans nom : exportez-le`)`` |
++| 281 | `` `Arête obligatoire « ${…} » manquante` `` | phrase | ``error(n, `Arête obligatoire « ${spec.label} » manquante`)`` |
+ | 288 | `"*"` | séparateur | `if (!spec.targets.includes(tk) && !spec.targets.includes("*")) {` |
+-| 289 | ``« ${…} » doit viser ${…}, pas ${…}`` | phrase | `error(n, `« ${spec.label} » doit viser ${spec.targets.join(" ou ")}, pas ${tk}`)` |
+-| 289 | `" ou "` | texte | `error(n, `« ${spec.label} » doit viser ${spec.targets.join(" ou ")}, pas ${tk}`)` |
+-| 291 | ``« ${…} » vise un nœud sans nom`` | phrase | `if (!meta(t).id) error(n, `« ${spec.label} » vise un nœud sans nom`)` |
+-| 301 | ``Le paramètre « ${…} » ne désigne pas un nœud`` | phrase | `if (check) error(n, `Le paramètre « ${param} » ne désigne pas un nœud`)` |
++| 289 | `` `« ${…} » doit viser ${…}, pas ${…}` `` | phrase | ``error(n, `« ${spec.label} » doit viser ${spec.targets.join(" ou ")}, pas ${tk}`)`` |
++| 289 | `" ou "` | texte | ``error(n, `« ${spec.label} » doit viser ${spec.targets.join(" ou ")}, pas ${tk}`)`` |
++| 291 | `` `« ${…} » vise un nœud sans nom` `` | phrase | ``if (!meta(t).id) error(n, `« ${spec.label} » vise un nœud sans nom`)`` |
++| 301 | `` `Le paramètre « ${…} » ne désigne pas un nœud` `` | phrase | ``if (check) error(n, `Le paramètre « ${param} » ne désigne pas un nœud`)`` |
+ | 305 | `"deps"` | identifiant | `from: n, to: t, name: "deps", label: "Dépend de", inverse: "Utilisé par",` |
+ | 305 | `"Dépend de"` | phrase | `from: n, to: t, name: "deps", label: "Dépend de", inverse: "Utilisé par",` |
+ | 305 | `"Utilisé par"` | phrase | `from: n, to: t, name: "deps", label: "Dépend de", inverse: "Utilisé par",` |
+ | 306 | `"exécution"` | identifiant | `inferred: false, derived: false, active, param, stage: f.stage ?? "exécution",` |
+-| 308 | ``Le paramètre « ${…} » vise un nœud sans nom`` | phrase | `if (check && !meta(t).id) error(n, `Le paramètre « ${param} » vise un nœud sans nom`)` |
+-| 318 | `"code"` | identifiant | `diags.push({ severity: "erreur", origin: "code", node: n, what: `Dépendance cachée : le corps lit « ${r.tar…` |
+-| 318 | ``Dépendance cachée : le corps lit « ${…} » sans le recevoir en para…` | phrase | `diags.push({ severity: "erreur", origin: "code", node: n, what: `Dépendance cachée : le corps lit « ${r.tar…` |
+-| 318 | `"."` | séparateur | `diags.push({ severity: "erreur", origin: "code", node: n, what: `Dépendance cachée : le corps lit « ${r.tar…` |
++| 308 | `` `Le paramètre « ${…} » vise un nœud sans nom` `` | phrase | ``if (check && !meta(t).id) error(n, `Le paramètre « ${param} » vise un nœud sans nom`)`` |
++| 318 | `"code"` | identifiant | ``diags.push({ severity: "erreur", origin: "code", node: n, what: `Dépendance cachée : le corps lit « ${r.tar…`` |
++| 318 | `` `Dépendance cachée : le corps lit « ${…} » sans le recevoir en para… `` | phrase | ``diags.push({ severity: "erreur", origin: "code", node: n, what: `Dépendance cachée : le corps lit « ${r.tar…`` |
++| 318 | `"."` | séparateur | ``diags.push({ severity: "erreur", origin: "code", node: n, what: `Dépendance cachée : le corps lit « ${r.tar…`` |
+ | 323 | `"uses"` | identifiant | `edges.push({ from: n, to: target, name: "uses", label: "Dépend de", inverse: "Utilisé par", inferred: true,…` |
+ | 323 | `"Dépend de"` | phrase | `edges.push({ from: n, to: target, name: "uses", label: "Dépend de", inverse: "Utilisé par", inferred: true,…` |
+ | 323 | `"Utilisé par"` | phrase | `edges.push({ from: n, to: target, name: "uses", label: "Dépend de", inverse: "Utilisé par", inferred: true,…` |
+ | 330 | `"figé"` | identifiant | `const frozen = { moment: "figé" as const, today, nodes, infos }` |
+-| 338 | ``activeAt() a échoué : ${…}`` | phrase | `if (r.error) error(n, `activeAt() a échoué : ${message(r.error)}`)` |
+-| 350 | ``claims() a échoué : ${…}`` | phrase | `if (!(r.error instanceof Hole)) error(n, `claims() a échoué : ${message(r.error)}`)` |
++| 338 | `` `activeAt() a échoué : ${…}` `` | phrase | ``if (r.error) error(n, `activeAt() a échoué : ${message(r.error)}`)`` |
++| 350 | `` `claims() a échoué : ${…}` `` | phrase | ``if (!(r.error instanceof Hole)) error(n, `claims() a échoué : ${message(r.error)}`)`` |
+ | 357 | `"Revendique un nœud absent du graphe"` | phrase | `error(n, "Revendique un nœud absent du graphe")` |
+-| 363 | ``Revendiquer « ${…} » en entier n'est possible que pour l'abroger`` | phrase | `error(n, `Revendiquer « ${title(target)} » en entier n'est possible que pour l'abroger`)` |
++| 363 | `` `Revendiquer « ${…} » en entier n'est possible que pour l'abroger` `` | phrase | ``error(n, `Revendiquer « ${title(target)} » en entier n'est possible que pour l'abroger`)`` |
+ | 367 | `"."` | séparateur | `const first = c.path.split(".")[0]` |
+-| 369 | ``« ${…} » n'existe pas sur « ${…} »`` | phrase | `error(n, `« ${c.path} » n'existe pas sur « ${title(target)} »`)` |
++| 369 | `` `« ${…} » n'existe pas sur « ${…} »` `` | phrase | ``error(n, `« ${c.path} » n'existe pas sur « ${title(target)} »`)`` |
+ | 390 | `"appliqué"` | identifiant | `outcome: "appliqué", applied: claimants, replaced: [], reason: "", because: [],` |
+ | 393 | `2` | nombre | `if (claimants.length < 2) continue` |
+ | 397 | `"overlaps"` | identifiant | `derived.push({ from: a, to: b, name: "overlaps", label: "Chevauche", inverse: "Chevauché par", inferred: fa…` |
+ | 397 | `"Chevauche"` | identifiant | `derived.push({ from: a, to: b, name: "overlaps", label: "Chevauche", inverse: "Chevauché par", inferred: fa…` |
+ | 397 | `"Chevauché par"` | phrase | `derived.push({ from: a, to: b, name: "overlaps", label: "Chevauche", inverse: "Chevauché par", inferred: fa…` |
+ | 401 | `"contesté"` | identifiant | `record.outcome = "contesté"` |
+-| 410 | `"revendications de types différents"` | phrase | `contest(defs.length > 1 ? "revendications de types différents" : `le type « ${def.name} » ne sait pas tranc…` |
+-| 410 | ``le type « ${…} » ne sait pas trancher`` | phrase | `contest(defs.length > 1 ? "revendications de types différents" : `le type « ${def.name} » ne sait pas tranc…` |
+-| 422 | ``une décision manque pour trancher : ${…}`` | phrase | `if (e instanceof Hole) contest(`une décision manque pour trancher : ${e.label}`)` |
+-| 425 | ``Le type « ${…} » lit une valeur en cours de résolution pour tranch…` | phrase | `? `Le type « ${def.name} » lit une valeur en cours de résolution pour trancher (${e.message})`` |
+-| 426 | ``resolve() a échoué : ${…}`` | phrase | `: `resolve() a échoué : ${message(e)}`)` |
++| 410 | `"revendications de types différents"` | phrase | ``contest(defs.length > 1 ? "revendications de types différents" : `le type « ${def.name} » ne sait pas tranc…`` |
++| 410 | `` `le type « ${…} » ne sait pas trancher` `` | phrase | ``contest(defs.length > 1 ? "revendications de types différents" : `le type « ${def.name} » ne sait pas tranc…`` |
++| 422 | `` `une décision manque pour trancher : ${…}` `` | phrase | ``if (e instanceof Hole) contest(`une décision manque pour trancher : ${e.label}`)`` |
++| 425 | `` `Le type « ${…} » lit une valeur en cours de résolution pour tranch… `` | phrase | `` ? `Le type « ${def.name} » lit une valeur en cours de résolution pour trancher (${e.message})` `` |
++| 426 | `` `resolve() a échoué : ${…}` `` | phrase | ``: `resolve() a échoué : ${message(e)}`)`` |
+ | 427 | `"la résolution a échoué"` | phrase | `contest("la résolution a échoué")` |
+-| 432 | ``${…}>${…}`` | séparateur | `? { kind: r.kind, order: r.order.map((v) => v.ref), replaced: (r.replaced ?? []).map(([a, b]) => `${a.ref}>…` |
+-| 435 | ``Le type « ${…} » enfreint la loi « La résolution ne dépend pas de …` | phrase | `error(claimants[0], `Le type « ${def.name} » enfreint la loi « La résolution ne dépend pas de l'ordre »`)` |
++| 432 | `` `${…}>${…}` `` | séparateur | ``? { kind: r.kind, order: r.order.map((v) => v.ref), replaced: (r.replaced ?? []).map(([a, b]) => `${a.ref}>…`` |
++| 435 | `` `Le type « ${…} » enfreint la loi « La résolution ne dépend pas de … `` | phrase | ``error(claimants[0], `Le type « ${def.name} » enfreint la loi « La résolution ne dépend pas de l'ordre »`)`` |
+ | 436 | `"la résolution dépend de l'ordre des revendications"` | phrase | `contest("la résolution dépend de l'ordre des revendications")` |
+-| 444 | ``Le type « ${…} » enfreint la loi « La résolution ne renvoie que ce…` | phrase | `error(claimants[0], `Le type « ${def.name} » enfreint la loi « La résolution ne renvoie que ce qu'on lui do…` |
++| 444 | `` `Le type « ${…} » enfreint la loi « La résolution ne renvoie que ce… `` | phrase | ``error(claimants[0], `Le type « ${def.name} » enfreint la loi « La résolution ne renvoie que ce qu'on lui do…`` |
+ | 445 | `"la résolution a renvoyé un nœud qui ne revendique rien ici"` | phrase | `contest("la résolution a renvoyé un nœud qui ne revendique rien ici")` |
+ | 468 | `"."` | séparateur | `if (tm.def.fields[c.path.split(".")[0]]?.type === "fn" && typeof value === "function") {` |
+ | 479 | `"contesté"` | identifiant | `if (record.outcome === "contesté") {` |
+-| 513 | ``Cycle sur l'arête « ${…} »`` | phrase | `for (const n of nodes) if (!state.has(n) && dfs(n)) error(n, `Cycle sur l'arête « ${sub[0].label} »`)` |
++| 513 | `` `Cycle sur l'arête « ${…} »` `` | phrase | ``for (const n of nodes) if (!state.has(n) && dfs(n)) error(n, `Cycle sur l'arête « ${sub[0].label} »`)`` |
+ | 530 | `"graphe"` | identifiant | `if (!reached.has(n) && !repealed(n)) diags.push({ severity: "avertissement", origin: "graphe", node: n, wha…` |
+-| 530 | ``Relié à aucune racine (${…})`` | phrase | `if (!reached.has(n) && !repealed(n)) diags.push({ severity: "avertissement", origin: "graphe", node: n, wha…` |
++| 530 | `` `Relié à aucune racine (${…})` `` | phrase | `if (!reached.has(n) && !repealed(n)) diags.push({ severity: "avertissement", origin: "graphe", node: n, wha…` |
+ | 530 | `", "` | séparateur | `if (!reached.has(n) && !repealed(n)) diags.push({ severity: "avertissement", origin: "graphe", node: n, wha…` |
+-| 546 | ``${…}\|${…}`` | séparateur | `const k = `${what}\|${of.ref}`` |
+-| 552 | ``status() a échoué : ${…}`` | phrase | `onStatusError: (n, e) => error(n, `status() a échoué : ${e.message}`),` |
+-| 561 | ``effects() a échoué : ${…}`` | phrase | `if (!(e instanceof Hole)) error(n, `effects() a échoué : ${message(e)}`)` |
++| 546 | `` `${…}\|${…}` `` | séparateur | `` const k = `${what}\|${of.ref}` `` |
++| 552 | `` `status() a échoué : ${…}` `` | phrase | ``onStatusError: (n, e) => error(n, `status() a échoué : ${e.message}`),`` |
++| 561 | `` `effects() a échoué : ${…}` `` | phrase | ``if (!(e instanceof Hole)) error(n, `effects() a échoué : ${message(e)}`)`` |
+ | 573 | `"exécution"` | identifiant | `if (e.from === n && e.param !== undefined && e.stage === "exécution") for (const x of effectsOf(e.to)) set.…` |
+ | 576 | `"fr"` | identifiant | `const out = [...set].sort((a, b) => a.localeCompare(b, "fr"))` |
+-| 589 | ``« ${…} » : des constantes nommées, chacune avec sa valeur et son s…` | phrase | `error(n, `« ${f.label ?? k} » : des constantes nommées, chacune avec sa valeur et son sens`)` |
+-| 597 | ``La constante « ${…} » doit avoir une valeur (un texte ou un nombre…` | phrase | `error(n, `La constante « ${name} » doit avoir une valeur (un texte ou un nombre) et un sens`)` |
+-| 599 | ``La constante « ${…} » porte le nom d'une dépendance : le corps ne …` | phrase | `if (params.has(name)) error(n, `La constante « ${name} » porte le nom d'une dépendance : le corps ne saurai…` |
++| 589 | `` `« ${…} » : des constantes nommées, chacune avec sa valeur et son s… `` | phrase | ``error(n, `« ${f.label ?? k} » : des constantes nommées, chacune avec sa valeur et son sens`)`` |
++| 597 | `` `La constante « ${…} » doit avoir une valeur (un texte ou un nombre… `` | phrase | ``error(n, `La constante « ${name} » doit avoir une valeur (un texte ou un nombre) et un sens`)`` |
++| 599 | `` `La constante « ${…} » porte le nom d'une dépendance : le corps ne … `` | phrase | ``if (params.has(name)) error(n, `La constante « ${name} » porte le nom d'une dépendance : le corps ne saurai…`` |
+ | 611 | `"typescript"` | identifiant | `const ts = driverFor("typescript")` |
+ | 612 | `"exécution"` | identifiant | `const deps = depsOf(n, f.stage ?? "exécution").map(([p]) => p)` |
+-| 615 | `"code"` | identifiant | `diags.push({ severity: issue.severity, origin: "code", node: n, what: `corps en ligne : ${issue.what}` })` |
+-| 615 | ``corps en ligne : ${…}`` | phrase | `diags.push({ severity: issue.severity, origin: "code", node: n, what: `corps en ligne : ${issue.what}` })` |
+-| 623 | `"code"` | identifiant | `diags.push({ severity: "avertissement", origin: "code", node: n, what: `Aucun driver pour le langage « ${v.…` |
+-| 623 | ``Aucun driver pour le langage « ${…} » : ce corps n'est pas vérifié`` | phrase | `diags.push({ severity: "avertissement", origin: "code", node: n, what: `Aucun driver pour le langage « ${v.…` |
++| 615 | `"code"` | identifiant | ``diags.push({ severity: issue.severity, origin: "code", node: n, what: `corps en ligne : ${issue.what}` })`` |
++| 615 | `` `corps en ligne : ${…}` `` | phrase | ``diags.push({ severity: issue.severity, origin: "code", node: n, what: `corps en ligne : ${issue.what}` })`` |
++| 623 | `"code"` | identifiant | ``diags.push({ severity: "avertissement", origin: "code", node: n, what: `Aucun driver pour le langage « ${v.…`` |
++| 623 | `` `Aucun driver pour le langage « ${…} » : ce corps n'est pas vérifié` `` | phrase | ``diags.push({ severity: "avertissement", origin: "code", node: n, what: `Aucun driver pour le langage « ${v.…`` |
+ | 627 | `"exécution"` | identifiant | `const deps = depsOf(n, f.stage ?? "exécution").map(([p]) => p)` |
+-| 629 | `"code"` | identifiant | `diags.push({ severity: issue.severity, origin: "code", node: n, what: `${v.file} : ${issue.what}` })` |
+-| 629 | ``${…} : ${…}`` | séparateur | `diags.push({ severity: issue.severity, origin: "code", node: n, what: `${v.file} : ${issue.what}` })` |
+-| 641 | `", "` | séparateur | `const detail = [...byCat].sort((a, b) => b[1] - a[1]).map(([c, k]) => `${k} ${c}`).join(", ")` |
+-| 642 | `"code"` | identifiant | `diags.push({ severity: "avertissement", origin: "code", node: n, what: `${items.length} littéra${items.leng…` |
+-| 642 | ``${…} littéra${…} à spécifier dans le corps : ${…}`` | phrase | `diags.push({ severity: "avertissement", origin: "code", node: n, what: `${items.length} littéra${items.leng…` |
+-| 642 | `"ux"` | identifiant | `diags.push({ severity: "avertissement", origin: "code", node: n, what: `${items.length} littéra${items.leng…` |
+-| 642 | `"l"` | identifiant | `diags.push({ severity: "avertissement", origin: "code", node: n, what: `${items.length} littéra${items.leng…` |
++| 629 | `"code"` | identifiant | ``diags.push({ severity: issue.severity, origin: "code", node: n, what: `${v.file} : ${issue.what}` })`` |
++| 629 | `` `${…} : ${…}` `` | séparateur | ``diags.push({ severity: issue.severity, origin: "code", node: n, what: `${v.file} : ${issue.what}` })`` |
++| 641 | `", "` | séparateur | ``const detail = [...byCat].sort((a, b) => b[1] - a[1]).map(([c, k]) => `${k} ${c}`).join(", ")`` |
++| 642 | `"code"` | identifiant | ``diags.push({ severity: "avertissement", origin: "code", node: n, what: `${items.length} littéra${items.leng…`` |
++| 642 | `` `${…} littéra${…} à spécifier dans le corps : ${…}` `` | phrase | ``diags.push({ severity: "avertissement", origin: "code", node: n, what: `${items.length} littéra${items.leng…`` |
++| 642 | `"ux"` | identifiant | ``diags.push({ severity: "avertissement", origin: "code", node: n, what: `${items.length} littéra${items.leng…`` |
++| 642 | `"l"` | identifiant | ``diags.push({ severity: "avertissement", origin: "code", node: n, what: `${items.length} littéra${items.leng…`` |
+ | 647 | `"code"` | identifiant | `for (const d of diags) if (d.origin === "code" && d.severity === "erreur" && d.node) refused.add(d.node)` |
+-| 655 | ``evaluate() a échoué : ${…}`` | phrase | `if (!(e instanceof Hole)) error(n, `evaluate() a échoué : ${message(e)}`)` |
+-| 662 | ``${…}.${…}`` | séparateur | `const keys = paths.map((p) => (p ? `${refOf(n)}.${p}` : refOf(n)))` |
++| 655 | `` `evaluate() a échoué : ${…}` `` | phrase | ``if (!(e instanceof Hole)) error(n, `evaluate() a échoué : ${message(e)}`)`` |
++| 662 | `` `${…}.${…}` `` | séparateur | ``const keys = paths.map((p) => (p ? `${refOf(n)}.${p}` : refOf(n)))`` |
+ | 663 | `"."` | séparateur | `const hits = [...blocked].filter(([k]) => keys.some((x) => k === x \|\| k.startsWith(x + "."))).flatMap(([, m…` |
+-| 664 | ``bloque ${…} ${…}${…} de « ${…} »`` | gabarit | `if (hits.length) return hits.map((b) => `bloque ${b.count} ${b.what}${b.count > 1 ? "s" : ""} de « ${title(…` |
+-| 664 | `"s"` | identifiant | `if (hits.length) return hits.map((b) => `bloque ${b.count} ${b.what}${b.count > 1 ? "s" : ""} de « ${title(…` |
+-| 664 | `", "` | séparateur | `if (hits.length) return hits.map((b) => `bloque ${b.count} ${b.what}${b.count > 1 ? "s" : ""} de « ${title(…` |
+-| 666 | ``concerne ${…}`` | gabarit | `return dependents.length ? `concerne ${dependents.map((d) => `« ${title(d)} »`).join(", ")}` : undefined` |
+-| 666 | ``« ${…} »`` | séparateur | `return dependents.length ? `concerne ${dependents.map((d) => `« ${title(d)} »`).join(", ")}` : undefined` |
+-| 666 | `", "` | séparateur | `return dependents.length ? `concerne ${dependents.map((d) => `« ${title(d)} »`).join(", ")}` : undefined` |
+-| 669 | ``« ${…} » (${…})`` | séparateur | `const parts = list.map((c) => `« ${title(c)} » (${ownerOf(c) ?? "sans responsable"})`)` |
+-| 669 | `"sans responsable"` | phrase | `const parts = list.map((c) => `« ${title(c)} » (${ownerOf(c) ?? "sans responsable"})`)` |
+-| 670 | ``${…} et ${…}`` | gabarit | `return parts.length > 1 ? `${parts.slice(0, -1).join(", ")} et ${parts.at(-1)}` : parts.join("")` |
+-| 670 | `-1` | nombre | `return parts.length > 1 ? `${parts.slice(0, -1).join(", ")} et ${parts.at(-1)}` : parts.join("")` |
+-| 670 | `", "` | séparateur | `return parts.length > 1 ? `${parts.slice(0, -1).join(", ")} et ${parts.at(-1)}` : parts.join("")` |
+-| 682 | ``${…}.${…}`` | séparateur | `for (const [k, x] of Object.entries(v)) scan(x, `${path}.${k}`)` |
++| 664 | `` `bloque ${…} ${…}${…} de « ${…} »` `` | gabarit | ``if (hits.length) return hits.map((b) => `bloque ${b.count} ${b.what}${b.count > 1 ? "s" : ""} de « ${title(…`` |
++| 664 | `"s"` | identifiant | ``if (hits.length) return hits.map((b) => `bloque ${b.count} ${b.what}${b.count > 1 ? "s" : ""} de « ${title(…`` |
++| 664 | `", "` | séparateur | ``if (hits.length) return hits.map((b) => `bloque ${b.count} ${b.what}${b.count > 1 ? "s" : ""} de « ${title(…`` |
++| 666 | `` `concerne ${…}` `` | gabarit | ``return dependents.length ? `concerne ${dependents.map((d) => `« ${title(d)} »`).join(", ")}` : undefined`` |
++| 666 | `` `« ${…} »` `` | séparateur | ``return dependents.length ? `concerne ${dependents.map((d) => `« ${title(d)} »`).join(", ")}` : undefined`` |
++| 666 | `", "` | séparateur | ``return dependents.length ? `concerne ${dependents.map((d) => `« ${title(d)} »`).join(", ")}` : undefined`` |
++| 669 | `` `« ${…} » (${…})` `` | séparateur | ``const parts = list.map((c) => `« ${title(c)} » (${ownerOf(c) ?? "sans responsable"})`)`` |
++| 669 | `"sans responsable"` | phrase | ``const parts = list.map((c) => `« ${title(c)} » (${ownerOf(c) ?? "sans responsable"})`)`` |
++| 670 | `` `${…} et ${…}` `` | gabarit | ``return parts.length > 1 ? `${parts.slice(0, -1).join(", ")} et ${parts.at(-1)}` : parts.join("")`` |
++| 670 | `-1` | nombre | ``return parts.length > 1 ? `${parts.slice(0, -1).join(", ")} et ${parts.at(-1)}` : parts.join("")`` |
++| 670 | `", "` | séparateur | ``return parts.length > 1 ? `${parts.slice(0, -1).join(", ")} et ${parts.at(-1)}` : parts.join("")`` |
++| 682 | `` `${…}.${…}` `` | séparateur | ``for (const [k, x] of Object.entries(v)) scan(x, `${path}.${k}`)`` |
+ | 687 | `"."` | séparateur | `const [first, ...rest] = path.split(".")` |
+-| 688 | `` pour ${…}`` | gabarit | `const sub = rest.length ? ` pour ${rest.join(".")}` : ""` |
+-| 688 | `"."` | séparateur | `const sub = rest.length ? ` pour ${rest.join(".")}` : ""` |
+-| 690 | ``Décider « ${…} »${…}`` | gabarit | `? `Décider « ${title(n)} »${sub}`` |
+-| 691 | ``Décider « ${…} » : ${…}${…}`` | gabarit | `: `Décider « ${title(n)} » : ${(def.fields[first]?.label ?? first).toLowerCase()}${sub}`` |
++| 688 | `` ` pour ${…}` `` | gabarit | ``const sub = rest.length ? ` pour ${rest.join(".")}` : ""`` |
++| 688 | `"."` | séparateur | ``const sub = rest.length ? ` pour ${rest.join(".")}` : ""`` |
++| 690 | `` `Décider « ${…} »${…}` `` | gabarit | `` ? `Décider « ${title(n)} »${sub}` `` |
++| 691 | `` `Décider « ${…} » : ${…}${…}` `` | gabarit | `` : `Décider « ${title(n)} » : ${(def.fields[first]?.label ?? first).toLowerCase()}${sub}` `` |
+ | 692 | `"valeur"` | identifiant | `diags.push({ severity: "bloquant", origin: "valeur", node: n, what, owner: ownerOf(n), effect: effectOf(n, …` |
+ | 696 | `"contesté"` | identifiant | `for (const r of resolutions.filter((x) => x.outcome === "contesté")) {` |
+ | 697 | `"le nœud entier"` | phrase | `const paths = r.paths.map((p) => p \|\| "le nœud entier").join(", ")` |
+ | 697 | `", "` | séparateur | `const paths = r.paths.map((p) => p \|\| "le nœud entier").join(", ")` |
+ | 700 | `"recoupement"` | identifiant | `origin: "recoupement",` |
+-| 702 | ``Trancher « ${…} » : ${…} revendiqué par ${…}`` | phrase | `what: `Trancher « ${title(r.target)} » : ${paths} revendiqué par ${names(r.claimants)}`,` |
+-| 715 | ``holes() a échoué : ${…}`` | phrase | `if (!(e instanceof Hole)) error(n, `holes() a échoué : ${message(e)}`)` |
++| 702 | `` `Trancher « ${…} » : ${…} revendiqué par ${…}` `` | phrase | ``what: `Trancher « ${title(r.target)} » : ${paths} revendiqué par ${names(r.claimants)}`,`` |
++| 715 | `` `holes() a échoué : ${…}` `` | phrase | ``if (!(e instanceof Hole)) error(n, `holes() a échoué : ${message(e)}`)`` |
+ | 719 | `"type"` | identifiant | `diags.push({ severity: x.severity, origin: "type", node: on, what: x.what, owner: x.owner ?? ownerOf(on) ??…` |
+ | 723 | `2` | nombre | `const order: Record<Severity, number> = { bloquant: 0, erreur: 1, avertissement: 2 }` |
+ 
+@@ -424,9 +424,9 @@
+ | 62 | `2` | nombre | `const pad = (n: number) => String(n).padStart(2, "0")` |
+ | 62 | `"0"` | identifiant | `const pad = (n: number) => String(n).padStart(2, "0")` |
+ | 65 | `"texte"` | identifiant | `case "text": return "texte"` |
+-| 66 | ``2026-${…}-${…}`` | gabarit | `case "date": return `2026-${pad(int(1, 12))}-${pad(int(1, 28))}`` |
+-| 66 | `12` | nombre | `case "date": return `2026-${pad(int(1, 12))}-${pad(int(1, 28))}`` |
+-| 66 | `28` | nombre | `case "date": return `2026-${pad(int(1, 12))}-${pad(int(1, 28))}`` |
++| 66 | `` `2026-${…}-${…}` `` | gabarit | `` case "date": return `2026-${pad(int(1, 12))}-${pad(int(1, 28))}` `` |
++| 66 | `12` | nombre | `` case "date": return `2026-${pad(int(1, 12))}-${pad(int(1, 28))}` `` |
++| 66 | `28` | nombre | `` case "date": return `2026-${pad(int(1, 12))}-${pad(int(1, 28))}` `` |
+ | 67 | `100` | nombre | `case "number": return int(f.min ?? 0, f.max ?? 100)` |
+ | 68 | `60` | nombre | `case "duration": return 60 * int(1, 120)` |
+ | 68 | `120` | nombre | `case "duration": return 60 * int(1, 120)` |
+@@ -447,30 +447,30 @@
+ | 97 | `"*"` | séparateur | `const pool = e.targets.includes("*") ? kinds : kinds.filter((x) => e.targets.includes(x.name))` |
+ | 106 | `":resolve"` | identifiant | `const rnd = prng(def.name + ":resolve")` |
+ | 108 | `"valeur"` | identifiant | `const key = Object.entries(targetKind.fields).find(([, f]) => f.type === "value")?.[0] ?? Object.keys(targe…` |
+-| 109 | ``${…}.a`` | gabarit | `const paths = [key, `${key}.a`, `${key}.b`]` |
+-| 109 | ``${…}.b`` | gabarit | `const paths = [key, `${key}.a`, `${key}.b`]` |
++| 109 | `` `${…}.a` `` | gabarit | ``const paths = [key, `${key}.a`, `${key}.b`]`` |
++| 109 | `` `${…}.b` `` | gabarit | ``const paths = [key, `${key}.a`, `${key}.b`]`` |
+ | 114 | `"Cible"` | identifiant | `Object.assign(meta(target), { id: "Cible", module: "loi" })` |
+ | 114 | `"loi"` | identifiant | `Object.assign(meta(target), { id: "Cible", module: "loi" })` |
+ | 115 | `2` | nombre | `const claimants = [0, 1, 2].map((j) => {` |
+-| 117 | ``Essai${…}`` | gabarit | `Object.assign(meta(c), { id: `Essai${j}`, module: "loi" })` |
+-| 117 | `"loi"` | identifiant | `Object.assign(meta(c), { id: `Essai${j}`, module: "loi" })` |
++| 117 | `` `Essai${…}` `` | gabarit | ``Object.assign(meta(c), { id: `Essai${j}`, module: "loi" })`` |
++| 117 | `"loi"` | identifiant | ``Object.assign(meta(c), { id: `Essai${j}`, module: "loi" })`` |
+ | 125 | `0.4` | nombre | `const linked = claimants.slice(0, j).filter(() => rnd() < 0.4)` |
+ | 131 | `2` | nombre | `Array.from({ length: 1 + Math.floor(rnd() * 2) }, () => ({ by: c, path: paths[Math.floor(rnd() * paths.leng…` |
+ | 131 | `100` | nombre | `Array.from({ length: 1 + Math.floor(rnd() * 2) }, () => ({ by: c, path: paths[Math.floor(rnd() * paths.leng…` |
+ | 137 | `2` | nombre | `const orders = [raw, [...raw].reverse(), ...[0, 1, 2].map(() => [...raw].sort(() => rnd() - 0.5))]` |
+ | 137 | `0.5` | nombre | `const orders = [raw, [...raw].reverse(), ...[0, 1, 2].map(() => [...raw].sort(() => rnd() - 0.5))]` |
+ | 144 | `"resolve() lit une valeur en cours de résolution"` | phrase | `if (e instanceof Contested) fail(LAWS.total, "resolve() lit une valeur en cours de résolution")` |
+-| 145 | ``resolve() lève « ${…} »`` | gabarit | `else fail(LAWS.total, `resolve() lève « ${(e as Error).message} »`)` |
+-| 153 | ``${…}>${…}`` | séparateur | `? { kind: r.kind, order: r.order.map((v) => v.ref), replaced: (r.replaced ?? []).map(([x, y]) => `${x.ref}>…` |
++| 145 | `` `resolve() lève « ${…} »` `` | gabarit | ``else fail(LAWS.total, `resolve() lève « ${(e as Error).message} »`)`` |
++| 153 | `` `${…}>${…}` `` | séparateur | ``? { kind: r.kind, order: r.order.map((v) => v.ref), replaced: (r.replaced ?? []).map(([x, y]) => `${x.ref}>…`` |
+ | 156 | `"les mêmes revendications, dans un autre ordre, donnent une autre r…` | phrase | `if (new Set(answers.map(norm)).size > 1) fail(LAWS.orderFree, "les mêmes revendications, dans un autre ordr…` |
+-| 161 | ``resolve() renvoie « ${…} », qui ne revendique rien`` | phrase | `if (out.length) fail(LAWS.closed, `resolve() renvoie « ${out[0].ref} », qui ne revendique rien`)` |
++| 161 | `` `resolve() renvoie « ${…} », qui ne revendique rien` `` | phrase | ``if (out.length) fail(LAWS.closed, `resolve() renvoie « ${out[0].ref} », qui ne revendique rien`)`` |
+ | 176 | `"libellé manquant"` | phrase | `if (!def.label?.one \|\| !def.label?.many) fail(LAWS.declared, "libellé manquant")` |
+-| 178 | ``nom réservé par l'API : ${…}`` | phrase | `if (RESERVED.has(k)) fail(LAWS.declared, `nom réservé par l'API : ${k}`)` |
+-| 182 | `"*"` | séparateur | `if (t !== "*" && !kinds.some((x) => x.name === t)) fail(LAWS.declared, `l'arête « ${k} » vise un type incon…` |
+-| 182 | ``l'arête « ${…} » vise un type inconnu : ${…}`` | phrase | `if (t !== "*" && !kinds.some((x) => x.name === t)) fail(LAWS.declared, `l'arête « ${k} » vise un type incon…` |
++| 178 | `` `nom réservé par l'API : ${…}` `` | phrase | ``if (RESERVED.has(k)) fail(LAWS.declared, `nom réservé par l'API : ${k}`)`` |
++| 182 | `"*"` | séparateur | ``if (t !== "*" && !kinds.some((x) => x.name === t)) fail(LAWS.declared, `l'arête « ${k} » vise un type incon…`` |
++| 182 | `` `l'arête « ${…} » vise un type inconnu : ${…}` `` | phrase | ``if (t !== "*" && !kinds.some((x) => x.name === t)) fail(LAWS.declared, `l'arête « ${k} » vise un type incon…`` |
+ | 185 | `"plusieurs champs responsables"` | phrase | `if (Object.values(def.fields).filter((f) => f.owner).length > 1) fail(LAWS.declared, "plusieurs champs resp…` |
+ | 186 | `"resolve() sans claims()"` | phrase | `if (def.resolve && !def.claims) fail(LAWS.declared, "resolve() sans claims()")` |
+-| 201 | ``${…}() lève « ${…} »`` | gabarit | `fail(LAWS.total, `${name}() lève « ${(e as Error).message} »`)` |
++| 201 | `` `${…}() lève « ${…} »` `` | gabarit | ``fail(LAWS.total, `${name}() lève « ${(e as Error).message} »`)`` |
+ | 205 | `"evaluate"` | identifiant | `run("evaluate", () => {` |
+ | 212 | `"activeAt"` | identifiant | `active: run("activeAt", () => def.activeAt?.(frozen.self(n) as never, frozen)),` |
+ | 213 | `"claims"` | identifiant | `claims: run("claims", () => def.claims?.(frozen.self(n) as never, frozen)?.map((c) => [c.target?.ref, c.pat…` |
+@@ -478,18 +478,18 @@
+ | 215 | `"status"` | identifiant | `status: run("status", () => def.status?.(g.self(n) as never, g)),` |
+ | 216 | `"render"` | identifiant | `render: run("render", () => def.render?.(g.self(n) as never, g)),` |
+ | 221 | `"deux appels identiques donnent deux réponses"` | phrase | `if (JSON.stringify(a) !== JSON.stringify(b)) fail(LAWS.deterministic, "deux appels identiques donnent deux …` |
+-| 223 | ``« ${…} » n'a pas de responsable`` | phrase | `if (x.severity === "bloquant" && !(x.owner ?? ownerOf(n))) fail(LAWS.owner, `« ${x.what} » n'a pas de respo…` |
++| 223 | `` `« ${…} » n'a pas de responsable` `` | phrase | ``if (x.severity === "bloquant" && !(x.owner ?? ownerOf(n))) fail(LAWS.owner, `« ${x.what} » n'a pas de respo…`` |
+ | 225 | `"tenu"` | identifiant | `if (g === bare && (a.status === "tenu" \|\| a.status === "violé")) {` |
+ | 225 | `"violé"` | identifiant | `if (g === bare && (a.status === "tenu" \|\| a.status === "violé")) {` |
+-| 226 | ``status() renvoie « ${…} » alors qu'aucune preuve n'existe`` | phrase | `fail(LAWS.unknown, `status() renvoie « ${a.status} » alors qu'aucune preuve n'existe`)` |
++| 226 | `` `status() renvoie « ${…} » alors qu'aucune preuve n'existe` `` | phrase | ``fail(LAWS.unknown, `status() renvoie « ${a.status} » alors qu'aucune preuve n'existe`)`` |
+ | 230 | `"claims() vise autre chose qu'un nœud"` | phrase | `if (c.target && !isNode(c.target.node)) fail(LAWS.declared, "claims() vise autre chose qu'un nœud")` |
+-| 245 | ``${…}/${…}`` | séparateur | `if (e.isDirectory()) scan(join(dir, e.name), `${rel}/${e.name}`)` |
++| 245 | `` `${…}/${…}` `` | séparateur | ``if (e.isDirectory()) scan(join(dir, e.name), `${rel}/${e.name}`)`` |
+ | 246 | `".ts"` | fichier | `else if (e.name.endsWith(".ts")) {` |
+ | 248 | `/(?:from\s+\|import\s*\(\s*)["']([^"']+)["']/g` | expression régulière | `for (const m of text.matchAll(/(?:from\s+\|import\s*\(\s*)["']([^"']+)["']/g)) {` |
+ | 249 | `/\.(ts\|js)$/` | expression régulière | `const spec = m[1].replace(/\.(ts\|js)$/, "")` |
+ | 250 | `"/trame/"` | fichier | `if (spec.includes("/trame/") && !spec.endsWith("/trame/kernel")) {` |
+ | 250 | `"/trame/kernel"` | fichier | `if (spec.includes("/trame/") && !spec.endsWith("/trame/kernel")) {` |
+-| 251 | ``${…}/${…} importe « ${…} » : seule l'API publique (trame/kernel) e…` | phrase | `out.push(`${rel}/${e.name} importe « ${m[1]} » : seule l'API publique (trame/kernel) est permise`)` |
++| 251 | `` `${…}/${…} importe « ${…} » : seule l'API publique (trame/kernel) e… `` | phrase | ``out.push(`${rel}/${e.name} importe « ${m[1]} » : seule l'API publique (trame/kernel) est permise`)`` |
+ | 258 | `"."` | séparateur | `for (const dir of [...dirs.kinds, ...dirs.views, join(root, deps.disposition.sources)]) scan(dir, relative(…` |
+ 
+ </details>
+@@ -500,18 +500,18 @@
+ 
+ | Ligne | Valeur | Catégorie | Contexte |
+ |---|---|---|---|
+-| 75 | `" (abrogé)"` | texte | `const L: string[] = [ancre(c.id), "", titre(level, `${c.title}${c.repealedBy ? " (abrogé)" : ""}`), ""]` |
+-| 76 | ``statut : ${…}`` | gabarit | `L.push([codeEnLigne(c.id), c.source && codeEnLigne(c.source), c.status && `statut : ${gras(c.status)}`, c.p…` |
+-| 76 | `"publié"` | identifiant | `L.push([codeEnLigne(c.id), c.source && codeEnLigne(c.source), c.status && `statut : ${gras(c.status)}`, c.p…` |
+-| 76 | `" · "` | séparateur | `L.push([codeEnLigne(c.id), c.source && codeEnLigne(c.source), c.status && `statut : ${gras(c.status)}`, c.p…` |
+-| 78 | ``${…} par ${…} : ce nœud n'est plus dans le graphe en vigueur, ni d…` | phrase | `if (c.repealedBy) L.push(`${gras("Abrogé")} par ${inline({ t: "ref", ...c.repealedBy })} : ce nœud n'est pl…` |
+-| 78 | `"Abrogé"` | identifiant | `if (c.repealedBy) L.push(`${gras("Abrogé")} par ${inline({ t: "ref", ...c.repealedBy })} : ce nœud n'est pl…` |
+-| 82 | ``${…} : ${…}`` | séparateur | `...c.facts.map((f) => `${f.label} : ${line(f.value)}`),` |
+-| 83 | ``${…}${…} : ${…}`` | séparateur | `...c.links.map((l) => `${l.label}${l.active ? "" : " (pas en vigueur)"} : ${l.targets.map((t) => inline({ t…` |
+-| 83 | `" (pas en vigueur)"` | phrase | `...c.links.map((l) => `${l.label}${l.active ? "" : " (pas en vigueur)"} : ${l.targets.map((t) => inline({ t…` |
+-| 83 | `", "` | séparateur | `...c.links.map((l) => `${l.label}${l.active ? "" : " (pas en vigueur)"} : ${l.targets.map((t) => inline({ t…` |
++| 75 | `" (abrogé)"` | texte | ``const L: string[] = [ancre(c.id), "", titre(level, `${c.title}${c.repealedBy ? " (abrogé)" : ""}`), ""]`` |
++| 76 | `` `statut : ${…}` `` | gabarit | ``L.push([codeEnLigne(c.id), c.source && codeEnLigne(c.source), c.status && `statut : ${gras(c.status)}`, c.p…`` |
++| 76 | `"publié"` | identifiant | ``L.push([codeEnLigne(c.id), c.source && codeEnLigne(c.source), c.status && `statut : ${gras(c.status)}`, c.p…`` |
++| 76 | `" · "` | séparateur | ``L.push([codeEnLigne(c.id), c.source && codeEnLigne(c.source), c.status && `statut : ${gras(c.status)}`, c.p…`` |
++| 78 | `` `${…} par ${…} : ce nœud n'est plus dans le graphe en vigueur, ni d… `` | phrase | ``if (c.repealedBy) L.push(`${gras("Abrogé")} par ${inline({ t: "ref", ...c.repealedBy })} : ce nœud n'est pl…`` |
++| 78 | `"Abrogé"` | identifiant | ``if (c.repealedBy) L.push(`${gras("Abrogé")} par ${inline({ t: "ref", ...c.repealedBy })} : ce nœud n'est pl…`` |
++| 82 | `` `${…} : ${…}` `` | séparateur | ``...c.facts.map((f) => `${f.label} : ${line(f.value)}`),`` |
++| 83 | `` `${…}${…} : ${…}` `` | séparateur | ``...c.links.map((l) => `${l.label}${l.active ? "" : " (pas en vigueur)"} : ${l.targets.map((t) => inline({ t…`` |
++| 83 | `" (pas en vigueur)"` | phrase | ``...c.links.map((l) => `${l.label}${l.active ? "" : " (pas en vigueur)"} : ${l.targets.map((t) => inline({ t…`` |
++| 83 | `", "` | séparateur | ``...c.links.map((l) => `${l.label}${l.active ? "" : " (pas en vigueur)"} : ${l.targets.map((t) => inline({ t…`` |
+ | 87 | `"."` | séparateur | `for (const ch of c.children) L.push(ancre(ch.ref.split(".").slice(1).join(".")), "", ...blocks(ch.body, lev…` |
+-| 94 | ``n${…}`` | gabarit | `const ids = new Map(f.nodes.map((n, i) => [n.ref, `n${i}`]))` |
++| 94 | `` `n${…}` `` | gabarit | ``const ids = new Map(f.nodes.map((n, i) => [n.ref, `n${i}`]))`` |
+ | 95 | `/"/g` | expression régulière | `const q = (s: string) => s.replace(/"/g, "#quot;")` |
+ | 95 | `"#quot;"` | texte | `const q = (s: string) => s.replace(/"/g, "#quot;")` |
+ | 96 | `"flowchart TB"` | phrase | `L.push(f.shape === "couches" \|\| f.shape === "arbre" ? "flowchart TB" : "flowchart LR")` |
+@@ -521,48 +521,48 @@
+ | 98 | `"inactif"` | identifiant | `const cls = [n.status ?? "neutre", n.history ? "historique" : "", n.active ? "" : "inactif", n.open ? "ouve…` |
+ | 98 | `"ouvert"` | identifiant | `const cls = [n.status ?? "neutre", n.history ? "historique" : "", n.active ? "" : "inactif", n.open ? "ouve…` |
+ | 98 | `","` | séparateur | `const cls = [n.status ?? "neutre", n.history ? "historique" : "", n.active ? "" : "inactif", n.open ? "ouve…` |
+-| 99 | ``  ${…}["${…}<br/><small>${…}</small>"]:::${…}`` | balisage | `return `  ${ids.get(n.ref)}["${q(n.title)}<br/><small>${q(n.kindLabel)}</small>"]:::${cls.split(",")[0]}`` |
+-| 99 | `","` | séparateur | `return `  ${ids.get(n.ref)}["${q(n.title)}<br/><small>${q(n.kindLabel)}</small>"]:::${cls.split(",")[0]}`` |
+-| 105 | ``  subgraph ${…}["${…}"]`` | gabarit | `L.push(`  subgraph ${gr.id}["${q(gr.label)}"]`, ...mine.map((n) => "  " + node(n)), "  end")` |
+-| 105 | `"  "` | séparateur | `L.push(`  subgraph ${gr.id}["${q(gr.label)}"]`, ...mine.map((n) => "  " + node(n)), "  end")` |
+-| 105 | `"  end"` | texte | `L.push(`  subgraph ${gr.id}["${q(gr.label)}"]`, ...mine.map((n) => "  " + node(n)), "  end")` |
+-| 114 | `" (pas en vigueur)"` | phrase | `const label = q(`${e.label}${e.active ? "" : " (pas en vigueur)"}`)` |
++| 99 | `` `  ${…}["${…}<br/><small>${…}</small>"]:::${…}` `` | balisage | `` return `  ${ids.get(n.ref)}["${q(n.title)}<br/><small>${q(n.kindLabel)}</small>"]:::${cls.split(",")[0]}` `` |
++| 99 | `","` | séparateur | `` return `  ${ids.get(n.ref)}["${q(n.title)}<br/><small>${q(n.kindLabel)}</small>"]:::${cls.split(",")[0]}` `` |
++| 105 | `` `  subgraph ${…}["${…}"]` `` | gabarit | ``L.push(`  subgraph ${gr.id}["${q(gr.label)}"]`, ...mine.map((n) => "  " + node(n)), "  end")`` |
++| 105 | `"  "` | séparateur | ``L.push(`  subgraph ${gr.id}["${q(gr.label)}"]`, ...mine.map((n) => "  " + node(n)), "  end")`` |
++| 105 | `"  end"` | texte | ``L.push(`  subgraph ${gr.id}["${q(gr.label)}"]`, ...mine.map((n) => "  " + node(n)), "  end")`` |
++| 114 | `" (pas en vigueur)"` | phrase | ``const label = q(`${e.label}${e.active ? "" : " (pas en vigueur)"}`)`` |
+ | 115 | `"-.-"` | séparateur | `const arrow = e.nature === "calculée" ? "-.-" : e.nature === "déduite" ? "-.->" : e.role === "gagnant" \|\| e…` |
+ | 115 | `"-.->"` | séparateur | `const arrow = e.nature === "calculée" ? "-.-" : e.nature === "déduite" ? "-.->" : e.role === "gagnant" \|\| e…` |
+ | 115 | `"==>"` | séparateur | `const arrow = e.nature === "calculée" ? "-.-" : e.nature === "déduite" ? "-.->" : e.role === "gagnant" \|\| e…` |
+ | 115 | `"-->"` | séparateur | `const arrow = e.nature === "calculée" ? "-.-" : e.nature === "déduite" ? "-.->" : e.role === "gagnant" \|\| e…` |
+-| 116 | ``  ${…} ${…}\|${…}\| ${…}`` | séparateur | `L.push(`  ${a} ${arrow}\|${label}\| ${b}`)` |
+-| 119 | ``  classDef ${…} fill:${…},stroke:${…},color:${…}`` | gabarit | `for (const [statut, c] of Object.entries(statuts)) L.push(`  classDef ${statut} fill:${clair[c.fond]},strok…` |
+-| 121 | ``  style ${…} stroke-dasharray: 4 3`` | gabarit | `if (history.length) L.push(`  style ${history.join(",")} stroke-dasharray: 4 3`)` |
+-| 121 | `","` | séparateur | `if (history.length) L.push(`  style ${history.join(",")} stroke-dasharray: 4 3`)` |
+-| 123 | ``  style ${…} opacity:0.5`` | gabarit | `if (inactive.length) L.push(...inactive.map((id) => `  style ${id} opacity:0.5`))` |
+-| 125 | `"gantt"` | identifiant | `L.push("gantt", "  dateFormat YYYY-MM-DD", "  axisFormat %d.%m", `  title Autour du ${frDate(f.today)}`)` |
+-| 125 | `"  dateFormat YYYY-MM-DD"` | phrase | `L.push("gantt", "  dateFormat YYYY-MM-DD", "  axisFormat %d.%m", `  title Autour du ${frDate(f.today)}`)` |
+-| 125 | `"  axisFormat %d.%m"` | texte | `L.push("gantt", "  dateFormat YYYY-MM-DD", "  axisFormat %d.%m", `  title Autour du ${frDate(f.today)}`)` |
+-| 125 | ``  title Autour du ${…}`` | phrase | `L.push("gantt", "  dateFormat YYYY-MM-DD", "  axisFormat %d.%m", `  title Autour du ${frDate(f.today)}`)` |
+-| 127 | ``  section ${…}`` | gabarit | `L.push(`  section ${lane.title.replace(/:/g, " ")}`)` |
+-| 127 | `/:/g` | expression régulière | `L.push(`  section ${lane.title.replace(/:/g, " ")}`)` |
+-| 127 | `" "` | séparateur | `L.push(`  section ${lane.title.replace(/:/g, " ")}`)` |
+-| 131 | ``    En vigueur : ${…}, ${…}`` | phrase | `L.push(`    En vigueur : ${from}, ${until}`)` |
+-| 134 | ``    ${…} : milestone, ${…}, 0d`` | gabarit | `L.push(`    ${m.label.replace(/:/g, " ")} : milestone, ${m.date.length === 7 ? m.date + "-01" : m.date}, 0d`)` |
+-| 134 | `/:/g` | expression régulière | `L.push(`    ${m.label.replace(/:/g, " ")} : milestone, ${m.date.length === 7 ? m.date + "-01" : m.date}, 0d`)` |
+-| 134 | `" "` | séparateur | `L.push(`    ${m.label.replace(/:/g, " ")} : milestone, ${m.date.length === 7 ? m.date + "-01" : m.date}, 0d`)` |
+-| 134 | `7` | nombre | `L.push(`    ${m.label.replace(/:/g, " ")} : milestone, ${m.date.length === 7 ? m.date + "-01" : m.date}, 0d`)` |
+-| 134 | `"-01"` | identifiant | `L.push(`    ${m.label.replace(/:/g, " ")} : milestone, ${m.date.length === 7 ? m.date + "-01" : m.date}, 0d`)` |
+-| 137 | `"  section Date du graphe"` | phrase | `L.push("  section Date du graphe", `    ${frDate(f.today)} : milestone, ${f.today}, 0d`)` |
+-| 137 | ``    ${…} : milestone, ${…}, 0d`` | gabarit | `L.push("  section Date du graphe", `    ${frDate(f.today)} : milestone, ${f.today}, 0d`)` |
++| 116 | `` `  ${…} ${…}\|${…}\| ${…}` `` | séparateur | ``L.push(`  ${a} ${arrow}\|${label}\| ${b}`)`` |
++| 119 | `` `  classDef ${…} fill:${…},stroke:${…},color:${…}` `` | gabarit | ``for (const [statut, c] of Object.entries(statuts)) L.push(`  classDef ${statut} fill:${clair[c.fond]},strok…`` |
++| 121 | `` `  style ${…} stroke-dasharray: 4 3` `` | gabarit | ``if (history.length) L.push(`  style ${history.join(",")} stroke-dasharray: 4 3`)`` |
++| 121 | `","` | séparateur | ``if (history.length) L.push(`  style ${history.join(",")} stroke-dasharray: 4 3`)`` |
++| 123 | `` `  style ${…} opacity:0.5` `` | gabarit | ``if (inactive.length) L.push(...inactive.map((id) => `  style ${id} opacity:0.5`))`` |
++| 125 | `"gantt"` | identifiant | ``L.push("gantt", "  dateFormat YYYY-MM-DD", "  axisFormat %d.%m", `  title Autour du ${frDate(f.today)}`)`` |
++| 125 | `"  dateFormat YYYY-MM-DD"` | phrase | ``L.push("gantt", "  dateFormat YYYY-MM-DD", "  axisFormat %d.%m", `  title Autour du ${frDate(f.today)}`)`` |
++| 125 | `"  axisFormat %d.%m"` | texte | ``L.push("gantt", "  dateFormat YYYY-MM-DD", "  axisFormat %d.%m", `  title Autour du ${frDate(f.today)}`)`` |
++| 125 | `` `  title Autour du ${…}` `` | phrase | ``L.push("gantt", "  dateFormat YYYY-MM-DD", "  axisFormat %d.%m", `  title Autour du ${frDate(f.today)}`)`` |
++| 127 | `` `  section ${…}` `` | gabarit | ``L.push(`  section ${lane.title.replace(/:/g, " ")}`)`` |
++| 127 | `/:/g` | expression régulière | ``L.push(`  section ${lane.title.replace(/:/g, " ")}`)`` |
++| 127 | `" "` | séparateur | ``L.push(`  section ${lane.title.replace(/:/g, " ")}`)`` |
++| 131 | `` `    En vigueur : ${…}, ${…}` `` | phrase | ``L.push(`    En vigueur : ${from}, ${until}`)`` |
++| 134 | `` `    ${…} : milestone, ${…}, 0d` `` | gabarit | ``L.push(`    ${m.label.replace(/:/g, " ")} : milestone, ${m.date.length === 7 ? m.date + "-01" : m.date}, 0d`)`` |
++| 134 | `/:/g` | expression régulière | ``L.push(`    ${m.label.replace(/:/g, " ")} : milestone, ${m.date.length === 7 ? m.date + "-01" : m.date}, 0d`)`` |
++| 134 | `" "` | séparateur | ``L.push(`    ${m.label.replace(/:/g, " ")} : milestone, ${m.date.length === 7 ? m.date + "-01" : m.date}, 0d`)`` |
++| 134 | `7` | nombre | ``L.push(`    ${m.label.replace(/:/g, " ")} : milestone, ${m.date.length === 7 ? m.date + "-01" : m.date}, 0d`)`` |
++| 134 | `"-01"` | identifiant | ``L.push(`    ${m.label.replace(/:/g, " ")} : milestone, ${m.date.length === 7 ? m.date + "-01" : m.date}, 0d`)`` |
++| 137 | `"  section Date du graphe"` | phrase | ``L.push("  section Date du graphe", `    ${frDate(f.today)} : milestone, ${f.today}, 0d`)`` |
++| 137 | `` `    ${…} : milestone, ${…}, 0d` `` | gabarit | ``L.push("  section Date du graphe", `    ${frDate(f.today)} : milestone, ${f.today}, 0d`)`` |
+ | 139 | `"mermaid"` | identifiant | `const out = [...blocDeCode("mermaid", L), ""]` |
+-| 149 | ``${…} : ${…}`` | séparateur | `case "facts": L.push(...b.items.map((f) => elementDeListe(`${f.label} : ${line(f.value)}`)), ""); break` |
++| 149 | `` `${…} : ${…}` `` | séparateur | ``case "facts": L.push(...b.items.map((f) => elementDeListe(`${f.label} : ${line(f.value)}`)), ""); break`` |
+ | 155 | `"Critère"` | identifiant | `L.push(...table(["Critère", "Résultat"], b.items.map((x) => [` |
+ | 155 | `"Résultat"` | identifiant | `L.push(...table(["Critère", "Résultat"], b.items.map((x) => [` |
+-| 157 | `` : ${…}`` | séparateur | `x.outcome === "validé" ? "validé" : `${gras(x.outcome)}${x.detail ? ` : ${cell(x.detail)}` : ""}`,` |
++| 157 | `` ` : ${…}` `` | séparateur | ``x.outcome === "validé" ? "validé" : `${gras(x.outcome)}${x.detail ? ` : ${cell(x.detail)}` : ""}`,`` |
+ | 173 | `"Gravité"` | identifiant | `L.push(...table(["Gravité", "Quoi", "Où", "Responsable", "Conséquence"], b.items.map((x) => [` |
+ | 173 | `"Quoi"` | identifiant | `L.push(...table(["Gravité", "Quoi", "Où", "Responsable", "Conséquence"], b.items.map((x) => [` |
+ | 173 | `"Où"` | identifiant | `L.push(...table(["Gravité", "Quoi", "Où", "Responsable", "Conséquence"], b.items.map((x) => [` |
+ | 173 | `"Responsable"` | identifiant | `L.push(...table(["Gravité", "Quoi", "Où", "Responsable", "Conséquence"], b.items.map((x) => [` |
+ | 173 | `"Conséquence"` | identifiant | `L.push(...table(["Gravité", "Quoi", "Où", "Responsable", "Conséquence"], b.items.map((x) => [` |
+ | 176 | `"à attribuer"` | phrase | `x.owner ?? "à attribuer", cellule(x.effect ?? ""),` |
+-| 184 | ``bloc inconnu : ${…}`` | phrase | `throw new Error(`bloc inconnu : ${JSON.stringify(never)}`)` |
++| 184 | `` `bloc inconnu : ${…}` `` | phrase | ``throw new Error(`bloc inconnu : ${JSON.stringify(never)}`)`` |
+ | 193 | `2` | nombre | `L.push(...blocks(d.blocks, 2))` |
+ 
+ </details>
+@@ -576,15 +576,15 @@
+ | 21 | `"absent"` | identifiant | `if (v === null) return "absent"` |
+ | 22 | `"à décider"` | phrase | `if (typeof v === "object" && !Array.isArray(v) && OPEN_KEY in v) return "à décider"` |
+ | 23 | `"date"` | identifiant | `if (type === "date" && typeof v === "string") return frDate(v)` |
+-| 24 | `"range"` | identifiant | `if (type === "range" && Array.isArray(v)) return `de ${jsonText(v[0], unit)} à ${jsonText(v[1], unit)}`` |
+-| 24 | ``de ${…} à ${…}`` | gabarit | `if (type === "range" && Array.isArray(v)) return `de ${jsonText(v[0], unit)} à ${jsonText(v[1], unit)}`` |
++| 24 | `"range"` | identifiant | `` if (type === "range" && Array.isArray(v)) return `de ${jsonText(v[0], unit)} à ${jsonText(v[1], unit)}` `` |
++| 24 | `` `de ${…} à ${…}` `` | gabarit | `` if (type === "range" && Array.isArray(v)) return `de ${jsonText(v[0], unit)} à ${jsonText(v[1], unit)}` `` |
+ | 25 | `"map"` | identifiant | `if (type === "map" && typeof v === "object" && !Array.isArray(v)) return Object.entries(v).map(([k, x]) => …` |
+-| 25 | ``${…}, ${…}`` | séparateur | `if (type === "map" && typeof v === "object" && !Array.isArray(v)) return Object.entries(v).map(([k, x]) => …` |
++| 25 | `` `${…}, ${…}` `` | séparateur | `if (type === "map" && typeof v === "object" && !Array.isArray(v)) return Object.entries(v).map(([k, x]) => …` |
+ | 25 | `" ; "` | séparateur | `if (type === "map" && typeof v === "object" && !Array.isArray(v)) return Object.entries(v).map(([k, x]) => …` |
+ | 26 | `", "` | séparateur | `if (Array.isArray(v)) return v.map((x) => jsonText(x, unit)).join(", ")` |
+-| 27 | ``{ ${…} }`` | séparateur | `if (typeof v === "object") return `{ ${Object.entries(v).map(([k, x]) => `${k} : ${jsonText(x, unit)}`).joi…` |
+-| 27 | ``${…} : ${…}`` | séparateur | `if (typeof v === "object") return `{ ${Object.entries(v).map(([k, x]) => `${k} : ${jsonText(x, unit)}`).joi…` |
+-| 27 | `", "` | séparateur | `if (typeof v === "object") return `{ ${Object.entries(v).map(([k, x]) => `${k} : ${jsonText(x, unit)}`).joi…` |
++| 27 | `` `{ ${…} }` `` | séparateur | ``if (typeof v === "object") return `{ ${Object.entries(v).map(([k, x]) => `${k} : ${jsonText(x, unit)}`).joi…`` |
++| 27 | `` `${…} : ${…}` `` | séparateur | ``if (typeof v === "object") return `{ ${Object.entries(v).map(([k, x]) => `${k} : ${jsonText(x, unit)}`).joi…`` |
++| 27 | `", "` | séparateur | ``if (typeof v === "object") return `{ ${Object.entries(v).map(([k, x]) => `${k} : ${jsonText(x, unit)}`).joi…`` |
+ | 34 | `"contesté, à trancher"` | phrase | `if (i.open) return i.open === "contesté" ? "contesté, à trancher" : "à décider"` |
+ | 34 | `"à décider"` | phrase | `if (i.open) return i.open === "contesté" ? "contesté, à trancher" : "à décider"` |
+ | 35 | `"règle redéfinie"` | phrase | `if (i.rule) return i.rule === "redéfinie" ? "règle redéfinie" : "règle d'origine"` |
+@@ -598,21 +598,21 @@
+ | 79 | `" : "` | séparateur | `const head: Inline[] = ["Recoupement sur ", ...paths, " de ", refI(r.target), ", entre ", ...listInline(r.c…` |
+ | 81 | `" par "` | texte | `return [...head, { t: "value", value: null, open: "contesté" }, " par ", r.arbiter ? { t: "person", name: r…` |
+ | 81 | `"un responsable à désigner"` | phrase | `return [...head, { t: "value", value: null, open: "contesté" }, " par ", r.arbiter ? { t: "person", name: r…` |
+-| 81 | `` (${…}).`` | séparateur | `return [...head, { t: "value", value: null, open: "contesté" }, " par ", r.arbiter ? { t: "person", name: r…` |
++| 81 | `` ` (${…}).` `` | séparateur | `return [...head, { t: "value", value: null, open: "contesté" }, " par ", r.arbiter ? { t: "person", name: r…` |
+ | 84 | `"tous s'appliquent, dans l'ordre "` | phrase | `const verdict: Inline[] = r.applied.length === r.claimants.length ? ["tous s'appliquent, dans l'ordre ", ..…` |
+ | 84 | `" l'emporte"` | texte | `const verdict: Inline[] = r.applied.length === r.claimants.length ? ["tous s'appliquent, dans l'ordre ", ..…` |
+ | 85 | `" ; voir "` | texte | `const because: Inline[] = r.because.length ? [" ; voir ", ...listInline(r.because.map(refI))] : []` |
+-| 86 | `` (${…}`` | séparateur | `return [...head, ...verdict, ` (${r.reason \|\| "sans motif"}`, ...because, ")."]` |
+-| 86 | `"sans motif"` | phrase | `return [...head, ...verdict, ` (${r.reason \|\| "sans motif"}`, ...because, ")."]` |
+-| 86 | `")."` | séparateur | `return [...head, ...verdict, ` (${r.reason \|\| "sans motif"}`, ...because, ")."]` |
+-| 93 | `"En vigueur"` | phrase | `if (b.state === "en vigueur") return ["En vigueur", `${from ? ` depuis le ${from}` : ""}${until ? `, jusqu'…` |
+-| 93 | `` depuis le ${…}`` | phrase | `if (b.state === "en vigueur") return ["En vigueur", `${from ? ` depuis le ${from}` : ""}${until ? `, jusqu'…` |
+-| 93 | ``, jusqu'au ${…}`` | gabarit | `if (b.state === "en vigueur") return ["En vigueur", `${from ? ` depuis le ${from}` : ""}${until ? `, jusqu'…` |
+-| 94 | `"Pas encore en vigueur"` | phrase | `if (b.state === "pas encore en vigueur") return ["Pas encore en vigueur", `${from ? ` : à partir du ${from}…` |
+-| 94 | `` : à partir du ${…}`` | phrase | `if (b.state === "pas encore en vigueur") return ["Pas encore en vigueur", `${from ? ` : à partir du ${from}…` |
+-| 94 | ``, jusqu'au ${…}`` | gabarit | `if (b.state === "pas encore en vigueur") return ["Pas encore en vigueur", `${from ? ` : à partir du ${from}…` |
+-| 95 | `"Plus en vigueur"` | phrase | `return ["Plus en vigueur", until ? ` depuis le ${until}` : ""]` |
+-| 95 | `` depuis le ${…}`` | phrase | `return ["Plus en vigueur", until ? ` depuis le ${until}` : ""]` |
++| 86 | `` ` (${…}` `` | séparateur | ``return [...head, ...verdict, ` (${r.reason \|\| "sans motif"}`, ...because, ")."]`` |
++| 86 | `"sans motif"` | phrase | ``return [...head, ...verdict, ` (${r.reason \|\| "sans motif"}`, ...because, ")."]`` |
++| 86 | `")."` | séparateur | ``return [...head, ...verdict, ` (${r.reason \|\| "sans motif"}`, ...because, ")."]`` |
++| 93 | `"En vigueur"` | phrase | ``if (b.state === "en vigueur") return ["En vigueur", `${from ? ` depuis le ${from}` : ""}${until ? `, jusqu'…`` |
++| 93 | `` ` depuis le ${…}` `` | phrase | ``if (b.state === "en vigueur") return ["En vigueur", `${from ? ` depuis le ${from}` : ""}${until ? `, jusqu'…`` |
++| 93 | `` `, jusqu'au ${…}` `` | gabarit | ``if (b.state === "en vigueur") return ["En vigueur", `${from ? ` depuis le ${from}` : ""}${until ? `, jusqu'…`` |
++| 94 | `"Pas encore en vigueur"` | phrase | ``if (b.state === "pas encore en vigueur") return ["Pas encore en vigueur", `${from ? ` : à partir du ${from}…`` |
++| 94 | `` ` : à partir du ${…}` `` | phrase | ``if (b.state === "pas encore en vigueur") return ["Pas encore en vigueur", `${from ? ` : à partir du ${from}…`` |
++| 94 | `` `, jusqu'au ${…}` `` | gabarit | ``if (b.state === "pas encore en vigueur") return ["Pas encore en vigueur", `${from ? ` : à partir du ${from}…`` |
++| 95 | `"Plus en vigueur"` | phrase | ``return ["Plus en vigueur", until ? ` depuis le ${until}` : ""]`` |
++| 95 | `` ` depuis le ${…}` `` | phrase | ``return ["Plus en vigueur", until ? ` depuis le ${until}` : ""]`` |
+ | 121 | `"."` | séparateur | `if (!map.has(ch.ref)) map.set(ch.ref, { doc: d.id, file: d.file, anchor: ch.ref.split(".").slice(1).join(".…` |
+ | 128 | `"."` | séparateur | `const idOf = (ref: string) => ref.split(".").slice(1).join(".") \|\| ref` |
+ 
+@@ -626,41 +626,41 @@
+ |---|---|---|---|
+ | 15 | `" "` | séparateur | `const pad = (s: string, n: number) => s + " ".repeat(Math.max(1, n - [...s].length))` |
+ | 22 | `2` | nombre | `const fmt = (r: string[]) => indent + r.map((x, i) => (i === r.length - 1 ? x : pad(x, w[i] + 2))).join("")…` |
+-| 26 | ``${…} (${…})`` | séparateur | `const nodeLabel = (n: FigureNode) => `${idOf(n.ref)} (${n.kindLabel.toLowerCase()})`` |
++| 26 | `` `${…} (${…})` `` | séparateur | `` const nodeLabel = (n: FigureNode) => `${idOf(n.ref)} (${n.kindLabel.toLowerCase()})` `` |
+ | 33 | `"début"` | identifiant | `if (p.from) rows.push([p.from, "début", lane.title])` |
+ | 34 | `"fin"` | identifiant | `if (p.until) rows.push([p.until, "fin", lane.title])` |
+ | 38 | `"date du graphe"` | phrase | `rows.push([f.today, "date du graphe", ""])` |
+ | 49 | `"lié à"` | phrase | `const via = e ? (e.from === prev.ref ? e.label : e.inverse).toLowerCase() : "lié à"` |
+-| 50 | ``${…}${…}└ ${…} ${…}`` | séparateur | `return `${indent}${"   ".repeat(i - 1)}└ ${via} ${nodeLabel(n)}`` |
+-| 50 | `"   "` | séparateur | `return `${indent}${"   ".repeat(i - 1)}└ ${via} ${nodeLabel(n)}`` |
++| 50 | `` `${…}${…}└ ${…} ${…}` `` | séparateur | `` return `${indent}${"   ".repeat(i - 1)}└ ${via} ${nodeLabel(n)}` `` |
++| 50 | `"   "` | séparateur | `` return `${indent}${"   ".repeat(i - 1)}└ ${via} ${nodeLabel(n)}` `` |
+ | 65 | `" (pas en vigueur)"` | phrase | `const via = (e.to === ref ? e.inverse : e.label).toLowerCase() + (e.active ? "" : " (pas en vigueur)")` |
+-| 66 | `"└"` | séparateur | `L.push(`${indent}${prefix}${last ? "└" : "├"} ${via} ${nodeLabel(byRef.get(other)!)}`)` |
+-| 66 | `"├"` | séparateur | `L.push(`${indent}${prefix}${last ? "└" : "├"} ${via} ${nodeLabel(byRef.get(other)!)}`)` |
++| 66 | `"└"` | séparateur | ``L.push(`${indent}${prefix}${last ? "└" : "├"} ${via} ${nodeLabel(byRef.get(other)!)}`)`` |
++| 66 | `"├"` | séparateur | ``L.push(`${indent}${prefix}${last ? "└" : "├"} ${via} ${nodeLabel(byRef.get(other)!)}`)`` |
+ | 67 | `"  "` | séparateur | `walk(other, prefix + (last ? "  " : "│ "))` |
+ | 67 | `"│ "` | séparateur | `walk(other, prefix + (last ? "  " : "│ "))` |
+-| 75 | ``rang ${…}`` | gabarit | `return layers.map((l) => `${indent}${pad(`rang ${l}`, 9)}${f.nodes.filter((n) => n.layer === l).map((n) => …` |
+-| 75 | `9` | nombre | `return layers.map((l) => `${indent}${pad(`rang ${l}`, 9)}${f.nodes.filter((n) => n.layer === l).map((n) => …` |
+-| 75 | `" · "` | séparateur | `return layers.map((l) => `${indent}${pad(`rang ${l}`, 9)}${f.nodes.filter((n) => n.layer === l).map((n) => …` |
+-| 82 | `" (abrogé)"` | texte | `const L = [`${indent}${c.title}${c.repealedBy ? " (abrogé)" : ""}`]` |
+-| 83 | ``statut ${…}`` | gabarit | `L.push(`${indent}  ${[c.kindLabel.toLowerCase(), c.id, c.source, c.status && `statut ${c.status}`, c.publis…` |
+-| 83 | `"publié"` | identifiant | `L.push(`${indent}  ${[c.kindLabel.toLowerCase(), c.id, c.source, c.status && `statut ${c.status}`, c.publis…` |
+-| 83 | `" · "` | séparateur | `L.push(`${indent}  ${[c.kindLabel.toLowerCase(), c.id, c.source, c.status && `statut ${c.status}`, c.publis…` |
+-| 84 | ``${…}  abrogé par ${…}`` | phrase | `if (c.repealedBy) L.push(`${indent}  abrogé par ${c.repealedBy.title}`)` |
++| 75 | `` `rang ${…}` `` | gabarit | ``return layers.map((l) => `${indent}${pad(`rang ${l}`, 9)}${f.nodes.filter((n) => n.layer === l).map((n) => …`` |
++| 75 | `9` | nombre | ``return layers.map((l) => `${indent}${pad(`rang ${l}`, 9)}${f.nodes.filter((n) => n.layer === l).map((n) => …`` |
++| 75 | `" · "` | séparateur | ``return layers.map((l) => `${indent}${pad(`rang ${l}`, 9)}${f.nodes.filter((n) => n.layer === l).map((n) => …`` |
++| 82 | `" (abrogé)"` | texte | ``const L = [`${indent}${c.title}${c.repealedBy ? " (abrogé)" : ""}`]`` |
++| 83 | `` `statut ${…}` `` | gabarit | ``L.push(`${indent}  ${[c.kindLabel.toLowerCase(), c.id, c.source, c.status && `statut ${c.status}`, c.publis…`` |
++| 83 | `"publié"` | identifiant | ``L.push(`${indent}  ${[c.kindLabel.toLowerCase(), c.id, c.source, c.status && `statut ${c.status}`, c.publis…`` |
++| 83 | `" · "` | séparateur | ``L.push(`${indent}  ${[c.kindLabel.toLowerCase(), c.id, c.source, c.status && `statut ${c.status}`, c.publis…`` |
++| 84 | `` `${…}  abrogé par ${…}` `` | phrase | ``if (c.repealedBy) L.push(`${indent}  abrogé par ${c.repealedBy.title}`)`` |
+ | 85 | `"  "` | séparateur | `L.push(...blocks(c.body, indent + "  "))` |
+-| 89 | `" (pas en vigueur)"` | phrase | `...c.links.map((l) => [`${l.label}${l.active ? "" : " (pas en vigueur)"}`, l.targets.map((t) => t.title).jo…` |
+-| 89 | `", "` | séparateur | `...c.links.map((l) => [`${l.label}${l.active ? "" : " (pas en vigueur)"}`, l.targets.map((t) => t.title).jo…` |
++| 89 | `" (pas en vigueur)"` | phrase | ``...c.links.map((l) => [`${l.label}${l.active ? "" : " (pas en vigueur)"}`, l.targets.map((t) => t.title).jo…`` |
++| 89 | `", "` | séparateur | ``...c.links.map((l) => [`${l.label}${l.active ? "" : " (pas en vigueur)"}`, l.targets.map((t) => t.title).jo…`` |
+ | 91 | `"  "` | séparateur | `if (rows.length) L.push(...columns(undefined, rows, indent + "  "))` |
+ | 92 | `"  "` | séparateur | `for (const ch of c.children) L.push(...blocks(ch.body, indent + "  "))` |
+-| 103 | ``${…}- ${…}`` | séparateur | `case "list": L.push(...b.items.map((x) => `${indent}- ${line(x)}`)); break` |
+-| 105 | `"\n"` | séparateur | `case "code": L.push(...b.text.split("\n").map((x) => `${indent}    ${x}`)); break` |
+-| 108 | `` (${…})`` | séparateur | `L.push(...columns(undefined, b.items.map((x) => [x.outcome, x.name + (x.detail ? ` (${line(x.detail)})` : "…` |
+-| 108 | `"  "` | séparateur | `L.push(...columns(undefined, b.items.map((x) => [x.outcome, x.name + (x.detail ? ` (${line(x.detail)})` : "…` |
+-| 111 | `"  "` | séparateur | `case "details": L.push(`${indent}${b.summary}`, ...blocks(b.blocks, indent + "  ")); break` |
+-| 112 | `"  "` | séparateur | `case "section": L.push("", `${indent}${b.title.toLowerCase()}`, ...blocks(b.blocks, indent + "  ")); break` |
+-| 116 | `15` | nombre | ``${indent}${pad(x.severity, 15)}${x.source ? pad(x.source, 22) : ""}${x.what}${x.owner ? ` · ${x.owner}` : …` |
+-| 116 | `22` | nombre | ``${indent}${pad(x.severity, 15)}${x.source ? pad(x.source, 22) : ""}${x.what}${x.owner ? ` · ${x.owner}` : …` |
+-| 116 | `` · ${…}`` | séparateur | ``${indent}${pad(x.severity, 15)}${x.source ? pad(x.source, 22) : ""}${x.what}${x.owner ? ` · ${x.owner}` : …` |
+-| 123 | ``bloc inconnu : ${…}`` | phrase | `throw new Error(`bloc inconnu : ${JSON.stringify(never)}`)` |
++| 103 | `` `${…}- ${…}` `` | séparateur | ``case "list": L.push(...b.items.map((x) => `${indent}- ${line(x)}`)); break`` |
++| 105 | `"\n"` | séparateur | ``case "code": L.push(...b.text.split("\n").map((x) => `${indent}    ${x}`)); break`` |
++| 108 | `` ` (${…})` `` | séparateur | ``L.push(...columns(undefined, b.items.map((x) => [x.outcome, x.name + (x.detail ? ` (${line(x.detail)})` : "…`` |
++| 108 | `"  "` | séparateur | ``L.push(...columns(undefined, b.items.map((x) => [x.outcome, x.name + (x.detail ? ` (${line(x.detail)})` : "…`` |
++| 111 | `"  "` | séparateur | ``case "details": L.push(`${indent}${b.summary}`, ...blocks(b.blocks, indent + "  ")); break`` |
++| 112 | `"  "` | séparateur | ``case "section": L.push("", `${indent}${b.title.toLowerCase()}`, ...blocks(b.blocks, indent + "  ")); break`` |
++| 116 | `15` | nombre | `` `${indent}${pad(x.severity, 15)}${x.source ? pad(x.source, 22) : ""}${x.what}${x.owner ? ` · ${x.owner}` : … `` |
++| 116 | `22` | nombre | `` `${indent}${pad(x.severity, 15)}${x.source ? pad(x.source, 22) : ""}${x.what}${x.owner ? ` · ${x.owner}` : … `` |
++| 116 | `` ` · ${…}` `` | séparateur | `` `${indent}${pad(x.severity, 15)}${x.source ? pad(x.source, 22) : ""}${x.what}${x.owner ? ` · ${x.owner}` : … `` |
++| 123 | `` `bloc inconnu : ${…}` `` | phrase | ``throw new Error(`bloc inconnu : ${JSON.stringify(never)}`)`` |
+ | 133 | `"\n"` | séparateur | `return L.join("\n").replace(/\n{3,}/g, "\n\n").trimEnd() + "\n"` |
+ | 133 | `/\n{3,}/g` | expression régulière | `return L.join("\n").replace(/\n{3,}/g, "\n\n").trimEnd() + "\n"` |
+ | 133 | `"\n\n"` | séparateur | `return L.join("\n").replace(/\n{3,}/g, "\n\n").trimEnd() + "\n"` |
+@@ -677,10 +677,10 @@
+ | 56 | `2` | nombre | `const GROUP_ORDER: Record<ViewGroup, number> = { module: 0, document: 1, figure: 2, bilan: 3, "nœud": 4 }` |
+ | 56 | `3` | nombre | `const GROUP_ORDER: Record<ViewGroup, number> = { module: 0, document: 1, figure: 2, bilan: 3, "nœud": 4 }` |
+ | 56 | `4` | nombre | `const GROUP_ORDER: Record<ViewGroup, number> = { module: 0, document: 1, figure: 2, bilan: 3, "nœud": 4 }` |
+-| 68 | ``${…}.${…}`` | séparateur | `const id = def.name === sortedViews().find((v) => v.per === "module")?.name ? c.moduleDoc(m.id) : `${def.na…` |
+-| 69 | ``${…}/${…}${…}`` | séparateur | `out.push({ def, id, arg: { module: m.id }, file: writes ? `${deps.disposition.documents}/${id}${deps.dispos…` |
+-| 74 | ``${…}:${…}`` | séparateur | `out.push({ def, id: `${def.name}:${v.ref}`, arg: { node: v } })` |
+-| 77 | ``${…}/${…}${…}`` | séparateur | `out.push({ def, id: def.name, arg: {}, file: writes ? `${deps.disposition.documents}/${def.name}${deps.disp…` |
++| 68 | `` `${…}.${…}` `` | séparateur | ``const id = def.name === sortedViews().find((v) => v.per === "module")?.name ? c.moduleDoc(m.id) : `${def.na…`` |
++| 69 | `` `${…}/${…}${…}` `` | séparateur | ``out.push({ def, id, arg: { module: m.id }, file: writes ? `${deps.disposition.documents}/${id}${deps.dispos…`` |
++| 74 | `` `${…}:${…}` `` | séparateur | ``out.push({ def, id: `${def.name}:${v.ref}`, arg: { node: v } })`` |
++| 77 | `` `${…}/${…}${…}` `` | séparateur | ``out.push({ def, id: def.name, arg: {}, file: writes ? `${deps.disposition.documents}/${def.name}${deps.disp…`` |
+ | 84 | `"Déclaration complète"` | phrase | `declared: "Déclaration complète",` |
+ | 85 | `"Répond sur ce graphe, sans planter"` | phrase | `total: "Répond sur ce graphe, sans planter",` |
+ | 86 | `"Même graphe, même document"` | phrase | `deterministic: "Même graphe, même document",` |
+@@ -704,12 +704,12 @@
+ | 106 | `"resolution"` | identifiant | `"resolution", "card", "figure",` |
+ | 106 | `"card"` | identifiant | `"resolution", "card", "figure",` |
+ | 106 | `"figure"` | identifiant | `"resolution", "card", "figure",` |
+-| 122 | ``${…} : ${…}`` | séparateur | `fail(inst.def.name, VIEW_LAWS.total, `${inst.id} : ${e instanceof Hole ? "lit une valeur non décidée" : (e …` |
+-| 122 | `"lit une valeur non décidée"` | phrase | `fail(inst.def.name, VIEW_LAWS.total, `${inst.id} : ${e instanceof Hole ? "lit une valeur non décidée" : (e …` |
++| 122 | `` `${…} : ${…}` `` | séparateur | ``fail(inst.def.name, VIEW_LAWS.total, `${inst.id} : ${e instanceof Hole ? "lit une valeur non décidée" : (e …`` |
++| 122 | `"lit une valeur non décidée"` | phrase | ``fail(inst.def.name, VIEW_LAWS.total, `${inst.id} : ${e instanceof Hole ? "lit une valeur non décidée" : (e …`` |
+ | 130 | `/"\(fonction\)"/` | expression régulière | `if (JSON.stringify(JSON.parse(text)) !== text \|\| /"\(fonction\)"/.test(text)) fail(inst.def.name, VIEW_LAWS…` |
+-| 132 | ``type de bloc inconnu : ${…}`` | phrase | `if (bad) fail(inst.def.name, VIEW_LAWS.serial, `type de bloc inconnu : ${String(bad.type)}`)` |
+-| 135 | ``${…} : deux exécutions, deux documents`` | phrase | `fail(inst.def.name, VIEW_LAWS.deterministic, `${inst.id} : deux exécutions, deux documents`)` |
+-| 138 | ``${…} : ${…}`` | séparateur | `fail(inst.def.name, VIEW_LAWS.total, `${inst.id} : ${(e as Error).message}`)` |
++| 132 | `` `type de bloc inconnu : ${…}` `` | phrase | ``if (bad) fail(inst.def.name, VIEW_LAWS.serial, `type de bloc inconnu : ${String(bad.type)}`)`` |
++| 135 | `` `${…} : deux exécutions, deux documents` `` | phrase | ``fail(inst.def.name, VIEW_LAWS.deterministic, `${inst.id} : deux exécutions, deux documents`)`` |
++| 138 | `` `${…} : ${…}` `` | séparateur | ``fail(inst.def.name, VIEW_LAWS.total, `${inst.id} : ${(e as Error).message}`)`` |
+ 
+ </details>
+ 
+@@ -722,38 +722,38 @@
+ | 19 | `"main.tf"` | fichier | `const moduleFile = (path: string) => (existsSync(path) && statSync(path).isDirectory() ? join(path, "main.t…` |
+ | 23 | `/^\s*variable\s+"([^"]+)"/gm` | expression régulière | `return [...text.matchAll(/^\s*variable\s+"([^"]+)"/gm)].map((m) => m[1])` |
+ | 28 | `/^\s*output\s+"([^"]+)"/gm` | expression régulière | `return [...text.matchAll(/^\s*output\s+"([^"]+)"/gm)].map((m) => m[1])` |
+-| 35 | ``[${…}]`` | séparateur | `if (Array.isArray(v)) return `[${v.map(hclValue).join(", ")}]`` |
+-| 35 | `", "` | séparateur | `if (Array.isArray(v)) return `[${v.map(hclValue).join(", ")}]`` |
+-| 36 | ``{ ${…} }`` | séparateur | `if (v && typeof v === "object") return `{ ${Object.entries(v).map(([k, x]) => `${k} = ${hclValue(x)}`).join…` |
+-| 36 | ``${…} = ${…}`` | séparateur | `if (v && typeof v === "object") return `{ ${Object.entries(v).map(([k, x]) => `${k} = ${hclValue(x)}`).join…` |
+-| 36 | `", "` | séparateur | `if (v && typeof v === "object") return `{ ${Object.entries(v).map(([k, x]) => `${k} = ${hclValue(x)}`).join…` |
++| 35 | `` `[${…}]` `` | séparateur | `` if (Array.isArray(v)) return `[${v.map(hclValue).join(", ")}]` `` |
++| 35 | `", "` | séparateur | `` if (Array.isArray(v)) return `[${v.map(hclValue).join(", ")}]` `` |
++| 36 | `` `{ ${…} }` `` | séparateur | ``if (v && typeof v === "object") return `{ ${Object.entries(v).map(([k, x]) => `${k} = ${hclValue(x)}`).join…`` |
++| 36 | `` `${…} = ${…}` `` | séparateur | ``if (v && typeof v === "object") return `{ ${Object.entries(v).map(([k, x]) => `${k} = ${hclValue(x)}`).join…`` |
++| 36 | `", "` | séparateur | ``if (v && typeof v === "object") return `{ ${Object.entries(v).map(([k, x]) => `${k} = ${hclValue(x)}`).join…`` |
+ | 37 | `"null"` | identifiant | `return "null"` |
+ | 41 | `"hcl"` | identifiant | `language: "hcl",` |
+ | 42 | `".tf"` | fichier | `extensions: [".tf"],` |
+-| 44 | ``Module introuvable : ${…}`` | phrase | `if (!existsSync(moduleFile(file))) return [{ severity: "erreur", what: `Module introuvable : ${file.replace…` |
+-| 44 | `"/"` | fichier | `if (!existsSync(moduleFile(file))) return [{ severity: "erreur", what: `Module introuvable : ${file.replace…` |
+-| 47 | `"erreur"` | identifiant | `...ctx.deps.filter((d) => !vars.includes(d)).map((d) => ({ severity: "erreur" as const, what: `Le module ne…` |
+-| 47 | ``Le module ne déclare pas la variable « ${…} », que le graphe lui p…` | phrase | `...ctx.deps.filter((d) => !vars.includes(d)).map((d) => ({ severity: "erreur" as const, what: `Le module ne…` |
+-| 48 | `"avertissement"` | identifiant | `...vars.filter((v) => !ctx.deps.includes(v)).map((v) => ({ severity: "avertissement" as const, what: `La va…` |
+-| 48 | ``La variable « ${…} » du module ne reçoit rien du graphe`` | phrase | `...vars.filter((v) => !ctx.deps.includes(v)).map((v) => ({ severity: "avertissement" as const, what: `La va…` |
++| 44 | `` `Module introuvable : ${…}` `` | phrase | ``if (!existsSync(moduleFile(file))) return [{ severity: "erreur", what: `Module introuvable : ${file.replace…`` |
++| 44 | `"/"` | fichier | ``if (!existsSync(moduleFile(file))) return [{ severity: "erreur", what: `Module introuvable : ${file.replace…`` |
++| 47 | `"erreur"` | identifiant | ``...ctx.deps.filter((d) => !vars.includes(d)).map((d) => ({ severity: "erreur" as const, what: `Le module ne…`` |
++| 47 | `` `Le module ne déclare pas la variable « ${…} », que le graphe lui p… `` | phrase | ``...ctx.deps.filter((d) => !vars.includes(d)).map((d) => ({ severity: "erreur" as const, what: `Le module ne…`` |
++| 48 | `"avertissement"` | identifiant | ``...vars.filter((v) => !ctx.deps.includes(v)).map((v) => ({ severity: "avertissement" as const, what: `La va…`` |
++| 48 | `` `La variable « ${…} » du module ne reçoit rien du graphe` `` | phrase | ``...vars.filter((v) => !ctx.deps.includes(v)).map((v) => ({ severity: "avertissement" as const, what: `La va…`` |
+ | 54 | `"provision"` | identifiant | `const dir = join(a.out, "provision")` |
+ | 56 | `6` | nombre | `const width = Math.max(6, ...p.variables.map((v) => v.name.length))` |
+ | 57 | `" "` | séparateur | `const pad = (s: string) => s + " ".repeat(width - s.length)` |
+ | 58 | `/\\/g` | expression régulière | `const source = relative(dir, p.module).replace(/\\/g, "/")` |
+ | 58 | `"/"` | fichier | `const source = relative(dir, p.module).replace(/\\/g, "/")` |
+-| 60 | ``# « ${…} » (${…})`` | séparateur | ``# « ${g.view(p.node).title} » (${refOf(p.node)})`,` |
+-| 61 | ``module "${…}" {`` | gabarit | ``module "${(meta(p.node).id ?? "module").replace(/([a-z0-9])([A-Z])/g, "$1_$2").toLowerCase()}" {`,` |
+-| 61 | `"module"` | identifiant | ``module "${(meta(p.node).id ?? "module").replace(/([a-z0-9])([A-Z])/g, "$1_$2").toLowerCase()}" {`,` |
+-| 61 | `/([a-z0-9])([A-Z])/g` | expression régulière | ``module "${(meta(p.node).id ?? "module").replace(/([a-z0-9])([A-Z])/g, "$1_$2").toLowerCase()}" {`,` |
+-| 61 | `"$1_$2"` | texte | ``module "${(meta(p.node).id ?? "module").replace(/([a-z0-9])([A-Z])/g, "$1_$2").toLowerCase()}" {`,` |
+-| 62 | ``  ${…} = ${…}`` | séparateur | ``  ${pad("source")} = ${JSON.stringify(source)}`,` |
+-| 62 | `"source"` | identifiant | ``  ${pad("source")} = ${JSON.stringify(source)}`,` |
+-| 63 | ``  ${…} = ${…} # ${…}`` | séparateur | `...p.variables.map((v) => `  ${pad(v.name)} = ${hclValue(v.value)} # ${refOf(v.from)}`),` |
+-| 64 | ``}`` | séparateur | ``}`,` |
++| 60 | `` `# « ${…} » (${…})` `` | séparateur | `` `# « ${g.view(p.node).title} » (${refOf(p.node)})`, `` |
++| 61 | `` `module "${…}" {` `` | gabarit | `` `module "${(meta(p.node).id ?? "module").replace(/([a-z0-9])([A-Z])/g, "$1_$2").toLowerCase()}" {`, `` |
++| 61 | `"module"` | identifiant | `` `module "${(meta(p.node).id ?? "module").replace(/([a-z0-9])([A-Z])/g, "$1_$2").toLowerCase()}" {`, `` |
++| 61 | `/([a-z0-9])([A-Z])/g` | expression régulière | `` `module "${(meta(p.node).id ?? "module").replace(/([a-z0-9])([A-Z])/g, "$1_$2").toLowerCase()}" {`, `` |
++| 61 | `"$1_$2"` | texte | `` `module "${(meta(p.node).id ?? "module").replace(/([a-z0-9])([A-Z])/g, "$1_$2").toLowerCase()}" {`, `` |
++| 62 | `` `  ${…} = ${…}` `` | séparateur | `` `  ${pad("source")} = ${JSON.stringify(source)}`, `` |
++| 62 | `"source"` | identifiant | `` `  ${pad("source")} = ${JSON.stringify(source)}`, `` |
++| 63 | `` `  ${…} = ${…} # ${…}` `` | séparateur | ``...p.variables.map((v) => `  ${pad(v.name)} = ${hclValue(v.value)} # ${refOf(v.from)}`),`` |
++| 64 | `` `}` `` | séparateur | `` `}`, `` |
+ | 65 | `"\n"` | séparateur | `].join("\n")` |
+-| 67 | ``# Généré par `${…}` (graphe du ${…}). Ne pas modifier : modifiez l…` | phrase | `const head = `# Généré par \`${a.command}\` (graphe du ${a.host.today}). Ne pas modifier : modifiez le grap…` |
+-| 68 | `"main.tf"` | fichier | `return [{ path: join(dir, "main.tf"), content: `${head}\n${blocks.join("\n\n")}\n` }]` |
+-| 68 | `"\n\n"` | séparateur | `return [{ path: join(dir, "main.tf"), content: `${head}\n${blocks.join("\n\n")}\n` }]` |
++| 67 | `` `# Généré par `${…}` (graphe du ${…}). Ne pas modifier : modifiez l… `` | phrase | ``const head = `# Généré par \`${a.command}\` (graphe du ${a.host.today}). Ne pas modifier : modifiez le grap…`` |
++| 68 | `"main.tf"` | fichier | ``return [{ path: join(dir, "main.tf"), content: `${head}\n${blocks.join("\n\n")}\n` }]`` |
++| 68 | `"\n\n"` | séparateur | ``return [{ path: join(dir, "main.tf"), content: `${head}\n${blocks.join("\n\n")}\n` }]`` |
+ 
+ </details>
+ 
+@@ -763,20 +763,20 @@
+ 
+ | Ligne | Valeur | Catégorie | Contexte |
+ |---|---|---|---|
+-| 42 | ``${…}:${…}`` | séparateur | `const location = (v: View) => (v.decl ? `${v.decl.file}:${String(v.decl.line).padStart(6, "0")}` : v.ref)` |
+-| 42 | `6` | nombre | `const location = (v: View) => (v.decl ? `${v.decl.file}:${String(v.decl.line).padStart(6, "0")}` : v.ref)` |
+-| 42 | `"0"` | identifiant | `const location = (v: View) => (v.decl ? `${v.decl.file}:${String(v.decl.line).padStart(6, "0")}` : v.ref)` |
++| 42 | `` `${…}:${…}` `` | séparateur | ``const location = (v: View) => (v.decl ? `${v.decl.file}:${String(v.decl.line).padStart(6, "0")}` : v.ref)`` |
++| 42 | `6` | nombre | ``const location = (v: View) => (v.decl ? `${v.decl.file}:${String(v.decl.line).padStart(6, "0")}` : v.ref)`` |
++| 42 | `"0"` | identifiant | ``const location = (v: View) => (v.decl ? `${v.decl.file}:${String(v.decl.line).padStart(6, "0")}` : v.ref)`` |
+ | 48 | `"."` | séparateur | `const first = path.split(".")[0]` |
+ | 71 | `"en vigueur"` | phrase | `const before: Inline = !x.path ? "en vigueur" : typeof base === "function" ? doc.value(base, undefined, { r…` |
+ | 72 | `"abrogé"` | identifiant | `const after: Inline = x.value === REMOVE ? "abrogé" : typeof x.value === "function" ? doc.value(x.value, un…` |
+ | 91 | `"Rendu impossible : une valeur n'est pas décidée."` | phrase | `if (e instanceof Hole) return [doc.para("Rendu impossible : une valeur n'est pas décidée.")]` |
+-| 100 | ``${…}.${…}`` | séparateur | `moduleDoc: (module: string) => (perModule().length > 1 ? `${perModule()[0].name}.${module}` : module),` |
++| 100 | `` `${…}.${…}` `` | séparateur | ``moduleDoc: (module: string) => (perModule().length > 1 ? `${perModule()[0].name}.${module}` : module),`` |
+ | 110 | `"sur"` | identifiant | `.filter((x) => (side === "sur" ? x.target : x.by) === v.node)` |
+-| 127 | ``${…}:${…}`` | séparateur | `source: i.node?.decl ? `${i.node.decl.file}:${i.node.decl.line}` : i.where,` |
++| 127 | `` `${…}:${…}` `` | séparateur | ``source: i.node?.decl ? `${i.node.decl.file}:${i.node.decl.line}` : i.where,`` |
+ | 141 | `"Constante"` | identifiant | `if (rows.length) out.push(doc.table(["Constante", "Valeur", "Sens"], rows))` |
+ | 141 | `"Valeur"` | identifiant | `if (rows.length) out.push(doc.table(["Constante", "Valeur", "Sens"], rows))` |
+ | 141 | `"Sens"` | identifiant | `if (rows.length) out.push(doc.table(["Constante", "Valeur", "Sens"], rows))` |
+-| 154 | `` (${…})`` | séparateur | `? [doc.ident(file.file), ` (${file.language})`]` |
++| 154 | `` ` (${…})` `` | séparateur | ``? [doc.ident(file.file), ` (${file.language})`]`` |
+ | 155 | `"en ligne, dans la déclaration"` | phrase | `: ["en ligne, dans la déclaration"]` |
+ | 156 | `"Provisionnement"` | identifiant | `facts.push({ label: f.stage === "provisionnement" ? "Provisionnement" : "Corps", value: where })` |
+ | 156 | `"Corps"` | identifiant | `facts.push({ label: f.stage === "provisionnement" ? "Provisionnement" : "Corps", value: where })` |
+@@ -786,15 +786,15 @@
+ | 166 | `" ← "` | séparateur | `value: mine.flatMap((d, i): Inline[] => [...(i ? [" · "] : []), doc.ident(d.name), " ← ", doc.ref(d.node)]),` |
+ | 177 | `"Effets"` | identifiant | `if (v.effects.length) facts.push({ label: "Effets", value: [v.effects.join(", ")] })` |
+ | 177 | `", "` | séparateur | `if (v.effects.length) facts.push({ label: "Effets", value: [v.effects.join(", ")] })` |
+-| 181 | ``${…}\|${…}\|${…}`` | séparateur | `const key = `${label}\|${nature}\|${active}`` |
+-| 193 | ``${…}:${…}`` | séparateur | `source: v.decl ? `${v.decl.file}:${v.decl.line}` : undefined,` |
++| 181 | `` `${…}\|${…}\|${…}` `` | séparateur | `` const key = `${label}\|${nature}\|${active}` `` |
++| 193 | `` `${…}:${…}` `` | séparateur | ``source: v.decl ? `${v.decl.file}:${v.decl.line}` : undefined,`` |
+ | 223 | `"calculée"` | identifiant | `nature: e.derived ? "calculée" : e.inferred ? "déduite" : "déclarée", active: e.active,` |
+ | 223 | `"déduite"` | identifiant | `nature: e.derived ? "calculée" : e.inferred ? "déduite" : "déclarée", active: e.active,` |
+ | 223 | `"déclarée"` | identifiant | `nature: e.derived ? "calculée" : e.inferred ? "déduite" : "déclarée", active: e.active,` |
+-| 230 | ``${…} à prendre`` | phrase | `if (count("bloquant")) parts.push(`${plural(count("bloquant"), "décision")} à prendre`)` |
+-| 230 | `"décision"` | identifiant | `if (count("bloquant")) parts.push(`${plural(count("bloquant"), "décision")} à prendre`)` |
+-| 232 | ``${…} à surveiller`` | phrase | `if (count("avertissement")) parts.push(`${plural(count("avertissement"), "point")} à surveiller`)` |
+-| 232 | `"point"` | identifiant | `if (count("avertissement")) parts.push(`${plural(count("avertissement"), "point")} à surveiller`)` |
++| 230 | `` `${…} à prendre` `` | phrase | ``if (count("bloquant")) parts.push(`${plural(count("bloquant"), "décision")} à prendre`)`` |
++| 230 | `"décision"` | identifiant | ``if (count("bloquant")) parts.push(`${plural(count("bloquant"), "décision")} à prendre`)`` |
++| 232 | `` `${…} à surveiller` `` | phrase | ``if (count("avertissement")) parts.push(`${plural(count("avertissement"), "point")} à surveiller`)`` |
++| 232 | `"point"` | identifiant | ``if (count("avertissement")) parts.push(`${plural(count("avertissement"), "point")} à surveiller`)`` |
+ | 239 | `" · "` | séparateur | `return [parts.join(" · ") \|\| "Rien à signaler"]` |
+ | 239 | `"Rien à signaler"` | phrase | `return [parts.join(" · ") \|\| "Rien à signaler"]` |
+ 
+@@ -815,25 +815,25 @@
+ | 69 | `"--figer"` | identifiant | `const figer = has("--figer")` |
+ | 70 | `"--all"` | identifiant | `const all = has("--all")` |
+ | 74 | `" "` | séparateur | `const pad = (s: string, n: number) => s + " ".repeat(Math.max(1, n - s.length))` |
+-| 79 | ``lois des types · ${…} types · ${…} nœuds tirés au hasard par type`` | phrase | `terminal.ecrire(`lois des types · ${reports.length} types · ${reports[0]?.samples ?? 0} nœuds tirés au hasa…` |
++| 79 | `` `lois des types · ${…} types · ${…} nœuds tirés au hasard par type` `` | phrase | ``terminal.ecrire(`lois des types · ${reports.length} types · ${reports[0]?.samples ?? 0} nœuds tirés au hasa…`` |
+ | 82 | `"  "` | séparateur | `terminal.ecrire("  " + pad(r.kind.name, 14) + "ok")` |
+ | 82 | `14` | nombre | `terminal.ecrire("  " + pad(r.kind.name, 14) + "ok")` |
+ | 82 | `"ok"` | identifiant | `terminal.ecrire("  " + pad(r.kind.name, 14) + "ok")` |
+-| 86 | `"  "` | séparateur | `terminal.ecrire("  " + pad(i === 0 ? r.kind.name : "", 14) + `✗ « ${f.law} »`)` |
+-| 86 | `14` | nombre | `terminal.ecrire("  " + pad(i === 0 ? r.kind.name : "", 14) + `✗ « ${f.law} »`)` |
+-| 86 | ``✗ « ${…} »`` | séparateur | `terminal.ecrire("  " + pad(i === 0 ? r.kind.name : "", 14) + `✗ « ${f.law} »`)` |
+-| 87 | `"  "` | séparateur | `terminal.ecrire("  " + pad("", 16) + `${f.example} (${f.count} fois)`)` |
+-| 87 | `16` | nombre | `terminal.ecrire("  " + pad("", 16) + `${f.example} (${f.count} fois)`)` |
+-| 87 | ``${…} (${…} fois)`` | gabarit | `terminal.ecrire("  " + pad("", 16) + `${f.example} (${f.count} fois)`)` |
++| 86 | `"  "` | séparateur | ``terminal.ecrire("  " + pad(i === 0 ? r.kind.name : "", 14) + `✗ « ${f.law} »`)`` |
++| 86 | `14` | nombre | ``terminal.ecrire("  " + pad(i === 0 ? r.kind.name : "", 14) + `✗ « ${f.law} »`)`` |
++| 86 | `` `✗ « ${…} »` `` | séparateur | ``terminal.ecrire("  " + pad(i === 0 ? r.kind.name : "", 14) + `✗ « ${f.law} »`)`` |
++| 87 | `"  "` | séparateur | ``terminal.ecrire("  " + pad("", 16) + `${f.example} (${f.count} fois)`)`` |
++| 87 | `16` | nombre | ``terminal.ecrire("  " + pad("", 16) + `${f.example} (${f.count} fois)`)`` |
++| 87 | `` `${…} (${…} fois)` `` | gabarit | ``terminal.ecrire("  " + pad("", 16) + `${f.example} (${f.count} fois)`)`` |
+ | 96 | `"payload"` | identifiant | `for (const l of lines) (o.command === "payload" ? terminal.erreur : terminal.ecrire)(l)` |
+-| 111 | ``refusé : ${…}`` | gabarit | `...imports.map((i) => `refusé : ${i}`),` |
+-| 112 | ``type « ${…} » refusé : ${…} non respectée`` | phrase | `...kindsRefused.map((r) => `type « ${r.kind.name} » refusé : ${r.failures.map((f) => `« ${f.law} »`).join("…` |
+-| 112 | ``« ${…} »`` | séparateur | `...kindsRefused.map((r) => `type « ${r.kind.name} » refusé : ${r.failures.map((f) => `« ${f.law} »`).join("…` |
+-| 112 | `", "` | séparateur | `...kindsRefused.map((r) => `type « ${r.kind.name} » refusé : ${r.failures.map((f) => `« ${f.law} »`).join("…` |
+-| 113 | ``vue « ${…} » refusée : « ${…} » (${…})`` | gabarit | `...viewsRefused.map((f) => `vue « ${f.view} » refusée : « ${f.law} » (${f.example})`),` |
++| 111 | `` `refusé : ${…}` `` | gabarit | ``...imports.map((i) => `refusé : ${i}`),`` |
++| 112 | `` `type « ${…} » refusé : ${…} non respectée` `` | phrase | ``...kindsRefused.map((r) => `type « ${r.kind.name} » refusé : ${r.failures.map((f) => `« ${f.law} »`).join("…`` |
++| 112 | `` `« ${…} »` `` | séparateur | ``...kindsRefused.map((r) => `type « ${r.kind.name} » refusé : ${r.failures.map((f) => `« ${f.law} »`).join("…`` |
++| 112 | `", "` | séparateur | ``...kindsRefused.map((r) => `type « ${r.kind.name} » refusé : ${r.failures.map((f) => `« ${f.law} »`).join("…`` |
++| 113 | `` `vue « ${…} » refusée : « ${…} » (${…})` `` | gabarit | ``...viewsRefused.map((f) => `vue « ${f.view} » refusée : « ${f.law} » (${f.example})`),`` |
+ | 114 | `"détails : npm run test-kinds"` | phrase | `...(kindsRefused.length ? ["détails : npm run test-kinds"] : []),` |
+-| 118 | `"TypeScript refuse le graphe :"` | phrase | `if (loaded.typeErrors.length) refuse(o, ["TypeScript refuse le graphe :", ...loaded.typeErrors.map((e) => `…` |
+-| 136 | ``vue « ${…} » refusée : « ${…} » (${…})`` | gabarit | `if (failures.length) refuse(o, failures.map((f: ViewFailure) => `vue « ${f.view} » refusée : « ${f.law} » (…` |
++| 118 | `"TypeScript refuse le graphe :"` | phrase | ``if (loaded.typeErrors.length) refuse(o, ["TypeScript refuse le graphe :", ...loaded.typeErrors.map((e) => `…`` |
++| 136 | `` `vue « ${…} » refusée : « ${…} » (${…})` `` | gabarit | ``if (failures.length) refuse(o, failures.map((f: ViewFailure) => `vue « ${f.view} » refusée : « ${f.law} » (…`` |
+ 
+ </details>
+ 
+@@ -851,19 +851,19 @@
+ | 67 | `"valeur"` | identifiant | `if (c && typeof c === "object" && "valeur" in c) out[name] = (c as { valeur: string \| number }).valeur` |
+ | 72 | `"exécution"` | identifiant | `function bodyOf(n: AnyNode, stage = "exécution"): unknown {` |
+ | 73 | `"body"` | identifiant | `const k = fieldOf(n, "body", stage)` |
+-| 86 | ``${…}_${…}`` | séparateur | `if (taken.has(name)) name = `${meta(n).module}_${name}`` |
++| 86 | `` `${…}_${…}` `` | séparateur | `` if (taken.has(name)) name = `${meta(n).module}_${name}` `` |
+ | 98 | `"branchement impossible hors d'une session"` | phrase | `if (!session) throw new Error("branchement impossible hors d'une session")` |
+ | 102 | `"branchement impossible hors d'une session"` | phrase | `if (!session) throw new Error("branchement impossible hors d'une session")` |
+-| 121 | ``Dépendance circulaire autour de « ${…} »`` | phrase | `p.errors.push(`Dépendance circulaire autour de « ${title(n)} »`)` |
+-| 127 | ``« ${…} » n'est pas exécuté : la vérification de son corps a échoué`` | phrase | `p.errors.push(`« ${title(n)} » n'est pas exécuté : la vérification de son corps a échoué`)` |
+-| 139 | ``Aucune implémentation de « ${…} »${…}`` | phrase | `p.errors.push(`Aucune implémentation de « ${title(n)} »${env ? ` pour l'environnement « ${title(env)} »` : …` |
+-| 139 | `` pour l'environnement « ${…} »`` | phrase | `p.errors.push(`Aucune implémentation de « ${title(n)} »${env ? ` pour l'environnement « ${title(env)} »` : …` |
++| 121 | `` `Dépendance circulaire autour de « ${…} »` `` | phrase | ``p.errors.push(`Dépendance circulaire autour de « ${title(n)} »`)`` |
++| 127 | `` `« ${…} » n'est pas exécuté : la vérification de son corps a échoué` `` | phrase | ``p.errors.push(`« ${title(n)} » n'est pas exécuté : la vérification de son corps a échoué`)`` |
++| 139 | `` `Aucune implémentation de « ${…} »${…}` `` | phrase | ``p.errors.push(`Aucune implémentation de « ${title(n)} »${env ? ` pour l'environnement « ${title(env)} »` : …`` |
++| 139 | `` ` pour l'environnement « ${…} »` `` | phrase | ``p.errors.push(`Aucune implémentation de « ${title(n)} »${env ? ` pour l'environnement « ${title(env)} »` : …`` |
+ | 152 | `"valeur"` | identifiant | `p.steps.push({ name, node: n, how: "valeur", deps: [], constantes: {}, via })` |
+ | 163 | `"corps"` | identifiant | `p.steps.push({ name, node: n, how: "corps", deps, constantes: constantsOf(n), via })` |
+-| 167 | ``« ${…} » ne peut pas être branché : il ne donne rien et n'a pas de…` | phrase | `p.errors.push(`« ${title(n)} » ne peut pas être branché : il ne donne rien et n'a pas de corps`)` |
++| 167 | `` `« ${…} » ne peut pas être branché : il ne donne rien et n'a pas de… `` | phrase | ``p.errors.push(`« ${title(n)} » ne peut pas être branché : il ne donne rien et n'a pas de corps`)`` |
+ | 178 | `"exécution"` | identifiant | `async function loadBody(host: WireHost, n: AnyNode, stage = "exécution"): Promise<(deps: Record<string, unk…` |
+-| 183 | ``Aucun driver ne sait exécuter du ${…} (« ${…} »)`` | phrase | `if (!driver?.load) throw new Error(`Aucun driver ne sait exécuter du ${body.language} (« ${host.graph.view(…` |
+-| 186 | ``« ${…} » n'a pas de corps`` | phrase | `throw new Error(`« ${host.graph.view(n).title} » n'a pas de corps`)` |
++| 183 | `` `Aucun driver ne sait exécuter du ${…} (« ${…} »)` `` | phrase | ``if (!driver?.load) throw new Error(`Aucun driver ne sait exécuter du ${body.language} (« ${host.graph.view(…`` |
++| 186 | `` `« ${…} » n'a pas de corps` `` | phrase | ``throw new Error(`« ${host.graph.view(n).title} » n'a pas de corps`)`` |
+ | 200 | `"valeur"` | identifiant | `if (step.how === "valeur") {` |
+ | 215 | `" ; "` | séparateur | `if (this.plan.errors.length) throw new Error(this.plan.errors.join(" ; "))` |
+ 
+@@ -875,29 +875,29 @@
+ 
+ | Ligne | Valeur | Catégorie | Contexte |
+ |---|---|---|---|
+-| 31 | ``<link rel="preconnect" href="${…}"><link rel="preconnect" href="${…` | balisage | `const FONTS = `<link rel="preconnect" href="${origine}"><link rel="preconnect" href="${fichiers}" crossorig…` |
+-| 33 | ``--${…}: ${…};`` | séparateur | `const vars = (m: Record<string, string>) => Object.entries(m).map(([k, v]) => `--${k}: ${v};`).join(" ")` |
+-| 33 | `" "` | séparateur | `const vars = (m: Record<string, string>) => Object.entries(m).map(([k, v]) => `--${k}: ${v};`).join(" ")` |
+-| 35 | ``:root { ${…} ${…} }`` | gabarit | ``:root { ${vars(palette.clair)} ${vars(typographie.polices)} }`,` |
+-| 36 | ``@media (prefers-color-scheme: dark) { :root:not([data-theme="light…` | gabarit | ``@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { ${vars(palette.sombre)} color-sche…` |
+-| 37 | ``:root[data-theme="dark"] { ${…} color-scheme: dark; }`` | gabarit | ``:root[data-theme="dark"] { ${vars(palette.sombre)} color-scheme: dark; }`,` |
++| 31 | `` `<link rel="preconnect" href="${…}"><link rel="preconnect" href="${… `` | balisage | ``const FONTS = `<link rel="preconnect" href="${origine}"><link rel="preconnect" href="${fichiers}" crossorig…`` |
++| 33 | `` `--${…}: ${…};` `` | séparateur | ``const vars = (m: Record<string, string>) => Object.entries(m).map(([k, v]) => `--${k}: ${v};`).join(" ")`` |
++| 33 | `" "` | séparateur | ``const vars = (m: Record<string, string>) => Object.entries(m).map(([k, v]) => `--${k}: ${v};`).join(" ")`` |
++| 35 | `` `:root { ${…} ${…} }` `` | gabarit | `` `:root { ${vars(palette.clair)} ${vars(typographie.polices)} }`, `` |
++| 36 | `` `@media (prefers-color-scheme: dark) { :root:not([data-theme="light… `` | gabarit | `` `@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { ${vars(palette.sombre)} color-sche… `` |
++| 37 | `` `:root[data-theme="dark"] { ${…} color-scheme: dark; }` `` | gabarit | `` `:root[data-theme="dark"] { ${vars(palette.sombre)} color-scheme: dark; }`, `` |
+ | 38 | `"\n"` | séparateur | `].join("\n")` |
+-| 40 | ``<div class="app">   <aside class="side">     <div class="brand">  …` | balisage | `const SHELL = `<div class="app">` |
++| 40 | `` `<div class="app">   <aside class="side">     <div class="brand">  … `` | balisage | ``const SHELL = `<div class="app">`` |
+ | 81 | `"iife"` | identifiant | `entryPoints: [ressources.script], bundle: true, write: false, format: "iife", target: "es2020",` |
+ | 81 | `"es2020"` | identifiant | `entryPoints: [ressources.script], bundle: true, write: false, format: "iife", target: "es2020",` |
+ | 82 | `"none"` | identifiant | `minify: true, legalComments: "none", charset: "utf8",` |
+ | 82 | `"utf8"` | identifiant | `minify: true, legalComments: "none", charset: "utf8",` |
+ | 89 | `"\n"` | séparateur | `const css = THEME + "\n" + readFileSync(ressources.style, "utf8")` |
+ | 91 | `"Graphe Trame"` | phrase | `const title = o.title ?? "Graphe Trame"` |
+-| 92 | ``<script>window.TRAME_BUNDLE=${…}</script>`` | balisage | `const data = o.bundle ? `<script>window.TRAME_BUNDLE=${JSON.stringify(o.bundle).replace(/</g, "\\u003c")}</…` |
+-| 92 | `/</g` | expression régulière | `const data = o.bundle ? `<script>window.TRAME_BUNDLE=${JSON.stringify(o.bundle).replace(/</g, "\\u003c")}</…` |
+-| 92 | `"\\u003c"` | texte | `const data = o.bundle ? `<script>window.TRAME_BUNDLE=${JSON.stringify(o.bundle).replace(/</g, "\\u003c")}</…` |
++| 92 | `` `<script>window.TRAME_BUNDLE=${…}</script>` `` | balisage | ``const data = o.bundle ? `<script>window.TRAME_BUNDLE=${JSON.stringify(o.bundle).replace(/</g, "\\u003c")}</…`` |
++| 92 | `/</g` | expression régulière | ``const data = o.bundle ? `<script>window.TRAME_BUNDLE=${JSON.stringify(o.bundle).replace(/</g, "\\u003c")}</…`` |
++| 92 | `"\\u003c"` | texte | ``const data = o.bundle ? `<script>window.TRAME_BUNDLE=${JSON.stringify(o.bundle).replace(/</g, "\\u003c")}</…`` |
+ | 93 | `"<script>window.TRAME_DEV=true</script>"` | balisage | `const dev = o.dev ? "<script>window.TRAME_DEV=true</script>" : ""` |
+-| 94 | ``${…}${…}<script>${…}</script>`` | balisage | `const scripts = `${dev}${data}<script>${js.replace(/<\/script/gi, "<\\/script")}</script>`` |
+-| 94 | `/<\/script/gi` | expression régulière | `const scripts = `${dev}${data}<script>${js.replace(/<\/script/gi, "<\\/script")}</script>`` |
+-| 94 | `"<\\/script"` | texte | `const scripts = `${dev}${data}<script>${js.replace(/<\/script/gi, "<\\/script")}</script>`` |
+-| 96 | ``<title>${…}</title> <meta name="claude:viewport-fit-sides" content…` | balisage | `return `<title>${title}</title>\n<meta name="claude:viewport-fit-sides" content="cover">\n${FONTS}\n<style>…` |
+-| 98 | ``<!doctype html> <html lang="fr"> <head> <meta charset="utf-8"> <me…` | balisage | `return `<!doctype html>` |
++| 94 | `` `${…}${…}<script>${…}</script>` `` | balisage | `` const scripts = `${dev}${data}<script>${js.replace(/<\/script/gi, "<\\/script")}</script>` `` |
++| 94 | `/<\/script/gi` | expression régulière | `` const scripts = `${dev}${data}<script>${js.replace(/<\/script/gi, "<\\/script")}</script>` `` |
++| 94 | `"<\\/script"` | texte | `` const scripts = `${dev}${data}<script>${js.replace(/<\/script/gi, "<\\/script")}</script>` `` |
++| 96 | `` `<title>${…}</title> <meta name="claude:viewport-fit-sides" content… `` | balisage | ``return `<title>${title}</title>\n<meta name="claude:viewport-fit-sides" content="cover">\n${FONTS}\n<style>…`` |
++| 98 | `` `<!doctype html> <html lang="fr"> <head> <meta charset="utf-8"> <me… `` | balisage | ``return `<!doctype html>`` |
+ 
+ </details>
+ 
+@@ -911,24 +911,24 @@
+ | 72 | `"$1-$2"` | texte | `const kebab = (s: string) => s.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase()` |
+ | 81 | `"component"` | identifiant | `const component = findNode(c, componentRef, "component")` |
+ | 82 | `"environment"` | identifiant | `const env = findNode(c, envRef, "environment")` |
+-| 83 | ``Composant inconnu : ${…}`` | phrase | `if (!component) return { errors: [`Composant inconnu : ${componentRef}`] }` |
+-| 84 | ``Environnement inconnu : ${…}`` | phrase | `if (!env) return { errors: [`Environnement inconnu : ${envRef}`] }` |
++| 83 | `` `Composant inconnu : ${…}` `` | phrase | ``if (!component) return { errors: [`Composant inconnu : ${componentRef}`] }`` |
++| 84 | `` `Environnement inconnu : ${…}` `` | phrase | ``if (!env) return { errors: [`Environnement inconnu : ${envRef}`] }`` |
+ | 87 | `"in"` | identifiant | `const entries = g.from(component).in("in").where((v) => v.kind === "entry").nodes().map((v) => v.node)` |
+ | 87 | `"entry"` | identifiant | `const entries = g.from(component).in("in").where((v) => v.kind === "entry").nodes().map((v) => v.node)` |
+ | 95 | `"provisionnement"` | identifiant | `const body = bodyOf(step.node, "provisionnement")` |
+ | 97 | `"provisionnement"` | identifiant | `const variables = depsOf(step.node, "provisionnement").map(([name, from]) => {` |
+-| 100 | ``« ${…} » : la variable « ${…} » doit recevoir une valeur, « ${…} »…` | phrase | `errors.push(`« ${g.view(step.node).title} » : la variable « ${name} » doit recevoir une valeur, « ${g.view(…` |
+-| 107 | ``« ${…} » : la variable « ${…} » n'a pas de valeur (${…})`` | phrase | `errors.push(`« ${g.view(step.node).title} » : la variable « ${name} » n'a pas de valeur (${(e as Error).mes…` |
+-| 123 | ``« ${…} » est amendé à cette date et ne s'écrit pas en JSON : il ne…` | phrase | `else if (v.amendedBy.length) errors.push(`« ${v.title} » est amendé à cette date et ne s'écrit pas en JSON …` |
+-| 126 | ``« ${…} » n'a pas de valeur à figer (${…})`` | phrase | `errors.push(`« ${v.title} » n'a pas de valeur à figer (${(e as Error).message})`)` |
++| 100 | `` `« ${…} » : la variable « ${…} » doit recevoir une valeur, « ${…} »… `` | phrase | ``errors.push(`« ${g.view(step.node).title} » : la variable « ${name} » doit recevoir une valeur, « ${g.view(…`` |
++| 107 | `` `« ${…} » : la variable « ${…} » n'a pas de valeur (${…})` `` | phrase | ``errors.push(`« ${g.view(step.node).title} » : la variable « ${name} » n'a pas de valeur (${(e as Error).mes…`` |
++| 123 | `` `« ${…} » est amendé à cette date et ne s'écrit pas en JSON : il ne… `` | phrase | ``else if (v.amendedBy.length) errors.push(`« ${v.title} » est amendé à cette date et ne s'écrit pas en JSON …`` |
++| 126 | `` `« ${…} » n'a pas de valeur à figer (${…})` `` | phrase | ``errors.push(`« ${v.title} » n'a pas de valeur à figer (${(e as Error).message})`)`` |
+ | 134 | `"uses"` | identifiant | `if (e.name !== "uses" \|\| figeLues.has(e.other.node)) continue` |
+ | 142 | `"declaration"` | identifiant | `for (const [n, f] of fige) if ("declaration" in f) visit(n)` |
+ | 165 | `"env"` | identifiant | `out: join(root, deps.disposition.sortie, kebab(meta(env).id ?? "env")),` |
+-| 166 | ``trame assemble ${…} --env ${…}${…}`` | phrase | `command: `trame assemble ${meta(component).id} --env ${meta(env).id}${opts.figer ? " --figer" : ""}`,` |
+-| 166 | `" --figer"` | texte | `command: `trame assemble ${meta(component).id} --env ${meta(env).id}${opts.figer ? " --figer" : ""}`,` |
+-| 174 | ``Aucun driver ne sait assembler un composant en « ${…} »`` | phrase | `if (!program?.emitProgram) return { files: [], errors: [`Aucun driver ne sait assembler un composant en « $…` |
++| 166 | `` `trame assemble ${…} --env ${…}${…}` `` | phrase | ``command: `trame assemble ${meta(component).id} --env ${meta(env).id}${opts.figer ? " --figer" : ""}`,`` |
++| 166 | `" --figer"` | texte | ``command: `trame assemble ${meta(component).id} --env ${meta(env).id}${opts.figer ? " --figer" : ""}`,`` |
++| 174 | `` `Aucun driver ne sait assembler un composant en « ${…} »` `` | phrase | ``if (!program?.emitProgram) return { files: [], errors: [`Aucun driver ne sait assembler un composant en « $…`` |
+ | 175 | `"composant"` | identifiant | `const files: Emitted[] = [...program.emitProgram(a, kebab(meta(a.component).id ?? "composant"))]` |
+-| 181 | ``Aucun driver ne sait écrire le provisionnement en « ${…} »`` | phrase | `if (!d?.emitProvision) errors.push(`Aucun driver ne sait écrire le provisionnement en « ${language} »`)` |
++| 181 | `` `Aucun driver ne sait écrire le provisionnement en « ${…} »` `` | phrase | ``if (!d?.emitProvision) errors.push(`Aucun driver ne sait écrire le provisionnement en « ${language} »`)`` |
+ 
+ </details>
+ 
+@@ -940,11 +940,11 @@
+ |---|---|---|---|
+ | 40 | `"fr-CH"` | identifiant | `const clock = () => horloge.maintenant().toLocaleTimeString("fr-CH")` |
+ | 58 | `"compiling"` | identifiant | `send("compiling", { reason })` |
+-| 65 | ``✗ ${…}  compilation refusée (${…} ms) : la page garde le dernier g…` | phrase | `terminal.ecrire(`✗ ${clock()}  compilation refusée (${ms} ms) : la page garde le dernier graphe valide`)` |
+-| 66 | `"\n"` | séparateur | `terminal.ecrire(next.error.split("\n").map((l) => `    ${l}`).join("\n"))` |
+-| 73 | ``✓ ${…}  compilé en ${…} ms · ${…} dates${…} (${…})`` | phrase | `terminal.ecrire(`✓ ${clock()}  compilé en ${ms} ms · ${next.dates.length} dates${n ? ` · ${n} changement${n…` |
+-| 73 | `` · ${…} changement${…}`` | gabarit | `terminal.ecrire(`✓ ${clock()}  compilé en ${ms} ms · ${next.dates.length} dates${n ? ` · ${n} changement${n…` |
+-| 73 | `"s"` | identifiant | `terminal.ecrire(`✓ ${clock()}  compilé en ${ms} ms · ${next.dates.length} dates${n ? ` · ${n} changement${n…` |
++| 65 | `` `✗ ${…}  compilation refusée (${…} ms) : la page garde le dernier g… `` | phrase | ``terminal.ecrire(`✗ ${clock()}  compilation refusée (${ms} ms) : la page garde le dernier graphe valide`)`` |
++| 66 | `"\n"` | séparateur | ``terminal.ecrire(next.error.split("\n").map((l) => `    ${l}`).join("\n"))`` |
++| 73 | `` `✓ ${…}  compilé en ${…} ms · ${…} dates${…} (${…})` `` | phrase | ``terminal.ecrire(`✓ ${clock()}  compilé en ${ms} ms · ${next.dates.length} dates${n ? ` · ${n} changement${n…`` |
++| 73 | `` ` · ${…} changement${…}` `` | gabarit | ``terminal.ecrire(`✓ ${clock()}  compilé en ${ms} ms · ${next.dates.length} dates${n ? ` · ${n} changement${n…`` |
++| 73 | `"s"` | identifiant | ``terminal.ecrire(`✓ ${clock()}  compilé en ${ms} ms · ${next.dates.length} dates${n ? ` · ${n} changement${n…`` |
+ | 75 | `"bundle"` | identifiant | `send("bundle", current)` |
+ | 79 | `"modifications pendant la compilation"` | phrase | `await recompile("modifications pendant la compilation")` |
+ | 85 | `"/"` | fichier | `const url = (req.url ?? "/").split("?")[0]` |
+@@ -953,12 +953,12 @@
+ | 86 | `"/index.html"` | fichier | `if (url === "/" \|\| url === "/index.html") {` |
+ | 90 | `"/bundle.json"` | fichier | `if (url === "/bundle.json") {` |
+ | 94 | `"/events"` | fichier | `if (url === "/events") {` |
+-| 96 | ``${…}trame dev${…}`` | phrase | `res.write(`${ev.commentaire}trame dev${ev.finDeMessage}`)` |
+-| 104 | ``trame dev · http://localhost:${…} · graphe du ${…}`` | phrase | `terminal.ecrire(`trame dev · http://localhost:${port} · graphe du ${today}`)` |
+-| 106 | ``surveille ${…}/, ${…}/, ${…}/, ${…}/ et ${…} · Ctrl+C pour arrêter`` | phrase | `terminal.ecrire(`surveille ${d.sources}/, ${d.types}/, ${d.vues}/, ${d.preuves}/ et ${d.verrou} · Ctrl+C po…` |
++| 96 | `` `${…}trame dev${…}` `` | phrase | ``res.write(`${ev.commentaire}trame dev${ev.finDeMessage}`)`` |
++| 104 | `` `trame dev · http://localhost:${…} · graphe du ${…}` `` | phrase | ``terminal.ecrire(`trame dev · http://localhost:${port} · graphe du ${today}`)`` |
++| 106 | `` `surveille ${…}/, ${…}/, ${…}/, ${…}/ et ${…} · Ctrl+C pour arrêter` `` | phrase | ``terminal.ecrire(`surveille ${d.sources}/, ${d.types}/, ${d.vues}/, ${d.preuves}/ et ${d.verrou} · Ctrl+C po…`` |
+ | 111 | `/(~\|\.swp\|\.tmp)$/` | expression régulière | `if (/(~\|\.swp\|\.tmp)$/.test(what)) return` |
+-| 117 | ``${…} fichiers`` | gabarit | `void recompile(list.length === 1 ? list[0] : `${list.length} fichiers`)` |
+-| 124 | ``${…}/${…}`` | séparateur | `if (existsSync(abs)) watch(abs, { recursive: true }, (_e, f) => schedule(`${dir}/${f ?? ""}`))` |
++| 117 | `` `${…} fichiers` `` | gabarit | ``void recompile(list.length === 1 ? list[0] : `${list.length} fichiers`)`` |
++| 124 | `` `${…}/${…}` `` | séparateur | ``if (existsSync(abs)) watch(abs, { recursive: true }, (_e, f) => schedule(`${dir}/${f ?? ""}`))`` |
+ | 128 | `"démarrage"` | identifiant | `await recompile("démarrage")` |
+ 
+ </details>
+@@ -970,7 +970,7 @@
+ | Ligne | Valeur | Catégorie | Contexte |
+ |---|---|---|---|
+ | 18 | `"Nouveau nœud : "` | phrase | `for (const r of after) if (!before.has(r)) items.push(["Nouveau nœud : ", ref(r)])` |
+-| 19 | ``Nœud retiré : ${…}`` | phrase | `for (const r of before) if (!after.has(r)) items.push([`Nœud retiré : ${title(r)}`])` |
++| 19 | `` `Nœud retiré : ${…}` `` | phrase | ``for (const r of before) if (!after.has(r)) items.push([`Nœud retiré : ${title(r)}`])`` |
+ | 24 | `" passe de "` | phrase | `items.push([ref(r), " passe de ", old ? { t: "status", status: old } : "sans statut", " à ", s ? { t: "stat…` |
+ | 24 | `"sans statut"` | phrase | `items.push([ref(r), " passe de ", old ? { t: "status", status: old } : "sans statut", " à ", s ? { t: "stat…` |
+ | 24 | `" à "` | texte | `items.push([ref(r), " passe de ", old ? { t: "status", status: old } : "sans statut", " à ", s ? { t: "stat…` |
+@@ -1002,17 +1002,17 @@
+ | 26 | `"."` | séparateur | `function analyze(files: string[], extra: string[] = [], root = "."): Analysis {` |
+ | 35 | `"node"` | identifiant | `types: ["node"],` |
+ | 46 | `".ts"` | fichier | `const mod = basename(file, ".ts")` |
+-| 50 | ``${…}.${…}`` | séparateur | `for (const d of stmt.declarationList.declarations) exported.set(d, `${mod}.${d.name.getText(sf)}`)` |
++| 50 | `` `${…}.${…}` `` | séparateur | ``for (const d of stmt.declarationList.declarations) exported.set(d, `${mod}.${d.name.getText(sf)}`)`` |
+ | 57 | `".ts"` | fichier | `const mod = basename(file, ".ts")` |
+ | 58 | `/^\/\*\*\s*([^*\n]+?)\s*\*\//` | expression régulière | `const head = /^\/\*\*\s*([^*\n]+?)\s*\*\//.exec(sf.getFullText())` |
+-| 67 | ``src/${…}.ts`` | fichier | `file: `src/${mod}.ts`,` |
++| 67 | `` `src/${…}.ts` `` | fichier | ``file: `src/${mod}.ts`,`` |
+ | 73 | `/\s+/g` | expression régulière | `sourceText: stmt.getText(sf).replace(/\s+/g, " ").trim(),` |
+ | 73 | `" "` | séparateur | `sourceText: stmt.getText(sf).replace(/\s+/g, " ").trim(),` |
+ | 78 | `"\n"` | séparateur | `const lines = text.split("\n").map((l) => l.trim()).filter(Boolean)` |
+ | 81 | `" "` | séparateur | `info.description = lines.slice(1).join(" ") \|\| undefined` |
+-| 113 | ``${…}\|${…}`` | séparateur | `const key = `${targetRef}\|${prop ?? ""}`` |
++| 113 | `` `${…}\|${…}` `` | séparateur | `` const key = `${targetRef}\|${prop ?? ""}` `` |
+ | 128 | `"node_modules"` | identifiant | `.filter((d) => d.category === ts.DiagnosticCategory.Error && (!d.file \|\| !d.file.fileName.includes("node_mo…` |
+-| 131 | ``${…}:${…}  `` | séparateur | `? `${relative(root, d.file.fileName)}:${d.file.getLineAndCharacterOfPosition(d.start).line + 1}  `` |
++| 131 | `` `${…}:${…}  ` `` | séparateur | `` ? `${relative(root, d.file.fileName)}:${d.file.getLineAndCharacterOfPosition(d.start).line + 1}  ` `` |
+ | 133 | `"\n"` | séparateur | `return where + ts.flattenDiagnosticMessageText(d.messageText, "\n").split("\n")[0]` |
+ 
+ </details>
+@@ -1024,20 +1024,20 @@
+ | Ligne | Valeur | Catégorie | Contexte |
+ |---|---|---|---|
+ | 22 | `"TypeScript accepte l'exemple"` | phrase | `verifie("TypeScript accepte l'exemple", l.typeErrors.length === 0)` |
+-| 24 | ``L'exemple a ${…} nœuds, dont 3 scénarios`` | phrase | `verifie(`L'exemple a ${c.nodes.length} nœuds, dont 3 scénarios`, c.nodes.filter((n) => c.graph.view(n).kind…` |
+-| 24 | `"scenario"` | identifiant | `verifie(`L'exemple a ${c.nodes.length} nœuds, dont 3 scénarios`, c.nodes.filter((n) => c.graph.view(n).kind…` |
+-| 24 | `3` | nombre | `verifie(`L'exemple a ${c.nodes.length} nœuds, dont 3 scénarios`, c.nodes.filter((n) => c.graph.view(n).kind…` |
++| 24 | `` `L'exemple a ${…} nœuds, dont 3 scénarios` `` | phrase | ``verifie(`L'exemple a ${c.nodes.length} nœuds, dont 3 scénarios`, c.nodes.filter((n) => c.graph.view(n).kind…`` |
++| 24 | `"scenario"` | identifiant | ``verifie(`L'exemple a ${c.nodes.length} nœuds, dont 3 scénarios`, c.nodes.filter((n) => c.graph.view(n).kind…`` |
++| 24 | `3` | nombre | ``verifie(`L'exemple a ${c.nodes.length} nœuds, dont 3 scénarios`, c.nodes.filter((n) => c.graph.view(n).kind…`` |
+ | 25 | `"Aucune erreur dans l'exemple"` | phrase | `verifie("Aucune erreur dans l'exemple", c.diags.every((d) => d.severity !== "erreur"))` |
+ | 26 | `"Les scénarios de l'exemple tiennent"` | phrase | `verifie("Les scénarios de l'exemple tiennent", c.nodes.filter((n) => c.graph.view(n).kind === "scenario").e…` |
+ | 26 | `"scenario"` | identifiant | `verifie("Les scénarios de l'exemple tiennent", c.nodes.filter((n) => c.graph.view(n).kind === "scenario").e…` |
+-| 41 | ``${…} types sur ${…} respectent toutes leurs lois`` | phrase | `verifie(`${rapports.length} types sur ${kinds.length} respectent toutes leurs lois`, rapports.every((r) => …` |
++| 41 | `` `${…} types sur ${…} respectent toutes leurs lois` `` | phrase | ``verifie(`${rapports.length} types sur ${kinds.length} respectent toutes leurs lois`, rapports.every((r) => …`` |
+ | 57 | `"build"` | identifiant | `const r = await construire({ params: { commande: "build" }, corps: { args: [] } })` |
+ | 58 | `"La construction réussit"` | phrase | `verifie("La construction réussit", r.statut === 0)` |
+ | 59 | `"Le bilan est affiché"` | phrase | `verifie("Le bilan est affiché", terminal.lignes().some((l) => l.startsWith("écrit : ")))` |
+ | 59 | `"écrit : "` | texte | `verifie("Le bilan est affiché", terminal.lignes().some((l) => l.startsWith("écrit : ")))` |
+-| 62 | ``${…} fichiers écrits, identiques à ceux du moteur en place`` | phrase | `verifie(`${ecrits.length} fichiers écrits, identiques à ceux du moteur en place`, ecrits.length > 0 && diff…` |
+-| 63 | ``${…} diffère de ce qu'a écrit le moteur en place`` | phrase | `for (const [chemin] of differents) verifie(`${chemin.replace(racine + "/", "")} diffère de ce qu'a écrit le…` |
+-| 63 | `"/"` | fichier | `for (const [chemin] of differents) verifie(`${chemin.replace(racine + "/", "")} diffère de ce qu'a écrit le…` |
++| 62 | `` `${…} fichiers écrits, identiques à ceux du moteur en place` `` | phrase | ``verifie(`${ecrits.length} fichiers écrits, identiques à ceux du moteur en place`, ecrits.length > 0 && diff…`` |
++| 63 | `` `${…} diffère de ce qu'a écrit le moteur en place` `` | phrase | ``for (const [chemin] of differents) verifie(`${chemin.replace(racine + "/", "")} diffère de ce qu'a écrit le…`` |
++| 63 | `"/"` | fichier | ``for (const [chemin] of differents) verifie(`${chemin.replace(racine + "/", "")} diffère de ce qu'a écrit le…`` |
+ 
+ </details>
+ 
+@@ -1070,15 +1070,15 @@
+ 
+ | Ligne | Valeur | Catégorie | Contexte |
+ |---|---|---|---|
+-| 28 | ``Vue inconnue : ${…}. Vues : ${…}`` | phrase | `if (!def) return refuse(o, [`Vue inconnue : ${name ?? "(aucune)"}. Vues : ${sortedViews().map((v) => v.name…` |
+-| 28 | `"(aucune)"` | texte | `if (!def) return refuse(o, [`Vue inconnue : ${name ?? "(aucune)"}. Vues : ${sortedViews().map((v) => v.name…` |
+-| 28 | `", "` | séparateur | `if (!def) return refuse(o, [`Vue inconnue : ${name ?? "(aucune)"}. Vues : ${sortedViews().map((v) => v.name…` |
+-| 32 | ``Nœud inconnu : ${…}`` | phrase | `if (!node) return refuse(o, [`Nœud inconnu : ${arg ?? "(aucun)"}`])` |
+-| 32 | `"(aucun)"` | texte | `if (!node) return refuse(o, [`Nœud inconnu : ${arg ?? "(aucun)"}`])` |
+-| 33 | ``La vue « ${…} » ne s'applique pas à ${…}.`` | phrase | `if (def.applies && !def.applies(node, comp)) refuse(o, [`La vue « ${def.label} » ne s'applique pas à ${node…` |
+-| 36 | ``Module inconnu : ${…}. Modules : ${…}`` | phrase | `if (!arg \|\| !comp.modules().some((m) => m.id === arg)) refuse(o, [`Module inconnu : ${arg ?? "(aucun)"}. Mo…` |
+-| 36 | `"(aucun)"` | texte | `if (!arg \|\| !comp.modules().some((m) => m.id === arg)) refuse(o, [`Module inconnu : ${arg ?? "(aucun)"}. Mo…` |
+-| 36 | `", "` | séparateur | `if (!arg \|\| !comp.modules().some((m) => m.id === arg)) refuse(o, [`Module inconnu : ${arg ?? "(aucun)"}. Mo…` |
++| 28 | `` `Vue inconnue : ${…}. Vues : ${…}` `` | phrase | ``if (!def) return refuse(o, [`Vue inconnue : ${name ?? "(aucune)"}. Vues : ${sortedViews().map((v) => v.name…`` |
++| 28 | `"(aucune)"` | texte | ``if (!def) return refuse(o, [`Vue inconnue : ${name ?? "(aucune)"}. Vues : ${sortedViews().map((v) => v.name…`` |
++| 28 | `", "` | séparateur | ``if (!def) return refuse(o, [`Vue inconnue : ${name ?? "(aucune)"}. Vues : ${sortedViews().map((v) => v.name…`` |
++| 32 | `` `Nœud inconnu : ${…}` `` | phrase | ``if (!node) return refuse(o, [`Nœud inconnu : ${arg ?? "(aucun)"}`])`` |
++| 32 | `"(aucun)"` | texte | ``if (!node) return refuse(o, [`Nœud inconnu : ${arg ?? "(aucun)"}`])`` |
++| 33 | `` `La vue « ${…} » ne s'applique pas à ${…}.` `` | phrase | ``if (def.applies && !def.applies(node, comp)) refuse(o, [`La vue « ${def.label} » ne s'applique pas à ${node…`` |
++| 36 | `` `Module inconnu : ${…}. Modules : ${…}` `` | phrase | ``if (!arg \|\| !comp.modules().some((m) => m.id === arg)) refuse(o, [`Module inconnu : ${arg ?? "(aucun)"}. Mo…`` |
++| 36 | `"(aucun)"` | texte | ``if (!arg \|\| !comp.modules().some((m) => m.id === arg)) refuse(o, [`Module inconnu : ${arg ?? "(aucun)"}. Mo…`` |
++| 36 | `", "` | séparateur | ``if (!arg \|\| !comp.modules().some((m) => m.id === arg)) refuse(o, [`Module inconnu : ${arg ?? "(aucun)"}. Mo…`` |
+ | 41 | `"json"` | identifiant | `if (o.format === "json") terminal.ecrire(JSON.stringify(d, null, 2))` |
+ | 41 | `2` | nombre | `if (o.format === "json") terminal.ecrire(JSON.stringify(d, null, 2))` |
+ | 42 | `"md"` | identifiant | `else if (o.format === "md") terminal.ecrire(toMarkdown(d, markdownContext(views(o, comp))))` |
+@@ -1091,17 +1091,17 @@
+ 
+ | Ligne | Valeur | Catégorie | Contexte |
+ |---|---|---|---|
+-| 29 | ``imports · ${…}`` | gabarit | `terminal.ecrire(`imports · ${imports.length ? `${imports.length} refusé${imports.length > 1 ? "s" : ""}` : …` |
+-| 29 | ``${…} refusé${…}`` | gabarit | `terminal.ecrire(`imports · ${imports.length ? `${imports.length} refusé${imports.length > 1 ? "s" : ""}` : …` |
+-| 29 | `"s"` | identifiant | `terminal.ecrire(`imports · ${imports.length ? `${imports.length} refusé${imports.length > 1 ? "s" : ""}` : …` |
+-| 29 | `"seule l'API publique est utilisée"` | phrase | `terminal.ecrire(`imports · ${imports.length ? `${imports.length} refusé${imports.length > 1 ? "s" : ""}` : …` |
+-| 30 | ``  ✗ ${…}`` | séparateur | `for (const i of imports) terminal.ecrire(`  ✗ ${i}`)` |
+-| 37 | ``lois des vues · ${…} vues, exécutées deux fois sur le graphe du ${…}`` | phrase | `terminal.ecrire(`lois des vues · ${sortedViews().length} vues, exécutées deux fois sur le graphe du ${o.tod…` |
+-| 40 | `"  "` | séparateur | `terminal.ecrire("  " + pad(v.name, 14) + (mine.length ? mine.map((f) => `✗ « ${f.law} » : ${f.example}`).jo…` |
+-| 40 | `14` | nombre | `terminal.ecrire("  " + pad(v.name, 14) + (mine.length ? mine.map((f) => `✗ « ${f.law} » : ${f.example}`).jo…` |
+-| 40 | ``✗ « ${…} » : ${…}`` | séparateur | `terminal.ecrire("  " + pad(v.name, 14) + (mine.length ? mine.map((f) => `✗ « ${f.law} » : ${f.example}`).jo…` |
+-| 40 | `" ; "` | séparateur | `terminal.ecrire("  " + pad(v.name, 14) + (mine.length ? mine.map((f) => `✗ « ${f.law} » : ${f.example}`).jo…` |
+-| 40 | `"ok"` | identifiant | `terminal.ecrire("  " + pad(v.name, 14) + (mine.length ? mine.map((f) => `✗ « ${f.law} » : ${f.example}`).jo…` |
++| 29 | `` `imports · ${…}` `` | gabarit | ``terminal.ecrire(`imports · ${imports.length ? `${imports.length} refusé${imports.length > 1 ? "s" : ""}` : …`` |
++| 29 | `` `${…} refusé${…}` `` | gabarit | ``terminal.ecrire(`imports · ${imports.length ? `${imports.length} refusé${imports.length > 1 ? "s" : ""}` : …`` |
++| 29 | `"s"` | identifiant | ``terminal.ecrire(`imports · ${imports.length ? `${imports.length} refusé${imports.length > 1 ? "s" : ""}` : …`` |
++| 29 | `"seule l'API publique est utilisée"` | phrase | ``terminal.ecrire(`imports · ${imports.length ? `${imports.length} refusé${imports.length > 1 ? "s" : ""}` : …`` |
++| 30 | `` `  ✗ ${…}` `` | séparateur | ``for (const i of imports) terminal.ecrire(`  ✗ ${i}`)`` |
++| 37 | `` `lois des vues · ${…} vues, exécutées deux fois sur le graphe du ${…}` `` | phrase | ``terminal.ecrire(`lois des vues · ${sortedViews().length} vues, exécutées deux fois sur le graphe du ${o.tod…`` |
++| 40 | `"  "` | séparateur | ``terminal.ecrire("  " + pad(v.name, 14) + (mine.length ? mine.map((f) => `✗ « ${f.law} » : ${f.example}`).jo…`` |
++| 40 | `14` | nombre | ``terminal.ecrire("  " + pad(v.name, 14) + (mine.length ? mine.map((f) => `✗ « ${f.law} » : ${f.example}`).jo…`` |
++| 40 | `` `✗ « ${…} » : ${…}` `` | séparateur | ``terminal.ecrire("  " + pad(v.name, 14) + (mine.length ? mine.map((f) => `✗ « ${f.law} » : ${f.example}`).jo…`` |
++| 40 | `" ; "` | séparateur | ``terminal.ecrire("  " + pad(v.name, 14) + (mine.length ? mine.map((f) => `✗ « ${f.law} » : ${f.example}`).jo…`` |
++| 40 | `"ok"` | identifiant | ``terminal.ecrire("  " + pad(v.name, 14) + (mine.length ? mine.map((f) => `✗ « ${f.law} » : ${f.example}`).jo…`` |
+ 
+ </details>
+ 
+@@ -1114,7 +1114,7 @@
+ | 26 | `"sha256"` | identifiant | `const hashOf = (text: string) => createHash("sha256").update(text).digest("hex").slice(0, 16)` |
+ | 26 | `16` | nombre | `const hashOf = (text: string) => createHash("sha256").update(text).digest("hex").slice(0, 16)` |
+ | 43 | `"."` | séparateur | `module: ref.split(".")[0],` |
+-| 44 | ```${…}``` | séparateur | `where: `\`${ref}\``,` |
++| 44 | ``` ``${…}`` ``` | séparateur | ```where: `\`${ref}\``,``` |
+ | 45 | `"Élément publié supprimé : abrogez-le au lieu de le retirer du code"` | phrase | `what: "Élément publié supprimé : abrogez-le au lieu de le retirer du code",` |
+ | 51 | `"Modifié après publication : créez un amendement au lieu de changer…` | phrase | `out.push({ severity: "erreur", origin: "publication", node: n, what: "Modifié après publication : créez un …` |
+ | 71 | `2` | nombre | `return { added, refused: [], file: file(root), text: JSON.stringify(lock, null, 2) + "\n" }` |
+@@ -1128,13 +1128,13 @@
+ 
+ | Ligne | Valeur | Catégorie | Contexte |
+ |---|---|---|---|
+-| 19 | ``Usage : trame ${…} <composant> --env <environnement>`` | balisage | `if (!name \|\| !o.envName) refuse(o, [`Usage : trame ${o.command} <composant> --env <environnement>`])` |
+-| 21 | ``Assemblage refusé : le graphe a ${…} erreur${…}.`` | phrase | `if (errors.length) refuse(o, [`Assemblage refusé : le graphe a ${errors.length} erreur${errors.length > 1 ?…` |
+-| 21 | `"s"` | identifiant | `if (errors.length) refuse(o, [`Assemblage refusé : le graphe a ${errors.length} erreur${errors.length > 1 ?…` |
+-| 21 | ``  ${…} · ${…}`` | séparateur | `if (errors.length) refuse(o, [`Assemblage refusé : le graphe a ${errors.length} erreur${errors.length > 1 ?…` |
+-| 23 | ``${…} (${…})`` | séparateur | `.map((d) => `${d.date} (${d.node.title})`)` |
+-| 25 | `"errors"` | identifiant | `if ("errors" in a) return refuse(o, [`Assemblage refusé :`, ...a.errors.map((e) => `  ${e}`)])` |
+-| 25 | ``Assemblage refusé :`` | phrase | `if ("errors" in a) return refuse(o, [`Assemblage refusé :`, ...a.errors.map((e) => `  ${e}`)])` |
++| 19 | `` `Usage : trame ${…} <composant> --env <environnement>` `` | balisage | ``if (!name \|\| !o.envName) refuse(o, [`Usage : trame ${o.command} <composant> --env <environnement>`])`` |
++| 21 | `` `Assemblage refusé : le graphe a ${…} erreur${…}.` `` | phrase | ``if (errors.length) refuse(o, [`Assemblage refusé : le graphe a ${errors.length} erreur${errors.length > 1 ?…`` |
++| 21 | `"s"` | identifiant | ``if (errors.length) refuse(o, [`Assemblage refusé : le graphe a ${errors.length} erreur${errors.length > 1 ?…`` |
++| 21 | `` `  ${…} · ${…}` `` | séparateur | ``if (errors.length) refuse(o, [`Assemblage refusé : le graphe a ${errors.length} erreur${errors.length > 1 ?…`` |
++| 23 | `` `${…} (${…})` `` | séparateur | ``.map((d) => `${d.date} (${d.node.title})`)`` |
++| 25 | `"errors"` | identifiant | ``if ("errors" in a) return refuse(o, [`Assemblage refusé :`, ...a.errors.map((e) => `  ${e}`)])`` |
++| 25 | `` `Assemblage refusé :` `` | phrase | ``if ("errors" in a) return refuse(o, [`Assemblage refusé :`, ...a.errors.map((e) => `  ${e}`)])`` |
+ 
+ </details>
+ 
+@@ -1146,8 +1146,8 @@
+ |---|---|---|---|
+ | 17 | `"TODO"` | identifiant | `if (isHole(v)) return "TODO"` |
+ | 18 | `"(fonction)"` | texte | `if (typeof v === "function") return "(fonction)"` |
+-| 40 | ``${…}:${…}`` | séparateur | `source: v.decl ? `${v.decl.file}:${v.decl.line}` : undefined,` |
+-| 48 | ``${…}: ${…}`` | séparateur | `diagnostics: c.diags.filter((d) => d.node === n).map((d) => `${d.severity}: ${d.what}`),` |
++| 40 | `` `${…}:${…}` `` | séparateur | ``source: v.decl ? `${v.decl.file}:${v.decl.line}` : undefined,`` |
++| 48 | `` `${…}: ${…}` `` | séparateur | ``diagnostics: c.diags.filter((d) => d.node === n).map((d) => `${d.severity}: ${d.what}`),`` |
+ | 67 | `2` | nombre | `}, null, 2)` |
+ | 83 | `2` | nombre | `}, null, 2)` |
+ 
+@@ -1162,7 +1162,7 @@
+ | 10 | `"-"` | séparateur | `const [nom, args] = premier === undefined \|\| premier.startsWith("-") ? ["build", terminal.args] : [premier,…` |
+ | 10 | `"build"` | identifiant | `const [nom, args] = premier === undefined \|\| premier.startsWith("-") ? ["build", terminal.args] : [premier,…` |
+ | 12 | `"*"` | séparateur | `const route = commande(nom) ?? commande("*")` |
+-| 14 | ``Commande inconnue : ${…}`` | phrase | `terminal.erreur(`Commande inconnue : ${nom}`)` |
++| 14 | `` `Commande inconnue : ${…}` `` | phrase | ``terminal.erreur(`Commande inconnue : ${nom}`)`` |
+ | 18 | `"*"` | séparateur | `const autres = routes.flatMap((r) => (r.declencheur.type === "commande" && r.declencheur.nom !== "*" ? [r.d…` |
+ | 19 | `" "` | séparateur | `const r = await route.traitement({ params: { commande: nom, commandes: autres.join(" ") }, corps: { args } })` |
+ 
+@@ -1176,9 +1176,9 @@
+ |---|---|---|---|
+ | 18 | `"pourquoi"` | identifiant | `const aliases: Record<string, string> = { why: "pourquoi", history: "historique" }` |
+ | 18 | `"historique"` | identifiant | `const aliases: Record<string, string> = { why: "pourquoi", history: "historique" }` |
+-| 29 | ``Commande inconnue : ${…}. Commandes : ${…}, ou une vue : ${…}`` | phrase | `deps.terminal.erreur(`Commande inconnue : ${o.command}. Commandes : ${(req.params.commandes ?? "").split(" …` |
+-| 29 | `" "` | séparateur | `deps.terminal.erreur(`Commande inconnue : ${o.command}. Commandes : ${(req.params.commandes ?? "").split(" …` |
+-| 29 | `", "` | séparateur | `deps.terminal.erreur(`Commande inconnue : ${o.command}. Commandes : ${(req.params.commandes ?? "").split(" …` |
++| 29 | `` `Commande inconnue : ${…}. Commandes : ${…}, ou une vue : ${…}` `` | phrase | ``deps.terminal.erreur(`Commande inconnue : ${o.command}. Commandes : ${(req.params.commandes ?? "").split(" …`` |
++| 29 | `" "` | séparateur | ``deps.terminal.erreur(`Commande inconnue : ${o.command}. Commandes : ${(req.params.commandes ?? "").split(" …`` |
++| 29 | `", "` | séparateur | ``deps.terminal.erreur(`Commande inconnue : ${o.command}. Commandes : ${(req.params.commandes ?? "").split(" …`` |
+ 
+ </details>
+ 
+@@ -1192,7 +1192,7 @@
+ | 21 | `"--all"` | identifiant | `const child = relancer(["payload", "--all", "--at", today], root)` |
+ | 21 | `"--at"` | identifiant | `const child = relancer(["payload", "--all", "--at", today], root)` |
+ | 30 | `"la compilation a échoué"` | phrase | `if (code !== 0) return resolve({ generatedAt, today, mode, dates: [], error: (err \|\| out).trim() \|\| "la com…` |
+-| 34 | ``sortie illisible : ${…}`` | phrase | `resolve({ generatedAt, today, mode, dates: [], error: `sortie illisible : ${(e as Error).message}` })` |
++| 34 | `` `sortie illisible : ${…}` `` | phrase | ``resolve({ generatedAt, today, mode, dates: [], error: `sortie illisible : ${(e as Error).message}` })`` |
+ 
+ </details>
+ 
+@@ -1202,10 +1202,10 @@
+ 
+ | Ligne | Valeur | Catégorie | Contexte |
+ |---|---|---|---|
+-| 21 | `15` | nombre | `refuse(o, [...refused.map((d) => pad(d.severity, 15) + `${d.where ?? ""} ${d.what}`), "", "publication refu…` |
+-| 21 | `"publication refusée : une déclaration publiée a changé"` | phrase | `refuse(o, [...refused.map((d) => pad(d.severity, 15) + `${d.where ?? ""} ${d.what}`), "", "publication refu…` |
+-| 24 | ``publié : ${…} déclarations figées dans trame.lock`` | fichier | `deps.terminal.ecrire(added.length ? `publié : ${added.length} déclarations figées dans trame.lock` : "rien …` |
+-| 24 | `"rien de nouveau à publier"` | phrase | `deps.terminal.ecrire(added.length ? `publié : ${added.length} déclarations figées dans trame.lock` : "rien …` |
++| 21 | `15` | nombre | ``refuse(o, [...refused.map((d) => pad(d.severity, 15) + `${d.where ?? ""} ${d.what}`), "", "publication refu…`` |
++| 21 | `"publication refusée : une déclaration publiée a changé"` | phrase | ``refuse(o, [...refused.map((d) => pad(d.severity, 15) + `${d.where ?? ""} ${d.what}`), "", "publication refu…`` |
++| 24 | `` `publié : ${…} déclarations figées dans trame.lock` `` | fichier | ``deps.terminal.ecrire(added.length ? `publié : ${added.length} déclarations figées dans trame.lock` : "rien …`` |
++| 24 | `"rien de nouveau à publier"` | phrase | ``deps.terminal.ecrire(added.length ? `publié : ${added.length} déclarations figées dans trame.lock` : "rien …`` |
+ 
+ </details>
+ 
+@@ -1216,9 +1216,9 @@
+ | Ligne | Valeur | Catégorie | Contexte |
+ |---|---|---|---|
+ | 28 | `-1` | nombre | `if (first) out.add(addDays(first, -1))` |
+-| 47 | ``${…}\|${…}\|${…}`` | séparateur | `key: `${i.severity}\|${i.node?.ref ?? i.where ?? ""}\|${i.what}`, severity: i.severity, what: i.what, ref: i.…` |
+-| 50 | ``${…}\|${…}`` | séparateur | `key: `${r.target.ref}\|${r.paths.join(",")}`, outcome: r.outcome, applied: r.applied.map((v) => v.ref),` |
+-| 50 | `","` | séparateur | `key: `${r.target.ref}\|${r.paths.join(",")}`, outcome: r.outcome, applied: r.applied.map((v) => v.ref),` |
++| 47 | `` `${…}\|${…}\|${…}` `` | séparateur | ``key: `${i.severity}\|${i.node?.ref ?? i.where ?? ""}\|${i.what}`, severity: i.severity, what: i.what, ref: i.…`` |
++| 50 | `` `${…}\|${…}` `` | séparateur | ``key: `${r.target.ref}\|${r.paths.join(",")}`, outcome: r.outcome, applied: r.applied.map((v) => v.ref),`` |
++| 50 | `","` | séparateur | ``key: `${r.target.ref}\|${r.paths.join(",")}`, outcome: r.outcome, applied: r.applied.map((v) => v.ref),`` |
+ 
+ </details>
+ 
+@@ -1228,7 +1228,7 @@
+ 
+ | Ligne | Valeur | Catégorie | Contexte |
+ |---|---|---|---|
+-| 7 | ``avertissement : promesse rejetée sans être attendue (${…})`` | phrase | `process.on("unhandledRejection", (e) => console.error(`avertissement : promesse rejetée sans être attendue …` |
++| 7 | `` `avertissement : promesse rejetée sans être attendue (${…})` `` | phrase | ``process.on("unhandledRejection", (e) => console.error(`avertissement : promesse rejetée sans être attendue …`` |
+ | 8 | `"error"` | identifiant | `process.stdout.on("error", (e: NodeJS.ErrnoException) => {` |
+ | 9 | `"EPIPE"` | identifiant | `if (e.code === "EPIPE") process.exit(0)` |
+ | 13 | `2` | nombre | `args: process.argv.slice(2),` |
+@@ -1241,9 +1241,9 @@
+ 
+ | Ligne | Valeur | Catégorie | Contexte |
+ |---|---|---|---|
+-| 24 | ``assemblé · ${…} nœuds construits · écrit : ${…}`` | phrase | `deps.terminal.ecrire(`assemblé · ${steps} nœuds construits · écrit : ${written.map((f) => f.replace(o.root …` |
+-| 24 | `"/"` | fichier | `deps.terminal.ecrire(`assemblé · ${steps} nœuds construits · écrit : ${written.map((f) => f.replace(o.root …` |
+-| 24 | `", "` | séparateur | `deps.terminal.ecrire(`assemblé · ${steps} nœuds construits · écrit : ${written.map((f) => f.replace(o.root …` |
++| 24 | `` `assemblé · ${…} nœuds construits · écrit : ${…}` `` | phrase | ``deps.terminal.ecrire(`assemblé · ${steps} nœuds construits · écrit : ${written.map((f) => f.replace(o.root …`` |
++| 24 | `"/"` | fichier | ``deps.terminal.ecrire(`assemblé · ${steps} nœuds construits · écrit : ${written.map((f) => f.replace(o.root …`` |
++| 24 | `", "` | séparateur | ``deps.terminal.ecrire(`assemblé · ${steps} nœuds construits · écrit : ${written.map((f) => f.replace(o.root …`` |
+ 
+ </details>
+ 
+@@ -1254,8 +1254,8 @@
+ | Ligne | Valeur | Catégorie | Contexte |
+ |---|---|---|---|
+ | 27 | `"instantane"` | identifiant | `for (const d of docs.filter((x) => x.view === "instantane" && x.file)) {` |
+-| 31 | ``instantané du ${…} · écrit : ${…}`` | phrase | `deps.terminal.ecrire(`instantané du ${o.today} · écrit : ${written.join(", ")}`)` |
+-| 31 | `", "` | séparateur | `deps.terminal.ecrire(`instantané du ${o.today} · écrit : ${written.join(", ")}`)` |
++| 31 | `` `instantané du ${…} · écrit : ${…}` `` | phrase | ``deps.terminal.ecrire(`instantané du ${o.today} · écrit : ${written.join(", ")}`)`` |
++| 31 | `", "` | séparateur | ``deps.terminal.ecrire(`instantané du ${o.today} · écrit : ${written.join(", ")}`)`` |
+ 
+ </details>
+ 
+@@ -1277,9 +1277,9 @@
+ 
+ | Ligne | Valeur | Catégorie | Contexte |
+ |---|---|---|---|
+-| 12 | ``le moteur a quitté avec le code ${…} : ${…}`` | phrase | `throw new Error(`le moteur a quitté avec le code ${code} : ${lignes.slice(-3).join(" \| ")}`)` |
+-| 12 | `-3` | nombre | `throw new Error(`le moteur a quitté avec le code ${code} : ${lignes.slice(-3).join(" \| ")}`)` |
+-| 12 | `" \| "` | séparateur | `throw new Error(`le moteur a quitté avec le code ${code} : ${lignes.slice(-3).join(" \| ")}`)` |
++| 12 | `` `le moteur a quitté avec le code ${…} : ${…}` `` | phrase | ``throw new Error(`le moteur a quitté avec le code ${code} : ${lignes.slice(-3).join(" \| ")}`)`` |
++| 12 | `-3` | nombre | ``throw new Error(`le moteur a quitté avec le code ${code} : ${lignes.slice(-3).join(" \| ")}`)`` |
++| 12 | `" \| "` | séparateur | ``throw new Error(`le moteur a quitté avec le code ${code} : ${lignes.slice(-3).join(" \| ")}`)`` |
+ 
+ </details>
+ 
+@@ -1289,8 +1289,8 @@
+ 
+ | Ligne | Valeur | Catégorie | Contexte |
+ |---|---|---|---|
+-| 42 | ``écrit : ${…}`` | gabarit | `deps.terminal.ecrire(`écrit : ${written.join(", ")}`)` |
+-| 42 | `", "` | séparateur | `deps.terminal.ecrire(`écrit : ${written.join(", ")}`)` |
++| 42 | `` `écrit : ${…}` `` | gabarit | ``deps.terminal.ecrire(`écrit : ${written.join(", ")}`)`` |
++| 42 | `", "` | séparateur | ``deps.terminal.ecrire(`écrit : ${written.join(", ")}`)`` |
+ 
+ </details>
+ 
+@@ -1333,7 +1333,7 @@
+ 
+ | Ligne | Valeur | Catégorie | Contexte |
+ |---|---|---|---|
+-| 26 | ``export · ${…} dates · écrit : ${…}`` | gabarit | `deps.terminal.ecrire(`export · ${bundle.dates.length} dates · écrit : ${file}`)` |
++| 26 | `` `export · ${…} dates · écrit : ${…}` `` | gabarit | ``deps.terminal.ecrire(`export · ${bundle.dates.length} dates · écrit : ${file}`)`` |
+ 
+ </details>
+ 
+@@ -1353,7 +1353,7 @@
+ 
+ | Ligne | Valeur | Catégorie | Contexte |
+ |---|---|---|---|
+-| 5 | ``${…}T08:00:00.000Z`` | gabarit | `maintenant: () => new Date(`${jour}T08:00:00.000Z`),` |
++| 5 | `` `${…}T08:00:00.000Z` `` | gabarit | ``maintenant: () => new Date(`${jour}T08:00:00.000Z`),`` |
+ 
+ </details>
+ 
+diff -ru self0/docs/markdown.md self1/docs/markdown.md
+--- self0/docs/markdown.md	2026-10-17 13:34:18.259338057 +0200
++++ self1/docs/markdown.md	2026-10-17 13:35:08.701414232 +0200
+@@ -20,7 +20,7 @@
+ |---|---|---|
+ | `finDeLigne` | ` ` | Termine une ligne (§ 2.1 : un saut de ligne, U+000A) |
+ | `espace` | ` ` | Sépare une marque de ce qu'elle introduit (§ 2.1 : U+0020) |
+-| `accentGrave` | ``` | Délimite le code, en ligne ou en bloc (§ 4.5, § 6.1) |
++| `accentGrave` | `` ` `` | Délimite le code, en ligne ou en bloc (§ 4.5, § 6.1) |
+ | `etoile` | `*` | Délimite l'emphase (§ 6.2) |
+ 
+ - Tenue par : trame
+@@ -88,8 +88,8 @@
+ 
+ | Entrée | Écrit | Vérifié |
+ |---|---|---|
+-| `"ts", ["const x = 1"]` | `["```ts","const x = 1","```"]` | tenu |
+-| `"md", ["```ts","x","```"]` | `["````md","```ts","x","```","````"]` | tenu |
++| `"ts", ["const x = 1"]` | ````["```ts","const x = 1","```"]```` | tenu |
++| ````"md", ["```ts","x","```"]```` | `````["````md","```ts","x","```","````"]````` | tenu |
+ 
+ - Responsable : trame
+ - Paramètres : `norme` ← [CommonMark](#CommonMark) · `suite` ← [Suite d'accents graves](#SuiteDAccentsGraves)
+@@ -186,10 +186,10 @@
+ 
+ | Entrée | Écrit | Vérifié |
+ |---|---|---|
+-| `"trame.json"` | `"`trame.json`"` | tenu |
+-| `"a`b"` | `"``a`b``"` | tenu |
+-| `"`écrit : ${…}`"` | `"`` `écrit : ${…}` ``"` | tenu |
+-| `" x "` | `"`  x  `"` | tenu |
++| `"trame.json"` | ``"`trame.json`"`` | tenu |
++| ``"a`b"`` | ```"``a`b``"``` | tenu |
++| ``"`écrit : ${…}`"`` | ```"`` `écrit : ${…}` ``"``` | tenu |
++| `" x "` | ``"`  x  `"`` | tenu |
+ 
+ - Responsable : trame
+ - Paramètres : `norme` ← [CommonMark](#CommonMark) · `suite` ← [Suite d'accents graves](#SuiteDAccentsGraves)
+@@ -472,10 +472,10 @@
+ 
+ | Entrée | Écrit | Vérifié |
+ |---|---|---|
+-| `"trame.json", 1` | `"`"` | tenu |
+-| `"a`b", 1` | `"``"` | tenu |
+-| `"const x = 1", 3` | `"```"` | tenu |
+-| `"```ts\nx\n```", 3` | `"````"` | tenu |
++| `"trame.json", 1` | ``"`"`` | tenu |
++| ``"a`b", 1`` | ```"``"``` | tenu |
++| `"const x = 1", 3` | ````"```"```` | tenu |
++| ````"```ts\nx\n```", 3```` | `````"````"````` | tenu |
+ 
+ - Responsable : trame
+ - Paramètres : `norme` ← [CommonMark](#CommonMark)

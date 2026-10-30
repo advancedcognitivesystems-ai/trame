@@ -1,0 +1,360 @@
+[
+  {
+    "node": "sdlc.PageFile",
+    "source": "deployed",
+    "fingerprint": "b4e893f38a3f8600579b04e32b130d757ef52ffe253952e7de3412b0a17ed751",
+    "at": "2026-10-27",
+    "value": 1,
+    "by": "claude",
+    "signature": "attribution",
+    "note": "Published as a claude.ai artifact (version 11)",
+    "url": "https://claude.ai/artifact/RMTniA6qYS1hMLJDJm92HY"
+  },
+  {
+    "node": "sdlc.PageFile",
+    "at": "2026-10-27",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "f8d0c1352aa55f15376f8504a7ff28d306ee672e33757ea2e572306e3b4aa54e",
+    "by": "claude",
+    "signature": "attribution"
+  },
+  {
+    "node": "sdlc.PageFile",
+    "source": "deployed",
+    "fingerprint": "f8d0c1352aa55f15376f8504a7ff28d306ee672e33757ea2e572306e3b4aa54e",
+    "at": "2026-10-27",
+    "value": 1,
+    "by": "claude",
+    "signature": "attribution",
+    "note": "Published as a claude.ai artifact (version 12)",
+    "url": "https://claude.ai/artifact/RMTniA6qYS1hMLJDJm92HY"
+  },
+  {
+    "node": "sdlc.PageOpens",
+    "at": "2026-10-27",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "2997a1de",
+    "by": "claude",
+    "signature": "attribution"
+  },
+  {
+    "node": "sdlc.PlaceThePage",
+    "at": "2026-10-27",
+    "source": "deployed",
+    "value": 1,
+    "by": "claude",
+    "signature": "attribution"
+  },
+  {
+    "node": "sdlc.PlaceThePage",
+    "at": "2026-10-27",
+    "source": "deployed",
+    "value": 1,
+    "fingerprint": "2997a1de",
+    "by": "claude",
+    "signature": "attribution"
+  },
+  {
+    "node": "sdlc.Preview",
+    "at": "2026-10-27",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "d4673cbc",
+    "url": "evidence/shipments/Preview-2026-10-27.json",
+    "by": "claude",
+    "signature": "attribution"
+  },
+  {
+    "node": "sdlc.Preview",
+    "at": "2026-10-27",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "eed6f275",
+    "url": "evidence/shipments/Preview-2026-10-27-eed6f275.json",
+    "by": "claude",
+    "signature": "attribution"
+  },
+  {
+    "node": "sdlc.PageFile",
+    "at": "2026-10-28",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "c08db2f7bdfe9ae5af5a9b20c0c12707f782b44acbc1bb13e526ef7eaed27d2d",
+    "by": "claude",
+    "signature": "attribution"
+  },
+  {
+    "node": "sdlc.PageFile",
+    "source": "deployed",
+    "fingerprint": "c08db2f7bdfe9ae5af5a9b20c0c12707f782b44acbc1bb13e526ef7eaed27d2d",
+    "at": "2026-10-28",
+    "value": 1,
+    "by": "claude",
+    "signature": "attribution",
+    "note": "Published as a claude.ai artifact (version 13)",
+    "url": "https://claude.ai/artifact/RMTniA6qYS1hMLJDJm92HY"
+  },
+  {
+    "node": "sdlc.PageFile",
+    "at": "2026-10-28",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "9d9de8fabd5c32403d4d5398901284ac4e4923724ea5f29d3bb2a9180c7250bf",
+    "by": "claude",
+    "signature": "attribution"
+  },
+  {
+    "node": "sdlc.PageFile",
+    "source": "deployed",
+    "fingerprint": "9d9de8fabd5c32403d4d5398901284ac4e4923724ea5f29d3bb2a9180c7250bf",
+    "at": "2026-10-28",
+    "value": 1,
+    "by": "claude",
+    "signature": "attribution",
+    "note": "Published as a claude.ai artifact (version 14)",
+    "url": "https://claude.ai/artifact/RMTniA6qYS1hMLJDJm92HY"
+  },
+  {
+    "node": "sdlc.PageFile",
+    "at": "2026-10-28",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "e3227e8013293bd521b43180d759336dda96e3e51e582b69911facbdf1015183",
+    "by": "claude",
+    "signature": "attribution"
+  },
+  {
+    "node": "sdlc.PageFile",
+    "source": "deployed",
+    "fingerprint": "e3227e8013293bd521b43180d759336dda96e3e51e582b69911facbdf1015183",
+    "at": "2026-10-28",
+    "value": 1,
+    "by": "claude",
+    "signature": "attribution",
+    "note": "Published as a claude.ai artifact (version 15)",
+    "url": "https://claude.ai/artifact/RMTniA6qYS1hMLJDJm92HY"
+  },
+  {
+    "node": "sdlc.PageOpens",
+    "at": "2026-10-28",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "21a0c6b0",
+    "by": "claude",
+    "signature": "attribution"
+  },
+  {
+    "node": "sdlc.PageOpens",
+    "at": "2026-10-28",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "438e68f9",
+    "by": "claude",
+    "signature": "attribution"
+  },
+  {
+    "node": "sdlc.PageOpens",
+    "at": "2026-10-28",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "c56b68fe",
+    "by": "claude",
+    "signature": "attribution"
+  },
+  {
+    "node": "sdlc.PlaceThePage",
+    "at": "2026-10-28",
+    "source": "deployed",
+    "value": 1,
+    "fingerprint": "21a0c6b0",
+    "by": "claude",
+    "signature": "attribution"
+  },
+  {
+    "node": "sdlc.PlaceThePage",
+    "at": "2026-10-28",
+    "source": "deployed",
+    "value": 1,
+    "fingerprint": "438e68f9",
+    "by": "claude",
+    "signature": "attribution"
+  },
+  {
+    "node": "sdlc.PlaceThePage",
+    "at": "2026-10-28",
+    "source": "deployed",
+    "value": 1,
+    "fingerprint": "c56b68fe",
+    "by": "claude",
+    "signature": "attribution"
+  },
+  {
+    "node": "sdlc.Preview",
+    "at": "2026-10-28",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "c5211471",
+    "url": "evidence/shipments/Preview-2026-10-28-c5211471.json",
+    "by": "claude",
+    "signature": "attribution"
+  },
+  {
+    "node": "sdlc.Preview",
+    "at": "2026-10-28",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "a35ff3ea",
+    "url": "evidence/shipments/Preview-2026-10-28-a35ff3ea.json",
+    "by": "claude",
+    "signature": "attribution"
+  },
+  {
+    "node": "sdlc.Preview",
+    "at": "2026-10-28",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "e7d2ba6f",
+    "url": "evidence/shipments/Preview-2026-10-28-e7d2ba6f.json",
+    "by": "claude",
+    "signature": "attribution"
+  },
+  {
+    "node": "sdlc.PreviewScript",
+    "at": "2026-10-28",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "699a6efd3f6c17628bf392e8d5149daf55e8793a432baae26e91b227c1b560ed",
+    "by": "claude",
+    "signature": "attribution"
+  },
+  {
+    "node": "sdlc.PreviewWorkflow",
+    "at": "2026-10-28",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "7ee10d13973e666e4d71f29b5023fe5b3c0ddb2d86880bad3256790bdc36ad5f",
+    "by": "claude",
+    "signature": "attribution"
+  },
+  {
+    "node": "sdlc.PreviewWorkflow",
+    "at": "2026-10-28",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "5c0d0feb912c4787a9f8b3ba2d9bac5b7dc3dc869c93718d1179315a6d6ede63",
+    "by": "claude",
+    "signature": "attribution"
+  },
+  {
+    "node": "sdlc.RunnersWritten",
+    "at": "2026-10-28",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "18b0e47d",
+    "url": "evidence/shipments/RunnersWritten-2026-10-28-18b0e47d.json",
+    "by": "claude",
+    "signature": "attribution"
+  },
+  {
+    "node": "sdlc.RunnersWritten",
+    "at": "2026-10-28",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "87fa41ea",
+    "url": "evidence/shipments/RunnersWritten-2026-10-28-87fa41ea.json",
+    "by": "claude",
+    "signature": "attribution"
+  },
+  {
+    "node": "sdlc.RunnersWritten",
+    "at": "2026-10-28",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "a79acb20",
+    "url": "evidence/shipments/RunnersWritten-2026-10-28-a79acb20.json",
+    "by": "claude",
+    "signature": "attribution"
+  },
+  {
+    "node": "sdlc.PageFile",
+    "at": "2026-10-29",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "a2ad54a8d1f1f17038da1239c7056eae7f6234f30b7bcaa03d415ecd2cf25bf3",
+    "code": "a7620ce9",
+    "by": "claude",
+    "signature": "attribution"
+  },
+  {
+    "node": "sdlc.PageFile",
+    "source": "deployed",
+    "fingerprint": "a2ad54a8d1f1f17038da1239c7056eae7f6234f30b7bcaa03d415ecd2cf25bf3",
+    "at": "2026-10-29",
+    "value": 1,
+    "by": "claude",
+    "signature": "attribution",
+    "note": "Published as a claude.ai artifact (version 16)",
+    "url": "https://claude.ai/artifact/RMTniA6qYS1hMLJDJm92HY"
+  },
+  {
+    "node": "sdlc.PageOpens",
+    "at": "2026-10-29",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "913ed6cd",
+    "code": "f855d037",
+    "by": "claude",
+    "signature": "attribution"
+  },
+  {
+    "node": "sdlc.PlaceThePage",
+    "at": "2026-10-29",
+    "source": "deployed",
+    "value": 1,
+    "fingerprint": "913ed6cd",
+    "by": "claude",
+    "signature": "attribution"
+  },
+  {
+    "node": "sdlc.Preview",
+    "at": "2026-10-29",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "218b0c54",
+    "url": "evidence/shipments/Preview-2026-10-29-218b0c54.json",
+    "by": "claude",
+    "signature": "attribution"
+  },
+  {
+    "node": "sdlc.PreviewScript",
+    "at": "2026-10-29",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "699a6efd3f6c17628bf392e8d5149daf55e8793a432baae26e91b227c1b560ed",
+    "code": "8fd0a0ae",
+    "by": "claude",
+    "signature": "attribution"
+  },
+  {
+    "node": "sdlc.PreviewWorkflow",
+    "at": "2026-10-29",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "5c0d0feb912c4787a9f8b3ba2d9bac5b7dc3dc869c93718d1179315a6d6ede63",
+    "code": "9bcf7c7e",
+    "by": "claude",
+    "signature": "attribution"
+  },
+  {
+    "node": "sdlc.RunnersWritten",
+    "at": "2026-10-29",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "e74c8883",
+    "url": "evidence/shipments/RunnersWritten-2026-10-29-e74c8883.json",
+    "by": "claude",
+    "signature": "attribution"
+  }
+]

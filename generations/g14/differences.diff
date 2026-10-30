@@ -1,0 +1,24 @@
+diff -ru self0/docs/algebra.md self1/docs/algebra.md
+--- self0/docs/algebra.md	2026-10-18 21:40:25.801389757 +0200
++++ self1/docs/algebra.md	2026-10-18 21:41:02.741049156 +0200
+@@ -84,7 +84,7 @@
+ 
+ | Constant | Value | Meaning |
+ |---|---|---|
+-| `empty` | `` | The text with no characters: the identity of concatenation, what nothing shows |
++| `empty` | `""` | The text with no characters: the identity of concatenation, what nothing shows |
+ 
+ - Owner: trame
+ - Body: `./code/algebra/texts.ts` (typescript)
+diff -ru self0/docs/conventions.md self1/docs/conventions.md
+--- self0/docs/conventions.md	2026-10-18 21:40:25.800241455 +0200
++++ self1/docs/conventions.md	2026-10-18 21:41:02.740644852 +0200
+@@ -19,7 +19,7 @@
+ | Constant | Value | Meaning |
+ |---|---|---|
+ | `separator` | `.` | Separates the module from the identifier, and the steps of a path in a field |
+-| `wholeNode` | `` | The empty path: the whole node, not one of its fields |
++| `wholeNode` | `""` | The empty path: the whole node, not one of its fields |
+ 
+ - Maintained by: trame
+ - Used by: [Graph](engine.md#GraphApi), [References](engine.md#References)

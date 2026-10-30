@@ -1,0 +1,96 @@
+import {
+  defineView, doc, CheckEdge, EvidenceSource, FigureType, KindName, ReviewEdge, PipelineStage, Shape, ShipmentField, Status, ViewGroup, ViewName,
+  type Block, type Inline, type PipelineStep, type View,
+} from "../trame/kernel"
+import words from "./words"
+
+const say = words()
+
+/**
+ * What trame ship runs for each shipment, in order, as the engine computes it (the same pipeline the command runs):
+ * its artefacts produced and by what, the checks a program makes, the obligations to prove, the programs that deploy
+ * it, the dossier; each step with its status and its latest evidence, and a figure of the whole.
+ */
+export default defineView({
+  name: ViewName.pipelines,
+  label: say.pipelinesPipelines(),
+  group: ViewGroup.document,
+  run(c) {
+    const { counts, texts, lists, sequences, punctuation } = c.lib
+    const shipments = c.all(KindName.shipment).where((v) => !v.repealedBy).nodes()
+    const stages = Object.values(PipelineStage)
+    const intro = say.pipelinesIntroduction(doc.date(c.today))
+    if (counts.isEmpty(shipments)) return { title: say.pipelinesPipelines(), intro, blocks: [doc.para(say.pipelinesNone())] }
+
+    const word: Record<PipelineStage, string> = {
+      [PipelineStage.produce]: say.pipelinesProduce(), [PipelineStage.check]: say.pipelinesCheck(), [PipelineStage.prove]: say.pipelinesProve(),
+      [PipelineStage.deploy]: say.pipelinesDeploy(), [PipelineStage.record]: say.pipelinesRecord(),
+    }
+    /** The latest evidence on a node: when, by whom, and what it says when it says passed or failed. */
+    const latest = (v: View): Inline[] => {
+      const e = sequences.last(v.evidence.filter((x) => x.source !== undefined && x.subject === undefined))
+      if (!e) return []
+      const verdict = e.source === EvidenceSource.check ? [e.value === counts.one ? say.pipelinesPassed() : say.pipelinesFailed()] : []
+      return [...verdict, ...say.pipelinesEvidence(doc.date(e.at), e.by ?? texts.empty), ...(e.url ? [doc.ident(e.url)] : [])]
+    }
+    /**
+     * What runs a step: a delivery, a program, a component assembled; a check, the program that runs it or the hand that
+     * makes it, and the role that signs it; a review, the role that gives it.
+     */
+    const runBy = (s: PipelineStep): Inline[] => {
+      if (s.stage === PipelineStage.deploy) return [say.pipelinesItself()]
+      if (s.node.kind === KindName.check) {
+        const program = s.runs ?? c.from(s.node).out(CheckEdge.runs).first()
+        const signer = c.from(s.node).out(CheckEdge.by).first()
+        return [
+          ...(program ? [doc.ref(program)] : [say.pipelinesByHand()]),
+          ...(signer ? [say.pipelinesSignedBy(), doc.ref(signer)] : []),
+        ]
+      }
+      if (s.node.kind === KindName.review) {
+        const role = c.from(s.node).out(ReviewEdge.by).first()
+        return role ? [say.pipelinesReviewedBy(), doc.ref(role)] : [punctuation.absent]
+      }
+      return s.runs && s.runs.ref !== s.node.ref ? [doc.ref(s.runs)] : [punctuation.absent]
+    }
+
+    const blocks: Block[] = shipments.map((shipment) => {
+      const pipeline = c.pipeline?.(shipment)
+      if (!pipeline) return doc.section(shipment.title, [doc.para(say.pipelinesNotComputed())], shipment.id)
+      const proven = pipeline.steps.filter((s) => s.stage === PipelineStage.prove)
+      const held = proven.filter((s) => s.node.status === Status.held)
+      const summary = shipment.status === Status.held ? say.pipelinesShips(shipment.title) : say.pipelinesWaits(shipment.title, held.length, proven.length)
+
+      // The figure: one rank per stage, each node at the first stage that shows it.
+      const rank = new Map<string, number>()
+      for (const s of pipeline.steps) {
+        if (!rank.has(s.node.ref)) rank.set(s.node.ref, stages.indexOf(s.stage))
+        if (s.runs && !rank.has(s.runs.ref)) rank.set(s.runs.ref, stages.indexOf(s.stage))
+      }
+      const nodes = [...new Map(pipeline.steps.flatMap((s) => (s.runs ? [s.node, s.runs] : [s.node])).map((v) => [v.ref, v])).values()]
+      const shown = new Set(nodes.map((v) => v.ref))
+      const edges = c.figureEdges(nodes).filter((e) => shown.has(e.from) && shown.has(e.to))
+
+      const rows = pipeline.steps.map((s, i): Inline[][] => [
+        [String(counts.next(i))],
+        [word[s.stage]],
+        [doc.ref(s.node), ...(s.path ? [punctuation.parts, doc.ident(s.path)] : [])],
+        runBy(s),
+        s.node.status ? [doc.status(s.node.status)] : [],
+        latest(s.node),
+      ])
+      return doc.section(shipment.title, [
+        doc.summary(summary),
+        doc.para(...say.pipelinesWhere(String(shipment.field(ShipmentField.target)), pipeline.environment ? doc.ref(pipeline.environment) : undefined)),
+        ...(counts.any(pipeline.errors) ? [doc.para(say.pipelinesCannotRun()), doc.list(pipeline.errors.map((e) => [e]))] : []),
+        doc.figure({
+          type: FigureType.graph, shape: Shape.layers,
+          nodes: nodes.map((v) => c.figureNode(v, rank.get(v.ref) ?? counts.zero)), edges, groups: [],
+        }, say.pipelinesFigure(texts.concat(lists.enumeration(stages.map((s) => word[s]))))),
+        doc.table([texts.empty, say.pipelinesStage(), say.pipelinesStep(), say.pipelinesRunBy(), say.pipelinesStatus(), say.pipelinesLatest()], rows),
+        doc.para(doc.ident(say.pipelinesCommand(shipment.id))),
+      ], shipment.id)
+    })
+    return { title: say.pipelinesPipelines(), intro, blocks }
+  },
+})

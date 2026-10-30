@@ -1,0 +1,10 @@
+{
+  "views": [
+    "views",
+    "engine-views"
+  ],
+  "libraries": {
+    "std": "std"
+  },
+  "engine": "generations/g76"
+}

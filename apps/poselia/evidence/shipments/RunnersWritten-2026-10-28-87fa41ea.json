@@ -1,0 +1,66 @@
+{
+  "shipment": "sdlc.RunnersWritten",
+  "title": "The files that run it elsewhere",
+  "target": "repository",
+  "at": "2026-10-28",
+  "by": "claude",
+  "signature": "attribution",
+  "artifacts": [
+    {
+      "node": "sdlc.PreviewScript",
+      "path": "scripts/ship-preview.sh",
+      "fingerprint": "699a6efd3f6c17628bf392e8d5149daf55e8793a432baae26e91b227c1b560ed"
+    },
+    {
+      "node": "sdlc.PreviewWorkflow",
+      "path": "../../.github/workflows/poselia-preview.yml",
+      "fingerprint": "5c0d0feb912c4787a9f8b3ba2d9bac5b7dc3dc869c93718d1179315a6d6ede63"
+    }
+  ],
+  "obligations": [
+    {
+      "node": "sdlc.PreviewScript",
+      "kind": "artifact",
+      "status": "held",
+      "owner": "ghalaax",
+      "evidence": [
+        {
+          "node": "sdlc.PreviewScript",
+          "at": "2026-10-28",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "699a6efd3f6c17628bf392e8d5149daf55e8793a432baae26e91b227c1b560ed",
+          "by": "claude",
+          "signature": "attribution"
+        }
+      ]
+    },
+    {
+      "node": "sdlc.PreviewWorkflow",
+      "kind": "artifact",
+      "status": "held",
+      "owner": "ghalaax",
+      "evidence": [
+        {
+          "node": "sdlc.PreviewWorkflow",
+          "at": "2026-10-28",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "7ee10d13973e666e4d71f29b5023fe5b3c0ddb2d86880bad3256790bdc36ad5f",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.PreviewWorkflow",
+          "at": "2026-10-28",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "5c0d0feb912c4787a9f8b3ba2d9bac5b7dc3dc869c93718d1179315a6d6ede63",
+          "by": "claude",
+          "signature": "attribution"
+        }
+      ]
+    }
+  ],
+  "deployed": []
+}

@@ -1,0 +1,32 @@
+diff -ru self0/docs/markdown.md self1/docs/markdown.md
+--- self0/docs/markdown.md	2026-10-17 13:40:15.780249288 +0200
++++ self1/docs/markdown.md	2026-10-17 13:41:07.090557091 +0200
+@@ -18,8 +18,8 @@
+ 
+ | Constante | Valeur | Sens |
+ |---|---|---|
+-| `finDeLigne` | ` ` | Termine une ligne (§ 2.1 : un saut de ligne, U+000A) |
+-| `espace` | ` ` | Sépare une marque de ce qu'elle introduit (§ 2.1 : U+0020) |
++| `finDeLigne` | `"\n"` | Termine une ligne (§ 2.1 : un saut de ligne, U+000A) |
++| `espace` | `" "` | Sépare une marque de ce qu'elle introduit (§ 2.1 : U+0020) |
+ | `accentGrave` | `` ` `` | Délimite le code, en ligne ou en bloc (§ 4.5, § 6.1) |
+ | `etoile` | `*` | Délimite l'emphase (§ 6.2) |
+ 
+diff -ru self0/docs/normes.md self1/docs/normes.md
+--- self0/docs/normes.md	2026-10-17 13:40:15.780435081 +0200
++++ self1/docs/normes.md	2026-10-17 13:41:07.091051140 +0200
+@@ -18,10 +18,10 @@
+ 
+ | Constante | Valeur | Sens |
+ |---|---|---|
+-| `champEvenement` | `event: ` | Le champ qui nomme l'événement |
+-| `champDonnees` | `data: ` | Le champ qui porte les données |
+-| `commentaire` | `: ` | Une ligne de commentaire, ignorée par le navigateur |
+-| `finDeMessage` | `  ` | Une ligne vide termine le message |
++| `champEvenement` | `"event: "` | Le champ qui nomme l'événement |
++| `champDonnees` | `"data: "` | Le champ qui porte les données |
++| `commentaire` | `": "` | Une ligne de commentaire, ignorée par le navigateur |
++| `finDeMessage` | `"\n\n"` | Une ligne vide termine le message |
+ 
+ - Tenue par : trame
+ - Utilisé par : [Serveur de trame dev](moteur.md#ServeurDev)

@@ -1,0 +1,1151 @@
+{
+  "generated": "2026-10-30",
+  "nodes": [
+    {
+      "id": "github.GitHubActions",
+      "kind": "standard",
+      "title": "GitHub Actions",
+      "source": "src/github.ts:39",
+      "fields": {
+        "owner": "trame",
+        "source": "GitHub Docs, Workflow syntax for GitHub Actions; Contexts reference (github.actor, steps.<id>.outputs); Expressions (always()); actions/upload-artifact v4, outputs (artifact-url)",
+        "url": "https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions",
+        "constants": {
+          "name": {
+            "value": "name",
+            "meaning": "The name of the workflow, or of what an action uploads"
+          },
+          "on": {
+            "value": "on",
+            "meaning": "What starts the workflow"
+          },
+          "manual": {
+            "value": "workflow_dispatch",
+            "meaning": "Started by hand, from GitHub"
+          },
+          "push": {
+            "value": "push",
+            "meaning": "Started by a push"
+          },
+          "branches": {
+            "value": "branches",
+            "meaning": "The branches a push starts it on"
+          },
+          "tags": {
+            "value": "tags",
+            "meaning": "The tags a push starts it on"
+          },
+          "schedule": {
+            "value": "schedule",
+            "meaning": "Started at the times a cron expression gives (UTC)"
+          },
+          "cron": {
+            "value": "cron",
+            "meaning": "The cron expression of a schedule"
+          },
+          "permissions": {
+            "value": "permissions",
+            "meaning": "What the workflow's token may do"
+          },
+          "contents": {
+            "value": "contents",
+            "meaning": "The repository's contents"
+          },
+          "read": {
+            "value": "read",
+            "meaning": "Read only"
+          },
+          "jobs": {
+            "value": "jobs",
+            "meaning": "The jobs of the workflow, by their names"
+          },
+          "runsOn": {
+            "value": "runs-on",
+            "meaning": "The machine a job runs on"
+          },
+          "steps": {
+            "value": "steps",
+            "meaning": "The steps of a job, in order"
+          },
+          "uses": {
+            "value": "uses",
+            "meaning": "The action a step uses"
+          },
+          "with": {
+            "value": "with",
+            "meaning": "What the action is given"
+          },
+          "run": {
+            "value": "run",
+            "meaning": "The command a step runs"
+          },
+          "workingDirectory": {
+            "value": "working-directory",
+            "meaning": "Where the command of a step runs, from the repository's root"
+          },
+          "when": {
+            "value": "if",
+            "meaning": "The condition a step runs on"
+          },
+          "always": {
+            "value": "always()",
+            "meaning": "Whatever the steps before answered: what keeps the evidence of a shipment refused"
+          },
+          "nodeVersion": {
+            "value": "node-version",
+            "meaning": "The version of Node.js setup-node installs"
+          },
+          "path": {
+            "value": "path",
+            "meaning": "What upload-artifact keeps, one path a line"
+          },
+          "retentionDays": {
+            "value": "retention-days",
+            "meaning": "How many days GitHub keeps what upload-artifact uploaded"
+          },
+          "id": {
+            "value": "id",
+            "meaning": "The name of a step, by which a later step reads what it gives"
+          },
+          "actor": {
+            "value": "${{ github.actor }}",
+            "meaning": "The person who started the workflow"
+          },
+          "openExpression": {
+            "value": "${{ ",
+            "meaning": "Opens an expression, which GitHub replaces before the step runs"
+          },
+          "closeExpression": {
+            "value": " }}",
+            "meaning": "Closes it"
+          },
+          "outputs": {
+            "value": "outputs",
+            "meaning": "What a step gives, read as steps.<id>.outputs.<name>"
+          },
+          "dot": {
+            "value": ".",
+            "meaning": "Between the parts of a context's path"
+          },
+          "artifactUrl": {
+            "value": "artifact-url",
+            "meaning": "What upload-artifact (v4) gives: the address of the artefact it uploaded"
+          }
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "github.GitHubWorkflow",
+      "kind": "syntax",
+      "title": "A workflow of GitHub Actions",
+      "source": "src/github.ts:102",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "Workflow syntax: on, permissions, jobs.<job_id>.runs-on, jobs.<job_id>.steps[*].uses, with, run, working-directory, if",
+        "url": "https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions",
+        "constants": {
+          "job": {
+            "value": "ship",
+            "meaning": "The name of the one job"
+          },
+          "delivered": {
+            "value": "delivered",
+            "meaning": "The name of the step that uploads what the shipment ships, whose address is recorded after it"
+          },
+          "evidence": {
+            "value": "evidence",
+            "meaning": "After the shipment's name: the name of the artefact that keeps its evidence"
+          },
+          "joint": {
+            "value": "-",
+            "meaning": "Between the shipment's name and that word"
+          },
+          "space": {
+            "value": " ",
+            "meaning": "Separates the words of a command"
+          },
+          "quote": {
+            "value": "\"",
+            "meaning": "Around the person's name, given to the shell as one word"
+          },
+          "written": {
+            "value": "Written by trame ship from the graph, for the shipment",
+            "meaning": "What the workflow's first comment says"
+          },
+          "of": {
+            "value": "of",
+            "meaning": "Between the shipment and its project, in that comment"
+          },
+          "edit": {
+            "value": "Do not edit: edit the graph, then ship.",
+            "meaning": "The comment that says where to change it"
+          }
+        },
+        "deps": {
+          "standard": "github.GitHubActions",
+          "yaml": "yaml.YamlDocument",
+          "npm": "npm.Npm",
+          "actions": "github.PinnedActions"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              {
+                "shipment": "Preview",
+                "title": "A preview",
+                "project": "apps/poselia",
+                "command": [
+                  "../../trame.sh",
+                  "ship",
+                  "Preview",
+                  "--by"
+                ],
+                "file": ".github/workflows/poselia-preview.yml",
+                "toRoot": "../..",
+                "installs": [
+                  ".",
+                  "std",
+                  "apps/poselia"
+                ],
+                "prepares": [
+                  {
+                    "dir": "std",
+                    "run": "npx playwright install --with-deps chromium"
+                  }
+                ],
+                "delivers": [
+                  {
+                    "artifact": "PageFile",
+                    "path": "apps/poselia/dist/poselia.html"
+                  }
+                ],
+                "evidence": "apps/poselia/evidence",
+                "deployed": {
+                  "command": [
+                    "../../trame.sh",
+                    "evidence"
+                  ],
+                  "verdict": "passed",
+                  "by": "--by",
+                  "url": "--url"
+                }
+              },
+              {
+                "on": {
+                  "manual": true,
+                  "branches": [
+                    "main"
+                  ]
+                },
+                "runsOn": "ubuntu-24.04",
+                "node": 22,
+                "artefacts": {
+                  "days": 30,
+                  "evidence": {
+                    "days": 90
+                  }
+                }
+              }
+            ],
+            "output": "# Written by trame ship from the graph, for the shipment \"A preview\" of apps/poselia\n# Do not edit: edit the graph, then ship.\nname: A preview\non:\n  workflow_dispatch:\n  push:\n    branches:\n      - main\npermissions:\n  contents: read\njobs:\n  ship:\n    runs-on: ubuntu-24.04\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 22\n      - run: npm ci\n        working-directory: \".\"\n      - run: npm ci\n        working-directory: std\n      - run: npm ci\n        working-directory: apps/poselia\n      - run: npx playwright install --with-deps chromium\n        working-directory: std\n      - run: \"../../trame.sh ship Preview --by \\\"${{ github.actor }}\\\"\"\n        working-directory: apps/poselia\n      - id: delivered\n        uses: actions/upload-artifact@v4\n        with:\n          name: Preview\n          path: |\n            apps/poselia/dist/poselia.html\n          retention-days: 30\n      - run: \"../../trame.sh evidence PageFile passed --by \\\"${{ github.actor }}\\\" --url \\\"${{ steps.delivered.outputs.artifact-url }}\\\"\"\n        working-directory: apps/poselia\n      - uses: actions/upload-artifact@v4\n        if: \"always()\"\n        with:\n          name: Preview-evidence\n          path: apps/poselia/evidence\n          retention-days: 90\n"
+          },
+          {
+            "input": [
+              {
+                "shipment": "Preview",
+                "title": "A preview",
+                "project": ".",
+                "command": [
+                  "./trame.sh",
+                  "ship",
+                  "Preview",
+                  "--by"
+                ],
+                "file": ".github/workflows/preview.yml",
+                "toRoot": "../..",
+                "installs": [
+                  "."
+                ],
+                "prepares": [],
+                "delivers": [],
+                "evidence": "evidence",
+                "deployed": {
+                  "command": [
+                    "./trame.sh",
+                    "evidence"
+                  ],
+                  "verdict": "passed",
+                  "by": "--by",
+                  "url": "--url"
+                }
+              },
+              {
+                "on": {
+                  "schedule": "0 6 * * 1"
+                },
+                "runsOn": "ubuntu-24.04",
+                "node": 22,
+                "artefacts": {
+                  "days": 30
+                }
+              }
+            ],
+            "output": "# Written by trame ship from the graph, for the shipment \"A preview\" of .\n# Do not edit: edit the graph, then ship.\nname: A preview\non:\n  schedule:\n    - cron: \"0 6 * * 1\"\npermissions:\n  contents: read\njobs:\n  ship:\n    runs-on: ubuntu-24.04\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 22\n      - run: npm ci\n        working-directory: \".\"\n      - run: \"./trame.sh ship Preview --by \\\"${{ github.actor }}\\\"\"\n        working-directory: \".\"\n"
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            {
+              "shipment": "Preview",
+              "title": "A preview",
+              "project": "apps/poselia",
+              "command": [
+                "../../trame.sh",
+                "ship",
+                "Preview",
+                "--by"
+              ],
+              "file": ".github/workflows/poselia-preview.yml",
+              "toRoot": "../..",
+              "installs": [
+                ".",
+                "std",
+                "apps/poselia"
+              ],
+              "prepares": [
+                {
+                  "dir": "std",
+                  "run": "npx playwright install --with-deps chromium"
+                }
+              ],
+              "delivers": [
+                {
+                  "artifact": "PageFile",
+                  "path": "apps/poselia/dist/poselia.html"
+                }
+              ],
+              "evidence": "apps/poselia/evidence",
+              "deployed": {
+                "command": [
+                  "../../trame.sh",
+                  "evidence"
+                ],
+                "verdict": "passed",
+                "by": "--by",
+                "url": "--url"
+              }
+            },
+            {
+              "on": {
+                "manual": true,
+                "branches": [
+                  "main"
+                ]
+              },
+              "runsOn": "ubuntu-24.04",
+              "node": 22,
+              "artefacts": {
+                "days": 30,
+                "evidence": {
+                  "days": 90
+                }
+              }
+            }
+          ],
+          "expected": "# Written by trame ship from the graph, for the shipment \"A preview\" of apps/poselia\n# Do not edit: edit the graph, then ship.\nname: A preview\non:\n  workflow_dispatch:\n  push:\n    branches:\n      - main\npermissions:\n  contents: read\njobs:\n  ship:\n    runs-on: ubuntu-24.04\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 22\n      - run: npm ci\n        working-directory: \".\"\n      - run: npm ci\n        working-directory: std\n      - run: npm ci\n        working-directory: apps/poselia\n      - run: npx playwright install --with-deps chromium\n        working-directory: std\n      - run: \"../../trame.sh ship Preview --by \\\"${{ github.actor }}\\\"\"\n        working-directory: apps/poselia\n      - id: delivered\n        uses: actions/upload-artifact@v4\n        with:\n          name: Preview\n          path: |\n            apps/poselia/dist/poselia.html\n          retention-days: 30\n      - run: \"../../trame.sh evidence PageFile passed --by \\\"${{ github.actor }}\\\" --url \\\"${{ steps.delivered.outputs.artifact-url }}\\\"\"\n        working-directory: apps/poselia\n      - uses: actions/upload-artifact@v4\n        if: \"always()\"\n        with:\n          name: Preview-evidence\n          path: apps/poselia/evidence\n          retention-days: 90\n",
+          "actual": "# Written by trame ship from the graph, for the shipment \"A preview\" of apps/poselia\n# Do not edit: edit the graph, then ship.\nname: A preview\non:\n  workflow_dispatch:\n  push:\n    branches:\n      - main\npermissions:\n  contents: read\njobs:\n  ship:\n    runs-on: ubuntu-24.04\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 22\n      - run: npm ci\n        working-directory: \".\"\n      - run: npm ci\n        working-directory: std\n      - run: npm ci\n        working-directory: apps/poselia\n      - run: npx playwright install --with-deps chromium\n        working-directory: std\n      - run: \"../../trame.sh ship Preview --by \\\"${{ github.actor }}\\\"\"\n        working-directory: apps/poselia\n      - id: delivered\n        uses: actions/upload-artifact@v4\n        with:\n          name: Preview\n          path: |\n            apps/poselia/dist/poselia.html\n          retention-days: 30\n      - run: \"../../trame.sh evidence PageFile passed --by \\\"${{ github.actor }}\\\" --url \\\"${{ steps.delivered.outputs.artifact-url }}\\\"\"\n        working-directory: apps/poselia\n      - uses: actions/upload-artifact@v4\n        if: \"always()\"\n        with:\n          name: Preview-evidence\n          path: apps/poselia/evidence\n          retention-days: 90\n",
+          "held": true
+        },
+        {
+          "input": [
+            {
+              "shipment": "Preview",
+              "title": "A preview",
+              "project": ".",
+              "command": [
+                "./trame.sh",
+                "ship",
+                "Preview",
+                "--by"
+              ],
+              "file": ".github/workflows/preview.yml",
+              "toRoot": "../..",
+              "installs": [
+                "."
+              ],
+              "prepares": [],
+              "delivers": [],
+              "evidence": "evidence",
+              "deployed": {
+                "command": [
+                  "./trame.sh",
+                  "evidence"
+                ],
+                "verdict": "passed",
+                "by": "--by",
+                "url": "--url"
+              }
+            },
+            {
+              "on": {
+                "schedule": "0 6 * * 1"
+              },
+              "runsOn": "ubuntu-24.04",
+              "node": 22,
+              "artefacts": {
+                "days": 30
+              }
+            }
+          ],
+          "expected": "# Written by trame ship from the graph, for the shipment \"A preview\" of .\n# Do not edit: edit the graph, then ship.\nname: A preview\non:\n  schedule:\n    - cron: \"0 6 * * 1\"\npermissions:\n  contents: read\njobs:\n  ship:\n    runs-on: ubuntu-24.04\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 22\n      - run: npm ci\n        working-directory: \".\"\n      - run: \"./trame.sh ship Preview --by \\\"${{ github.actor }}\\\"\"\n        working-directory: \".\"\n",
+          "actual": "# Written by trame ship from the graph, for the shipment \"A preview\" of .\n# Do not edit: edit the graph, then ship.\nname: A preview\non:\n  schedule:\n    - cron: \"0 6 * * 1\"\npermissions:\n  contents: read\njobs:\n  ship:\n    runs-on: ubuntu-24.04\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 22\n      - run: npm ci\n        working-directory: \".\"\n      - run: \"./trame.sh ship Preview --by \\\"${{ github.actor }}\\\"\"\n        working-directory: \".\"\n",
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "github.PinnedActions",
+      "kind": "decision",
+      "title": "The actions a workflow uses",
+      "source": "src/github.ts:83",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "checkout": "actions/checkout@v4",
+          "setupNode": "actions/setup-node@v4",
+          "upload": "actions/upload-artifact@v4"
+        },
+        "rejected": {
+          "Pinned by the commit": "a moved tag could not change them, but a review reads a hash; a later decision, when a project ships to the public",
+          "The latest version": "a workflow would change without the graph changing"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "npm.Npm",
+      "kind": "standard",
+      "title": "npm",
+      "source": "src/npm.ts:11",
+      "fields": {
+        "owner": "trame",
+        "source": "npm documentation, CLI commands: npm ci",
+        "url": "https://docs.npmjs.com/cli/commands/npm-ci",
+        "constants": {
+          "install": {
+            "value": "npm ci",
+            "meaning": "Installs what the lockfile says, nothing else, after removing node_modules"
+          }
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "product.OneWriterPerPlace",
+      "kind": "goal",
+      "title": "Each place is a writer",
+      "source": "src/product.ts:24",
+      "fields": {},
+      "diagnostics": []
+    },
+    {
+      "id": "product.RunsElsewhere",
+      "kind": "goal",
+      "title": "A shipment runs elsewhere as it runs here",
+      "source": "src/product.ts:17",
+      "fields": {},
+      "diagnostics": []
+    },
+    {
+      "id": "releases.R0_1_0",
+      "kind": "release",
+      "title": "Version 0.1.0",
+      "source": "src/releases.ts:12",
+      "fields": {
+        "owner": "trame",
+        "version": "0.1.0",
+        "date": "2026-10-28",
+        "what": "Writers that run a shipment elsewhere: a workflow of GitHub Actions and a Bash script, from the plan of the run the engine computes; a YAML document from nodes",
+        "fingerprint": "1067bfe6fbe29aea",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "releases.R0_2_0",
+      "kind": "release",
+      "title": "Version 0.2.0",
+      "source": "src/releases.ts:25",
+      "fields": {
+        "owner": "trame",
+        "version": "0.2.0",
+        "date": "2026-10-28",
+        "what": "A workflow publishes only what its artefact publishes in the graph, as an artefact of GitHub kept as many days as its settings say, records its address as evidence, and keeps the evidence only when its settings say so",
+        "fingerprint": "249723edd6b389fd",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "shell.BashScripts",
+      "kind": "standard",
+      "title": "Bash scripts",
+      "source": "src/shell.ts:20",
+      "fields": {
+        "owner": "trame",
+        "source": "GNU Bash Reference Manual (5.2): § 3.1.2 Quoting, § 3.2.5 Compound Commands (subshell), § 3.5.3 Shell Parameter Expansion (${parameter:?word}), § 4.3.1 The Set Builtin; env(1) for the #! line",
+        "url": "https://www.gnu.org/software/bash/manual/bash.html",
+        "constants": {
+          "interpreter": {
+            "value": "#!/usr/bin/env bash",
+            "meaning": "The first line: the script is run by Bash, wherever it is installed"
+          },
+          "strict": {
+            "value": "set -euo pipefail",
+            "meaning": "Stops at an unset variable, a command that fails, a pipe whose part fails"
+          },
+          "comment": {
+            "value": "#",
+            "meaning": "Opens a comment, to the end of the line"
+          },
+          "space": {
+            "value": " ",
+            "meaning": "Separates the words of a command"
+          },
+          "quote": {
+            "value": "\"",
+            "meaning": "Around a word that must stay one word"
+          },
+          "and": {
+            "value": "&&",
+            "meaning": "Runs the next command only when the one before succeeded"
+          },
+          "open": {
+            "value": "(",
+            "meaning": "Opens a subshell: a change of directory in it stays in it"
+          },
+          "close": {
+            "value": ")",
+            "meaning": "Closes the subshell"
+          },
+          "cd": {
+            "value": "cd",
+            "meaning": "Changes the directory"
+          },
+          "assign": {
+            "value": "=",
+            "meaning": "Gives a variable its value"
+          },
+          "dollar": {
+            "value": "$",
+            "meaning": "Reads a variable"
+          },
+          "required": {
+            "value": "${1:?",
+            "meaning": "Opens the expansion of the first argument that stops the script, saying the rest, when it is missing"
+          },
+          "closeBrace": {
+            "value": "}",
+            "meaning": "Closes an expansion"
+          },
+          "here": {
+            "value": "$(dirname \"$0\")",
+            "meaning": "The directory of the script, wherever it is run from"
+          },
+          "separator": {
+            "value": "/",
+            "meaning": "Between the steps of a path"
+          },
+          "endOfLine": {
+            "value": "\n",
+            "meaning": "Ends a line"
+          }
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "shell.ShellScript",
+      "kind": "syntax",
+      "title": "A script of Bash",
+      "source": "src/shell.ts:52",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "§ 3.2.5 Compound Commands; § 3.5.3 Shell Parameter Expansion; § 4.3.1 The Set Builtin",
+        "url": "https://www.gnu.org/software/bash/manual/bash.html#Shell-Parameter-Expansion",
+        "constants": {
+          "person": {
+            "value": "by",
+            "meaning": "The variable that holds the name of the person who ships"
+          },
+          "usage": {
+            "value": "give the name of the person who ships",
+            "meaning": "What the script says when it is run without a name"
+          },
+          "written": {
+            "value": "Written by trame ship from the graph, for the shipment",
+            "meaning": "What the script's first comment says"
+          },
+          "of": {
+            "value": "of",
+            "meaning": "Between the shipment and its project, in that comment"
+          },
+          "edit": {
+            "value": "Do not edit: edit the graph, then ship.",
+            "meaning": "The comment that says where to change it"
+          }
+        },
+        "deps": {
+          "standard": "shell.BashScripts",
+          "npm": "npm.Npm"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              {
+                "shipment": "Preview",
+                "title": "A preview",
+                "project": "apps/poselia",
+                "command": [
+                  "../../trame.sh",
+                  "ship",
+                  "Preview",
+                  "--by"
+                ],
+                "file": "apps/poselia/scripts/ship-preview.sh",
+                "toRoot": "../../..",
+                "installs": [
+                  ".",
+                  "std",
+                  "apps/poselia"
+                ],
+                "prepares": [
+                  {
+                    "dir": "std",
+                    "run": "npx playwright install --with-deps chromium"
+                  }
+                ],
+                "delivers": [
+                  {
+                    "artifact": "PageFile",
+                    "path": "apps/poselia/dist/poselia.html"
+                  }
+                ],
+                "evidence": "apps/poselia/evidence",
+                "deployed": {
+                  "command": [
+                    "../../trame.sh",
+                    "evidence"
+                  ],
+                  "verdict": "passed",
+                  "by": "--by",
+                  "url": "--url"
+                }
+              }
+            ],
+            "output": "#!/usr/bin/env bash\n# Written by trame ship from the graph, for the shipment \"A preview\" of apps/poselia\n# Do not edit: edit the graph, then ship.\nset -euo pipefail\nby=\"${1:?give the name of the person who ships}\"\ncd \"$(dirname \"$0\")/../../..\"\n(cd \".\" && npm ci)\n(cd \"std\" && npm ci)\n(cd \"apps/poselia\" && npm ci)\n(cd \"std\" && npx playwright install --with-deps chromium)\ncd \"apps/poselia\"\n../../trame.sh ship Preview --by \"$by\"\n"
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            {
+              "shipment": "Preview",
+              "title": "A preview",
+              "project": "apps/poselia",
+              "command": [
+                "../../trame.sh",
+                "ship",
+                "Preview",
+                "--by"
+              ],
+              "file": "apps/poselia/scripts/ship-preview.sh",
+              "toRoot": "../../..",
+              "installs": [
+                ".",
+                "std",
+                "apps/poselia"
+              ],
+              "prepares": [
+                {
+                  "dir": "std",
+                  "run": "npx playwright install --with-deps chromium"
+                }
+              ],
+              "delivers": [
+                {
+                  "artifact": "PageFile",
+                  "path": "apps/poselia/dist/poselia.html"
+                }
+              ],
+              "evidence": "apps/poselia/evidence",
+              "deployed": {
+                "command": [
+                  "../../trame.sh",
+                  "evidence"
+                ],
+                "verdict": "passed",
+                "by": "--by",
+                "url": "--url"
+              }
+            }
+          ],
+          "expected": "#!/usr/bin/env bash\n# Written by trame ship from the graph, for the shipment \"A preview\" of apps/poselia\n# Do not edit: edit the graph, then ship.\nset -euo pipefail\nby=\"${1:?give the name of the person who ships}\"\ncd \"$(dirname \"$0\")/../../..\"\n(cd \".\" && npm ci)\n(cd \"std\" && npm ci)\n(cd \"apps/poselia\" && npm ci)\n(cd \"std\" && npx playwright install --with-deps chromium)\ncd \"apps/poselia\"\n../../trame.sh ship Preview --by \"$by\"\n",
+          "actual": "#!/usr/bin/env bash\n# Written by trame ship from the graph, for the shipment \"A preview\" of apps/poselia\n# Do not edit: edit the graph, then ship.\nset -euo pipefail\nby=\"${1:?give the name of the person who ships}\"\ncd \"$(dirname \"$0\")/../../..\"\n(cd \".\" && npm ci)\n(cd \"std\" && npm ci)\n(cd \"apps/poselia\" && npm ci)\n(cd \"std\" && npx playwright install --with-deps chromium)\ncd \"apps/poselia\"\n../../trame.sh ship Preview --by \"$by\"\n",
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "yaml.Yaml",
+      "kind": "standard",
+      "title": "YAML",
+      "source": "src/yaml.ts:27",
+      "fields": {
+        "owner": "trame",
+        "source": "YAML Ain't Markup Language, version 1.2.2 (2021): § 5.4 line breaks, § 6.6 comments, § 8.1.2 literal style, § 8.2.1 block sequences, § 8.2.2 block mappings",
+        "url": "https://yaml.org/spec/1.2.2/",
+        "constants": {
+          "colon": {
+            "value": ":",
+            "meaning": "Ends the key of an entry of a mapping (§ 8.2.2)"
+          },
+          "space": {
+            "value": " ",
+            "meaning": "Separates a key's colon, a sequence's dash or a comment's mark from what follows"
+          },
+          "dash": {
+            "value": "-",
+            "meaning": "Opens an entry of a block sequence (§ 8.2.1)"
+          },
+          "literal": {
+            "value": "|",
+            "meaning": "Opens a literal block: the lines under it, deeper, are kept as they are (§ 8.1.2)"
+          },
+          "comment": {
+            "value": "#",
+            "meaning": "Opens a comment, to the end of the line (§ 6.6)"
+          },
+          "endOfLine": {
+            "value": "\n",
+            "meaning": "Ends a line: a line feed (§ 5.4)"
+          }
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "yaml.YamlDocument",
+      "kind": "syntax",
+      "title": "A YAML document",
+      "source": "src/yaml.ts:49",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "§ 8.2 Block collection styles; § 7.3.1 Double-quoted style",
+        "url": "https://yaml.org/spec/1.2.2/#82-block-collection-styles",
+        "constants": {
+          "indent": {
+            "value": "  ",
+            "meaning": "One level deeper: two spaces, as wide as a dash and its space, as GitHub's examples write it"
+          },
+          "top": {
+            "value": "",
+            "meaning": "No indentation: the keys of the document itself"
+          },
+          "plain": {
+            "value": "^[A-Za-z0-9][A-Za-z0-9._/@ -]*[A-Za-z0-9._/@-]$|^[A-Za-z0-9]$",
+            "meaning": "A text written without quotes: letters, digits, and marks that mean nothing to YAML inside a text, without a space at its end"
+          }
+        },
+        "deps": {
+          "standard": "yaml.Yaml"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              [
+                "Written from the graph"
+              ],
+              {
+                "map": [
+                  [
+                    "name",
+                    {
+                      "text": "A preview"
+                    }
+                  ],
+                  [
+                    "on",
+                    {
+                      "map": [
+                        [
+                          "workflow_dispatch",
+                          {}
+                        ]
+                      ]
+                    }
+                  ]
+                ]
+              }
+            ],
+            "output": "# Written from the graph\nname: A preview\non:\n  workflow_dispatch:\n"
+          },
+          {
+            "input": [
+              [],
+              {
+                "map": [
+                  [
+                    "steps",
+                    {
+                      "list": [
+                        {
+                          "map": [
+                            [
+                              "uses",
+                              {
+                                "text": "actions/setup-node@v4"
+                              }
+                            ],
+                            [
+                              "with",
+                              {
+                                "map": [
+                                  [
+                                    "node-version",
+                                    {
+                                      "number": 22
+                                    }
+                                  ]
+                                ]
+                              }
+                            ]
+                          ]
+                        },
+                        {
+                          "map": [
+                            [
+                              "run",
+                              {
+                                "text": "trame.sh ship Preview --by \"${{ github.actor }}\""
+                              }
+                            ],
+                            [
+                              "working-directory",
+                              {
+                                "text": "apps/poselia"
+                              }
+                            ]
+                          ]
+                        },
+                        {
+                          "map": [
+                            [
+                              "with",
+                              {
+                                "map": [
+                                  [
+                                    "path",
+                                    {
+                                      "lines": [
+                                        "apps/poselia/evidence",
+                                        "apps/poselia/dist/poselia.html"
+                                      ]
+                                    }
+                                  ]
+                                ]
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                ]
+              }
+            ],
+            "output": "steps:\n  - uses: actions/setup-node@v4\n    with:\n      node-version: 22\n  - run: \"trame.sh ship Preview --by \\\"${{ github.actor }}\\\"\"\n    working-directory: apps/poselia\n  - with:\n      path: |\n        apps/poselia/evidence\n        apps/poselia/dist/poselia.html\n"
+          },
+          {
+            "input": [
+              [],
+              {
+                "map": [
+                  [
+                    "branches",
+                    {
+                      "list": [
+                        {
+                          "text": "main"
+                        },
+                        {
+                          "text": "release/*"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    "if",
+                    {
+                      "text": "always()"
+                    }
+                  ]
+                ]
+              }
+            ],
+            "output": "branches:\n  - main\n  - \"release/*\"\nif: \"always()\"\n"
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            [
+              "Written from the graph"
+            ],
+            {
+              "map": [
+                [
+                  "name",
+                  {
+                    "text": "A preview"
+                  }
+                ],
+                [
+                  "on",
+                  {
+                    "map": [
+                      [
+                        "workflow_dispatch",
+                        {}
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            }
+          ],
+          "expected": "# Written from the graph\nname: A preview\non:\n  workflow_dispatch:\n",
+          "actual": "# Written from the graph\nname: A preview\non:\n  workflow_dispatch:\n",
+          "held": true
+        },
+        {
+          "input": [
+            [],
+            {
+              "map": [
+                [
+                  "steps",
+                  {
+                    "list": [
+                      {
+                        "map": [
+                          [
+                            "uses",
+                            {
+                              "text": "actions/setup-node@v4"
+                            }
+                          ],
+                          [
+                            "with",
+                            {
+                              "map": [
+                                [
+                                  "node-version",
+                                  {
+                                    "number": 22
+                                  }
+                                ]
+                              ]
+                            }
+                          ]
+                        ]
+                      },
+                      {
+                        "map": [
+                          [
+                            "run",
+                            {
+                              "text": "trame.sh ship Preview --by \"${{ github.actor }}\""
+                            }
+                          ],
+                          [
+                            "working-directory",
+                            {
+                              "text": "apps/poselia"
+                            }
+                          ]
+                        ]
+                      },
+                      {
+                        "map": [
+                          [
+                            "with",
+                            {
+                              "map": [
+                                [
+                                  "path",
+                                  {
+                                    "lines": [
+                                      "apps/poselia/evidence",
+                                      "apps/poselia/dist/poselia.html"
+                                    ]
+                                  }
+                                ]
+                              ]
+                            }
+                          ]
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              ]
+            }
+          ],
+          "expected": "steps:\n  - uses: actions/setup-node@v4\n    with:\n      node-version: 22\n  - run: \"trame.sh ship Preview --by \\\"${{ github.actor }}\\\"\"\n    working-directory: apps/poselia\n  - with:\n      path: |\n        apps/poselia/evidence\n        apps/poselia/dist/poselia.html\n",
+          "actual": "steps:\n  - uses: actions/setup-node@v4\n    with:\n      node-version: 22\n  - run: \"trame.sh ship Preview --by \\\"${{ github.actor }}\\\"\"\n    working-directory: apps/poselia\n  - with:\n      path: |\n        apps/poselia/evidence\n        apps/poselia/dist/poselia.html\n",
+          "held": true
+        },
+        {
+          "input": [
+            [],
+            {
+              "map": [
+                [
+                  "branches",
+                  {
+                    "list": [
+                      {
+                        "text": "main"
+                      },
+                      {
+                        "text": "release/*"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "if",
+                  {
+                    "text": "always()"
+                  }
+                ]
+              ]
+            }
+          ],
+          "expected": "branches:\n  - main\n  - \"release/*\"\nif: \"always()\"\n",
+          "actual": "branches:\n  - main\n  - \"release/*\"\nif: \"always()\"\n",
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "github.GitHubActions",
+      "to": "product.OneWriterPerPlace",
+      "kind": "serves"
+    },
+    {
+      "from": "github.GitHubWorkflow",
+      "to": "github.GitHubActions",
+      "kind": "standard"
+    },
+    {
+      "from": "github.GitHubWorkflow",
+      "to": "github.GitHubActions",
+      "kind": "deps"
+    },
+    {
+      "from": "github.GitHubWorkflow",
+      "to": "yaml.YamlDocument",
+      "kind": "deps"
+    },
+    {
+      "from": "github.GitHubWorkflow",
+      "to": "npm.Npm",
+      "kind": "deps"
+    },
+    {
+      "from": "github.GitHubWorkflow",
+      "to": "github.PinnedActions",
+      "kind": "deps"
+    },
+    {
+      "from": "npm.Npm",
+      "to": "product.OneWriterPerPlace",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_1_0",
+      "to": "product.OneWriterPerPlace",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_1_0",
+      "to": "product.RunsElsewhere",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_2_0",
+      "to": "product.OneWriterPerPlace",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_2_0",
+      "to": "product.RunsElsewhere",
+      "kind": "serves"
+    },
+    {
+      "from": "shell.BashScripts",
+      "to": "product.OneWriterPerPlace",
+      "kind": "serves"
+    },
+    {
+      "from": "shell.ShellScript",
+      "to": "shell.BashScripts",
+      "kind": "standard"
+    },
+    {
+      "from": "shell.ShellScript",
+      "to": "shell.BashScripts",
+      "kind": "deps"
+    },
+    {
+      "from": "shell.ShellScript",
+      "to": "npm.Npm",
+      "kind": "deps"
+    },
+    {
+      "from": "yaml.Yaml",
+      "to": "product.OneWriterPerPlace",
+      "kind": "serves"
+    },
+    {
+      "from": "yaml.YamlDocument",
+      "to": "yaml.Yaml",
+      "kind": "standard"
+    },
+    {
+      "from": "yaml.YamlDocument",
+      "to": "yaml.Yaml",
+      "kind": "deps"
+    }
+  ],
+  "resolutions": [],
+  "diagnostics": []
+}

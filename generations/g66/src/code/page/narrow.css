@@ -1,0 +1,9 @@
+/* On a narrow screen, the navigator stacks over the reading column, and the documents are reached by a picker.
+   The page writes these rules in a media rule, under the width the "Narrow screen" decision gives. */
+
+.app { grid-template-columns: var(--track-fill); gap: var(--space-4xl); padding-block: var(--space-3xl) var(--page-inset-bottom-narrow); }
+.side { position: static; max-height: none; overflow: visible; padding-right: var(--space-none); }
+.nav { display: none; }
+.mobile-pick { display: block; }
+.doc h1 { font-size: var(--text-h1-narrow); }
+.explorer-find { min-width: var(--space-none); }

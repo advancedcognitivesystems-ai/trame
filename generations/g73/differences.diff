@@ -1,0 +1,72 @@
+diff -ru /tmp/URNf4g/reference/trame-auto/docs/pipelines.md /tmp/URNf4g/candidate/trame-auto/docs/pipelines.md
+--- /tmp/URNf4g/reference/trame-auto/docs/pipelines.md	2026-10-29 21:08:54.853707290 +0100
++++ /tmp/URNf4g/candidate/trame-auto/docs/pipelines.md	2026-10-29 21:16:32.698599893 +0100
+@@ -14,10 +14,10 @@
+ flowchart TB
+   n0["The candidate engine<br/><small>Artefact</small>"]:::unknown
+   n1["Trame on the command line<br/><small>Component</small>"]:::neutral
+-  n2["The graph page<br/><small>Artefact</small>"]:::unknown
+-  n3["Export the page<br/><small>Entry point</small>"]:::held
+-  n4["The page's program<br/><small>Artefact</small>"]:::unknown
+-  n5["The page in a browser<br/><small>Component</small>"]:::neutral
++  n2["The page's program<br/><small>Artefact</small>"]:::unknown
++  n3["The page in a browser<br/><small>Component</small>"]:::neutral
++  n4["The graph page<br/><small>Artefact</small>"]:::unknown
++  n5["Export the page<br/><small>Entry point</small>"]:::held
+   n6["The candidate plays the laws<br/><small>Check</small>"]:::unknown
+   n7["Test the laws<br/><small>Entry point</small>"]:::held
+   n8["The candidate runs on the machine<br/><small>Check</small>"]:::unknown
+@@ -121,12 +121,12 @@
+   n78 -->|Depends on| n9
+   n83 -->|Verifies| n7
+   n83 -->|Depends on| n7
+-  n76 -->|Verifies| n3
+-  n76 -->|Depends on| n3
++  n76 -->|Verifies| n5
++  n76 -->|Depends on| n5
+   n100 -->|Part of| n1
+   n100 -->|Depends on| n86
+   n9 -->|Part of| n1
+-  n3 -->|Part of| n1
++  n5 -->|Part of| n1
+   n7 -->|Part of| n1
+   n98 -->|Refines| n97
+   n12 -->|Applied by| n1
+@@ -154,19 +154,19 @@
+   n8 -->|Checks| n0
+   n8 -->|Run by| n9
+   n0 -->|Produced by| n1
+-  n2 -->|Produced by| n3
+-  n2 -->|Carries| n5
+-  n10 -->|Checks| n2
++  n4 -->|Produced by| n5
++  n4 -->|Carries| n3
++  n10 -->|Checks| n4
+   n10 -->|Run by| n11
+   n101 -->|Ships| n0
+-  n101 -->|Ships| n4
+   n101 -->|Ships| n2
++  n101 -->|Ships| n4
+   n101 -->|Deployed by| n100
+   n85 -->|Verifies| n11
+   n85 -->|Depends on| n11
+-  n85 -->|Depends on| n2
+-  n11 -->|Depends on| n2
+-  n4 -->|Produced by| n5
++  n85 -->|Depends on| n4
++  n11 -->|Depends on| n4
++  n2 -->|Produced by| n3
+   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
+   classDef blocked fill:#fbf0d9,stroke:#9a6200,color:#17202a
+   classDef violated fill:#f9e3e1,stroke:#ad2a22,color:#17202a
+@@ -179,8 +179,8 @@
+ |  | Stage | Step | Run by | Why | Status | Latest evidence |
+ |---|---|---|---|---|---|---|
+ | 1 | produce | [The candidate engine](sdlc.md#EngineCandidate) · `out/local/trame-cli.ts` | [Trame on the command line](architecture.md#TrameCli) | — | **unknown** | 29 October 2026 by claude  |
+-| 2 | produce | [The graph page](sdlc.md#GraphPage) · `trame-page.html` | [Export the page](commands.md#Export) | — | **unknown** | 29 October 2026 by claude  |
+-| 3 | produce | [The page's program](sdlc.md#PageProgram) · `out/browser/page-app.ts` | [The page in a browser](architecture.md#PageApp) | — | **unknown** | 29 October 2026 by claude  |
++| 2 | produce | [The page's program](sdlc.md#PageProgram) · `out/browser/page-app.ts` | [The page in a browser](architecture.md#PageApp) | — | **unknown** | 29 October 2026 by claude  |
++| 3 | produce | [The graph page](sdlc.md#GraphPage) · `trame-page.html` | [Export the page](commands.md#Export) | — | **unknown** | 29 October 2026 by claude  |
+ | 4 | check | [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws) | [Test the laws](commands.md#TestKinds), signed by [Trame's maintainers](sdlc.md#Maintainers) | — | **unknown** | passed, 29 October 2026 by claude  |
+ | 5 | check | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | [Ask the machine](commands.md#Doctor), signed by [Trame's maintainers](sdlc.md#Maintainers) | — | **unknown** | passed, 29 October 2026 by claude  |
+ | 6 | check | [The graph page opens](sdlc.md#GraphPageOpens) | [Open the graph page](sdlc.md#OpenTheGraphPage), signed by [Trame's maintainers](sdlc.md#Maintainers) | — | **unknown** | passed, 29 October 2026 by claude  |

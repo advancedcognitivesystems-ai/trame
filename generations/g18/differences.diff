@@ -1,0 +1,110 @@
+diff -ru self0/docs/algebra.md self1/docs/algebra.md
+--- self0/docs/algebra.md	2026-10-19 10:35:22.495387730 +0200
++++ self1/docs/algebra.md	2026-10-19 10:36:21.427855879 +0200
+@@ -89,4 +89,4 @@
+ - Owner: trame
+ - Body: `./code/algebra/texts.ts` (typescript)
+ - Used by: [Assembler](commands.md#Assembler), [Preparation](commands.md#Preparation), [Publish](commands.md#Publish), [View by its name](commands.md#ViewByName), [Assembly](engine.md#Assembly), [Compilation API](engine.md#CompilationApi), [Compiler](engine.md#Compiler), [Date bundle](engine.md#DateBundle), [trame dev server](engine.md#DevServer), [TypeScript driver](engine.md#DriverTypeScript), [Graph](engine.md#GraphApi), [Laws](engine.md#Laws), [Page](engine.md#Page), [Payload](engine.md#PayloadBuilder), [Static reading](engine.md#StaticAnalysis), [Wiring](engine.md#Wiring), [Anchor](markdown.md#Anchor), [Code span](markdown.md#CodeSpan), [Start tag](markdown.md#HtmlStartTag), [Relative reference](markdown.md#RelativeReference), [Trame's prelude](platform.md#TramePrelude), [Common rendering](rendering.md#Common), [Markdown rendering](rendering.md#Markdown), [Text rendering](rendering.md#Text)
+-- Used by: [Trame references](conventions.md#ReferenceSyntax), [Blank line](markdown.md#BlankLine)
++- Refined by: [Trame references](conventions.md#ReferenceSyntax), [Blank line](markdown.md#BlankLine)
+diff -ru self0/docs/conventions.md self1/docs/conventions.md
+--- self0/docs/conventions.md	2026-10-19 10:35:22.494560206 +0200
++++ self1/docs/conventions.md	2026-10-19 10:36:21.426927284 +0200
+@@ -19,10 +19,10 @@
+ | Constant | Value | Meaning |
+ |---|---|---|
+ | `separator` | `.` | Separates the module from the identifier, and the steps of a path in a field |
+-| `wholeNode` | `""` | The empty path: the whole node, not one of its fields |
++| `wholeNode` | `""` | The empty path: the whole node, not one of its fields (refines Texts.empty) |
+ 
+ - Maintained by: trame
+-- Depends on: [Texts](algebra.md#Texts)
++- Refines: [Texts](algebra.md#Texts)
+ - Used by: [Graph](engine.md#GraphApi), [References](engine.md#References)
+ 
+ ## Decisions
+diff -ru self0/docs/layers.md self1/docs/layers.md
+--- self0/docs/layers.md	2026-10-19 10:35:22.495292569 +0200
++++ self1/docs/layers.md	2026-10-19 10:36:21.427736710 +0200
+@@ -799,8 +799,8 @@
+   n166 -->|Depends on| n123
+   n13 -.->|Depends on| n8
+   n19 -.->|Depends on| n17
+-  n45 -.->|Depends on| n2
+-  n75 -.->|Depends on| n2
++  n45 -.->|Refines| n2
++  n75 -.->|Refines| n2
+   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
+   classDef blocked fill:#fbf0d9,stroke:#9a6200,color:#17202a
+   classDef violated fill:#f9e3e1,stroke:#ad2a22,color:#17202a
+diff -ru self0/docs/markdown.md self1/docs/markdown.md
+--- self0/docs/markdown.md	2026-10-19 10:35:22.494656450 +0200
++++ self1/docs/markdown.md	2026-10-19 10:36:21.427014437 +0200
+@@ -118,7 +118,7 @@
+ - Parameters: `standard` ← [CommonMark](#CommonMark)
+ - Body: inline, in the declaration
+ - Defined by: [CommonMark](#CommonMark)
+-- Depends on: [Texts](algebra.md#Texts)
++- Refines: [Texts](algebra.md#Texts)
+ - Used by: [Sequence of blocks](#Blocks), [Collapsible block](#Details)
+ 
+ <a id="BlockQuote"></a>
+diff -ru self0/docs/snapshot.md self1/docs/snapshot.md
+--- self0/docs/snapshot.md	2026-10-19 10:35:22.495073469 +0200
++++ self1/docs/snapshot.md	2026-10-19 10:36:21.427383868 +0200
+@@ -361,7 +361,7 @@
+ - Maintained by: trame
+ - Source: Trame, the prelude (trame/kernel.ts: refOf, getPath)
+ - Constants: { separator: { value: ., meaning: Separates the module from the identifier, and the steps of a path in a field }, wholeNode: { value: , meaning: The empty path: the whole node, not one of its fields, refines: { node: algebra.Texts, name: empty } } }
+-- Depends on: Texts
++- Refines: Texts
+ 
+ ### Default rank
+ 
+@@ -692,7 +692,8 @@
+ - Parameters: { standard: markdown.CommonMark }
+ - Examples: { input: # Title, Text, More text, output: # Title, , Text, More text,  }, { input: a, false, b, output: a, , b,  }
+ - Defined by: CommonMark
+-- Depends on: CommonMark, Texts
++- Depends on: CommonMark
++- Refines: Texts
+ 
+ ### Block quote
+ 
+diff -ru self0/graph.json self1/graph.json
+--- self0/graph.json	2026-10-19 10:35:22.495427769 +0200
++++ self1/graph.json	2026-10-19 10:36:21.427902266 +0200
+@@ -8339,13 +8339,13 @@
+     {
+       "from": "conventions.ReferenceSyntax",
+       "to": "algebra.Texts",
+-      "kind": "uses",
++      "kind": "refines",
+       "inferred": true
+     },
+     {
+       "from": "markdown.BlankLine",
+       "to": "algebra.Texts",
+-      "kind": "uses",
++      "kind": "refines",
+       "inferred": true
+     }
+   ],
+diff -ru self0/snapshot.json self1/snapshot.json
+--- self0/snapshot.json	2026-10-19 10:35:22.495550428 +0200
++++ self1/snapshot.json	2026-10-19 10:36:21.428030058 +0200
+@@ -7074,12 +7074,12 @@
+     {
+       "from": "conventions.ReferenceSyntax",
+       "to": "algebra.Texts",
+-      "kind": "uses"
++      "kind": "refines"
+     },
+     {
+       "from": "markdown.BlankLine",
+       "to": "algebra.Texts",
+-      "kind": "uses"
++      "kind": "refines"
+     }
+   ],
+   "open": []
