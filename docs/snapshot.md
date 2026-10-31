@@ -104,13 +104,6 @@ Decision · `Typography`
 
 ## Trame · Architecture
 
-### Effects
-
-Vocabulary · `Effects`
-
-- Owner: trame
-- Words: { read: Reads a state (files, a database), write: Changes a state, execution: Runs loaded code, process: Starts or controls processes, terminal: Reads the arguments, writes on the outputs, time: Reads the time, or waits, network: Talks to another machine, display: Shows a page to a person, and hears what they do on it, keeps: Keeps what was computed, to give it back the same: what it writes, only it reads }
-
 ### The page in a browser
 
 Component · `PageApp`
@@ -142,7 +135,7 @@ Port · `Bundler`
 Port · `Clock`
 
 - Owner: trame
-- Declared effects: time
+- Declared effects: time, read
 
 ### Command line
 
@@ -191,7 +184,7 @@ Port · `FileWriting`
 Port · `GraphFeed`
 
 - Owner: trame
-- Declared effects: { packed: read, live: read, follow: network }
+- Declared effects: { packed: display, live: display, follow: network, asynchronous }
 
 ### Hashing
 
@@ -261,14 +254,14 @@ Port · `Paths`
 Port · `Prelude`
 
 - Owner: trame
-- Declared effects: 
+- Declared effects: read
 
 ### Process
 
 Port · `Process`
 
 - Owner: trame
-- Declared effects: process
+- Declared effects: { cwd: read, program: read, terminal, env: read, relaunch: process, read, terminal, runTs: process, read, onSignal: process }
 
 ### Process log
 
@@ -282,7 +275,7 @@ Port · `ProcessLog`
 Port · `Programs`
 
 - Owner: trame
-- Declared effects: process, execution
+- Declared effects: process, execution, read
 
 ### Page resources
 
@@ -317,14 +310,14 @@ Port · `Signatures`
 Port · `SyntaxTrees`
 
 - Owner: trame
-- Declared effects: read
+- Declared effects: read, execution
 
 ### Terminal
 
 Port · `Terminal`
 
 - Owner: trame
-- Declared effects: terminal
+- Declared effects: { args: terminal, write: terminal, writeRaw: terminal, error: terminal, exit: process }
 
 ### Terminal log
 
@@ -359,7 +352,6 @@ Port · `WriteLog`
 Architecture rule · `KnownEffects` · **held**
 
 - Owner: trame
-- Depends on: Effects
 
 ### Only commands write
 
@@ -1020,7 +1012,7 @@ Standard · `FrozenApi`
 
 - Maintained by: trame
 - Source: Trame, the prelude (trame/internal.ts: frozen)
-- Constants: { name: { value: frozen, meaning: What the prelude exports for frozen programs }, value: { value: value, meaning: The value of a node, read from its declaration (a rule) }, body: { value: body, meaning: The body of a node written inline in its declaration }, data: { value: data, meaning: Sets the data of a node as in force at the date of the assembly, for the rules that read it }, start: { value: start, meaning: Starts the component with its dependencies and its entry points }, title: { value: title, meaning: The title of an entry point, given to start }, fields: { value: fields, meaning: The simple fields of an entry point, which the kind of the component reads }, entry: { value: value, meaning: What an entry point is, once built }, address: { value: address, meaning: What start gives back when the component answers somewhere }, code: { value: code, meaning: What start gives back when the component ends with an exit code } }
+- Constants: { name: { value: frozen, meaning: What the prelude exports for frozen programs }, value: { value: value, meaning: The value of a node, read from its declaration (a rule) }, body: { value: body, meaning: The body of a node written inline in its declaration }, data: { value: data, meaning: Sets the data of a node as in force at the date of the assembly, for the rules that read it }, start: { value: start, meaning: Starts the component with its dependencies and its entry points }, limited: { value: limited, meaning: A capability: a realization limited to the methods its consumer uses (since g83) }, title: { value: title, meaning: The title of an entry point, given to start }, fields: { value: fields, meaning: The simple fields of an entry point, which the kind of the component reads }, entry: { value: value, meaning: What an entry point is, once built }, address: { value: address, meaning: What start gives back when the component answers somewhere }, code: { value: code, meaning: What start gives back when the component ends with an exit code } }
 
 ### Trame references
 
@@ -1261,7 +1253,7 @@ Function · `CompilationApi` · **held**
 Function · `Compiler` · **held**
 
 - Owner: trame
-- Parameters: { encodings: std/system.NodeEncodings, specifiers: std/system.NodeModuleSpecifiers, values: std/algebra.ValueTypes, layout: conventions.Layout, severityOrder: (rule), cycles: engine.Cycles, references: engine.References, positions: engine.Positions, loader: architecture.ModuleLoader, reading: architecture.FileReading, paths: architecture.Paths, analysis: engine.StaticAnalysis, project: engine.Project, graph: engine.GraphApi, wiring: engine.Wiring, drivers: languages.Drivers, prelude: architecture.Prelude, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, messages: messages.CompilerMessages, fingerprints: engine.Fingerprints, signatures: architecture.Signatures, engines: engine.EngineFingerprint, runs: architecture.KeptRuns }
+- Parameters: { encodings: std/system.NodeEncodings, specifiers: std/system.NodeModuleSpecifiers, values: std/algebra.ValueTypes, layout: conventions.Layout, severityOrder: (rule), cycles: engine.Cycles, references: engine.References, positions: engine.Positions, loader: architecture.ModuleLoader, reading: architecture.FileReading, paths: architecture.Paths, analysis: engine.StaticAnalysis, project: engine.Project, graph: engine.GraphApi, wiring: engine.Wiring, drivers: languages.Drivers, prelude: architecture.Prelude, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, messages: messages.CompilerMessages, fingerprints: engine.Fingerprints, signatures: architecture.Signatures, engines: engine.EngineFingerprint, runs: architecture.KeptRuns, platform: std/effects.PlatformEffects }
 - Serves: A specification that runs
 - Depends on: Project layout, Sort problems by severity, Cycles, References, Positions, Module loader, File reading, Paths, Static reading, Project, Graph, Wiring, Drivers, Prelude, Messages of the compiler, Fingerprints, Signatures, The fingerprint of an engine, Runs kept
 
@@ -1422,9 +1414,9 @@ Function · `ShipmentPipeline` · **held**
 Function · `StaticAnalysis` · **held**
 
 - Owner: trame
-- Parameters: { specifiers: std/system.NodeModuleSpecifiers, syntax: typescript.TypeScriptSyntax, references: engine.References, file: std/text.TextFile, options: engine.TypeScriptOptions, ts: architecture.TypeScriptCompiler, kept: architecture.KeptResults, runs: architecture.RunStore, hashing: architecture.Hashing, sha256: std/algorithms.Sha256, encodings: std/system.NodeEncodings, paths: architecture.Paths, positions: engine.Positions, docComment: conventions.DocComment, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, messages: messages.CompilerMessages, textAsCode: std/ecmascript.TextAsCode }
+- Parameters: { specifiers: std/system.NodeModuleSpecifiers, syntax: typescript.TypeScriptSyntax, references: engine.References, file: std/text.TextFile, options: engine.TypeScriptOptions, ts: architecture.TypeScriptCompiler, kept: architecture.KeptResults, runs: architecture.RunStore, hashing: architecture.Hashing, sha256: std/algorithms.Sha256, encodings: std/system.NodeEncodings, paths: architecture.Paths, positions: engine.Positions, docComment: conventions.DocComment, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, messages: messages.CompilerMessages, textAsCode: std/ecmascript.TextAsCode, libraries: typescript.TypeScriptLibraries, prelude: conventions.PreludeApi }
 - Serves: A specification that runs
-- Depends on: The syntax of the programs Trame writes, References, Options of the static reading, TypeScript compiler, Results kept, Where runs are kept, Hashing, Paths, Positions, Documentation comment, Messages of the compiler
+- Depends on: The syntax of the programs Trame writes, References, Options of the static reading, TypeScript compiler, Results kept, Where runs are kept, Hashing, Paths, Positions, Documentation comment, Messages of the compiler, TypeScript's libraries of types, The prelude's public API
 
 ### Views
 
@@ -2740,6 +2732,7 @@ Package · `CssGrammar` · **held**
 - Name: tree-sitter-css
 - Version: 0.25.0
 - In the registry: https://www.npmjs.com/package/tree-sitter-css
+- What it may do: 
 
 ### esbuild
 
@@ -2749,6 +2742,7 @@ Package · `EsbuildPackage` · **held**
 - Name: esbuild
 - Version: 0.28.2
 - In the registry: https://www.npmjs.com/package/esbuild
+- What it may do: read, write, process
 
 ### Grammar of HCL
 
@@ -2758,6 +2752,7 @@ Package · `HclGrammar` · **held**
 - Name: @tree-sitter-grammars/tree-sitter-hcl
 - Version: 1.2.0
 - In the registry: https://www.npmjs.com/package/@tree-sitter-grammars/tree-sitter-hcl
+- What it may do: 
 
 ### Grammar of HTML
 
@@ -2767,6 +2762,7 @@ Package · `HtmlGrammar` · **held**
 - Name: tree-sitter-html
 - Version: 0.23.2
 - In the registry: https://www.npmjs.com/package/tree-sitter-html
+- What it may do: 
 
 ### Types of Node.js
 
@@ -2778,6 +2774,7 @@ Package · `NodeTypes` · **held**
 - In the registry: https://www.npmjs.com/package/@types/node
 - Held below: 23.0.0
 - Because: the declarations follow the Node.js that runs the engine, version 22: those of a later Node would let the code use what this one does not have
+- What it may do: 
 
 ### tsx
 
@@ -2787,6 +2784,7 @@ Package · `TsxPackage` · **held**
 - Name: tsx
 - Version: 4.23.15
 - In the registry: https://www.npmjs.com/package/tsx
+- What it may do: read, execution
 
 ### Grammar of TypeScript
 
@@ -2796,6 +2794,7 @@ Package · `TypeScriptGrammar` · **held**
 - Name: tree-sitter-typescript
 - Version: 0.23.2
 - In the registry: https://www.npmjs.com/package/tree-sitter-typescript
+- What it may do: 
 
 ### TypeScript
 
@@ -2807,6 +2806,7 @@ Package · `TypeScriptPackage` · **held**
 - In the registry: https://www.npmjs.com/package/typescript
 - Held below: 7.0.0
 - Because: TypeScript 7 is the compiler rewritten in Go: its package no longer gives the JavaScript API the engine reads the declarations with (a program, its type checker, its comments), only an unstable one
+- What it may do: read
 
 ### web-tree-sitter
 
@@ -2816,6 +2816,7 @@ Package · `WebTreeSitterPackage` · **held**
 - Name: web-tree-sitter
 - Version: 0.27.1
 - In the registry: https://www.npmjs.com/package/web-tree-sitter
+- What it may do: read, execution
 
 ## Trame · The page
 
@@ -5091,6 +5092,20 @@ Release · `G82`
 - Releases: Trame on the command line
 - Assembled by: Generation 81
 
+### Generation 83
+
+Release · `G83`
+
+- Released by: trame
+- Version: g83
+- Released on: 2026-10-31
+- What changes: A2, second half: an implementation is held to what its body reaches (std's PlatformEffects, the packages' declared effects); wiring hands each node a capability limited to the methods it calls
+- Fingerprint: e5498c43cb460e7d
+- Language: shared
+- Language archived: d03618584d3ed6d9
+- Releases: Trame on the command line
+- Assembled by: Generation 82
+
 ### Generation 9
 
 Release · `G9`
@@ -6071,6 +6086,16 @@ Decision · `TerminalText`
 - Rejected: Markdown, a terminal does not render it: its marks would be read as they are; Colours and control sequences, an output is not always a terminal (a file, a pipe, a test): the text must say everything without them, and it is compared line by line from one generation to the next; Tabs, their width depends on the terminal: columns would no longer line up
 
 ## Trame · TypeScript
+
+### TypeScript's libraries of types
+
+Standard · `TypeScriptLibraries`
+
+- Maintained by: trame
+- Source: TypeScript, the lib option and the declaration files under src/lib of the compiler
+- Address: https://www.typescriptlang.org/tsconfig/#lib
+- Constants: { ecmaScript: { value: lib.es, meaning: How the file of an ECMAScript library of types starts its name } }
+- Serves: A specification that runs
 
 ### The syntax of the programs Trame writes
 

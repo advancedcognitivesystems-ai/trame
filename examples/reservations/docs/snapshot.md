@@ -119,7 +119,7 @@ Port · `HttpExposure`
 Port · `Payment`
 
 - Owner: karim
-- Declared effects: network, third-party, asynchronous
+- Declared effects: network, third-party, asynchronous, read
 
 ### Payment log
 

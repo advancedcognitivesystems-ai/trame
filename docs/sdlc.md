@@ -87,7 +87,7 @@ Triggered by `command open-graph-page`
 - Owner: trame
 - Parameters: `browser` ← [Headless browser](../std/docs/tooling.md#HeadlessBrowser) · `page` ← [The graph page](#GraphPage) · `language` ← [Language](messages.md#Language) · `selectors` ← [What the graph page is asked](#GraphPageSelectors) · `opening` ← [How the graph page is opened](#GraphPageOpening) · `say` ← [What the programs of Trame's SDLC say](#SdlcWords) · `exit` ← [Exit status](../std/docs/system.md#ExitStatus) · `counts` ← [Counts](../std/docs/algebra.md#Counts)
 - Body: `./code/sdlc/open-the-graph-page.ts` (typescript)
-- Effects: display, process, time
+- Effects: asynchronous, display, network, process, time
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Part of: [Trame's SDLC](#TrameSdlc)
 - Runs: [The graph page opens](#GraphPageOpens)
@@ -193,7 +193,7 @@ In memory, the browser shows a page with its documents, a document, its nodes an
 - Owner: trame
 - Parameters: `open` ← [Open the graph page](#OpenTheGraphPage) · `script` ← [Browser script](../std/docs/tooling.md#BrowserScripted) · `page` ← [The graph page](#GraphPage) · `selectors` ← [What the graph page is asked](#GraphPageSelectors) · `exit` ← [Exit status](../std/docs/system.md#ExitStatus) · `say` ← [What the programs of Trame's SDLC say](#SdlcWords) · `data` ← [What the scenario of the graph page shows](#GraphPageScenarioData) · `counts` ← [Counts](../std/docs/algebra.md#Counts) · `messages` ← [Messages of the scenarios](messages.md#ScenarioMessages)
 - Body: inline, in the declaration
-- Effects: display, process, time
+- Effects: asynchronous, display, network, process, time
 - Verifies: [Open the graph page](#OpenTheGraphPage), [What the graph page is asked](#GraphPageSelectors), [A browser kept in memory](../std/docs/tooling.md#BrowserInMemory)
 - In: [Test](architecture.md#Test)
 
@@ -224,7 +224,7 @@ The program of Trame's command line, assembled from the graph for a machine: wha
 
 - Path: `out/local/trame-cli.ts`
 
-Built 31 October 2026 by claude, fingerprint `61f7c8cc653befd28e3d9b826ffcc099300eea37f9db866e6196ffc8a922022f`.
+Built 31 October 2026 by claude, fingerprint `9b5af5ca85987082a9d6cf4572f2d3a25c850775ec2c085df084acc57fe15507`.
 
 - Owner: trame
 - Produced by: [Trame on the command line](architecture.md#TrameCli)
@@ -242,7 +242,7 @@ The page trame export writes of Trame's graph, which a browser opens as it is: i
 - Path: `trame-page.html`
 - Media type: `text/html; charset=utf-8`
 
-Built 31 October 2026 by claude, fingerprint `4423a976822395aa0f5a875f893f26f1de9eb122f60eae8fa59967a547f4bae4`.
+Built 31 October 2026 by claude, fingerprint `9ef32b31130c3177d3f2d023476dec7d5ebe33433e46c0d3b02c7e09f73bff80`.
 
 - Owner: trame
 - Produced by: [Export the page](commands.md#Export)
@@ -261,7 +261,7 @@ The component that shows the graph page, assembled for the browser where the eng
 
 - Path: `out/browser/page-app.ts`
 
-Built 31 October 2026 by claude, fingerprint `c0e6a164dfc5d7d8485e9926a8f52a2d63e6e3915f81e88bae68a479f1b2b98b`.
+Built 31 October 2026 by claude, fingerprint `5f98419d36977d441d3556648c94755743e8ecad5ecf826c5c14c7007dc33578`.
 
 - Owner: trame
 - Produced by: [The page in a browser](architecture.md#PageApp)
@@ -344,6 +344,7 @@ The engine as the graph describes it now, frozen into the next generation and pi
 | [Kinds and views: the vocabulary, as reviewed files](principles.md#VocabularyLayer) | **held** | [The decisions of the architecture hold](#ArchitectureApplied), for [Project](engine.md#Project) |
 | [The punctuation is the language's](documents.md#PunctuationOfTheLanguage) | **held** | [The decisions of the architecture hold](#ArchitectureApplied), for [Language](messages.md#Language) |
 | [A catalog counts in its language](messages.md#CountsInTheLanguage) | **held** | [The decisions of the architecture hold](#ArchitectureApplied), for [Lists](messages.md#Lists) |
+| [The prelude: the runtime of the language](principles.md#PreludeLayer) | **held** | [The decisions of the architecture hold](#ArchitectureApplied), for [The prelude's public API](conventions.md#PreludeApi) |
 | [A key is made of its parts](principles.md#KeysOfParts) | **held** | [The decisions of the architecture hold](#ArchitectureApplied), for [Static reading](engine.md#StaticAnalysis) |
 | [The data a product carries is a dataset](principles.md#DataAsDatasets) | **held** | [The decisions of the architecture hold](#ArchitectureApplied), for [Fingerprints](engine.md#Fingerprints) |
 | [The language receives the graph's values](engine.md#TheLanguageReceivesTheGraph) | **held** | [The decisions of the architecture hold](#ArchitectureApplied), for [Graph](engine.md#GraphApi) |
@@ -352,7 +353,6 @@ The engine as the graph describes it now, frozen into the next generation and pi
 | [A literal in a kind or a view is an error](principles.md#NoLiteralInTheLanguage) | **held** | [The decisions of the architecture hold](#ArchitectureApplied), for [Syntax reader](syntax.md#SyntaxReader) |
 | [tree-sitter says what it keeps aside](syntax.md#PredicatesAsTreeSitterReadsThem) | **held** | [The decisions of the architecture hold](#ArchitectureApplied), for [Syntax reader](syntax.md#SyntaxReader) |
 | [Every language is read alike, with tree-sitter](syntax.md#ReadLanguagesAlike) | **held** | [The decisions of the architecture hold](#ArchitectureApplied), for [Syntax reader](syntax.md#SyntaxReader) |
-| [The prelude: the runtime of the language](principles.md#PreludeLayer) | **held** | [The decisions of the architecture hold](#ArchitectureApplied), for [The prelude's public API](conventions.md#PreludeApi) |
 | [Code holds no hidden decision](principles.md#NoHiddenDecision) | **held** | [The decisions of the architecture hold](#ArchitectureApplied), for [Checks of a body](syntax.md#BodyChecks) |
 | [What a writer writes is read back before it is written](languages.md#ReadBackWhatIsWritten) | **held** | [The decisions of the architecture hold](#ArchitectureApplied), for [Drivers](languages.md#Drivers) |
 | [An undecided value blocks; it does not crash](principles.md#UndecidedBlocks) | **held** | [The decisions of the architecture hold](#ArchitectureApplied), for [Wiring](engine.md#Wiring) |
@@ -427,7 +427,7 @@ The engine as the graph describes it now, frozen into the next generation and pi
 | [The resolution does not depend on the order](laws.md#OrderFree) | **held** | [The language serves what it says](#LanguageServed), for [Complete declaration](laws.md#CompleteDeclaration) |
 | [Without evidence, the status is unknown](laws.md#UnknownWithoutEvidence) | **held** | [The language serves what it says](#LanguageServed), for [Complete declaration](laws.md#CompleteDeclaration) |
 
-Shipped 31 October 2026 by claude; its dossier: `evidence/shipments/NextGeneration-2026-10-31-2bb3dc8b.json`.
+Shipped 31 October 2026 by claude; its dossier: `evidence/shipments/NextGeneration-2026-10-31-e351297d.json`.
 
 - Owner: trame
 - Ships: [The candidate engine](#EngineCandidate), [The page's program](#PageProgram), [The graph page](#GraphPage)

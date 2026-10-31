@@ -16,7 +16,7 @@ import { Stage } from "./architecture"
  * three.js
  * Draws the scene in WebGL: the mannequin's segments and joints, the mat, the light and the shadows.
  */
-export const ThreePackage = pkg({ owner: "ghalaax", packageName: "three", version: "0.186.0", url: "https://www.npmjs.com/package/three" })
+export const ThreePackage = pkg({ owner: "ghalaax", packageName: "three", version: "0.186.0", url: "https://www.npmjs.com/package/three", declaredEffects: ["display"] })
 
 /**
  * three.js, its types

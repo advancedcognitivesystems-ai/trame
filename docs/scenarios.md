@@ -142,7 +142,7 @@ The compiler assembled from this graph loads the reservations project (its files
 - Owner: trame
 - Parameters: `compiler` ← [Compiler](engine.md#Compiler) · `currentProcess` ← [Process](architecture.md#Process) · `clock` ← [Clock](architecture.md#Clock) · `shape` ← [Shape of the example](#ExampleShape) · `counts` ← [Counts](../std/docs/algebra.md#Counts) · `messages` ← [Messages of the scenarios](messages.md#ScenarioMessages)
 - Body: inline, in the declaration
-- Effects: execution, keeps, process, read, time
+- Effects: execution, keeps, read, time
 - Verifies: [Compiler](engine.md#Compiler), [Project](engine.md#Project), [Static reading](engine.md#StaticAnalysis), [Wiring](engine.md#Wiring), [Graph](engine.md#GraphApi), [TypeScript compiler](platform.md#RealTypeScript), [tsx loader](platform.md#TsxLoader), [Trame's prelude](platform.md#TramePrelude), [Files in memory, over the disk](platform.md#MemoryFiles), [Node paths](platform.md#NodePaths), [Example process](platform.md#ExampleProcess), [Results kept in the process](platform.md#ResultsInTheProcess)
 - In: [Test](architecture.md#Test)
 - Applies: [Trame builds Trame](principles.md#TrameBuildsTrame)
@@ -235,7 +235,7 @@ A cycle is found once, from the vertex where the search closes it, not again fro
 - Owner: trame
 - Parameters: `laws` ← [Laws](engine.md#Laws) · `compiler` ← [Compiler](engine.md#Compiler) · `currentProcess` ← [Process](architecture.md#Process) · `clock` ← [Clock](architecture.md#Clock) · `counts` ← [Counts](../std/docs/algebra.md#Counts) · `messages` ← [Messages of the scenarios](messages.md#ScenarioMessages)
 - Body: inline, in the declaration
-- Effects: execution, keeps, process, read, time
+- Effects: execution, keeps, read, time
 - Verifies: [Laws](engine.md#Laws)
 - In: [Test](architecture.md#Test)
 - Applies: [Trame builds Trame](principles.md#TrameBuildsTrame), [Without evidence, a status is unknown](principles.md#UnknownWithoutEvidence)

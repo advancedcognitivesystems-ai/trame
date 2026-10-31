@@ -131,7 +131,12 @@ export type PackageReport = ValueOf<typeof PackageReport>
  * The fields of a package that the engine reads (trame audit, trame manifest): the kind of a package declares them under
  * these names.
  */
-export const PackageField = { name: "packageName", version: "version", ceiling: "holdsBelow", prepare: "prepare" } as const
+/**
+ * What a promise of effects covers besides itself: a port that keeps (what it writes, only it reads) may be realized by
+ * code that writes. The words are those of the vocabulary of effects.
+ */
+export const CoveredEffects: Readonly<Record<string, readonly string[]>> = { keeps: ["write"] }
+export const PackageField = { name: "packageName", version: "version", ceiling: "holdsBelow", prepare: "prepare", effects: "declaredEffects" } as const
 export type PackageField = ValueOf<typeof PackageField>
 
 /** The edges of a release that the engine writes (trame advance): the kind of a release declares them under these names. */

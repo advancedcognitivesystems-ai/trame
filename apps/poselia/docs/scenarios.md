@@ -257,7 +257,7 @@ The sun salutation played from start to end, looked at every quarter of a second
 - Owner: ghalaax
 - Parameters: `home` ← [Show the home page](app.md#ShowHome) · `shown` ← [Views shown](architecture.md#ViewsShown) · `time` ← [Time turned by hand](../../../std/releases/0.11.1/docs/platform.md#TimeTurned) · `moments` ← [Moments a scenario looks at](#ScenarioMoments) · `heights` ← [The heights of the body's surface](body.md#SurfaceHeights) · `touching` ← [Touching the floor](body.md#Touching) · `movement` ← [How a body moves](body.md#Movement) · `words` ← [Words in English](language.md#WordsEn) · `say` ← [What the scenarios check](#ScenarioChecks) · `counts` ← [Counts](../../../std/releases/0.11.1/docs/algebra.md#Counts)
 - Body: inline, in the declaration
-- Effects: asynchronous, display, read, time, write
+- Effects: asynchronous, display, random, read, time, write
 - Verifies: [A practice](practice.md#PracticeOf), [The moment of a practice](practice.md#MomentOf), [Play a practice](practice.md#PlayPractice), [The body between two poses](body.md#BodyAt), [The heights of the body's surface](body.md#SurfaceHeights), [A leg that steps](body.md#SteppingLeg), [A leg on its foot](body.md#PlantedLeg), [A hand on its way](body.md#HandOnItsWay), [A foot on its way](body.md#FootOnItsWay)
 - In: [Test](architecture.md#Test)
 
@@ -324,7 +324,7 @@ The composer opens with a sequence drawn by lot that makes sense; drawn again, a
 - Owner: ghalaax
 - Parameters: `home` ← [Show the home page](app.md#ShowHome) · `shown` ← [Views shown](architecture.md#ViewsShown) · `time` ← [Time turned by hand](../../../std/releases/0.11.1/docs/platform.md#TimeTurned) · `heard` ← [What was said](../../../std/releases/0.11.1/docs/platform.md#SpeechHeard) · `rung` ← [Bowl rung](architecture.md#BowlRung) · `defaults` ← [What a composed practice holds](composing.md#HoldingDefaults) · `moments` ← [Moments of the poses held](#HoldMoments) · `movement` ← [How a body moves](body.md#Movement) · `words` ← [Words in English](language.md#WordsEn) · `say` ← [What the scenarios check](#ScenarioChecks) · `counts` ← [Counts](../../../std/releases/0.11.1/docs/algebra.md#Counts) · `sequences` ← [Sequences](../../../std/releases/0.11.1/docs/algebra.md#Sequences)
 - Body: inline, in the declaration
-- Effects: asynchronous, display, read, time, write
+- Effects: asynchronous, display, random, read, time, write
 - Verifies: [Show the composer](composing.md#ShowComposer), [The composer](composing.md#ComposerViewOf), [A sequence drawn by lot](composing.md#DrawnSequence), [A sequence composed](composing.md#ComposedSequence), [Play a practice](practice.md#PlayPractice), [A practice](practice.md#PracticeOf), [The moment of a practice](practice.md#MomentOf), [A hold of whole breaths](practice.md#HoldPhases), [Breaths to say a cue](practice.md#BreathsToSay), [The voice the person chose](settings.md#VoiceChoice), [A bowl that counts](#RecordedBowl)
 - In: [Test](architecture.md#Test)
 
@@ -356,7 +356,7 @@ The app speaks the device's language until the person chooses another, writes th
 - Owner: ghalaax
 - Parameters: `home` ← [Show the home page](app.md#ShowHome) · `shown` ← [Views shown](architecture.md#ViewsShown) · `preferences` ← [Preferences](../../../std/releases/0.11.1/docs/platform.md#PreferencesStore) · `names` ← [Names of the preferences](language.md#PreferenceNames) · `english` ← [English](language.md#English) · `french` ← [French](language.md#French) · `wordsEn` ← [Words in English](language.md#WordsEn) · `wordsFr` ← [Words in French](language.md#WordsFr) · `say` ← [What the scenarios check](#ScenarioChecks) · `counts` ← [Counts](../../../std/releases/0.11.1/docs/algebra.md#Counts) · `poses` ← [Poses](content.md#Poses) · `rows` ← [Sequences](content.md#Sequences)
 - Body: inline, in the declaration
-- Effects: asynchronous, display, read, time, write
+- Effects: asynchronous, display, random, read, time, write
 - Verifies: [Show the home page](app.md#ShowHome), [The home view](app.md#HomeViewOf), [The app's language](language.md#AppLanguage), [Words of the interface](language.md#InterfaceWords), [The drawing of a pose](drawing.md#FigureDrawing), [The body of a pose](drawing.md#PoseBody), [The content the app carries](app.md#CarriedContent), [The device's languages, given](#GivenLanguages), [A screen that records](#RecordedScreen), [Preferences kept in memory](../../../std/releases/0.11.1/docs/platform.md#MemoryPreferences)
 - In: [Test](architecture.md#Test)
 
@@ -385,7 +385,7 @@ The sun salutation learnt: its first movement, then its first pose held the brea
 - Owner: ghalaax
 - Parameters: `home` ← [Show the home page](app.md#ShowHome) · `shown` ← [Views shown](architecture.md#ViewsShown) · `time` ← [Time turned by hand](../../../std/releases/0.11.1/docs/platform.md#TimeTurned) · `defaults` ← [What a composed practice holds](composing.md#HoldingDefaults) · `moments` ← [Moments of the poses held](#HoldMoments) · `words` ← [Words in English](language.md#WordsEn) · `say` ← [What the scenarios check](#ScenarioChecks) · `sequences` ← [Sequences](../../../std/releases/0.11.1/docs/algebra.md#Sequences) · `poses` ← [Poses](content.md#Poses) · `preferences` ← [Preferences](../../../std/releases/0.11.1/docs/platform.md#PreferencesStore) · `names` ← [Names of the preferences](language.md#PreferenceNames) · `counts` ← [Counts](../../../std/releases/0.11.1/docs/algebra.md#Counts)
 - Body: inline, in the declaration
-- Effects: asynchronous, display, read, time, write
+- Effects: asynchronous, display, random, read, time, write
 - Verifies: [Show the home page](app.md#ShowHome), [Play a practice](practice.md#PlayPractice), [A practice](practice.md#PracticeOf), [The moment of a practice](practice.md#MomentOf), [The landmarks of a pose](marks.md#MarksOn), [A landmark on the body](marks.md#MarkOnBody), [The landmarks the person chose](settings.md#MarksChoice)
 - In: [Test](architecture.md#Test)
 
@@ -416,7 +416,7 @@ In the settings, the person makes their breath in longer, then measures their br
 - Owner: ghalaax
 - Parameters: `home` ← [Show the home page](app.md#ShowHome) · `shown` ← [Views shown](architecture.md#ViewsShown) · `heard` ← [What was said](../../../std/releases/0.11.1/docs/platform.md#SpeechHeard) · `time` ← [Time turned by hand](../../../std/releases/0.11.1/docs/platform.md#TimeTurned) · `breath` ← [The person's breath](settings.md#PersonBreath) · `expected` ← [Moments of the settings a scenario looks at](#SettingsMoments) · `words` ← [Words in English](language.md#WordsEn) · `say` ← [What the scenarios check](#ScenarioChecks) · `counts` ← [Counts](../../../std/releases/0.11.1/docs/algebra.md#Counts) · `sequences` ← [Sequences](../../../std/releases/0.11.1/docs/algebra.md#Sequences)
 - Body: inline, in the declaration
-- Effects: asynchronous, display, read, time, write
+- Effects: asynchronous, display, random, read, time, write
 - Verifies: [Show the settings](settings.md#ShowSettings), [The settings view](settings.md#SettingsViewOf), [The person's breath](settings.md#PersonBreath), [The voice the person chose](settings.md#VoiceChoice), [A breath measured by tapping](settings.md#MeasuredBreath), [A phase set by the person](settings.md#AdjustedBreath), [Show the home page](app.md#ShowHome)
 - In: [Test](architecture.md#Test)
 
@@ -451,6 +451,6 @@ The sun salutation played with the default breath: each step lasts its phase and
 - Owner: ghalaax
 - Parameters: `home` ← [Show the home page](app.md#ShowHome) · `shown` ← [Views shown](architecture.md#ViewsShown) · `time` ← [Time turned by hand](../../../std/releases/0.11.1/docs/platform.md#TimeTurned) · `heard` ← [What was said](../../../std/releases/0.11.1/docs/platform.md#SpeechHeard) · `screen` ← [Whether the screen is kept awake](../../../std/releases/0.11.1/docs/platform.md#ScreenKeptAwake) · `moments` ← [Moments a scenario looks at](#ScenarioMoments) · `words` ← [Words in English](language.md#WordsEn) · `english` ← [English](language.md#English) · `say` ← [What the scenarios check](#ScenarioChecks) · `counts` ← [Counts](../../../std/releases/0.11.1/docs/algebra.md#Counts) · `sequences` ← [Sequences](../../../std/releases/0.11.1/docs/algebra.md#Sequences)
 - Body: inline, in the declaration
-- Effects: asynchronous, display, read, time, write
+- Effects: asynchronous, display, random, read, time, write
 - Verifies: [Play a practice](practice.md#PlayPractice), [A practice](practice.md#PracticeOf), [The moment of a practice](practice.md#MomentOf), [Show the home page](app.md#ShowHome), [Frames turned by hand](../../../std/releases/0.11.1/docs/platform.md#FramesByHand), [A voice that writes down](../../../std/releases/0.11.1/docs/platform.md#WrittenSpeech), [The screen kept awake, in memory](../../../std/releases/0.11.1/docs/platform.md#AwakeInMemory)
 - In: [Test](architecture.md#Test)

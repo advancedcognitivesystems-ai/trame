@@ -7,7 +7,7 @@
 | Module | Goals | Requirements | Standards | Vocabularies | Syntax elements | Languages | Decisions | Architecture decisions | Components | Ports | Releases | Architecture rules | Functions | Style sheets | Entry points | Message catalogs | Implementations | Packages | Technical choices | Environments | Scenarios | Roles | Artefacts | Checks | Shipments | Obligations | Policies | Open issues |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | [Trame · Appearance](appearance.md) | 0 | 0 | 0 | 0 | 0 | 0 | 14 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Trame · Architecture](architecture.md) | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 2 | 32 | 0 | 3 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| [Trame · Architecture](architecture.md) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 32 | 0 | 3 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Trame · The page in a browser](browser.md) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 1 | 0 | 1 | 0 | 4 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Trame · Scenarios of the commands](command-scenarios.md) | 0 | 0 | 0 | 0 | 0 | 0 | 10 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 20 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Trame · Commands](commands.md) | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 3 | 0 | 20 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
@@ -29,7 +29,7 @@
 | [Trame · Platform](platform.md) | 0 | 0 | 0 | 0 | 0 | 0 | 7 | 0 | 0 | 0 | 0 | 0 | 5 | 0 | 0 | 0 | 24 | 0 | 12 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Trame · Principles](principles.md) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Trame · Product](product.md) | 4 | 1 | 0 | 0 | 0 | 0 | 8 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Trame · Releases](releases.md) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 82 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| [Trame · Releases](releases.md) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 83 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Trame · Rendering](rendering.md) | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 2 | 0 | 6 | 0 | 0 | 10 | 0 | 0 | 0 | 0 | 0 | 6 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Trame · Scenarios](scenarios.md) | 0 | 0 | 0 | 0 | 0 | 0 | 4 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 5 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Trame · SDLC](sdlc.md) | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 0 | 1 | 0 | 0 | 0 | 1 | 0 | 1 | 1 | 0 | 0 | 2 | 0 | 1 | 1 | 3 | 3 | 1 | 6 | 1 | 0 |
@@ -38,7 +38,7 @@
 | [Trame · Syntax](syntax.md) | 0 | 0 | 1 | 0 | 0 | 0 | 2 | 2 | 0 | 0 | 0 | 0 | 2 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Trame · Terraform](terraform.md) | 0 | 0 | 2 | 0 | 5 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Trame · Terminal text](text.md) | 0 | 0 | 1 | 0 | 7 | 0 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Trame · TypeScript](typescript.md) | 0 | 0 | 1 | 1 | 25 | 1 | 1 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| [Trame · TypeScript](typescript.md) | 0 | 0 | 2 | 1 | 25 | 1 | 1 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 
 ## Libraries
 
@@ -46,4 +46,4 @@ The libraries the project imports: their nodes take part in the graph, their doc
 
 | Library | Modules | Nodes | Open issues |
 |---|---|---|---|
-| [std](../std/docs/index.md) | Standard library · Algebra, Standard library · Algorithms, Standard library · ECMAScript, Standard library · HTML and CSS, Standard library · Measures, Standard library · Obligations, Standard library · Design patterns, Standard library · Platform, Standard library · Product, Standard library · Releases, Standard library · Rules, Standard library · Scenarios, Standard library · System, Standard library · Text, Standard library · Tooling, Standard library · Web | 141 | Nothing to report |
+| [std](../std/docs/index.md) | Standard library · Algebra, Standard library · Algorithms, Standard library · ECMAScript, Standard library · Effects, Standard library · HTML and CSS, Standard library · Measures, Standard library · Obligations, Standard library · Design patterns, Standard library · Platform, Standard library · Product, Standard library · Releases, Standard library · Rules, Standard library · Scenarios, Standard library · System, Standard library · Text, Standard library · Tooling, Standard library · Web | 143 | Nothing to report |

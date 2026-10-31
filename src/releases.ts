@@ -1213,3 +1213,18 @@ export const G82 = release({
   archive: "99cd2acedf3b14ce",
   assembledBy: G81,
 })
+
+/**
+ * Generation 83
+ */
+export const G83 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g83",
+  date: "2026-10-31",
+  what: "A2, second half: an implementation is held to what its body reaches (std's PlatformEffects, the packages' declared effects); wiring hands each node a capability limited to the methods it calls",
+  fingerprint: "e5498c43cb460e7d",
+  language: "shared",
+  archive: "d03618584d3ed6d9",
+  assembledBy: G82,
+})

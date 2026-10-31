@@ -5,7 +5,7 @@
 import type { Prelude } from "../../architecture"
 import type { Hole } from "#trame/internal"
 import { Direction, EdgeMode, Moment, Stage, Status } from "../../../trame/kernel"
-import type { AnyNode, View, Q, Graph, EdgeInfo, StaticInfo, Evidence, SelfOf, Fields, Edges, ProvidedBy, WireMode, Lib, Noun } from "../../../trame/kernel"
+import type { AnyNode, View, Q, Graph, EdgeInfo, StaticInfo, Evidence, Reach, SelfOf, Fields, Edges, ProvidedBy, WireMode, Lib, Noun } from "../../../trame/kernel"
 import type { CompilerMessages, Dates, Lists } from "../../messages"
 import type { Layout } from "../../architecture"
 import type { ReferenceSyntax } from "../../conventions"
@@ -65,6 +65,13 @@ export interface GraphState {
   onStatusError?: (n: AnyNode, e: Error) => void
   /** Consolidated graph: the effects of each node (its own and those of its dependencies). */
   effects?: Map<AnyNode, string[]>
+  /** What each node's bodies reach outside them, and what each may do (since g83). */
+  reaches?: Map<AnyNode, Reach[]>
+  /**
+   * What each node may use of each port it depends on, by parameter (since g83): the methods its bodies call, or all
+   * those of the contract. Wiring hands it an object that has only those.
+   */
+  capabilities?: Map<AnyNode, Record<string, string[]>>
   /** Consolidated graph: wires dependencies in an environment. */
   wire?: (deps: { name: string; node: AnyNode }[], env: AnyNode | undefined) => Promise<Record<string, unknown>>
   plan?: (entries: AnyNode[], env: AnyNode | undefined) => { steps: { name: string; node: AnyNode; how: WireMode; deps: { param: string; name: string }[]; via: AnyNode[] }[]; errors: string[] }
@@ -234,6 +241,10 @@ const body = (deps: Deps) => {
             .map((e) => (touch(e.to), { name: e.param!, node: view(e.to), stage: e.stage ?? Stage.execution }))
         },
         get effects() { t(); return [...(st.effects?.get(n) ?? [])] },
+        reaches() {
+          t()
+          return [...(st.reaches?.get(n) ?? [])]
+        },
         result<T>() {
           t()
           return st.results?.get(n) as T | undefined

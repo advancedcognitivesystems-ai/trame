@@ -986,6 +986,25 @@ Code made of a text escapes every check made on the code as written: since g82 `
 value's `constructor` (the way to Function's from any value), written anywhere in a project's code, its graph, bodies,
 kinds, views and libraries, refuse the build, as a type error does. std names them after ECMA-262 (`TextAsCode`).
 
+Since g83 an implementation is held to what its body reaches, no longer to its word. The engine reads, in each body,
+the modules it imports a value from (and the names it imports) and the globals it reads, ECMAScript's or a host's. std
+says what each may do (`PlatformEffects`, beside the vocabulary `Effects`, which moved there): `node:fs`, name by name
+(`readFileSync` reads, `writeFileSync` writes), `process` member by member (`argv` is the terminal, `exit` controls the
+process), `fetch` the network, `document` the display, `Math.random` and `new Date()` the few members of ECMAScript
+that touch the world; a member of the global object (`globalThis.fetch`) is that global. A package of the graph says
+what its code may do (`declaredEffects`: TypeScript reads, web-tree-sitter runs the WebAssembly of a grammar, Playwright
+drives a browser). An implementation that reaches what nobody describes, or more than its ports promise, is an error
+("keeps" covers writing: what it writes, only it reads). Applying it corrected six of Trame's ports, which their
+realizations had outgrown unseen: the clock reads the environment (`TRAME_TODAY`), the terminal ends the process, the
+page's feed reads its window and follows trame dev asynchronously, the reader of syntax runs code, the prelude is found
+on disk, programs read the environment; std's headless browser talks to its browser over the network, asynchronously;
+the example's payment provider reads its key; Poselia's bowl draws at random, and three draws on the display.
+
+Wiring, since g83, hands each node a capability for each port it depends on: the realization with only the methods the
+node calls (or, when the engine cannot tell, those of the contract), read through, nothing set; an assembled program
+does the same (`frozen.limited`). A method that takes a free command (SQL, a shell line, a URL) is still a door: the
+resource behind it must be restricted itself, which the graph does not yet ask.
+
 ## Standards and vocabularies
 
 A **standard** declares constants, their meaning and the source that defines them. It provides its values with their

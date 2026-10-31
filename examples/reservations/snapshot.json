@@ -191,7 +191,8 @@
         "declaredEffects": [
           "network",
           "third-party",
-          "asynchronous"
+          "asynchronous",
+          "read"
         ]
       }
     },

@@ -10,7 +10,7 @@
 
 ### Playwright's API
 
-`PlaywrightApi` · `src/tooling.ts:145`
+`PlaywrightApi` · `src/tooling.ts:146`
 
 The names Playwright gives to what a page tells: the event of an error the page raised.
 
@@ -30,7 +30,7 @@ Source: Playwright documentation, class Page, event "pageerror" · `https://play
 
 ### Chromium without a screen
 
-`HeadlessChromium` · `src/tooling.ts:160`
+`HeadlessChromium` · `src/tooling.ts:161`
 
 How Chromium starts without a screen: WebGL drawn by software (ANGLE on SwiftShader), so that a page drawing in three dimensions runs on a machine without a graphics card; the window's size, in pixels.
 
@@ -50,7 +50,7 @@ How Chromium starts without a screen: WebGL drawn by software (ANGLE on SwiftSha
 
 ### The SDLC's tooling is realized once
 
-`ToolingAsPorts` · `src/tooling.ts:238` · status: **held**
+`ToolingAsPorts` · `src/tooling.ts:239` · status: **held**
 
 The files of a project and a headless browser are ports of the library, each realized for a machine and in memory: every project's checks and deployments use them, and play them in scenarios, rather than calling the machine itself.
 
@@ -68,7 +68,7 @@ Consequences: A check opens the delivered page through HeadlessBrowser, a deploy
 
 ### Browser script
 
-`BrowserScripted` · `src/tooling.ts:199`
+`BrowserScripted` · `src/tooling.ts:200`
 
 The pages the browser kept in memory shows, as a scenario writes them, and what was clicked on them.
 
@@ -137,7 +137,7 @@ Opens a page the project delivered, without a screen, and answers what it shows.
 | [Test](scenarios.md#Test) | [A browser kept in memory](#BrowserInMemory) | [In memory](scenarios.md#InMemory) |
 
 - Owner: trame
-- Effects: display, process, time
+- Effects: asynchronous, display, network, process, time
 - Used by: [The tooling, in memory](scenarios.md#ToolingInMemory)
 - Implemented by: [A browser kept in memory](#BrowserInMemory), [Chromium, driven by Playwright](#PlaywrightBrowser)
 - Applies: [The SDLC's tooling is realized once](#ToolingAsPorts)
@@ -165,7 +165,7 @@ A program of the SDLC (a check, a deployment), run by a person or by trame ship:
 
 ### A browser kept in memory
 
-`BrowserInMemory` · `src/tooling.ts:206` · status: **held**
+`BrowserInMemory` · `src/tooling.ts:207` · status: **held**
 
 In a scenario, a page opened shows what the scenario wrote for its file (nothing found, no error, when it wrote nothing); clicks are recorded; waiting takes no time.
 
@@ -227,7 +227,7 @@ The first argument given to the program chooses the entry point whose command it
 
 ### Chromium, driven by Playwright
 
-`PlaywrightBrowser` · `src/tooling.ts:174`
+`PlaywrightBrowser` · `src/tooling.ts:175`
 
 The headless browser of a machine: Chromium started by Playwright as decided, a page opened from the file's address, its errors kept as they come.
 
@@ -254,6 +254,7 @@ Drives Chromium without a screen: the version whose browser the machine has. Onc
 - Vulnerabilities: none known (2026-10-27)
 - Latest version: 1.64.1 (2026-10-27)
 - Once installed: `npx playwright install --with-deps chromium`
+- What it may do: process, display, network, time, asynchronous
 
 - Owner: trame
 - Used by: [Chromium, driven by Playwright](#PlaywrightBrowser)

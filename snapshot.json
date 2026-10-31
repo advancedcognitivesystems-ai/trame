@@ -511,7 +511,8 @@
       "fields": {
         "owner": "trame",
         "declaredEffects": [
-          "time"
+          "time",
+          "read"
         ]
       }
     },
@@ -542,25 +543,6 @@
       "fields": {
         "owner": "trame",
         "declaredEffects": []
-      }
-    },
-    {
-      "id": "architecture.Effects",
-      "kind": "vocabulary",
-      "title": "Effects",
-      "fields": {
-        "owner": "trame",
-        "words": {
-          "read": "Reads a state (files, a database)",
-          "write": "Changes a state",
-          "execution": "Runs loaded code",
-          "process": "Starts or controls processes",
-          "terminal": "Reads the arguments, writes on the outputs",
-          "time": "Reads the time, or waits",
-          "network": "Talks to another machine",
-          "display": "Shows a page to a person, and hears what they do on it",
-          "keeps": "Keeps what was computed, to give it back the same: what it writes, only it reads"
-        }
       }
     },
     {
@@ -623,13 +605,14 @@
         "owner": "trame",
         "declaredEffects": {
           "packed": [
-            "read"
+            "display"
           ],
           "live": [
-            "read"
+            "display"
           ],
           "follow": [
-            "network"
+            "network",
+            "asynchronous"
           ]
         }
       }
@@ -690,7 +673,7 @@
             "libraries": true
           },
           "field": "declaredEffects",
-          "vocabulary": "architecture.Effects",
+          "vocabulary": "std/effects.Effects",
           "also": [
             "asynchronous"
           ]
@@ -803,7 +786,9 @@
       "title": "Prelude",
       "fields": {
         "owner": "trame",
-        "declaredEffects": []
+        "declaredEffects": [
+          "read"
+        ]
       }
     },
     {
@@ -812,9 +797,30 @@
       "title": "Process",
       "fields": {
         "owner": "trame",
-        "declaredEffects": [
-          "process"
-        ]
+        "declaredEffects": {
+          "cwd": [
+            "read"
+          ],
+          "program": [
+            "read",
+            "terminal"
+          ],
+          "env": [
+            "read"
+          ],
+          "relaunch": [
+            "process",
+            "read",
+            "terminal"
+          ],
+          "runTs": [
+            "process",
+            "read"
+          ],
+          "onSignal": [
+            "process"
+          ]
+        }
       }
     },
     {
@@ -834,7 +840,8 @@
         "owner": "trame",
         "declaredEffects": [
           "process",
-          "execution"
+          "execution",
+          "read"
         ]
       }
     },
@@ -910,7 +917,8 @@
       "fields": {
         "owner": "trame",
         "declaredEffects": [
-          "read"
+          "read",
+          "execution"
         ]
       }
     },
@@ -920,9 +928,23 @@
       "title": "Terminal",
       "fields": {
         "owner": "trame",
-        "declaredEffects": [
-          "terminal"
-        ]
+        "declaredEffects": {
+          "args": [
+            "terminal"
+          ],
+          "write": [
+            "terminal"
+          ],
+          "writeRaw": [
+            "terminal"
+          ],
+          "error": [
+            "terminal"
+          ],
+          "exit": [
+            "process"
+          ]
+        }
       }
     },
     {
@@ -2640,6 +2662,10 @@
             "value": "start",
             "meaning": "Starts the component with its dependencies and its entry points"
           },
+          "limited": {
+            "value": "limited",
+            "meaning": "A capability: a realization limited to the methods its consumer uses (since g83)"
+          },
           "title": {
             "value": "title",
             "meaning": "The title of an entry point, given to start"
@@ -3273,7 +3299,8 @@
           "fingerprints": "engine.Fingerprints",
           "signatures": "architecture.Signatures",
           "engines": "engine.EngineFingerprint",
-          "runs": "architecture.KeptRuns"
+          "runs": "architecture.KeptRuns",
+          "platform": "std/effects.PlatformEffects"
         },
         "body": {
           "file": "./code/engine/compiler.ts",
@@ -3819,7 +3846,9 @@
           "sequences": "std/algebra.Sequences",
           "texts": "std/algebra.Texts",
           "messages": "messages.CompilerMessages",
-          "textAsCode": "std/ecmascript.TextAsCode"
+          "textAsCode": "std/ecmascript.TextAsCode",
+          "libraries": "typescript.TypeScriptLibraries",
+          "prelude": "conventions.PreludeApi"
         },
         "body": {
           "file": "./code/engine/static-analysis.ts",
@@ -7307,7 +7336,8 @@
         "owner": "trame",
         "packageName": "tree-sitter-css",
         "version": "0.25.0",
-        "url": "https://www.npmjs.com/package/tree-sitter-css"
+        "url": "https://www.npmjs.com/package/tree-sitter-css",
+        "declaredEffects": []
       }
     },
     {
@@ -7319,7 +7349,12 @@
         "owner": "trame",
         "packageName": "esbuild",
         "version": "0.28.2",
-        "url": "https://www.npmjs.com/package/esbuild"
+        "url": "https://www.npmjs.com/package/esbuild",
+        "declaredEffects": [
+          "read",
+          "write",
+          "process"
+        ]
       }
     },
     {
@@ -7331,7 +7366,8 @@
         "owner": "trame",
         "packageName": "@tree-sitter-grammars/tree-sitter-hcl",
         "version": "1.2.0",
-        "url": "https://www.npmjs.com/package/@tree-sitter-grammars/tree-sitter-hcl"
+        "url": "https://www.npmjs.com/package/@tree-sitter-grammars/tree-sitter-hcl",
+        "declaredEffects": []
       }
     },
     {
@@ -7343,7 +7379,8 @@
         "owner": "trame",
         "packageName": "tree-sitter-html",
         "version": "0.23.2",
-        "url": "https://www.npmjs.com/package/tree-sitter-html"
+        "url": "https://www.npmjs.com/package/tree-sitter-html",
+        "declaredEffects": []
       }
     },
     {
@@ -7357,7 +7394,8 @@
         "version": "22.20.5",
         "url": "https://www.npmjs.com/package/@types/node",
         "holdsBelow": "23.0.0",
-        "because": "the declarations follow the Node.js that runs the engine, version 22: those of a later Node would let the code use what this one does not have"
+        "because": "the declarations follow the Node.js that runs the engine, version 22: those of a later Node would let the code use what this one does not have",
+        "declaredEffects": []
       }
     },
     {
@@ -7389,7 +7427,11 @@
         "owner": "trame",
         "packageName": "tsx",
         "version": "4.23.15",
-        "url": "https://www.npmjs.com/package/tsx"
+        "url": "https://www.npmjs.com/package/tsx",
+        "declaredEffects": [
+          "read",
+          "execution"
+        ]
       }
     },
     {
@@ -7401,7 +7443,8 @@
         "owner": "trame",
         "packageName": "tree-sitter-typescript",
         "version": "0.23.2",
-        "url": "https://www.npmjs.com/package/tree-sitter-typescript"
+        "url": "https://www.npmjs.com/package/tree-sitter-typescript",
+        "declaredEffects": []
       }
     },
     {
@@ -7415,7 +7458,10 @@
         "version": "6.0.3",
         "url": "https://www.npmjs.com/package/typescript",
         "holdsBelow": "7.0.0",
-        "because": "TypeScript 7 is the compiler rewritten in Go: its package no longer gives the JavaScript API the engine reads the declarations with (a program, its type checker, its comments), only an unstable one"
+        "because": "TypeScript 7 is the compiler rewritten in Go: its package no longer gives the JavaScript API the engine reads the declarations with (a program, its type checker, its comments), only an unstable one",
+        "declaredEffects": [
+          "read"
+        ]
       }
     },
     {
@@ -7441,7 +7487,11 @@
         "owner": "trame",
         "packageName": "web-tree-sitter",
         "version": "0.27.1",
-        "url": "https://www.npmjs.com/package/web-tree-sitter"
+        "url": "https://www.npmjs.com/package/web-tree-sitter",
+        "declaredEffects": [
+          "read",
+          "execution"
+        ]
       }
     },
     {
@@ -11055,6 +11105,20 @@
       }
     },
     {
+      "id": "releases.G83",
+      "kind": "release",
+      "title": "Generation 83",
+      "fields": {
+        "owner": "trame",
+        "version": "g83",
+        "date": "2026-10-31",
+        "what": "A2, second half: an implementation is held to what its body reaches (std's PlatformEffects, the packages' declared effects); wiring hands each node a capability limited to the methods it calls",
+        "fingerprint": "e5498c43cb460e7d",
+        "language": "shared",
+        "archive": "d03618584d3ed6d9"
+      }
+    },
+    {
       "id": "releases.G9",
       "kind": "release",
       "title": "Generation 9",
@@ -14477,6 +14541,22 @@
             "literals": []
           }
         ]
+      }
+    },
+    {
+      "id": "typescript.TypeScriptLibraries",
+      "kind": "standard",
+      "title": "TypeScript's libraries of types",
+      "fields": {
+        "owner": "trame",
+        "source": "TypeScript, the lib option and the declaration files under src/lib of the compiler",
+        "url": "https://www.typescriptlang.org/tsconfig/#lib",
+        "constants": {
+          "ecmaScript": {
+            "value": "lib.es",
+            "meaning": "How the file of an ECMAScript library of types starts its name"
+          }
+        }
       }
     },
     {
@@ -18719,6 +18799,16 @@
     {
       "from": "engine.StaticAnalysis",
       "to": "messages.CompilerMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "engine.StaticAnalysis",
+      "to": "typescript.TypeScriptLibraries",
+      "kind": "deps"
+    },
+    {
+      "from": "engine.StaticAnalysis",
+      "to": "conventions.PreludeApi",
       "kind": "deps"
     },
     {
@@ -22972,6 +23062,16 @@
       "kind": "assembledBy"
     },
     {
+      "from": "releases.G83",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G83",
+      "to": "releases.G82",
+      "kind": "assembledBy"
+    },
+    {
       "from": "releases.G9",
       "to": "architecture.TrameCli",
       "kind": "component"
@@ -25397,6 +25497,11 @@
       "kind": "packages"
     },
     {
+      "from": "typescript.TypeScriptLibraries",
+      "to": "product.ExecutableSpecification",
+      "kind": "serves"
+    },
+    {
       "from": "typescript.TypeScriptWriter",
       "to": "product.ExecutableSpecification",
       "kind": "serves"
@@ -25565,11 +25670,6 @@
       "from": "typescript.UnionType",
       "to": "typescript.TypeScriptSyntax",
       "kind": "deps"
-    },
-    {
-      "from": "architecture.KnownEffects",
-      "to": "architecture.Effects",
-      "kind": "uses"
     },
     {
       "from": "architecture.RenderingWithoutGraph",

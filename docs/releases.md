@@ -1683,6 +1683,27 @@ Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Ge
 - Released by: trame
 - Releases: [Trame on the command line](architecture.md#TrameCli)
 - Assembled by: [Generation 81](#G81)
+- Assembled: [Generation 83](#G83)
+
+<a id="G83"></a>
+
+### Generation 83
+
+`G83` · `src/releases.ts:1220`
+
+A2, second half: an implementation is held to what its body reaches (std's PlatformEffects, the packages' declared effects); wiring hands each node a capability limited to the methods it calls
+
+Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Generation 82](#G82).
+
+- Version: `g83`
+- Released on: 31 October 2026
+- Fingerprint: `e5498c43cb460e7d`
+- Language: the repository's, shared
+- Language archived: `d03618584d3ed6d9`
+
+- Released by: trame
+- Releases: [Trame on the command line](architecture.md#TrameCli)
+- Assembled by: [Generation 82](#G82)
 
 <a id="G9"></a>
 

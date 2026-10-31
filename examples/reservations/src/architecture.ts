@@ -118,7 +118,7 @@ export const Cancellations = port<CancellationRegister>({ owner: "karim", declar
  * Payment provider
  * Refunds a driver. One call per idempotency key.
  */
-export const Payment = port<PaymentProvider>({ owner: "karim", declaredEffects: ["network", "third-party", "asynchronous"] })
+export const Payment = port<PaymentProvider>({ owner: "karim", declaredEffects: ["network", "third-party", "asynchronous", "read"] })
 
 /**
  * Payment log

@@ -4,38 +4,13 @@
 
 > **Nothing to report**
 
-## Vocabulary
-
-<a id="Effects"></a>
-
-### Effects
-
-`Effects` · `src/architecture.ts:247`
-
-What a port may do to the world. A port declares only words of this vocabulary.
-
-| Word | Meaning |
-|---|---|
-| `read` | Reads a state (files, a database) |
-| `write` | Changes a state |
-| `execution` | Runs loaded code |
-| `process` | Starts or controls processes |
-| `terminal` | Reads the arguments, writes on the outputs |
-| `time` | Reads the time, or waits |
-| `network` | Talks to another machine |
-| `display` | Shows a page to a person, and hears what they do on it |
-| `keeps` | Keeps what was computed, to give it back the same: what it writes, only it reads |
-
-- Owner: trame
-- Used by: [Effects come from the vocabulary](#KnownEffects)
-
 ## Components
 
 <a id="PageApp"></a>
 
 ### The page in a browser
 
-`PageApp` · `src/architecture.ts:502`
+`PageApp` · `src/architecture.ts:492`
 
 What runs in the page Trame writes: it shows the documents of the graph at each date, follows trame dev, and explores the figures too large to be read whole. Assembled for the browser like the command line for a machine: the values of the graph are written into its program, and its implementations are the browser's.
 
@@ -54,7 +29,7 @@ What runs in the page Trame writes: it shows the documents of the graph at each 
 
 ### Trame on the command line
 
-`TrameCli` · `src/architecture.ts:489`
+`TrameCli` · `src/architecture.ts:479`
 
 The `trame` program: build, views, laws, snapshot, publication, export, dev, assembly.
 
@@ -67,7 +42,7 @@ The `trame` program: build, views, laws, snapshot, publication, export, dev, ass
 - Deployed in: [Local](#Local), [Test](#Test)
 - Exposes: [Advance](commands.md#Advance), [Assemble a component](commands.md#Assemble), [Audit the packages](commands.md#Audit), [Build](commands.md#Build), [Deliver](commands.md#Deliver), [Start trame dev](commands.md#Dev), [Ask the machine](commands.md#Doctor), [Payload](commands.md#EmitPayload), [Export the page](commands.md#Export), [Plan a build](commands.md#Plan), [Publish](commands.md#Publish), [Record evidence](commands.md#RecordEvidence), [Release a version](commands.md#Release), [Run a component](commands.md#Run), [Ship](commands.md#Ship), [Show a view](commands.md#ShowView), [Take the snapshot](commands.md#TakeSnapshot), [Test the laws](commands.md#TestKinds), [View by its name](commands.md#ViewByName), [Write the manifest](commands.md#WriteManifest)
 - Applies: [The engine: a graph like any product's](principles.md#EngineLayer)
-- Released as: [Generation 1](releases.md#G1), [Generation 10](releases.md#G10), [Generation 11](releases.md#G11), [Generation 12](releases.md#G12), [Generation 13](releases.md#G13), [Generation 14](releases.md#G14), [Generation 15](releases.md#G15), [Generation 16](releases.md#G16), [Generation 17](releases.md#G17), [Generation 18](releases.md#G18), [Generation 19](releases.md#G19), [Generation 2](releases.md#G2), [Generation 20](releases.md#G20), [Generation 21](releases.md#G21), [Generation 22](releases.md#G22), [Generation 23](releases.md#G23), [Generation 24](releases.md#G24), [Generation 25](releases.md#G25), [Generation 26](releases.md#G26), [Generation 27](releases.md#G27), [Generation 28](releases.md#G28), [Generation 29](releases.md#G29), [Generation 3](releases.md#G3), [Generation 30](releases.md#G30), [Generation 31](releases.md#G31), [Generation 32](releases.md#G32), [Generation 33](releases.md#G33), [Generation 34](releases.md#G34), [Generation 35](releases.md#G35), [Generation 36](releases.md#G36), [Generation 37](releases.md#G37), [Generation 38](releases.md#G38), [Generation 39](releases.md#G39), [Generation 4](releases.md#G4), [Generation 40](releases.md#G40), [Generation 41](releases.md#G41), [Generation 42](releases.md#G42), [Generation 43](releases.md#G43), [Generation 44](releases.md#G44), [Generation 45](releases.md#G45), [Generation 46](releases.md#G46), [Generation 47](releases.md#G47), [Generation 48](releases.md#G48), [Generation 49](releases.md#G49), [Generation 5](releases.md#G5), [Generation 50](releases.md#G50), [Generation 51](releases.md#G51), [Generation 52](releases.md#G52), [Generation 53](releases.md#G53), [Generation 54](releases.md#G54), [Generation 55](releases.md#G55), [Generation 56](releases.md#G56), [Generation 57](releases.md#G57), [Generation 58](releases.md#G58), [Generation 59](releases.md#G59), [Generation 6](releases.md#G6), [Generation 60](releases.md#G60), [Generation 61](releases.md#G61), [Generation 62](releases.md#G62), [Generation 63](releases.md#G63), [Generation 64](releases.md#G64), [Generation 65](releases.md#G65), [Generation 66](releases.md#G66), [Generation 67](releases.md#G67), [Generation 68](releases.md#G68), [Generation 69](releases.md#G69), [Generation 7](releases.md#G7), [Generation 70](releases.md#G70), [Generation 71](releases.md#G71), [Generation 72](releases.md#G72), [Generation 73](releases.md#G73), [Generation 74](releases.md#G74), [Generation 75](releases.md#G75), [Generation 76](releases.md#G76), [Generation 77](releases.md#G77), [Generation 78](releases.md#G78), [Generation 79](releases.md#G79), [Generation 8](releases.md#G8), [Generation 80](releases.md#G80), [Generation 81](releases.md#G81), [Generation 82](releases.md#G82), [Generation 9](releases.md#G9)
+- Released as: [Generation 1](releases.md#G1), [Generation 10](releases.md#G10), [Generation 11](releases.md#G11), [Generation 12](releases.md#G12), [Generation 13](releases.md#G13), [Generation 14](releases.md#G14), [Generation 15](releases.md#G15), [Generation 16](releases.md#G16), [Generation 17](releases.md#G17), [Generation 18](releases.md#G18), [Generation 19](releases.md#G19), [Generation 2](releases.md#G2), [Generation 20](releases.md#G20), [Generation 21](releases.md#G21), [Generation 22](releases.md#G22), [Generation 23](releases.md#G23), [Generation 24](releases.md#G24), [Generation 25](releases.md#G25), [Generation 26](releases.md#G26), [Generation 27](releases.md#G27), [Generation 28](releases.md#G28), [Generation 29](releases.md#G29), [Generation 3](releases.md#G3), [Generation 30](releases.md#G30), [Generation 31](releases.md#G31), [Generation 32](releases.md#G32), [Generation 33](releases.md#G33), [Generation 34](releases.md#G34), [Generation 35](releases.md#G35), [Generation 36](releases.md#G36), [Generation 37](releases.md#G37), [Generation 38](releases.md#G38), [Generation 39](releases.md#G39), [Generation 4](releases.md#G4), [Generation 40](releases.md#G40), [Generation 41](releases.md#G41), [Generation 42](releases.md#G42), [Generation 43](releases.md#G43), [Generation 44](releases.md#G44), [Generation 45](releases.md#G45), [Generation 46](releases.md#G46), [Generation 47](releases.md#G47), [Generation 48](releases.md#G48), [Generation 49](releases.md#G49), [Generation 5](releases.md#G5), [Generation 50](releases.md#G50), [Generation 51](releases.md#G51), [Generation 52](releases.md#G52), [Generation 53](releases.md#G53), [Generation 54](releases.md#G54), [Generation 55](releases.md#G55), [Generation 56](releases.md#G56), [Generation 57](releases.md#G57), [Generation 58](releases.md#G58), [Generation 59](releases.md#G59), [Generation 6](releases.md#G6), [Generation 60](releases.md#G60), [Generation 61](releases.md#G61), [Generation 62](releases.md#G62), [Generation 63](releases.md#G63), [Generation 64](releases.md#G64), [Generation 65](releases.md#G65), [Generation 66](releases.md#G66), [Generation 67](releases.md#G67), [Generation 68](releases.md#G68), [Generation 69](releases.md#G69), [Generation 7](releases.md#G7), [Generation 70](releases.md#G70), [Generation 71](releases.md#G71), [Generation 72](releases.md#G72), [Generation 73](releases.md#G73), [Generation 74](releases.md#G74), [Generation 75](releases.md#G75), [Generation 76](releases.md#G76), [Generation 77](releases.md#G77), [Generation 78](releases.md#G78), [Generation 79](releases.md#G79), [Generation 8](releases.md#G8), [Generation 80](releases.md#G80), [Generation 81](releases.md#G81), [Generation 82](releases.md#G82), [Generation 83](releases.md#G83), [Generation 9](releases.md#G9)
 - Produces: [The candidate engine](sdlc.md#EngineCandidate)
 
 ## Ports
@@ -76,7 +51,7 @@ The `trame` program: build, views, laws, snapshot, publication, export, dev, ass
 
 ### Bundler
 
-`Bundler` · `src/architecture.ts:392`
+`Bundler` · `src/architecture.ts:382`
 
 Gathers the page's program and what it imports into a single module for the browser.
 
@@ -96,7 +71,7 @@ Gathers the page's program and what it imports into a single module for the brow
 
 ### Clock
 
-`Clock` · `src/architecture.ts:376`
+`Clock` · `src/architecture.ts:366`
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
@@ -106,7 +81,7 @@ Gathers the page's program and what it imports into a single module for the brow
 | [Test](../std/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
-- Effects: time
+- Effects: read, time
 - Used by: [The page of the graph](command-scenarios.md#PageOfTheGraph), [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [Advance](commands.md#Advance), [Ask the machine](commands.md#Doctor), [Preparation](commands.md#Preparation), [Release a version](commands.md#Release), [Date bundle](engine.md#DateBundle), [trame dev server](engine.md#DevServer), [Payload](engine.md#PayloadBuilder), [The described engine compiles the example](scenarios.md#CompileExample), [The laws of the kinds hold](scenarios.md#KindLaws)
 - Implemented by: [Stopped clock](platform.md#StoppedClock), [System clock](platform.md#SystemClock)
 
@@ -114,7 +89,7 @@ Gathers the page's program and what it imports into a single module for the brow
 
 ### Command line
 
-`CommandLine` · `src/architecture.ts:433`
+`CommandLine` · `src/architecture.ts:423`
 
 Exposes Trame's commands: reads the arguments, calls the command, exits with its code.
 
@@ -134,7 +109,7 @@ Exposes Trame's commands: reads the arguments, calls the command, exits with its
 
 ### Compression
 
-`Compression` · `src/architecture.ts:404`
+`Compression` · `src/architecture.ts:394`
 
 A text made smaller for a page to carry: the browser decompresses it.
 
@@ -153,7 +128,7 @@ A text made smaller for a page to carry: the browser decompresses it.
 
 ### Decompression
 
-`Decompression` · `src/architecture.ts:460`
+`Decompression` · `src/architecture.ts:450`
 
 The graph an exported page carries, made whole again by the browser.
 
@@ -172,7 +147,7 @@ The graph an exported page carries, made whole again by the browser.
 
 ### File reading
 
-`FileReading` · `src/architecture.ts:274`
+`FileReading` · `src/architecture.ts:255`
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
@@ -190,7 +165,7 @@ The graph an exported page carries, made whole again by the browser.
 
 ### File trees
 
-`FileTrees` · `src/architecture.ts:421`
+`FileTrees` · `src/architecture.ts:411`
 
 Copies, links, removes and compares files and directories: what an advance does with documents and generations.
 
@@ -219,7 +194,7 @@ Copies, links, removes and compares files and directories: what an advance does 
 
 ### File writing
 
-`FileWriting` · `src/architecture.ts:279`
+`FileWriting` · `src/architecture.ts:260`
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
@@ -237,15 +212,15 @@ Copies, links, removes and compares files and directories: what an advance does 
 
 ### Feed of the graph
 
-`GraphFeed` · `src/architecture.ts:454`
+`GraphFeed` · `src/architecture.ts:444`
 
 The compiled graph the page shows: carried by an exported page, or given by trame dev at each compilation.
 
 | Method | What it may do |
 |---|---|
-| `packed` | read |
-| `live` | read |
-| `follow` | network |
+| `packed` | display |
+| `live` | display |
+| `follow` | network, asynchronous |
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
@@ -255,7 +230,7 @@ The compiled graph the page shows: carried by an exported page, or given by tram
 | [Test](../std/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
-- Effects: network, read
+- Effects: asynchronous, display, network
 - Implemented by: [The globals of the page, and trame dev](browser.md#BrowserFeed)
 - Used by: [Show the graph](browser.md#ShowGraph)
 
@@ -263,7 +238,7 @@ The compiled graph the page shows: carried by an exported page, or given by tram
 
 ### Hashing
 
-`Hashing` · `src/architecture.ts:309`
+`Hashing` · `src/architecture.ts:290`
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
@@ -280,7 +255,7 @@ The compiled graph the page shows: carried by an exported page, or given by tram
 
 ### HTTP server
 
-`HttpServer` · `src/architecture.ts:386`
+`HttpServer` · `src/architecture.ts:376`
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
@@ -298,7 +273,7 @@ The compiled graph the page shows: carried by an exported page, or given by tram
 
 ### Results kept
 
-`KeptResults` · `src/architecture.ts:343`
+`KeptResults` · `src/architecture.ts:324`
 
 What a computation found, kept under its key while the process runs. Asked again, the computation finds it there and checks that what it read is as it was before giving it: the reading of a program by the compiler of TypeScript, the parsing of a file by tree-sitter. The scenarios load the same projects again and again; each is read once.
 
@@ -317,7 +292,7 @@ What a computation found, kept under its key while the process runs. Asked again
 
 ### Runs kept
 
-`KeptRuns` · `src/architecture.ts:352`
+`KeptRuns` · `src/architecture.ts:333`
 
 What a run found (a scenario played), kept under the fingerprint of what it ran: given back while the code it runs is as it was and, beyond the process, while the engine and the files the project reads are as they were. A build played Poselia's scenarios eleven times and the example's thirty-six; a shipment compiles Trame's graph a dozen times with the same code.
 
@@ -337,7 +312,7 @@ What a run found (a scenario played), kept under the fingerprint of what it ran:
 
 ### Module loader
 
-`ModuleLoader` · `src/architecture.ts:291`
+`ModuleLoader` · `src/architecture.ts:272`
 
 Runs a module of the graph, of a kind or of a view, and reads what it exports.
 
@@ -357,7 +332,7 @@ Runs a module of the graph, of a kind or of a view, and reads what it exports.
 
 ### Reports on packages
 
-`PackageReports` · `src/architecture.ts:398`
+`PackageReports` · `src/architecture.ts:388`
 
 What the registry says of the packages a project installs: their known vulnerabilities, their latest versions.
 
@@ -377,7 +352,7 @@ What the registry says of the packages a project installs: their known vulnerabi
 
 ### Memory of the page
 
-`PageMemory` · `src/architecture.ts:448`
+`PageMemory` · `src/architecture.ts:438`
 
 The document, the rendering and the node the person was on, kept for their next visit.
 
@@ -402,7 +377,7 @@ The document, the rendering and the node the person was on, kept for their next 
 
 ### Window of the page
 
-`PageWindow` · `src/architecture.ts:442`
+`PageWindow` · `src/architecture.ts:432`
 
 The document the page writes in and hears, and what it asks of the window around it.
 
@@ -422,7 +397,7 @@ The document the page writes in and hears, and what it asks of the window around
 
 ### Paths
 
-`Paths` · `src/architecture.ts:285`
+`Paths` · `src/architecture.ts:266`
 
 Computations on file paths, without touching the files.
 
@@ -441,7 +416,7 @@ Computations on file paths, without touching the files.
 
 ### Prelude
 
-`Prelude` · `src/architecture.ts:269`
+`Prelude` · `src/architecture.ts:250`
 
 The registry of nodes and kinds, and the tooling of frozen programs: what the language shares with the engine.
 
@@ -453,6 +428,7 @@ The registry of nodes and kinds, and the tooling of frozen programs: what the la
 | [Test](../std/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
+- Effects: read
 - Used by: [Assembly](engine.md#Assembly), [Compilation API](engine.md#CompilationApi), [Compiler](engine.md#Compiler), [Graph](engine.md#GraphApi), [Laws](engine.md#Laws), [Lock](engine.md#Lock), [Machine outputs](engine.md#MachineOutputs), [Views](engine.md#Views), [Wiring](engine.md#Wiring), [Terraform writer](terraform.md#TerraformWriter), [TypeScript writer](typescript.md#TypeScriptWriter)
 - Implemented by: [Trame's prelude](platform.md#TramePrelude)
 - Applies: [The prelude: the runtime of the language](principles.md#PreludeLayer)
@@ -462,9 +438,18 @@ The registry of nodes and kinds, and the tooling of frozen programs: what the la
 
 ### Process
 
-`Process` · `src/architecture.ts:365`
+`Process` · `src/architecture.ts:346`
 
 The current directory, the environment, and starting other processes.
+
+| Method | What it may do |
+|---|---|
+| `cwd` | read |
+| `program` | read, terminal |
+| `env` | read |
+| `relaunch` | process, read, terminal |
+| `runTs` | process, read |
+| `onSignal` | process |
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
@@ -474,7 +459,7 @@ The current directory, the environment, and starting other processes.
 | [Test](../std/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
-- Effects: process
+- Effects: process, read, terminal
 - Used by: [An advance, in memory](command-scenarios.md#AdvanceInMemory), [A build planned](command-scenarios.md#BuildPlanned), [Declarations published](command-scenarios.md#DeclarationsPublished), [trame dev](command-scenarios.md#DevFollowsTheGraph), [The laws, tested by their command](command-scenarios.md#LawsTested), [A library released](command-scenarios.md#LibraryReleased), [The manifest written](command-scenarios.md#ManifestWritten), [The page exported](command-scenarios.md#PageExported), [The page of the graph](command-scenarios.md#PageOfTheGraph), [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [The snapshot, taken by its command](command-scenarios.md#SnapshotTaken), [Preparation](commands.md#Preparation), [Run a component](commands.md#Run), [Ship](commands.md#Ship), [Write the manifest](commands.md#WriteManifest), [Date bundle](engine.md#DateBundle), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore), [The described engine compiles the example](scenarios.md#CompileExample), [The laws of the kinds hold](scenarios.md#KindLaws)
 - Implemented by: [Example process](platform.md#ExampleProcess), [Node process](platform.md#NodeProcess)
 
@@ -482,7 +467,7 @@ The current directory, the environment, and starting other processes.
 
 ### Process log
 
-`ProcessLog` · `src/architecture.ts:581`
+`ProcessLog` · `src/architecture.ts:571`
 
 In a scenario: where the next commands run, what the programs started answer, and which were started.
 
@@ -501,7 +486,7 @@ In a scenario: where the next commands run, what the programs started answer, an
 
 ### Programs
 
-`Programs` · `src/architecture.ts:415`
+`Programs` · `src/architecture.ts:405`
 
 Runs another engine (a frozen generation, a candidate) and reads what it prints.
 
@@ -513,7 +498,7 @@ Runs another engine (a frozen generation, a candidate) and reads what it prints.
 | [Test](../std/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
-- Effects: execution, process
+- Effects: execution, process, read
 - Used by: [Advance](commands.md#Advance), [Ask the machine](commands.md#Doctor)
 - Implemented by: [Example process](platform.md#ExampleProcess), [Node programs](platform.md#NodePrograms)
 
@@ -521,7 +506,7 @@ Runs another engine (a frozen generation, a candidate) and reads what it prints.
 
 ### Page resources
 
-`Resources` · `src/architecture.ts:409`
+`Resources` · `src/architecture.ts:399`
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
@@ -538,7 +523,7 @@ Runs another engine (a frozen generation, a candidate) and reads what it prints.
 
 ### Where runs are kept
 
-`RunStore` · `src/architecture.ts:359`
+`RunStore` · `src/architecture.ts:340`
 
 The runs of a project under their keys: in the process (the scenarios of the scenarios, the engine in memory), or on disk beyond it, where the next build, the assembly after it and the generation that rebuilds the same graph find them.
 
@@ -558,7 +543,7 @@ The runs of a project under their keys: in the process (the scenarios of the sce
 
 ### Server log
 
-`ServerLog` · `src/architecture.ts:587`
+`ServerLog` · `src/architecture.ts:577`
 
 In a scenario: asks the server started in memory for a path.
 
@@ -577,7 +562,7 @@ In a scenario: asks the server started in memory for a path.
 
 ### Signatures
 
-`Signatures` · `src/architecture.ts:335`
+`Signatures` · `src/architecture.ts:316`
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
@@ -594,7 +579,7 @@ In a scenario: asks the server started in memory for a path.
 
 ### Syntax trees
 
-`SyntaxTrees` · `src/architecture.ts:298`
+`SyntaxTrees` · `src/architecture.ts:279`
 
 Parses a text with a tree-sitter grammar, and gives back what queries catch in it, as records. The only place that touches tree-sitter: no node of a tree crosses it.
 
@@ -606,7 +591,7 @@ Parses a text with a tree-sitter grammar, and gives back what queries catch in i
 | [Test](../std/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
-- Effects: read
+- Effects: execution, read
 - Implemented by: [tree-sitter in WebAssembly](platform.md#WebTreeSitter)
 - Applies: [tree-sitter says what it keeps aside](syntax.md#PredicatesAsTreeSitterReadsThem), [Every language is read alike, with tree-sitter](syntax.md#ReadLanguagesAlike)
 - Used by: [Syntax reader](syntax.md#SyntaxReader)
@@ -615,9 +600,17 @@ Parses a text with a tree-sitter grammar, and gives back what queries catch in i
 
 ### Terminal
 
-`Terminal` · `src/architecture.ts:371`
+`Terminal` · `src/architecture.ts:358`
 
 The arguments, the outputs, the exit code.
+
+| Method | What it may do |
+|---|---|
+| `args` | terminal |
+| `write` | terminal |
+| `writeRaw` | terminal |
+| `error` | terminal |
+| `exit` | process |
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
@@ -627,7 +620,7 @@ The arguments, the outputs, the exit code.
 | [Test](../std/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
-- Effects: terminal
+- Effects: process, terminal
 - Used by: [Advance](commands.md#Advance), [Assemble a component](commands.md#Assemble), [Audit the packages](commands.md#Audit), [Build](commands.md#Build), [Deliver](commands.md#Deliver), [Ask the machine](commands.md#Doctor), [Payload](commands.md#EmitPayload), [Export the page](commands.md#Export), [Plan a build](commands.md#Plan), [Preparation](commands.md#Preparation), [Publish](commands.md#Publish), [Record evidence](commands.md#RecordEvidence), [Release a version](commands.md#Release), [Render a view](commands.md#RenderView), [Ship](commands.md#Ship), [Take the snapshot](commands.md#TakeSnapshot), [Test the laws](commands.md#TestKinds), [View by its name](commands.md#ViewByName), [Write the manifest](commands.md#WriteManifest), [trame dev server](engine.md#DevServer), [Command line](platform.md#NodeCommandLine)
 - Implemented by: [Terminal in memory](platform.md#MemoryTerminal), [Node terminal](platform.md#NodeTerminal)
 
@@ -635,7 +628,7 @@ The arguments, the outputs, the exit code.
 
 ### Terminal log
 
-`TerminalLog` · `src/architecture.ts:575`
+`TerminalLog` · `src/architecture.ts:565`
 
 What the engine printed, when the terminal is simulated.
 
@@ -654,7 +647,7 @@ What the engine printed, when the terminal is simulated.
 
 ### Timer
 
-`Timer` · `src/architecture.ts:381`
+`Timer` · `src/architecture.ts:371`
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
@@ -672,7 +665,7 @@ What the engine printed, when the terminal is simulated.
 
 ### TypeScript compiler
 
-`TypeScriptCompiler` · `src/architecture.ts:304`
+`TypeScriptCompiler` · `src/architecture.ts:285`
 
 Reads the code of the graph and checks it.
 
@@ -693,7 +686,7 @@ Reads the code of the graph and checks it.
 
 ### Write log
 
-`WriteLog` · `src/architecture.ts:569`
+`WriteLog` · `src/architecture.ts:559`
 
 What the engine wrote, when writing is simulated.
 
@@ -714,7 +707,7 @@ What the engine wrote, when writing is simulated.
 
 ### Effects come from the vocabulary
 
-`KnownEffects` · `src/architecture.ts:595` · status: **held**
+`KnownEffects` · `src/architecture.ts:585` · status: **held**
 
 A port that declares an effect outside the "Effects" vocabulary, or the effects the language itself reads (LanguageEffect: what is asynchronous), is refused: the rules that read effects would miss it. Every port of the graph is judged, a library's too: its effects reach the components that bind it.
 
@@ -730,13 +723,13 @@ Respected everywhere.
 
 - Owner: trame
 - Applies: [Words of a vocabulary](../std/docs/rules.md#WordsOf), [The engine: a graph like any product's](principles.md#EngineLayer), [Code holds no hidden decision](principles.md#NoHiddenDecision)
-- Depends on: [Effects](#Effects)
+- Depends on: [Effects](../std/docs/effects.md#Effects)
 
 <a id="OnlyCommandsWrite"></a>
 
 ### Only commands write
 
-`OnlyCommandsWrite` · `src/architecture.ts:525` · status: **held**
+`OnlyCommandsWrite` · `src/architecture.ts:515` · status: **held**
 
 The engine computes what to write; only a command writes it to disk: no function of the engine has the effect of writing, its own or through what it depends on.
 
@@ -757,7 +750,7 @@ Respected everywhere.
 
 ### Rendering does not read the graph
 
-`RenderingWithoutGraph` · `src/architecture.ts:514` · status: **held**
+`RenderingWithoutGraph` · `src/architecture.ts:504` · status: **held**
 
 A renderer receives only the intermediate format: no function of the module rendering reaches the prelude, even from afar through what it depends on.
 
@@ -781,7 +774,7 @@ Respected everywhere.
 
 ### Browser
 
-`Browser` · `src/architecture.ts:483`
+`Browser` · `src/architecture.ts:473`
 
 The browser that opens a page Trame wrote: exported to a file, published, or served by trame dev.
 
@@ -794,7 +787,7 @@ The browser that opens a page Trame wrote: exported to a file, published, or ser
 
 ### Local
 
-`Local` · `src/architecture.ts:468`
+`Local` · `src/architecture.ts:458`
 
 The machine where `trame` is started: real files, real terminal, real clock.
 
@@ -807,7 +800,7 @@ The machine where `trame` is started: real files, real terminal, real clock.
 
 ### Test
 
-`Test` · `src/architecture.ts:477`
+`Test` · `src/architecture.ts:467`
 
 The scenarios: the engine reads the real files of the example (or of the project a scenario enters), but what it writes is kept in memory over them, what it prints too, and the programs it starts answer what the scenario says. The build evaluates here what needs no environment of its own (the examples of syntax elements and languages): in memory, as scenarios are.
 

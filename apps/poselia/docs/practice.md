@@ -256,7 +256,7 @@ Shows the player, then each moment as the screen's frames come, until the practi
 - Owner: ghalaax
 - Parameters: `screen` ← [Screen](architecture.md#Screen) · `frames` ← [Animation frames](../../../std/releases/0.11.1/docs/platform.md#AnimationFrames) · `voice` ← [Speech](../../../std/releases/0.11.1/docs/platform.md#SpeechVoice) · `awake` ← [Screen kept awake](../../../std/releases/0.11.1/docs/platform.md#ScreenAwake) · `bowl` ← [Bowl](architecture.md#Bowl) · `choice` ← [The voice the person chose](settings.md#VoiceChoice) · `marking` ← [The landmarks the person chose](settings.md#MarksChoice) · `practiceOf` ← [A practice](#PracticeOf) · `momentOf` ← [The moment of a practice](#MomentOf) · `words` ← [Words of the interface](language.md#InterfaceWords) · `language` ← [The app's language](language.md#AppLanguage) · `counts` ← [Counts](../../../std/releases/0.11.1/docs/algebra.md#Counts) · `stageViews` ← [Views of the stage](stage.md#StageViews)
 - Body: `./code/play-practice.ts` (typescript)
-- Effects: asynchronous, display, read, time, write
+- Effects: asynchronous, display, random, read, time, write
 - Serves: [Practise yoga on one's own, guided](product.md#PractiseGuided)
 - Used by: [Show the home page](app.md#ShowHome), [Show the composer](composing.md#ShowComposer)
 - Applies: [Said aloud, the screen awake](principles.md#SaidAloud)

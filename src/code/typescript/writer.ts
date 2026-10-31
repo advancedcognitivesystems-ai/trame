@@ -118,9 +118,11 @@ const body = (deps: Deps) => {
       }
       const constants = Object.entries(step.constants ?? {})
       stepValues.push(...constants.map(([, v]) => v))
+      for (const d of step.deps) if (d.members) stepValues.push(d.members)
       const args = object([
         ...constants.map(([k, v]) => property(k, JSON.stringify(v))),
-        ...step.deps.map((d) => property(d.param, ident(d.name))),
+        // Through a port, a capability: only the methods the node uses of it (since g83).
+        ...step.deps.map((d) => property(d.param, d.members ? frozenCall(frozen.limited, [ident(d.name), JSON.stringify(d.members)]) : ident(d.name))),
       ])
       const src = a.bodies.get(step.node)!
       if (src.file !== undefined) {

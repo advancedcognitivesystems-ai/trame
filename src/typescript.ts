@@ -30,6 +30,22 @@ const bare = String.raw`(number) (string) (template_string) (regex) (unary_expre
 const literal = String.raw`[${bare} (parenthesized_expression [${bare}])]`
 
 /**
+ * TypeScript's libraries of types
+ * The declaration files TypeScript ships with its compiler: those of ECMAScript are named lib.es5.d.ts, lib.es2015.core.d.ts
+ * and so on; the others declare what a host gives (lib.dom.d.ts, a browser's; lib.webworker.d.ts, a worker's). A global
+ * declared only by ECMAScript's does nothing outside, but for a few members (Math.random, Date.now).
+ */
+export const TypeScriptLibraries = standard({
+  owner: "trame",
+  serves: [ExecutableSpecification],
+  source: "TypeScript, the lib option and the declaration files under src/lib of the compiler",
+  url: "https://www.typescriptlang.org/tsconfig/#lib",
+  constants: {
+    ecmaScript: { value: "lib.es", meaning: "How the file of an ECMAScript library of types starts its name" },
+  },
+})
+
+/**
  * Globals that reach outside
  * The globals through which a body would touch the world: the network, the process, the time, randomness, storage.
  * Only the kinds that may touch the platform (implementations) use them; the TypeScript queries watch each one.

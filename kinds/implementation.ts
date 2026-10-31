@@ -1,6 +1,6 @@
 import {
-  defineKind, field, optional, edge, optionalEdge, hole, keysOf, edgesOf, Stage, Status, KindName, EdgeName,
-  type AnyNode, type Node, type Provides, type HasDeps, type Provided, type ProvidedBy, type FileBody, type Signature, type View,
+  defineKind, field, optional, edge, optionalEdge, hole, keysOf, edgesOf, Stage, Status, KindName, EdgeName, CoveredEffects,
+  type AnyNode, type Node, type Provides, type HasDeps, type Provided, type ProvidedBy, type FileBody, type Signature, type View, type Reach,
 } from "../trame/kernel"
 import { bindingKind } from "./binding"
 import { verifiedStatus } from "./scenario"
@@ -48,10 +48,20 @@ const kind = defineKind({
     return all.every((s) => s === Status.held) ? Status.held : Status.unknown
   },
 
-  // What it does goes through its dependencies: if more comes out than the port promises, it is an error.
+  // What it does goes through its dependencies, and through what its body reaches (since g83: a module, a package, a
+  // global): if more comes out than its ports promise, or what it reaches says nothing, it is an error.
   holes: (self, g) => {
     const { counts, texts, lists } = g.lib
+    // A promise may cover another (what keeps writes, only it reads).
+    const promised = new Set(self.implements.flatMap((port) => port.effects).flatMap((e) => [e, ...(CoveredEffects[e] ?? [])]))
+    const reached = self.reaches?.() ?? []
+    const named = (r: Reach) => say.implementationReached(r.module, r.name, r.global, r.member)
     return [
+      ...reached.filter((r) => r.effects === undefined).map((r) => hole.error(say.implementationReachesUnsaid(named(r), r.where))),
+      ...reached.map((r) => {
+        const beyond = (r.effects ?? []).filter((e) => !promised.has(e))
+        return counts.any(beyond) && hole.error(say.implementationReachesBeyond(named(r), texts.concat(lists.enumeration(beyond)), r.where))
+      }),
       ...self.implements.map((port) => {
         const promised = new Set(port.effects)
         const extra = self.effects.filter((e) => !promised.has(e))

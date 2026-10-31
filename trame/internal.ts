@@ -224,7 +224,35 @@ const frozenContext = (deps: Record<string, unknown> = {}) => ({
   wireDeps: async () => deps,
 })
 
+/**
+ * A capability (since g83): what a port's realization gives, with only these members of it, read through. A method keeps
+ * its realization as `this`; any other member reads as nothing, and nothing can be set: what may be done through it is
+ * what the graph says the consumer uses.
+ */
+export const limited = (value: unknown, members: readonly string[]): unknown => {
+  if (value === null || (typeof value !== "object" && typeof value !== "function")) return value
+  const allowed = new Set(members)
+  const target = value as Record<string | symbol, unknown>
+  return new Proxy(target, {
+    // A symbol is a protocol of the language (iteration, conversion), not an operation of the contract: it reads through.
+    get: (t, k) => {
+      if (typeof k === "string" && !allowed.has(k)) return undefined
+      const v = Reflect.get(t, k)
+      return typeof v === "function" ? (v as (...a: unknown[]) => unknown).bind(t) : v
+    },
+    has: (t, k) => (typeof k === "string" ? allowed.has(k) : Reflect.has(t, k)),
+    ownKeys: () => [...allowed],
+    getOwnPropertyDescriptor: (t, k) => (typeof k === "string" && allowed.has(k) ? { ...Reflect.getOwnPropertyDescriptor(t, k), configurable: true } : undefined),
+    set: () => false,
+    defineProperty: () => false,
+    deleteProperty: () => false,
+    setPrototypeOf: () => false,
+  })
+}
+
 export const frozen = {
+  /** A capability: a realization limited to what its consumer uses. */
+  limited,
   /** The data in force of a node that a rule reads by name, at the date of the assembly. */
   data(n: AnyNode, ref: string, data: Record<string, unknown>): void {
     const m = meta(n)

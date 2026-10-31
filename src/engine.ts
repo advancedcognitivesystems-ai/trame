@@ -12,6 +12,7 @@ import {
 import { Http, MediaTypes, ServerSentEvents, Uri } from "#std/web"
 import { Mulberry32, MultiplicativeHash, DepthFirstSearch, Sha256 } from "#std/algorithms"
 import { EcmaScript, EcmaScriptReservedWords, TextAsCode } from "#std/ecmascript"
+import { PlatformEffects } from "#std/effects"
 import { TextFile, GnuPositions } from "#std/text"
 import { TypeScriptApi } from "./standards"
 import { ExitStatus, NodeEncodings, NodeEvents, NodeModuleSpecifiers } from "#std/system"
@@ -29,7 +30,7 @@ import { CodeSpan } from "./markdown"
 import { CodeLines } from "./text"
 import { Page } from "./page"
 import { PageRendering } from "./rendering"
-import { TypeScript, TypeScriptSyntax } from "./typescript"
+import { TypeScript, TypeScriptSyntax, TypeScriptLibraries } from "./typescript"
 import { VersionOrder } from "./packages"
 import { LibraryOfAModule } from "./libraries"
 import { Advancement, EnginePin } from "./generations"
@@ -174,7 +175,7 @@ export const StaticAnalysis = fn({
     specifiers: NodeModuleSpecifiers, syntax: TypeScriptSyntax, references: References, file: TextFile,
     options: TypeScriptOptions, ts: TypeScriptCompiler, kept: KeptResults, runs: RunStore, hashing: Hashing, sha256: Sha256, encodings: NodeEncodings,
     paths: Paths, positions: Positions, docComment: DocComment, counts: Counts, sequences: Sequences, texts: Texts, messages: CompilerMessages,
-    textAsCode: TextAsCode,
+    textAsCode: TextAsCode, libraries: TypeScriptLibraries, prelude: PreludeApi,
   },
   body: code.file<typeof import("./code/engine/static-analysis").default>("./code/engine/static-analysis.ts"),
 })
@@ -236,7 +237,7 @@ export const Compiler = fn({
   deps: { encodings: NodeEncodings, specifiers: NodeModuleSpecifiers, values: ValueTypes, layout: Layout, severityOrder: SeverityOrder, cycles: Cycles, references: References,
     positions: Positions, loader: ModuleLoader, reading: FileReading, paths: Paths, analysis: StaticAnalysis, project: Project, graph: GraphApi,
     wiring: Wiring, drivers: Drivers, prelude: Prelude, counts: Counts, sequences: Sequences, texts: Texts, messages: CompilerMessages,
-    fingerprints: Fingerprints, signatures: Signatures, engines: EngineFingerprint, runs: KeptRuns,
+    fingerprints: Fingerprints, signatures: Signatures, engines: EngineFingerprint, runs: KeptRuns, platform: PlatformEffects,
   },
   body: code.file<typeof import("./code/engine/compiler").default>("./code/engine/compiler.ts"),
 })

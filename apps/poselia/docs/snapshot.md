@@ -120,7 +120,7 @@ Component · `PoseliaApp`
 Port · `Bowl`
 
 - Owner: ghalaax
-- Declared effects: display
+- Declared effects: display, random
 
 ### Bowl rung
 
@@ -1584,6 +1584,7 @@ Package · `ThreePackage` · **held**
 - Name: three
 - Version: 0.186.0
 - In the registry: https://www.npmjs.com/package/three
+- What it may do: display
 
 ### three.js, its types
 

@@ -10,7 +10,7 @@
 
 ### Audit of the packages
 
-`PackageAudit` · `src/packages.ts:82`
+`PackageAudit` · `src/packages.ts:83`
 
 trame audit asks the registry, for each package of the graph, its known vulnerabilities and its latest version, and writes the answers as dated evidence, which the packages read: a package is violated by a vulnerability of the severities counted; it is behind by the releases that break what uses it (majors, or minors under 1.0.0), up to the version it is held below. The value names the file of the evidence and the severities counted; the fields of a package the commands read (PackageField) and the reports (PackageReport) are words of the prelude, which the kind declares.
 
@@ -29,7 +29,7 @@ trame audit asks the registry, for each package of the graph, its known vulnerab
 
 ### Order of versions
 
-`VersionOrder` · `src/packages.ts:100` · status: **held**
+`VersionOrder` · `src/packages.ts:101` · status: **held**
 
 Two versions compared part by part, as numbers, from the major (a part one of them lacks counts as zero): a version is below another if it comes before it. The releases between two versions that break what uses the package are its majors, or its minors while its major is that of initial development. trame audit counts with it; the kind of a package checks with it that a package stays below the version it is held below.
 
@@ -46,13 +46,14 @@ Two versions compared part by part, as numbers, from the major (a part one of th
 
 ### Grammar of CSS
 
-`CssGrammar` · `src/packages.ts:56` · status: **held**
+`CssGrammar` · `src/packages.ts:57` · status: **held**
 
 - Name: `tree-sitter-css` https://www.npmjs.com/package/tree-sitter-css
 - Version: `0.25.0`
 - Installed: `0.25.0`
 - Vulnerabilities: none known (2026-10-29)
 - Latest version: this one (2026-10-29)
+- What it may do: none known
 
 - Owner: trame
 - Used by: [CSS style sheets](html.md#CssStyleSheets)
@@ -61,7 +62,7 @@ Two versions compared part by part, as numbers, from the major (a part one of th
 
 ### esbuild
 
-`EsbuildPackage` · `src/packages.ts:29` · status: **held**
+`EsbuildPackage` · `src/packages.ts:30` · status: **held**
 
 Bundles the page's program into one module.
 
@@ -70,6 +71,7 @@ Bundles the page's program into one module.
 - Installed: `0.28.2`
 - Vulnerabilities: none known (2026-10-29)
 - Latest version: this one (2026-10-29)
+- What it may do: read, write, process
 
 - Owner: trame
 - Used by: [esbuild](platform.md#Esbuild)
@@ -78,7 +80,7 @@ Bundles the page's program into one module.
 
 ### Grammar of HCL
 
-`HclGrammar` · `src/packages.ts:62` · status: **held**
+`HclGrammar` · `src/packages.ts:63` · status: **held**
 
 The grammar Terraform's modules are read with.
 
@@ -87,6 +89,7 @@ The grammar Terraform's modules are read with.
 - Installed: `1.2.0`
 - Vulnerabilities: none known (2026-10-29)
 - Latest version: this one (2026-10-29)
+- What it may do: none known
 
 - Owner: trame
 - Used by: [Terraform](terraform.md#Terraform)
@@ -95,13 +98,14 @@ The grammar Terraform's modules are read with.
 
 ### Grammar of HTML
 
-`HtmlGrammar` · `src/packages.ts:51` · status: **held**
+`HtmlGrammar` · `src/packages.ts:52` · status: **held**
 
 - Name: `tree-sitter-html` https://www.npmjs.com/package/tree-sitter-html
 - Version: `0.23.2`
 - Installed: `0.23.2`
 - Vulnerabilities: none known (2026-10-29)
 - Latest version: this one (2026-10-29)
+- What it may do: none known
 
 - Owner: trame
 - Used by: [HTML markup](html.md#HtmlMarkup)
@@ -110,7 +114,7 @@ The grammar Terraform's modules are read with.
 
 ### Types of Node.js
 
-`NodeTypes` · `src/packages.ts:68` · status: **held**
+`NodeTypes` · `src/packages.ts:69` · status: **held**
 
 The declarations of Node's modules, which the compiler reads for the implementations that import them.
 
@@ -120,6 +124,7 @@ The declarations of Node's modules, which the compiler reads for the implementat
 - Vulnerabilities: none known (2026-10-29)
 - Latest version: latest 26.6.6, held below 23.0.0 (2026-10-29)
 - Held below: `23.0.0`: the declarations follow the Node.js that runs the engine, version 22: those of a later Node would let the code use what this one does not have
+- What it may do: none known
 
 - Owner: trame
 - Used by: [TypeScript compiler](platform.md#RealTypeScript)
@@ -128,7 +133,7 @@ The declarations of Node's modules, which the compiler reads for the implementat
 
 ### tsx
 
-`TsxPackage` · `src/packages.ts:35` · status: **held**
+`TsxPackage` · `src/packages.ts:36` · status: **held**
 
 Runs TypeScript as it is, without a build: the engines, the loader of the graph's modules.
 
@@ -137,6 +142,7 @@ Runs TypeScript as it is, without a build: the engines, the loader of the graph'
 - Installed: `4.23.15`
 - Vulnerabilities: none known (2026-10-29)
 - Latest version: this one (2026-10-29)
+- What it may do: read, execution
 
 - Owner: trame
 - Used by: [tsx loader](platform.md#TsxLoader)
@@ -145,13 +151,14 @@ Runs TypeScript as it is, without a build: the engines, the loader of the graph'
 
 ### Grammar of TypeScript
 
-`TypeScriptGrammar` · `src/packages.ts:46` · status: **held**
+`TypeScriptGrammar` · `src/packages.ts:47` · status: **held**
 
 - Name: `tree-sitter-typescript` https://www.npmjs.com/package/tree-sitter-typescript
 - Version: `0.23.2`
 - Installed: `0.23.2`
 - Vulnerabilities: none known (2026-10-29)
 - Latest version: this one (2026-10-29)
+- What it may do: none known
 
 - Owner: trame
 - Used by: [TypeScript](typescript.md#TypeScript)
@@ -170,6 +177,7 @@ The compiler: it reads the declarations of the graph, checks the bodies against 
 - Vulnerabilities: none known (2026-10-29)
 - Latest version: latest 7.0.2, held below 7.0.0 (2026-10-29)
 - Held below: `7.0.0`: TypeScript 7 is the compiler rewritten in Go: its package no longer gives the JavaScript API the engine reads the declarations with (a program, its type checker, its comments), only an unstable one
+- What it may do: read
 
 - Owner: trame
 - Used by: [TypeScript compiler](platform.md#RealTypeScript)
@@ -178,7 +186,7 @@ The compiler: it reads the declarations of the graph, checks the bodies against 
 
 ### web-tree-sitter
 
-`WebTreeSitterPackage` · `src/packages.ts:41` · status: **held**
+`WebTreeSitterPackage` · `src/packages.ts:42` · status: **held**
 
 tree-sitter in WebAssembly: the syntax trees of the bodies.
 
@@ -187,6 +195,7 @@ tree-sitter in WebAssembly: the syntax trees of the bodies.
 - Installed: `0.27.1`
 - Vulnerabilities: none known (2026-10-29)
 - Latest version: this one (2026-10-29)
+- What it may do: read, execution
 
 - Owner: trame
 - Used by: [tree-sitter in WebAssembly](platform.md#WebTreeSitter)

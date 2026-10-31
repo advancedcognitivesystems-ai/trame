@@ -4,7 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 0 | 621 |
+| trame | 0 | 0 | 0 | 622 |
 
 <a id="trame"></a>
 
@@ -36,7 +36,6 @@ Nothing to decide or watch.
 | [Command line](architecture.md#CommandLine) | Port |  |
 | [Compression](architecture.md#Compression) | Port |  |
 | [Decompression](architecture.md#Decompression) | Port |  |
-| [Effects](architecture.md#Effects) | Vocabulary |  |
 | [File reading](architecture.md#FileReading) | Port |  |
 | [File trees](architecture.md#FileTrees) | Port |  |
 | [File writing](architecture.md#FileWriting) | Port |  |
@@ -510,6 +509,7 @@ Nothing to decide or watch.
 | [Generation 80](releases.md#G80) | Release |  |
 | [Generation 81](releases.md#G81) | Release |  |
 | [Generation 82](releases.md#G82) | Release |  |
+| [Generation 83](releases.md#G83) | Release |  |
 | [Generation 9](releases.md#G9) | Release |  |
 | [Common rendering](rendering.md#Common) | Function | **held** |
 | [Documents in Markdown](rendering.md#DocumentsInMarkdown) | Technical choice | **held** |
@@ -633,6 +633,7 @@ Nothing to decide or watch.
 | [Strict inequality](typescript.md#StrictInequality) | Syntax element | **held** |
 | [Text](typescript.md#StringLiteral) | Syntax element | **held** |
 | [TypeScript](typescript.md#TypeScript) | Language | **held** |
+| [TypeScript's libraries of types](typescript.md#TypeScriptLibraries) | Standard |  |
 | [The syntax of the programs Trame writes](typescript.md#TypeScriptSyntax) | Standard |  |
 | [TypeScript writer](typescript.md#TypeScriptWriter) | Function | **held** |
 | [Union type](typescript.md#UnionType) | Syntax element | **held** |

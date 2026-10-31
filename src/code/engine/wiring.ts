@@ -26,7 +26,8 @@ export interface Step {
   node: AnyNode
   /** body: the body called with its dependencies; value: what the kind gives (a decision, a rule). */
   how: WireMode
-  deps: { param: string; name: string }[]
+  /** Its dependencies: the parameter, the step that gives it, and, for a port, the members the node may use of it. */
+  deps: { param: string; name: string; members?: string[] }[]
   /** The constants the node declares: its body receives them as parameters, next to its dependencies. */
   constants: Record<string, string | number>
   /** The ports crossed to reach this node (a port delegates to its implementation). */
@@ -175,7 +176,8 @@ const body = (deps: Deps) => {
           const deps: Step["deps"] = []
           for (const [param, target] of depsOf(n)) {
             const name = visit(target, [])
-            if (name) deps.push({ param, name })
+            const members = g.state.capabilities?.get(n)?.[param]
+            if (name) deps.push({ param, name, members })
           }
           const name = varName(n, taken)
           p.steps.push({ name, node: n, how: WireMode.body, deps, constants: constantsOf(n), via })
@@ -226,7 +228,12 @@ const body = (deps: Deps) => {
       } else {
         const fn = await loadBody(this.host, step.node)
         const byName = new Map(this.plan.steps.map((s) => [s.name, s.node]))
-        const args = { ...step.constants, ...Object.fromEntries(step.deps.map((d) => [d.param, this.values.get(byName.get(d.name)!)])) }
+        // Through a port, a capability: the realization with only the methods the node uses of it (since g83).
+        const given = (d: Step["deps"][number]) => {
+          const value = this.values.get(byName.get(d.name)!)
+          return d.members ? deps.prelude.internal.limited(value, d.members) : value
+        }
+        const args = { ...step.constants, ...Object.fromEntries(step.deps.map((d) => [d.param, given(d)])) }
         value = await fn(args)
       }
       this.values.set(step.node, value)

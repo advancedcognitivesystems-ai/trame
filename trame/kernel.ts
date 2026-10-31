@@ -438,6 +438,20 @@ export const doc = {
   figure: (figure: Figure, caption?: string): Block => ({ type: "figure", figure, caption }),
 }
 
+/**
+ * What a body reaches outside itself (since g83): a module it imports a value from (and the name it imports), or a
+ * global (and the member read of it); what that may do, nothing when nobody says (the platform's table in std, or the
+ * package of the graph that names the module); the place it is reached at.
+ */
+export interface Reach {
+  module?: string
+  name?: string
+  global?: string
+  member?: string
+  effects?: readonly string[]
+  where: string
+}
+
 /** What reading the source code knows about a node. */
 export interface StaticInfo {
   file: string
@@ -456,6 +470,8 @@ export interface StaticInfo {
    * compiler writes them, and whether that answer is true or false. Since g81.
    */
   signature?: { params: string[]; returns: string; decides: boolean }
+  /** The members of the type its declaration names first (a port's contract: its methods). Since g83. */
+  members?: string[]
 }
 
 // The traversal API: the only way to read the graph ----------------------------
@@ -497,6 +513,8 @@ export interface View {
   result<T = unknown>(): T | undefined
   /** The quantity a field measures (the reference of its node), as the type of its value says. Since g80. */
   quantityOf?(field: string): string | undefined
+  /** What its bodies reach outside them, and what each may do (since g83). */
+  reaches?(): Reach[]
   /**
    * What the node gives once wired, when its kind's callable field is a body (a requirement's rule called with its
    * dependencies): undefined otherwise. It throws what wiring met (a value nobody decided). Since g79.

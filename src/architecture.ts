@@ -7,7 +7,7 @@ import { environment } from "../kinds/environment"
 import { rule } from "../kinds/rule"
 import { fieldsOf, KindName, EdgeName } from "../trame/kernel"
 import { NeverReaches, WithoutEffects, WordsOf } from "#std/rules"
-import { vocabulary, type WordOf } from "../kinds/vocabulary"
+import { Effects, type Effect } from "#std/effects"
 import type { Grammar } from "../kinds/language"
 import { PageLoading } from "#std/platform"
 
@@ -240,25 +240,6 @@ export interface Resources {
   narrowStyle: string
 }
 
-/**
- * Effects
- * What a port may do to the world. A port declares only words of this vocabulary.
- */
-export const Effects = vocabulary({
-  owner: "trame",
-  words: {
-    read: "Reads a state (files, a database)",
-    write: "Changes a state",
-    execution: "Runs loaded code",
-    process: "Starts or controls processes",
-    terminal: "Reads the arguments, writes on the outputs",
-    time: "Reads the time, or waits",
-    network: "Talks to another machine",
-    display: "Shows a page to a person, and hears what they do on it",
-    keeps: "Keeps what was computed, to give it back the same: what it writes, only it reads",
-  },
-})
-export type Effect = WordOf<typeof Effects>
 /** The effects of a port, checked by TypeScript against the vocabulary. */
 const effects = (...e: Effect[]): Effect[] => e
 
@@ -266,7 +247,7 @@ const effects = (...e: Effect[]): Effect[] => e
  * Prelude
  * The registry of nodes and kinds, and the tooling of frozen programs: what the language shares with the engine.
  */
-export const Prelude = port<Prelude>({ owner: "trame", declaredEffects: effects() })
+export const Prelude = port<Prelude>({ owner: "trame", declaredEffects: effects("read") })
 
 /**
  * File reading
@@ -295,7 +276,7 @@ export const ModuleLoader = port<ModuleLoader>({ owner: "trame", declaredEffects
  * Parses a text with a tree-sitter grammar, and gives back what queries catch in it, as records. The only place that
  * touches tree-sitter: no node of a tree crosses it.
  */
-export const SyntaxTrees = port<SyntaxTrees>({ owner: "trame", declaredEffects: effects("read") })
+export const SyntaxTrees = port<SyntaxTrees>({ owner: "trame", declaredEffects: effects("read", "execution") })
 
 /**
  * TypeScript compiler
@@ -362,18 +343,27 @@ export const RunStore = port<RunStore>({ owner: "trame", declaredEffects: effect
  * Process
  * The current directory, the environment, and starting other processes.
  */
-export const Process = port<Process>({ owner: "trame", declaredEffects: effects("process") })
+export const Process = port<Process>({
+  owner: "trame",
+  declaredEffects: {
+    cwd: effects("read"), program: effects("read", "terminal"), env: effects("read"),
+    relaunch: effects("process", "read", "terminal"), runTs: effects("process", "read"), onSignal: effects("process"),
+  },
+})
 
 /**
  * Terminal
  * The arguments, the outputs, the exit code.
  */
-export const Terminal = port<Terminal>({ owner: "trame", declaredEffects: effects("terminal") })
+export const Terminal = port<Terminal>({
+  owner: "trame",
+  declaredEffects: { args: effects("terminal"), write: effects("terminal"), writeRaw: effects("terminal"), error: effects("terminal"), exit: effects("process") },
+})
 
 /**
  * Clock
  */
-export const Clock = port<Clock>({ owner: "trame", declaredEffects: effects("time") })
+export const Clock = port<Clock>({ owner: "trame", declaredEffects: effects("time", "read") })
 
 /**
  * Timer
@@ -412,7 +402,7 @@ export const Resources = port<Resources>({ owner: "trame", declaredEffects: effe
  * Programs
  * Runs another engine (a frozen generation, a candidate) and reads what it prints.
  */
-export const Programs = port<Programs>({ owner: "trame", declaredEffects: effects("process", "execution") })
+export const Programs = port<Programs>({ owner: "trame", declaredEffects: effects("process", "execution", "read") })
 
 /**
  * File trees
@@ -451,7 +441,7 @@ export const PageMemory = port<PageMemory>({ owner: "trame", declaredEffects: { 
  * Feed of the graph
  * The compiled graph the page shows: carried by an exported page, or given by trame dev at each compilation.
  */
-export const GraphFeed = port<GraphFeed>({ owner: "trame", declaredEffects: { packed: effects("read"), live: effects("read"), follow: effects("network") } })
+export const GraphFeed = port<GraphFeed>({ owner: "trame", declaredEffects: { packed: effects("display"), live: effects("display"), follow: effects("network", "asynchronous") } })
 
 /**
  * Decompression

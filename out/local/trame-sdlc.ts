@@ -53,7 +53,7 @@ const graphPageOpening = {"settle":2}
 // "What the programs of Trame's SDLC say" · message catalog
 const sdlcWords = await frozen.body(SdlcWords)({})
 // "Open the graph page" · entry point
-const openTheGraphPage = await body_openTheGraphPage({ browser: playwrightBrowser, page: graphPage, language, selectors: graphPageSelectors, opening: graphPageOpening, say: sdlcWords, exit: exitStatus, counts })
+const openTheGraphPage = await body_openTheGraphPage({ browser: frozen.limited(playwrightBrowser, ["open"]), page: graphPage, language, selectors: graphPageSelectors, opening: graphPageOpening, say: sdlcWords, exit: exitStatus, counts })
 
 const started = (await frozen.start(TrameSdlc, { exposure: nodeProgramCommands }, [
   { title: "Open the graph page", fields: {"trigger":{"type":"command","name":"open-graph-page"}}, value: openTheGraphPage },

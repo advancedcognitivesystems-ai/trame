@@ -14,8 +14,10 @@ import type { Edge, GraphImpl } from "./graph"
 import type { Api as WiringApi } from "./wiring"
 import type { Api as CyclesApi } from "./cycles"
 import type { Api as DriversApi, LiteralFound, LiteralSource } from "../languages/drivers"
-import { AnyTarget, ArtifactField, DeliveryField, EdgeMode, EdgeName, FieldType, KindHook, KindName, Moment, Origin, QuantityEdge, QuantityField, ResolutionKind, ResolutionOutcome, Severity, Stage } from "../../../trame/kernel"
-import type { AnyNode, AnyKind, Constant, Evidence, HoleSpec, Noun, ProvidedBy, Resolution, StaticInfo } from "../../../trame/kernel"
+import { AnyTarget, ArtifactField, DeliveryField, EdgeMode, EdgeName, FieldType, KindHook, KindName, Moment, Origin, PackageField, QuantityEdge, QuantityField, ResolutionKind, ResolutionOutcome, Severity, Stage } from "../../../trame/kernel"
+import type { AnyNode, AnyKind, Constant, Evidence, HoleSpec, Noun, ProvidedBy, Reach, Resolution, StaticInfo } from "../../../trame/kernel"
+import type { Reached } from "./static-analysis"
+import type { PlatformEffects, MayDo } from "#std/effects"
 import type { Fingerprints, References } from "../../engine"
 import type { Counts, Sequences, Texts, ValueTypes } from "#std/algebra"
 import type { CompilerMessages } from "../../messages"
@@ -137,6 +139,8 @@ export interface Loaded {
   textAsCode?: string[]
   /** What each node's bodies use of their parameters, by the property holding the body (since g82). */
   uses?: Map<AnyNode, Record<string, Record<string, string[]>>>
+  /** What each node's bodies reach outside them (since g83). */
+  reaches?: Map<AnyNode, Reached[]>
   evidence: Map<string, Evidence[]>
   /** The records of evidence whose seal no longer matches what they say: not counted, each an error. */
   broken?: (Evidence & { node: string })[]
@@ -185,6 +189,8 @@ export interface Deps {
   engines: EnginesApi
   /** Where the runs of a project (its scenarios played) are kept, and for as long as what they read is as it was. */
   runs: KeptRuns
+  /** What the platform's modules and globals may do (since g83): an implementation may do what what it reaches may do. */
+  platform: ProvidedBy<typeof PlatformEffects>
 }
 
 const body = (deps: Deps) => {
@@ -304,7 +310,7 @@ const body = (deps: Deps) => {
     // Where each library's name leads, for the TypeScript compiler: its sources as they are on disk.
     const { imports, separator, pattern } = deps.specifiers
     const paths = Object.fromEntries(libraries.map((lib) => [imports + lib.name + separator + pattern, [join(lib.root, sources, pattern)]]))
-    const { infos: analysis, moduleTitle, rests, typeErrors, quantityErrors, uses: used, textAsCode } = analyze(modules, extra, root, paths)
+    const { infos: analysis, moduleTitle, rests, typeErrors, quantityErrors, uses: used, textAsCode, reaches: reachedBy } = analyze(modules, extra, root, paths)
     // The nodes of the project and of its libraries: those their modules export. The registry of the kernel is shared
     // by the whole process (another project may be loaded into it): it is not read in full.
     const before = allNodes().length
@@ -324,16 +330,19 @@ const body = (deps: Deps) => {
     const nodes = [...mine].sort(byRef)
     const infos = new Map<AnyNode, StaticInfo>()
     const uses = new Map<AnyNode, Record<string, Record<string, string[]>>>()
+    const reaches = new Map<AnyNode, Reached[]>()
     for (const n of nodes) {
       const i = analysis.get(refOf(n))
       if (i) infos.set(n, i)
       const u = used.get(refOf(n))
       if (u) uses.set(n, u)
+      const r = reachedBy.get(refOf(n))
+      if (r) reaches.set(n, r)
     }
     const bodies = bodiesOf(root, nodes, infos)
     return {
       code: codeOf(root, nodes, infos),
-      root, modules: own.map((m) => m.module), moduleTitle, nodes, anonymous, infos, rests, typeErrors, quantityErrors, textAsCode, uses, ...readEvidence(root), installed: loadInstalled(root),
+      root, modules: own.map((m) => m.module), moduleTitle, nodes, anonymous, infos, rests, typeErrors, quantityErrors, textAsCode, uses, reaches, ...readEvidence(root), installed: loadInstalled(root),
       engine: dirs.engine === undefined ? undefined : deps.engines.recorded(dirs.engine),
       libraries: libraries.map(({ name, root: at, path, version, files }) => ({ name, root: at, path, version, modules: files.map((m) => m.module) })),
       bodies: new Map([...bodies].map(([language, { sources }]) => [language, sources])),
@@ -441,6 +450,42 @@ const body = (deps: Deps) => {
           out.set(node, [...(out.get(node) ?? []), { file, items: mineItems }])
         }
       }
+    }
+    return out
+  }
+
+  /**
+   * What each node's bodies reach, and what each may do: a module as the platform's table says (all of it, or the name
+   * imported), or as the package of the graph that names it declares; a host's global as the table says (all of it, or
+   * the member read); an ECMAScript global nothing, but for the members and the constructions the table names. Nothing
+   * known when nobody says.
+   */
+  function reachesOf(l: Loaded, nodes: readonly AnyNode[]): Map<AnyNode, Reach[]> {
+    const { platform } = deps
+    const part = (x: MayDo | undefined, name: string | undefined): readonly string[] | undefined =>
+      x === undefined ? undefined : Array.isArray(x) ? x : name === undefined ? undefined : (x as Readonly<Record<string, readonly string[]>>)[name]
+    const packages = new Map<string, readonly string[] | undefined>()
+    for (const n of nodes) {
+      if (meta(n).def.name !== KindName.package) continue
+      const name = meta(n).data[PackageField.name]
+      const declared = meta(n).data[PackageField.effects]
+      if (values.isText(name)) packages.set(name, Array.isArray(declared) ? declared : undefined)
+    }
+    const ofPackage = (module: string): readonly string[] | undefined => {
+      const name = [...packages.keys()].find((p) => module === p || module.startsWith(p + deps.specifiers.separator))
+      return name === undefined ? undefined : packages.get(name)
+    }
+    const effectsOf = (r: Reached): readonly string[] | undefined => {
+      if (r.module !== undefined) return part(platform.modules[r.module], r.name) ?? ofPackage(r.module)
+      if (r.global === undefined) return undefined
+      // A member of the global object is that global; the global object whole is everything, which nobody can promise.
+      if (platform.globalObjects.includes(r.global)) return r.member === undefined ? undefined : part(platform.hosts[r.member], undefined)
+      if (r.ecmaScript) return (r.constructed ? platform.constructed[r.global] : r.member === undefined ? undefined : platform.ecmaScript[r.global]?.[r.member]) ?? []
+      return part(platform.hosts[r.global], r.member)
+    }
+    const out = new Map<AnyNode, Reach[]>()
+    for (const [n, reached] of l.reaches ?? []) {
+      out.set(n, reached.map((r) => ({ module: r.module, name: r.name, global: r.global, member: r.member, effects: effectsOf(r), where: r.where })))
     }
     return out
   }
@@ -742,6 +787,7 @@ const body = (deps: Deps) => {
     const blocked = new Map<string, Map<string, { what: Noun; of: AnyNode; count: number }>>()
     const results = new Map<AnyNode, unknown>()
     const effects = new Map<AnyNode, string[]>()
+    const capabilities = new Map<AnyNode, Record<string, string[]>>()
     // Filled after the bodies are checked, before anything is run.
     const refused = new Set<AnyNode>()
     // The runs of the project: those of its scenarios already played, given back while what they read is as it was.
@@ -766,7 +812,8 @@ const body = (deps: Deps) => {
     // The quantities of the graph, filled once their catalogs are wired (below): kinds write a value in its units.
     const quantities = new Map<string, CompiledQuantity>()
     const g: GraphImpl = makeGraph({
-      moment: Moment.consolidated, today, nodes, edges, infos, inactive, results, effects, kept, asGiven: opts.asGiven, quantities,
+      moment: Moment.consolidated, today, nodes, edges, infos, inactive, results, effects, kept, asGiven: opts.asGiven, quantities, reaches: reachesOf(l, nodes),
+      capabilities,
       wire: (deps, env) => wireDeps({ graph: g, root: l.root, today, refused }, deps, env),
       plan: (entries, env) => plan({ graph: g, root: l.root, today, refused }, entries, env),
       evidence: given, installed: l.installed, libraries: new Map(l.libraries.map((lib) => [lib.name, lib.version])), code: l.code,
@@ -838,6 +885,13 @@ const body = (deps: Deps) => {
       return out
     }
     for (const n of nodes) effectsOf(n)
+    // What each node may use of each port it depends on: the methods its bodies call, or all those of the contract.
+    for (const e of edges) {
+      if (e.param === undefined || e.stage !== Stage.execution || meta(e.to).def.name !== KindName.port) continue
+      const members = usedOf(e.from, e.param) ?? l.infos.get(e.to)?.members
+      if (!members) continue
+      capabilities.set(e.from, { ...capabilities.get(e.from), [e.param]: members })
+    }
 
     // Constants: each one has a value (a text or a number) and a meaning, and does not bear the name of a dependency.
     for (const n of nodes) {

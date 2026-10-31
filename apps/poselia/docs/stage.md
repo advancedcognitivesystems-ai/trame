@@ -185,6 +185,7 @@ Draws the scene in WebGL: the mannequin's segments and joints, the mat, the ligh
 - Installed: `0.186.0`
 - Vulnerabilities: none known (2026-10-29)
 - Latest version: 0.186.1 (2026-10-29)
+- What it may do: display
 
 - Owner: ghalaax
 - Used by: [The browser's stage](#BrowserStage)
@@ -202,6 +203,7 @@ The declarations TypeScript checks the stage's code against.
 - Installed: `0.186.0`
 - Vulnerabilities: none known (2026-10-29)
 - Latest version: this one (2026-10-29)
+- What it may do: not said: an implementation that imports it cannot promise anything
 
 - Owner: ghalaax
 - Used by: [The browser's stage](#BrowserStage)

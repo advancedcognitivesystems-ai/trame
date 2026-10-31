@@ -231,6 +231,14 @@ const body = () => ({
   packagePackage: () => "Package",
   packageHoldsBelow: () => "Held below",
   packageBecause: () => "Because",
+  implementationReached: (module?: string, name?: string, global?: string, member?: string) =>
+    module !== undefined ? (name !== undefined ? `${name} of ${module}` : module) : member !== undefined ? `${global}.${member}` : `${global}`,
+  implementationReachesUnsaid: (what: string, where: string) =>
+    `Reaches ${what} (${where}), and nobody says what it may do: the platform's table in std (PlatformEffects), or the package of the graph that names it (declaredEffects). What cannot be known cannot be promised`,
+  implementationReachesBeyond: (what: string, effects: string, where: string) =>
+    `Reaches ${what} (${where}), which may ${effects}: more than its ports promise`,
+  packageEffects: () => "What it may do",
+  packageEffectsUnsaid: () => "not said: an implementation that imports it cannot promise anything",
   packagePrepare: () => "Once installed",
   packageNotBelow: (version: string, ceiling: string) => `${version} is not below ${ceiling}, where the package is held`,
   packageHeldWithoutReason: (ceiling: string) => `Held below ${ceiling} without a reason`,

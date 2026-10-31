@@ -228,7 +228,7 @@ export interface Bowl {
  * Bowl
  * The bowl that marks a practice: struck, it rings and fades.
  */
-export const Bowl = port<Bowl>({ owner: "ghalaax", declaredEffects: ["display"] })
+export const Bowl = port<Bowl>({ owner: "ghalaax", declaredEffects: ["display", "random"] })
 
 /** What a scenario hears of the bowl. */
 export interface BowlHeard {

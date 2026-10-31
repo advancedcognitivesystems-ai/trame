@@ -141,6 +141,23 @@ Vocabulary · `TextAsCode`
 - Words: { eval: Runs a text as code (§ 19.2.1), Function: Makes a function of a text (§ 20.2.1.1), constructor: Leads from any value to its constructor, Function's among them (§ 20.1.3.1) }
 - Serves: A published value is cited, not copied
 
+## Standard library · Effects
+
+### Effects
+
+Vocabulary · `Effects`
+
+- Owner: trame
+- Words: { read: Reads a state (files, a database), write: Changes a state, execution: Runs loaded code, process: Starts or controls processes, terminal: Reads the arguments, writes on the outputs, time: Reads the time, or waits, network: Talks to another machine, display: Shows a page to a person, and hears what they do on it, keeps: Keeps what was computed, to give it back the same: what it writes, only it reads, random: Draws what nobody can foresee }
+- Serves: Ports of the platform, realized once
+
+### What the platform may do
+
+Decision · `PlatformEffects`
+
+- Decided by: trame
+- Value: { modules: { node:path: , node:url: , node:util: , node:events: , node:buffer: , node:zlib: , node:fs: { existsSync: read, readFileSync: read, readdirSync: read, statSync: read, lstatSync: read, realpathSync: read, readlinkSync: read, accessSync: read, watch: read, time, writeFileSync: write, appendFileSync: write, mkdirSync: write, mkdtempSync: write, rmSync: write, unlinkSync: write, renameSync: write, symlinkSync: write, copyFileSync: read, write, cpSync: read, write }, node:fs/promises: read, write, asynchronous, node:os: { tmpdir: read, homedir: read, platform: , EOL:  }, node:crypto: { createHash: , randomUUID: random, randomBytes: random }, node:child_process: process, node:http: network, asynchronous, node:https: network, asynchronous, node:net: network, asynchronous, node:sqlite: read, write, node:module: { createRequire: execution }, node:readline: terminal, asynchronous, node:timers: time, node:timers/promises: time, asynchronous }, hosts: { process: { argv: terminal, stdout: terminal, stderr: terminal, stdin: terminal, env: read, cwd: read, execPath: read, execArgv: read, pid: read, platform: , on: process, emit: process, exit: process, kill: process, exitCode: process, nextTick: asynchronous, hrtime: time }, Buffer: , Response: , DecompressionStream: , CompressionStream: , CSS: { escape:  }, matchMedia: display, scrollTo: display, console: terminal, fetch: network, asynchronous, XMLHttpRequest: network, asynchronous, WebSocket: network, asynchronous, EventSource: network, asynchronous, setTimeout: time, clearTimeout: time, setInterval: time, clearInterval: time, setImmediate: time, queueMicrotask: asynchronous, performance: time, crypto: { randomUUID: random, getRandomValues: random, subtle: asynchronous }, localStorage: read, write, sessionStorage: read, write, indexedDB: read, write, asynchronous, document: display, window: display, getComputedStyle: display, scrollX: display, scrollY: display, innerWidth: display, innerHeight: display, devicePixelRatio: display, ResizeObserver: display, IntersectionObserver: display, location: read, history: display, navigator: { languages: read, language: read, wakeLock: display, asynchronous, userAgent: read }, requestAnimationFrame: time, display, cancelAnimationFrame: time, display, speechSynthesis: display, SpeechSynthesisUtterance: , AudioContext: display, Audio: display, URL: , URLSearchParams: , TextEncoder: , TextDecoder: , structuredClone: , AbortController: , Blob: , atob: , btoa:  }, ecmaScript: { Math: { random: random }, Date: { now: time } }, constructed: { Date: time }, globalObjects: globalThis, self }
+
 ## Standard library · HTML and CSS
 
 ### WAI-ARIA
@@ -1129,7 +1146,7 @@ Port · `FilesKept`
 Port · `HeadlessBrowser`
 
 - Owner: trame
-- Declared effects: process, display, time
+- Declared effects: process, display, time, network, asynchronous
 
 ### Commands of a program
 
@@ -1193,6 +1210,7 @@ Package · `PlaywrightPackage` · **held**
 - Version: 1.56.0
 - In the registry: https://www.npmjs.com/package/playwright
 - Once installed: npx playwright install --with-deps chromium
+- What it may do: process, display, network, time, asynchronous
 
 ## Standard library · Web
 

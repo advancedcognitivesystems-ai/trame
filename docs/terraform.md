@@ -291,6 +291,7 @@ Writes the infrastructure of the provisioned implementations of an assembly: the
 - Owner: trame
 - Parameters: `syntax` ← [HCL](#HclSyntax) · `modules` ← [Terraform modules](#TerraformModules) · `layout` ← [Project layout](conventions.md#Layout) · `specifiers` ← [Node.js module specifiers](../std/docs/system.md#NodeModuleSpecifiers) · `comment` ← [Comment](#HclComment) · `text` ← [Text](#HclString) · `value` ← [Value](#HclValue) · `attribute` ← [Attribute](#HclAttribute) · `block` ← [Module call](#ModuleBlock) · `paths` ← [Paths](architecture.md#Paths) · `prelude` ← [Prelude](architecture.md#Prelude) · `counts` ← [Counts](../std/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/docs/algebra.md#Texts) · `dates` ← [Dates](messages.md#Dates) · `messages` ← [Messages of the drivers](messages.md#DriverMessages)
 - Body: `./code/terraform/writer.ts` (typescript)
+- Effects: read
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Verified by: [A component assembled](command-scenarios.md#ComponentAssembled)
 - Used by: [Drivers](languages.md#Drivers)

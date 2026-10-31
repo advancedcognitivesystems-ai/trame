@@ -95,7 +95,7 @@ Consequences: The Language decision holds the marks of the language with its tag
 
 ### The language receives the graph's values
 
-`TheLanguageReceivesTheGraph` · `src/engine.ts:312` · status: **held**
+`TheLanguageReceivesTheGraph` · `src/engine.ts:313` · status: **held**
 
 The kinds and the views are files, not nodes: what they write is given to them by the engine, from the graph.
 
@@ -116,7 +116,7 @@ Consequences: The engine gives them the graph's values through the graph they re
 
 ### The laws are requirements
 
-`LawsAreRequirements` · `src/engine.ts:330` · status: **held**
+`LawsAreRequirements` · `src/engine.ts:331` · status: **held**
 
 Each law of the kinds and the views is a requirement of the module laws: a pure rule, with its acceptance criteria. The functions "Laws" and "Views" observe a kind on nodes drawn at random, or a view on the graph, and ask the rule whether what they saw keeps the law; they phrase what breaks it.
 

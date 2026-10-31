@@ -14,6 +14,8 @@ const fields = {
   [PackageField.ceiling]: optional(field.text(say.packageHoldsBelow())),
   because: optional(field.text(say.packageBecause())),
   [PackageField.prepare]: optional(field.text(say.packagePrepare())),
+  /** What the code it holds may do, in the words of effects (since g83): what an implementation that imports it may do. */
+  [PackageField.effects]: optional(field.value<readonly string[]>(say.packageEffects())),
 }
 const F = keysOf(fields)
 
@@ -22,6 +24,14 @@ const textOf = (self: View, name: string, lib: Lib): string => {
   const x = self.field(name)
   return lib.values.isText(x) ? x : lib.texts.empty
 }
+/** What a package says it may do: its effects, none, or nothing said. */
+const mayDo = (self: View, lib: Lib) => {
+  const declared = self.field(F.declaredEffects)
+  if (!Array.isArray(declared)) return [say.packageEffectsUnsaid()]
+  const effects = declared.filter(lib.values.isText)
+  return lib.counts.any(effects) ? lib.lists.enumeration(effects) : [say.packageNone()]
+}
+
 /** A text field a package may leave out. */
 const optionalText = (self: View, name: string, lib: Lib): string | undefined => {
   const x = self.field(name)
@@ -40,7 +50,7 @@ const optionalText = (self: View, name: string, lib: Lib): string | undefined =>
 const kind = defineKind({
   name: KindName.package,
   label: { one: say.packagePackage(), many: say.packagePackages() },
-  renderOwns: [F.packageName, F.version, F.url, F.holdsBelow, F.because, F.prepare],
+  renderOwns: [F.packageName, F.version, F.url, F.holdsBelow, F.because, F.prepare, F.declaredEffects],
   fields,
   edges: {},
 
@@ -94,6 +104,7 @@ const kind = defineKind({
         { label: say.packageOutdated(), value: reported(outdated, outdated?.note || say.packageUpToDate()) },
         ...(ceiling !== undefined ? [{ label: say.packageHoldsBelow(), value: say.packageHeldBelow(doc.ident(ceiling), optionalText(self, F.because, g.lib)) }] : []),
         ...(prepare !== undefined ? [{ label: say.packagePrepare(), value: [doc.ident(prepare)] }] : []),
+        { label: say.packageEffects(), value: mayDo(self, g.lib) },
       ]),
     ]
   },
@@ -113,6 +124,8 @@ interface PackageInput {
   because?: string
   /** What it asks once installed, as a command run where it is installed (Playwright: its browser). */
   prepare?: string
+  /** What the code it holds may do (since g83): what an implementation that imports it may do. */
+  declaredEffects?: readonly string[]
 }
 
 /** `pkg({ owner, packageName: "esbuild", version: "0.23.1" })` */

@@ -18,6 +18,7 @@ import { SingleSource } from "./product"
  */
 export const TypeScriptPackage = pkg({
   owner: "trame", packageName: "typescript", version: "6.0.3", url: "https://www.npmjs.com/package/typescript",
+  declaredEffects: ["read"],
   holdsBelow: "7.0.0",
   because: "TypeScript 7 is the compiler rewritten in Go: its package no longer gives the JavaScript API the engine reads the declarations with (a program, its type checker, its comments), only an unstable one",
 })
@@ -26,47 +27,47 @@ export const TypeScriptPackage = pkg({
  * esbuild
  * Bundles the page's program into one module.
  */
-export const EsbuildPackage = pkg({ owner: "trame", packageName: "esbuild", version: "0.28.2", url: "https://www.npmjs.com/package/esbuild" })
+export const EsbuildPackage = pkg({ owner: "trame", packageName: "esbuild", version: "0.28.2", url: "https://www.npmjs.com/package/esbuild", declaredEffects: ["read", "write", "process"] })
 
 /**
  * tsx
  * Runs TypeScript as it is, without a build: the engines, the loader of the graph's modules.
  */
-export const TsxPackage = pkg({ owner: "trame", packageName: "tsx", version: "4.23.15", url: "https://www.npmjs.com/package/tsx" })
+export const TsxPackage = pkg({ owner: "trame", packageName: "tsx", version: "4.23.15", url: "https://www.npmjs.com/package/tsx", declaredEffects: ["read", "execution"] })
 
 /**
  * web-tree-sitter
  * tree-sitter in WebAssembly: the syntax trees of the bodies.
  */
-export const WebTreeSitterPackage = pkg({ owner: "trame", packageName: "web-tree-sitter", version: "0.27.1", url: "https://www.npmjs.com/package/web-tree-sitter" })
+export const WebTreeSitterPackage = pkg({ owner: "trame", packageName: "web-tree-sitter", version: "0.27.1", url: "https://www.npmjs.com/package/web-tree-sitter", declaredEffects: ["read", "execution"] })
 
 /**
  * Grammar of TypeScript
  */
-export const TypeScriptGrammar = pkg({ owner: "trame", packageName: "tree-sitter-typescript", version: "0.23.2", url: "https://www.npmjs.com/package/tree-sitter-typescript" })
+export const TypeScriptGrammar = pkg({ owner: "trame", packageName: "tree-sitter-typescript", version: "0.23.2", url: "https://www.npmjs.com/package/tree-sitter-typescript", declaredEffects: [] })
 
 /**
  * Grammar of HTML
  */
-export const HtmlGrammar = pkg({ owner: "trame", packageName: "tree-sitter-html", version: "0.23.2", url: "https://www.npmjs.com/package/tree-sitter-html" })
+export const HtmlGrammar = pkg({ owner: "trame", packageName: "tree-sitter-html", version: "0.23.2", url: "https://www.npmjs.com/package/tree-sitter-html", declaredEffects: [] })
 
 /**
  * Grammar of CSS
  */
-export const CssGrammar = pkg({ owner: "trame", packageName: "tree-sitter-css", version: "0.25.0", url: "https://www.npmjs.com/package/tree-sitter-css" })
+export const CssGrammar = pkg({ owner: "trame", packageName: "tree-sitter-css", version: "0.25.0", url: "https://www.npmjs.com/package/tree-sitter-css", declaredEffects: [] })
 
 /**
  * Grammar of HCL
  * The grammar Terraform's modules are read with.
  */
-export const HclGrammar = pkg({ owner: "trame", packageName: "@tree-sitter-grammars/tree-sitter-hcl", version: "1.2.0", url: "https://www.npmjs.com/package/@tree-sitter-grammars/tree-sitter-hcl" })
+export const HclGrammar = pkg({ owner: "trame", packageName: "@tree-sitter-grammars/tree-sitter-hcl", version: "1.2.0", url: "https://www.npmjs.com/package/@tree-sitter-grammars/tree-sitter-hcl", declaredEffects: [] })
 
 /**
  * Types of Node.js
  * The declarations of Node's modules, which the compiler reads for the implementations that import them.
  */
 export const NodeTypes = pkg({
-  owner: "trame", packageName: "@types/node", version: "22.20.5", url: "https://www.npmjs.com/package/@types/node",
+  owner: "trame", packageName: "@types/node", version: "22.20.5", url: "https://www.npmjs.com/package/@types/node", declaredEffects: [],
   holdsBelow: "23.0.0",
   because: "the declarations follow the Node.js that runs the engine, version 22: those of a later Node would let the code use what this one does not have",
 })

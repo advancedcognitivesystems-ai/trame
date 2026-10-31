@@ -44,6 +44,7 @@ of it beside the engine's graph: the engine's bodies import its structures.
 | `product` | What the library is for: shared operations, published values cited, known designs |
 | `algebra` | `Counts`, `Sequences`, `Texts`, `ValueTypes`: the structures, with their laws |
 | `ecmascript` | What ECMA-262 fixes: first index, `typeof`, reserved words, Unicode escapes |
+| `effects` | The vocabulary of effects, and what the platform may do: each module of Node.js (or each of its exports), each global of a host, the few members of ECMAScript that touch the world; what an implementation reaches is checked against it (g83) |
 | `text` | Lines of a text file, characters that do not show, places in a file, unified differences |
 | `web` | HTTP, media types, URIs, server-sent events, UI and pointer events, CSSOM View, media queries, Screen Wake Lock, Web Speech (its errors), Web Audio (its latency) |
 | `html` | HTML, WAI-ARIA, SVG and CSS: the elements, attributes, roles and marks a page and its style sheets write, the class selector and the descendant combinator |

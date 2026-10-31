@@ -206,7 +206,7 @@ Refunds a driver. One call per idempotency key.
 | [Test](../../../std/docs/scenarios.md#Test) | none | — |
 
 - Owner: karim
-- Effects: asynchronous, network, third-party
+- Effects: asynchronous, network, read, third-party
 - Used by: [Cancel a reservation](api.md#CancelReservation)
 - Implemented by: [Real payment provider](infra.md#HttpPayment), [Simulated payment provider](infra.md#SimulatedPayment)
 

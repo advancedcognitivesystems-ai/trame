@@ -204,6 +204,6 @@ A file written exists, is read back, copied and fingerprinted alike, and kept fo
 - Owner: trame
 - Parameters: `files` ← [Project files](tooling.md#Files) · `kept` ← [Files written](tooling.md#FilesKept) · `browser` ← [Headless browser](tooling.md#HeadlessBrowser) · `script` ← [Browser script](tooling.md#BrowserScripted) · `data` ← [What the library's scenarios are given](#ScenarioData) · `checks` ← [What the library's scenarios check](#ScenarioChecks)
 - Body: inline, in the declaration
-- Effects: display, process, read, time, write
+- Effects: asynchronous, display, network, process, read, time, write
 - Verifies: [Files kept in memory](tooling.md#FilesInMemory), [A browser kept in memory](tooling.md#BrowserInMemory)
 - In: [Test](#Test)

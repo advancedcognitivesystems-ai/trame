@@ -174,7 +174,7 @@ Triggered by `the loading of the page`
 - Owner: ghalaax
 - Parameters: `screen` ← [Screen](architecture.md#Screen) · `content` ← [Content](architecture.md#ContentSource) · `view` ← [The home view](#HomeViewOf) · `language` ← [The app's language](language.md#AppLanguage) · `play` ← [Play a practice](practice.md#PlayPractice) · `settings` ← [Show the settings](settings.md#ShowSettings) · `breath` ← [The person's breath](settings.md#PersonBreath) · `compose` ← [Show the composer](composing.md#ShowComposer) · `holding` ← [What a composed practice holds](composing.md#HoldingDefaults)
 - Body: `./code/show-home.ts` (typescript)
-- Effects: asynchronous, display, read, time, write
+- Effects: asynchronous, display, random, read, time, write
 - Serves: [Practise yoga on one's own, guided](product.md#PractiseGuided)
 - Part of: [Poselia in a browser](architecture.md#PoseliaApp)
 - Used by: [The body stays on the floor](scenarios.md#BodyStaysOnTheFloor), [Holding the poses](scenarios.md#HoldThePoses), [The language of the home page](scenarios.md#HomeLanguage), [Learning a sequence](scenarios.md#LearnTheSequence), [The person's breath and voice](scenarios.md#PersonSettings), [A practice follows the breath](scenarios.md#PracticeFollowsTheBreath)

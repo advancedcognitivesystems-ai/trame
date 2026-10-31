@@ -652,6 +652,400 @@
       "diagnostics": []
     },
     {
+      "id": "effects.Effects",
+      "kind": "vocabulary",
+      "title": "Effects",
+      "source": "src/effects.ts:14",
+      "fields": {
+        "owner": "trame",
+        "words": {
+          "read": "Reads a state (files, a database)",
+          "write": "Changes a state",
+          "execution": "Runs loaded code",
+          "process": "Starts or controls processes",
+          "terminal": "Reads the arguments, writes on the outputs",
+          "time": "Reads the time, or waits",
+          "network": "Talks to another machine",
+          "display": "Shows a page to a person, and hears what they do on it",
+          "keeps": "Keeps what was computed, to give it back the same: what it writes, only it reads",
+          "random": "Draws what nobody can foresee"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "effects.PlatformEffects",
+      "kind": "decision",
+      "title": "What the platform may do",
+      "source": "src/effects.ts:58",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "modules": {
+            "node:path": [],
+            "node:url": [],
+            "node:util": [],
+            "node:events": [],
+            "node:buffer": [],
+            "node:zlib": [],
+            "node:fs": {
+              "existsSync": [
+                "read"
+              ],
+              "readFileSync": [
+                "read"
+              ],
+              "readdirSync": [
+                "read"
+              ],
+              "statSync": [
+                "read"
+              ],
+              "lstatSync": [
+                "read"
+              ],
+              "realpathSync": [
+                "read"
+              ],
+              "readlinkSync": [
+                "read"
+              ],
+              "accessSync": [
+                "read"
+              ],
+              "watch": [
+                "read",
+                "time"
+              ],
+              "writeFileSync": [
+                "write"
+              ],
+              "appendFileSync": [
+                "write"
+              ],
+              "mkdirSync": [
+                "write"
+              ],
+              "mkdtempSync": [
+                "write"
+              ],
+              "rmSync": [
+                "write"
+              ],
+              "unlinkSync": [
+                "write"
+              ],
+              "renameSync": [
+                "write"
+              ],
+              "symlinkSync": [
+                "write"
+              ],
+              "copyFileSync": [
+                "read",
+                "write"
+              ],
+              "cpSync": [
+                "read",
+                "write"
+              ]
+            },
+            "node:fs/promises": [
+              "read",
+              "write",
+              "asynchronous"
+            ],
+            "node:os": {
+              "tmpdir": [
+                "read"
+              ],
+              "homedir": [
+                "read"
+              ],
+              "platform": [],
+              "EOL": []
+            },
+            "node:crypto": {
+              "createHash": [],
+              "randomUUID": [
+                "random"
+              ],
+              "randomBytes": [
+                "random"
+              ]
+            },
+            "node:child_process": [
+              "process"
+            ],
+            "node:http": [
+              "network",
+              "asynchronous"
+            ],
+            "node:https": [
+              "network",
+              "asynchronous"
+            ],
+            "node:net": [
+              "network",
+              "asynchronous"
+            ],
+            "node:sqlite": [
+              "read",
+              "write"
+            ],
+            "node:module": {
+              "createRequire": [
+                "execution"
+              ]
+            },
+            "node:readline": [
+              "terminal",
+              "asynchronous"
+            ],
+            "node:timers": [
+              "time"
+            ],
+            "node:timers/promises": [
+              "time",
+              "asynchronous"
+            ]
+          },
+          "hosts": {
+            "process": {
+              "argv": [
+                "terminal"
+              ],
+              "stdout": [
+                "terminal"
+              ],
+              "stderr": [
+                "terminal"
+              ],
+              "stdin": [
+                "terminal"
+              ],
+              "env": [
+                "read"
+              ],
+              "cwd": [
+                "read"
+              ],
+              "execPath": [
+                "read"
+              ],
+              "execArgv": [
+                "read"
+              ],
+              "pid": [
+                "read"
+              ],
+              "platform": [],
+              "on": [
+                "process"
+              ],
+              "emit": [
+                "process"
+              ],
+              "exit": [
+                "process"
+              ],
+              "kill": [
+                "process"
+              ],
+              "exitCode": [
+                "process"
+              ],
+              "nextTick": [
+                "asynchronous"
+              ],
+              "hrtime": [
+                "time"
+              ]
+            },
+            "Buffer": [],
+            "Response": [],
+            "DecompressionStream": [],
+            "CompressionStream": [],
+            "CSS": {
+              "escape": []
+            },
+            "matchMedia": [
+              "display"
+            ],
+            "scrollTo": [
+              "display"
+            ],
+            "console": [
+              "terminal"
+            ],
+            "fetch": [
+              "network",
+              "asynchronous"
+            ],
+            "XMLHttpRequest": [
+              "network",
+              "asynchronous"
+            ],
+            "WebSocket": [
+              "network",
+              "asynchronous"
+            ],
+            "EventSource": [
+              "network",
+              "asynchronous"
+            ],
+            "setTimeout": [
+              "time"
+            ],
+            "clearTimeout": [
+              "time"
+            ],
+            "setInterval": [
+              "time"
+            ],
+            "clearInterval": [
+              "time"
+            ],
+            "setImmediate": [
+              "time"
+            ],
+            "queueMicrotask": [
+              "asynchronous"
+            ],
+            "performance": [
+              "time"
+            ],
+            "crypto": {
+              "randomUUID": [
+                "random"
+              ],
+              "getRandomValues": [
+                "random"
+              ],
+              "subtle": [
+                "asynchronous"
+              ]
+            },
+            "localStorage": [
+              "read",
+              "write"
+            ],
+            "sessionStorage": [
+              "read",
+              "write"
+            ],
+            "indexedDB": [
+              "read",
+              "write",
+              "asynchronous"
+            ],
+            "document": [
+              "display"
+            ],
+            "window": [
+              "display"
+            ],
+            "getComputedStyle": [
+              "display"
+            ],
+            "scrollX": [
+              "display"
+            ],
+            "scrollY": [
+              "display"
+            ],
+            "innerWidth": [
+              "display"
+            ],
+            "innerHeight": [
+              "display"
+            ],
+            "devicePixelRatio": [
+              "display"
+            ],
+            "ResizeObserver": [
+              "display"
+            ],
+            "IntersectionObserver": [
+              "display"
+            ],
+            "location": [
+              "read"
+            ],
+            "history": [
+              "display"
+            ],
+            "navigator": {
+              "languages": [
+                "read"
+              ],
+              "language": [
+                "read"
+              ],
+              "wakeLock": [
+                "display",
+                "asynchronous"
+              ],
+              "userAgent": [
+                "read"
+              ]
+            },
+            "requestAnimationFrame": [
+              "time",
+              "display"
+            ],
+            "cancelAnimationFrame": [
+              "time",
+              "display"
+            ],
+            "speechSynthesis": [
+              "display"
+            ],
+            "SpeechSynthesisUtterance": [],
+            "AudioContext": [
+              "display"
+            ],
+            "Audio": [
+              "display"
+            ],
+            "URL": [],
+            "URLSearchParams": [],
+            "TextEncoder": [],
+            "TextDecoder": [],
+            "structuredClone": [],
+            "AbortController": [],
+            "Blob": [],
+            "atob": [],
+            "btoa": []
+          },
+          "ecmaScript": {
+            "Math": {
+              "random": [
+                "random"
+              ]
+            },
+            "Date": {
+              "now": [
+                "time"
+              ]
+            }
+          },
+          "constructed": {
+            "Date": [
+              "time"
+            ]
+          },
+          "globalObjects": [
+            "globalThis",
+            "self"
+          ]
+        }
+      },
+      "diagnostics": [
+        "warning: Connected to no root (architecture rule, goal)"
+      ]
+    },
+    {
       "id": "html.Aria",
       "kind": "standard",
       "title": "WAI-ARIA",
@@ -3185,7 +3579,7 @@
       "id": "tooling.BrowserInMemory",
       "kind": "function",
       "title": "A browser kept in memory",
-      "source": "src/tooling.ts:206",
+      "source": "src/tooling.ts:207",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3200,7 +3594,7 @@
       "id": "tooling.BrowserScripted",
       "kind": "port",
       "title": "Browser script",
-      "source": "src/tooling.ts:199",
+      "source": "src/tooling.ts:200",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -3272,7 +3666,9 @@
         "declaredEffects": [
           "process",
           "display",
-          "time"
+          "time",
+          "network",
+          "asynchronous"
         ]
       },
       "diagnostics": []
@@ -3281,7 +3677,7 @@
       "id": "tooling.HeadlessChromium",
       "kind": "decision",
       "title": "Chromium without a screen",
-      "source": "src/tooling.ts:160",
+      "source": "src/tooling.ts:161",
       "fields": {
         "owner": "trame",
         "value": {
@@ -3341,7 +3737,7 @@
       "id": "tooling.PlaywrightApi",
       "kind": "standard",
       "title": "Playwright's API",
-      "source": "src/tooling.ts:145",
+      "source": "src/tooling.ts:146",
       "fields": {
         "owner": "trame",
         "source": "Playwright documentation, class Page, event \"pageerror\"",
@@ -3359,7 +3755,7 @@
       "id": "tooling.PlaywrightBrowser",
       "kind": "implementation",
       "title": "Chromium, driven by Playwright",
-      "source": "src/tooling.ts:174",
+      "source": "src/tooling.ts:175",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -3385,7 +3781,14 @@
         "packageName": "playwright",
         "version": "1.56.0",
         "url": "https://www.npmjs.com/package/playwright",
-        "prepare": "npx playwright install --with-deps chromium"
+        "prepare": "npx playwright install --with-deps chromium",
+        "declaredEffects": [
+          "process",
+          "display",
+          "network",
+          "time",
+          "asynchronous"
+        ]
       },
       "diagnostics": []
     },
@@ -3406,7 +3809,7 @@
       "id": "tooling.ToolingAsPorts",
       "kind": "adr",
       "title": "The SDLC's tooling is realized once",
-      "source": "src/tooling.ts:238",
+      "source": "src/tooling.ts:239",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3869,6 +4272,11 @@
     {
       "from": "ecmascript.UnicodeEscape",
       "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "effects.Effects",
+      "to": "product.RealizedOnce",
       "kind": "serves"
     },
     {

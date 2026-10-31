@@ -37,6 +37,23 @@ export interface Analysis {
   uses: Map<string, Record<string, Record<string, string[]>>>
   /** Code made of a text while the program runs (eval, the Function constructor, a value's constructor): each refuses the build (since g82). */
   textAsCode: string[]
+  /** What each node's bodies reach outside them (since g83): the modules they import, the globals they read. */
+  reaches: Map<string, Reached[]>
+}
+
+/**
+ * What a body reaches outside itself (since g83): a module it imports a value from (and the name it imports), or a
+ * global, a host's (a browser's, Node.js's: its name, the member read) or ECMAScript's (the member read, or made with no
+ * argument: `new Date()`). With the place it is reached at.
+ */
+export interface Reached {
+  module?: string
+  name?: string
+  global?: string
+  member?: string
+  ecmaScript?: boolean
+  constructed?: boolean
+  where: string
 }
 
 export interface Deps {
@@ -63,6 +80,10 @@ export interface Deps {
   messages: ProvidedBy<typeof CompilerMessages>
   /** What makes code of a text while a program runs: a global, or a member read. */
   textAsCode: ProvidedBy<typeof TextAsCode>
+  /** How the files of TypeScript's own libraries tell ECMAScript's globals from a host's. */
+  libraries: { ecmaScript: string }
+  /** How a body names the prelude's public API: the endings of its module's path. */
+  prelude: { endings: readonly string[] }
 }
 
 const body = (deps: Deps) => {
@@ -134,7 +155,9 @@ const body = (deps: Deps) => {
     const readKey = digest(JSON.stringify([[ts.version, root, modules, paths]]))
     const keptReading = keptUnder<Reading, WrittenReading>(root, readKey, readReading)
     const keptCheck = keptUnder<Checked, Checked>(root, checkKey, (checked) => checked)
-    if (keptReading && keptCheck?.uses && keptCheck.textAsCode) return { ...keptReading, ...keptCheck, uses: new Map(keptCheck.uses) }
+    if (keptReading && keptCheck?.uses && keptCheck.textAsCode && keptCheck.reaches) {
+      return { ...keptReading, ...keptCheck, uses: new Map(keptCheck.uses), reaches: new Map(keptCheck.reaches) }
+    }
     const program = ts.createProgram([...files, ...extra], {
       target: ts.ScriptTarget.ES2022,
       module: ts.ModuleKind.ESNext,
@@ -160,9 +183,10 @@ const body = (deps: Deps) => {
     const quantityErrors = keptCheck?.quantityErrors ?? mixedQuantities(program, modules, root, reading.infos)
     const uses = keptCheck?.uses ?? usesOf(program, exportedOf(program, modules))
     const textAsCode = keptCheck?.textAsCode ?? textAsCodeIn(program, root)
-    const checked: Checked = { typeErrors, quantityErrors, uses, textAsCode }
+    const reaches = keptCheck?.reaches ?? reachesOf(program, exportedOf(program, modules), root)
+    const checked: Checked = { typeErrors, quantityErrors, uses, textAsCode, reaches }
     if (!keptCheck) keep(root, checkKey, digestsOf(program.getSourceFiles().map((sf) => sf.fileName)), checked, checked)
-    return { ...reading, typeErrors, quantityErrors, textAsCode, uses: new Map(uses) }
+    return { ...reading, typeErrors, quantityErrors, textAsCode, uses: new Map(uses), reaches: new Map(reaches) }
   }
 
   /** What the check of a program finds: TypeScript's errors, the quantities it lets mix, what bodies use, text run as code. */
@@ -171,6 +195,7 @@ const body = (deps: Deps) => {
     quantityErrors: string[]
     uses: [string, Record<string, Record<string, string[]>>][]
     textAsCode: string[]
+    reaches: [string, Reached[]][]
   }
 
   /** The function a body is: written inline, or the default export of the file `code.file(…)` names. */
@@ -282,6 +307,74 @@ const body = (deps: Deps) => {
         if (fn) byProperty[p.name.getText()] = usesIn(checker, fn)
       }
       if (Object.keys(byProperty).length) out.push([ref, byProperty])
+    }
+    return out
+  }
+
+  /**
+   * What the bodies of each node reach outside them: in a body written in a file, the whole file; inline, the function.
+   * A name bound by an import is the module it comes from (a type alone reaches nothing); a name declared only by the
+   * libraries of types is a global, ECMAScript's (only a member read, or made with no argument, may do something) or a
+   * host's. A relative module, or the prelude's API, is the graph's own code.
+   */
+  function reachesOf(program: ts.Program, exported: ReadonlyMap<ts.Node, string>, root: string): Checked["reaches"] {
+    const checker = program.getTypeChecker()
+    const out: Checked["reaches"] = []
+    const libraryFile = (sf: ts.SourceFile) => program.isSourceFileDefaultLibrary(sf) || sf.fileName.includes(specifiers.packages)
+    const ecmaScriptFile = (sf: ts.SourceFile) => program.isSourceFileDefaultLibrary(sf) && sf.fileName.split(sep).some((part) => part.startsWith(deps.libraries.ecmaScript))
+    const own = (module: string) =>
+      module.startsWith(specifiers.current) || module.startsWith(specifiers.parent) || deps.prelude.endings.some((ending) => module.endsWith(ending))
+    const regionOf = (program: ts.Program, e: ts.Expression): ts.Node | undefined => {
+      const fn = bodyFunction(program, e)
+      if (!fn) return undefined
+      return fn.getSourceFile() === e.getSourceFile() ? fn : fn.getSourceFile()
+    }
+    for (const [decl, ref] of exported) {
+      const init = (decl as ts.VariableDeclaration).initializer
+      const arg = init && ts.isCallExpression(init) ? head(init.arguments) : undefined
+      if (!arg || !ts.isObjectLiteralExpression(arg)) continue
+      const found = new Map<string, Reached>()
+      for (const p of arg.properties) {
+        if (!ts.isPropertyAssignment(p)) continue
+        const region = regionOf(program, p.initializer)
+        if (!region) continue
+        const sf = region.getSourceFile()
+        const where = (n: ts.Node) => reference(relative(root, sf.fileName), lineNumber(sf.getLineAndCharacterOfPosition(n.getStart(sf)).line))
+        const add = (r: Reached) => {
+          const key = JSON.stringify([r.module, r.name, r.global, r.member, r.constructed])
+          if (!found.has(key)) found.set(key, r)
+        }
+        const visit = (n: ts.Node): void => {
+          // Types reach nothing, nor what declares them or an import itself (the names it binds are followed where used).
+          if (ts.isTypeNode(n) || ts.isInterfaceDeclaration(n) || ts.isTypeAliasDeclaration(n) || ts.isImportDeclaration(n)) return
+          if (ts.isIdentifier(n) && !(ts.isPropertyAccessExpression(n.parent) && n.parent.name === n)) reached(n)
+          ts.forEachChild(n, visit)
+        }
+        const reached = (id: ts.Identifier) => {
+          const symbol = checker.getSymbolAtLocation(id)
+          if (!symbol) return
+          const memberRead = ts.isPropertyAccessExpression(id.parent) && id.parent.expression === id ? id.parent.name.text : undefined
+          if (symbol.flags & ts.SymbolFlags.Alias) {
+            const d = head(symbol.declarations ?? [])
+            const declaration = d && (ts.isImportSpecifier(d) ? d.parent.parent.parent : ts.isNamespaceImport(d) ? d.parent.parent : ts.isImportClause(d) ? d.parent : undefined)
+            if (!declaration || !ts.isImportDeclaration(declaration) || !ts.isStringLiteralLike(declaration.moduleSpecifier)) return
+            const typeOnly = declaration.importClause?.isTypeOnly || (d && ts.isImportSpecifier(d) && d.isTypeOnly)
+            const module = declaration.moduleSpecifier.text
+            if (typeOnly || own(module)) return
+            const name = d && ts.isImportSpecifier(d) ? (d.propertyName ?? d.name).text : memberRead
+            return add({ module, name, where: where(id) })
+          }
+          const declared = symbol.declarations ?? []
+          if (!declared.length || !declared.every((x) => libraryFile(x.getSourceFile()))) return
+          // ECMAScript's, even when a host adds to it (Node's types add to String, to Array).
+          const ecmaScript = declared.some((x) => ecmaScriptFile(x.getSourceFile()))
+          const constructed = ts.isNewExpression(id.parent) && id.parent.expression === id && !id.parent.arguments?.length
+          if (ecmaScript && !memberRead && !constructed) return
+          add({ global: id.text, member: memberRead, ecmaScript: ecmaScript || undefined, constructed: constructed || undefined, where: where(id) })
+        }
+        visit(region)
+      }
+      if (found.size) out.push([ref, [...found.values()]])
     }
     return out
   }
@@ -475,6 +568,11 @@ const body = (deps: Deps) => {
         const init = vd.initializer
         if (init && ts.isCallExpression(init)) {
           info.typeArgs = (init.typeArguments ?? []).map((t) => t.getText(sf))
+          // The members of the type it names first: a port's contract, whose methods its consumers may call.
+          const named = head(init.typeArguments ?? [])
+          // A type open to any name (an index signature) names no member: nothing to limit.
+          const contract = named && checker.getTypeFromTypeNode(named)
+          if (contract && !checker.getIndexInfosOfType(contract).length) info.members = checker.getPropertiesOfType(contract).map((p) => p.getName())
           info.args = init.arguments.map((a) => a.getText(sf))
           const arg = head(init.arguments)
           const obj = arg && ts.isObjectLiteralExpression(arg) ? arg : undefined

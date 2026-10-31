@@ -10,7 +10,7 @@
 
 ### Names of the documents
 
-`DocumentIds` · `src/conventions.ts:183`
+`DocumentIds` · `src/conventions.ts:184`
 
 How a document of a view is named: a view of the whole graph by its name; a view of a module by its name and the module ("layers.engine"), except the first view per module, named by the module alone; a view of a node by its name and the reference of the node ("impact:engine.Compiler"), which the page reads back to show it.
 
@@ -41,6 +41,7 @@ Source: Trame, the prelude (trame/internal.ts: frozen)
 | `body` | `body` | The body of a node written inline in its declaration |
 | `data` | `data` | Sets the data of a node as in force at the date of the assembly, for the rules that read it |
 | `start` | `start` | Starts the component with its dependencies and its entry points |
+| `limited` | `limited` | A capability: a realization limited to the methods its consumer uses (since g83) |
 | `title` | `title` | The title of an entry point, given to start |
 | `fields` | `fields` | The simple fields of an entry point, which the kind of the component reads |
 | `entry` | `value` | What an entry point is, once built |
@@ -55,7 +56,7 @@ Source: Trame, the prelude (trame/internal.ts: frozen)
 
 ### Trame references
 
-`ReferenceSyntax` · `src/conventions.ts:154`
+`ReferenceSyntax` · `src/conventions.ts:155`
 
 How the language names a node and a field: "module.Identifier", "value.case". An empty path designates the whole node. A module of a library takes the library's name before its own: "std/algebra.Counts".
 
@@ -75,7 +76,7 @@ Source: Trame, the prelude (trame/kernel.ts: refOf, getPath)
 
 ### Trame's commands
 
-`TrameCommands` · `src/conventions.ts:73`
+`TrameCommands` · `src/conventions.ts:74`
 
 How a person calls Trame in a terminal: the program, its commands, its options, the formats a view is written in. A word that names no command goes to the fallback command (in Trame: the name of a view); with no command, or an option first, Trame builds.
 
@@ -135,7 +136,7 @@ Source: Trame, its command line (the entry points of commands, in the module com
 
 ### Trame's environment
 
-`TrameEnvironment` · `src/conventions.ts:128`
+`TrameEnvironment` · `src/conventions.ts:129`
 
 The variables of the environment Trame reads.
 
@@ -154,7 +155,7 @@ Source: Trame, the variables of the environment it reads
 
 ### Default rank
 
-`DefaultRank` · `src/conventions.ts:147`
+`DefaultRank` · `src/conventions.ts:148`
 
 The place of a kind or a view that does not declare one, in documents and lists.
 
@@ -167,7 +168,7 @@ The place of a kind or a view that does not declare one, in documents and lists.
 
 ### Documentation comment
 
-`DocComment` · `src/conventions.ts:169`
+`DocComment` · `src/conventions.ts:170`
 
 What the comment before a declaration says: its first lines are the node's title, the following ones its description. The lines of each are joined into one text, by a space.
 
@@ -184,7 +185,7 @@ What the comment before a declaration says: its first lines are the node's title
 
 ### JSON formatting
 
-`JsonFormatting` · `src/conventions.ts:175`
+`JsonFormatting` · `src/conventions.ts:176`
 
 The JSON that Trame writes to be read (the lock, a view in JSON): indented.
 
@@ -252,14 +253,14 @@ How a body names the prelude's public API (trame/kernel), the only module it may
 | endings | /trame/kernel, /trame/kernel.ts, /trame/kernel.js |
 
 - Decided by: trame
-- Used by: [Laws](engine.md#Laws), [Checks of a body](syntax.md#BodyChecks)
+- Used by: [Laws](engine.md#Laws), [Static reading](engine.md#StaticAnalysis), [Checks of a body](syntax.md#BodyChecks)
 - Applies: [The prelude: the runtime of the language](principles.md#PreludeLayer)
 
 <a id="StepNames"></a>
 
 ### Names of steps
 
-`StepNames` · `src/conventions.ts:141`
+`StepNames` · `src/conventions.ts:142`
 
 When two steps of a wiring plan would take the same name, or a step a name that is taken, the second takes its module as a prefix, with this joint.
 
@@ -274,7 +275,7 @@ When two steps of a wiring plan would take the same name, or a step a name that 
 
 ### Order of the view groups
 
-`ViewGroupOrder` · `src/conventions.ts:197`
+`ViewGroupOrder` · `src/conventions.ts:198`
 
 Where the views of each group come in the list of documents: the documents of the modules first, then the other documents, the figures, the summary, and last the views of a node.
 

@@ -164,7 +164,7 @@ Reads a body with the grammar and the queries of its language: the literals, the
 - Owner: trame
 - Parameters: `trees` ← [Syntax trees](architecture.md#SyntaxTrees) · `captures` ← [Captures](#Captures) · `roles` ← [Roles of a literal](#LiteralRoles) · `categories` ← [Categories of literals](#LiteralCategories) · `display` ← [How a literal is shown](#LiteralDisplay) · `treeSitter` ← [tree-sitter API](standards.md#TreeSitterApi) · `gnu` ← [Positions in a file](../std/docs/text.md#GnuPositions) · `ecma` ← [ECMAScript](../std/docs/ecmascript.md#EcmaScript) · `textFile` ← [Text file](../std/docs/text.md#TextFile) · `encodings` ← [Node.js character encodings](../std/docs/system.md#NodeEncodings) · `reading` ← [File reading](architecture.md#FileReading) · `kept` ← [Results kept](architecture.md#KeptResults) · `runs` ← [Where runs are kept](architecture.md#RunStore) · `layout` ← [Project layout](conventions.md#Layout) · `paths` ← [Paths](architecture.md#Paths) · `hashing` ← [Hashing](architecture.md#Hashing) · `sha256` ← [SHA-256](../std/docs/algorithms.md#Sha256) · `counts` ← [Counts](../std/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/docs/algebra.md#Texts)
 - Body: `./code/syntax/reader.ts` (typescript)
-- Effects: keeps, read
+- Effects: execution, keeps, read
 - Serves: [A specification that runs](product.md#ExecutableSpecification), [A single source of truth](product.md#SingleSource)
 - Verified by: [A body is read and checked](command-scenarios.md#BodiesReadAndChecked)
 - Used by: [A body is read and checked](command-scenarios.md#BodiesReadAndChecked), [Drivers](languages.md#Drivers), [Page](page.md#Page)

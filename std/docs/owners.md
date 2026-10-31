@@ -4,7 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 26 | 141 |
+| trame | 0 | 0 | 26 | 143 |
 
 <a id="trame"></a>
 
@@ -57,6 +57,8 @@
 | [ECMAScript types](ecmascript.md#EcmaScriptTypes) | Standard |  |
 | [Text run as code](ecmascript.md#TextAsCode) | Vocabulary |  |
 | [Unicode escape of a text](ecmascript.md#UnicodeEscape) | Standard |  |
+| [Effects](effects.md#Effects) | Vocabulary |  |
+| [What the platform may do](effects.md#PlatformEffects) | Decision |  |
 | [WAI-ARIA](html.md#Aria) | Standard |  |
 | [CSS](html.md#Css) | Standard |  |
 | [HTML](html.md#Html) | Standard |  |
@@ -184,3 +186,9 @@
 | [URI](web.md#Uri) | Standard |  |
 | [Web Audio API](web.md#WebAudioApi) | Standard |  |
 | [Web Speech API](web.md#WebSpeechApi) | Standard |  |
+
+## unassigned
+
+| Severity | What | Where | Owner | Consequence |
+|---|---|---|---|---|
+| warning | Connected to no root (architecture rule, goal) | [What the platform may do](effects.md#PlatformEffects) | to be assigned |  |

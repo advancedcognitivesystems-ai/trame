@@ -43,7 +43,7 @@ The bowl that marks a practice: struck, it rings and fades.
 | [Test](../../../std/releases/0.11.1/docs/scenarios.md#Test) | none | — |
 
 - Owner: ghalaax
-- Effects: display
+- Effects: display, random
 - Used by: [Play a practice](practice.md#PlayPractice)
 - Implemented by: [A bowl that counts](scenarios.md#RecordedBowl), [The browser's bowl](sound.md#BrowserBowl)
 

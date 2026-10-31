@@ -49,6 +49,7 @@ export const FrozenApi = standard({
     body: { value: "body", meaning: "The body of a node written inline in its declaration" },
     data: { value: "data", meaning: "Sets the data of a node as in force at the date of the assembly, for the rules that read it" },
     start: { value: "start", meaning: "Starts the component with its dependencies and its entry points" },
+    limited: { value: "limited", meaning: "A capability: a realization limited to the methods its consumer uses (since g83)" },
     title: { value: "title", meaning: "The title of an entry point, given to start" },
     fields: { value: "fields", meaning: "The simple fields of an entry point, which the kind of the component reads" },
     entry: { value: "value", meaning: "What an entry point is, once built" },

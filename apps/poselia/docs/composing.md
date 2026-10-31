@@ -166,7 +166,7 @@ The composer, shown again after each change: fewer or more poses drawn again, sh
 - Owner: ghalaax
 - Parameters: `screen` ← [Screen](architecture.md#Screen) · `view` ← [The composer](#ComposerViewOf) · `drawn` ← [A sequence drawn by lot](#DrawnSequence) · `composed` ← [A sequence composed](#ComposedSequence) · `defaults` ← [What a composed practice holds](#HoldingDefaults) · `play` ← [Play a practice](practice.md#PlayPractice) · `counts` ← [Counts](../../../std/releases/0.11.1/docs/algebra.md#Counts)
 - Body: `./code/show-composer.ts` (typescript)
-- Effects: asynchronous, display, read, time, write
+- Effects: asynchronous, display, random, read, time, write
 - Serves: [Practise yoga on one's own, guided](product.md#PractiseGuided)
 - Used by: [Show the home page](app.md#ShowHome)
 - Verified by: [Holding the poses](scenarios.md#HoldThePoses)
