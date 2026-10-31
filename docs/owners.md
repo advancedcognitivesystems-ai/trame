@@ -4,7 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 0 | 632 |
+| trame | 0 | 0 | 0 | 636 |
 
 <a id="trame"></a>
 
@@ -50,6 +50,7 @@ Nothing to decide or watch.
 | [Module loader](architecture.md#ModuleLoader) | Port |  |
 | [Only commands write](architecture.md#OnlyCommandsWrite) | Architecture rule | **held** |
 | [Reports on packages](architecture.md#PackageReports) | Port |  |
+| [Amendments from the page](architecture.md#PageAmendments) | Port |  |
 | [The page in a browser](architecture.md#PageApp) | Component |  |
 | [Memory of the page](architecture.md#PageMemory) | Port |  |
 | [Window of the page](architecture.md#PageWindow) | Port |  |
@@ -71,6 +72,7 @@ Nothing to decide or watch.
 | [Trame on the command line](architecture.md#TrameCli) | Component |  |
 | [TypeScript compiler](architecture.md#TypeScriptCompiler) | Port |  |
 | [Write log](architecture.md#WriteLog) | Port |  |
+| [Amendments sent to trame dev](browser.md#BrowserAmendments) | Implementation | **held** |
 | [The browser's gzip](browser.md#BrowserDecompression) | Implementation | **held** |
 | [The globals of the page, and trame dev](browser.md#BrowserFeed) | Implementation | **held** |
 | [Local storage](browser.md#BrowserMemory) | Implementation | **held** |
@@ -113,6 +115,7 @@ Nothing to decide or watch.
 | [A view in the terminal](command-scenarios.md#ViewsInTheTerminal) | Scenario | **held** |
 | [Advance](commands.md#Advance) | Entry point | **held** |
 | [Amend](commands.md#Amend) | Entry point | **held** |
+| [An amendment prepared](commands.md#Amending) | Function | **held** |
 | [Assemble a component](commands.md#Assemble) | Entry point | **held** |
 | [Assembler](commands.md#Assembler) | Function | **held** |
 | [Audit the packages](commands.md#Audit) | Entry point | **held** |
@@ -520,6 +523,7 @@ Nothing to decide or watch.
 | [Generation 83](releases.md#G83) | Release |  |
 | [Generation 84](releases.md#G84) | Release |  |
 | [Generation 85](releases.md#G85) | Release |  |
+| [Generation 86](releases.md#G86) | Release |  |
 | [Generation 9](releases.md#G9) | Release |  |
 | [Common rendering](rendering.md#Common) | Function | **held** |
 | [Documents in Markdown](rendering.md#DocumentsInMarkdown) | Technical choice | **held** |

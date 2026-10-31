@@ -121,10 +121,19 @@ const body = (deps: Deps): DocumentSyntax => {
         c.status && w.status ? pill(statusClass + key(Status, c.status), w.status) : empty,
         c.published ? pill(classes.published, messages.published()) : empty,
       ])
-      const views = any(c.views)
-        ? classed(html.div, classes.views, concat(c.views.map((v) => element(html.button,
-          { [html.type]: html.buttonType, [html.class]: classes.viewButton, [attributes.view]: escape(v.name), [attributes.node]: escape(c.ref) },
-          escape(v.label)))))
+      // A value a person may amend: a button that carries it, which the page shows where it can amend (in trame dev).
+      const amendable = c.amendable ?? []
+      const views = any(c.views) || any(amendable)
+        ? classed(html.div, classes.views, concat([
+          ...c.views.map((v) => element(html.button,
+            { [html.type]: html.buttonType, [html.class]: classes.viewButton, [attributes.view]: escape(v.name), [attributes.node]: escape(c.ref) },
+            escape(v.label))),
+          ...amendable.map((a) => element(html.button, {
+            [html.type]: html.buttonType, [html.class]: classes.viewButton + html.space + classes.amendButton, [html.hidden]: true,
+            [attributes.amend]: escape(a.field), [attributes.node]: escape(c.ref), [attributes.way]: escape(a.way),
+            [attributes.value]: escape(JSON.stringify(a.value ?? null)), [attributes.units]: escape(JSON.stringify(a.units ?? [])),
+          }, escape(messages.amendButton(a.label)))),
+        ]))
         : empty
       const facts = [
         ...w.facts.map((f) => element(html.dt, none, escape(f.label)) + element(html.dd, none, f.value)),

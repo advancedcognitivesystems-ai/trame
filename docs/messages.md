@@ -31,7 +31,7 @@ The language Trame speaks to people: British English. Its messages are written i
 
 ### A catalog counts in its language
 
-`CountsInTheLanguage` · `src/messages.ts:905` · status: **held**
+`CountsInTheLanguage` · `src/messages.ts:906` · status: **held**
 
 A count and its noun follow the plural rules of the language the catalog is written in, with the forms the catalog writes for each category; nothing below the catalogs presumes a language.
 
@@ -87,7 +87,7 @@ Joins the items of a list as people write it in the decided language: "A, B and 
 
 ### Messages of an advance
 
-`AdvanceMessages` · `src/messages.ts:817`
+`AdvanceMessages` · `src/messages.ts:818`
 
 What trame advance says as it goes, and what a generation says of itself.
 
@@ -358,7 +358,7 @@ What the commands print: summaries, usage, refusals.
 - Owner: trame
 - Parameters: `language` ← [Language](#Language)
 - Written in: [Language](#Language)
-- Used by: [A build planned](command-scenarios.md#BuildPlanned), [A component assembled](command-scenarios.md#ComponentAssembled), [Declarations published](command-scenarios.md#DeclarationsPublished), [The doctor](command-scenarios.md#DoctorAsks), [The laws, tested by their command](command-scenarios.md#LawsTested), [Advance](commands.md#Advance), [Amend](commands.md#Amend), [Assemble a component](commands.md#Assemble), [Assembler](commands.md#Assembler), [Audit the packages](commands.md#Audit), [Build](commands.md#Build), [Two builds compared](commands.md#BuildComparison), [Deliver](commands.md#Deliver), [Ask the machine](commands.md#Doctor), [Export the page](commands.md#Export), [Plan](commands.md#Plan), [Preparation](commands.md#Preparation), [Publish](commands.md#Publish), [Record evidence](commands.md#RecordEvidence), [Release a version](commands.md#Release), [Render a view](commands.md#RenderView), [Ship](commands.md#Ship), [Take the snapshot](commands.md#TakeSnapshot), [Test the laws](commands.md#TestKinds), [View by its name](commands.md#ViewByName), [Write the manifest](commands.md#WriteManifest), [A shipment's pipeline](engine.md#ShipmentPipeline), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore)
+- Used by: [A build planned](command-scenarios.md#BuildPlanned), [A component assembled](command-scenarios.md#ComponentAssembled), [Declarations published](command-scenarios.md#DeclarationsPublished), [The doctor](command-scenarios.md#DoctorAsks), [The laws, tested by their command](command-scenarios.md#LawsTested), [Advance](commands.md#Advance), [Amend](commands.md#Amend), [An amendment prepared](commands.md#Amending), [Assemble a component](commands.md#Assemble), [Assembler](commands.md#Assembler), [Audit the packages](commands.md#Audit), [Build](commands.md#Build), [Two builds compared](commands.md#BuildComparison), [Deliver](commands.md#Deliver), [Ask the machine](commands.md#Doctor), [Export the page](commands.md#Export), [Plan](commands.md#Plan), [Preparation](commands.md#Preparation), [Publish](commands.md#Publish), [Record evidence](commands.md#RecordEvidence), [Release a version](commands.md#Release), [Render a view](commands.md#RenderView), [Ship](commands.md#Ship), [Take the snapshot](commands.md#TakeSnapshot), [Test the laws](commands.md#TestKinds), [View by its name](commands.md#ViewByName), [Write the manifest](commands.md#WriteManifest), [A shipment's pipeline](engine.md#ShipmentPipeline), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore)
 - Applies: [A catalog counts in its language](#CountsInTheLanguage), [The words are in catalogs](principles.md#WordsInCatalogs)
 
 <a id="CompilerMessages"></a>
@@ -885,6 +885,7 @@ The names of the checks that the engine's scenarios make.
     planAfterBuild: () => "trame plan, right after a build, says nothing changes, and writes nothing",
     planSaysWhatChanges: () =>
       "Against a graph.json changed by hand, trame plan says the node it lacks is added, the node it invented is removed, the status it changed changes back, and the issue it added is resolved",
+    amendmentPreviewedFromThePage: () => "The page posts an amendment to trame dev and reads, before anything is recorded, what it would change",
     amendmentRefusedByACriterion: () => "An amendment that makes a criterion fail is not recorded",
     amendmentOfCodeRefused: () => "A value code is built on is not amended from here",
     amendmentSaidFirst: () => "With --dry-run, what the amendment would change is said, and nothing is written",

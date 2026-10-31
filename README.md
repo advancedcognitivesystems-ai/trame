@@ -978,8 +978,16 @@ the amendment, in memory, the day it comes into force, and says what it would ch
 example's late fee to 40% makes a criterion of the refund fail, so nothing is recorded (`--accept` records it all the
 same, for its owner to settle; `--dry-run` only says). Where an amendment then goes is a concept of the graph, the port
 "Where an amendment goes", with its strategies: the first writes it in place, in the sources, at the end of the module
-of the node it amends, as a person would, with the import of amendments; a pull request will be another. The page
-writes them through the same command (A4b).
+of the node it amends, as a person would, with the import of amendments; a pull request will be another.
+
+Since g86 the page does the same in `trame dev`. Each card carries the values a person may amend (its kind's chosen and
+cited fields, with their value in force and the units of their quantity), and a button for each, which the page shows
+only when it follows `trame dev` (an exported page amends nothing). The button opens a form under the card: what to
+amend (the field, or a path into it: `value.fast`), its value now, the new one (a number in a unit of its quantity,
+turned into the base unit), why, who, from when, and the source for a cited value. "What it would change" asks `trame
+dev`, which prepares the amendment as `trame amend` does and answers what it would change, or why it refuses;
+"Record the amendment" records it the same way, and the server, which watches the sources, compiles and pushes the
+page again, the amendment in it. The page sends it through a port of its own (`PageAmendments`), posted to `trame dev`.
 
 ## Effects, method by method
 

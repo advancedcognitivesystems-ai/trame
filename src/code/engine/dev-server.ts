@@ -25,7 +25,7 @@ export interface Deps {
   line: ProvidedBy<typeof TrameCommands>
   nodeEvents: ProvidedBy<typeof NodeEvents>
   layout: Layout
-  http: { scheme: "http"; ok: 200; noContent: 204; notFound: 404; contentType: string; cacheControl: string; connection: string; noCache: string; keepAlive: string }
+  http: { scheme: "http"; ok: 200; noContent: 204; notFound: 404; serverError: 500; post: string; contentType: string; cacheControl: string; connection: string; noCache: string; keepAlive: string }
   mediaTypes: { html: string; jsonUtf8: string; eventStream: string }
   events: { eventField: string; dataField: string; endOfLine: string; comment: string; endOfMessage: string }
   terminal: Terminal
@@ -72,7 +72,11 @@ const body = (deps: Deps) => {
   /** The time of day, as people read it in the decided language. */
   const time = () => clock.now().toLocaleTimeString(language.tag)
 
-  async function startDev(root: string, today: string, port: number): Promise<void> {
+  /**
+   * `amend`: what answers an amendment the page posts (since g86), given by the command, which may record it; without
+   * it, the page cannot amend.
+   */
+  async function startDev(root: string, today: string, port: number, amend?: (asked: unknown) => Promise<unknown>): Promise<void> {
     let current: Bundle | undefined
     let previousToday: Payload | undefined
     let compiling = false
@@ -124,6 +128,21 @@ const body = (deps: Deps) => {
       if (url === service.bundle) {
         res.writeHead(current ? h.ok : h.noContent, { [h.contentType]: mediaTypes.jsonUtf8 })
         return res.end(when(current, (c) => JSON.stringify(c)))
+      }
+      if (url === service.amend && req.method === h.post && amend) {
+        const chunks: string[] = []
+        req.on(nodeEvents.data, (chunk: unknown) => void chunks.push(String(chunk)))
+        req.on(nodeEvents.end, () => {
+          void (async () => {
+            const answer = await amend(JSON.parse(concat(chunks)))
+            res.writeHead(h.ok, { [h.contentType]: mediaTypes.jsonUtf8 })
+            res.end(JSON.stringify(answer))
+          })().catch((e: unknown) => {
+            res.writeHead(h.serverError, { [h.contentType]: mediaTypes.jsonUtf8 })
+            res.end(JSON.stringify({ refused: (e as Error).message, lines: [] }))
+          })
+        })
+        return
       }
       if (url === service.events) {
         res.writeHead(h.ok, { [h.contentType]: mediaTypes.eventStream, [h.cacheControl]: h.noCache, [h.connection]: h.keepAlive })

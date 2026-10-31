@@ -170,7 +170,7 @@ The name of the node it amends, then this word, then a number from the second on
 | first | 2 |
 
 - Decided by: trame
-- Used by: [Amend](commands.md#Amend)
+- Used by: [An amendment prepared](commands.md#Amending)
 
 <a id="DefaultRank"></a>
 

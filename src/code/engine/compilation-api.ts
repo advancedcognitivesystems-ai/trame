@@ -2,10 +2,10 @@
 // The traversal API, plus what the compilation found (holes, claims, overlaps, publication),
 // and the standard composition of a node's card from what its kind renders.
 
-import { BlockType, ClaimOutcome, ClaimSide, DateRole, Direction, FieldType, JsonMark, Nature, OPEN_KEY, Origin, ResolutionOutcome, RuleState, Severity, Stage, Validity, ValueType, ViewName, ViewScope, doc, unitOf } from "../../../trame/kernel"
+import { BlockType, ChangeWay, ClaimOutcome, ClaimSide, DateRole, Direction, FieldType, JsonMark, Nature, OPEN_KEY, Origin, ResolutionOutcome, RuleState, Severity, Stage, Validity, ValueType, ViewName, ViewScope, doc, unitOf } from "../../../trame/kernel"
 import type {
   ProvidedBy, AnyKind, AnyNode, Json, Block, Card, ClaimInfo, Compilation, DateInfo, Fact, FigureEdge, FigureNode, Inline, Issue,
-  IssueItem, KindInfo, NodeRef, ResolutionBlock, ResolutionInfo, View, LiteralInfo, LanguageLiteral, ViewDef, LibraryInfo,
+  IssueItem, KindInfo, NodeRef, ResolutionBlock, ResolutionInfo, View, LiteralInfo, LanguageLiteral, ViewDef, LibraryInfo, AmendableValue,
 } from "../../../trame/kernel"
 import type { Layout, Prelude } from "../../architecture"
 import type { Uri } from "#std/web"
@@ -258,6 +258,17 @@ const body = (deps: Deps) => {
           facts.push({ label: f.label, value: [shown] })
         }
         if (v.effects.length) facts.push({ label: messages.effectsLabel(), value: [v.effects.join(items)] })
+        // What a person may amend of it (since g86): the fields its kind says are chosen or cited, with their value in force.
+        const amendable: AmendableValue[] = Object.entries(def.fields).flatMap(([k, f]) => {
+          const way = def.changes?.[k]
+          if (way === undefined || way === ChangeWay.code) return []
+          const raw = v.field(k)
+          // A list (a dataset's rows) is amended item by item, by its path: its whole value is not carried.
+          const value = raw === undefined || isHole(raw) || Array.isArray(raw) ? undefined : (JSON.parse(JSON.stringify(raw) ?? JSON.stringify(null)) as Json)
+          const quantity = v.quantityOf?.(k)
+          const units = quantity === undefined ? undefined : c.quantities?.get(quantity)?.units
+          return [{ field: k, label: f.label ?? k, way, value, units }]
+        })
         const isChild = (e: { name: string; other: View }) => defOf(e.other).inline === e.name
         const groups = new Map<string, Card["links"][number]>()
         const add = (label: string, nature: Nature, active: boolean, target: View) => {
@@ -285,6 +296,7 @@ const body = (deps: Deps) => {
           resolutions: comp.resolutions(v).map(comp.resolution),
           children: g.edges(v, Direction.in).filter(isChild).map((e) => ({ ref: e.other.ref, body: render(e.other) })),
           views: nodeViews().filter((x) => !x.applies || x.applies(v, comp)).map((x) => ({ name: x.name, label: x.label })),
+          ...(amendable.length ? { amendable } : {}),
         }
       },
 

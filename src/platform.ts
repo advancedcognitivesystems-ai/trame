@@ -14,6 +14,7 @@ import { TypeScriptSyntax, DocBlock, ExportDeclaration, ConstDeclaration, Call, 
 import { EngineFingerprint, KeptRunsScope, ProjectRuns } from "./engine"
 import { PackedGraph } from "./page"
 import { PageLoading } from "#std/platform"
+import { Http } from "#std/web"
 import { TsxPackage, TypeScriptPackage, NodeTypes, WebTreeSitterPackage, EsbuildPackage } from "./packages"
 import { ExitStatus, NodeArguments, NodeCli, NodeEvents, Posix, NpmCli, NodeModuleSpecifiers, NodeEncodings } from "#std/system"
 import { Iso8601 } from "#std/measures"
@@ -299,7 +300,7 @@ export const MemoryFiles = implementation({
  */
 export const MemoryHttpServer = fn({
   owner: "trame", implements: [HttpServer, ServerLog],
-  deps: { events: NodeEvents, texts: Texts, messages: PlatformMessages },
+  deps: { events: NodeEvents, http: Http, texts: Texts, messages: PlatformMessages },
   body: code.file("./code/platform/memory-http.ts"),
 })
 

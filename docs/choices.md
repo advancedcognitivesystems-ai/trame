@@ -2,7 +2,7 @@
 
 *What answers each port in each environment on 31 October 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
 
-> **23 technical choices for 43 ports, in 3 environments**
+> **23 technical choices for 44 ports, in 3 environments**
 
 | Port | Local | Test | Browser |
 |---|---|---|---|
@@ -34,6 +34,7 @@
 | [Window of the page](architecture.md#PageWindow) | — | — | [The browser's window](browser.md#BrowserWindow) |
 | [Memory of the page](architecture.md#PageMemory) | — | — | [Local storage](browser.md#BrowserMemory) |
 | [Feed of the graph](architecture.md#GraphFeed) | — | — | [The globals of the page, and trame dev](browser.md#BrowserFeed) |
+| [Amendments from the page](architecture.md#PageAmendments) | — | — | [Amendments sent to trame dev](browser.md#BrowserAmendments) |
 | [Decompression](architecture.md#Decompression) | — | — | [The browser's gzip](browser.md#BrowserDecompression) |
 | [Write log](architecture.md#WriteLog) | — | [Files in memory, over the disk](platform.md#MemoryFiles) | — |
 | [Terminal log](architecture.md#TerminalLog) | — | [Terminal in memory](platform.md#MemoryTerminal) | — |
@@ -63,7 +64,7 @@
 
 ### The browser runs the page
 
-`TheBrowserRunsThePage` · `src/browser.ts:120` · status: **held**
+`TheBrowserRunsThePage` · `src/browser.ts:130` · status: **held**
 
 In the browser, the page loads, writes in its window, keeps the person's place, receives the graph and makes it whole again with what every browser has: the DOM, local storage, fetch and server-sent events, DecompressionStream.
 
@@ -71,6 +72,7 @@ In [Browser](architecture.md#Browser):
 
 | Port | Answered by | Which is |
 |---|---|---|
+| [Amendments from the page](architecture.md#PageAmendments) | [Amendments sent to trame dev](browser.md#BrowserAmendments) | an implementation |
 | [Decompression](architecture.md#Decompression) | [The browser's gzip](browser.md#BrowserDecompression) | an implementation |
 | [Feed of the graph](architecture.md#GraphFeed) | [The globals of the page, and trame dev](browser.md#BrowserFeed) | an implementation |
 | [Memory of the page](architecture.md#PageMemory) | [Local storage](browser.md#BrowserMemory) | an implementation |
@@ -87,7 +89,7 @@ Consequences: The browser's globals appear only in these implementations; the en
 | Libraries for storage and decompression | every browser the page targets has local storage and gzip |
 
 - Decided by: trame
-- Chooses: [The browser loads the page](../std/docs/platform.md#BrowserLoading), [The browser's window](browser.md#BrowserWindow), [Local storage](browser.md#BrowserMemory), [The globals of the page, and trame dev](browser.md#BrowserFeed), [The browser's gzip](browser.md#BrowserDecompression)
+- Chooses: [The browser loads the page](../std/docs/platform.md#BrowserLoading), [The browser's window](browser.md#BrowserWindow), [Local storage](browser.md#BrowserMemory), [The globals of the page, and trame dev](browser.md#BrowserFeed), [Amendments sent to trame dev](browser.md#BrowserAmendments), [The browser's gzip](browser.md#BrowserDecompression)
 - In: [Browser](architecture.md#Browser)
 - Follows: [Adapter](../std/docs/patterns.md#Adapter)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
@@ -99,7 +101,7 @@ Consequences: The browser's globals appear only in these implementations; the en
 
 ### NodePlatform
 
-`NodePlatform` · `src/platform.ts:378` · status: **held**
+`NodePlatform` · `src/platform.ts:379` · status: **held**
 
 In [Local](architecture.md#Local), [Test](architecture.md#Test):
 
@@ -132,7 +134,7 @@ Consequences: Node's built-in modules appear only in these implementations; movi
 
 ### On a machine, Node.js reads, writes and runs
 
-`NodeMachine` · `src/platform.ts:397` · status: **held**
+`NodeMachine` · `src/platform.ts:398` · status: **held**
 
 On the machine where trame is started, Node.js reads and writes the files, copies and compares trees, starts processes and other engines, serves HTTP, shows the terminal and gives the time.
 
@@ -169,7 +171,7 @@ Consequences: Writing goes through FileWriting and FileTrees only, which the rul
 
 ### Scenarios write in memory, over the disk
 
-`FilesInMemoryOverTheDisk` · `src/platform.ts:413` · status: **held**
+`FilesInMemoryOverTheDisk` · `src/platform.ts:414` · status: **held**
 
 In the scenarios, the files are read from the disk and what the engine writes is kept in memory over them: one adapter that reads Node's file system and never writes it.
 
@@ -197,7 +199,7 @@ Consequences: Reading and writing are one realization in the scenarios, so that 
 
 ### Scenarios run in memory
 
-`InMemoryScenarios` · `src/platform.ts:430` · status: **held**
+`InMemoryScenarios` · `src/platform.ts:431` · status: **held**
 
 In the scenarios, what the engine writes is kept in memory over the disk it reads, what it prints is kept, the clock is stopped on the day of the scenarios, the current directory is the example's (or the project a scenario enters), the programs it starts answer what the scenario says, and its server answers the scenario.
 
@@ -232,7 +234,7 @@ Consequences: These realizations touch nothing but the disk they read: the logs 
 
 ### A run is kept while what it reads is as it was
 
-`RunsByWhatTheyRead` · `src/platform.ts:450` · status: **held**
+`RunsByWhatTheyRead` · `src/platform.ts:451` · status: **held**
 
 The runs of a project (its scenarios played) are told apart by the code they wire and the files the project reads; on a machine they are kept on disk, in the scenarios in the process.
 
@@ -260,7 +262,7 @@ Consequences: A scenario is played again only when the code it wires or a file i
 
 ### On a machine, runs are kept on disk
 
-`RunsKeptOnDisk` · `src/platform.ts:464` · status: **held**
+`RunsKeptOnDisk` · `src/platform.ts:465` · status: **held**
 
 In [Local](architecture.md#Local):
 
@@ -286,7 +288,7 @@ Consequences: Each project keeps its runs under .trame/runs, by engine; the olde
 
 ### In the scenarios, runs are kept in the process
 
-`RunsKeptInTheProcess` · `src/platform.ts:478` · status: **held**
+`RunsKeptInTheProcess` · `src/platform.ts:479` · status: **held**
 
 In [Test](architecture.md#Test):
 
@@ -312,7 +314,7 @@ Consequences: What a scenario of a scenario's project played is found again in t
 
 ### esbuild bundles the page's program
 
-`EsbuildBundles` · `src/platform.ts:492` · status: **held**
+`EsbuildBundles` · `src/platform.ts:493` · status: **held**
 
 In [Local](architecture.md#Local), [Test](architecture.md#Test):
 
@@ -338,7 +340,7 @@ Context: The page's program is TypeScript in several modules, the graph's among 
 
 ### tree-sitter reads the bodies
 
-`TreeSitterReads` · `src/platform.ts:508` · status: **held**
+`TreeSitterReads` · `src/platform.ts:509` · status: **held**
 
 In [Local](architecture.md#Local), [Test](architecture.md#Test):
 
@@ -365,7 +367,7 @@ Context: Bodies are written in several languages (TypeScript, Terraform, CSS) an
 
 ### tsx runs TypeScript
 
-`TsxRuns` · `src/platform.ts:525` · status: **held**
+`TsxRuns` · `src/platform.ts:526` · status: **held**
 
 In [Local](architecture.md#Local), [Test](architecture.md#Test):
 
@@ -393,7 +395,7 @@ Consequences: The processes the engine starts import the same runner (the decisi
 
 ### The TypeScript compiler reads the declarations
 
-`CompilerReadsDeclarations` · `src/platform.ts:542` · status: **held**
+`CompilerReadsDeclarations` · `src/platform.ts:543` · status: **held**
 
 In [Local](architecture.md#Local), [Test](architecture.md#Test):
 
@@ -418,7 +420,7 @@ Context: The static analysis needs what only types say: the type argument of a d
 
 ### The engine's own files sit beside its code
 
-`EngineFilesBesideCode` · `src/platform.ts:556` · status: **held**
+`EngineFilesBesideCode` · `src/platform.ts:557` · status: **held**
 
 The prelude and the page's program and style sheets are found from the code of the platform, wherever the engine is.
 
@@ -446,7 +448,7 @@ Context: A frozen generation runs from its own directory, and reaches the shared
 
 ### Amendments go in the sources
 
-`AmendmentsInPlace` · `src/platform.ts:588` · status: **held**
+`AmendmentsInPlace` · `src/platform.ts:589` · status: **held**
 
 Until the repository takes them as pull requests, an amendment is written where the graph is: in its sources.
 

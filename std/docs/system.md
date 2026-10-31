@@ -48,7 +48,7 @@ Source: Node.js documentation, process.argv · `https://nodejs.org/api/process.h
 
 ### Node.js command line and child processes
 
-`NodeCli` · `src/system.ts:96`
+`NodeCli` · `src/system.ts:97`
 
 How a program is run by Node: a module imported before it, the warnings silenced; how a child shares the terminal.
 
@@ -69,7 +69,7 @@ Source: Node.js documentation: Command-line API (--import, NODE_NO_WARNINGS), ch
 
 ### Node.js character encodings
 
-`NodeEncodings` · `src/system.ts:134`
+`NodeEncodings` · `src/system.ts:135`
 
 The names Node gives to the encodings in which it reads and writes text (fs.readFileSync, Buffer).
 
@@ -98,6 +98,7 @@ Source: Node.js documentation: stream.Readable ('data', 'close', 'error'), Child
 |---|---|---|
 | `data` | `data` | A readable stream gives a chunk of what it reads |
 | `close` | `close` | A stream, a request or a child process is closed: nothing more will come |
+| `end` | `end` | A readable stream has nothing more to give: what it read is whole |
 | `exit` | `exit` | A child process ended, with its exit code |
 | `change` | `change` | fs.watch: a file under what is watched changed |
 | `error` | `error` | A stream failed |
@@ -110,7 +111,7 @@ Source: Node.js documentation: stream.Readable ('data', 'close', 'error'), Child
 
 ### Node.js module specifiers
 
-`NodeModuleSpecifiers` · `src/system.ts:115`
+`NodeModuleSpecifiers` · `src/system.ts:116`
 
 How an import names a module: a relative specifier starts from the importing file; any other names a package, a built-in module (node:fs) or an import map entry (#trame/kernel).
 
@@ -152,7 +153,7 @@ Source: Node.js documentation: process (process.exitCode), console (console.log)
 
 ### npm's command line
 
-`NpmCli` · `src/system.ts:149`
+`NpmCli` · `src/system.ts:150`
 
 The registry's reports, asked of npm in a project: its audit and its outdated packages, in JSON.
 
@@ -172,7 +173,7 @@ Source: npm documentation: npm audit, npm outdated (--json) · `https://docs.npm
 
 ### npm's manifest
 
-`NpmManifest` · `src/system.ts:167`
+`NpmManifest` · `src/system.ts:168`
 
 The file where a project names the packages it depends on, each at its version, for npm to install them, and its import map: where the specifiers it opens with # lead.
 

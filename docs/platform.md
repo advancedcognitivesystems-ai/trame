@@ -10,7 +10,7 @@
 
 ### Where the engine's own files are
 
-`EngineFiles` · `src/platform.ts:41`
+`EngineFiles` · `src/platform.ts:42`
 
 From the code of the platform: the prelude's internal module (its extension aside, as a program imports it), the root of the engine, where the page's program is found as the assembly writes it, and the page's style sheets.
 
@@ -29,7 +29,7 @@ From the code of the platform: the prelude's internal module (its extension asid
 
 ### Example project
 
-`ExampleRoot` · `src/platform.ts:34`
+`ExampleRoot` · `src/platform.ts:35`
 
 The project on which the scenarios run the engine, relative to Trame's root.
 
@@ -42,7 +42,7 @@ The project on which the scenarios run the engine, relative to Trame's root.
 
 ### Lines shown on an exit in test
 
-`LinesOnExit` · `src/platform.ts:310`
+`LinesOnExit` · `src/platform.ts:311`
 
 When the engine exits during a scenario, the error says the last lines it printed: enough to see why.
 
@@ -55,7 +55,7 @@ When the engine exits during a scenario, the error says the last lines it printe
 
 ### Temporary directories in memory
 
-`MemoryTemporary` · `src/platform.ts:278`
+`MemoryTemporary` · `src/platform.ts:279`
 
 What a temporary directory in memory is named after, in the current directory, with its number.
 
@@ -70,7 +70,7 @@ What a temporary directory in memory is named after, in the current directory, w
 
 ### Day of the scenarios
 
-`TestDay` · `src/platform.ts:57`
+`TestDay` · `src/platform.ts:58`
 
 The date the engine sees in test: the one on which the expected documents of the example were built, and on which the projects the scenarios enter have the evidence they read (evidence counts from the day it was given, g75).
 
@@ -83,7 +83,7 @@ The date the engine sees in test: the one on which the expected documents of the
 
 ### Time of the scenarios
 
-`TestTime` · `src/platform.ts:317`
+`TestTime` · `src/platform.ts:318`
 
 The time of day the stopped clock shows on the day of the scenarios, in UTC: in the morning, the same date in every time zone of Europe.
 
@@ -96,7 +96,7 @@ The time of day the stopped clock shows on the day of the scenarios, in UTC: in 
 
 ### Runner of TypeScript
 
-`TypeScriptRunner` · `src/platform.ts:50`
+`TypeScriptRunner` · `src/platform.ts:51`
 
 The module Node imports first to run a program written in TypeScript, as the engine itself runs (tsx).
 
@@ -111,7 +111,7 @@ The module Node imports first to run a program written in TypeScript, as the eng
 
 ### Example process
 
-`ExampleProcess` · `src/platform.ts:259` · status: **held**
+`ExampleProcess` · `src/platform.ts:260` · status: **held**
 
 The current directory is the example project's, or the project of the repository a scenario enters, resolved by the paths of the platform. A program it starts (the engine relaunched, a program run, another engine) runs nothing: it prints what the scenario said it answers and exits with that status; what was started is kept for the scenario.
 
@@ -126,12 +126,12 @@ The current directory is the example project's, or the project of the repository
 
 ### A server in memory
 
-`MemoryHttpServer` · `src/platform.ts:300` · status: **held**
+`MemoryHttpServer` · `src/platform.ts:301` · status: **held**
 
 trame dev starts it as a server of Node.js; the scenario asks it for a path as a browser would. Nothing listens on the network.
 
 - Owner: trame
-- Parameters: `events` ← [Node.js events](../std/docs/system.md#NodeEvents) · `texts` ← [Texts](../std/docs/algebra.md#Texts) · `messages` ← [Messages of the platform](messages.md#PlatformMessages)
+- Parameters: `events` ← [Node.js events](../std/docs/system.md#NodeEvents) · `http` ← [HTTP](../std/docs/web.md#Http) · `texts` ← [Texts](../std/docs/algebra.md#Texts) · `messages` ← [Messages of the platform](messages.md#PlatformMessages)
 - Body: `./code/platform/memory-http.ts` (typescript)
 - Implements: [HTTP server](architecture.md#HttpServer), [Server log](architecture.md#ServerLog)
 - Verified by: [trame dev](command-scenarios.md#DevFollowsTheGraph)
@@ -141,7 +141,7 @@ trame dev starts it as a server of Node.js; the scenario asks it for a path as a
 
 ### Terminal in memory
 
-`MemoryTerminal` · `src/platform.ts:324` · status: **held**
+`MemoryTerminal` · `src/platform.ts:325` · status: **held**
 
 Keeps each line. Exiting throws an error instead of stopping the process. The scenario types the arguments the next command line reads.
 
@@ -156,7 +156,7 @@ Keeps each line. Exiting throws an error instead of stopping the process. The sc
 
 ### No registry in test
 
-`NoReportsInTest` · `src/platform.ts:269` · status: **held**
+`NoReportsInTest` · `src/platform.ts:270` · status: **held**
 
 The scenarios ask no registry: no package is reported on.
 
@@ -170,7 +170,7 @@ The scenarios ask no registry: no package is reported on.
 
 ### Stopped clock
 
-`StoppedClock` · `src/platform.ts:333` · status: **held**
+`StoppedClock` · `src/platform.ts:334` · status: **held**
 
 - Owner: trame
 - Parameters: `day` ← [Day of the scenarios](#TestDay) · `time` ← [Time of the scenarios](#TestTime) · `iso` ← [ISO 8601 dates](../std/docs/measures.md#Iso8601)
@@ -185,7 +185,7 @@ The scenarios ask no registry: no package is reported on.
 
 ### System files, for reading
 
-`DiskReading` · `src/platform.ts:76` · status: **held**
+`DiskReading` · `src/platform.ts:77` · status: **held**
 
 - Owner: trame
 - Body: `./code/platform/disk-reading.ts` (typescript)
@@ -197,7 +197,7 @@ The scenarios ask no registry: no package is reported on.
 
 ### Trees on disk
 
-`DiskTrees` · `src/platform.ts:217` · status: **held**
+`DiskTrees` · `src/platform.ts:218` · status: **held**
 
 Copies, links and removes with Node's file system; compares with GNU diff.
 
@@ -212,7 +212,7 @@ Copies, links and removes with Node's file system; compares with GNU diff.
 
 ### System files, for writing
 
-`DiskWriting` · `src/platform.ts:189` · status: **held**
+`DiskWriting` · `src/platform.ts:190` · status: **held**
 
 - Owner: trame
 - Body: `./code/platform/disk-writing.ts` (typescript)
@@ -224,7 +224,7 @@ Copies, links and removes with Node's file system; compares with GNU diff.
 
 ### esbuild
 
-`Esbuild` · `src/platform.ts:166` · status: **held**
+`Esbuild` · `src/platform.ts:167` · status: **held**
 
 - Owner: trame
 - Body: `./code/platform/esbuild.ts` (typescript)
@@ -237,7 +237,7 @@ Copies, links and removes with Node's file system; compares with GNU diff.
 
 ### Amendments in place
 
-`InPlaceSources` · `src/platform.ts:573` · status: **held**
+`InPlaceSources` · `src/platform.ts:574` · status: **held**
 
 The first strategy of where an amendment goes: written in the sources, at the end of the module that declares the node it amends, as a person would write it (its title is why it was made), the import of amendments added when the module lacks it. What the files of the project are, in each environment, the file ports say: the disk on a machine, memory over the disk in the scenarios. It writes, so it is an implementation (the engine's functions never write).
 
@@ -253,7 +253,7 @@ The first strategy of where an amendment goes: written in the sources, at the en
 
 ### Files in memory, over the disk
 
-`MemoryFiles` · `src/platform.ts:286` · status: **held**
+`MemoryFiles` · `src/platform.ts:287` · status: **held**
 
 What the engine writes stays in memory and is read back first; the disk underneath is read, never written. Trees are copied, linked and removed in memory and compared in the unified format; a watch is told of each file written under it. The scenario reads what was written.
 
@@ -268,7 +268,7 @@ What the engine writes stays in memory and is read back first; the disk undernea
 
 ### Command line
 
-`NodeCommandLine` · `src/platform.ts:245` · status: **held**
+`NodeCommandLine` · `src/platform.ts:246` · status: **held**
 
 The first argument chooses the command; the following ones are passed to it as they are.
 
@@ -284,7 +284,7 @@ The first argument chooses the command; the following ones are passed to it as t
 
 ### gzip, with Node's zlib
 
-`NodeCompression` · `src/platform.ts:131` · status: **held**
+`NodeCompression` · `src/platform.ts:132` · status: **held**
 
 The graph of a page compressed as "A page carries its graph compressed" says: gzip, written in base64.
 
@@ -299,7 +299,7 @@ The graph of a page compressed as "A page carries its graph compressed" says: gz
 
 ### SHA-256 hashes
 
-`NodeHashing` · `src/platform.ts:122` · status: **held**
+`NodeHashing` · `src/platform.ts:123` · status: **held**
 
 - Owner: trame
 - Body: `./code/platform/hashing.ts` (typescript)
@@ -311,7 +311,7 @@ The graph of a page compressed as "A page carries its graph compressed" says: gz
 
 ### Node HTTP server
 
-`NodeHttpServer` · `src/platform.ts:158` · status: **held**
+`NodeHttpServer` · `src/platform.ts:159` · status: **held**
 
 - Owner: trame
 - Body: `./code/platform/http.ts` (typescript)
@@ -323,7 +323,7 @@ The graph of a page compressed as "A page carries its graph compressed" says: gz
 
 ### Node paths
 
-`NodePaths` · `src/platform.ts:84` · status: **held**
+`NodePaths` · `src/platform.ts:85` · status: **held**
 
 - Owner: trame
 - Body: `./code/platform/paths.ts` (typescript)
@@ -335,7 +335,7 @@ The graph of a page compressed as "A page carries its graph compressed" says: gz
 
 ### Node process
 
-`NodeProcess` · `src/platform.ts:197` · status: **held**
+`NodeProcess` · `src/platform.ts:198` · status: **held**
 
 - Owner: trame
 - Parameters: `argv` ← [Node.js process arguments](../std/docs/system.md#NodeArguments) · `node` ← [Node.js command line and child processes](../std/docs/system.md#NodeCli) · `runner` ← [Runner of TypeScript](#TypeScriptRunner)
@@ -348,7 +348,7 @@ The graph of a page compressed as "A page carries its graph compressed" says: gz
 
 ### Node programs
 
-`NodePrograms` · `src/platform.ts:207` · status: **held**
+`NodePrograms` · `src/platform.ts:208` · status: **held**
 
 Another engine, run with the same loader; what it prints on its standard output is read, its errors reach the terminal.
 
@@ -363,7 +363,7 @@ Another engine, run with the same loader; what it prints on its standard output 
 
 ### Node terminal
 
-`NodeTerminal` · `src/platform.ts:226` · status: **held**
+`NodeTerminal` · `src/platform.ts:227` · status: **held**
 
 - Owner: trame
 - Parameters: `argv` ← [Node.js process arguments](../std/docs/system.md#NodeArguments) · `exitStatus` ← [Exit status](../std/docs/system.md#ExitStatus) · `events` ← [Node.js events](../std/docs/system.md#NodeEvents) · `posix` ← [POSIX signals and errors](../std/docs/system.md#Posix) · `messages` ← [Messages of the platform](messages.md#PlatformMessages)
@@ -376,7 +376,7 @@ Another engine, run with the same loader; what it prints on its standard output 
 
 ### Node timer
 
-`NodeTimer` · `src/platform.ts:150` · status: **held**
+`NodeTimer` · `src/platform.ts:151` · status: **held**
 
 - Owner: trame
 - Body: `./code/platform/timer.ts` (typescript)
@@ -388,7 +388,7 @@ Another engine, run with the same loader; what it prints on its standard output 
 
 ### npm's reports
 
-`NpmReports` · `src/platform.ts:141` · status: **held**
+`NpmReports` · `src/platform.ts:142` · status: **held**
 
 The registry's reports on the packages a project installs, asked of npm's command line.
 
@@ -403,7 +403,7 @@ The registry's reports on the packages a project installs, asked of npm's comman
 
 ### Page resources
 
-`PageResources` · `src/platform.ts:175` · status: **held**
+`PageResources` · `src/platform.ts:176` · status: **held**
 
 - Owner: trame
 - Parameters: `files` ← [Where the engine's own files are](#EngineFiles) · `layout` ← [Project layout](conventions.md#Layout) · `advancement` ← [What an advance assembles](generations.md#Advancement) · `language` ← [TypeScript](typescript.md#TypeScript) · `specifiers` ← [Node.js module specifiers](../std/docs/system.md#NodeModuleSpecifiers) · `texts` ← [Texts](../std/docs/algebra.md#Texts) · `sequences` ← [Sequences](../std/docs/algebra.md#Sequences)
@@ -416,7 +416,7 @@ The registry's reports on the packages a project installs, asked of npm's comman
 
 ### TypeScript compiler
 
-`RealTypeScript` · `src/platform.ts:102` · status: **held**
+`RealTypeScript` · `src/platform.ts:103` · status: **held**
 
 - Owner: trame
 - Body: `./code/platform/typescript.ts` (typescript)
@@ -429,7 +429,7 @@ The registry's reports on the packages a project installs, asked of npm's comman
 
 ### Results kept in the process
 
-`ResultsInTheProcess` · `src/platform.ts:351` · status: **held**
+`ResultsInTheProcess` · `src/platform.ts:352` · status: **held**
 
 One map for the whole process, whatever the number of sessions that wire it: the program assembled and every session of the scenarios share it, and it goes with the process.
 
@@ -443,7 +443,7 @@ One map for the whole process, whatever the number of sessions that wire it: the
 
 ### Runs kept in the process
 
-`RunsInTheProcess` · `src/platform.ts:362` · status: **held**
+`RunsInTheProcess` · `src/platform.ts:363` · status: **held**
 
 One map for the whole process, by keys that already tell the projects and the states of their files apart: the scenarios of a scenario's project, compiled again and again in memory, are played once while nothing they read changed.
 
@@ -457,7 +457,7 @@ One map for the whole process, by keys that already tell the projects and the st
 
 ### Runs kept on disk
 
-`RunsOnDisk` · `src/platform.ts:372` · status: **held**
+`RunsOnDisk` · `src/platform.ts:373` · status: **held**
 
 Under the project's library links, one directory per engine (found from where its code is), one file per run: the next build, the assembly after a build and the generation that builds the same graph again find what was played.
 
@@ -473,7 +473,7 @@ Under the project's library links, one directory per engine (found from where it
 
 ### System clock
 
-`SystemClock` · `src/platform.ts:235` · status: **held**
+`SystemClock` · `src/platform.ts:236` · status: **held**
 
 - Owner: trame
 - Parameters: `iso` ← [ISO 8601 dates](../std/docs/measures.md#Iso8601) · `environment` ← [Trame's environment](conventions.md#TrameEnvironment) · `sequences` ← [Sequences](../std/docs/algebra.md#Sequences)
@@ -486,7 +486,7 @@ Under the project's library links, one directory per engine (found from where it
 
 ### Trame's prelude
 
-`TramePrelude` · `src/platform.ts:67` · status: **held**
+`TramePrelude` · `src/platform.ts:68` · status: **held**
 
 - Owner: trame
 - Parameters: `files` ← [Where the engine's own files are](#EngineFiles)
@@ -499,7 +499,7 @@ Under the project's library links, one directory per engine (found from where it
 
 ### tsx loader
 
-`TsxLoader` · `src/platform.ts:93` · status: **held**
+`TsxLoader` · `src/platform.ts:94` · status: **held**
 
 Runs the TypeScript modules of the project as they are.
 
@@ -514,7 +514,7 @@ Runs the TypeScript modules of the project as they are.
 
 ### tree-sitter in WebAssembly
 
-`WebTreeSitter` · `src/platform.ts:112` · status: **held**
+`WebTreeSitter` · `src/platform.ts:113` · status: **held**
 
 The syntax trees of the bodies, with web-tree-sitter and the grammars that the languages name.
 
@@ -532,7 +532,7 @@ The syntax trees of the bodies, with web-tree-sitter and the grammars that the l
 
 ### Amendments go in the sources
 
-`AmendmentsInPlace` · `src/platform.ts:588` · status: **held**
+`AmendmentsInPlace` · `src/platform.ts:589` · status: **held**
 
 Until the repository takes them as pull requests, an amendment is written where the graph is: in its sources.
 
@@ -560,7 +560,7 @@ Consequences: The amendment is a declaration in the module of the node it amends
 
 ### The TypeScript compiler reads the declarations
 
-`CompilerReadsDeclarations` · `src/platform.ts:542` · status: **held**
+`CompilerReadsDeclarations` · `src/platform.ts:543` · status: **held**
 
 In [Local](architecture.md#Local), [Test](architecture.md#Test):
 
@@ -585,7 +585,7 @@ Context: The static analysis needs what only types say: the type argument of a d
 
 ### The engine's own files sit beside its code
 
-`EngineFilesBesideCode` · `src/platform.ts:556` · status: **held**
+`EngineFilesBesideCode` · `src/platform.ts:557` · status: **held**
 
 The prelude and the page's program and style sheets are found from the code of the platform, wherever the engine is.
 
@@ -613,7 +613,7 @@ Context: A frozen generation runs from its own directory, and reaches the shared
 
 ### esbuild bundles the page's program
 
-`EsbuildBundles` · `src/platform.ts:492` · status: **held**
+`EsbuildBundles` · `src/platform.ts:493` · status: **held**
 
 In [Local](architecture.md#Local), [Test](architecture.md#Test):
 
@@ -639,7 +639,7 @@ Context: The page's program is TypeScript in several modules, the graph's among 
 
 ### Scenarios write in memory, over the disk
 
-`FilesInMemoryOverTheDisk` · `src/platform.ts:413` · status: **held**
+`FilesInMemoryOverTheDisk` · `src/platform.ts:414` · status: **held**
 
 In the scenarios, the files are read from the disk and what the engine writes is kept in memory over them: one adapter that reads Node's file system and never writes it.
 
@@ -667,7 +667,7 @@ Consequences: Reading and writing are one realization in the scenarios, so that 
 
 ### Scenarios run in memory
 
-`InMemoryScenarios` · `src/platform.ts:430` · status: **held**
+`InMemoryScenarios` · `src/platform.ts:431` · status: **held**
 
 In the scenarios, what the engine writes is kept in memory over the disk it reads, what it prints is kept, the clock is stopped on the day of the scenarios, the current directory is the example's (or the project a scenario enters), the programs it starts answer what the scenario says, and its server answers the scenario.
 
@@ -702,7 +702,7 @@ Consequences: These realizations touch nothing but the disk they read: the logs 
 
 ### On a machine, Node.js reads, writes and runs
 
-`NodeMachine` · `src/platform.ts:397` · status: **held**
+`NodeMachine` · `src/platform.ts:398` · status: **held**
 
 On the machine where trame is started, Node.js reads and writes the files, copies and compares trees, starts processes and other engines, serves HTTP, shows the terminal and gives the time.
 
@@ -739,7 +739,7 @@ Consequences: Writing goes through FileWriting and FileTrees only, which the rul
 
 ### NodePlatform
 
-`NodePlatform` · `src/platform.ts:378` · status: **held**
+`NodePlatform` · `src/platform.ts:379` · status: **held**
 
 In [Local](architecture.md#Local), [Test](architecture.md#Test):
 
@@ -772,7 +772,7 @@ Consequences: Node's built-in modules appear only in these implementations; movi
 
 ### A run is kept while what it reads is as it was
 
-`RunsByWhatTheyRead` · `src/platform.ts:450` · status: **held**
+`RunsByWhatTheyRead` · `src/platform.ts:451` · status: **held**
 
 The runs of a project (its scenarios played) are told apart by the code they wire and the files the project reads; on a machine they are kept on disk, in the scenarios in the process.
 
@@ -800,7 +800,7 @@ Consequences: A scenario is played again only when the code it wires or a file i
 
 ### In the scenarios, runs are kept in the process
 
-`RunsKeptInTheProcess` · `src/platform.ts:478` · status: **held**
+`RunsKeptInTheProcess` · `src/platform.ts:479` · status: **held**
 
 In [Test](architecture.md#Test):
 
@@ -826,7 +826,7 @@ Consequences: What a scenario of a scenario's project played is found again in t
 
 ### On a machine, runs are kept on disk
 
-`RunsKeptOnDisk` · `src/platform.ts:464` · status: **held**
+`RunsKeptOnDisk` · `src/platform.ts:465` · status: **held**
 
 In [Local](architecture.md#Local):
 
@@ -852,7 +852,7 @@ Consequences: Each project keeps its runs under .trame/runs, by engine; the olde
 
 ### tree-sitter reads the bodies
 
-`TreeSitterReads` · `src/platform.ts:508` · status: **held**
+`TreeSitterReads` · `src/platform.ts:509` · status: **held**
 
 In [Local](architecture.md#Local), [Test](architecture.md#Test):
 
@@ -879,7 +879,7 @@ Context: Bodies are written in several languages (TypeScript, Terraform, CSS) an
 
 ### tsx runs TypeScript
 
-`TsxRuns` · `src/platform.ts:525` · status: **held**
+`TsxRuns` · `src/platform.ts:526` · status: **held**
 
 In [Local](architecture.md#Local), [Test](architecture.md#Test):
 

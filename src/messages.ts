@@ -773,6 +773,7 @@ export const ScenarioMessages = catalog({
     planAfterBuild: () => "trame plan, right after a build, says nothing changes, and writes nothing",
     planSaysWhatChanges: () =>
       "Against a graph.json changed by hand, trame plan says the node it lacks is added, the node it invented is removed, the status it changed changes back, and the issue it added is resolved",
+    amendmentPreviewedFromThePage: () => "The page posts an amendment to trame dev and reads, before anything is recorded, what it would change",
     amendmentRefusedByACriterion: () => "An amendment that makes a criterion fail is not recorded",
     amendmentOfCodeRefused: () => "A value code is built on is not amended from here",
     amendmentSaidFirst: () => "With --dry-run, what the amendment would change is said, and nothing is written",

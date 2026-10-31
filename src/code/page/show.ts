@@ -6,12 +6,12 @@
 // decisions; the documents come written in HTML, Markdown and text.
 
 import {
-  BlockType, BundleMode, DateRole, EvidenceSource, FigureType, ViewGroup, ViewScope,
+  BlockType, BundleMode, ChangeWay, DateRole, EvidenceSource, FigureType, ViewGroup, ViewScope,
   addDays, formatDate, formatDateShort, fullDate, movedTo,
 } from "../../../trame/kernel"
 import type { Bundle, Document, Figure, Payload, ProvidedBy } from "../../../trame/kernel"
 import type { Handler } from "../../../kinds/entry-point"
-import type { PageWindow, PageMemory, GraphFeed, Decompression } from "../../architecture"
+import type { PageWindow, PageMemory, GraphFeed, Decompression, PageAmendments } from "../../architecture"
 import type { Html, Aria } from "#std/html"
 import type { HtmlElement, EscapedText, AttributeSelector, AttributePresence, SelectorList, ClassSelector } from "../../html"
 import type { DocumentMarkup, AroundMarkup, ExplorerMarkup } from "../../markup"
@@ -36,6 +36,7 @@ export interface Deps {
   memory: PageMemory
   feed: GraphFeed
   unpacking: Decompression
+  amendments: PageAmendments
   explorer: ExplorerApi
   common: CommonApi
   page: ProvidedBy<typeof ThePage>
@@ -70,7 +71,7 @@ export interface Deps {
 }
 
 const body = (deps: Deps): Handler => {
-  const { window, memory, feed, unpacking, explorer, common, page, regions, modes, highlighting, markup, around, ids, slots, html, aria, events, view, iso, file } = deps
+  const { window, memory, feed, unpacking, amendments, explorer, common, page, regions, modes, highlighting, markup, around, ids, slots, html, aria, events, view, iso, file } = deps
   const { element, escape, attribute, presence, selectors, classSelector, words } = deps
   const { classes: em, attributes: ea, ids: explorerIds } = deps.explorerMarkup
   const { parts } = deps.punctuation
@@ -216,6 +217,73 @@ const body = (deps: Deps): Handler => {
     explorations.clear()
     el.innerHTML = optional(p.renders?.[d.id]?.html)
     drawFigures(el, d)
+    // In trame dev, a value of a card may be amended.
+    if (amendments.available()) el.querySelectorAll<HTMLElement>(presence(markup.attributes.amend)).forEach((b) => (b.hidden = false))
+  }
+
+  // Amending a value, in trame dev (since g86): a form under the card's buttons, which trame dev answers. -------------
+
+  const fields = around.amend.fields
+  const field = (label: string, name: string, attrs: Attributes = none, after: string = empty) =>
+    element(html.dt, none, element(html.label, none, escape(label))) +
+    element(html.dd, none, element(html.input, { [html.name]: name, [html.type]: html.textType, ...attrs }, empty) + after)
+
+  function openAmendment(button: HTMLElement) {
+    const holder = button.parentElement
+    const next = holder?.nextElementSibling
+    if (next?.hasAttribute(around.attributes.amendForm)) return void next.remove()
+    const units = JSON.parse(optional(button.getAttribute(markup.attributes.units))) as [string, number][]
+    const now = JSON.parse(optional(button.getAttribute(markup.attributes.value))) as unknown
+    const cited = button.getAttribute(markup.attributes.way) === ChangeWay.cited
+    const unitChoice = any(units)
+      ? element(html.select, { [html.name]: fields.unit }, concat(units.map(([u]) => element(html.option, { [html.value]: escape(u) }, escape(u)))))
+      : empty
+    const form = element(html.form, {
+      [html.class]: around.amend.form, [around.attributes.amendForm]: true, [markup.attributes.node]: escape(optional(button.getAttribute(markup.attributes.node))),
+      [markup.attributes.units]: escape(JSON.stringify(units)), [markup.attributes.way]: escape(optional(button.getAttribute(markup.attributes.way))),
+    }, concat([
+      element(html.dl, { [html.class]: markup.classes.facts }, concat([
+        field(words.amendPath(), fields.path, { [html.value]: escape(optional(button.getAttribute(markup.attributes.amend))) }),
+        element(html.dt, none, escape(words.amendNow())) + element(html.dd, none, element(html.code, none, escape(JSON.stringify(now)))),
+        field(words.amendNew(), fields.value, any(units) ? { [html.type]: html.numberType } : none, unitChoice),
+        field(words.amendWhy(), fields.why),
+        field(words.amendBy(), fields.by),
+        field(words.amendFrom(), fields.from, { [html.type]: html.dateType, [html.value]: escape(state.date) }),
+        cited ? field(words.amendSource(), fields.source) : empty,
+      ])),
+      element(html.button, { [html.type]: html.buttonType, [html.class]: markup.classes.viewButton, [around.attributes.preview]: true }, escape(words.amendPreview())),
+      element(html.button, { [html.type]: html.buttonType, [html.class]: markup.classes.viewButton, [around.attributes.record]: true }, escape(words.amendRecord())),
+      element(html.pre, { [html.class]: around.amend.result }, empty),
+    ]))
+    const made = doc.createElement(html.div)
+    made.innerHTML = form
+    const [built] = made.children
+    if (built) holder?.after(built)
+  }
+
+  async function sendAmendment(form: HTMLElement, dryRun: boolean) {
+    const read = (name: string) => form.querySelector<HTMLInputElement>(attribute(html.name, name))?.value
+    const units = JSON.parse(optional(form.getAttribute(markup.attributes.units))) as [string, number][]
+    const [, factor] = units.find(([u]) => u === read(fields.unit)) ?? []
+    const typed = optional(read(fields.value))
+    // A number in a unit goes in the base unit: what the quantity counts in.
+    const value = factor === undefined ? typed : String(Number(typed) * factor)
+    const out = form.querySelector<HTMLElement>(classSelector(around.amend.result))
+    if (out) out.textContent = words.amendSending()
+    const source = read(fields.source)
+    const answer = await amendments.send({
+      [fields.node]: form.getAttribute(markup.attributes.node), [fields.path]: read(fields.path), [fields.value]: value, [fields.why]: read(fields.why),
+      [fields.by]: read(fields.by), [fields.from]: read(fields.from), ...(source ? { [fields.source]: source } : {}), [fields.dryRun]: dryRun,
+    })
+    const lines = [
+      ...(answer.heading ? [answer.heading] : []),
+      ...answer.lines,
+      ...(answer.heading && !any(answer.lines) ? [words.amendNothing()] : []),
+      ...(answer.refused ? [answer.refused] : []),
+      ...(answer.file ? [words.amendRecorded(answer.file)] : []),
+      ...(answer.awaits ? [words.amendAwaits(answer.awaits)] : []),
+    ]
+    if (out) out.textContent = lines.join(file.endOfLine)
   }
 
   /** A file of JSON, its parts coloured. */
@@ -514,6 +582,17 @@ const body = (deps: Deps): Handler => {
       const id = optional(more.getAttribute(ea.more))
       explorations.get(id)?.all.add(Number(more.getAttribute(ea.layer)))
       redraw(id)
+      return true
+    }
+    const amend = near(target, markup.attributes.amend)
+    if (amend) {
+      openAmendment(amend)
+      return true
+    }
+    const asked = near(target, around.attributes.preview) ?? near(target, around.attributes.record)
+    const form = asked?.closest<HTMLElement>(presence(around.attributes.amendForm))
+    if (asked && form) {
+      void sendAmendment(form, asked.hasAttribute(around.attributes.preview))
       return true
     }
     const ref = near(target, markup.attributes.reference)

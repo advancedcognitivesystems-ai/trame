@@ -10,7 +10,7 @@
 
 ### What the doctor writes, runs and waits for
 
-`DoctorProbe` · `src/commands.ts:285`
+`DoctorProbe` · `src/commands.ts:276`
 
 A file and its text; a program that prints that text, run with the engine's loader; how long it waits, in milliseconds.
 
@@ -26,6 +26,22 @@ A file and its text; a program that prints that text, run with the engine's load
 - Used by: [The doctor](command-scenarios.md#DoctorAsks), [Ask the machine](#Doctor)
 
 ## Functions
+
+<a id="Amending"></a>
+
+### An amendment prepared
+
+`Amending` · `src/commands.ts:336` · status: **held**
+
+A chosen value of a node changed by an amendment, compiled first with the graph in memory, the day it comes into force: what it would change, or why it is refused (a value code is built on, a cited one without its source, a value of another type, an error raised). It writes nothing: trame amend and trame dev record it, through the port "Where an amendment goes".
+
+- Owner: trame
+- Parameters: `preparation` ← [Preparation](#Preparation) · `machine` ← [Machine outputs](engine.md#MachineOutputs) · `comparison` ← [Two builds compared](#BuildComparison) · `prelude` ← [Prelude](architecture.md#Prelude) · `references` ← [References](engine.md#References) · `project` ← [Project](engine.md#Project) · `specifiers` ← [Node.js module specifiers](../std/docs/system.md#NodeModuleSpecifiers) · `values` ← [Types of values](../std/docs/algebra.md#ValueTypes) · `paths` ← [Paths](architecture.md#Paths) · `messages` ← [Messages of the commands](messages.md#CommandMessages) · `naming` ← [How an amendment is named](conventions.md#AmendmentNaming) · `counts` ← [Counts](../std/docs/algebra.md#Counts)
+- Body: `./code/commands/amending.ts` (typescript)
+- Effects: execution, keeps, process, read, terminal, time
+- Serves: [A single source of truth](product.md#SingleSource)
+- Verified by: [A value amended](command-scenarios.md#ValueAmended)
+- Used by: [Amend](#Amend), [Start trame dev](#Dev)
 
 <a id="Assembler"></a>
 
@@ -47,7 +63,7 @@ The program of a component for an environment, and its infrastructure, ready to 
 
 ### Two builds compared
 
-`BuildComparison` · `src/commands.ts:321` · status: **held**
+`BuildComparison` · `src/commands.ts:312` · status: **held**
 
 The nodes added and removed, the statuses that change, the nodes whose fields, result or edges change, the issues raised and resolved, the shipments touched; then said line by line. What trame plan and trame amend show.
 
@@ -56,7 +72,7 @@ The nodes added and removed, the statuses that change, the nodes whose fields, r
 - Body: `./code/commands/comparison.ts` (typescript)
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Verified by: [A value amended](command-scenarios.md#ValueAmended)
-- Used by: [Amend](#Amend), [Plan](#Plan)
+- Used by: [An amendment prepared](#Amending), [Plan](#Plan)
 
 <a id="Preparation"></a>
 
@@ -71,7 +87,7 @@ Reads the options, checks and compiles the project, refuses cleanly: what all co
 - Body: `./code/commands/preparation.ts` (typescript)
 - Effects: execution, keeps, process, read, terminal, time
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
-- Used by: [Advance](#Advance), [Amend](#Amend), [Assemble a component](#Assemble), [Assembler](#Assembler), [Audit the packages](#Audit), [Build](#Build), [Deliver](#Deliver), [Start trame dev](#Dev), [Ask the machine](#Doctor), [Payload](#EmitPayload), [Export the page](#Export), [Plan](#Plan), [Publish](#Publish), [Record evidence](#RecordEvidence), [Release a version](#Release), [Render a view](#RenderView), [Ship](#Ship), [Show a view](#ShowView), [Take the snapshot](#TakeSnapshot), [Test the laws](#TestKinds), [View by its name](#ViewByName), [Write the manifest](#WriteManifest)
+- Used by: [Advance](#Advance), [Amend](#Amend), [An amendment prepared](#Amending), [Assemble a component](#Assemble), [Assembler](#Assembler), [Audit the packages](#Audit), [Build](#Build), [Deliver](#Deliver), [Start trame dev](#Dev), [Ask the machine](#Doctor), [Payload](#EmitPayload), [Export the page](#Export), [Plan](#Plan), [Publish](#Publish), [Record evidence](#RecordEvidence), [Release a version](#Release), [Render a view](#RenderView), [Ship](#Ship), [Show a view](#ShowView), [Take the snapshot](#TakeSnapshot), [Test the laws](#TestKinds), [View by its name](#ViewByName), [Write the manifest](#WriteManifest)
 - Verified by: [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore)
 
 <a id="RenderView"></a>
@@ -117,14 +133,14 @@ Triggered by `command advance`
 
 ### Amend
 
-`Amend` · `src/commands.ts:346` · status: **held**
+`Amend` · `src/commands.ts:353` · status: **held**
 
-Changes a chosen value of a node by an amendment: who, why, from when, the value. The amendment is compiled first with the graph, and what it would change is said (statuses, issues raised, a criterion or a scenario that would fail); unless it raises an error (or --accept), it is recorded where the project's amendments go, and its owner's approval awaited when someone else wrote it. --dry-run only says. A cited value changes only with its source (--source); a value code is built on, never from here.
+Changes a chosen value of a node by an amendment: who, why, from when, the value. What it would change is said first (statuses, issues raised, a criterion or a scenario that would fail); unless it raises an error (or --accept), it is recorded where the project's amendments go, and its owner's approval awaited when someone else wrote it. --dry-run only says. A cited value changes only with its source (--source); a value code is built on, never from here.
 
 Triggered by `command amend`
 
 - Owner: trame
-- Parameters: `exitStatus` ← [Exit status](../std/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `machine` ← [Machine outputs](engine.md#MachineOutputs) · `comparison` ← [Two builds compared](#BuildComparison) · `place` ← [Where an amendment goes](architecture.md#AmendmentPlace) · `prelude` ← [Prelude](architecture.md#Prelude) · `references` ← [References](engine.md#References) · `project` ← [Project](engine.md#Project) · `specifiers` ← [Node.js module specifiers](../std/docs/system.md#NodeModuleSpecifiers) · `values` ← [Types of values](../std/docs/algebra.md#ValueTypes) · `paths` ← [Paths](architecture.md#Paths) · `text` ← [Terminal text](text.md#TerminalText) · `terminal` ← [Terminal](architecture.md#Terminal) · `messages` ← [Messages of the commands](messages.md#CommandMessages) · `naming` ← [How an amendment is named](conventions.md#AmendmentNaming) · `counts` ← [Counts](../std/docs/algebra.md#Counts)
+- Parameters: `exitStatus` ← [Exit status](../std/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `amending` ← [An amendment prepared](#Amending) · `place` ← [Where an amendment goes](architecture.md#AmendmentPlace) · `paths` ← [Paths](architecture.md#Paths) · `text` ← [Terminal text](text.md#TerminalText) · `terminal` ← [Terminal](architecture.md#Terminal) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
 - Body: `./code/commands/amend.ts` (typescript)
 - Effects: execution, keeps, process, read, terminal, time, write
 - Serves: [A single source of truth](product.md#SingleSource)
@@ -136,7 +152,7 @@ Triggered by `command amend`
 
 ### Assemble a component
 
-`Assemble` · `src/commands.ts:360` · status: **held**
+`Assemble` · `src/commands.ts:376` · status: **held**
 
 Triggered by `command assemble`
 
@@ -212,14 +228,14 @@ Triggered by `command deliver`
 
 ### Start trame dev
 
-`Dev` · `src/commands.ts:273` · status: **held**
+`Dev` · `src/commands.ts:366` · status: **held**
 
 Triggered by `command dev`
 
 - Owner: trame
-- Parameters: `preparation` ← [Preparation](#Preparation) · `devServer` ← [trame dev server](engine.md#DevServer)
+- Parameters: `preparation` ← [Preparation](#Preparation) · `devServer` ← [trame dev server](engine.md#DevServer) · `amending` ← [An amendment prepared](#Amending) · `place` ← [Where an amendment goes](architecture.md#AmendmentPlace) · `paths` ← [Paths](architecture.md#Paths)
 - Body: `./code/commands/dev.ts` (typescript)
-- Effects: execution, keeps, network, process, read, terminal, time
+- Effects: execution, keeps, network, process, read, terminal, time, write
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Part of: [Trame on the command line](architecture.md#TrameCli)
 - Verified by: [trame dev](command-scenarios.md#DevFollowsTheGraph)
@@ -229,7 +245,7 @@ Triggered by `command dev`
 
 ### Ask the machine
 
-`Doctor` · `src/commands.ts:298` · status: **held**
+`Doctor` · `src/commands.ts:289` · status: **held**
 
 trame doctor: does this machine run Trame? It says the day, writes a file and reads it back, copies a directory and compares the copy, runs a program with the engine's loader, keeps a run until a file changes, serves HTTP on a port the system gives, waits, and asks the registry about the project's packages: one line for each, and the status of the whole. Run on a machine by a check of Trame's shipment, it proves the realizations no scenario in memory can run.
 
@@ -286,7 +302,7 @@ Triggered by `command export`
 
 ### Plan
 
-`Plan` · `src/commands.ts:328` · status: **held**
+`Plan` · `src/commands.ts:319` · status: **held**
 
 Triggered by `command plan`
 
@@ -363,7 +379,7 @@ Triggered by `command release`
 
 ### Run a component
 
-`Run` · `src/commands.ts:371` · status: **held**
+`Run` · `src/commands.ts:387` · status: **held**
 
 Assembles, then runs the program and exits with its code.
 
@@ -402,7 +418,7 @@ Triggered by `command ship`
 
 ### Show a view
 
-`ShowView` · `src/commands.ts:381` · status: **held**
+`ShowView` · `src/commands.ts:397` · status: **held**
 
 Triggered by `command view`
 
@@ -457,7 +473,7 @@ Triggered by `command test-kinds`
 
 ### View by its name
 
-`ViewByName` · `src/commands.ts:392` · status: **held**
+`ViewByName` · `src/commands.ts:408` · status: **held**
 
 Any other command: the name of a view.
 

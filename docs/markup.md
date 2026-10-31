@@ -10,7 +10,7 @@
 
 ### Around the documents
 
-`AroundMarkup` · `src/markup.ts:164`
+`AroundMarkup` · `src/markup.ts:176`
 
 The page's style sheet knows what the page writes around a document by these names: the state of the compilation and its light, a module's badge of issues, the choice of a node, the banners, a document as wide as the page, the three renderings of a file.
 
@@ -18,7 +18,8 @@ The page's style sheet knows what the page writes around a document by these nam
 |---|---|
 | classes | { busy: busy, failed: failed, dot: dot, badge: badge, zero: zero, title: t, file: f, nodePick: node-pick, nodeViews: node-views, error: error, changes: changes, wide: wide, source: source, terminal: term, prompt: t-prompt, json: json, flash: flash } |
 | json | { key: j-key, text: j-str, literal: j-lit, number: j-num } |
-| attributes | { date: data-date } |
+| attributes | { date: data-date, amendForm: data-amend-form, preview: data-preview, record: data-record, field: data-field } |
+| amend | { form: amend, result: amend-result, fields: { node: node, path: path, value: value, unit: unit, why: why, by: by, from: from, source: source, dryRun: dryRun } } |
 
 - Decided by: trame
 - Used by: [Show the graph](browser.md#ShowGraph)
@@ -27,15 +28,15 @@ The page's style sheet knows what the page writes around a document by these nam
 
 ### Documents in the page
 
-`DocumentMarkup` · `src/markup.ts:55`
+`DocumentMarkup` · `src/markup.ts:57`
 
 The page's style sheet and its script know a document's HTML by these names: a reference is a link that carries the node it leads to, a card an article that carries the node's identifier, a status a pill whose class is the key of the status. Headings go down one rank per section, a card's title one rank under the top sections; what is deeper than a card's title shares one rank, so that the outline of a long document stays readable.
 
 | Case | Value |
 |---|---|
-| classes | { reference: ref, open: open, rule: rule, pill: pill, published: pub, severity: sev, person: person, card: card, history: history, repealed: repealed, meta: meta, views: views, viewButton: chip-btn, nature: nature, inactive: inactive, facts: facts, resolution: resolution, child: child, tableWrap: table-wrap, code: code, codeSource: code-source, checksTitle: checks-title, validity: validity, summary: summary, intro: intro, figure: figure, figureScroll: figure-scroll } |
+| classes | { reference: ref, open: open, rule: rule, pill: pill, published: pub, severity: sev, person: person, card: card, history: history, repealed: repealed, meta: meta, views: views, viewButton: chip-btn, nature: nature, inactive: inactive, facts: facts, resolution: resolution, child: child, tableWrap: table-wrap, code: code, codeSource: code-source, checksTitle: checks-title, validity: validity, summary: summary, intro: intro, figure: figure, figureScroll: figure-scroll, amendButton: amend-btn } |
 | prefixes | { outcome: oc-, validity: va-, severity: sev- } |
-| attributes | { reference: data-ref, doc: data-doc, view: data-view, node: data-node, figure: data-figure } |
+| attributes | { reference: data-ref, doc: data-doc, view: data-view, node: data-node, figure: data-figure, amend: data-amend, value: data-value, way: data-way, units: data-units } |
 | headings | { title: 1, section: 2, card: 3, nested: 4 } |
 
 - Decided by: trame
@@ -46,7 +47,7 @@ The page's style sheet and its script know a document's HTML by these names: a r
 
 ### The explorer of a graph
 
-`ExplorerMarkup` · `src/markup.ts:235`
+`ExplorerMarkup` · `src/markup.ts:251`
 
 The page's style sheet paints the explorer by these classes, and its script finds what the person acted on by these attributes. A box of the map is named by its layer and its module; a link by its two boxes.
 
@@ -64,7 +65,7 @@ The page's style sheet paints the explorer by these classes, and its script find
 
 ### Figures in the page
 
-`FigureMarkup` · `src/markup.ts:109`
+`FigureMarkup` · `src/markup.ts:114`
 
 The classes the page's style sheet paints a figure's shapes by: an edge, a node and its box, the prefix of a nature or a role, the samples of a legend, the lanes and marks of a timeline. The arrowheads are defined once in the page, each under its identifier, and every figure refers to them.
 

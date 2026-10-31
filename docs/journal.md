@@ -2,7 +2,7 @@
 
 *What happened to the project, day by day, the latest first, up to the date of the graph (31 October 2026): the versions released, and the evidence given, each with the node it is about and who gave it.*
 
-> **15 days · 85 versions released · 201 pieces of evidence**
+> **15 days · 86 versions released · 211 pieces of evidence**
 
 ## 31 October 2026
 
@@ -15,6 +15,8 @@
 | Released as g83 | [Generation 83](releases.md#G83) | trame |
 | Released as g84 | [Generation 84](releases.md#G84) | trame |
 | Released as g85 | [Generation 85](releases.md#G85) | trame |
+| Released as g86 | [Generation 86](releases.md#G86) | trame |
+| Deployed | [Advance](commands.md#Advance) | claude |
 | Deployed | [Advance](commands.md#Advance) | claude |
 | Deployed | [Advance](commands.md#Advance) | claude |
 | Deployed | [Advance](commands.md#Advance) | claude |
@@ -29,6 +31,8 @@
 | Check passed | [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws) | claude |
 | Check passed | [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws) | claude |
 | Check passed | [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws) | claude |
+| Check passed | [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws) | claude |
+| Check passed | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | claude |
 | Check passed | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | claude |
 | Check passed | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | claude |
 | Check passed | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | claude |
@@ -43,6 +47,9 @@
 | Built | [The candidate engine](sdlc.md#EngineCandidate) | claude |
 | Built | [The candidate engine](sdlc.md#EngineCandidate) | claude |
 | Built | [The candidate engine](sdlc.md#EngineCandidate) | claude |
+| Built | [The candidate engine](sdlc.md#EngineCandidate) | claude |
+| Built | [The graph page](sdlc.md#GraphPage) | claude |
+| Built | [The graph page](sdlc.md#GraphPage) | claude |
 | Built | [The graph page](sdlc.md#GraphPage) | claude |
 | Built | [The graph page](sdlc.md#GraphPage) | claude |
 | Built | [The graph page](sdlc.md#GraphPage) | claude |
@@ -57,6 +64,8 @@
 | Check passed | [The graph page opens](sdlc.md#GraphPageOpens) | claude |
 | Check passed | [The graph page opens](sdlc.md#GraphPageOpens) | claude |
 | Check passed | [The graph page opens](sdlc.md#GraphPageOpens) | claude |
+| Check passed | [The graph page opens](sdlc.md#GraphPageOpens) | claude |
+| Check passed | [The graph page opens](sdlc.md#GraphPageOpens) | claude |
 | Shipped | [The next generation](sdlc.md#NextGeneration) | claude |
 | Shipped | [The next generation](sdlc.md#NextGeneration) | claude |
 | Shipped | [The next generation](sdlc.md#NextGeneration) | claude |
@@ -64,6 +73,8 @@
 | Shipped | [The next generation](sdlc.md#NextGeneration) | claude |
 | Shipped | [The next generation](sdlc.md#NextGeneration) | claude |
 | Shipped | [The next generation](sdlc.md#NextGeneration) | claude |
+| Shipped | [The next generation](sdlc.md#NextGeneration) | claude |
+| Built | [The page's program](sdlc.md#PageProgram) | claude |
 | Built | [The page's program](sdlc.md#PageProgram) | claude |
 | Built | [The page's program](sdlc.md#PageProgram) | claude |
 | Built | [The page's program](sdlc.md#PageProgram) | claude |

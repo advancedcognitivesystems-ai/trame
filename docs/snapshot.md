@@ -235,6 +235,13 @@ Port · `PackageReports`
 - Owner: trame
 - Declared effects: process, network
 
+### Amendments from the page
+
+Port · `PageAmendments`
+
+- Owner: trame
+- Declared effects: { available: display, send: network, asynchronous }
+
 ### Memory of the page
 
 Port · `PageMemory`
@@ -420,10 +427,19 @@ Entry point · `ShowGraph` · **held**
 
 - Owner: trame
 - Trigger: { type: load }
-- Parameters: { window: architecture.PageWindow, memory: architecture.PageMemory, feed: architecture.GraphFeed, unpacking: architecture.Decompression, explorer: browser.ExplorerFigures, common: rendering.Common, page: page.ThePage, regions: page.PageRegions, modes: page.RenderingModes, highlighting: page.MachineHighlighting, markup: markup.DocumentMarkup, around: markup.AroundMarkup, explorerMarkup: markup.ExplorerMarkup, drawing: appearance.ExplorerDrawing, ids: conventions.DocumentIds, slots: rendering.SentenceSlots, punctuation: documents.Punctuation, language: messages.Language, html: std/html.Html, aria: std/html.Aria, events: std/web.UiEvents, view: std/web.CssomView, iso: std/measures.Iso8601, file: std/text.TextFile, element: html.HtmlElement, escape: html.EscapedText, attribute: html.AttributeSelector, presence: html.AttributePresence, selectors: html.SelectorList, classSelector: html.ClassSelector, words: messages.PageWords, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts }
+- Parameters: { window: architecture.PageWindow, memory: architecture.PageMemory, feed: architecture.GraphFeed, unpacking: architecture.Decompression, amendments: architecture.PageAmendments, explorer: browser.ExplorerFigures, common: rendering.Common, page: page.ThePage, regions: page.PageRegions, modes: page.RenderingModes, highlighting: page.MachineHighlighting, markup: markup.DocumentMarkup, around: markup.AroundMarkup, explorerMarkup: markup.ExplorerMarkup, drawing: appearance.ExplorerDrawing, ids: conventions.DocumentIds, slots: rendering.SentenceSlots, punctuation: documents.Punctuation, language: messages.Language, html: std/html.Html, aria: std/html.Aria, events: std/web.UiEvents, view: std/web.CssomView, iso: std/measures.Iso8601, file: std/text.TextFile, element: html.HtmlElement, escape: html.EscapedText, attribute: html.AttributeSelector, presence: html.AttributePresence, selectors: html.SelectorList, classSelector: html.ClassSelector, words: messages.PageWords, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts }
 - Serves: A specification that runs
 - Part of: The page in a browser
-- Depends on: Window of the page, Memory of the page, Feed of the graph, Decompression, Explorer of a graph, Common rendering, The page, Regions of the page, The renderings of a document, Files for tools in the page, Documents in the page, Around the documents, The explorer of a graph, Drawing of the explorer, Names of the documents, Places in a sentence, Punctuation of documents, Language, HTML element, Escaped text, Attribute selector, Attribute presence, Selector list, Class selector, Words of the page
+- Depends on: Window of the page, Memory of the page, Feed of the graph, Decompression, Amendments from the page, Explorer of a graph, Common rendering, The page, Regions of the page, The renderings of a document, Files for tools in the page, Documents in the page, Around the documents, The explorer of a graph, Drawing of the explorer, Names of the documents, Places in a sentence, Punctuation of documents, Language, HTML element, Escaped text, Attribute selector, Attribute presence, Selector list, Class selector, Words of the page
+
+### Amendments sent to trame dev
+
+Implementation · `BrowserAmendments` · **held**
+
+- Owner: trame
+- Parameters: { page: page.ThePage, service: engine.DevService, http: std/web.Http, media: std/web.MediaTypes }
+- Implements: Amendments from the page
+- Depends on: The page, What trame dev serves
 
 ### The browser's gzip
 
@@ -469,7 +485,7 @@ Technical choice · `TheBrowserRunsThePage` · **held**
 - Context: The page's script took what it needed from the browser itself, here and there: the graph could not say what the page asks of the browser, nor try it elsewhere.
 - Consequences: The browser's globals appear only in these implementations; the entry point and the explorer are bodies like any other, and their values are the graph's.
 - Rejected: A framework for the page, a dependency, and its own way of writing the page, for a page that writes HTML strings and listens to a few events; Libraries for storage and decompression, every browser the page targets has local storage and gzip
-- Chooses: The browser's window, Local storage, The globals of the page, and trame dev, The browser's gzip
+- Chooses: The browser's window, Local storage, The globals of the page, and trame dev, Amendments sent to trame dev, The browser's gzip
 - In: Browser
 - Serves: A technology is changed in one node
 
@@ -628,10 +644,10 @@ Scenario · `DeclarationsPublished` · **held**
 Scenario · `DevFollowsTheGraph` · **held**
 
 - Owner: trame
-- Parameters: { payload: commands.EmitPayload, dev: commands.Dev, processLog: architecture.ProcessLog, serverLog: architecture.ServerLog, terminalLog: architecture.TerminalLog, writing: architecture.FileWriting, timer: architecture.Timer, currentProcess: architecture.Process, paths: architecture.Paths, layout: conventions.Layout, service: engine.DevService, sse: std/web.ServerSentEvents, http: std/web.Http, debounce: product.DevDebounce, project: engine.Project, line: conventions.TrameCommands, exitStatus: std/system.ExitStatus, output: messages.OutputMessages, texts: std/algebra.Texts, data: command-scenarios.DevSamples, messages: messages.ScenarioMessages }
+- Parameters: { payload: commands.EmitPayload, dev: commands.Dev, processLog: architecture.ProcessLog, serverLog: architecture.ServerLog, terminalLog: architecture.TerminalLog, writing: architecture.FileWriting, timer: architecture.Timer, currentProcess: architecture.Process, paths: architecture.Paths, layout: conventions.Layout, service: engine.DevService, sse: std/web.ServerSentEvents, http: std/web.Http, debounce: product.DevDebounce, project: engine.Project, line: conventions.TrameCommands, exitStatus: std/system.ExitStatus, output: messages.OutputMessages, texts: std/algebra.Texts, counts: std/algebra.Counts, data: command-scenarios.DevSamples, amendment: command-scenarios.AmendmentSamples, messages: messages.ScenarioMessages }
 - Verifies: Start trame dev, trame dev server, A server in memory, Node timer
 - In: Test
-- Depends on: Payload, Start trame dev, Process log, Server log, Terminal log, File writing, Timer, Process, Paths, Project layout, What trame dev serves, Debouncing of saves, Project, Trame's commands, Messages of the outputs, What trame dev is shown in a scenario, Messages of the scenarios
+- Depends on: Payload, Start trame dev, Process log, Server log, Terminal log, File writing, Timer, Process, Paths, Project layout, What trame dev serves, Debouncing of saves, Project, Trame's commands, Messages of the outputs, What trame dev is shown in a scenario, What an amendment is checked with, Messages of the scenarios
 
 ### The doctor
 
@@ -749,7 +765,7 @@ Scenario · `ValueAmended` · **held**
 
 - Owner: trame
 - Parameters: { amend: commands.Amend, writeLog: architecture.WriteLog, currentProcess: architecture.Process, paths: architecture.Paths, line: conventions.TrameCommands, exitStatus: std/system.ExitStatus, samples: command-scenarios.AmendmentSamples, messages: messages.ScenarioMessages }
-- Verifies: Amend, Two builds compared, Amendments in place
+- Verifies: Amend, An amendment prepared, Two builds compared, Amendments in place
 - In: Test
 - Depends on: Amend, Write log, Process, Paths, Trame's commands, What an amendment is checked with, Messages of the scenarios
 
@@ -772,6 +788,15 @@ Decision · `DoctorProbe`
 - Decided by: trame
 - Value: { file: probe.txt, text: trame doctor, program: probe.ts, source: console.log("trame doctor")
 , pause: 10 }
+
+### An amendment prepared
+
+Function · `Amending` · **held**
+
+- Owner: trame
+- Parameters: { preparation: commands.Preparation, machine: engine.MachineOutputs, comparison: commands.BuildComparison, prelude: architecture.Prelude, references: engine.References, project: engine.Project, specifiers: std/system.NodeModuleSpecifiers, values: std/algebra.ValueTypes, paths: architecture.Paths, messages: messages.CommandMessages, naming: conventions.AmendmentNaming, counts: std/algebra.Counts }
+- Serves: A single source of truth
+- Depends on: Preparation, Machine outputs, Two builds compared, Prelude, References, Project, Paths, Messages of the commands, How an amendment is named
 
 ### Assembler
 
@@ -826,10 +851,10 @@ Entry point · `Amend` · **held**
 
 - Owner: trame
 - Trigger: { type: command, name: amend }
-- Parameters: { exitStatus: std/system.ExitStatus, preparation: commands.Preparation, machine: engine.MachineOutputs, comparison: commands.BuildComparison, place: architecture.AmendmentPlace, prelude: architecture.Prelude, references: engine.References, project: engine.Project, specifiers: std/system.NodeModuleSpecifiers, values: std/algebra.ValueTypes, paths: architecture.Paths, text: text.TerminalText, terminal: architecture.Terminal, messages: messages.CommandMessages, naming: conventions.AmendmentNaming, counts: std/algebra.Counts }
+- Parameters: { exitStatus: std/system.ExitStatus, preparation: commands.Preparation, amending: commands.Amending, place: architecture.AmendmentPlace, paths: architecture.Paths, text: text.TerminalText, terminal: architecture.Terminal, messages: messages.CommandMessages }
 - Serves: A single source of truth
 - Part of: Trame on the command line
-- Depends on: Preparation, Machine outputs, Two builds compared, Where an amendment goes, Prelude, References, Project, Paths, Terminal text, Terminal, Messages of the commands, How an amendment is named
+- Depends on: Preparation, An amendment prepared, Where an amendment goes, Paths, Terminal text, Terminal, Messages of the commands
 
 ### Assemble a component
 
@@ -881,10 +906,10 @@ Entry point · `Dev` · **held**
 
 - Owner: trame
 - Trigger: { type: command, name: dev }
-- Parameters: { preparation: commands.Preparation, devServer: engine.DevServer }
+- Parameters: { preparation: commands.Preparation, devServer: engine.DevServer, amending: commands.Amending, place: architecture.AmendmentPlace, paths: architecture.Paths }
 - Serves: A specification that runs
 - Part of: Trame on the command line
-- Depends on: Preparation, trame dev server
+- Depends on: Preparation, trame dev server, An amendment prepared, Where an amendment goes, Paths
 
 ### Ask the machine
 
@@ -1227,7 +1252,7 @@ Function · `VisibleText` · **held**
 Decision · `DevService`
 
 - Decided by: trame
-- Value: { page: /, /index.html, bundle: /bundle.json, events: /events, compiling: compiling, ready: bundle, host: localhost, ignored: ~, .swp, .tmp }
+- Value: { page: /, /index.html, bundle: /bundle.json, events: /events, amend: /amend, compiling: compiling, ready: bundle, host: localhost, ignored: ~, .swp, .tmp }
 
 ### Length of a fingerprint
 
@@ -2389,14 +2414,14 @@ Syntax element · `TableRow` · **held**
 Decision · `AroundMarkup`
 
 - Decided by: trame
-- Value: { classes: { busy: busy, failed: failed, dot: dot, badge: badge, zero: zero, title: t, file: f, nodePick: node-pick, nodeViews: node-views, error: error, changes: changes, wide: wide, source: source, terminal: term, prompt: t-prompt, json: json, flash: flash }, json: { key: j-key, text: j-str, literal: j-lit, number: j-num }, attributes: { date: data-date } }
+- Value: { classes: { busy: busy, failed: failed, dot: dot, badge: badge, zero: zero, title: t, file: f, nodePick: node-pick, nodeViews: node-views, error: error, changes: changes, wide: wide, source: source, terminal: term, prompt: t-prompt, json: json, flash: flash }, json: { key: j-key, text: j-str, literal: j-lit, number: j-num }, attributes: { date: data-date, amendForm: data-amend-form, preview: data-preview, record: data-record, field: data-field }, amend: { form: amend, result: amend-result, fields: { node: node, path: path, value: value, unit: unit, why: why, by: by, from: from, source: source, dryRun: dryRun } } }
 
 ### Documents in the page
 
 Decision · `DocumentMarkup`
 
 - Decided by: trame
-- Value: { classes: { reference: ref, open: open, rule: rule, pill: pill, published: pub, severity: sev, person: person, card: card, history: history, repealed: repealed, meta: meta, views: views, viewButton: chip-btn, nature: nature, inactive: inactive, facts: facts, resolution: resolution, child: child, tableWrap: table-wrap, code: code, codeSource: code-source, checksTitle: checks-title, validity: validity, summary: summary, intro: intro, figure: figure, figureScroll: figure-scroll }, prefixes: { outcome: oc-, validity: va-, severity: sev- }, attributes: { reference: data-ref, doc: data-doc, view: data-view, node: data-node, figure: data-figure }, headings: { title: 1, section: 2, card: 3, nested: 4 } }
+- Value: { classes: { reference: ref, open: open, rule: rule, pill: pill, published: pub, severity: sev, person: person, card: card, history: history, repealed: repealed, meta: meta, views: views, viewButton: chip-btn, nature: nature, inactive: inactive, facts: facts, resolution: resolution, child: child, tableWrap: table-wrap, code: code, codeSource: code-source, checksTitle: checks-title, validity: validity, summary: summary, intro: intro, figure: figure, figureScroll: figure-scroll, amendButton: amend-btn }, prefixes: { outcome: oc-, validity: va-, severity: sev- }, attributes: { reference: data-ref, doc: data-doc, view: data-view, node: data-node, figure: data-figure, amend: data-amend, value: data-value, way: data-way, units: data-units }, headings: { title: 1, section: 2, card: 3, nested: 4 } }
 - Rejected: Inline styles, the page's themes and its narrow screen change the look, which a style sheet does once; One heading rank per level, below a card, the ranks run out, and the outline of a long document is unreadable
 
 ### The explorer of a graph
@@ -3294,7 +3319,7 @@ Function · `ExampleProcess` · **held**
 Function · `MemoryHttpServer` · **held**
 
 - Owner: trame
-- Parameters: { events: std/system.NodeEvents, texts: std/algebra.Texts, messages: messages.PlatformMessages }
+- Parameters: { events: std/system.NodeEvents, http: std/web.Http, texts: std/algebra.Texts, messages: messages.PlatformMessages }
 - Implements: HTTP server, Server log
 - Depends on: Messages of the platform
 
@@ -5207,6 +5232,20 @@ Release · `G85`
 - Releases: Trame on the command line
 - Assembled by: Generation 84
 
+### Generation 86
+
+Release · `G86`
+
+- Released by: trame
+- Version: g86
+- Released on: 2026-10-31
+- What changes: A4b: every value amended from the page: in trame dev, a card's chosen and cited values carry an amend button and a form by their type; trame dev prepares the amendment as trame amend does, says what it would change, records it
+- Fingerprint: 1b76dfe8c4e36cdd
+- Language: shared
+- Language archived: c850998afbba6ca9
+- Releases: Trame on the command line
+- Assembled by: Generation 85
+
 ### Generation 9
 
 Release · `G9`
@@ -5681,7 +5720,7 @@ Check · `GraphPageOpens` · **held**
 - Checks: The graph page
 - Run by: Open the graph page
 - Signed by: Trame's maintainers
-- Verifies: Show the graph, Explorer of a graph, The browser's window, Local storage, The globals of the page, and trame dev, The browser's gzip
+- Verifies: Show the graph, Explorer of a graph, The browser's window, Local storage, The globals of the page, and trame dev, Amendments sent to trame dev, The browser's gzip
 
 ### The next generation
 

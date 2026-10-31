@@ -7,7 +7,7 @@ import type { MemoryHttpServer } from "../../platform"
 
 type Handler = (req: unknown, res: unknown) => void
 
-const body: BodyOf<typeof MemoryHttpServer> = ({ events, texts, messages }) => {
+const body: BodyOf<typeof MemoryHttpServer> = ({ events, http, texts, messages }) => {
   let handler: Handler | undefined
   const ports: number[] = []
   return {
@@ -23,11 +23,16 @@ const body: BodyOf<typeof MemoryHttpServer> = ({ events, texts, messages }) => {
       }
       return server
     }) as never,
-    request: (url) => {
+    request: (url, posted) => {
       if (!handler) throw new Error(messages.noServerInTest(url))
       const chunks: string[] = []
       const closing: (() => void)[] = []
-      const seen = { status: Number.NaN, headers: {} as Record<string, string>, body: () => texts.concat(chunks), close: () => closing.forEach((f) => f()) }
+      let ended: () => void = () => undefined
+      const done = new Promise<void>((resolve) => (ended = resolve))
+      const seen = {
+        status: Number.NaN, headers: {} as Record<string, string>, body: () => texts.concat(chunks), close: () => closing.forEach((f) => f()),
+        ended: () => done,
+      }
       const res = {
         writeHead: (status: number, headers?: Record<string, string>) => {
           seen.status = status
@@ -37,11 +42,24 @@ const body: BodyOf<typeof MemoryHttpServer> = ({ events, texts, messages }) => {
         write: (chunk: string) => void chunks.push(String(chunk)),
         end: (chunk?: string) => {
           if (chunk !== undefined) chunks.push(String(chunk))
+          ended()
           return res
         },
       }
-      const req = { url, on: (event: string, f: () => void) => void (event === events.close && closing.push(f)) }
+      // A text posted comes as one chunk, then its end, once the handler listens.
+      const listened: Record<string, (chunk?: string) => void> = {}
+      const req = {
+        url, method: posted === undefined ? undefined : http.post,
+        on: (event: string, f: (chunk?: string) => void) => {
+          if (event === events.close) closing.push(f)
+          else listened[event] = f
+        },
+      }
       handler(req, res)
+      if (posted !== undefined) {
+        listened[events.data]?.(posted)
+        listened[events.end]?.()
+      }
       return seen
     },
     ports: () => [...ports],

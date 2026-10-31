@@ -7,7 +7,7 @@ import { binding } from "../kinds/binding"
 import { entryPoint, load } from "../kinds/entry-point"
 import { adr } from "../kinds/adr"
 import {
-  Browser, PageApp, PageWindow, PageMemory, GraphFeed, Decompression, RenderingWithoutGraph,
+  Browser, PageApp, PageWindow, PageMemory, GraphFeed, Decompression, RenderingWithoutGraph, PageAmendments,
 } from "./architecture"
 import { BrowserLoading } from "#std/platform"
 import { Html, Svg, Aria, Css } from "#std/html"
@@ -20,7 +20,7 @@ import { Language, PageWords, RenderingMessages } from "./messages"
 import { DocumentIds } from "./conventions"
 import { Punctuation } from "./documents"
 import { DevService } from "./engine"
-import { UiEvents, CssomView, MediaQueries5 } from "#std/web"
+import { UiEvents, CssomView, MediaQueries5, Http, MediaTypes } from "#std/web"
 import { Iso8601 } from "#std/measures"
 import { TextFile } from "#std/text"
 import { EcmaScript } from "#std/ecmascript"
@@ -57,7 +57,7 @@ export const ShowGraph = entryPoint({
   owner: "trame", in: PageApp, serves: [ExecutableSpecification],
   trigger: load(),
   deps: {
-    window: PageWindow, memory: PageMemory, feed: GraphFeed, unpacking: Decompression, explorer: ExplorerFigures, common: Common,
+    window: PageWindow, memory: PageMemory, feed: GraphFeed, unpacking: Decompression, amendments: PageAmendments, explorer: ExplorerFigures, common: Common,
     page: ThePage, regions: PageRegions, modes: RenderingModes, highlighting: MachineHighlighting,
     markup: DocumentMarkup, around: AroundMarkup, explorerMarkup: ExplorerMarkup, drawing: ExplorerDrawing,
     ids: DocumentIds, slots: SentenceSlots, punctuation: Punctuation, language: Language,
@@ -103,6 +103,16 @@ export const BrowserFeed = implementation({
 })
 
 /**
+ * Amendments sent to trame dev
+ * Posted as JSON to trame dev's address of amendments; the page can amend only when it follows trame dev.
+ */
+export const BrowserAmendments = implementation({
+  owner: "trame", implements: [PageAmendments],
+  deps: { page: ThePage, service: DevService, http: Http, media: MediaTypes },
+  body: code.file("./code/browser/amendments.ts"),
+})
+
+/**
  * The browser's gzip
  * DecompressionStream, after base64: what "A page carries its graph compressed" packed.
  */
@@ -119,7 +129,7 @@ export const BrowserDecompression = implementation({
  */
 export const TheBrowserRunsThePage = binding({
   owner: "trame",
-  chooses: [BrowserLoading, BrowserWindow, BrowserMemory, BrowserFeed, BrowserDecompression],
+  chooses: [BrowserLoading, BrowserWindow, BrowserMemory, BrowserFeed, BrowserAmendments, BrowserDecompression],
   environments: [Browser],
   follows: [Adapter],
   serves: [ReplaceableTechnology],

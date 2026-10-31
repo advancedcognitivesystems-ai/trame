@@ -16,6 +16,8 @@ const body = () => {
 
     /** A value that is absent (null). */
     none: () => "none",
+    /** The button that amends a value of a card, in trame dev (since g86). */
+    amendButton: (label: string) => `Amend: ${label}`,
     /** A value that is not decided yet. */
     undecided: () => "to be decided",
     /** A value that claims contest. */

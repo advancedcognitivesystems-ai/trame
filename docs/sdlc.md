@@ -224,7 +224,7 @@ The program of Trame's command line, assembled from the graph for a machine: wha
 
 - Path: `out/local/trame-cli.ts`
 
-Built 31 October 2026 by claude, fingerprint `e1ff3f33314bea7e35fa2d285a2466adb808a6497021ae10f7e06ee38cb8d02f`.
+Built 31 October 2026 by claude, fingerprint `9640d055e0165756c6f93f93ee9eb29f85780e8febb879f5fbb6130642cb7650`.
 
 - Owner: trame
 - Produced by: [Trame on the command line](architecture.md#TrameCli)
@@ -242,7 +242,7 @@ The page trame export writes of Trame's graph, which a browser opens as it is: i
 - Path: `trame-page.html`
 - Media type: `text/html; charset=utf-8`
 
-Built 31 October 2026 by claude, fingerprint `93f7f4daab34f98ed804a05ef6b955ed7af828cd04f889d1da62546762163473`.
+Built 31 October 2026 by claude, fingerprint `8649a11a5c33873297ec7a7ea3221f5f95108d768ece4104c877e788f78747c6`.
 
 - Owner: trame
 - Produced by: [Export the page](commands.md#Export)
@@ -261,7 +261,7 @@ The component that shows the graph page, assembled for the browser where the eng
 
 - Path: `out/browser/page-app.ts`
 
-Built 31 October 2026 by claude, fingerprint `c72b43e43ffbdae6448387a57b0d9887c9be8232cc00085f696bff65d634defb`.
+Built 31 October 2026 by claude, fingerprint `cb78cff2d73497f111f28e626ddeb317fb083a82d15bc341867533c898fccd9c`.
 
 - Owner: trame
 - Produced by: [The page in a browser](architecture.md#PageApp)
@@ -316,7 +316,7 @@ Passed 31 October 2026 by claude.
 - Checks: [The graph page](#GraphPage)
 - Run by: [Open the graph page](#OpenTheGraphPage)
 - Signed by: [Trame's maintainers](#Maintainers)
-- Verifies: [Show the graph](browser.md#ShowGraph), [Explorer of a graph](browser.md#ExplorerFigures), [The browser loads the page](../std/docs/platform.md#BrowserLoading), [The browser's window](browser.md#BrowserWindow), [Local storage](browser.md#BrowserMemory), [The globals of the page, and trame dev](browser.md#BrowserFeed), [The browser's gzip](browser.md#BrowserDecompression), [Node's command line](../std/docs/tooling.md#NodeProgramCommands), [Chromium, driven by Playwright](../std/docs/tooling.md#PlaywrightBrowser)
+- Verifies: [Show the graph](browser.md#ShowGraph), [Explorer of a graph](browser.md#ExplorerFigures), [The browser loads the page](../std/docs/platform.md#BrowserLoading), [The browser's window](browser.md#BrowserWindow), [Local storage](browser.md#BrowserMemory), [The globals of the page, and trame dev](browser.md#BrowserFeed), [Amendments sent to trame dev](browser.md#BrowserAmendments), [The browser's gzip](browser.md#BrowserDecompression), [Node's command line](../std/docs/tooling.md#NodeProgramCommands), [Chromium, driven by Playwright](../std/docs/tooling.md#PlaywrightBrowser)
 
 ## Shipment
 
@@ -428,7 +428,7 @@ The engine as the graph describes it now, frozen into the next generation and pi
 | [The resolution does not depend on the order](laws.md#OrderFree) | **held** | [The language serves what it says](#LanguageServed), for [Complete declaration](laws.md#CompleteDeclaration) |
 | [Without evidence, the status is unknown](laws.md#UnknownWithoutEvidence) | **held** | [The language serves what it says](#LanguageServed), for [Complete declaration](laws.md#CompleteDeclaration) |
 
-Shipped 31 October 2026 by claude; its dossier: `evidence/shipments/NextGeneration-2026-10-31-a2e343d7.json`.
+Shipped 31 October 2026 by claude; its dossier: `evidence/shipments/NextGeneration-2026-10-31-c22084c8.json`.
 
 - Owner: trame
 - Ships: [The candidate engine](#EngineCandidate), [The page's program](#PageProgram), [The graph page](#GraphPage)

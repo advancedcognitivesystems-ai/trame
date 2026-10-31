@@ -747,6 +747,23 @@
       }
     },
     {
+      "id": "architecture.PageAmendments",
+      "kind": "port",
+      "title": "Amendments from the page",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": {
+          "available": [
+            "display"
+          ],
+          "send": [
+            "network",
+            "asynchronous"
+          ]
+        }
+      }
+    },
+    {
       "id": "architecture.PageApp",
       "kind": "component",
       "title": "The page in a browser",
@@ -1023,6 +1040,25 @@
       }
     },
     {
+      "id": "browser.BrowserAmendments",
+      "kind": "implementation",
+      "title": "Amendments sent to trame dev",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "page": "page.ThePage",
+          "service": "engine.DevService",
+          "http": "std/web.Http",
+          "media": "std/web.MediaTypes"
+        },
+        "body": {
+          "file": "./code/browser/amendments.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
       "id": "browser.BrowserDecompression",
       "kind": "implementation",
       "title": "The browser's gzip",
@@ -1143,6 +1179,7 @@
           "memory": "architecture.PageMemory",
           "feed": "architecture.GraphFeed",
           "unpacking": "architecture.Decompression",
+          "amendments": "architecture.PageAmendments",
           "explorer": "browser.ExplorerFigures",
           "common": "rendering.Common",
           "page": "page.ThePage",
@@ -1486,7 +1523,9 @@
           "exitStatus": "std/system.ExitStatus",
           "output": "messages.OutputMessages",
           "texts": "std/algebra.Texts",
+          "counts": "std/algebra.Counts",
           "data": "command-scenarios.DevSamples",
+          "amendment": "command-scenarios.AmendmentSamples",
           "messages": "messages.ScenarioMessages"
         },
         "body": "(function)"
@@ -1984,23 +2023,42 @@
         "deps": {
           "exitStatus": "std/system.ExitStatus",
           "preparation": "commands.Preparation",
+          "amending": "commands.Amending",
+          "place": "architecture.AmendmentPlace",
+          "paths": "architecture.Paths",
+          "text": "text.TerminalText",
+          "terminal": "architecture.Terminal",
+          "messages": "messages.CommandMessages"
+        },
+        "body": {
+          "file": "./code/commands/amend.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
+      "id": "commands.Amending",
+      "kind": "function",
+      "title": "An amendment prepared",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "preparation": "commands.Preparation",
           "machine": "engine.MachineOutputs",
           "comparison": "commands.BuildComparison",
-          "place": "architecture.AmendmentPlace",
           "prelude": "architecture.Prelude",
           "references": "engine.References",
           "project": "engine.Project",
           "specifiers": "std/system.NodeModuleSpecifiers",
           "values": "std/algebra.ValueTypes",
           "paths": "architecture.Paths",
-          "text": "text.TerminalText",
-          "terminal": "architecture.Terminal",
           "messages": "messages.CommandMessages",
           "naming": "conventions.AmendmentNaming",
           "counts": "std/algebra.Counts"
         },
         "body": {
-          "file": "./code/commands/amend.ts",
+          "file": "./code/commands/amending.ts",
           "language": "typescript"
         }
       }
@@ -2184,7 +2242,10 @@
         },
         "deps": {
           "preparation": "commands.Preparation",
-          "devServer": "engine.DevServer"
+          "devServer": "engine.DevServer",
+          "amending": "commands.Amending",
+          "place": "architecture.AmendmentPlace",
+          "paths": "architecture.Paths"
         },
         "body": {
           "file": "./code/commands/dev.ts",
@@ -3549,6 +3610,7 @@
           ],
           "bundle": "/bundle.json",
           "events": "/events",
+          "amend": "/amend",
           "compiling": "compiling",
           "ready": "bundle",
           "host": "localhost",
@@ -6488,7 +6550,26 @@
             "number": "j-num"
           },
           "attributes": {
-            "date": "data-date"
+            "date": "data-date",
+            "amendForm": "data-amend-form",
+            "preview": "data-preview",
+            "record": "data-record",
+            "field": "data-field"
+          },
+          "amend": {
+            "form": "amend",
+            "result": "amend-result",
+            "fields": {
+              "node": "node",
+              "path": "path",
+              "value": "value",
+              "unit": "unit",
+              "why": "why",
+              "by": "by",
+              "from": "from",
+              "source": "source",
+              "dryRun": "dryRun"
+            }
           }
         }
       }
@@ -6527,7 +6608,8 @@
             "summary": "summary",
             "intro": "intro",
             "figure": "figure",
-            "figureScroll": "figure-scroll"
+            "figureScroll": "figure-scroll",
+            "amendButton": "amend-btn"
           },
           "prefixes": {
             "outcome": "oc-",
@@ -6539,7 +6621,11 @@
             "doc": "data-doc",
             "view": "data-view",
             "node": "data-node",
-            "figure": "data-figure"
+            "figure": "data-figure",
+            "amend": "data-amend",
+            "value": "data-value",
+            "way": "data-way",
+            "units": "data-units"
           },
           "headings": {
             "title": 1,
@@ -9117,6 +9203,7 @@
         "owner": "trame",
         "deps": {
           "events": "std/system.NodeEvents",
+          "http": "std/web.Http",
           "texts": "std/algebra.Texts",
           "messages": "messages.PlatformMessages"
         },
@@ -11341,6 +11428,20 @@
         "fingerprint": "d33961c1bb511390",
         "language": "shared",
         "archive": "3bb158af0204c23b"
+      }
+    },
+    {
+      "id": "releases.G86",
+      "kind": "release",
+      "title": "Generation 86",
+      "fields": {
+        "owner": "trame",
+        "version": "g86",
+        "date": "2026-10-31",
+        "what": "A4b: every value amended from the page: in trame dev, a card's chosen and cited values carry an amend button and a form by their type; trame dev prepares the amendment as trame amend does, says what it would change, records it",
+        "fingerprint": "1b76dfe8c4e36cdd",
+        "language": "shared",
+        "archive": "c850998afbba6ca9"
       }
     },
     {
@@ -15002,6 +15103,21 @@
       "kind": "deps"
     },
     {
+      "from": "browser.BrowserAmendments",
+      "to": "architecture.PageAmendments",
+      "kind": "implements"
+    },
+    {
+      "from": "browser.BrowserAmendments",
+      "to": "page.ThePage",
+      "kind": "deps"
+    },
+    {
+      "from": "browser.BrowserAmendments",
+      "to": "engine.DevService",
+      "kind": "deps"
+    },
+    {
       "from": "browser.BrowserDecompression",
       "to": "architecture.Decompression",
       "kind": "implements"
@@ -15158,6 +15274,11 @@
     },
     {
       "from": "browser.ShowGraph",
+      "to": "architecture.PageAmendments",
+      "kind": "deps"
+    },
+    {
+      "from": "browser.ShowGraph",
       "to": "browser.ExplorerFigures",
       "kind": "deps"
     },
@@ -15274,6 +15395,11 @@
     {
       "from": "browser.TheBrowserRunsThePage",
       "to": "browser.BrowserFeed",
+      "kind": "chooses"
+    },
+    {
+      "from": "browser.TheBrowserRunsThePage",
+      "to": "browser.BrowserAmendments",
       "kind": "chooses"
     },
     {
@@ -15844,6 +15970,11 @@
     {
       "from": "command-scenarios.DevFollowsTheGraph",
       "to": "command-scenarios.DevSamples",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.DevFollowsTheGraph",
+      "to": "command-scenarios.AmendmentSamples",
       "kind": "deps"
     },
     {
@@ -16618,6 +16749,11 @@
     },
     {
       "from": "command-scenarios.ValueAmended",
+      "to": "commands.Amending",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.ValueAmended",
       "to": "commands.BuildComparison",
       "kind": "verifies"
     },
@@ -16908,32 +17044,12 @@
     },
     {
       "from": "commands.Amend",
-      "to": "engine.MachineOutputs",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Amend",
-      "to": "commands.BuildComparison",
+      "to": "commands.Amending",
       "kind": "deps"
     },
     {
       "from": "commands.Amend",
       "to": "architecture.AmendmentPlace",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Amend",
-      "to": "architecture.Prelude",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Amend",
-      "to": "engine.References",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Amend",
-      "to": "engine.Project",
       "kind": "deps"
     },
     {
@@ -16957,7 +17073,52 @@
       "kind": "deps"
     },
     {
-      "from": "commands.Amend",
+      "from": "commands.Amending",
+      "to": "product.SingleSource",
+      "kind": "serves"
+    },
+    {
+      "from": "commands.Amending",
+      "to": "commands.Preparation",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Amending",
+      "to": "engine.MachineOutputs",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Amending",
+      "to": "commands.BuildComparison",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Amending",
+      "to": "architecture.Prelude",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Amending",
+      "to": "engine.References",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Amending",
+      "to": "engine.Project",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Amending",
+      "to": "architecture.Paths",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Amending",
+      "to": "messages.CommandMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Amending",
       "to": "conventions.AmendmentNaming",
       "kind": "deps"
     },
@@ -17264,6 +17425,21 @@
     {
       "from": "commands.Dev",
       "to": "engine.DevServer",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Dev",
+      "to": "commands.Amending",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Dev",
+      "to": "architecture.AmendmentPlace",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Dev",
+      "to": "architecture.Paths",
       "kind": "deps"
     },
     {
@@ -23542,6 +23718,16 @@
       "kind": "assembledBy"
     },
     {
+      "from": "releases.G86",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G86",
+      "to": "releases.G85",
+      "kind": "assembledBy"
+    },
+    {
       "from": "releases.G9",
       "to": "architecture.TrameCli",
       "kind": "component"
@@ -24879,6 +25065,11 @@
     {
       "from": "sdlc.GraphPageOpens",
       "to": "browser.BrowserFeed",
+      "kind": "verifies"
+    },
+    {
+      "from": "sdlc.GraphPageOpens",
+      "to": "browser.BrowserAmendments",
       "kind": "verifies"
     },
     {

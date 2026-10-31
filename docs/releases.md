@@ -1746,6 +1746,27 @@ Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Ge
 - Released by: trame
 - Releases: [Trame on the command line](architecture.md#TrameCli)
 - Assembled by: [Generation 84](#G84)
+- Assembled: [Generation 86](#G86)
+
+<a id="G86"></a>
+
+### Generation 86
+
+`G86` · `src/releases.ts:1265`
+
+A4b: every value amended from the page: in trame dev, a card's chosen and cited values carry an amend button and a form by their type; trame dev prepares the amendment as trame amend does, says what it would change, records it
+
+Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Generation 85](#G85).
+
+- Version: `g86`
+- Released on: 31 October 2026
+- Fingerprint: `1b76dfe8c4e36cdd`
+- Language: the repository's, shared
+- Language archived: `c850998afbba6ca9`
+
+- Released by: trame
+- Releases: [Trame on the command line](architecture.md#TrameCli)
+- Assembled by: [Generation 85](#G85)
 
 <a id="G9"></a>
 

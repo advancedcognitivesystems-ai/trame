@@ -45,7 +45,7 @@ Run from the project's directory, through the pinned generation:
 ./trame.sh ship <shipment> --by <name> [--dry-run] [--promote "what"]   # builds, checks, refuses or deploys (section 4b)
 ./trame.sh evidence <node> passed|failed --by <name> [--subject <row>] [--language <tag>] [--note "…"] [--url <where>]
 ./trame.sh amend <node> <path> <value> --why "…" --by <name> [--from <date>] [--until <date>] [--source "…"] [--dry-run] [--accept]
-                                       # changes a chosen value by an amendment, said first (g85)
+                                       # changes a chosen value by an amendment, said first (g85); in trame dev, from the page (g86)
 ./advance.sh [--accept] [--promote "what changes"]   # the next generation (see section 7)
 npx tsc --noEmit -p .                  # types, before any build
 ```

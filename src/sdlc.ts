@@ -26,7 +26,7 @@ import { PageRegions } from "./page"
 import { DocumentMarkup } from "./markup"
 import { AttributeSelector } from "./html"
 import { Language, ScenarioMessages } from "./messages"
-import { ShowGraph, ExplorerFigures, BrowserWindow, BrowserMemory, BrowserFeed, BrowserDecompression } from "./browser"
+import { ShowGraph, ExplorerFigures, BrowserWindow, BrowserMemory, BrowserFeed, BrowserAmendments, BrowserDecompression } from "./browser"
 import { Verified, Served, Applied, Checked, Ruled, Safe } from "#std/obligations"
 import { TrameCli, Local } from "./architecture"
 import { TestKinds, Advance, Doctor } from "./commands"
@@ -249,7 +249,7 @@ export const OpenTheGraphPage = entryPoint({
  */
 export const GraphPageOpens = check({
   owner: "trame", on: [GraphPage], runs: OpenTheGraphPage, by: Maintainers,
-  verifies: [ShowGraph, ExplorerFigures, BrowserLoading, BrowserWindow, BrowserMemory, BrowserFeed, BrowserDecompression, NodeProgramCommands, PlaywrightBrowser],
+  verifies: [ShowGraph, ExplorerFigures, BrowserLoading, BrowserWindow, BrowserMemory, BrowserFeed, BrowserAmendments, BrowserDecompression, NodeProgramCommands, PlaywrightBrowser],
 })
 
 /**

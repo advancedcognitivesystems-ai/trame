@@ -10,7 +10,7 @@
 
 ### The page is assembled
 
-`ThePageIsAssembled` · `src/browser.ts:139` · status: **held**
+`ThePageIsAssembled` · `src/browser.ts:149` · status: **held**
 
 The page's script was the only code of Trame outside the graph: written by hand, wired by hand, its values written in it. It is now a component assembled for the browser, its entry point and its explorer bodies of the graph.
 
@@ -58,7 +58,7 @@ When the page loads: the state of the compilation, the dates, the navigation, th
 Triggered by `the loading of the page`
 
 - Owner: trame
-- Parameters: `window` ← [Window of the page](architecture.md#PageWindow) · `memory` ← [Memory of the page](architecture.md#PageMemory) · `feed` ← [Feed of the graph](architecture.md#GraphFeed) · `unpacking` ← [Decompression](architecture.md#Decompression) · `explorer` ← [Explorer of a graph](#ExplorerFigures) · `common` ← [Common rendering](rendering.md#Common) · `page` ← [The page](page.md#ThePage) · `regions` ← [Regions of the page](page.md#PageRegions) · `modes` ← [The renderings of a document](page.md#RenderingModes) · `highlighting` ← [Files for tools in the page](page.md#MachineHighlighting) · `markup` ← [Documents in the page](markup.md#DocumentMarkup) · `around` ← [Around the documents](markup.md#AroundMarkup) · `explorerMarkup` ← [The explorer of a graph](markup.md#ExplorerMarkup) · `drawing` ← [Drawing of the explorer](appearance.md#ExplorerDrawing) · `ids` ← [Names of the documents](conventions.md#DocumentIds) · `slots` ← [Places in a sentence](rendering.md#SentenceSlots) · `punctuation` ← [Punctuation of documents](documents.md#Punctuation) · `language` ← [Language](messages.md#Language) · `html` ← [HTML](../std/docs/html.md#Html) · `aria` ← [WAI-ARIA](../std/docs/html.md#Aria) · `events` ← [UI events](../std/docs/web.md#UiEvents) · `view` ← [CSSOM View](../std/docs/web.md#CssomView) · `iso` ← [ISO 8601 dates](../std/docs/measures.md#Iso8601) · `file` ← [Text file](../std/docs/text.md#TextFile) · `element` ← [HTML element](html.md#HtmlElement) · `escape` ← [Escaped text](html.md#EscapedText) · `attribute` ← [Attribute selector](html.md#AttributeSelector) · `presence` ← [Attribute presence](html.md#AttributePresence) · `selectors` ← [Selector list](html.md#SelectorList) · `classSelector` ← [Class selector](html.md#ClassSelector) · `words` ← [Words of the page](messages.md#PageWords) · `counts` ← [Counts](../std/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/docs/algebra.md#Texts)
+- Parameters: `window` ← [Window of the page](architecture.md#PageWindow) · `memory` ← [Memory of the page](architecture.md#PageMemory) · `feed` ← [Feed of the graph](architecture.md#GraphFeed) · `unpacking` ← [Decompression](architecture.md#Decompression) · `amendments` ← [Amendments from the page](architecture.md#PageAmendments) · `explorer` ← [Explorer of a graph](#ExplorerFigures) · `common` ← [Common rendering](rendering.md#Common) · `page` ← [The page](page.md#ThePage) · `regions` ← [Regions of the page](page.md#PageRegions) · `modes` ← [The renderings of a document](page.md#RenderingModes) · `highlighting` ← [Files for tools in the page](page.md#MachineHighlighting) · `markup` ← [Documents in the page](markup.md#DocumentMarkup) · `around` ← [Around the documents](markup.md#AroundMarkup) · `explorerMarkup` ← [The explorer of a graph](markup.md#ExplorerMarkup) · `drawing` ← [Drawing of the explorer](appearance.md#ExplorerDrawing) · `ids` ← [Names of the documents](conventions.md#DocumentIds) · `slots` ← [Places in a sentence](rendering.md#SentenceSlots) · `punctuation` ← [Punctuation of documents](documents.md#Punctuation) · `language` ← [Language](messages.md#Language) · `html` ← [HTML](../std/docs/html.md#Html) · `aria` ← [WAI-ARIA](../std/docs/html.md#Aria) · `events` ← [UI events](../std/docs/web.md#UiEvents) · `view` ← [CSSOM View](../std/docs/web.md#CssomView) · `iso` ← [ISO 8601 dates](../std/docs/measures.md#Iso8601) · `file` ← [Text file](../std/docs/text.md#TextFile) · `element` ← [HTML element](html.md#HtmlElement) · `escape` ← [Escaped text](html.md#EscapedText) · `attribute` ← [Attribute selector](html.md#AttributeSelector) · `presence` ← [Attribute presence](html.md#AttributePresence) · `selectors` ← [Selector list](html.md#SelectorList) · `classSelector` ← [Class selector](html.md#ClassSelector) · `words` ← [Words of the page](messages.md#PageWords) · `counts` ← [Counts](../std/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/docs/algebra.md#Texts)
 - Body: `./code/page/show.ts` (typescript)
 - Effects: asynchronous, display, network, read, write
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
@@ -68,11 +68,26 @@ Triggered by `the loading of the page`
 
 ## Implementations
 
+<a id="BrowserAmendments"></a>
+
+### Amendments sent to trame dev
+
+`BrowserAmendments` · `src/browser.ts:109` · status: **held**
+
+Posted as JSON to trame dev's address of amendments; the page can amend only when it follows trame dev.
+
+- Owner: trame
+- Parameters: `page` ← [The page](page.md#ThePage) · `service` ← [What trame dev serves](engine.md#DevService) · `http` ← [HTTP](../std/docs/web.md#Http) · `media` ← [Media types](../std/docs/web.md#MediaTypes)
+- Body: `./code/browser/amendments.ts` (typescript)
+- Implements: [Amendments from the page](architecture.md#PageAmendments)
+- Chosen by: [The browser runs the page](#TheBrowserRunsThePage)
+- Verified by: [The graph page opens](sdlc.md#GraphPageOpens)
+
 <a id="BrowserDecompression"></a>
 
 ### The browser's gzip
 
-`BrowserDecompression` · `src/browser.ts:109` · status: **held**
+`BrowserDecompression` · `src/browser.ts:119` · status: **held**
 
 DecompressionStream, after base64: what "A page carries its graph compressed" packed.
 
@@ -134,7 +149,7 @@ The document of the page, CSS.escape, the media query of reduced motion, the scr
 
 ### The browser runs the page
 
-`TheBrowserRunsThePage` · `src/browser.ts:120` · status: **held**
+`TheBrowserRunsThePage` · `src/browser.ts:130` · status: **held**
 
 In the browser, the page loads, writes in its window, keeps the person's place, receives the graph and makes it whole again with what every browser has: the DOM, local storage, fetch and server-sent events, DecompressionStream.
 
@@ -142,6 +157,7 @@ In [Browser](architecture.md#Browser):
 
 | Port | Answered by | Which is |
 |---|---|---|
+| [Amendments from the page](architecture.md#PageAmendments) | [Amendments sent to trame dev](#BrowserAmendments) | an implementation |
 | [Decompression](architecture.md#Decompression) | [The browser's gzip](#BrowserDecompression) | an implementation |
 | [Feed of the graph](architecture.md#GraphFeed) | [The globals of the page, and trame dev](#BrowserFeed) | an implementation |
 | [Memory of the page](architecture.md#PageMemory) | [Local storage](#BrowserMemory) | an implementation |
@@ -158,7 +174,7 @@ Consequences: The browser's globals appear only in these implementations; the en
 | Libraries for storage and decompression | every browser the page targets has local storage and gzip |
 
 - Decided by: trame
-- Chooses: [The browser loads the page](../std/docs/platform.md#BrowserLoading), [The browser's window](#BrowserWindow), [Local storage](#BrowserMemory), [The globals of the page, and trame dev](#BrowserFeed), [The browser's gzip](#BrowserDecompression)
+- Chooses: [The browser loads the page](../std/docs/platform.md#BrowserLoading), [The browser's window](#BrowserWindow), [Local storage](#BrowserMemory), [The globals of the page, and trame dev](#BrowserFeed), [Amendments sent to trame dev](#BrowserAmendments), [The browser's gzip](#BrowserDecompression)
 - In: [Browser](architecture.md#Browser)
 - Follows: [Adapter](../std/docs/patterns.md#Adapter)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)

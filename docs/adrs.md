@@ -49,7 +49,7 @@
 
 ### The page is assembled
 
-`ThePageIsAssembled` · `src/browser.ts:139` · status: **held**
+`ThePageIsAssembled` · `src/browser.ts:149` · status: **held**
 
 The page's script was the only code of Trame outside the graph: written by hand, wired by hand, its values written in it. It is now a component assembled for the browser, its entry point and its explorer bodies of the graph.
 
@@ -161,7 +161,7 @@ Consequences: Each language has its module (how Trame reads it, what Trame write
 
 ### A catalog counts in its language
 
-`CountsInTheLanguage` · `src/messages.ts:905` · status: **held**
+`CountsInTheLanguage` · `src/messages.ts:906` · status: **held**
 
 A count and its noun follow the plural rules of the language the catalog is written in, with the forms the catalog writes for each category; nothing below the catalogs presumes a language.
 

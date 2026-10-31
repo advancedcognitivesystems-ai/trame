@@ -11,7 +11,7 @@ import {
 import { PayloadBuilder, Differences, Assembly, Project, Compiler, DateBundle, DevServer, DevService, ShipmentPipeline, Views, EngineFingerprint, ProjectRuns } from "./engine"
 import {
   ShowView, ViewByName, RenderView, EmitPayload, Assemble, Assembler, TestKinds, TakeSnapshot, Publish, Audit, Release, WriteManifest, Export, Run, Dev,
-  Deliver, Ship, RecordEvidence, Doctor, DoctorProbe, Advance, Build, Plan, Amend, BuildComparison,
+  Deliver, Ship, RecordEvidence, Doctor, DoctorProbe, Advance, Build, Plan, Amend, Amending, BuildComparison,
 } from "./commands"
 import { SyntaxReader, BodyChecks } from "./syntax"
 import { TypeScript, TypeScriptWriter, StringLiteral } from "./typescript"
@@ -378,7 +378,7 @@ export const AmendmentSamples = decision<{
  */
 export const ValueAmended = scenario({
   owner: "trame",
-  verifies: [Amend, BuildComparison, InPlaceSources],
+  verifies: [Amend, Amending, BuildComparison, InPlaceSources],
   env: Test,
   deps: {
     amend: Amend, writeLog: WriteLog, currentProcess: Process, paths: Paths, line: TrameCommands, exitStatus: ExitStatus, samples: AmendmentSamples,
@@ -611,7 +611,7 @@ export const DevFollowsTheGraph = scenario({
   deps: {
     payload: EmitPayload, dev: Dev, processLog: ProcessLog, serverLog: ServerLog, terminalLog: TerminalLog, writing: FileWriting, timer: Timer,
     currentProcess: Process, paths: Paths, layout: Layout, service: DevService, sse: ServerSentEvents, http: Http, debounce: DevDebounce, project: Project,
-    line: TrameCommands, exitStatus: ExitStatus, output: OutputMessages, texts: Texts, data: DevSamples, messages: ScenarioMessages,
+    line: TrameCommands, exitStatus: ExitStatus, output: OutputMessages, texts: Texts, counts: Counts, data: DevSamples, amendment: AmendmentSamples, messages: ScenarioMessages,
   },
   body: (d) => async (check) => {
     const { processLog, serverLog, service, sse, line, texts, messages } = d
@@ -627,6 +627,12 @@ export const DevFollowsTheGraph = scenario({
     const bundle = serverLog.request(service.bundle)
     const served = JSON.parse(bundle.body()) as { dates: unknown[] }
     check(messages.devBundleServed(), bundle.status === d.http.ok && served.dates.length === (JSON.parse(dates) as unknown[]).length)
+    // The page posts an amendment, previewed: what it would change comes back, and nothing is recorded.
+    const { recorded, why, by } = d.amendment
+    const asked = serverLog.request(service.amend, JSON.stringify({ node: recorded.node, path: recorded.path, value: recorded.value, why, by, dryRun: true }))
+    await asked.ended()
+    const answer = JSON.parse(asked.body()) as { refused?: string; heading?: string; lines: string[] }
+    check(messages.amendmentPreviewedFromThePage(), asked.status === d.http.ok && answer.refused === undefined && answer.heading !== undefined && d.counts.any(answer.lines))
     const events = serverLog.request(service.events)
     d.writing.writeFileSync(d.paths.join(root, d.layout.sources, d.data.touched), d.data.content)
     await new Promise<void>((done) => d.timer.setTimeout(done, d.debounce * d.data.pauses))

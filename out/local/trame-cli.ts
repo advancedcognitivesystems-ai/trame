@@ -71,6 +71,7 @@ import body_releaseRecords from "../../src/code/commands/releases.ts"
 import body_advance from "../../src/code/commands/advance.ts"
 import body_machineOutputs from "../../src/code/engine/machine.ts"
 import body_buildComparison from "../../src/code/commands/comparison.ts"
+import body_amending from "../../src/code/commands/amending.ts"
 import body_inPlaceSources from "../../src/code/platform/in-place-sources.ts"
 import body_amend from "../../src/code/commands/amend.ts"
 import body_assembly from "../../src/code/engine/assembly.ts"
@@ -124,7 +125,7 @@ const nodeArguments = {"script":1,"firstArgument":2}
 // "Exit status" · standard
 const exitStatus = {"success":0,"failure":1}
 // "Node.js events" · standard
-const nodeEvents = {"data":"data","close":"close","exit":"exit","change":"change","error":"error","unhandledRejection":"unhandledRejection"}
+const nodeEvents = {"data":"data","close":"close","end":"end","exit":"exit","change":"change","error":"error","unhandledRejection":"unhandledRejection"}
 // "POSIX signals and errors" · standard
 const posix = {"currentDirectory":".","interrupt":"SIGINT","terminate":"SIGTERM","brokenPipe":"EPIPE"}
 // "Messages of the platform" · message catalog
@@ -493,12 +494,14 @@ const advance = await body_advance({ exitStatus, preparation, engines: engineFin
 const machineOutputs = await body_machineOutputs({ values: valueTypes, json: jsonFormatting, positions, prelude: frozen.limited(tramePrelude, ["internal"]), counts, messages: outputMessages })
 // "Two builds compared" · function
 const buildComparison = await body_buildComparison({ messages: commandMessages, output: outputMessages })
-// "Amendments in place" · implementation, for "Where an amendment goes"
-const inPlaceSources = await body_inPlaceSources({ reading: frozen.limited(diskReading, ["readFileSync"]), writing: frozen.limited(diskWriting, ["writeFileSync"]), encodings: nodeEncodings, syntax: typeScriptSyntax, doc: docBlock, exported: exportDeclaration, constant: constDeclaration, call, object: objectLiteral, property, text: stringLiteral, list: inlineArray, imports: namedImport, values: valueTypes, texts, counts })
 // "How an amendment is named" · decision
 const amendmentNaming = {"suffix":"Amendment","first":2}
+// "An amendment prepared" · function
+const amending = await body_amending({ preparation, machine: machineOutputs, comparison: buildComparison, prelude: frozen.limited(tramePrelude, ["internal"]), references, project, specifiers: nodeModuleSpecifiers, values: valueTypes, paths: frozen.limited(nodePaths, ["dirname","join","relative","sep"]), messages: commandMessages, naming: amendmentNaming, counts })
+// "Amendments in place" · implementation, for "Where an amendment goes"
+const inPlaceSources = await body_inPlaceSources({ reading: frozen.limited(diskReading, ["readFileSync"]), writing: frozen.limited(diskWriting, ["writeFileSync"]), encodings: nodeEncodings, syntax: typeScriptSyntax, doc: docBlock, exported: exportDeclaration, constant: constDeclaration, call, object: objectLiteral, property, text: stringLiteral, list: inlineArray, imports: namedImport, values: valueTypes, texts, counts })
 // "Amend" · entry point
-const amend = await body_amend({ exitStatus, preparation, machine: machineOutputs, comparison: buildComparison, place: frozen.limited(inPlaceSources, ["record"]), prelude: frozen.limited(tramePrelude, ["internal"]), references, project, specifiers: nodeModuleSpecifiers, values: valueTypes, paths: frozen.limited(nodePaths, ["dirname","join","relative","sep"]), text: terminalText, terminal: frozen.limited(nodeTerminal, ["write"]), messages: commandMessages, naming: amendmentNaming, counts })
+const amend = await body_amend({ exitStatus, preparation, amending, place: frozen.limited(inPlaceSources, ["record"]), paths: frozen.limited(nodePaths, ["relative"]), text: terminalText, terminal: frozen.limited(nodeTerminal, ["write"]), messages: commandMessages })
 // "Assembly" · function
 const assembly = await body_assembly({ line: trameCommands, values: valueTypes, layout, paths: frozen.limited(nodePaths, ["join"]), wiring, prelude: frozen.limited(tramePrelude, ["internal","path"]), drivers, texts, messages: compilerMessages })
 // "Assembler" · function
@@ -520,7 +523,7 @@ const mermaidFigures = {"idPrefix":"n","directions":{"layers":"down","tree":"dow
 // "Palette" · decision
 const palette = {"light":{"bg":"#f3f5f6","panel":"#ffffff","ink":"#17202a","muted":"#5a6672","line":"#d9e0e5","accent":"#34509a","accent-soft":"#e5ebf7","ok":"#26734a","ok-soft":"#e1f1e7","warn":"#9a6200","warn-soft":"#fbf0d9","bad":"#ad2a22","bad-soft":"#f9e3e1","unk":"#65707c","unk-soft":"#e9edf0","term-bg":"#121820","term-ink":"#d8dee5","term-dim":"#7f8b97"},"dark":{"bg":"#0e1217","panel":"#151b22","ink":"#e4e9ee","muted":"#98a3ae","line":"#29323c","accent":"#93abef","accent-soft":"#1e2a44","ok":"#7fd19b","ok-soft":"#173325","warn":"#f2c063","warn-soft":"#3a2d12","bad":"#f08a80","bad-soft":"#3d1c1a","unk":"#a5afb9","unk-soft":"#222a33","term-bg":"#0a0e13","term-ink":"#d8dee5","term-dim":"#7f8b97"},"statuses":{"held":{"fill":"ok-soft","stroke":"ok"},"blocked":{"fill":"warn-soft","stroke":"warn"},"violated":{"fill":"bad-soft","stroke":"bad"},"unknown":{"fill":"unk-soft","stroke":"unk"},"neutral":{"fill":"panel","stroke":"muted"}},"ink":"ink"}
 // "HTML" · standard
-const html = {"lessThan":"<","greaterThan":">","space":" ","id":"id","class":"class","hidden":"hidden","lang":"lang","div":"div","span":"span","p":"p","a":"a","href":"href","mark":"mark","code":"code","time":"time","datetime":"datetime","ul":"ul","li":"li","dl":"dl","dt":"dt","dd":"dd","table":"table","thead":"thead","tbody":"tbody","tr":"tr","th":"th","td":"td","pre":"pre","details":"details","summary":"summary","section":"section","article":"article","figure":"figure","figcaption":"figcaption","button":"button","type":"type","buttonType":"button","tabindex":"tabindex","focusable":"0","style":"style","window":"window","module":"module","b":"b","small":"small","h2":"h2","ol":"ol","select":"select","option":"option","optgroup":"optgroup","input":"input","datalist":"datalist","label":"label","value":"value","selected":"selected","disabled":"disabled","title":"title","list":"list","placeholder":"placeholder","search":"search","h1":"h1","h3":"h3","header":"header","main":"main","footer":"footer","nav":"nav"}
+const html = {"lessThan":"<","greaterThan":">","space":" ","id":"id","class":"class","hidden":"hidden","lang":"lang","div":"div","span":"span","p":"p","a":"a","href":"href","mark":"mark","code":"code","time":"time","datetime":"datetime","ul":"ul","li":"li","dl":"dl","dt":"dt","dd":"dd","table":"table","thead":"thead","tbody":"tbody","tr":"tr","th":"th","td":"td","pre":"pre","details":"details","summary":"summary","section":"section","article":"article","figure":"figure","figcaption":"figcaption","button":"button","type":"type","buttonType":"button","tabindex":"tabindex","focusable":"0","style":"style","window":"window","module":"module","b":"b","small":"small","h2":"h2","ol":"ol","select":"select","option":"option","optgroup":"optgroup","form":"form","textarea":"textarea","textType":"text","numberType":"number","dateType":"date","name":"name","input":"input","datalist":"datalist","label":"label","value":"value","selected":"selected","disabled":"disabled","title":"title","list":"list","placeholder":"placeholder","search":"search","h1":"h1","h3":"h3","header":"header","main":"main","footer":"footer","nav":"nav"}
 // "Attributes" · syntax element
 const htmlAttributes = await frozen.body(HtmlAttributes)({ equals: "=", quote: "\"", standard: html, texts })
 // "Start tag" · syntax element
@@ -644,7 +647,7 @@ const deliveredStyle = await frozen.body(DeliveredStyle)({ root: ":root", standa
 // "Deliver" · entry point
 const deliver = await body_deliver({ exitStatus, preparation, assembly, bundler: frozen.limited(esbuild, ["build"]), bundle: pageBundle, document: pageDocument, html, script: scriptElement, style: deliveredStyle, reading: frozen.limited(diskReading, ["readFileSync"]), writing: frozen.limited(diskWriting, ["mkdirSync","writeFileSync"]), paths: frozen.limited(nodePaths, ["dirname","join","relative"]), encodings: nodeEncodings, terminal: frozen.limited(nodeTerminal, ["write"]), sequences, texts, values: valueTypes, messages: commandMessages })
 // "What trame dev serves" · decision
-const devService = {"page":["/","/index.html"],"bundle":"/bundle.json","events":"/events","compiling":"compiling","ready":"bundle","host":"localhost","ignored":["~",".swp",".tmp"]}
+const devService = {"page":["/","/index.html"],"bundle":"/bundle.json","events":"/events","amend":"/amend","compiling":"compiling","ready":"bundle","host":"localhost","ignored":["~",".swp",".tmp"]}
 // "HTTP" · standard
 const http = {"scheme":"http","ok":200,"noContent":204,"notFound":404,"serverError":500,"unavailable":503,"post":"POST","contentType":"content-type","cacheControl":"cache-control","connection":"connection","authorization":"authorization","bearer":"Bearer ","noCache":"no-cache","keepAlive":"keep-alive"}
 // "Media types" · standard
@@ -760,7 +763,7 @@ const htmlMarkup = {"name":"HtmlMarkup","tag":"html","grammar":{"module":"tree-s
 // "Page" · function
 const page = await body_page({ pageBundle, standalone: standaloneStyle, encodings: nodeEncodings, file: textFile, palette, typography, narrowScreen, spacing, radii, typeScale, opacities, strokes, motion, pageLayout, resources: frozen.limited(pageResources, ["narrowStyle","script","style"]), reading: frozen.limited(diskReading, ["readFileSync"]), bundler: frozen.limited(esbuild, ["build"]), compression: frozen.limited(nodeCompression, ["pack"]), shell, theme, statusStyle, narrow: narrowScreenRule, fonts: fontLinks, scripts: pageScripts, document: pageDocument, rule: cssRule, declaration: cssDeclaration, messages: outputMessages, language, reader: syntaxReader, markup: htmlMarkup, sheets: cssStyleSheets, gnu: gnuPositions })
 // "Documents in the page" · decision
-const documentMarkup = {"classes":{"reference":"ref","open":"open","rule":"rule","pill":"pill","published":"pub","severity":"sev","person":"person","card":"card","history":"history","repealed":"repealed","meta":"meta","views":"views","viewButton":"chip-btn","nature":"nature","inactive":"inactive","facts":"facts","resolution":"resolution","child":"child","tableWrap":"table-wrap","code":"code","codeSource":"code-source","checksTitle":"checks-title","validity":"validity","summary":"summary","intro":"intro","figure":"figure","figureScroll":"figure-scroll"},"prefixes":{"outcome":"oc-","validity":"va-","severity":"sev-"},"attributes":{"reference":"data-ref","doc":"data-doc","view":"data-view","node":"data-node","figure":"data-figure"},"headings":{"title":1,"section":2,"card":3,"nested":4}}
+const documentMarkup = {"classes":{"reference":"ref","open":"open","rule":"rule","pill":"pill","published":"pub","severity":"sev","person":"person","card":"card","history":"history","repealed":"repealed","meta":"meta","views":"views","viewButton":"chip-btn","nature":"nature","inactive":"inactive","facts":"facts","resolution":"resolution","child":"child","tableWrap":"table-wrap","code":"code","codeSource":"code-source","checksTitle":"checks-title","validity":"validity","summary":"summary","intro":"intro","figure":"figure","figureScroll":"figure-scroll","amendButton":"amend-btn"},"prefixes":{"outcome":"oc-","validity":"va-","severity":"sev-"},"attributes":{"reference":"data-ref","doc":"data-doc","view":"data-view","node":"data-node","figure":"data-figure","amend":"data-amend","value":"data-value","way":"data-way","units":"data-units"},"headings":{"title":1,"section":2,"card":3,"nested":4}}
 // "Drawing of a timeline" · decision
 const timelineDrawing = {"width":920,"label":240,"row":36,"top":40,"pad":18,"narrowest":640,"titleChars":32,"period":{"y":10,"height":12,"radius":6,"shortest":4},"mark":{"centre":16,"top":8,"bottom":24,"half":7,"radius":5},"grid":{"above":8},"tick":{"x":4,"above":12},"lane":{"title":15,"kind":29},"today":{"above":26,"below":4,"label":5},"bottom":12,"shortestSpan":1}
 // "Legend of a graph" · decision
@@ -782,7 +785,7 @@ const devMessages = await frozen.body(DevMessages)({ language, lists })
 // "trame dev server" · function
 const devServer = await body_devServer({ service: devService, uri, line: trameCommands, nodeEvents, layout, http, mediaTypes, events: serverSentEvents, terminal: frozen.limited(nodeTerminal, ["write"]), codeLines, file: textFile, clock: frozen.limited(systemClock, ["now"]), timer: frozen.limited(nodeTimer, ["clearTimeout","setTimeout"]), debounce: devDebounce, httpServer: frozen.limited(nodeHttpServer, ["createServer"]), reading: frozen.limited(diskReading, ["existsSync","watch"]), paths: frozen.limited(nodePaths, ["join","relative","sep"]), project, bundle: dateBundle, differences, page, pageRendering, counts, sequences, texts, dates, language, messages: devMessages })
 // "Start trame dev" · entry point
-const dev = await body_dev({ preparation, devServer })
+const dev = await body_dev({ preparation, devServer, amending, place: frozen.limited(inPlaceSources, ["record"]), paths: frozen.limited(nodePaths, ["relative"]) })
 // "What the doctor writes, runs and waits for" · decision
 const doctorProbe = {"file":"probe.txt","text":"trame doctor","program":"probe.ts","source":"console.log(\"trame doctor\")\n","pause":10}
 // "Ask the machine" · entry point

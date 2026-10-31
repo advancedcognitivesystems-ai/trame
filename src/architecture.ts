@@ -197,6 +197,13 @@ export interface Compression {
 export interface Decompression {
   unpack(packed: string): Promise<string>
 }
+/** Where the page sends an amendment a person writes (since g86): trame dev, which prepares it and records it. */
+export interface PageAmendments {
+  /** The page can amend: it follows trame dev. */
+  available(): boolean
+  /** Sends an amendment, previewed or to record; what trame dev answers: what it would change, why it refuses, where it went. */
+  send(asked: Readonly<Record<string, unknown>>): Promise<{ refused?: string; heading?: string; lines: string[]; file?: string; awaits?: string }>
+}
 /** The window of the browser that shows the page: its document, and what the page asks of the window around it. */
 export interface PageWindow {
   /** The page's document: the page writes in it and hears what the person does in it. */
@@ -472,6 +479,12 @@ export const PageMemory = port<PageMemory>({ owner: "trame", declaredEffects: { 
 export const GraphFeed = port<GraphFeed>({ owner: "trame", declaredEffects: { packed: effects("display"), live: effects("display"), follow: effects("network", "asynchronous") } })
 
 /**
+ * Amendments from the page
+ * What a person amends in the page goes to trame dev, which says first what it would change, then records it.
+ */
+export const PageAmendments = port<PageAmendments>({ owner: "trame", declaredEffects: { available: effects("display"), send: effects("network", "asynchronous") } })
+
+/**
  * Decompression
  * The graph an exported page carries, made whole again by the browser.
  */
@@ -572,10 +585,12 @@ export interface ServerResponseSeen {
   body(): string
   /** The client goes away. */
   close(): void
+  /** Once the server has ended its answer (one it gives after some work: an amendment prepared). */
+  ended(): Promise<void>
 }
 export interface ServerLog {
-  /** Asks the server started in memory for a path, as a browser would. */
-  request(url: string): ServerResponseSeen
+  /** Asks the server started in memory for a path, as a browser would; with a text, posts it (since g86). */
+  request(url: string, posted?: string): ServerResponseSeen
   /** The ports it was asked to listen on. */
   ports(): number[]
 }

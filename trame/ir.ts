@@ -332,6 +332,18 @@ export interface Card {
   children: { ref: string; body: Block[] }[]
   /** The per-node views that apply to this node. */
   views: { name: string; label: string }[]
+  /** The values of the node a person may amend (since g86): chosen, or cited with their source. */
+  amendable?: AmendableValue[]
+}
+
+/** A value a person may amend: its field, how it changes, its value in force, and its units when a quantity measures it. */
+export interface AmendableValue {
+  field: string
+  label: string
+  way: string
+  value?: Json
+  /** The units of its quantity, from the largest: each with how many of the base unit it makes, and its words. */
+  units?: [string, number][]
 }
 
 export interface FigureNode extends NodeRef {

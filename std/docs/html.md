@@ -10,7 +10,7 @@
 
 ### WAI-ARIA
 
-`Aria` · `src/html.ts:92`
+`Aria` · `src/html.ts:98`
 
 The attributes that tell assistive technologies what an element is and how it is named.
 
@@ -38,7 +38,7 @@ Source: W3C, Accessible Rich Internet Applications (WAI-ARIA) 1.2: § 5.3 roles,
 
 ### CSS
 
-`Css` · `src/html.ts:180`
+`Css` · `src/html.ts:186`
 
 The syntax of style sheets: rules, declarations, functions; the lengths a page uses.
 
@@ -128,6 +128,12 @@ Source: WHATWG HTML: § 13.1 Writing HTML documents (the DOCTYPE, elements, star
 | `select` | `select` | A list of choices (§ 4.10.7) |
 | `option` | `option` | A choice of a list (§ 4.10.10) |
 | `optgroup` | `optgroup` | A group of choices, under its label (§ 4.10.9) |
+| `form` | `form` | A form: fields a person fills in, and what sends them |
+| `textarea` | `textarea` | A field of several lines of text |
+| `textType` | `text` | The type of an input that takes a line of text |
+| `numberType` | `number` | The type of an input that takes a number |
+| `dateType` | `date` | The type of an input that takes a calendar date |
+| `name` | `name` | The name a field of a form is read by |
 | `input` | `input` | A field (§ 4.10.5) |
 | `datalist` | `datalist` | The choices a field suggests (§ 4.10.8) |
 | `label` | `label` | The label of a group of choices (§ 4.10.9) |
@@ -152,7 +158,7 @@ Source: WHATWG HTML: § 13.1 Writing HTML documents (the DOCTYPE, elements, star
 
 ### SVG
 
-`Svg` · `src/html.ts:117`
+`Svg` · `src/html.ts:123`
 
 The elements and attributes of the drawings a page holds inline.
 

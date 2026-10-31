@@ -453,10 +453,10 @@ export const Differences = fn({
  * The paths the page is asked at, the bundle of the graph, the stream of its changes; the events of that stream; the
  * host it answers on; the endings of the files an editor leaves while it saves, which change nothing.
  */
-export const DevService = decision<{ page: readonly string[]; bundle: string; events: string; compiling: string; ready: string; host: string; ignored: readonly string[] }>({
+export const DevService = decision<{ page: readonly string[]; bundle: string; events: string; amend: string; compiling: string; ready: string; host: string; ignored: readonly string[] }>({
   owner: "trame",
   value: {
-    page: ["/", "/index.html"], bundle: "/bundle.json", events: "/events",
+    page: ["/", "/index.html"], bundle: "/bundle.json", events: "/events", amend: "/amend",
     compiling: "compiling", ready: "bundle", host: "localhost", ignored: ["~", ".swp", ".tmp"],
   },
 })

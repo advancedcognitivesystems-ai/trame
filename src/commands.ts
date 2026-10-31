@@ -267,15 +267,6 @@ export const Export = entryPoint({
   body: code.file<typeof import("./code/commands/export").default>("./code/commands/export.ts"),
 })
 
-/**
- * Start trame dev
- */
-export const Dev = entryPoint({
-  owner: "trame", in: TrameCli, serves: [ExecutableSpecification],
-  trigger: command(commandNames.dev),
-  deps: { preparation: Preparation, devServer: DevServer },
-  body: code.file<typeof import("./code/commands/dev").default>("./code/commands/dev.ts"),
-})
 
 /**
  * What the doctor writes, runs and waits for
@@ -336,22 +327,47 @@ export const Plan = entryPoint({
 })
 
 /**
+ * An amendment prepared
+ * A chosen value of a node changed by an amendment, compiled first with the graph in memory, the day it comes into
+ * force: what it would change, or why it is refused (a value code is built on, a cited one without its source, a value
+ * of another type, an error raised). It writes nothing: trame amend and trame dev record it, through the port "Where an
+ * amendment goes".
+ */
+export const Amending = fn({
+  owner: "trame",
+  serves: [SingleSource],
+  deps: {
+    preparation: Preparation, machine: MachineOutputs, comparison: BuildComparison, prelude: Prelude, references: References, project: Project,
+    specifiers: NodeModuleSpecifiers, values: ValueTypes, paths: Paths, messages: CommandMessages, naming: AmendmentNaming, counts: Counts,
+  },
+  body: code.file<typeof import("./code/commands/amending").default>("./code/commands/amending.ts"),
+})
+
+/**
  * Amend
- * Changes a chosen value of a node by an amendment: who, why, from when, the value. The amendment is compiled first with
- * the graph, and what it would change is said (statuses, issues raised, a criterion or a scenario that would fail);
- * unless it raises an error (or --accept), it is recorded where the project's amendments go, and its owner's approval
- * awaited when someone else wrote it. --dry-run only says. A cited value changes only with its source (--source); a value
- * code is built on, never from here.
+ * Changes a chosen value of a node by an amendment: who, why, from when, the value. What it would change is said first
+ * (statuses, issues raised, a criterion or a scenario that would fail); unless it raises an error (or --accept), it is
+ * recorded where the project's amendments go, and its owner's approval awaited when someone else wrote it. --dry-run
+ * only says. A cited value changes only with its source (--source); a value code is built on, never from here.
  */
 export const Amend = entryPoint({
   owner: "trame", in: TrameCli, serves: [SingleSource],
   trigger: command(commandNames.amend),
   deps: {
-    exitStatus: ExitStatus, preparation: Preparation, machine: MachineOutputs, comparison: BuildComparison, place: AmendmentPlace,
-    prelude: Prelude, references: References, project: Project, specifiers: NodeModuleSpecifiers, values: ValueTypes, paths: Paths,
-    text: TerminalText, terminal: Terminal, messages: CommandMessages, naming: AmendmentNaming, counts: Counts,
+    exitStatus: ExitStatus, preparation: Preparation, amending: Amending, place: AmendmentPlace, paths: Paths, text: TerminalText, terminal: Terminal,
+    messages: CommandMessages,
   },
   body: code.file<typeof import("./code/commands/amend").default>("./code/commands/amend.ts"),
+})
+
+/**
+ * Start trame dev
+ */
+export const Dev = entryPoint({
+  owner: "trame", in: TrameCli, serves: [ExecutableSpecification],
+  trigger: command(commandNames.dev),
+  deps: { preparation: Preparation, devServer: DevServer, amending: Amending, place: AmendmentPlace, paths: Paths },
+  body: code.file<typeof import("./code/commands/dev").default>("./code/commands/dev.ts"),
 })
 
 /**

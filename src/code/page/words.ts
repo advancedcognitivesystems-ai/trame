@@ -6,6 +6,22 @@ import { plurals } from "../../../trame/kernel"
 const body = ({ language }: { language: { tag: string } }) => {
   const plural = plurals(language.tag)
   return {
+  // Amending a value, in trame dev (since g86) -----------------------------------------------------------------------
+
+  amendPath: () => "What",
+  amendNow: () => "Now",
+  amendNew: () => "New value",
+  amendWhy: () => "Why",
+  amendBy: () => "Who",
+  amendFrom: () => "From",
+  amendSource: () => "Source that changed it",
+  amendPreview: () => "What it would change",
+  amendRecord: () => "Record the amendment",
+  amendSending: () => "trame dev prepares the amendment…",
+  amendNothing: () => "nothing changes",
+  amendRecorded: (file: string) => `recorded in ${file}`,
+  amendAwaits: (owner: string) => `it awaits the approval of ${owner}`,
+
   // The state of the compilation, in the side bar -----------------------------------------------------------------
 
   /** Before the first graph arrives (trame dev). */

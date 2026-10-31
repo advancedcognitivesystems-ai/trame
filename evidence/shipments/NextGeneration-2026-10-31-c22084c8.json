@@ -1,0 +1,3020 @@
+{
+  "shipment": "sdlc.NextGeneration",
+  "title": "The next generation",
+  "target": "generation",
+  "at": "2026-10-31",
+  "by": "claude",
+  "signature": "attribution",
+  "artifacts": [
+    {
+      "node": "sdlc.EngineCandidate",
+      "path": "out/local/trame-cli.ts",
+      "fingerprint": "9640d055e0165756c6f93f93ee9eb29f85780e8febb879f5fbb6130642cb7650"
+    },
+    {
+      "node": "sdlc.PageProgram",
+      "path": "out/browser/page-app.ts",
+      "fingerprint": "cb78cff2d73497f111f28e626ddeb317fb083a82d15bc341867533c898fccd9c"
+    },
+    {
+      "node": "sdlc.GraphPage",
+      "path": "trame-page.html",
+      "fingerprint": "8649a11a5c33873297ec7a7ea3221f5f95108d768ece4104c877e788f78747c6"
+    }
+  ],
+  "foundations": {
+    "problems": 0
+  },
+  "obligations": [
+    {
+      "node": "sdlc.EngineCandidate",
+      "kind": "artifact",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "sdlc.EngineCandidate",
+          "at": "2026-10-27",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "2ae911683fa467365551ed9208b2fe9d35c48f2ebb3a7430948cc958737539ec",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.EngineCandidate",
+          "at": "2026-10-28",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "a2e5ecb8888a5c4c2826a367e36f8a69342f82deaa98fd980c93bb69f64a595e",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.EngineCandidate",
+          "at": "2026-10-28",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "dda44a0139cc1a53df62f91f62fe33e28cd5336005e93a7e8e2fca4bd25ae131",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.EngineCandidate",
+          "at": "2026-10-28",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "d00856039869657e3a92620cad186200a840e0ef93b599f04b1fa0c92c378bb0",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.EngineCandidate",
+          "at": "2026-10-29",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "3542abcdeaa44ca3feffb62bb74e2654fdfaf582b814b51df5ee9ece7d3657bb",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.EngineCandidate",
+          "at": "2026-10-29",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "01b8183b2ed704259f2666b5bbfd4b216bb648948bd7d9ffabfc17d960282360",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.EngineCandidate",
+          "at": "2026-10-29",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "c987841483379b680132eb00a87948cb939f94ef2a264e1812fa4471c3dad8f2",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.EngineCandidate",
+          "at": "2026-10-29",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "6dbda9a343d5bcb04baaccfe9741c118815d499c95e48654795780cd07b9786f",
+          "code": "d19eb752",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.EngineCandidate",
+          "at": "2026-10-29",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "f8409826fc50e3fb5bc773ac47104972dc1966def3b3182762cc33a79c67e326",
+          "code": "722602b5",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.EngineCandidate",
+          "at": "2026-10-29",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "6c8242e8bccb9c58a44f387f517bf8cc3f2fa9a92988bbb88857b2ae8b1951df",
+          "code": "3f24f154",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "7892d9a176b6ca8f",
+          "seal": "eaa4dbb68e2aaa493633eb284289012fa69eba8928252cf0c159475d47027614"
+        },
+        {
+          "node": "sdlc.EngineCandidate",
+          "at": "2026-10-29",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "39850e7d7e45b6f68bb7a86c4342ac9a8e888ca41ec6529e8d5f82f0c48bec97",
+          "code": "cc69caa5",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "7bb44e3076451cc5",
+          "seal": "4ce7340b97a06c19715dc7548f3ea17d49f2a23e583b39624c15bb4589637c0e"
+        },
+        {
+          "node": "sdlc.EngineCandidate",
+          "at": "2026-10-29",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "d6fd587e01ce358d98748c06bdfa6b9581ca1ae97c3518a20e20509c3761d2e4",
+          "code": "ca9c0a61",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "37fff53530297e61",
+          "seal": "656238d78cb936faaa62748589a88d1d35040dc52bb599130b67cefe11814311"
+        },
+        {
+          "node": "sdlc.EngineCandidate",
+          "at": "2026-10-30",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "88ee2838af02568ef67c87cf38f49e0e90fa74ce5710894f4321c296240ad239",
+          "code": "6836e58c",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "a65551cada3fc05b",
+          "seal": "69aa3c606722f057a1683e1f50690c21fb4b9d0664c7c8c2eb74d5aafadcfda1"
+        },
+        {
+          "node": "sdlc.EngineCandidate",
+          "at": "2026-10-30",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "3f0a43b750fb2ba45ea6e6e79ffc024782a7b7227a44bc84bdf7fa262f1b2ff6",
+          "code": "86ac122b",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "0e49ed12f1ca5fbe",
+          "seal": "067d5b4cda9fb266d1edd7145072dbd1af9fda3862ddc8dd167a46a5f341b36a"
+        },
+        {
+          "node": "sdlc.EngineCandidate",
+          "at": "2026-10-30",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "239876cc98fcd7abc29f78e0dd11b1eac842f4281ae56bb850216e8e4cbfedde",
+          "code": "74a41e0f",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "7729674bebf640d4",
+          "seal": "11b515810cb02dcd4364546ce6355293ac7234765fc0f3f5b60bc4c0895d16a6"
+        },
+        {
+          "node": "sdlc.EngineCandidate",
+          "at": "2026-10-30",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "7f64999fed9dd3f4cb732bd7f8be293c7a43cb95790a8df894e8d37802b6439d",
+          "code": "4bbb02f9",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "429d6815b3cf606f",
+          "seal": "f7ac700379d012bdaff88e0acd63e018ae4a0c955be7c7d4836ecca6cb5c54be"
+        },
+        {
+          "node": "sdlc.EngineCandidate",
+          "at": "2026-10-30",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "c6dc1b4eaf6f8d23d67f920d4af0cedf8f1172dd0b8664376fa80ea28e6ca5c1",
+          "code": "0ae5d767",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "85b02f09dbd6a7a0",
+          "seal": "f3106a62ca26f4b6d381d5fb69f3ca78bf87d8bae7e7ee65bfac705b3bb453f2"
+        },
+        {
+          "node": "sdlc.EngineCandidate",
+          "at": "2026-10-31",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "77b215bf20c44ec024e00da9b80888e26b64f791102c2868113e62a0f3c10e51",
+          "code": "12b9601c",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "b2f7959e92dbe055",
+          "seal": "3bda501a968dd6b0460d7338917e509511a0f655db1940e9473deb36156e827f"
+        },
+        {
+          "node": "sdlc.EngineCandidate",
+          "at": "2026-10-31",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "8f877c15a2990d5fcc3e103352faa20ce6cb2f2160747a333d34d96ac9f9330e",
+          "code": "fc1efc7d",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "7b9f31fbc0a62d15",
+          "seal": "081f399207a380b225088dfc36f96372b68a70095bb7cda5c0ab24000a432be5"
+        },
+        {
+          "node": "sdlc.EngineCandidate",
+          "at": "2026-10-31",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "ee9ef87f860942b9808ac148294897e6248c834e64dddcf1a012c1f1d7ba3ff4",
+          "code": "da510f49",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "cb52643ba1d1cbaa",
+          "seal": "09e660a19003f7fc97140a0b9dbe0551c0f9a937a31f78da6600c4a18b15f05f"
+        },
+        {
+          "node": "sdlc.EngineCandidate",
+          "at": "2026-10-31",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "61f7c8cc653befd28e3d9b826ffcc099300eea37f9db866e6196ffc8a922022f",
+          "code": "e9d0cb68",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "eb306b1c338f7615",
+          "seal": "fd199d789f9dc07b7be2b6c59eecca9af8390b1cededb8d99571359cc93c00be"
+        },
+        {
+          "node": "sdlc.EngineCandidate",
+          "at": "2026-10-31",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "9b5af5ca85987082a9d6cf4572f2d3a25c850775ec2c085df084acc57fe15507",
+          "code": "f9d96bf8",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "74d077cf27e815f3",
+          "seal": "7c05b6f1a9cd87fc6b1e85b31402edb0cab0e64c3ac130adb070117d1a148196"
+        },
+        {
+          "node": "sdlc.EngineCandidate",
+          "at": "2026-10-31",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "4212a6fa1bc44af5a9ef89a812852ff881dfb426b94a0a2e31209f08ac5e0718",
+          "code": "fabb56dc",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "ee2e5c95ae8e5502",
+          "seal": "cd15bffd855bddf070620de91e587a2ab0413f6bda42b21303546a376ad68bcd"
+        },
+        {
+          "node": "sdlc.EngineCandidate",
+          "at": "2026-10-31",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "e1ff3f33314bea7e35fa2d285a2466adb808a6497021ae10f7e06ee38cb8d02f",
+          "code": "c9c602e5",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "1f76d36ba049edec",
+          "seal": "cf2d1e005f516ffc0ca527349caa7ec258ef9554ccdff59d4a8fdebb2bbbba60"
+        },
+        {
+          "node": "sdlc.EngineCandidate",
+          "at": "2026-10-31",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "9640d055e0165756c6f93f93ee9eb29f85780e8febb879f5fbb6130642cb7650",
+          "code": "e73b7323",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "6fec2fa0bc56b3ad",
+          "seal": "4a2ff83e64a1f5ee88c578f85d6043060e0acebf19edf220193a665cec601cb9"
+        }
+      ]
+    },
+    {
+      "node": "sdlc.GraphPage",
+      "kind": "artifact",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "sdlc.GraphPage",
+          "at": "2026-10-29",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "08aa1d66db2756cb40f94e7196655e566b521b894e3aa1d4057082ab248c2608",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.GraphPage",
+          "at": "2026-10-29",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "c890aa8c4cfcfdd85eaca45f775a2950fe95f423b5e16741512797df7dbc6219",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.GraphPage",
+          "at": "2026-10-29",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "29462fa438335ecfa34dd31b2df30494e36c7b154d020e4169a96ab657650d1d",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.GraphPage",
+          "at": "2026-10-29",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "185ea7e7a2493208fbca0995b7791ddddd2a82a932bfaaeabd89251129f9ee7e",
+          "code": "d1de2ee4",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.GraphPage",
+          "at": "2026-10-29",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "8dbba8adc5bb766af153124009cf2c6c8cf7970dd8a97ab41330ca1b4bfb9eb6",
+          "code": "668a7713",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.GraphPage",
+          "at": "2026-10-29",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "739713c55cb08b9fe054bf4be0e642da6062ef997dc30ee4176d5408cf13e50a",
+          "code": "9b1baaa9",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "7892d9a176b6ca8f",
+          "seal": "212c4688cf81949aae1f3f2ab9e373bc3e34e85b6feae827c676609466dbea7c"
+        },
+        {
+          "node": "sdlc.GraphPage",
+          "at": "2026-10-29",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "f5c4fc577afb54ef7224c048021ad1852fedb3b365f5e3da78ac713ec742fefc",
+          "code": "6ef6090e",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "7bb44e3076451cc5",
+          "seal": "77df71cd4844eaa628ed1d3fa1e63b4fcf0ca6bfc49c2c87b49d4ccc892cae7a"
+        },
+        {
+          "node": "sdlc.GraphPage",
+          "at": "2026-10-29",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "60b25c16bc27b7b7c8074c441e347da2aec6853ddad8658dc27ee02d9a16c05a",
+          "code": "51d6c4fc",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "37fff53530297e61",
+          "seal": "8a958d05f4abfaaef8febad7de976a2d700fd731bb06aedc9da0dce9af1ce4a0"
+        },
+        {
+          "node": "sdlc.GraphPage",
+          "at": "2026-10-30",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "e9594a7b8924c016e1eb0980a47efbd57307a9bc111713b2bf3b37f7d49048e6",
+          "code": "e077c520",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "a65551cada3fc05b",
+          "seal": "c4dd1c547408a9ed72a59aad2feb85d3a4db686f227e0cac0673aa17c9e457e7"
+        },
+        {
+          "node": "sdlc.GraphPage",
+          "at": "2026-10-30",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "8155362028aa666e92edcb378bbf6b127a167475a212ca01ee268d1cfbc400d1",
+          "code": "27225f0e",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "0e49ed12f1ca5fbe",
+          "seal": "ef01d085a9484ab3f9606844502e4e75a26d430c3db1721afea1450a59b0a8e8"
+        },
+        {
+          "node": "sdlc.GraphPage",
+          "at": "2026-10-30",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "24f91b18ec1291b59521abbf646e8a6e0492cf33a61e551ca2649e49dd9f741b",
+          "code": "921b613b",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "7729674bebf640d4",
+          "seal": "f09fc8bf20e645f1640411024cade567f5b491ff29170f4778ea21587deda718"
+        },
+        {
+          "node": "sdlc.GraphPage",
+          "at": "2026-10-30",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "009197115a2d793793e3b3221530c030c9167bc06e3f60869a0d61487acfe642",
+          "code": "02048b70",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "429d6815b3cf606f",
+          "seal": "3b66baf9b5efce346e127180b8e4b590d7a6df12e23cefeb33804a2dab5b91f9"
+        },
+        {
+          "node": "sdlc.GraphPage",
+          "at": "2026-10-30",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "702679695a9c56be7fd88910d37508d61376a153ad68cb4e74f61ab3ef647606",
+          "code": "433d9d5e",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "85b02f09dbd6a7a0",
+          "seal": "59582c459915efc18dac09e62c0c10cc657a9b5803806e0e80009177ef6c0855"
+        },
+        {
+          "node": "sdlc.GraphPage",
+          "at": "2026-10-31",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "f38a42e72748a2f0cf5c367c059be80684caef1c7c2866f993773bad26fc527d",
+          "code": "529a4423",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "b2f7959e92dbe055",
+          "seal": "94a1c7a8956d0fc57e2940a9e3f49687eea64d5f868f89c1e46b07b090b29a23"
+        },
+        {
+          "node": "sdlc.GraphPage",
+          "at": "2026-10-31",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "bc98e8cde8f3df1fabe062e4d91a26ff312082c06e3442fa52cc940ec2f9f21a",
+          "code": "02efc6f1",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "7b9f31fbc0a62d15",
+          "seal": "f2caf630d7bdfeb204723582d0750378805090ddf2934afe7ac4d767decaa094"
+        },
+        {
+          "node": "sdlc.GraphPage",
+          "at": "2026-10-31",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "31718042b11e75827632cb284732a101002cad05c5010e5c3b7d958605ef11e8",
+          "code": "26b8fe20",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "cb52643ba1d1cbaa",
+          "seal": "788257593886f88ce3542479d86ff5fbca164ca9e88d8f8f56cdc7e70a206f63"
+        },
+        {
+          "node": "sdlc.GraphPage",
+          "at": "2026-10-31",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "4423a976822395aa0f5a875f893f26f1de9eb122f60eae8fa59967a547f4bae4",
+          "code": "dfc19911",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "eb306b1c338f7615",
+          "seal": "9923edec6a6eff8fb1b659e55f2a83f27e2cb3904176bd2f12f79e86394ae1ca"
+        },
+        {
+          "node": "sdlc.GraphPage",
+          "at": "2026-10-31",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "9ef32b31130c3177d3f2d023476dec7d5ebe33433e46c0d3b02c7e09f73bff80",
+          "code": "29c92f11",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "74d077cf27e815f3",
+          "seal": "22ca0430300ee0736e5d6666269d347c300117a3c3a03628a415fc30218b79a8"
+        },
+        {
+          "node": "sdlc.GraphPage",
+          "at": "2026-10-31",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "82c9d03934156a19562d333162c90afc0b3f2ef9d2a6b78f0f92896f9a9d77ca",
+          "code": "85cad7b5",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "ee2e5c95ae8e5502",
+          "seal": "5d62dbad2e79167ca6e81c43773372c4e125c2070c2b57902dc1c1efe7940fb7"
+        },
+        {
+          "node": "sdlc.GraphPage",
+          "at": "2026-10-31",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "93f7f4daab34f98ed804a05ef6b955ed7af828cd04f889d1da62546762163473",
+          "code": "48957c52",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "1f76d36ba049edec",
+          "seal": "07f39fa27944d330c4da69e7f11cfa31c2dcd089f8f41a5665367f5452802617"
+        },
+        {
+          "node": "sdlc.GraphPage",
+          "at": "2026-10-31",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "cea68f21a2d8c2cf6218d4847bd412bb761e1b6c9203113d36498b454c1f8a74",
+          "code": "919254c6",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "c64822361e3d2054",
+          "seal": "d80d16c89bf93a5c1ae1fe8b7fe05aca3622fbeaa1576486e6dbd3fb9045de6b"
+        },
+        {
+          "node": "sdlc.GraphPage",
+          "at": "2026-10-31",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "8649a11a5c33873297ec7a7ea3221f5f95108d768ece4104c877e788f78747c6",
+          "code": "919254c6",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "6fec2fa0bc56b3ad",
+          "seal": "ae305e6cde4a987eee85b1d017b91b5f82cd12ff63a57e754eca76b392077d39"
+        }
+      ]
+    },
+    {
+      "node": "sdlc.PageProgram",
+      "kind": "artifact",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "sdlc.PageProgram",
+          "at": "2026-10-29",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "39bfb9c36d1fcfbe8dd06e2dcf4842718d8d083603eb17c4cd447c30ebcca4b8",
+          "code": "d3aa2d94",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "7892d9a176b6ca8f",
+          "seal": "a263c0fd97645bdd96e0c0f0088231e4a53ca6a31045a48136782c80ee5cee53"
+        },
+        {
+          "node": "sdlc.PageProgram",
+          "at": "2026-10-29",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "a7adfcd0eae6baef55f972baab800e687d2e05773fc8f4c80c22afcc1cb44d81",
+          "code": "d3aa2d94",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "37fff53530297e61",
+          "seal": "d0866146707d200c224f0158736909ac7c0012597fd9e065838d9a7d173d7944"
+        },
+        {
+          "node": "sdlc.PageProgram",
+          "at": "2026-10-30",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "f4a230632e9c13c1428ab9b0cb1d6b9793726a655f96cdb16e8be89180236b5b",
+          "code": "d3aa2d94",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "a65551cada3fc05b",
+          "seal": "6dac5b518ed82cf7d8824ab33d524f08924c24c8b5277efc8de289093eb56b64"
+        },
+        {
+          "node": "sdlc.PageProgram",
+          "at": "2026-10-30",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "8adcc4ad3dc15825d8c875d72fb1f5c69b99736ad45b6b4e29632f9ad07d5a54",
+          "code": "66720ae4",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "7729674bebf640d4",
+          "seal": "d2bfb457d2309edf6af1cbd1359df71088e74dec2e2443f3b3da5c235bb32087"
+        },
+        {
+          "node": "sdlc.PageProgram",
+          "at": "2026-10-30",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "e77726cb57441b6d5a5bec54f97f4db76bb76b4b26ddab669a8d30bb12b06134",
+          "code": "66720ae4",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "429d6815b3cf606f",
+          "seal": "34129cfaa6116f565cacbcb6edd4c6c1c6d73b44879570acab5dfbf6f5446fc6"
+        },
+        {
+          "node": "sdlc.PageProgram",
+          "at": "2026-10-30",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "d84ceb36e3f482166fcb8fb3b6ca8b3bfbd04584def68d92779365b3ee947d95",
+          "code": "66720ae4",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "85b02f09dbd6a7a0",
+          "seal": "9c35f506431bb8575b4c4043073d331058a49fad770d46f1a313fa31c45b5461"
+        },
+        {
+          "node": "sdlc.PageProgram",
+          "at": "2026-10-31",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "9cbd0a32ab73dee34f6639d934462499cb6d5d86f8b7e12ebce2ed3843d31940",
+          "code": "66720ae4",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "b2f7959e92dbe055",
+          "seal": "af3712d0e625523b36df1951555f0b897f0d33ddacefd21103c9aee9f0a58e3d"
+        },
+        {
+          "node": "sdlc.PageProgram",
+          "at": "2026-10-31",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "ffa1848d6bfdace18cfff215568566559b84cd9720b9dfe90b83a1b1a01c81fa",
+          "code": "cee33ef1",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "7b9f31fbc0a62d15",
+          "seal": "69e3f8f3c592013b848d87910cd10eb95c9db974c4fe85bb97f35e90d06c4aec"
+        },
+        {
+          "node": "sdlc.PageProgram",
+          "at": "2026-10-31",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "dda80512ed326de5c71d00bd1963e1a73ca2041dda03452c51958e54e9b82823",
+          "code": "cee33ef1",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "cb52643ba1d1cbaa",
+          "seal": "016c16922776fb780869f527128ef29e02a454179abf828bf028f534968adcfa"
+        },
+        {
+          "node": "sdlc.PageProgram",
+          "at": "2026-10-31",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "c0e6a164dfc5d7d8485e9926a8f52a2d63e6e3915f81e88bae68a479f1b2b98b",
+          "code": "cee33ef1",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "eb306b1c338f7615",
+          "seal": "159bf4be2a241f1f2ff38f73eb273c476ec4bf57d228fd73b2e24d3e40680f92"
+        },
+        {
+          "node": "sdlc.PageProgram",
+          "at": "2026-10-31",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "5f98419d36977d441d3556648c94755743e8ecad5ecf826c5c14c7007dc33578",
+          "code": "cee33ef1",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "74d077cf27e815f3",
+          "seal": "02c0cf1df0f13636e32c4c605f7cef94e8290ed04a320296df07ec766cc8f191"
+        },
+        {
+          "node": "sdlc.PageProgram",
+          "at": "2026-10-31",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "50c271aa40b6f99403d8038833511f22e393e472e83f24ab46761dafee8640b9",
+          "code": "cee33ef1",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "ee2e5c95ae8e5502",
+          "seal": "d1c666a164d43907aeb543976f698fa73beae803be05ec41eb59a7632bb09e00"
+        },
+        {
+          "node": "sdlc.PageProgram",
+          "at": "2026-10-31",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "c72b43e43ffbdae6448387a57b0d9887c9be8232cc00085f696bff65d634defb",
+          "code": "cee33ef1",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "1f76d36ba049edec",
+          "seal": "e503a54a0589af923385185e736cc931c34daacd1e820c4c4c2f33b27cd15ca3"
+        },
+        {
+          "node": "sdlc.PageProgram",
+          "at": "2026-10-31",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "cb78cff2d73497f111f28e626ddeb317fb083a82d15bc341867533c898fccd9c",
+          "code": "a96327d5",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "6fec2fa0bc56b3ad",
+          "seal": "7adc55f0faeede06115186aa3ca68fa74c597db2e7c772b253532025ae4f7879"
+        }
+      ]
+    },
+    {
+      "node": "principles.EngineLayer",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "architecture.TrameCli"
+    },
+    {
+      "node": "principles.WordsInCatalogs",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "messages.PlatformMessages"
+    },
+    {
+      "node": "principles.LibrariesAreProjects",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "libraries.LibraryOfAModule"
+    },
+    {
+      "node": "principles.GraphInTypeScript",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "typescript.TypeScript"
+    },
+    {
+      "node": "principles.LibrariesByName",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "engine.Project"
+    },
+    {
+      "node": "principles.NoKindInTheCore",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "engine.Project"
+    },
+    {
+      "node": "principles.VocabularyLayer",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "engine.Project"
+    },
+    {
+      "node": "documents.PunctuationOfTheLanguage",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "messages.Language"
+    },
+    {
+      "node": "messages.CountsInTheLanguage",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "messages.Lists"
+    },
+    {
+      "node": "principles.PreludeLayer",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "conventions.PreludeApi"
+    },
+    {
+      "node": "principles.KeysOfParts",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "engine.StaticAnalysis"
+    },
+    {
+      "node": "principles.DataAsDatasets",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "engine.Fingerprints"
+    },
+    {
+      "node": "engine.TheLanguageReceivesTheGraph",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "engine.GraphApi"
+    },
+    {
+      "node": "principles.OneWayToRead",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "engine.GraphApi"
+    },
+    {
+      "node": "principles.EveryLiteralDeclared",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "syntax.SyntaxReader"
+    },
+    {
+      "node": "principles.NoLiteralInTheLanguage",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "syntax.SyntaxReader"
+    },
+    {
+      "node": "syntax.PredicatesAsTreeSitterReadsThem",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "syntax.SyntaxReader"
+    },
+    {
+      "node": "syntax.ReadLanguagesAlike",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "syntax.SyntaxReader"
+    },
+    {
+      "node": "principles.NoHiddenDecision",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "syntax.BodyChecks"
+    },
+    {
+      "node": "languages.ReadBackWhatIsWritten",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "languages.Drivers"
+    },
+    {
+      "node": "principles.UndecidedBlocks",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "engine.Wiring"
+    },
+    {
+      "node": "principles.ChangesAreClaims",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "engine.Compiler"
+    },
+    {
+      "node": "principles.GraphLayer",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "engine.Compiler"
+    },
+    {
+      "node": "engine.LawsAreRequirements",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "engine.Laws"
+    },
+    {
+      "node": "principles.UnknownWithoutEvidence",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "engine.Laws"
+    },
+    {
+      "node": "principles.HistoryInTheSource",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "engine.Lock"
+    },
+    {
+      "node": "rendering.MeaningThenLook",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "rendering.Common"
+    },
+    {
+      "node": "principles.GenerationLayer",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "generations.AcceptCandidate"
+    },
+    {
+      "node": "principles.TrameBuildsTrame",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "generations.AcceptCandidate"
+    },
+    {
+      "node": "principles.OneOutputPerReader",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "engine.MachineOutputs"
+    },
+    {
+      "node": "rendering.OneRendererManySyntaxes",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "rendering.FileRendering"
+    },
+    {
+      "node": "principles.DeliveredByTheGraph",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "delivery.DeliveredStyle"
+    },
+    {
+      "node": "page.StyleThroughVariables",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "page.Theme"
+    },
+    {
+      "node": "std/tooling.ToolingAsPorts",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "std/tooling.NodeProgramCommands"
+    },
+    {
+      "node": "browser.ThePageIsAssembled",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureApplied",
+      "via": "browser.ExplorerFigures"
+    },
+    {
+      "node": "architecture.KnownEffects",
+      "kind": "rule",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureRuled",
+      "via": "architecture.KnownEffects"
+    },
+    {
+      "node": "architecture.OnlyCommandsWrite",
+      "kind": "rule",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureRuled",
+      "via": "architecture.OnlyCommandsWrite"
+    },
+    {
+      "node": "architecture.RenderingWithoutGraph",
+      "kind": "rule",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureRuled",
+      "via": "architecture.RenderingWithoutGraph"
+    },
+    {
+      "node": "sdlc.CandidateKeepsTheLaws",
+      "kind": "check",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "sdlc.CandidateKeepsTheLaws",
+          "at": "2026-10-27",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "b5b56e7d",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.CandidateKeepsTheLaws",
+          "at": "2026-10-28",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "7de8d08e",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.CandidateKeepsTheLaws",
+          "at": "2026-10-28",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "da0d9d7e",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.CandidateKeepsTheLaws",
+          "at": "2026-10-28",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "ab764b43",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.CandidateKeepsTheLaws",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "4b02460b",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.CandidateKeepsTheLaws",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "30e6588d",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.CandidateKeepsTheLaws",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "013d6291",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.CandidateKeepsTheLaws",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "36d0ab22",
+          "code": "ac7bfd14",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.CandidateKeepsTheLaws",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "fb0f4efe",
+          "code": "8fbc0ba3",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.CandidateKeepsTheLaws",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "8e8f4da2",
+          "code": "dadbec48",
+          "engine": "7892d9a176b6ca8f",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "7d16dceb430c3ed3a33b41b628407f51fdc5652cf2f91617ee0527f2752bf41a"
+        },
+        {
+          "node": "sdlc.CandidateKeepsTheLaws",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "e3fb40a0",
+          "code": "8fbb09ef",
+          "engine": "7bb44e3076451cc5",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "4ad285d56ef7c8e1ca2f8ec975495bf8f214385bf852c377b2e1b84052da66a6"
+        },
+        {
+          "node": "sdlc.CandidateKeepsTheLaws",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "7ec77676",
+          "code": "59878e9d",
+          "engine": "37fff53530297e61",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "6e018d1d059ee61cd92f8008784c15ee4a33a93cdd20fb1f2aed57ece9b8f03a"
+        },
+        {
+          "node": "sdlc.CandidateKeepsTheLaws",
+          "at": "2026-10-30",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "8623d6bf",
+          "code": "0f18ebfd",
+          "engine": "a65551cada3fc05b",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "405119bd55f4b296d0c9b682a53087a4ae9d64857a90a5f7b3ce2ea3443ee50b"
+        },
+        {
+          "node": "sdlc.CandidateKeepsTheLaws",
+          "at": "2026-10-30",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "0fe4fe4b",
+          "code": "28f7930a",
+          "engine": "0e49ed12f1ca5fbe",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "27c9ededb76df8ed80e7a0ccac190456740353e67444cf87de92aeea9f82ba8d"
+        },
+        {
+          "node": "sdlc.CandidateKeepsTheLaws",
+          "at": "2026-10-30",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "16c14e77",
+          "code": "9427460f",
+          "engine": "7729674bebf640d4",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "f452053dee4f3fd980da42542bb7c7aa7039913edd738f6ed4efed4333a43df8"
+        },
+        {
+          "node": "sdlc.CandidateKeepsTheLaws",
+          "at": "2026-10-30",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "544ab305",
+          "code": "c974bb2a",
+          "engine": "429d6815b3cf606f",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "4a884bc58ea2235aa6156ddaf4b720a58f4819507e523495ab8bcf851a15b977"
+        },
+        {
+          "node": "sdlc.CandidateKeepsTheLaws",
+          "at": "2026-10-30",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "7edef7f0",
+          "code": "1194d194",
+          "engine": "85b02f09dbd6a7a0",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "30dad3dcaabc329d96f3dad8ed15a9d832d9d9bfbc50d053876be7a3eb80d2ce"
+        },
+        {
+          "node": "sdlc.CandidateKeepsTheLaws",
+          "at": "2026-10-31",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "3b45e972",
+          "code": "fae43f59",
+          "engine": "b2f7959e92dbe055",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "f14038115f6cd81b450b462ac598ab73700aa4daf7457875081c127d90fa771d"
+        },
+        {
+          "node": "sdlc.CandidateKeepsTheLaws",
+          "at": "2026-10-31",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "3b3e79cf",
+          "code": "6a038fcb",
+          "engine": "7b9f31fbc0a62d15",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "c7e07fa8460ae6df48447069ecf8912caeebb3bdc678ec2fc729a1743c5d571b"
+        },
+        {
+          "node": "sdlc.CandidateKeepsTheLaws",
+          "at": "2026-10-31",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "4ddad128",
+          "code": "6e21c02a",
+          "engine": "cb52643ba1d1cbaa",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "4c8b88f1593c105cfeebeccd81624ac2c13ebe58887ef88afd33b905bf5e5d01"
+        },
+        {
+          "node": "sdlc.CandidateKeepsTheLaws",
+          "at": "2026-10-31",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "58078529",
+          "code": "4b1f296b",
+          "engine": "eb306b1c338f7615",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "a26c63b80ce544738ca97f5c0f66f2f1e725a26317f2a11ddf2190c9d9ec645d"
+        },
+        {
+          "node": "sdlc.CandidateKeepsTheLaws",
+          "at": "2026-10-31",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "e9ecad69",
+          "code": "af5fc57b",
+          "engine": "74d077cf27e815f3",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "92445050f1d793fc73a6c2b0b3d1bfc6a84896804ab9cc1314e5499a271a61f3"
+        },
+        {
+          "node": "sdlc.CandidateKeepsTheLaws",
+          "at": "2026-10-31",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "ee9c31eb",
+          "code": "8e0cb0ff",
+          "engine": "ee2e5c95ae8e5502",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "fcfe9254a1a7dd4ddfa30ff8a6f2af66fc7bf28899d016f7d76845008e7f5309"
+        },
+        {
+          "node": "sdlc.CandidateKeepsTheLaws",
+          "at": "2026-10-31",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "6036f001",
+          "code": "07a617c8",
+          "engine": "1f76d36ba049edec",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "dd91198a01c85d902923c8cf2273ecad18aa18b0fdd00bcc17666d20e2ef7651"
+        },
+        {
+          "node": "sdlc.CandidateKeepsTheLaws",
+          "at": "2026-10-31",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "29413575",
+          "code": "5520e81f",
+          "engine": "6fec2fa0bc56b3ad",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "a08b6edd15c77e0b8eba0b56007b707292d430bf0621f851f2b87d09156bde4f"
+        }
+      ],
+      "obligation": "sdlc.CandidateChecked",
+      "via": "sdlc.EngineCandidate"
+    },
+    {
+      "node": "sdlc.CandidateRunsOnTheMachine",
+      "kind": "check",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 0,
+          "fingerprint": "4b02460b",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 0,
+          "fingerprint": "30e6588d",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "013d6291",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "36d0ab22",
+          "code": "be80985f",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "fb0f4efe",
+          "code": "37f39c48",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "8e8f4da2",
+          "code": "3d338393",
+          "engine": "7892d9a176b6ca8f",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "a66b7e146585163f56940f181ddce0078430c37efd24ceb7188d9267a3aaca37"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "e3fb40a0",
+          "code": "86d094a4",
+          "engine": "7bb44e3076451cc5",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "1529b3c014da1db24df0d8e11947d9e517e59fdbcc6009c1b914a73b8ef6c34b"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "7ec77676",
+          "code": "836b2536",
+          "engine": "37fff53530297e61",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "d21be9b56a2beb3e95fef17252950268d4005d1cff8e2672729cb1727f8d6b69"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-30",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "8623d6bf",
+          "code": "f94201d7",
+          "engine": "a65551cada3fc05b",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "192a6825260b252f7321bbe27c46a470318f086f48c322c40a81eecdbbf2711a"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-30",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "0fe4fe4b",
+          "code": "c8166ab0",
+          "engine": "0e49ed12f1ca5fbe",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "6454a5d7411177a65a4200538af74c42951c927a761d88997541b13cbc11e2ef"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-30",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "16c14e77",
+          "code": "f3442365",
+          "engine": "7729674bebf640d4",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "a8377b8467aa4ec20bb54d007a88ae5857e10d5f147d53dacb95621471ed320b"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-30",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "544ab305",
+          "code": "13356db4",
+          "engine": "429d6815b3cf606f",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "8049593edfd33e1f20bcecd4c7552aba5e148ade98dfc555ef1861303d703cf9"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-30",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "7edef7f0",
+          "code": "157b1b5a",
+          "engine": "85b02f09dbd6a7a0",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "9523269893c9158ffde9553c274010c0d40f834d5f2812ea5e42ff566b640d2f"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-31",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "3b45e972",
+          "code": "3ae13647",
+          "engine": "b2f7959e92dbe055",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "9dbb7f89df7df7426618c18cd5f1d4f1d1243eab2c7029243d3be56a7e6504d8"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-31",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "3b3e79cf",
+          "code": "4b879195",
+          "engine": "7b9f31fbc0a62d15",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "0422385a0d62efe0661630ebcdf9a262d8383693a9ff23c82baf80ea668525d4"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-31",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "4ddad128",
+          "code": "ef297744",
+          "engine": "cb52643ba1d1cbaa",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "37fbc3ac2e128bf82123d56bfb33524a77bbb338c362dab3bce05cda5068a694"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-31",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "58078529",
+          "code": "93824d25",
+          "engine": "eb306b1c338f7615",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "36c467a59a990745b9a59ce4e95bf35630c26fe330dcd9da6cf23262d6be79db"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-31",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "e9ecad69",
+          "code": "acaecd75",
+          "engine": "74d077cf27e815f3",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "08b8451eb68329eb95083117dce65d3894bfc9d6bd2c36f23f8f10e42eae00cd"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-31",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "ee9c31eb",
+          "code": "6dbc58d1",
+          "engine": "ee2e5c95ae8e5502",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "47ac333987f446b4152fe7972d124b3220d3f17bd21c1929a2b31f5ea3a98533"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-31",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "6036f001",
+          "code": "cccf6256",
+          "engine": "1f76d36ba049edec",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "773753b8baf0995c897e7f874f2bb72dd2be7208a37728eee77d9f8a7996be0f"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-31",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "29413575",
+          "code": "766a3e54",
+          "engine": "6fec2fa0bc56b3ad",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "199feefee2d0ca45f13a7d3929385b712e3d6fb25a8fe86d8e133e8a2848e3dd"
+        }
+      ],
+      "obligation": "sdlc.CandidateChecked",
+      "via": "sdlc.EngineCandidate"
+    },
+    {
+      "node": "sdlc.GraphPageOpens",
+      "kind": "check",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 0,
+          "fingerprint": "d877bed6",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "e4b91282",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "091a29ef",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "646a5050",
+          "code": "cae603c5",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "4ce78061",
+          "code": "cae603c5",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "e75879e0",
+          "code": "cae603c5",
+          "engine": "7892d9a176b6ca8f",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "b2938c4b31f50451fced79f73cb04cd8fc04be877dbe0433d5ccc621b8318f61"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "8dc5473b",
+          "code": "cae603c5",
+          "engine": "7bb44e3076451cc5",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "de6c0baab8c46dbaa539fc28a77c904cbe6df5d8f3d3cdaa943b7ad9e526c3e2"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "2da0c3cf",
+          "code": "cae603c5",
+          "engine": "37fff53530297e61",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "33543029b7eac0143e6b09015edc8ea7b3a0192c5b1388a327131730f71626c4"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-30",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "697efa8a",
+          "code": "cae603c5",
+          "engine": "a65551cada3fc05b",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "1ad6fdc0c2dca256c707adcaac05c82cddb0fffe0f354fcc3dc238f30aeaf838"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-30",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "3763b58f",
+          "code": "cae603c5",
+          "engine": "0e49ed12f1ca5fbe",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "797655f436bce7fd18e0ecb11ef1f83597902a593a7d0fdd532414fe25ea566f"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-30",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "71e7ba7f",
+          "code": "cae603c5",
+          "engine": "7729674bebf640d4",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "28532a7551660eaef2a9350136ca88053abba6cc5f4b5def41ebb40a4555fdec"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-30",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "93876e21",
+          "code": "cae603c5",
+          "engine": "429d6815b3cf606f",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "a455c03daa6b9bd1c3cc0a031ea224a56a2e29069490adec79de2d0c17a20754"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-30",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "22d87a61",
+          "code": "cae603c5",
+          "engine": "85b02f09dbd6a7a0",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "f220b35d088f3ce03efdf047e0ccda2164379b6aae84f343e0b5d7a01498a762"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-31",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "62474b17",
+          "code": "cae603c5",
+          "engine": "b2f7959e92dbe055",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "17a047f4c172c54efa5a6922c38d854efb900b407351a86926074b024dee06f1"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-31",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "447e8f75",
+          "code": "cae603c5",
+          "engine": "7b9f31fbc0a62d15",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "5927c258484dc968dd201545e0b87d21ae6292b69bd42168d361954c41db73e5"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-31",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "48c7bbe2",
+          "code": "cae603c5",
+          "engine": "cb52643ba1d1cbaa",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "aab8f4b25e2ac54dd11841ffc5a22589524e0d763a550fc8aa53425775333d93"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-31",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "28dee484",
+          "code": "cae603c5",
+          "engine": "eb306b1c338f7615",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "c3e76ab70b83c0c311dbde21074d2d1f5a2cd349821aa1928b67659180104ed2"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-31",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "1a06fe4b",
+          "code": "cae603c5",
+          "engine": "74d077cf27e815f3",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "87bbc181896563798ec62d9615d8061b3e4be442901933b88f089bd647e65501"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-31",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "910396a0",
+          "code": "cae603c5",
+          "engine": "ee2e5c95ae8e5502",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "c25ec0a48dfea1710d8a5ae3b43a1308018a31c016ecd808f8f3757e935d042d"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-31",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "b4b82482",
+          "code": "cae603c5",
+          "engine": "1f76d36ba049edec",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "0bcf6c50b14083a8b9890845c29f29b5de1233833e0151d3bbb4d451de56a2ea"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-31",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "85374dd4",
+          "code": "bf494bc5",
+          "engine": "c64822361e3d2054",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "7a77cada488cdc7669bf1b07479f91d7cd9691c53a8497c85fff7542849ba6f6"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-31",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "60f171fb",
+          "code": "bf494bc5",
+          "engine": "6fec2fa0bc56b3ad",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "3d3b7aef07780c0504760b689127d8f1d87bcdcd7c93bca791cfcec2cb98298d"
+        }
+      ],
+      "obligation": "sdlc.CandidateChecked",
+      "via": "sdlc.GraphPage"
+    },
+    {
+      "node": "packages.TsxPackage",
+      "kind": "package",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "packages.TsxPackage",
+          "at": "2026-10-23",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "packages.TsxPackage",
+          "at": "2026-10-23",
+          "source": "outdated",
+          "value": 0
+        },
+        {
+          "node": "packages.TsxPackage",
+          "at": "2026-10-29",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "packages.TsxPackage",
+          "at": "2026-10-29",
+          "source": "outdated",
+          "value": 0
+        }
+      ],
+      "obligation": "sdlc.EnginePackagesSafe",
+      "via": "platform.TsxLoader"
+    },
+    {
+      "node": "packages.TypeScriptPackage",
+      "kind": "package",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "packages.TypeScriptPackage",
+          "at": "2026-10-23",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "packages.TypeScriptPackage",
+          "at": "2026-10-23",
+          "source": "outdated",
+          "value": 0,
+          "note": "latest 7.0.2, held below 7.0.0"
+        },
+        {
+          "node": "packages.TypeScriptPackage",
+          "at": "2026-10-29",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "packages.TypeScriptPackage",
+          "at": "2026-10-29",
+          "source": "outdated",
+          "value": 0,
+          "note": "latest 7.0.2, held below 7.0.0"
+        }
+      ],
+      "obligation": "sdlc.EnginePackagesSafe",
+      "via": "platform.RealTypeScript"
+    },
+    {
+      "node": "packages.NodeTypes",
+      "kind": "package",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "packages.NodeTypes",
+          "at": "2026-10-23",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "packages.NodeTypes",
+          "at": "2026-10-23",
+          "source": "outdated",
+          "value": 0,
+          "note": "latest 26.6.5, held below 23.0.0"
+        },
+        {
+          "node": "packages.NodeTypes",
+          "at": "2026-10-29",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "packages.NodeTypes",
+          "at": "2026-10-29",
+          "source": "outdated",
+          "value": 0,
+          "note": "latest 26.6.6, held below 23.0.0"
+        }
+      ],
+      "obligation": "sdlc.EnginePackagesSafe",
+      "via": "platform.RealTypeScript"
+    },
+    {
+      "node": "packages.TypeScriptGrammar",
+      "kind": "package",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "packages.TypeScriptGrammar",
+          "at": "2026-10-23",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "packages.TypeScriptGrammar",
+          "at": "2026-10-23",
+          "source": "outdated",
+          "value": 0
+        },
+        {
+          "node": "packages.TypeScriptGrammar",
+          "at": "2026-10-29",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "packages.TypeScriptGrammar",
+          "at": "2026-10-29",
+          "source": "outdated",
+          "value": 0
+        }
+      ],
+      "obligation": "sdlc.EnginePackagesSafe",
+      "via": "typescript.TypeScript"
+    },
+    {
+      "node": "packages.WebTreeSitterPackage",
+      "kind": "package",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "packages.WebTreeSitterPackage",
+          "at": "2026-10-23",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "packages.WebTreeSitterPackage",
+          "at": "2026-10-23",
+          "source": "outdated",
+          "value": 0
+        },
+        {
+          "node": "packages.WebTreeSitterPackage",
+          "at": "2026-10-29",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "packages.WebTreeSitterPackage",
+          "at": "2026-10-29",
+          "source": "outdated",
+          "value": 0
+        }
+      ],
+      "obligation": "sdlc.EnginePackagesSafe",
+      "via": "platform.WebTreeSitter"
+    },
+    {
+      "node": "packages.CssGrammar",
+      "kind": "package",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "packages.CssGrammar",
+          "at": "2026-10-23",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "packages.CssGrammar",
+          "at": "2026-10-23",
+          "source": "outdated",
+          "value": 0
+        },
+        {
+          "node": "packages.CssGrammar",
+          "at": "2026-10-29",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "packages.CssGrammar",
+          "at": "2026-10-29",
+          "source": "outdated",
+          "value": 0
+        }
+      ],
+      "obligation": "sdlc.EnginePackagesSafe",
+      "via": "html.CssStyleSheets"
+    },
+    {
+      "node": "packages.HclGrammar",
+      "kind": "package",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "packages.HclGrammar",
+          "at": "2026-10-23",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "packages.HclGrammar",
+          "at": "2026-10-23",
+          "source": "outdated",
+          "value": 0
+        },
+        {
+          "node": "packages.HclGrammar",
+          "at": "2026-10-29",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "packages.HclGrammar",
+          "at": "2026-10-29",
+          "source": "outdated",
+          "value": 0
+        }
+      ],
+      "obligation": "sdlc.EnginePackagesSafe",
+      "via": "terraform.Terraform"
+    },
+    {
+      "node": "packages.EsbuildPackage",
+      "kind": "package",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "packages.EsbuildPackage",
+          "at": "2026-10-23",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "packages.EsbuildPackage",
+          "at": "2026-10-23",
+          "source": "outdated",
+          "value": 0
+        },
+        {
+          "node": "packages.EsbuildPackage",
+          "at": "2026-10-29",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "packages.EsbuildPackage",
+          "at": "2026-10-29",
+          "source": "outdated",
+          "value": 0
+        }
+      ],
+      "obligation": "sdlc.EnginePackagesSafe",
+      "via": "platform.Esbuild"
+    },
+    {
+      "node": "packages.HtmlGrammar",
+      "kind": "package",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "packages.HtmlGrammar",
+          "at": "2026-10-23",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "packages.HtmlGrammar",
+          "at": "2026-10-23",
+          "source": "outdated",
+          "value": 0
+        },
+        {
+          "node": "packages.HtmlGrammar",
+          "at": "2026-10-29",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "packages.HtmlGrammar",
+          "at": "2026-10-29",
+          "source": "outdated",
+          "value": 0
+        }
+      ],
+      "obligation": "sdlc.EnginePackagesSafe",
+      "via": "html.HtmlMarkup"
+    },
+    {
+      "node": "std/tooling.PlaywrightPackage",
+      "kind": "package",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "std/tooling.PlaywrightPackage",
+          "at": "2026-10-29",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "std/tooling.PlaywrightPackage",
+          "at": "2026-10-29",
+          "source": "outdated",
+          "value": 0,
+          "note": "1.64.1"
+        }
+      ],
+      "obligation": "sdlc.EnginePackagesSafe",
+      "via": "std/tooling.PlaywrightBrowser"
+    },
+    {
+      "node": "command-scenarios.CommandLineChooses",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "platform.NodeCommandLine",
+      "outcome": [
+        {
+          "name": "Nothing typed, or an option first, is the build",
+          "status": "passed"
+        },
+        {
+          "name": "\"adrs\" goes to the command that takes any word, with the names of the others",
+          "status": "passed"
+        },
+        {
+          "name": "Without such a command, \"nothing-named-so\" is refused",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.EngineReckons",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "engine.Cycles",
+      "outcome": [
+        {
+          "name": "A cycle is found once, where the search closes it",
+          "status": "passed"
+        },
+        {
+          "name": "The same seed draws the same numbers",
+          "status": "passed"
+        },
+        {
+          "name": "Another seed draws others",
+          "status": "passed"
+        },
+        {
+          "name": "An integer drawn between 1 and 6 stays between them",
+          "status": "passed"
+        },
+        {
+          "name": "A value has the same fingerprint whatever the order of its keys",
+          "status": "passed"
+        },
+        {
+          "name": "A value changed has another fingerprint",
+          "status": "passed"
+        },
+        {
+          "name": "engine.Compiler gives its module and its identifier",
+          "status": "passed"
+        },
+        {
+          "name": "std/algebra gives its library and its own name",
+          "status": "passed"
+        },
+        {
+          "name": "A line of the TypeScript API is written src/engine.ts:10",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.CompileExample",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "platform.TsxLoader",
+      "outcome": [
+        {
+          "name": "TypeScript accepts the example",
+          "status": "passed"
+        },
+        {
+          "name": "The example has 113 nodes, 4 scenarios among them",
+          "status": "passed"
+        },
+        {
+          "name": "No error in the example",
+          "status": "passed"
+        },
+        {
+          "name": "The scenarios of the example hold",
+          "status": "passed"
+        },
+        {
+          "name": "Loaded again, the example reads the same: what the compiler of TypeScript read is kept",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.ShipmentsRun",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "platform.NodeHashing",
+      "outcome": [
+        {
+          "name": "RunnersWritten: its files written by their writers, shipped, with a dossier",
+          "status": "passed"
+        },
+        {
+          "name": "What trame ship built carries the code it was made from",
+          "status": "passed"
+        },
+        {
+          "name": "Each record of evidence carries a seal that matches what it says",
+          "status": "passed"
+        },
+        {
+          "name": "A record changed by hand no longer matches its seal: it is not counted, and the compiler says which",
+          "status": "passed"
+        },
+        {
+          "name": "Preview, in a dry run: delivered, checked by its program, it would ship; no dossier",
+          "status": "passed"
+        },
+        {
+          "name": "trame evidence records OnAPhone, made by hand, attributed to whoever gives it",
+          "status": "passed"
+        },
+        {
+          "name": "someone-else, who is not of the role, is refused",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.AdvanceInMemory",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "engine.EngineFingerprint",
+      "outcome": [
+        {
+          "name": "trame advance stops at the first build that fails",
+          "status": "passed"
+        },
+        {
+          "name": "The generation in place builds first",
+          "status": "passed"
+        },
+        {
+          "name": "The candidate is accepted (  ✓ trame runs g86 |   ✓ reservations runs g86 | Advance succeeded.)",
+          "status": "passed"
+        },
+        {
+          "name": "With --promote, it is frozen as the next generation, its origin written, the pin moved",
+          "status": "passed"
+        },
+        {
+          "name": "The generation frozen records the fingerprint of its engine, by which evidence names it",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.DocumentWords",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "messages.Lists",
+      "outcome": [
+        {
+          "name": "A day is written 17 October 2026, short and as its month",
+          "status": "passed"
+        },
+        {
+          "name": "Items are joined as \"kinds, views and the prelude\"",
+          "status": "passed"
+        },
+        {
+          "name": "A duration is written in the largest unit it is a whole number of",
+          "status": "passed"
+        },
+        {
+          "name": "A ratio is written 50%, an amount CHF 20",
+          "status": "passed"
+        },
+        {
+          "name": "A character nobody sees is shown escaped; a plain text as it is",
+          "status": "passed"
+        },
+        {
+          "name": "The marks between parts are those of en-GB",
+          "status": "passed"
+        },
+        {
+          "name": "1.9.0 comes before 1.10.0",
+          "status": "passed"
+        },
+        {
+          "name": "The releases that break are counted by major version, by minor version before 1.0",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.BodiesReadAndChecked",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "platform.WebTreeSitter",
+      "outcome": [
+        {
+          "name": "The reader finds the 2 literals of a body, with their roles",
+          "status": "passed"
+        },
+        {
+          "name": "A body that imports ./limits is refused: a hidden dependency",
+          "status": "passed"
+        },
+        {
+          "name": "A body that reaches the platform through fetch is refused, unless its kind may touch it",
+          "status": "passed"
+        },
+        {
+          "name": "A file body that exports nothing is refused",
+          "status": "passed"
+        },
+        {
+          "name": "A text that does not follow the grammar is refused, with its places",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.ComponentAssembled",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "typescript.TypeScriptWriter",
+      "outcome": [
+        {
+          "name": "For Local, a program in TypeScript is written, nothing to provision",
+          "status": "passed"
+        },
+        {
+          "name": "For Production, its infrastructure is written in Terraform",
+          "status": "passed"
+        },
+        {
+          "name": "Without an environment, the assembly is refused and says how to ask for it",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.DoctorAsks",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "engine.ProjectRuns",
+      "outcome": [
+        {
+          "name": "trame doctor asks 8 questions of the machine, and each is answered",
+          "status": "passed"
+        },
+        {
+          "name": "A program that does not print what it was given fails the doctor, which says so",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.BuildLikeBefore",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "engine.CompilationApi",
+      "outcome": [
+        {
+          "name": "The build succeeds",
+          "status": "passed"
+        },
+        {
+          "name": "The summary is shown",
+          "status": "passed"
+        },
+        {
+          "name": "graph.json and snapshot.json are written as the engine in place wrote them",
+          "status": "passed"
+        },
+        {
+          "name": "26 documents in Markdown, figures included, as the engine in place wrote them",
+          "status": "passed"
+        },
+        {
+          "name": "28 files written, identical to those of the engine in place",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.KindLaws",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "engine.Laws",
+      "outcome": [
+        {
+          "name": "39 kinds out of 39 respect all their laws",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.LibraryReleased",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "generations.ReleaseRecords",
+      "outcome": [
+        {
+          "name": "In the example, where a value is still to decide, a release is refused",
+          "status": "passed"
+        },
+        {
+          "name": "In the library, 99.0.0 is frozen: its graph, its code, its documents",
+          "status": "passed"
+        },
+        {
+          "name": "Its record is written in the library's module of releases",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.ValueAmended",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "commands.BuildComparison",
+      "outcome": [
+        {
+          "name": "An amendment that makes a criterion fail is not recorded",
+          "status": "passed"
+        },
+        {
+          "name": "A value code is built on is not amended from here",
+          "status": "passed"
+        },
+        {
+          "name": "With --dry-run, what the amendment would change is said, and nothing is written",
+          "status": "passed"
+        },
+        {
+          "name": "The amendment is recorded at the end of src/cancellation.ts, with the import of amendments",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.PackagesAudited",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "commands.Audit",
+      "outcome": [
+        {
+          "name": "trame audit keeps 12 answers of the registry as evidence, none vulnerable",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.ViewsInTheTerminal",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "rendering.TextFigures",
+      "outcome": [
+        {
+          "name": "trame view adrs writes the view in plain text",
+          "status": "passed"
+        },
+        {
+          "name": "trame adrs writes the same",
+          "status": "passed"
+        },
+        {
+          "name": "A figure is drawn as text, Reservations API in it",
+          "status": "passed"
+        },
+        {
+          "name": "Asked in JSON, the view is the intermediate format",
+          "status": "passed"
+        },
+        {
+          "name": "\"nothing-named-so\", neither a command nor a view, is refused",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.PageOfTheGraph",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "platform.Esbuild",
+      "outcome": [
+        {
+          "name": "The page is titled \"Reservations graph\"",
+          "status": "passed"
+        },
+        {
+          "name": "The page carries the graph, packed",
+          "status": "passed"
+        },
+        {
+          "name": "As a fragment, the page leaves its document out",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.PageDelivered",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "commands.Deliver",
+      "outcome": [
+        {
+          "name": "trame deliver writes the page of PoseliaPage, one document",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.DevFollowsTheGraph",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "platform.NodeTimer",
+      "outcome": [
+        {
+          "name": "trame dev serves the page, titled after the project",
+          "status": "passed"
+        },
+        {
+          "name": "It serves the graph, at every date the engine compiled",
+          "status": "passed"
+        },
+        {
+          "name": "The page posts an amendment to trame dev and reads, before anything is recorded, what it would change",
+          "status": "passed"
+        },
+        {
+          "name": "A file written under the project is seen; the graph, compiled again, is announced on the stream",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.PageExported",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "engine.DateBundle",
+      "outcome": [
+        {
+          "name": "The dates are compiled in a fresh process of the engine",
+          "status": "passed"
+        },
+        {
+          "name": "trame export writes trame-page.html, titled after the project",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.PayloadOfTheGraph",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "engine.Differences",
+      "outcome": [
+        {
+          "name": "The payload holds 113 nodes and 259 documents",
+          "status": "passed"
+        },
+        {
+          "name": "Each document is rendered in Markdown, in text and in HTML",
+          "status": "passed"
+        },
+        {
+          "name": "The figures of the HTML are drawn in SVG",
+          "status": "passed"
+        },
+        {
+          "name": "Two payloads alike differ in nothing",
+          "status": "passed"
+        },
+        {
+          "name": "A node removed, the difference says so",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.BuildPlanned",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "commands.Plan",
+      "outcome": [
+        {
+          "name": "trame plan, right after a build, says nothing changes, and writes nothing",
+          "status": "passed"
+        },
+        {
+          "name": "Against a graph.json changed by hand, trame plan says the node it lacks is added, the node it invented is removed, the status it changed changes back, and the issue it added is resolved",
+          "status": "passed"
+        },
+        {
+          "name": "The plan names A release among the shipments touched: what it ships changes",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.DeclarationsPublished",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "commands.Publish",
+      "outcome": [
+        {
+          "name": "trame publish freezes 105 declarations in trame.lock",
+          "status": "passed"
+        },
+        {
+          "name": "Published again, nothing is new",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.ComponentRun",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "commands.Run",
+      "outcome": [
+        {
+          "name": "trame run runs the program it assembled",
+          "status": "passed"
+        },
+        {
+          "name": "It exits with the program's status, 3",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.SnapshotTaken",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "commands.TakeSnapshot",
+      "outcome": [
+        {
+          "name": "trame snapshot writes snapshot.json as the build of the engine in place wrote it",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.LawsTested",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "commands.TestKinds",
+      "outcome": [
+        {
+          "name": "trame test-kinds says the laws of each of the 39 kinds and 18 views hold",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.ManifestWritten",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "commands.WriteManifest",
+      "outcome": [
+        {
+          "name": "trame manifest writes where #std/* leads",
+          "status": "passed"
+        },
+        {
+          "name": "The link leads to the version of std the application pins",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "sdlc.OpeningTheGraphPage",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "sdlc.OpenTheGraphPage",
+      "outcome": [
+        {
+          "name": "A graph page that shows everything passes, and says so",
+          "status": "passed"
+        },
+        {
+          "name": "A graph page whose figure is not drawn, raising an error, fails and says why",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "generations.AcceptCandidate",
+      "kind": "requirement",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.LanguageServed",
+      "via": "product.SeverityOrder"
+    },
+    {
+      "node": "product.SeverityOrder",
+      "kind": "requirement",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.LanguageServed",
+      "via": "product.SeverityOrder"
+    },
+    {
+      "node": "shipping.ShipOnlyWhatHolds",
+      "kind": "requirement",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.LanguageServed",
+      "via": "product.SeverityOrder"
+    },
+    {
+      "node": "libraries.LibraryOfAModule",
+      "kind": "requirement",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.LanguageServed",
+      "via": "libraries.LibraryOfAModule"
+    },
+    {
+      "node": "libraries.ReleaseIsSettled",
+      "kind": "requirement",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.LanguageServed",
+      "via": "libraries.LibraryOfAModule"
+    },
+    {
+      "node": "laws.AnswersWithoutCrashing",
+      "kind": "requirement",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.LanguageServed",
+      "via": "laws.CompleteDeclaration"
+    },
+    {
+      "node": "laws.BlockingHoleHasOwner",
+      "kind": "requirement",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.LanguageServed",
+      "via": "laws.CompleteDeclaration"
+    },
+    {
+      "node": "laws.ClosedResolution",
+      "kind": "requirement",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.LanguageServed",
+      "via": "laws.CompleteDeclaration"
+    },
+    {
+      "node": "laws.CompleteDeclaration",
+      "kind": "requirement",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.LanguageServed",
+      "via": "laws.CompleteDeclaration"
+    },
+    {
+      "node": "laws.CompleteViewDeclaration",
+      "kind": "requirement",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.LanguageServed",
+      "via": "laws.CompleteDeclaration"
+    },
+    {
+      "node": "laws.IntermediateFormatOnly",
+      "kind": "requirement",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.LanguageServed",
+      "via": "laws.CompleteDeclaration"
+    },
+    {
+      "node": "laws.SameInputSameAnswer",
+      "kind": "requirement",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.LanguageServed",
+      "via": "laws.CompleteDeclaration"
+    },
+    {
+      "node": "laws.OrderFree",
+      "kind": "requirement",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.LanguageServed",
+      "via": "laws.CompleteDeclaration"
+    },
+    {
+      "node": "laws.UnknownWithoutEvidence",
+      "kind": "requirement",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.LanguageServed",
+      "via": "laws.CompleteDeclaration"
+    }
+  ],
+  "deployed": [
+    "commands.Advance"
+  ]
+}

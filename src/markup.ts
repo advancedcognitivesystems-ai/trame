@@ -36,11 +36,13 @@ export interface Markup {
     intro: string
     figure: string
     figureScroll: string
+    /** The button that amends a value of a card (since g86). */
+    amendButton: string
   }
   /** Before the key of a vocabulary value: the class of an outcome, a validity, a severity (a status: the page's). */
   prefixes: { outcome: string; validity: string; severity: string }
   /** What the page's script reads: the node a reference leads to, the document, the view a button opens, a figure to draw. */
-  attributes: { reference: string; doc: string; view: string; node: string; figure: string }
+  attributes: { reference: string; doc: string; view: string; node: string; figure: string; amend: string; value: string; way: string; units: string }
   /** The rank of each heading: the title, a section at the top of a document, a card, a section further down. */
   headings: { title: number; section: number; card: number; nested: number }
 }
@@ -60,10 +62,13 @@ export const DocumentMarkup = decision<Markup>({
       card: "card", history: "history", repealed: "repealed", meta: "meta", views: "views", viewButton: "chip-btn",
       nature: "nature", inactive: "inactive", facts: "facts", resolution: "resolution", child: "child",
       tableWrap: "table-wrap", code: "code", codeSource: "code-source", checksTitle: "checks-title",
-      validity: "validity", summary: "summary", intro: "intro", figure: "figure", figureScroll: "figure-scroll",
+      validity: "validity", summary: "summary", intro: "intro", figure: "figure", figureScroll: "figure-scroll", amendButton: "amend-btn",
     },
     prefixes: { outcome: "oc-", validity: "va-", severity: "sev-" },
-    attributes: { reference: "data-ref", doc: "data-doc", view: "data-view", node: "data-node", figure: "data-figure" },
+    attributes: {
+      reference: "data-ref", doc: "data-doc", view: "data-view", node: "data-node", figure: "data-figure",
+      amend: "data-amend", value: "data-value", way: "data-way", units: "data-units",
+    },
     headings: { title: 1, section: 2, card: 3, nested: 4 },
   },
   rejected: {
@@ -152,7 +157,14 @@ export interface Around {
   /** The classes of the parts of a file of JSON: a key, a text, a literal (true, false, null), a number. */
   json: { key: string; text: string; literal: string; number: string }
   /** The date a button of the side bar shows. */
-  attributes: { date: string }
+  /** The date a button shows; the form that amends a value and its buttons, the fields it reads (since g86). */
+  attributes: { date: string; amendForm: string; preview: string; record: string; field: string }
+  /** The parts of that form: its result; its fields, named as trame dev reads what the page posts. */
+  amend: {
+    form: string
+    result: string
+    fields: { node: string; path: string; value: string; unit: string; why: string; by: string; from: string; source: string; dryRun: string }
+  }
 }
 
 /**
@@ -170,7 +182,11 @@ export const AroundMarkup = decision<Around>({
       source: "source", terminal: "term", prompt: "t-prompt", json: "json", flash: "flash",
     },
     json: { key: "j-key", text: "j-str", literal: "j-lit", number: "j-num" },
-    attributes: { date: "data-date" },
+    attributes: { date: "data-date", amendForm: "data-amend-form", preview: "data-preview", record: "data-record", field: "data-field" },
+    amend: {
+      form: "amend", result: "amend-result",
+      fields: { node: "node", path: "path", value: "value", unit: "unit", why: "why", by: "by", from: "from", source: "source", dryRun: "dryRun" },
+    },
   },
 })
 
