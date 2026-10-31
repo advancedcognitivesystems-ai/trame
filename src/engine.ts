@@ -11,7 +11,7 @@ import {
 } from "./laws"
 import { Http, MediaTypes, ServerSentEvents, Uri } from "#std/web"
 import { Mulberry32, MultiplicativeHash, DepthFirstSearch, Sha256 } from "#std/algorithms"
-import { EcmaScript, EcmaScriptReservedWords } from "#std/ecmascript"
+import { EcmaScript, EcmaScriptReservedWords, TextAsCode } from "#std/ecmascript"
 import { TextFile, GnuPositions } from "#std/text"
 import { TypeScriptApi } from "./standards"
 import { ExitStatus, NodeEncodings, NodeEvents, NodeModuleSpecifiers } from "#std/system"
@@ -174,6 +174,7 @@ export const StaticAnalysis = fn({
     specifiers: NodeModuleSpecifiers, syntax: TypeScriptSyntax, references: References, file: TextFile,
     options: TypeScriptOptions, ts: TypeScriptCompiler, kept: KeptResults, runs: RunStore, hashing: Hashing, sha256: Sha256, encodings: NodeEncodings,
     paths: Paths, positions: Positions, docComment: DocComment, counts: Counts, sequences: Sequences, texts: Texts, messages: CompilerMessages,
+    textAsCode: TextAsCode,
   },
   body: code.file<typeof import("./code/engine/static-analysis").default>("./code/engine/static-analysis.ts"),
 })

@@ -580,11 +580,28 @@
       "title": "File trees",
       "fields": {
         "owner": "trame",
-        "declaredEffects": [
-          "read",
-          "write",
-          "process"
-        ]
+        "declaredEffects": {
+          "temporary": [
+            "write"
+          ],
+          "copy": [
+            "read",
+            "write"
+          ],
+          "link": [
+            "write"
+          ],
+          "remove": [
+            "write"
+          ],
+          "files": [
+            "read"
+          ],
+          "differences": [
+            "read",
+            "process"
+          ]
+        }
       }
     },
     {
@@ -604,10 +621,17 @@
       "title": "Feed of the graph",
       "fields": {
         "owner": "trame",
-        "declaredEffects": [
-          "read",
-          "network"
-        ]
+        "declaredEffects": {
+          "packed": [
+            "read"
+          ],
+          "live": [
+            "read"
+          ],
+          "follow": [
+            "network"
+          ]
+        }
       }
     },
     {
@@ -743,10 +767,14 @@
       "title": "Memory of the page",
       "fields": {
         "owner": "trame",
-        "declaredEffects": [
-          "read",
-          "write"
-        ]
+        "declaredEffects": {
+          "recall": [
+            "read"
+          ],
+          "keep": [
+            "write"
+          ]
+        }
       }
     },
     {
@@ -3790,7 +3818,8 @@
           "counts": "std/algebra.Counts",
           "sequences": "std/algebra.Sequences",
           "texts": "std/algebra.Texts",
-          "messages": "messages.CompilerMessages"
+          "messages": "messages.CompilerMessages",
+          "textAsCode": "std/ecmascript.TextAsCode"
         },
         "body": {
           "file": "./code/engine/static-analysis.ts",
@@ -11009,6 +11038,20 @@
         "language": "shared",
         "archive": "8be4500a4d9aadd5",
         "differences": "differences.diff"
+      }
+    },
+    {
+      "id": "releases.G82",
+      "kind": "release",
+      "title": "Generation 82",
+      "fields": {
+        "owner": "trame",
+        "version": "g82",
+        "date": "2026-10-31",
+        "what": "A2, first half: a port's effects method by method, a body has those of the methods it calls; code made of a text refuses the build",
+        "fingerprint": "ae373c71659a40be",
+        "language": "shared",
+        "archive": "99cd2acedf3b14ce"
       }
     },
     {
@@ -22916,6 +22959,16 @@
     {
       "from": "releases.G81",
       "to": "releases.G80",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G82",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G82",
+      "to": "releases.G81",
       "kind": "assembledBy"
     },
     {

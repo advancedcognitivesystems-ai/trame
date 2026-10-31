@@ -963,6 +963,29 @@ A declaration published in `trame.lock` whose form the language changes, not its
 becomes a `Share`), is published again by `trame publish --migrate "why"`, which records when, why and which in the
 lock; a change of meaning stays an amendment's business.
 
+## Effects, method by method
+
+A port says what may happen through it: its effects. Until g81 they held for the whole contract, so code that only read
+through a port that also writes was said to write, and ports were split only to please the rules. Since g82 a port may
+say what each of its methods may do:
+
+```ts
+export const Database = port<Connection>({
+  owner: "karim",
+  declaredEffects: { read: ["read", "asynchronous"], write: ["write", "asynchronous"], transaction: ["read", "write", "asynchronous"] },
+})
+```
+
+TypeScript requires a word for each method of the contract. The engine reads, in each body, what it does with each of
+its parameters: the members it reads of it (`database.read(…)`, `const { read } = database`), as long as it does
+nothing else with it. A node's effects are then those of the methods it calls; a parameter handed on, kept or spread
+counts whole, and so do all of them when a body hands its parameters on together. A list still says what every method
+may do. A realization is still held to everything its ports promise.
+
+Code made of a text escapes every check made on the code as written: since g82 `eval`, the `Function` constructor and a
+value's `constructor` (the way to Function's from any value), written anywhere in a project's code, its graph, bodies,
+kinds, views and libraries, refuse the build, as a type error does. std names them after ECMA-262 (`TextAsCode`).
+
 ## Standards and vocabularies
 
 A **standard** declares constants, their meaning and the source that defines them. It provides its values with their

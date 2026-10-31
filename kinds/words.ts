@@ -284,6 +284,8 @@ const body = () => ({
   bindingPort: () => "Port",
   bindingAnsweredBy: () => "Answered by",
   environmentEnvironment: () => "Environment",
+  portMethod: () => "Method",
+  portItsEffects: () => "What it may do",
   portPorts: () => "Ports",
   portDeclaredEffects: () => "Declared effects",
   portFor: (p0: unknown) => ` for "${p0}"`,

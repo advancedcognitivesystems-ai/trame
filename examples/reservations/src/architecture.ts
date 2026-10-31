@@ -91,7 +91,10 @@ export const Dialect = port<SqlDialect>({ owner: "karim", declaredEffects: [] })
  * Database
  * A full SQL connection: reads, writes and transactions.
  */
-export const Database = port<Connection>({ owner: "karim", declaredEffects: ["read", "write", "asynchronous"] })
+export const Database = port<Connection>({
+  owner: "karim",
+  declaredEffects: { read: ["read", "asynchronous"], write: ["write", "asynchronous"], transaction: ["read", "write", "asynchronous"] },
+})
 
 /**
  * Read-only database
@@ -109,7 +112,7 @@ export const ReservationReading = port<ReservationReader>({ owner: "karim", decl
  * Cancellation records
  * Tells whether a reservation is already cancelled, and records a cancellation with its refund.
  */
-export const Cancellations = port<CancellationRegister>({ owner: "karim", declaredEffects: ["read", "write", "asynchronous"] })
+export const Cancellations = port<CancellationRegister>({ owner: "karim", declaredEffects: { refundFor: ["read", "asynchronous"], record: ["write", "asynchronous"] } })
 
 /**
  * Payment provider

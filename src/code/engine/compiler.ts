@@ -80,6 +80,8 @@ export interface Compiled {
   typeErrors: string[]
   /** The quantities mixed in the code (since g80): the command line refuses them as it refuses type errors. */
   quantityErrors?: string[]
+  /** Code made of a text (since g82): the command line refuses it as it refuses type errors. */
+  textAsCode?: string[]
   /** The quantities of the graph, by reference: their units from the largest, and the messages that write them (g80). */
   quantities?: Map<string, CompiledQuantity>
   literals: Map<AnyNode, { file: string; items: LiteralFound[] }[]>
@@ -131,6 +133,10 @@ export interface Loaded {
   typeErrors: string[]
   /** The quantities mixed in the code (since g80). */
   quantityErrors?: string[]
+  /** Code made of a text (since g82). */
+  textAsCode?: string[]
+  /** What each node's bodies use of their parameters, by the property holding the body (since g82). */
+  uses?: Map<AnyNode, Record<string, Record<string, string[]>>>
   evidence: Map<string, Evidence[]>
   /** The records of evidence whose seal no longer matches what they say: not counted, each an error. */
   broken?: (Evidence & { node: string })[]
@@ -298,7 +304,7 @@ const body = (deps: Deps) => {
     // Where each library's name leads, for the TypeScript compiler: its sources as they are on disk.
     const { imports, separator, pattern } = deps.specifiers
     const paths = Object.fromEntries(libraries.map((lib) => [imports + lib.name + separator + pattern, [join(lib.root, sources, pattern)]]))
-    const { infos: analysis, moduleTitle, rests, typeErrors, quantityErrors } = analyze(modules, extra, root, paths)
+    const { infos: analysis, moduleTitle, rests, typeErrors, quantityErrors, uses: used, textAsCode } = analyze(modules, extra, root, paths)
     // The nodes of the project and of its libraries: those their modules export. The registry of the kernel is shared
     // by the whole process (another project may be loaded into it): it is not read in full.
     const before = allNodes().length
@@ -317,14 +323,17 @@ const body = (deps: Deps) => {
     const anonymous = allNodes().slice(before).filter((n) => !meta(n).id)
     const nodes = [...mine].sort(byRef)
     const infos = new Map<AnyNode, StaticInfo>()
+    const uses = new Map<AnyNode, Record<string, Record<string, string[]>>>()
     for (const n of nodes) {
       const i = analysis.get(refOf(n))
       if (i) infos.set(n, i)
+      const u = used.get(refOf(n))
+      if (u) uses.set(n, u)
     }
     const bodies = bodiesOf(root, nodes, infos)
     return {
       code: codeOf(root, nodes, infos),
-      root, modules: own.map((m) => m.module), moduleTitle, nodes, anonymous, infos, rests, typeErrors, quantityErrors, ...readEvidence(root), installed: loadInstalled(root),
+      root, modules: own.map((m) => m.module), moduleTitle, nodes, anonymous, infos, rests, typeErrors, quantityErrors, textAsCode, uses, ...readEvidence(root), installed: loadInstalled(root),
       engine: dirs.engine === undefined ? undefined : deps.engines.recorded(dirs.engine),
       libraries: libraries.map(({ name, root: at, path, version, files }) => ({ name, root: at, path, version, modules: files.map((m) => m.module) })),
       bodies: new Map([...bodies].map(([language, { sources }]) => [language, sources])),
@@ -772,7 +781,8 @@ const body = (deps: Deps) => {
       },
       onStatusError: (n, e) => error(n, messages.hookFailed(KindHook.status, e.message)),
     })
-    // Effects: those of the node, plus those of everything it depends on at run time.
+    // Effects: those of the node, plus those of everything it depends on at run time; of a dependency, what the node
+    // uses of it when the engine can tell (the methods of a port its bodies call, since g82), all of it otherwise.
     const own = new Map<AnyNode, readonly string[]>()
     for (const n of nodes) {
       const def = meta(n).def
@@ -783,18 +793,47 @@ const body = (deps: Deps) => {
         own.set(n, [])
       }
     }
+    /** What a node's bodies use of the dependency named `param`: nothing known when one body cannot tell. */
+    const usedOf = (n: AnyNode, param: string): string[] | undefined => {
+      const byProperty = l.uses?.get(n)
+      if (!byProperty) return undefined
+      const bodies = Object.entries(meta(n).def.fields).filter(([, f]) => f.type === FieldType.body && f.stage !== Stage.provisioning).map(([k]) => k)
+      const lists = bodies.filter((k) => meta(n).data[k] !== undefined).map((k) => byProperty[k]?.[param])
+      if (!lists.length || lists.some((x) => x === undefined)) return undefined
+      return [...new Set(lists.flatMap((x) => x ?? []))]
+    }
+    /** Its own effects for these uses only. */
+    const ownFor = (n: AnyNode, uses: readonly string[]): readonly string[] => {
+      const def = meta(n).def
+      try {
+        return def.effects ? def.effects(g.self(n) as never, uses) : []
+      } catch {
+        return own.get(n) ?? []
+      }
+    }
     const visiting = new Set<AnyNode>()
+    const throughDeps = new Map<AnyNode, string[]>()
+    /** The effects that reach a node through its dependencies. */
+    const depsEffectsOf = (n: AnyNode): string[] => {
+      const known = throughDeps.get(n)
+      if (known) return known
+      if (visiting.has(n)) return []
+      visiting.add(n)
+      const set = new Set<string>()
+      for (const e of edges) {
+        if (e.from !== n || e.param === undefined || e.stage !== Stage.execution) continue
+        const uses = usedOf(n, e.param)
+        for (const x of uses === undefined ? effectsOf(e.to) : [...ownFor(e.to, uses), ...depsEffectsOf(e.to)]) set.add(x)
+      }
+      visiting.delete(n)
+      const out = [...set]
+      throughDeps.set(n, out)
+      return out
+    }
     const effectsOf = (n: AnyNode): string[] => {
       const known = effects.get(n)
       if (known) return known
-      if (visiting.has(n)) return [...(own.get(n) ?? [])]
-      visiting.add(n)
-      const set = new Set(own.get(n) ?? [])
-      for (const e of edges) {
-        if (e.from === n && e.param !== undefined && e.stage === Stage.execution) for (const x of effectsOf(e.to)) set.add(x)
-      }
-      visiting.delete(n)
-      const out = [...set].sort()
+      const out = [...new Set([...(own.get(n) ?? []), ...depsEffectsOf(n)])].sort()
       effects.set(n, out)
       return out
     }

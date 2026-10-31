@@ -55,7 +55,7 @@ Source: ECMA-262, ECMAScript 2024: § 13.5.3 The typeof operator (Table 41) · `
 
 ### Unicode escape of a text
 
-`UnicodeEscape` · `src/ecmascript.ts:112`
+`UnicodeEscape` · `src/ecmascript.ts:128`
 
 A character a text shows only as an escape: a backslash, u, and four hexadecimal digits (ECMA-262, UnicodeEscapeSequence; JSON writes the same).
 
@@ -71,7 +71,7 @@ Source: ECMA-262 2024, § 12.9.4 String Literals (UnicodeEscapeSequence :: u Hex
 - Maintained by: trame
 - Serves: [A published value is cited, not copied](product.md#CitedNotCopied)
 
-## Vocabulary
+## Vocabularies
 
 <a id="EcmaScriptReservedWords"></a>
 
@@ -131,6 +131,23 @@ The words a program cannot use as the name of a variable: the reserved words of 
 | `static` | Reserved in strict mode code (§ 13.1.1) |
 | `arguments` | Cannot be bound in strict mode code (§ 13.1.1) |
 | `eval` | Cannot be bound in strict mode code (§ 13.1.1) |
+
+- Owner: trame
+- Serves: [A published value is cited, not copied](product.md#CitedNotCopied)
+
+<a id="TextAsCode"></a>
+
+### Text run as code
+
+`TextAsCode` · `src/ecmascript.ts:113`
+
+What makes code of a text while a program runs, in ECMA-262 2024: the global function eval (§ 19.2.1), the Function constructor (§ 20.2.1.1), and the property that leads from any value to its constructor, and so to Function's (§ 20.1.3.1, Object.prototype.constructor). Code made of a text escapes every check made on the code as written.
+
+| Word | Meaning |
+|---|---|
+| `eval` | Runs a text as code (§ 19.2.1) |
+| `Function` | Makes a function of a text (§ 20.2.1.1) |
+| `constructor` | Leads from any value to its constructor, Function's among them (§ 20.1.3.1) |
 
 - Owner: trame
 - Serves: [A published value is cited, not copied](product.md#CitedNotCopied)

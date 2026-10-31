@@ -843,8 +843,11 @@ export interface KindDef<N extends string, F extends Fields, E extends Edges> {
   holes?(self: SelfOf<F, E>, g: Graph): HoleList
   /** What the kind says about a node, as blocks of the intermediate format. */
   render?(self: SelfOf<F, E>, g: Graph): Block[]
-  /** Its own effects (the effects of its dependencies are added). */
-  effects?(self: SelfOf<F, E>): readonly string[]
+  /**
+   * Its own effects (the effects of its dependencies are added). `uses`: the operations a node that depends on it uses
+   * (the methods of a port), when the engine can tell (since g82); without it, all of them.
+   */
+  effects?(self: SelfOf<F, E>, uses?: readonly string[]): readonly string[]
   /** When wiring: the node that replaces it in this environment (a port delegates to its implementation). */
   delegate?(self: SelfOf<F, E>, ctx: WireContext): View | undefined
   /** When wiring: what this node gives (a decision gives its value, a rule its function). By default: its body called with its dependencies. */

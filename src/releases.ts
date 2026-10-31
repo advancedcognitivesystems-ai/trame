@@ -1198,3 +1198,18 @@ export const G81 = release({
   differences: "differences.diff",
   assembledBy: G80,
 })
+
+/**
+ * Generation 82
+ */
+export const G82 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g82",
+  date: "2026-10-31",
+  what: "A2, first half: a port's effects method by method, a body has those of the methods it calls; code made of a text refuses the build",
+  fingerprint: "ae373c71659a40be",
+  language: "shared",
+  archive: "99cd2acedf3b14ce",
+  assembledBy: G81,
+})

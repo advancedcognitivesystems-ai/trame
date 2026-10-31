@@ -31,7 +31,7 @@ The language Trame speaks to people: British English. Its messages are written i
 
 ### A catalog counts in its language
 
-`CountsInTheLanguage` · `src/messages.ts:881` · status: **held**
+`CountsInTheLanguage` · `src/messages.ts:885` · status: **held**
 
 A count and its noun follow the plural rules of the language the catalog is written in, with the forms the catalog writes for each category; nothing below the catalogs presumes a language.
 
@@ -87,7 +87,7 @@ Joins the items of a list as people write it in the decided language: "A, B and 
 
 ### Messages of an advance
 
-`AdvanceMessages` · `src/messages.ts:793`
+`AdvanceMessages` · `src/messages.ts:797`
 
 What trame advance says as it goes, and what a generation says of itself.
 
@@ -185,7 +185,7 @@ What trame advance says as it goes, and what a generation says of itself.
 
 ### Messages of the commands
 
-`CommandMessages` · `src/messages.ts:446`
+`CommandMessages` · `src/messages.ts:449`
 
 What the commands print: summaries, usage, refusals.
 
@@ -216,6 +216,7 @@ What the commands print: summaries, usage, refusals.
     /** Followed by the type errors, one per line. */
     typeScriptRefuses: () => "TypeScript refuses the graph:",
     quantitiesRefuse: () => "The quantities refuse the graph: what TypeScript lets through, the units do not",
+    textAsCodeRefuses: () => "Code made of a text refuses the graph: what it would do, nobody can read before it runs",
 
     // trame test-kinds
     importsChecked: (refused: number) => `imports · ${refused ? `${refused} refused` : "only the public API is used"}`,
@@ -437,6 +438,9 @@ What the compiler, the wiring and the assembly say: diagnostics on the graph, re
     // Static reading.
     /** A type error, with the place it was found ("file:line"), when there is one. */
     typeError: (text: string, where?: string) => (where ? `${where}  ${text}` : text),
+    /** Code made of a text while the program runs (since g82). */
+    textAsCode: (name: string, where: string) =>
+      `${where}  ${name}: code made of a text escapes every check made on the code as written`,
     /** Two quantities put together where they do not add up (since g80). */
     quantitiesTogether: (where: string, operator: string, a: string, b: string) =>
       `${where}  "${a}" ${operator} "${b}": two quantities do not add up, nor compare`,
@@ -484,7 +488,7 @@ What the compiler, the wiring and the assembly say: diagnostics on the graph, re
 
 ### Messages of trame dev
 
-`DevMessages` · `src/messages.ts:422`
+`DevMessages` · `src/messages.ts:425`
 
 What the dev server prints while it watches the project.
 
@@ -519,7 +523,7 @@ What the dev server prints while it watches the project.
 
 ### Messages of the drivers
 
-`DriverMessages` · `src/messages.ts:229`
+`DriverMessages` · `src/messages.ts:232`
 
 What the drivers say about a body: hidden dependencies, access to the platform, a missing file; and the comments of the programs they write.
 
@@ -574,7 +578,7 @@ What the drivers say about a body: hidden dependencies, access to the platform, 
 
 ### Words of Trame's views
 
-`EngineViewWords` · `src/messages.ts:623`
+`EngineViewWords` · `src/messages.ts:627`
 
 What the views of Trame's own graph say: the catalogue of literals, the versions of the engine.
 
@@ -587,7 +591,7 @@ The messages are written in `../engine-views/words.ts`.
 
 ### Words of the kinds
 
-`KindWords` · `src/messages.ts:603`
+`KindWords` · `src/messages.ts:607`
 
 What the kinds say: their labels, the labels of their fields and edges, what their holes say, what they render. The kinds are files of the language, outside the graph: their words are a catalog all the same, which they call; a kind writes no text of its own.
 
@@ -600,7 +604,7 @@ The messages are written in `../kinds/words.ts`.
 
 ### Messages of the laws
 
-`LawMessages` · `src/messages.ts:273`
+`LawMessages` · `src/messages.ts:276`
 
 What the laws of kinds and views report when one does not hold.
 
@@ -652,7 +656,7 @@ What the laws of kinds and views report when one does not hold.
 
 ### Messages of the outputs
 
-`OutputMessages` · `src/messages.ts:365`
+`OutputMessages` · `src/messages.ts:368`
 
 What the machine outputs, the lock, the payload, the date bundle, the differences and the page say.
 
@@ -720,7 +724,7 @@ What the machine outputs, the lock, the payload, the date bundle, the difference
 
 ### Words of the page
 
-`PageWords` · `src/messages.ts:634`
+`PageWords` · `src/messages.ts:638`
 
 What the page says around the documents the engine wrote: the state of the compilation, the dates, the navigation, the banner, the figures, the explorer.
 
@@ -736,7 +740,7 @@ The messages are written in `./code/page/words.ts`.
 
 ### Messages of the platform
 
-`PlatformMessages` · `src/messages.ts:656`
+`PlatformMessages` · `src/messages.ts:660`
 
 What the implementations of the ports say (the command line, the terminal, the processes).
 
@@ -776,7 +780,7 @@ What the implementations of the ports say (the command line, the terminal, the p
 
 ### Messages of the renderers
 
-`RenderingMessages` · `src/messages.ts:646`
+`RenderingMessages` · `src/messages.ts:650`
 
 The words that the renderers add to the intermediate format: labels, notes, the names of statuses and outcomes. Written in a file: the page, which runs in the browser where nothing is wired, reads it too.
 
@@ -791,7 +795,7 @@ The messages are written in `./code/rendering/messages.ts`.
 
 ### Messages of the scenarios
 
-`ScenarioMessages` · `src/messages.ts:685`
+`ScenarioMessages` · `src/messages.ts:689`
 
 The names of the checks that the engine's scenarios make.
 
@@ -936,7 +940,7 @@ How the decided language writes a value with its unit: hours, minutes, seconds, 
 
 ### Messages of the views
 
-`ViewMessages` · `src/messages.ts:314`
+`ViewMessages` · `src/messages.ts:317`
 
 What the loading of views and the compilation API say.
 
@@ -998,7 +1002,7 @@ What the loading of views and the compilation API say.
 
 ### Words of the views
 
-`ViewWords` · `src/messages.ts:613`
+`ViewWords` · `src/messages.ts:617`
 
 What the views say: their titles, their introductions, their headings, what they say of the graph.
 

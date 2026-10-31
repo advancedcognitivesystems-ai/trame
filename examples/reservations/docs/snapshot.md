@@ -84,7 +84,7 @@ Component · `ReservationsApi`
 Port · `Cancellations`
 
 - Owner: karim
-- Declared effects: read, write, asynchronous
+- Declared effects: { refundFor: read, asynchronous, record: write, asynchronous }
 
 ### Clock
 
@@ -98,7 +98,7 @@ Port · `Clock`
 Port · `Database`
 
 - Owner: karim
-- Declared effects: read, write, asynchronous
+- Declared effects: { read: read, asynchronous, write: write, asynchronous, transaction: read, write, asynchronous }
 
 ### SQL dialect
 

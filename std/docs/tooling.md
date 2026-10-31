@@ -10,7 +10,7 @@
 
 ### Playwright's API
 
-`PlaywrightApi` · `src/tooling.ts:142`
+`PlaywrightApi` · `src/tooling.ts:145`
 
 The names Playwright gives to what a page tells: the event of an error the page raised.
 
@@ -30,7 +30,7 @@ Source: Playwright documentation, class Page, event "pageerror" · `https://play
 
 ### Chromium without a screen
 
-`HeadlessChromium` · `src/tooling.ts:157`
+`HeadlessChromium` · `src/tooling.ts:160`
 
 How Chromium starts without a screen: WebGL drawn by software (ANGLE on SwiftShader), so that a page drawing in three dimensions runs on a machine without a graphics card; the window's size, in pixels.
 
@@ -50,7 +50,7 @@ How Chromium starts without a screen: WebGL drawn by software (ANGLE on SwiftSha
 
 ### The SDLC's tooling is realized once
 
-`ToolingAsPorts` · `src/tooling.ts:235` · status: **held**
+`ToolingAsPorts` · `src/tooling.ts:238` · status: **held**
 
 The files of a project and a headless browser are ports of the library, each realized for a machine and in memory: every project's checks and deployments use them, and play them in scenarios, rather than calling the machine itself.
 
@@ -68,7 +68,7 @@ Consequences: A check opens the delivered page through HeadlessBrowser, a deploy
 
 ### Browser script
 
-`BrowserScripted` · `src/tooling.ts:196`
+`BrowserScripted` · `src/tooling.ts:199`
 
 The pages the browser kept in memory shows, as a scenario writes them, and what was clicked on them.
 
@@ -89,6 +89,14 @@ The pages the browser kept in memory shows, as a scenario writes them, and what 
 
 Reads, writes and copies the files of the project, and gives a file's fingerprint.
 
+| Method | What it may do |
+|---|---|
+| `exists` | read |
+| `read` | read |
+| `fingerprint` | read |
+| `write` | write |
+| `copy` | read, write |
+
 | Environment | Answered by | Chosen by |
 |---|---|---|
 | [Test](scenarios.md#Test) | [Files kept in memory](#FilesInMemory) | [In memory](scenarios.md#InMemory) |
@@ -103,7 +111,7 @@ Reads, writes and copies the files of the project, and gives a file's fingerprin
 
 ### Files written
 
-`FilesKept` · `src/tooling.ts:66`
+`FilesKept` · `src/tooling.ts:69`
 
 The files a check or a deployment wrote, for a scenario to read: realized together with the files kept in memory.
 
@@ -120,7 +128,7 @@ The files a check or a deployment wrote, for a scenario to read: realized togeth
 
 ### Headless browser
 
-`HeadlessBrowser` · `src/tooling.ts:126`
+`HeadlessBrowser` · `src/tooling.ts:129`
 
 Opens a page the project delivered, without a screen, and answers what it shows.
 
@@ -157,7 +165,7 @@ A program of the SDLC (a check, a deployment), run by a person or by trame ship:
 
 ### A browser kept in memory
 
-`BrowserInMemory` · `src/tooling.ts:203` · status: **held**
+`BrowserInMemory` · `src/tooling.ts:206` · status: **held**
 
 In a scenario, a page opened shows what the scenario wrote for its file (nothing found, no error, when it wrote nothing); clicks are recorded; waiting takes no time.
 
@@ -173,7 +181,7 @@ In a scenario, a page opened shows what the scenario wrote for its file (nothing
 
 ### Files kept in memory
 
-`FilesInMemory` · `src/tooling.ts:83` · status: **held**
+`FilesInMemory` · `src/tooling.ts:86` · status: **held**
 
 In a scenario, the project's files are kept in memory, empty at first; a fingerprint is the hash of the text.
 
@@ -191,7 +199,7 @@ In a scenario, the project's files are kept in memory, empty at first; a fingerp
 
 ### The machine's files
 
-`MachineFiles` · `src/tooling.ts:73`
+`MachineFiles` · `src/tooling.ts:76`
 
 The files of the project on the machine, from the directory the program runs in; a fingerprint is the SHA-256 digest of the file, in hexadecimal.
 
@@ -219,7 +227,7 @@ The first argument given to the program chooses the entry point whose command it
 
 ### Chromium, driven by Playwright
 
-`PlaywrightBrowser` · `src/tooling.ts:171`
+`PlaywrightBrowser` · `src/tooling.ts:174`
 
 The headless browser of a machine: Chromium started by Playwright as decided, a page opened from the file's address, its errors kept as they come.
 
@@ -236,7 +244,7 @@ The headless browser of a machine: Chromium started by Playwright as decided, a 
 
 ### Playwright
 
-`PlaywrightPackage` · `src/tooling.ts:133` · status: **held**
+`PlaywrightPackage` · `src/tooling.ts:136` · status: **held**
 
 Drives Chromium without a screen: the version whose browser the machine has. Once installed, it installs the Chromium it drives, with what the system needs to run it: a machine that runs a check of the page does it first.
 

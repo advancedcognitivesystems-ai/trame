@@ -177,6 +177,8 @@ const body = (deps: Deps) => {
     if (loaded.typeErrors.length) refuse(o, [messages.typeScriptRefuses(), ...loaded.typeErrors.map((e) => indent + e)])
     const mixed = loaded.quantityErrors ?? []
     if (mixed.length) refuse(o, [messages.quantitiesRefuse(), ...mixed.map((e) => indent + e)])
+    const madeOfText = loaded.textAsCode ?? []
+    if (madeOfText.length) refuse(o, [messages.textAsCodeRefuses(), ...madeOfText.map((e) => indent + e)])
     return await at(o, o.today)
   }
 

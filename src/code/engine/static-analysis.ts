@@ -9,6 +9,7 @@ import type { ProvidedBy, StaticInfo } from "../../../trame/kernel"
 import type { CompilerMessages } from "../../messages"
 import type { Counts, Sequences, Texts } from "#std/algebra"
 import type { NodeEncodings, NodeModuleSpecifiers } from "#std/system"
+import type { TextAsCode } from "#std/ecmascript"
 import type { TextFile } from "#std/text"
 import type { TypeScriptSyntax } from "../../typescript"
 import type { References } from "../../engine"
@@ -28,6 +29,14 @@ export interface Analysis {
    * or multiplied when neither is a ratio, in any code of the project.
    */
   quantityErrors: string[]
+  /**
+   * What each node's bodies use of their parameters (since g82), by the node and the property of its declaration that
+   * holds the body: each parameter whose every use reads a member of it (a method of a port), with those members. A
+   * parameter used otherwise (passed on, kept whole) is left out: all of it is used.
+   */
+  uses: Map<string, Record<string, Record<string, string[]>>>
+  /** Code made of a text while the program runs (eval, the Function constructor, a value's constructor): each refuses the build (since g82). */
+  textAsCode: string[]
 }
 
 export interface Deps {
@@ -52,12 +61,14 @@ export interface Deps {
   sequences: ProvidedBy<typeof Sequences>
   texts: ProvidedBy<typeof Texts>
   messages: ProvidedBy<typeof CompilerMessages>
+  /** What makes code of a text while a program runs: a global, or a member read. */
+  textAsCode: ProvidedBy<typeof TextAsCode>
 }
 
 const body = (deps: Deps) => {
   const { specifiers, options } = deps
   const ts = deps.ts
-  const { relative, sep } = deps.paths
+  const { relative, sep, resolve, dirname } = deps.paths
   const { lineNumber, reference } = deps.positions
   const { titleLines, joint } = deps.docComment
   const { endOfLine } = deps.file
@@ -123,7 +134,7 @@ const body = (deps: Deps) => {
     const readKey = digest(JSON.stringify([[ts.version, root, modules, paths]]))
     const keptReading = keptUnder<Reading, WrittenReading>(root, readKey, readReading)
     const keptCheck = keptUnder<Checked, Checked>(root, checkKey, (checked) => checked)
-    if (keptReading && keptCheck) return { ...keptReading, ...keptCheck }
+    if (keptReading && keptCheck?.uses && keptCheck.textAsCode) return { ...keptReading, ...keptCheck, uses: new Map(keptCheck.uses) }
     const program = ts.createProgram([...files, ...extra], {
       target: ts.ScriptTarget.ES2022,
       module: ts.ModuleKind.ESNext,
@@ -147,15 +158,160 @@ const body = (deps: Deps) => {
         return messages.typeError(first, where)
       })
     const quantityErrors = keptCheck?.quantityErrors ?? mixedQuantities(program, modules, root, reading.infos)
-    const checked: Checked = { typeErrors, quantityErrors }
+    const uses = keptCheck?.uses ?? usesOf(program, exportedOf(program, modules))
+    const textAsCode = keptCheck?.textAsCode ?? textAsCodeIn(program, root)
+    const checked: Checked = { typeErrors, quantityErrors, uses, textAsCode }
     if (!keptCheck) keep(root, checkKey, digestsOf(program.getSourceFiles().map((sf) => sf.fileName)), checked, checked)
-    return { ...reading, ...checked }
+    return { ...reading, typeErrors, quantityErrors, textAsCode, uses: new Map(uses) }
   }
 
-  /** What the check of a program finds: TypeScript's errors, and the quantities it lets mix. */
+  /** What the check of a program finds: TypeScript's errors, the quantities it lets mix, what bodies use, text run as code. */
   interface Checked {
     typeErrors: string[]
     quantityErrors: string[]
+    uses: [string, Record<string, Record<string, string[]>>][]
+    textAsCode: string[]
+  }
+
+  /** The function a body is: written inline, or the default export of the file `code.file(…)` names. */
+  function bodyFunction(program: ts.Program, e: ts.Expression): ts.SignatureDeclaration | undefined {
+    const unwrapped = (x: ts.Expression): ts.Expression =>
+      ts.isParenthesizedExpression(x) || ts.isAsExpression(x) || ts.isSatisfiesExpression(x) ? unwrapped(x.expression) : x
+    const checker = program.getTypeChecker()
+    const functionOf = (x: ts.Expression): ts.SignatureDeclaration | undefined => {
+      const y = unwrapped(x)
+      if (ts.isArrowFunction(y) || ts.isFunctionExpression(y)) return y
+      if (!ts.isIdentifier(y)) return undefined
+      const d = checker.getSymbolAtLocation(y)?.valueDeclaration
+      if (d && ts.isFunctionDeclaration(d)) return d
+      return d && ts.isVariableDeclaration(d) && d.initializer ? functionOf(d.initializer) : undefined
+    }
+    const inline = functionOf(e)
+    if (inline) return inline
+    const named = ts.isCallExpression(e) ? head(e.arguments) : undefined
+    if (!named || !ts.isStringLiteralLike(named)) return undefined
+    const sf = program.getSourceFile(resolve(dirname(e.getSourceFile().fileName), named.text))
+    for (const stmt of sf?.statements ?? []) {
+      if (ts.isExportAssignment(stmt) && !stmt.isExportEquals) return functionOf(stmt.expression)
+      if (ts.isFunctionDeclaration(stmt) && stmt.modifiers?.some((m) => m.kind === ts.SyntaxKind.DefaultKeyword)) return stmt
+    }
+    return undefined
+  }
+
+  /**
+   * What a body does with each of its parameters: the members it reads of it (`store.find`, `const { find } = store`),
+   * as long as it does nothing else with it; a parameter passed on, kept or spread is used whole, and so are all of
+   * them when the body hands its parameters on together.
+   */
+  function usesIn(checker: ts.TypeChecker, fn: ts.SignatureDeclaration): Record<string, string[]> {
+    const param = head(fn.parameters)
+    if (!param) return {}
+    const nodes: ts.Node[] = []
+    const walk = (n: ts.Node): void => {
+      nodes.push(n)
+      ts.forEachChild(n, walk)
+    }
+    walk(fn)
+    const symbolOf = (n: ts.Identifier) =>
+      ts.isShorthandPropertyAssignment(n.parent) && n.parent.name === n ? checker.getShorthandAssignmentValueSymbol(n.parent) : checker.getSymbolAtLocation(n)
+    const refsTo = (name: ts.Identifier): ts.Identifier[] => {
+      const s = checker.getSymbolAtLocation(name)
+      return s ? nodes.filter((n): n is ts.Identifier => ts.isIdentifier(n) && n !== name && symbolOf(n) === s) : []
+    }
+    const found = new Map<string, Set<string>>()
+    const whole = new Set<string>()
+    let handedOn = false
+    const add = (key: string, member?: string) => {
+      const known = found.get(key) ?? new Set<string>()
+      if (member !== undefined) known.add(member)
+      found.set(key, known)
+    }
+    const members = (p: ts.ObjectBindingPattern, key: string) => {
+      add(key)
+      for (const e of p.elements) {
+        if (e.dotDotDotToken || !ts.isIdentifier(e.propertyName ?? e.name)) whole.add(key)
+        else add(key, (e.propertyName ?? e.name).getText())
+      }
+    }
+    // A value that is the parameter `key`: what is read of it.
+    const used = (v: ts.Expression, key: string): void => {
+      const up = v.parent
+      if (ts.isPropertyAccessExpression(up) && up.expression === v) return add(key, up.name.text)
+      if (ts.isVariableDeclaration(up) && up.initializer === v && ts.isObjectBindingPattern(up.name)) return members(up.name, key)
+      whole.add(key)
+    }
+    const bound = (p: ts.ObjectBindingPattern) => {
+      for (const e of p.elements) {
+        if (e.dotDotDotToken) {
+          handedOn = true
+          continue
+        }
+        const key = (e.propertyName ?? e.name).getText()
+        if (ts.isIdentifier(e.name)) {
+          add(key)
+          for (const r of refsTo(e.name)) used(r, key)
+        } else if (ts.isObjectBindingPattern(e.name)) members(e.name, key)
+        else whole.add(key)
+      }
+    }
+    if (ts.isObjectBindingPattern(param.name)) bound(param.name)
+    else if (ts.isIdentifier(param.name)) {
+      for (const r of refsTo(param.name)) {
+        const up = r.parent
+        if (ts.isPropertyAccessExpression(up) && up.expression === r) used(up, up.name.text)
+        else if (ts.isVariableDeclaration(up) && up.initializer === r && ts.isObjectBindingPattern(up.name)) bound(up.name)
+        else handedOn = true
+      }
+    } else handedOn = true
+    if (handedOn) return {}
+    return Object.fromEntries([...found].filter(([key]) => !whole.has(key)).map(([key, ms]) => [key, [...ms].sort()]))
+  }
+
+  /** What the bodies of each node use of their parameters, by the property of its declaration that holds each body. */
+  function usesOf(program: ts.Program, exported: ReadonlyMap<ts.Node, string>): Checked["uses"] {
+    const checker = program.getTypeChecker()
+    const out: Checked["uses"] = []
+    for (const [decl, ref] of exported) {
+      const init = (decl as ts.VariableDeclaration).initializer
+      const arg = init && ts.isCallExpression(init) ? head(init.arguments) : undefined
+      if (!arg || !ts.isObjectLiteralExpression(arg)) continue
+      const byProperty: Record<string, Record<string, string[]>> = {}
+      for (const p of arg.properties) {
+        if (!ts.isPropertyAssignment(p)) continue
+        const fn = bodyFunction(program, p.initializer)
+        if (fn) byProperty[p.name.getText()] = usesIn(checker, fn)
+      }
+      if (Object.keys(byProperty).length) out.push([ref, byProperty])
+    }
+    return out
+  }
+
+  /**
+   * Code made of a text, anywhere in the project's code (its graph, its bodies, its kinds and views, its libraries): a
+   * global that does it, or a member read that leads to one. Each is refused, with its place.
+   */
+  function textAsCodeIn(program: ts.Program, root: string): string[] {
+    const checker = program.getTypeChecker()
+    const names = new Set<string>(deps.textAsCode)
+    const found: string[] = []
+    const global = (n: ts.Identifier) => {
+      const declared = checker.getSymbolAtLocation(n)?.declarations ?? []
+      return declared.length && declared.every((d) => d.getSourceFile().isDeclarationFile)
+    }
+    for (const sf of program.getSourceFiles()) {
+      if (sf.isDeclarationFile || program.isSourceFileDefaultLibrary(sf) || sf.fileName.includes(specifiers.packages)) continue
+      const visit = (n: ts.Node): void => {
+        const member = ts.isPropertyAccessExpression(n) && names.has(n.name.text)
+        const named = ts.isIdentifier(n) && names.has(n.text) && !(ts.isPropertyAccessExpression(n.parent) && n.parent.name === n) && global(n)
+        if (member || named) {
+          const at = member ? (n as ts.PropertyAccessExpression).name : (n as ts.Identifier)
+          found.push(messages.textAsCode(at.text, reference(relative(root, sf.fileName), lineNumber(sf.getLineAndCharacterOfPosition(at.getStart(sf)).line))))
+        }
+        ts.forEachChild(n, visit)
+      }
+      visit(sf)
+    }
+    return found
   }
 
   /** The exported constants of a program's modules (the nodes, and what else a module exports), by their declaration. */

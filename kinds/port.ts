@@ -7,8 +7,12 @@ const say = words()
 
 const fields = {
   owner: field.owner(),
-  /** (Not `effects`: a view already has `effects`, the effects computed from the dependencies.) */
-  declaredEffects: field.value<readonly string[]>(say.portDeclaredEffects()),
+  /**
+   * What it may do: a list, which holds for each of its methods, or what each method may do (since g82), so that code
+   * that calls only some of them has only their effects. (Not `effects`: a view already has `effects`, the effects
+   * computed from the dependencies.)
+   */
+  declaredEffects: field.value<readonly string[] | Readonly<Record<string, readonly string[]>>>(say.portDeclaredEffects()),
 }
 const F = keysOf(fields)
 
@@ -25,7 +29,7 @@ const kind = defineKind({
   fields,
   edges: {},
 
-  effects: (self) => (Array.isArray(self.declaredEffects) ? self.declaredEffects : []),
+  effects: (self, uses) => promised(self.declaredEffects, uses),
 
   /** When wiring: the realization chosen for this environment. */
   delegate(self, ctx) {
@@ -56,7 +60,11 @@ const kind = defineKind({
   render: (self, g) => {
     const { counts, lists, punctuation } = g.lib
     const refs = (vs: View[], none: string) => (counts.any(vs) ? lists.enumeration(vs.map(doc.ref)) : [none])
+    const byMethod = methodsOf(self.field(F.declaredEffects))
     return [
+      ...(byMethod
+        ? [doc.table([say.portMethod(), say.portItsEffects()], byMethod.map(([m, e]) => [[doc.ident(m)], counts.any(e) ? lists.enumeration(e) : [say.portNone()]]))]
+        : []),
       doc.table([say.environmentEnvironment(), say.bindingAnsweredBy(), say.bindingChosenBy()], g.all(KindName.environment).nodes().map((env) => {
         const mine = answering(g, self, env)
         const by = mine.flatMap((r) => choicesOf(g, r).filter((b) => holdsIn(g, b, env)))
@@ -65,6 +73,19 @@ const kind = defineKind({
     ]
   },
 })
+
+/** What each method may do, when the port says it method by method. */
+const methodsOf = (declared: unknown): [string, string[]][] | undefined =>
+  declared instanceof Object && !Array.isArray(declared)
+    ? Object.entries(declared).map(([m, e]): [string, string[]] => [m, Array.isArray(e) ? e.filter((x): x is string => String(x) === x) : []])
+    : undefined
+
+/** What a port promises: all its effects, or those of the methods used, when the engine can tell which. */
+function promised(declared: unknown, uses?: readonly string[]): string[] {
+  if (Array.isArray(declared)) return declared.filter((x): x is string => String(x) === x)
+  const byMethod = methodsOf(declared) ?? []
+  return [...new Set(byMethod.filter(([m]) => !uses || uses.includes(m)).flatMap(([, e]) => e))]
+}
 
 /** The realizations of a port in force. */
 const realizations = (g: Graph, port: View): View[] => g.from(port).in(EdgeName.implements).where((v) => v.active).nodes()
@@ -80,7 +101,7 @@ function answering(g: Graph, port: View, env: View | undefined): View[] {
 }
 
 /** Declares a port, with the type of its contract: `port<ReservationReading>({ … })`. */
-export function port<C>(input: { owner: string; declaredEffects: readonly string[] }): Node<"port"> & Provides<C> {
+export function port<C>(input: { owner: string; declaredEffects: readonly string[] | { readonly [M in keyof C & string]: readonly string[] } }): Node<typeof KindName.port> & Provides<C> {
   return kind(input as never) as never
 }
 

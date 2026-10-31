@@ -4,7 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 0 | 620 |
+| trame | 0 | 0 | 0 | 621 |
 
 <a id="trame"></a>
 
@@ -509,6 +509,7 @@ Nothing to decide or watch.
 | [Generation 8](releases.md#G8) | Release |  |
 | [Generation 80](releases.md#G80) | Release |  |
 | [Generation 81](releases.md#G81) | Release |  |
+| [Generation 82](releases.md#G82) | Release |  |
 | [Generation 9](releases.md#G9) | Release |  |
 | [Common rendering](rendering.md#Common) | Function | **held** |
 | [Documents in Markdown](rendering.md#DocumentsInMarkdown) | Technical choice | **held** |

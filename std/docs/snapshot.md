@@ -133,6 +133,14 @@ Vocabulary · `EcmaScriptReservedWords`
 - Words: { await: Reserved word (§ 12.7.2), break: Reserved word (§ 12.7.2), case: Reserved word (§ 12.7.2), catch: Reserved word (§ 12.7.2), class: Reserved word (§ 12.7.2), const: Reserved word (§ 12.7.2), continue: Reserved word (§ 12.7.2), debugger: Reserved word (§ 12.7.2), default: Reserved word (§ 12.7.2), delete: Reserved word (§ 12.7.2), do: Reserved word (§ 12.7.2), else: Reserved word (§ 12.7.2), enum: Reserved word (§ 12.7.2), export: Reserved word (§ 12.7.2), extends: Reserved word (§ 12.7.2), false: Reserved word (§ 12.7.2), finally: Reserved word (§ 12.7.2), for: Reserved word (§ 12.7.2), function: Reserved word (§ 12.7.2), if: Reserved word (§ 12.7.2), import: Reserved word (§ 12.7.2), in: Reserved word (§ 12.7.2), instanceof: Reserved word (§ 12.7.2), new: Reserved word (§ 12.7.2), null: Reserved word (§ 12.7.2), return: Reserved word (§ 12.7.2), super: Reserved word (§ 12.7.2), switch: Reserved word (§ 12.7.2), this: Reserved word (§ 12.7.2), throw: Reserved word (§ 12.7.2), true: Reserved word (§ 12.7.2), try: Reserved word (§ 12.7.2), typeof: Reserved word (§ 12.7.2), var: Reserved word (§ 12.7.2), void: Reserved word (§ 12.7.2), while: Reserved word (§ 12.7.2), with: Reserved word (§ 12.7.2), yield: Reserved word (§ 12.7.2), implements: Reserved in strict mode code (§ 13.1.1), interface: Reserved in strict mode code (§ 13.1.1), let: Reserved in strict mode code (§ 13.1.1), package: Reserved in strict mode code (§ 13.1.1), private: Reserved in strict mode code (§ 13.1.1), protected: Reserved in strict mode code (§ 13.1.1), public: Reserved in strict mode code (§ 13.1.1), static: Reserved in strict mode code (§ 13.1.1), arguments: Cannot be bound in strict mode code (§ 13.1.1), eval: Cannot be bound in strict mode code (§ 13.1.1) }
 - Serves: A published value is cited, not copied
 
+### Text run as code
+
+Vocabulary · `TextAsCode`
+
+- Owner: trame
+- Words: { eval: Runs a text as code (§ 19.2.1), Function: Makes a function of a text (§ 20.2.1.1), constructor: Leads from any value to its constructor, Function's among them (§ 20.1.3.1) }
+- Serves: A published value is cited, not copied
+
 ## Standard library · HTML and CSS
 
 ### WAI-ARIA
@@ -468,7 +476,7 @@ Port · `PageLoading`
 Port · `PreferencesStore`
 
 - Owner: trame
-- Declared effects: read, write
+- Declared effects: { get: read, set: write }
 
 ### Screen kept awake
 
@@ -1107,7 +1115,7 @@ Port · `BrowserScripted`
 Port · `Files`
 
 - Owner: trame
-- Declared effects: read, write
+- Declared effects: { exists: read, read: read, fingerprint: read, write: write, copy: read, write }
 
 ### Files written
 

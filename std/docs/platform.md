@@ -108,6 +108,11 @@ Runs the entry points of a page once its document is loaded: what exposes a comp
 
 What the person chose (a language, a pace, a voice turned off), kept on the device between two uses, under a name the product decides.
 
+| Method | What it may do |
+|---|---|
+| `get` | read |
+| `set` | write |
+
 | Environment | Answered by | Chosen by |
 |---|---|---|
 | [Test](scenarios.md#Test) | [Preferences kept in memory](#MemoryPreferences) | [In memory](scenarios.md#InMemory) |

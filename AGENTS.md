@@ -168,7 +168,10 @@ why. A broken rule is an error, unless the rule says `severity: "warning"` while
 - **Quantities do not mix** (since g80): adding, subtracting or comparing two quantities, or multiplying them when
   neither is a ratio, refuses the build as a type error does. Declare a new quantity rather than mix two.
 - **Only implementations touch the platform** (files, network, clock, DOM, storage). A function that implements a port
-  touches nothing. A realization does no more than its ports promise (their declared effects).
+  touches nothing. A realization does no more than its ports promise (their declared effects). A port may say what each
+  method may do (`declaredEffects: { read: […], write: […] }`, since g82): a body then has the effects of the methods it
+  calls on its parameters; hand a parameter on whole and it has them all.
+- **No code made of a text** (since g82): `eval`, `Function`, a value's `constructor` refuse the build, anywhere.
 - **A technology is chosen in one node**: a binding, which follows a pattern (Strategy, Adapter, Bridge, Abstract
   Factory, Repository) and is checked against its shape. Code that uses a port never names what answers it.
 - **A choice is a concept.** When there are several ways to do something, and someone could choose another, name the

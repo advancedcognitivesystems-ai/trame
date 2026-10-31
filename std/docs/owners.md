@@ -4,7 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 26 | 140 |
+| trame | 0 | 0 | 26 | 141 |
 
 <a id="trame"></a>
 
@@ -55,6 +55,7 @@
 | [ECMAScript](ecmascript.md#EcmaScript) | Standard |  |
 | [ECMAScript reserved words](ecmascript.md#EcmaScriptReservedWords) | Vocabulary |  |
 | [ECMAScript types](ecmascript.md#EcmaScriptTypes) | Standard |  |
+| [Text run as code](ecmascript.md#TextAsCode) | Vocabulary |  |
 | [Unicode escape of a text](ecmascript.md#UnicodeEscape) | Standard |  |
 | [WAI-ARIA](html.md#Aria) | Standard |  |
 | [CSS](html.md#Css) | Standard |  |

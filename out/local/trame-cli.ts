@@ -216,8 +216,10 @@ const language = {"tag":"en-GB","punctuation":{"parts":" · ","items":", ","give
 const lists = await frozen.body(Lists)({ language })
 // "Messages of the compiler" · message catalog
 const compilerMessages = await frozen.body(CompilerMessages)({ language, lists })
+// "Text run as code" · vocabulary
+const textAsCode = ["eval","Function","constructor"]
 // "Static reading" · function
-const staticAnalysis = await body_staticAnalysis({ specifiers: nodeModuleSpecifiers, syntax: typeScriptSyntax, references, file: textFile, options: typeScriptOptions, ts: realTypeScript, kept: resultsInTheProcess, runs: runsOnDisk, hashing: nodeHashing, sha256, encodings: nodeEncodings, paths: nodePaths, positions, docComment, counts, sequences, texts, messages: compilerMessages })
+const staticAnalysis = await body_staticAnalysis({ specifiers: nodeModuleSpecifiers, syntax: typeScriptSyntax, references, file: textFile, options: typeScriptOptions, ts: realTypeScript, kept: resultsInTheProcess, runs: runsOnDisk, hashing: nodeHashing, sha256, encodings: nodeEncodings, paths: nodePaths, positions, docComment, counts, sequences, texts, messages: compilerMessages, textAsCode })
 // "Trame's prelude" · implementation, for "Prelude"
 const tramePrelude = await body_tramePrelude({ files: engineFiles })
 // "Dates" · function

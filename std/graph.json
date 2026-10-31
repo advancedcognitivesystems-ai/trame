@@ -607,10 +607,25 @@
       "diagnostics": []
     },
     {
+      "id": "ecmascript.TextAsCode",
+      "kind": "vocabulary",
+      "title": "Text run as code",
+      "source": "src/ecmascript.ts:113",
+      "fields": {
+        "owner": "trame",
+        "words": {
+          "eval": "Runs a text as code (§ 19.2.1)",
+          "Function": "Makes a function of a text (§ 20.2.1.1)",
+          "constructor": "Leads from any value to its constructor, Function's among them (§ 20.1.3.1)"
+        }
+      },
+      "diagnostics": []
+    },
+    {
       "id": "ecmascript.UnicodeEscape",
       "kind": "standard",
       "title": "Unicode escape of a text",
-      "source": "src/ecmascript.ts:112",
+      "source": "src/ecmascript.ts:128",
       "fields": {
         "owner": "trame",
         "source": "ECMA-262 2024, § 12.9.4 String Literals (UnicodeEscapeSequence :: u Hex4Digits); RFC 8259 § 7",
@@ -2004,10 +2019,14 @@
       "source": "src/platform.ts:60",
       "fields": {
         "owner": "trame",
-        "declaredEffects": [
-          "read",
-          "write"
-        ]
+        "declaredEffects": {
+          "get": [
+            "read"
+          ],
+          "set": [
+            "write"
+          ]
+        }
       },
       "diagnostics": []
     },
@@ -2363,7 +2382,7 @@
       "id": "rules.LinkedCriteria",
       "kind": "acceptance",
       "title": "Criteria of as many links as asked",
-      "source": "src/rules.ts:226",
+      "source": "src/rules.ts:229",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2403,7 +2422,7 @@
       "id": "rules.NeverReachesCriteria",
       "kind": "acceptance",
       "title": "Criteria of a node that never reaches what it must not",
-      "source": "src/rules.ts:211",
+      "source": "src/rules.ts:214",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2436,7 +2455,7 @@
       "id": "rules.ReachesCriteria",
       "kind": "acceptance",
       "title": "Criteria of a node that reaches what it must",
-      "source": "src/rules.ts:195",
+      "source": "src/rules.ts:198",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2475,7 +2494,7 @@
       "id": "rules.WithoutEffectsCriteria",
       "kind": "acceptance",
       "title": "Criteria of effects a node may not have",
-      "source": "src/rules.ts:242",
+      "source": "src/rules.ts:245",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2510,7 +2529,7 @@
       "id": "rules.WordsOfCriteria",
       "kind": "acceptance",
       "title": "Criteria of words of a vocabulary",
-      "source": "src/rules.ts:258",
+      "source": "src/rules.ts:261",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2519,6 +2538,10 @@
       "result": [
         {
           "name": "A port that declares an effect the vocabulary does not know is found, with that word only",
+          "status": "passed"
+        },
+        {
+          "name": "The words of a port that says its effects method by method are read too",
           "status": "passed"
         }
       ],
@@ -3162,7 +3185,7 @@
       "id": "tooling.BrowserInMemory",
       "kind": "function",
       "title": "A browser kept in memory",
-      "source": "src/tooling.ts:203",
+      "source": "src/tooling.ts:206",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3177,7 +3200,7 @@
       "id": "tooling.BrowserScripted",
       "kind": "port",
       "title": "Browser script",
-      "source": "src/tooling.ts:196",
+      "source": "src/tooling.ts:199",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -3191,10 +3214,24 @@
       "source": "src/tooling.ts:55",
       "fields": {
         "owner": "trame",
-        "declaredEffects": [
-          "read",
-          "write"
-        ]
+        "declaredEffects": {
+          "exists": [
+            "read"
+          ],
+          "read": [
+            "read"
+          ],
+          "fingerprint": [
+            "read"
+          ],
+          "write": [
+            "write"
+          ],
+          "copy": [
+            "read",
+            "write"
+          ]
+        }
       },
       "diagnostics": []
     },
@@ -3202,7 +3239,7 @@
       "id": "tooling.FilesInMemory",
       "kind": "function",
       "title": "Files kept in memory",
-      "source": "src/tooling.ts:83",
+      "source": "src/tooling.ts:86",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3218,7 +3255,7 @@
       "id": "tooling.FilesKept",
       "kind": "port",
       "title": "Files written",
-      "source": "src/tooling.ts:66",
+      "source": "src/tooling.ts:69",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -3229,7 +3266,7 @@
       "id": "tooling.HeadlessBrowser",
       "kind": "port",
       "title": "Headless browser",
-      "source": "src/tooling.ts:126",
+      "source": "src/tooling.ts:129",
       "fields": {
         "owner": "trame",
         "declaredEffects": [
@@ -3244,7 +3281,7 @@
       "id": "tooling.HeadlessChromium",
       "kind": "decision",
       "title": "Chromium without a screen",
-      "source": "src/tooling.ts:157",
+      "source": "src/tooling.ts:160",
       "fields": {
         "owner": "trame",
         "value": {
@@ -3267,7 +3304,7 @@
       "id": "tooling.MachineFiles",
       "kind": "implementation",
       "title": "The machine's files",
-      "source": "src/tooling.ts:73",
+      "source": "src/tooling.ts:76",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -3304,7 +3341,7 @@
       "id": "tooling.PlaywrightApi",
       "kind": "standard",
       "title": "Playwright's API",
-      "source": "src/tooling.ts:142",
+      "source": "src/tooling.ts:145",
       "fields": {
         "owner": "trame",
         "source": "Playwright documentation, class Page, event \"pageerror\"",
@@ -3322,7 +3359,7 @@
       "id": "tooling.PlaywrightBrowser",
       "kind": "implementation",
       "title": "Chromium, driven by Playwright",
-      "source": "src/tooling.ts:171",
+      "source": "src/tooling.ts:174",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -3341,7 +3378,7 @@
       "id": "tooling.PlaywrightPackage",
       "kind": "package",
       "title": "Playwright",
-      "source": "src/tooling.ts:133",
+      "source": "src/tooling.ts:136",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3369,7 +3406,7 @@
       "id": "tooling.ToolingAsPorts",
       "kind": "adr",
       "title": "The SDLC's tooling is realized once",
-      "source": "src/tooling.ts:235",
+      "source": "src/tooling.ts:238",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3821,6 +3858,11 @@
     },
     {
       "from": "ecmascript.EcmaScriptTypes",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "ecmascript.TextAsCode",
       "to": "product.CitedNotCopied",
       "kind": "serves"
     },

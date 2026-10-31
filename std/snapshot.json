@@ -459,6 +459,19 @@
       }
     },
     {
+      "id": "ecmascript.TextAsCode",
+      "kind": "vocabulary",
+      "title": "Text run as code",
+      "fields": {
+        "owner": "trame",
+        "words": {
+          "eval": "Runs a text as code (§ 19.2.1)",
+          "Function": "Makes a function of a text (§ 20.2.1.1)",
+          "constructor": "Leads from any value to its constructor, Function's among them (§ 20.1.3.1)"
+        }
+      }
+    },
+    {
       "id": "ecmascript.UnicodeEscape",
       "kind": "standard",
       "title": "Unicode escape of a text",
@@ -1667,10 +1680,14 @@
       "title": "Preferences",
       "fields": {
         "owner": "trame",
-        "declaredEffects": [
-          "read",
-          "write"
-        ]
+        "declaredEffects": {
+          "get": [
+            "read"
+          ],
+          "set": [
+            "write"
+          ]
+        }
       }
     },
     {
@@ -2638,10 +2655,24 @@
       "title": "Project files",
       "fields": {
         "owner": "trame",
-        "declaredEffects": [
-          "read",
-          "write"
-        ]
+        "declaredEffects": {
+          "exists": [
+            "read"
+          ],
+          "read": [
+            "read"
+          ],
+          "fingerprint": [
+            "read"
+          ],
+          "write": [
+            "write"
+          ],
+          "copy": [
+            "read",
+            "write"
+          ]
+        }
       }
     },
     {
@@ -3225,6 +3256,11 @@
     },
     {
       "from": "ecmascript.EcmaScriptTypes",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "ecmascript.TextAsCode",
       "to": "product.CitedNotCopied",
       "kind": "serves"
     },

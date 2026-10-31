@@ -177,7 +177,7 @@ Port · `FileReading`
 Port · `FileTrees`
 
 - Owner: trame
-- Declared effects: read, write, process
+- Declared effects: { temporary: write, copy: read, write, link: write, remove: write, files: read, differences: read, process }
 
 ### File writing
 
@@ -191,7 +191,7 @@ Port · `FileWriting`
 Port · `GraphFeed`
 
 - Owner: trame
-- Declared effects: read, network
+- Declared effects: { packed: read, live: read, follow: network }
 
 ### Hashing
 
@@ -240,7 +240,7 @@ Port · `PackageReports`
 Port · `PageMemory`
 
 - Owner: trame
-- Declared effects: read, write
+- Declared effects: { recall: read, keep: write }
 
 ### Window of the page
 
@@ -1422,7 +1422,7 @@ Function · `ShipmentPipeline` · **held**
 Function · `StaticAnalysis` · **held**
 
 - Owner: trame
-- Parameters: { specifiers: std/system.NodeModuleSpecifiers, syntax: typescript.TypeScriptSyntax, references: engine.References, file: std/text.TextFile, options: engine.TypeScriptOptions, ts: architecture.TypeScriptCompiler, kept: architecture.KeptResults, runs: architecture.RunStore, hashing: architecture.Hashing, sha256: std/algorithms.Sha256, encodings: std/system.NodeEncodings, paths: architecture.Paths, positions: engine.Positions, docComment: conventions.DocComment, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, messages: messages.CompilerMessages }
+- Parameters: { specifiers: std/system.NodeModuleSpecifiers, syntax: typescript.TypeScriptSyntax, references: engine.References, file: std/text.TextFile, options: engine.TypeScriptOptions, ts: architecture.TypeScriptCompiler, kept: architecture.KeptResults, runs: architecture.RunStore, hashing: architecture.Hashing, sha256: std/algorithms.Sha256, encodings: std/system.NodeEncodings, paths: architecture.Paths, positions: engine.Positions, docComment: conventions.DocComment, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, messages: messages.CompilerMessages, textAsCode: std/ecmascript.TextAsCode }
 - Serves: A specification that runs
 - Depends on: The syntax of the programs Trame writes, References, Options of the static reading, TypeScript compiler, Results kept, Where runs are kept, Hashing, Paths, Positions, Documentation comment, Messages of the compiler
 
@@ -5076,6 +5076,20 @@ Release · `G81`
 - Accepted differences: differences.diff
 - Releases: Trame on the command line
 - Assembled by: Generation 80
+
+### Generation 82
+
+Release · `G82`
+
+- Released by: trame
+- Version: g82
+- Released on: 2026-10-31
+- What changes: A2, first half: a port's effects method by method, a body has those of the methods it calls; code made of a text refuses the build
+- Fingerprint: ae373c71659a40be
+- Language: shared
+- Language archived: 99cd2acedf3b14ce
+- Releases: Trame on the command line
+- Assembled by: Generation 81
 
 ### Generation 9
 

@@ -47,22 +47,22 @@
 | [End of free cancellation](api.md#FreeCancellationEnd) | Function | lea | `src/api.ts:16` |
 | [Lead time of a cancellation](api.md#LeadTime) | Function | karim | `src/api.ts:28` |
 | [Read a reservation](api.md#ReadReservation) | Entry point | karim | `src/api.ts:38` |
-| [Key of a cancellation's refund](architecture.md#CancellationKey) | Decision | karim | `src/architecture.ts:148` |
-| [Cancellation records](architecture.md#Cancellations) | Port | karim | `src/architecture.ts:112` |
-| [Clock](architecture.md#Clock) | Port | karim | `src/architecture.ts:130` |
+| [Key of a cancellation's refund](architecture.md#CancellationKey) | Decision | karim | `src/architecture.ts:151` |
+| [Cancellation records](architecture.md#Cancellations) | Port | karim | `src/architecture.ts:115` |
+| [Clock](architecture.md#Clock) | Port | karim | `src/architecture.ts:133` |
 | [Database](architecture.md#Database) | Port | karim | `src/architecture.ts:94` |
 | [SQL dialect](architecture.md#Dialect) | Port | karim | `src/architecture.ts:88` |
-| [Effects follow the request](architecture.md#EffectsFollowTheRequest) | Architecture decision | karim | `src/architecture.ts:200` |
-| [HTTP exposure](architecture.md#HttpExposure) | Port | karim | `src/architecture.ts:136` |
-| [HTTP port of the API](architecture.md#HttpPort) | Decision | karim | `src/architecture.ts:141` |
-| [Payment provider](architecture.md#Payment) | Port | karim | `src/architecture.ts:118` |
-| [Payment log](architecture.md#PaymentLog) | Port | karim | `src/architecture.ts:124` |
-| [Read-only database](architecture.md#ReadOnlyDatabase) | Port | karim | `src/architecture.ts:100` |
-| [A read writes nothing](architecture.md#ReadWithoutWrite) | Architecture rule | karim | `src/architecture.ts:164` |
-| [Reservation reading](architecture.md#ReservationReading) | Port | karim | `src/architecture.ts:106` |
-| [Reservations API](architecture.md#ReservationsApi) | Component | karim | `src/architecture.ts:154` |
-| [Every call to a third party is verified](architecture.md#ThirdPartiesVerified) | Architecture rule | karim | `src/architecture.ts:189` |
-| [Utilities do not touch the world](architecture.md#UtilitiesWithoutWorld) | Architecture rule | karim | `src/architecture.ts:179` |
+| [Effects follow the request](architecture.md#EffectsFollowTheRequest) | Architecture decision | karim | `src/architecture.ts:203` |
+| [HTTP exposure](architecture.md#HttpExposure) | Port | karim | `src/architecture.ts:139` |
+| [HTTP port of the API](architecture.md#HttpPort) | Decision | karim | `src/architecture.ts:144` |
+| [Payment provider](architecture.md#Payment) | Port | karim | `src/architecture.ts:121` |
+| [Payment log](architecture.md#PaymentLog) | Port | karim | `src/architecture.ts:127` |
+| [Read-only database](architecture.md#ReadOnlyDatabase) | Port | karim | `src/architecture.ts:103` |
+| [A read writes nothing](architecture.md#ReadWithoutWrite) | Architecture rule | karim | `src/architecture.ts:167` |
+| [Reservation reading](architecture.md#ReservationReading) | Port | karim | `src/architecture.ts:109` |
+| [Reservations API](architecture.md#ReservationsApi) | Component | karim | `src/architecture.ts:157` |
+| [Every call to a third party is verified](architecture.md#ThirdPartiesVerified) | Architecture rule | karim | `src/architecture.ts:192` |
+| [Utilities do not touch the world](architecture.md#UtilitiesWithoutWorld) | Architecture rule | karim | `src/architecture.ts:182` |
 | [How an amount is written](cancellation.md#AmountWords) | Message catalog | karim | `src/cancellation.ts:26` |
 | [Swiss francs](cancellation.md#SwissFrancs) | Quantity | karim | `src/cancellation.ts:36` |
 | [Launch of the ultra chargers](committee.md#UltraLaunch) | Amendment | lea | `src/committee.ts:29` |

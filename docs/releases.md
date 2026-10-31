@@ -1662,6 +1662,27 @@ Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Ge
 - Released by: trame
 - Releases: [Trame on the command line](architecture.md#TrameCli)
 - Assembled by: [Generation 80](#G80)
+- Assembled: [Generation 82](#G82)
+
+<a id="G82"></a>
+
+### Generation 82
+
+`G82` · `src/releases.ts:1205`
+
+A2, first half: a port's effects method by method, a body has those of the methods it calls; code made of a text refuses the build
+
+Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Generation 81](#G81).
+
+- Version: `g82`
+- Released on: 31 October 2026
+- Fingerprint: `ae373c71659a40be`
+- Language: the repository's, shared
+- Language archived: `99cd2acedf3b14ce`
+
+- Released by: trame
+- Releases: [Trame on the command line](architecture.md#TrameCli)
+- Assembled by: [Generation 81](#G81)
 
 <a id="G9"></a>
 

@@ -92,7 +92,7 @@
       "id": "architecture.CancellationKey",
       "kind": "decision",
       "title": "Key of a cancellation's refund",
-      "source": "src/architecture.ts:148",
+      "source": "src/architecture.ts:151",
       "fields": {
         "owner": "karim",
         "value": "cancellation-"
@@ -103,14 +103,19 @@
       "id": "architecture.Cancellations",
       "kind": "port",
       "title": "Cancellation records",
-      "source": "src/architecture.ts:112",
+      "source": "src/architecture.ts:115",
       "fields": {
         "owner": "karim",
-        "declaredEffects": [
-          "read",
-          "write",
-          "asynchronous"
-        ]
+        "declaredEffects": {
+          "refundFor": [
+            "read",
+            "asynchronous"
+          ],
+          "record": [
+            "write",
+            "asynchronous"
+          ]
+        }
       },
       "diagnostics": []
     },
@@ -118,7 +123,7 @@
       "id": "architecture.Clock",
       "kind": "port",
       "title": "Clock",
-      "source": "src/architecture.ts:130",
+      "source": "src/architecture.ts:133",
       "fields": {
         "owner": "karim",
         "declaredEffects": [
@@ -134,11 +139,21 @@
       "source": "src/architecture.ts:94",
       "fields": {
         "owner": "karim",
-        "declaredEffects": [
-          "read",
-          "write",
-          "asynchronous"
-        ]
+        "declaredEffects": {
+          "read": [
+            "read",
+            "asynchronous"
+          ],
+          "write": [
+            "write",
+            "asynchronous"
+          ],
+          "transaction": [
+            "read",
+            "write",
+            "asynchronous"
+          ]
+        }
       },
       "diagnostics": []
     },
@@ -157,7 +172,7 @@
       "id": "architecture.EffectsFollowTheRequest",
       "kind": "adr",
       "title": "Effects follow the request",
-      "source": "src/architecture.ts:200",
+      "source": "src/architecture.ts:203",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -170,7 +185,7 @@
       "id": "architecture.HttpExposure",
       "kind": "port",
       "title": "HTTP exposure",
-      "source": "src/architecture.ts:136",
+      "source": "src/architecture.ts:139",
       "fields": {
         "owner": "karim",
         "declaredEffects": [
@@ -184,7 +199,7 @@
       "id": "architecture.HttpPort",
       "kind": "decision",
       "title": "HTTP port of the API",
-      "source": "src/architecture.ts:141",
+      "source": "src/architecture.ts:144",
       "fields": {
         "owner": "karim",
         "value": 4180
@@ -195,7 +210,7 @@
       "id": "architecture.Payment",
       "kind": "port",
       "title": "Payment provider",
-      "source": "src/architecture.ts:118",
+      "source": "src/architecture.ts:121",
       "fields": {
         "owner": "karim",
         "declaredEffects": [
@@ -210,7 +225,7 @@
       "id": "architecture.PaymentLog",
       "kind": "port",
       "title": "Payment log",
-      "source": "src/architecture.ts:124",
+      "source": "src/architecture.ts:127",
       "fields": {
         "owner": "karim",
         "declaredEffects": []
@@ -221,7 +236,7 @@
       "id": "architecture.ReadOnlyDatabase",
       "kind": "port",
       "title": "Read-only database",
-      "source": "src/architecture.ts:100",
+      "source": "src/architecture.ts:103",
       "fields": {
         "owner": "karim",
         "declaredEffects": [
@@ -235,7 +250,7 @@
       "id": "architecture.ReadWithoutWrite",
       "kind": "rule",
       "title": "A read writes nothing",
-      "source": "src/architecture.ts:164",
+      "source": "src/architecture.ts:167",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -268,7 +283,7 @@
       "id": "architecture.ReservationReading",
       "kind": "port",
       "title": "Reservation reading",
-      "source": "src/architecture.ts:106",
+      "source": "src/architecture.ts:109",
       "fields": {
         "owner": "karim",
         "declaredEffects": [
@@ -282,7 +297,7 @@
       "id": "architecture.ReservationsApi",
       "kind": "component",
       "title": "Reservations API",
-      "source": "src/architecture.ts:154",
+      "source": "src/architecture.ts:157",
       "fields": {
         "owner": "karim",
         "language": "typescript",
@@ -302,7 +317,7 @@
       "id": "architecture.ThirdPartiesVerified",
       "kind": "rule",
       "title": "Every call to a third party is verified",
-      "source": "src/architecture.ts:189",
+      "source": "src/architecture.ts:192",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -327,7 +342,7 @@
       "id": "architecture.UtilitiesWithoutWorld",
       "kind": "rule",
       "title": "Utilities do not touch the world",
-      "source": "src/architecture.ts:179",
+      "source": "src/architecture.ts:182",
       "status": "held",
       "fields": {
         "owner": "karim",

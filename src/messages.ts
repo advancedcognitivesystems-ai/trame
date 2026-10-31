@@ -187,6 +187,9 @@ export const CompilerMessages = catalog({
     // Static reading.
     /** A type error, with the place it was found ("file:line"), when there is one. */
     typeError: (text: string, where?: string) => (where ? `${where}  ${text}` : text),
+    /** Code made of a text while the program runs (since g82). */
+    textAsCode: (name: string, where: string) =>
+      `${where}  ${name}: code made of a text escapes every check made on the code as written`,
     /** Two quantities put together where they do not add up (since g80). */
     quantitiesTogether: (where: string, operator: string, a: string, b: string) =>
       `${where}  "${a}" ${operator} "${b}": two quantities do not add up, nor compare`,
@@ -471,6 +474,7 @@ export const CommandMessages = catalog({
     /** Followed by the type errors, one per line. */
     typeScriptRefuses: () => "TypeScript refuses the graph:",
     quantitiesRefuse: () => "The quantities refuse the graph: what TypeScript lets through, the units do not",
+    textAsCodeRefuses: () => "Code made of a text refuses the graph: what it would do, nobody can read before it runs",
 
     // trame test-kinds
     importsChecked: (refused: number) => `imports · ${refused ? `${refused} refused` : "only the public API is used"}`,

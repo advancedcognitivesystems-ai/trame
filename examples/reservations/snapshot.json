@@ -95,11 +95,16 @@
       "title": "Cancellation records",
       "fields": {
         "owner": "karim",
-        "declaredEffects": [
-          "read",
-          "write",
-          "asynchronous"
-        ]
+        "declaredEffects": {
+          "refundFor": [
+            "read",
+            "asynchronous"
+          ],
+          "record": [
+            "write",
+            "asynchronous"
+          ]
+        }
       }
     },
     {
@@ -119,11 +124,21 @@
       "title": "Database",
       "fields": {
         "owner": "karim",
-        "declaredEffects": [
-          "read",
-          "write",
-          "asynchronous"
-        ]
+        "declaredEffects": {
+          "read": [
+            "read",
+            "asynchronous"
+          ],
+          "write": [
+            "write",
+            "asynchronous"
+          ],
+          "transaction": [
+            "read",
+            "write",
+            "asynchronous"
+          ]
+        }
       }
     },
     {

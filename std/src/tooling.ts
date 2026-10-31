@@ -52,7 +52,10 @@ export interface ProjectFiles {
  * Project files
  * Reads, writes and copies the files of the project, and gives a file's fingerprint.
  */
-export const Files = port<ProjectFiles>({ owner: "trame", declaredEffects: ["read", "write"] })
+export const Files = port<ProjectFiles>({
+  owner: "trame",
+  declaredEffects: { exists: ["read"], read: ["read"], fingerprint: ["read"], write: ["write"], copy: ["read", "write"] },
+})
 
 /** What a scenario reads of the files: those written, by path. */
 export interface FilesWritten {

@@ -418,7 +418,13 @@ export const Programs = port<Programs>({ owner: "trame", declaredEffects: effect
  * File trees
  * Copies, links, removes and compares files and directories: what an advance does with documents and generations.
  */
-export const FileTrees = port<FileTrees>({ owner: "trame", declaredEffects: effects("read", "write", "process") })
+export const FileTrees = port<FileTrees>({
+  owner: "trame",
+  declaredEffects: {
+    temporary: effects("write"), copy: effects("read", "write"), link: effects("write"), remove: effects("write"),
+    files: effects("read"), differences: effects("read", "process"),
+  },
+})
 
 /**
  * Command line
@@ -439,13 +445,13 @@ export const PageWindow = port<PageWindow>({ owner: "trame", declaredEffects: ef
  * Memory of the page
  * The document, the rendering and the node the person was on, kept for their next visit.
  */
-export const PageMemory = port<PageMemory>({ owner: "trame", declaredEffects: effects("read", "write") })
+export const PageMemory = port<PageMemory>({ owner: "trame", declaredEffects: { recall: effects("read"), keep: effects("write") } })
 
 /**
  * Feed of the graph
  * The compiled graph the page shows: carried by an exported page, or given by trame dev at each compilation.
  */
-export const GraphFeed = port<GraphFeed>({ owner: "trame", declaredEffects: effects("read", "network") })
+export const GraphFeed = port<GraphFeed>({ owner: "trame", declaredEffects: { packed: effects("read"), live: effects("read"), follow: effects("network") } })
 
 /**
  * Decompression
