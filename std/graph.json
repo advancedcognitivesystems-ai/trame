@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-30",
+  "generated": "2026-10-31",
   "nodes": [
     {
       "id": "algebra.Counts",
@@ -1388,10 +1388,10 @@
       "id": "obligations.Applied",
       "kind": "requirement",
       "title": "The decisions a shipment applies hold",
-      "source": "src/obligations.ts:80",
+      "source": "src/obligations.ts:82",
       "status": "held",
       "fields": {
-        "rule": "(function)"
+        "body": "(function)"
       },
       "diagnostics": []
     },
@@ -1399,7 +1399,7 @@
       "id": "obligations.AppliedCriteria",
       "kind": "acceptance",
       "title": "Criteria of the decisions applied",
-      "source": "src/obligations.ts:212",
+      "source": "src/obligations.ts:217",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1417,10 +1417,19 @@
       "id": "obligations.Checked",
       "kind": "requirement",
       "title": "The artefacts a shipment ships are checked",
-      "source": "src/obligations.ts:123",
+      "source": "src/obligations.ts:126",
       "status": "held",
       "fields": {
-        "rule": "(function)"
+        "deps": {
+          "counts": "algebra.Counts"
+        },
+        "constants": {
+          "every": {
+            "value": "all",
+            "meaning": "The word of CheckWays that takes every check of the artefacts, those made by hand too"
+          }
+        },
+        "body": "(function)"
       },
       "diagnostics": []
     },
@@ -1428,7 +1437,7 @@
       "id": "obligations.CheckedCriteria",
       "kind": "acceptance",
       "title": "Criteria of the artefacts checked",
-      "source": "src/obligations.ts:231",
+      "source": "src/obligations.ts:236",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1450,7 +1459,7 @@
       "id": "obligations.CheckWays",
       "kind": "vocabulary",
       "title": "Ways of checking",
-      "source": "src/obligations.ts:107",
+      "source": "src/obligations.ts:110",
       "fields": {
         "owner": "trame",
         "words": {
@@ -1464,10 +1473,13 @@
       "id": "obligations.Reviewed",
       "kind": "requirement",
       "title": "The data a shipment carries is reviewed",
-      "source": "src/obligations.ts:92",
+      "source": "src/obligations.ts:94",
       "status": "held",
       "fields": {
-        "rule": "(function)"
+        "deps": {
+          "counts": "algebra.Counts"
+        },
+        "body": "(function)"
       },
       "diagnostics": []
     },
@@ -1475,7 +1487,7 @@
       "id": "obligations.ReviewedCriteria",
       "kind": "acceptance",
       "title": "Criteria of the data reviewed",
-      "source": "src/obligations.ts:221",
+      "source": "src/obligations.ts:226",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1497,10 +1509,10 @@
       "id": "obligations.Ruled",
       "kind": "requirement",
       "title": "The project's rules hold",
-      "source": "src/obligations.ts:137",
+      "source": "src/obligations.ts:142",
       "status": "held",
       "fields": {
-        "rule": "(function)"
+        "body": "(function)"
       },
       "diagnostics": []
     },
@@ -1508,7 +1520,7 @@
       "id": "obligations.RuledCriteria",
       "kind": "acceptance",
       "title": "Criteria of the rules held",
-      "source": "src/obligations.ts:241",
+      "source": "src/obligations.ts:246",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1526,10 +1538,10 @@
       "id": "obligations.Safe",
       "kind": "requirement",
       "title": "The packages a shipment uses are safe",
-      "source": "src/obligations.ts:149",
+      "source": "src/obligations.ts:154",
       "status": "held",
       "fields": {
-        "rule": "(function)"
+        "body": "(function)"
       },
       "diagnostics": []
     },
@@ -1537,7 +1549,7 @@
       "id": "obligations.SafeCriteria",
       "kind": "acceptance",
       "title": "Criteria of the packages safe",
-      "source": "src/obligations.ts:250",
+      "source": "src/obligations.ts:255",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1555,10 +1567,10 @@
       "id": "obligations.Served",
       "kind": "requirement",
       "title": "The product a shipment serves holds",
-      "source": "src/obligations.ts:45",
+      "source": "src/obligations.ts:47",
       "status": "held",
       "fields": {
-        "rule": "(function)"
+        "body": "(function)"
       },
       "diagnostics": []
     },
@@ -1566,7 +1578,7 @@
       "id": "obligations.ServedCriteria",
       "kind": "acceptance",
       "title": "Criteria of the product served",
-      "source": "src/obligations.ts:202",
+      "source": "src/obligations.ts:207",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1588,10 +1600,13 @@
       "id": "obligations.Verified",
       "kind": "requirement",
       "title": "The code a shipment ships is verified",
-      "source": "src/obligations.ts:32",
+      "source": "src/obligations.ts:33",
       "status": "held",
       "fields": {
-        "rule": "(function)"
+        "deps": {
+          "counts": "algebra.Counts"
+        },
+        "body": "(function)"
       },
       "diagnostics": []
     },
@@ -1599,7 +1614,7 @@
       "id": "obligations.VerifiedCriteria",
       "kind": "acceptance",
       "title": "Criteria of the code verified",
-      "source": "src/obligations.ts:177",
+      "source": "src/obligations.ts:182",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2217,7 +2232,7 @@
       "id": "rules.Directions",
       "kind": "vocabulary",
       "title": "Directions",
-      "source": "src/rules.ts:20",
+      "source": "src/rules.ts:22",
       "fields": {
         "owner": "trame",
         "words": {
@@ -2231,10 +2246,13 @@
       "id": "rules.Linked",
       "kind": "requirement",
       "title": "As many links as asked",
-      "source": "src/rules.ts:123",
+      "source": "src/rules.ts:126",
       "status": "held",
       "fields": {
-        "rule": "(function)"
+        "deps": {
+          "counts": "algebra.Counts"
+        },
+        "body": "(function)"
       },
       "diagnostics": []
     },
@@ -2242,7 +2260,7 @@
       "id": "rules.LinkedCriteria",
       "kind": "acceptance",
       "title": "Criteria of as many links as asked",
-      "source": "src/rules.ts:214",
+      "source": "src/rules.ts:221",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2264,10 +2282,13 @@
       "id": "rules.NeverReaches",
       "kind": "requirement",
       "title": "A node never reaches what it must not",
-      "source": "src/rules.ts:106",
+      "source": "src/rules.ts:108",
       "status": "held",
       "fields": {
-        "rule": "(function)"
+        "deps": {
+          "counts": "algebra.Counts"
+        },
+        "body": "(function)"
       },
       "diagnostics": []
     },
@@ -2275,7 +2296,7 @@
       "id": "rules.NeverReachesCriteria",
       "kind": "acceptance",
       "title": "Criteria of a node that never reaches what it must not",
-      "source": "src/rules.ts:199",
+      "source": "src/rules.ts:206",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2293,10 +2314,10 @@
       "id": "rules.Reaches",
       "kind": "requirement",
       "title": "A node reaches what it must",
-      "source": "src/rules.ts:91",
+      "source": "src/rules.ts:93",
       "status": "held",
       "fields": {
-        "rule": "(function)"
+        "body": "(function)"
       },
       "diagnostics": []
     },
@@ -2304,7 +2325,7 @@
       "id": "rules.ReachesCriteria",
       "kind": "acceptance",
       "title": "Criteria of a node that reaches what it must",
-      "source": "src/rules.ts:183",
+      "source": "src/rules.ts:190",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2326,10 +2347,13 @@
       "id": "rules.WithoutEffects",
       "kind": "requirement",
       "title": "Effects a node may not have",
-      "source": "src/rules.ts:141",
+      "source": "src/rules.ts:146",
       "status": "held",
       "fields": {
-        "rule": "(function)"
+        "deps": {
+          "counts": "algebra.Counts"
+        },
+        "body": "(function)"
       },
       "diagnostics": []
     },
@@ -2337,7 +2361,7 @@
       "id": "rules.WithoutEffectsCriteria",
       "kind": "acceptance",
       "title": "Criteria of effects a node may not have",
-      "source": "src/rules.ts:230",
+      "source": "src/rules.ts:237",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2355,10 +2379,13 @@
       "id": "rules.WordsOf",
       "kind": "requirement",
       "title": "Words of a vocabulary",
-      "source": "src/rules.ts:162",
+      "source": "src/rules.ts:168",
       "status": "held",
       "fields": {
-        "rule": "(function)"
+        "deps": {
+          "counts": "algebra.Counts"
+        },
+        "body": "(function)"
       },
       "diagnostics": []
     },
@@ -2366,7 +2393,7 @@
       "id": "rules.WordsOfCriteria",
       "kind": "acceptance",
       "title": "Criteria of words of a vocabulary",
-      "source": "src/rules.ts:246",
+      "source": "src/rules.ts:253",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3741,6 +3768,11 @@
       "kind": "refines"
     },
     {
+      "from": "obligations.Checked",
+      "to": "algebra.Counts",
+      "kind": "deps"
+    },
+    {
       "from": "obligations.CheckedCriteria",
       "to": "obligations.Checked",
       "kind": "accepts"
@@ -3754,6 +3786,11 @@
       "from": "obligations.Reviewed",
       "to": "product.SharedRules",
       "kind": "refines"
+    },
+    {
+      "from": "obligations.Reviewed",
+      "to": "algebra.Counts",
+      "kind": "deps"
     },
     {
       "from": "obligations.ReviewedCriteria",
@@ -3794,6 +3831,11 @@
       "from": "obligations.Verified",
       "to": "product.SharedRules",
       "kind": "refines"
+    },
+    {
+      "from": "obligations.Verified",
+      "to": "algebra.Counts",
+      "kind": "deps"
     },
     {
       "from": "obligations.VerifiedCriteria",
@@ -4296,6 +4338,11 @@
       "kind": "refines"
     },
     {
+      "from": "rules.Linked",
+      "to": "algebra.Counts",
+      "kind": "deps"
+    },
+    {
       "from": "rules.LinkedCriteria",
       "to": "rules.Linked",
       "kind": "accepts"
@@ -4304,6 +4351,11 @@
       "from": "rules.NeverReaches",
       "to": "product.SharedRules",
       "kind": "refines"
+    },
+    {
+      "from": "rules.NeverReaches",
+      "to": "algebra.Counts",
+      "kind": "deps"
     },
     {
       "from": "rules.NeverReachesCriteria",
@@ -4326,6 +4378,11 @@
       "kind": "refines"
     },
     {
+      "from": "rules.WithoutEffects",
+      "to": "algebra.Counts",
+      "kind": "deps"
+    },
+    {
       "from": "rules.WithoutEffectsCriteria",
       "to": "rules.WithoutEffects",
       "kind": "accepts"
@@ -4334,6 +4391,11 @@
       "from": "rules.WordsOf",
       "to": "product.SharedRules",
       "kind": "refines"
+    },
+    {
+      "from": "rules.WordsOf",
+      "to": "algebra.Counts",
+      "kind": "deps"
     },
     {
       "from": "rules.WordsOfCriteria",

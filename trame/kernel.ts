@@ -474,6 +474,11 @@ export interface View {
   readonly effects: string[]
   /** The result of the evaluation (for instance criteria that were run). */
   result<T = unknown>(): T | undefined
+  /**
+   * What the node gives once wired, when its kind's callable field is a body (a requirement's rule called with its
+   * dependencies): undefined otherwise. It throws what wiring met (a value nobody decided). Since g79.
+   */
+  given?(): unknown
 }
 
 /** A query: finite, sorted, without side effects. */

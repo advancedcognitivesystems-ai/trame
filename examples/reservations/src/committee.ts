@@ -27,7 +27,10 @@ export const UltraPeriodApproval = approval({
  * During the launch, cancelling a reservation on an ultra charger is always free.
  */
 export const UltraLaunch = amend(Refund, {
-  rule: (previous) => (r, leadTime) => (r.charger === ChargerType.ultra ? r.price : previous(r, leadTime)),
+  body: (previous) => (deps) => {
+    const before = previous(deps)
+    return (r, leadTime) => (r.charger === ChargerType.ultra ? r.price : before(r, leadTime))
+  },
 }, {
   owner: "lea",
   why: "launch promotion for the ultra chargers",

@@ -1,6 +1,7 @@
 /** Trame · Libraries */
 
 import { requirement } from "../kinds/requirement"
+import { Counts } from "#std/algebra"
 import { acceptance } from "../kinds/acceptance"
 import { decision } from "../kinds/decision"
 import { WrittenOnce } from "./product"
@@ -21,9 +22,10 @@ import { WrittenOnce } from "./product"
  */
 export const LibraryOfAModule = requirement({
   refines: [WrittenOnce],
-  rule: (module: string, separator: string): string | undefined => {
-    const at = module.indexOf(separator)
-    return at < 0 ? undefined : module.slice(0, at)
+  deps: { counts: Counts },
+  body: ({ counts }) => (module: string, separator: string): string | undefined => {
+    const [library, ...inside] = module.split(separator)
+    return counts.any(inside) ? library : undefined
   },
 })
 
@@ -45,7 +47,8 @@ export const LibraryOfAModuleCriteria = acceptance({
  */
 export const ReleaseIsSettled = requirement({
   refines: [WrittenOnce],
-  rule: (found: { blocking: number; errors: number }): boolean => found.blocking === 0 && found.errors === 0,
+  deps: { counts: Counts },
+  body: ({ counts }) => (found: { blocking: number; errors: number }): boolean => found.blocking === counts.zero && found.errors === counts.zero,
 })
 
 /** Criteria of a settled release */

@@ -13,7 +13,7 @@ import { Fingerprints, Project } from "./engine"
 import { EnginePin } from "./generations"
 import { Sha256 } from "#std/algorithms"
 import { NodeEncodings, Posix } from "#std/system"
-import { Sequences, ValueTypes } from "#std/algebra"
+import { Counts, Sequences, ValueTypes } from "#std/algebra"
 import { Strategy } from "#std/patterns"
 
 // The SDLC of a project is in its graph: the artefacts it produces (kind artifact), the checks a scenario in memory
@@ -30,7 +30,8 @@ import { Strategy } from "#std/patterns"
  */
 export const ShipOnlyWhatHolds = requirement({
   refines: [ExecutableSpecification],
-  rule: (obligations: readonly Status[]): boolean => obligations.length > 0 && obligations.every((s) => s === Status.held),
+  deps: { counts: Counts },
+  body: ({ counts }) => (obligations: readonly Status[]): boolean => counts.any(obligations) && obligations.every((s) => s === Status.held),
 })
 
 /** Criteria of shipping only what holds */

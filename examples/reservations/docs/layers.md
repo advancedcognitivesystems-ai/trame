@@ -163,6 +163,8 @@ flowchart TB
   n24 -->|Capped by| n67
   n25 -->|Refines| n20
   n25 -->|Assumes| n22
+  n25 -->|Depends on| n21
+  n25 -->|Depends on| n24
   n26 -->|Accepts| n25
   n27 -->|Amends (not in force)| n25
   n28 -->|Amends| n21
@@ -352,8 +354,6 @@ flowchart TB
   n102 -->|Depends on| n98
   n102 -->|Depends on| n101
   n106 -->|Amends| n21
-  n25 -.->|Depends on| n21
-  n25 -.->|Depends on| n24
   n26 -.->|Depends on| n21
   n28 -.-|Overlaps| n106
   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a

@@ -216,7 +216,8 @@ const body = (deps: Deps) => {
         for (const [k, f] of Object.entries(def.fields)) {
           const raw = v.field(k)
           if (f.type === FieldType.body) {
-            if (raw !== undefined) {
+            // A body the kind shows itself (a requirement's rule, in its card) is not said again as a fact.
+            if (raw !== undefined && !def.renderOwns?.includes(k)) {
               const file = raw as { file?: string; language?: string }
               const where: Inline[] = values.isObject(raw) && raw !== null && file.file
                 ? [doc.ident(file.file), concat([opensAside, optional(file.language), closesAside])]

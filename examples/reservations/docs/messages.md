@@ -47,7 +47,6 @@ What the service answers when it cannot do what it is asked.
 </details>
 
 - Owner: karim
-- Body: inline, in the declaration
 - Written in: [Language](#Language)
 - Used by: [Cancel a reservation](api.md#CancelReservation), [Read a reservation](api.md#ReadReservation), [Real payment provider](infra.md#HttpPayment), [Node HTTP server](infra.md#NodeServer), [Production Postgres database](infra.md#PostgresDatabase)
 
@@ -77,6 +76,5 @@ What each scenario checks, as its report says it.
 </details>
 
 - Owner: lea
-- Body: inline, in the declaration
 - Written in: [Language](#Language)
 - Used by: [Every reservation is refunded according to the rule](scenarios.md#ComplianceScenario), [Read a reservation](scenarios.md#ReadScenario), [Cancelling twice refunds only once](scenarios.md#RepeatedCancellationScenario)

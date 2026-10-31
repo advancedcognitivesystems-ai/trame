@@ -1,8 +1,22 @@
 # Journal
 
-*What happened to the project, day by day, the latest first, up to the date of the graph (30 October 2026): the versions released, and the evidence given, each with the node it is about and who gave it.*
+*What happened to the project, day by day, the latest first, up to the date of the graph (31 October 2026): the versions released, and the evidence given, each with the node it is about and who gave it.*
 
-> **14 days · 78 versions released · 145 pieces of evidence**
+> **15 days · 79 versions released · 153 pieces of evidence**
+
+## 31 October 2026
+
+| What | Node | By |
+|---|---|---|
+| Released as g79 | [Generation 79](releases.md#G79) | trame |
+| Deployed | [Advance](commands.md#Advance) | claude |
+| Check passed | [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws) | claude |
+| Check passed | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | claude |
+| Built | [The candidate engine](sdlc.md#EngineCandidate) | claude |
+| Built | [The graph page](sdlc.md#GraphPage) | claude |
+| Check passed | [The graph page opens](sdlc.md#GraphPageOpens) | claude |
+| Shipped | [The next generation](sdlc.md#NextGeneration) | claude |
+| Built | [The page's program](sdlc.md#PageProgram) | claude |
 
 ## 30 October 2026
 

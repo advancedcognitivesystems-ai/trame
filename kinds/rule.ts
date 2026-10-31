@@ -71,7 +71,7 @@ export const rule = defineKind({
     const { values, texts, lists, counts } = g.lib
     const applied = g.from(self).out(E.applies).first()
     if (applied) {
-      const run = applied.field(fieldsOf(requirement).rule)
+      const run = applied.given?.() ?? applied.field(fieldsOf(requirement).rule)
       if (!values.isFunction(run)) return []
       const sketch = sketchOf(g)
       const found = (run as unknown as (s: GraphSketch, p: unknown) => RuleFinding[])(sketch, resolved(self.field(F.params), g, sketch)) ?? []

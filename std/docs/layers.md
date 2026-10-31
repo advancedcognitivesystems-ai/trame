@@ -1,6 +1,6 @@
 # Layers
 
-*The graph in force on 30 October 2026, ordered by distance to the goals.*
+*The graph in force on 31 October 2026, ordered by distance to the goals.*
 
 ```mermaid
 flowchart TB
@@ -204,9 +204,11 @@ flowchart TB
   n21 -->|Refines| n66
   n22 -->|Accepts| n21
   n23 -->|Refines| n66
+  n23 -->|Depends on| n0
   n24 -->|Accepts| n23
   n25 -->|Serves| n66
   n26 -->|Refines| n66
+  n26 -->|Depends on| n0
   n27 -->|Accepts| n26
   n28 -->|Refines| n66
   n29 -->|Accepts| n28
@@ -215,6 +217,7 @@ flowchart TB
   n32 -->|Refines| n66
   n33 -->|Accepts| n32
   n34 -->|Refines| n66
+  n34 -->|Depends on| n0
   n35 -->|Accepts| n34
   n36 -->|Serves| n63
   n37 -->|Serves| n63
@@ -315,14 +318,18 @@ flowchart TB
   n78 -->|Serves| n66
   n79 -->|Serves| n66
   n80 -->|Refines| n66
+  n80 -->|Depends on| n0
   n81 -->|Accepts| n80
   n82 -->|Refines| n66
+  n82 -->|Depends on| n0
   n83 -->|Accepts| n82
   n84 -->|Refines| n66
   n85 -->|Accepts| n84
   n86 -->|Refines| n66
+  n86 -->|Depends on| n0
   n87 -->|Accepts| n86
   n88 -->|Refines| n66
+  n88 -->|Depends on| n0
   n89 -->|Accepts| n88
   n90 -->|Verifies| n52
   n90 -->|Verifies| n61

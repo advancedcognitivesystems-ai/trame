@@ -138,6 +138,8 @@ export type PackageField = ValueOf<typeof PackageField>
 export const ReleaseEdge = { component: "component", assembledBy: "assembledBy" } as const
 /** The fields of a release that the page and the views read: its version and the day it was released. */
 export const ReleaseField = { version: "version", date: "date" } as const
+/** The field a vocabulary lists its words in: a rule of a library reads it on the graph's sketch. */
+export const VocabularyField = { words: "words" } as const
 export type ReleaseEdge = ValueOf<typeof ReleaseEdge>
 
 /** What a row's review is, in a language: approved as it is, approved before it changed, asked to change, or none yet. */

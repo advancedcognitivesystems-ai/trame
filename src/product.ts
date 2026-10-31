@@ -38,7 +38,7 @@ export const WrittenOnce = goal()
  */
 export const SeverityOrder = requirement({
   refines: [ExecutableSpecification],
-  rule: (severity: Severity): number => (severity === Severity.blocking ? 0 : severity === Severity.error ? 1 : 2),
+  body: () => (severity: Severity): number => [Severity.blocking, Severity.error, Severity.warning].indexOf(severity),
 })
 
 /** Criteria of the sort by severity */

@@ -3,7 +3,9 @@
 import { requirement } from "../../kinds/requirement"
 import { acceptance } from "../../kinds/acceptance"
 import { vocabulary, type WordOf } from "../../kinds/vocabulary"
+import { Direction, EdgeName, VocabularyField } from "../../trame/kernel"
 import type { GraphSketch, SketchNode, RuleFinding } from "../../trame/kernel"
+import { Counts } from "./algebra"
 import { SharedRules } from "./product"
 
 // The rules a project keeps on its graph, written once: a project's rule applies one of them with its parameters (the
@@ -90,10 +92,10 @@ const reached = (sketch: GraphSketch, from: string, through: readonly string[], 
  */
 export const Reaches = requirement({
   refines: [SharedRules],
-  rule: (sketch: GraphSketch, p: { nodes: Selector; through: readonly string[]; to: Selector; way?: Way }): RuleFinding[] => {
+  body: () => (sketch: GraphSketch, p: { nodes: Selector; through: readonly string[]; to: Selector; way?: Way }): RuleFinding[] => {
     const targets = new Set(picked(sketch, { libraries: true, ...p.to }).map((n) => n.ref))
     return picked(sketch, p.nodes)
-      .filter((n) => ![...reached(sketch, n.ref, p.through, p.way ?? "out")].some((r) => targets.has(r)))
+      .filter((n) => ![...reached(sketch, n.ref, p.through, p.way ?? Direction.out)].some((r) => targets.has(r)))
       .map((n) => ({ on: n.ref }))
   },
 })
@@ -105,11 +107,12 @@ export const Reaches = requirement({
  */
 export const NeverReaches = requirement({
   refines: [SharedRules],
-  rule: (sketch: GraphSketch, p: { nodes: Selector; through: readonly string[]; to: Selector; way?: Way }): RuleFinding[] => {
+  deps: { counts: Counts },
+  body: ({ counts }) => (sketch: GraphSketch, p: { nodes: Selector; through: readonly string[]; to: Selector; way?: Way }): RuleFinding[] => {
     const targets = new Set(picked(sketch, { libraries: true, ...p.to }).map((n) => n.ref))
     return picked(sketch, p.nodes).flatMap((n) => {
-      const hit = [...reached(sketch, n.ref, p.through, p.way ?? "out")].filter((r) => targets.has(r))
-      return hit.length > 0 ? [{ on: n.ref, nodes: hit }] : []
+      const hit = [...reached(sketch, n.ref, p.through, p.way ?? Direction.out)].filter((r) => targets.has(r))
+      return counts.any(hit) ? [{ on: n.ref, nodes: hit }] : []
     })
   },
 })
@@ -122,12 +125,14 @@ export const NeverReaches = requirement({
  */
 export const Linked = requirement({
   refines: [SharedRules],
-  rule: (sketch: GraphSketch, p: { nodes: Selector; edge: string; way?: Way; atLeast?: number; atMost?: number }): RuleFinding[] =>
+  deps: { counts: Counts },
+  body: ({ counts }) => (sketch: GraphSketch, p: { nodes: Selector; edge: string; way?: Way; atLeast?: number; atMost?: number }): RuleFinding[] =>
     picked(sketch, p.nodes).flatMap((n) => {
+      const out = (p.way ?? Direction.out) === Direction.out
       const others = sketch.edges
-        .filter((e) => e.name === p.edge && ((p.way ?? "out") === "out" ? e.from === n.ref : e.to === n.ref))
-        .map((e) => ((p.way ?? "out") === "out" ? e.to : e.from))
-      const wrong = others.length < (p.atLeast ?? 0) || (p.atMost !== undefined && others.length > p.atMost)
+        .filter((e) => e.name === p.edge && (out ? e.from === n.ref : e.to === n.ref))
+        .map((e) => (out ? e.to : e.from))
+      const wrong = others.length < (p.atLeast ?? counts.zero) || (p.atMost !== undefined && others.length > p.atMost)
       return wrong ? [{ on: n.ref, nodes: others }] : []
     }),
 })
@@ -140,13 +145,14 @@ export const Linked = requirement({
  */
 export const WithoutEffects = requirement({
   refines: [SharedRules],
-  rule: (sketch: GraphSketch, p: { nodes: Selector; effects: readonly string[]; dependency?: string }): RuleFinding[] =>
+  deps: { counts: Counts },
+  body: ({ counts }) => (sketch: GraphSketch, p: { nodes: Selector; effects: readonly string[]; dependency?: string }): RuleFinding[] =>
     picked(sketch, p.nodes).flatMap((n) => {
       const bad = p.effects.filter((e) => n.effects.includes(e))
-      if (bad.length === 0) return []
+      if (counts.isEmpty(bad)) return []
       const byRef = new Map(sketch.nodes.map((x) => [x.ref, x]))
       const carriers = sketch.edges
-        .filter((e) => e.from === n.ref && e.name === (p.dependency ?? "deps"))
+        .filter((e) => e.from === n.ref && e.name === (p.dependency ?? EdgeName.deps))
         .map((e) => byRef.get(e.to))
         .filter((d): d is SketchNode => d !== undefined && d.effects.some((x) => bad.includes(x)))
         .map((d) => d.ref)
@@ -161,11 +167,12 @@ export const WithoutEffects = requirement({
  */
 export const WordsOf = requirement({
   refines: [SharedRules],
-  rule: (sketch: GraphSketch, p: { nodes: Selector; field: string; vocabulary: SketchNode; also?: readonly string[] }): RuleFinding[] => {
-    const known = new Set([...Object.keys((p.vocabulary.field("words") as Record<string, unknown> | undefined) ?? {}), ...(p.also ?? [])])
+  deps: { counts: Counts },
+  body: ({ counts }) => (sketch: GraphSketch, p: { nodes: Selector; field: string; vocabulary: SketchNode; also?: readonly string[] }): RuleFinding[] => {
+    const known = new Set([...Object.keys((p.vocabulary.field(VocabularyField.words) as Record<string, unknown> | undefined) ?? {}), ...(p.also ?? [])])
     return picked(sketch, p.nodes).flatMap((n) => {
       const words = ((n.field(p.field) as readonly string[] | undefined) ?? []).filter((w) => !known.has(w))
-      return words.length > 0 ? [{ on: n.ref, words }] : []
+      return counts.any(words) ? [{ on: n.ref, words }] : []
     })
   },
 })

@@ -18,13 +18,16 @@ During the launch, cancelling a reservation on an ultra charger is always free.
 
 | What changes | Before | After |
 |---|---|---|
-| `rule` | original rule | redefined rule |
+| `body` | original rule | redefined rule |
 
 <details><summary>The amendment, in the code</summary>
 
 ```typescript
 {
-  rule: (previous) => (r, leadTime) => (r.charger === ChargerType.ultra ? r.price : previous(r, leadTime)),
+  body: (previous) => (deps) => {
+    const before = previous(deps)
+    return (r, leadTime) => (r.charger === ChargerType.ultra ? r.price : before(r, leadTime))
+  },
 }
 ```
 

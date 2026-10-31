@@ -39,15 +39,15 @@ The amount returned to the driver when they cancel their reservation.
 <details><summary>The rule, in the code</summary>
 
 ```typescript
-(r: Reservation, leadTime: Duration): CHF =>
-    leadTime >= FreeCancellationPeriod.value[r.charger] ? r.price : r.price * (1 - LateFee.value)
+({ period, fee }) => (r: Reservation, leadTime: Duration): CHF =>
+    leadTime >= period[r.charger] ? r.price : r.price - r.price * fee
 ```
 
 </details>
 
+- Parameters: `period` ← [Free cancellation period](#FreeCancellationPeriod) · `fee` ← [Late cancellation fee](#LateFee)
 - Refines: [Cancel without stress](#CancelWithoutStress)
 - Assumes: [Idempotent payment provider](#IdempotentProvider)
-- Depends on: [Free cancellation period](#FreeCancellationPeriod), [Late cancellation fee](#LateFee)
 - Served by: [Cancel a reservation](api.md#CancelReservation), [End of free cancellation](api.md#FreeCancellationEnd)
 - Used by: [Cancel a reservation](api.md#CancelReservation), [Every reservation is refunded according to the rule](scenarios.md#ComplianceScenario), [Cancelling twice refunds only once](scenarios.md#RepeatedCancellationScenario)
 - Constrained by: [Immediate refund](#ImmediateRefund)
@@ -73,7 +73,7 @@ The amount returned to the driver when they cancel their reservation.
 
 ### Immediate refund
 
-`ImmediateRefund` · `src/cancellation.ts:65` · status: **unknown** · published
+`ImmediateRefund` · `src/cancellation.ts:66` · status: **unknown** · published
 
 The refund is initiated within two seconds of the cancellation.
 
@@ -105,9 +105,9 @@ Up to this long before the slot starts, cancelling costs nothing.
 - Decided by: lea
 - Review planned: March 2027
 - Rejected: 30 min, blocks the chargers at peak hours
-- Used by: [End of free cancellation](api.md#FreeCancellationEnd), [Read a reservation](scenarios.md#ReadScenario)
+- Used by: [End of free cancellation](api.md#FreeCancellationEnd), [Refund on cancellation](#Refund), [Read a reservation](scenarios.md#ReadScenario)
 - Amended by: [Period for ultra chargers](committee.md#UltraPeriod), [Ultra period requested by support](support.md#SupportUltraPeriod)
-- Used by: [Refund on cancellation](#Refund), [Refund criteria](#RefundCriteria)
+- Used by: [Refund criteria](#RefundCriteria)
 
 <a id="LateFee"></a>
 

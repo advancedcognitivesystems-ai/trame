@@ -26,6 +26,11 @@ export interface NodeMeta {
   contested?: Set<string>
   id?: string
   module?: string
+  /**
+   * What the node gives once the engine wired it, when its kind's callable field is a body (a requirement's rule with
+   * its dependencies, since g79): the node called is then that. It throws what wiring met (a value nobody decided).
+   */
+  give?: () => unknown
 }
 
 export const meta = (n: unknown): NodeMeta => (n as Record<symbol, NodeMeta>)[META]
@@ -167,7 +172,7 @@ export function instantiate(def: AnyKind, input: Record<string, unknown>): AnyNo
     const key = def.callable
     node = (...args: unknown[]) => {
       alive()
-      const f = m.data[key]
+      const f = m.give ? m.give() : m.data[key]
       if (isHole(f)) throw new Hole(node as AnyNode, key)
       return (f as (...a: unknown[]) => unknown)(...args)
     }

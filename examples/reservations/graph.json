@@ -408,7 +408,7 @@
       "id": "cancellation.ImmediateRefund",
       "kind": "slo",
       "title": "Immediate refund",
-      "source": "src/cancellation.ts:65",
+      "source": "src/cancellation.ts:66",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -444,7 +444,11 @@
       "source": "src/cancellation.ts:54",
       "status": "held",
       "fields": {
-        "rule": "(function)"
+        "deps": {
+          "period": "cancellation.FreeCancellationPeriod",
+          "fee": "cancellation.LateFee"
+        },
+        "body": "(function)"
       },
       "diagnostics": []
     },
@@ -452,7 +456,7 @@
       "id": "cancellation.RefundCriteria",
       "kind": "acceptance",
       "title": "Refund criteria",
-      "source": "src/cancellation.ts:75",
+      "source": "src/cancellation.ts:76",
       "status": "held",
       "fields": {
         "owner": "lea",
@@ -497,7 +501,7 @@
         "from": "2026-11-01",
         "until": "2026-12-31",
         "patch": {
-          "rule": "(function)"
+          "body": "(function)"
         }
       },
       "active": false,
@@ -1402,7 +1406,7 @@
       },
       "result": {
         "path": "out/local/reservations-api.ts",
-        "code": "fa44536c"
+        "code": "0ab1e76f"
       },
       "diagnostics": [
         "warning: Not built yet: trame ship builds it"
@@ -1477,7 +1481,7 @@
       },
       "result": {
         "path": "out/production/reservations-api.ts",
-        "code": "49598004"
+        "code": "bdc94337"
       },
       "diagnostics": [
         "warning: Not built yet: trame ship builds it"
@@ -2473,6 +2477,16 @@
       "from": "cancellation.Refund",
       "to": "cancellation.IdempotentProvider",
       "kind": "assumes"
+    },
+    {
+      "from": "cancellation.Refund",
+      "to": "cancellation.FreeCancellationPeriod",
+      "kind": "deps"
+    },
+    {
+      "from": "cancellation.Refund",
+      "to": "cancellation.LateFee",
+      "kind": "deps"
     },
     {
       "from": "cancellation.RefundCriteria",
@@ -3534,18 +3548,6 @@
       "from": "support.SupportUltraPeriod",
       "to": "cancellation.FreeCancellationPeriod",
       "kind": "amends"
-    },
-    {
-      "from": "cancellation.Refund",
-      "to": "cancellation.FreeCancellationPeriod",
-      "kind": "uses",
-      "inferred": true
-    },
-    {
-      "from": "cancellation.Refund",
-      "to": "cancellation.LateFee",
-      "kind": "uses",
-      "inferred": true
     },
     {
       "from": "cancellation.RefundCriteria",

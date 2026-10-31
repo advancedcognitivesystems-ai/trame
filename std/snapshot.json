@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-30",
+  "at": "2026-10-31",
   "nodes": [
     {
       "id": "algebra.Counts",
@@ -1224,7 +1224,7 @@
       "title": "The decisions a shipment applies hold",
       "status": "held",
       "fields": {
-        "rule": "(function)"
+        "body": "(function)"
       }
     },
     {
@@ -1243,7 +1243,16 @@
       "title": "The artefacts a shipment ships are checked",
       "status": "held",
       "fields": {
-        "rule": "(function)"
+        "deps": {
+          "counts": "algebra.Counts"
+        },
+        "constants": {
+          "every": {
+            "value": "all",
+            "meaning": "The word of CheckWays that takes every check of the artefacts, those made by hand too"
+          }
+        },
+        "body": "(function)"
       }
     },
     {
@@ -1274,7 +1283,10 @@
       "title": "The data a shipment carries is reviewed",
       "status": "held",
       "fields": {
-        "rule": "(function)"
+        "deps": {
+          "counts": "algebra.Counts"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -1293,7 +1305,7 @@
       "title": "The project's rules hold",
       "status": "held",
       "fields": {
-        "rule": "(function)"
+        "body": "(function)"
       }
     },
     {
@@ -1312,7 +1324,7 @@
       "title": "The packages a shipment uses are safe",
       "status": "held",
       "fields": {
-        "rule": "(function)"
+        "body": "(function)"
       }
     },
     {
@@ -1331,7 +1343,7 @@
       "title": "The product a shipment serves holds",
       "status": "held",
       "fields": {
-        "rule": "(function)"
+        "body": "(function)"
       }
     },
     {
@@ -1350,7 +1362,10 @@
       "title": "The code a shipment ships is verified",
       "status": "held",
       "fields": {
-        "rule": "(function)"
+        "deps": {
+          "counts": "algebra.Counts"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -1879,7 +1894,10 @@
       "title": "As many links as asked",
       "status": "held",
       "fields": {
-        "rule": "(function)"
+        "deps": {
+          "counts": "algebra.Counts"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -1898,7 +1916,10 @@
       "title": "A node never reaches what it must not",
       "status": "held",
       "fields": {
-        "rule": "(function)"
+        "deps": {
+          "counts": "algebra.Counts"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -1917,7 +1938,7 @@
       "title": "A node reaches what it must",
       "status": "held",
       "fields": {
-        "rule": "(function)"
+        "body": "(function)"
       }
     },
     {
@@ -1936,7 +1957,10 @@
       "title": "Effects a node may not have",
       "status": "held",
       "fields": {
-        "rule": "(function)"
+        "deps": {
+          "counts": "algebra.Counts"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -1955,7 +1979,10 @@
       "title": "Words of a vocabulary",
       "status": "held",
       "fields": {
-        "rule": "(function)"
+        "deps": {
+          "counts": "algebra.Counts"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -3191,6 +3218,11 @@
       "kind": "refines"
     },
     {
+      "from": "obligations.Checked",
+      "to": "algebra.Counts",
+      "kind": "deps"
+    },
+    {
       "from": "obligations.CheckedCriteria",
       "to": "obligations.Checked",
       "kind": "accepts"
@@ -3204,6 +3236,11 @@
       "from": "obligations.Reviewed",
       "to": "product.SharedRules",
       "kind": "refines"
+    },
+    {
+      "from": "obligations.Reviewed",
+      "to": "algebra.Counts",
+      "kind": "deps"
     },
     {
       "from": "obligations.ReviewedCriteria",
@@ -3244,6 +3281,11 @@
       "from": "obligations.Verified",
       "to": "product.SharedRules",
       "kind": "refines"
+    },
+    {
+      "from": "obligations.Verified",
+      "to": "algebra.Counts",
+      "kind": "deps"
     },
     {
       "from": "obligations.VerifiedCriteria",
@@ -3746,6 +3788,11 @@
       "kind": "refines"
     },
     {
+      "from": "rules.Linked",
+      "to": "algebra.Counts",
+      "kind": "deps"
+    },
+    {
       "from": "rules.LinkedCriteria",
       "to": "rules.Linked",
       "kind": "accepts"
@@ -3754,6 +3801,11 @@
       "from": "rules.NeverReaches",
       "to": "product.SharedRules",
       "kind": "refines"
+    },
+    {
+      "from": "rules.NeverReaches",
+      "to": "algebra.Counts",
+      "kind": "deps"
     },
     {
       "from": "rules.NeverReachesCriteria",
@@ -3776,6 +3828,11 @@
       "kind": "refines"
     },
     {
+      "from": "rules.WithoutEffects",
+      "to": "algebra.Counts",
+      "kind": "deps"
+    },
+    {
       "from": "rules.WithoutEffectsCriteria",
       "to": "rules.WithoutEffects",
       "kind": "accepts"
@@ -3784,6 +3841,11 @@
       "from": "rules.WordsOf",
       "to": "product.SharedRules",
       "kind": "refines"
+    },
+    {
+      "from": "rules.WordsOf",
+      "to": "algebra.Counts",
+      "kind": "deps"
     },
     {
       "from": "rules.WordsOfCriteria",

@@ -3,6 +3,7 @@
 import { Severity, Status } from "../trame/kernel"
 import { goal } from "../kinds/goal"
 import { requirement } from "../kinds/requirement"
+import { Counts } from "#std/algebra"
 import { acceptance } from "../kinds/acceptance"
 
 // The laws of kinds and views. A kind says how a node of its kind is checked, settled and shown; a view, which document
@@ -62,11 +63,12 @@ export interface DeclarationFaults {
  */
 export const CompleteDeclaration = requirement({
   refines: [TrustedExtensions],
-  rule: (d: KindDeclaration, known: KnownNames): DeclarationFaults => ({
+  deps: { counts: Counts },
+  body: ({ counts }) => (d: KindDeclaration, known: KnownNames): DeclarationFaults => ({
     unlabelled: !d.labelled,
     reserved: d.names.filter((n) => known.reserved.has(n)),
     unknownTargets: d.targets.filter(([, t]) => t !== known.any && !known.kinds.has(t)),
-    severalOwners: d.ownerFields.length > 1,
+    severalOwners: counts.several(d.ownerFields),
     resolveWithoutClaims: d.resolves && !d.claims,
     claimsOffNodes: d.claimsOffNodes,
   }),
@@ -107,7 +109,7 @@ export interface CallEnd {
  */
 export const AnswersWithoutCrashing = requirement({
   refines: [TrustedExtensions],
-  rule: (end: CallEnd, mayStop: boolean): boolean => !end.threw || (mayStop && end.undecided),
+  body: () => (end: CallEnd, mayStop: boolean): boolean => !end.threw || (mayStop && end.undecided),
 })
 
 /** Criteria of the answers without crashing */
@@ -134,7 +136,7 @@ export interface ReportedHole {
  */
 export const BlockingHoleHasOwner = requirement({
   refines: [TrustedExtensions],
-  rule: (hole: ReportedHole, nodeOwner?: string): boolean => hole.severity !== Severity.blocking || Boolean(hole.owner ?? nodeOwner),
+  body: () => (hole: ReportedHole, nodeOwner?: string): boolean => hole.severity !== Severity.blocking || Boolean(hole.owner ?? nodeOwner),
 })
 
 /** Criteria of the owner of a blocking hole */
@@ -155,7 +157,7 @@ export const BlockingHoleHasOwnerCriteria = acceptance({
  */
 export const UnknownWithoutEvidence = requirement({
   refines: [TrustedExtensions],
-  rule: (status: Status | undefined, evidence: boolean): boolean => evidence || (status !== Status.held && status !== Status.violated),
+  body: () => (status: Status | undefined, evidence: boolean): boolean => evidence || (status !== Status.held && status !== Status.violated),
 })
 
 /** Criteria of the status without evidence */
@@ -177,7 +179,8 @@ export const UnknownWithoutEvidenceCriteria = acceptance({
  */
 export const SameInputSameAnswer = requirement({
   refines: [TrustedExtensions],
-  rule: (answers: readonly string[]): boolean => new Set(answers).size <= 1,
+  deps: { counts: Counts },
+  body: ({ counts }) => (answers: readonly string[]): boolean => !counts.several(new Set(answers)),
 })
 
 /** Criteria of the same answer */
@@ -198,7 +201,8 @@ export const SameInputSameAnswerCriteria = acceptance({
  */
 export const OrderFree = requirement({
   refines: [SameInputSameAnswer],
-  rule: (answers: readonly string[]): boolean => SameInputSameAnswer(answers),
+  deps: { same: SameInputSameAnswer },
+  body: ({ same }) => (answers: readonly string[]): boolean => same(answers),
 })
 
 /** Criteria of the resolution in any order */
@@ -217,7 +221,7 @@ export const OrderFreeCriteria = acceptance({
  */
 export const ClosedResolution = requirement({
   refines: [TrustedExtensions],
-  rule: <T>(given: ReadonlySet<T>, returned: readonly T[]): T[] => returned.filter((x) => !given.has(x)),
+  body: () => <T>(given: ReadonlySet<T>, returned: readonly T[]): T[] => returned.filter((x) => !given.has(x)),
 })
 
 /** Criteria of the closed resolution */
@@ -261,7 +265,7 @@ export interface ViewDeclarationFaults {
  */
 export const CompleteViewDeclaration = requirement({
   refines: [TrustedExtensions],
-  rule: (v: ViewDeclaration): ViewDeclarationFaults => ({
+  body: () => (v: ViewDeclaration): ViewDeclarationFaults => ({
     unnamed: !v.named,
     duplicate: v.duplicate,
     nodeGroupNotPerNode: v.nodeGroup && !v.perNode,
@@ -305,7 +309,7 @@ export interface SerialFaults {
  */
 export const IntermediateFormatOnly = requirement({
   refines: [TrustedExtensions],
-  rule: (d: WrittenDocument, known: ReadonlySet<string>): SerialFaults => ({
+  body: () => (d: WrittenDocument, known: ReadonlySet<string>): SerialFaults => ({
     notSerial: d.readBack !== d.text || d.text.includes(d.functionMark),
     unknownBlock: d.blockTypes.find((t) => !known.has(t)),
   }),

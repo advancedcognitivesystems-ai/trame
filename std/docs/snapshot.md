@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 30 October 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 31 October 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Standard library · Algebra
 
@@ -229,13 +229,18 @@ Requirement · `Applied` · **held**
 
 Requirement · `Checked` · **held**
 
+- Parameters: { counts: algebra.Counts }
+- Constants: { every: { value: all, meaning: The word of CheckWays that takes every check of the artefacts, those made by hand too } }
 - Refines: Rules applied, not written again
+- Depends on: Counts
 
 ### The data a shipment carries is reviewed
 
 Requirement · `Reviewed` · **held**
 
+- Parameters: { counts: algebra.Counts }
 - Refines: Rules applied, not written again
+- Depends on: Counts
 
 ### The project's rules hold
 
@@ -259,7 +264,9 @@ Requirement · `Served` · **held**
 
 Requirement · `Verified` · **held**
 
+- Parameters: { counts: algebra.Counts }
 - Refines: Rules applied, not written again
+- Depends on: Counts
 
 ### Ways of checking
 
@@ -706,13 +713,17 @@ Release · `R0_9_0`
 
 Requirement · `Linked` · **held**
 
+- Parameters: { counts: algebra.Counts }
 - Refines: Rules applied, not written again
+- Depends on: Counts
 
 ### A node never reaches what it must not
 
 Requirement · `NeverReaches` · **held**
 
+- Parameters: { counts: algebra.Counts }
 - Refines: Rules applied, not written again
+- Depends on: Counts
 
 ### A node reaches what it must
 
@@ -724,13 +735,17 @@ Requirement · `Reaches` · **held**
 
 Requirement · `WithoutEffects` · **held**
 
+- Parameters: { counts: algebra.Counts }
 - Refines: Rules applied, not written again
+- Depends on: Counts
 
 ### Words of a vocabulary
 
 Requirement · `WordsOf` · **held**
 
+- Parameters: { counts: algebra.Counts }
 - Refines: Rules applied, not written again
+- Depends on: Counts
 
 ### Directions
 

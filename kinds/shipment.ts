@@ -95,7 +95,8 @@ const kind = defineKind({
     const derived: DerivedObligation[] = []
     const gaps: Gap[] = []
     for (const o of g.from(policy).out(PolicyEdge.obligations).nodes()) {
-      const run = g.from(o).out(EdgeName.applies).first()?.field(fieldsOf(requirement).rule)
+      const family = g.from(o).out(EdgeName.applies).first()
+      const run = family?.given?.() ?? family?.field(fieldsOf(requirement).rule)
       if (!values.isFunction(run)) continue
       const found = (run as unknown as (s: GraphSketch, r: ObligationReach, p: unknown) => ObligationFinding)(sketch, reach, resolved(o.field(ObligationField.params), g, sketch))
       const weight = o.field(ObligationField.gaps)

@@ -141,6 +141,12 @@ const body = (deps: Deps) => {
       })
       provisions.push({ node: step.node, language: provision.language, module: bodyPath(host, step.node, provision), variables })
     }
+    // A body is run as declared: one a claim redefines in force (an amended rule) cannot be frozen.
+    for (const step of p.steps.filter((s) => s.how === WireMode.body)) {
+      const v = g.view(step.node)
+      const fields = meta(step.node).def.fields
+      if (v.amendedBy.some((a) => a.paths.some((path) => fields[path]?.type === FieldType.body))) errors.push(messages.amendedBody(v.title))
+    }
     // Each value is read now. An amended value that cannot be written as JSON cannot be frozen.
     const frozenValues: Assembly["frozenValues"] = new Map()
     for (const step of p.steps.filter((s) => s.how === WireMode.value)) {

@@ -75,7 +75,7 @@ export const Advancement = decision<{
  */
 export const AcceptCandidate = requirement({
   refines: [ExecutableSpecification],
-  rule: (r: AdvanceReport): boolean =>
+  body: () => (r: AdvanceReport): boolean =>
     r.secondAsFirst && r.fixedPoint && r.lawsHold && r.olderRun &&
     (r.accepted || (r.scenariosHold && r.librariesAsBefore && r.exampleAsBefore && r.selfAsBefore)),
 })

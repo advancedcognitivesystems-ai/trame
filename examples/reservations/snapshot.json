@@ -370,7 +370,11 @@
       "title": "Refund on cancellation",
       "status": "held",
       "fields": {
-        "rule": "(function)"
+        "deps": {
+          "period": "cancellation.FreeCancellationPeriod",
+          "fee": "cancellation.LateFee"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -1820,6 +1824,16 @@
       "kind": "assumes"
     },
     {
+      "from": "cancellation.Refund",
+      "to": "cancellation.FreeCancellationPeriod",
+      "kind": "deps"
+    },
+    {
+      "from": "cancellation.Refund",
+      "to": "cancellation.LateFee",
+      "kind": "deps"
+    },
+    {
       "from": "cancellation.RefundCriteria",
       "to": "cancellation.Refund",
       "kind": "accepts"
@@ -2743,16 +2757,6 @@
       "from": "sql.UpdateRows",
       "to": "sql.SqlList",
       "kind": "deps"
-    },
-    {
-      "from": "cancellation.Refund",
-      "to": "cancellation.FreeCancellationPeriod",
-      "kind": "uses"
-    },
-    {
-      "from": "cancellation.Refund",
-      "to": "cancellation.LateFee",
-      "kind": "uses"
     },
     {
       "from": "cancellation.RefundCriteria",

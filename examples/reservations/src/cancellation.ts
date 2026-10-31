@@ -54,8 +54,9 @@ export const IdempotentProvider = assume({ owner: "karim", expires: "2026-12-01"
 export const Refund = requirement({
   refines: [CancelWithoutStress],
   assumes: [IdempotentProvider],
-  rule: (r: Reservation, leadTime: Duration): CHF =>
-    leadTime >= FreeCancellationPeriod.value[r.charger] ? r.price : r.price * (1 - LateFee.value),
+  deps: { period: FreeCancellationPeriod, fee: LateFee },
+  body: ({ period, fee }) => (r: Reservation, leadTime: Duration): CHF =>
+    leadTime >= period[r.charger] ? r.price : r.price - r.price * fee,
 })
 
 /**

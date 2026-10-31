@@ -1,72 +1,213 @@
-diff -ru /tmp/URNf4g/reference/trame-auto/docs/pipelines.md /tmp/URNf4g/candidate/trame-auto/docs/pipelines.md
---- /tmp/URNf4g/reference/trame-auto/docs/pipelines.md	2026-10-29 21:08:54.853707290 +0100
-+++ /tmp/URNf4g/candidate/trame-auto/docs/pipelines.md	2026-10-29 21:16:32.698599893 +0100
-@@ -14,10 +14,10 @@
- flowchart TB
-   n0["The candidate engine<br/><small>Artefact</small>"]:::unknown
-   n1["Trame on the command line<br/><small>Component</small>"]:::neutral
--  n2["The graph page<br/><small>Artefact</small>"]:::unknown
--  n3["Export the page<br/><small>Entry point</small>"]:::held
--  n4["The page's program<br/><small>Artefact</small>"]:::unknown
--  n5["The page in a browser<br/><small>Component</small>"]:::neutral
-+  n2["The page's program<br/><small>Artefact</small>"]:::unknown
-+  n3["The page in a browser<br/><small>Component</small>"]:::neutral
-+  n4["The graph page<br/><small>Artefact</small>"]:::unknown
-+  n5["Export the page<br/><small>Entry point</small>"]:::held
-   n6["The candidate plays the laws<br/><small>Check</small>"]:::unknown
-   n7["Test the laws<br/><small>Entry point</small>"]:::held
-   n8["The candidate runs on the machine<br/><small>Check</small>"]:::unknown
-@@ -121,12 +121,12 @@
-   n78 -->|Depends on| n9
-   n83 -->|Verifies| n7
-   n83 -->|Depends on| n7
--  n76 -->|Verifies| n3
--  n76 -->|Depends on| n3
-+  n76 -->|Verifies| n5
-+  n76 -->|Depends on| n5
-   n100 -->|Part of| n1
-   n100 -->|Depends on| n86
-   n9 -->|Part of| n1
--  n3 -->|Part of| n1
-+  n5 -->|Part of| n1
-   n7 -->|Part of| n1
-   n98 -->|Refines| n97
-   n12 -->|Applied by| n1
-@@ -154,19 +154,19 @@
-   n8 -->|Checks| n0
-   n8 -->|Run by| n9
-   n0 -->|Produced by| n1
--  n2 -->|Produced by| n3
--  n2 -->|Carries| n5
--  n10 -->|Checks| n2
-+  n4 -->|Produced by| n5
-+  n4 -->|Carries| n3
-+  n10 -->|Checks| n4
-   n10 -->|Run by| n11
-   n101 -->|Ships| n0
--  n101 -->|Ships| n4
-   n101 -->|Ships| n2
-+  n101 -->|Ships| n4
-   n101 -->|Deployed by| n100
-   n85 -->|Verifies| n11
-   n85 -->|Depends on| n11
--  n85 -->|Depends on| n2
--  n11 -->|Depends on| n2
--  n4 -->|Produced by| n5
-+  n85 -->|Depends on| n4
-+  n11 -->|Depends on| n4
-+  n2 -->|Produced by| n3
-   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
-   classDef blocked fill:#fbf0d9,stroke:#9a6200,color:#17202a
-   classDef violated fill:#f9e3e1,stroke:#ad2a22,color:#17202a
-@@ -179,8 +179,8 @@
- |  | Stage | Step | Run by | Why | Status | Latest evidence |
- |---|---|---|---|---|---|---|
- | 1 | produce | [The candidate engine](sdlc.md#EngineCandidate) · `out/local/trame-cli.ts` | [Trame on the command line](architecture.md#TrameCli) | — | **unknown** | 29 October 2026 by claude  |
--| 2 | produce | [The graph page](sdlc.md#GraphPage) · `trame-page.html` | [Export the page](commands.md#Export) | — | **unknown** | 29 October 2026 by claude  |
--| 3 | produce | [The page's program](sdlc.md#PageProgram) · `out/browser/page-app.ts` | [The page in a browser](architecture.md#PageApp) | — | **unknown** | 29 October 2026 by claude  |
-+| 2 | produce | [The page's program](sdlc.md#PageProgram) · `out/browser/page-app.ts` | [The page in a browser](architecture.md#PageApp) | — | **unknown** | 29 October 2026 by claude  |
-+| 3 | produce | [The graph page](sdlc.md#GraphPage) · `trame-page.html` | [Export the page](commands.md#Export) | — | **unknown** | 29 October 2026 by claude  |
- | 4 | check | [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws) | [Test the laws](commands.md#TestKinds), signed by [Trame's maintainers](sdlc.md#Maintainers) | — | **unknown** | passed, 29 October 2026 by claude  |
- | 5 | check | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | [Ask the machine](commands.md#Doctor), signed by [Trame's maintainers](sdlc.md#Maintainers) | — | **unknown** | passed, 29 October 2026 by claude  |
- | 6 | check | [The graph page opens](sdlc.md#GraphPageOpens) | [Open the graph page](sdlc.md#OpenTheGraphPage), signed by [Trame's maintainers](sdlc.md#Maintainers) | — | **unknown** | passed, 29 October 2026 by claude  |
+diff -ru /tmp/SOgBtc/reference/std/docs/algebra.md /tmp/SOgBtc/candidate/std/docs/algebra.md
+--- /tmp/SOgBtc/reference/std/docs/algebra.md	2026-10-31 09:12:05.083578728 +0100
++++ /tmp/SOgBtc/candidate/std/docs/algebra.md	2026-10-31 09:13:50.856032111 +0100
+@@ -32,7 +32,6 @@
+ | `one` | `1` | A single element; what a count grows by when one more thing is counted |
+ 
+ - Owner: trame
+-- Body: `./code/algebra/counts.ts` (typescript)
+ - Serves: [Shared operations instead of literals](product.md#SharedOperations)
+ - Used by: [Sequences](#Sequences), [Seeded draws](algorithms.md#SeededDraws), [Frames turned by hand](platform.md#FramesByHand), [The device, in memory](scenarios.md#DeviceInMemory), [Seeded draws keep their promise](scenarios.md#DrawsKeepTheirPromise), [A browser kept in memory](tooling.md#BrowserInMemory), [Chromium, driven by Playwright](tooling.md#PlaywrightBrowser)
+ 
+@@ -63,7 +62,6 @@
+ 
+ - Owner: trame
+ - Parameters: `ecma` ← [ECMAScript](ecmascript.md#EcmaScript) · `counts` ← [Counts](#Counts)
+-- Body: `./code/algebra/sequences.ts` (typescript)
+ - Serves: [Shared operations instead of literals](product.md#SharedOperations)
+ - Used by: [Texts](#Texts)
+ 
+@@ -98,7 +96,6 @@
+ 
+ - Owner: trame
+ - Parameters: `sequences` ← [Sequences](#Sequences)
+-- Body: `./code/algebra/texts.ts` (typescript)
+ - Serves: [Shared operations instead of literals](product.md#SharedOperations)
+ - Used by: [Files kept in memory](tooling.md#FilesInMemory)
+ 
+@@ -119,6 +116,5 @@
+ 
+ - Owner: trame
+ - Parameters: `types` ← [ECMAScript types](ecmascript.md#EcmaScriptTypes)
+-- Body: `./code/algebra/values.ts` (typescript)
+ - Serves: [Shared operations instead of literals](product.md#SharedOperations)
+ - Used by: [Node's command line](tooling.md#NodeProgramCommands)
+diff -ru /tmp/SOgBtc/reference/std/docs/scenarios.md /tmp/SOgBtc/candidate/std/docs/scenarios.md
+--- /tmp/SOgBtc/reference/std/docs/scenarios.md	2026-10-31 09:12:05.083578728 +0100
++++ /tmp/SOgBtc/candidate/std/docs/scenarios.md	2026-10-31 09:13:50.856032111 +0100
+@@ -72,7 +72,6 @@
+ </details>
+ 
+ - Owner: trame
+-- Body: inline, in the declaration
+ - Written in: [The language of the library's scenarios](#ScenarioLanguage)
+ - Used by: [The device, in memory](#DeviceInMemory), [Seeded draws keep their promise](#DrawsKeepTheirPromise), [The tooling, in memory](#ToolingInMemory)
+ 
+diff -ru /tmp/SOgBtc/reference/reservations/docs/messages.md /tmp/SOgBtc/candidate/reservations/docs/messages.md
+--- /tmp/SOgBtc/reference/reservations/docs/messages.md	2026-10-31 09:12:08.719609546 +0100
++++ /tmp/SOgBtc/candidate/reservations/docs/messages.md	2026-10-31 09:14:01.583450201 +0100
+@@ -47,7 +47,6 @@
+ </details>
+ 
+ - Owner: karim
+-- Body: inline, in the declaration
+ - Written in: [Language](#Language)
+ - Used by: [Cancel a reservation](api.md#CancelReservation), [Read a reservation](api.md#ReadReservation), [Real payment provider](infra.md#HttpPayment), [Node HTTP server](infra.md#NodeServer), [Production Postgres database](infra.md#PostgresDatabase)
+ 
+@@ -77,6 +76,5 @@
+ </details>
+ 
+ - Owner: lea
+-- Body: inline, in the declaration
+ - Written in: [Language](#Language)
+ - Used by: [Every reservation is refunded according to the rule](scenarios.md#ComplianceScenario), [Read a reservation](scenarios.md#ReadScenario), [Cancelling twice refunds only once](scenarios.md#RepeatedCancellationScenario)
+diff -ru /tmp/SOgBtc/reference/trame/docs/messages.md /tmp/SOgBtc/candidate/trame/docs/messages.md
+--- /tmp/SOgBtc/reference/trame/docs/messages.md	2026-10-31 09:13:25.556309263 +0100
++++ /tmp/SOgBtc/candidate/trame/docs/messages.md	2026-10-31 09:15:18.068311188 +0100
+@@ -177,7 +177,6 @@
+ 
+ - Owner: trame
+ - Parameters: `language` ← [Language](#Language)
+-- Body: inline, in the declaration
+ - Written in: [Language](#Language)
+ - Used by: [An advance, in memory](command-scenarios.md#AdvanceInMemory), [Advance](commands.md#Advance), [Release a version](commands.md#Release)
+ - Applies: [A catalog counts in its language](#CountsInTheLanguage), [The words are in catalogs](principles.md#WordsInCatalogs)
+@@ -342,7 +341,6 @@
+ 
+ - Owner: trame
+ - Parameters: `language` ← [Language](#Language)
+-- Body: inline, in the declaration
+ - Written in: [Language](#Language)
+ - Used by: [A build planned](command-scenarios.md#BuildPlanned), [A component assembled](command-scenarios.md#ComponentAssembled), [Declarations published](command-scenarios.md#DeclarationsPublished), [The doctor](command-scenarios.md#DoctorAsks), [The laws, tested by their command](command-scenarios.md#LawsTested), [Advance](commands.md#Advance), [Assemble a component](commands.md#Assemble), [Assembler](commands.md#Assembler), [Audit the packages](commands.md#Audit), [Build](commands.md#Build), [Deliver](commands.md#Deliver), [Ask the machine](commands.md#Doctor), [Export the page](commands.md#Export), [Plan a build](commands.md#Plan), [Preparation](commands.md#Preparation), [Publish](commands.md#Publish), [Record evidence](commands.md#RecordEvidence), [Release a version](commands.md#Release), [Render a view](commands.md#RenderView), [Ship](commands.md#Ship), [Take the snapshot](commands.md#TakeSnapshot), [Test the laws](commands.md#TestKinds), [View by its name](commands.md#ViewByName), [Write the manifest](commands.md#WriteManifest), [A shipment's pipeline](engine.md#ShipmentPipeline), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore)
+ - Applies: [A catalog counts in its language](#CountsInTheLanguage), [The words are in catalogs](principles.md#WordsInCatalogs)
+@@ -470,7 +468,6 @@
+ 
+ - Owner: trame
+ - Parameters: `language` ← [Language](#Language) · `lists` ← [Lists](#Lists)
+-- Body: inline, in the declaration
+ - Written in: [Language](#Language)
+ - Used by: [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [Assembly](engine.md#Assembly), [Compiler](engine.md#Compiler), [Graph](engine.md#GraphApi), [Static reading](engine.md#StaticAnalysis), [Wiring](engine.md#Wiring)
+ - Applies: [A catalog counts in its language](#CountsInTheLanguage), [The words are in catalogs](principles.md#WordsInCatalogs)
+@@ -506,7 +503,6 @@
+ 
+ - Owner: trame
+ - Parameters: `language` ← [Language](#Language) · `lists` ← [Lists](#Lists)
+-- Body: inline, in the declaration
+ - Written in: [Language](#Language)
+ - Used by: [trame dev server](engine.md#DevServer)
+ - Applies: [A catalog counts in its language](#CountsInTheLanguage), [The words are in catalogs](principles.md#WordsInCatalogs)
+@@ -562,7 +558,6 @@
+ </details>
+ 
+ - Owner: trame
+-- Body: inline, in the declaration
+ - Written in: [Language](#Language)
+ - Used by: [A body is read and checked](command-scenarios.md#BodiesReadAndChecked), [Drivers](languages.md#Drivers), [Checks of a body](syntax.md#BodyChecks), [Terraform writer](terraform.md#TerraformWriter), [TypeScript writer](typescript.md#TypeScriptWriter)
+ - Applies: [The words are in catalogs](principles.md#WordsInCatalogs)
+@@ -578,7 +573,6 @@
+ The messages are written in `../engine-views/words.ts`.
+ 
+ - Owner: trame
+-- Body: `../engine-views/words.ts` (typescript)
+ - Written in: [Language](#Language)
+ 
+ <a id="KindWords"></a>
+@@ -592,7 +586,6 @@
+ The messages are written in `../kinds/words.ts`.
+ 
+ - Owner: trame
+-- Body: `../kinds/words.ts` (typescript)
+ - Written in: [Language](#Language)
+ 
+ <a id="LawMessages"></a>
+@@ -643,7 +636,6 @@
+ </details>
+ 
+ - Owner: trame
+-- Body: inline, in the declaration
+ - Written in: [Language](#Language)
+ - Used by: [Laws](engine.md#Laws)
+ - Applies: [The words are in catalogs](principles.md#WordsInCatalogs)
+@@ -712,7 +704,6 @@
+ </details>
+ 
+ - Owner: trame
+-- Body: inline, in the declaration
+ - Written in: [Language](#Language)
+ - Used by: [trame dev](command-scenarios.md#DevFollowsTheGraph), [The page exported](command-scenarios.md#PageExported), [The page of the graph](command-scenarios.md#PageOfTheGraph), [The graph in the intermediate format](command-scenarios.md#PayloadOfTheGraph), [Plan a build](commands.md#Plan), [Date bundle](engine.md#DateBundle), [Differences](engine.md#Differences), [Lock](engine.md#Lock), [Machine outputs](engine.md#MachineOutputs), [Views](engine.md#Views), [Page](page.md#Page)
+ - Applies: [The words are in catalogs](principles.md#WordsInCatalogs)
+@@ -729,7 +720,6 @@
+ 
+ - Owner: trame
+ - Parameters: `language` ← [Language](#Language)
+-- Body: `./code/page/words.ts` (typescript)
+ - Written in: [Language](#Language)
+ - Used by: [Explorer of a graph](browser.md#ExplorerFigures), [Show the graph](browser.md#ShowGraph), [Figures in SVG](rendering.md#SvgFigures)
+ - Applies: [A catalog counts in its language](#CountsInTheLanguage)
+@@ -770,7 +760,6 @@
+ </details>
+ 
+ - Owner: trame
+-- Body: inline, in the declaration
+ - Written in: [Language](#Language)
+ - Used by: [The command line](command-scenarios.md#CommandLineChooses), [Example process](platform.md#ExampleProcess), [Files in memory, over the disk](platform.md#MemoryFiles), [A server in memory](platform.md#MemoryHttpServer), [Terminal in memory](platform.md#MemoryTerminal), [Command line](platform.md#NodeCommandLine), [Node terminal](platform.md#NodeTerminal), [tree-sitter in WebAssembly](platform.md#WebTreeSitter)
+ - Applies: [The words are in catalogs](principles.md#WordsInCatalogs)
+@@ -786,7 +775,6 @@
+ The messages are written in `./code/rendering/messages.ts`.
+ 
+ - Owner: trame
+-- Body: `./code/rendering/messages.ts` (typescript)
+ - Written in: [Language](#Language)
+ - Used by: [Explorer of a graph](browser.md#ExplorerFigures), [Common rendering](rendering.md#Common), [Rendering of the files](rendering.md#FileRendering), [HTML writer](rendering.md#HtmlSyntax), [Markdown writer](rendering.md#MarkdownSyntax), [Mermaid diagrams](rendering.md#MermaidDiagrams), [Rendering in the page](rendering.md#PageRendering), [Plain text writer](rendering.md#PlainTextSyntax), [Figures in SVG](rendering.md#SvgFigures), [Rendering in the terminal](rendering.md#TerminalRendering), [Figures as text](rendering.md#TextFigures)
+ - Applies: [The words are in catalogs](principles.md#WordsInCatalogs)
+@@ -906,7 +894,6 @@
+ 
+ - Owner: trame
+ - Parameters: `language` ← [Language](#Language)
+-- Body: inline, in the declaration
+ - Written in: [Language](#Language)
+ - Used by: [An advance, in memory](command-scenarios.md#AdvanceInMemory), [A body is read and checked](command-scenarios.md#BodiesReadAndChecked), [A build planned](command-scenarios.md#BuildPlanned), [The command line](command-scenarios.md#CommandLineChooses), [A component assembled](command-scenarios.md#ComponentAssembled), [A component run](command-scenarios.md#ComponentRun), [Declarations published](command-scenarios.md#DeclarationsPublished), [trame dev](command-scenarios.md#DevFollowsTheGraph), [The doctor](command-scenarios.md#DoctorAsks), [The laws, tested by their command](command-scenarios.md#LawsTested), [A library released](command-scenarios.md#LibraryReleased), [The manifest written](command-scenarios.md#ManifestWritten), [The packages audited](command-scenarios.md#PackagesAudited), [The page delivered](command-scenarios.md#PageDelivered), [The page exported](command-scenarios.md#PageExported), [The page of the graph](command-scenarios.md#PageOfTheGraph), [The graph in the intermediate format](command-scenarios.md#PayloadOfTheGraph), [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [The snapshot, taken by its command](command-scenarios.md#SnapshotTaken), [A view in the terminal](command-scenarios.md#ViewsInTheTerminal), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore), [The described engine compiles the example](scenarios.md#CompileExample), [The documents write in the decided language](scenarios.md#DocumentWords), [The engine reckons as it says](scenarios.md#EngineReckons), [The laws of the kinds hold](scenarios.md#KindLaws), [The graph page is opened as a person would](sdlc.md#OpeningTheGraphPage)
+ - Applies: [A catalog counts in its language](#CountsInTheLanguage), [The words are in catalogs](principles.md#WordsInCatalogs)
+@@ -934,7 +921,6 @@
+ </details>
+ 
+ - Owner: trame
+-- Body: inline, in the declaration
+ - Written in: [Language](#Language)
+ - Used by: [Values with their units](documents.md#Units)
+ 
+@@ -996,7 +982,6 @@
+ 
+ - Owner: trame
+ - Parameters: `language` ← [Language](#Language)
+-- Body: inline, in the declaration
+ - Written in: [Language](#Language)
+ - Used by: [Compilation API](engine.md#CompilationApi), [Views](engine.md#Views)
+ - Applies: [A catalog counts in its language](#CountsInTheLanguage), [The words are in catalogs](principles.md#WordsInCatalogs)
+@@ -1012,5 +997,4 @@
+ The messages are written in `../views/words.ts`.
+ 
+ - Owner: trame
+-- Body: `../views/words.ts` (typescript)
+ - Written in: [Language](#Language)
+diff -ru /tmp/SOgBtc/reference/trame/docs/sdlc.md /tmp/SOgBtc/candidate/trame/docs/sdlc.md
+--- /tmp/SOgBtc/reference/trame/docs/sdlc.md	2026-10-31 09:13:25.556309263 +0100
++++ /tmp/SOgBtc/candidate/trame/docs/sdlc.md	2026-10-31 09:15:18.068311188 +0100
+@@ -136,7 +136,6 @@
+ </details>
+ 
+ - Owner: trame
+-- Body: inline, in the declaration
+ - Written in: [Language](messages.md#Language)
+ - Used by: [The graph page is opened as a person would](#OpeningTheGraphPage), [Open the graph page](#OpenTheGraphPage)
+ 
+diff -ru /tmp/SOgBtc/reference/trame/docs/syntax.md /tmp/SOgBtc/candidate/trame/docs/syntax.md
+--- /tmp/SOgBtc/reference/trame/docs/syntax.md	2026-10-31 09:13:25.556309263 +0100
++++ /tmp/SOgBtc/candidate/trame/docs/syntax.md	2026-10-31 09:15:18.068311188 +0100
+@@ -231,6 +231,5 @@
+ </details>
+ 
+ - Owner: trame
+-- Body: inline, in the declaration
+ - Written in: [Language](messages.md#Language)
+ - Used by: [Syntax reader](#SyntaxReader)

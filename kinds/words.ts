@@ -341,6 +341,9 @@ const body = () => ({
   requirementTheOriginalRuleInTheCode: () => "The original rule, in the code",
   requirementTheRuleInTheCode: () => "The rule, in the code",
   requirementRuleRedefinedBy: (by: Inline): Inline[] => ["Rule redefined by ", by, ". The code below is the original rule."],
+  requirementRuleOnce: () => "A requirement writes its rule once: as a body (body), or, until every rule is one, as the function itself (rule)",
+  requirementRuleNotABody: () =>
+    "Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
 
   // rule -------------------------------------------------------------------------------------------------------
 

@@ -236,6 +236,10 @@ const body = (deps: Deps) => {
           t()
           return st.results?.get(n) as T | undefined
         },
+        given() {
+          t()
+          return m.give?.()
+        },
       }
       Object.freeze(v)
       views.set(n, v)

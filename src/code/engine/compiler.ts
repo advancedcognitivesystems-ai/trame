@@ -181,7 +181,7 @@ const body = (deps: Deps) => {
   const { analyze } = deps.analysis
   const { projectDirs } = deps.project
   const { makeGraph } = deps.graph
-  const { wireDeps, bodyPath, depsOf, plan, constantsOf } = deps.wiring
+  const { wireDeps, bodyPath, bodyOf, depsOf, plan, constantsOf } = deps.wiring
   const { driverFor, graphDriver } = deps.drivers
   const { kinds, allNodes, meta, isNode, isHole, refOf, ownerOf, Hole, Contested, HOLE, REMOVE, getPath, setPath, cloneData, overlaps, isFileBody } = deps.prelude.internal
 
@@ -844,6 +844,27 @@ const body = (deps: Deps) => {
 
     // A refused body (hidden dependency, access to the platform…) is never run, neither by a scenario nor at assembly.
     for (const d of diags) if (d.origin === Origin.code && d.severity === Severity.error && d.node) refused.add(d.node)
+
+    // A node of a kind that is called (a requirement) and that has a body (its rule written as a body, which receives
+    // its dependencies as parameters, since g79): wired here, in no environment, so that the node called (by acceptance
+    // criteria, by a kind through its view) is the rule its dependencies make. What wiring meets (a value nobody decided,
+    // a body refused) is thrown where the node is called, as reading that value would.
+    for (const n of nodes) meta(n).give = undefined
+    for (const n of nodes) {
+      if (meta(n).def.callable === undefined || bodyOf(n) === undefined || repealed(n)) continue
+      const name = refOf(n)
+      let value: unknown
+      let failure: unknown
+      try {
+        value = (await wireDeps({ graph: g, root: l.root, today, refused }, [{ name, node: n }], undefined))[name]
+      } catch (e) {
+        failure = e
+      }
+      meta(n).give = () => {
+        if (failure !== undefined) throw failure
+        return value
+      }
+    }
 
     // A literal written in a body is an error: its value belongs in the graph, with its meaning (a standard, a decision,
     // a structure, a catalog). The text of a catalog is what the catalog declares. One error per node, with each place.

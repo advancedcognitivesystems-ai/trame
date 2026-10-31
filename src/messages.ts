@@ -205,6 +205,8 @@ export const CompilerMessages = catalog({
       `"${node}": the variable "${variable}" must receive a value, and "${from}" gives none`,
     variableWithoutValue: (node: string, variable: string, error: string) => `"${node}": the variable "${variable}" has no value (${error})`,
     amendedNotJson: (node: string) => `"${node}" is amended at this date and cannot be written as JSON: it cannot be frozen`,
+    /** A body a claim redefines in force (a requirement's rule amended): a program reads bodies as declared. */
+    amendedBody: (node: string) => `the body of "${node}" is amended at this date: a program runs bodies as they are declared, so it cannot be frozen`,
     amendedFieldNotJson: (node: string, field: string) =>
       `"${node}" is amended at this date and its field "${field}", which a rule reads, cannot be written as JSON: it cannot be frozen`,
     nothingToFreeze: (node: string, error: string) => `"${node}" has no value to freeze (${error})`,

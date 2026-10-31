@@ -8,11 +8,11 @@
 
 | Target | Path | Declared | Requested | By | Outcome |
 |---|---|---|---|---|---|
-| [Refund on cancellation](cancellation.md#Refund) | `rule` | original rule | redefined rule | [Launch of the ultra chargers](committee.md#UltraLaunch) | not in force on 30 October 2026 |
+| [Refund on cancellation](cancellation.md#Refund) | `body` | original rule | redefined rule | [Launch of the ultra chargers](committee.md#UltraLaunch) | not in force on 30 October 2026 |
 | [Free cancellation period](cancellation.md#FreeCancellationPeriod) | `value.ultra` | **to be decided** | 15 min | [Period for ultra chargers](committee.md#UltraPeriod) | applied (approved by lea, owner of "Free cancellation period") |
 | [Free cancellation period](cancellation.md#FreeCancellationPeriod) | `value.ultra` | **to be decided** | 12 min | [Ultra period requested by support](support.md#SupportUltraPeriod) | discarded in favour of [Period for ultra chargers](committee.md#UltraPeriod) (approved by lea, owner of "Free cancellation period") |
 
-- [Refund on cancellation](cancellation.md#Refund), in force on 30 October 2026 with the branch: `rule` = original rule
+- [Refund on cancellation](cancellation.md#Refund), in force on 30 October 2026 with the branch: `body` = original rule
 - [Free cancellation period](cancellation.md#FreeCancellationPeriod), in force on 30 October 2026 with the branch: `value` = { fast: 5 min, normal: 10 min, ultra: 15 min }
 
 ## Overlaps

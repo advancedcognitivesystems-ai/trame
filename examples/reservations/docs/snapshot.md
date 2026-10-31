@@ -170,6 +170,7 @@ Goal · `CancelWithoutStress`
 
 Requirement · `Refund` · **held**
 
+- Parameters: { period: cancellation.FreeCancellationPeriod, fee: cancellation.LateFee }
 - Refines: Cancel without stress
 - Assumes: Idempotent payment provider
 - Depends on: Free cancellation period, Late cancellation fee

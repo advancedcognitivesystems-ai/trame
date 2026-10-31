@@ -1151,3 +1151,19 @@ export const G78 = release({
   archive: "9966fe46b969be85",
   assembledBy: G77,
 })
+
+/**
+ * Generation 79
+ */
+export const G79 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g79",
+  date: "2026-10-31",
+  what: "A requirement's rule is code: written as a body (body, since g79), it receives what it reads as parameters and is held to what holds a body. The engine wires such a rule so that the node called is the rule its dependencies make (given to kinds through their views), builds a node from its body before what its kind gives from its declaration, and refuses to freeze a body amended in force",
+  fingerprint: "7ce72f994d90a87d",
+  language: "shared",
+  archive: "49119db4a1500f21",
+  differences: "differences.diff",
+  assembledBy: G78,
+})

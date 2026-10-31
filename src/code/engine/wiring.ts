@@ -169,12 +169,8 @@ const body = (deps: Deps) => {
           }
           return name
         }
-        if (def.provide) {
-          const name = varName(n, taken)
-          p.steps.push({ name, node: n, how: WireMode.value, deps: [], constants: {}, via })
-          p.names.set(n, name)
-          return name
-        }
+        // A body comes first (since g79): a kind may also say what a node gives from its declaration alone, for the
+        // programs assembled before its bodies (a requirement's rule, written as the function itself until g79).
         if (bodyOf(n) !== undefined) {
           const deps: Step["deps"] = []
           for (const [param, target] of depsOf(n)) {
@@ -183,6 +179,12 @@ const body = (deps: Deps) => {
           }
           const name = varName(n, taken)
           p.steps.push({ name, node: n, how: WireMode.body, deps, constants: constantsOf(n), via })
+          p.names.set(n, name)
+          return name
+        }
+        if (def.provide) {
+          const name = varName(n, taken)
+          p.steps.push({ name, node: n, how: WireMode.value, deps: [], constants: {}, via })
           p.names.set(n, name)
           return name
         }
