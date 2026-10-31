@@ -6,7 +6,7 @@
 |---|---|---|---|---|
 | The operators | 0 | 0 | 2 | 0 |
 | karim | 6 | 0 | 11 | 102 |
-| lea | 0 | 0 | 0 | 11 |
+| lea | 0 | 0 | 1 | 11 |
 | trame | 0 | 0 | 1 | 0 |
 
 <a id="The operators"></a>
@@ -162,7 +162,9 @@
 
 ## lea
 
-Nothing to decide or watch.
+| Severity | What | Where | Owner | Consequence |
+|---|---|---|---|---|
+| warning | Awaits the approval of lea, who answers for “Free cancellation period” | [Ultra period requested by support](support.md#SupportUltraPeriod) | lea |  |
 
 ### Owns
 

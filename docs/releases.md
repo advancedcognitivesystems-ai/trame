@@ -1725,6 +1725,27 @@ Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Ge
 - Released by: trame
 - Releases: [Trame on the command line](architecture.md#TrameCli)
 - Assembled by: [Generation 83](#G83)
+- Assembled: [Generation 85](#G85)
+
+<a id="G85"></a>
+
+### Generation 85
+
+`G85` · `src/releases.ts:1250`
+
+A4a: each kind says how its values change (chosen, cited, code); trame amend says what an amendment would change, then records it where amendments go (the port, in place in the sources); an amendment awaits its owner's approval
+
+Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Generation 84](#G84).
+
+- Version: `g85`
+- Released on: 31 October 2026
+- Fingerprint: `d33961c1bb511390`
+- Language: the repository's, shared
+- Language archived: `3bb158af0204c23b`
+
+- Released by: trame
+- Releases: [Trame on the command line](architecture.md#TrameCli)
+- Assembled by: [Generation 84](#G84)
 
 <a id="G9"></a>
 

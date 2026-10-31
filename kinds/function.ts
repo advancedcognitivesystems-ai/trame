@@ -1,6 +1,6 @@
 import {
   defineKind, field, optional, edge, optionalEdge, hole, doc, keysOf, edgesOf, Status, KindName, EdgeName, LanguageEffect,
-  type AnyNode, type Node, type Provides, type HasDeps, type Provided, type ProvidedBy, type FileBody, type Signature, type Constant, type Values, type Declares,
+  type AnyNode, type Node, type Provides, type HasDeps, type Provided, type ProvidedBy, type FileBody, type Signature, type Constant, type Values, type Declares, ChangeWay
 } from "../trame/kernel"
 import { verifiedStatus } from "./scenario"
 import words from "./words"
@@ -27,6 +27,7 @@ const kind = defineKind({
   name: KindName.function,
   label: { one: say.functionFunction(), many: say.functionFunctions() },
   fields,
+  changes: { [F.constants]: ChangeWay.chosen },
   edges: {
     [EdgeName.serves]: optionalEdge(edge.many([KindName.requirement, KindName.goal], { label: say.adrServes(), inverse: say.adrServedBy() })),
     [EdgeName.partOf]: optionalEdge(edge.one([KindName.component], { label: say.entryPointPartOf(), inverse: say.functionContains() })),

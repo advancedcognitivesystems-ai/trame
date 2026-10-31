@@ -78,6 +78,26 @@ export interface Layout {
 }
 
 /** The prelude: the part of the language that kinds, views and the engine share (the registry of nodes and kinds). */
+/** An amendment to record (since g85): what it amends, where that is declared, what it changes, who, why, from when. */
+export interface AmendmentToRecord {
+  /** The file the node it amends is declared in. */
+  file: string
+  /** The name the node it amends is declared under, and the name the amendment takes. */
+  target: string
+  name: string
+  /** What it changes, path by path: a value as JSON writes it. */
+  patch: Record<string, unknown>
+  owner: string
+  why: string
+  from: string
+  until?: string
+  /** The module that declares amendments, as that file imports it. */
+  kind: string
+}
+export interface AmendmentPlace {
+  /** Records the amendment where the strategy puts it; gives the file it went to. */
+  record(a: AmendmentToRecord): { file: string }
+}
 export interface Prelude {
   internal: typeof import("#trame/internal")
   /** The path of the module, so that a frozen program imports it. */
@@ -248,6 +268,14 @@ const effects = (...e: Effect[]): Effect[] => e
  * The registry of nodes and kinds, and the tooling of frozen programs: what the language shares with the engine.
  */
 export const Prelude = port<Prelude>({ owner: "trame", declaredEffects: effects("read") })
+
+/**
+ * Where an amendment goes
+ * An amendment written by trame amend or from the page is recorded where the project keeps its amendments: a concept,
+ * with its strategies. The first writes it in place, in the sources, beside the node it amends; a pull request will be
+ * another.
+ */
+export const AmendmentPlace = port<AmendmentPlace>({ owner: "trame", declaredEffects: { record: effects("read", "write") } })
 
 /**
  * File reading

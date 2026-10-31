@@ -224,7 +224,7 @@ The program of Trame's command line, assembled from the graph for a machine: wha
 
 - Path: `out/local/trame-cli.ts`
 
-Built 31 October 2026 by claude, fingerprint `4212a6fa1bc44af5a9ef89a812852ff881dfb426b94a0a2e31209f08ac5e0718`.
+Built 31 October 2026 by claude, fingerprint `e1ff3f33314bea7e35fa2d285a2466adb808a6497021ae10f7e06ee38cb8d02f`.
 
 - Owner: trame
 - Produced by: [Trame on the command line](architecture.md#TrameCli)
@@ -242,7 +242,7 @@ The page trame export writes of Trame's graph, which a browser opens as it is: i
 - Path: `trame-page.html`
 - Media type: `text/html; charset=utf-8`
 
-Built 31 October 2026 by claude, fingerprint `82c9d03934156a19562d333162c90afc0b3f2ef9d2a6b78f0f92896f9a9d77ca`.
+Built 31 October 2026 by claude, fingerprint `93f7f4daab34f98ed804a05ef6b955ed7af828cd04f889d1da62546762163473`.
 
 - Owner: trame
 - Produced by: [Export the page](commands.md#Export)
@@ -261,7 +261,7 @@ The component that shows the graph page, assembled for the browser where the eng
 
 - Path: `out/browser/page-app.ts`
 
-Built 31 October 2026 by claude, fingerprint `50c271aa40b6f99403d8038833511f22e393e472e83f24ab46761dafee8640b9`.
+Built 31 October 2026 by claude, fingerprint `c72b43e43ffbdae6448387a57b0d9887c9be8232cc00085f696bff65d634defb`.
 
 - Owner: trame
 - Produced by: [The page in a browser](architecture.md#PageApp)
@@ -364,7 +364,7 @@ The engine as the graph describes it now, frozen into the next generation and pi
 | [Kinds and views say what; renderers say how](rendering.md#MeaningThenLook) | **held** | [The decisions of the architecture hold](#ArchitectureApplied), for [Common rendering](rendering.md#Common) |
 | [Generations: frozen engines](principles.md#GenerationLayer) | **held** | [The decisions of the architecture hold](#ArchitectureApplied), for [Accept a candidate](generations.md#AcceptCandidate) |
 | [Trame builds Trame](principles.md#TrameBuildsTrame) | **held** | [The decisions of the architecture hold](#ArchitectureApplied), for [Accept a candidate](generations.md#AcceptCandidate) |
-| [One output for each reader](principles.md#OneOutputPerReader) | **held** | [The decisions of the architecture hold](#ArchitectureApplied), for [Assembly](engine.md#Assembly) |
+| [One output for each reader](principles.md#OneOutputPerReader) | **held** | [The decisions of the architecture hold](#ArchitectureApplied), for [Machine outputs](engine.md#MachineOutputs) |
 | [One renderer, its syntax a choice](rendering.md#OneRendererManySyntaxes) | **held** | [The decisions of the architecture hold](#ArchitectureApplied), for [Rendering of the files](rendering.md#FileRendering) |
 | [A product is delivered by a node of the graph](principles.md#DeliveredByTheGraph) | **held** | [The decisions of the architecture hold](#ArchitectureApplied), for [Style of a delivered page](delivery.md#DeliveredStyle) |
 | [A style sheet writes no value](page.md#StyleThroughVariables) | **held** | [The decisions of the architecture hold](#ArchitectureApplied), for [Theme](page.md#Theme) |
@@ -398,6 +398,7 @@ The engine as the graph describes it now, frozen into the next generation and pi
 | [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore) | **held** | [The engine is verified](#EngineVerified), for [Compilation API](engine.md#CompilationApi) |
 | [The laws of the kinds hold](scenarios.md#KindLaws) | **held** | [The engine is verified](#EngineVerified), for [Laws](engine.md#Laws) |
 | [A library released](command-scenarios.md#LibraryReleased) | **held** | [The engine is verified](#EngineVerified), for [Records of the releases](generations.md#ReleaseRecords) |
+| [A value amended](command-scenarios.md#ValueAmended) | **held** | [The engine is verified](#EngineVerified), for [Two builds compared](commands.md#BuildComparison) |
 | [The packages audited](command-scenarios.md#PackagesAudited) | **held** | [The engine is verified](#EngineVerified), for [Audit the packages](commands.md#Audit) |
 | [A view in the terminal](command-scenarios.md#ViewsInTheTerminal) | **held** | [The engine is verified](#EngineVerified), for [Figures as text](rendering.md#TextFigures) |
 | [The page of the graph](command-scenarios.md#PageOfTheGraph) | **held** | [The engine is verified](#EngineVerified), for [esbuild](platform.md#Esbuild) |
@@ -405,7 +406,7 @@ The engine as the graph describes it now, frozen into the next generation and pi
 | [trame dev](command-scenarios.md#DevFollowsTheGraph) | **held** | [The engine is verified](#EngineVerified), for [Node timer](platform.md#NodeTimer) |
 | [The page exported](command-scenarios.md#PageExported) | **held** | [The engine is verified](#EngineVerified), for [Date bundle](engine.md#DateBundle) |
 | [The graph in the intermediate format](command-scenarios.md#PayloadOfTheGraph) | **held** | [The engine is verified](#EngineVerified), for [Differences](engine.md#Differences) |
-| [A build planned](command-scenarios.md#BuildPlanned) | **held** | [The engine is verified](#EngineVerified), for [Plan a build](commands.md#Plan) |
+| [A build planned](command-scenarios.md#BuildPlanned) | **held** | [The engine is verified](#EngineVerified), for [Plan](commands.md#Plan) |
 | [Declarations published](command-scenarios.md#DeclarationsPublished) | **held** | [The engine is verified](#EngineVerified), for [Publish](commands.md#Publish) |
 | [A component run](command-scenarios.md#ComponentRun) | **held** | [The engine is verified](#EngineVerified), for [Run a component](commands.md#Run) |
 | [The snapshot, taken by its command](command-scenarios.md#SnapshotTaken) | **held** | [The engine is verified](#EngineVerified), for [Take the snapshot](commands.md#TakeSnapshot) |
@@ -427,7 +428,7 @@ The engine as the graph describes it now, frozen into the next generation and pi
 | [The resolution does not depend on the order](laws.md#OrderFree) | **held** | [The language serves what it says](#LanguageServed), for [Complete declaration](laws.md#CompleteDeclaration) |
 | [Without evidence, the status is unknown](laws.md#UnknownWithoutEvidence) | **held** | [The language serves what it says](#LanguageServed), for [Complete declaration](laws.md#CompleteDeclaration) |
 
-Shipped 31 October 2026 by claude; its dossier: `evidence/shipments/NextGeneration-2026-10-31-ce704a4f.json`.
+Shipped 31 October 2026 by claude; its dossier: `evidence/shipments/NextGeneration-2026-10-31-a2e343d7.json`.
 
 - Owner: trame
 - Ships: [The candidate engine](#EngineCandidate), [The page's program](#PageProgram), [The graph page](#GraphPage)

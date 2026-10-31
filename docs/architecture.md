@@ -10,7 +10,7 @@
 
 ### The page in a browser
 
-`PageApp` · `src/architecture.ts:492`
+`PageApp` · `src/architecture.ts:520`
 
 What runs in the page Trame writes: it shows the documents of the graph at each date, follows trame dev, and explores the figures too large to be read whole. Assembled for the browser like the command line for a machine: the values of the graph are written into its program, and its implementations are the browser's.
 
@@ -29,29 +29,53 @@ What runs in the page Trame writes: it shows the documents of the graph at each 
 
 ### Trame on the command line
 
-`TrameCli` · `src/architecture.ts:479`
+`TrameCli` · `src/architecture.ts:507`
 
 The `trame` program: build, views, laws, snapshot, publication, export, dev, assembly.
 
-20 entry points: [Advance](commands.md#Advance), [Assemble a component](commands.md#Assemble), [Audit the packages](commands.md#Audit), [Build](commands.md#Build), [Deliver](commands.md#Deliver), [Start trame dev](commands.md#Dev), [Ask the machine](commands.md#Doctor), [Payload](commands.md#EmitPayload), [Export the page](commands.md#Export), [Plan a build](commands.md#Plan), [Publish](commands.md#Publish), [Record evidence](commands.md#RecordEvidence), [Release a version](commands.md#Release), [Run a component](commands.md#Run), [Ship](commands.md#Ship), [Show a view](commands.md#ShowView), [Take the snapshot](commands.md#TakeSnapshot), [Test the laws](commands.md#TestKinds), [View by its name](commands.md#ViewByName), [Write the manifest](commands.md#WriteManifest)
+21 entry points: [Advance](commands.md#Advance), [Amend](commands.md#Amend), [Assemble a component](commands.md#Assemble), [Audit the packages](commands.md#Audit), [Build](commands.md#Build), [Deliver](commands.md#Deliver), [Start trame dev](commands.md#Dev), [Ask the machine](commands.md#Doctor), [Payload](commands.md#EmitPayload), [Export the page](commands.md#Export), [Plan](commands.md#Plan), [Publish](commands.md#Publish), [Record evidence](commands.md#RecordEvidence), [Release a version](commands.md#Release), [Run a component](commands.md#Run), [Ship](commands.md#Ship), [Show a view](commands.md#ShowView), [Take the snapshot](commands.md#TakeSnapshot), [Test the laws](commands.md#TestKinds), [View by its name](commands.md#ViewByName), [Write the manifest](commands.md#WriteManifest)
 
 - Owner: trame
 - Language: typescript
 - Startup: `exposure` ← [Command line](#CommandLine)
 - Effects: terminal
 - Deployed in: [Local](#Local), [Test](#Test)
-- Exposes: [Advance](commands.md#Advance), [Assemble a component](commands.md#Assemble), [Audit the packages](commands.md#Audit), [Build](commands.md#Build), [Deliver](commands.md#Deliver), [Start trame dev](commands.md#Dev), [Ask the machine](commands.md#Doctor), [Payload](commands.md#EmitPayload), [Export the page](commands.md#Export), [Plan a build](commands.md#Plan), [Publish](commands.md#Publish), [Record evidence](commands.md#RecordEvidence), [Release a version](commands.md#Release), [Run a component](commands.md#Run), [Ship](commands.md#Ship), [Show a view](commands.md#ShowView), [Take the snapshot](commands.md#TakeSnapshot), [Test the laws](commands.md#TestKinds), [View by its name](commands.md#ViewByName), [Write the manifest](commands.md#WriteManifest)
+- Exposes: [Advance](commands.md#Advance), [Amend](commands.md#Amend), [Assemble a component](commands.md#Assemble), [Audit the packages](commands.md#Audit), [Build](commands.md#Build), [Deliver](commands.md#Deliver), [Start trame dev](commands.md#Dev), [Ask the machine](commands.md#Doctor), [Payload](commands.md#EmitPayload), [Export the page](commands.md#Export), [Plan](commands.md#Plan), [Publish](commands.md#Publish), [Record evidence](commands.md#RecordEvidence), [Release a version](commands.md#Release), [Run a component](commands.md#Run), [Ship](commands.md#Ship), [Show a view](commands.md#ShowView), [Take the snapshot](commands.md#TakeSnapshot), [Test the laws](commands.md#TestKinds), [View by its name](commands.md#ViewByName), [Write the manifest](commands.md#WriteManifest)
 - Applies: [The engine: a graph like any product's](principles.md#EngineLayer)
-- Released as: [Generation 1](releases.md#G1), [Generation 10](releases.md#G10), [Generation 11](releases.md#G11), [Generation 12](releases.md#G12), [Generation 13](releases.md#G13), [Generation 14](releases.md#G14), [Generation 15](releases.md#G15), [Generation 16](releases.md#G16), [Generation 17](releases.md#G17), [Generation 18](releases.md#G18), [Generation 19](releases.md#G19), [Generation 2](releases.md#G2), [Generation 20](releases.md#G20), [Generation 21](releases.md#G21), [Generation 22](releases.md#G22), [Generation 23](releases.md#G23), [Generation 24](releases.md#G24), [Generation 25](releases.md#G25), [Generation 26](releases.md#G26), [Generation 27](releases.md#G27), [Generation 28](releases.md#G28), [Generation 29](releases.md#G29), [Generation 3](releases.md#G3), [Generation 30](releases.md#G30), [Generation 31](releases.md#G31), [Generation 32](releases.md#G32), [Generation 33](releases.md#G33), [Generation 34](releases.md#G34), [Generation 35](releases.md#G35), [Generation 36](releases.md#G36), [Generation 37](releases.md#G37), [Generation 38](releases.md#G38), [Generation 39](releases.md#G39), [Generation 4](releases.md#G4), [Generation 40](releases.md#G40), [Generation 41](releases.md#G41), [Generation 42](releases.md#G42), [Generation 43](releases.md#G43), [Generation 44](releases.md#G44), [Generation 45](releases.md#G45), [Generation 46](releases.md#G46), [Generation 47](releases.md#G47), [Generation 48](releases.md#G48), [Generation 49](releases.md#G49), [Generation 5](releases.md#G5), [Generation 50](releases.md#G50), [Generation 51](releases.md#G51), [Generation 52](releases.md#G52), [Generation 53](releases.md#G53), [Generation 54](releases.md#G54), [Generation 55](releases.md#G55), [Generation 56](releases.md#G56), [Generation 57](releases.md#G57), [Generation 58](releases.md#G58), [Generation 59](releases.md#G59), [Generation 6](releases.md#G6), [Generation 60](releases.md#G60), [Generation 61](releases.md#G61), [Generation 62](releases.md#G62), [Generation 63](releases.md#G63), [Generation 64](releases.md#G64), [Generation 65](releases.md#G65), [Generation 66](releases.md#G66), [Generation 67](releases.md#G67), [Generation 68](releases.md#G68), [Generation 69](releases.md#G69), [Generation 7](releases.md#G7), [Generation 70](releases.md#G70), [Generation 71](releases.md#G71), [Generation 72](releases.md#G72), [Generation 73](releases.md#G73), [Generation 74](releases.md#G74), [Generation 75](releases.md#G75), [Generation 76](releases.md#G76), [Generation 77](releases.md#G77), [Generation 78](releases.md#G78), [Generation 79](releases.md#G79), [Generation 8](releases.md#G8), [Generation 80](releases.md#G80), [Generation 81](releases.md#G81), [Generation 82](releases.md#G82), [Generation 83](releases.md#G83), [Generation 84](releases.md#G84), [Generation 9](releases.md#G9)
+- Released as: [Generation 1](releases.md#G1), [Generation 10](releases.md#G10), [Generation 11](releases.md#G11), [Generation 12](releases.md#G12), [Generation 13](releases.md#G13), [Generation 14](releases.md#G14), [Generation 15](releases.md#G15), [Generation 16](releases.md#G16), [Generation 17](releases.md#G17), [Generation 18](releases.md#G18), [Generation 19](releases.md#G19), [Generation 2](releases.md#G2), [Generation 20](releases.md#G20), [Generation 21](releases.md#G21), [Generation 22](releases.md#G22), [Generation 23](releases.md#G23), [Generation 24](releases.md#G24), [Generation 25](releases.md#G25), [Generation 26](releases.md#G26), [Generation 27](releases.md#G27), [Generation 28](releases.md#G28), [Generation 29](releases.md#G29), [Generation 3](releases.md#G3), [Generation 30](releases.md#G30), [Generation 31](releases.md#G31), [Generation 32](releases.md#G32), [Generation 33](releases.md#G33), [Generation 34](releases.md#G34), [Generation 35](releases.md#G35), [Generation 36](releases.md#G36), [Generation 37](releases.md#G37), [Generation 38](releases.md#G38), [Generation 39](releases.md#G39), [Generation 4](releases.md#G4), [Generation 40](releases.md#G40), [Generation 41](releases.md#G41), [Generation 42](releases.md#G42), [Generation 43](releases.md#G43), [Generation 44](releases.md#G44), [Generation 45](releases.md#G45), [Generation 46](releases.md#G46), [Generation 47](releases.md#G47), [Generation 48](releases.md#G48), [Generation 49](releases.md#G49), [Generation 5](releases.md#G5), [Generation 50](releases.md#G50), [Generation 51](releases.md#G51), [Generation 52](releases.md#G52), [Generation 53](releases.md#G53), [Generation 54](releases.md#G54), [Generation 55](releases.md#G55), [Generation 56](releases.md#G56), [Generation 57](releases.md#G57), [Generation 58](releases.md#G58), [Generation 59](releases.md#G59), [Generation 6](releases.md#G6), [Generation 60](releases.md#G60), [Generation 61](releases.md#G61), [Generation 62](releases.md#G62), [Generation 63](releases.md#G63), [Generation 64](releases.md#G64), [Generation 65](releases.md#G65), [Generation 66](releases.md#G66), [Generation 67](releases.md#G67), [Generation 68](releases.md#G68), [Generation 69](releases.md#G69), [Generation 7](releases.md#G7), [Generation 70](releases.md#G70), [Generation 71](releases.md#G71), [Generation 72](releases.md#G72), [Generation 73](releases.md#G73), [Generation 74](releases.md#G74), [Generation 75](releases.md#G75), [Generation 76](releases.md#G76), [Generation 77](releases.md#G77), [Generation 78](releases.md#G78), [Generation 79](releases.md#G79), [Generation 8](releases.md#G8), [Generation 80](releases.md#G80), [Generation 81](releases.md#G81), [Generation 82](releases.md#G82), [Generation 83](releases.md#G83), [Generation 84](releases.md#G84), [Generation 85](releases.md#G85), [Generation 9](releases.md#G9)
 - Produces: [The candidate engine](sdlc.md#EngineCandidate)
 
 ## Ports
+
+<a id="AmendmentPlace"></a>
+
+### Where an amendment goes
+
+`AmendmentPlace` · `src/architecture.ts:278`
+
+An amendment written by trame amend or from the page is recorded where the project keeps its amendments: a concept, with its strategies. The first writes it in place, in the sources, beside the node it amends; a pull request will be another.
+
+| Method | What it may do |
+|---|---|
+| `record` | read, write |
+
+| Environment | Answered by | Chosen by |
+|---|---|---|
+| [Browser](#Browser) | none | — |
+| [Local](#Local) | [Amendments in place](platform.md#InPlaceSources) | [Amendments go in the sources](platform.md#AmendmentsInPlace) |
+| [Test](#Test) | [Amendments in place](platform.md#InPlaceSources) | [Amendments go in the sources](platform.md#AmendmentsInPlace) |
+| [Test](../std/docs/scenarios.md#Test) | none | — |
+
+- Owner: trame
+- Effects: read, write
+- Used by: [Amend](commands.md#Amend)
+- Implemented by: [Amendments in place](platform.md#InPlaceSources)
 
 <a id="Bundler"></a>
 
 ### Bundler
 
-`Bundler` · `src/architecture.ts:382`
+`Bundler` · `src/architecture.ts:410`
 
 Gathers the page's program and what it imports into a single module for the browser.
 
@@ -71,7 +95,7 @@ Gathers the page's program and what it imports into a single module for the brow
 
 ### Clock
 
-`Clock` · `src/architecture.ts:366`
+`Clock` · `src/architecture.ts:394`
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
@@ -89,7 +113,7 @@ Gathers the page's program and what it imports into a single module for the brow
 
 ### Command line
 
-`CommandLine` · `src/architecture.ts:423`
+`CommandLine` · `src/architecture.ts:451`
 
 Exposes Trame's commands: reads the arguments, calls the command, exits with its code.
 
@@ -109,7 +133,7 @@ Exposes Trame's commands: reads the arguments, calls the command, exits with its
 
 ### Compression
 
-`Compression` · `src/architecture.ts:394`
+`Compression` · `src/architecture.ts:422`
 
 A text made smaller for a page to carry: the browser decompresses it.
 
@@ -128,7 +152,7 @@ A text made smaller for a page to carry: the browser decompresses it.
 
 ### Decompression
 
-`Decompression` · `src/architecture.ts:450`
+`Decompression` · `src/architecture.ts:478`
 
 The graph an exported page carries, made whole again by the browser.
 
@@ -147,7 +171,7 @@ The graph an exported page carries, made whole again by the browser.
 
 ### File reading
 
-`FileReading` · `src/architecture.ts:255`
+`FileReading` · `src/architecture.ts:283`
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
@@ -158,14 +182,14 @@ The graph an exported page carries, made whole again by the browser.
 
 - Owner: trame
 - Effects: read
-- Used by: [An advance, in memory](command-scenarios.md#AdvanceInMemory), [The manifest written](command-scenarios.md#ManifestWritten), [The snapshot, taken by its command](command-scenarios.md#SnapshotTaken), [Advance](commands.md#Advance), [Audit the packages](commands.md#Audit), [Deliver](commands.md#Deliver), [Ask the machine](commands.md#Doctor), [Plan a build](commands.md#Plan), [Release a version](commands.md#Release), [Ship](commands.md#Ship), [Write the manifest](commands.md#WriteManifest), [Compiler](engine.md#Compiler), [trame dev server](engine.md#DevServer), [The fingerprint of an engine](engine.md#EngineFingerprint), [Laws](engine.md#Laws), [Lock](engine.md#Lock), [Project](engine.md#Project), [The runs of a project](engine.md#ProjectRuns), [Views](engine.md#Views), [Drivers](languages.md#Drivers), [Page](page.md#Page), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore), [Evidence of the SDLC](shipping.md#SdlcEvidence), [The plan of a run elsewhere](shipping.md#ShipmentRunPlan), [Syntax reader](syntax.md#SyntaxReader)
+- Used by: [An advance, in memory](command-scenarios.md#AdvanceInMemory), [The manifest written](command-scenarios.md#ManifestWritten), [The snapshot, taken by its command](command-scenarios.md#SnapshotTaken), [Advance](commands.md#Advance), [Audit the packages](commands.md#Audit), [Deliver](commands.md#Deliver), [Ask the machine](commands.md#Doctor), [Plan](commands.md#Plan), [Release a version](commands.md#Release), [Ship](commands.md#Ship), [Write the manifest](commands.md#WriteManifest), [Compiler](engine.md#Compiler), [trame dev server](engine.md#DevServer), [The fingerprint of an engine](engine.md#EngineFingerprint), [Laws](engine.md#Laws), [Lock](engine.md#Lock), [Project](engine.md#Project), [The runs of a project](engine.md#ProjectRuns), [Views](engine.md#Views), [Drivers](languages.md#Drivers), [Page](page.md#Page), [Amendments in place](platform.md#InPlaceSources), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore), [Evidence of the SDLC](shipping.md#SdlcEvidence), [The plan of a run elsewhere](shipping.md#ShipmentRunPlan), [Syntax reader](syntax.md#SyntaxReader)
 - Implemented by: [System files, for reading](platform.md#DiskReading), [Files in memory, over the disk](platform.md#MemoryFiles)
 
 <a id="FileTrees"></a>
 
 ### File trees
 
-`FileTrees` · `src/architecture.ts:411`
+`FileTrees` · `src/architecture.ts:439`
 
 Copies, links, removes and compares files and directories: what an advance does with documents and generations.
 
@@ -194,7 +218,7 @@ Copies, links, removes and compares files and directories: what an advance does 
 
 ### File writing
 
-`FileWriting` · `src/architecture.ts:260`
+`FileWriting` · `src/architecture.ts:288`
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
@@ -205,14 +229,14 @@ Copies, links, removes and compares files and directories: what an advance does 
 
 - Owner: trame
 - Effects: write
-- Used by: [An advance, in memory](command-scenarios.md#AdvanceInMemory), [A build planned](command-scenarios.md#BuildPlanned), [trame dev](command-scenarios.md#DevFollowsTheGraph), [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [Advance](commands.md#Advance), [Assemble a component](commands.md#Assemble), [Audit the packages](commands.md#Audit), [Build](commands.md#Build), [Deliver](commands.md#Deliver), [Ask the machine](commands.md#Doctor), [Export the page](commands.md#Export), [Publish](commands.md#Publish), [Record evidence](commands.md#RecordEvidence), [Release a version](commands.md#Release), [Ship](commands.md#Ship), [Take the snapshot](commands.md#TakeSnapshot), [Write the manifest](commands.md#WriteManifest)
+- Used by: [An advance, in memory](command-scenarios.md#AdvanceInMemory), [A build planned](command-scenarios.md#BuildPlanned), [trame dev](command-scenarios.md#DevFollowsTheGraph), [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [Advance](commands.md#Advance), [Assemble a component](commands.md#Assemble), [Audit the packages](commands.md#Audit), [Build](commands.md#Build), [Deliver](commands.md#Deliver), [Ask the machine](commands.md#Doctor), [Export the page](commands.md#Export), [Publish](commands.md#Publish), [Record evidence](commands.md#RecordEvidence), [Release a version](commands.md#Release), [Ship](commands.md#Ship), [Take the snapshot](commands.md#TakeSnapshot), [Write the manifest](commands.md#WriteManifest), [Amendments in place](platform.md#InPlaceSources)
 - Implemented by: [System files, for writing](platform.md#DiskWriting), [Files in memory, over the disk](platform.md#MemoryFiles)
 
 <a id="GraphFeed"></a>
 
 ### Feed of the graph
 
-`GraphFeed` · `src/architecture.ts:444`
+`GraphFeed` · `src/architecture.ts:472`
 
 The compiled graph the page shows: carried by an exported page, or given by trame dev at each compilation.
 
@@ -238,7 +262,7 @@ The compiled graph the page shows: carried by an exported page, or given by tram
 
 ### Hashing
 
-`Hashing` · `src/architecture.ts:290`
+`Hashing` · `src/architecture.ts:318`
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
@@ -255,7 +279,7 @@ The compiled graph the page shows: carried by an exported page, or given by tram
 
 ### HTTP server
 
-`HttpServer` · `src/architecture.ts:376`
+`HttpServer` · `src/architecture.ts:404`
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
@@ -273,7 +297,7 @@ The compiled graph the page shows: carried by an exported page, or given by tram
 
 ### Results kept
 
-`KeptResults` · `src/architecture.ts:324`
+`KeptResults` · `src/architecture.ts:352`
 
 What a computation found, kept under its key while the process runs. Asked again, the computation finds it there and checks that what it read is as it was before giving it: the reading of a program by the compiler of TypeScript, the parsing of a file by tree-sitter. The scenarios load the same projects again and again; each is read once.
 
@@ -292,7 +316,7 @@ What a computation found, kept under its key while the process runs. Asked again
 
 ### Runs kept
 
-`KeptRuns` · `src/architecture.ts:333`
+`KeptRuns` · `src/architecture.ts:361`
 
 What a run found (a scenario played), kept under the fingerprint of what it ran: given back while the code it runs is as it was and, beyond the process, while the engine and the files the project reads are as they were. A build played Poselia's scenarios eleven times and the example's thirty-six; a shipment compiles Trame's graph a dozen times with the same code.
 
@@ -312,7 +336,7 @@ What a run found (a scenario played), kept under the fingerprint of what it ran:
 
 ### Module loader
 
-`ModuleLoader` · `src/architecture.ts:272`
+`ModuleLoader` · `src/architecture.ts:300`
 
 Runs a module of the graph, of a kind or of a view, and reads what it exports.
 
@@ -332,7 +356,7 @@ Runs a module of the graph, of a kind or of a view, and reads what it exports.
 
 ### Reports on packages
 
-`PackageReports` · `src/architecture.ts:388`
+`PackageReports` · `src/architecture.ts:416`
 
 What the registry says of the packages a project installs: their known vulnerabilities, their latest versions.
 
@@ -352,7 +376,7 @@ What the registry says of the packages a project installs: their known vulnerabi
 
 ### Memory of the page
 
-`PageMemory` · `src/architecture.ts:438`
+`PageMemory` · `src/architecture.ts:466`
 
 The document, the rendering and the node the person was on, kept for their next visit.
 
@@ -377,7 +401,7 @@ The document, the rendering and the node the person was on, kept for their next 
 
 ### Window of the page
 
-`PageWindow` · `src/architecture.ts:432`
+`PageWindow` · `src/architecture.ts:460`
 
 The document the page writes in and hears, and what it asks of the window around it.
 
@@ -397,7 +421,7 @@ The document the page writes in and hears, and what it asks of the window around
 
 ### Paths
 
-`Paths` · `src/architecture.ts:266`
+`Paths` · `src/architecture.ts:294`
 
 Computations on file paths, without touching the files.
 
@@ -409,14 +433,14 @@ Computations on file paths, without touching the files.
 | [Test](../std/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
-- Used by: [An advance, in memory](command-scenarios.md#AdvanceInMemory), [A build planned](command-scenarios.md#BuildPlanned), [Declarations published](command-scenarios.md#DeclarationsPublished), [trame dev](command-scenarios.md#DevFollowsTheGraph), [A library released](command-scenarios.md#LibraryReleased), [The manifest written](command-scenarios.md#ManifestWritten), [The page exported](command-scenarios.md#PageExported), [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [The snapshot, taken by its command](command-scenarios.md#SnapshotTaken), [Advance](commands.md#Advance), [Assemble a component](commands.md#Assemble), [Audit the packages](commands.md#Audit), [Build](commands.md#Build), [Deliver](commands.md#Deliver), [Ask the machine](commands.md#Doctor), [Export the page](commands.md#Export), [Plan a build](commands.md#Plan), [Record evidence](commands.md#RecordEvidence), [Release a version](commands.md#Release), [Ship](commands.md#Ship), [Take the snapshot](commands.md#TakeSnapshot), [Write the manifest](commands.md#WriteManifest), [Assembly](engine.md#Assembly), [Compiler](engine.md#Compiler), [trame dev server](engine.md#DevServer), [The fingerprint of an engine](engine.md#EngineFingerprint), [Laws](engine.md#Laws), [Lock](engine.md#Lock), [Project](engine.md#Project), [The runs of a project](engine.md#ProjectRuns), [Static reading](engine.md#StaticAnalysis), [Views](engine.md#Views), [Wiring](engine.md#Wiring), [Drivers](languages.md#Drivers), [Example process](platform.md#ExampleProcess), [Files in memory, over the disk](platform.md#MemoryFiles), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore), [Evidence of the SDLC](shipping.md#SdlcEvidence), [The plan of a run elsewhere](shipping.md#ShipmentRunPlan), [Syntax reader](syntax.md#SyntaxReader), [Terraform writer](terraform.md#TerraformWriter), [TypeScript writer](typescript.md#TypeScriptWriter)
+- Used by: [An advance, in memory](command-scenarios.md#AdvanceInMemory), [A build planned](command-scenarios.md#BuildPlanned), [Declarations published](command-scenarios.md#DeclarationsPublished), [trame dev](command-scenarios.md#DevFollowsTheGraph), [A library released](command-scenarios.md#LibraryReleased), [The manifest written](command-scenarios.md#ManifestWritten), [The page exported](command-scenarios.md#PageExported), [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [The snapshot, taken by its command](command-scenarios.md#SnapshotTaken), [A value amended](command-scenarios.md#ValueAmended), [Advance](commands.md#Advance), [Amend](commands.md#Amend), [Assemble a component](commands.md#Assemble), [Audit the packages](commands.md#Audit), [Build](commands.md#Build), [Deliver](commands.md#Deliver), [Ask the machine](commands.md#Doctor), [Export the page](commands.md#Export), [Plan](commands.md#Plan), [Record evidence](commands.md#RecordEvidence), [Release a version](commands.md#Release), [Ship](commands.md#Ship), [Take the snapshot](commands.md#TakeSnapshot), [Write the manifest](commands.md#WriteManifest), [Assembly](engine.md#Assembly), [Compiler](engine.md#Compiler), [trame dev server](engine.md#DevServer), [The fingerprint of an engine](engine.md#EngineFingerprint), [Laws](engine.md#Laws), [Lock](engine.md#Lock), [Project](engine.md#Project), [The runs of a project](engine.md#ProjectRuns), [Static reading](engine.md#StaticAnalysis), [Views](engine.md#Views), [Wiring](engine.md#Wiring), [Drivers](languages.md#Drivers), [Example process](platform.md#ExampleProcess), [Files in memory, over the disk](platform.md#MemoryFiles), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore), [Evidence of the SDLC](shipping.md#SdlcEvidence), [The plan of a run elsewhere](shipping.md#ShipmentRunPlan), [Syntax reader](syntax.md#SyntaxReader), [Terraform writer](terraform.md#TerraformWriter), [TypeScript writer](typescript.md#TypeScriptWriter)
 - Implemented by: [Node paths](platform.md#NodePaths)
 
 <a id="Prelude"></a>
 
 ### Prelude
 
-`Prelude` · `src/architecture.ts:250`
+`Prelude` · `src/architecture.ts:270`
 
 The registry of nodes and kinds, and the tooling of frozen programs: what the language shares with the engine.
 
@@ -429,7 +453,7 @@ The registry of nodes and kinds, and the tooling of frozen programs: what the la
 
 - Owner: trame
 - Effects: read
-- Used by: [Assembly](engine.md#Assembly), [Compilation API](engine.md#CompilationApi), [Compiler](engine.md#Compiler), [Graph](engine.md#GraphApi), [Laws](engine.md#Laws), [Lock](engine.md#Lock), [Machine outputs](engine.md#MachineOutputs), [Views](engine.md#Views), [Wiring](engine.md#Wiring), [Terraform writer](terraform.md#TerraformWriter), [TypeScript writer](typescript.md#TypeScriptWriter)
+- Used by: [Amend](commands.md#Amend), [Assembly](engine.md#Assembly), [Compilation API](engine.md#CompilationApi), [Compiler](engine.md#Compiler), [Graph](engine.md#GraphApi), [Laws](engine.md#Laws), [Lock](engine.md#Lock), [Machine outputs](engine.md#MachineOutputs), [Views](engine.md#Views), [Wiring](engine.md#Wiring), [Terraform writer](terraform.md#TerraformWriter), [TypeScript writer](typescript.md#TypeScriptWriter)
 - Implemented by: [Trame's prelude](platform.md#TramePrelude)
 - Applies: [The prelude: the runtime of the language](principles.md#PreludeLayer)
 - Used by: [Rendering does not read the graph](#RenderingWithoutGraph)
@@ -438,7 +462,7 @@ The registry of nodes and kinds, and the tooling of frozen programs: what the la
 
 ### Process
 
-`Process` · `src/architecture.ts:346`
+`Process` · `src/architecture.ts:374`
 
 The current directory, the environment, and starting other processes.
 
@@ -460,14 +484,14 @@ The current directory, the environment, and starting other processes.
 
 - Owner: trame
 - Effects: process, read, terminal
-- Used by: [An advance, in memory](command-scenarios.md#AdvanceInMemory), [A build planned](command-scenarios.md#BuildPlanned), [Declarations published](command-scenarios.md#DeclarationsPublished), [trame dev](command-scenarios.md#DevFollowsTheGraph), [The laws, tested by their command](command-scenarios.md#LawsTested), [A library released](command-scenarios.md#LibraryReleased), [The manifest written](command-scenarios.md#ManifestWritten), [The page exported](command-scenarios.md#PageExported), [The page of the graph](command-scenarios.md#PageOfTheGraph), [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [The snapshot, taken by its command](command-scenarios.md#SnapshotTaken), [Preparation](commands.md#Preparation), [Run a component](commands.md#Run), [Ship](commands.md#Ship), [Write the manifest](commands.md#WriteManifest), [Date bundle](engine.md#DateBundle), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore), [The described engine compiles the example](scenarios.md#CompileExample), [The laws of the kinds hold](scenarios.md#KindLaws)
+- Used by: [An advance, in memory](command-scenarios.md#AdvanceInMemory), [A build planned](command-scenarios.md#BuildPlanned), [Declarations published](command-scenarios.md#DeclarationsPublished), [trame dev](command-scenarios.md#DevFollowsTheGraph), [The laws, tested by their command](command-scenarios.md#LawsTested), [A library released](command-scenarios.md#LibraryReleased), [The manifest written](command-scenarios.md#ManifestWritten), [The page exported](command-scenarios.md#PageExported), [The page of the graph](command-scenarios.md#PageOfTheGraph), [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [The snapshot, taken by its command](command-scenarios.md#SnapshotTaken), [A value amended](command-scenarios.md#ValueAmended), [Preparation](commands.md#Preparation), [Run a component](commands.md#Run), [Ship](commands.md#Ship), [Write the manifest](commands.md#WriteManifest), [Date bundle](engine.md#DateBundle), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore), [The described engine compiles the example](scenarios.md#CompileExample), [The laws of the kinds hold](scenarios.md#KindLaws)
 - Implemented by: [Example process](platform.md#ExampleProcess), [Node process](platform.md#NodeProcess)
 
 <a id="ProcessLog"></a>
 
 ### Process log
 
-`ProcessLog` · `src/architecture.ts:571`
+`ProcessLog` · `src/architecture.ts:599`
 
 In a scenario: where the next commands run, what the programs started answer, and which were started.
 
@@ -486,7 +510,7 @@ In a scenario: where the next commands run, what the programs started answer, an
 
 ### Programs
 
-`Programs` · `src/architecture.ts:405`
+`Programs` · `src/architecture.ts:433`
 
 Runs another engine (a frozen generation, a candidate) and reads what it prints.
 
@@ -506,7 +530,7 @@ Runs another engine (a frozen generation, a candidate) and reads what it prints.
 
 ### Page resources
 
-`Resources` · `src/architecture.ts:399`
+`Resources` · `src/architecture.ts:427`
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
@@ -523,7 +547,7 @@ Runs another engine (a frozen generation, a candidate) and reads what it prints.
 
 ### Where runs are kept
 
-`RunStore` · `src/architecture.ts:340`
+`RunStore` · `src/architecture.ts:368`
 
 The runs of a project under their keys: in the process (the scenarios of the scenarios, the engine in memory), or on disk beyond it, where the next build, the assembly after it and the generation that rebuilds the same graph find them.
 
@@ -543,7 +567,7 @@ The runs of a project under their keys: in the process (the scenarios of the sce
 
 ### Server log
 
-`ServerLog` · `src/architecture.ts:577`
+`ServerLog` · `src/architecture.ts:605`
 
 In a scenario: asks the server started in memory for a path.
 
@@ -562,7 +586,7 @@ In a scenario: asks the server started in memory for a path.
 
 ### Signatures
 
-`Signatures` · `src/architecture.ts:316`
+`Signatures` · `src/architecture.ts:344`
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
@@ -579,7 +603,7 @@ In a scenario: asks the server started in memory for a path.
 
 ### Syntax trees
 
-`SyntaxTrees` · `src/architecture.ts:279`
+`SyntaxTrees` · `src/architecture.ts:307`
 
 Parses a text with a tree-sitter grammar, and gives back what queries catch in it, as records. The only place that touches tree-sitter: no node of a tree crosses it.
 
@@ -600,7 +624,7 @@ Parses a text with a tree-sitter grammar, and gives back what queries catch in i
 
 ### Terminal
 
-`Terminal` · `src/architecture.ts:358`
+`Terminal` · `src/architecture.ts:386`
 
 The arguments, the outputs, the exit code.
 
@@ -621,14 +645,14 @@ The arguments, the outputs, the exit code.
 
 - Owner: trame
 - Effects: process, terminal
-- Used by: [Advance](commands.md#Advance), [Assemble a component](commands.md#Assemble), [Audit the packages](commands.md#Audit), [Build](commands.md#Build), [Deliver](commands.md#Deliver), [Ask the machine](commands.md#Doctor), [Payload](commands.md#EmitPayload), [Export the page](commands.md#Export), [Plan a build](commands.md#Plan), [Preparation](commands.md#Preparation), [Publish](commands.md#Publish), [Record evidence](commands.md#RecordEvidence), [Release a version](commands.md#Release), [Render a view](commands.md#RenderView), [Ship](commands.md#Ship), [Take the snapshot](commands.md#TakeSnapshot), [Test the laws](commands.md#TestKinds), [View by its name](commands.md#ViewByName), [Write the manifest](commands.md#WriteManifest), [trame dev server](engine.md#DevServer), [Command line](platform.md#NodeCommandLine)
+- Used by: [Advance](commands.md#Advance), [Amend](commands.md#Amend), [Assemble a component](commands.md#Assemble), [Audit the packages](commands.md#Audit), [Build](commands.md#Build), [Deliver](commands.md#Deliver), [Ask the machine](commands.md#Doctor), [Payload](commands.md#EmitPayload), [Export the page](commands.md#Export), [Plan](commands.md#Plan), [Preparation](commands.md#Preparation), [Publish](commands.md#Publish), [Record evidence](commands.md#RecordEvidence), [Release a version](commands.md#Release), [Render a view](commands.md#RenderView), [Ship](commands.md#Ship), [Take the snapshot](commands.md#TakeSnapshot), [Test the laws](commands.md#TestKinds), [View by its name](commands.md#ViewByName), [Write the manifest](commands.md#WriteManifest), [trame dev server](engine.md#DevServer), [Command line](platform.md#NodeCommandLine)
 - Implemented by: [Terminal in memory](platform.md#MemoryTerminal), [Node terminal](platform.md#NodeTerminal)
 
 <a id="TerminalLog"></a>
 
 ### Terminal log
 
-`TerminalLog` · `src/architecture.ts:565`
+`TerminalLog` · `src/architecture.ts:593`
 
 What the engine printed, when the terminal is simulated.
 
@@ -647,7 +671,7 @@ What the engine printed, when the terminal is simulated.
 
 ### Timer
 
-`Timer` · `src/architecture.ts:371`
+`Timer` · `src/architecture.ts:399`
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
@@ -665,7 +689,7 @@ What the engine printed, when the terminal is simulated.
 
 ### TypeScript compiler
 
-`TypeScriptCompiler` · `src/architecture.ts:285`
+`TypeScriptCompiler` · `src/architecture.ts:313`
 
 Reads the code of the graph and checks it.
 
@@ -686,7 +710,7 @@ Reads the code of the graph and checks it.
 
 ### Write log
 
-`WriteLog` · `src/architecture.ts:559`
+`WriteLog` · `src/architecture.ts:587`
 
 What the engine wrote, when writing is simulated.
 
@@ -698,7 +722,7 @@ What the engine wrote, when writing is simulated.
 | [Test](../std/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
-- Used by: [An advance, in memory](command-scenarios.md#AdvanceInMemory), [A build planned](command-scenarios.md#BuildPlanned), [A component assembled](command-scenarios.md#ComponentAssembled), [A component run](command-scenarios.md#ComponentRun), [Declarations published](command-scenarios.md#DeclarationsPublished), [A library released](command-scenarios.md#LibraryReleased), [The manifest written](command-scenarios.md#ManifestWritten), [The packages audited](command-scenarios.md#PackagesAudited), [The page delivered](command-scenarios.md#PageDelivered), [The page exported](command-scenarios.md#PageExported), [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [The snapshot, taken by its command](command-scenarios.md#SnapshotTaken), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore)
+- Used by: [An advance, in memory](command-scenarios.md#AdvanceInMemory), [A build planned](command-scenarios.md#BuildPlanned), [A component assembled](command-scenarios.md#ComponentAssembled), [A component run](command-scenarios.md#ComponentRun), [Declarations published](command-scenarios.md#DeclarationsPublished), [A library released](command-scenarios.md#LibraryReleased), [The manifest written](command-scenarios.md#ManifestWritten), [The packages audited](command-scenarios.md#PackagesAudited), [The page delivered](command-scenarios.md#PageDelivered), [The page exported](command-scenarios.md#PageExported), [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [The snapshot, taken by its command](command-scenarios.md#SnapshotTaken), [A value amended](command-scenarios.md#ValueAmended), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore)
 - Implemented by: [Files in memory, over the disk](platform.md#MemoryFiles)
 
 ## Architecture rules
@@ -707,7 +731,7 @@ What the engine wrote, when writing is simulated.
 
 ### Effects come from the vocabulary
 
-`KnownEffects` · `src/architecture.ts:585` · status: **held**
+`KnownEffects` · `src/architecture.ts:613` · status: **held**
 
 A port that declares an effect outside the "Effects" vocabulary, or the effects the language itself reads (LanguageEffect: what is asynchronous), is refused: the rules that read effects would miss it. Every port of the graph is judged, a library's too: its effects reach the components that bind it.
 
@@ -729,7 +753,7 @@ Respected everywhere.
 
 ### Only commands write
 
-`OnlyCommandsWrite` · `src/architecture.ts:515` · status: **held**
+`OnlyCommandsWrite` · `src/architecture.ts:543` · status: **held**
 
 The engine computes what to write; only a command writes it to disk: no function of the engine has the effect of writing, its own or through what it depends on.
 
@@ -750,7 +774,7 @@ Respected everywhere.
 
 ### Rendering does not read the graph
 
-`RenderingWithoutGraph` · `src/architecture.ts:504` · status: **held**
+`RenderingWithoutGraph` · `src/architecture.ts:532` · status: **held**
 
 A renderer receives only the intermediate format: no function of the module rendering reaches the prelude, even from afar through what it depends on.
 
@@ -774,7 +798,7 @@ Respected everywhere.
 
 ### Browser
 
-`Browser` · `src/architecture.ts:473`
+`Browser` · `src/architecture.ts:501`
 
 The browser that opens a page Trame wrote: exported to a file, published, or served by trame dev.
 
@@ -787,25 +811,25 @@ The browser that opens a page Trame wrote: exported to a file, published, or ser
 
 ### Local
 
-`Local` · `src/architecture.ts:458`
+`Local` · `src/architecture.ts:486`
 
 The machine where `trame` is started: real files, real terminal, real clock.
 
 - Owner: trame
 - Deploys: [Trame on the command line](#TrameCli), [Trame's SDLC](sdlc.md#TrameSdlc)
-- Technical choices: [The TypeScript compiler reads the declarations](platform.md#CompilerReadsDeclarations), [The engine's own files sit beside its code](platform.md#EngineFilesBesideCode), [esbuild bundles the page's program](platform.md#EsbuildBundles), [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine), [NodePlatform](platform.md#NodePlatform), [A run is kept while what it reads is as it was](platform.md#RunsByWhatTheyRead), [On a machine, runs are kept on disk](platform.md#RunsKeptOnDisk), [tree-sitter reads the bodies](platform.md#TreeSitterReads), [tsx runs TypeScript](platform.md#TsxRuns), [Documents in Markdown](rendering.md#DocumentsInMarkdown), [Figures in Mermaid](rendering.md#FiguresInMermaid), [The page's figures in SVG](rendering.md#PageFiguresDrawn), [The page in HTML](rendering.md#PageInHtml), [Figures in the terminal, as text](rendering.md#TerminalFiguresAsText), [The terminal in plain text](rendering.md#TerminalInText), [The SDLC on the machine](sdlc.md#SdlcOnTheMachine), [Evidence sealed by attribution](shipping.md#SealedByAttribution)
+- Technical choices: [Amendments go in the sources](platform.md#AmendmentsInPlace), [The TypeScript compiler reads the declarations](platform.md#CompilerReadsDeclarations), [The engine's own files sit beside its code](platform.md#EngineFilesBesideCode), [esbuild bundles the page's program](platform.md#EsbuildBundles), [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine), [NodePlatform](platform.md#NodePlatform), [A run is kept while what it reads is as it was](platform.md#RunsByWhatTheyRead), [On a machine, runs are kept on disk](platform.md#RunsKeptOnDisk), [tree-sitter reads the bodies](platform.md#TreeSitterReads), [tsx runs TypeScript](platform.md#TsxRuns), [Documents in Markdown](rendering.md#DocumentsInMarkdown), [Figures in Mermaid](rendering.md#FiguresInMermaid), [The page's figures in SVG](rendering.md#PageFiguresDrawn), [The page in HTML](rendering.md#PageInHtml), [Figures in the terminal, as text](rendering.md#TerminalFiguresAsText), [The terminal in plain text](rendering.md#TerminalInText), [The SDLC on the machine](sdlc.md#SdlcOnTheMachine), [Evidence sealed by attribution](shipping.md#SealedByAttribution)
 - Runs the programs of: [The next generation](sdlc.md#NextGeneration)
 
 <a id="Test"></a>
 
 ### Test
 
-`Test` · `src/architecture.ts:467`
+`Test` · `src/architecture.ts:495`
 
 The scenarios: the engine reads the real files of the example (or of the project a scenario enters), but what it writes is kept in memory over them, what it prints too, and the programs it starts answer what the scenario says. The build evaluates here what needs no environment of its own (the examples of syntax elements and languages): in memory, as scenarios are.
 
 - Owner: trame
 - The build evaluates here: true
 - Deploys: [Trame on the command line](#TrameCli)
-- Scenarios: [An advance, in memory](command-scenarios.md#AdvanceInMemory), [A body is read and checked](command-scenarios.md#BodiesReadAndChecked), [A build planned](command-scenarios.md#BuildPlanned), [The command line](command-scenarios.md#CommandLineChooses), [A component assembled](command-scenarios.md#ComponentAssembled), [A component run](command-scenarios.md#ComponentRun), [Declarations published](command-scenarios.md#DeclarationsPublished), [trame dev](command-scenarios.md#DevFollowsTheGraph), [The doctor](command-scenarios.md#DoctorAsks), [The laws, tested by their command](command-scenarios.md#LawsTested), [A library released](command-scenarios.md#LibraryReleased), [The manifest written](command-scenarios.md#ManifestWritten), [The packages audited](command-scenarios.md#PackagesAudited), [The page delivered](command-scenarios.md#PageDelivered), [The page exported](command-scenarios.md#PageExported), [The page of the graph](command-scenarios.md#PageOfTheGraph), [The graph in the intermediate format](command-scenarios.md#PayloadOfTheGraph), [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [The snapshot, taken by its command](command-scenarios.md#SnapshotTaken), [A view in the terminal](command-scenarios.md#ViewsInTheTerminal), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore), [The described engine compiles the example](scenarios.md#CompileExample), [The documents write in the decided language](scenarios.md#DocumentWords), [The engine reckons as it says](scenarios.md#EngineReckons), [The laws of the kinds hold](scenarios.md#KindLaws), [The graph page is opened as a person would](sdlc.md#OpeningTheGraphPage)
-- Technical choices: [The TypeScript compiler reads the declarations](platform.md#CompilerReadsDeclarations), [The engine's own files sit beside its code](platform.md#EngineFilesBesideCode), [esbuild bundles the page's program](platform.md#EsbuildBundles), [Scenarios write in memory, over the disk](platform.md#FilesInMemoryOverTheDisk), [Scenarios run in memory](platform.md#InMemoryScenarios), [NodePlatform](platform.md#NodePlatform), [A run is kept while what it reads is as it was](platform.md#RunsByWhatTheyRead), [In the scenarios, runs are kept in the process](platform.md#RunsKeptInTheProcess), [tree-sitter reads the bodies](platform.md#TreeSitterReads), [tsx runs TypeScript](platform.md#TsxRuns), [Documents in Markdown](rendering.md#DocumentsInMarkdown), [Figures in Mermaid](rendering.md#FiguresInMermaid), [The page's figures in SVG](rendering.md#PageFiguresDrawn), [The page in HTML](rendering.md#PageInHtml), [Figures in the terminal, as text](rendering.md#TerminalFiguresAsText), [The terminal in plain text](rendering.md#TerminalInText), [The SDLC in memory](sdlc.md#SdlcInMemory), [Evidence sealed by attribution](shipping.md#SealedByAttribution)
+- Scenarios: [An advance, in memory](command-scenarios.md#AdvanceInMemory), [A body is read and checked](command-scenarios.md#BodiesReadAndChecked), [A build planned](command-scenarios.md#BuildPlanned), [The command line](command-scenarios.md#CommandLineChooses), [A component assembled](command-scenarios.md#ComponentAssembled), [A component run](command-scenarios.md#ComponentRun), [Declarations published](command-scenarios.md#DeclarationsPublished), [trame dev](command-scenarios.md#DevFollowsTheGraph), [The doctor](command-scenarios.md#DoctorAsks), [The laws, tested by their command](command-scenarios.md#LawsTested), [A library released](command-scenarios.md#LibraryReleased), [The manifest written](command-scenarios.md#ManifestWritten), [The packages audited](command-scenarios.md#PackagesAudited), [The page delivered](command-scenarios.md#PageDelivered), [The page exported](command-scenarios.md#PageExported), [The page of the graph](command-scenarios.md#PageOfTheGraph), [The graph in the intermediate format](command-scenarios.md#PayloadOfTheGraph), [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [The snapshot, taken by its command](command-scenarios.md#SnapshotTaken), [A value amended](command-scenarios.md#ValueAmended), [A view in the terminal](command-scenarios.md#ViewsInTheTerminal), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore), [The described engine compiles the example](scenarios.md#CompileExample), [The documents write in the decided language](scenarios.md#DocumentWords), [The engine reckons as it says](scenarios.md#EngineReckons), [The laws of the kinds hold](scenarios.md#KindLaws), [The graph page is opened as a person would](sdlc.md#OpeningTheGraphPage)
+- Technical choices: [Amendments go in the sources](platform.md#AmendmentsInPlace), [The TypeScript compiler reads the declarations](platform.md#CompilerReadsDeclarations), [The engine's own files sit beside its code](platform.md#EngineFilesBesideCode), [esbuild bundles the page's program](platform.md#EsbuildBundles), [Scenarios write in memory, over the disk](platform.md#FilesInMemoryOverTheDisk), [Scenarios run in memory](platform.md#InMemoryScenarios), [NodePlatform](platform.md#NodePlatform), [A run is kept while what it reads is as it was](platform.md#RunsByWhatTheyRead), [In the scenarios, runs are kept in the process](platform.md#RunsKeptInTheProcess), [tree-sitter reads the bodies](platform.md#TreeSitterReads), [tsx runs TypeScript](platform.md#TsxRuns), [Documents in Markdown](rendering.md#DocumentsInMarkdown), [Figures in Mermaid](rendering.md#FiguresInMermaid), [The page's figures in SVG](rendering.md#PageFiguresDrawn), [The page in HTML](rendering.md#PageInHtml), [Figures in the terminal, as text](rendering.md#TerminalFiguresAsText), [The terminal in plain text](rendering.md#TerminalInText), [The SDLC in memory](sdlc.md#SdlcInMemory), [Evidence sealed by attribution](shipping.md#SealedByAttribution)

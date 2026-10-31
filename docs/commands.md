@@ -43,6 +43,21 @@ The program of a component for an environment, and its infrastructure, ready to 
 - Verified by: [A component assembled](command-scenarios.md#ComponentAssembled)
 - Used by: [Assemble a component](#Assemble)
 
+<a id="BuildComparison"></a>
+
+### Two builds compared
+
+`BuildComparison` · `src/commands.ts:321` · status: **held**
+
+The nodes added and removed, the statuses that change, the nodes whose fields, result or edges change, the issues raised and resolved, the shipments touched; then said line by line. What trame plan and trame amend show.
+
+- Owner: trame
+- Parameters: `messages` ← [Messages of the commands](messages.md#CommandMessages) · `output` ← [Messages of the outputs](messages.md#OutputMessages)
+- Body: `./code/commands/comparison.ts` (typescript)
+- Serves: [A specification that runs](product.md#ExecutableSpecification)
+- Verified by: [A value amended](command-scenarios.md#ValueAmended)
+- Used by: [Amend](#Amend), [Plan](#Plan)
+
 <a id="Preparation"></a>
 
 ### Preparation
@@ -56,7 +71,7 @@ Reads the options, checks and compiles the project, refuses cleanly: what all co
 - Body: `./code/commands/preparation.ts` (typescript)
 - Effects: execution, keeps, process, read, terminal, time
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
-- Used by: [Advance](#Advance), [Assemble a component](#Assemble), [Assembler](#Assembler), [Audit the packages](#Audit), [Build](#Build), [Deliver](#Deliver), [Start trame dev](#Dev), [Ask the machine](#Doctor), [Payload](#EmitPayload), [Export the page](#Export), [Plan a build](#Plan), [Publish](#Publish), [Record evidence](#RecordEvidence), [Release a version](#Release), [Render a view](#RenderView), [Ship](#Ship), [Show a view](#ShowView), [Take the snapshot](#TakeSnapshot), [Test the laws](#TestKinds), [View by its name](#ViewByName), [Write the manifest](#WriteManifest)
+- Used by: [Advance](#Advance), [Amend](#Amend), [Assemble a component](#Assemble), [Assembler](#Assembler), [Audit the packages](#Audit), [Build](#Build), [Deliver](#Deliver), [Start trame dev](#Dev), [Ask the machine](#Doctor), [Payload](#EmitPayload), [Export the page](#Export), [Plan](#Plan), [Publish](#Publish), [Record evidence](#RecordEvidence), [Release a version](#Release), [Render a view](#RenderView), [Ship](#Ship), [Show a view](#ShowView), [Take the snapshot](#TakeSnapshot), [Test the laws](#TestKinds), [View by its name](#ViewByName), [Write the manifest](#WriteManifest)
 - Verified by: [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore)
 
 <a id="RenderView"></a>
@@ -98,11 +113,30 @@ Triggered by `command advance`
 - Applies: [Generations: frozen engines](principles.md#GenerationLayer), [A library is a Trame project, imported by path](principles.md#LibrariesAreProjects), [Trame builds Trame](principles.md#TrameBuildsTrame)
 - Deploys: [The next generation](sdlc.md#NextGeneration)
 
+<a id="Amend"></a>
+
+### Amend
+
+`Amend` · `src/commands.ts:346` · status: **held**
+
+Changes a chosen value of a node by an amendment: who, why, from when, the value. The amendment is compiled first with the graph, and what it would change is said (statuses, issues raised, a criterion or a scenario that would fail); unless it raises an error (or --accept), it is recorded where the project's amendments go, and its owner's approval awaited when someone else wrote it. --dry-run only says. A cited value changes only with its source (--source); a value code is built on, never from here.
+
+Triggered by `command amend`
+
+- Owner: trame
+- Parameters: `exitStatus` ← [Exit status](../std/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `machine` ← [Machine outputs](engine.md#MachineOutputs) · `comparison` ← [Two builds compared](#BuildComparison) · `place` ← [Where an amendment goes](architecture.md#AmendmentPlace) · `prelude` ← [Prelude](architecture.md#Prelude) · `references` ← [References](engine.md#References) · `project` ← [Project](engine.md#Project) · `specifiers` ← [Node.js module specifiers](../std/docs/system.md#NodeModuleSpecifiers) · `values` ← [Types of values](../std/docs/algebra.md#ValueTypes) · `paths` ← [Paths](architecture.md#Paths) · `text` ← [Terminal text](text.md#TerminalText) · `terminal` ← [Terminal](architecture.md#Terminal) · `messages` ← [Messages of the commands](messages.md#CommandMessages) · `naming` ← [How an amendment is named](conventions.md#AmendmentNaming) · `counts` ← [Counts](../std/docs/algebra.md#Counts)
+- Body: `./code/commands/amend.ts` (typescript)
+- Effects: execution, keeps, process, read, terminal, time, write
+- Serves: [A single source of truth](product.md#SingleSource)
+- Part of: [Trame on the command line](architecture.md#TrameCli)
+- Verified by: [A value amended](command-scenarios.md#ValueAmended)
+- Used by: [A value amended](command-scenarios.md#ValueAmended)
+
 <a id="Assemble"></a>
 
 ### Assemble a component
 
-`Assemble` · `src/commands.ts:329` · status: **held**
+`Assemble` · `src/commands.ts:360` · status: **held**
 
 Triggered by `command assemble`
 
@@ -250,16 +284,14 @@ Triggered by `command export`
 
 <a id="Plan"></a>
 
-### Plan a build
+### Plan
 
-`Plan` · `src/commands.ts:316` · status: **held**
-
-trame plan: what a build would change, written nowhere. It compiles the graph now (or at --at) and compares it with graph.json, the last build: nodes added and removed, statuses that change, nodes whose fields, result or edges change, issues raised and resolved, and the shipments whose obligations are touched. A person reads it before building, a review before accepting a change.
+`Plan` · `src/commands.ts:328` · status: **held**
 
 Triggered by `command plan`
 
 - Owner: trame
-- Parameters: `exitStatus` ← [Exit status](../std/docs/system.md#ExitStatus) · `layout` ← [Project layout](conventions.md#Layout) · `text` ← [Terminal text](text.md#TerminalText) · `preparation` ← [Preparation](#Preparation) · `machine` ← [Machine outputs](engine.md#MachineOutputs) · `reading` ← [File reading](architecture.md#FileReading) · `paths` ← [Paths](architecture.md#Paths) · `encodings` ← [Node.js character encodings](../std/docs/system.md#NodeEncodings) · `terminal` ← [Terminal](architecture.md#Terminal) · `messages` ← [Messages of the commands](messages.md#CommandMessages) · `output` ← [Messages of the outputs](messages.md#OutputMessages)
+- Parameters: `exitStatus` ← [Exit status](../std/docs/system.md#ExitStatus) · `layout` ← [Project layout](conventions.md#Layout) · `text` ← [Terminal text](text.md#TerminalText) · `preparation` ← [Preparation](#Preparation) · `machine` ← [Machine outputs](engine.md#MachineOutputs) · `comparison` ← [Two builds compared](#BuildComparison) · `reading` ← [File reading](architecture.md#FileReading) · `paths` ← [Paths](architecture.md#Paths) · `encodings` ← [Node.js character encodings](../std/docs/system.md#NodeEncodings) · `terminal` ← [Terminal](architecture.md#Terminal) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
 - Body: `./code/commands/plan.ts` (typescript)
 - Effects: execution, keeps, process, read, terminal, time
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
@@ -331,7 +363,7 @@ Triggered by `command release`
 
 ### Run a component
 
-`Run` · `src/commands.ts:340` · status: **held**
+`Run` · `src/commands.ts:371` · status: **held**
 
 Assembles, then runs the program and exits with its code.
 
@@ -370,7 +402,7 @@ Triggered by `command ship`
 
 ### Show a view
 
-`ShowView` · `src/commands.ts:350` · status: **held**
+`ShowView` · `src/commands.ts:381` · status: **held**
 
 Triggered by `command view`
 
@@ -425,7 +457,7 @@ Triggered by `command test-kinds`
 
 ### View by its name
 
-`ViewByName` · `src/commands.ts:361` · status: **held**
+`ViewByName` · `src/commands.ts:392` · status: **held**
 
 Any other command: the name of a view.
 

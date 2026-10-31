@@ -44,6 +44,8 @@ Run from the project's directory, through the pinned generation:
 ./trame.sh deliver [delivery]          # writes the deliveries: a page a browser opens as it is
 ./trame.sh ship <shipment> --by <name> [--dry-run] [--promote "what"]   # builds, checks, refuses or deploys (section 4b)
 ./trame.sh evidence <node> passed|failed --by <name> [--subject <row>] [--language <tag>] [--note "…"] [--url <where>]
+./trame.sh amend <node> <path> <value> --why "…" --by <name> [--from <date>] [--until <date>] [--source "…"] [--dry-run] [--accept]
+                                       # changes a chosen value by an amendment, said first (g85)
 ./advance.sh [--accept] [--promote "what changes"]   # the next generation (see section 7)
 npx tsc --noEmit -p .                  # types, before any build
 ```
@@ -147,6 +149,9 @@ why. A broken rule is an error, unless the rule says `severity: "warning"` while
 ## 5. The rules the build enforces
 
 - **Everything is in the graph.** A value, a name, a choice that a person could change lives in a node, with its meaning.
+- **A value changes by amendment** (since g85): a kind says how each of its fields changes (`changes`: chosen, cited,
+  code). A chosen value is amended (`trame amend`, or by hand with `amend(…)`) and approved by its owner; a cited one
+  only with its new source; code in the code. Never edit a decided value in place: amend it.
 - **No literal in a body**, nor in a kind or a view: each one is an error, with its place. Where a value goes:
 
   | The value is… | It goes in… |

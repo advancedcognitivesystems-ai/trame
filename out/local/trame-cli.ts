@@ -69,12 +69,15 @@ import body_diskTrees from "../../src/code/platform/trees.ts"
 import body_diskWriting from "../../src/code/platform/disk-writing.ts"
 import body_releaseRecords from "../../src/code/commands/releases.ts"
 import body_advance from "../../src/code/commands/advance.ts"
+import body_machineOutputs from "../../src/code/engine/machine.ts"
+import body_buildComparison from "../../src/code/commands/comparison.ts"
+import body_inPlaceSources from "../../src/code/platform/in-place-sources.ts"
+import body_amend from "../../src/code/commands/amend.ts"
 import body_assembly from "../../src/code/engine/assembly.ts"
 import body_assembler from "../../src/code/commands/assembler.ts"
 import body_assemble from "../../src/code/commands/assemble.ts"
 import body_npmReports from "../../src/code/platform/npm-reports.ts"
 import body_audit from "../../src/code/commands/audit.ts"
-import body_machineOutputs from "../../src/code/engine/machine.ts"
 import body_mermaidDiagrams from "../../src/code/rendering/mermaid.ts"
 import body_markdownSyntax from "../../src/code/rendering/markdown.ts"
 import body_fileRendering from "../../src/code/rendering/document.ts"
@@ -129,7 +132,7 @@ const platformMessages = await frozen.body(PlatformMessages)({})
 // "Node terminal" · implementation, for "Terminal"
 const nodeTerminal = await body_nodeTerminal({ argv: nodeArguments, exitStatus, events: nodeEvents, posix, messages: platformMessages })
 // "Trame's commands" · standard
-const trameCommands = {"program":"trame","assemble":"assemble","build":"build","dev":"dev","payload":"payload","export":"export","publish":"publish","run":"run","view":"view","snapshot":"snapshot","testKinds":"test-kinds","advance":"advance","audit":"audit","manifest":"manifest","release":"release","deliver":"deliver","ship":"ship","evidence":"evidence","doctor":"doctor","plan":"plan","fallback":"*","optionPrefix":"-","at":"--at","format":"--format","port":"--port","fragment":"--fragment","env":"--env","all":"--all","history":"--history","accept":"--accept","promote":"--promote","migrate":"--migrate","by":"--by","subject":"--subject","language":"--language","note":"--note","url":"--url","dryRun":"--dry-run","restore":"--restore","passed":"passed","failed":"failed","json":"json","markdown":"md","separator":" "}
+const trameCommands = {"program":"trame","assemble":"assemble","build":"build","dev":"dev","payload":"payload","export":"export","publish":"publish","run":"run","view":"view","snapshot":"snapshot","testKinds":"test-kinds","advance":"advance","audit":"audit","manifest":"manifest","release":"release","deliver":"deliver","ship":"ship","evidence":"evidence","doctor":"doctor","plan":"plan","amend":"amend","fallback":"*","optionPrefix":"-","at":"--at","format":"--format","port":"--port","fragment":"--fragment","env":"--env","all":"--all","history":"--history","accept":"--accept","promote":"--promote","migrate":"--migrate","by":"--by","why":"--why","from":"--from","until":"--until","source":"--source","subject":"--subject","language":"--language","note":"--note","url":"--url","dryRun":"--dry-run","restore":"--restore","passed":"passed","failed":"failed","json":"json","markdown":"md","separator":" "}
 // "Command line" · implementation, for "Command line"
 const nodeCommandLine = await body_nodeCommandLine({ terminal: frozen.limited(nodeTerminal, ["args","error"]), exitStatus, line: trameCommands, messages: platformMessages })
 // "Node.js character encodings" · standard
@@ -486,6 +489,16 @@ const inlineArray = await frozen.body(InlineArray)({ open: "[", close: "]", stan
 const releaseRecords = await body_releaseRecords({ releases, syntax: typeScriptSyntax, references: referenceSyntax, positions: gnuPositions, doc: docBlock, title: moduleTitle, comment: lineComment, imports: namedImport, exported: exportDeclaration, constant: constDeclaration, call, object: objectBlock, property, text: stringLiteral, list: inlineArray, texts, values: valueTypes })
 // "Advance" · entry point
 const advance = await body_advance({ exitStatus, preparation, engines: engineFingerprint, line: trameCommands, layout, advancement, accept: acceptCandidate, example: exampleRoot, day: testDay, environment: trameEnvironment, language: typeScript, programs: frozen.limited(nodePrograms, ["run"]), trees: frozen.limited(diskTrees, ["copy","differences","files","link","remove","temporary"]), reading: frozen.limited(diskReading, ["existsSync","readFileSync","readdirSync"]), writing: frozen.limited(diskWriting, ["mkdirSync","writeFileSync"]), paths: frozen.limited(nodePaths, ["basename","dirname","join","relative"]), hashing: frozen.limited(nodeHashing, ["createHash"]), sha256, fingerprint, encodings: nodeEncodings, diff: unifiedDiff, file: textFile, terminal: frozen.limited(nodeTerminal, ["write"]), table: columns, columns: terminalText, laws: commandMessages, counts, sequences, texts, values: valueTypes, messages: advanceMessages, pin: enginePin, sharing: languageSharing, releases, records: releaseRecords, json: jsonFormatting, specifiers: nodeModuleSpecifiers, references: referenceSyntax, clock: frozen.limited(systemClock, ["today"]), project })
+// "Machine outputs" · function
+const machineOutputs = await body_machineOutputs({ values: valueTypes, json: jsonFormatting, positions, prelude: frozen.limited(tramePrelude, ["internal"]), counts, messages: outputMessages })
+// "Two builds compared" · function
+const buildComparison = await body_buildComparison({ messages: commandMessages, output: outputMessages })
+// "Amendments in place" · implementation, for "Where an amendment goes"
+const inPlaceSources = await body_inPlaceSources({ reading: frozen.limited(diskReading, ["readFileSync"]), writing: frozen.limited(diskWriting, ["writeFileSync"]), encodings: nodeEncodings, syntax: typeScriptSyntax, doc: docBlock, exported: exportDeclaration, constant: constDeclaration, call, object: objectLiteral, property, text: stringLiteral, list: inlineArray, imports: namedImport, values: valueTypes, texts, counts })
+// "How an amendment is named" · decision
+const amendmentNaming = {"suffix":"Amendment","first":2}
+// "Amend" · entry point
+const amend = await body_amend({ exitStatus, preparation, machine: machineOutputs, comparison: buildComparison, place: frozen.limited(inPlaceSources, ["record"]), prelude: frozen.limited(tramePrelude, ["internal"]), references, project, specifiers: nodeModuleSpecifiers, values: valueTypes, paths: frozen.limited(nodePaths, ["dirname","join","relative","sep"]), text: terminalText, terminal: frozen.limited(nodeTerminal, ["write"]), messages: commandMessages, naming: amendmentNaming, counts })
 // "Assembly" · function
 const assembly = await body_assembly({ line: trameCommands, values: valueTypes, layout, paths: frozen.limited(nodePaths, ["join"]), wiring, prelude: frozen.limited(tramePrelude, ["internal","path"]), drivers, texts, messages: compilerMessages })
 // "Assembler" · function
@@ -500,8 +513,6 @@ const npmReports = await body_npmReports({ npm: npmCli, values: valueTypes, coun
 const packageAudit = {"evidence":"packages","counted":["moderate","high","critical"]}
 // "Audit the packages" · entry point
 const audit = await body_audit({ exitStatus, preparation, reports: frozen.limited(npmReports, ["audit","outdated"]), audit: packageAudit, layout, reading: frozen.limited(diskReading, ["existsSync","readFileSync"]), writing: frozen.limited(diskWriting, ["mkdirSync","writeFileSync"]), paths: frozen.limited(nodePaths, ["join"]), versions: versionOrder, encodings: nodeEncodings, json: jsonFormatting, terminal: frozen.limited(nodeTerminal, ["write"]), table: columns, columns: terminalText, counts, values: valueTypes, messages: commandMessages })
-// "Machine outputs" · function
-const machineOutputs = await body_machineOutputs({ values: valueTypes, json: jsonFormatting, positions, prelude: frozen.limited(tramePrelude, ["internal"]), counts, messages: outputMessages })
 // "Mermaid" · standard
 const mermaid = {"indent":"  ","space":" ","quote":"\"","language":"mermaid"}
 // "How Mermaid figures are drawn" · decision
@@ -786,8 +797,8 @@ const payloadBuilder = await body_payloadBuilder({ layout, candidateDates, histo
 const emitPayload = await body_emitPayload({ exitStatus, preparation, payload: payloadBuilder, files: fileRendering, screen: terminalRendering, pageRendering, terminal: frozen.limited(nodeTerminal, ["args","write","writeRaw","error","exit"]) })
 // "Export the page" · entry point
 const commands_export = await body_export({ exitStatus, layout, preparation, bundle: dateBundle, page, project, writing: frozen.limited(diskWriting, ["writeFileSync"]), paths: frozen.limited(nodePaths, ["resolve"]), terminal: frozen.limited(nodeTerminal, ["write"]), messages: commandMessages })
-// "Plan a build" · entry point
-const plan = await body_plan({ exitStatus, layout, text: terminalText, preparation, machine: machineOutputs, reading: frozen.limited(diskReading, ["existsSync","readFileSync"]), paths: frozen.limited(nodePaths, ["join"]), encodings: nodeEncodings, terminal: frozen.limited(nodeTerminal, ["write"]), messages: commandMessages, output: outputMessages })
+// "Plan" · entry point
+const plan = await body_plan({ exitStatus, layout, text: terminalText, preparation, machine: machineOutputs, comparison: buildComparison, reading: frozen.limited(diskReading, ["existsSync","readFileSync"]), paths: frozen.limited(nodePaths, ["join"]), encodings: nodeEncodings, terminal: frozen.limited(nodeTerminal, ["write"]), messages: commandMessages })
 // "Publish" · entry point
 const publish = await body_publish({ exitStatus, preparation, lock, writing: frozen.limited(diskWriting, ["writeFileSync"]), terminal: frozen.limited(nodeTerminal, ["write"]), layout: terminalText, columns: terminalColumns, cell: paddedCell, texts, messages: commandMessages })
 // "Where the SDLC's evidence is kept" · decision
@@ -829,6 +840,7 @@ const writeManifest = await body_writeManifest({ exitStatus, preparation, npm: n
 
 const started = (await frozen.start(TrameCli, { exposure: nodeCommandLine }, [
   { title: "Advance", fields: {"trigger":{"type":"command","name":"advance"}}, value: advance },
+  { title: "Amend", fields: {"trigger":{"type":"command","name":"amend"}}, value: amend },
   { title: "Assemble a component", fields: {"trigger":{"type":"command","name":"assemble"}}, value: assemble },
   { title: "Audit the packages", fields: {"trigger":{"type":"command","name":"audit"}}, value: audit },
   { title: "Build", fields: {"trigger":{"type":"command","name":"build"}}, value: build },
@@ -837,7 +849,7 @@ const started = (await frozen.start(TrameCli, { exposure: nodeCommandLine }, [
   { title: "Ask the machine", fields: {"trigger":{"type":"command","name":"doctor"}}, value: doctor },
   { title: "Payload", fields: {"trigger":{"type":"command","name":"payload"}}, value: emitPayload },
   { title: "Export the page", fields: {"trigger":{"type":"command","name":"export"}}, value: commands_export },
-  { title: "Plan a build", fields: {"trigger":{"type":"command","name":"plan"}}, value: plan },
+  { title: "Plan", fields: {"trigger":{"type":"command","name":"plan"}}, value: plan },
   { title: "Publish", fields: {"trigger":{"type":"command","name":"publish"}}, value: publish },
   { title: "Record evidence", fields: {"trigger":{"type":"command","name":"evidence"}}, value: recordEvidence },
   { title: "Release a version", fields: {"trigger":{"type":"command","name":"release"}}, value: release },

@@ -1,4 +1,4 @@
-import { defineKind, field, optional, edge, optionalEdge, hole, doc, isHole, keysOf, KindName, EdgeName, QuantityEdge, QuantityField, type Node, type Provides, type Lib, type Quantity } from "../trame/kernel"
+import { defineKind, field, optional, edge, optionalEdge, hole, doc, isHole, keysOf, KindName, EdgeName, QuantityEdge, QuantityField, type Node, type Provides, type Lib, type Quantity, ChangeWay} from "../trame/kernel"
 import { sourceOf } from "./standard"
 import words from "./words"
 
@@ -41,6 +41,7 @@ const kind = defineKind({
   main: F.units,
   renderOwns: [F.source, F.url, F.units],
   fields,
+  changes: { [F.units]: ChangeWay.cited },
   edges,
 
   holes: (self, g) => {

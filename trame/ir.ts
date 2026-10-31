@@ -136,6 +136,15 @@ export type PackageReport = ValueOf<typeof PackageReport>
  * code that writes. The words are those of the vocabulary of effects.
  */
 export const CoveredEffects: Readonly<Record<string, readonly string[]>> = { keeps: ["write"] }
+/**
+ * How a value of a node changes once declared (since g85). Chosen: by an amendment its owner approves, which the page
+ * and trame amend can write. Cited: only with the source that changed it, an amendment that names the new source. Code:
+ * in the code, never from outside it (what code is built on: a structure's constants, a vocabulary's words, a body).
+ */
+export const ChangeWay = { chosen: "chosen", cited: "cited", code: "code" } as const
+export type ChangeWay = (typeof ChangeWay)[keyof typeof ChangeWay]
+/** How an amendment is declared (since g85): the function that makes one, and the names of what it says. */
+export const AmendmentField = { facade: "amend", owner: "owner", why: "why", from: "from", until: "until", source: "source" } as const
 export const PackageField = { name: "packageName", version: "version", ceiling: "holdsBelow", prepare: "prepare", effects: "declaredEffects" } as const
 export type PackageField = ValueOf<typeof PackageField>
 

@@ -8,8 +8,9 @@ import { binding } from "../kinds/binding"
 import {
   Prelude, FileReading, FileWriting, Paths, ModuleLoader, TypeScriptCompiler, SyntaxTrees, Hashing, KeptResults, Process, Terminal,
   Clock, Timer, HttpServer, Bundler, Compression, Resources, CommandLine, WriteLog, TerminalLog, ProcessLog, ServerLog, Programs, FileTrees, PackageReports,
-  Local, Test, Browser, PageWindow, PageMemory, GraphFeed, Decompression, RunStore,
+  Local, Test, Browser, PageWindow, PageMemory, GraphFeed, Decompression, RunStore, AmendmentPlace,
 } from "./architecture"
+import { TypeScriptSyntax, DocBlock, ExportDeclaration, ConstDeclaration, Call, ObjectLiteral, Property, StringLiteral, InlineArray, NamedImport } from "./typescript"
 import { EngineFingerprint, KeptRunsScope, ProjectRuns } from "./engine"
 import { PackedGraph } from "./page"
 import { PageLoading } from "#std/platform"
@@ -560,4 +561,37 @@ export const EngineFilesBesideCode = binding({
   serves: [ReplaceableTechnology],
   context: "A frozen generation runs from its own directory, and reaches the shared language through links.",
   rejected: { "A path set in a configuration": "one more value to keep in step with where the generation is" },
+})
+
+/**
+ * Amendments in place
+ * The first strategy of where an amendment goes: written in the sources, at the end of the module that declares the node
+ * it amends, as a person would write it (its title is why it was made), the import of amendments added when the module
+ * lacks it. What the files of the project are, in each environment, the file ports say: the disk on a machine, memory
+ * over the disk in the scenarios. It writes, so it is an implementation (the engine's functions never write).
+ */
+export const InPlaceSources = implementation({
+  owner: "trame",
+  implements: [AmendmentPlace],
+  deps: {
+    reading: FileReading, writing: FileWriting, encodings: NodeEncodings, syntax: TypeScriptSyntax, doc: DocBlock, exported: ExportDeclaration,
+    constant: ConstDeclaration, call: Call, object: ObjectLiteral, property: Property, text: StringLiteral, list: InlineArray, imports: NamedImport,
+    values: ValueTypes, texts: Texts, counts: Counts,
+  },
+  body: code.file("./code/platform/in-place-sources.ts"),
+})
+
+/**
+ * Amendments go in the sources
+ * Until the repository takes them as pull requests, an amendment is written where the graph is: in its sources.
+ */
+export const AmendmentsInPlace = binding({
+  owner: "trame",
+  chooses: [InPlaceSources],
+  environments: [Local, Test],
+  follows: [Adapter],
+  serves: [ReplaceableTechnology],
+  context: "Every value the graph holds can be amended from the page or by trame amend (A4); where the amendment then goes is a choice that will change once the repository is the place work is published.",
+  consequences: "The amendment is a declaration in the module of the node it amends, read and built like any other; a pull request will be another realization of the same port.",
+  rejected: { "A file of amendments apart": "the amendment would sit far from the value it changes, where nobody reading the module sees it" },
 })

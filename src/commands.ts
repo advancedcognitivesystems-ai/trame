@@ -5,7 +5,7 @@ import { fn } from "../kinds/function"
 import { entryPoint, command } from "../kinds/entry-point"
 import { ExecutableSpecification, SingleSource, SeverityOrder, DevPort } from "./product"
 import { decision } from "../kinds/decision"
-import { TrameCli, Terminal, Process, Clock, FileReading, FileWriting, Paths, Hashing, Programs, FileTrees, PackageReports, Bundler, Timer, HttpServer, KeptRuns } from "./architecture"
+import { TrameCli, Terminal, Process, Clock, FileReading, FileWriting, Paths, Hashing, Programs, FileTrees, PackageReports, Bundler, Timer, HttpServer, KeptRuns, AmendmentPlace, Prelude } from "./architecture"
 import { Compiler, CompilationApi, Laws, Views, Lock, MachineOutputs, PayloadBuilder, DateBundle, DevServer, Assembly, Fingerprint, References, Project, EngineFingerprint } from "./engine"
 import { Page, PageBundle, PageDocument } from "./page"
 import { Html } from "#std/html"
@@ -13,7 +13,7 @@ import { ScriptElement } from "./html"
 import { DeliveredStyle } from "./delivery"
 import { Common, FileRendering, TerminalRendering, PageRendering } from "./rendering"
 import { Counts, Sequences, Texts, ValueTypes } from "#std/algebra"
-import { Layout, JsonFormatting, TrameCommands, TrameEnvironment, ReferenceSyntax, commandNames } from "./conventions"
+import { Layout, JsonFormatting, TrameCommands, TrameEnvironment, ReferenceSyntax, commandNames, AmendmentNaming } from "./conventions"
 import { ExitStatus, NodeEvents, Posix, NodeEncodings, NodeModuleSpecifiers, NpmManifest } from "#std/system"
 import { Sha256 } from "#std/algorithms"
 import { SemanticVersioning, Iso8601 } from "#std/measures"
@@ -313,14 +313,45 @@ export const Doctor = entryPoint({
  * change, issues raised and resolved, and the shipments whose obligations are touched. A person reads it before
  * building, a review before accepting a change.
  */
+/**
+ * Two builds compared
+ * The nodes added and removed, the statuses that change, the nodes whose fields, result or edges change, the issues
+ * raised and resolved, the shipments touched; then said line by line. What trame plan and trame amend show.
+ */
+export const BuildComparison = fn({
+  owner: "trame",
+  serves: [ExecutableSpecification],
+  deps: { messages: CommandMessages, output: OutputMessages },
+  body: code.file<typeof import("./code/commands/comparison").default>("./code/commands/comparison.ts"),
+})
+
 export const Plan = entryPoint({
   owner: "trame", in: TrameCli, serves: [ExecutableSpecification],
   trigger: command(commandNames.plan),
   deps: {
-    exitStatus: ExitStatus, layout: Layout, text: TerminalText, preparation: Preparation, machine: MachineOutputs, reading: FileReading, paths: Paths,
-    encodings: NodeEncodings, terminal: Terminal, messages: CommandMessages, output: OutputMessages,
+    exitStatus: ExitStatus, layout: Layout, text: TerminalText, preparation: Preparation, machine: MachineOutputs, comparison: BuildComparison,
+    reading: FileReading, paths: Paths, encodings: NodeEncodings, terminal: Terminal, messages: CommandMessages,
   },
   body: code.file<typeof import("./code/commands/plan").default>("./code/commands/plan.ts"),
+})
+
+/**
+ * Amend
+ * Changes a chosen value of a node by an amendment: who, why, from when, the value. The amendment is compiled first with
+ * the graph, and what it would change is said (statuses, issues raised, a criterion or a scenario that would fail);
+ * unless it raises an error (or --accept), it is recorded where the project's amendments go, and its owner's approval
+ * awaited when someone else wrote it. --dry-run only says. A cited value changes only with its source (--source); a value
+ * code is built on, never from here.
+ */
+export const Amend = entryPoint({
+  owner: "trame", in: TrameCli, serves: [SingleSource],
+  trigger: command(commandNames.amend),
+  deps: {
+    exitStatus: ExitStatus, preparation: Preparation, machine: MachineOutputs, comparison: BuildComparison, place: AmendmentPlace,
+    prelude: Prelude, references: References, project: Project, specifiers: NodeModuleSpecifiers, values: ValueTypes, paths: Paths,
+    text: TerminalText, terminal: Terminal, messages: CommandMessages, naming: AmendmentNaming, counts: Counts,
+  },
+  body: code.file<typeof import("./code/commands/amend").default>("./code/commands/amend.ts"),
 })
 
 /**

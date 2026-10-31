@@ -1,7 +1,7 @@
 // What all commands share: reading the options, checking and compiling the project, refusing cleanly.
 // It started as a port of the bootstrap's command line (trame/cli.ts): same options, same order of checks.
 
-import type { Compilation, Document, ProvidedBy, Severity, View } from "../../../trame/kernel"
+import type { AnyNode, Compilation, Document, ProvidedBy, Severity, View } from "../../../trame/kernel"
 import type { Clock, Layout, Process, Terminal } from "../../architecture"
 import type { CommandMessages } from "../../messages"
 import type { Api as CompilerApi, Compiled, Loaded } from "../engine/compiler"
@@ -65,6 +65,11 @@ export interface Options {
   migrate?: string
   /** --by: who gives the evidence. --subject, --language: the row reviewed, in which language. --note, --url. */
   by?: string
+  /** --why, --from, --until, --source: why an amendment changes a value, from and until when, the source a cited one names. */
+  why?: string
+  from?: string
+  until?: string
+  source?: string
   subject?: string
   language?: string
   note?: string
@@ -125,9 +130,13 @@ const body = (deps: Deps) => {
     const note = take(line.note)
     const url = take(line.url)
     const dryRun = has(line.dryRun)
+    const why = take(line.why)
+    const from = take(line.from)
+    const until = take(line.until)
+    const source = take(line.source)
     return {
       root: deps.currentProcess.cwd(), command, today, format, port, fragment, envName, all, history, accept, promote, migrate,
-      by, subject, language, note, url, dryRun, args: argv,
+      by, subject, language, note, url, dryRun, why, from, until, source, args: argv,
     }
   }
 
@@ -198,6 +207,16 @@ const body = (deps: Deps) => {
   }
 
   /**
+   * The loaded graph compiled at a date with nodes besides its own (an amendment not yet recorded, since g85): what the
+   * graph would be, written nowhere. The graph as loaded is left as it was.
+   */
+  async function alsoWith(o: Options, extra: readonly AnyNode[], date: string): Promise<Ctx> {
+    const c = await compileAt({ ...loaded!, nodes: [...loaded!.nodes, ...extra] }, date)
+    c.diags.sort((a, b) => deps.severityOrder(a.severity) - deps.severityOrder(b.severity))
+    return { c, comp: makeCompilation(c, { published: c.published ?? new Set(), lockIssues: [], views: deps.views.sortedViews() }) }
+  }
+
+  /**
    * Compiles the loaded graph again with the evidence as it is on disk now (after a command recorded some). With an
    * engine, the evidence is judged by that one rather than by the engine the project pins.
    */
@@ -231,7 +250,7 @@ const body = (deps: Deps) => {
     return { locate: located, files: new Map(docs.map((d) => [d.id, d.file])) }
   }
 
-  return { options, printLaws, refuse, prepare, at, reread, views, renderingContext }
+  return { options, printLaws, refuse, prepare, at, alsoWith, reread, views, renderingContext }
 }
 
 export type Api = ReturnType<typeof body>

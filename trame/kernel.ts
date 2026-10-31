@@ -12,7 +12,7 @@ import type {
 } from "./ir"
 import {
   OPEN_KEY, DateRole, FieldType, JsonMark, Openness, RuleState, Severity, Stage, Status, Outcome, Validity, ViewGroup,
-  Moment, Origin, ClaimOutcome, ClaimSide, ResolutionOutcome, WireMode, LiteralKind, PipelineStage,
+  Moment, Origin, ClaimOutcome, ClaimSide, ResolutionOutcome, WireMode, LiteralKind, PipelineStage, ChangeWay,
 } from "./ir"
 import type { Unit } from "./format"
 
@@ -513,7 +513,7 @@ export interface View {
   /** The declared value, before any claim. */
   base(path: string): unknown
   /** The type, label and role of one of this node's fields. */
-  fieldInfo(name: string): { type: FieldType; label?: string; role?: DateRole; stage?: string } | undefined
+  fieldInfo(name: string): { type: FieldType; label?: string; role?: DateRole; stage?: string; changes?: ChangeWay } | undefined
   /** Its named dependencies (the parameters of its body). */
   readonly dependencies: { name: string; node: View; stage: string }[]
   /** Its effects: its own, and those of everything it depends on. Computed in the consolidated graph. */
@@ -870,6 +870,11 @@ export interface KindDef<N extends string, F extends Fields, E extends Edges> {
   holes?(self: SelfOf<F, E>, g: Graph): HoleList
   /** What the kind says about a node, as blocks of the intermediate format. */
   render?(self: SelfOf<F, E>, g: Graph): Block[]
+  /**
+   * How each of its fields changes once declared (since g85): chosen, cited or code (ChangeWay). A field it does not name
+   * changes in the code only.
+   */
+  changes?: Readonly<Partial<Record<keyof F & string, ChangeWay>>>
   /**
    * Its own effects (the effects of its dependencies are added). `uses`: the operations a node that depends on it uses
    * (the methods of a port), when the engine can tell (since g82); without it, all of them.

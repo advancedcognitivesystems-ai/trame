@@ -2,7 +2,7 @@
 
 *The releases of the components on 31 October 2026, newest first. A project runs the release its configuration pins.*
 
-> **84 releases of 1 component; 50 releases on a language of their own**
+> **85 releases of 1 component; 50 releases on a language of their own**
 
 ## Trame on the command line
 
@@ -10,6 +10,7 @@ Each release, newest first: what changed, the release that assembled it, and whe
 
 | Release | Released on | What changes | Assembled by | Language |
 |---|---|---|---|---|
+| [Generation 85](releases.md#G85) | 31 October 2026 | A4a: each kind says how its values change (chosen, cited, code); trame amend says what an amendment would change, then records it where amendments go (the port, in place in the sources); an amendment awaits its owner's approval | [Generation 84](releases.md#G84) | shared |
 | [Generation 84](releases.md#G84) | 31 October 2026 | A2 closed: a command another system interprets is typed by its intent (std's Command), made only by std's Commands; a cast that makes one refuses the build | [Generation 83](releases.md#G83) | shared |
 | [Generation 83](releases.md#G83) | 31 October 2026 | A2, second half: an implementation is held to what its body reaches (std's PlatformEffects, the packages' declared effects); wiring hands each node a capability limited to the methods it calls | [Generation 82](releases.md#G82) | shared |
 | [Generation 82](releases.md#G82) | 31 October 2026 | A2, first half: a port's effects method by method, a body has those of the methods it calls; code made of a text refuses the build | [Generation 81](releases.md#G81) | shared |

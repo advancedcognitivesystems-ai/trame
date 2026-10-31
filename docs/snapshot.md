@@ -123,6 +123,13 @@ Component · `TrameCli`
 - Deployed in: Local, Test
 - Depends on: Command line
 
+### Where an amendment goes
+
+Port · `AmendmentPlace`
+
+- Owner: trame
+- Declared effects: { record: read, write }
+
 ### Bundler
 
 Port · `Bundler`
@@ -475,6 +482,13 @@ Decision · `AdvanceSamples`
 - Decided by: trame
 - Value: { output: an engine run by a scenario, runs: 40, what: A generation frozen in memory, by a scenario, shown: 3 }
 
+### What an amendment is checked with
+
+Decision · `AmendmentSamples`
+
+- Decided by: trame
+- Value: { refused: { node: LateFee, path: value, value: 0.4 }, recorded: { node: FreeCancellationPeriod, path: value.fast, value: 360, name: FreeCancellationPeriodAmendment, module: src/cancellation.ts }, code: { node: Refund, path: body, value: 0 }, why: A scenario amends the example, by: lea }
+
 ### What the example is assembled for
 
 Decision · `AssemblySamples`
@@ -565,9 +579,9 @@ Scenario · `BuildPlanned` · **held**
 
 - Owner: trame
 - Parameters: { build: commands.Build, plan: commands.Plan, writeLog: architecture.WriteLog, terminalLog: architecture.TerminalLog, writing: architecture.FileWriting, currentProcess: architecture.Process, paths: architecture.Paths, layout: conventions.Layout, samples: command-scenarios.PlanSamples, line: conventions.TrameCommands, exitStatus: std/system.ExitStatus, counts: std/algebra.Counts, commands: messages.CommandMessages, messages: messages.ScenarioMessages }
-- Verifies: Plan a build
+- Verifies: Plan
 - In: Test
-- Depends on: Build, Plan a build, Write log, Terminal log, File writing, Process, Paths, Project layout, What a plan is checked with, Trame's commands, Messages of the commands, Messages of the scenarios
+- Depends on: Build, Plan, Write log, Terminal log, File writing, Process, Paths, Project layout, What a plan is checked with, Trame's commands, Messages of the commands, Messages of the scenarios
 
 ### The command line
 
@@ -729,6 +743,16 @@ Scenario · `SnapshotTaken` · **held**
 - In: Test
 - Depends on: Take the snapshot, Write log, File reading, Process, Paths, Project layout, Trame's commands, Messages of the scenarios
 
+### A value amended
+
+Scenario · `ValueAmended` · **held**
+
+- Owner: trame
+- Parameters: { amend: commands.Amend, writeLog: architecture.WriteLog, currentProcess: architecture.Process, paths: architecture.Paths, line: conventions.TrameCommands, exitStatus: std/system.ExitStatus, samples: command-scenarios.AmendmentSamples, messages: messages.ScenarioMessages }
+- Verifies: Amend, Two builds compared, Amendments in place
+- In: Test
+- Depends on: Amend, Write log, Process, Paths, Trame's commands, What an amendment is checked with, Messages of the scenarios
+
 ### A view in the terminal
 
 Scenario · `ViewsInTheTerminal` · **held**
@@ -758,6 +782,15 @@ Function · `Assembler` · **held**
 - Serves: A specification that runs
 - Depends on: Preparation, Assembly, Terminal text, Punctuation of documents, Messages of the commands
 
+### Two builds compared
+
+Function · `BuildComparison` · **held**
+
+- Owner: trame
+- Parameters: { messages: messages.CommandMessages, output: messages.OutputMessages }
+- Serves: A specification that runs
+- Depends on: Messages of the commands, Messages of the outputs
+
 ### Preparation
 
 Function · `Preparation` · **held**
@@ -786,6 +819,17 @@ Entry point · `Advance` · **held**
 - Serves: A specification that runs
 - Part of: Trame on the command line
 - Depends on: Preparation, The fingerprint of an engine, Trame's commands, Project layout, What an advance assembles, Accept a candidate, Example project, Day of the scenarios, Trame's environment, TypeScript, Programs, File trees, File reading, File writing, Paths, Hashing, Length of a fingerprint, Terminal, Columns, Terminal text, Messages of the commands, Messages of an advance, The engine a project runs, Generations that share the language, Releases of the engine, Records of the releases, JSON formatting, Trame references, Clock, Project
+
+### Amend
+
+Entry point · `Amend` · **held**
+
+- Owner: trame
+- Trigger: { type: command, name: amend }
+- Parameters: { exitStatus: std/system.ExitStatus, preparation: commands.Preparation, machine: engine.MachineOutputs, comparison: commands.BuildComparison, place: architecture.AmendmentPlace, prelude: architecture.Prelude, references: engine.References, project: engine.Project, specifiers: std/system.NodeModuleSpecifiers, values: std/algebra.ValueTypes, paths: architecture.Paths, text: text.TerminalText, terminal: architecture.Terminal, messages: messages.CommandMessages, naming: conventions.AmendmentNaming, counts: std/algebra.Counts }
+- Serves: A single source of truth
+- Part of: Trame on the command line
+- Depends on: Preparation, Machine outputs, Two builds compared, Where an amendment goes, Prelude, References, Project, Paths, Terminal text, Terminal, Messages of the commands, How an amendment is named
 
 ### Assemble a component
 
@@ -875,16 +919,16 @@ Entry point · `Export` · **held**
 - Part of: Trame on the command line
 - Depends on: Project layout, Preparation, Date bundle, Page, Project, File writing, Paths, Terminal, Messages of the commands
 
-### Plan a build
+### Plan
 
 Entry point · `Plan` · **held**
 
 - Owner: trame
 - Trigger: { type: command, name: plan }
-- Parameters: { exitStatus: std/system.ExitStatus, layout: conventions.Layout, text: text.TerminalText, preparation: commands.Preparation, machine: engine.MachineOutputs, reading: architecture.FileReading, paths: architecture.Paths, encodings: std/system.NodeEncodings, terminal: architecture.Terminal, messages: messages.CommandMessages, output: messages.OutputMessages }
+- Parameters: { exitStatus: std/system.ExitStatus, layout: conventions.Layout, text: text.TerminalText, preparation: commands.Preparation, machine: engine.MachineOutputs, comparison: commands.BuildComparison, reading: architecture.FileReading, paths: architecture.Paths, encodings: std/system.NodeEncodings, terminal: architecture.Terminal, messages: messages.CommandMessages }
 - Serves: A specification that runs
 - Part of: Trame on the command line
-- Depends on: Project layout, Terminal text, Preparation, Machine outputs, File reading, Paths, Terminal, Messages of the commands, Messages of the outputs
+- Depends on: Project layout, Terminal text, Preparation, Machine outputs, Two builds compared, File reading, Paths, Terminal, Messages of the commands
 
 ### Publish
 
@@ -1028,7 +1072,7 @@ Standard · `TrameCommands`
 
 - Maintained by: trame
 - Source: Trame, its command line (the entry points of commands, in the module commands)
-- Constants: { program: { value: trame, meaning: The name a person types }, assemble: { value: assemble, meaning: Assembles a component for an environment }, build: { value: build, meaning: Builds the documents of the graph }, dev: { value: dev, meaning: Follows the graph live in the page }, payload: { value: payload, meaning: Writes the graph compiled at a date, for the page }, export: { value: export, meaning: Writes the page, standalone }, publish: { value: publish, meaning: Freezes the published declarations in the lock }, run: { value: run, meaning: Assembles a component, then runs it }, view: { value: view, meaning: Shows a view }, snapshot: { value: snapshot, meaning: Takes the snapshot of the graph }, testKinds: { value: test-kinds, meaning: Tests the laws of the kinds and of the views }, advance: { value: advance, meaning: The generation in place assembles the described engine and checks it }, audit: { value: audit, meaning: Asks the registry about the packages of the graph, and keeps its answers as evidence }, manifest: { value: manifest, meaning: Writes the packages of the graph, at their versions, and where each library's name leads, into the project's manifest }, release: { value: release, meaning: Freezes a version of the project, a library: its graph, its code and its documents }, deliver: { value: deliver, meaning: Writes the deliveries of the project: a page a browser opens as it is }, ship: { value: ship, meaning: Builds a shipment's artefacts, runs its checks, refuses while an obligation does not hold, deploys it }, evidence: { value: evidence, meaning: Records a piece of evidence a person gives: a check made by hand, a review, a deployment }, doctor: { value: doctor, meaning: Asks the machine whether it runs Trame: files, trees, programs, a server, the time, the registry }, plan: { value: plan, meaning: Says what a build would change against the last one, and writes nothing }, fallback: { value: *, meaning: The command that receives a word naming no other one }, optionPrefix: { value: -, meaning: Opens an option, not a command }, at: { value: --at, meaning: The date at which the graph is compiled }, format: { value: --format, meaning: The format a view is written in }, port: { value: --port, meaning: The port trame dev listens on }, fragment: { value: --fragment, meaning: Writes the page as a fragment, without its document }, env: { value: --env, meaning: The environment a component is assembled for }, all: { value: --all, meaning: Every date, not only the one asked }, history: { value: --history, meaning: With --all, the last days of the project's history too: a version released, evidence given }, accept: { value: --accept, meaning: The differences an advance shows are wanted }, promote: { value: --promote, meaning: The candidate becomes the next generation, with what changes }, migrate: { value: --migrate, meaning: With publish: the published declarations that changed form, not meaning, as the language moved, are published again, with why }, by: { value: --by, meaning: Who gives the evidence: the person it is attributed to }, subject: { value: --subject, meaning: What was reviewed: the key of a row of data }, language: { value: --language, meaning: The language a row was reviewed in }, note: { value: --note, meaning: What the evidence says, in words }, url: { value: --url, meaning: Where to read more, or where an artefact was deployed }, dryRun: { value: --dry-run, meaning: Builds and checks, records the evidence, but does not deploy }, restore: { value: --restore, meaning: Given to the launcher: installs, in the pinned generation's folder, the packages it was frozen with }, passed: { value: passed, meaning: The evidence says yes: the check passed, the review approves, the deployment is done }, failed: { value: failed, meaning: The evidence says no: the check failed, the review asks for changes }, json: { value: json, meaning: A view written as JSON (the intermediate format) }, markdown: { value: md, meaning: A view written as Markdown }, separator: { value:  , meaning: Separates the words of a command, and the names of a list given as one parameter } }
+- Constants: { program: { value: trame, meaning: The name a person types }, assemble: { value: assemble, meaning: Assembles a component for an environment }, build: { value: build, meaning: Builds the documents of the graph }, dev: { value: dev, meaning: Follows the graph live in the page }, payload: { value: payload, meaning: Writes the graph compiled at a date, for the page }, export: { value: export, meaning: Writes the page, standalone }, publish: { value: publish, meaning: Freezes the published declarations in the lock }, run: { value: run, meaning: Assembles a component, then runs it }, view: { value: view, meaning: Shows a view }, snapshot: { value: snapshot, meaning: Takes the snapshot of the graph }, testKinds: { value: test-kinds, meaning: Tests the laws of the kinds and of the views }, advance: { value: advance, meaning: The generation in place assembles the described engine and checks it }, audit: { value: audit, meaning: Asks the registry about the packages of the graph, and keeps its answers as evidence }, manifest: { value: manifest, meaning: Writes the packages of the graph, at their versions, and where each library's name leads, into the project's manifest }, release: { value: release, meaning: Freezes a version of the project, a library: its graph, its code and its documents }, deliver: { value: deliver, meaning: Writes the deliveries of the project: a page a browser opens as it is }, ship: { value: ship, meaning: Builds a shipment's artefacts, runs its checks, refuses while an obligation does not hold, deploys it }, evidence: { value: evidence, meaning: Records a piece of evidence a person gives: a check made by hand, a review, a deployment }, doctor: { value: doctor, meaning: Asks the machine whether it runs Trame: files, trees, programs, a server, the time, the registry }, plan: { value: plan, meaning: Says what a build would change against the last one, and writes nothing }, amend: { value: amend, meaning: Changes a chosen value by an amendment, said first, then recorded where the project's amendments go }, fallback: { value: *, meaning: The command that receives a word naming no other one }, optionPrefix: { value: -, meaning: Opens an option, not a command }, at: { value: --at, meaning: The date at which the graph is compiled }, format: { value: --format, meaning: The format a view is written in }, port: { value: --port, meaning: The port trame dev listens on }, fragment: { value: --fragment, meaning: Writes the page as a fragment, without its document }, env: { value: --env, meaning: The environment a component is assembled for }, all: { value: --all, meaning: Every date, not only the one asked }, history: { value: --history, meaning: With --all, the last days of the project's history too: a version released, evidence given }, accept: { value: --accept, meaning: The differences an advance shows are wanted }, promote: { value: --promote, meaning: The candidate becomes the next generation, with what changes }, migrate: { value: --migrate, meaning: With publish: the published declarations that changed form, not meaning, as the language moved, are published again, with why }, by: { value: --by, meaning: Who gives the evidence, or writes the amendment: the person it is attributed to }, why: { value: --why, meaning: Why an amendment changes the value }, from: { value: --from, meaning: The day an amendment comes into force }, until: { value: --until, meaning: The last day an amendment is in force }, source: { value: --source, meaning: The source that changed a cited value, which the amendment names }, subject: { value: --subject, meaning: What was reviewed: the key of a row of data }, language: { value: --language, meaning: The language a row was reviewed in }, note: { value: --note, meaning: What the evidence says, in words }, url: { value: --url, meaning: Where to read more, or where an artefact was deployed }, dryRun: { value: --dry-run, meaning: Builds and checks, records the evidence, but does not deploy }, restore: { value: --restore, meaning: Given to the launcher: installs, in the pinned generation's folder, the packages it was frozen with }, passed: { value: passed, meaning: The evidence says yes: the check passed, the review approves, the deployment is done }, failed: { value: failed, meaning: The evidence says no: the check failed, the review asks for changes }, json: { value: json, meaning: A view written as JSON (the intermediate format) }, markdown: { value: md, meaning: A view written as Markdown }, separator: { value:  , meaning: Separates the words of a command, and the names of a list given as one parameter } }
 
 ### Trame's environment
 
@@ -1037,6 +1081,13 @@ Standard · `TrameEnvironment`
 - Maintained by: trame
 - Source: Trame, the variables of the environment it reads
 - Constants: { today: { value: TRAME_TODAY, meaning: The date the engine takes for today (ISO 8601) instead of the clock's: documents that do not change from one day to the next } }
+
+### How an amendment is named
+
+Decision · `AmendmentNaming`
+
+- Decided by: trame
+- Value: { suffix: Amendment, first: 2 }
 
 ### Default rank
 
@@ -3302,6 +3353,15 @@ Implementation · `Esbuild` · **held**
 - Implements: Bundler
 - Uses: esbuild
 
+### Amendments in place
+
+Implementation · `InPlaceSources` · **held**
+
+- Owner: trame
+- Parameters: { reading: architecture.FileReading, writing: architecture.FileWriting, encodings: std/system.NodeEncodings, syntax: typescript.TypeScriptSyntax, doc: typescript.DocBlock, exported: typescript.ExportDeclaration, constant: typescript.ConstDeclaration, call: typescript.Call, object: typescript.ObjectLiteral, property: typescript.Property, text: typescript.StringLiteral, list: typescript.InlineArray, imports: typescript.NamedImport, values: std/algebra.ValueTypes, texts: std/algebra.Texts, counts: std/algebra.Counts }
+- Implements: Where an amendment goes
+- Depends on: File reading, File writing, The syntax of the programs Trame writes, Documentation comment, Export, Constant, Call, Object, Property, Text, List on one line, Import of names
+
 ### Files in memory, over the disk
 
 Implementation · `MemoryFiles` · **held**
@@ -3468,6 +3528,18 @@ Implementation · `WebTreeSitter` · **held**
 - Implements: Syntax trees
 - Uses: web-tree-sitter
 - Depends on: Messages of the platform
+
+### Amendments go in the sources
+
+Technical choice · `AmendmentsInPlace` · **held**
+
+- Decided by: trame
+- Context: Every value the graph holds can be amended from the page or by trame amend (A4); where the amendment then goes is a choice that will change once the repository is the place work is published.
+- Consequences: The amendment is a declaration in the module of the node it amends, read and built like any other; a pull request will be another realization of the same port.
+- Rejected: A file of amendments apart, the amendment would sit far from the value it changes, where nobody reading the module sees it
+- Chooses: Amendments in place
+- In: Local, Test
+- Serves: A technology is changed in one node
 
 ### The TypeScript compiler reads the declarations
 
@@ -5120,6 +5192,20 @@ Release · `G84`
 - Language archived: 1a1128c9e4fd6ebb
 - Releases: Trame on the command line
 - Assembled by: Generation 83
+
+### Generation 85
+
+Release · `G85`
+
+- Released by: trame
+- Version: g85
+- Released on: 2026-10-31
+- What changes: A4a: each kind says how its values change (chosen, cited, code); trame amend says what an amendment would change, then records it where amendments go (the port, in place in the sources); an amendment awaits its owner's approval
+- Fingerprint: d33961c1bb511390
+- Language: shared
+- Language archived: 3bb158af0204c23b
+- Releases: Trame on the command line
+- Assembled by: Generation 84
 
 ### Generation 9
 

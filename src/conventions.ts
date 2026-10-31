@@ -58,11 +58,18 @@ export const FrozenApi = standard({
   },
 })
 
+/**
+ * How an amendment is named
+ * The name of the node it amends, then this word, then a number from the second one on: LateFeeAmendment,
+ * LateFeeAmendment2.
+ */
+export const AmendmentNaming = decision<{ suffix: string; first: number }>({ owner: "trame", value: { suffix: "Amendment", first: 2 } })
+
 /** The names of Trame's commands: the entry points take them, and bodies receive them through TrameCommands. */
 export const commandNames = {
   assemble: "assemble", build: "build", dev: "dev", payload: "payload", export: "export", publish: "publish", run: "run",
   view: "view", snapshot: "snapshot", testKinds: "test-kinds", advance: "advance", audit: "audit", manifest: "manifest", release: "release", deliver: "deliver",
-  ship: "ship", evidence: "evidence", doctor: "doctor", plan: "plan", fallback: "*",
+  ship: "ship", evidence: "evidence", doctor: "doctor", plan: "plan", amend: "amend", fallback: "*",
 } as const
 
 /**
@@ -95,6 +102,7 @@ export const TrameCommands = standard({
     evidence: { value: commandNames.evidence, meaning: "Records a piece of evidence a person gives: a check made by hand, a review, a deployment" },
     doctor: { value: commandNames.doctor, meaning: "Asks the machine whether it runs Trame: files, trees, programs, a server, the time, the registry" },
     plan: { value: commandNames.plan, meaning: "Says what a build would change against the last one, and writes nothing" },
+    amend: { value: commandNames.amend, meaning: "Changes a chosen value by an amendment, said first, then recorded where the project's amendments go" },
     fallback: { value: commandNames.fallback, meaning: "The command that receives a word naming no other one" },
     optionPrefix: { value: "-", meaning: "Opens an option, not a command" },
     at: { value: "--at", meaning: "The date at which the graph is compiled" },
@@ -107,7 +115,11 @@ export const TrameCommands = standard({
     accept: { value: "--accept", meaning: "The differences an advance shows are wanted" },
     promote: { value: "--promote", meaning: "The candidate becomes the next generation, with what changes" },
     migrate: { value: "--migrate", meaning: "With publish: the published declarations that changed form, not meaning, as the language moved, are published again, with why" },
-    by: { value: "--by", meaning: "Who gives the evidence: the person it is attributed to" },
+    by: { value: "--by", meaning: "Who gives the evidence, or writes the amendment: the person it is attributed to" },
+    why: { value: "--why", meaning: "Why an amendment changes the value" },
+    from: { value: "--from", meaning: "The day an amendment comes into force" },
+    until: { value: "--until", meaning: "The last day an amendment is in force" },
+    source: { value: "--source", meaning: "The source that changed a cited value, which the amendment names" },
     subject: { value: "--subject", meaning: "What was reviewed: the key of a row of data" },
     language: { value: "--language", meaning: "The language a row was reviewed in" },
     note: { value: "--note", meaning: "What the evidence says, in words" },

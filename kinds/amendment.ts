@@ -1,8 +1,9 @@
 import {
   defineKind, field, optional, edge, optionalEdge, hole, doc, unitOf, patchLeaves, keysOf, edgesOf, DateRole, FieldType, RuleState, Validity,
-  KindName, ResolutionKind, Unit, type AnyNode, type Lib, type Node, type PatchOf, type View, type Resolution,
+  KindName, ResolutionKind, Unit, ChangeWay, type AnyNode, type Lib, type Node, type PatchOf, type View, type Resolution,
 } from "../trame/kernel"
 import { approval } from "./approval"
+import { sourceFields } from "./standard"
 import words from "./words"
 
 const say = words()
@@ -82,13 +83,25 @@ const kind = defineKind({
   },
 
   holes(self, g) {
+    const { counts, references } = g.lib
     const leaves = patchLeaves(self.field(F.patch))
-    if (g.lib.counts.isEmpty(leaves)) return [hole.warning(say.amendmentAmendmentWithoutEffectItRedefinesNothing())]
+    if (counts.isEmpty(leaves)) return [hole.warning(say.amendmentAmendmentWithoutEffectItRedefinesNothing())]
     const target = self.amends
     if (!target) return []
-    return leaves
-      .filter(([p, v]) => !g.lib.values.isFunction(v) && JSON.stringify(target.base(p)) === JSON.stringify(v))
-      .map(([p]) => hole.warning(say.amendmentChangesNothingAlreadyHasThisValue(p)))
+    const fields = leaves.map(([p]) => references.firstSegment(p))
+    // A cited value changes with its source (since g85): the amendment names the source that changed it.
+    const source = keysOf(sourceFields).source
+    const cited = [...new Set(fields.filter((f) => target.fieldInfo(f)?.changes === ChangeWay.cited))]
+    // Who answers for what it amends approves it, unless they wrote it.
+    const owner = target.owner
+    const approved = owner === undefined || owner === self.owner || g.from(self).in(edgesOf(approval).approves).nodes().some((a) => a.owner === owner)
+    return [
+      ...leaves
+        .filter(([p, v]) => !g.lib.values.isFunction(v) && JSON.stringify(target.base(p)) === JSON.stringify(v))
+        .map(([p]) => hole.warning(say.amendmentChangesNothingAlreadyHasThisValue(p))),
+      ...(counts.any(cited) && !fields.includes(source) ? cited.map((f) => hole.error(say.amendmentCitedWithoutSource(f), self.owner)) : []),
+      !approved && hole.warning(say.amendmentAwaitsApproval(owner, target.title), owner),
+    ]
   },
 
   render(self, g) {

@@ -4,7 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 0 | 623 |
+| trame | 0 | 0 | 0 | 632 |
 
 <a id="trame"></a>
 
@@ -30,6 +30,7 @@ Nothing to decide or watch.
 | [Drawing of a timeline](appearance.md#TimelineDrawing) | Decision |  |
 | [Type scale](appearance.md#TypeScale) | Decision |  |
 | [Typography](appearance.md#Typography) | Decision |  |
+| [Where an amendment goes](architecture.md#AmendmentPlace) | Port |  |
 | [Browser](architecture.md#Browser) | Environment |  |
 | [Bundler](architecture.md#Bundler) | Port |  |
 | [Clock](architecture.md#Clock) | Port |  |
@@ -80,6 +81,7 @@ Nothing to decide or watch.
 | [The page is assembled](browser.md#ThePageIsAssembled) | Architecture decision | **held** |
 | [An advance, in memory](command-scenarios.md#AdvanceInMemory) | Scenario | **held** |
 | [What the engines an advance starts answer in a scenario](command-scenarios.md#AdvanceSamples) | Decision |  |
+| [What an amendment is checked with](command-scenarios.md#AmendmentSamples) | Decision |  |
 | [What the example is assembled for](command-scenarios.md#AssemblySamples) | Decision |  |
 | [A body is read and checked](command-scenarios.md#BodiesReadAndChecked) | Scenario | **held** |
 | [Bodies the reader is given](command-scenarios.md#BodySamples) | Decision |  |
@@ -106,20 +108,23 @@ Nothing to decide or watch.
 | [Shipments run, evidence given](command-scenarios.md#ShipmentsRun) | Scenario | **held** |
 | [The snapshot, taken by its command](command-scenarios.md#SnapshotTaken) | Scenario | **held** |
 | [What an SVG figure opens with](command-scenarios.md#SvgSample) | Decision |  |
+| [A value amended](command-scenarios.md#ValueAmended) | Scenario | **held** |
 | [Views asked of the example](command-scenarios.md#ViewSamples) | Decision |  |
 | [A view in the terminal](command-scenarios.md#ViewsInTheTerminal) | Scenario | **held** |
 | [Advance](commands.md#Advance) | Entry point | **held** |
+| [Amend](commands.md#Amend) | Entry point | **held** |
 | [Assemble a component](commands.md#Assemble) | Entry point | **held** |
 | [Assembler](commands.md#Assembler) | Function | **held** |
 | [Audit the packages](commands.md#Audit) | Entry point | **held** |
 | [Build](commands.md#Build) | Entry point | **held** |
+| [Two builds compared](commands.md#BuildComparison) | Function | **held** |
 | [Deliver](commands.md#Deliver) | Entry point | **held** |
 | [Start trame dev](commands.md#Dev) | Entry point | **held** |
 | [Ask the machine](commands.md#Doctor) | Entry point | **held** |
 | [What the doctor writes, runs and waits for](commands.md#DoctorProbe) | Decision |  |
 | [Payload](commands.md#EmitPayload) | Entry point | **held** |
 | [Export the page](commands.md#Export) | Entry point | **held** |
-| [Plan a build](commands.md#Plan) | Entry point | **held** |
+| [Plan](commands.md#Plan) | Entry point | **held** |
 | [Preparation](commands.md#Preparation) | Function | **held** |
 | [Publish](commands.md#Publish) | Entry point | **held** |
 | [Record evidence](commands.md#RecordEvidence) | Entry point | **held** |
@@ -132,6 +137,7 @@ Nothing to decide or watch.
 | [Test the laws](commands.md#TestKinds) | Entry point | **held** |
 | [View by its name](commands.md#ViewByName) | Entry point | **held** |
 | [Write the manifest](commands.md#WriteManifest) | Entry point | **held** |
+| [How an amendment is named](conventions.md#AmendmentNaming) | Decision |  |
 | [Default rank](conventions.md#DefaultRank) | Decision |  |
 | [Documentation comment](conventions.md#DocComment) | Decision |  |
 | [Names of the documents](conventions.md#DocumentIds) | Standard |  |
@@ -341,6 +347,7 @@ Nothing to decide or watch.
 | [A style sheet writes no value](page.md#StyleThroughVariables) | Architecture decision | **held** |
 | [Theme](page.md#Theme) | Syntax element | **held** |
 | [The page](page.md#ThePage) | Decision |  |
+| [Amendments go in the sources](platform.md#AmendmentsInPlace) | Technical choice | **held** |
 | [The TypeScript compiler reads the declarations](platform.md#CompilerReadsDeclarations) | Technical choice | **held** |
 | [System files, for reading](platform.md#DiskReading) | Implementation | **held** |
 | [Trees on disk](platform.md#DiskTrees) | Implementation | **held** |
@@ -353,6 +360,7 @@ Nothing to decide or watch.
 | [Example project](platform.md#ExampleRoot) | Decision |  |
 | [Scenarios write in memory, over the disk](platform.md#FilesInMemoryOverTheDisk) | Technical choice | **held** |
 | [Scenarios run in memory](platform.md#InMemoryScenarios) | Technical choice | **held** |
+| [Amendments in place](platform.md#InPlaceSources) | Implementation | **held** |
 | [Lines shown on an exit in test](platform.md#LinesOnExit) | Decision |  |
 | [Files in memory, over the disk](platform.md#MemoryFiles) | Implementation | **held** |
 | [A server in memory](platform.md#MemoryHttpServer) | Function | **held** |
@@ -511,6 +519,7 @@ Nothing to decide or watch.
 | [Generation 82](releases.md#G82) | Release |  |
 | [Generation 83](releases.md#G83) | Release |  |
 | [Generation 84](releases.md#G84) | Release |  |
+| [Generation 85](releases.md#G85) | Release |  |
 | [Generation 9](releases.md#G9) | Release |  |
 | [Common rendering](rendering.md#Common) | Function | **held** |
 | [Documents in Markdown](rendering.md#DocumentsInMarkdown) | Technical choice | **held** |

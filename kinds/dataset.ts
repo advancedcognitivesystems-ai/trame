@@ -1,4 +1,4 @@
-import { defineKind, field, optional, edge, optionalEdge, hole, doc, keysOf, fieldsOf, Status, KindName, EdgeName, ReviewState, ReviewEdge, type Inline, type Lib, type Node, type Provides, type View } from "../trame/kernel"
+import { defineKind, field, optional, edge, optionalEdge, hole, doc, keysOf, fieldsOf, Status, KindName, EdgeName, ReviewState, ReviewEdge, type Inline, type Lib, type Node, type Provides, type View, ChangeWay} from "../trame/kernel"
 import { decision } from "./decision"
 import { waitingFor } from "./review"
 import words from "./words"
@@ -74,6 +74,7 @@ const kind = defineKind({
   label: { one: say.datasetDataset(), many: say.datasetDatasets() },
   renderOwns: [F.rows, F.key, F.rules],
   fields,
+  changes: { [F.rows]: ChangeWay.chosen },
   edges,
 
   evaluate(self, g): Result {

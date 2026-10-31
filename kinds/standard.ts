@@ -1,4 +1,4 @@
-import { defineKind, field, edge, optionalEdge, optional, doc, isHole, isConstant, keysOf, KindName, EdgeName, type Node, type Provides, type Inline, type Constant, type Values, type Declares, type Lib, type View } from "../trame/kernel"
+import { defineKind, field, edge, optionalEdge, optional, doc, isHole, isConstant, keysOf, KindName, EdgeName, type Node, type Provides, type Inline, type Constant, type Values, type Declares, type Lib, type View, ChangeWay} from "../trame/kernel"
 import words from "./words"
 
 const say = words()
@@ -42,6 +42,7 @@ const kind = defineKind({
   main: F.constants,
   renderOwns: sourceShown,
   fields,
+  changes: { [F.constants]: ChangeWay.cited },
   edges: {
     [EdgeName.serves]: optionalEdge(edge.many([KindName.goal], { label: say.adrServes(), inverse: say.adrServedBy() })),
   },

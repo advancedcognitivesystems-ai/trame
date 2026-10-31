@@ -1,6 +1,6 @@
 import {
   defineKind, field, optional, edge, optionalEdge, hole, doc, isHole, unitOf, recordKeyOf, keysOf, DateRole, KindName,
-  type Node, type HoleSpec, type Block, type Inline, type View, type Provides,
+  type Node, type HoleSpec, type Block, type Inline, type View, type Provides, ChangeWay
 } from "../trame/kernel"
 import words from "./words"
 
@@ -22,6 +22,7 @@ const kind = defineKind({
   main: F.value,
   renderOwns: [F.value, F.range],
   fields,
+  changes: { [F.value]: ChangeWay.chosen, [F.review]: ChangeWay.chosen, [F.range]: ChangeWay.chosen },
   edges: {
     bounded: optionalEdge(edge.many([KindName.decision], { label: say.decisionCappedBy(), inverse: say.decisionCaps() })),
   },

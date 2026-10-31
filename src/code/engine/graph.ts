@@ -232,7 +232,7 @@ const body = (deps: Deps) => {
         },
         fieldInfo(name: string) {
           const f = m.def.fields[name]
-          return f ? { type: f.type, label: f.label, role: f.role, stage: f.stage } : undefined
+          return f ? { type: f.type, label: f.label, role: f.role, stage: f.stage, changes: m.def.changes?.[name] } : undefined
         },
         get dependencies() {
           t()

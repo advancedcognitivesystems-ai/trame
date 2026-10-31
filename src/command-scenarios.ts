@@ -1,7 +1,7 @@
 /** Trame · Scenarios of the commands */
 
 import type { Bundle, Payload } from "../trame/kernel"
-import { BundleMode, EvidenceSource, KindName, Severity, ShipmentEdge, Status, TriggerType } from "../trame/kernel"
+import { AmendmentField, BundleMode, EvidenceSource, KindName, Severity, ShipmentEdge, Status, TriggerType } from "../trame/kernel"
 import { scenario } from "../kinds/scenario"
 import { decision } from "../kinds/decision"
 import {
@@ -11,7 +11,7 @@ import {
 import { PayloadBuilder, Differences, Assembly, Project, Compiler, DateBundle, DevServer, DevService, ShipmentPipeline, Views, EngineFingerprint, ProjectRuns } from "./engine"
 import {
   ShowView, ViewByName, RenderView, EmitPayload, Assemble, Assembler, TestKinds, TakeSnapshot, Publish, Audit, Release, WriteManifest, Export, Run, Dev,
-  Deliver, Ship, RecordEvidence, Doctor, DoctorProbe, Advance, Build, Plan,
+  Deliver, Ship, RecordEvidence, Doctor, DoctorProbe, Advance, Build, Plan, Amend, BuildComparison,
 } from "./commands"
 import { SyntaxReader, BodyChecks } from "./syntax"
 import { TypeScript, TypeScriptWriter, StringLiteral } from "./typescript"
@@ -22,7 +22,7 @@ import { Doctype } from "./html"
 import { TerminalRendering, PlainTextSyntax, TextFigures, PageRendering, HtmlSyntax, SvgFigures } from "./rendering"
 import {
   WebTreeSitter, Esbuild, NodeCompression, PageResources, StoppedClock, NoReportsInTest, MemoryHttpServer, NodeTimer, NodeCommandLine, MemoryTerminal,
-  NodeHashing, RunsInTheProcess,
+  NodeHashing, RunsInTheProcess, InPlaceSources,
 } from "./platform"
 import { ReleaseRecords } from "./generations"
 import { PackageAudit } from "./packages"
@@ -344,6 +344,59 @@ export const BuildPlanned = scenario({
       && planned.statuses.some((x) => x.node === held?.id && x.from === Status.violated && x.to === Status.held)
       && planned.resolved.some((i) => i.node === noted?.id && i.what === samples.issue))
     check(messages.planTouchesShipments(shipment?.title ?? String(shipment?.id)), shipment !== undefined && planned.shipments.includes(shipment.id))
+  },
+})
+
+/**
+ * What an amendment is checked with
+ * In the example: a late fee lowered, which a criterion of the refund refuses; a free period moved a minute on a fast
+ * charger, which its owner writes; a rule's body, which changes in the code only.
+ */
+export const AmendmentSamples = decision<{
+  refused: { node: string; path: string; value: string }
+  recorded: { node: string; path: string; value: string; name: string; module: string }
+  code: { node: string; path: string; value: string }
+  why: string
+  by: string
+}>({
+  owner: "trame",
+  value: {
+    refused: { node: "LateFee", path: "value", value: "0.4" },
+    recorded: { node: "FreeCancellationPeriod", path: "value.fast", value: "360", name: "FreeCancellationPeriodAmendment", module: "src/cancellation.ts" },
+    code: { node: "Refund", path: "body", value: "0" },
+    why: "A scenario amends the example",
+    by: "lea",
+  },
+})
+
+/**
+ * A value amended
+ * trame amend first says what an amendment would change: lowering the example's late fee makes a criterion of the
+ * refund fail, so nothing is recorded; a rule's body changes in the code only. Moving the free period of a fast charger
+ * by a minute raises no error: with --dry-run nothing is written, then the amendment is recorded at the end of the
+ * module of the period, with the import of amendments.
+ */
+export const ValueAmended = scenario({
+  owner: "trame",
+  verifies: [Amend, BuildComparison, InPlaceSources],
+  env: Test,
+  deps: {
+    amend: Amend, writeLog: WriteLog, currentProcess: Process, paths: Paths, line: TrameCommands, exitStatus: ExitStatus, samples: AmendmentSamples,
+    messages: ScenarioMessages,
+  },
+  body: (d) => async (check) => {
+    const { line, samples, messages, writeLog } = d
+    const run = (s: { node: string; path: string; value: string }, extra: readonly string[]) =>
+      d.amend({ params: { command: line.amend }, body: { args: [s.node, s.path, s.value, line.why, samples.why, line.by, samples.by, ...extra] } })
+        .then((r) => r.status, () => d.exitStatus.failure)
+    const module = d.paths.join(d.currentProcess.cwd(), samples.recorded.module)
+    check(messages.amendmentRefusedByACriterion(), (await run(samples.refused, [])) === d.exitStatus.failure && !writeLog.written().has(module))
+    check(messages.amendmentOfCodeRefused(), (await run(samples.code, [])) === d.exitStatus.failure)
+    check(messages.amendmentSaidFirst(), (await run(samples.recorded, [line.dryRun])) === d.exitStatus.success && !writeLog.written().has(module))
+    const recorded = await run(samples.recorded, [])
+    const text = writeLog.written().get(module) ?? String()
+    check(messages.amendmentRecordedInPlace(samples.recorded.module),
+      recorded === d.exitStatus.success && text.includes(samples.recorded.name) && text.includes(AmendmentField.facade))
   },
 })
 

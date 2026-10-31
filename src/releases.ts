@@ -1243,3 +1243,18 @@ export const G84 = release({
   archive: "1a1128c9e4fd6ebb",
   assembledBy: G83,
 })
+
+/**
+ * Generation 85
+ */
+export const G85 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g85",
+  date: "2026-10-31",
+  what: "A4a: each kind says how its values change (chosen, cited, code); trame amend says what an amendment would change, then records it where amendments go (the port, in place in the sources); an amendment awaits its owner's approval",
+  fingerprint: "d33961c1bb511390",
+  language: "shared",
+  archive: "3bb158af0204c23b",
+  assembledBy: G84,
+})

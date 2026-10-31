@@ -556,6 +556,18 @@ export const CommandMessages = catalog({
     planShipments: (shipments: string[]) =>
       shipments.length ? `shipments touched: ${shipments.join(", ")}` : "no shipment touched",
     planNothing: () => "nothing changes: a build would write the same graph",
+    // trame amend (since g85).
+    amendUsage: () => "trame amend <node> <path> <value> --why \"…\" --by <name> [--from <date>] [--until <date>] [--source \"…\"] [--dry-run] [--accept]",
+    amendNoSuchNode: (ref: string) => `No node of the project is named ${ref}, or several are: give its reference, module.Name`,
+    amendInTheCode: (title: string, field: string) => `${field} of “${title}” changes in the code, never from here: code is built on it`,
+    amendCitedNeedsSource: (title: string, field: string) => `${field} of “${title}” is cited: it changes only with the source that changed it (--source)`,
+    amendNotTheSame: (path: string) => `The value given for ${path} is not of the type of the one it replaces`,
+    amendNoKind: () => "The project's language has no kind of amendments",
+    amendWouldChange: (title: string, path: string, date: string) => `Amending ${path} of “${title}” would change, on ${date}:`,
+    amendRefused: (errors: number) => `Not recorded: the amendment raises ${plural(errors, { one: "error", other: "errors" })} (--accept records it all the same, for its owner to settle)`,
+    amendDryRun: () => "Nothing recorded (--dry-run)",
+    amendWritten: (name: string, file: string) => `recorded: ${name}, in ${file}`,
+    amendAwaitsApproval: (owner: string) => `It awaits the approval of ${owner}, who answers for the node it amends`,
     planNothingBuilt: (file: string) => `no ${file} to compare with: trame build writes it, and every node would be new`,
     evidenceNeedsBy: () => "trame ship and trame evidence attribute what they record: give --by <name>",
     noShipment: (name: string | undefined, known: string[]) =>
@@ -761,6 +773,10 @@ export const ScenarioMessages = catalog({
     planAfterBuild: () => "trame plan, right after a build, says nothing changes, and writes nothing",
     planSaysWhatChanges: () =>
       "Against a graph.json changed by hand, trame plan says the node it lacks is added, the node it invented is removed, the status it changed changes back, and the issue it added is resolved",
+    amendmentRefusedByACriterion: () => "An amendment that makes a criterion fail is not recorded",
+    amendmentOfCodeRefused: () => "A value code is built on is not amended from here",
+    amendmentSaidFirst: () => "With --dry-run, what the amendment would change is said, and nothing is written",
+    amendmentRecordedInPlace: (module: string) => `The amendment is recorded at the end of ${module}, with the import of amendments`,
     planTouchesShipments: (shipment: string) => `The plan names ${shipment} among the shipments touched: what it ships changes`,
     declarationsFrozen: (count: number) => `trame publish freezes ${plural(count, { one: "declaration", other: "declarations" })} in trame.lock`,
     nothingNewThen: () => "Published again, nothing is new",

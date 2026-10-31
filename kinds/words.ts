@@ -46,6 +46,10 @@ const body = () => ({
   amendmentApprovedSeveralOfTheseAmendments: (p0: unknown) => `${p0} approved several of these amendments`,
   amendmentNoneReplacesTheOtherAndThe: () => "none replaces the other and the target's owner approved none of them",
   amendmentAmendmentWithoutEffectItRedefinesNothing: () => "Amendment without effect: it redefines nothing",
+  amendmentCitedWithoutSource: (field: string) =>
+    `${field} is cited: it changes only with its source, which the amendment names too (source)`,
+  amendmentAwaitsApproval: (owner: string | undefined, target: string) =>
+    `Awaits the approval of ${owner}, who answers for “${target}”`,
   amendmentChangesNothingAlreadyHasThisValue: (p0: unknown) => `Changes nothing: ${p0} already has this value`,
   amendmentBefore: () => "Before",
   amendmentAfter: () => "After",

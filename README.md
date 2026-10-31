@@ -963,6 +963,24 @@ A declaration published in `trame.lock` whose form the language changes, not its
 becomes a `Share`), is published again by `trame publish --migrate "why"`, which records when, why and which in the
 lock; a change of meaning stays an amendment's business.
 
+## Amending a value
+
+Every value the graph holds can be changed from outside the code, by an amendment: who, why, from when, the value;
+approved by the node's owner when someone else wrote it. Since g85 each kind says how each of its values changes
+(`changes`): a decision's value, a dataset's rows, a function's constants, an objective's threshold are *chosen*, by an
+amendment its owner approves; a standard's constants and a quantity's units are *cited*, and change only with the
+source that changed them, which the amendment names; what code is built on (a structure, a vocabulary, a body) changes
+in the code only. An amendment of a cited value that names no source is an error, and one that awaits its owner's
+approval says so to that owner: the example's support asked for a free period on ultra chargers, which awaits lea's.
+
+`trame amend <node> <path> <value> --why "…" --by <name> [--from <date>]` writes one. It first compiles the graph with
+the amendment, in memory, the day it comes into force, and says what it would change, as `trame plan` does: lowering the
+example's late fee to 40% makes a criterion of the refund fail, so nothing is recorded (`--accept` records it all the
+same, for its owner to settle; `--dry-run` only says). Where an amendment then goes is a concept of the graph, the port
+"Where an amendment goes", with its strategies: the first writes it in place, in the sources, at the end of the module
+of the node it amends, as a person would, with the import of amendments; a pull request will be another. The page
+writes them through the same command (A4b).
+
 ## Effects, method by method
 
 A port says what may happen through it: its effects. Until g81 they held for the whole contract, so code that only read

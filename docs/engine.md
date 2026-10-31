@@ -364,7 +364,7 @@ graph.json and snapshot.json.
 - Body: `./code/engine/machine.ts` (typescript)
 - Effects: read
 - Serves: [A single source of truth](product.md#SingleSource)
-- Used by: [Build](commands.md#Build), [Plan a build](commands.md#Plan), [Release a version](commands.md#Release), [Take the snapshot](commands.md#TakeSnapshot), [Payload](#PayloadBuilder)
+- Used by: [Amend](commands.md#Amend), [Build](commands.md#Build), [Plan](commands.md#Plan), [Release a version](commands.md#Release), [Take the snapshot](commands.md#TakeSnapshot), [Payload](#PayloadBuilder)
 - Applies: [One output for each reader](principles.md#OneOutputPerReader)
 - Verified by: [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore)
 
@@ -413,7 +413,7 @@ Where the kinds and the views of a project are, and the libraries it imports (tr
 - Body: `./code/engine/project.ts` (typescript)
 - Effects: read
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
-- Used by: [trame dev](command-scenarios.md#DevFollowsTheGraph), [The page exported](command-scenarios.md#PageExported), [The page of the graph](command-scenarios.md#PageOfTheGraph), [Advance](commands.md#Advance), [Export the page](commands.md#Export), [Release a version](commands.md#Release), [Write the manifest](commands.md#WriteManifest), [Compiler](#Compiler), [trame dev server](#DevServer), [The fingerprint of an engine](#EngineFingerprint), [Laws](#Laws), [Views](#Views), [The plan of a run elsewhere](shipping.md#ShipmentRunPlan)
+- Used by: [trame dev](command-scenarios.md#DevFollowsTheGraph), [The page exported](command-scenarios.md#PageExported), [The page of the graph](command-scenarios.md#PageOfTheGraph), [Advance](commands.md#Advance), [Amend](commands.md#Amend), [Export the page](commands.md#Export), [Release a version](commands.md#Release), [Write the manifest](commands.md#WriteManifest), [Compiler](#Compiler), [trame dev server](#DevServer), [The fingerprint of an engine](#EngineFingerprint), [Laws](#Laws), [Views](#Views), [The plan of a run elsewhere](shipping.md#ShipmentRunPlan)
 - Applies: [A library is a Trame project, imported by path](principles.md#LibrariesAreProjects), [A library is imported by its name](principles.md#LibrariesByName), [The prelude and the compiler know no kind of node](principles.md#NoKindInTheCore), [Kinds and views: the vocabulary, as reviewed files](principles.md#VocabularyLayer)
 - Verified by: [The described engine compiles the example](scenarios.md#CompileExample)
 
@@ -446,7 +446,7 @@ Reads a reference ("module.Identifier") and a path in a field ("value.case"), fo
 - Parameters: `syntax` ← [Trame references](conventions.md#ReferenceSyntax) · `libraryOf` ← [What belongs to a library](libraries.md#LibraryOfAModule)
 - Body: inline, in the declaration
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
-- Used by: [Preparation](commands.md#Preparation), [Compilation API](#CompilationApi), [Compiler](#Compiler), [Graph](#GraphApi), [Laws](#Laws), [Lock](#Lock), [Static reading](#StaticAnalysis), [The engine reckons as it says](scenarios.md#EngineReckons)
+- Used by: [Amend](commands.md#Amend), [Preparation](commands.md#Preparation), [Compilation API](#CompilationApi), [Compiler](#Compiler), [Graph](#GraphApi), [Laws](#Laws), [Lock](#Lock), [Static reading](#StaticAnalysis), [The engine reckons as it says](scenarios.md#EngineReckons)
 - Applies: [A library is a Trame project, imported by path](principles.md#LibrariesAreProjects)
 - Verified by: [The engine reckons as it says](scenarios.md#EngineReckons)
 

@@ -38,6 +38,7 @@
 | warning | To ship: On a laptop is unknown | [A release](sdlc.md#Release) | karim |  |
 | warning | To ship: On staging is unknown | [A release](sdlc.md#Release) | karim |  |
 | warning | PostgreSQL's dialect ships, and nothing proves it (The code is verified) | [PostgreSQL's dialect](infra.md#PostgresDialect) | karim |  |
+| warning | Awaits the approval of lea, who answers for “Free cancellation period” | [Ultra period requested by support](support.md#SupportUltraPeriod) | lea |  |
 
 ## New declarations
 

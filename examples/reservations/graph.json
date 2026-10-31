@@ -2503,7 +2503,9 @@
         }
       },
       "active": true,
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Awaits the approval of lea, who answers for “Free cancellation period”"
+      ]
     }
   ],
   "edges": [

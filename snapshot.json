@@ -486,6 +486,20 @@
       }
     },
     {
+      "id": "architecture.AmendmentPlace",
+      "kind": "port",
+      "title": "Where an amendment goes",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": {
+          "record": [
+            "read",
+            "write"
+          ]
+        }
+      }
+    },
+    {
       "id": "architecture.Browser",
       "kind": "environment",
       "title": "Browser",
@@ -1242,6 +1256,35 @@
       }
     },
     {
+      "id": "command-scenarios.AmendmentSamples",
+      "kind": "decision",
+      "title": "What an amendment is checked with",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "refused": {
+            "node": "LateFee",
+            "path": "value",
+            "value": "0.4"
+          },
+          "recorded": {
+            "node": "FreeCancellationPeriod",
+            "path": "value.fast",
+            "value": "360",
+            "name": "FreeCancellationPeriodAmendment",
+            "module": "src/cancellation.ts"
+          },
+          "code": {
+            "node": "Refund",
+            "path": "body",
+            "value": "0"
+          },
+          "why": "A scenario amends the example",
+          "by": "lea"
+        }
+      }
+    },
+    {
       "id": "command-scenarios.AssemblySamples",
       "kind": "decision",
       "title": "What the example is assembled for",
@@ -1808,6 +1851,26 @@
       }
     },
     {
+      "id": "command-scenarios.ValueAmended",
+      "kind": "scenario",
+      "title": "A value amended",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "amend": "commands.Amend",
+          "writeLog": "architecture.WriteLog",
+          "currentProcess": "architecture.Process",
+          "paths": "architecture.Paths",
+          "line": "conventions.TrameCommands",
+          "exitStatus": "std/system.ExitStatus",
+          "samples": "command-scenarios.AmendmentSamples",
+          "messages": "messages.ScenarioMessages"
+        },
+        "body": "(function)"
+      }
+    },
+    {
       "id": "command-scenarios.ViewSamples",
       "kind": "decision",
       "title": "Views asked of the example",
@@ -1903,6 +1966,41 @@
         },
         "body": {
           "file": "./code/commands/advance.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
+      "id": "commands.Amend",
+      "kind": "entry",
+      "title": "Amend",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "trigger": {
+          "type": "command",
+          "name": "amend"
+        },
+        "deps": {
+          "exitStatus": "std/system.ExitStatus",
+          "preparation": "commands.Preparation",
+          "machine": "engine.MachineOutputs",
+          "comparison": "commands.BuildComparison",
+          "place": "architecture.AmendmentPlace",
+          "prelude": "architecture.Prelude",
+          "references": "engine.References",
+          "project": "engine.Project",
+          "specifiers": "std/system.NodeModuleSpecifiers",
+          "values": "std/algebra.ValueTypes",
+          "paths": "architecture.Paths",
+          "text": "text.TerminalText",
+          "terminal": "architecture.Terminal",
+          "messages": "messages.CommandMessages",
+          "naming": "conventions.AmendmentNaming",
+          "counts": "std/algebra.Counts"
+        },
+        "body": {
+          "file": "./code/commands/amend.ts",
           "language": "typescript"
         }
       }
@@ -2015,6 +2113,23 @@
         },
         "body": {
           "file": "./code/commands/build.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
+      "id": "commands.BuildComparison",
+      "kind": "function",
+      "title": "Two builds compared",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "messages": "messages.CommandMessages",
+          "output": "messages.OutputMessages"
+        },
+        "body": {
+          "file": "./code/commands/comparison.ts",
           "language": "typescript"
         }
       }
@@ -2188,7 +2303,6 @@
     {
       "id": "commands.Plan",
       "kind": "entry",
-      "title": "Plan a build",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2202,12 +2316,12 @@
           "text": "text.TerminalText",
           "preparation": "commands.Preparation",
           "machine": "engine.MachineOutputs",
+          "comparison": "commands.BuildComparison",
           "reading": "architecture.FileReading",
           "paths": "architecture.Paths",
           "encodings": "std/system.NodeEncodings",
           "terminal": "architecture.Terminal",
-          "messages": "messages.CommandMessages",
-          "output": "messages.OutputMessages"
+          "messages": "messages.CommandMessages"
         },
         "body": {
           "file": "./code/commands/plan.ts",
@@ -2595,6 +2709,18 @@
       }
     },
     {
+      "id": "conventions.AmendmentNaming",
+      "kind": "decision",
+      "title": "How an amendment is named",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "suffix": "Amendment",
+          "first": 2
+        }
+      }
+    },
+    {
       "id": "conventions.DefaultRank",
       "kind": "decision",
       "title": "Default rank",
@@ -2881,6 +3007,10 @@
             "value": "plan",
             "meaning": "Says what a build would change against the last one, and writes nothing"
           },
+          "amend": {
+            "value": "amend",
+            "meaning": "Changes a chosen value by an amendment, said first, then recorded where the project's amendments go"
+          },
           "fallback": {
             "value": "*",
             "meaning": "The command that receives a word naming no other one"
@@ -2931,7 +3061,23 @@
           },
           "by": {
             "value": "--by",
-            "meaning": "Who gives the evidence: the person it is attributed to"
+            "meaning": "Who gives the evidence, or writes the amendment: the person it is attributed to"
+          },
+          "why": {
+            "value": "--why",
+            "meaning": "Why an amendment changes the value"
+          },
+          "from": {
+            "value": "--from",
+            "meaning": "The day an amendment comes into force"
+          },
+          "until": {
+            "value": "--until",
+            "meaning": "The last day an amendment is in force"
+          },
+          "source": {
+            "value": "--source",
+            "meaning": "The source that changed a cited value, which the amendment names"
           },
           "subject": {
             "value": "--subject",
@@ -8712,6 +8858,20 @@
       }
     },
     {
+      "id": "platform.AmendmentsInPlace",
+      "kind": "binding",
+      "title": "Amendments go in the sources",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "Every value the graph holds can be amended from the page or by trame amend (A4); where the amendment then goes is a choice that will change once the repository is the place work is published.",
+        "consequences": "The amendment is a declaration in the module of the node it amends, read and built like any other; a pull request will be another realization of the same port.",
+        "rejected": {
+          "A file of amendments apart": "the amendment would sit far from the value it changes, where nobody reading the module sees it"
+        }
+      }
+    },
+    {
       "id": "platform.CompilerReadsDeclarations",
       "kind": "binding",
       "title": "The TypeScript compiler reads the declarations",
@@ -8879,6 +9039,37 @@
           "A temporary directory": "slower, and a scenario could read what was written only through the platform",
           "The system clock": "the documents of the example would change every day",
           "Commands that refuse in test": "the advance, the release, the manifest, the shipment and trame dev would be verified nowhere"
+        }
+      }
+    },
+    {
+      "id": "platform.InPlaceSources",
+      "kind": "implementation",
+      "title": "Amendments in place",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "reading": "architecture.FileReading",
+          "writing": "architecture.FileWriting",
+          "encodings": "std/system.NodeEncodings",
+          "syntax": "typescript.TypeScriptSyntax",
+          "doc": "typescript.DocBlock",
+          "exported": "typescript.ExportDeclaration",
+          "constant": "typescript.ConstDeclaration",
+          "call": "typescript.Call",
+          "object": "typescript.ObjectLiteral",
+          "property": "typescript.Property",
+          "text": "typescript.StringLiteral",
+          "list": "typescript.InlineArray",
+          "imports": "typescript.NamedImport",
+          "values": "std/algebra.ValueTypes",
+          "texts": "std/algebra.Texts",
+          "counts": "std/algebra.Counts"
+        },
+        "body": {
+          "file": "./code/platform/in-place-sources.ts",
+          "language": "typescript"
         }
       }
     },
@@ -11136,6 +11327,20 @@
         "fingerprint": "e4b1b57bad050afa",
         "language": "shared",
         "archive": "1a1128c9e4fd6ebb"
+      }
+    },
+    {
+      "id": "releases.G85",
+      "kind": "release",
+      "title": "Generation 85",
+      "fields": {
+        "owner": "trame",
+        "version": "g85",
+        "date": "2026-10-31",
+        "what": "A4a: each kind says how its values change (chosen, cited, code); trame amend says what an amendment would change, then records it where amendments go (the port, in place in the sources); an amendment awaits its owner's approval",
+        "fingerprint": "d33961c1bb511390",
+        "language": "shared",
+        "archive": "3bb158af0204c23b"
       }
     },
     {
@@ -16407,6 +16612,61 @@
       "kind": "deps"
     },
     {
+      "from": "command-scenarios.ValueAmended",
+      "to": "commands.Amend",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.ValueAmended",
+      "to": "commands.BuildComparison",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.ValueAmended",
+      "to": "platform.InPlaceSources",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.ValueAmended",
+      "to": "architecture.Test",
+      "kind": "env"
+    },
+    {
+      "from": "command-scenarios.ValueAmended",
+      "to": "commands.Amend",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ValueAmended",
+      "to": "architecture.WriteLog",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ValueAmended",
+      "to": "architecture.Process",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ValueAmended",
+      "to": "architecture.Paths",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ValueAmended",
+      "to": "conventions.TrameCommands",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ValueAmended",
+      "to": "command-scenarios.AmendmentSamples",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ValueAmended",
+      "to": "messages.ScenarioMessages",
+      "kind": "deps"
+    },
+    {
       "from": "command-scenarios.ViewsInTheTerminal",
       "to": "commands.ShowView",
       "kind": "verifies"
@@ -16632,6 +16892,76 @@
       "kind": "deps"
     },
     {
+      "from": "commands.Amend",
+      "to": "product.SingleSource",
+      "kind": "serves"
+    },
+    {
+      "from": "commands.Amend",
+      "to": "architecture.TrameCli",
+      "kind": "in"
+    },
+    {
+      "from": "commands.Amend",
+      "to": "commands.Preparation",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Amend",
+      "to": "engine.MachineOutputs",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Amend",
+      "to": "commands.BuildComparison",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Amend",
+      "to": "architecture.AmendmentPlace",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Amend",
+      "to": "architecture.Prelude",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Amend",
+      "to": "engine.References",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Amend",
+      "to": "engine.Project",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Amend",
+      "to": "architecture.Paths",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Amend",
+      "to": "text.TerminalText",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Amend",
+      "to": "architecture.Terminal",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Amend",
+      "to": "messages.CommandMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Amend",
+      "to": "conventions.AmendmentNaming",
+      "kind": "deps"
+    },
+    {
       "from": "commands.Assemble",
       "to": "product.ExecutableSpecification",
       "kind": "serves"
@@ -16829,6 +17159,21 @@
     {
       "from": "commands.Build",
       "to": "messages.CommandMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.BuildComparison",
+      "to": "product.ExecutableSpecification",
+      "kind": "serves"
+    },
+    {
+      "from": "commands.BuildComparison",
+      "to": "messages.CommandMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.BuildComparison",
+      "to": "messages.OutputMessages",
       "kind": "deps"
     },
     {
@@ -17128,6 +17473,11 @@
     },
     {
       "from": "commands.Plan",
+      "to": "commands.BuildComparison",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Plan",
       "to": "architecture.FileReading",
       "kind": "deps"
     },
@@ -17144,11 +17494,6 @@
     {
       "from": "commands.Plan",
       "to": "messages.CommandMessages",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Plan",
-      "to": "messages.OutputMessages",
       "kind": "deps"
     },
     {
@@ -20927,6 +21272,26 @@
       "kind": "deps"
     },
     {
+      "from": "platform.AmendmentsInPlace",
+      "to": "platform.InPlaceSources",
+      "kind": "chooses"
+    },
+    {
+      "from": "platform.AmendmentsInPlace",
+      "to": "architecture.Local",
+      "kind": "environments"
+    },
+    {
+      "from": "platform.AmendmentsInPlace",
+      "to": "architecture.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "platform.AmendmentsInPlace",
+      "to": "product.ReplaceableTechnology",
+      "kind": "serves"
+    },
+    {
       "from": "platform.CompilerReadsDeclarations",
       "to": "platform.RealTypeScript",
       "kind": "chooses"
@@ -21100,6 +21465,71 @@
       "from": "platform.InMemoryScenarios",
       "to": "product.ReplaceableTechnology",
       "kind": "serves"
+    },
+    {
+      "from": "platform.InPlaceSources",
+      "to": "architecture.AmendmentPlace",
+      "kind": "implements"
+    },
+    {
+      "from": "platform.InPlaceSources",
+      "to": "architecture.FileReading",
+      "kind": "deps"
+    },
+    {
+      "from": "platform.InPlaceSources",
+      "to": "architecture.FileWriting",
+      "kind": "deps"
+    },
+    {
+      "from": "platform.InPlaceSources",
+      "to": "typescript.TypeScriptSyntax",
+      "kind": "deps"
+    },
+    {
+      "from": "platform.InPlaceSources",
+      "to": "typescript.DocBlock",
+      "kind": "deps"
+    },
+    {
+      "from": "platform.InPlaceSources",
+      "to": "typescript.ExportDeclaration",
+      "kind": "deps"
+    },
+    {
+      "from": "platform.InPlaceSources",
+      "to": "typescript.ConstDeclaration",
+      "kind": "deps"
+    },
+    {
+      "from": "platform.InPlaceSources",
+      "to": "typescript.Call",
+      "kind": "deps"
+    },
+    {
+      "from": "platform.InPlaceSources",
+      "to": "typescript.ObjectLiteral",
+      "kind": "deps"
+    },
+    {
+      "from": "platform.InPlaceSources",
+      "to": "typescript.Property",
+      "kind": "deps"
+    },
+    {
+      "from": "platform.InPlaceSources",
+      "to": "typescript.StringLiteral",
+      "kind": "deps"
+    },
+    {
+      "from": "platform.InPlaceSources",
+      "to": "typescript.InlineArray",
+      "kind": "deps"
+    },
+    {
+      "from": "platform.InPlaceSources",
+      "to": "typescript.NamedImport",
+      "kind": "deps"
     },
     {
       "from": "platform.MemoryFiles",
@@ -23099,6 +23529,16 @@
     {
       "from": "releases.G84",
       "to": "releases.G83",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G85",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G85",
+      "to": "releases.G84",
       "kind": "assembledBy"
     },
     {

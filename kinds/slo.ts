@@ -1,4 +1,4 @@
-import { defineKind, field, optional, edge, hole, doc, keysOf, Status, KindName, Unit } from "../trame/kernel"
+import { defineKind, field, optional, edge, hole, doc, keysOf, Status, KindName, Unit, ChangeWay} from "../trame/kernel"
 import words from "./words"
 
 const say = words()
@@ -19,6 +19,7 @@ export const slo = defineKind({
   label: { one: say.sloServiceLevelObjective(), many: say.sloServiceLevelObjectives() },
   renderOwns: [F.signal, F.percentile, F.threshold, F.window],
   fields,
+  changes: { [F.percentile]: ChangeWay.chosen, [F.threshold]: ChangeWay.chosen, [F.window]: ChangeWay.chosen },
   edges: {
     constrains: edge.many([KindName.requirement], { label: say.sloConstrains(), inverse: say.sloConstrainedBy() }),
   },

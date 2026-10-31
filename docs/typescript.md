@@ -56,7 +56,7 @@ Source: ECMA-262, ECMAScript 2024 (§ 12 lexical grammar, § 13 expressions, § 
 
 - Maintained by: trame
 - Refines: [Text file](../std/docs/text.md#TextFile)
-- Used by: [Static reading](engine.md#StaticAnalysis), [Records of the releases](generations.md#ReleaseRecords), [List on several lines](#ArrayLiteral), [Type assertion](#AsExpression), [Assignment](#Assignment), [Waiting](#Await), [Call](#Call), [Constant](#ConstDeclaration), [Default import](#DefaultImport), [Documentation comment](#DocBlock), [Export](#ExportDeclaration), [Condition](#IfStatement), [List on one line](#InlineArray), [Comment](#LineComment), [Property access](#MemberAccess), [Title of a module](#ModuleTitle), [Import of names](#NamedImport), [Object on several lines](#ObjectBlock), [Object](#ObjectLiteral), [Object type](#ObjectType), [Optional property access](#OptionalAccess), [Optional property of a type](#OptionalPropertySignature), [Group](#Parenthesized), [Property](#Property), [Strict inequality](#StrictInequality), [Text](#StringLiteral), [TypeScript writer](#TypeScriptWriter), [Union type](#UnionType)
+- Used by: [Static reading](engine.md#StaticAnalysis), [Records of the releases](generations.md#ReleaseRecords), [Amendments in place](platform.md#InPlaceSources), [List on several lines](#ArrayLiteral), [Type assertion](#AsExpression), [Assignment](#Assignment), [Waiting](#Await), [Call](#Call), [Constant](#ConstDeclaration), [Default import](#DefaultImport), [Documentation comment](#DocBlock), [Export](#ExportDeclaration), [Condition](#IfStatement), [List on one line](#InlineArray), [Comment](#LineComment), [Property access](#MemberAccess), [Title of a module](#ModuleTitle), [Import of names](#NamedImport), [Object on several lines](#ObjectBlock), [Object](#ObjectLiteral), [Object type](#ObjectType), [Optional property access](#OptionalAccess), [Optional property of a type](#OptionalPropertySignature), [Group](#Parenthesized), [Property](#Property), [Strict inequality](#StrictInequality), [Text](#StringLiteral), [TypeScript writer](#TypeScriptWriter), [Union type](#UnionType)
 - Defines: [List on several lines](#ArrayLiteral), [Type assertion](#AsExpression), [Assignment](#Assignment), [Waiting](#Await), [Call](#Call), [Constant](#ConstDeclaration), [Default import](#DefaultImport), [Documentation comment](#DocBlock), [Export](#ExportDeclaration), [Condition](#IfStatement), [List on one line](#InlineArray), [Comment](#LineComment), [Property access](#MemberAccess), [Title of a module](#ModuleTitle), [Import of names](#NamedImport), [Object on several lines](#ObjectBlock), [Object](#ObjectLiteral), [Object type](#ObjectType), [Optional property access](#OptionalAccess), [Optional property of a type](#OptionalPropertySignature), [Group](#Parenthesized), [Property](#Property), [Strict inequality](#StrictInequality), [Text](#StringLiteral), [Union type](#UnionType)
 
 ## Vocabulary
@@ -214,7 +214,7 @@ Section: 13.3.6 Function calls · `https://tc39.es/ecma262/2024/#sec-function-ca
 - Read as: { before: (, after: ) }
 - Defined by: [The syntax of the programs Trame writes](#TypeScriptSyntax)
 - Read in: [TypeScript](#TypeScript)
-- Used by: [Records of the releases](generations.md#ReleaseRecords), [TypeScript writer](#TypeScriptWriter)
+- Used by: [Records of the releases](generations.md#ReleaseRecords), [Amendments in place](platform.md#InPlaceSources), [TypeScript writer](#TypeScriptWriter)
 
 <a id="ConstDeclaration"></a>
 
@@ -239,7 +239,7 @@ Section: 14.3.1 Let and const declarations · `https://tc39.es/ecma262/2024/#sec
 - Body: inline, in the declaration
 - Defined by: [The syntax of the programs Trame writes](#TypeScriptSyntax)
 - Read in: [TypeScript](#TypeScript)
-- Used by: [Records of the releases](generations.md#ReleaseRecords), [TypeScript writer](#TypeScriptWriter)
+- Used by: [Records of the releases](generations.md#ReleaseRecords), [Amendments in place](platform.md#InPlaceSources), [TypeScript writer](#TypeScriptWriter)
 
 <a id="DefaultImport"></a>
 
@@ -285,7 +285,7 @@ Section: 12.4 Comments (MultiLineComment), as JSDoc writes them · `https://tc39
 - Body: inline, in the declaration
 - Defined by: [The syntax of the programs Trame writes](#TypeScriptSyntax)
 - Read in: [TypeScript](#TypeScript)
-- Used by: [Records of the releases](generations.md#ReleaseRecords)
+- Used by: [Records of the releases](generations.md#ReleaseRecords), [Amendments in place](platform.md#InPlaceSources)
 
 <a id="ExportDeclaration"></a>
 
@@ -310,7 +310,7 @@ Section: 16.2.3 Exports · `https://tc39.es/ecma262/2024/#sec-exports`
 - Body: inline, in the declaration
 - Defined by: [The syntax of the programs Trame writes](#TypeScriptSyntax)
 - Read in: [TypeScript](#TypeScript)
-- Used by: [Records of the releases](generations.md#ReleaseRecords)
+- Used by: [Records of the releases](generations.md#ReleaseRecords), [Amendments in place](platform.md#InPlaceSources)
 
 <a id="IfStatement"></a>
 
@@ -363,7 +363,7 @@ Section: 13.2.4 Array initializer · `https://tc39.es/ecma262/2024/#sec-array-in
 - Read as: { before: (, after: ) }
 - Defined by: [The syntax of the programs Trame writes](#TypeScriptSyntax)
 - Read in: [TypeScript](#TypeScript)
-- Used by: [Records of the releases](generations.md#ReleaseRecords)
+- Used by: [Records of the releases](generations.md#ReleaseRecords), [Amendments in place](platform.md#InPlaceSources)
 
 <a id="LineComment"></a>
 
@@ -456,7 +456,7 @@ Section: 16.2.2 Imports (NamedImports) · `https://tc39.es/ecma262/2024/#sec-imp
 - Body: inline, in the declaration
 - Defined by: [The syntax of the programs Trame writes](#TypeScriptSyntax)
 - Read in: [TypeScript](#TypeScript)
-- Used by: [Records of the releases](generations.md#ReleaseRecords), [TypeScript writer](#TypeScriptWriter)
+- Used by: [Records of the releases](generations.md#ReleaseRecords), [Amendments in place](platform.md#InPlaceSources), [TypeScript writer](#TypeScriptWriter)
 
 <a id="ObjectBlock"></a>
 
@@ -503,7 +503,7 @@ Section: 13.2.5 Object initializer · `https://tc39.es/ecma262/2024/#sec-object-
 - Read as: { before: (, after: ) }
 - Defined by: [The syntax of the programs Trame writes](#TypeScriptSyntax)
 - Read in: [TypeScript](#TypeScript)
-- Used by: [TypeScript writer](#TypeScriptWriter)
+- Used by: [Amendments in place](platform.md#InPlaceSources), [TypeScript writer](#TypeScriptWriter)
 
 <a id="ObjectType"></a>
 
@@ -632,7 +632,7 @@ Section: 13.2.5 Object initializer (PropertyDefinition) · `https://tc39.es/ecma
 - Read as: { before: ({ , after:  }) }
 - Defined by: [The syntax of the programs Trame writes](#TypeScriptSyntax)
 - Read in: [TypeScript](#TypeScript)
-- Used by: [Records of the releases](generations.md#ReleaseRecords), [TypeScript writer](#TypeScriptWriter)
+- Used by: [Records of the releases](generations.md#ReleaseRecords), [Amendments in place](platform.md#InPlaceSources), [TypeScript writer](#TypeScriptWriter)
 
 <a id="StrictInequality"></a>
 
@@ -681,7 +681,7 @@ Section: 12.9.4 String literals; 25.5.2 JSON.stringify · `https://tc39.es/ecma2
 - Read as: { before: (, after: ) }
 - Defined by: [The syntax of the programs Trame writes](#TypeScriptSyntax)
 - Read in: [TypeScript](#TypeScript)
-- Used by: [A library released](command-scenarios.md#LibraryReleased), [Release a version](commands.md#Release), [Records of the releases](generations.md#ReleaseRecords), [Default import](#DefaultImport), [Import of names](#NamedImport), [Property](#Property), [TypeScript writer](#TypeScriptWriter)
+- Used by: [A library released](command-scenarios.md#LibraryReleased), [Release a version](commands.md#Release), [Records of the releases](generations.md#ReleaseRecords), [Amendments in place](platform.md#InPlaceSources), [Default import](#DefaultImport), [Import of names](#NamedImport), [Property](#Property), [TypeScript writer](#TypeScriptWriter)
 
 <a id="UnionType"></a>
 
