@@ -177,6 +177,9 @@ export const StaticAnalysis = fn({
     paths: Paths, positions: Positions, docComment: DocComment, counts: Counts, sequences: Sequences, texts: Texts, messages: CompilerMessages,
     textAsCode: TextAsCode, libraries: TypeScriptLibraries, prelude: PreludeApi,
   },
+  constants: {
+    commandDepth: { value: 3, meaning: "How deep the type of a cast is searched for a command: itself, a member or what a function gives, and one step further" },
+  },
   body: code.file<typeof import("./code/engine/static-analysis").default>("./code/engine/static-analysis.ts"),
 })
 

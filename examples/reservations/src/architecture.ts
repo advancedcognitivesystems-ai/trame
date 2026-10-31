@@ -12,15 +12,20 @@ import { edgesOf, fieldsOf } from "../../../trame/kernel"
 import { WithoutEffects, Linked } from "#std/rules"
 import { CancelWithoutStress } from "./cancellation"
 import type { Reservation, CHF } from "./cancellation"
+import type { Command } from "#std/effects"
 
 // The contracts: what the code asks of the world. Types, not implementations.
 
 export type Param = string | number | null
+/** A statement that only reads, and one that writes: the dialect makes each, and says which it makes. */
+export type ReadStatement = Command<"read">
+export type WriteStatement = Command<"write">
 export interface ReadConnection {
-  read<T = Record<string, unknown>>(sql: string, ...params: Param[]): Promise<T[]>
+  /** Runs a statement that only reads: one that would write is refused by the database itself. */
+  read<T = Record<string, unknown>>(sql: ReadStatement, ...params: Param[]): Promise<T[]>
 }
 export interface Connection extends ReadConnection {
-  write(sql: string, ...params: Param[]): Promise<number>
+  write(sql: WriteStatement, ...params: Param[]): Promise<number>
   transaction<T>(work: () => Promise<T>): Promise<T>
 }
 /** The type of a column, whatever the database: each dialect names it. */
@@ -42,15 +47,15 @@ export interface Tables {
 /** What depends on the database's dialect: each statement the repositories need, written for it. */
 export interface SqlDialect {
   /** Creates a table unless it exists. */
-  create(table: Table): string
+  create(table: Table): WriteStatement
   /** Counts the rows of a table, as a column of this name. */
-  count(name: string, as: string): string
+  count(name: string, as: string): ReadStatement
   /** Inserts a row: one parameter per column, in their order. */
-  insert(name: string, columns: readonly string[]): string
+  insert(name: string, columns: readonly string[]): WriteStatement
   /** Reads these columns of the row whose key is the parameter. */
-  find(name: string, columns: readonly string[], key: string): string
+  find(name: string, columns: readonly string[], key: string): ReadStatement
   /** Gives these columns new values (one parameter each, in their order), in the row whose key is the last parameter. */
-  update(name: string, columns: readonly string[], key: string): string
+  update(name: string, columns: readonly string[], key: string): WriteStatement
 }
 export interface StoredReservation extends Reservation {
   id: string

@@ -1415,6 +1415,7 @@ Function · `StaticAnalysis` · **held**
 
 - Owner: trame
 - Parameters: { specifiers: std/system.NodeModuleSpecifiers, syntax: typescript.TypeScriptSyntax, references: engine.References, file: std/text.TextFile, options: engine.TypeScriptOptions, ts: architecture.TypeScriptCompiler, kept: architecture.KeptResults, runs: architecture.RunStore, hashing: architecture.Hashing, sha256: std/algorithms.Sha256, encodings: std/system.NodeEncodings, paths: architecture.Paths, positions: engine.Positions, docComment: conventions.DocComment, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, messages: messages.CompilerMessages, textAsCode: std/ecmascript.TextAsCode, libraries: typescript.TypeScriptLibraries, prelude: conventions.PreludeApi }
+- Constants: { commandDepth: { value: 3, meaning: How deep the type of a cast is searched for a command: itself, a member or what a function gives, and one step further } }
 - Serves: A specification that runs
 - Depends on: The syntax of the programs Trame writes, References, Options of the static reading, TypeScript compiler, Results kept, Where runs are kept, Hashing, Paths, Positions, Documentation comment, Messages of the compiler, TypeScript's libraries of types, The prelude's public API
 
@@ -5106,6 +5107,20 @@ Release · `G83`
 - Releases: Trame on the command line
 - Assembled by: Generation 82
 
+### Generation 84
+
+Release · `G84`
+
+- Released by: trame
+- Version: g84
+- Released on: 2026-10-31
+- What changes: A2 closed: a command another system interprets is typed by its intent (std's Command), made only by std's Commands; a cast that makes one refuses the build
+- Fingerprint: e4b1b57bad050afa
+- Language: shared
+- Language archived: 1a1128c9e4fd6ebb
+- Releases: Trame on the command line
+- Assembled by: Generation 83
+
 ### Generation 9
 
 Release · `G9`
@@ -5375,7 +5390,7 @@ Decision · `DocumentWordsData`
 Decision · `ExampleShape`
 
 - Decided by: trame
-- Value: { scenarios: 3 }
+- Value: { scenarios: 4 }
 
 ### Expected differences on the example
 

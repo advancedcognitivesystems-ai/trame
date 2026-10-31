@@ -10,7 +10,7 @@
 
 ### What trame dev serves
 
-`DevService` · `src/engine.ts:453`
+`DevService` · `src/engine.ts:456`
 
 The paths the page is asked at, the bundle of the graph, the stream of its changes; the events of that stream; the host it answers on; the endings of the files an editor leaves while it saves, which change nothing.
 
@@ -31,7 +31,7 @@ The paths the page is asked at, the bundle of the graph, the stream of its chang
 
 ### Length of a fingerprint
 
-`Fingerprint` · `src/engine.ts:198`
+`Fingerprint` · `src/engine.ts:201`
 
 How many hexadecimal characters of the SHA-256 digest a lock keeps to fingerprint a declaration: 64 bits.
 
@@ -44,7 +44,7 @@ How many hexadecimal characters of the SHA-256 digest a lock keeps to fingerprin
 
 ### What tells a project's runs apart
 
-`KeptRunsScope` · `src/engine.ts:253`
+`KeptRunsScope` · `src/engine.ts:256`
 
 A run kept (a scenario played) is given back while what it ran and the files the project reads are as they were: every file under its root, its libraries, its kinds and its views, but those of the directories named here. The packages installed are told by the lockfile, which is read; the repository's history is not the project; Trame's own links and runs are what it writes itself; a frozen generation is written once, with the pin that names it. On disk, the newest runs are kept, so many and no more.
 
@@ -61,7 +61,7 @@ A run kept (a scenario played) is given back while what it ran and the files the
 
 ### The days of history a page offers
 
-`PageHistory` · `src/engine.ts:402`
+`PageHistory` · `src/engine.ts:405`
 
 Besides the dates where the graph changes, an export offers the last days something was given (a version released, evidence recorded), each with what was proven by then, judged as it was given: the most recent, so many. Each date is a compilation; its documents and figures that differ from today's but for the date are carried once more, without the views of each node, the snapshot and the outputs for tools.
 
@@ -94,7 +94,7 @@ The ambient types the TypeScript compiler loads to read the project: Node's (the
 
 ### The laws are requirements
 
-`LawsAreRequirements` · `src/engine.ts:331` · status: **held**
+`LawsAreRequirements` · `src/engine.ts:334` · status: **held**
 
 Each law of the kinds and the views is a requirement of the module laws: a pure rule, with its acceptance criteria. The functions "Laws" and "Views" observe a kind on nodes drawn at random, or a view on the graph, and ask the rule whether what they saw keeps the law; they phrase what breaks it.
 
@@ -115,7 +115,7 @@ Consequences: A law reads in the graph as a requirement, refines the goal it ser
 
 ### The language receives the graph's values
 
-`TheLanguageReceivesTheGraph` · `src/engine.ts:313` · status: **held**
+`TheLanguageReceivesTheGraph` · `src/engine.ts:316` · status: **held**
 
 The kinds and the views are files, not nodes: what they write is given to them by the engine, from the graph.
 
@@ -138,7 +138,7 @@ Consequences: The engine gives them the graph's values through the graph they re
 
 ### Assembly
 
-`Assembly` · `src/engine.ts:481` · status: **held**
+`Assembly` · `src/engine.ts:484` · status: **held**
 
 The plan of a component for an environment, written as a program by the driver of its language.
 
@@ -155,7 +155,7 @@ The plan of a component for an environment, written as a program by the driver o
 
 ### Compilation API
 
-`CompilationApi` · `src/engine.ts:361` · status: **held**
+`CompilationApi` · `src/engine.ts:364` · status: **held**
 
 What a view receives: the graph, plus the holes, the claims, the overlaps, the card of a node.
 
@@ -172,7 +172,7 @@ What a view receives: the graph, plus the holes, the claims, the overlaps, the c
 
 ### Compiler
 
-`Compiler` · `src/engine.ts:234` · status: **held**
+`Compiler` · `src/engine.ts:237` · status: **held**
 
 Loads the project once (the code of each node fingerprinted), then compiles it at a date: frozen graph, claims, resolution, consolidated graph, evaluation, statuses, holes.
 
@@ -204,7 +204,7 @@ Finds the cycles of a relation with a depth-first search: the vertices from whic
 
 ### Date bundle
 
-`DateBundle` · `src/engine.ts:430` · status: **held**
+`DateBundle` · `src/engine.ts:433` · status: **held**
 
 Compiles the graph at each date where it can change, in a fresh process: the engine relaunches itself.
 
@@ -220,7 +220,7 @@ Compiles the graph at each date where it can change, in a fresh process: the eng
 
 ### trame dev server
 
-`DevServer` · `src/engine.ts:465` · status: **held**
+`DevServer` · `src/engine.ts:468` · status: **held**
 
 Watches the project, recompiles it at each save, pushes the updated page.
 
@@ -236,7 +236,7 @@ Watches the project, recompiles it at each save, pushes the updated page.
 
 ### Differences
 
-`Differences` · `src/engine.ts:441` · status: **held**
+`Differences` · `src/engine.ts:444` · status: **held**
 
 What a change altered between two compilations: statuses, holes, overlaps.
 
@@ -251,7 +251,7 @@ What a change altered between two compilations: statuses, holes, overlaps.
 
 ### The fingerprint of an engine
 
-`EngineFingerprint` · `src/engine.ts:219` · status: **held**
+`EngineFingerprint` · `src/engine.ts:222` · status: **held**
 
 Each file with its SHA-256, as a generation keeps them: what its origin says (its programs, its graph and its code), and the engine itself, as evidence names it (its graph and its code, and its libraries': its programs say the day of their graph). The advance records the second beside a generation it freezes (engine.json); the engine that runs knows its own from where its program is (its generation's record, or its repository's files for a candidate). Evidence a program of the engine records carries it: it holds while the project pins that engine.
 
@@ -321,7 +321,7 @@ The traversal API: read-only views on the nodes, queries, the edges, recorded re
 
 ### Laws
 
-`Laws` · `src/engine.ts:281` · status: **held**
+`Laws` · `src/engine.ts:284` · status: **held**
 
 Tests each kind on nodes drawn at random, and its resolution on sets of claims; checks the imports.
 
@@ -338,7 +338,7 @@ Tests each kind on nodes drawn at random, and its resolution on sets of claims; 
 
 ### Lock
 
-`Lock` · `src/engine.ts:388` · status: **held**
+`Lock` · `src/engine.ts:391` · status: **held**
 
 trame.lock: the hash of each published declaration, and what the code has done to them since.
 
@@ -355,7 +355,7 @@ trame.lock: the hash of each published declaration, and what the code has done t
 
 ### Machine outputs
 
-`MachineOutputs` · `src/engine.ts:376` · status: **held**
+`MachineOutputs` · `src/engine.ts:379` · status: **held**
 
 graph.json and snapshot.json.
 
@@ -372,7 +372,7 @@ graph.json and snapshot.json.
 
 ### Payload
 
-`PayloadBuilder` · `src/engine.ts:416` · status: **held**
+`PayloadBuilder` · `src/engine.ts:419` · status: **held**
 
 The compiled graph in the intermediate format, for the page. It carries the language, so that the page writes dates as the documents do.
 
@@ -404,7 +404,7 @@ Designates a place in a file as messages do ("file:line"), from what the TypeScr
 
 ### Project
 
-`Project` · `src/engine.ts:204` · status: **held**
+`Project` · `src/engine.ts:207` · status: **held**
 
 Where the kinds and the views of a project are, and the libraries it imports (trame.json).
 
@@ -421,7 +421,7 @@ Where the kinds and the views of a project are, and the libraries it imports (tr
 
 ### The runs of a project
 
-`ProjectRuns` · `src/engine.ts:268` · status: **held**
+`ProjectRuns` · `src/engine.ts:271` · status: **held**
 
 A run kept under the fingerprint of what it ran and of the files the project reads as they are, except those the code of its nodes covers (the fingerprint of what each run wires tells them apart): changing a body plays again only the runs that wire it. Where the runs are kept is a port of its own: in the process, or on disk beyond it.
 
@@ -454,7 +454,7 @@ Reads a reference ("module.Identifier") and a path in a field ("value.case"), fo
 
 ### A shipment's pipeline
 
-`ShipmentPipeline` · `src/engine.ts:350` · status: **held**
+`ShipmentPipeline` · `src/engine.ts:353` · status: **held**
 
 The steps trame ship runs for a shipment, computed once, which the views show: each artefact produced (by what, where it lives, as the artefact's kind says), each check a program makes and the artefacts it reads, each obligation to prove, each entry point that deploys, in order, then the dossier; and what keeps it from running (an artefact that says nowhere where it lives, programs to run with no environment to assemble them for).
 
@@ -473,6 +473,10 @@ The steps trame ship runs for a shipment, computed once, which the views show: e
 
 The TypeScript compiler reads the sources without running them: titles, lines, properties, references, type errors. A program read again in the same process, every file the compiler read as it was, gives the reading kept.
 
+| Constant | Value | Meaning |
+|---|---|---|
+| `commandDepth` | `3` | How deep the type of a cast is searched for a command: itself, a member or what a function gives, and one step further |
+
 - Owner: trame
 - Parameters: `specifiers` ← [Node.js module specifiers](../std/docs/system.md#NodeModuleSpecifiers) · `syntax` ← [The syntax of the programs Trame writes](typescript.md#TypeScriptSyntax) · `references` ← [References](#References) · `file` ← [Text file](../std/docs/text.md#TextFile) · `options` ← [Options of the static reading](#TypeScriptOptions) · `ts` ← [TypeScript compiler](architecture.md#TypeScriptCompiler) · `kept` ← [Results kept](architecture.md#KeptResults) · `runs` ← [Where runs are kept](architecture.md#RunStore) · `hashing` ← [Hashing](architecture.md#Hashing) · `sha256` ← [SHA-256](../std/docs/algorithms.md#Sha256) · `encodings` ← [Node.js character encodings](../std/docs/system.md#NodeEncodings) · `paths` ← [Paths](architecture.md#Paths) · `positions` ← [Positions](#Positions) · `docComment` ← [Documentation comment](conventions.md#DocComment) · `counts` ← [Counts](../std/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/docs/algebra.md#Texts) · `messages` ← [Messages of the compiler](messages.md#CompilerMessages) · `textAsCode` ← [Text run as code](../std/docs/ecmascript.md#TextAsCode) · `libraries` ← [TypeScript's libraries of types](typescript.md#TypeScriptLibraries) · `prelude` ← [The prelude's public API](conventions.md#PreludeApi)
 - Body: `./code/engine/static-analysis.ts` (typescript)
@@ -486,7 +490,7 @@ The TypeScript compiler reads the sources without running them: titles, lines, p
 
 ### Views
 
-`Views` · `src/engine.ts:298` · status: **held**
+`Views` · `src/engine.ts:301` · status: **held**
 
 Loads them, lists their instances, runs them under their laws.
 
@@ -503,7 +507,7 @@ Loads them, lists their instances, runs them under their laws.
 
 ### Wiring
 
-`Wiring` · `src/engine.ts:187` · status: **held**
+`Wiring` · `src/engine.ts:190` · status: **held**
 
 The plan: what to build, in which order, with which implementation for each port; then its execution.
 

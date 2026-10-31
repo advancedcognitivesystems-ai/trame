@@ -103,46 +103,47 @@ flowchart TB
   subgraph scenarios["Reservations · Scenarios"]
     n78["Every reservation is refunded according to the rule<br/><small>Scenario</small>"]:::held
     n79["Read a reservation<br/><small>Scenario</small>"]:::held
-    n80["Cancelling twice refunds only once<br/><small>Scenario</small>"]:::held
-    n81["Unknown reservation<br/><small>Decision</small>"]:::neutral
+    n80["A read never writes<br/><small>Scenario</small>"]:::held
+    n81["Cancelling twice refunds only once<br/><small>Scenario</small>"]:::held
+    n82["Unknown reservation<br/><small>Decision</small>"]:::neutral
   end
   subgraph sdlc["Reservations · SDLC"]
-    n82["The code is verified<br/><small>Obligation</small>"]:::neutral
-    n83["The decisions hold<br/><small>Obligation</small>"]:::neutral
-    n84["Every check is signed<br/><small>Obligation</small>"]:::neutral
-    n85["The requirements of the goal hold<br/><small>Obligation</small>"]:::neutral
-    n86["The program for a laptop<br/><small>Artefact</small>"]:::unknown
-    n87["On a laptop<br/><small>Check</small>"]:::unknown
-    n88["On staging<br/><small>Check</small>"]:::unknown
-    n89["The operators<br/><small>Role</small>"]:::neutral
-    n90["The packages are safe<br/><small>Obligation</small>"]:::neutral
-    n91["The program for production<br/><small>Artefact</small>"]:::unknown
-    n92["A release<br/><small>Shipment</small>"]:::unknown
-    n93["The way of a release<br/><small>Policy</small>"]:::neutral
-    n94["The rules hold<br/><small>Obligation</small>"]:::neutral
+    n83["The code is verified<br/><small>Obligation</small>"]:::neutral
+    n84["The decisions hold<br/><small>Obligation</small>"]:::neutral
+    n85["Every check is signed<br/><small>Obligation</small>"]:::neutral
+    n86["The requirements of the goal hold<br/><small>Obligation</small>"]:::neutral
+    n87["The program for a laptop<br/><small>Artefact</small>"]:::unknown
+    n88["On a laptop<br/><small>Check</small>"]:::unknown
+    n89["On staging<br/><small>Check</small>"]:::unknown
+    n90["The operators<br/><small>Role</small>"]:::neutral
+    n91["The packages are safe<br/><small>Obligation</small>"]:::neutral
+    n92["The program for production<br/><small>Artefact</small>"]:::unknown
+    n93["A release<br/><small>Shipment</small>"]:::unknown
+    n94["The way of a release<br/><small>Policy</small>"]:::neutral
+    n95["The rules hold<br/><small>Obligation</small>"]:::neutral
   end
   subgraph sql["Reservations · SQL"]
-    n95["Column definition<br/><small>Syntax element</small>"]:::held
-    n96["Condition on a column<br/><small>Syntax element</small>"]:::held
-    n97["Count<br/><small>Syntax element</small>"]:::held
-    n98["Table creation<br/><small>Syntax element</small>"]:::held
-    n99["Insertion<br/><small>Syntax element</small>"]:::held
-    n100["PostgreSQL parameter<br/><small>Syntax element</small>"]:::held
-    n101["PostgreSQL's dialect<br/><small>Standard</small>"]:::neutral
-    n102["Selection<br/><small>Syntax element</small>"]:::held
-    n103["SQL<br/><small>Standard</small>"]:::neutral
-    n104["SQLite parameter<br/><small>Syntax element</small>"]:::held
-    n105["SQLite's dialect<br/><small>Standard</small>"]:::neutral
-    n106["List<br/><small>Syntax element</small>"]:::held
-    n107["Update<br/><small>Syntax element</small>"]:::held
+    n96["Column definition<br/><small>Syntax element</small>"]:::held
+    n97["Condition on a column<br/><small>Syntax element</small>"]:::held
+    n98["Count<br/><small>Syntax element</small>"]:::held
+    n99["Table creation<br/><small>Syntax element</small>"]:::held
+    n100["Insertion<br/><small>Syntax element</small>"]:::held
+    n101["PostgreSQL parameter<br/><small>Syntax element</small>"]:::held
+    n102["PostgreSQL's dialect<br/><small>Standard</small>"]:::neutral
+    n103["Selection<br/><small>Syntax element</small>"]:::held
+    n104["SQL<br/><small>Standard</small>"]:::neutral
+    n105["SQLite parameter<br/><small>Syntax element</small>"]:::held
+    n106["SQLite's dialect<br/><small>Standard</small>"]:::neutral
+    n107["List<br/><small>Syntax element</small>"]:::held
+    n108["Update<br/><small>Syntax element</small>"]:::held
   end
   subgraph standards["Reservations · Standards"]
-    n108["API of the payment provider<br/><small>Standard</small>"]:::neutral
-    n109["Paths of entry points<br/><small>Standard</small>"]:::neutral
-    n110["SQLite<br/><small>Standard</small>"]:::neutral
+    n109["API of the payment provider<br/><small>Standard</small>"]:::neutral
+    n110["Paths of entry points<br/><small>Standard</small>"]:::neutral
+    n111["SQLite<br/><small>Standard</small>"]:::neutral
   end
   subgraph support["Support requests"]
-    n111["Ultra period requested by support<br/><small>Amendment</small>"]:::neutral
+    n112["Ultra period requested by support<br/><small>Amendment</small>"]:::neutral
   end
   n0 -->|Serves| n26
   n0 -->|Part of| n17
@@ -193,10 +194,10 @@ flowchart TB
   n41 -->|Depends on| n58
   n41 -->|Depends on| n8
   n41 -->|Depends on| n44
-  n41 -->|Depends on| n110
+  n41 -->|Depends on| n111
   n42 -->|Implements| n12
   n42 -->|Depends on| n55
-  n42 -->|Depends on| n108
+  n42 -->|Depends on| n109
   n42 -->|Depends on| n73
   n43 -->|Chooses| n49
   n43 -->|In| n69
@@ -208,13 +209,13 @@ flowchart TB
   n45 -->|Depends on| n58
   n45 -->|Depends on| n8
   n45 -->|Depends on| n44
-  n45 -->|Depends on| n110
+  n45 -->|Depends on| n111
   n47 -->|Chooses| n41
   n47 -->|Chooses| n65
   n47 -->|In| n46
   n49 -->|Implements| n10
   n49 -->|Depends on| n11
-  n49 -->|Depends on| n109
+  n49 -->|Depends on| n110
   n49 -->|Depends on| n59
   n49 -->|Depends on| n73
   n50 -->|Implements| n7
@@ -225,15 +226,15 @@ flowchart TB
   n50 -->|Depends on| n35
   n50 -->|Depends on| n38
   n51 -->|Implements| n8
-  n51 -->|Depends on| n101
-  n51 -->|Depends on| n100
-  n51 -->|Depends on| n95
-  n51 -->|Depends on| n98
-  n51 -->|Depends on| n97
-  n51 -->|Depends on| n99
   n51 -->|Depends on| n102
-  n51 -->|Depends on| n107
+  n51 -->|Depends on| n101
   n51 -->|Depends on| n96
+  n51 -->|Depends on| n99
+  n51 -->|Depends on| n98
+  n51 -->|Depends on| n100
+  n51 -->|Depends on| n103
+  n51 -->|Depends on| n108
+  n51 -->|Depends on| n97
   n53 -->|Chooses| n50
   n53 -->|Chooses| n51
   n53 -->|In| n52
@@ -258,15 +259,15 @@ flowchart TB
   n63 -->|In| n69
   n63 -->|In| n46
   n65 -->|Implements| n8
+  n65 -->|Depends on| n106
   n65 -->|Depends on| n105
-  n65 -->|Depends on| n104
-  n65 -->|Depends on| n95
-  n65 -->|Depends on| n98
-  n65 -->|Depends on| n97
-  n65 -->|Depends on| n99
-  n65 -->|Depends on| n102
-  n65 -->|Depends on| n107
   n65 -->|Depends on| n96
+  n65 -->|Depends on| n99
+  n65 -->|Depends on| n98
+  n65 -->|Depends on| n100
+  n65 -->|Depends on| n103
+  n65 -->|Depends on| n108
+  n65 -->|Depends on| n97
   n66 -->|Chooses| n57
   n66 -->|Chooses| n36
   n66 -->|In| n69
@@ -280,7 +281,7 @@ flowchart TB
   n76 -->|Serves| n21
   n76 -->|Applied by| n0
   n76 -->|Applied by| n4
-  n76 -->|Applied by| n80
+  n76 -->|Applied by| n81
   n77 -->|Serves| n21
   n77 -->|Applied by| n42
   n78 -->|Verifies| n0
@@ -300,81 +301,89 @@ flowchart TB
   n79 -->|Depends on| n3
   n79 -->|Depends on| n44
   n79 -->|Depends on| n22
-  n79 -->|Depends on| n81
+  n79 -->|Depends on| n82
   n79 -->|Depends on| n75
-  n80 -->|Verifies| n0
-  n80 -->|Verifies| n2
-  n80 -->|Verifies| n36
-  n80 -->|Verifies| n62
-  n80 -->|Verifies| n67
+  n80 -->|Verifies| n45
   n80 -->|In| n69
-  n80 -->|Depends on| n0
-  n80 -->|Depends on| n13
-  n80 -->|Depends on| n26
+  n80 -->|Depends on| n14
+  n80 -->|Depends on| n8
+  n80 -->|Depends on| n58
+  n80 -->|Depends on| n37
   n80 -->|Depends on| n44
-  n80 -->|Depends on| n71
   n80 -->|Depends on| n75
-  n82 -->|Serves| n21
+  n81 -->|Verifies| n0
+  n81 -->|Verifies| n2
+  n81 -->|Verifies| n36
+  n81 -->|Verifies| n62
+  n81 -->|Verifies| n67
+  n81 -->|In| n69
+  n81 -->|Depends on| n0
+  n81 -->|Depends on| n13
+  n81 -->|Depends on| n26
+  n81 -->|Depends on| n44
+  n81 -->|Depends on| n71
+  n81 -->|Depends on| n75
   n83 -->|Serves| n21
   n84 -->|Serves| n21
   n85 -->|Serves| n21
-  n86 -->|Produced by| n17
-  n87 -->|Checks| n86
-  n87 -->|Signed by| n89
-  n87 -->|Verifies| n41
-  n88 -->|Checks| n91
-  n88 -->|Signed by| n89
-  n88 -->|Verifies| n49
-  n88 -->|Verifies| n50
-  n88 -->|Verifies| n51
-  n88 -->|Verifies| n42
-  n88 -->|Verifies| n68
-  n90 -->|Serves| n21
-  n91 -->|Produced by| n17
-  n92 -->|Ships| n91
-  n92 -->|Ships| n86
-  n92 -->|Programs assembled for| n52
-  n92 -->|Follows the policy| n93
-  n93 -->|Its obligations| n82
-  n93 -->|Its obligations| n85
-  n93 -->|Its obligations| n83
-  n93 -->|Its obligations| n84
-  n93 -->|Its obligations| n94
-  n93 -->|Its obligations| n90
-  n94 -->|Serves| n21
-  n95 -->|Defined by| n103
-  n95 -->|Depends on| n103
-  n96 -->|Defined by| n103
-  n96 -->|Depends on| n103
-  n97 -->|Defined by| n103
-  n97 -->|Depends on| n103
-  n98 -->|Defined by| n103
-  n98 -->|Depends on| n103
-  n98 -->|Depends on| n106
-  n99 -->|Defined by| n103
-  n99 -->|Depends on| n103
-  n99 -->|Depends on| n106
-  n100 -->|Defined by| n101
-  n100 -->|Depends on| n101
-  n102 -->|Defined by| n103
-  n102 -->|Depends on| n103
-  n102 -->|Depends on| n106
-  n104 -->|Defined by| n105
-  n104 -->|Depends on| n105
-  n106 -->|Defined by| n103
-  n106 -->|Depends on| n103
-  n107 -->|Defined by| n103
-  n107 -->|Depends on| n103
-  n107 -->|Depends on| n106
-  n111 -->|Amends| n22
+  n86 -->|Serves| n21
+  n87 -->|Produced by| n17
+  n88 -->|Checks| n87
+  n88 -->|Signed by| n90
+  n88 -->|Verifies| n41
+  n89 -->|Checks| n92
+  n89 -->|Signed by| n90
+  n89 -->|Verifies| n49
+  n89 -->|Verifies| n50
+  n89 -->|Verifies| n51
+  n89 -->|Verifies| n42
+  n89 -->|Verifies| n68
+  n91 -->|Serves| n21
+  n92 -->|Produced by| n17
+  n93 -->|Ships| n92
+  n93 -->|Ships| n87
+  n93 -->|Programs assembled for| n52
+  n93 -->|Follows the policy| n94
+  n94 -->|Its obligations| n83
+  n94 -->|Its obligations| n86
+  n94 -->|Its obligations| n84
+  n94 -->|Its obligations| n85
+  n94 -->|Its obligations| n95
+  n94 -->|Its obligations| n91
+  n95 -->|Serves| n21
+  n96 -->|Defined by| n104
+  n96 -->|Depends on| n104
+  n97 -->|Defined by| n104
+  n97 -->|Depends on| n104
+  n98 -->|Defined by| n104
+  n98 -->|Depends on| n104
+  n99 -->|Defined by| n104
+  n99 -->|Depends on| n104
+  n99 -->|Depends on| n107
+  n100 -->|Defined by| n104
+  n100 -->|Depends on| n104
+  n100 -->|Depends on| n107
+  n101 -->|Defined by| n102
+  n101 -->|Depends on| n102
+  n103 -->|Defined by| n104
+  n103 -->|Depends on| n104
+  n103 -->|Depends on| n107
+  n105 -->|Defined by| n106
+  n105 -->|Depends on| n106
+  n107 -->|Defined by| n104
+  n107 -->|Depends on| n104
+  n108 -->|Defined by| n104
+  n108 -->|Depends on| n104
+  n108 -->|Depends on| n107
+  n112 -->|Amends| n22
   n27 -.->|Depends on| n22
-  n30 -.-|Overlaps| n111
+  n30 -.-|Overlaps| n112
   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
   classDef blocked fill:#fbf0d9,stroke:#9a6200,color:#17202a
   classDef violated fill:#f9e3e1,stroke:#ad2a22,color:#17202a
   classDef unknown fill:#e9edf0,stroke:#65707c,color:#17202a
   classDef neutral fill:#ffffff,stroke:#5a6672,color:#17202a
-  style n29,n30,n31,n111 stroke-dasharray:4 3
+  style n29,n30,n31,n112 stroke-dasharray:4 3
   style n29 opacity:0.5
 ```
 

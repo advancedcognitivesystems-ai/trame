@@ -2,7 +2,7 @@
 
 *What the declarations that are not published yet add to the published graph (`trame.lock`), as of 30 October 2026.*
 
-> **104 new declarations · 0 published declarations affected · 1 overlap · 5 blocking holes added**
+> **105 new declarations · 0 published declarations affected · 1 overlap · 5 blocking holes added**
 
 ## What the branch redefines
 
@@ -47,22 +47,22 @@
 | [End of free cancellation](api.md#FreeCancellationEnd) | Function | lea | `src/api.ts:16` |
 | [Lead time of a cancellation](api.md#LeadTime) | Function | karim | `src/api.ts:28` |
 | [Read a reservation](api.md#ReadReservation) | Entry point | karim | `src/api.ts:38` |
-| [Key of a cancellation's refund](architecture.md#CancellationKey) | Decision | karim | `src/architecture.ts:151` |
-| [Cancellation records](architecture.md#Cancellations) | Port | karim | `src/architecture.ts:115` |
-| [Clock](architecture.md#Clock) | Port | karim | `src/architecture.ts:133` |
-| [Database](architecture.md#Database) | Port | karim | `src/architecture.ts:94` |
-| [SQL dialect](architecture.md#Dialect) | Port | karim | `src/architecture.ts:88` |
-| [Effects follow the request](architecture.md#EffectsFollowTheRequest) | Architecture decision | karim | `src/architecture.ts:203` |
-| [HTTP exposure](architecture.md#HttpExposure) | Port | karim | `src/architecture.ts:139` |
-| [HTTP port of the API](architecture.md#HttpPort) | Decision | karim | `src/architecture.ts:144` |
-| [Payment provider](architecture.md#Payment) | Port | karim | `src/architecture.ts:121` |
-| [Payment log](architecture.md#PaymentLog) | Port | karim | `src/architecture.ts:127` |
-| [Read-only database](architecture.md#ReadOnlyDatabase) | Port | karim | `src/architecture.ts:103` |
-| [A read writes nothing](architecture.md#ReadWithoutWrite) | Architecture rule | karim | `src/architecture.ts:167` |
-| [Reservation reading](architecture.md#ReservationReading) | Port | karim | `src/architecture.ts:109` |
-| [Reservations API](architecture.md#ReservationsApi) | Component | karim | `src/architecture.ts:157` |
-| [Every call to a third party is verified](architecture.md#ThirdPartiesVerified) | Architecture rule | karim | `src/architecture.ts:192` |
-| [Utilities do not touch the world](architecture.md#UtilitiesWithoutWorld) | Architecture rule | karim | `src/architecture.ts:182` |
+| [Key of a cancellation's refund](architecture.md#CancellationKey) | Decision | karim | `src/architecture.ts:156` |
+| [Cancellation records](architecture.md#Cancellations) | Port | karim | `src/architecture.ts:120` |
+| [Clock](architecture.md#Clock) | Port | karim | `src/architecture.ts:138` |
+| [Database](architecture.md#Database) | Port | karim | `src/architecture.ts:99` |
+| [SQL dialect](architecture.md#Dialect) | Port | karim | `src/architecture.ts:93` |
+| [Effects follow the request](architecture.md#EffectsFollowTheRequest) | Architecture decision | karim | `src/architecture.ts:208` |
+| [HTTP exposure](architecture.md#HttpExposure) | Port | karim | `src/architecture.ts:144` |
+| [HTTP port of the API](architecture.md#HttpPort) | Decision | karim | `src/architecture.ts:149` |
+| [Payment provider](architecture.md#Payment) | Port | karim | `src/architecture.ts:126` |
+| [Payment log](architecture.md#PaymentLog) | Port | karim | `src/architecture.ts:132` |
+| [Read-only database](architecture.md#ReadOnlyDatabase) | Port | karim | `src/architecture.ts:108` |
+| [A read writes nothing](architecture.md#ReadWithoutWrite) | Architecture rule | karim | `src/architecture.ts:172` |
+| [Reservation reading](architecture.md#ReservationReading) | Port | karim | `src/architecture.ts:114` |
+| [Reservations API](architecture.md#ReservationsApi) | Component | karim | `src/architecture.ts:162` |
+| [Every call to a third party is verified](architecture.md#ThirdPartiesVerified) | Architecture rule | karim | `src/architecture.ts:197` |
+| [Utilities do not touch the world](architecture.md#UtilitiesWithoutWorld) | Architecture rule | karim | `src/architecture.ts:187` |
 | [How an amount is written](cancellation.md#AmountWords) | Message catalog | karim | `src/cancellation.ts:26` |
 | [Swiss francs](cancellation.md#SwissFrancs) | Quantity | karim | `src/cancellation.ts:36` |
 | [Launch of the ultra chargers](committee.md#UltraLaunch) | Amendment | lea | `src/committee.ts:29` |
@@ -71,52 +71,53 @@
 | [A day ahead, a full refund](consumer.md#FullRefundAhead) | Requirement | karim | `src/consumer.ts:25` |
 | [Criteria of a full refund a day ahead](consumer.md#FullRefundAheadCriteria) | Acceptance criteria | karim | `src/consumer.ts:39` |
 | [Notice for a full refund](consumer.md#FullRefundNotice) | Decision | karim | `src/consumer.ts:14` |
-| [Backup retention](infra.md#BackupRetention) | Decision | karim | `src/infra.ts:89` |
-| [Cancellations in SQL](infra.md#CancellationsSql) | Function | karim | `src/infra.ts:211` |
-| [Status of a cancelled reservation](infra.md#CancelledStatus) | Decision | karim | `src/infra.ts:118` |
-| [Production database address](infra.md#DatabaseAddress) | Decision | karim | `src/infra.ts:83` |
-| [Production database name](infra.md#DatabaseName) | Decision | karim | `src/infra.ts:71` |
-| [Production database size](infra.md#DatabaseSize) | Decision | karim | `src/infra.ts:76` |
-| [Local SQLite database](infra.md#FileDatabase) | Implementation | karim | `src/infra.ts:149` |
-| [Real payment provider](infra.md#HttpPayment) | Implementation | karim | `src/infra.ts:266` |
-| [Node's HTTP server](infra.md#HttpServerChoice) | Technical choice | karim | `src/infra.ts:364` |
-| [Initial reservations](infra.md#InitialReservations) | Decision | karim | `src/infra.ts:43` |
-| [In-memory SQLite database](infra.md#InMemoryDatabase) | Implementation | karim | `src/infra.ts:138` |
-| [Local](infra.md#Local) | Environment | karim | `src/infra.ts:30` |
-| [A SQLite file on the developer's machine](infra.md#LocalDatabase) | Technical choice | karim | `src/infra.ts:302` |
-| [Local database file](infra.md#LocalDatabasePath) | Decision | karim | `src/infra.ts:66` |
-| [Node HTTP server](infra.md#NodeServer) | Implementation | karim | `src/infra.ts:276` |
-| [Production Postgres database](infra.md#PostgresDatabase) | Implementation | karim | `src/infra.ts:160` |
-| [PostgreSQL's dialect](infra.md#PostgresDialect) | Function | karim | `src/infra.ts:187` |
-| [Production](infra.md#Production) | Environment | karim | `src/infra.ts:35` |
-| [Postgres in production](infra.md#ProductionDatabase) | Technical choice | karim | `src/infra.ts:315` |
-| [The provider's API in production](infra.md#ProviderApi) | Technical choice | karim | `src/infra.ts:353` |
-| [Payment provider address](infra.md#ProviderUrl) | Decision | karim | `src/infra.ts:94` |
-| [The system clock elsewhere](infra.md#RealClock) | Technical choice | karim | `src/infra.ts:387` |
-| [Reservations in SQL](infra.md#ReservationsSql) | Function | karim | `src/infra.ts:200` |
-| [Tables of the service](infra.md#ReservationTables) | Decision | karim | `src/infra.ts:101` |
-| [End of a response](infra.md#ResponseEnding) | Decision | karim | `src/infra.ts:130` |
-| [A stopped clock in the scenarios](infra.md#ScenarioClock) | Technical choice | karim | `src/infra.ts:376` |
-| [An in-memory SQLite database for the scenarios](infra.md#ScenarioDatabase) | Technical choice | karim | `src/infra.ts:289` |
-| [Simulated payment provider](infra.md#SimulatedPayment) | Function | karim | `src/infra.ts:242` |
-| [A simulated payment provider outside production](infra.md#SimulatedProvider) | Technical choice | karim | `src/infra.ts:341` |
-| [References of the simulated provider](infra.md#SimulatedReference) | Decision | karim | `src/infra.ts:124` |
-| [SQLite's dialect](infra.md#SqliteDialect) | Function | karim | `src/infra.ts:173` |
-| [Reservations and cancellations as repositories over SQL](infra.md#SqlRepositories) | Technical choice | karim | `src/infra.ts:328` |
-| [Stopped clock](infra.md#StoppedClock) | Function | karim | `src/infra.ts:231` |
-| [System clock](infra.md#SystemClock) | Implementation | karim | `src/infra.ts:221` |
-| [Test](infra.md#Test) | Environment | karim | `src/infra.ts:24` |
-| [Test database](infra.md#TestDatabasePath) | Decision | karim | `src/infra.ts:61` |
-| [Test instant](infra.md#TestInstant) | Decision | karim | `src/infra.ts:56` |
+| [Backup retention](infra.md#BackupRetention) | Decision | karim | `src/infra.ts:90` |
+| [Cancellations in SQL](infra.md#CancellationsSql) | Function | karim | `src/infra.ts:212` |
+| [Status of a cancelled reservation](infra.md#CancelledStatus) | Decision | karim | `src/infra.ts:119` |
+| [Production database address](infra.md#DatabaseAddress) | Decision | karim | `src/infra.ts:84` |
+| [Production database name](infra.md#DatabaseName) | Decision | karim | `src/infra.ts:72` |
+| [Production database size](infra.md#DatabaseSize) | Decision | karim | `src/infra.ts:77` |
+| [Local SQLite database](infra.md#FileDatabase) | Implementation | karim | `src/infra.ts:150` |
+| [Real payment provider](infra.md#HttpPayment) | Implementation | karim | `src/infra.ts:267` |
+| [Node's HTTP server](infra.md#HttpServerChoice) | Technical choice | karim | `src/infra.ts:365` |
+| [Initial reservations](infra.md#InitialReservations) | Decision | karim | `src/infra.ts:44` |
+| [In-memory SQLite database](infra.md#InMemoryDatabase) | Implementation | karim | `src/infra.ts:139` |
+| [Local](infra.md#Local) | Environment | karim | `src/infra.ts:31` |
+| [A SQLite file on the developer's machine](infra.md#LocalDatabase) | Technical choice | karim | `src/infra.ts:303` |
+| [Local database file](infra.md#LocalDatabasePath) | Decision | karim | `src/infra.ts:67` |
+| [Node HTTP server](infra.md#NodeServer) | Implementation | karim | `src/infra.ts:277` |
+| [Production Postgres database](infra.md#PostgresDatabase) | Implementation | karim | `src/infra.ts:161` |
+| [PostgreSQL's dialect](infra.md#PostgresDialect) | Function | karim | `src/infra.ts:188` |
+| [Production](infra.md#Production) | Environment | karim | `src/infra.ts:36` |
+| [Postgres in production](infra.md#ProductionDatabase) | Technical choice | karim | `src/infra.ts:316` |
+| [The provider's API in production](infra.md#ProviderApi) | Technical choice | karim | `src/infra.ts:354` |
+| [Payment provider address](infra.md#ProviderUrl) | Decision | karim | `src/infra.ts:95` |
+| [The system clock elsewhere](infra.md#RealClock) | Technical choice | karim | `src/infra.ts:388` |
+| [Reservations in SQL](infra.md#ReservationsSql) | Function | karim | `src/infra.ts:201` |
+| [Tables of the service](infra.md#ReservationTables) | Decision | karim | `src/infra.ts:102` |
+| [End of a response](infra.md#ResponseEnding) | Decision | karim | `src/infra.ts:131` |
+| [A stopped clock in the scenarios](infra.md#ScenarioClock) | Technical choice | karim | `src/infra.ts:377` |
+| [An in-memory SQLite database for the scenarios](infra.md#ScenarioDatabase) | Technical choice | karim | `src/infra.ts:290` |
+| [Simulated payment provider](infra.md#SimulatedPayment) | Function | karim | `src/infra.ts:243` |
+| [A simulated payment provider outside production](infra.md#SimulatedProvider) | Technical choice | karim | `src/infra.ts:342` |
+| [References of the simulated provider](infra.md#SimulatedReference) | Decision | karim | `src/infra.ts:125` |
+| [SQLite's dialect](infra.md#SqliteDialect) | Function | karim | `src/infra.ts:174` |
+| [Reservations and cancellations as repositories over SQL](infra.md#SqlRepositories) | Technical choice | karim | `src/infra.ts:329` |
+| [Stopped clock](infra.md#StoppedClock) | Function | karim | `src/infra.ts:232` |
+| [System clock](infra.md#SystemClock) | Implementation | karim | `src/infra.ts:222` |
+| [Test](infra.md#Test) | Environment | karim | `src/infra.ts:25` |
+| [Test database](infra.md#TestDatabasePath) | Decision | karim | `src/infra.ts:62` |
+| [Test instant](infra.md#TestInstant) | Decision | karim | `src/infra.ts:57` |
 | [Messages of the API](messages.md#ApiMessages) | Message catalog | karim | `src/messages.ts:18` |
 | [Language](messages.md#Language) | Decision | karim | `src/messages.ts:12` |
 | [Checks of the scenarios](messages.md#ScenarioChecks) | Message catalog | lea | `src/messages.ts:35` |
 | [A cancellation refunds once](principles.md#RefundOnce) | Architecture decision | karim | `src/principles.ts:15` |
 | [Secrets stay out of the graph](principles.md#SecretsOutOfTheGraph) | Architecture decision | karim | `src/principles.ts:28` |
-| [Every reservation is refunded according to the rule](scenarios.md#ComplianceScenario) | Scenario | lea | `src/scenarios.ts:66` |
-| [Read a reservation](scenarios.md#ReadScenario) | Scenario | karim | `src/scenarios.ts:24` |
-| [Cancelling twice refunds only once](scenarios.md#RepeatedCancellationScenario) | Scenario | karim | `src/scenarios.ts:44` |
-| [Unknown reservation](scenarios.md#UnknownReservation) | Decision | karim | `src/scenarios.ts:17` |
+| [Every reservation is refunded according to the rule](scenarios.md#ComplianceScenario) | Scenario | lea | `src/scenarios.ts:67` |
+| [Read a reservation](scenarios.md#ReadScenario) | Scenario | karim | `src/scenarios.ts:25` |
+| [A read never writes](scenarios.md#ReadsNeverWrite) | Scenario | karim | `src/scenarios.ts:86` |
+| [Cancelling twice refunds only once](scenarios.md#RepeatedCancellationScenario) | Scenario | karim | `src/scenarios.ts:45` |
+| [Unknown reservation](scenarios.md#UnknownReservation) | Decision | karim | `src/scenarios.ts:18` |
 | [The code is verified](sdlc.md#CodeVerified) | Obligation | karim | `src/sdlc.ts:72` |
 | [The decisions hold](sdlc.md#DecisionsApplied) | Obligation | karim | `src/sdlc.ts:84` |
 | [Every check is signed](sdlc.md#EveryCheck) | Obligation | karim | `src/sdlc.ts:89` |
@@ -143,7 +144,7 @@
 | [SQLite's dialect](sql.md#SqliteSql) | Standard | karim | `src/sql.ts:44` |
 | [List](sql.md#SqlList) | Syntax element | karim | `src/sql.ts:77` |
 | [Update](sql.md#UpdateRows) | Syntax element | karim | `src/sql.ts:181` |
-| [API of the payment provider](standards.md#PaymentProviderApi) | Standard | karim | `src/standards.ts:38` |
+| [API of the payment provider](standards.md#PaymentProviderApi) | Standard | karim | `src/standards.ts:40` |
 | [Paths of entry points](standards.md#RouteSyntax) | Standard | karim | `src/standards.ts:9` |
 | [SQLite](standards.md#Sqlite) | Standard | karim | `src/standards.ts:22` |
 | [Ultra period requested by support](support.md#SupportUltraPeriod) | Amendment | karim | `src/support.ts:11` |

@@ -1228,3 +1228,18 @@ export const G83 = release({
   archive: "d03618584d3ed6d9",
   assembledBy: G82,
 })
+
+/**
+ * Generation 84
+ */
+export const G84 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g84",
+  date: "2026-10-31",
+  what: "A2 closed: a command another system interprets is typed by its intent (std's Command), made only by std's Commands; a cast that makes one refuses the build",
+  fingerprint: "e4b1b57bad050afa",
+  language: "shared",
+  archive: "1a1128c9e4fd6ebb",
+  assembledBy: G83,
+})

@@ -652,10 +652,25 @@
       "diagnostics": []
     },
     {
+      "id": "effects.Commands",
+      "kind": "function",
+      "title": "Commands",
+      "source": "src/effects.ts:174",
+      "status": "unknown",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "effects": "effects.Effects"
+        },
+        "body": "(function)"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "effects.Effects",
       "kind": "vocabulary",
       "title": "Effects",
-      "source": "src/effects.ts:14",
+      "source": "src/effects.ts:15",
       "fields": {
         "owner": "trame",
         "words": {
@@ -677,7 +692,7 @@
       "id": "effects.PlatformEffects",
       "kind": "decision",
       "title": "What the platform may do",
-      "source": "src/effects.ts:58",
+      "source": "src/effects.ts:59",
       "fields": {
         "owner": "trame",
         "value": {
@@ -4273,6 +4288,16 @@
       "from": "ecmascript.UnicodeEscape",
       "to": "product.CitedNotCopied",
       "kind": "serves"
+    },
+    {
+      "from": "effects.Commands",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "effects.Commands",
+      "to": "effects.Effects",
+      "kind": "deps"
     },
     {
       "from": "effects.Effects",

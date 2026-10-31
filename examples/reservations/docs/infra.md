@@ -16,7 +16,7 @@
 
 ### Backup retention
 
-`BackupRetention` · `src/infra.ts:89`
+`BackupRetention` · `src/infra.ts:90`
 
 In days.
 
@@ -30,20 +30,20 @@ In days.
 
 ### Status of a cancelled reservation
 
-`CancelledStatus` · `src/infra.ts:118`
+`CancelledStatus` · `src/infra.ts:119`
 
 As the reservations table stores it.
 
 - Value: cancelled
 
 - Decided by: karim
-- Used by: [Cancellations in SQL](#CancellationsSql)
+- Used by: [Cancellations in SQL](#CancellationsSql), [A read never writes](scenarios.md#ReadsNeverWrite)
 
 <a id="DatabaseAddress"></a>
 
 ### Production database address
 
-`DatabaseAddress` · `src/infra.ts:83`
+`DatabaseAddress` · `src/infra.ts:84`
 
 Where the service finds the database: the name of the database stands for each %s (as Terraform's format writes it), on the provider's internal network, on Postgres's port.
 
@@ -56,7 +56,7 @@ Where the service finds the database: the name of the database stands for each %
 
 ### Production database name
 
-`DatabaseName` · `src/infra.ts:71`
+`DatabaseName` · `src/infra.ts:72`
 
 - Value: reservations
 
@@ -67,7 +67,7 @@ Where the service finds the database: the name of the database stands for each %
 
 ### Production database size
 
-`DatabaseSize` · `src/infra.ts:76`
+`DatabaseSize` · `src/infra.ts:77`
 
 | Case | Value |
 |---|---|
@@ -81,7 +81,7 @@ Where the service finds the database: the name of the database stands for each %
 
 ### Initial reservations
 
-`InitialReservations` · `src/infra.ts:43`
+`InitialReservations` · `src/infra.ts:44`
 
 Inserted when a database starts empty, in test and locally.
 
@@ -92,13 +92,13 @@ Inserted when a database starts empty, in test and locally.
 | 2 | { id: R3, charger: ultra, price: 40, start: 2026-10-20T11:00:00.000Z, status: active } |
 
 - Decided by: karim
-- Used by: [Local SQLite database](#FileDatabase), [In-memory SQLite database](#InMemoryDatabase), [Every reservation is refunded according to the rule](scenarios.md#ComplianceScenario), [Read a reservation](scenarios.md#ReadScenario), [Cancelling twice refunds only once](scenarios.md#RepeatedCancellationScenario)
+- Used by: [Local SQLite database](#FileDatabase), [In-memory SQLite database](#InMemoryDatabase), [Every reservation is refunded according to the rule](scenarios.md#ComplianceScenario), [Read a reservation](scenarios.md#ReadScenario), [A read never writes](scenarios.md#ReadsNeverWrite), [Cancelling twice refunds only once](scenarios.md#RepeatedCancellationScenario)
 
 <a id="LocalDatabasePath"></a>
 
 ### Local database file
 
-`LocalDatabasePath` · `src/infra.ts:66`
+`LocalDatabasePath` · `src/infra.ts:67`
 
 - Value: .data/reservations.db
 
@@ -109,7 +109,7 @@ Inserted when a database starts empty, in test and locally.
 
 ### Payment provider address
 
-`ProviderUrl` · `src/infra.ts:94`
+`ProviderUrl` · `src/infra.ts:95`
 
 - Value: https://payments.example.com/v1
 
@@ -120,7 +120,7 @@ Inserted when a database starts empty, in test and locally.
 
 ### Tables of the service
 
-`ReservationTables` · `src/infra.ts:101`
+`ReservationTables` · `src/infra.ts:102`
 
 The reservations, and the refund of each cancelled one (its key is the reservation's); the column of a reservation's status, and the name a count is read under. Whatever the database: each dialect writes them in its own SQL.
 
@@ -132,13 +132,13 @@ The reservations, and the refund of each cancelled one (its key is the reservati
 | count | n |
 
 - Decided by: karim
-- Used by: [Cancellations in SQL](#CancellationsSql), [Local SQLite database](#FileDatabase), [In-memory SQLite database](#InMemoryDatabase), [Reservations in SQL](#ReservationsSql)
+- Used by: [Cancellations in SQL](#CancellationsSql), [Local SQLite database](#FileDatabase), [In-memory SQLite database](#InMemoryDatabase), [Reservations in SQL](#ReservationsSql), [A read never writes](scenarios.md#ReadsNeverWrite)
 
 <a id="ResponseEnding"></a>
 
 ### End of a response
 
-`ResponseEnding` · `src/infra.ts:130`
+`ResponseEnding` · `src/infra.ts:131`
 
 A JSON response ends with a line feed: a terminal shows what follows on its own line.
 
@@ -151,7 +151,7 @@ A JSON response ends with a line feed: a terminal shows what follows on its own 
 
 ### References of the simulated provider
 
-`SimulatedReference` · `src/infra.ts:124`
+`SimulatedReference` · `src/infra.ts:125`
 
 What the simulated provider answers for a refund: this prefix, then the number of the call.
 
@@ -164,7 +164,7 @@ What the simulated provider answers for a refund: this prefix, then the number o
 
 ### Test database
 
-`TestDatabasePath` · `src/infra.ts:61`
+`TestDatabasePath` · `src/infra.ts:62`
 
 - Value: :memory:
 
@@ -175,7 +175,7 @@ What the simulated provider answers for a refund: this prefix, then the number o
 
 ### Test instant
 
-`TestInstant` · `src/infra.ts:56`
+`TestInstant` · `src/infra.ts:57`
 
 The time the scenarios see.
 
@@ -190,7 +190,7 @@ The time the scenarios see.
 
 ### Cancellations in SQL
 
-`CancellationsSql` · `src/infra.ts:211` · status: **held**
+`CancellationsSql` · `src/infra.ts:212` · status: **held**
 
 The cancellation and its refund are written in the same transaction.
 
@@ -206,12 +206,12 @@ The cancellation and its refund are written in the same transaction.
 
 ### PostgreSQL's dialect
 
-`PostgresDialect` · `src/infra.ts:187` · status: **unknown**
+`PostgresDialect` · `src/infra.ts:188` · status: **unknown**
 
 Positional parameters ($1, $2…); text and double precision numbers.
 
 - Owner: karim
-- Parameters: `types` ← [PostgreSQL's dialect](sql.md#PostgresSql) · `parameter` ← [PostgreSQL parameter](sql.md#PostgresParameter) · `definition` ← [Column definition](sql.md#ColumnDefinition) · `createTable` ← [Table creation](sql.md#CreateTable) · `countRows` ← [Count](sql.md#CountRows) · `insertRow` ← [Insertion](sql.md#InsertRow) · `selectRows` ← [Selection](sql.md#SelectRows) · `updateRows` ← [Update](sql.md#UpdateRows) · `columnEquals` ← [Condition on a column](sql.md#ColumnEquals)
+- Parameters: `types` ← [PostgreSQL's dialect](sql.md#PostgresSql) · `parameter` ← [PostgreSQL parameter](sql.md#PostgresParameter) · `definition` ← [Column definition](sql.md#ColumnDefinition) · `createTable` ← [Table creation](sql.md#CreateTable) · `countRows` ← [Count](sql.md#CountRows) · `insertRow` ← [Insertion](sql.md#InsertRow) · `selectRows` ← [Selection](sql.md#SelectRows) · `updateRows` ← [Update](sql.md#UpdateRows) · `columnEquals` ← [Condition on a column](sql.md#ColumnEquals) · `commands` ← [Commands](../../../std/docs/effects.md#Commands)
 - Body: `./code/sql-dialect.ts` (typescript)
 - Implements: [SQL dialect](architecture.md#Dialect)
 - Chosen by: [Postgres in production](#ProductionDatabase)
@@ -221,7 +221,7 @@ Positional parameters ($1, $2…); text and double precision numbers.
 
 ### Reservations in SQL
 
-`ReservationsSql` · `src/infra.ts:200` · status: **held**
+`ReservationsSql` · `src/infra.ts:201` · status: **held**
 
 - Owner: karim
 - Parameters: `database` ← [Read-only database](architecture.md#ReadOnlyDatabase) · `dialect` ← [SQL dialect](architecture.md#Dialect) · `tables` ← [Tables of the service](#ReservationTables)
@@ -235,7 +235,7 @@ Positional parameters ($1, $2…); text and double precision numbers.
 
 ### Simulated payment provider
 
-`SimulatedPayment` · `src/infra.ts:242` · status: **held**
+`SimulatedPayment` · `src/infra.ts:243` · status: **held**
 
 Keeps every call in memory. A key seen before returns the same reference, without a new call.
 
@@ -250,12 +250,12 @@ Keeps every call in memory. A key seen before returns the same reference, withou
 
 ### SQLite's dialect
 
-`SqliteDialect` · `src/infra.ts:173` · status: **held**
+`SqliteDialect` · `src/infra.ts:174` · status: **held**
 
 Parameters as question marks; text and real numbers.
 
 - Owner: karim
-- Parameters: `types` ← [SQLite's dialect](sql.md#SqliteSql) · `parameter` ← [SQLite parameter](sql.md#SqliteParameter) · `definition` ← [Column definition](sql.md#ColumnDefinition) · `createTable` ← [Table creation](sql.md#CreateTable) · `countRows` ← [Count](sql.md#CountRows) · `insertRow` ← [Insertion](sql.md#InsertRow) · `selectRows` ← [Selection](sql.md#SelectRows) · `updateRows` ← [Update](sql.md#UpdateRows) · `columnEquals` ← [Condition on a column](sql.md#ColumnEquals)
+- Parameters: `types` ← [SQLite's dialect](sql.md#SqliteSql) · `parameter` ← [SQLite parameter](sql.md#SqliteParameter) · `definition` ← [Column definition](sql.md#ColumnDefinition) · `createTable` ← [Table creation](sql.md#CreateTable) · `countRows` ← [Count](sql.md#CountRows) · `insertRow` ← [Insertion](sql.md#InsertRow) · `selectRows` ← [Selection](sql.md#SelectRows) · `updateRows` ← [Update](sql.md#UpdateRows) · `columnEquals` ← [Condition on a column](sql.md#ColumnEquals) · `commands` ← [Commands](../../../std/docs/effects.md#Commands)
 - Body: `./code/sql-dialect.ts` (typescript)
 - Implements: [SQL dialect](architecture.md#Dialect)
 - Chosen by: [A SQLite file on the developer's machine](#LocalDatabase), [An in-memory SQLite database for the scenarios](#ScenarioDatabase)
@@ -265,7 +265,7 @@ Parameters as question marks; text and real numbers.
 
 ### Stopped clock
 
-`StoppedClock` · `src/infra.ts:231` · status: **held**
+`StoppedClock` · `src/infra.ts:232` · status: **held**
 
 Always the test instant.
 
@@ -282,7 +282,7 @@ Always the test instant.
 
 ### Local SQLite database
 
-`FileDatabase` · `src/infra.ts:149` · status: **unknown**
+`FileDatabase` · `src/infra.ts:150` · status: **unknown**
 
 In a file on the developer's machine, created on the first start.
 
@@ -297,7 +297,7 @@ In a file on the developer's machine, created on the first start.
 
 ### Real payment provider
 
-`HttpPayment` · `src/infra.ts:266` · status: **unknown**
+`HttpPayment` · `src/infra.ts:267` · status: **unknown**
 
 Over HTTPS, with the idempotency key in a header.
 
@@ -313,7 +313,7 @@ Over HTTPS, with the idempotency key in a header.
 
 ### In-memory SQLite database
 
-`InMemoryDatabase` · `src/infra.ts:138` · status: **held**
+`InMemoryDatabase` · `src/infra.ts:139` · status: **held**
 
 New for each session: every scenario starts from the initial reservations.
 
@@ -322,13 +322,13 @@ New for each session: every scenario starts from the initial reservations.
 - Body: `./code/sqlite-database.ts` (typescript)
 - Implements: [Database](architecture.md#Database), [Read-only database](architecture.md#ReadOnlyDatabase)
 - Chosen by: [An in-memory SQLite database for the scenarios](#ScenarioDatabase)
-- Verified by: [Read a reservation](scenarios.md#ReadScenario)
+- Verified by: [Read a reservation](scenarios.md#ReadScenario), [A read never writes](scenarios.md#ReadsNeverWrite)
 
 <a id="NodeServer"></a>
 
 ### Node HTTP server
 
-`NodeServer` · `src/infra.ts:276` · status: **unknown**
+`NodeServer` · `src/infra.ts:277` · status: **unknown**
 
 - Owner: karim
 - Parameters: `port` ← [HTTP port of the API](architecture.md#HttpPort) · `http` ← [HTTP](../../../std/docs/web.md#Http) · `mediaTypes` ← [Media types](../../../std/docs/web.md#MediaTypes) · `uri` ← [URI](../../../std/docs/web.md#Uri) · `routes` ← [Paths of entry points](standards.md#RouteSyntax) · `ending` ← [End of a response](#ResponseEnding) · `messages` ← [Messages of the API](messages.md#ApiMessages)
@@ -341,7 +341,7 @@ New for each session: every scenario starts from the initial reservations.
 
 ### Production Postgres database
 
-`PostgresDatabase` · `src/infra.ts:160` · status: **unknown**
+`PostgresDatabase` · `src/infra.ts:161` · status: **unknown**
 
 Provisioned by Terraform.
 
@@ -358,7 +358,7 @@ Provisioned by Terraform.
 
 ### System clock
 
-`SystemClock` · `src/infra.ts:221` · status: **unknown**
+`SystemClock` · `src/infra.ts:222` · status: **unknown**
 
 - Owner: karim
 - Body: inline, in the declaration
@@ -372,7 +372,7 @@ Provisioned by Terraform.
 
 ### Node's HTTP server
 
-`HttpServerChoice` · `src/infra.ts:364` · status: **unknown**
+`HttpServerChoice` · `src/infra.ts:365` · status: **unknown**
 
 In [Local](#Local), [Production](#Production), [Test](#Test):
 
@@ -395,7 +395,7 @@ Context: The API is a handful of routes: Node's server is enough, and the scenar
 
 ### A SQLite file on the developer's machine
 
-`LocalDatabase` · `src/infra.ts:302` · status: **unknown**
+`LocalDatabase` · `src/infra.ts:303` · status: **unknown**
 
 The database and its dialect, chosen together.
 
@@ -421,7 +421,7 @@ Context: A developer runs the service without installing a database server; the 
 
 ### Postgres in production
 
-`ProductionDatabase` · `src/infra.ts:315` · status: **unknown**
+`ProductionDatabase` · `src/infra.ts:316` · status: **unknown**
 
 The database and its dialect, chosen together.
 
@@ -449,7 +449,7 @@ Consequences: Provisioned by Terraform with the graph's values; its statements c
 
 ### The provider's API in production
 
-`ProviderApi` · `src/infra.ts:353` · status: **unknown**
+`ProviderApi` · `src/infra.ts:354` · status: **unknown**
 
 In [Production](#Production):
 
@@ -468,7 +468,7 @@ Context: Refunds go through the payment provider, over HTTPS, with an idempotenc
 
 ### The system clock elsewhere
 
-`RealClock` · `src/infra.ts:387` · status: **unknown**
+`RealClock` · `src/infra.ts:388` · status: **unknown**
 
 In [Local](#Local), [Production](#Production):
 
@@ -487,7 +487,7 @@ Context: Outside the scenarios, the fee is computed at the real instant.
 
 ### A stopped clock in the scenarios
 
-`ScenarioClock` · `src/infra.ts:376` · status: **held**
+`ScenarioClock` · `src/infra.ts:377` · status: **held**
 
 In [Test](#Test):
 
@@ -506,7 +506,7 @@ Context: The cancellation fee depends on the time left before the start: a scena
 
 ### An in-memory SQLite database for the scenarios
 
-`ScenarioDatabase` · `src/infra.ts:289` · status: **held**
+`ScenarioDatabase` · `src/infra.ts:290` · status: **held**
 
 The database and its dialect, chosen together.
 
@@ -532,7 +532,7 @@ Context: Every scenario starts from the initial reservations and leaves nothing 
 
 ### A simulated payment provider outside production
 
-`SimulatedProvider` · `src/infra.ts:341` · status: **held**
+`SimulatedProvider` · `src/infra.ts:342` · status: **held**
 
 In [Local](#Local), [Test](#Test):
 
@@ -555,7 +555,7 @@ Context: Refunds must be tried without money moving, and a scenario reads the ca
 
 ### Reservations and cancellations as repositories over SQL
 
-`SqlRepositories` · `src/infra.ts:328` · status: **held**
+`SqlRepositories` · `src/infra.ts:329` · status: **held**
 
 In [Local](#Local), [Production](#Production), [Test](#Test):
 
@@ -583,7 +583,7 @@ Consequences: The repositories hold no driver and write no SQL: they ask the dia
 
 ### Local
 
-`Local` · `src/infra.ts:30`
+`Local` · `src/infra.ts:31`
 
 A developer's machine: a database in a file, a simulated payment provider.
 
@@ -594,7 +594,7 @@ A developer's machine: a database in a file, a simulated payment provider.
 
 ### Production
 
-`Production` · `src/infra.ts:35`
+`Production` · `src/infra.ts:36`
 
 - Owner: karim
 - Technical choices: [Node's HTTP server](#HttpServerChoice), [Postgres in production](#ProductionDatabase), [The provider's API in production](#ProviderApi), [The system clock elsewhere](#RealClock), [Reservations and cancellations as repositories over SQL](#SqlRepositories)
@@ -604,10 +604,10 @@ A developer's machine: a database in a file, a simulated payment provider.
 
 ### Test
 
-`Test` · `src/infra.ts:24`
+`Test` · `src/infra.ts:25`
 
 Where the scenarios run: an in-memory database, a fixed time, a simulated payment provider.
 
 - Owner: karim
 - Technical choices: [Node's HTTP server](#HttpServerChoice), [A stopped clock in the scenarios](#ScenarioClock), [An in-memory SQLite database for the scenarios](#ScenarioDatabase), [A simulated payment provider outside production](#SimulatedProvider), [Reservations and cancellations as repositories over SQL](#SqlRepositories)
-- Scenarios: [Every reservation is refunded according to the rule](scenarios.md#ComplianceScenario), [Read a reservation](scenarios.md#ReadScenario), [Cancelling twice refunds only once](scenarios.md#RepeatedCancellationScenario)
+- Scenarios: [Every reservation is refunded according to the rule](scenarios.md#ComplianceScenario), [Read a reservation](scenarios.md#ReadScenario), [A read never writes](scenarios.md#ReadsNeverWrite), [Cancelling twice refunds only once](scenarios.md#RepeatedCancellationScenario)

@@ -38,7 +38,7 @@ How many scenarios the example project holds: the described engine must find the
 
 | Case | Value |
 |---|---|
-| scenarios | 3 |
+| scenarios | 4 |
 
 - Decided by: trame
 - Used by: [The described engine compiles the example](#CompileExample)
@@ -128,7 +128,7 @@ The compiler assembled from this graph loads the reservations project (its files
 | Criterion | Result |
 |---|---|
 | TypeScript accepts the example | passed |
-| The example has 112 nodes, 3 scenarios among them | passed |
+| The example has 113 nodes, 4 scenarios among them | passed |
 | No error in the example | passed |
 | The scenarios of the example hold | passed |
 | Loaded again, the example reads the same: what the compiler of TypeScript read is kept | passed |

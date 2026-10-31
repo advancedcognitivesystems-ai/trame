@@ -20,7 +20,7 @@
 
 ### Key of a cancellation's refund
 
-`CancellationKey` · `src/architecture.ts:151`
+`CancellationKey` · `src/architecture.ts:156`
 
 The idempotency key the provider receives: this prefix, then the reservation. A request repeated for the same reservation refunds only once.
 
@@ -34,7 +34,7 @@ The idempotency key the provider receives: this prefix, then the reservation. A 
 
 ### HTTP port of the API
 
-`HttpPort` · `src/architecture.ts:144`
+`HttpPort` · `src/architecture.ts:149`
 
 - Value: 4180
 
@@ -47,7 +47,7 @@ The idempotency key the provider receives: this prefix, then the reservation. A 
 
 ### Effects follow the request
 
-`EffectsFollowTheRequest` · `src/architecture.ts:203` · status: **held**
+`EffectsFollowTheRequest` · `src/architecture.ts:208` · status: **held**
 
 What an entry point may do follows what it is asked: a read changes nothing, a utility touches nothing, and a call to the payment provider is verified by a scenario before it reaches a driver.
 
@@ -65,7 +65,7 @@ Consequences: Three rules judge the effects of every entry point and function at
 
 ### Reservations API
 
-`ReservationsApi` · `src/architecture.ts:157`
+`ReservationsApi` · `src/architecture.ts:162`
 
 The service that reads and cancels reservations.
 
@@ -84,7 +84,7 @@ The service that reads and cancels reservations.
 
 ### Cancellation records
 
-`Cancellations` · `src/architecture.ts:115`
+`Cancellations` · `src/architecture.ts:120`
 
 Tells whether a reservation is already cancelled, and records a cancellation with its refund.
 
@@ -109,7 +109,7 @@ Tells whether a reservation is already cancelled, and records a cancellation wit
 
 ### Clock
 
-`Clock` · `src/architecture.ts:133`
+`Clock` · `src/architecture.ts:138`
 
 The current time.
 
@@ -129,7 +129,7 @@ The current time.
 
 ### Database
 
-`Database` · `src/architecture.ts:94`
+`Database` · `src/architecture.ts:99`
 
 A full SQL connection: reads, writes and transactions.
 
@@ -155,7 +155,7 @@ A full SQL connection: reads, writes and transactions.
 
 ### SQL dialect
 
-`Dialect` · `src/architecture.ts:88`
+`Dialect` · `src/architecture.ts:93`
 
 The statements the repositories need, written in the dialect of the database that answers them: its parameters, the types of its columns. It touches nothing.
 
@@ -167,14 +167,14 @@ The statements the repositories need, written in the dialect of the database tha
 | [Test](../../../std/docs/scenarios.md#Test) | none | — |
 
 - Owner: karim
-- Used by: [Cancellations in SQL](infra.md#CancellationsSql), [Local SQLite database](infra.md#FileDatabase), [In-memory SQLite database](infra.md#InMemoryDatabase), [Reservations in SQL](infra.md#ReservationsSql)
+- Used by: [Cancellations in SQL](infra.md#CancellationsSql), [Local SQLite database](infra.md#FileDatabase), [In-memory SQLite database](infra.md#InMemoryDatabase), [Reservations in SQL](infra.md#ReservationsSql), [A read never writes](scenarios.md#ReadsNeverWrite)
 - Implemented by: [PostgreSQL's dialect](infra.md#PostgresDialect), [SQLite's dialect](infra.md#SqliteDialect)
 
 <a id="HttpExposure"></a>
 
 ### HTTP exposure
 
-`HttpExposure` · `src/architecture.ts:139`
+`HttpExposure` · `src/architecture.ts:144`
 
 Serves entry points on a port.
 
@@ -194,7 +194,7 @@ Serves entry points on a port.
 
 ### Payment provider
 
-`Payment` · `src/architecture.ts:121`
+`Payment` · `src/architecture.ts:126`
 
 Refunds a driver. One call per idempotency key.
 
@@ -214,7 +214,7 @@ Refunds a driver. One call per idempotency key.
 
 ### Payment log
 
-`PaymentLog` · `src/architecture.ts:127`
+`PaymentLog` · `src/architecture.ts:132`
 
 The calls made to the provider. It exists only where the provider is simulated.
 
@@ -233,7 +233,7 @@ The calls made to the provider. It exists only where the provider is simulated.
 
 ### Read-only database
 
-`ReadOnlyDatabase` · `src/architecture.ts:103`
+`ReadOnlyDatabase` · `src/architecture.ts:108`
 
 The same database, seen as read-only.
 
@@ -247,13 +247,13 @@ The same database, seen as read-only.
 - Owner: karim
 - Effects: asynchronous, read
 - Implemented by: [Local SQLite database](infra.md#FileDatabase), [In-memory SQLite database](infra.md#InMemoryDatabase), [Production Postgres database](infra.md#PostgresDatabase)
-- Used by: [Reservations in SQL](infra.md#ReservationsSql)
+- Used by: [Reservations in SQL](infra.md#ReservationsSql), [A read never writes](scenarios.md#ReadsNeverWrite)
 
 <a id="ReservationReading"></a>
 
 ### Reservation reading
 
-`ReservationReading` · `src/architecture.ts:109`
+`ReservationReading` · `src/architecture.ts:114`
 
 Finds a reservation by its identifier.
 
@@ -275,7 +275,7 @@ Finds a reservation by its identifier.
 
 ### A read writes nothing
 
-`ReadWithoutWrite` · `src/architecture.ts:167` · status: **held**
+`ReadWithoutWrite` · `src/architecture.ts:172` · status: **held**
 
 A GET writes neither to the database nor to a third party, not even through a distant dependency.
 
@@ -299,7 +299,7 @@ Respected everywhere.
 
 ### Every call to a third party is verified
 
-`ThirdPartiesVerified` · `src/architecture.ts:192` · status: **held**
+`ThirdPartiesVerified` · `src/architecture.ts:197` · status: **held**
 
 An entry point that calls a third party has at least one scenario that verifies it.
 
@@ -320,7 +320,7 @@ Respected everywhere.
 
 ### Utilities do not touch the world
 
-`UtilitiesWithoutWorld` · `src/architecture.ts:182` · status: **held**
+`UtilitiesWithoutWorld` · `src/architecture.ts:187` · status: **held**
 
 A utility function neither reads nor writes the database, and does not call the network. Reading the time is allowed. A function that answers a port (a repository over the database port) is not a utility: it is a realization, chosen by a technical choice.
 

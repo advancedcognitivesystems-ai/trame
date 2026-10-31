@@ -21,6 +21,15 @@ export type { FileBody }
 export * from "./format"
 export * from "./ir"
 
+// Commands -------------------------------------------------------------------
+
+/**
+ * The property that marks a text another system interprets (a SQL statement, a shell line, a URL) with what it may do:
+ * a type only, no value carries it. A text is not a command; only the module that declares the command's type makes
+ * one (std's Commands). Since g84.
+ */
+export const CommandMark = "commandIntent"
+
 // Units ----------------------------------------------------------------------
 
 /** The property that marks a number with the quantity it measures: a type only, no value carries it. Since g80. */

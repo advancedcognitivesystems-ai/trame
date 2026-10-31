@@ -3850,6 +3850,12 @@
           "libraries": "typescript.TypeScriptLibraries",
           "prelude": "conventions.PreludeApi"
         },
+        "constants": {
+          "commandDepth": {
+            "value": 3,
+            "meaning": "How deep the type of a cast is searched for a command: itself, a member or what a function gives, and one step further"
+          }
+        },
         "body": {
           "file": "./code/engine/static-analysis.ts",
           "language": "typescript"
@@ -11119,6 +11125,20 @@
       }
     },
     {
+      "id": "releases.G84",
+      "kind": "release",
+      "title": "Generation 84",
+      "fields": {
+        "owner": "trame",
+        "version": "g84",
+        "date": "2026-10-31",
+        "what": "A2 closed: a command another system interprets is typed by its intent (std's Command), made only by std's Commands; a cast that makes one refuses the build",
+        "fingerprint": "e4b1b57bad050afa",
+        "language": "shared",
+        "archive": "1a1128c9e4fd6ebb"
+      }
+    },
+    {
       "id": "releases.G9",
       "kind": "release",
       "title": "Generation 9",
@@ -11749,7 +11769,7 @@
       "fields": {
         "owner": "trame",
         "value": {
-          "scenarios": 3
+          "scenarios": 4
         }
       }
     },
@@ -23069,6 +23089,16 @@
     {
       "from": "releases.G83",
       "to": "releases.G82",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G84",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G84",
+      "to": "releases.G83",
       "kind": "assembledBy"
     },
     {

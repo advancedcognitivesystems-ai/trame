@@ -18,8 +18,18 @@ const body: BodyOf<typeof FileDatabase> = ({ path, tables, dialect, reservations
     const insert = db.prepare(dialect.insert(tables.reservations.name, columns))
     for (const r of reservations) insert.run(...columns.map((c) => r[c as keyof typeof r]))
   }
+  // A read runs on a connection that refuses to change the database: a statement that would write, made as a read by
+  // mistake, is refused by SQLite itself. (A file opened read-only would refuse it for good; one in memory cannot be.)
+  const reading = <T>(work: () => T): T => {
+    db.exec(sqlite.readOnly)
+    try {
+      return work()
+    } finally {
+      db.exec(sqlite.readWrite)
+    }
+  }
   return {
-    read: async <T>(sql: string, ...params: (string | number | null)[]) => db.prepare(sql).all(...params) as T[],
+    read: async <T>(sql: string, ...params: (string | number | null)[]) => reading(() => db.prepare(sql).all(...params) as T[]),
     write: async (sql: string, ...params: (string | number | null)[]) => Number(db.prepare(sql).run(...params).changes),
     async transaction<T>(work: () => Promise<T>) {
       db.exec(sqlite.begin)

@@ -500,6 +500,19 @@
       }
     },
     {
+      "id": "effects.Commands",
+      "kind": "function",
+      "title": "Commands",
+      "status": "unknown",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "effects": "effects.Effects"
+        },
+        "body": "(function)"
+      }
+    },
+    {
       "id": "effects.Effects",
       "kind": "vocabulary",
       "title": "Effects",
@@ -3665,6 +3678,16 @@
       "from": "ecmascript.UnicodeEscape",
       "to": "product.CitedNotCopied",
       "kind": "serves"
+    },
+    {
+      "from": "effects.Commands",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "effects.Commands",
+      "to": "effects.Effects",
+      "kind": "deps"
     },
     {
       "from": "effects.Effects",

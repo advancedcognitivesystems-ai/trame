@@ -1002,8 +1002,18 @@ the example's payment provider reads its key; Poselia's bowl draws at random, an
 
 Wiring, since g83, hands each node a capability for each port it depends on: the realization with only the methods the
 node calls (or, when the engine cannot tell, those of the contract), read through, nothing set; an assembled program
-does the same (`frozen.limited`). A method that takes a free command (SQL, a shell line, a URL) is still a door: the
-resource behind it must be restricted itself, which the graph does not yet ask.
+does the same (`frozen.limited`).
+
+A method that takes a command another system interprets (a SQL statement, a shell line, a URL) would still be a door:
+whoever writes the command chooses what it does. But no command is written by hand, since no literal is; each is
+built, and what builds it knows what it builds. Since g84 a command says so in its type: std's `Command<"read">` is a
+text marked with what it may do, and a port's method that takes one says which (`read(sql: Command<"read">)`). Only
+std's `Commands` makes one, from its text; a cast that makes one anywhere else refuses the build, so TypeScript refuses
+a write where a read is expected, as it refuses minutes where francs are. The node that receives `Commands` is the code
+that makes commands: in the example, its dialect of SQL, whose selections and counts are reads and whose creations,
+insertions and updates are writes. The resource behind is restricted where the platform allows it, and that is
+proven: every read of the example's SQLite database runs with `query_only` on, and the scenario "A read never writes"
+passes a write off as a read, through the database that only reads, and sees SQLite refuse it.
 
 ## Standards and vocabularies
 

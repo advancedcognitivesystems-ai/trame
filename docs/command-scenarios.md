@@ -191,7 +191,7 @@ trame advance, in Trame's repository: the generation in place builds the librari
 |---|---|
 | trame advance stops at the first build that fails | passed |
 | The generation in place builds first | passed |
-| The candidate is accepted (  ✓ trame runs g84 \|   ✓ reservations runs g84 \| Advance succeeded.) | passed |
+| The candidate is accepted (  ✓ trame runs g85 \|   ✓ reservations runs g85 \| Advance succeeded.) | passed |
 | With --promote, it is frozen as the next generation, its origin written, the pin moved | passed |
 | The generation frozen records the fingerprint of its engine, by which evidence names it | passed |
 
@@ -366,7 +366,7 @@ trame publish freezes the example's declarations not yet published in trame.lock
 
 | Criterion | Result |
 |---|---|
-| trame publish freezes 104 declarations in trame.lock | passed |
+| trame publish freezes 105 declarations in trame.lock | passed |
 | Published again, nothing is new | passed |
 
 <details><summary>The code it runs: 44 nodes</summary>
@@ -646,7 +646,7 @@ trame payload writes the example compiled at its date: its nodes, its documents,
 
 | Criterion | Result |
 |---|---|
-| The payload holds 112 nodes and 257 documents | passed |
+| The payload holds 113 nodes and 259 documents | passed |
 | Each document is rendered in Markdown, in text and in HTML | passed |
 | The figures of the HTML are drawn in SVG | passed |
 | Two payloads alike differ in nothing | passed |

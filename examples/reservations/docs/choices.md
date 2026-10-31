@@ -29,7 +29,7 @@
 
 ### An in-memory SQLite database for the scenarios
 
-`ScenarioDatabase` · `src/infra.ts:289` · status: **held**
+`ScenarioDatabase` · `src/infra.ts:290` · status: **held**
 
 The database and its dialect, chosen together.
 
@@ -55,7 +55,7 @@ Context: Every scenario starts from the initial reservations and leaves nothing 
 
 ### A SQLite file on the developer's machine
 
-`LocalDatabase` · `src/infra.ts:302` · status: **unknown**
+`LocalDatabase` · `src/infra.ts:303` · status: **unknown**
 
 The database and its dialect, chosen together.
 
@@ -81,7 +81,7 @@ Context: A developer runs the service without installing a database server; the 
 
 ### Postgres in production
 
-`ProductionDatabase` · `src/infra.ts:315` · status: **unknown**
+`ProductionDatabase` · `src/infra.ts:316` · status: **unknown**
 
 The database and its dialect, chosen together.
 
@@ -109,7 +109,7 @@ Consequences: Provisioned by Terraform with the graph's values; its statements c
 
 ### Reservations and cancellations as repositories over SQL
 
-`SqlRepositories` · `src/infra.ts:328` · status: **held**
+`SqlRepositories` · `src/infra.ts:329` · status: **held**
 
 In [Local](infra.md#Local), [Production](infra.md#Production), [Test](infra.md#Test):
 
@@ -135,7 +135,7 @@ Consequences: The repositories hold no driver and write no SQL: they ask the dia
 
 ### A simulated payment provider outside production
 
-`SimulatedProvider` · `src/infra.ts:341` · status: **held**
+`SimulatedProvider` · `src/infra.ts:342` · status: **held**
 
 In [Local](infra.md#Local), [Test](infra.md#Test):
 
@@ -158,7 +158,7 @@ Context: Refunds must be tried without money moving, and a scenario reads the ca
 
 ### The provider's API in production
 
-`ProviderApi` · `src/infra.ts:353` · status: **unknown**
+`ProviderApi` · `src/infra.ts:354` · status: **unknown**
 
 In [Production](infra.md#Production):
 
@@ -177,7 +177,7 @@ Context: Refunds go through the payment provider, over HTTPS, with an idempotenc
 
 ### Node's HTTP server
 
-`HttpServerChoice` · `src/infra.ts:364` · status: **unknown**
+`HttpServerChoice` · `src/infra.ts:365` · status: **unknown**
 
 In [Local](infra.md#Local), [Production](infra.md#Production), [Test](infra.md#Test):
 
@@ -200,7 +200,7 @@ Context: The API is a handful of routes: Node's server is enough, and the scenar
 
 ### A stopped clock in the scenarios
 
-`ScenarioClock` · `src/infra.ts:376` · status: **held**
+`ScenarioClock` · `src/infra.ts:377` · status: **held**
 
 In [Test](infra.md#Test):
 
@@ -219,7 +219,7 @@ Context: The cancellation fee depends on the time left before the start: a scena
 
 ### The system clock elsewhere
 
-`RealClock` · `src/infra.ts:387` · status: **unknown**
+`RealClock` · `src/infra.ts:388` · status: **unknown**
 
 In [Local](infra.md#Local), [Production](infra.md#Production):
 

@@ -16,7 +16,7 @@
 
 ### Effects
 
-`Effects` · `src/effects.ts:14`
+`Effects` · `src/effects.ts:15`
 
 What code may do to the world, in one vocabulary: a port declares what each of its methods may do in these words, and what a module of the platform, a package or a global of a host may do is said in the same words. Code that touches nothing has none.
 
@@ -35,6 +35,7 @@ What code may do to the world, in one vocabulary: a port declares what each of i
 
 - Owner: trame
 - Serves: [Ports of the platform, realized once](product.md#RealizedOnce)
+- Used by: [Commands](#Commands)
 
 ## Decision
 
@@ -42,7 +43,7 @@ What code may do to the world, in one vocabulary: a port declares what each of i
 
 ### What the platform may do
 
-`PlatformEffects` · `src/effects.ts:58`
+`PlatformEffects` · `src/effects.ts:59`
 
 How Trame reads the documentation of Node.js (its modules), of the browsers (WHATWG, W3C: their globals) and of ECMA-262 (Math.random, Date.now, a date made of the current instant): what each module, each of its exports, each global may do, in the words of the vocabulary of effects. An implementation may do what the modules and the globals it reaches may do, and no more than its ports promise; one it reaches that nobody describes here, nor as a package of the graph, cannot be promised anything.
 
@@ -55,3 +56,18 @@ How Trame reads the documentation of Node.js (its modules), of the browsers (WHA
 | globalObjects | globalThis, self |
 
 - Decided by: trame
+
+## Function
+
+<a id="Commands"></a>
+
+### Commands
+
+`Commands` · `src/effects.ts:174` · status: **unknown**
+
+Makes a command from its text, marked with what it may do: the only place a command is made. The code that receives it is the code that makes commands (a dialect of SQL from its statements), and what a command made as a read really does is proven where it runs: on a resource that refuses the rest, by a scenario that tries.
+
+- Owner: trame
+- Parameters: `effects` ← [Effects](#Effects)
+- Body: inline, in the declaration
+- Serves: [Ports of the platform, realized once](product.md#RealizedOnce)

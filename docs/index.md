@@ -29,7 +29,7 @@
 | [Trame · Platform](platform.md) | 0 | 0 | 0 | 0 | 0 | 0 | 7 | 0 | 0 | 0 | 0 | 0 | 5 | 0 | 0 | 0 | 24 | 0 | 12 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Trame · Principles](principles.md) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Trame · Product](product.md) | 4 | 1 | 0 | 0 | 0 | 0 | 8 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Trame · Releases](releases.md) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 83 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| [Trame · Releases](releases.md) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 84 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Trame · Rendering](rendering.md) | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 2 | 0 | 6 | 0 | 0 | 10 | 0 | 0 | 0 | 0 | 0 | 6 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Trame · Scenarios](scenarios.md) | 0 | 0 | 0 | 0 | 0 | 0 | 4 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 5 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Trame · SDLC](sdlc.md) | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 0 | 1 | 0 | 0 | 0 | 1 | 0 | 1 | 1 | 0 | 0 | 2 | 0 | 1 | 1 | 3 | 3 | 1 | 6 | 1 | 0 |
@@ -46,4 +46,4 @@ The libraries the project imports: their nodes take part in the graph, their doc
 
 | Library | Modules | Nodes | Open issues |
 |---|---|---|---|
-| [std](../std/docs/index.md) | Standard library · Algebra, Standard library · Algorithms, Standard library · ECMAScript, Standard library · Effects, Standard library · HTML and CSS, Standard library · Measures, Standard library · Obligations, Standard library · Design patterns, Standard library · Platform, Standard library · Product, Standard library · Releases, Standard library · Rules, Standard library · Scenarios, Standard library · System, Standard library · Text, Standard library · Tooling, Standard library · Web | 143 | Nothing to report |
+| [std](../std/docs/index.md) | Standard library · Algebra, Standard library · Algorithms, Standard library · ECMAScript, Standard library · Effects, Standard library · HTML and CSS, Standard library · Measures, Standard library · Obligations, Standard library · Design patterns, Standard library · Platform, Standard library · Product, Standard library · Releases, Standard library · Rules, Standard library · Scenarios, Standard library · System, Standard library · Text, Standard library · Tooling, Standard library · Web | 144 | Nothing to report |

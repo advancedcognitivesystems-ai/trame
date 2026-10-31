@@ -173,7 +173,10 @@ why. A broken rule is an error, unless the rule says `severity: "warning"` while
   calls on its parameters; hand a parameter on whole and it has them all. Since g83 an implementation is held to what
   its body reaches (the modules and names it imports, the globals it reads), against std's `PlatformEffects` and the
   `declaredEffects` of the packages of the graph: what nobody describes, or more than its ports promise, is an error.
-  Wiring hands each node only the methods it calls of each port.
+  Wiring hands each node only the methods it calls of each port. A command another system interprets (SQL, a shell
+  line, a URL) is a `Command<E>` of std, made only by std's `Commands` and marked with what it may do (since g84):
+  a port's method says which it takes, a cast that makes one refuses the build, and a scenario proves the resource
+  refuses the rest.
 - **No code made of a text** (since g82): `eval`, `Function`, a value's `constructor` refuse the build, anywhere.
 - **A technology is chosen in one node**: a binding, which follows a pattern (Strategy, Adapter, Bridge, Abstract
   Factory, Repository) and is checked against its shape. Code that uses a port never names what answers it.

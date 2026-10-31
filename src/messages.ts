@@ -187,6 +187,9 @@ export const CompilerMessages = catalog({
     // Static reading.
     /** A type error, with the place it was found ("file:line"), when there is one. */
     typeError: (text: string, where?: string) => (where ? `${where}  ${text}` : text),
+    /** A command made by a cast (since g84). */
+    forgedCommand: (where: string) =>
+      `${where}  a command made by a cast: a text would pass for what it is not; only the module that declares the command's type makes one (std's Commands)`,
     /** Code made of a text while the program runs (since g82). */
     textAsCode: (name: string, where: string) =>
       `${where}  ${name}: code made of a text escapes every check made on the code as written`,
@@ -475,6 +478,7 @@ export const CommandMessages = catalog({
     typeScriptRefuses: () => "TypeScript refuses the graph:",
     quantitiesRefuse: () => "The quantities refuse the graph: what TypeScript lets through, the units do not",
     textAsCodeRefuses: () => "Code made of a text refuses the graph: what it would do, nobody can read before it runs",
+    forgedCommandsRefuse: () => "Commands made by a cast refuse the graph: what a command may do is what made it says",
 
     // trame test-kinds
     importsChecked: (refused: number) => `imports · ${refused ? `${refused} refused` : "only the public API is used"}`,

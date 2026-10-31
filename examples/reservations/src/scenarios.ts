@@ -4,8 +4,9 @@ import { ms, elapsed } from "../../../trame/kernel"
 import { decision } from "../../../kinds/decision"
 import { scenario } from "../../../kinds/scenario"
 import { FreeCancellationPeriod, Refund } from "./cancellation"
-import { PaymentLog } from "./architecture"
-import { Test, InitialReservations, TestInstant, ReservationsSql, CancellationsSql, InMemoryDatabase, SqliteDialect, SimulatedPayment, StoppedClock } from "./infra"
+import { PaymentLog, ReadOnlyDatabase, Dialect } from "./architecture"
+import { Test, InitialReservations, TestInstant, ReservationsSql, CancellationsSql, InMemoryDatabase, SqliteDialect, SimulatedPayment, StoppedClock, ReservationTables, CancelledStatus } from "./infra"
+import { Commands } from "#std/effects"
 import { ReadReservation, CancelReservation, FreeCancellationEnd, LeadTime } from "./api"
 import { Http } from "#std/web"
 import { ScenarioChecks } from "./messages"
@@ -74,5 +75,28 @@ export const ComplianceScenario = scenario({
       const refunded = (await cancel({ params: { id: r.id } })).body as { amount: number }
       check(says.refundedByRule(r.id, r.charger, leadTime, refunded.amount), refunded.amount === refund(r, leadTime))
     }
+  },
+})
+
+/**
+ * A read never writes
+ * A statement that writes, passed off as a read (made a read by the command maker itself, as nothing else can), goes to
+ * the database that only reads: the database refuses it, and the reservation it would have cancelled is as it was.
+ */
+export const ReadsNeverWrite = scenario({
+  owner: "karim",
+  verifies: [InMemoryDatabase],
+  env: Test,
+  deps: {
+    database: ReadOnlyDatabase, commands: Commands, dialect: Dialect, tables: ReservationTables, cancelled: CancelledStatus,
+    initial: InitialReservations, says: ScenarioChecks,
+  },
+  body: ({ database, commands, dialect, tables, cancelled, initial, says }) => async (check) => {
+    const [r1] = initial
+    const { reservations, status } = tables
+    const disguised = commands.read(dialect.update(reservations.name, [status], reservations.key))
+    const refused = await database.read(disguised, cancelled, r1.id).then(() => false, () => true)
+    const [row] = await database.read<Record<string, unknown>>(dialect.find(reservations.name, [status], reservations.key), r1.id)
+    check(says.disguisedWriteRefused(), refused && row?.[status] !== cancelled)
   },
 })

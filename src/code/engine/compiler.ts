@@ -84,6 +84,8 @@ export interface Compiled {
   quantityErrors?: string[]
   /** Code made of a text (since g82): the command line refuses it as it refuses type errors. */
   textAsCode?: string[]
+  /** Commands made by a cast (since g84): refused as well. */
+  forgedCommands?: string[]
   /** The quantities of the graph, by reference: their units from the largest, and the messages that write them (g80). */
   quantities?: Map<string, CompiledQuantity>
   literals: Map<AnyNode, { file: string; items: LiteralFound[] }[]>
@@ -137,6 +139,8 @@ export interface Loaded {
   quantityErrors?: string[]
   /** Code made of a text (since g82). */
   textAsCode?: string[]
+  /** Commands made by a cast (since g84). */
+  forgedCommands?: string[]
   /** What each node's bodies use of their parameters, by the property holding the body (since g82). */
   uses?: Map<AnyNode, Record<string, Record<string, string[]>>>
   /** What each node's bodies reach outside them (since g83). */
@@ -310,7 +314,7 @@ const body = (deps: Deps) => {
     // Where each library's name leads, for the TypeScript compiler: its sources as they are on disk.
     const { imports, separator, pattern } = deps.specifiers
     const paths = Object.fromEntries(libraries.map((lib) => [imports + lib.name + separator + pattern, [join(lib.root, sources, pattern)]]))
-    const { infos: analysis, moduleTitle, rests, typeErrors, quantityErrors, uses: used, textAsCode, reaches: reachedBy } = analyze(modules, extra, root, paths)
+    const { infos: analysis, moduleTitle, rests, typeErrors, quantityErrors, uses: used, textAsCode, reaches: reachedBy, forgedCommands } = analyze(modules, extra, root, paths)
     // The nodes of the project and of its libraries: those their modules export. The registry of the kernel is shared
     // by the whole process (another project may be loaded into it): it is not read in full.
     const before = allNodes().length
@@ -342,7 +346,7 @@ const body = (deps: Deps) => {
     const bodies = bodiesOf(root, nodes, infos)
     return {
       code: codeOf(root, nodes, infos),
-      root, modules: own.map((m) => m.module), moduleTitle, nodes, anonymous, infos, rests, typeErrors, quantityErrors, textAsCode, uses, reaches, ...readEvidence(root), installed: loadInstalled(root),
+      root, modules: own.map((m) => m.module), moduleTitle, nodes, anonymous, infos, rests, typeErrors, quantityErrors, textAsCode, forgedCommands, uses, reaches, ...readEvidence(root), installed: loadInstalled(root),
       engine: dirs.engine === undefined ? undefined : deps.engines.recorded(dirs.engine),
       libraries: libraries.map(({ name, root: at, path, version, files }) => ({ name, root: at, path, version, modules: files.map((m) => m.module) })),
       bodies: new Map([...bodies].map(([language, { sources }]) => [language, sources])),

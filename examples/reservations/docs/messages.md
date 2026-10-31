@@ -68,6 +68,7 @@ What each scenario checks, as its report says it.
     firstRefundsByRule: () => "The first cancellation refunds according to the rule",
     secondSameRefund: () => "The second one returns the same refund",
     providerCalledOnce: () => "The provider is called only once",
+    disguisedWriteRefused: () => "A statement that writes, passed off as a read, is refused, and changes nothing",
     refundedByRule: (id: string, charger: string, lead: Duration, amount: CHF) =>
       `${id} (${charger}, ${Math.round(lead / 60)} min ahead) is refunded ${amount} CHF`,
   })
@@ -77,4 +78,4 @@ What each scenario checks, as its report says it.
 
 - Owner: lea
 - Written in: [Language](#Language)
-- Used by: [Every reservation is refunded according to the rule](scenarios.md#ComplianceScenario), [Read a reservation](scenarios.md#ReadScenario), [Cancelling twice refunds only once](scenarios.md#RepeatedCancellationScenario)
+- Used by: [Every reservation is refunded according to the rule](scenarios.md#ComplianceScenario), [Read a reservation](scenarios.md#ReadScenario), [A read never writes](scenarios.md#ReadsNeverWrite), [Cancelling twice refunds only once](scenarios.md#RepeatedCancellationScenario)

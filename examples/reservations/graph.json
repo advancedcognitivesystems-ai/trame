@@ -92,7 +92,7 @@
       "id": "architecture.CancellationKey",
       "kind": "decision",
       "title": "Key of a cancellation's refund",
-      "source": "src/architecture.ts:151",
+      "source": "src/architecture.ts:156",
       "fields": {
         "owner": "karim",
         "value": "cancellation-"
@@ -103,7 +103,7 @@
       "id": "architecture.Cancellations",
       "kind": "port",
       "title": "Cancellation records",
-      "source": "src/architecture.ts:115",
+      "source": "src/architecture.ts:120",
       "fields": {
         "owner": "karim",
         "declaredEffects": {
@@ -123,7 +123,7 @@
       "id": "architecture.Clock",
       "kind": "port",
       "title": "Clock",
-      "source": "src/architecture.ts:133",
+      "source": "src/architecture.ts:138",
       "fields": {
         "owner": "karim",
         "declaredEffects": [
@@ -136,7 +136,7 @@
       "id": "architecture.Database",
       "kind": "port",
       "title": "Database",
-      "source": "src/architecture.ts:94",
+      "source": "src/architecture.ts:99",
       "fields": {
         "owner": "karim",
         "declaredEffects": {
@@ -161,7 +161,7 @@
       "id": "architecture.Dialect",
       "kind": "port",
       "title": "SQL dialect",
-      "source": "src/architecture.ts:88",
+      "source": "src/architecture.ts:93",
       "fields": {
         "owner": "karim",
         "declaredEffects": []
@@ -172,7 +172,7 @@
       "id": "architecture.EffectsFollowTheRequest",
       "kind": "adr",
       "title": "Effects follow the request",
-      "source": "src/architecture.ts:203",
+      "source": "src/architecture.ts:208",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -185,7 +185,7 @@
       "id": "architecture.HttpExposure",
       "kind": "port",
       "title": "HTTP exposure",
-      "source": "src/architecture.ts:139",
+      "source": "src/architecture.ts:144",
       "fields": {
         "owner": "karim",
         "declaredEffects": [
@@ -199,7 +199,7 @@
       "id": "architecture.HttpPort",
       "kind": "decision",
       "title": "HTTP port of the API",
-      "source": "src/architecture.ts:144",
+      "source": "src/architecture.ts:149",
       "fields": {
         "owner": "karim",
         "value": 4180
@@ -210,7 +210,7 @@
       "id": "architecture.Payment",
       "kind": "port",
       "title": "Payment provider",
-      "source": "src/architecture.ts:121",
+      "source": "src/architecture.ts:126",
       "fields": {
         "owner": "karim",
         "declaredEffects": [
@@ -226,7 +226,7 @@
       "id": "architecture.PaymentLog",
       "kind": "port",
       "title": "Payment log",
-      "source": "src/architecture.ts:127",
+      "source": "src/architecture.ts:132",
       "fields": {
         "owner": "karim",
         "declaredEffects": []
@@ -237,7 +237,7 @@
       "id": "architecture.ReadOnlyDatabase",
       "kind": "port",
       "title": "Read-only database",
-      "source": "src/architecture.ts:103",
+      "source": "src/architecture.ts:108",
       "fields": {
         "owner": "karim",
         "declaredEffects": [
@@ -251,7 +251,7 @@
       "id": "architecture.ReadWithoutWrite",
       "kind": "rule",
       "title": "A read writes nothing",
-      "source": "src/architecture.ts:167",
+      "source": "src/architecture.ts:172",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -284,7 +284,7 @@
       "id": "architecture.ReservationReading",
       "kind": "port",
       "title": "Reservation reading",
-      "source": "src/architecture.ts:109",
+      "source": "src/architecture.ts:114",
       "fields": {
         "owner": "karim",
         "declaredEffects": [
@@ -298,7 +298,7 @@
       "id": "architecture.ReservationsApi",
       "kind": "component",
       "title": "Reservations API",
-      "source": "src/architecture.ts:157",
+      "source": "src/architecture.ts:162",
       "fields": {
         "owner": "karim",
         "language": "typescript",
@@ -318,7 +318,7 @@
       "id": "architecture.ThirdPartiesVerified",
       "kind": "rule",
       "title": "Every call to a third party is verified",
-      "source": "src/architecture.ts:192",
+      "source": "src/architecture.ts:197",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -343,7 +343,7 @@
       "id": "architecture.UtilitiesWithoutWorld",
       "kind": "rule",
       "title": "Utilities do not touch the world",
-      "source": "src/architecture.ts:182",
+      "source": "src/architecture.ts:187",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -677,7 +677,7 @@
       "id": "infra.BackupRetention",
       "kind": "decision",
       "title": "Backup retention",
-      "source": "src/infra.ts:89",
+      "source": "src/infra.ts:90",
       "fields": {
         "owner": "karim",
         "value": 7,
@@ -692,7 +692,7 @@
       "id": "infra.CancellationsSql",
       "kind": "function",
       "title": "Cancellations in SQL",
-      "source": "src/infra.ts:211",
+      "source": "src/infra.ts:212",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -713,7 +713,7 @@
       "id": "infra.CancelledStatus",
       "kind": "decision",
       "title": "Status of a cancelled reservation",
-      "source": "src/infra.ts:118",
+      "source": "src/infra.ts:119",
       "fields": {
         "owner": "karim",
         "value": "cancelled"
@@ -724,7 +724,7 @@
       "id": "infra.DatabaseAddress",
       "kind": "decision",
       "title": "Production database address",
-      "source": "src/infra.ts:83",
+      "source": "src/infra.ts:84",
       "fields": {
         "owner": "karim",
         "value": "postgres://%s.internal:5432/%s"
@@ -735,7 +735,7 @@
       "id": "infra.DatabaseName",
       "kind": "decision",
       "title": "Production database name",
-      "source": "src/infra.ts:71",
+      "source": "src/infra.ts:72",
       "fields": {
         "owner": "karim",
         "value": "reservations"
@@ -746,7 +746,7 @@
       "id": "infra.DatabaseSize",
       "kind": "decision",
       "title": "Production database size",
-      "source": "src/infra.ts:76",
+      "source": "src/infra.ts:77",
       "fields": {
         "owner": "karim",
         "value": {
@@ -760,7 +760,7 @@
       "id": "infra.FileDatabase",
       "kind": "implementation",
       "title": "Local SQLite database",
-      "source": "src/infra.ts:149",
+      "source": "src/infra.ts:150",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -782,7 +782,7 @@
       "id": "infra.HttpPayment",
       "kind": "implementation",
       "title": "Real payment provider",
-      "source": "src/infra.ts:266",
+      "source": "src/infra.ts:267",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -805,7 +805,7 @@
       "id": "infra.HttpServerChoice",
       "kind": "binding",
       "title": "Node's HTTP server",
-      "source": "src/infra.ts:364",
+      "source": "src/infra.ts:365",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -820,7 +820,7 @@
       "id": "infra.InitialReservations",
       "kind": "decision",
       "title": "Initial reservations",
-      "source": "src/infra.ts:43",
+      "source": "src/infra.ts:44",
       "fields": {
         "owner": "karim",
         "value": [
@@ -853,7 +853,7 @@
       "id": "infra.InMemoryDatabase",
       "kind": "implementation",
       "title": "In-memory SQLite database",
-      "source": "src/infra.ts:138",
+      "source": "src/infra.ts:139",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -875,7 +875,7 @@
       "id": "infra.Local",
       "kind": "environment",
       "title": "Local",
-      "source": "src/infra.ts:30",
+      "source": "src/infra.ts:31",
       "fields": {
         "owner": "karim"
       },
@@ -885,7 +885,7 @@
       "id": "infra.LocalDatabase",
       "kind": "binding",
       "title": "A SQLite file on the developer's machine",
-      "source": "src/infra.ts:302",
+      "source": "src/infra.ts:303",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -900,7 +900,7 @@
       "id": "infra.LocalDatabasePath",
       "kind": "decision",
       "title": "Local database file",
-      "source": "src/infra.ts:66",
+      "source": "src/infra.ts:67",
       "fields": {
         "owner": "karim",
         "value": ".data/reservations.db"
@@ -911,7 +911,7 @@
       "id": "infra.NodeServer",
       "kind": "implementation",
       "title": "Node HTTP server",
-      "source": "src/infra.ts:276",
+      "source": "src/infra.ts:277",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -935,7 +935,7 @@
       "id": "infra.PostgresDatabase",
       "kind": "implementation",
       "title": "Production Postgres database",
-      "source": "src/infra.ts:160",
+      "source": "src/infra.ts:161",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -963,7 +963,7 @@
       "id": "infra.PostgresDialect",
       "kind": "function",
       "title": "PostgreSQL's dialect",
-      "source": "src/infra.ts:187",
+      "source": "src/infra.ts:188",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -976,7 +976,8 @@
           "insertRow": "sql.InsertRow",
           "selectRows": "sql.SelectRows",
           "updateRows": "sql.UpdateRows",
-          "columnEquals": "sql.ColumnEquals"
+          "columnEquals": "sql.ColumnEquals",
+          "commands": "std/effects.Commands"
         },
         "body": {
           "file": "./code/sql-dialect.ts",
@@ -991,7 +992,7 @@
       "id": "infra.Production",
       "kind": "environment",
       "title": "Production",
-      "source": "src/infra.ts:35",
+      "source": "src/infra.ts:36",
       "fields": {
         "owner": "karim"
       },
@@ -1001,7 +1002,7 @@
       "id": "infra.ProductionDatabase",
       "kind": "binding",
       "title": "Postgres in production",
-      "source": "src/infra.ts:315",
+      "source": "src/infra.ts:316",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -1017,7 +1018,7 @@
       "id": "infra.ProviderApi",
       "kind": "binding",
       "title": "The provider's API in production",
-      "source": "src/infra.ts:353",
+      "source": "src/infra.ts:354",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -1029,7 +1030,7 @@
       "id": "infra.ProviderUrl",
       "kind": "decision",
       "title": "Payment provider address",
-      "source": "src/infra.ts:94",
+      "source": "src/infra.ts:95",
       "fields": {
         "owner": "karim",
         "value": "https://payments.example.com/v1"
@@ -1040,7 +1041,7 @@
       "id": "infra.RealClock",
       "kind": "binding",
       "title": "The system clock elsewhere",
-      "source": "src/infra.ts:387",
+      "source": "src/infra.ts:388",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -1052,7 +1053,7 @@
       "id": "infra.ReservationsSql",
       "kind": "function",
       "title": "Reservations in SQL",
-      "source": "src/infra.ts:200",
+      "source": "src/infra.ts:201",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -1072,7 +1073,7 @@
       "id": "infra.ReservationTables",
       "kind": "decision",
       "title": "Tables of the service",
-      "source": "src/infra.ts:101",
+      "source": "src/infra.ts:102",
       "fields": {
         "owner": "karim",
         "value": {
@@ -1112,7 +1113,7 @@
       "id": "infra.ResponseEnding",
       "kind": "decision",
       "title": "End of a response",
-      "source": "src/infra.ts:130",
+      "source": "src/infra.ts:131",
       "fields": {
         "owner": "karim",
         "value": "\n"
@@ -1123,7 +1124,7 @@
       "id": "infra.ScenarioClock",
       "kind": "binding",
       "title": "A stopped clock in the scenarios",
-      "source": "src/infra.ts:376",
+      "source": "src/infra.ts:377",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -1135,7 +1136,7 @@
       "id": "infra.ScenarioDatabase",
       "kind": "binding",
       "title": "An in-memory SQLite database for the scenarios",
-      "source": "src/infra.ts:289",
+      "source": "src/infra.ts:290",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -1150,7 +1151,7 @@
       "id": "infra.SimulatedPayment",
       "kind": "function",
       "title": "Simulated payment provider",
-      "source": "src/infra.ts:242",
+      "source": "src/infra.ts:243",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -1165,7 +1166,7 @@
       "id": "infra.SimulatedProvider",
       "kind": "binding",
       "title": "A simulated payment provider outside production",
-      "source": "src/infra.ts:341",
+      "source": "src/infra.ts:342",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -1180,7 +1181,7 @@
       "id": "infra.SimulatedReference",
       "kind": "decision",
       "title": "References of the simulated provider",
-      "source": "src/infra.ts:124",
+      "source": "src/infra.ts:125",
       "fields": {
         "owner": "karim",
         "value": "simulated-"
@@ -1191,7 +1192,7 @@
       "id": "infra.SqliteDialect",
       "kind": "function",
       "title": "SQLite's dialect",
-      "source": "src/infra.ts:173",
+      "source": "src/infra.ts:174",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -1204,7 +1205,8 @@
           "insertRow": "sql.InsertRow",
           "selectRows": "sql.SelectRows",
           "updateRows": "sql.UpdateRows",
-          "columnEquals": "sql.ColumnEquals"
+          "columnEquals": "sql.ColumnEquals",
+          "commands": "std/effects.Commands"
         },
         "body": {
           "file": "./code/sql-dialect.ts",
@@ -1217,7 +1219,7 @@
       "id": "infra.SqlRepositories",
       "kind": "binding",
       "title": "Reservations and cancellations as repositories over SQL",
-      "source": "src/infra.ts:328",
+      "source": "src/infra.ts:329",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -1233,7 +1235,7 @@
       "id": "infra.StoppedClock",
       "kind": "function",
       "title": "Stopped clock",
-      "source": "src/infra.ts:231",
+      "source": "src/infra.ts:232",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -1248,7 +1250,7 @@
       "id": "infra.SystemClock",
       "kind": "implementation",
       "title": "System clock",
-      "source": "src/infra.ts:221",
+      "source": "src/infra.ts:222",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -1260,7 +1262,7 @@
       "id": "infra.Test",
       "kind": "environment",
       "title": "Test",
-      "source": "src/infra.ts:24",
+      "source": "src/infra.ts:25",
       "fields": {
         "owner": "karim"
       },
@@ -1270,7 +1272,7 @@
       "id": "infra.TestDatabasePath",
       "kind": "decision",
       "title": "Test database",
-      "source": "src/infra.ts:61",
+      "source": "src/infra.ts:62",
       "fields": {
         "owner": "karim",
         "value": ":memory:"
@@ -1281,7 +1283,7 @@
       "id": "infra.TestInstant",
       "kind": "decision",
       "title": "Test instant",
-      "source": "src/infra.ts:56",
+      "source": "src/infra.ts:57",
       "fields": {
         "owner": "karim",
         "value": "2026-10-20T10:00:00.000Z"
@@ -1372,7 +1374,7 @@
       "id": "scenarios.ComplianceScenario",
       "kind": "scenario",
       "title": "Every reservation is refunded according to the rule",
-      "source": "src/scenarios.ts:66",
+      "source": "src/scenarios.ts:67",
       "status": "held",
       "fields": {
         "owner": "lea",
@@ -1405,7 +1407,7 @@
       "id": "scenarios.ReadScenario",
       "kind": "scenario",
       "title": "Read a reservation",
-      "source": "src/scenarios.ts:24",
+      "source": "src/scenarios.ts:25",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -1436,10 +1438,37 @@
       "diagnostics": []
     },
     {
+      "id": "scenarios.ReadsNeverWrite",
+      "kind": "scenario",
+      "title": "A read never writes",
+      "source": "src/scenarios.ts:86",
+      "status": "held",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "database": "architecture.ReadOnlyDatabase",
+          "commands": "std/effects.Commands",
+          "dialect": "architecture.Dialect",
+          "tables": "infra.ReservationTables",
+          "cancelled": "infra.CancelledStatus",
+          "initial": "infra.InitialReservations",
+          "says": "messages.ScenarioChecks"
+        },
+        "body": "(function)"
+      },
+      "result": [
+        {
+          "name": "A statement that writes, passed off as a read, is refused, and changes nothing",
+          "status": "passed"
+        }
+      ],
+      "diagnostics": []
+    },
+    {
       "id": "scenarios.RepeatedCancellationScenario",
       "kind": "scenario",
       "title": "Cancelling twice refunds only once",
-      "source": "src/scenarios.ts:44",
+      "source": "src/scenarios.ts:45",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -1474,7 +1503,7 @@
       "id": "scenarios.UnknownReservation",
       "kind": "decision",
       "title": "Unknown reservation",
-      "source": "src/scenarios.ts:17",
+      "source": "src/scenarios.ts:18",
       "fields": {
         "owner": "karim",
         "value": "R404"
@@ -1543,7 +1572,7 @@
       },
       "result": {
         "path": "out/local/reservations-api.ts",
-        "code": "c4ec3d31"
+        "code": "b666f72b"
       },
       "diagnostics": [
         "warning: Not built yet: trame ship builds it"
@@ -1618,7 +1647,7 @@
       },
       "result": {
         "path": "out/production/reservations-api.ts",
-        "code": "fdabf0a9"
+        "code": "a197c813"
       },
       "diagnostics": [
         "warning: Not built yet: trame ship builds it"
@@ -1698,6 +1727,11 @@
           }
         ],
         "gaps": [
+          {
+            "node": "std/effects.Commands",
+            "obligation": "sdlc.CodeVerified",
+            "weight": "warning"
+          },
           {
             "node": "infra.PostgresDialect",
             "obligation": "sdlc.CodeVerified",
@@ -2377,7 +2411,7 @@
       "id": "standards.PaymentProviderApi",
       "kind": "standard",
       "title": "API of the payment provider",
-      "source": "src/standards.ts:38",
+      "source": "src/standards.ts:40",
       "fields": {
         "owner": "karim",
         "source": "The payment provider's API, version 1: refunds",
@@ -2422,7 +2456,7 @@
       "source": "src/standards.ts:22",
       "fields": {
         "owner": "karim",
-        "source": "SQLite: In-Memory Databases; SQL As Understood By SQLite (BEGIN, COMMIT, ROLLBACK)",
+        "source": "SQLite: In-Memory Databases; SQL As Understood By SQLite (BEGIN, COMMIT, ROLLBACK); Pragma statements (query_only)",
         "url": "https://www.sqlite.org/inmemorydb.html",
         "constants": {
           "memory": {
@@ -2440,6 +2474,14 @@
           "rollback": {
             "value": "ROLLBACK",
             "meaning": "Undoes them"
+          },
+          "readOnly": {
+            "value": "PRAGMA query_only = ON",
+            "meaning": "From here on, the connection refuses any statement that would change the database"
+          },
+          "readWrite": {
+            "value": "PRAGMA query_only = OFF",
+            "meaning": "From here on, it accepts them again"
           }
         }
       },
@@ -2982,6 +3024,11 @@
       "kind": "deps"
     },
     {
+      "from": "infra.PostgresDialect",
+      "to": "std/effects.Commands",
+      "kind": "deps"
+    },
+    {
       "from": "infra.ProductionDatabase",
       "to": "infra.PostgresDatabase",
       "kind": "chooses"
@@ -3177,6 +3224,11 @@
       "kind": "deps"
     },
     {
+      "from": "infra.SqliteDialect",
+      "to": "std/effects.Commands",
+      "kind": "deps"
+    },
+    {
       "from": "infra.SqlRepositories",
       "to": "infra.ReservationsSql",
       "kind": "chooses"
@@ -3358,6 +3410,51 @@
     },
     {
       "from": "scenarios.ReadScenario",
+      "to": "messages.ScenarioChecks",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ReadsNeverWrite",
+      "to": "infra.InMemoryDatabase",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.ReadsNeverWrite",
+      "to": "infra.Test",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.ReadsNeverWrite",
+      "to": "architecture.ReadOnlyDatabase",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ReadsNeverWrite",
+      "to": "std/effects.Commands",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ReadsNeverWrite",
+      "to": "architecture.Dialect",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ReadsNeverWrite",
+      "to": "infra.ReservationTables",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ReadsNeverWrite",
+      "to": "infra.CancelledStatus",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ReadsNeverWrite",
+      "to": "infra.InitialReservations",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ReadsNeverWrite",
       "to": "messages.ScenarioChecks",
       "kind": "deps"
     },

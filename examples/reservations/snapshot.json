@@ -756,7 +756,8 @@
           "insertRow": "sql.InsertRow",
           "selectRows": "sql.SelectRows",
           "updateRows": "sql.UpdateRows",
-          "columnEquals": "sql.ColumnEquals"
+          "columnEquals": "sql.ColumnEquals",
+          "commands": "std/effects.Commands"
         },
         "body": {
           "file": "./code/sql-dialect.ts",
@@ -954,7 +955,8 @@
           "insertRow": "sql.InsertRow",
           "selectRows": "sql.SelectRows",
           "updateRows": "sql.UpdateRows",
-          "columnEquals": "sql.ColumnEquals"
+          "columnEquals": "sql.ColumnEquals",
+          "commands": "std/effects.Commands"
         },
         "body": {
           "file": "./code/sql-dialect.ts",
@@ -1121,6 +1123,25 @@
           "freePeriod": "cancellation.FreeCancellationPeriod",
           "unknown": "scenarios.UnknownReservation",
           "http": "std/web.Http",
+          "says": "messages.ScenarioChecks"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "scenarios.ReadsNeverWrite",
+      "kind": "scenario",
+      "title": "A read never writes",
+      "status": "held",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "database": "architecture.ReadOnlyDatabase",
+          "commands": "std/effects.Commands",
+          "dialect": "architecture.Dialect",
+          "tables": "infra.ReservationTables",
+          "cancelled": "infra.CancelledStatus",
+          "initial": "infra.InitialReservations",
           "says": "messages.ScenarioChecks"
         },
         "body": "(function)"
@@ -1768,7 +1789,7 @@
       "title": "SQLite",
       "fields": {
         "owner": "karim",
-        "source": "SQLite: In-Memory Databases; SQL As Understood By SQLite (BEGIN, COMMIT, ROLLBACK)",
+        "source": "SQLite: In-Memory Databases; SQL As Understood By SQLite (BEGIN, COMMIT, ROLLBACK); Pragma statements (query_only)",
         "url": "https://www.sqlite.org/inmemorydb.html",
         "constants": {
           "memory": {
@@ -1786,6 +1807,14 @@
           "rollback": {
             "value": "ROLLBACK",
             "meaning": "Undoes them"
+          },
+          "readOnly": {
+            "value": "PRAGMA query_only = ON",
+            "meaning": "From here on, the connection refuses any statement that would change the database"
+          },
+          "readWrite": {
+            "value": "PRAGMA query_only = OFF",
+            "meaning": "From here on, it accepts them again"
           }
         }
       }
@@ -2564,6 +2593,46 @@
     },
     {
       "from": "scenarios.ReadScenario",
+      "to": "messages.ScenarioChecks",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ReadsNeverWrite",
+      "to": "infra.InMemoryDatabase",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.ReadsNeverWrite",
+      "to": "infra.Test",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.ReadsNeverWrite",
+      "to": "architecture.ReadOnlyDatabase",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ReadsNeverWrite",
+      "to": "architecture.Dialect",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ReadsNeverWrite",
+      "to": "infra.ReservationTables",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ReadsNeverWrite",
+      "to": "infra.CancelledStatus",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ReadsNeverWrite",
+      "to": "infra.InitialReservations",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ReadsNeverWrite",
       "to": "messages.ScenarioChecks",
       "kind": "deps"
     },

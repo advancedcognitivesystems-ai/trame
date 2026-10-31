@@ -42,6 +42,7 @@ export const ScenarioChecks = catalog({
     firstRefundsByRule: () => "The first cancellation refunds according to the rule",
     secondSameRefund: () => "The second one returns the same refund",
     providerCalledOnce: () => "The provider is called only once",
+    disguisedWriteRefused: () => "A statement that writes, passed off as a read, is refused, and changes nothing",
     refundedByRule: (id: string, charger: string, lead: Duration, amount: CHF) =>
       `${id} (${charger}, ${Math.round(lead / 60)} min ahead) is refunded ${amount} CHF`,
   }),

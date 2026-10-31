@@ -4,7 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 26 | 143 |
+| trame | 0 | 0 | 26 | 144 |
 
 <a id="trame"></a>
 
@@ -57,6 +57,7 @@
 | [ECMAScript types](ecmascript.md#EcmaScriptTypes) | Standard |  |
 | [Text run as code](ecmascript.md#TextAsCode) | Vocabulary |  |
 | [Unicode escape of a text](ecmascript.md#UnicodeEscape) | Standard |  |
+| [Commands](effects.md#Commands) | Function | **unknown** |
 | [Effects](effects.md#Effects) | Vocabulary |  |
 | [What the platform may do](effects.md#PlatformEffects) | Decision |  |
 | [WAI-ARIA](html.md#Aria) | Standard |  |

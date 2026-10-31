@@ -376,7 +376,7 @@ Function · `CancellationsSql` · **held**
 Function · `PostgresDialect` · **unknown**
 
 - Owner: karim
-- Parameters: { types: sql.PostgresSql, parameter: sql.PostgresParameter, definition: sql.ColumnDefinition, createTable: sql.CreateTable, countRows: sql.CountRows, insertRow: sql.InsertRow, selectRows: sql.SelectRows, updateRows: sql.UpdateRows, columnEquals: sql.ColumnEquals }
+- Parameters: { types: sql.PostgresSql, parameter: sql.PostgresParameter, definition: sql.ColumnDefinition, createTable: sql.CreateTable, countRows: sql.CountRows, insertRow: sql.InsertRow, selectRows: sql.SelectRows, updateRows: sql.UpdateRows, columnEquals: sql.ColumnEquals, commands: std/effects.Commands }
 - Implements: SQL dialect
 - Depends on: PostgreSQL's dialect, PostgreSQL parameter, Column definition, Table creation, Count, Insertion, Selection, Update, Condition on a column
 
@@ -403,7 +403,7 @@ Function · `SimulatedPayment` · **held**
 Function · `SqliteDialect` · **held**
 
 - Owner: karim
-- Parameters: { types: sql.SqliteSql, parameter: sql.SqliteParameter, definition: sql.ColumnDefinition, createTable: sql.CreateTable, countRows: sql.CountRows, insertRow: sql.InsertRow, selectRows: sql.SelectRows, updateRows: sql.UpdateRows, columnEquals: sql.ColumnEquals }
+- Parameters: { types: sql.SqliteSql, parameter: sql.SqliteParameter, definition: sql.ColumnDefinition, createTable: sql.CreateTable, countRows: sql.CountRows, insertRow: sql.InsertRow, selectRows: sql.SelectRows, updateRows: sql.UpdateRows, columnEquals: sql.ColumnEquals, commands: std/effects.Commands }
 - Implements: SQL dialect
 - Depends on: SQLite's dialect, SQLite parameter, Column definition, Table creation, Count, Insertion, Selection, Update, Condition on a column
 
@@ -660,6 +660,16 @@ Scenario · `ReadScenario` · **held**
 - Verifies: Read a reservation, End of free cancellation, Reservations in SQL, In-memory SQLite database, SQLite's dialect
 - In: Test
 - Depends on: Read a reservation, Initial reservations, Free cancellation period, Unknown reservation, Checks of the scenarios
+
+### A read never writes
+
+Scenario · `ReadsNeverWrite` · **held**
+
+- Owner: karim
+- Parameters: { database: architecture.ReadOnlyDatabase, commands: std/effects.Commands, dialect: architecture.Dialect, tables: infra.ReservationTables, cancelled: infra.CancelledStatus, initial: infra.InitialReservations, says: messages.ScenarioChecks }
+- Verifies: In-memory SQLite database
+- In: Test
+- Depends on: Read-only database, SQL dialect, Tables of the service, Status of a cancelled reservation, Initial reservations, Checks of the scenarios
 
 ### Cancelling twice refunds only once
 
@@ -948,9 +958,9 @@ Standard · `RouteSyntax`
 Standard · `Sqlite`
 
 - Maintained by: karim
-- Source: SQLite: In-Memory Databases; SQL As Understood By SQLite (BEGIN, COMMIT, ROLLBACK)
+- Source: SQLite: In-Memory Databases; SQL As Understood By SQLite (BEGIN, COMMIT, ROLLBACK); Pragma statements (query_only)
 - Address: https://www.sqlite.org/inmemorydb.html
-- Constants: { memory: { value: :memory:, meaning: The name that opens a database in memory, new each time }, begin: { value: BEGIN, meaning: Starts a transaction }, commit: { value: COMMIT, meaning: Makes its writes last }, rollback: { value: ROLLBACK, meaning: Undoes them } }
+- Constants: { memory: { value: :memory:, meaning: The name that opens a database in memory, new each time }, begin: { value: BEGIN, meaning: Starts a transaction }, commit: { value: COMMIT, meaning: Makes its writes last }, rollback: { value: ROLLBACK, meaning: Undoes them }, readOnly: { value: PRAGMA query_only = ON, meaning: From here on, the connection refuses any statement that would change the database }, readWrite: { value: PRAGMA query_only = OFF, meaning: From here on, it accepts them again } }
 
 ## Still open
 

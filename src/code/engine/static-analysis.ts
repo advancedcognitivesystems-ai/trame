@@ -4,7 +4,7 @@
 
 import type { Hashing, KeptResults, Paths, RunStore, TypeScriptCompiler } from "../../architecture"
 import type ts from "typescript"
-import { QuantityField, QuantityMark } from "../../../trame/kernel"
+import { CommandMark, QuantityField, QuantityMark } from "../../../trame/kernel"
 import type { ProvidedBy, StaticInfo } from "../../../trame/kernel"
 import type { CompilerMessages } from "../../messages"
 import type { Counts, Sequences, Texts } from "#std/algebra"
@@ -39,6 +39,8 @@ export interface Analysis {
   textAsCode: string[]
   /** What each node's bodies reach outside them (since g83): the modules they import, the globals they read. */
   reaches: Map<string, Reached[]>
+  /** A command made by a cast outside the module that declares its type (since g84): each refuses the build. */
+  forgedCommands: string[]
 }
 
 /**
@@ -84,6 +86,8 @@ export interface Deps {
   libraries: { ecmaScript: string }
   /** How a body names the prelude's public API: the endings of its module's path. */
   prelude: { endings: readonly string[] }
+  /** How deep the type of a cast is searched for a command. */
+  commandDepth: number
 }
 
 const body = (deps: Deps) => {
@@ -155,7 +159,7 @@ const body = (deps: Deps) => {
     const readKey = digest(JSON.stringify([[ts.version, root, modules, paths]]))
     const keptReading = keptUnder<Reading, WrittenReading>(root, readKey, readReading)
     const keptCheck = keptUnder<Checked, Checked>(root, checkKey, (checked) => checked)
-    if (keptReading && keptCheck?.uses && keptCheck.textAsCode && keptCheck.reaches) {
+    if (keptReading && keptCheck?.uses && keptCheck.textAsCode && keptCheck.reaches && keptCheck.forgedCommands) {
       return { ...keptReading, ...keptCheck, uses: new Map(keptCheck.uses), reaches: new Map(keptCheck.reaches) }
     }
     const program = ts.createProgram([...files, ...extra], {
@@ -184,9 +188,10 @@ const body = (deps: Deps) => {
     const uses = keptCheck?.uses ?? usesOf(program, exportedOf(program, modules))
     const textAsCode = keptCheck?.textAsCode ?? textAsCodeIn(program, root)
     const reaches = keptCheck?.reaches ?? reachesOf(program, exportedOf(program, modules), root)
-    const checked: Checked = { typeErrors, quantityErrors, uses, textAsCode, reaches }
+    const forgedCommands = keptCheck?.forgedCommands ?? forgedCommandsIn(program, root)
+    const checked: Checked = { typeErrors, quantityErrors, uses, textAsCode, reaches, forgedCommands }
     if (!keptCheck) keep(root, checkKey, digestsOf(program.getSourceFiles().map((sf) => sf.fileName)), checked, checked)
-    return { ...reading, typeErrors, quantityErrors, textAsCode, uses: new Map(uses), reaches: new Map(reaches) }
+    return { ...reading, typeErrors, quantityErrors, textAsCode, forgedCommands, uses: new Map(uses), reaches: new Map(reaches) }
   }
 
   /** What the check of a program finds: TypeScript's errors, the quantities it lets mix, what bodies use, text run as code. */
@@ -196,6 +201,7 @@ const body = (deps: Deps) => {
     uses: [string, Record<string, Record<string, string[]>>][]
     textAsCode: string[]
     reaches: [string, Reached[]][]
+    forgedCommands: string[]
   }
 
   /** The function a body is: written inline, or the default export of the file `code.file(…)` names. */
@@ -377,6 +383,45 @@ const body = (deps: Deps) => {
       if (found.size) out.push([ref, [...found.values()]])
     }
     return out
+  }
+
+  /**
+   * A command made by a cast (`text as Command<"read">`, or a type that holds one) anywhere in the project's code, but in
+   * the module that declares the property that marks it: a text would otherwise pass for a read it is not.
+   */
+  function forgedCommandsIn(program: ts.Program, root: string): string[] {
+    const checker = program.getTypeChecker()
+    const found: string[] = []
+    /** The files that declare the mark a type carries, itself or in what it holds (its members, what its functions give). */
+    const markedIn = (t: ts.Type, at: ts.Node, depth: number = deps.commandDepth, seen: Set<ts.Type> = new Set()): ts.SourceFile[] => {
+      if (seen.has(t) || depth <= deps.counts.zero) return []
+      seen.add(t)
+      const deeper = deps.counts.previous(depth)
+      const parts = t.isUnionOrIntersection() ? t.types : [t]
+      return parts.flatMap((part) => {
+        const mark = checker.getPropertyOfType(part, CommandMark)
+        if (mark) return (mark.declarations ?? []).map((d) => d.getSourceFile())
+        if (part.flags & (ts.TypeFlags.StringLike | ts.TypeFlags.NumberLike | ts.TypeFlags.BooleanLike | ts.TypeFlags.BigIntLike | ts.TypeFlags.Any | ts.TypeFlags.Unknown | ts.TypeFlags.Void | ts.TypeFlags.Undefined | ts.TypeFlags.Null)) return []
+        return [
+          ...checker.getPropertiesOfType(part).flatMap((p) => markedIn(checker.getTypeOfSymbolAtLocation(p, at), at, deeper, seen)),
+          ...checker.getSignaturesOfType(part, ts.SignatureKind.Call).flatMap((s) => markedIn(s.getReturnType(), at, deeper, seen)),
+        ]
+      })
+    }
+    for (const sf of program.getSourceFiles()) {
+      if (sf.isDeclarationFile || program.isSourceFileDefaultLibrary(sf) || sf.fileName.includes(specifiers.packages)) continue
+      const visit = (n: ts.Node): void => {
+        if (ts.isAsExpression(n) || ts.isTypeAssertionExpression(n)) {
+          const declaredIn = markedIn(checker.getTypeFromTypeNode(n.type), n)
+          if (declaredIn.some((file) => file !== sf)) {
+            found.push(messages.forgedCommand(reference(relative(root, sf.fileName), lineNumber(sf.getLineAndCharacterOfPosition(n.getStart(sf)).line))))
+          }
+        }
+        ts.forEachChild(n, visit)
+      }
+      visit(sf)
+    }
+    return found
   }
 
   /**

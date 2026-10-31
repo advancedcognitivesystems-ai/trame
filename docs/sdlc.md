@@ -224,7 +224,7 @@ The program of Trame's command line, assembled from the graph for a machine: wha
 
 - Path: `out/local/trame-cli.ts`
 
-Built 31 October 2026 by claude, fingerprint `9b5af5ca85987082a9d6cf4572f2d3a25c850775ec2c085df084acc57fe15507`.
+Built 31 October 2026 by claude, fingerprint `4212a6fa1bc44af5a9ef89a812852ff881dfb426b94a0a2e31209f08ac5e0718`.
 
 - Owner: trame
 - Produced by: [Trame on the command line](architecture.md#TrameCli)
@@ -242,7 +242,7 @@ The page trame export writes of Trame's graph, which a browser opens as it is: i
 - Path: `trame-page.html`
 - Media type: `text/html; charset=utf-8`
 
-Built 31 October 2026 by claude, fingerprint `9ef32b31130c3177d3f2d023476dec7d5ebe33433e46c0d3b02c7e09f73bff80`.
+Built 31 October 2026 by claude, fingerprint `82c9d03934156a19562d333162c90afc0b3f2ef9d2a6b78f0f92896f9a9d77ca`.
 
 - Owner: trame
 - Produced by: [Export the page](commands.md#Export)
@@ -261,7 +261,7 @@ The component that shows the graph page, assembled for the browser where the eng
 
 - Path: `out/browser/page-app.ts`
 
-Built 31 October 2026 by claude, fingerprint `5f98419d36977d441d3556648c94755743e8ecad5ecf826c5c14c7007dc33578`.
+Built 31 October 2026 by claude, fingerprint `50c271aa40b6f99403d8038833511f22e393e472e83f24ab46761dafee8640b9`.
 
 - Owner: trame
 - Produced by: [The page in a browser](architecture.md#PageApp)
@@ -427,7 +427,7 @@ The engine as the graph describes it now, frozen into the next generation and pi
 | [The resolution does not depend on the order](laws.md#OrderFree) | **held** | [The language serves what it says](#LanguageServed), for [Complete declaration](laws.md#CompleteDeclaration) |
 | [Without evidence, the status is unknown](laws.md#UnknownWithoutEvidence) | **held** | [The language serves what it says](#LanguageServed), for [Complete declaration](laws.md#CompleteDeclaration) |
 
-Shipped 31 October 2026 by claude; its dossier: `evidence/shipments/NextGeneration-2026-10-31-e351297d.json`.
+Shipped 31 October 2026 by claude; its dossier: `evidence/shipments/NextGeneration-2026-10-31-ce704a4f.json`.
 
 - Owner: trame
 - Ships: [The candidate engine](#EngineCandidate), [The page's program](#PageProgram), [The graph page](#GraphPage)

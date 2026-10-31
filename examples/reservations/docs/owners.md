@@ -5,8 +5,9 @@
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
 | The operators | 0 | 0 | 2 | 0 |
-| karim | 6 | 0 | 11 | 101 |
+| karim | 6 | 0 | 11 | 102 |
 | lea | 0 | 0 | 0 | 11 |
+| trame | 0 | 0 | 1 | 0 |
 
 <a id="The operators"></a>
 
@@ -123,6 +124,7 @@
 | [A cancellation refunds once](principles.md#RefundOnce) | Architecture decision | **held** |
 | [Secrets stay out of the graph](principles.md#SecretsOutOfTheGraph) | Architecture decision | **unknown** |
 | [Read a reservation](scenarios.md#ReadScenario) | Scenario | **held** |
+| [A read never writes](scenarios.md#ReadsNeverWrite) | Scenario | **held** |
 | [Cancelling twice refunds only once](scenarios.md#RepeatedCancellationScenario) | Scenario | **held** |
 | [Unknown reservation](scenarios.md#UnknownReservation) | Decision |  |
 | [The code is verified](sdlc.md#CodeVerified) | Obligation |  |
@@ -177,3 +179,11 @@ Nothing to decide or watch.
 | [Approval of the ultra period](committee.md#UltraPeriodApproval) | Approval |  |
 | [Checks of the scenarios](messages.md#ScenarioChecks) | Message catalog |  |
 | [Every reservation is refunded according to the rule](scenarios.md#ComplianceScenario) | Scenario | **held** |
+
+<a id="trame"></a>
+
+## trame
+
+| Severity | What | Where | Owner | Consequence |
+|---|---|---|---|---|
+| warning | Commands ships, and nothing proves it (The code is verified) | [Commands](../../../std/docs/effects.md#Commands) | trame |  |

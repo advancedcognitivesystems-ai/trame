@@ -1704,6 +1704,27 @@ Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Ge
 - Released by: trame
 - Releases: [Trame on the command line](architecture.md#TrameCli)
 - Assembled by: [Generation 82](#G82)
+- Assembled: [Generation 84](#G84)
+
+<a id="G84"></a>
+
+### Generation 84
+
+`G84` · `src/releases.ts:1235`
+
+A2 closed: a command another system interprets is typed by its intent (std's Command), made only by std's Commands; a cast that makes one refuses the build
+
+Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Generation 83](#G83).
+
+- Version: `g84`
+- Released on: 31 October 2026
+- Fingerprint: `e4b1b57bad050afa`
+- Language: the repository's, shared
+- Language archived: `1a1128c9e4fd6ebb`
+
+- Released by: trame
+- Releases: [Trame on the command line](architecture.md#TrameCli)
+- Assembled by: [Generation 83](#G83)
 
 <a id="G9"></a>
 

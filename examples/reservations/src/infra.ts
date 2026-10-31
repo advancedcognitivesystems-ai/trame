@@ -15,6 +15,7 @@ import { Http, MediaTypes, Uri } from "#std/web"
 import { RouteSyntax, Sqlite, PaymentProviderApi } from "./standards"
 import { ApiMessages } from "./messages"
 import { Adapter, Strategy, Repository, AbstractFactory } from "#std/patterns"
+import { Commands } from "#std/effects"
 import { SqliteSql, PostgresSql, SqliteParameter, PostgresParameter, ColumnDefinition, CreateTable, CountRows, InsertRow, SelectRows, UpdateRows, ColumnEquals } from "./sql"
 
 /**
@@ -175,7 +176,7 @@ export const SqliteDialect = fn({
   implements: [Dialect],
   deps: {
     types: SqliteSql, parameter: SqliteParameter, definition: ColumnDefinition, createTable: CreateTable, countRows: CountRows,
-    insertRow: InsertRow, selectRows: SelectRows, updateRows: UpdateRows, columnEquals: ColumnEquals,
+    insertRow: InsertRow, selectRows: SelectRows, updateRows: UpdateRows, columnEquals: ColumnEquals, commands: Commands,
   },
   body: code.file("./code/sql-dialect.ts"),
 })
@@ -189,7 +190,7 @@ export const PostgresDialect = fn({
   implements: [Dialect],
   deps: {
     types: PostgresSql, parameter: PostgresParameter, definition: ColumnDefinition, createTable: CreateTable, countRows: CountRows,
-    insertRow: InsertRow, selectRows: SelectRows, updateRows: UpdateRows, columnEquals: ColumnEquals,
+    insertRow: InsertRow, selectRows: SelectRows, updateRows: UpdateRows, columnEquals: ColumnEquals, commands: Commands,
   },
   body: code.file("./code/sql-dialect.ts"),
 })

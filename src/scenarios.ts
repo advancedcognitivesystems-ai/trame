@@ -22,7 +22,7 @@ import { VersionOrder } from "./packages"
  * Shape of the example
  * How many scenarios the example project holds: the described engine must find them all.
  */
-export const ExampleShape = decision<{ scenarios: number }>({ owner: "trame", value: { scenarios: 3 } })
+export const ExampleShape = decision<{ scenarios: number }>({ owner: "trame", value: { scenarios: 4 } })
 
 /**
  * The described engine compiles the example

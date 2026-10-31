@@ -16,7 +16,7 @@
 
 ### Effects follow the request
 
-`EffectsFollowTheRequest` · `src/architecture.ts:203` · status: **held**
+`EffectsFollowTheRequest` · `src/architecture.ts:208` · status: **held**
 
 What an entry point may do follows what it is asked: a read changes nothing, a utility touches nothing, and a call to the payment provider is verified by a scenario before it reaches a driver.
 
