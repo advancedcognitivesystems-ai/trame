@@ -84,7 +84,7 @@ flowchart TB
 
 ## A public version
 
-> **A public version does not ship yet: 50 of 54 obligations hold.**
+> **A public version does not ship yet: 48 of 54 obligations hold.**
 
 For the target public; its programs are assembled for [A machine](sdlc.md#Machine).
 
@@ -108,7 +108,7 @@ flowchart TB
   n15["A page first, the phones after<br/><small>Architecture decision</small>"]:::held
   n16["The content is data, behind a port<br/><small>Architecture decision</small>"]:::unknown
   n17["The person's language, among those offered<br/><small>Architecture decision</small>"]:::held
-  n18["The breath is the clock<br/><small>Architecture decision</small>"]:::held
+  n18["The breath is the clock<br/><small>Architecture decision</small>"]:::unknown
   n19["Said aloud, the screen awake<br/><small>Architecture decision</small>"]:::unknown
   n20["three.js<br/><small>Package</small>"]:::held
   n21["three.js, its types<br/><small>Package</small>"]:::held
@@ -139,7 +139,7 @@ flowchart TB
   n46["How full the lungs are<br/><small>Requirement</small>"]:::held
   n47["Where a practice is<br/><small>Requirement</small>"]:::held
   n48["The breath of a moment<br/><small>Requirement</small>"]:::held
-  n49["A hold counts in breaths<br/><small>Requirement</small>"]:::held
+  n49["A hold counts in breaths<br/><small>Requirement</small>"]:::unknown
   n50["A phase set by the person<br/><small>Requirement</small>"]:::held
   n51["A breath read back<br/><small>Requirement</small>"]:::held
   n52["A breath measured by tapping<br/><small>Requirement</small>"]:::held
@@ -232,7 +232,7 @@ flowchart TB
 | 17 | prove | [A page first, the phones after](principles.md#PageFirst) | — | [The decisions hold](sdlc.md#DecisionsApplied) via [Poselia's page](app.md#PoseliaPage) | **held** |  |
 | 18 | prove | [The content is data, behind a port](principles.md#ContentAsData) | — | [The decisions hold](sdlc.md#DecisionsApplied) via [Poses](content.md#Poses) | **unknown** |  |
 | 19 | prove | [The person's language, among those offered](principles.md#LanguageOffered) | — | [The decisions hold](sdlc.md#DecisionsApplied) via [Languages offered](content.md#Languages) | **held** |  |
-| 20 | prove | [The breath is the clock](principles.md#BreathIsTheClock) | — | [The decisions hold](sdlc.md#DecisionsApplied) via [The breath of a moment](product.md#BreathOf) | **held** |  |
+| 20 | prove | [The breath is the clock](principles.md#BreathIsTheClock) | — | [The decisions hold](sdlc.md#DecisionsApplied) via [The breath of a moment](product.md#BreathOf) | **unknown** |  |
 | 21 | prove | [Said aloud, the screen awake](principles.md#SaidAloud) | — | [The decisions hold](sdlc.md#DecisionsApplied) via [Play a practice](practice.md#PlayPractice) | **unknown** |  |
 | 22 | prove | [three.js](stage.md#ThreePackage) | — | [The packages are safe](sdlc.md#PackagesSafe) via [The browser's stage](stage.md#BrowserStage) | **held** | 29 October 2026 by   |
 | 23 | prove | [three.js, its types](stage.md#ThreeTypes) | — | [The packages are safe](sdlc.md#PackagesSafe) via [The browser's stage](stage.md#BrowserStage) | **held** | 29 October 2026 by   |
@@ -263,7 +263,7 @@ flowchart TB
 | 48 | prove | [How full the lungs are](practice.md#LungsFull) | — | [The product holds](sdlc.md#ProductServed) via [The breath of a moment](product.md#BreathOf) | **held** |  |
 | 49 | prove | [Where a practice is](practice.md#MomentAt) | — | [The product holds](sdlc.md#ProductServed) via [The breath of a moment](product.md#BreathOf) | **held** |  |
 | 50 | prove | [The breath of a moment](product.md#BreathOf) | — | [The product holds](sdlc.md#ProductServed) | **held** |  |
-| 51 | prove | [A hold counts in breaths](product.md#HoldInBreaths) | — | [The product holds](sdlc.md#ProductServed) via [The breath of a moment](product.md#BreathOf) | **held** |  |
+| 51 | prove | [A hold counts in breaths](product.md#HoldInBreaths) | — | [The product holds](sdlc.md#ProductServed) via [The breath of a moment](product.md#BreathOf) | **unknown** |  |
 | 52 | prove | [A phase set by the person](settings.md#AdjustedBreath) | — | [The product holds](sdlc.md#ProductServed) via [The breath of a moment](product.md#BreathOf) | **held** |  |
 | 53 | prove | [A breath read back](settings.md#BreathRead) | — | [The product holds](sdlc.md#ProductServed) via [The breath of a moment](product.md#BreathOf) | **held** |  |
 | 54 | prove | [A breath measured by tapping](settings.md#MeasuredBreath) | — | [The product holds](sdlc.md#ProductServed) via [The breath of a moment](product.md#BreathOf) | **held** |  |

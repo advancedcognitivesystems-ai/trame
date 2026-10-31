@@ -4,13 +4,26 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 0 | 140 |
+| trame | 0 | 0 | 12 | 140 |
 
 <a id="trame"></a>
 
 ## trame
 
-Nothing to decide or watch.
+| Severity | What | Where | Owner | Consequence |
+|---|---|---|---|---|
+| warning | Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it | [The decisions a shipment applies hold](obligations.md#Applied) | trame |  |
+| warning | Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it | [The artefacts a shipment ships are checked](obligations.md#Checked) | trame |  |
+| warning | Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it | [The data a shipment carries is reviewed](obligations.md#Reviewed) | trame |  |
+| warning | Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it | [The project's rules hold](obligations.md#Ruled) | trame |  |
+| warning | Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it | [The packages a shipment uses are safe](obligations.md#Safe) | trame |  |
+| warning | Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it | [The product a shipment serves holds](obligations.md#Served) | trame |  |
+| warning | Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it | [The code a shipment ships is verified](obligations.md#Verified) | trame |  |
+| warning | Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it | [As many links as asked](rules.md#Linked) | trame |  |
+| warning | Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it | [A node never reaches what it must not](rules.md#NeverReaches) | trame |  |
+| warning | Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it | [A node reaches what it must](rules.md#Reaches) | trame |  |
+| warning | Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it | [Effects a node may not have](rules.md#WithoutEffects) | trame |  |
+| warning | Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it | [Words of a vocabulary](rules.md#WordsOf) | trame |  |
 
 ### Owns
 
@@ -41,20 +54,20 @@ Nothing to decide or watch.
 | [Time](measures.md#Time) | Quantity |  |
 | [Units of measure](measures.md#UnitsOfMeasure) | Standard |  |
 | [Symbols of units](measures.md#UnitSymbols) | Message catalog |  |
-| [The decisions a shipment applies hold](obligations.md#Applied) | Requirement | **held** |
+| [The decisions a shipment applies hold](obligations.md#Applied) | Requirement | **unknown** |
 | [Criteria of the decisions applied](obligations.md#AppliedCriteria) | Acceptance criteria | **held** |
-| [The artefacts a shipment ships are checked](obligations.md#Checked) | Requirement | **held** |
+| [The artefacts a shipment ships are checked](obligations.md#Checked) | Requirement | **unknown** |
 | [Criteria of the artefacts checked](obligations.md#CheckedCriteria) | Acceptance criteria | **held** |
 | [Ways of checking](obligations.md#CheckWays) | Vocabulary |  |
-| [The data a shipment carries is reviewed](obligations.md#Reviewed) | Requirement | **held** |
+| [The data a shipment carries is reviewed](obligations.md#Reviewed) | Requirement | **unknown** |
 | [Criteria of the data reviewed](obligations.md#ReviewedCriteria) | Acceptance criteria | **held** |
-| [The project's rules hold](obligations.md#Ruled) | Requirement | **held** |
+| [The project's rules hold](obligations.md#Ruled) | Requirement | **unknown** |
 | [Criteria of the rules held](obligations.md#RuledCriteria) | Acceptance criteria | **held** |
-| [The packages a shipment uses are safe](obligations.md#Safe) | Requirement | **held** |
+| [The packages a shipment uses are safe](obligations.md#Safe) | Requirement | **unknown** |
 | [Criteria of the packages safe](obligations.md#SafeCriteria) | Acceptance criteria | **held** |
-| [The product a shipment serves holds](obligations.md#Served) | Requirement | **held** |
+| [The product a shipment serves holds](obligations.md#Served) | Requirement | **unknown** |
 | [Criteria of the product served](obligations.md#ServedCriteria) | Acceptance criteria | **held** |
-| [The code a shipment ships is verified](obligations.md#Verified) | Requirement | **held** |
+| [The code a shipment ships is verified](obligations.md#Verified) | Requirement | **unknown** |
 | [Criteria of the code verified](obligations.md#VerifiedCriteria) | Acceptance criteria | **held** |
 | [Abstract Factory](patterns.md#AbstractFactory) | Design pattern |  |
 | [Adapter](patterns.md#Adapter) | Design pattern |  |
@@ -100,15 +113,15 @@ Nothing to decide or watch.
 | [Version 0.8.0](releases.md#R0_8_0) | Release |  |
 | [Version 0.9.0](releases.md#R0_9_0) | Release |  |
 | [Directions](rules.md#Directions) | Vocabulary |  |
-| [As many links as asked](rules.md#Linked) | Requirement | **held** |
+| [As many links as asked](rules.md#Linked) | Requirement | **unknown** |
 | [Criteria of as many links as asked](rules.md#LinkedCriteria) | Acceptance criteria | **held** |
-| [A node never reaches what it must not](rules.md#NeverReaches) | Requirement | **held** |
+| [A node never reaches what it must not](rules.md#NeverReaches) | Requirement | **unknown** |
 | [Criteria of a node that never reaches what it must not](rules.md#NeverReachesCriteria) | Acceptance criteria | **held** |
-| [A node reaches what it must](rules.md#Reaches) | Requirement | **held** |
+| [A node reaches what it must](rules.md#Reaches) | Requirement | **unknown** |
 | [Criteria of a node that reaches what it must](rules.md#ReachesCriteria) | Acceptance criteria | **held** |
-| [Effects a node may not have](rules.md#WithoutEffects) | Requirement | **held** |
+| [Effects a node may not have](rules.md#WithoutEffects) | Requirement | **unknown** |
 | [Criteria of effects a node may not have](rules.md#WithoutEffectsCriteria) | Acceptance criteria | **held** |
-| [Words of a vocabulary](rules.md#WordsOf) | Requirement | **held** |
+| [Words of a vocabulary](rules.md#WordsOf) | Requirement | **unknown** |
 | [Criteria of words of a vocabulary](rules.md#WordsOfCriteria) | Acceptance criteria | **held** |
 | [The device, in memory](scenarios.md#DeviceInMemory) | Scenario | **held** |
 | [Seeded draws keep their promise](scenarios.md#DrawsKeepTheirPromise) | Scenario | **held** |

@@ -40,20 +40,20 @@ flowchart TB
     n24["Symbols of units<br/><small>Message catalog</small>"]:::neutral
   end
   subgraph obligations["Standard library · Obligations"]
-    n25["The decisions a shipment applies hold<br/><small>Requirement</small>"]:::held
+    n25["The decisions a shipment applies hold<br/><small>Requirement</small>"]:::unknown
     n26["Criteria of the decisions applied<br/><small>Acceptance criteria</small>"]:::held
-    n27["The artefacts a shipment ships are checked<br/><small>Requirement</small>"]:::held
+    n27["The artefacts a shipment ships are checked<br/><small>Requirement</small>"]:::unknown
     n28["Criteria of the artefacts checked<br/><small>Acceptance criteria</small>"]:::held
     n29["Ways of checking<br/><small>Vocabulary</small>"]:::neutral
-    n30["The data a shipment carries is reviewed<br/><small>Requirement</small>"]:::held
+    n30["The data a shipment carries is reviewed<br/><small>Requirement</small>"]:::unknown
     n31["Criteria of the data reviewed<br/><small>Acceptance criteria</small>"]:::held
-    n32["The project's rules hold<br/><small>Requirement</small>"]:::held
+    n32["The project's rules hold<br/><small>Requirement</small>"]:::unknown
     n33["Criteria of the rules held<br/><small>Acceptance criteria</small>"]:::held
-    n34["The packages a shipment uses are safe<br/><small>Requirement</small>"]:::held
+    n34["The packages a shipment uses are safe<br/><small>Requirement</small>"]:::unknown
     n35["Criteria of the packages safe<br/><small>Acceptance criteria</small>"]:::held
-    n36["The product a shipment serves holds<br/><small>Requirement</small>"]:::held
+    n36["The product a shipment serves holds<br/><small>Requirement</small>"]:::unknown
     n37["Criteria of the product served<br/><small>Acceptance criteria</small>"]:::held
-    n38["The code a shipment ships is verified<br/><small>Requirement</small>"]:::held
+    n38["The code a shipment ships is verified<br/><small>Requirement</small>"]:::unknown
     n39["Criteria of the code verified<br/><small>Acceptance criteria</small>"]:::held
   end
   subgraph patterns["Standard library · Design patterns"]
@@ -109,15 +109,15 @@ flowchart TB
   end
   subgraph rules["Standard library · Rules"]
     n83["Directions<br/><small>Vocabulary</small>"]:::neutral
-    n84["As many links as asked<br/><small>Requirement</small>"]:::held
+    n84["As many links as asked<br/><small>Requirement</small>"]:::unknown
     n85["Criteria of as many links as asked<br/><small>Acceptance criteria</small>"]:::held
-    n86["A node never reaches what it must not<br/><small>Requirement</small>"]:::held
+    n86["A node never reaches what it must not<br/><small>Requirement</small>"]:::unknown
     n87["Criteria of a node that never reaches what it must not<br/><small>Acceptance criteria</small>"]:::held
-    n88["A node reaches what it must<br/><small>Requirement</small>"]:::held
+    n88["A node reaches what it must<br/><small>Requirement</small>"]:::unknown
     n89["Criteria of a node that reaches what it must<br/><small>Acceptance criteria</small>"]:::held
-    n90["Effects a node may not have<br/><small>Requirement</small>"]:::held
+    n90["Effects a node may not have<br/><small>Requirement</small>"]:::unknown
     n91["Criteria of effects a node may not have<br/><small>Acceptance criteria</small>"]:::held
-    n92["Words of a vocabulary<br/><small>Requirement</small>"]:::held
+    n92["Words of a vocabulary<br/><small>Requirement</small>"]:::unknown
     n93["Criteria of words of a vocabulary<br/><small>Acceptance criteria</small>"]:::held
   end
   subgraph scenarios["Standard library · Scenarios"]

@@ -1446,12 +1446,14 @@
       "kind": "requirement",
       "title": "The decisions a shipment applies hold",
       "source": "src/obligations.ts:84",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "body": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it"
+      ]
     },
     {
       "id": "obligations.AppliedCriteria",
@@ -1476,7 +1478,7 @@
       "kind": "requirement",
       "title": "The artefacts a shipment ships are checked",
       "source": "src/obligations.ts:130",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1490,7 +1492,9 @@
         },
         "body": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it"
+      ]
     },
     {
       "id": "obligations.CheckedCriteria",
@@ -1533,7 +1537,7 @@
       "kind": "requirement",
       "title": "The data a shipment carries is reviewed",
       "source": "src/obligations.ts:97",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1541,7 +1545,9 @@
         },
         "body": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it"
+      ]
     },
     {
       "id": "obligations.ReviewedCriteria",
@@ -1570,12 +1576,14 @@
       "kind": "requirement",
       "title": "The project's rules hold",
       "source": "src/obligations.ts:147",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "body": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it"
+      ]
     },
     {
       "id": "obligations.RuledCriteria",
@@ -1600,12 +1608,14 @@
       "kind": "requirement",
       "title": "The packages a shipment uses are safe",
       "source": "src/obligations.ts:160",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "body": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it"
+      ]
     },
     {
       "id": "obligations.SafeCriteria",
@@ -1630,12 +1640,14 @@
       "kind": "requirement",
       "title": "The product a shipment serves holds",
       "source": "src/obligations.ts:48",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "body": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it"
+      ]
     },
     {
       "id": "obligations.ServedCriteria",
@@ -1664,7 +1676,7 @@
       "kind": "requirement",
       "title": "The code a shipment ships is verified",
       "source": "src/obligations.ts:33",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1672,7 +1684,9 @@
         },
         "body": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it"
+      ]
     },
     {
       "id": "obligations.VerifiedCriteria",
@@ -2321,7 +2335,7 @@
       "kind": "requirement",
       "title": "As many links as asked",
       "source": "src/rules.ts:128",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -2329,7 +2343,9 @@
         },
         "body": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it"
+      ]
     },
     {
       "id": "rules.LinkedCriteria",
@@ -2358,7 +2374,7 @@
       "kind": "requirement",
       "title": "A node never reaches what it must not",
       "source": "src/rules.ts:109",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -2366,7 +2382,9 @@
         },
         "body": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it"
+      ]
     },
     {
       "id": "rules.NeverReachesCriteria",
@@ -2391,12 +2409,14 @@
       "kind": "requirement",
       "title": "A node reaches what it must",
       "source": "src/rules.ts:93",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "body": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it"
+      ]
     },
     {
       "id": "rules.ReachesCriteria",
@@ -2425,7 +2445,7 @@
       "kind": "requirement",
       "title": "Effects a node may not have",
       "source": "src/rules.ts:149",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -2433,7 +2453,9 @@
         },
         "body": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it"
+      ]
     },
     {
       "id": "rules.WithoutEffectsCriteria",
@@ -2458,7 +2480,7 @@
       "kind": "requirement",
       "title": "Words of a vocabulary",
       "source": "src/rules.ts:172",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -2466,7 +2488,9 @@
         },
         "body": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it"
+      ]
     },
     {
       "id": "rules.WordsOfCriteria",

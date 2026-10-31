@@ -2,12 +2,12 @@
 
 *The choices that shape the product without being values, in force on 31 October 2026: why each was taken, what was rejected, and the nodes that apply it.*
 
-> **6 architecture decisions, 3 held by the nodes that apply them**
+> **6 architecture decisions, 2 held by the nodes that apply them**
 
 | Decision | Status | Applied by |
 |---|---|---|
 | [The content is data, behind a port](principles.md#ContentAsData) | **unknown** | [Content](architecture.md#ContentSource), [Poses](content.md#Poses) |
-| [The breath is the clock](principles.md#BreathIsTheClock) | **held** | [The breath of a moment](product.md#BreathOf), [A hold counts in breaths](product.md#HoldInBreaths) |
+| [The breath is the clock](principles.md#BreathIsTheClock) | **unknown** | [The breath of a moment](product.md#BreathOf), [A hold counts in breaths](product.md#HoldInBreaths) |
 | [The person's language, among those offered](principles.md#LanguageOffered) | **held** | [Languages offered](content.md#Languages), [The language of the app](product.md#ChosenLanguage), [Languages of the device](../../../std/releases/0.11.1/docs/platform.md#DeviceLanguages), [Preferences](../../../std/releases/0.11.1/docs/platform.md#PreferencesStore) |
 | [Said aloud, the screen awake](principles.md#SaidAloud) | **unknown** | [Play a practice](practice.md#PlayPractice), [The phone stays on the mat](product.md#PhoneOnTheMat), [Screen kept awake](../../../std/releases/0.11.1/docs/platform.md#ScreenAwake), [Speech](../../../std/releases/0.11.1/docs/platform.md#SpeechVoice) |
 | [A page first, the phones after](principles.md#PageFirst) | **held** | [Poselia's page](app.md#PoseliaPage), [Poselia in a browser](architecture.md#PoseliaApp), [The page opens](sdlc.md#PageOpens) |
@@ -40,7 +40,7 @@ Consequences: Each kind of content is a dataset with its rules and its languages
 
 ### The breath is the clock
 
-`BreathIsTheClock` · `src/principles.ts:36` · status: **held**
+`BreathIsTheClock` · `src/principles.ts:36` · status: **unknown**
 
 A practice is timed by the person's breath, not by seconds: a movement lasts a phase, a hold lasts whole breaths, and each level may set the breath (follow it, impose a ratio, exact timings, or a speed), the most specific winning.
 

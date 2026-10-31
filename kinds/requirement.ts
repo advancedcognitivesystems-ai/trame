@@ -1,8 +1,10 @@
 import {
   defineKind, field, optional, edge, optionalEdge, hole, doc, keysOf, edgesOf, Status, KindName, EdgeName,
   type AnyNode, type Node, type Provides, type HasDeps, type Provided, type FileBody, type Constant, type Values, type Declares,
+  type Graph, type View,
 } from "../trame/kernel"
 import { acceptance } from "./acceptance"
+import { keepsItsRules } from "./dataset"
 import words from "./words"
 
 const say = words()
@@ -38,6 +40,7 @@ const kind = defineKind({
   },
 
   holes: (self, g) => {
+    const owner = self.field(F.owner)
     const asBody = self.field(F.body) !== undefined
     const asFunction = self.field(F.rule) !== undefined
     return [
@@ -45,15 +48,29 @@ const kind = defineKind({
       asBody === asFunction && hole.error(say.requirementRuleOnce()),
       asFunction && !asBody && hole.warning(say.requirementRuleNotABody()),
       self.field(F.owner) === undefined && hole.warning(say.ownerMissing()),
+      self.library === undefined && g.lib.counts.isEmpty(followers(self, g)) && hole.warning(say.requirementNotFollowed(), g.lib.values.isText(owner) ? owner : undefined),
     ]
   },
 
+  /**
+   * Held when its rule is right (its acceptance criteria all pass) and the product follows it (A1): each node that
+   * follows it holds (code that calls it, a scenario or a check that verifies code against it, a dataset whose rows it
+   * checks) and one at least does, or follows it without a status of its own (an obligation, a rule that applies it).
+   * Violated or blocked as soon as a criterion or a follower is; unknown while something that follows it is, or nothing
+   * does. A library's rule nothing follows in the project that imports it has no status there: it is offered.
+   */
   status(self, g) {
-    const all = g.from(self).in(edgesOf(acceptance).accepts).nodes().map((a) => a.status)
-    if (g.lib.counts.isEmpty(all)) return Status.unknown
+    const right = g.from(self).in(edgesOf(acceptance).accepts).nodes().map((a) => a.status)
+    const by = followers(self, g)
+    // A library's rule nothing follows here is offered: the projects that follow it judge it, and the library itself.
+    if (self.library !== undefined && g.lib.counts.isEmpty(by)) return undefined
+    const says = by.map((f) => (f.kind === KindName.dataset ? keepsItsRules(f, g.lib) : f.status))
+    const all = [...right, ...says]
     if (all.includes(Status.violated)) return Status.violated
     if (all.includes(Status.blocked)) return Status.blocked
-    return all.every((s) => s === Status.held) ? Status.held : Status.unknown
+    const isRight = g.lib.counts.any(right) && right.every((s) => s === Status.held)
+    const isFollowed = g.lib.counts.any(by) && says.every((s) => s === undefined || s === Status.held)
+    return isRight && isFollowed ? Status.held : Status.unknown
   },
 
   /**
@@ -75,13 +92,32 @@ const kind = defineKind({
   },
 })
 
+/**
+ * What makes the product follow a rule: by construction, the code and the data that use it (a dependency, a call by
+ * name), what applies it (a rule, an obligation), and what follows a rule that uses it, as far as it goes; by
+ * verification, the scenarios and the checks that verify code against it. A criterion judges the rule, a scenario that
+ * only uses it as an oracle verifies nothing it does not say: neither is the product.
+ */
+function followers(self: View, g: Graph, seen: Set<string> = new Set()): View[] {
+  seen.add(self.ref)
+  const judges: readonly string[] = [KindName.acceptance, KindName.scenario]
+  const using = [...g.from(self).in(EdgeName.deps).nodes(), ...g.from(self).in(EdgeName.uses).nodes(), ...g.from(self).in(EdgeName.applies).nodes()]
+  const found: View[] = [...g.from(self).in(EdgeName.verifies).nodes()]
+  for (const v of using) {
+    if (seen.has(v.ref)) continue
+    if (v.kind === KindName.requirement) found.push(...followers(v, g, seen))
+    else if (!judges.includes(v.kind)) found.push(v)
+  }
+  return found.filter((v, i, all) => all.findIndex((x) => x.ref === v.ref) === i)
+}
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Fn = (...args: any[]) => any
 type Deps = Record<string, AnyNode>
 
 interface Declared {
-  refines: readonly Node<"goal" | "requirement">[]
-  assumes?: readonly Node<"assumption">[]
+  refines: readonly Node<typeof KindName.goal | typeof KindName.requirement>[]
+  assumes?: readonly Node<typeof KindName.assumption>[]
 }
 
 interface AsBody<D extends Deps, C extends Record<string, Constant>, F extends Fn> extends Declared {

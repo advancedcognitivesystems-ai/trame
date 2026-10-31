@@ -253,6 +253,11 @@ that verifies it holds, unknown while nothing does. What may verify it:
   phone verifies what only a person hears). A check that failed keeps every shipment that proves it (a warning in the
   graph, its status violated): it does not stop `trame assemble` or `trame deliver` from making the next version.
 
+A requirement is held when it is right and followed: its acceptance criteria pass, and each node that follows it holds
+(code that calls it, directly or through another rule; a scenario or a check that verifies code against it; a dataset
+whose rows it checks), one at least, or an obligation or a rule applies it. A rule nothing follows is unknown, a warning
+to its owner: make the code call it, or remove it. A library's rule nothing follows in the project has no status there.
+
 An implementation that no choice of the graph takes, nor any environment, has no status (a library offers it; the
 projects that choose it verify it); so has a pattern no choice follows. A project that chooses a library's adapter
 verifies it where it runs: Poselia's check in Chromium verifies the page's loading, languages, preferences and frames,

@@ -126,7 +126,7 @@ flowchart TB
     n102["A practice<br/><small>Function</small>"]:::held
   end
   subgraph principles["Poselia · Principles"]
-    n103["The breath is the clock<br/><small>Architecture decision</small>"]:::held
+    n103["The breath is the clock<br/><small>Architecture decision</small>"]:::unknown
     n104["The content is data, behind a port<br/><small>Architecture decision</small>"]:::unknown
     n105["The person's language, among those offered<br/><small>Architecture decision</small>"]:::held
     n106["A page first, the phones after<br/><small>Architecture decision</small>"]:::held
@@ -140,7 +140,7 @@ flowchart TB
     n112["The language of the app<br/><small>Requirement</small>"]:::held
     n113["Criteria of the language of the app<br/><small>Acceptance criteria</small>"]:::held
     n114["The breath of someone who has set nothing<br/><small>Decision</small>"]:::neutral
-    n115["A hold counts in breaths<br/><small>Requirement</small>"]:::held
+    n115["A hold counts in breaths<br/><small>Requirement</small>"]:::unknown
     n116["Criteria of a hold in breaths<br/><small>Acceptance criteria</small>"]:::held
     n117["In the person's language<br/><small>Goal</small>"]:::neutral
     n118["The phone stays on the mat<br/><small>Assumption</small>"]:::unknown

@@ -808,7 +808,7 @@ Function · `PracticeOf` · **held**
 
 ### The breath is the clock
 
-Architecture decision · `BreathIsTheClock` · **held**
+Architecture decision · `BreathIsTheClock` · **unknown**
 
 - Decided by: ghalaax
 - Context: A timer in seconds makes a person follow a clock; yoga follows the breath, whose length differs from one person to the next and from one day to the next.
@@ -894,7 +894,7 @@ Requirement · `ChosenLanguage` · **held**
 
 ### A hold counts in breaths
 
-Requirement · `HoldInBreaths` · **held**
+Requirement · `HoldInBreaths` · **unknown**
 
 - Refines: The breath sets the pace
 

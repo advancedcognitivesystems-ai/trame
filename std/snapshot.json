@@ -1271,7 +1271,7 @@
       "id": "obligations.Applied",
       "kind": "requirement",
       "title": "The decisions a shipment applies hold",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "body": "(function)"
@@ -1291,7 +1291,7 @@
       "id": "obligations.Checked",
       "kind": "requirement",
       "title": "The artefacts a shipment ships are checked",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1332,7 +1332,7 @@
       "id": "obligations.Reviewed",
       "kind": "requirement",
       "title": "The data a shipment carries is reviewed",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1355,7 +1355,7 @@
       "id": "obligations.Ruled",
       "kind": "requirement",
       "title": "The project's rules hold",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "body": "(function)"
@@ -1375,7 +1375,7 @@
       "id": "obligations.Safe",
       "kind": "requirement",
       "title": "The packages a shipment uses are safe",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "body": "(function)"
@@ -1395,7 +1395,7 @@
       "id": "obligations.Served",
       "kind": "requirement",
       "title": "The product a shipment serves holds",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "body": "(function)"
@@ -1415,7 +1415,7 @@
       "id": "obligations.Verified",
       "kind": "requirement",
       "title": "The code a shipment ships is verified",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1958,7 +1958,7 @@
       "id": "rules.Linked",
       "kind": "requirement",
       "title": "As many links as asked",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1981,7 +1981,7 @@
       "id": "rules.NeverReaches",
       "kind": "requirement",
       "title": "A node never reaches what it must not",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -2004,7 +2004,7 @@
       "id": "rules.Reaches",
       "kind": "requirement",
       "title": "A node reaches what it must",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "body": "(function)"
@@ -2024,7 +2024,7 @@
       "id": "rules.WithoutEffects",
       "kind": "requirement",
       "title": "Effects a node may not have",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -2047,7 +2047,7 @@
       "id": "rules.WordsOf",
       "kind": "requirement",
       "title": "Words of a vocabulary",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {

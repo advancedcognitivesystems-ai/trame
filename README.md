@@ -898,6 +898,16 @@ declaration, and a program refuses to freeze a body an amendment redefines in fo
 itself (`rule:`), as until g78, is still read, with a warning: Poselia and the frozen releases of std still write theirs
 that way. Rewriting them found literals the old form hid: 30 rules of Poselia's body, 8 of std's, 6 of Trame's.
 
+A rule that is right is not yet a rule the product follows. Its status says both: held when its acceptance criteria all
+pass and what follows it holds, the code that calls it (directly, or through another rule), the scenario or the check
+that verifies code against it, the dataset whose rows it checks at every build, the obligation or the rule of the
+architecture that applies it. Violated as soon as one of them is; unknown while one is, and while nothing follows it,
+which is a warning to its owner: "Nothing makes the product follow this rule". Every node has an owner, a goal and a
+requirement too, so that warning reaches someone. A library's rule that nothing follows in a project importing it is
+offered there, without a status, as an adapter nobody chooses: judged where it is followed. Poselia's "A hold counts in
+breaths" was found that way: right, with its criteria, and called by nothing since its poses are held a number of
+breaths.
+
 ## Quantities
 
 A number measures something: a duration, an amount of one currency, a ratio. Until g79 three units were written in

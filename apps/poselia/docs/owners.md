@@ -6,7 +6,7 @@
 |---|---|---|---|---|
 | A teacher who practises | 0 | 0 | 4 | 0 |
 | People who try it on a phone | 0 | 0 | 1 | 0 |
-| ghalaax | 0 | 0 | 5 | 164 |
+| ghalaax | 0 | 0 | 7 | 164 |
 
 <a id="A teacher who practises"></a>
 
@@ -51,7 +51,9 @@
 | warning | To ship: On a phone is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
 | warning | To ship: The content, reviewed is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
 | warning | To ship: The content is data, behind a port is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
+| warning | To ship: The breath is the clock is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
 | warning | To ship: Said aloud, the screen awake is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
+| warning | To ship: A hold counts in breaths is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
 | warning | Nobody holds this role yet | [A teacher who practises](sdlc.md#Teachers) | ghalaax |  |
 
 ### Owns
@@ -136,7 +138,7 @@
 | [Names of the player](practice.md#PlayerNames) | Decision |  |
 | [Play a practice](practice.md#PlayPractice) | Function | **held** |
 | [A practice](practice.md#PracticeOf) | Function | **held** |
-| [The breath is the clock](principles.md#BreathIsTheClock) | Architecture decision | **held** |
+| [The breath is the clock](principles.md#BreathIsTheClock) | Architecture decision | **unknown** |
 | [The content is data, behind a port](principles.md#ContentAsData) | Architecture decision | **unknown** |
 | [The person's language, among those offered](principles.md#LanguageOffered) | Architecture decision | **held** |
 | [A page first, the phones after](principles.md#PageFirst) | Architecture decision | **held** |
@@ -285,6 +287,7 @@
 | warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [The language of the app](product.md#ChosenLanguage) | to be assigned |  |
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A hold counts in breaths](product.md#HoldInBreaths) | to be assigned |  |
 | warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [A hold counts in breaths](product.md#HoldInBreaths) | to be assigned |  |
+| warning | Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it | [A hold counts in breaths](product.md#HoldInBreaths) | to be assigned |  |
 | warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [In the person's language](product.md#InTheirLanguage) | to be assigned |  |
 | warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [Practise yoga on one's own, guided](product.md#PractiseGuided) | to be assigned |  |
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A phase set by the person](settings.md#AdjustedBreath) | to be assigned |  |

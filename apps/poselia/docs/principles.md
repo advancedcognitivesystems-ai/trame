@@ -10,7 +10,7 @@
 
 ### The breath is the clock
 
-`BreathIsTheClock` · `src/principles.ts:36` · status: **held**
+`BreathIsTheClock` · `src/principles.ts:36` · status: **unknown**
 
 A practice is timed by the person's breath, not by seconds: a movement lasts a phase, a hold lasts whole breaths, and each level may set the breath (follow it, impose a ratio, exact timings, or a speed), the most specific winning.
 

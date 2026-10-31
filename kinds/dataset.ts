@@ -21,6 +21,8 @@ interface Result {
   version?: string
   /** What breaks a rule, a key or a text: the row, and what. */
   findings: { row: string; what: Inline[] }[]
+  /** The rows that break one of its rules, or on which one failed. */
+  broken: string[]
   /**
    * Each row's review in each language offered (one, unnamed, when none is offered), with the fingerprint a review must
    * have seen and the people whose latest review approves the row as it is.
@@ -80,6 +82,7 @@ const kind = defineKind({
     const rows = rowsOf(self)
     const languages = languagesOf(self, g, lib)
     const findings: Result["findings"] = []
+    const broken: Result["broken"] = []
     const keyFn = self.field(F.key)
     const keyOf = (row: unknown, i: number): string => {
       try {
@@ -101,9 +104,13 @@ const kind = defineKind({
       if (!values.isFunction(holds)) continue
       rows.forEach((row, i) => {
         try {
-          if (!holds(row, rows)) findings.push({ row: keys[i], what: [say.datasetBreaks(says)] })
+          if (!holds(row, rows)) {
+            findings.push({ row: keys[i], what: [say.datasetBreaks(says)] })
+            broken.push(keys[i])
+          }
         } catch (e) {
           findings.push({ row: keys[i], what: [say.datasetRuleFailed(says, (e as Error).message)] })
+          broken.push(keys[i])
         }
       })
     }
@@ -148,7 +155,7 @@ const kind = defineKind({
         reviews.push({ row: keys[i], language, review, by: latest?.by, fingerprint: now, approvedBy })
       }
     })
-    return { rows: rows.length, version: fingerprint?.(rows), findings, reviews }
+    return { rows: rows.length, version: fingerprint?.(rows), findings, broken, reviews }
   },
 
   status(self, g) {
@@ -224,3 +231,14 @@ export function dataset<R>(input: DatasetInput<R>): Node<typeof KindName.dataset
 }
 
 export const datasetKind = kind
+
+/**
+ * Whether a dataset keeps its rules (A1): each row checked against each rule, by construction at every build. Held when
+ * no row breaks one, violated when one does, unknown before it is evaluated; what its reviews await is not its say on a
+ * rule.
+ */
+export function keepsItsRules(self: View, lib: Lib): Status {
+  const r = self.result<Result>()
+  if (!r || !Array.isArray(r.broken)) return Status.unknown
+  return lib.counts.any(r.broken) ? Status.violated : Status.held
+}

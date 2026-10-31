@@ -351,6 +351,8 @@ const body = () => ({
   quantityUnit: () => "Unit",
   quantityOfTheBase: () => "Of the base unit",
   quantityWithoutUnit: () => "A quantity has at least one unit, each a positive number of its base unit",
+  requirementNotFollowed: () =>
+    "Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it",
   requirementRuleOnce: () => "A requirement writes its rule once: as a body (body), or, until every rule is one, as the function itself (rule)",
   requirementRuleNotABody: () =>
     "Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",

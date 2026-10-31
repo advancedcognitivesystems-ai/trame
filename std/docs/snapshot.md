@@ -258,14 +258,14 @@ Quantity · `Time`
 
 ### The decisions a shipment applies hold
 
-Requirement · `Applied` · **held**
+Requirement · `Applied` · **unknown**
 
 - Owner: trame
 - Refines: Rules applied, not written again
 
 ### The artefacts a shipment ships are checked
 
-Requirement · `Checked` · **held**
+Requirement · `Checked` · **unknown**
 
 - Owner: trame
 - Parameters: { counts: algebra.Counts }
@@ -275,7 +275,7 @@ Requirement · `Checked` · **held**
 
 ### The data a shipment carries is reviewed
 
-Requirement · `Reviewed` · **held**
+Requirement · `Reviewed` · **unknown**
 
 - Owner: trame
 - Parameters: { counts: algebra.Counts }
@@ -284,28 +284,28 @@ Requirement · `Reviewed` · **held**
 
 ### The project's rules hold
 
-Requirement · `Ruled` · **held**
+Requirement · `Ruled` · **unknown**
 
 - Owner: trame
 - Refines: Rules applied, not written again
 
 ### The packages a shipment uses are safe
 
-Requirement · `Safe` · **held**
+Requirement · `Safe` · **unknown**
 
 - Owner: trame
 - Refines: Rules applied, not written again
 
 ### The product a shipment serves holds
 
-Requirement · `Served` · **held**
+Requirement · `Served` · **unknown**
 
 - Owner: trame
 - Refines: Rules applied, not written again
 
 ### The code a shipment ships is verified
 
-Requirement · `Verified` · **held**
+Requirement · `Verified` · **unknown**
 
 - Owner: trame
 - Parameters: { counts: algebra.Counts }
@@ -765,7 +765,7 @@ Release · `R0_9_0`
 
 ### As many links as asked
 
-Requirement · `Linked` · **held**
+Requirement · `Linked` · **unknown**
 
 - Owner: trame
 - Parameters: { counts: algebra.Counts }
@@ -774,7 +774,7 @@ Requirement · `Linked` · **held**
 
 ### A node never reaches what it must not
 
-Requirement · `NeverReaches` · **held**
+Requirement · `NeverReaches` · **unknown**
 
 - Owner: trame
 - Parameters: { counts: algebra.Counts }
@@ -783,14 +783,14 @@ Requirement · `NeverReaches` · **held**
 
 ### A node reaches what it must
 
-Requirement · `Reaches` · **held**
+Requirement · `Reaches` · **unknown**
 
 - Owner: trame
 - Refines: Rules applied, not written again
 
 ### Effects a node may not have
 
-Requirement · `WithoutEffects` · **held**
+Requirement · `WithoutEffects` · **unknown**
 
 - Owner: trame
 - Parameters: { counts: algebra.Counts }
@@ -799,7 +799,7 @@ Requirement · `WithoutEffects` · **held**
 
 ### Words of a vocabulary
 
-Requirement · `WordsOf` · **held**
+Requirement · `WordsOf` · **unknown**
 
 - Owner: trame
 - Parameters: { counts: algebra.Counts }
