@@ -1182,3 +1182,19 @@ export const G80 = release({
   archive: "0d666b812cb782bb",
   assembledBy: G79,
 })
+
+/**
+ * Generation 81
+ */
+export const G81 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g81",
+  date: "2026-10-31",
+  what: "A3: a rule constrains another on examples; the engine says how each rule is called, and two rules that answer the same question for the same need are warned",
+  fingerprint: "30942a8095e596ce",
+  language: "shared",
+  archive: "8be4500a4d9aadd5",
+  differences: "differences.diff",
+  assembledBy: G80,
+})

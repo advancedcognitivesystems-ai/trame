@@ -1,0 +1,13 @@
+{
+  "title": "Reservations",
+  "kinds": [
+    "../../kinds"
+  ],
+  "views": [
+    "../../views"
+  ],
+  "libraries": {
+    "std": "../../std"
+  },
+  "engine": "../../generations/g80"
+}

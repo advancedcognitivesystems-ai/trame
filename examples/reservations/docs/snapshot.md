@@ -240,6 +240,34 @@ Quantity · `SwissFrancs`
 - Units: { chf: 1 }
 - Written with: How an amount is written
 
+## Reservations · Consumer law
+
+### A day ahead, a full refund
+
+Requirement · `FullRefundAhead` · **held**
+
+- Owner: karim
+- Parameters: { notice: consumer.FullRefundNotice }
+- The cases the rule it constrains is played on, each one its arguments: { charger: normal, price: 20 }, 86400, { charger: fast, price: 35 }, 108000, { charger: normal, price: 20 }, 3600
+- Refines: Cancel without stress
+- Constrains: Refund on cancellation
+- Depends on: Notice for a full refund
+
+### Notice for a full refund
+
+Decision · `FullRefundNotice`
+
+- Decided by: karim
+- Value: 24 h
+- Rejected: 48 h, longer than any charging slot is booked ahead
+
+### Criteria of a full refund a day ahead
+
+Acceptance criteria · `FullRefundAheadCriteria` · **held**
+
+- Owner: karim
+- Accepts: A day ahead, a full refund
+
 ## Reservations · Infrastructure
 
 ### Backup retention

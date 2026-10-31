@@ -297,6 +297,17 @@ const body = (deps: Deps) => {
           sourceText: squeeze(stmt.getText(sf)),
         }
 
+        // How the node is called, when it is (a rule, a function): what the compiler says of its arguments and answer.
+        const called = head(checker.getSignaturesOfType(checker.getTypeAtLocation(vd.name), ts.SignatureKind.Call))
+        if (called) {
+          const answer = called.getReturnType()
+          info.signature = {
+            params: called.getParameters().map((p) => checker.typeToString(checker.getTypeOfSymbolAtLocation(p, vd))),
+            returns: checker.typeToString(answer),
+            decides: (answer.flags & ts.TypeFlags.BooleanLike) !== zero,
+          }
+        }
+
         const jsDoc = ts.getJSDocCommentsAndTags(vd).find(ts.isJSDoc)
         const text = optional(jsDoc && ts.getTextOfJSDocComment(jsDoc.comment))
         const lines = text.split(endOfLine).map((l) => l.trim()).filter(Boolean)

@@ -2,7 +2,7 @@
 
 *What happened to the project, day by day, the latest first, up to the date of the graph (31 October 2026): the versions released, and the evidence given, each with the node it is about and who gave it.*
 
-> **15 days · 80 versions released · 161 pieces of evidence**
+> **15 days · 81 versions released · 169 pieces of evidence**
 
 ## 31 October 2026
 
@@ -10,20 +10,29 @@
 |---|---|---|
 | Released as g79 | [Generation 79](releases.md#G79) | trame |
 | Released as g80 | [Generation 80](releases.md#G80) | trame |
+| Released as g81 | [Generation 81](releases.md#G81) | trame |
+| Deployed | [Advance](commands.md#Advance) | claude |
 | Deployed | [Advance](commands.md#Advance) | claude |
 | Deployed | [Advance](commands.md#Advance) | claude |
 | Check passed | [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws) | claude |
 | Check passed | [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws) | claude |
+| Check passed | [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws) | claude |
+| Check passed | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | claude |
 | Check passed | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | claude |
 | Check passed | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | claude |
 | Built | [The candidate engine](sdlc.md#EngineCandidate) | claude |
 | Built | [The candidate engine](sdlc.md#EngineCandidate) | claude |
+| Built | [The candidate engine](sdlc.md#EngineCandidate) | claude |
+| Built | [The graph page](sdlc.md#GraphPage) | claude |
 | Built | [The graph page](sdlc.md#GraphPage) | claude |
 | Built | [The graph page](sdlc.md#GraphPage) | claude |
 | Check passed | [The graph page opens](sdlc.md#GraphPageOpens) | claude |
 | Check passed | [The graph page opens](sdlc.md#GraphPageOpens) | claude |
+| Check passed | [The graph page opens](sdlc.md#GraphPageOpens) | claude |
 | Shipped | [The next generation](sdlc.md#NextGeneration) | claude |
 | Shipped | [The next generation](sdlc.md#NextGeneration) | claude |
+| Shipped | [The next generation](sdlc.md#NextGeneration) | claude |
+| Built | [The page's program](sdlc.md#PageProgram) | claude |
 | Built | [The page's program](sdlc.md#PageProgram) | claude |
 | Built | [The page's program](sdlc.md#PageProgram) | claude |
 

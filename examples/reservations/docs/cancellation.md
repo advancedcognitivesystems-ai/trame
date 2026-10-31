@@ -24,7 +24,7 @@ A driver can change their mind without fearing an unfair penalty.
 
 - Owner: lea
 - Served by: [Read a reservation](api.md#ReadReservation), [Effects follow the request](architecture.md#EffectsFollowTheRequest), [A cancellation refunds once](principles.md#RefundOnce), [Secrets stay out of the graph](principles.md#SecretsOutOfTheGraph)
-- Refined by: [Refund on cancellation](#Refund)
+- Refined by: [Refund on cancellation](#Refund), [A day ahead, a full refund](consumer.md#FullRefundAhead)
 - Kept by the rule: [The code is verified](sdlc.md#CodeVerified), [The decisions hold](sdlc.md#DecisionsApplied), [Every check is signed](sdlc.md#EveryCheck), [The requirements of the goal hold](sdlc.md#GoalServed), [The packages are safe](sdlc.md#PackagesSafe), [The rules hold](sdlc.md#RulesHeld)
 
 ## Requirement
@@ -52,7 +52,7 @@ The amount returned to the driver when they cancel their reservation.
 - Assumes: [Idempotent payment provider](#IdempotentProvider)
 - Served by: [Cancel a reservation](api.md#CancelReservation), [End of free cancellation](api.md#FreeCancellationEnd)
 - Used by: [Cancel a reservation](api.md#CancelReservation), [Every reservation is refunded according to the rule](scenarios.md#ComplianceScenario), [Cancelling twice refunds only once](scenarios.md#RepeatedCancellationScenario)
-- Constrained by: [Immediate refund](#ImmediateRefund)
+- Constrained by: [Immediate refund](#ImmediateRefund), [A day ahead, a full refund](consumer.md#FullRefundAhead)
 - Amended by (not in force): [Launch of the ultra chargers](committee.md#UltraLaunch)
 - Verified by: [Every reservation is refunded according to the rule](scenarios.md#ComplianceScenario)
 

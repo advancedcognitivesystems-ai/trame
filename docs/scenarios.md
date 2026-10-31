@@ -98,8 +98,8 @@ trame build, run by the described engine on the example, writes character for ch
 | The build succeeds | passed |
 | The summary is shown | passed |
 | graph.json and snapshot.json are written as the engine in place wrote them | passed |
-| 25 documents in Markdown, figures included, as the engine in place wrote them | passed |
-| 27 files written, identical to those of the engine in place | passed |
+| 26 documents in Markdown, figures included, as the engine in place wrote them | passed |
+| 28 files written, identical to those of the engine in place | passed |
 
 <details><summary>The code it runs: 51 nodes</summary>
 
@@ -128,7 +128,7 @@ The compiler assembled from this graph loads the reservations project (its files
 | Criterion | Result |
 |---|---|
 | TypeScript accepts the example | passed |
-| The example has 109 nodes, 3 scenarios among them | passed |
+| The example has 112 nodes, 3 scenarios among them | passed |
 | No error in the example | passed |
 | The scenarios of the example hold | passed |
 | Loaded again, the example reads the same: what the compiler of TypeScript read is kept | passed |

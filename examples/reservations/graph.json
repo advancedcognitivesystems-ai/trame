@@ -566,6 +566,98 @@
       "diagnostics": []
     },
     {
+      "id": "consumer.FullRefundAhead",
+      "kind": "requirement",
+      "title": "A day ahead, a full refund",
+      "source": "src/consumer.ts:25",
+      "status": "held",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "notice": "consumer.FullRefundNotice"
+        },
+        "body": "(function)",
+        "examples": [
+          [
+            {
+              "charger": "normal",
+              "price": 20
+            },
+            86400
+          ],
+          [
+            {
+              "charger": "fast",
+              "price": 35
+            },
+            108000
+          ],
+          [
+            {
+              "charger": "normal",
+              "price": 20
+            },
+            3600
+          ]
+        ]
+      },
+      "result": [
+        {
+          "at": 1,
+          "status": "passed"
+        },
+        {
+          "at": 2,
+          "status": "passed"
+        },
+        {
+          "at": 3,
+          "status": "passed"
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "consumer.FullRefundAheadCriteria",
+      "kind": "acceptance",
+      "title": "Criteria of a full refund a day ahead",
+      "source": "src/consumer.ts:39",
+      "status": "held",
+      "fields": {
+        "owner": "karim",
+        "criteria": "(function)"
+      },
+      "result": [
+        {
+          "name": "A day ahead, half the price is not enough",
+          "status": "passed"
+        },
+        {
+          "name": "A day ahead, the whole price is",
+          "status": "passed"
+        },
+        {
+          "name": "An hour ahead, the law asks nothing",
+          "status": "passed"
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "consumer.FullRefundNotice",
+      "kind": "decision",
+      "title": "Notice for a full refund",
+      "source": "src/consumer.ts:14",
+      "fields": {
+        "owner": "karim",
+        "value": 86400,
+        "rejected": {
+          "48 h": "longer than any charging slot is booked ahead"
+        }
+      },
+      "diagnostics": []
+    },
+    {
       "id": "infra.BackupRetention",
       "kind": "decision",
       "title": "Backup retention",
@@ -1569,6 +1661,11 @@
             "obligation": "sdlc.GoalServed"
           },
           {
+            "node": "consumer.FullRefundAhead",
+            "via": "cancellation.Refund",
+            "obligation": "sdlc.GoalServed"
+          },
+          {
             "node": "architecture.ReadWithoutWrite",
             "via": "architecture.ReadWithoutWrite",
             "obligation": "sdlc.RulesHeld"
@@ -2547,6 +2644,26 @@
       "from": "committee.UltraPeriodApproval",
       "to": "committee.UltraPeriod",
       "kind": "approves"
+    },
+    {
+      "from": "consumer.FullRefundAhead",
+      "to": "cancellation.CancelWithoutStress",
+      "kind": "refines"
+    },
+    {
+      "from": "consumer.FullRefundAhead",
+      "to": "cancellation.Refund",
+      "kind": "constrains"
+    },
+    {
+      "from": "consumer.FullRefundAhead",
+      "to": "consumer.FullRefundNotice",
+      "kind": "deps"
+    },
+    {
+      "from": "consumer.FullRefundAheadCriteria",
+      "to": "consumer.FullRefundAhead",
+      "kind": "accepts"
     },
     {
       "from": "infra.CancellationsSql",

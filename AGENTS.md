@@ -171,6 +171,11 @@ why. A broken rule is an error, unless the rule says `severity: "warning"` while
   touches nothing. A realization does no more than its ports promise (their declared effects).
 - **A technology is chosen in one node**: a binding, which follows a pattern (Strategy, Adapter, Bridge, Abstract
   Factory, Repository) and is checked against its shape. Code that uses a port never names what answers it.
+- **A choice is a concept.** When there are several ways to do something, and someone could choose another, name the
+  concept: a port, its strategies (its realizations) and a binding that says which one applies where, as Trame does for
+  technologies. A choice of value stays a decision, with the options it rejected. What nobody would change is just code:
+  do not make a concept of it. Where amendments of the graph go, how a package is fetched, how evidence is signed: each
+  is a port with its strategies, the first one in place, the others to come.
 - **Words are in catalogs**, in the language they are written in; a count uses `plurals(language)` with each form
   written; lists use `Lists`; dates use `Dates`. A product in several languages has one catalog per language, each
   translating the first (`translates`), and chooses the catalog of the language it speaks when it runs.
@@ -190,6 +195,17 @@ Before writing a structure, a standard or a pattern, look in `std/` (its `README
 node goes there, with `serves` naming the library's goal; what only one product needs stays in that product.
 
 ## 6. Writing kinds and views
+
+**A new kind is the last resort.** A kind is a type of node: what a node can say, how its status is computed, what the
+engine does with it. Adding one can weaken a guarantee unseen and makes projects diverge, so:
+
+1. **Compose first.** Try the kinds that exist (a requirement applied by a rule, an obligation of a family, a decision,
+   a dataset, a check) and say exactly what they cannot do: a status nobody can compute, a link nobody can express,
+   evidence nobody can require.
+2. **A kind lives in a library, never in a product**: Trame's own, or a library of a domain or of hygiene, versioned
+   and shipped through its own graph; a project that imports the library gets its kinds.
+3. **It is admitted with its file**: an ADR that says why composing was not enough (composing is its rejected option),
+   its laws played by `test-kinds`, its words in a catalog, an example that uses it, and its place in the documents.
 
 Kinds and views are files, not nodes; they hold no literal either. They get the graph's values from the engine:
 
@@ -257,6 +273,10 @@ A requirement is held when it is right and followed: its acceptance criteria pas
 (code that calls it, directly or through another rule; a scenario or a check that verifies code against it; a dataset
 whose rows it checks), one at least, or an obligation or a rule applies it. A rule nothing follows is unknown, a warning
 to its owner: make the code call it, or remove it. A library's rule nothing follows in the project has no status there.
+A rule may constrain another (`constrains`, with the `examples` it is played on; its body receives the other's
+arguments, then its answer): a refused example makes both violated and tells both owners, until one amends their rule.
+Two rules that compute the same kind of answer from the same kind of arguments for the same need are warned (g81):
+constrain or amend one by the other, or give them more precise types.
 
 An implementation that no choice of the graph takes, nor any environment, has no status (a library offers it; the
 projects that choose it verify it); so has a pattern no choice follows. A project that chooses a library's adapter

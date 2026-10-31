@@ -123,6 +123,7 @@ The service for its users, the way of a release: the program for production, and
 | [On a laptop](#OnALaptop) | **unknown** | [Every check is signed](#EveryCheck), for [The program for a laptop](#LocalProgram) |
 | [On staging](#OnStaging) | **unknown** | [Every check is signed](#EveryCheck), for [The program for production](#ProductionProgram) |
 | [Refund on cancellation](cancellation.md#Refund) | **held** | [The requirements of the goal hold](#GoalServed) |
+| [A day ahead, a full refund](consumer.md#FullRefundAhead) | **held** | [The requirements of the goal hold](#GoalServed), for [Refund on cancellation](cancellation.md#Refund) |
 | [A read writes nothing](architecture.md#ReadWithoutWrite) | **held** | [The rules hold](#RulesHeld) |
 | [Every call to a third party is verified](architecture.md#ThirdPartiesVerified) | **held** | [The rules hold](#RulesHeld) |
 | [Utilities do not touch the world](architecture.md#UtilitiesWithoutWorld) | **held** | [The rules hold](#RulesHeld) |

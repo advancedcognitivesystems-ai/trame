@@ -1640,6 +1640,28 @@ Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Ge
 - Released by: trame
 - Releases: [Trame on the command line](architecture.md#TrameCli)
 - Assembled by: [Generation 79](#G79)
+- Assembled: [Generation 81](#G81)
+
+<a id="G81"></a>
+
+### Generation 81
+
+`G81` · `src/releases.ts:1189`
+
+A3: a rule constrains another on examples; the engine says how each rule is called, and two rules that answer the same question for the same need are warned
+
+Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Generation 80](#G80).
+
+- Version: `g81`
+- Released on: 31 October 2026
+- Fingerprint: `30942a8095e596ce`
+- Language: the repository's, shared
+- Language archived: `8be4500a4d9aadd5`
+- Accepted differences: `differences.diff`
+
+- Released by: trame
+- Releases: [Trame on the command line](architecture.md#TrameCli)
+- Assembled by: [Generation 80](#G80)
 
 <a id="G9"></a>
 

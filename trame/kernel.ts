@@ -451,6 +451,11 @@ export interface StaticInfo {
   sourceText: string
   /** The quantity each property measures, by the reference of its node, as the types say (since g80). */
   quantities?: Record<string, string>
+  /**
+   * How a node that is called is called (a rule, a function): the types of its arguments and of its answer, as the
+   * compiler writes them, and whether that answer is true or false. Since g81.
+   */
+  signature?: { params: string[]; returns: string; decides: boolean }
 }
 
 // The traversal API: the only way to read the graph ----------------------------

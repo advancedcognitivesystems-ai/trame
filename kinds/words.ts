@@ -353,6 +353,23 @@ const body = () => ({
   quantityWithoutUnit: () => "A quantity has at least one unit, each a positive number of its base unit",
   requirementNotFollowed: () =>
     "Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it",
+  requirementExamples: () => "The cases the rule it constrains is played on, each one its arguments",
+  requirementExample: () => "example",
+  requirementExamplesNoun: () => "examples",
+  requirementExampleAt: (n: number) => `Example ${n}`,
+  requirementTheExamplesInTheCode: () => "The examples, in the code",
+  requirementConstrains: () => "Constrains",
+  requirementConstrainedBy: () => "Constrained by",
+  requirementNobody: () => "nobody",
+  requirementPlayedOn: (rule: Inline): Inline[] => ["Played on ", rule, ", then judged by this rule"],
+  requirementWaitingFor: (what: Inline): Inline[] => ["Waiting for ", what],
+  requirementLooksLike: (rule: string, owner: string) =>
+    `Computes the same kind of answer from the same kind of arguments as “${rule}” (${owner}), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so`,
+  requirementConstraintWhole: () => "A rule that constrains another names it (constrains) and the cases it is played on (examples): one goes with the other",
+  requirementRefuses: (rule: string, owner: string, at: readonly number[]) =>
+    `Refuses what “${rule}” answers on example ${at.join(", ")}: ${owner}, who answers for that rule, and the owner of this one settle it, by an amendment of one or the other`,
+  requirementRefusedBy: (rule: string, owner: string, at: readonly number[]) =>
+    `“${rule}” refuses what this rule answers on example ${at.join(", ")}: its owner, ${owner}, and the owner of this one settle it, by an amendment of one or the other`,
   requirementRuleOnce: () => "A requirement writes its rule once: as a body (body), or, until every rule is one, as the function itself (rule)",
   requirementRuleNotABody: () =>
     "Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",

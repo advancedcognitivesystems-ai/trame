@@ -2,7 +2,7 @@
 
 *What the declarations that are not published yet add to the published graph (`trame.lock`), as of 30 October 2026.*
 
-> **101 new declarations · 0 published declarations affected · 1 overlap · 5 blocking holes added**
+> **104 new declarations · 0 published declarations affected · 1 overlap · 5 blocking holes added**
 
 ## What the branch redefines
 
@@ -68,6 +68,9 @@
 | [Launch of the ultra chargers](committee.md#UltraLaunch) | Amendment | lea | `src/committee.ts:29` |
 | [Period for ultra chargers](committee.md#UltraPeriod) | Amendment | lea | `src/committee.ts:12` |
 | [Approval of the ultra period](committee.md#UltraPeriodApproval) | Approval | lea | `src/committee.ts:19` |
+| [A day ahead, a full refund](consumer.md#FullRefundAhead) | Requirement | karim | `src/consumer.ts:25` |
+| [Criteria of a full refund a day ahead](consumer.md#FullRefundAheadCriteria) | Acceptance criteria | karim | `src/consumer.ts:39` |
+| [Notice for a full refund](consumer.md#FullRefundNotice) | Decision | karim | `src/consumer.ts:14` |
 | [Backup retention](infra.md#BackupRetention) | Decision | karim | `src/infra.ts:89` |
 | [Cancellations in SQL](infra.md#CancellationsSql) | Function | karim | `src/infra.ts:211` |
 | [Status of a cancelled reservation](infra.md#CancelledStatus) | Decision | karim | `src/infra.ts:118` |

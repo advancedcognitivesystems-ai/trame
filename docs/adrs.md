@@ -2,11 +2,11 @@
 
 *The choices that shape the product without being values, in force on 31 October 2026: why each was taken, what was rejected, and the nodes that apply it.*
 
-> **36 architecture decisions, 33 held by the nodes that apply them**
+> **36 architecture decisions, 36 held by the nodes that apply them**
 
 | Decision | Status | Applied by |
 |---|---|---|
-| [The page is assembled](browser.md#ThePageIsAssembled) | **unknown** | [Rendering does not read the graph](architecture.md#RenderingWithoutGraph), [Explorer of a graph](browser.md#ExplorerFigures), [Show the graph](browser.md#ShowGraph), [The browser runs the page](browser.md#TheBrowserRunsThePage) |
+| [The page is assembled](browser.md#ThePageIsAssembled) | **held** | [Rendering does not read the graph](architecture.md#RenderingWithoutGraph), [Explorer of a graph](browser.md#ExplorerFigures), [Show the graph](browser.md#ShowGraph), [The browser runs the page](browser.md#TheBrowserRunsThePage) |
 | [The punctuation is the language's](documents.md#PunctuationOfTheLanguage) | **held** | [Punctuation of documents](documents.md#Punctuation), [Language](messages.md#Language) |
 | [The language receives the graph's values](engine.md#TheLanguageReceivesTheGraph) | **held** | [Graph](engine.md#GraphApi), [Views](engine.md#Views) |
 | [The laws are requirements](engine.md#LawsAreRequirements) | **held** | [Laws](engine.md#Laws), [Views](engine.md#Views) |
@@ -26,7 +26,7 @@
 | [A literal in a kind or a view is an error](principles.md#NoLiteralInTheLanguage) | **held** | [Compiler](engine.md#Compiler), [Syntax reader](syntax.md#SyntaxReader) |
 | [A key is made of its parts](principles.md#KeysOfParts) | **held** | [Compilation API](engine.md#CompilationApi), [Compiler](engine.md#Compiler), [Laws](engine.md#Laws), [Payload](engine.md#PayloadBuilder), [Static reading](engine.md#StaticAnalysis) |
 | [Trame builds Trame](principles.md#TrameBuildsTrame) | **held** | [Advance](commands.md#Advance), [Accept a candidate](generations.md#AcceptCandidate), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore), [The described engine compiles the example](scenarios.md#CompileExample), [The laws of the kinds hold](scenarios.md#KindLaws) |
-| [A technology is chosen in one node](principles.md#TechnologyInOneNode) | **unknown** | [The TypeScript compiler reads the declarations](platform.md#CompilerReadsDeclarations), [The engine's own files sit beside its code](platform.md#EngineFilesBesideCode), [esbuild bundles the page's program](platform.md#EsbuildBundles), [Scenarios run in memory](platform.md#InMemoryScenarios), [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine), [NodePlatform](platform.md#NodePlatform), [tree-sitter reads the bodies](platform.md#TreeSitterReads), [tsx runs TypeScript](platform.md#TsxRuns), [Documents in Markdown](rendering.md#DocumentsInMarkdown), [Figures in Mermaid](rendering.md#FiguresInMermaid), [The page's figures in SVG](rendering.md#PageFiguresDrawn), [The page in HTML](rendering.md#PageInHtml), [Figures in the terminal, as text](rendering.md#TerminalFiguresAsText), [The terminal in plain text](rendering.md#TerminalInText), [Abstract Factory](../std/docs/patterns.md#AbstractFactory), [Adapter](../std/docs/patterns.md#Adapter), [Bridge](../std/docs/patterns.md#Bridge), [Repository](../std/docs/patterns.md#Repository), [Strategy](../std/docs/patterns.md#Strategy) |
+| [A technology is chosen in one node](principles.md#TechnologyInOneNode) | **held** | [The TypeScript compiler reads the declarations](platform.md#CompilerReadsDeclarations), [The engine's own files sit beside its code](platform.md#EngineFilesBesideCode), [esbuild bundles the page's program](platform.md#EsbuildBundles), [Scenarios run in memory](platform.md#InMemoryScenarios), [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine), [NodePlatform](platform.md#NodePlatform), [tree-sitter reads the bodies](platform.md#TreeSitterReads), [tsx runs TypeScript](platform.md#TsxRuns), [Documents in Markdown](rendering.md#DocumentsInMarkdown), [Figures in Mermaid](rendering.md#FiguresInMermaid), [The page's figures in SVG](rendering.md#PageFiguresDrawn), [The page in HTML](rendering.md#PageInHtml), [Figures in the terminal, as text](rendering.md#TerminalFiguresAsText), [The terminal in plain text](rendering.md#TerminalInText), [Abstract Factory](../std/docs/patterns.md#AbstractFactory), [Adapter](../std/docs/patterns.md#Adapter), [Bridge](../std/docs/patterns.md#Bridge), [Repository](../std/docs/patterns.md#Repository), [Strategy](../std/docs/patterns.md#Strategy) |
 | [The prelude: the runtime of the language](principles.md#PreludeLayer) | **held** | [Prelude](architecture.md#Prelude), [The frozen API](conventions.md#FrozenApi), [The prelude's public API](conventions.md#PreludeApi), [Laws](engine.md#Laws) |
 | [Kinds and views: the vocabulary, as reviewed files](principles.md#VocabularyLayer) | **held** | [Laws](engine.md#Laws), [Project](engine.md#Project), [Views](engine.md#Views) |
 | [The graph: the description of a product](principles.md#GraphLayer) | **held** | [Build](commands.md#Build), [Compiler](engine.md#Compiler) |
@@ -36,7 +36,7 @@
 | [A library is imported by its name](principles.md#LibrariesByName) | **held** | [Release a version](commands.md#Release), [Write the manifest](commands.md#WriteManifest), [Laws](engine.md#Laws), [Project](engine.md#Project), [Names of a library's releases](libraries.md#LibraryReleaseNames), [A release is settled](libraries.md#ReleaseIsSettled) |
 | [A product is delivered by a node of the graph](principles.md#DeliveredByTheGraph) | **held** | [Deliver](commands.md#Deliver), [Style of a delivered page](delivery.md#DeliveredStyle) |
 | [The data a product carries is a dataset](principles.md#DataAsDatasets) | **held** | [Fingerprints](engine.md#Fingerprints), [Graph](engine.md#GraphApi) |
-| [A version ships through the graph](principles.md#ShippedThroughTheGraph) | **unknown** | [Record evidence](commands.md#RecordEvidence), [Ship](commands.md#Ship), [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws), [The next generation](sdlc.md#NextGeneration), [Evidence of the SDLC](shipping.md#SdlcEvidence), [Ship only what holds](shipping.md#ShipOnlyWhatHolds), [Where the SDLC's evidence is kept](shipping.md#ShippingRecords) |
+| [A version ships through the graph](principles.md#ShippedThroughTheGraph) | **held** | [Record evidence](commands.md#RecordEvidence), [Ship](commands.md#Ship), [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws), [The next generation](sdlc.md#NextGeneration), [Evidence of the SDLC](shipping.md#SdlcEvidence), [Ship only what holds](shipping.md#ShipOnlyWhatHolds), [Where the SDLC's evidence is kept](shipping.md#ShippingRecords) |
 | [The words are in catalogs](principles.md#WordsInCatalogs) | **held** | [Messages of an advance](messages.md#AdvanceMessages), [Messages of the commands](messages.md#CommandMessages), [Messages of the compiler](messages.md#CompilerMessages), [Messages of trame dev](messages.md#DevMessages), [Messages of the drivers](messages.md#DriverMessages), [Messages of the laws](messages.md#LawMessages), [Messages of the outputs](messages.md#OutputMessages), [Messages of the platform](messages.md#PlatformMessages), [Messages of the renderers](messages.md#RenderingMessages), [Messages of the scenarios](messages.md#ScenarioMessages), [Messages of the views](messages.md#ViewMessages), [Checks of a body](syntax.md#BodyChecks), [Syntax reader](syntax.md#SyntaxReader) |
 | [Kinds and views say what; renderers say how](rendering.md#MeaningThenLook) | **held** | [Rendering does not read the graph](architecture.md#RenderingWithoutGraph), [Common rendering](rendering.md#Common), [Rendering of the files](rendering.md#FileRendering), [Rendering in the page](rendering.md#PageRendering), [Rendering in the terminal](rendering.md#TerminalRendering) |
 | [One renderer, its syntax a choice](rendering.md#OneRendererManySyntaxes) | **held** | [Documents in Markdown](rendering.md#DocumentsInMarkdown), [Figures in Mermaid](rendering.md#FiguresInMermaid), [Rendering of the files](rendering.md#FileRendering), [The page's figures in SVG](rendering.md#PageFiguresDrawn), [The page in HTML](rendering.md#PageInHtml), [Rendering in the page](rendering.md#PageRendering), [Figures in the terminal, as text](rendering.md#TerminalFiguresAsText), [The terminal in plain text](rendering.md#TerminalInText), [Rendering in the terminal](rendering.md#TerminalRendering) |
@@ -49,7 +49,7 @@
 
 ### The page is assembled
 
-`ThePageIsAssembled` · `src/browser.ts:139` · status: **unknown**
+`ThePageIsAssembled` · `src/browser.ts:139` · status: **held**
 
 The page's script was the only code of Trame outside the graph: written by hand, wired by hand, its values written in it. It is now a component assembled for the browser, its entry point and its explorer bodies of the graph.
 
@@ -464,7 +464,7 @@ Consequences: A capability exists only once it is written in the graph, and serv
 
 ### A technology is chosen in one node
 
-`TechnologyInOneNode` · `src/principles.ts:233` · status: **unknown**
+`TechnologyInOneNode` · `src/principles.ts:233` · status: **held**
 
 What answers a port in an environment is said by a technical choice (a binding), never by the realization itself nor by the code that uses the port. A realization that touches nothing is a function; one that touches the platform is an implementation. The choice names the patterns it follows, and its shape is checked against them.
 
@@ -660,7 +660,7 @@ Consequences: A dataset (kind dataset) holds its rows as a typed value, so the T
 
 ### A version ships through the graph
 
-`ShippedThroughTheGraph` · `src/principles.ts:397` · status: **unknown**
+`ShippedThroughTheGraph` · `src/principles.ts:397` · status: **held**
 
 What makes a version available is declared in the project's graph: the artefacts it produces and what produces them (kind artifact), the checks a scenario in memory cannot make, run by a program of the SDLC or made by hand and signed by a role (kind check), the reviews and the role that gives them (kinds review and role), and the shipment that requires them and the programs that deploy it (kind shipment). trame ship and trame evidence record what was found, attributed to a person and tied to the fingerprint of what was seen; the next build reads it.
 

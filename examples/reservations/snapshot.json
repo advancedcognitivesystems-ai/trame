@@ -413,6 +413,64 @@
       }
     },
     {
+      "id": "consumer.FullRefundAhead",
+      "kind": "requirement",
+      "title": "A day ahead, a full refund",
+      "status": "held",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "notice": "consumer.FullRefundNotice"
+        },
+        "body": "(function)",
+        "examples": [
+          [
+            {
+              "charger": "normal",
+              "price": 20
+            },
+            86400
+          ],
+          [
+            {
+              "charger": "fast",
+              "price": 35
+            },
+            108000
+          ],
+          [
+            {
+              "charger": "normal",
+              "price": 20
+            },
+            3600
+          ]
+        ]
+      }
+    },
+    {
+      "id": "consumer.FullRefundAheadCriteria",
+      "kind": "acceptance",
+      "title": "Criteria of a full refund a day ahead",
+      "status": "held",
+      "fields": {
+        "owner": "karim",
+        "criteria": "(function)"
+      }
+    },
+    {
+      "id": "consumer.FullRefundNotice",
+      "kind": "decision",
+      "title": "Notice for a full refund",
+      "fields": {
+        "owner": "karim",
+        "value": 86400,
+        "rejected": {
+          "48 h": "longer than any charging slot is booked ahead"
+        }
+      }
+    },
+    {
       "id": "infra.BackupRetention",
       "kind": "decision",
       "title": "Backup retention",
@@ -1872,6 +1930,26 @@
       "from": "cancellation.SwissFrancs",
       "to": "cancellation.AmountWords",
       "kind": "written"
+    },
+    {
+      "from": "consumer.FullRefundAhead",
+      "to": "cancellation.CancelWithoutStress",
+      "kind": "refines"
+    },
+    {
+      "from": "consumer.FullRefundAhead",
+      "to": "cancellation.Refund",
+      "kind": "constrains"
+    },
+    {
+      "from": "consumer.FullRefundAhead",
+      "to": "consumer.FullRefundNotice",
+      "kind": "deps"
+    },
+    {
+      "from": "consumer.FullRefundAheadCriteria",
+      "to": "consumer.FullRefundAhead",
+      "kind": "accepts"
     },
     {
       "from": "infra.CancellationsSql",

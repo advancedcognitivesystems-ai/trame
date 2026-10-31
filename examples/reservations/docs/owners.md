@@ -5,7 +5,7 @@
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
 | The operators | 0 | 0 | 2 | 0 |
-| karim | 6 | 0 | 11 | 98 |
+| karim | 6 | 0 | 11 | 101 |
 | lea | 0 | 0 | 0 | 11 |
 
 <a id="The operators"></a>
@@ -77,6 +77,9 @@
 | [Idempotent payment provider](cancellation.md#IdempotentProvider) | Assumption | **unknown** |
 | [Immediate refund](cancellation.md#ImmediateRefund) | Service level objective | **unknown** |
 | [Swiss francs](cancellation.md#SwissFrancs) | Quantity |  |
+| [A day ahead, a full refund](consumer.md#FullRefundAhead) | Requirement | **held** |
+| [Criteria of a full refund a day ahead](consumer.md#FullRefundAheadCriteria) | Acceptance criteria | **held** |
+| [Notice for a full refund](consumer.md#FullRefundNotice) | Decision |  |
 | [Backup retention](infra.md#BackupRetention) | Decision |  |
 | [Cancellations in SQL](infra.md#CancellationsSql) | Function | **held** |
 | [Status of a cancelled reservation](infra.md#CancelledStatus) | Decision |  |

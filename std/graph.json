@@ -1452,6 +1452,9 @@
         "body": "(function)"
       },
       "diagnostics": [
+        "warning: Computes the same kind of answer from the same kind of arguments as “The data a shipment carries is reviewed” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so",
+        "warning: Computes the same kind of answer from the same kind of arguments as “The packages a shipment uses are safe” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so",
+        "warning: Computes the same kind of answer from the same kind of arguments as “The product a shipment serves holds” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so",
         "warning: Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it"
       ]
     },
@@ -1546,6 +1549,9 @@
         "body": "(function)"
       },
       "diagnostics": [
+        "warning: Computes the same kind of answer from the same kind of arguments as “The decisions a shipment applies hold” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so",
+        "warning: Computes the same kind of answer from the same kind of arguments as “The packages a shipment uses are safe” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so",
+        "warning: Computes the same kind of answer from the same kind of arguments as “The product a shipment serves holds” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so",
         "warning: Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it"
       ]
     },
@@ -1614,6 +1620,9 @@
         "body": "(function)"
       },
       "diagnostics": [
+        "warning: Computes the same kind of answer from the same kind of arguments as “The decisions a shipment applies hold” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so",
+        "warning: Computes the same kind of answer from the same kind of arguments as “The data a shipment carries is reviewed” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so",
+        "warning: Computes the same kind of answer from the same kind of arguments as “The product a shipment serves holds” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so",
         "warning: Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it"
       ]
     },
@@ -1646,6 +1655,9 @@
         "body": "(function)"
       },
       "diagnostics": [
+        "warning: Computes the same kind of answer from the same kind of arguments as “The decisions a shipment applies hold” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so",
+        "warning: Computes the same kind of answer from the same kind of arguments as “The data a shipment carries is reviewed” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so",
+        "warning: Computes the same kind of answer from the same kind of arguments as “The packages a shipment uses are safe” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so",
         "warning: Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it"
       ]
     },
@@ -2383,6 +2395,7 @@
         "body": "(function)"
       },
       "diagnostics": [
+        "warning: Computes the same kind of answer from the same kind of arguments as “A node reaches what it must” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so",
         "warning: Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it"
       ]
     },
@@ -2415,6 +2428,7 @@
         "body": "(function)"
       },
       "diagnostics": [
+        "warning: Computes the same kind of answer from the same kind of arguments as “A node never reaches what it must not” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so",
         "warning: Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it"
       ]
     },

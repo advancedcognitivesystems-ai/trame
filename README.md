@@ -908,6 +908,32 @@ offered there, without a status, as an adapter nobody chooses: judged where it i
 breaths" was found that way: right, with its criteria, and called by nothing since its poses are held a number of
 breaths.
 
+Two owners may disagree about a rule, and who prevails must not hide in the code. Changing another's rule is an
+amendment, which its owner approves (`UltraLaunch` amends `Refund`). A rule may also constrain another: `constrains`
+names it, `examples` the cases it is played on, and its body receives that rule's arguments, then its answer, and says
+whether it keeps it. At every build each example is played on the rule constrained and judged by the constraint: one
+refused makes both violated and tells both owners, until one of them amends their rule. The example's legal team answers
+for "A day ahead, a full refund", which constrains `Refund` on three examples:
+
+```ts
+export const FullRefundAhead = requirement({
+  owner: "karim",
+  refines: [CancelWithoutStress],
+  constrains: Refund,
+  examples: [[normal, h(24)], [fast, h(30)], [normal, h(1)]],
+  deps: { notice: FullRefundNotice },
+  body: ({ notice }) => (r, leadTime, refund) => leadTime < notice || refund === r.price,
+})
+```
+
+A constraint that needs a fact the rule does not receive cannot be written, its types refuse it: the rule's question is
+then incomplete. Since g81 the engine also says how each rule is called, the types of its arguments and of its answer:
+two rules of a project that compute the same kind of answer from the same kind of arguments, for the same need, neither
+using, refining nor constraining the other, are warned to both owners. A rule that answers true or false is left out,
+and one a rule or an obligation applies as a check: conditions add up, both must hold. A more precise type (a quantity)
+says that two rules answer different questions. Poselia's hand and foot on their way are such a pair; so are std's
+families of rules and obligations, until std applies them to itself.
+
 ## Quantities
 
 A number measures something: a duration, an amount of one currency, a ratio. Until g79 three units were written in

@@ -368,7 +368,7 @@ Consequences: The graph describes the prelude as a port; a body imports only its
 
 ### A version ships through the graph
 
-`ShippedThroughTheGraph` · `src/principles.ts:397` · status: **unknown**
+`ShippedThroughTheGraph` · `src/principles.ts:397` · status: **held**
 
 What makes a version available is declared in the project's graph: the artefacts it produces and what produces them (kind artifact), the checks a scenario in memory cannot make, run by a program of the SDLC or made by hand and signed by a role (kind check), the reviews and the role that gives them (kinds review and role), and the shipment that requires them and the programs that deploy it (kind shipment). trame ship and trame evidence record what was found, attributed to a person and tied to the fingerprint of what was seen; the next build reads it.
 
@@ -390,7 +390,7 @@ Consequences: A shipment holds when each obligation holds; trame ship builds its
 
 ### A technology is chosen in one node
 
-`TechnologyInOneNode` · `src/principles.ts:233` · status: **unknown**
+`TechnologyInOneNode` · `src/principles.ts:233` · status: **held**
 
 What answers a port in an environment is said by a technical choice (a binding), never by the realization itself nor by the code that uses the port. A realization that touches nothing is a function; one that touches the platform is an implementation. The choice names the patterns it follows, and its shape is checked against them.
 
