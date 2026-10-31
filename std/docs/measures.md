@@ -10,7 +10,7 @@
 
 ### ISO 8601 dates
 
-`Iso8601` · `src/measures.ts:29`
+`Iso8601` · `src/measures.ts:34`
 
 Calendar dates ("2026-10-17"): year, month and day in the extended format, in the Gregorian calendar. Months go from 01 to 12; every month has at least 28 days.
 
@@ -34,7 +34,7 @@ Source: ISO 8601-1:2019, calendar dates in the extended format (§ 5.2.2), in th
 
 ### Language tags
 
-`LanguageTags` · `src/measures.ts:66`
+`LanguageTags` · `src/measures.ts:71`
 
 A language written as a tag of subtags (fr, fr-CH, en-GB): the language first, then its script or its region, separated by hyphens; Java's locales, and the voices of Android, write an underscore instead.
 
@@ -53,7 +53,7 @@ Source: IETF BCP 47 (RFC 5646), Tags for Identifying Languages, § 2.1; Java SE,
 
 ### Semantic versioning
 
-`SemanticVersioning` · `src/measures.ts:50`
+`SemanticVersioning` · `src/measures.ts:55`
 
 A version as major.minor.patch: a change of major breaks what used the package; under 1.0.0, a change of minor does.
 
@@ -71,7 +71,7 @@ Source: Semantic Versioning 2.0.0, §§ 2, 4, 8 · `https://semver.org/spec/v2.0
 
 ### Units of measure
 
-`UnitsOfMeasure` · `src/measures.ts:12`
+`UnitsOfMeasure` · `src/measures.ts:17`
 
 A minute is 60 seconds and an hour 3,600 (the non-SI units accepted for use with the SI); a percent is a hundredth.
 
@@ -84,4 +84,87 @@ Source: BIPM, The International System of Units (SI Brochure, 9th edition), Tabl
 | `percent` | `100` | The hundredths of a whole: a ratio times 100 is a percentage |
 
 - Maintained by: trame
+- Serves: [A published value is cited, not copied](product.md#CitedNotCopied)
+
+## Decision
+
+<a id="SymbolsLanguage"></a>
+
+### The language the symbols of units are written in: the same in most languages, as the SI writes them.
+
+`SymbolsLanguage` · `src/measures.ts:83`
+
+| Case | Value |
+|---|---|
+| tag | en-GB |
+
+- Decided by: trame
+- Language of: [Symbols of units](#UnitSymbols)
+
+## Message catalog
+
+<a id="UnitSymbols"></a>
+
+### Symbols of units
+
+`UnitSymbols` · `src/measures.ts:89`
+
+A number followed by the symbol of its unit, as the SI and the custom of each writes it: 15 min, 2 h, 30 s, 50%.
+
+<details><summary>The messages, in code</summary>
+
+```typescript
+() => ({
+    second: (n: string) => `${n} s`,
+    minute: (n: string) => `${n} min`,
+    hour: (n: string) => `${n} h`,
+    percent: (n: string) => `${n}%`,
+  })
+```
+
+</details>
+
+- Owner: trame
+- Written in: [The language the symbols of units are written in: the same in most languages, as the SI writes them.](#SymbolsLanguage)
+- Writes the units of: [Ratio](#Ratio), [Time](#Time)
+
+## Quantities
+
+<a id="Ratio"></a>
+
+### Ratio
+
+`Ratio` · `src/measures.ts:123`
+
+A part of a whole, a number without dimension (a half is 0.5), written as a percentage: a hundredth is one percent.
+
+Source: BIPM, The International System of Units (SI Brochure, 9th edition), § 5.4.7 · `https://www.bipm.org/en/publications/si-brochure`
+
+| Unit | Of the base unit |
+|---|---|
+| `percent` | 0.01 |
+
+- Owner: trame
+- A ratio: true
+- Written with: [Symbols of units](#UnitSymbols)
+- Serves: [A published value is cited, not copied](product.md#CitedNotCopied)
+
+<a id="Time"></a>
+
+### Time
+
+`Time` · `src/measures.ts:105`
+
+How long something lasts, counted in seconds; a minute is 60 of them and an hour 3,600 (the units accepted for use with the SI).
+
+Source: BIPM, The International System of Units (SI Brochure, 9th edition), Tables 2 and 8 · `https://www.bipm.org/en/publications/si-brochure`
+
+| Unit | Of the base unit |
+|---|---|
+| `second` | 1 |
+| `minute` | 60 |
+| `hour` | 3600 |
+
+- Owner: trame
+- Written with: [Symbols of units](#UnitSymbols)
 - Serves: [A published value is cited, not copied](product.md#CitedNotCopied)

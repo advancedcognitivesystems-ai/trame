@@ -362,7 +362,7 @@ export const CompilationApi = fn({
   deps: {
     values: ValueTypes, rank: DefaultRank, positions: Positions, references: References, prelude: Prelude,
     counts: Counts, sequences: Sequences, texts: Texts, punctuation: Punctuation, ids: DocumentIds, layout: Layout, uri: Uri, messages: ViewMessages,
-    pipeline: ShipmentPipeline,
+    pipeline: ShipmentPipeline, units: Units,
   },
   body: code.file<typeof import("./code/engine/compilation-api").default>("./code/engine/compilation-api.ts"),
 })

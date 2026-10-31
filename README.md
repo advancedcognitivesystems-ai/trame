@@ -875,6 +875,58 @@ g8 described what part of these values hid, and the bodies now receive them from
 | `lines[0]`, `lines.slice(1)` | The convention of documentation comments | Decision `DocComment` (the first lines make the title) |
 | `JSON.stringify(…, null, 2)` | JSON written to be read | Decision `JsonFormatting` |
 
+## A rule is code
+
+A requirement's rule is the oracle its acceptance criteria play, and wired as a dependency it is code the program runs:
+the example's `Refund` is called by the entry point that cancels a reservation. Since g79 it is written as a body and
+held to what holds one. It receives what it reads as parameters, decisions, structures and other rules alike, and
+writes no literal and touches nothing of the platform:
+
+```ts
+export const Refund = requirement({
+  refines: [CancelWithoutStress],
+  deps: { period: FreeCancellationPeriod, fee: LateFee },
+  body: ({ period, fee }) => (r: Reservation, leadTime: Duration): CHF =>
+    leadTime >= period[r.charger] ? r.price : r.price - r.price * fee,
+})
+```
+
+Called, by its acceptance criteria (`Refund(normal, h(2)) === chf(20)`) or by a kind through its view (`given()`), the
+node is the rule its dependencies make: the engine wires it once the graph is compiled, and a value nobody decided is
+said where the rule reads it, as before. Wiring builds a node from its body before what its kind gives from its
+declaration, and a program refuses to freeze a body an amendment redefines in force. A rule written as the function
+itself (`rule:`), as until g78, is still read, with a warning: Poselia and the frozen releases of std still write theirs
+that way. Rewriting them found literals the old form hid: 30 rules of Poselia's body, 8 of std's, 6 of Trame's.
+
+## Quantities
+
+A number measures something: a duration, an amount of one currency, a ratio. Until g79 three units were written in
+the prelude, as plain numbers recognised by their names (`Duration`, `Percent`, and the Swiss franc), and nothing kept
+minutes from being added to francs. Since g80 a **quantity** is a node of the graph, declared where its domain is:
+
+```ts
+export const Time = quantity({
+  owner: "trame",
+  source: "BIPM, The International System of Units (SI Brochure, 9th edition), Tables 2 and 8",
+  units: { second: 1, minute: 60, hour: 3600 },
+  written: UnitSymbols,
+})
+export type Duration = Quantity<typeof Time>
+export const { second: s, minute: min, hour: h } = unitsOf(Time)
+```
+
+std declares `Time` and `Ratio` (a percent is a hundredth, `ratio: true`); the example declares its currency,
+`SwissFrancs`, after ISO 4217. The type of a value carries its quantity, so TypeScript refuses a value of one where
+another is expected; the compiler refuses what TypeScript lets through, anywhere in the code of a project: adding,
+subtracting or comparing two quantities, and multiplying or dividing them when neither is a ratio (a quantity divided
+by itself is a ratio). A build that does is refused, as one with a type error is: `"Swiss francs" + "Time": two
+quantities do not add up, nor compare`. A document writes each value of a quantity in the largest of its units it makes
+a whole number of, with the words of the catalog the quantity names: 10 min, 2 s, 50%, CHF 20.
+
+A declaration published in `trame.lock` whose form the language changes, not its meaning (a fee typed `Percent` that
+becomes a `Share`), is published again by `trame publish --migrate "why"`, which records when, why and which in the
+lock; a change of meaning stays an amendment's business.
+
 ## Standards and vocabularies
 
 A **standard** declares constants, their meaning and the source that defines them. It provides its values with their
@@ -1007,6 +1059,12 @@ declarations with), the types of Node below 23 (they follow the Node.js that run
   shipped without one; 7.1 brings it (`typescript/sync`), in beta since October, its final release announced for late
   November.
 - **Delivery**: the targets after the page: a web application (PWA), then Capacitor for Android and iOS.
+- **Poselia on g80**: its thirty rules written as bodies, with structures for vectors and angles and quantities for
+  its durations and its angles; then a release of std that carries the rules as bodies, and the old form of a rule
+  removed once nothing writes it.
+- **The model**: two requirements that say they answer the same question, played on each other's cases, a
+  disagreement settled as an overlap; a decision changed from the page, written into the repository as an amendment
+  proposal.
 - **Data**: migrations (proposed: a review on what a reviewer reads of a row, so a field nobody reads expires no
   review; a migration node from one version of a stored shape to the next, and a family `Migrated` that obliges a
   shipment whose stored shapes changed since the version deployed to carry them); a content update downloaded by the

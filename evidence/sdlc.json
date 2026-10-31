@@ -1167,6 +1167,16 @@
     "seal": "876d262546a1a90a3e3fe94d6e6415a61689c5cb30dd8d1d75fad776b995c08a"
   },
   {
+    "node": "commands.Advance",
+    "at": "2026-10-31",
+    "source": "deployed",
+    "value": 1,
+    "fingerprint": "6de620d0",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "27f475620553d83d23d2548119e0f3a256ac69b1c3eedcb8ff07abefe56d7beb"
+  },
+  {
     "node": "sdlc.CandidateKeepsTheLaws",
     "at": "2026-10-31",
     "source": "check",
@@ -1177,6 +1187,18 @@
     "by": "claude",
     "signature": "attribution",
     "seal": "f14038115f6cd81b450b462ac598ab73700aa4daf7457875081c127d90fa771d"
+  },
+  {
+    "node": "sdlc.CandidateKeepsTheLaws",
+    "at": "2026-10-31",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "3b3e79cf",
+    "code": "6a038fcb",
+    "engine": "7b9f31fbc0a62d15",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "c7e07fa8460ae6df48447069ecf8912caeebb3bdc678ec2fc729a1743c5d571b"
   },
   {
     "node": "sdlc.CandidateRunsOnTheMachine",
@@ -1191,6 +1213,18 @@
     "seal": "9dbb7f89df7df7426618c18cd5f1d4f1d1243eab2c7029243d3be56a7e6504d8"
   },
   {
+    "node": "sdlc.CandidateRunsOnTheMachine",
+    "at": "2026-10-31",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "3b3e79cf",
+    "code": "4b879195",
+    "engine": "7b9f31fbc0a62d15",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "0422385a0d62efe0661630ebcdf9a262d8383693a9ff23c82baf80ea668525d4"
+  },
+  {
     "node": "sdlc.EngineCandidate",
     "at": "2026-10-31",
     "source": "built",
@@ -1201,6 +1235,18 @@
     "signature": "attribution",
     "engine": "b2f7959e92dbe055",
     "seal": "3bda501a968dd6b0460d7338917e509511a0f655db1940e9473deb36156e827f"
+  },
+  {
+    "node": "sdlc.EngineCandidate",
+    "at": "2026-10-31",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "8f877c15a2990d5fcc3e103352faa20ce6cb2f2160747a333d34d96ac9f9330e",
+    "code": "fc1efc7d",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "7b9f31fbc0a62d15",
+    "seal": "081f399207a380b225088dfc36f96372b68a70095bb7cda5c0ab24000a432be5"
   },
   {
     "node": "sdlc.GraphPage",
@@ -1215,6 +1261,18 @@
     "seal": "94a1c7a8956d0fc57e2940a9e3f49687eea64d5f868f89c1e46b07b090b29a23"
   },
   {
+    "node": "sdlc.GraphPage",
+    "at": "2026-10-31",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "bc98e8cde8f3df1fabe062e4d91a26ff312082c06e3442fa52cc940ec2f9f21a",
+    "code": "02efc6f1",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "7b9f31fbc0a62d15",
+    "seal": "f2caf630d7bdfeb204723582d0750378805090ddf2934afe7ac4d767decaa094"
+  },
+  {
     "node": "sdlc.GraphPageOpens",
     "at": "2026-10-31",
     "source": "check",
@@ -1225,6 +1283,18 @@
     "by": "claude",
     "signature": "attribution",
     "seal": "17a047f4c172c54efa5a6922c38d854efb900b407351a86926074b024dee06f1"
+  },
+  {
+    "node": "sdlc.GraphPageOpens",
+    "at": "2026-10-31",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "447e8f75",
+    "code": "cae603c5",
+    "engine": "7b9f31fbc0a62d15",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "5927c258484dc968dd201545e0b87d21ae6292b69bd42168d361954c41db73e5"
   },
   {
     "node": "sdlc.NextGeneration",
@@ -1238,6 +1308,17 @@
     "seal": "b8ba2c639cd223404f9806264a68cb847126243127ed35ce353486ff7a11c6a7"
   },
   {
+    "node": "sdlc.NextGeneration",
+    "at": "2026-10-31",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "8ceba216",
+    "url": "evidence/shipments/NextGeneration-2026-10-31-8ceba216.json",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "294079a3cc9d1f26ec68f7688dfaf87d4db69d46cbd1ce09fa9aad73a1245b9d"
+  },
+  {
     "node": "sdlc.PageProgram",
     "at": "2026-10-31",
     "source": "built",
@@ -1248,5 +1329,17 @@
     "signature": "attribution",
     "engine": "b2f7959e92dbe055",
     "seal": "af3712d0e625523b36df1951555f0b897f0d33ddacefd21103c9aee9f0a58e3d"
+  },
+  {
+    "node": "sdlc.PageProgram",
+    "at": "2026-10-31",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "ffa1848d6bfdace18cfff215568566559b84cd9720b9dfe90b83a1b1a01c81fa",
+    "code": "cee33ef1",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "7b9f31fbc0a62d15",
+    "seal": "69e3f8f3c592013b848d87910cd10eb95c9db974c4fe85bb97f35e90d06c4aec"
   }
 ]

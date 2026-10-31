@@ -220,6 +220,23 @@ Acceptance criteria · `RefundCriteria` · **held**
 - Accepts: Refund on cancellation
 - Depends on: Free cancellation period
 
+### How an amount is written
+
+Message catalog · `AmountWords`
+
+- Owner: karim
+- Written in: Language
+
+### Swiss francs
+
+Quantity · `SwissFrancs`
+
+- Owner: karim
+- Source: ISO 4217, Codes for the representation of currencies: CHF
+- Address: https://www.iso.org/iso-4217-currency-codes.html
+- Units: { chf: 1 }
+- Written with: How an amount is written
+
 ## Reservations · Infrastructure
 
 ### Backup retention

@@ -303,6 +303,15 @@
       }
     },
     {
+      "id": "cancellation.AmountWords",
+      "kind": "catalog",
+      "title": "How an amount is written",
+      "fields": {
+        "owner": "karim",
+        "messages": "(function)"
+      }
+    },
+    {
       "id": "cancellation.CancelWithoutStress",
       "kind": "goal",
       "title": "Cancel without stress",
@@ -385,6 +394,19 @@
       "fields": {
         "owner": "lea",
         "criteria": "(function)"
+      }
+    },
+    {
+      "id": "cancellation.SwissFrancs",
+      "kind": "quantity",
+      "title": "Swiss francs",
+      "fields": {
+        "owner": "karim",
+        "source": "ISO 4217, Codes for the representation of currencies: CHF",
+        "url": "https://www.iso.org/iso-4217-currency-codes.html",
+        "units": {
+          "chf": 1
+        }
       }
     },
     {
@@ -1804,6 +1826,11 @@
       "kind": "deps"
     },
     {
+      "from": "cancellation.AmountWords",
+      "to": "messages.Language",
+      "kind": "language"
+    },
+    {
       "from": "cancellation.ImmediateRefund",
       "to": "cancellation.Refund",
       "kind": "constrains"
@@ -1837,6 +1864,11 @@
       "from": "cancellation.RefundCriteria",
       "to": "cancellation.Refund",
       "kind": "accepts"
+    },
+    {
+      "from": "cancellation.SwissFrancs",
+      "to": "cancellation.AmountWords",
+      "kind": "written"
     },
     {
       "from": "infra.CancellationsSql",

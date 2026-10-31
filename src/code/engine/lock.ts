@@ -13,6 +13,11 @@ import type { CodeSpan } from "../../markdown"
 
 export interface Lock {
   published: Record<string, string> // module.name → hash of the declaration
+  /**
+   * The declarations published again because the language changed their form, not their meaning (since g80): when,
+   * why, and which. A change of meaning is an amendment's business.
+   */
+  migrations?: { at: string; why: string; nodes: string[] }[]
 }
 
 export interface Deps {
@@ -75,12 +80,24 @@ const body = (deps: Deps) => {
   }
 
   /** Publishes: every current declaration becomes immutable. Refused if a published declaration has changed. */
-  function publish(c: Compiled, root: string): { added: string[]; refused: Diag[]; file?: string; text?: string } {
-    const refused = checkLock(c, root)
-    if (refused.length) return { added: [], refused }
+  function publish(c: Compiled, root: string, migration?: { at: string; why: string }): { added: string[]; migrated: string[]; refused: Diag[]; file?: string; text?: string } {
+    // A declaration that changed form, as the language moved, is published again when the publication says why.
+    const changed = (d: Diag) => d.node !== undefined && migration !== undefined
+    const found = checkLock(c, root)
+    const refused = found.filter((d) => !changed(d))
+    if (refused.length) return { added: [], migrated: [], refused }
     const lock = readLock(root)
+    const migrated: string[] = []
+    for (const { node } of found) {
+      const text = node && c.graph.view(node).decl?.sourceText
+      if (!node || text === undefined) continue
+      lock.published[refOf(node)] = hashOf(text)
+      migrated.push(refOf(node))
+    }
+    if (migration && migrated.length) lock.migrations = [...(lock.migrations ?? []), { ...migration, nodes: migrated }]
+    // Published again, nothing else: what is new is published by a publication of its own.
     const added: string[] = []
-    for (const n of c.nodes) {
+    for (const n of migration ? [] : c.nodes) {
       const ref = refOf(n)
       const text = c.graph.view(n).decl?.sourceText
       if (text === undefined || lock.published[ref]) continue
@@ -88,7 +105,7 @@ const body = (deps: Deps) => {
       added.push(ref)
     }
     lock.published = Object.fromEntries(Object.entries(lock.published).sort(([a], [b]) => a.localeCompare(b)))
-    return { added, refused: [], file: file(root), text: JSON.stringify(lock, null, deps.json.indentation) + deps.textFile.endOfLine }
+    return { added, migrated, refused: [], file: file(root), text: JSON.stringify(lock, null, deps.json.indentation) + deps.textFile.endOfLine }
   }
 
   return { hashOf, readLock, checkLock, publish }

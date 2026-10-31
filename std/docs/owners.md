@@ -4,7 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 0 | 119 |
+| trame | 0 | 0 | 0 | 123 |
 
 <a id="trame"></a>
 
@@ -35,8 +35,12 @@ Nothing to decide or watch.
 | [SVG](html.md#Svg) | Standard |  |
 | [ISO 8601 dates](measures.md#Iso8601) | Standard |  |
 | [Language tags](measures.md#LanguageTags) | Standard |  |
+| [Ratio](measures.md#Ratio) | Quantity |  |
 | [Semantic versioning](measures.md#SemanticVersioning) | Standard |  |
+| [The language the symbols of units are written in: the same in most languages, as the SI writes them.](measures.md#SymbolsLanguage) | Decision |  |
+| [Time](measures.md#Time) | Quantity |  |
 | [Units of measure](measures.md#UnitsOfMeasure) | Standard |  |
+| [Symbols of units](measures.md#UnitSymbols) | Message catalog |  |
 | [Criteria of the decisions applied](obligations.md#AppliedCriteria) | Acceptance criteria | **held** |
 | [Criteria of the artefacts checked](obligations.md#CheckedCriteria) | Acceptance criteria | **held** |
 | [Ways of checking](obligations.md#CheckWays) | Vocabulary |  |

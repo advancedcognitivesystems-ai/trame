@@ -1,0 +1,12 @@
+{
+  "published": {
+    "cancellation.CancelWithoutStress": "67fbe5804647a993",
+    "cancellation.FreeCancellationPeriod": "d0cb5219df993e55",
+    "cancellation.IdempotentProvider": "97a0a9923b559807",
+    "cancellation.ImmediateRefund": "a7a4923dbbdb2f31",
+    "cancellation.LateFee": "5013efb0a75e42df",
+    "cancellation.Refund": "90e58a4c3a22b2b1",
+    "cancellation.RefundCriteria": "7a27ff06e8420fbb",
+    "legal.FeeCap": "8301fb0ff01206d3"
+  }
+}

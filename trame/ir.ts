@@ -138,6 +138,10 @@ export type PackageField = ValueOf<typeof PackageField>
 export const ReleaseEdge = { component: "component", assembledBy: "assembledBy" } as const
 /** The fields of a release that the page and the views read: its version and the day it was released. */
 export const ReleaseField = { version: "version", date: "date" } as const
+/** The fields of a quantity the engine reads: its units (with how many of the base unit each makes), whether it is a ratio. */
+export const QuantityField = { units: "units", ratio: "ratio" } as const
+/** The edge from a quantity to the catalog that writes a value in each of its units. */
+export const QuantityEdge = { written: "written" } as const
 /** The field a vocabulary lists its words in: a rule of a library reads it on the graph's sketch. */
 export const VocabularyField = { words: "words" } as const
 export type ReleaseEdge = ValueOf<typeof ReleaseEdge>
@@ -230,7 +234,11 @@ export type ValueType = ValueOf<typeof ValueType>
 export type Inline =
   | string
   /** A value, with its unit. `open`: undecided, or contested. `rule`: a rule (a function), original or redefined. */
-  | { t: typeof InlineType.value; value: Json; unit?: Unit; type?: ValueType; open?: Openness; rule?: RuleState }
+  /**
+   * `unit`: a unit of the prelude, or the reference of a quantity of the graph (since g80); `shownAs`: the value as the
+   * engine writes it in the units of its quantity, each number in words ("15 min"), for the renderers to print.
+   */
+  | { t: typeof InlineType.value; value: Json; unit?: Unit | string; shownAs?: Json; type?: ValueType; open?: Openness; rule?: RuleState }
   | ({ t: typeof InlineType.ref } & NodeRef)
   /** Another document (a module, a view). */
   | { t: typeof InlineType.doc; id: string; title: string }

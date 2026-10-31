@@ -1,6 +1,6 @@
 /** Support requests */
 
-import { min } from "../../../trame/kernel"
+import { min } from "#std/measures"
 import { amend } from "../../../kinds/amendment"
 import { FreeCancellationPeriod } from "./cancellation"
 

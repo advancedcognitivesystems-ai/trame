@@ -33,14 +33,16 @@ const body = (deps: Deps): Handler => async (req) => {
   const blankLine = empty
   const o = options(req.params.command, (req.body as { args: string[] }).args)
   const { c } = await prepare(o)
-  const { added, refused, file, text } = deps.lock.publish(c, o.root)
+  const { added, migrated, refused, file, text } = deps.lock.publish(c, o.root, o.migrate === undefined ? undefined : { at: o.today, why: o.migrate })
   if (refused.length) {
     refuse(o, [...refused.map((d) => concat([cell(d.severity, widths.severity), optional(d.where), space, d.what])), blankLine, messages.publicationRefused()])
   }
   if (file && text !== undefined) deps.writing.writeFileSync(file, text)
+  if (migrated.length) deps.terminal.write(messages.publishedAgain(migrated.length))
+  for (const ref of migrated) deps.terminal.write(indent + ref)
   deps.terminal.write(added.length ? messages.published(added.length) : messages.nothingToPublish())
   for (const ref of added) deps.terminal.write(indent + ref)
-  return { status: deps.exitStatus.success, body: added }
+  return { status: deps.exitStatus.success, body: [...migrated, ...added] }
 }
 
 export default body

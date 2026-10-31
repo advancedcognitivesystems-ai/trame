@@ -217,6 +217,43 @@ Standard · `UnitsOfMeasure`
 - Constants: { minute: { value: 60, meaning: The seconds of a minute }, hour: { value: 3600, meaning: The seconds of an hour }, percent: { value: 100, meaning: The hundredths of a whole: a ratio times 100 is a percentage } }
 - Serves: A published value is cited, not copied
 
+### The language the symbols of units are written in: the same in most languages, as the SI writes them.
+
+Decision · `SymbolsLanguage`
+
+- Decided by: trame
+- Value: { tag: en-GB }
+
+### Symbols of units
+
+Message catalog · `UnitSymbols`
+
+- Owner: trame
+- Written in: The language the symbols of units are written in: the same in most languages, as the SI writes them.
+
+### Ratio
+
+Quantity · `Ratio`
+
+- Owner: trame
+- Source: BIPM, The International System of Units (SI Brochure, 9th edition), § 5.4.7
+- Address: https://www.bipm.org/en/publications/si-brochure
+- Units: { percent: 0.01 }
+- A ratio: true
+- Written with: Symbols of units
+- Serves: A published value is cited, not copied
+
+### Time
+
+Quantity · `Time`
+
+- Owner: trame
+- Source: BIPM, The International System of Units (SI Brochure, 9th edition), Tables 2 and 8
+- Address: https://www.bipm.org/en/publications/si-brochure
+- Units: { second: 1, minute: 60, hour: 3600 }
+- Written with: Symbols of units
+- Serves: A published value is cited, not copied
+
 ## Standard library · Obligations
 
 ### The decisions a shipment applies hold

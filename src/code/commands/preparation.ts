@@ -61,6 +61,8 @@ export interface Options {
   accept: boolean
   /** --promote "what changes": the candidate of an advance becomes the next generation. */
   promote?: string
+  /** --migrate "why": publish again the published declarations the language changed the form of (since g80). */
+  migrate?: string
   /** --by: who gives the evidence. --subject, --language: the row reviewed, in which language. --note, --url. */
   by?: string
   subject?: string
@@ -116,6 +118,7 @@ const body = (deps: Deps) => {
     const history = has(line.history)
     const accept = has(line.accept)
     const promote = take(line.promote)
+    const migrate = take(line.migrate)
     const by = take(line.by)
     const subject = take(line.subject)
     const language = take(line.language)
@@ -123,7 +126,7 @@ const body = (deps: Deps) => {
     const url = take(line.url)
     const dryRun = has(line.dryRun)
     return {
-      root: deps.currentProcess.cwd(), command, today, format, port, fragment, envName, all, history, accept, promote,
+      root: deps.currentProcess.cwd(), command, today, format, port, fragment, envName, all, history, accept, promote, migrate,
       by, subject, language, note, url, dryRun, args: argv,
     }
   }
@@ -172,6 +175,8 @@ const body = (deps: Deps) => {
     }
     loaded = await load(o.root)
     if (loaded.typeErrors.length) refuse(o, [messages.typeScriptRefuses(), ...loaded.typeErrors.map((e) => indent + e)])
+    const mixed = loaded.quantityErrors ?? []
+    if (mixed.length) refuse(o, [messages.quantitiesRefuse(), ...mixed.map((e) => indent + e)])
     return await at(o, o.today)
   }
 

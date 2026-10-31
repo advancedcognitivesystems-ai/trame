@@ -39,6 +39,6 @@ export const slo = defineKind({
   },
 
   render: (self) => [
-    doc.para(...say.sloObjective(doc.value(self.percentile), doc.ident(self.signal), doc.value(self.threshold, Unit.duration), doc.value(self.window, Unit.duration))),
+    doc.para(...say.sloObjective(doc.value(self.percentile), doc.ident(self.signal), doc.value(self.threshold, self.quantityOf?.(F.threshold) ?? Unit.duration), doc.value(self.window, self.quantityOf?.(F.window) ?? Unit.duration))),
   ],
 })

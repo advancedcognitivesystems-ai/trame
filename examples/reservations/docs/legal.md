@@ -16,7 +16,7 @@
 
 ### Legal cap on cancellation fees
 
-`FeeCap` · `src/legal.ts:10` · published
+`FeeCap` · `src/legal.ts:11` · published
 
 The largest share of the price that may legally be kept, in Switzerland and in France.
 

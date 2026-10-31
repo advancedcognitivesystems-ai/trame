@@ -1599,6 +1599,7 @@ Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Ge
 - Released by: trame
 - Releases: [Trame on the command line](architecture.md#TrameCli)
 - Assembled by: [Generation 78](#G78)
+- Assembled: [Generation 80](#G80)
 
 <a id="G8"></a>
 
@@ -1619,6 +1620,26 @@ Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Ge
 - Releases: [Trame on the command line](architecture.md#TrameCli)
 - Assembled by: [Generation 7](#G7)
 - Assembled: [Generation 9](#G9)
+
+<a id="G80"></a>
+
+### Generation 80
+
+`G80` · `src/releases.ts:1174`
+
+Units are quantities of the graph: the engine reads in the types what each declared value measures (Quantity<typeof Time>), refuses code that adds, subtracts or compares two quantities, or multiplies them when neither is a ratio, and writes every value of a quantity in its units with the words of its catalog. trame publish --migrate publishes again the declarations the language changed the form of, with why
+
+Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Generation 79](#G79).
+
+- Version: `g80`
+- Released on: 31 October 2026
+- Fingerprint: `3ba22adcd7f03bfb`
+- Language: the repository's, shared
+- Language archived: `0d666b812cb782bb`
+
+- Released by: trame
+- Releases: [Trame on the command line](architecture.md#TrameCli)
+- Assembled by: [Generation 79](#G79)
 
 <a id="G9"></a>
 

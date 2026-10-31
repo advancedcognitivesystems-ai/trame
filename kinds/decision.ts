@@ -29,7 +29,9 @@ const kind = defineKind({
   holes(self, g) {
     const { values, sequences, units } = g.lib
     const unit = unitOf(sequences.head(self.decl?.typeArgs))
-    const formatUnit = (x: number) => units.format(x, unit)
+    // A value of a quantity of the graph is written in its units; another, in the unit of the prelude its type names.
+    const quantity = self.quantityOf?.(F.value)
+    const formatUnit = (x: number) => (quantity === undefined ? undefined : g.inUnits?.(x, quantity)) ?? units.format(x, unit)
     const out: HoleSpec[] = []
     const v = self.field(F.value)
     const range = self.field(F.range)
@@ -57,7 +59,7 @@ const kind = defineKind({
   render(self, g) {
     const { values, references, sequences, counts } = g.lib
     const typeArg = sequences.head(self.decl?.typeArgs)
-    const unit = unitOf(typeArg)
+    const unit = self.quantityOf?.(F.value) ?? unitOf(typeArg)
     // Next to each value: who redefined it, or the fact that it is contested.
     const amended = new Map<string, View>()
     for (const a of self.amendedBy) for (const p of a.paths) amended.set(p, a.by)

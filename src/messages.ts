@@ -187,6 +187,12 @@ export const CompilerMessages = catalog({
     // Static reading.
     /** A type error, with the place it was found ("file:line"), when there is one. */
     typeError: (text: string, where?: string) => (where ? `${where}  ${text}` : text),
+    /** Two quantities put together where they do not add up (since g80). */
+    quantitiesTogether: (where: string, operator: string, a: string, b: string) =>
+      `${where}  "${a}" ${operator} "${b}": two quantities do not add up, nor compare`,
+    /** Two quantities multiplied or divided, neither a ratio: what the result measures is not declared. */
+    quantitiesMultiplied: (where: string, a: string, b: string) =>
+      `${where}  "${a}" and "${b}" multiplied or divided: the quantity it makes is declared nowhere`,
 
     // The wiring.
     circularDependency: (node: string) => `Circular dependency around "${node}"`,
@@ -464,6 +470,7 @@ export const CommandMessages = catalog({
     kindLawDetails: () => "details: npm run test-kinds",
     /** Followed by the type errors, one per line. */
     typeScriptRefuses: () => "TypeScript refuses the graph:",
+    quantitiesRefuse: () => "The quantities refuse the graph: what TypeScript lets through, the units do not",
 
     // trame test-kinds
     importsChecked: (refused: number) => `imports · ${refused ? `${refused} refused` : "only the public API is used"}`,
@@ -513,9 +520,10 @@ export const CommandMessages = catalog({
     audited: (packages: number, vulnerable: number, file: string) => `${plural(packages, { one: "package", other: "packages" })} audited, ${vulnerable} vulnerable · written: ${file}`,
     exported: (dates: number, file: string) => `export · ${plural(dates, { one: "date", other: "dates" })} · written: ${file}`,
     /** After the published declarations that changed. */
-    publicationRefused: () => "publication refused: a published declaration has changed",
+    publicationRefused: () => "publication refused: a published declaration has changed (an amendment changes its meaning; --migrate \"why\" publishes it again when only the language changed its form)",
     published: (declarations: number) => `published: ${plural(declarations, { one: "declaration", other: "declarations" })} frozen in trame.lock`,
     nothingToPublish: () => "nothing new to publish",
+    publishedAgain: (declarations: number) => `published again: ${plural(declarations, { one: "declaration", other: "declarations" })} whose form the language changed, not the meaning`,
 
     // trame plan: what a build would change.
     /** The first line: what changes, against the build of which date, compiled at which date. */

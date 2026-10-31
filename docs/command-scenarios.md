@@ -191,7 +191,7 @@ trame advance, in Trame's repository: the generation in place builds the librari
 |---|---|
 | trame advance stops at the first build that fails | passed |
 | The generation in place builds first | passed |
-| The candidate is accepted (  ✓ trame runs g80 \|   ✓ reservations runs g80 \| Advance succeeded.) | passed |
+| The candidate is accepted (  ✓ trame runs g81 \|   ✓ reservations runs g81 \| Advance succeeded.) | passed |
 | With --promote, it is frozen as the next generation, its origin written, the pin moved | passed |
 | The generation frozen records the fingerprint of its engine, by which evidence names it | passed |
 
@@ -366,7 +366,7 @@ trame publish freezes the example's declarations not yet published in trame.lock
 
 | Criterion | Result |
 |---|---|
-| trame publish freezes 99 declarations in trame.lock | passed |
+| trame publish freezes 101 declarations in trame.lock | passed |
 | Published again, nothing is new | passed |
 
 <details><summary>The code it runs: 44 nodes</summary>
@@ -451,7 +451,7 @@ trame test-kinds plays the laws of every kind of the example's language on drawn
 
 | Criterion | Result |
 |---|---|
-| trame test-kinds says the laws of each of the 38 kinds and 18 views hold | passed |
+| trame test-kinds says the laws of each of the 39 kinds and 18 views hold | passed |
 
 <details><summary>The code it runs: 44 nodes</summary>
 
@@ -646,7 +646,7 @@ trame payload writes the example compiled at its date: its nodes, its documents,
 
 | Criterion | Result |
 |---|---|
-| The payload holds 107 nodes and 246 documents | passed |
+| The payload holds 109 nodes and 250 documents | passed |
 | Each document is rendered in Markdown, in text and in HTML | passed |
 | The figures of the HTML are drawn in SVG | passed |
 | Two payloads alike differ in nothing | passed |

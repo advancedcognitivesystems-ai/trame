@@ -59,6 +59,8 @@ export interface GraphState {
   kept?: { get(key: string): unknown; set(key: string, value: unknown): void }
   /** Compiled at a day before today: evidence is judged as it was given. */
   asGiven?: boolean
+  /** The quantities of the graph, filled once compiled (their catalogs are wired then): how a value is written. */
+  quantities?: Map<string, { units: [string, number][]; words: Record<string, unknown> }>
   onBlocked?: (hole: Hole, what: Noun, of: View) => void
   onStatusError?: (n: AnyNode, e: Error) => void
   /** Consolidated graph: the effects of each node (its own and those of its dependencies). */
@@ -240,6 +242,10 @@ const body = (deps: Deps) => {
           t()
           return m.give?.()
         },
+        quantityOf(field: string) {
+          t()
+          return st.infos.get(n)?.quantities?.[field]
+        },
       }
       Object.freeze(v)
       views.set(n, v)
@@ -416,6 +422,10 @@ const body = (deps: Deps) => {
       code: (vs) => (st.code ? deps.fingerprints.of(Object.fromEntries(vs.map((v) => [v.ref, st.code?.get(v.node)]))) : undefined),
       engine: () => st.engine,
       asGiven: () => st.asGiven === true,
+      inUnits: (value: number, quantity: string) => {
+        const q = st.quantities?.get(quantity)
+        return q && deps.units.inUnits(value, q.units, q.words)
+      },
       // A run kept: given back as it was kept, computed and kept otherwise (when what it found may be kept).
       kept: async <T>(parts: readonly unknown[], compute: () => Promise<T>, keep: (result: T) => boolean): Promise<T> => {
         const store = st.kept

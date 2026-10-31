@@ -397,7 +397,7 @@ Environment · `Test`
 
 ### The page is assembled
 
-Architecture decision · `ThePageIsAssembled` · **unknown**
+Architecture decision · `ThePageIsAssembled` · **held**
 
 - Decided by: trame
 - Context: The page's script built by hand what it shared with the engine and wrote its values (classes, identifiers, the explorer's geometry) as literals the catalogue could not see: a change in the graph did not reach it.
@@ -408,7 +408,7 @@ Architecture decision · `ThePageIsAssembled` · **unknown**
 
 ### Explorer of a graph
 
-Function · `ExplorerFigures` · **unknown**
+Function · `ExplorerFigures` · **held**
 
 - Owner: trame
 - Parameters: { html: std/html.Html, svg: std/html.Svg, aria: std/html.Aria, css: std/html.Css, page: page.ThePage, markup: markup.DocumentMarkup, figures: markup.FigureMarkup, explorer: markup.ExplorerMarkup, drawing: appearance.ExplorerDrawing, element: html.HtmlElement, start: html.HtmlStartTag, empty: html.SelfClosingTag, path: html.PathData, declaration: html.CssDeclaration, escape: html.EscapedText, common: rendering.Common, words: messages.PageWords, messages: messages.RenderingMessages, punctuation: documents.Punctuation, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts }
@@ -417,7 +417,7 @@ Function · `ExplorerFigures` · **unknown**
 
 ### Show the graph
 
-Entry point · `ShowGraph` · **unknown**
+Entry point · `ShowGraph` · **held**
 
 - Owner: trame
 - Trigger: { type: load }
@@ -428,7 +428,7 @@ Entry point · `ShowGraph` · **unknown**
 
 ### The browser's gzip
 
-Implementation · `BrowserDecompression` · **unknown**
+Implementation · `BrowserDecompression` · **held**
 
 - Owner: trame
 - Parameters: { packing: page.PackedGraph, ecma: std/ecmascript.EcmaScript }
@@ -437,7 +437,7 @@ Implementation · `BrowserDecompression` · **unknown**
 
 ### The globals of the page, and trame dev
 
-Implementation · `BrowserFeed` · **unknown**
+Implementation · `BrowserFeed` · **held**
 
 - Owner: trame
 - Parameters: { page: page.ThePage, service: engine.DevService, values: std/algebra.ValueTypes }
@@ -446,7 +446,7 @@ Implementation · `BrowserFeed` · **unknown**
 
 ### Local storage
 
-Implementation · `BrowserMemory` · **unknown**
+Implementation · `BrowserMemory` · **held**
 
 - Owner: trame
 - Parameters: { page: page.ThePage }
@@ -455,7 +455,7 @@ Implementation · `BrowserMemory` · **unknown**
 
 ### The browser's window
 
-Implementation · `BrowserWindow` · **unknown**
+Implementation · `BrowserWindow` · **held**
 
 - Owner: trame
 - Parameters: { motion: std/web.MediaQueries5, feature: html.MediaFeature, counts: std/algebra.Counts }
@@ -464,7 +464,7 @@ Implementation · `BrowserWindow` · **unknown**
 
 ### The browser runs the page
 
-Technical choice · `TheBrowserRunsThePage` · **unknown**
+Technical choice · `TheBrowserRunsThePage` · **held**
 
 - Decided by: trame
 - Context: The page's script took what it needed from the browser itself, here and there: the graph could not say what the page asks of the browser, nor try it elsewhere.
@@ -1036,7 +1036,7 @@ Standard · `TrameCommands`
 
 - Maintained by: trame
 - Source: Trame, its command line (the entry points of commands, in the module commands)
-- Constants: { program: { value: trame, meaning: The name a person types }, assemble: { value: assemble, meaning: Assembles a component for an environment }, build: { value: build, meaning: Builds the documents of the graph }, dev: { value: dev, meaning: Follows the graph live in the page }, payload: { value: payload, meaning: Writes the graph compiled at a date, for the page }, export: { value: export, meaning: Writes the page, standalone }, publish: { value: publish, meaning: Freezes the published declarations in the lock }, run: { value: run, meaning: Assembles a component, then runs it }, view: { value: view, meaning: Shows a view }, snapshot: { value: snapshot, meaning: Takes the snapshot of the graph }, testKinds: { value: test-kinds, meaning: Tests the laws of the kinds and of the views }, advance: { value: advance, meaning: The generation in place assembles the described engine and checks it }, audit: { value: audit, meaning: Asks the registry about the packages of the graph, and keeps its answers as evidence }, manifest: { value: manifest, meaning: Writes the packages of the graph, at their versions, and where each library's name leads, into the project's manifest }, release: { value: release, meaning: Freezes a version of the project, a library: its graph, its code and its documents }, deliver: { value: deliver, meaning: Writes the deliveries of the project: a page a browser opens as it is }, ship: { value: ship, meaning: Builds a shipment's artefacts, runs its checks, refuses while an obligation does not hold, deploys it }, evidence: { value: evidence, meaning: Records a piece of evidence a person gives: a check made by hand, a review, a deployment }, doctor: { value: doctor, meaning: Asks the machine whether it runs Trame: files, trees, programs, a server, the time, the registry }, plan: { value: plan, meaning: Says what a build would change against the last one, and writes nothing }, fallback: { value: *, meaning: The command that receives a word naming no other one }, optionPrefix: { value: -, meaning: Opens an option, not a command }, at: { value: --at, meaning: The date at which the graph is compiled }, format: { value: --format, meaning: The format a view is written in }, port: { value: --port, meaning: The port trame dev listens on }, fragment: { value: --fragment, meaning: Writes the page as a fragment, without its document }, env: { value: --env, meaning: The environment a component is assembled for }, all: { value: --all, meaning: Every date, not only the one asked }, history: { value: --history, meaning: With --all, the last days of the project's history too: a version released, evidence given }, accept: { value: --accept, meaning: The differences an advance shows are wanted }, promote: { value: --promote, meaning: The candidate becomes the next generation, with what changes }, by: { value: --by, meaning: Who gives the evidence: the person it is attributed to }, subject: { value: --subject, meaning: What was reviewed: the key of a row of data }, language: { value: --language, meaning: The language a row was reviewed in }, note: { value: --note, meaning: What the evidence says, in words }, url: { value: --url, meaning: Where to read more, or where an artefact was deployed }, dryRun: { value: --dry-run, meaning: Builds and checks, records the evidence, but does not deploy }, restore: { value: --restore, meaning: Given to the launcher: installs, in the pinned generation's folder, the packages it was frozen with }, passed: { value: passed, meaning: The evidence says yes: the check passed, the review approves, the deployment is done }, failed: { value: failed, meaning: The evidence says no: the check failed, the review asks for changes }, json: { value: json, meaning: A view written as JSON (the intermediate format) }, markdown: { value: md, meaning: A view written as Markdown }, separator: { value:  , meaning: Separates the words of a command, and the names of a list given as one parameter } }
+- Constants: { program: { value: trame, meaning: The name a person types }, assemble: { value: assemble, meaning: Assembles a component for an environment }, build: { value: build, meaning: Builds the documents of the graph }, dev: { value: dev, meaning: Follows the graph live in the page }, payload: { value: payload, meaning: Writes the graph compiled at a date, for the page }, export: { value: export, meaning: Writes the page, standalone }, publish: { value: publish, meaning: Freezes the published declarations in the lock }, run: { value: run, meaning: Assembles a component, then runs it }, view: { value: view, meaning: Shows a view }, snapshot: { value: snapshot, meaning: Takes the snapshot of the graph }, testKinds: { value: test-kinds, meaning: Tests the laws of the kinds and of the views }, advance: { value: advance, meaning: The generation in place assembles the described engine and checks it }, audit: { value: audit, meaning: Asks the registry about the packages of the graph, and keeps its answers as evidence }, manifest: { value: manifest, meaning: Writes the packages of the graph, at their versions, and where each library's name leads, into the project's manifest }, release: { value: release, meaning: Freezes a version of the project, a library: its graph, its code and its documents }, deliver: { value: deliver, meaning: Writes the deliveries of the project: a page a browser opens as it is }, ship: { value: ship, meaning: Builds a shipment's artefacts, runs its checks, refuses while an obligation does not hold, deploys it }, evidence: { value: evidence, meaning: Records a piece of evidence a person gives: a check made by hand, a review, a deployment }, doctor: { value: doctor, meaning: Asks the machine whether it runs Trame: files, trees, programs, a server, the time, the registry }, plan: { value: plan, meaning: Says what a build would change against the last one, and writes nothing }, fallback: { value: *, meaning: The command that receives a word naming no other one }, optionPrefix: { value: -, meaning: Opens an option, not a command }, at: { value: --at, meaning: The date at which the graph is compiled }, format: { value: --format, meaning: The format a view is written in }, port: { value: --port, meaning: The port trame dev listens on }, fragment: { value: --fragment, meaning: Writes the page as a fragment, without its document }, env: { value: --env, meaning: The environment a component is assembled for }, all: { value: --all, meaning: Every date, not only the one asked }, history: { value: --history, meaning: With --all, the last days of the project's history too: a version released, evidence given }, accept: { value: --accept, meaning: The differences an advance shows are wanted }, promote: { value: --promote, meaning: The candidate becomes the next generation, with what changes }, migrate: { value: --migrate, meaning: With publish: the published declarations that changed form, not meaning, as the language moved, are published again, with why }, by: { value: --by, meaning: Who gives the evidence: the person it is attributed to }, subject: { value: --subject, meaning: What was reviewed: the key of a row of data }, language: { value: --language, meaning: The language a row was reviewed in }, note: { value: --note, meaning: What the evidence says, in words }, url: { value: --url, meaning: Where to read more, or where an artefact was deployed }, dryRun: { value: --dry-run, meaning: Builds and checks, records the evidence, but does not deploy }, restore: { value: --restore, meaning: Given to the launcher: installs, in the pinned generation's folder, the packages it was frozen with }, passed: { value: passed, meaning: The evidence says yes: the check passed, the review approves, the deployment is done }, failed: { value: failed, meaning: The evidence says no: the check failed, the review asks for changes }, json: { value: json, meaning: A view written as JSON (the intermediate format) }, markdown: { value: md, meaning: A view written as Markdown }, separator: { value:  , meaning: Separates the words of a command, and the names of a list given as one parameter } }
 
 ### Trame's environment
 
@@ -1252,9 +1252,9 @@ Function · `Assembly` · **held**
 Function · `CompilationApi` · **held**
 
 - Owner: trame
-- Parameters: { values: std/algebra.ValueTypes, rank: conventions.DefaultRank, positions: engine.Positions, references: engine.References, prelude: architecture.Prelude, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, punctuation: documents.Punctuation, ids: conventions.DocumentIds, layout: conventions.Layout, uri: std/web.Uri, messages: messages.ViewMessages, pipeline: engine.ShipmentPipeline }
+- Parameters: { values: std/algebra.ValueTypes, rank: conventions.DefaultRank, positions: engine.Positions, references: engine.References, prelude: architecture.Prelude, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, punctuation: documents.Punctuation, ids: conventions.DocumentIds, layout: conventions.Layout, uri: std/web.Uri, messages: messages.ViewMessages, pipeline: engine.ShipmentPipeline, units: documents.Units }
 - Serves: A specification that runs
-- Depends on: Default rank, Positions, References, Prelude, Punctuation of documents, Names of the documents, Project layout, Messages of the views, A shipment's pipeline
+- Depends on: Default rank, Positions, References, Prelude, Punctuation of documents, Names of the documents, Project layout, Messages of the views, A shipment's pipeline, Values with their units
 
 ### Compiler
 
@@ -3258,14 +3258,14 @@ Function · `StoppedClock` · **held**
 
 ### System files, for reading
 
-Implementation · `DiskReading` · **unknown**
+Implementation · `DiskReading` · **held**
 
 - Owner: trame
 - Implements: File reading
 
 ### Trees on disk
 
-Implementation · `DiskTrees` · **unknown**
+Implementation · `DiskTrees` · **held**
 
 - Owner: trame
 - Parameters: { diff: std/text.UnifiedDiff, node: std/system.NodeCli, events: std/system.NodeEvents }
@@ -3273,7 +3273,7 @@ Implementation · `DiskTrees` · **unknown**
 
 ### System files, for writing
 
-Implementation · `DiskWriting` · **unknown**
+Implementation · `DiskWriting` · **held**
 
 - Owner: trame
 - Implements: File writing
@@ -3322,7 +3322,7 @@ Implementation · `NodeHashing` · **held**
 
 ### Node HTTP server
 
-Implementation · `NodeHttpServer` · **unknown**
+Implementation · `NodeHttpServer` · **held**
 
 - Owner: trame
 - Implements: HTTP server
@@ -3336,7 +3336,7 @@ Implementation · `NodePaths` · **held**
 
 ### Node process
 
-Implementation · `NodeProcess` · **unknown**
+Implementation · `NodeProcess` · **held**
 
 - Owner: trame
 - Parameters: { argv: std/system.NodeArguments, node: std/system.NodeCli, runner: platform.TypeScriptRunner }
@@ -3345,7 +3345,7 @@ Implementation · `NodeProcess` · **unknown**
 
 ### Node programs
 
-Implementation · `NodePrograms` · **unknown**
+Implementation · `NodePrograms` · **held**
 
 - Owner: trame
 - Parameters: { node: std/system.NodeCli, runner: platform.TypeScriptRunner, events: std/system.NodeEvents }
@@ -3354,7 +3354,7 @@ Implementation · `NodePrograms` · **unknown**
 
 ### Node terminal
 
-Implementation · `NodeTerminal` · **unknown**
+Implementation · `NodeTerminal` · **held**
 
 - Owner: trame
 - Parameters: { argv: std/system.NodeArguments, exitStatus: std/system.ExitStatus, events: std/system.NodeEvents, posix: std/system.Posix, messages: messages.PlatformMessages }
@@ -3370,7 +3370,7 @@ Implementation · `NodeTimer` · **held**
 
 ### npm's reports
 
-Implementation · `NpmReports` · **unknown**
+Implementation · `NpmReports` · **held**
 
 - Owner: trame
 - Parameters: { npm: std/system.NpmCli, values: std/algebra.ValueTypes, counts: std/algebra.Counts, punctuation: documents.Punctuation }
@@ -3410,7 +3410,7 @@ Implementation · `RunsInTheProcess` · **held**
 
 ### Runs kept on disk
 
-Implementation · `RunsOnDisk` · **unknown**
+Implementation · `RunsOnDisk` · **held**
 
 - Owner: trame
 - Parameters: { layout: conventions.Layout, files: platform.EngineFiles, engines: engine.EngineFingerprint, scope: engine.KeptRunsScope, encodings: std/system.NodeEncodings }
@@ -3419,7 +3419,7 @@ Implementation · `RunsOnDisk` · **unknown**
 
 ### System clock
 
-Implementation · `SystemClock` · **unknown**
+Implementation · `SystemClock` · **held**
 
 - Owner: trame
 - Parameters: { iso: std/measures.Iso8601, environment: conventions.TrameEnvironment, sequences: std/algebra.Sequences }
@@ -3512,7 +3512,7 @@ Technical choice · `InMemoryScenarios` · **held**
 
 ### On a machine, Node.js reads, writes and runs
 
-Technical choice · `NodeMachine` · **unknown**
+Technical choice · `NodeMachine` · **held**
 
 - Decided by: trame
 - Context: What changes the world (files written, processes, the terminal, the clock) is real only on a machine; the scenarios keep it in memory.
@@ -3560,7 +3560,7 @@ Technical choice · `RunsKeptInTheProcess` · **held**
 
 ### On a machine, runs are kept on disk
 
-Technical choice · `RunsKeptOnDisk` · **unknown**
+Technical choice · `RunsKeptOnDisk` · **held**
 
 - Decided by: trame
 - Context: The commands of a shipment and of an advance run as separate processes, each compiling the same graph: what one played, the next can find only on disk.
@@ -3791,7 +3791,7 @@ Architecture decision · `PreludeLayer` · **held**
 
 ### A version ships through the graph
 
-Architecture decision · `ShippedThroughTheGraph` · **unknown**
+Architecture decision · `ShippedThroughTheGraph` · **held**
 
 - Decided by: trame
 - Context: Two products ship differently (a page placed where it is served, an engine frozen into a generation) and their pipelines lived in scripts and in their authors' heads: nothing said what had been checked, by whom, on which version, nor why a version could go.
@@ -3802,7 +3802,7 @@ Architecture decision · `ShippedThroughTheGraph` · **unknown**
 
 ### A technology is chosen in one node
 
-Architecture decision · `TechnologyInOneNode` · **unknown**
+Architecture decision · `TechnologyInOneNode` · **held**
 
 - Decided by: trame
 - Context: Each implementation said which environments it served: the choice of a technology was spread over its realizations, nothing said why, and a test double or a repository over a database port had to be declared as if it touched the platform.
@@ -5025,6 +5025,20 @@ Release · `G8`
 - Releases: Trame on the command line
 - Assembled by: Generation 7
 
+### Generation 80
+
+Release · `G80`
+
+- Released by: trame
+- Version: g80
+- Released on: 2026-10-31
+- What changes: Units are quantities of the graph: the engine reads in the types what each declared value measures (Quantity<typeof Time>), refuses code that adds, subtracts or compares two quantities, or multiplies them when neither is a ratio, and writes every value of a quantity in its units with the words of its catalog. trame publish --migrate publishes again the declarations the language changed the form of, with why
+- Fingerprint: 3ba22adcd7f03bfb
+- Language: shared
+- Language archived: 0d666b812cb782bb
+- Releases: Trame on the command line
+- Assembled by: Generation 79
+
 ### Generation 9
 
 Release · `G9`
@@ -5422,7 +5436,7 @@ Technical choice · `SdlcInMemory` · **held**
 
 ### The SDLC on the machine
 
-Technical choice · `SdlcOnTheMachine` · **unknown**
+Technical choice · `SdlcOnTheMachine` · **held**
 
 - Decided by: trame
 - Context: The graph page must be opened as a person opens it: the file exported, in a real browser.
@@ -5447,7 +5461,7 @@ Role · `Maintainers`
 
 ### The candidate engine
 
-Artefact · `EngineCandidate` · **unknown**
+Artefact · `EngineCandidate` · **held**
 
 - Owner: trame
 - Path: out/local/trame-cli.ts
@@ -5455,7 +5469,7 @@ Artefact · `EngineCandidate` · **unknown**
 
 ### The graph page
 
-Artefact · `GraphPage` · **unknown**
+Artefact · `GraphPage` · **held**
 
 - Owner: trame
 - Path: trame-page.html
@@ -5474,7 +5488,7 @@ Artefact · `PageProgram` · **held**
 
 ### The candidate plays the laws
 
-Check · `CandidateKeepsTheLaws` · **unknown**
+Check · `CandidateKeepsTheLaws` · **held**
 
 - Owner: trame
 - Checks: The candidate engine
@@ -5483,7 +5497,7 @@ Check · `CandidateKeepsTheLaws` · **unknown**
 
 ### The candidate runs on the machine
 
-Check · `CandidateRunsOnTheMachine` · **unknown**
+Check · `CandidateRunsOnTheMachine` · **held**
 
 - Owner: trame
 - Checks: The candidate engine
@@ -5493,7 +5507,7 @@ Check · `CandidateRunsOnTheMachine` · **unknown**
 
 ### The graph page opens
 
-Check · `GraphPageOpens` · **unknown**
+Check · `GraphPageOpens` · **held**
 
 - Owner: trame
 - Checks: The graph page
@@ -5503,7 +5517,7 @@ Check · `GraphPageOpens` · **unknown**
 
 ### The next generation
 
-Shipment · `NextGeneration` · **unknown**
+Shipment · `NextGeneration` · **held**
 
 - Owner: trame
 - Target: generation

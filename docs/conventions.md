@@ -10,7 +10,7 @@
 
 ### Names of the documents
 
-`DocumentIds` · `src/conventions.ts:182`
+`DocumentIds` · `src/conventions.ts:183`
 
 How a document of a view is named: a view of the whole graph by its name; a view of a module by its name and the module ("layers.engine"), except the first view per module, named by the module alone; a view of a node by its name and the reference of the node ("impact:engine.Compiler"), which the page reads back to show it.
 
@@ -55,7 +55,7 @@ Source: Trame, the prelude (trame/internal.ts: frozen)
 
 ### Trame references
 
-`ReferenceSyntax` · `src/conventions.ts:153`
+`ReferenceSyntax` · `src/conventions.ts:154`
 
 How the language names a node and a field: "module.Identifier", "value.case". An empty path designates the whole node. A module of a library takes the library's name before its own: "std/algebra.Counts".
 
@@ -114,6 +114,7 @@ Source: Trame, its command line (the entry points of commands, in the module com
 | `history` | `--history` | With --all, the last days of the project's history too: a version released, evidence given |
 | `accept` | `--accept` | The differences an advance shows are wanted |
 | `promote` | `--promote` | The candidate becomes the next generation, with what changes |
+| `migrate` | `--migrate` | With publish: the published declarations that changed form, not meaning, as the language moved, are published again, with why |
 | `by` | `--by` | Who gives the evidence: the person it is attributed to |
 | `subject` | `--subject` | What was reviewed: the key of a row of data |
 | `language` | `--language` | The language a row was reviewed in |
@@ -134,7 +135,7 @@ Source: Trame, its command line (the entry points of commands, in the module com
 
 ### Trame's environment
 
-`TrameEnvironment` · `src/conventions.ts:127`
+`TrameEnvironment` · `src/conventions.ts:128`
 
 The variables of the environment Trame reads.
 
@@ -153,7 +154,7 @@ Source: Trame, the variables of the environment it reads
 
 ### Default rank
 
-`DefaultRank` · `src/conventions.ts:146`
+`DefaultRank` · `src/conventions.ts:147`
 
 The place of a kind or a view that does not declare one, in documents and lists.
 
@@ -166,7 +167,7 @@ The place of a kind or a view that does not declare one, in documents and lists.
 
 ### Documentation comment
 
-`DocComment` · `src/conventions.ts:168`
+`DocComment` · `src/conventions.ts:169`
 
 What the comment before a declaration says: its first lines are the node's title, the following ones its description. The lines of each are joined into one text, by a space.
 
@@ -183,7 +184,7 @@ What the comment before a declaration says: its first lines are the node's title
 
 ### JSON formatting
 
-`JsonFormatting` · `src/conventions.ts:174`
+`JsonFormatting` · `src/conventions.ts:175`
 
 The JSON that Trame writes to be read (the lock, a view in JSON): indented.
 
@@ -258,7 +259,7 @@ How a body names the prelude's public API (trame/kernel), the only module it may
 
 ### Names of steps
 
-`StepNames` · `src/conventions.ts:140`
+`StepNames` · `src/conventions.ts:141`
 
 When two steps of a wiring plan would take the same name, or a step a name that is taken, the second takes its module as a prefix, with this joint.
 
@@ -273,7 +274,7 @@ When two steps of a wiring plan would take the same name, or a step a name that 
 
 ### Order of the view groups
 
-`ViewGroupOrder` · `src/conventions.ts:196`
+`ViewGroupOrder` · `src/conventions.ts:197`
 
 Where the views of each group come in the list of documents: the documents of the modules first, then the other documents, the figures, the summary, and last the views of a node.
 

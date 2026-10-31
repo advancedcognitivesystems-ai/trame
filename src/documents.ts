@@ -153,6 +153,22 @@ export const Units = fn({
         if (unit === Unit.chf) return words.chf(number(v))
         return number(v)
       },
+      /**
+       * A number of a quantity of the graph (since g80), given its units from the largest: written in the largest one it
+       * makes a whole number of, in the smallest otherwise, with the words of that unit (its message, when it has one).
+       */
+      inUnits: (v: number, units: readonly (readonly [string, number])[], unitWords: Readonly<Record<string, unknown>>): string => {
+        // Whole in a unit: a whole number once written, and not a value that only rounds to nothing.
+        const fits = units.filter(([, factor]) => {
+          const written = Math.round((v / factor) * scale) / scale
+          return Number.isInteger(written) && (written !== counts.zero || v === counts.zero)
+        })
+        const [chosen] = [...fits, ...[...units].reverse()]
+        if (!chosen) return number(v)
+        const [name, factor] = chosen
+        const write = unitWords[name]
+        return values.isFunction(write) ? String((write as (n: string) => unknown)(number(v / factor))) : number(v / factor)
+      },
     }
   },
 })

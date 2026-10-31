@@ -1,6 +1,7 @@
 /** Reservations · API */
 
-import { code, ms, elapsed, type Duration } from "../../../trame/kernel"
+import { code, ms, elapsed } from "../../../trame/kernel"
+import type { Duration } from "#std/measures"
 import { fn } from "../../../kinds/function"
 import { entryPoint, http } from "../../../kinds/entry-point"
 import { FreeCancellationPeriod, Refund, CancelWithoutStress } from "./cancellation"

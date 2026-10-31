@@ -5,7 +5,7 @@
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
 | The operators | 0 | 0 | 2 | 0 |
-| karim | 6 | 0 | 11 | 96 |
+| karim | 6 | 0 | 11 | 98 |
 | lea | 0 | 0 | 0 | 9 |
 
 <a id="The operators"></a>
@@ -73,8 +73,10 @@
 | [Reservations API](architecture.md#ReservationsApi) | Component | to decide |
 | [Every call to a third party is verified](architecture.md#ThirdPartiesVerified) | Architecture rule | **held** |
 | [Utilities do not touch the world](architecture.md#UtilitiesWithoutWorld) | Architecture rule | **held** |
+| [How an amount is written](cancellation.md#AmountWords) | Message catalog |  |
 | [Idempotent payment provider](cancellation.md#IdempotentProvider) | Assumption | **unknown** |
 | [Immediate refund](cancellation.md#ImmediateRefund) | Service level objective | **unknown** |
+| [Swiss francs](cancellation.md#SwissFrancs) | Quantity |  |
 | [Backup retention](infra.md#BackupRetention) | Decision |  |
 | [Cancellations in SQL](infra.md#CancellationsSql) | Function | **held** |
 | [Status of a cancelled reservation](infra.md#CancelledStatus) | Decision |  |

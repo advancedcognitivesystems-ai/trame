@@ -1167,3 +1167,18 @@ export const G79 = release({
   differences: "differences.diff",
   assembledBy: G78,
 })
+
+/**
+ * Generation 80
+ */
+export const G80 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g80",
+  date: "2026-10-31",
+  what: "Units are quantities of the graph: the engine reads in the types what each declared value measures (Quantity<typeof Time>), refuses code that adds, subtracts or compares two quantities, or multiplies them when neither is a ratio, and writes every value of a quantity in its units with the words of its catalog. trame publish --migrate publishes again the declarations the language changed the form of, with why",
+  fingerprint: "3ba22adcd7f03bfb",
+  language: "shared",
+  archive: "0d666b812cb782bb",
+  assembledBy: G79,
+})

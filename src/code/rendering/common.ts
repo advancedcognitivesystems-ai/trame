@@ -1,8 +1,8 @@
 // What all the renderers share: a value in words, the sentence of an overlap, where the card of a node lives.
 // Pure: no dependency on Node. The page uses it too.
 
-import { BlockType, InlineType, OPEN_KEY, Openness, Outcome, ResolutionOutcome, RuleState, Severity, Status, Validity, ValueType, ViewGroup, keyFor, keyOf } from "../../../trame/kernel"
-import type { Block, Document, Inline, Json, KeyOf, NodeRef, ProvidedBy, ResolutionBlock, Unit } from "../../../trame/kernel"
+import { BlockType, InlineType, OPEN_KEY, Unit, Openness, Outcome, ResolutionOutcome, RuleState, Severity, Status, Validity, ValueType, ViewGroup, keyFor, keyOf } from "../../../trame/kernel"
+import type { Block, Document, Inline, Json, KeyOf, NodeRef, ProvidedBy, ResolutionBlock } from "../../../trame/kernel"
 import type { Dates, Lists, RenderingMessages } from "../../messages"
 import type { Texts, ValueTypes } from "#std/algebra"
 import type { ReferenceSyntax } from "../../conventions"
@@ -66,8 +66,13 @@ const body = (deps: Deps) => {
   function valueText(i: ValueInline): string {
     if (i.open) return i.open === Openness.contested ? messages.contested() : messages.undecided()
     if (i.rule) return i.rule === RuleState.redefined ? messages.redefinedRule() : messages.originalRule()
-    return jsonText(i.value, i.unit, i.type)
+    // A value of a quantity of the graph comes written by the engine, each number in its unit (since g80).
+    if (i.shownAs !== undefined) return jsonText(i.shownAs, undefined, i.type)
+    return jsonText(i.value, unitOfThePrelude(i.unit), i.type)
   }
+
+  /** A unit the prelude writes (a duration, a percentage, an amount in francs), not a quantity of the graph. */
+  const unitOfThePrelude = (unit: string | undefined): Unit | undefined => Object.values(Unit).find((u) => u === unit)
 
   /** A value that remains open (undecided or contested), even deep inside a composite value. */
   function isOpen(i: ValueInline): boolean {

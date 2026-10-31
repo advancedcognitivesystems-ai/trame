@@ -1175,6 +1175,20 @@
       }
     },
     {
+      "id": "measures.Ratio",
+      "kind": "quantity",
+      "title": "Ratio",
+      "fields": {
+        "owner": "trame",
+        "source": "BIPM, The International System of Units (SI Brochure, 9th edition), § 5.4.7",
+        "url": "https://www.bipm.org/en/publications/si-brochure",
+        "units": {
+          "percent": 0.01
+        },
+        "ratio": true
+      }
+    },
+    {
       "id": "measures.SemanticVersioning",
       "kind": "standard",
       "title": "Semantic versioning",
@@ -1191,6 +1205,32 @@
             "value": 0,
             "meaning": "The major of a package in its initial development: its minor then breaks what uses it"
           }
+        }
+      }
+    },
+    {
+      "id": "measures.SymbolsLanguage",
+      "kind": "decision",
+      "title": "The language the symbols of units are written in: the same in most languages, as the SI writes them.",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "tag": "en-GB"
+        }
+      }
+    },
+    {
+      "id": "measures.Time",
+      "kind": "quantity",
+      "title": "Time",
+      "fields": {
+        "owner": "trame",
+        "source": "BIPM, The International System of Units (SI Brochure, 9th edition), Tables 2 and 8",
+        "url": "https://www.bipm.org/en/publications/si-brochure",
+        "units": {
+          "second": 1,
+          "minute": 60,
+          "hour": 3600
         }
       }
     },
@@ -1216,6 +1256,15 @@
             "meaning": "The hundredths of a whole: a ratio times 100 is a percentage"
           }
         }
+      }
+    },
+    {
+      "id": "measures.UnitSymbols",
+      "kind": "catalog",
+      "title": "Symbols of units",
+      "fields": {
+        "owner": "trame",
+        "messages": "(function)"
       }
     },
     {
@@ -3193,7 +3242,27 @@
       "kind": "serves"
     },
     {
+      "from": "measures.Ratio",
+      "to": "measures.UnitSymbols",
+      "kind": "written"
+    },
+    {
+      "from": "measures.Ratio",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
       "from": "measures.SemanticVersioning",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "measures.Time",
+      "to": "measures.UnitSymbols",
+      "kind": "written"
+    },
+    {
+      "from": "measures.Time",
       "to": "product.CitedNotCopied",
       "kind": "serves"
     },
@@ -3201,6 +3270,11 @@
       "from": "measures.UnitsOfMeasure",
       "to": "product.CitedNotCopied",
       "kind": "serves"
+    },
+    {
+      "from": "measures.UnitSymbols",
+      "to": "measures.SymbolsLanguage",
+      "kind": "language"
     },
     {
       "from": "obligations.Applied",

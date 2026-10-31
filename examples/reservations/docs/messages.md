@@ -10,7 +10,7 @@
 
 ### Language
 
-`Language` · `src/messages.ts:11`
+`Language` · `src/messages.ts:12`
 
 The language of what the service and its scenarios say: British English.
 
@@ -19,7 +19,7 @@ The language of what the service and its scenarios say: British English.
 | tag | en-GB |
 
 - Decided by: karim
-- Language of: [Messages of the API](#ApiMessages), [Checks of the scenarios](#ScenarioChecks)
+- Language of: [How an amount is written](cancellation.md#AmountWords), [Messages of the API](#ApiMessages), [Checks of the scenarios](#ScenarioChecks)
 
 ## Message catalogs
 
@@ -27,7 +27,7 @@ The language of what the service and its scenarios say: British English.
 
 ### Messages of the API
 
-`ApiMessages` · `src/messages.ts:17`
+`ApiMessages` · `src/messages.ts:18`
 
 What the service answers when it cannot do what it is asked.
 
@@ -54,7 +54,7 @@ What the service answers when it cannot do what it is asked.
 
 ### Checks of the scenarios
 
-`ScenarioChecks` · `src/messages.ts:34`
+`ScenarioChecks` · `src/messages.ts:35`
 
 What each scenario checks, as its report says it.
 

@@ -2,15 +2,15 @@
 // The traversal API, plus what the compilation found (holes, claims, overlaps, publication),
 // and the standard composition of a node's card from what its kind renders.
 
-import { BlockType, ClaimOutcome, ClaimSide, DateRole, Direction, FieldType, JsonMark, Nature, Origin, ResolutionOutcome, RuleState, Severity, Stage, Validity, ValueType, ViewName, ViewScope, doc, unitOf } from "../../../trame/kernel"
+import { BlockType, ClaimOutcome, ClaimSide, DateRole, Direction, FieldType, JsonMark, Nature, OPEN_KEY, Origin, ResolutionOutcome, RuleState, Severity, Stage, Validity, ValueType, ViewName, ViewScope, doc, unitOf } from "../../../trame/kernel"
 import type {
-  ProvidedBy, AnyKind, AnyNode, Block, Card, ClaimInfo, Compilation, DateInfo, Fact, FigureEdge, FigureNode, Inline, Issue,
+  ProvidedBy, AnyKind, AnyNode, Json, Block, Card, ClaimInfo, Compilation, DateInfo, Fact, FigureEdge, FigureNode, Inline, Issue,
   IssueItem, KindInfo, NodeRef, ResolutionBlock, ResolutionInfo, View, LiteralInfo, LanguageLiteral, ViewDef, LibraryInfo,
 } from "../../../trame/kernel"
 import type { Layout, Prelude } from "../../architecture"
 import type { Uri } from "#std/web"
 import type { ViewMessages } from "../../messages"
-import type { Punctuation } from "../../documents"
+import type { Punctuation, Units } from "../../documents"
 import type { DocumentIds } from "../../conventions"
 import type { Counts, Sequences, Texts, ValueTypes } from "#std/algebra"
 import type { ClaimRecord, Compiled, Diag, ResolutionRecord } from "./compiler"
@@ -40,6 +40,8 @@ export interface Deps {
   messages: ProvidedBy<typeof ViewMessages>
   /** A shipment's pipeline, as trame ship runs it. */
   pipeline: PipelineApi
+  /** How a number is written in the units of its quantity (since g80). */
+  units: ProvidedBy<typeof Units>
 }
 
 const body = (deps: Deps) => {
@@ -85,13 +87,25 @@ const body = (deps: Deps) => {
     const nodeViews = () => projectViews.filter((x) => x.per === ViewScope.node).sort((a, b) => (a.order ?? deps.rank) - (b.order ?? deps.rank))
     const perModule = () => projectViews.filter((x) => x.per === ViewScope.module).sort((a, b) => (a.order ?? deps.rank) - (b.order ?? deps.rank))
 
+    /** A value of a quantity of the graph, each number written in its units (since g80); undefined for another quantity. */
+    const shown = (written: Json, quantity: string): Json | undefined => {
+      const q = c.quantities?.get(quantity)
+      if (!q) return undefined
+      const inUnits = (x: Json): Json =>
+        values.isNumber(x) ? deps.units.inUnits(x, q.units, q.words)
+          : Array.isArray(x) ? x.map(inUnits)
+            : x !== null && values.isObject(x) && !(OPEN_KEY in x) ? Object.fromEntries(Object.entries(x).map(([k, y]) => [k, inUnits(y)])) : x
+      return inUnits(written)
+    }
+
     const value = (target: View, path: string, raw: unknown): Inline => {
       const first = deps.references.firstSegment(path)
       const info = target.fieldInfo(first)
       const nodeUnit = unitOf(head(target.decl?.typeArgs))
-      const unit = info?.type === FieldType.duration || info?.type === FieldType.percent || info?.type === FieldType.chf
+      // The quantity its type says (since g80), or else the unit of the prelude its field or its node's type names.
+      const unit = target.quantityOf?.(first) ?? (info?.type === FieldType.duration || info?.type === FieldType.percent || info?.type === FieldType.chf
         ? info.type
-        : info?.type === FieldType.value || info?.type === FieldType.range ? nodeUnit : undefined
+        : info?.type === FieldType.value || info?.type === FieldType.range ? nodeUnit : undefined)
       const type = info?.type === FieldType.date ? ValueType.date
         : info?.type === FieldType.range && first === path ? ValueType.range
         : info?.type === FieldType.map && first === path ? ValueType.map : undefined
@@ -320,6 +334,9 @@ const body = (deps: Deps) => {
         }
         return out.sort((a, b) => a.date.localeCompare(b.date) || a.node.title.localeCompare(b.node.title))
       },
+
+      // Only when the graph has quantities: a document is then read again to write their values in their units.
+      ...(c.quantities?.size ? { shown } : {}),
 
       literals: (v?: View): LiteralInfo[] =>
         [...c.literals].filter(([n]) => !v || n === v.node).flatMap(([n, groups]) =>

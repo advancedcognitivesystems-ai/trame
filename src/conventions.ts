@@ -105,6 +105,7 @@ export const TrameCommands = standard({
     history: { value: "--history", meaning: "With --all, the last days of the project's history too: a version released, evidence given" },
     accept: { value: "--accept", meaning: "The differences an advance shows are wanted" },
     promote: { value: "--promote", meaning: "The candidate becomes the next generation, with what changes" },
+    migrate: { value: "--migrate", meaning: "With publish: the published declarations that changed form, not meaning, as the language moved, are published again, with why" },
     by: { value: "--by", meaning: "Who gives the evidence: the person it is attributed to" },
     subject: { value: "--subject", meaning: "What was reviewed: the key of a row of data" },
     language: { value: "--language", meaning: "The language a row was reviewed in" },

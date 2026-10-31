@@ -4,6 +4,7 @@
 
 import type { Hashing, KeptResults, Paths, RunStore, TypeScriptCompiler } from "../../architecture"
 import type ts from "typescript"
+import { QuantityField, QuantityMark } from "../../../trame/kernel"
 import type { ProvidedBy, StaticInfo } from "../../../trame/kernel"
 import type { CompilerMessages } from "../../messages"
 import type { Counts, Sequences, Texts } from "#std/algebra"
@@ -22,6 +23,11 @@ export interface Analysis {
   rests: Map<string, string>
   /** The type errors of the project (graph, kinds, views, kernel). */
   typeErrors: string[]
+  /**
+   * What TypeScript lets through and the quantities refuse (since g80): two quantities added, subtracted or compared,
+   * or multiplied when neither is a ratio, in any code of the project.
+   */
+  quantityErrors: string[]
 }
 
 export interface Deps {
@@ -116,8 +122,8 @@ const body = (deps: Deps) => {
     const checkKey = digest(JSON.stringify([ts.version, root, modules, extra, paths, options.types]))
     const readKey = digest(JSON.stringify([[ts.version, root, modules, paths]]))
     const keptReading = keptUnder<Reading, WrittenReading>(root, readKey, readReading)
-    const keptCheck = keptUnder<string[], string[]>(root, checkKey, (errors) => errors)
-    if (keptReading && keptCheck) return { ...keptReading, typeErrors: keptCheck }
+    const keptCheck = keptUnder<Checked, Checked>(root, checkKey, (checked) => checked)
+    if (keptReading && keptCheck) return { ...keptReading, ...keptCheck }
     const program = ts.createProgram([...files, ...extra], {
       target: ts.ScriptTarget.ES2022,
       module: ts.ModuleKind.ESNext,
@@ -131,7 +137,7 @@ const body = (deps: Deps) => {
     })
     const reading = keptReading ?? readProgram(program, modules, root)
     if (!keptReading) keep(root, readKey, digestsOf(files), reading, writtenReading(reading))
-    const typeErrors = keptCheck ?? ts.getPreEmitDiagnostics(program)
+    const typeErrors = keptCheck?.typeErrors ?? ts.getPreEmitDiagnostics(program)
       .filter((d) => d.category === ts.DiagnosticCategory.Error && (!d.file || !d.file.fileName.includes(specifiers.packages)))
       .map((d) => {
         const where = d.file && d.start !== undefined
@@ -140,18 +146,20 @@ const body = (deps: Deps) => {
         const [first] = ts.flattenDiagnosticMessageText(d.messageText, endOfLine).split(endOfLine)
         return messages.typeError(first, where)
       })
-    if (!keptCheck) keep(root, checkKey, digestsOf(program.getSourceFiles().map((sf) => sf.fileName)), typeErrors, typeErrors)
-    return { ...reading, typeErrors }
+    const quantityErrors = keptCheck?.quantityErrors ?? mixedQuantities(program, modules, root, reading.infos)
+    const checked: Checked = { typeErrors, quantityErrors }
+    if (!keptCheck) keep(root, checkKey, digestsOf(program.getSourceFiles().map((sf) => sf.fileName)), checked, checked)
+    return { ...reading, ...checked }
   }
 
-  /** What a program's modules declare: each node, its title and what it names; each module's title and what it holds besides its nodes. */
-  function readProgram(program: ts.Program, modules: { file: string; module: string }[], root: string): Reading {
-    const checker = program.getTypeChecker()
-    const infos = new Map<string, StaticInfo>()
-    const moduleTitle = new Map<string, string>()
-    const rests = new Map<string, string>()
+  /** What the check of a program finds: TypeScript's errors, and the quantities it lets mix. */
+  interface Checked {
+    typeErrors: string[]
+    quantityErrors: string[]
+  }
 
-    // All the exported constants, to recognise the references between nodes.
+  /** The exported constants of a program's modules (the nodes, and what else a module exports), by their declaration. */
+  function exportedOf(program: ts.Program, modules: { file: string; module: string }[]): Map<ts.Node, string> {
     const exported = new Map<ts.Node, string>() // declaration → module.name
     for (const { file, module: mod } of modules) {
       const sf = program.getSourceFile(file)
@@ -162,6 +170,105 @@ const body = (deps: Deps) => {
         for (const d of stmt.declarationList.declarations) exported.set(d, qualified([mod, d.name.getText(sf)]))
       }
     }
+    return exported
+  }
+
+  /**
+   * The quantities a program's types name (since g80). `Quantity<typeof Time>` marks a number with the type of the node
+   * Time: the quantity of a type is the exported constant whose type its mark names; that of a value, its own or that of
+   * what it holds (a record's values, a list's elements).
+   */
+  function quantitiesOf(checker: ts.TypeChecker, exported: ReadonlyMap<ts.Node, string>) {
+    // The exported constants that may be quantities (their type has units), and the node each mark names, found once.
+    const candidates = [...exported].flatMap(([decl, ref]): [ts.Type, string][] => {
+      const t = checker.getTypeAtLocation((decl as ts.VariableDeclaration).name)
+      return checker.getPropertyOfType(t, QuantityField.units) ? [[t, ref]] : []
+    })
+    const named = new Map<ts.Type, string | undefined>()
+    /** The node a mark names: the quantity whose type it is (or the same type, written another way). */
+    const nodeOf = (t: ts.Type): string | undefined => {
+      if (!named.has(t)) {
+        const [, ref] = candidates.find(([n]) => n === t || (checker.isTypeAssignableTo(n, t) && checker.isTypeAssignableTo(t, n))) ?? []
+        named.set(t, ref)
+      }
+      return named.get(t)
+    }
+    /** The quantity a type's mark names, for a type and each type of a union. */
+    const marked = (t: ts.Type, at: ts.Node): string | undefined => {
+      for (const part of t.isUnion() ? t.types : [t]) {
+        const mark = checker.getPropertyOfType(part, QuantityMark)
+        const q = mark && nodeOf(checker.getNonNullableType(checker.getTypeOfSymbolAtLocation(mark, at)))
+        if (q) return q
+      }
+      return undefined
+    }
+    /**
+     * The quantity of a value: its own, or that of what it holds, one level down: the elements of a list or a tuple (a
+     * range), the values of a record. A node, a function and what they hold are not looked into.
+     */
+    const within = (t: ts.Type, at: ts.Node): string | undefined => {
+      const own = marked(t, at)
+      if (own !== undefined) return own
+      const parts = t.isUnion() ? t.types : [t]
+      const held = parts.flatMap((part) =>
+        checker.isArrayType(part) || checker.isTupleType(part) ? checker.getTypeArguments(part as ts.TypeReference)
+          : part.getCallSignatures().length ? []
+            : [...checker.getIndexInfosOfType(part).map((i) => i.type), ...checker.getPropertiesOfType(part).map((p) => checker.getTypeOfSymbolAtLocation(p, at))])
+      return held.map((h) => marked(h, at)).find((q) => q !== undefined)
+    }
+    return { marked, within }
+  }
+
+  /**
+   * Two quantities that do not mix, wherever the code of a project (its graph, its bodies) puts them together: added,
+   * subtracted or compared; multiplied or divided when neither is a ratio, but a quantity divided by itself (a ratio).
+   */
+  function mixedQuantities(program: ts.Program, modules: { file: string; module: string }[], root: string, infos: ReadonlyMap<string, StaticInfo>): string[] {
+    const checker = program.getTypeChecker()
+    const { marked } = quantitiesOf(checker, exportedOf(program, modules))
+    const S = ts.SyntaxKind
+    const together = new Set([S.PlusToken, S.MinusToken, S.PlusEqualsToken, S.MinusEqualsToken, S.LessThanToken, S.LessThanEqualsToken,
+      S.GreaterThanToken, S.GreaterThanEqualsToken, S.EqualsEqualsEqualsToken, S.ExclamationEqualsEqualsToken, S.EqualsEqualsToken, S.ExclamationEqualsToken])
+    const product = new Set([S.AsteriskToken, S.AsteriskEqualsToken])
+    const quotient = new Set([S.SlashToken, S.SlashEqualsToken])
+    const isRatio = (q: string) => {
+      const written = infos.get(q)?.props[QuantityField.ratio]
+      return written !== undefined && JSON.parse(written) === true
+    }
+    const titleOf = (q: string) => infos.get(q)?.title ?? q
+    const found: string[] = []
+    for (const sf of program.getSourceFiles()) {
+      if (sf.isDeclarationFile || sf.fileName.includes(specifiers.packages)) continue
+      const visit = (n: ts.Node): void => {
+        if (ts.isBinaryExpression(n)) {
+          const op = n.operatorToken.kind
+          const a = marked(checker.getTypeAtLocation(n.left), n.left)
+          const b = marked(checker.getTypeAtLocation(n.right), n.right)
+          if (a !== undefined && b !== undefined) {
+            const where = reference(relative(root, sf.fileName), lineNumber(sf.getLineAndCharacterOfPosition(n.getStart(sf)).line))
+            if (together.has(op) && a !== b) found.push(messages.quantitiesTogether(where, n.operatorToken.getText(sf), titleOf(a), titleOf(b)))
+            const neither = !isRatio(a) && !isRatio(b)
+            if (product.has(op) && neither) found.push(messages.quantitiesMultiplied(where, titleOf(a), titleOf(b)))
+            if (quotient.has(op) && neither && a !== b) found.push(messages.quantitiesMultiplied(where, titleOf(a), titleOf(b)))
+          }
+        }
+        ts.forEachChild(n, visit)
+      }
+      visit(sf)
+    }
+    return found
+  }
+
+  /** What a program's modules declare: each node, its title and what it names; each module's title and what it holds besides its nodes. */
+  function readProgram(program: ts.Program, modules: { file: string; module: string }[], root: string): Reading {
+    const checker = program.getTypeChecker()
+    const infos = new Map<string, StaticInfo>()
+    const moduleTitle = new Map<string, string>()
+    const rests = new Map<string, string>()
+
+    // All the exported constants, to recognise the references between nodes, and the quantities that types name.
+    const exported = exportedOf(program, modules)
+    const quantities = quantitiesOf(checker, exported)
 
     for (const { file, module: mod } of modules) {
       const sf = program.getSourceFile(file)
@@ -207,6 +314,11 @@ const body = (deps: Deps) => {
           for (const p of obj?.properties ?? []) {
             if (ts.isPropertyAssignment(p)) info.props[p.name.getText(sf)] = p.initializer.getText(sf)
             else if (ts.isShorthandPropertyAssignment(p) || ts.isMethodDeclaration(p)) info.props[p.name.getText(sf)] = p.getText(sf)
+            // What the property measures: the type the declaration expects of it, or else the type of what it holds.
+            if (!ts.isPropertyAssignment(p)) continue
+            const expected = checker.getContextualType(p.initializer)
+            const q = (expected && quantities.within(expected, p)) ?? quantities.within(checker.getTypeAtLocation(p.initializer), p)
+            if (q !== undefined) info.quantities = { ...info.quantities, [p.name.getText(sf)]: q }
           }
 
           const seen = new Set<string>()

@@ -14,7 +14,7 @@ import type { Edge, GraphImpl } from "./graph"
 import type { Api as WiringApi } from "./wiring"
 import type { Api as CyclesApi } from "./cycles"
 import type { Api as DriversApi, LiteralFound, LiteralSource } from "../languages/drivers"
-import { AnyTarget, ArtifactField, DeliveryField, EdgeMode, EdgeName, FieldType, KindHook, KindName, Moment, Origin, ResolutionKind, ResolutionOutcome, Severity, Stage } from "../../../trame/kernel"
+import { AnyTarget, ArtifactField, DeliveryField, EdgeMode, EdgeName, FieldType, KindHook, KindName, Moment, Origin, QuantityEdge, QuantityField, ResolutionKind, ResolutionOutcome, Severity, Stage } from "../../../trame/kernel"
 import type { AnyNode, AnyKind, Constant, Evidence, HoleSpec, Noun, ProvidedBy, Resolution, StaticInfo } from "../../../trame/kernel"
 import type { Fingerprints, References } from "../../engine"
 import type { Counts, Sequences, Texts, ValueTypes } from "#std/algebra"
@@ -78,6 +78,10 @@ export interface Compiled {
   lockIssues?: Diag[]
   /** The type errors: the compilation reports them, the command line refuses. */
   typeErrors: string[]
+  /** The quantities mixed in the code (since g80): the command line refuses them as it refuses type errors. */
+  quantityErrors?: string[]
+  /** The quantities of the graph, by reference: their units from the largest, and the messages that write them (g80). */
+  quantities?: Map<string, CompiledQuantity>
   literals: Map<AnyNode, { file: string; items: LiteralFound[] }[]>
   /** The literals of the language the project writes (its kinds and views): each file that holds one is an error. */
   language: { file: string; items: LiteralFound[] }[]
@@ -86,6 +90,12 @@ export interface Compiled {
    * but not among the project's nodes, edges and issues; each library keeps its own.
    */
   libraries: CompiledLibrary[]
+}
+
+/** A quantity of the graph, as documents write its values: its units from the largest, and the words of each one. */
+export interface CompiledQuantity {
+  units: [string, number][]
+  words: Record<string, unknown>
 }
 
 /** A library imported by the project: its modules (their names in the project's graph), its nodes, its edges, its issues. */
@@ -119,6 +129,8 @@ export interface Loaded {
   /** What each module holds besides its nodes, by its file (from the project's root). */
   rests: Map<string, string>
   typeErrors: string[]
+  /** The quantities mixed in the code (since g80). */
+  quantityErrors?: string[]
   evidence: Map<string, Evidence[]>
   /** The records of evidence whose seal no longer matches what they say: not counted, each an error. */
   broken?: (Evidence & { node: string })[]
@@ -286,7 +298,7 @@ const body = (deps: Deps) => {
     // Where each library's name leads, for the TypeScript compiler: its sources as they are on disk.
     const { imports, separator, pattern } = deps.specifiers
     const paths = Object.fromEntries(libraries.map((lib) => [imports + lib.name + separator + pattern, [join(lib.root, sources, pattern)]]))
-    const { infos: analysis, moduleTitle, rests, typeErrors } = analyze(modules, extra, root, paths)
+    const { infos: analysis, moduleTitle, rests, typeErrors, quantityErrors } = analyze(modules, extra, root, paths)
     // The nodes of the project and of its libraries: those their modules export. The registry of the kernel is shared
     // by the whole process (another project may be loaded into it): it is not read in full.
     const before = allNodes().length
@@ -312,7 +324,7 @@ const body = (deps: Deps) => {
     const bodies = bodiesOf(root, nodes, infos)
     return {
       code: codeOf(root, nodes, infos),
-      root, modules: own.map((m) => m.module), moduleTitle, nodes, anonymous, infos, rests, typeErrors, ...readEvidence(root), installed: loadInstalled(root),
+      root, modules: own.map((m) => m.module), moduleTitle, nodes, anonymous, infos, rests, typeErrors, quantityErrors, ...readEvidence(root), installed: loadInstalled(root),
       engine: dirs.engine === undefined ? undefined : deps.engines.recorded(dirs.engine),
       libraries: libraries.map(({ name, root: at, path, version, files }) => ({ name, root: at, path, version, modules: files.map((m) => m.module) })),
       bodies: new Map([...bodies].map(([language, { sources }]) => [language, sources])),
@@ -435,7 +447,7 @@ const body = (deps: Deps) => {
    * `evaluate: false`: without running the criteria or the scenarios (when only the values count).
    */
   async function compileAt(l: Loaded, today: string, opts: { evaluate?: boolean; asGiven?: boolean } = {}): Promise<Compiled> {
-    const { modules, moduleTitle, nodes, infos, typeErrors } = l
+    const { modules, moduleTitle, nodes, infos, typeErrors, quantityErrors } = l
     for (const n of nodes) {
       const m = meta(n)
       if (m.base) m.data = cloneData(m.base)
@@ -742,8 +754,10 @@ const body = (deps: Deps) => {
     const kept = deps.runs.open(l.root, [l.root, ...l.libraries.map((lib) => lib.root), ...read.kinds, ...read.views, ...preludes], left, l.rests)
     // Evidence counts from the day it was given: the graph compiled at an earlier date has not seen it yet.
     const given = new Map([...l.evidence].map(([ref, records]) => [ref, records.filter((e) => e.at <= today || e.at.startsWith(today))]))
+    // The quantities of the graph, filled once their catalogs are wired (below): kinds write a value in its units.
+    const quantities = new Map<string, CompiledQuantity>()
     const g: GraphImpl = makeGraph({
-      moment: Moment.consolidated, today, nodes, edges, infos, inactive, results, effects, kept, asGiven: opts.asGiven,
+      moment: Moment.consolidated, today, nodes, edges, infos, inactive, results, effects, kept, asGiven: opts.asGiven, quantities,
       wire: (deps, env) => wireDeps({ graph: g, root: l.root, today, refused }, deps, env),
       plan: (entries, env) => plan({ graph: g, root: l.root, today, refused }, entries, env),
       evidence: given, installed: l.installed, libraries: new Map(l.libraries.map((lib) => [lib.name, lib.version])), code: l.code,
@@ -866,6 +880,25 @@ const body = (deps: Deps) => {
       }
     }
 
+    // The quantities of the graph (since g80): each one's units, the largest first, and the messages of the catalog that
+    // writes them, wired here; a document writes a value of a quantity in its units.
+    for (const n of nodes) {
+      if (meta(n).def.name !== KindName.quantity || repealed(n)) continue
+      const v = g.view(n)
+      const raw = v.field(QuantityField.units)
+      const units = (values.isObject(raw) ? Object.entries(raw as Record<string, unknown>) : [])
+        .flatMap(([name, factor]): [string, number][] => (values.isNumber(factor) ? [[name, factor]] : []))
+        .sort(([, a], [, b]) => b - a)
+      const catalog = g.from(v).out(QuantityEdge.written).first()
+      let words: Record<string, unknown> = {}
+      try {
+        if (catalog) words = (await wireDeps({ graph: g, root: l.root, today, refused }, [{ name: catalog.ref, node: catalog.node }], undefined))[catalog.ref] as Record<string, unknown>
+      } catch {
+        // A catalog that cannot be wired writes nothing: the numbers are written alone, and its node says why.
+      }
+      quantities.set(v.ref, { units, words })
+    }
+
     // A literal written in a body is an error: its value belongs in the graph, with its meaning (a standard, a decision,
     // a structure, a catalog). The text of a catalog is what the catalog declares. One error per node, with each place.
     // The body still runs: a literal hides a meaning, it does not reach the platform.
@@ -966,7 +999,7 @@ const body = (deps: Deps) => {
     }
     const isOwn = (n: AnyNode) => libraryOf(n) === undefined
     return {
-      today, modules, moduleTitle, graph: g, typeErrors, language: l.language,
+      today, modules, moduleTitle, graph: g, typeErrors, quantityErrors, quantities, language: l.language,
       nodes: nodes.filter(isOwn),
       edges: edges.filter((e) => isOwn(e.from)),
       diags: diags.filter((d) => ofDiag(d) === undefined),

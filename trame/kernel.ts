@@ -23,6 +23,19 @@ export * from "./ir"
 
 // Units ----------------------------------------------------------------------
 
+/** The property that marks a number with the quantity it measures: a type only, no value carries it. Since g80. */
+export const QuantityMark = "quantity"
+/**
+ * A number that measures a quantity of the graph: `type Duration = Quantity<typeof Time>`. A plain number is one, as an
+ * operation gives it; a value of another quantity is not. Since g80.
+ */
+export type Quantity<Q> = number & { readonly [K in typeof QuantityMark]?: Q }
+/** A value in each unit of a quantity (`const { minute: min } = unitsOf(Time)`), read from its declaration. */
+export function unitsOf<Q extends { readonly units: Record<string, number> }>(q: Q): { readonly [K in keyof Q["units"]]: (n: number) => Quantity<Q> } {
+  const units = (meta(q).data.units ?? {}) as Record<string, number>
+  return Object.fromEntries(Object.entries(units).map(([name, factor]) => [name, (n: number) => n * factor])) as never
+}
+
 export type Duration = number // seconds
 export type CHF = number
 export type Percent = number // 0.5 = 50%
@@ -218,7 +231,7 @@ export const KindName = {
   release: "release", rule: "rule", function: "function", stylesheet: "stylesheet", entry: "entry", catalog: "catalog",
   implementation: "implementation", package: "package", binding: "binding", environment: "environment", scenario: "scenario",
   delivery: "delivery", dataset: "dataset", role: "role", artifact: "artifact", check: "check", review: "review", shipment: "shipment",
-  obligation: "obligation", policy: "policy",
+  obligation: "obligation", policy: "policy", quantity: "quantity",
 } as const
 
 /** The views of the language, in the order documents list them within their group: named and placed like the kinds. */
@@ -318,6 +331,7 @@ export type SelfOf<F extends Fields, E extends Edges> = View &
 
 type PatchValue<V> = V extends AnyFn ? (previous: V) => V
   : V extends AnyNode ? V
+  : V extends number | string | boolean ? V // a quantity too: a number its mark does not open
   : V extends readonly unknown[] ? V
   : V extends object ? { [K in keyof V]?: PatchValue<V[K]> }
   : V
@@ -391,7 +405,7 @@ function toJson(v: unknown): Json {
 export const doc = {
   // In a sentence.
   /** A value with its unit. An undecided value, a rule, a contested value are said as such. */
-  value: (v: unknown, unit?: Unit, o: { type?: "date" | "range" | "map"; contested?: boolean; rule?: RuleState } = {}): Inline => {
+  value: (v: unknown, unit?: Unit | string, o: { type?: "date" | "range" | "map"; contested?: boolean; rule?: RuleState } = {}): Inline => {
     if (o.contested) return { t: "value", value: null, unit, open: Openness.contested }
     if (isHole(v)) return { t: "value", value: null, unit, open: Openness.undecided }
     if (typeof v === "function" || o.rule) return { t: "value", value: null, rule: o.rule ?? RuleState.original }
@@ -435,6 +449,8 @@ export interface StaticInfo {
   props: Record<string, string>
   refs: { target: string; prop?: string }[]
   sourceText: string
+  /** The quantity each property measures, by the reference of its node, as the types say (since g80). */
+  quantities?: Record<string, string>
 }
 
 // The traversal API: the only way to read the graph ----------------------------
@@ -474,6 +490,8 @@ export interface View {
   readonly effects: string[]
   /** The result of the evaluation (for instance criteria that were run). */
   result<T = unknown>(): T | undefined
+  /** The quantity a field measures (the reference of its node), as the type of its value says. Since g80. */
+  quantityOf?(field: string): string | undefined
   /**
    * What the node gives once wired, when its kind's callable field is a body (a requirement's rule called with its
    * dependencies): undefined otherwise. It throws what wiring met (a value nobody decided). Since g79.
@@ -559,6 +577,8 @@ export interface Graph {
    * known), not against the code as it is and the engine the project pins (g76 on).
    */
   asGiven?(): boolean
+  /** A number of a quantity of the graph (its reference), written in its units: undefined for another. Since g80. */
+  inUnits?(value: number, quantity: string): string | undefined
   /** What the engine gives the kinds and the views, from the graph that describes it. */
   readonly lib: Lib
 }
@@ -1028,6 +1048,11 @@ export interface Compilation extends Graph {
   counts(): { edges: number; inferred: number; derived: number }
   /** The literals written in code bodies (an engine that does not find them has no such method). */
   literals?(v?: View): LiteralInfo[]
+  /**
+   * A value of a quantity of the graph as written in its units, each number in words ("15 min"): undefined for a
+   * quantity the graph does not have. Since g80.
+   */
+  shown?(value: Json, quantity: string): Json | undefined
   /** The literals of the language the project writes, its kinds and views: reported, they belong to no node. */
   languageLiterals?(): LanguageLiteral[]
   /** The libraries the project imports (an engine that imports none has no such method). */

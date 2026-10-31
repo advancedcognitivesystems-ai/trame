@@ -18,7 +18,7 @@
 
 ### Cancel without stress
 
-`CancelWithoutStress` · `src/cancellation.ts:16` · published
+`CancelWithoutStress` · `src/cancellation.ts:20` · published
 
 A driver can change their mind without fearing an unfair penalty.
 
@@ -32,7 +32,7 @@ A driver can change their mind without fearing an unfair penalty.
 
 ### Refund on cancellation
 
-`Refund` · `src/cancellation.ts:54` · status: **held** · published
+`Refund` · `src/cancellation.ts:85` · status: **held** · published
 
 The amount returned to the driver when they cancel their reservation.
 
@@ -73,7 +73,7 @@ The amount returned to the driver when they cancel their reservation.
 
 ### Immediate refund
 
-`ImmediateRefund` · `src/cancellation.ts:66` · status: **unknown** · published
+`ImmediateRefund` · `src/cancellation.ts:97` · status: **unknown** · published
 
 The refund is initiated within two seconds of the cancellation.
 
@@ -88,7 +88,7 @@ p99 of `refunds.initiated.latency` under 2 s, over 1 h
 
 ### Free cancellation period
 
-`FreeCancellationPeriod` · `src/cancellation.ts:25` · published
+`FreeCancellationPeriod` · `src/cancellation.ts:56` · published
 
 Up to this long before the slot starts, cancelling costs nothing.
 
@@ -113,7 +113,7 @@ Up to this long before the slot starts, cancelling costs nothing.
 
 ### Late cancellation fee
 
-`LateFee` · `src/cancellation.ts:37` · published
+`LateFee` · `src/cancellation.ts:68` · published
 
 The share of the price that is kept when the driver cancels after the free period.
 
@@ -130,7 +130,7 @@ The share of the price that is kept when the driver cancels after the free perio
 
 ### Idempotent payment provider
 
-`IdempotentProvider` · `src/cancellation.ts:48` · status: **unknown** · published
+`IdempotentProvider` · `src/cancellation.ts:79` · status: **unknown** · published
 
 The payment provider moves money only once per idempotency key.
 
@@ -139,3 +139,44 @@ The payment provider moves money only once per idempotency key.
 - Owner: karim
 - Check before: 1 December 2026
 - Assumed by: [Refund on cancellation](#Refund)
+
+## Message catalog
+
+<a id="AmountWords"></a>
+
+### How an amount is written
+
+`AmountWords` · `src/cancellation.ts:26`
+
+An amount of Swiss francs: the code of the currency, then the number.
+
+<details><summary>The messages, in code</summary>
+
+```typescript
+() => ({ chf: (n: string) => `CHF ${n}` })
+```
+
+</details>
+
+- Owner: karim
+- Written in: [Language](messages.md#Language)
+- Writes the units of: [Swiss francs](#SwissFrancs)
+
+## Quantity
+
+<a id="SwissFrancs"></a>
+
+### Swiss francs
+
+`SwissFrancs` · `src/cancellation.ts:36`
+
+The currency of the prices and of the refunds: an amount of one currency never adds up with another.
+
+Source: ISO 4217, Codes for the representation of currencies: CHF · `https://www.iso.org/iso-4217-currency-codes.html`
+
+| Unit | Of the base unit |
+|---|---|
+| `chf` | 1 |
+
+- Owner: karim
+- Written with: [How an amount is written](#AmountWords)

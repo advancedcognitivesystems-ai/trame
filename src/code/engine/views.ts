@@ -1,8 +1,8 @@
 // The views: load them, list their instances, run them under their laws.
 // The kernel knows no view: it only knows what a view is.
 
-import { BlockType, ViewGroup, ViewScope } from "../../../trame/kernel"
-import type { ProvidedBy, Compilation, Document, ViewDef, View, Block } from "../../../trame/kernel"
+import { BlockType, InlineType, ViewGroup, ViewScope } from "../../../trame/kernel"
+import type { ProvidedBy, Compilation, Document, Inline, Json, ViewDef, View, Block } from "../../../trame/kernel"
 import type { FileReading, Layout, ModuleLoader, Paths, Prelude } from "../../architecture"
 import type { OutputMessages, ViewMessages } from "../../messages"
 import type { Uri } from "#std/web"
@@ -140,6 +140,19 @@ const body = (deps: Deps) => {
    * played (trame test-kinds, which every shipment of Trame runs): a build runs it once. Without the views of each node,
    * only those of the project and its modules run (a day of history in an export).
    */
+  /**
+   * A document whose values of the graph's quantities are written in their units, as the compilation writes them (since
+   * g80): each value with a quantity carries the words the renderers print, beside the value itself.
+   */
+  function inUnits(text: string, shown: NonNullable<Compilation["shown"]>): Document {
+    type Value = Extract<Inline, { t: typeof InlineType.value }>
+    return JSON.parse(text, (_key, x: Partial<Value> | null) => {
+      if (x?.t !== InlineType.value || x.unit === undefined || x.shownAs !== undefined) return x
+      const inWords = shown(x.value as Json, x.unit)
+      return inWords === undefined ? x : { ...x, shownAs: inWords }
+    }) as Document
+  }
+
   function runViews(c: Compilation, opts: { twice?: boolean; perNode?: boolean } = {}): { documents: Document[]; failures: ViewFailure[] } {
     const documents: Document[] = []
     const failures: ViewFailure[] = []
@@ -159,11 +172,12 @@ const body = (deps: Deps) => {
         }
         continue
       }
-      const document: Document = {
+      const made: Document = {
         id: inst.id, view: inst.def.name, group: inst.def.group, title: out.title,
         arg: inst.arg.node?.ref ?? inst.arg.module, file: inst.file, intro: out.intro, blocks: out.blocks,
       }
-      const text = JSON.stringify(document)
+      const text = JSON.stringify(made)
+      const document = c.shown ? inUnits(text, c.shown) : made
       const written = serial({
         text, readBack: JSON.stringify(JSON.parse(text)), functionMark: JSON.stringify(deps.output.functionValue()),
         blockTypes: out.blocks.map((b) => String(b.type)),

@@ -2,7 +2,7 @@
 
 *What the declarations that are not published yet add to the published graph (`trame.lock`), as of 30 October 2026.*
 
-> **99 new declarations · 0 published declarations affected · 1 overlap · 5 blocking holes added**
+> **101 new declarations · 0 published declarations affected · 1 overlap · 5 blocking holes added**
 
 ## What the branch redefines
 
@@ -43,10 +43,10 @@
 
 | Declaration | Kind | Owner | Source |
 |---|---|---|---|
-| [Cancel a reservation](api.md#CancelReservation) | Entry point | karim | `src/api.ts:50` |
-| [End of free cancellation](api.md#FreeCancellationEnd) | Function | lea | `src/api.ts:15` |
-| [Lead time of a cancellation](api.md#LeadTime) | Function | karim | `src/api.ts:27` |
-| [Read a reservation](api.md#ReadReservation) | Entry point | karim | `src/api.ts:37` |
+| [Cancel a reservation](api.md#CancelReservation) | Entry point | karim | `src/api.ts:51` |
+| [End of free cancellation](api.md#FreeCancellationEnd) | Function | lea | `src/api.ts:16` |
+| [Lead time of a cancellation](api.md#LeadTime) | Function | karim | `src/api.ts:28` |
+| [Read a reservation](api.md#ReadReservation) | Entry point | karim | `src/api.ts:38` |
 | [Key of a cancellation's refund](architecture.md#CancellationKey) | Decision | karim | `src/architecture.ts:148` |
 | [Cancellation records](architecture.md#Cancellations) | Port | karim | `src/architecture.ts:112` |
 | [Clock](architecture.md#Clock) | Port | karim | `src/architecture.ts:130` |
@@ -63,6 +63,8 @@
 | [Reservations API](architecture.md#ReservationsApi) | Component | karim | `src/architecture.ts:154` |
 | [Every call to a third party is verified](architecture.md#ThirdPartiesVerified) | Architecture rule | karim | `src/architecture.ts:189` |
 | [Utilities do not touch the world](architecture.md#UtilitiesWithoutWorld) | Architecture rule | karim | `src/architecture.ts:179` |
+| [How an amount is written](cancellation.md#AmountWords) | Message catalog | karim | `src/cancellation.ts:26` |
+| [Swiss francs](cancellation.md#SwissFrancs) | Quantity | karim | `src/cancellation.ts:36` |
 | [Launch of the ultra chargers](committee.md#UltraLaunch) | Amendment | lea | `src/committee.ts:29` |
 | [Period for ultra chargers](committee.md#UltraPeriod) | Amendment | lea | `src/committee.ts:12` |
 | [Approval of the ultra period](committee.md#UltraPeriodApproval) | Approval | lea | `src/committee.ts:19` |
@@ -103,9 +105,9 @@
 | [Test](infra.md#Test) | Environment | karim | `src/infra.ts:24` |
 | [Test database](infra.md#TestDatabasePath) | Decision | karim | `src/infra.ts:61` |
 | [Test instant](infra.md#TestInstant) | Decision | karim | `src/infra.ts:56` |
-| [Messages of the API](messages.md#ApiMessages) | Message catalog | karim | `src/messages.ts:17` |
-| [Language](messages.md#Language) | Decision | karim | `src/messages.ts:11` |
-| [Checks of the scenarios](messages.md#ScenarioChecks) | Message catalog | lea | `src/messages.ts:34` |
+| [Messages of the API](messages.md#ApiMessages) | Message catalog | karim | `src/messages.ts:18` |
+| [Language](messages.md#Language) | Decision | karim | `src/messages.ts:12` |
+| [Checks of the scenarios](messages.md#ScenarioChecks) | Message catalog | lea | `src/messages.ts:35` |
 | [A cancellation refunds once](principles.md#RefundOnce) | Architecture decision | karim | `src/principles.ts:15` |
 | [Secrets stay out of the graph](principles.md#SecretsOutOfTheGraph) | Architecture decision | karim | `src/principles.ts:28` |
 | [Every reservation is refunded according to the rule](scenarios.md#ComplianceScenario) | Scenario | lea | `src/scenarios.ts:66` |

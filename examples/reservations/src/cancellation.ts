@@ -1,7 +1,11 @@
 /** Reservations · Cancellation */
 
-import { TODO, s, min, h, chf, pct, type Duration, type CHF, type Percent } from "../../../trame/kernel"
+import { TODO, unitsOf, type Quantity } from "../../../trame/kernel"
 import { goal } from "../../../kinds/goal"
+import { catalog } from "../../../kinds/catalog"
+import { quantity } from "../../../kinds/quantity"
+import { s, min, h, pct, type Duration, type Share } from "#std/measures"
+import { Language } from "./messages"
 import { decision } from "../../../kinds/decision"
 import { assume } from "../../../kinds/assumption"
 import { requirement } from "../../../kinds/requirement"
@@ -14,6 +18,33 @@ import { FeeCap } from "./legal"
  * A driver can change their mind without fearing an unfair penalty.
  */
 export const CancelWithoutStress = goal()
+
+/**
+ * How an amount is written
+ * An amount of Swiss francs: the code of the currency, then the number.
+ */
+export const AmountWords = catalog({
+  owner: "karim",
+  language: Language,
+  messages: () => ({ chf: (n: string) => `CHF ${n}` }),
+})
+
+/**
+ * Swiss francs
+ * The currency of the prices and of the refunds: an amount of one currency never adds up with another.
+ */
+export const SwissFrancs = quantity({
+  owner: "karim",
+  source: "ISO 4217, Codes for the representation of currencies: CHF",
+  url: "https://www.iso.org/iso-4217-currency-codes.html",
+  units: { chf: 1 },
+  written: AmountWords,
+})
+
+/** An amount of Swiss francs. */
+export type CHF = Quantity<typeof SwissFrancs>
+/** An amount from a number of francs: `chf(20)`. */
+export const { chf } = unitsOf(SwissFrancs)
 
 export enum ChargerType { fast = "fast", normal = "normal", ultra = "ultra" }
 export type Reservation = { charger: ChargerType; price: CHF }
@@ -34,7 +65,7 @@ export const FreeCancellationPeriod = decision<Record<ChargerType, Duration>>({
  * Late cancellation fee
  * The share of the price that is kept when the driver cancels after the free period.
  */
-export const LateFee = decision<Percent>({
+export const LateFee = decision<Share>({
   owner: "lea",
   bounded: [FeeCap],
   rejected: { "100%": "perceived as punitive" },

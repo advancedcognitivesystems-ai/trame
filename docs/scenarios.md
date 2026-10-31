@@ -128,7 +128,7 @@ The compiler assembled from this graph loads the reservations project (its files
 | Criterion | Result |
 |---|---|
 | TypeScript accepts the example | passed |
-| The example has 107 nodes, 3 scenarios among them | passed |
+| The example has 109 nodes, 3 scenarios among them | passed |
 | No error in the example | passed |
 | The scenarios of the example hold | passed |
 | Loaded again, the example reads the same: what the compiler of TypeScript read is kept | passed |
@@ -224,7 +224,7 @@ A cycle is found once, from the vertex where the search closes it, not again fro
 
 | Criterion | Result |
 |---|---|
-| 38 kinds out of 38 respect all their laws | passed |
+| 39 kinds out of 39 respect all their laws | passed |
 
 <details><summary>The code it runs: 36 nodes</summary>
 

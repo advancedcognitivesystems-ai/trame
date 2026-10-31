@@ -31,7 +31,7 @@ The language Trame speaks to people: British English. Its messages are written i
 
 ### A catalog counts in its language
 
-`CountsInTheLanguage` · `src/messages.ts:873` · status: **held**
+`CountsInTheLanguage` · `src/messages.ts:881` · status: **held**
 
 A count and its noun follow the plural rules of the language the catalog is written in, with the forms the catalog writes for each category; nothing below the catalogs presumes a language.
 
@@ -87,7 +87,7 @@ Joins the items of a list as people write it in the decided language: "A, B and 
 
 ### Messages of an advance
 
-`AdvanceMessages` · `src/messages.ts:785`
+`AdvanceMessages` · `src/messages.ts:793`
 
 What trame advance says as it goes, and what a generation says of itself.
 
@@ -185,7 +185,7 @@ What trame advance says as it goes, and what a generation says of itself.
 
 ### Messages of the commands
 
-`CommandMessages` · `src/messages.ts:440`
+`CommandMessages` · `src/messages.ts:446`
 
 What the commands print: summaries, usage, refusals.
 
@@ -215,6 +215,7 @@ What the commands print: summaries, usage, refusals.
     kindLawDetails: () => "details: npm run test-kinds",
     /** Followed by the type errors, one per line. */
     typeScriptRefuses: () => "TypeScript refuses the graph:",
+    quantitiesRefuse: () => "The quantities refuse the graph: what TypeScript lets through, the units do not",
 
     // trame test-kinds
     importsChecked: (refused: number) => `imports · ${refused ? `${refused} refused` : "only the public API is used"}`,
@@ -264,9 +265,10 @@ What the commands print: summaries, usage, refusals.
     audited: (packages: number, vulnerable: number, file: string) => `${plural(packages, { one: "package", other: "packages" })} audited, ${vulnerable} vulnerable · written: ${file}`,
     exported: (dates: number, file: string) => `export · ${plural(dates, { one: "date", other: "dates" })} · written: ${file}`,
     /** After the published declarations that changed. */
-    publicationRefused: () => "publication refused: a published declaration has changed",
+    publicationRefused: () => "publication refused: a published declaration has changed (an amendment changes its meaning; --migrate \"why\" publishes it again when only the language changed its form)",
     published: (declarations: number) => `published: ${plural(declarations, { one: "declaration", other: "declarations" })} frozen in trame.lock`,
     nothingToPublish: () => "nothing new to publish",
+    publishedAgain: (declarations: number) => `published again: ${plural(declarations, { one: "declaration", other: "declarations" })} whose form the language changed, not the meaning`,
 
     // trame plan: what a build would change.
     /** The first line: what changes, against the build of which date, compiled at which date. */
@@ -435,6 +437,12 @@ What the compiler, the wiring and the assembly say: diagnostics on the graph, re
     // Static reading.
     /** A type error, with the place it was found ("file:line"), when there is one. */
     typeError: (text: string, where?: string) => (where ? `${where}  ${text}` : text),
+    /** Two quantities put together where they do not add up (since g80). */
+    quantitiesTogether: (where: string, operator: string, a: string, b: string) =>
+      `${where}  "${a}" ${operator} "${b}": two quantities do not add up, nor compare`,
+    /** Two quantities multiplied or divided, neither a ratio: what the result measures is not declared. */
+    quantitiesMultiplied: (where: string, a: string, b: string) =>
+      `${where}  "${a}" and "${b}" multiplied or divided: the quantity it makes is declared nowhere`,
 
     // The wiring.
     circularDependency: (node: string) => `Circular dependency around "${node}"`,
@@ -476,7 +484,7 @@ What the compiler, the wiring and the assembly say: diagnostics on the graph, re
 
 ### Messages of trame dev
 
-`DevMessages` · `src/messages.ts:416`
+`DevMessages` · `src/messages.ts:422`
 
 What the dev server prints while it watches the project.
 
@@ -511,7 +519,7 @@ What the dev server prints while it watches the project.
 
 ### Messages of the drivers
 
-`DriverMessages` · `src/messages.ts:223`
+`DriverMessages` · `src/messages.ts:229`
 
 What the drivers say about a body: hidden dependencies, access to the platform, a missing file; and the comments of the programs they write.
 
@@ -566,7 +574,7 @@ What the drivers say about a body: hidden dependencies, access to the platform, 
 
 ### Words of Trame's views
 
-`EngineViewWords` · `src/messages.ts:615`
+`EngineViewWords` · `src/messages.ts:623`
 
 What the views of Trame's own graph say: the catalogue of literals, the versions of the engine.
 
@@ -579,7 +587,7 @@ The messages are written in `../engine-views/words.ts`.
 
 ### Words of the kinds
 
-`KindWords` · `src/messages.ts:595`
+`KindWords` · `src/messages.ts:603`
 
 What the kinds say: their labels, the labels of their fields and edges, what their holes say, what they render. The kinds are files of the language, outside the graph: their words are a catalog all the same, which they call; a kind writes no text of its own.
 
@@ -592,7 +600,7 @@ The messages are written in `../kinds/words.ts`.
 
 ### Messages of the laws
 
-`LawMessages` · `src/messages.ts:267`
+`LawMessages` · `src/messages.ts:273`
 
 What the laws of kinds and views report when one does not hold.
 
@@ -644,7 +652,7 @@ What the laws of kinds and views report when one does not hold.
 
 ### Messages of the outputs
 
-`OutputMessages` · `src/messages.ts:359`
+`OutputMessages` · `src/messages.ts:365`
 
 What the machine outputs, the lock, the payload, the date bundle, the differences and the page say.
 
@@ -712,7 +720,7 @@ What the machine outputs, the lock, the payload, the date bundle, the difference
 
 ### Words of the page
 
-`PageWords` · `src/messages.ts:626`
+`PageWords` · `src/messages.ts:634`
 
 What the page says around the documents the engine wrote: the state of the compilation, the dates, the navigation, the banner, the figures, the explorer.
 
@@ -728,7 +736,7 @@ The messages are written in `./code/page/words.ts`.
 
 ### Messages of the platform
 
-`PlatformMessages` · `src/messages.ts:648`
+`PlatformMessages` · `src/messages.ts:656`
 
 What the implementations of the ports say (the command line, the terminal, the processes).
 
@@ -768,7 +776,7 @@ What the implementations of the ports say (the command line, the terminal, the p
 
 ### Messages of the renderers
 
-`RenderingMessages` · `src/messages.ts:638`
+`RenderingMessages` · `src/messages.ts:646`
 
 The words that the renderers add to the intermediate format: labels, notes, the names of statuses and outcomes. Written in a file: the page, which runs in the browser where nothing is wired, reads it too.
 
@@ -783,7 +791,7 @@ The messages are written in `./code/rendering/messages.ts`.
 
 ### Messages of the scenarios
 
-`ScenarioMessages` · `src/messages.ts:677`
+`ScenarioMessages` · `src/messages.ts:685`
 
 The names of the checks that the engine's scenarios make.
 
@@ -928,7 +936,7 @@ How the decided language writes a value with its unit: hours, minutes, seconds, 
 
 ### Messages of the views
 
-`ViewMessages` · `src/messages.ts:308`
+`ViewMessages` · `src/messages.ts:314`
 
 What the loading of views and the compilation API say.
 
@@ -990,7 +998,7 @@ What the loading of views and the compilation API say.
 
 ### Words of the views
 
-`ViewWords` · `src/messages.ts:605`
+`ViewWords` · `src/messages.ts:613`
 
 What the views say: their titles, their introductions, their headings, what they say of the graph.
 

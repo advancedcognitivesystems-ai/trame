@@ -1,6 +1,6 @@
 /** Reservations · Architecture */
 
-import { KindName, EdgeName, TriggerType, type CHF } from "../../../trame/kernel"
+import { KindName, EdgeName, TriggerType } from "../../../trame/kernel"
 import { decision } from "../../../kinds/decision"
 import { port } from "../../../kinds/port"
 import { component, type Exposure } from "../../../kinds/component"
@@ -11,7 +11,7 @@ import { entryKind } from "../../../kinds/entry-point"
 import { edgesOf, fieldsOf } from "../../../trame/kernel"
 import { WithoutEffects, Linked } from "#std/rules"
 import { CancelWithoutStress } from "./cancellation"
-import type { Reservation } from "./cancellation"
+import type { Reservation, CHF } from "./cancellation"
 
 // The contracts: what the code asks of the world. Types, not implementations.
 

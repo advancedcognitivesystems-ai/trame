@@ -130,14 +130,14 @@ A value written with its unit, in the words of the decided language: a duration 
 - Parameters: `words` ← [Words of the units](messages.md#UnitWords) · `measures` ← [Units of measure](../std/docs/measures.md#UnitsOfMeasure) · `display` ← [How a number is written](#NumberDisplay) · `counts` ← [Counts](../std/docs/algebra.md#Counts) · `values` ← [Types of values](../std/docs/algebra.md#ValueTypes)
 - Body: inline, in the declaration
 - Serves: [A single source of truth](product.md#SingleSource)
-- Used by: [Graph](engine.md#GraphApi), [Common rendering](rendering.md#Common), [The documents write in the decided language](scenarios.md#DocumentWords)
+- Used by: [Compilation API](engine.md#CompilationApi), [Graph](engine.md#GraphApi), [Common rendering](rendering.md#Common), [The documents write in the decided language](scenarios.md#DocumentWords)
 - Verified by: [The documents write in the decided language](scenarios.md#DocumentWords)
 
 <a id="VisibleText"></a>
 
 ### Visible text
 
-`VisibleText` · `src/documents.ts:165` · status: **held**
+`VisibleText` · `src/documents.ts:181` · status: **held**
 
 A text shown so that every character can be seen: in quotes as JSON writes it, the characters JSON leaves as they are written as escapes; or as it is, when nothing in it hides.
 

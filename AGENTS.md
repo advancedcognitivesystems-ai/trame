@@ -40,6 +40,7 @@ Run from the project's directory, through the pinned generation:
 ./trame.sh audit                       # the registry's reports on the packages, kept as evidence
 ./trame.sh manifest                    # the packages of the graph and the import map of its libraries, written into package.json
 ./trame.sh release <version> "what"    # in a library: freezes a version, with its documents
+./trame.sh publish [--migrate "why"]   # freezes the published declarations in trame.lock (--migrate: those the language changed the form of)
 ./trame.sh deliver [delivery]          # writes the deliveries: a page a browser opens as it is
 ./trame.sh ship <shipment> --by <name> [--dry-run] [--promote "what"]   # builds, checks, refuses or deploys (section 4b)
 ./trame.sh evidence <node> passed|failed --by <name> [--subject <row>] [--language <tag>] [--note "…"] [--url <where>]
@@ -71,8 +72,8 @@ layer, is the work.
 
 Write a product top-down, one module per concern, each node linked to what it serves:
 
-1. **Product**: goals, requirements (executable rules), acceptance criteria, decisions with their owner, range and
-   rejected options, assumptions with a date, SLOs.
+1. **Product**: goals, requirements (executable rules, written as bodies), acceptance criteria, decisions with their
+   owner, range and rejected options, assumptions with a date, SLOs; the quantities the product measures (`quantity`).
 2. **Principles and ADRs**: each architecture decision with its context, consequences, rejected options, and the nodes
    that apply it (`appliedBy`), which make its status.
 3. **Standards and vocabularies**: what is published elsewhere (an RFC, a registry, an algorithm) with its source, and
@@ -155,12 +156,17 @@ why. A broken rule is an error, unless the rule says `severity: "warning"` while
   | an operation several bodies share (first element, a count, joining texts) | a `structure`, with its laws |
   | one of a closed set of words | a `vocabulary` |
   | words said to people | a `catalog`, in its language |
+  | what a number measures (a duration, an amount of a currency, a ratio) | a `quantity` (std's `Time`, `Ratio`, or the product's own), its values typed `Quantity<typeof Q>` |
   | a name the engine and the language both read (a kind, a view, an edge, a report) | a vocabulary of the prelude |
   | private to one function | that function's `constants` |
 
 - **A body receives what it needs as parameters** (its `deps`): it imports only the prelude's public API
   (`trame/kernel`) as a value, and types from anywhere. A body in a file is
-  `code.file<typeof import("./code/x").default>("./code/x.ts")`; the file default-exports `(deps: Deps) => api`.
+  `code.file<typeof import("./code/x").default>("./code/x.ts")`; the file default-exports `(deps: Deps) => api`. A
+  requirement's rule is a body too (since g79): `body:` with what it reads in `deps`, never a node named inside it;
+  called, the node is the rule its dependencies make.
+- **Quantities do not mix** (since g80): adding, subtracting or comparing two quantities, or multiplying them when
+  neither is a ratio, refuses the build as a type error does. Declare a new quantity rather than mix two.
 - **Only implementations touch the platform** (files, network, clock, DOM, storage). A function that implements a port
   touches nothing. A realization does no more than its ports promise (their declared effects).
 - **A technology is chosen in one node**: a binding, which follows a pattern (Strategy, Adapter, Bridge, Abstract
@@ -302,6 +308,12 @@ elements), a port answered differently in several environments is answered as in
   `docs/`, `graph.json`, `snapshot.json`, `out/`, `evidence/`, its artefacts and deliveries): a scenario that read its
   own project's outputs would not be played again when they change. Read another project's instead, as Trame's
   scenarios read the example's documents.
+- A rule written `rule: (x) => …` is the form before g79: it is read with a warning and escapes the checks of a body.
+  Write `body: ({ … }) => (x) => …` with its `deps`; an amendment of it patches `body` with `(previous) => (deps) => …`.
+- A published declaration the language changes the form of (a type renamed, a rule rewritten as a body) is an error
+  of `trame.lock`: `trame publish --migrate "why"` publishes it again, and only it.
+- `Quantity<…>` is a number: a value from an operation (`a * b`) has no quantity, so it never mixes; give it one by
+  its constructor when it is one (`chf(x)`).
 
 ## 10. Reading further
 

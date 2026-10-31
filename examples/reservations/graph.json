@@ -5,7 +5,7 @@
       "id": "api.CancelReservation",
       "kind": "entry",
       "title": "Cancel a reservation",
-      "source": "src/api.ts:50",
+      "source": "src/api.ts:51",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -35,7 +35,7 @@
       "id": "api.FreeCancellationEnd",
       "kind": "function",
       "title": "End of free cancellation",
-      "source": "src/api.ts:15",
+      "source": "src/api.ts:16",
       "status": "held",
       "fields": {
         "owner": "lea",
@@ -51,7 +51,7 @@
       "id": "api.LeadTime",
       "kind": "function",
       "title": "Lead time of a cancellation",
-      "source": "src/api.ts:27",
+      "source": "src/api.ts:28",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -66,7 +66,7 @@
       "id": "api.ReadReservation",
       "kind": "entry",
       "title": "Read a reservation",
-      "source": "src/api.ts:37",
+      "source": "src/api.ts:38",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -352,10 +352,21 @@
       "diagnostics": []
     },
     {
+      "id": "cancellation.AmountWords",
+      "kind": "catalog",
+      "title": "How an amount is written",
+      "source": "src/cancellation.ts:26",
+      "fields": {
+        "owner": "karim",
+        "messages": "(function)"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "cancellation.CancelWithoutStress",
       "kind": "goal",
       "title": "Cancel without stress",
-      "source": "src/cancellation.ts:16",
+      "source": "src/cancellation.ts:20",
       "fields": {},
       "diagnostics": []
     },
@@ -363,7 +374,7 @@
       "id": "cancellation.FreeCancellationPeriod",
       "kind": "decision",
       "title": "Free cancellation period",
-      "source": "src/cancellation.ts:25",
+      "source": "src/cancellation.ts:56",
       "fields": {
         "owner": "lea",
         "value": {
@@ -394,7 +405,7 @@
       "id": "cancellation.IdempotentProvider",
       "kind": "assumption",
       "title": "Idempotent payment provider",
-      "source": "src/cancellation.ts:48",
+      "source": "src/cancellation.ts:79",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -408,7 +419,7 @@
       "id": "cancellation.ImmediateRefund",
       "kind": "slo",
       "title": "Immediate refund",
-      "source": "src/cancellation.ts:66",
+      "source": "src/cancellation.ts:97",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -425,7 +436,7 @@
       "id": "cancellation.LateFee",
       "kind": "decision",
       "title": "Late cancellation fee",
-      "source": "src/cancellation.ts:37",
+      "source": "src/cancellation.ts:68",
       "fields": {
         "owner": "lea",
         "value": 0.5,
@@ -441,7 +452,7 @@
       "id": "cancellation.Refund",
       "kind": "requirement",
       "title": "Refund on cancellation",
-      "source": "src/cancellation.ts:54",
+      "source": "src/cancellation.ts:85",
       "status": "held",
       "fields": {
         "deps": {
@@ -456,7 +467,7 @@
       "id": "cancellation.RefundCriteria",
       "kind": "acceptance",
       "title": "Refund criteria",
-      "source": "src/cancellation.ts:76",
+      "source": "src/cancellation.ts:107",
       "status": "held",
       "fields": {
         "owner": "lea",
@@ -488,6 +499,21 @@
           "status": "passed"
         }
       ],
+      "diagnostics": []
+    },
+    {
+      "id": "cancellation.SwissFrancs",
+      "kind": "quantity",
+      "title": "Swiss francs",
+      "source": "src/cancellation.ts:36",
+      "fields": {
+        "owner": "karim",
+        "source": "ISO 4217, Codes for the representation of currencies: CHF",
+        "url": "https://www.iso.org/iso-4217-currency-codes.html",
+        "units": {
+          "chf": 1
+        }
+      },
       "diagnostics": []
     },
     {
@@ -1155,7 +1181,7 @@
       "id": "legal.FeeCap",
       "kind": "decision",
       "title": "Legal cap on cancellation fees",
-      "source": "src/legal.ts:10",
+      "source": "src/legal.ts:11",
       "fields": {
         "owner": "karim",
         "value": "TODO"
@@ -1168,7 +1194,7 @@
       "id": "messages.ApiMessages",
       "kind": "catalog",
       "title": "Messages of the API",
-      "source": "src/messages.ts:17",
+      "source": "src/messages.ts:18",
       "fields": {
         "owner": "karim",
         "messages": "(function)"
@@ -1179,7 +1205,7 @@
       "id": "messages.Language",
       "kind": "decision",
       "title": "Language",
-      "source": "src/messages.ts:11",
+      "source": "src/messages.ts:12",
       "fields": {
         "owner": "karim",
         "value": {
@@ -1192,7 +1218,7 @@
       "id": "messages.ScenarioChecks",
       "kind": "catalog",
       "title": "Checks of the scenarios",
-      "source": "src/messages.ts:34",
+      "source": "src/messages.ts:35",
       "fields": {
         "owner": "lea",
         "messages": "(function)"
@@ -1406,7 +1432,7 @@
       },
       "result": {
         "path": "out/local/reservations-api.ts",
-        "code": "0ab1e76f"
+        "code": "e3ebf277"
       },
       "diagnostics": [
         "warning: Not built yet: trame ship builds it"
@@ -1481,7 +1507,7 @@
       },
       "result": {
         "path": "out/production/reservations-api.ts",
-        "code": "bdc94337"
+        "code": "cd73f58f"
       },
       "diagnostics": [
         "warning: Not built yet: trame ship builds it"
@@ -2459,6 +2485,11 @@
       "kind": "applies"
     },
     {
+      "from": "cancellation.AmountWords",
+      "to": "messages.Language",
+      "kind": "language"
+    },
+    {
       "from": "cancellation.ImmediateRefund",
       "to": "cancellation.Refund",
       "kind": "constrains"
@@ -2492,6 +2523,11 @@
       "from": "cancellation.RefundCriteria",
       "to": "cancellation.Refund",
       "kind": "accepts"
+    },
+    {
+      "from": "cancellation.SwissFrancs",
+      "to": "cancellation.AmountWords",
+      "kind": "written"
     },
     {
       "from": "committee.UltraLaunch",

@@ -1,6 +1,7 @@
 /** Reservations · Messages */
 
-import type { CHF, Duration } from "../../../trame/kernel"
+import type { Duration } from "#std/measures"
+import type { CHF } from "./cancellation"
 import { decision } from "../../../kinds/decision"
 import { catalog } from "../../../kinds/catalog"
 

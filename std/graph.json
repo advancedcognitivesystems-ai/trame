@@ -1272,7 +1272,7 @@
       "id": "measures.Iso8601",
       "kind": "standard",
       "title": "ISO 8601 dates",
-      "source": "src/measures.ts:29",
+      "source": "src/measures.ts:34",
       "fields": {
         "owner": "trame",
         "source": "ISO 8601-1:2019, calendar dates in the extended format (§ 5.2.2), in the Gregorian calendar",
@@ -1318,7 +1318,7 @@
       "id": "measures.LanguageTags",
       "kind": "standard",
       "title": "Language tags",
-      "source": "src/measures.ts:66",
+      "source": "src/measures.ts:71",
       "fields": {
         "owner": "trame",
         "source": "IETF BCP 47 (RFC 5646), Tags for Identifying Languages, § 2.1; Java SE, Locale.toString (the form Android reports)",
@@ -1337,10 +1337,26 @@
       "diagnostics": []
     },
     {
+      "id": "measures.Ratio",
+      "kind": "quantity",
+      "title": "Ratio",
+      "source": "src/measures.ts:123",
+      "fields": {
+        "owner": "trame",
+        "source": "BIPM, The International System of Units (SI Brochure, 9th edition), § 5.4.7",
+        "url": "https://www.bipm.org/en/publications/si-brochure",
+        "units": {
+          "percent": 0.01
+        },
+        "ratio": true
+      },
+      "diagnostics": []
+    },
+    {
       "id": "measures.SemanticVersioning",
       "kind": "standard",
       "title": "Semantic versioning",
-      "source": "src/measures.ts:50",
+      "source": "src/measures.ts:55",
       "fields": {
         "owner": "trame",
         "source": "Semantic Versioning 2.0.0, §§ 2, 4, 8",
@@ -1359,10 +1375,40 @@
       "diagnostics": []
     },
     {
+      "id": "measures.SymbolsLanguage",
+      "kind": "decision",
+      "title": "The language the symbols of units are written in: the same in most languages, as the SI writes them.",
+      "source": "src/measures.ts:83",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "tag": "en-GB"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "measures.Time",
+      "kind": "quantity",
+      "title": "Time",
+      "source": "src/measures.ts:105",
+      "fields": {
+        "owner": "trame",
+        "source": "BIPM, The International System of Units (SI Brochure, 9th edition), Tables 2 and 8",
+        "url": "https://www.bipm.org/en/publications/si-brochure",
+        "units": {
+          "second": 1,
+          "minute": 60,
+          "hour": 3600
+        }
+      },
+      "diagnostics": []
+    },
+    {
       "id": "measures.UnitsOfMeasure",
       "kind": "standard",
       "title": "Units of measure",
-      "source": "src/measures.ts:12",
+      "source": "src/measures.ts:17",
       "fields": {
         "owner": "trame",
         "source": "BIPM, The International System of Units (SI Brochure, 9th edition), Table 8 and § 5.4.7",
@@ -1381,6 +1427,17 @@
             "meaning": "The hundredths of a whole: a ratio times 100 is a percentage"
           }
         }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "measures.UnitSymbols",
+      "kind": "catalog",
+      "title": "Symbols of units",
+      "source": "src/measures.ts:89",
+      "fields": {
+        "owner": "trame",
+        "messages": "(function)"
       },
       "diagnostics": []
     },
@@ -3743,7 +3800,27 @@
       "kind": "serves"
     },
     {
+      "from": "measures.Ratio",
+      "to": "measures.UnitSymbols",
+      "kind": "written"
+    },
+    {
+      "from": "measures.Ratio",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
       "from": "measures.SemanticVersioning",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "measures.Time",
+      "to": "measures.UnitSymbols",
+      "kind": "written"
+    },
+    {
+      "from": "measures.Time",
       "to": "product.CitedNotCopied",
       "kind": "serves"
     },
@@ -3751,6 +3828,11 @@
       "from": "measures.UnitsOfMeasure",
       "to": "product.CitedNotCopied",
       "kind": "serves"
+    },
+    {
+      "from": "measures.UnitSymbols",
+      "to": "measures.SymbolsLanguage",
+      "kind": "language"
     },
     {
       "from": "obligations.Applied",

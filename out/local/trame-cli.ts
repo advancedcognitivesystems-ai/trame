@@ -27,6 +27,7 @@ import body_nodeTerminal from "../../src/code/platform/terminal.ts"
 import body_nodeCommandLine from "../../src/code/platform/command-line.ts"
 import body_valueTypes from "../../std/src/code/algebra/values.ts"
 import body_cycles from "../../src/code/engine/cycles.ts"
+import body_counts from "../../std/src/code/algebra/counts.ts"
 import body_tsxLoader from "../../src/code/platform/tsx-loader.ts"
 import body_diskReading from "../../src/code/platform/disk-reading.ts"
 import body_nodePaths from "../../src/code/platform/paths.ts"
@@ -34,7 +35,6 @@ import body_realTypeScript from "../../src/code/platform/typescript.ts"
 import body_resultsInTheProcess from "../../src/code/platform/kept-results.ts"
 import body_project from "../../src/code/engine/project.ts"
 import body_nodeHashing from "../../src/code/platform/hashing.ts"
-import body_counts from "../../std/src/code/algebra/counts.ts"
 import body_sequences from "../../std/src/code/algebra/sequences.ts"
 import body_texts from "../../std/src/code/algebra/texts.ts"
 import body_engineFingerprint from "../../src/code/engine/engine-fingerprint.ts"
@@ -129,7 +129,7 @@ const platformMessages = await frozen.body(PlatformMessages)({})
 // "Node terminal" · implementation, for "Terminal"
 const nodeTerminal = await body_nodeTerminal({ argv: nodeArguments, exitStatus, events: nodeEvents, posix, messages: platformMessages })
 // "Trame's commands" · standard
-const trameCommands = {"program":"trame","assemble":"assemble","build":"build","dev":"dev","payload":"payload","export":"export","publish":"publish","run":"run","view":"view","snapshot":"snapshot","testKinds":"test-kinds","advance":"advance","audit":"audit","manifest":"manifest","release":"release","deliver":"deliver","ship":"ship","evidence":"evidence","doctor":"doctor","plan":"plan","fallback":"*","optionPrefix":"-","at":"--at","format":"--format","port":"--port","fragment":"--fragment","env":"--env","all":"--all","history":"--history","accept":"--accept","promote":"--promote","by":"--by","subject":"--subject","language":"--language","note":"--note","url":"--url","dryRun":"--dry-run","restore":"--restore","passed":"passed","failed":"failed","json":"json","markdown":"md","separator":" "}
+const trameCommands = {"program":"trame","assemble":"assemble","build":"build","dev":"dev","payload":"payload","export":"export","publish":"publish","run":"run","view":"view","snapshot":"snapshot","testKinds":"test-kinds","advance":"advance","audit":"audit","manifest":"manifest","release":"release","deliver":"deliver","ship":"ship","evidence":"evidence","doctor":"doctor","plan":"plan","fallback":"*","optionPrefix":"-","at":"--at","format":"--format","port":"--port","fragment":"--fragment","env":"--env","all":"--all","history":"--history","accept":"--accept","promote":"--promote","migrate":"--migrate","by":"--by","subject":"--subject","language":"--language","note":"--note","url":"--url","dryRun":"--dry-run","restore":"--restore","passed":"passed","failed":"failed","json":"json","markdown":"md","separator":" "}
 // "Command line" · implementation, for "Command line"
 const nodeCommandLine = await body_nodeCommandLine({ terminal: nodeTerminal, exitStatus, line: trameCommands, messages: platformMessages })
 // "Node.js character encodings" · standard
@@ -143,15 +143,17 @@ const valueTypes = await body_valueTypes({ types: ecmaScriptTypes })
 // "Project layout" · decision
 const layout = {"sources":"src","documents":"docs","documentExtension":".md","output":"out","provision":"provision","evidence":"evidence","evidenceExtension":".json","wordJoint":"-","kinds":"kinds","views":"views","configuration":"trame.json","lock":"trame.lock","graph":"graph.json","snapshot":"snapshot.json","page":"trame-page.html","prelude":"trame","generations":"generations","generation":"g","origin":"ORIGIN.md","engine":"engine.json","differences":"differences.diff","languages":"languages","manifest":"package.json","lockfile":"package-lock.json","releases":"releases","libraryLinks":".trame","runs":"runs","runExtension":".json","launcher":"trame.sh"}
 // "Sort problems by severity" · requirement
-const severityOrder = frozen.value(SeverityOrder)
+const severityOrder = await frozen.body(SeverityOrder)({})
 // "Depth-first search" · standard
 const depthFirstSearch = {"grey":"grey","black":"black"}
 // "Cycles" · function
 const cycles = await body_cycles({ search: depthFirstSearch })
 // "Trame references" · standard
 const referenceSyntax = {"separator":".","library":"/","wholeNode":""}
+// "Counts" · algebraic structure
+const counts = await body_counts({ zero: 0, one: 1 })
 // "What belongs to a library" · requirement
-const libraryOfAModule = frozen.value(LibraryOfAModule)
+const libraryOfAModule = await frozen.body(LibraryOfAModule)({ counts })
 // "References" · function
 const references = await frozen.body(References)({ syntax: referenceSyntax, libraryOf: libraryOfAModule })
 // "Positions in a file" · standard
@@ -196,8 +198,6 @@ const fingerprint = 16
 const jsonFormatting = {"indentation":2}
 // "ECMAScript" · standard
 const ecmaScript = {"firstIndex":0,"notFound":-1,"toUnsigned32":0}
-// "Counts" · algebraic structure
-const counts = await body_counts({ zero: 0, one: 1 })
 // "Sequences" · algebraic structure
 const sequences = await body_sequences({ ecma: ecmaScript, counts })
 // "Texts" · algebraic structure
@@ -373,7 +373,7 @@ const commandMessages = await frozen.body(CommandMessages)({ language })
 // "A shipment's pipeline" · function
 const shipmentPipeline = await body_shipmentPipeline({ sequences, values: valueTypes, messages: commandMessages })
 // "Compilation API" · function
-const compilationApi = await body_compilationApi({ values: valueTypes, rank: defaultRank, positions, references, prelude: tramePrelude, counts, sequences, texts, punctuation, ids: documentIds, layout, uri, messages: viewMessages, pipeline: shipmentPipeline })
+const compilationApi = await body_compilationApi({ values: valueTypes, rank: defaultRank, positions, references, prelude: tramePrelude, counts, sequences, texts, punctuation, ids: documentIds, layout, uri, messages: viewMessages, pipeline: shipmentPipeline, units })
 // "Nodes drawn per kind" · decision
 const sampleCount = 50
 // "Claim sets" · decision
@@ -385,19 +385,19 @@ const sampledValues = {"numbers":[0,100],"minutes":[1,120],"rangeStart":[0,50],"
 // "Messages of the laws" · message catalog
 const lawMessages = await frozen.body(LawMessages)({})
 // "Complete declaration" · requirement
-const completeDeclaration = frozen.value(CompleteDeclaration)
+const completeDeclaration = await frozen.body(CompleteDeclaration)({ counts })
 // "Answers without crashing" · requirement
-const answersWithoutCrashing = frozen.value(AnswersWithoutCrashing)
+const answersWithoutCrashing = await frozen.body(AnswersWithoutCrashing)({})
 // "A blocking hole has an owner" · requirement
-const blockingHoleHasOwner = frozen.value(BlockingHoleHasOwner)
+const blockingHoleHasOwner = await frozen.body(BlockingHoleHasOwner)({})
 // "Without evidence, the status is unknown" · requirement
-const unknownWithoutEvidence = frozen.value(UnknownWithoutEvidence)
+const unknownWithoutEvidence = await frozen.body(UnknownWithoutEvidence)({})
 // "Same input, same answer" · requirement
-const sameInputSameAnswer = frozen.value(SameInputSameAnswer)
+const sameInputSameAnswer = await frozen.body(SameInputSameAnswer)({ counts })
 // "The resolution does not depend on the order" · requirement
-const orderFree = frozen.value(OrderFree)
+const orderFree = await frozen.body(OrderFree)({ same: sameInputSameAnswer })
 // "The resolution returns only what it is given" · requirement
-const closedResolution = frozen.value(ClosedResolution)
+const closedResolution = await frozen.body(ClosedResolution)({})
 // "Laws" · function
 const laws = await body_laws({ kept: resultsInTheProcess, drivers, preludeApi, specifiers: nodeModuleSpecifiers, layout, samples: sampleCount, claimSets, generator, owners: sampledOwners, sampled: sampledValues, iso: iso8601, references, reading: diskReading, paths: nodePaths, project, graph: graphApi, prelude: tramePrelude, counts, sequences, texts, messages: lawMessages, declaration: completeDeclaration, answers: answersWithoutCrashing, owned: blockingHoleHasOwner, evidence: unknownWithoutEvidence, same: sameInputSameAnswer, orderFree, closed: closedResolution })
 // "Order of the view groups" · decision
@@ -405,9 +405,9 @@ const viewGroupOrder = ["module","document","figure","summary","node"]
 // "Messages of the outputs" · message catalog
 const outputMessages = await frozen.body(OutputMessages)({})
 // "Complete declaration of a view" · requirement
-const completeViewDeclaration = frozen.value(CompleteViewDeclaration)
+const completeViewDeclaration = await frozen.body(CompleteViewDeclaration)({})
 // "Produces only the intermediate format" · requirement
-const intermediateFormatOnly = frozen.value(IntermediateFormatOnly)
+const intermediateFormatOnly = await frozen.body(IntermediateFormatOnly)({})
 // "Views" · function
 const views = await body_views({ drivers, rank: defaultRank, groupOrder: viewGroupOrder, ids: documentIds, uri, layout, loader: tsxLoader, reading: diskReading, paths: nodePaths, prelude: tramePrelude, project, output: outputMessages, messages: viewMessages, declaration: completeViewDeclaration, answers: answersWithoutCrashing, same: sameInputSameAnswer, serial: intermediateFormatOnly })
 // "CommonMark" · standard
@@ -445,7 +445,7 @@ const paddedCell = await frozen.body(PaddedCell)({ standard: terminalText, colum
 // "Preparation" · function
 const preparation = await body_preparation({ line: trameCommands, compiler, compilationApi, laws, views, lock, common, terminal: nodeTerminal, currentProcess: nodeProcess, clock: systemClock, severityOrder, devPort, exitStatus, layout: terminalText, columns: terminalColumns, cell: paddedCell, counts, sequences, texts, messages: commandMessages, projectLayout: layout, uri, references })
 // "Accept a candidate" · requirement
-const acceptCandidate = frozen.value(AcceptCandidate)
+const acceptCandidate = await frozen.body(AcceptCandidate)({})
 // "Example project" · decision
 const exampleRoot = "examples/reservations"
 // "Day of the scenarios" · decision
@@ -791,7 +791,7 @@ const sdlcEvidence = await body_sdlcEvidence({ layout, records: shippingRecords,
 // "Record evidence" · entry point
 const recordEvidence = await body_recordEvidence({ exitStatus, line: trameCommands, preparation, sdlc: sdlcEvidence, writing: diskWriting, paths: nodePaths, terminal: nodeTerminal, sequences, counts, values: valueTypes, messages: commandMessages })
 // "A release is settled" · requirement
-const releaseIsSettled = frozen.value(ReleaseIsSettled)
+const releaseIsSettled = await frozen.body(ReleaseIsSettled)({ counts })
 // "Names of a library's releases" · decision
 const libraryReleaseNames = {"prefix":"R","joint":"_"}
 // "Release a version" · entry point
@@ -801,7 +801,7 @@ const run = await body_run({ exitStatus, assemble, currentProcess: nodeProcess, 
 // "The plan of a run elsewhere" · function
 const shipmentRunPlan = await body_shipmentRunPlan({ line: trameCommands, project, layout, pin: enginePin, reading: diskReading, paths: nodePaths, encodings: nodeEncodings, values: valueTypes, sequences, posix })
 // "Ship only what holds" · requirement
-const shipOnlyWhatHolds = frozen.value(ShipOnlyWhatHolds)
+const shipOnlyWhatHolds = await frozen.body(ShipOnlyWhatHolds)({ counts })
 // "The fingerprint of a program" · decision
 const programBundle = {"platform":"node","format":"esm","packages":"external","source":"ts"}
 // "Ship" · entry point

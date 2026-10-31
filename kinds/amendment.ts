@@ -114,8 +114,10 @@ const kind = defineKind({
   },
 })
 
-/** The unit of one of the target's values, to show it the way the target shows it. */
-function unitFor(target: View, path: string, lib: Lib): Unit | undefined {
+/** The unit of one of the target's values, to show it the way the target shows it: its quantity, when its type says one. */
+function unitFor(target: View, path: string, lib: Lib): Unit | string | undefined {
+  const quantity = target.quantityOf?.(lib.references.firstSegment(path))
+  if (quantity !== undefined) return quantity
   const info = target.fieldInfo(lib.references.firstSegment(path))
   if (info?.type === FieldType.duration) return Unit.duration
   if (info?.type === FieldType.percent) return Unit.percent
