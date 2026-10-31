@@ -6,7 +6,7 @@
 |---|---|---|---|---|
 | The operators | 0 | 0 | 2 | 0 |
 | karim | 6 | 0 | 11 | 98 |
-| lea | 0 | 0 | 0 | 9 |
+| lea | 0 | 0 | 0 | 11 |
 
 <a id="The operators"></a>
 
@@ -164,8 +164,10 @@ Nothing to decide or watch.
 | Node | Kind | State |
 |---|---|---|
 | [End of free cancellation](api.md#FreeCancellationEnd) | Function | **held** |
+| [Cancel without stress](cancellation.md#CancelWithoutStress) | Goal |  |
 | [Free cancellation period](cancellation.md#FreeCancellationPeriod) | Decision |  |
 | [Late cancellation fee](cancellation.md#LateFee) | Decision |  |
+| [Refund on cancellation](cancellation.md#Refund) | Requirement | **held** |
 | [Refund criteria](cancellation.md#RefundCriteria) | Acceptance criteria | **held** |
 | [Launch of the ultra chargers](committee.md#UltraLaunch) | Amendment | not in force |
 | [Period for ultra chargers](committee.md#UltraPeriod) | Amendment | in force |

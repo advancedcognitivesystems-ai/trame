@@ -64,14 +64,14 @@ flowchart TB
     n54["Write log<br/><small>Port</small>"]:::neutral
   end
   subgraph browser["Trame · The page in a browser"]
-    n55["The browser's gzip<br/><small>Implementation</small>"]:::held
-    n56["The globals of the page, and trame dev<br/><small>Implementation</small>"]:::held
-    n57["Local storage<br/><small>Implementation</small>"]:::held
-    n58["The browser's window<br/><small>Implementation</small>"]:::held
-    n59["Explorer of a graph<br/><small>Function</small>"]:::held
-    n60["Show the graph<br/><small>Entry point</small>"]:::held
-    n61["The browser runs the page<br/><small>Technical choice</small>"]:::held
-    n62["The page is assembled<br/><small>Architecture decision</small>"]:::held
+    n55["The browser's gzip<br/><small>Implementation</small>"]:::unknown
+    n56["The globals of the page, and trame dev<br/><small>Implementation</small>"]:::unknown
+    n57["Local storage<br/><small>Implementation</small>"]:::unknown
+    n58["The browser's window<br/><small>Implementation</small>"]:::unknown
+    n59["Explorer of a graph<br/><small>Function</small>"]:::unknown
+    n60["Show the graph<br/><small>Entry point</small>"]:::unknown
+    n61["The browser runs the page<br/><small>Technical choice</small>"]:::unknown
+    n62["The page is assembled<br/><small>Architecture decision</small>"]:::unknown
   end
   subgraph command-scenarios["Trame · Scenarios of the commands"]
     n63["An advance, in memory<br/><small>Scenario</small>"]:::held
@@ -372,9 +372,9 @@ flowchart TB
   end
   subgraph platform["Trame · Platform"]
     n326["The TypeScript compiler reads the declarations<br/><small>Technical choice</small>"]:::held
-    n327["System files, for reading<br/><small>Implementation</small>"]:::held
-    n328["Trees on disk<br/><small>Implementation</small>"]:::held
-    n329["System files, for writing<br/><small>Implementation</small>"]:::held
+    n327["System files, for reading<br/><small>Implementation</small>"]:::unknown
+    n328["Trees on disk<br/><small>Implementation</small>"]:::unknown
+    n329["System files, for writing<br/><small>Implementation</small>"]:::unknown
     n330["Where the engine's own files are<br/><small>Decision</small>"]:::neutral
     n331["The engine's own files sit beside its code<br/><small>Technical choice</small>"]:::held
     n332["esbuild<br/><small>Implementation</small>"]:::held
@@ -391,26 +391,26 @@ flowchart TB
     n343["Command line<br/><small>Implementation</small>"]:::held
     n344["gzip, with Node's zlib<br/><small>Implementation</small>"]:::held
     n345["SHA-256 hashes<br/><small>Implementation</small>"]:::held
-    n346["Node HTTP server<br/><small>Implementation</small>"]:::held
-    n347["On a machine, Node.js reads, writes and runs<br/><small>Technical choice</small>"]:::held
+    n346["Node HTTP server<br/><small>Implementation</small>"]:::unknown
+    n347["On a machine, Node.js reads, writes and runs<br/><small>Technical choice</small>"]:::unknown
     n348["Node paths<br/><small>Implementation</small>"]:::held
     n349["NodePlatform<br/><small>Technical choice</small>"]:::held
-    n350["Node process<br/><small>Implementation</small>"]:::held
-    n351["Node programs<br/><small>Implementation</small>"]:::held
-    n352["Node terminal<br/><small>Implementation</small>"]:::held
+    n350["Node process<br/><small>Implementation</small>"]:::unknown
+    n351["Node programs<br/><small>Implementation</small>"]:::unknown
+    n352["Node terminal<br/><small>Implementation</small>"]:::unknown
     n353["Node timer<br/><small>Implementation</small>"]:::held
     n354["No registry in test<br/><small>Function</small>"]:::held
-    n355["npm's reports<br/><small>Implementation</small>"]:::held
+    n355["npm's reports<br/><small>Implementation</small>"]:::unknown
     n356["Page resources<br/><small>Implementation</small>"]:::held
     n357["TypeScript compiler<br/><small>Implementation</small>"]:::held
     n358["Results kept in the process<br/><small>Implementation</small>"]:::held
     n359["A run is kept while what it reads is as it was<br/><small>Technical choice</small>"]:::held
     n360["Runs kept in the process<br/><small>Implementation</small>"]:::held
     n361["In the scenarios, runs are kept in the process<br/><small>Technical choice</small>"]:::held
-    n362["On a machine, runs are kept on disk<br/><small>Technical choice</small>"]:::held
-    n363["Runs kept on disk<br/><small>Implementation</small>"]:::held
+    n362["On a machine, runs are kept on disk<br/><small>Technical choice</small>"]:::unknown
+    n363["Runs kept on disk<br/><small>Implementation</small>"]:::unknown
     n364["Stopped clock<br/><small>Function</small>"]:::held
-    n365["System clock<br/><small>Implementation</small>"]:::held
+    n365["System clock<br/><small>Implementation</small>"]:::unknown
     n366["Day of the scenarios<br/><small>Decision</small>"]:::neutral
     n367["Time of the scenarios<br/><small>Decision</small>"]:::neutral
     n368["Trame's prelude<br/><small>Implementation</small>"]:::held
@@ -439,8 +439,8 @@ flowchart TB
     n389["One output for each reader<br/><small>Architecture decision</small>"]:::held
     n390["The traversal API is the only way to read the graph<br/><small>Architecture decision</small>"]:::held
     n391["The prelude: the runtime of the language<br/><small>Architecture decision</small>"]:::held
-    n392["A version ships through the graph<br/><small>Architecture decision</small>"]:::held
-    n393["A technology is chosen in one node<br/><small>Architecture decision</small>"]:::held
+    n392["A version ships through the graph<br/><small>Architecture decision</small>"]:::unknown
+    n393["A technology is chosen in one node<br/><small>Architecture decision</small>"]:::unknown
     n394["Trame builds Trame<br/><small>Architecture decision</small>"]:::held
     n395["An undecided value blocks; it does not crash<br/><small>Architecture decision</small>"]:::held
     n396["Without evidence, a status is unknown<br/><small>Architecture decision</small>"]:::held
@@ -587,25 +587,25 @@ flowchart TB
     n527["The decisions of the architecture hold<br/><small>Obligation</small>"]:::neutral
     n528["The rules of the architecture hold<br/><small>Obligation</small>"]:::neutral
     n529["The candidate is checked by programs<br/><small>Obligation</small>"]:::neutral
-    n530["The candidate plays the laws<br/><small>Check</small>"]:::held
-    n531["The candidate runs on the machine<br/><small>Check</small>"]:::held
-    n532["The candidate engine<br/><small>Artefact</small>"]:::held
+    n530["The candidate plays the laws<br/><small>Check</small>"]:::unknown
+    n531["The candidate runs on the machine<br/><small>Check</small>"]:::unknown
+    n532["The candidate engine<br/><small>Artefact</small>"]:::unknown
     n533["The packages are safe<br/><small>Obligation</small>"]:::neutral
     n534["The engine is verified<br/><small>Obligation</small>"]:::neutral
     n535["How a generation is made<br/><small>Policy</small>"]:::neutral
-    n536["The graph page<br/><small>Artefact</small>"]:::held
+    n536["The graph page<br/><small>Artefact</small>"]:::unknown
     n537["How the graph page is opened<br/><small>Decision</small>"]:::neutral
-    n538["The graph page opens<br/><small>Check</small>"]:::held
+    n538["The graph page opens<br/><small>Check</small>"]:::unknown
     n539["What the scenario of the graph page shows<br/><small>Decision</small>"]:::neutral
     n540["What the graph page is asked<br/><small>Function</small>"]:::held
     n541["The language serves what it says<br/><small>Obligation</small>"]:::neutral
     n542["Trame's maintainers<br/><small>Role</small>"]:::neutral
-    n543["The next generation<br/><small>Shipment</small>"]:::held
+    n543["The next generation<br/><small>Shipment</small>"]:::unknown
     n544["The graph page is opened as a person would<br/><small>Scenario</small>"]:::held
     n545["Open the graph page<br/><small>Entry point</small>"]:::held
     n546["The page's program<br/><small>Artefact</small>"]:::held
     n547["The SDLC in memory<br/><small>Technical choice</small>"]:::held
-    n548["The SDLC on the machine<br/><small>Technical choice</small>"]:::held
+    n548["The SDLC on the machine<br/><small>Technical choice</small>"]:::unknown
     n549["What the programs of Trame's SDLC say<br/><small>Message catalog</small>"]:::neutral
     n550["Trame's SDLC<br/><small>Component</small>"]:::neutral
   end

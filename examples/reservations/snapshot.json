@@ -315,7 +315,9 @@
       "id": "cancellation.CancelWithoutStress",
       "kind": "goal",
       "title": "Cancel without stress",
-      "fields": {}
+      "fields": {
+        "owner": "lea"
+      }
     },
     {
       "id": "cancellation.FreeCancellationPeriod",
@@ -379,6 +381,7 @@
       "title": "Refund on cancellation",
       "status": "held",
       "fields": {
+        "owner": "lea",
         "deps": {
           "period": "cancellation.FreeCancellationPeriod",
           "fee": "cancellation.LateFee"

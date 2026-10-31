@@ -4,7 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 0 | 123 |
+| trame | 0 | 0 | 0 | 140 |
 
 <a id="trame"></a>
 
@@ -41,13 +41,20 @@ Nothing to decide or watch.
 | [Time](measures.md#Time) | Quantity |  |
 | [Units of measure](measures.md#UnitsOfMeasure) | Standard |  |
 | [Symbols of units](measures.md#UnitSymbols) | Message catalog |  |
+| [The decisions a shipment applies hold](obligations.md#Applied) | Requirement | **held** |
 | [Criteria of the decisions applied](obligations.md#AppliedCriteria) | Acceptance criteria | **held** |
+| [The artefacts a shipment ships are checked](obligations.md#Checked) | Requirement | **held** |
 | [Criteria of the artefacts checked](obligations.md#CheckedCriteria) | Acceptance criteria | **held** |
 | [Ways of checking](obligations.md#CheckWays) | Vocabulary |  |
+| [The data a shipment carries is reviewed](obligations.md#Reviewed) | Requirement | **held** |
 | [Criteria of the data reviewed](obligations.md#ReviewedCriteria) | Acceptance criteria | **held** |
+| [The project's rules hold](obligations.md#Ruled) | Requirement | **held** |
 | [Criteria of the rules held](obligations.md#RuledCriteria) | Acceptance criteria | **held** |
+| [The packages a shipment uses are safe](obligations.md#Safe) | Requirement | **held** |
 | [Criteria of the packages safe](obligations.md#SafeCriteria) | Acceptance criteria | **held** |
+| [The product a shipment serves holds](obligations.md#Served) | Requirement | **held** |
 | [Criteria of the product served](obligations.md#ServedCriteria) | Acceptance criteria | **held** |
+| [The code a shipment ships is verified](obligations.md#Verified) | Requirement | **held** |
 | [Criteria of the code verified](obligations.md#VerifiedCriteria) | Acceptance criteria | **held** |
 | [Abstract Factory](patterns.md#AbstractFactory) | Design pattern |  |
 | [Adapter](patterns.md#Adapter) | Design pattern |  |
@@ -75,6 +82,11 @@ Nothing to decide or watch.
 | [A component in a browser starts with its page](platform.md#StartsWithThePage) | Architecture decision |  |
 | [Time turned by hand](platform.md#TimeTurned) | Port |  |
 | [A voice that writes down](platform.md#WrittenSpeech) | Function | **held** |
+| [A published value is cited, not copied](product.md#CitedNotCopied) | Goal |  |
+| [Known designs, named](product.md#KnownDesigns) | Goal |  |
+| [Ports of the platform, realized once](product.md#RealizedOnce) | Goal |  |
+| [Shared operations instead of literals](product.md#SharedOperations) | Goal |  |
+| [Rules applied, not written again](product.md#SharedRules) | Goal |  |
 | [Version 0.1.0](releases.md#R0_1_0) | Release |  |
 | [Version 0.10.0](releases.md#R0_10_0) | Release |  |
 | [Version 0.11.0](releases.md#R0_11_0) | Release |  |
@@ -88,10 +100,15 @@ Nothing to decide or watch.
 | [Version 0.8.0](releases.md#R0_8_0) | Release |  |
 | [Version 0.9.0](releases.md#R0_9_0) | Release |  |
 | [Directions](rules.md#Directions) | Vocabulary |  |
+| [As many links as asked](rules.md#Linked) | Requirement | **held** |
 | [Criteria of as many links as asked](rules.md#LinkedCriteria) | Acceptance criteria | **held** |
+| [A node never reaches what it must not](rules.md#NeverReaches) | Requirement | **held** |
 | [Criteria of a node that never reaches what it must not](rules.md#NeverReachesCriteria) | Acceptance criteria | **held** |
+| [A node reaches what it must](rules.md#Reaches) | Requirement | **held** |
 | [Criteria of a node that reaches what it must](rules.md#ReachesCriteria) | Acceptance criteria | **held** |
+| [Effects a node may not have](rules.md#WithoutEffects) | Requirement | **held** |
 | [Criteria of effects a node may not have](rules.md#WithoutEffectsCriteria) | Acceptance criteria | **held** |
+| [Words of a vocabulary](rules.md#WordsOf) | Requirement | **held** |
 | [Criteria of words of a vocabulary](rules.md#WordsOfCriteria) | Acceptance criteria | **held** |
 | [The device, in memory](scenarios.md#DeviceInMemory) | Scenario | **held** |
 | [Seeded draws keep their promise](scenarios.md#DrawsKeepTheirPromise) | Scenario | **held** |

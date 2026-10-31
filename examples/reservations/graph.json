@@ -367,7 +367,9 @@
       "kind": "goal",
       "title": "Cancel without stress",
       "source": "src/cancellation.ts:20",
-      "fields": {},
+      "fields": {
+        "owner": "lea"
+      },
       "diagnostics": []
     },
     {
@@ -419,7 +421,7 @@
       "id": "cancellation.ImmediateRefund",
       "kind": "slo",
       "title": "Immediate refund",
-      "source": "src/cancellation.ts:97",
+      "source": "src/cancellation.ts:98",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -455,6 +457,7 @@
       "source": "src/cancellation.ts:85",
       "status": "held",
       "fields": {
+        "owner": "lea",
         "deps": {
           "period": "cancellation.FreeCancellationPeriod",
           "fee": "cancellation.LateFee"
@@ -467,7 +470,7 @@
       "id": "cancellation.RefundCriteria",
       "kind": "acceptance",
       "title": "Refund criteria",
-      "source": "src/cancellation.ts:107",
+      "source": "src/cancellation.ts:108",
       "status": "held",
       "fields": {
         "owner": "lea",
@@ -1432,7 +1435,7 @@
       },
       "result": {
         "path": "out/local/reservations-api.ts",
-        "code": "e3ebf277"
+        "code": "c4ec3d31"
       },
       "diagnostics": [
         "warning: Not built yet: trame ship builds it"
@@ -1507,7 +1510,7 @@
       },
       "result": {
         "path": "out/production/reservations-api.ts",
-        "code": "cd73f58f"
+        "code": "fdabf0a9"
       },
       "diagnostics": [
         "warning: Not built yet: trame ship builds it"

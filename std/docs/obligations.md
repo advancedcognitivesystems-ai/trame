@@ -10,7 +10,7 @@
 
 ### The decisions a shipment applies hold
 
-`Applied` · `src/obligations.ts:82` · status: **held**
+`Applied` · `src/obligations.ts:84` · status: **held**
 
 Each ADR that a node the shipment reaches applies is to prove.
 
@@ -25,6 +25,7 @@ Each ADR that a node the shipment reaches applies is to prove.
 
 </details>
 
+- Owner: trame
 - Refines: [Rules applied, not written again](product.md#SharedRules)
 
 <a id="AppliedCriteria"></a>
@@ -39,7 +40,7 @@ Each ADR that a node the shipment reaches applies is to prove.
 
 ### The artefacts a shipment ships are checked
 
-`Checked` · `src/obligations.ts:126` · status: **held**
+`Checked` · `src/obligations.ts:130` · status: **held**
 
 Each check of an artefact the shipment ships is to prove: those a program runs, or all of them.
 
@@ -60,6 +61,7 @@ Each check of an artefact the shipment ships is to prove: those a program runs, 
 |---|---|---|
 | `every` | `all` | The word of CheckWays that takes every check of the artefacts, those made by hand too |
 
+- Owner: trame
 - Parameters: `counts` ← [Counts](algebra.md#Counts)
 - Refines: [Rules applied, not written again](product.md#SharedRules)
 
@@ -76,7 +78,7 @@ Each check of an artefact the shipment ships is to prove: those a program runs, 
 
 ### The data a shipment carries is reviewed
 
-`Reviewed` · `src/obligations.ts:94` · status: **held**
+`Reviewed` · `src/obligations.ts:97` · status: **held**
 
 Each review of a dataset the shipment reaches is to prove. A reached dataset that no review reviews is a gap.
 
@@ -94,6 +96,7 @@ Each review of a dataset the shipment reaches is to prove. A reached dataset tha
 
 </details>
 
+- Owner: trame
 - Parameters: `counts` ← [Counts](algebra.md#Counts)
 - Refines: [Rules applied, not written again](product.md#SharedRules)
 
@@ -110,7 +113,7 @@ Each review of a dataset the shipment reaches is to prove. A reached dataset tha
 
 ### The project's rules hold
 
-`Ruled` · `src/obligations.ts:142` · status: **held**
+`Ruled` · `src/obligations.ts:147` · status: **held**
 
 Each rule of the project is to prove: none broken.
 
@@ -125,6 +128,7 @@ Each rule of the project is to prove: none broken.
 
 </details>
 
+- Owner: trame
 - Refines: [Rules applied, not written again](product.md#SharedRules)
 
 <a id="RuledCriteria"></a>
@@ -139,7 +143,7 @@ Each rule of the project is to prove: none broken.
 
 ### The packages a shipment uses are safe
 
-`Safe` · `src/obligations.ts:154` · status: **held**
+`Safe` · `src/obligations.ts:160` · status: **held**
 
 Each package a node the shipment reaches uses is to prove: installed at its version, without a known vulnerability.
 
@@ -154,6 +158,7 @@ Each package a node the shipment reaches uses is to prove: installed at its vers
 
 </details>
 
+- Owner: trame
 - Refines: [Rules applied, not written again](product.md#SharedRules)
 
 <a id="SafeCriteria"></a>
@@ -168,7 +173,7 @@ Each package a node the shipment reaches uses is to prove: installed at its vers
 
 ### The product a shipment serves holds
 
-`Served` · `src/obligations.ts:47` · status: **held**
+`Served` · `src/obligations.ts:48` · status: **held**
 
 From what the shipment reaches, what it serves; from the requirements served, up through what they refine, to the goals. Every requirement that refines those goals or those requirements, at any depth, is to prove.
 
@@ -206,6 +211,7 @@ From what the shipment reaches, what it serves; from the requirements served, up
 
 </details>
 
+- Owner: trame
 - Refines: [Rules applied, not written again](product.md#SharedRules)
 
 <a id="ServedCriteria"></a>
@@ -236,6 +242,7 @@ Each scenario that verifies a node the shipment reaches, and each check whose pr
 
 </details>
 
+- Owner: trame
 - Parameters: `counts` ← [Counts](algebra.md#Counts)
 - Refines: [Rules applied, not written again](product.md#SharedRules)
 
@@ -257,7 +264,7 @@ Each scenario that verifies a node the shipment reaches, and each check whose pr
 
 ### Ways of checking
 
-`CheckWays` · `src/obligations.ts:110`
+`CheckWays` · `src/obligations.ts:114`
 
 Which checks of the shipped artefacts a policy asks: those a program runs, or all of them, by hand too.
 

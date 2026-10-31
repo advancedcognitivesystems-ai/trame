@@ -14,6 +14,7 @@
 
 A kind or a view takes part in the compilation only once it keeps its laws, whoever wrote it. A new kind needs no change to the engine; a faulty one is refused before it misleads a document.
 
+- Owner: trame
 - Served by: [The laws are requirements](engine.md#LawsAreRequirements)
 - Refined by: [Answers without crashing](#AnswersWithoutCrashing), [A blocking hole has an owner](#BlockingHoleHasOwner), [The resolution returns only what it is given](#ClosedResolution), [Complete declaration](#CompleteDeclaration), [Complete declaration of a view](#CompleteViewDeclaration), [Produces only the intermediate format](#IntermediateFormatOnly), [Same input, same answer](#SameInputSameAnswer), [Without evidence, the status is unknown](#UnknownWithoutEvidence)
 
@@ -23,7 +24,7 @@ A kind or a view takes part in the compilation only once it keeps its laws, whoe
 
 ### Answers without crashing
 
-`AnswersWithoutCrashing` · `src/laws.ts:110` · status: **held**
+`AnswersWithoutCrashing` · `src/laws.ts:111` · status: **held**
 
 A function of a kind answers on any value it may be given. Reading an undecided value stops it: that is a decision to take, not a crash; any other error is. A view may not stop: a document cannot wait.
 
@@ -35,6 +36,7 @@ A function of a kind answers on any value it may be given. Reading an undecided 
 
 </details>
 
+- Owner: trame
 - Refines: [Kinds and views that can be trusted](#TrustedExtensions)
 - Used by: [Laws](engine.md#Laws), [Views](engine.md#Views)
 
@@ -53,7 +55,7 @@ A function of a kind answers on any value it may be given. Reading an undecided 
 
 ### A blocking hole has an owner
 
-`BlockingHoleHasOwner` · `src/laws.ts:137` · status: **held**
+`BlockingHoleHasOwner` · `src/laws.ts:139` · status: **held**
 
 A hole that blocks names who must fill it: the hole's own owner, or else the owner of its node.
 
@@ -65,6 +67,7 @@ A hole that blocks names who must fill it: the hole's own owner, or else the own
 
 </details>
 
+- Owner: trame
 - Refines: [Kinds and views that can be trusted](#TrustedExtensions)
 - Used by: [Laws](engine.md#Laws)
 
@@ -82,7 +85,7 @@ A hole that blocks names who must fill it: the hole's own owner, or else the own
 
 ### The resolution returns only what it is given
 
-`ClosedResolution` · `src/laws.ts:222` · status: **held**
+`ClosedResolution` · `src/laws.ts:228` · status: **held**
 
 Settling claims orders the claimants, or names an arbiter among them: it returns no node that claims nothing.
 
@@ -94,6 +97,7 @@ Settling claims orders the claimants, or names an arbiter among them: it returns
 
 </details>
 
+- Owner: trame
 - Refines: [Kinds and views that can be trusted](#TrustedExtensions)
 - Used by: [Laws](engine.md#Laws)
 
@@ -129,6 +133,7 @@ A kind has a label, names that the API does not reserve, edges towards kinds tha
 
 </details>
 
+- Owner: trame
 - Parameters: `counts` ← [Counts](../std/docs/algebra.md#Counts)
 - Refines: [Kinds and views that can be trusted](#TrustedExtensions)
 - Used by: [Laws](engine.md#Laws)
@@ -149,7 +154,7 @@ A kind has a label, names that the API does not reserve, edges towards kinds tha
 
 ### Complete declaration of a view
 
-`CompleteViewDeclaration` · `src/laws.ts:266` · status: **held**
+`CompleteViewDeclaration` · `src/laws.ts:273` · status: **held**
 
 A view has a name of its own and a label; it belongs to the node's views, or says to which nodes it applies, only if it writes one document per node.
 
@@ -166,6 +171,7 @@ A view has a name of its own and a label; it belongs to the node's views, or say
 
 </details>
 
+- Owner: trame
 - Refines: [Kinds and views that can be trusted](#TrustedExtensions)
 - Used by: [Views](engine.md#Views)
 
@@ -183,7 +189,7 @@ A view has a name of its own and a label; it belongs to the node's views, or say
 
 ### Produces only the intermediate format
 
-`IntermediateFormatOnly` · `src/laws.ts:310` · status: **held**
+`IntermediateFormatOnly` · `src/laws.ts:318` · status: **held**
 
 A view writes a document of the intermediate format: data that survive being written and read back, with no function, in blocks whose types the format knows. The renderers, and the page, need nothing else.
 
@@ -198,6 +204,7 @@ A view writes a document of the intermediate format: data that survive being wri
 
 </details>
 
+- Owner: trame
 - Refines: [Kinds and views that can be trusted](#TrustedExtensions)
 - Used by: [Views](engine.md#Views)
 
@@ -216,7 +223,7 @@ A view writes a document of the intermediate format: data that survive being wri
 
 ### The resolution does not depend on the order
 
-`OrderFree` · `src/laws.ts:202` · status: **held**
+`OrderFree` · `src/laws.ts:207` · status: **held**
 
 The same claims, presented in other orders, are the same input: the kind that settles them gives the same answer.
 
@@ -228,6 +235,7 @@ The same claims, presented in other orders, are the same input: the kind that se
 
 </details>
 
+- Owner: trame
 - Parameters: `same` ← [Same input, same answer](#SameInputSameAnswer)
 - Refines: [Same input, same answer](#SameInputSameAnswer)
 - Used by: [Laws](engine.md#Laws)
@@ -245,7 +253,7 @@ The same claims, presented in other orders, are the same input: the kind that se
 
 ### Same input, same answer
 
-`SameInputSameAnswer` · `src/laws.ts:180` · status: **held**
+`SameInputSameAnswer` · `src/laws.ts:184` · status: **held**
 
 Called twice on the same input, a function of a kind gives the same answer; run twice on the same graph, a view gives the same document. The answers are compared as written.
 
@@ -257,6 +265,7 @@ Called twice on the same input, a function of a kind gives the same answer; run 
 
 </details>
 
+- Owner: trame
 - Parameters: `counts` ← [Counts](../std/docs/algebra.md#Counts)
 - Refines: [Kinds and views that can be trusted](#TrustedExtensions)
 - Used by: [Laws](engine.md#Laws), [Views](engine.md#Views), [The resolution does not depend on the order](#OrderFree)
@@ -275,7 +284,7 @@ Called twice on the same input, a function of a kind gives the same answer; run 
 
 ### Without evidence, the status is unknown
 
-`UnknownWithoutEvidence` · `src/laws.ts:158` · status: **held**
+`UnknownWithoutEvidence` · `src/laws.ts:161` · status: **held**
 
 A kind says that a node holds, or is violated, only from evidence: a measure or an evaluation. Before any, its status is unknown, blocked, or none.
 
@@ -287,6 +296,7 @@ A kind says that a node holds, or is violated, only from evidence: a measure or 
 
 </details>
 
+- Owner: trame
 - Refines: [Kinds and views that can be trusted](#TrustedExtensions)
 - Used by: [Laws](engine.md#Laws)
 

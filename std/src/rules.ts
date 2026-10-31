@@ -91,6 +91,7 @@ const reached = (sketch: GraphSketch, from: string, through: readonly string[], 
  * reaches none.
  */
 export const Reaches = requirement({
+  owner: "trame",
   refines: [SharedRules],
   body: () => (sketch: GraphSketch, p: { nodes: Selector; through: readonly string[]; to: Selector; way?: Way }): RuleFinding[] => {
     const targets = new Set(picked(sketch, { libraries: true, ...p.to }).map((n) => n.ref))
@@ -106,6 +107,7 @@ export const Reaches = requirement({
  * renderer never reaches the graph. What it finds: each node that does, with the targets it reaches.
  */
 export const NeverReaches = requirement({
+  owner: "trame",
   refines: [SharedRules],
   deps: { counts: Counts },
   body: ({ counts }) => (sketch: GraphSketch, p: { nodes: Selector; through: readonly string[]; to: Selector; way?: Way }): RuleFinding[] => {
@@ -124,6 +126,7 @@ export const NeverReaches = requirement({
  * it is linked to.
  */
 export const Linked = requirement({
+  owner: "trame",
   refines: [SharedRules],
   deps: { counts: Counts },
   body: ({ counts }) => (sketch: GraphSketch, p: { nodes: Selector; edge: string; way?: Way; atLeast?: number; atMost?: number }): RuleFinding[] =>
@@ -144,6 +147,7 @@ export const Linked = requirement({
  * dependencies that bring them.
  */
 export const WithoutEffects = requirement({
+  owner: "trame",
   refines: [SharedRules],
   deps: { counts: Counts },
   body: ({ counts }) => (sketch: GraphSketch, p: { nodes: Selector; effects: readonly string[]; dependency?: string }): RuleFinding[] =>
@@ -166,6 +170,7 @@ export const WithoutEffects = requirement({
  * besides. What it finds: each node with words that are not, and those words.
  */
 export const WordsOf = requirement({
+  owner: "trame",
   refines: [SharedRules],
   deps: { counts: Counts },
   body: ({ counts }) => (sketch: GraphSketch, p: { nodes: Selector; field: string; vocabulary: SketchNode; also?: readonly string[] }): RuleFinding[] => {

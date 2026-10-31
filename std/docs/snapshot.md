@@ -260,12 +260,14 @@ Quantity · `Time`
 
 Requirement · `Applied` · **held**
 
+- Owner: trame
 - Refines: Rules applied, not written again
 
 ### The artefacts a shipment ships are checked
 
 Requirement · `Checked` · **held**
 
+- Owner: trame
 - Parameters: { counts: algebra.Counts }
 - Constants: { every: { value: all, meaning: The word of CheckWays that takes every check of the artefacts, those made by hand too } }
 - Refines: Rules applied, not written again
@@ -275,6 +277,7 @@ Requirement · `Checked` · **held**
 
 Requirement · `Reviewed` · **held**
 
+- Owner: trame
 - Parameters: { counts: algebra.Counts }
 - Refines: Rules applied, not written again
 - Depends on: Counts
@@ -283,24 +286,28 @@ Requirement · `Reviewed` · **held**
 
 Requirement · `Ruled` · **held**
 
+- Owner: trame
 - Refines: Rules applied, not written again
 
 ### The packages a shipment uses are safe
 
 Requirement · `Safe` · **held**
 
+- Owner: trame
 - Refines: Rules applied, not written again
 
 ### The product a shipment serves holds
 
 Requirement · `Served` · **held**
 
+- Owner: trame
 - Refines: Rules applied, not written again
 
 ### The code a shipment ships is verified
 
 Requirement · `Verified` · **held**
 
+- Owner: trame
 - Parameters: { counts: algebra.Counts }
 - Refines: Rules applied, not written again
 - Depends on: Counts
@@ -582,21 +589,31 @@ Implementation · `BrowserWakeLock`
 
 Goal · `CitedNotCopied`
 
+- Owner: trame
+
 ### Known designs, named
 
 Goal · `KnownDesigns`
+
+- Owner: trame
 
 ### Ports of the platform, realized once
 
 Goal · `RealizedOnce`
 
+- Owner: trame
+
 ### Shared operations instead of literals
 
 Goal · `SharedOperations`
 
+- Owner: trame
+
 ### Rules applied, not written again
 
 Goal · `SharedRules`
+
+- Owner: trame
 
 ## Standard library · Releases
 
@@ -750,6 +767,7 @@ Release · `R0_9_0`
 
 Requirement · `Linked` · **held**
 
+- Owner: trame
 - Parameters: { counts: algebra.Counts }
 - Refines: Rules applied, not written again
 - Depends on: Counts
@@ -758,6 +776,7 @@ Requirement · `Linked` · **held**
 
 Requirement · `NeverReaches` · **held**
 
+- Owner: trame
 - Parameters: { counts: algebra.Counts }
 - Refines: Rules applied, not written again
 - Depends on: Counts
@@ -766,12 +785,14 @@ Requirement · `NeverReaches` · **held**
 
 Requirement · `Reaches` · **held**
 
+- Owner: trame
 - Refines: Rules applied, not written again
 
 ### Effects a node may not have
 
 Requirement · `WithoutEffects` · **held**
 
+- Owner: trame
 - Parameters: { counts: algebra.Counts }
 - Refines: Rules applied, not written again
 - Depends on: Counts
@@ -780,6 +801,7 @@ Requirement · `WithoutEffects` · **held**
 
 Requirement · `WordsOf` · **held**
 
+- Owner: trame
 - Parameters: { counts: algebra.Counts }
 - Refines: Rules applied, not written again
 - Depends on: Counts

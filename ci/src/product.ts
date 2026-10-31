@@ -14,11 +14,11 @@ import { goal } from "../../kinds/goal"
  * prepares what the shipment's programs need, then runs trame ship, which checks, refuses or deploys as it does here.
  * Nobody writes it by hand, so it never says something the graph does not.
  */
-export const RunsElsewhere = goal()
+export const RunsElsewhere = goal({ owner: "trame" })
 
 /**
  * Each place is a writer
  * A place that runs a shipment (GitHub Actions, a shell, another service tomorrow) is one writer, a syntax element with
  * its examples, written once in this library; projects choose one by naming it as what produces an artefact.
  */
-export const OneWriterPerPlace = goal()
+export const OneWriterPerPlace = goal({ owner: "trame" })

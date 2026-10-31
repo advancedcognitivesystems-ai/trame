@@ -29,6 +29,7 @@ import { Strategy } from "#std/patterns"
  * review awaited) keeps it as surely as one violated.
  */
 export const ShipOnlyWhatHolds = requirement({
+  owner: "trame",
   refines: [ExecutableSpecification],
   deps: { counts: Counts },
   body: ({ counts }) => (obligations: readonly Status[]): boolean => counts.any(obligations) && obligations.every((s) => s === Status.held),

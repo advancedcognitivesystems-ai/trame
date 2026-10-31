@@ -10,7 +10,7 @@
 
 ### As many links as asked
 
-`Linked` · `src/rules.ts:126` · status: **held**
+`Linked` · `src/rules.ts:128` · status: **held**
 
 Each node the rule judges has, one way, at least and at most the number of edges of this name given: an entry point that calls a third party is verified by a scenario. What it finds: each node with too few or too many, with the nodes it is linked to.
 
@@ -30,6 +30,7 @@ Each node the rule judges has, one way, at least and at most the number of edges
 
 </details>
 
+- Owner: trame
 - Parameters: `counts` ← [Counts](algebra.md#Counts)
 - Refines: [Rules applied, not written again](product.md#SharedRules)
 
@@ -46,7 +47,7 @@ Each node the rule judges has, one way, at least and at most the number of edges
 
 ### A node never reaches what it must not
 
-`NeverReaches` · `src/rules.ts:108` · status: **held**
+`NeverReaches` · `src/rules.ts:109` · status: **held**
 
 No node the rule judges reaches, through edges of the names given, any node of the targets, even from afar: a renderer never reaches the graph. What it finds: each node that does, with the targets it reaches.
 
@@ -64,6 +65,7 @@ No node the rule judges reaches, through edges of the names given, any node of t
 
 </details>
 
+- Owner: trame
 - Parameters: `counts` ← [Counts](algebra.md#Counts)
 - Refines: [Rules applied, not written again](product.md#SharedRules)
 
@@ -96,6 +98,7 @@ Each node the rule judges reaches, through edges of the names given (followed on
 
 </details>
 
+- Owner: trame
 - Refines: [Rules applied, not written again](product.md#SharedRules)
 
 <a id="ReachesCriteria"></a>
@@ -111,7 +114,7 @@ Each node the rule judges reaches, through edges of the names given (followed on
 
 ### Effects a node may not have
 
-`WithoutEffects` · `src/rules.ts:146` · status: **held**
+`WithoutEffects` · `src/rules.ts:149` · status: **held**
 
 No node the rule judges has one of these effects, its own or through what it depends on: a read writes nothing, an engine function does not write to disk. What it finds: each node that has some, with the effects and the dependencies that bring them.
 
@@ -134,6 +137,7 @@ No node the rule judges has one of these effects, its own or through what it dep
 
 </details>
 
+- Owner: trame
 - Parameters: `counts` ← [Counts](algebra.md#Counts)
 - Refines: [Rules applied, not written again](product.md#SharedRules)
 
@@ -149,7 +153,7 @@ No node the rule judges has one of these effects, its own or through what it dep
 
 ### Words of a vocabulary
 
-`WordsOf` · `src/rules.ts:168` · status: **held**
+`WordsOf` · `src/rules.ts:172` · status: **held**
 
 The words a node lists in a field (the effects a port declares) are words of a vocabulary, or of the words given besides. What it finds: each node with words that are not, and those words.
 
@@ -167,6 +171,7 @@ The words a node lists in a field (the effects a port declares) are words of a v
 
 </details>
 
+- Owner: trame
 - Parameters: `counts` ← [Counts](algebra.md#Counts)
 - Refines: [Rules applied, not written again](product.md#SharedRules)
 

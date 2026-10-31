@@ -22,6 +22,7 @@
 
 A driver can change their mind without fearing an unfair penalty.
 
+- Owner: lea
 - Served by: [Read a reservation](api.md#ReadReservation), [Effects follow the request](architecture.md#EffectsFollowTheRequest), [A cancellation refunds once](principles.md#RefundOnce), [Secrets stay out of the graph](principles.md#SecretsOutOfTheGraph)
 - Refined by: [Refund on cancellation](#Refund)
 - Kept by the rule: [The code is verified](sdlc.md#CodeVerified), [The decisions hold](sdlc.md#DecisionsApplied), [Every check is signed](sdlc.md#EveryCheck), [The requirements of the goal hold](sdlc.md#GoalServed), [The packages are safe](sdlc.md#PackagesSafe), [The rules hold](sdlc.md#RulesHeld)
@@ -45,6 +46,7 @@ The amount returned to the driver when they cancel their reservation.
 
 </details>
 
+- Owner: lea
 - Parameters: `period` ← [Free cancellation period](#FreeCancellationPeriod) · `fee` ← [Late cancellation fee](#LateFee)
 - Refines: [Cancel without stress](#CancelWithoutStress)
 - Assumes: [Idempotent payment provider](#IdempotentProvider)
@@ -73,7 +75,7 @@ The amount returned to the driver when they cancel their reservation.
 
 ### Immediate refund
 
-`ImmediateRefund` · `src/cancellation.ts:97` · status: **unknown** · published
+`ImmediateRefund` · `src/cancellation.ts:98` · status: **unknown** · published
 
 The refund is initiated within two seconds of the cancellation.
 

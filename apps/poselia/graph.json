@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-28",
+  "generated": "2026-10-31",
   "nodes": [
     {
       "id": "app.BrowserScreen",
@@ -375,7 +375,10 @@
       "fields": {
         "rule": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
+        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+      ]
     },
     {
       "id": "body.AngleBetweenCriteria",
@@ -408,7 +411,10 @@
       "fields": {
         "rule": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
+        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+      ]
     },
     {
       "id": "body.BodyAtCriteria",
@@ -497,7 +503,10 @@
       "fields": {
         "rule": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
+        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+      ]
     },
     {
       "id": "body.FootOnItsWayCriteria",
@@ -534,7 +543,10 @@
       "fields": {
         "rule": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
+        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+      ]
     },
     {
       "id": "body.HandOnItsWayCriteria",
@@ -571,7 +583,10 @@
       "fields": {
         "rule": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
+        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+      ]
     },
     {
       "id": "body.KeyOfCriteria",
@@ -608,7 +623,10 @@
       "fields": {
         "rule": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
+        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+      ]
     },
     {
       "id": "body.LegsApartCriteria",
@@ -641,7 +659,10 @@
       "fields": {
         "rule": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
+        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+      ]
     },
     {
       "id": "body.LimbsReachCriteria",
@@ -704,7 +725,10 @@
       "fields": {
         "rule": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
+        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+      ]
     },
     {
       "id": "body.PlantedLegCriteria",
@@ -737,7 +761,10 @@
       "fields": {
         "rule": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
+        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+      ]
     },
     {
       "id": "body.RestsOnWhatItNamesCriteria",
@@ -774,7 +801,10 @@
       "fields": {
         "rule": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
+        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+      ]
     },
     {
       "id": "body.SidesOfCriteria",
@@ -807,7 +837,10 @@
       "fields": {
         "rule": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
+        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+      ]
     },
     {
       "id": "body.SpotOnCriteria",
@@ -848,7 +881,10 @@
       "fields": {
         "rule": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
+        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+      ]
     },
     {
       "id": "body.SteppingLegCriteria",
@@ -881,7 +917,10 @@
       "fields": {
         "rule": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
+        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+      ]
     },
     {
       "id": "body.SurfaceHeightsCriteria",
@@ -930,7 +969,10 @@
       "fields": {
         "rule": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
+        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+      ]
     },
     {
       "id": "body.TrunkOfCriteria",
@@ -967,7 +1009,10 @@
       "fields": {
         "rule": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
+        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+      ]
     },
     {
       "id": "body.TwoBonesCriteria",
@@ -1004,7 +1049,10 @@
       "fields": {
         "rule": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
+        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+      ]
     },
     {
       "id": "composing.BreathOfMoveCriteria",
@@ -1224,7 +1272,10 @@
       "fields": {
         "rule": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
+        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+      ]
     },
     {
       "id": "content.LeadingLegOfCriteria",
@@ -1312,7 +1363,10 @@
       "fields": {
         "rule": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
+        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+      ]
     },
     {
       "id": "content.MakesSenseCriteria",
@@ -3757,7 +3811,10 @@
       "fields": {
         "rule": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
+        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+      ]
     },
     {
       "id": "content.SpokenCriteria",
@@ -3993,7 +4050,10 @@
       "fields": {
         "rule": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
+        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+      ]
     },
     {
       "id": "marks.MarkOnBodyCriteria",
@@ -4068,7 +4128,10 @@
       "fields": {
         "rule": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
+        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+      ]
     },
     {
       "id": "practice.BreathsToSayCriteria",
@@ -4101,7 +4164,10 @@
       "fields": {
         "rule": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
+        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+      ]
     },
     {
       "id": "practice.EasedCriteria",
@@ -4138,7 +4204,10 @@
       "fields": {
         "rule": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
+        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+      ]
     },
     {
       "id": "practice.HoldPhasesCriteria",
@@ -4179,7 +4248,10 @@
       "fields": {
         "rule": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
+        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+      ]
     },
     {
       "id": "practice.LungsFullCriteria",
@@ -4216,7 +4288,10 @@
       "fields": {
         "rule": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
+        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+      ]
     },
     {
       "id": "practice.MomentAtCriteria",
@@ -4446,7 +4521,10 @@
       "fields": {
         "rule": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
+        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+      ]
     },
     {
       "id": "product.BreathOfCriteria",
@@ -4484,7 +4562,9 @@
       "title": "The breath sets the pace",
       "source": "src/product.ts:26",
       "fields": {},
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+      ]
     },
     {
       "id": "product.CheckedContent",
@@ -4492,7 +4572,9 @@
       "title": "Content checked by people who practise",
       "source": "src/product.ts:39",
       "fields": {},
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+      ]
     },
     {
       "id": "product.ChosenLanguage",
@@ -4503,7 +4585,10 @@
       "fields": {
         "rule": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
+        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+      ]
     },
     {
       "id": "product.ChosenLanguageCriteria",
@@ -4563,7 +4648,10 @@
       "fields": {
         "rule": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
+        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+      ]
     },
     {
       "id": "product.HoldInBreathsCriteria",
@@ -4593,7 +4681,9 @@
       "title": "In the person's language",
       "source": "src/product.ts:32",
       "fields": {},
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+      ]
     },
     {
       "id": "product.PhoneOnTheMat",
@@ -4613,7 +4703,9 @@
       "title": "Practise yoga on one's own, guided",
       "source": "src/product.ts:19",
       "fields": {},
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+      ]
     },
     {
       "id": "scenarios.BodyStaysOnTheFloor",
@@ -6148,7 +6240,10 @@
       "fields": {
         "rule": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
+        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+      ]
     },
     {
       "id": "settings.AdjustedBreathCriteria",
@@ -6200,7 +6295,10 @@
       "fields": {
         "rule": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
+        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+      ]
     },
     {
       "id": "settings.BreathReadCriteria",
@@ -6257,7 +6355,10 @@
       "fields": {
         "rule": "(function)"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
+        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+      ]
     },
     {
       "id": "settings.MeasuredBreathCriteria",

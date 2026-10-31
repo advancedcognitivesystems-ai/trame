@@ -1076,7 +1076,7 @@
       "kind": "implementation",
       "title": "The browser's gzip",
       "source": "src/browser.ts:109",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1095,7 +1095,7 @@
       "kind": "implementation",
       "title": "The globals of the page, and trame dev",
       "source": "src/browser.ts:99",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1115,7 +1115,7 @@
       "kind": "implementation",
       "title": "Local storage",
       "source": "src/browser.ts:88",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1133,7 +1133,7 @@
       "kind": "implementation",
       "title": "The browser's window",
       "source": "src/browser.ts:78",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1153,7 +1153,7 @@
       "kind": "function",
       "title": "Explorer of a graph",
       "source": "src/browser.ts:40",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1192,7 +1192,7 @@
       "kind": "entry",
       "title": "Show the graph",
       "source": "src/browser.ts:56",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "trigger": {
@@ -1246,7 +1246,7 @@
       "kind": "binding",
       "title": "The browser runs the page",
       "source": "src/browser.ts:120",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "The page's script took what it needed from the browser itself, here and there: the graph could not say what the page asks of the browser, nor try it elsewhere.",
@@ -1263,7 +1263,7 @@
       "kind": "adr",
       "title": "The page is assembled",
       "source": "src/browser.ts:139",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "The page's script built by hand what it shared with the engine and wrote its values (classes, identifiers, the explorer's geometry) as literals the catalogue could not see: a change in the graph did not reach it.",
@@ -4536,6 +4536,7 @@
       "source": "src/generations.ts:76",
       "status": "held",
       "fields": {
+        "owner": "trame",
         "body": "(function)"
       },
       "diagnostics": []
@@ -4544,7 +4545,7 @@
       "id": "generations.AcceptCandidateCriteria",
       "kind": "acceptance",
       "title": "What a candidate needs to be accepted",
-      "source": "src/generations.ts:84",
+      "source": "src/generations.ts:85",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4619,7 +4620,7 @@
       "id": "generations.EnginePin",
       "kind": "decision",
       "title": "The engine a project runs",
-      "source": "src/generations.ts:126",
+      "source": "src/generations.ts:127",
       "fields": {
         "owner": "trame",
         "value": {
@@ -4637,7 +4638,7 @@
       "id": "generations.LanguageSharing",
       "kind": "decision",
       "title": "Generations that share the language",
-      "source": "src/generations.ts:146",
+      "source": "src/generations.ts:147",
       "fields": {
         "owner": "trame",
         "value": {
@@ -4656,7 +4657,7 @@
       "id": "generations.ReleaseRecords",
       "kind": "function",
       "title": "Records of the releases",
-      "source": "src/generations.ts:160",
+      "source": "src/generations.ts:161",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4690,7 +4691,7 @@
       "id": "generations.Releases",
       "kind": "decision",
       "title": "Releases of the engine",
-      "source": "src/generations.ts:110",
+      "source": "src/generations.ts:111",
       "fields": {
         "owner": "trame",
         "value": {
@@ -6530,9 +6531,10 @@
       "id": "laws.AnswersWithoutCrashing",
       "kind": "requirement",
       "title": "Answers without crashing",
-      "source": "src/laws.ts:110",
+      "source": "src/laws.ts:111",
       "status": "held",
       "fields": {
+        "owner": "trame",
         "body": "(function)"
       },
       "diagnostics": []
@@ -6541,7 +6543,7 @@
       "id": "laws.AnswersWithoutCrashingCriteria",
       "kind": "acceptance",
       "title": "Criteria of the answers without crashing",
-      "source": "src/laws.ts:116",
+      "source": "src/laws.ts:118",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -6571,9 +6573,10 @@
       "id": "laws.BlockingHoleHasOwner",
       "kind": "requirement",
       "title": "A blocking hole has an owner",
-      "source": "src/laws.ts:137",
+      "source": "src/laws.ts:139",
       "status": "held",
       "fields": {
+        "owner": "trame",
         "body": "(function)"
       },
       "diagnostics": []
@@ -6582,7 +6585,7 @@
       "id": "laws.BlockingHoleHasOwnerCriteria",
       "kind": "acceptance",
       "title": "Criteria of the owner of a blocking hole",
-      "source": "src/laws.ts:143",
+      "source": "src/laws.ts:146",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -6608,9 +6611,10 @@
       "id": "laws.ClosedResolution",
       "kind": "requirement",
       "title": "The resolution returns only what it is given",
-      "source": "src/laws.ts:222",
+      "source": "src/laws.ts:228",
       "status": "held",
       "fields": {
+        "owner": "trame",
         "body": "(function)"
       },
       "diagnostics": []
@@ -6619,7 +6623,7 @@
       "id": "laws.ClosedResolutionCriteria",
       "kind": "acceptance",
       "title": "Criteria of the closed resolution",
-      "source": "src/laws.ts:228",
+      "source": "src/laws.ts:235",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -6644,6 +6648,7 @@
       "source": "src/laws.ts:64",
       "status": "held",
       "fields": {
+        "owner": "trame",
         "deps": {
           "counts": "std/algebra.Counts"
         },
@@ -6655,7 +6660,7 @@
       "id": "laws.CompleteDeclarationCriteria",
       "kind": "acceptance",
       "title": "Criteria of the complete declaration",
-      "source": "src/laws.ts:83",
+      "source": "src/laws.ts:84",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -6689,9 +6694,10 @@
       "id": "laws.CompleteViewDeclaration",
       "kind": "requirement",
       "title": "Complete declaration of a view",
-      "source": "src/laws.ts:266",
+      "source": "src/laws.ts:273",
       "status": "held",
       "fields": {
+        "owner": "trame",
         "body": "(function)"
       },
       "diagnostics": []
@@ -6700,7 +6706,7 @@
       "id": "laws.CompleteViewDeclarationCriteria",
       "kind": "acceptance",
       "title": "Criteria of the declaration of a view",
-      "source": "src/laws.ts:277",
+      "source": "src/laws.ts:285",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -6726,9 +6732,10 @@
       "id": "laws.IntermediateFormatOnly",
       "kind": "requirement",
       "title": "Produces only the intermediate format",
-      "source": "src/laws.ts:310",
+      "source": "src/laws.ts:318",
       "status": "held",
       "fields": {
+        "owner": "trame",
         "body": "(function)"
       },
       "diagnostics": []
@@ -6737,7 +6744,7 @@
       "id": "laws.IntermediateFormatOnlyCriteria",
       "kind": "acceptance",
       "title": "Criteria of the intermediate format",
-      "source": "src/laws.ts:319",
+      "source": "src/laws.ts:328",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -6767,9 +6774,10 @@
       "id": "laws.OrderFree",
       "kind": "requirement",
       "title": "The resolution does not depend on the order",
-      "source": "src/laws.ts:202",
+      "source": "src/laws.ts:207",
       "status": "held",
       "fields": {
+        "owner": "trame",
         "deps": {
           "same": "(function)"
         },
@@ -6781,7 +6789,7 @@
       "id": "laws.OrderFreeCriteria",
       "kind": "acceptance",
       "title": "Criteria of the resolution in any order",
-      "source": "src/laws.ts:209",
+      "source": "src/laws.ts:215",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -6803,9 +6811,10 @@
       "id": "laws.SameInputSameAnswer",
       "kind": "requirement",
       "title": "Same input, same answer",
-      "source": "src/laws.ts:180",
+      "source": "src/laws.ts:184",
       "status": "held",
       "fields": {
+        "owner": "trame",
         "deps": {
           "counts": "std/algebra.Counts"
         },
@@ -6817,7 +6826,7 @@
       "id": "laws.SameInputSameAnswerCriteria",
       "kind": "acceptance",
       "title": "Criteria of the same answer",
-      "source": "src/laws.ts:187",
+      "source": "src/laws.ts:192",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -6840,16 +6849,19 @@
       "kind": "goal",
       "title": "Kinds and views that can be trusted",
       "source": "src/laws.ts:20",
-      "fields": {},
+      "fields": {
+        "owner": "trame"
+      },
       "diagnostics": []
     },
     {
       "id": "laws.UnknownWithoutEvidence",
       "kind": "requirement",
       "title": "Without evidence, the status is unknown",
-      "source": "src/laws.ts:158",
+      "source": "src/laws.ts:161",
       "status": "held",
       "fields": {
+        "owner": "trame",
         "body": "(function)"
       },
       "diagnostics": []
@@ -6858,7 +6870,7 @@
       "id": "laws.UnknownWithoutEvidenceCriteria",
       "kind": "acceptance",
       "title": "Criteria of the status without evidence",
-      "source": "src/laws.ts:164",
+      "source": "src/laws.ts:168",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -6891,6 +6903,7 @@
       "source": "src/libraries.ts:23",
       "status": "held",
       "fields": {
+        "owner": "trame",
         "deps": {
           "counts": "std/algebra.Counts"
         },
@@ -6902,7 +6915,7 @@
       "id": "libraries.LibraryOfAModuleCriteria",
       "kind": "acceptance",
       "title": "Criteria of what belongs to a library",
-      "source": "src/libraries.ts:33",
+      "source": "src/libraries.ts:34",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -6928,7 +6941,7 @@
       "id": "libraries.LibraryReleaseNames",
       "kind": "decision",
       "title": "Names of a library's releases",
-      "source": "src/libraries.ts:70",
+      "source": "src/libraries.ts:72",
       "fields": {
         "owner": "trame",
         "value": {
@@ -6942,9 +6955,10 @@
       "id": "libraries.ReleaseIsSettled",
       "kind": "requirement",
       "title": "A release is settled",
-      "source": "src/libraries.ts:48",
+      "source": "src/libraries.ts:49",
       "status": "held",
       "fields": {
+        "owner": "trame",
         "deps": {
           "counts": "std/algebra.Counts"
         },
@@ -6956,7 +6970,7 @@
       "id": "libraries.ReleaseIsSettledCriteria",
       "kind": "acceptance",
       "title": "Criteria of a settled release",
-      "source": "src/libraries.ts:55",
+      "source": "src/libraries.ts:57",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -11592,7 +11606,7 @@
       "kind": "implementation",
       "title": "System files, for reading",
       "source": "src/platform.ts:75",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "body": {
@@ -11607,7 +11621,7 @@
       "kind": "implementation",
       "title": "Trees on disk",
       "source": "src/platform.ts:216",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -11627,7 +11641,7 @@
       "kind": "implementation",
       "title": "System files, for writing",
       "source": "src/platform.ts:188",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "body": {
@@ -11918,7 +11932,7 @@
       "kind": "implementation",
       "title": "Node HTTP server",
       "source": "src/platform.ts:157",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "body": {
@@ -11933,7 +11947,7 @@
       "kind": "binding",
       "title": "On a machine, Node.js reads, writes and runs",
       "source": "src/platform.ts:396",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "What changes the world (files written, processes, the terminal, the clock) is real only on a machine; the scenarios keep it in memory.",
@@ -11980,7 +11994,7 @@
       "kind": "implementation",
       "title": "Node process",
       "source": "src/platform.ts:196",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -12000,7 +12014,7 @@
       "kind": "implementation",
       "title": "Node programs",
       "source": "src/platform.ts:206",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -12020,7 +12034,7 @@
       "kind": "implementation",
       "title": "Node terminal",
       "source": "src/platform.ts:225",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -12069,7 +12083,7 @@
       "kind": "implementation",
       "title": "npm's reports",
       "source": "src/platform.ts:140",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -12191,7 +12205,7 @@
       "kind": "binding",
       "title": "On a machine, runs are kept on disk",
       "source": "src/platform.ts:463",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "The commands of a shipment and of an advance run as separate processes, each compiling the same graph: what one played, the next can find only on disk.",
@@ -12207,7 +12221,7 @@
       "kind": "implementation",
       "title": "Runs kept on disk",
       "source": "src/platform.ts:371",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -12249,7 +12263,7 @@
       "kind": "implementation",
       "title": "System clock",
       "source": "src/platform.ts:234",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -12677,7 +12691,7 @@
       "kind": "adr",
       "title": "A version ships through the graph",
       "source": "src/principles.ts:397",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "Two products ship differently (a page placed where it is served, an engine frozen into a generation) and their pipelines lived in scripts and in their authors' heads: nothing said what had been checked, by whom, on which version, nor why a version could go.",
@@ -12695,7 +12709,7 @@
       "kind": "adr",
       "title": "A technology is chosen in one node",
       "source": "src/principles.ts:233",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "Each implementation said which environments it served: the choice of a technology was spread over its realizations, nothing said why, and a test double or a repository over a database port had to be declared as if it touched the platform.",
@@ -12786,7 +12800,7 @@
       "id": "product.CandidateDates",
       "kind": "decision",
       "title": "Candidate dates",
-      "source": "src/product.ts:150",
+      "source": "src/product.ts:151",
       "fields": {
         "owner": "trame",
         "value": {
@@ -12800,7 +12814,7 @@
       "id": "product.ClaimSets",
       "kind": "decision",
       "title": "Claim sets",
-      "source": "src/product.ts:64",
+      "source": "src/product.ts:65",
       "fields": {
         "owner": "trame",
         "value": 30,
@@ -12815,7 +12829,7 @@
       "id": "product.DevDebounce",
       "kind": "decision",
       "title": "Debouncing of saves",
-      "source": "src/product.ts:164",
+      "source": "src/product.ts:165",
       "fields": {
         "owner": "trame",
         "value": 150,
@@ -12830,7 +12844,7 @@
       "id": "product.DevPort",
       "kind": "decision",
       "title": "Port of trame dev",
-      "source": "src/product.ts:158",
+      "source": "src/product.ts:159",
       "fields": {
         "owner": "trame",
         "value": 4170
@@ -12842,7 +12856,9 @@
       "kind": "goal",
       "title": "A specification that runs",
       "source": "src/product.ts:13",
-      "fields": {},
+      "fields": {
+        "owner": "trame"
+      },
       "diagnostics": []
     },
     {
@@ -12850,14 +12866,16 @@
       "kind": "goal",
       "title": "A technology is changed in one node",
       "source": "src/product.ts:26",
-      "fields": {},
+      "fields": {
+        "owner": "trame"
+      },
       "diagnostics": []
     },
     {
       "id": "product.SampleCount",
       "kind": "decision",
       "title": "Nodes drawn per kind",
-      "source": "src/product.ts:58",
+      "source": "src/product.ts:59",
       "fields": {
         "owner": "trame",
         "value": 50,
@@ -12872,7 +12890,7 @@
       "id": "product.SampledOwners",
       "kind": "decision",
       "title": "Owners drawn at random",
-      "source": "src/product.ts:122",
+      "source": "src/product.ts:123",
       "fields": {
         "owner": "trame",
         "value": [
@@ -12886,7 +12904,7 @@
       "id": "product.SampledValues",
       "kind": "decision",
       "title": "Values drawn by the laws",
-      "source": "src/product.ts:75",
+      "source": "src/product.ts:76",
       "fields": {
         "owner": "trame",
         "value": {
@@ -12954,6 +12972,7 @@
       "source": "src/product.ts:39",
       "status": "held",
       "fields": {
+        "owner": "trame",
         "body": "(function)"
       },
       "diagnostics": []
@@ -12962,7 +12981,7 @@
       "id": "product.SeverityOrderCriteria",
       "kind": "acceptance",
       "title": "Criteria of the sort by severity",
-      "source": "src/product.ts:45",
+      "source": "src/product.ts:46",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -12985,14 +13004,16 @@
       "kind": "goal",
       "title": "A single source of truth",
       "source": "src/product.ts:19",
-      "fields": {},
+      "fields": {
+        "owner": "trame"
+      },
       "diagnostics": []
     },
     {
       "id": "product.StructureDraws",
       "kind": "decision",
       "title": "Values drawn by the laws of a structure",
-      "source": "src/product.ts:131",
+      "source": "src/product.ts:132",
       "fields": {
         "owner": "trame",
         "value": {
@@ -13030,7 +13051,9 @@
       "kind": "goal",
       "title": "What is generic is written once",
       "source": "src/product.ts:33",
-      "fields": {},
+      "fields": {
+        "owner": "trame"
+      },
       "diagnostics": []
     },
     {
@@ -15233,44 +15256,50 @@
       "kind": "check",
       "title": "The candidate plays the laws",
       "source": "src/sdlc.ts:61",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame"
       },
       "result": {
-        "code": "6a038fcb"
+        "code": "d92816f1"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
+      ]
     },
     {
       "id": "sdlc.CandidateRunsOnTheMachine",
       "kind": "check",
       "title": "The candidate runs on the machine",
       "source": "src/sdlc.ts:122",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame"
       },
       "result": {
-        "code": "4b879195"
+        "code": "86515dcf"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
+      ]
     },
     {
       "id": "sdlc.EngineCandidate",
       "kind": "artifact",
       "title": "The candidate engine",
       "source": "src/sdlc.ts:55",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "out/local/trame-cli.ts"
       },
       "result": {
         "path": "out/local/trame-cli.ts",
-        "code": "fc1efc7d"
+        "code": "7d6c4b02"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+      ]
     },
     {
       "id": "sdlc.EnginePackagesSafe",
@@ -15314,7 +15343,7 @@
       "kind": "artifact",
       "title": "The graph page",
       "source": "src/sdlc.ts:176",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "trame-page.html",
@@ -15322,9 +15351,11 @@
       },
       "result": {
         "path": "trame-page.html",
-        "code": "02efc6f1"
+        "code": "04d63dab"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+      ]
     },
     {
       "id": "sdlc.GraphPageOpening",
@@ -15344,14 +15375,16 @@
       "kind": "check",
       "title": "The graph page opens",
       "source": "src/sdlc.ts:250",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame"
       },
       "result": {
         "code": "cae603c5"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
+      ]
     },
     {
       "id": "sdlc.GraphPageScenarioData",
@@ -15415,7 +15448,7 @@
       "kind": "shipment",
       "title": "The next generation",
       "source": "src/sdlc.ts:296",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "generation"
@@ -15880,7 +15913,15 @@
         ],
         "gaps": []
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: To ship: The candidate engine is unknown",
+        "warning: To ship: The graph page is unknown",
+        "warning: To ship: The SDLC's tooling is realized once is unknown",
+        "warning: To ship: The page is assembled is unknown",
+        "warning: To ship: The candidate plays the laws is unknown",
+        "warning: To ship: The candidate runs on the machine is unknown",
+        "warning: To ship: The graph page opens is unknown"
+      ]
     },
     {
       "id": "sdlc.OpeningTheGraphPage",
@@ -15977,7 +16018,7 @@
       "kind": "binding",
       "title": "The SDLC on the machine",
       "source": "src/sdlc.ts:144",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "The graph page must be opened as a person opens it: the file exported, in a real browser."
@@ -16013,7 +16054,7 @@
       "id": "shipping.Attribution",
       "kind": "function",
       "title": "Attribution",
-      "source": "src/shipping.ts:83",
+      "source": "src/shipping.ts:84",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -16034,7 +16075,7 @@
       "id": "shipping.ProgramBundle",
       "kind": "decision",
       "title": "The fingerprint of a program",
-      "source": "src/shipping.ts:68",
+      "source": "src/shipping.ts:69",
       "fields": {
         "owner": "trame",
         "value": {
@@ -16054,7 +16095,7 @@
       "id": "shipping.SdlcEvidence",
       "kind": "function",
       "title": "Evidence of the SDLC",
-      "source": "src/shipping.ts:116",
+      "source": "src/shipping.ts:117",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -16081,7 +16122,7 @@
       "id": "shipping.SealedByAttribution",
       "kind": "binding",
       "title": "Evidence sealed by attribution",
-      "source": "src/shipping.ts:94",
+      "source": "src/shipping.ts:95",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -16098,7 +16139,7 @@
       "id": "shipping.ShipmentRunPlan",
       "kind": "function",
       "title": "The plan of a run elsewhere",
-      "source": "src/shipping.ts:137",
+      "source": "src/shipping.ts:138",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -16128,6 +16169,7 @@
       "source": "src/shipping.ts:31",
       "status": "held",
       "fields": {
+        "owner": "trame",
         "deps": {
           "counts": "std/algebra.Counts"
         },
@@ -16139,7 +16181,7 @@
       "id": "shipping.ShipOnlyWhatHoldsCriteria",
       "kind": "acceptance",
       "title": "Criteria of shipping only what holds",
-      "source": "src/shipping.ts:38",
+      "source": "src/shipping.ts:39",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -16169,7 +16211,7 @@
       "id": "shipping.ShippingRecords",
       "kind": "decision",
       "title": "Where the SDLC's evidence is kept",
-      "source": "src/shipping.ts:55",
+      "source": "src/shipping.ts:56",
       "fields": {
         "owner": "trame",
         "value": {

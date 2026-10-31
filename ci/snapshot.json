@@ -332,13 +332,17 @@
       "id": "product.OneWriterPerPlace",
       "kind": "goal",
       "title": "Each place is a writer",
-      "fields": {}
+      "fields": {
+        "owner": "trame"
+      }
     },
     {
       "id": "product.RunsElsewhere",
       "kind": "goal",
       "title": "A shipment runs elsewhere as it runs here",
-      "fields": {}
+      "fields": {
+        "owner": "trame"
+      }
     },
     {
       "id": "releases.R0_1_0",

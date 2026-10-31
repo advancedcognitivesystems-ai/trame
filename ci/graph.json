@@ -451,7 +451,9 @@
       "kind": "goal",
       "title": "Each place is a writer",
       "source": "src/product.ts:24",
-      "fields": {},
+      "fields": {
+        "owner": "trame"
+      },
       "diagnostics": []
     },
     {
@@ -459,7 +461,9 @@
       "kind": "goal",
       "title": "A shipment runs elsewhere as it runs here",
       "source": "src/product.ts:17",
-      "fields": {},
+      "fields": {
+        "owner": "trame"
+      },
       "diagnostics": []
     },
     {

@@ -962,7 +962,7 @@
       "id": "browser.BrowserDecompression",
       "kind": "implementation",
       "title": "The browser's gzip",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -979,7 +979,7 @@
       "id": "browser.BrowserFeed",
       "kind": "implementation",
       "title": "The globals of the page, and trame dev",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -997,7 +997,7 @@
       "id": "browser.BrowserMemory",
       "kind": "implementation",
       "title": "Local storage",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1013,7 +1013,7 @@
       "id": "browser.BrowserWindow",
       "kind": "implementation",
       "title": "The browser's window",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1031,7 +1031,7 @@
       "id": "browser.ExplorerFigures",
       "kind": "function",
       "title": "Explorer of a graph",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1068,7 +1068,7 @@
       "id": "browser.ShowGraph",
       "kind": "entry",
       "title": "Show the graph",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "trigger": {
@@ -1120,7 +1120,7 @@
       "id": "browser.TheBrowserRunsThePage",
       "kind": "binding",
       "title": "The browser runs the page",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "The page's script took what it needed from the browser itself, here and there: the graph could not say what the page asks of the browser, nor try it elsewhere.",
@@ -1135,7 +1135,7 @@
       "id": "browser.ThePageIsAssembled",
       "kind": "adr",
       "title": "The page is assembled",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "The page's script built by hand what it shared with the engine and wrote its values (classes, identifiers, the explorer's geometry) as literals the catalogue could not see: a change in the graph did not reach it.",
@@ -3889,6 +3889,7 @@
       "title": "Accept a candidate",
       "status": "held",
       "fields": {
+        "owner": "trame",
         "body": "(function)"
       }
     },
@@ -5177,6 +5178,7 @@
       "title": "Answers without crashing",
       "status": "held",
       "fields": {
+        "owner": "trame",
         "body": "(function)"
       }
     },
@@ -5196,6 +5198,7 @@
       "title": "A blocking hole has an owner",
       "status": "held",
       "fields": {
+        "owner": "trame",
         "body": "(function)"
       }
     },
@@ -5215,6 +5218,7 @@
       "title": "The resolution returns only what it is given",
       "status": "held",
       "fields": {
+        "owner": "trame",
         "body": "(function)"
       }
     },
@@ -5234,6 +5238,7 @@
       "title": "Complete declaration",
       "status": "held",
       "fields": {
+        "owner": "trame",
         "deps": {
           "counts": "std/algebra.Counts"
         },
@@ -5256,6 +5261,7 @@
       "title": "Complete declaration of a view",
       "status": "held",
       "fields": {
+        "owner": "trame",
         "body": "(function)"
       }
     },
@@ -5275,6 +5281,7 @@
       "title": "Produces only the intermediate format",
       "status": "held",
       "fields": {
+        "owner": "trame",
         "body": "(function)"
       }
     },
@@ -5294,6 +5301,7 @@
       "title": "The resolution does not depend on the order",
       "status": "held",
       "fields": {
+        "owner": "trame",
         "deps": {
           "same": "(function)"
         },
@@ -5316,6 +5324,7 @@
       "title": "Same input, same answer",
       "status": "held",
       "fields": {
+        "owner": "trame",
         "deps": {
           "counts": "std/algebra.Counts"
         },
@@ -5336,7 +5345,9 @@
       "id": "laws.TrustedExtensions",
       "kind": "goal",
       "title": "Kinds and views that can be trusted",
-      "fields": {}
+      "fields": {
+        "owner": "trame"
+      }
     },
     {
       "id": "laws.UnknownWithoutEvidence",
@@ -5344,6 +5355,7 @@
       "title": "Without evidence, the status is unknown",
       "status": "held",
       "fields": {
+        "owner": "trame",
         "body": "(function)"
       }
     },
@@ -5363,6 +5375,7 @@
       "title": "What belongs to a library",
       "status": "held",
       "fields": {
+        "owner": "trame",
         "deps": {
           "counts": "std/algebra.Counts"
         },
@@ -5397,6 +5410,7 @@
       "title": "A release is settled",
       "status": "held",
       "fields": {
+        "owner": "trame",
         "deps": {
           "counts": "std/algebra.Counts"
         },
@@ -8629,7 +8643,7 @@
       "id": "platform.DiskReading",
       "kind": "implementation",
       "title": "System files, for reading",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "body": {
@@ -8642,7 +8656,7 @@
       "id": "platform.DiskTrees",
       "kind": "implementation",
       "title": "Trees on disk",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -8660,7 +8674,7 @@
       "id": "platform.DiskWriting",
       "kind": "implementation",
       "title": "System files, for writing",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "body": {
@@ -8917,7 +8931,7 @@
       "id": "platform.NodeHttpServer",
       "kind": "implementation",
       "title": "Node HTTP server",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "body": {
@@ -8930,7 +8944,7 @@
       "id": "platform.NodeMachine",
       "kind": "binding",
       "title": "On a machine, Node.js reads, writes and runs",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "What changes the world (files written, processes, the terminal, the clock) is real only on a machine; the scenarios keep it in memory.",
@@ -8971,7 +8985,7 @@
       "id": "platform.NodeProcess",
       "kind": "implementation",
       "title": "Node process",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -8989,7 +9003,7 @@
       "id": "platform.NodePrograms",
       "kind": "implementation",
       "title": "Node programs",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -9007,7 +9021,7 @@
       "id": "platform.NodeTerminal",
       "kind": "implementation",
       "title": "Node terminal",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -9050,7 +9064,7 @@
       "id": "platform.NpmReports",
       "kind": "implementation",
       "title": "npm's reports",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -9158,7 +9172,7 @@
       "id": "platform.RunsKeptOnDisk",
       "kind": "binding",
       "title": "On a machine, runs are kept on disk",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "The commands of a shipment and of an advance run as separate processes, each compiling the same graph: what one played, the next can find only on disk.",
@@ -9172,7 +9186,7 @@
       "id": "platform.RunsOnDisk",
       "kind": "implementation",
       "title": "Runs kept on disk",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -9210,7 +9224,7 @@
       "id": "platform.SystemClock",
       "kind": "implementation",
       "title": "System clock",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -9584,7 +9598,7 @@
       "id": "principles.ShippedThroughTheGraph",
       "kind": "adr",
       "title": "A version ships through the graph",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "Two products ship differently (a page placed where it is served, an engine frozen into a generation) and their pipelines lived in scripts and in their authors' heads: nothing said what had been checked, by whom, on which version, nor why a version could go.",
@@ -9600,7 +9614,7 @@
       "id": "principles.TechnologyInOneNode",
       "kind": "adr",
       "title": "A technology is chosen in one node",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "Each implementation said which environments it served: the choice of a technology was spread over its realizations, nothing said why, and a test double or a repository over a database port had to be declared as if it touched the platform.",
@@ -9727,13 +9741,17 @@
       "id": "product.ExecutableSpecification",
       "kind": "goal",
       "title": "A specification that runs",
-      "fields": {}
+      "fields": {
+        "owner": "trame"
+      }
     },
     {
       "id": "product.ReplaceableTechnology",
       "kind": "goal",
       "title": "A technology is changed in one node",
-      "fields": {}
+      "fields": {
+        "owner": "trame"
+      }
     },
     {
       "id": "product.SampleCount",
@@ -9829,6 +9847,7 @@
       "title": "Sort problems by severity",
       "status": "held",
       "fields": {
+        "owner": "trame",
         "body": "(function)"
       }
     },
@@ -9846,7 +9865,9 @@
       "id": "product.SingleSource",
       "kind": "goal",
       "title": "A single source of truth",
-      "fields": {}
+      "fields": {
+        "owner": "trame"
+      }
     },
     {
       "id": "product.StructureDraws",
@@ -9887,7 +9908,9 @@
       "id": "product.WrittenOnce",
       "kind": "goal",
       "title": "What is generic is written once",
-      "fields": {}
+      "fields": {
+        "owner": "trame"
+      }
     },
     {
       "id": "releases.G1",
@@ -11732,7 +11755,7 @@
       "id": "sdlc.CandidateKeepsTheLaws",
       "kind": "check",
       "title": "The candidate plays the laws",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame"
       }
@@ -11741,7 +11764,7 @@
       "id": "sdlc.CandidateRunsOnTheMachine",
       "kind": "check",
       "title": "The candidate runs on the machine",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame"
       }
@@ -11750,7 +11773,7 @@
       "id": "sdlc.EngineCandidate",
       "kind": "artifact",
       "title": "The candidate engine",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "out/local/trame-cli.ts"
@@ -11791,7 +11814,7 @@
       "id": "sdlc.GraphPage",
       "kind": "artifact",
       "title": "The graph page",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "trame-page.html",
@@ -11813,7 +11836,7 @@
       "id": "sdlc.GraphPageOpens",
       "kind": "check",
       "title": "The graph page opens",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame"
       }
@@ -11871,7 +11894,7 @@
       "id": "sdlc.NextGeneration",
       "kind": "shipment",
       "title": "The next generation",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "generation"
@@ -11949,7 +11972,7 @@
       "id": "sdlc.SdlcOnTheMachine",
       "kind": "binding",
       "title": "The SDLC on the machine",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "The graph page must be opened as a person opens it: the file exported, in a real browser."
@@ -12084,6 +12107,7 @@
       "title": "Ship only what holds",
       "status": "held",
       "fields": {
+        "owner": "trame",
         "deps": {
           "counts": "std/algebra.Counts"
         },

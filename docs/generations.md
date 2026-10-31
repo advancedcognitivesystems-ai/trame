@@ -24,6 +24,7 @@ A candidate becomes the next generation only if its second assembly builds Trame
 
 </details>
 
+- Owner: trame
 - Refines: [A specification that runs](product.md#ExecutableSpecification)
 - Used by: [Advance](commands.md#Advance)
 - Applies: [Generations: frozen engines](principles.md#GenerationLayer), [Trame builds Trame](principles.md#TrameBuildsTrame)
@@ -70,7 +71,7 @@ The candidate is the component of the engine assembled for the environment of a 
 
 ### The engine a project runs
 
-`EnginePin` · `src/generations.ts:126`
+`EnginePin` · `src/generations.ts:127`
 
 A project pins the generation it runs in its configuration (trame.json), under this key: the path of the generation, from the project. Deploying a new generation is moving the pin, which trame advance does when it promotes, for Trame and for the example; going back is moving it back. The launcher (trame.sh) runs the generation the pin names; trame advance takes it as the generation in place.
 
@@ -86,7 +87,7 @@ A project pins the generation it runs in its configuration (trame.json), under t
 
 ### Generations that share the language
 
-`LanguageSharing` · `src/generations.ts:146`
+`LanguageSharing` · `src/generations.ts:147`
 
 A generation reaches the repository's language (the prelude, the kinds, the views) through links while it can run on it: it then compiles a project written in the language of today. Each advance replays the oldest and the newest of the other generations that share it on the example, through a view that writes nothing. One that no longer runs lacks what the language now asks, and so do the older ones that share it: each of them, up to the newest that fails, receives the copy of the language archived with the generation in place, the last language they all ran on, with a copy of the example, and runs on its own from then on, as g1 to g8 do; without such an archive, the candidate is refused. Each promotion archives its language, once per fingerprint.
 
@@ -104,7 +105,7 @@ A generation reaches the repository's language (the prelude, the kinds, the view
 
 ### Releases of the engine
 
-`Releases` · `src/generations.ts:110`
+`Releases` · `src/generations.ts:111`
 
 Each generation frozen is a release of the engine's component: a node of the module releases, named by the prefix and the generation's number. trame advance writes the module at each promotion, from the releases the graph already holds and the one it freezes, so it is never edited by hand; a generation's own release is written after its graph is copied, and is not in its own copy. The value names the module, the kind's constructor and its file, the prefix of a release's name and its owner; the edges a release is written with (ReleaseEdge) and how it reaches its language (LanguageUse) are words of the prelude, which the kind declares.
 
@@ -125,7 +126,7 @@ Each generation frozen is a release of the engine's component: a node of the mod
 
 ### Records of the releases
 
-`ReleaseRecords` · `src/generations.ts:160` · status: **held**
+`ReleaseRecords` · `src/generations.ts:161` · status: **held**
 
 The releases of the graph, read back from graph.json, and the module that declares them, written in TypeScript with the syntax elements of the module typescript.
 

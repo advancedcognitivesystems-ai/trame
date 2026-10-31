@@ -10,33 +10,34 @@ import { acceptance } from "../kinds/acceptance"
  * A specification that runs
  * A product's graph is written in code, checks itself, renders into documents, and produces the code that realises it.
  */
-export const ExecutableSpecification = goal()
+export const ExecutableSpecification = goal({ owner: "trame" })
 
 /**
  * A single source of truth
  * A value is decided once, in the graph; code, documents and infrastructure read it from there.
  */
-export const SingleSource = goal()
+export const SingleSource = goal({ owner: "trame" })
 
 /**
  * A technology is changed in one node
  * The code that uses an abstraction never names what answers it: a technical choice does, in one node, with its
  * reasons. Replacing a technology is writing its realization and changing that choice.
  */
-export const ReplaceableTechnology = goal()
+export const ReplaceableTechnology = goal({ owner: "trame" })
 
 /**
  * What is generic is written once
  * A structure, a standard, a design pattern, a port of the platform is described once, in a library, with its owner,
  * its documents and its laws; every product's graph imports it instead of copying it.
  */
-export const WrittenOnce = goal()
+export const WrittenOnce = goal({ owner: "trame" })
 
 /**
  * Sort problems by severity
  * What blocks first, then the errors, then what must be watched.
  */
 export const SeverityOrder = requirement({
+  owner: "trame",
   refines: [ExecutableSpecification],
   body: () => (severity: Severity): number => [Severity.blocking, Severity.error, Severity.warning].indexOf(severity),
 })

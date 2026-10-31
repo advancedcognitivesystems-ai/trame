@@ -14,6 +14,7 @@
 
 A product's graph is written in code, checks itself, renders into documents, and produces the code that realises it.
 
+- Owner: trame
 - Served by: [Explorer of a graph](browser.md#ExplorerFigures), [Show the graph](browser.md#ShowGraph), [The page is assembled](browser.md#ThePageIsAssembled), [Advance](commands.md#Advance), [Assemble a component](commands.md#Assemble), [Assembler](commands.md#Assembler), [Build](commands.md#Build), [Deliver](commands.md#Deliver), [Start trame dev](commands.md#Dev), [Ask the machine](commands.md#Doctor), [Payload](commands.md#EmitPayload), [Export the page](commands.md#Export), [Plan a build](commands.md#Plan), [Preparation](commands.md#Preparation), [Render a view](commands.md#RenderView), [Run a component](commands.md#Run), [Show a view](commands.md#ShowView), [Test the laws](commands.md#TestKinds), [View by its name](commands.md#ViewByName), [Assembly](engine.md#Assembly), [Compilation API](engine.md#CompilationApi), [Compiler](engine.md#Compiler), [Cycles](engine.md#Cycles), [Date bundle](engine.md#DateBundle), [trame dev server](engine.md#DevServer), [Differences](engine.md#Differences), [The fingerprint of an engine](engine.md#EngineFingerprint), [Fingerprints](engine.md#Fingerprints), [Pseudo-random generator](engine.md#Generator), [Graph](engine.md#GraphApi), [Laws](engine.md#Laws), [Payload](engine.md#PayloadBuilder), [Positions](engine.md#Positions), [Project](engine.md#Project), [The runs of a project](engine.md#ProjectRuns), [References](engine.md#References), [A shipment's pipeline](engine.md#ShipmentPipeline), [Static reading](engine.md#StaticAnalysis), [Views](engine.md#Views), [Wiring](engine.md#Wiring), [Records of the releases](generations.md#ReleaseRecords), [Drivers](languages.md#Drivers), [What a writer writes is read back before it is written](languages.md#ReadBackWhatIsWritten), [Page](page.md#Page), [A product is delivered by a node of the graph](principles.md#DeliveredByTheGraph), [The engine: a graph like any product's](principles.md#EngineLayer), [Generations: frozen engines](principles.md#GenerationLayer), [The graph is written in TypeScript](principles.md#GraphInTypeScript), [The graph: the description of a product](principles.md#GraphLayer), [The prelude and the compiler know no kind of node](principles.md#NoKindInTheCore), [The traversal API is the only way to read the graph](principles.md#OneWayToRead), [The prelude: the runtime of the language](principles.md#PreludeLayer), [A version ships through the graph](principles.md#ShippedThroughTheGraph), [Trame builds Trame](principles.md#TrameBuildsTrame), [An undecided value blocks; it does not crash](principles.md#UndecidedBlocks), [Without evidence, a status is unknown](principles.md#UnknownWithoutEvidence), [Kinds and views: the vocabulary, as reviewed files](principles.md#VocabularyLayer), [Common rendering](rendering.md#Common), [Rendering of the files](rendering.md#FileRendering), [HTML writer](rendering.md#HtmlSyntax), [Markdown writer](rendering.md#MarkdownSyntax), [Kinds and views say what; renderers say how](rendering.md#MeaningThenLook), [Mermaid diagrams](rendering.md#MermaidDiagrams), [Rendering in the page](rendering.md#PageRendering), [Plain text writer](rendering.md#PlainTextSyntax), [Figures in SVG](rendering.md#SvgFigures), [Rendering in the terminal](rendering.md#TerminalRendering), [Figures as text](rendering.md#TextFigures), [What the graph page is asked](sdlc.md#GraphPageSelectors), [Open the graph page](sdlc.md#OpenTheGraphPage), [Evidence of the SDLC](shipping.md#SdlcEvidence), [Evidence sealed by attribution](shipping.md#SealedByAttribution), [The plan of a run elsewhere](shipping.md#ShipmentRunPlan), [Checks of a body](syntax.md#BodyChecks), [tree-sitter says what it keeps aside](syntax.md#PredicatesAsTreeSitterReadsThem), [Every language is read alike, with tree-sitter](syntax.md#ReadLanguagesAlike), [Syntax reader](syntax.md#SyntaxReader), [Terraform writer](terraform.md#TerraformWriter), [TypeScript writer](typescript.md#TypeScriptWriter)
 - Refined by: [Accept a candidate](generations.md#AcceptCandidate), [Sort problems by severity](#SeverityOrder), [Ship only what holds](shipping.md#ShipOnlyWhatHolds)
 - Kept by the rule: [The decisions of the architecture hold](sdlc.md#ArchitectureApplied), [The rules of the architecture hold](sdlc.md#ArchitectureRuled), [The candidate is checked by programs](sdlc.md#CandidateChecked), [The packages are safe](sdlc.md#EnginePackagesSafe), [The engine is verified](sdlc.md#EngineVerified), [The language serves what it says](sdlc.md#LanguageServed)
@@ -26,6 +27,7 @@ A product's graph is written in code, checks itself, renders into documents, and
 
 The code that uses an abstraction never names what answers it: a technical choice does, in one node, with its reasons. Replacing a technology is writing its realization and changing that choice.
 
+- Owner: trame
 - Served by: [The browser runs the page](browser.md#TheBrowserRunsThePage), [The TypeScript compiler reads the declarations](platform.md#CompilerReadsDeclarations), [The engine's own files sit beside its code](platform.md#EngineFilesBesideCode), [esbuild bundles the page's program](platform.md#EsbuildBundles), [Scenarios write in memory, over the disk](platform.md#FilesInMemoryOverTheDisk), [Scenarios run in memory](platform.md#InMemoryScenarios), [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine), [NodePlatform](platform.md#NodePlatform), [A run is kept while what it reads is as it was](platform.md#RunsByWhatTheyRead), [In the scenarios, runs are kept in the process](platform.md#RunsKeptInTheProcess), [On a machine, runs are kept on disk](platform.md#RunsKeptOnDisk), [tree-sitter reads the bodies](platform.md#TreeSitterReads), [tsx runs TypeScript](platform.md#TsxRuns), [A technology is chosen in one node](principles.md#TechnologyInOneNode), [Documents in Markdown](rendering.md#DocumentsInMarkdown), [Figures in Mermaid](rendering.md#FiguresInMermaid), [One renderer, its syntax a choice](rendering.md#OneRendererManySyntaxes), [The page's figures in SVG](rendering.md#PageFiguresDrawn), [The page in HTML](rendering.md#PageInHtml), [Figures in the terminal, as text](rendering.md#TerminalFiguresAsText), [The terminal in plain text](rendering.md#TerminalInText)
 
 <a id="SingleSource"></a>
@@ -36,6 +38,7 @@ The code that uses an abstraction never names what answers it: a technical choic
 
 A value is decided once, in the graph; code, documents and infrastructure read it from there.
 
+- Owner: trame
 - Served by: [Audit the packages](commands.md#Audit), [Publish](commands.md#Publish), [Release a version](commands.md#Release), [Take the snapshot](commands.md#TakeSnapshot), [Write the manifest](commands.md#WriteManifest), [Punctuation of documents](documents.md#Punctuation), [The punctuation is the language's](documents.md#PunctuationOfTheLanguage), [Values with their units](documents.md#Units), [Visible text](documents.md#VisibleText), [Lock](engine.md#Lock), [Machine outputs](engine.md#MachineOutputs), [The language receives the graph's values](engine.md#TheLanguageReceivesTheGraph), [A catalog counts in its language](messages.md#CountsInTheLanguage), [Dates](messages.md#Dates), [Lists](messages.md#Lists), [Order of versions](packages.md#VersionOrder), [A style sheet writes no value](page.md#StyleThroughVariables), [A change to a node is a claim](principles.md#ChangesAreClaims), [The data a product carries is a dataset](principles.md#DataAsDatasets), [A literal in a body is an error](principles.md#EveryLiteralDeclared), [The source carries the history](principles.md#HistoryInTheSource), [A key is made of its parts](principles.md#KeysOfParts), [Code holds no hidden decision](principles.md#NoHiddenDecision), [A literal in a kind or a view is an error](principles.md#NoLiteralInTheLanguage), [One output for each reader](principles.md#OneOutputPerReader), [The words are in catalogs](principles.md#WordsInCatalogs), [Syntax reader](syntax.md#SyntaxReader)
 
 <a id="WrittenOnce"></a>
@@ -46,6 +49,7 @@ A value is decided once, in the graph; code, documents and infrastructure read i
 
 A structure, a standard, a design pattern, a port of the platform is described once, in a library, with its owner, its documents and its laws; every product's graph imports it instead of copying it.
 
+- Owner: trame
 - Refined by: [What belongs to a library](libraries.md#LibraryOfAModule), [A release is settled](libraries.md#ReleaseIsSettled)
 - Served by: [A library is a Trame project, imported by path](principles.md#LibrariesAreProjects), [A library is imported by its name](principles.md#LibrariesByName)
 
@@ -67,6 +71,7 @@ What blocks first, then the errors, then what must be watched.
 
 </details>
 
+- Owner: trame
 - Refines: [A specification that runs](#ExecutableSpecification)
 - Used by: [Preparation](commands.md#Preparation), [Compiler](engine.md#Compiler)
 
@@ -85,7 +90,7 @@ What blocks first, then the errors, then what must be watched.
 
 ### Candidate dates
 
-`CandidateDates` · `src/product.ts:150`
+`CandidateDates` · `src/product.ts:151`
 
 The dates at which the page offers to see the graph: each start, each deadline, the day after each end, and the day before the first change (to see the graph from before). The offsets are in days.
 
@@ -101,7 +106,7 @@ The dates at which the page offers to see the graph: each start, each deadline, 
 
 ### Claim sets
 
-`ClaimSets` · `src/product.ts:64`
+`ClaimSets` · `src/product.ts:65`
 
 How many sets of claims to test the resolution of a kind, each presented in several orders.
 
@@ -115,7 +120,7 @@ How many sets of claims to test the resolution of a kind, each presented in seve
 
 ### Debouncing of saves
 
-`DevDebounce` · `src/product.ts:164`
+`DevDebounce` · `src/product.ts:165`
 
 In trame dev, saves close together trigger a single recompilation. In milliseconds.
 
@@ -129,7 +134,7 @@ In trame dev, saves close together trigger a single recompilation. In millisecon
 
 ### Port of trame dev
 
-`DevPort` · `src/product.ts:158`
+`DevPort` · `src/product.ts:159`
 
 - Value: 4170
 
@@ -140,7 +145,7 @@ In trame dev, saves close together trigger a single recompilation. In millisecon
 
 ### Nodes drawn per kind
 
-`SampleCount` · `src/product.ts:58`
+`SampleCount` · `src/product.ts:59`
 
 How many nodes drawn at random to test the laws of a kind.
 
@@ -154,7 +159,7 @@ How many nodes drawn at random to test the laws of a kind.
 
 ### Owners drawn at random
 
-`SampledOwners` · `src/product.ts:122`
+`SampledOwners` · `src/product.ts:123`
 
 The names that the laws give to the nodes they make. Neutral: they are the people of no project.
 
@@ -170,7 +175,7 @@ The names that the laws give to the nodes they make. Neutral: they are the peopl
 
 ### Values drawn by the laws
 
-`SampledValues` · `src/product.ts:75`
+`SampledValues` · `src/product.ts:76`
 
 The ranges, both ends included, from which the laws draw the values of the nodes they make up, and the shape of the claim sets they present to a resolution. The ranges are small so that drawn values meet: equal numbers, overlapping ranges, claims on the same path. A text, a map and the year of a date are always the same: a law only compares them. A value drawn is a record of two parts (claims are made on the whole value and on each part), a number, or a value to decide; the chances say how often each case comes: a number below the first, a record below the second. The nodes the laws make have a module and names of their own, and the seed of the claims drawn for a kind follows its name.
 
@@ -199,7 +204,7 @@ The ranges, both ends included, from which the laws draw the values of the nodes
 
 ### Values drawn by the laws of a structure
 
-`StructureDraws` · `src/product.ts:131`
+`StructureDraws` · `src/product.ts:132`
 
 A law of a structure is played on values drawn at random, from a seed of the structure's own: this many times, whole numbers and natural numbers from these ranges, texts of these characters and lengths, lists of these lengths, and a truth value as often true as false. The seed of a law is the structure's reference and the law's place, joined by a number sign.
 

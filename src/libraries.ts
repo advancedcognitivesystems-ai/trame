@@ -21,6 +21,7 @@ import { WrittenOnce } from "./product"
  * gives the library a module belongs to, or nothing for a module of the project.
  */
 export const LibraryOfAModule = requirement({
+  owner: "trame",
   refines: [WrittenOnce],
   deps: { counts: Counts },
   body: ({ counts }) => (module: string, separator: string): string | undefined => {
@@ -46,6 +47,7 @@ export const LibraryOfAModuleCriteria = acceptance({
  * count of each, as the library's build found them.
  */
 export const ReleaseIsSettled = requirement({
+  owner: "trame",
   refines: [WrittenOnce],
   deps: { counts: Counts },
   body: ({ counts }) => (found: { blocking: number; errors: number }): boolean => found.blocking === counts.zero && found.errors === counts.zero,

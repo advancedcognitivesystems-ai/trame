@@ -17,7 +17,7 @@ import { acceptance } from "../kinds/acceptance"
  * A kind or a view takes part in the compilation only once it keeps its laws, whoever wrote it. A new kind needs no
  * change to the engine; a faulty one is refused before it misleads a document.
  */
-export const TrustedExtensions = goal()
+export const TrustedExtensions = goal({ owner: "trame" })
 
 // What a kind declares -----------------------------------------------------------------------------------------------
 
@@ -62,6 +62,7 @@ export interface DeclarationFaults {
  * most one field for its owner; it settles claims only if it makes some, and its claims target nodes.
  */
 export const CompleteDeclaration = requirement({
+  owner: "trame",
   refines: [TrustedExtensions],
   deps: { counts: Counts },
   body: ({ counts }) => (d: KindDeclaration, known: KnownNames): DeclarationFaults => ({
@@ -108,6 +109,7 @@ export interface CallEnd {
  * to take, not a crash; any other error is. A view may not stop: a document cannot wait.
  */
 export const AnswersWithoutCrashing = requirement({
+  owner: "trame",
   refines: [TrustedExtensions],
   body: () => (end: CallEnd, mayStop: boolean): boolean => !end.threw || (mayStop && end.undecided),
 })
@@ -135,6 +137,7 @@ export interface ReportedHole {
  * A hole that blocks names who must fill it: the hole's own owner, or else the owner of its node.
  */
 export const BlockingHoleHasOwner = requirement({
+  owner: "trame",
   refines: [TrustedExtensions],
   body: () => (hole: ReportedHole, nodeOwner?: string): boolean => hole.severity !== Severity.blocking || Boolean(hole.owner ?? nodeOwner),
 })
@@ -156,6 +159,7 @@ export const BlockingHoleHasOwnerCriteria = acceptance({
  * is unknown, blocked, or none.
  */
 export const UnknownWithoutEvidence = requirement({
+  owner: "trame",
   refines: [TrustedExtensions],
   body: () => (status: Status | undefined, evidence: boolean): boolean => evidence || (status !== Status.held && status !== Status.violated),
 })
@@ -178,6 +182,7 @@ export const UnknownWithoutEvidenceCriteria = acceptance({
  * gives the same document. The answers are compared as written.
  */
 export const SameInputSameAnswer = requirement({
+  owner: "trame",
   refines: [TrustedExtensions],
   deps: { counts: Counts },
   body: ({ counts }) => (answers: readonly string[]): boolean => !counts.several(new Set(answers)),
@@ -200,6 +205,7 @@ export const SameInputSameAnswerCriteria = acceptance({
  * The same claims, presented in other orders, are the same input: the kind that settles them gives the same answer.
  */
 export const OrderFree = requirement({
+  owner: "trame",
   refines: [SameInputSameAnswer],
   deps: { same: SameInputSameAnswer },
   body: ({ same }) => (answers: readonly string[]): boolean => same(answers),
@@ -220,6 +226,7 @@ export const OrderFreeCriteria = acceptance({
  * Settling claims orders the claimants, or names an arbiter among them: it returns no node that claims nothing.
  */
 export const ClosedResolution = requirement({
+  owner: "trame",
   refines: [TrustedExtensions],
   body: () => <T>(given: ReadonlySet<T>, returned: readonly T[]): T[] => returned.filter((x) => !given.has(x)),
 })
@@ -264,6 +271,7 @@ export interface ViewDeclarationFaults {
  * it writes one document per node.
  */
 export const CompleteViewDeclaration = requirement({
+  owner: "trame",
   refines: [TrustedExtensions],
   body: () => (v: ViewDeclaration): ViewDeclarationFaults => ({
     unnamed: !v.named,
@@ -308,6 +316,7 @@ export interface SerialFaults {
  * function, in blocks whose types the format knows. The renderers, and the page, need nothing else.
  */
 export const IntermediateFormatOnly = requirement({
+  owner: "trame",
   refines: [TrustedExtensions],
   body: () => (d: WrittenDocument, known: ReadonlySet<string>): SerialFaults => ({
     notSerial: d.readBack !== d.text || d.text.includes(d.functionMark),

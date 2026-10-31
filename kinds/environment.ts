@@ -4,7 +4,7 @@ import words from "./words"
 const say = words()
 
 const fields = {
-  owner: optional(field.owner()),
+  owner: field.owner(),
   // Where the build wires what it evaluates without an environment (the examples of a syntax element or a language, the
   // criteria): when a port has a realization in several environments, the one of this environment answers.
   evaluates: optional(field.value<boolean>(say.environmentEvaluates())),

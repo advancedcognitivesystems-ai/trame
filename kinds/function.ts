@@ -8,7 +8,7 @@ import words from "./words"
 const say = words()
 
 const fields = {
-  owner: optional(field.owner()),
+  owner: field.owner(),
   deps: optional(field.deps()),
   constants: optional(field.constants()),
   body: field.body(),
@@ -57,7 +57,7 @@ const kind = defineKind({
 type Deps = Record<string, AnyNode>
 
 interface FunctionInput<D extends Deps, C extends Record<string, Constant>, F> {
-  owner?: string
+  owner: string
   deps?: D
   /** Its constants: the body receives them as parameters, like its dependencies. */
   constants?: C

@@ -166,10 +166,13 @@ Architecture rule · `UtilitiesWithoutWorld` · **held**
 
 Goal · `CancelWithoutStress`
 
+- Owner: lea
+
 ### Refund on cancellation
 
 Requirement · `Refund` · **held**
 
+- Owner: lea
 - Parameters: { period: cancellation.FreeCancellationPeriod, fee: cancellation.LateFee }
 - Refines: Cancel without stress
 - Assumes: Idempotent payment provider

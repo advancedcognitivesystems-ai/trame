@@ -74,6 +74,7 @@ export const Advancement = decision<{
  * scenarios hold, unless the differences are declared wanted.
  */
 export const AcceptCandidate = requirement({
+  owner: "trame",
   refines: [ExecutableSpecification],
   body: () => (r: AdvanceReport): boolean =>
     r.secondAsFirst && r.fixedPoint && r.lawsHold && r.olderRun &&

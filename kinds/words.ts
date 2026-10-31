@@ -341,6 +341,7 @@ const body = () => ({
   requirementTheOriginalRuleInTheCode: () => "The original rule, in the code",
   requirementTheRuleInTheCode: () => "The rule, in the code",
   requirementRuleRedefinedBy: (by: Inline): Inline[] => ["Rule redefined by ", by, ". The code below is the original rule."],
+  ownerMissing: () => "Nobody answers for it: every node has an owner, who is told what it lacks (owner)",
   quantityQuantity: () => "Quantity",
   quantityQuantities: () => "Quantities",
   quantityUnits: () => "Units",

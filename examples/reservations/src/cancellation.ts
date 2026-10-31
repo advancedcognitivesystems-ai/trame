@@ -17,7 +17,7 @@ import { FeeCap } from "./legal"
  * Cancel without stress
  * A driver can change their mind without fearing an unfair penalty.
  */
-export const CancelWithoutStress = goal()
+export const CancelWithoutStress = goal({ owner: "lea" })
 
 /**
  * How an amount is written
@@ -83,6 +83,7 @@ export const IdempotentProvider = assume({ owner: "karim", expires: "2026-12-01"
  * The amount returned to the driver when they cancel their reservation.
  */
 export const Refund = requirement({
+  owner: "lea",
   refines: [CancelWithoutStress],
   assumes: [IdempotentProvider],
   deps: { period: FreeCancellationPeriod, fee: LateFee },

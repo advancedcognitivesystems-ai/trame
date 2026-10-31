@@ -25,6 +25,7 @@ A module of a library joins the graph that imports it under the library's name, 
 
 </details>
 
+- Owner: trame
 - Parameters: `counts` ← [Counts](../std/docs/algebra.md#Counts)
 - Refines: [What is generic is written once](product.md#WrittenOnce)
 - Used by: [References](engine.md#References)
@@ -44,7 +45,7 @@ A module of a library joins the graph that imports it under the library's name, 
 
 ### A release is settled
 
-`ReleaseIsSettled` · `src/libraries.ts:48` · status: **held**
+`ReleaseIsSettled` · `src/libraries.ts:49` · status: **held**
 
 A version freezes what a library says: nothing in it may be left to decide, nor be in error. The rule receives the count of each, as the library's build found them.
 
@@ -56,6 +57,7 @@ A version freezes what a library says: nothing in it may be left to decide, nor 
 
 </details>
 
+- Owner: trame
 - Parameters: `counts` ← [Counts](../std/docs/algebra.md#Counts)
 - Refines: [What is generic is written once](product.md#WrittenOnce)
 - Used by: [Release a version](commands.md#Release)
@@ -77,7 +79,7 @@ A version freezes what a library says: nothing in it may be left to decide, nor 
 
 ### Names of a library's releases
 
-`LibraryReleaseNames` · `src/libraries.ts:70`
+`LibraryReleaseNames` · `src/libraries.ts:72`
 
 Each version a library freezes is a release in its module of releases (decision "Releases of the engine": the same module and kind), named by the prefix and the version, its separators replaced by the joint: version 0.1.0 is R0_1_0.
 

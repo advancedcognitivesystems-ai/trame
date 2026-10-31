@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 28 October 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 31 October 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Poselia · The app in a browser
 

@@ -8,6 +8,8 @@ import words from "./words"
 const say = words()
 
 const fields = {
+  /** Who answers for the rule: told when its criteria fail, when nothing follows it, when another constrains it. */
+  owner: optional(field.owner()),
   deps: optional(field.deps()),
   constants: optional(field.constants()),
   /** The rule as a body: given what it reads (its dependencies, its constants), the rule. Since g79. */
@@ -42,6 +44,7 @@ const kind = defineKind({
       !g.from(self).in(edgesOf(acceptance).accepts).exists() && hole.warning(say.requirementRequirementWithoutAcceptanceCriteria()),
       asBody === asFunction && hole.error(say.requirementRuleOnce()),
       asFunction && !asBody && hole.warning(say.requirementRuleNotABody()),
+      self.field(F.owner) === undefined && hole.warning(say.ownerMissing()),
     ]
   },
 
@@ -82,6 +85,8 @@ interface Declared {
 }
 
 interface AsBody<D extends Deps, C extends Record<string, Constant>, F extends Fn> extends Declared {
+  /** Who answers for the rule. */
+  owner: string
   /** What the rule reads: each dependency becomes a parameter, as a body's do. */
   deps?: D
   /** Values only this rule uses, with their meaning: the rule receives them as parameters too. */
@@ -92,6 +97,7 @@ interface AsBody<D extends Deps, C extends Record<string, Constant>, F extends F
 }
 
 interface AsFunction<F extends Fn> extends Declared {
+  owner?: string
   rule: F
   body?: never
   deps?: never

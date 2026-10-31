@@ -1273,6 +1273,7 @@
       "title": "The decisions a shipment applies hold",
       "status": "held",
       "fields": {
+        "owner": "trame",
         "body": "(function)"
       }
     },
@@ -1292,6 +1293,7 @@
       "title": "The artefacts a shipment ships are checked",
       "status": "held",
       "fields": {
+        "owner": "trame",
         "deps": {
           "counts": "algebra.Counts"
         },
@@ -1332,6 +1334,7 @@
       "title": "The data a shipment carries is reviewed",
       "status": "held",
       "fields": {
+        "owner": "trame",
         "deps": {
           "counts": "algebra.Counts"
         },
@@ -1354,6 +1357,7 @@
       "title": "The project's rules hold",
       "status": "held",
       "fields": {
+        "owner": "trame",
         "body": "(function)"
       }
     },
@@ -1373,6 +1377,7 @@
       "title": "The packages a shipment uses are safe",
       "status": "held",
       "fields": {
+        "owner": "trame",
         "body": "(function)"
       }
     },
@@ -1392,6 +1397,7 @@
       "title": "The product a shipment serves holds",
       "status": "held",
       "fields": {
+        "owner": "trame",
         "body": "(function)"
       }
     },
@@ -1411,6 +1417,7 @@
       "title": "The code a shipment ships is verified",
       "status": "held",
       "fields": {
+        "owner": "trame",
         "deps": {
           "counts": "algebra.Counts"
         },
@@ -1743,31 +1750,41 @@
       "id": "product.CitedNotCopied",
       "kind": "goal",
       "title": "A published value is cited, not copied",
-      "fields": {}
+      "fields": {
+        "owner": "trame"
+      }
     },
     {
       "id": "product.KnownDesigns",
       "kind": "goal",
       "title": "Known designs, named",
-      "fields": {}
+      "fields": {
+        "owner": "trame"
+      }
     },
     {
       "id": "product.RealizedOnce",
       "kind": "goal",
       "title": "Ports of the platform, realized once",
-      "fields": {}
+      "fields": {
+        "owner": "trame"
+      }
     },
     {
       "id": "product.SharedOperations",
       "kind": "goal",
       "title": "Shared operations instead of literals",
-      "fields": {}
+      "fields": {
+        "owner": "trame"
+      }
     },
     {
       "id": "product.SharedRules",
       "kind": "goal",
       "title": "Rules applied, not written again",
-      "fields": {}
+      "fields": {
+        "owner": "trame"
+      }
     },
     {
       "id": "releases.R0_1_0",
@@ -1943,6 +1960,7 @@
       "title": "As many links as asked",
       "status": "held",
       "fields": {
+        "owner": "trame",
         "deps": {
           "counts": "algebra.Counts"
         },
@@ -1965,6 +1983,7 @@
       "title": "A node never reaches what it must not",
       "status": "held",
       "fields": {
+        "owner": "trame",
         "deps": {
           "counts": "algebra.Counts"
         },
@@ -1987,6 +2006,7 @@
       "title": "A node reaches what it must",
       "status": "held",
       "fields": {
+        "owner": "trame",
         "body": "(function)"
       }
     },
@@ -2006,6 +2026,7 @@
       "title": "Effects a node may not have",
       "status": "held",
       "fields": {
+        "owner": "trame",
         "deps": {
           "counts": "algebra.Counts"
         },
@@ -2028,6 +2049,7 @@
       "title": "Words of a vocabulary",
       "status": "held",
       "fields": {
+        "owner": "trame",
         "deps": {
           "counts": "algebra.Counts"
         },

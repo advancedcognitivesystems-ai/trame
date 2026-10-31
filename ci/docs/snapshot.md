@@ -116,9 +116,13 @@ Standard · `Npm`
 
 Goal · `OneWriterPerPlace`
 
+- Owner: trame
+
 ### A shipment runs elsewhere as it runs here
 
 Goal · `RunsElsewhere`
+
+- Owner: trame
 
 ## Continuous integration · Releases
 

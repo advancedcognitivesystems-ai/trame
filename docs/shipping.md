@@ -22,6 +22,7 @@ A shipment ships when it has obligations and every one of them holds: an obligat
 
 </details>
 
+- Owner: trame
 - Parameters: `counts` ← [Counts](../std/docs/algebra.md#Counts)
 - Refines: [A specification that runs](product.md#ExecutableSpecification)
 - Served by: [Record evidence](commands.md#RecordEvidence), [Ship](commands.md#Ship)
@@ -45,7 +46,7 @@ A shipment ships when it has obligations and every one of them holds: an obligat
 
 ### The fingerprint of a program
 
-`ProgramBundle` · `src/shipping.ts:68`
+`ProgramBundle` · `src/shipping.ts:69`
 
 How trame ship fingerprints a program it assembles: the program bundled with everything it imports (its bodies, the prelude, the libraries' code), the packages left out, as Node.js runs it; a change in any body changes it. The bundler is given the program's text, read as the files are, read as TypeScript: the program a scenario assembles in memory is fingerprinted as one on the disk.
 
@@ -64,7 +65,7 @@ How trame ship fingerprints a program it assembles: the program bundled with eve
 
 ### Where the SDLC's evidence is kept
 
-`ShippingRecords` · `src/shipping.ts:55`
+`ShippingRecords` · `src/shipping.ts:56`
 
 The file of the evidence directory trame ship and trame evidence write (one file, so that the evidence of a day keeps the order it was given in), and the directory of it where each shipment's dossier is written, named by the shipment, the day and the dossier's fingerprint, so that two shipments of a day keep two dossiers.
 
@@ -84,7 +85,7 @@ The file of the evidence directory trame ship and trame evidence write (one file
 
 ### Attribution
 
-`Attribution` · `src/shipping.ts:83` · status: **held**
+`Attribution` · `src/shipping.ts:84` · status: **held**
 
 A record's seal: the SHA-256 of what it says, its keys in order, its seal left out. Anyone may compute it again: it tells a record the engine wrote from one changed by hand afterwards, which is then not counted, but it proves no one's identity; a key, later, would be another realization of the port.
 
@@ -99,7 +100,7 @@ A record's seal: the SHA-256 of what it says, its keys in order, its seal left o
 
 ### Evidence of the SDLC
 
-`SdlcEvidence` · `src/shipping.ts:116` · status: **held**
+`SdlcEvidence` · `src/shipping.ts:117` · status: **held**
 
 What trame ship and trame evidence share: the fingerprint of an artefact on disk (the SHA-256 of a file; of the list of its files and theirs, for a directory; of a text, for a program bundled with what it imports), the fingerprint a check holds for (that of the artefacts it checks, as the check kind computes it), and the evidence added to the file already there (a piece of the same node, source, day, row, language and fingerprint replaces the one before; of another version, both are kept), each new record sealed, which the command writes.
 
@@ -116,7 +117,7 @@ What trame ship and trame evidence share: the fingerprint of an artefact on disk
 
 ### The plan of a run elsewhere
 
-`ShipmentRunPlan` · `src/shipping.ts:137` · status: **held**
+`ShipmentRunPlan` · `src/shipping.ts:138` · status: **held**
 
 What a runner elsewhere (a service of continuous integration, a script) needs to run a shipment as trame ship runs it here, from the graph and the project: where the project is in Trame's repository, the words that ship it through the launcher, the directories whose packages are installed from their lockfile, the words that install the pinned generation's own packages when it has its own, what the packages the shipment's programs wire ask once installed (as their nodes say), what the place makes available once shipped (what the file it writes publishes: nothing unless the graph says so), where the evidence is, and the words that record where an artefact was made available. A writer of a library gives it a form (a workflow, a script) and does what its settings say (keep the evidence, for how long); it decides nothing of it.
 
@@ -134,7 +135,7 @@ What a runner elsewhere (a service of continuous integration, a script) needs to
 
 ### Evidence sealed by attribution
 
-`SealedByAttribution` · `src/shipping.ts:94` · status: **held**
+`SealedByAttribution` · `src/shipping.ts:95` · status: **held**
 
 Who gives evidence is attributed, and each record sealed with what it says, by the engine that writes it.
 
