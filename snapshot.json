@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-01",
+  "at": "2026-10-30",
   "nodes": [
     {
       "id": "appearance.ExplorerDrawing",
@@ -12860,7 +12860,7 @@
       "id": "sdlc.PageProgram",
       "kind": "artifact",
       "title": "The page's program",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "out/browser/page-app.ts"

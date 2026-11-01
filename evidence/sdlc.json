@@ -1995,6 +1995,16 @@
     "seal": "0cc08f29a628b04a1780388890e3699b35b7066c21b0912b25b40b79b808ed18"
   },
   {
+    "node": "commands.Advance",
+    "at": "2026-11-01",
+    "source": "deployed",
+    "value": 1,
+    "fingerprint": "94a50aba",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "70862d31650a6b50837b5eefdc5f59ddcc77bac8a475548872fc8f724c8e18eb"
+  },
+  {
     "node": "sdlc.CandidateKeepsTheLaws",
     "at": "2026-11-01",
     "source": "check",
@@ -2077,6 +2087,18 @@
     "by": "claude",
     "signature": "attribution",
     "seal": "556b8388471096db794b5083503b37d9dc438a7fa04b7c8b83ac2dcf742ff68b"
+  },
+  {
+    "node": "sdlc.CandidateKeepsTheLaws",
+    "at": "2026-11-01",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "126cb9b4",
+    "code": "a46b49e5",
+    "engine": "694eabbf31f19d32",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "80f9dcdb815add3755558d2cb3a2102b8aa065acf7eca508a4876a23e6138f9c"
   },
   {
     "node": "sdlc.CandidateRunsOnTheMachine",
@@ -2163,6 +2185,18 @@
     "seal": "63efc4ba19131c230c2538ee2a93b3aa01f1968baeaacf7b26e9b55e13de7527"
   },
   {
+    "node": "sdlc.CandidateRunsOnTheMachine",
+    "at": "2026-11-01",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "126cb9b4",
+    "code": "b5255c9e",
+    "engine": "694eabbf31f19d32",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "8cd84e2ce807d5ad1fdd22e7c6329a03c83a6e9a242b7f57cb817e2549361ea2"
+  },
+  {
     "node": "sdlc.EngineCandidate",
     "at": "2026-11-01",
     "source": "built",
@@ -2245,6 +2279,18 @@
     "signature": "attribution",
     "engine": "ef8def1ed0ea0f08",
     "seal": "2124df39a7a9650e030bb55d25cf1312627fa5f0b62beafec0af8c8253b00281"
+  },
+  {
+    "node": "sdlc.EngineCandidate",
+    "at": "2026-11-01",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "152a78a3b11ca2a83c33c22f9620d4554248066c1f323ef2922f74aa5357c84f",
+    "code": "f5c065bc",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "694eabbf31f19d32",
+    "seal": "a3adfe0f54dd210c5116f6603c1d925f17e6ea239c114d47c1b8e3b710129e13"
   },
   {
     "node": "sdlc.GraphPage",
@@ -2331,6 +2377,18 @@
     "seal": "5ba6f3110363a2fe73f4ea5ae6fe6561cbd75d54d1bd3d2d19aa6864a6d96af5"
   },
   {
+    "node": "sdlc.GraphPage",
+    "at": "2026-11-01",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "67791000429a17ed9e2090364a2f6b86aa296ba6af47fc67ca69bbe39c579782",
+    "code": "b4d44d82",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "694eabbf31f19d32",
+    "seal": "1803707ed18dc58879b353b1f70410713a41ae4b05a4f12905e093b2e48350c5"
+  },
+  {
     "node": "sdlc.GraphPageOpens",
     "at": "2026-11-01",
     "source": "check",
@@ -2415,6 +2473,18 @@
     "seal": "226a79472618aceaa64e27210f7ffb7a254dd61afbe1532b2eff6e1325e4cf29"
   },
   {
+    "node": "sdlc.GraphPageOpens",
+    "at": "2026-11-01",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "7cde46b0",
+    "code": "db8bd66c",
+    "engine": "694eabbf31f19d32",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "974b647a3c6994c3aa2802b34f46a780fb6249042493ee398c087b3b4df87473"
+  },
+  {
     "node": "sdlc.NextGeneration",
     "at": "2026-11-01",
     "source": "shipped",
@@ -2492,6 +2562,17 @@
     "seal": "e4f10a446ae27de95ebdca4b0268f8733838295797c7d93022f4c5e4d5f7c262"
   },
   {
+    "node": "sdlc.NextGeneration",
+    "at": "2026-11-01",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "185158c6",
+    "url": "evidence/shipments/NextGeneration-2026-11-01-185158c6.json",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "452c67a324f68f3bca10423b4cfa9da593940a870e00ec731815cebf841b5213"
+  },
+  {
     "node": "sdlc.PageProgram",
     "at": "2026-11-01",
     "source": "built",
@@ -2562,5 +2643,17 @@
     "signature": "attribution",
     "engine": "ef8def1ed0ea0f08",
     "seal": "77d0931ebd6eeb963be8d187de67ab2709b1fa0d6256102283c7a330e939e492"
+  },
+  {
+    "node": "sdlc.PageProgram",
+    "at": "2026-11-01",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "97ed63c47609965aa333a2712ae07b313b84727062b65b98d4b7f3f36aff3c95",
+    "code": "47c449a6",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "694eabbf31f19d32",
+    "seal": "4a7a80569feeb648e0f4e9d2730e98c564eaf7341a4c3b0bc4e4d4d973a94516"
   }
 ]

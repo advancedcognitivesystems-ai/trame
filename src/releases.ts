@@ -1378,3 +1378,18 @@ export const G93 = release({
   archive: "10418831c37c9ead",
   assembledBy: G92,
 })
+
+/**
+ * Generation 94
+ */
+export const G94 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g94",
+  date: "2026-11-01",
+  what: "E1h: trame init writes a project's references as package nodes of its graph; trame registry publishes the frozen generations (each with its language) and the releases of the home's libraries to the registry of this machine, which a clone elsewhere fills again with it",
+  fingerprint: "619450edc36af16c",
+  language: "shared",
+  archive: "10418831c37c9ead",
+  assembledBy: G93,
+})
