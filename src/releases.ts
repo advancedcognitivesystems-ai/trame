@@ -1318,3 +1318,18 @@ export const G89 = release({
   archive: "c850998afbba6ca9",
   assembledBy: G88,
 })
+
+/**
+ * Generation 90
+ */
+export const G90 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g90",
+  date: "2026-11-01",
+  what: "E1d: a project that installed no types is checked with those of the engine that reads it (a project outside the repository builds); std's table of the platform knows node:module's registerHooks, for the engine to lead the language's names to its own language",
+  fingerprint: "196c3b0f7ac15496",
+  language: "shared",
+  archive: "c850998afbba6ca9",
+  assembledBy: G89,
+})
