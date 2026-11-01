@@ -35,6 +35,26 @@ export const PreludeApi = decision<{ directory: string; endings: readonly string
 })
 
 /**
+ * How a project starts
+ * What trame init writes: the module that holds the goal the project serves (its name, the kind it declares, the field
+ * that names its owner), the guides for agents it copies from the language's home (this guide, the skill), and the file
+ * that points an agent to the guide.
+ */
+export const ProjectStart = decision<{
+  module: string; goal: string; goalKind: string; owner: string; guides: readonly string[]; pointer: string; pointerText: string
+}>({
+  owner: "trame",
+  value: {
+    module: "product", goal: "Purpose", goalKind: "kinds/goal", owner: "owner",
+    guides: ["AGENTS.md", ".claude/skills/trame/SKILL.md"], pointer: "CLAUDE.md", pointerText: "@AGENTS.md",
+  },
+  rejected: {
+    "An empty project": "nothing would say what the project is for, and the first build would have no goal to link anything to",
+    "A template project to copy": "a second project to keep in step with the language; what init writes is in the graph",
+  },
+})
+
+/**
  * The language's names
  * How a project names the language it is written in, as a package (since g87): the prelude's public API and the kinds,
  * each module by a name its import map leads to the generation it pins (#trame/kernel, #trame/kinds/decision). Only the
@@ -80,7 +100,7 @@ export const AmendmentNaming = decision<{ suffix: string; first: number }>({ own
 export const commandNames = {
   assemble: "assemble", build: "build", dev: "dev", payload: "payload", export: "export", publish: "publish", run: "run",
   view: "view", snapshot: "snapshot", testKinds: "test-kinds", advance: "advance", audit: "audit", manifest: "manifest", release: "release", deliver: "deliver",
-  ship: "ship", evidence: "evidence", doctor: "doctor", plan: "plan", amend: "amend", fallback: "*",
+  ship: "ship", evidence: "evidence", doctor: "doctor", plan: "plan", amend: "amend", init: "init", fallback: "*",
 } as const
 
 /**
@@ -114,6 +134,7 @@ export const TrameCommands = standard({
     doctor: { value: commandNames.doctor, meaning: "Asks the machine whether it runs Trame: files, trees, programs, a server, the time, the registry" },
     plan: { value: commandNames.plan, meaning: "Says what a build would change against the last one, and writes nothing" },
     amend: { value: commandNames.amend, meaning: "Changes a chosen value by an amendment, said first, then recorded where the project's amendments go" },
+    init: { value: commandNames.init, meaning: "Starts a project in the current directory: its configuration, its first module, the guide for agents, its manifest" },
     fallback: { value: commandNames.fallback, meaning: "The command that receives a word naming no other one" },
     optionPrefix: { value: "-", meaning: "Opens an option, not a command" },
     at: { value: "--at", meaning: "The date at which the graph is compiled" },

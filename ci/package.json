@@ -1,0 +1,8 @@
+{
+  "imports": {
+    "#trame/kernel": "./.trame/trame/trame/kernel.ts",
+    "#trame/kinds/*": "./.trame/trame/kinds/*.ts"
+  },
+  "type": "module",
+  "dependencies": {}
+}

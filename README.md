@@ -14,7 +14,8 @@ npm install
 ./trame.sh build                                   # the generation trame.json pins builds Trame's documents (docs/)
 ./advance.sh                                       # it assembles the described engine and checks it (≈ 7 min); --promote "…" freezes it
 ./trame.sh export trame-by-trame.html              # the page of Trame's graph, every date included
-./trame.sh manifest && npm install                 # writes package.json from the graph's packages and libraries, then installs them
+./trame.sh manifest && npm install                 # writes package.json from the graph's packages, the language's and libraries' names, then installs them
+mkdir garden && cd garden && ../trame.sh init "Garden" --by me   # starts a project: trame.json, src/product.ts, AGENTS.md and the skill, package.json
 cd std && ../trame.sh release 0.1.0 "…"            # freezes a version of the standard library, with its documents
 cd apps/poselia && ../../trame.sh deliver          # writes the app's page, a file a browser opens as it is
 ./trame.sh audit                                   # asks npm about the packages; the answers are dated evidence (evidence/)
@@ -203,6 +204,17 @@ that reaches into a library by a path, and say which name to write. **A version 
 imports that leave the library are written again from the copy's place, and the release is recorded in the library's
 module of releases (requirement "A release is settled": nothing to decide, no error). A project imports that version
 with `"std": { "path": "../std", "version": "0.1.0" }`: its documents then link to the frozen documents.
+
+**Every package names what it uses** (g87–g89, ADR "A package is used by its name"). The language is a package like a
+library: a project imports `#trame/kernel` and `#trame/kinds/decision`, never `../../kinds/decision`. `trame manifest`
+writes where each name leads in the project's `package.json`: `#trame/*` to the generation it pins, through a link
+`.trame/trame` that an advance moves with the pin, `#std/*` to the library or the version it froze, and `"type":
+"module"`. The kinds and views of a project are those of the language, from the engine that reads it; `trame.json`
+names only those the project carries besides (a library that brings kinds). Trame's own repository is the language's
+home: it reaches `kinds/` and `trame/` where they are. Where a package comes from is a port of std, `PackageSources`,
+with its strategies: a local path now (`LocalPaths`: the package where it is, or a link under `.trame/` when it lies
+outside the project), a registry later; moving a package out of this repository changes only where it comes from. Since
+g89 a relative import that leaves its package refuses the build, and says which name to write.
 
 g54 brought this to the engine without any project using it, and built everything as g53 did; g55 moved the nodes. A
 generation keeps a copy of Trame's libraries beside its graph, since its program imports their bodies (the structures),

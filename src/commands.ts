@@ -13,7 +13,7 @@ import { ScriptElement } from "./html"
 import { DeliveredStyle } from "./delivery"
 import { Common, FileRendering, TerminalRendering, PageRendering } from "./rendering"
 import { Counts, Sequences, Texts, ValueTypes } from "#std/algebra"
-import { Layout, JsonFormatting, TrameCommands, TrameEnvironment, ReferenceSyntax, commandNames, AmendmentNaming, LanguageNames } from "./conventions"
+import { Layout, JsonFormatting, TrameCommands, TrameEnvironment, ReferenceSyntax, commandNames, AmendmentNaming, LanguageNames, ProjectStart } from "./conventions"
 import { PackageSources } from "#std/tooling"
 import { ExitStatus, NodeEvents, Posix, NodeEncodings, NodeModuleSpecifiers, NpmManifest } from "#std/system"
 import { Sha256 } from "#std/algorithms"
@@ -25,7 +25,7 @@ import { PackageAudit, VersionOrder } from "./packages"
 import { CommandMessages, AdvanceMessages, OutputMessages } from "./messages"
 import { TerminalText, TerminalColumns, PaddedCell, Columns } from "./text"
 import { ExampleRoot, TestDay } from "./platform"
-import { TypeScript, StringLiteral } from "./typescript"
+import { TypeScript, StringLiteral, TypeScriptSyntax, ModuleTitle, DocBlock, ExportDeclaration, ConstDeclaration, Call, ObjectLiteral, Property, NamedImport } from "./typescript"
 import { Drivers } from "./languages"
 import { Advancement, AcceptCandidate, EnginePin, LanguageSharing, Releases, ReleaseRecords } from "./generations"
 import { Punctuation } from "./documents"
@@ -361,6 +361,24 @@ export const Amend = entryPoint({
     messages: CommandMessages,
   },
   body: code.file<typeof import("./code/commands/amend").default>("./code/commands/amend.ts"),
+})
+
+/**
+ * Start a project
+ * In an empty directory: its configuration (the generation that runs, the libraries the language's home uses), a
+ * first module with the goal it serves, the guide for agents and the skill, then its manifest, by a fresh engine.
+ */
+export const Init = entryPoint({
+  owner: "trame", in: TrameCli, serves: [SingleSource],
+  trigger: command(commandNames.init),
+  deps: {
+    exitStatus: ExitStatus, preparation: Preparation, layout: Layout, project: Project, prelude: Prelude, start: ProjectStart, pin: EnginePin,
+    reading: FileReading, writing: FileWriting, paths: Paths, encodings: NodeEncodings, file: TextFile, json: JsonFormatting, language: TypeScript,
+    syntax: TypeScriptSyntax, title: ModuleTitle, doc: DocBlock, exported: ExportDeclaration, constant: ConstDeclaration, call: Call, object: ObjectLiteral,
+    property: Property, text: StringLiteral, imports: NamedImport, terminal: Terminal, messages: CommandMessages, currentProcess: Process,
+    events: NodeEvents, line: TrameCommands, texts: Texts,
+  },
+  body: code.file<typeof import("./code/commands/init").default>("./code/commands/init.ts"),
 })
 
 /**

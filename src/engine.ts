@@ -244,7 +244,7 @@ export const Compiler = fn({
   deps: { encodings: NodeEncodings, specifiers: NodeModuleSpecifiers, values: ValueTypes, layout: Layout, severityOrder: SeverityOrder, cycles: Cycles, references: References,
     positions: Positions, loader: ModuleLoader, reading: FileReading, paths: Paths, analysis: StaticAnalysis, project: Project, graph: GraphApi,
     wiring: Wiring, drivers: Drivers, prelude: Prelude, counts: Counts, sequences: Sequences, texts: Texts, messages: CompilerMessages,
-    fingerprints: Fingerprints, signatures: Signatures, engines: EngineFingerprint, runs: KeptRuns, platform: PlatformEffects,
+    fingerprints: Fingerprints, signatures: Signatures, engines: EngineFingerprint, runs: KeptRuns, platform: PlatformEffects, names: LanguageNames,
   },
   body: code.file<typeof import("./code/engine/compiler").default>("./code/engine/compiler.ts"),
 })

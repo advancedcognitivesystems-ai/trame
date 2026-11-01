@@ -1,9 +1,9 @@
 # Schedule
 
-*All the dates of the graph, around 31 October 2026: entries into force, ends, and planned checks and reviews.*
+*All the dates of the graph, around 1 November 2026: entries into force, ends, and planned checks and reviews.*
 
 > **0 past dates · 0 upcoming dates**
 
 | Date | When | What happens | Node | Owner |
 |---|---|---|---|---|
-| 31 October 2026 | today | date of the graph |  |  |
+| 1 November 2026 | today | date of the graph |  |  |

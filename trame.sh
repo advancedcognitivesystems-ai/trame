@@ -3,15 +3,21 @@
 # trame.json (decision "The engine a project runs"). It is outside the graph by construction: it runs before any engine.
 #   ./trame.sh <command> [arguments]   runs the pinned generation on the project
 #   ./trame.sh --restore               installs, in the generation's folder, the packages it was frozen with
+#   ../trame/trame.sh init "Title" --by <owner>   starts a project here, with the generation Trame pins
 set -euo pipefail
 project="$PWD"
 here="$(cd "$(dirname "$0")" && pwd)"
 pin=$(node -e 'const c = require(process.argv[1]); process.stdout.write(c.engine || "")' "$project/trame.json" 2>/dev/null || true)
+engine="$project/$pin"
+# A project is started by the generation Trame's own repository pins (trame init): there is no trame.json yet.
+if [ -z "$pin" ] && [ "${1:-}" = "init" ]; then
+  pin=$(node -e 'const c = require(process.argv[1]); process.stdout.write(c.engine || "")' "$here/trame.json")
+  engine="$here/$pin"
+fi
 if [ -z "$pin" ]; then
   echo "trame.sh: $project/trame.json pins no engine" >&2
   exit 1
 fi
-engine="$project/$pin"
 if [ "${1:-}" = "--restore" ]; then
   exec npm ci --prefix "$engine"
 fi

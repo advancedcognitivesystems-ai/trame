@@ -13,7 +13,9 @@ what the graph guarantees. The README explains why; this file says how.
 | `src/code/**` | The bodies of code nodes, written in files (`code.file(…)`) | you |
 | `trame/` | The prelude: the runtime of the language (registry, kind API, vocabularies, formatting) | rarely, by hand |
 | `kinds/`, `views/`, `engine-views/` | The language: what a node can be, which questions are asked of the graph; their words in `words.ts` | you, reviewed |
-| `trame.json` | The project: its kinds and views directories, its libraries (`"libraries"`), the generation it pins (`"engine"`) | you |
+| `trame.json` | The project: its libraries (`"libraries"`), the generation it pins (`"engine"`), the kinds and views it carries besides the language's | you |
+| `package.json` | The project as a package: the import map of the language (`#trame/*`) and of its libraries (`#std/*`), the packages of the graph | `trame manifest` |
+| `libs/` | Libraries of a domain (`libs/geometry`: vectors, angles), each a project of its own | you |
 | `std/` | The standard library: a Trame project of its own (structures, standards, patterns) that Trame and the example import | you |
 | `ci/` | The library of writers that run a shipment elsewhere (GitHub Actions, Bash), from the plan the engine computes | you |
 | `docs/`, `graph.json`, `snapshot.json` | What a build writes: documents for people, the graph and its snapshot for tools and agents | the build only |
@@ -38,7 +40,8 @@ Run from the project's directory, through the pinned generation:
 ./trame.sh export page.html            # the page, standalone: the dates the graph changes at, and the last days of its history
 ./trame.sh assemble <component> --env <environment>
 ./trame.sh audit                       # the registry's reports on the packages, kept as evidence
-./trame.sh manifest                    # the packages of the graph and the import map of its libraries, written into package.json
+./trame.sh manifest                    # the packages of the graph and the import map of the language and its libraries, written into package.json
+../trame.sh init "Title" --by <owner>  # in an empty directory: starts a project (trame.json, src/product.ts, the guide, the skill, package.json)
 ./trame.sh release <version> "what"    # in a library: freezes a version, with its documents
 ./trame.sh publish [--migrate "why"]   # freezes the published declarations in trame.lock (--migrate: those the language changed the form of)
 ./trame.sh deliver [delivery]          # writes the deliveries: a page a browser opens as it is
@@ -166,7 +169,7 @@ why. A broken rule is an error, unless the rule says `severity: "warning"` while
   | private to one function | that function's `constants` |
 
 - **A body receives what it needs as parameters** (its `deps`): it imports only the prelude's public API
-  (`trame/kernel`) as a value, and types from anywhere. A body in a file is
+  (`#trame/kernel`) as a value, and types from anywhere. A body in a file is
   `code.file<typeof import("./code/x").default>("./code/x.ts")`; the file default-exports `(deps: Deps) => api`. A
   requirement's rule is a body too (since g79): `body:` with what it reads in `deps`, never a node named inside it;
   called, the node is the rule its dependencies make.
@@ -194,7 +197,18 @@ why. A broken rule is an error, unless the rule says `severity: "warning"` while
   written; lists use `Lists`; dates use `Dates`. A product in several languages has one catalog per language, each
   translating the first (`translates`), and chooses the catalog of the language it speaks when it runs.
 
-## 5b. Libraries
+## 5b. Packages and libraries
+
+**Every package names what it uses** (ADR "A package is used by its name", g87–g89). The language is a package: a
+project imports `#trame/kernel` and `#trame/kinds/<kind>`, never `../../kinds/<kind>`; its kinds and views are the
+language's, from the generation it pins, and `trame.json` lists only those it carries besides. `./trame.sh manifest`
+writes the import map of `package.json` (`#trame/*` through the link `.trame/trame` to the pinned generation, which an
+advance moves with the pin; `#std/*` to the library or its frozen version) and `"type": "module"`. A relative import
+that leaves its package refuses the build and says the name to write. Trame's repository is the language's home: its
+own files reach `kinds/` and `trame/` where they are. Where a package comes from is std's port `PackageSources`: a
+local path now (`LocalPaths`), a registry later. `./trame.sh init "Title" --by <owner>`, run in an empty directory,
+starts a project: its `trame.json` (the generation that runs, the libraries the language's home uses), a first module
+with its goal, this guide and the skill, then its manifest.
 
 A library is a Trame project another project imports (ADR "A library is a Trame project, imported by path"). The
 project names it in its `trame.json` (`"libraries": { "std": "../std" }`, or `{ "path": "../std", "version": "0.1.0" }`

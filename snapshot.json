@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-30",
+  "at": "2026-11-01",
   "nodes": [
     {
       "id": "appearance.ExplorerDrawing",
@@ -1798,8 +1798,41 @@
             "check": "OnAPhone",
             "tester": "ghalaax",
             "stranger": "someone-else"
+          },
+          "started": {
+            "title": "Started in memory",
+            "owner": "ghalaax"
           }
         }
+      }
+    },
+    {
+      "id": "command-scenarios.ProjectStarted",
+      "kind": "scenario",
+      "title": "A project started",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "init": "commands.Init",
+          "processLog": "architecture.ProcessLog",
+          "writeLog": "architecture.WriteLog",
+          "currentProcess": "architecture.Process",
+          "paths": "architecture.Paths",
+          "layout": "conventions.Layout",
+          "projects": "command-scenarios.ScenarioProjects",
+          "samples": "command-scenarios.ProjectSamples",
+          "start": "conventions.ProjectStart",
+          "pin": "generations.EnginePin",
+          "line": "conventions.TrameCommands",
+          "exitStatus": "std/system.ExitStatus",
+          "messages": "messages.ScenarioMessages",
+          "names": "conventions.LanguageNames",
+          "specifiers": "std/system.NodeModuleSpecifiers",
+          "language": "typescript.TypeScript",
+          "texts": "std/algebra.Texts"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -1822,7 +1855,8 @@
         "owner": "trame",
         "value": {
           "library": "std",
-          "application": "apps/poselia"
+          "application": "apps/poselia",
+          "started": "examples/started"
         }
       }
     },
@@ -2364,6 +2398,55 @@
         },
         "body": {
           "file": "./code/commands/export.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
+      "id": "commands.Init",
+      "kind": "entry",
+      "title": "Start a project",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "trigger": {
+          "type": "command",
+          "name": "init"
+        },
+        "deps": {
+          "exitStatus": "std/system.ExitStatus",
+          "preparation": "commands.Preparation",
+          "layout": "conventions.Layout",
+          "project": "engine.Project",
+          "prelude": "architecture.Prelude",
+          "start": "conventions.ProjectStart",
+          "pin": "generations.EnginePin",
+          "reading": "architecture.FileReading",
+          "writing": "architecture.FileWriting",
+          "paths": "architecture.Paths",
+          "encodings": "std/system.NodeEncodings",
+          "file": "std/text.TextFile",
+          "json": "conventions.JsonFormatting",
+          "language": "typescript.TypeScript",
+          "syntax": "typescript.TypeScriptSyntax",
+          "title": "typescript.ModuleTitle",
+          "doc": "typescript.DocBlock",
+          "exported": "typescript.ExportDeclaration",
+          "constant": "typescript.ConstDeclaration",
+          "call": "typescript.Call",
+          "object": "typescript.ObjectLiteral",
+          "property": "typescript.Property",
+          "text": "typescript.StringLiteral",
+          "imports": "typescript.NamedImport",
+          "terminal": "architecture.Terminal",
+          "messages": "messages.CommandMessages",
+          "currentProcess": "architecture.Process",
+          "events": "std/system.NodeEvents",
+          "line": "conventions.TrameCommands",
+          "texts": "std/algebra.Texts"
+        },
+        "body": {
+          "file": "./code/commands/init.ts",
           "language": "typescript"
         }
       }
@@ -2968,6 +3051,30 @@
       }
     },
     {
+      "id": "conventions.ProjectStart",
+      "kind": "decision",
+      "title": "How a project starts",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "module": "product",
+          "goal": "Purpose",
+          "goalKind": "kinds/goal",
+          "owner": "owner",
+          "guides": [
+            "AGENTS.md",
+            ".claude/skills/trame/SKILL.md"
+          ],
+          "pointer": "CLAUDE.md",
+          "pointerText": "@AGENTS.md"
+        },
+        "rejected": {
+          "An empty project": "nothing would say what the project is for, and the first build would have no goal to link anything to",
+          "A template project to copy": "a second project to keep in step with the language; what init writes is in the graph"
+        }
+      }
+    },
+    {
       "id": "conventions.ReferenceSyntax",
       "kind": "standard",
       "title": "Trame references",
@@ -3096,6 +3203,10 @@
           "amend": {
             "value": "amend",
             "meaning": "Changes a chosen value by an amendment, said first, then recorded where the project's amendments go"
+          },
+          "init": {
+            "value": "init",
+            "meaning": "Starts a project in the current directory: its configuration, its first module, the guide for agents, its manifest"
           },
           "fallback": {
             "value": "*",
@@ -3532,7 +3643,8 @@
           "signatures": "architecture.Signatures",
           "engines": "engine.EngineFingerprint",
           "runs": "architecture.KeptRuns",
-          "platform": "std/effects.PlatformEffects"
+          "platform": "std/effects.PlatformEffects",
+          "names": "conventions.LanguageNames"
         },
         "body": {
           "file": "./code/engine/compiler.ts",
@@ -10984,7 +11096,7 @@
         "date": "2026-10-25",
         "what": "Values with their units come from a node of the language (Units, UnitWords, UnitsOfMeasure, NumberDisplay); a text is shown visibly by a node (VisibleText, from the Unicode escape and the invisible characters); the percentiles an SLO may hold are a setting; the fields of a package and the edges of a release that the engine reads are words of the prelude (PackageField, ReleaseEdge); the catalogs count by the plural rules of their language and join with its lists; the page speaks the decided language until a payload says another; tree-sitter says which predicates of a query it keeps aside; a standard that is a language names its highlighting.",
         "fingerprint": "5c678abe2b82acf4",
-        "language": "shared",
+        "language": "own",
         "archive": "23d57e3cc11c9254"
       }
     },
@@ -11519,6 +11631,20 @@
         "date": "2026-10-31",
         "what": "A4b: every value amended from the page: in trame dev, a card's chosen and cited values carry an amend button and a form by their type; trame dev prepares the amendment as trame amend does, says what it would change, records it",
         "fingerprint": "1b76dfe8c4e36cdd",
+        "language": "shared",
+        "archive": "c850998afbba6ca9"
+      }
+    },
+    {
+      "id": "releases.G87",
+      "kind": "release",
+      "title": "Generation 87",
+      "fields": {
+        "owner": "trame",
+        "version": "g87",
+        "date": "2026-11-01",
+        "what": "E1a: the language by name: a project imports #trame/kernel and #trame/kinds/* through its import map, which leads to the generation it pins (a link under .trame/ that an advance moves with the pin); its kinds and views are the language's, from the engine that reads it; where a package comes from is std's port PackageSources, realized by local paths",
+        "fingerprint": "1f14126f68927aac",
         "language": "shared",
         "archive": "c850998afbba6ca9"
       }
@@ -12479,7 +12605,7 @@
       "id": "sdlc.PageProgram",
       "kind": "artifact",
       "title": "The page's program",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "out/browser/page-app.ts"
@@ -16647,6 +16773,86 @@
       "kind": "deps"
     },
     {
+      "from": "command-scenarios.ProjectStarted",
+      "to": "commands.Init",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.ProjectStarted",
+      "to": "architecture.Test",
+      "kind": "env"
+    },
+    {
+      "from": "command-scenarios.ProjectStarted",
+      "to": "commands.Init",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ProjectStarted",
+      "to": "architecture.ProcessLog",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ProjectStarted",
+      "to": "architecture.WriteLog",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ProjectStarted",
+      "to": "architecture.Process",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ProjectStarted",
+      "to": "architecture.Paths",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ProjectStarted",
+      "to": "conventions.Layout",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ProjectStarted",
+      "to": "command-scenarios.ScenarioProjects",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ProjectStarted",
+      "to": "command-scenarios.ProjectSamples",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ProjectStarted",
+      "to": "conventions.ProjectStart",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ProjectStarted",
+      "to": "generations.EnginePin",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ProjectStarted",
+      "to": "conventions.TrameCommands",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ProjectStarted",
+      "to": "messages.ScenarioMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ProjectStarted",
+      "to": "conventions.LanguageNames",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ProjectStarted",
+      "to": "typescript.TypeScript",
+      "kind": "deps"
+    },
+    {
       "from": "command-scenarios.ShipmentsRun",
       "to": "commands.Ship",
       "kind": "verifies"
@@ -17722,6 +17928,141 @@
       "kind": "deps"
     },
     {
+      "from": "commands.Init",
+      "to": "product.SingleSource",
+      "kind": "serves"
+    },
+    {
+      "from": "commands.Init",
+      "to": "architecture.TrameCli",
+      "kind": "in"
+    },
+    {
+      "from": "commands.Init",
+      "to": "commands.Preparation",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Init",
+      "to": "conventions.Layout",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Init",
+      "to": "engine.Project",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Init",
+      "to": "architecture.Prelude",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Init",
+      "to": "conventions.ProjectStart",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Init",
+      "to": "generations.EnginePin",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Init",
+      "to": "architecture.FileReading",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Init",
+      "to": "architecture.FileWriting",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Init",
+      "to": "architecture.Paths",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Init",
+      "to": "conventions.JsonFormatting",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Init",
+      "to": "typescript.TypeScript",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Init",
+      "to": "typescript.TypeScriptSyntax",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Init",
+      "to": "typescript.ModuleTitle",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Init",
+      "to": "typescript.DocBlock",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Init",
+      "to": "typescript.ExportDeclaration",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Init",
+      "to": "typescript.ConstDeclaration",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Init",
+      "to": "typescript.Call",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Init",
+      "to": "typescript.ObjectLiteral",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Init",
+      "to": "typescript.Property",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Init",
+      "to": "typescript.StringLiteral",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Init",
+      "to": "typescript.NamedImport",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Init",
+      "to": "architecture.Terminal",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Init",
+      "to": "messages.CommandMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Init",
+      "to": "architecture.Process",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Init",
+      "to": "conventions.TrameCommands",
+      "kind": "deps"
+    },
+    {
       "from": "commands.Plan",
       "to": "product.ExecutableSpecification",
       "kind": "serves"
@@ -18744,6 +19085,11 @@
     {
       "from": "engine.Compiler",
       "to": "architecture.KeptRuns",
+      "kind": "deps"
+    },
+    {
+      "from": "engine.Compiler",
+      "to": "conventions.LanguageNames",
       "kind": "deps"
     },
     {
@@ -23909,6 +24255,16 @@
     {
       "from": "releases.G86",
       "to": "releases.G85",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G87",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G87",
+      "to": "releases.G86",
       "kind": "assembledBy"
     },
     {

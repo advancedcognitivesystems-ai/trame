@@ -1,11 +1,11 @@
 # Owners
 
-*What each person must decide, settle or watch on 30 October 2026, and what they own.*
+*What each person must decide, settle or watch on 1 November 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
 | Trame's maintainers | 0 | 0 | 3 | 0 |
-| trame | 0 | 0 | 11 | 640 |
+| trame | 0 | 0 | 9 | 644 |
 
 <a id="Trame's maintainers"></a>
 
@@ -29,13 +29,11 @@
 | warning | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The graph page](sdlc.md#GraphPage) | trame |  |
 | warning | To ship: The candidate engine is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
 | warning | To ship: The graph page is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
-| warning | To ship: The page's program is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
 | warning | To ship: The SDLC's tooling is realized once is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
 | warning | To ship: The page is assembled is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
 | warning | To ship: The candidate plays the laws is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
 | warning | To ship: The candidate runs on the machine is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
 | warning | To ship: The graph page opens is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
-| warning | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The page's program](sdlc.md#PageProgram) | trame |  |
 
 ### Owns
 
@@ -130,6 +128,7 @@
 | [The graph in the intermediate format](command-scenarios.md#PayloadOfTheGraph) | Scenario | **held** |
 | [What a plan is checked with](command-scenarios.md#PlanSamples) | Decision |  |
 | [What the scenarios ask of those projects](command-scenarios.md#ProjectSamples) | Decision |  |
+| [A project started](command-scenarios.md#ProjectStarted) | Scenario | **held** |
 | [What a program run in a scenario answers](command-scenarios.md#RunSamples) | Decision |  |
 | [The projects of the repository the scenarios enter](command-scenarios.md#ScenarioProjects) | Decision |  |
 | [Shipments run, evidence given](command-scenarios.md#ShipmentsRun) | Scenario | **held** |
@@ -152,6 +151,7 @@
 | [What the doctor writes, runs and waits for](commands.md#DoctorProbe) | Decision |  |
 | [Payload](commands.md#EmitPayload) | Entry point | **held** |
 | [Export the page](commands.md#Export) | Entry point | **held** |
+| [Start a project](commands.md#Init) | Entry point | **held** |
 | [Plan](commands.md#Plan) | Entry point | **held** |
 | [Preparation](commands.md#Preparation) | Function | **held** |
 | [Publish](commands.md#Publish) | Entry point | **held** |
@@ -174,6 +174,7 @@
 | [The language's names](conventions.md#LanguageNames) | Decision |  |
 | [Project layout](conventions.md#Layout) | Decision |  |
 | [The prelude's public API](conventions.md#PreludeApi) | Decision |  |
+| [How a project starts](conventions.md#ProjectStart) | Decision |  |
 | [Trame references](conventions.md#ReferenceSyntax) | Standard |  |
 | [Names of steps](conventions.md#StepNames) | Decision |  |
 | [Trame's commands](conventions.md#TrameCommands) | Standard |  |
@@ -553,6 +554,7 @@
 | [Generation 84](releases.md#G84) | Release |  |
 | [Generation 85](releases.md#G85) | Release |  |
 | [Generation 86](releases.md#G86) | Release |  |
+| [Generation 87](releases.md#G87) | Release |  |
 | [Generation 9](releases.md#G9) | Release |  |
 | [Common rendering](rendering.md#Common) | Function | **held** |
 | [Documents in Markdown](rendering.md#DocumentsInMarkdown) | Technical choice | **held** |
@@ -607,7 +609,7 @@
 | [The next generation](sdlc.md#NextGeneration) | Shipment | **unknown** |
 | [The graph page is opened as a person would](sdlc.md#OpeningTheGraphPage) | Scenario | **held** |
 | [Open the graph page](sdlc.md#OpenTheGraphPage) | Entry point | **held** |
-| [The page's program](sdlc.md#PageProgram) | Artefact | **unknown** |
+| [The page's program](sdlc.md#PageProgram) | Artefact | **held** |
 | [The SDLC in memory](sdlc.md#SdlcInMemory) | Technical choice | **held** |
 | [The SDLC on the machine](sdlc.md#SdlcOnTheMachine) | Technical choice | **unknown** |
 | [What the programs of Trame's SDLC say](sdlc.md#SdlcWords) | Message catalog |  |

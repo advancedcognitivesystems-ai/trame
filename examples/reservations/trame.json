@@ -1,11 +1,5 @@
 {
   "title": "Reservations",
-  "kinds": [
-    "../../kinds"
-  ],
-  "views": [
-    "../../views"
-  ],
   "libraries": {
     "std": "../../std"
   },

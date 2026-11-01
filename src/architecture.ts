@@ -104,6 +104,8 @@ export interface Prelude {
   path: string
   /** The directory of the language the engine speaks: its prelude, its kinds and its views (since g87). */
   root: string
+  /** The directory of the engine that runs: a generation's, or the repository's for the candidate (since g88). */
+  engine: string
 }
 export type FileReading = Pick<typeof import("node:fs"), "readFileSync" | "existsSync" | "readdirSync" | "statSync" | "watch">
 export type FileWriting = Pick<typeof import("node:fs"), "writeFileSync" | "mkdirSync">

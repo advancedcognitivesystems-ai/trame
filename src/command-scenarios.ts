@@ -11,7 +11,7 @@ import {
 import { PayloadBuilder, Differences, Assembly, Project, Compiler, DateBundle, DevServer, DevService, ShipmentPipeline, Views, EngineFingerprint, ProjectRuns } from "./engine"
 import {
   ShowView, ViewByName, RenderView, EmitPayload, Assemble, Assembler, TestKinds, TakeSnapshot, Publish, Audit, Release, WriteManifest, Export, Run, Dev,
-  Deliver, Ship, RecordEvidence, Doctor, DoctorProbe, Advance, Build, Plan, Amend, Amending, BuildComparison,
+  Deliver, Ship, RecordEvidence, Doctor, DoctorProbe, Advance, Build, Plan, Amend, Amending, BuildComparison, Init,
 } from "./commands"
 import { SyntaxReader, BodyChecks } from "./syntax"
 import { TypeScript, TypeScriptWriter, StringLiteral } from "./typescript"
@@ -24,14 +24,14 @@ import {
   WebTreeSitter, Esbuild, NodeCompression, PageResources, StoppedClock, NoReportsInTest, MemoryHttpServer, NodeTimer, NodeCommandLine, MemoryTerminal,
   NodeHashing, RunsInTheProcess, InPlaceSources,
 } from "./platform"
-import { ReleaseRecords } from "./generations"
+import { ReleaseRecords, EnginePin } from "./generations"
 import { PackageAudit } from "./packages"
 import { SdlcEvidence, ShipmentRunPlan, ShippingRecords, Attribution } from "./shipping"
 import { DevDebounce } from "./product"
 import { ExitStatus, NodeEncodings, NodeModuleSpecifiers } from "#std/system"
 import { Counts, Sequences, Texts, ValueTypes } from "#std/algebra"
 import { ServerSentEvents, Http } from "#std/web"
-import { TrameCommands, Layout, LanguageNames } from "./conventions"
+import { TrameCommands, Layout, LanguageNames, ProjectStart } from "./conventions"
 import { LocalPaths } from "./platform"
 import { ScenarioMessages, DriverMessages, OutputMessages, CommandMessages, PlatformMessages, AdvanceMessages, CompilerMessages } from "./messages"
 import { GnuPositions, TextFile } from "#std/text"
@@ -429,9 +429,9 @@ export const DeclarationsPublished = scenario({
  * The projects of the repository the scenarios enter
  * A library, which releases versions; an application, which imports libraries outside its package and ships.
  */
-export const ScenarioProjects = decision<{ library: string; application: string }>({
+export const ScenarioProjects = decision<{ library: string; application: string; started: string }>({
   owner: "trame",
-  value: { library: "std", application: "apps/poselia" },
+  value: { library: "std", application: "apps/poselia", started: "examples/started" },
 })
 
 /**
@@ -446,6 +446,7 @@ export const ProjectSamples = decision<{
   delivery: string
   shipments: { runners: string; preview: string }
   handCheck: { check: string; tester: string; stranger: string }
+  started: { title: string; owner: string }
 }>({
   owner: "trame",
   value: {
@@ -454,7 +455,41 @@ export const ProjectSamples = decision<{
     delivery: "PoseliaPage",
     shipments: { runners: "RunnersWritten", preview: "Preview" },
     handCheck: { check: "OnAPhone", tester: "ghalaax", stranger: "someone-else" },
+    started: { title: "Started in memory", owner: "ghalaax" },
   },
+})
+
+/**
+ * A project started
+ * trame init, in a directory where no project is, writes the configuration (the generation that runs, std as the
+ * language's home uses it), the first module (the goal, owned by whoever started the project, the language named by
+ * its name), the guide for agents; then a fresh engine writes the manifest.
+ */
+export const ProjectStarted = scenario({
+  owner: "trame",
+  verifies: [Init],
+  env: Test,
+  deps: {
+    init: Init, processLog: ProcessLog, writeLog: WriteLog, currentProcess: Process, paths: Paths, layout: Layout, projects: ScenarioProjects,
+    samples: ProjectSamples, start: ProjectStart, pin: EnginePin, line: TrameCommands, exitStatus: ExitStatus, messages: ScenarioMessages,
+    names: LanguageNames, specifiers: NodeModuleSpecifiers, language: TypeScript, texts: Texts,
+  },
+  body: ({ init, processLog, writeLog, currentProcess, paths, layout, projects, samples, start, pin, line, exitStatus, messages, names, specifiers, language, texts }) =>
+    async (check) => {
+      processLog.enter(projects.started)
+      processLog.answer(texts.empty, exitStatus.success)
+      const home = currentProcess.cwd()
+      const r = await init({ params: { command: line.init }, body: { args: [samples.started.title, line.by, samples.started.owner] } })
+      const written = writeLog.written()
+      const configuration = JSON.parse(written.get(paths.join(home, layout.configuration)) ?? JSON.stringify({})) as Record<string, unknown>
+      check(messages.startedConfiguration(), r.status === exitStatus.success && configuration[pin.key] !== undefined && configuration.libraries !== undefined)
+      const [extension] = language.extensions
+      const module = written.get(paths.join(home, layout.sources, start.module + extension)) ?? texts.empty
+      check(messages.startedModule(), module.includes(specifiers.imports + names.name + specifiers.separator) && module.includes(samples.started.owner))
+      const [guide] = start.guides
+      check(messages.startedGuide(), written.has(paths.join(home, guide)) && written.has(paths.join(home, start.pointer)))
+      check(messages.startedManifest(), processLog.started().some((s) => s.args.includes(line.manifest)))
+    },
 })
 
 /**

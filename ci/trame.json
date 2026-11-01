@@ -1,10 +1,4 @@
 {
   "title": "Continuous integration",
-  "kinds": [
-    "../kinds"
-  ],
-  "views": [
-    "../views"
-  ],
-  "engine": "../generations/g78"
+  "engine": "../generations/g87"
 }

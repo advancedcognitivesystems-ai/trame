@@ -18,6 +18,7 @@ import { AnyTarget, ArtifactField, DeliveryField, EdgeMode, EdgeName, FieldType,
 import type { AnyNode, AnyKind, Constant, Evidence, HoleSpec, Noun, ProvidedBy, Reach, Resolution, StaticInfo } from "../../../trame/kernel"
 import type { Reached } from "./static-analysis"
 import type { PlatformEffects, MayDo } from "#std/effects"
+import type { LanguageNames } from "../../conventions"
 import type { Fingerprints, References } from "../../engine"
 import type { Counts, Sequences, Texts, ValueTypes } from "#std/algebra"
 import type { CompilerMessages } from "../../messages"
@@ -195,6 +196,8 @@ export interface Deps {
   runs: KeptRuns
   /** What the platform's modules and globals may do (since g83): an implementation may do what what it reaches may do. */
   platform: ProvidedBy<typeof PlatformEffects>
+  /** How a project names the language: the compiler is led to its files. */
+  names: ProvidedBy<typeof LanguageNames>
 }
 
 const body = (deps: Deps) => {
@@ -314,6 +317,9 @@ const body = (deps: Deps) => {
     // Where each library's name leads, for the TypeScript compiler: its sources as they are on disk.
     const { imports, separator, pattern } = deps.specifiers
     const paths = Object.fromEntries(libraries.map((lib) => [imports + lib.name + separator + pattern, [join(lib.root, sources, pattern)]]))
+    // And the language's names (since g88), to its files where they are: through the link of the package, the compiler
+    // would read the kinds and the kernel a second time, under another path, and two kernels' types never match.
+    for (const [name, module] of Object.entries(deps.names.modules)) paths[imports + deps.names.name + separator + name] = [join(deps.prelude.root, module)]
     const { infos: analysis, moduleTitle, rests, typeErrors, quantityErrors, uses: used, textAsCode, reaches: reachedBy, forgedCommands } = analyze(modules, extra, root, paths)
     // The nodes of the project and of its libraries: those their modules export. The registry of the kernel is shared
     // by the whole process (another project may be loaded into it): it is not read in full.
