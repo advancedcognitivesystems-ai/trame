@@ -1,7 +1,7 @@
 // The cancellations as a repository: the refund of a reservation is a row of its table; recording it cancels the
 // reservation in the same transaction. The statements come from the dialect of the database.
 
-import type { BodyOf } from "../../../../trame/kernel"
+import type { BodyOf } from "#trame/kernel"
 import type { CancellationsSql } from "../infra"
 import type { RefundRecord } from "../architecture"
 

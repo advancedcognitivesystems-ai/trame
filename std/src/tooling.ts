@@ -1,17 +1,17 @@
 /** Standard library · Tooling */
 
-import { code } from "../../trame/kernel"
-import { standard } from "../../kinds/standard"
-import { port } from "../../kinds/port"
-import { implementation } from "../../kinds/implementation"
-import { fn } from "../../kinds/function"
-import { decision } from "../../kinds/decision"
-import { pkg } from "../../kinds/package"
-import { adr } from "../../kinds/adr"
+import { code } from "#trame/kernel"
+import { standard } from "#trame/kinds/standard"
+import { port } from "#trame/kinds/port"
+import { implementation } from "#trame/kinds/implementation"
+import { fn } from "#trame/kinds/function"
+import { decision } from "#trame/kinds/decision"
+import { pkg } from "#trame/kinds/package"
+import { adr } from "#trame/kinds/adr"
 import { Counts, Texts, ValueTypes } from "./algebra"
 import { Sha256, SeededDraws } from "./algorithms"
 import { NodeEncodings, NodeArguments, ExitStatus } from "./system"
-import type { Exposure } from "../../kinds/component"
+import type { Exposure } from "#trame/kinds/component"
 import { RealizedOnce, CitedNotCopied } from "./product"
 
 // The ports the code of a project's SDLC uses, beside the product's: the project's files (read, written, copied, their

@@ -1,10 +1,10 @@
 /** Poselia · Scenarios */
 
-import { decision } from "../../../kinds/decision"
-import { fn } from "../../../kinds/function"
-import { binding } from "../../../kinds/binding"
-import { catalog } from "../../../kinds/catalog"
-import { scenario } from "../../../kinds/scenario"
+import { decision } from "#trame/kinds/decision"
+import { fn } from "#trame/kinds/function"
+import { binding } from "#trame/kinds/binding"
+import { catalog } from "#trame/kinds/catalog"
+import { scenario } from "#trame/kinds/scenario"
 import { DeviceLanguages, MemoryPreferences, PreferencesStore, FramesByHand, TimeTurned, WrittenSpeech, SpeechHeard, AwakeInMemory, ScreenKeptAwake } from "#std/platform"
 import { Strategy, AbstractFactory } from "#std/patterns"
 import { Counts, Sequences } from "#std/algebra"

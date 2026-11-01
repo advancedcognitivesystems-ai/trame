@@ -2,6 +2,7 @@
 // Each kind is tried on nodes drawn at random (fixed seed: reproducible results).
 
 import { AnyTarget, EdgeMode, FieldType, KindHook, Moment, ResolutionKind, min, pct } from "../../../trame/kernel"
+import type { LanguageNames } from "../../conventions"
 import type { ProvidedBy, AnyKind, FieldSpec, HoleSpec, Resolution } from "../../../trame/kernel"
 import type { FileReading, KeptResults, Layout, Paths, Prelude } from "../../architecture"
 import type { LawMessages } from "../../messages"
@@ -46,6 +47,8 @@ export interface Deps {
   project: ProjectApi
   graph: GraphApi
   prelude: Prelude
+  /** How a file names the language: what an import out of its package should have written. */
+  names: ProvidedBy<typeof LanguageNames>
   messages: ProvidedBy<typeof LawMessages>
   references: ProvidedBy<typeof References>
   sampled: ProvidedBy<typeof SampledValues>
@@ -294,7 +297,10 @@ const body = (deps: Deps) => {
 
   /**
    * Kinds, views and the graph read the kernel only through its public API; a file of the project names a library by
-   * its name (#std/algebra), never by a path into it (ADR "A library is imported by its name").
+   * its name (#std/algebra), never by a path into it (ADR "A library is imported by its name"); and no file reaches
+   * out of its package by a relative path (since g88, ADR "A package is used by its name"): the language is named
+   * #trame/kernel, #trame/kinds/decision. A file belongs to the library whose home holds it, else to the project, else
+   * to the language.
    */
   function checkImports(root: string): string[] {
     const out: string[] = []
@@ -312,6 +318,30 @@ const body = (deps: Deps) => {
       const named = language.extensions.reduce((x, ext) => (x.endsWith(ext) ? deps.sequences.take(x, x.length - ext.length) : x), inside)
       return { lib, named: specifiers.imports + lib.name + specifiers.separator + named }
     }
+    const languageRoot = deps.prelude.root
+    const packageOf = (file: string) =>
+      dirs.libraries.find((l) => within(file, l.home))?.home ?? (within(file, root) ? root : within(file, languageRoot) ? languageRoot : root)
+    const asSpecifier = (path: string) => path.split(deps.paths.sep).join(specifiers.separator)
+    const withoutExtension = (x: string) => language.extensions.reduce((y, ext) => (y.endsWith(ext) ? deps.sequences.take(y, y.length - ext.length) : y), x)
+    /** The name of a module of the language, as its import map has it: #trame/kinds/decision. */
+    const languageName = (target: string): string | undefined => {
+      if (!within(target, languageRoot)) return undefined
+      const inside = withoutExtension(asSpecifier(relative(languageRoot, target)))
+      for (const [name, module] of Object.entries(deps.names.modules)) {
+        const prefix = module.endsWith(specifiers.pattern) ? deps.sequences.take(module, module.length - specifiers.pattern.length) : undefined
+        const rest = prefix !== undefined && inside.startsWith(prefix) ? inside.slice(prefix.length) : inside === module ? deps.texts.empty : undefined
+        if (rest !== undefined) return specifiers.imports + deps.names.name + specifiers.separator + (prefix !== undefined ? name.split(specifiers.pattern).join(rest) : name)
+      }
+      return undefined
+    }
+    /** A relative import that leaves the file's package: where it leads, and the name to write instead, if there is one. */
+    const leaving = (file: string, module: string) => {
+      if (!module.startsWith(specifiers.current) && !module.startsWith(specifiers.parent)) return undefined
+      const target = deps.paths.resolve(deps.paths.dirname(file), module)
+      // A version frozen of a library is its release's business: it was checked when it was frozen, and is never changed.
+      if (dirs.libraries.some((l) => l.version !== undefined && within(file, l.root))) return undefined
+      return within(target, packageOf(file)) ? undefined : { named: languageName(target) }
+    }
     const scan = (dir: string, rel: string) => {
       if (!existsSync(dir)) return
       for (const e of readdirSync(dir, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name))) {
@@ -324,6 +354,10 @@ const body = (deps: Deps) => {
             }
             const byPath = reached(file, i.module)
             if (byPath) out.push(messages.libraryByPath(join(rel, e.name), i.module, byPath.lib.name, byPath.named))
+            else {
+              const leaves = leaving(file, i.module)
+              if (leaves) out.push(messages.outsidePackage(join(rel, e.name), i.module, leaves.named))
+            }
           }
         }
       }

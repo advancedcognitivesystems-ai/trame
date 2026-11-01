@@ -1,7 +1,7 @@
 /** Standard library · ECMAScript */
 
-import { standard } from "../../kinds/standard"
-import { vocabulary } from "../../kinds/vocabulary"
+import { standard } from "#trame/kinds/standard"
+import { vocabulary } from "#trame/kinds/vocabulary"
 import { CitedNotCopied } from "./product"
 
 // What ECMA-262 fixes, which code in JavaScript or TypeScript relies on: where a list starts, what typeof answers, the

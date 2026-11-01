@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 30 October 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 1 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Trame · Appearance
 
@@ -1444,9 +1444,9 @@ Function · `GraphApi` · **held**
 Function · `Laws` · **held**
 
 - Owner: trame
-- Parameters: { kept: architecture.KeptResults, drivers: languages.Drivers, preludeApi: conventions.PreludeApi, specifiers: std/system.NodeModuleSpecifiers, layout: conventions.Layout, samples: product.SampleCount, claimSets: product.ClaimSets, generator: engine.Generator, owners: product.SampledOwners, sampled: product.SampledValues, iso: std/measures.Iso8601, references: engine.References, reading: architecture.FileReading, paths: architecture.Paths, project: engine.Project, graph: engine.GraphApi, prelude: architecture.Prelude, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, messages: messages.LawMessages, declaration: (rule), answers: (rule), owned: (rule), evidence: (rule), same: (rule), orderFree: (rule), closed: (rule) }
+- Parameters: { kept: architecture.KeptResults, drivers: languages.Drivers, preludeApi: conventions.PreludeApi, specifiers: std/system.NodeModuleSpecifiers, layout: conventions.Layout, samples: product.SampleCount, claimSets: product.ClaimSets, generator: engine.Generator, owners: product.SampledOwners, sampled: product.SampledValues, iso: std/measures.Iso8601, references: engine.References, reading: architecture.FileReading, paths: architecture.Paths, project: engine.Project, graph: engine.GraphApi, prelude: architecture.Prelude, names: conventions.LanguageNames, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, messages: messages.LawMessages, declaration: (rule), answers: (rule), owned: (rule), evidence: (rule), same: (rule), orderFree: (rule), closed: (rule) }
 - Serves: A specification that runs
-- Depends on: Results kept, Drivers, The prelude's public API, Project layout, Nodes drawn per kind, Claim sets, Pseudo-random generator, Owners drawn at random, Values drawn by the laws, References, File reading, Paths, Project, Graph, Prelude, Messages of the laws, Complete declaration, Answers without crashing, A blocking hole has an owner, Without evidence, the status is unknown, Same input, same answer, The resolution does not depend on the order, The resolution returns only what it is given
+- Depends on: Results kept, Drivers, The prelude's public API, Project layout, Nodes drawn per kind, Claim sets, Pseudo-random generator, Owners drawn at random, Values drawn by the laws, References, File reading, Paths, Project, Graph, Prelude, The language's names, Messages of the laws, Complete declaration, Answers without crashing, A blocking hole has an owner, Without evidence, the status is unknown, Same input, same answer, The resolution does not depend on the order, The resolution returns only what it is given
 
 ### Lock
 
@@ -3953,10 +3953,10 @@ Architecture decision · `PackagesByName` · **held**
 
 - Decided by: trame
 - Context: Projects lived inside Trame's repository and reached its language by relative paths (../../kinds, ../../../trame/kernel): none could move out, a release had to write its imports again, and nothing in a project said which generation's language it was written in.
-- Consequences: A project names the language as it names a library: its import map, written by trame manifest, leads #trame/kernel and #trame/kinds/* to the generation it pins, through a link under .trame/ that an advance moves with the pin. Its kinds and views are the language's, from the engine that reads it, and those it names besides. The language's home, Trame's repository, reaches them where they are. Where a package comes from is std's port PackageSources: a local path now, a registry later.
+- Consequences: A project names the language as it names a library: its import map, written by trame manifest, leads #trame/kernel and #trame/kinds/* to the generation it pins, through a link under .trame/ that an advance moves with the pin. Its kinds and views are the language's, from the engine that reads it, and those it names besides. The language's home, Trame's repository, reaches them where they are; the engine leads TypeScript to the files where they are, never through a link (g88). A relative import that leaves its package refuses the build and says the name to write (g89). trame init starts a project already named so. Where a package comes from is std's port PackageSources: a local path now, a registry later.
 - Rejected: Relative paths between packages, they hold only while the packages sit side by side, and a frozen copy reaches whatever is there then; A path mapping in each project's compiler options, the program that runs the graph would not read it; the import map is what Node.js and TypeScript both read; Trame installed from a registry at once, a publication at each generation while the language changes with each one; the registry is the second strategy of the same port
 - Serves: What is generic is written once
-- Applied by: Project, Write the manifest, Packages by their local path, Advance
+- Applied by: Project, Write the manifest, Packages by their local path, Advance, Laws, Start a project
 
 ### The prelude: the runtime of the language
 
@@ -4787,7 +4787,7 @@ Release · `G52`
 - Released on: 2026-10-25
 - What changes: The language holds no literal: the kinds take values with their units, texts shown visibly and the percentiles of an objective from the graph, and declare under the prelude's names the fields and edges the engine reads. The prelude presumes no language: the English plural rule, joinList, formatUnit and the default language left it; dates and lists always say their language, and counts follow the plural rules of the catalog's language. The language kind reads the predicates tree-sitter keeps aside, and names the code block of its queries as their standard does.
 - Fingerprint: 9f375468ee77a9d9
-- Language: shared
+- Language: own
 - Language archived: 4ecadc2e74354469
 - Releases: Trame on the command line
 - Assembled by: Generation 51
@@ -4801,7 +4801,7 @@ Release · `G53`
 - Released on: 2026-10-25
 - What changes: A literal in a kind or a view is an error: the language follows the rule of the bodies, one error per file with each place, which an assembly refuses.
 - Fingerprint: 2d64787b40dd57e2
-- Language: shared
+- Language: own
 - Language archived: 4ecadc2e74354469
 - Releases: Trame on the command line
 - Assembled by: Generation 52
@@ -4815,7 +4815,7 @@ Release · `G54`
 - Released on: 2026-10-26
 - What changes: Libraries: a project imports Trame projects by name and path; their modules join its graph under the library's name, their documents, issues and lock stay their own; the index and the summary count them apart; an advance builds and keeps Trame's libraries
 - Fingerprint: 56e47e707e793f47
-- Language: shared
+- Language: own
 - Language archived: 6939523836cb08ef
 - Releases: Trame on the command line
 - Assembled by: Generation 53
@@ -4829,7 +4829,7 @@ Release · `G55`
 - Released on: 2026-10-26
 - What changes: The standard library: std/, a Trame project of its own, holds the structures, the published standards and the design patterns; Trame and the example import it; standards, structures and vocabularies may serve a goal
 - Fingerprint: 77532e277299fdaa
-- Language: shared
+- Language: own
 - Language archived: ecda5f73f142c24f
 - Releases: Trame on the command line
 - Assembled by: Generation 54
@@ -4843,7 +4843,7 @@ Release · `G56`
 - Released on: 2026-10-26
 - What changes: Libraries by name and at a version: code names a library #std/…, trame manifest writes the import map (through a link when the library is outside the package), the compiler is told where each name leads; trame release freezes a library's version with its documents; a project imports a library at a version
 - Fingerprint: 50d7db4258ef07d0
-- Language: shared
+- Language: own
 - Language archived: c159d87e5a49cb9c
 - Releases: Trame on the command line
 - Assembled by: Generation 55
@@ -4857,7 +4857,7 @@ Release · `G57`
 - Released on: 2026-10-26
 - What changes: Delivery: the kind delivery names a component, its environment, a target and where it is written; trame deliver writes a page a browser opens as it is (the program bundled, the style sheets after their variables); the loading of a page and its browser realization move to the standard library
 - Fingerprint: acf2864115f42aba
-- Language: shared
+- Language: own
 - Language archived: d00b74fb8945d994
 - Releases: Trame on the command line
 - Assembled by: Generation 56
@@ -4871,7 +4871,7 @@ Release · `G58`
 - Released on: 2026-10-26
 - What changes: Data: the kind dataset holds typed rows, the key that names them, the rules each keeps and the languages its texts are written in; a review is evidence tied to the fingerprint of what was seen, which the engine gives the kinds (lib.fingerprint)
 - Fingerprint: 7a4c300ef140b947
-- Language: shared
+- Language: own
 - Language archived: cce6c5d4c43d02c8
 - Releases: Trame on the command line
 - Assembled by: Generation 57
@@ -4885,7 +4885,7 @@ Release · `G59`
 - Released on: 2026-10-26
 - What changes: HTML and CSS standards move to the standard library; a catalog may translate another (the same messages, in another language)
 - Fingerprint: 78fc84b1b3538077
-- Language: shared
+- Language: own
 - Language archived: 9b0ab6f71de5af6b
 - Releases: Trame on the command line
 - Assembled by: Generation 58
@@ -4912,7 +4912,7 @@ Release · `G60`
 - Released on: 2026-10-26
 - What changes: An issue belongs to whoever raised it: a rule of the project that judges a library's node raises the project's issue; the rule on effects knows the language's own (asynchronous)
 - Fingerprint: fb50c1bf7082eefe
-- Language: shared
+- Language: own
 - Language archived: 9b0ab6f71de5af6b
 - Releases: Trame on the command line
 - Assembled by: Generation 59
@@ -4926,7 +4926,7 @@ Release · `G61`
 - Released on: 2026-10-26
 - What changes: The graph's page names its project: Poselia graph, Standard library graph
 - Fingerprint: 7925677d85e42bb0
-- Language: shared
+- Language: own
 - Language archived: 9b0ab6f71de5af6b
 - Releases: Trame on the command line
 - Assembled by: Generation 60
@@ -4940,7 +4940,7 @@ Release · `G62`
 - Released on: 2026-10-27
 - What changes: SDLC in the graph: trame ship and trame evidence, the shipment's environment, an artefact's path from its delivery
 - Fingerprint: 160d8b1a169ba24e
-- Language: shared
+- Language: own
 - Language archived: 7f551646aaeefd4a
 - Releases: Trame on the command line
 - Assembled by: Generation 61
@@ -4954,7 +4954,7 @@ Release · `G63`
 - Released on: 2026-10-27
 - What changes: A shipment's pipeline computed once by the engine: trame ship runs it, the views can show it
 - Fingerprint: def179a5fef839e8
-- Language: shared
+- Language: own
 - Language archived: a4237a44fc085b74
 - Releases: Trame on the command line
 - Assembled by: Generation 62
@@ -4968,7 +4968,7 @@ Release · `G64`
 - Released on: 2026-10-27
 - What changes: Two shipments of a day are two events: evidence replaced only for the same version, a dossier named by its fingerprint
 - Fingerprint: 1e3bd4ce10b74b01
-- Language: shared
+- Language: own
 - Language archived: 5f58752909549014
 - Releases: Trame on the command line
 - Assembled by: Generation 63
@@ -4982,7 +4982,7 @@ Release · `G65`
 - Released on: 2026-10-28
 - What changes: The plan of a run elsewhere: what a runner prepares and the words that ship, computed from the graph; an artefact written by a writer of a library
 - Fingerprint: a273888e24830957
-- Language: shared
+- Language: own
 - Language archived: cf4a8cc55357ac63
 - Releases: Trame on the command line
 - Assembled by: Generation 64
@@ -4996,7 +4996,7 @@ Release · `G66`
 - Released on: 2026-10-28
 - What changes: What a place makes available is what the graph says it publishes, never a default; the plan names what it delivers, where the evidence is, and the words that record a deployment
 - Fingerprint: 19892031729e7faf
-- Language: shared
+- Language: own
 - Language archived: 88a097b017197d20
 - Releases: Trame on the command line
 - Assembled by: Generation 65
@@ -5010,7 +5010,7 @@ Release · `G67`
 - Released on: 2026-10-28
 - What changes: A program assembled is fingerprinted with everything it imports: a change in a body changes the candidate's fingerprint
 - Fingerprint: 40fc2a709097506c
-- Language: shared
+- Language: own
 - Language archived: 88a097b017197d20
 - Releases: Trame on the command line
 - Assembled by: Generation 66
@@ -5024,7 +5024,7 @@ Release · `G68`
 - Released on: 2026-10-28
 - What changes: Derived obligations: a shipment follows a policy, one obligation per family (std/obligations), and derives what it must prove from what it reaches; the foundations (no literal, a sound graph) are proven by every shipment; a gap blocks or is said, as its obligation says
 - Fingerprint: 53a6a93a88e4aea5
-- Language: shared
+- Language: own
 - Language archived: 4596818f4b19624e
 - Accepted differences: differences.diff
 - Releases: Trame on the command line
@@ -5039,7 +5039,7 @@ Release · `G69`
 - Released on: 2026-10-29
 - What changes: What verifies code is backed by what runs it: a scenario verifies only what it wires (and what that code uses), a check what its program runs on a machine or what its artefacts carry; implementations are verified; trame doctor asks the machine; the graph page ships and is opened in Chromium; programs run with the loader resolved where the engine is installed; a failed check keeps the shipment but not the next build; the search of cycles no longer reports a vertex that only reaches a cycle; a live library's packages are the project's own
 - Fingerprint: 5fd0249624d38496
-- Language: shared
+- Language: own
 - Language archived: 4be4b86ee3b6101e
 - Releases: Trame on the command line
 - Assembled by: Generation 68
@@ -5067,7 +5067,7 @@ Release · `G70`
 - Released on: 2026-10-29
 - What changes: Evidence expires with the code: the engine fingerprints the code of each node (its declaration as written, its values, the files of its bodies) and gives it to the kinds; trame ship records with each artefact built the code it was made from and with each check the code of its program; an artefact holds while that code is the code as it is, a check while its artefacts do and its program is the one that ran
 - Fingerprint: 74775e272a5487e4
-- Language: shared
+- Language: own
 - Language archived: f87346639e366b6d
 - Accepted differences: differences.diff
 - Releases: Trame on the command line
@@ -5082,7 +5082,7 @@ Release · `G71`
 - Released on: 2026-10-29
 - What changes: Faster builds: the graph indexes its edges by node, so a query steps through a node's own edges (the view why, which looked for paths through every edge, took a third of a build); the reading of a program by the compiler of TypeScript and the parsing of a file by tree-sitter are kept while the process runs, given again while what they read is as it was. A build of Trame goes from about 460 to about 150 seconds
 - Fingerprint: f6194e7caed45964
-- Language: shared
+- Language: own
 - Language archived: f87346639e366b6d
 - Releases: Trame on the command line
 - Assembled by: Generation 70
@@ -5096,7 +5096,7 @@ Release · `G72`
 - Released on: 2026-10-29
 - What changes: Evidence sealed and tied to its engine: each record of the SDLC carries a seal computed from what it says, and a record changed by hand afterwards is not counted, an error; what a program of the engine builds or checks carries the fingerprint of that engine, which a generation records beside itself (engine.json), and holds while the project pins it; a shipment assembles a program for the environment its artefact names, so the graph page carries the page's program of the engine shipped
 - Fingerprint: 0daa44db2de1dd97
-- Language: shared
+- Language: own
 - Language archived: cb9186370639d1c6
 - Releases: Trame on the command line
 - Assembled by: Generation 71
@@ -5110,7 +5110,7 @@ Release · `G73`
 - Released on: 2026-10-29
 - What changes: trame plan says what a build would change, written nowhere; the engine evidence names is the fingerprint of its code, its prelude and its kinds (g72's carried the date of its assembled programs); trame ship judges what it just built by the engine that built it; a shipment builds first the artefacts its components produce (the page's program before the page); a node's code is fingerprinted from its declared data, whatever claim a compilation earlier in the process left applied
 - Fingerprint: 66deff0d30098751
-- Language: shared
+- Language: own
 - Language archived: cb9186370639d1c6
 - Accepted differences: differences.diff
 - Releases: Trame on the command line
@@ -5125,7 +5125,7 @@ Release · `G74`
 - Released on: 2026-10-30
 - What changes: A run is kept: a scenario played is given back while the code it wires and the files its project reads are as they were (in the process in the scenarios, on disk under .trame/runs on a machine, by engine); the reading of TypeScript and the syntax elements' readings are kept the same way, the kinds' laws in the process; the doctor asks that a run be kept until a file changes
 - Fingerprint: 165c3268cf4619b8
-- Language: shared
+- Language: own
 - Language archived: 8181856b27439738
 - Releases: Trame on the command line
 - Assembled by: Generation 73
@@ -5139,7 +5139,7 @@ Release · `G75`
 - Released on: 2026-10-30
 - What changes: Dates are real: evidence counts from the day it was given; an export offers the last seven days of the project's history (a version released, evidence given), each with what had been proven by then and what was given that day, the documents that differ only by the date carried once; the day of the scenarios is the 30th of October; the view journal tells the project's history day by day
 - Fingerprint: f34ec41fc249cf4c
-- Language: shared
+- Language: own
 - Language archived: 1deebd97967ac43b
 - Releases: Trame on the command line
 - Assembled by: Generation 74
@@ -5153,7 +5153,7 @@ Release · `G76`
 - Released on: 2026-10-30
 - What changes: A graph compiled at a day before today judges evidence as it was given (the code and the engine of that day are not known); a day of history in an export carries its documents and figures, not the views of each node
 - Fingerprint: f1f5af94b6e4092f
-- Language: shared
+- Language: own
 - Language archived: 8115939989b9fc6b
 - Releases: Trame on the command line
 - Assembled by: Generation 75
@@ -5167,7 +5167,7 @@ Release · `G77`
 - Released on: 2026-10-30
 - What changes: A build does less: a view runs once (twice when the laws are played), one search finds a node's way to every goal, date formatters are kept, a directory listed in memory does not walk its tree, a file is hashed again only once changed; a run is told apart by the declarations of the nodes it wires as by their bodies; a day of history runs no view of a node
 - Fingerprint: 18d8a17fa9d099a8
-- Language: shared
+- Language: own
 - Language archived: 9966fe46b969be85
 - Releases: Trame on the command line
 - Assembled by: Generation 76
@@ -5181,7 +5181,7 @@ Release · `G78`
 - Released on: 2026-10-30
 - What changes: The reading of a program by TypeScript is kept apart from its check: a body changed checks the program again but reads its modules again only when one of them changed; what a body says is kept for its text in its project, beyond the process
 - Fingerprint: d2b150f6bb34c5fb
-- Language: shared
+- Language: own
 - Language archived: 9966fe46b969be85
 - Releases: Trame on the command line
 - Assembled by: Generation 77
@@ -5195,7 +5195,7 @@ Release · `G79`
 - Released on: 2026-10-31
 - What changes: A requirement's rule is code: written as a body (body, since g79), it receives what it reads as parameters and is held to what holds a body. The engine wires such a rule so that the node called is the rule its dependencies make (given to kinds through their views), builds a node from its body before what its kind gives from its declaration, and refuses to freeze a body amended in force
 - Fingerprint: 7ce72f994d90a87d
-- Language: shared
+- Language: own
 - Language archived: 49119db4a1500f21
 - Accepted differences: differences.diff
 - Releases: Trame on the command line
@@ -5223,7 +5223,7 @@ Release · `G80`
 - Released on: 2026-10-31
 - What changes: Units are quantities of the graph: the engine reads in the types what each declared value measures (Quantity<typeof Time>), refuses code that adds, subtracts or compares two quantities, or multiplies them when neither is a ratio, and writes every value of a quantity in its units with the words of its catalog. trame publish --migrate publishes again the declarations the language changed the form of, with why
 - Fingerprint: 3ba22adcd7f03bfb
-- Language: shared
+- Language: own
 - Language archived: 0d666b812cb782bb
 - Releases: Trame on the command line
 - Assembled by: Generation 79
@@ -5237,7 +5237,7 @@ Release · `G81`
 - Released on: 2026-10-31
 - What changes: A3: a rule constrains another on examples; the engine says how each rule is called, and two rules that answer the same question for the same need are warned
 - Fingerprint: 30942a8095e596ce
-- Language: shared
+- Language: own
 - Language archived: 8be4500a4d9aadd5
 - Accepted differences: differences.diff
 - Releases: Trame on the command line
@@ -5252,7 +5252,7 @@ Release · `G82`
 - Released on: 2026-10-31
 - What changes: A2, first half: a port's effects method by method, a body has those of the methods it calls; code made of a text refuses the build
 - Fingerprint: ae373c71659a40be
-- Language: shared
+- Language: own
 - Language archived: 99cd2acedf3b14ce
 - Releases: Trame on the command line
 - Assembled by: Generation 81
@@ -5266,7 +5266,7 @@ Release · `G83`
 - Released on: 2026-10-31
 - What changes: A2, second half: an implementation is held to what its body reaches (std's PlatformEffects, the packages' declared effects); wiring hands each node a capability limited to the methods it calls
 - Fingerprint: e5498c43cb460e7d
-- Language: shared
+- Language: own
 - Language archived: d03618584d3ed6d9
 - Releases: Trame on the command line
 - Assembled by: Generation 82
@@ -5280,7 +5280,7 @@ Release · `G84`
 - Released on: 2026-10-31
 - What changes: A2 closed: a command another system interprets is typed by its intent (std's Command), made only by std's Commands; a cast that makes one refuses the build
 - Fingerprint: e4b1b57bad050afa
-- Language: shared
+- Language: own
 - Language archived: 1a1128c9e4fd6ebb
 - Releases: Trame on the command line
 - Assembled by: Generation 83
@@ -5294,7 +5294,7 @@ Release · `G85`
 - Released on: 2026-10-31
 - What changes: A4a: each kind says how its values change (chosen, cited, code); trame amend says what an amendment would change, then records it where amendments go (the port, in place in the sources); an amendment awaits its owner's approval
 - Fingerprint: d33961c1bb511390
-- Language: shared
+- Language: own
 - Language archived: 3bb158af0204c23b
 - Releases: Trame on the command line
 - Assembled by: Generation 84
@@ -5308,7 +5308,7 @@ Release · `G86`
 - Released on: 2026-10-31
 - What changes: A4b: every value amended from the page: in trame dev, a card's chosen and cited values carry an amend button and a form by their type; trame dev prepares the amendment as trame amend does, says what it would change, records it
 - Fingerprint: 1b76dfe8c4e36cdd
-- Language: shared
+- Language: own
 - Language archived: c850998afbba6ca9
 - Releases: Trame on the command line
 - Assembled by: Generation 85
@@ -5326,6 +5326,20 @@ Release · `G87`
 - Language archived: c850998afbba6ca9
 - Releases: Trame on the command line
 - Assembled by: Generation 86
+
+### Generation 88
+
+Release · `G88`
+
+- Released by: trame
+- Version: g88
+- Released on: 2026-11-01
+- What changes: E1b: the compiler is led to the language's files by its names (#trame/* in TypeScript's paths, to the files where they are, never through a link); trame init starts a project: its configuration (the generation that runs, the libraries the language's home uses), its first module with its goal, the guide for agents and the skill, then its manifest
+- Fingerprint: abbc9d8c61c5829e
+- Language: shared
+- Language archived: c850998afbba6ca9
+- Releases: Trame on the command line
+- Assembled by: Generation 87
 
 ### Generation 9
 

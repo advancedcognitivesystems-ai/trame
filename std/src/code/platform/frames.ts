@@ -1,7 +1,7 @@
 // The browser's frames: requestAnimationFrame calls back before each repaint, with the time of its high-resolution
 // clock; the seconds are counted from the start. A hidden page gets no frame: what moves waits for it.
 
-import { elapsed, type BodyOf } from "../../../../trame/kernel"
+import { elapsed, type BodyOf } from "#trame/kernel"
 import type { BrowserFrames } from "../../platform"
 
 const body: BodyOf<typeof BrowserFrames> = () => ({

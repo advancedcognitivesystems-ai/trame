@@ -11,7 +11,7 @@ import type { Pose, Sequence, Localized } from "../content"
 import type { Practice } from "../practice"
 import type { BreathPattern } from "../product"
 import type { Frames, Speech, WakeLock } from "#std/platform"
-import type { ProvidedBy } from "../../../../trame/kernel"
+import type { ProvidedBy } from "#trame/kernel"
 import type { WordsFr } from "../language"
 
 type Words = ProvidedBy<typeof WordsFr>

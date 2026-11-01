@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 31 October 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 1 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Poselia · The app in a browser
 
@@ -64,7 +64,7 @@ Entry point · `ShowHome` · **held**
 
 ### The browser's screen
 
-Implementation · `BrowserScreen` · **held**
+Implementation · `BrowserScreen` · **unknown**
 
 - Owner: ghalaax
 - Parameters: { html: std/html.Html, aria: std/html.Aria, svg: std/html.Svg, events: std/web.UiEvents, screen: app.ScreenNames, parts: drawing.DrawingParts, player: practice.PlayerNames, settings: settings.SettingsNames, composer: composing.ComposerNames, counts: std/algebra.Counts, texts: std/algebra.Texts, stage: architecture.Stage }
@@ -841,7 +841,7 @@ Architecture decision · `LanguageOffered` · **held**
 
 ### A page first, the phones after
 
-Architecture decision · `PageFirst` · **held**
+Architecture decision · `PageFirst` · **unknown**
 
 - Decided by: ghalaax
 - Context: The app must be tried and shown before it is installed: a page shared as a link is the shortest way to the friends who review it.
@@ -1185,7 +1185,7 @@ Message catalog · `SdlcWords`
 
 ### On the machine
 
-Technical choice · `OnTheMachine` · **held**
+Technical choice · `OnTheMachine` · **unknown**
 
 - Decided by: ghalaax
 - Context: A check must open the page a person opens: the file delivered, in a real browser.
@@ -1242,7 +1242,7 @@ Role · `Teachers`
 
 ### Poselia's page
 
-Artefact · `PageFile` · **held**
+Artefact · `PageFile` · **unknown**
 
 - Owner: ghalaax
 - Media type: text/html; charset=utf-8
@@ -1250,7 +1250,7 @@ Artefact · `PageFile` · **held**
 
 ### The preview's script
 
-Artefact · `PreviewScript` · **held**
+Artefact · `PreviewScript` · **unknown**
 
 - Owner: ghalaax
 - Path: scripts/ship-preview.sh
@@ -1259,7 +1259,7 @@ Artefact · `PreviewScript` · **held**
 
 ### The preview's workflow
 
-Artefact · `PreviewWorkflow` · **held**
+Artefact · `PreviewWorkflow` · **unknown**
 
 - Owner: ghalaax
 - Path: ../../.github/workflows/poselia-preview.yml
@@ -1280,7 +1280,7 @@ Check · `OnAPhone` · **unknown**
 
 ### The page opens
 
-Check · `PageOpens` · **held**
+Check · `PageOpens` · **unknown**
 
 - Owner: ghalaax
 - Checks: Poselia's page
@@ -1297,7 +1297,7 @@ Review · `ContentReviewed` · **unknown**
 
 ### A preview
 
-Shipment · `Preview` · **held**
+Shipment · `Preview` · **unknown**
 
 - Owner: ghalaax
 - Target: preview
@@ -1319,7 +1319,7 @@ Shipment · `PublicVersion` · **unknown**
 
 ### The files that run it elsewhere
 
-Shipment · `RunnersWritten` · **held**
+Shipment · `RunnersWritten` · **unknown**
 
 - Owner: ghalaax
 - Target: repository
@@ -1568,7 +1568,7 @@ Decision · `StageViews`
 
 ### The browser's stage
 
-Implementation · `BrowserStage` · **held**
+Implementation · `BrowserStage` · **unknown**
 
 - Owner: ghalaax
 - Parameters: { look: stage.MannequinLook, light: stage.StageLight, views: stage.StageViews, style: stage.MarkStyle, counts: std/algebra.Counts, html: std/html.Html }

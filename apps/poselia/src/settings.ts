@@ -1,10 +1,10 @@
 /** Poselia · Settings */
 
-import { code, s, type Duration } from "../../../trame/kernel"
-import { decision } from "../../../kinds/decision"
-import { requirement } from "../../../kinds/requirement"
-import { acceptance } from "../../../kinds/acceptance"
-import { fn } from "../../../kinds/function"
+import { code, s, type Duration } from "#trame/kernel"
+import { decision } from "#trame/kinds/decision"
+import { requirement } from "#trame/kinds/requirement"
+import { acceptance } from "#trame/kinds/acceptance"
+import { fn } from "#trame/kinds/function"
 import { PreferencesStore, SpeechVoice } from "#std/platform"
 import { Texts, Counts } from "#std/algebra"
 import { BreathSetsThePace, PractiseGuided, BreathPhase, DefaultBreath, type BreathPattern } from "./product"

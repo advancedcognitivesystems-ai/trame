@@ -1,6 +1,6 @@
 /** Reservations · Principles */
 
-import { adr } from "../../../kinds/adr"
+import { adr } from "#trame/kinds/adr"
 import { CancelWithoutStress } from "./cancellation"
 import { CancellationKey } from "./architecture"
 import { CancelReservation } from "./api"

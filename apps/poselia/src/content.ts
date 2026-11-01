@@ -1,9 +1,9 @@
 /** Poselia · Content */
 
-import { decision } from "../../../kinds/decision"
-import { dataset } from "../../../kinds/dataset"
-import { requirement } from "../../../kinds/requirement"
-import { acceptance } from "../../../kinds/acceptance"
+import { decision } from "#trame/kinds/decision"
+import { dataset } from "#trame/kinds/dataset"
+import { requirement } from "#trame/kinds/requirement"
+import { acceptance } from "#trame/kinds/acceptance"
 import { PractiseGuided, BreathPhase, BreathOf, DefaultBreath, type BreathSetting } from "./product"
 import { poses } from "./data/poses"
 import { sequences } from "./data/sequences"

@@ -1,8 +1,8 @@
 /** Product committee · 15 October 2026 */
 
 import { min } from "#std/measures"
-import { amend } from "../../../kinds/amendment"
-import { approval } from "../../../kinds/approval"
+import { amend } from "#trame/kinds/amendment"
+import { approval } from "#trame/kinds/approval"
 import { FreeCancellationPeriod, Refund, ChargerType } from "./cancellation"
 
 /**

@@ -1,6 +1,6 @@
 /** Standard library · Text */
 
-import { standard } from "../../kinds/standard"
+import { standard } from "#trame/kinds/standard"
 import { CitedNotCopied } from "./product"
 
 // Text as files and tools write it: lines, characters a reader cannot see, places in a file, differences.

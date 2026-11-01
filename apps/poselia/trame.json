@@ -1,11 +1,5 @@
 {
   "title": "Poselia",
-  "kinds": [
-    "../../kinds"
-  ],
-  "views": [
-    "../../views"
-  ],
   "libraries": {
     "ci": {
       "path": "../../ci",
@@ -16,5 +10,5 @@
       "version": "0.11.1"
     }
   },
-  "engine": "../../generations/g70"
+  "engine": "../../generations/g88"
 }

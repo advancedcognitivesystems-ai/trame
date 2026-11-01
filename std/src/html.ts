@@ -1,6 +1,6 @@
 /** Standard library · HTML and CSS */
 
-import { standard } from "../../kinds/standard"
+import { standard } from "#trame/kinds/standard"
 import { CitedNotCopied } from "./product"
 
 // What the HTML, WAI-ARIA, SVG and CSS standards name, which a page and its style sheets write: elements, attributes,

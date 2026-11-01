@@ -8,7 +8,7 @@ import type { Localized, Mark } from "../content"
 import type { BreathPhase } from "../product"
 import type { Keyframe, Body, Sides, Leg, Stance } from "../body"
 import type { StageMarks } from "../architecture"
-import type { ProvidedBy } from "../../../../trame/kernel"
+import type { ProvidedBy } from "#trame/kernel"
 import type { WordsFr } from "../language"
 
 type Words = ProvidedBy<typeof WordsFr>

@@ -1,7 +1,7 @@
 // The reservations as a repository: a reservation is a row of its table, read through the database port with the
 // statement its dialect writes.
 
-import type { BodyOf } from "../../../../trame/kernel"
+import type { BodyOf } from "#trame/kernel"
 import type { ReservationsSql } from "../infra"
 import type { StoredReservation } from "../architecture"
 

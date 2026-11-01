@@ -1,6 +1,6 @@
 // The screen kept awake in a browser, through the Screen Wake Lock API where it exists; refused, the screen sleeps.
 
-import type { BodyOf } from "../../../../trame/kernel"
+import type { BodyOf } from "#trame/kernel"
 import type { BrowserWakeLock } from "../../platform"
 
 const body: BodyOf<typeof BrowserWakeLock> = ({ wake }) => {

@@ -1,12 +1,12 @@
 # Owners
 
-*What each person must decide, settle or watch on 31 October 2026, and what they own.*
+*What each person must decide, settle or watch on 1 November 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
 | A teacher who practises | 0 | 0 | 4 | 0 |
 | People who try it on a phone | 0 | 0 | 1 | 0 |
-| ghalaax | 0 | 0 | 7 | 164 |
+| ghalaax | 0 | 0 | 18 | 164 |
 
 <a id="A teacher who practises"></a>
 
@@ -48,19 +48,30 @@
 
 | Severity | What | Where | Owner | Consequence |
 |---|---|---|---|---|
+| warning | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [Poselia's page](sdlc.md#PageFile) | ghalaax |  |
+| warning | Checked on another build of its artefacts, by another version of its program or another engine: to check again | [The page opens](sdlc.md#PageOpens) | ghalaax |  |
+| warning | To ship: Poselia's page is unknown | [A preview](sdlc.md#Preview) | ghalaax |  |
+| warning | To ship: The page opens is unknown | [A preview](sdlc.md#Preview) | ghalaax |  |
+| warning | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The preview's script](sdlc.md#PreviewScript) | ghalaax |  |
+| warning | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The preview's workflow](sdlc.md#PreviewWorkflow) | ghalaax |  |
+| warning | To ship: Poselia's page is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
 | warning | To ship: On a phone is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
+| warning | To ship: The page opens is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
 | warning | To ship: The content, reviewed is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
+| warning | To ship: A page first, the phones after is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
 | warning | To ship: The content is data, behind a port is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
 | warning | To ship: The breath is the clock is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
 | warning | To ship: Said aloud, the screen awake is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
 | warning | To ship: A hold counts in breaths is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
+| warning | To ship: The preview's script is unknown | [The files that run it elsewhere](sdlc.md#RunnersWritten) | ghalaax |  |
+| warning | To ship: The preview's workflow is unknown | [The files that run it elsewhere](sdlc.md#RunnersWritten) | ghalaax |  |
 | warning | Nobody holds this role yet | [A teacher who practises](sdlc.md#Teachers) | ghalaax |  |
 
 ### Owns
 
 | Node | Kind | State |
 |---|---|---|
-| [The browser's screen](app.md#BrowserScreen) | Implementation | **held** |
+| [The browser's screen](app.md#BrowserScreen) | Implementation | **unknown** |
 | [The content the app carries](app.md#CarriedContent) | Function | **held** |
 | [Colours](app.md#Colours) | Decision |  |
 | [Content carried by the app](app.md#ContentCarried) | Technical choice | **held** |
@@ -141,7 +152,7 @@
 | [The breath is the clock](principles.md#BreathIsTheClock) | Architecture decision | **unknown** |
 | [The content is data, behind a port](principles.md#ContentAsData) | Architecture decision | **unknown** |
 | [The person's language, among those offered](principles.md#LanguageOffered) | Architecture decision | **held** |
-| [A page first, the phones after](principles.md#PageFirst) | Architecture decision | **held** |
+| [A page first, the phones after](principles.md#PageFirst) | Architecture decision | **unknown** |
 | [Said aloud, the screen awake](principles.md#SaidAloud) | Architecture decision | **unknown** |
 | [Criteria of the breath of a moment](product.md#BreathOfCriteria) | Acceptance criteria | **held** |
 | [Criteria of the language of the app](product.md#ChosenLanguageCriteria) | Acceptance criteria | **held** |
@@ -174,29 +185,29 @@
 | [The decisions hold](sdlc.md#DecisionsApplied) | Obligation |  |
 | [A machine](sdlc.md#Machine) | Environment |  |
 | [On a phone](sdlc.md#OnAPhone) | Check | **unknown** |
-| [On the machine](sdlc.md#OnTheMachine) | Technical choice | **held** |
+| [On the machine](sdlc.md#OnTheMachine) | Technical choice | **unknown** |
 | [The page is opened as a person would](sdlc.md#OpeningThePage) | Scenario | **held** |
 | [Open the page](sdlc.md#OpenThePage) | Entry point | **held** |
 | [The packages are safe](sdlc.md#PackagesSafe) | Obligation |  |
-| [Poselia's page](sdlc.md#PageFile) | Artefact | **held** |
+| [Poselia's page](sdlc.md#PageFile) | Artefact | **unknown** |
 | [How the page is opened](sdlc.md#PageOpening) | Decision |  |
-| [The page opens](sdlc.md#PageOpens) | Check | **held** |
+| [The page opens](sdlc.md#PageOpens) | Check | **unknown** |
 | [What the page is asked](sdlc.md#PageSelectors) | Function | **held** |
 | [People who try it on a phone](sdlc.md#PhoneTesters) | Role |  |
 | [Place the page](sdlc.md#PlaceThePage) | Entry point | **held** |
 | [The page is placed where it is served](sdlc.md#PlacingThePage) | Scenario | **held** |
 | [Poselia's SDLC](sdlc.md#PoseliaSdlc) | Component |  |
-| [A preview](sdlc.md#Preview) | Shipment | **held** |
+| [A preview](sdlc.md#Preview) | Shipment | **unknown** |
 | [The way of a preview](sdlc.md#PreviewMode) | Policy |  |
 | [When the preview runs on GitHub, and what it keeps there](sdlc.md#PreviewOnGitHub) | Decision |  |
-| [The preview's script](sdlc.md#PreviewScript) | Artefact | **held** |
-| [The preview's workflow](sdlc.md#PreviewWorkflow) | Artefact | **held** |
+| [The preview's script](sdlc.md#PreviewScript) | Artefact | **unknown** |
+| [The preview's workflow](sdlc.md#PreviewWorkflow) | Artefact | **unknown** |
 | [The product holds](sdlc.md#ProductServed) | Obligation |  |
 | [The page is checked by programs](sdlc.md#ProgramChecks) | Obligation |  |
 | [The way of a public version](sdlc.md#PublicMode) | Policy |  |
 | [A public version](sdlc.md#PublicVersion) | Shipment | **unknown** |
 | [The rules of the app hold](sdlc.md#RulesHeld) | Obligation |  |
-| [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **held** |
+| [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **unknown** |
 | [What the scenarios of the SDLC check](sdlc.md#SdlcChecks) | Message catalog |  |
 | [The SDLC in memory](sdlc.md#SdlcInMemory) | Technical choice | **held** |
 | [The SDLC is in the graph](sdlc.md#SdlcInTheGraph) | Architecture decision | **unknown** |
@@ -217,7 +228,7 @@
 | [What the practice says and rings](settings.md#VoiceParts) | Decision |  |
 | [Sound of the bowl](sound.md#BowlSound) | Decision |  |
 | [The browser's bowl](sound.md#BrowserBowl) | Implementation | **unknown** |
-| [The browser's stage](stage.md#BrowserStage) | Implementation | **held** |
+| [The browser's stage](stage.md#BrowserStage) | Implementation | **unknown** |
 | [Look of the mannequin](stage.md#MannequinLook) | Decision |  |
 | [Look of the landmarks](stage.md#MarkStyle) | Decision |  |
 | [Light of the stage](stage.md#StageLight) | Decision |  |
@@ -235,8 +246,10 @@
 | warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [The body between two poses](body.md#BodyAt) | to be assigned |  |
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A foot on its way](body.md#FootOnItsWay) | to be assigned |  |
 | warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [A foot on its way](body.md#FootOnItsWay) | to be assigned |  |
+| warning | Computes the same kind of answer from the same kind of arguments as “A hand on its way” (nobody), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [A foot on its way](body.md#FootOnItsWay) | to be assigned |  |
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A hand on its way](body.md#HandOnItsWay) | to be assigned |  |
 | warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [A hand on its way](body.md#HandOnItsWay) | to be assigned |  |
+| warning | Computes the same kind of answer from the same kind of arguments as “A foot on its way” (nobody), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [A hand on its way](body.md#HandOnItsWay) | to be assigned |  |
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A pose ready to move](body.md#KeyOf) | to be assigned |  |
 | warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [A pose ready to move](body.md#KeyOf) | to be assigned |  |
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [Legs apart](body.md#LegsApart) | to be assigned |  |

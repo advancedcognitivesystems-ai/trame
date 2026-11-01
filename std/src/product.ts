@@ -1,6 +1,6 @@
 /** Standard library · Product */
 
-import { goal } from "../../kinds/goal"
+import { goal } from "#trame/kinds/goal"
 
 // What the standard library is for. It holds what every product needs and none should write again: the operations
 // bodies share instead of writing 0, 1 or "", the values that published texts fix, and the designs that technical choices

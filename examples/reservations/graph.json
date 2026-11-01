@@ -1572,7 +1572,7 @@
       },
       "result": {
         "path": "out/local/reservations-api.ts",
-        "code": "b666f72b"
+        "code": "88bbc2f5"
       },
       "diagnostics": [
         "warning: Not built yet: trame ship builds it"
@@ -1647,7 +1647,7 @@
       },
       "result": {
         "path": "out/production/reservations-api.ts",
-        "code": "a197c813"
+        "code": "8bf864cd"
       },
       "diagnostics": [
         "warning: Not built yet: trame ship builds it"

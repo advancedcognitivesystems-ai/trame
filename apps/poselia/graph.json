@@ -1,12 +1,12 @@
 {
-  "generated": "2026-10-31",
+  "generated": "2026-11-01",
   "nodes": [
     {
       "id": "app.BrowserScreen",
       "kind": "implementation",
       "title": "The browser's screen",
       "source": "src/app.ts:76",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "deps": {
@@ -506,7 +506,8 @@
       },
       "diagnostics": [
         "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
-        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)",
+        "warning: Computes the same kind of answer from the same kind of arguments as “A hand on its way” (nobody), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so"
       ]
     },
     {
@@ -546,7 +547,8 @@
       },
       "diagnostics": [
         "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
-        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)",
+        "warning: Computes the same kind of answer from the same kind of arguments as “A foot on its way” (nobody), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so"
       ]
     },
     {
@@ -4488,7 +4490,7 @@
       "kind": "adr",
       "title": "A page first, the phones after",
       "source": "src/principles.ts:78",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "context": "The app must be tried and shown before it is installed: a page shared as a link is the shortest way to the friends who review it.",
@@ -5405,7 +5407,7 @@
       "kind": "binding",
       "title": "On the machine",
       "source": "src/sdlc.ts:85",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "context": "A check must open the page a person opens: the file delivered, in a real browser."
@@ -5496,16 +5498,18 @@
       "kind": "artifact",
       "title": "Poselia's page",
       "source": "src/sdlc.ts:109",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "media": "text/html; charset=utf-8"
       },
       "result": {
         "path": "dist/poselia.html",
-        "code": "a7620ce9"
+        "code": "1aa2085e"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+      ]
     },
     {
       "id": "sdlc.PageOpening",
@@ -5526,14 +5530,16 @@
       "kind": "check",
       "title": "The page opens",
       "source": "src/sdlc.ts:207",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax"
       },
       "result": {
-        "code": "f855d037"
+        "code": "c426e9ba"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
+      ]
     },
     {
       "id": "sdlc.PageSelectors",
@@ -5641,7 +5647,7 @@
       "kind": "shipment",
       "title": "A preview",
       "source": "src/sdlc.ts:319",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "target": "preview"
@@ -5721,7 +5727,10 @@
         ],
         "gaps": []
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: To ship: Poselia's page is unknown",
+        "warning: To ship: The page opens is unknown"
+      ]
     },
     {
       "id": "sdlc.PreviewMode",
@@ -5770,7 +5779,7 @@
       "kind": "artifact",
       "title": "The preview's script",
       "source": "src/sdlc.ts:381",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "path": "scripts/ship-preview.sh",
@@ -5780,14 +5789,16 @@
         "path": "scripts/ship-preview.sh",
         "code": "8fd0a0ae"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+      ]
     },
     {
       "id": "sdlc.PreviewWorkflow",
       "kind": "artifact",
       "title": "The preview's workflow",
       "source": "src/sdlc.ts:366",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "path": "../../.github/workflows/poselia-preview.yml",
@@ -5797,7 +5808,9 @@
         "path": "../../.github/workflows/poselia-preview.yml",
         "code": "9bcf7c7e"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+      ]
     },
     {
       "id": "sdlc.ProductServed",
@@ -6108,8 +6121,11 @@
         "gaps": []
       },
       "diagnostics": [
+        "warning: To ship: Poselia's page is unknown",
         "warning: To ship: On a phone is unknown",
+        "warning: To ship: The page opens is unknown",
         "warning: To ship: The content, reviewed is unknown",
+        "warning: To ship: A page first, the phones after is unknown",
         "warning: To ship: The content is data, behind a port is unknown",
         "warning: To ship: The breath is the clock is unknown",
         "warning: To ship: Said aloud, the screen awake is unknown",
@@ -6131,7 +6147,7 @@
       "kind": "shipment",
       "title": "The files that run it elsewhere",
       "source": "src/sdlc.ts:394",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "target": "repository"
@@ -6140,7 +6156,10 @@
         "derived": [],
         "gaps": []
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: To ship: The preview's script is unknown",
+        "warning: To ship: The preview's workflow is unknown"
+      ]
     },
     {
       "id": "sdlc.SdlcChecks",
@@ -6585,7 +6604,7 @@
       "kind": "implementation",
       "title": "The browser's stage",
       "source": "src/stage.ts:126",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "deps": {

@@ -1,6 +1,6 @@
 /** Standard library · System */
 
-import { standard } from "../../kinds/standard"
+import { standard } from "#trame/kinds/standard"
 import { CitedNotCopied } from "./product"
 
 // What a program on a machine deals with: the exit status and the signals of POSIX, Node.js's process, events,

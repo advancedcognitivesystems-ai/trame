@@ -1,7 +1,7 @@
 // The real provider. The API key comes from the process environment: a secret is not a value of the graph. Without a
 // key, no call is made.
 
-import type { BodyOf } from "../../../../trame/kernel"
+import type { BodyOf } from "#trame/kernel"
 import type { HttpPayment } from "../infra"
 
 const body: BodyOf<typeof HttpPayment> = ({ url, api, http, mediaTypes, uri, messages }) => ({

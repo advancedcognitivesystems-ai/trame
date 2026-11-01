@@ -1,9 +1,9 @@
 /** Poselia · The stage */
 
-import { code } from "../../../trame/kernel"
-import { decision } from "../../../kinds/decision"
-import { implementation } from "../../../kinds/implementation"
-import { pkg } from "../../../kinds/package"
+import { code } from "#trame/kernel"
+import { decision } from "#trame/kinds/decision"
+import { implementation } from "#trame/kinds/implementation"
+import { pkg } from "#trame/kinds/package"
 import { Counts } from "#std/algebra"
 import { Html } from "#std/html"
 import { Stage } from "./architecture"

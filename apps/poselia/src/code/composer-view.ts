@@ -5,7 +5,7 @@
 import type { ComposerView, Drawing } from "../architecture"
 import type { Pose, Localized } from "../content"
 import type { Shape, Body, Leg, Stance, Level } from "../body"
-import type { ProvidedBy } from "../../../../trame/kernel"
+import type { ProvidedBy } from "#trame/kernel"
 import type { WordsFr } from "../language"
 
 type Words = ProvidedBy<typeof WordsFr>

@@ -1,6 +1,6 @@
 /** Poselia · Principles */
 
-import { adr } from "../../../kinds/adr"
+import { adr } from "#trame/kinds/adr"
 import { PractiseGuided, BreathSetsThePace, InTheirLanguage, CheckedContent, BreathOf, HoldInBreaths, ChosenLanguage, PhoneOnTheMat } from "./product"
 import { Poses, Languages } from "./content"
 import { ContentSource, PoseliaApp } from "./architecture"

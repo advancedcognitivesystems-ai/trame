@@ -1,9 +1,9 @@
 /** Standard library · Effects */
 
-import { LanguageEffect, CommandMark } from "../../trame/kernel"
-import { vocabulary, type WordOf } from "../../kinds/vocabulary"
-import { decision } from "../../kinds/decision"
-import { fn } from "../../kinds/function"
+import { LanguageEffect, CommandMark } from "#trame/kernel"
+import { vocabulary, type WordOf } from "#trame/kinds/vocabulary"
+import { decision } from "#trame/kinds/decision"
+import { fn } from "#trame/kinds/function"
 import { RealizedOnce } from "./product"
 
 /**

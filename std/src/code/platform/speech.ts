@@ -5,7 +5,7 @@
 // was read yet. A browser without speech synthesis says it cannot speak, and says nothing. An utterance that fails
 // (cut short is not failing) leaves its error as the voice's failure, until an utterance starts.
 
-import type { BodyOf } from "../../../../trame/kernel"
+import type { BodyOf } from "#trame/kernel"
 import type { BrowserSpeech } from "../../platform"
 
 const body: BodyOf<typeof BrowserSpeech> = ({ tags, speech }) => {

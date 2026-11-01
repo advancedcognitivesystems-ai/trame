@@ -1,8 +1,8 @@
 /** Poselia · Architecture */
 
-import { port } from "../../../kinds/port"
-import { component } from "../../../kinds/component"
-import { environment } from "../../../kinds/environment"
+import { port } from "#trame/kinds/port"
+import { component } from "#trame/kinds/component"
+import { environment } from "#trame/kinds/environment"
 import { PageLoading } from "#std/platform"
 
 /**

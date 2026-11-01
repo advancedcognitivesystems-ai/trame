@@ -1,7 +1,7 @@
 /** Support requests */
 
 import { min } from "#std/measures"
-import { amend } from "../../../kinds/amendment"
+import { amend } from "#trame/kinds/amendment"
 import { FreeCancellationPeriod } from "./cancellation"
 
 /**

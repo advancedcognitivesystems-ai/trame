@@ -2,8 +2,8 @@
 // practice, the composer or the settings. A practice follows the person's breath, if they set one; learnt, each pose is
 // held the breaths a sequence learnt holds.
 
-import type { BodyOf } from "../../../../trame/kernel"
-import type { Handler } from "../../../../kinds/entry-point"
+import type { BodyOf } from "#trame/kernel"
+import type { Handler } from "#trame/kinds/entry-point"
 import type { ShowHome } from "../app"
 
 const body: BodyOf<typeof ShowHome> = ({ screen, content, view, language, play, settings, breath, compose, holding }): Handler => async () => {

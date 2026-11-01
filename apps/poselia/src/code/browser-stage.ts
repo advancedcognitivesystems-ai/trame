@@ -6,7 +6,7 @@
 // on the screen at each frame.
 
 import * as THREE from "three"
-import type { BodyOf } from "../../../../trame/kernel"
+import type { BodyOf } from "#trame/kernel"
 import type { BrowserStage } from "../stage"
 import type { Body, Side, Vec } from "../body"
 import type { StageMarks } from "../architecture"

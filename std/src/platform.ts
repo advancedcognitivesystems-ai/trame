@@ -1,11 +1,11 @@
 /** Standard library · Platform */
 
-import { code } from "../../trame/kernel"
-import { port } from "../../kinds/port"
-import { implementation } from "../../kinds/implementation"
-import { adr } from "../../kinds/adr"
-import type { Exposure } from "../../kinds/component"
-import { fn } from "../../kinds/function"
+import { code } from "#trame/kernel"
+import { port } from "#trame/kinds/port"
+import { implementation } from "#trame/kinds/implementation"
+import { adr } from "#trame/kinds/adr"
+import type { Exposure } from "#trame/kinds/component"
+import { fn } from "#trame/kinds/function"
 import { UiEvents, ScreenWakeLockApi, WebSpeechApi } from "./web"
 import { Counts } from "./algebra"
 import { LanguageTags } from "./measures"

@@ -1,11 +1,11 @@
 /** Reservations · Infrastructure */
 
-import { code } from "../../../trame/kernel"
-import { decision } from "../../../kinds/decision"
-import { environment } from "../../../kinds/environment"
-import { implementation } from "../../../kinds/implementation"
-import { fn } from "../../../kinds/function"
-import { binding } from "../../../kinds/binding"
+import { code } from "#trame/kernel"
+import { decision } from "#trame/kinds/decision"
+import { environment } from "#trame/kinds/environment"
+import { implementation } from "#trame/kinds/implementation"
+import { fn } from "#trame/kinds/function"
+import { binding } from "#trame/kinds/binding"
 import { ChargerType, chf } from "./cancellation"
 import {
   Database, ReadOnlyDatabase, ReservationReading, Cancellations, Payment, PaymentLog, Clock, HttpExposure, HttpPort, Dialect,

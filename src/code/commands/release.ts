@@ -138,8 +138,9 @@ const body = (deps: Deps): Handler => async (req) => {
   }))
   const [extension] = deps.language.extensions
   const dirs = deps.project.projectDirs(home)
-  const kinds = dirs.kinds.find((dir) => existsSync(join(dir, deps.releases.kind + extension)))
-  const written = deps.records.module([...known, record], undefined, specifier(join(kinds ?? join(home, layout.kinds), deps.releases.kind)), {
+  // The kind of releases, as the library names the language: by its name, unless it is the language's home.
+  const kind = deps.project.languageModule(home, sources, [layout.kinds, deps.releases.kind].join(specifiers.separator))
+  const written = deps.records.module([...known, record], undefined, kind, {
     title: deps.advance.libraryReleasesTitle(dirs.title),
     header: deps.advance.libraryReleasesHeader(),
   }, others)

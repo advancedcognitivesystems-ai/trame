@@ -2,7 +2,7 @@
 // A value still to be decided in the graph gives 503: the service refuses to compute with it.
 
 import { createServer } from "node:http"
-import { Hole, TriggerType, type BodyOf } from "../../../../trame/kernel"
+import { Hole, TriggerType, type BodyOf } from "#trame/kernel"
 import type { NodeServer } from "../infra"
 
 const body: BodyOf<typeof NodeServer> = ({ port, http, mediaTypes, uri, routes, ending, messages }) => ({

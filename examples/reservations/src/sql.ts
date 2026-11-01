@@ -1,7 +1,7 @@
 /** Reservations · SQL */
 
-import { standard } from "../../../kinds/standard"
-import { syntax } from "../../../kinds/syntax"
+import { standard } from "#trame/kinds/standard"
+import { syntax } from "#trame/kinds/syntax"
 
 // The SQL the service writes. What every database reads alike is the standard Sql and its statements; what differs is a
 // dialect: how a statement names its parameters, and the types of the columns. The repositories never write SQL: they

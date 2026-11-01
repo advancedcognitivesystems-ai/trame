@@ -1,10 +1,10 @@
 /** Standard library · Obligations */
 
-import { requirement } from "../../kinds/requirement"
-import { acceptance } from "../../kinds/acceptance"
-import { vocabulary, type WordOf } from "../../kinds/vocabulary"
-import { KindName, EdgeName, CheckEdge, ReviewEdge } from "../../trame/kernel"
-import type { GraphSketch, SketchNode, ObligationReach, ObligationFinding } from "../../trame/kernel"
+import { requirement } from "#trame/kinds/requirement"
+import { acceptance } from "#trame/kinds/acceptance"
+import { vocabulary, type WordOf } from "#trame/kinds/vocabulary"
+import { KindName, EdgeName, CheckEdge, ReviewEdge } from "#trame/kernel"
+import type { GraphSketch, SketchNode, ObligationReach, ObligationFinding } from "#trame/kernel"
 import { SharedRules } from "./product"
 import { Counts } from "./algebra"
 

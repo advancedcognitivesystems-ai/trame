@@ -1,10 +1,10 @@
 /** Poselia · Practice */
 
-import { code } from "../../../trame/kernel"
-import { requirement } from "../../../kinds/requirement"
-import { acceptance } from "../../../kinds/acceptance"
-import { decision } from "../../../kinds/decision"
-import { fn } from "../../../kinds/function"
+import { code } from "#trame/kernel"
+import { requirement } from "#trame/kinds/requirement"
+import { acceptance } from "#trame/kinds/acceptance"
+import { decision } from "#trame/kinds/decision"
+import { fn } from "#trame/kinds/function"
 import { Counts, Texts } from "#std/algebra"
 import { AnimationFrames, SpeechVoice, ScreenAwake } from "#std/platform"
 import { PractiseGuided, BreathSetsThePace, BreathPhase, BreathOf, type BreathPattern } from "./product"

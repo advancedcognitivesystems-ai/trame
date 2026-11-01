@@ -1,8 +1,8 @@
 /** Poselia · Sound */
 
-import { code } from "../../../trame/kernel"
-import { decision } from "../../../kinds/decision"
-import { implementation } from "../../../kinds/implementation"
+import { code } from "#trame/kernel"
+import { decision } from "#trame/kinds/decision"
+import { implementation } from "#trame/kinds/implementation"
 import { Counts } from "#std/algebra"
 import { WebAudioApi } from "#std/web"
 import { Bowl } from "./architecture"

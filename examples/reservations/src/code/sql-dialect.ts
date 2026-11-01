@@ -1,7 +1,7 @@
 // A dialect of SQL: the statements the repositories need, composed from the elements of SQL, with the parameters and the
 // column types of one database. The same body serves SQLite and PostgreSQL: what differs is what they receive.
 
-import type { BodyOf } from "../../../../trame/kernel"
+import type { BodyOf } from "#trame/kernel"
 import type { SqliteDialect } from "../infra"
 import type { Table } from "../architecture"
 

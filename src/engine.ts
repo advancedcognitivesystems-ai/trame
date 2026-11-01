@@ -290,7 +290,7 @@ export const Laws = fn({
   serves: [ExecutableSpecification],
   deps: { kept: KeptResults, drivers: Drivers, preludeApi: PreludeApi, specifiers: NodeModuleSpecifiers, layout: Layout,
     samples: SampleCount, claimSets: ClaimSets, generator: Generator, owners: SampledOwners, sampled: SampledValues, iso: Iso8601, references: References,
-    reading: FileReading, paths: Paths, project: Project, graph: GraphApi, prelude: Prelude,
+    reading: FileReading, paths: Paths, project: Project, graph: GraphApi, prelude: Prelude, names: LanguageNames,
     counts: Counts, sequences: Sequences, texts: Texts, messages: LawMessages,
     declaration: CompleteDeclaration, answers: AnswersWithoutCrashing, owned: BlockingHoleHasOwner, evidence: UnknownWithoutEvidence,
     same: SameInputSameAnswer, orderFree: OrderFree, closed: ClosedResolution,

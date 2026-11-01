@@ -1,4 +1,4 @@
-import type { BodyOf } from "../../../../trame/kernel"
+import type { BodyOf } from "#trame/kernel"
 import type { ReadReservation } from "../api"
 
 const body: BodyOf<typeof ReadReservation> = ({ reservations, freeCancellationEnd, http, messages }) => async ({ params }) => {

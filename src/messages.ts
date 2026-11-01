@@ -308,6 +308,8 @@ export const LawMessages = catalog({
     /** A kind, a view or a module of the graph imports the prelude past its public API. */
     privateImport: (file: string, module: string) => `${file} imports "${module}": only the public API (trame/kernel) is allowed`,
     /** A file of the project reaches into a library by a path, instead of its name. */
+    outsidePackage: (file: string, module: string, named?: string) =>
+      `${file} imports "${module}", outside its package, by a path` + (named ? `: name it "${named}" (trame manifest writes where the name leads)` : `: a package uses another by its name only`),
     libraryByPath: (file: string, module: string, library: string, named: string) =>
       `${file} imports "${module}", a file of the library ${library}, by its path: name it "${named}" (trame manifest writes where the name leads)`,
   }),

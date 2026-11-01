@@ -3,7 +3,7 @@
 // in it; each moment then changes only what moves: the body on the stage, the words, the breaths left to hold, the
 // lungs, the progress and the voice button. The composer is written again after each change.
 
-import { elapsed, type BodyOf } from "../../../../trame/kernel"
+import { elapsed, type BodyOf } from "#trame/kernel"
 import type { BrowserScreen } from "../app"
 import type { Drawing } from "../architecture"
 

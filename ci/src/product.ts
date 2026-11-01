@@ -1,6 +1,6 @@
 /** Continuous integration · Product */
 
-import { goal } from "../../kinds/goal"
+import { goal } from "#trame/kinds/goal"
 
 // What the library is for. A project's graph says how a version of it ships (its shipments, their artefacts, checks,
 // reviews, deployments), and trame ship runs it here. To run it elsewhere (a service of continuous integration, a

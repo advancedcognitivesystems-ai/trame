@@ -1,8 +1,8 @@
 /** Legal */
 
-import { TODO } from "../../../trame/kernel"
+import { TODO } from "#trame/kernel"
 import type { Share } from "#std/measures"
-import { decision } from "../../../kinds/decision"
+import { decision } from "#trame/kinds/decision"
 
 /**
  * Legal cap on cancellation fees

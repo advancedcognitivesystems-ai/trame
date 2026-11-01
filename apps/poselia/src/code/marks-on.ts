@@ -5,7 +5,7 @@ import type { Mark, Localized } from "../content"
 import type { MarkDrawing } from "../marks"
 import type { StageMarks } from "../architecture"
 import type { Body, Sides } from "../body"
-import type { ProvidedBy } from "../../../../trame/kernel"
+import type { ProvidedBy } from "#trame/kernel"
 import type { WordsFr } from "../language"
 
 type Words = ProvidedBy<typeof WordsFr>

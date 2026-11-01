@@ -1,8 +1,8 @@
 /** Poselia · The body */
 
-import { decision } from "../../../kinds/decision"
-import { requirement } from "../../../kinds/requirement"
-import { acceptance } from "../../../kinds/acceptance"
+import { decision } from "#trame/kinds/decision"
+import { requirement } from "#trame/kinds/requirement"
+import { acceptance } from "#trame/kinds/acceptance"
 import { PractiseGuided, CheckedContent } from "./product"
 
 // The body a practice moves, in three dimensions, on the mat: x along the mat toward its front, y up, z toward the

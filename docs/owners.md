@@ -1,11 +1,11 @@
 # Owners
 
-*What each person must decide, settle or watch on 30 October 2026, and what they own.*
+*What each person must decide, settle or watch on 1 November 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
 | Trame's maintainers | 0 | 0 | 3 | 0 |
-| trame | 0 | 0 | 11 | 644 |
+| trame | 0 | 0 | 11 | 645 |
 
 <a id="Trame's maintainers"></a>
 
@@ -557,6 +557,7 @@
 | [Generation 85](releases.md#G85) | Release |  |
 | [Generation 86](releases.md#G86) | Release |  |
 | [Generation 87](releases.md#G87) | Release |  |
+| [Generation 88](releases.md#G88) | Release |  |
 | [Generation 9](releases.md#G9) | Release |  |
 | [Common rendering](rendering.md#Common) | Function | **held** |
 | [Documents in Markdown](rendering.md#DocumentsInMarkdown) | Technical choice | **held** |

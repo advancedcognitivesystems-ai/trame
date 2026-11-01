@@ -1,8 +1,8 @@
 /** Standard library · Algorithms */
 
-import { code } from "../../trame/kernel"
-import { standard } from "../../kinds/standard"
-import { fn } from "../../kinds/function"
+import { code } from "#trame/kernel"
+import { standard } from "#trame/kinds/standard"
+import { fn } from "#trame/kinds/function"
 import { CitedNotCopied, SharedOperations } from "./product"
 import { EcmaScript } from "./ecmascript"
 import { Counts } from "./algebra"

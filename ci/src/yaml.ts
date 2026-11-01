@@ -1,7 +1,7 @@
 /** Continuous integration · YAML */
 
-import { standard } from "../../kinds/standard"
-import { syntax } from "../../kinds/syntax"
+import { standard } from "#trame/kinds/standard"
+import { syntax } from "#trame/kinds/syntax"
 import { OneWriterPerPlace } from "./product"
 
 // The YAML a workflow is written in: a writer builds the document as nodes (mappings with their keys in order,

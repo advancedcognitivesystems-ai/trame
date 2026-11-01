@@ -1,11 +1,11 @@
 # Layers
 
-*The graph in force on 31 October 2026, ordered by distance to the goals.*
+*The graph in force on 1 November 2026, ordered by distance to the goals.*
 
 ```mermaid
 flowchart TB
   subgraph app["Poselia · The app in a browser"]
-    n0["The browser's screen<br/><small>Implementation</small>"]:::held
+    n0["The browser's screen<br/><small>Implementation</small>"]:::unknown
     n1["The content the app carries<br/><small>Function</small>"]:::held
     n2["Colours<br/><small>Decision</small>"]:::neutral
     n3["Content carried by the app<br/><small>Technical choice</small>"]:::held
@@ -129,7 +129,7 @@ flowchart TB
     n103["The breath is the clock<br/><small>Architecture decision</small>"]:::unknown
     n104["The content is data, behind a port<br/><small>Architecture decision</small>"]:::unknown
     n105["The person's language, among those offered<br/><small>Architecture decision</small>"]:::held
-    n106["A page first, the phones after<br/><small>Architecture decision</small>"]:::held
+    n106["A page first, the phones after<br/><small>Architecture decision</small>"]:::unknown
     n107["Said aloud, the screen awake<br/><small>Architecture decision</small>"]:::unknown
   end
   subgraph product["Poselia · Product"]
@@ -175,29 +175,29 @@ flowchart TB
     n143["The decisions hold<br/><small>Obligation</small>"]:::neutral
     n144["A machine<br/><small>Environment</small>"]:::neutral
     n145["On a phone<br/><small>Check</small>"]:::unknown
-    n146["On the machine<br/><small>Technical choice</small>"]:::held
+    n146["On the machine<br/><small>Technical choice</small>"]:::unknown
     n147["The page is opened as a person would<br/><small>Scenario</small>"]:::held
     n148["Open the page<br/><small>Entry point</small>"]:::held
     n149["The packages are safe<br/><small>Obligation</small>"]:::neutral
-    n150["Poselia's page<br/><small>Artefact</small>"]:::held
+    n150["Poselia's page<br/><small>Artefact</small>"]:::unknown
     n151["How the page is opened<br/><small>Decision</small>"]:::neutral
-    n152["The page opens<br/><small>Check</small>"]:::held
+    n152["The page opens<br/><small>Check</small>"]:::unknown
     n153["What the page is asked<br/><small>Function</small>"]:::held
     n154["People who try it on a phone<br/><small>Role</small>"]:::neutral
     n155["Place the page<br/><small>Entry point</small>"]:::held
     n156["The page is placed where it is served<br/><small>Scenario</small>"]:::held
     n157["Poselia's SDLC<br/><small>Component</small>"]:::neutral
-    n158["A preview<br/><small>Shipment</small>"]:::held
+    n158["A preview<br/><small>Shipment</small>"]:::unknown
     n159["The way of a preview<br/><small>Policy</small>"]:::neutral
     n160["When the preview runs on GitHub, and what it keeps there<br/><small>Decision</small>"]:::neutral
-    n161["The preview's script<br/><small>Artefact</small>"]:::held
-    n162["The preview's workflow<br/><small>Artefact</small>"]:::held
+    n161["The preview's script<br/><small>Artefact</small>"]:::unknown
+    n162["The preview's workflow<br/><small>Artefact</small>"]:::unknown
     n163["The product holds<br/><small>Obligation</small>"]:::neutral
     n164["The page is checked by programs<br/><small>Obligation</small>"]:::neutral
     n165["The way of a public version<br/><small>Policy</small>"]:::neutral
     n166["A public version<br/><small>Shipment</small>"]:::unknown
     n167["The rules of the app hold<br/><small>Obligation</small>"]:::neutral
-    n168["The files that run it elsewhere<br/><small>Shipment</small>"]:::held
+    n168["The files that run it elsewhere<br/><small>Shipment</small>"]:::unknown
     n169["What the scenarios of the SDLC check<br/><small>Message catalog</small>"]:::neutral
     n170["The SDLC in memory<br/><small>Technical choice</small>"]:::held
     n171["The SDLC is in the graph<br/><small>Architecture decision</small>"]:::unknown
@@ -227,7 +227,7 @@ flowchart TB
     n191["The browser's bowl<br/><small>Implementation</small>"]:::unknown
   end
   subgraph stage["Poselia · The stage"]
-    n192["The browser's stage<br/><small>Implementation</small>"]:::held
+    n192["The browser's stage<br/><small>Implementation</small>"]:::unknown
     n193["Look of the mannequin<br/><small>Decision</small>"]:::neutral
     n194["Look of the landmarks<br/><small>Decision</small>"]:::neutral
     n195["Light of the stage<br/><small>Decision</small>"]:::neutral

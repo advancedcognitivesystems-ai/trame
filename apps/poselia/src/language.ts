@@ -1,8 +1,8 @@
 /** Poselia · Language */
 
-import { decision } from "../../../kinds/decision"
-import { catalog } from "../../../kinds/catalog"
-import { fn } from "../../../kinds/function"
+import { decision } from "#trame/kinds/decision"
+import { catalog } from "#trame/kinds/catalog"
+import { fn } from "#trame/kinds/function"
 import { PreferencesStore, DeviceLanguages } from "#std/platform"
 import { InTheirLanguage, ChosenLanguage } from "./product"
 import { Languages } from "./content"

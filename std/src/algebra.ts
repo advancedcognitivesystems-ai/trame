@@ -1,7 +1,7 @@
 /** Standard library · Algebra */
 
-import { code } from "../../trame/kernel"
-import { structure } from "../../kinds/structure"
+import { code } from "#trame/kernel"
+import { structure } from "#trame/kinds/structure"
 import { EcmaScript, EcmaScriptTypes } from "./ecmascript"
 import { SharedOperations } from "./product"
 

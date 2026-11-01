@@ -1,9 +1,9 @@
 /** Reservations · Consumer law */
 
 import { h } from "#std/measures"
-import { decision } from "../../../kinds/decision"
-import { requirement } from "../../../kinds/requirement"
-import { acceptance } from "../../../kinds/acceptance"
+import { decision } from "#trame/kinds/decision"
+import { requirement } from "#trame/kinds/requirement"
+import { acceptance } from "#trame/kinds/acceptance"
 import { CancelWithoutStress, Refund, ChargerType, chf, type Reservation } from "./cancellation"
 
 /**

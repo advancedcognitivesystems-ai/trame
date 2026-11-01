@@ -1,9 +1,9 @@
 /** Continuous integration · GitHub Actions */
 
-import { standard } from "../../kinds/standard"
-import { decision } from "../../kinds/decision"
-import { syntax } from "../../kinds/syntax"
-import type { RunPlan } from "../../trame/kernel"
+import { standard } from "#trame/kinds/standard"
+import { decision } from "#trame/kinds/decision"
+import { syntax } from "#trame/kinds/syntax"
+import type { RunPlan } from "#trame/kernel"
 import { OneWriterPerPlace } from "./product"
 import { YamlDocument, type YamlNode } from "./yaml"
 import { Npm } from "./npm"

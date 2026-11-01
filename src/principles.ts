@@ -10,7 +10,7 @@ import { BodyChecks, SyntaxReader } from "./syntax"
 import { Drivers } from "./languages"
 import { TypeScript } from "./typescript"
 import { Page } from "./page"
-import { Build, Publish, TakeSnapshot, Advance, WriteManifest, Release, Deliver, Ship, RecordEvidence } from "./commands"
+import { Build, Publish, TakeSnapshot, Advance, WriteManifest, Release, Deliver, Ship, RecordEvidence, Init } from "./commands"
 import { ShipOnlyWhatHolds, SdlcEvidence, ShippingRecords } from "./shipping"
 import { NextGeneration, CandidateKeepsTheLaws } from "./sdlc"
 import { DeliveredStyle } from "./delivery"
@@ -358,14 +358,14 @@ export const LibrariesByName = adr({
 export const PackagesByName = adr({
   owner: "trame",
   context: "Projects lived inside Trame's repository and reached its language by relative paths (../../kinds, ../../../trame/kernel): none could move out, a release had to write its imports again, and nothing in a project said which generation's language it was written in.",
-  consequences: "A project names the language as it names a library: its import map, written by trame manifest, leads #trame/kernel and #trame/kinds/* to the generation it pins, through a link under .trame/ that an advance moves with the pin. Its kinds and views are the language's, from the engine that reads it, and those it names besides. The language's home, Trame's repository, reaches them where they are. Where a package comes from is std's port PackageSources: a local path now, a registry later.",
+  consequences: "A project names the language as it names a library: its import map, written by trame manifest, leads #trame/kernel and #trame/kinds/* to the generation it pins, through a link under .trame/ that an advance moves with the pin. Its kinds and views are the language's, from the engine that reads it, and those it names besides. The language's home, Trame's repository, reaches them where they are; the engine leads TypeScript to the files where they are, never through a link (g88). A relative import that leaves its package refuses the build and says the name to write (g89). trame init starts a project already named so. Where a package comes from is std's port PackageSources: a local path now, a registry later.",
   rejected: {
     "Relative paths between packages": "they hold only while the packages sit side by side, and a frozen copy reaches whatever is there then",
     "A path mapping in each project's compiler options": "the program that runs the graph would not read it; the import map is what Node.js and TypeScript both read",
     "Trame installed from a registry at once": "a publication at each generation while the language changes with each one; the registry is the second strategy of the same port",
   },
   serves: [WrittenOnce],
-  appliedBy: [Project, WriteManifest, LocalPaths, Advance],
+  appliedBy: [Project, WriteManifest, LocalPaths, Advance, Laws, Init],
 })
 
 /**

@@ -1,16 +1,16 @@
 /** Reservations · Cancellation */
 
-import { TODO, unitsOf, type Quantity } from "../../../trame/kernel"
-import { goal } from "../../../kinds/goal"
-import { catalog } from "../../../kinds/catalog"
-import { quantity } from "../../../kinds/quantity"
+import { TODO, unitsOf, type Quantity } from "#trame/kernel"
+import { goal } from "#trame/kinds/goal"
+import { catalog } from "#trame/kinds/catalog"
+import { quantity } from "#trame/kinds/quantity"
 import { s, min, h, pct, type Duration, type Share } from "#std/measures"
 import { Language } from "./messages"
-import { decision } from "../../../kinds/decision"
-import { assume } from "../../../kinds/assumption"
-import { requirement } from "../../../kinds/requirement"
-import { acceptance } from "../../../kinds/acceptance"
-import { slo } from "../../../kinds/slo"
+import { decision } from "#trame/kinds/decision"
+import { assume } from "#trame/kinds/assumption"
+import { requirement } from "#trame/kinds/requirement"
+import { acceptance } from "#trame/kinds/acceptance"
+import { slo } from "#trame/kinds/slo"
 import { FeeCap } from "./legal"
 
 /**

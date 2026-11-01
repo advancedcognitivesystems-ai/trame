@@ -4,7 +4,7 @@
 import { chromium as playwright, type Browser } from "playwright"
 import { resolve } from "node:path"
 import { pathToFileURL } from "node:url"
-import { ms, type BodyOf } from "../../../../trame/kernel"
+import { ms, type BodyOf } from "#trame/kernel"
 import type { PlaywrightBrowser } from "../../tooling"
 
 const body: BodyOf<typeof PlaywrightBrowser> = ({ chromium, api, counts }) => {

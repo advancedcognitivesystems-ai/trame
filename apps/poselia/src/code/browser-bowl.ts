@@ -3,7 +3,7 @@
 // for the latency of playback; it is resumed at each strike and suspended when the last sound has ended, which lets
 // the browser release the audio output to the voice.
 
-import type { BodyOf } from "../../../../trame/kernel"
+import type { BodyOf } from "#trame/kernel"
 import type { BrowserBowl } from "../sound"
 
 const body: BodyOf<typeof BrowserBowl> = ({ sound, audio, counts }) => {

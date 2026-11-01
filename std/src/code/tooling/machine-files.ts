@@ -4,7 +4,7 @@
 import { existsSync, readFileSync, writeFileSync, copyFileSync, mkdirSync } from "node:fs"
 import { dirname } from "node:path"
 import { createHash } from "node:crypto"
-import type { BodyOf } from "../../../../trame/kernel"
+import type { BodyOf } from "#trame/kernel"
 import type { MachineFiles } from "../../tooling"
 
 const body: BodyOf<typeof MachineFiles> = ({ sha, encodings }) => ({

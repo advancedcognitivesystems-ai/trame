@@ -1,8 +1,8 @@
 /** Continuous integration · Shell */
 
-import { standard } from "../../kinds/standard"
-import { syntax } from "../../kinds/syntax"
-import type { RunPlan } from "../../trame/kernel"
+import { standard } from "#trame/kinds/standard"
+import { syntax } from "#trame/kinds/syntax"
+import type { RunPlan } from "#trame/kernel"
 import { OneWriterPerPlace } from "./product"
 import { Npm } from "./npm"
 

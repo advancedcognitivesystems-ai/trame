@@ -1,10 +1,10 @@
 /** Standard library · Rules */
 
-import { requirement } from "../../kinds/requirement"
-import { acceptance } from "../../kinds/acceptance"
-import { vocabulary, type WordOf } from "../../kinds/vocabulary"
-import { Direction, EdgeName, VocabularyField } from "../../trame/kernel"
-import type { GraphSketch, SketchNode, RuleFinding } from "../../trame/kernel"
+import { requirement } from "#trame/kinds/requirement"
+import { acceptance } from "#trame/kinds/acceptance"
+import { vocabulary, type WordOf } from "#trame/kinds/vocabulary"
+import { Direction, EdgeName, VocabularyField } from "#trame/kernel"
+import type { GraphSketch, SketchNode, RuleFinding } from "#trame/kernel"
 import { Counts } from "./algebra"
 import { SharedRules } from "./product"
 

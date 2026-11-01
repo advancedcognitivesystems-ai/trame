@@ -1,8 +1,8 @@
 /** Poselia · Drawings */
 
-import { code } from "../../../trame/kernel"
-import { decision } from "../../../kinds/decision"
-import { fn } from "../../../kinds/function"
+import { code } from "#trame/kernel"
+import { decision } from "#trame/kinds/decision"
+import { fn } from "#trame/kinds/function"
 import { Counts } from "#std/algebra"
 import { PractiseGuided } from "./product"
 import { BodyMeasures, KeyOf, BodyAt } from "./body"

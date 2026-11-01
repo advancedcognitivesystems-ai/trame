@@ -3,7 +3,7 @@
 
 import type { SettingsView } from "../architecture"
 import type { BreathPattern } from "../product"
-import type { ProvidedBy } from "../../../../trame/kernel"
+import type { ProvidedBy } from "#trame/kernel"
 import type { WordsFr } from "../language"
 
 type Words = ProvidedBy<typeof WordsFr>

@@ -1,9 +1,9 @@
 /** Reservations · API */
 
-import { code, ms, elapsed } from "../../../trame/kernel"
+import { code, ms, elapsed } from "#trame/kernel"
 import type { Duration } from "#std/measures"
-import { fn } from "../../../kinds/function"
-import { entryPoint, http } from "../../../kinds/entry-point"
+import { fn } from "#trame/kinds/function"
+import { entryPoint, http } from "#trame/kinds/entry-point"
 import { FreeCancellationPeriod, Refund, CancelWithoutStress } from "./cancellation"
 import { ReservationsApi, ReservationReading, Cancellations, Payment, Clock, CancellationKey, type StoredReservation } from "./architecture"
 import { Http } from "#std/web"

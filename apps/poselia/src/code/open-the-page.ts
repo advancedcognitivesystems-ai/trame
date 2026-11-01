@@ -2,7 +2,7 @@
 // the sequences shown, the first one played until its landmarks are listed; the errors the page raised. What is missing
 // is said, language by language; it fails when anything is, and at once when the page is not where its delivery writes it.
 
-import type { BodyOf } from "../../../../trame/kernel"
+import type { BodyOf } from "#trame/kernel"
 import type { OpenThePage } from "../sdlc"
 
 const body: BodyOf<typeof OpenThePage> = ({ browser, files, page, offered, selectors, opening, say, exit, counts }) => async () => {

@@ -1,8 +1,8 @@
 /** Reservations · Scenarios */
 
-import { ms, elapsed } from "../../../trame/kernel"
-import { decision } from "../../../kinds/decision"
-import { scenario } from "../../../kinds/scenario"
+import { ms, elapsed } from "#trame/kernel"
+import { decision } from "#trame/kinds/decision"
+import { scenario } from "#trame/kinds/scenario"
 import { FreeCancellationPeriod, Refund } from "./cancellation"
 import { PaymentLog, ReadOnlyDatabase, Dialect } from "./architecture"
 import { Test, InitialReservations, TestInstant, ReservationsSql, CancellationsSql, InMemoryDatabase, SqliteDialect, SimulatedPayment, StoppedClock, ReservationTables, CancelledStatus } from "./infra"

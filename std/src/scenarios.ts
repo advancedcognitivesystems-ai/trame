@@ -1,10 +1,10 @@
 /** Standard library · Scenarios */
 
-import { environment } from "../../kinds/environment"
-import { binding } from "../../kinds/binding"
-import { decision } from "../../kinds/decision"
-import { catalog } from "../../kinds/catalog"
-import { scenario } from "../../kinds/scenario"
+import { environment } from "#trame/kinds/environment"
+import { binding } from "#trame/kinds/binding"
+import { decision } from "#trame/kinds/decision"
+import { catalog } from "#trame/kinds/catalog"
+import { scenario } from "#trame/kinds/scenario"
 import { SharedOperations, RealizedOnce } from "./product"
 import { SeededDraws } from "./algorithms"
 import {

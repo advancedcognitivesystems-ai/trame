@@ -4,7 +4,9 @@
   "type": "module",
   "imports": {
     "#ci/*": "./.trame/ci/src/*.ts",
-    "#std/*": "./.trame/std/src/*.ts"
+    "#std/*": "./.trame/std/src/*.ts",
+    "#trame/kernel": "./.trame/trame/trame/kernel.ts",
+    "#trame/kinds/*": "./.trame/trame/kinds/*.ts"
   },
   "dependencies": {
     "@types/three": "0.186.0",

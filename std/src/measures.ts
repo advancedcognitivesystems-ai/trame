@@ -1,10 +1,10 @@
 /** Standard library · Measures */
 
-import { unitsOf, type Quantity } from "../../trame/kernel"
-import { standard } from "../../kinds/standard"
-import { decision } from "../../kinds/decision"
-import { catalog } from "../../kinds/catalog"
-import { quantity } from "../../kinds/quantity"
+import { unitsOf, type Quantity } from "#trame/kernel"
+import { standard } from "#trame/kinds/standard"
+import { decision } from "#trame/kinds/decision"
+import { catalog } from "#trame/kinds/catalog"
+import { quantity } from "#trame/kinds/quantity"
 import { CitedNotCopied } from "./product"
 
 // Units of measure, calendar dates, versions and language tags, as their standards write them; and the quantities a

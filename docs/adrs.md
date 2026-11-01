@@ -1,6 +1,6 @@
 # Architecture decisions
 
-*The choices that shape the product without being values, in force on 30 October 2026: why each was taken, what was rejected, and the nodes that apply it.*
+*The choices that shape the product without being values, in force on 1 November 2026: why each was taken, what was rejected, and the nodes that apply it.*
 
 > **37 architecture decisions, 34 held by the nodes that apply them**
 
@@ -34,7 +34,7 @@
 | [Generations: frozen engines](principles.md#GenerationLayer) | **held** | [Advance](commands.md#Advance), [Accept a candidate](generations.md#AcceptCandidate), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore), [Expected differences on the example](scenarios.md#ExpectedDifferences) |
 | [A library is a Trame project, imported by path](principles.md#LibrariesAreProjects) | **held** | [Advance](commands.md#Advance), [Compilation API](engine.md#CompilationApi), [Compiler](engine.md#Compiler), [Project](engine.md#Project), [References](engine.md#References), [What belongs to a library](libraries.md#LibraryOfAModule) |
 | [A library is imported by its name](principles.md#LibrariesByName) | **held** | [Release a version](commands.md#Release), [Write the manifest](commands.md#WriteManifest), [Laws](engine.md#Laws), [Project](engine.md#Project), [Names of a library's releases](libraries.md#LibraryReleaseNames), [A release is settled](libraries.md#ReleaseIsSettled) |
-| [A package is used by its name](principles.md#PackagesByName) | **held** | [Advance](commands.md#Advance), [Write the manifest](commands.md#WriteManifest), [Project](engine.md#Project), [Packages by their local path](platform.md#LocalPaths) |
+| [A package is used by its name](principles.md#PackagesByName) | **held** | [Advance](commands.md#Advance), [Start a project](commands.md#Init), [Write the manifest](commands.md#WriteManifest), [Laws](engine.md#Laws), [Project](engine.md#Project), [Packages by their local path](platform.md#LocalPaths) |
 | [A product is delivered by a node of the graph](principles.md#DeliveredByTheGraph) | **held** | [Deliver](commands.md#Deliver), [Style of a delivered page](delivery.md#DeliveredStyle) |
 | [The data a product carries is a dataset](principles.md#DataAsDatasets) | **held** | [Fingerprints](engine.md#Fingerprints), [Graph](engine.md#GraphApi) |
 | [A version ships through the graph](principles.md#ShippedThroughTheGraph) | **unknown** | [Record evidence](commands.md#RecordEvidence), [Ship](commands.md#Ship), [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws), [The next generation](sdlc.md#NextGeneration), [Evidence of the SDLC](shipping.md#SdlcEvidence), [Ship only what holds](shipping.md#ShipOnlyWhatHolds), [Where the SDLC's evidence is kept](shipping.md#ShippingRecords) |
@@ -162,7 +162,7 @@ Consequences: Each language has its module (how Trame reads it, what Trame write
 
 ### A catalog counts in its language
 
-`CountsInTheLanguage` · `src/messages.ts:916` · status: **held**
+`CountsInTheLanguage` · `src/messages.ts:918` · status: **held**
 
 A count and its noun follow the plural rules of the language the catalog is written in, with the forms the catalog writes for each category; nothing below the catalogs presumes a language.
 
@@ -624,7 +624,7 @@ Every package names what it uses, the language included: #trame/kernel and #tram
 
 Context: Projects lived inside Trame's repository and reached its language by relative paths (../../kinds, ../../../trame/kernel): none could move out, a release had to write its imports again, and nothing in a project said which generation's language it was written in.
 
-Consequences: A project names the language as it names a library: its import map, written by trame manifest, leads #trame/kernel and #trame/kinds/* to the generation it pins, through a link under .trame/ that an advance moves with the pin. Its kinds and views are the language's, from the engine that reads it, and those it names besides. The language's home, Trame's repository, reaches them where they are. Where a package comes from is std's port PackageSources: a local path now, a registry later.
+Consequences: A project names the language as it names a library: its import map, written by trame manifest, leads #trame/kernel and #trame/kinds/* to the generation it pins, through a link under .trame/ that an advance moves with the pin. Its kinds and views are the language's, from the engine that reads it, and those it names besides. The language's home, Trame's repository, reaches them where they are; the engine leads TypeScript to the files where they are, never through a link (g88). A relative import that leaves its package refuses the build and says the name to write (g89). trame init starts a project already named so. Where a package comes from is std's port PackageSources: a local path now, a registry later.
 
 | Rejected | Why |
 |---|---|
@@ -634,7 +634,7 @@ Consequences: A project names the language as it names a library: its import map
 
 - Decided by: trame
 - Serves: [What is generic is written once](product.md#WrittenOnce)
-- Applied by: [Project](engine.md#Project), [Write the manifest](commands.md#WriteManifest), [Packages by their local path](platform.md#LocalPaths), [Advance](commands.md#Advance)
+- Applied by: [Project](engine.md#Project), [Write the manifest](commands.md#WriteManifest), [Packages by their local path](platform.md#LocalPaths), [Advance](commands.md#Advance), [Laws](engine.md#Laws), [Start a project](commands.md#Init)
 
 <a id="DeliveredByTheGraph"></a>
 

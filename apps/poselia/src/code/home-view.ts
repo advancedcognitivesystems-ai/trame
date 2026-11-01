@@ -5,7 +5,7 @@
 import type { HomeView, Drawing } from "../architecture"
 import type { Pose, Sequence, Localized } from "../content"
 import type { Shape, Body, Leg, Stance } from "../body"
-import type { ProvidedBy } from "../../../../trame/kernel"
+import type { ProvidedBy } from "#trame/kernel"
 import type { WordsFr } from "../language"
 import type { Counts } from "#std/algebra"
 

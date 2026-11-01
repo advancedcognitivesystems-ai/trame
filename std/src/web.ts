@@ -1,6 +1,6 @@
 /** Standard library · Web */
 
-import { standard } from "../../kinds/standard"
+import { standard } from "#trame/kinds/standard"
 import { CitedNotCopied } from "./product"
 
 // What the web publishes and a page or a server uses: HTTP, media types, addresses, the stream of events a server

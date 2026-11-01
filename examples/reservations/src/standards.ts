@@ -1,6 +1,6 @@
 /** Reservations · Standards */
 
-import { standard } from "../../../kinds/standard"
+import { standard } from "#trame/kinds/standard"
 
 /**
  * Paths of entry points

@@ -1,8 +1,8 @@
 // The command line of a program of the SDLC, in Node: the first argument names the command, the others go to it; the
 // lines of text it answers are written out; the status it answers is the program's.
 
-import { TriggerType } from "../../../../trame/kernel"
-import type { BodyOf } from "../../../../trame/kernel"
+import { TriggerType } from "#trame/kernel"
+import type { BodyOf } from "#trame/kernel"
 import type { NodeProgramCommands } from "../../tooling"
 
 const body: BodyOf<typeof NodeProgramCommands> = ({ argv, exit, values }) => ({

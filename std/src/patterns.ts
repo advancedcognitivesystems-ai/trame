@@ -1,6 +1,6 @@
 /** Standard library · Design patterns */
 
-import { pattern } from "../../kinds/pattern"
+import { pattern } from "#trame/kinds/pattern"
 import { KnownDesigns } from "./product"
 
 // The design patterns that technical choices follow. No graph implements them: Trame's kinds do, once (a port, the

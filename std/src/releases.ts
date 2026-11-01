@@ -3,7 +3,7 @@
 // Written by trame release at each version, from the releases already here and the one it freezes: do not edit. A
 // release's own record is written after its sources are copied, so it is not in its own copy.
 
-import { release } from "../../kinds/release"
+import { release } from "#trame/kinds/release"
 import { CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules } from "./product"
 
 /**

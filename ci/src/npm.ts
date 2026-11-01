@@ -1,6 +1,6 @@
 /** Continuous integration · npm */
 
-import { standard } from "../../kinds/standard"
+import { standard } from "#trame/kinds/standard"
 import { OneWriterPerPlace } from "./product"
 
 /**

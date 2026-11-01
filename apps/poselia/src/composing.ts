@@ -1,10 +1,10 @@
 /** Poselia · Composing */
 
-import { code } from "../../../trame/kernel"
-import { decision } from "../../../kinds/decision"
-import { requirement } from "../../../kinds/requirement"
-import { acceptance } from "../../../kinds/acceptance"
-import { fn } from "../../../kinds/function"
+import { code } from "#trame/kernel"
+import { decision } from "#trame/kinds/decision"
+import { requirement } from "#trame/kinds/requirement"
+import { acceptance } from "#trame/kinds/acceptance"
+import { fn } from "#trame/kinds/function"
 import { Counts } from "#std/algebra"
 import { SeededDraws } from "#std/algorithms"
 import { PractiseGuided, BreathPhase } from "./product"

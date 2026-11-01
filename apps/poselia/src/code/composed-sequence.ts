@@ -5,7 +5,7 @@
 import type { Pose, Sequence } from "../content"
 import type { BreathPhase } from "../product"
 import type { Shape, Level, Stance, Leg } from "../body"
-import type { ProvidedBy } from "../../../../trame/kernel"
+import type { ProvidedBy } from "#trame/kernel"
 import type { WordsFr } from "../language"
 
 type Words = ProvidedBy<typeof WordsFr>

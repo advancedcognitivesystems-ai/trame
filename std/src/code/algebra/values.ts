@@ -1,4 +1,4 @@
-import type { ProvidedBy } from "../../../../trame/kernel"
+import type { ProvidedBy } from "#trame/kernel"
 import type { EcmaScriptTypes } from "../../ecmascript"
 
 export interface Deps {
