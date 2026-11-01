@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 30 October 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 1 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Trame · Appearance
 
@@ -3585,8 +3585,10 @@ Implementation · `TramePrelude` · **held**
 Implementation · `TsxLoader` · **held**
 
 - Owner: trame
+- Parameters: { prelude: architecture.Prelude, names: conventions.LanguageNames, specifiers: std/system.NodeModuleSpecifiers, language: typescript.TypeScript }
 - Implements: Module loader
 - Uses: tsx
+- Depends on: Prelude, The language's names, TypeScript
 
 ### tree-sitter in WebAssembly
 
@@ -5369,6 +5371,20 @@ Release · `G9`
 - Releases: Trame on the command line
 - Assembled by: Generation 8
 
+### Generation 90
+
+Release · `G90`
+
+- Released by: trame
+- Version: g90
+- Released on: 2026-11-01
+- What changes: E1d: a project that installed no types is checked with those of the engine that reads it (a project outside the repository builds); std's table of the platform knows node:module's registerHooks, for the engine to lead the language's names to its own language
+- Fingerprint: 196c3b0f7ac15496
+- Language: shared
+- Language archived: c850998afbba6ca9
+- Releases: Trame on the command line
+- Assembled by: Generation 89
+
 ## Trame · Rendering
 
 ### Places in a sentence
@@ -5795,7 +5811,7 @@ Artefact · `GraphPage` · **unknown**
 
 ### The page's program
 
-Artefact · `PageProgram` · **unknown**
+Artefact · `PageProgram` · **held**
 
 - Owner: trame
 - Path: out/browser/page-app.ts

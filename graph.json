@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-30",
+  "generated": "2026-11-01",
   "nodes": [
     {
       "id": "appearance.ExplorerDrawing",
@@ -1421,7 +1421,7 @@
           "status": "passed"
         },
         {
-          "name": "The candidate is accepted (  ✓ trame runs g90 |   ✓ reservations runs g90 | Advance succeeded.)",
+          "name": "The candidate is accepted (  ✓ trame runs g91 |   ✓ reservations runs g91 | Advance succeeded.)",
           "status": "passed"
         },
         {
@@ -12118,7 +12118,7 @@
       "id": "platform.AmendmentsInPlace",
       "kind": "binding",
       "title": "Amendments go in the sources",
-      "source": "src/platform.ts:621",
+      "source": "src/platform.ts:623",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -12134,7 +12134,7 @@
       "id": "platform.CompilerReadsDeclarations",
       "kind": "binding",
       "title": "The TypeScript compiler reads the declarations",
-      "source": "src/platform.ts:544",
+      "source": "src/platform.ts:546",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -12164,7 +12164,7 @@
       "id": "platform.DiskTrees",
       "kind": "implementation",
       "title": "Trees on disk",
-      "source": "src/platform.ts:219",
+      "source": "src/platform.ts:221",
       "status": "unknown",
       "fields": {
         "owner": "trame",
@@ -12184,7 +12184,7 @@
       "id": "platform.DiskWriting",
       "kind": "implementation",
       "title": "System files, for writing",
-      "source": "src/platform.ts:191",
+      "source": "src/platform.ts:193",
       "status": "unknown",
       "fields": {
         "owner": "trame",
@@ -12216,7 +12216,7 @@
       "id": "platform.EngineFilesBesideCode",
       "kind": "binding",
       "title": "The engine's own files sit beside its code",
-      "source": "src/platform.ts:558",
+      "source": "src/platform.ts:560",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -12231,7 +12231,7 @@
       "id": "platform.Esbuild",
       "kind": "implementation",
       "title": "esbuild",
-      "source": "src/platform.ts:168",
+      "source": "src/platform.ts:170",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -12246,7 +12246,7 @@
       "id": "platform.EsbuildBundles",
       "kind": "binding",
       "title": "esbuild bundles the page's program",
-      "source": "src/platform.ts:494",
+      "source": "src/platform.ts:496",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -12262,7 +12262,7 @@
       "id": "platform.ExampleProcess",
       "kind": "function",
       "title": "Example process",
-      "source": "src/platform.ts:261",
+      "source": "src/platform.ts:263",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -12295,7 +12295,7 @@
       "id": "platform.FilesInMemoryOverTheDisk",
       "kind": "binding",
       "title": "Scenarios write in memory, over the disk",
-      "source": "src/platform.ts:415",
+      "source": "src/platform.ts:417",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -12311,7 +12311,7 @@
       "id": "platform.InMemoryScenarios",
       "kind": "binding",
       "title": "Scenarios run in memory",
-      "source": "src/platform.ts:432",
+      "source": "src/platform.ts:434",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -12329,7 +12329,7 @@
       "id": "platform.InPlaceSources",
       "kind": "implementation",
       "title": "Amendments in place",
-      "source": "src/platform.ts:575",
+      "source": "src/platform.ts:577",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -12362,7 +12362,7 @@
       "id": "platform.LinesOnExit",
       "kind": "decision",
       "title": "Lines shown on an exit in test",
-      "source": "src/platform.ts:312",
+      "source": "src/platform.ts:314",
       "fields": {
         "owner": "trame",
         "value": 3
@@ -12373,7 +12373,7 @@
       "id": "platform.LocalPaths",
       "kind": "implementation",
       "title": "Packages by their local path",
-      "source": "src/platform.ts:591",
+      "source": "src/platform.ts:593",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -12394,7 +12394,7 @@
       "id": "platform.MemoryFiles",
       "kind": "implementation",
       "title": "Files in memory, over the disk",
-      "source": "src/platform.ts:288",
+      "source": "src/platform.ts:290",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -12422,7 +12422,7 @@
       "id": "platform.MemoryHttpServer",
       "kind": "function",
       "title": "A server in memory",
-      "source": "src/platform.ts:302",
+      "source": "src/platform.ts:304",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -12443,7 +12443,7 @@
       "id": "platform.MemoryTemporary",
       "kind": "decision",
       "title": "Temporary directories in memory",
-      "source": "src/platform.ts:280",
+      "source": "src/platform.ts:282",
       "fields": {
         "owner": "trame",
         "value": {
@@ -12456,7 +12456,7 @@
       "id": "platform.MemoryTerminal",
       "kind": "function",
       "title": "Terminal in memory",
-      "source": "src/platform.ts:326",
+      "source": "src/platform.ts:328",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -12476,7 +12476,7 @@
       "id": "platform.NodeCommandLine",
       "kind": "implementation",
       "title": "Command line",
-      "source": "src/platform.ts:247",
+      "source": "src/platform.ts:249",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -12497,7 +12497,7 @@
       "id": "platform.NodeCompression",
       "kind": "implementation",
       "title": "gzip, with Node's zlib",
-      "source": "src/platform.ts:133",
+      "source": "src/platform.ts:135",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -12515,7 +12515,7 @@
       "id": "platform.NodeHashing",
       "kind": "implementation",
       "title": "SHA-256 hashes",
-      "source": "src/platform.ts:124",
+      "source": "src/platform.ts:126",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -12530,7 +12530,7 @@
       "id": "platform.NodeHttpServer",
       "kind": "implementation",
       "title": "Node HTTP server",
-      "source": "src/platform.ts:160",
+      "source": "src/platform.ts:162",
       "status": "unknown",
       "fields": {
         "owner": "trame",
@@ -12545,7 +12545,7 @@
       "id": "platform.NodeMachine",
       "kind": "binding",
       "title": "On a machine, Node.js reads, writes and runs",
-      "source": "src/platform.ts:399",
+      "source": "src/platform.ts:401",
       "status": "unknown",
       "fields": {
         "owner": "trame",
@@ -12575,7 +12575,7 @@
     {
       "id": "platform.NodePlatform",
       "kind": "binding",
-      "source": "src/platform.ts:380",
+      "source": "src/platform.ts:382",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -12592,7 +12592,7 @@
       "id": "platform.NodeProcess",
       "kind": "implementation",
       "title": "Node process",
-      "source": "src/platform.ts:199",
+      "source": "src/platform.ts:201",
       "status": "unknown",
       "fields": {
         "owner": "trame",
@@ -12612,7 +12612,7 @@
       "id": "platform.NodePrograms",
       "kind": "implementation",
       "title": "Node programs",
-      "source": "src/platform.ts:209",
+      "source": "src/platform.ts:211",
       "status": "unknown",
       "fields": {
         "owner": "trame",
@@ -12632,7 +12632,7 @@
       "id": "platform.NodeTerminal",
       "kind": "implementation",
       "title": "Node terminal",
-      "source": "src/platform.ts:228",
+      "source": "src/platform.ts:230",
       "status": "unknown",
       "fields": {
         "owner": "trame",
@@ -12654,7 +12654,7 @@
       "id": "platform.NodeTimer",
       "kind": "implementation",
       "title": "Node timer",
-      "source": "src/platform.ts:152",
+      "source": "src/platform.ts:154",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -12669,7 +12669,7 @@
       "id": "platform.NoReportsInTest",
       "kind": "function",
       "title": "No registry in test",
-      "source": "src/platform.ts:271",
+      "source": "src/platform.ts:273",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -12681,7 +12681,7 @@
       "id": "platform.NpmReports",
       "kind": "implementation",
       "title": "npm's reports",
-      "source": "src/platform.ts:143",
+      "source": "src/platform.ts:145",
       "status": "unknown",
       "fields": {
         "owner": "trame",
@@ -12702,7 +12702,7 @@
       "id": "platform.PackagesByLocalPath",
       "kind": "binding",
       "title": "Packages come from their local path, for now",
-      "source": "src/platform.ts:603",
+      "source": "src/platform.ts:605",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -12719,7 +12719,7 @@
       "id": "platform.PageResources",
       "kind": "implementation",
       "title": "Page resources",
-      "source": "src/platform.ts:177",
+      "source": "src/platform.ts:179",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -12743,7 +12743,7 @@
       "id": "platform.RealTypeScript",
       "kind": "implementation",
       "title": "TypeScript compiler",
-      "source": "src/platform.ts:104",
+      "source": "src/platform.ts:106",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -12758,7 +12758,7 @@
       "id": "platform.ResultsInTheProcess",
       "kind": "implementation",
       "title": "Results kept in the process",
-      "source": "src/platform.ts:353",
+      "source": "src/platform.ts:355",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -12773,7 +12773,7 @@
       "id": "platform.RunsByWhatTheyRead",
       "kind": "binding",
       "title": "A run is kept while what it reads is as it was",
-      "source": "src/platform.ts:452",
+      "source": "src/platform.ts:454",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -12789,7 +12789,7 @@
       "id": "platform.RunsInTheProcess",
       "kind": "implementation",
       "title": "Runs kept in the process",
-      "source": "src/platform.ts:364",
+      "source": "src/platform.ts:366",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -12804,7 +12804,7 @@
       "id": "platform.RunsKeptInTheProcess",
       "kind": "binding",
       "title": "In the scenarios, runs are kept in the process",
-      "source": "src/platform.ts:480",
+      "source": "src/platform.ts:482",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -12820,7 +12820,7 @@
       "id": "platform.RunsKeptOnDisk",
       "kind": "binding",
       "title": "On a machine, runs are kept on disk",
-      "source": "src/platform.ts:466",
+      "source": "src/platform.ts:468",
       "status": "unknown",
       "fields": {
         "owner": "trame",
@@ -12836,7 +12836,7 @@
       "id": "platform.RunsOnDisk",
       "kind": "implementation",
       "title": "Runs kept on disk",
-      "source": "src/platform.ts:374",
+      "source": "src/platform.ts:376",
       "status": "unknown",
       "fields": {
         "owner": "trame",
@@ -12858,7 +12858,7 @@
       "id": "platform.StoppedClock",
       "kind": "function",
       "title": "Stopped clock",
-      "source": "src/platform.ts:335",
+      "source": "src/platform.ts:337",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -12878,7 +12878,7 @@
       "id": "platform.SystemClock",
       "kind": "implementation",
       "title": "System clock",
-      "source": "src/platform.ts:237",
+      "source": "src/platform.ts:239",
       "status": "unknown",
       "fields": {
         "owner": "trame",
@@ -12909,7 +12909,7 @@
       "id": "platform.TestTime",
       "kind": "decision",
       "title": "Time of the scenarios",
-      "source": "src/platform.ts:319",
+      "source": "src/platform.ts:321",
       "fields": {
         "owner": "trame",
         "value": "08:00:00.000Z"
@@ -12938,7 +12938,7 @@
       "id": "platform.TreeSitterReads",
       "kind": "binding",
       "title": "tree-sitter reads the bodies",
-      "source": "src/platform.ts:510",
+      "source": "src/platform.ts:512",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -12955,10 +12955,16 @@
       "id": "platform.TsxLoader",
       "kind": "implementation",
       "title": "tsx loader",
-      "source": "src/platform.ts:95",
+      "source": "src/platform.ts:96",
       "status": "held",
       "fields": {
         "owner": "trame",
+        "deps": {
+          "prelude": "architecture.Prelude",
+          "names": "conventions.LanguageNames",
+          "specifiers": "std/system.NodeModuleSpecifiers",
+          "language": "typescript.TypeScript"
+        },
         "body": {
           "file": "./code/platform/tsx-loader.ts",
           "language": "typescript"
@@ -12970,7 +12976,7 @@
       "id": "platform.TsxRuns",
       "kind": "binding",
       "title": "tsx runs TypeScript",
-      "source": "src/platform.ts:527",
+      "source": "src/platform.ts:529",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -12998,7 +13004,7 @@
       "id": "platform.WebTreeSitter",
       "kind": "implementation",
       "title": "tree-sitter in WebAssembly",
-      "source": "src/platform.ts:114",
+      "source": "src/platform.ts:116",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -15094,6 +15100,22 @@
       "diagnostics": []
     },
     {
+      "id": "releases.G90",
+      "kind": "release",
+      "title": "Generation 90",
+      "source": "src/releases.ts:1325",
+      "fields": {
+        "owner": "trame",
+        "version": "g90",
+        "date": "2026-11-01",
+        "what": "E1d: a project that installed no types is checked with those of the engine that reads it (a project outside the repository builds); std's table of the platform knows node:module's registerHooks, for the engine to lead the language's names to its own language",
+        "fingerprint": "196c3b0f7ac15496",
+        "language": "shared",
+        "archive": "c850998afbba6ca9"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "rendering.Common",
       "kind": "function",
       "title": "Common rendering",
@@ -16040,7 +16062,7 @@
         "owner": "trame"
       },
       "result": {
-        "code": "17f29130"
+        "code": "030d356f"
       },
       "diagnostics": [
         "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
@@ -16056,7 +16078,7 @@
         "owner": "trame"
       },
       "result": {
-        "code": "1aaa375b"
+        "code": "a811c734"
       },
       "diagnostics": [
         "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
@@ -16074,7 +16096,7 @@
       },
       "result": {
         "path": "out/local/trame-cli.ts",
-        "code": "e5e022ac"
+        "code": "27f4d553"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -16130,7 +16152,7 @@
       },
       "result": {
         "path": "trame-page.html",
-        "code": "e1d51f67"
+        "code": "afa3e0a8"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -16445,6 +16467,11 @@
             "obligation": "sdlc.CandidateChecked"
           },
           {
+            "node": "packages.TypeScriptGrammar",
+            "via": "typescript.TypeScript",
+            "obligation": "sdlc.EnginePackagesSafe"
+          },
+          {
             "node": "packages.TsxPackage",
             "via": "platform.TsxLoader",
             "obligation": "sdlc.EnginePackagesSafe"
@@ -16457,11 +16484,6 @@
           {
             "node": "packages.NodeTypes",
             "via": "platform.RealTypeScript",
-            "obligation": "sdlc.EnginePackagesSafe"
-          },
-          {
-            "node": "packages.TypeScriptGrammar",
-            "via": "typescript.TypeScript",
             "obligation": "sdlc.EnginePackagesSafe"
           },
           {
@@ -16506,7 +16528,7 @@
           },
           {
             "node": "scenarios.CompileExample",
-            "via": "platform.TsxLoader",
+            "via": "platform.TramePrelude",
             "obligation": "sdlc.EngineVerified"
           },
           {
@@ -16710,7 +16732,6 @@
       "diagnostics": [
         "warning: To ship: The candidate engine is unknown",
         "warning: To ship: The graph page is unknown",
-        "warning: To ship: The page's program is unknown",
         "warning: To ship: The SDLC's tooling is realized once is unknown",
         "warning: To ship: The page is assembled is unknown",
         "warning: To ship: The candidate plays the laws is unknown",
@@ -16785,7 +16806,7 @@
       "kind": "artifact",
       "title": "The page's program",
       "source": "src/sdlc.ts:169",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "out/browser/page-app.ts"
@@ -16794,9 +16815,7 @@
         "path": "out/browser/page-app.ts",
         "code": "47c449a6"
       },
-      "diagnostics": [
-        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.SdlcInMemory",
@@ -30261,6 +30280,26 @@
       "kind": "packages"
     },
     {
+      "from": "platform.TsxLoader",
+      "to": "architecture.Prelude",
+      "kind": "deps"
+    },
+    {
+      "from": "platform.TsxLoader",
+      "to": "conventions.LanguageNames",
+      "kind": "deps"
+    },
+    {
+      "from": "platform.TsxLoader",
+      "to": "std/system.NodeModuleSpecifiers",
+      "kind": "deps"
+    },
+    {
+      "from": "platform.TsxLoader",
+      "to": "typescript.TypeScript",
+      "kind": "deps"
+    },
+    {
       "from": "platform.TsxRuns",
       "to": "platform.TsxLoader",
       "kind": "chooses"
@@ -31928,6 +31967,16 @@
     {
       "from": "releases.G9",
       "to": "releases.G8",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G90",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G90",
+      "to": "releases.G89",
       "kind": "assembledBy"
     },
     {

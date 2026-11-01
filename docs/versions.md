@@ -1,8 +1,8 @@
 # Versions
 
-*The releases of the components on 30 October 2026, newest first. A project runs the release its configuration pins.*
+*The releases of the components on 1 November 2026, newest first. A project runs the release its configuration pins.*
 
-> **89 releases of 1 component; 87 releases on a language of their own**
+> **90 releases of 1 component; 87 releases on a language of their own**
 
 ## Trame on the command line
 
@@ -10,6 +10,7 @@ Each release, newest first: what changed, the release that assembled it, and whe
 
 | Release | Released on | What changes | Assembled by | Language |
 |---|---|---|---|---|
+| [Generation 90](releases.md#G90) | 1 November 2026 | E1d: a project that installed no types is checked with those of the engine that reads it (a project outside the repository builds); std's table of the platform knows node:module's registerHooks, for the engine to lead the language's names to its own language | [Generation 89](releases.md#G89) | shared |
 | [Generation 89](releases.md#G89) | 1 November 2026 | E1c: a relative import that leaves its package refuses the build and says the name to write (a version frozen of a library is its release's business); a library's release names the language by its name | [Generation 88](releases.md#G88) | shared |
 | [Generation 88](releases.md#G88) | 1 November 2026 | E1b: the compiler is led to the language's files by its names (#trame/* in TypeScript's paths, to the files where they are, never through a link); trame init starts a project: its configuration (the generation that runs, the libraries the language's home uses), its first module with its goal, the guide for agents and the skill, then its manifest | [Generation 87](releases.md#G87) | shared |
 | [Generation 87](releases.md#G87) | 1 November 2026 | E1a: the language by name: a project imports #trame/kernel and #trame/kinds/* through its import map, which leads to the generation it pins (a link under .trame/ that an advance moves with the pin); its kinds and views are the language's, from the engine that reads it; where a package comes from is std's port PackageSources, realized by local paths | [Generation 86](releases.md#G86) | its own copy |

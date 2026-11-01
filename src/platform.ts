@@ -23,7 +23,7 @@ import { UnifiedDiff, TextFile } from "#std/text"
 import { Punctuation } from "./documents"
 import { PlatformMessages } from "./messages"
 import { Counts, Sequences, Texts, ValueTypes } from "#std/algebra"
-import { TrameCommands, TrameEnvironment, Layout } from "./conventions"
+import { TrameCommands, TrameEnvironment, Layout, LanguageNames } from "./conventions"
 import { Advancement } from "./generations"
 import { TypeScript } from "./typescript"
 import { Adapter, AbstractFactory, Strategy } from "#std/patterns"
@@ -90,11 +90,13 @@ export const NodePaths = implementation({
 
 /**
  * tsx loader
- * Runs the TypeScript modules of the project as they are.
+ * Runs the TypeScript modules of the project as they are; the language they name is the engine's own (since g91), as
+ * a peer dependency: a library published once runs with whichever generation reads it.
  */
 export const TsxLoader = implementation({
   owner: "trame", implements: [ModuleLoader],
   packages: [TsxPackage],
+  deps: { prelude: Prelude, names: LanguageNames, specifiers: NodeModuleSpecifiers, language: TypeScript },
   body: code.file("./code/platform/tsx-loader.ts"),
 })
 
