@@ -1363,3 +1363,18 @@ export const G92 = release({
   archive: "10418831c37c9ead",
   assembledBy: G91,
 })
+
+/**
+ * Generation 93
+ */
+export const G93 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g93",
+  date: "2026-11-01",
+  what: "E1g: the names of a project's libraries are led to their real paths (through a link, a module would be read twice); a version published to the registry holds its manifest (ES modules); the launcher sees a published engine's missing packages as ES modules resolve them",
+  fingerprint: "524fe0849917ff93",
+  language: "shared",
+  archive: "10418831c37c9ead",
+  assembledBy: G92,
+})

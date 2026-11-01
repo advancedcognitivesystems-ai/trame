@@ -1985,6 +1985,16 @@
     "seal": "9f6f779b5657d0facf1c95725b919a5c612298c65c07da992b379b78415a7c0b"
   },
   {
+    "node": "commands.Advance",
+    "at": "2026-11-01",
+    "source": "deployed",
+    "value": 1,
+    "fingerprint": "95d50238",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "0cc08f29a628b04a1780388890e3699b35b7066c21b0912b25b40b79b808ed18"
+  },
+  {
     "node": "sdlc.CandidateKeepsTheLaws",
     "at": "2026-11-01",
     "source": "check",
@@ -2055,6 +2065,18 @@
     "by": "claude",
     "signature": "attribution",
     "seal": "bca123f94597b63d554581dffe536d3fd4005e3a98f708bd0248c6b7cfaf3523"
+  },
+  {
+    "node": "sdlc.CandidateKeepsTheLaws",
+    "at": "2026-11-01",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "b04dbc6a",
+    "code": "310b2afb",
+    "engine": "ef8def1ed0ea0f08",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "556b8388471096db794b5083503b37d9dc438a7fa04b7c8b83ac2dcf742ff68b"
   },
   {
     "node": "sdlc.CandidateRunsOnTheMachine",
@@ -2129,6 +2151,18 @@
     "seal": "38052e8404548a94c222187af5d15c918dab4fae39cd15ebfba0f5f7fc1d409a"
   },
   {
+    "node": "sdlc.CandidateRunsOnTheMachine",
+    "at": "2026-11-01",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "b04dbc6a",
+    "code": "48d65ea0",
+    "engine": "ef8def1ed0ea0f08",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "63efc4ba19131c230c2538ee2a93b3aa01f1968baeaacf7b26e9b55e13de7527"
+  },
+  {
     "node": "sdlc.EngineCandidate",
     "at": "2026-11-01",
     "source": "built",
@@ -2199,6 +2233,18 @@
     "signature": "attribution",
     "engine": "92566816ba1ae174",
     "seal": "526fd649fda7986b28ff20fd4d64e5b4bfff69bfc356521b61eba0d0964d5544"
+  },
+  {
+    "node": "sdlc.EngineCandidate",
+    "at": "2026-11-01",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "3f92f658b945125583569fbf006a3898badb97b74c0f3c6d157a5084e9792988",
+    "code": "9521813c",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "ef8def1ed0ea0f08",
+    "seal": "2124df39a7a9650e030bb55d25cf1312627fa5f0b62beafec0af8c8253b00281"
   },
   {
     "node": "sdlc.GraphPage",
@@ -2273,6 +2319,18 @@
     "seal": "9ae804d94a3d6a44e998f4500d4f106cc022834c5b2f248a34094007448050c3"
   },
   {
+    "node": "sdlc.GraphPage",
+    "at": "2026-11-01",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "e0f0aba5c965714d1f1d534a0f2bf4dd699375659d16cbc88927638666f28e95",
+    "code": "53b60a9c",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "ef8def1ed0ea0f08",
+    "seal": "5ba6f3110363a2fe73f4ea5ae6fe6561cbd75d54d1bd3d2d19aa6864a6d96af5"
+  },
+  {
     "node": "sdlc.GraphPageOpens",
     "at": "2026-11-01",
     "source": "check",
@@ -2345,6 +2403,18 @@
     "seal": "2fa1fbf3eee050ef49c592e5b09d465426c56ea189277815986be7e7ce1dd24b"
   },
   {
+    "node": "sdlc.GraphPageOpens",
+    "at": "2026-11-01",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "e615ea31",
+    "code": "db8bd66c",
+    "engine": "ef8def1ed0ea0f08",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "226a79472618aceaa64e27210f7ffb7a254dd61afbe1532b2eff6e1325e4cf29"
+  },
+  {
     "node": "sdlc.NextGeneration",
     "at": "2026-11-01",
     "source": "shipped",
@@ -2409,6 +2479,17 @@
     "by": "claude",
     "signature": "attribution",
     "seal": "fd75c297e72a1035bc1bd7cf35ae185f6bb77d1eb8b9932cb55d5e70030761fa"
+  },
+  {
+    "node": "sdlc.NextGeneration",
+    "at": "2026-11-01",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "886b150e",
+    "url": "evidence/shipments/NextGeneration-2026-11-01-886b150e.json",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "e4f10a446ae27de95ebdca4b0268f8733838295797c7d93022f4c5e4d5f7c262"
   },
   {
     "node": "sdlc.PageProgram",
@@ -2479,7 +2560,7 @@
     "code": "47c449a6",
     "by": "claude",
     "signature": "attribution",
-    "engine": "92566816ba1ae174",
-    "seal": "2fada154794b1906c4dde2f1a203071973f168af7368fecb38d7c1d94e924ead"
+    "engine": "ef8def1ed0ea0f08",
+    "seal": "77d0931ebd6eeb963be8d187de67ab2709b1fa0d6256102283c7a330e939e492"
   }
 ]
