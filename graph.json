@@ -12118,7 +12118,7 @@
       "id": "platform.AmendmentsInPlace",
       "kind": "binding",
       "title": "Amendments go in the sources",
-      "source": "src/platform.ts:623",
+      "source": "src/platform.ts:661",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -12374,7 +12374,6 @@
       "kind": "implementation",
       "title": "Packages by their local path",
       "source": "src/platform.ts:593",
-      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -12386,6 +12385,44 @@
         "body": {
           "file": "./code/platform/local-paths.ts",
           "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "platform.LocalRegistry",
+      "kind": "implementation",
+      "title": "Packages from the local registry",
+      "source": "src/platform.ts:619",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "trees": "architecture.FileTrees",
+          "writing": "architecture.FileWriting",
+          "reading": "architecture.FileReading",
+          "paths": "architecture.Paths",
+          "place": "platform.LocalRegistryPlace"
+        },
+        "body": {
+          "file": "./code/platform/local-registry.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "platform.LocalRegistryPlace",
+      "kind": "decision",
+      "title": "Where the local registry is",
+      "source": "src/platform.ts:605",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "directory": ".trame/registry"
+        },
+        "rejected": {
+          "A directory of the repository, kept in git": "each version would be there twice, in its library's releases and in the registry",
+          "npm's own cache": "npm owns it and empties it; a version published here must stay"
         }
       },
       "diagnostics": []
@@ -12699,17 +12736,36 @@
       "diagnostics": []
     },
     {
-      "id": "platform.PackagesByLocalPath",
-      "kind": "binding",
-      "title": "Packages come from their local path, for now",
-      "source": "src/platform.ts:605",
+      "id": "platform.PackagesByOrigin",
+      "kind": "implementation",
+      "title": "Packages by their origin",
+      "source": "src/platform.ts:631",
       "status": "held",
       "fields": {
         "owner": "trame",
-        "context": "The language, std, ci and the projects that use them share one repository (E1): each is a package of its own, used by its name, but all of them are on this machine.",
-        "consequences": "The import map leads each name through a link under .trame/ when the package is outside the project; moving a package to a registry is another realization of the same port, the code that uses it untouched.",
+        "deps": {
+          "path": "platform.LocalPaths",
+          "registry": "platform.LocalRegistry"
+        },
+        "body": {
+          "file": "./code/platform/packages-by-origin.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "platform.PackagesByTheirOrigin",
+      "kind": "binding",
+      "title": "Each package comes from where its reference says",
+      "source": "src/platform.ts:643",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "Each project names its packages by their names (E1); where a package comes from is the configuration the graph holds for each reference: a library developed beside the project is reached by its path, a version published from the registry (decided 1 November).",
+        "consequences": "The import map leads each name to where the strategy placed the package, through a link under .trame/; npm is one more origin, the code that uses a package untouched.",
         "rejected": {
-          "A registry from the start": "a publication at each change of std or of the language, while they change with every generation",
+          "One origin for every package of a project": "a library developed beside the project and a version published elsewhere are both real cases",
           "A link under node_modules": "the TypeScript compiler refuses a module of TypeScript found there"
         }
       },
@@ -16096,7 +16152,7 @@
       },
       "result": {
         "path": "out/local/trame-cli.ts",
-        "code": "27f4d553"
+        "code": "4cb09da5"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -22102,6 +22158,11 @@
     {
       "from": "command-scenarios.ManifestWritten",
       "to": "commands.WriteManifest",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.ManifestWritten",
+      "to": "platform.PackagesByOrigin",
       "kind": "verifies"
     },
     {
@@ -29605,6 +29666,36 @@
       "kind": "deps"
     },
     {
+      "from": "platform.LocalRegistry",
+      "to": "std/tooling.PackageSources",
+      "kind": "implements"
+    },
+    {
+      "from": "platform.LocalRegistry",
+      "to": "architecture.FileTrees",
+      "kind": "deps"
+    },
+    {
+      "from": "platform.LocalRegistry",
+      "to": "architecture.FileWriting",
+      "kind": "deps"
+    },
+    {
+      "from": "platform.LocalRegistry",
+      "to": "architecture.FileReading",
+      "kind": "deps"
+    },
+    {
+      "from": "platform.LocalRegistry",
+      "to": "architecture.Paths",
+      "kind": "deps"
+    },
+    {
+      "from": "platform.LocalRegistry",
+      "to": "platform.LocalRegistryPlace",
+      "kind": "deps"
+    },
+    {
       "from": "platform.MemoryFiles",
       "to": "architecture.FileReading",
       "kind": "implements"
@@ -30010,27 +30101,42 @@
       "kind": "deps"
     },
     {
-      "from": "platform.PackagesByLocalPath",
+      "from": "platform.PackagesByOrigin",
+      "to": "std/tooling.PackageSources",
+      "kind": "implements"
+    },
+    {
+      "from": "platform.PackagesByOrigin",
       "to": "platform.LocalPaths",
+      "kind": "deps"
+    },
+    {
+      "from": "platform.PackagesByOrigin",
+      "to": "platform.LocalRegistry",
+      "kind": "deps"
+    },
+    {
+      "from": "platform.PackagesByTheirOrigin",
+      "to": "platform.PackagesByOrigin",
       "kind": "chooses"
     },
     {
-      "from": "platform.PackagesByLocalPath",
+      "from": "platform.PackagesByTheirOrigin",
       "to": "architecture.Local",
       "kind": "environments"
     },
     {
-      "from": "platform.PackagesByLocalPath",
+      "from": "platform.PackagesByTheirOrigin",
       "to": "architecture.Test",
       "kind": "environments"
     },
     {
-      "from": "platform.PackagesByLocalPath",
+      "from": "platform.PackagesByTheirOrigin",
       "to": "std/patterns.Adapter",
       "kind": "follows"
     },
     {
-      "from": "platform.PackagesByLocalPath",
+      "from": "platform.PackagesByTheirOrigin",
       "to": "product.ReplaceableTechnology",
       "kind": "serves"
     },
@@ -30741,7 +30847,7 @@
     },
     {
       "from": "principles.PackagesByName",
-      "to": "platform.LocalPaths",
+      "to": "platform.PackagesByOrigin",
       "kind": "appliedBy"
     },
     {

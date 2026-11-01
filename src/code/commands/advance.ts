@@ -333,8 +333,8 @@ const body = (deps: Deps): Handler => async (req) => {
     const projects = [deps.example, ...libraries.map((lib) => lib.path)]
     if (!existsSync(archived)) {
       for (const d of [...language, ...projects]) trees.copy(join(root, d), join(archived, d))
-      // The projects' sources only: what they write, a generation writes again.
-      for (const project of projects) for (const written of [layout.documents, layout.graph, layout.snapshot]) trees.remove(join(archived, project, written))
+      // The projects' sources only: what they write, a generation writes again; their links to packages, it places again.
+      for (const project of projects) for (const written of [layout.documents, layout.graph, layout.snapshot, layout.libraryLinks]) trees.remove(join(archived, project, written))
       write(messages.archived(relative(root, archived)))
     }
     const by = messages.assembledBy(inPlace, !!shown.length, layout.differences)

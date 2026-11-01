@@ -145,7 +145,10 @@ export const ChangeWay = { chosen: "chosen", cited: "cited", code: "code" } as c
 export type ChangeWay = (typeof ChangeWay)[keyof typeof ChangeWay]
 /** How an amendment is declared (since g85): the function that makes one, and the names of what it says. */
 export const AmendmentField = { facade: "amend", owner: "owner", why: "why", from: "from", until: "until", source: "source" } as const
-export const PackageField = { name: "packageName", version: "version", ceiling: "holdsBelow", prepare: "prepare", effects: "declaredEffects" } as const
+export const PackageField = { name: "packageName", version: "version", ceiling: "holdsBelow", prepare: "prepare", effects: "declaredEffects", joins: "joins", from: "from", at: "at" } as const
+/** How a package of Trame takes part in a graph (since g91): the language it is written in, a library whose nodes join it. */
+export const PackageJoins = { language: "language", library: "library" } as const
+export type PackageJoins = ValueOf<typeof PackageJoins>
 export type PackageField = ValueOf<typeof PackageField>
 
 /** The edges of a release that the engine writes (trame advance): the kind of a release declares them under these names. */

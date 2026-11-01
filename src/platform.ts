@@ -598,20 +598,58 @@ export const LocalPaths = implementation({
 })
 
 /**
- * Packages come from their local path, for now
- * The language and the libraries a project uses are directories of this repository: each is reached by its path, while
- * a registry is the strategy to come, once a package is published.
+ * Where the local registry is
+ * The directory, under the home of whoever runs Trame, where the versions published on this machine are kept side by
+ * side: name, then version.
  */
-export const PackagesByLocalPath = binding({
+export const LocalRegistryPlace = decision<{ directory: string }>({
   owner: "trame",
-  chooses: [LocalPaths],
+  value: { directory: ".trame/registry" },
+  rejected: {
+    "A directory of the repository, kept in git": "each version would be there twice, in its library's releases and in the registry",
+    "npm's own cache": "npm owns it and empties it; a version published here must stay",
+  },
+})
+
+/**
+ * Packages from the local registry
+ * A version published on this machine: reached through a link to it, published once by a release or the promotion of
+ * a generation, its links followed so that it holds what it needs.
+ */
+export const LocalRegistry = implementation({
+  owner: "trame",
+  implements: [PackageSources],
+  deps: { trees: FileTrees, writing: FileWriting, reading: FileReading, paths: Paths, place: LocalRegistryPlace },
+  body: code.file("./code/platform/local-registry.ts"),
+})
+
+/**
+ * Packages by their origin
+ * Each reference says where its package comes from (by its path, from the registry): the strategy it names is applied;
+ * a version is published to the registry.
+ */
+export const PackagesByOrigin = implementation({
+  owner: "trame",
+  implements: [PackageSources],
+  deps: { path: LocalPaths, registry: LocalRegistry },
+  body: code.file("./code/platform/packages-by-origin.ts"),
+})
+
+/**
+ * Each package comes from where its reference says
+ * The language, std, geometry and the projects that use them may be reached by their path (a package developed beside
+ * the project) or from the registry of this machine (a version published); npm will be one more origin.
+ */
+export const PackagesByTheirOrigin = binding({
+  owner: "trame",
+  chooses: [PackagesByOrigin],
   environments: [Local, Test],
   follows: [Adapter],
   serves: [ReplaceableTechnology],
-  context: "The language, std, ci and the projects that use them share one repository (E1): each is a package of its own, used by its name, but all of them are on this machine.",
-  consequences: "The import map leads each name through a link under .trame/ when the package is outside the project; moving a package to a registry is another realization of the same port, the code that uses it untouched.",
+  context: "Each project names its packages by their names (E1); where a package comes from is the configuration the graph holds for each reference: a library developed beside the project is reached by its path, a version published from the registry (decided 1 November).",
+  consequences: "The import map leads each name to where the strategy placed the package, through a link under .trame/; npm is one more origin, the code that uses a package untouched.",
   rejected: {
-    "A registry from the start": "a publication at each change of std or of the language, while they change with every generation",
+    "One origin for every package of a project": "a library developed beside the project and a version published elsewhere are both real cases",
     "A link under node_modules": "the TypeScript compiler refuses a module of TypeScript found there",
   },
 })

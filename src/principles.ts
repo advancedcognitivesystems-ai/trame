@@ -15,7 +15,7 @@ import { ShipOnlyWhatHolds, SdlcEvidence, ShippingRecords } from "./shipping"
 import { NextGeneration, CandidateKeepsTheLaws } from "./sdlc"
 import { DeliveredStyle } from "./delivery"
 import { AcceptCandidate } from "./generations"
-import { NodePlatform, NodeMachine, InMemoryScenarios, EsbuildBundles, TreeSitterReads, TsxRuns, CompilerReadsDeclarations, EngineFilesBesideCode, LocalPaths } from "./platform"
+import { NodePlatform, NodeMachine, InMemoryScenarios, EsbuildBundles, TreeSitterReads, TsxRuns, CompilerReadsDeclarations, EngineFilesBesideCode, PackagesByOrigin } from "./platform"
 import { Strategy, Adapter, Bridge, AbstractFactory, Repository } from "#std/patterns"
 import { DocumentsInMarkdown, FiguresInMermaid, TerminalInText, TerminalFiguresAsText, PageInHtml, PageFiguresDrawn } from "./rendering"
 import { CompileExample, KindLaws, BuildLikeBefore, ExpectedDifferences } from "./scenarios"
@@ -365,7 +365,7 @@ export const PackagesByName = adr({
     "Trame installed from a registry at once": "a publication at each generation while the language changes with each one; the registry is the second strategy of the same port",
   },
   serves: [WrittenOnce],
-  appliedBy: [Project, WriteManifest, LocalPaths, Advance, Laws, Init],
+  appliedBy: [Project, WriteManifest, PackagesByOrigin, Advance, Laws, Init],
 })
 
 /**

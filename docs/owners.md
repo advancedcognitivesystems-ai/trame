@@ -5,7 +5,7 @@
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
 | Trame's maintainers | 0 | 0 | 3 | 0 |
-| trame | 0 | 0 | 9 | 647 |
+| trame | 0 | 0 | 9 | 650 |
 
 <a id="Trame's maintainers"></a>
 
@@ -392,7 +392,9 @@
 | [Scenarios run in memory](platform.md#InMemoryScenarios) | Technical choice | **held** |
 | [Amendments in place](platform.md#InPlaceSources) | Implementation | **held** |
 | [Lines shown on an exit in test](platform.md#LinesOnExit) | Decision |  |
-| [Packages by their local path](platform.md#LocalPaths) | Implementation | **held** |
+| [Packages by their local path](platform.md#LocalPaths) | Implementation |  |
+| [Packages from the local registry](platform.md#LocalRegistry) | Implementation |  |
+| [Where the local registry is](platform.md#LocalRegistryPlace) | Decision |  |
 | [Files in memory, over the disk](platform.md#MemoryFiles) | Implementation | **held** |
 | [A server in memory](platform.md#MemoryHttpServer) | Function | **held** |
 | [Temporary directories in memory](platform.md#MemoryTemporary) | Decision |  |
@@ -410,7 +412,8 @@
 | [Node timer](platform.md#NodeTimer) | Implementation | **held** |
 | [No registry in test](platform.md#NoReportsInTest) | Function | **held** |
 | [npm's reports](platform.md#NpmReports) | Implementation | **unknown** |
-| [Packages come from their local path, for now](platform.md#PackagesByLocalPath) | Technical choice | **held** |
+| [Packages by their origin](platform.md#PackagesByOrigin) | Implementation | **held** |
+| [Each package comes from where its reference says](platform.md#PackagesByTheirOrigin) | Technical choice | **held** |
 | [Page resources](platform.md#PageResources) | Implementation | **held** |
 | [TypeScript compiler](platform.md#RealTypeScript) | Implementation | **held** |
 | [Results kept in the process](platform.md#ResultsInTheProcess) | Implementation | **held** |

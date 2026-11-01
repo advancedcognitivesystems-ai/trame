@@ -51,6 +51,22 @@ When the engine exits during a scenario, the error says the last lines it printe
 - Decided by: trame
 - Used by: [Terminal in memory](#MemoryTerminal)
 
+<a id="LocalRegistryPlace"></a>
+
+### Where the local registry is
+
+`LocalRegistryPlace` · `src/platform.ts:605`
+
+The directory, under the home of whoever runs Trame, where the versions published on this machine are kept side by side: name, then version.
+
+| Case | Value |
+|---|---|
+| directory | .trame/registry |
+
+- Decided by: trame
+- Rejected: A directory of the repository, kept in git, each version would be there twice, in its library's releases and in the registry; npm's own cache, npm owns it and empties it; a version published here must stay
+- Used by: [Packages from the local registry](#LocalRegistry)
+
 <a id="MemoryTemporary"></a>
 
 ### Temporary directories in memory
@@ -253,7 +269,7 @@ The first strategy of where an amendment goes: written in the sources, at the en
 
 ### Packages by their local path
 
-`LocalPaths` · `src/platform.ts:593` · status: **held**
+`LocalPaths` · `src/platform.ts:593`
 
 A package on this machine (the generation a project pins, a library, a version it froze): reached where it is when it lies inside the project, through a link under the project's directory of links otherwise.
 
@@ -263,8 +279,22 @@ A package on this machine (the generation a project pins, a library, a version i
 - Effects: write
 - Implements: [Where a package comes from](../std/docs/tooling.md#PackageSources)
 - Verified by: [The manifest written](command-scenarios.md#ManifestWritten)
-- Chosen by: [Packages come from their local path, for now](#PackagesByLocalPath)
-- Applies: [A package is used by its name](principles.md#PackagesByName)
+- Used by: [Packages by their origin](#PackagesByOrigin)
+
+<a id="LocalRegistry"></a>
+
+### Packages from the local registry
+
+`LocalRegistry` · `src/platform.ts:619`
+
+A version published on this machine: reached through a link to it, published once by a release or the promotion of a generation, its links followed so that it holds what it needs.
+
+- Owner: trame
+- Parameters: `trees` ← [File trees](architecture.md#FileTrees) · `writing` ← [File writing](architecture.md#FileWriting) · `reading` ← [File reading](architecture.md#FileReading) · `paths` ← [Paths](architecture.md#Paths) · `place` ← [Where the local registry is](#LocalRegistryPlace)
+- Body: `./code/platform/local-registry.ts` (typescript)
+- Effects: read, write
+- Implements: [Where a package comes from](../std/docs/tooling.md#PackageSources)
+- Used by: [Packages by their origin](#PackagesByOrigin)
 
 <a id="MemoryFiles"></a>
 
@@ -416,6 +446,23 @@ The registry's reports on the packages a project installs, asked of npm's comman
 - Chosen by: [On a machine, Node.js reads, writes and runs](#NodeMachine)
 - Verified by: [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine)
 
+<a id="PackagesByOrigin"></a>
+
+### Packages by their origin
+
+`PackagesByOrigin` · `src/platform.ts:631` · status: **held**
+
+Each reference says where its package comes from (by its path, from the registry): the strategy it names is applied; a version is published to the registry.
+
+- Owner: trame
+- Parameters: `path` ← [Packages by their local path](#LocalPaths) · `registry` ← [Packages from the local registry](#LocalRegistry)
+- Body: `./code/platform/packages-by-origin.ts` (typescript)
+- Effects: read, write
+- Implements: [Where a package comes from](../std/docs/tooling.md#PackageSources)
+- Verified by: [The manifest written](command-scenarios.md#ManifestWritten)
+- Chosen by: [Each package comes from where its reference says](#PackagesByTheirOrigin)
+- Applies: [A package is used by its name](principles.md#PackagesByName)
+
 <a id="PageResources"></a>
 
 ### Page resources
@@ -551,7 +598,7 @@ The syntax trees of the bodies, with web-tree-sitter and the grammars that the l
 
 ### Amendments go in the sources
 
-`AmendmentsInPlace` · `src/platform.ts:623` · status: **held**
+`AmendmentsInPlace` · `src/platform.ts:661` · status: **held**
 
 Until the repository takes them as pull requests, an amendment is written where the graph is: in its sources.
 
@@ -787,31 +834,31 @@ Consequences: Node's built-in modules appear only in these implementations; movi
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
 - Applies: [A technology is chosen in one node](principles.md#TechnologyInOneNode)
 
-<a id="PackagesByLocalPath"></a>
+<a id="PackagesByTheirOrigin"></a>
 
-### Packages come from their local path, for now
+### Each package comes from where its reference says
 
-`PackagesByLocalPath` · `src/platform.ts:605` · status: **held**
+`PackagesByTheirOrigin` · `src/platform.ts:643` · status: **held**
 
-The language and the libraries a project uses are directories of this repository: each is reached by its path, while a registry is the strategy to come, once a package is published.
+The language, std, geometry and the projects that use them may be reached by their path (a package developed beside the project) or from the registry of this machine (a version published); npm will be one more origin.
 
 In [Local](architecture.md#Local), [Test](architecture.md#Test):
 
 | Port | Answered by | Which is |
 |---|---|---|
-| [Where a package comes from](../std/docs/tooling.md#PackageSources) | [Packages by their local path](#LocalPaths) | an implementation |
+| [Where a package comes from](../std/docs/tooling.md#PackageSources) | [Packages by their origin](#PackagesByOrigin) | an implementation |
 
-Context: The language, std, ci and the projects that use them share one repository (E1): each is a package of its own, used by its name, but all of them are on this machine.
+Context: Each project names its packages by their names (E1); where a package comes from is the configuration the graph holds for each reference: a library developed beside the project is reached by its path, a version published from the registry (decided 1 November).
 
-Consequences: The import map leads each name through a link under .trame/ when the package is outside the project; moving a package to a registry is another realization of the same port, the code that uses it untouched.
+Consequences: The import map leads each name to where the strategy placed the package, through a link under .trame/; npm is one more origin, the code that uses a package untouched.
 
 | Rejected | Why |
 |---|---|
-| A registry from the start | a publication at each change of std or of the language, while they change with every generation |
+| One origin for every package of a project | a library developed beside the project and a version published elsewhere are both real cases |
 | A link under node_modules | the TypeScript compiler refuses a module of TypeScript found there |
 
 - Decided by: trame
-- Chooses: [Packages by their local path](#LocalPaths)
+- Chooses: [Packages by their origin](#PackagesByOrigin)
 - In: [Local](architecture.md#Local), [Test](architecture.md#Test)
 - Follows: [Adapter](../std/docs/patterns.md#Adapter)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)

@@ -50,12 +50,12 @@
 | [Commands of a program](../std/docs/tooling.md#ProgramCommands) | [Node's command line](../std/docs/tooling.md#NodeProgramCommands) | — | — |
 | [Headless browser](../std/docs/tooling.md#HeadlessBrowser) | [Chromium, driven by Playwright](../std/docs/tooling.md#PlaywrightBrowser) | [A browser kept in memory](../std/docs/tooling.md#BrowserInMemory) | — |
 | [Browser script](../std/docs/tooling.md#BrowserScripted) | — | [A browser kept in memory](../std/docs/tooling.md#BrowserInMemory) | — |
-| [Where a package comes from](../std/docs/tooling.md#PackageSources) | [Packages by their local path](platform.md#LocalPaths) | [Packages by their local path](platform.md#LocalPaths) | — |
+| [Where a package comes from](../std/docs/tooling.md#PackageSources) | [Packages by their origin](platform.md#PackagesByOrigin) | [Packages by their origin](platform.md#PackagesByOrigin) | — |
 
 | Pattern | Status | Followed by |
 |---|---|---|
 | [Strategy](../std/docs/patterns.md#Strategy) | **held** | [Scenarios run in memory](platform.md#InMemoryScenarios), [A run is kept while what it reads is as it was](platform.md#RunsByWhatTheyRead), [Documents in Markdown](rendering.md#DocumentsInMarkdown), [Figures in Mermaid](rendering.md#FiguresInMermaid), [The terminal in plain text](rendering.md#TerminalInText), [Figures in the terminal, as text](rendering.md#TerminalFiguresAsText), [The page in HTML](rendering.md#PageInHtml), [The page's figures in SVG](rendering.md#PageFiguresDrawn), [The SDLC in memory](sdlc.md#SdlcInMemory), [Evidence sealed by attribution](shipping.md#SealedByAttribution), [In memory](../std/docs/scenarios.md#InMemory) |
-| [Adapter](../std/docs/patterns.md#Adapter) | **held** | [The browser runs the page](browser.md#TheBrowserRunsThePage), [NodePlatform](platform.md#NodePlatform), [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine), [Scenarios write in memory, over the disk](platform.md#FilesInMemoryOverTheDisk), [On a machine, runs are kept on disk](platform.md#RunsKeptOnDisk), [In the scenarios, runs are kept in the process](platform.md#RunsKeptInTheProcess), [esbuild bundles the page's program](platform.md#EsbuildBundles), [tree-sitter reads the bodies](platform.md#TreeSitterReads), [tsx runs TypeScript](platform.md#TsxRuns), [The TypeScript compiler reads the declarations](platform.md#CompilerReadsDeclarations), [The engine's own files sit beside its code](platform.md#EngineFilesBesideCode), [Packages come from their local path, for now](platform.md#PackagesByLocalPath), [Amendments go in the sources](platform.md#AmendmentsInPlace), [The SDLC on the machine](sdlc.md#SdlcOnTheMachine) |
+| [Adapter](../std/docs/patterns.md#Adapter) | **held** | [The browser runs the page](browser.md#TheBrowserRunsThePage), [NodePlatform](platform.md#NodePlatform), [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine), [Scenarios write in memory, over the disk](platform.md#FilesInMemoryOverTheDisk), [On a machine, runs are kept on disk](platform.md#RunsKeptOnDisk), [In the scenarios, runs are kept in the process](platform.md#RunsKeptInTheProcess), [esbuild bundles the page's program](platform.md#EsbuildBundles), [tree-sitter reads the bodies](platform.md#TreeSitterReads), [tsx runs TypeScript](platform.md#TsxRuns), [The TypeScript compiler reads the declarations](platform.md#CompilerReadsDeclarations), [The engine's own files sit beside its code](platform.md#EngineFilesBesideCode), [Each package comes from where its reference says](platform.md#PackagesByTheirOrigin), [Amendments go in the sources](platform.md#AmendmentsInPlace), [The SDLC on the machine](sdlc.md#SdlcOnTheMachine) |
 | [Bridge](../std/docs/patterns.md#Bridge) | **held** | [Documents in Markdown](rendering.md#DocumentsInMarkdown), [The terminal in plain text](rendering.md#TerminalInText), [The page in HTML](rendering.md#PageInHtml) |
 | [Abstract Factory](../std/docs/patterns.md#AbstractFactory) | **held** | [NodePlatform](platform.md#NodePlatform), [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine), [Scenarios run in memory](platform.md#InMemoryScenarios) |
 
@@ -445,31 +445,31 @@ Context: A frozen generation runs from its own directory, and reaches the shared
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
 - Applies: [A technology is chosen in one node](principles.md#TechnologyInOneNode)
 
-<a id="PackagesByLocalPath"></a>
+<a id="PackagesByTheirOrigin"></a>
 
-### Packages come from their local path, for now
+### Each package comes from where its reference says
 
-`PackagesByLocalPath` · `src/platform.ts:605` · status: **held**
+`PackagesByTheirOrigin` · `src/platform.ts:643` · status: **held**
 
-The language and the libraries a project uses are directories of this repository: each is reached by its path, while a registry is the strategy to come, once a package is published.
+The language, std, geometry and the projects that use them may be reached by their path (a package developed beside the project) or from the registry of this machine (a version published); npm will be one more origin.
 
 In [Local](architecture.md#Local), [Test](architecture.md#Test):
 
 | Port | Answered by | Which is |
 |---|---|---|
-| [Where a package comes from](../std/docs/tooling.md#PackageSources) | [Packages by their local path](platform.md#LocalPaths) | an implementation |
+| [Where a package comes from](../std/docs/tooling.md#PackageSources) | [Packages by their origin](platform.md#PackagesByOrigin) | an implementation |
 
-Context: The language, std, ci and the projects that use them share one repository (E1): each is a package of its own, used by its name, but all of them are on this machine.
+Context: Each project names its packages by their names (E1); where a package comes from is the configuration the graph holds for each reference: a library developed beside the project is reached by its path, a version published from the registry (decided 1 November).
 
-Consequences: The import map leads each name through a link under .trame/ when the package is outside the project; moving a package to a registry is another realization of the same port, the code that uses it untouched.
+Consequences: The import map leads each name to where the strategy placed the package, through a link under .trame/; npm is one more origin, the code that uses a package untouched.
 
 | Rejected | Why |
 |---|---|
-| A registry from the start | a publication at each change of std or of the language, while they change with every generation |
+| One origin for every package of a project | a library developed beside the project and a version published elsewhere are both real cases |
 | A link under node_modules | the TypeScript compiler refuses a module of TypeScript found there |
 
 - Decided by: trame
-- Chooses: [Packages by their local path](platform.md#LocalPaths)
+- Chooses: [Packages by their origin](platform.md#PackagesByOrigin)
 - In: [Local](architecture.md#Local), [Test](architecture.md#Test)
 - Follows: [Adapter](../std/docs/patterns.md#Adapter)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
@@ -478,7 +478,7 @@ Consequences: The import map leads each name through a link under .trame/ when t
 
 ### Amendments go in the sources
 
-`AmendmentsInPlace` · `src/platform.ts:623` · status: **held**
+`AmendmentsInPlace` · `src/platform.ts:661` · status: **held**
 
 Until the repository takes them as pull requests, an amendment is written where the graph is: in its sources.
 

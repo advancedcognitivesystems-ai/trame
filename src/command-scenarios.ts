@@ -32,7 +32,7 @@ import { ExitStatus, NodeEncodings, NodeModuleSpecifiers } from "#std/system"
 import { Counts, Sequences, Texts, ValueTypes } from "#std/algebra"
 import { ServerSentEvents, Http } from "#std/web"
 import { TrameCommands, Layout, LanguageNames, ProjectStart } from "./conventions"
-import { LocalPaths } from "./platform"
+import { LocalPaths, PackagesByOrigin } from "./platform"
 import { ScenarioMessages, DriverMessages, OutputMessages, CommandMessages, PlatformMessages, AdvanceMessages, CompilerMessages } from "./messages"
 import { GnuPositions, TextFile } from "#std/text"
 
@@ -556,7 +556,7 @@ export const LibraryReleased = scenario({
  */
 export const ManifestWritten = scenario({
   owner: "trame",
-  verifies: [WriteManifest, LocalPaths],
+  verifies: [WriteManifest, PackagesByOrigin, LocalPaths],
   env: Test,
   deps: {
     manifest: WriteManifest, processLog: ProcessLog, writeLog: WriteLog, reading: FileReading, currentProcess: Process, paths: Paths, layout: Layout,

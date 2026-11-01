@@ -34,7 +34,7 @@
 | [Generations: frozen engines](principles.md#GenerationLayer) | **held** | [Advance](commands.md#Advance), [Accept a candidate](generations.md#AcceptCandidate), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore), [Expected differences on the example](scenarios.md#ExpectedDifferences) |
 | [A library is a Trame project, imported by path](principles.md#LibrariesAreProjects) | **held** | [Advance](commands.md#Advance), [Compilation API](engine.md#CompilationApi), [Compiler](engine.md#Compiler), [Project](engine.md#Project), [References](engine.md#References), [What belongs to a library](libraries.md#LibraryOfAModule) |
 | [A library is imported by its name](principles.md#LibrariesByName) | **held** | [Release a version](commands.md#Release), [Write the manifest](commands.md#WriteManifest), [Laws](engine.md#Laws), [Project](engine.md#Project), [Names of a library's releases](libraries.md#LibraryReleaseNames), [A release is settled](libraries.md#ReleaseIsSettled) |
-| [A package is used by its name](principles.md#PackagesByName) | **held** | [Advance](commands.md#Advance), [Start a project](commands.md#Init), [Write the manifest](commands.md#WriteManifest), [Laws](engine.md#Laws), [Project](engine.md#Project), [Packages by their local path](platform.md#LocalPaths) |
+| [A package is used by its name](principles.md#PackagesByName) | **held** | [Advance](commands.md#Advance), [Start a project](commands.md#Init), [Write the manifest](commands.md#WriteManifest), [Laws](engine.md#Laws), [Project](engine.md#Project), [Packages by their origin](platform.md#PackagesByOrigin) |
 | [A product is delivered by a node of the graph](principles.md#DeliveredByTheGraph) | **held** | [Deliver](commands.md#Deliver), [Style of a delivered page](delivery.md#DeliveredStyle) |
 | [The data a product carries is a dataset](principles.md#DataAsDatasets) | **held** | [Fingerprints](engine.md#Fingerprints), [Graph](engine.md#GraphApi) |
 | [A version ships through the graph](principles.md#ShippedThroughTheGraph) | **unknown** | [Record evidence](commands.md#RecordEvidence), [Ship](commands.md#Ship), [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws), [The next generation](sdlc.md#NextGeneration), [Evidence of the SDLC](shipping.md#SdlcEvidence), [Ship only what holds](shipping.md#ShipOnlyWhatHolds), [Where the SDLC's evidence is kept](shipping.md#ShippingRecords) |
@@ -634,7 +634,7 @@ Consequences: A project names the language as it names a library: its import map
 
 - Decided by: trame
 - Serves: [What is generic is written once](product.md#WrittenOnce)
-- Applied by: [Project](engine.md#Project), [Write the manifest](commands.md#WriteManifest), [Packages by their local path](platform.md#LocalPaths), [Advance](commands.md#Advance), [Laws](engine.md#Laws), [Start a project](commands.md#Init)
+- Applied by: [Project](engine.md#Project), [Write the manifest](commands.md#WriteManifest), [Packages by their origin](platform.md#PackagesByOrigin), [Advance](commands.md#Advance), [Laws](engine.md#Laws), [Start a project](commands.md#Init)
 
 <a id="DeliveredByTheGraph"></a>
 

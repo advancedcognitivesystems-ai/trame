@@ -685,7 +685,7 @@ Scenario · `ManifestWritten` · **held**
 
 - Owner: trame
 - Parameters: { manifest: commands.WriteManifest, processLog: architecture.ProcessLog, writeLog: architecture.WriteLog, reading: architecture.FileReading, currentProcess: architecture.Process, paths: architecture.Paths, layout: conventions.Layout, projects: command-scenarios.ScenarioProjects, samples: command-scenarios.ProjectSamples, line: conventions.TrameCommands, exitStatus: std/system.ExitStatus, messages: messages.ScenarioMessages, names: conventions.LanguageNames, specifiers: std/system.NodeModuleSpecifiers, language: typescript.TypeScript, texts: std/algebra.Texts }
-- Verifies: Write the manifest, Packages by their local path
+- Verifies: Write the manifest, Packages by their origin, Packages by their local path
 - In: Test
 - Depends on: Write the manifest, Process log, Write log, File reading, Process, Paths, Project layout, The projects of the repository the scenarios enter, What the scenarios ask of those projects, Trame's commands, Messages of the scenarios, The language's names, TypeScript
 
@@ -3313,6 +3313,14 @@ Decision · `LinesOnExit`
 - Decided by: trame
 - Value: 3
 
+### Where the local registry is
+
+Decision · `LocalRegistryPlace`
+
+- Decided by: trame
+- Value: { directory: .trame/registry }
+- Rejected: A directory of the repository, kept in git, each version would be there twice, in its library's releases and in the registry; npm's own cache, npm owns it and empties it; a version published here must stay
+
 ### Temporary directories in memory
 
 Decision · `MemoryTemporary`
@@ -3425,11 +3433,19 @@ Implementation · `InPlaceSources` · **held**
 
 ### Packages by their local path
 
-Implementation · `LocalPaths` · **held**
+Implementation · `LocalPaths`
 
 - Owner: trame
 - Parameters: { trees: architecture.FileTrees, writing: architecture.FileWriting, paths: architecture.Paths, specifiers: std/system.NodeModuleSpecifiers }
 - Depends on: File trees, File writing, Paths
+
+### Packages from the local registry
+
+Implementation · `LocalRegistry`
+
+- Owner: trame
+- Parameters: { trees: architecture.FileTrees, writing: architecture.FileWriting, reading: architecture.FileReading, paths: architecture.Paths, place: platform.LocalRegistryPlace }
+- Depends on: File trees, File writing, File reading, Paths, Where the local registry is
 
 ### Files in memory, over the disk
 
@@ -3521,6 +3537,14 @@ Implementation · `NpmReports` · **unknown**
 - Parameters: { npm: std/system.NpmCli, values: std/algebra.ValueTypes, counts: std/algebra.Counts, punctuation: documents.Punctuation }
 - Implements: Reports on packages
 - Depends on: Punctuation of documents
+
+### Packages by their origin
+
+Implementation · `PackagesByOrigin` · **held**
+
+- Owner: trame
+- Parameters: { path: platform.LocalPaths, registry: platform.LocalRegistry }
+- Depends on: Packages by their local path, Packages from the local registry
 
 ### Page resources
 
@@ -3693,15 +3717,15 @@ Technical choice · `NodePlatform` · **held**
 - In: Local, Test
 - Serves: A technology is changed in one node
 
-### Packages come from their local path, for now
+### Each package comes from where its reference says
 
-Technical choice · `PackagesByLocalPath` · **held**
+Technical choice · `PackagesByTheirOrigin` · **held**
 
 - Decided by: trame
-- Context: The language, std, ci and the projects that use them share one repository (E1): each is a package of its own, used by its name, but all of them are on this machine.
-- Consequences: The import map leads each name through a link under .trame/ when the package is outside the project; moving a package to a registry is another realization of the same port, the code that uses it untouched.
-- Rejected: A registry from the start, a publication at each change of std or of the language, while they change with every generation; A link under node_modules, the TypeScript compiler refuses a module of TypeScript found there
-- Chooses: Packages by their local path
+- Context: Each project names its packages by their names (E1); where a package comes from is the configuration the graph holds for each reference: a library developed beside the project is reached by its path, a version published from the registry (decided 1 November).
+- Consequences: The import map leads each name to where the strategy placed the package, through a link under .trame/; npm is one more origin, the code that uses a package untouched.
+- Rejected: One origin for every package of a project, a library developed beside the project and a version published elsewhere are both real cases; A link under node_modules, the TypeScript compiler refuses a module of TypeScript found there
+- Chooses: Packages by their origin
 - In: Local, Test
 - Serves: A technology is changed in one node
 
@@ -3958,7 +3982,7 @@ Architecture decision · `PackagesByName` · **held**
 - Consequences: A project names the language as it names a library: its import map, written by trame manifest, leads #trame/kernel and #trame/kinds/* to the generation it pins, through a link under .trame/ that an advance moves with the pin. Its kinds and views are the language's, from the engine that reads it, and those it names besides. The language's home, Trame's repository, reaches them where they are; the engine leads TypeScript to the files where they are, never through a link (g88). A relative import that leaves its package refuses the build and says the name to write (g89). trame init starts a project already named so. Where a package comes from is std's port PackageSources: a local path now, a registry later.
 - Rejected: Relative paths between packages, they hold only while the packages sit side by side, and a frozen copy reaches whatever is there then; A path mapping in each project's compiler options, the program that runs the graph would not read it; the import map is what Node.js and TypeScript both read; Trame installed from a registry at once, a publication at each generation while the language changes with each one; the registry is the second strategy of the same port
 - Serves: What is generic is written once
-- Applied by: Project, Write the manifest, Packages by their local path, Advance, Laws, Start a project
+- Applied by: Project, Write the manifest, Packages by their origin, Advance, Laws, Start a project
 
 ### The prelude: the runtime of the language
 

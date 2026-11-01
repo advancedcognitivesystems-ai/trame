@@ -364,7 +364,7 @@ Consequences: A project names the language as it names a library: its import map
 
 - Decided by: trame
 - Serves: [What is generic is written once](product.md#WrittenOnce)
-- Applied by: [Project](engine.md#Project), [Write the manifest](commands.md#WriteManifest), [Packages by their local path](platform.md#LocalPaths), [Advance](commands.md#Advance), [Laws](engine.md#Laws), [Start a project](commands.md#Init)
+- Applied by: [Project](engine.md#Project), [Write the manifest](commands.md#WriteManifest), [Packages by their origin](platform.md#PackagesByOrigin), [Advance](commands.md#Advance), [Laws](engine.md#Laws), [Start a project](commands.md#Init)
 
 <a id="PreludeLayer"></a>
 

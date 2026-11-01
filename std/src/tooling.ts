@@ -7,6 +7,7 @@ import { implementation } from "#trame/kinds/implementation"
 import { fn } from "#trame/kinds/function"
 import { decision } from "#trame/kinds/decision"
 import { pkg } from "#trame/kinds/package"
+import { vocabulary } from "#trame/kinds/vocabulary"
 import { adr } from "#trame/kinds/adr"
 import { Counts, Texts, ValueTypes } from "./algebra"
 import { Sha256, SeededDraws } from "./algorithms"
@@ -239,16 +240,27 @@ export interface PackageWanted {
   under: string
   /** Its name in the project: what its specifiers start with, after the mark of the import map (#std/algebra). */
   name: string
-  /** Where the package is, absolute: its root, or that of the version wanted. */
-  at: string
+  /** Where the package is, absolute, for a package reached by its path: its root, or that of the version wanted. */
+  at?: string
   /** The version wanted, when one is frozen. */
   version?: string
+  /** Where it comes from, in the words of PackageOrigins: by its path, from a registry. */
+  from?: string
+}
+
+/** A version of a package, published: its name, its version, the directory that holds it. */
+export interface PackagePublished {
+  name: string
+  version: string
+  from: string
 }
 
 /** How a project reaches a package. */
 export interface PackageSource {
   /** Makes the package reachable from the project; gives where its import map leads, relative to the project's root. */
   place(wanted: PackageWanted): string
+  /** Publishes a version where the strategy keeps them (a version is never written twice); gives where it went. */
+  publish(published: PackagePublished): string
 }
 
 /**
@@ -258,7 +270,21 @@ export interface PackageSource {
  * machine, reached through a link under the project), a registry (a package fetched at its version). The project's
  * import map leads to where the strategy placed the package; moving a package elsewhere changes only its source.
  */
-export const PackageSources = port<PackageSource>({ owner: "trame", declaredEffects: { place: ["read", "write"] } })
+export const PackageSources = port<PackageSource>({ owner: "trame", declaredEffects: { place: ["read", "write"], publish: ["read", "write"] } })
+
+/**
+ * Where a package comes from
+ * The origins a reference to a package names: by its path (a directory on the machine, the package as it is or a
+ * version it froze), from a registry (a version published). npm will be one more.
+ */
+export const PackageOrigins = vocabulary({
+  owner: "trame",
+  serves: [RealizedOnce],
+  words: {
+    path: "Reached where it is on the machine, by its path",
+    registry: "Installed at its version from a registry where it was published",
+  },
+})
 
 
 /**

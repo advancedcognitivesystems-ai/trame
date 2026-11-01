@@ -242,6 +242,9 @@ const body = () => ({
   implementationReachesBeyond: (what: string, effects: string, where: string) =>
     `Reaches ${what} (${where}), which may ${effects}: more than its ports promise`,
   packageEffects: () => "What it may do",
+  packageJoins: () => "How it joins the graph",
+  packageFrom: () => "Where it comes from",
+  packageAt: () => "Its path",
   packageEffectsUnsaid: () => "not said: an implementation that imports it cannot promise anything",
   packagePrepare: () => "Once installed",
   packageNotBelow: (version: string, ceiling: string) => `${version} is not below ${ceiling}, where the package is held`,

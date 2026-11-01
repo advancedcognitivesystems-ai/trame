@@ -1,4 +1,4 @@
-import { defineKind, field, optional, hole, doc, keysOf, Status, KindName, PackageField, PackageReport, type Evidence, type Lib, type Node, type View } from "../trame/kernel"
+import { defineKind, field, optional, hole, doc, keysOf, Status, KindName, PackageField, PackageReport, type PackageJoins, type Evidence, type Lib, type Node, type View } from "../trame/kernel"
 import words from "./words"
 
 const say = words()
@@ -16,6 +16,11 @@ const fields = {
   [PackageField.prepare]: optional(field.text(say.packagePrepare())),
   /** What the code it holds may do, in the words of effects (since g83): what an implementation that imports it may do. */
   [PackageField.effects]: optional(field.value<readonly string[]>(say.packageEffects())),
+  /** A package of Trame (since g91): the language the graph is written in, or a library whose nodes join it. */
+  [PackageField.joins]: optional(field.value<PackageJoins>(say.packageJoins())),
+  /** Where it comes from, a word of std's PackageOrigins (by its path, from a registry), and its path when reached by it. */
+  [PackageField.from]: optional(field.text(say.packageFrom())),
+  [PackageField.at]: optional(field.text(say.packageAt())),
 }
 const F = keysOf(fields)
 
@@ -50,12 +55,14 @@ const optionalText = (self: View, name: string, lib: Lib): string | undefined =>
 const kind = defineKind({
   name: KindName.package,
   label: { one: say.packagePackage(), many: say.packagePackages() },
-  renderOwns: [F.packageName, F.version, F.url, F.holdsBelow, F.because, F.prepare, F.declaredEffects],
+  renderOwns: [F.packageName, F.version, F.url, F.holdsBelow, F.because, F.prepare, F.declaredEffects, F.joins, F.from, F.at],
   fields,
   edges: {},
 
   holes(self, g) {
     const { counts, versions } = g.lib
+    // A package of Trame is placed by where it comes from: npm's lockfile and reports say nothing of it.
+    if (optionalText(self, F.joins, g.lib) !== undefined) return []
     const name = textOf(self, F.packageName, g.lib)
     const version = textOf(self, F.version, g.lib)
     const installed = g.installed?.(name)
@@ -79,6 +86,7 @@ const kind = defineKind({
 
   // Without a report, nothing is known of it (the lockfile's disagreement is a hole all the same).
   status(self, g) {
+    if (optionalText(self, F.joins, g.lib) !== undefined) return undefined
     const audit = last(self, PackageReport.audit, g.lib)
     if (!audit) return Status.unknown
     const installed = g.installed?.(textOf(self, F.packageName, g.lib))
@@ -105,6 +113,10 @@ const kind = defineKind({
         ...(ceiling !== undefined ? [{ label: say.packageHoldsBelow(), value: say.packageHeldBelow(doc.ident(ceiling), optionalText(self, F.because, g.lib)) }] : []),
         ...(prepare !== undefined ? [{ label: say.packagePrepare(), value: [doc.ident(prepare)] }] : []),
         { label: say.packageEffects(), value: mayDo(self, g.lib) },
+        ...[F.joins, F.from, F.at].flatMap((f) => {
+          const x = optionalText(self, f, g.lib)
+          return x === undefined ? [] : [{ label: f === F.joins ? say.packageJoins() : f === F.from ? say.packageFrom() : say.packageAt(), value: [doc.ident(x)] }]
+        }),
       ]),
     ]
   },
