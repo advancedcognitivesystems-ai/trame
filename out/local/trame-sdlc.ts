@@ -6,10 +6,10 @@
 import { frozen } from "../../trame/internal"
 import { AttributeSelector } from "../../src/html.ts"
 import { GraphPageSelectors, SdlcWords, TrameSdlc } from "../../src/sdlc.ts"
-import body_valueTypes from "../../std/src/code/algebra/values.ts"
-import body_nodeProgramCommands from "../../std/src/code/tooling/node-commands.ts"
-import body_counts from "../../std/src/code/algebra/counts.ts"
-import body_playwrightBrowser from "../../std/src/code/tooling/playwright-browser.ts"
+import body_valueTypes from "../../std/releases/0.13.0/src/code/algebra/values.ts"
+import body_nodeProgramCommands from "../../std/releases/0.13.0/src/code/tooling/node-commands.ts"
+import body_counts from "../../std/releases/0.13.0/src/code/algebra/counts.ts"
+import body_playwrightBrowser from "../../std/releases/0.13.0/src/code/tooling/playwright-browser.ts"
 import body_openTheGraphPage from "../../src/code/sdlc/open-the-graph-page.ts"
 
 // "Node.js process arguments" · standard

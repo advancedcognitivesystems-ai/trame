@@ -1348,3 +1348,18 @@ export const G91 = release({
   archive: "3b7e0d08b54deb04",
   assembledBy: G90,
 })
+
+/**
+ * Generation 92
+ */
+export const G92 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g92",
+  date: "2026-11-01",
+  what: "E1f: a version is published to the registry of this machine (a library's release; the promotion of a generation, its language copied for real); the engine leads the project's library names too, as peers; the launcher installs the packages of a published engine and runs it with its own tsx",
+  fingerprint: "30caf57f98eafc15",
+  language: "shared",
+  archive: "10418831c37c9ead",
+  assembledBy: G91,
+})

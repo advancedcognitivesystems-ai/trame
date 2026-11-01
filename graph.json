@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-01",
+  "generated": "2026-10-30",
   "nodes": [
     {
       "id": "appearance.ExplorerDrawing",
@@ -16813,6 +16813,7 @@
       "diagnostics": [
         "warning: To ship: The candidate engine is unknown",
         "warning: To ship: The graph page is unknown",
+        "warning: To ship: The page's program is unknown",
         "warning: To ship: The page is assembled is unknown",
         "warning: To ship: The candidate plays the laws is unknown",
         "warning: To ship: The candidate runs on the machine is unknown",
@@ -16886,7 +16887,7 @@
       "kind": "artifact",
       "title": "The page's program",
       "source": "src/sdlc.ts:169",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "out/browser/page-app.ts"
@@ -16895,7 +16896,9 @@
         "path": "out/browser/page-app.ts",
         "code": "47c449a6"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+      ]
     },
     {
       "id": "sdlc.SdlcInMemory",
