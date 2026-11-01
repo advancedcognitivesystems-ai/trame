@@ -668,9 +668,3 @@ Nothing to decide or watch.
 | [TypeScript writer](typescript.md#TypeScriptWriter) | Function | **held** |
 | [Union type](typescript.md#UnionType) | Syntax element | **held** |
 | [Globals that reach outside](typescript.md#WorldGlobals) | Vocabulary |  |
-
-## unassigned
-
-| Severity | What | Where | Owner | Consequence |
-|---|---|---|---|---|
-| warning | Connected to no root (architecture rule, goal) | [The standard library](packages.md#StandardLibrary) | to be assigned |  |

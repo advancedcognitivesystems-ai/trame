@@ -447,6 +447,21 @@
       "diagnostics": []
     },
     {
+      "id": "packages.Language",
+      "kind": "package",
+      "title": "Trame",
+      "source": "src/packages.ts:11",
+      "fields": {
+        "owner": "trame",
+        "packageName": "trame",
+        "version": "91",
+        "joins": "language",
+        "from": "path",
+        "at": "../generations/g91"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "product.OneWriterPerPlace",
       "kind": "goal",
       "title": "Each place is a writer",
@@ -1092,6 +1107,11 @@
     {
       "from": "npm.Npm",
       "to": "product.OneWriterPerPlace",
+      "kind": "serves"
+    },
+    {
+      "from": "packages.Language",
+      "to": "product.RunsElsewhere",
       "kind": "serves"
     },
     {

@@ -2899,6 +2899,7 @@ Package · `StandardLibrary`
 - How it joins the graph: library
 - Where it comes from: path
 - Its path: std/releases/0.13.0
+- Serves: A single source of truth
 
 ### tsx
 

@@ -21,6 +21,32 @@ Quantity · `Angle`
 - Written with: How an angle is written in each of its units.
 - Serves: Geometry written once
 
+## Geometry · Packages
+
+### Trame
+
+Package · `Language`
+
+- Owner: ghalaax
+- Name: trame
+- Version: 91
+- How it joins the graph: language
+- Where it comes from: path
+- Its path: ../../generations/g91
+- Serves: Geometry written once
+
+### The standard library
+
+Package · `StandardLibrary`
+
+- Owner: ghalaax
+- Name: std
+- Version: 0.12.0
+- How it joins the graph: library
+- Where it comes from: path
+- Its path: ../../std/releases/0.12.0
+- Serves: Geometry written once
+
 ## Geometry · Product
 
 ### Geometry written once

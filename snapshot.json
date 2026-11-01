@@ -21177,6 +21177,11 @@
       "kind": "language"
     },
     {
+      "from": "packages.StandardLibrary",
+      "to": "product.SingleSource",
+      "kind": "serves"
+    },
+    {
       "from": "packages.VersionOrder",
       "to": "product.SingleSource",
       "kind": "serves"

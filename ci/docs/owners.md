@@ -4,7 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 0 | 12 |
+| trame | 0 | 0 | 0 | 13 |
 
 <a id="trame"></a>
 
@@ -20,6 +20,7 @@ Nothing to decide or watch.
 | [A workflow of GitHub Actions](github.md#GitHubWorkflow) | Syntax element | **held** |
 | [The actions a workflow uses](github.md#PinnedActions) | Decision |  |
 | [npm](npm.md#Npm) | Standard |  |
+| [Trame](packages.md#Language) | Package |  |
 | [Each place is a writer](product.md#OneWriterPerPlace) | Goal |  |
 | [A shipment runs elsewhere as it runs here](product.md#RunsElsewhere) | Goal |  |
 | [Version 0.1.0](releases.md#R0_1_0) | Release |  |

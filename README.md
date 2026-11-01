@@ -214,7 +214,13 @@ names only those the project carries besides (a library that brings kinds). Tram
 home: it reaches `kinds/` and `trame/` where they are. Where a package comes from is a port of std, `PackageSources`,
 with its strategies: a local path now (`LocalPaths`: the package where it is, or a link under `.trame/` when it lies
 outside the project), a registry later; moving a package out of this repository changes only where it comes from. Since
-g89 a relative import that leaves its package refuses the build, and says which name to write.
+g89 a relative import that leaves its package refuses the build, and says which name to write. Since g91 a project's graph references the packages of Trame it uses, each a `package` node that says how it joins
+the graph (`joins`: the language, a library), where it comes from (`from`: a word of std's `PackageOrigins`, by its
+path or from the registry of this machine) and its path (`at`); `trame manifest` places each one by its origin and
+writes `trame.json` from them (the language as the engine to run, `.trame/trame`; each library as placed, `{ at,
+version }`): a derived file, like the import map. The engine leads `#trame/*` to its own language when it loads a
+project, as a peer dependency. The example and std keep a written pin while an advance moves it (g92 will amend their
+references instead), and a version published to the registry comes with g92.
 
 g54 brought this to the engine without any project using it, and built everything as g53 did; g55 moved the nodes. A
 generation keeps a copy of Trame's libraries beside its graph, since its program imports their bodies (the structures),

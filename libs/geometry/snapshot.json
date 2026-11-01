@@ -26,6 +26,32 @@
       }
     },
     {
+      "id": "packages.Language",
+      "kind": "package",
+      "title": "Trame",
+      "fields": {
+        "owner": "ghalaax",
+        "packageName": "trame",
+        "version": "91",
+        "joins": "language",
+        "from": "path",
+        "at": "../../generations/g91"
+      }
+    },
+    {
+      "id": "packages.StandardLibrary",
+      "kind": "package",
+      "title": "The standard library",
+      "fields": {
+        "owner": "ghalaax",
+        "packageName": "std",
+        "version": "0.12.0",
+        "joins": "library",
+        "from": "path",
+        "at": "../../std/releases/0.12.0"
+      }
+    },
+    {
       "id": "product.GeometryWrittenOnce",
       "kind": "goal",
       "title": "Geometry written once",
@@ -169,6 +195,16 @@
     },
     {
       "from": "angles.Angle",
+      "to": "product.GeometryWrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "packages.Language",
+      "to": "product.GeometryWrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "packages.StandardLibrary",
       "to": "product.GeometryWrittenOnce",
       "kind": "serves"
     },

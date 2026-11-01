@@ -329,6 +329,19 @@
       }
     },
     {
+      "id": "packages.Language",
+      "kind": "package",
+      "title": "Trame",
+      "fields": {
+        "owner": "trame",
+        "packageName": "trame",
+        "version": "91",
+        "joins": "language",
+        "from": "path",
+        "at": "../generations/g91"
+      }
+    },
+    {
       "id": "product.OneWriterPerPlace",
       "kind": "goal",
       "title": "Each place is a writer",
@@ -767,6 +780,11 @@
     {
       "from": "npm.Npm",
       "to": "product.OneWriterPerPlace",
+      "kind": "serves"
+    },
+    {
+      "from": "packages.Language",
+      "to": "product.RunsElsewhere",
       "kind": "serves"
     },
     {

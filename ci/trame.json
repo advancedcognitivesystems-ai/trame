@@ -1,4 +1,5 @@
 {
   "title": "Continuous integration",
-  "engine": "../generations/g89"
+  "engine": ".trame/trame",
+  "libraries": {}
 }

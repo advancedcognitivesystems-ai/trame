@@ -30,6 +30,36 @@
       "diagnostics": []
     },
     {
+      "id": "packages.Language",
+      "kind": "package",
+      "title": "Trame",
+      "source": "src/packages.ts:10",
+      "fields": {
+        "owner": "ghalaax",
+        "packageName": "trame",
+        "version": "91",
+        "joins": "language",
+        "from": "path",
+        "at": "../../generations/g91"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "packages.StandardLibrary",
+      "kind": "package",
+      "title": "The standard library",
+      "source": "src/packages.ts:19",
+      "fields": {
+        "owner": "ghalaax",
+        "packageName": "std",
+        "version": "0.12.0",
+        "joins": "library",
+        "from": "path",
+        "at": "../../std/releases/0.12.0"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "product.GeometryWrittenOnce",
       "kind": "goal",
       "title": "Geometry written once",
@@ -222,6 +252,16 @@
       "from": "angles.AngleSymbols",
       "to": "std/measures.SymbolsLanguage",
       "kind": "language"
+    },
+    {
+      "from": "packages.Language",
+      "to": "product.GeometryWrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "packages.StandardLibrary",
+      "to": "product.GeometryWrittenOnce",
+      "kind": "serves"
     },
     {
       "from": "releases.R0_1_0",

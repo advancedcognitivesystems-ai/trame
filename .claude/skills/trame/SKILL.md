@@ -59,6 +59,8 @@ The repository's `AGENTS.md` is the full guide; read it first, then keep to this
   module with its goal, this guide, the manifest); a library of a domain goes under `libs/` (`libs/geometry`).
 - Every package names what it uses: `#trame/kernel`, `#trame/kinds/<kind>` for the language, `#std/<module>` for a
   library; never a relative path out of the package (refused). `trame manifest` writes where each name leads.
+- The packages of Trame a project uses are `package` nodes of its graph (`joins`, `from`, `at`, `version`): change a
+  version there, then `trame manifest` places it and writes `trame.json`; never edit `trame.json`'s references by hand.
 - A choice is a concept: when someone could do it another way, name a port, its strategies (realizations) and the
   binding that says which applies where; a choice of value stays a decision with what it rejected; what nobody would
   change is just code.

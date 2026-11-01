@@ -208,7 +208,13 @@ that leaves its package refuses the build and says the name to write. Trame's re
 own files reach `kinds/` and `trame/` where they are. Where a package comes from is std's port `PackageSources`: a
 local path now (`LocalPaths`), a registry later. `./trame.sh init "Title" --by <owner>`, run in an empty directory,
 starts a project: its `trame.json` (the generation that runs, the libraries the language's home uses), a first module
-with its goal, this guide and the skill, then its manifest.
+with its goal, this guide and the skill, then its manifest. Since g91 a project's graph references the packages of Trame it uses, each a `package` node that says how it joins
+the graph (`joins`: the language, a library), where it comes from (`from`: a word of std's `PackageOrigins`, by its
+path or from the registry of this machine) and its path (`at`); `trame manifest` places each one by its origin and
+writes `trame.json` from them (the language as the engine to run, `.trame/trame`; each library as placed, `{ at,
+version }`): a derived file, like the import map. The engine leads `#trame/*` to its own language when it loads a
+project, as a peer dependency. The example and std keep a written pin while an advance moves it (g92 will amend their
+references instead), and a version published to the registry comes with g92.
 
 A library is a Trame project another project imports (ADR "A library is a Trame project, imported by path"). The
 project names it in its `trame.json` (`"libraries": { "std": "../std" }`, or `{ "path": "../std", "version": "0.1.0" }`

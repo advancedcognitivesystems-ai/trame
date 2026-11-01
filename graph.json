@@ -10213,9 +10213,7 @@
         "from": "path",
         "at": "std/releases/0.13.0"
       },
-      "diagnostics": [
-        "warning: Connected to no root (architecture rule, goal)"
-      ]
+      "diagnostics": []
     },
     {
       "id": "packages.TsxPackage",
@@ -28207,6 +28205,11 @@
       "from": "messages.ViewWords",
       "to": "messages.Language",
       "kind": "language"
+    },
+    {
+      "from": "packages.StandardLibrary",
+      "to": "product.SingleSource",
+      "kind": "serves"
     },
     {
       "from": "packages.VersionOrder",

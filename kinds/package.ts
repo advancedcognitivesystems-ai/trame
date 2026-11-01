@@ -1,4 +1,4 @@
-import { defineKind, field, optional, hole, doc, keysOf, Status, KindName, PackageField, PackageReport, type PackageJoins, type Evidence, type Lib, type Node, type View } from "../trame/kernel"
+import { defineKind, field, optional, optionalEdge, edge, hole, doc, keysOf, Status, KindName, EdgeName, PackageField, PackageReport, type PackageJoins, type Evidence, type Lib, type Node, type View } from "../trame/kernel"
 import words from "./words"
 
 const say = words()
@@ -57,7 +57,10 @@ const kind = defineKind({
   label: { one: say.packagePackage(), many: say.packagePackages() },
   renderOwns: [F.packageName, F.version, F.url, F.holdsBelow, F.because, F.prepare, F.declaredEffects, F.joins, F.from, F.at],
   fields,
-  edges: {},
+  edges: {
+    // What a package of Trame a project references is for (since g91): the goal it serves.
+    [EdgeName.serves]: optionalEdge(edge.many([KindName.goal], { label: say.adrServes(), inverse: say.adrServedBy() })),
+  },
 
   holes(self, g) {
     const { counts, versions } = g.lib
@@ -144,6 +147,8 @@ interface PackageInput {
   from?: string
   /** Its path from the project, for a package reached by its path: the directory of the version referenced. */
   at?: string
+  /** The goals it serves, for a package of Trame the project references. */
+  serves?: readonly Node<typeof KindName.goal>[]
 }
 
 /** `pkg({ owner, packageName: "esbuild", version: "0.23.1" })` */

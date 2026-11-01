@@ -4,11 +4,12 @@
 
 > **Nothing to report**
 
-| Module | Goals | Standards | Syntax elements | Decisions | Releases | Open issues |
-|---|---|---|---|---|---|---|
-| [Continuous integration · GitHub Actions](github.md) | 0 | 1 | 1 | 1 | 0 | 0 |
-| [Continuous integration · npm](npm.md) | 0 | 1 | 0 | 0 | 0 | 0 |
-| [Continuous integration · Product](product.md) | 2 | 0 | 0 | 0 | 0 | 0 |
-| [Continuous integration · Releases](releases.md) | 0 | 0 | 0 | 0 | 2 | 0 |
-| [Continuous integration · Shell](shell.md) | 0 | 1 | 1 | 0 | 0 | 0 |
-| [Continuous integration · YAML](yaml.md) | 0 | 1 | 1 | 0 | 0 | 0 |
+| Module | Goals | Standards | Syntax elements | Decisions | Releases | Packages | Open issues |
+|---|---|---|---|---|---|---|---|
+| [Continuous integration · GitHub Actions](github.md) | 0 | 1 | 1 | 1 | 0 | 0 | 0 |
+| [Continuous integration · npm](npm.md) | 0 | 1 | 0 | 0 | 0 | 0 | 0 |
+| [Continuous integration · Packages](packages.md) | 0 | 0 | 0 | 0 | 0 | 1 | 0 |
+| [Continuous integration · Product](product.md) | 2 | 0 | 0 | 0 | 0 | 0 | 0 |
+| [Continuous integration · Releases](releases.md) | 0 | 0 | 0 | 0 | 2 | 0 | 0 |
+| [Continuous integration · Shell](shell.md) | 0 | 1 | 1 | 0 | 0 | 0 | 0 |
+| [Continuous integration · YAML](yaml.md) | 0 | 1 | 1 | 0 | 0 | 0 | 0 |

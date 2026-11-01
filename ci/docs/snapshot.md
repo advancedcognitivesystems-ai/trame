@@ -110,6 +110,20 @@ Standard · `Npm`
 - Constants: { install: { value: npm ci, meaning: Installs what the lockfile says, nothing else, after removing node_modules } }
 - Serves: Each place is a writer
 
+## Continuous integration · Packages
+
+### Trame
+
+Package · `Language`
+
+- Owner: trame
+- Name: trame
+- Version: 91
+- How it joins the graph: language
+- Where it comes from: path
+- Its path: ../generations/g91
+- Serves: A shipment runs elsewhere as it runs here
+
 ## Continuous integration · Product
 
 ### Each place is a writer

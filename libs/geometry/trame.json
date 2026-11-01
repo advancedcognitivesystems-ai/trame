@@ -2,9 +2,9 @@
   "title": "Geometry",
   "libraries": {
     "std": {
-      "path": "../../std",
+      "at": ".trame/std",
       "version": "0.12.0"
     }
   },
-  "engine": "../../generations/g89"
+  "engine": ".trame/trame"
 }

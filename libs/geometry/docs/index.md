@@ -4,12 +4,13 @@
 
 > **7 laws held out of 7**
 
-| Module | Goals | Algebraic structures | Decisions | Architecture decisions | Releases | Message catalogs | Quantities | Open issues |
-|---|---|---|---|---|---|---|---|---|
-| [Geometry · Angles](angles.md) | 0 | 0 | 0 | 0 | 0 | 1 | 1 | 0 |
-| [Geometry · Product](product.md) | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Geometry · Releases](releases.md) | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 |
-| [Geometry · Vectors](vectors.md) | 0 | 1 | 2 | 1 | 0 | 0 | 0 | 0 |
+| Module | Goals | Algebraic structures | Decisions | Architecture decisions | Releases | Message catalogs | Packages | Quantities | Open issues |
+|---|---|---|---|---|---|---|---|---|---|
+| [Geometry · Angles](angles.md) | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 1 | 0 |
+| [Geometry · Packages](packages.md) | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 0 | 0 |
+| [Geometry · Product](product.md) | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| [Geometry · Releases](releases.md) | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 |
+| [Geometry · Vectors](vectors.md) | 0 | 1 | 2 | 1 | 0 | 0 | 0 | 0 | 0 |
 
 ## Libraries
 
@@ -17,4 +18,4 @@ The libraries the project imports: their nodes take part in the graph, their doc
 
 | Library | Modules | Nodes | Open issues |
 |---|---|---|---|
-| [std 0.12.0](../../../std/releases/0.12.0/docs/index.md) | Standard library · Algebra, Standard library · Algorithms, Standard library · ECMAScript, Standard library · Effects, Standard library · HTML and CSS, Standard library · Measures, Standard library · Obligations, Standard library · Design patterns, Standard library · Platform, Standard library · Product, Standard library · Releases, Standard library · Rules, Standard library · Scenarios, Standard library · System, Standard library · Text, Standard library · Tooling, Standard library · Web | 145 | 4 points to watch |
+| [std 0.12.0](../.trame/std/docs/index.md) | Standard library · Algebra, Standard library · Algorithms, Standard library · ECMAScript, Standard library · Effects, Standard library · HTML and CSS, Standard library · Measures, Standard library · Obligations, Standard library · Design patterns, Standard library · Platform, Standard library · Product, Standard library · Releases, Standard library · Rules, Standard library · Scenarios, Standard library · System, Standard library · Text, Standard library · Tooling, Standard library · Web | 145 | 4 points to watch |
