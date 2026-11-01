@@ -26,6 +26,7 @@ import { PlayPractice } from "./practice"
  * and the hands higher, on average), and breathes out when it lowers and folds, or does not move.
  */
 export const BreathOfMove = requirement({
+  owner: "ghalaax",
   refines: [PractiseGuided],
   rule: (from: Shape, to: Shape): BreathPhase => {
     const height = (s: Shape) => {

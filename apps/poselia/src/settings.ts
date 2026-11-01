@@ -31,6 +31,7 @@ export const BreathBounds = decision<{ step: Duration; least: Duration; most: Du
  * bounds, holds from nothing to the most; anything else is no breath, and the default one is followed.
  */
 export const BreathRead = requirement({
+  owner: "ghalaax",
   refines: [BreathSetsThePace],
   rule: (kept: string | undefined): BreathPattern | undefined => {
     const b = BreathBounds.value
@@ -71,6 +72,7 @@ export const BreathReadCriteria = acceptance({
  * A phase of the person's breath made longer or shorter by steps of half a second, kept within its bounds.
  */
 export const AdjustedBreath = requirement({
+  owner: "ghalaax",
   refines: [BreathSetsThePace],
   rule: (pattern: BreathPattern, phase: BreathPhase, steps: number): BreathPattern => {
     const b = BreathBounds.value
@@ -98,6 +100,7 @@ export const AdjustedBreathCriteria = acceptance({
  * result is rounded to the step and kept within the bounds.
  */
 export const MeasuredBreath = requirement({
+  owner: "ghalaax",
   refines: [BreathSetsThePace],
   rule: (taps: readonly number[]): BreathPattern | undefined => {
     const b = BreathBounds.value

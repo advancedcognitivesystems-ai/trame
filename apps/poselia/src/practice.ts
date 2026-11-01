@@ -30,6 +30,7 @@ import { StageViews } from "./stage"
  * is done.
  */
 export const MomentAt = requirement({
+  owner: "ghalaax",
   refines: [BreathSetsThePace],
   rule: (durations: readonly number[], seconds: number): { index: number; progress: number; done: boolean } => {
     let start = 0
@@ -60,6 +61,7 @@ export const MomentAtCriteria = acceptance({
  * (a cubic, the same on both halves), never back.
  */
 export const Eased = requirement({
+  owner: "ghalaax",
   refines: [BreathSetsThePace],
   rule: (progress: number): number => {
     const t = Math.min(1, Math.max(0, progress))
@@ -84,6 +86,7 @@ export const EasedCriteria = acceptance({
  * empty on an exhale, stay empty when holding at the bottom.
  */
 export const LungsFull = requirement({
+  owner: "ghalaax",
   refines: [BreathSetsThePace],
   rule: (phase: BreathPhase, progress: number): number =>
     ({ [BreathPhase.inhale]: progress, [BreathPhase.holdTop]: 1, [BreathPhase.exhale]: 1 - progress, [BreathPhase.holdBottom]: 0 })[phase],
@@ -108,6 +111,7 @@ export const LungsFullCriteria = acceptance({
  * it belongs to, from the first. No breath, no hold.
  */
 export const HoldPhases = requirement({
+  owner: "ghalaax",
   refines: [BreathSetsThePace],
   rule: (pattern: BreathPattern, after: BreathPhase, breaths: number, next?: BreathPhase): { phase: BreathPhase; duration: number; breath: number }[] => {
     if (breaths <= 0) return []
@@ -147,6 +151,7 @@ export const HoldPhasesCriteria = acceptance({
  * so that a pose is held at least as long as what to do in it takes to say.
  */
 export const BreathsToSay = requirement({
+  owner: "ghalaax",
   refines: [BreathSetsThePace],
   rule: (texts: readonly string[], pattern: BreathPattern): number => {
     const breath = pattern.inhale + pattern.holdTop + pattern.exhale + pattern.holdBottom

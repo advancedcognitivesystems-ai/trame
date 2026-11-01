@@ -333,6 +333,7 @@
       "title": "The angle at a joint",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       }
     },
@@ -352,6 +353,7 @@
       "title": "The body between two poses",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       }
     },
@@ -413,6 +415,7 @@
       "title": "A foot on its way",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       }
     },
@@ -432,6 +435,7 @@
       "title": "A hand on its way",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       }
     },
@@ -451,6 +455,7 @@
       "title": "A pose ready to move",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       }
     },
@@ -470,6 +475,7 @@
       "title": "Legs apart",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       }
     },
@@ -489,6 +495,7 @@
       "title": "Every limb reaches",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       }
     },
@@ -536,6 +543,7 @@
       "title": "A leg on its foot",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       }
     },
@@ -555,6 +563,7 @@
       "title": "A pose rests on what it names",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       }
     },
@@ -574,6 +583,7 @@
       "title": "The legs in front and behind",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       }
     },
@@ -593,6 +603,7 @@
       "title": "Where a spot is",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       }
     },
@@ -612,6 +623,7 @@
       "title": "A leg that steps",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       }
     },
@@ -631,6 +643,7 @@
       "title": "The heights of the body's surface",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       }
     },
@@ -664,6 +677,7 @@
       "title": "The trunk from its angles",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       }
     },
@@ -683,6 +697,7 @@
       "title": "A limb reaches its end",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       }
     },
@@ -702,6 +717,7 @@
       "title": "Rising on a breath in",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       }
     },
@@ -888,6 +904,7 @@
       "title": "Where the leading leg goes",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       }
     },
@@ -960,6 +977,7 @@
       "title": "A sequence that makes sense",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       }
     },
@@ -3165,6 +3183,7 @@
       "title": "How long words take to say",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       }
     },
@@ -3363,6 +3382,7 @@
       "title": "A landmark on the body",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       }
     },
@@ -3416,6 +3436,7 @@
       "title": "Breaths to say a cue",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       }
     },
@@ -3435,6 +3456,7 @@
       "title": "A movement goes as a breath goes",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       }
     },
@@ -3454,6 +3476,7 @@
       "title": "A hold of whole breaths",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       }
     },
@@ -3473,6 +3496,7 @@
       "title": "How full the lungs are",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       }
     },
@@ -3492,6 +3516,7 @@
       "title": "Where a practice is",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       }
     },
@@ -3682,6 +3707,7 @@
       "title": "The breath of a moment",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       }
     },
@@ -3699,13 +3725,17 @@
       "id": "product.BreathSetsThePace",
       "kind": "goal",
       "title": "The breath sets the pace",
-      "fields": {}
+      "fields": {
+        "owner": "ghalaax"
+      }
     },
     {
       "id": "product.CheckedContent",
       "kind": "goal",
       "title": "Content checked by people who practise",
-      "fields": {}
+      "fields": {
+        "owner": "ghalaax"
+      }
     },
     {
       "id": "product.ChosenLanguage",
@@ -3713,6 +3743,7 @@
       "title": "The language of the app",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       }
     },
@@ -3749,6 +3780,7 @@
       "title": "A hold counts in breaths",
       "status": "unknown",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       }
     },
@@ -3766,7 +3798,9 @@
       "id": "product.InTheirLanguage",
       "kind": "goal",
       "title": "In the person's language",
-      "fields": {}
+      "fields": {
+        "owner": "ghalaax"
+      }
     },
     {
       "id": "product.PhoneOnTheMat",
@@ -3782,7 +3816,9 @@
       "id": "product.PractiseGuided",
       "kind": "goal",
       "title": "Practise yoga on one's own, guided",
-      "fields": {}
+      "fields": {
+        "owner": "ghalaax"
+      }
     },
     {
       "id": "scenarios.BodyStaysOnTheFloor",
@@ -4621,6 +4657,7 @@
       "title": "A phase set by the person",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       }
     },
@@ -4653,6 +4690,7 @@
       "title": "A breath read back",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       }
     },
@@ -4686,6 +4724,7 @@
       "title": "A breath measured by tapping",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       }
     },

@@ -6,7 +6,7 @@
 |---|---|---|---|---|
 | A teacher who practises | 0 | 0 | 4 | 0 |
 | People who try it on a phone | 0 | 0 | 1 | 0 |
-| ghalaax | 0 | 0 | 18 | 164 |
+| ghalaax | 0 | 0 | 52 | 199 |
 
 <a id="A teacher who practises"></a>
 
@@ -48,6 +48,37 @@
 
 | Severity | What | Where | Owner | Consequence |
 |---|---|---|---|---|
+| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [The angle at a joint](body.md#AngleBetween) | ghalaax |  |
+| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [The body between two poses](body.md#BodyAt) | ghalaax |  |
+| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A foot on its way](body.md#FootOnItsWay) | ghalaax |  |
+| warning | Computes the same kind of answer from the same kind of arguments as “A hand on its way” (ghalaax), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [A foot on its way](body.md#FootOnItsWay) | ghalaax |  |
+| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A hand on its way](body.md#HandOnItsWay) | ghalaax |  |
+| warning | Computes the same kind of answer from the same kind of arguments as “A foot on its way” (ghalaax), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [A hand on its way](body.md#HandOnItsWay) | ghalaax |  |
+| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A pose ready to move](body.md#KeyOf) | ghalaax |  |
+| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [Legs apart](body.md#LegsApart) | ghalaax |  |
+| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [Every limb reaches](body.md#LimbsReach) | ghalaax |  |
+| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A leg on its foot](body.md#PlantedLeg) | ghalaax |  |
+| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A pose rests on what it names](body.md#RestsOnWhatItNames) | ghalaax |  |
+| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [The legs in front and behind](body.md#SidesOf) | ghalaax |  |
+| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [Where a spot is](body.md#SpotOn) | ghalaax |  |
+| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A leg that steps](body.md#SteppingLeg) | ghalaax |  |
+| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [The heights of the body's surface](body.md#SurfaceHeights) | ghalaax |  |
+| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [The trunk from its angles](body.md#TrunkOf) | ghalaax |  |
+| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A limb reaches its end](body.md#TwoBones) | ghalaax |  |
+| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [Rising on a breath in](composing.md#BreathOfMove) | ghalaax |  |
+| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [Where the leading leg goes](content.md#LeadingLegOf) | ghalaax |  |
+| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A sequence that makes sense](content.md#MakesSense) | ghalaax |  |
+| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [How long words take to say](content.md#Spoken) | ghalaax |  |
+| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A landmark on the body](marks.md#MarkOnBody) | ghalaax |  |
+| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [Breaths to say a cue](practice.md#BreathsToSay) | ghalaax |  |
+| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A movement goes as a breath goes](practice.md#Eased) | ghalaax |  |
+| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A hold of whole breaths](practice.md#HoldPhases) | ghalaax |  |
+| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [How full the lungs are](practice.md#LungsFull) | ghalaax |  |
+| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [Where a practice is](practice.md#MomentAt) | ghalaax |  |
+| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [The breath of a moment](product.md#BreathOf) | ghalaax |  |
+| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [The language of the app](product.md#ChosenLanguage) | ghalaax |  |
+| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A hold counts in breaths](product.md#HoldInBreaths) | ghalaax |  |
+| warning | Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it | [A hold counts in breaths](product.md#HoldInBreaths) | ghalaax |  |
 | warning | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [Poselia's page](sdlc.md#PageFile) | ghalaax |  |
 | warning | Checked on another build of its artefacts, by another version of its program or another engine: to check again | [The page opens](sdlc.md#PageOpens) | ghalaax |  |
 | warning | To ship: Poselia's page is unknown | [A preview](sdlc.md#Preview) | ghalaax |  |
@@ -66,6 +97,9 @@
 | warning | To ship: The preview's script is unknown | [The files that run it elsewhere](sdlc.md#RunnersWritten) | ghalaax |  |
 | warning | To ship: The preview's workflow is unknown | [The files that run it elsewhere](sdlc.md#RunnersWritten) | ghalaax |  |
 | warning | Nobody holds this role yet | [A teacher who practises](sdlc.md#Teachers) | ghalaax |  |
+| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A phase set by the person](settings.md#AdjustedBreath) | ghalaax |  |
+| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A breath read back](settings.md#BreathRead) | ghalaax |  |
+| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A breath measured by tapping](settings.md#MeasuredBreath) | ghalaax |  |
 
 ### Owns
 
@@ -91,24 +125,40 @@
 | [Stage](architecture.md#Stage) | Port |  |
 | [Test](architecture.md#Test) | Environment |  |
 | [Views shown](architecture.md#ViewsShown) | Port |  |
+| [The angle at a joint](body.md#AngleBetween) | Requirement | **held** |
 | [Criteria of the angle at a joint](body.md#AngleBetweenCriteria) | Acceptance criteria | **held** |
+| [The body between two poses](body.md#BodyAt) | Requirement | **held** |
 | [Criteria of the body between two poses](body.md#BodyAtCriteria) | Acceptance criteria | **held** |
 | [Measures of the body](body.md#BodyMeasures) | Decision |  |
+| [A foot on its way](body.md#FootOnItsWay) | Requirement | **held** |
 | [Criteria of a foot on its way](body.md#FootOnItsWayCriteria) | Acceptance criteria | **held** |
+| [A hand on its way](body.md#HandOnItsWay) | Requirement | **held** |
 | [Criteria of a hand on its way](body.md#HandOnItsWayCriteria) | Acceptance criteria | **held** |
+| [A pose ready to move](body.md#KeyOf) | Requirement | **held** |
 | [Criteria of a pose ready to move](body.md#KeyOfCriteria) | Acceptance criteria | **held** |
+| [Legs apart](body.md#LegsApart) | Requirement | **held** |
 | [Criteria of legs apart](body.md#LegsApartCriteria) | Acceptance criteria | **held** |
+| [Every limb reaches](body.md#LimbsReach) | Requirement | **held** |
 | [Criteria of every limb that reaches](body.md#LimbsReachCriteria) | Acceptance criteria | **held** |
 | [How a body moves](body.md#Movement) | Decision |  |
+| [A leg on its foot](body.md#PlantedLeg) | Requirement | **held** |
 | [Criteria of a leg on its foot](body.md#PlantedLegCriteria) | Acceptance criteria | **held** |
+| [A pose rests on what it names](body.md#RestsOnWhatItNames) | Requirement | **held** |
 | [Criteria of a pose that rests on what it names](body.md#RestsOnWhatItNamesCriteria) | Acceptance criteria | **held** |
+| [The legs in front and behind](body.md#SidesOf) | Requirement | **held** |
 | [Criteria of the legs in front and behind](body.md#SidesOfCriteria) | Acceptance criteria | **held** |
+| [Where a spot is](body.md#SpotOn) | Requirement | **held** |
 | [Criteria of where a spot is](body.md#SpotOnCriteria) | Acceptance criteria | **held** |
+| [A leg that steps](body.md#SteppingLeg) | Requirement | **held** |
 | [Criteria of a leg that steps](body.md#SteppingLegCriteria) | Acceptance criteria | **held** |
+| [The heights of the body's surface](body.md#SurfaceHeights) | Requirement | **held** |
 | [Criteria of the heights of the body's surface](body.md#SurfaceHeightsCriteria) | Acceptance criteria | **held** |
 | [Touching the floor](body.md#Touching) | Decision |  |
+| [The trunk from its angles](body.md#TrunkOf) | Requirement | **held** |
 | [Criteria of the trunk from its angles](body.md#TrunkOfCriteria) | Acceptance criteria | **held** |
+| [A limb reaches its end](body.md#TwoBones) | Requirement | **held** |
 | [Criteria of a limb that reaches its end](body.md#TwoBonesCriteria) | Acceptance criteria | **held** |
+| [Rising on a breath in](composing.md#BreathOfMove) | Requirement | **held** |
 | [Criteria of rising on a breath in](composing.md#BreathOfMoveCriteria) | Acceptance criteria | **held** |
 | [A sequence composed](composing.md#ComposedSequence) | Function | **held** |
 | [Names of the composer](composing.md#ComposerNames) | Decision |  |
@@ -118,12 +168,15 @@
 | [Show the composer](composing.md#ShowComposer) | Function | **held** |
 | [Placeholders of a cue](content.md#CuePlaceholders) | Decision |  |
 | [Languages offered](content.md#Languages) | Decision |  |
+| [Where the leading leg goes](content.md#LeadingLegOf) | Requirement | **held** |
 | [Criteria of where the leading leg goes](content.md#LeadingLegOfCriteria) | Acceptance criteria | **held** |
 | [The ways between levels](content.md#LevelWays) | Decision |  |
+| [A sequence that makes sense](content.md#MakesSense) | Requirement | **held** |
 | [Criteria of a sequence that makes sense](content.md#MakesSenseCriteria) | Acceptance criteria | **held** |
 | [Poses](content.md#Poses) | Dataset | **unknown** |
 | [Sequences](content.md#Sequences) | Dataset | **unknown** |
 | [How fast a voice speaks](content.md#SpeechRate) | Decision |  |
+| [How long words take to say](content.md#Spoken) | Requirement | **held** |
 | [Criteria of how long words take to say](content.md#SpokenCriteria) | Acceptance criteria | **held** |
 | [Frame of a drawing](drawing.md#DrawingFrame) | Decision |  |
 | [Parts of a drawing](drawing.md#DrawingParts) | Decision |  |
@@ -137,13 +190,19 @@
 | [Words in English](language.md#WordsEn) | Message catalog |  |
 | [Words in French](language.md#WordsFr) | Message catalog |  |
 | [How landmarks are drawn](marks.md#MarkLook) | Decision |  |
+| [A landmark on the body](marks.md#MarkOnBody) | Requirement | **held** |
 | [Criteria of a landmark on the body](marks.md#MarkOnBodyCriteria) | Acceptance criteria | **held** |
 | [The landmarks of a pose](marks.md#MarksOn) | Function | **held** |
 | [When the landmarks are drawn](marks.md#MarksWhen) | Decision |  |
+| [Breaths to say a cue](practice.md#BreathsToSay) | Requirement | **held** |
 | [Criteria of breaths to say a cue](practice.md#BreathsToSayCriteria) | Acceptance criteria | **held** |
+| [A movement goes as a breath goes](practice.md#Eased) | Requirement | **held** |
 | [Criteria of a movement that goes as a breath goes](practice.md#EasedCriteria) | Acceptance criteria | **held** |
+| [A hold of whole breaths](practice.md#HoldPhases) | Requirement | **held** |
 | [Criteria of a hold of whole breaths](practice.md#HoldPhasesCriteria) | Acceptance criteria | **held** |
+| [How full the lungs are](practice.md#LungsFull) | Requirement | **held** |
 | [Criteria of how full the lungs are](practice.md#LungsFullCriteria) | Acceptance criteria | **held** |
+| [Where a practice is](practice.md#MomentAt) | Requirement | **held** |
 | [Criteria of where a practice is](practice.md#MomentAtCriteria) | Acceptance criteria | **held** |
 | [The moment of a practice](practice.md#MomentOf) | Function | **held** |
 | [Names of the player](practice.md#PlayerNames) | Decision |  |
@@ -154,11 +213,18 @@
 | [The person's language, among those offered](principles.md#LanguageOffered) | Architecture decision | **held** |
 | [A page first, the phones after](principles.md#PageFirst) | Architecture decision | **unknown** |
 | [Said aloud, the screen awake](principles.md#SaidAloud) | Architecture decision | **unknown** |
+| [The breath of a moment](product.md#BreathOf) | Requirement | **held** |
 | [Criteria of the breath of a moment](product.md#BreathOfCriteria) | Acceptance criteria | **held** |
+| [The breath sets the pace](product.md#BreathSetsThePace) | Goal |  |
+| [Content checked by people who practise](product.md#CheckedContent) | Goal |  |
+| [The language of the app](product.md#ChosenLanguage) | Requirement | **held** |
 | [Criteria of the language of the app](product.md#ChosenLanguageCriteria) | Acceptance criteria | **held** |
 | [The breath of someone who has set nothing](product.md#DefaultBreath) | Decision |  |
+| [A hold counts in breaths](product.md#HoldInBreaths) | Requirement | **unknown** |
 | [Criteria of a hold in breaths](product.md#HoldInBreathsCriteria) | Acceptance criteria | **held** |
+| [In the person's language](product.md#InTheirLanguage) | Goal |  |
 | [The phone stays on the mat](product.md#PhoneOnTheMat) | Assumption | **unknown** |
+| [Practise yoga on one's own, guided](product.md#PractiseGuided) | Goal |  |
 | [The body stays on the floor](scenarios.md#BodyStaysOnTheFloor) | Scenario | **held** |
 | [Sequences drawn by lot](scenarios.md#DrawnSequencesMakeSense) | Scenario | **held** |
 | [The device's languages, given](scenarios.md#GivenLanguages) | Function | **held** |
@@ -215,10 +281,13 @@
 | [What the programs of the SDLC say](sdlc.md#SdlcWords) | Message catalog |  |
 | [Where the page is served](sdlc.md#ServedPage) | Decision |  |
 | [A teacher who practises](sdlc.md#Teachers) | Role |  |
+| [A phase set by the person](settings.md#AdjustedBreath) | Requirement | **held** |
 | [Criteria of a phase set by the person](settings.md#AdjustedBreathCriteria) | Acceptance criteria | **held** |
 | [Bounds of a breath](settings.md#BreathBounds) | Decision |  |
+| [A breath read back](settings.md#BreathRead) | Requirement | **held** |
 | [Criteria of a breath read back](settings.md#BreathReadCriteria) | Acceptance criteria | **held** |
 | [The landmarks the person chose](settings.md#MarksChoice) | Function | **held** |
+| [A breath measured by tapping](settings.md#MeasuredBreath) | Requirement | **held** |
 | [Criteria of a breath measured by tapping](settings.md#MeasuredBreathCriteria) | Acceptance criteria | **held** |
 | [The person's breath](settings.md#PersonBreath) | Function | **held** |
 | [Names of the settings](settings.md#SettingsNames) | Decision |  |
@@ -235,77 +304,3 @@
 | [Views of the stage](stage.md#StageViews) | Decision |  |
 | [three.js](stage.md#ThreePackage) | Package | **held** |
 | [three.js, its types](stage.md#ThreeTypes) | Package | **held** |
-
-## unassigned
-
-| Severity | What | Where | Owner | Consequence |
-|---|---|---|---|---|
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [The angle at a joint](body.md#AngleBetween) | to be assigned |  |
-| warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [The angle at a joint](body.md#AngleBetween) | to be assigned |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [The body between two poses](body.md#BodyAt) | to be assigned |  |
-| warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [The body between two poses](body.md#BodyAt) | to be assigned |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A foot on its way](body.md#FootOnItsWay) | to be assigned |  |
-| warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [A foot on its way](body.md#FootOnItsWay) | to be assigned |  |
-| warning | Computes the same kind of answer from the same kind of arguments as “A hand on its way” (nobody), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [A foot on its way](body.md#FootOnItsWay) | to be assigned |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A hand on its way](body.md#HandOnItsWay) | to be assigned |  |
-| warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [A hand on its way](body.md#HandOnItsWay) | to be assigned |  |
-| warning | Computes the same kind of answer from the same kind of arguments as “A foot on its way” (nobody), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [A hand on its way](body.md#HandOnItsWay) | to be assigned |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A pose ready to move](body.md#KeyOf) | to be assigned |  |
-| warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [A pose ready to move](body.md#KeyOf) | to be assigned |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [Legs apart](body.md#LegsApart) | to be assigned |  |
-| warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [Legs apart](body.md#LegsApart) | to be assigned |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [Every limb reaches](body.md#LimbsReach) | to be assigned |  |
-| warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [Every limb reaches](body.md#LimbsReach) | to be assigned |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A leg on its foot](body.md#PlantedLeg) | to be assigned |  |
-| warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [A leg on its foot](body.md#PlantedLeg) | to be assigned |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A pose rests on what it names](body.md#RestsOnWhatItNames) | to be assigned |  |
-| warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [A pose rests on what it names](body.md#RestsOnWhatItNames) | to be assigned |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [The legs in front and behind](body.md#SidesOf) | to be assigned |  |
-| warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [The legs in front and behind](body.md#SidesOf) | to be assigned |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [Where a spot is](body.md#SpotOn) | to be assigned |  |
-| warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [Where a spot is](body.md#SpotOn) | to be assigned |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A leg that steps](body.md#SteppingLeg) | to be assigned |  |
-| warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [A leg that steps](body.md#SteppingLeg) | to be assigned |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [The heights of the body's surface](body.md#SurfaceHeights) | to be assigned |  |
-| warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [The heights of the body's surface](body.md#SurfaceHeights) | to be assigned |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [The trunk from its angles](body.md#TrunkOf) | to be assigned |  |
-| warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [The trunk from its angles](body.md#TrunkOf) | to be assigned |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A limb reaches its end](body.md#TwoBones) | to be assigned |  |
-| warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [A limb reaches its end](body.md#TwoBones) | to be assigned |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [Rising on a breath in](composing.md#BreathOfMove) | to be assigned |  |
-| warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [Rising on a breath in](composing.md#BreathOfMove) | to be assigned |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [Where the leading leg goes](content.md#LeadingLegOf) | to be assigned |  |
-| warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [Where the leading leg goes](content.md#LeadingLegOf) | to be assigned |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A sequence that makes sense](content.md#MakesSense) | to be assigned |  |
-| warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [A sequence that makes sense](content.md#MakesSense) | to be assigned |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [How long words take to say](content.md#Spoken) | to be assigned |  |
-| warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [How long words take to say](content.md#Spoken) | to be assigned |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A landmark on the body](marks.md#MarkOnBody) | to be assigned |  |
-| warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [A landmark on the body](marks.md#MarkOnBody) | to be assigned |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [Breaths to say a cue](practice.md#BreathsToSay) | to be assigned |  |
-| warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [Breaths to say a cue](practice.md#BreathsToSay) | to be assigned |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A movement goes as a breath goes](practice.md#Eased) | to be assigned |  |
-| warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [A movement goes as a breath goes](practice.md#Eased) | to be assigned |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A hold of whole breaths](practice.md#HoldPhases) | to be assigned |  |
-| warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [A hold of whole breaths](practice.md#HoldPhases) | to be assigned |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [How full the lungs are](practice.md#LungsFull) | to be assigned |  |
-| warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [How full the lungs are](practice.md#LungsFull) | to be assigned |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [Where a practice is](practice.md#MomentAt) | to be assigned |  |
-| warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [Where a practice is](practice.md#MomentAt) | to be assigned |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [The breath of a moment](product.md#BreathOf) | to be assigned |  |
-| warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [The breath of a moment](product.md#BreathOf) | to be assigned |  |
-| warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [The breath sets the pace](product.md#BreathSetsThePace) | to be assigned |  |
-| warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [Content checked by people who practise](product.md#CheckedContent) | to be assigned |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [The language of the app](product.md#ChosenLanguage) | to be assigned |  |
-| warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [The language of the app](product.md#ChosenLanguage) | to be assigned |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A hold counts in breaths](product.md#HoldInBreaths) | to be assigned |  |
-| warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [A hold counts in breaths](product.md#HoldInBreaths) | to be assigned |  |
-| warning | Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it | [A hold counts in breaths](product.md#HoldInBreaths) | to be assigned |  |
-| warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [In the person's language](product.md#InTheirLanguage) | to be assigned |  |
-| warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [Practise yoga on one's own, guided](product.md#PractiseGuided) | to be assigned |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A phase set by the person](settings.md#AdjustedBreath) | to be assigned |  |
-| warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [A phase set by the person](settings.md#AdjustedBreath) | to be assigned |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A breath read back](settings.md#BreathRead) | to be assigned |  |
-| warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [A breath read back](settings.md#BreathRead) | to be assigned |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A breath measured by tapping](settings.md#MeasuredBreath) | to be assigned |  |
-| warning | Nobody answers for it: every node has an owner, who is told what it lacks (owner) | [A breath measured by tapping](settings.md#MeasuredBreath) | to be assigned |  |

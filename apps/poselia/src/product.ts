@@ -16,27 +16,27 @@ import { assume } from "#trame/kinds/assumption"
  * A person practises at home with the phone on the mat: each pose is shown still and clear, each sequence moves with
  * their breath, and a voice says what to do, in their language.
  */
-export const PractiseGuided = goal()
+export const PractiseGuided = goal({ owner: "ghalaax" })
 
 /**
  * The breath sets the pace
  * Nothing in a practice is counted in seconds that the person did not choose: a movement lasts a phase of their breath,
  * a hold lasts whole breaths.
  */
-export const BreathSetsThePace = goal()
+export const BreathSetsThePace = goal({ owner: "ghalaax" })
 
 /**
  * In the person's language
  * Every word the app shows or says is in the language the person chose, among those offered.
  */
-export const InTheirLanguage = goal()
+export const InTheirLanguage = goal({ owner: "ghalaax" })
 
 /**
  * Content checked by people who practise
  * What a pose asks, and how a sequence goes, is reviewed by people who practise and teach, in each language, before it
  * reaches others.
  */
-export const CheckedContent = goal()
+export const CheckedContent = goal({ owner: "ghalaax" })
 
 // The breath ----------------------------------------------------------------------------------
 
@@ -74,6 +74,7 @@ export const DefaultBreath = decision<BreathPattern>({
  * step, then the sequence, then the pose), applied to the person's pattern, or to the default one.
  */
 export const BreathOf = requirement({
+  owner: "ghalaax",
   refines: [BreathSetsThePace],
   rule: (person: BreathPattern | undefined, levels: readonly (BreathSetting | undefined)[]): BreathPattern => {
     const base = person ?? DefaultBreath.value
@@ -109,6 +110,7 @@ export const BreathOfCriteria = acceptance({
  * hold always falls at the end of a breath.
  */
 export const HoldInBreaths = requirement({
+  owner: "ghalaax",
   refines: [BreathSetsThePace],
   rule: (hold: Duration, breath: BreathPattern): number => {
     const length = breath.inhale + breath.holdTop + breath.exhale + breath.holdBottom
@@ -135,6 +137,7 @@ export const HoldInBreathsCriteria = acceptance({
  * the first language offered.
  */
 export const ChosenLanguage = requirement({
+  owner: "ghalaax",
   refines: [InTheirLanguage],
   rule: (offered: readonly string[], chosen: string | undefined, device: readonly string[]): string => {
     const base = (tag: string) => tag.split("-")[0]

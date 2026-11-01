@@ -175,12 +175,14 @@ Environment · `Test`
 
 Requirement · `AngleBetween` · **held**
 
+- Owner: ghalaax
 - Refines: Practise yoga on one's own, guided
 
 ### The body between two poses
 
 Requirement · `BodyAt` · **held**
 
+- Owner: ghalaax
 - Refines: Practise yoga on one's own, guided
 - Depends on: Measures of the body, How a body moves, The trunk from its angles, A leg that steps, A foot on its way, A leg on its foot, A hand on its way, A limb reaches its end
 
@@ -188,6 +190,7 @@ Requirement · `BodyAt` · **held**
 
 Requirement · `FootOnItsWay` · **held**
 
+- Owner: ghalaax
 - Refines: Practise yoga on one's own, guided
 - Depends on: How a body moves
 
@@ -195,6 +198,7 @@ Requirement · `FootOnItsWay` · **held**
 
 Requirement · `HandOnItsWay` · **held**
 
+- Owner: ghalaax
 - Refines: Practise yoga on one's own, guided
 - Depends on: How a body moves
 
@@ -202,6 +206,7 @@ Requirement · `HandOnItsWay` · **held**
 
 Requirement · `KeyOf` · **held**
 
+- Owner: ghalaax
 - Refines: Practise yoga on one's own, guided
 - Depends on: The trunk from its angles
 
@@ -209,12 +214,14 @@ Requirement · `KeyOf` · **held**
 
 Requirement · `LegsApart` · **held**
 
+- Owner: ghalaax
 - Refines: Practise yoga on one's own, guided
 
 ### Every limb reaches
 
 Requirement · `LimbsReach` · **held**
 
+- Owner: ghalaax
 - Refines: Practise yoga on one's own, guided, Content checked by people who practise
 - Depends on: A pose ready to move, The body between two poses
 
@@ -222,6 +229,7 @@ Requirement · `LimbsReach` · **held**
 
 Requirement · `PlantedLeg` · **held**
 
+- Owner: ghalaax
 - Refines: Practise yoga on one's own, guided
 - Depends on: Measures of the body, How a body moves, A limb reaches its end
 
@@ -229,6 +237,7 @@ Requirement · `PlantedLeg` · **held**
 
 Requirement · `RestsOnWhatItNames` · **held**
 
+- Owner: ghalaax
 - Refines: Practise yoga on one's own, guided, Content checked by people who practise
 - Depends on: A pose ready to move, The heights of the body's surface, The body between two poses, Touching the floor
 
@@ -236,18 +245,21 @@ Requirement · `RestsOnWhatItNames` · **held**
 
 Requirement · `SidesOf` · **held**
 
+- Owner: ghalaax
 - Refines: Practise yoga on one's own, guided
 
 ### Where a spot is
 
 Requirement · `SpotOn` · **held**
 
+- Owner: ghalaax
 - Refines: Practise yoga on one's own, guided
 
 ### A leg that steps
 
 Requirement · `SteppingLeg` · **held**
 
+- Owner: ghalaax
 - Refines: Practise yoga on one's own, guided
 - Depends on: Measures of the body, A limb reaches its end
 
@@ -255,6 +267,7 @@ Requirement · `SteppingLeg` · **held**
 
 Requirement · `SurfaceHeights` · **held**
 
+- Owner: ghalaax
 - Refines: Practise yoga on one's own, guided
 - Depends on: Measures of the body
 
@@ -262,6 +275,7 @@ Requirement · `SurfaceHeights` · **held**
 
 Requirement · `TrunkOf` · **held**
 
+- Owner: ghalaax
 - Refines: Practise yoga on one's own, guided
 - Depends on: Measures of the body
 
@@ -269,6 +283,7 @@ Requirement · `TrunkOf` · **held**
 
 Requirement · `TwoBones` · **held**
 
+- Owner: ghalaax
 - Refines: Practise yoga on one's own, guided
 
 ### Measures of the body
@@ -412,6 +427,7 @@ Acceptance criteria · `TwoBonesCriteria` · **held**
 
 Requirement · `BreathOfMove` · **held**
 
+- Owner: ghalaax
 - Refines: Practise yoga on one's own, guided
 - Depends on: A pose ready to move, The body between two poses
 
@@ -481,12 +497,14 @@ Function · `ShowComposer` · **held**
 
 Requirement · `LeadingLegOf` · **held**
 
+- Owner: ghalaax
 - Refines: Practise yoga on one's own, guided
 
 ### A sequence that makes sense
 
 Requirement · `MakesSense` · **held**
 
+- Owner: ghalaax
 - Refines: Practise yoga on one's own, guided
 - Depends on: The ways between levels
 
@@ -494,6 +512,7 @@ Requirement · `MakesSense` · **held**
 
 Requirement · `Spoken` · **held**
 
+- Owner: ghalaax
 - Refines: Practise yoga on one's own, guided
 - Depends on: How fast a voice speaks
 
@@ -667,6 +686,7 @@ Message catalog · `WordsFr`
 
 Requirement · `MarkOnBody` · **held**
 
+- Owner: ghalaax
 - Refines: Practise yoga on one's own, guided
 - Depends on: How landmarks are drawn, Where a spot is, The angle at a joint
 
@@ -708,6 +728,7 @@ Function · `MarksOn` · **held**
 
 Requirement · `BreathsToSay` · **held**
 
+- Owner: ghalaax
 - Refines: The breath sets the pace
 - Depends on: How long words take to say
 
@@ -715,24 +736,28 @@ Requirement · `BreathsToSay` · **held**
 
 Requirement · `Eased` · **held**
 
+- Owner: ghalaax
 - Refines: The breath sets the pace
 
 ### A hold of whole breaths
 
 Requirement · `HoldPhases` · **held**
 
+- Owner: ghalaax
 - Refines: The breath sets the pace
 
 ### How full the lungs are
 
 Requirement · `LungsFull` · **held**
 
+- Owner: ghalaax
 - Refines: The breath sets the pace
 
 ### Where a practice is
 
 Requirement · `MomentAt` · **held**
 
+- Owner: ghalaax
 - Refines: The breath sets the pace
 
 ### Names of the player
@@ -867,22 +892,31 @@ Architecture decision · `SaidAloud` · **unknown**
 
 Goal · `BreathSetsThePace`
 
+- Owner: ghalaax
+
 ### Content checked by people who practise
 
 Goal · `CheckedContent`
+
+- Owner: ghalaax
 
 ### In the person's language
 
 Goal · `InTheirLanguage`
 
+- Owner: ghalaax
+
 ### Practise yoga on one's own, guided
 
 Goal · `PractiseGuided`
+
+- Owner: ghalaax
 
 ### The breath of a moment
 
 Requirement · `BreathOf` · **held**
 
+- Owner: ghalaax
 - Refines: The breath sets the pace
 - Depends on: The breath of someone who has set nothing
 
@@ -890,12 +924,14 @@ Requirement · `BreathOf` · **held**
 
 Requirement · `ChosenLanguage` · **held**
 
+- Owner: ghalaax
 - Refines: In the person's language
 
 ### A hold counts in breaths
 
 Requirement · `HoldInBreaths` · **unknown**
 
+- Owner: ghalaax
 - Refines: The breath sets the pace
 
 ### The breath of someone who has set nothing
@@ -1411,6 +1447,7 @@ Policy · `PublicMode`
 
 Requirement · `AdjustedBreath` · **held**
 
+- Owner: ghalaax
 - Refines: The breath sets the pace
 - Depends on: Bounds of a breath
 
@@ -1418,6 +1455,7 @@ Requirement · `AdjustedBreath` · **held**
 
 Requirement · `BreathRead` · **held**
 
+- Owner: ghalaax
 - Refines: The breath sets the pace
 - Depends on: Bounds of a breath
 
@@ -1425,6 +1463,7 @@ Requirement · `BreathRead` · **held**
 
 Requirement · `MeasuredBreath` · **held**
 
+- Owner: ghalaax
 - Refines: The breath sets the pace
 - Depends on: Bounds of a breath
 

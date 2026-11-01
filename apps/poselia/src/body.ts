@@ -215,6 +215,7 @@ const toward = (degrees: number): Vec => [Math.cos((degrees * Math.PI) / 180), M
  * turned forward from the head's direction; the shoulders and the hips their half-widths to each side.
  */
 export const TrunkOf = requirement({
+  owner: "ghalaax",
   refines: [PractiseGuided],
   rule: (pelvis: readonly [number, number], spine: readonly [number, number, number, number]): Trunk => {
     const m = BodyMeasures.value
@@ -255,6 +256,7 @@ export const TrunkOfCriteria = acceptance({
  * length (more than 1: out of reach).
  */
 export const TwoBones = requirement({
+  owner: "ghalaax",
   refines: [PractiseGuided],
   rule: (from: Vec, target: Vec, first: number, second: number, pole: Vec): { middle: Vec; end: Vec; reach: number } => {
     const d = sub(target, from)
@@ -288,6 +290,7 @@ export const TwoBonesCriteria = acceptance({
  * Whether a pose sets the legs apart, one in front and one behind (a lunge), rather than giving both the same place.
  */
 export const LegsApart = requirement({
+  owner: "ghalaax",
   refines: [PractiseGuided],
   rule: (shape: Shape): boolean => "front" in shape.legs,
 })
@@ -312,6 +315,7 @@ export const LegsApartCriteria = acceptance({
  * stepping back.
  */
 export const KeyOf = requirement({
+  owner: "ghalaax",
   refines: [PractiseGuided],
   rule: (shape: Shape, leading: Leg = Leg.right, stance: Stance = Stance.back): Keyframe => {
     const trunk = TrunkOf(shape.pelvis, shape.spine)
@@ -362,6 +366,7 @@ export const KeyOfCriteria = acceptance({
  * it, leaving it and coming down onto it at the landing slope, so that it never slides on the floor.
  */
 export const HandOnItsWay = requirement({
+  owner: "ghalaax",
   refines: [PractiseGuided],
   rule: (from: Vec, to: Vec, baseFrom: Vec, baseTo: Vec, base: Vec, t: number): Vec => {
     const mv = Movement.value
@@ -417,6 +422,7 @@ const footOf = (foot: number, toes: number) => {
  * deeper than the mat gives.
  */
 export const PlantedLeg = requirement({
+  owner: "ghalaax",
   refines: [PractiseGuided],
   rule: (hip: Vec, foot: FootKey): { knee: Vec; ankle: Vec; reach: number } => {
     const m = BodyMeasures.value
@@ -457,6 +463,7 @@ export const PlantedLegCriteria = acceptance({
  * far is lifted half way.
  */
 export const FootOnItsWay = requirement({
+  owner: "ghalaax",
   refines: [PractiseGuided],
   rule: (from: Vec, to: Vec, hipFrom: Vec, hipTo: Vec, hip: Vec, t: number): Vec => {
     const mv = Movement.value
@@ -496,6 +503,7 @@ export const FootOnItsWayCriteria = acceptance({
  * may sink: the foot keeps its way and its pace.
  */
 export const SteppingLeg = requirement({
+  owner: "ghalaax",
   refines: [PractiseGuided],
   rule: (hip: Vec, aim: Vec, footBelow: number): { knee: Vec; ankle: Vec; reach: number } => {
     const m = BodyMeasures.value
@@ -526,6 +534,7 @@ export const SteppingLegCriteria = acceptance({
  * a little outward; the foot, the toes and the hand turning in proportion.
  */
 export const BodyAt = requirement({
+  owner: "ghalaax",
   refines: [PractiseGuided],
   rule: (from: Keyframe, to: Keyframe, t: number): Body => {
     const m = BodyMeasures.value
@@ -612,6 +621,7 @@ export const BodyAtCriteria = acceptance({
  * the wrist and the fingertips.
  */
 export const SurfaceHeights = requirement({
+  owner: "ghalaax",
   refines: [PractiseGuided],
   rule: (body: Body): Record<string, number> => {
     const m = BodyMeasures.value
@@ -659,6 +669,7 @@ export const SurfaceHeightsCriteria = acceptance({
  * wrong: the points named that do not touch, the points that touch unnamed.
  */
 export const RestsOnWhatItNames = requirement({
+  owner: "ghalaax",
   refines: [PractiseGuided, CheckedContent],
   rule: (shape: Shape): { notTouching: string[]; unnamed: string[] } => {
     const k = KeyOf(shape)
@@ -702,6 +713,7 @@ export const RestsOnWhatItNamesCriteria = acceptance({
  * the farthest limb reaches, as a part of its length.
  */
 export const LimbsReach = requirement({
+  owner: "ghalaax",
   refines: [PractiseGuided, CheckedContent],
   rule: (shape: Shape): number => {
     const k = KeyOf(shape)
@@ -752,6 +764,7 @@ export type Sides = { front: "L" | "R"; back: "L" | "R" }
  * behind; in a pose with the feet together, the leg that leads is said in front.
  */
 export const SidesOf = requirement({
+  owner: "ghalaax",
   refines: [PractiseGuided],
   rule: (leading: Leg, stance?: Stance): Sides => {
     const lead = leading === Leg.right ? "R" : "L"
@@ -776,6 +789,7 @@ export const SidesOfCriteria = acceptance({
  * a point of the trunk; on the floor below it if it says so (a centimetre above, to be seen); moved by its shift.
  */
 export const SpotOn = requirement({
+  owner: "ghalaax",
   refines: [PractiseGuided],
   rule: (body: Body, spot: Spot, sides: Sides): Vec => {
     const trunk: Partial<Record<Point, Vec>> = {
@@ -812,6 +826,7 @@ export const SpotOnCriteria = acceptance({
  * The angle between the directions from a joint to two points, in degrees, from 0 to 180.
  */
 export const AngleBetween = requirement({
+  owner: "ghalaax",
   refines: [PractiseGuided],
   rule: (at: Vec, from: Vec, to: Vec): number => {
     const u = unit(sub(from, at))

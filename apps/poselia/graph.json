@@ -371,21 +371,21 @@
       "id": "body.AngleBetween",
       "kind": "requirement",
       "title": "The angle at a joint",
-      "source": "src/body.ts:814",
+      "source": "src/body.ts:828",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       },
       "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
-        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
       ]
     },
     {
       "id": "body.AngleBetweenCriteria",
       "kind": "acceptance",
       "title": "Criteria of the angle at a joint",
-      "source": "src/body.ts:824",
+      "source": "src/body.ts:839",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -407,21 +407,21 @@
       "id": "body.BodyAt",
       "kind": "requirement",
       "title": "The body between two poses",
-      "source": "src/body.ts:528",
+      "source": "src/body.ts:536",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       },
       "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
-        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
       ]
     },
     {
       "id": "body.BodyAtCriteria",
       "kind": "acceptance",
       "title": "Criteria of the body between two poses",
-      "source": "src/body.ts:576",
+      "source": "src/body.ts:585",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -499,22 +499,22 @@
       "id": "body.FootOnItsWay",
       "kind": "requirement",
       "title": "A foot on its way",
-      "source": "src/body.ts:459",
+      "source": "src/body.ts:465",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       },
       "diagnostics": [
         "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
-        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)",
-        "warning: Computes the same kind of answer from the same kind of arguments as “A hand on its way” (nobody), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so"
+        "warning: Computes the same kind of answer from the same kind of arguments as “A hand on its way” (ghalaax), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so"
       ]
     },
     {
       "id": "body.FootOnItsWayCriteria",
       "kind": "acceptance",
       "title": "Criteria of a foot on its way",
-      "source": "src/body.ts:479",
+      "source": "src/body.ts:486",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -540,22 +540,22 @@
       "id": "body.HandOnItsWay",
       "kind": "requirement",
       "title": "A hand on its way",
-      "source": "src/body.ts:364",
+      "source": "src/body.ts:368",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       },
       "diagnostics": [
         "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
-        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)",
-        "warning: Computes the same kind of answer from the same kind of arguments as “A foot on its way” (nobody), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so"
+        "warning: Computes the same kind of answer from the same kind of arguments as “A foot on its way” (ghalaax), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so"
       ]
     },
     {
       "id": "body.HandOnItsWayCriteria",
       "kind": "acceptance",
       "title": "Criteria of a hand on its way",
-      "source": "src/body.ts:383",
+      "source": "src/body.ts:388",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -581,21 +581,21 @@
       "id": "body.KeyOf",
       "kind": "requirement",
       "title": "A pose ready to move",
-      "source": "src/body.ts:314",
+      "source": "src/body.ts:317",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       },
       "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
-        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
       ]
     },
     {
       "id": "body.KeyOfCriteria",
       "kind": "acceptance",
       "title": "Criteria of a pose ready to move",
-      "source": "src/body.ts:343",
+      "source": "src/body.ts:347",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -621,21 +621,21 @@
       "id": "body.LegsApart",
       "kind": "requirement",
       "title": "Legs apart",
-      "source": "src/body.ts:290",
+      "source": "src/body.ts:292",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       },
       "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
-        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
       ]
     },
     {
       "id": "body.LegsApartCriteria",
       "kind": "acceptance",
       "title": "Criteria of legs apart",
-      "source": "src/body.ts:296",
+      "source": "src/body.ts:299",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -657,21 +657,21 @@
       "id": "body.LimbsReach",
       "kind": "requirement",
       "title": "Every limb reaches",
-      "source": "src/body.ts:704",
+      "source": "src/body.ts:715",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       },
       "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
-        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
       ]
     },
     {
       "id": "body.LimbsReachCriteria",
       "kind": "acceptance",
       "title": "Criteria of every limb that reaches",
-      "source": "src/body.ts:714",
+      "source": "src/body.ts:726",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -723,21 +723,21 @@
       "id": "body.PlantedLeg",
       "kind": "requirement",
       "title": "A leg on its foot",
-      "source": "src/body.ts:419",
+      "source": "src/body.ts:424",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       },
       "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
-        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
       ]
     },
     {
       "id": "body.PlantedLegCriteria",
       "kind": "acceptance",
       "title": "Criteria of a leg on its foot",
-      "source": "src/body.ts:441",
+      "source": "src/body.ts:447",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -759,21 +759,21 @@
       "id": "body.RestsOnWhatItNames",
       "kind": "requirement",
       "title": "A pose rests on what it names",
-      "source": "src/body.ts:661",
+      "source": "src/body.ts:671",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       },
       "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
-        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
       ]
     },
     {
       "id": "body.RestsOnWhatItNamesCriteria",
       "kind": "acceptance",
       "title": "Criteria of a pose that rests on what it names",
-      "source": "src/body.ts:681",
+      "source": "src/body.ts:692",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -799,21 +799,21 @@
       "id": "body.SidesOf",
       "kind": "requirement",
       "title": "The legs in front and behind",
-      "source": "src/body.ts:754",
+      "source": "src/body.ts:766",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       },
       "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
-        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
       ]
     },
     {
       "id": "body.SidesOfCriteria",
       "kind": "acceptance",
       "title": "Criteria of the legs in front and behind",
-      "source": "src/body.ts:764",
+      "source": "src/body.ts:777",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -835,21 +835,21 @@
       "id": "body.SpotOn",
       "kind": "requirement",
       "title": "Where a spot is",
-      "source": "src/body.ts:778",
+      "source": "src/body.ts:791",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       },
       "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
-        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
       ]
     },
     {
       "id": "body.SpotOnCriteria",
       "kind": "acceptance",
       "title": "Criteria of where a spot is",
-      "source": "src/body.ts:795",
+      "source": "src/body.ts:809",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -879,21 +879,21 @@
       "id": "body.SteppingLeg",
       "kind": "requirement",
       "title": "A leg that steps",
-      "source": "src/body.ts:498",
+      "source": "src/body.ts:505",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       },
       "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
-        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
       ]
     },
     {
       "id": "body.SteppingLegCriteria",
       "kind": "acceptance",
       "title": "Criteria of a leg that steps",
-      "source": "src/body.ts:511",
+      "source": "src/body.ts:519",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -915,21 +915,21 @@
       "id": "body.SurfaceHeights",
       "kind": "requirement",
       "title": "The heights of the body's surface",
-      "source": "src/body.ts:614",
+      "source": "src/body.ts:623",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       },
       "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
-        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
       ]
     },
     {
       "id": "body.SurfaceHeightsCriteria",
       "kind": "acceptance",
       "title": "Criteria of the heights of the body's surface",
-      "source": "src/body.ts:639",
+      "source": "src/body.ts:649",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -970,18 +970,18 @@
       "source": "src/body.ts:217",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       },
       "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
-        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
       ]
     },
     {
       "id": "body.TrunkOfCriteria",
       "kind": "acceptance",
       "title": "Criteria of the trunk from its angles",
-      "source": "src/body.ts:237",
+      "source": "src/body.ts:238",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -1007,21 +1007,21 @@
       "id": "body.TwoBones",
       "kind": "requirement",
       "title": "A limb reaches its end",
-      "source": "src/body.ts:257",
+      "source": "src/body.ts:258",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       },
       "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
-        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
       ]
     },
     {
       "id": "body.TwoBonesCriteria",
       "kind": "acceptance",
       "title": "Criteria of a limb that reaches its end",
-      "source": "src/body.ts:273",
+      "source": "src/body.ts:275",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -1050,18 +1050,18 @@
       "source": "src/composing.ts:28",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       },
       "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
-        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
       ]
     },
     {
       "id": "composing.BreathOfMoveCriteria",
       "kind": "acceptance",
       "title": "Criteria of rising on a breath in",
-      "source": "src/composing.ts:41",
+      "source": "src/composing.ts:42",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -1087,7 +1087,7 @@
       "id": "composing.ComposedSequence",
       "kind": "function",
       "title": "A sequence composed",
-      "source": "src/composing.ts:93",
+      "source": "src/composing.ts:94",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -1120,7 +1120,7 @@
       "id": "composing.ComposerNames",
       "kind": "decision",
       "title": "Names of the composer",
-      "source": "src/composing.ts:136",
+      "source": "src/composing.ts:137",
       "fields": {
         "owner": "ghalaax",
         "value": {
@@ -1138,7 +1138,7 @@
       "id": "composing.ComposerViewOf",
       "kind": "function",
       "title": "The composer",
-      "source": "src/composing.ts:110",
+      "source": "src/composing.ts:111",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -1162,7 +1162,7 @@
       "id": "composing.DrawnSequence",
       "kind": "function",
       "title": "A sequence drawn by lot",
-      "source": "src/composing.ts:75",
+      "source": "src/composing.ts:76",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -1197,7 +1197,7 @@
       "id": "composing.HoldingDefaults",
       "kind": "decision",
       "title": "What a composed practice holds",
-      "source": "src/composing.ts:61",
+      "source": "src/composing.ts:62",
       "fields": {
         "owner": "ghalaax",
         "value": {
@@ -1219,7 +1219,7 @@
       "id": "composing.ShowComposer",
       "kind": "function",
       "title": "Show the composer",
-      "source": "src/composing.ts:123",
+      "source": "src/composing.ts:124",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -1243,7 +1243,7 @@
       "id": "content.CuePlaceholders",
       "kind": "decision",
       "title": "Placeholders of a cue",
-      "source": "src/content.ts:271",
+      "source": "src/content.ts:274",
       "fields": {
         "owner": "ghalaax",
         "value": {
@@ -1270,21 +1270,21 @@
       "id": "content.LeadingLegOf",
       "kind": "requirement",
       "title": "Where the leading leg goes",
-      "source": "src/content.ts:90",
+      "source": "src/content.ts:91",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       },
       "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
-        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
       ]
     },
     {
       "id": "content.LeadingLegOfCriteria",
       "kind": "acceptance",
       "title": "Criteria of where the leading leg goes",
-      "source": "src/content.ts:96",
+      "source": "src/content.ts:98",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -1361,21 +1361,21 @@
       "id": "content.MakesSense",
       "kind": "requirement",
       "title": "A sequence that makes sense",
-      "source": "src/content.ts:112",
+      "source": "src/content.ts:114",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       },
       "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
-        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
       ]
     },
     {
       "id": "content.MakesSenseCriteria",
       "kind": "acceptance",
       "title": "Criteria of a sequence that makes sense",
-      "source": "src/content.ts:128",
+      "source": "src/content.ts:131",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -1421,7 +1421,7 @@
       "id": "content.Poses",
       "kind": "dataset",
       "title": "Poses",
-      "source": "src/content.ts:214",
+      "source": "src/content.ts:217",
       "status": "unknown",
       "fields": {
         "owner": "ghalaax",
@@ -3556,7 +3556,7 @@
       "id": "content.Sequences",
       "kind": "dataset",
       "title": "Sequences",
-      "source": "src/content.ts:278",
+      "source": "src/content.ts:281",
       "status": "unknown",
       "fields": {
         "owner": "ghalaax",
@@ -3814,18 +3814,18 @@
       "source": "src/content.ts:69",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       },
       "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
-        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
       ]
     },
     {
       "id": "content.SpokenCriteria",
       "kind": "acceptance",
       "title": "Criteria of how long words take to say",
-      "source": "src/content.ts:76",
+      "source": "src/content.ts:77",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -4053,18 +4053,18 @@
       "source": "src/marks.ts:65",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       },
       "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
-        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
       ]
     },
     {
       "id": "marks.MarkOnBodyCriteria",
       "kind": "acceptance",
       "title": "Criteria of a landmark on the body",
-      "source": "src/marks.ts:111",
+      "source": "src/marks.ts:112",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -4090,7 +4090,7 @@
       "id": "marks.MarksOn",
       "kind": "function",
       "title": "The landmarks of a pose",
-      "source": "src/marks.ts:142",
+      "source": "src/marks.ts:143",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -4128,21 +4128,21 @@
       "id": "practice.BreathsToSay",
       "kind": "requirement",
       "title": "Breaths to say a cue",
-      "source": "src/practice.ts:149",
+      "source": "src/practice.ts:153",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       },
       "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
-        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
       ]
     },
     {
       "id": "practice.BreathsToSayCriteria",
       "kind": "acceptance",
       "title": "Criteria of breaths to say a cue",
-      "source": "src/practice.ts:158",
+      "source": "src/practice.ts:163",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -4164,21 +4164,21 @@
       "id": "practice.Eased",
       "kind": "requirement",
       "title": "A movement goes as a breath goes",
-      "source": "src/practice.ts:62",
+      "source": "src/practice.ts:63",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       },
       "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
-        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
       ]
     },
     {
       "id": "practice.EasedCriteria",
       "kind": "acceptance",
       "title": "Criteria of a movement that goes as a breath goes",
-      "source": "src/practice.ts:71",
+      "source": "src/practice.ts:73",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -4204,21 +4204,21 @@
       "id": "practice.HoldPhases",
       "kind": "requirement",
       "title": "A hold of whole breaths",
-      "source": "src/practice.ts:110",
+      "source": "src/practice.ts:113",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       },
       "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
-        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
       ]
     },
     {
       "id": "practice.HoldPhasesCriteria",
       "kind": "acceptance",
       "title": "Criteria of a hold of whole breaths",
-      "source": "src/practice.ts:127",
+      "source": "src/practice.ts:131",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -4248,21 +4248,21 @@
       "id": "practice.LungsFull",
       "kind": "requirement",
       "title": "How full the lungs are",
-      "source": "src/practice.ts:86",
+      "source": "src/practice.ts:88",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       },
       "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
-        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
       ]
     },
     {
       "id": "practice.LungsFullCriteria",
       "kind": "acceptance",
       "title": "Criteria of how full the lungs are",
-      "source": "src/practice.ts:93",
+      "source": "src/practice.ts:96",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -4291,18 +4291,18 @@
       "source": "src/practice.ts:32",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       },
       "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
-        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
       ]
     },
     {
       "id": "practice.MomentAtCriteria",
       "kind": "acceptance",
       "title": "Criteria of where a practice is",
-      "source": "src/practice.ts:45",
+      "source": "src/practice.ts:46",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -4332,7 +4332,7 @@
       "id": "practice.MomentOf",
       "kind": "function",
       "title": "The moment of a practice",
-      "source": "src/practice.ts:222",
+      "source": "src/practice.ts:227",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -4361,7 +4361,7 @@
       "id": "practice.PlayerNames",
       "kind": "decision",
       "title": "Names of the player",
-      "source": "src/practice.ts:256",
+      "source": "src/practice.ts:261",
       "fields": {
         "owner": "ghalaax",
         "value": {
@@ -4388,7 +4388,7 @@
       "id": "practice.PlayPractice",
       "kind": "function",
       "title": "Play a practice",
-      "source": "src/practice.ts:241",
+      "source": "src/practice.ts:246",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -4418,7 +4418,7 @@
       "id": "practice.PracticeOf",
       "kind": "function",
       "title": "A practice",
-      "source": "src/practice.ts:207",
+      "source": "src/practice.ts:212",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -4524,18 +4524,18 @@
       "source": "src/product.ts:76",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       },
       "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
-        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
       ]
     },
     {
       "id": "product.BreathOfCriteria",
       "kind": "acceptance",
       "title": "Criteria of the breath of a moment",
-      "source": "src/product.ts:91",
+      "source": "src/product.ts:92",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -4566,40 +4566,40 @@
       "kind": "goal",
       "title": "The breath sets the pace",
       "source": "src/product.ts:26",
-      "fields": {},
-      "diagnostics": [
-        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
-      ]
+      "fields": {
+        "owner": "ghalaax"
+      },
+      "diagnostics": []
     },
     {
       "id": "product.CheckedContent",
       "kind": "goal",
       "title": "Content checked by people who practise",
       "source": "src/product.ts:39",
-      "fields": {},
-      "diagnostics": [
-        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
-      ]
+      "fields": {
+        "owner": "ghalaax"
+      },
+      "diagnostics": []
     },
     {
       "id": "product.ChosenLanguage",
       "kind": "requirement",
       "title": "The language of the app",
-      "source": "src/product.ts:137",
+      "source": "src/product.ts:139",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       },
       "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
-        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
       ]
     },
     {
       "id": "product.ChosenLanguageCriteria",
       "kind": "acceptance",
       "title": "Criteria of the language of the app",
-      "source": "src/product.ts:147",
+      "source": "src/product.ts:150",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -4648,14 +4648,14 @@
       "id": "product.HoldInBreaths",
       "kind": "requirement",
       "title": "A hold counts in breaths",
-      "source": "src/product.ts:111",
+      "source": "src/product.ts:112",
       "status": "unknown",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       },
       "diagnostics": [
         "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
-        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)",
         "warning: Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it"
       ]
     },
@@ -4663,7 +4663,7 @@
       "id": "product.HoldInBreathsCriteria",
       "kind": "acceptance",
       "title": "Criteria of a hold in breaths",
-      "source": "src/product.ts:120",
+      "source": "src/product.ts:122",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -4686,16 +4686,16 @@
       "kind": "goal",
       "title": "In the person's language",
       "source": "src/product.ts:32",
-      "fields": {},
-      "diagnostics": [
-        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
-      ]
+      "fields": {
+        "owner": "ghalaax"
+      },
+      "diagnostics": []
     },
     {
       "id": "product.PhoneOnTheMat",
       "kind": "assumption",
       "title": "The phone stays on the mat",
-      "source": "src/product.ts:166",
+      "source": "src/product.ts:169",
       "status": "unknown",
       "fields": {
         "owner": "ghalaax",
@@ -4708,10 +4708,10 @@
       "kind": "goal",
       "title": "Practise yoga on one's own, guided",
       "source": "src/product.ts:19",
-      "fields": {},
-      "diagnostics": [
-        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
-      ]
+      "fields": {
+        "owner": "ghalaax"
+      },
+      "diagnostics": []
     },
     {
       "id": "scenarios.BodyStaysOnTheFloor",
@@ -5505,7 +5505,7 @@
       },
       "result": {
         "path": "dist/poselia.html",
-        "code": "1aa2085e"
+        "code": "a8307b2f"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -6260,21 +6260,21 @@
       "id": "settings.AdjustedBreath",
       "kind": "requirement",
       "title": "A phase set by the person",
-      "source": "src/settings.ts:73",
+      "source": "src/settings.ts:74",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       },
       "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
-        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
       ]
     },
     {
       "id": "settings.AdjustedBreathCriteria",
       "kind": "acceptance",
       "title": "Criteria of a phase set by the person",
-      "source": "src/settings.ts:83",
+      "source": "src/settings.ts:85",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -6318,18 +6318,18 @@
       "source": "src/settings.ts:33",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       },
       "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
-        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
       ]
     },
     {
       "id": "settings.BreathReadCriteria",
       "kind": "acceptance",
       "title": "Criteria of a breath read back",
-      "source": "src/settings.ts:57",
+      "source": "src/settings.ts:58",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -6359,7 +6359,7 @@
       "id": "settings.MarksChoice",
       "kind": "function",
       "title": "The landmarks the person chose",
-      "source": "src/settings.ts:188",
+      "source": "src/settings.ts:191",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -6375,21 +6375,21 @@
       "id": "settings.MeasuredBreath",
       "kind": "requirement",
       "title": "A breath measured by tapping",
-      "source": "src/settings.ts:100",
+      "source": "src/settings.ts:102",
       "status": "held",
       "fields": {
+        "owner": "ghalaax",
         "rule": "(function)"
       },
       "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
-        "warning: Nobody answers for it: every node has an owner, who is told what it lacks (owner)"
+        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
       ]
     },
     {
       "id": "settings.MeasuredBreathCriteria",
       "kind": "acceptance",
       "title": "Criteria of a breath measured by tapping",
-      "source": "src/settings.ts:118",
+      "source": "src/settings.ts:121",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -6415,7 +6415,7 @@
       "id": "settings.PersonBreath",
       "kind": "function",
       "title": "The person's breath",
-      "source": "src/settings.ts:145",
+      "source": "src/settings.ts:148",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -6433,7 +6433,7 @@
       "id": "settings.SettingsNames",
       "kind": "decision",
       "title": "Names of the settings",
-      "source": "src/settings.ts:233",
+      "source": "src/settings.ts:236",
       "fields": {
         "owner": "ghalaax",
         "value": {
@@ -6449,7 +6449,7 @@
       "id": "settings.SettingsViewOf",
       "kind": "function",
       "title": "The settings view",
-      "source": "src/settings.ts:204",
+      "source": "src/settings.ts:207",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -6468,7 +6468,7 @@
       "id": "settings.ShowSettings",
       "kind": "function",
       "title": "Show the settings",
-      "source": "src/settings.ts:216",
+      "source": "src/settings.ts:219",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -6500,7 +6500,7 @@
       "id": "settings.VoiceChoice",
       "kind": "function",
       "title": "The voice the person chose",
-      "source": "src/settings.ts:161",
+      "source": "src/settings.ts:164",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -6516,7 +6516,7 @@
       "id": "settings.VoiceParts",
       "kind": "decision",
       "title": "What the practice says and rings",
-      "source": "src/settings.ts:136",
+      "source": "src/settings.ts:139",
       "fields": {
         "owner": "ghalaax",
         "value": {

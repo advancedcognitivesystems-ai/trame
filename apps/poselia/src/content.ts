@@ -67,6 +67,7 @@ export const SpeechRate = decision<{ charactersPerSecond: number; breathWord: nu
  * The seconds a voice takes to say a text, at the rate voices speak, with the breath word before it or not.
  */
 export const Spoken = requirement({
+  owner: "ghalaax",
   refines: [PractiseGuided],
   rule: (text: string, withBreath: boolean): number =>
     text.length / SpeechRate.value.charactersPerSecond + (withBreath ? SpeechRate.value.breathWord : 0),
@@ -88,6 +89,7 @@ export const SpokenCriteria = acceptance({
  * from the floor (a plank, a dog), it comes forward between the hands.
  */
 export const LeadingLegOf = requirement({
+  owner: "ghalaax",
   refines: [PractiseGuided],
   rule: (before: Level): Stance => (before === Level.standing || before === Level.fold ? Stance.back : Stance.front),
 })
@@ -110,6 +112,7 @@ export const LeadingLegOfCriteria = acceptance({
  * begins and ends standing, where it jumps, where it goes back and forth once too often, where a pose repeats.
  */
 export const MakesSense = requirement({
+  owner: "ghalaax",
   refines: [PractiseGuided],
   rule: (steps: readonly { id: string; level: Level }[]): { begins: boolean; ends: boolean; jumps: number[]; backAndForth: number[]; repeats: number[] } => {
     const ways = LevelWays.value
