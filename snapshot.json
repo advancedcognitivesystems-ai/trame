@@ -1802,6 +1802,10 @@
           "started": {
             "title": "Started in memory",
             "owner": "ghalaax"
+          },
+          "registry": {
+            "home": ".",
+            "generation": "g93"
           }
         }
       }
@@ -1831,6 +1835,27 @@
           "specifiers": "std/system.NodeModuleSpecifiers",
           "language": "typescript.TypeScript",
           "texts": "std/algebra.Texts"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "command-scenarios.RegistryFilled",
+      "kind": "scenario",
+      "title": "The registry filled",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "registry": "commands.Registry",
+          "processLog": "architecture.ProcessLog",
+          "writeLog": "architecture.WriteLog",
+          "line": "conventions.TrameCommands",
+          "exitStatus": "std/system.ExitStatus",
+          "messages": "messages.ScenarioMessages",
+          "names": "conventions.LanguageNames",
+          "language": "typescript.TypeScript",
+          "samples": "command-scenarios.ProjectSamples"
         },
         "body": "(function)"
       }
@@ -2608,6 +2633,36 @@
       }
     },
     {
+      "id": "commands.Registry",
+      "kind": "entry",
+      "title": "Fill the registry",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "trigger": {
+          "type": "command",
+          "name": "registry"
+        },
+        "deps": {
+          "exitStatus": "std/system.ExitStatus",
+          "preparation": "commands.Preparation",
+          "layout": "conventions.Layout",
+          "project": "engine.Project",
+          "packages": "std/tooling.PackageSources",
+          "names": "conventions.LanguageNames",
+          "reading": "architecture.FileReading",
+          "trees": "architecture.FileTrees",
+          "paths": "architecture.Paths",
+          "terminal": "architecture.Terminal",
+          "messages": "messages.CommandMessages"
+        },
+        "body": {
+          "file": "./code/commands/registry.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
       "id": "commands.Release",
       "kind": "entry",
       "title": "Release a version",
@@ -3242,6 +3297,10 @@
           "amend": {
             "value": "amend",
             "meaning": "Changes a chosen value by an amendment, said first, then recorded where the project's amendments go"
+          },
+          "registry": {
+            "value": "registry",
+            "meaning": "Publishes to the registry of this machine the generations and the releases frozen in the language's home"
           },
           "init": {
             "value": "init",
@@ -17068,6 +17127,61 @@
       "kind": "deps"
     },
     {
+      "from": "command-scenarios.RegistryFilled",
+      "to": "commands.Registry",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.RegistryFilled",
+      "to": "platform.LocalRegistry",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.RegistryFilled",
+      "to": "architecture.Test",
+      "kind": "env"
+    },
+    {
+      "from": "command-scenarios.RegistryFilled",
+      "to": "commands.Registry",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.RegistryFilled",
+      "to": "architecture.ProcessLog",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.RegistryFilled",
+      "to": "architecture.WriteLog",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.RegistryFilled",
+      "to": "conventions.TrameCommands",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.RegistryFilled",
+      "to": "messages.ScenarioMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.RegistryFilled",
+      "to": "conventions.LanguageNames",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.RegistryFilled",
+      "to": "typescript.TypeScript",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.RegistryFilled",
+      "to": "command-scenarios.ProjectSamples",
+      "kind": "deps"
+    },
+    {
       "from": "command-scenarios.ShipmentsRun",
       "to": "commands.Ship",
       "kind": "verifies"
@@ -18590,6 +18704,61 @@
     {
       "from": "commands.ReferencesModule",
       "to": "typescript.NamedImport",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Registry",
+      "to": "product.SingleSource",
+      "kind": "serves"
+    },
+    {
+      "from": "commands.Registry",
+      "to": "architecture.TrameCli",
+      "kind": "in"
+    },
+    {
+      "from": "commands.Registry",
+      "to": "commands.Preparation",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Registry",
+      "to": "conventions.Layout",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Registry",
+      "to": "engine.Project",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Registry",
+      "to": "conventions.LanguageNames",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Registry",
+      "to": "architecture.FileReading",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Registry",
+      "to": "architecture.FileTrees",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Registry",
+      "to": "architecture.Paths",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Registry",
+      "to": "architecture.Terminal",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Registry",
+      "to": "messages.CommandMessages",
       "kind": "deps"
     },
     {

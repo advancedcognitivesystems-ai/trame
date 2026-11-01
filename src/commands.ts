@@ -366,6 +366,21 @@ export const Amend = entryPoint({
 })
 
 /**
+ * Fill the registry
+ * Publishes to the registry of this machine the generations frozen in the language's home (each with its language)
+ * and the releases of its libraries; after a clone, what fills the registry again.
+ */
+export const Registry = entryPoint({
+  owner: "trame", in: TrameCli, serves: [SingleSource],
+  trigger: command(commandNames.registry),
+  deps: {
+    exitStatus: ExitStatus, preparation: Preparation, layout: Layout, project: Project, packages: PackageSources, names: LanguageNames,
+    reading: FileReading, trees: FileTrees, paths: Paths, terminal: Terminal, messages: CommandMessages,
+  },
+  body: code.file<typeof import("./code/commands/registry").default>("./code/commands/registry.ts"),
+})
+
+/**
  * A module of references
  * Writes the packages of Trame a project uses as package nodes, as a person would: trame init writes the first, an
  * advance the example's language.

@@ -5,7 +5,7 @@
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
 | Trame's maintainers | 0 | 0 | 3 | 0 |
-| trame | 0 | 0 | 8 | 655 |
+| trame | 0 | 0 | 8 | 657 |
 
 <a id="Trame's maintainers"></a>
 
@@ -128,6 +128,7 @@
 | [What a plan is checked with](command-scenarios.md#PlanSamples) | Decision |  |
 | [What the scenarios ask of those projects](command-scenarios.md#ProjectSamples) | Decision |  |
 | [A project started](command-scenarios.md#ProjectStarted) | Scenario | **held** |
+| [The registry filled](command-scenarios.md#RegistryFilled) | Scenario | **held** |
 | [What a program run in a scenario answers](command-scenarios.md#RunSamples) | Decision |  |
 | [The projects of the repository the scenarios enter](command-scenarios.md#ScenarioProjects) | Decision |  |
 | [Shipments run, evidence given](command-scenarios.md#ShipmentsRun) | Scenario | **held** |
@@ -156,6 +157,7 @@
 | [Publish](commands.md#Publish) | Entry point | **held** |
 | [Record evidence](commands.md#RecordEvidence) | Entry point | **held** |
 | [A module of references](commands.md#ReferencesModule) | Function | **held** |
+| [Fill the registry](commands.md#Registry) | Entry point | **held** |
 | [Release a version](commands.md#Release) | Entry point | **held** |
 | [Render a view](commands.md#RenderView) | Function | **held** |
 | [Run a component](commands.md#Run) | Entry point | **held** |

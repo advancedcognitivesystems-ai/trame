@@ -2186,6 +2186,21 @@
       "diagnostics": []
     },
     {
+      "id": "packages.Language",
+      "kind": "package",
+      "title": "Trame",
+      "source": "src/packages.ts:11",
+      "fields": {
+        "owner": "trame",
+        "packageName": "trame",
+        "version": "93",
+        "joins": "language",
+        "from": "path",
+        "at": "../generations/g93"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "patterns.AbstractFactory",
       "kind": "pattern",
       "title": "Abstract Factory",
@@ -4563,6 +4578,11 @@
       "from": "obligations.VerifiedCriteria",
       "to": "obligations.Verified",
       "kind": "accepts"
+    },
+    {
+      "from": "packages.Language",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
     },
     {
       "from": "patterns.AbstractFactory",

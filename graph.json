@@ -1384,7 +1384,7 @@
       "id": "command-scenarios.AdvanceInMemory",
       "kind": "scenario",
       "title": "An advance, in memory",
-      "source": "src/command-scenarios.ts:860",
+      "source": "src/command-scenarios.ts:884",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1439,7 +1439,7 @@
       "id": "command-scenarios.AdvanceSamples",
       "kind": "decision",
       "title": "What the engines an advance starts answer in a scenario",
-      "source": "src/command-scenarios.ts:846",
+      "source": "src/command-scenarios.ts:870",
       "fields": {
         "owner": "trame",
         "value": {
@@ -1622,7 +1622,7 @@
       "id": "command-scenarios.CommandLineChooses",
       "kind": "scenario",
       "title": "The command line",
-      "source": "src/command-scenarios.ts:695",
+      "source": "src/command-scenarios.ts:719",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1696,7 +1696,7 @@
       "id": "command-scenarios.ComponentRun",
       "kind": "scenario",
       "title": "A component run",
-      "source": "src/command-scenarios.ts:620",
+      "source": "src/command-scenarios.ts:644",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1761,7 +1761,7 @@
       "id": "command-scenarios.DevFollowsTheGraph",
       "kind": "scenario",
       "title": "trame dev",
-      "source": "src/command-scenarios.ts:652",
+      "source": "src/command-scenarios.ts:676",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1816,7 +1816,7 @@
       "id": "command-scenarios.DevSamples",
       "kind": "decision",
       "title": "What trame dev is shown in a scenario",
-      "source": "src/command-scenarios.ts:641",
+      "source": "src/command-scenarios.ts:665",
       "fields": {
         "owner": "trame",
         "value": {
@@ -1832,7 +1832,7 @@
       "id": "command-scenarios.DoctorAsks",
       "kind": "scenario",
       "title": "The doctor",
-      "source": "src/command-scenarios.ts:819",
+      "source": "src/command-scenarios.ts:843",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1896,7 +1896,7 @@
       "id": "command-scenarios.LibraryReleased",
       "kind": "scenario",
       "title": "A library released",
-      "source": "src/command-scenarios.ts:525",
+      "source": "src/command-scenarios.ts:549",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1937,7 +1937,7 @@
       "id": "command-scenarios.ManifestWritten",
       "kind": "scenario",
       "title": "The manifest written",
-      "source": "src/command-scenarios.ts:559",
+      "source": "src/command-scenarios.ts:583",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1981,7 +1981,7 @@
       "id": "command-scenarios.PackagesAudited",
       "kind": "scenario",
       "title": "The packages audited",
-      "source": "src/command-scenarios.ts:502",
+      "source": "src/command-scenarios.ts:526",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2011,7 +2011,7 @@
       "id": "command-scenarios.PageDelivered",
       "kind": "scenario",
       "title": "The page delivered",
-      "source": "src/command-scenarios.ts:734",
+      "source": "src/command-scenarios.ts:758",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2041,7 +2041,7 @@
       "id": "command-scenarios.PageExported",
       "kind": "scenario",
       "title": "The page exported",
-      "source": "src/command-scenarios.ts:590",
+      "source": "src/command-scenarios.ts:614",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2208,6 +2208,10 @@
           "started": {
             "title": "Started in memory",
             "owner": "ghalaax"
+          },
+          "registry": {
+            "home": ".",
+            "generation": "g93"
           }
         }
       },
@@ -2217,7 +2221,7 @@
       "id": "command-scenarios.ProjectStarted",
       "kind": "scenario",
       "title": "A project started",
-      "source": "src/command-scenarios.ts:468",
+      "source": "src/command-scenarios.ts:492",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2267,10 +2271,39 @@
       "diagnostics": []
     },
     {
+      "id": "command-scenarios.RegistryFilled",
+      "kind": "scenario",
+      "title": "The registry filled",
+      "source": "src/command-scenarios.ts:469",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "registry": "commands.Registry",
+          "processLog": "architecture.ProcessLog",
+          "writeLog": "architecture.WriteLog",
+          "line": "conventions.TrameCommands",
+          "exitStatus": "std/system.ExitStatus",
+          "messages": "messages.ScenarioMessages",
+          "names": "conventions.LanguageNames",
+          "language": "typescript.TypeScript",
+          "samples": "command-scenarios.ProjectSamples"
+        },
+        "body": "(function)"
+      },
+      "result": [
+        {
+          "name": "trame registry publishes a generation it names, its language copied: the kernel is a file there",
+          "status": "passed"
+        }
+      ],
+      "diagnostics": []
+    },
+    {
       "id": "command-scenarios.RunSamples",
       "kind": "decision",
       "title": "What a program run in a scenario answers",
-      "source": "src/command-scenarios.ts:614",
+      "source": "src/command-scenarios.ts:638",
       "fields": {
         "owner": "trame",
         "value": {
@@ -2299,7 +2332,7 @@
       "id": "command-scenarios.ShipmentsRun",
       "kind": "scenario",
       "title": "Shipments run, evidence given",
-      "source": "src/command-scenarios.ts:760",
+      "source": "src/command-scenarios.ts:784",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2637,7 +2670,7 @@
       "id": "commands.Assemble",
       "kind": "entry",
       "title": "Assemble a component",
-      "source": "src/commands.ts:413",
+      "source": "src/commands.ts:428",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2815,7 +2848,7 @@
       "id": "commands.Dev",
       "kind": "entry",
       "title": "Start trame dev",
-      "source": "src/commands.ts:403",
+      "source": "src/commands.ts:418",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2957,7 +2990,7 @@
       "id": "commands.Init",
       "kind": "entry",
       "title": "Start a project",
-      "source": "src/commands.ts:387",
+      "source": "src/commands.ts:402",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3145,7 +3178,7 @@
       "id": "commands.ReferencesModule",
       "kind": "function",
       "title": "A module of references",
-      "source": "src/commands.ts:373",
+      "source": "src/commands.ts:388",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3165,6 +3198,38 @@
         },
         "body": {
           "file": "./code/commands/references.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "commands.Registry",
+      "kind": "entry",
+      "title": "Fill the registry",
+      "source": "src/commands.ts:373",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "trigger": {
+          "type": "command",
+          "name": "registry"
+        },
+        "deps": {
+          "exitStatus": "std/system.ExitStatus",
+          "preparation": "commands.Preparation",
+          "layout": "conventions.Layout",
+          "project": "engine.Project",
+          "packages": "std/tooling.PackageSources",
+          "names": "conventions.LanguageNames",
+          "reading": "architecture.FileReading",
+          "trees": "architecture.FileTrees",
+          "paths": "architecture.Paths",
+          "terminal": "architecture.Terminal",
+          "messages": "messages.CommandMessages"
+        },
+        "body": {
+          "file": "./code/commands/registry.ts",
           "language": "typescript"
         }
       },
@@ -3250,7 +3315,7 @@
       "id": "commands.Run",
       "kind": "entry",
       "title": "Run a component",
-      "source": "src/commands.ts:424",
+      "source": "src/commands.ts:439",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3319,7 +3384,7 @@
       "id": "commands.ShowView",
       "kind": "entry",
       "title": "Show a view",
-      "source": "src/commands.ts:434",
+      "source": "src/commands.ts:449",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3404,7 +3469,7 @@
       "id": "commands.ViewByName",
       "kind": "entry",
       "title": "View by its name",
-      "source": "src/commands.ts:445",
+      "source": "src/commands.ts:460",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3494,7 +3559,7 @@
       "id": "conventions.DefaultRank",
       "kind": "decision",
       "title": "Default rank",
-      "source": "src/conventions.ts:194",
+      "source": "src/conventions.ts:195",
       "fields": {
         "owner": "trame",
         "value": 100
@@ -3505,7 +3570,7 @@
       "id": "conventions.DocComment",
       "kind": "decision",
       "title": "Documentation comment",
-      "source": "src/conventions.ts:216",
+      "source": "src/conventions.ts:217",
       "fields": {
         "owner": "trame",
         "value": {
@@ -3519,7 +3584,7 @@
       "id": "conventions.DocumentIds",
       "kind": "standard",
       "title": "Names of the documents",
-      "source": "src/conventions.ts:230",
+      "source": "src/conventions.ts:231",
       "fields": {
         "owner": "trame",
         "source": "Trame, the documents of its views (the engine names them, the page reads them)",
@@ -3597,7 +3662,7 @@
       "id": "conventions.JsonFormatting",
       "kind": "decision",
       "title": "JSON formatting",
-      "source": "src/conventions.ts:222",
+      "source": "src/conventions.ts:223",
       "fields": {
         "owner": "trame",
         "value": {
@@ -3718,7 +3783,7 @@
       "id": "conventions.ReferenceSyntax",
       "kind": "standard",
       "title": "Trame references",
-      "source": "src/conventions.ts:201",
+      "source": "src/conventions.ts:202",
       "fields": {
         "owner": "trame",
         "source": "Trame, the prelude (trame/kernel.ts: refOf, getPath)",
@@ -3747,7 +3812,7 @@
       "id": "conventions.StepNames",
       "kind": "decision",
       "title": "Names of steps",
-      "source": "src/conventions.ts:188",
+      "source": "src/conventions.ts:189",
       "fields": {
         "owner": "trame",
         "value": {
@@ -3848,6 +3913,10 @@
           "amend": {
             "value": "amend",
             "meaning": "Changes a chosen value by an amendment, said first, then recorded where the project's amendments go"
+          },
+          "registry": {
+            "value": "registry",
+            "meaning": "Publishes to the registry of this machine the generations and the releases frozen in the language's home"
           },
           "init": {
             "value": "init",
@@ -3973,7 +4042,7 @@
       "id": "conventions.TrameEnvironment",
       "kind": "standard",
       "title": "Trame's environment",
-      "source": "src/conventions.ts:175",
+      "source": "src/conventions.ts:176",
       "fields": {
         "owner": "trame",
         "source": "Trame, the variables of the environment it reads",
@@ -3990,7 +4059,7 @@
       "id": "conventions.ViewGroupOrder",
       "kind": "decision",
       "title": "Order of the view groups",
-      "source": "src/conventions.ts:244",
+      "source": "src/conventions.ts:245",
       "fields": {
         "owner": "trame",
         "value": [
@@ -9854,7 +9923,7 @@
       "id": "messages.AdvanceMessages",
       "kind": "catalog",
       "title": "Messages of an advance",
-      "source": "src/messages.ts:838",
+      "source": "src/messages.ts:840",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -9897,7 +9966,7 @@
       "id": "messages.CountsInTheLanguage",
       "kind": "adr",
       "title": "A catalog counts in its language",
-      "source": "src/messages.ts:927",
+      "source": "src/messages.ts:929",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -9955,7 +10024,7 @@
       "id": "messages.EngineViewWords",
       "kind": "catalog",
       "title": "Words of Trame's views",
-      "source": "src/messages.ts:657",
+      "source": "src/messages.ts:658",
       "fields": {
         "owner": "trame",
         "messages": {
@@ -9969,7 +10038,7 @@
       "id": "messages.KindWords",
       "kind": "catalog",
       "title": "Words of the kinds",
-      "source": "src/messages.ts:637",
+      "source": "src/messages.ts:638",
       "fields": {
         "owner": "trame",
         "messages": {
@@ -10048,7 +10117,7 @@
       "id": "messages.PageWords",
       "kind": "catalog",
       "title": "Words of the page",
-      "source": "src/messages.ts:668",
+      "source": "src/messages.ts:669",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -10065,7 +10134,7 @@
       "id": "messages.PlatformMessages",
       "kind": "catalog",
       "title": "Messages of the platform",
-      "source": "src/messages.ts:690",
+      "source": "src/messages.ts:691",
       "fields": {
         "owner": "trame",
         "messages": "(function)"
@@ -10076,7 +10145,7 @@
       "id": "messages.RenderingMessages",
       "kind": "catalog",
       "title": "Messages of the renderers",
-      "source": "src/messages.ts:680",
+      "source": "src/messages.ts:681",
       "fields": {
         "owner": "trame",
         "messages": {
@@ -10090,7 +10159,7 @@
       "id": "messages.ScenarioMessages",
       "kind": "catalog",
       "title": "Messages of the scenarios",
-      "source": "src/messages.ts:719",
+      "source": "src/messages.ts:720",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -10129,7 +10198,7 @@
       "id": "messages.ViewWords",
       "kind": "catalog",
       "title": "Words of the views",
-      "source": "src/messages.ts:647",
+      "source": "src/messages.ts:648",
       "fields": {
         "owner": "trame",
         "messages": {
@@ -16228,7 +16297,7 @@
         "owner": "trame"
       },
       "result": {
-        "code": "3a116110"
+        "code": "a46b49e5"
       },
       "diagnostics": [
         "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
@@ -16244,7 +16313,7 @@
         "owner": "trame"
       },
       "result": {
-        "code": "beed323b"
+        "code": "b5255c9e"
       },
       "diagnostics": [
         "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
@@ -16262,7 +16331,7 @@
       },
       "result": {
         "path": "out/local/trame-cli.ts",
-        "code": "4a22a8c7"
+        "code": "f5c065bc"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -16318,7 +16387,7 @@
       },
       "result": {
         "path": "trame-page.html",
-        "code": "1ba67fa7"
+        "code": "b4d44d82"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -16735,6 +16804,11 @@
           {
             "node": "command-scenarios.ManifestWritten",
             "via": "platform.LocalPaths",
+            "obligation": "sdlc.EngineVerified"
+          },
+          {
+            "node": "command-scenarios.RegistryFilled",
+            "via": "platform.LocalRegistry",
             "obligation": "sdlc.EngineVerified"
           },
           {
@@ -22835,6 +22909,66 @@
       "kind": "deps"
     },
     {
+      "from": "command-scenarios.RegistryFilled",
+      "to": "commands.Registry",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.RegistryFilled",
+      "to": "platform.LocalRegistry",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.RegistryFilled",
+      "to": "architecture.Test",
+      "kind": "env"
+    },
+    {
+      "from": "command-scenarios.RegistryFilled",
+      "to": "commands.Registry",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.RegistryFilled",
+      "to": "architecture.ProcessLog",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.RegistryFilled",
+      "to": "architecture.WriteLog",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.RegistryFilled",
+      "to": "conventions.TrameCommands",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.RegistryFilled",
+      "to": "std/system.ExitStatus",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.RegistryFilled",
+      "to": "messages.ScenarioMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.RegistryFilled",
+      "to": "conventions.LanguageNames",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.RegistryFilled",
+      "to": "typescript.TypeScript",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.RegistryFilled",
+      "to": "command-scenarios.ProjectSamples",
+      "kind": "deps"
+    },
+    {
       "from": "command-scenarios.ShipmentsRun",
       "to": "commands.Ship",
       "kind": "verifies"
@@ -24677,6 +24811,71 @@
     {
       "from": "commands.ReferencesModule",
       "to": "std/algebra.Texts",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Registry",
+      "to": "product.SingleSource",
+      "kind": "serves"
+    },
+    {
+      "from": "commands.Registry",
+      "to": "architecture.TrameCli",
+      "kind": "in"
+    },
+    {
+      "from": "commands.Registry",
+      "to": "std/system.ExitStatus",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Registry",
+      "to": "commands.Preparation",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Registry",
+      "to": "conventions.Layout",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Registry",
+      "to": "engine.Project",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Registry",
+      "to": "std/tooling.PackageSources",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Registry",
+      "to": "conventions.LanguageNames",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Registry",
+      "to": "architecture.FileReading",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Registry",
+      "to": "architecture.FileTrees",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Registry",
+      "to": "architecture.Paths",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Registry",
+      "to": "architecture.Terminal",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Registry",
+      "to": "messages.CommandMessages",
       "kind": "deps"
     },
     {

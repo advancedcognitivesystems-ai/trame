@@ -403,6 +403,20 @@ Acceptance criteria · `VerifiedCriteria` · **held**
 - Owner: trame
 - Accepts: The code a shipment ships is verified
 
+## Standard library · Packages
+
+### Trame
+
+Package · `Language`
+
+- Owner: trame
+- Name: trame
+- Version: 93
+- How it joins the graph: language
+- Where it comes from: path
+- Its path: ../generations/g93
+- Serves: Ports of the platform, realized once
+
 ## Standard library · Design patterns
 
 ### Abstract Factory

@@ -1876,6 +1876,19 @@
       }
     },
     {
+      "id": "packages.Language",
+      "kind": "package",
+      "title": "Trame",
+      "fields": {
+        "owner": "trame",
+        "packageName": "trame",
+        "version": "93",
+        "joins": "language",
+        "from": "path",
+        "at": "../generations/g93"
+      }
+    },
+    {
       "id": "patterns.AbstractFactory",
       "kind": "pattern",
       "title": "Abstract Factory",
@@ -3943,6 +3956,11 @@
       "from": "obligations.VerifiedCriteria",
       "to": "obligations.Verified",
       "kind": "accepts"
+    },
+    {
+      "from": "packages.Language",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
     },
     {
       "from": "patterns.AbstractFactory",

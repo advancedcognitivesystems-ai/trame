@@ -87,14 +87,14 @@ Reads the options, checks and compiles the project, refuses cleanly: what all co
 - Body: `./code/commands/preparation.ts` (typescript)
 - Effects: execution, keeps, process, read, terminal, time
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
-- Used by: [Advance](#Advance), [Amend](#Amend), [An amendment prepared](#Amending), [Assemble a component](#Assemble), [Assembler](#Assembler), [Audit the packages](#Audit), [Build](#Build), [Deliver](#Deliver), [Start trame dev](#Dev), [Ask the machine](#Doctor), [Payload](#EmitPayload), [Export the page](#Export), [Start a project](#Init), [Plan](#Plan), [Publish](#Publish), [Record evidence](#RecordEvidence), [Release a version](#Release), [Render a view](#RenderView), [Ship](#Ship), [Show a view](#ShowView), [Take the snapshot](#TakeSnapshot), [Test the laws](#TestKinds), [View by its name](#ViewByName), [Write the manifest](#WriteManifest)
+- Used by: [Advance](#Advance), [Amend](#Amend), [An amendment prepared](#Amending), [Assemble a component](#Assemble), [Assembler](#Assembler), [Audit the packages](#Audit), [Build](#Build), [Deliver](#Deliver), [Start trame dev](#Dev), [Ask the machine](#Doctor), [Payload](#EmitPayload), [Export the page](#Export), [Start a project](#Init), [Plan](#Plan), [Publish](#Publish), [Record evidence](#RecordEvidence), [Fill the registry](#Registry), [Release a version](#Release), [Render a view](#RenderView), [Ship](#Ship), [Show a view](#ShowView), [Take the snapshot](#TakeSnapshot), [Test the laws](#TestKinds), [View by its name](#ViewByName), [Write the manifest](#WriteManifest)
 - Verified by: [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore)
 
 <a id="ReferencesModule"></a>
 
 ### A module of references
 
-`ReferencesModule` · `src/commands.ts:373` · status: **held**
+`ReferencesModule` · `src/commands.ts:388` · status: **held**
 
 Writes the packages of Trame a project uses as package nodes, as a person would: trame init writes the first, an advance the example's language.
 
@@ -167,7 +167,7 @@ Triggered by `command amend`
 
 ### Assemble a component
 
-`Assemble` · `src/commands.ts:413` · status: **held**
+`Assemble` · `src/commands.ts:428` · status: **held**
 
 Triggered by `command assemble`
 
@@ -243,7 +243,7 @@ Triggered by `command deliver`
 
 ### Start trame dev
 
-`Dev` · `src/commands.ts:403` · status: **held**
+`Dev` · `src/commands.ts:418` · status: **held**
 
 Triggered by `command dev`
 
@@ -317,7 +317,7 @@ Triggered by `command export`
 
 ### Start a project
 
-`Init` · `src/commands.ts:387` · status: **held**
+`Init` · `src/commands.ts:402` · status: **held**
 
 In an empty directory: its configuration (the generation that runs, the libraries the language's home uses), a first module with the goal it serves, the guide for agents and the skill, then its manifest, by a fresh engine.
 
@@ -390,6 +390,25 @@ Triggered by `command evidence`
 - Used by: [Shipments run, evidence given](command-scenarios.md#ShipmentsRun)
 - Applies: [A version ships through the graph](principles.md#ShippedThroughTheGraph)
 
+<a id="Registry"></a>
+
+### Fill the registry
+
+`Registry` · `src/commands.ts:373` · status: **held**
+
+Publishes to the registry of this machine the generations frozen in the language's home (each with its language) and the releases of its libraries; after a clone, what fills the registry again.
+
+Triggered by `command registry`
+
+- Owner: trame
+- Parameters: `exitStatus` ← [Exit status](../std/releases/0.13.0/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `layout` ← [Project layout](conventions.md#Layout) · `project` ← [Project](engine.md#Project) · `packages` ← [Where a package comes from](../std/releases/0.13.0/docs/tooling.md#PackageSources) · `names` ← [The language's names](conventions.md#LanguageNames) · `reading` ← [File reading](architecture.md#FileReading) · `trees` ← [File trees](architecture.md#FileTrees) · `paths` ← [Paths](architecture.md#Paths) · `terminal` ← [Terminal](architecture.md#Terminal) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
+- Body: `./code/commands/registry.ts` (typescript)
+- Effects: execution, keeps, process, read, terminal, time, write
+- Serves: [A single source of truth](product.md#SingleSource)
+- Part of: [Trame on the command line](architecture.md#TrameCli)
+- Verified by: [The registry filled](command-scenarios.md#RegistryFilled)
+- Used by: [The registry filled](command-scenarios.md#RegistryFilled)
+
 <a id="Release"></a>
 
 ### Release a version
@@ -414,7 +433,7 @@ Triggered by `command release`
 
 ### Run a component
 
-`Run` · `src/commands.ts:424` · status: **held**
+`Run` · `src/commands.ts:439` · status: **held**
 
 Assembles, then runs the program and exits with its code.
 
@@ -453,7 +472,7 @@ Triggered by `command ship`
 
 ### Show a view
 
-`ShowView` · `src/commands.ts:434` · status: **held**
+`ShowView` · `src/commands.ts:449` · status: **held**
 
 Triggered by `command view`
 
@@ -508,7 +527,7 @@ Triggered by `command test-kinds`
 
 ### View by its name
 
-`ViewByName` · `src/commands.ts:445` · status: **held**
+`ViewByName` · `src/commands.ts:460` · status: **held**
 
 Any other command: the name of a view.
 

@@ -414,6 +414,7 @@ The engine as the graph describes it now, frozen into the next generation and pi
 | [The laws of the kinds hold](scenarios.md#KindLaws) | **held** | [The engine is verified](#EngineVerified), for [Laws](engine.md#Laws) |
 | [A library released](command-scenarios.md#LibraryReleased) | **held** | [The engine is verified](#EngineVerified), for [Records of the releases](generations.md#ReleaseRecords) |
 | [The manifest written](command-scenarios.md#ManifestWritten) | **held** | [The engine is verified](#EngineVerified), for [Packages by their local path](platform.md#LocalPaths) |
+| [The registry filled](command-scenarios.md#RegistryFilled) | **held** | [The engine is verified](#EngineVerified), for [Packages from the local registry](platform.md#LocalRegistry) |
 | [A value amended](command-scenarios.md#ValueAmended) | **held** | [The engine is verified](#EngineVerified), for [Two builds compared](commands.md#BuildComparison) |
 | [The packages audited](command-scenarios.md#PackagesAudited) | **held** | [The engine is verified](#EngineVerified), for [Audit the packages](commands.md#Audit) |
 | [A view in the terminal](command-scenarios.md#ViewsInTheTerminal) | **held** | [The engine is verified](#EngineVerified), for [Figures as text](rendering.md#TextFigures) |

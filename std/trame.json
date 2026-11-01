@@ -1,4 +1,5 @@
 {
   "title": "Standard library",
-  "engine": "../generations/g92"
+  "engine": ".trame/trame",
+  "libraries": {}
 }

@@ -11,7 +11,7 @@ import {
 import { PayloadBuilder, Differences, Assembly, Project, Compiler, DateBundle, DevServer, DevService, ShipmentPipeline, Views, EngineFingerprint, ProjectRuns } from "./engine"
 import {
   ShowView, ViewByName, RenderView, EmitPayload, Assemble, Assembler, TestKinds, TakeSnapshot, Publish, Audit, Release, WriteManifest, Export, Run, Dev,
-  Deliver, Ship, RecordEvidence, Doctor, DoctorProbe, Advance, Build, Plan, Amend, Amending, BuildComparison, Init, ReferencesModule,
+  Deliver, Ship, RecordEvidence, Doctor, DoctorProbe, Advance, Build, Plan, Amend, Amending, BuildComparison, Init, ReferencesModule, Registry,
 } from "./commands"
 import { SyntaxReader, BodyChecks } from "./syntax"
 import { TypeScript, TypeScriptWriter, StringLiteral } from "./typescript"
@@ -447,6 +447,7 @@ export const ProjectSamples = decision<{
   shipments: { runners: string; preview: string }
   handCheck: { check: string; tester: string; stranger: string }
   started: { title: string; owner: string }
+  registry: { home: string; generation: string }
 }>({
   owner: "trame",
   value: {
@@ -456,6 +457,29 @@ export const ProjectSamples = decision<{
     shipments: { runners: "RunnersWritten", preview: "Preview" },
     handCheck: { check: "OnAPhone", tester: "ghalaax", stranger: "someone-else" },
     started: { title: "Started in memory", owner: "ghalaax" },
+    registry: { home: ".", generation: "g93" },
+  },
+})
+
+/**
+ * The registry filled
+ * trame registry, in Trame's repository, publishes a generation it names to the registry of this machine (in memory),
+ * with its language copied: the kernel is there, a file and not a link.
+ */
+export const RegistryFilled = scenario({
+  owner: "trame",
+  verifies: [Registry, LocalRegistry],
+  env: Test,
+  deps: {
+    registry: Registry, processLog: ProcessLog, writeLog: WriteLog, line: TrameCommands, exitStatus: ExitStatus, messages: ScenarioMessages,
+    names: LanguageNames, language: TypeScript, samples: ProjectSamples,
+  },
+  body: ({ registry, processLog, writeLog, line, exitStatus, messages, names, language, samples }) => async (check) => {
+    processLog.enter(samples.registry.home)
+    const r = await registry({ params: { command: line.registry }, body: { args: [samples.registry.generation] } })
+    const [extension] = language.extensions
+    const [kernel] = Object.values(names.modules)
+    check(messages.registryPublished(), r.status === exitStatus.success && [...writeLog.written().keys()].some((p) => p.endsWith(kernel + extension)))
   },
 })
 
