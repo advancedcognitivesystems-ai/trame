@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 30 October 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 1 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Trame · Appearance
 
@@ -3456,8 +3456,8 @@ Implementation · `LocalPaths`
 Implementation · `LocalRegistry`
 
 - Owner: trame
-- Parameters: { trees: architecture.FileTrees, writing: architecture.FileWriting, reading: architecture.FileReading, paths: architecture.Paths, place: platform.LocalRegistryPlace }
-- Depends on: File trees, File writing, File reading, Paths, Where the local registry is
+- Parameters: { trees: architecture.FileTrees, writing: architecture.FileWriting, reading: architecture.FileReading, paths: architecture.Paths, place: platform.LocalRegistryPlace, npm: std/system.NpmManifest, layout: conventions.Layout }
+- Depends on: File trees, File writing, File reading, Paths, Where the local registry is, Project layout
 
 ### Files in memory, over the disk
 
@@ -5435,6 +5435,20 @@ Release · `G91`
 - Releases: Trame on the command line
 - Assembled by: Generation 90
 
+### Generation 92
+
+Release · `G92`
+
+- Released by: trame
+- Version: g92
+- Released on: 2026-11-01
+- What changes: E1f: a version is published to the registry of this machine (a library's release; the promotion of a generation, its language copied for real); the engine leads the project's library names too, as peers; the launcher installs the packages of a published engine and runs it with its own tsx
+- Fingerprint: 30caf57f98eafc15
+- Language: shared
+- Language archived: 10418831c37c9ead
+- Releases: Trame on the command line
+- Assembled by: Generation 91
+
 ## Trame · Rendering
 
 ### Places in a sentence
@@ -5861,7 +5875,7 @@ Artefact · `GraphPage` · **unknown**
 
 ### The page's program
 
-Artefact · `PageProgram` · **unknown**
+Artefact · `PageProgram` · **held**
 
 - Owner: trame
 - Path: out/browser/page-app.ts

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-30",
+  "generated": "2026-11-01",
   "nodes": [
     {
       "id": "appearance.ExplorerDrawing",
@@ -1421,7 +1421,7 @@
           "status": "passed"
         },
         {
-          "name": "The candidate is accepted (  ✓ trame runs g92 |   ✓ reservations runs g92 | Advance succeeded.)",
+          "name": "The candidate is accepted (  ✓ trame runs g93 |   ✓ reservations runs g93 | Advance succeeded.)",
           "status": "passed"
         },
         {
@@ -12420,7 +12420,9 @@
           "writing": "architecture.FileWriting",
           "reading": "architecture.FileReading",
           "paths": "architecture.Paths",
-          "place": "platform.LocalRegistryPlace"
+          "place": "platform.LocalRegistryPlace",
+          "npm": "std/system.NpmManifest",
+          "layout": "conventions.Layout"
         },
         "body": {
           "file": "./code/platform/local-registry.ts",
@@ -15207,6 +15209,22 @@
       "diagnostics": []
     },
     {
+      "id": "releases.G92",
+      "kind": "release",
+      "title": "Generation 92",
+      "source": "src/releases.ts:1355",
+      "fields": {
+        "owner": "trame",
+        "version": "g92",
+        "date": "2026-11-01",
+        "what": "E1f: a version is published to the registry of this machine (a library's release; the promotion of a generation, its language copied for real); the engine leads the project's library names too, as peers; the launcher installs the packages of a published engine and runs it with its own tsx",
+        "fingerprint": "30caf57f98eafc15",
+        "language": "shared",
+        "archive": "10418831c37c9ead"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "rendering.Common",
       "kind": "function",
       "title": "Common rendering",
@@ -16153,7 +16171,7 @@
         "owner": "trame"
       },
       "result": {
-        "code": "d0343af8"
+        "code": "310b2afb"
       },
       "diagnostics": [
         "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
@@ -16169,7 +16187,7 @@
         "owner": "trame"
       },
       "result": {
-        "code": "615270f3"
+        "code": "48d65ea0"
       },
       "diagnostics": [
         "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
@@ -16187,7 +16205,7 @@
       },
       "result": {
         "path": "out/local/trame-cli.ts",
-        "code": "ac7e4987"
+        "code": "9521813c"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -16243,7 +16261,7 @@
       },
       "result": {
         "path": "trame-page.html",
-        "code": "a1be2bef"
+        "code": "53b60a9c"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -16813,7 +16831,6 @@
       "diagnostics": [
         "warning: To ship: The candidate engine is unknown",
         "warning: To ship: The graph page is unknown",
-        "warning: To ship: The page's program is unknown",
         "warning: To ship: The page is assembled is unknown",
         "warning: To ship: The candidate plays the laws is unknown",
         "warning: To ship: The candidate runs on the machine is unknown",
@@ -16887,7 +16904,7 @@
       "kind": "artifact",
       "title": "The page's program",
       "source": "src/sdlc.ts:169",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "out/browser/page-app.ts"
@@ -16896,9 +16913,7 @@
         "path": "out/browser/page-app.ts",
         "code": "47c449a6"
       },
-      "diagnostics": [
-        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.SdlcInMemory",
@@ -29753,6 +29768,16 @@
       "kind": "deps"
     },
     {
+      "from": "platform.LocalRegistry",
+      "to": "std/system.NpmManifest",
+      "kind": "deps"
+    },
+    {
+      "from": "platform.LocalRegistry",
+      "to": "conventions.Layout",
+      "kind": "deps"
+    },
+    {
       "from": "platform.MemoryFiles",
       "to": "architecture.FileReading",
       "kind": "implements"
@@ -32150,6 +32175,16 @@
     {
       "from": "releases.G91",
       "to": "releases.G90",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G92",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G92",
+      "to": "releases.G91",
       "kind": "assembledBy"
     },
     {

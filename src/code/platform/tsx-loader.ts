@@ -44,7 +44,8 @@ const body: BodyOf<typeof TsxLoader> = ({ prelude, names, specifiers, language }
   return {
     import: async (file) => (await import(pathToFileURL(file).href)) as Record<string, unknown>,
     lead: (names, dirs) => {
-      libraries = names
+      // By their real paths too: a module named through a link would be a second module, its nodes without a name.
+      libraries = Object.fromEntries(Object.entries(names).map(([name, dir]) => [name, existsSync(dir) ? realpathSync(dir) : dir]))
       // Node.js names a module by its real path: a library reached through a link is within its real directory.
       within = dirs.map((dir) => (existsSync(dir) ? realpathSync(dir) : dir))
     },

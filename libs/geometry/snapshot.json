@@ -32,10 +32,9 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "trame",
-        "version": "91",
+        "version": "92",
         "joins": "language",
-        "from": "path",
-        "at": "../../generations/g91"
+        "from": "registry"
       }
     },
     {
@@ -47,8 +46,7 @@
         "packageName": "std",
         "version": "0.12.0",
         "joins": "library",
-        "from": "path",
-        "at": "../../std/releases/0.12.0"
+        "from": "registry"
       }
     },
     {

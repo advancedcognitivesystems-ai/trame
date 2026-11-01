@@ -22,7 +22,7 @@ if [ "${1:-}" = "--restore" ]; then
   exec npm ci --prefix "$engine"
 fi
 # A generation published elsewhere (the registry of this machine) brings no packages: they are installed in it, once.
-if [ -f "$engine/package-lock.json" ] && ! (cd "$engine" && node -e 'require.resolve("tsx/package.json")' >/dev/null 2>&1); then
+if [ -f "$engine/package-lock.json" ] && ! (cd "$engine" && node --input-type=module -e 'import.meta.resolve("typescript")' >/dev/null 2>&1); then
   echo "trame.sh: installing in $pin the packages it was frozen with" >&2
   npm ci --prefix "$engine" --no-audit --no-fund >&2
 fi

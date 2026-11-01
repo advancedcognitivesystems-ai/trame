@@ -12,17 +12,16 @@
 
 `Language` · `src/packages.ts:10`
 
-The language the library is written in, at the generation it pins: reached by its path in Trame's repository.
+The language the library is written in, at the generation it pins: from the registry of this machine.
 
 - Name: `trame`
-- Version: `91`
+- Version: `92`
 - Installed: Not installed in the project: its lockfile lists no trame
 - Vulnerabilities: No report yet: trame audit asks the registry
 - Latest version: No report yet: trame audit asks the registry
 - What it may do: not said: an implementation that imports it cannot promise anything
 - How it joins the graph: `language`
-- Where it comes from: `path`
-- Its path: `../../generations/g91`
+- Where it comes from: `registry`
 
 - Owner: ghalaax
 - Serves: [Geometry written once](product.md#GeometryWrittenOnce)
@@ -31,9 +30,9 @@ The language the library is written in, at the generation it pins: reached by it
 
 ### The standard library
 
-`StandardLibrary` · `src/packages.ts:19`
+`StandardLibrary` · `src/packages.ts:20`
 
-The quantities and the units it builds on (Ratio, the symbols of units), at the version it was released against.
+The quantities and the units it builds on (Ratio, the symbols of units), at the version it was released against: from the registry of this machine.
 
 - Name: `std`
 - Version: `0.12.0`
@@ -42,8 +41,7 @@ The quantities and the units it builds on (Ratio, the symbols of units), at the 
 - Latest version: No report yet: trame audit asks the registry
 - What it may do: not said: an implementation that imports it cannot promise anything
 - How it joins the graph: `library`
-- Where it comes from: `path`
-- Its path: `../../std/releases/0.12.0`
+- Where it comes from: `registry`
 
 - Owner: ghalaax
 - Serves: [Geometry written once](product.md#GeometryWrittenOnce)

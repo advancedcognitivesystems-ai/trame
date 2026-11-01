@@ -17,7 +17,7 @@ import { PageLoading } from "#std/platform"
 import { PackageSources } from "#std/tooling"
 import { Http } from "#std/web"
 import { TsxPackage, TypeScriptPackage, NodeTypes, WebTreeSitterPackage, EsbuildPackage } from "./packages"
-import { ExitStatus, NodeArguments, NodeCli, NodeEvents, Posix, NpmCli, NodeModuleSpecifiers, NodeEncodings } from "#std/system"
+import { ExitStatus, NodeArguments, NodeCli, NodeEvents, Posix, NpmCli, NodeModuleSpecifiers, NodeEncodings, NpmManifest } from "#std/system"
 import { Iso8601 } from "#std/measures"
 import { UnifiedDiff, TextFile } from "#std/text"
 import { Punctuation } from "./documents"
@@ -619,7 +619,7 @@ export const LocalRegistryPlace = decision<{ directory: string }>({
 export const LocalRegistry = implementation({
   owner: "trame",
   implements: [PackageSources],
-  deps: { trees: FileTrees, writing: FileWriting, reading: FileReading, paths: Paths, place: LocalRegistryPlace },
+  deps: { trees: FileTrees, writing: FileWriting, reading: FileReading, paths: Paths, place: LocalRegistryPlace, npm: NpmManifest, layout: Layout },
   body: code.file("./code/platform/local-registry.ts"),
 })
 

@@ -37,10 +37,9 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "trame",
-        "version": "91",
+        "version": "92",
         "joins": "language",
-        "from": "path",
-        "at": "../../generations/g91"
+        "from": "registry"
       },
       "diagnostics": []
     },
@@ -48,14 +47,13 @@
       "id": "packages.StandardLibrary",
       "kind": "package",
       "title": "The standard library",
-      "source": "src/packages.ts:19",
+      "source": "src/packages.ts:20",
       "fields": {
         "owner": "ghalaax",
         "packageName": "std",
         "version": "0.12.0",
         "joins": "library",
-        "from": "path",
-        "at": "../../std/releases/0.12.0"
+        "from": "registry"
       },
       "diagnostics": []
     },

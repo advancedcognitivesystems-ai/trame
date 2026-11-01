@@ -29,10 +29,9 @@ Package · `Language`
 
 - Owner: ghalaax
 - Name: trame
-- Version: 91
+- Version: 92
 - How it joins the graph: language
-- Where it comes from: path
-- Its path: ../../generations/g91
+- Where it comes from: registry
 - Serves: Geometry written once
 
 ### The standard library
@@ -43,8 +42,7 @@ Package · `StandardLibrary`
 - Name: std
 - Version: 0.12.0
 - How it joins the graph: library
-- Where it comes from: path
-- Its path: ../../std/releases/0.12.0
+- Where it comes from: registry
 - Serves: Geometry written once
 
 ## Geometry · Product

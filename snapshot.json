@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-30",
+  "at": "2026-11-01",
   "nodes": [
     {
       "id": "appearance.ExplorerDrawing",
@@ -9357,7 +9357,9 @@
           "writing": "architecture.FileWriting",
           "reading": "architecture.FileReading",
           "paths": "architecture.Paths",
-          "place": "platform.LocalRegistryPlace"
+          "place": "platform.LocalRegistryPlace",
+          "npm": "std/system.NpmManifest",
+          "layout": "conventions.Layout"
         },
         "body": {
           "file": "./code/platform/local-registry.ts",
@@ -11795,6 +11797,20 @@
       }
     },
     {
+      "id": "releases.G92",
+      "kind": "release",
+      "title": "Generation 92",
+      "fields": {
+        "owner": "trame",
+        "version": "g92",
+        "date": "2026-11-01",
+        "what": "E1f: a version is published to the registry of this machine (a library's release; the promotion of a generation, its language copied for real); the engine leads the project's library names too, as peers; the launcher installs the packages of a published engine and runs it with its own tsx",
+        "fingerprint": "30caf57f98eafc15",
+        "language": "shared",
+        "archive": "10418831c37c9ead"
+      }
+    },
+    {
       "id": "rendering.Common",
       "kind": "function",
       "title": "Common rendering",
@@ -12736,7 +12752,7 @@
       "id": "sdlc.PageProgram",
       "kind": "artifact",
       "title": "The page's program",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "out/browser/page-app.ts"
@@ -22383,6 +22399,11 @@
       "kind": "deps"
     },
     {
+      "from": "platform.LocalRegistry",
+      "to": "conventions.Layout",
+      "kind": "deps"
+    },
+    {
       "from": "platform.MemoryFiles",
       "to": "architecture.FileReading",
       "kind": "implements"
@@ -24540,6 +24561,16 @@
     {
       "from": "releases.G91",
       "to": "releases.G90",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G92",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G92",
+      "to": "releases.G91",
       "kind": "assembledBy"
     },
     {

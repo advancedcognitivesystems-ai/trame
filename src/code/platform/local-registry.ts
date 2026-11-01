@@ -7,7 +7,7 @@ import { homedir } from "node:os"
 import type { BodyOf } from "../../../trame/kernel"
 import type { LocalRegistry } from "../../platform"
 
-const body: BodyOf<typeof LocalRegistry> = ({ trees, writing, reading, paths, place }) => {
+const body: BodyOf<typeof LocalRegistry> = ({ trees, writing, reading, paths, place, npm, layout }) => {
   const { join, relative, dirname } = paths
   const registry = join(homedir(), place.directory)
   const versionOf = (name: string, version?: string) => join(registry, name, ...(version === undefined ? [] : [version]))
@@ -21,7 +21,12 @@ const body: BodyOf<typeof LocalRegistry> = ({ trees, writing, reading, paths, pl
     },
     publish: ({ name, version, from }) => {
       const at = versionOf(name, version)
-      if (!reading.existsSync(at)) trees.copy(from, at)
+      if (!reading.existsSync(at)) {
+        trees.copy(from, at)
+        // A version holds its manifest: without one, Node.js would read its modules as CommonJS.
+        const file = join(at, layout.manifest)
+        if (!reading.existsSync(file)) writing.writeFileSync(file, JSON.stringify({ [npm.type]: npm.module }))
+      }
       return at
     },
   }
