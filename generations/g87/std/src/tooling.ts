@@ -231,36 +231,6 @@ export const BrowserInMemory = fn({
   },
 })
 
-/** A package a project uses, as its configuration names it. */
-export interface PackageWanted {
-  /** The project's root, absolute. */
-  project: string
-  /** The directory under the project's root where a package reached from elsewhere is placed. */
-  under: string
-  /** Its name in the project: what its specifiers start with, after the mark of the import map (#std/algebra). */
-  name: string
-  /** Where the package is, absolute: its root, or that of the version wanted. */
-  at: string
-  /** The version wanted, when one is frozen. */
-  version?: string
-}
-
-/** How a project reaches a package. */
-export interface PackageSource {
-  /** Makes the package reachable from the project; gives where its import map leads, relative to the project's root. */
-  place(wanted: PackageWanted): string
-}
-
-/**
- * Where a package comes from
- * A project uses packages (the language of the generation it pins, its libraries) by their name only, each at its
- * version; where the package's files come from is a choice with its strategies: a local path (a directory on the
- * machine, reached through a link under the project), a registry (a package fetched at its version). The project's
- * import map leads to where the strategy placed the package; moving a package elsewhere changes only its source.
- */
-export const PackageSources = port<PackageSource>({ owner: "trame", declaredEffects: { place: ["read", "write"] } })
-
-
 /**
  * The SDLC's tooling is realized once
  * The files of a project and a headless browser are ports of the library, each realized for a machine and in memory:
@@ -269,7 +239,7 @@ export const PackageSources = port<PackageSource>({ owner: "trame", declaredEffe
 export const ToolingAsPorts = adr({
   owner: "trame",
   context: "The code that builds, checks and deploys a product is code like the product's: written once, tested before it runs.",
-  consequences: "A check opens the delivered page through HeadlessBrowser, a deployment copies through Files, a project reaches the packages it uses through PackageSources wherever they come from; scenarios play them with the realizations kept in memory.",
+  consequences: "A check opens the delivered page through HeadlessBrowser, a deployment copies through Files; scenarios play them with the realizations kept in memory.",
   serves: [RealizedOnce],
-  appliedBy: [ProgramCommands, NodeProgramCommands, Files, FilesKept, MachineFiles, FilesInMemory, HeadlessBrowser, PlaywrightBrowser, BrowserScripted, BrowserInMemory, PackageSources],
+  appliedBy: [ProgramCommands, NodeProgramCommands, Files, FilesKept, MachineFiles, FilesInMemory, HeadlessBrowser, PlaywrightBrowser, BrowserScripted, BrowserInMemory],
 })

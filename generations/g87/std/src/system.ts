@@ -173,7 +173,5 @@ export const NpmManifest = standard({
   constants: {
     dependencies: { value: "dependencies", meaning: "The packages the project needs to run, by name, each at its version" },
     imports: { value: "imports", meaning: "The package's import map: each specifier opened by # and where it leads" },
-    type: { value: "type", meaning: "How Node.js reads the package's files of JavaScript and TypeScript: as ES modules, or as CommonJS when it is absent" },
-    module: { value: "module", meaning: "The value of type that reads them as ES modules" },
   },
 })

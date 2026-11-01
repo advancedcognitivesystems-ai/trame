@@ -1284,7 +1284,7 @@ export const G87 = release({
   date: "2026-11-01",
   what: "E1a: the language by name: a project imports #trame/kernel and #trame/kinds/* through its import map, which leads to the generation it pins (a link under .trame/ that an advance moves with the pin); its kinds and views are the language's, from the engine that reads it; where a package comes from is std's port PackageSources, realized by local paths",
   fingerprint: "1f14126f68927aac",
-  language: "shared",
+  language: "own",
   archive: "c850998afbba6ca9",
   assembledBy: G86,
 })
@@ -1302,4 +1302,19 @@ export const G88 = release({
   language: "shared",
   archive: "c850998afbba6ca9",
   assembledBy: G87,
+})
+
+/**
+ * Generation 89
+ */
+export const G89 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g89",
+  date: "2026-11-01",
+  what: "E1c: a relative import that leaves its package refuses the build and says the name to write (a version frozen of a library is its release's business); a library's release names the language by its name",
+  fingerprint: "72ddb072c1a1b0d3",
+  language: "shared",
+  archive: "c850998afbba6ca9",
+  assembledBy: G88,
 })
