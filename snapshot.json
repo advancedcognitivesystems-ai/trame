@@ -2589,6 +2589,7 @@
           "name": "release"
         },
         "deps": {
+          "packages": "std/tooling.PackageSources",
           "exitStatus": "std/system.ExitStatus",
           "preparation": "commands.Preparation",
           "layout": "conventions.Layout",
@@ -16434,6 +16435,11 @@
     {
       "from": "command-scenarios.LibraryReleased",
       "to": "generations.ReleaseRecords",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.LibraryReleased",
+      "to": "platform.LocalRegistry",
       "kind": "verifies"
     },
     {

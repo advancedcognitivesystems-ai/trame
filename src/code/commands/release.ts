@@ -22,6 +22,7 @@ import type { Api as MachineApi } from "../engine/machine"
 import type { Api as RenderingApi } from "../rendering/document"
 import type { Api as DriversApi } from "../languages/drivers"
 import type { StringLiteral } from "../../typescript"
+import type { PackageSource } from "#std/tooling"
 
 export interface Deps {
   /** The status the command returns to the system (POSIX). */
@@ -58,6 +59,8 @@ export interface Deps {
   counts: ProvidedBy<typeof Counts>
   /** Reads the imports of the library's modules and bodies. */
   drivers: DriversApi
+  /** Where a version is published (since g92). */
+  packages: PackageSource
   /** A specifier as the code writes it, between quotes. */
   text: ProvidedBy<typeof StringLiteral>
 }
@@ -65,7 +68,7 @@ export interface Deps {
 const body = (deps: Deps): Handler => async (req) => {
   const { options, prepare, views, renderingContext, refuse } = deps.preparation
   const { layout, specifiers, trees, messages } = deps
-  const { join, relative, dirname, resolve } = deps.paths
+  const { join, relative, dirname, resolve, basename } = deps.paths
   const { existsSync, readFileSync } = deps.reading
   const { writeFileSync, mkdirSync } = deps.writing
   const o = options(req.params.command, (req.body as { args: string[] }).args)
@@ -82,7 +85,12 @@ const body = (deps: Deps): Handler => async (req) => {
   const home = o.root
   const releases = join(home, layout.releases)
   const dest = join(releases, version)
-  if (existsSync(dest)) return refuse(o, [messages.releaseExists(relative(home, dest))])
+  // A version frozen already is never written again: it is published (since g92), where the strategy keeps versions.
+  const name = basename(home)
+  if (existsSync(dest)) {
+    deps.terminal.write(messages.releasePublished(version, deps.packages.publish({ name, version, from: dest })))
+    return { status: deps.exitStatus.success, body: version }
+  }
 
   // Its graph and its code, as they are; its documents, written at this version.
   trees.copy(join(home, layout.sources), join(dest, layout.sources))
@@ -108,6 +116,8 @@ const body = (deps: Deps): Handler => async (req) => {
     writeFileSync(copy, text)
   }
 
+  // The library's manifest goes with it: its files are ES modules.
+  if (existsSync(join(home, layout.manifest))) trees.copy(join(home, layout.manifest), join(dest, layout.manifest))
   // The fingerprint covers what was frozen, file by file.
   const hash = (text: string | Buffer) => deps.hashing.createHash(deps.sha256.algorithm).update(text).digest(deps.encodings.hex)
   const frozen = trees.files(dest)
@@ -146,6 +156,7 @@ const body = (deps: Deps): Handler => async (req) => {
   }, others)
   writeFileSync(join(sources, deps.releases.module + extension), written)
   deps.terminal.write(messages.released(version, relative(home, dest), fingerprint, docs.length))
+  deps.terminal.write(messages.releasePublished(version, deps.packages.publish({ name, version, from: dest })))
   return { status: deps.exitStatus.success, body: fingerprint }
 }
 

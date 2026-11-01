@@ -294,6 +294,7 @@ A version published on this machine: reached through a link to it, published onc
 - Body: `./code/platform/local-registry.ts` (typescript)
 - Effects: read, write
 - Implements: [Where a package comes from](../std/releases/0.13.0/docs/tooling.md#PackageSources)
+- Verified by: [A library released](command-scenarios.md#LibraryReleased)
 - Used by: [Packages by their origin](#PackagesByOrigin)
 
 <a id="MemoryFiles"></a>

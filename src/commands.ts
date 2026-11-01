@@ -252,6 +252,7 @@ export const Release = entryPoint({
   owner: "trame", in: TrameCli, serves: [SingleSource],
   trigger: command(commandNames.release),
   deps: {
+    packages: PackageSources,
     exitStatus: ExitStatus, preparation: Preparation, layout: Layout, project: Project, machine: MachineOutputs, files: FileRendering, settled: ReleaseIsSettled,
     names: LibraryReleaseNames, releases: Releases, records: ReleaseRecords, versions: SemanticVersioning, specifiers: NodeModuleSpecifiers,
     reading: FileReading, writing: FileWriting, trees: FileTrees, paths: Paths, hashing: Hashing, sha256: Sha256, fingerprint: Fingerprint,

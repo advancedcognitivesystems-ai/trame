@@ -10,7 +10,7 @@
 
 ### What the doctor writes, runs and waits for
 
-`DoctorProbe` · `src/commands.ts:280`
+`DoctorProbe` · `src/commands.ts:281`
 
 A file and its text; a program that prints that text, run with the engine's loader; how long it waits, in milliseconds.
 
@@ -31,7 +31,7 @@ A file and its text; a program that prints that text, run with the engine's load
 
 ### An amendment prepared
 
-`Amending` · `src/commands.ts:340` · status: **held**
+`Amending` · `src/commands.ts:341` · status: **held**
 
 A chosen value of a node changed by an amendment, compiled first with the graph in memory, the day it comes into force: what it would change, or why it is refused (a value code is built on, a cited one without its source, a value of another type, an error raised). It writes nothing: trame amend and trame dev record it, through the port "Where an amendment goes".
 
@@ -63,7 +63,7 @@ The program of a component for an environment, and its infrastructure, ready to 
 
 ### Two builds compared
 
-`BuildComparison` · `src/commands.ts:316` · status: **held**
+`BuildComparison` · `src/commands.ts:317` · status: **held**
 
 The nodes added and removed, the statuses that change, the nodes whose fields, result or edges change, the issues raised and resolved, the shipments touched; then said line by line. What trame plan and trame amend show.
 
@@ -133,7 +133,7 @@ Triggered by `command advance`
 
 ### Amend
 
-`Amend` · `src/commands.ts:357` · status: **held**
+`Amend` · `src/commands.ts:358` · status: **held**
 
 Changes a chosen value of a node by an amendment: who, why, from when, the value. What it would change is said first (statuses, issues raised, a criterion or a scenario that would fail); unless it raises an error (or --accept), it is recorded where the project's amendments go, and its owner's approval awaited when someone else wrote it. --dry-run only says. A cited value changes only with its source (--source); a value code is built on, never from here.
 
@@ -152,7 +152,7 @@ Triggered by `command amend`
 
 ### Assemble a component
 
-`Assemble` · `src/commands.ts:398` · status: **held**
+`Assemble` · `src/commands.ts:399` · status: **held**
 
 Triggered by `command assemble`
 
@@ -228,7 +228,7 @@ Triggered by `command deliver`
 
 ### Start trame dev
 
-`Dev` · `src/commands.ts:388` · status: **held**
+`Dev` · `src/commands.ts:389` · status: **held**
 
 Triggered by `command dev`
 
@@ -245,7 +245,7 @@ Triggered by `command dev`
 
 ### Ask the machine
 
-`Doctor` · `src/commands.ts:293` · status: **held**
+`Doctor` · `src/commands.ts:294` · status: **held**
 
 trame doctor: does this machine run Trame? It says the day, writes a file and reads it back, copies a directory and compares the copy, runs a program with the engine's loader, keeps a run until a file changes, serves HTTP on a port the system gives, waits, and asks the registry about the project's packages: one line for each, and the status of the whole. Run on a machine by a check of Trame's shipment, it proves the realizations no scenario in memory can run.
 
@@ -284,7 +284,7 @@ Triggered by `command payload`
 
 ### Export the page
 
-`Export` · `src/commands.ts:267` · status: **held**
+`Export` · `src/commands.ts:268` · status: **held**
 
 Triggered by `command export`
 
@@ -302,7 +302,7 @@ Triggered by `command export`
 
 ### Start a project
 
-`Init` · `src/commands.ts:372` · status: **held**
+`Init` · `src/commands.ts:373` · status: **held**
 
 In an empty directory: its configuration (the generation that runs, the libraries the language's home uses), a first module with the goal it serves, the guide for agents and the skill, then its manifest, by a fresh engine.
 
@@ -322,7 +322,7 @@ Triggered by `command init`
 
 ### Plan
 
-`Plan` · `src/commands.ts:323` · status: **held**
+`Plan` · `src/commands.ts:324` · status: **held**
 
 Triggered by `command plan`
 
@@ -386,7 +386,7 @@ Freezes a version of a library under releases/<version>: its graph, its code, an
 Triggered by `command release`
 
 - Owner: trame
-- Parameters: `exitStatus` ← [Exit status](../std/releases/0.13.0/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `layout` ← [Project layout](conventions.md#Layout) · `project` ← [Project](engine.md#Project) · `machine` ← [Machine outputs](engine.md#MachineOutputs) · `files` ← [Rendering of the files](rendering.md#FileRendering) · `settled` ← [A release is settled](libraries.md#ReleaseIsSettled) · `names` ← [Names of a library's releases](libraries.md#LibraryReleaseNames) · `releases` ← [Releases of the engine](generations.md#Releases) · `records` ← [Records of the releases](generations.md#ReleaseRecords) · `versions` ← [Semantic versioning](../std/releases/0.13.0/docs/measures.md#SemanticVersioning) · `specifiers` ← [Node.js module specifiers](../std/releases/0.13.0/docs/system.md#NodeModuleSpecifiers) · `reading` ← [File reading](architecture.md#FileReading) · `writing` ← [File writing](architecture.md#FileWriting) · `trees` ← [File trees](architecture.md#FileTrees) · `paths` ← [Paths](architecture.md#Paths) · `hashing` ← [Hashing](architecture.md#Hashing) · `sha256` ← [SHA-256](../std/releases/0.13.0/docs/algorithms.md#Sha256) · `fingerprint` ← [Length of a fingerprint](engine.md#Fingerprint) · `encodings` ← [Node.js character encodings](../std/releases/0.13.0/docs/system.md#NodeEncodings) · `language` ← [TypeScript](typescript.md#TypeScript) · `clock` ← [Clock](architecture.md#Clock) · `terminal` ← [Terminal](architecture.md#Terminal) · `messages` ← [Messages of the commands](messages.md#CommandMessages) · `advance` ← [Messages of an advance](messages.md#AdvanceMessages) · `sequences` ← [Sequences](../std/releases/0.13.0/docs/algebra.md#Sequences) · `counts` ← [Counts](../std/releases/0.13.0/docs/algebra.md#Counts) · `drivers` ← [Drivers](languages.md#Drivers) · `text` ← [Text](typescript.md#StringLiteral)
+- Parameters: `packages` ← [Where a package comes from](../std/releases/0.13.0/docs/tooling.md#PackageSources) · `exitStatus` ← [Exit status](../std/releases/0.13.0/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `layout` ← [Project layout](conventions.md#Layout) · `project` ← [Project](engine.md#Project) · `machine` ← [Machine outputs](engine.md#MachineOutputs) · `files` ← [Rendering of the files](rendering.md#FileRendering) · `settled` ← [A release is settled](libraries.md#ReleaseIsSettled) · `names` ← [Names of a library's releases](libraries.md#LibraryReleaseNames) · `releases` ← [Releases of the engine](generations.md#Releases) · `records` ← [Records of the releases](generations.md#ReleaseRecords) · `versions` ← [Semantic versioning](../std/releases/0.13.0/docs/measures.md#SemanticVersioning) · `specifiers` ← [Node.js module specifiers](../std/releases/0.13.0/docs/system.md#NodeModuleSpecifiers) · `reading` ← [File reading](architecture.md#FileReading) · `writing` ← [File writing](architecture.md#FileWriting) · `trees` ← [File trees](architecture.md#FileTrees) · `paths` ← [Paths](architecture.md#Paths) · `hashing` ← [Hashing](architecture.md#Hashing) · `sha256` ← [SHA-256](../std/releases/0.13.0/docs/algorithms.md#Sha256) · `fingerprint` ← [Length of a fingerprint](engine.md#Fingerprint) · `encodings` ← [Node.js character encodings](../std/releases/0.13.0/docs/system.md#NodeEncodings) · `language` ← [TypeScript](typescript.md#TypeScript) · `clock` ← [Clock](architecture.md#Clock) · `terminal` ← [Terminal](architecture.md#Terminal) · `messages` ← [Messages of the commands](messages.md#CommandMessages) · `advance` ← [Messages of an advance](messages.md#AdvanceMessages) · `sequences` ← [Sequences](../std/releases/0.13.0/docs/algebra.md#Sequences) · `counts` ← [Counts](../std/releases/0.13.0/docs/algebra.md#Counts) · `drivers` ← [Drivers](languages.md#Drivers) · `text` ← [Text](typescript.md#StringLiteral)
 - Body: `./code/commands/release.ts` (typescript)
 - Effects: execution, keeps, process, read, terminal, time, write
 - Serves: [A single source of truth](product.md#SingleSource)
@@ -399,7 +399,7 @@ Triggered by `command release`
 
 ### Run a component
 
-`Run` · `src/commands.ts:409` · status: **held**
+`Run` · `src/commands.ts:410` · status: **held**
 
 Assembles, then runs the program and exits with its code.
 
@@ -438,7 +438,7 @@ Triggered by `command ship`
 
 ### Show a view
 
-`ShowView` · `src/commands.ts:419` · status: **held**
+`ShowView` · `src/commands.ts:420` · status: **held**
 
 Triggered by `command view`
 
@@ -493,7 +493,7 @@ Triggered by `command test-kinds`
 
 ### View by its name
 
-`ViewByName` · `src/commands.ts:430` · status: **held**
+`ViewByName` · `src/commands.ts:431` · status: **held**
 
 Any other command: the name of a view.
 

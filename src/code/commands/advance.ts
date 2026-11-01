@@ -341,6 +341,14 @@ const body = (deps: Deps): Handler => async (req) => {
     writeFileSync(join(dest, layout.origin), messages.origin(number, by, o.promote, fingerprint, relative(dest, program), relative(root, program), layout.sources, layout.prelude, layout.kinds, layout.manifest, archive, libraries.map((lib) => lib.path)))
     if (shown.length) trees.copy(differences, join(dest, layout.differences))
     write(messages.frozen(relative(root, dest), fingerprint))
+    // Published where the strategy keeps versions (since g92), with its language copied for real: a project that runs
+    // it from there runs on the language it was frozen with, whatever the repository's language becomes.
+    const published = deps.packages.publish({ name: deps.names.name, version: String(number), from: dest })
+    for (const d of [layout.prelude, layout.kinds, layout.views]) {
+      trees.remove(join(published, d))
+      trees.copy(join(root, d), join(published, d))
+    }
+    write(messages.published(published))
 
     // An older generation that no longer runs on the language receives its own copy, and the example to run on.
     const manifest = JSON.parse(readFileSync(join(root, layout.manifest), deps.encodings.utf8)) as { type?: string; imports?: Record<string, string> }

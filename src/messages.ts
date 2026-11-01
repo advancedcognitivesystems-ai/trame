@@ -524,6 +524,7 @@ export const CommandMessages = catalog({
     delivered: (title: string, file: string, characters: number) => `delivered ${title}: ${file} (${Math.round(characters / 1024)} KiB)`,
     releaseNeedsVersion: () => "trame release <version> \"what changes\": give the version, then what changes",
     releaseExists: (dir: string) => `${dir} already exists: a release is never written again`,
+    releasePublished: (version: string, at: string) => `${version} published · ${at}`,
     releaseUnsettled: (blocking: number, errors: number) => `release refused (requirement "A release is settled"): ${plural(blocking, { one: "decision to take", other: "decisions to take" })}, ${plural(errors, { one: "error", other: "errors" })}`,
     released: (version: string, dir: string, fingerprint: string, documents: number) =>
       `released ${version} in ${dir} (fingerprint ${fingerprint}), with ${plural(documents, { one: "document", other: "documents" })} · a project imports it with { "path", "version": "${version}" }`,
@@ -889,6 +890,7 @@ export const AdvanceMessages = catalog({
     exists: (dir: string) => `${dir} already exists`,
     libraryOutside: (library: string, path: string) => `the library ${library} is outside Trame's repository (${path}): a generation could not keep the copy its program imports`,
     frozen: (dir: string, fingerprint: string) => `  ✓ frozen in ${dir} (fingerprint ${fingerprint})`,
+    published: (at: string) => `  ✓ published in ${at}, its language copied`,
     succeeded: () => "Advance succeeded.",
     assembledBy: (generation: string, accepted: boolean, differences: string) =>
       `${generation}, by trame advance${accepted ? `, differences accepted (${differences})` : ""}`,

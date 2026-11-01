@@ -21,7 +21,14 @@ fi
 if [ "${1:-}" = "--restore" ]; then
   exec npm ci --prefix "$engine"
 fi
+# A generation published elsewhere (the registry of this machine) brings no packages: they are installed in it, once.
+if [ -f "$engine/package-lock.json" ] && ! (cd "$engine" && node -e 'require.resolve("tsx/package.json")' >/dev/null 2>&1); then
+  echo "trame.sh: installing in $pin the packages it was frozen with" >&2
+  npm ci --prefix "$engine" --no-audit --no-fund >&2
+fi
 if [ -f "$engine/package-lock.json" ] && [ ! -d "$engine/node_modules" ] && ! cmp -s "$engine/package-lock.json" "$here/package-lock.json"; then
   echo "trame.sh: $pin was frozen with other packages than those installed here; ./trame.sh --restore installs them" >&2
 fi
-NODE_NO_WARNINGS=1 exec npx tsx "$engine/out/local/trame-cli.ts" "$@"
+# The engine runs with its own tsx: a project outside this repository may have none.
+cli=$(cd "$engine" && node -p 'require.resolve("tsx/cli")')
+NODE_NO_WARNINGS=1 exec node "$cli" "$engine/out/local/trame-cli.ts" "$@"

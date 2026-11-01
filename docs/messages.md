@@ -31,7 +31,7 @@ The language Trame speaks to people: British English. Its messages are written i
 
 ### A catalog counts in its language
 
-`CountsInTheLanguage` · `src/messages.ts:919` · status: **held**
+`CountsInTheLanguage` · `src/messages.ts:921` · status: **held**
 
 A count and its noun follow the plural rules of the language the catalog is written in, with the forms the catalog writes for each category; nothing below the catalogs presumes a language.
 
@@ -87,7 +87,7 @@ Joins the items of a list as people write it in the decided language: "A, B and 
 
 ### Messages of an advance
 
-`AdvanceMessages` · `src/messages.ts:831`
+`AdvanceMessages` · `src/messages.ts:832`
 
 What trame advance says as it goes, and what a generation says of itself.
 
@@ -151,6 +151,7 @@ What trame advance says as it goes, and what a generation says of itself.
     exists: (dir: string) => `${dir} already exists`,
     libraryOutside: (library: string, path: string) => `the library ${library} is outside Trame's repository (${path}): a generation could not keep the copy its program imports`,
     frozen: (dir: string, fingerprint: string) => `  ✓ frozen in ${dir} (fingerprint ${fingerprint})`,
+    published: (at: string) => `  ✓ published in ${at}, its language copied`,
     succeeded: () => "Advance succeeded.",
     assembledBy: (generation: string, accepted: boolean, differences: string) =>
       `${generation}, by trame advance${accepted ? `, differences accepted (${differences})` : ""}`,
@@ -261,6 +262,7 @@ What the commands print: summaries, usage, refusals.
     delivered: (title: string, file: string, characters: number) => `delivered ${title}: ${file} (${Math.round(characters / 1024)} KiB)`,
     releaseNeedsVersion: () => "trame release <version> \"what changes\": give the version, then what changes",
     releaseExists: (dir: string) => `${dir} already exists: a release is never written again`,
+    releasePublished: (version: string, at: string) => `${version} published · ${at}`,
     releaseUnsettled: (blocking: number, errors: number) => `release refused (requirement "A release is settled"): ${plural(blocking, { one: "decision to take", other: "decisions to take" })}, ${plural(errors, { one: "error", other: "errors" })}`,
     released: (version: string, dir: string, fingerprint: string, documents: number) =>
       `released ${version} in ${dir} (fingerprint ${fingerprint}), with ${plural(documents, { one: "document", other: "documents" })} · a project imports it with { "path", "version": "${version}" }`,
@@ -600,7 +602,7 @@ What the drivers say about a body: hidden dependencies, access to the platform, 
 
 ### Words of Trame's views
 
-`EngineViewWords` · `src/messages.ts:651`
+`EngineViewWords` · `src/messages.ts:652`
 
 What the views of Trame's own graph say: the catalogue of literals, the versions of the engine.
 
@@ -613,7 +615,7 @@ The messages are written in `../engine-views/words.ts`.
 
 ### Words of the kinds
 
-`KindWords` · `src/messages.ts:631`
+`KindWords` · `src/messages.ts:632`
 
 What the kinds say: their labels, the labels of their fields and edges, what their holes say, what they render. The kinds are files of the language, outside the graph: their words are a catalog all the same, which they call; a kind writes no text of its own.
 
@@ -748,7 +750,7 @@ What the machine outputs, the lock, the payload, the date bundle, the difference
 
 ### Words of the page
 
-`PageWords` · `src/messages.ts:662`
+`PageWords` · `src/messages.ts:663`
 
 What the page says around the documents the engine wrote: the state of the compilation, the dates, the navigation, the banner, the figures, the explorer.
 
@@ -764,7 +766,7 @@ The messages are written in `./code/page/words.ts`.
 
 ### Messages of the platform
 
-`PlatformMessages` · `src/messages.ts:684`
+`PlatformMessages` · `src/messages.ts:685`
 
 What the implementations of the ports say (the command line, the terminal, the processes).
 
@@ -804,7 +806,7 @@ What the implementations of the ports say (the command line, the terminal, the p
 
 ### Messages of the renderers
 
-`RenderingMessages` · `src/messages.ts:674`
+`RenderingMessages` · `src/messages.ts:675`
 
 The words that the renderers add to the intermediate format: labels, notes, the names of statuses and outcomes. Written in a file: the page, which runs in the browser where nothing is wired, reads it too.
 
@@ -819,7 +821,7 @@ The messages are written in `./code/rendering/messages.ts`.
 
 ### Messages of the scenarios
 
-`ScenarioMessages` · `src/messages.ts:713`
+`ScenarioMessages` · `src/messages.ts:714`
 
 The names of the checks that the engine's scenarios make.
 
@@ -1036,7 +1038,7 @@ What the loading of views and the compilation API say.
 
 ### Words of the views
 
-`ViewWords` · `src/messages.ts:641`
+`ViewWords` · `src/messages.ts:642`
 
 What the views say: their titles, their introductions, their headings, what they say of the graph.
 

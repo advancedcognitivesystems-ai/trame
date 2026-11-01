@@ -675,7 +675,7 @@ Scenario · `LibraryReleased` · **held**
 
 - Owner: trame
 - Parameters: { release: commands.Release, processLog: architecture.ProcessLog, writeLog: architecture.WriteLog, terminalLog: architecture.TerminalLog, currentProcess: architecture.Process, paths: architecture.Paths, layout: conventions.Layout, projects: command-scenarios.ScenarioProjects, samples: command-scenarios.ProjectSamples, line: conventions.TrameCommands, exitStatus: std/system.ExitStatus, text: typescript.StringLiteral, messages: messages.ScenarioMessages }
-- Verifies: Release a version, Records of the releases
+- Verifies: Release a version, Records of the releases, Packages from the local registry
 - In: Test
 - Depends on: Release a version, Process log, Write log, Terminal log, Process, Paths, Project layout, The projects of the repository the scenarios enter, What the scenarios ask of those projects, Trame's commands, Text, Messages of the scenarios
 
@@ -1004,7 +1004,7 @@ Entry point · `Release` · **held**
 
 - Owner: trame
 - Trigger: { type: command, name: release }
-- Parameters: { exitStatus: std/system.ExitStatus, preparation: commands.Preparation, layout: conventions.Layout, project: engine.Project, machine: engine.MachineOutputs, files: rendering.FileRendering, settled: (rule), names: libraries.LibraryReleaseNames, releases: generations.Releases, records: generations.ReleaseRecords, versions: std/measures.SemanticVersioning, specifiers: std/system.NodeModuleSpecifiers, reading: architecture.FileReading, writing: architecture.FileWriting, trees: architecture.FileTrees, paths: architecture.Paths, hashing: architecture.Hashing, sha256: std/algorithms.Sha256, fingerprint: engine.Fingerprint, encodings: std/system.NodeEncodings, language: typescript.TypeScript, clock: architecture.Clock, terminal: architecture.Terminal, messages: messages.CommandMessages, advance: messages.AdvanceMessages, sequences: std/algebra.Sequences, counts: std/algebra.Counts, drivers: languages.Drivers, text: typescript.StringLiteral }
+- Parameters: { packages: std/tooling.PackageSources, exitStatus: std/system.ExitStatus, preparation: commands.Preparation, layout: conventions.Layout, project: engine.Project, machine: engine.MachineOutputs, files: rendering.FileRendering, settled: (rule), names: libraries.LibraryReleaseNames, releases: generations.Releases, records: generations.ReleaseRecords, versions: std/measures.SemanticVersioning, specifiers: std/system.NodeModuleSpecifiers, reading: architecture.FileReading, writing: architecture.FileWriting, trees: architecture.FileTrees, paths: architecture.Paths, hashing: architecture.Hashing, sha256: std/algorithms.Sha256, fingerprint: engine.Fingerprint, encodings: std/system.NodeEncodings, language: typescript.TypeScript, clock: architecture.Clock, terminal: architecture.Terminal, messages: messages.CommandMessages, advance: messages.AdvanceMessages, sequences: std/algebra.Sequences, counts: std/algebra.Counts, drivers: languages.Drivers, text: typescript.StringLiteral }
 - Serves: A single source of truth
 - Part of: Trame on the command line
 - Depends on: Preparation, Project layout, Project, Machine outputs, Rendering of the files, A release is settled, Names of a library's releases, Releases of the engine, Records of the releases, File reading, File writing, File trees, Paths, Hashing, Length of a fingerprint, TypeScript, Clock, Terminal, Messages of the commands, Messages of an advance, Drivers, Text
