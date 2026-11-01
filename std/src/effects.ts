@@ -80,7 +80,7 @@ export const PlatformEffects = decision<PlatformReach>({
       "node:https": ["network", "asynchronous"],
       "node:net": ["network", "asynchronous"],
       "node:sqlite": ["read", "write"],
-      "node:module": { createRequire: ["execution"] },
+      "node:module": { createRequire: ["execution"], registerHooks: ["execution"] },
       "node:readline": ["terminal", "asynchronous"],
       "node:timers": ["time"],
       "node:timers/promises": ["time", "asynchronous"],

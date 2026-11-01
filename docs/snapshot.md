@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 30 October 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 1 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Trame · Appearance
 
@@ -1526,10 +1526,10 @@ Function · `ShipmentPipeline` · **held**
 Function · `StaticAnalysis` · **held**
 
 - Owner: trame
-- Parameters: { specifiers: std/system.NodeModuleSpecifiers, syntax: typescript.TypeScriptSyntax, references: engine.References, file: std/text.TextFile, options: engine.TypeScriptOptions, ts: architecture.TypeScriptCompiler, kept: architecture.KeptResults, runs: architecture.RunStore, hashing: architecture.Hashing, sha256: std/algorithms.Sha256, encodings: std/system.NodeEncodings, paths: architecture.Paths, positions: engine.Positions, docComment: conventions.DocComment, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, messages: messages.CompilerMessages, textAsCode: std/ecmascript.TextAsCode, libraries: typescript.TypeScriptLibraries, prelude: conventions.PreludeApi }
+- Parameters: { specifiers: std/system.NodeModuleSpecifiers, syntax: typescript.TypeScriptSyntax, references: engine.References, file: std/text.TextFile, options: engine.TypeScriptOptions, ts: architecture.TypeScriptCompiler, kept: architecture.KeptResults, runs: architecture.RunStore, hashing: architecture.Hashing, sha256: std/algorithms.Sha256, encodings: std/system.NodeEncodings, paths: architecture.Paths, positions: engine.Positions, docComment: conventions.DocComment, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, messages: messages.CompilerMessages, textAsCode: std/ecmascript.TextAsCode, libraries: typescript.TypeScriptLibraries, prelude: conventions.PreludeApi, running: architecture.Prelude }
 - Constants: { commandDepth: { value: 3, meaning: How deep the type of a cast is searched for a command: itself, a member or what a function gives, and one step further } }
 - Serves: A specification that runs
-- Depends on: The syntax of the programs Trame writes, References, Options of the static reading, TypeScript compiler, Results kept, Where runs are kept, Hashing, Paths, Positions, Documentation comment, Messages of the compiler, TypeScript's libraries of types, The prelude's public API
+- Depends on: The syntax of the programs Trame writes, References, Options of the static reading, TypeScript compiler, Results kept, Where runs are kept, Hashing, Paths, Positions, Documentation comment, Messages of the compiler, TypeScript's libraries of types, The prelude's public API, Prelude
 
 ### Views
 
@@ -5322,7 +5322,7 @@ Release · `G87`
 - Released on: 2026-11-01
 - What changes: E1a: the language by name: a project imports #trame/kernel and #trame/kinds/* through its import map, which leads to the generation it pins (a link under .trame/ that an advance moves with the pin); its kinds and views are the language's, from the engine that reads it; where a package comes from is std's port PackageSources, realized by local paths
 - Fingerprint: 1f14126f68927aac
-- Language: shared
+- Language: own
 - Language archived: c850998afbba6ca9
 - Releases: Trame on the command line
 - Assembled by: Generation 86
@@ -5340,6 +5340,20 @@ Release · `G88`
 - Language archived: c850998afbba6ca9
 - Releases: Trame on the command line
 - Assembled by: Generation 87
+
+### Generation 89
+
+Release · `G89`
+
+- Released by: trame
+- Version: g89
+- Released on: 2026-11-01
+- What changes: E1c: a relative import that leaves its package refuses the build and says the name to write (a version frozen of a library is its release's business); a library's release names the language by its name
+- Fingerprint: 72ddb072c1a1b0d3
+- Language: shared
+- Language archived: c850998afbba6ca9
+- Releases: Trame on the command line
+- Assembled by: Generation 88
 
 ### Generation 9
 
@@ -5781,7 +5795,7 @@ Artefact · `GraphPage` · **unknown**
 
 ### The page's program
 
-Artefact · `PageProgram` · **unknown**
+Artefact · `PageProgram` · **held**
 
 - Owner: trame
 - Path: out/browser/page-app.ts
@@ -6329,7 +6343,7 @@ Standard · `TypeScriptLibraries`
 - Maintained by: trame
 - Source: TypeScript, the lib option and the declaration files under src/lib of the compiler
 - Address: https://www.typescriptlang.org/tsconfig/#lib
-- Constants: { ecmaScript: { value: lib.es, meaning: How the file of an ECMAScript library of types starts its name } }
+- Constants: { ecmaScript: { value: lib.es, meaning: How the file of an ECMAScript library of types starts its name }, typeRoots: { value: @types, meaning: Where the packages of types are, under a directory of packages: the roots TypeScript looks in (typeRoots) } }
 - Serves: A specification that runs
 
 ### The syntax of the programs Trame writes

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-30",
+  "generated": "2026-11-01",
   "nodes": [
     {
       "id": "appearance.ExplorerDrawing",
@@ -1421,7 +1421,7 @@
           "status": "passed"
         },
         {
-          "name": "The candidate is accepted (  ✓ trame runs g89 |   ✓ reservations runs g89 | Advance succeeded.)",
+          "name": "The candidate is accepted (  ✓ trame runs g90 |   ✓ reservations runs g90 | Advance succeeded.)",
           "status": "passed"
         },
         {
@@ -4903,7 +4903,8 @@
           "messages": "messages.CompilerMessages",
           "textAsCode": "std/ecmascript.TextAsCode",
           "libraries": "typescript.TypeScriptLibraries",
-          "prelude": "conventions.PreludeApi"
+          "prelude": "conventions.PreludeApi",
+          "running": "architecture.Prelude"
         },
         "constants": {
           "commandDepth": {
@@ -15039,7 +15040,7 @@
         "date": "2026-11-01",
         "what": "E1a: the language by name: a project imports #trame/kernel and #trame/kinds/* through its import map, which leads to the generation it pins (a link under .trame/ that an advance moves with the pin); its kinds and views are the language's, from the engine that reads it; where a package comes from is std's port PackageSources, realized by local paths",
         "fingerprint": "1f14126f68927aac",
-        "language": "shared",
+        "language": "own",
         "archive": "c850998afbba6ca9"
       },
       "diagnostics": []
@@ -15055,6 +15056,22 @@
         "date": "2026-11-01",
         "what": "E1b: the compiler is led to the language's files by its names (#trame/* in TypeScript's paths, to the files where they are, never through a link); trame init starts a project: its configuration (the generation that runs, the libraries the language's home uses), its first module with its goal, the guide for agents and the skill, then its manifest",
         "fingerprint": "abbc9d8c61c5829e",
+        "language": "shared",
+        "archive": "c850998afbba6ca9"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "releases.G89",
+      "kind": "release",
+      "title": "Generation 89",
+      "source": "src/releases.ts:1310",
+      "fields": {
+        "owner": "trame",
+        "version": "g89",
+        "date": "2026-11-01",
+        "what": "E1c: a relative import that leaves its package refuses the build and says the name to write (a version frozen of a library is its release's business); a library's release names the language by its name",
+        "fingerprint": "72ddb072c1a1b0d3",
         "language": "shared",
         "archive": "c850998afbba6ca9"
       },
@@ -16023,7 +16040,7 @@
         "owner": "trame"
       },
       "result": {
-        "code": "43f46d11"
+        "code": "17f29130"
       },
       "diagnostics": [
         "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
@@ -16039,7 +16056,7 @@
         "owner": "trame"
       },
       "result": {
-        "code": "34871d0a"
+        "code": "1aaa375b"
       },
       "diagnostics": [
         "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
@@ -16057,7 +16074,7 @@
       },
       "result": {
         "path": "out/local/trame-cli.ts",
-        "code": "4ed65f8d"
+        "code": "e5e022ac"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -16113,7 +16130,7 @@
       },
       "result": {
         "path": "trame-page.html",
-        "code": "903b75b6"
+        "code": "e1d51f67"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -16693,7 +16710,6 @@
       "diagnostics": [
         "warning: To ship: The candidate engine is unknown",
         "warning: To ship: The graph page is unknown",
-        "warning: To ship: The page's program is unknown",
         "warning: To ship: The SDLC's tooling is realized once is unknown",
         "warning: To ship: The page is assembled is unknown",
         "warning: To ship: The candidate plays the laws is unknown",
@@ -16768,7 +16784,7 @@
       "kind": "artifact",
       "title": "The page's program",
       "source": "src/sdlc.ts:169",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "out/browser/page-app.ts"
@@ -16777,9 +16793,7 @@
         "path": "out/browser/page-app.ts",
         "code": "47c449a6"
       },
-      "diagnostics": [
-        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.SdlcInMemory",
@@ -18717,7 +18731,7 @@
       "id": "typescript.ArrayLiteral",
       "kind": "syntax",
       "title": "List on several lines",
-      "source": "src/typescript.ts:493",
+      "source": "src/typescript.ts:494",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -18788,7 +18802,7 @@
       "id": "typescript.AsExpression",
       "kind": "syntax",
       "title": "Type assertion",
-      "source": "src/typescript.ts:639",
+      "source": "src/typescript.ts:640",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -18836,7 +18850,7 @@
       "id": "typescript.Assignment",
       "kind": "syntax",
       "title": "Assignment",
-      "source": "src/typescript.ts:748",
+      "source": "src/typescript.ts:749",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -18875,7 +18889,7 @@
       "id": "typescript.Await",
       "kind": "syntax",
       "title": "Waiting",
-      "source": "src/typescript.ts:386",
+      "source": "src/typescript.ts:387",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -18921,7 +18935,7 @@
       "id": "typescript.Call",
       "kind": "syntax",
       "title": "Call",
-      "source": "src/typescript.ts:366",
+      "source": "src/typescript.ts:367",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -18989,7 +19003,7 @@
       "id": "typescript.ConstDeclaration",
       "kind": "syntax",
       "title": "Constant",
-      "source": "src/typescript.ts:588",
+      "source": "src/typescript.ts:589",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -19033,7 +19047,7 @@
       "id": "typescript.DefaultImport",
       "kind": "syntax",
       "title": "Default import",
-      "source": "src/typescript.ts:622",
+      "source": "src/typescript.ts:623",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -19073,7 +19087,7 @@
       "id": "typescript.DocBlock",
       "kind": "syntax",
       "title": "Documentation comment",
-      "source": "src/typescript.ts:555",
+      "source": "src/typescript.ts:556",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -19119,7 +19133,7 @@
       "id": "typescript.ExportDeclaration",
       "kind": "syntax",
       "title": "Export",
-      "source": "src/typescript.ts:537",
+      "source": "src/typescript.ts:538",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -19161,7 +19175,7 @@
       "id": "typescript.IfStatement",
       "kind": "syntax",
       "title": "Condition",
-      "source": "src/typescript.ts:712",
+      "source": "src/typescript.ts:713",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -19205,7 +19219,7 @@
       "id": "typescript.InlineArray",
       "kind": "syntax",
       "title": "List on one line",
-      "source": "src/typescript.ts:470",
+      "source": "src/typescript.ts:471",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -19276,7 +19290,7 @@
       "id": "typescript.LineComment",
       "kind": "syntax",
       "title": "Comment",
-      "source": "src/typescript.ts:292",
+      "source": "src/typescript.ts:293",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -19318,7 +19332,7 @@
       "id": "typescript.MemberAccess",
       "kind": "syntax",
       "title": "Property access",
-      "source": "src/typescript.ts:329",
+      "source": "src/typescript.ts:330",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -19366,7 +19380,7 @@
       "id": "typescript.ModuleTitle",
       "kind": "syntax",
       "title": "Title of a module",
-      "source": "src/typescript.ts:573",
+      "source": "src/typescript.ts:574",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -19403,7 +19417,7 @@
       "id": "typescript.NamedImport",
       "kind": "syntax",
       "title": "Import of names",
-      "source": "src/typescript.ts:605",
+      "source": "src/typescript.ts:606",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -19449,7 +19463,7 @@
       "id": "typescript.ObjectBlock",
       "kind": "syntax",
       "title": "Object on several lines",
-      "source": "src/typescript.ts:517",
+      "source": "src/typescript.ts:518",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -19511,7 +19525,7 @@
       "id": "typescript.ObjectLiteral",
       "kind": "syntax",
       "title": "Object",
-      "source": "src/typescript.ts:448",
+      "source": "src/typescript.ts:449",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -19593,7 +19607,7 @@
       "id": "typescript.ObjectType",
       "kind": "syntax",
       "title": "Object type",
-      "source": "src/typescript.ts:675",
+      "source": "src/typescript.ts:676",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -19645,7 +19659,7 @@
       "id": "typescript.OptionalAccess",
       "kind": "syntax",
       "title": "Optional property access",
-      "source": "src/typescript.ts:348",
+      "source": "src/typescript.ts:349",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -19693,7 +19707,7 @@
       "id": "typescript.OptionalPropertySignature",
       "kind": "syntax",
       "title": "Optional property of a type",
-      "source": "src/typescript.ts:657",
+      "source": "src/typescript.ts:658",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -19741,7 +19755,7 @@
       "id": "typescript.Parenthesized",
       "kind": "syntax",
       "title": "Group",
-      "source": "src/typescript.ts:404",
+      "source": "src/typescript.ts:405",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -19782,7 +19796,7 @@
       "id": "typescript.ProgramNames",
       "kind": "decision",
       "title": "Names of a program",
-      "source": "src/typescript.ts:764",
+      "source": "src/typescript.ts:765",
       "fields": {
         "owner": "trame",
         "value": {
@@ -19796,7 +19810,7 @@
       "id": "typescript.Property",
       "kind": "syntax",
       "title": "Property",
-      "source": "src/typescript.ts:421",
+      "source": "src/typescript.ts:422",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -19883,7 +19897,7 @@
       "id": "typescript.StrictInequality",
       "kind": "syntax",
       "title": "Strict inequality",
-      "source": "src/typescript.ts:730",
+      "source": "src/typescript.ts:731",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -19931,7 +19945,7 @@
       "id": "typescript.StringLiteral",
       "kind": "syntax",
       "title": "Text",
-      "source": "src/typescript.ts:310",
+      "source": "src/typescript.ts:311",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -19987,7 +20001,7 @@
       "id": "typescript.TypeScript",
       "kind": "language",
       "title": "TypeScript",
-      "source": "src/typescript.ts:79",
+      "source": "src/typescript.ts:80",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -20485,6 +20499,10 @@
           "ecmaScript": {
             "value": "lib.es",
             "meaning": "How the file of an ECMAScript library of types starts its name"
+          },
+          "typeRoots": {
+            "value": "@types",
+            "meaning": "Where the packages of types are, under a directory of packages: the roots TypeScript looks in (typeRoots)"
           }
         }
       },
@@ -20494,7 +20512,7 @@
       "id": "typescript.TypeScriptSyntax",
       "kind": "standard",
       "title": "The syntax of the programs Trame writes",
-      "source": "src/typescript.ts:256",
+      "source": "src/typescript.ts:257",
       "fields": {
         "owner": "trame",
         "source": "ECMA-262, ECMAScript 2024 (§ 12 lexical grammar, § 13 expressions, § 14 statements, § 16 modules); TypeScript 5.6 handbook (type assertions, object types, union types)",
@@ -20580,7 +20598,7 @@
       "id": "typescript.TypeScriptWriter",
       "kind": "function",
       "title": "TypeScript writer",
-      "source": "src/typescript.ts:775",
+      "source": "src/typescript.ts:776",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -20632,7 +20650,7 @@
       "id": "typescript.UnionType",
       "kind": "syntax",
       "title": "Union type",
-      "source": "src/typescript.ts:694",
+      "source": "src/typescript.ts:695",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -20684,7 +20702,7 @@
       "id": "typescript.WorldGlobals",
       "kind": "vocabulary",
       "title": "Globals that reach outside",
-      "source": "src/typescript.ts:53",
+      "source": "src/typescript.ts:54",
       "fields": {
         "owner": "trame",
         "words": {
@@ -26505,6 +26523,11 @@
       "kind": "deps"
     },
     {
+      "from": "engine.StaticAnalysis",
+      "to": "architecture.Prelude",
+      "kind": "deps"
+    },
+    {
       "from": "engine.TheLanguageReceivesTheGraph",
       "to": "product.SingleSource",
       "kind": "serves"
@@ -31882,6 +31905,16 @@
     {
       "from": "releases.G88",
       "to": "releases.G87",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G89",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G89",
+      "to": "releases.G88",
       "kind": "assembledBy"
     },
     {

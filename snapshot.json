@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-30",
+  "at": "2026-11-01",
   "nodes": [
     {
       "id": "appearance.ExplorerDrawing",
@@ -4198,7 +4198,8 @@
           "messages": "messages.CompilerMessages",
           "textAsCode": "std/ecmascript.TextAsCode",
           "libraries": "typescript.TypeScriptLibraries",
-          "prelude": "conventions.PreludeApi"
+          "prelude": "conventions.PreludeApi",
+          "running": "architecture.Prelude"
         },
         "constants": {
           "commandDepth": {
@@ -11646,7 +11647,7 @@
         "date": "2026-11-01",
         "what": "E1a: the language by name: a project imports #trame/kernel and #trame/kinds/* through its import map, which leads to the generation it pins (a link under .trame/ that an advance moves with the pin); its kinds and views are the language's, from the engine that reads it; where a package comes from is std's port PackageSources, realized by local paths",
         "fingerprint": "1f14126f68927aac",
-        "language": "shared",
+        "language": "own",
         "archive": "c850998afbba6ca9"
       }
     },
@@ -11660,6 +11661,20 @@
         "date": "2026-11-01",
         "what": "E1b: the compiler is led to the language's files by its names (#trame/* in TypeScript's paths, to the files where they are, never through a link); trame init starts a project: its configuration (the generation that runs, the libraries the language's home uses), its first module with its goal, the guide for agents and the skill, then its manifest",
         "fingerprint": "abbc9d8c61c5829e",
+        "language": "shared",
+        "archive": "c850998afbba6ca9"
+      }
+    },
+    {
+      "id": "releases.G89",
+      "kind": "release",
+      "title": "Generation 89",
+      "fields": {
+        "owner": "trame",
+        "version": "g89",
+        "date": "2026-11-01",
+        "what": "E1c: a relative import that leaves its package refuses the build and says the name to write (a version frozen of a library is its release's business); a library's release names the language by its name",
+        "fingerprint": "72ddb072c1a1b0d3",
         "language": "shared",
         "archive": "c850998afbba6ca9"
       }
@@ -12620,7 +12635,7 @@
       "id": "sdlc.PageProgram",
       "kind": "artifact",
       "title": "The page's program",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "out/browser/page-app.ts"
@@ -15101,6 +15116,10 @@
           "ecmaScript": {
             "value": "lib.es",
             "meaning": "How the file of an ECMAScript library of types starts its name"
+          },
+          "typeRoots": {
+            "value": "@types",
+            "meaning": "Where the packages of types are, under a directory of packages: the roots TypeScript looks in (typeRoots)"
           }
         }
       }
@@ -19843,6 +19862,11 @@
       "kind": "deps"
     },
     {
+      "from": "engine.StaticAnalysis",
+      "to": "architecture.Prelude",
+      "kind": "deps"
+    },
+    {
       "from": "engine.TheLanguageReceivesTheGraph",
       "to": "product.SingleSource",
       "kind": "serves"
@@ -24305,6 +24329,16 @@
     {
       "from": "releases.G88",
       "to": "releases.G87",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G89",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G89",
+      "to": "releases.G88",
       "kind": "assembledBy"
     },
     {

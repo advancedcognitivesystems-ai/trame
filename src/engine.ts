@@ -175,7 +175,7 @@ export const StaticAnalysis = fn({
     specifiers: NodeModuleSpecifiers, syntax: TypeScriptSyntax, references: References, file: TextFile,
     options: TypeScriptOptions, ts: TypeScriptCompiler, kept: KeptResults, runs: RunStore, hashing: Hashing, sha256: Sha256, encodings: NodeEncodings,
     paths: Paths, positions: Positions, docComment: DocComment, counts: Counts, sequences: Sequences, texts: Texts, messages: CompilerMessages,
-    textAsCode: TextAsCode, libraries: TypeScriptLibraries, prelude: PreludeApi,
+    textAsCode: TextAsCode, libraries: TypeScriptLibraries, prelude: PreludeApi, running: Prelude,
   },
   constants: {
     commandDepth: { value: 3, meaning: "How deep the type of a cast is searched for a command: itself, a member or what a function gives, and one step further" },

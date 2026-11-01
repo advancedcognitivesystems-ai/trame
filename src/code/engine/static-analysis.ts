@@ -2,7 +2,7 @@
 // For each exported constant: its comment (title, description), its line, its type arguments,
 // the text of its properties, and its references to the other exported constants.
 
-import type { Hashing, KeptResults, Paths, RunStore, TypeScriptCompiler } from "../../architecture"
+import type { Hashing, KeptResults, Paths, Prelude, RunStore, TypeScriptCompiler } from "../../architecture"
 import type ts from "typescript"
 import { CommandMark, QuantityField, QuantityMark } from "../../../trame/kernel"
 import type { ProvidedBy, StaticInfo } from "../../../trame/kernel"
@@ -83,7 +83,9 @@ export interface Deps {
   /** What makes code of a text while a program runs: a global, or a member read. */
   textAsCode: ProvidedBy<typeof TextAsCode>
   /** How the files of TypeScript's own libraries tell ECMAScript's globals from a host's. */
-  libraries: { ecmaScript: string }
+  libraries: { ecmaScript: string; typeRoots: string }
+  /** Where the engine that runs is: a project that installed no types is checked with the engine's (since g90). */
+  running: Prelude
   /** How a body names the prelude's public API: the endings of its module's path. */
   prelude: { endings: readonly string[] }
   /** How deep the type of a cast is searched for a command. */
@@ -93,7 +95,7 @@ export interface Deps {
 const body = (deps: Deps) => {
   const { specifiers, options } = deps
   const ts = deps.ts
-  const { relative, sep, resolve, dirname } = deps.paths
+  const { relative, sep, resolve, dirname, join } = deps.paths
   const { lineNumber, reference } = deps.positions
   const { titleLines, joint } = deps.docComment
   const { endOfLine } = deps.file
@@ -155,7 +157,13 @@ const body = (deps: Deps) => {
    */
   function analyze(modules: { file: string; module: string }[], extra: string[], root: string, paths: Record<string, string[]> = {}): Analysis {
     const files = modules.map((m) => m.file)
-    const checkKey = digest(JSON.stringify([ts.version, root, modules, extra, paths, options.types]))
+    // The roots of types: those above the project, then those above the engine, which a project outside Trame's
+    // repository relies on until it installs its own.
+    const above = (dir: string): string[] => (dirname(dir) === dir ? [dir] : [dir, ...above(dirname(dir))])
+    const typeRoots = [...new Set([root, deps.running.engine].flatMap(above))]
+      .map((d) => join(d, specifiers.packages, deps.libraries.typeRoots))
+      .filter((d) => ts.sys.directoryExists(d))
+    const checkKey = digest(JSON.stringify([ts.version, root, modules, extra, paths, options.types, typeRoots]))
     const readKey = digest(JSON.stringify([[ts.version, root, modules, paths]]))
     const keptReading = keptUnder<Reading, WrittenReading>(root, readKey, readReading)
     const keptCheck = keptUnder<Checked, Checked>(root, checkKey, (checked) => checked)
@@ -171,6 +179,7 @@ const body = (deps: Deps) => {
       skipLibCheck: true,
       // Only the types of Node are global: no other package of types is loaded, which makes the check much faster.
       types: [...options.types],
+      typeRoots,
       paths,
     })
     const reading = keptReading ?? readProgram(program, modules, root)

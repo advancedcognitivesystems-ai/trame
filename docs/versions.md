@@ -1,8 +1,8 @@
 # Versions
 
-*The releases of the components on 30 October 2026, newest first. A project runs the release its configuration pins.*
+*The releases of the components on 1 November 2026, newest first. A project runs the release its configuration pins.*
 
-> **88 releases of 1 component; 86 releases on a language of their own**
+> **89 releases of 1 component; 87 releases on a language of their own**
 
 ## Trame on the command line
 
@@ -10,8 +10,9 @@ Each release, newest first: what changed, the release that assembled it, and whe
 
 | Release | Released on | What changes | Assembled by | Language |
 |---|---|---|---|---|
+| [Generation 89](releases.md#G89) | 1 November 2026 | E1c: a relative import that leaves its package refuses the build and says the name to write (a version frozen of a library is its release's business); a library's release names the language by its name | [Generation 88](releases.md#G88) | shared |
 | [Generation 88](releases.md#G88) | 1 November 2026 | E1b: the compiler is led to the language's files by its names (#trame/* in TypeScript's paths, to the files where they are, never through a link); trame init starts a project: its configuration (the generation that runs, the libraries the language's home uses), its first module with its goal, the guide for agents and the skill, then its manifest | [Generation 87](releases.md#G87) | shared |
-| [Generation 87](releases.md#G87) | 1 November 2026 | E1a: the language by name: a project imports #trame/kernel and #trame/kinds/* through its import map, which leads to the generation it pins (a link under .trame/ that an advance moves with the pin); its kinds and views are the language's, from the engine that reads it; where a package comes from is std's port PackageSources, realized by local paths | [Generation 86](releases.md#G86) | shared |
+| [Generation 87](releases.md#G87) | 1 November 2026 | E1a: the language by name: a project imports #trame/kernel and #trame/kinds/* through its import map, which leads to the generation it pins (a link under .trame/ that an advance moves with the pin); its kinds and views are the language's, from the engine that reads it; where a package comes from is std's port PackageSources, realized by local paths | [Generation 86](releases.md#G86) | its own copy |
 | [Generation 86](releases.md#G86) | 31 October 2026 | A4b: every value amended from the page: in trame dev, a card's chosen and cited values carry an amend button and a form by their type; trame dev prepares the amendment as trame amend does, says what it would change, records it | [Generation 85](releases.md#G85) | its own copy |
 | [Generation 85](releases.md#G85) | 31 October 2026 | A4a: each kind says how its values change (chosen, cited, code); trame amend says what an amendment would change, then records it where amendments go (the port, in place in the sources); an amendment awaits its owner's approval | [Generation 84](releases.md#G84) | its own copy |
 | [Generation 84](releases.md#G84) | 31 October 2026 | A2 closed: a command another system interprets is typed by its intent (std's Command), made only by std's Commands; a cast that makes one refuses the build | [Generation 83](releases.md#G83) | its own copy |

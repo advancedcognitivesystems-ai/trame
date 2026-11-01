@@ -42,6 +42,7 @@ export const TypeScriptLibraries = standard({
   url: "https://www.typescriptlang.org/tsconfig/#lib",
   constants: {
     ecmaScript: { value: "lib.es", meaning: "How the file of an ECMAScript library of types starts its name" },
+    typeRoots: { value: "@types", meaning: "Where the packages of types are, under a directory of packages: the roots TypeScript looks in (typeRoots)" },
   },
 })
 
