@@ -514,6 +514,7 @@ export const CommandMessages = catalog({
     noAdvisory: () => "no known vulnerability",
     latestIs: (version: string) => `latest ${version}`,
     latestHeld: (version: string, ceiling: string) => `latest ${version}, held below ${ceiling}`,
+    configurationDerived: (references: number, file: string) => `${plural(references, { one: "package of Trame", other: "packages of Trame" })} placed where the graph says · written: ${file} · a fresh engine reads the graph`,
     manifestWritten: (packages: number, file: string) => `${plural(packages, { one: "package", other: "packages" })} of the graph · written: ${file} · npm install installs them`,
     librariesNamed: (libraries: number, file: string) => `${plural(libraries, { one: "library", other: "libraries" })} named in the import map of ${file}`,
     deliveryRefusedForErrors: (errors: number) => `delivery refused: the graph holds ${plural(errors, { one: "error", other: "errors" })} (trame build lists them)`,

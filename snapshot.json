@@ -2843,6 +2843,9 @@
           "packages": "std/tooling.PackageSources",
           "names": "conventions.LanguageNames",
           "prelude": "architecture.Prelude",
+          "pin": "generations.EnginePin",
+          "values": "std/algebra.ValueTypes",
+          "counts": "std/algebra.Counts",
           "paths": "architecture.Paths",
           "encodings": "std/system.NodeEncodings",
           "file": "std/text.TextFile",
@@ -18904,6 +18907,11 @@
     {
       "from": "commands.WriteManifest",
       "to": "architecture.Prelude",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.WriteManifest",
+      "to": "generations.EnginePin",
       "kind": "deps"
     },
     {

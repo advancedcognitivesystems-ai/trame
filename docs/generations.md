@@ -81,7 +81,7 @@ A project pins the generation it runs in its configuration (trame.json), under t
 
 - Decided by: trame
 - Rejected: The last generation, whatever it is, a project could neither stay on a generation nor go back to one; An npm package per generation, a registry to publish to, and a version beside the generation's number, for one project today; The candidate, run as it is, an engine that no advance accepted
-- Used by: [A project started](command-scenarios.md#ProjectStarted), [Advance](commands.md#Advance), [Start a project](commands.md#Init), [Project](engine.md#Project), [The plan of a run elsewhere](shipping.md#ShipmentRunPlan)
+- Used by: [A project started](command-scenarios.md#ProjectStarted), [Advance](commands.md#Advance), [Start a project](commands.md#Init), [Write the manifest](commands.md#WriteManifest), [Project](engine.md#Project), [The plan of a run elsewhere](shipping.md#ShipmentRunPlan)
 
 <a id="LanguageSharing"></a>
 

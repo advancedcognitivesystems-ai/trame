@@ -2574,7 +2574,7 @@
       "id": "commands.Amend",
       "kind": "entry",
       "title": "Amend",
-      "source": "src/commands.ts:356",
+      "source": "src/commands.ts:357",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2603,7 +2603,7 @@
       "id": "commands.Amending",
       "kind": "function",
       "title": "An amendment prepared",
-      "source": "src/commands.ts:339",
+      "source": "src/commands.ts:340",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2633,7 +2633,7 @@
       "id": "commands.Assemble",
       "kind": "entry",
       "title": "Assemble a component",
-      "source": "src/commands.ts:397",
+      "source": "src/commands.ts:398",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2753,7 +2753,7 @@
       "id": "commands.BuildComparison",
       "kind": "function",
       "title": "Two builds compared",
-      "source": "src/commands.ts:315",
+      "source": "src/commands.ts:316",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2772,7 +2772,7 @@
       "id": "commands.Deliver",
       "kind": "entry",
       "title": "Deliver",
-      "source": "src/commands.ts:195",
+      "source": "src/commands.ts:196",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2811,7 +2811,7 @@
       "id": "commands.Dev",
       "kind": "entry",
       "title": "Start trame dev",
-      "source": "src/commands.ts:387",
+      "source": "src/commands.ts:388",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2837,7 +2837,7 @@
       "id": "commands.Doctor",
       "kind": "entry",
       "title": "Ask the machine",
-      "source": "src/commands.ts:292",
+      "source": "src/commands.ts:293",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2877,7 +2877,7 @@
       "id": "commands.DoctorProbe",
       "kind": "decision",
       "title": "What the doctor writes, runs and waits for",
-      "source": "src/commands.ts:279",
+      "source": "src/commands.ts:280",
       "fields": {
         "owner": "trame",
         "value": {
@@ -2922,7 +2922,7 @@
       "id": "commands.Export",
       "kind": "entry",
       "title": "Export the page",
-      "source": "src/commands.ts:266",
+      "source": "src/commands.ts:267",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2953,7 +2953,7 @@
       "id": "commands.Init",
       "kind": "entry",
       "title": "Start a project",
-      "source": "src/commands.ts:371",
+      "source": "src/commands.ts:372",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3003,7 +3003,7 @@
     {
       "id": "commands.Plan",
       "kind": "entry",
-      "source": "src/commands.ts:322",
+      "source": "src/commands.ts:323",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3106,7 +3106,7 @@
       "id": "commands.RecordEvidence",
       "kind": "entry",
       "title": "Record evidence",
-      "source": "src/commands.ts:234",
+      "source": "src/commands.ts:235",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3138,7 +3138,7 @@
       "id": "commands.Release",
       "kind": "entry",
       "title": "Release a version",
-      "source": "src/commands.ts:250",
+      "source": "src/commands.ts:251",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3213,7 +3213,7 @@
       "id": "commands.Run",
       "kind": "entry",
       "title": "Run a component",
-      "source": "src/commands.ts:408",
+      "source": "src/commands.ts:409",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3239,7 +3239,7 @@
       "id": "commands.Ship",
       "kind": "entry",
       "title": "Ship",
-      "source": "src/commands.ts:215",
+      "source": "src/commands.ts:216",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3282,7 +3282,7 @@
       "id": "commands.ShowView",
       "kind": "entry",
       "title": "Show a view",
-      "source": "src/commands.ts:418",
+      "source": "src/commands.ts:419",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3367,7 +3367,7 @@
       "id": "commands.ViewByName",
       "kind": "entry",
       "title": "View by its name",
-      "source": "src/commands.ts:429",
+      "source": "src/commands.ts:430",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3417,6 +3417,9 @@
           "packages": "std/tooling.PackageSources",
           "names": "conventions.LanguageNames",
           "prelude": "architecture.Prelude",
+          "pin": "generations.EnginePin",
+          "values": "std/algebra.ValueTypes",
+          "counts": "std/algebra.Counts",
           "paths": "architecture.Paths",
           "encodings": "std/system.NodeEncodings",
           "file": "std/text.TextFile",
@@ -9809,7 +9812,7 @@
       "id": "messages.AdvanceMessages",
       "kind": "catalog",
       "title": "Messages of an advance",
-      "source": "src/messages.ts:830",
+      "source": "src/messages.ts:831",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -9852,7 +9855,7 @@
       "id": "messages.CountsInTheLanguage",
       "kind": "adr",
       "title": "A catalog counts in its language",
-      "source": "src/messages.ts:918",
+      "source": "src/messages.ts:919",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -9910,7 +9913,7 @@
       "id": "messages.EngineViewWords",
       "kind": "catalog",
       "title": "Words of Trame's views",
-      "source": "src/messages.ts:650",
+      "source": "src/messages.ts:651",
       "fields": {
         "owner": "trame",
         "messages": {
@@ -9924,7 +9927,7 @@
       "id": "messages.KindWords",
       "kind": "catalog",
       "title": "Words of the kinds",
-      "source": "src/messages.ts:630",
+      "source": "src/messages.ts:631",
       "fields": {
         "owner": "trame",
         "messages": {
@@ -10003,7 +10006,7 @@
       "id": "messages.PageWords",
       "kind": "catalog",
       "title": "Words of the page",
-      "source": "src/messages.ts:661",
+      "source": "src/messages.ts:662",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -10020,7 +10023,7 @@
       "id": "messages.PlatformMessages",
       "kind": "catalog",
       "title": "Messages of the platform",
-      "source": "src/messages.ts:683",
+      "source": "src/messages.ts:684",
       "fields": {
         "owner": "trame",
         "messages": "(function)"
@@ -10031,7 +10034,7 @@
       "id": "messages.RenderingMessages",
       "kind": "catalog",
       "title": "Messages of the renderers",
-      "source": "src/messages.ts:673",
+      "source": "src/messages.ts:674",
       "fields": {
         "owner": "trame",
         "messages": {
@@ -10045,7 +10048,7 @@
       "id": "messages.ScenarioMessages",
       "kind": "catalog",
       "title": "Messages of the scenarios",
-      "source": "src/messages.ts:712",
+      "source": "src/messages.ts:713",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -10084,7 +10087,7 @@
       "id": "messages.ViewWords",
       "kind": "catalog",
       "title": "Words of the views",
-      "source": "src/messages.ts:640",
+      "source": "src/messages.ts:641",
       "fields": {
         "owner": "trame",
         "messages": {
@@ -16118,7 +16121,7 @@
         "owner": "trame"
       },
       "result": {
-        "code": "030d356f"
+        "code": "1e731421"
       },
       "diagnostics": [
         "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
@@ -16134,7 +16137,7 @@
         "owner": "trame"
       },
       "result": {
-        "code": "a811c734"
+        "code": "fa23cf7a"
       },
       "diagnostics": [
         "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
@@ -16152,7 +16155,7 @@
       },
       "result": {
         "path": "out/local/trame-cli.ts",
-        "code": "4cb09da5"
+        "code": "2f58ffd7"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -16208,7 +16211,7 @@
       },
       "result": {
         "path": "trame-page.html",
-        "code": "afa3e0a8"
+        "code": "1e73b346"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -25103,6 +25106,21 @@
     {
       "from": "commands.WriteManifest",
       "to": "architecture.Prelude",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.WriteManifest",
+      "to": "generations.EnginePin",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.WriteManifest",
+      "to": "std/algebra.ValueTypes",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.WriteManifest",
+      "to": "std/algebra.Counts",
       "kind": "deps"
     },
     {

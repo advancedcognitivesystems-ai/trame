@@ -31,7 +31,7 @@ The language Trame speaks to people: British English. Its messages are written i
 
 ### A catalog counts in its language
 
-`CountsInTheLanguage` · `src/messages.ts:918` · status: **held**
+`CountsInTheLanguage` · `src/messages.ts:919` · status: **held**
 
 A count and its noun follow the plural rules of the language the catalog is written in, with the forms the catalog writes for each category; nothing below the catalogs presumes a language.
 
@@ -87,7 +87,7 @@ Joins the items of a list as people write it in the decided language: "A, B and 
 
 ### Messages of an advance
 
-`AdvanceMessages` · `src/messages.ts:830`
+`AdvanceMessages` · `src/messages.ts:831`
 
 What trame advance says as it goes, and what a generation says of itself.
 
@@ -251,6 +251,7 @@ What the commands print: summaries, usage, refusals.
     noAdvisory: () => "no known vulnerability",
     latestIs: (version: string) => `latest ${version}`,
     latestHeld: (version: string, ceiling: string) => `latest ${version}, held below ${ceiling}`,
+    configurationDerived: (references: number, file: string) => `${plural(references, { one: "package of Trame", other: "packages of Trame" })} placed where the graph says · written: ${file} · a fresh engine reads the graph`,
     manifestWritten: (packages: number, file: string) => `${plural(packages, { one: "package", other: "packages" })} of the graph · written: ${file} · npm install installs them`,
     librariesNamed: (libraries: number, file: string) => `${plural(libraries, { one: "library", other: "libraries" })} named in the import map of ${file}`,
     deliveryRefusedForErrors: (errors: number) => `delivery refused: the graph holds ${plural(errors, { one: "error", other: "errors" })} (trame build lists them)`,
@@ -599,7 +600,7 @@ What the drivers say about a body: hidden dependencies, access to the platform, 
 
 ### Words of Trame's views
 
-`EngineViewWords` · `src/messages.ts:650`
+`EngineViewWords` · `src/messages.ts:651`
 
 What the views of Trame's own graph say: the catalogue of literals, the versions of the engine.
 
@@ -612,7 +613,7 @@ The messages are written in `../engine-views/words.ts`.
 
 ### Words of the kinds
 
-`KindWords` · `src/messages.ts:630`
+`KindWords` · `src/messages.ts:631`
 
 What the kinds say: their labels, the labels of their fields and edges, what their holes say, what they render. The kinds are files of the language, outside the graph: their words are a catalog all the same, which they call; a kind writes no text of its own.
 
@@ -747,7 +748,7 @@ What the machine outputs, the lock, the payload, the date bundle, the difference
 
 ### Words of the page
 
-`PageWords` · `src/messages.ts:661`
+`PageWords` · `src/messages.ts:662`
 
 What the page says around the documents the engine wrote: the state of the compilation, the dates, the navigation, the banner, the figures, the explorer.
 
@@ -763,7 +764,7 @@ The messages are written in `./code/page/words.ts`.
 
 ### Messages of the platform
 
-`PlatformMessages` · `src/messages.ts:683`
+`PlatformMessages` · `src/messages.ts:684`
 
 What the implementations of the ports say (the command line, the terminal, the processes).
 
@@ -803,7 +804,7 @@ What the implementations of the ports say (the command line, the terminal, the p
 
 ### Messages of the renderers
 
-`RenderingMessages` · `src/messages.ts:673`
+`RenderingMessages` · `src/messages.ts:674`
 
 The words that the renderers add to the intermediate format: labels, notes, the names of statuses and outcomes. Written in a file: the page, which runs in the browser where nothing is wired, reads it too.
 
@@ -818,7 +819,7 @@ The messages are written in `./code/rendering/messages.ts`.
 
 ### Messages of the scenarios
 
-`ScenarioMessages` · `src/messages.ts:712`
+`ScenarioMessages` · `src/messages.ts:713`
 
 The names of the checks that the engine's scenarios make.
 
@@ -1035,7 +1036,7 @@ What the loading of views and the compilation API say.
 
 ### Words of the views
 
-`ViewWords` · `src/messages.ts:640`
+`ViewWords` · `src/messages.ts:641`
 
 What the views say: their titles, their introductions, their headings, what they say of the graph.
 

@@ -76,7 +76,7 @@ const body = (deps: Deps) => {
     const file = join(root, l.configuration)
     const raw = existsSync(file)
       ? (JSON.parse(readFileSync(file, encodings.utf8)) as {
-          kinds?: string[]; views?: string[]; title?: string; libraries?: Record<string, string | { path: string; version?: string }>
+          kinds?: string[]; views?: string[]; title?: string; libraries?: Record<string, string | { path?: string; at?: string; version?: string }>
         } & Record<string, unknown>)
       : {}
     const pinned = raw[deps.pin.key]
@@ -85,9 +85,14 @@ const body = (deps: Deps) => {
       views: withLanguage(l.views, raw.views, root),
       libraries: Object.entries(raw.libraries ?? {})
         .map(([name, at]): Library => {
-          const { path, version }: { path: string; version?: string } = deps.values.isText(at) ? { path: at } : at
-          const home = resolve(root, path)
-          return { name, home, version, root: version === undefined ? home : join(home, l.releases, version) }
+          const entry: { path?: string; at?: string; version?: string } = deps.values.isText(at) ? { path: at } : at
+          // Placed by where it comes from (since g91): the version itself, as the manifest wrote it.
+          if (entry.at !== undefined) {
+            const placed = resolve(root, entry.at)
+            return { name, home: placed, version: entry.version, root: placed }
+          }
+          const home = resolve(root, entry.path ?? root)
+          return { name, home, version: entry.version, root: entry.version === undefined ? home : join(home, l.releases, entry.version) }
         })
         .sort((a, b) => a.name.localeCompare(b.name)),
       title: raw.title,

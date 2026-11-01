@@ -179,7 +179,8 @@ export const WriteManifest = entryPoint({
   trigger: command(commandNames.manifest),
   deps: {
     exitStatus: ExitStatus, preparation: Preparation, npm: NpmManifest, layout: Layout, project: Project, specifiers: NodeModuleSpecifiers,
-    reading: FileReading, writing: FileWriting, packages: PackageSources, names: LanguageNames, prelude: Prelude, paths: Paths, encodings: NodeEncodings,
+    reading: FileReading, writing: FileWriting, packages: PackageSources, names: LanguageNames, prelude: Prelude, pin: EnginePin, values: ValueTypes, counts: Counts,
+    paths: Paths, encodings: NodeEncodings,
     file: TextFile, json: JsonFormatting, language: TypeScript, terminal: Terminal, messages: CommandMessages, currentProcess: Process, events: NodeEvents,
     line: TrameCommands, texts: Texts,
   },

@@ -1081,10 +1081,10 @@ Entry point · `WriteManifest` · **held**
 
 - Owner: trame
 - Trigger: { type: command, name: manifest }
-- Parameters: { exitStatus: std/system.ExitStatus, preparation: commands.Preparation, npm: std/system.NpmManifest, layout: conventions.Layout, project: engine.Project, specifiers: std/system.NodeModuleSpecifiers, reading: architecture.FileReading, writing: architecture.FileWriting, packages: std/tooling.PackageSources, names: conventions.LanguageNames, prelude: architecture.Prelude, paths: architecture.Paths, encodings: std/system.NodeEncodings, file: std/text.TextFile, json: conventions.JsonFormatting, language: typescript.TypeScript, terminal: architecture.Terminal, messages: messages.CommandMessages, currentProcess: architecture.Process, events: std/system.NodeEvents, line: conventions.TrameCommands, texts: std/algebra.Texts }
+- Parameters: { exitStatus: std/system.ExitStatus, preparation: commands.Preparation, npm: std/system.NpmManifest, layout: conventions.Layout, project: engine.Project, specifiers: std/system.NodeModuleSpecifiers, reading: architecture.FileReading, writing: architecture.FileWriting, packages: std/tooling.PackageSources, names: conventions.LanguageNames, prelude: architecture.Prelude, pin: generations.EnginePin, values: std/algebra.ValueTypes, counts: std/algebra.Counts, paths: architecture.Paths, encodings: std/system.NodeEncodings, file: std/text.TextFile, json: conventions.JsonFormatting, language: typescript.TypeScript, terminal: architecture.Terminal, messages: messages.CommandMessages, currentProcess: architecture.Process, events: std/system.NodeEvents, line: conventions.TrameCommands, texts: std/algebra.Texts }
 - Serves: A single source of truth
 - Part of: Trame on the command line
-- Depends on: Preparation, Project layout, Project, File reading, File writing, The language's names, Prelude, Paths, JSON formatting, TypeScript, Terminal, Messages of the commands, Process, Trame's commands
+- Depends on: Preparation, Project layout, Project, File reading, File writing, The language's names, Prelude, The engine a project runs, Paths, JSON formatting, TypeScript, Terminal, Messages of the commands, Process, Trame's commands
 
 ## Trame · Conventions
 
