@@ -29,7 +29,7 @@ Package · `Language`
 
 - Owner: ghalaax
 - Name: trame
-- Version: 92
+- Version: 93
 - How it joins the graph: language
 - Where it comes from: registry
 - Serves: Geometry written once

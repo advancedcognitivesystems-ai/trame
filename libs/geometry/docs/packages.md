@@ -15,7 +15,7 @@
 The language the library is written in, at the generation it pins: from the registry of this machine.
 
 - Name: `trame`
-- Version: `92`
+- Version: `93`
 - Installed: Not installed in the project: its lockfile lists no trame
 - Vulnerabilities: No report yet: trame audit asks the registry
 - Latest version: No report yet: trame audit asks the registry

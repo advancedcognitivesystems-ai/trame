@@ -218,9 +218,14 @@ g89 a relative import that leaves its package refuses the build, and says which 
 the graph (`joins`: the language, a library), where it comes from (`from`: a word of std's `PackageOrigins`, by its
 path or from the registry of this machine) and its path (`at`); `trame manifest` places each one by its origin and
 writes `trame.json` from them (the language as the engine to run, `.trame/trame`; each library as placed, `{ at,
-version }`): a derived file, like the import map. The engine leads `#trame/*` to its own language when it loads a
-project, as a peer dependency. The example and std keep a written pin while an advance moves it (g92 will amend their
-references instead), and a version published to the registry comes with g92.
+version }`): a derived file, like the import map. The engine leads `#trame/*` to its own language, and the
+names of the project's libraries to their sources, when it loads a project: a package published once is read with
+whichever generation and libraries read it, as a peer dependency (g91–g93). Since g92 a version is published to the
+registry of this machine (`~/.trame/registry/<name>/<version>`, the decision `LocalRegistryPlace`): by `trame release`
+in a library (run on a version already frozen, it publishes it), and by the promotion of a generation, with its
+language copied for real, so a project that runs it from there keeps the language it was frozen with. `trame.sh`
+installs a published engine's packages the first time it runs it. `libs/geometry` runs entirely from the registry
+(g93, std 0.12.0). The example and std keep a written pin, which an advance moves.
 
 g54 brought this to the engine without any project using it, and built everything as g53 did; g55 moved the nodes. A
 generation keeps a copy of Trame's libraries beside its graph, since its program imports their bodies (the structures),
