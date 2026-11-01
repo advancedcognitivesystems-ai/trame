@@ -1,14 +1,8 @@
 # Journal
 
-*What happened to the project, day by day, the latest first, up to the date of the graph (1 November 2026): the versions released, and the evidence given, each with the node it is about and who gave it.*
+*What happened to the project, day by day, the latest first, up to the date of the graph (30 October 2026): the versions released, and the evidence given, each with the node it is about and who gave it.*
 
-> **5 days · 13 versions released · 2 pieces of evidence**
-
-## 1 November 2026
-
-| What | Node | By |
-|---|---|---|
-| Released as 0.12.0 | [Version 0.12.0](releases.md#R0_12_0) | trame |
+> **4 days · 12 versions released · 2 pieces of evidence**
 
 ## 29 October 2026
 

@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-01",
+  "at": "2026-10-30",
   "nodes": [
     {
       "id": "algebra.Counts",
@@ -653,6 +653,9 @@
             ],
             "node:module": {
               "createRequire": [
+                "execution"
+              ],
+              "registerHooks": [
                 "execution"
               ]
             },

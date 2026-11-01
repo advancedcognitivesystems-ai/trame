@@ -1,6 +1,6 @@
 # Owners
 
-*What each person must decide, settle or watch on 1 November 2026, and what they own.*
+*What each person must decide, settle or watch on 30 October 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|

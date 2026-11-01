@@ -1,11 +1,11 @@
 # Owners
 
-*What each person must decide, settle or watch on 1 November 2026, and what they own.*
+*What each person must decide, settle or watch on 30 October 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
 | Trame's maintainers | 0 | 0 | 3 | 0 |
-| trame | 0 | 0 | 9 | 646 |
+| trame | 0 | 0 | 11 | 646 |
 
 <a id="Trame's maintainers"></a>
 
@@ -29,11 +29,13 @@
 | warning | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The graph page](sdlc.md#GraphPage) | trame |  |
 | warning | To ship: The candidate engine is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
 | warning | To ship: The graph page is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
+| warning | To ship: The page's program is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
 | warning | To ship: The SDLC's tooling is realized once is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
 | warning | To ship: The page is assembled is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
 | warning | To ship: The candidate plays the laws is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
 | warning | To ship: The candidate runs on the machine is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
 | warning | To ship: The graph page opens is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
+| warning | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The page's program](sdlc.md#PageProgram) | trame |  |
 
 ### Owns
 
@@ -611,7 +613,7 @@
 | [The next generation](sdlc.md#NextGeneration) | Shipment | **unknown** |
 | [The graph page is opened as a person would](sdlc.md#OpeningTheGraphPage) | Scenario | **held** |
 | [Open the graph page](sdlc.md#OpenTheGraphPage) | Entry point | **held** |
-| [The page's program](sdlc.md#PageProgram) | Artefact | **held** |
+| [The page's program](sdlc.md#PageProgram) | Artefact | **unknown** |
 | [The SDLC in memory](sdlc.md#SdlcInMemory) | Technical choice | **held** |
 | [The SDLC on the machine](sdlc.md#SdlcOnTheMachine) | Technical choice | **unknown** |
 | [What the programs of Trame's SDLC say](sdlc.md#SdlcWords) | Message catalog |  |
