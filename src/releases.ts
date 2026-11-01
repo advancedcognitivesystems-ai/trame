@@ -1333,3 +1333,18 @@ export const G90 = release({
   archive: "c850998afbba6ca9",
   assembledBy: G89,
 })
+
+/**
+ * Generation 91
+ */
+export const G91 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g91",
+  date: "2026-11-01",
+  what: "E1e: the engine leads the language's names to its own language (a peer dependency); a package node says how it joins the graph, where it comes from (by its path, from the registry of this machine) and its path; trame manifest places the packages of Trame the graph references and derives trame.json from them; npm installs the packages of every library imported",
+  fingerprint: "f501ff1b89e2784c",
+  language: "shared",
+  archive: "3b7e0d08b54deb04",
+  assembledBy: G90,
+})

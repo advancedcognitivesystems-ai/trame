@@ -4,7 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 27 | 146 |
+| trame | 0 | 0 | 27 | 147 |
 
 <a id="trame"></a>
 
@@ -174,6 +174,7 @@
 | [Chromium without a screen](tooling.md#HeadlessChromium) | Decision |  |
 | [The machine's files](tooling.md#MachineFiles) | Implementation |  |
 | [Node's command line](tooling.md#NodeProgramCommands) | Implementation |  |
+| [Where a package comes from](tooling.md#PackageOrigins) | Vocabulary |  |
 | [Where a package comes from](tooling.md#PackageSources) | Port |  |
 | [Playwright's API](tooling.md#PlaywrightApi) | Standard |  |
 | [Chromium, driven by Playwright](tooling.md#PlaywrightBrowser) | Implementation |  |

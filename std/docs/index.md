@@ -21,7 +21,7 @@
 | [Standard library · Scenarios](scenarios.md) | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 1 | 1 | 3 | 0 | 0 |
 | [Standard library · System](system.md) | 0 | 0 | 10 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Standard library · Text](text.md) | 0 | 0 | 4 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Standard library · Tooling](tooling.md) | 0 | 0 | 1 | 0 | 0 | 0 | 1 | 1 | 6 | 0 | 2 | 0 | 3 | 1 | 0 | 0 | 0 | 0 | 1 |
+| [Standard library · Tooling](tooling.md) | 0 | 0 | 1 | 1 | 0 | 0 | 1 | 1 | 6 | 0 | 2 | 0 | 3 | 1 | 0 | 0 | 0 | 0 | 1 |
 | [Standard library · Web](web.md) | 0 | 0 | 10 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 
 ## Open issues

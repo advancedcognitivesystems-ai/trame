@@ -3221,6 +3221,18 @@
       }
     },
     {
+      "id": "tooling.PackageOrigins",
+      "kind": "vocabulary",
+      "title": "Where a package comes from",
+      "fields": {
+        "owner": "trame",
+        "words": {
+          "path": "Reached where it is on the machine, by its path",
+          "registry": "Installed at its version from a registry where it was published"
+        }
+      }
+    },
+    {
       "id": "tooling.PackageSources",
       "kind": "port",
       "title": "Where a package comes from",
@@ -3228,6 +3240,10 @@
         "owner": "trame",
         "declaredEffects": {
           "place": [
+            "read",
+            "write"
+          ],
+          "publish": [
             "read",
             "write"
           ]
@@ -4839,6 +4855,11 @@
       "from": "tooling.NodeProgramCommands",
       "to": "algebra.ValueTypes",
       "kind": "deps"
+    },
+    {
+      "from": "tooling.PackageOrigins",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
     },
     {
       "from": "tooling.PlaywrightApi",

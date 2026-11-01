@@ -1123,6 +1123,14 @@ Standard · `PlaywrightApi`
 - Constants: { pageError: { value: pageerror, meaning: An error the page raised and did not catch } }
 - Serves: A published value is cited, not copied
 
+### Where a package comes from
+
+Vocabulary · `PackageOrigins`
+
+- Owner: trame
+- Words: { path: Reached where it is on the machine, by its path, registry: Installed at its version from a registry where it was published }
+- Serves: Ports of the platform, realized once
+
 ### Chromium without a screen
 
 Decision · `HeadlessChromium`
@@ -1174,7 +1182,7 @@ Port · `HeadlessBrowser`
 Port · `PackageSources`
 
 - Owner: trame
-- Declared effects: { place: read, write }
+- Declared effects: { place: read, write, publish: read, write }
 
 ### Commands of a program
 

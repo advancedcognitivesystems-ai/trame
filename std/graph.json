@@ -3648,7 +3648,7 @@
       "id": "tooling.BrowserInMemory",
       "kind": "function",
       "title": "A browser kept in memory",
-      "source": "src/tooling.ts:207",
+      "source": "src/tooling.ts:208",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3663,7 +3663,7 @@
       "id": "tooling.BrowserScripted",
       "kind": "port",
       "title": "Browser script",
-      "source": "src/tooling.ts:200",
+      "source": "src/tooling.ts:201",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -3674,7 +3674,7 @@
       "id": "tooling.Files",
       "kind": "port",
       "title": "Project files",
-      "source": "src/tooling.ts:55",
+      "source": "src/tooling.ts:56",
       "fields": {
         "owner": "trame",
         "declaredEffects": {
@@ -3702,7 +3702,7 @@
       "id": "tooling.FilesInMemory",
       "kind": "function",
       "title": "Files kept in memory",
-      "source": "src/tooling.ts:86",
+      "source": "src/tooling.ts:87",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3718,7 +3718,7 @@
       "id": "tooling.FilesKept",
       "kind": "port",
       "title": "Files written",
-      "source": "src/tooling.ts:69",
+      "source": "src/tooling.ts:70",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -3729,7 +3729,7 @@
       "id": "tooling.HeadlessBrowser",
       "kind": "port",
       "title": "Headless browser",
-      "source": "src/tooling.ts:129",
+      "source": "src/tooling.ts:130",
       "fields": {
         "owner": "trame",
         "declaredEffects": [
@@ -3746,7 +3746,7 @@
       "id": "tooling.HeadlessChromium",
       "kind": "decision",
       "title": "Chromium without a screen",
-      "source": "src/tooling.ts:161",
+      "source": "src/tooling.ts:162",
       "fields": {
         "owner": "trame",
         "value": {
@@ -3769,7 +3769,7 @@
       "id": "tooling.MachineFiles",
       "kind": "implementation",
       "title": "The machine's files",
-      "source": "src/tooling.ts:76",
+      "source": "src/tooling.ts:77",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -3787,7 +3787,7 @@
       "id": "tooling.NodeProgramCommands",
       "kind": "implementation",
       "title": "Node's command line",
-      "source": "src/tooling.ts:35",
+      "source": "src/tooling.ts:36",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -3803,14 +3803,32 @@
       "diagnostics": []
     },
     {
+      "id": "tooling.PackageOrigins",
+      "kind": "vocabulary",
+      "title": "Where a package comes from",
+      "source": "src/tooling.ts:280",
+      "fields": {
+        "owner": "trame",
+        "words": {
+          "path": "Reached where it is on the machine, by its path",
+          "registry": "Installed at its version from a registry where it was published"
+        }
+      },
+      "diagnostics": []
+    },
+    {
       "id": "tooling.PackageSources",
       "kind": "port",
       "title": "Where a package comes from",
-      "source": "src/tooling.ts:261",
+      "source": "src/tooling.ts:273",
       "fields": {
         "owner": "trame",
         "declaredEffects": {
           "place": [
+            "read",
+            "write"
+          ],
+          "publish": [
             "read",
             "write"
           ]
@@ -3824,7 +3842,7 @@
       "id": "tooling.PlaywrightApi",
       "kind": "standard",
       "title": "Playwright's API",
-      "source": "src/tooling.ts:146",
+      "source": "src/tooling.ts:147",
       "fields": {
         "owner": "trame",
         "source": "Playwright documentation, class Page, event \"pageerror\"",
@@ -3842,7 +3860,7 @@
       "id": "tooling.PlaywrightBrowser",
       "kind": "implementation",
       "title": "Chromium, driven by Playwright",
-      "source": "src/tooling.ts:175",
+      "source": "src/tooling.ts:176",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -3861,7 +3879,7 @@
       "id": "tooling.PlaywrightPackage",
       "kind": "package",
       "title": "Playwright",
-      "source": "src/tooling.ts:136",
+      "source": "src/tooling.ts:137",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3883,7 +3901,7 @@
       "id": "tooling.ProgramCommands",
       "kind": "port",
       "title": "Commands of a program",
-      "source": "src/tooling.ts:27",
+      "source": "src/tooling.ts:28",
       "fields": {
         "owner": "trame",
         "declaredEffects": [
@@ -3896,7 +3914,7 @@
       "id": "tooling.ToolingAsPorts",
       "kind": "adr",
       "title": "The SDLC's tooling is realized once",
-      "source": "src/tooling.ts:269",
+      "source": "src/tooling.ts:295",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5455,6 +5473,11 @@
       "from": "tooling.NodeProgramCommands",
       "to": "algebra.ValueTypes",
       "kind": "deps"
+    },
+    {
+      "from": "tooling.PackageOrigins",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
     },
     {
       "from": "tooling.PlaywrightApi",

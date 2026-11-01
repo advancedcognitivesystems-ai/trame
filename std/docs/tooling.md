@@ -16,7 +16,7 @@
 
 ### Playwright's API
 
-`PlaywrightApi` · `src/tooling.ts:146`
+`PlaywrightApi` · `src/tooling.ts:147`
 
 The names Playwright gives to what a page tells: the event of an error the page raised.
 
@@ -30,13 +30,31 @@ Source: Playwright documentation, class Page, event "pageerror" · `https://play
 - Serves: [A published value is cited, not copied](product.md#CitedNotCopied)
 - Used by: [Chromium, driven by Playwright](#PlaywrightBrowser)
 
+## Vocabulary
+
+<a id="PackageOrigins"></a>
+
+### Where a package comes from
+
+`PackageOrigins` · `src/tooling.ts:280`
+
+The origins a reference to a package names: by its path (a directory on the machine, the package as it is or a version it froze), from a registry (a version published). npm will be one more.
+
+| Word | Meaning |
+|---|---|
+| `path` | Reached where it is on the machine, by its path |
+| `registry` | Installed at its version from a registry where it was published |
+
+- Owner: trame
+- Serves: [Ports of the platform, realized once](product.md#RealizedOnce)
+
 ## Decision
 
 <a id="HeadlessChromium"></a>
 
 ### Chromium without a screen
 
-`HeadlessChromium` · `src/tooling.ts:161`
+`HeadlessChromium` · `src/tooling.ts:162`
 
 How Chromium starts without a screen: WebGL drawn by software (ANGLE on SwiftShader), so that a page drawing in three dimensions runs on a machine without a graphics card; the window's size, in pixels.
 
@@ -56,7 +74,7 @@ How Chromium starts without a screen: WebGL drawn by software (ANGLE on SwiftSha
 
 ### The SDLC's tooling is realized once
 
-`ToolingAsPorts` · `src/tooling.ts:269` · status: **held**
+`ToolingAsPorts` · `src/tooling.ts:295` · status: **held**
 
 The files of a project and a headless browser are ports of the library, each realized for a machine and in memory: every project's checks and deployments use them, and play them in scenarios, rather than calling the machine itself.
 
@@ -74,7 +92,7 @@ Consequences: A check opens the delivered page through HeadlessBrowser, a deploy
 
 ### Browser script
 
-`BrowserScripted` · `src/tooling.ts:200`
+`BrowserScripted` · `src/tooling.ts:201`
 
 The pages the browser kept in memory shows, as a scenario writes them, and what was clicked on them.
 
@@ -91,7 +109,7 @@ The pages the browser kept in memory shows, as a scenario writes them, and what 
 
 ### Project files
 
-`Files` · `src/tooling.ts:55`
+`Files` · `src/tooling.ts:56`
 
 Reads, writes and copies the files of the project, and gives a file's fingerprint.
 
@@ -117,7 +135,7 @@ Reads, writes and copies the files of the project, and gives a file's fingerprin
 
 ### Files written
 
-`FilesKept` · `src/tooling.ts:69`
+`FilesKept` · `src/tooling.ts:70`
 
 The files a check or a deployment wrote, for a scenario to read: realized together with the files kept in memory.
 
@@ -134,7 +152,7 @@ The files a check or a deployment wrote, for a scenario to read: realized togeth
 
 ### Headless browser
 
-`HeadlessBrowser` · `src/tooling.ts:129`
+`HeadlessBrowser` · `src/tooling.ts:130`
 
 Opens a page the project delivered, without a screen, and answers what it shows.
 
@@ -152,13 +170,14 @@ Opens a page the project delivered, without a screen, and answers what it shows.
 
 ### Where a package comes from
 
-`PackageSources` · `src/tooling.ts:261`
+`PackageSources` · `src/tooling.ts:273`
 
 A project uses packages (the language of the generation it pins, its libraries) by their name only, each at its version; where the package's files come from is a choice with its strategies: a local path (a directory on the machine, reached through a link under the project), a registry (a package fetched at its version). The project's import map leads to where the strategy placed the package; moving a package elsewhere changes only its source.
 
 | Method | What it may do |
 |---|---|
 | `place` | read, write |
+| `publish` | read, write |
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
@@ -172,7 +191,7 @@ A project uses packages (the language of the generation it pins, its libraries) 
 
 ### Commands of a program
 
-`ProgramCommands` · `src/tooling.ts:27`
+`ProgramCommands` · `src/tooling.ts:28`
 
 A program of the SDLC (a check, a deployment), run by a person or by trame ship: its first argument names the command that runs.
 
@@ -191,7 +210,7 @@ A program of the SDLC (a check, a deployment), run by a person or by trame ship:
 
 ### A browser kept in memory
 
-`BrowserInMemory` · `src/tooling.ts:207` · status: **held**
+`BrowserInMemory` · `src/tooling.ts:208` · status: **held**
 
 In a scenario, a page opened shows what the scenario wrote for its file (nothing found, no error, when it wrote nothing); clicks are recorded; waiting takes no time.
 
@@ -207,7 +226,7 @@ In a scenario, a page opened shows what the scenario wrote for its file (nothing
 
 ### Files kept in memory
 
-`FilesInMemory` · `src/tooling.ts:86` · status: **held**
+`FilesInMemory` · `src/tooling.ts:87` · status: **held**
 
 In a scenario, the project's files are kept in memory, empty at first; a fingerprint is the hash of the text.
 
@@ -225,7 +244,7 @@ In a scenario, the project's files are kept in memory, empty at first; a fingerp
 
 ### The machine's files
 
-`MachineFiles` · `src/tooling.ts:76`
+`MachineFiles` · `src/tooling.ts:77`
 
 The files of the project on the machine, from the directory the program runs in; a fingerprint is the SHA-256 digest of the file, in hexadecimal.
 
@@ -239,7 +258,7 @@ The files of the project on the machine, from the directory the program runs in;
 
 ### Node's command line
 
-`NodeProgramCommands` · `src/tooling.ts:35`
+`NodeProgramCommands` · `src/tooling.ts:36`
 
 The first argument given to the program chooses the entry point whose command it names, which receives the others; what it answers, when it is lines of text, is written on the standard output; the program ends with the status the entry point answers, or fails when no command has that name.
 
@@ -253,7 +272,7 @@ The first argument given to the program chooses the entry point whose command it
 
 ### Chromium, driven by Playwright
 
-`PlaywrightBrowser` · `src/tooling.ts:175`
+`PlaywrightBrowser` · `src/tooling.ts:176`
 
 The headless browser of a machine: Chromium started by Playwright as decided, a page opened from the file's address, its errors kept as they come.
 
@@ -270,7 +289,7 @@ The headless browser of a machine: Chromium started by Playwright as decided, a 
 
 ### Playwright
 
-`PlaywrightPackage` · `src/tooling.ts:136` · status: **held**
+`PlaywrightPackage` · `src/tooling.ts:137` · status: **held**
 
 Drives Chromium without a screen: the version whose browser the machine has. Once installed, it installs the Chromium it drives, with what the system needs to run it: a machine that runs a check of the page does it first.
 
