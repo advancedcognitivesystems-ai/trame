@@ -25,7 +25,7 @@ import { PackageAudit, VersionOrder } from "./packages"
 import { CommandMessages, AdvanceMessages, OutputMessages } from "./messages"
 import { TerminalText, TerminalColumns, PaddedCell, Columns } from "./text"
 import { ExampleRoot, TestDay } from "./platform"
-import { TypeScript, StringLiteral, TypeScriptSyntax, ModuleTitle, DocBlock, ExportDeclaration, ConstDeclaration, Call, ObjectLiteral, Property, NamedImport } from "./typescript"
+import { TypeScript, StringLiteral, TypeScriptSyntax, ModuleTitle, DocBlock, ExportDeclaration, ConstDeclaration, Call, ObjectLiteral, Property, NamedImport, InlineArray } from "./typescript"
 import { Drivers } from "./languages"
 import { Advancement, AcceptCandidate, EnginePin, LanguageSharing, Releases, ReleaseRecords } from "./generations"
 import { Punctuation } from "./documents"
@@ -366,6 +366,20 @@ export const Amend = entryPoint({
 })
 
 /**
+ * A module of references
+ * Writes the packages of Trame a project uses as package nodes, as a person would: trame init writes the first, an
+ * advance the example's language.
+ */
+export const ReferencesModule = fn({
+  owner: "trame", serves: [SingleSource],
+  deps: {
+    syntax: TypeScriptSyntax, title: ModuleTitle, doc: DocBlock, exported: ExportDeclaration, constant: ConstDeclaration, call: Call, object: ObjectLiteral,
+    property: Property, text: StringLiteral, list: InlineArray, imports: NamedImport, texts: Texts,
+  },
+  body: code.file<typeof import("./code/commands/references").default>("./code/commands/references.ts"),
+})
+
+/**
  * Start a project
  * In an empty directory: its configuration (the generation that runs, the libraries the language's home uses), a
  * first module with the goal it serves, the guide for agents and the skill, then its manifest, by a fresh engine.
@@ -378,7 +392,7 @@ export const Init = entryPoint({
     reading: FileReading, writing: FileWriting, paths: Paths, encodings: NodeEncodings, file: TextFile, json: JsonFormatting, language: TypeScript,
     syntax: TypeScriptSyntax, title: ModuleTitle, doc: DocBlock, exported: ExportDeclaration, constant: ConstDeclaration, call: Call, object: ObjectLiteral,
     property: Property, text: StringLiteral, imports: NamedImport, terminal: Terminal, messages: CommandMessages, currentProcess: Process,
-    events: NodeEvents, line: TrameCommands, texts: Texts,
+    events: NodeEvents, line: TrameCommands, texts: Texts, references: ReferencesModule, names: LanguageNames, specifiers: NodeModuleSpecifiers,
   },
   body: code.file<typeof import("./code/commands/init").default>("./code/commands/init.ts"),
 })

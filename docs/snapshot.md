@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 30 October 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 1 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Trame · Appearance
 
@@ -745,7 +745,7 @@ Scenario · `ProjectStarted` · **held**
 
 - Owner: trame
 - Parameters: { init: commands.Init, processLog: architecture.ProcessLog, writeLog: architecture.WriteLog, currentProcess: architecture.Process, paths: architecture.Paths, layout: conventions.Layout, projects: command-scenarios.ScenarioProjects, samples: command-scenarios.ProjectSamples, start: conventions.ProjectStart, pin: generations.EnginePin, line: conventions.TrameCommands, exitStatus: std/system.ExitStatus, messages: messages.ScenarioMessages, names: conventions.LanguageNames, specifiers: std/system.NodeModuleSpecifiers, language: typescript.TypeScript, texts: std/algebra.Texts }
-- Verifies: Start a project
+- Verifies: Start a project, A module of references
 - In: Test
 - Depends on: Start a project, Process log, Write log, Process, Paths, Project layout, The projects of the repository the scenarios enter, What the scenarios ask of those projects, How a project starts, The engine a project runs, Trame's commands, Messages of the scenarios, The language's names, TypeScript
 
@@ -834,6 +834,15 @@ Function · `Preparation` · **held**
 - Parameters: { line: conventions.TrameCommands, compiler: engine.Compiler, compilationApi: engine.CompilationApi, laws: engine.Laws, views: engine.Views, lock: engine.Lock, common: rendering.Common, terminal: architecture.Terminal, currentProcess: architecture.Process, clock: architecture.Clock, severityOrder: (rule), devPort: product.DevPort, exitStatus: std/system.ExitStatus, layout: text.TerminalText, columns: text.TerminalColumns, cell: text.PaddedCell, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, messages: messages.CommandMessages, projectLayout: conventions.Layout, uri: std/web.Uri, references: engine.References }
 - Serves: A specification that runs
 - Depends on: Trame's commands, Compiler, Compilation API, Laws, Views, Lock, Common rendering, Terminal, Process, Clock, Sort problems by severity, Port of trame dev, Terminal text, Columns in the terminal, Padded cell, Messages of the commands, Project layout, References
+
+### A module of references
+
+Function · `ReferencesModule` · **held**
+
+- Owner: trame
+- Parameters: { syntax: typescript.TypeScriptSyntax, title: typescript.ModuleTitle, doc: typescript.DocBlock, exported: typescript.ExportDeclaration, constant: typescript.ConstDeclaration, call: typescript.Call, object: typescript.ObjectLiteral, property: typescript.Property, text: typescript.StringLiteral, list: typescript.InlineArray, imports: typescript.NamedImport, texts: std/algebra.Texts }
+- Serves: A single source of truth
+- Depends on: The syntax of the programs Trame writes, Title of a module, Documentation comment, Export, Constant, Call, Object, Property, Text, List on one line, Import of names
 
 ### Render a view
 
@@ -960,10 +969,10 @@ Entry point · `Init` · **held**
 
 - Owner: trame
 - Trigger: { type: command, name: init }
-- Parameters: { exitStatus: std/system.ExitStatus, preparation: commands.Preparation, layout: conventions.Layout, project: engine.Project, prelude: architecture.Prelude, start: conventions.ProjectStart, pin: generations.EnginePin, reading: architecture.FileReading, writing: architecture.FileWriting, paths: architecture.Paths, encodings: std/system.NodeEncodings, file: std/text.TextFile, json: conventions.JsonFormatting, language: typescript.TypeScript, syntax: typescript.TypeScriptSyntax, title: typescript.ModuleTitle, doc: typescript.DocBlock, exported: typescript.ExportDeclaration, constant: typescript.ConstDeclaration, call: typescript.Call, object: typescript.ObjectLiteral, property: typescript.Property, text: typescript.StringLiteral, imports: typescript.NamedImport, terminal: architecture.Terminal, messages: messages.CommandMessages, currentProcess: architecture.Process, events: std/system.NodeEvents, line: conventions.TrameCommands, texts: std/algebra.Texts }
+- Parameters: { exitStatus: std/system.ExitStatus, preparation: commands.Preparation, layout: conventions.Layout, project: engine.Project, prelude: architecture.Prelude, start: conventions.ProjectStart, pin: generations.EnginePin, reading: architecture.FileReading, writing: architecture.FileWriting, paths: architecture.Paths, encodings: std/system.NodeEncodings, file: std/text.TextFile, json: conventions.JsonFormatting, language: typescript.TypeScript, syntax: typescript.TypeScriptSyntax, title: typescript.ModuleTitle, doc: typescript.DocBlock, exported: typescript.ExportDeclaration, constant: typescript.ConstDeclaration, call: typescript.Call, object: typescript.ObjectLiteral, property: typescript.Property, text: typescript.StringLiteral, imports: typescript.NamedImport, terminal: architecture.Terminal, messages: messages.CommandMessages, currentProcess: architecture.Process, events: std/system.NodeEvents, line: conventions.TrameCommands, texts: std/algebra.Texts, references: commands.ReferencesModule, names: conventions.LanguageNames, specifiers: std/system.NodeModuleSpecifiers }
 - Serves: A single source of truth
 - Part of: Trame on the command line
-- Depends on: Preparation, Project layout, Project, Prelude, How a project starts, The engine a project runs, File reading, File writing, Paths, JSON formatting, TypeScript, The syntax of the programs Trame writes, Title of a module, Documentation comment, Export, Constant, Call, Object, Property, Text, Import of names, Terminal, Messages of the commands, Process, Trame's commands
+- Depends on: Preparation, Project layout, Project, Prelude, How a project starts, The engine a project runs, File reading, File writing, Paths, JSON formatting, TypeScript, The syntax of the programs Trame writes, Title of a module, Documentation comment, Export, Constant, Call, Object, Property, Text, Import of names, Terminal, Messages of the commands, Process, Trame's commands, A module of references, The language's names
 
 ### Plan
 
@@ -1182,7 +1191,7 @@ Decision · `PreludeApi`
 Decision · `ProjectStart`
 
 - Decided by: trame
-- Value: { module: product, goal: Purpose, goalKind: kinds/goal, owner: owner, guides: AGENTS.md, .claude/skills/trame/SKILL.md, pointer: CLAUDE.md, pointerText: @AGENTS.md }
+- Value: { module: product, goal: Purpose, goalKind: kinds/goal, owner: owner, references: packages, packageKind: kinds/package, packageFacade: pkg, language: Language, library: Library, guides: AGENTS.md, .claude/skills/trame/SKILL.md, pointer: CLAUDE.md, pointerText: @AGENTS.md }
 - Rejected: An empty project, nothing would say what the project is for, and the first build would have no goal to link anything to; A template project to copy, a second project to keep in step with the language; what init writes is in the graph
 
 ### Names of steps
@@ -5449,6 +5458,20 @@ Release · `G92`
 - Releases: Trame on the command line
 - Assembled by: Generation 91
 
+### Generation 93
+
+Release · `G93`
+
+- Released by: trame
+- Version: g93
+- Released on: 2026-11-01
+- What changes: E1g: the names of a project's libraries are led to their real paths (through a link, a module would be read twice); a version published to the registry holds its manifest (ES modules); the launcher sees a published engine's missing packages as ES modules resolve them
+- Fingerprint: 524fe0849917ff93
+- Language: shared
+- Language archived: 10418831c37c9ead
+- Releases: Trame on the command line
+- Assembled by: Generation 92
+
 ## Trame · Rendering
 
 ### Places in a sentence
@@ -5875,7 +5898,7 @@ Artefact · `GraphPage` · **unknown**
 
 ### The page's program
 
-Artefact · `PageProgram` · **unknown**
+Artefact · `PageProgram` · **held**
 
 - Owner: trame
 - Path: out/browser/page-app.ts

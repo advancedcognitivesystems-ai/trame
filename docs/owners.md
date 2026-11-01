@@ -1,11 +1,11 @@
 # Owners
 
-*What each person must decide, settle or watch on 30 October 2026, and what they own.*
+*What each person must decide, settle or watch on 1 November 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
 | Trame's maintainers | 0 | 0 | 3 | 0 |
-| trame | 0 | 0 | 10 | 653 |
+| trame | 0 | 0 | 8 | 655 |
 
 <a id="Trame's maintainers"></a>
 
@@ -29,12 +29,10 @@
 | warning | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The graph page](sdlc.md#GraphPage) | trame |  |
 | warning | To ship: The candidate engine is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
 | warning | To ship: The graph page is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
-| warning | To ship: The page's program is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
 | warning | To ship: The page is assembled is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
 | warning | To ship: The candidate plays the laws is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
 | warning | To ship: The candidate runs on the machine is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
 | warning | To ship: The graph page opens is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
-| warning | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The page's program](sdlc.md#PageProgram) | trame |  |
 
 ### Owns
 
@@ -157,6 +155,7 @@
 | [Preparation](commands.md#Preparation) | Function | **held** |
 | [Publish](commands.md#Publish) | Entry point | **held** |
 | [Record evidence](commands.md#RecordEvidence) | Entry point | **held** |
+| [A module of references](commands.md#ReferencesModule) | Function | **held** |
 | [Release a version](commands.md#Release) | Entry point | **held** |
 | [Render a view](commands.md#RenderView) | Function | **held** |
 | [Run a component](commands.md#Run) | Entry point | **held** |
@@ -566,6 +565,7 @@
 | [Generation 90](releases.md#G90) | Release |  |
 | [Generation 91](releases.md#G91) | Release |  |
 | [Generation 92](releases.md#G92) | Release |  |
+| [Generation 93](releases.md#G93) | Release |  |
 | [Common rendering](rendering.md#Common) | Function | **held** |
 | [Documents in Markdown](rendering.md#DocumentsInMarkdown) | Technical choice | **held** |
 | [Figures in Mermaid](rendering.md#FiguresInMermaid) | Technical choice | **held** |
@@ -619,7 +619,7 @@
 | [The next generation](sdlc.md#NextGeneration) | Shipment | **unknown** |
 | [The graph page is opened as a person would](sdlc.md#OpeningTheGraphPage) | Scenario | **held** |
 | [Open the graph page](sdlc.md#OpenTheGraphPage) | Entry point | **held** |
-| [The page's program](sdlc.md#PageProgram) | Artefact | **unknown** |
+| [The page's program](sdlc.md#PageProgram) | Artefact | **held** |
 | [The SDLC in memory](sdlc.md#SdlcInMemory) | Technical choice | **held** |
 | [The SDLC on the machine](sdlc.md#SdlcOnTheMachine) | Technical choice | **unknown** |
 | [What the programs of Trame's SDLC say](sdlc.md#SdlcWords) | Message catalog |  |

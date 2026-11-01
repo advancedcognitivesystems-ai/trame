@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-30",
+  "at": "2026-11-01",
   "nodes": [
     {
       "id": "appearance.ExplorerDrawing",
@@ -2443,7 +2443,10 @@
           "currentProcess": "architecture.Process",
           "events": "std/system.NodeEvents",
           "line": "conventions.TrameCommands",
-          "texts": "std/algebra.Texts"
+          "texts": "std/algebra.Texts",
+          "references": "commands.ReferencesModule",
+          "names": "conventions.LanguageNames",
+          "specifiers": "std/system.NodeModuleSpecifiers"
         },
         "body": {
           "file": "./code/commands/init.ts",
@@ -2573,6 +2576,33 @@
         },
         "body": {
           "file": "./code/commands/evidence.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
+      "id": "commands.ReferencesModule",
+      "kind": "function",
+      "title": "A module of references",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "syntax": "typescript.TypeScriptSyntax",
+          "title": "typescript.ModuleTitle",
+          "doc": "typescript.DocBlock",
+          "exported": "typescript.ExportDeclaration",
+          "constant": "typescript.ConstDeclaration",
+          "call": "typescript.Call",
+          "object": "typescript.ObjectLiteral",
+          "property": "typescript.Property",
+          "text": "typescript.StringLiteral",
+          "list": "typescript.InlineArray",
+          "imports": "typescript.NamedImport",
+          "texts": "std/algebra.Texts"
+        },
+        "body": {
+          "file": "./code/commands/references.ts",
           "language": "typescript"
         }
       }
@@ -3065,6 +3095,11 @@
           "goal": "Purpose",
           "goalKind": "kinds/goal",
           "owner": "owner",
+          "references": "packages",
+          "packageKind": "kinds/package",
+          "packageFacade": "pkg",
+          "language": "Language",
+          "library": "Library",
           "guides": [
             "AGENTS.md",
             ".claude/skills/trame/SKILL.md"
@@ -11811,6 +11846,20 @@
       }
     },
     {
+      "id": "releases.G93",
+      "kind": "release",
+      "title": "Generation 93",
+      "fields": {
+        "owner": "trame",
+        "version": "g93",
+        "date": "2026-11-01",
+        "what": "E1g: the names of a project's libraries are led to their real paths (through a link, a module would be read twice); a version published to the registry holds its manifest (ES modules); the launcher sees a published engine's missing packages as ES modules resolve them",
+        "fingerprint": "524fe0849917ff93",
+        "language": "shared",
+        "archive": "10418831c37c9ead"
+      }
+    },
+    {
       "id": "rendering.Common",
       "kind": "function",
       "title": "Common rendering",
@@ -12752,7 +12801,7 @@
       "id": "sdlc.PageProgram",
       "kind": "artifact",
       "title": "The page's program",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "out/browser/page-app.ts"
@@ -16940,6 +16989,11 @@
     },
     {
       "from": "command-scenarios.ProjectStarted",
+      "to": "commands.ReferencesModule",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.ProjectStarted",
       "to": "architecture.Test",
       "kind": "env"
     },
@@ -18224,6 +18278,16 @@
       "kind": "deps"
     },
     {
+      "from": "commands.Init",
+      "to": "commands.ReferencesModule",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Init",
+      "to": "conventions.LanguageNames",
+      "kind": "deps"
+    },
+    {
       "from": "commands.Plan",
       "to": "product.ExecutableSpecification",
       "kind": "serves"
@@ -18466,6 +18530,66 @@
     {
       "from": "commands.RecordEvidence",
       "to": "messages.CommandMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.ReferencesModule",
+      "to": "product.SingleSource",
+      "kind": "serves"
+    },
+    {
+      "from": "commands.ReferencesModule",
+      "to": "typescript.TypeScriptSyntax",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.ReferencesModule",
+      "to": "typescript.ModuleTitle",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.ReferencesModule",
+      "to": "typescript.DocBlock",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.ReferencesModule",
+      "to": "typescript.ExportDeclaration",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.ReferencesModule",
+      "to": "typescript.ConstDeclaration",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.ReferencesModule",
+      "to": "typescript.Call",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.ReferencesModule",
+      "to": "typescript.ObjectLiteral",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.ReferencesModule",
+      "to": "typescript.Property",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.ReferencesModule",
+      "to": "typescript.StringLiteral",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.ReferencesModule",
+      "to": "typescript.InlineArray",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.ReferencesModule",
+      "to": "typescript.NamedImport",
       "kind": "deps"
     },
     {
@@ -24571,6 +24695,16 @@
     {
       "from": "releases.G92",
       "to": "releases.G91",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G93",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G93",
+      "to": "releases.G92",
       "kind": "assembledBy"
     },
     {

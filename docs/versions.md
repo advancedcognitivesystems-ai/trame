@@ -1,8 +1,8 @@
 # Versions
 
-*The releases of the components on 30 October 2026, newest first. A project runs the release its configuration pins.*
+*The releases of the components on 1 November 2026, newest first. A project runs the release its configuration pins.*
 
-> **92 releases of 1 component; 87 releases on a language of their own**
+> **93 releases of 1 component; 87 releases on a language of their own**
 
 ## Trame on the command line
 
@@ -10,6 +10,7 @@ Each release, newest first: what changed, the release that assembled it, and whe
 
 | Release | Released on | What changes | Assembled by | Language |
 |---|---|---|---|---|
+| [Generation 93](releases.md#G93) | 1 November 2026 | E1g: the names of a project's libraries are led to their real paths (through a link, a module would be read twice); a version published to the registry holds its manifest (ES modules); the launcher sees a published engine's missing packages as ES modules resolve them | [Generation 92](releases.md#G92) | shared |
 | [Generation 92](releases.md#G92) | 1 November 2026 | E1f: a version is published to the registry of this machine (a library's release; the promotion of a generation, its language copied for real); the engine leads the project's library names too, as peers; the launcher installs the packages of a published engine and runs it with its own tsx | [Generation 91](releases.md#G91) | shared |
 | [Generation 91](releases.md#G91) | 1 November 2026 | E1e: the engine leads the language's names to its own language (a peer dependency); a package node says how it joins the graph, where it comes from (by its path, from the registry of this machine) and its path; trame manifest places the packages of Trame the graph references and derives trame.json from them; npm installs the packages of every library imported | [Generation 90](releases.md#G90) | shared |
 | [Generation 90](releases.md#G90) | 1 November 2026 | E1d: a project that installed no types is checked with those of the engine that reads it (a project outside the repository builds); std's table of the platform knows node:module's registerHooks, for the engine to lead the language's names to its own language | [Generation 89](releases.md#G89) | shared |

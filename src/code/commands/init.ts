@@ -4,7 +4,10 @@
 // a CLAUDE.md that points to it, the skill), copied from the language's home. A fresh engine then writes the manifest:
 // where the language's names and the libraries' lead. Refused where a project already is, and without a title or an owner.
 
-import { KindName, type ProvidedBy } from "../../../trame/kernel"
+import { KindName, PackageJoins, type ProvidedBy } from "../../../trame/kernel"
+import type { Api as ReferencesApi } from "./references"
+import type { LanguageNames } from "../../conventions"
+import type { NodeModuleSpecifiers } from "#std/system"
 import type { Handler } from "../../../kinds/entry-point"
 import type { FileReading, FileWriting, Layout, Paths, Prelude, Process, Terminal } from "../../architecture"
 import type { CommandMessages } from "../../messages"
@@ -54,17 +57,22 @@ export interface Deps {
   events: ProvidedBy<typeof NodeEvents>
   line: ProvidedBy<typeof TrameCommands>
   texts: ProvidedBy<typeof Texts>
+  references: ReferencesApi
+  names: ProvidedBy<typeof LanguageNames>
+  specifiers: ProvidedBy<typeof NodeModuleSpecifiers>
 }
 
 const body = (deps: Deps): Handler => async (req) => {
   const { options, refuse } = deps.preparation
   const { layout, start, paths, messages, texts } = deps
-  const { join, relative, dirname } = paths
+  const { join, relative, dirname, basename } = paths
+  const { specifiers } = deps
   const { existsSync, readFileSync } = deps.reading
   const { writeFileSync, mkdirSync } = deps.writing
   const o = options(req.params.command, (req.body as { args: string[] }).args)
   const [title] = o.args
-  if (!title || !o.by) return refuse(o, [messages.initNeedsTitle()])
+  const owner = o.by
+  if (!title || !owner) return refuse(o, [messages.initNeedsTitle()])
   if (existsSync(join(o.root, layout.configuration))) return refuse(o, [messages.initExists(layout.configuration)])
   const write = (file: string, content: string) => {
     mkdirSync(dirname(join(o.root, file)), { recursive: true })
@@ -87,10 +95,27 @@ const body = (deps: Deps): Handler => async (req) => {
     deps.imports([KindName.goal], deps.project.languageModule(o.root, sources, start.goalKind)),
     texts.empty,
     deps.doc([title, messages.initGoal(title)]),
-    deps.exported(deps.constant(start.goal, deps.call(KindName.goal, [deps.object([deps.property(start.owner, deps.text(o.by))])]))),
+    deps.exported(deps.constant(start.goal, deps.call(KindName.goal, [deps.object([deps.property(start.owner, deps.text(owner))])]))),
     texts.empty,
   ].join(deps.syntax.endOfLine)
   write(join(layout.sources, start.module + extension), module)
+  // The references, in the graph: the language at the generation that runs, each library as the home uses it. The
+  // configuration written above is what the manifest derives from them, so that the engine starts.
+  const generation = basename(deps.prelude.engine)
+  const references = deps.references.module(messages.initReferencesTitle(title), {
+    from: deps.project.languageModule(o.root, sources, start.packageKind), facade: start.packageFacade,
+  }, [
+    {
+      node: start.language, doc: [messages.initLanguage(), messages.initLanguageDoc()], owner, name: deps.names.name,
+      version: generation.startsWith(layout.generation) ? generation.slice(layout.generation.length) : generation,
+      joins: PackageJoins.language, at: relative(o.root, deps.prelude.engine),
+    },
+    ...deps.project.projectDirs(home).libraries.map((lib) => ({
+      node: lib.name + start.library, doc: [messages.initLibrary(lib.name), messages.initLibraryDoc()], owner, name: lib.name,
+      version: lib.version ?? texts.empty, joins: PackageJoins.library, at: relative(o.root, lib.root),
+    })),
+  ], { goal: start.goal, from: specifiers.current + start.module })
+  write(join(layout.sources, start.references + extension), references)
   // The guide for agents, from the language's home.
   for (const guide of start.guides) if (existsSync(join(home, guide))) write(guide, String(readFileSync(join(home, guide), deps.encodings.utf8)))
   write(start.pointer, start.pointerText + deps.file.endOfLine)

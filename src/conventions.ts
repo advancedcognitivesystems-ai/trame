@@ -42,10 +42,12 @@ export const PreludeApi = decision<{ directory: string; endings: readonly string
  */
 export const ProjectStart = decision<{
   module: string; goal: string; goalKind: string; owner: string; guides: readonly string[]; pointer: string; pointerText: string
+  references: string; packageKind: string; packageFacade: string; language: string; library: string
 }>({
   owner: "trame",
   value: {
     module: "product", goal: "Purpose", goalKind: "kinds/goal", owner: "owner",
+    references: "packages", packageKind: "kinds/package", packageFacade: "pkg", language: "Language", library: "Library",
     guides: ["AGENTS.md", ".claude/skills/trame/SKILL.md"], pointer: "CLAUDE.md", pointerText: "@AGENTS.md",
   },
   rejected: {

@@ -11,7 +11,7 @@ import {
 import { PayloadBuilder, Differences, Assembly, Project, Compiler, DateBundle, DevServer, DevService, ShipmentPipeline, Views, EngineFingerprint, ProjectRuns } from "./engine"
 import {
   ShowView, ViewByName, RenderView, EmitPayload, Assemble, Assembler, TestKinds, TakeSnapshot, Publish, Audit, Release, WriteManifest, Export, Run, Dev,
-  Deliver, Ship, RecordEvidence, Doctor, DoctorProbe, Advance, Build, Plan, Amend, Amending, BuildComparison, Init,
+  Deliver, Ship, RecordEvidence, Doctor, DoctorProbe, Advance, Build, Plan, Amend, Amending, BuildComparison, Init, ReferencesModule,
 } from "./commands"
 import { SyntaxReader, BodyChecks } from "./syntax"
 import { TypeScript, TypeScriptWriter, StringLiteral } from "./typescript"
@@ -467,7 +467,7 @@ export const ProjectSamples = decision<{
  */
 export const ProjectStarted = scenario({
   owner: "trame",
-  verifies: [Init],
+  verifies: [Init, ReferencesModule],
   env: Test,
   deps: {
     init: Init, processLog: ProcessLog, writeLog: WriteLog, currentProcess: Process, paths: Paths, layout: Layout, projects: ScenarioProjects,
@@ -486,6 +486,8 @@ export const ProjectStarted = scenario({
       const [extension] = language.extensions
       const module = written.get(paths.join(home, layout.sources, start.module + extension)) ?? texts.empty
       check(messages.startedModule(), module.includes(specifiers.imports + names.name + specifiers.separator) && module.includes(samples.started.owner))
+      const references = written.get(paths.join(home, layout.sources, start.references + extension)) ?? texts.empty
+      check(messages.startedReferences(), references.includes(start.language) && references.includes(names.name))
       const [guide] = start.guides
       check(messages.startedGuide(), written.has(paths.join(home, guide)) && written.has(paths.join(home, start.pointer)))
       check(messages.startedManifest(), processLog.started().some((s) => s.args.includes(line.manifest)))

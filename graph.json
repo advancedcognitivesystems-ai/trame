@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-30",
+  "generated": "2026-11-01",
   "nodes": [
     {
       "id": "appearance.ExplorerDrawing",
@@ -1384,7 +1384,7 @@
       "id": "command-scenarios.AdvanceInMemory",
       "kind": "scenario",
       "title": "An advance, in memory",
-      "source": "src/command-scenarios.ts:858",
+      "source": "src/command-scenarios.ts:860",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1421,7 +1421,7 @@
           "status": "passed"
         },
         {
-          "name": "The candidate is accepted (  ✓ trame runs g93 |   ✓ reservations runs g93 | Advance succeeded.)",
+          "name": "The candidate is accepted (  ✓ trame runs g94 |   ✓ reservations runs g94 | Advance succeeded.)",
           "status": "passed"
         },
         {
@@ -1439,7 +1439,7 @@
       "id": "command-scenarios.AdvanceSamples",
       "kind": "decision",
       "title": "What the engines an advance starts answer in a scenario",
-      "source": "src/command-scenarios.ts:844",
+      "source": "src/command-scenarios.ts:846",
       "fields": {
         "owner": "trame",
         "value": {
@@ -1622,7 +1622,7 @@
       "id": "command-scenarios.CommandLineChooses",
       "kind": "scenario",
       "title": "The command line",
-      "source": "src/command-scenarios.ts:693",
+      "source": "src/command-scenarios.ts:695",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1696,7 +1696,7 @@
       "id": "command-scenarios.ComponentRun",
       "kind": "scenario",
       "title": "A component run",
-      "source": "src/command-scenarios.ts:618",
+      "source": "src/command-scenarios.ts:620",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1761,7 +1761,7 @@
       "id": "command-scenarios.DevFollowsTheGraph",
       "kind": "scenario",
       "title": "trame dev",
-      "source": "src/command-scenarios.ts:650",
+      "source": "src/command-scenarios.ts:652",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1816,7 +1816,7 @@
       "id": "command-scenarios.DevSamples",
       "kind": "decision",
       "title": "What trame dev is shown in a scenario",
-      "source": "src/command-scenarios.ts:639",
+      "source": "src/command-scenarios.ts:641",
       "fields": {
         "owner": "trame",
         "value": {
@@ -1832,7 +1832,7 @@
       "id": "command-scenarios.DoctorAsks",
       "kind": "scenario",
       "title": "The doctor",
-      "source": "src/command-scenarios.ts:817",
+      "source": "src/command-scenarios.ts:819",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1896,7 +1896,7 @@
       "id": "command-scenarios.LibraryReleased",
       "kind": "scenario",
       "title": "A library released",
-      "source": "src/command-scenarios.ts:523",
+      "source": "src/command-scenarios.ts:525",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1937,7 +1937,7 @@
       "id": "command-scenarios.ManifestWritten",
       "kind": "scenario",
       "title": "The manifest written",
-      "source": "src/command-scenarios.ts:557",
+      "source": "src/command-scenarios.ts:559",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1981,7 +1981,7 @@
       "id": "command-scenarios.PackagesAudited",
       "kind": "scenario",
       "title": "The packages audited",
-      "source": "src/command-scenarios.ts:500",
+      "source": "src/command-scenarios.ts:502",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2011,7 +2011,7 @@
       "id": "command-scenarios.PageDelivered",
       "kind": "scenario",
       "title": "The page delivered",
-      "source": "src/command-scenarios.ts:732",
+      "source": "src/command-scenarios.ts:734",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2041,7 +2041,7 @@
       "id": "command-scenarios.PageExported",
       "kind": "scenario",
       "title": "The page exported",
-      "source": "src/command-scenarios.ts:588",
+      "source": "src/command-scenarios.ts:590",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2252,6 +2252,10 @@
           "status": "passed"
         },
         {
+          "name": "Its references are package nodes of its graph: the language, at the generation that started it, and its libraries",
+          "status": "passed"
+        },
+        {
           "name": "The guide for agents comes with it, and the file that points to it",
           "status": "passed"
         },
@@ -2266,7 +2270,7 @@
       "id": "command-scenarios.RunSamples",
       "kind": "decision",
       "title": "What a program run in a scenario answers",
-      "source": "src/command-scenarios.ts:612",
+      "source": "src/command-scenarios.ts:614",
       "fields": {
         "owner": "trame",
         "value": {
@@ -2295,7 +2299,7 @@
       "id": "command-scenarios.ShipmentsRun",
       "kind": "scenario",
       "title": "Shipments run, evidence given",
-      "source": "src/command-scenarios.ts:758",
+      "source": "src/command-scenarios.ts:760",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2633,7 +2637,7 @@
       "id": "commands.Assemble",
       "kind": "entry",
       "title": "Assemble a component",
-      "source": "src/commands.ts:399",
+      "source": "src/commands.ts:413",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2811,7 +2815,7 @@
       "id": "commands.Dev",
       "kind": "entry",
       "title": "Start trame dev",
-      "source": "src/commands.ts:389",
+      "source": "src/commands.ts:403",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2953,7 +2957,7 @@
       "id": "commands.Init",
       "kind": "entry",
       "title": "Start a project",
-      "source": "src/commands.ts:373",
+      "source": "src/commands.ts:387",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2991,7 +2995,10 @@
           "currentProcess": "architecture.Process",
           "events": "std/system.NodeEvents",
           "line": "conventions.TrameCommands",
-          "texts": "std/algebra.Texts"
+          "texts": "std/algebra.Texts",
+          "references": "commands.ReferencesModule",
+          "names": "conventions.LanguageNames",
+          "specifiers": "std/system.NodeModuleSpecifiers"
         },
         "body": {
           "file": "./code/commands/init.ts",
@@ -3135,6 +3142,35 @@
       "diagnostics": []
     },
     {
+      "id": "commands.ReferencesModule",
+      "kind": "function",
+      "title": "A module of references",
+      "source": "src/commands.ts:373",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "syntax": "typescript.TypeScriptSyntax",
+          "title": "typescript.ModuleTitle",
+          "doc": "typescript.DocBlock",
+          "exported": "typescript.ExportDeclaration",
+          "constant": "typescript.ConstDeclaration",
+          "call": "typescript.Call",
+          "object": "typescript.ObjectLiteral",
+          "property": "typescript.Property",
+          "text": "typescript.StringLiteral",
+          "list": "typescript.InlineArray",
+          "imports": "typescript.NamedImport",
+          "texts": "std/algebra.Texts"
+        },
+        "body": {
+          "file": "./code/commands/references.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
       "id": "commands.Release",
       "kind": "entry",
       "title": "Release a version",
@@ -3214,7 +3250,7 @@
       "id": "commands.Run",
       "kind": "entry",
       "title": "Run a component",
-      "source": "src/commands.ts:410",
+      "source": "src/commands.ts:424",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3283,7 +3319,7 @@
       "id": "commands.ShowView",
       "kind": "entry",
       "title": "Show a view",
-      "source": "src/commands.ts:420",
+      "source": "src/commands.ts:434",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3368,7 +3404,7 @@
       "id": "commands.ViewByName",
       "kind": "entry",
       "title": "View by its name",
-      "source": "src/commands.ts:431",
+      "source": "src/commands.ts:445",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3444,7 +3480,7 @@
       "id": "conventions.AmendmentNaming",
       "kind": "decision",
       "title": "How an amendment is named",
-      "source": "src/conventions.ts:97",
+      "source": "src/conventions.ts:99",
       "fields": {
         "owner": "trame",
         "value": {
@@ -3458,7 +3494,7 @@
       "id": "conventions.DefaultRank",
       "kind": "decision",
       "title": "Default rank",
-      "source": "src/conventions.ts:192",
+      "source": "src/conventions.ts:194",
       "fields": {
         "owner": "trame",
         "value": 100
@@ -3469,7 +3505,7 @@
       "id": "conventions.DocComment",
       "kind": "decision",
       "title": "Documentation comment",
-      "source": "src/conventions.ts:214",
+      "source": "src/conventions.ts:216",
       "fields": {
         "owner": "trame",
         "value": {
@@ -3483,7 +3519,7 @@
       "id": "conventions.DocumentIds",
       "kind": "standard",
       "title": "Names of the documents",
-      "source": "src/conventions.ts:228",
+      "source": "src/conventions.ts:230",
       "fields": {
         "owner": "trame",
         "source": "Trame, the documents of its views (the engine names them, the page reads them)",
@@ -3504,7 +3540,7 @@
       "id": "conventions.FrozenApi",
       "kind": "standard",
       "title": "The frozen API",
-      "source": "src/conventions.ts:74",
+      "source": "src/conventions.ts:76",
       "fields": {
         "owner": "trame",
         "source": "Trame, the prelude (trame/internal.ts: frozen)",
@@ -3561,7 +3597,7 @@
       "id": "conventions.JsonFormatting",
       "kind": "decision",
       "title": "JSON formatting",
-      "source": "src/conventions.ts:220",
+      "source": "src/conventions.ts:222",
       "fields": {
         "owner": "trame",
         "value": {
@@ -3574,7 +3610,7 @@
       "id": "conventions.LanguageNames",
       "kind": "decision",
       "title": "The language's names",
-      "source": "src/conventions.ts:63",
+      "source": "src/conventions.ts:65",
       "fields": {
         "owner": "trame",
         "value": {
@@ -3659,6 +3695,11 @@
           "goal": "Purpose",
           "goalKind": "kinds/goal",
           "owner": "owner",
+          "references": "packages",
+          "packageKind": "kinds/package",
+          "packageFacade": "pkg",
+          "language": "Language",
+          "library": "Library",
           "guides": [
             "AGENTS.md",
             ".claude/skills/trame/SKILL.md"
@@ -3677,7 +3718,7 @@
       "id": "conventions.ReferenceSyntax",
       "kind": "standard",
       "title": "Trame references",
-      "source": "src/conventions.ts:199",
+      "source": "src/conventions.ts:201",
       "fields": {
         "owner": "trame",
         "source": "Trame, the prelude (trame/kernel.ts: refOf, getPath)",
@@ -3706,7 +3747,7 @@
       "id": "conventions.StepNames",
       "kind": "decision",
       "title": "Names of steps",
-      "source": "src/conventions.ts:186",
+      "source": "src/conventions.ts:188",
       "fields": {
         "owner": "trame",
         "value": {
@@ -3719,7 +3760,7 @@
       "id": "conventions.TrameCommands",
       "kind": "standard",
       "title": "Trame's commands",
-      "source": "src/conventions.ts:112",
+      "source": "src/conventions.ts:114",
       "fields": {
         "owner": "trame",
         "source": "Trame, its command line (the entry points of commands, in the module commands)",
@@ -3932,7 +3973,7 @@
       "id": "conventions.TrameEnvironment",
       "kind": "standard",
       "title": "Trame's environment",
-      "source": "src/conventions.ts:173",
+      "source": "src/conventions.ts:175",
       "fields": {
         "owner": "trame",
         "source": "Trame, the variables of the environment it reads",
@@ -3949,7 +3990,7 @@
       "id": "conventions.ViewGroupOrder",
       "kind": "decision",
       "title": "Order of the view groups",
-      "source": "src/conventions.ts:242",
+      "source": "src/conventions.ts:244",
       "fields": {
         "owner": "trame",
         "value": [
@@ -9813,7 +9854,7 @@
       "id": "messages.AdvanceMessages",
       "kind": "catalog",
       "title": "Messages of an advance",
-      "source": "src/messages.ts:832",
+      "source": "src/messages.ts:838",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -9856,7 +9897,7 @@
       "id": "messages.CountsInTheLanguage",
       "kind": "adr",
       "title": "A catalog counts in its language",
-      "source": "src/messages.ts:921",
+      "source": "src/messages.ts:927",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -9914,7 +9955,7 @@
       "id": "messages.EngineViewWords",
       "kind": "catalog",
       "title": "Words of Trame's views",
-      "source": "src/messages.ts:652",
+      "source": "src/messages.ts:657",
       "fields": {
         "owner": "trame",
         "messages": {
@@ -9928,7 +9969,7 @@
       "id": "messages.KindWords",
       "kind": "catalog",
       "title": "Words of the kinds",
-      "source": "src/messages.ts:632",
+      "source": "src/messages.ts:637",
       "fields": {
         "owner": "trame",
         "messages": {
@@ -10007,7 +10048,7 @@
       "id": "messages.PageWords",
       "kind": "catalog",
       "title": "Words of the page",
-      "source": "src/messages.ts:663",
+      "source": "src/messages.ts:668",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -10024,7 +10065,7 @@
       "id": "messages.PlatformMessages",
       "kind": "catalog",
       "title": "Messages of the platform",
-      "source": "src/messages.ts:685",
+      "source": "src/messages.ts:690",
       "fields": {
         "owner": "trame",
         "messages": "(function)"
@@ -10035,7 +10076,7 @@
       "id": "messages.RenderingMessages",
       "kind": "catalog",
       "title": "Messages of the renderers",
-      "source": "src/messages.ts:675",
+      "source": "src/messages.ts:680",
       "fields": {
         "owner": "trame",
         "messages": {
@@ -10049,7 +10090,7 @@
       "id": "messages.ScenarioMessages",
       "kind": "catalog",
       "title": "Messages of the scenarios",
-      "source": "src/messages.ts:714",
+      "source": "src/messages.ts:719",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -10088,7 +10129,7 @@
       "id": "messages.ViewWords",
       "kind": "catalog",
       "title": "Words of the views",
-      "source": "src/messages.ts:642",
+      "source": "src/messages.ts:647",
       "fields": {
         "owner": "trame",
         "messages": {
@@ -15225,6 +15266,22 @@
       "diagnostics": []
     },
     {
+      "id": "releases.G93",
+      "kind": "release",
+      "title": "Generation 93",
+      "source": "src/releases.ts:1370",
+      "fields": {
+        "owner": "trame",
+        "version": "g93",
+        "date": "2026-11-01",
+        "what": "E1g: the names of a project's libraries are led to their real paths (through a link, a module would be read twice); a version published to the registry holds its manifest (ES modules); the launcher sees a published engine's missing packages as ES modules resolve them",
+        "fingerprint": "524fe0849917ff93",
+        "language": "shared",
+        "archive": "10418831c37c9ead"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "rendering.Common",
       "kind": "function",
       "title": "Common rendering",
@@ -16171,7 +16228,7 @@
         "owner": "trame"
       },
       "result": {
-        "code": "310b2afb"
+        "code": "3a116110"
       },
       "diagnostics": [
         "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
@@ -16187,7 +16244,7 @@
         "owner": "trame"
       },
       "result": {
-        "code": "48d65ea0"
+        "code": "beed323b"
       },
       "diagnostics": [
         "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
@@ -16205,7 +16262,7 @@
       },
       "result": {
         "path": "out/local/trame-cli.ts",
-        "code": "9521813c"
+        "code": "4a22a8c7"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -16261,7 +16318,7 @@
       },
       "result": {
         "path": "trame-page.html",
-        "code": "53b60a9c"
+        "code": "1ba67fa7"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -16722,7 +16779,7 @@
           },
           {
             "node": "command-scenarios.ProjectStarted",
-            "via": "commands.Init",
+            "via": "commands.ReferencesModule",
             "obligation": "sdlc.EngineVerified"
           },
           {
@@ -16831,7 +16888,6 @@
       "diagnostics": [
         "warning: To ship: The candidate engine is unknown",
         "warning: To ship: The graph page is unknown",
-        "warning: To ship: The page's program is unknown",
         "warning: To ship: The page is assembled is unknown",
         "warning: To ship: The candidate plays the laws is unknown",
         "warning: To ship: The candidate runs on the machine is unknown",
@@ -16905,7 +16961,7 @@
       "kind": "artifact",
       "title": "The page's program",
       "source": "src/sdlc.ts:169",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "out/browser/page-app.ts"
@@ -16914,9 +16970,7 @@
         "path": "out/browser/page-app.ts",
         "code": "47c449a6"
       },
-      "diagnostics": [
-        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.SdlcInMemory",
@@ -22687,6 +22741,11 @@
     },
     {
       "from": "command-scenarios.ProjectStarted",
+      "to": "commands.ReferencesModule",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.ProjectStarted",
       "to": "architecture.Test",
       "kind": "env"
     },
@@ -24231,6 +24290,21 @@
       "kind": "deps"
     },
     {
+      "from": "commands.Init",
+      "to": "commands.ReferencesModule",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Init",
+      "to": "conventions.LanguageNames",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Init",
+      "to": "std/system.NodeModuleSpecifiers",
+      "kind": "deps"
+    },
+    {
       "from": "commands.Plan",
       "to": "product.ExecutableSpecification",
       "kind": "serves"
@@ -24538,6 +24612,71 @@
     {
       "from": "commands.RecordEvidence",
       "to": "messages.CommandMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.ReferencesModule",
+      "to": "product.SingleSource",
+      "kind": "serves"
+    },
+    {
+      "from": "commands.ReferencesModule",
+      "to": "typescript.TypeScriptSyntax",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.ReferencesModule",
+      "to": "typescript.ModuleTitle",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.ReferencesModule",
+      "to": "typescript.DocBlock",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.ReferencesModule",
+      "to": "typescript.ExportDeclaration",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.ReferencesModule",
+      "to": "typescript.ConstDeclaration",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.ReferencesModule",
+      "to": "typescript.Call",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.ReferencesModule",
+      "to": "typescript.ObjectLiteral",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.ReferencesModule",
+      "to": "typescript.Property",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.ReferencesModule",
+      "to": "typescript.StringLiteral",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.ReferencesModule",
+      "to": "typescript.InlineArray",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.ReferencesModule",
+      "to": "typescript.NamedImport",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.ReferencesModule",
+      "to": "std/algebra.Texts",
       "kind": "deps"
     },
     {
@@ -32188,6 +32327,16 @@
     {
       "from": "releases.G92",
       "to": "releases.G91",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G93",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G93",
+      "to": "releases.G92",
       "kind": "assembledBy"
     },
     {
