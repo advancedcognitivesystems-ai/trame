@@ -365,6 +365,11 @@ elements), a port answered differently in several environments is answered as in
   Write `body: ({ … }) => (x) => …` with its `deps`; an amendment of it patches `body` with `(previous) => (deps) => …`.
 - A published declaration the language changes the form of (a type renamed, a rule rewritten as a body) is an error
   of `trame.lock`: `trame publish --migrate "why"` publishes it again, and only it.
+- TypeScript keeps the path of a link: reached through `.trame/trame`, the kernel would be a second file whose types never
+  match the first. The engine leads `#trame/*` to the files where they are (g88); a `tsconfig.json` that checks a
+  project by itself needs the same `paths` (Trame's has them).
+- A library frozen at a version brings its packages from its own installation (std's `node_modules`): `trame manifest`
+  installs only those of the project and of the libraries it imports as they are.
 - `Quantity<…>` is a number: a value from an operation (`a * b`) has no quantity, so it never mixes; give it one by
   its constructor when it is one (`chf(x)`).
 

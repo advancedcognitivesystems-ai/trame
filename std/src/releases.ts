@@ -161,3 +161,16 @@ export const R0_11_1 = release({
   language: "shared",
   serves: [CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules],
 })
+
+/**
+ * Version 0.12.0
+ */
+export const R0_12_0 = release({
+  owner: "trame",
+  version: "0.12.0",
+  date: "2026-11-01",
+  what: "The language named by its names (#trame/kernel, #trame/kinds/*), the rules written as bodies (g79), the quantities Time and Ratio (g80), what the platform may do and typed commands (module effects, g83–g84), where a package comes from (PackageSources, g87)",
+  fingerprint: "644a5f0395a97522",
+  language: "shared",
+  serves: [CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules],
+})

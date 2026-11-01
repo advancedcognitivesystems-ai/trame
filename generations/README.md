@@ -28,6 +28,16 @@ own sources, independently of the current language:
 `generations/g0/amorcer.sh` is the bootstrap that produced generation 1, and `generations/g0/outils/` the one-off port
 of the bootstrap into bodies with parameters. Both are history: they refuse to run on the current graph.
 
+## The language as a package (g87)
+
+Since g87 a project names the language like a library: `#trame/kernel` and `#trame/kinds/<kind>`, which its import map
+(written by `trame manifest`) leads to `.trame/trame`, a link to the generation it pins; an advance moves the link with
+the pin. A generation links `gN/views` too, beside `gN/trame` and `gN/kinds`, so that the generation carries its whole
+language. The engine gives TypeScript the language's files where they are (g88): through the link, the compiler would
+read the kernel a second time and its types would not match. Since g89 a relative import that leaves its package
+refuses the build. The language is still shared live between the generations that can follow it; a copy per
+generation, so that a project's tree of dependencies stays exact in time, is the next step.
+
 ## Pins, releases and archived languages
 
 Since g38 the generations are a module of the graph, `src/releases.ts` (kind `release`), which `trame advance` writes at

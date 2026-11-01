@@ -4,7 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| ghalaax | 0 | 0 | 0 | 7 |
+| ghalaax | 0 | 0 | 0 | 8 |
 
 <a id="ghalaax"></a>
 
@@ -19,6 +19,7 @@ Nothing to decide or watch.
 | [Angle](angles.md#Angle) | Quantity |  |
 | [How an angle is written in each of its units.](angles.md#AngleSymbols) | Message catalog |  |
 | [Geometry written once](product.md#GeometryWrittenOnce) | Goal |  |
+| [Version 0.1.0](releases.md#R0_1_0) | Release |  |
 | [The axes](vectors.md#Axes) | Decision |  |
 | [The tolerance](vectors.md#Tolerance) | Decision |  |
 | [Vectors](vectors.md#Vectors) | Algebraic structure | **held** |

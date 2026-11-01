@@ -25,7 +25,7 @@
 </details>
 
 - Owner: ghalaax
-- Written in: [The language the symbols of units are written in: the same in most languages, as the SI writes them.](../../../std/docs/measures.md#SymbolsLanguage)
+- Written in: [The language the symbols of units are written in: the same in most languages, as the SI writes them.](../../../std/releases/0.12.0/docs/measures.md#SymbolsLanguage)
 - Writes the units of: [Angle](#Angle)
 
 ## Quantity

@@ -34,6 +34,19 @@
       }
     },
     {
+      "id": "releases.R0_1_0",
+      "kind": "release",
+      "title": "Version 0.1.0",
+      "fields": {
+        "owner": "ghalaax",
+        "version": "0.1.0",
+        "date": "2026-11-01",
+        "what": "Vectors in three dimensions with their laws, the quantity Angle (radian, degree, turn), the axes and the tolerance",
+        "fingerprint": "669d0698ae31c1c1",
+        "language": "shared"
+      }
+    },
+    {
       "id": "vectors.Axes",
       "kind": "decision",
       "title": "The axes",
@@ -156,6 +169,11 @@
     },
     {
       "from": "angles.Angle",
+      "to": "product.GeometryWrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_1_0",
       "to": "product.GeometryWrittenOnce",
       "kind": "serves"
     },

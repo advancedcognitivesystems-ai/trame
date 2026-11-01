@@ -15,4 +15,4 @@
 The vectors and the angles a product computes with (a body that moves, a figure drawn) are written once, with their laws, rather than by each product as helpers of its own.
 
 - Owner: ghalaax
-- Served by: [Angle](angles.md#Angle), [Vectors](vectors.md#Vectors), [A vector is three numbers](vectors.md#VectorsAsTriples)
+- Served by: [Angle](angles.md#Angle), [Version 0.1.0](releases.md#R0_1_0), [Vectors](vectors.md#Vectors), [A vector is three numbers](vectors.md#VectorsAsTriples)

@@ -1,7 +1,10 @@
 {
   "title": "Geometry",
   "libraries": {
-    "std": "../../std"
+    "std": {
+      "path": "../../std",
+      "version": "0.12.0"
+    }
   },
-  "engine": "../../generations/g88"
+  "engine": "../../generations/g89"
 }

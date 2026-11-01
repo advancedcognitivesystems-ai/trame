@@ -1,0 +1,36 @@
+# Layers
+
+*The graph in force on 1 November 2026, ordered by distance to the goals.*
+
+```mermaid
+flowchart TB
+  subgraph angles["Geometry · Angles"]
+    n0["Angle<br/><small>Quantity</small>"]:::neutral
+    n1["How an angle is written in each of its units.<br/><small>Message catalog</small>"]:::neutral
+  end
+  subgraph product["Geometry · Product"]
+    n2["Geometry written once<br/><small>Goal</small>"]:::neutral
+  end
+  subgraph vectors["Geometry · Vectors"]
+    n3["The axes<br/><small>Decision</small>"]:::neutral
+    n4["The tolerance<br/><small>Decision</small>"]:::neutral
+    n5["Vectors<br/><small>Algebraic structure</small>"]:::held
+    n6["A vector is three numbers<br/><small>Architecture decision</small>"]:::held
+  end
+  n0 -->|Written with| n1
+  n0 -->|Serves| n2
+  n5 -->|Serves| n2
+  n5 -->|Depends on| n3
+  n5 -->|Depends on| n4
+  n5 -->|Depends on| n0
+  n6 -->|Serves| n2
+  n6 -->|Applied by| n5
+  n6 -->|Applied by| n0
+  classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
+  classDef blocked fill:#fbf0d9,stroke:#9a6200,color:#17202a
+  classDef violated fill:#f9e3e1,stroke:#ad2a22,color:#17202a
+  classDef unknown fill:#e9edf0,stroke:#65707c,color:#17202a
+  classDef neutral fill:#ffffff,stroke:#5a6672,color:#17202a
+```
+
+*Each rank is one edge further from a goal than the rank above it. The nodes connected to no goal are at the very bottom.*

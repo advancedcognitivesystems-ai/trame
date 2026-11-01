@@ -55,6 +55,8 @@ The repository's `AGENTS.md` is the full guide; read it first, then keep to this
 - A body gets everything through its parameters; only implementations touch the platform; a technology is named in
   one binding only. Look in `std/` (its README lists its modules) before writing a structure, a standard, a pattern,
   a port of the platform, a rule or an obligation.
+- A new project starts with `trame init "Title" --by <owner>` in an empty directory (its configuration, a first
+  module with its goal, this guide, the manifest); a library of a domain goes under `libs/` (`libs/geometry`).
 - Every package names what it uses: `#trame/kernel`, `#trame/kinds/<kind>` for the language, `#std/<module>` for a
   library; never a relative path out of the package (refused). `trame manifest` writes where each name leads.
 - A choice is a concept: when someone could do it another way, name a port, its strategies (realizations) and the

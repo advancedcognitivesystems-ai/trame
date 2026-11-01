@@ -29,6 +29,20 @@ Goal · `GeometryWrittenOnce`
 
 - Owner: ghalaax
 
+## Geometry · Releases
+
+### Version 0.1.0
+
+Release · `R0_1_0`
+
+- Released by: ghalaax
+- Version: 0.1.0
+- Released on: 2026-11-01
+- What changes: Vectors in three dimensions with their laws, the quantity Angle (radian, degree, turn), the axes and the tolerance
+- Fingerprint: 669d0698ae31c1c1
+- Language: shared
+- Serves: Geometry written once
+
 ## Geometry · Vectors
 
 ### Vectors
