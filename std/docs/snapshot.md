@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 30 October 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 1 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Standard library · Algebra
 
@@ -708,6 +708,18 @@ Release · `R0_12_0`
 - Released on: 2026-11-01
 - What changes: The language named by its names (#trame/kernel, #trame/kinds/*), the rules written as bodies (g79), the quantities Time and Ratio (g80), what the platform may do and typed commands (module effects, g83–g84), where a package comes from (PackageSources, g87)
 - Fingerprint: 644a5f0395a97522
+- Language: shared
+- Serves: A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again
+
+### Version 0.13.0
+
+Release · `R0_13_0`
+
+- Released by: trame
+- Version: 0.13.0
+- Released on: 2026-11-01
+- What changes: Where a package comes from publishes too, and names its origins (PackageOrigins: by its path, from a registry); node:module's registerHooks in the table of the platform
+- Fingerprint: a2c76173f7693d92
 - Language: shared
 - Serves: A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again
 

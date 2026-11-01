@@ -138,6 +138,12 @@ interface PackageInput {
   prepare?: string
   /** What the code it holds may do (since g83): what an implementation that imports it may do. */
   declaredEffects?: readonly string[]
+  /** A package of Trame (since g91): the language the graph is written in, or a library whose nodes join it. */
+  joins?: PackageJoins
+  /** Where it comes from: a word of std's PackageOrigins (by its path, from a registry). */
+  from?: string
+  /** Its path from the project, for a package reached by its path: the directory of the version referenced. */
+  at?: string
 }
 
 /** `pkg({ owner, packageName: "esbuild", version: "0.23.1" })` */

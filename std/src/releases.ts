@@ -174,3 +174,16 @@ export const R0_12_0 = release({
   language: "shared",
   serves: [CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules],
 })
+
+/**
+ * Version 0.13.0
+ */
+export const R0_13_0 = release({
+  owner: "trame",
+  version: "0.13.0",
+  date: "2026-11-01",
+  what: "Where a package comes from publishes too, and names its origins (PackageOrigins: by its path, from a registry); node:module's registerHooks in the table of the platform",
+  fingerprint: "a2c76173f7693d92",
+  language: "shared",
+  serves: [CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules],
+})

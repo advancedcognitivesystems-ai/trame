@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-30",
+  "generated": "2026-11-01",
   "nodes": [
     {
       "id": "algebra.Counts",
@@ -2679,6 +2679,21 @@
       "diagnostics": []
     },
     {
+      "id": "releases.R0_13_0",
+      "kind": "release",
+      "title": "Version 0.13.0",
+      "source": "src/releases.ts:181",
+      "fields": {
+        "owner": "trame",
+        "version": "0.13.0",
+        "date": "2026-11-01",
+        "what": "Where a package comes from publishes too, and names its origins (PackageOrigins: by its path, from a registry); node:module's registerHooks in the table of the platform",
+        "fingerprint": "a2c76173f7693d92",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "releases.R0_2_0",
       "kind": "release",
       "title": "Version 0.2.0",
@@ -4886,6 +4901,31 @@
     },
     {
       "from": "releases.R0_12_0",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_13_0",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_13_0",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_13_0",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_13_0",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_13_0",
       "to": "product.SharedRules",
       "kind": "serves"
     },

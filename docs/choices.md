@@ -1,6 +1,6 @@
 # Technical choices
 
-*What answers each port in each environment on 30 October 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
+*What answers each port in each environment on 1 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
 
 > **24 technical choices for 45 ports, in 3 environments**
 
@@ -46,18 +46,18 @@
 | [Figures of the documents written as files](rendering.md#FileFigures) | [Mermaid diagrams](rendering.md#MermaidDiagrams) | [Mermaid diagrams](rendering.md#MermaidDiagrams) | — |
 | [Figures of the terminal](rendering.md#TerminalFigures) | [Figures as text](rendering.md#TextFigures) | [Figures as text](rendering.md#TextFigures) | — |
 | [Figures of the page](rendering.md#PageFigures) | [Figures in SVG](rendering.md#SvgFigures) | [Figures in SVG](rendering.md#SvgFigures) | — |
-| [Loading of a page](../std/docs/platform.md#PageLoading) | — | — | [The browser loads the page](../std/docs/platform.md#BrowserLoading) |
-| [Commands of a program](../std/docs/tooling.md#ProgramCommands) | [Node's command line](../std/docs/tooling.md#NodeProgramCommands) | — | — |
-| [Headless browser](../std/docs/tooling.md#HeadlessBrowser) | [Chromium, driven by Playwright](../std/docs/tooling.md#PlaywrightBrowser) | [A browser kept in memory](../std/docs/tooling.md#BrowserInMemory) | — |
-| [Browser script](../std/docs/tooling.md#BrowserScripted) | — | [A browser kept in memory](../std/docs/tooling.md#BrowserInMemory) | — |
-| [Where a package comes from](../std/docs/tooling.md#PackageSources) | [Packages by their origin](platform.md#PackagesByOrigin) | [Packages by their origin](platform.md#PackagesByOrigin) | — |
+| [Loading of a page](../std/releases/0.13.0/docs/platform.md#PageLoading) | — | — | [The browser loads the page](../std/releases/0.13.0/docs/platform.md#BrowserLoading) |
+| [Commands of a program](../std/releases/0.13.0/docs/tooling.md#ProgramCommands) | [Node's command line](../std/releases/0.13.0/docs/tooling.md#NodeProgramCommands) | — | — |
+| [Headless browser](../std/releases/0.13.0/docs/tooling.md#HeadlessBrowser) | [Chromium, driven by Playwright](../std/releases/0.13.0/docs/tooling.md#PlaywrightBrowser) | [A browser kept in memory](../std/releases/0.13.0/docs/tooling.md#BrowserInMemory) | — |
+| [Browser script](../std/releases/0.13.0/docs/tooling.md#BrowserScripted) | — | [A browser kept in memory](../std/releases/0.13.0/docs/tooling.md#BrowserInMemory) | — |
+| [Where a package comes from](../std/releases/0.13.0/docs/tooling.md#PackageSources) | [Packages by their origin](platform.md#PackagesByOrigin) | [Packages by their origin](platform.md#PackagesByOrigin) | — |
 
 | Pattern | Status | Followed by |
 |---|---|---|
-| [Strategy](../std/docs/patterns.md#Strategy) | **held** | [Scenarios run in memory](platform.md#InMemoryScenarios), [A run is kept while what it reads is as it was](platform.md#RunsByWhatTheyRead), [Documents in Markdown](rendering.md#DocumentsInMarkdown), [Figures in Mermaid](rendering.md#FiguresInMermaid), [The terminal in plain text](rendering.md#TerminalInText), [Figures in the terminal, as text](rendering.md#TerminalFiguresAsText), [The page in HTML](rendering.md#PageInHtml), [The page's figures in SVG](rendering.md#PageFiguresDrawn), [The SDLC in memory](sdlc.md#SdlcInMemory), [Evidence sealed by attribution](shipping.md#SealedByAttribution), [In memory](../std/docs/scenarios.md#InMemory) |
-| [Adapter](../std/docs/patterns.md#Adapter) | **held** | [The browser runs the page](browser.md#TheBrowserRunsThePage), [NodePlatform](platform.md#NodePlatform), [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine), [Scenarios write in memory, over the disk](platform.md#FilesInMemoryOverTheDisk), [On a machine, runs are kept on disk](platform.md#RunsKeptOnDisk), [In the scenarios, runs are kept in the process](platform.md#RunsKeptInTheProcess), [esbuild bundles the page's program](platform.md#EsbuildBundles), [tree-sitter reads the bodies](platform.md#TreeSitterReads), [tsx runs TypeScript](platform.md#TsxRuns), [The TypeScript compiler reads the declarations](platform.md#CompilerReadsDeclarations), [The engine's own files sit beside its code](platform.md#EngineFilesBesideCode), [Each package comes from where its reference says](platform.md#PackagesByTheirOrigin), [Amendments go in the sources](platform.md#AmendmentsInPlace), [The SDLC on the machine](sdlc.md#SdlcOnTheMachine) |
-| [Bridge](../std/docs/patterns.md#Bridge) | **held** | [Documents in Markdown](rendering.md#DocumentsInMarkdown), [The terminal in plain text](rendering.md#TerminalInText), [The page in HTML](rendering.md#PageInHtml) |
-| [Abstract Factory](../std/docs/patterns.md#AbstractFactory) | **held** | [NodePlatform](platform.md#NodePlatform), [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine), [Scenarios run in memory](platform.md#InMemoryScenarios) |
+| [Strategy](../std/releases/0.13.0/docs/patterns.md#Strategy) | **held** | [Scenarios run in memory](platform.md#InMemoryScenarios), [A run is kept while what it reads is as it was](platform.md#RunsByWhatTheyRead), [Documents in Markdown](rendering.md#DocumentsInMarkdown), [Figures in Mermaid](rendering.md#FiguresInMermaid), [The terminal in plain text](rendering.md#TerminalInText), [Figures in the terminal, as text](rendering.md#TerminalFiguresAsText), [The page in HTML](rendering.md#PageInHtml), [The page's figures in SVG](rendering.md#PageFiguresDrawn), [The SDLC in memory](sdlc.md#SdlcInMemory), [Evidence sealed by attribution](shipping.md#SealedByAttribution), [In memory](../std/releases/0.13.0/docs/scenarios.md#InMemory) |
+| [Adapter](../std/releases/0.13.0/docs/patterns.md#Adapter) | **held** | [The browser runs the page](browser.md#TheBrowserRunsThePage), [NodePlatform](platform.md#NodePlatform), [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine), [Scenarios write in memory, over the disk](platform.md#FilesInMemoryOverTheDisk), [On a machine, runs are kept on disk](platform.md#RunsKeptOnDisk), [In the scenarios, runs are kept in the process](platform.md#RunsKeptInTheProcess), [esbuild bundles the page's program](platform.md#EsbuildBundles), [tree-sitter reads the bodies](platform.md#TreeSitterReads), [tsx runs TypeScript](platform.md#TsxRuns), [The TypeScript compiler reads the declarations](platform.md#CompilerReadsDeclarations), [The engine's own files sit beside its code](platform.md#EngineFilesBesideCode), [Each package comes from where its reference says](platform.md#PackagesByTheirOrigin), [Amendments go in the sources](platform.md#AmendmentsInPlace), [The SDLC on the machine](sdlc.md#SdlcOnTheMachine) |
+| [Bridge](../std/releases/0.13.0/docs/patterns.md#Bridge) | **held** | [Documents in Markdown](rendering.md#DocumentsInMarkdown), [The terminal in plain text](rendering.md#TerminalInText), [The page in HTML](rendering.md#PageInHtml) |
+| [Abstract Factory](../std/releases/0.13.0/docs/patterns.md#AbstractFactory) | **held** | [NodePlatform](platform.md#NodePlatform), [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine), [Scenarios run in memory](platform.md#InMemoryScenarios) |
 
 ## Trame · The page in a browser
 
@@ -65,7 +65,7 @@
 
 ### The browser runs the page
 
-`TheBrowserRunsThePage` · `src/browser.ts:130` · status: **unknown**
+`TheBrowserRunsThePage` · `src/browser.ts:130` · status: **held**
 
 In the browser, the page loads, writes in its window, keeps the person's place, receives the graph and makes it whole again with what every browser has: the DOM, local storage, fetch and server-sent events, DecompressionStream.
 
@@ -78,7 +78,7 @@ In [Browser](architecture.md#Browser):
 | [Feed of the graph](architecture.md#GraphFeed) | [The globals of the page, and trame dev](browser.md#BrowserFeed) | an implementation |
 | [Memory of the page](architecture.md#PageMemory) | [Local storage](browser.md#BrowserMemory) | an implementation |
 | [Window of the page](architecture.md#PageWindow) | [The browser's window](browser.md#BrowserWindow) | an implementation |
-| [Loading of a page](../std/docs/platform.md#PageLoading) | [The browser loads the page](../std/docs/platform.md#BrowserLoading) | an implementation |
+| [Loading of a page](../std/releases/0.13.0/docs/platform.md#PageLoading) | [The browser loads the page](../std/releases/0.13.0/docs/platform.md#BrowserLoading) | an implementation |
 
 Context: The page's script took what it needed from the browser itself, here and there: the graph could not say what the page asks of the browser, nor try it elsewhere.
 
@@ -90,9 +90,9 @@ Consequences: The browser's globals appear only in these implementations; the en
 | Libraries for storage and decompression | every browser the page targets has local storage and gzip |
 
 - Decided by: trame
-- Chooses: [The browser loads the page](../std/docs/platform.md#BrowserLoading), [The browser's window](browser.md#BrowserWindow), [Local storage](browser.md#BrowserMemory), [The globals of the page, and trame dev](browser.md#BrowserFeed), [Amendments sent to trame dev](browser.md#BrowserAmendments), [The browser's gzip](browser.md#BrowserDecompression)
+- Chooses: [The browser loads the page](../std/releases/0.13.0/docs/platform.md#BrowserLoading), [The browser's window](browser.md#BrowserWindow), [Local storage](browser.md#BrowserMemory), [The globals of the page, and trame dev](browser.md#BrowserFeed), [Amendments sent to trame dev](browser.md#BrowserAmendments), [The browser's gzip](browser.md#BrowserDecompression)
 - In: [Browser](architecture.md#Browser)
-- Follows: [Adapter](../std/docs/patterns.md#Adapter)
+- Follows: [Adapter](../std/releases/0.13.0/docs/patterns.md#Adapter)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
 - Applies: [The page is assembled](browser.md#ThePageIsAssembled)
 
@@ -127,7 +127,7 @@ Consequences: Node's built-in modules appear only in these implementations; movi
 - Decided by: trame
 - Chooses: [Node paths](platform.md#NodePaths), [SHA-256 hashes](platform.md#NodeHashing), [gzip, with Node's zlib](platform.md#NodeCompression), [Node timer](platform.md#NodeTimer), [Command line](platform.md#NodeCommandLine), [Results kept in the process](platform.md#ResultsInTheProcess)
 - In: [Local](architecture.md#Local), [Test](architecture.md#Test)
-- Follows: [Adapter](../std/docs/patterns.md#Adapter), [Abstract Factory](../std/docs/patterns.md#AbstractFactory)
+- Follows: [Adapter](../std/releases/0.13.0/docs/patterns.md#Adapter), [Abstract Factory](../std/releases/0.13.0/docs/patterns.md#AbstractFactory)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
 - Applies: [A technology is chosen in one node](principles.md#TechnologyInOneNode)
 
@@ -135,7 +135,7 @@ Consequences: Node's built-in modules appear only in these implementations; movi
 
 ### On a machine, Node.js reads, writes and runs
 
-`NodeMachine` · `src/platform.ts:401` · status: **unknown**
+`NodeMachine` · `src/platform.ts:401` · status: **held**
 
 On the machine where trame is started, Node.js reads and writes the files, copies and compares trees, starts processes and other engines, serves HTTP, shows the terminal and gives the time.
 
@@ -164,7 +164,7 @@ Consequences: Writing goes through FileWriting and FileTrees only, which the rul
 - Decided by: trame
 - Chooses: [System files, for reading](platform.md#DiskReading), [System files, for writing](platform.md#DiskWriting), [Trees on disk](platform.md#DiskTrees), [Node process](platform.md#NodeProcess), [Node programs](platform.md#NodePrograms), [Node terminal](platform.md#NodeTerminal), [System clock](platform.md#SystemClock), [npm's reports](platform.md#NpmReports), [Node HTTP server](platform.md#NodeHttpServer)
 - In: [Local](architecture.md#Local)
-- Follows: [Adapter](../std/docs/patterns.md#Adapter), [Abstract Factory](../std/docs/patterns.md#AbstractFactory)
+- Follows: [Adapter](../std/releases/0.13.0/docs/patterns.md#Adapter), [Abstract Factory](../std/releases/0.13.0/docs/patterns.md#AbstractFactory)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
 - Applies: [A technology is chosen in one node](principles.md#TechnologyInOneNode)
 
@@ -193,7 +193,7 @@ Consequences: Reading and writing are one realization in the scenarios, so that 
 - Decided by: trame
 - Chooses: [Files in memory, over the disk](platform.md#MemoryFiles)
 - In: [Test](architecture.md#Test)
-- Follows: [Adapter](../std/docs/patterns.md#Adapter)
+- Follows: [Adapter](../std/releases/0.13.0/docs/patterns.md#Adapter)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
 
 <a id="InMemoryScenarios"></a>
@@ -227,7 +227,7 @@ Consequences: These realizations touch nothing but the disk they read: the logs 
 - Decided by: trame
 - Chooses: [Terminal in memory](platform.md#MemoryTerminal), [Stopped clock](platform.md#StoppedClock), [No registry in test](platform.md#NoReportsInTest), [Example process](platform.md#ExampleProcess), [A server in memory](platform.md#MemoryHttpServer)
 - In: [Test](architecture.md#Test)
-- Follows: [Strategy](../std/docs/patterns.md#Strategy), [Abstract Factory](../std/docs/patterns.md#AbstractFactory)
+- Follows: [Strategy](../std/releases/0.13.0/docs/patterns.md#Strategy), [Abstract Factory](../std/releases/0.13.0/docs/patterns.md#AbstractFactory)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
 - Applies: [A technology is chosen in one node](principles.md#TechnologyInOneNode)
 
@@ -256,14 +256,14 @@ Consequences: A scenario is played again only when the code it wires or a file i
 - Decided by: trame
 - Chooses: [The runs of a project](engine.md#ProjectRuns)
 - In: [Local](architecture.md#Local), [Test](architecture.md#Test)
-- Follows: [Strategy](../std/docs/patterns.md#Strategy)
+- Follows: [Strategy](../std/releases/0.13.0/docs/patterns.md#Strategy)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
 
 <a id="RunsKeptOnDisk"></a>
 
 ### On a machine, runs are kept on disk
 
-`RunsKeptOnDisk` · `src/platform.ts:468` · status: **unknown**
+`RunsKeptOnDisk` · `src/platform.ts:468` · status: **held**
 
 In [Local](architecture.md#Local):
 
@@ -282,7 +282,7 @@ Consequences: Each project keeps its runs under .trame/runs, by engine; the olde
 - Decided by: trame
 - Chooses: [Runs kept on disk](platform.md#RunsOnDisk)
 - In: [Local](architecture.md#Local)
-- Follows: [Adapter](../std/docs/patterns.md#Adapter)
+- Follows: [Adapter](../std/releases/0.13.0/docs/patterns.md#Adapter)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
 
 <a id="RunsKeptInTheProcess"></a>
@@ -308,7 +308,7 @@ Consequences: What a scenario of a scenario's project played is found again in t
 - Decided by: trame
 - Chooses: [Runs kept in the process](platform.md#RunsInTheProcess)
 - In: [Test](architecture.md#Test)
-- Follows: [Adapter](../std/docs/patterns.md#Adapter)
+- Follows: [Adapter](../std/releases/0.13.0/docs/patterns.md#Adapter)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
 
 <a id="EsbuildBundles"></a>
@@ -333,7 +333,7 @@ Context: The page's program is TypeScript in several modules, the graph's among 
 - Decided by: trame
 - Chooses: [esbuild](platform.md#Esbuild)
 - In: [Local](architecture.md#Local), [Test](architecture.md#Test)
-- Follows: [Adapter](../std/docs/patterns.md#Adapter)
+- Follows: [Adapter](../std/releases/0.13.0/docs/patterns.md#Adapter)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
 - Applies: [A technology is chosen in one node](principles.md#TechnologyInOneNode)
 
@@ -360,7 +360,7 @@ Context: Bodies are written in several languages (TypeScript, Terraform, CSS) an
 - Decided by: trame
 - Chooses: [tree-sitter in WebAssembly](platform.md#WebTreeSitter)
 - In: [Local](architecture.md#Local), [Test](architecture.md#Test)
-- Follows: [Adapter](../std/docs/patterns.md#Adapter)
+- Follows: [Adapter](../std/releases/0.13.0/docs/patterns.md#Adapter)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
 - Applies: [A technology is chosen in one node](principles.md#TechnologyInOneNode)
 
@@ -388,7 +388,7 @@ Consequences: The processes the engine starts import the same runner (the decisi
 - Decided by: trame
 - Chooses: [tsx loader](platform.md#TsxLoader)
 - In: [Local](architecture.md#Local), [Test](architecture.md#Test)
-- Follows: [Adapter](../std/docs/patterns.md#Adapter)
+- Follows: [Adapter](../std/releases/0.13.0/docs/patterns.md#Adapter)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
 - Applies: [A technology is chosen in one node](principles.md#TechnologyInOneNode)
 
@@ -413,7 +413,7 @@ Context: The static analysis needs what only types say: the type argument of a d
 - Decided by: trame
 - Chooses: [TypeScript compiler](platform.md#RealTypeScript)
 - In: [Local](architecture.md#Local), [Test](architecture.md#Test)
-- Follows: [Adapter](../std/docs/patterns.md#Adapter)
+- Follows: [Adapter](../std/releases/0.13.0/docs/patterns.md#Adapter)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
 - Applies: [A technology is chosen in one node](principles.md#TechnologyInOneNode)
 
@@ -441,7 +441,7 @@ Context: A frozen generation runs from its own directory, and reaches the shared
 - Decided by: trame
 - Chooses: [Trame's prelude](platform.md#TramePrelude), [Page resources](platform.md#PageResources)
 - In: [Local](architecture.md#Local), [Test](architecture.md#Test)
-- Follows: [Adapter](../std/docs/patterns.md#Adapter)
+- Follows: [Adapter](../std/releases/0.13.0/docs/patterns.md#Adapter)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
 - Applies: [A technology is chosen in one node](principles.md#TechnologyInOneNode)
 
@@ -457,7 +457,7 @@ In [Local](architecture.md#Local), [Test](architecture.md#Test):
 
 | Port | Answered by | Which is |
 |---|---|---|
-| [Where a package comes from](../std/docs/tooling.md#PackageSources) | [Packages by their origin](platform.md#PackagesByOrigin) | an implementation |
+| [Where a package comes from](../std/releases/0.13.0/docs/tooling.md#PackageSources) | [Packages by their origin](platform.md#PackagesByOrigin) | an implementation |
 
 Context: Each project names its packages by their names (E1); where a package comes from is the configuration the graph holds for each reference: a library developed beside the project is reached by its path, a version published from the registry (decided 1 November).
 
@@ -471,7 +471,7 @@ Consequences: The import map leads each name to where the strategy placed the pa
 - Decided by: trame
 - Chooses: [Packages by their origin](platform.md#PackagesByOrigin)
 - In: [Local](architecture.md#Local), [Test](architecture.md#Test)
-- Follows: [Adapter](../std/docs/patterns.md#Adapter)
+- Follows: [Adapter](../std/releases/0.13.0/docs/patterns.md#Adapter)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
 
 <a id="AmendmentsInPlace"></a>
@@ -499,7 +499,7 @@ Consequences: The amendment is a declaration in the module of the node it amends
 - Decided by: trame
 - Chooses: [Amendments in place](platform.md#InPlaceSources)
 - In: [Local](architecture.md#Local), [Test](architecture.md#Test)
-- Follows: [Adapter](../std/docs/patterns.md#Adapter)
+- Follows: [Adapter](../std/releases/0.13.0/docs/patterns.md#Adapter)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
 
 ## Trame · Rendering
@@ -531,7 +531,7 @@ Consequences: Another syntax for the files is a realization of "Syntax of the do
 - Decided by: trame
 - Chooses: [Markdown writer](rendering.md#MarkdownSyntax)
 - In: [Local](architecture.md#Local), [Test](architecture.md#Test)
-- Follows: [Bridge](../std/docs/patterns.md#Bridge), [Strategy](../std/docs/patterns.md#Strategy)
+- Follows: [Bridge](../std/releases/0.13.0/docs/patterns.md#Bridge), [Strategy](../std/releases/0.13.0/docs/patterns.md#Strategy)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
 - Applies: [A technology is chosen in one node](principles.md#TechnologyInOneNode), [One renderer, its syntax a choice](rendering.md#OneRendererManySyntaxes)
 
@@ -562,7 +562,7 @@ Consequences: The Markdown writer puts the lines of a figure in a code block, in
 - Decided by: trame
 - Chooses: [Mermaid diagrams](rendering.md#MermaidDiagrams)
 - In: [Local](architecture.md#Local), [Test](architecture.md#Test)
-- Follows: [Strategy](../std/docs/patterns.md#Strategy)
+- Follows: [Strategy](../std/releases/0.13.0/docs/patterns.md#Strategy)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
 - Applies: [A technology is chosen in one node](principles.md#TechnologyInOneNode), [One renderer, its syntax a choice](rendering.md#OneRendererManySyntaxes)
 
@@ -592,7 +592,7 @@ Consequences: A view printed in Markdown is the --format md option, which render
 - Decided by: trame
 - Chooses: [Plain text writer](rendering.md#PlainTextSyntax)
 - In: [Local](architecture.md#Local), [Test](architecture.md#Test)
-- Follows: [Bridge](../std/docs/patterns.md#Bridge), [Strategy](../std/docs/patterns.md#Strategy)
+- Follows: [Bridge](../std/releases/0.13.0/docs/patterns.md#Bridge), [Strategy](../std/releases/0.13.0/docs/patterns.md#Strategy)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
 - Applies: [A technology is chosen in one node](principles.md#TechnologyInOneNode), [One renderer, its syntax a choice](rendering.md#OneRendererManySyntaxes)
 
@@ -621,7 +621,7 @@ Consequences: The terminal syntax indents the lines of a figure like any other c
 - Decided by: trame
 - Chooses: [Figures as text](rendering.md#TextFigures)
 - In: [Local](architecture.md#Local), [Test](architecture.md#Test)
-- Follows: [Strategy](../std/docs/patterns.md#Strategy)
+- Follows: [Strategy](../std/releases/0.13.0/docs/patterns.md#Strategy)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
 - Applies: [A technology is chosen in one node](principles.md#TechnologyInOneNode), [One renderer, its syntax a choice](rendering.md#OneRendererManySyntaxes)
 
@@ -651,7 +651,7 @@ Consequences: The payload holds each document in Markdown, in text and in HTML; 
 - Decided by: trame
 - Chooses: [HTML writer](rendering.md#HtmlSyntax)
 - In: [Local](architecture.md#Local), [Test](architecture.md#Test)
-- Follows: [Bridge](../std/docs/patterns.md#Bridge), [Strategy](../std/docs/patterns.md#Strategy)
+- Follows: [Bridge](../std/releases/0.13.0/docs/patterns.md#Bridge), [Strategy](../std/releases/0.13.0/docs/patterns.md#Strategy)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
 - Applies: [A technology is chosen in one node](principles.md#TechnologyInOneNode), [One renderer, its syntax a choice](rendering.md#OneRendererManySyntaxes)
 
@@ -681,7 +681,7 @@ Consequences: Graphs, legends and timelines are written by the engine, with the 
 - Decided by: trame
 - Chooses: [Figures in SVG](rendering.md#SvgFigures)
 - In: [Local](architecture.md#Local), [Test](architecture.md#Test)
-- Follows: [Strategy](../std/docs/patterns.md#Strategy)
+- Follows: [Strategy](../std/releases/0.13.0/docs/patterns.md#Strategy)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
 - Applies: [A technology is chosen in one node](principles.md#TechnologyInOneNode), [One renderer, its syntax a choice](rendering.md#OneRendererManySyntaxes)
 
@@ -691,7 +691,7 @@ Consequences: Graphs, legends and timelines are written by the engine, with the 
 
 ### The SDLC on the machine
 
-`SdlcOnTheMachine` · `src/sdlc.ts:144` · status: **unknown**
+`SdlcOnTheMachine` · `src/sdlc.ts:144` · status: **held**
 
 On the machine, the programs of the SDLC read their command from Node's command line and open pages in Chromium driven by Playwright, as the standard library realizes them.
 
@@ -699,15 +699,15 @@ In [Local](architecture.md#Local):
 
 | Port | Answered by | Which is |
 |---|---|---|
-| [Commands of a program](../std/docs/tooling.md#ProgramCommands) | [Node's command line](../std/docs/tooling.md#NodeProgramCommands) | an implementation |
-| [Headless browser](../std/docs/tooling.md#HeadlessBrowser) | [Chromium, driven by Playwright](../std/docs/tooling.md#PlaywrightBrowser) | an implementation |
+| [Commands of a program](../std/releases/0.13.0/docs/tooling.md#ProgramCommands) | [Node's command line](../std/releases/0.13.0/docs/tooling.md#NodeProgramCommands) | an implementation |
+| [Headless browser](../std/releases/0.13.0/docs/tooling.md#HeadlessBrowser) | [Chromium, driven by Playwright](../std/releases/0.13.0/docs/tooling.md#PlaywrightBrowser) | an implementation |
 
 Context: The graph page must be opened as a person opens it: the file exported, in a real browser.
 
 - Decided by: trame
-- Chooses: [Node's command line](../std/docs/tooling.md#NodeProgramCommands), [Chromium, driven by Playwright](../std/docs/tooling.md#PlaywrightBrowser)
+- Chooses: [Node's command line](../std/releases/0.13.0/docs/tooling.md#NodeProgramCommands), [Chromium, driven by Playwright](../std/releases/0.13.0/docs/tooling.md#PlaywrightBrowser)
 - In: [Local](architecture.md#Local)
-- Follows: [Adapter](../std/docs/patterns.md#Adapter)
+- Follows: [Adapter](../std/releases/0.13.0/docs/patterns.md#Adapter)
 
 <a id="SdlcInMemory"></a>
 
@@ -721,14 +721,14 @@ In [Test](architecture.md#Test):
 
 | Port | Answered by | Which is |
 |---|---|---|
-| [Browser script](../std/docs/tooling.md#BrowserScripted), [Headless browser](../std/docs/tooling.md#HeadlessBrowser) | [A browser kept in memory](../std/docs/tooling.md#BrowserInMemory) | a function |
+| [Browser script](../std/releases/0.13.0/docs/tooling.md#BrowserScripted), [Headless browser](../std/releases/0.13.0/docs/tooling.md#HeadlessBrowser) | [A browser kept in memory](../std/releases/0.13.0/docs/tooling.md#BrowserInMemory) | a function |
 
 Context: A program of the SDLC is code like the engine's: its scenarios play it before it runs on a machine.
 
 - Decided by: trame
-- Chooses: [A browser kept in memory](../std/docs/tooling.md#BrowserInMemory)
+- Chooses: [A browser kept in memory](../std/releases/0.13.0/docs/tooling.md#BrowserInMemory)
 - In: [Test](architecture.md#Test)
-- Follows: [Strategy](../std/docs/patterns.md#Strategy)
+- Follows: [Strategy](../std/releases/0.13.0/docs/patterns.md#Strategy)
 
 ## Trame · Shipping
 
@@ -758,5 +758,5 @@ Consequences: Each record carries its seal; the compiler counts a record only wh
 - Decided by: trame
 - Chooses: [Attribution](shipping.md#Attribution)
 - In: [Local](architecture.md#Local), [Test](architecture.md#Test)
-- Follows: [Strategy](../std/docs/patterns.md#Strategy)
+- Follows: [Strategy](../std/releases/0.13.0/docs/patterns.md#Strategy)
 - Serves: [A specification that runs](product.md#ExecutableSpecification)

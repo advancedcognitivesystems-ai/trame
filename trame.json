@@ -4,7 +4,10 @@
     "engine-views"
   ],
   "libraries": {
-    "std": "std"
+    "std": {
+      "at": "std/releases/0.13.0",
+      "version": "0.13.0"
+    }
   },
   "engine": "generations/g91"
 }

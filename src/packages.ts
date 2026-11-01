@@ -123,3 +123,13 @@ export const VersionOrder = fn({
     return { compare, below: (a: string, b: string) => compare(a, b) < zero, reaches: (a: string, b: string) => compare(a, b) >= zero, breaking }
   },
 })
+
+/**
+ * The standard library
+ * The structures, standards, patterns and ports Trame's graph and its engine build on, at the version Trame pins: std
+ * ships its versions apart, and Trame moves to a new one once it is released (E1). Reached by its path in this
+ * repository, at the version it froze.
+ */
+export const StandardLibrary = pkg({
+  owner: "trame", packageName: "std", version: "0.13.0", joins: "library", from: "path", at: "std/releases/0.13.0",
+})
