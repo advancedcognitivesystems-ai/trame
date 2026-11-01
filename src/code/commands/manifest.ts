@@ -1,17 +1,20 @@
 // trame manifest: writes the packages of the graph, each at the version its node declares, as the dependencies of the
 // project's manifest; npm install then installs them, and the lockfile says what it installed, which each package
 // checks. The graph decides the versions: the manifest is written from it. It also writes the import map: where the
-// name of each library the project imports leads (#std/* to its sources, or to the version it froze); a library
-// outside the package is reached through a link under the project, since an import map leads nowhere outside it.
+// name of each library the project imports leads (#std/* to its sources, or to the version it froze), and since g87
+// where the language's names lead (#trame/kernel, #trame/kinds/*: the generation the project pins); where each package
+// comes from is the port "Where a package comes from" (a link under the project, for a local path).
 
 import { KindName, PackageField, type ProvidedBy } from "../../../trame/kernel"
 import type { Handler } from "../../../kinds/entry-point"
-import type { FileReading, FileTrees, FileWriting, Layout, Paths, Process, Terminal } from "../../architecture"
+import type { FileReading, FileWriting, Layout, Paths, Prelude, Process, Terminal } from "../../architecture"
 import type { CommandMessages } from "../../messages"
 import type { NodeEncodings, NodeEvents, NodeModuleSpecifiers, NpmManifest } from "#std/system"
 import type { Texts } from "#std/algebra"
 import type { TrameCommands } from "../../conventions"
 import type { TextFile } from "#std/text"
+import type { PackageSource } from "#std/tooling"
+import type { LanguageNames } from "../../conventions"
 import type { LanguageDescription } from "../../../kinds/language"
 import type { Api as PreparationApi } from "./preparation"
 import type { Api as ProjectApi } from "../engine/project"
@@ -26,7 +29,11 @@ export interface Deps {
   specifiers: ProvidedBy<typeof NodeModuleSpecifiers>
   reading: FileReading
   writing: FileWriting
-  trees: FileTrees
+  /** Where each package comes from: it places the package, and says where the import map leads. */
+  packages: PackageSource
+  names: ProvidedBy<typeof LanguageNames>
+  /** Where the language the engine speaks is: for a project that pins no generation. */
+  prelude: Prelude
   paths: Paths
   encodings: ProvidedBy<typeof NodeEncodings>
   file: ProvidedBy<typeof TextFile>
@@ -45,7 +52,7 @@ export interface Deps {
 const body = (deps: Deps): Handler => async (req) => {
   const { options, prepare } = deps.preparation
   const { npm, layout, specifiers } = deps
-  const { join, relative, dirname, sep } = deps.paths
+  const { join, sep } = deps.paths
   const { empty } = deps.texts
   const o = options(req.params.command, (req.body as { args: string[] }).args)
   const file = join(o.root, layout.manifest)
@@ -58,21 +65,25 @@ const body = (deps: Deps): Handler => async (req) => {
   const before = JSON.stringify(manifest[npm.imports] ?? {})
   const asSpecifier = (path: string) => path.split(sep).join(specifiers.separator)
   const [extension] = deps.language.extensions
-  const libraries = deps.project.projectDirs(o.root).libraries
+  const dirs = deps.project.projectDirs(o.root)
+  const libraries = dirs.libraries
   const imports = { ...((manifest[npm.imports] ?? {}) as Record<string, string>) }
+  const place = (name: string, at: string, version?: string) =>
+    deps.packages.place({ project: o.root, under: layout.libraryLinks, name, at, version })
   for (const lib of libraries) {
-    let base = relative(o.root, lib.root)
-    if (asSpecifier(base).startsWith(specifiers.parent)) {
-      const link = join(o.root, layout.libraryLinks, lib.name)
-      deps.trees.remove(link)
-      deps.writing.mkdirSync(dirname(link), { recursive: true })
-      deps.trees.link(relative(dirname(link), lib.root), link)
-      base = join(layout.libraryLinks, lib.name)
-    }
+    const base = place(lib.name, lib.root, lib.version)
     const name = specifiers.imports + lib.name + specifiers.separator + specifiers.pattern
     imports[name] = specifiers.current + asSpecifier(join(base, layout.sources)) + specifiers.separator + specifiers.pattern + extension
   }
+  // The language: the generation the project pins, each module by its name; its home reaches it where it is.
+  const { names } = deps
+  const language = place(names.name, deps.project.isHome(o.root) ? o.root : dirs.engine ?? deps.prelude.root)
+  for (const [name, module] of Object.entries(names.modules)) {
+    imports[specifiers.imports + names.name + specifiers.separator + name] = specifiers.current + asSpecifier(join(language, module)) + extension
+  }
   manifest[npm.imports] = Object.fromEntries(Object.entries(imports).sort(([a], [b]) => a.localeCompare(b)))
+  // A Trame project is written in ES modules: without it, Node.js would read the files of a release as CommonJS.
+  manifest[npm.type] ??= npm.module
   write(manifest)
   deps.terminal.write(deps.messages.librariesNamed(libraries.length, layout.manifest))
   // Node.js read the manifest when this process started: if the import map changed, a fresh process reads the graph.

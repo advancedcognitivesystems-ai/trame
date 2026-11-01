@@ -1,11 +1,15 @@
-// The configuration of a project: where its kinds and its views are, and the libraries it imports. By default kinds/
-// and views/ at its root, and no library; a trame.json can name others, shared between several projects. A library is
-// named by its path, or by its path and a version: the version frozen under its releases.
+// The configuration of a project: where its kinds and its views are, and the libraries it imports. The kinds and the
+// views of the language come from the engine that reads the project (since g87): those of the generation it pins; a
+// trame.json names the project's own besides (a library that carries kinds), and its libraries. A library is named by
+// its path, or by its path and a version: the version frozen under its releases. A project names the language as a
+// package (#trame/kinds/decision), unless it is the language's home, which holds its sources.
 
-import type { FileReading, Layout, Paths } from "../../architecture"
-import type { NodeEncodings } from "#std/system"
+import type { FileReading, Layout, Paths, Prelude } from "../../architecture"
+import type { NodeEncodings, NodeModuleSpecifiers } from "#std/system"
 import type { ValueTypes } from "#std/algebra"
 import type { ProvidedBy } from "../../../trame/kernel"
+import type { LanguageNames } from "../../conventions"
+import type { LanguageDescription } from "../../../kinds/language"
 
 /** A library the project imports: its name in the project's graph, its root (absolute), and its version if frozen. */
 export interface Library {
@@ -35,12 +39,37 @@ export interface Deps {
   paths: Paths
   /** The key under which a project names the generation it pins. */
   pin: { key: string }
+  /** Where the language the engine speaks is. */
+  prelude: Prelude
+  names: ProvidedBy<typeof LanguageNames>
+  specifiers: ProvidedBy<typeof NodeModuleSpecifiers>
+  /** The language of the graph: the extension of its modules. */
+  language: LanguageDescription
 }
 
 const body = (deps: Deps) => {
   const { encodings } = deps
   const { existsSync, readFileSync } = deps.reading
-  const { join, resolve } = deps.paths
+  const { join, resolve, relative, sep } = deps.paths
+  const { specifiers, names } = deps
+  const [extension] = deps.language.extensions
+  /** The language's directories first, then the project's own, each once. */
+  const withLanguage = (dir: string, listed: string[] | undefined, root: string) =>
+    [...new Set([join(deps.prelude.root, dir), ...(listed ?? []).map((x) => resolve(root, x))])]
+
+  /** Whether the project holds the language's sources: its home, which reaches them where they are. */
+  const isHome = (root: string) =>
+    Object.values(names.modules).filter((m) => !m.endsWith(specifiers.pattern)).every((m) => existsSync(join(root, m + extension)))
+
+  /**
+   * How a file of the project, in `from`, names a module of the language (`kinds/amendment`): by the language's name
+   * (#trame/kinds/amendment), or by its path from the language's home.
+   */
+  function languageModule(root: string, from: string, module: string): string {
+    if (!isHome(root)) return specifiers.imports + names.name + specifiers.separator + module
+    const path = relative(from, join(root, module)).split(sep).join(specifiers.separator)
+    return path.startsWith(specifiers.parent) ? path : specifiers.current + path
+  }
 
   function projectDirs(root: string): ProjectDirs {
     const l = deps.layout
@@ -52,8 +81,8 @@ const body = (deps: Deps) => {
       : {}
     const pinned = raw[deps.pin.key]
     return {
-      kinds: (raw.kinds ?? [l.kinds]).map((x) => resolve(root, x)),
-      views: (raw.views ?? [l.views]).map((x) => resolve(root, x)),
+      kinds: withLanguage(l.kinds, raw.kinds, root),
+      views: withLanguage(l.views, raw.views, root),
       libraries: Object.entries(raw.libraries ?? {})
         .map(([name, at]): Library => {
           const { path, version }: { path: string; version?: string } = deps.values.isText(at) ? { path: at } : at
@@ -66,7 +95,7 @@ const body = (deps: Deps) => {
     }
   }
 
-  return { projectDirs }
+  return { projectDirs, isHome, languageModule }
 }
 
 export type Api = ReturnType<typeof body>

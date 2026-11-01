@@ -1,1 +1,0 @@
-[{"name":"An existing reservation is returned","status":"passed"},{"name":"It comes with the end of its free cancellation period","status":"passed"},{"name":"An unknown reservation returns 404","status":"passed"}]

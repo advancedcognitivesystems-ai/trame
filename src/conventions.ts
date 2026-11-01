@@ -31,7 +31,18 @@ export const Layout = decision<LayoutType>({
  */
 export const PreludeApi = decision<{ directory: string; endings: readonly string[] }>({
   owner: "trame",
-  value: { directory: "/trame/", endings: ["/trame/kernel", "/trame/kernel.ts", "/trame/kernel.js"] },
+  value: { directory: "/trame/", endings: ["/trame/kernel", "/trame/kernel.ts", "/trame/kernel.js", "#trame/kernel"] },
+})
+
+/**
+ * The language's names
+ * How a project names the language it is written in, as a package (since g87): the prelude's public API and the kinds,
+ * each module by a name its import map leads to the generation it pins (#trame/kernel, #trame/kinds/decision). Only the
+ * language's own repository reaches them where they are: it is their home.
+ */
+export const LanguageNames = decision<{ name: string; modules: Readonly<Record<string, string>> }>({
+  owner: "trame",
+  value: { name: "trame", modules: { kernel: "trame/kernel", "kinds/*": "kinds/*" } },
 })
 
 /**

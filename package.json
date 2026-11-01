@@ -27,6 +27,7 @@
   "imports": {
     "#std/*": "./std/src/*.ts",
     "#trame/internal": "./trame/internal.ts",
-    "#trame/kernel": "./trame/kernel.ts"
+    "#trame/kernel": "./trame/kernel.ts",
+    "#trame/kinds/*": "./kinds/*.ts"
   }
 }

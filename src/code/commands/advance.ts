@@ -13,7 +13,8 @@ import type { AdvanceMessages, CommandMessages } from "../../messages"
 import type { NodeEncodings, NodeModuleSpecifiers } from "#std/system"
 import type { Sha256 } from "#std/algorithms"
 import type { TextFile, UnifiedDiff } from "#std/text"
-import type { ReferenceSyntax, TrameCommands, TrameEnvironment } from "../../conventions"
+import type { LanguageNames, ReferenceSyntax, TrameCommands, TrameEnvironment } from "../../conventions"
+import type { PackageSource } from "#std/tooling"
 import type { Advancement, AdvanceReport, EnginePin, LanguageSharing, Releases } from "../../generations"
 import type { Columns, TerminalText } from "../../text"
 import type { Counts, Sequences, Texts, ValueTypes } from "#std/algebra"
@@ -75,6 +76,9 @@ export interface Deps {
   clock: Clock
   /** The libraries Trame imports: each is built like the example, and a generation keeps a copy of it. */
   project: ProjectApi
+  /** Where the language a project pins comes from: its link follows the pin. */
+  packages: PackageSource
+  names: ProvidedBy<typeof LanguageNames>
 }
 
 const body = (deps: Deps): Handler => async (req) => {
@@ -312,7 +316,7 @@ const body = (deps: Deps): Handler => async (req) => {
     // The libraries' graph and code, at the same place from the generation: its program imports their bodies there.
     const librarySources = libraries.map((lib) => join(lib.path, layout.sources))
     for (const sources of librarySources) trees.copy(join(root, sources), join(dest, sources))
-    for (const shared of [layout.prelude, layout.kinds]) trees.link(relative(dest, join(root, shared)), join(dest, shared))
+    for (const shared of [layout.prelude, layout.kinds, layout.views]) trees.link(relative(dest, join(root, shared)), join(dest, shared))
     // The fingerprint covers the program and the code it imports: two generations with the same program differ by their
     // bodies. The generation records it for the machines: evidence its engine records carries it.
     const hash = (text: string | Buffer) => deps.hashing.createHash(deps.sha256.algorithm).update(text).digest(deps.encodings.hex)
@@ -342,11 +346,11 @@ const body = (deps: Deps): Handler => async (req) => {
     const manifest = JSON.parse(readFileSync(join(root, layout.manifest), deps.encodings.utf8)) as { type?: string; imports?: Record<string, string> }
     for (const r of failing) {
       const gen = join(generations, r.version)
-      for (const d of [layout.prelude, layout.kinds]) {
+      for (const d of [layout.prelude, layout.kinds, layout.views]) {
         trees.remove(join(gen, d))
         trees.copy(join(given!, d), join(gen, d))
       }
-      for (const d of [layout.views, deps.example]) trees.copy(join(given!, d), join(gen, d))
+      trees.copy(join(given!, deps.example), join(gen, deps.example))
       // The libraries archived with the example, if it imports them.
       for (const lib of libraries) if (existsSync(join(given!, lib.path))) trees.copy(join(given!, lib.path), join(gen, lib.path))
       // Its copy of the example runs it.
@@ -385,6 +389,8 @@ const body = (deps: Deps): Handler => async (req) => {
     for (const project of [...live.map((lib) => lib.root), root, example]) {
       const pinnedNow = { ...configuration(project), [deps.pin.key]: relative(project, dest) }
       writeFileSync(join(project, layout.configuration), JSON.stringify(pinnedNow, undefined, deps.json.indentation) + endOfLine)
+      // The language it names leads to the generation it now pins.
+      if (!deps.project.isHome(project)) deps.packages.place({ project, under: layout.libraryLinks, name: deps.names.name, at: dest })
       write(messages.pinned(basename(project), basename(dest)))
     }
   }

@@ -1,8 +1,8 @@
 # Technical choices
 
-*What answers each port in each environment on 31 October 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
+*What answers each port in each environment on 30 October 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
 
-> **23 technical choices for 44 ports, in 3 environments**
+> **24 technical choices for 45 ports, in 3 environments**
 
 | Port | Local | Test | Browser |
 |---|---|---|---|
@@ -50,11 +50,12 @@
 | [Commands of a program](../std/docs/tooling.md#ProgramCommands) | [Node's command line](../std/docs/tooling.md#NodeProgramCommands) | — | — |
 | [Headless browser](../std/docs/tooling.md#HeadlessBrowser) | [Chromium, driven by Playwright](../std/docs/tooling.md#PlaywrightBrowser) | [A browser kept in memory](../std/docs/tooling.md#BrowserInMemory) | — |
 | [Browser script](../std/docs/tooling.md#BrowserScripted) | — | [A browser kept in memory](../std/docs/tooling.md#BrowserInMemory) | — |
+| [Where a package comes from](../std/docs/tooling.md#PackageSources) | [Packages by their local path](platform.md#LocalPaths) | [Packages by their local path](platform.md#LocalPaths) | — |
 
 | Pattern | Status | Followed by |
 |---|---|---|
 | [Strategy](../std/docs/patterns.md#Strategy) | **held** | [Scenarios run in memory](platform.md#InMemoryScenarios), [A run is kept while what it reads is as it was](platform.md#RunsByWhatTheyRead), [Documents in Markdown](rendering.md#DocumentsInMarkdown), [Figures in Mermaid](rendering.md#FiguresInMermaid), [The terminal in plain text](rendering.md#TerminalInText), [Figures in the terminal, as text](rendering.md#TerminalFiguresAsText), [The page in HTML](rendering.md#PageInHtml), [The page's figures in SVG](rendering.md#PageFiguresDrawn), [The SDLC in memory](sdlc.md#SdlcInMemory), [Evidence sealed by attribution](shipping.md#SealedByAttribution), [In memory](../std/docs/scenarios.md#InMemory) |
-| [Adapter](../std/docs/patterns.md#Adapter) | **held** | [The browser runs the page](browser.md#TheBrowserRunsThePage), [NodePlatform](platform.md#NodePlatform), [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine), [Scenarios write in memory, over the disk](platform.md#FilesInMemoryOverTheDisk), [On a machine, runs are kept on disk](platform.md#RunsKeptOnDisk), [In the scenarios, runs are kept in the process](platform.md#RunsKeptInTheProcess), [esbuild bundles the page's program](platform.md#EsbuildBundles), [tree-sitter reads the bodies](platform.md#TreeSitterReads), [tsx runs TypeScript](platform.md#TsxRuns), [The TypeScript compiler reads the declarations](platform.md#CompilerReadsDeclarations), [The engine's own files sit beside its code](platform.md#EngineFilesBesideCode), [Amendments go in the sources](platform.md#AmendmentsInPlace), [The SDLC on the machine](sdlc.md#SdlcOnTheMachine) |
+| [Adapter](../std/docs/patterns.md#Adapter) | **held** | [The browser runs the page](browser.md#TheBrowserRunsThePage), [NodePlatform](platform.md#NodePlatform), [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine), [Scenarios write in memory, over the disk](platform.md#FilesInMemoryOverTheDisk), [On a machine, runs are kept on disk](platform.md#RunsKeptOnDisk), [In the scenarios, runs are kept in the process](platform.md#RunsKeptInTheProcess), [esbuild bundles the page's program](platform.md#EsbuildBundles), [tree-sitter reads the bodies](platform.md#TreeSitterReads), [tsx runs TypeScript](platform.md#TsxRuns), [The TypeScript compiler reads the declarations](platform.md#CompilerReadsDeclarations), [The engine's own files sit beside its code](platform.md#EngineFilesBesideCode), [Packages come from their local path, for now](platform.md#PackagesByLocalPath), [Amendments go in the sources](platform.md#AmendmentsInPlace), [The SDLC on the machine](sdlc.md#SdlcOnTheMachine) |
 | [Bridge](../std/docs/patterns.md#Bridge) | **held** | [Documents in Markdown](rendering.md#DocumentsInMarkdown), [The terminal in plain text](rendering.md#TerminalInText), [The page in HTML](rendering.md#PageInHtml) |
 | [Abstract Factory](../std/docs/patterns.md#AbstractFactory) | **held** | [NodePlatform](platform.md#NodePlatform), [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine), [Scenarios run in memory](platform.md#InMemoryScenarios) |
 
@@ -64,7 +65,7 @@
 
 ### The browser runs the page
 
-`TheBrowserRunsThePage` · `src/browser.ts:130` · status: **held**
+`TheBrowserRunsThePage` · `src/browser.ts:130` · status: **unknown**
 
 In the browser, the page loads, writes in its window, keeps the person's place, receives the graph and makes it whole again with what every browser has: the DOM, local storage, fetch and server-sent events, DecompressionStream.
 
@@ -101,7 +102,7 @@ Consequences: The browser's globals appear only in these implementations; the en
 
 ### NodePlatform
 
-`NodePlatform` · `src/platform.ts:379` · status: **held**
+`NodePlatform` · `src/platform.ts:380` · status: **held**
 
 In [Local](architecture.md#Local), [Test](architecture.md#Test):
 
@@ -134,7 +135,7 @@ Consequences: Node's built-in modules appear only in these implementations; movi
 
 ### On a machine, Node.js reads, writes and runs
 
-`NodeMachine` · `src/platform.ts:398` · status: **held**
+`NodeMachine` · `src/platform.ts:399` · status: **unknown**
 
 On the machine where trame is started, Node.js reads and writes the files, copies and compares trees, starts processes and other engines, serves HTTP, shows the terminal and gives the time.
 
@@ -171,7 +172,7 @@ Consequences: Writing goes through FileWriting and FileTrees only, which the rul
 
 ### Scenarios write in memory, over the disk
 
-`FilesInMemoryOverTheDisk` · `src/platform.ts:414` · status: **held**
+`FilesInMemoryOverTheDisk` · `src/platform.ts:415` · status: **held**
 
 In the scenarios, the files are read from the disk and what the engine writes is kept in memory over them: one adapter that reads Node's file system and never writes it.
 
@@ -199,7 +200,7 @@ Consequences: Reading and writing are one realization in the scenarios, so that 
 
 ### Scenarios run in memory
 
-`InMemoryScenarios` · `src/platform.ts:431` · status: **held**
+`InMemoryScenarios` · `src/platform.ts:432` · status: **held**
 
 In the scenarios, what the engine writes is kept in memory over the disk it reads, what it prints is kept, the clock is stopped on the day of the scenarios, the current directory is the example's (or the project a scenario enters), the programs it starts answer what the scenario says, and its server answers the scenario.
 
@@ -234,7 +235,7 @@ Consequences: These realizations touch nothing but the disk they read: the logs 
 
 ### A run is kept while what it reads is as it was
 
-`RunsByWhatTheyRead` · `src/platform.ts:451` · status: **held**
+`RunsByWhatTheyRead` · `src/platform.ts:452` · status: **held**
 
 The runs of a project (its scenarios played) are told apart by the code they wire and the files the project reads; on a machine they are kept on disk, in the scenarios in the process.
 
@@ -262,7 +263,7 @@ Consequences: A scenario is played again only when the code it wires or a file i
 
 ### On a machine, runs are kept on disk
 
-`RunsKeptOnDisk` · `src/platform.ts:465` · status: **held**
+`RunsKeptOnDisk` · `src/platform.ts:466` · status: **unknown**
 
 In [Local](architecture.md#Local):
 
@@ -288,7 +289,7 @@ Consequences: Each project keeps its runs under .trame/runs, by engine; the olde
 
 ### In the scenarios, runs are kept in the process
 
-`RunsKeptInTheProcess` · `src/platform.ts:479` · status: **held**
+`RunsKeptInTheProcess` · `src/platform.ts:480` · status: **held**
 
 In [Test](architecture.md#Test):
 
@@ -314,7 +315,7 @@ Consequences: What a scenario of a scenario's project played is found again in t
 
 ### esbuild bundles the page's program
 
-`EsbuildBundles` · `src/platform.ts:493` · status: **held**
+`EsbuildBundles` · `src/platform.ts:494` · status: **held**
 
 In [Local](architecture.md#Local), [Test](architecture.md#Test):
 
@@ -340,7 +341,7 @@ Context: The page's program is TypeScript in several modules, the graph's among 
 
 ### tree-sitter reads the bodies
 
-`TreeSitterReads` · `src/platform.ts:509` · status: **held**
+`TreeSitterReads` · `src/platform.ts:510` · status: **held**
 
 In [Local](architecture.md#Local), [Test](architecture.md#Test):
 
@@ -367,7 +368,7 @@ Context: Bodies are written in several languages (TypeScript, Terraform, CSS) an
 
 ### tsx runs TypeScript
 
-`TsxRuns` · `src/platform.ts:526` · status: **held**
+`TsxRuns` · `src/platform.ts:527` · status: **held**
 
 In [Local](architecture.md#Local), [Test](architecture.md#Test):
 
@@ -395,7 +396,7 @@ Consequences: The processes the engine starts import the same runner (the decisi
 
 ### The TypeScript compiler reads the declarations
 
-`CompilerReadsDeclarations` · `src/platform.ts:543` · status: **held**
+`CompilerReadsDeclarations` · `src/platform.ts:544` · status: **held**
 
 In [Local](architecture.md#Local), [Test](architecture.md#Test):
 
@@ -420,7 +421,7 @@ Context: The static analysis needs what only types say: the type argument of a d
 
 ### The engine's own files sit beside its code
 
-`EngineFilesBesideCode` · `src/platform.ts:557` · status: **held**
+`EngineFilesBesideCode` · `src/platform.ts:558` · status: **held**
 
 The prelude and the page's program and style sheets are found from the code of the platform, wherever the engine is.
 
@@ -444,11 +445,40 @@ Context: A frozen generation runs from its own directory, and reaches the shared
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
 - Applies: [A technology is chosen in one node](principles.md#TechnologyInOneNode)
 
+<a id="PackagesByLocalPath"></a>
+
+### Packages come from their local path, for now
+
+`PackagesByLocalPath` · `src/platform.ts:603` · status: **held**
+
+The language and the libraries a project uses are directories of this repository: each is reached by its path, while a registry is the strategy to come, once a package is published.
+
+In [Local](architecture.md#Local), [Test](architecture.md#Test):
+
+| Port | Answered by | Which is |
+|---|---|---|
+| [Where a package comes from](../std/docs/tooling.md#PackageSources) | [Packages by their local path](platform.md#LocalPaths) | an implementation |
+
+Context: The language, std, ci and the projects that use them share one repository (E1): each is a package of its own, used by its name, but all of them are on this machine.
+
+Consequences: The import map leads each name through a link under .trame/ when the package is outside the project; moving a package to a registry is another realization of the same port, the code that uses it untouched.
+
+| Rejected | Why |
+|---|---|
+| A registry from the start | a publication at each change of std or of the language, while they change with every generation |
+| A link under node_modules | the TypeScript compiler refuses a module of TypeScript found there |
+
+- Decided by: trame
+- Chooses: [Packages by their local path](platform.md#LocalPaths)
+- In: [Local](architecture.md#Local), [Test](architecture.md#Test)
+- Follows: [Adapter](../std/docs/patterns.md#Adapter)
+- Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
+
 <a id="AmendmentsInPlace"></a>
 
 ### Amendments go in the sources
 
-`AmendmentsInPlace` · `src/platform.ts:589` · status: **held**
+`AmendmentsInPlace` · `src/platform.ts:621` · status: **held**
 
 Until the repository takes them as pull requests, an amendment is written where the graph is: in its sources.
 
@@ -661,7 +691,7 @@ Consequences: Graphs, legends and timelines are written by the engine, with the 
 
 ### The SDLC on the machine
 
-`SdlcOnTheMachine` · `src/sdlc.ts:144` · status: **held**
+`SdlcOnTheMachine` · `src/sdlc.ts:144` · status: **unknown**
 
 On the machine, the programs of the SDLC read their command from Node's command line and open pages in Chromium driven by Playwright, as the standard library realizes them.
 

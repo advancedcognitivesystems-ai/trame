@@ -1,10 +1,10 @@
 # Owners
 
-*What each person must decide, settle or watch on 31 October 2026, and what they own.*
+*What each person must decide, settle or watch on 30 October 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 26 | 144 |
+| trame | 0 | 0 | 27 | 145 |
 
 <a id="trame"></a>
 
@@ -38,6 +38,7 @@
 | warning | Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it | [A node reaches what it must](rules.md#Reaches) | trame |  |
 | warning | Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it | [Effects a node may not have](rules.md#WithoutEffects) | trame |  |
 | warning | Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it | [Words of a vocabulary](rules.md#WordsOf) | trame |  |
+| warning | No realization, in any environment | [Where a package comes from](tooling.md#PackageSources) | trame |  |
 
 ### Owns
 
@@ -172,6 +173,7 @@
 | [Chromium without a screen](tooling.md#HeadlessChromium) | Decision |  |
 | [The machine's files](tooling.md#MachineFiles) | Implementation |  |
 | [Node's command line](tooling.md#NodeProgramCommands) | Implementation |  |
+| [Where a package comes from](tooling.md#PackageSources) | Port |  |
 | [Playwright's API](tooling.md#PlaywrightApi) | Standard |  |
 | [Chromium, driven by Playwright](tooling.md#PlaywrightBrowser) | Implementation |  |
 | [Playwright](tooling.md#PlaywrightPackage) | Package | **held** |

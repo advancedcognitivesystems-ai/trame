@@ -787,6 +787,7 @@ export const ScenarioMessages = catalog({
     releaseRecorded: () => "Its record is written in the library's module of releases",
     importMapWritten: (specifier: string) => `trame manifest writes where ${specifier} leads`,
     linkLeadsToTheLibrary: (library: string) => `The link leads to the version of ${library} the application pins`,
+    languageNamed: (specifier: string) => `The language is named too: ${specifier} leads to the generation the application pins`,
     datesCompiledApart: () => "The dates are compiled in a fresh process of the engine",
     pageWritten: (file: string) => `trame export writes ${file}, titled after the project`,
     programRun: () => "trame run runs the program it assembled",

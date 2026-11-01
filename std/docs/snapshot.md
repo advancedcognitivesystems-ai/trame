@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 31 October 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 30 October 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Standard library · Algebra
 
@@ -1043,7 +1043,7 @@ Standard · `NpmManifest`
 - Maintained by: trame
 - Source: npm documentation: package.json (dependencies); Node.js documentation, Packages: "imports"
 - Address: https://docs.npmjs.com/cli/configuring-npm/package-json#dependencies
-- Constants: { dependencies: { value: dependencies, meaning: The packages the project needs to run, by name, each at its version }, imports: { value: imports, meaning: The package's import map: each specifier opened by # and where it leads } }
+- Constants: { dependencies: { value: dependencies, meaning: The packages the project needs to run, by name, each at its version }, imports: { value: imports, meaning: The package's import map: each specifier opened by # and where it leads }, type: { value: type, meaning: How Node.js reads the package's files of JavaScript and TypeScript: as ES modules, or as CommonJS when it is absent }, module: { value: module, meaning: The value of type that reads them as ES modules } }
 - Serves: A published value is cited, not copied
 
 ### POSIX signals and errors
@@ -1125,9 +1125,9 @@ Architecture decision · `ToolingAsPorts` · **held**
 
 - Decided by: trame
 - Context: The code that builds, checks and deploys a product is code like the product's: written once, tested before it runs.
-- Consequences: A check opens the delivered page through HeadlessBrowser, a deployment copies through Files; scenarios play them with the realizations kept in memory.
+- Consequences: A check opens the delivered page through HeadlessBrowser, a deployment copies through Files, a project reaches the packages it uses through PackageSources wherever they come from; scenarios play them with the realizations kept in memory.
 - Serves: Ports of the platform, realized once
-- Applied by: Commands of a program, Node's command line, Project files, Files written, The machine's files, Files kept in memory, Headless browser, Chromium, driven by Playwright, Browser script, A browser kept in memory
+- Applied by: Commands of a program, Node's command line, Project files, Files written, The machine's files, Files kept in memory, Headless browser, Chromium, driven by Playwright, Browser script, A browser kept in memory, Where a package comes from
 
 ### Browser script
 
@@ -1156,6 +1156,13 @@ Port · `HeadlessBrowser`
 
 - Owner: trame
 - Declared effects: process, display, time, network, asynchronous
+
+### Where a package comes from
+
+Port · `PackageSources`
+
+- Owner: trame
+- Declared effects: { place: read, write }
 
 ### Commands of a program
 

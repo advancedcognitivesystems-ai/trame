@@ -1,6 +1,6 @@
 # Architecture decisions
 
-*The choices that shape the product without being values, in force on 31 October 2026: why each was taken, what was rejected, and the nodes that apply it.*
+*The choices that shape the product without being values, in force on 30 October 2026: why each was taken, what was rejected, and the nodes that apply it.*
 
 > **3 architecture decisions, 2 held by the nodes that apply them**
 
@@ -8,7 +8,7 @@
 |---|---|---|
 | [A component in a browser starts with its page](platform.md#StartsWithThePage) | unknown | [The browser loads the page](platform.md#BrowserLoading), [Loading of a page](platform.md#PageLoading) |
 | [The device's services, as ports](platform.md#DeviceAsPorts) | **held** | [Animation frames](platform.md#AnimationFrames), [The screen kept awake, in memory](platform.md#AwakeInMemory), [The browser's frames](platform.md#BrowserFrames), [The browser's languages](platform.md#BrowserLanguages), [The browser keeps the preferences](platform.md#BrowserPreferences), [The browser's voice](platform.md#BrowserSpeech), [The browser keeps the screen awake](platform.md#BrowserWakeLock), [Languages of the device](platform.md#DeviceLanguages), [Frames turned by hand](platform.md#FramesByHand), [Preferences kept in memory](platform.md#MemoryPreferences), [Preferences](platform.md#PreferencesStore), [Screen kept awake](platform.md#ScreenAwake), [Whether the screen is kept awake](platform.md#ScreenKeptAwake), [What was said](platform.md#SpeechHeard), [Speech](platform.md#SpeechVoice), [Time turned by hand](platform.md#TimeTurned), [A voice that writes down](platform.md#WrittenSpeech) |
-| [The SDLC's tooling is realized once](tooling.md#ToolingAsPorts) | **held** | [A browser kept in memory](tooling.md#BrowserInMemory), [Browser script](tooling.md#BrowserScripted), [Project files](tooling.md#Files), [Files kept in memory](tooling.md#FilesInMemory), [Files written](tooling.md#FilesKept), [Headless browser](tooling.md#HeadlessBrowser), [The machine's files](tooling.md#MachineFiles), [Node's command line](tooling.md#NodeProgramCommands), [Chromium, driven by Playwright](tooling.md#PlaywrightBrowser), [Commands of a program](tooling.md#ProgramCommands) |
+| [The SDLC's tooling is realized once](tooling.md#ToolingAsPorts) | **held** | [A browser kept in memory](tooling.md#BrowserInMemory), [Browser script](tooling.md#BrowserScripted), [Project files](tooling.md#Files), [Files kept in memory](tooling.md#FilesInMemory), [Files written](tooling.md#FilesKept), [Headless browser](tooling.md#HeadlessBrowser), [The machine's files](tooling.md#MachineFiles), [Node's command line](tooling.md#NodeProgramCommands), [Where a package comes from](tooling.md#PackageSources), [Chromium, driven by Playwright](tooling.md#PlaywrightBrowser), [Commands of a program](tooling.md#ProgramCommands) |
 
 ## Standard library · Platform
 
@@ -58,14 +58,14 @@ Consequences: Each service is a port with its effects; the browser's realization
 
 ### The SDLC's tooling is realized once
 
-`ToolingAsPorts` · `src/tooling.ts:239` · status: **held**
+`ToolingAsPorts` · `src/tooling.ts:269` · status: **held**
 
 The files of a project and a headless browser are ports of the library, each realized for a machine and in memory: every project's checks and deployments use them, and play them in scenarios, rather than calling the machine itself.
 
 Context: The code that builds, checks and deploys a product is code like the product's: written once, tested before it runs.
 
-Consequences: A check opens the delivered page through HeadlessBrowser, a deployment copies through Files; scenarios play them with the realizations kept in memory.
+Consequences: A check opens the delivered page through HeadlessBrowser, a deployment copies through Files, a project reaches the packages it uses through PackageSources wherever they come from; scenarios play them with the realizations kept in memory.
 
 - Decided by: trame
 - Serves: [Ports of the platform, realized once](product.md#RealizedOnce)
-- Applied by: [Commands of a program](tooling.md#ProgramCommands), [Node's command line](tooling.md#NodeProgramCommands), [Project files](tooling.md#Files), [Files written](tooling.md#FilesKept), [The machine's files](tooling.md#MachineFiles), [Files kept in memory](tooling.md#FilesInMemory), [Headless browser](tooling.md#HeadlessBrowser), [Chromium, driven by Playwright](tooling.md#PlaywrightBrowser), [Browser script](tooling.md#BrowserScripted), [A browser kept in memory](tooling.md#BrowserInMemory)
+- Applied by: [Commands of a program](tooling.md#ProgramCommands), [Node's command line](tooling.md#NodeProgramCommands), [Project files](tooling.md#Files), [Files written](tooling.md#FilesKept), [The machine's files](tooling.md#MachineFiles), [Files kept in memory](tooling.md#FilesInMemory), [Headless browser](tooling.md#HeadlessBrowser), [Chromium, driven by Playwright](tooling.md#PlaywrightBrowser), [Browser script](tooling.md#BrowserScripted), [A browser kept in memory](tooling.md#BrowserInMemory), [Where a package comes from](tooling.md#PackageSources)

@@ -17,7 +17,7 @@ import { TextFile, GnuPositions } from "#std/text"
 import { TypeScriptApi } from "./standards"
 import { ExitStatus, NodeEncodings, NodeEvents, NodeModuleSpecifiers } from "#std/system"
 import { Iso8601 } from "#std/measures"
-import { Layout, DefaultRank, ReferenceSyntax, DocComment, JsonFormatting, ViewGroupOrder, DocumentIds, TrameCommands, StepNames, PreludeApi } from "./conventions"
+import { Layout, DefaultRank, ReferenceSyntax, DocComment, JsonFormatting, ViewGroupOrder, DocumentIds, TrameCommands, StepNames, PreludeApi, LanguageNames } from "./conventions"
 import { Counts, Sequences, Texts, ValueTypes } from "#std/algebra"
 import {
   Prelude, FileReading, Paths, ModuleLoader, TypeScriptCompiler, Hashing, KeptResults, Signatures, Process, Terminal, Clock, Timer,
@@ -202,12 +202,16 @@ export const Fingerprint = decision<number>({ owner: "trame", value: 16 })
 
 /**
  * Project
- * Where the kinds and the views of a project are, and the libraries it imports (trame.json).
+ * Where the kinds and the views of a project are, and the libraries it imports (trame.json): the language's, from the
+ * engine that reads it (since g87), and those the project names besides; whether it names the language as a package.
  */
 export const Project = fn({
   owner: "trame",
   serves: [ExecutableSpecification],
-  deps: { encodings: NodeEncodings, values: ValueTypes, layout: Layout, reading: FileReading, paths: Paths, pin: EnginePin },
+  deps: {
+    encodings: NodeEncodings, values: ValueTypes, layout: Layout, reading: FileReading, paths: Paths, pin: EnginePin, prelude: Prelude,
+    names: LanguageNames, specifiers: NodeModuleSpecifiers, language: TypeScript,
+  },
   body: code.file<typeof import("./code/engine/project").default>("./code/engine/project.ts"),
 })
 

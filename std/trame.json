@@ -6,5 +6,5 @@
   "views": [
     "../views"
   ],
-  "engine": "../generations/g86"
+  "engine": "../generations/g87"
 }

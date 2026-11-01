@@ -13,7 +13,8 @@ import { ScriptElement } from "./html"
 import { DeliveredStyle } from "./delivery"
 import { Common, FileRendering, TerminalRendering, PageRendering } from "./rendering"
 import { Counts, Sequences, Texts, ValueTypes } from "#std/algebra"
-import { Layout, JsonFormatting, TrameCommands, TrameEnvironment, ReferenceSyntax, commandNames, AmendmentNaming } from "./conventions"
+import { Layout, JsonFormatting, TrameCommands, TrameEnvironment, ReferenceSyntax, commandNames, AmendmentNaming, LanguageNames } from "./conventions"
+import { PackageSources } from "#std/tooling"
 import { ExitStatus, NodeEvents, Posix, NodeEncodings, NodeModuleSpecifiers, NpmManifest } from "#std/system"
 import { Sha256 } from "#std/algorithms"
 import { SemanticVersioning, Iso8601 } from "#std/measures"
@@ -97,7 +98,7 @@ export const Advance = entryPoint({
     terminal: Terminal, table: Columns, columns: TerminalText, laws: CommandMessages,
     counts: Counts, sequences: Sequences, texts: Texts, values: ValueTypes, messages: AdvanceMessages,
     pin: EnginePin, sharing: LanguageSharing, releases: Releases, records: ReleaseRecords, json: JsonFormatting,
-    specifiers: NodeModuleSpecifiers, references: ReferenceSyntax, clock: Clock, project: Project,
+    specifiers: NodeModuleSpecifiers, references: ReferenceSyntax, clock: Clock, project: Project, packages: PackageSources, names: LanguageNames,
   },
   body: code.file<typeof import("./code/commands/advance").default>("./code/commands/advance.ts"),
 })
@@ -170,15 +171,17 @@ export const Audit = entryPoint({
  * Write the manifest
  * The packages of the graph, at the versions their nodes declare, written as the dependencies of package.json: the
  * graph decides the versions, npm installs them. And the import map: where the name of each library the project imports
- * leads (#std/* to its sources, or to a version it froze), through a link when the library is outside the package.
+ * leads (#std/* to its sources, or to a version it froze), and where the language's names lead (#trame/kernel,
+ * #trame/kinds/*: the generation it pins), each package placed by where it comes from.
  */
 export const WriteManifest = entryPoint({
   owner: "trame", in: TrameCli, serves: [SingleSource],
   trigger: command(commandNames.manifest),
   deps: {
     exitStatus: ExitStatus, preparation: Preparation, npm: NpmManifest, layout: Layout, project: Project, specifiers: NodeModuleSpecifiers,
-    reading: FileReading, writing: FileWriting, trees: FileTrees, paths: Paths, encodings: NodeEncodings, file: TextFile, json: JsonFormatting,
-    language: TypeScript, terminal: Terminal, messages: CommandMessages, currentProcess: Process, events: NodeEvents, line: TrameCommands, texts: Texts,
+    reading: FileReading, writing: FileWriting, packages: PackageSources, names: LanguageNames, prelude: Prelude, paths: Paths, encodings: NodeEncodings,
+    file: TextFile, json: JsonFormatting, language: TypeScript, terminal: Terminal, messages: CommandMessages, currentProcess: Process, events: NodeEvents,
+    line: TrameCommands, texts: Texts,
   },
   body: code.file<typeof import("./code/commands/manifest").default>("./code/commands/manifest.ts"),
 })
@@ -338,7 +341,7 @@ export const Amending = fn({
   serves: [SingleSource],
   deps: {
     preparation: Preparation, machine: MachineOutputs, comparison: BuildComparison, prelude: Prelude, references: References, project: Project,
-    specifiers: NodeModuleSpecifiers, values: ValueTypes, paths: Paths, messages: CommandMessages, naming: AmendmentNaming, counts: Counts,
+    specifiers: NodeModuleSpecifiers, layout: Layout, values: ValueTypes, paths: Paths, messages: CommandMessages, naming: AmendmentNaming, counts: Counts,
   },
   body: code.file<typeof import("./code/commands/amending").default>("./code/commands/amending.ts"),
 })

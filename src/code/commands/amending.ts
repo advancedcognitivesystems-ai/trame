@@ -5,7 +5,7 @@
 // through the port "Where an amendment goes": this function writes nothing.
 
 import { AmendmentField, ChangeWay, KindName, Severity, type ProvidedBy } from "../../../trame/kernel"
-import type { AmendmentToRecord, Paths, Prelude } from "../../architecture"
+import type { AmendmentToRecord, Layout, Paths, Prelude } from "../../architecture"
 import type { CommandMessages } from "../../messages"
 import type { References } from "../../engine"
 import type { AmendmentNaming } from "../../conventions"
@@ -49,6 +49,7 @@ export interface Deps {
   references: ProvidedBy<typeof References>
   project: ProjectApi
   specifiers: ProvidedBy<typeof NodeModuleSpecifiers>
+  layout: Layout
   values: ProvidedBy<typeof ValueTypes>
   paths: Paths
   messages: ProvidedBy<typeof CommandMessages>
@@ -122,9 +123,7 @@ const body = (deps: Deps) => {
     const info = view.decl
     if (!info) return refused(messages.amendNoSuchNode(a.node))
     const file = paths.join(o.root, info.file)
-    const [kindsDir] = deps.project.projectDirs(o.root).kinds
-    const kindPath = paths.relative(paths.dirname(file), paths.join(kindsDir, KindName.amendment)).split(paths.sep).join(deps.specifiers.separator)
-    const kind = kindPath.startsWith(deps.specifiers.parent) ? kindPath : deps.specifiers.current + kindPath
+    const kind = deps.project.languageModule(o.root, paths.dirname(file), paths.join(deps.layout.kinds, KindName.amendment).split(paths.sep).join(deps.specifiers.separator))
     return {
       heading, lines,
       record: { file, target: meta(target).id ?? a.node, name, patch, owner: a.by, why: a.why, from, until: a.until, kind },

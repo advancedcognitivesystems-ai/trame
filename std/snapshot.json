@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-31",
+  "at": "2026-10-30",
   "nodes": [
     {
       "id": "algebra.Counts",
@@ -2904,6 +2904,14 @@
           "imports": {
             "value": "imports",
             "meaning": "The package's import map: each specifier opened by # and where it leads"
+          },
+          "type": {
+            "value": "type",
+            "meaning": "How Node.js reads the package's files of JavaScript and TypeScript: as ES modules, or as CommonJS when it is absent"
+          },
+          "module": {
+            "value": "module",
+            "meaning": "The value of type that reads them as ES modules"
           }
         }
       }
@@ -3197,6 +3205,20 @@
       }
     },
     {
+      "id": "tooling.PackageSources",
+      "kind": "port",
+      "title": "Where a package comes from",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": {
+          "place": [
+            "read",
+            "write"
+          ]
+        }
+      }
+    },
+    {
       "id": "tooling.PlaywrightApi",
       "kind": "standard",
       "title": "Playwright's API",
@@ -3268,7 +3290,7 @@
       "fields": {
         "owner": "trame",
         "context": "The code that builds, checks and deploys a product is code like the product's: written once, tested before it runs.",
-        "consequences": "A check opens the delivered page through HeadlessBrowser, a deployment copies through Files; scenarios play them with the realizations kept in memory."
+        "consequences": "A check opens the delivered page through HeadlessBrowser, a deployment copies through Files, a project reaches the packages it uses through PackageSources wherever they come from; scenarios play them with the realizations kept in memory."
       }
     },
     {
@@ -4860,6 +4882,11 @@
     {
       "from": "tooling.ToolingAsPorts",
       "to": "tooling.BrowserInMemory",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "tooling.ToolingAsPorts",
+      "to": "tooling.PackageSources",
       "kind": "appliedBy"
     },
     {

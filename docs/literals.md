@@ -1,8 +1,8 @@
 # Literals
 
-*The values written in code bodies, found by the syntax reader with the queries of each language, on 31 October 2026.*
+*The values written in code bodies, found by the syntax reader with the queries of each language, on 30 October 2026.*
 
-> **0 literals to declare in 0 bodies, 0 of them already declared by a constant · 1846 declared by a catalog**
+> **0 literals to declare in 0 bodies, 0 of them already declared by a constant · 1847 declared by a catalog**
 
 A literal written in a body is an error of its node: its value belongs in the graph, with its meaning (a standard, a decision, a structure, a catalog), and the body receives it as a parameter. The text of a message catalog is what the catalog declares.
 
@@ -41,7 +41,7 @@ The text written in a message catalog is what the catalog declares: words said t
 | [Words of the kinds](messages.md#KindWords) | 628 | `"en-GB"` `"Acceptance criteria"` `"Accepts"` |
 | [Words of the views](messages.md#ViewWords) | 290 | `"en-GB"` `"Architecture decisions"` `"The graph records no architecture decision."` |
 | [Messages of the commands](messages.md#CommandMessages) | 216 | `` `written: ${…}` `` `", "` `` `kind laws · ${…} · ${…} drawn at random per kind` `` |
-| [Messages of the scenarios](messages.md#ScenarioMessages) | 117 | `"TypeScript accepts the example"` `` `The example has ${…}, ${…} among them` `` `"node"` |
+| [Messages of the scenarios](messages.md#ScenarioMessages) | 118 | `"TypeScript accepts the example"` `` `The example has ${…}, ${…} among them` `` `"node"` |
 | [Messages of the compiler](messages.md#CompilerMessages) | 96 | `"error"` `"errors"` `` `${…} without a name: export it` `` |
 | [Words of the page](messages.md#PageWords) | 90 | `"What"` `"Now"` `"New value"` |
 | [Messages of the renderers](messages.md#RenderingMessages) | 81 | `"held"` `"violated"` `"blocked"` |

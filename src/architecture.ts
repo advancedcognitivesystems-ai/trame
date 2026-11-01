@@ -102,6 +102,8 @@ export interface Prelude {
   internal: typeof import("#trame/internal")
   /** The path of the module, so that a frozen program imports it. */
   path: string
+  /** The directory of the language the engine speaks: its prelude, its kinds and its views (since g87). */
+  root: string
 }
 export type FileReading = Pick<typeof import("node:fs"), "readFileSync" | "existsSync" | "readdirSync" | "statSync" | "watch">
 export type FileWriting = Pick<typeof import("node:fs"), "writeFileSync" | "mkdirSync">

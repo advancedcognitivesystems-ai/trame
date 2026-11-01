@@ -1,6 +1,6 @@
 # Layers
 
-*The graph in force on 31 October 2026, ordered by distance to the goals.*
+*The graph in force on 30 October 2026, ordered by distance to the goals.*
 
 ```mermaid
 flowchart TB
@@ -164,23 +164,24 @@ flowchart TB
     n126["Chromium without a screen<br/><small>Decision</small>"]:::neutral
     n127["The machine's files<br/><small>Implementation</small>"]:::neutral
     n128["Node's command line<br/><small>Implementation</small>"]:::neutral
-    n129["Playwright's API<br/><small>Standard</small>"]:::neutral
-    n130["Chromium, driven by Playwright<br/><small>Implementation</small>"]:::neutral
-    n131["Playwright<br/><small>Package</small>"]:::held
-    n132["Commands of a program<br/><small>Port</small>"]:::neutral
-    n133["The SDLC's tooling is realized once<br/><small>Architecture decision</small>"]:::held
+    n129["Where a package comes from<br/><small>Port</small>"]:::neutral
+    n130["Playwright's API<br/><small>Standard</small>"]:::neutral
+    n131["Chromium, driven by Playwright<br/><small>Implementation</small>"]:::neutral
+    n132["Playwright<br/><small>Package</small>"]:::held
+    n133["Commands of a program<br/><small>Port</small>"]:::neutral
+    n134["The SDLC's tooling is realized once<br/><small>Architecture decision</small>"]:::held
   end
   subgraph web["Standard library · Web"]
-    n134["CSSOM View<br/><small>Standard</small>"]:::neutral
-    n135["HTTP<br/><small>Standard</small>"]:::neutral
-    n136["Media Queries Level 5<br/><small>Standard</small>"]:::neutral
-    n137["Media types<br/><small>Standard</small>"]:::neutral
-    n138["Screen Wake Lock API<br/><small>Standard</small>"]:::neutral
-    n139["Server-sent events<br/><small>Standard</small>"]:::neutral
-    n140["UI events<br/><small>Standard</small>"]:::neutral
-    n141["URI<br/><small>Standard</small>"]:::neutral
-    n142["Web Audio API<br/><small>Standard</small>"]:::neutral
-    n143["Web Speech API<br/><small>Standard</small>"]:::neutral
+    n135["CSSOM View<br/><small>Standard</small>"]:::neutral
+    n136["HTTP<br/><small>Standard</small>"]:::neutral
+    n137["Media Queries Level 5<br/><small>Standard</small>"]:::neutral
+    n138["Media types<br/><small>Standard</small>"]:::neutral
+    n139["Screen Wake Lock API<br/><small>Standard</small>"]:::neutral
+    n140["Server-sent events<br/><small>Standard</small>"]:::neutral
+    n141["UI events<br/><small>Standard</small>"]:::neutral
+    n142["URI<br/><small>Standard</small>"]:::neutral
+    n143["Web Audio API<br/><small>Standard</small>"]:::neutral
+    n144["Web Speech API<br/><small>Standard</small>"]:::neutral
   end
   n0 -->|Serves| n73
   n1 -->|Serves| n73
@@ -248,13 +249,13 @@ flowchart TB
   n51 -->|Implements| n49
   n52 -->|Implements| n58
   n53 -->|Implements| n61
-  n53 -->|Depends on| n140
+  n53 -->|Depends on| n141
   n54 -->|Implements| n62
   n55 -->|Implements| n66
   n55 -->|Depends on| n22
-  n55 -->|Depends on| n143
+  n55 -->|Depends on| n144
   n56 -->|Implements| n63
-  n56 -->|Depends on| n138
+  n56 -->|Depends on| n139
   n57 -->|Serves| n72
   n57 -->|Applied by| n62
   n57 -->|Applied by| n54
@@ -414,28 +415,28 @@ flowchart TB
   n127 -->|Implements| n122
   n127 -->|Depends on| n8
   n127 -->|Depends on| n109
-  n128 -->|Implements| n132
+  n128 -->|Implements| n133
   n128 -->|Depends on| n107
   n128 -->|Depends on| n106
   n128 -->|Depends on| n3
-  n129 -->|Serves| n70
-  n130 -->|Implements| n125
-  n130 -->|Uses| n131
-  n130 -->|Depends on| n126
-  n130 -->|Depends on| n129
-  n130 -->|Depends on| n0
-  n133 -->|Serves| n72
-  n133 -->|Applied by| n132
-  n133 -->|Applied by| n128
-  n133 -->|Applied by| n122
-  n133 -->|Applied by| n124
-  n133 -->|Applied by| n127
-  n133 -->|Applied by| n123
-  n133 -->|Applied by| n125
-  n133 -->|Applied by| n130
-  n133 -->|Applied by| n121
-  n133 -->|Applied by| n120
-  n134 -->|Serves| n70
+  n130 -->|Serves| n70
+  n131 -->|Implements| n125
+  n131 -->|Uses| n132
+  n131 -->|Depends on| n126
+  n131 -->|Depends on| n130
+  n131 -->|Depends on| n0
+  n134 -->|Serves| n72
+  n134 -->|Applied by| n133
+  n134 -->|Applied by| n128
+  n134 -->|Applied by| n122
+  n134 -->|Applied by| n124
+  n134 -->|Applied by| n127
+  n134 -->|Applied by| n123
+  n134 -->|Applied by| n125
+  n134 -->|Applied by| n131
+  n134 -->|Applied by| n121
+  n134 -->|Applied by| n120
+  n134 -->|Applied by| n129
   n135 -->|Serves| n70
   n136 -->|Serves| n70
   n137 -->|Serves| n70
@@ -445,6 +446,7 @@ flowchart TB
   n141 -->|Serves| n70
   n142 -->|Serves| n70
   n143 -->|Serves| n70
+  n144 -->|Serves| n70
   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
   classDef blocked fill:#fbf0d9,stroke:#9a6200,color:#17202a
   classDef violated fill:#f9e3e1,stroke:#ad2a22,color:#17202a

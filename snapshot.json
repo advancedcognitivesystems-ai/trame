@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-31",
+  "at": "2026-10-30",
   "nodes": [
     {
       "id": "appearance.ExplorerDrawing",
@@ -1043,7 +1043,7 @@
       "id": "browser.BrowserAmendments",
       "kind": "implementation",
       "title": "Amendments sent to trame dev",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1062,7 +1062,7 @@
       "id": "browser.BrowserDecompression",
       "kind": "implementation",
       "title": "The browser's gzip",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1079,7 +1079,7 @@
       "id": "browser.BrowserFeed",
       "kind": "implementation",
       "title": "The globals of the page, and trame dev",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1097,7 +1097,7 @@
       "id": "browser.BrowserMemory",
       "kind": "implementation",
       "title": "Local storage",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1113,7 +1113,7 @@
       "id": "browser.BrowserWindow",
       "kind": "implementation",
       "title": "The browser's window",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1131,7 +1131,7 @@
       "id": "browser.ExplorerFigures",
       "kind": "function",
       "title": "Explorer of a graph",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1168,7 +1168,7 @@
       "id": "browser.ShowGraph",
       "kind": "entry",
       "title": "Show the graph",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "trigger": {
@@ -1221,7 +1221,7 @@
       "id": "browser.TheBrowserRunsThePage",
       "kind": "binding",
       "title": "The browser runs the page",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "The page's script took what it needed from the browser itself, here and there: the graph could not say what the page asks of the browser, nor try it elsewhere.",
@@ -1236,7 +1236,7 @@
       "id": "browser.ThePageIsAssembled",
       "kind": "adr",
       "title": "The page is assembled",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "The page's script built by hand what it shared with the engine and wrote its values (classes, identifiers, the explorer's geometry) as literals the catalogue could not see: a change in the graph did not reach it.",
@@ -1633,7 +1633,11 @@
           "samples": "command-scenarios.ProjectSamples",
           "line": "conventions.TrameCommands",
           "exitStatus": "std/system.ExitStatus",
-          "messages": "messages.ScenarioMessages"
+          "messages": "messages.ScenarioMessages",
+          "names": "conventions.LanguageNames",
+          "specifiers": "std/system.NodeModuleSpecifiers",
+          "language": "typescript.TypeScript",
+          "texts": "std/algebra.Texts"
         },
         "body": "(function)"
       }
@@ -2001,7 +2005,9 @@
           "specifiers": "std/system.NodeModuleSpecifiers",
           "references": "conventions.ReferenceSyntax",
           "clock": "architecture.Clock",
-          "project": "engine.Project"
+          "project": "engine.Project",
+          "packages": "std/tooling.PackageSources",
+          "names": "conventions.LanguageNames"
         },
         "body": {
           "file": "./code/commands/advance.ts",
@@ -2051,6 +2057,7 @@
           "references": "engine.References",
           "project": "engine.Project",
           "specifiers": "std/system.NodeModuleSpecifiers",
+          "layout": "conventions.Layout",
           "values": "std/algebra.ValueTypes",
           "paths": "architecture.Paths",
           "messages": "messages.CommandMessages",
@@ -2750,7 +2757,9 @@
           "specifiers": "std/system.NodeModuleSpecifiers",
           "reading": "architecture.FileReading",
           "writing": "architecture.FileWriting",
-          "trees": "architecture.FileTrees",
+          "packages": "std/tooling.PackageSources",
+          "names": "conventions.LanguageNames",
+          "prelude": "architecture.Prelude",
           "paths": "architecture.Paths",
           "encodings": "std/system.NodeEncodings",
           "file": "std/text.TextFile",
@@ -2888,6 +2897,21 @@
       }
     },
     {
+      "id": "conventions.LanguageNames",
+      "kind": "decision",
+      "title": "The language's names",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "name": "trame",
+          "modules": {
+            "kernel": "trame/kernel",
+            "kinds/*": "kinds/*"
+          }
+        }
+      }
+    },
+    {
       "id": "conventions.Layout",
       "kind": "decision",
       "title": "Project layout",
@@ -2937,7 +2961,8 @@
           "endings": [
             "/trame/kernel",
             "/trame/kernel.ts",
-            "/trame/kernel.js"
+            "/trame/kernel.js",
+            "#trame/kernel"
           ]
         }
       }
@@ -3966,7 +3991,11 @@
           "layout": "conventions.Layout",
           "reading": "architecture.FileReading",
           "paths": "architecture.Paths",
-          "pin": "generations.EnginePin"
+          "pin": "generations.EnginePin",
+          "prelude": "architecture.Prelude",
+          "names": "conventions.LanguageNames",
+          "specifiers": "std/system.NodeModuleSpecifiers",
+          "language": "typescript.TypeScript"
         },
         "body": {
           "file": "./code/engine/project.ts",
@@ -8974,7 +9003,7 @@
       "id": "platform.DiskReading",
       "kind": "implementation",
       "title": "System files, for reading",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "body": {
@@ -8987,7 +9016,7 @@
       "id": "platform.DiskTrees",
       "kind": "implementation",
       "title": "Trees on disk",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -9005,7 +9034,7 @@
       "id": "platform.DiskWriting",
       "kind": "implementation",
       "title": "System files, for writing",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "body": {
@@ -9169,6 +9198,25 @@
       }
     },
     {
+      "id": "platform.LocalPaths",
+      "kind": "implementation",
+      "title": "Packages by their local path",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "trees": "architecture.FileTrees",
+          "writing": "architecture.FileWriting",
+          "paths": "architecture.Paths",
+          "specifiers": "std/system.NodeModuleSpecifiers"
+        },
+        "body": {
+          "file": "./code/platform/local-paths.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
       "id": "platform.MemoryFiles",
       "kind": "implementation",
       "title": "Files in memory, over the disk",
@@ -9294,7 +9342,7 @@
       "id": "platform.NodeHttpServer",
       "kind": "implementation",
       "title": "Node HTTP server",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "body": {
@@ -9307,7 +9355,7 @@
       "id": "platform.NodeMachine",
       "kind": "binding",
       "title": "On a machine, Node.js reads, writes and runs",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "What changes the world (files written, processes, the terminal, the clock) is real only on a machine; the scenarios keep it in memory.",
@@ -9348,7 +9396,7 @@
       "id": "platform.NodeProcess",
       "kind": "implementation",
       "title": "Node process",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -9366,7 +9414,7 @@
       "id": "platform.NodePrograms",
       "kind": "implementation",
       "title": "Node programs",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -9384,7 +9432,7 @@
       "id": "platform.NodeTerminal",
       "kind": "implementation",
       "title": "Node terminal",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -9427,7 +9475,7 @@
       "id": "platform.NpmReports",
       "kind": "implementation",
       "title": "npm's reports",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -9439,6 +9487,21 @@
         "body": {
           "file": "./code/platform/npm-reports.ts",
           "language": "typescript"
+        }
+      }
+    },
+    {
+      "id": "platform.PackagesByLocalPath",
+      "kind": "binding",
+      "title": "Packages come from their local path, for now",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "The language, std, ci and the projects that use them share one repository (E1): each is a package of its own, used by its name, but all of them are on this machine.",
+        "consequences": "The import map leads each name through a link under .trame/ when the package is outside the project; moving a package to a registry is another realization of the same port, the code that uses it untouched.",
+        "rejected": {
+          "A registry from the start": "a publication at each change of std or of the language, while they change with every generation",
+          "A link under node_modules": "the TypeScript compiler refuses a module of TypeScript found there"
         }
       }
     },
@@ -9535,7 +9598,7 @@
       "id": "platform.RunsKeptOnDisk",
       "kind": "binding",
       "title": "On a machine, runs are kept on disk",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "The commands of a shipment and of an advance run as separate processes, each compiling the same graph: what one played, the next can find only on disk.",
@@ -9549,7 +9612,7 @@
       "id": "platform.RunsOnDisk",
       "kind": "implementation",
       "title": "Runs kept on disk",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -9587,7 +9650,7 @@
       "id": "platform.SystemClock",
       "kind": "implementation",
       "title": "System clock",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -9944,6 +10007,22 @@
       }
     },
     {
+      "id": "principles.PackagesByName",
+      "kind": "adr",
+      "title": "A package is used by its name",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "Projects lived inside Trame's repository and reached its language by relative paths (../../kinds, ../../../trame/kernel): none could move out, a release had to write its imports again, and nothing in a project said which generation's language it was written in.",
+        "consequences": "A project names the language as it names a library: its import map, written by trame manifest, leads #trame/kernel and #trame/kinds/* to the generation it pins, through a link under .trame/ that an advance moves with the pin. Its kinds and views are the language's, from the engine that reads it, and those it names besides. The language's home, Trame's repository, reaches them where they are. Where a package comes from is std's port PackageSources: a local path now, a registry later.",
+        "rejected": {
+          "Relative paths between packages": "they hold only while the packages sit side by side, and a frozen copy reaches whatever is there then",
+          "A path mapping in each project's compiler options": "the program that runs the graph would not read it; the import map is what Node.js and TypeScript both read",
+          "Trame installed from a registry at once": "a publication at each generation while the language changes with each one; the registry is the second strategy of the same port"
+        }
+      }
+    },
+    {
       "id": "principles.PreludeLayer",
       "kind": "adr",
       "title": "The prelude: the runtime of the language",
@@ -9961,7 +10040,7 @@
       "id": "principles.ShippedThroughTheGraph",
       "kind": "adr",
       "title": "A version ships through the graph",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "Two products ship differently (a page placed where it is served, an engine frozen into a generation) and their pipelines lived in scripts and in their authors' heads: nothing said what had been checked, by whom, on which version, nor why a version could go.",
@@ -9977,7 +10056,7 @@
       "id": "principles.TechnologyInOneNode",
       "kind": "adr",
       "title": "A technology is chosen in one node",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "Each implementation said which environments it served: the choice of a technology was spread over its realizations, nothing said why, and a test double or a repository over a database port had to be declared as if it touched the platform.",
@@ -12203,7 +12282,7 @@
       "id": "sdlc.CandidateKeepsTheLaws",
       "kind": "check",
       "title": "The candidate plays the laws",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame"
       }
@@ -12212,7 +12291,7 @@
       "id": "sdlc.CandidateRunsOnTheMachine",
       "kind": "check",
       "title": "The candidate runs on the machine",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame"
       }
@@ -12221,7 +12300,7 @@
       "id": "sdlc.EngineCandidate",
       "kind": "artifact",
       "title": "The candidate engine",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "out/local/trame-cli.ts"
@@ -12262,7 +12341,7 @@
       "id": "sdlc.GraphPage",
       "kind": "artifact",
       "title": "The graph page",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "trame-page.html",
@@ -12284,7 +12363,7 @@
       "id": "sdlc.GraphPageOpens",
       "kind": "check",
       "title": "The graph page opens",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame"
       }
@@ -12342,7 +12421,7 @@
       "id": "sdlc.NextGeneration",
       "kind": "shipment",
       "title": "The next generation",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "generation"
@@ -12400,7 +12479,7 @@
       "id": "sdlc.PageProgram",
       "kind": "artifact",
       "title": "The page's program",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "out/browser/page-app.ts"
@@ -12420,7 +12499,7 @@
       "id": "sdlc.SdlcOnTheMachine",
       "kind": "binding",
       "title": "The SDLC on the machine",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "The graph page must be opened as a person opens it: the file exported, in a real browser."
@@ -16169,6 +16248,11 @@
     },
     {
       "from": "command-scenarios.ManifestWritten",
+      "to": "platform.LocalPaths",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.ManifestWritten",
       "to": "architecture.Test",
       "kind": "env"
     },
@@ -16225,6 +16309,16 @@
     {
       "from": "command-scenarios.ManifestWritten",
       "to": "messages.ScenarioMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ManifestWritten",
+      "to": "conventions.LanguageNames",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ManifestWritten",
+      "to": "typescript.TypeScript",
       "kind": "deps"
     },
     {
@@ -17028,6 +17122,11 @@
       "kind": "deps"
     },
     {
+      "from": "commands.Advance",
+      "to": "conventions.LanguageNames",
+      "kind": "deps"
+    },
+    {
       "from": "commands.Amend",
       "to": "product.SingleSource",
       "kind": "serves"
@@ -17105,6 +17204,11 @@
     {
       "from": "commands.Amending",
       "to": "engine.Project",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Amending",
+      "to": "conventions.Layout",
       "kind": "deps"
     },
     {
@@ -18344,7 +18448,12 @@
     },
     {
       "from": "commands.WriteManifest",
-      "to": "architecture.FileTrees",
+      "to": "conventions.LanguageNames",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.WriteManifest",
+      "to": "architecture.Prelude",
       "kind": "deps"
     },
     {
@@ -19220,6 +19329,21 @@
     {
       "from": "engine.Project",
       "to": "generations.EnginePin",
+      "kind": "deps"
+    },
+    {
+      "from": "engine.Project",
+      "to": "architecture.Prelude",
+      "kind": "deps"
+    },
+    {
+      "from": "engine.Project",
+      "to": "conventions.LanguageNames",
+      "kind": "deps"
+    },
+    {
+      "from": "engine.Project",
+      "to": "typescript.TypeScript",
       "kind": "deps"
     },
     {
@@ -21708,6 +21832,21 @@
       "kind": "deps"
     },
     {
+      "from": "platform.LocalPaths",
+      "to": "architecture.FileTrees",
+      "kind": "deps"
+    },
+    {
+      "from": "platform.LocalPaths",
+      "to": "architecture.FileWriting",
+      "kind": "deps"
+    },
+    {
+      "from": "platform.LocalPaths",
+      "to": "architecture.Paths",
+      "kind": "deps"
+    },
+    {
       "from": "platform.MemoryFiles",
       "to": "architecture.FileReading",
       "kind": "implements"
@@ -21971,6 +22110,26 @@
       "from": "platform.NpmReports",
       "to": "documents.Punctuation",
       "kind": "deps"
+    },
+    {
+      "from": "platform.PackagesByLocalPath",
+      "to": "platform.LocalPaths",
+      "kind": "chooses"
+    },
+    {
+      "from": "platform.PackagesByLocalPath",
+      "to": "architecture.Local",
+      "kind": "environments"
+    },
+    {
+      "from": "platform.PackagesByLocalPath",
+      "to": "architecture.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "platform.PackagesByLocalPath",
+      "to": "product.ReplaceableTechnology",
+      "kind": "serves"
     },
     {
       "from": "platform.PageResources",
@@ -22580,6 +22739,31 @@
     {
       "from": "principles.OneWayToRead",
       "to": "architecture.RenderingWithoutGraph",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.PackagesByName",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "principles.PackagesByName",
+      "to": "engine.Project",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.PackagesByName",
+      "to": "commands.WriteManifest",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.PackagesByName",
+      "to": "platform.LocalPaths",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.PackagesByName",
+      "to": "commands.Advance",
       "kind": "appliedBy"
     },
     {

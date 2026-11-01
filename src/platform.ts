@@ -14,6 +14,7 @@ import { TypeScriptSyntax, DocBlock, ExportDeclaration, ConstDeclaration, Call, 
 import { EngineFingerprint, KeptRunsScope, ProjectRuns } from "./engine"
 import { PackedGraph } from "./page"
 import { PageLoading } from "#std/platform"
+import { PackageSources } from "#std/tooling"
 import { Http } from "#std/web"
 import { TsxPackage, TypeScriptPackage, NodeTypes, WebTreeSitterPackage, EsbuildPackage } from "./packages"
 import { ExitStatus, NodeArguments, NodeCli, NodeEvents, Posix, NpmCli, NodeModuleSpecifiers, NodeEncodings } from "#std/system"
@@ -580,6 +581,37 @@ export const InPlaceSources = implementation({
     values: ValueTypes, texts: Texts, counts: Counts,
   },
   body: code.file("./code/platform/in-place-sources.ts"),
+})
+
+/**
+ * Packages by their local path
+ * A package on this machine (the generation a project pins, a library, a version it froze): reached where it is when it
+ * lies inside the project, through a link under the project's directory of links otherwise.
+ */
+export const LocalPaths = implementation({
+  owner: "trame",
+  implements: [PackageSources],
+  deps: { trees: FileTrees, writing: FileWriting, paths: Paths, specifiers: NodeModuleSpecifiers },
+  body: code.file("./code/platform/local-paths.ts"),
+})
+
+/**
+ * Packages come from their local path, for now
+ * The language and the libraries a project uses are directories of this repository: each is reached by its path, while
+ * a registry is the strategy to come, once a package is published.
+ */
+export const PackagesByLocalPath = binding({
+  owner: "trame",
+  chooses: [LocalPaths],
+  environments: [Local, Test],
+  follows: [Adapter],
+  serves: [ReplaceableTechnology],
+  context: "The language, std, ci and the projects that use them share one repository (E1): each is a package of its own, used by its name, but all of them are on this machine.",
+  consequences: "The import map leads each name through a link under .trame/ when the package is outside the project; moving a package to a registry is another realization of the same port, the code that uses it untouched.",
+  rejected: {
+    "A registry from the start": "a publication at each change of std or of the language, while they change with every generation",
+    "A link under node_modules": "the TypeScript compiler refuses a module of TypeScript found there",
+  },
 })
 
 /**

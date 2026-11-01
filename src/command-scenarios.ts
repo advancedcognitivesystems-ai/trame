@@ -28,10 +28,11 @@ import { ReleaseRecords } from "./generations"
 import { PackageAudit } from "./packages"
 import { SdlcEvidence, ShipmentRunPlan, ShippingRecords, Attribution } from "./shipping"
 import { DevDebounce } from "./product"
-import { ExitStatus, NodeEncodings } from "#std/system"
+import { ExitStatus, NodeEncodings, NodeModuleSpecifiers } from "#std/system"
 import { Counts, Sequences, Texts, ValueTypes } from "#std/algebra"
 import { ServerSentEvents, Http } from "#std/web"
-import { TrameCommands, Layout } from "./conventions"
+import { TrameCommands, Layout, LanguageNames } from "./conventions"
+import { LocalPaths } from "./platform"
 import { ScenarioMessages, DriverMessages, OutputMessages, CommandMessages, PlatformMessages, AdvanceMessages, CompilerMessages } from "./messages"
 import { GnuPositions, TextFile } from "#std/text"
 
@@ -515,18 +516,21 @@ export const LibraryReleased = scenario({
 /**
  * The manifest written
  * trame manifest, in the application, writes the packages of its graph into package.json, and the import map of the
- * libraries it imports from outside its package: each name leads to a link, and the link to the version it pins.
+ * libraries it imports from outside its package: each name leads to a link, and the link to the version it pins. The
+ * language's names lead to the generation it pins (since g87); the import map changed, a fresh engine reads the graph.
  */
 export const ManifestWritten = scenario({
   owner: "trame",
-  verifies: [WriteManifest],
+  verifies: [WriteManifest, LocalPaths],
   env: Test,
   deps: {
     manifest: WriteManifest, processLog: ProcessLog, writeLog: WriteLog, reading: FileReading, currentProcess: Process, paths: Paths, layout: Layout,
     projects: ScenarioProjects, samples: ProjectSamples, line: TrameCommands, exitStatus: ExitStatus, messages: ScenarioMessages,
+    names: LanguageNames, specifiers: NodeModuleSpecifiers, language: TypeScript, texts: Texts,
   },
-  body: ({ manifest, processLog, writeLog, reading, currentProcess, paths, layout, projects, samples, line, exitStatus, messages }) => async (check) => {
+  body: ({ manifest, processLog, writeLog, reading, currentProcess, paths, layout, projects, samples, line, exitStatus, messages, names, specifiers, language, texts }) => async (check) => {
     processLog.enter(projects.application)
+    processLog.answer(texts.empty, exitStatus.success)
     const home = currentProcess.cwd()
     const r = await manifest({ params: { command: line.manifest }, body: { args: [] } })
     const written = JSON.parse(writeLog.written().get(paths.join(home, layout.manifest)) ?? JSON.stringify({})) as { imports?: Record<string, string> }
@@ -534,6 +538,10 @@ export const ManifestWritten = scenario({
     check(messages.importMapWritten(samples.imported.specifier), r.status === exitStatus.success && leads !== undefined)
     const linked = paths.join(home, layout.libraryLinks, samples.imported.library, samples.imported.module)
     check(messages.linkLeadsToTheLibrary(samples.imported.library), reading.existsSync(linked))
+    const [[first, module]] = Object.entries(names.modules)
+    const [extension] = language.extensions
+    const named = specifiers.imports + names.name + specifiers.separator + first
+    check(messages.languageNamed(named), written.imports?.[named] !== undefined && reading.existsSync(paths.join(home, layout.libraryLinks, names.name, module + extension)))
   },
 })
 
