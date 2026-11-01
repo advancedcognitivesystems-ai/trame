@@ -28,9 +28,10 @@ export const ExitStatus = standard({
 export const Posix = standard({
   owner: "trame",
   serves: [CitedNotCopied],
-  source: "POSIX.1-2017, Base Definitions: <signal.h> (SIGINT, SIGTERM), <errno.h> (EPIPE)",
+  source: "POSIX.1-2017, Base Definitions: <signal.h> (SIGINT, SIGTERM), <errno.h> (EPIPE), § 4.13 Pathname Resolution (dot)",
   url: "https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/signal.h.html",
   constants: {
+    currentDirectory: { value: ".", meaning: "The directory a path starts from: a command in it is run as ./name" },
     interrupt: { value: "SIGINT", meaning: "The interruption asked from the terminal (Ctrl-C)" },
     terminate: { value: "SIGTERM", meaning: "The polite request to end" },
     brokenPipe: { value: "EPIPE", meaning: "Writing to a pipe that nobody reads any more (the output piped into head, say)" },
@@ -76,12 +77,14 @@ export const NodeProcessApi = standard({
 export const NodeEvents = standard({
   owner: "trame",
   serves: [CitedNotCopied],
-  source: "Node.js documentation: stream.Readable ('data', 'close', 'error'), ChildProcess ('exit', 'close'), process ('unhandledRejection')",
+  source: "Node.js documentation: stream.Readable ('data', 'close', 'error'), ChildProcess ('exit', 'close'), process ('unhandledRejection'), fs.watch ('change')",
   url: "https://nodejs.org/api/events.html",
   constants: {
     data: { value: "data", meaning: "A readable stream gives a chunk of what it reads" },
     close: { value: "close", meaning: "A stream, a request or a child process is closed: nothing more will come" },
+    end: { value: "end", meaning: "A readable stream has nothing more to give: what it read is whole" },
     exit: { value: "exit", meaning: "A child process ended, with its exit code" },
+    change: { value: "change", meaning: "fs.watch: a file under what is watched changed" },
     error: { value: "error", meaning: "A stream failed" },
     unhandledRejection: { value: "unhandledRejection", meaning: "A promise was rejected and nothing waited for it" },
   },

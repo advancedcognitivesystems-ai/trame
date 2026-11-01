@@ -1,9 +1,14 @@
 /** Standard library · Measures */
 
+import { unitsOf, type Quantity } from "../../trame/kernel"
 import { standard } from "../../kinds/standard"
+import { decision } from "../../kinds/decision"
+import { catalog } from "../../kinds/catalog"
+import { quantity } from "../../kinds/quantity"
 import { CitedNotCopied } from "./product"
 
-// Units of measure, calendar dates, versions and language tags, as their standards write them.
+// Units of measure, calendar dates, versions and language tags, as their standards write them; and the quantities a
+// product measures most, with their units: a duration, a ratio.
 
 /**
  * Units of measure
@@ -73,3 +78,59 @@ export const LanguageTags = standard({
     localeSeparator: { value: "_", meaning: "Between the language and the region of a locale, as Java and Android write it" },
   },
 })
+
+/** The language the symbols of units are written in: the same in most languages, as the SI writes them. */
+export const SymbolsLanguage = decision<{ tag: string }>({ owner: "trame", value: { tag: "en-GB" } })
+
+/**
+ * Symbols of units
+ * A number followed by the symbol of its unit, as the SI and the custom of each writes it: 15 min, 2 h, 30 s, 50%.
+ */
+export const UnitSymbols = catalog({
+  owner: "trame",
+  language: SymbolsLanguage,
+  messages: () => ({
+    second: (n: string) => `${n} s`,
+    minute: (n: string) => `${n} min`,
+    hour: (n: string) => `${n} h`,
+    percent: (n: string) => `${n}%`,
+  }),
+})
+
+/**
+ * Time
+ * How long something lasts, counted in seconds; a minute is 60 of them and an hour 3,600 (the units accepted for use
+ * with the SI).
+ */
+export const Time = quantity({
+  owner: "trame",
+  serves: [CitedNotCopied],
+  source: "BIPM, The International System of Units (SI Brochure, 9th edition), Tables 2 and 8",
+  url: "https://www.bipm.org/en/publications/si-brochure",
+  units: { second: 1, minute: 60, hour: 3600 },
+  written: UnitSymbols,
+})
+
+/** A value of time, counted in seconds. */
+export type Duration = Quantity<typeof Time>
+/** A duration from a number of seconds, of minutes, of hours: `min(15)`. */
+export const { second: s, minute: min, hour: h } = unitsOf(Time)
+
+/**
+ * Ratio
+ * A part of a whole, a number without dimension (a half is 0.5), written as a percentage: a hundredth is one percent.
+ */
+export const Ratio = quantity({
+  owner: "trame",
+  serves: [CitedNotCopied],
+  source: "BIPM, The International System of Units (SI Brochure, 9th edition), § 5.4.7",
+  url: "https://www.bipm.org/en/publications/si-brochure",
+  units: { percent: 0.01 },
+  ratio: true,
+  written: UnitSymbols,
+})
+
+/** A ratio: a part of a whole, which multiplies any quantity without changing what it measures. */
+export type Share = Quantity<typeof Ratio>
+/** A ratio from a percentage: `pct(50)` is a half. */
+export const { percent: pct } = unitsOf(Ratio)

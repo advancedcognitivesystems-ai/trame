@@ -82,6 +82,7 @@ export const NodeEvents = standard({
   constants: {
     data: { value: "data", meaning: "A readable stream gives a chunk of what it reads" },
     close: { value: "close", meaning: "A stream, a request or a child process is closed: nothing more will come" },
+    end: { value: "end", meaning: "A readable stream has nothing more to give: what it read is whole" },
     exit: { value: "exit", meaning: "A child process ended, with its exit code" },
     change: { value: "change", meaning: "fs.watch: a file under what is watched changed" },
     error: { value: "error", meaning: "A stream failed" },

@@ -52,7 +52,10 @@ export interface ProjectFiles {
  * Project files
  * Reads, writes and copies the files of the project, and gives a file's fingerprint.
  */
-export const Files = port<ProjectFiles>({ owner: "trame", declaredEffects: ["read", "write"] })
+export const Files = port<ProjectFiles>({
+  owner: "trame",
+  declaredEffects: { exists: ["read"], read: ["read"], fingerprint: ["read"], write: ["write"], copy: ["read", "write"] },
+})
 
 /** What a scenario reads of the files: those written, by path. */
 export interface FilesWritten {
@@ -106,6 +109,8 @@ export interface BrowserPage {
   text(selector: string): Promise<string | undefined>
   /** Clicks the first element a selector finds. */
   click(selector: string): Promise<void>
+  /** Chooses, in the first list a selector finds (a select), the option of this value. */
+  choose(selector: string, value: string): Promise<void>
   /** Lets the page run for a while, in seconds. */
   wait(seconds: number): Promise<void>
   close(): Promise<void>
@@ -121,13 +126,18 @@ export interface Browser {
  * Headless browser
  * Opens a page the project delivered, without a screen, and answers what it shows.
  */
-export const HeadlessBrowser = port<Browser>({ owner: "trame", declaredEffects: ["process", "display", "time"] })
+export const HeadlessBrowser = port<Browser>({ owner: "trame", declaredEffects: ["process", "display", "time", "network", "asynchronous"] })
 
 /**
  * Playwright
- * Drives Chromium without a screen: the version whose browser the machine has.
+ * Drives Chromium without a screen: the version whose browser the machine has. Once installed, it installs the Chromium
+ * it drives, with what the system needs to run it: a machine that runs a check of the page does it first.
  */
-export const PlaywrightPackage = pkg({ owner: "trame", packageName: "playwright", version: "1.56.0", url: "https://www.npmjs.com/package/playwright" })
+export const PlaywrightPackage = pkg({
+  owner: "trame", packageName: "playwright", version: "1.56.0", url: "https://www.npmjs.com/package/playwright",
+  prepare: "npx playwright install --with-deps chromium",
+  declaredEffects: ["process", "display", "network", "time", "asynchronous"],
+})
 
 /**
  * Playwright's API
@@ -179,6 +189,8 @@ export interface ScriptedPage {
 export interface BrowserScript {
   show(path: string, page: ScriptedPage): void
   clicks(): readonly string[]
+  /** The options chosen, each with the list it was chosen in. */
+  choices(): readonly { selector: string; value: string }[]
 }
 
 /**
@@ -198,9 +210,11 @@ export const BrowserInMemory = fn({
   body: ({ counts }) => {
     const pages = new Map<string, ScriptedPage>()
     const clicked: string[] = []
+    const chosen: { selector: string; value: string }[] = []
     return {
       show: (path: string, page: ScriptedPage) => void pages.set(path, page),
       clicks: () => [...clicked],
+      choices: () => [...chosen],
       open: async (path: string) => {
         const page = pages.get(path) ?? { elements: {}, errors: [] }
         return {
@@ -208,6 +222,7 @@ export const BrowserInMemory = fn({
           count: async (selector: string) => page.elements[selector]?.count ?? counts.zero,
           text: async (selector: string) => page.elements[selector]?.text,
           click: async (selector: string) => void clicked.push(selector),
+          choose: async (selector: string, value: string) => void chosen.push({ selector, value }),
           wait: async () => undefined,
           close: async () => undefined,
         }

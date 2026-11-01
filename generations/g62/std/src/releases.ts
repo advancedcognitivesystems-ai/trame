@@ -4,7 +4,7 @@
 // release's own record is written after its sources are copied, so it is not in its own copy.
 
 import { release } from "../../kinds/release"
-import { CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations } from "./product"
+import { CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules } from "./product"
 
 /**
  * Version 0.1.0
@@ -95,4 +95,69 @@ export const R0_7_0 = release({
   fingerprint: "88ea655c5914f2ee",
   language: "shared",
   serves: [CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations],
+})
+
+/**
+ * Version 0.8.0
+ */
+export const R0_8_0 = release({
+  owner: "trame",
+  version: "0.8.0",
+  date: "2026-10-27",
+  what: "Rules a project applies with their parameters (Reaches, NeverReaches, Linked, WithoutEffects, WordsOf); the SDLC's tooling: program commands, project files, a headless browser, each for a machine and in memory; class selectors in CSS",
+  fingerprint: "07a1e5e13baf675b",
+  language: "shared",
+  serves: [CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules],
+})
+
+/**
+ * Version 0.9.0
+ */
+export const R0_9_0 = release({
+  owner: "trame",
+  version: "0.9.0",
+  date: "2026-10-28",
+  what: "The vocabulary Directions for the way a rule follows an edge; what Playwright asks once installed (its Chromium), for the plan of a run elsewhere; the current directory of POSIX",
+  fingerprint: "bb918531117eb046",
+  language: "shared",
+  serves: [CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules],
+})
+
+/**
+ * Version 0.10.0
+ */
+export const R0_10_0 = release({
+  owner: "trame",
+  version: "0.10.0",
+  date: "2026-10-28",
+  what: "Obligations: the families of what a shipment must prove, derived from what it reaches (Verified, Served, Applied, Reviewed, Checked and the vocabulary CheckWays, Ruled, Safe), each with acceptance criteria",
+  fingerprint: "ee326c1d4ec718a5",
+  language: "shared",
+  serves: [CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules],
+})
+
+/**
+ * Version 0.11.0
+ */
+export const R0_11_0 = release({
+  owner: "trame",
+  version: "0.11.0",
+  date: "2026-10-29",
+  what: "Scenarios of its own: an environment Test where it plays what it offers, its realizations kept in memory chosen there, and three scenarios (the seeded draws, the device in memory, the tooling in memory); a check whose program verifies reached code is an obligation of Verified and closes its gap; a page chooses an option of a list (BrowserPage.choose, Playwright's selectOption, recorded in memory); the CSS id selector, the hunk and range separator of unified differences, fs.watch's change event",
+  fingerprint: "1b784454ac5ba502",
+  language: "shared",
+  serves: [CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules],
+})
+
+/**
+ * Version 0.11.1
+ */
+export const R0_11_1 = release({
+  owner: "trame",
+  version: "0.11.1",
+  date: "2026-10-29",
+  what: "Verified obliges only what a machine runs: the scenarios and the checks a program runs; a check made by hand is the family Checked's business, and leaves the gap of what it alone verifies",
+  fingerprint: "e2b6550a84f52c8b",
+  language: "shared",
+  serves: [CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules],
 })

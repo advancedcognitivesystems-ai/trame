@@ -28,9 +28,10 @@ export const ExitStatus = standard({
 export const Posix = standard({
   owner: "trame",
   serves: [CitedNotCopied],
-  source: "POSIX.1-2017, Base Definitions: <signal.h> (SIGINT, SIGTERM), <errno.h> (EPIPE)",
+  source: "POSIX.1-2017, Base Definitions: <signal.h> (SIGINT, SIGTERM), <errno.h> (EPIPE), § 4.13 Pathname Resolution (dot)",
   url: "https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/signal.h.html",
   constants: {
+    currentDirectory: { value: ".", meaning: "The directory a path starts from: a command in it is run as ./name" },
     interrupt: { value: "SIGINT", meaning: "The interruption asked from the terminal (Ctrl-C)" },
     terminate: { value: "SIGTERM", meaning: "The polite request to end" },
     brokenPipe: { value: "EPIPE", meaning: "Writing to a pipe that nobody reads any more (the output piped into head, say)" },
@@ -76,12 +77,14 @@ export const NodeProcessApi = standard({
 export const NodeEvents = standard({
   owner: "trame",
   serves: [CitedNotCopied],
-  source: "Node.js documentation: stream.Readable ('data', 'close', 'error'), ChildProcess ('exit', 'close'), process ('unhandledRejection')",
+  source: "Node.js documentation: stream.Readable ('data', 'close', 'error'), ChildProcess ('exit', 'close'), process ('unhandledRejection'), fs.watch ('change')",
   url: "https://nodejs.org/api/events.html",
   constants: {
     data: { value: "data", meaning: "A readable stream gives a chunk of what it reads" },
     close: { value: "close", meaning: "A stream, a request or a child process is closed: nothing more will come" },
+    end: { value: "end", meaning: "A readable stream has nothing more to give: what it read is whole" },
     exit: { value: "exit", meaning: "A child process ended, with its exit code" },
+    change: { value: "change", meaning: "fs.watch: a file under what is watched changed" },
     error: { value: "error", meaning: "A stream failed" },
     unhandledRejection: { value: "unhandledRejection", meaning: "A promise was rejected and nothing waited for it" },
   },
@@ -113,13 +116,15 @@ export const NodeCli = standard({
 export const NodeModuleSpecifiers = standard({
   owner: "trame",
   serves: [CitedNotCopied],
-  source: "Node.js documentation, ECMAScript modules: Terminology (relative, bare and absolute specifiers)",
+  source: "Node.js documentation, ECMAScript modules: Terminology (relative, bare and absolute specifiers); Packages: Subpath imports",
   url: "https://nodejs.org/api/esm.html#terminology",
   constants: {
     current: { value: "./", meaning: "Opens a relative specifier from the importing file's directory" },
     parent: { value: "../", meaning: "Opens a relative specifier from the directory above" },
     separator: { value: "/", meaning: "Separates the segments of a specifier, as in a URL path, whatever the platform" },
     packages: { value: "node_modules", meaning: "The directory where the packages a project imports are installed" },
+    imports: { value: "#", meaning: "Opens a specifier the package's own import map resolves (subpath imports): #std/algebra" },
+    pattern: { value: "*", meaning: "Stands for the rest of a subpath, in an entry of an import map and in its target" },
   },
 })
 
@@ -157,14 +162,16 @@ export const NpmCli = standard({
 
 /**
  * npm's manifest
- * The file where a project names the packages it depends on, each at its version, for npm to install them.
+ * The file where a project names the packages it depends on, each at its version, for npm to install them, and its
+ * import map: where the specifiers it opens with # lead.
  */
 export const NpmManifest = standard({
   owner: "trame",
   serves: [CitedNotCopied],
-  source: "npm documentation: package.json (dependencies)",
+  source: "npm documentation: package.json (dependencies); Node.js documentation, Packages: \"imports\"",
   url: "https://docs.npmjs.com/cli/configuring-npm/package-json#dependencies",
   constants: {
     dependencies: { value: "dependencies", meaning: "The packages the project needs to run, by name, each at its version" },
+    imports: { value: "imports", meaning: "The package's import map: each specifier opened by # and where it leads" },
   },
 })

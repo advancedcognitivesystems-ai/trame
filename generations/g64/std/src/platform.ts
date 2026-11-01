@@ -57,7 +57,7 @@ export interface Preferences {
  * What the person chose (a language, a pace, a voice turned off), kept on the device between two uses, under a name the
  * product decides.
  */
-export const PreferencesStore = port<Preferences>({ owner: "trame", declaredEffects: ["read", "write"] })
+export const PreferencesStore = port<Preferences>({ owner: "trame", declaredEffects: { get: ["read"], set: ["write"] } })
 
 /**
  * The browser keeps the preferences

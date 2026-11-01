@@ -754,7 +754,7 @@ export const G52 = release({
   date: "2026-10-25",
   what: "The language holds no literal: the kinds take values with their units, texts shown visibly and the percentiles of an objective from the graph, and declare under the prelude's names the fields and edges the engine reads. The prelude presumes no language: the English plural rule, joinList, formatUnit and the default language left it; dates and lists always say their language, and counts follow the plural rules of the catalog's language. The language kind reads the predicates tree-sitter keeps aside, and names the code block of its queries as their standard does.",
   fingerprint: "9f375468ee77a9d9",
-  language: "shared",
+  language: "own",
   archive: "4ecadc2e74354469",
   assembledBy: G51,
 })
@@ -769,7 +769,7 @@ export const G53 = release({
   date: "2026-10-25",
   what: "A literal in a kind or a view is an error: the language follows the rule of the bodies, one error per file with each place, which an assembly refuses.",
   fingerprint: "2d64787b40dd57e2",
-  language: "shared",
+  language: "own",
   archive: "4ecadc2e74354469",
   assembledBy: G52,
 })
@@ -784,7 +784,7 @@ export const G54 = release({
   date: "2026-10-26",
   what: "Libraries: a project imports Trame projects by name and path; their modules join its graph under the library's name, their documents, issues and lock stay their own; the index and the summary count them apart; an advance builds and keeps Trame's libraries",
   fingerprint: "56e47e707e793f47",
-  language: "shared",
+  language: "own",
   archive: "6939523836cb08ef",
   assembledBy: G53,
 })
@@ -799,7 +799,7 @@ export const G55 = release({
   date: "2026-10-26",
   what: "The standard library: std/, a Trame project of its own, holds the structures, the published standards and the design patterns; Trame and the example import it; standards, structures and vocabularies may serve a goal",
   fingerprint: "77532e277299fdaa",
-  language: "shared",
+  language: "own",
   archive: "ecda5f73f142c24f",
   assembledBy: G54,
 })
@@ -814,7 +814,7 @@ export const G56 = release({
   date: "2026-10-26",
   what: "Libraries by name and at a version: code names a library #std/…, trame manifest writes the import map (through a link when the library is outside the package), the compiler is told where each name leads; trame release freezes a library's version with its documents; a project imports a library at a version",
   fingerprint: "50d7db4258ef07d0",
-  language: "shared",
+  language: "own",
   archive: "c159d87e5a49cb9c",
   assembledBy: G55,
 })
@@ -829,7 +829,7 @@ export const G57 = release({
   date: "2026-10-26",
   what: "Delivery: the kind delivery names a component, its environment, a target and where it is written; trame deliver writes a page a browser opens as it is (the program bundled, the style sheets after their variables); the loading of a page and its browser realization move to the standard library",
   fingerprint: "acf2864115f42aba",
-  language: "shared",
+  language: "own",
   archive: "d00b74fb8945d994",
   assembledBy: G56,
 })
@@ -844,7 +844,7 @@ export const G58 = release({
   date: "2026-10-26",
   what: "Data: the kind dataset holds typed rows, the key that names them, the rules each keeps and the languages its texts are written in; a review is evidence tied to the fingerprint of what was seen, which the engine gives the kinds (lib.fingerprint)",
   fingerprint: "7a4c300ef140b947",
-  language: "shared",
+  language: "own",
   archive: "cce6c5d4c43d02c8",
   assembledBy: G57,
 })
@@ -859,7 +859,7 @@ export const G59 = release({
   date: "2026-10-26",
   what: "HTML and CSS standards move to the standard library; a catalog may translate another (the same messages, in another language)",
   fingerprint: "78fc84b1b3538077",
-  language: "shared",
+  language: "own",
   archive: "9b0ab6f71de5af6b",
   assembledBy: G58,
 })
@@ -874,7 +874,7 @@ export const G60 = release({
   date: "2026-10-26",
   what: "An issue belongs to whoever raised it: a rule of the project that judges a library's node raises the project's issue; the rule on effects knows the language's own (asynchronous)",
   fingerprint: "fb50c1bf7082eefe",
-  language: "shared",
+  language: "own",
   archive: "9b0ab6f71de5af6b",
   assembledBy: G59,
 })
@@ -889,7 +889,7 @@ export const G61 = release({
   date: "2026-10-26",
   what: "The graph's page names its project: Poselia graph, Standard library graph",
   fingerprint: "7925677d85e42bb0",
-  language: "shared",
+  language: "own",
   archive: "9b0ab6f71de5af6b",
   assembledBy: G60,
 })
@@ -904,7 +904,7 @@ export const G62 = release({
   date: "2026-10-27",
   what: "SDLC in the graph: trame ship and trame evidence, the shipment's environment, an artefact's path from its delivery",
   fingerprint: "160d8b1a169ba24e",
-  language: "shared",
+  language: "own",
   archive: "7f551646aaeefd4a",
   assembledBy: G61,
 })
@@ -919,7 +919,7 @@ export const G63 = release({
   date: "2026-10-27",
   what: "A shipment's pipeline computed once by the engine: trame ship runs it, the views can show it",
   fingerprint: "def179a5fef839e8",
-  language: "shared",
+  language: "own",
   archive: "a4237a44fc085b74",
   assembledBy: G62,
 })
@@ -934,7 +934,7 @@ export const G64 = release({
   date: "2026-10-27",
   what: "Two shipments of a day are two events: evidence replaced only for the same version, a dossier named by its fingerprint",
   fingerprint: "1e3bd4ce10b74b01",
-  language: "shared",
+  language: "own",
   archive: "5f58752909549014",
   assembledBy: G63,
 })
@@ -949,7 +949,7 @@ export const G65 = release({
   date: "2026-10-28",
   what: "The plan of a run elsewhere: what a runner prepares and the words that ship, computed from the graph; an artefact written by a writer of a library",
   fingerprint: "a273888e24830957",
-  language: "shared",
+  language: "own",
   archive: "cf4a8cc55357ac63",
   assembledBy: G64,
 })
@@ -964,7 +964,7 @@ export const G66 = release({
   date: "2026-10-28",
   what: "What a place makes available is what the graph says it publishes, never a default; the plan names what it delivers, where the evidence is, and the words that record a deployment",
   fingerprint: "19892031729e7faf",
-  language: "shared",
+  language: "own",
   archive: "88a097b017197d20",
   assembledBy: G65,
 })
@@ -979,7 +979,7 @@ export const G67 = release({
   date: "2026-10-28",
   what: "A program assembled is fingerprinted with everything it imports: a change in a body changes the candidate's fingerprint",
   fingerprint: "40fc2a709097506c",
-  language: "shared",
+  language: "own",
   archive: "88a097b017197d20",
   assembledBy: G66,
 })
@@ -994,7 +994,7 @@ export const G68 = release({
   date: "2026-10-28",
   what: "Derived obligations: a shipment follows a policy, one obligation per family (std/obligations), and derives what it must prove from what it reaches; the foundations (no literal, a sound graph) are proven by every shipment; a gap blocks or is said, as its obligation says",
   fingerprint: "53a6a93a88e4aea5",
-  language: "shared",
+  language: "own",
   archive: "4596818f4b19624e",
   differences: "differences.diff",
   assembledBy: G67,
@@ -1010,7 +1010,7 @@ export const G69 = release({
   date: "2026-10-29",
   what: "What verifies code is backed by what runs it: a scenario verifies only what it wires (and what that code uses), a check what its program runs on a machine or what its artefacts carry; implementations are verified; trame doctor asks the machine; the graph page ships and is opened in Chromium; programs run with the loader resolved where the engine is installed; a failed check keeps the shipment but not the next build; the search of cycles no longer reports a vertex that only reaches a cycle; a live library's packages are the project's own",
   fingerprint: "5fd0249624d38496",
-  language: "shared",
+  language: "own",
   archive: "4be4b86ee3b6101e",
   assembledBy: G68,
 })
@@ -1025,7 +1025,7 @@ export const G70 = release({
   date: "2026-10-29",
   what: "Evidence expires with the code: the engine fingerprints the code of each node (its declaration as written, its values, the files of its bodies) and gives it to the kinds; trame ship records with each artefact built the code it was made from and with each check the code of its program; an artefact holds while that code is the code as it is, a check while its artefacts do and its program is the one that ran",
   fingerprint: "74775e272a5487e4",
-  language: "shared",
+  language: "own",
   archive: "f87346639e366b6d",
   differences: "differences.diff",
   assembledBy: G69,
@@ -1041,7 +1041,7 @@ export const G71 = release({
   date: "2026-10-29",
   what: "Faster builds: the graph indexes its edges by node, so a query steps through a node's own edges (the view why, which looked for paths through every edge, took a third of a build); the reading of a program by the compiler of TypeScript and the parsing of a file by tree-sitter are kept while the process runs, given again while what they read is as it was. A build of Trame goes from about 460 to about 150 seconds",
   fingerprint: "f6194e7caed45964",
-  language: "shared",
+  language: "own",
   archive: "f87346639e366b6d",
   assembledBy: G70,
 })
@@ -1056,7 +1056,7 @@ export const G72 = release({
   date: "2026-10-29",
   what: "Evidence sealed and tied to its engine: each record of the SDLC carries a seal computed from what it says, and a record changed by hand afterwards is not counted, an error; what a program of the engine builds or checks carries the fingerprint of that engine, which a generation records beside itself (engine.json), and holds while the project pins it; a shipment assembles a program for the environment its artefact names, so the graph page carries the page's program of the engine shipped",
   fingerprint: "0daa44db2de1dd97",
-  language: "shared",
+  language: "own",
   archive: "cb9186370639d1c6",
   assembledBy: G71,
 })
@@ -1071,7 +1071,7 @@ export const G73 = release({
   date: "2026-10-29",
   what: "trame plan says what a build would change, written nowhere; the engine evidence names is the fingerprint of its code, its prelude and its kinds (g72's carried the date of its assembled programs); trame ship judges what it just built by the engine that built it; a shipment builds first the artefacts its components produce (the page's program before the page); a node's code is fingerprinted from its declared data, whatever claim a compilation earlier in the process left applied",
   fingerprint: "66deff0d30098751",
-  language: "shared",
+  language: "own",
   archive: "cb9186370639d1c6",
   differences: "differences.diff",
   assembledBy: G72,
@@ -1087,7 +1087,7 @@ export const G74 = release({
   date: "2026-10-30",
   what: "A run is kept: a scenario played is given back while the code it wires and the files its project reads are as they were (in the process in the scenarios, on disk under .trame/runs on a machine, by engine); the reading of TypeScript and the syntax elements' readings are kept the same way, the kinds' laws in the process; the doctor asks that a run be kept until a file changes",
   fingerprint: "165c3268cf4619b8",
-  language: "shared",
+  language: "own",
   archive: "8181856b27439738",
   assembledBy: G73,
 })
@@ -1102,7 +1102,7 @@ export const G75 = release({
   date: "2026-10-30",
   what: "Dates are real: evidence counts from the day it was given; an export offers the last seven days of the project's history (a version released, evidence given), each with what had been proven by then and what was given that day, the documents that differ only by the date carried once; the day of the scenarios is the 30th of October; the view journal tells the project's history day by day",
   fingerprint: "f34ec41fc249cf4c",
-  language: "shared",
+  language: "own",
   archive: "1deebd97967ac43b",
   assembledBy: G74,
 })
@@ -1117,7 +1117,7 @@ export const G76 = release({
   date: "2026-10-30",
   what: "A graph compiled at a day before today judges evidence as it was given (the code and the engine of that day are not known); a day of history in an export carries its documents and figures, not the views of each node",
   fingerprint: "f1f5af94b6e4092f",
-  language: "shared",
+  language: "own",
   archive: "8115939989b9fc6b",
   assembledBy: G75,
 })
@@ -1132,7 +1132,7 @@ export const G77 = release({
   date: "2026-10-30",
   what: "A build does less: a view runs once (twice when the laws are played), one search finds a node's way to every goal, date formatters are kept, a directory listed in memory does not walk its tree, a file is hashed again only once changed; a run is told apart by the declarations of the nodes it wires as by their bodies; a day of history runs no view of a node",
   fingerprint: "18d8a17fa9d099a8",
-  language: "shared",
+  language: "own",
   archive: "9966fe46b969be85",
   assembledBy: G76,
 })
@@ -1147,7 +1147,7 @@ export const G78 = release({
   date: "2026-10-30",
   what: "The reading of a program by TypeScript is kept apart from its check: a body changed checks the program again but reads its modules again only when one of them changed; what a body says is kept for its text in its project, beyond the process",
   fingerprint: "d2b150f6bb34c5fb",
-  language: "shared",
+  language: "own",
   archive: "9966fe46b969be85",
   assembledBy: G77,
 })
@@ -1162,7 +1162,7 @@ export const G79 = release({
   date: "2026-10-31",
   what: "A requirement's rule is code: written as a body (body, since g79), it receives what it reads as parameters and is held to what holds a body. The engine wires such a rule so that the node called is the rule its dependencies make (given to kinds through their views), builds a node from its body before what its kind gives from its declaration, and refuses to freeze a body amended in force",
   fingerprint: "7ce72f994d90a87d",
-  language: "shared",
+  language: "own",
   archive: "49119db4a1500f21",
   differences: "differences.diff",
   assembledBy: G78,
@@ -1178,7 +1178,7 @@ export const G80 = release({
   date: "2026-10-31",
   what: "Units are quantities of the graph: the engine reads in the types what each declared value measures (Quantity<typeof Time>), refuses code that adds, subtracts or compares two quantities, or multiplies them when neither is a ratio, and writes every value of a quantity in its units with the words of its catalog. trame publish --migrate publishes again the declarations the language changed the form of, with why",
   fingerprint: "3ba22adcd7f03bfb",
-  language: "shared",
+  language: "own",
   archive: "0d666b812cb782bb",
   assembledBy: G79,
 })
@@ -1193,7 +1193,7 @@ export const G81 = release({
   date: "2026-10-31",
   what: "A3: a rule constrains another on examples; the engine says how each rule is called, and two rules that answer the same question for the same need are warned",
   fingerprint: "30942a8095e596ce",
-  language: "shared",
+  language: "own",
   archive: "8be4500a4d9aadd5",
   differences: "differences.diff",
   assembledBy: G80,
@@ -1209,7 +1209,7 @@ export const G82 = release({
   date: "2026-10-31",
   what: "A2, first half: a port's effects method by method, a body has those of the methods it calls; code made of a text refuses the build",
   fingerprint: "ae373c71659a40be",
-  language: "shared",
+  language: "own",
   archive: "99cd2acedf3b14ce",
   assembledBy: G81,
 })
@@ -1224,7 +1224,7 @@ export const G83 = release({
   date: "2026-10-31",
   what: "A2, second half: an implementation is held to what its body reaches (std's PlatformEffects, the packages' declared effects); wiring hands each node a capability limited to the methods it calls",
   fingerprint: "e5498c43cb460e7d",
-  language: "shared",
+  language: "own",
   archive: "d03618584d3ed6d9",
   assembledBy: G82,
 })
@@ -1239,7 +1239,7 @@ export const G84 = release({
   date: "2026-10-31",
   what: "A2 closed: a command another system interprets is typed by its intent (std's Command), made only by std's Commands; a cast that makes one refuses the build",
   fingerprint: "e4b1b57bad050afa",
-  language: "shared",
+  language: "own",
   archive: "1a1128c9e4fd6ebb",
   assembledBy: G83,
 })
@@ -1254,7 +1254,7 @@ export const G85 = release({
   date: "2026-10-31",
   what: "A4a: each kind says how its values change (chosen, cited, code); trame amend says what an amendment would change, then records it where amendments go (the port, in place in the sources); an amendment awaits its owner's approval",
   fingerprint: "d33961c1bb511390",
-  language: "shared",
+  language: "own",
   archive: "3bb158af0204c23b",
   assembledBy: G84,
 })
@@ -1269,7 +1269,7 @@ export const G86 = release({
   date: "2026-10-31",
   what: "A4b: every value amended from the page: in trame dev, a card's chosen and cited values carry an amend button and a form by their type; trame dev prepares the amendment as trame amend does, says what it would change, records it",
   fingerprint: "1b76dfe8c4e36cdd",
-  language: "shared",
+  language: "own",
   archive: "c850998afbba6ca9",
   assembledBy: G85,
 })
@@ -1287,4 +1287,19 @@ export const G87 = release({
   language: "shared",
   archive: "c850998afbba6ca9",
   assembledBy: G86,
+})
+
+/**
+ * Generation 88
+ */
+export const G88 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g88",
+  date: "2026-11-01",
+  what: "E1b: the compiler is led to the language's files by its names (#trame/* in TypeScript's paths, to the files where they are, never through a link); trame init starts a project: its configuration (the generation that runs, the libraries the language's home uses), its first module with its goal, the guide for agents and the skill, then its manifest",
+  fingerprint: "abbc9d8c61c5829e",
+  language: "shared",
+  archive: "c850998afbba6ca9",
+  assembledBy: G87,
 })

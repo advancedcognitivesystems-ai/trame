@@ -23,6 +23,7 @@ const body: BodyOf<typeof PlaywrightBrowser> = ({ chromium, api, counts }) => {
         count: (selector) => page.locator(selector).count(),
         text: async (selector) => ((await page.locator(selector).count()) > counts.zero ? (await page.locator(selector).first().textContent()) ?? undefined : undefined),
         click: (selector) => page.locator(selector).first().click(),
+        choose: async (selector, value) => void (await page.locator(selector).first().selectOption(value)),
         wait: (seconds) => page.waitForTimeout(ms(seconds)),
         close: async () => {
           await context.close()

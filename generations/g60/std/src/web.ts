@@ -95,10 +95,11 @@ export const ServerSentEvents = standard({
 export const UiEvents = standard({
   owner: "trame",
   serves: [CitedNotCopied],
-  source: "W3C, UI Events (§ 3.4 mouse events, § 3.3 focus events, § 3.6 keyboard events), and the HTML Living Standard (input, change, DOMContentLoaded)",
+  source: "W3C, UI Events (§ 3.4 mouse events, § 3.3 focus events, § 3.6 keyboard events), Pointer Events (pointerdown), and the HTML Living Standard (input, change, DOMContentLoaded)",
   url: "https://www.w3.org/TR/uievents/",
   constants: {
     click: { value: "click", meaning: "The person activates an element: a click, a tap" },
+    pointerdown: { value: "pointerdown", meaning: "A finger touches, a pen or a mouse button goes down: the moment of a tap, before it is released (Pointer Events)" },
     keydown: { value: "keydown", meaning: "A key goes down" },
     input: { value: "input", meaning: "The value of a field changes as the person types or picks" },
     change: { value: "change", meaning: "The person settles the value of a control: an option chosen" },
@@ -155,5 +156,36 @@ export const ScreenWakeLockApi = standard({
   url: "https://www.w3.org/TR/screen-wake-lock/",
   constants: {
     screen: { value: "screen", meaning: "The lock that keeps the screen on" },
+  },
+})
+
+/**
+ * Web Speech API
+ * The errors a speech synthesis reports on an utterance: those that only say it was cut short (cancelled, or
+ * interrupted by another), which are not failures of the voice.
+ */
+export const WebSpeechApi = standard({
+  owner: "trame",
+  serves: [CitedNotCopied],
+  source: "W3C Community Group, Web Speech API: § 4.2.9 SpeechSynthesisErrorEvent",
+  url: "https://webaudio.github.io/web-speech-api/#speechsynthesiserrorevent",
+  constants: {
+    canceled: { value: "canceled", meaning: "The utterance was taken off the queue before it started" },
+    interrupted: { value: "interrupted", meaning: "The utterance was cut short by a cancel" },
+  },
+})
+
+/**
+ * Web Audio API
+ * The latency an audio context asks for: "playback", the longest, for sounds that need no precise timing, which leaves
+ * the audio output to the other sounds of the device and spares the battery.
+ */
+export const WebAudioApi = standard({
+  owner: "trame",
+  serves: [CitedNotCopied],
+  source: "W3C, Web Audio API 1.1: § 1.2.4 AudioContextLatencyCategory",
+  url: "https://www.w3.org/TR/webaudio-1.1/#enumdef-audiocontextlatencycategory",
+  constants: {
+    playback: { value: "playback", meaning: "Prioritise sustained playback without interruption over latency and power" },
   },
 })

@@ -1,0 +1,15 @@
+[
+  {
+    "node": "tooling.PlaywrightPackage",
+    "at": "2026-10-27",
+    "source": "audit",
+    "value": 0
+  },
+  {
+    "node": "tooling.PlaywrightPackage",
+    "at": "2026-10-27",
+    "source": "outdated",
+    "value": 0,
+    "note": "1.64.1"
+  }
+]

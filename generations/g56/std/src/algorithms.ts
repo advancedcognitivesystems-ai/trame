@@ -1,10 +1,14 @@
 /** Standard library · Algorithms */
 
+import { code } from "../../trame/kernel"
 import { standard } from "../../kinds/standard"
-import { CitedNotCopied } from "./product"
+import { fn } from "../../kinds/function"
+import { CitedNotCopied, SharedOperations } from "./product"
+import { EcmaScript } from "./ecmascript"
+import { Counts } from "./algebra"
 
 // Algorithms described elsewhere, with their constants: a reproducible generator, a hash of a text, the search for a
-// cycle, a digest.
+// cycle, a digest; and the draws a product makes with the generator.
 
 /**
  * Mulberry32
@@ -66,4 +70,17 @@ export const Sha256 = standard({
   constants: {
     algorithm: { value: "sha256", meaning: "The name Node gives to SHA-256" },
   },
+})
+
+/**
+ * Seeded draws
+ * Numbers drawn between 0 and 1, always the same from the same seed: Mulberry32 from a 32-bit state, the seed a number
+ * or a text hashed into one (multiplicative hashing); an integer drawn between two bounds, both included; an element
+ * of a list drawn by its weight. It touches nothing.
+ */
+export const SeededDraws = fn({
+  owner: "trame",
+  serves: [SharedOperations],
+  deps: { mulberry: Mulberry32, hash: MultiplicativeHash, ecma: EcmaScript, counts: Counts },
+  body: code.file<typeof import("./code/algorithms/seeded-draws").default>("./code/algorithms/seeded-draws.ts"),
 })

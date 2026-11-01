@@ -6,6 +6,7 @@ import { vocabulary, type WordOf } from "../../kinds/vocabulary"
 import { KindName, EdgeName, CheckEdge, ReviewEdge } from "../../trame/kernel"
 import type { GraphSketch, SketchNode, ObligationReach, ObligationFinding } from "../../trame/kernel"
 import { SharedRules } from "./product"
+import { Counts } from "./algebra"
 
 // What a shipment must prove, derived from what it reaches instead of listed by hand. A shipment reaches the artefacts it
 // ships, what produces them, and what its programs wire in their environments; each family below reads that reach on the
@@ -30,10 +31,12 @@ const once = (obliged: { node: string; via: string }[]) => obliged.filter((o, i)
  * by hand is the family Checked's business, and proves nothing a machine can run.
  */
 export const Verified = requirement({
+  owner: "trame",
   refines: [SharedRules],
-  rule: (sketch: GraphSketch, reach: ObligationReach, p: { kinds: readonly string[] }): ObligationFinding => ({
+  deps: { counts: Counts },
+  body: ({ counts }) => (sketch: GraphSketch, reach: ObligationReach, p: { kinds: readonly string[] }): ObligationFinding => ({
     obliged: once(reach.reached.flatMap((r) => verifiedBy(sketch, r).map((s) => ({ node: s, via: r })))),
-    gaps: reach.reached.filter((r) => p.kinds.includes(kindOf(sketch, r) ?? "") && verifiedBy(sketch, r).length === 0),
+    gaps: reach.reached.filter((r) => p.kinds.some((k) => k === kindOf(sketch, r)) && counts.isEmpty(verifiedBy(sketch, r))),
   }),
 })
 
@@ -43,8 +46,9 @@ export const Verified = requirement({
  * goals. Every requirement that refines those goals or those requirements, at any depth, is to prove.
  */
 export const Served = requirement({
+  owner: "trame",
   refines: [SharedRules],
-  rule: (sketch: GraphSketch, reach: ObligationReach): ObligationFinding => {
+  body: () => (sketch: GraphSketch, reach: ObligationReach): ObligationFinding => {
     const up = (from: string, seen = new Set<string>()): Set<string> => {
       for (const to of [...edgesFrom(sketch, from, EdgeName.serves), ...edgesFrom(sketch, from, EdgeName.refines)]) {
         if (seen.has(to)) continue
@@ -78,8 +82,9 @@ export const Served = requirement({
  * Each ADR that a node the shipment reaches applies is to prove.
  */
 export const Applied = requirement({
+  owner: "trame",
   refines: [SharedRules],
-  rule: (sketch: GraphSketch, reach: ObligationReach): ObligationFinding => ({
+  body: () => (sketch: GraphSketch, reach: ObligationReach): ObligationFinding => ({
     obliged: once(reach.reached.flatMap((r) => edgesTo(sketch, r, EdgeName.appliedBy).filter((a) => kindOf(sketch, a) === KindName.adr).map((a) => ({ node: a, via: r })))),
     gaps: [],
   }),
@@ -90,12 +95,14 @@ export const Applied = requirement({
  * Each review of a dataset the shipment reaches is to prove. A reached dataset that no review reviews is a gap.
  */
 export const Reviewed = requirement({
+  owner: "trame",
   refines: [SharedRules],
-  rule: (sketch: GraphSketch, reach: ObligationReach): ObligationFinding => {
+  deps: { counts: Counts },
+  body: ({ counts }) => (sketch: GraphSketch, reach: ObligationReach): ObligationFinding => {
     const datasets = reach.reached.filter((r) => kindOf(sketch, r) === KindName.dataset)
     return {
       obliged: once(datasets.flatMap((d) => edgesTo(sketch, d, ReviewEdge.of).filter((v) => kindOf(sketch, v) === KindName.review).map((v) => ({ node: v, via: d })))),
-      gaps: datasets.filter((d) => edgesTo(sketch, d, ReviewEdge.of).length === 0),
+      gaps: datasets.filter((d) => counts.isEmpty(edgesTo(sketch, d, ReviewEdge.of))),
     }
   },
 })
@@ -121,10 +128,13 @@ export type CheckWay = WordOf<typeof CheckWays>
  * Each check of an artefact the shipment ships is to prove: those a program runs, or all of them.
  */
 export const Checked = requirement({
+  owner: "trame",
   refines: [SharedRules],
-  rule: (sketch: GraphSketch, reach: ObligationReach, p: { by: CheckWay }): ObligationFinding => ({
+  deps: { counts: Counts },
+  constants: { every: { value: "all", meaning: "The word of CheckWays that takes every check of the artefacts, those made by hand too" } },
+  body: ({ counts, every }) => (sketch: GraphSketch, reach: ObligationReach, p: { by: CheckWay }): ObligationFinding => ({
     obliged: once(reach.shipped.flatMap((a) => edgesTo(sketch, a, CheckEdge.on)
-      .filter((c) => kindOf(sketch, c) === KindName.check && (p.by === "all" || edgesFrom(sketch, c, CheckEdge.runs).length > 0))
+      .filter((c) => kindOf(sketch, c) === KindName.check && (p.by === every || counts.any(edgesFrom(sketch, c, CheckEdge.runs))))
       .map((c) => ({ node: c, via: a })))),
     gaps: [],
   }),
@@ -135,8 +145,9 @@ export const Checked = requirement({
  * Each rule of the project is to prove: none broken.
  */
 export const Ruled = requirement({
+  owner: "trame",
   refines: [SharedRules],
-  rule: (sketch: GraphSketch): ObligationFinding => ({
+  body: () => (sketch: GraphSketch): ObligationFinding => ({
     obliged: sketch.nodes.filter((n) => n.kind === KindName.rule && n.library === undefined).map((n) => ({ node: n.ref, via: n.ref })),
     gaps: [],
   }),
@@ -147,8 +158,9 @@ export const Ruled = requirement({
  * Each package a node the shipment reaches uses is to prove: installed at its version, without a known vulnerability.
  */
 export const Safe = requirement({
+  owner: "trame",
   refines: [SharedRules],
-  rule: (sketch: GraphSketch, reach: ObligationReach): ObligationFinding => ({
+  body: () => (sketch: GraphSketch, reach: ObligationReach): ObligationFinding => ({
     obliged: once(reach.reached.flatMap((r) => edgesFrom(sketch, r, EdgeName.packages).filter((p) => kindOf(sketch, p) === KindName.package).map((p) => ({ node: p, via: r })))),
     gaps: [],
   }),

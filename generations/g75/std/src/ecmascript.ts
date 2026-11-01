@@ -105,6 +105,22 @@ export const EcmaScriptReservedWords = vocabulary({
 })
 
 /**
+ * Text run as code
+ * What makes code of a text while a program runs, in ECMA-262 2024: the global function eval (§ 19.2.1), the Function
+ * constructor (§ 20.2.1.1), and the property that leads from any value to its constructor, and so to Function's
+ * (§ 20.1.3.1, Object.prototype.constructor). Code made of a text escapes every check made on the code as written.
+ */
+export const TextAsCode = vocabulary({
+  owner: "trame",
+  serves: [CitedNotCopied],
+  words: {
+    eval: "Runs a text as code (§ 19.2.1)",
+    Function: "Makes a function of a text (§ 20.2.1.1)",
+    constructor: "Leads from any value to its constructor, Function's among them (§ 20.1.3.1)",
+  },
+})
+
+/**
  * Unicode escape of a text
  * A character a text shows only as an escape: a backslash, u, and four hexadecimal digits (ECMA-262, UnicodeEscapeSequence;
  * JSON writes the same).

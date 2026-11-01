@@ -52,7 +52,10 @@ export interface ProjectFiles {
  * Project files
  * Reads, writes and copies the files of the project, and gives a file's fingerprint.
  */
-export const Files = port<ProjectFiles>({ owner: "trame", declaredEffects: ["read", "write"] })
+export const Files = port<ProjectFiles>({
+  owner: "trame",
+  declaredEffects: { exists: ["read"], read: ["read"], fingerprint: ["read"], write: ["write"], copy: ["read", "write"] },
+})
 
 /** What a scenario reads of the files: those written, by path. */
 export interface FilesWritten {
@@ -123,7 +126,7 @@ export interface Browser {
  * Headless browser
  * Opens a page the project delivered, without a screen, and answers what it shows.
  */
-export const HeadlessBrowser = port<Browser>({ owner: "trame", declaredEffects: ["process", "display", "time"] })
+export const HeadlessBrowser = port<Browser>({ owner: "trame", declaredEffects: ["process", "display", "time", "network", "asynchronous"] })
 
 /**
  * Playwright
@@ -133,6 +136,7 @@ export const HeadlessBrowser = port<Browser>({ owner: "trame", declaredEffects: 
 export const PlaywrightPackage = pkg({
   owner: "trame", packageName: "playwright", version: "1.56.0", url: "https://www.npmjs.com/package/playwright",
   prepare: "npx playwright install --with-deps chromium",
+  declaredEffects: ["process", "display", "network", "time", "asynchronous"],
 })
 
 /**

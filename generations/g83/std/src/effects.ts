@@ -1,8 +1,9 @@
 /** Standard library · Effects */
 
-import { LanguageEffect } from "../../trame/kernel"
+import { LanguageEffect, CommandMark } from "../../trame/kernel"
 import { vocabulary, type WordOf } from "../../kinds/vocabulary"
 import { decision } from "../../kinds/decision"
+import { fn } from "../../kinds/function"
 import { RealizedOnce } from "./product"
 
 /**
@@ -152,4 +153,27 @@ export const PlatformEffects = decision<PlatformReach>({
     },
     globalObjects: ["globalThis", "self"],
   },
+})
+
+/**
+ * A command another system interprets (a SQL statement, a shell line, a URL), marked with what it may do: a port's
+ * method that takes one says which (`read(sql: Command<"read">)`). A text is not a command: TypeScript refuses it where
+ * a command is expected, and a cast that makes one refuses the build, but here, where the command's type is declared.
+ */
+export type Command<E extends Effect> = string & { readonly [CommandMark]: E }
+
+/** What makes commands: for each word of effects, a command of that intent from its text. */
+export type CommandMaker = { readonly [E in WordOf<typeof Effects>]: (text: string) => Command<E> }
+
+/**
+ * Commands
+ * Makes a command from its text, marked with what it may do: the only place a command is made. The code that receives
+ * it is the code that makes commands (a dialect of SQL from its statements), and what a command made as a read really
+ * does is proven where it runs: on a resource that refuses the rest, by a scenario that tries.
+ */
+export const Commands = fn({
+  owner: "trame",
+  serves: [RealizedOnce],
+  deps: { effects: Effects },
+  body: ({ effects }) => Object.fromEntries(effects.map((e) => [e, (text: string) => text])) as unknown as CommandMaker,
 })

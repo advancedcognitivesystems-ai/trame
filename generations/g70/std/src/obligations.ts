@@ -6,6 +6,7 @@ import { vocabulary, type WordOf } from "../../kinds/vocabulary"
 import { KindName, EdgeName, CheckEdge, ReviewEdge } from "../../trame/kernel"
 import type { GraphSketch, SketchNode, ObligationReach, ObligationFinding } from "../../trame/kernel"
 import { SharedRules } from "./product"
+import { Counts } from "./algebra"
 
 // What a shipment must prove, derived from what it reaches instead of listed by hand. A shipment reaches the artefacts it
 // ships, what produces them, and what its programs wire in their environments; each family below reads that reach on the
@@ -17,20 +18,25 @@ import { SharedRules } from "./product"
 const edgesFrom = (sketch: GraphSketch, from: string, name: string) => sketch.edges.filter((e) => e.from === from && e.name === name).map((e) => e.to)
 const edgesTo = (sketch: GraphSketch, to: string, name: string) => sketch.edges.filter((e) => e.to === to && e.name === name).map((e) => e.from)
 const kindOf = (sketch: GraphSketch, ref: string) => sketch.nodes.find((n) => n.ref === ref)?.kind
+/** What a machine verifies a node with: the scenarios, and the checks a program runs (one made by hand is not). */
+const verifiedBy = (sketch: GraphSketch, ref: string) => edgesTo(sketch, ref, EdgeName.verifies).filter((s) =>
+  kindOf(sketch, s) === KindName.scenario || (kindOf(sketch, s) === KindName.check && edgesFrom(sketch, s, CheckEdge.runs).length > 0))
 /** The nodes to prove, once each: the first reached node that brought one in stays its reason. */
 const once = (obliged: { node: string; via: string }[]) => obliged.filter((o, i) => obliged.findIndex((x) => x.node === o.node) === i)
 
 /**
  * The code a shipment ships is verified
  * Each scenario that verifies a node the shipment reaches, and each check whose program verifies one on a machine, is to
- * prove. A reached node of the kinds named (entry points, functions…) that nothing verifies is a gap.
+ * prove. A reached node of the kinds named (entry points, functions…) that none of them verifies is a gap: a check made
+ * by hand is the family Checked's business, and proves nothing a machine can run.
  */
 export const Verified = requirement({
+  owner: "trame",
   refines: [SharedRules],
-  rule: (sketch: GraphSketch, reach: ObligationReach, p: { kinds: readonly string[] }): ObligationFinding => ({
-    obliged: once(reach.reached.flatMap((r) => edgesTo(sketch, r, EdgeName.verifies)
-      .filter((s) => kindOf(sketch, s) === KindName.scenario || kindOf(sketch, s) === KindName.check).map((s) => ({ node: s, via: r })))),
-    gaps: reach.reached.filter((r) => p.kinds.includes(kindOf(sketch, r) ?? "") && edgesTo(sketch, r, EdgeName.verifies).length === 0),
+  deps: { counts: Counts },
+  body: ({ counts }) => (sketch: GraphSketch, reach: ObligationReach, p: { kinds: readonly string[] }): ObligationFinding => ({
+    obliged: once(reach.reached.flatMap((r) => verifiedBy(sketch, r).map((s) => ({ node: s, via: r })))),
+    gaps: reach.reached.filter((r) => p.kinds.some((k) => k === kindOf(sketch, r)) && counts.isEmpty(verifiedBy(sketch, r))),
   }),
 })
 
@@ -40,8 +46,9 @@ export const Verified = requirement({
  * goals. Every requirement that refines those goals or those requirements, at any depth, is to prove.
  */
 export const Served = requirement({
+  owner: "trame",
   refines: [SharedRules],
-  rule: (sketch: GraphSketch, reach: ObligationReach): ObligationFinding => {
+  body: () => (sketch: GraphSketch, reach: ObligationReach): ObligationFinding => {
     const up = (from: string, seen = new Set<string>()): Set<string> => {
       for (const to of [...edgesFrom(sketch, from, EdgeName.serves), ...edgesFrom(sketch, from, EdgeName.refines)]) {
         if (seen.has(to)) continue
@@ -75,8 +82,9 @@ export const Served = requirement({
  * Each ADR that a node the shipment reaches applies is to prove.
  */
 export const Applied = requirement({
+  owner: "trame",
   refines: [SharedRules],
-  rule: (sketch: GraphSketch, reach: ObligationReach): ObligationFinding => ({
+  body: () => (sketch: GraphSketch, reach: ObligationReach): ObligationFinding => ({
     obliged: once(reach.reached.flatMap((r) => edgesTo(sketch, r, EdgeName.appliedBy).filter((a) => kindOf(sketch, a) === KindName.adr).map((a) => ({ node: a, via: r })))),
     gaps: [],
   }),
@@ -87,12 +95,14 @@ export const Applied = requirement({
  * Each review of a dataset the shipment reaches is to prove. A reached dataset that no review reviews is a gap.
  */
 export const Reviewed = requirement({
+  owner: "trame",
   refines: [SharedRules],
-  rule: (sketch: GraphSketch, reach: ObligationReach): ObligationFinding => {
+  deps: { counts: Counts },
+  body: ({ counts }) => (sketch: GraphSketch, reach: ObligationReach): ObligationFinding => {
     const datasets = reach.reached.filter((r) => kindOf(sketch, r) === KindName.dataset)
     return {
       obliged: once(datasets.flatMap((d) => edgesTo(sketch, d, ReviewEdge.of).filter((v) => kindOf(sketch, v) === KindName.review).map((v) => ({ node: v, via: d })))),
-      gaps: datasets.filter((d) => edgesTo(sketch, d, ReviewEdge.of).length === 0),
+      gaps: datasets.filter((d) => counts.isEmpty(edgesTo(sketch, d, ReviewEdge.of))),
     }
   },
 })
@@ -118,10 +128,13 @@ export type CheckWay = WordOf<typeof CheckWays>
  * Each check of an artefact the shipment ships is to prove: those a program runs, or all of them.
  */
 export const Checked = requirement({
+  owner: "trame",
   refines: [SharedRules],
-  rule: (sketch: GraphSketch, reach: ObligationReach, p: { by: CheckWay }): ObligationFinding => ({
+  deps: { counts: Counts },
+  constants: { every: { value: "all", meaning: "The word of CheckWays that takes every check of the artefacts, those made by hand too" } },
+  body: ({ counts, every }) => (sketch: GraphSketch, reach: ObligationReach, p: { by: CheckWay }): ObligationFinding => ({
     obliged: once(reach.shipped.flatMap((a) => edgesTo(sketch, a, CheckEdge.on)
-      .filter((c) => kindOf(sketch, c) === KindName.check && (p.by === "all" || edgesFrom(sketch, c, CheckEdge.runs).length > 0))
+      .filter((c) => kindOf(sketch, c) === KindName.check && (p.by === every || counts.any(edgesFrom(sketch, c, CheckEdge.runs))))
       .map((c) => ({ node: c, via: a })))),
     gaps: [],
   }),
@@ -132,8 +145,9 @@ export const Checked = requirement({
  * Each rule of the project is to prove: none broken.
  */
 export const Ruled = requirement({
+  owner: "trame",
   refines: [SharedRules],
-  rule: (sketch: GraphSketch): ObligationFinding => ({
+  body: () => (sketch: GraphSketch): ObligationFinding => ({
     obliged: sketch.nodes.filter((n) => n.kind === KindName.rule && n.library === undefined).map((n) => ({ node: n.ref, via: n.ref })),
     gaps: [],
   }),
@@ -144,8 +158,9 @@ export const Ruled = requirement({
  * Each package a node the shipment reaches uses is to prove: installed at its version, without a known vulnerability.
  */
 export const Safe = requirement({
+  owner: "trame",
   refines: [SharedRules],
-  rule: (sketch: GraphSketch, reach: ObligationReach): ObligationFinding => ({
+  body: () => (sketch: GraphSketch, reach: ObligationReach): ObligationFinding => ({
     obliged: once(reach.reached.flatMap((r) => edgesFrom(sketch, r, EdgeName.packages).filter((p) => kindOf(sketch, p) === KindName.package).map((p) => ({ node: p, via: r })))),
     gaps: [],
   }),
@@ -178,9 +193,14 @@ export const VerifiedCriteria = acceptance({
     criterion("The scenarios verifying the reached code are to prove", () => refs(Verified(fixture, shipping, { kinds: ["entry", "function"] })) === "Home")
     criterion("Reached code no scenario verifies, of the kinds named, is a gap", () => Verified(fixture, shipping, { kinds: ["entry", "function"] }).gaps.join(" ") === "Draw")
     criterion("A check whose program verifies reached code is to prove, and closes its gap", () => {
-      const machine = sketch([["Disk", "implementation"], ["Runs", "check"]], [["Runs", "verifies", "Disk"]])
+      const machine = sketch([["Disk", "implementation"], ["Runs", "check"], ["Doctor", "entry"]], [["Runs", "verifies", "Disk"], ["Runs", "runs", "Doctor"]])
       const found = Verified(machine, { shipped: [], reached: ["Disk"] }, { kinds: ["implementation"] })
       return refs(found) === "Runs" && found.gaps.length === 0
+    })
+    criterion("A check made by hand is not to prove here, and leaves the gap", () => {
+      const hand = sketch([["Bowl", "implementation"], ["Phone", "check"]], [["Phone", "verifies", "Bowl"]])
+      const found = Verified(hand, { shipped: [], reached: ["Bowl"] }, { kinds: ["implementation"] })
+      return refs(found) === "" && found.gaps.join(" ") === "Bowl"
     })
     criterion("A node is to prove once, for the first reached node that brought it in", () => {
       const twice = sketch([["S", "scenario"], ["A", "entry"], ["B", "entry"]], [["S", "verifies", "A"], ["S", "verifies", "B"]])

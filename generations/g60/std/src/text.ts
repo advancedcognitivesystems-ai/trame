@@ -73,5 +73,7 @@ export const UnifiedDiff = standard({
     newFile: { value: "+++", meaning: "Names the second file of a pair" },
     removed: { value: "-", meaning: "Begins a line of the first file that the second does not have" },
     added: { value: "+", meaning: "Begins a line of the second file that the first does not have" },
+    hunk: { value: "@@", meaning: "Opens and closes the ranges of a hunk: the lines of each file it covers" },
+    rangeSeparator: { value: ",", meaning: "Separates the first line of a range from the number of its lines" },
   },
 })
