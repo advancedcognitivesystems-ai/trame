@@ -320,6 +320,8 @@ const body = (deps: Deps) => {
     // And the language's names (since g88), to its files where they are: through the link of the package, the compiler
     // would read the kinds and the kernel a second time, under another path, and two kernels' types never match.
     for (const [name, module] of Object.entries(deps.names.modules)) paths[imports + deps.names.name + separator + name] = [join(deps.prelude.root, module)]
+    // Node.js is led the same way, for the files of the project and of its libraries (since g92).
+    loader.lead(Object.fromEntries(libraries.map((lib) => [lib.name, join(lib.root, sources)])), [root, ...libraries.map((lib) => lib.root)])
     const { infos: analysis, moduleTitle, rests, typeErrors, quantityErrors, uses: used, textAsCode, reaches: reachedBy, forgedCommands } = analyze(modules, extra, root, paths)
     // The nodes of the project and of its libraries: those their modules export. The registry of the kernel is shared
     // by the whole process (another project may be loaded into it): it is not read in full.

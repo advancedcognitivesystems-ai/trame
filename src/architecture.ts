@@ -113,6 +113,11 @@ export type Paths = Pick<typeof import("node:path"), "join" | "resolve" | "relat
 export interface ModuleLoader {
   /** Runs a TypeScript module and returns what it exports. */
   import(file: string): Promise<Record<string, unknown>>
+  /**
+   * Leads the names of the libraries a project imports (#std/algebra) to their sources, for the files of the project and
+   * of its libraries (since g92): a library published once reaches the libraries of whoever imports it, as a peer.
+   */
+  lead(libraries: Readonly<Record<string, string>>, within: readonly string[]): void
 }
 export type TypeScriptCompiler = typeof import("typescript")
 export type Hashing = Pick<typeof import("node:crypto"), "createHash">

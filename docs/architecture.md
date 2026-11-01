@@ -10,7 +10,7 @@
 
 ### The page in a browser
 
-`PageApp` · `src/architecture.ts:537`
+`PageApp` · `src/architecture.ts:542`
 
 What runs in the page Trame writes: it shows the documents of the graph at each date, follows trame dev, and explores the figures too large to be read whole. Assembled for the browser like the command line for a machine: the values of the graph are written into its program, and its implementations are the browser's.
 
@@ -29,7 +29,7 @@ What runs in the page Trame writes: it shows the documents of the graph at each 
 
 ### Trame on the command line
 
-`TrameCli` · `src/architecture.ts:524`
+`TrameCli` · `src/architecture.ts:529`
 
 The `trame` program: build, views, laws, snapshot, publication, export, dev, assembly.
 
@@ -51,7 +51,7 @@ The `trame` program: build, views, laws, snapshot, publication, export, dev, ass
 
 ### Where an amendment goes
 
-`AmendmentPlace` · `src/architecture.ts:289`
+`AmendmentPlace` · `src/architecture.ts:294`
 
 An amendment written by trame amend or from the page is recorded where the project keeps its amendments: a concept, with its strategies. The first writes it in place, in the sources, beside the node it amends; a pull request will be another.
 
@@ -75,7 +75,7 @@ An amendment written by trame amend or from the page is recorded where the proje
 
 ### Bundler
 
-`Bundler` · `src/architecture.ts:421`
+`Bundler` · `src/architecture.ts:426`
 
 Gathers the page's program and what it imports into a single module for the browser.
 
@@ -95,7 +95,7 @@ Gathers the page's program and what it imports into a single module for the brow
 
 ### Clock
 
-`Clock` · `src/architecture.ts:405`
+`Clock` · `src/architecture.ts:410`
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
@@ -113,7 +113,7 @@ Gathers the page's program and what it imports into a single module for the brow
 
 ### Command line
 
-`CommandLine` · `src/architecture.ts:462`
+`CommandLine` · `src/architecture.ts:467`
 
 Exposes Trame's commands: reads the arguments, calls the command, exits with its code.
 
@@ -133,7 +133,7 @@ Exposes Trame's commands: reads the arguments, calls the command, exits with its
 
 ### Compression
 
-`Compression` · `src/architecture.ts:433`
+`Compression` · `src/architecture.ts:438`
 
 A text made smaller for a page to carry: the browser decompresses it.
 
@@ -152,7 +152,7 @@ A text made smaller for a page to carry: the browser decompresses it.
 
 ### Decompression
 
-`Decompression` · `src/architecture.ts:495`
+`Decompression` · `src/architecture.ts:500`
 
 The graph an exported page carries, made whole again by the browser.
 
@@ -171,7 +171,7 @@ The graph an exported page carries, made whole again by the browser.
 
 ### File reading
 
-`FileReading` · `src/architecture.ts:294`
+`FileReading` · `src/architecture.ts:299`
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
@@ -189,7 +189,7 @@ The graph an exported page carries, made whole again by the browser.
 
 ### File trees
 
-`FileTrees` · `src/architecture.ts:450`
+`FileTrees` · `src/architecture.ts:455`
 
 Copies, links, removes and compares files and directories: what an advance does with documents and generations.
 
@@ -218,7 +218,7 @@ Copies, links, removes and compares files and directories: what an advance does 
 
 ### File writing
 
-`FileWriting` · `src/architecture.ts:299`
+`FileWriting` · `src/architecture.ts:304`
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
@@ -236,7 +236,7 @@ Copies, links, removes and compares files and directories: what an advance does 
 
 ### Feed of the graph
 
-`GraphFeed` · `src/architecture.ts:483`
+`GraphFeed` · `src/architecture.ts:488`
 
 The compiled graph the page shows: carried by an exported page, or given by trame dev at each compilation.
 
@@ -262,7 +262,7 @@ The compiled graph the page shows: carried by an exported page, or given by tram
 
 ### Hashing
 
-`Hashing` · `src/architecture.ts:329`
+`Hashing` · `src/architecture.ts:334`
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
@@ -279,7 +279,7 @@ The compiled graph the page shows: carried by an exported page, or given by tram
 
 ### HTTP server
 
-`HttpServer` · `src/architecture.ts:415`
+`HttpServer` · `src/architecture.ts:420`
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
@@ -297,7 +297,7 @@ The compiled graph the page shows: carried by an exported page, or given by tram
 
 ### Results kept
 
-`KeptResults` · `src/architecture.ts:363`
+`KeptResults` · `src/architecture.ts:368`
 
 What a computation found, kept under its key while the process runs. Asked again, the computation finds it there and checks that what it read is as it was before giving it: the reading of a program by the compiler of TypeScript, the parsing of a file by tree-sitter. The scenarios load the same projects again and again; each is read once.
 
@@ -316,7 +316,7 @@ What a computation found, kept under its key while the process runs. Asked again
 
 ### Runs kept
 
-`KeptRuns` · `src/architecture.ts:372`
+`KeptRuns` · `src/architecture.ts:377`
 
 What a run found (a scenario played), kept under the fingerprint of what it ran: given back while the code it runs is as it was and, beyond the process, while the engine and the files the project reads are as they were. A build played Poselia's scenarios eleven times and the example's thirty-six; a shipment compiles Trame's graph a dozen times with the same code.
 
@@ -336,7 +336,7 @@ What a run found (a scenario played), kept under the fingerprint of what it ran:
 
 ### Module loader
 
-`ModuleLoader` · `src/architecture.ts:311`
+`ModuleLoader` · `src/architecture.ts:316`
 
 Runs a module of the graph, of a kind or of a view, and reads what it exports.
 
@@ -356,7 +356,7 @@ Runs a module of the graph, of a kind or of a view, and reads what it exports.
 
 ### Reports on packages
 
-`PackageReports` · `src/architecture.ts:427`
+`PackageReports` · `src/architecture.ts:432`
 
 What the registry says of the packages a project installs: their known vulnerabilities, their latest versions.
 
@@ -376,7 +376,7 @@ What the registry says of the packages a project installs: their known vulnerabi
 
 ### Amendments from the page
 
-`PageAmendments` · `src/architecture.ts:489`
+`PageAmendments` · `src/architecture.ts:494`
 
 What a person amends in the page goes to trame dev, which says first what it would change, then records it.
 
@@ -401,7 +401,7 @@ What a person amends in the page goes to trame dev, which says first what it wou
 
 ### Memory of the page
 
-`PageMemory` · `src/architecture.ts:477`
+`PageMemory` · `src/architecture.ts:482`
 
 The document, the rendering and the node the person was on, kept for their next visit.
 
@@ -426,7 +426,7 @@ The document, the rendering and the node the person was on, kept for their next 
 
 ### Window of the page
 
-`PageWindow` · `src/architecture.ts:471`
+`PageWindow` · `src/architecture.ts:476`
 
 The document the page writes in and hears, and what it asks of the window around it.
 
@@ -446,7 +446,7 @@ The document the page writes in and hears, and what it asks of the window around
 
 ### Paths
 
-`Paths` · `src/architecture.ts:305`
+`Paths` · `src/architecture.ts:310`
 
 Computations on file paths, without touching the files.
 
@@ -465,7 +465,7 @@ Computations on file paths, without touching the files.
 
 ### Prelude
 
-`Prelude` · `src/architecture.ts:281`
+`Prelude` · `src/architecture.ts:286`
 
 The registry of nodes and kinds, and the tooling of frozen programs: what the language shares with the engine.
 
@@ -487,7 +487,7 @@ The registry of nodes and kinds, and the tooling of frozen programs: what the la
 
 ### Process
 
-`Process` · `src/architecture.ts:385`
+`Process` · `src/architecture.ts:390`
 
 The current directory, the environment, and starting other processes.
 
@@ -516,7 +516,7 @@ The current directory, the environment, and starting other processes.
 
 ### Process log
 
-`ProcessLog` · `src/architecture.ts:618`
+`ProcessLog` · `src/architecture.ts:623`
 
 In a scenario: where the next commands run, what the programs started answer, and which were started.
 
@@ -535,7 +535,7 @@ In a scenario: where the next commands run, what the programs started answer, an
 
 ### Programs
 
-`Programs` · `src/architecture.ts:444`
+`Programs` · `src/architecture.ts:449`
 
 Runs another engine (a frozen generation, a candidate) and reads what it prints.
 
@@ -555,7 +555,7 @@ Runs another engine (a frozen generation, a candidate) and reads what it prints.
 
 ### Page resources
 
-`Resources` · `src/architecture.ts:438`
+`Resources` · `src/architecture.ts:443`
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
@@ -572,7 +572,7 @@ Runs another engine (a frozen generation, a candidate) and reads what it prints.
 
 ### Where runs are kept
 
-`RunStore` · `src/architecture.ts:379`
+`RunStore` · `src/architecture.ts:384`
 
 The runs of a project under their keys: in the process (the scenarios of the scenarios, the engine in memory), or on disk beyond it, where the next build, the assembly after it and the generation that rebuilds the same graph find them.
 
@@ -592,7 +592,7 @@ The runs of a project under their keys: in the process (the scenarios of the sce
 
 ### Server log
 
-`ServerLog` · `src/architecture.ts:624`
+`ServerLog` · `src/architecture.ts:629`
 
 In a scenario: asks the server started in memory for a path.
 
@@ -611,7 +611,7 @@ In a scenario: asks the server started in memory for a path.
 
 ### Signatures
 
-`Signatures` · `src/architecture.ts:355`
+`Signatures` · `src/architecture.ts:360`
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
@@ -628,7 +628,7 @@ In a scenario: asks the server started in memory for a path.
 
 ### Syntax trees
 
-`SyntaxTrees` · `src/architecture.ts:318`
+`SyntaxTrees` · `src/architecture.ts:323`
 
 Parses a text with a tree-sitter grammar, and gives back what queries catch in it, as records. The only place that touches tree-sitter: no node of a tree crosses it.
 
@@ -649,7 +649,7 @@ Parses a text with a tree-sitter grammar, and gives back what queries catch in i
 
 ### Terminal
 
-`Terminal` · `src/architecture.ts:397`
+`Terminal` · `src/architecture.ts:402`
 
 The arguments, the outputs, the exit code.
 
@@ -677,7 +677,7 @@ The arguments, the outputs, the exit code.
 
 ### Terminal log
 
-`TerminalLog` · `src/architecture.ts:612`
+`TerminalLog` · `src/architecture.ts:617`
 
 What the engine printed, when the terminal is simulated.
 
@@ -696,7 +696,7 @@ What the engine printed, when the terminal is simulated.
 
 ### Timer
 
-`Timer` · `src/architecture.ts:410`
+`Timer` · `src/architecture.ts:415`
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
@@ -714,7 +714,7 @@ What the engine printed, when the terminal is simulated.
 
 ### TypeScript compiler
 
-`TypeScriptCompiler` · `src/architecture.ts:324`
+`TypeScriptCompiler` · `src/architecture.ts:329`
 
 Reads the code of the graph and checks it.
 
@@ -735,7 +735,7 @@ Reads the code of the graph and checks it.
 
 ### Write log
 
-`WriteLog` · `src/architecture.ts:606`
+`WriteLog` · `src/architecture.ts:611`
 
 What the engine wrote, when writing is simulated.
 
@@ -756,7 +756,7 @@ What the engine wrote, when writing is simulated.
 
 ### Effects come from the vocabulary
 
-`KnownEffects` · `src/architecture.ts:632` · status: **held**
+`KnownEffects` · `src/architecture.ts:637` · status: **held**
 
 A port that declares an effect outside the "Effects" vocabulary, or the effects the language itself reads (LanguageEffect: what is asynchronous), is refused: the rules that read effects would miss it. Every port of the graph is judged, a library's too: its effects reach the components that bind it.
 
@@ -778,7 +778,7 @@ Respected everywhere.
 
 ### Only commands write
 
-`OnlyCommandsWrite` · `src/architecture.ts:560` · status: **held**
+`OnlyCommandsWrite` · `src/architecture.ts:565` · status: **held**
 
 The engine computes what to write; only a command writes it to disk: no function of the engine has the effect of writing, its own or through what it depends on.
 
@@ -799,7 +799,7 @@ Respected everywhere.
 
 ### Rendering does not read the graph
 
-`RenderingWithoutGraph` · `src/architecture.ts:549` · status: **held**
+`RenderingWithoutGraph` · `src/architecture.ts:554` · status: **held**
 
 A renderer receives only the intermediate format: no function of the module rendering reaches the prelude, even from afar through what it depends on.
 
@@ -823,7 +823,7 @@ Respected everywhere.
 
 ### Browser
 
-`Browser` · `src/architecture.ts:518`
+`Browser` · `src/architecture.ts:523`
 
 The browser that opens a page Trame wrote: exported to a file, published, or served by trame dev.
 
@@ -836,7 +836,7 @@ The browser that opens a page Trame wrote: exported to a file, published, or ser
 
 ### Local
 
-`Local` · `src/architecture.ts:503`
+`Local` · `src/architecture.ts:508`
 
 The machine where `trame` is started: real files, real terminal, real clock.
 
@@ -849,7 +849,7 @@ The machine where `trame` is started: real files, real terminal, real clock.
 
 ### Test
 
-`Test` · `src/architecture.ts:512`
+`Test` · `src/architecture.ts:517`
 
 The scenarios: the engine reads the real files of the example (or of the project a scenario enters), but what it writes is kept in memory over them, what it prints too, and the programs it starts answer what the scenario says. The build evaluates here what needs no environment of its own (the examples of syntax elements and languages): in memory, as scenarios are.
 

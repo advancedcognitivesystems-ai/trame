@@ -4,8 +4,9 @@
 // place and the candidate each read a project in their own language. Every other name resolves as Node.js would.
 
 import { registerHooks } from "node:module"
-import { pathToFileURL } from "node:url"
-import { join } from "node:path"
+import { pathToFileURL, fileURLToPath } from "node:url"
+import { join, sep } from "node:path"
+import { existsSync, realpathSync } from "node:fs"
 import type { BodyOf } from "../../../trame/kernel"
 import type { TsxLoader } from "../../platform"
 
@@ -23,13 +24,31 @@ const body: BodyOf<typeof TsxLoader> = ({ prelude, names, specifiers, language }
     }
     return undefined
   }
+  // The libraries of the project being read, and the directories whose files they are led for.
+  let libraries: Readonly<Record<string, string>> = {}
+  let within: readonly string[] = []
+  const library = (specifier: string, parent: string | undefined): string | undefined => {
+    if (!specifier.startsWith(specifiers.imports) || parent === undefined) return undefined
+    const [name, ...rest] = specifier.slice(specifiers.imports.length).split(specifiers.separator)
+    const sources = libraries[name]
+    const from = fileURLToPath(parent)
+    if (sources === undefined || !within.some((dir) => from.startsWith(dir + sep))) return undefined
+    return join(sources, ...rest) + extension
+  }
   registerHooks({
     resolve: (specifier, context, next) => {
-      const file = specifier.startsWith(prefix) ? target(specifier.slice(prefix.length)) : undefined
+      const file = specifier.startsWith(prefix) ? target(specifier.slice(prefix.length)) : library(specifier, context.parentURL)
       return file === undefined ? next(specifier, context) : { url: pathToFileURL(file).href, shortCircuit: true }
     },
   })
-  return { import: async (file) => (await import(pathToFileURL(file).href)) as Record<string, unknown> }
+  return {
+    import: async (file) => (await import(pathToFileURL(file).href)) as Record<string, unknown>,
+    lead: (names, dirs) => {
+      libraries = names
+      // Node.js names a module by its real path: a library reached through a link is within its real directory.
+      within = dirs.map((dir) => (existsSync(dir) ? realpathSync(dir) : dir))
+    },
+  }
 }
 
 export default body
