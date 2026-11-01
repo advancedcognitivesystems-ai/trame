@@ -1,0 +1,249 @@
+{
+  "generated": "2026-11-01",
+  "nodes": [
+    {
+      "id": "angles.Angle",
+      "kind": "quantity",
+      "title": "Angle",
+      "source": "src/angles.ts:25",
+      "fields": {
+        "owner": "ghalaax",
+        "source": "BIPM, The International System of Units (SI Brochure, 9th edition), Table 4 (radian) and Table 8 (degree)",
+        "url": "https://www.bipm.org/en/publications/si-brochure",
+        "units": {
+          "radian": 1,
+          "degree": 0.017453292519943295,
+          "turn": 6.283185307179586
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "angles.AngleSymbols",
+      "kind": "catalog",
+      "title": "How an angle is written in each of its units.",
+      "source": "src/angles.ts:10",
+      "fields": {
+        "owner": "ghalaax",
+        "messages": "(function)"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "product.GeometryWrittenOnce",
+      "kind": "goal",
+      "title": "Geometry written once",
+      "source": "src/product.ts:10",
+      "fields": {
+        "owner": "ghalaax"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "vectors.Axes",
+      "kind": "decision",
+      "title": "The axes",
+      "source": "src/vectors.ts:18",
+      "fields": {
+        "owner": "ghalaax",
+        "value": {
+          "forward": [
+            1,
+            0,
+            0
+          ],
+          "left": [
+            0,
+            1,
+            0
+          ],
+          "up": [
+            0,
+            0,
+            1
+          ]
+        },
+        "rejected": {
+          "Up as the second axis, as three.js has it": "a body on the floor would be measured by its depth; a drawing turns the axes at its own edge",
+          "Left-handed axes": "the cross product would point down, and every rule that turns a direction would change sign"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "vectors.Tolerance",
+      "kind": "decision",
+      "title": "The tolerance",
+      "source": "src/vectors.ts:32",
+      "fields": {
+        "owner": "ghalaax",
+        "value": {
+          "length": 0.000001
+        },
+        "rejected": {
+          "Exact equality": "a point computed two ways differs in its last digits",
+          "A millimetre": "two hands a millimetre apart would be one, which a figure drawn close up shows"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "vectors.Vectors",
+      "kind": "structure",
+      "title": "Vectors",
+      "source": "src/vectors.ts:50",
+      "status": "held",
+      "fields": {
+        "owner": "ghalaax",
+        "constants": {
+          "none": {
+            "value": 0,
+            "meaning": "The coordinate of the origin along each axis: no distance"
+          }
+        },
+        "deps": {
+          "axes": "vectors.Axes",
+          "tolerance": "vectors.Tolerance",
+          "angles": "angles.Angle"
+        },
+        "operations": {
+          "file": "./code/vectors.ts",
+          "language": "typescript"
+        },
+        "laws": [
+          {
+            "says": "Adding is commutative and associative, the origin adds nothing, the difference undoes it",
+            "holds": "(function)"
+          },
+          {
+            "says": "The dot product is symmetric, distributes over addition, and gives a vector's length squared",
+            "holds": "(function)"
+          },
+          {
+            "says": "The cross product is perpendicular to both its factors, and changes sign when they swap",
+            "holds": "(function)"
+          },
+          {
+            "says": "A unit has a length of one and the direction it came from, or is the origin when there was none",
+            "holds": "(function)"
+          },
+          {
+            "says": "A direction makes no angle with itself, a half turn with its opposite, a quarter turn with what it crosses",
+            "holds": "(function)"
+          },
+          {
+            "says": "The axes are right-handed, and forward turned by a quarter turn on the floor is left",
+            "holds": "(function)"
+          },
+          {
+            "says": "Mixing goes from the first at none of the way to the second at all of it, through their middle",
+            "holds": "(function)"
+          }
+        ]
+      },
+      "result": [
+        {
+          "says": "Adding is commutative and associative, the origin adds nothing, the difference undoes it",
+          "draws": 100
+        },
+        {
+          "says": "The dot product is symmetric, distributes over addition, and gives a vector's length squared",
+          "draws": 100
+        },
+        {
+          "says": "The cross product is perpendicular to both its factors, and changes sign when they swap",
+          "draws": 100
+        },
+        {
+          "says": "A unit has a length of one and the direction it came from, or is the origin when there was none",
+          "draws": 100
+        },
+        {
+          "says": "A direction makes no angle with itself, a half turn with its opposite, a quarter turn with what it crosses",
+          "draws": 100
+        },
+        {
+          "says": "The axes are right-handed, and forward turned by a quarter turn on the floor is left",
+          "draws": 100
+        },
+        {
+          "says": "Mixing goes from the first at none of the way to the second at all of it, through their middle",
+          "draws": 100
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "vectors.VectorsAsTriples",
+      "kind": "adr",
+      "title": "A vector is three numbers",
+      "source": "src/vectors.ts:122",
+      "status": "held",
+      "fields": {
+        "owner": "ghalaax",
+        "context": "Poselia's body computed with vectors through helpers written beside its rules, and its angles as numbers of degrees: the next product drawing or moving something would have written them again, and a degree passed where a radian was expected would have been seen by nobody.",
+        "consequences": "A point, a direction, a key of a pose is a Vector: frozen into a program as it is, compared within the tolerance. A rule receives Vectors as a dependency and calls its operations; an angle is a quantity, written in the unit it is thought in (deg(30), turns(0.25)).",
+        "rejected": {
+          "A class with methods": "a value of the graph must be data, which a program carries frozen and a document shows",
+          "three.js's Vector3": "the rules of a body would depend on the library that draws it",
+          "Angles as numbers of degrees": "a computation in radians and a value in degrees would mix without a word"
+        }
+      },
+      "diagnostics": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "angles.Angle",
+      "to": "angles.AngleSymbols",
+      "kind": "written"
+    },
+    {
+      "from": "angles.Angle",
+      "to": "product.GeometryWrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "angles.AngleSymbols",
+      "to": "std/measures.SymbolsLanguage",
+      "kind": "language"
+    },
+    {
+      "from": "vectors.Vectors",
+      "to": "product.GeometryWrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "vectors.Vectors",
+      "to": "vectors.Axes",
+      "kind": "deps"
+    },
+    {
+      "from": "vectors.Vectors",
+      "to": "vectors.Tolerance",
+      "kind": "deps"
+    },
+    {
+      "from": "vectors.Vectors",
+      "to": "angles.Angle",
+      "kind": "deps"
+    },
+    {
+      "from": "vectors.VectorsAsTriples",
+      "to": "product.GeometryWrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "vectors.VectorsAsTriples",
+      "to": "vectors.Vectors",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "vectors.VectorsAsTriples",
+      "to": "angles.Angle",
+      "kind": "appliedBy"
+    }
+  ],
+  "resolutions": [],
+  "diagnostics": []
+}
