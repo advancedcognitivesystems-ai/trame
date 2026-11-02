@@ -63,7 +63,7 @@ flowchart TB
 | 4 | prove | [Poselia's page](sdlc.md#PageFile) | — | the shipment | **unknown** | 29 October 2026 by claude `https://claude.ai/artifact/RMTniA6qYS1hMLJDJm92HY` |
 | 5 | prove | [The page opens](sdlc.md#PageOpens) | [Open the page](sdlc.md#OpenThePage) | [The code shown is verified, a gap said](sdlc.md#CodeVerifiedSaid) via [The browser's stage](stage.md#BrowserStage) | **unknown** | passed, 29 October 2026 by claude  |
 | 6 | prove | [The language of the home page](scenarios.md#HomeLanguage) | — | [The code shown is verified, a gap said](sdlc.md#CodeVerifiedSaid) via [The content the app carries](app.md#CarriedContent) | **held** |  |
-| 7 | prove | [The body stays on the floor](scenarios.md#BodyStaysOnTheFloor) | — | [The code shown is verified, a gap said](sdlc.md#CodeVerifiedSaid) via [The body between two poses](body.md#BodyAt) | **held** |  |
+| 7 | prove | [The body stays on the floor](scenarios.md#BodyStaysOnTheFloor) | — | [The code shown is verified, a gap said](sdlc.md#CodeVerifiedSaid) via [The space of the mat](body.md#MatSpace) | **held** |  |
 | 8 | prove | [Holding the poses](scenarios.md#HoldThePoses) | — | [The code shown is verified, a gap said](sdlc.md#CodeVerifiedSaid) via [The voice the person chose](settings.md#VoiceChoice) | **held** |  |
 | 9 | prove | [The person's breath and voice](scenarios.md#PersonSettings) | — | [The code shown is verified, a gap said](sdlc.md#CodeVerifiedSaid) via [The voice the person chose](settings.md#VoiceChoice) | **held** |  |
 | 10 | prove | [Learning a sequence](scenarios.md#LearnTheSequence) | — | [The code shown is verified, a gap said](sdlc.md#CodeVerifiedSaid) via [The landmarks the person chose](settings.md#MarksChoice) | **held** |  |
@@ -146,6 +146,7 @@ flowchart TB
   n53["Code serves the product<br/><small>Architecture rule</small>"]:::held
   n54["Place the page<br/><small>Entry point</small>"]:::held
   n55["A public version<br/><small>Shipment</small>"]:::unknown
+  n26 -->|Depends on| n35
   n43 -->|Depends on| n40
   n18 -->|Applied by| n48
   n18 -->|Applied by| n45
@@ -158,6 +159,9 @@ flowchart TB
   n6 -->|Verifies| n29
   n6 -->|Verifies| n25
   n6 -->|Verifies| n24
+  n6 -->|Verifies| n26
+  n6 -->|Verifies| n35
+  n6 -->|Verifies| n36
   n6 -->|Depends on| n34
   n10 -->|Verifies| n39
   n10 -->|Verifies| n38
@@ -189,7 +193,6 @@ flowchart TB
   n23 -.->|Depends on| n29
   n23 -.->|Depends on| n25
   n23 -.->|Depends on| n36
-  n26 -.->|Depends on| n35
   n28 -.->|Depends on| n26
   n28 -.->|Depends on| n23
   n29 -.->|Depends on| n36
@@ -219,7 +222,7 @@ flowchart TB
 | 5 | prove | [On a phone](sdlc.md#OnAPhone) | by hand, signed by [People who try it on a phone](sdlc.md#PhoneTesters) | [The page is checked, by hand too](sdlc.md#AllChecks) via [Poselia's page](sdlc.md#PageFile) | **unknown** |  |
 | 6 | prove | [The page opens](sdlc.md#PageOpens) | [Open the page](sdlc.md#OpenThePage) | [The page is checked, by hand too](sdlc.md#AllChecks) via [Poselia's page](sdlc.md#PageFile) | **unknown** | passed, 29 October 2026 by claude  |
 | 7 | prove | [The language of the home page](scenarios.md#HomeLanguage) | — | [The code shown is verified](sdlc.md#CodeVerified) via [The content the app carries](app.md#CarriedContent) | **held** |  |
-| 8 | prove | [The body stays on the floor](scenarios.md#BodyStaysOnTheFloor) | — | [The code shown is verified](sdlc.md#CodeVerified) via [The body between two poses](body.md#BodyAt) | **held** |  |
+| 8 | prove | [The body stays on the floor](scenarios.md#BodyStaysOnTheFloor) | — | [The code shown is verified](sdlc.md#CodeVerified) via [The space of the mat](body.md#MatSpace) | **held** |  |
 | 9 | prove | [Holding the poses](scenarios.md#HoldThePoses) | — | [The code shown is verified](sdlc.md#CodeVerified) via [The voice the person chose](settings.md#VoiceChoice) | **held** |  |
 | 10 | prove | [The person's breath and voice](scenarios.md#PersonSettings) | — | [The code shown is verified](sdlc.md#CodeVerified) via [The voice the person chose](settings.md#VoiceChoice) | **held** |  |
 | 11 | prove | [Learning a sequence](scenarios.md#LearnTheSequence) | — | [The code shown is verified](sdlc.md#CodeVerified) via [The landmarks the person chose](settings.md#MarksChoice) | **held** |  |

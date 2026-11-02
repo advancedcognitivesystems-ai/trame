@@ -6,7 +6,7 @@
 |---|---|---|---|---|
 | A teacher who practises | 0 | 0 | 4 | 0 |
 | People who try it on a phone | 0 | 0 | 1 | 0 |
-| ghalaax | 0 | 0 | 33 | 206 |
+| ghalaax | 0 | 0 | 31 | 207 |
 
 <a id="A teacher who practises"></a>
 
@@ -54,8 +54,6 @@
 | warning | Computes the same kind of answer from the same kind of arguments as “A hand on its way” (ghalaax), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [A foot on its way](body.md#FootOnItsWay) | ghalaax |  |
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A hand on its way](body.md#HandOnItsWay) | ghalaax |  |
 | warning | Computes the same kind of answer from the same kind of arguments as “A foot on its way” (ghalaax), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [A hand on its way](body.md#HandOnItsWay) | ghalaax |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A pose ready to move](body.md#KeyOf) | ghalaax |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [Legs apart](body.md#LegsApart) | ghalaax |  |
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [Every limb reaches](body.md#LimbsReach) | ghalaax |  |
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A leg on its foot](body.md#PlantedLeg) | ghalaax |  |
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A pose rests on what it names](body.md#RestsOnWhatItNames) | ghalaax |  |
@@ -122,12 +120,13 @@
 | [How far a limb keeps from flat](body.md#LimbSlack) | Decision |  |
 | [Every limb reaches](body.md#LimbsReach) | Requirement | **held** |
 | [Criteria of every limb that reaches](body.md#LimbsReachCriteria) | Acceptance criteria | **held** |
-| [The space of the mat](body.md#MatSpace) | Function | **unknown** |
+| [The space of the mat](body.md#MatSpace) | Function | **held** |
 | [How a body moves](body.md#Movement) | Decision |  |
 | [A leg on its foot](body.md#PlantedLeg) | Requirement | **held** |
 | [Criteria of a leg on its foot](body.md#PlantedLegCriteria) | Acceptance criteria | **held** |
 | [A pose rests on what it names](body.md#RestsOnWhatItNames) | Requirement | **held** |
 | [Criteria of a pose that rests on what it names](body.md#RestsOnWhatItNamesCriteria) | Acceptance criteria | **held** |
+| [The names of the sides](body.md#SideNames) | Decision |  |
 | [The legs in front and behind](body.md#SidesOf) | Requirement | **held** |
 | [Criteria of the legs in front and behind](body.md#SidesOfCriteria) | Acceptance criteria | **held** |
 | [Where a spot is](body.md#SpotOn) | Requirement | **held** |

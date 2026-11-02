@@ -207,14 +207,16 @@ Requirement · `HandOnItsWay` · **held**
 Requirement · `KeyOf` · **held**
 
 - Owner: ghalaax
+- Parameters: { trunkOf: (rule), g: body.MatSpace, sides: body.SideNames, texts: std/algebra.Texts }
 - Refines: Practise yoga on one's own, guided
-- Depends on: The trunk from its angles
+- Depends on: The trunk from its angles, The space of the mat, The names of the sides
 
 ### Legs apart
 
 Requirement · `LegsApart` · **held**
 
 - Owner: ghalaax
+- Parameters: {  }
 - Refines: Practise yoga on one's own, guided
 
 ### Every limb reaches
@@ -312,6 +314,14 @@ Decision · `Movement`
 - Decided by: ghalaax
 - Value: { still: 0.02, stride: 0.35, lift: 0.12, footFloor: 0.03, landing: 1, clearance: 0.04, ankleClear: 0.03, kneeGive: 0.04, stepSink: 0.1, wristFloor: 0.04, elbowsOut: 0.25, folded: 0.05 }
 - Rejected: A foot coming down onto its place at 45°, like a hand, a foot stepping far rose 80 cm and swung around the hip; Raising the foot until the knee clears the mat, the leg stopped as the knee neared the mat, then caught up; Turning the thigh and the shin from one pose to the next, the foot went toward the hands, then forward between the arms; Turning the knee outward where it would sink, the knee swung 23 cm to the side
+
+### The names of the sides
+
+Decision · `SideNames`
+
+- Decided by: ghalaax
+- Value: { right: R, left: L }
+- Rejected: The words right and left, the rests of a pose would be longer to write, for no reader but the rules
 
 ### Touching the floor
 
@@ -434,7 +444,7 @@ Acceptance criteria · `TwoBonesCriteria` · **held**
 
 ### The space of the mat
 
-Function · `MatSpace` · **unknown**
+Function · `MatSpace` · **held**
 
 - Owner: ghalaax
 - Parameters: { v: geometry/vectors.Vectors, angle: geometry/angles.Angle }
@@ -1120,7 +1130,7 @@ Scenario · `BodyStaysOnTheFloor` · **held**
 
 - Owner: ghalaax
 - Parameters: { home: app.ShowHome, shown: architecture.ViewsShown, time: std/platform.TimeTurned, moments: scenarios.ScenarioMoments, heights: (rule), touching: body.Touching, movement: body.Movement, words: language.WordsEn, say: scenarios.ScenarioChecks, counts: std/algebra.Counts }
-- Verifies: A practice, The moment of a practice, Play a practice, The body between two poses, The heights of the body's surface, A leg that steps, A leg on its foot, A hand on its way, A foot on its way
+- Verifies: A practice, The moment of a practice, Play a practice, The body between two poses, The heights of the body's surface, A leg that steps, A leg on its foot, A hand on its way, A foot on its way, The space of the mat, A pose ready to move, The trunk from its angles, A limb reaches its end
 - In: Test
 - Depends on: Show the home page, Views shown, Moments a scenario looks at, The heights of the body's surface, Touching the floor, How a body moves, Words in English, What the scenarios check
 

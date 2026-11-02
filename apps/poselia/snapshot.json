@@ -456,7 +456,13 @@
       "status": "held",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {
+          "trunkOf": "(function)",
+          "g": "body.MatSpace",
+          "sides": "body.SideNames",
+          "texts": "std/algebra.Texts"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -476,7 +482,8 @@
       "status": "held",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {},
+        "body": "(function)"
       }
     },
     {
@@ -528,7 +535,7 @@
       "id": "body.MatSpace",
       "kind": "function",
       "title": "The space of the mat",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "deps": {
@@ -607,6 +614,21 @@
       "fields": {
         "owner": "ghalaax",
         "criteria": "(function)"
+      }
+    },
+    {
+      "id": "body.SideNames",
+      "kind": "decision",
+      "title": "The names of the sides",
+      "fields": {
+        "owner": "ghalaax",
+        "value": {
+          "right": "R",
+          "left": "L"
+        },
+        "rejected": {
+          "The words right and left": "the rests of a pose would be longer to write, for no reader but the rules"
+        }
       }
     },
     {
@@ -5639,6 +5661,21 @@
       "kind": "refines"
     },
     {
+      "from": "body.KeyOf",
+      "to": "body.TrunkOf",
+      "kind": "deps"
+    },
+    {
+      "from": "body.KeyOf",
+      "to": "body.MatSpace",
+      "kind": "deps"
+    },
+    {
+      "from": "body.KeyOf",
+      "to": "body.SideNames",
+      "kind": "deps"
+    },
+    {
       "from": "body.KeyOfCriteria",
       "to": "body.KeyOf",
       "kind": "accepts"
@@ -6451,6 +6488,26 @@
     {
       "from": "scenarios.BodyStaysOnTheFloor",
       "to": "body.FootOnItsWay",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.BodyStaysOnTheFloor",
+      "to": "body.MatSpace",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.BodyStaysOnTheFloor",
+      "to": "body.KeyOf",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.BodyStaysOnTheFloor",
+      "to": "body.TrunkOf",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.BodyStaysOnTheFloor",
+      "to": "body.TwoBones",
       "kind": "verifies"
     },
     {
@@ -7796,11 +7853,6 @@
     {
       "from": "body.HandOnItsWayCriteria",
       "to": "body.Movement",
-      "kind": "uses"
-    },
-    {
-      "from": "body.KeyOf",
-      "to": "body.TrunkOf",
       "kind": "uses"
     },
     {

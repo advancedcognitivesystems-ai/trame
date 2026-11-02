@@ -5,7 +5,7 @@ import { decision } from "#trame/kinds/decision"
 import { fn } from "#trame/kinds/function"
 import { Vectors } from "#geometry/vectors"
 import { Angle } from "#geometry/angles"
-import { Counts } from "#std/algebra"
+import { Counts, Texts } from "#std/algebra"
 import { requirement } from "#trame/kinds/requirement"
 import { acceptance } from "#trame/kinds/acceptance"
 import { PractiseGuided, CheckedContent } from "./product"
@@ -226,6 +226,16 @@ export const MatSpace = fn({
 })
 
 /**
+ * The names of the sides
+ * How a point of one side of the body is named in the rests of a pose: its side, then the point (R knee, L foot).
+ */
+export const SideNames = decision<{ right: string; left: string }>({
+  owner: "ghalaax",
+  value: { right: "R", left: "L" },
+  rejected: { "The words right and left": "the rests of a pose would be longer to write, for no reader but the rules" },
+})
+
+/**
  * How far a limb keeps from flat
  * A limb never folds flat on itself nor stretches quite straight, by a millimetre and a tenth of one: its middle joint
  * then always bends one way.
@@ -324,7 +334,8 @@ export const TwoBonesCriteria = acceptance({
 export const LegsApart = requirement({
   owner: "ghalaax",
   refines: [PractiseGuided],
-  rule: (shape: Shape): boolean => "front" in shape.legs,
+  deps: {},
+  body: () => (shape: Shape): boolean => Stance.front in shape.legs,
 })
 
 /** Criteria of legs apart */
@@ -349,28 +360,29 @@ export const LegsApartCriteria = acceptance({
 export const KeyOf = requirement({
   owner: "ghalaax",
   refines: [PractiseGuided],
-  rule: (shape: Shape, leading: Leg = Leg.right, stance: Stance = Stance.back): Keyframe => {
-    const trunk = TrunkOf(shape.pelvis, shape.spine)
+  deps: { trunkOf: TrunkOf, g: MatSpace, sides: SideNames, texts: Texts },
+  body: ({ trunkOf, g, sides, texts }) => (shape: Shape, leading: Leg = Leg.right, stance: Stance = Stance.back): Keyframe => {
+    const trunk = trunkOf(shape.pelvis, shape.spine)
     const other = (s: Stance) => (s === Stance.front ? Stance.back : Stance.front)
-    const legs = "front" in shape.legs ? shape.legs : { front: shape.legs, back: shape.legs }
+    const legs = Stance.front in shape.legs ? (shape.legs as Record<Stance, LegShape>) : { front: shape.legs as LegShape, back: shape.legs as LegShape }
     const right = leading === Leg.right ? legs[stance] : legs[other(stance)]
     const left = leading === Leg.right ? legs[other(stance)] : legs[stance]
-    const foot = (l: LegShape, sign: number): FootKey => ({ at: [l.at[0], l.at[1], sign * l.at[2]], foot: l.foot, toes: l.toes })
-    const arms = shape.arms
-    const hand = (sign: number, shoulder: Vec): HandKey => {
-      if ("at" in arms) return { at: [arms.at[0], arms.at[1], sign * arms.at[2]], hand: arms.hand, palm: arms.palm }
-      const reach = mul(toward(arms.fromShoulders.angle), arms.fromShoulders.reach)
-      return { at: [shoulder[0] + reach[0], shoulder[1] + reach[1], sign * arms.fromShoulders.apart], hand: arms.hand, palm: arms.palm }
+    // A point written for the right side, mirrored across the mat for the left.
+    const placed = ([along, high, across]: Vec, onLeft: boolean): Vec => g.add(g.point(along, high), g.right(onLeft ? -across : across))
+    const foot = (l: LegShape, onLeft: boolean): FootKey => ({ at: placed(l.at, onLeft), foot: l.foot, toes: l.toes })
+    const { at, fromShoulders } = shape.arms as Partial<{ at: Vec; fromShoulders: { angle: number; reach: number; apart: number } }>
+    const { hand: handTurn, palm } = shape.arms
+    const hand = (onLeft: boolean, shoulder: Vec): HandKey => {
+      if (at !== undefined || fromShoulders === undefined) return { at: placed(at ?? g.down, onLeft), hand: handTurn, palm }
+      const reach = g.mul(g.toward(fromShoulders.angle), fromShoulders.reach)
+      return { at: placed([g.along(shoulder) + g.along(reach), g.height(shoulder) + g.height(reach), fromShoulders.apart], onLeft), hand: handTurn, palm }
     }
-    const rests = [
-      ...(shape.rests ?? []),
-      ...(right.rests ?? []).map((r) => `R ${r}`),
-      ...(left.rests ?? []).map((r) => `L ${r}`),
-    ]
+    const named = (side: string) => (r: string) => [side, r].join(texts.space)
+    const rests = [...(shape.rests ?? []), ...(right.rests ?? []).map(named(sides.right)), ...(left.rests ?? []).map(named(sides.left))]
     return {
       pelvis: shape.pelvis, spine: shape.spine, trunk, rests,
-      legs: { L: foot(left, -1), R: foot(right, 1) },
-      arms: { L: hand(-1, trunk.shoulderL), R: hand(1, trunk.shoulderR) },
+      legs: { L: foot(left, true), R: foot(right, false) },
+      arms: { L: hand(true, trunk.shoulderL), R: hand(false, trunk.shoulderR) },
     }
   },
 })

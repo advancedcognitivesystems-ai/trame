@@ -598,7 +598,7 @@ The page as it is, for its author and the few people they show it to, the way of
 | [Poselia's page](#PageFile) | **unknown** | shipped |
 | [The page opens](#PageOpens) | **unknown** | [The code shown is verified, a gap said](#CodeVerifiedSaid), for [The browser's stage](stage.md#BrowserStage) |
 | [The language of the home page](scenarios.md#HomeLanguage) | **held** | [The code shown is verified, a gap said](#CodeVerifiedSaid), for [The content the app carries](app.md#CarriedContent) |
-| [The body stays on the floor](scenarios.md#BodyStaysOnTheFloor) | **held** | [The code shown is verified, a gap said](#CodeVerifiedSaid), for [The body between two poses](body.md#BodyAt) |
+| [The body stays on the floor](scenarios.md#BodyStaysOnTheFloor) | **held** | [The code shown is verified, a gap said](#CodeVerifiedSaid), for [The space of the mat](body.md#MatSpace) |
 | [Holding the poses](scenarios.md#HoldThePoses) | **held** | [The code shown is verified, a gap said](#CodeVerifiedSaid), for [The voice the person chose](settings.md#VoiceChoice) |
 | [The person's breath and voice](scenarios.md#PersonSettings) | **held** | [The code shown is verified, a gap said](#CodeVerifiedSaid), for [The voice the person chose](settings.md#VoiceChoice) |
 | [Learning a sequence](scenarios.md#LearnTheSequence) | **held** | [The code shown is verified, a gap said](#CodeVerifiedSaid), for [The landmarks the person chose](settings.md#MarksChoice) |
@@ -637,7 +637,7 @@ The page for anyone, the way of a public version: the checks on a phone, the con
 | [On a phone](#OnAPhone) | **unknown** | [The page is checked, by hand too](#AllChecks), for [Poselia's page](#PageFile) |
 | [The page opens](#PageOpens) | **unknown** | [The page is checked, by hand too](#AllChecks), for [Poselia's page](#PageFile) |
 | [The language of the home page](scenarios.md#HomeLanguage) | **held** | [The code shown is verified](#CodeVerified), for [The content the app carries](app.md#CarriedContent) |
-| [The body stays on the floor](scenarios.md#BodyStaysOnTheFloor) | **held** | [The code shown is verified](#CodeVerified), for [The body between two poses](body.md#BodyAt) |
+| [The body stays on the floor](scenarios.md#BodyStaysOnTheFloor) | **held** | [The code shown is verified](#CodeVerified), for [The space of the mat](body.md#MatSpace) |
 | [Holding the poses](scenarios.md#HoldThePoses) | **held** | [The code shown is verified](#CodeVerified), for [The voice the person chose](settings.md#VoiceChoice) |
 | [The person's breath and voice](scenarios.md#PersonSettings) | **held** | [The code shown is verified](#CodeVerified), for [The voice the person chose](settings.md#VoiceChoice) |
 | [Learning a sequence](scenarios.md#LearnTheSequence) | **held** | [The code shown is verified](#CodeVerified), for [The landmarks the person chose](settings.md#MarksChoice) |
