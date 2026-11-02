@@ -147,6 +147,7 @@ flowchart TB
   n54["Code serves the product<br/><small>Architecture rule</small>"]:::held
   n55["Place the page<br/><small>Entry point</small>"]:::held
   n56["A public version<br/><small>Shipment</small>"]:::unknown
+  n43 -->|Depends on| n40
   n18 -->|Applied by| n48
   n18 -->|Applied by| n49
   n17 -->|Applied by| n42
@@ -201,7 +202,6 @@ flowchart TB
   n37 -.->|Depends on| n23
   n41 -.->|Depends on| n32
   n41 -.->|Depends on| n22
-  n43 -.->|Depends on| n40
   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
   classDef blocked fill:#fbf0d9,stroke:#9a6200,color:#17202a
   classDef violated fill:#f9e3e1,stroke:#ad2a22,color:#17202a

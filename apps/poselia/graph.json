@@ -4185,24 +4185,44 @@
       "diagnostics": []
     },
     {
+      "id": "practice.BreathEasing",
+      "kind": "decision",
+      "title": "How a movement eases",
+      "source": "src/practice.ts:63",
+      "fields": {
+        "owner": "ghalaax",
+        "value": {
+          "half": 0.5,
+          "power": 3
+        },
+        "rejected": {
+          "A straight line": "the figure jerks into each movement and stops dead at its end",
+          "A square": "the start and the end are still too sudden for a breath"
+        }
+      },
+      "diagnostics": []
+    },
+    {
       "id": "practice.BreathsToSay",
       "kind": "requirement",
       "title": "Breaths to say a cue",
-      "source": "src/practice.ts:153",
+      "source": "src/practice.ts:172",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {
+          "spoken": "(function)",
+          "counts": "std/algebra.Counts"
+        },
+        "body": "(function)"
       },
-      "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
-      ]
+      "diagnostics": []
     },
     {
       "id": "practice.BreathsToSayCriteria",
       "kind": "acceptance",
       "title": "Criteria of breaths to say a cue",
-      "source": "src/practice.ts:163",
+      "source": "src/practice.ts:183",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -4224,21 +4244,23 @@
       "id": "practice.Eased",
       "kind": "requirement",
       "title": "A movement goes as a breath goes",
-      "source": "src/practice.ts:63",
+      "source": "src/practice.ts:77",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {
+          "easing": "practice.BreathEasing",
+          "counts": "std/algebra.Counts"
+        },
+        "body": "(function)"
       },
-      "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
-      ]
+      "diagnostics": []
     },
     {
       "id": "practice.EasedCriteria",
       "kind": "acceptance",
       "title": "Criteria of a movement that goes as a breath goes",
-      "source": "src/practice.ts:73",
+      "source": "src/practice.ts:89",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -4264,21 +4286,22 @@
       "id": "practice.HoldPhases",
       "kind": "requirement",
       "title": "A hold of whole breaths",
-      "source": "src/practice.ts:113",
+      "source": "src/practice.ts:130",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {
+          "counts": "std/algebra.Counts"
+        },
+        "body": "(function)"
       },
-      "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
-      ]
+      "diagnostics": []
     },
     {
       "id": "practice.HoldPhasesCriteria",
       "kind": "acceptance",
       "title": "Criteria of a hold of whole breaths",
-      "source": "src/practice.ts:131",
+      "source": "src/practice.ts:150",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -4308,21 +4331,22 @@
       "id": "practice.LungsFull",
       "kind": "requirement",
       "title": "How full the lungs are",
-      "source": "src/practice.ts:88",
+      "source": "src/practice.ts:104",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {
+          "counts": "std/algebra.Counts"
+        },
+        "body": "(function)"
       },
-      "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
-      ]
+      "diagnostics": []
     },
     {
       "id": "practice.LungsFullCriteria",
       "kind": "acceptance",
       "title": "Criteria of how full the lungs are",
-      "source": "src/practice.ts:96",
+      "source": "src/practice.ts:113",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -4352,17 +4376,18 @@
       "status": "held",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {
+          "counts": "std/algebra.Counts"
+        },
+        "body": "(function)"
       },
-      "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
-      ]
+      "diagnostics": []
     },
     {
       "id": "practice.MomentAtCriteria",
       "kind": "acceptance",
       "title": "Criteria of where a practice is",
-      "source": "src/practice.ts:46",
+      "source": "src/practice.ts:47",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -4392,7 +4417,7 @@
       "id": "practice.MomentOf",
       "kind": "function",
       "title": "The moment of a practice",
-      "source": "src/practice.ts:227",
+      "source": "src/practice.ts:247",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -4421,7 +4446,7 @@
       "id": "practice.PlayerNames",
       "kind": "decision",
       "title": "Names of the player",
-      "source": "src/practice.ts:261",
+      "source": "src/practice.ts:281",
       "fields": {
         "owner": "ghalaax",
         "value": {
@@ -4448,7 +4473,7 @@
       "id": "practice.PlayPractice",
       "kind": "function",
       "title": "Play a practice",
-      "source": "src/practice.ts:246",
+      "source": "src/practice.ts:266",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -4478,7 +4503,7 @@
       "id": "practice.PracticeOf",
       "kind": "function",
       "title": "A practice",
-      "source": "src/practice.ts:212",
+      "source": "src/practice.ts:232",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -5572,7 +5597,7 @@
       },
       "result": {
         "path": "dist/poselia.html",
-        "code": "4a6ae65d"
+        "code": "71779663"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -7845,6 +7870,16 @@
       "kind": "refines"
     },
     {
+      "from": "practice.BreathsToSay",
+      "to": "content.Spoken",
+      "kind": "deps"
+    },
+    {
+      "from": "practice.BreathsToSay",
+      "to": "std/algebra.Counts",
+      "kind": "deps"
+    },
+    {
       "from": "practice.BreathsToSayCriteria",
       "to": "practice.BreathsToSay",
       "kind": "accepts"
@@ -7853,6 +7888,16 @@
       "from": "practice.Eased",
       "to": "product.BreathSetsThePace",
       "kind": "refines"
+    },
+    {
+      "from": "practice.Eased",
+      "to": "practice.BreathEasing",
+      "kind": "deps"
+    },
+    {
+      "from": "practice.Eased",
+      "to": "std/algebra.Counts",
+      "kind": "deps"
     },
     {
       "from": "practice.EasedCriteria",
@@ -7865,6 +7910,11 @@
       "kind": "refines"
     },
     {
+      "from": "practice.HoldPhases",
+      "to": "std/algebra.Counts",
+      "kind": "deps"
+    },
+    {
       "from": "practice.HoldPhasesCriteria",
       "to": "practice.HoldPhases",
       "kind": "accepts"
@@ -7875,6 +7925,11 @@
       "kind": "refines"
     },
     {
+      "from": "practice.LungsFull",
+      "to": "std/algebra.Counts",
+      "kind": "deps"
+    },
+    {
       "from": "practice.LungsFullCriteria",
       "to": "practice.LungsFull",
       "kind": "accepts"
@@ -7883,6 +7938,11 @@
       "from": "practice.MomentAt",
       "to": "product.BreathSetsThePace",
       "kind": "refines"
+    },
+    {
+      "from": "practice.MomentAt",
+      "to": "std/algebra.Counts",
+      "kind": "deps"
     },
     {
       "from": "practice.MomentAtCriteria",
@@ -10377,12 +10437,6 @@
     {
       "from": "marks.MarkOnBodyCriteria",
       "to": "body.AngleBetween",
-      "kind": "uses",
-      "inferred": true
-    },
-    {
-      "from": "practice.BreathsToSay",
-      "to": "content.Spoken",
       "kind": "uses",
       "inferred": true
     }

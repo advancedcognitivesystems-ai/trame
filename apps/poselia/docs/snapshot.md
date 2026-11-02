@@ -779,6 +779,7 @@ Package · `StandardLibrary`
 Requirement · `BreathsToSay` · **held**
 
 - Owner: ghalaax
+- Parameters: { spoken: (rule), counts: std/algebra.Counts }
 - Refines: The breath sets the pace
 - Depends on: How long words take to say
 
@@ -787,13 +788,16 @@ Requirement · `BreathsToSay` · **held**
 Requirement · `Eased` · **held**
 
 - Owner: ghalaax
+- Parameters: { easing: practice.BreathEasing, counts: std/algebra.Counts }
 - Refines: The breath sets the pace
+- Depends on: How a movement eases
 
 ### A hold of whole breaths
 
 Requirement · `HoldPhases` · **held**
 
 - Owner: ghalaax
+- Parameters: { counts: std/algebra.Counts }
 - Refines: The breath sets the pace
 
 ### How full the lungs are
@@ -801,6 +805,7 @@ Requirement · `HoldPhases` · **held**
 Requirement · `LungsFull` · **held**
 
 - Owner: ghalaax
+- Parameters: { counts: std/algebra.Counts }
 - Refines: The breath sets the pace
 
 ### Where a practice is
@@ -808,7 +813,16 @@ Requirement · `LungsFull` · **held**
 Requirement · `MomentAt` · **held**
 
 - Owner: ghalaax
+- Parameters: { counts: std/algebra.Counts }
 - Refines: The breath sets the pace
+
+### How a movement eases
+
+Decision · `BreathEasing`
+
+- Decided by: ghalaax
+- Value: { half: 0.5, power: 3 }
+- Rejected: A straight line, the figure jerks into each movement and stops dead at its end; A square, the start and the end are still too sudden for a breath
 
 ### Names of the player
 

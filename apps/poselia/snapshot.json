@@ -3483,13 +3483,33 @@
       }
     },
     {
+      "id": "practice.BreathEasing",
+      "kind": "decision",
+      "title": "How a movement eases",
+      "fields": {
+        "owner": "ghalaax",
+        "value": {
+          "half": 0.5,
+          "power": 3
+        },
+        "rejected": {
+          "A straight line": "the figure jerks into each movement and stops dead at its end",
+          "A square": "the start and the end are still too sudden for a breath"
+        }
+      }
+    },
+    {
       "id": "practice.BreathsToSay",
       "kind": "requirement",
       "title": "Breaths to say a cue",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {
+          "spoken": "(function)",
+          "counts": "std/algebra.Counts"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -3509,7 +3529,11 @@
       "status": "held",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {
+          "easing": "practice.BreathEasing",
+          "counts": "std/algebra.Counts"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -3529,7 +3553,10 @@
       "status": "held",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {
+          "counts": "std/algebra.Counts"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -3549,7 +3576,10 @@
       "status": "held",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {
+          "counts": "std/algebra.Counts"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -3569,7 +3599,10 @@
       "status": "held",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {
+          "counts": "std/algebra.Counts"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -6013,6 +6046,11 @@
       "kind": "refines"
     },
     {
+      "from": "practice.BreathsToSay",
+      "to": "content.Spoken",
+      "kind": "deps"
+    },
+    {
       "from": "practice.BreathsToSayCriteria",
       "to": "practice.BreathsToSay",
       "kind": "accepts"
@@ -6021,6 +6059,11 @@
       "from": "practice.Eased",
       "to": "product.BreathSetsThePace",
       "kind": "refines"
+    },
+    {
+      "from": "practice.Eased",
+      "to": "practice.BreathEasing",
+      "kind": "deps"
     },
     {
       "from": "practice.EasedCriteria",
@@ -7935,11 +7978,6 @@
     {
       "from": "marks.MarkOnBodyCriteria",
       "to": "body.AngleBetween",
-      "kind": "uses"
-    },
-    {
-      "from": "practice.BreathsToSay",
-      "to": "content.Spoken",
       "kind": "uses"
     }
   ],

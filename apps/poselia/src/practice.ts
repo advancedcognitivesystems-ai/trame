@@ -32,13 +32,14 @@ import { StageViews } from "./stage"
 export const MomentAt = requirement({
   owner: "ghalaax",
   refines: [BreathSetsThePace],
-  rule: (durations: readonly number[], seconds: number): { index: number; progress: number; done: boolean } => {
-    let start = 0
+  deps: { counts: Counts },
+  body: ({ counts }) => (durations: readonly number[], seconds: number): { index: number; progress: number; done: boolean } => {
+    let start = counts.zero
     for (const [index, length] of durations.entries()) {
-      if (length > 0 && seconds < start + length) return { index, progress: Math.max(0, seconds - start) / length, done: false }
+      if (length > counts.zero && seconds < start + length) return { index, progress: Math.max(counts.zero, seconds - start) / length, done: false }
       start += length
     }
-    return { index: Math.max(0, durations.length - 1), progress: 1, done: true }
+    return { index: Math.max(counts.zero, counts.previous(counts.count(durations))), progress: counts.one, done: true }
   },
 })
 
@@ -56,6 +57,19 @@ export const MomentAtCriteria = acceptance({
 })
 
 /**
+ * How a movement eases
+ * A cubic, the same on both halves of the phase, that meet half way.
+ */
+export const BreathEasing = decision<{ half: number; power: number }>({
+  owner: "ghalaax",
+  value: { half: 0.5, power: 3 },
+  rejected: {
+    "A straight line": "the figure jerks into each movement and stops dead at its end",
+    "A square": "the start and the end are still too sudden for a breath",
+  },
+})
+
+/**
  * A movement goes as a breath goes
  * How far a movement has gone, for how far its phase has: slowly at the start, faster in the middle, slowly at the end
  * (a cubic, the same on both halves), never back.
@@ -63,9 +77,11 @@ export const MomentAtCriteria = acceptance({
 export const Eased = requirement({
   owner: "ghalaax",
   refines: [BreathSetsThePace],
-  rule: (progress: number): number => {
-    const t = Math.min(1, Math.max(0, progress))
-    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
+  deps: { easing: BreathEasing, counts: Counts },
+  body: ({ easing, counts }) => (progress: number): number => {
+    const { half, power } = easing
+    const t = Math.min(counts.one, Math.max(counts.zero, progress))
+    return t < half ? Math.pow(t / half, power) * half : counts.one - Math.pow((counts.one - t) / half, power) * half
   },
 })
 
@@ -88,8 +104,9 @@ export const EasedCriteria = acceptance({
 export const LungsFull = requirement({
   owner: "ghalaax",
   refines: [BreathSetsThePace],
-  rule: (phase: BreathPhase, progress: number): number =>
-    ({ [BreathPhase.inhale]: progress, [BreathPhase.holdTop]: 1, [BreathPhase.exhale]: 1 - progress, [BreathPhase.holdBottom]: 0 })[phase],
+  deps: { counts: Counts },
+  body: ({ counts }) => (phase: BreathPhase, progress: number): number =>
+    ({ [BreathPhase.inhale]: progress, [BreathPhase.holdTop]: counts.one, [BreathPhase.exhale]: counts.one - progress, [BreathPhase.holdBottom]: counts.zero })[phase],
 })
 
 /** Criteria of how full the lungs are */
@@ -113,17 +130,19 @@ export const LungsFullCriteria = acceptance({
 export const HoldPhases = requirement({
   owner: "ghalaax",
   refines: [BreathSetsThePace],
-  rule: (pattern: BreathPattern, after: BreathPhase, breaths: number, next?: BreathPhase): { phase: BreathPhase; duration: number; breath: number }[] => {
-    if (breaths <= 0) return []
-    const order = [BreathPhase.inhale, BreathPhase.holdTop, BreathPhase.exhale, BreathPhase.holdBottom]
+  deps: { counts: Counts },
+  body: ({ counts }) => (pattern: BreathPattern, after: BreathPhase, breaths: number, next?: BreathPhase): { phase: BreathPhase; duration: number; breath: number }[] => {
+    if (breaths <= counts.zero) return []
+    const order = Object.values(BreathPhase)
+    const phases = counts.count(order)
     const held: { phase: BreathPhase; duration: number; breath: number }[] = []
-    for (let taken = 0, k = order.indexOf(after); ; taken++) {
-      k = (k + 1) % order.length
-      const phase = order[k]
-      if (taken >= breaths * order.length && (next === undefined || phase === next)) break
-      held.push({ phase, duration: pattern[phase], breath: Math.min(breaths, Math.floor(taken / order.length) + 1) })
+    for (let taken: number = counts.zero, k = order.indexOf(after); ; taken = counts.next(taken)) {
+      k = counts.next(k) % phases
+      const phase = order.at(k) ?? after
+      if (taken >= breaths * phases && (next === undefined || phase === next)) break
+      held.push({ phase, duration: pattern[phase], breath: Math.min(breaths, counts.next(Math.floor(taken / phases))) })
     }
-    return held.filter((h) => h.duration > 0)
+    return held.filter((h) => h.duration > counts.zero)
   },
 })
 
@@ -153,9 +172,10 @@ export const HoldPhasesCriteria = acceptance({
 export const BreathsToSay = requirement({
   owner: "ghalaax",
   refines: [BreathSetsThePace],
-  rule: (texts: readonly string[], pattern: BreathPattern): number => {
+  deps: { spoken: Spoken, counts: Counts },
+  body: ({ spoken, counts }) => (texts: readonly string[], pattern: BreathPattern): number => {
     const breath = pattern.inhale + pattern.holdTop + pattern.exhale + pattern.holdBottom
-    return Math.max(1, ...texts.map((t) => Math.ceil(Spoken(t, false) / breath)))
+    return Math.max(counts.one, ...texts.map((t) => Math.ceil(spoken(t, false) / breath)))
   },
 })
 

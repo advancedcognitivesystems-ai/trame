@@ -113,7 +113,8 @@ The seconds a voice takes to say a text, at the rate voices speak, with the brea
 - Owner: ghalaax
 - Refines: [Practise yoga on one's own, guided](product.md#PractiseGuided)
 - Depends on: [How fast a voice speaks](#SpeechRate)
-- Used by: [Poses](#Poses), [Sequences](#Sequences), [Breaths to say a cue](practice.md#BreathsToSay)
+- Used by: [Breaths to say a cue](practice.md#BreathsToSay)
+- Used by: [Poses](#Poses), [Sequences](#Sequences)
 
 <a id="SpokenCriteria"></a>
 
