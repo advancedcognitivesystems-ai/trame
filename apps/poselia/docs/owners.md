@@ -6,7 +6,7 @@
 |---|---|---|---|---|
 | A teacher who practises | 0 | 0 | 4 | 0 |
 | People who try it on a phone | 0 | 0 | 1 | 0 |
-| ghalaax | 0 | 0 | 18 | 212 |
+| ghalaax | 0 | 0 | 16 | 212 |
 
 <a id="A teacher who practises"></a>
 
@@ -48,8 +48,6 @@
 
 | Severity | What | Where | Owner | Consequence |
 |---|---|---|---|---|
-| warning | Computes the same kind of answer from the same kind of arguments as “A hand on its way” (ghalaax), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [A foot on its way](body.md#FootOnItsWay) | ghalaax |  |
-| warning | Computes the same kind of answer from the same kind of arguments as “A foot on its way” (ghalaax), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [A hand on its way](body.md#HandOnItsWay) | ghalaax |  |
 | warning | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [Poselia's page](sdlc.md#PageFile) | ghalaax |  |
 | warning | Checked on another build of its artefacts, by another version of its program or another engine: to check again | [The page opens](sdlc.md#PageOpens) | ghalaax |  |
 | warning | To ship: Poselia's page is unknown | [A preview](sdlc.md#Preview) | ghalaax |  |

@@ -201,15 +201,6 @@ export const Touching = decision<{ within: number }>({
   rejected: { "Exactly on the floor": "a mannequin of cylinders and ellipses rests on its curves, never on a point" },
 })
 
-// Vectors, for the rules below.
-const add = (a: Vec, b: Vec): Vec => [a[0] + b[0], a[1] + b[1], a[2] + b[2]]
-const sub = (a: Vec, b: Vec): Vec => [a[0] - b[0], a[1] - b[1], a[2] - b[2]]
-const mul = (a: Vec, s: number): Vec => [a[0] * s, a[1] * s, a[2] * s]
-const dot = (a: Vec, b: Vec) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2]
-const len = (a: Vec) => Math.sqrt(dot(a, a))
-const unit = (a: Vec): Vec => mul(a, 1 / (len(a) || 1))
-const mix = (a: number, b: number, t: number) => a + (b - a) * t
-const mix3 = (a: Vec, b: Vec, t: number): Vec => [mix(a[0], b[0], t), mix(a[1], b[1], t), mix(a[2], b[2], t)]
 /** A direction in the plane of the mat's length, by its angle from the front, in degrees. */
 const toward = (degrees: number): Vec => [Math.cos((degrees * Math.PI) / 180), Math.sin((degrees * Math.PI) / 180), 0]
 
@@ -345,9 +336,10 @@ export const TwoBonesCriteria = acceptance({
   owner: "ghalaax",
   criteria: (criterion) => {
     const near = (a: number, b: number) => Math.abs(a - b) < 1e-6
+    const distance = (a: Vec, b: Vec) => Math.hypot(...a.map((x, i) => x - b[i]))
     const r = TwoBones([0, 0, 0], [0.5, 0, 0], 0.4, 0.4, [0, 1, 0])
     criterion("Within reach, each segment keeps its length and the end reaches the target",
-      () => near(len(r.middle), 0.4) && near(len(sub(r.end, r.middle)), 0.4) && near(r.end[0], 0.5))
+      () => near(distance(r.middle, [0, 0, 0]), 0.4) && near(distance(r.end, r.middle), 0.4) && near(r.end[0], 0.5))
     criterion("The middle joint bends toward the pole", () => r.middle[1] > 0)
     criterion("Out of reach, the end stops short and says so", () => TwoBones([0, 0, 0], [1, 0, 0], 0.4, 0.4, [0, 1, 0]).reach > 1)
   },
@@ -439,11 +431,12 @@ export const HandOnItsWay = requirement({
   owner: "ghalaax",
   refines: [PractiseGuided],
   deps: { mv: Movement, g: MatSpace },
-  body: ({ mv, g }) => (from: Vec, to: Vec, baseFrom: Vec, baseTo: Vec, base: Vec, t: number): Vec => {
+  body: ({ mv, g }) => (from: Vec, to: Vec, shoulder: Around<Point.shoulder>, t: number): Vec => {
     const { sub, len, mix, height, along, across } = g
     if (len(sub(from, to)) < mv.still) return g.mix3(from, to, t)
-    const r0 = sub(from, baseFrom)
-    const r1 = sub(to, baseTo)
+    const base = shoulder.now
+    const r0 = sub(from, shoulder.from)
+    const r1 = sub(to, shoulder.to)
     const d = g.toward(mix(g.heading(r0), g.heading(r1), t))
     const l = mix(g.planar(r0), g.planar(r1), t)
     const x = along(base) + along(d) * l
@@ -464,10 +457,11 @@ export const HandOnItsWayCriteria = acceptance({
     const shoulder: Vec = [0.05, 1.4, 0.18]
     const raised: Vec = [0.3, 1.9, 0.16]
     const planted: Vec = [0.03, 0.035, 0.2]
-    criterion("What does not move stays where it is", () => HandOnItsWay(planted, planted, shoulder, shoulder, shoulder, 0.5)[0] === planted[0])
-    criterion("It ends where it goes", () => Math.abs(HandOnItsWay(raised, planted, shoulder, shoulder, shoulder, 1)[0] - planted[0]) < 1e-9)
+    const still: Around<Point.shoulder> = { joint: Point.shoulder, from: shoulder, to: shoulder, now: shoulder }
+    criterion("What does not move stays where it is", () => HandOnItsWay(planted, planted, still, 0.5)[0] === planted[0])
+    criterion("It ends where it goes", () => Math.abs(HandOnItsWay(raised, planted, still, 1)[0] - planted[0]) < 1e-9)
     criterion("A hand coming down to the floor is low only above its place", () => [0.8, 0.9, 0.95, 0.98].every((t) => {
-      const [x, y] = HandOnItsWay(raised, planted, shoulder, shoulder, shoulder, t)
+      const [x, y] = HandOnItsWay(raised, planted, still, t)
       return y - planted[1] >= Math.min(Math.abs(x - planted[0]), Movement.value.clearance) - 0.01
     }))
   },
@@ -517,19 +511,6 @@ export const FootOf = fn({
     return { along, up, toesAlong, below }
   },
 })
-
-const footOf = (foot: number, toes: number) => {
-  const m = BodyMeasures.value
-  const along = toward(foot)
-  const up: Vec = [-along[1], along[0], 0]
-  const toesAlong = toward(toes)
-  const ballDrop = -m.ballDown * up[1] + m.ballForward * along[1]
-  const below = -Math.min(
-    -m.heelDown * up[1] - m.heelBack * along[1], ballDrop, ballDrop + m.toes * toesAlong[1],
-    m.topUp * up[1] + m.topForward * along[1], -Movement.value.ankleClear,
-  )
-  return { along, up, toesAlong, below }
-}
 
 /**
  * A leg on its foot
@@ -582,7 +563,7 @@ export const FootOnItsWay = requirement({
   owner: "ghalaax",
   refines: [PractiseGuided],
   deps: { mv: Movement, g: MatSpace, angles: FootAngles, counts: Counts },
-  body: ({ mv, g, angles, counts }) => (from: Vec, to: Vec, hipFrom: Vec, hipTo: Vec, hip: Vec, t: number): Vec => {
+  body: ({ mv, g, angles, counts }) => (from: Vec, to: Vec, around: Around<Point.hip>, t: number): Vec => {
     const { sub, len, mix, height, along, across } = g
     if (len(sub(from, to)) < mv.still) return g.mix3(from, to, t)
     // A foot below the hip is read from behind past straight up, so that its way turns down, not over the head.
@@ -590,8 +571,9 @@ export const FootOnItsWay = requirement({
       const a = g.heading(v)
       return a > angles.wrapAbove ? a - g.turn : a
     }
-    const r0 = sub(from, hipFrom)
-    const r1 = sub(to, hipTo)
+    const hip = around.now
+    const r0 = sub(from, around.from)
+    const r1 = sub(to, around.to)
     const d = g.toward(mix(angle(r0), angle(r1), t))
     const l = mix(g.planar(r0), g.planar(r1), t)
     const stride = Math.hypot(along(to) - along(from), across(to) - across(from))
@@ -608,9 +590,10 @@ export const FootOnItsWayCriteria = acceptance({
     const hip: Vec = [0, 0.9, 0.1]
     const here: Vec = [0, 0.065, 0.1]
     const back: Vec = [-1.2, 0.145, 0.1]
-    criterion("What does not move stays where it is", () => FootOnItsWay(here, here, hip, hip, hip, 0.5)[0] === here[0])
-    criterion("A foot stepping far back is lifted half way", () => FootOnItsWay(here, back, hip, hip, hip, 0.5)[1] > back[1])
-    criterion("It ends where it goes", () => Math.abs(FootOnItsWay(here, back, hip, hip, hip, 1)[0] - back[0]) < 1e-9)
+    const still: Around<Point.hip> = { joint: Point.hip, from: hip, to: hip, now: hip }
+    criterion("What does not move stays where it is", () => FootOnItsWay(here, here, still, 0.5)[0] === here[0])
+    criterion("A foot stepping far back is lifted half way", () => FootOnItsWay(here, back, still, 0.5)[1] > back[1])
+    criterion("It ends where it goes", () => Math.abs(FootOnItsWay(here, back, still, 1)[0] - back[0]) < 1e-9)
   },
 })
 
@@ -675,7 +658,7 @@ export const BodyAt = requirement({
       const { along: footAlong, up: footUp, toesAlong, below } = feet(mix(f0.foot, f1.foot, t), mix(f0.toes, f1.toes, t))
       const moving = len(sub(f0.at, f1.at)) >= mv.still
       const leg = moving
-        ? stepping(hip, footWay(f0.at, f1.at, hipOf(from.trunk), hipOf(to.trunk), hip, t), below)
+        ? stepping(hip, footWay(f0.at, f1.at, { joint: Point.hip, from: hipOf(from.trunk), to: hipOf(to.trunk), now: hip }, t), below)
         : planted(hip, { at: mix3(f0.at, f1.at, t), foot: mix(f0.foot, f1.foot, t), toes: mix(f0.toes, f1.toes, t) })
       const ankle = leg.ankle
       const heel = add(add(ankle, mul(footUp, -m.heelDown)), mul(footAlong, -m.heelBack))
@@ -684,7 +667,7 @@ export const BodyAt = requirement({
       const h0 = onLeft ? from.arms.L : from.arms.R
       const h1 = onLeft ? to.arms.L : to.arms.R
       const shoulder = shoulderOf(trunk)
-      const reach = handWay(h0.at, h1.at, shoulderOf(from.trunk), shoulderOf(to.trunk), shoulder, t)
+      const reach = handWay(h0.at, h1.at, { joint: Point.shoulder, from: shoulderOf(from.trunk), to: shoulderOf(to.trunk), now: shoulder }, t)
       const wristAim: Vec = g.at(g.along(reach), Math.max(g.height(reach), mv.wristFloor), g.across(reach))
       const w = sub(wristAim, shoulder)
       const back: Vec = g.planar(w) < mv.folded ? g.backward : g.face(w)
@@ -716,7 +699,8 @@ export const BodyAtCriteria = acceptance({
     const k = KeyOf(standing)
     const b = BodyAt(k, k, 0)
     criterion("Standing, the heels are on the floor and the knees above the ankles", () => Math.abs(b.R.heel[1]) < 1e-3 && b.R.knee[1] > b.R.ankle[1])
-    criterion("Each segment keeps its length", () => Math.abs(len(sub(b.L.knee, b.L.hip)) - m.thigh) < 1e-6 && Math.abs(len(sub(b.L.elbow, b.L.shoulder)) - m.upperArm) < 1e-6)
+    const distance = (a: Vec, c: Vec) => Math.hypot(...a.map((x, i) => x - c[i]))
+    criterion("Each segment keeps its length", () => Math.abs(distance(b.L.knee, b.L.hip) - m.thigh) < 1e-6 && Math.abs(distance(b.L.elbow, b.L.shoulder) - m.upperArm) < 1e-6)
     criterion("The right side is to the right of the middle", () => b.R.ankle[2] > 0 && b.L.ankle[2] < 0)
     const low: Shape = { ...standing, legs: { at: [0, -0.2, 0.06], foot: 0, toes: 0 } }
     criterion("A foot placed under the floor is raised onto it", () => {
@@ -871,6 +855,13 @@ export enum Point {
   hip = "hip", knee = "knee", ankle = "ankle", heel = "heel", ball = "ball", toe = "toe", shoulder = "shoulder", elbow = "elbow", wrist = "wrist", tip = "tip",
   pelvis = "pelvis", waist = "waist", sternum = "sternum", neckBase = "neckBase", shoulders = "shoulders", neckTop = "neckTop", head = "head", nose = "nose",
 }
+
+/**
+ * The joint a limb turns around on its way
+ * Where it is in the pose the limb leaves, in the one it goes to, and now: a shoulder for a hand, a hip for a foot. A
+ * hand and a foot answer different questions, each around its own joint.
+ */
+export interface Around<J extends Point> { joint: J; from: Vec; to: Vec; now: Vec }
 
 /** Which side a joint is taken on: the left, the right, half way between both, the leg in front or the leg behind. */
 export enum Which { left = "left", right = "right", both = "both", front = "front", back = "back" }
