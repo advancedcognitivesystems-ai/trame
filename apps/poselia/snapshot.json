@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-01",
+  "at": "2026-11-02",
   "nodes": [
     {
       "id": "app.BrowserScreen",
@@ -3431,6 +3431,58 @@
       }
     },
     {
+      "id": "packages.ContinuousIntegration",
+      "kind": "package",
+      "title": "Continuous integration",
+      "fields": {
+        "owner": "ghalaax",
+        "packageName": "ci",
+        "version": "0.3.0",
+        "joins": "library",
+        "from": "path",
+        "at": "../../ci/releases/0.3.0"
+      }
+    },
+    {
+      "id": "packages.Geometry",
+      "kind": "package",
+      "title": "Geometry",
+      "fields": {
+        "owner": "ghalaax",
+        "packageName": "geometry",
+        "version": "0.1.0",
+        "joins": "library",
+        "from": "path",
+        "at": "../../libs/geometry/releases/0.1.0"
+      }
+    },
+    {
+      "id": "packages.Language",
+      "kind": "package",
+      "title": "Trame",
+      "fields": {
+        "owner": "ghalaax",
+        "packageName": "trame",
+        "version": "94",
+        "joins": "language",
+        "from": "path",
+        "at": "../../generations/g94"
+      }
+    },
+    {
+      "id": "packages.StandardLibrary",
+      "kind": "package",
+      "title": "The standard library",
+      "fields": {
+        "owner": "ghalaax",
+        "packageName": "std",
+        "version": "0.13.0",
+        "joins": "library",
+        "from": "path",
+        "at": "../../std/releases/0.13.0"
+      }
+    },
+    {
       "id": "practice.BreathsToSay",
       "kind": "requirement",
       "title": "Breaths to say a cue",
@@ -5895,6 +5947,26 @@
       "from": "marks.MarksOn",
       "to": "language.AppLanguage",
       "kind": "deps"
+    },
+    {
+      "from": "packages.ContinuousIntegration",
+      "to": "product.PractiseGuided",
+      "kind": "serves"
+    },
+    {
+      "from": "packages.Geometry",
+      "to": "product.PractiseGuided",
+      "kind": "serves"
+    },
+    {
+      "from": "packages.Language",
+      "to": "product.PractiseGuided",
+      "kind": "serves"
+    },
+    {
+      "from": "packages.StandardLibrary",
+      "to": "product.PractiseGuided",
+      "kind": "serves"
     },
     {
       "from": "practice.BreathsToSay",

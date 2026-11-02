@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-01",
+  "generated": "2026-11-02",
   "nodes": [
     {
       "id": "app.BrowserScreen",
@@ -4125,6 +4125,66 @@
       "diagnostics": []
     },
     {
+      "id": "packages.ContinuousIntegration",
+      "kind": "package",
+      "title": "Continuous integration",
+      "source": "src/packages.ts:28",
+      "fields": {
+        "owner": "ghalaax",
+        "packageName": "ci",
+        "version": "0.3.0",
+        "joins": "library",
+        "from": "path",
+        "at": "../../ci/releases/0.3.0"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "packages.Geometry",
+      "kind": "package",
+      "title": "Geometry",
+      "source": "src/packages.ts:37",
+      "fields": {
+        "owner": "ghalaax",
+        "packageName": "geometry",
+        "version": "0.1.0",
+        "joins": "library",
+        "from": "path",
+        "at": "../../libs/geometry/releases/0.1.0"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "packages.Language",
+      "kind": "package",
+      "title": "Trame",
+      "source": "src/packages.ts:10",
+      "fields": {
+        "owner": "ghalaax",
+        "packageName": "trame",
+        "version": "94",
+        "joins": "language",
+        "from": "path",
+        "at": "../../generations/g94"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "packages.StandardLibrary",
+      "kind": "package",
+      "title": "The standard library",
+      "source": "src/packages.ts:19",
+      "fields": {
+        "owner": "ghalaax",
+        "packageName": "std",
+        "version": "0.13.0",
+        "joins": "library",
+        "from": "path",
+        "at": "../../std/releases/0.13.0"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "practice.BreathsToSay",
       "kind": "requirement",
       "title": "Breaths to say a cue",
@@ -5505,7 +5565,7 @@
       },
       "result": {
         "path": "dist/poselia.html",
-        "code": "a8307b2f"
+        "code": "213dd437"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -5535,7 +5595,7 @@
         "owner": "ghalaax"
       },
       "result": {
-        "code": "c426e9ba"
+        "code": "33c05bdb"
       },
       "diagnostics": [
         "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
@@ -7728,6 +7788,26 @@
       "from": "marks.MarksOn",
       "to": "std/algebra.Counts",
       "kind": "deps"
+    },
+    {
+      "from": "packages.ContinuousIntegration",
+      "to": "product.PractiseGuided",
+      "kind": "serves"
+    },
+    {
+      "from": "packages.Geometry",
+      "to": "product.PractiseGuided",
+      "kind": "serves"
+    },
+    {
+      "from": "packages.Language",
+      "to": "product.PractiseGuided",
+      "kind": "serves"
+    },
+    {
+      "from": "packages.StandardLibrary",
+      "to": "product.PractiseGuided",
+      "kind": "serves"
     },
     {
       "from": "practice.BreathsToSay",

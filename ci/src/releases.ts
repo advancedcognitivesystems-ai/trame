@@ -31,3 +31,16 @@ export const R0_2_0 = release({
   language: "shared",
   serves: [OneWriterPerPlace, RunsElsewhere],
 })
+
+/**
+ * Version 0.3.0
+ */
+export const R0_3_0 = release({
+  owner: "trame",
+  version: "0.3.0",
+  date: "2026-11-02",
+  what: "The language named by its names (#trame/kernel, #trame/kinds/*); references in its graph",
+  fingerprint: "f021383982b1c18c",
+  language: "shared",
+  serves: [OneWriterPerPlace, RunsElsewhere],
+})

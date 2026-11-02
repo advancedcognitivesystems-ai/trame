@@ -1,6 +1,6 @@
 # Technical choices
 
-*What answers each port in each environment on 1 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
+*What answers each port in each environment on 2 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
 
 > **5 technical choices for 20 ports, in 3 environments**
 
@@ -12,26 +12,26 @@
 | [Screen](architecture.md#Screen) | [The browser's screen](app.md#BrowserScreen) | [A screen that records](scenarios.md#RecordedScreen) | — |
 | [Content](architecture.md#ContentSource) | [The content the app carries](app.md#CarriedContent) | [The content the app carries](app.md#CarriedContent) | — |
 | [Views shown](architecture.md#ViewsShown) | — | [A screen that records](scenarios.md#RecordedScreen) | — |
-| [Loading of a page](../../../std/releases/0.11.1/docs/platform.md#PageLoading) | [The browser loads the page](../../../std/releases/0.11.1/docs/platform.md#BrowserLoading) | — | — |
-| [Preferences](../../../std/releases/0.11.1/docs/platform.md#PreferencesStore) | [The browser keeps the preferences](../../../std/releases/0.11.1/docs/platform.md#BrowserPreferences) | [Preferences kept in memory](../../../std/releases/0.11.1/docs/platform.md#MemoryPreferences) | — |
-| [Languages of the device](../../../std/releases/0.11.1/docs/platform.md#DeviceLanguages) | [The browser's languages](../../../std/releases/0.11.1/docs/platform.md#BrowserLanguages) | [The device's languages, given](scenarios.md#GivenLanguages) | — |
-| [Speech](../../../std/releases/0.11.1/docs/platform.md#SpeechVoice) | [The browser's voice](../../../std/releases/0.11.1/docs/platform.md#BrowserSpeech) | [A voice that writes down](../../../std/releases/0.11.1/docs/platform.md#WrittenSpeech) | — |
-| [What was said](../../../std/releases/0.11.1/docs/platform.md#SpeechHeard) | — | [A voice that writes down](../../../std/releases/0.11.1/docs/platform.md#WrittenSpeech) | — |
-| [Screen kept awake](../../../std/releases/0.11.1/docs/platform.md#ScreenAwake) | [The browser keeps the screen awake](../../../std/releases/0.11.1/docs/platform.md#BrowserWakeLock) | [The screen kept awake, in memory](../../../std/releases/0.11.1/docs/platform.md#AwakeInMemory) | — |
-| [Whether the screen is kept awake](../../../std/releases/0.11.1/docs/platform.md#ScreenKeptAwake) | — | [The screen kept awake, in memory](../../../std/releases/0.11.1/docs/platform.md#AwakeInMemory) | — |
-| [Animation frames](../../../std/releases/0.11.1/docs/platform.md#AnimationFrames) | [The browser's frames](../../../std/releases/0.11.1/docs/platform.md#BrowserFrames) | [Frames turned by hand](../../../std/releases/0.11.1/docs/platform.md#FramesByHand) | — |
-| [Time turned by hand](../../../std/releases/0.11.1/docs/platform.md#TimeTurned) | — | [Frames turned by hand](../../../std/releases/0.11.1/docs/platform.md#FramesByHand) | — |
-| [Commands of a program](../../../std/releases/0.11.1/docs/tooling.md#ProgramCommands) | — | — | [Node's command line](../../../std/releases/0.11.1/docs/tooling.md#NodeProgramCommands) |
-| [Project files](../../../std/releases/0.11.1/docs/tooling.md#Files) | — | [Files kept in memory](../../../std/releases/0.11.1/docs/tooling.md#FilesInMemory) | [The machine's files](../../../std/releases/0.11.1/docs/tooling.md#MachineFiles) |
-| [Files written](../../../std/releases/0.11.1/docs/tooling.md#FilesKept) | — | [Files kept in memory](../../../std/releases/0.11.1/docs/tooling.md#FilesInMemory) | — |
-| [Headless browser](../../../std/releases/0.11.1/docs/tooling.md#HeadlessBrowser) | — | [A browser kept in memory](../../../std/releases/0.11.1/docs/tooling.md#BrowserInMemory) | [Chromium, driven by Playwright](../../../std/releases/0.11.1/docs/tooling.md#PlaywrightBrowser) |
-| [Browser script](../../../std/releases/0.11.1/docs/tooling.md#BrowserScripted) | — | [A browser kept in memory](../../../std/releases/0.11.1/docs/tooling.md#BrowserInMemory) | — |
+| [Loading of a page](../.trame/std/docs/platform.md#PageLoading) | [The browser loads the page](../.trame/std/docs/platform.md#BrowserLoading) | — | — |
+| [Preferences](../.trame/std/docs/platform.md#PreferencesStore) | [The browser keeps the preferences](../.trame/std/docs/platform.md#BrowserPreferences) | [Preferences kept in memory](../.trame/std/docs/platform.md#MemoryPreferences) | — |
+| [Languages of the device](../.trame/std/docs/platform.md#DeviceLanguages) | [The browser's languages](../.trame/std/docs/platform.md#BrowserLanguages) | [The device's languages, given](scenarios.md#GivenLanguages) | — |
+| [Speech](../.trame/std/docs/platform.md#SpeechVoice) | [The browser's voice](../.trame/std/docs/platform.md#BrowserSpeech) | [A voice that writes down](../.trame/std/docs/platform.md#WrittenSpeech) | — |
+| [What was said](../.trame/std/docs/platform.md#SpeechHeard) | — | [A voice that writes down](../.trame/std/docs/platform.md#WrittenSpeech) | — |
+| [Screen kept awake](../.trame/std/docs/platform.md#ScreenAwake) | [The browser keeps the screen awake](../.trame/std/docs/platform.md#BrowserWakeLock) | [The screen kept awake, in memory](../.trame/std/docs/platform.md#AwakeInMemory) | — |
+| [Whether the screen is kept awake](../.trame/std/docs/platform.md#ScreenKeptAwake) | — | [The screen kept awake, in memory](../.trame/std/docs/platform.md#AwakeInMemory) | — |
+| [Animation frames](../.trame/std/docs/platform.md#AnimationFrames) | [The browser's frames](../.trame/std/docs/platform.md#BrowserFrames) | [Frames turned by hand](../.trame/std/docs/platform.md#FramesByHand) | — |
+| [Time turned by hand](../.trame/std/docs/platform.md#TimeTurned) | — | [Frames turned by hand](../.trame/std/docs/platform.md#FramesByHand) | — |
+| [Commands of a program](../.trame/std/docs/tooling.md#ProgramCommands) | — | — | [Node's command line](../.trame/std/docs/tooling.md#NodeProgramCommands) |
+| [Project files](../.trame/std/docs/tooling.md#Files) | — | [Files kept in memory](../.trame/std/docs/tooling.md#FilesInMemory) | [The machine's files](../.trame/std/docs/tooling.md#MachineFiles) |
+| [Files written](../.trame/std/docs/tooling.md#FilesKept) | — | [Files kept in memory](../.trame/std/docs/tooling.md#FilesInMemory) | — |
+| [Headless browser](../.trame/std/docs/tooling.md#HeadlessBrowser) | — | [A browser kept in memory](../.trame/std/docs/tooling.md#BrowserInMemory) | [Chromium, driven by Playwright](../.trame/std/docs/tooling.md#PlaywrightBrowser) |
+| [Browser script](../.trame/std/docs/tooling.md#BrowserScripted) | — | [A browser kept in memory](../.trame/std/docs/tooling.md#BrowserInMemory) | — |
 
 | Pattern | Status | Followed by |
 |---|---|---|
-| [Strategy](../../../std/releases/0.11.1/docs/patterns.md#Strategy) | **held** | [Content carried by the app](app.md#ContentCarried), [The app in memory](scenarios.md#InMemory), [The SDLC in memory](sdlc.md#SdlcInMemory), [In memory](../../../std/releases/0.11.1/docs/scenarios.md#InMemory) |
-| [Adapter](../../../std/releases/0.11.1/docs/patterns.md#Adapter) | **held** | [The browser's realizations](app.md#InTheBrowser), [On the machine](sdlc.md#OnTheMachine) |
-| [Abstract Factory](../../../std/releases/0.11.1/docs/patterns.md#AbstractFactory) | **held** | [The app in memory](scenarios.md#InMemory) |
+| [Strategy](../.trame/std/docs/patterns.md#Strategy) | **held** | [Content carried by the app](app.md#ContentCarried), [The app in memory](scenarios.md#InMemory), [The SDLC in memory](sdlc.md#SdlcInMemory), [In memory](../.trame/std/docs/scenarios.md#InMemory) |
+| [Adapter](../.trame/std/docs/patterns.md#Adapter) | **held** | [The browser's realizations](app.md#InTheBrowser), [On the machine](sdlc.md#OnTheMachine) |
+| [Abstract Factory](../.trame/std/docs/patterns.md#AbstractFactory) | **held** | [The app in memory](scenarios.md#InMemory) |
 
 ## Poselia · The app in a browser
 
@@ -50,19 +50,19 @@ In [Browser](architecture.md#Browser):
 | [Screen](architecture.md#Screen) | [The browser's screen](app.md#BrowserScreen) | an implementation |
 | [Bowl](architecture.md#Bowl) | [The browser's bowl](sound.md#BrowserBowl) | an implementation |
 | [Stage](architecture.md#Stage) | [The browser's stage](stage.md#BrowserStage) | an implementation |
-| [Animation frames](../../../std/releases/0.11.1/docs/platform.md#AnimationFrames) | [The browser's frames](../../../std/releases/0.11.1/docs/platform.md#BrowserFrames) | an implementation |
-| [Languages of the device](../../../std/releases/0.11.1/docs/platform.md#DeviceLanguages) | [The browser's languages](../../../std/releases/0.11.1/docs/platform.md#BrowserLanguages) | an implementation |
-| [Loading of a page](../../../std/releases/0.11.1/docs/platform.md#PageLoading) | [The browser loads the page](../../../std/releases/0.11.1/docs/platform.md#BrowserLoading) | an implementation |
-| [Preferences](../../../std/releases/0.11.1/docs/platform.md#PreferencesStore) | [The browser keeps the preferences](../../../std/releases/0.11.1/docs/platform.md#BrowserPreferences) | an implementation |
-| [Speech](../../../std/releases/0.11.1/docs/platform.md#SpeechVoice) | [The browser's voice](../../../std/releases/0.11.1/docs/platform.md#BrowserSpeech) | an implementation |
-| [Screen kept awake](../../../std/releases/0.11.1/docs/platform.md#ScreenAwake) | [The browser keeps the screen awake](../../../std/releases/0.11.1/docs/platform.md#BrowserWakeLock) | an implementation |
+| [Animation frames](../.trame/std/docs/platform.md#AnimationFrames) | [The browser's frames](../.trame/std/docs/platform.md#BrowserFrames) | an implementation |
+| [Languages of the device](../.trame/std/docs/platform.md#DeviceLanguages) | [The browser's languages](../.trame/std/docs/platform.md#BrowserLanguages) | an implementation |
+| [Loading of a page](../.trame/std/docs/platform.md#PageLoading) | [The browser loads the page](../.trame/std/docs/platform.md#BrowserLoading) | an implementation |
+| [Preferences](../.trame/std/docs/platform.md#PreferencesStore) | [The browser keeps the preferences](../.trame/std/docs/platform.md#BrowserPreferences) | an implementation |
+| [Speech](../.trame/std/docs/platform.md#SpeechVoice) | [The browser's voice](../.trame/std/docs/platform.md#BrowserSpeech) | an implementation |
+| [Screen kept awake](../.trame/std/docs/platform.md#ScreenAwake) | [The browser keeps the screen awake](../.trame/std/docs/platform.md#BrowserWakeLock) | an implementation |
 
 Context: The first delivery is a page a browser opens as it is; the phones come later, with their own realizations.
 
 - Decided by: ghalaax
-- Chooses: [The browser loads the page](../../../std/releases/0.11.1/docs/platform.md#BrowserLoading), [The browser's screen](app.md#BrowserScreen), [The browser's stage](stage.md#BrowserStage), [The browser's bowl](sound.md#BrowserBowl), [The browser keeps the preferences](../../../std/releases/0.11.1/docs/platform.md#BrowserPreferences), [The browser's languages](../../../std/releases/0.11.1/docs/platform.md#BrowserLanguages), [The browser's voice](../../../std/releases/0.11.1/docs/platform.md#BrowserSpeech), [The browser keeps the screen awake](../../../std/releases/0.11.1/docs/platform.md#BrowserWakeLock), [The browser's frames](../../../std/releases/0.11.1/docs/platform.md#BrowserFrames)
+- Chooses: [The browser loads the page](../.trame/std/docs/platform.md#BrowserLoading), [The browser's screen](app.md#BrowserScreen), [The browser's stage](stage.md#BrowserStage), [The browser's bowl](sound.md#BrowserBowl), [The browser keeps the preferences](../.trame/std/docs/platform.md#BrowserPreferences), [The browser's languages](../.trame/std/docs/platform.md#BrowserLanguages), [The browser's voice](../.trame/std/docs/platform.md#BrowserSpeech), [The browser keeps the screen awake](../.trame/std/docs/platform.md#BrowserWakeLock), [The browser's frames](../.trame/std/docs/platform.md#BrowserFrames)
 - In: [Browser](architecture.md#Browser)
-- Follows: [Adapter](../../../std/releases/0.11.1/docs/patterns.md#Adapter)
+- Follows: [Adapter](../.trame/std/docs/patterns.md#Adapter)
 
 <a id="ContentCarried"></a>
 
@@ -87,7 +87,7 @@ Context: An app on the mat works offline; the content is small enough to travel 
 - Decided by: ghalaax
 - Chooses: [The content the app carries](app.md#CarriedContent)
 - In: [Browser](architecture.md#Browser), [Test](architecture.md#Test)
-- Follows: [Strategy](../../../std/releases/0.11.1/docs/patterns.md#Strategy)
+- Follows: [Strategy](../.trame/std/docs/patterns.md#Strategy)
 
 ## Poselia · Scenarios
 
@@ -103,22 +103,22 @@ In [Test](architecture.md#Test):
 
 | Port | Answered by | Which is |
 |---|---|---|
-| [Languages of the device](../../../std/releases/0.11.1/docs/platform.md#DeviceLanguages) | [The device's languages, given](scenarios.md#GivenLanguages) | a function |
+| [Languages of the device](../.trame/std/docs/platform.md#DeviceLanguages) | [The device's languages, given](scenarios.md#GivenLanguages) | a function |
 | [Bowl](architecture.md#Bowl), [Bowl rung](architecture.md#BowlRung) | [A bowl that counts](scenarios.md#RecordedBowl) | a function |
 | [Screen](architecture.md#Screen), [Views shown](architecture.md#ViewsShown) | [A screen that records](scenarios.md#RecordedScreen) | a function |
-| [Screen kept awake](../../../std/releases/0.11.1/docs/platform.md#ScreenAwake), [Whether the screen is kept awake](../../../std/releases/0.11.1/docs/platform.md#ScreenKeptAwake) | [The screen kept awake, in memory](../../../std/releases/0.11.1/docs/platform.md#AwakeInMemory) | a function |
-| [Animation frames](../../../std/releases/0.11.1/docs/platform.md#AnimationFrames), [Time turned by hand](../../../std/releases/0.11.1/docs/platform.md#TimeTurned) | [Frames turned by hand](../../../std/releases/0.11.1/docs/platform.md#FramesByHand) | a function |
-| [Preferences](../../../std/releases/0.11.1/docs/platform.md#PreferencesStore) | [Preferences kept in memory](../../../std/releases/0.11.1/docs/platform.md#MemoryPreferences) | a function |
-| [What was said](../../../std/releases/0.11.1/docs/platform.md#SpeechHeard), [Speech](../../../std/releases/0.11.1/docs/platform.md#SpeechVoice) | [A voice that writes down](../../../std/releases/0.11.1/docs/platform.md#WrittenSpeech) | a function |
+| [Screen kept awake](../.trame/std/docs/platform.md#ScreenAwake), [Whether the screen is kept awake](../.trame/std/docs/platform.md#ScreenKeptAwake) | [The screen kept awake, in memory](../.trame/std/docs/platform.md#AwakeInMemory) | a function |
+| [Animation frames](../.trame/std/docs/platform.md#AnimationFrames), [Time turned by hand](../.trame/std/docs/platform.md#TimeTurned) | [Frames turned by hand](../.trame/std/docs/platform.md#FramesByHand) | a function |
+| [Preferences](../.trame/std/docs/platform.md#PreferencesStore) | [Preferences kept in memory](../.trame/std/docs/platform.md#MemoryPreferences) | a function |
+| [What was said](../.trame/std/docs/platform.md#SpeechHeard), [Speech](../.trame/std/docs/platform.md#SpeechVoice) | [A voice that writes down](../.trame/std/docs/platform.md#WrittenSpeech) | a function |
 
 Context: A scenario reads what the app would show and keeps, the same every time, without a browser.
 
 Consequences: The screen and what records it are chosen together: a scenario reads the views the app showed.
 
 - Decided by: ghalaax
-- Chooses: [A screen that records](scenarios.md#RecordedScreen), [A bowl that counts](scenarios.md#RecordedBowl), [Preferences kept in memory](../../../std/releases/0.11.1/docs/platform.md#MemoryPreferences), [The device's languages, given](scenarios.md#GivenLanguages), [Frames turned by hand](../../../std/releases/0.11.1/docs/platform.md#FramesByHand), [A voice that writes down](../../../std/releases/0.11.1/docs/platform.md#WrittenSpeech), [The screen kept awake, in memory](../../../std/releases/0.11.1/docs/platform.md#AwakeInMemory)
+- Chooses: [A screen that records](scenarios.md#RecordedScreen), [A bowl that counts](scenarios.md#RecordedBowl), [Preferences kept in memory](../.trame/std/docs/platform.md#MemoryPreferences), [The device's languages, given](scenarios.md#GivenLanguages), [Frames turned by hand](../.trame/std/docs/platform.md#FramesByHand), [A voice that writes down](../.trame/std/docs/platform.md#WrittenSpeech), [The screen kept awake, in memory](../.trame/std/docs/platform.md#AwakeInMemory)
 - In: [Test](architecture.md#Test)
-- Follows: [Strategy](../../../std/releases/0.11.1/docs/patterns.md#Strategy), [Abstract Factory](../../../std/releases/0.11.1/docs/patterns.md#AbstractFactory)
+- Follows: [Strategy](../.trame/std/docs/patterns.md#Strategy), [Abstract Factory](../.trame/std/docs/patterns.md#AbstractFactory)
 
 ## Poselia · SDLC
 
@@ -134,16 +134,16 @@ In [A machine](sdlc.md#Machine):
 
 | Port | Answered by | Which is |
 |---|---|---|
-| [Project files](../../../std/releases/0.11.1/docs/tooling.md#Files) | [The machine's files](../../../std/releases/0.11.1/docs/tooling.md#MachineFiles) | an implementation |
-| [Commands of a program](../../../std/releases/0.11.1/docs/tooling.md#ProgramCommands) | [Node's command line](../../../std/releases/0.11.1/docs/tooling.md#NodeProgramCommands) | an implementation |
-| [Headless browser](../../../std/releases/0.11.1/docs/tooling.md#HeadlessBrowser) | [Chromium, driven by Playwright](../../../std/releases/0.11.1/docs/tooling.md#PlaywrightBrowser) | an implementation |
+| [Project files](../.trame/std/docs/tooling.md#Files) | [The machine's files](../.trame/std/docs/tooling.md#MachineFiles) | an implementation |
+| [Commands of a program](../.trame/std/docs/tooling.md#ProgramCommands) | [Node's command line](../.trame/std/docs/tooling.md#NodeProgramCommands) | an implementation |
+| [Headless browser](../.trame/std/docs/tooling.md#HeadlessBrowser) | [Chromium, driven by Playwright](../.trame/std/docs/tooling.md#PlaywrightBrowser) | an implementation |
 
 Context: A check must open the page a person opens: the file delivered, in a real browser.
 
 - Decided by: ghalaax
-- Chooses: [Node's command line](../../../std/releases/0.11.1/docs/tooling.md#NodeProgramCommands), [The machine's files](../../../std/releases/0.11.1/docs/tooling.md#MachineFiles), [Chromium, driven by Playwright](../../../std/releases/0.11.1/docs/tooling.md#PlaywrightBrowser)
+- Chooses: [Node's command line](../.trame/std/docs/tooling.md#NodeProgramCommands), [The machine's files](../.trame/std/docs/tooling.md#MachineFiles), [Chromium, driven by Playwright](../.trame/std/docs/tooling.md#PlaywrightBrowser)
 - In: [A machine](sdlc.md#Machine)
-- Follows: [Adapter](../../../std/releases/0.11.1/docs/patterns.md#Adapter)
+- Follows: [Adapter](../.trame/std/docs/patterns.md#Adapter)
 
 <a id="SdlcInMemory"></a>
 
@@ -157,12 +157,12 @@ In [Test](architecture.md#Test):
 
 | Port | Answered by | Which is |
 |---|---|---|
-| [Browser script](../../../std/releases/0.11.1/docs/tooling.md#BrowserScripted), [Headless browser](../../../std/releases/0.11.1/docs/tooling.md#HeadlessBrowser) | [A browser kept in memory](../../../std/releases/0.11.1/docs/tooling.md#BrowserInMemory) | a function |
-| [Project files](../../../std/releases/0.11.1/docs/tooling.md#Files), [Files written](../../../std/releases/0.11.1/docs/tooling.md#FilesKept) | [Files kept in memory](../../../std/releases/0.11.1/docs/tooling.md#FilesInMemory) | a function |
+| [Browser script](../.trame/std/docs/tooling.md#BrowserScripted), [Headless browser](../.trame/std/docs/tooling.md#HeadlessBrowser) | [A browser kept in memory](../.trame/std/docs/tooling.md#BrowserInMemory) | a function |
+| [Project files](../.trame/std/docs/tooling.md#Files), [Files written](../.trame/std/docs/tooling.md#FilesKept) | [Files kept in memory](../.trame/std/docs/tooling.md#FilesInMemory) | a function |
 
 Context: A program of the SDLC is code like the app's: its scenarios play it before it runs on a machine.
 
 - Decided by: ghalaax
-- Chooses: [Files kept in memory](../../../std/releases/0.11.1/docs/tooling.md#FilesInMemory), [A browser kept in memory](../../../std/releases/0.11.1/docs/tooling.md#BrowserInMemory)
+- Chooses: [Files kept in memory](../.trame/std/docs/tooling.md#FilesInMemory), [A browser kept in memory](../.trame/std/docs/tooling.md#BrowserInMemory)
 - In: [Test](architecture.md#Test)
-- Follows: [Strategy](../../../std/releases/0.11.1/docs/patterns.md#Strategy)
+- Follows: [Strategy](../.trame/std/docs/patterns.md#Strategy)

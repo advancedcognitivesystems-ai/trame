@@ -4,6 +4,7 @@
   "type": "module",
   "imports": {
     "#ci/*": "./.trame/ci/src/*.ts",
+    "#geometry/*": "./.trame/geometry/src/*.ts",
     "#std/*": "./.trame/std/src/*.ts",
     "#trame/kernel": "./.trame/trame/trame/kernel.ts",
     "#trame/kinds/*": "./.trame/trame/kinds/*.ts"

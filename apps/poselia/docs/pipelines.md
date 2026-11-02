@@ -1,6 +1,6 @@
 # Pipelines
 
-*What trame ship runs for each shipment on 1 November 2026, in order, as the engine computes it: its artefacts produced, the checks a program makes, the obligations to prove, the programs that deploy it, the dossier.*
+*What trame ship runs for each shipment on 2 November 2026, in order, as the engine computes it: its artefacts produced, the checks a program makes, the obligations to prove, the programs that deploy it, the dossier.*
 
 <a id="Preview"></a>
 
@@ -304,8 +304,8 @@ flowchart TB
 
 |  | Stage | Step | Run by | Why | Status | Latest evidence |
 |---|---|---|---|---|---|---|
-| 1 | produce | [The preview's script](sdlc.md#PreviewScript) · `scripts/ship-preview.sh` | [A script of Bash](../../../ci/releases/0.2.0/docs/shell.md#ShellScript) | — | **unknown** | 29 October 2026 by claude  |
-| 2 | produce | [The preview's workflow](sdlc.md#PreviewWorkflow) · `../../.github/workflows/poselia-preview.yml` | [A workflow of GitHub Actions](../../../ci/releases/0.2.0/docs/github.md#GitHubWorkflow) | — | **unknown** | 29 October 2026 by claude  |
+| 1 | produce | [The preview's script](sdlc.md#PreviewScript) · `scripts/ship-preview.sh` | [A script of Bash](../.trame/ci/docs/shell.md#ShellScript) | — | **unknown** | 29 October 2026 by claude  |
+| 2 | produce | [The preview's workflow](sdlc.md#PreviewWorkflow) · `../../.github/workflows/poselia-preview.yml` | [A workflow of GitHub Actions](../.trame/ci/docs/github.md#GitHubWorkflow) | — | **unknown** | 29 October 2026 by claude  |
 | 3 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
 | 4 | prove | [The preview's script](sdlc.md#PreviewScript) | — | the shipment | **unknown** | 29 October 2026 by claude  |
 | 5 | prove | [The preview's workflow](sdlc.md#PreviewWorkflow) | — | the shipment | **unknown** | 29 October 2026 by claude  |

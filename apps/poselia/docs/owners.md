@@ -1,12 +1,12 @@
 # Owners
 
-*What each person must decide, settle or watch on 1 November 2026, and what they own.*
+*What each person must decide, settle or watch on 2 November 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
 | A teacher who practises | 0 | 0 | 4 | 0 |
 | People who try it on a phone | 0 | 0 | 1 | 0 |
-| ghalaax | 0 | 0 | 52 | 199 |
+| ghalaax | 0 | 0 | 52 | 203 |
 
 <a id="A teacher who practises"></a>
 
@@ -194,6 +194,10 @@
 | [Criteria of a landmark on the body](marks.md#MarkOnBodyCriteria) | Acceptance criteria | **held** |
 | [The landmarks of a pose](marks.md#MarksOn) | Function | **held** |
 | [When the landmarks are drawn](marks.md#MarksWhen) | Decision |  |
+| [Continuous integration](packages.md#ContinuousIntegration) | Package |  |
+| [Geometry](packages.md#Geometry) | Package |  |
+| [Trame](packages.md#Language) | Package |  |
+| [The standard library](packages.md#StandardLibrary) | Package |  |
 | [Breaths to say a cue](practice.md#BreathsToSay) | Requirement | **held** |
 | [Criteria of breaths to say a cue](practice.md#BreathsToSayCriteria) | Acceptance criteria | **held** |
 | [A movement goes as a breath goes](practice.md#Eased) | Requirement | **held** |

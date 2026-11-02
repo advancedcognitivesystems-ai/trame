@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 1 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 2 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Poselia · The app in a browser
 
@@ -721,6 +721,56 @@ Function · `MarksOn` · **held**
 - Parameters: { draw: (rule), words: language.InterfaceWords, language: language.AppLanguage, counts: std/algebra.Counts }
 - Serves: Practise yoga on one's own, guided
 - Depends on: A landmark on the body, Words of the interface, The app's language
+
+## Poselia · Packages
+
+### Continuous integration
+
+Package · `ContinuousIntegration`
+
+- Owner: ghalaax
+- Name: ci
+- Version: 0.3.0
+- How it joins the graph: library
+- Where it comes from: path
+- Its path: ../../ci/releases/0.3.0
+- Serves: Practise yoga on one's own, guided
+
+### Geometry
+
+Package · `Geometry`
+
+- Owner: ghalaax
+- Name: geometry
+- Version: 0.1.0
+- How it joins the graph: library
+- Where it comes from: path
+- Its path: ../../libs/geometry/releases/0.1.0
+- Serves: Practise yoga on one's own, guided
+
+### Trame
+
+Package · `Language`
+
+- Owner: ghalaax
+- Name: trame
+- Version: 94
+- How it joins the graph: language
+- Where it comes from: path
+- Its path: ../../generations/g94
+- Serves: Practise yoga on one's own, guided
+
+### The standard library
+
+Package · `StandardLibrary`
+
+- Owner: ghalaax
+- Name: std
+- Version: 0.13.0
+- How it joins the graph: library
+- Where it comes from: path
+- Its path: ../../std/releases/0.13.0
+- Serves: Practise yoga on one's own, guided
 
 ## Poselia · Practice
 

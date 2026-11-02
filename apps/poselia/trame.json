@@ -2,13 +2,17 @@
   "title": "Poselia",
   "libraries": {
     "ci": {
-      "path": "../../ci",
-      "version": "0.2.0"
+      "at": ".trame/ci",
+      "version": "0.3.0"
+    },
+    "geometry": {
+      "at": ".trame/geometry",
+      "version": "0.1.0"
     },
     "std": {
-      "path": "../../std",
-      "version": "0.11.1"
+      "at": ".trame/std",
+      "version": "0.13.0"
     }
   },
-  "engine": "../../generations/g94"
+  "engine": ".trame/trame"
 }

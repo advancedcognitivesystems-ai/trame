@@ -1,6 +1,6 @@
 # Architecture decisions
 
-*The choices that shape the product without being values, in force on 1 November 2026: why each was taken, what was rejected, and the nodes that apply it.*
+*The choices that shape the product without being values, in force on 2 November 2026: why each was taken, what was rejected, and the nodes that apply it.*
 
 > **6 architecture decisions, 1 held by the nodes that apply them**
 
@@ -8,8 +8,8 @@
 |---|---|---|
 | [The content is data, behind a port](principles.md#ContentAsData) | **unknown** | [Content](architecture.md#ContentSource), [Poses](content.md#Poses) |
 | [The breath is the clock](principles.md#BreathIsTheClock) | **unknown** | [The breath of a moment](product.md#BreathOf), [A hold counts in breaths](product.md#HoldInBreaths) |
-| [The person's language, among those offered](principles.md#LanguageOffered) | **held** | [Languages offered](content.md#Languages), [The language of the app](product.md#ChosenLanguage), [Languages of the device](../../../std/releases/0.11.1/docs/platform.md#DeviceLanguages), [Preferences](../../../std/releases/0.11.1/docs/platform.md#PreferencesStore) |
-| [Said aloud, the screen awake](principles.md#SaidAloud) | **unknown** | [Play a practice](practice.md#PlayPractice), [The phone stays on the mat](product.md#PhoneOnTheMat), [Screen kept awake](../../../std/releases/0.11.1/docs/platform.md#ScreenAwake), [Speech](../../../std/releases/0.11.1/docs/platform.md#SpeechVoice) |
+| [The person's language, among those offered](principles.md#LanguageOffered) | **held** | [Languages offered](content.md#Languages), [The language of the app](product.md#ChosenLanguage), [Languages of the device](../.trame/std/docs/platform.md#DeviceLanguages), [Preferences](../.trame/std/docs/platform.md#PreferencesStore) |
+| [Said aloud, the screen awake](principles.md#SaidAloud) | **unknown** | [Play a practice](practice.md#PlayPractice), [The phone stays on the mat](product.md#PhoneOnTheMat), [Screen kept awake](../.trame/std/docs/platform.md#ScreenAwake), [Speech](../.trame/std/docs/platform.md#SpeechVoice) |
 | [A page first, the phones after](principles.md#PageFirst) | **unknown** | [Poselia's page](app.md#PoseliaPage), [Poselia in a browser](architecture.md#PoseliaApp), [The page opens](sdlc.md#PageOpens) |
 | [The SDLC is in the graph](sdlc.md#SdlcInTheGraph) | **unknown** | [Each decision of architecture serves the product](sdlc.md#AdrsServeTheProduct), [Code serves the product](sdlc.md#CodeServesTheProduct), [The content, reviewed](sdlc.md#ContentReviewed), [On a phone](sdlc.md#OnAPhone), [Open the page](sdlc.md#OpenThePage), [The page opens](sdlc.md#PageOpens), [Place the page](sdlc.md#PlaceThePage), [A preview](sdlc.md#Preview), [The preview's script](sdlc.md#PreviewScript), [The preview's workflow](sdlc.md#PreviewWorkflow), [A public version](sdlc.md#PublicVersion), [The files that run it elsewhere](sdlc.md#RunnersWritten) |
 
@@ -74,7 +74,7 @@ Consequences: The languages offered are a decision the datasets read: a text mis
 
 - Decided by: ghalaax
 - Serves: [In the person's language](product.md#InTheirLanguage)
-- Applied by: [Languages offered](content.md#Languages), [The language of the app](product.md#ChosenLanguage), [Preferences](../../../std/releases/0.11.1/docs/platform.md#PreferencesStore), [Languages of the device](../../../std/releases/0.11.1/docs/platform.md#DeviceLanguages)
+- Applied by: [Languages offered](content.md#Languages), [The language of the app](product.md#ChosenLanguage), [Preferences](../.trame/std/docs/platform.md#PreferencesStore), [Languages of the device](../.trame/std/docs/platform.md#DeviceLanguages)
 
 <a id="SaidAloud"></a>
 
@@ -94,7 +94,7 @@ Consequences: A voice port says texts in the chosen language; each kind of sayin
 
 - Decided by: ghalaax
 - Serves: [Practise yoga on one's own, guided](product.md#PractiseGuided)
-- Applied by: [Speech](../../../std/releases/0.11.1/docs/platform.md#SpeechVoice), [Screen kept awake](../../../std/releases/0.11.1/docs/platform.md#ScreenAwake), [The phone stays on the mat](product.md#PhoneOnTheMat), [Play a practice](practice.md#PlayPractice)
+- Applied by: [Speech](../.trame/std/docs/platform.md#SpeechVoice), [Screen kept awake](../.trame/std/docs/platform.md#ScreenAwake), [The phone stays on the mat](product.md#PhoneOnTheMat), [Play a practice](practice.md#PlayPractice)
 
 <a id="PageFirst"></a>
 
