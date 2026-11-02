@@ -956,7 +956,13 @@
       "status": "held",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {
+          "keyOf": "(function)",
+          "bodyAt": "(function)",
+          "g": "body.MatSpace",
+          "counts": "std/algebra.Counts"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -3631,7 +3637,15 @@
       "status": "held",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {
+          "g": "body.MatSpace",
+          "spotOn": "(function)",
+          "angleBetween": "(function)",
+          "look": "marks.MarkLook",
+          "places": "body.SpotPlaces",
+          "counts": "std/algebra.Counts"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -6216,6 +6230,21 @@
       "kind": "refines"
     },
     {
+      "from": "composing.BreathOfMove",
+      "to": "body.KeyOf",
+      "kind": "deps"
+    },
+    {
+      "from": "composing.BreathOfMove",
+      "to": "body.BodyAt",
+      "kind": "deps"
+    },
+    {
+      "from": "composing.BreathOfMove",
+      "to": "body.MatSpace",
+      "kind": "deps"
+    },
+    {
       "from": "composing.BreathOfMoveCriteria",
       "to": "composing.BreathOfMove",
       "kind": "accepts"
@@ -6489,6 +6518,31 @@
       "from": "marks.MarkOnBody",
       "to": "product.PractiseGuided",
       "kind": "refines"
+    },
+    {
+      "from": "marks.MarkOnBody",
+      "to": "body.MatSpace",
+      "kind": "deps"
+    },
+    {
+      "from": "marks.MarkOnBody",
+      "to": "body.SpotOn",
+      "kind": "deps"
+    },
+    {
+      "from": "marks.MarkOnBody",
+      "to": "body.AngleBetween",
+      "kind": "deps"
+    },
+    {
+      "from": "marks.MarkOnBody",
+      "to": "marks.MarkLook",
+      "kind": "deps"
+    },
+    {
+      "from": "marks.MarkOnBody",
+      "to": "body.SpotPlaces",
+      "kind": "deps"
     },
     {
       "from": "marks.MarkOnBodyCriteria",
@@ -8236,16 +8290,6 @@
       "kind": "uses"
     },
     {
-      "from": "composing.BreathOfMove",
-      "to": "body.KeyOf",
-      "kind": "uses"
-    },
-    {
-      "from": "composing.BreathOfMove",
-      "to": "body.BodyAt",
-      "kind": "uses"
-    },
-    {
       "from": "content.MakesSenseCriteria",
       "to": "content.LevelWays",
       "kind": "uses"
@@ -8328,21 +8372,6 @@
     {
       "from": "content.Sequences",
       "to": "content.MakesSense",
-      "kind": "uses"
-    },
-    {
-      "from": "marks.MarkOnBody",
-      "to": "marks.MarkLook",
-      "kind": "uses"
-    },
-    {
-      "from": "marks.MarkOnBody",
-      "to": "body.SpotOn",
-      "kind": "uses"
-    },
-    {
-      "from": "marks.MarkOnBody",
-      "to": "body.AngleBetween",
       "kind": "uses"
     },
     {

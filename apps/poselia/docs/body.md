@@ -32,7 +32,8 @@ The angle between the directions from a joint to two points, in degrees, from 0 
 - Owner: ghalaax
 - Parameters: `g` ← [The space of the mat](#MatSpace)
 - Refines: [Practise yoga on one's own, guided](product.md#PractiseGuided)
-- Used by: [A landmark on the body](marks.md#MarkOnBody), [Criteria of a landmark on the body](marks.md#MarkOnBodyCriteria)
+- Used by: [A landmark on the body](marks.md#MarkOnBody)
+- Used by: [Criteria of a landmark on the body](marks.md#MarkOnBodyCriteria)
 
 <a id="AngleBetweenCriteria"></a>
 
@@ -104,9 +105,9 @@ Part of the way from one pose to the next: the pelvis and the spine in proportio
 - Owner: ghalaax
 - Parameters: `m` ← [Measures of the body](#BodyMeasures) · `mv` ← [How a body moves](#Movement) · `g` ← [The space of the mat](#MatSpace) · `trunkOf` ← [The trunk from its angles](#TrunkOf) · `feet` ← [A foot from its angles](#FootOf) · `stepping` ← [A leg that steps](#SteppingLeg) · `footWay` ← [A foot on its way](#FootOnItsWay) · `planted` ← [A leg on its foot](#PlantedLeg) · `handWay` ← [A hand on its way](#HandOnItsWay) · `twoBones` ← [A limb reaches its end](#TwoBones)
 - Refines: [Practise yoga on one's own, guided](product.md#PractiseGuided)
-- Used by: [Every limb reaches](#LimbsReach), [A pose rests on what it names](#RestsOnWhatItNames), [The body of a pose](drawing.md#PoseBody), [The moment of a practice](practice.md#MomentOf)
+- Used by: [Every limb reaches](#LimbsReach), [A pose rests on what it names](#RestsOnWhatItNames), [Rising on a breath in](composing.md#BreathOfMove), [The body of a pose](drawing.md#PoseBody), [The moment of a practice](practice.md#MomentOf)
 - Verified by: [The body stays on the floor](scenarios.md#BodyStaysOnTheFloor)
-- Used by: [Criteria of where a spot is](#SpotOnCriteria), [Criteria of the heights of the body's surface](#SurfaceHeightsCriteria), [Rising on a breath in](composing.md#BreathOfMove), [Criteria of a sequence that makes sense](content.md#MakesSenseCriteria), [Criteria of a landmark on the body](marks.md#MarkOnBodyCriteria)
+- Used by: [Criteria of where a spot is](#SpotOnCriteria), [Criteria of the heights of the body's surface](#SurfaceHeightsCriteria), [Criteria of a sequence that makes sense](content.md#MakesSenseCriteria), [Criteria of a landmark on the body](marks.md#MarkOnBodyCriteria)
 
 <a id="BodyAtCriteria"></a>
 
@@ -255,9 +256,9 @@ A pose placed on the mat for a round: in a pose that sets the legs apart, the le
 - Owner: ghalaax
 - Parameters: `trunkOf` ← [The trunk from its angles](#TrunkOf) · `g` ← [The space of the mat](#MatSpace) · `sides` ← [The names of the sides](#SideNames) · `texts` ← [Texts](../.trame/std/docs/algebra.md#Texts)
 - Refines: [Practise yoga on one's own, guided](product.md#PractiseGuided)
-- Used by: [Every limb reaches](#LimbsReach), [A pose rests on what it names](#RestsOnWhatItNames), [The body of a pose](drawing.md#PoseBody), [A practice](practice.md#PracticeOf)
+- Used by: [Every limb reaches](#LimbsReach), [A pose rests on what it names](#RestsOnWhatItNames), [Rising on a breath in](composing.md#BreathOfMove), [The body of a pose](drawing.md#PoseBody), [A practice](practice.md#PracticeOf)
 - Verified by: [The body stays on the floor](scenarios.md#BodyStaysOnTheFloor)
-- Used by: [Criteria of the body between two poses](#BodyAtCriteria), [Criteria of where a spot is](#SpotOnCriteria), [Criteria of the heights of the body's surface](#SurfaceHeightsCriteria), [Rising on a breath in](composing.md#BreathOfMove), [Criteria of a sequence that makes sense](content.md#MakesSenseCriteria), [Criteria of a landmark on the body](marks.md#MarkOnBodyCriteria)
+- Used by: [Criteria of the body between two poses](#BodyAtCriteria), [Criteria of where a spot is](#SpotOnCriteria), [Criteria of the heights of the body's surface](#SurfaceHeightsCriteria), [Criteria of a sequence that makes sense](content.md#MakesSenseCriteria), [Criteria of a landmark on the body](marks.md#MarkOnBodyCriteria)
 
 <a id="KeyOfCriteria"></a>
 
@@ -856,7 +857,7 @@ The sternum half way from the waist to the base of the neck; a point of both sid
 
 - Decided by: ghalaax
 - Rejected: On the floor itself, a mark drawn at the height of the floor flickered through it
-- Used by: [Where a spot is](#SpotOn)
+- Used by: [Where a spot is](#SpotOn), [A landmark on the body](marks.md#MarkOnBody)
 
 <a id="Touching"></a>
 
@@ -904,5 +905,5 @@ Poselia's points in geometry's vectors: along the mat, up from the floor, across
 - Parameters: `v` ← [Vectors](../.trame/geometry/docs/vectors.md#Vectors) · `angle` ← [Angle](../.trame/geometry/docs/angles.md#Angle) · `counts` ← [Counts](../.trame/std/docs/algebra.md#Counts)
 - Body: `./code/mat-space.ts` (typescript)
 - Serves: [Practise yoga on one's own, guided](product.md#PractiseGuided)
-- Used by: [The angle at a joint](#AngleBetween), [The body between two poses](#BodyAt), [A foot from its angles](#FootOf), [A foot on its way](#FootOnItsWay), [A hand on its way](#HandOnItsWay), [A pose ready to move](#KeyOf), [A leg on its foot](#PlantedLeg), [Where a spot is](#SpotOn), [A leg that steps](#SteppingLeg), [The heights of the body's surface](#SurfaceHeights), [The trunk from its angles](#TrunkOf), [A limb reaches its end](#TwoBones)
+- Used by: [The angle at a joint](#AngleBetween), [The body between two poses](#BodyAt), [A foot from its angles](#FootOf), [A foot on its way](#FootOnItsWay), [A hand on its way](#HandOnItsWay), [A pose ready to move](#KeyOf), [A leg on its foot](#PlantedLeg), [Where a spot is](#SpotOn), [A leg that steps](#SteppingLeg), [The heights of the body's surface](#SurfaceHeights), [The trunk from its angles](#TrunkOf), [A limb reaches its end](#TwoBones), [Rising on a breath in](composing.md#BreathOfMove), [A landmark on the body](marks.md#MarkOnBody)
 - Verified by: [The body stays on the floor](scenarios.md#BodyStaysOnTheFloor)

@@ -511,8 +511,9 @@ Function · `MatSpace` · **held**
 Requirement · `BreathOfMove` · **held**
 
 - Owner: ghalaax
+- Parameters: { keyOf: (rule), bodyAt: (rule), g: body.MatSpace, counts: std/algebra.Counts }
 - Refines: Practise yoga on one's own, guided
-- Depends on: A pose ready to move, The body between two poses
+- Depends on: A pose ready to move, The body between two poses, The space of the mat
 
 ### Names of the composer
 
@@ -773,8 +774,9 @@ Message catalog · `WordsFr`
 Requirement · `MarkOnBody` · **held**
 
 - Owner: ghalaax
+- Parameters: { g: body.MatSpace, spotOn: (rule), angleBetween: (rule), look: marks.MarkLook, places: body.SpotPlaces, counts: std/algebra.Counts }
 - Refines: Practise yoga on one's own, guided
-- Depends on: How landmarks are drawn, Where a spot is, The angle at a joint
+- Depends on: The space of the mat, Where a spot is, The angle at a joint, How landmarks are drawn, Where a spot of the body is
 
 ### How landmarks are drawn
 

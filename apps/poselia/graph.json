@@ -1277,17 +1277,21 @@
       "status": "held",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {
+          "keyOf": "(function)",
+          "bodyAt": "(function)",
+          "g": "body.MatSpace",
+          "counts": "std/algebra.Counts"
+        },
+        "body": "(function)"
       },
-      "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
-      ]
+      "diagnostics": []
     },
     {
       "id": "composing.BreathOfMoveCriteria",
       "kind": "acceptance",
       "title": "Criteria of rising on a breath in",
-      "source": "src/composing.ts:42",
+      "source": "src/composing.ts:44",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -1313,7 +1317,7 @@
       "id": "composing.ComposedSequence",
       "kind": "function",
       "title": "A sequence composed",
-      "source": "src/composing.ts:94",
+      "source": "src/composing.ts:96",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -1346,7 +1350,7 @@
       "id": "composing.ComposerNames",
       "kind": "decision",
       "title": "Names of the composer",
-      "source": "src/composing.ts:137",
+      "source": "src/composing.ts:139",
       "fields": {
         "owner": "ghalaax",
         "value": {
@@ -1364,7 +1368,7 @@
       "id": "composing.ComposerViewOf",
       "kind": "function",
       "title": "The composer",
-      "source": "src/composing.ts:111",
+      "source": "src/composing.ts:113",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -1388,7 +1392,7 @@
       "id": "composing.DrawnSequence",
       "kind": "function",
       "title": "A sequence drawn by lot",
-      "source": "src/composing.ts:76",
+      "source": "src/composing.ts:78",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -1423,7 +1427,7 @@
       "id": "composing.HoldingDefaults",
       "kind": "decision",
       "title": "What a composed practice holds",
-      "source": "src/composing.ts:62",
+      "source": "src/composing.ts:64",
       "fields": {
         "owner": "ghalaax",
         "value": {
@@ -1445,7 +1449,7 @@
       "id": "composing.ShowComposer",
       "kind": "function",
       "title": "Show the composer",
-      "source": "src/composing.ts:124",
+      "source": "src/composing.ts:126",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -1469,7 +1473,7 @@
       "id": "content.CuePlaceholders",
       "kind": "decision",
       "title": "Placeholders of a cue",
-      "source": "src/content.ts:284",
+      "source": "src/content.ts:287",
       "fields": {
         "owner": "ghalaax",
         "value": {
@@ -1649,7 +1653,7 @@
       "id": "content.Poses",
       "kind": "dataset",
       "title": "Poses",
-      "source": "src/content.ts:227",
+      "source": "src/content.ts:230",
       "status": "unknown",
       "fields": {
         "owner": "ghalaax",
@@ -3784,7 +3788,7 @@
       "id": "content.Sequences",
       "kind": "dataset",
       "title": "Sequences",
-      "source": "src/content.ts:291",
+      "source": "src/content.ts:294",
       "status": "unknown",
       "fields": {
         "owner": "ghalaax",
@@ -4280,21 +4284,27 @@
       "id": "marks.MarkOnBody",
       "kind": "requirement",
       "title": "A landmark on the body",
-      "source": "src/marks.ts:65",
+      "source": "src/marks.ts:58",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {
+          "g": "body.MatSpace",
+          "spotOn": "(function)",
+          "angleBetween": "(function)",
+          "look": "marks.MarkLook",
+          "places": "body.SpotPlaces",
+          "counts": "std/algebra.Counts"
+        },
+        "body": "(function)"
       },
-      "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
-      ]
+      "diagnostics": []
     },
     {
       "id": "marks.MarkOnBodyCriteria",
       "kind": "acceptance",
       "title": "Criteria of a landmark on the body",
-      "source": "src/marks.ts:112",
+      "source": "src/marks.ts:108",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -4320,7 +4330,7 @@
       "id": "marks.MarksOn",
       "kind": "function",
       "title": "The landmarks of a pose",
-      "source": "src/marks.ts:143",
+      "source": "src/marks.ts:139",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -5788,7 +5798,7 @@
       },
       "result": {
         "path": "dist/poselia.html",
-        "code": "7545139a"
+        "code": "6f2df516"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -8036,6 +8046,26 @@
       "kind": "refines"
     },
     {
+      "from": "composing.BreathOfMove",
+      "to": "body.KeyOf",
+      "kind": "deps"
+    },
+    {
+      "from": "composing.BreathOfMove",
+      "to": "body.BodyAt",
+      "kind": "deps"
+    },
+    {
+      "from": "composing.BreathOfMove",
+      "to": "body.MatSpace",
+      "kind": "deps"
+    },
+    {
+      "from": "composing.BreathOfMove",
+      "to": "std/algebra.Counts",
+      "kind": "deps"
+    },
+    {
       "from": "composing.BreathOfMoveCriteria",
       "to": "composing.BreathOfMove",
       "kind": "accepts"
@@ -8369,6 +8399,36 @@
       "from": "marks.MarkOnBody",
       "to": "product.PractiseGuided",
       "kind": "refines"
+    },
+    {
+      "from": "marks.MarkOnBody",
+      "to": "body.MatSpace",
+      "kind": "deps"
+    },
+    {
+      "from": "marks.MarkOnBody",
+      "to": "body.SpotOn",
+      "kind": "deps"
+    },
+    {
+      "from": "marks.MarkOnBody",
+      "to": "body.AngleBetween",
+      "kind": "deps"
+    },
+    {
+      "from": "marks.MarkOnBody",
+      "to": "marks.MarkLook",
+      "kind": "deps"
+    },
+    {
+      "from": "marks.MarkOnBody",
+      "to": "body.SpotPlaces",
+      "kind": "deps"
+    },
+    {
+      "from": "marks.MarkOnBody",
+      "to": "std/algebra.Counts",
+      "kind": "deps"
     },
     {
       "from": "marks.MarkOnBodyCriteria",
@@ -10706,18 +10766,6 @@
       "inferred": true
     },
     {
-      "from": "composing.BreathOfMove",
-      "to": "body.KeyOf",
-      "kind": "uses",
-      "inferred": true
-    },
-    {
-      "from": "composing.BreathOfMove",
-      "to": "body.BodyAt",
-      "kind": "uses",
-      "inferred": true
-    },
-    {
       "from": "content.MakesSenseCriteria",
       "to": "content.LevelWays",
       "kind": "uses",
@@ -10816,24 +10864,6 @@
     {
       "from": "content.Sequences",
       "to": "content.MakesSense",
-      "kind": "uses",
-      "inferred": true
-    },
-    {
-      "from": "marks.MarkOnBody",
-      "to": "marks.MarkLook",
-      "kind": "uses",
-      "inferred": true
-    },
-    {
-      "from": "marks.MarkOnBody",
-      "to": "body.SpotOn",
-      "kind": "uses",
-      "inferred": true
-    },
-    {
-      "from": "marks.MarkOnBody",
-      "to": "body.AngleBetween",
       "kind": "uses",
       "inferred": true
     },

@@ -280,7 +280,7 @@ With twelve seeds, for three to twelve poses, every sequence drawn is as long as
 
 <details><summary>The code it runs: 12 nodes</summary>
 
-[Seeded draws](../.trame/std/docs/algorithms.md#SeededDraws), [A sequence drawn by lot](composing.md#DrawnSequence), [A sequence composed](composing.md#ComposedSequence), [The space of the mat](body.md#MatSpace), [A practice](practice.md#PracticeOf), [A foot from its angles](body.md#FootOf), [Preferences kept in memory](../.trame/std/docs/platform.md#MemoryPreferences), [The device's languages, given](#GivenLanguages), [The app's language](language.md#AppLanguage), [Words of the interface](language.md#InterfaceWords), [The landmarks of a pose](marks.md#MarksOn), [The moment of a practice](practice.md#MomentOf)
+[Seeded draws](../.trame/std/docs/algorithms.md#SeededDraws), [A sequence drawn by lot](composing.md#DrawnSequence), [The space of the mat](body.md#MatSpace), [A foot from its angles](body.md#FootOf), [A sequence composed](composing.md#ComposedSequence), [A practice](practice.md#PracticeOf), [Preferences kept in memory](../.trame/std/docs/platform.md#MemoryPreferences), [The device's languages, given](#GivenLanguages), [The app's language](language.md#AppLanguage), [Words of the interface](language.md#InterfaceWords), [The landmarks of a pose](marks.md#MarksOn), [The moment of a practice](practice.md#MomentOf)
 
 </details>
 

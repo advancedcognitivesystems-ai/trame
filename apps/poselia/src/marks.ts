@@ -7,8 +7,8 @@ import { acceptance } from "#trame/kinds/acceptance"
 import { fn } from "#trame/kinds/function"
 import { Counts } from "#std/algebra"
 import { PractiseGuided } from "./product"
-import { KeyOf, BodyAt, SpotOn, AngleBetween, Point, Which, type Body, type Vec, type Sides, type Shape } from "./body"
-import type { Mark } from "./content"
+import { KeyOf, BodyAt, SpotOn, AngleBetween, MatSpace, SpotPlaces, Point, Which, type Body, type Vec, type Sides, type Shape, type Spot } from "./body"
+import { Drawn, type Mark } from "./content"
 import { InterfaceWords, AppLanguage } from "./language"
 
 // The landmarks of a pose, as the page "Salutation au soleil" draws them on the mannequin: a few numbered words tied to
@@ -20,7 +20,7 @@ import { InterfaceWords, AppLanguage } from "./language"
  * How landmarks are drawn
  * The lengths of a landmark's drawing, in metres: a dash and the gap after it, the width of a line, of a thin line and
  * of an arrow's shaft, the radius of a dot; an angle's arc in 24 pieces, its two rays a quarter longer than its radius,
- * its measure 9 cm beyond the arc and rounded to 5°; the floor a centimetre down.
+ * its measure 9 cm beyond the arc and rounded to 5°.
  */
 export const MarkLook = decision<{ dash: number; gap: number; line: number; thin: number; shaft: number; dot: number; arc: number; ray: number; beyond: number; roundTo: number }>({
   owner: "ghalaax",
@@ -49,13 +49,6 @@ export interface MarkDrawing {
   label: Vec
 }
 
-const add = (a: Vec, b: Vec): Vec => [a[0] + b[0], a[1] + b[1], a[2] + b[2]]
-const sub = (a: Vec, b: Vec): Vec => [a[0] - b[0], a[1] - b[1], a[2] - b[2]]
-const mul = (a: Vec, s: number): Vec => [a[0] * s, a[1] * s, a[2] * s]
-const dot = (a: Vec, b: Vec) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2]
-const len = (a: Vec) => Math.sqrt(dot(a, a))
-const unit = (a: Vec): Vec => mul(a, 1 / (len(a) || 1))
-
 /**
  * A landmark on the body
  * What a landmark draws on a body: each line from spot to spot (dashed in dashes and gaps), a plumb line dashed down to
@@ -65,44 +58,47 @@ const unit = (a: Vec): Vec => mul(a, 1 / (len(a) || 1))
 export const MarkOnBody = requirement({
   owner: "ghalaax",
   refines: [PractiseGuided],
-  rule: (mark: Mark, body: Body, sides: Sides): MarkDrawing => {
-    const look = MarkLook.value
-    const at = (s: Parameters<typeof SpotOn>[1]) => SpotOn(body, s, sides)
-    const drawing: MarkDrawing = { segments: [], dots: [], heads: [], angles: [], label: [0, 0, 0] }
+  deps: { g: MatSpace, spotOn: SpotOn, angleBetween: AngleBetween, look: MarkLook, places: SpotPlaces, counts: Counts },
+  body: ({ g, spotOn, angleBetween, look, places, counts }) => (mark: Mark, body: Body, sides: Sides): MarkDrawing => {
+    const at = (s: Spot) => spotOn(body, s, sides)
+    const drawing: MarkDrawing = { segments: [], dots: [], heads: [], angles: [], label: g.origin }
     const line = (a: Vec, b: Vec, width = look.line, soft = false) => drawing.segments.push({ from: a, to: b, width, soft })
+    const plain = (a: Vec, b: Vec) => line(a, b)
     const dashed = (a: Vec, b: Vec) => {
-      const d = sub(b, a)
-      const l = len(d)
-      for (let s = 0; s < l; s += look.dash + look.gap) line(add(a, mul(d, s / l)), add(a, mul(d, Math.min(s + look.dash, l) / l)))
+      const d = g.sub(b, a)
+      const l = g.len(d)
+      for (let s = counts.zero; s < l; s += look.dash + look.gap) line(g.add(a, g.mul(d, s / l)), g.add(a, g.mul(d, Math.min(s + look.dash, l) / l)))
     }
+    /** Each piece from a point to the next. */
+    const through = (points: Vec[], draw: (a: Vec, b: Vec) => void) =>
+      points.reduce((previous, next) => {
+        draw(previous, next)
+        return next
+      })
     for (const shape of mark.shapes ?? []) {
-      if ("line" in shape) shape.line.slice(1).forEach((s, i) => (shape.dashed ? dashed : line)(at(shape.line[i]), at(s)))
-      else if ("plumb" in shape) {
+      if (Drawn.line in shape) through(shape.line.map(at), shape.dashed ? dashed : plain)
+      else if (Drawn.plumb in shape) {
         const p = at(shape.plumb)
-        dashed(p, [p[0], 0.01, p[2]])
-      } else if ("dot" in shape) drawing.dots.push({ at: at(shape.dot), radius: look.dot })
-      else if ("arrow" in shape) {
-        const [a, b] = [at(shape.arrow[0]), at(shape.arrow[1])]
+        dashed(p, g.at(g.along(p), places.aboveFloor, g.across(p)))
+      } else if (Drawn.dot in shape) drawing.dots.push({ at: at(shape.dot), radius: look.dot })
+      else if (Drawn.arrow in shape) {
+        const [a, b] = shape.arrow.map(at)
         line(a, b, look.shaft)
-        drawing.heads.push({ at: b, toward: unit(sub(b, a)) })
+        drawing.heads.push({ at: b, toward: g.unit(g.sub(b, a)) })
       } else {
-        const { at: j0, from, to, radius } = shape.angle
-        const j = at(j0)
-        const u = unit(sub(at(from), j))
-        const w = unit(sub(at(to), j))
-        const theta = (AngleBetween(j, at(from), at(to)) * Math.PI) / 180
-        const across = sub(w, mul(u, dot(u, w)))
-        const v: Vec = len(across) < 1e-5 ? [0, 0, 1] : unit(across)
-        const arc = Array.from({ length: look.arc + 1 }, (_, k) => add(j, add(mul(u, Math.cos((theta * k) / look.arc) * radius), mul(v, Math.sin((theta * k) / look.arc) * radius))))
-        arc.slice(1).forEach((q, k) => line(arc[k], q))
-        line(j, add(j, mul(u, radius * look.ray)), look.thin, true)
-        line(j, add(j, mul(w, radius * look.ray)), look.thin, true)
-        const degrees = Math.round(AngleBetween(j, at(from), at(to)) / look.roundTo) * look.roundTo
-        drawing.angles.push({ at: add(j, mul(unit(add(u, w)), radius + look.beyond)), degrees })
+        const { at: joint, from, to, radius } = shape.angle
+        const j = at(joint)
+        const u = g.unit(g.sub(at(from), j))
+        const w = g.unit(g.sub(at(to), j))
+        through(g.arc(j, u, w, radius, look.arc), plain)
+        line(j, g.add(j, g.mul(u, radius * look.ray)), look.thin, true)
+        line(j, g.add(j, g.mul(w, radius * look.ray)), look.thin, true)
+        const degrees = Math.round(angleBetween(j, at(from), at(to)) / look.roundTo) * look.roundTo
+        drawing.angles.push({ at: g.add(j, g.mul(g.unit(g.add(u, w)), radius + look.beyond)), degrees })
       }
     }
     const anchor = at(mark.at)
-    drawing.label = add(anchor, mark.label)
+    drawing.label = g.add(anchor, mark.label)
     line(anchor, drawing.label, look.thin, true)
     return drawing
   },

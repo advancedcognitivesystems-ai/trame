@@ -160,6 +160,10 @@ flowchart TB
   n30 -->|Depends on| n23
   n30 -->|Depends on| n34
   n33 -->|Depends on| n36
+  n37 -->|Depends on| n26
+  n37 -->|Depends on| n23
+  n41 -->|Depends on| n32
+  n41 -->|Depends on| n22
   n43 -->|Depends on| n40
   n18 -->|Applied by| n48
   n18 -->|Applied by| n45
@@ -200,10 +204,6 @@ flowchart TB
   n13 -->|Depends on| n0
   n55 -->|Ships| n0
   n55 -->|Deployed by| n54
-  n37 -.->|Depends on| n26
-  n37 -.->|Depends on| n23
-  n41 -.->|Depends on| n32
-  n41 -.->|Depends on| n22
   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
   classDef blocked fill:#fbf0d9,stroke:#9a6200,color:#17202a
   classDef violated fill:#f9e3e1,stroke:#ad2a22,color:#17202a

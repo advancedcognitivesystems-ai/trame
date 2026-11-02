@@ -129,7 +129,7 @@ The seconds a voice takes to say a text, at the rate voices speak, with the brea
 
 ### Placeholders of a cue
 
-`CuePlaceholders` · `src/content.ts:284`
+`CuePlaceholders` · `src/content.ts:287`
 
 Where a cue says the leg that leads this round: the app puts its name there, in the language it speaks.
 
@@ -205,7 +205,7 @@ About fourteen characters a second, in French or in English, for the voices of t
 
 ### Poses
 
-`Poses` · `src/content.ts:227` · status: **unknown**
+`Poses` · `src/content.ts:230` · status: **unknown**
 
 The poses of the sun salutation in twelve steps (eight poses, some of them twice), and poses to hold: the mountain, the child, the cat and the cow.
 
@@ -238,7 +238,7 @@ The poses of the sun salutation in twelve steps (eight poses, some of them twice
 
 ### Sequences
 
-`Sequences` · `src/content.ts:291` · status: **unknown**
+`Sequences` · `src/content.ts:294` · status: **unknown**
 
 The sequences of poses, with the breath of each step and what to do: first the sun salutation, in twelve steps and two rounds.
 

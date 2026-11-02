@@ -388,6 +388,9 @@ flowchart TB
   n59 -->|Depends on| n36
   n60 -->|Accepts| n59
   n61 -->|Refines| n130
+  n61 -->|Depends on| n31
+  n61 -->|Depends on| n22
+  n61 -->|Depends on| n39
   n62 -->|Accepts| n61
   n63 -->|Serves| n130
   n63 -->|Depends on| n61
@@ -443,6 +446,11 @@ flowchart TB
   n90 -->|Translates| n91
   n91 -->|Written in| n87
   n93 -->|Refines| n130
+  n93 -->|Depends on| n39
+  n93 -->|Depends on| n49
+  n93 -->|Depends on| n20
+  n93 -->|Depends on| n92
+  n93 -->|Depends on| n51
   n94 -->|Accepts| n93
   n95 -->|Serves| n130
   n95 -->|Depends on| n93
@@ -792,8 +800,6 @@ flowchart TB
   n55 -.->|Depends on| n31
   n55 -.->|Depends on| n22
   n58 -.->|Depends on| n24
-  n61 -.->|Depends on| n31
-  n61 -.->|Depends on| n22
   n75 -.->|Depends on| n73
   n75 -.->|Depends on| n34
   n75 -.->|Depends on| n31
@@ -811,9 +817,6 @@ flowchart TB
   n77 -.->|Depends on| n79
   n77 -.->|Depends on| n34
   n77 -.->|Depends on| n74
-  n93 -.->|Depends on| n92
-  n93 -.->|Depends on| n49
-  n93 -.->|Depends on| n20
   n94 -.->|Depends on| n31
   n94 -.->|Depends on| n22
   n94 -.->|Depends on| n20

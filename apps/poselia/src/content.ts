@@ -180,13 +180,16 @@ export const MakesSenseCriteria = acceptance({
   },
 })
 
+/** What a landmark draws: a line, a plumb line, a dot, an arrow, an angle. */
+export enum Drawn { line = "line", plumb = "plumb", dot = "dot", arrow = "arrow", angle = "angle" }
+
 /** A shape a landmark draws on the body: a line through spots (dashed or not), a plumb line to the floor, a dot, an arrow, an angle at a joint. */
 export type MarkShape =
-  | { line: readonly Spot[]; dashed?: boolean }
-  | { plumb: Spot }
-  | { dot: Spot }
-  | { arrow: readonly [Spot, Spot] }
-  | { angle: { at: Spot; from: Spot; to: Spot; radius: number } }
+  | { [Drawn.line]: readonly Spot[]; dashed?: boolean }
+  | { [Drawn.plumb]: Spot }
+  | { [Drawn.dot]: Spot }
+  | { [Drawn.arrow]: readonly [Spot, Spot] }
+  | { [Drawn.angle]: { at: Spot; from: Spot; to: Spot; radius: number } }
 
 /**
  * A landmark of a pose, as a teacher points at the body: a few words on the stage, tied to a spot of the body and set

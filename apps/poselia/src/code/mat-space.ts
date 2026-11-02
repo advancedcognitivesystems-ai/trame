@@ -36,6 +36,8 @@ const body = ({ v, angle, counts }: Deps) => {
     /** Between two numbers, by how far: a at none of the way, b at all of it. */
     mix: (a: number, b: number, t: number) => a + (b - a) * t,
     mix3: v.mix,
+    /** Where the three coordinates are none. */
+    origin: v.origin,
     /** Straight down, and straight across to the right. */
     down: v.difference(v.origin, up),
     backward: v.difference(v.origin, forward),
@@ -55,6 +57,17 @@ const body = ({ v, angle, counts }: Deps) => {
     arch: (t: number): number => Math.sin((angle.turn(counts.one) / (counts.one + counts.one)) * t),
     /** The angle at a point between the directions to two others, in degrees, from none to a half turn. */
     angleAt: (at: Vector, from: Vector, to: Vector): number => v.angleAt(at, from, to) / angle.degree(counts.one),
+    /**
+     * The points of an arc around a point, of a radius, in so many pieces: from one direction to another, the short
+     * way; across to the right when the two are in line, since then any plane holds them.
+     */
+    arc: (at: Vector, from: Vector, to: Vector, radius: number, pieces: number): Vector[] => {
+      const theta = v.angleAt(v.origin, from, to)
+      const across = v.difference(to, v.scale(from, v.dot(from, to)))
+      const side = v.length(across) < v.tolerance.length ? v.scale(left, -counts.one) : v.unit(across)
+      return Array.from({ length: pieces + counts.one }, (_, k) =>
+        v.add(at, v.add(v.scale(from, Math.cos((theta * k) / pieces) * radius), v.scale(side, Math.sin((theta * k) / pieces) * radius))))
+    },
     /** How long a vector is in that plane, across left out. */
     planar: (d: Vector): number => Math.hypot(along(d), height(d)),
     /** The direction a quarter turn from another in that plane, toward the height: the other way from the face. */

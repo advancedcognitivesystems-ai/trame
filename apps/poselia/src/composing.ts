@@ -8,7 +8,7 @@ import { fn } from "#trame/kinds/function"
 import { Counts } from "#std/algebra"
 import { SeededDraws } from "#std/algorithms"
 import { PractiseGuided, BreathPhase } from "./product"
-import { KeyOf, BodyAt, LegsApart, type Shape } from "./body"
+import { KeyOf, BodyAt, LegsApart, MatSpace, type Shape } from "./body"
 import { LevelWays, MakesSense, LeadingLegOf } from "./content"
 import { Screen } from "./architecture"
 import { InterfaceWords, AppLanguage, WordsFr, WordsEn } from "./language"
@@ -28,11 +28,13 @@ import { PlayPractice } from "./practice"
 export const BreathOfMove = requirement({
   owner: "ghalaax",
   refines: [PractiseGuided],
-  rule: (from: Shape, to: Shape): BreathPhase => {
+  deps: { keyOf: KeyOf, bodyAt: BodyAt, g: MatSpace, counts: Counts },
+  body: ({ keyOf, bodyAt, g, counts }) => (from: Shape, to: Shape): BreathPhase => {
     const height = (s: Shape) => {
-      const k = KeyOf(s)
-      const b = BodyAt(k, k, 0)
-      return (b.head[1] + b.L.wrist[1] + b.R.wrist[1]) / 3
+      const k = keyOf(s)
+      const b = bodyAt(k, k, counts.zero)
+      const raised = [b.head, b.L.wrist, b.R.wrist]
+      return raised.reduce<number>((sum, p) => sum + g.height(p), counts.zero) / raised.length
     }
     return height(to) > height(from) ? BreathPhase.inhale : BreathPhase.exhale
   },
