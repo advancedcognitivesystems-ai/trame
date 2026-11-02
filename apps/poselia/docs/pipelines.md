@@ -6,7 +6,7 @@
 
 ## A preview
 
-> **A preview does not ship yet: 14 of 16 obligations hold.**
+> **A preview ships: every obligation holds.**
 
 For the target preview; its programs are assembled for [A machine](sdlc.md#Machine).
 
@@ -14,9 +14,9 @@ Run elsewhere by [The preview's script](sdlc.md#PreviewScript), [The preview's w
 
 ```mermaid
 flowchart TB
-  n0["Poselia's page<br/><small>Artefact</small>"]:::unknown
+  n0["Poselia's page<br/><small>Artefact</small>"]:::held
   n1["Poselia's page<br/><small>Delivery</small>"]:::neutral
-  n2["The page opens<br/><small>Check</small>"]:::unknown
+  n2["The page opens<br/><small>Check</small>"]:::held
   n3["Open the page<br/><small>Entry point</small>"]:::held
   n4["The language of the home page<br/><small>Scenario</small>"]:::held
   n5["The body stays on the floor<br/><small>Scenario</small>"]:::held
@@ -32,7 +32,7 @@ flowchart TB
   n15["Each decision of architecture serves the product<br/><small>Architecture rule</small>"]:::held
   n16["Code serves the product<br/><small>Architecture rule</small>"]:::held
   n17["Place the page<br/><small>Entry point</small>"]:::held
-  n18["A preview<br/><small>Shipment</small>"]:::unknown
+  n18["A preview<br/><small>Shipment</small>"]:::held
   n11 -->|Verifies| n3
   n11 -->|Depends on| n3
   n11 -->|Depends on| n0
@@ -57,11 +57,11 @@ flowchart TB
 
 |  | Stage | Step | Run by | Why | Status | Latest evidence |
 |---|---|---|---|---|---|---|
-| 1 | produce | [Poselia's page](sdlc.md#PageFile) · `dist/poselia.html` | [Poselia's page](app.md#PoseliaPage) | — | **unknown** | 29 October 2026 by claude `https://claude.ai/artifact/RMTniA6qYS1hMLJDJm92HY` |
-| 2 | check | [The page opens](sdlc.md#PageOpens) | [Open the page](sdlc.md#OpenThePage) | — | **unknown** | passed, 29 October 2026 by claude  |
+| 1 | produce | [Poselia's page](sdlc.md#PageFile) · `dist/poselia.html` | [Poselia's page](app.md#PoseliaPage) | — | **held** | 2 November 2026 by claude  |
+| 2 | check | [The page opens](sdlc.md#PageOpens) | [Open the page](sdlc.md#OpenThePage) | — | **held** | passed, 2 November 2026 by claude  |
 | 3 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
-| 4 | prove | [Poselia's page](sdlc.md#PageFile) | — | the shipment | **unknown** | 29 October 2026 by claude `https://claude.ai/artifact/RMTniA6qYS1hMLJDJm92HY` |
-| 5 | prove | [The page opens](sdlc.md#PageOpens) | [Open the page](sdlc.md#OpenThePage) | [The code shown is verified, a gap said](sdlc.md#CodeVerifiedSaid) via [The browser's stage](stage.md#BrowserStage) | **unknown** | passed, 29 October 2026 by claude  |
+| 4 | prove | [Poselia's page](sdlc.md#PageFile) | — | the shipment | **held** | 2 November 2026 by claude  |
+| 5 | prove | [The page opens](sdlc.md#PageOpens) | [Open the page](sdlc.md#OpenThePage) | [The code shown is verified, a gap said](sdlc.md#CodeVerifiedSaid) via [The browser's stage](stage.md#BrowserStage) | **held** | passed, 2 November 2026 by claude  |
 | 6 | prove | [The language of the home page](scenarios.md#HomeLanguage) | — | [The code shown is verified, a gap said](sdlc.md#CodeVerifiedSaid) via [The content the app carries](app.md#CarriedContent) | **held** |  |
 | 7 | prove | [The body stays on the floor](scenarios.md#BodyStaysOnTheFloor) | — | [The code shown is verified, a gap said](sdlc.md#CodeVerifiedSaid) via [The space of the mat](body.md#MatSpace) | **held** |  |
 | 8 | prove | [Holding the poses](scenarios.md#HoldThePoses) | — | [The code shown is verified, a gap said](sdlc.md#CodeVerifiedSaid) via [The voice the person chose](settings.md#VoiceChoice) | **held** |  |
@@ -75,8 +75,8 @@ flowchart TB
 | 16 | prove | [three.js, its types](stage.md#ThreeTypes) | — | [The packages are safe](sdlc.md#PackagesSafe) via [The browser's stage](stage.md#BrowserStage) | **held** | 29 October 2026 by   |
 | 17 | prove | [Each decision of architecture serves the product](sdlc.md#AdrsServeTheProduct) | — | [The rules of the app hold](sdlc.md#RulesHeld) | **held** |  |
 | 18 | prove | [Code serves the product](sdlc.md#CodeServesTheProduct) | — | [The rules of the app hold](sdlc.md#RulesHeld) | **held** |  |
-| 19 | deploy | [Place the page](sdlc.md#PlaceThePage) | itself | — | **held** | 29 October 2026 by claude  |
-| 20 | record | [A preview](sdlc.md#Preview) | — | — | **unknown** | 29 October 2026 by claude `evidence/shipments/Preview-2026-10-29-218b0c54.json` |
+| 19 | deploy | [Place the page](sdlc.md#PlaceThePage) | itself | — | **held** | 2 November 2026 by claude  |
+| 20 | record | [A preview](sdlc.md#Preview) | — | — | **held** | 2 November 2026 by claude `evidence/shipments/Preview-2026-11-02-c669e2f0.json` |
 
 `trame ship Preview --by <name>`
 
@@ -84,15 +84,15 @@ flowchart TB
 
 ## A public version
 
-> **A public version does not ship yet: 46 of 53 obligations hold.**
+> **A public version does not ship yet: 49 of 53 obligations hold.**
 
 For the target public; its programs are assembled for [A machine](sdlc.md#Machine).
 
 ```mermaid
 flowchart TB
-  n0["Poselia's page<br/><small>Artefact</small>"]:::unknown
+  n0["Poselia's page<br/><small>Artefact</small>"]:::held
   n1["Poselia's page<br/><small>Delivery</small>"]:::neutral
-  n2["The page opens<br/><small>Check</small>"]:::unknown
+  n2["The page opens<br/><small>Check</small>"]:::held
   n3["Open the page<br/><small>Entry point</small>"]:::held
   n4["On a phone<br/><small>Check</small>"]:::unknown
   n5["The language of the home page<br/><small>Scenario</small>"]:::held
@@ -105,7 +105,7 @@ flowchart TB
   n12["The page is opened as a person would<br/><small>Scenario</small>"]:::held
   n13["The page is placed where it is served<br/><small>Scenario</small>"]:::held
   n14["The content, reviewed<br/><small>Review</small>"]:::unknown
-  n15["A page first, the phones after<br/><small>Architecture decision</small>"]:::unknown
+  n15["A page first, the phones after<br/><small>Architecture decision</small>"]:::held
   n16["The content is data, behind a port<br/><small>Architecture decision</small>"]:::unknown
   n17["The person's language, among those offered<br/><small>Architecture decision</small>"]:::held
   n18["The breath is the clock<br/><small>Architecture decision</small>"]:::held
@@ -215,12 +215,12 @@ flowchart TB
 
 |  | Stage | Step | Run by | Why | Status | Latest evidence |
 |---|---|---|---|---|---|---|
-| 1 | produce | [Poselia's page](sdlc.md#PageFile) · `dist/poselia.html` | [Poselia's page](app.md#PoseliaPage) | — | **unknown** | 29 October 2026 by claude `https://claude.ai/artifact/RMTniA6qYS1hMLJDJm92HY` |
-| 2 | check | [The page opens](sdlc.md#PageOpens) | [Open the page](sdlc.md#OpenThePage) | — | **unknown** | passed, 29 October 2026 by claude  |
+| 1 | produce | [Poselia's page](sdlc.md#PageFile) · `dist/poselia.html` | [Poselia's page](app.md#PoseliaPage) | — | **held** | 2 November 2026 by claude  |
+| 2 | check | [The page opens](sdlc.md#PageOpens) | [Open the page](sdlc.md#OpenThePage) | — | **held** | passed, 2 November 2026 by claude  |
 | 3 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
-| 4 | prove | [Poselia's page](sdlc.md#PageFile) | — | the shipment | **unknown** | 29 October 2026 by claude `https://claude.ai/artifact/RMTniA6qYS1hMLJDJm92HY` |
+| 4 | prove | [Poselia's page](sdlc.md#PageFile) | — | the shipment | **held** | 2 November 2026 by claude  |
 | 5 | prove | [On a phone](sdlc.md#OnAPhone) | by hand, signed by [People who try it on a phone](sdlc.md#PhoneTesters) | [The page is checked, by hand too](sdlc.md#AllChecks) via [Poselia's page](sdlc.md#PageFile) | **unknown** |  |
-| 6 | prove | [The page opens](sdlc.md#PageOpens) | [Open the page](sdlc.md#OpenThePage) | [The page is checked, by hand too](sdlc.md#AllChecks) via [Poselia's page](sdlc.md#PageFile) | **unknown** | passed, 29 October 2026 by claude  |
+| 6 | prove | [The page opens](sdlc.md#PageOpens) | [Open the page](sdlc.md#OpenThePage) | [The page is checked, by hand too](sdlc.md#AllChecks) via [Poselia's page](sdlc.md#PageFile) | **held** | passed, 2 November 2026 by claude  |
 | 7 | prove | [The language of the home page](scenarios.md#HomeLanguage) | — | [The code shown is verified](sdlc.md#CodeVerified) via [The content the app carries](app.md#CarriedContent) | **held** |  |
 | 8 | prove | [The body stays on the floor](scenarios.md#BodyStaysOnTheFloor) | — | [The code shown is verified](sdlc.md#CodeVerified) via [The space of the mat](body.md#MatSpace) | **held** |  |
 | 9 | prove | [Holding the poses](scenarios.md#HoldThePoses) | — | [The code shown is verified](sdlc.md#CodeVerified) via [The voice the person chose](settings.md#VoiceChoice) | **held** |  |
@@ -231,7 +231,7 @@ flowchart TB
 | 14 | prove | [The page is opened as a person would](sdlc.md#OpeningThePage) | — | [The code shown is verified](sdlc.md#CodeVerified) via [Open the page](sdlc.md#OpenThePage) | **held** |  |
 | 15 | prove | [The page is placed where it is served](sdlc.md#PlacingThePage) | — | [The code shown is verified](sdlc.md#CodeVerified) via [Place the page](sdlc.md#PlaceThePage) | **held** |  |
 | 16 | prove | [The content, reviewed](sdlc.md#ContentReviewed) | reviewed by [A teacher who practises](sdlc.md#Teachers) | [The content is reviewed by a teacher](sdlc.md#ContentSeen) via [Poses](content.md#Poses) | **unknown** |  |
-| 17 | prove | [A page first, the phones after](principles.md#PageFirst) | — | [The decisions hold](sdlc.md#DecisionsApplied) via [Poselia's page](app.md#PoseliaPage) | **unknown** |  |
+| 17 | prove | [A page first, the phones after](principles.md#PageFirst) | — | [The decisions hold](sdlc.md#DecisionsApplied) via [Poselia's page](app.md#PoseliaPage) | **held** |  |
 | 18 | prove | [The content is data, behind a port](principles.md#ContentAsData) | — | [The decisions hold](sdlc.md#DecisionsApplied) via [Poses](content.md#Poses) | **unknown** |  |
 | 19 | prove | [The person's language, among those offered](principles.md#LanguageOffered) | — | [The decisions hold](sdlc.md#DecisionsApplied) via [Languages offered](content.md#Languages) | **held** |  |
 | 20 | prove | [The breath is the clock](principles.md#BreathIsTheClock) | — | [The decisions hold](sdlc.md#DecisionsApplied) via [The breath of a moment](product.md#BreathOf) | **held** |  |
@@ -270,7 +270,7 @@ flowchart TB
 | 53 | prove | [A breath measured by tapping](settings.md#MeasuredBreath) | — | [The product holds](sdlc.md#ProductServed) via [The breath of a moment](product.md#BreathOf) | **held** |  |
 | 54 | prove | [Each decision of architecture serves the product](sdlc.md#AdrsServeTheProduct) | — | [The rules of the app hold](sdlc.md#RulesHeld) | **held** |  |
 | 55 | prove | [Code serves the product](sdlc.md#CodeServesTheProduct) | — | [The rules of the app hold](sdlc.md#RulesHeld) | **held** |  |
-| 56 | deploy | [Place the page](sdlc.md#PlaceThePage) | itself | — | **held** | 29 October 2026 by claude  |
+| 56 | deploy | [Place the page](sdlc.md#PlaceThePage) | itself | — | **held** | 2 November 2026 by claude  |
 | 57 | record | [A public version](sdlc.md#PublicVersion) | — | — | **unknown** |  |
 
 `trame ship PublicVersion --by <name>`

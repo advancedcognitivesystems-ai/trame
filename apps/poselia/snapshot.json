@@ -5,7 +5,7 @@
       "id": "app.BrowserScreen",
       "kind": "implementation",
       "title": "The browser's screen",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "deps": {
@@ -3725,10 +3725,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "trame",
-        "version": "94",
+        "version": "95",
         "joins": "language",
         "from": "path",
-        "at": "../../generations/g94"
+        "at": "../../generations/g95"
       }
     },
     {
@@ -4024,7 +4024,7 @@
       "id": "principles.PageFirst",
       "kind": "adr",
       "title": "A page first, the phones after",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "context": "The app must be tried and shown before it is installed: a page shared as a link is the shortest way to the friends who review it.",
@@ -4606,7 +4606,7 @@
       "id": "sdlc.OnTheMachine",
       "kind": "binding",
       "title": "On the machine",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "context": "A check must open the page a person opens: the file delivered, in a real browser."
@@ -4675,7 +4675,7 @@
       "id": "sdlc.PageFile",
       "kind": "artifact",
       "title": "Poselia's page",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "media": "text/html; charset=utf-8"
@@ -4697,7 +4697,7 @@
       "id": "sdlc.PageOpens",
       "kind": "check",
       "title": "The page opens",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax"
       }
@@ -4787,7 +4787,7 @@
       "id": "sdlc.Preview",
       "kind": "shipment",
       "title": "A preview",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "target": "preview"
@@ -5277,7 +5277,7 @@
       "id": "stage.BrowserStage",
       "kind": "implementation",
       "title": "The browser's stage",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "deps": {

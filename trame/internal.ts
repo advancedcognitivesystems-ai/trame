@@ -211,9 +211,13 @@ export function ownerOf(n: AnyNode): string | undefined {
 // (inline bodies, rules, the component), and these tools read them as declared. The values are written in the program
 // at the date of the assembly.
 
+// A node as its kind reads it in such a program: its title, its fields by name, and by path as a view gives them.
 const declared = (n: AnyNode) =>
   new Proxy({} as Record<string, unknown>, {
-    get: (_t, k) => (k === "title" ? meta(n).id : typeof k === "string" ? meta(n).data[k] : undefined),
+    get: (_t, k) =>
+      k === "title" ? meta(n).id
+      : k === "field" ? (path: string) => getPath(meta(n).data, path)
+      : typeof k === "string" ? meta(n).data[k] : undefined,
   })
 
 const frozenContext = (deps: Record<string, unknown> = {}) => ({

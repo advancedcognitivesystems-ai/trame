@@ -5,7 +5,7 @@
 ```mermaid
 flowchart TB
   subgraph app["Poselia · The app in a browser"]
-    n0["The browser's screen<br/><small>Implementation</small>"]:::unknown
+    n0["The browser's screen<br/><small>Implementation</small>"]:::held
     n1["The content the app carries<br/><small>Function</small>"]:::held
     n2["Colours<br/><small>Decision</small>"]:::neutral
     n3["Content carried by the app<br/><small>Technical choice</small>"]:::held
@@ -144,7 +144,7 @@ flowchart TB
     n116["The breath is the clock<br/><small>Architecture decision</small>"]:::held
     n117["The content is data, behind a port<br/><small>Architecture decision</small>"]:::unknown
     n118["The person's language, among those offered<br/><small>Architecture decision</small>"]:::held
-    n119["A page first, the phones after<br/><small>Architecture decision</small>"]:::unknown
+    n119["A page first, the phones after<br/><small>Architecture decision</small>"]:::held
     n120["Said aloud, the screen awake<br/><small>Architecture decision</small>"]:::unknown
   end
   subgraph product["Poselia · Product"]
@@ -188,19 +188,19 @@ flowchart TB
     n154["The decisions hold<br/><small>Obligation</small>"]:::neutral
     n155["A machine<br/><small>Environment</small>"]:::neutral
     n156["On a phone<br/><small>Check</small>"]:::unknown
-    n157["On the machine<br/><small>Technical choice</small>"]:::unknown
+    n157["On the machine<br/><small>Technical choice</small>"]:::held
     n158["The page is opened as a person would<br/><small>Scenario</small>"]:::held
     n159["Open the page<br/><small>Entry point</small>"]:::held
     n160["The packages are safe<br/><small>Obligation</small>"]:::neutral
-    n161["Poselia's page<br/><small>Artefact</small>"]:::unknown
+    n161["Poselia's page<br/><small>Artefact</small>"]:::held
     n162["How the page is opened<br/><small>Decision</small>"]:::neutral
-    n163["The page opens<br/><small>Check</small>"]:::unknown
+    n163["The page opens<br/><small>Check</small>"]:::held
     n164["What the page is asked<br/><small>Function</small>"]:::held
     n165["People who try it on a phone<br/><small>Role</small>"]:::neutral
     n166["Place the page<br/><small>Entry point</small>"]:::held
     n167["The page is placed where it is served<br/><small>Scenario</small>"]:::held
     n168["Poselia's SDLC<br/><small>Component</small>"]:::neutral
-    n169["A preview<br/><small>Shipment</small>"]:::unknown
+    n169["A preview<br/><small>Shipment</small>"]:::held
     n170["The way of a preview<br/><small>Policy</small>"]:::neutral
     n171["When the preview runs on GitHub, and what it keeps there<br/><small>Decision</small>"]:::neutral
     n172["The preview's script<br/><small>Artefact</small>"]:::unknown
@@ -244,7 +244,7 @@ flowchart TB
     n204["The axes of the mat<br/><small>Amendment</small>"]:::neutral
   end
   subgraph stage["Poselia · The stage"]
-    n205["The browser's stage<br/><small>Implementation</small>"]:::unknown
+    n205["The browser's stage<br/><small>Implementation</small>"]:::held
     n206["Look of the mannequin<br/><small>Decision</small>"]:::neutral
     n207["Look of the landmarks<br/><small>Decision</small>"]:::neutral
     n208["Light of the stage<br/><small>Decision</small>"]:::neutral

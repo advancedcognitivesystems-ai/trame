@@ -49,9 +49,13 @@ const kind = defineKind({
     return [(g.lib.counts.isEmpty(units) || units.some(([, factor]) => factor <= g.lib.counts.zero)) && hole.error(say.quantityWithoutUnit())]
   },
 
-  /** Wired as a dependency: a value from each unit (`time.minute(15)`), and each value in a unit (`time.in.minute(d)`). */
-  provide: (self, ctx) => {
-    const units = unitsOf(self.field(F.units), ctx.g.lib)
+  /**
+   * Wired as a dependency: a value from each unit (`time.minute(15)`), and each value in a unit (`time.in.minute(d)`).
+   * It reads its units alone, without the graph: a program assembled for elsewhere (a page) wires it from its
+   * declaration, where there is no graph. A unit badly written is an error, which keeps it from being wired.
+   */
+  provide: (self) => {
+    const units = Object.entries(self.field(F.units) as Record<string, number>)
     return {
       ...Object.fromEntries(units.map(([name, factor]) => [name, (n: number) => n * factor])),
       in: Object.fromEntries(units.map(([name, factor]) => [name, (q: number) => q / factor])),

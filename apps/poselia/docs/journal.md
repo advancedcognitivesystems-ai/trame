@@ -2,7 +2,18 @@
 
 *What happened to the project, day by day, the latest first, up to the date of the graph (2 November 2026): the versions released, and the evidence given, each with the node it is about and who gave it.*
 
-> **4 days · 0 versions released · 45 pieces of evidence**
+> **5 days · 0 versions released · 51 pieces of evidence**
+
+## 2 November 2026
+
+| What | Node | By |
+|---|---|---|
+| Built | [Poselia's page](sdlc.md#PageFile) | claude |
+| Built | [Poselia's page](sdlc.md#PageFile) | claude |
+| Check failed | [The page opens](sdlc.md#PageOpens) | claude |
+| Check passed | [The page opens](sdlc.md#PageOpens) | claude |
+| Deployed | [Place the page](sdlc.md#PlaceThePage) | claude |
+| Shipped | [A preview](sdlc.md#Preview) | claude |
 
 ## 29 October 2026
 
