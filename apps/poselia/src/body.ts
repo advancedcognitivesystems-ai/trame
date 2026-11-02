@@ -236,6 +236,21 @@ export const SideNames = decision<{ right: string; left: string }>({
 })
 
 /**
+ * The points of a rest
+ * The points of the body each rest of a pose puts on the floor: a foot on its heel, ball and toes, the toes on the ball
+ * and the toes, the instep on the top of the foot, a knee on the knee; the hands on the wrists and the finger tips, of
+ * both sides; the chest, the pelvis, the head on themselves.
+ */
+export const RestPoints = decision<{ leg: Record<LegRest, string[]>; body: Record<BodyRest, string[]>; sided: BodyRest[] }>({
+  owner: "ghalaax",
+  value: {
+    leg: { foot: ["heel", "ball", "toe"], toes: ["ball", "toe"], instep: ["top"], knee: ["knee"] },
+    body: { hands: ["wrist", "tip"], chest: ["chest"], pelvis: ["pelvis"], head: ["head"] },
+    sided: [BodyRest.hands],
+  },
+})
+
+/**
  * How far a limb keeps from flat
  * A limb never folds flat on itself nor stretches quite straight, by a millimetre and a tenth of one: its middle joint
  * then always bends one way.
@@ -768,16 +783,17 @@ export const SurfaceHeightsCriteria = acceptance({
 export const RestsOnWhatItNames = requirement({
   owner: "ghalaax",
   refines: [PractiseGuided, CheckedContent],
-  rule: (shape: Shape): { notTouching: string[]; unnamed: string[] } => {
-    const k = KeyOf(shape)
-    const heights = SurfaceHeights(BodyAt(k, k, 0))
-    const ofLeg: Record<LegRest, string[]> = { foot: ["heel", "ball", "toe"], toes: ["ball", "toe"], instep: ["top"], knee: ["knee"] }
-    const ofBody: Record<BodyRest, string[]> = { hands: ["L wrist", "L tip", "R wrist", "R tip"], chest: ["chest"], pelvis: ["pelvis"], head: ["head"] }
+  deps: { keyOf: KeyOf, bodyAt: BodyAt, surfaces: SurfaceHeights, points: RestPoints, sides: SideNames, touching: Touching, texts: Texts, counts: Counts },
+  body: ({ keyOf, bodyAt, surfaces, points, sides, touching, texts, counts }) => (shape: Shape): { notTouching: string[]; unnamed: string[] } => {
+    const k = keyOf(shape)
+    const heights = surfaces(bodyAt(k, k, counts.zero))
+    const at = (side: string) => (point: string) => [side, point].join(texts.space)
+    const ofBody = (rest: BodyRest) => (points.sided.includes(rest) ? [sides.left, sides.right].flatMap((side) => points.body[rest].map(at(side))) : points.body[rest])
     const named = new Set(k.rests.flatMap((r) => {
-      const [s, rest] = r.split(" ")
-      return rest === undefined ? ofBody[s as BodyRest] : ofLeg[rest as LegRest].map((p) => `${s} ${p}`)
+      const [side, rest] = r.split(texts.space)
+      return rest === undefined ? ofBody(side as BodyRest) : points.leg[rest as LegRest].map(at(side))
     }))
-    const touches = (n: string) => heights[n] <= Touching.value.within
+    const touches = (n: string) => heights[n] <= touching.within
     return {
       notTouching: [...named].filter((n) => !touches(n)),
       unnamed: Object.keys(heights).filter((n) => touches(n) && !named.has(n)),
@@ -812,9 +828,10 @@ export const RestsOnWhatItNamesCriteria = acceptance({
 export const LimbsReach = requirement({
   owner: "ghalaax",
   refines: [PractiseGuided, CheckedContent],
-  rule: (shape: Shape): number => {
-    const k = KeyOf(shape)
-    const b = BodyAt(k, k, 0)
+  deps: { keyOf: KeyOf, bodyAt: BodyAt, counts: Counts },
+  body: ({ keyOf, bodyAt, counts }) => (shape: Shape): number => {
+    const k = keyOf(shape)
+    const b = bodyAt(k, k, counts.zero)
     return Math.max(b.L.legReach, b.R.legReach, b.L.armReach, b.R.armReach)
   },
 })
@@ -866,9 +883,10 @@ export type Sides = { front: "L" | "R"; back: "L" | "R" }
 export const SidesOf = requirement({
   owner: "ghalaax",
   refines: [PractiseGuided],
-  rule: (leading: Leg, stance?: Stance): Sides => {
-    const lead = leading === Leg.right ? "R" : "L"
-    const other = lead === "R" ? "L" : "R"
+  deps: { sides: SideNames },
+  body: ({ sides }) => (leading: Leg, stance?: Stance): Sides => {
+    const lead = (leading === Leg.right ? sides.right : sides.left) as Sides["front"]
+    const other = (leading === Leg.right ? sides.left : sides.right) as Sides["front"]
     return stance === Stance.back ? { front: other, back: lead } : { front: lead, back: other }
   },
 })

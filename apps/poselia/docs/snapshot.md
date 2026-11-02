@@ -227,6 +227,7 @@ Requirement · `LegsApart` · **held**
 Requirement · `LimbsReach` · **held**
 
 - Owner: ghalaax
+- Parameters: { keyOf: (rule), bodyAt: (rule), counts: std/algebra.Counts }
 - Refines: Practise yoga on one's own, guided, Content checked by people who practise
 - Depends on: A pose ready to move, The body between two poses
 
@@ -244,15 +245,18 @@ Requirement · `PlantedLeg` · **held**
 Requirement · `RestsOnWhatItNames` · **held**
 
 - Owner: ghalaax
+- Parameters: { keyOf: (rule), bodyAt: (rule), surfaces: (rule), points: body.RestPoints, sides: body.SideNames, touching: body.Touching, texts: std/algebra.Texts, counts: std/algebra.Counts }
 - Refines: Practise yoga on one's own, guided, Content checked by people who practise
-- Depends on: A pose ready to move, The heights of the body's surface, The body between two poses, Touching the floor
+- Depends on: A pose ready to move, The body between two poses, The heights of the body's surface, The points of a rest, The names of the sides, Touching the floor
 
 ### The legs in front and behind
 
 Requirement · `SidesOf` · **held**
 
 - Owner: ghalaax
+- Parameters: { sides: body.SideNames }
 - Refines: Practise yoga on one's own, guided
+- Depends on: The names of the sides
 
 ### Where a spot is
 
@@ -336,6 +340,13 @@ Decision · `Movement`
 - Decided by: ghalaax
 - Value: { still: 0.02, stride: 0.35, lift: 0.12, footFloor: 0.03, landing: 1, clearance: 0.04, ankleClear: 0.03, kneeGive: 0.04, stepSink: 0.1, wristFloor: 0.04, elbowsOut: 0.25, folded: 0.05 }
 - Rejected: A foot coming down onto its place at 45°, like a hand, a foot stepping far rose 80 cm and swung around the hip; Raising the foot until the knee clears the mat, the leg stopped as the knee neared the mat, then caught up; Turning the thigh and the shin from one pose to the next, the foot went toward the hands, then forward between the arms; Turning the knee outward where it would sink, the knee swung 23 cm to the side
+
+### The points of a rest
+
+Decision · `RestPoints`
+
+- Decided by: ghalaax
+- Value: { leg: { foot: heel, ball, toe, toes: ball, toe, instep: top, knee: knee }, body: { hands: wrist, tip, chest: chest, pelvis: pelvis, head: head }, sided: hands }
 
 ### The names of the sides
 

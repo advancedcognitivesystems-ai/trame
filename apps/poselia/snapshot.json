@@ -584,7 +584,12 @@
       "status": "held",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {
+          "keyOf": "(function)",
+          "bodyAt": "(function)",
+          "counts": "std/algebra.Counts"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -673,13 +678,68 @@
       }
     },
     {
+      "id": "body.RestPoints",
+      "kind": "decision",
+      "title": "The points of a rest",
+      "fields": {
+        "owner": "ghalaax",
+        "value": {
+          "leg": {
+            "foot": [
+              "heel",
+              "ball",
+              "toe"
+            ],
+            "toes": [
+              "ball",
+              "toe"
+            ],
+            "instep": [
+              "top"
+            ],
+            "knee": [
+              "knee"
+            ]
+          },
+          "body": {
+            "hands": [
+              "wrist",
+              "tip"
+            ],
+            "chest": [
+              "chest"
+            ],
+            "pelvis": [
+              "pelvis"
+            ],
+            "head": [
+              "head"
+            ]
+          },
+          "sided": [
+            "hands"
+          ]
+        }
+      }
+    },
+    {
       "id": "body.RestsOnWhatItNames",
       "kind": "requirement",
       "title": "A pose rests on what it names",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {
+          "keyOf": "(function)",
+          "bodyAt": "(function)",
+          "surfaces": "(function)",
+          "points": "body.RestPoints",
+          "sides": "body.SideNames",
+          "touching": "body.Touching",
+          "texts": "std/algebra.Texts",
+          "counts": "std/algebra.Counts"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -714,7 +774,10 @@
       "status": "held",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {
+          "sides": "body.SideNames"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -5884,6 +5947,16 @@
       "kind": "refines"
     },
     {
+      "from": "body.LimbsReach",
+      "to": "body.KeyOf",
+      "kind": "deps"
+    },
+    {
+      "from": "body.LimbsReach",
+      "to": "body.BodyAt",
+      "kind": "deps"
+    },
+    {
       "from": "body.LimbsReachCriteria",
       "to": "body.LimbsReach",
       "kind": "accepts"
@@ -5944,6 +6017,36 @@
       "kind": "refines"
     },
     {
+      "from": "body.RestsOnWhatItNames",
+      "to": "body.KeyOf",
+      "kind": "deps"
+    },
+    {
+      "from": "body.RestsOnWhatItNames",
+      "to": "body.BodyAt",
+      "kind": "deps"
+    },
+    {
+      "from": "body.RestsOnWhatItNames",
+      "to": "body.SurfaceHeights",
+      "kind": "deps"
+    },
+    {
+      "from": "body.RestsOnWhatItNames",
+      "to": "body.RestPoints",
+      "kind": "deps"
+    },
+    {
+      "from": "body.RestsOnWhatItNames",
+      "to": "body.SideNames",
+      "kind": "deps"
+    },
+    {
+      "from": "body.RestsOnWhatItNames",
+      "to": "body.Touching",
+      "kind": "deps"
+    },
+    {
       "from": "body.RestsOnWhatItNamesCriteria",
       "to": "body.RestsOnWhatItNames",
       "kind": "accepts"
@@ -5952,6 +6055,11 @@
       "from": "body.SidesOf",
       "to": "product.PractiseGuided",
       "kind": "refines"
+    },
+    {
+      "from": "body.SidesOf",
+      "to": "body.SideNames",
+      "kind": "deps"
     },
     {
       "from": "body.SidesOfCriteria",
@@ -8054,38 +8162,8 @@
       "kind": "uses"
     },
     {
-      "from": "body.LimbsReach",
-      "to": "body.KeyOf",
-      "kind": "uses"
-    },
-    {
-      "from": "body.LimbsReach",
-      "to": "body.BodyAt",
-      "kind": "uses"
-    },
-    {
       "from": "body.PlantedLegCriteria",
       "to": "body.BodyMeasures",
-      "kind": "uses"
-    },
-    {
-      "from": "body.RestsOnWhatItNames",
-      "to": "body.KeyOf",
-      "kind": "uses"
-    },
-    {
-      "from": "body.RestsOnWhatItNames",
-      "to": "body.SurfaceHeights",
-      "kind": "uses"
-    },
-    {
-      "from": "body.RestsOnWhatItNames",
-      "to": "body.BodyAt",
-      "kind": "uses"
-    },
-    {
-      "from": "body.RestsOnWhatItNames",
-      "to": "body.Touching",
       "kind": "uses"
     },
     {

@@ -371,7 +371,7 @@
       "id": "body.AngleBetween",
       "kind": "requirement",
       "title": "The angle at a joint",
-      "source": "src/body.ts:928",
+      "source": "src/body.ts:946",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -385,7 +385,7 @@
       "id": "body.AngleBetweenCriteria",
       "kind": "acceptance",
       "title": "Criteria of the angle at a joint",
-      "source": "src/body.ts:939",
+      "source": "src/body.ts:957",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -407,7 +407,7 @@
       "id": "body.BodyAt",
       "kind": "requirement",
       "title": "The body between two poses",
-      "source": "src/body.ts:628",
+      "source": "src/body.ts:643",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -431,7 +431,7 @@
       "id": "body.BodyAtCriteria",
       "kind": "acceptance",
       "title": "Criteria of the body between two poses",
-      "source": "src/body.ts:681",
+      "source": "src/body.ts:696",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -509,7 +509,7 @@
       "id": "body.FootAngles",
       "kind": "decision",
       "title": "How a foot's way is read",
-      "source": "src/body.ts:456",
+      "source": "src/body.ts:471",
       "fields": {
         "owner": "ghalaax",
         "value": {
@@ -525,7 +525,7 @@
       "id": "body.FootOf",
       "kind": "function",
       "title": "A foot from its angles",
-      "source": "src/body.ts:477",
+      "source": "src/body.ts:492",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -542,7 +542,7 @@
       "id": "body.FootOnItsWay",
       "kind": "requirement",
       "title": "A foot on its way",
-      "source": "src/body.ts:555",
+      "source": "src/body.ts:570",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -562,7 +562,7 @@
       "id": "body.FootOnItsWayCriteria",
       "kind": "acceptance",
       "title": "Criteria of a foot on its way",
-      "source": "src/body.ts:578",
+      "source": "src/body.ts:593",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -588,7 +588,7 @@
       "id": "body.HandOnItsWay",
       "kind": "requirement",
       "title": "A hand on its way",
-      "source": "src/body.ts:412",
+      "source": "src/body.ts:427",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -606,7 +606,7 @@
       "id": "body.HandOnItsWayCriteria",
       "kind": "acceptance",
       "title": "Criteria of a hand on its way",
-      "source": "src/body.ts:434",
+      "source": "src/body.ts:449",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -632,7 +632,7 @@
       "id": "body.KeyOf",
       "kind": "requirement",
       "title": "A pose ready to move",
-      "source": "src/body.ts:360",
+      "source": "src/body.ts:375",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -650,7 +650,7 @@
       "id": "body.KeyOfCriteria",
       "kind": "acceptance",
       "title": "Criteria of a pose ready to move",
-      "source": "src/body.ts:391",
+      "source": "src/body.ts:406",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -676,7 +676,7 @@
       "id": "body.KneeLift",
       "kind": "decision",
       "title": "A knee kept above the mat",
-      "source": "src/body.ts:466",
+      "source": "src/body.ts:481",
       "fields": {
         "owner": "ghalaax",
         "value": {
@@ -693,7 +693,7 @@
       "id": "body.LegsApart",
       "kind": "requirement",
       "title": "Legs apart",
-      "source": "src/body.ts:334",
+      "source": "src/body.ts:349",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -706,7 +706,7 @@
       "id": "body.LegsApartCriteria",
       "kind": "acceptance",
       "title": "Criteria of legs apart",
-      "source": "src/body.ts:342",
+      "source": "src/body.ts:357",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -728,7 +728,7 @@
       "id": "body.LimbSlack",
       "kind": "decision",
       "title": "How far a limb keeps from flat",
-      "source": "src/body.ts:243",
+      "source": "src/body.ts:258",
       "fields": {
         "owner": "ghalaax",
         "value": {
@@ -745,21 +745,24 @@
       "id": "body.LimbsReach",
       "kind": "requirement",
       "title": "Every limb reaches",
-      "source": "src/body.ts:812",
+      "source": "src/body.ts:828",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {
+          "keyOf": "(function)",
+          "bodyAt": "(function)",
+          "counts": "std/algebra.Counts"
+        },
+        "body": "(function)"
       },
-      "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
-      ]
+      "diagnostics": []
     },
     {
       "id": "body.LimbsReachCriteria",
       "kind": "acceptance",
       "title": "Criteria of every limb that reaches",
-      "source": "src/body.ts:823",
+      "source": "src/body.ts:840",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -831,7 +834,7 @@
       "id": "body.PlantedLeg",
       "kind": "requirement",
       "title": "A leg on its foot",
-      "source": "src/body.ts:514",
+      "source": "src/body.ts:529",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -852,7 +855,7 @@
       "id": "body.PlantedLegCriteria",
       "kind": "acceptance",
       "title": "Criteria of a leg on its foot",
-      "source": "src/body.ts:537",
+      "source": "src/body.ts:552",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -871,24 +874,79 @@
       "diagnostics": []
     },
     {
+      "id": "body.RestPoints",
+      "kind": "decision",
+      "title": "The points of a rest",
+      "source": "src/body.ts:244",
+      "fields": {
+        "owner": "ghalaax",
+        "value": {
+          "leg": {
+            "foot": [
+              "heel",
+              "ball",
+              "toe"
+            ],
+            "toes": [
+              "ball",
+              "toe"
+            ],
+            "instep": [
+              "top"
+            ],
+            "knee": [
+              "knee"
+            ]
+          },
+          "body": {
+            "hands": [
+              "wrist",
+              "tip"
+            ],
+            "chest": [
+              "chest"
+            ],
+            "pelvis": [
+              "pelvis"
+            ],
+            "head": [
+              "head"
+            ]
+          },
+          "sided": [
+            "hands"
+          ]
+        }
+      },
+      "diagnostics": []
+    },
+    {
       "id": "body.RestsOnWhatItNames",
       "kind": "requirement",
       "title": "A pose rests on what it names",
-      "source": "src/body.ts:768",
+      "source": "src/body.ts:783",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {
+          "keyOf": "(function)",
+          "bodyAt": "(function)",
+          "surfaces": "(function)",
+          "points": "body.RestPoints",
+          "sides": "body.SideNames",
+          "touching": "body.Touching",
+          "texts": "std/algebra.Texts",
+          "counts": "std/algebra.Counts"
+        },
+        "body": "(function)"
       },
-      "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
-      ]
+      "diagnostics": []
     },
     {
       "id": "body.RestsOnWhatItNamesCriteria",
       "kind": "acceptance",
       "title": "Criteria of a pose that rests on what it names",
-      "source": "src/body.ts:789",
+      "source": "src/body.ts:805",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -931,21 +989,22 @@
       "id": "body.SidesOf",
       "kind": "requirement",
       "title": "The legs in front and behind",
-      "source": "src/body.ts:866",
+      "source": "src/body.ts:883",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {
+          "sides": "body.SideNames"
+        },
+        "body": "(function)"
       },
-      "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
-      ]
+      "diagnostics": []
     },
     {
       "id": "body.SidesOfCriteria",
       "kind": "acceptance",
       "title": "Criteria of the legs in front and behind",
-      "source": "src/body.ts:877",
+      "source": "src/body.ts:895",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -967,7 +1026,7 @@
       "id": "body.SpotOn",
       "kind": "requirement",
       "title": "Where a spot is",
-      "source": "src/body.ts:891",
+      "source": "src/body.ts:909",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -981,7 +1040,7 @@
       "id": "body.SpotOnCriteria",
       "kind": "acceptance",
       "title": "Criteria of where a spot is",
-      "source": "src/body.ts:909",
+      "source": "src/body.ts:927",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -1011,7 +1070,7 @@
       "id": "body.SteppingLeg",
       "kind": "requirement",
       "title": "A leg that steps",
-      "source": "src/body.ts:597",
+      "source": "src/body.ts:612",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -1029,7 +1088,7 @@
       "id": "body.SteppingLegCriteria",
       "kind": "acceptance",
       "title": "Criteria of a leg that steps",
-      "source": "src/body.ts:611",
+      "source": "src/body.ts:626",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -1051,7 +1110,7 @@
       "id": "body.SurfaceHeights",
       "kind": "requirement",
       "title": "The heights of the body's surface",
-      "source": "src/body.ts:719",
+      "source": "src/body.ts:734",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -1069,7 +1128,7 @@
       "id": "body.SurfaceHeightsCriteria",
       "kind": "acceptance",
       "title": "Criteria of the heights of the body's surface",
-      "source": "src/body.ts:746",
+      "source": "src/body.ts:761",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -1107,7 +1166,7 @@
       "id": "body.TrunkOf",
       "kind": "requirement",
       "title": "The trunk from its angles",
-      "source": "src/body.ts:255",
+      "source": "src/body.ts:270",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -1123,7 +1182,7 @@
       "id": "body.TrunkOfCriteria",
       "kind": "acceptance",
       "title": "Criteria of the trunk from its angles",
-      "source": "src/body.ts:278",
+      "source": "src/body.ts:293",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -1149,7 +1208,7 @@
       "id": "body.TwoBones",
       "kind": "requirement",
       "title": "A limb reaches its end",
-      "source": "src/body.ts:298",
+      "source": "src/body.ts:313",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -1166,7 +1225,7 @@
       "id": "body.TwoBonesCriteria",
       "kind": "acceptance",
       "title": "Criteria of a limb that reaches its end",
-      "source": "src/body.ts:317",
+      "source": "src/body.ts:332",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -5707,7 +5766,7 @@
       },
       "result": {
         "path": "dist/poselia.html",
-        "code": "3a534ea0"
+        "code": "0c08ec41"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -7660,6 +7719,21 @@
       "kind": "refines"
     },
     {
+      "from": "body.LimbsReach",
+      "to": "body.KeyOf",
+      "kind": "deps"
+    },
+    {
+      "from": "body.LimbsReach",
+      "to": "body.BodyAt",
+      "kind": "deps"
+    },
+    {
+      "from": "body.LimbsReach",
+      "to": "std/algebra.Counts",
+      "kind": "deps"
+    },
+    {
       "from": "body.LimbsReachCriteria",
       "to": "body.LimbsReach",
       "kind": "accepts"
@@ -7740,6 +7814,46 @@
       "kind": "refines"
     },
     {
+      "from": "body.RestsOnWhatItNames",
+      "to": "body.KeyOf",
+      "kind": "deps"
+    },
+    {
+      "from": "body.RestsOnWhatItNames",
+      "to": "body.BodyAt",
+      "kind": "deps"
+    },
+    {
+      "from": "body.RestsOnWhatItNames",
+      "to": "body.SurfaceHeights",
+      "kind": "deps"
+    },
+    {
+      "from": "body.RestsOnWhatItNames",
+      "to": "body.RestPoints",
+      "kind": "deps"
+    },
+    {
+      "from": "body.RestsOnWhatItNames",
+      "to": "body.SideNames",
+      "kind": "deps"
+    },
+    {
+      "from": "body.RestsOnWhatItNames",
+      "to": "body.Touching",
+      "kind": "deps"
+    },
+    {
+      "from": "body.RestsOnWhatItNames",
+      "to": "std/algebra.Texts",
+      "kind": "deps"
+    },
+    {
+      "from": "body.RestsOnWhatItNames",
+      "to": "std/algebra.Counts",
+      "kind": "deps"
+    },
+    {
       "from": "body.RestsOnWhatItNamesCriteria",
       "to": "body.RestsOnWhatItNames",
       "kind": "accepts"
@@ -7748,6 +7862,11 @@
       "from": "body.SidesOf",
       "to": "product.PractiseGuided",
       "kind": "refines"
+    },
+    {
+      "from": "body.SidesOf",
+      "to": "body.SideNames",
+      "kind": "deps"
     },
     {
       "from": "body.SidesOfCriteria",
@@ -10509,44 +10628,8 @@
       "inferred": true
     },
     {
-      "from": "body.LimbsReach",
-      "to": "body.KeyOf",
-      "kind": "uses",
-      "inferred": true
-    },
-    {
-      "from": "body.LimbsReach",
-      "to": "body.BodyAt",
-      "kind": "uses",
-      "inferred": true
-    },
-    {
       "from": "body.PlantedLegCriteria",
       "to": "body.BodyMeasures",
-      "kind": "uses",
-      "inferred": true
-    },
-    {
-      "from": "body.RestsOnWhatItNames",
-      "to": "body.KeyOf",
-      "kind": "uses",
-      "inferred": true
-    },
-    {
-      "from": "body.RestsOnWhatItNames",
-      "to": "body.SurfaceHeights",
-      "kind": "uses",
-      "inferred": true
-    },
-    {
-      "from": "body.RestsOnWhatItNames",
-      "to": "body.BodyAt",
-      "kind": "uses",
-      "inferred": true
-    },
-    {
-      "from": "body.RestsOnWhatItNames",
-      "to": "body.Touching",
       "kind": "uses",
       "inferred": true
     },
