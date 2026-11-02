@@ -905,7 +905,8 @@
       "status": "held",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {},
+        "body": "(function)"
       }
     },
     {
@@ -978,7 +979,12 @@
       "status": "held",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {
+          "ways": "content.LevelWays",
+          "counts": "std/algebra.Counts",
+          "seq": "std/algebra.Sequences"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -3184,7 +3190,11 @@
       "status": "held",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {
+          "rate": "content.SpeechRate",
+          "counts": "std/algebra.Counts"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -5866,6 +5876,11 @@
       "kind": "refines"
     },
     {
+      "from": "content.MakesSense",
+      "to": "content.LevelWays",
+      "kind": "deps"
+    },
+    {
       "from": "content.MakesSenseCriteria",
       "to": "content.MakesSense",
       "kind": "accepts"
@@ -5894,6 +5909,11 @@
       "from": "content.Spoken",
       "to": "product.PractiseGuided",
       "kind": "refines"
+    },
+    {
+      "from": "content.Spoken",
+      "to": "content.SpeechRate",
+      "kind": "deps"
     },
     {
       "from": "content.SpokenCriteria",
@@ -7856,11 +7876,6 @@
       "kind": "uses"
     },
     {
-      "from": "content.MakesSense",
-      "to": "content.LevelWays",
-      "kind": "uses"
-    },
-    {
       "from": "content.MakesSenseCriteria",
       "to": "content.LevelWays",
       "kind": "uses"
@@ -7943,11 +7958,6 @@
     {
       "from": "content.Sequences",
       "to": "content.MakesSense",
-      "kind": "uses"
-    },
-    {
-      "from": "content.Spoken",
-      "to": "content.SpeechRate",
       "kind": "uses"
     },
     {

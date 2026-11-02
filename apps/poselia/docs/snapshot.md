@@ -498,6 +498,7 @@ Function · `ShowComposer` · **held**
 Requirement · `LeadingLegOf` · **held**
 
 - Owner: ghalaax
+- Parameters: {  }
 - Refines: Practise yoga on one's own, guided
 
 ### A sequence that makes sense
@@ -505,6 +506,7 @@ Requirement · `LeadingLegOf` · **held**
 Requirement · `MakesSense` · **held**
 
 - Owner: ghalaax
+- Parameters: { ways: content.LevelWays, counts: std/algebra.Counts, seq: std/algebra.Sequences }
 - Refines: Practise yoga on one's own, guided
 - Depends on: The ways between levels
 
@@ -513,6 +515,7 @@ Requirement · `MakesSense` · **held**
 Requirement · `Spoken` · **held**
 
 - Owner: ghalaax
+- Parameters: { rate: content.SpeechRate, counts: std/algebra.Counts }
 - Refines: Practise yoga on one's own, guided
 - Depends on: How fast a voice speaks
 

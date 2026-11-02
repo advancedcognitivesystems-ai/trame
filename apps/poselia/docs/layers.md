@@ -354,12 +354,14 @@ flowchart TB
   n63 -->|Refines| n124
   n64 -->|Accepts| n63
   n66 -->|Refines| n124
+  n66 -->|Depends on| n65
   n67 -->|Accepts| n66
   n68 -->|Languages offered| n62
   n68 -->|Serves| n124
   n69 -->|Languages offered| n62
   n69 -->|Serves| n124
   n71 -->|Refines| n124
+  n71 -->|Depends on| n70
   n72 -->|Accepts| n71
   n75 -->|Serves| n124
   n75 -->|Depends on| n24
@@ -752,7 +754,6 @@ flowchart TB
   n50 -.->|Depends on| n24
   n53 -.->|Depends on| n29
   n53 -.->|Depends on| n22
-  n66 -.->|Depends on| n65
   n67 -.->|Depends on| n65
   n67 -.->|Depends on| n31
   n67 -.->|Depends on| n29
@@ -770,7 +771,6 @@ flowchart TB
   n69 -.->|Depends on| n71
   n69 -.->|Depends on| n31
   n69 -.->|Depends on| n66
-  n71 -.->|Depends on| n70
   n85 -.->|Depends on| n84
   n85 -.->|Depends on| n42
   n85 -.->|Depends on| n20

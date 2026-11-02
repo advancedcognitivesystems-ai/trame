@@ -1,6 +1,7 @@
 /** Poselia · Content */
 
 import { decision } from "#trame/kinds/decision"
+import { Counts, Sequences as SequenceOps } from "#std/algebra"
 import { dataset } from "#trame/kinds/dataset"
 import { requirement } from "#trame/kinds/requirement"
 import { acceptance } from "#trame/kinds/acceptance"
@@ -69,8 +70,9 @@ export const SpeechRate = decision<{ charactersPerSecond: number; breathWord: nu
 export const Spoken = requirement({
   owner: "ghalaax",
   refines: [PractiseGuided],
-  rule: (text: string, withBreath: boolean): number =>
-    text.length / SpeechRate.value.charactersPerSecond + (withBreath ? SpeechRate.value.breathWord : 0),
+  deps: { rate: SpeechRate, counts: Counts },
+  body: ({ rate, counts }) => (text: string, withBreath: boolean): number =>
+    counts.count(text) / rate.charactersPerSecond + (withBreath ? rate.breathWord : counts.zero),
 })
 
 /** Criteria of how long words take to say */
@@ -91,7 +93,8 @@ export const SpokenCriteria = acceptance({
 export const LeadingLegOf = requirement({
   owner: "ghalaax",
   refines: [PractiseGuided],
-  rule: (before: Level): Stance => (before === Level.standing || before === Level.fold ? Stance.back : Stance.front),
+  deps: {},
+  body: () => (before: Level): Stance => (before === Level.standing || before === Level.fold ? Stance.back : Stance.front),
 })
 
 /** Criteria of where the leading leg goes */
@@ -114,15 +117,22 @@ export const LeadingLegOfCriteria = acceptance({
 export const MakesSense = requirement({
   owner: "ghalaax",
   refines: [PractiseGuided],
-  rule: (steps: readonly { id: string; level: Level }[]): { begins: boolean; ends: boolean; jumps: number[]; backAndForth: number[]; repeats: number[] } => {
-    const ways = LevelWays.value
+  deps: { ways: LevelWays, counts: Counts, seq: SequenceOps },
+  body: ({ ways, counts, seq }) => (steps: readonly { id: string; level: Level }[]): { begins: boolean; ends: boolean; jumps: number[]; backAndForth: number[]; repeats: number[] } => {
     const levels = steps.map((p) => p.level)
+    const { previous, zero } = counts
     return {
-      begins: levels[0] === Level.standing,
-      ends: levels[levels.length - 1] === Level.standing,
-      jumps: levels.flatMap((l, i) => (i > 0 && l !== levels[i - 1] && !ways[levels[i - 1]].includes(l) ? [i] : [])),
-      backAndForth: levels.flatMap((l, i) => (i > 2 && l === levels[i - 2] && levels[i - 1] === levels[i - 3] && l !== levels[i - 1] ? [i] : [])),
-      repeats: steps.flatMap((p, i) => (i > 0 && p.id === steps[i - 1].id ? [i] : [])),
+      begins: seq.head(levels) === Level.standing,
+      ends: seq.last(levels) === Level.standing,
+      jumps: levels.flatMap((l, i) => {
+        const before = levels.at(previous(i))
+        return i > zero && before !== undefined && l !== before && !ways[before].includes(l) ? [i] : []
+      }),
+      backAndForth: levels.flatMap((l, i) => {
+        const [one, two, three] = [previous(i), previous(previous(i)), previous(previous(previous(i)))]
+        return three >= zero && l === levels.at(two) && levels.at(one) === levels.at(three) && l !== levels.at(one) ? [i] : []
+      }),
+      repeats: steps.flatMap((p, i) => (i > zero && p.id === steps.at(previous(i))?.id ? [i] : [])),
     }
   },
 })

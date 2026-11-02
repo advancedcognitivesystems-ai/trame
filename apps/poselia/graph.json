@@ -1243,7 +1243,7 @@
       "id": "content.CuePlaceholders",
       "kind": "decision",
       "title": "Placeholders of a cue",
-      "source": "src/content.ts:274",
+      "source": "src/content.ts:284",
       "fields": {
         "owner": "ghalaax",
         "value": {
@@ -1256,7 +1256,7 @@
       "id": "content.Languages",
       "kind": "decision",
       "title": "Languages offered",
-      "source": "src/content.ts:23",
+      "source": "src/content.ts:24",
       "fields": {
         "owner": "ghalaax",
         "value": [
@@ -1270,21 +1270,20 @@
       "id": "content.LeadingLegOf",
       "kind": "requirement",
       "title": "Where the leading leg goes",
-      "source": "src/content.ts:91",
+      "source": "src/content.ts:93",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {},
+        "body": "(function)"
       },
-      "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
-      ]
+      "diagnostics": []
     },
     {
       "id": "content.LeadingLegOfCriteria",
       "kind": "acceptance",
       "title": "Criteria of where the leading leg goes",
-      "source": "src/content.ts:98",
+      "source": "src/content.ts:101",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -1306,7 +1305,7 @@
       "id": "content.LevelWays",
       "kind": "decision",
       "title": "The ways between levels",
-      "source": "src/content.ts:36",
+      "source": "src/content.ts:37",
       "fields": {
         "owner": "ghalaax",
         "value": {
@@ -1361,21 +1360,24 @@
       "id": "content.MakesSense",
       "kind": "requirement",
       "title": "A sequence that makes sense",
-      "source": "src/content.ts:114",
+      "source": "src/content.ts:117",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {
+          "ways": "content.LevelWays",
+          "counts": "std/algebra.Counts",
+          "seq": "std/algebra.Sequences"
+        },
+        "body": "(function)"
       },
-      "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
-      ]
+      "diagnostics": []
     },
     {
       "id": "content.MakesSenseCriteria",
       "kind": "acceptance",
       "title": "Criteria of a sequence that makes sense",
-      "source": "src/content.ts:131",
+      "source": "src/content.ts:141",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -1421,7 +1423,7 @@
       "id": "content.Poses",
       "kind": "dataset",
       "title": "Poses",
-      "source": "src/content.ts:217",
+      "source": "src/content.ts:227",
       "status": "unknown",
       "fields": {
         "owner": "ghalaax",
@@ -3556,7 +3558,7 @@
       "id": "content.Sequences",
       "kind": "dataset",
       "title": "Sequences",
-      "source": "src/content.ts:281",
+      "source": "src/content.ts:291",
       "status": "unknown",
       "fields": {
         "owner": "ghalaax",
@@ -3797,7 +3799,7 @@
       "id": "content.SpeechRate",
       "kind": "decision",
       "title": "How fast a voice speaks",
-      "source": "src/content.ts:60",
+      "source": "src/content.ts:61",
       "fields": {
         "owner": "ghalaax",
         "value": {
@@ -3811,21 +3813,23 @@
       "id": "content.Spoken",
       "kind": "requirement",
       "title": "How long words take to say",
-      "source": "src/content.ts:69",
+      "source": "src/content.ts:70",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {
+          "rate": "content.SpeechRate",
+          "counts": "std/algebra.Counts"
+        },
+        "body": "(function)"
       },
-      "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
-      ]
+      "diagnostics": []
     },
     {
       "id": "content.SpokenCriteria",
       "kind": "acceptance",
       "title": "Criteria of how long words take to say",
-      "source": "src/content.ts:77",
+      "source": "src/content.ts:79",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -5597,7 +5601,7 @@
       },
       "result": {
         "path": "dist/poselia.html",
-        "code": "71779663"
+        "code": "0fba4b20"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -7665,6 +7669,21 @@
       "kind": "refines"
     },
     {
+      "from": "content.MakesSense",
+      "to": "content.LevelWays",
+      "kind": "deps"
+    },
+    {
+      "from": "content.MakesSense",
+      "to": "std/algebra.Counts",
+      "kind": "deps"
+    },
+    {
+      "from": "content.MakesSense",
+      "to": "std/algebra.Sequences",
+      "kind": "deps"
+    },
+    {
       "from": "content.MakesSenseCriteria",
       "to": "content.MakesSense",
       "kind": "accepts"
@@ -7693,6 +7712,16 @@
       "from": "content.Spoken",
       "to": "product.PractiseGuided",
       "kind": "refines"
+    },
+    {
+      "from": "content.Spoken",
+      "to": "content.SpeechRate",
+      "kind": "deps"
+    },
+    {
+      "from": "content.Spoken",
+      "to": "std/algebra.Counts",
+      "kind": "deps"
     },
     {
       "from": "content.SpokenCriteria",
@@ -10291,12 +10320,6 @@
       "inferred": true
     },
     {
-      "from": "content.MakesSense",
-      "to": "content.LevelWays",
-      "kind": "uses",
-      "inferred": true
-    },
-    {
       "from": "content.MakesSenseCriteria",
       "to": "content.LevelWays",
       "kind": "uses",
@@ -10395,12 +10418,6 @@
     {
       "from": "content.Sequences",
       "to": "content.MakesSense",
-      "kind": "uses",
-      "inferred": true
-    },
-    {
-      "from": "content.Spoken",
-      "to": "content.SpeechRate",
       "kind": "uses",
       "inferred": true
     },

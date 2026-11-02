@@ -6,7 +6,7 @@
 |---|---|---|---|---|
 | A teacher who practises | 0 | 0 | 4 | 0 |
 | People who try it on a phone | 0 | 0 | 1 | 0 |
-| ghalaax | 0 | 0 | 41 | 205 |
+| ghalaax | 0 | 0 | 38 | 205 |
 
 <a id="A teacher who practises"></a>
 
@@ -66,9 +66,6 @@
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [The trunk from its angles](body.md#TrunkOf) | ghalaax |  |
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A limb reaches its end](body.md#TwoBones) | ghalaax |  |
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [Rising on a breath in](composing.md#BreathOfMove) | ghalaax |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [Where the leading leg goes](content.md#LeadingLegOf) | ghalaax |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A sequence that makes sense](content.md#MakesSense) | ghalaax |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [How long words take to say](content.md#Spoken) | ghalaax |  |
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A landmark on the body](marks.md#MarkOnBody) | ghalaax |  |
 | warning | Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it | [A hold counts in breaths](product.md#HoldInBreaths) | ghalaax |  |
 | warning | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [Poselia's page](sdlc.md#PageFile) | ghalaax |  |
