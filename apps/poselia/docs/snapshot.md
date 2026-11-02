@@ -275,8 +275,9 @@ Requirement · `SteppingLeg` · **held**
 Requirement · `SurfaceHeights` · **held**
 
 - Owner: ghalaax
+- Parameters: { m: body.BodyMeasures, g: body.MatSpace, sides: body.SideNames, texts: std/algebra.Texts }
 - Refines: Practise yoga on one's own, guided
-- Depends on: Measures of the body
+- Depends on: Measures of the body, The space of the mat, The names of the sides
 
 ### The trunk from its angles
 

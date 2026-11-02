@@ -360,6 +360,9 @@ flowchart TB
   n50 -->|Depends on| n57
   n51 -->|Accepts| n50
   n52 -->|Refines| n128
+  n52 -->|Depends on| n24
+  n52 -->|Depends on| n39
+  n52 -->|Depends on| n45
   n53 -->|Accepts| n52
   n55 -->|Refines| n128
   n55 -->|Depends on| n24
@@ -777,7 +780,6 @@ flowchart TB
   n43 -.->|Depends on| n54
   n49 -.->|Depends on| n31
   n49 -.->|Depends on| n22
-  n52 -.->|Depends on| n24
   n53 -.->|Depends on| n31
   n53 -.->|Depends on| n22
   n56 -.->|Depends on| n24

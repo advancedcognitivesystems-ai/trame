@@ -6,7 +6,7 @@
 |---|---|---|---|---|
 | A teacher who practises | 0 | 0 | 4 | 0 |
 | People who try it on a phone | 0 | 0 | 1 | 0 |
-| ghalaax | 0 | 0 | 26 | 210 |
+| ghalaax | 0 | 0 | 25 | 210 |
 
 <a id="A teacher who practises"></a>
 
@@ -55,7 +55,6 @@
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A pose rests on what it names](body.md#RestsOnWhatItNames) | ghalaax |  |
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [The legs in front and behind](body.md#SidesOf) | ghalaax |  |
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [Where a spot is](body.md#SpotOn) | ghalaax |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [The heights of the body's surface](body.md#SurfaceHeights) | ghalaax |  |
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [Rising on a breath in](composing.md#BreathOfMove) | ghalaax |  |
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A landmark on the body](marks.md#MarkOnBody) | ghalaax |  |
 | warning | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [Poselia's page](sdlc.md#PageFile) | ghalaax |  |

@@ -780,7 +780,13 @@
       "status": "held",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {
+          "m": "body.BodyMeasures",
+          "g": "body.MatSpace",
+          "sides": "body.SideNames",
+          "texts": "std/algebra.Texts"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -5993,6 +5999,21 @@
       "kind": "refines"
     },
     {
+      "from": "body.SurfaceHeights",
+      "to": "body.BodyMeasures",
+      "kind": "deps"
+    },
+    {
+      "from": "body.SurfaceHeights",
+      "to": "body.MatSpace",
+      "kind": "deps"
+    },
+    {
+      "from": "body.SurfaceHeights",
+      "to": "body.SideNames",
+      "kind": "deps"
+    },
+    {
       "from": "body.SurfaceHeightsCriteria",
       "to": "body.SurfaceHeights",
       "kind": "accepts"
@@ -8075,11 +8096,6 @@
     {
       "from": "body.SpotOnCriteria",
       "to": "body.BodyAt",
-      "kind": "uses"
-    },
-    {
-      "from": "body.SurfaceHeights",
-      "to": "body.BodyMeasures",
       "kind": "uses"
     },
     {

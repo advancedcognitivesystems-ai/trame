@@ -719,23 +719,24 @@ export const BodyAtCriteria = acceptance({
 export const SurfaceHeights = requirement({
   owner: "ghalaax",
   refines: [PractiseGuided],
-  rule: (body: Body): Record<string, number> => {
-    const m = BodyMeasures.value
-    const lowest = (centre: Vec, across: Vec, along: Vec, a: number, b: number) => centre[1] - Math.hypot(a * across[1], b * along[1])
+  deps: { m: BodyMeasures, g: MatSpace, sides: SideNames, texts: Texts },
+  body: ({ m, g, sides, texts }) => (body: Body): Record<string, number> => {
+    const { add, mul, height } = g
+    const lowest = (centre: Vec, across: Vec, along: Vec, a: number, b: number) => height(centre) - Math.hypot(a * height(across), b * height(along))
     const heights: Record<string, number> = {
-      pelvis: lowest(add(body.pelvis, mul(body.lowerBack, m.pelvisUp)), [body.lowerBack[1], -body.lowerBack[0], 0], body.lowerBack, m.pelvisAcross, m.pelvisAlong),
-      chest: lowest(add(body.waist, mul(body.chest, m.chestUp)), [body.chest[1], -body.chest[0], 0], body.chest, m.chestAcross, m.chestAlong),
-      head: body.head[1] - m.headSurface,
+      [Point.pelvis]: lowest(add(body.pelvis, mul(body.lowerBack, m.pelvisUp)), g.face(body.lowerBack), body.lowerBack, m.pelvisAcross, m.pelvisAlong),
+      [Surface.chest]: lowest(add(body.waist, mul(body.chest, m.chestUp)), g.face(body.chest), body.chest, m.chestAcross, m.chestAlong),
+      [Point.head]: height(body.head) - m.headSurface,
     }
-    for (const s of ["L", "R"] as const) {
-      const x = body[s]
-      heights[`${s} heel`] = x.heel[1]
-      heights[`${s} ball`] = x.ball[1]
-      heights[`${s} toe`] = x.toe[1]
-      heights[`${s} top`] = x.ankle[1] + m.topUp * x.footUp[1] + m.topForward * x.footAlong[1]
-      heights[`${s} knee`] = x.knee[1] - m.kneeSurface
-      heights[`${s} wrist`] = x.wrist[1] - m.wristSurface
-      heights[`${s} tip`] = x.tip[1] - m.wristSurface
+    for (const [side, x] of [[sides.left, body.L], [sides.right, body.R]] as const) {
+      const at = (point: string) => [side, point].join(texts.space)
+      heights[at(Point.heel)] = height(x.heel)
+      heights[at(Point.ball)] = height(x.ball)
+      heights[at(Point.toe)] = height(x.toe)
+      heights[at(Surface.top)] = height(x.ankle) + m.topUp * height(x.footUp) + m.topForward * height(x.footAlong)
+      heights[at(Point.knee)] = height(x.knee) - m.kneeSurface
+      heights[at(Point.wrist)] = height(x.wrist) - m.wristSurface
+      heights[at(Point.tip)] = height(x.tip) - m.wristSurface
     }
     return heights
   },
@@ -835,6 +836,9 @@ export const LimbsReachCriteria = acceptance({
 // Landmarks ---------------------------------------------------------------------------------------
 
 /** The points of the body a landmark names: a joint of a side, or a point of the trunk (the sternum half way up the chest). */
+/** The surfaces of the body a pose may rest on that are not points: the chest, the top of a foot. */
+export enum Surface { chest = "chest", top = "top" }
+
 export enum Point {
   hip = "hip", knee = "knee", ankle = "ankle", heel = "heel", ball = "ball", toe = "toe", shoulder = "shoulder", elbow = "elbow", wrist = "wrist", tip = "tip",
   pelvis = "pelvis", waist = "waist", sternum = "sternum", neckBase = "neckBase", shoulders = "shoulders", neckTop = "neckTop", head = "head", nose = "nose",
