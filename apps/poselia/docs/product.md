@@ -190,10 +190,10 @@ The pattern a practice follows until the person sets their own, in the settings 
 
 | Case | Value |
 |---|---|
-| inhale | 4 |
-| holdTop | 0 |
-| exhale | 4 |
-| holdBottom | 0 |
+| inhale | 4 s |
+| holdTop | 0 h |
+| exhale | 4 s |
+| holdBottom | 0 h |
 
 - Decided by: ghalaax
 - Rejected: A timer in seconds, the person would follow a clock instead of their breath

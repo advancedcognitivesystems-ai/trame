@@ -1,12 +1,13 @@
 /** Poselia · Settings */
 
-import { code, s, type Duration } from "#trame/kernel"
+import { code } from "#trame/kernel"
+import { s, type Duration } from "#std/measures"
 import { decision } from "#trame/kinds/decision"
 import { requirement } from "#trame/kinds/requirement"
 import { acceptance } from "#trame/kinds/acceptance"
 import { fn } from "#trame/kinds/function"
 import { PreferencesStore, SpeechVoice } from "#std/platform"
-import { Texts, Counts } from "#std/algebra"
+import { Texts, Counts, ValueTypes } from "#std/algebra"
 import { BreathSetsThePace, PractiseGuided, BreathPhase, DefaultBreath, type BreathPattern } from "./product"
 import { Screen } from "./architecture"
 import { PreferenceNames, InterfaceWords, AppLanguage } from "./language"
@@ -20,9 +21,9 @@ import { PreferenceNames, InterfaceWords, AppLanguage } from "./language"
  * A phase is set half a second at a time; a breath in or out lasts at least a second, a hold may last nothing, and none
  * lasts more than twenty seconds.
  */
-export const BreathBounds = decision<{ step: Duration; least: Duration; most: Duration }>({
+export const BreathBounds = decision<{ step: Duration; least: Duration; most: Duration; none: Duration }>({
   owner: "ghalaax",
-  value: { step: s(0.5), least: s(1), most: s(20) },
+  value: { step: s(0.5), least: s(1), most: s(20), none: s(0) },
 })
 
 /**
@@ -33,19 +34,20 @@ export const BreathBounds = decision<{ step: Duration; least: Duration; most: Du
 export const BreathRead = requirement({
   owner: "ghalaax",
   refines: [BreathSetsThePace],
-  rule: (kept: string | undefined): BreathPattern | undefined => {
-    const b = BreathBounds.value
+  deps: { b: BreathBounds, values: ValueTypes },
+  body: ({ b, values }) => (kept: string | undefined): BreathPattern | undefined => {
+    if (kept === undefined) return undefined
     try {
-      const p = JSON.parse(kept ?? "null") as Partial<Record<BreathPhase, unknown>> | null
-      if (p === null || typeof p !== "object") return undefined
-      const phase = (name: BreathPhase, least: number) => {
-        const v = p[name]
-        return typeof v === "number" && Number.isFinite(v) && v >= least && v <= b.most ? v : undefined
+      const p: unknown = JSON.parse(kept)
+      if (!values.isObject(p)) return undefined
+      const phase = (name: BreathPhase, least: Duration): Duration | undefined => {
+        const v = (p as Partial<Record<BreathPhase, unknown>>)[name]
+        return values.isNumber(v) && Number.isFinite(v) && v >= least && v <= b.most ? (v as Duration) : undefined
       }
       const inhale = phase(BreathPhase.inhale, b.least)
-      const holdTop = phase(BreathPhase.holdTop, 0)
+      const holdTop = phase(BreathPhase.holdTop, b.none)
       const exhale = phase(BreathPhase.exhale, b.least)
-      const holdBottom = phase(BreathPhase.holdBottom, 0)
+      const holdBottom = phase(BreathPhase.holdBottom, b.none)
       if (inhale === undefined || holdTop === undefined || exhale === undefined || holdBottom === undefined) return undefined
       return { inhale, holdTop, exhale, holdBottom }
     } catch {
@@ -74,9 +76,9 @@ export const BreathReadCriteria = acceptance({
 export const AdjustedBreath = requirement({
   owner: "ghalaax",
   refines: [BreathSetsThePace],
-  rule: (pattern: BreathPattern, phase: BreathPhase, steps: number): BreathPattern => {
-    const b = BreathBounds.value
-    const least = phase === BreathPhase.inhale || phase === BreathPhase.exhale ? b.least : 0
+  deps: { b: BreathBounds },
+  body: ({ b }) => (pattern: BreathPattern, phase: BreathPhase, steps: number): BreathPattern => {
+    const least = phase === BreathPhase.inhale || phase === BreathPhase.exhale ? b.least : b.none
     return { ...pattern, [phase]: Math.min(b.most, Math.max(least, pattern[phase] + steps * b.step)) }
   },
 })
@@ -94,6 +96,16 @@ export const AdjustedBreathCriteria = acceptance({
 })
 
 /**
+ * Tapping
+ * How many taps measure a breath: at least three, a breath in and a breath out.
+ */
+export const Tapping = decision<{ least: number }>({
+  owner: "ghalaax",
+  value: { least: 3 },
+  rejected: { "Two taps": "one gap measures a breath in, and nothing of the breath out" },
+})
+
+/**
  * A breath measured by tapping
  * The person taps as each breath in starts and as each breath out starts: a breath in lasts, on average, from a tap to
  * the next one, a breath out from that one to the following; no holds. Fewer than three taps measure nothing; the
@@ -102,18 +114,22 @@ export const AdjustedBreathCriteria = acceptance({
 export const MeasuredBreath = requirement({
   owner: "ghalaax",
   refines: [BreathSetsThePace],
-  rule: (taps: readonly number[]): BreathPattern | undefined => {
-    const b = BreathBounds.value
-    if (taps.length < 3) return undefined
-    const gaps = taps.slice(1).map((t, i) => t - taps[i])
-    const mean = (xs: number[]) => xs.reduce((a, x) => a + x, 0) / xs.length
-    const fit = (v: number) => Math.min(b.most, Math.max(b.least, Math.round(v / b.step) * b.step))
-    return {
-      inhale: fit(mean(gaps.filter((_, i) => i % 2 === 0))),
-      holdTop: 0,
-      exhale: fit(mean(gaps.filter((_, i) => i % 2 === 1))),
-      holdBottom: 0,
+  deps: { b: BreathBounds, tapping: Tapping, counts: Counts },
+  body: ({ b, tapping, counts }) => (taps: readonly number[]): BreathPattern | undefined => {
+    if (counts.count(taps) < tapping.least) return undefined
+    // From each tap to the next.
+    const gapsOf = ([t, next, ...rest]: readonly number[]): number[] => (next === undefined ? [] : [next - t, ...gapsOf([next, ...rest])])
+    const gaps = gapsOf(taps)
+    // The gaps alternate: a breath in, then a breath out.
+    const split = ([first, second, ...rest]: readonly number[]): [number[], number[]] => {
+      if (first === undefined) return [[], []]
+      const [ins, outs] = split(rest)
+      return [[first, ...ins], second === undefined ? outs : [second, ...outs]]
     }
+    const mean = (xs: number[]) => xs.reduce((a, x) => a + x, counts.zero) / counts.count(xs)
+    const fit = (v: number): Duration => Math.min(b.most, Math.max(b.least, Math.round(v / b.step) * b.step)) as Duration
+    const [ins, outs] = split(gaps)
+    return { inhale: fit(mean(ins)), holdTop: b.none, exhale: fit(mean(outs)), holdBottom: b.none }
   },
 })
 

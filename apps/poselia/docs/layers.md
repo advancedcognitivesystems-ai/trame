@@ -225,21 +225,22 @@ flowchart TB
     n189["Names of the settings<br/><small>Decision</small>"]:::neutral
     n190["The settings view<br/><small>Function</small>"]:::held
     n191["Show the settings<br/><small>Function</small>"]:::held
-    n192["The voice the person chose<br/><small>Function</small>"]:::held
-    n193["What the practice says and rings<br/><small>Decision</small>"]:::neutral
+    n192["Tapping<br/><small>Decision</small>"]:::neutral
+    n193["The voice the person chose<br/><small>Function</small>"]:::held
+    n194["What the practice says and rings<br/><small>Decision</small>"]:::neutral
   end
   subgraph sound["Poselia · Sound"]
-    n194["Sound of the bowl<br/><small>Decision</small>"]:::neutral
-    n195["The browser's bowl<br/><small>Implementation</small>"]:::unknown
+    n195["Sound of the bowl<br/><small>Decision</small>"]:::neutral
+    n196["The browser's bowl<br/><small>Implementation</small>"]:::unknown
   end
   subgraph stage["Poselia · The stage"]
-    n196["The browser's stage<br/><small>Implementation</small>"]:::unknown
-    n197["Look of the mannequin<br/><small>Decision</small>"]:::neutral
-    n198["Look of the landmarks<br/><small>Decision</small>"]:::neutral
-    n199["Light of the stage<br/><small>Decision</small>"]:::neutral
-    n200["Views of the stage<br/><small>Decision</small>"]:::neutral
-    n201["three.js<br/><small>Package</small>"]:::held
-    n202["three.js, its types<br/><small>Package</small>"]:::held
+    n197["The browser's stage<br/><small>Implementation</small>"]:::unknown
+    n198["Look of the mannequin<br/><small>Decision</small>"]:::neutral
+    n199["Look of the landmarks<br/><small>Decision</small>"]:::neutral
+    n200["Light of the stage<br/><small>Decision</small>"]:::neutral
+    n201["Views of the stage<br/><small>Decision</small>"]:::neutral
+    n202["three.js<br/><small>Package</small>"]:::held
+    n203["three.js, its types<br/><small>Package</small>"]:::held
   end
   n0 -->|Implements| n16
   n0 -->|Depends on| n9
@@ -265,8 +266,8 @@ flowchart TB
   n4 -->|Depends on| n75
   n4 -->|Depends on| n76
   n5 -->|Chooses| n0
+  n5 -->|Chooses| n197
   n5 -->|Chooses| n196
-  n5 -->|Chooses| n195
   n5 -->|In| n13
   n7 -->|Uses the variables of| n2
   n7 -->|Uses the variables of| n6
@@ -412,13 +413,13 @@ flowchart TB
   n105 -->|Serves| n123
   n105 -->|Depends on| n16
   n105 -->|Depends on| n11
-  n105 -->|Depends on| n192
+  n105 -->|Depends on| n193
   n105 -->|Depends on| n185
   n105 -->|Depends on| n106
   n105 -->|Depends on| n103
   n105 -->|Depends on| n80
   n105 -->|Depends on| n77
-  n105 -->|Depends on| n200
+  n105 -->|Depends on| n201
   n106 -->|Serves| n123
   n106 -->|Serves| n114
   n106 -->|Depends on| n112
@@ -494,7 +495,7 @@ flowchart TB
   n128 -->|Verifies| n103
   n128 -->|Verifies| n97
   n128 -->|Verifies| n93
-  n128 -->|Verifies| n192
+  n128 -->|Verifies| n193
   n128 -->|Verifies| n134
   n128 -->|In| n18
   n128 -->|Depends on| n10
@@ -548,7 +549,7 @@ flowchart TB
   n132 -->|Verifies| n191
   n132 -->|Verifies| n190
   n132 -->|Verifies| n188
-  n132 -->|Verifies| n192
+  n132 -->|Verifies| n193
   n132 -->|Verifies| n186
   n132 -->|Verifies| n180
   n132 -->|Verifies| n10
@@ -585,7 +586,7 @@ flowchart TB
   n147 -->|Serves| n123
   n149 -->|Checks| n154
   n149 -->|Signed by| n158
-  n149 -->|Verifies| n195
+  n149 -->|Verifies| n196
   n150 -->|In| n148
   n151 -->|Verifies| n152
   n151 -->|Verifies| n157
@@ -609,7 +610,7 @@ flowchart TB
   n156 -->|Checks| n154
   n156 -->|Run by| n152
   n156 -->|Verifies| n0
-  n156 -->|Verifies| n196
+  n156 -->|Verifies| n197
   n157 -->|Serves| n123
   n157 -->|Depends on| n9
   n157 -->|Depends on| n56
@@ -673,12 +674,16 @@ flowchart TB
   n175 -->|Applied by| n172
   n177 -->|Written in| n78
   n180 -->|Refines| n114
+  n180 -->|Depends on| n182
   n181 -->|Accepts| n180
   n183 -->|Refines| n114
+  n183 -->|Depends on| n182
   n184 -->|Accepts| n183
   n185 -->|Serves| n123
   n185 -->|Depends on| n81
   n186 -->|Refines| n114
+  n186 -->|Depends on| n182
+  n186 -->|Depends on| n192
   n187 -->|Accepts| n186
   n188 -->|Serves| n114
   n188 -->|Depends on| n81
@@ -691,22 +696,22 @@ flowchart TB
   n191 -->|Serves| n123
   n191 -->|Depends on| n16
   n191 -->|Depends on| n188
-  n191 -->|Depends on| n192
+  n191 -->|Depends on| n193
   n191 -->|Depends on| n190
   n191 -->|Depends on| n180
   n191 -->|Depends on| n186
   n191 -->|Depends on| n118
-  n192 -->|Serves| n123
-  n192 -->|Depends on| n193
-  n195 -->|Implements| n11
-  n195 -->|Depends on| n194
-  n196 -->|Implements| n17
-  n196 -->|Uses| n201
-  n196 -->|Uses| n202
-  n196 -->|Depends on| n197
-  n196 -->|Depends on| n199
-  n196 -->|Depends on| n200
-  n196 -->|Depends on| n198
+  n193 -->|Serves| n123
+  n193 -->|Depends on| n194
+  n196 -->|Implements| n11
+  n196 -->|Depends on| n195
+  n197 -->|Implements| n17
+  n197 -->|Uses| n202
+  n197 -->|Uses| n203
+  n197 -->|Depends on| n198
+  n197 -->|Depends on| n200
+  n197 -->|Depends on| n201
+  n197 -->|Depends on| n199
   n22 -.->|Depends on| n24
   n22 -.->|Depends on| n35
   n22 -.->|Depends on| n49
@@ -770,9 +775,6 @@ flowchart TB
   n86 -.->|Depends on| n20
   n93 -.->|Depends on| n71
   n112 -.->|Depends on| n118
-  n180 -.->|Depends on| n182
-  n183 -.->|Depends on| n182
-  n186 -.->|Depends on| n182
   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
   classDef blocked fill:#fbf0d9,stroke:#9a6200,color:#17202a
   classDef violated fill:#f9e3e1,stroke:#ad2a22,color:#17202a

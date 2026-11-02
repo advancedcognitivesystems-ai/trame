@@ -1,6 +1,6 @@
 /** Poselia · Product */
 
-import { s, type Duration } from "#trame/kernel"
+import { s, type Duration } from "#std/measures"
 import { goal } from "#trame/kinds/goal"
 import { decision } from "#trame/kinds/decision"
 import { requirement } from "#trame/kinds/requirement"

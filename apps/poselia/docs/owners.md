@@ -6,7 +6,7 @@
 |---|---|---|---|---|
 | A teacher who practises | 0 | 0 | 4 | 0 |
 | People who try it on a phone | 0 | 0 | 1 | 0 |
-| ghalaax | 0 | 0 | 52 | 203 |
+| ghalaax | 0 | 0 | 49 | 204 |
 
 <a id="A teacher who practises"></a>
 
@@ -97,9 +97,6 @@
 | warning | To ship: The preview's script is unknown | [The files that run it elsewhere](sdlc.md#RunnersWritten) | ghalaax |  |
 | warning | To ship: The preview's workflow is unknown | [The files that run it elsewhere](sdlc.md#RunnersWritten) | ghalaax |  |
 | warning | Nobody holds this role yet | [A teacher who practises](sdlc.md#Teachers) | ghalaax |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A phase set by the person](settings.md#AdjustedBreath) | ghalaax |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A breath read back](settings.md#BreathRead) | ghalaax |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A breath measured by tapping](settings.md#MeasuredBreath) | ghalaax |  |
 
 ### Owns
 
@@ -297,6 +294,7 @@
 | [Names of the settings](settings.md#SettingsNames) | Decision |  |
 | [The settings view](settings.md#SettingsViewOf) | Function | **held** |
 | [Show the settings](settings.md#ShowSettings) | Function | **held** |
+| [Tapping](settings.md#Tapping) | Decision |  |
 | [The voice the person chose](settings.md#VoiceChoice) | Function | **held** |
 | [What the practice says and rings](settings.md#VoiceParts) | Decision |  |
 | [Sound of the bowl](sound.md#BowlSound) | Decision |  |

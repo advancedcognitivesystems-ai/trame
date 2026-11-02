@@ -989,7 +989,7 @@ Requirement · `HoldInBreaths` · **unknown**
 Decision · `DefaultBreath`
 
 - Decided by: ghalaax
-- Value: { inhale: 4, holdTop: 0, exhale: 4, holdBottom: 0 }
+- Value: { inhale: 4 s, holdTop: 0 h, exhale: 4 s, holdBottom: 0 h }
 - Rejected: A timer in seconds, the person would follow a clock instead of their breath
 
 ### The phone stays on the mat
@@ -1498,6 +1498,7 @@ Policy · `PublicMode`
 Requirement · `AdjustedBreath` · **held**
 
 - Owner: ghalaax
+- Parameters: { b: settings.BreathBounds }
 - Refines: The breath sets the pace
 - Depends on: Bounds of a breath
 
@@ -1506,6 +1507,7 @@ Requirement · `AdjustedBreath` · **held**
 Requirement · `BreathRead` · **held**
 
 - Owner: ghalaax
+- Parameters: { b: settings.BreathBounds, values: std/algebra.ValueTypes }
 - Refines: The breath sets the pace
 - Depends on: Bounds of a breath
 
@@ -1514,15 +1516,16 @@ Requirement · `BreathRead` · **held**
 Requirement · `MeasuredBreath` · **held**
 
 - Owner: ghalaax
+- Parameters: { b: settings.BreathBounds, tapping: settings.Tapping, counts: std/algebra.Counts }
 - Refines: The breath sets the pace
-- Depends on: Bounds of a breath
+- Depends on: Bounds of a breath, Tapping
 
 ### Bounds of a breath
 
 Decision · `BreathBounds`
 
 - Decided by: ghalaax
-- Value: { step: 0.5 s, least: 1 s, most: 20 s }
+- Value: { step: 0.5 s, least: 1 s, most: 20 s, none: 0 h }
 
 ### Names of the settings
 
@@ -1530,6 +1533,14 @@ Decision · `SettingsNames`
 
 - Decided by: ghalaax
 - Value: { settings: settings, phases: phases, measure: measure, tap: tap }
+
+### Tapping
+
+Decision · `Tapping`
+
+- Decided by: ghalaax
+- Value: { least: 3 }
+- Rejected: Two taps, one gap measures a breath in, and nothing of the breath out
 
 ### What the practice says and rings
 
