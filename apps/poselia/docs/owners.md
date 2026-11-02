@@ -6,7 +6,7 @@
 |---|---|---|---|---|
 | A teacher who practises | 0 | 0 | 4 | 0 |
 | People who try it on a phone | 0 | 0 | 1 | 0 |
-| ghalaax | 0 | 0 | 29 | 209 |
+| ghalaax | 0 | 0 | 27 | 210 |
 
 <a id="A teacher who practises"></a>
 
@@ -50,14 +50,12 @@
 |---|---|---|---|---|
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [The angle at a joint](body.md#AngleBetween) | ghalaax |  |
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [The body between two poses](body.md#BodyAt) | ghalaax |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A foot on its way](body.md#FootOnItsWay) | ghalaax |  |
 | warning | Computes the same kind of answer from the same kind of arguments as “A hand on its way” (ghalaax), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [A foot on its way](body.md#FootOnItsWay) | ghalaax |  |
 | warning | Computes the same kind of answer from the same kind of arguments as “A foot on its way” (ghalaax), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [A hand on its way](body.md#HandOnItsWay) | ghalaax |  |
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [Every limb reaches](body.md#LimbsReach) | ghalaax |  |
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A pose rests on what it names](body.md#RestsOnWhatItNames) | ghalaax |  |
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [The legs in front and behind](body.md#SidesOf) | ghalaax |  |
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [Where a spot is](body.md#SpotOn) | ghalaax |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A leg that steps](body.md#SteppingLeg) | ghalaax |  |
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [The heights of the body's surface](body.md#SurfaceHeights) | ghalaax |  |
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [Rising on a breath in](composing.md#BreathOfMove) | ghalaax |  |
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A landmark on the body](marks.md#MarkOnBody) | ghalaax |  |
@@ -107,6 +105,7 @@
 | [The body between two poses](body.md#BodyAt) | Requirement | **held** |
 | [Criteria of the body between two poses](body.md#BodyAtCriteria) | Acceptance criteria | **held** |
 | [Measures of the body](body.md#BodyMeasures) | Decision |  |
+| [How a foot's way is read](body.md#FootAngles) | Decision |  |
 | [A foot from its angles](body.md#FootOf) | Function | **unknown** |
 | [A foot on its way](body.md#FootOnItsWay) | Requirement | **held** |
 | [Criteria of a foot on its way](body.md#FootOnItsWayCriteria) | Acceptance criteria | **held** |

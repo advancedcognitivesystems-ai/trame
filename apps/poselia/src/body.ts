@@ -449,6 +449,17 @@ export const HandOnItsWayCriteria = acceptance({
 
 /** A foot by its angles: its direction, its sole's normal, the toes' direction, and how far above the floor its ankle must be. */
 /**
+ * How a foot's way is read
+ * A direction from the hip to the foot past straight up (ninety degrees) is read the other way round, from behind, so
+ * that a foot on its way passes below the hip.
+ */
+export const FootAngles = decision<{ wrapAbove: number }>({
+  owner: "ghalaax",
+  value: { wrapAbove: 90 },
+  rejected: { "Straight behind (a hundred and eighty degrees)": "a foot stepping back swung forward and over before coming down" },
+})
+
+/**
  * A knee kept above the mat
  * A knee that would sink into the mat lifts the foot's aim by twice how deep it would sink, four times at most.
  */
@@ -544,20 +555,22 @@ export const PlantedLegCriteria = acceptance({
 export const FootOnItsWay = requirement({
   owner: "ghalaax",
   refines: [PractiseGuided],
-  rule: (from: Vec, to: Vec, hipFrom: Vec, hipTo: Vec, hip: Vec, t: number): Vec => {
-    const mv = Movement.value
-    if (len(sub(from, to)) < mv.still) return mix3(from, to, t)
+  deps: { mv: Movement, g: MatSpace, angles: FootAngles, counts: Counts },
+  body: ({ mv, g, angles, counts }) => (from: Vec, to: Vec, hipFrom: Vec, hipTo: Vec, hip: Vec, t: number): Vec => {
+    const { sub, len, mix, height, along, across } = g
+    if (len(sub(from, to)) < mv.still) return g.mix3(from, to, t)
+    // A foot below the hip is read from behind past straight up, so that its way turns down, not over the head.
     const angle = (v: Vec) => {
-      const a = (Math.atan2(v[1], v[0]) * 180) / Math.PI
-      return a > 90 ? a - 360 : a
+      const a = g.heading(v)
+      return a > angles.wrapAbove ? a - g.turn : a
     }
     const r0 = sub(from, hipFrom)
     const r1 = sub(to, hipTo)
-    const d = toward(mix(angle(r0), angle(r1), t))
-    const l = mix(Math.hypot(r0[0], r0[1]), Math.hypot(r1[0], r1[1]), t)
-    const stride = Math.hypot(to[0] - from[0], to[2] - from[2])
-    const lift = stride > mv.stride ? mv.lift * Math.sin(Math.PI * t) : 0
-    return [hip[0] + d[0] * l, Math.max(hip[1] + d[1] * l, Math.min(from[1], to[1], mv.footFloor)) + lift, mix(from[2], to[2], t)]
+    const d = g.toward(mix(angle(r0), angle(r1), t))
+    const l = mix(g.planar(r0), g.planar(r1), t)
+    const stride = Math.hypot(along(to) - along(from), across(to) - across(from))
+    const lift = stride > mv.stride ? mv.lift * g.arch(t) : counts.zero
+    return g.at(along(hip) + along(d) * l, Math.max(height(hip) + height(d) * l, Math.min(height(from), height(to), mv.footFloor)) + lift, mix(across(from), across(to), t))
   },
 })
 
@@ -584,12 +597,12 @@ export const FootOnItsWayCriteria = acceptance({
 export const SteppingLeg = requirement({
   owner: "ghalaax",
   refines: [PractiseGuided],
-  rule: (hip: Vec, aim: Vec, footBelow: number): { knee: Vec; ankle: Vec; reach: number } => {
-    const m = BodyMeasures.value
-    const target: Vec = [aim[0], Math.max(aim[1], footBelow), aim[2]]
-    const v = sub(target, hip)
-    const pole: Vec = len([-v[1], v[0], 0]) < 1e-4 ? [1, 0, 0] : [-v[1], v[0], 0]
-    const leg = TwoBones(hip, target, m.thigh, m.shin, pole)
+  deps: { m: BodyMeasures, g: MatSpace, twoBones: TwoBones, counts: Counts },
+  body: ({ m, g, twoBones, counts }) => (hip: Vec, aim: Vec, footBelow: number): { knee: Vec; ankle: Vec; reach: number } => {
+    const target: Vec = g.at(g.along(aim), Math.max(g.height(aim), footBelow), g.across(aim))
+    const normal = g.normal(g.sub(target, hip))
+    const pole = g.len(normal) < g.tolerance ? g.toward(counts.zero) : normal
+    const leg = twoBones(hip, target, m.thigh, m.shin, pole)
     return { knee: leg.middle, ankle: leg.end, reach: leg.reach }
   },
 })

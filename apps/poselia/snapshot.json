@@ -410,6 +410,20 @@
       }
     },
     {
+      "id": "body.FootAngles",
+      "kind": "decision",
+      "title": "How a foot's way is read",
+      "fields": {
+        "owner": "ghalaax",
+        "value": {
+          "wrapAbove": 90
+        },
+        "rejected": {
+          "Straight behind (a hundred and eighty degrees)": "a foot stepping back swung forward and over before coming down"
+        }
+      }
+    },
+    {
       "id": "body.FootOf",
       "kind": "function",
       "title": "A foot from its angles",
@@ -431,7 +445,13 @@
       "status": "held",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {
+          "mv": "body.Movement",
+          "g": "body.MatSpace",
+          "angles": "body.FootAngles",
+          "counts": "std/algebra.Counts"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -722,7 +742,13 @@
       "status": "held",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {
+          "m": "body.BodyMeasures",
+          "g": "body.MatSpace",
+          "twoBones": "(function)",
+          "counts": "std/algebra.Counts"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -5705,6 +5731,21 @@
       "kind": "refines"
     },
     {
+      "from": "body.FootOnItsWay",
+      "to": "body.Movement",
+      "kind": "deps"
+    },
+    {
+      "from": "body.FootOnItsWay",
+      "to": "body.MatSpace",
+      "kind": "deps"
+    },
+    {
+      "from": "body.FootOnItsWay",
+      "to": "body.FootAngles",
+      "kind": "deps"
+    },
+    {
       "from": "body.FootOnItsWayCriteria",
       "to": "body.FootOnItsWay",
       "kind": "accepts"
@@ -5863,6 +5904,21 @@
       "from": "body.SteppingLeg",
       "to": "product.PractiseGuided",
       "kind": "refines"
+    },
+    {
+      "from": "body.SteppingLeg",
+      "to": "body.BodyMeasures",
+      "kind": "deps"
+    },
+    {
+      "from": "body.SteppingLeg",
+      "to": "body.MatSpace",
+      "kind": "deps"
+    },
+    {
+      "from": "body.SteppingLeg",
+      "to": "body.TwoBones",
+      "kind": "deps"
     },
     {
       "from": "body.SteppingLegCriteria",
@@ -7945,11 +8001,6 @@
       "kind": "uses"
     },
     {
-      "from": "body.FootOnItsWay",
-      "to": "body.Movement",
-      "kind": "uses"
-    },
-    {
       "from": "body.HandOnItsWayCriteria",
       "to": "body.Movement",
       "kind": "uses"
@@ -7997,16 +8048,6 @@
     {
       "from": "body.SpotOnCriteria",
       "to": "body.BodyAt",
-      "kind": "uses"
-    },
-    {
-      "from": "body.SteppingLeg",
-      "to": "body.BodyMeasures",
-      "kind": "uses"
-    },
-    {
-      "from": "body.SteppingLeg",
-      "to": "body.TwoBones",
       "kind": "uses"
     },
     {
