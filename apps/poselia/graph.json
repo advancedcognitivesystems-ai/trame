@@ -6719,6 +6719,33 @@
       "diagnostics": []
     },
     {
+      "id": "space.AxesOfTheMat",
+      "kind": "amendment",
+      "title": "The axes of the mat",
+      "source": "src/space.ts:12",
+      "fields": {
+        "owner": "ghalaax",
+        "why": "Poselia's poses, keys and drawing were written with the height as the second coordinate, as three.js draws them; its data stays as it is reviewed",
+        "from": "2026-11-02",
+        "patch": {
+          "value": {
+            "left": [
+              0,
+              0,
+              -1
+            ],
+            "up": [
+              0,
+              1,
+              0
+            ]
+          }
+        }
+      },
+      "active": true,
+      "diagnostics": []
+    },
+    {
       "id": "stage.BrowserStage",
       "kind": "implementation",
       "title": "The browser's stage",
@@ -10057,6 +10084,11 @@
       "from": "sound.BrowserBowl",
       "to": "std/algebra.Counts",
       "kind": "deps"
+    },
+    {
+      "from": "space.AxesOfTheMat",
+      "to": "geometry/vectors.Axes",
+      "kind": "amends"
     },
     {
       "from": "stage.BrowserStage",

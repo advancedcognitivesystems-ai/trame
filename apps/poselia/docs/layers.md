@@ -234,14 +234,17 @@ flowchart TB
     n196["Sound of the bowl<br/><small>Decision</small>"]:::neutral
     n197["The browser's bowl<br/><small>Implementation</small>"]:::unknown
   end
+  subgraph space["Poselia · Space"]
+    n198["The axes of the mat<br/><small>Amendment</small>"]:::neutral
+  end
   subgraph stage["Poselia · The stage"]
-    n198["The browser's stage<br/><small>Implementation</small>"]:::unknown
-    n199["Look of the mannequin<br/><small>Decision</small>"]:::neutral
-    n200["Look of the landmarks<br/><small>Decision</small>"]:::neutral
-    n201["Light of the stage<br/><small>Decision</small>"]:::neutral
-    n202["Views of the stage<br/><small>Decision</small>"]:::neutral
-    n203["three.js<br/><small>Package</small>"]:::held
-    n204["three.js, its types<br/><small>Package</small>"]:::held
+    n199["The browser's stage<br/><small>Implementation</small>"]:::unknown
+    n200["Look of the mannequin<br/><small>Decision</small>"]:::neutral
+    n201["Look of the landmarks<br/><small>Decision</small>"]:::neutral
+    n202["Light of the stage<br/><small>Decision</small>"]:::neutral
+    n203["Views of the stage<br/><small>Decision</small>"]:::neutral
+    n204["three.js<br/><small>Package</small>"]:::held
+    n205["three.js, its types<br/><small>Package</small>"]:::held
   end
   n0 -->|Implements| n16
   n0 -->|Depends on| n9
@@ -267,7 +270,7 @@ flowchart TB
   n4 -->|Depends on| n75
   n4 -->|Depends on| n76
   n5 -->|Chooses| n0
-  n5 -->|Chooses| n198
+  n5 -->|Chooses| n199
   n5 -->|Chooses| n197
   n5 -->|In| n13
   n7 -->|Uses the variables of| n2
@@ -424,7 +427,7 @@ flowchart TB
   n106 -->|Depends on| n104
   n106 -->|Depends on| n80
   n106 -->|Depends on| n77
-  n106 -->|Depends on| n202
+  n106 -->|Depends on| n203
   n107 -->|Serves| n124
   n107 -->|Serves| n115
   n107 -->|Depends on| n113
@@ -616,7 +619,7 @@ flowchart TB
   n157 -->|Checks| n155
   n157 -->|Run by| n153
   n157 -->|Verifies| n0
-  n157 -->|Verifies| n198
+  n157 -->|Verifies| n199
   n158 -->|Serves| n124
   n158 -->|Depends on| n9
   n158 -->|Depends on| n56
@@ -711,13 +714,13 @@ flowchart TB
   n194 -->|Depends on| n195
   n197 -->|Implements| n11
   n197 -->|Depends on| n196
-  n198 -->|Implements| n17
-  n198 -->|Uses| n203
-  n198 -->|Uses| n204
-  n198 -->|Depends on| n199
-  n198 -->|Depends on| n201
-  n198 -->|Depends on| n202
-  n198 -->|Depends on| n200
+  n199 -->|Implements| n17
+  n199 -->|Uses| n204
+  n199 -->|Uses| n205
+  n199 -->|Depends on| n200
+  n199 -->|Depends on| n202
+  n199 -->|Depends on| n203
+  n199 -->|Depends on| n201
   n22 -.->|Depends on| n24
   n22 -.->|Depends on| n35
   n22 -.->|Depends on| n49
@@ -782,6 +785,7 @@ flowchart TB
   classDef violated fill:#f9e3e1,stroke:#ad2a22,color:#17202a
   classDef unknown fill:#e9edf0,stroke:#65707c,color:#17202a
   classDef neutral fill:#ffffff,stroke:#5a6672,color:#17202a
+  style n198 stroke-dasharray:4 3
 ```
 
 *Each rank is one edge further from a goal than the rank above it. The nodes connected to no goal are at the very bottom.*

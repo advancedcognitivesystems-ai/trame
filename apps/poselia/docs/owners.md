@@ -6,7 +6,7 @@
 |---|---|---|---|---|
 | A teacher who practises | 0 | 0 | 4 | 0 |
 | People who try it on a phone | 0 | 0 | 1 | 0 |
-| ghalaax | 0 | 0 | 38 | 205 |
+| ghalaax | 0 | 0 | 38 | 206 |
 
 <a id="A teacher who practises"></a>
 
@@ -289,6 +289,7 @@
 | [What the practice says and rings](settings.md#VoiceParts) | Decision |  |
 | [Sound of the bowl](sound.md#BowlSound) | Decision |  |
 | [The browser's bowl](sound.md#BrowserBowl) | Implementation | **unknown** |
+| [The axes of the mat](space.md#AxesOfTheMat) | Amendment | in force |
 | [The browser's stage](stage.md#BrowserStage) | Implementation | **unknown** |
 | [Look of the mannequin](stage.md#MannequinLook) | Decision |  |
 | [Look of the landmarks](stage.md#MarkStyle) | Decision |  |

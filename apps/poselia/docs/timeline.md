@@ -7,6 +7,8 @@ gantt
   dateFormat YYYY-MM-DD
   axisFormat %d.%m
   title Around 2 November 2026
+  section The axes of the mat
+    In force : 2026-11-02, 2027-03-31
   section The phone stays on the mat
     Check before : milestone, 2027-03-01, 0d
   section Date of the graph
