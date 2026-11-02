@@ -443,6 +443,7 @@ flowchart TB
   n111 -->|Applied by| n122
   n111 -->|Applied by| n105
   n112 -->|Refines| n114
+  n112 -->|Depends on| n118
   n113 -->|Accepts| n112
   n116 -->|Refines| n121
   n117 -->|Accepts| n116
@@ -774,7 +775,6 @@ flowchart TB
   n86 -.->|Depends on| n22
   n86 -.->|Depends on| n20
   n93 -.->|Depends on| n71
-  n112 -.->|Depends on| n118
   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
   classDef blocked fill:#fbf0d9,stroke:#9a6200,color:#17202a
   classDef violated fill:#f9e3e1,stroke:#ad2a22,color:#17202a

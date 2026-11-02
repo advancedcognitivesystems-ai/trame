@@ -4581,21 +4581,23 @@
       "id": "product.BreathOf",
       "kind": "requirement",
       "title": "The breath of a moment",
-      "source": "src/product.ts:76",
+      "source": "src/product.ts:77",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {
+          "fallback": "product.DefaultBreath",
+          "time": "std/measures.Time"
+        },
+        "body": "(function)"
       },
-      "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
-      ]
+      "diagnostics": []
     },
     {
       "id": "product.BreathOfCriteria",
       "kind": "acceptance",
       "title": "Criteria of the breath of a moment",
-      "source": "src/product.ts:92",
+      "source": "src/product.ts:95",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -4625,7 +4627,7 @@
       "id": "product.BreathSetsThePace",
       "kind": "goal",
       "title": "The breath sets the pace",
-      "source": "src/product.ts:26",
+      "source": "src/product.ts:27",
       "fields": {
         "owner": "ghalaax"
       },
@@ -4635,7 +4637,7 @@
       "id": "product.CheckedContent",
       "kind": "goal",
       "title": "Content checked by people who practise",
-      "source": "src/product.ts:39",
+      "source": "src/product.ts:40",
       "fields": {
         "owner": "ghalaax"
       },
@@ -4645,21 +4647,24 @@
       "id": "product.ChosenLanguage",
       "kind": "requirement",
       "title": "The language of the app",
-      "source": "src/product.ts:139",
+      "source": "src/product.ts:143",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {
+          "tags": "std/measures.LanguageTags",
+          "sequences": "std/algebra.Sequences",
+          "texts": "std/algebra.Texts"
+        },
+        "body": "(function)"
       },
-      "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps"
-      ]
+      "diagnostics": []
     },
     {
       "id": "product.ChosenLanguageCriteria",
       "kind": "acceptance",
       "title": "Criteria of the language of the app",
-      "source": "src/product.ts:150",
+      "source": "src/product.ts:158",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -4689,7 +4694,7 @@
       "id": "product.DefaultBreath",
       "kind": "decision",
       "title": "The breath of someone who has set nothing",
-      "source": "src/product.ts:65",
+      "source": "src/product.ts:66",
       "fields": {
         "owner": "ghalaax",
         "value": {
@@ -4708,14 +4713,16 @@
       "id": "product.HoldInBreaths",
       "kind": "requirement",
       "title": "A hold counts in breaths",
-      "source": "src/product.ts:112",
+      "source": "src/product.ts:115",
       "status": "unknown",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {
+          "counts": "std/algebra.Counts"
+        },
+        "body": "(function)"
       },
       "diagnostics": [
-        "warning: Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
         "warning: Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it"
       ]
     },
@@ -4723,7 +4730,7 @@
       "id": "product.HoldInBreathsCriteria",
       "kind": "acceptance",
       "title": "Criteria of a hold in breaths",
-      "source": "src/product.ts:122",
+      "source": "src/product.ts:126",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -4745,7 +4752,7 @@
       "id": "product.InTheirLanguage",
       "kind": "goal",
       "title": "In the person's language",
-      "source": "src/product.ts:32",
+      "source": "src/product.ts:33",
       "fields": {
         "owner": "ghalaax"
       },
@@ -4755,7 +4762,7 @@
       "id": "product.PhoneOnTheMat",
       "kind": "assumption",
       "title": "The phone stays on the mat",
-      "source": "src/product.ts:169",
+      "source": "src/product.ts:177",
       "status": "unknown",
       "fields": {
         "owner": "ghalaax",
@@ -4767,7 +4774,7 @@
       "id": "product.PractiseGuided",
       "kind": "goal",
       "title": "Practise yoga on one's own, guided",
-      "source": "src/product.ts:19",
+      "source": "src/product.ts:20",
       "fields": {
         "owner": "ghalaax"
       },
@@ -5565,7 +5572,7 @@
       },
       "result": {
         "path": "dist/poselia.html",
-        "code": "b21e4b09"
+        "code": "4a6ae65d"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -8163,6 +8170,16 @@
       "kind": "refines"
     },
     {
+      "from": "product.BreathOf",
+      "to": "product.DefaultBreath",
+      "kind": "deps"
+    },
+    {
+      "from": "product.BreathOf",
+      "to": "std/measures.Time",
+      "kind": "deps"
+    },
+    {
       "from": "product.BreathOfCriteria",
       "to": "product.BreathOf",
       "kind": "accepts"
@@ -8173,6 +8190,21 @@
       "kind": "refines"
     },
     {
+      "from": "product.ChosenLanguage",
+      "to": "std/measures.LanguageTags",
+      "kind": "deps"
+    },
+    {
+      "from": "product.ChosenLanguage",
+      "to": "std/algebra.Sequences",
+      "kind": "deps"
+    },
+    {
+      "from": "product.ChosenLanguage",
+      "to": "std/algebra.Texts",
+      "kind": "deps"
+    },
+    {
       "from": "product.ChosenLanguageCriteria",
       "to": "product.ChosenLanguage",
       "kind": "accepts"
@@ -8181,6 +8213,11 @@
       "from": "product.HoldInBreaths",
       "to": "product.BreathSetsThePace",
       "kind": "refines"
+    },
+    {
+      "from": "product.HoldInBreaths",
+      "to": "std/algebra.Counts",
+      "kind": "deps"
     },
     {
       "from": "product.HoldInBreathsCriteria",
@@ -10346,12 +10383,6 @@
     {
       "from": "practice.BreathsToSay",
       "to": "content.Spoken",
-      "kind": "uses",
-      "inferred": true
-    },
-    {
-      "from": "product.BreathOf",
-      "to": "product.DefaultBreath",
       "kind": "uses",
       "inferred": true
     }

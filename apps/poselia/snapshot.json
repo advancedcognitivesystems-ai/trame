@@ -3760,7 +3760,11 @@
       "status": "held",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {
+          "fallback": "product.DefaultBreath",
+          "time": "std/measures.Time"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -3796,7 +3800,12 @@
       "status": "held",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {
+          "tags": "std/measures.LanguageTags",
+          "sequences": "std/algebra.Sequences",
+          "texts": "std/algebra.Texts"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -3833,7 +3842,10 @@
       "status": "unknown",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {
+          "counts": "std/algebra.Counts"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -6271,6 +6283,11 @@
       "kind": "refines"
     },
     {
+      "from": "product.BreathOf",
+      "to": "product.DefaultBreath",
+      "kind": "deps"
+    },
+    {
       "from": "product.BreathOfCriteria",
       "to": "product.BreathOf",
       "kind": "accepts"
@@ -7923,11 +7940,6 @@
     {
       "from": "practice.BreathsToSay",
       "to": "content.Spoken",
-      "kind": "uses"
-    },
-    {
-      "from": "product.BreathOf",
-      "to": "product.DefaultBreath",
       "kind": "uses"
     }
   ],

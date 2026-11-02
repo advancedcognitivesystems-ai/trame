@@ -967,6 +967,7 @@ Goal · `PractiseGuided`
 Requirement · `BreathOf` · **held**
 
 - Owner: ghalaax
+- Parameters: { fallback: product.DefaultBreath, time: std/measures.Time }
 - Refines: The breath sets the pace
 - Depends on: The breath of someone who has set nothing
 
@@ -975,6 +976,7 @@ Requirement · `BreathOf` · **held**
 Requirement · `ChosenLanguage` · **held**
 
 - Owner: ghalaax
+- Parameters: { tags: std/measures.LanguageTags, sequences: std/algebra.Sequences, texts: std/algebra.Texts }
 - Refines: In the person's language
 
 ### A hold counts in breaths
@@ -982,6 +984,7 @@ Requirement · `ChosenLanguage` · **held**
 Requirement · `HoldInBreaths` · **unknown**
 
 - Owner: ghalaax
+- Parameters: { counts: std/algebra.Counts }
 - Refines: The breath sets the pace
 
 ### The breath of someone who has set nothing

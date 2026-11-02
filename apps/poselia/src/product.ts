@@ -1,6 +1,7 @@
 /** Poselia · Product */
 
-import { s, type Duration } from "#std/measures"
+import { s, Time, LanguageTags, type Duration } from "#std/measures"
+import { Counts, Sequences, Texts } from "#std/algebra"
 import { goal } from "#trame/kinds/goal"
 import { decision } from "#trame/kinds/decision"
 import { requirement } from "#trame/kinds/requirement"
@@ -76,15 +77,17 @@ export const DefaultBreath = decision<BreathPattern>({
 export const BreathOf = requirement({
   owner: "ghalaax",
   refines: [BreathSetsThePace],
-  rule: (person: BreathPattern | undefined, levels: readonly (BreathSetting | undefined)[]): BreathPattern => {
-    const base = person ?? DefaultBreath.value
-    const setting = levels.find((x) => x !== undefined)
-    const each = (f: (phase: BreathPhase) => Duration): BreathPattern =>
-      ({ inhale: f(BreathPhase.inhale), holdTop: f(BreathPhase.holdTop), exhale: f(BreathPhase.exhale), holdBottom: f(BreathPhase.holdBottom) })
-    if (!setting || "follows" in setting) return base
-    if ("exact" in setting) return setting.exact
-    if ("speed" in setting) return each((p) => base[p] / setting.speed)
-    return each((p) => (setting.ratio[p] * base.inhale) / setting.ratio.inhale)
+  deps: { fallback: DefaultBreath, time: Time },
+  body: ({ fallback, time }) => (person: BreathPattern | undefined, levels: readonly (BreathSetting | undefined)[]): BreathPattern => {
+    const base = person ?? fallback
+    const setting = levels.find((x) => x !== undefined) as Partial<{ exact: BreathPattern; speed: number; ratio: Record<BreathPhase, number> }> | undefined
+    const each = (f: (phase: BreathPhase) => number): BreathPattern =>
+      ({ inhale: time.second(f(BreathPhase.inhale)), holdTop: time.second(f(BreathPhase.holdTop)), exhale: time.second(f(BreathPhase.exhale)), holdBottom: time.second(f(BreathPhase.holdBottom)) })
+    const { exact, speed, ratio } = setting ?? {}
+    if (exact !== undefined) return exact
+    if (speed !== undefined) return each((p) => base[p] / speed)
+    if (ratio !== undefined) return each((p) => (ratio[p] / ratio.inhale) * base.inhale)
+    return base
   },
 })
 
@@ -112,9 +115,10 @@ export const BreathOfCriteria = acceptance({
 export const HoldInBreaths = requirement({
   owner: "ghalaax",
   refines: [BreathSetsThePace],
-  rule: (hold: Duration, breath: BreathPattern): number => {
+  deps: { counts: Counts },
+  body: ({ counts }) => (hold: Duration, breath: BreathPattern): number => {
     const length = breath.inhale + breath.holdTop + breath.exhale + breath.holdBottom
-    return Math.max(1, Math.round(hold / length))
+    return Math.max(counts.one, Math.round(hold / length))
   },
 })
 
@@ -139,10 +143,14 @@ export const HoldInBreathsCriteria = acceptance({
 export const ChosenLanguage = requirement({
   owner: "ghalaax",
   refines: [InTheirLanguage],
-  rule: (offered: readonly string[], chosen: string | undefined, device: readonly string[]): string => {
-    const base = (tag: string) => tag.split("-")[0]
+  deps: { tags: LanguageTags, sequences: Sequences, texts: Texts },
+  body: ({ tags, sequences, texts }) => (offered: readonly string[], chosen: string | undefined, device: readonly string[]): string => {
+    const base = (tag: string) => {
+      const [language] = tag.split(tags.separator)
+      return language
+    }
     if (chosen !== undefined && offered.includes(chosen)) return chosen
-    return device.map(base).find((tag) => offered.includes(tag)) ?? offered[0]
+    return device.map(base).find((tag) => offered.includes(tag)) ?? sequences.head(offered) ?? texts.empty
   },
 })
 
