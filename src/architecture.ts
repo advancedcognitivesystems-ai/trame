@@ -118,6 +118,11 @@ export interface ModuleLoader {
    * of its libraries (since g92): a library published once reaches the libraries of whoever imports it, as a peer.
    */
   lead(libraries: Readonly<Record<string, string>>, within: readonly string[]): void
+  /**
+   * Where a name leads for the files of a directory, as the engine leads it (the language, the libraries of the project
+   * read last), or nothing when it leads as Node.js would: a bundler asks it too (since g95).
+   */
+  resolve(specifier: string, from: string): string | undefined
 }
 export type TypeScriptCompiler = typeof import("typescript")
 export type Hashing = Pick<typeof import("node:crypto"), "createHash">
@@ -313,7 +318,10 @@ export const Paths = port<Paths>({ owner: "trame", declaredEffects: effects() })
  * Module loader
  * Runs a module of the graph, of a kind or of a view, and reads what it exports.
  */
-export const ModuleLoader = port<ModuleLoader>({ owner: "trame", declaredEffects: effects("read", "execution") })
+export const ModuleLoader = port<ModuleLoader>({
+  owner: "trame",
+  declaredEffects: { import: effects("read", "execution"), lead: effects("read"), resolve: effects() },
+})
 
 /**
  * Syntax trees

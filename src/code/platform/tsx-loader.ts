@@ -27,17 +27,21 @@ const body: BodyOf<typeof TsxLoader> = ({ prelude, names, specifiers, language }
   // The libraries of the project being read, and the directories whose files they are led for.
   let libraries: Readonly<Record<string, string>> = {}
   let within: readonly string[] = []
-  const library = (specifier: string, parent: string | undefined): string | undefined => {
-    if (!specifier.startsWith(specifiers.imports) || parent === undefined) return undefined
+  /** A library's name, for a file of the project or of its libraries: the library's sources. */
+  const library = (specifier: string, from: () => string | undefined): string | undefined => {
+    if (!specifier.startsWith(specifiers.imports)) return undefined
     const [name, ...rest] = specifier.slice(specifiers.imports.length).split(specifiers.separator)
     const sources = libraries[name]
-    const from = fileURLToPath(parent)
-    if (sources === undefined || !within.some((dir) => from.startsWith(dir + sep))) return undefined
+    const dir = sources === undefined ? undefined : from()
+    if (sources === undefined || dir === undefined || !within.some((d) => dir === d || dir.startsWith(d + sep))) return undefined
     return join(sources, ...rest) + extension
   }
+  const resolve = (specifier: string, from: () => string | undefined) =>
+    specifier.startsWith(prefix) ? target(specifier.slice(prefix.length)) : library(specifier, from)
   registerHooks({
     resolve: (specifier, context, next) => {
-      const file = specifier.startsWith(prefix) ? target(specifier.slice(prefix.length)) : library(specifier, context.parentURL)
+      const { parentURL } = context
+      const file = resolve(specifier, () => (parentURL === undefined ? undefined : fileURLToPath(parentURL)))
       return file === undefined ? next(specifier, context) : { url: pathToFileURL(file).href, shortCircuit: true }
     },
   })
@@ -49,6 +53,7 @@ const body: BodyOf<typeof TsxLoader> = ({ prelude, names, specifiers, language }
       // Node.js names a module by its real path: a library reached through a link is within its real directory.
       within = dirs.map((dir) => (existsSync(dir) ? realpathSync(dir) : dir))
     },
+    resolve: (specifier, from) => resolve(specifier, () => from),
   }
 }
 

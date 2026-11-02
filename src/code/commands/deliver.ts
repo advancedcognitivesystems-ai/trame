@@ -21,6 +21,8 @@ export interface Deps {
   preparation: PreparationApi
   assembly: AssemblyApi
   bundler: Bundler
+  /** What leads the bundler by the names of packages, as the engine leads Node.js (since g95). */
+  led: import("esbuild").Plugin
   bundle: ProvidedBy<typeof PageBundle>
   document: ProvidedBy<typeof PageDocument>
   html: ProvidedBy<typeof Html>
@@ -71,7 +73,7 @@ const body = (deps: Deps): Handler => async (req) => {
 
     // Its program, bundled into one script.
     const bundled = await deps.bundler.build({
-      entryPoints: [program.path], bundle: true, write: false, format: deps.bundle.format, target: deps.bundle.target,
+      entryPoints: [program.path], bundle: true, write: false, format: deps.bundle.format, target: deps.bundle.target, plugins: [deps.led],
       minify: true, legalComments: deps.bundle.legalComments, charset: deps.bundle.charset,
     })
     const [script] = bundled.outputFiles

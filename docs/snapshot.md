@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 30 October 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 2 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Trame · Appearance
 
@@ -226,7 +226,7 @@ Port · `KeptRuns`
 Port · `ModuleLoader`
 
 - Owner: trame
-- Declared effects: read, execution
+- Declared effects: { import: read, execution, lead: read, resolve:  }
 
 ### Reports on packages
 
@@ -705,7 +705,7 @@ Scenario · `PageDelivered` · **held**
 
 - Owner: trame
 - Parameters: { deliver: commands.Deliver, processLog: architecture.ProcessLog, writeLog: architecture.WriteLog, projects: command-scenarios.ScenarioProjects, samples: command-scenarios.ProjectSamples, doctype: html.Doctype, line: conventions.TrameCommands, exitStatus: std/system.ExitStatus, counts: std/algebra.Counts, messages: messages.ScenarioMessages }
-- Verifies: Deliver
+- Verifies: Deliver, The names a bundle is led by
 - In: Test
 - Depends on: Deliver, Process log, Write log, The projects of the repository the scenarios enter, What the scenarios ask of those projects, DOCTYPE, Trame's commands, Messages of the scenarios
 
@@ -924,10 +924,10 @@ Entry point · `Deliver` · **held**
 
 - Owner: trame
 - Trigger: { type: command, name: deliver }
-- Parameters: { exitStatus: std/system.ExitStatus, preparation: commands.Preparation, assembly: engine.Assembly, bundler: architecture.Bundler, bundle: page.PageBundle, document: page.PageDocument, html: std/html.Html, script: html.ScriptElement, style: delivery.DeliveredStyle, reading: architecture.FileReading, writing: architecture.FileWriting, paths: architecture.Paths, encodings: std/system.NodeEncodings, terminal: architecture.Terminal, sequences: std/algebra.Sequences, texts: std/algebra.Texts, values: std/algebra.ValueTypes, messages: messages.CommandMessages }
+- Parameters: { exitStatus: std/system.ExitStatus, preparation: commands.Preparation, assembly: engine.Assembly, bundler: architecture.Bundler, led: delivery.NamesLed, bundle: page.PageBundle, document: page.PageDocument, html: std/html.Html, script: html.ScriptElement, style: delivery.DeliveredStyle, reading: architecture.FileReading, writing: architecture.FileWriting, paths: architecture.Paths, encodings: std/system.NodeEncodings, terminal: architecture.Terminal, sequences: std/algebra.Sequences, texts: std/algebra.Texts, values: std/algebra.ValueTypes, messages: messages.CommandMessages }
 - Serves: A specification that runs
 - Part of: Trame on the command line
-- Depends on: Preparation, Assembly, Bundler, Bundle of the page, Document of the page, Script, Style of a delivered page, File reading, File writing, Paths, Terminal, Messages of the commands
+- Depends on: Preparation, Assembly, Bundler, The names a bundle is led by, Bundle of the page, Document of the page, Script, Style of a delivered page, File reading, File writing, Paths, Terminal, Messages of the commands
 
 ### Start trame dev
 
@@ -1056,10 +1056,10 @@ Entry point · `Ship` · **held**
 
 - Owner: trame
 - Trigger: { type: command, name: ship }
-- Parameters: { exitStatus: std/system.ExitStatus, line: conventions.TrameCommands, preparation: commands.Preparation, deliver: commands.Deliver, assembly: engine.Assembly, sdlc: shipping.SdlcEvidence, runPlan: shipping.ShipmentRunPlan, holds: (rule), bundler: architecture.Bundler, programBundle: shipping.ProgramBundle, currentProcess: architecture.Process, events: std/system.NodeEvents, reading: architecture.FileReading, writing: architecture.FileWriting, paths: architecture.Paths, encodings: std/system.NodeEncodings, terminal: architecture.Terminal, sequences: std/algebra.Sequences, counts: std/algebra.Counts, values: std/algebra.ValueTypes, engines: engine.EngineFingerprint, messages: messages.CommandMessages }
+- Parameters: { exitStatus: std/system.ExitStatus, line: conventions.TrameCommands, preparation: commands.Preparation, deliver: commands.Deliver, assembly: engine.Assembly, sdlc: shipping.SdlcEvidence, runPlan: shipping.ShipmentRunPlan, holds: (rule), bundler: architecture.Bundler, led: delivery.NamesLed, programBundle: shipping.ProgramBundle, currentProcess: architecture.Process, events: std/system.NodeEvents, reading: architecture.FileReading, writing: architecture.FileWriting, paths: architecture.Paths, encodings: std/system.NodeEncodings, terminal: architecture.Terminal, sequences: std/algebra.Sequences, counts: std/algebra.Counts, values: std/algebra.ValueTypes, engines: engine.EngineFingerprint, messages: messages.CommandMessages }
 - Serves: Ship only what holds
 - Part of: Trame on the command line
-- Depends on: Trame's commands, Preparation, Deliver, Assembly, Evidence of the SDLC, The plan of a run elsewhere, Ship only what holds, Bundler, The fingerprint of a program, Process, File reading, File writing, Paths, Terminal, The fingerprint of an engine, Messages of the commands
+- Depends on: Trame's commands, Preparation, Deliver, Assembly, Evidence of the SDLC, The plan of a run elsewhere, Ship only what holds, Bundler, The names a bundle is led by, The fingerprint of a program, Process, File reading, File writing, Paths, Terminal, The fingerprint of an engine, Messages of the commands
 
 ### Show a view
 
@@ -1243,6 +1243,23 @@ Syntax element · `DeliveredStyle` · **held**
 body { margin: var(--space-sm); } }, { input: , body { margin: 0; }, output: body { margin: 0; } }
 - Read in: CSS style sheets
 - Depends on: Rule, Custom property
+
+### How a bundle is led
+
+Decision · `BundlerLeading`
+
+- Decided by: trame
+- Value: { plugin: trame-names, names: ^# }
+- Rejected: An import map written into each published package, a package published once would name one language and one version of each library, whoever bundles it
+
+### The names a bundle is led by
+
+Function · `NamesLed` · **held**
+
+- Owner: trame
+- Parameters: { loader: architecture.ModuleLoader, leading: delivery.BundlerLeading }
+- Serves: A specification that runs
+- Depends on: Module loader, How a bundle is led
 
 ## Trame · Documents
 
@@ -5493,6 +5510,20 @@ Release · `G93`
 - Releases: Trame on the command line
 - Assembled by: Generation 92
 
+### Generation 94
+
+Release · `G94`
+
+- Released by: trame
+- Version: g94
+- Released on: 2026-11-01
+- What changes: E1h: trame init writes a project's references as package nodes of its graph; trame registry publishes the frozen generations (each with its language) and the releases of the home's libraries to the registry of this machine, which a clone elsewhere fills again with it
+- Fingerprint: 619450edc36af16c
+- Language: shared
+- Language archived: 10418831c37c9ead
+- Releases: Trame on the command line
+- Assembled by: Generation 93
+
 ## Trame · Rendering
 
 ### Places in a sentence
@@ -5919,7 +5950,7 @@ Artefact · `GraphPage` · **unknown**
 
 ### The page's program
 
-Artefact · `PageProgram` · **unknown**
+Artefact · `PageProgram` · **held**
 
 - Owner: trame
 - Path: out/browser/page-app.ts

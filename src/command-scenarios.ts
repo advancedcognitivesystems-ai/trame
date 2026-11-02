@@ -19,6 +19,7 @@ import { TerraformWriter } from "./terraform"
 import { Drivers } from "./languages"
 import { Page } from "./page"
 import { Doctype } from "./html"
+import { NamesLed } from "./delivery"
 import { TerminalRendering, PlainTextSyntax, TextFigures, PageRendering, HtmlSyntax, SvgFigures } from "./rendering"
 import {
   WebTreeSitter, Esbuild, NodeCompression, PageResources, StoppedClock, NoReportsInTest, MemoryHttpServer, NodeTimer, NodeCommandLine, MemoryTerminal,
@@ -753,11 +754,12 @@ export const CommandLineChooses = scenario({
 /**
  * The page delivered
  * trame deliver, in the application, writes its page: the component assembled for the browser, its program bundled into
- * one script, its style sheets, in one document a browser opens as it is.
+ * one script, its style sheets, in one document a browser opens as it is. The libraries it reads at a version published
+ * once (geometry, which names std 0.12.0) are bundled with the language and the std of the application, as they run.
  */
 export const PageDelivered = scenario({
   owner: "trame",
-  verifies: [Deliver],
+  verifies: [Deliver, NamesLed],
   env: Test,
   deps: {
     deliver: Deliver, processLog: ProcessLog, writeLog: WriteLog, projects: ScenarioProjects, samples: ProjectSamples,

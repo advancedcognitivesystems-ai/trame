@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-30",
+  "at": "2026-11-02",
   "nodes": [
     {
       "id": "appearance.ExplorerDrawing",
@@ -708,10 +708,16 @@
       "title": "Module loader",
       "fields": {
         "owner": "trame",
-        "declaredEffects": [
-          "read",
-          "execution"
-        ]
+        "declaredEffects": {
+          "import": [
+            "read",
+            "execution"
+          ],
+          "lead": [
+            "read"
+          ],
+          "resolve": []
+        }
       }
     },
     {
@@ -2274,6 +2280,7 @@
           "preparation": "commands.Preparation",
           "assembly": "engine.Assembly",
           "bundler": "architecture.Bundler",
+          "led": "delivery.NamesLed",
           "bundle": "page.PageBundle",
           "document": "page.PageDocument",
           "html": "std/html.Html",
@@ -2779,6 +2786,7 @@
           "runPlan": "shipping.ShipmentRunPlan",
           "holds": "(function)",
           "bundler": "architecture.Bundler",
+          "led": "delivery.NamesLed",
           "programBundle": "shipping.ProgramBundle",
           "currentProcess": "architecture.Process",
           "events": "std/system.NodeEvents",
@@ -3452,6 +3460,21 @@
       }
     },
     {
+      "id": "delivery.BundlerLeading",
+      "kind": "decision",
+      "title": "How a bundle is led",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "plugin": "trame-names",
+          "names": "^#"
+        },
+        "rejected": {
+          "An import map written into each published package": "a package published once would name one language and one version of each library, whoever bundles it"
+        }
+      }
+    },
+    {
       "id": "delivery.DeliveredStyle",
       "kind": "syntax",
       "title": "Style of a delivered page",
@@ -3498,6 +3521,23 @@
             "output": "body { margin: 0; }"
           }
         ]
+      }
+    },
+    {
+      "id": "delivery.NamesLed",
+      "kind": "function",
+      "title": "The names a bundle is led by",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "loader": "architecture.ModuleLoader",
+          "leading": "delivery.BundlerLeading"
+        },
+        "body": {
+          "file": "./code/delivery/names-led.ts",
+          "language": "typescript"
+        }
       }
     },
     {
@@ -11919,6 +11959,20 @@
       }
     },
     {
+      "id": "releases.G94",
+      "kind": "release",
+      "title": "Generation 94",
+      "fields": {
+        "owner": "trame",
+        "version": "g94",
+        "date": "2026-11-01",
+        "what": "E1h: trame init writes a project's references as package nodes of its graph; trame registry publishes the frozen generations (each with its language) and the releases of the home's libraries to the registry of this machine, which a clone elsewhere fills again with it",
+        "fingerprint": "619450edc36af16c",
+        "language": "shared",
+        "archive": "10418831c37c9ead"
+      }
+    },
+    {
       "id": "rendering.Common",
       "kind": "function",
       "title": "Common rendering",
@@ -12860,7 +12914,7 @@
       "id": "sdlc.PageProgram",
       "kind": "artifact",
       "title": "The page's program",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "out/browser/page-app.ts"
@@ -16778,6 +16832,11 @@
     },
     {
       "from": "command-scenarios.PageDelivered",
+      "to": "delivery.NamesLed",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.PageDelivered",
       "to": "architecture.Test",
       "kind": "env"
     },
@@ -18003,6 +18062,11 @@
     },
     {
       "from": "commands.Deliver",
+      "to": "delivery.NamesLed",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Deliver",
       "to": "page.PageBundle",
       "kind": "deps"
     },
@@ -18998,6 +19062,11 @@
     },
     {
       "from": "commands.Ship",
+      "to": "delivery.NamesLed",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Ship",
       "to": "shipping.ProgramBundle",
       "kind": "deps"
     },
@@ -19304,6 +19373,21 @@
     {
       "from": "delivery.DeliveredStyle",
       "to": "html.CustomProperty",
+      "kind": "deps"
+    },
+    {
+      "from": "delivery.NamesLed",
+      "to": "product.ExecutableSpecification",
+      "kind": "serves"
+    },
+    {
+      "from": "delivery.NamesLed",
+      "to": "architecture.ModuleLoader",
+      "kind": "deps"
+    },
+    {
+      "from": "delivery.NamesLed",
+      "to": "delivery.BundlerLeading",
       "kind": "deps"
     },
     {
@@ -24874,6 +24958,16 @@
     {
       "from": "releases.G93",
       "to": "releases.G92",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G94",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G94",
+      "to": "releases.G93",
       "kind": "assembledBy"
     },
     {

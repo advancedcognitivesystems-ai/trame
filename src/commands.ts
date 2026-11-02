@@ -10,7 +10,7 @@ import { Compiler, CompilationApi, Laws, Views, Lock, MachineOutputs, PayloadBui
 import { Page, PageBundle, PageDocument } from "./page"
 import { Html } from "#std/html"
 import { ScriptElement } from "./html"
-import { DeliveredStyle } from "./delivery"
+import { DeliveredStyle, NamesLed } from "./delivery"
 import { Common, FileRendering, TerminalRendering, PageRendering } from "./rendering"
 import { Counts, Sequences, Texts, ValueTypes } from "#std/algebra"
 import { Layout, JsonFormatting, TrameCommands, TrameEnvironment, ReferenceSyntax, commandNames, AmendmentNaming, LanguageNames, ProjectStart } from "./conventions"
@@ -197,7 +197,7 @@ export const Deliver = entryPoint({
   owner: "trame", in: TrameCli, serves: [ExecutableSpecification],
   trigger: command(commandNames.deliver),
   deps: {
-    exitStatus: ExitStatus, preparation: Preparation, assembly: Assembly, bundler: Bundler, bundle: PageBundle, document: PageDocument,
+    exitStatus: ExitStatus, preparation: Preparation, assembly: Assembly, bundler: Bundler, led: NamesLed, bundle: PageBundle, document: PageDocument,
     html: Html, script: ScriptElement, style: DeliveredStyle, reading: FileReading, writing: FileWriting, paths: Paths, encodings: NodeEncodings,
     terminal: Terminal, sequences: Sequences, texts: Texts, values: ValueTypes, messages: CommandMessages,
   },
@@ -218,7 +218,7 @@ export const Ship = entryPoint({
   trigger: command(commandNames.ship),
   deps: {
     exitStatus: ExitStatus, line: TrameCommands, preparation: Preparation, deliver: Deliver, assembly: Assembly, sdlc: SdlcEvidence, runPlan: ShipmentRunPlan,
-    holds: ShipOnlyWhatHolds, bundler: Bundler, programBundle: ProgramBundle,
+    holds: ShipOnlyWhatHolds, bundler: Bundler, led: NamesLed, programBundle: ProgramBundle,
     currentProcess: Process, events: NodeEvents, reading: FileReading, writing: FileWriting, paths: Paths, encodings: NodeEncodings, terminal: Terminal,
     sequences: Sequences, counts: Counts, values: ValueTypes, engines: EngineFingerprint, messages: CommandMessages,
   },

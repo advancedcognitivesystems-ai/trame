@@ -32,6 +32,8 @@ export interface Deps {
   /** What a runner elsewhere needs to run a shipment, which a writer gives a form. */
   runPlan: RunPlanApi
   bundler: Bundler
+  /** What leads the bundler by the names of packages, as the engine leads Node.js (since g95). */
+  led: import("esbuild").Plugin
   /** How a program assembled is bundled to be fingerprinted. */
   programBundle: { platform: "node"; format: "esm"; packages: "external"; source: "ts" }
   /** The rule of the requirement "Ship only what holds". */
@@ -113,7 +115,7 @@ const body = (deps: Deps): Handler => async (req) => {
     const { source, ...options } = deps.programBundle
     const contents = String(deps.reading.readFileSync(program, deps.encodings.utf8))
     const stdin = { contents, resolveDir: dirname(program), sourcefile: basename(program), loader: source }
-    const { outputFiles: [only] } = await deps.bundler.build({ stdin, bundle: true, write: false, ...options })
+    const { outputFiles: [only] } = await deps.bundler.build({ stdin, bundle: true, write: false, plugins: [deps.led], ...options })
     return only.text
   }
   const run = async (entry: View, forwarded: readonly string[] = []): Promise<number> => {

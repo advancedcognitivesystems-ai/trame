@@ -10,11 +10,11 @@
 
 ### The axes of the mat
 
-`AxesOfTheMat` · `src/space.ts:12`
+`AxesOfTheMat` · `src/space.ts:13`
 
-Poselia measures its body along the mat (forward), up from the floor, and across it (its third coordinate grows to the right): geometry's axes, which put up third, are amended here so that its vectors read Poselia's points as they are written, right-handed still (forward crossed with left is up).
+Poselia measures its body along the mat (forward), up from the floor, and across it (its third coordinate grows to the right): geometry's axes, which put up third, are amended here so that its vectors read Poselia's points as they are written, right-handed still (forward crossed with left is up). It has no date: Poselia's body has always been measured so, and its code reads geometry only through it.
 
-**In force** since 2 November 2026
+**In force**
 
 | What changes | Before | After |
 |---|---|---|
@@ -31,5 +31,4 @@ Poselia measures its body along the mat (forward), up from the floor, and across
 
 - Decided by: ghalaax
 - Reason: Poselia's poses, keys and drawing were written with the height as the second coordinate, as three.js draws them; its data stays as it is reviewed
-- In force from: 2 November 2026
 - Amends: [The axes](../.trame/geometry/docs/vectors.md#Axes)
