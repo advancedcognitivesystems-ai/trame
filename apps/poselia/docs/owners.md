@@ -6,7 +6,7 @@
 |---|---|---|---|---|
 | A teacher who practises | 0 | 0 | 4 | 0 |
 | People who try it on a phone | 0 | 0 | 1 | 0 |
-| ghalaax | 0 | 0 | 35 | 204 |
+| ghalaax | 0 | 0 | 34 | 205 |
 
 <a id="A teacher who practises"></a>
 
@@ -63,7 +63,6 @@
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [Where a spot is](body.md#SpotOn) | ghalaax |  |
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A leg that steps](body.md#SteppingLeg) | ghalaax |  |
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [The heights of the body's surface](body.md#SurfaceHeights) | ghalaax |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [The trunk from its angles](body.md#TrunkOf) | ghalaax |  |
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A limb reaches its end](body.md#TwoBones) | ghalaax |  |
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [Rising on a breath in](composing.md#BreathOfMove) | ghalaax |  |
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A landmark on the body](marks.md#MarkOnBody) | ghalaax |  |
@@ -123,6 +122,7 @@
 | [Criteria of legs apart](body.md#LegsApartCriteria) | Acceptance criteria | **held** |
 | [Every limb reaches](body.md#LimbsReach) | Requirement | **held** |
 | [Criteria of every limb that reaches](body.md#LimbsReachCriteria) | Acceptance criteria | **held** |
+| [The space of the mat](body.md#MatSpace) | Function | **unknown** |
 | [How a body moves](body.md#Movement) | Decision |  |
 | [A leg on its foot](body.md#PlantedLeg) | Requirement | **held** |
 | [Criteria of a leg on its foot](body.md#PlantedLegCriteria) | Acceptance criteria | **held** |

@@ -510,6 +510,23 @@
       }
     },
     {
+      "id": "body.MatSpace",
+      "kind": "function",
+      "title": "The space of the mat",
+      "status": "unknown",
+      "fields": {
+        "owner": "ghalaax",
+        "deps": {
+          "v": "geometry/vectors.Vectors",
+          "angle": "geometry/angles.Angle"
+        },
+        "body": {
+          "file": "./code/mat-space.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
       "id": "body.Movement",
       "kind": "decision",
       "title": "How a body moves",
@@ -678,7 +695,11 @@
       "status": "held",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {
+          "m": "body.BodyMeasures",
+          "g": "body.MatSpace"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -5628,6 +5649,11 @@
       "kind": "accepts"
     },
     {
+      "from": "body.MatSpace",
+      "to": "product.PractiseGuided",
+      "kind": "serves"
+    },
+    {
       "from": "body.PlantedLeg",
       "to": "product.PractiseGuided",
       "kind": "refines"
@@ -5696,6 +5722,16 @@
       "from": "body.TrunkOf",
       "to": "product.PractiseGuided",
       "kind": "refines"
+    },
+    {
+      "from": "body.TrunkOf",
+      "to": "body.BodyMeasures",
+      "kind": "deps"
+    },
+    {
+      "from": "body.TrunkOf",
+      "to": "body.MatSpace",
+      "kind": "deps"
     },
     {
       "from": "body.TrunkOfCriteria",
@@ -7820,11 +7856,6 @@
     {
       "from": "body.SurfaceHeightsCriteria",
       "to": "body.BodyAt",
-      "kind": "uses"
-    },
-    {
-      "from": "body.TrunkOf",
-      "to": "body.BodyMeasures",
       "kind": "uses"
     },
     {

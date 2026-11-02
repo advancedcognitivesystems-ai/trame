@@ -276,8 +276,9 @@ Requirement · `SurfaceHeights` · **held**
 Requirement · `TrunkOf` · **held**
 
 - Owner: ghalaax
+- Parameters: { m: body.BodyMeasures, g: body.MatSpace }
 - Refines: Practise yoga on one's own, guided
-- Depends on: Measures of the body
+- Depends on: Measures of the body, The space of the mat
 
 ### A limb reaches its end
 
@@ -420,6 +421,14 @@ Acceptance criteria · `TwoBonesCriteria` · **held**
 
 - Owner: ghalaax
 - Accepts: A limb reaches its end
+
+### The space of the mat
+
+Function · `MatSpace` · **unknown**
+
+- Owner: ghalaax
+- Parameters: { v: geometry/vectors.Vectors, angle: geometry/angles.Angle }
+- Serves: Practise yoga on one's own, guided
 
 ## Poselia · Composing
 

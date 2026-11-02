@@ -1,6 +1,10 @@
 /** Poselia · The body */
 
+import { code } from "#trame/kernel"
 import { decision } from "#trame/kinds/decision"
+import { fn } from "#trame/kinds/function"
+import { Vectors } from "#geometry/vectors"
+import { Angle } from "#geometry/angles"
 import { requirement } from "#trame/kinds/requirement"
 import { acceptance } from "#trame/kinds/acceptance"
 import { PractiseGuided, CheckedContent } from "./product"
@@ -209,6 +213,18 @@ const mix3 = (a: Vec, b: Vec, t: number): Vec => [mix(a[0], b[0], t), mix(a[1], 
 const toward = (degrees: number): Vec => [Math.cos((degrees * Math.PI) / 180), Math.sin((degrees * Math.PI) / 180), 0]
 
 /**
+ * The space of the mat
+ * Poselia's points in geometry's vectors: along the mat, up from the floor, across it to the right; directions in the
+ * plane of the mat's length by their angle from the front, in degrees.
+ */
+export const MatSpace = fn({
+  owner: "ghalaax",
+  serves: [PractiseGuided],
+  deps: { v: Vectors, angle: Angle },
+  body: code.file<typeof import("./code/mat-space").default>("./code/mat-space.ts"),
+})
+
+/**
  * The trunk from its angles
  * From the pelvis on the mat and the four angles of the spine: the waist at the end of the lower back, the base of the
  * neck at the end of the chest, the shoulders a little below it, the top of the neck, the middle of the head; the face
@@ -217,19 +233,21 @@ const toward = (degrees: number): Vec => [Math.cos((degrees * Math.PI) / 180), M
 export const TrunkOf = requirement({
   owner: "ghalaax",
   refines: [PractiseGuided],
-  rule: (pelvis: readonly [number, number], spine: readonly [number, number, number, number]): Trunk => {
-    const m = BodyMeasures.value
-    const p: Vec = [pelvis[0], pelvis[1], 0]
-    const [lowerBack, chest, neck, headTilt] = spine.map(toward)
+  deps: { m: BodyMeasures, g: MatSpace },
+  body: ({ m, g }) => (pelvis: readonly [number, number], spine: readonly [number, number, number, number]): Trunk => {
+    const { add, mul, toward } = g
+    const [alongMat, high] = pelvis
+    const p: Vec = g.point(alongMat, high)
+    const [lowerBack, chest, neck, headTilt] = spine.map((a) => toward(a))
     const waist = add(p, mul(lowerBack, m.lowerBack))
     const neckBase = add(waist, mul(chest, m.chest))
     const shoulders = add(neckBase, mul(chest, -m.shoulderDrop))
     const neckTop = add(neckBase, mul(neck, m.neck))
     return {
-      pelvis: p, waist, neckBase, shoulders, neckTop, head: add(neckTop, mul(headTilt, m.head)), face: [headTilt[1], -headTilt[0], 0],
+      pelvis: p, waist, neckBase, shoulders, neckTop, head: add(neckTop, mul(headTilt, m.head)), face: g.face(headTilt),
       lowerBack, chest, neck, headTilt,
-      shoulderL: add(shoulders, [0, 0, -m.shoulders]), shoulderR: add(shoulders, [0, 0, m.shoulders]),
-      hipL: add(p, [0, 0, -m.hips]), hipR: add(p, [0, 0, m.hips]),
+      shoulderL: add(shoulders, g.right(-m.shoulders)), shoulderR: add(shoulders, g.right(m.shoulders)),
+      hipL: add(p, g.right(-m.hips)), hipR: add(p, g.right(m.hips)),
     }
   },
 })
