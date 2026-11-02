@@ -7,6 +7,8 @@ import type { Turning } from "#geometry/angles"
 export interface Deps {
   v: {
     axes: { forward: Vector; left: Vector; up: Vector }
+    origin: Vector
+    tolerance: { length: number }
     add(a: Vector, b: Vector): Vector
     difference(a: Vector, b: Vector): Vector
     scale(a: Vector, s: number): Vector
@@ -32,6 +34,11 @@ const body = ({ v, angle }: Deps) => {
     /** Between two numbers, by how far: a at none of the way, b at all of it. */
     mix: (a: number, b: number, t: number) => a + (b - a) * t,
     mix3: v.mix,
+    /** Straight down, and straight across to the right. */
+    down: v.difference(v.origin, up),
+    rightward: v.difference(v.origin, left),
+    /** Below this, a length is none and a direction has none. */
+    tolerance: v.tolerance.length,
     /** A direction in the plane of the mat's length and the height, by its angle from the front, in degrees. */
     toward: (degrees: number): Vector => {
       const a = angle.degree(degrees)

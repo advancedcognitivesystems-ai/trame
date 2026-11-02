@@ -490,6 +490,21 @@
       }
     },
     {
+      "id": "body.LimbSlack",
+      "kind": "decision",
+      "title": "How far a limb keeps from flat",
+      "fields": {
+        "owner": "ghalaax",
+        "value": {
+          "folded": 0.001,
+          "stretched": 0.0001
+        },
+        "rejected": {
+          "Folding flat and stretching straight": "at either end the joint could bend either way, and flipped from one frame to the next"
+        }
+      }
+    },
+    {
       "id": "body.LimbsReach",
       "kind": "requirement",
       "title": "Every limb reaches",
@@ -719,7 +734,12 @@
       "status": "held",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {
+          "g": "body.MatSpace",
+          "slack": "body.LimbSlack",
+          "counts": "std/algebra.Counts"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -5742,6 +5762,16 @@
       "from": "body.TwoBones",
       "to": "product.PractiseGuided",
       "kind": "refines"
+    },
+    {
+      "from": "body.TwoBones",
+      "to": "body.MatSpace",
+      "kind": "deps"
+    },
+    {
+      "from": "body.TwoBones",
+      "to": "body.LimbSlack",
+      "kind": "deps"
     },
     {
       "from": "body.TwoBonesCriteria",

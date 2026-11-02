@@ -5,6 +5,7 @@ import { decision } from "#trame/kinds/decision"
 import { fn } from "#trame/kinds/function"
 import { Vectors } from "#geometry/vectors"
 import { Angle } from "#geometry/angles"
+import { Counts } from "#std/algebra"
 import { requirement } from "#trame/kinds/requirement"
 import { acceptance } from "#trame/kinds/acceptance"
 import { PractiseGuided, CheckedContent } from "./product"
@@ -225,6 +226,17 @@ export const MatSpace = fn({
 })
 
 /**
+ * How far a limb keeps from flat
+ * A limb never folds flat on itself nor stretches quite straight, by a millimetre and a tenth of one: its middle joint
+ * then always bends one way.
+ */
+export const LimbSlack = decision<{ folded: number; stretched: number }>({
+  owner: "ghalaax",
+  value: { folded: 1e-3, stretched: 1e-4 },
+  rejected: { "Folding flat and stretching straight": "at either end the joint could bend either way, and flipped from one frame to the next" },
+})
+
+/**
  * The trunk from its angles
  * From the pelvis on the mat and the four angles of the spine: the waist at the end of the lower back, the base of the
  * neck at the end of the chest, the shoulders a little below it, the top of the neck, the middle of the head; the face
@@ -276,15 +288,17 @@ export const TrunkOfCriteria = acceptance({
 export const TwoBones = requirement({
   owner: "ghalaax",
   refines: [PractiseGuided],
-  rule: (from: Vec, target: Vec, first: number, second: number, pole: Vec): { middle: Vec; end: Vec; reach: number } => {
+  deps: { g: MatSpace, slack: LimbSlack, counts: Counts },
+  body: ({ g, slack, counts }) => (from: Vec, target: Vec, first: number, second: number, pole: Vec): { middle: Vec; end: Vec; reach: number } => {
+    const { add, sub, mul, dot, len, unit } = g
     const d = sub(target, from)
     const distance = len(d)
-    const along: Vec = distance > 1e-6 ? mul(d, 1 / distance) : [0, -1, 0]
-    const kept = Math.max(Math.abs(first - second) + 1e-3, Math.min(first + second - 1e-4, distance))
-    const a = (first * first - second * second + kept * kept) / (2 * kept)
-    const h = Math.sqrt(Math.max(0, first * first - a * a))
+    const along: Vec = distance > g.tolerance ? unit(d) : g.down
+    const kept = Math.max(Math.abs(first - second) + slack.folded, Math.min(first + second - slack.stretched, distance))
+    const a = (first * first - second * second + kept * kept) / (kept + kept)
+    const h = Math.sqrt(Math.max(counts.zero, first * first - a * a))
     const side = sub(pole, mul(along, dot(pole, along)))
-    const bend: Vec = len(side) < 1e-6 ? [0, 0, 1] : unit(side)
+    const bend: Vec = len(side) < g.tolerance ? g.rightward : unit(side)
     return { middle: add(add(from, mul(along, a)), mul(bend, h)), end: add(from, mul(along, kept)), reach: distance / (first + second) }
   },
 })

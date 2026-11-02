@@ -285,7 +285,9 @@ Requirement · `TrunkOf` · **held**
 Requirement · `TwoBones` · **held**
 
 - Owner: ghalaax
+- Parameters: { g: body.MatSpace, slack: body.LimbSlack, counts: std/algebra.Counts }
 - Refines: Practise yoga on one's own, guided
+- Depends on: The space of the mat, How far a limb keeps from flat
 
 ### Measures of the body
 
@@ -294,6 +296,14 @@ Decision · `BodyMeasures`
 - Decided by: ghalaax
 - Value: { thigh: 0.44, shin: 0.43, upperArm: 0.29, forearm: 0.26, lowerBack: 0.25, chest: 0.25, neck: 0.09, head: 0.11, hips: 0.09, shoulders: 0.18, shoulderDrop: 0.04, hand: 0.17, nose: 0.1, heelBack: 0.06, heelDown: 0.07, ballForward: 0.13, ballDown: 0.06, toes: 0.06, topUp: 0.04, topForward: 0.05, kneeSurface: 0.05, wristSurface: 0.04, headSurface: 0.11, pelvisUp: 0.03, pelvisAcross: 0.1, pelvisAlong: 0.1, chestUp: 0.14, chestAcross: 0.11, chestAlong: 0.17 }
 - Rejected: Proportions as parts of the height, seen from the side, a flat figure cannot turn, and its angles made it float between poses
+
+### How far a limb keeps from flat
+
+Decision · `LimbSlack`
+
+- Decided by: ghalaax
+- Value: { folded: 0, stretched: 0 }
+- Rejected: Folding flat and stretching straight, at either end the joint could bend either way, and flipped from one frame to the next
 
 ### How a body moves
 
