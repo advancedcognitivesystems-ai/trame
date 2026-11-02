@@ -15,7 +15,7 @@ import {
 import { ShowHome, HomeViewOf, CarriedContent } from "./app"
 import { PlayPractice, PracticeOf, MomentOf, HoldPhases, BreathsToSay } from "./practice"
 import { FigureDrawing, PoseBody } from "./drawing"
-import { BodyAt, SurfaceHeights, Touching, Movement, SteppingLeg, PlantedLeg, HandOnItsWay, FootOnItsWay, MatSpace, KeyOf, TrunkOf, TwoBones } from "./body"
+import { BodyAt, SurfaceHeights, Touching, Movement, SteppingLeg, PlantedLeg, HandOnItsWay, FootOnItsWay, MatSpace, KeyOf, TrunkOf, TwoBones, FootOf } from "./body"
 import { ShowSettings, SettingsViewOf, PersonBreath, VoiceChoice, MeasuredBreath, AdjustedBreath, MarksChoice } from "./settings"
 import { AppLanguage, InterfaceWords, PreferenceNames, French, English, WordsFr, WordsEn } from "./language"
 import { Poses, Sequences as SequenceRows, MakesSense, LeadingLegOf } from "./content"
@@ -312,7 +312,7 @@ export const PersonSettings = scenario({
  */
 export const BodyStaysOnTheFloor = scenario({
   owner: "ghalaax",
-  verifies: [PracticeOf, MomentOf, PlayPractice, BodyAt, SurfaceHeights, SteppingLeg, PlantedLeg, HandOnItsWay, FootOnItsWay, MatSpace, KeyOf, TrunkOf, TwoBones],
+  verifies: [PracticeOf, MomentOf, PlayPractice, BodyAt, SurfaceHeights, SteppingLeg, PlantedLeg, HandOnItsWay, FootOnItsWay, MatSpace, KeyOf, TrunkOf, TwoBones, FootOf],
   env: Test,
   deps: {
     home: ShowHome, shown: ViewsShown, time: TimeTurned, moments: ScenarioMoments, heights: SurfaceHeights, touching: Touching,

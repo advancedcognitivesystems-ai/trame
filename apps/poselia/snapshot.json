@@ -354,7 +354,19 @@
       "status": "held",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {
+          "m": "body.BodyMeasures",
+          "mv": "body.Movement",
+          "g": "body.MatSpace",
+          "trunkOf": "(function)",
+          "feet": "body.FootOf",
+          "stepping": "(function)",
+          "footWay": "(function)",
+          "planted": "(function)",
+          "handWay": "(function)",
+          "twoBones": "(function)"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -427,7 +439,7 @@
       "id": "body.FootOf",
       "kind": "function",
       "title": "A foot from its angles",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "deps": {
@@ -5701,6 +5713,56 @@
       "kind": "refines"
     },
     {
+      "from": "body.BodyAt",
+      "to": "body.BodyMeasures",
+      "kind": "deps"
+    },
+    {
+      "from": "body.BodyAt",
+      "to": "body.Movement",
+      "kind": "deps"
+    },
+    {
+      "from": "body.BodyAt",
+      "to": "body.MatSpace",
+      "kind": "deps"
+    },
+    {
+      "from": "body.BodyAt",
+      "to": "body.TrunkOf",
+      "kind": "deps"
+    },
+    {
+      "from": "body.BodyAt",
+      "to": "body.FootOf",
+      "kind": "deps"
+    },
+    {
+      "from": "body.BodyAt",
+      "to": "body.SteppingLeg",
+      "kind": "deps"
+    },
+    {
+      "from": "body.BodyAt",
+      "to": "body.FootOnItsWay",
+      "kind": "deps"
+    },
+    {
+      "from": "body.BodyAt",
+      "to": "body.PlantedLeg",
+      "kind": "deps"
+    },
+    {
+      "from": "body.BodyAt",
+      "to": "body.HandOnItsWay",
+      "kind": "deps"
+    },
+    {
+      "from": "body.BodyAt",
+      "to": "body.TwoBones",
+      "kind": "deps"
+    },
+    {
       "from": "body.BodyAtCriteria",
       "to": "body.BodyAt",
       "kind": "accepts"
@@ -6668,6 +6730,11 @@
     {
       "from": "scenarios.BodyStaysOnTheFloor",
       "to": "body.TwoBones",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.BodyStaysOnTheFloor",
+      "to": "body.FootOf",
       "kind": "verifies"
     },
     {
@@ -7944,46 +8011,6 @@
       "from": "stage.BrowserStage",
       "to": "stage.MarkStyle",
       "kind": "deps"
-    },
-    {
-      "from": "body.BodyAt",
-      "to": "body.BodyMeasures",
-      "kind": "uses"
-    },
-    {
-      "from": "body.BodyAt",
-      "to": "body.Movement",
-      "kind": "uses"
-    },
-    {
-      "from": "body.BodyAt",
-      "to": "body.TrunkOf",
-      "kind": "uses"
-    },
-    {
-      "from": "body.BodyAt",
-      "to": "body.SteppingLeg",
-      "kind": "uses"
-    },
-    {
-      "from": "body.BodyAt",
-      "to": "body.FootOnItsWay",
-      "kind": "uses"
-    },
-    {
-      "from": "body.BodyAt",
-      "to": "body.PlantedLeg",
-      "kind": "uses"
-    },
-    {
-      "from": "body.BodyAt",
-      "to": "body.HandOnItsWay",
-      "kind": "uses"
-    },
-    {
-      "from": "body.BodyAt",
-      "to": "body.TwoBones",
-      "kind": "uses"
     },
     {
       "from": "body.BodyAtCriteria",

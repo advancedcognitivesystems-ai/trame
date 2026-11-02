@@ -146,6 +146,12 @@ flowchart TB
   n53["Code serves the product<br/><small>Architecture rule</small>"]:::held
   n54["Place the page<br/><small>Entry point</small>"]:::held
   n55["A public version<br/><small>Shipment</small>"]:::unknown
+  n23 -->|Depends on| n35
+  n23 -->|Depends on| n33
+  n23 -->|Depends on| n24
+  n23 -->|Depends on| n29
+  n23 -->|Depends on| n25
+  n23 -->|Depends on| n36
   n26 -->|Depends on| n35
   n29 -->|Depends on| n36
   n33 -->|Depends on| n36
@@ -189,12 +195,6 @@ flowchart TB
   n13 -->|Depends on| n0
   n55 -->|Ships| n0
   n55 -->|Deployed by| n54
-  n23 -.->|Depends on| n35
-  n23 -.->|Depends on| n33
-  n23 -.->|Depends on| n24
-  n23 -.->|Depends on| n29
-  n23 -.->|Depends on| n25
-  n23 -.->|Depends on| n36
   n28 -.->|Depends on| n26
   n28 -.->|Depends on| n23
   n30 -.->|Depends on| n26

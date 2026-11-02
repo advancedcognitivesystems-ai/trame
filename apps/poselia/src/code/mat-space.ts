@@ -37,6 +37,7 @@ const body = ({ v, angle, counts }: Deps) => {
     mix3: v.mix,
     /** Straight down, and straight across to the right. */
     down: v.difference(v.origin, up),
+    backward: v.difference(v.origin, forward),
     rightward: v.difference(v.origin, left),
     /** Below this, a length is none and a direction has none. */
     tolerance: v.tolerance.length,

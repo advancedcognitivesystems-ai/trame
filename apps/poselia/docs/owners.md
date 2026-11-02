@@ -6,7 +6,7 @@
 |---|---|---|---|---|
 | A teacher who practises | 0 | 0 | 4 | 0 |
 | People who try it on a phone | 0 | 0 | 1 | 0 |
-| ghalaax | 0 | 0 | 27 | 210 |
+| ghalaax | 0 | 0 | 26 | 210 |
 
 <a id="A teacher who practises"></a>
 
@@ -49,7 +49,6 @@
 | Severity | What | Where | Owner | Consequence |
 |---|---|---|---|---|
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [The angle at a joint](body.md#AngleBetween) | ghalaax |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [The body between two poses](body.md#BodyAt) | ghalaax |  |
 | warning | Computes the same kind of answer from the same kind of arguments as “A hand on its way” (ghalaax), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [A foot on its way](body.md#FootOnItsWay) | ghalaax |  |
 | warning | Computes the same kind of answer from the same kind of arguments as “A foot on its way” (ghalaax), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [A hand on its way](body.md#HandOnItsWay) | ghalaax |  |
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [Every limb reaches](body.md#LimbsReach) | ghalaax |  |
@@ -106,7 +105,7 @@
 | [Criteria of the body between two poses](body.md#BodyAtCriteria) | Acceptance criteria | **held** |
 | [Measures of the body](body.md#BodyMeasures) | Decision |  |
 | [How a foot's way is read](body.md#FootAngles) | Decision |  |
-| [A foot from its angles](body.md#FootOf) | Function | **unknown** |
+| [A foot from its angles](body.md#FootOf) | Function | **held** |
 | [A foot on its way](body.md#FootOnItsWay) | Requirement | **held** |
 | [Criteria of a foot on its way](body.md#FootOnItsWayCriteria) | Acceptance criteria | **held** |
 | [A hand on its way](body.md#HandOnItsWay) | Requirement | **held** |

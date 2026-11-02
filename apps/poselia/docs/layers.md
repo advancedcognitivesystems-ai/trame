@@ -35,7 +35,7 @@ flowchart TB
     n23["Criteria of the body between two poses<br/><small>Acceptance criteria</small>"]:::held
     n24["Measures of the body<br/><small>Decision</small>"]:::neutral
     n25["How a foot's way is read<br/><small>Decision</small>"]:::neutral
-    n26["A foot from its angles<br/><small>Function</small>"]:::unknown
+    n26["A foot from its angles<br/><small>Function</small>"]:::held
     n27["A foot on its way<br/><small>Requirement</small>"]:::held
     n28["Criteria of a foot on its way<br/><small>Acceptance criteria</small>"]:::held
     n29["A hand on its way<br/><small>Requirement</small>"]:::held
@@ -304,6 +304,16 @@ flowchart TB
   n20 -->|Refines| n128
   n21 -->|Accepts| n20
   n22 -->|Refines| n128
+  n22 -->|Depends on| n24
+  n22 -->|Depends on| n40
+  n22 -->|Depends on| n39
+  n22 -->|Depends on| n55
+  n22 -->|Depends on| n26
+  n22 -->|Depends on| n50
+  n22 -->|Depends on| n27
+  n22 -->|Depends on| n41
+  n22 -->|Depends on| n29
+  n22 -->|Depends on| n57
   n23 -->|Accepts| n22
   n26 -->|Serves| n128
   n26 -->|Depends on| n24
@@ -498,6 +508,7 @@ flowchart TB
   n129 -->|Verifies| n31
   n129 -->|Verifies| n55
   n129 -->|Verifies| n57
+  n129 -->|Verifies| n26
   n129 -->|In| n18
   n129 -->|Depends on| n10
   n129 -->|Depends on| n19
@@ -753,14 +764,6 @@ flowchart TB
   n203 -->|Depends on| n206
   n203 -->|Depends on| n207
   n203 -->|Depends on| n205
-  n22 -.->|Depends on| n24
-  n22 -.->|Depends on| n40
-  n22 -.->|Depends on| n55
-  n22 -.->|Depends on| n50
-  n22 -.->|Depends on| n27
-  n22 -.->|Depends on| n41
-  n22 -.->|Depends on| n29
-  n22 -.->|Depends on| n57
   n23 -.->|Depends on| n24
   n23 -.->|Depends on| n31
   n23 -.->|Depends on| n40

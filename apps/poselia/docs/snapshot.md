@@ -183,8 +183,9 @@ Requirement · `AngleBetween` · **held**
 Requirement · `BodyAt` · **held**
 
 - Owner: ghalaax
+- Parameters: { m: body.BodyMeasures, mv: body.Movement, g: body.MatSpace, trunkOf: (rule), feet: body.FootOf, stepping: (rule), footWay: (rule), planted: (rule), handWay: (rule), twoBones: (rule) }
 - Refines: Practise yoga on one's own, guided
-- Depends on: Measures of the body, How a body moves, The trunk from its angles, A leg that steps, A foot on its way, A leg on its foot, A hand on its way, A limb reaches its end
+- Depends on: Measures of the body, How a body moves, The space of the mat, The trunk from its angles, A foot from its angles, A leg that steps, A foot on its way, A leg on its foot, A hand on its way, A limb reaches its end
 
 ### A foot on its way
 
@@ -464,7 +465,7 @@ Acceptance criteria · `TwoBonesCriteria` · **held**
 
 ### A foot from its angles
 
-Function · `FootOf` · **unknown**
+Function · `FootOf` · **held**
 
 - Owner: ghalaax
 - Parameters: { m: body.BodyMeasures, mv: body.Movement, g: body.MatSpace }
@@ -1159,7 +1160,7 @@ Scenario · `BodyStaysOnTheFloor` · **held**
 
 - Owner: ghalaax
 - Parameters: { home: app.ShowHome, shown: architecture.ViewsShown, time: std/platform.TimeTurned, moments: scenarios.ScenarioMoments, heights: (rule), touching: body.Touching, movement: body.Movement, words: language.WordsEn, say: scenarios.ScenarioChecks, counts: std/algebra.Counts }
-- Verifies: A practice, The moment of a practice, Play a practice, The body between two poses, The heights of the body's surface, A leg that steps, A leg on its foot, A hand on its way, A foot on its way, The space of the mat, A pose ready to move, The trunk from its angles, A limb reaches its end
+- Verifies: A practice, The moment of a practice, Play a practice, The body between two poses, The heights of the body's surface, A leg that steps, A leg on its foot, A hand on its way, A foot on its way, The space of the mat, A pose ready to move, The trunk from its angles, A limb reaches its end, A foot from its angles
 - In: Test
 - Depends on: Show the home page, Views shown, Moments a scenario looks at, The heights of the body's surface, Touching the floor, How a body moves, Words in English, What the scenarios check
 

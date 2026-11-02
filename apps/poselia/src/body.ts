@@ -628,40 +628,44 @@ export const SteppingLegCriteria = acceptance({
 export const BodyAt = requirement({
   owner: "ghalaax",
   refines: [PractiseGuided],
-  rule: (from: Keyframe, to: Keyframe, t: number): Body => {
-    const m = BodyMeasures.value
-    const mv = Movement.value
-    const pelvis: readonly [number, number] = [mix(from.pelvis[0], to.pelvis[0], t), mix(from.pelvis[1], to.pelvis[1], t)]
+  deps: {
+    m: BodyMeasures, mv: Movement, g: MatSpace, trunkOf: TrunkOf, feet: FootOf, stepping: SteppingLeg, footWay: FootOnItsWay,
+    planted: PlantedLeg, handWay: HandOnItsWay, twoBones: TwoBones,
+  },
+  body: ({ m, mv, g, trunkOf, feet, stepping, footWay, planted, handWay, twoBones }) => (from: Keyframe, to: Keyframe, t: number): Body => {
+    const { add, sub, mul, dot, len, unit, mix, mix3 } = g
+    const [along0, high0] = from.pelvis
+    const [along1, high1] = to.pelvis
+    const pelvis: readonly [number, number] = [mix(along0, along1, t), mix(high0, high1, t)]
     const spine = from.spine.map((v, i) => mix(v, to.spine[i], t)) as unknown as readonly [number, number, number, number]
-    const trunk = TrunkOf(pelvis, spine)
-    const side = (s: "L" | "R"): Side => {
-      const sign = s === "L" ? -1 : 1
-      const hipOf = (k: Trunk) => (s === "L" ? k.hipL : k.hipR)
-      const shoulderOf = (k: Trunk) => (s === "L" ? k.shoulderL : k.shoulderR)
+    const trunk = trunkOf(pelvis, spine)
+    const side = (onLeft: boolean): Side => {
+      const hipOf = (k: Trunk) => (onLeft ? k.hipL : k.hipR)
+      const shoulderOf = (k: Trunk) => (onLeft ? k.shoulderL : k.shoulderR)
       // The leg: on its foot if the foot stays, stepping if it goes elsewhere.
-      const f0 = from.legs[s]
-      const f1 = to.legs[s]
+      const f0 = onLeft ? from.legs.L : from.legs.R
+      const f1 = onLeft ? to.legs.L : to.legs.R
       const hip = hipOf(trunk)
-      const { along: footAlong, up: footUp, toesAlong, below } = footOf(mix(f0.foot, f1.foot, t), mix(f0.toes, f1.toes, t))
+      const { along: footAlong, up: footUp, toesAlong, below } = feet(mix(f0.foot, f1.foot, t), mix(f0.toes, f1.toes, t))
       const moving = len(sub(f0.at, f1.at)) >= mv.still
       const leg = moving
-        ? SteppingLeg(hip, FootOnItsWay(f0.at, f1.at, hipOf(from.trunk), hipOf(to.trunk), hip, t), below)
-        : PlantedLeg(hip, { at: mix3(f0.at, f1.at, t), foot: mix(f0.foot, f1.foot, t), toes: mix(f0.toes, f1.toes, t) })
+        ? stepping(hip, footWay(f0.at, f1.at, hipOf(from.trunk), hipOf(to.trunk), hip, t), below)
+        : planted(hip, { at: mix3(f0.at, f1.at, t), foot: mix(f0.foot, f1.foot, t), toes: mix(f0.toes, f1.toes, t) })
       const ankle = leg.ankle
       const heel = add(add(ankle, mul(footUp, -m.heelDown)), mul(footAlong, -m.heelBack))
       const ball = add(add(ankle, mul(footUp, -m.ballDown)), mul(footAlong, m.ballForward))
       // The arm.
-      const h0 = from.arms[s]
-      const h1 = to.arms[s]
+      const h0 = onLeft ? from.arms.L : from.arms.R
+      const h1 = onLeft ? to.arms.L : to.arms.R
       const shoulder = shoulderOf(trunk)
-      const reach = HandOnItsWay(h0.at, h1.at, shoulderOf(from.trunk), shoulderOf(to.trunk), shoulder, t)
-      const wristAim: Vec = [reach[0], Math.max(reach[1], mv.wristFloor), reach[2]]
+      const reach = handWay(h0.at, h1.at, shoulderOf(from.trunk), shoulderOf(to.trunk), shoulder, t)
+      const wristAim: Vec = g.at(g.along(reach), Math.max(g.height(reach), mv.wristFloor), g.across(reach))
       const w = sub(wristAim, shoulder)
-      const back: Vec = Math.hypot(w[0], w[1]) < mv.folded ? [-1, 0, 0] : [w[1], -w[0], 0]
-      const armPole = add(unit(back), [0, 0, mv.elbowsOut * sign])
-      const arm = TwoBones(shoulder, wristAim, m.upperArm, m.forearm, armPole)
-      const handAlong = toward(mix(h0.hand, h1.hand, t))
-      const across = unit(mix3([0, 0, 1], [-handAlong[1], handAlong[0], 0], mix(h0.palm, h1.palm, t)))
+      const back: Vec = g.planar(w) < mv.folded ? g.backward : g.face(w)
+      const armPole = add(unit(back), g.right(onLeft ? -mv.elbowsOut : mv.elbowsOut))
+      const arm = twoBones(shoulder, wristAim, m.upperArm, m.forearm, armPole)
+      const handAlong = g.toward(mix(h0.hand, h1.hand, t))
+      const across = unit(mix3(g.rightward, g.normal(handAlong), mix(h0.palm, h1.palm, t)))
       return {
         hip, knee: leg.knee, ankle, heel, ball, toe: add(ball, mul(toesAlong, m.toes)), footAlong, footUp, toesAlong,
         shoulder, elbow: arm.middle, wrist: arm.end, tip: add(arm.end, mul(handAlong, m.hand)), handAlong,
@@ -669,7 +673,7 @@ export const BodyAt = requirement({
         legReach: leg.reach, armReach: arm.reach,
       }
     }
-    return { ...trunk, L: side("L"), R: side("R"), nose: add(trunk.head, mul(trunk.face, m.nose)) }
+    return { ...trunk, L: side(true), R: side(false), nose: add(trunk.head, mul(trunk.face, m.nose)) }
   },
 })
 
