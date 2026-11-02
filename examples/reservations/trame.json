@@ -3,5 +3,5 @@
   "libraries": {
     "std": "../../std"
   },
-  "engine": "../../generations/g94"
+  "engine": "../../generations/g95"
 }

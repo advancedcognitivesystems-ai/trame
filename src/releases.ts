@@ -1393,3 +1393,18 @@ export const G94 = release({
   archive: "10418831c37c9ead",
   assembledBy: G93,
 })
+
+/**
+ * Generation 95
+ */
+export const G95 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g95",
+  date: "2026-11-02",
+  what: "the bundler is led by the names of packages as the engine leads Node.js: a library published once is bundled with the language and libraries of the project that delivers it",
+  fingerprint: "805401dc53eb3a4a",
+  language: "shared",
+  archive: "10418831c37c9ead",
+  assembledBy: G94,
+})
