@@ -107,32 +107,6 @@ export const BreathOfCriteria = acceptance({
   },
 })
 
-/**
- * A hold counts in breaths
- * A hold written in seconds lasts the whole number of breaths nearest to it, and at least one, so that the end of a
- * hold always falls at the end of a breath.
- */
-export const HoldInBreaths = requirement({
-  owner: "ghalaax",
-  refines: [BreathSetsThePace],
-  deps: { counts: Counts },
-  body: ({ counts }) => (hold: Duration, breath: BreathPattern): number => {
-    const length = breath.inhale + breath.holdTop + breath.exhale + breath.holdBottom
-    return Math.max(counts.one, Math.round(hold / length))
-  },
-})
-
-/** Criteria of a hold in breaths */
-export const HoldInBreathsCriteria = acceptance({
-  accepts: HoldInBreaths,
-  owner: "ghalaax",
-  criteria: (criterion) => {
-    const eight: BreathPattern = { inhale: s(4), holdTop: s(0), exhale: s(4), holdBottom: s(0) }
-    criterion("Thirty seconds at eight seconds a breath is four breaths", () => HoldInBreaths(s(30), eight) === 4)
-    criterion("A hold is never shorter than one breath", () => HoldInBreaths(s(1), eight) === 1)
-  },
-})
-
 // The language -------------------------------------------------------------------------------
 
 /**

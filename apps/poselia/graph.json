@@ -4530,7 +4530,7 @@
       "kind": "adr",
       "title": "The breath is the clock",
       "source": "src/principles.ts:36",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "context": "A timer in seconds makes a person follow a clock; yoga follows the breath, whose length differs from one person to the next and from one day to the next.",
@@ -4676,7 +4676,7 @@
       "id": "product.ChosenLanguage",
       "kind": "requirement",
       "title": "The language of the app",
-      "source": "src/product.ts:143",
+      "source": "src/product.ts:117",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -4693,7 +4693,7 @@
       "id": "product.ChosenLanguageCriteria",
       "kind": "acceptance",
       "title": "Criteria of the language of the app",
-      "source": "src/product.ts:158",
+      "source": "src/product.ts:132",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -4739,45 +4739,6 @@
       "diagnostics": []
     },
     {
-      "id": "product.HoldInBreaths",
-      "kind": "requirement",
-      "title": "A hold counts in breaths",
-      "source": "src/product.ts:115",
-      "status": "unknown",
-      "fields": {
-        "owner": "ghalaax",
-        "deps": {
-          "counts": "std/algebra.Counts"
-        },
-        "body": "(function)"
-      },
-      "diagnostics": [
-        "warning: Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it"
-      ]
-    },
-    {
-      "id": "product.HoldInBreathsCriteria",
-      "kind": "acceptance",
-      "title": "Criteria of a hold in breaths",
-      "source": "src/product.ts:126",
-      "status": "held",
-      "fields": {
-        "owner": "ghalaax",
-        "criteria": "(function)"
-      },
-      "result": [
-        {
-          "name": "Thirty seconds at eight seconds a breath is four breaths",
-          "status": "passed"
-        },
-        {
-          "name": "A hold is never shorter than one breath",
-          "status": "passed"
-        }
-      ],
-      "diagnostics": []
-    },
-    {
       "id": "product.InTheirLanguage",
       "kind": "goal",
       "title": "In the person's language",
@@ -4791,7 +4752,7 @@
       "id": "product.PhoneOnTheMat",
       "kind": "assumption",
       "title": "The phone stays on the mat",
-      "source": "src/product.ts:177",
+      "source": "src/product.ts:151",
       "status": "unknown",
       "fields": {
         "owner": "ghalaax",
@@ -6184,11 +6145,6 @@
             "obligation": "sdlc.ProductServed"
           },
           {
-            "node": "product.HoldInBreaths",
-            "via": "product.BreathOf",
-            "obligation": "sdlc.ProductServed"
-          },
-          {
             "node": "settings.AdjustedBreath",
             "via": "product.BreathOf",
             "obligation": "sdlc.ProductServed"
@@ -6223,9 +6179,7 @@
         "warning: To ship: The content, reviewed is unknown",
         "warning: To ship: A page first, the phones after is unknown",
         "warning: To ship: The content is data, behind a port is unknown",
-        "warning: To ship: The breath is the clock is unknown",
-        "warning: To ship: Said aloud, the screen awake is unknown",
-        "warning: To ship: A hold counts in breaths is unknown"
+        "warning: To ship: Said aloud, the screen awake is unknown"
       ]
     },
     {
@@ -8192,7 +8146,7 @@
     },
     {
       "from": "principles.BreathIsTheClock",
-      "to": "product.HoldInBreaths",
+      "to": "practice.HoldPhases",
       "kind": "appliedBy"
     },
     {
@@ -8323,21 +8277,6 @@
     {
       "from": "product.ChosenLanguageCriteria",
       "to": "product.ChosenLanguage",
-      "kind": "accepts"
-    },
-    {
-      "from": "product.HoldInBreaths",
-      "to": "product.BreathSetsThePace",
-      "kind": "refines"
-    },
-    {
-      "from": "product.HoldInBreaths",
-      "to": "std/algebra.Counts",
-      "kind": "deps"
-    },
-    {
-      "from": "product.HoldInBreathsCriteria",
-      "to": "product.HoldInBreaths",
       "kind": "accepts"
     },
     {

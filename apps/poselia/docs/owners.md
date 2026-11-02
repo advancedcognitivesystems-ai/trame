@@ -6,7 +6,7 @@
 |---|---|---|---|---|
 | A teacher who practises | 0 | 0 | 4 | 0 |
 | People who try it on a phone | 0 | 0 | 1 | 0 |
-| ghalaax | 0 | 0 | 38 | 206 |
+| ghalaax | 0 | 0 | 35 | 204 |
 
 <a id="A teacher who practises"></a>
 
@@ -67,7 +67,6 @@
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A limb reaches its end](body.md#TwoBones) | ghalaax |  |
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [Rising on a breath in](composing.md#BreathOfMove) | ghalaax |  |
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A landmark on the body](marks.md#MarkOnBody) | ghalaax |  |
-| warning | Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it | [A hold counts in breaths](product.md#HoldInBreaths) | ghalaax |  |
 | warning | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [Poselia's page](sdlc.md#PageFile) | ghalaax |  |
 | warning | Checked on another build of its artefacts, by another version of its program or another engine: to check again | [The page opens](sdlc.md#PageOpens) | ghalaax |  |
 | warning | To ship: Poselia's page is unknown | [A preview](sdlc.md#Preview) | ghalaax |  |
@@ -80,9 +79,7 @@
 | warning | To ship: The content, reviewed is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
 | warning | To ship: A page first, the phones after is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
 | warning | To ship: The content is data, behind a port is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
-| warning | To ship: The breath is the clock is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
 | warning | To ship: Said aloud, the screen awake is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
-| warning | To ship: A hold counts in breaths is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
 | warning | To ship: The preview's script is unknown | [The files that run it elsewhere](sdlc.md#RunnersWritten) | ghalaax |  |
 | warning | To ship: The preview's workflow is unknown | [The files that run it elsewhere](sdlc.md#RunnersWritten) | ghalaax |  |
 | warning | Nobody holds this role yet | [A teacher who practises](sdlc.md#Teachers) | ghalaax |  |
@@ -199,7 +196,7 @@
 | [Names of the player](practice.md#PlayerNames) | Decision |  |
 | [Play a practice](practice.md#PlayPractice) | Function | **held** |
 | [A practice](practice.md#PracticeOf) | Function | **held** |
-| [The breath is the clock](principles.md#BreathIsTheClock) | Architecture decision | **unknown** |
+| [The breath is the clock](principles.md#BreathIsTheClock) | Architecture decision | **held** |
 | [The content is data, behind a port](principles.md#ContentAsData) | Architecture decision | **unknown** |
 | [The person's language, among those offered](principles.md#LanguageOffered) | Architecture decision | **held** |
 | [A page first, the phones after](principles.md#PageFirst) | Architecture decision | **unknown** |
@@ -211,8 +208,6 @@
 | [The language of the app](product.md#ChosenLanguage) | Requirement | **held** |
 | [Criteria of the language of the app](product.md#ChosenLanguageCriteria) | Acceptance criteria | **held** |
 | [The breath of someone who has set nothing](product.md#DefaultBreath) | Decision |  |
-| [A hold counts in breaths](product.md#HoldInBreaths) | Requirement | **unknown** |
-| [Criteria of a hold in breaths](product.md#HoldInBreathsCriteria) | Acceptance criteria | **held** |
 | [In the person's language](product.md#InTheirLanguage) | Goal |  |
 | [The phone stays on the mat](product.md#PhoneOnTheMat) | Assumption | **unknown** |
 | [Practise yoga on one's own, guided](product.md#PractiseGuided) | Goal |  |

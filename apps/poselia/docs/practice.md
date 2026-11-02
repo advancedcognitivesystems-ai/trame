@@ -107,6 +107,7 @@ The phases of the breath a pose is held for, after the movement that reaches it:
 - Parameters: `counts` ← [Counts](../.trame/std/docs/algebra.md#Counts)
 - Refines: [The breath sets the pace](product.md#BreathSetsThePace)
 - Used by: [A practice](#PracticeOf)
+- Applies: [The breath is the clock](principles.md#BreathIsTheClock)
 - Verified by: [Holding the poses](scenarios.md#HoldThePoses)
 
 <a id="HoldPhasesCriteria"></a>

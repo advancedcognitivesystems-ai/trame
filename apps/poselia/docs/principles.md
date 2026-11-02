@@ -10,7 +10,7 @@
 
 ### The breath is the clock
 
-`BreathIsTheClock` · `src/principles.ts:36` · status: **unknown**
+`BreathIsTheClock` · `src/principles.ts:36` · status: **held**
 
 A practice is timed by the person's breath, not by seconds: a movement lasts a phase, a hold lasts whole breaths, and each level may set the breath (follow it, impose a ratio, exact timings, or a speed), the most specific winning.
 
@@ -24,7 +24,7 @@ Consequences: The person's pattern (four phases) is kept in the preferences; a h
 
 - Decided by: ghalaax
 - Serves: [The breath sets the pace](product.md#BreathSetsThePace)
-- Applied by: [The breath of a moment](product.md#BreathOf), [A hold counts in breaths](product.md#HoldInBreaths)
+- Applied by: [The breath of a moment](product.md#BreathOf), [A hold of whole breaths](practice.md#HoldPhases)
 
 <a id="ContentAsData"></a>
 

@@ -900,14 +900,14 @@ Function · `PracticeOf` · **held**
 
 ### The breath is the clock
 
-Architecture decision · `BreathIsTheClock` · **unknown**
+Architecture decision · `BreathIsTheClock` · **held**
 
 - Decided by: ghalaax
 - Context: A timer in seconds makes a person follow a clock; yoga follows the breath, whose length differs from one person to the next and from one day to the next.
 - Consequences: The person's pattern (four phases) is kept in the preferences; a hold written in seconds becomes whole breaths, so that a chime falls at the end of a breath; the animation of a sequence follows the phases.
 - Rejected: Two modes, timer and breath, two ways to count the same practice, and the timer would win by habit
 - Serves: The breath sets the pace
-- Applied by: The breath of a moment, A hold counts in breaths
+- Applied by: The breath of a moment, A hold of whole breaths
 
 ### The content is data, behind a port
 
@@ -996,14 +996,6 @@ Requirement · `ChosenLanguage` · **held**
 - Parameters: { tags: std/measures.LanguageTags, sequences: std/algebra.Sequences, texts: std/algebra.Texts }
 - Refines: In the person's language
 
-### A hold counts in breaths
-
-Requirement · `HoldInBreaths` · **unknown**
-
-- Owner: ghalaax
-- Parameters: { counts: std/algebra.Counts }
-- Refines: The breath sets the pace
-
 ### The breath of someone who has set nothing
 
 Decision · `DefaultBreath`
@@ -1032,13 +1024,6 @@ Acceptance criteria · `ChosenLanguageCriteria` · **held**
 
 - Owner: ghalaax
 - Accepts: The language of the app
-
-### Criteria of a hold in breaths
-
-Acceptance criteria · `HoldInBreathsCriteria` · **held**
-
-- Owner: ghalaax
-- Accepts: A hold counts in breaths
 
 ## Poselia · Scenarios
 

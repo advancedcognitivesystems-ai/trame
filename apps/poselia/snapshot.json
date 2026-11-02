@@ -3729,7 +3729,7 @@
       "id": "principles.BreathIsTheClock",
       "kind": "adr",
       "title": "The breath is the clock",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "context": "A timer in seconds makes a person follow a clock; yoga follows the breath, whose length differs from one person to the next and from one day to the next.",
@@ -3876,29 +3876,6 @@
         "rejected": {
           "A timer in seconds": "the person would follow a clock instead of their breath"
         }
-      }
-    },
-    {
-      "id": "product.HoldInBreaths",
-      "kind": "requirement",
-      "title": "A hold counts in breaths",
-      "status": "unknown",
-      "fields": {
-        "owner": "ghalaax",
-        "deps": {
-          "counts": "std/algebra.Counts"
-        },
-        "body": "(function)"
-      }
-    },
-    {
-      "id": "product.HoldInBreathsCriteria",
-      "kind": "acceptance",
-      "title": "Criteria of a hold in breaths",
-      "status": "held",
-      "fields": {
-        "owner": "ghalaax",
-        "criteria": "(function)"
       }
     },
     {
@@ -6272,7 +6249,7 @@
     },
     {
       "from": "principles.BreathIsTheClock",
-      "to": "product.HoldInBreaths",
+      "to": "practice.HoldPhases",
       "kind": "appliedBy"
     },
     {
@@ -6363,16 +6340,6 @@
     {
       "from": "product.ChosenLanguageCriteria",
       "to": "product.ChosenLanguage",
-      "kind": "accepts"
-    },
-    {
-      "from": "product.HoldInBreaths",
-      "to": "product.BreathSetsThePace",
-      "kind": "refines"
-    },
-    {
-      "from": "product.HoldInBreathsCriteria",
-      "to": "product.HoldInBreaths",
       "kind": "accepts"
     },
     {

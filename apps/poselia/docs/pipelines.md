@@ -84,7 +84,7 @@ flowchart TB
 
 ## A public version
 
-> **A public version does not ship yet: 45 of 54 obligations hold.**
+> **A public version does not ship yet: 46 of 53 obligations hold.**
 
 For the target public; its programs are assembled for [A machine](sdlc.md#Machine).
 
@@ -108,7 +108,7 @@ flowchart TB
   n15["A page first, the phones after<br/><small>Architecture decision</small>"]:::unknown
   n16["The content is data, behind a port<br/><small>Architecture decision</small>"]:::unknown
   n17["The person's language, among those offered<br/><small>Architecture decision</small>"]:::held
-  n18["The breath is the clock<br/><small>Architecture decision</small>"]:::unknown
+  n18["The breath is the clock<br/><small>Architecture decision</small>"]:::held
   n19["Said aloud, the screen awake<br/><small>Architecture decision</small>"]:::unknown
   n20["three.js<br/><small>Package</small>"]:::held
   n21["three.js, its types<br/><small>Package</small>"]:::held
@@ -139,17 +139,16 @@ flowchart TB
   n46["How full the lungs are<br/><small>Requirement</small>"]:::held
   n47["Where a practice is<br/><small>Requirement</small>"]:::held
   n48["The breath of a moment<br/><small>Requirement</small>"]:::held
-  n49["A hold counts in breaths<br/><small>Requirement</small>"]:::unknown
-  n50["A phase set by the person<br/><small>Requirement</small>"]:::held
-  n51["A breath read back<br/><small>Requirement</small>"]:::held
-  n52["A breath measured by tapping<br/><small>Requirement</small>"]:::held
-  n53["Each decision of architecture serves the product<br/><small>Architecture rule</small>"]:::held
-  n54["Code serves the product<br/><small>Architecture rule</small>"]:::held
-  n55["Place the page<br/><small>Entry point</small>"]:::held
-  n56["A public version<br/><small>Shipment</small>"]:::unknown
+  n49["A phase set by the person<br/><small>Requirement</small>"]:::held
+  n50["A breath read back<br/><small>Requirement</small>"]:::held
+  n51["A breath measured by tapping<br/><small>Requirement</small>"]:::held
+  n52["Each decision of architecture serves the product<br/><small>Architecture rule</small>"]:::held
+  n53["Code serves the product<br/><small>Architecture rule</small>"]:::held
+  n54["Place the page<br/><small>Entry point</small>"]:::held
+  n55["A public version<br/><small>Shipment</small>"]:::unknown
   n43 -->|Depends on| n40
   n18 -->|Applied by| n48
-  n18 -->|Applied by| n49
+  n18 -->|Applied by| n45
   n17 -->|Applied by| n42
   n15 -->|Applied by| n1
   n15 -->|Applied by| n2
@@ -168,8 +167,8 @@ flowchart TB
   n7 -->|Verifies| n45
   n7 -->|Verifies| n43
   n9 -->|Verifies| n41
-  n8 -->|Verifies| n52
-  n8 -->|Verifies| n50
+  n8 -->|Verifies| n51
+  n8 -->|Verifies| n49
   n4 -->|Checks| n0
   n12 -->|Verifies| n3
   n12 -->|Depends on| n3
@@ -178,12 +177,12 @@ flowchart TB
   n0 -->|Produced by| n1
   n2 -->|Checks| n0
   n2 -->|Run by| n3
-  n55 -->|Depends on| n0
-  n13 -->|Verifies| n55
-  n13 -->|Depends on| n55
+  n54 -->|Depends on| n0
+  n13 -->|Verifies| n54
+  n13 -->|Depends on| n54
   n13 -->|Depends on| n0
-  n56 -->|Ships| n0
-  n56 -->|Deployed by| n55
+  n55 -->|Ships| n0
+  n55 -->|Deployed by| n54
   n23 -.->|Depends on| n35
   n23 -.->|Depends on| n33
   n23 -.->|Depends on| n24
@@ -232,7 +231,7 @@ flowchart TB
 | 17 | prove | [A page first, the phones after](principles.md#PageFirst) | — | [The decisions hold](sdlc.md#DecisionsApplied) via [Poselia's page](app.md#PoseliaPage) | **unknown** |  |
 | 18 | prove | [The content is data, behind a port](principles.md#ContentAsData) | — | [The decisions hold](sdlc.md#DecisionsApplied) via [Poses](content.md#Poses) | **unknown** |  |
 | 19 | prove | [The person's language, among those offered](principles.md#LanguageOffered) | — | [The decisions hold](sdlc.md#DecisionsApplied) via [Languages offered](content.md#Languages) | **held** |  |
-| 20 | prove | [The breath is the clock](principles.md#BreathIsTheClock) | — | [The decisions hold](sdlc.md#DecisionsApplied) via [The breath of a moment](product.md#BreathOf) | **unknown** |  |
+| 20 | prove | [The breath is the clock](principles.md#BreathIsTheClock) | — | [The decisions hold](sdlc.md#DecisionsApplied) via [The breath of a moment](product.md#BreathOf) | **held** |  |
 | 21 | prove | [Said aloud, the screen awake](principles.md#SaidAloud) | — | [The decisions hold](sdlc.md#DecisionsApplied) via [Play a practice](practice.md#PlayPractice) | **unknown** |  |
 | 22 | prove | [three.js](stage.md#ThreePackage) | — | [The packages are safe](sdlc.md#PackagesSafe) via [The browser's stage](stage.md#BrowserStage) | **held** | 29 October 2026 by   |
 | 23 | prove | [three.js, its types](stage.md#ThreeTypes) | — | [The packages are safe](sdlc.md#PackagesSafe) via [The browser's stage](stage.md#BrowserStage) | **held** | 29 October 2026 by   |
@@ -263,14 +262,13 @@ flowchart TB
 | 48 | prove | [How full the lungs are](practice.md#LungsFull) | — | [The product holds](sdlc.md#ProductServed) via [The breath of a moment](product.md#BreathOf) | **held** |  |
 | 49 | prove | [Where a practice is](practice.md#MomentAt) | — | [The product holds](sdlc.md#ProductServed) via [The breath of a moment](product.md#BreathOf) | **held** |  |
 | 50 | prove | [The breath of a moment](product.md#BreathOf) | — | [The product holds](sdlc.md#ProductServed) | **held** |  |
-| 51 | prove | [A hold counts in breaths](product.md#HoldInBreaths) | — | [The product holds](sdlc.md#ProductServed) via [The breath of a moment](product.md#BreathOf) | **unknown** |  |
-| 52 | prove | [A phase set by the person](settings.md#AdjustedBreath) | — | [The product holds](sdlc.md#ProductServed) via [The breath of a moment](product.md#BreathOf) | **held** |  |
-| 53 | prove | [A breath read back](settings.md#BreathRead) | — | [The product holds](sdlc.md#ProductServed) via [The breath of a moment](product.md#BreathOf) | **held** |  |
-| 54 | prove | [A breath measured by tapping](settings.md#MeasuredBreath) | — | [The product holds](sdlc.md#ProductServed) via [The breath of a moment](product.md#BreathOf) | **held** |  |
-| 55 | prove | [Each decision of architecture serves the product](sdlc.md#AdrsServeTheProduct) | — | [The rules of the app hold](sdlc.md#RulesHeld) | **held** |  |
-| 56 | prove | [Code serves the product](sdlc.md#CodeServesTheProduct) | — | [The rules of the app hold](sdlc.md#RulesHeld) | **held** |  |
-| 57 | deploy | [Place the page](sdlc.md#PlaceThePage) | itself | — | **held** | 29 October 2026 by claude  |
-| 58 | record | [A public version](sdlc.md#PublicVersion) | — | — | **unknown** |  |
+| 51 | prove | [A phase set by the person](settings.md#AdjustedBreath) | — | [The product holds](sdlc.md#ProductServed) via [The breath of a moment](product.md#BreathOf) | **held** |  |
+| 52 | prove | [A breath read back](settings.md#BreathRead) | — | [The product holds](sdlc.md#ProductServed) via [The breath of a moment](product.md#BreathOf) | **held** |  |
+| 53 | prove | [A breath measured by tapping](settings.md#MeasuredBreath) | — | [The product holds](sdlc.md#ProductServed) via [The breath of a moment](product.md#BreathOf) | **held** |  |
+| 54 | prove | [Each decision of architecture serves the product](sdlc.md#AdrsServeTheProduct) | — | [The rules of the app hold](sdlc.md#RulesHeld) | **held** |  |
+| 55 | prove | [Code serves the product](sdlc.md#CodeServesTheProduct) | — | [The rules of the app hold](sdlc.md#RulesHeld) | **held** |  |
+| 56 | deploy | [Place the page](sdlc.md#PlaceThePage) | itself | — | **held** | 29 October 2026 by claude  |
+| 57 | record | [A public version](sdlc.md#PublicVersion) | — | — | **unknown** |  |
 
 `trame ship PublicVersion --by <name>`
 

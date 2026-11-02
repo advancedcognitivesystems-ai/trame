@@ -1,12 +1,12 @@
 /** Poselia · Principles */
 
 import { adr } from "#trame/kinds/adr"
-import { PractiseGuided, BreathSetsThePace, InTheirLanguage, CheckedContent, BreathOf, HoldInBreaths, ChosenLanguage, PhoneOnTheMat } from "./product"
+import { PractiseGuided, BreathSetsThePace, InTheirLanguage, CheckedContent, BreathOf, ChosenLanguage, PhoneOnTheMat } from "./product"
 import { Poses, Languages } from "./content"
 import { ContentSource, PoseliaApp } from "./architecture"
 import { PreferencesStore, DeviceLanguages, SpeechVoice, ScreenAwake } from "#std/platform"
 import { PoseliaPage } from "./app"
-import { PlayPractice } from "./practice"
+import { PlayPractice, HoldPhases } from "./practice"
 import { PageOpens } from "./sdlc"
 
 // The decisions the rest follows. Each names what applies it; one that nothing applies yet is work left.
@@ -39,7 +39,7 @@ export const BreathIsTheClock = adr({
   consequences: "The person's pattern (four phases) is kept in the preferences; a hold written in seconds becomes whole breaths, so that a chime falls at the end of a breath; the animation of a sequence follows the phases.",
   rejected: { "Two modes, timer and breath": "two ways to count the same practice, and the timer would win by habit" },
   serves: [BreathSetsThePace],
-  appliedBy: [BreathOf, HoldInBreaths],
+  appliedBy: [BreathOf, HoldPhases],
 })
 
 /**
