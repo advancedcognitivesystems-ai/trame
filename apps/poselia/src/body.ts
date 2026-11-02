@@ -236,6 +236,17 @@ export const SideNames = decision<{ right: string; left: string }>({
 })
 
 /**
+ * Where a spot of the body is
+ * The sternum half way from the waist to the base of the neck; a point of both sides half way between them; a spot on
+ * the floor a centimetre above it, so that a mark there is seen.
+ */
+export const SpotPlaces = decision<{ sternum: number; between: number; aboveFloor: number }>({
+  owner: "ghalaax",
+  value: { sternum: 0.5, between: 0.5, aboveFloor: 0.01 },
+  rejected: { "On the floor itself": "a mark drawn at the height of the floor flickered through it" },
+})
+
+/**
  * The points of a rest
  * The points of the body each rest of a pose puts on the floor: a foot on its heel, ball and toes, the toes on the ball
  * and the toes, the instep on the top of the foot, a knee on the knee; the hands on the wrists and the finger tips, of
@@ -909,17 +920,20 @@ export const SidesOfCriteria = acceptance({
 export const SpotOn = requirement({
   owner: "ghalaax",
   refines: [PractiseGuided],
-  rule: (body: Body, spot: Spot, sides: Sides): Vec => {
+  deps: { g: MatSpace, places: SpotPlaces, names: SideNames },
+  body: ({ g, places, names }) => (body: Body, spot: Spot, sides: Sides): Vec => {
     const trunk: Partial<Record<Point, Vec>> = {
       [Point.pelvis]: body.pelvis, [Point.waist]: body.waist, [Point.neckBase]: body.neckBase, [Point.shoulders]: body.shoulders,
-      [Point.neckTop]: body.neckTop, [Point.head]: body.head, [Point.nose]: body.nose, [Point.sternum]: mix3(body.waist, body.neckBase, 0.5),
+      [Point.neckTop]: body.neckTop, [Point.head]: body.head, [Point.nose]: body.nose,
+      [Point.sternum]: g.mix3(body.waist, body.neckBase, places.sternum),
     }
-    const joint = (s: "L" | "R") => body[s][spot.at as keyof Side] as Vec
-    const sideOf = { [Which.left]: "L", [Which.right]: "R", [Which.front]: sides.front, [Which.back]: sides.back } as const
+    const joint = (onLeft: boolean) => (onLeft ? body.L : body.R)[spot.at as keyof Side] as Vec
+    const onLeft = (side: Which): boolean =>
+      side === Which.left || (side === Which.front && sides.front === names.left) || (side === Which.back && sides.back === names.left)
     const named = trunk[spot.at]
-    const p = named ?? (spot.side === undefined || spot.side === Which.both ? mix3(joint("L"), joint("R"), 0.5) : joint(sideOf[spot.side]))
-    const down: Vec = spot.floor ? [p[0], 0.01, p[2]] : p
-    return spot.shift ? add(down, spot.shift) : down
+    const p = named ?? (spot.side === undefined || spot.side === Which.both ? g.mix3(joint(true), joint(false), places.between) : joint(onLeft(spot.side)))
+    const down: Vec = spot.floor ? g.at(g.along(p), places.aboveFloor, g.across(p)) : p
+    return spot.shift ? g.add(down, spot.shift) : down
   },
 })
 
@@ -946,11 +960,8 @@ export const SpotOnCriteria = acceptance({
 export const AngleBetween = requirement({
   owner: "ghalaax",
   refines: [PractiseGuided],
-  rule: (at: Vec, from: Vec, to: Vec): number => {
-    const u = unit(sub(from, at))
-    const w = unit(sub(to, at))
-    return (Math.acos(Math.max(-1, Math.min(1, dot(u, w)))) * 180) / Math.PI
-  },
+  deps: { g: MatSpace },
+  body: ({ g }) => (at: Vec, from: Vec, to: Vec): number => g.angleAt(at, from, to),
 })
 
 /** Criteria of the angle at a joint */

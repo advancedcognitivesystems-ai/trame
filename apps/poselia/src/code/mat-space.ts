@@ -16,6 +16,7 @@ export interface Deps {
     length(a: Vector): number
     unit(a: Vector): Vector
     mix(a: Vector, b: Vector, t: number): Vector
+    angleAt(at: Vector, from: Vector, to: Vector): Turning
   }
   angle: { degree(n: number): Turning; turn(n: number): Turning }
   counts: { one: number }
@@ -52,6 +53,8 @@ const body = ({ v, angle, counts }: Deps) => {
     turn: angle.turn(counts.one) / angle.degree(counts.one),
     /** A bump over a way, from nothing at its start to its top half way and nothing at its end. */
     arch: (t: number): number => Math.sin((angle.turn(counts.one) / (counts.one + counts.one)) * t),
+    /** The angle at a point between the directions to two others, in degrees, from none to a half turn. */
+    angleAt: (at: Vector, from: Vector, to: Vector): number => v.angleAt(at, from, to) / angle.degree(counts.one),
     /** How long a vector is in that plane, across left out. */
     planar: (d: Vector): number => Math.hypot(along(d), height(d)),
     /** The direction a quarter turn from another in that plane, toward the height: the other way from the face. */

@@ -176,7 +176,9 @@ Environment · `Test`
 Requirement · `AngleBetween` · **held**
 
 - Owner: ghalaax
+- Parameters: { g: body.MatSpace }
 - Refines: Practise yoga on one's own, guided
+- Depends on: The space of the mat
 
 ### The body between two poses
 
@@ -263,7 +265,9 @@ Requirement · `SidesOf` · **held**
 Requirement · `SpotOn` · **held**
 
 - Owner: ghalaax
+- Parameters: { g: body.MatSpace, places: body.SpotPlaces, names: body.SideNames }
 - Refines: Practise yoga on one's own, guided
+- Depends on: The space of the mat, Where a spot of the body is, The names of the sides
 
 ### A leg that steps
 
@@ -355,6 +359,14 @@ Decision · `SideNames`
 - Decided by: ghalaax
 - Value: { right: R, left: L }
 - Rejected: The words right and left, the rests of a pose would be longer to write, for no reader but the rules
+
+### Where a spot of the body is
+
+Decision · `SpotPlaces`
+
+- Decided by: ghalaax
+- Value: { sternum: 0.5, between: 0.5, aboveFloor: 0.01 }
+- Rejected: On the floor itself, a mark drawn at the height of the floor flickered through it
 
 ### Touching the floor
 

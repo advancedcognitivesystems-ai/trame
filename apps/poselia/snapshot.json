@@ -334,7 +334,10 @@
       "status": "held",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {
+          "g": "body.MatSpace"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -797,7 +800,12 @@
       "status": "held",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {
+          "g": "body.MatSpace",
+          "places": "body.SpotPlaces",
+          "names": "body.SideNames"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -808,6 +816,22 @@
       "fields": {
         "owner": "ghalaax",
         "criteria": "(function)"
+      }
+    },
+    {
+      "id": "body.SpotPlaces",
+      "kind": "decision",
+      "title": "Where a spot of the body is",
+      "fields": {
+        "owner": "ghalaax",
+        "value": {
+          "sternum": 0.5,
+          "between": 0.5,
+          "aboveFloor": 0.01
+        },
+        "rejected": {
+          "On the floor itself": "a mark drawn at the height of the floor flickered through it"
+        }
       }
     },
     {
@@ -5772,6 +5796,11 @@
       "kind": "refines"
     },
     {
+      "from": "body.AngleBetween",
+      "to": "body.MatSpace",
+      "kind": "deps"
+    },
+    {
       "from": "body.AngleBetweenCriteria",
       "to": "body.AngleBetween",
       "kind": "accepts"
@@ -6070,6 +6099,21 @@
       "from": "body.SpotOn",
       "to": "product.PractiseGuided",
       "kind": "refines"
+    },
+    {
+      "from": "body.SpotOn",
+      "to": "body.MatSpace",
+      "kind": "deps"
+    },
+    {
+      "from": "body.SpotOn",
+      "to": "body.SpotPlaces",
+      "kind": "deps"
+    },
+    {
+      "from": "body.SpotOn",
+      "to": "body.SideNames",
+      "kind": "deps"
     },
     {
       "from": "body.SpotOnCriteria",
