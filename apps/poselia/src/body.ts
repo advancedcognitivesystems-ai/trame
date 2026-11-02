@@ -221,7 +221,7 @@ const toward = (degrees: number): Vec => [Math.cos((degrees * Math.PI) / 180), M
 export const MatSpace = fn({
   owner: "ghalaax",
   serves: [PractiseGuided],
-  deps: { v: Vectors, angle: Angle },
+  deps: { v: Vectors, angle: Angle, counts: Counts },
   body: code.file<typeof import("./code/mat-space").default>("./code/mat-space.ts"),
 })
 
@@ -412,19 +412,21 @@ export const KeyOfCriteria = acceptance({
 export const HandOnItsWay = requirement({
   owner: "ghalaax",
   refines: [PractiseGuided],
-  rule: (from: Vec, to: Vec, baseFrom: Vec, baseTo: Vec, base: Vec, t: number): Vec => {
-    const mv = Movement.value
-    if (len(sub(from, to)) < mv.still) return mix3(from, to, t)
-    const angle = (v: Vec) => (Math.atan2(v[1], v[0]) * 180) / Math.PI
+  deps: { mv: Movement, g: MatSpace },
+  body: ({ mv, g }) => (from: Vec, to: Vec, baseFrom: Vec, baseTo: Vec, base: Vec, t: number): Vec => {
+    const { sub, len, mix, height, along, across } = g
+    if (len(sub(from, to)) < mv.still) return g.mix3(from, to, t)
     const r0 = sub(from, baseFrom)
     const r1 = sub(to, baseTo)
-    const d = toward(mix(angle(r0), angle(r1), t))
-    const l = mix(Math.hypot(r0[0], r0[1]), Math.hypot(r1[0], r1[1]), t)
-    const x = base[0] + d[0] * l
-    const z = mix(from[2], to[2], t)
+    const d = g.toward(mix(g.heading(r0), g.heading(r1), t))
+    const l = mix(g.planar(r0), g.planar(r1), t)
+    const x = along(base) + along(d) * l
+    const z = mix(across(from), across(to), t)
     // Only a place on the floor shapes the way: the hand leaves it and comes down onto it from above.
-    const rise = (place: Vec) => (place[1] <= mv.wristFloor + mv.still ? place[1] + Math.min(mv.landing * Math.hypot(x - place[0], z - place[2]), mv.clearance) : -Infinity)
-    return [x, Math.max(base[1] + d[1] * l, Math.min(from[1], to[1]), Math.max(rise(from), rise(to)) === -Infinity ? -Infinity : Math.min(...[rise(from), rise(to)].filter((r) => r > -Infinity))), z]
+    const rise = (place: Vec) =>
+      height(place) <= mv.wristFloor + mv.still ? height(place) + Math.min(mv.landing * Math.hypot(x - along(place), z - across(place)), mv.clearance) : -Infinity
+    const rises = [rise(from), rise(to)].filter((r) => r > -Infinity)
+    return g.at(x, Math.max(height(base) + height(d) * l, Math.min(height(from), height(to)), rises.length ? Math.min(...rises) : -Infinity), z)
   },
 })
 
@@ -446,6 +448,39 @@ export const HandOnItsWayCriteria = acceptance({
 })
 
 /** A foot by its angles: its direction, its sole's normal, the toes' direction, and how far above the floor its ankle must be. */
+/**
+ * A knee kept above the mat
+ * A knee that would sink into the mat lifts the foot's aim by twice how deep it would sink, four times at most.
+ */
+export const KneeLift = decision<{ passes: number; overshoot: number }>({
+  owner: "ghalaax",
+  value: { passes: 4, overshoot: 2 },
+  rejected: { "Lifting by how deep it sinks": "the knee came back up only half way, each pass" },
+})
+
+/**
+ * A foot from its angles
+ * The direction along the foot and the one up from its sole, from the angle of the foot and of the toes; how far the
+ * ankle must stay above the floor for no point of the sole to go below it.
+ */
+export const FootOf = fn({
+  owner: "ghalaax",
+  serves: [PractiseGuided],
+  deps: { m: BodyMeasures, mv: Movement, g: MatSpace },
+  body: ({ m, mv, g }) => (foot: number, toes: number) => {
+    const { height } = g
+    const along = g.toward(foot)
+    const up = g.normal(along)
+    const toesAlong = g.toward(toes)
+    const ballDrop = -m.ballDown * height(up) + m.ballForward * height(along)
+    const below = -Math.min(
+      -m.heelDown * height(up) - m.heelBack * height(along), ballDrop, ballDrop + m.toes * height(toesAlong),
+      m.topUp * height(up) + m.topForward * height(along), -mv.ankleClear,
+    )
+    return { along, up, toesAlong, below }
+  },
+})
+
 const footOf = (foot: number, toes: number) => {
   const m = BodyMeasures.value
   const along = toward(foot)
@@ -468,19 +503,19 @@ const footOf = (foot: number, toes: number) => {
 export const PlantedLeg = requirement({
   owner: "ghalaax",
   refines: [PractiseGuided],
-  rule: (hip: Vec, foot: FootKey): { knee: Vec; ankle: Vec; reach: number } => {
-    const m = BodyMeasures.value
-    const mv = Movement.value
-    const { below } = footOf(foot.foot, foot.toes)
+  deps: { m: BodyMeasures, mv: Movement, g: MatSpace, feet: FootOf, twoBones: TwoBones, lift: KneeLift, counts: Counts },
+  body: ({ m, mv, g, feet, twoBones, lift, counts }) => (hip: Vec, foot: FootKey): { knee: Vec; ankle: Vec; reach: number } => {
+    const { height, along, across } = g
+    const { below } = feet(foot.foot, foot.toes)
     const legTo = (target: Vec) => {
-      const v = sub(target, hip)
-      const pole: Vec = len([-v[1], v[0], 0]) < 1e-4 ? [1, 0, 0] : [-v[1], v[0], 0]
-      return TwoBones(hip, target, m.thigh, m.shin, pole)
+      const pole = g.normal(g.sub(target, hip))
+      return twoBones(hip, target, m.thigh, m.shin, g.len(pole) < g.tolerance ? g.toward(counts.zero) : pole)
     }
-    let aim: Vec = [foot.at[0], Math.max(foot.at[1], below), foot.at[2]]
+    let aim: Vec = g.at(along(foot.at), Math.max(height(foot.at), below), across(foot.at))
     let leg = legTo(aim)
-    for (let pass = 0; pass < 4 && leg.middle[1] - m.kneeSurface < -mv.kneeGive; pass++) {
-      aim = [aim[0], aim[1] + 2 * (m.kneeSurface - mv.kneeGive - leg.middle[1]), aim[2]]
+    // A knee that would sink into the mat lifts the foot's aim, a few times at most.
+    for (let pass: number = counts.zero; pass < lift.passes && height(leg.middle) - m.kneeSurface < -mv.kneeGive; pass = counts.next(pass)) {
+      aim = g.add(aim, g.point(counts.zero, lift.overshoot * (m.kneeSurface - mv.kneeGive - height(leg.middle))))
       leg = legTo(aim)
     }
     return { knee: leg.middle, ankle: leg.end, reach: leg.reach }

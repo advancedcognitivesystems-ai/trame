@@ -199,8 +199,9 @@ Requirement · `FootOnItsWay` · **held**
 Requirement · `HandOnItsWay` · **held**
 
 - Owner: ghalaax
+- Parameters: { mv: body.Movement, g: body.MatSpace }
 - Refines: Practise yoga on one's own, guided
-- Depends on: How a body moves
+- Depends on: How a body moves, The space of the mat
 
 ### A pose ready to move
 
@@ -232,8 +233,9 @@ Requirement · `LimbsReach` · **held**
 Requirement · `PlantedLeg` · **held**
 
 - Owner: ghalaax
+- Parameters: { m: body.BodyMeasures, mv: body.Movement, g: body.MatSpace, feet: body.FootOf, twoBones: (rule), lift: body.KneeLift, counts: std/algebra.Counts }
 - Refines: Practise yoga on one's own, guided
-- Depends on: Measures of the body, How a body moves, A limb reaches its end
+- Depends on: Measures of the body, How a body moves, The space of the mat, A foot from its angles, A limb reaches its end, A knee kept above the mat
 
 ### A pose rests on what it names
 
@@ -298,6 +300,14 @@ Decision · `BodyMeasures`
 - Decided by: ghalaax
 - Value: { thigh: 0.44, shin: 0.43, upperArm: 0.29, forearm: 0.26, lowerBack: 0.25, chest: 0.25, neck: 0.09, head: 0.11, hips: 0.09, shoulders: 0.18, shoulderDrop: 0.04, hand: 0.17, nose: 0.1, heelBack: 0.06, heelDown: 0.07, ballForward: 0.13, ballDown: 0.06, toes: 0.06, topUp: 0.04, topForward: 0.05, kneeSurface: 0.05, wristSurface: 0.04, headSurface: 0.11, pelvisUp: 0.03, pelvisAcross: 0.1, pelvisAlong: 0.1, chestUp: 0.14, chestAcross: 0.11, chestAlong: 0.17 }
 - Rejected: Proportions as parts of the height, seen from the side, a flat figure cannot turn, and its angles made it float between poses
+
+### A knee kept above the mat
+
+Decision · `KneeLift`
+
+- Decided by: ghalaax
+- Value: { passes: 4, overshoot: 2 }
+- Rejected: Lifting by how deep it sinks, the knee came back up only half way, each pass
 
 ### How far a limb keeps from flat
 
@@ -442,12 +452,21 @@ Acceptance criteria · `TwoBonesCriteria` · **held**
 - Owner: ghalaax
 - Accepts: A limb reaches its end
 
+### A foot from its angles
+
+Function · `FootOf` · **unknown**
+
+- Owner: ghalaax
+- Parameters: { m: body.BodyMeasures, mv: body.Movement, g: body.MatSpace }
+- Serves: Practise yoga on one's own, guided
+- Depends on: Measures of the body, How a body moves, The space of the mat
+
 ### The space of the mat
 
 Function · `MatSpace` · **held**
 
 - Owner: ghalaax
-- Parameters: { v: geometry/vectors.Vectors, angle: geometry/angles.Angle }
+- Parameters: { v: geometry/vectors.Vectors, angle: geometry/angles.Angle, counts: std/algebra.Counts }
 - Serves: Practise yoga on one's own, guided
 
 ## Poselia · Composing

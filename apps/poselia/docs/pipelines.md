@@ -147,6 +147,7 @@ flowchart TB
   n54["Place the page<br/><small>Entry point</small>"]:::held
   n55["A public version<br/><small>Shipment</small>"]:::unknown
   n26 -->|Depends on| n35
+  n29 -->|Depends on| n36
   n43 -->|Depends on| n40
   n18 -->|Applied by| n48
   n18 -->|Applied by| n45
@@ -195,7 +196,6 @@ flowchart TB
   n23 -.->|Depends on| n36
   n28 -.->|Depends on| n26
   n28 -.->|Depends on| n23
-  n29 -.->|Depends on| n36
   n30 -.->|Depends on| n26
   n30 -.->|Depends on| n34
   n30 -.->|Depends on| n23

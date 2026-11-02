@@ -6,7 +6,7 @@
 |---|---|---|---|---|
 | A teacher who practises | 0 | 0 | 4 | 0 |
 | People who try it on a phone | 0 | 0 | 1 | 0 |
-| ghalaax | 0 | 0 | 31 | 207 |
+| ghalaax | 0 | 0 | 29 | 209 |
 
 <a id="A teacher who practises"></a>
 
@@ -52,10 +52,8 @@
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [The body between two poses](body.md#BodyAt) | ghalaax |  |
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A foot on its way](body.md#FootOnItsWay) | ghalaax |  |
 | warning | Computes the same kind of answer from the same kind of arguments as “A hand on its way” (ghalaax), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [A foot on its way](body.md#FootOnItsWay) | ghalaax |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A hand on its way](body.md#HandOnItsWay) | ghalaax |  |
 | warning | Computes the same kind of answer from the same kind of arguments as “A foot on its way” (ghalaax), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [A hand on its way](body.md#HandOnItsWay) | ghalaax |  |
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [Every limb reaches](body.md#LimbsReach) | ghalaax |  |
-| warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A leg on its foot](body.md#PlantedLeg) | ghalaax |  |
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [A pose rests on what it names](body.md#RestsOnWhatItNames) | ghalaax |  |
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [The legs in front and behind](body.md#SidesOf) | ghalaax |  |
 | warning | Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps | [Where a spot is](body.md#SpotOn) | ghalaax |  |
@@ -109,12 +107,14 @@
 | [The body between two poses](body.md#BodyAt) | Requirement | **held** |
 | [Criteria of the body between two poses](body.md#BodyAtCriteria) | Acceptance criteria | **held** |
 | [Measures of the body](body.md#BodyMeasures) | Decision |  |
+| [A foot from its angles](body.md#FootOf) | Function | **unknown** |
 | [A foot on its way](body.md#FootOnItsWay) | Requirement | **held** |
 | [Criteria of a foot on its way](body.md#FootOnItsWayCriteria) | Acceptance criteria | **held** |
 | [A hand on its way](body.md#HandOnItsWay) | Requirement | **held** |
 | [Criteria of a hand on its way](body.md#HandOnItsWayCriteria) | Acceptance criteria | **held** |
 | [A pose ready to move](body.md#KeyOf) | Requirement | **held** |
 | [Criteria of a pose ready to move](body.md#KeyOfCriteria) | Acceptance criteria | **held** |
+| [A knee kept above the mat](body.md#KneeLift) | Decision |  |
 | [Legs apart](body.md#LegsApart) | Requirement | **held** |
 | [Criteria of legs apart](body.md#LegsApartCriteria) | Acceptance criteria | **held** |
 | [How far a limb keeps from flat](body.md#LimbSlack) | Decision |  |

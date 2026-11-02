@@ -410,6 +410,21 @@
       }
     },
     {
+      "id": "body.FootOf",
+      "kind": "function",
+      "title": "A foot from its angles",
+      "status": "unknown",
+      "fields": {
+        "owner": "ghalaax",
+        "deps": {
+          "m": "body.BodyMeasures",
+          "mv": "body.Movement",
+          "g": "body.MatSpace"
+        },
+        "body": "(function)"
+      }
+    },
+    {
       "id": "body.FootOnItsWay",
       "kind": "requirement",
       "title": "A foot on its way",
@@ -436,7 +451,11 @@
       "status": "held",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {
+          "mv": "body.Movement",
+          "g": "body.MatSpace"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -473,6 +492,21 @@
       "fields": {
         "owner": "ghalaax",
         "criteria": "(function)"
+      }
+    },
+    {
+      "id": "body.KneeLift",
+      "kind": "decision",
+      "title": "A knee kept above the mat",
+      "fields": {
+        "owner": "ghalaax",
+        "value": {
+          "passes": 4,
+          "overshoot": 2
+        },
+        "rejected": {
+          "Lifting by how deep it sinks": "the knee came back up only half way, each pass"
+        }
       }
     },
     {
@@ -540,7 +574,8 @@
         "owner": "ghalaax",
         "deps": {
           "v": "geometry/vectors.Vectors",
-          "angle": "geometry/angles.Angle"
+          "angle": "geometry/angles.Angle",
+          "counts": "std/algebra.Counts"
         },
         "body": {
           "file": "./code/mat-space.ts",
@@ -583,7 +618,16 @@
       "status": "held",
       "fields": {
         "owner": "ghalaax",
-        "rule": "(function)"
+        "deps": {
+          "m": "body.BodyMeasures",
+          "mv": "body.Movement",
+          "g": "body.MatSpace",
+          "feet": "body.FootOf",
+          "twoBones": "(function)",
+          "lift": "body.KneeLift",
+          "counts": "std/algebra.Counts"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -5636,6 +5680,26 @@
       "kind": "accepts"
     },
     {
+      "from": "body.FootOf",
+      "to": "product.PractiseGuided",
+      "kind": "serves"
+    },
+    {
+      "from": "body.FootOf",
+      "to": "body.BodyMeasures",
+      "kind": "deps"
+    },
+    {
+      "from": "body.FootOf",
+      "to": "body.Movement",
+      "kind": "deps"
+    },
+    {
+      "from": "body.FootOf",
+      "to": "body.MatSpace",
+      "kind": "deps"
+    },
+    {
       "from": "body.FootOnItsWay",
       "to": "product.PractiseGuided",
       "kind": "refines"
@@ -5649,6 +5713,16 @@
       "from": "body.HandOnItsWay",
       "to": "product.PractiseGuided",
       "kind": "refines"
+    },
+    {
+      "from": "body.HandOnItsWay",
+      "to": "body.Movement",
+      "kind": "deps"
+    },
+    {
+      "from": "body.HandOnItsWay",
+      "to": "body.MatSpace",
+      "kind": "deps"
     },
     {
       "from": "body.HandOnItsWayCriteria",
@@ -5714,6 +5788,36 @@
       "from": "body.PlantedLeg",
       "to": "product.PractiseGuided",
       "kind": "refines"
+    },
+    {
+      "from": "body.PlantedLeg",
+      "to": "body.BodyMeasures",
+      "kind": "deps"
+    },
+    {
+      "from": "body.PlantedLeg",
+      "to": "body.Movement",
+      "kind": "deps"
+    },
+    {
+      "from": "body.PlantedLeg",
+      "to": "body.MatSpace",
+      "kind": "deps"
+    },
+    {
+      "from": "body.PlantedLeg",
+      "to": "body.FootOf",
+      "kind": "deps"
+    },
+    {
+      "from": "body.PlantedLeg",
+      "to": "body.TwoBones",
+      "kind": "deps"
+    },
+    {
+      "from": "body.PlantedLeg",
+      "to": "body.KneeLift",
+      "kind": "deps"
     },
     {
       "from": "body.PlantedLegCriteria",
@@ -7846,11 +7950,6 @@
       "kind": "uses"
     },
     {
-      "from": "body.HandOnItsWay",
-      "to": "body.Movement",
-      "kind": "uses"
-    },
-    {
       "from": "body.HandOnItsWayCriteria",
       "to": "body.Movement",
       "kind": "uses"
@@ -7863,21 +7962,6 @@
     {
       "from": "body.LimbsReach",
       "to": "body.BodyAt",
-      "kind": "uses"
-    },
-    {
-      "from": "body.PlantedLeg",
-      "to": "body.BodyMeasures",
-      "kind": "uses"
-    },
-    {
-      "from": "body.PlantedLeg",
-      "to": "body.Movement",
-      "kind": "uses"
-    },
-    {
-      "from": "body.PlantedLeg",
-      "to": "body.TwoBones",
       "kind": "uses"
     },
     {

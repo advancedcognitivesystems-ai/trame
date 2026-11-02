@@ -18,9 +18,10 @@ export interface Deps {
     mix(a: Vector, b: Vector, t: number): Vector
   }
   angle: { degree(n: number): Turning }
+  counts: { one: number }
 }
 
-const body = ({ v, angle }: Deps) => {
+const body = ({ v, angle, counts }: Deps) => {
   const { forward, left, up } = v.axes
   const height = (p: Vector) => v.dot(p, up)
   const along = (p: Vector) => v.dot(p, forward)
@@ -44,6 +45,15 @@ const body = ({ v, angle }: Deps) => {
       const a = angle.degree(degrees)
       return v.add(v.scale(forward, Math.cos(a)), v.scale(up, Math.sin(a)))
     },
+    /** The angle of a direction in that plane from the front, in degrees, toward the height. */
+    heading: (d: Vector): number => Math.atan2(height(d), along(d)) / angle.degree(counts.one),
+    /** How long a vector is in that plane, across left out. */
+    planar: (d: Vector): number => Math.hypot(along(d), height(d)),
+    /** The direction a quarter turn from another in that plane, toward the height: the other way from the face. */
+    normal: (d: Vector): Vector => v.add(v.scale(forward, -height(d)), v.scale(up, along(d))),
+    /** A point by its three coordinates: along the mat, its height, across it to the right. */
+    at: (alongMat: number, high: number, across: number): Vector =>
+      v.add(v.add(v.scale(forward, alongMat), v.scale(up, high)), v.scale(left, -across)),
     /** A point of that plane: so far along the mat, so high. */
     point: (alongMat: number, high: number): Vector => v.add(v.scale(forward, alongMat), v.scale(up, high)),
     height,
