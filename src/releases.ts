@@ -1468,3 +1468,18 @@ export const G99 = release({
   archive: "20b57a86634eb57a",
   assembledBy: G98,
 })
+
+/**
+ * Generation 100
+ */
+export const G100 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g100",
+  date: "2026-11-03",
+  what: "C1: trame upgrade moves each package of Trame a project references to the newest version its origin holds, and a reference behind is warned; the manifest keeps the lockfile with what it names (port PackageInstalls, npm first)",
+  fingerprint: "0230ee2457e71187",
+  language: "shared",
+  archive: "edf977f48addb616",
+  assembledBy: G99,
+})

@@ -1,6 +1,6 @@
 # Technical choices
 
-*What answers each port in each environment on 3 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
+*What answers each port in each environment on 30 October 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
 
 > **24 technical choices for 46 ports, in 3 environments**
 
@@ -176,7 +176,7 @@ Consequences: Writing goes through FileWriting and FileTrees only, which the rul
 
 `FilesInMemoryOverTheDisk` · `src/platform.ts:444` · status: **held**
 
-In the scenarios, the files are read from the disk and what the engine writes is kept in memory over them: one adapter that reads Node's file system and never writes it.
+In the scenarios, the files are read from the disk and what the engine writes is kept in memory over them: one adapter that reads Node's file system and never writes it; the installer writes its lockfile there too.
 
 In [Test](architecture.md#Test):
 
