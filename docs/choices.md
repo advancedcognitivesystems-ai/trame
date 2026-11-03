@@ -65,7 +65,7 @@
 
 ### The browser runs the page
 
-`TheBrowserRunsThePage` · `src/browser.ts:130` · status: **held**
+`TheBrowserRunsThePage` · `src/browser.ts:130` · status: **unknown**
 
 In the browser, the page loads, writes in its window, keeps the person's place, receives the graph and makes it whole again with what every browser has: the DOM, local storage, fetch and server-sent events, DecompressionStream.
 
@@ -691,7 +691,7 @@ Consequences: Graphs, legends and timelines are written by the engine, with the 
 
 ### The SDLC on the machine
 
-`SdlcOnTheMachine` · `src/sdlc.ts:144` · status: **held**
+`SdlcOnTheMachine` · `src/sdlc.ts:144` · status: **unknown**
 
 On the machine, the programs of the SDLC read their command from Node's command line and open pages in Chromium driven by Playwright, as the standard library realizes them.
 

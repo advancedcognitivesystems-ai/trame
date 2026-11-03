@@ -519,6 +519,18 @@
     "seal": "e0a43c1b1700fe63381d418be33124d88ef7a553ac800b0bd003694d045dafd3"
   },
   {
+    "node": "sdlc.PreviewScript",
+    "at": "2026-11-03",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "2db6ccc42278ce95ad44a7812f3da656741ba277e18c3ea168c66bffc96facbe",
+    "code": "8fd0a0ae",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "32f6e7e406246b01",
+    "seal": "f2f91c46601868f8094ddf1289ff992ecfa53ad8cbf5467ea4b04bb634570ae8"
+  },
+  {
     "node": "sdlc.PreviewWorkflow",
     "at": "2026-11-03",
     "source": "built",
@@ -529,6 +541,18 @@
     "signature": "attribution",
     "engine": "aa6b9b5c5dc57877",
     "seal": "6fef2823bdb1a866006a0b5cb2db4945d168afb31a163b2f3d06c9b670491d3a"
+  },
+  {
+    "node": "sdlc.PreviewWorkflow",
+    "at": "2026-11-03",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "79f911c1de3ee14ac6e51751cde362b05cd7c2ae4003471a1f2db8e4f278b409",
+    "code": "9bcf7c7e",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "32f6e7e406246b01",
+    "seal": "a742364796dce5fc55a46aac15ac2f8519bb6a3bf89c270713108e7e02cd86ba"
   },
   {
     "node": "sdlc.RunnersWritten",

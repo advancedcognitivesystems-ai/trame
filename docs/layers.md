@@ -65,15 +65,15 @@ flowchart TB
     n55["Write log<br/><small>Port</small>"]:::neutral
   end
   subgraph browser["Trame · The page in a browser"]
-    n56["Amendments sent to trame dev<br/><small>Implementation</small>"]:::held
-    n57["The browser's gzip<br/><small>Implementation</small>"]:::held
-    n58["The globals of the page, and trame dev<br/><small>Implementation</small>"]:::held
-    n59["Local storage<br/><small>Implementation</small>"]:::held
-    n60["The browser's window<br/><small>Implementation</small>"]:::held
-    n61["Explorer of a graph<br/><small>Function</small>"]:::held
-    n62["Show the graph<br/><small>Entry point</small>"]:::held
-    n63["The browser runs the page<br/><small>Technical choice</small>"]:::held
-    n64["The page is assembled<br/><small>Architecture decision</small>"]:::held
+    n56["Amendments sent to trame dev<br/><small>Implementation</small>"]:::unknown
+    n57["The browser's gzip<br/><small>Implementation</small>"]:::unknown
+    n58["The globals of the page, and trame dev<br/><small>Implementation</small>"]:::unknown
+    n59["Local storage<br/><small>Implementation</small>"]:::unknown
+    n60["The browser's window<br/><small>Implementation</small>"]:::unknown
+    n61["Explorer of a graph<br/><small>Function</small>"]:::unknown
+    n62["Show the graph<br/><small>Entry point</small>"]:::unknown
+    n63["The browser runs the page<br/><small>Technical choice</small>"]:::unknown
+    n64["The page is assembled<br/><small>Architecture decision</small>"]:::unknown
   end
   subgraph command-scenarios["Trame · Scenarios of the commands"]
     n65["An advance, in memory<br/><small>Scenario</small>"]:::held
@@ -631,13 +631,13 @@ flowchart TB
     n571["The candidate is checked by programs<br/><small>Obligation</small>"]:::neutral
     n572["The candidate plays the laws<br/><small>Check</small>"]:::unknown
     n573["The candidate runs on the machine<br/><small>Check</small>"]:::unknown
-    n574["The candidate engine<br/><small>Artefact</small>"]:::held
+    n574["The candidate engine<br/><small>Artefact</small>"]:::unknown
     n575["The packages are safe<br/><small>Obligation</small>"]:::neutral
     n576["The engine is verified<br/><small>Obligation</small>"]:::neutral
     n577["How a generation is made<br/><small>Policy</small>"]:::neutral
-    n578["The graph page<br/><small>Artefact</small>"]:::held
+    n578["The graph page<br/><small>Artefact</small>"]:::unknown
     n579["How the graph page is opened<br/><small>Decision</small>"]:::neutral
-    n580["The graph page opens<br/><small>Check</small>"]:::held
+    n580["The graph page opens<br/><small>Check</small>"]:::unknown
     n581["What the scenario of the graph page shows<br/><small>Decision</small>"]:::neutral
     n582["What the graph page is asked<br/><small>Function</small>"]:::held
     n583["The language serves what it says<br/><small>Obligation</small>"]:::neutral
@@ -647,7 +647,7 @@ flowchart TB
     n587["Open the graph page<br/><small>Entry point</small>"]:::held
     n588["The page's program<br/><small>Artefact</small>"]:::held
     n589["The SDLC in memory<br/><small>Technical choice</small>"]:::held
-    n590["The SDLC on the machine<br/><small>Technical choice</small>"]:::held
+    n590["The SDLC on the machine<br/><small>Technical choice</small>"]:::unknown
     n591["What the programs of Trame's SDLC say<br/><small>Message catalog</small>"]:::neutral
     n592["Trame's SDLC<br/><small>Component</small>"]:::neutral
   end

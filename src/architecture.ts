@@ -107,7 +107,7 @@ export interface Prelude {
   /** The directory of the engine that runs: a generation's, or the repository's for the candidate (since g88). */
   engine: string
 }
-export type FileReading = Pick<typeof import("node:fs"), "readFileSync" | "existsSync" | "readdirSync" | "statSync" | "watch">
+export type FileReading = Pick<typeof import("node:fs"), "readFileSync" | "existsSync" | "readdirSync" | "statSync" | "watch" | "realpathSync">
 export type FileWriting = Pick<typeof import("node:fs"), "writeFileSync" | "mkdirSync">
 export type Paths = Pick<typeof import("node:path"), "join" | "resolve" | "relative" | "dirname" | "basename" | "sep">
 export interface ModuleLoader {

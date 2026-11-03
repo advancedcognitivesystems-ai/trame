@@ -2,7 +2,7 @@
 // underneath is read, never written. Trees are copied, linked and removed in memory, compared in the unified format; a
 // watch is told of each file written under it. A scenario reads what was written through the write log.
 
-import { readFileSync, existsSync, readdirSync, statSync } from "node:fs"
+import { readFileSync, existsSync, readdirSync, statSync, realpathSync } from "node:fs"
 import type { BodyOf } from "../../../trame/kernel"
 import type { MemoryFiles } from "../../platform"
 
@@ -98,6 +98,8 @@ const body: BodyOf<typeof MemoryFiles> = ({ paths, temporary, diff, file, events
 
   return {
     existsSync: ((p: unknown) => exists(at(p))) as never,
+    // A path in memory is its own: only the disk has links.
+    realpathSync: ((p: unknown) => (onDisk(at(p)) ? realpathSync(at(p)) : at(p))) as never,
     readFileSync: ((p: unknown) => read(at(p))) as never,
     statSync: ((p: unknown) => {
       const path = at(p)

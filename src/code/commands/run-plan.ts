@@ -36,11 +36,14 @@ const body = ({ line, project, layout, pin, reading, paths, encodings, values, s
   return (root: string, comp: Compilation, pipeline: Pipeline, written: View, file: string): RunPlan => {
     const configuration = JSON.parse(read(join(root, layout.configuration)) ?? JSON.stringify({})) as Record<string, unknown>
     const pinned = configuration[pin.key]
+    // Each directory by its real path (since g98): a project reaches its generation and its libraries through links
+    // (.trame/trame, .trame/std), and the place of a link says nothing of where its target is in the repository.
+    const real = (dir: string) => (reading.existsSync(dir) ? reading.realpathSync(dir) : dir)
     // The generation lives under the repository's generations: the repository is two directories above it.
-    const generation = values.isText(pinned) ? resolve(root, pinned) : root
+    const generation = values.isText(pinned) ? real(resolve(root, pinned)) : root
     const repository = dirname(dirname(generation))
     const from = (to: string, base = repository) => relative(base, to) || posix.currentDirectory
-    const libraries = project.projectDirs(root).libraries
+    const libraries = project.projectDirs(root).libraries.map((l) => ({ ...l, home: real(l.home) }))
     const locked = (dir: string) => reading.existsSync(join(dir, layout.lockfile))
 
     // What the shipment's programs wire in its environment, and the packages those nodes use.
@@ -56,7 +59,12 @@ const body = ({ line, project, layout, pin, reading, paths, encodings, values, s
       return comp.plan([...c.dependencies.map((d) => d.node), ...entries], environment).steps.map((s) => s.node)
     }) : []
     const packages = [...new Map(wired.flatMap((n) => comp.from(n).out(EdgeName.packages).nodes()).map((p) => [p.ref, p])).values()]
-    const home = (v: View) => libraries.find((l) => l.name === v.library)?.home ?? root
+    // A package is prepared where it is installed: in its library when the library installs its own (it has a
+    // lockfile, as std as it is), in the project otherwise (a library at a version, whose packages the project installs).
+    const home = (v: View) => {
+      const lib = libraries.find((l) => l.name === v.library)
+      return lib !== undefined && locked(lib.home) ? lib.home : root
+    }
     const prepares = packages.flatMap((p) => {
       const run = p.field(PackageField.prepare)
       return values.isText(run) ? [{ dir: from(home(p)), run }] : []
