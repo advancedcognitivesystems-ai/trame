@@ -12,6 +12,7 @@ import { BrowserLoading, BrowserPreferences, BrowserLanguages, BrowserSpeech, Br
 import { Adapter, Strategy } from "#std/patterns"
 import { Html, Aria, Svg } from "#std/html"
 import { UiEvents } from "#std/web"
+import { Time } from "#std/measures"
 import { Counts, Texts } from "#std/algebra"
 import { PractiseGuided, InTheirLanguage } from "./product"
 import { Browser, Test, PoseliaApp, Screen, ContentSource, Stage } from "./architecture"
@@ -78,7 +79,7 @@ export const BrowserScreen = implementation({
   implements: [Screen],
   deps: {
     html: Html, aria: Aria, svg: Svg, events: UiEvents, screen: ScreenNames, parts: DrawingParts, player: PlayerNames, settings: SettingsNames,
-    composer: ComposerNames, counts: Counts, texts: Texts, stage: Stage,
+    composer: ComposerNames, counts: Counts, texts: Texts, stage: Stage, time: Time,
   },
   body: code.file("./code/browser-screen.ts"),
 })

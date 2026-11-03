@@ -9,7 +9,7 @@
 Function · `FreeCancellationEnd` · **held**
 
 - Owner: lea
-- Parameters: { freePeriod: cancellation.FreeCancellationPeriod }
+- Parameters: { freePeriod: cancellation.FreeCancellationPeriod, time: std/measures.Time }
 - Must stay synchronous: true
 - Serves: Refund on cancellation
 - Depends on: Free cancellation period
@@ -19,7 +19,7 @@ Function · `FreeCancellationEnd` · **held**
 Function · `LeadTime` · **held**
 
 - Owner: karim
-- Parameters: { clock: architecture.Clock }
+- Parameters: { clock: architecture.Clock, time: std/measures.Time }
 - Depends on: Clock
 
 ### Cancel a reservation
@@ -646,7 +646,7 @@ Decision · `UnknownReservation`
 Scenario · `ComplianceScenario` · **held**
 
 - Owner: lea
-- Parameters: { cancel: api.CancelReservation, refund: (rule), initial: infra.InitialReservations, instant: infra.TestInstant, says: messages.ScenarioChecks }
+- Parameters: { cancel: api.CancelReservation, refund: (rule), initial: infra.InitialReservations, instant: infra.TestInstant, time: std/measures.Time, says: messages.ScenarioChecks }
 - Verifies: Cancel a reservation, Refund on cancellation
 - In: Test
 - Depends on: Cancel a reservation, Refund on cancellation, Initial reservations, Test instant, Checks of the scenarios
@@ -656,7 +656,7 @@ Scenario · `ComplianceScenario` · **held**
 Scenario · `ReadScenario` · **held**
 
 - Owner: karim
-- Parameters: { read: api.ReadReservation, initial: infra.InitialReservations, freePeriod: cancellation.FreeCancellationPeriod, unknown: scenarios.UnknownReservation, http: std/web.Http, says: messages.ScenarioChecks }
+- Parameters: { read: api.ReadReservation, initial: infra.InitialReservations, freePeriod: cancellation.FreeCancellationPeriod, unknown: scenarios.UnknownReservation, http: std/web.Http, time: std/measures.Time, says: messages.ScenarioChecks }
 - Verifies: Read a reservation, End of free cancellation, Reservations in SQL, In-memory SQLite database, SQLite's dialect
 - In: Test
 - Depends on: Read a reservation, Initial reservations, Free cancellation period, Unknown reservation, Checks of the scenarios
@@ -676,7 +676,7 @@ Scenario · `ReadsNeverWrite` · **held**
 Scenario · `RepeatedCancellationScenario` · **held**
 
 - Owner: karim
-- Parameters: { cancel: api.CancelReservation, log: architecture.PaymentLog, refund: (rule), initial: infra.InitialReservations, instant: infra.TestInstant, http: std/web.Http, says: messages.ScenarioChecks }
+- Parameters: { cancel: api.CancelReservation, log: architecture.PaymentLog, refund: (rule), initial: infra.InitialReservations, instant: infra.TestInstant, http: std/web.Http, time: std/measures.Time, says: messages.ScenarioChecks }
 - Verifies: Cancel a reservation, Lead time of a cancellation, Cancellations in SQL, Simulated payment provider, Stopped clock
 - In: Test
 - Depends on: Cancel a reservation, Payment log, Refund on cancellation, Initial reservations, Test instant, Checks of the scenarios

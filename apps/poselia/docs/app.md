@@ -10,7 +10,7 @@
 
 ### Colours
 
-`Colours` · `src/app.ts:129`
+`Colours` · `src/app.ts:130`
 
 The colours of the page, as the variables its style sheet uses: a warm paper, a dark ink, a sage accent, a terracotta for what does not make sense; the dawn orange of the landmarks, its pale tint, its dark ink, the ink on it.
 
@@ -36,7 +36,7 @@ The colours of the page, as the variables its style sheet uses: a warm paper, a 
 
 ### Measures
 
-`Measures` · `src/app.ts:139`
+`Measures` · `src/app.ts:140`
 
 The type, the spaces and the widths of the page, as the variables its style sheet uses.
 
@@ -93,7 +93,7 @@ The type, the spaces and the widths of the page, as the variables its style shee
 
 ### Names of the screen
 
-`ScreenNames` · `src/app.ts:66`
+`ScreenNames` · `src/app.ts:67`
 
 The classes the browser's screen gives its parts, which the style sheet styles; the element the app writes in.
 
@@ -118,7 +118,7 @@ The classes the browser's screen gives its parts, which the style sheet styles; 
 
 ### The content the app carries
 
-`CarriedContent` · `src/app.ts:104` · status: **held**
+`CarriedContent` · `src/app.ts:105` · status: **held**
 
 The rows of the datasets, as the app was delivered with them.
 
@@ -133,7 +133,7 @@ The rows of the datasets, as the app was delivered with them.
 
 ### The home view
 
-`HomeViewOf` · `src/app.ts:34` · status: **held**
+`HomeViewOf` · `src/app.ts:35` · status: **held**
 
 What the home page shows, in the language the app speaks now: built from the content and the words, it touches nothing.
 
@@ -152,7 +152,7 @@ What the home page shows, in the language the app speaks now: built from the con
 
 ### Style of the page
 
-`PageStyle` · `src/app.ts:158`
+`PageStyle` · `src/app.ts:159`
 
 - Owner: ghalaax
 - Body: `./code/page.css` (css)
@@ -165,7 +165,7 @@ What the home page shows, in the language the app speaks now: built from the con
 
 ### Show the home page
 
-`ShowHome` · `src/app.ts:50` · status: **held**
+`ShowHome` · `src/app.ts:51` · status: **held**
 
 When the page loads, each time the person chooses another language, and when they come back from a practice, the composer or the settings: the home view, from the content; a sequence chosen is played with the person's breath, or learnt, each pose held; the composer and the settings open.
 
@@ -186,12 +186,12 @@ Triggered by `the loading of the page`
 
 ### The browser's screen
 
-`BrowserScreen` · `src/app.ts:76` · status: **held**
+`BrowserScreen` · `src/app.ts:77` · status: **unknown**
 
 The view written in the document with the elements of HTML, the drawings with those of SVG; a language chosen runs the action.
 
 - Owner: ghalaax
-- Parameters: `html` ← [HTML](../.trame/std/docs/html.md#Html) · `aria` ← [WAI-ARIA](../.trame/std/docs/html.md#Aria) · `svg` ← [SVG](../.trame/std/docs/html.md#Svg) · `events` ← [UI events](../.trame/std/docs/web.md#UiEvents) · `screen` ← [Names of the screen](#ScreenNames) · `parts` ← [Parts of a drawing](drawing.md#DrawingParts) · `player` ← [Names of the player](practice.md#PlayerNames) · `settings` ← [Names of the settings](settings.md#SettingsNames) · `composer` ← [Names of the composer](composing.md#ComposerNames) · `counts` ← [Counts](../.trame/std/docs/algebra.md#Counts) · `texts` ← [Texts](../.trame/std/docs/algebra.md#Texts) · `stage` ← [Stage](architecture.md#Stage)
+- Parameters: `html` ← [HTML](../.trame/std/docs/html.md#Html) · `aria` ← [WAI-ARIA](../.trame/std/docs/html.md#Aria) · `svg` ← [SVG](../.trame/std/docs/html.md#Svg) · `events` ← [UI events](../.trame/std/docs/web.md#UiEvents) · `screen` ← [Names of the screen](#ScreenNames) · `parts` ← [Parts of a drawing](drawing.md#DrawingParts) · `player` ← [Names of the player](practice.md#PlayerNames) · `settings` ← [Names of the settings](settings.md#SettingsNames) · `composer` ← [Names of the composer](composing.md#ComposerNames) · `counts` ← [Counts](../.trame/std/docs/algebra.md#Counts) · `texts` ← [Texts](../.trame/std/docs/algebra.md#Texts) · `stage` ← [Stage](architecture.md#Stage) · `time` ← [Time](../.trame/std/docs/measures.md#Time)
 - Body: `./code/browser-screen.ts` (typescript)
 - Effects: display, time
 - Implements: [Screen](architecture.md#Screen)
@@ -204,7 +204,7 @@ The view written in the document with the elements of HTML, the drawings with th
 
 ### Content carried by the app
 
-`ContentCarried` · `src/app.ts:115` · status: **held**
+`ContentCarried` · `src/app.ts:116` · status: **held**
 
 Until updates are downloaded, the app reads the content it was delivered with.
 
@@ -229,7 +229,7 @@ Context: An app on the mat works offline; the content is small enough to travel 
 
 ### The browser's realizations
 
-`InTheBrowser` · `src/app.ts:92` · status: **unknown**
+`InTheBrowser` · `src/app.ts:93` · status: **unknown**
 
 In a browser, the page loads, keeps the person's choices, reads the device's languages, speaks, keeps the screen awake and moves with the screen's frames as the standard library's realizations do; the screen is the document, the stage a scene of three.js in it, the bowl a sound made with Web Audio.
 
@@ -260,7 +260,7 @@ Context: The first delivery is a page a browser opens as it is; the phones come 
 
 ### Poselia's page
 
-`PoseliaPage` · `src/app.ts:169`
+`PoseliaPage` · `src/app.ts:170`
 
 The app as a page a browser opens as it is: the first delivery, which Claude shows as an artifact.
 

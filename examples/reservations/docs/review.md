@@ -44,10 +44,10 @@
 
 | Declaration | Kind | Owner | Source |
 |---|---|---|---|
-| [Cancel a reservation](api.md#CancelReservation) | Entry point | karim | `src/api.ts:51` |
+| [Cancel a reservation](api.md#CancelReservation) | Entry point | karim | `src/api.ts:52` |
 | [End of free cancellation](api.md#FreeCancellationEnd) | Function | lea | `src/api.ts:16` |
-| [Lead time of a cancellation](api.md#LeadTime) | Function | karim | `src/api.ts:28` |
-| [Read a reservation](api.md#ReadReservation) | Entry point | karim | `src/api.ts:38` |
+| [Lead time of a cancellation](api.md#LeadTime) | Function | karim | `src/api.ts:29` |
+| [Read a reservation](api.md#ReadReservation) | Entry point | karim | `src/api.ts:39` |
 | [Key of a cancellation's refund](architecture.md#CancellationKey) | Decision | karim | `src/architecture.ts:156` |
 | [Cancellation records](architecture.md#Cancellations) | Port | karim | `src/architecture.ts:120` |
 | [Clock](architecture.md#Clock) | Port | karim | `src/architecture.ts:138` |

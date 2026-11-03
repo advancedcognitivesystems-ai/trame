@@ -17,7 +17,7 @@ The moment until which a reservation can be cancelled at no cost.
 Must stay synchronous.
 
 - Owner: lea
-- Parameters: `freePeriod` ← [Free cancellation period](cancellation.md#FreeCancellationPeriod)
+- Parameters: `freePeriod` ← [Free cancellation period](cancellation.md#FreeCancellationPeriod) · `time` ← [Time](../../../std/docs/measures.md#Time)
 - Body: inline, in the declaration
 - Serves: [Refund on cancellation](cancellation.md#Refund)
 - Used by: [Read a reservation](#ReadReservation)
@@ -27,12 +27,12 @@ Must stay synchronous.
 
 ### Lead time of a cancellation
 
-`LeadTime` · `src/api.ts:28` · status: **held**
+`LeadTime` · `src/api.ts:29` · status: **held**
 
 How long before the start of the slot the reservation is cancelled, in seconds.
 
 - Owner: karim
-- Parameters: `clock` ← [Clock](architecture.md#Clock)
+- Parameters: `clock` ← [Clock](architecture.md#Clock) · `time` ← [Time](../../../std/docs/measures.md#Time)
 - Body: inline, in the declaration
 - Effects: time
 - Used by: [Cancel a reservation](#CancelReservation)
@@ -44,7 +44,7 @@ How long before the start of the slot the reservation is cancelled, in seconds.
 
 ### Cancel a reservation
 
-`CancelReservation` · `src/api.ts:51` · status: **held**
+`CancelReservation` · `src/api.ts:52` · status: **held**
 
 Refunds according to the rule, only once, even if the request arrives twice.
 
@@ -64,7 +64,7 @@ Triggered by `POST /reservations/:id/cancellation`
 
 ### Read a reservation
 
-`ReadReservation` · `src/api.ts:38` · status: **held**
+`ReadReservation` · `src/api.ts:39` · status: **held**
 
 The reservation, and the moment until which it can be cancelled for free.
 

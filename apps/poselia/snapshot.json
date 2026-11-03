@@ -5,7 +5,7 @@
       "id": "app.BrowserScreen",
       "kind": "implementation",
       "title": "The browser's screen",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "deps": {
@@ -20,7 +20,8 @@
           "composer": "composing.ComposerNames",
           "counts": "std/algebra.Counts",
           "texts": "std/algebra.Texts",
-          "stage": "architecture.Stage"
+          "stage": "architecture.Stage",
+          "time": "std/measures.Time"
         },
         "body": {
           "file": "./code/browser-screen.ts",
@@ -3725,10 +3726,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "trame",
-        "version": "95",
+        "version": "96",
         "joins": "language",
         "from": "path",
-        "at": "../../generations/g95"
+        "at": "../../generations/g96"
       }
     },
     {
@@ -3738,10 +3739,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "std",
-        "version": "0.13.0",
+        "version": "0.14.0",
         "joins": "library",
         "from": "path",
-        "at": "../../std/releases/0.13.0"
+        "at": "../../std/releases/0.14.0"
       }
     },
     {
@@ -4024,7 +4025,7 @@
       "id": "principles.PageFirst",
       "kind": "adr",
       "title": "A page first, the phones after",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "context": "The app must be tried and shown before it is installed: a page shared as a link is the shortest way to the friends who review it.",
@@ -4606,7 +4607,7 @@
       "id": "sdlc.OnTheMachine",
       "kind": "binding",
       "title": "On the machine",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "context": "A check must open the page a person opens: the file delivered, in a real browser."
@@ -4675,7 +4676,7 @@
       "id": "sdlc.PageFile",
       "kind": "artifact",
       "title": "Poselia's page",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "media": "text/html; charset=utf-8"
@@ -4697,7 +4698,7 @@
       "id": "sdlc.PageOpens",
       "kind": "check",
       "title": "The page opens",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax"
       }
@@ -4787,7 +4788,7 @@
       "id": "sdlc.Preview",
       "kind": "shipment",
       "title": "A preview",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "target": "preview"
@@ -4835,7 +4836,7 @@
       "id": "sdlc.PreviewScript",
       "kind": "artifact",
       "title": "The preview's script",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "path": "scripts/ship-preview.sh",
@@ -4846,7 +4847,7 @@
       "id": "sdlc.PreviewWorkflow",
       "kind": "artifact",
       "title": "The preview's workflow",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "path": "../../.github/workflows/poselia-preview.yml",
@@ -4902,7 +4903,7 @@
       "id": "sdlc.RunnersWritten",
       "kind": "shipment",
       "title": "The files that run it elsewhere",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "target": "repository"
@@ -5277,7 +5278,7 @@
       "id": "stage.BrowserStage",
       "kind": "implementation",
       "title": "The browser's stage",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "deps": {

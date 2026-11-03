@@ -71,7 +71,7 @@ Consequences: The languages offered are a decision the datasets read: a text mis
 
 ### A page first, the phones after
 
-`PageFirst` · `src/principles.ts:78` · status: **held**
+`PageFirst` · `src/principles.ts:78` · status: **unknown**
 
 The app is first a page a browser opens as it is (trame deliver), then a web application, then Capacitor around the same page for iPhone and Android.
 

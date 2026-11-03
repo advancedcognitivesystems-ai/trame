@@ -1,6 +1,6 @@
 /** Reservations · Scenarios */
 
-import { ms, elapsed } from "#trame/kernel"
+import { Time } from "#std/measures"
 import { decision } from "#trame/kinds/decision"
 import { scenario } from "#trame/kinds/scenario"
 import { FreeCancellationPeriod, Refund } from "./cancellation"
@@ -26,13 +26,13 @@ export const ReadScenario = scenario({
   owner: "karim",
   verifies: [ReadReservation, FreeCancellationEnd, ReservationsSql, InMemoryDatabase, SqliteDialect],
   env: Test,
-  deps: { read: ReadReservation, initial: InitialReservations, freePeriod: FreeCancellationPeriod, unknown: UnknownReservation, http: Http, says: ScenarioChecks },
-  body: ({ read, initial, freePeriod, unknown, http, says }) => async (check) => {
+  deps: { read: ReadReservation, initial: InitialReservations, freePeriod: FreeCancellationPeriod, unknown: UnknownReservation, http: Http, time: Time, says: ScenarioChecks },
+  body: ({ read, initial, freePeriod, unknown, http, time, says }) => async (check) => {
     const [r1] = initial
     const response = await read({ params: { id: r1.id } })
     const body = response.body as { id: string; freeUntil: string }
     check(says.existingReturned(), response.status === http.ok && body.id === r1.id)
-    check(says.withFreeUntil(), body.freeUntil === new Date(Date.parse(r1.start) - ms(freePeriod[r1.charger])).toISOString())
+    check(says.withFreeUntil(), body.freeUntil === new Date(Date.parse(r1.start) - time.in.millisecond(freePeriod[r1.charger])).toISOString())
     check(says.unknownIs404(), (await read({ params: { id: unknown } })).status === http.notFound)
   },
 })
@@ -46,10 +46,10 @@ export const RepeatedCancellationScenario = scenario({
   owner: "karim",
   verifies: [CancelReservation, LeadTime, CancellationsSql, SimulatedPayment, StoppedClock],
   env: Test,
-  deps: { cancel: CancelReservation, log: PaymentLog, refund: Refund, initial: InitialReservations, instant: TestInstant, http: Http, says: ScenarioChecks },
-  body: ({ cancel, log, refund, initial, instant, http, says }) => async (check) => {
+  deps: { cancel: CancelReservation, log: PaymentLog, refund: Refund, initial: InitialReservations, instant: TestInstant, http: Http, time: Time, says: ScenarioChecks },
+  body: ({ cancel, log, refund, initial, instant, http, time, says }) => async (check) => {
     const [r1] = initial
-    const leadTime = elapsed(Date.parse(instant), Date.parse(r1.start))
+    const leadTime = time.millisecond(Date.parse(r1.start) - Date.parse(instant))
     const first = await cancel({ params: { id: r1.id } })
     const second = await cancel({ params: { id: r1.id } })
     const a = first.body as { amount: number; reference: string }
@@ -68,10 +68,10 @@ export const ComplianceScenario = scenario({
   owner: "lea",
   verifies: [CancelReservation, Refund],
   env: Test,
-  deps: { cancel: CancelReservation, refund: Refund, initial: InitialReservations, instant: TestInstant, says: ScenarioChecks },
-  body: ({ cancel, refund, initial, instant, says }) => async (check) => {
+  deps: { cancel: CancelReservation, refund: Refund, initial: InitialReservations, instant: TestInstant, time: Time, says: ScenarioChecks },
+  body: ({ cancel, refund, initial, instant, time, says }) => async (check) => {
     for (const r of initial) {
-      const leadTime = elapsed(Date.parse(instant), Date.parse(r.start))
+      const leadTime = time.millisecond(Date.parse(r.start) - Date.parse(instant))
       const refunded = (await cancel({ params: { id: r.id } })).body as { amount: number }
       check(says.refundedByRule(r.id, r.charger, leadTime, refunded.amount), refunded.amount === refund(r, leadTime))
     }

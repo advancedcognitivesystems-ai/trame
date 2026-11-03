@@ -3,11 +3,11 @@
 // in it; each moment then changes only what moves: the body on the stage, the words, the breaths left to hold, the
 // lungs, the progress and the voice button. The composer is written again after each change.
 
-import { elapsed, type BodyOf } from "#trame/kernel"
+import type { BodyOf } from "#trame/kernel"
 import type { BrowserScreen } from "../app"
 import type { Drawing } from "../architecture"
 
-const body: BodyOf<typeof BrowserScreen> = ({ html, aria, svg, events, screen, parts, player, settings, composer, counts, texts, stage }) => {
+const body: BodyOf<typeof BrowserScreen> = ({ html, aria, svg, events, screen, parts, player, settings, composer, counts, texts, stage, time }) => {
   const make = (name: string, text?: string, className?: string) => {
     const e = document.createElement(name)
     if (text !== undefined) e.textContent = text
@@ -182,7 +182,7 @@ const body: BodyOf<typeof BrowserScreen> = ({ html, aria, svg, events, screen, p
       const measure = make(html.div, undefined, settings.measure)
       const tap = make(html.button, view.tap, settings.tap)
       tap.setAttribute(html.type, html.buttonType)
-      tap.addEventListener(events.pointerdown, (e) => actions.tap(elapsed(counts.zero, e.timeStamp)))
+      tap.addEventListener(events.pointerdown, (e) => actions.tap(time.millisecond(e.timeStamp)))
       measure.append(make(html.h3, view.measureTitle), make(html.p, view.measureLine), tap, make(html.small, view.taps))
       breath.append(phases, measure, button(view.reset, actions.reset))
       const voice = make(html.section)

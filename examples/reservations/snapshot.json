@@ -37,7 +37,8 @@
       "fields": {
         "owner": "lea",
         "deps": {
-          "freePeriod": "cancellation.FreeCancellationPeriod"
+          "freePeriod": "cancellation.FreeCancellationPeriod",
+          "time": "std/measures.Time"
         },
         "body": "(function)",
         "synchronous": true
@@ -51,7 +52,8 @@
       "fields": {
         "owner": "karim",
         "deps": {
-          "clock": "architecture.Clock"
+          "clock": "architecture.Clock",
+          "time": "std/measures.Time"
         },
         "body": "(function)"
       }
@@ -1105,6 +1107,7 @@
           "refund": "(function)",
           "initial": "infra.InitialReservations",
           "instant": "infra.TestInstant",
+          "time": "std/measures.Time",
           "says": "messages.ScenarioChecks"
         },
         "body": "(function)"
@@ -1123,6 +1126,7 @@
           "freePeriod": "cancellation.FreeCancellationPeriod",
           "unknown": "scenarios.UnknownReservation",
           "http": "std/web.Http",
+          "time": "std/measures.Time",
           "says": "messages.ScenarioChecks"
         },
         "body": "(function)"
@@ -1161,6 +1165,7 @@
           "initial": "infra.InitialReservations",
           "instant": "infra.TestInstant",
           "http": "std/web.Http",
+          "time": "std/measures.Time",
           "says": "messages.ScenarioChecks"
         },
         "body": "(function)"

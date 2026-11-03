@@ -64,10 +64,10 @@ Entry point · `ShowHome` · **held**
 
 ### The browser's screen
 
-Implementation · `BrowserScreen` · **held**
+Implementation · `BrowserScreen` · **unknown**
 
 - Owner: ghalaax
-- Parameters: { html: std/html.Html, aria: std/html.Aria, svg: std/html.Svg, events: std/web.UiEvents, screen: app.ScreenNames, parts: drawing.DrawingParts, player: practice.PlayerNames, settings: settings.SettingsNames, composer: composing.ComposerNames, counts: std/algebra.Counts, texts: std/algebra.Texts, stage: architecture.Stage }
+- Parameters: { html: std/html.Html, aria: std/html.Aria, svg: std/html.Svg, events: std/web.UiEvents, screen: app.ScreenNames, parts: drawing.DrawingParts, player: practice.PlayerNames, settings: settings.SettingsNames, composer: composing.ComposerNames, counts: std/algebra.Counts, texts: std/algebra.Texts, stage: architecture.Stage, time: std/measures.Time }
 - Implements: Screen
 - Depends on: Names of the screen, Parts of a drawing, Names of the player, Names of the settings, Names of the composer, Stage
 
@@ -842,10 +842,10 @@ Package · `Language`
 
 - Owner: ghalaax
 - Name: trame
-- Version: 95
+- Version: 96
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../../generations/g95
+- Its path: ../../generations/g96
 - Serves: Practise yoga on one's own, guided
 
 ### The standard library
@@ -854,10 +854,10 @@ Package · `StandardLibrary`
 
 - Owner: ghalaax
 - Name: std
-- Version: 0.13.0
+- Version: 0.14.0
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: ../../std/releases/0.13.0
+- Its path: ../../std/releases/0.14.0
 - Serves: Practise yoga on one's own, guided
 
 ## Poselia · Practice
@@ -1018,7 +1018,7 @@ Architecture decision · `LanguageOffered` · **held**
 
 ### A page first, the phones after
 
-Architecture decision · `PageFirst` · **held**
+Architecture decision · `PageFirst` · **unknown**
 
 - Decided by: ghalaax
 - Context: The app must be tried and shown before it is installed: a page shared as a link is the shortest way to the friends who review it.
@@ -1361,7 +1361,7 @@ Message catalog · `SdlcWords`
 
 ### On the machine
 
-Technical choice · `OnTheMachine` · **held**
+Technical choice · `OnTheMachine` · **unknown**
 
 - Decided by: ghalaax
 - Context: A check must open the page a person opens: the file delivered, in a real browser.
@@ -1418,7 +1418,7 @@ Role · `Teachers`
 
 ### Poselia's page
 
-Artefact · `PageFile` · **held**
+Artefact · `PageFile` · **unknown**
 
 - Owner: ghalaax
 - Media type: text/html; charset=utf-8
@@ -1426,7 +1426,7 @@ Artefact · `PageFile` · **held**
 
 ### The preview's script
 
-Artefact · `PreviewScript` · **held**
+Artefact · `PreviewScript` · **unknown**
 
 - Owner: ghalaax
 - Path: scripts/ship-preview.sh
@@ -1435,7 +1435,7 @@ Artefact · `PreviewScript` · **held**
 
 ### The preview's workflow
 
-Artefact · `PreviewWorkflow` · **held**
+Artefact · `PreviewWorkflow` · **unknown**
 
 - Owner: ghalaax
 - Path: ../../.github/workflows/poselia-preview.yml
@@ -1456,7 +1456,7 @@ Check · `OnAPhone` · **unknown**
 
 ### The page opens
 
-Check · `PageOpens` · **held**
+Check · `PageOpens` · **unknown**
 
 - Owner: ghalaax
 - Checks: Poselia's page
@@ -1473,7 +1473,7 @@ Review · `ContentReviewed` · **unknown**
 
 ### A preview
 
-Shipment · `Preview` · **held**
+Shipment · `Preview` · **unknown**
 
 - Owner: ghalaax
 - Target: preview
@@ -1495,7 +1495,7 @@ Shipment · `PublicVersion` · **unknown**
 
 ### The files that run it elsewhere
 
-Shipment · `RunnersWritten` · **held**
+Shipment · `RunnersWritten` · **unknown**
 
 - Owner: ghalaax
 - Target: repository
@@ -1615,7 +1615,7 @@ Requirement · `MeasuredBreath` · **held**
 Decision · `BreathBounds`
 
 - Decided by: ghalaax
-- Value: { step: 0.5 s, least: 1 s, most: 20 s, none: 0 h }
+- Value: { step: 500 ms, least: 1 s, most: 20 s, none: 0 h }
 
 ### Names of the settings
 
@@ -1758,7 +1758,7 @@ Decision · `StageViews`
 
 ### The browser's stage
 
-Implementation · `BrowserStage` · **held**
+Implementation · `BrowserStage` · **unknown**
 
 - Owner: ghalaax
 - Parameters: { look: stage.MannequinLook, light: stage.StageLight, views: stage.StageViews, style: stage.MarkStyle, counts: std/algebra.Counts, html: std/html.Html }

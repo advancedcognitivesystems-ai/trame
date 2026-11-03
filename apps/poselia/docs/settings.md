@@ -150,7 +150,7 @@ A phase is set half a second at a time; a breath in or out lasts at least a seco
 
 | Case | Value |
 |---|---|
-| step | 0.5 s |
+| step | 500 ms |
 | least | 1 s |
 | most | 20 s |
 | none | 0 h |

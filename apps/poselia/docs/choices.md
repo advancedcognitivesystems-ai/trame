@@ -39,7 +39,7 @@
 
 ### The browser's realizations
 
-`InTheBrowser` · `src/app.ts:92` · status: **unknown**
+`InTheBrowser` · `src/app.ts:93` · status: **unknown**
 
 In a browser, the page loads, keeps the person's choices, reads the device's languages, speaks, keeps the screen awake and moves with the screen's frames as the standard library's realizations do; the screen is the document, the stage a scene of three.js in it, the bowl a sound made with Web Audio.
 
@@ -68,7 +68,7 @@ Context: The first delivery is a page a browser opens as it is; the phones come 
 
 ### Content carried by the app
 
-`ContentCarried` · `src/app.ts:115` · status: **held**
+`ContentCarried` · `src/app.ts:116` · status: **held**
 
 Until updates are downloaded, the app reads the content it was delivered with.
 
@@ -126,7 +126,7 @@ Consequences: The screen and what records it are chosen together: a scenario rea
 
 ### On the machine
 
-`OnTheMachine` · `src/sdlc.ts:85` · status: **held**
+`OnTheMachine` · `src/sdlc.ts:85` · status: **unknown**
 
 On a machine, the programs of the SDLC read their commands from Node's command line, the project's files from the disk, and open the page in Chromium driven by Playwright, as the standard library realizes them.
 

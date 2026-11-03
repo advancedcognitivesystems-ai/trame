@@ -1,7 +1,7 @@
 /** Reservations · API */
 
-import { code, ms, elapsed } from "#trame/kernel"
-import type { Duration } from "#std/measures"
+import { code } from "#trame/kernel"
+import { Time, type Duration } from "#std/measures"
 import { fn } from "#trame/kinds/function"
 import { entryPoint, http } from "#trame/kinds/entry-point"
 import { FreeCancellationPeriod, Refund, CancelWithoutStress } from "./cancellation"
@@ -17,8 +17,9 @@ export const FreeCancellationEnd = fn({
   owner: "lea",
   serves: [Refund],
   synchronous: true,
-  deps: { freePeriod: FreeCancellationPeriod },
-  body: ({ freePeriod }) => (r: StoredReservation): string => new Date(Date.parse(r.start) - ms(freePeriod[r.charger])).toISOString(),
+  deps: { freePeriod: FreeCancellationPeriod, time: Time },
+  body: ({ freePeriod, time }) => (r: StoredReservation): string =>
+    new Date(Date.parse(r.start) - time.in.millisecond(freePeriod[r.charger])).toISOString(),
 })
 
 /**
@@ -27,8 +28,8 @@ export const FreeCancellationEnd = fn({
  */
 export const LeadTime = fn({
   owner: "karim",
-  deps: { clock: Clock },
-  body: ({ clock }) => (r: StoredReservation): Duration => Math.floor(elapsed(clock.now().getTime(), Date.parse(r.start))),
+  deps: { clock: Clock, time: Time },
+  body: ({ clock, time }) => (r: StoredReservation): Duration => Math.floor(time.millisecond(Date.parse(r.start) - clock.now().getTime())),
 })
 
 /**

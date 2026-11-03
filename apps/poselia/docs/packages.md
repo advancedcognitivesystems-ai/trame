@@ -57,14 +57,14 @@ The vectors and the angles the body computes with.
 The language Poselia is written in, at the generation it pins: reached by its path in Trame's repository.
 
 - Name: `trame`
-- Version: `95`
+- Version: `96`
 - Installed: Not installed in the project: its lockfile lists no trame
 - Vulnerabilities: No report yet: trame audit asks the registry
 - Latest version: No report yet: trame audit asks the registry
 - What it may do: not said: an implementation that imports it cannot promise anything
 - How it joins the graph: `language`
 - Where it comes from: `path`
-- Its path: `../../generations/g95`
+- Its path: `../../generations/g96`
 
 - Owner: ghalaax
 - Serves: [Practise yoga on one's own, guided](product.md#PractiseGuided)
@@ -78,14 +78,14 @@ The language Poselia is written in, at the generation it pins: reached by its pa
 The structures, standards, ports of the device and of the SDLC Poselia builds on.
 
 - Name: `std`
-- Version: `0.13.0`
+- Version: `0.14.0`
 - Installed: Not installed in the project: its lockfile lists no std
 - Vulnerabilities: No report yet: trame audit asks the registry
 - Latest version: No report yet: trame audit asks the registry
 - What it may do: not said: an implementation that imports it cannot promise anything
 - How it joins the graph: `library`
 - Where it comes from: `path`
-- Its path: `../../std/releases/0.13.0`
+- Its path: `../../std/releases/0.14.0`
 
 - Owner: ghalaax
 - Serves: [Practise yoga on one's own, guided](product.md#PractiseGuided)

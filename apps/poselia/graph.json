@@ -5,8 +5,8 @@
       "id": "app.BrowserScreen",
       "kind": "implementation",
       "title": "The browser's screen",
-      "source": "src/app.ts:76",
-      "status": "held",
+      "source": "src/app.ts:77",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "deps": {
@@ -21,7 +21,8 @@
           "composer": "composing.ComposerNames",
           "counts": "std/algebra.Counts",
           "texts": "std/algebra.Texts",
-          "stage": "architecture.Stage"
+          "stage": "architecture.Stage",
+          "time": "std/measures.Time"
         },
         "body": {
           "file": "./code/browser-screen.ts",
@@ -34,7 +35,7 @@
       "id": "app.CarriedContent",
       "kind": "function",
       "title": "The content the app carries",
-      "source": "src/app.ts:104",
+      "source": "src/app.ts:105",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -50,7 +51,7 @@
       "id": "app.Colours",
       "kind": "decision",
       "title": "Colours",
-      "source": "src/app.ts:129",
+      "source": "src/app.ts:130",
       "fields": {
         "owner": "ghalaax",
         "value": {
@@ -74,7 +75,7 @@
       "id": "app.ContentCarried",
       "kind": "binding",
       "title": "Content carried by the app",
-      "source": "src/app.ts:115",
+      "source": "src/app.ts:116",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -89,7 +90,7 @@
       "id": "app.HomeViewOf",
       "kind": "function",
       "title": "The home view",
-      "source": "src/app.ts:34",
+      "source": "src/app.ts:35",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -115,7 +116,7 @@
       "id": "app.InTheBrowser",
       "kind": "binding",
       "title": "The browser's realizations",
-      "source": "src/app.ts:92",
+      "source": "src/app.ts:93",
       "status": "unknown",
       "fields": {
         "owner": "ghalaax",
@@ -127,7 +128,7 @@
       "id": "app.Measures",
       "kind": "decision",
       "title": "Measures",
-      "source": "src/app.ts:139",
+      "source": "src/app.ts:140",
       "fields": {
         "owner": "ghalaax",
         "value": {
@@ -182,7 +183,7 @@
       "id": "app.PageStyle",
       "kind": "stylesheet",
       "title": "Style of the page",
-      "source": "src/app.ts:158",
+      "source": "src/app.ts:159",
       "fields": {
         "owner": "ghalaax",
         "body": {
@@ -196,7 +197,7 @@
       "id": "app.PoseliaPage",
       "kind": "delivery",
       "title": "Poselia's page",
-      "source": "src/app.ts:169",
+      "source": "src/app.ts:170",
       "fields": {
         "owner": "ghalaax",
         "target": "page",
@@ -209,7 +210,7 @@
       "id": "app.ScreenNames",
       "kind": "decision",
       "title": "Names of the screen",
-      "source": "src/app.ts:66",
+      "source": "src/app.ts:67",
       "fields": {
         "owner": "ghalaax",
         "value": {
@@ -230,7 +231,7 @@
       "id": "app.ShowHome",
       "kind": "entry",
       "title": "Show the home page",
-      "source": "src/app.ts:50",
+      "source": "src/app.ts:51",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -4398,10 +4399,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "trame",
-        "version": "95",
+        "version": "96",
         "joins": "language",
         "from": "path",
-        "at": "../../generations/g95"
+        "at": "../../generations/g96"
       },
       "diagnostics": []
     },
@@ -4413,10 +4414,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "std",
-        "version": "0.13.0",
+        "version": "0.14.0",
         "joins": "library",
         "from": "path",
-        "at": "../../std/releases/0.13.0"
+        "at": "../../std/releases/0.14.0"
       },
       "diagnostics": []
     },
@@ -4811,7 +4812,7 @@
       "kind": "adr",
       "title": "A page first, the phones after",
       "source": "src/principles.ts:78",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "context": "The app must be tried and shown before it is installed: a page shared as a link is the shortest way to the friends who review it.",
@@ -5696,7 +5697,7 @@
       "kind": "binding",
       "title": "On the machine",
       "source": "src/sdlc.ts:85",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "context": "A check must open the page a person opens: the file delivered, in a real browser."
@@ -5787,16 +5788,18 @@
       "kind": "artifact",
       "title": "Poselia's page",
       "source": "src/sdlc.ts:109",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "media": "text/html; charset=utf-8"
       },
       "result": {
         "path": "dist/poselia.html",
-        "code": "203001c3"
+        "code": "770aadfe"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+      ]
     },
     {
       "id": "sdlc.PageOpening",
@@ -5817,14 +5820,16 @@
       "kind": "check",
       "title": "The page opens",
       "source": "src/sdlc.ts:207",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax"
       },
       "result": {
-        "code": "33c05bdb"
+        "code": "e5bed1b5"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
+      ]
     },
     {
       "id": "sdlc.PageSelectors",
@@ -5932,7 +5937,7 @@
       "kind": "shipment",
       "title": "A preview",
       "source": "src/sdlc.ts:319",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "target": "preview"
@@ -6012,7 +6017,10 @@
         ],
         "gaps": []
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: To ship: Poselia's page is unknown",
+        "warning: To ship: The page opens is unknown"
+      ]
     },
     {
       "id": "sdlc.PreviewMode",
@@ -6061,7 +6069,7 @@
       "kind": "artifact",
       "title": "The preview's script",
       "source": "src/sdlc.ts:381",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "path": "scripts/ship-preview.sh",
@@ -6071,14 +6079,16 @@
         "path": "scripts/ship-preview.sh",
         "code": "8fd0a0ae"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+      ]
     },
     {
       "id": "sdlc.PreviewWorkflow",
       "kind": "artifact",
       "title": "The preview's workflow",
       "source": "src/sdlc.ts:366",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "path": "../../.github/workflows/poselia-preview.yml",
@@ -6088,7 +6098,9 @@
         "path": "../../.github/workflows/poselia-preview.yml",
         "code": "9bcf7c7e"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+      ]
     },
     {
       "id": "sdlc.ProductServed",
@@ -6394,8 +6406,11 @@
         "gaps": []
       },
       "diagnostics": [
+        "warning: To ship: Poselia's page is unknown",
         "warning: To ship: On a phone is unknown",
+        "warning: To ship: The page opens is unknown",
         "warning: To ship: The content, reviewed is unknown",
+        "warning: To ship: A page first, the phones after is unknown",
         "warning: To ship: The content is data, behind a port is unknown",
         "warning: To ship: Said aloud, the screen awake is unknown"
       ]
@@ -6415,7 +6430,7 @@
       "kind": "shipment",
       "title": "The files that run it elsewhere",
       "source": "src/sdlc.ts:394",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "target": "repository"
@@ -6424,7 +6439,10 @@
         "derived": [],
         "gaps": []
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: To ship: The preview's script is unknown",
+        "warning: To ship: The preview's workflow is unknown"
+      ]
     },
     {
       "id": "sdlc.SdlcChecks",
@@ -6918,7 +6936,7 @@
       "kind": "implementation",
       "title": "The browser's stage",
       "source": "src/stage.ts:126",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "deps": {
@@ -7266,6 +7284,11 @@
     {
       "from": "app.BrowserScreen",
       "to": "architecture.Stage",
+      "kind": "deps"
+    },
+    {
+      "from": "app.BrowserScreen",
+      "to": "std/measures.Time",
       "kind": "deps"
     },
     {

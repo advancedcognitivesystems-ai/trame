@@ -5,7 +5,7 @@
       "id": "api.CancelReservation",
       "kind": "entry",
       "title": "Cancel a reservation",
-      "source": "src/api.ts:51",
+      "source": "src/api.ts:52",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -40,7 +40,8 @@
       "fields": {
         "owner": "lea",
         "deps": {
-          "freePeriod": "cancellation.FreeCancellationPeriod"
+          "freePeriod": "cancellation.FreeCancellationPeriod",
+          "time": "std/measures.Time"
         },
         "body": "(function)",
         "synchronous": true
@@ -51,12 +52,13 @@
       "id": "api.LeadTime",
       "kind": "function",
       "title": "Lead time of a cancellation",
-      "source": "src/api.ts:28",
+      "source": "src/api.ts:29",
       "status": "held",
       "fields": {
         "owner": "karim",
         "deps": {
-          "clock": "architecture.Clock"
+          "clock": "architecture.Clock",
+          "time": "std/measures.Time"
         },
         "body": "(function)"
       },
@@ -66,7 +68,7 @@
       "id": "api.ReadReservation",
       "kind": "entry",
       "title": "Read a reservation",
-      "source": "src/api.ts:38",
+      "source": "src/api.ts:39",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -1383,6 +1385,7 @@
           "refund": "(function)",
           "initial": "infra.InitialReservations",
           "instant": "infra.TestInstant",
+          "time": "std/measures.Time",
           "says": "messages.ScenarioChecks"
         },
         "body": "(function)"
@@ -1417,6 +1420,7 @@
           "freePeriod": "cancellation.FreeCancellationPeriod",
           "unknown": "scenarios.UnknownReservation",
           "http": "std/web.Http",
+          "time": "std/measures.Time",
           "says": "messages.ScenarioChecks"
         },
         "body": "(function)"
@@ -1479,6 +1483,7 @@
           "initial": "infra.InitialReservations",
           "instant": "infra.TestInstant",
           "http": "std/web.Http",
+          "time": "std/measures.Time",
           "says": "messages.ScenarioChecks"
         },
         "body": "(function)"
@@ -1572,7 +1577,7 @@
       },
       "result": {
         "path": "out/local/reservations-api.ts",
-        "code": "88bbc2f5"
+        "code": "2cbecb38"
       },
       "diagnostics": [
         "warning: Not built yet: trame ship builds it"
@@ -1647,7 +1652,7 @@
       },
       "result": {
         "path": "out/production/reservations-api.ts",
-        "code": "8bf864cd"
+        "code": "5f032020"
       },
       "diagnostics": [
         "warning: Not built yet: trame ship builds it"
@@ -2570,8 +2575,18 @@
       "kind": "deps"
     },
     {
+      "from": "api.FreeCancellationEnd",
+      "to": "std/measures.Time",
+      "kind": "deps"
+    },
+    {
       "from": "api.LeadTime",
       "to": "architecture.Clock",
+      "kind": "deps"
+    },
+    {
+      "from": "api.LeadTime",
+      "to": "std/measures.Time",
       "kind": "deps"
     },
     {
@@ -3352,6 +3367,11 @@
     },
     {
       "from": "scenarios.ComplianceScenario",
+      "to": "std/measures.Time",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ComplianceScenario",
       "to": "messages.ScenarioChecks",
       "kind": "deps"
     },
@@ -3408,6 +3428,11 @@
     {
       "from": "scenarios.ReadScenario",
       "to": "std/web.Http",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ReadScenario",
+      "to": "std/measures.Time",
       "kind": "deps"
     },
     {
@@ -3518,6 +3543,11 @@
     {
       "from": "scenarios.RepeatedCancellationScenario",
       "to": "std/web.Http",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.RepeatedCancellationScenario",
+      "to": "std/measures.Time",
       "kind": "deps"
     },
     {

@@ -42,7 +42,7 @@ An identifier that no reservation has.
 </details>
 
 - Owner: lea
-- Parameters: `cancel` ← [Cancel a reservation](api.md#CancelReservation) · `refund` ← [Refund on cancellation](cancellation.md#Refund) · `initial` ← [Initial reservations](infra.md#InitialReservations) · `instant` ← [Test instant](infra.md#TestInstant) · `says` ← [Checks of the scenarios](messages.md#ScenarioChecks)
+- Parameters: `cancel` ← [Cancel a reservation](api.md#CancelReservation) · `refund` ← [Refund on cancellation](cancellation.md#Refund) · `initial` ← [Initial reservations](infra.md#InitialReservations) · `instant` ← [Test instant](infra.md#TestInstant) · `time` ← [Time](../../../std/docs/measures.md#Time) · `says` ← [Checks of the scenarios](messages.md#ScenarioChecks)
 - Body: inline, in the declaration
 - Effects: asynchronous, network, read, third-party, time, write
 - Verifies: [Cancel a reservation](api.md#CancelReservation), [Refund on cancellation](cancellation.md#Refund)
@@ -71,7 +71,7 @@ A reservation is read from the database through its SQL, with the end of its fre
 </details>
 
 - Owner: karim
-- Parameters: `read` ← [Read a reservation](api.md#ReadReservation) · `initial` ← [Initial reservations](infra.md#InitialReservations) · `freePeriod` ← [Free cancellation period](cancellation.md#FreeCancellationPeriod) · `unknown` ← [Unknown reservation](#UnknownReservation) · `http` ← [HTTP](../../../std/docs/web.md#Http) · `says` ← [Checks of the scenarios](messages.md#ScenarioChecks)
+- Parameters: `read` ← [Read a reservation](api.md#ReadReservation) · `initial` ← [Initial reservations](infra.md#InitialReservations) · `freePeriod` ← [Free cancellation period](cancellation.md#FreeCancellationPeriod) · `unknown` ← [Unknown reservation](#UnknownReservation) · `http` ← [HTTP](../../../std/docs/web.md#Http) · `time` ← [Time](../../../std/docs/measures.md#Time) · `says` ← [Checks of the scenarios](messages.md#ScenarioChecks)
 - Body: inline, in the declaration
 - Effects: asynchronous, read
 - Verifies: [Read a reservation](api.md#ReadReservation), [End of free cancellation](api.md#FreeCancellationEnd), [Reservations in SQL](infra.md#ReservationsSql), [In-memory SQLite database](infra.md#InMemoryDatabase), [SQLite's dialect](infra.md#SqliteDialect)
@@ -127,7 +127,7 @@ The first cancellation refunds by the rule, for the lead time to the start at th
 </details>
 
 - Owner: karim
-- Parameters: `cancel` ← [Cancel a reservation](api.md#CancelReservation) · `log` ← [Payment log](architecture.md#PaymentLog) · `refund` ← [Refund on cancellation](cancellation.md#Refund) · `initial` ← [Initial reservations](infra.md#InitialReservations) · `instant` ← [Test instant](infra.md#TestInstant) · `http` ← [HTTP](../../../std/docs/web.md#Http) · `says` ← [Checks of the scenarios](messages.md#ScenarioChecks)
+- Parameters: `cancel` ← [Cancel a reservation](api.md#CancelReservation) · `log` ← [Payment log](architecture.md#PaymentLog) · `refund` ← [Refund on cancellation](cancellation.md#Refund) · `initial` ← [Initial reservations](infra.md#InitialReservations) · `instant` ← [Test instant](infra.md#TestInstant) · `http` ← [HTTP](../../../std/docs/web.md#Http) · `time` ← [Time](../../../std/docs/measures.md#Time) · `says` ← [Checks of the scenarios](messages.md#ScenarioChecks)
 - Body: inline, in the declaration
 - Effects: asynchronous, network, read, third-party, time, write
 - Verifies: [Cancel a reservation](api.md#CancelReservation), [Lead time of a cancellation](api.md#LeadTime), [Cancellations in SQL](infra.md#CancellationsSql), [Simulated payment provider](infra.md#SimulatedPayment), [Stopped clock](infra.md#StoppedClock)
