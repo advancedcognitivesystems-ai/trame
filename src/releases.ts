@@ -1438,3 +1438,18 @@ export const G97 = release({
   archive: "f4872eb1ea3a5e35",
   assembledBy: G96,
 })
+
+/**
+ * Generation 98
+ */
+export const G98 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g98",
+  date: "2026-11-03",
+  what: "the files that run a shipment elsewhere read a project's directories by their real paths, and prepare a package where it is installed",
+  fingerprint: "39230ba992ae1fce",
+  language: "shared",
+  archive: "f4872eb1ea3a5e35",
+  assembledBy: G97,
+})

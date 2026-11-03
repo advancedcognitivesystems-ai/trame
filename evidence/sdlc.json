@@ -2780,6 +2780,16 @@
     "seal": "8d317b7cb8ddec8a12f433d4e0eaff8e0046db11d895367e992b621a18535ef2"
   },
   {
+    "node": "commands.Advance",
+    "at": "2026-11-03",
+    "source": "deployed",
+    "value": 1,
+    "fingerprint": "119b4004",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "bf6d6a6a633d19d8e0a3dbf2ffba20c5b80c0724a312bcc51bc77a2bdaad2621"
+  },
+  {
     "node": "sdlc.CandidateKeepsTheLaws",
     "at": "2026-11-03",
     "source": "check",
@@ -3040,6 +3050,17 @@
     "by": "claude",
     "signature": "attribution",
     "seal": "223fa4a62ed6dcd6d988532e7b8a75be2d9b8cac89452987fd328b730ecd82da"
+  },
+  {
+    "node": "sdlc.NextGeneration",
+    "at": "2026-11-03",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "2d67154a",
+    "url": "evidence/shipments/NextGeneration-2026-11-03-2d67154a.json",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "eac14b09536d5466690dc52e557f7a268bf28405d7303462baeaadf6c30f1261"
   },
   {
     "node": "sdlc.PageProgram",
