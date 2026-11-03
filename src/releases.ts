@@ -1299,7 +1299,7 @@ export const G88 = release({
   date: "2026-11-01",
   what: "E1b: the compiler is led to the language's files by its names (#trame/* in TypeScript's paths, to the files where they are, never through a link); trame init starts a project: its configuration (the generation that runs, the libraries the language's home uses), its first module with its goal, the guide for agents and the skill, then its manifest",
   fingerprint: "abbc9d8c61c5829e",
-  language: "shared",
+  language: "own",
   archive: "c850998afbba6ca9",
   assembledBy: G87,
 })
@@ -1314,7 +1314,7 @@ export const G89 = release({
   date: "2026-11-01",
   what: "E1c: a relative import that leaves its package refuses the build and says the name to write (a version frozen of a library is its release's business); a library's release names the language by its name",
   fingerprint: "72ddb072c1a1b0d3",
-  language: "shared",
+  language: "own",
   archive: "c850998afbba6ca9",
   assembledBy: G88,
 })
@@ -1329,7 +1329,7 @@ export const G90 = release({
   date: "2026-11-01",
   what: "E1d: a project that installed no types is checked with those of the engine that reads it (a project outside the repository builds); std's table of the platform knows node:module's registerHooks, for the engine to lead the language's names to its own language",
   fingerprint: "196c3b0f7ac15496",
-  language: "shared",
+  language: "own",
   archive: "c850998afbba6ca9",
   assembledBy: G89,
 })
@@ -1344,7 +1344,7 @@ export const G91 = release({
   date: "2026-11-01",
   what: "E1e: the engine leads the language's names to its own language (a peer dependency); a package node says how it joins the graph, where it comes from (by its path, from the registry of this machine) and its path; trame manifest places the packages of Trame the graph references and derives trame.json from them; npm installs the packages of every library imported",
   fingerprint: "f501ff1b89e2784c",
-  language: "shared",
+  language: "own",
   archive: "3b7e0d08b54deb04",
   assembledBy: G90,
 })
@@ -1359,7 +1359,7 @@ export const G92 = release({
   date: "2026-11-01",
   what: "E1f: a version is published to the registry of this machine (a library's release; the promotion of a generation, its language copied for real); the engine leads the project's library names too, as peers; the launcher installs the packages of a published engine and runs it with its own tsx",
   fingerprint: "30caf57f98eafc15",
-  language: "shared",
+  language: "own",
   archive: "10418831c37c9ead",
   assembledBy: G91,
 })
@@ -1374,7 +1374,7 @@ export const G93 = release({
   date: "2026-11-01",
   what: "E1g: the names of a project's libraries are led to their real paths (through a link, a module would be read twice); a version published to the registry holds its manifest (ES modules); the launcher sees a published engine's missing packages as ES modules resolve them",
   fingerprint: "524fe0849917ff93",
-  language: "shared",
+  language: "own",
   archive: "10418831c37c9ead",
   assembledBy: G92,
 })
@@ -1389,7 +1389,7 @@ export const G94 = release({
   date: "2026-11-01",
   what: "E1h: trame init writes a project's references as package nodes of its graph; trame registry publishes the frozen generations (each with its language) and the releases of the home's libraries to the registry of this machine, which a clone elsewhere fills again with it",
   fingerprint: "619450edc36af16c",
-  language: "shared",
+  language: "own",
   archive: "10418831c37c9ead",
   assembledBy: G93,
 })
@@ -1404,7 +1404,7 @@ export const G95 = release({
   date: "2026-11-02",
   what: "the bundler is led by the names of packages as the engine leads Node.js: a library published once is bundled with the language and libraries of the project that delivers it",
   fingerprint: "805401dc53eb3a4a",
-  language: "shared",
+  language: "own",
   archive: "10418831c37c9ead",
   assembledBy: G94,
 })
@@ -1422,4 +1422,19 @@ export const G96 = release({
   language: "shared",
   archive: "b4ae1cf9bc47d1f7",
   assembledBy: G95,
+})
+
+/**
+ * Generation 97
+ */
+export const G97 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g97",
+  date: "2026-11-03",
+  what: "the language has one form: the prelude's units and the rule written as the function itself are gone; older generations that relied on them run on their archived language",
+  fingerprint: "f75cc6f9f159b789",
+  language: "shared",
+  archive: "f4872eb1ea3a5e35",
+  assembledBy: G96,
 })

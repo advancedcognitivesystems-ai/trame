@@ -1,6 +1,6 @@
 # Technical choices
 
-*What answers each port in each environment on 3 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
+*What answers each port in each environment on 30 October 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
 
 > **24 technical choices for 45 ports, in 3 environments**
 
@@ -65,7 +65,7 @@
 
 ### The browser runs the page
 
-`TheBrowserRunsThePage` · `src/browser.ts:130` · status: **held**
+`TheBrowserRunsThePage` · `src/browser.ts:130` · status: **unknown**
 
 In the browser, the page loads, writes in its window, keeps the person's place, receives the graph and makes it whole again with what every browser has: the DOM, local storage, fetch and server-sent events, DecompressionStream.
 
@@ -135,7 +135,7 @@ Consequences: Node's built-in modules appear only in these implementations; movi
 
 ### On a machine, Node.js reads, writes and runs
 
-`NodeMachine` · `src/platform.ts:401` · status: **held**
+`NodeMachine` · `src/platform.ts:401` · status: **unknown**
 
 On the machine where trame is started, Node.js reads and writes the files, copies and compares trees, starts processes and other engines, serves HTTP, shows the terminal and gives the time.
 
@@ -263,7 +263,7 @@ Consequences: A scenario is played again only when the code it wires or a file i
 
 ### On a machine, runs are kept on disk
 
-`RunsKeptOnDisk` · `src/platform.ts:468` · status: **held**
+`RunsKeptOnDisk` · `src/platform.ts:468` · status: **unknown**
 
 In [Local](architecture.md#Local):
 
@@ -691,7 +691,7 @@ Consequences: Graphs, legends and timelines are written by the engine, with the 
 
 ### The SDLC on the machine
 
-`SdlcOnTheMachine` · `src/sdlc.ts:144` · status: **held**
+`SdlcOnTheMachine` · `src/sdlc.ts:144` · status: **unknown**
 
 On the machine, the programs of the SDLC read their command from Node's command line and open pages in Chromium driven by Playwright, as the standard library realizes them.
 

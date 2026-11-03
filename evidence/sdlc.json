@@ -2770,6 +2770,16 @@
     "seal": "944e8ac78b371651885382e7f00a3a6755fa18631d0c4c6e00872824ed7b0303"
   },
   {
+    "node": "commands.Advance",
+    "at": "2026-11-03",
+    "source": "deployed",
+    "value": 1,
+    "fingerprint": "87b0523a",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "8d317b7cb8ddec8a12f433d4e0eaff8e0046db11d895367e992b621a18535ef2"
+  },
+  {
     "node": "sdlc.CandidateKeepsTheLaws",
     "at": "2026-11-03",
     "source": "check",
@@ -2792,6 +2802,18 @@
     "by": "claude",
     "signature": "attribution",
     "seal": "cf53ba84756245e17ed16c3814df5f90f038c023aba0e485354aa2e81e120edf"
+  },
+  {
+    "node": "sdlc.CandidateKeepsTheLaws",
+    "at": "2026-11-03",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "4fa170da",
+    "code": "32c16acb",
+    "engine": "aa6b9b5c5dc57877",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "dd607ad361f4ff0c2c1813969afcfc76f1f70d14f3adb5fdfe01b06d6f5373e2"
   },
   {
     "node": "sdlc.CandidateRunsOnTheMachine",
@@ -2818,6 +2840,18 @@
     "seal": "dab27d9595ce456f951bf6ac95ac618cfbce647183503603100fa863b5332efe"
   },
   {
+    "node": "sdlc.CandidateRunsOnTheMachine",
+    "at": "2026-11-03",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "4fa170da",
+    "code": "3a3371d0",
+    "engine": "aa6b9b5c5dc57877",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "b7a9b55f14e358121698163ab50c496e21bfdc3fafa99b94aa2dc6d9d485e4b0"
+  },
+  {
     "node": "sdlc.EngineCandidate",
     "at": "2026-11-03",
     "source": "built",
@@ -2840,6 +2874,18 @@
     "signature": "attribution",
     "engine": "074fe8b804967ef6",
     "seal": "adef68f5d7c63a74a86aca4884d88eb8e02b61dde4cdde473d86953a55ec547b"
+  },
+  {
+    "node": "sdlc.EngineCandidate",
+    "at": "2026-11-03",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "017b49aa3e4db725c8ed2fd1a8c4ff05ab475dfe08848fcfa639af0a05a7f885",
+    "code": "98098268",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "aa6b9b5c5dc57877",
+    "seal": "1574f8f2e922b09887eeb469ae76a43fc6fcd3daf675ccd54661e149d90af699"
   },
   {
     "node": "sdlc.GraphPage",
@@ -2866,6 +2912,18 @@
     "seal": "ecc0411b0924d354f9684cbea4908ea2743baf39fe55df1e48a59a21132117a6"
   },
   {
+    "node": "sdlc.GraphPage",
+    "at": "2026-11-03",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "8a399eca5180fd962203b03fd245e92bc0aeb27e9b70549c016dfa0602ce7caa",
+    "code": "1acfc8bc",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "aa6b9b5c5dc57877",
+    "seal": "9a9c31d9d4e52f4d59363202e69fa8919a65e12e0b00433f3a577804b95e0df6"
+  },
+  {
     "node": "sdlc.GraphPageOpens",
     "at": "2026-11-03",
     "source": "check",
@@ -2890,6 +2948,18 @@
     "seal": "b719affdb6d954a586814781be65d196996a86b27092808e349b9524f94d4cac"
   },
   {
+    "node": "sdlc.GraphPageOpens",
+    "at": "2026-11-03",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "a448a732",
+    "code": "4a92dae2",
+    "engine": "aa6b9b5c5dc57877",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "a998ce4c588fc9f329331d10762dc817896b781e4dbcc5546f807146cd0380c7"
+  },
+  {
     "node": "sdlc.NextGeneration",
     "at": "2026-11-03",
     "source": "shipped",
@@ -2899,6 +2969,17 @@
     "by": "claude",
     "signature": "attribution",
     "seal": "161b17448f79c469003528bf427ee3fe6e34dbb3d4b4cd00c5a7f7b102061bd5"
+  },
+  {
+    "node": "sdlc.NextGeneration",
+    "at": "2026-11-03",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "95d1707d",
+    "url": "evidence/shipments/NextGeneration-2026-11-03-95d1707d.json",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "223fa4a62ed6dcd6d988532e7b8a75be2d9b8cac89452987fd328b730ecd82da"
   },
   {
     "node": "sdlc.PageProgram",
@@ -2911,5 +2992,17 @@
     "signature": "attribution",
     "engine": "074fe8b804967ef6",
     "seal": "e2dc44b1e8c8e5508ed8f1e4d70c00e184e6890db583ead1138d1b4320e04ca6"
+  },
+  {
+    "node": "sdlc.PageProgram",
+    "at": "2026-11-03",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "301a08153eab4eddc1e7bb675156f1221329af5abcc5ded24f4a02c2c5e5b4cd",
+    "code": "7928117f",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "aa6b9b5c5dc57877",
+    "seal": "2e938862a4aa69d7680fcfc16d5d58ac7770b3a577d845105644f604c4a4dda6"
   }
 ]
