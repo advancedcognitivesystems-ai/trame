@@ -1408,3 +1408,18 @@ export const G95 = release({
   archive: "10418831c37c9ead",
   assembledBy: G94,
 })
+
+/**
+ * Generation 96
+ */
+export const G96 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g96",
+  date: "2026-11-03",
+  what: "the engine no longer uses the prelude's units (a number of no quantity is written as it is) and reads the language through its real paths; a release holds no manifest; Trame on std 0.14.0",
+  fingerprint: "d4c7b4274e8a52a3",
+  language: "shared",
+  archive: "b4ae1cf9bc47d1f7",
+  assembledBy: G95,
+})
