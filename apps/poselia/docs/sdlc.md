@@ -487,7 +487,7 @@ The script that ships a preview from another machine, written from its pipeline:
 - Path: `scripts/ship-preview.sh`
 - Media type: `text/x-shellscript`
 
-Built 3 November 2026 by claude, fingerprint `2bcdebf7475285e37dfc66bf162a1ee192fb701124e54d189fa6bcf3baa28761`.
+Built 3 November 2026 by claude, fingerprint `2db6ccc42278ce95ad44a7812f3da656741ba277e18c3ea168c66bffc96facbe`.
 
 - Owner: ghalaax
 - Produced by: [A script of Bash](../.trame/ci/docs/shell.md#ShellScript)
@@ -506,7 +506,7 @@ The workflow that ships a preview on GitHub, written from its pipeline: it prepa
 - Path: `../../.github/workflows/poselia-preview.yml`
 - Media type: `application/yaml`
 
-Built 3 November 2026 by claude, fingerprint `00d9961d941bc246c2463db03b174ec9be35637338cbc73fe84d01efb7b8473a`.
+Built 3 November 2026 by claude, fingerprint `79f911c1de3ee14ac6e51751cde362b05cd7c2ae4003471a1f2db8e4f278b409`.
 
 - Owner: ghalaax
 - Produced by: [A workflow of GitHub Actions](../.trame/ci/docs/github.md#GitHubWorkflow)
@@ -600,7 +600,7 @@ The page as it is, for its author and the few people they show it to, the way of
 | [Each decision of architecture serves the product](#AdrsServeTheProduct) | **held** | [The rules of the app hold](#RulesHeld) |
 | [Code serves the product](#CodeServesTheProduct) | **held** | [The rules of the app hold](#RulesHeld) |
 
-Shipped 3 November 2026 by claude; its dossier: `evidence/shipments/Preview-2026-11-03-633927aa.json`.
+Shipped 3 November 2026 by claude; its dossier: `evidence/shipments/Preview-2026-11-03-225080b8.json`.
 
 - Owner: ghalaax
 - Ships: [Poselia's page](#PageFile)
@@ -699,7 +699,7 @@ The workflow and the script that run the preview elsewhere, written by trame shi
 | [The preview's script](#PreviewScript) | **held** | shipped |
 | [The preview's workflow](#PreviewWorkflow) | **held** | shipped |
 
-Shipped 3 November 2026 by claude; its dossier: `evidence/shipments/RunnersWritten-2026-11-03-6dfa93cf.json`.
+Shipped 3 November 2026 by claude; its dossier: `evidence/shipments/RunnersWritten-2026-11-03-54e1b009.json`.
 
 - Owner: ghalaax
 - Ships: [The preview's workflow](#PreviewWorkflow), [The preview's script](#PreviewScript)

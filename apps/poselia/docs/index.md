@@ -33,7 +33,7 @@ The libraries the project imports: their nodes take part in the graph, their doc
 |---|---|---|---|
 | [ci 0.3.0](../.trame/ci/docs/index.md) | Continuous integration · GitHub Actions, Continuous integration · npm, Continuous integration · Packages, Continuous integration · Product, Continuous integration · Releases, Continuous integration · Shell, Continuous integration · YAML | 13 | Nothing to report |
 | [geometry 0.1.0](../.trame/geometry/docs/index.md) | Geometry · Angles, Geometry · Product, Geometry · Vectors | 7 | Nothing to report |
-| [std 0.14.0](../.trame/std/docs/index.md) | Standard library · Algebra, Standard library · Algorithms, Standard library · ECMAScript, Standard library · Effects, Standard library · HTML and CSS, Standard library · Measures, Standard library · Obligations, Standard library · Packages, Standard library · Design patterns, Standard library · Platform, Standard library · Product, Standard library · Releases, Standard library · Rules, Standard library · Scenarios, Standard library · System, Standard library · Text, Standard library · Tooling, Standard library · Web | 149 | 4 points to watch |
+| [std 0.14.0](../.trame/std/docs/index.md) | Standard library · Algebra, Standard library · Algorithms, Standard library · ECMAScript, Standard library · Effects, Standard library · HTML and CSS, Standard library · Measures, Standard library · Obligations, Standard library · Packages, Standard library · Design patterns, Standard library · Platform, Standard library · Product, Standard library · Releases, Standard library · Rules, Standard library · Scenarios, Standard library · System, Standard library · Text, Standard library · Tooling, Standard library · Web | 149 | 3 points to watch |
 
 ## Open issues
 

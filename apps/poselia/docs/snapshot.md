@@ -842,10 +842,10 @@ Package · `Language`
 
 - Owner: ghalaax
 - Name: trame
-- Version: 97
+- Version: 99
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../../generations/g97
+- Its path: ../../generations/g99
 - Serves: Practise yoga on one's own, guided
 
 ### The standard library

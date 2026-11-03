@@ -76,7 +76,7 @@ flowchart TB
 | 17 | prove | [Each decision of architecture serves the product](sdlc.md#AdrsServeTheProduct) | — | [The rules of the app hold](sdlc.md#RulesHeld) | **held** |  |
 | 18 | prove | [Code serves the product](sdlc.md#CodeServesTheProduct) | — | [The rules of the app hold](sdlc.md#RulesHeld) | **held** |  |
 | 19 | deploy | [Place the page](sdlc.md#PlaceThePage) | itself | — | **held** | 3 November 2026 by claude  |
-| 20 | record | [A preview](sdlc.md#Preview) | — | — | **held** | 3 November 2026 by claude `evidence/shipments/Preview-2026-11-03-633927aa.json` |
+| 20 | record | [A preview](sdlc.md#Preview) | — | — | **held** | 3 November 2026 by claude `evidence/shipments/Preview-2026-11-03-225080b8.json` |
 
 `trame ship Preview --by <name>`
 
@@ -310,6 +310,6 @@ flowchart TB
 | 3 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
 | 4 | prove | [The preview's script](sdlc.md#PreviewScript) | — | the shipment | **held** | 3 November 2026 by claude  |
 | 5 | prove | [The preview's workflow](sdlc.md#PreviewWorkflow) | — | the shipment | **held** | 3 November 2026 by claude  |
-| 6 | record | [The files that run it elsewhere](sdlc.md#RunnersWritten) | — | — | **held** | 3 November 2026 by claude `evidence/shipments/RunnersWritten-2026-11-03-6dfa93cf.json` |
+| 6 | record | [The files that run it elsewhere](sdlc.md#RunnersWritten) | — | — | **held** | 3 November 2026 by claude `evidence/shipments/RunnersWritten-2026-11-03-54e1b009.json` |
 
 `trame ship RunnersWritten --by <name>`

@@ -411,10 +411,10 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 98
+- Version: 99
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../generations/g98
+- Its path: ../generations/g99
 - Serves: Ports of the platform, realized once
 
 ## Standard library · Design patterns

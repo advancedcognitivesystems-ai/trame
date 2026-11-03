@@ -57,14 +57,14 @@ The vectors and the angles the body computes with.
 The language Poselia is written in, at the generation it pins: reached by its path in Trame's repository.
 
 - Name: `trame`
-- Version: `97`
+- Version: `99`
 - Installed: Not installed in the project: its lockfile lists no trame
 - Vulnerabilities: No report yet: trame audit asks the registry
 - Latest version: No report yet: trame audit asks the registry
 - What it may do: not said: an implementation that imports it cannot promise anything
 - How it joins the graph: `language`
 - Where it comes from: `path`
-- Its path: `../../generations/g97`
+- Its path: `../../generations/g99`
 
 - Owner: ghalaax
 - Serves: [Practise yoga on one's own, guided](product.md#PractiseGuided)
