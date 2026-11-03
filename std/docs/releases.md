@@ -118,6 +118,22 @@ Time counts milliseconds too, and the bodies that met JavaScript's clocks receiv
 - Released by: trame
 - Serves: [A published value is cited, not copied](product.md#CitedNotCopied), [Known designs, named](product.md#KnownDesigns), [Ports of the platform, realized once](product.md#RealizedOnce), [Shared operations instead of literals](product.md#SharedOperations), [Rules applied, not written again](product.md#SharedRules)
 
+<a id="R0_15_0"></a>
+
+### Version 0.15.0
+
+`R0_15_0` · `src/releases.ts:207`
+
+A package's source says which versions it holds; npm's words to install what a project names
+
+- Version: `0.15.0`
+- Released on: 3 November 2026
+- Fingerprint: `911af2d98a5ddddd`
+- Language: the repository's, shared
+
+- Released by: trame
+- Serves: [A published value is cited, not copied](product.md#CitedNotCopied), [Known designs, named](product.md#KnownDesigns), [Ports of the platform, realized once](product.md#RealizedOnce), [Shared operations instead of literals](product.md#SharedOperations), [Rules applied, not written again](product.md#SharedRules)
+
 <a id="R0_2_0"></a>
 
 ### Version 0.2.0

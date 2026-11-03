@@ -2194,10 +2194,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "99",
+        "version": "100",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g99"
+        "at": "../generations/g100"
       },
       "diagnostics": []
     },
@@ -2723,6 +2723,21 @@
         "date": "2026-11-03",
         "what": "Time counts milliseconds too, and the bodies that met JavaScript's clocks receive Time instead of the prelude's ms and elapsed",
         "fingerprint": "46999c272f5c420d",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "releases.R0_15_0",
+      "kind": "release",
+      "title": "Version 0.15.0",
+      "source": "src/releases.ts:207",
+      "fields": {
+        "owner": "trame",
+        "version": "0.15.0",
+        "date": "2026-11-03",
+        "what": "A package's source says which versions it holds; npm's words to install what a project names",
+        "fingerprint": "911af2d98a5ddddd",
         "language": "shared"
       },
       "diagnostics": []
@@ -3482,7 +3497,7 @@
       "source": "src/system.ts:150",
       "fields": {
         "owner": "trame",
-        "source": "npm documentation: npm audit, npm outdated (--json)",
+        "source": "npm documentation: npm install, npm audit, npm outdated (--json)",
         "url": "https://docs.npmjs.com/cli/commands/npm-audit",
         "constants": {
           "command": {
@@ -5011,6 +5026,31 @@
     },
     {
       "from": "releases.R0_14_0",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_15_0",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_15_0",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_15_0",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_15_0",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_15_0",
       "to": "product.SharedRules",
       "kind": "serves"
     },

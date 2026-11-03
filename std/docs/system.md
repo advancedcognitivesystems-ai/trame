@@ -157,7 +157,7 @@ Source: Node.js documentation: process (process.exitCode), console (console.log)
 
 The registry's reports, asked of npm in a project: its audit and its outdated packages, in JSON.
 
-Source: npm documentation: npm audit, npm outdated (--json) · `https://docs.npmjs.com/cli/commands/npm-audit`
+Source: npm documentation: npm install, npm audit, npm outdated (--json) · `https://docs.npmjs.com/cli/commands/npm-audit`
 
 | Constant | Value | Meaning |
 |---|---|---|

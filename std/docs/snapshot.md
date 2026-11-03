@@ -411,10 +411,10 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 99
+- Version: 100
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../generations/g99
+- Its path: ../generations/g100
 - Serves: Ports of the platform, realized once
 
 ## Standard library · Design patterns
@@ -751,6 +751,18 @@ Release · `R0_14_0`
 - Language: shared
 - Serves: A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again
 
+### Version 0.15.0
+
+Release · `R0_15_0`
+
+- Released by: trame
+- Version: 0.15.0
+- Released on: 2026-11-03
+- What changes: A package's source says which versions it holds; npm's words to install what a project names
+- Fingerprint: 911af2d98a5ddddd
+- Language: shared
+- Serves: A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again
+
 ### Version 0.2.0
 
 Release · `R0_2_0`
@@ -1083,7 +1095,7 @@ Standard · `NodeProcessApi`
 Standard · `NpmCli`
 
 - Maintained by: trame
-- Source: npm documentation: npm audit, npm outdated (--json)
+- Source: npm documentation: npm install, npm audit, npm outdated (--json)
 - Address: https://docs.npmjs.com/cli/commands/npm-audit
 - Constants: { command: { value: npm, meaning: The command line of npm }, audit: { value: audit, meaning: Asks the registry for the known vulnerabilities of the packages installed }, outdated: { value: outdated, meaning: Lists the packages installed that are not at their latest version }, json: { value: --json, meaning: Answers in JSON rather than in a table }, install: { value: install, meaning: Installs the packages package.json names and writes what it installed into the lockfile }, noAudit: { value: --no-audit, meaning: Installs without asking the registry for vulnerabilities (trame audit asks it) }, noFund: { value: --no-fund, meaning: Installs without the messages of packages looking for funding } }
 - Serves: A published value is cited, not copied
