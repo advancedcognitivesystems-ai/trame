@@ -2,7 +2,7 @@
 // The traversal API, plus what the compilation found (holes, claims, overlaps, publication),
 // and the standard composition of a node's card from what its kind renders.
 
-import { BlockType, ChangeWay, ClaimOutcome, ClaimSide, DateRole, Direction, FieldType, JsonMark, Nature, OPEN_KEY, Origin, ResolutionOutcome, RuleState, Severity, Stage, Validity, ValueType, ViewName, ViewScope, doc, unitOf } from "../../../trame/kernel"
+import { BlockType, ChangeWay, ClaimOutcome, ClaimSide, DateRole, Direction, FieldType, JsonMark, Nature, OPEN_KEY, Origin, ResolutionOutcome, RuleState, Severity, Stage, Validity, ValueType, ViewName, ViewScope, doc } from "../../../trame/kernel"
 import type {
   ProvidedBy, AnyKind, AnyNode, Json, Block, Card, ClaimInfo, Compilation, DateInfo, Fact, FigureEdge, FigureNode, Inline, Issue,
   IssueItem, KindInfo, NodeRef, ResolutionBlock, ResolutionInfo, View, LiteralInfo, LanguageLiteral, ViewDef, LibraryInfo, AmendableValue,
@@ -101,11 +101,8 @@ const body = (deps: Deps) => {
     const value = (target: View, path: string, raw: unknown): Inline => {
       const first = deps.references.firstSegment(path)
       const info = target.fieldInfo(first)
-      const nodeUnit = unitOf(head(target.decl?.typeArgs))
-      // The quantity its type says (since g80), or else the unit of the prelude its field or its node's type names.
-      const unit = target.quantityOf?.(first) ?? (info?.type === FieldType.duration || info?.type === FieldType.percent || info?.type === FieldType.chf
-        ? info.type
-        : info?.type === FieldType.value || info?.type === FieldType.range ? nodeUnit : undefined)
+      // The quantity its type says (since g80): a number of no quantity is written as it is (the prelude's units, gone in g96).
+      const unit = target.quantityOf?.(first)
       const type = info?.type === FieldType.date ? ValueType.date
         : info?.type === FieldType.range && first === path ? ValueType.range
         : info?.type === FieldType.map && first === path ? ValueType.map : undefined

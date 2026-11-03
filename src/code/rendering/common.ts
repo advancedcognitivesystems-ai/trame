@@ -1,7 +1,7 @@
 // What all the renderers share: a value in words, the sentence of an overlap, where the card of a node lives.
 // Pure: no dependency on Node. The page uses it too.
 
-import { BlockType, InlineType, OPEN_KEY, Unit, Openness, Outcome, ResolutionOutcome, RuleState, Severity, Status, Validity, ValueType, ViewGroup, keyFor, keyOf } from "../../../trame/kernel"
+import { BlockType, InlineType, OPEN_KEY, Openness, Outcome, ResolutionOutcome, RuleState, Severity, Status, Validity, ValueType, ViewGroup, keyFor, keyOf } from "../../../trame/kernel"
 import type { Block, Document, Inline, Json, KeyOf, NodeRef, ProvidedBy, ResolutionBlock } from "../../../trame/kernel"
 import type { Dates, Lists, RenderingMessages } from "../../messages"
 import type { Texts, ValueTypes } from "#std/algebra"
@@ -47,18 +47,18 @@ const body = (deps: Deps) => {
   /** The outcome of a check in words: "passed", "failed"… */
   const outcomeText = named(Outcome, messages.outcomeName)
 
-  function jsonText(v: Json, unit?: Unit, type?: ValueInline["type"]): string {
+  function jsonText(v: Json, type?: ValueInline["type"]): string {
     if (v === null) return messages.none()
     if (values.isObject(v) && !Array.isArray(v) && OPEN_KEY in v) return messages.undecided()
     if (type === ValueType.date && values.isText(v)) return dates.format(v)
     if (type === ValueType.range && Array.isArray(v)) {
       const [from, to] = v
-      return messages.range(jsonText(from, unit), jsonText(to, unit))
+      return messages.range(jsonText(from), jsonText(to))
     }
     if (type === ValueType.map && values.isObject(v) && !Array.isArray(v)) return messages.valueMap(Object.entries(v).map(([k, x]) => [k, jsonText(x)]))
-    if (Array.isArray(v)) return messages.valueList(v.map((x) => jsonText(x, unit)))
-    if (values.isObject(v)) return messages.valueRecord(Object.entries(v).map(([k, x]) => [k, jsonText(x, unit)]))
-    if (values.isNumber(v)) return deps.units.format(v, unit)
+    if (Array.isArray(v)) return messages.valueList(v.map((x) => jsonText(x)))
+    if (values.isObject(v)) return messages.valueRecord(Object.entries(v).map(([k, x]) => [k, jsonText(x)]))
+    if (values.isNumber(v)) return deps.units.format(v)
     return String(v)
   }
 
@@ -67,12 +67,9 @@ const body = (deps: Deps) => {
     if (i.open) return i.open === Openness.contested ? messages.contested() : messages.undecided()
     if (i.rule) return i.rule === RuleState.redefined ? messages.redefinedRule() : messages.originalRule()
     // A value of a quantity of the graph comes written by the engine, each number in its unit (since g80).
-    if (i.shownAs !== undefined) return jsonText(i.shownAs, undefined, i.type)
-    return jsonText(i.value, unitOfThePrelude(i.unit), i.type)
+    if (i.shownAs !== undefined) return jsonText(i.shownAs, i.type)
+    return jsonText(i.value, i.type)
   }
-
-  /** A unit the prelude writes (a duration, a percentage, an amount in francs), not a quantity of the graph. */
-  const unitOfThePrelude = (unit: string | undefined): Unit | undefined => Object.values(Unit).find((u) => u === unit)
 
   /** A value that remains open (undecided or contested), even deep inside a composite value. */
   function isOpen(i: ValueInline): boolean {

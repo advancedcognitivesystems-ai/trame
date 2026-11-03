@@ -10,7 +10,7 @@
 
 ### Settings of the documents
 
-`LanguageSettings` · `src/documents.ts:87`
+`LanguageSettings` · `src/documents.ts:86`
 
 How far the timeline reaches before the first date it shows and after the last one, in days; how many examples, most frequent values and repeated values the catalogue of literals shows, and the categories it leaves out of the repeated values (a separator repeats by nature); how many days before it expires an assumption warns; the percentiles a service level objective may hold (below the median, an objective would say that most measures may miss it). The kinds and the views receive them from the engine.
 
@@ -28,7 +28,7 @@ How far the timeline reaches before the first date it shows and after the last o
 
 ### How Mermaid figures are drawn
 
-`MermaidFigures` · `src/documents.ts:107`
+`MermaidFigures` · `src/documents.ts:106`
 
 The reading direction of each shape, the stroke of each edge, the look of a node that is history or not in force, the Gantt chart. The colours of the statuses come from the palette.
 
@@ -49,9 +49,9 @@ The reading direction of each shape, the stroke of each edge, the look of a node
 
 ### How a number is written
 
-`NumberDisplay` · `src/documents.ts:127`
+`NumberDisplay` · `src/documents.ts:126`
 
-A value of the graph is written in decimal digits, with at most two decimals: a duration, a percentage, an amount.
+A value of the graph is written in decimal digits, with at most two decimals.
 
 | Case | Value |
 |---|---|
@@ -65,7 +65,7 @@ A value of the graph is written in decimal digits, with at most two decimals: a 
 
 ### Heading levels of Markdown documents
 
-`TextRendering` · `src/documents.ts:45`
+`TextRendering` · `src/documents.ts:44`
 
 The title of a document is a heading of the first level, its sections start at the second; a card is one level under the section that holds it.
 
@@ -83,7 +83,7 @@ The title of a document is a heading of the first level, its sections start at t
 
 ### The punctuation is the language's
 
-`PunctuationOfTheLanguage` · `src/documents.ts:67` · status: **held**
+`PunctuationOfTheLanguage` · `src/documents.ts:66` · status: **held**
 
 The marks between the parts of a line are written in the decided language, with its tag; the renderers, the page, the kinds and the views receive those of the language decided.
 
@@ -106,7 +106,7 @@ Consequences: The Language decision holds the marks of the language with its tag
 
 ### Punctuation of documents
 
-`Punctuation` · `src/documents.ts:55` · status: **held**
+`Punctuation` · `src/documents.ts:54` · status: **held**
 
 The marks of the decided language that separate the parts of a line, the same in every rendering (the terminal, Markdown, the page). How a value reads (a list, a map, a record) is said by the catalog.
 
@@ -124,10 +124,10 @@ The marks of the decided language that separate the parts of a line, the same in
 
 `Units` · `src/documents.ts:137` · status: **held**
 
-A value written with its unit, in the words of the decided language: a duration in hours when it makes whole hours, in minutes when it makes whole minutes, in seconds otherwise; a ratio as a percentage; an amount in Swiss francs.
+A number written in decimal digits; a value of a quantity of the graph in the largest of its units it makes a whole number of, in the words of that unit (since g80). A number of no quantity has no unit: the units the prelude wrote (a duration, a percentage, an amount in francs) are gone since g96, each a quantity of the graph.
 
 - Owner: trame
-- Parameters: `words` ← [Words of the units](messages.md#UnitWords) · `measures` ← [Units of measure](../std/releases/0.13.0/docs/measures.md#UnitsOfMeasure) · `display` ← [How a number is written](#NumberDisplay) · `counts` ← [Counts](../std/releases/0.13.0/docs/algebra.md#Counts) · `values` ← [Types of values](../std/releases/0.13.0/docs/algebra.md#ValueTypes)
+- Parameters: `display` ← [How a number is written](#NumberDisplay) · `counts` ← [Counts](../std/releases/0.14.0/docs/algebra.md#Counts) · `values` ← [Types of values](../std/releases/0.14.0/docs/algebra.md#ValueTypes)
 - Body: inline, in the declaration
 - Serves: [A single source of truth](product.md#SingleSource)
 - Used by: [Compilation API](engine.md#CompilationApi), [Graph](engine.md#GraphApi), [Common rendering](rendering.md#Common), [The documents write in the decided language](scenarios.md#DocumentWords)
@@ -137,12 +137,12 @@ A value written with its unit, in the words of the decided language: a duration 
 
 ### Visible text
 
-`VisibleText` · `src/documents.ts:181` · status: **held**
+`VisibleText` · `src/documents.ts:172` · status: **held**
 
 A text shown so that every character can be seen: in quotes as JSON writes it, the characters JSON leaves as they are written as escapes; or as it is, when nothing in it hides.
 
 - Owner: trame
-- Parameters: `escape` ← [Unicode escape of a text](../std/releases/0.13.0/docs/ecmascript.md#UnicodeEscape) · `invisible` ← [Characters that do not show](../std/releases/0.13.0/docs/text.md#InvisibleCharacters) · `ecma` ← [ECMAScript](../std/releases/0.13.0/docs/ecmascript.md#EcmaScript) · `texts` ← [Texts](../std/releases/0.13.0/docs/algebra.md#Texts)
+- Parameters: `escape` ← [Unicode escape of a text](../std/releases/0.14.0/docs/ecmascript.md#UnicodeEscape) · `invisible` ← [Characters that do not show](../std/releases/0.14.0/docs/text.md#InvisibleCharacters) · `ecma` ← [ECMAScript](../std/releases/0.14.0/docs/ecmascript.md#EcmaScript) · `texts` ← [Texts](../std/releases/0.14.0/docs/algebra.md#Texts)
 - Body: inline, in the declaration
 - Serves: [A single source of truth](product.md#SingleSource)
 - Used by: [Graph](engine.md#GraphApi), [The documents write in the decided language](scenarios.md#DocumentWords)

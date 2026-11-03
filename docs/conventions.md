@@ -69,7 +69,7 @@ Source: Trame, the prelude (trame/kernel.ts: refOf, getPath)
 | `wholeNode` | `""` | The empty path: the whole node, not one of its fields (refines Texts.empty) |
 
 - Maintained by: trame
-- Refines: [Texts](../std/releases/0.13.0/docs/algebra.md#Texts)
+- Refines: [Texts](../std/releases/0.14.0/docs/algebra.md#Texts)
 - Used by: [Advance](commands.md#Advance), [Graph](engine.md#GraphApi), [References](engine.md#References), [Wiring](engine.md#Wiring), [Records of the releases](generations.md#ReleaseRecords), [Common rendering](rendering.md#Common), [TypeScript writer](typescript.md#TypeScriptWriter)
 
 <a id="TrameCommands"></a>

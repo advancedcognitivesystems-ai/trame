@@ -2,7 +2,7 @@
 
 *The values written in code bodies, found by the syntax reader with the queries of each language, on 3 November 2026.*
 
-> **0 literals to declare in 0 bodies, 0 of them already declared by a constant · 1878 declared by a catalog**
+> **0 literals to declare in 0 bodies, 0 of them already declared by a constant · 1873 declared by a catalog**
 
 A literal written in a body is an error of its node: its value belongs in the graph, with its meaning (a standard, a decision, a structure, a catalog), and the body receives it as a parameter. The text of a message catalog is what the catalog declares.
 
@@ -55,7 +55,6 @@ The text written in a message catalog is what the catalog declares: words said t
 | [Messages of trame dev](messages.md#DevMessages) | 15 | `` `trame dev · ${…} · graph of ${…}` `` `` `watching ${…} · Ctrl+C to stop` `` `""` |
 | [Messages of the platform](messages.md#PlatformMessages) | 10 | `` `Unknown command: ${…}` `` `` `warning: a promise was rejected without being awaited (${…})` `` `"In test, the engine starts no process"` |
 | [What the programs of Trame's SDLC say](sdlc.md#SdlcWords) | 7 | `"The graph page opens: its documents, a document shown, its nodes, …` `"The navigation lists no document"` `"No document is shown"` |
-| [Words of the units](messages.md#UnitWords) | 5 | `` `${…} h` `` `` `${…} min` `` `` `${…} s` `` |
 
 ## By body
 

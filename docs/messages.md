@@ -23,7 +23,7 @@ The language Trame speaks to people: British English. Its messages are written i
 - Rejected: French, the language of the first generations; the workspace and its documents moved to English; Several languages at once, nothing asks for it yet: each catalog is written in one language, and a second one would be a second set of catalogs
 - Used by: [Show the graph](browser.md#ShowGraph), [Punctuation of documents](documents.md#Punctuation), [trame dev server](engine.md#DevServer), [Payload](engine.md#PayloadBuilder), [Messages of an advance](#AdvanceMessages), [Messages of the commands](#CommandMessages), [Messages of the compiler](#CompilerMessages), [Dates](#Dates), [Messages of trame dev](#DevMessages), [Lists](#Lists), [Words of the page](#PageWords), [Messages of the scenarios](#ScenarioMessages), [Messages of the views](#ViewMessages), [Page](page.md#Page), [The documents write in the decided language](scenarios.md#DocumentWords), [Open the graph page](sdlc.md#OpenTheGraphPage)
 - Applies: [The punctuation is the language's](documents.md#PunctuationOfTheLanguage)
-- Language of: [Messages of an advance](#AdvanceMessages), [Messages of the commands](#CommandMessages), [Messages of the compiler](#CompilerMessages), [Messages of trame dev](#DevMessages), [Messages of the drivers](#DriverMessages), [Words of Trame's views](#EngineViewWords), [Words of the kinds](#KindWords), [Messages of the laws](#LawMessages), [Messages of the outputs](#OutputMessages), [Words of the page](#PageWords), [Messages of the platform](#PlatformMessages), [Messages of the renderers](#RenderingMessages), [Messages of the scenarios](#ScenarioMessages), [Words of the units](#UnitWords), [Messages of the views](#ViewMessages), [Words of the views](#ViewWords), [What the programs of Trame's SDLC say](sdlc.md#SdlcWords), [Roles of a literal](syntax.md#LiteralRoles)
+- Language of: [Messages of an advance](#AdvanceMessages), [Messages of the commands](#CommandMessages), [Messages of the compiler](#CompilerMessages), [Messages of trame dev](#DevMessages), [Messages of the drivers](#DriverMessages), [Words of Trame's views](#EngineViewWords), [Words of the kinds](#KindWords), [Messages of the laws](#LawMessages), [Messages of the outputs](#OutputMessages), [Words of the page](#PageWords), [Messages of the platform](#PlatformMessages), [Messages of the renderers](#RenderingMessages), [Messages of the scenarios](#ScenarioMessages), [Messages of the views](#ViewMessages), [Words of the views](#ViewWords), [What the programs of Trame's SDLC say](sdlc.md#SdlcWords), [Roles of a literal](syntax.md#LiteralRoles)
 
 ## Architecture decision
 
@@ -31,7 +31,7 @@ The language Trame speaks to people: British English. Its messages are written i
 
 ### A catalog counts in its language
 
-`CountsInTheLanguage` · `src/messages.ts:929` · status: **held**
+`CountsInTheLanguage` · `src/messages.ts:912` · status: **held**
 
 A count and its noun follow the plural rules of the language the catalog is written in, with the forms the catalog writes for each category; nothing below the catalogs presumes a language.
 
@@ -87,7 +87,7 @@ Joins the items of a list as people write it in the decided language: "A, B and 
 
 ### Messages of an advance
 
-`AdvanceMessages` · `src/messages.ts:840`
+`AdvanceMessages` · `src/messages.ts:823`
 
 What trame advance says as it goes, and what a generation says of itself.
 
@@ -186,7 +186,7 @@ What trame advance says as it goes, and what a generation says of itself.
 
 ### Messages of the commands
 
-`CommandMessages` · `src/messages.ts:454`
+`CommandMessages` · `src/messages.ts:437`
 
 What the commands print: summaries, usage, refusals.
 
@@ -379,7 +379,7 @@ What the commands print: summaries, usage, refusals.
 
 ### Messages of the compiler
 
-`CompilerMessages` · `src/messages.ts:107`
+`CompilerMessages` · `src/messages.ts:90`
 
 What the compiler, the wiring and the assembly say: diagnostics on the graph, refusals, errors.
 
@@ -518,7 +518,7 @@ What the compiler, the wiring and the assembly say: diagnostics on the graph, re
 
 ### Messages of trame dev
 
-`DevMessages` · `src/messages.ts:430`
+`DevMessages` · `src/messages.ts:413`
 
 What the dev server prints while it watches the project.
 
@@ -553,7 +553,7 @@ What the dev server prints while it watches the project.
 
 ### Messages of the drivers
 
-`DriverMessages` · `src/messages.ts:235`
+`DriverMessages` · `src/messages.ts:218`
 
 What the drivers say about a body: hidden dependencies, access to the platform, a missing file; and the comments of the programs they write.
 
@@ -608,7 +608,7 @@ What the drivers say about a body: hidden dependencies, access to the platform, 
 
 ### Words of Trame's views
 
-`EngineViewWords` · `src/messages.ts:658`
+`EngineViewWords` · `src/messages.ts:641`
 
 What the views of Trame's own graph say: the catalogue of literals, the versions of the engine.
 
@@ -621,7 +621,7 @@ The messages are written in `../engine-views/words.ts`.
 
 ### Words of the kinds
 
-`KindWords` · `src/messages.ts:638`
+`KindWords` · `src/messages.ts:621`
 
 What the kinds say: their labels, the labels of their fields and edges, what their holes say, what they render. The kinds are files of the language, outside the graph: their words are a catalog all the same, which they call; a kind writes no text of its own.
 
@@ -634,7 +634,7 @@ The messages are written in `../kinds/words.ts`.
 
 ### Messages of the laws
 
-`LawMessages` · `src/messages.ts:279`
+`LawMessages` · `src/messages.ts:262`
 
 What the laws of kinds and views report when one does not hold.
 
@@ -688,7 +688,7 @@ What the laws of kinds and views report when one does not hold.
 
 ### Messages of the outputs
 
-`OutputMessages` · `src/messages.ts:373`
+`OutputMessages` · `src/messages.ts:356`
 
 What the machine outputs, the lock, the payload, the date bundle, the differences and the page say.
 
@@ -756,7 +756,7 @@ What the machine outputs, the lock, the payload, the date bundle, the difference
 
 ### Words of the page
 
-`PageWords` · `src/messages.ts:669`
+`PageWords` · `src/messages.ts:652`
 
 What the page says around the documents the engine wrote: the state of the compilation, the dates, the navigation, the banner, the figures, the explorer.
 
@@ -772,7 +772,7 @@ The messages are written in `./code/page/words.ts`.
 
 ### Messages of the platform
 
-`PlatformMessages` · `src/messages.ts:691`
+`PlatformMessages` · `src/messages.ts:674`
 
 What the implementations of the ports say (the command line, the terminal, the processes).
 
@@ -812,7 +812,7 @@ What the implementations of the ports say (the command line, the terminal, the p
 
 ### Messages of the renderers
 
-`RenderingMessages` · `src/messages.ts:681`
+`RenderingMessages` · `src/messages.ts:664`
 
 The words that the renderers add to the intermediate format: labels, notes, the names of statuses and outcomes. Written in a file: the page, which runs in the browser where nothing is wired, reads it too.
 
@@ -827,7 +827,7 @@ The messages are written in `./code/rendering/messages.ts`.
 
 ### Messages of the scenarios
 
-`ScenarioMessages` · `src/messages.ts:720`
+`ScenarioMessages` · `src/messages.ts:703`
 
 The names of the checks that the engine's scenarios make.
 
@@ -862,7 +862,7 @@ The names of the checks that the engine's scenarios make.
     dayWritten: (written: string) => `A day is written ${written}, short and as its month`,
     listJoined: (list: string) => `Items are joined as "${list}"`,
     durationsWritten: () => "A duration is written in the largest unit it is a whole number of",
-    ratioAndAmountWritten: (ratio: string, amount: string) => `A ratio is written ${ratio}, an amount ${amount}`,
+    ratioWritten: (ratio: string) => `A ratio is written ${ratio}`,
     hiddenCharacterShown: () => "A character nobody sees is shown escaped; a plain text as it is",
     marksOfTheLanguage: (tag: string) => `The marks between parts are those of ${tag}`,
     versionsOrdered: (older: string, newer: string) => `${older} comes before ${newer}`,
@@ -954,37 +954,11 @@ The names of the checks that the engine's scenarios make.
 - Used by: [An advance, in memory](command-scenarios.md#AdvanceInMemory), [A body is read and checked](command-scenarios.md#BodiesReadAndChecked), [A build planned](command-scenarios.md#BuildPlanned), [The command line](command-scenarios.md#CommandLineChooses), [A component assembled](command-scenarios.md#ComponentAssembled), [A component run](command-scenarios.md#ComponentRun), [Declarations published](command-scenarios.md#DeclarationsPublished), [trame dev](command-scenarios.md#DevFollowsTheGraph), [The doctor](command-scenarios.md#DoctorAsks), [The laws, tested by their command](command-scenarios.md#LawsTested), [A library released](command-scenarios.md#LibraryReleased), [The manifest written](command-scenarios.md#ManifestWritten), [The packages audited](command-scenarios.md#PackagesAudited), [The page delivered](command-scenarios.md#PageDelivered), [The page exported](command-scenarios.md#PageExported), [The page of the graph](command-scenarios.md#PageOfTheGraph), [The graph in the intermediate format](command-scenarios.md#PayloadOfTheGraph), [A project started](command-scenarios.md#ProjectStarted), [The registry filled](command-scenarios.md#RegistryFilled), [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [The snapshot, taken by its command](command-scenarios.md#SnapshotTaken), [A value amended](command-scenarios.md#ValueAmended), [A view in the terminal](command-scenarios.md#ViewsInTheTerminal), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore), [The described engine compiles the example](scenarios.md#CompileExample), [The documents write in the decided language](scenarios.md#DocumentWords), [The engine reckons as it says](scenarios.md#EngineReckons), [The laws of the kinds hold](scenarios.md#KindLaws), [The graph page is opened as a person would](sdlc.md#OpeningTheGraphPage)
 - Applies: [A catalog counts in its language](#CountsInTheLanguage), [The words are in catalogs](principles.md#WordsInCatalogs)
 
-<a id="UnitWords"></a>
-
-### Words of the units
-
-`UnitWords` · `src/messages.ts:87`
-
-How the decided language writes a value with its unit: hours, minutes, seconds, a percentage, an amount in Swiss francs. The number comes already written.
-
-<details><summary>The messages, in code</summary>
-
-```typescript
-() => ({
-    hours: (n: string) => `${n} h`,
-    minutes: (n: string) => `${n} min`,
-    seconds: (n: string) => `${n} s`,
-    percent: (n: string) => `${n}%`,
-    chf: (n: string) => `CHF ${n}`,
-  })
-```
-
-</details>
-
-- Owner: trame
-- Written in: [Language](#Language)
-- Used by: [Values with their units](documents.md#Units)
-
 <a id="ViewMessages"></a>
 
 ### Messages of the views
 
-`ViewMessages` · `src/messages.ts:322`
+`ViewMessages` · `src/messages.ts:305`
 
 What the loading of views and the compilation API say.
 
@@ -1046,7 +1020,7 @@ What the loading of views and the compilation API say.
 
 ### Words of the views
 
-`ViewWords` · `src/messages.ts:648`
+`ViewWords` · `src/messages.ts:631`
 
 What the views say: their titles, their introductions, their headings, what they say of the graph.
 

@@ -36,8 +36,10 @@ const body: BodyOf<typeof TsxLoader> = ({ prelude, names, specifiers, language }
     if (sources === undefined || dir === undefined || !within.some((d) => dir === d || dir.startsWith(d + sep))) return undefined
     return join(sources, ...rest) + extension
   }
+  /** A file by its real path: through a link (a generation's language), it would be a second module (since g96). */
+  const real = (file: string | undefined) => (file !== undefined && existsSync(file) ? realpathSync(file) : file)
   const resolve = (specifier: string, from: () => string | undefined) =>
-    specifier.startsWith(prefix) ? target(specifier.slice(prefix.length)) : library(specifier, from)
+    real(specifier.startsWith(prefix) ? target(specifier.slice(prefix.length)) : library(specifier, from))
   registerHooks({
     resolve: (specifier, context, next) => {
       const { parentURL } = context

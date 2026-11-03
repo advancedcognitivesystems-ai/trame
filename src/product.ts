@@ -75,7 +75,6 @@ export const ClaimSets = decision<number>({ owner: "trame", value: 30, range: [5
  */
 export const SampledValues = decision<{
   numbers: [number, number]
-  minutes: [number, number]
   rangeStart: [number, number]
   rangeWidth: [number, number]
   claimantsPerSet: number
@@ -96,7 +95,6 @@ export const SampledValues = decision<{
   owner: "trame",
   value: {
     numbers: [0, 100],
-    minutes: [1, 120],
     rangeStart: [0, 50],
     rangeWidth: [1, 50],
     claimantsPerSet: 3,

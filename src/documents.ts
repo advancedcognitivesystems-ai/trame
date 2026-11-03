@@ -3,13 +3,12 @@
 import { decision } from "../kinds/decision"
 import { fn } from "../kinds/function"
 import { adr } from "../kinds/adr"
-import { Language, UnitWords } from "./messages"
+import { Language } from "./messages"
 import { UnicodeEscape, EcmaScript } from "#std/ecmascript"
 import { InvisibleCharacters } from "#std/text"
-import { UnitsOfMeasure } from "#std/measures"
 import { Counts, Texts, ValueTypes } from "#std/algebra"
 import { SingleSource } from "./product"
-import { Unit, type DateRole, type EdgeRole, type KeyOf, type Nature, type ProvidedBy, type Shape } from "../trame/kernel"
+import { type DateRole, type EdgeRole, type KeyOf, type Nature, type ProvidedBy, type Shape } from "../trame/kernel"
 import type { MermaidLink, Flowchart, StyleProperties } from "./mermaid"
 
 type Direction = Parameters<ProvidedBy<typeof Flowchart>>[0]
@@ -122,7 +121,7 @@ export const MermaidFigures = decision<FigureDisplay>({
 
 /**
  * How a number is written
- * A value of the graph is written in decimal digits, with at most two decimals: a duration, a percentage, an amount.
+ * A value of the graph is written in decimal digits, with at most two decimals.
  */
 export const NumberDisplay = decision<{ base: number; decimals: number }>({
   owner: "trame",
@@ -131,28 +130,20 @@ export const NumberDisplay = decision<{ base: number; decimals: number }>({
 
 /**
  * Values with their units
- * A value written with its unit, in the words of the decided language: a duration in hours when it makes whole hours,
- * in minutes when it makes whole minutes, in seconds otherwise; a ratio as a percentage; an amount in Swiss francs.
+ * A number written in decimal digits; a value of a quantity of the graph in the largest of its units it makes a whole
+ * number of, in the words of that unit (since g80). A number of no quantity has no unit: the units the prelude wrote
+ * (a duration, a percentage, an amount in francs) are gone since g96, each a quantity of the graph.
  */
 export const Units = fn({
   owner: "trame",
   serves: [SingleSource],
-  deps: { words: UnitWords, measures: UnitsOfMeasure, display: NumberDisplay, counts: Counts, values: ValueTypes },
-  body: ({ words, measures, display, counts, values }) => {
+  deps: { display: NumberDisplay, counts: Counts, values: ValueTypes },
+  body: ({ display, counts, values }) => {
     const scale = Math.pow(display.base, display.decimals)
     const number = (n: number) => String(Math.round(n * scale) / scale)
-    const whole = (n: number, of: number) => n % of === counts.zero
     return {
-      /** "15 min", "2 h", "50%", "CHF 20"; a value that is not a number, as it is. */
-      format: (v: unknown, unit?: Unit): string => {
-        if (!values.isNumber(v)) return String(v)
-        if (unit === Unit.duration) {
-          return whole(v, measures.hour) ? words.hours(number(v / measures.hour)) : whole(v, measures.minute) ? words.minutes(number(v / measures.minute)) : words.seconds(number(v))
-        }
-        if (unit === Unit.percent) return words.percent(number(v * measures.percent))
-        if (unit === Unit.chf) return words.chf(number(v))
-        return number(v)
-      },
+      /** A number in decimal digits, at most two decimals; a value that is not a number, as it is. */
+      format: (v: unknown): string => (values.isNumber(v) ? number(v) : String(v)),
       /**
        * A number of a quantity of the graph (since g80), given its units from the largest: written in the largest one it
        * makes a whole number of, in the smallest otherwise, with the words of that unit (its message, when it has one).

@@ -90,7 +90,7 @@ What blocks first, then the errors, then what must be watched.
 
 ### Candidate dates
 
-`CandidateDates` · `src/product.ts:151`
+`CandidateDates` · `src/product.ts:149`
 
 The dates at which the page offers to see the graph: each start, each deadline, the day after each end, and the day before the first change (to see the graph from before). The offsets are in days.
 
@@ -120,7 +120,7 @@ How many sets of claims to test the resolution of a kind, each presented in seve
 
 ### Debouncing of saves
 
-`DevDebounce` · `src/product.ts:165`
+`DevDebounce` · `src/product.ts:163`
 
 In trame dev, saves close together trigger a single recompilation. In milliseconds.
 
@@ -134,7 +134,7 @@ In trame dev, saves close together trigger a single recompilation. In millisecon
 
 ### Port of trame dev
 
-`DevPort` · `src/product.ts:159`
+`DevPort` · `src/product.ts:157`
 
 - Value: 4170
 
@@ -159,7 +159,7 @@ How many nodes drawn at random to test the laws of a kind.
 
 ### Owners drawn at random
 
-`SampledOwners` · `src/product.ts:123`
+`SampledOwners` · `src/product.ts:121`
 
 The names that the laws give to the nodes they make. Neutral: they are the people of no project.
 
@@ -182,7 +182,6 @@ The ranges, both ends included, from which the laws draw the values of the nodes
 | Case | Value |
 |---|---|
 | numbers | 0, 100 |
-| minutes | 1, 120 |
 | rangeStart | 0, 50 |
 | rangeWidth | 1, 50 |
 | claimantsPerSet | 3 |
@@ -204,7 +203,7 @@ The ranges, both ends included, from which the laws draw the values of the nodes
 
 ### Values drawn by the laws of a structure
 
-`StructureDraws` · `src/product.ts:132`
+`StructureDraws` · `src/product.ts:130`
 
 A law of a structure is played on values drawn at random, from a seed of the structure's own: this many times, whole numbers and natural numbers from these ranges, texts of these characters and lengths, lists of these lengths, and a truth value as often true as false. The seed of a law is the structure's reference and the law's place, joined by a number sign.
 

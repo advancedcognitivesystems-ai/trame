@@ -1,6 +1,7 @@
 /** Trame · Scenarios */
 
-import { KindName, Severity, Status, Unit } from "../trame/kernel"
+import { KindName, Severity, Status } from "../trame/kernel"
+import { UnitSymbols } from "#std/measures"
 import { scenario } from "../kinds/scenario"
 import { decision } from "../kinds/decision"
 import { Process, Clock, FileReading, Paths, WriteLog, TerminalLog, Test } from "./architecture"
@@ -210,7 +211,7 @@ export const DocumentWordsData = decision<{
   list: { items: string[]; conjunction: string }
   durations: { seconds: number; written: string }[]
   ratio: { value: number; written: string }
-  amount: { value: number; written: string }
+  units: { time: [string, number][]; ratio: [string, number][] }
   hidden: { text: string; shown: string }
   plain: string
   versions: { older: string; newer: string; behind: { current: string; latest: string; breaking: number }[] }
@@ -221,7 +222,7 @@ export const DocumentWordsData = decision<{
     list: { items: ["kinds", "views", "the prelude"], conjunction: "kinds, views and the prelude" },
     durations: [{ seconds: 900, written: "15 min" }, { seconds: 7200, written: "2 h" }, { seconds: 45, written: "45 s" }],
     ratio: { value: 0.5, written: "50%" },
-    amount: { value: 20, written: "CHF 20" },
+    units: { time: [["hour", 3600], ["minute", 60], ["second", 1], ["millisecond", 0.001]], ratio: [["percent", 0.01]] },
     hidden: { text: "a\u00a0b", shown: "\"a\\u00a0b\"" },
     plain: "a b",
     versions: {
@@ -235,8 +236,8 @@ export const DocumentWordsData = decision<{
 /**
  * The documents write in the decided language
  * A day is written in full, short and as its month in the decided language; a list joins its items with the words of
- * the language; a duration takes the largest unit it is a whole number of, a ratio is a percentage and an amount is in
- * Swiss francs; a text that hides a character is shown with it escaped, another as it is; the marks between parts are
+ * the language; a value of a quantity takes the largest of its units it is a whole number of, in the words of that
+ * unit (a duration in hours, minutes or seconds, a ratio as a percentage: the units of std's Time and Ratio); a text that hides a character is shown with it escaped, another as it is; the marks between parts are
  * those of the language decided; versions are ordered by their numbers, not as texts, and the releases that break what
  * uses a package are counted by major version, or by minor version before 1.0.
  */
@@ -246,16 +247,15 @@ export const DocumentWords = scenario({
   env: Test,
   deps: {
     dates: Dates, lists: Lists, units: Units, visible: VisibleText, punctuation: Punctuation, language: Language, versions: VersionOrder,
-    data: DocumentWordsData, texts: Texts, messages: ScenarioMessages,
+    data: DocumentWordsData, symbols: UnitSymbols, texts: Texts, messages: ScenarioMessages,
   },
-  body: ({ dates, lists, units, visible, punctuation, language, versions, data, texts, messages }) => async (check) => {
-    const { day, list, ratio, amount, hidden } = data
+  body: ({ dates, lists, units, visible, punctuation, language, versions, data, symbols, texts, messages }) => async (check) => {
+    const { day, list, ratio, hidden } = data
     check(messages.dayWritten(day.written),
       dates.format(day.iso) === day.written && dates.formatShort(day.iso) === day.short && dates.month(day.iso) === day.month)
     check(messages.listJoined(list.conjunction), texts.concat(lists.conjunction(list.items).map(String)) === list.conjunction)
-    check(messages.durationsWritten(), data.durations.every((d) => units.format(d.seconds, Unit.duration) === d.written))
-    check(messages.ratioAndAmountWritten(ratio.written, amount.written),
-      units.format(ratio.value, Unit.percent) === ratio.written && units.format(amount.value, Unit.chf) === amount.written)
+    check(messages.durationsWritten(), data.durations.every((d) => units.inUnits(d.seconds, data.units.time, symbols) === d.written))
+    check(messages.ratioWritten(ratio.written), units.inUnits(ratio.value, data.units.ratio, symbols) === ratio.written)
     check(messages.hiddenCharacterShown(), visible.visible(hidden.text) === hidden.shown && visible.visible(data.plain) === data.plain)
     check(messages.marksOfTheLanguage(language.tag), punctuation.parts === language.punctuation.parts && punctuation.items === language.punctuation.items)
     check(messages.versionsOrdered(data.versions.older, data.versions.newer), versions.below(data.versions.older, data.versions.newer))

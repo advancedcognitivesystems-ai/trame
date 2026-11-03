@@ -1,7 +1,7 @@
 // The laws of kinds: what every kind must respect, whether it comes from the project or from an LLM.
 // Each kind is tried on nodes drawn at random (fixed seed: reproducible results).
 
-import { AnyTarget, EdgeMode, FieldType, KindHook, Moment, ResolutionKind, min, pct } from "../../../trame/kernel"
+import { AnyTarget, EdgeMode, FieldType, KindHook, Moment, ResolutionKind } from "../../../trame/kernel"
 import type { LanguageNames } from "../../conventions"
 import type { ProvidedBy, AnyKind, FieldSpec, HoleSpec, Resolution } from "../../../trame/kernel"
 import type { FileReading, KeptResults, Layout, Paths, Prelude } from "../../architecture"
@@ -110,9 +110,6 @@ const body = (deps: Deps) => {
       case FieldType.text: return sampled.text
       case FieldType.date: return take(new Date(Date.UTC(sampled.year, before(int(iso.firstMonth, iso.lastMonth)), int(iso.firstDay, iso.shortestMonth))).toISOString(), iso.dateLength)
       case FieldType.number: return int(f.min ?? low, f.max ?? high)
-      case FieldType.duration: return min(int(...sampled.minutes))
-      case FieldType.percent: return pct(number())
-      case FieldType.chf: return number()
       case FieldType.range: { const lo = int(...sampled.rangeStart); return [lo, lo + int(...sampled.rangeWidth)] }
       case FieldType.map: return { ...sampled.map }
       case FieldType.value: {

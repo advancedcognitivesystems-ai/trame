@@ -10,7 +10,7 @@
 
 ### How the documents write what they show, checked
 
-`DocumentWordsData` · `src/scenarios.ts:208`
+`DocumentWordsData` · `src/scenarios.ts:209`
 
 A day and how it is written in full, short and as its month; three items and the list they make; durations in seconds, a ratio and an amount, with how each is written; a text with a character nobody sees and how it is shown, and a text shown as it is; two versions in order, and a version behind the latest by two major releases, before and after 1.0.
 
@@ -20,7 +20,7 @@ A day and how it is written in full, short and as its month; three items and the
 | list | { items: kinds, views, the prelude, conjunction: kinds, views and the prelude } |
 | durations | { seconds: 900, written: 15 min }, { seconds: 7200, written: 2 h }, { seconds: 45, written: 45 s } |
 | ratio | { value: 0.5, written: 50% } |
-| amount | { value: 20, written: CHF 20 } |
+| units | { time: hour, 3600, minute, 60, second, 1, millisecond, 0, ratio: percent, 0.01 } |
 | hidden | { text: a b, shown: "a\u00a0b" } |
 | plain | a b |
 | versions | { older: 1.9.0, newer: 1.10.0, behind: { current: 2.1.0, latest: 4.0.0, breaking: 2 }, { current: 0.3.1, latest: 0.5.0, breaking: 2 } } |
@@ -32,7 +32,7 @@ A day and how it is written in full, short and as its month; three items and the
 
 ### Shape of the example
 
-`ExampleShape` · `src/scenarios.ts:25`
+`ExampleShape` · `src/scenarios.ts:26`
 
 How many scenarios the example project holds: the described engine must find them all.
 
@@ -47,7 +47,7 @@ How many scenarios the example project holds: the described engine must find the
 
 ### Expected differences on the example
 
-`ExpectedDifferences` · `src/scenarios.ts:80`
+`ExpectedDifferences` · `src/scenarios.ts:81`
 
 The files of the example that a wanted change of the engine writes differently, with the reason. The scenario "The build writes the same documents" lets them through, and only them; a difference that is not declared here makes it fail. Once the generation that writes them is in place, the list is emptied.
 
@@ -62,7 +62,7 @@ The files of the example that a wanted change of the engine writes differently, 
 
 ### What the engine's reckoning is checked with
 
-`ReckoningData` · `src/scenarios.ts:133`
+`ReckoningData` · `src/scenarios.ts:134`
 
 A relation with one cycle, reached again from outside it; two seeds and how many numbers to draw, between which bounds; a reference and a library's module; a value, the same written in another order, and a value changed; a place in a file.
 
@@ -87,7 +87,7 @@ A relation with one cycle, reached again from outside it; two seeds and how many
 
 ### The build writes the same documents as the engine in place
 
-`BuildLikeBefore` · `src/scenarios.ts:93` · status: **held**
+`BuildLikeBefore` · `src/scenarios.ts:94` · status: **held**
 
 trame build, run by the described engine on the example, writes character for character what the engine in place wrote (the generation that assembles it): docs/, graph.json, snapshot.json. Only the differences declared as expected pass. What writes them is verified so: the preparation and the compilation the views read, the views, the rendering of the files in Markdown with their figures in Mermaid, the machine outputs, trame.lock read for what is published, on the day the stopped clock shows; written and printed in memory.
 
@@ -108,7 +108,7 @@ trame build, run by the described engine on the example, writes character for ch
 </details>
 
 - Owner: trame
-- Parameters: `build` ← [Build](commands.md#Build) · `exitStatus` ← [Exit status](../std/releases/0.13.0/docs/system.md#ExitStatus) · `expected` ← [Expected differences on the example](#ExpectedDifferences) · `writeLog` ← [Write log](architecture.md#WriteLog) · `terminalLog` ← [Terminal log](architecture.md#TerminalLog) · `layout` ← [Project layout](conventions.md#Layout) · `reading` ← [File reading](architecture.md#FileReading) · `paths` ← [Paths](architecture.md#Paths) · `currentProcess` ← [Process](architecture.md#Process) · `encodings` ← [Node.js character encodings](../std/releases/0.13.0/docs/system.md#NodeEncodings) · `line` ← [Trame's commands](conventions.md#TrameCommands) · `counts` ← [Counts](../std/releases/0.13.0/docs/algebra.md#Counts) · `commandMessages` ← [Messages of the commands](messages.md#CommandMessages) · `messages` ← [Messages of the scenarios](messages.md#ScenarioMessages)
+- Parameters: `build` ← [Build](commands.md#Build) · `exitStatus` ← [Exit status](../std/releases/0.14.0/docs/system.md#ExitStatus) · `expected` ← [Expected differences on the example](#ExpectedDifferences) · `writeLog` ← [Write log](architecture.md#WriteLog) · `terminalLog` ← [Terminal log](architecture.md#TerminalLog) · `layout` ← [Project layout](conventions.md#Layout) · `reading` ← [File reading](architecture.md#FileReading) · `paths` ← [Paths](architecture.md#Paths) · `currentProcess` ← [Process](architecture.md#Process) · `encodings` ← [Node.js character encodings](../std/releases/0.14.0/docs/system.md#NodeEncodings) · `line` ← [Trame's commands](conventions.md#TrameCommands) · `counts` ← [Counts](../std/releases/0.14.0/docs/algebra.md#Counts) · `commandMessages` ← [Messages of the commands](messages.md#CommandMessages) · `messages` ← [Messages of the scenarios](messages.md#ScenarioMessages)
 - Body: inline, in the declaration
 - Effects: execution, keeps, process, read, terminal, time, write
 - Verifies: [Build](commands.md#Build), [Preparation](commands.md#Preparation), [Compilation API](engine.md#CompilationApi), [Views](engine.md#Views), [Rendering of the files](rendering.md#FileRendering), [Common rendering](rendering.md#Common), [Markdown writer](rendering.md#MarkdownSyntax), [Mermaid diagrams](rendering.md#MermaidDiagrams), [Machine outputs](engine.md#MachineOutputs), [Lock](engine.md#Lock), [Files in memory, over the disk](platform.md#MemoryFiles), [Terminal in memory](platform.md#MemoryTerminal), [Stopped clock](platform.md#StoppedClock)
@@ -119,7 +119,7 @@ trame build, run by the described engine on the example, writes character for ch
 
 ### The described engine compiles the example
 
-`CompileExample` · `src/scenarios.ts:34` · status: **held**
+`CompileExample` · `src/scenarios.ts:35` · status: **held**
 
 The compiler assembled from this graph loads the reservations project (its files read from the disk, its TypeScript run by tsx and checked by the compiler of TypeScript, its declarations read statically) and compiles it at the date of the scenarios: every scenario of the example found, wired and held. Loaded again in the same process, it reads the same: the reading the compiler of TypeScript made is kept, its files unchanged.
 
@@ -140,7 +140,7 @@ The compiler assembled from this graph loads the reservations project (its files
 </details>
 
 - Owner: trame
-- Parameters: `compiler` ← [Compiler](engine.md#Compiler) · `currentProcess` ← [Process](architecture.md#Process) · `clock` ← [Clock](architecture.md#Clock) · `shape` ← [Shape of the example](#ExampleShape) · `counts` ← [Counts](../std/releases/0.13.0/docs/algebra.md#Counts) · `messages` ← [Messages of the scenarios](messages.md#ScenarioMessages)
+- Parameters: `compiler` ← [Compiler](engine.md#Compiler) · `currentProcess` ← [Process](architecture.md#Process) · `clock` ← [Clock](architecture.md#Clock) · `shape` ← [Shape of the example](#ExampleShape) · `counts` ← [Counts](../std/releases/0.14.0/docs/algebra.md#Counts) · `messages` ← [Messages of the scenarios](messages.md#ScenarioMessages)
 - Body: inline, in the declaration
 - Effects: execution, keeps, read, time
 - Verifies: [Compiler](engine.md#Compiler), [Project](engine.md#Project), [Static reading](engine.md#StaticAnalysis), [Wiring](engine.md#Wiring), [Graph](engine.md#GraphApi), [TypeScript compiler](platform.md#RealTypeScript), [tsx loader](platform.md#TsxLoader), [Trame's prelude](platform.md#TramePrelude), [Files in memory, over the disk](platform.md#MemoryFiles), [Node paths](platform.md#NodePaths), [Example process](platform.md#ExampleProcess), [Results kept in the process](platform.md#ResultsInTheProcess)
@@ -151,9 +151,9 @@ The compiler assembled from this graph loads the reservations project (its files
 
 ### The documents write in the decided language
 
-`DocumentWords` · `src/scenarios.ts:243` · status: **held**
+`DocumentWords` · `src/scenarios.ts:244` · status: **held**
 
-A day is written in full, short and as its month in the decided language; a list joins its items with the words of the language; a duration takes the largest unit it is a whole number of, a ratio is a percentage and an amount is in Swiss francs; a text that hides a character is shown with it escaped, another as it is; the marks between parts are those of the language decided; versions are ordered by their numbers, not as texts, and the releases that break what uses a package are counted by major version, or by minor version before 1.0.
+A day is written in full, short and as its month in the decided language; a list joins its items with the words of the language; a value of a quantity takes the largest of its units it is a whole number of, in the words of that unit (a duration in hours, minutes or seconds, a ratio as a percentage: the units of std's Time and Ratio); a text that hides a character is shown with it escaped, another as it is; the marks between parts are those of the language decided; versions are ordered by their numbers, not as texts, and the releases that break what uses a package are counted by major version, or by minor version before 1.0.
 
 **The documents write in the decided language · in [Test](architecture.md#Test)**
 
@@ -162,7 +162,7 @@ A day is written in full, short and as its month in the decided language; a list
 | A day is written 17 October 2026, short and as its month | passed |
 | Items are joined as "kinds, views and the prelude" | passed |
 | A duration is written in the largest unit it is a whole number of | passed |
-| A ratio is written 50%, an amount CHF 20 | passed |
+| A ratio is written 50% | passed |
 | A character nobody sees is shown escaped; a plain text as it is | passed |
 | The marks between parts are those of en-GB | passed |
 | 1.9.0 comes before 1.10.0 | passed |
@@ -175,7 +175,7 @@ A day is written in full, short and as its month in the decided language; a list
 </details>
 
 - Owner: trame
-- Parameters: `dates` ← [Dates](messages.md#Dates) · `lists` ← [Lists](messages.md#Lists) · `units` ← [Values with their units](documents.md#Units) · `visible` ← [Visible text](documents.md#VisibleText) · `punctuation` ← [Punctuation of documents](documents.md#Punctuation) · `language` ← [Language](messages.md#Language) · `versions` ← [Order of versions](packages.md#VersionOrder) · `data` ← [How the documents write what they show, checked](#DocumentWordsData) · `texts` ← [Texts](../std/releases/0.13.0/docs/algebra.md#Texts) · `messages` ← [Messages of the scenarios](messages.md#ScenarioMessages)
+- Parameters: `dates` ← [Dates](messages.md#Dates) · `lists` ← [Lists](messages.md#Lists) · `units` ← [Values with their units](documents.md#Units) · `visible` ← [Visible text](documents.md#VisibleText) · `punctuation` ← [Punctuation of documents](documents.md#Punctuation) · `language` ← [Language](messages.md#Language) · `versions` ← [Order of versions](packages.md#VersionOrder) · `data` ← [How the documents write what they show, checked](#DocumentWordsData) · `symbols` ← [Symbols of units](../std/releases/0.14.0/docs/measures.md#UnitSymbols) · `texts` ← [Texts](../std/releases/0.14.0/docs/algebra.md#Texts) · `messages` ← [Messages of the scenarios](messages.md#ScenarioMessages)
 - Body: inline, in the declaration
 - Verifies: [Dates](messages.md#Dates), [Lists](messages.md#Lists), [Values with their units](documents.md#Units), [Visible text](documents.md#VisibleText), [Punctuation of documents](documents.md#Punctuation), [Order of versions](packages.md#VersionOrder)
 - In: [Test](architecture.md#Test)
@@ -184,7 +184,7 @@ A day is written in full, short and as its month in the decided language; a list
 
 ### The engine reckons as it says
 
-`EngineReckons` · `src/scenarios.ts:166` · status: **held**
+`EngineReckons` · `src/scenarios.ts:167` · status: **held**
 
 A cycle is found once, from the vertex where the search closes it, not again from a vertex that only reaches it; the same seed draws the same numbers, another seed others, and an integer drawn stays within its bounds; a value has the same fingerprint whatever the order of its keys, another once it changes; a reference gives its module and its identifier, a library's module its library and its own name; a line of the TypeScript API is written as messages write it.
 
@@ -218,7 +218,7 @@ A cycle is found once, from the vertex where the search closes it, not again fro
 
 ### The laws of the kinds hold
 
-`KindLaws` · `src/scenarios.ts:62` · status: **held**
+`KindLaws` · `src/scenarios.ts:63` · status: **held**
 
 **The laws of the kinds hold · in [Test](architecture.md#Test)**
 
@@ -233,7 +233,7 @@ A cycle is found once, from the vertex where the search closes it, not again fro
 </details>
 
 - Owner: trame
-- Parameters: `laws` ← [Laws](engine.md#Laws) · `compiler` ← [Compiler](engine.md#Compiler) · `currentProcess` ← [Process](architecture.md#Process) · `clock` ← [Clock](architecture.md#Clock) · `counts` ← [Counts](../std/releases/0.13.0/docs/algebra.md#Counts) · `messages` ← [Messages of the scenarios](messages.md#ScenarioMessages)
+- Parameters: `laws` ← [Laws](engine.md#Laws) · `compiler` ← [Compiler](engine.md#Compiler) · `currentProcess` ← [Process](architecture.md#Process) · `clock` ← [Clock](architecture.md#Clock) · `counts` ← [Counts](../std/releases/0.14.0/docs/algebra.md#Counts) · `messages` ← [Messages of the scenarios](messages.md#ScenarioMessages)
 - Body: inline, in the declaration
 - Effects: execution, keeps, read, time
 - Verifies: [Laws](engine.md#Laws)

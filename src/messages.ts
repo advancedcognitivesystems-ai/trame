@@ -79,23 +79,6 @@ export const Lists = fn({
   }),
 })
 
-/**
- * Words of the units
- * How the decided language writes a value with its unit: hours, minutes, seconds, a percentage, an amount in Swiss
- * francs. The number comes already written.
- */
-export const UnitWords = catalog({
-  owner: "trame",
-  language: Language,
-  messages: () => ({
-    hours: (n: string) => `${n} h`,
-    minutes: (n: string) => `${n} min`,
-    seconds: (n: string) => `${n} s`,
-    percent: (n: string) => `${n}%`,
-    chf: (n: string) => `CHF ${n}`,
-  }),
-})
-
 // The catalogs. Each part of the engine says what it has to say through its own catalog: the code holds no text.
 // A catalog that counts receives the decided language: `plural(n, { one: "error", other: "errors" })` writes the noun that
 // agrees with a count, by the rules of that language.
@@ -749,7 +732,7 @@ export const ScenarioMessages = catalog({
     dayWritten: (written: string) => `A day is written ${written}, short and as its month`,
     listJoined: (list: string) => `Items are joined as "${list}"`,
     durationsWritten: () => "A duration is written in the largest unit it is a whole number of",
-    ratioAndAmountWritten: (ratio: string, amount: string) => `A ratio is written ${ratio}, an amount ${amount}`,
+    ratioWritten: (ratio: string) => `A ratio is written ${ratio}`,
     hiddenCharacterShown: () => "A character nobody sees is shown escaped; a plain text as it is",
     marksOfTheLanguage: (tag: string) => `The marks between parts are those of ${tag}`,
     versionsOrdered: (older: string, newer: string) => `${older} comes before ${newer}`,
