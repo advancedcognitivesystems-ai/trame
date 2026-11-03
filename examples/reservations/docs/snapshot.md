@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 30 October 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 3 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Reservations · API
 
@@ -16,7 +16,7 @@ Function · `FreeCancellationEnd` · **held**
 
 ### Lead time of a cancellation
 
-Function · `LeadTime` · **held**
+Function · `LeadTime` · **violated**
 
 - Owner: karim
 - Parameters: { clock: architecture.Clock }
@@ -24,7 +24,7 @@ Function · `LeadTime` · **held**
 
 ### Cancel a reservation
 
-Entry point · `CancelReservation` · **held**
+Entry point · `CancelReservation` · **violated**
 
 - Owner: karim
 - Trigger: { type: http, method: POST, path: /reservations/:id/cancellation }
@@ -170,7 +170,7 @@ Goal · `CancelWithoutStress`
 
 ### Refund on cancellation
 
-Requirement · `Refund` · **held**
+Requirement · `Refund` · **violated**
 
 - Owner: lea
 - Parameters: { period: cancellation.FreeCancellationPeriod, fee: cancellation.LateFee }
@@ -217,7 +217,7 @@ Assumption · `IdempotentProvider` · **unknown**
 
 ### Refund criteria
 
-Acceptance criteria · `RefundCriteria` · **held**
+Acceptance criteria · `RefundCriteria` · **violated**
 
 - Owner: lea
 - Accepts: Refund on cancellation
@@ -244,7 +244,7 @@ Quantity · `SwissFrancs`
 
 ### A day ahead, a full refund
 
-Requirement · `FullRefundAhead` · **held**
+Requirement · `FullRefundAhead` · **violated**
 
 - Owner: karim
 - Parameters: { notice: consumer.FullRefundNotice }
@@ -364,7 +364,7 @@ Decision · `TestInstant`
 
 ### Cancellations in SQL
 
-Function · `CancellationsSql` · **held**
+Function · `CancellationsSql` · **violated**
 
 - Owner: karim
 - Parameters: { database: architecture.Database, dialect: architecture.Dialect, tables: infra.ReservationTables, cancelled: infra.CancelledStatus }
@@ -391,7 +391,7 @@ Function · `ReservationsSql` · **held**
 
 ### Simulated payment provider
 
-Function · `SimulatedPayment` · **held**
+Function · `SimulatedPayment` · **violated**
 
 - Owner: karim
 - Parameters: { prefix: infra.SimulatedReference }
@@ -409,7 +409,7 @@ Function · `SqliteDialect` · **held**
 
 ### Stopped clock
 
-Function · `StoppedClock` · **held**
+Function · `StoppedClock` · **violated**
 
 - Owner: karim
 - Parameters: { instant: infra.TestInstant }
@@ -520,7 +520,7 @@ Technical choice · `RealClock` · **unknown**
 
 ### A stopped clock in the scenarios
 
-Technical choice · `ScenarioClock` · **held**
+Technical choice · `ScenarioClock` · **violated**
 
 - Decided by: karim
 - Context: The cancellation fee depends on the time left before the start: a scenario needs the same instant every time.
@@ -539,7 +539,7 @@ Technical choice · `ScenarioDatabase` · **held**
 
 ### A simulated payment provider outside production
 
-Technical choice · `SimulatedProvider` · **held**
+Technical choice · `SimulatedProvider` · **violated**
 
 - Decided by: karim
 - Context: Refunds must be tried without money moving, and a scenario reads the calls that were made.
@@ -549,7 +549,7 @@ Technical choice · `SimulatedProvider` · **held**
 
 ### Reservations and cancellations as repositories over SQL
 
-Technical choice · `SqlRepositories` · **held**
+Technical choice · `SqlRepositories` · **violated**
 
 - Decided by: karim
 - Context: Reading a reservation and cancelling one ask for the domain's records, never for SQL: the repositories turn them into statements over a database port, whichever database answers it.
@@ -612,7 +612,7 @@ Message catalog · `ScenarioChecks`
 
 ### A cancellation refunds once
 
-Architecture decision · `RefundOnce` · **held**
+Architecture decision · `RefundOnce` · **violated**
 
 - Decided by: karim
 - Context: A driver's phone repeats a request when the network drops; the provider must not refund twice.
@@ -643,7 +643,7 @@ Decision · `UnknownReservation`
 
 ### Every reservation is refunded according to the rule
 
-Scenario · `ComplianceScenario` · **held**
+Scenario · `ComplianceScenario` · **violated**
 
 - Owner: lea
 - Parameters: { cancel: api.CancelReservation, refund: (rule), initial: infra.InitialReservations, instant: infra.TestInstant, says: messages.ScenarioChecks }
@@ -673,7 +673,7 @@ Scenario · `ReadsNeverWrite` · **held**
 
 ### Cancelling twice refunds only once
 
-Scenario · `RepeatedCancellationScenario` · **held**
+Scenario · `RepeatedCancellationScenario` · **violated**
 
 - Owner: karim
 - Parameters: { cancel: api.CancelReservation, log: architecture.PaymentLog, refund: (rule), initial: infra.InitialReservations, instant: infra.TestInstant, http: std/web.Http, says: messages.ScenarioChecks }
@@ -728,7 +728,7 @@ Check · `OnStaging` · **unknown**
 
 ### A release
 
-Shipment · `Release` · **unknown**
+Shipment · `Release` · **violated**
 
 - Owner: karim
 - Target: production

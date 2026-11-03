@@ -1,12 +1,12 @@
 # Owners
 
-*What each person must decide, settle or watch on 30 October 2026, and what they own.*
+*What each person must decide, settle or watch on 3 November 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
 | The operators | 0 | 0 | 2 | 0 |
-| karim | 6 | 0 | 11 | 102 |
-| lea | 0 | 0 | 1 | 11 |
+| karim | 6 | 2 | 14 | 102 |
+| lea | 0 | 8 | 3 | 11 |
 | trame | 0 | 0 | 1 | 0 |
 
 <a id="The operators"></a>
@@ -39,24 +39,29 @@
 | blocking | Test: No implementation of "Cancellation records" for the environment "Test" | [Reservations API](architecture.md#ReservationsApi) | karim |  |
 | blocking | Test: No implementation of "Payment provider" for the environment "Test" | [Reservations API](architecture.md#ReservationsApi) | karim |  |
 | blocking | Test: No implementation of "Clock" for the environment "Test" | [Reservations API](architecture.md#ReservationsApi) | karim |  |
-| warning | Check the assumption before 1 December 2026 (in 32 days) | [Idempotent payment provider](cancellation.md#IdempotentProvider) | karim | no evidence yet |
+| error | Refuses what “Refund on cancellation” answers on example 1, 2, 3: lea, who answers for that rule, and the owner of this one settle it, by an amendment of one or the other | [A day ahead, a full refund](consumer.md#FullRefundAhead) | karim |  |
+| error | Scenario failed (run): previous is not a function | [Cancelling twice refunds only once](scenarios.md#RepeatedCancellationScenario) | karim |  |
+| warning | Check the assumption before 1 December 2026 (in 28 days) | [Idempotent payment provider](cancellation.md#IdempotentProvider) | karim | no evidence yet |
 | warning | No production measurement wired | [Immediate refund](cancellation.md#ImmediateRefund) | karim |  |
 | warning | Cap cannot be checked: "Legal cap on cancellation fees" is not decided | [Late cancellation fee](cancellation.md#LateFee) | karim |  |
 | warning | Not built yet: trame ship builds it | [The program for a laptop](sdlc.md#LocalProgram) | karim |  |
 | warning | Not built yet: trame ship builds it | [The program for production](sdlc.md#ProductionProgram) | karim |  |
 | warning | To ship: The program for a laptop is unknown | [A release](sdlc.md#Release) | karim |  |
 | warning | To ship: The program for production is unknown | [A release](sdlc.md#Release) | karim |  |
+| warning | To ship: Cancelling twice refunds only once is violated | [A release](sdlc.md#Release) | karim |  |
 | warning | To ship: Secrets stay out of the graph is unknown | [A release](sdlc.md#Release) | karim |  |
+| warning | To ship: A cancellation refunds once is violated | [A release](sdlc.md#Release) | karim |  |
 | warning | To ship: On a laptop is unknown | [A release](sdlc.md#Release) | karim |  |
 | warning | To ship: On staging is unknown | [A release](sdlc.md#Release) | karim |  |
+| warning | To ship: A day ahead, a full refund is violated | [A release](sdlc.md#Release) | karim |  |
 | warning | PostgreSQL's dialect ships, and nothing proves it (The code is verified) | [PostgreSQL's dialect](infra.md#PostgresDialect) | karim |  |
 
 ### Owns
 
 | Node | Kind | State |
 |---|---|---|
-| [Cancel a reservation](api.md#CancelReservation) | Entry point | **held** |
-| [Lead time of a cancellation](api.md#LeadTime) | Function | **held** |
+| [Cancel a reservation](api.md#CancelReservation) | Entry point | **violated** |
+| [Lead time of a cancellation](api.md#LeadTime) | Function | **violated** |
 | [Read a reservation](api.md#ReadReservation) | Entry point | **held** |
 | [Key of a cancellation's refund](architecture.md#CancellationKey) | Decision |  |
 | [Cancellation records](architecture.md#Cancellations) | Port |  |
@@ -78,11 +83,11 @@
 | [Idempotent payment provider](cancellation.md#IdempotentProvider) | Assumption | **unknown** |
 | [Immediate refund](cancellation.md#ImmediateRefund) | Service level objective | **unknown** |
 | [Swiss francs](cancellation.md#SwissFrancs) | Quantity |  |
-| [A day ahead, a full refund](consumer.md#FullRefundAhead) | Requirement | **held** |
+| [A day ahead, a full refund](consumer.md#FullRefundAhead) | Requirement | **violated** |
 | [Criteria of a full refund a day ahead](consumer.md#FullRefundAheadCriteria) | Acceptance criteria | **held** |
 | [Notice for a full refund](consumer.md#FullRefundNotice) | Decision |  |
 | [Backup retention](infra.md#BackupRetention) | Decision |  |
-| [Cancellations in SQL](infra.md#CancellationsSql) | Function | **held** |
+| [Cancellations in SQL](infra.md#CancellationsSql) | Function | **violated** |
 | [Status of a cancelled reservation](infra.md#CancelledStatus) | Decision |  |
 | [Production database address](infra.md#DatabaseAddress) | Decision |  |
 | [Production database name](infra.md#DatabaseName) | Decision |  |
@@ -106,14 +111,14 @@
 | [Reservations in SQL](infra.md#ReservationsSql) | Function | **held** |
 | [Tables of the service](infra.md#ReservationTables) | Decision |  |
 | [End of a response](infra.md#ResponseEnding) | Decision |  |
-| [A stopped clock in the scenarios](infra.md#ScenarioClock) | Technical choice | **held** |
+| [A stopped clock in the scenarios](infra.md#ScenarioClock) | Technical choice | **violated** |
 | [An in-memory SQLite database for the scenarios](infra.md#ScenarioDatabase) | Technical choice | **held** |
-| [Simulated payment provider](infra.md#SimulatedPayment) | Function | **held** |
-| [A simulated payment provider outside production](infra.md#SimulatedProvider) | Technical choice | **held** |
+| [Simulated payment provider](infra.md#SimulatedPayment) | Function | **violated** |
+| [A simulated payment provider outside production](infra.md#SimulatedProvider) | Technical choice | **violated** |
 | [References of the simulated provider](infra.md#SimulatedReference) | Decision |  |
 | [SQLite's dialect](infra.md#SqliteDialect) | Function | **held** |
-| [Reservations and cancellations as repositories over SQL](infra.md#SqlRepositories) | Technical choice | **held** |
-| [Stopped clock](infra.md#StoppedClock) | Function | **held** |
+| [Reservations and cancellations as repositories over SQL](infra.md#SqlRepositories) | Technical choice | **violated** |
+| [Stopped clock](infra.md#StoppedClock) | Function | **violated** |
 | [System clock](infra.md#SystemClock) | Implementation | **unknown** |
 | [Test](infra.md#Test) | Environment |  |
 | [Test database](infra.md#TestDatabasePath) | Decision |  |
@@ -121,11 +126,11 @@
 | [Legal cap on cancellation fees](legal.md#FeeCap) | Decision | to decide |
 | [Messages of the API](messages.md#ApiMessages) | Message catalog |  |
 | [Language](messages.md#Language) | Decision |  |
-| [A cancellation refunds once](principles.md#RefundOnce) | Architecture decision | **held** |
+| [A cancellation refunds once](principles.md#RefundOnce) | Architecture decision | **violated** |
 | [Secrets stay out of the graph](principles.md#SecretsOutOfTheGraph) | Architecture decision | **unknown** |
 | [Read a reservation](scenarios.md#ReadScenario) | Scenario | **held** |
 | [A read never writes](scenarios.md#ReadsNeverWrite) | Scenario | **held** |
-| [Cancelling twice refunds only once](scenarios.md#RepeatedCancellationScenario) | Scenario | **held** |
+| [Cancelling twice refunds only once](scenarios.md#RepeatedCancellationScenario) | Scenario | **violated** |
 | [Unknown reservation](scenarios.md#UnknownReservation) | Decision |  |
 | [The code is verified](sdlc.md#CodeVerified) | Obligation |  |
 | [The decisions hold](sdlc.md#DecisionsApplied) | Obligation |  |
@@ -137,7 +142,7 @@
 | [The operators](sdlc.md#Operators) | Role |  |
 | [The packages are safe](sdlc.md#PackagesSafe) | Obligation |  |
 | [The program for production](sdlc.md#ProductionProgram) | Artefact | **unknown** |
-| [A release](sdlc.md#Release) | Shipment | **unknown** |
+| [A release](sdlc.md#Release) | Shipment | **violated** |
 | [The way of a release](sdlc.md#ReleaseMode) | Policy |  |
 | [The rules hold](sdlc.md#RulesHeld) | Obligation |  |
 | [Column definition](sql.md#ColumnDefinition) | Syntax element | **held** |
@@ -164,6 +169,16 @@
 
 | Severity | What | Where | Owner | Consequence |
 |---|---|---|---|---|
+| error | Criterion not met: "Cancelling two hours ahead costs nothing" | [Refund criteria](cancellation.md#RefundCriteria) | lea |  |
+| error | Criterion not met: "Exactly at the end of the free period, the driver is refunded" | [Refund criteria](cancellation.md#RefundCriteria) | lea |  |
+| error | Criterion not met: "Four minutes ahead, the driver pays the late fee" | [Refund criteria](cancellation.md#RefundCriteria) | lea |  |
+| error | Criterion not met: "On a fast charger, six minutes ahead is enough" | [Refund criteria](cancellation.md#RefundCriteria) | lea |  |
+| error | Criterion not met: "On an ultra charger, fifteen minutes ahead is enough" | [Refund criteria](cancellation.md#RefundCriteria) | lea |  |
+| error | Criterion not met: "The refund is never more than the price paid" | [Refund criteria](cancellation.md#RefundCriteria) | lea |  |
+| error | “A day ahead, a full refund” refuses what this rule answers on example 1, 2, 3: its owner, karim, and the owner of this one settle it, by an amendment of one or the other | [Refund on cancellation](cancellation.md#Refund) | lea |  |
+| error | Scenario failed (run): previous is not a function | [Every reservation is refunded according to the rule](scenarios.md#ComplianceScenario) | lea |  |
+| warning | To ship: Every reservation is refunded according to the rule is violated | [A release](sdlc.md#Release) | lea |  |
+| warning | To ship: Refund on cancellation is violated | [A release](sdlc.md#Release) | lea |  |
 | warning | Awaits the approval of lea, who answers for “Free cancellation period” | [Ultra period requested by support](support.md#SupportUltraPeriod) | lea |  |
 
 ### Owns
@@ -174,13 +189,13 @@
 | [Cancel without stress](cancellation.md#CancelWithoutStress) | Goal |  |
 | [Free cancellation period](cancellation.md#FreeCancellationPeriod) | Decision |  |
 | [Late cancellation fee](cancellation.md#LateFee) | Decision |  |
-| [Refund on cancellation](cancellation.md#Refund) | Requirement | **held** |
-| [Refund criteria](cancellation.md#RefundCriteria) | Acceptance criteria | **held** |
-| [Launch of the ultra chargers](committee.md#UltraLaunch) | Amendment | not in force |
+| [Refund on cancellation](cancellation.md#Refund) | Requirement | **violated** |
+| [Refund criteria](cancellation.md#RefundCriteria) | Acceptance criteria | **violated** |
+| [Launch of the ultra chargers](committee.md#UltraLaunch) | Amendment | in force |
 | [Period for ultra chargers](committee.md#UltraPeriod) | Amendment | in force |
 | [Approval of the ultra period](committee.md#UltraPeriodApproval) | Approval |  |
 | [Checks of the scenarios](messages.md#ScenarioChecks) | Message catalog |  |
-| [Every reservation is refunded according to the rule](scenarios.md#ComplianceScenario) | Scenario | **held** |
+| [Every reservation is refunded according to the rule](scenarios.md#ComplianceScenario) | Scenario | **violated** |
 
 <a id="trame"></a>
 

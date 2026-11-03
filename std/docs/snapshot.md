@@ -739,6 +739,18 @@ Release · `R0_13_0`
 - Language: shared
 - Serves: A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again
 
+### Version 0.14.0
+
+Release · `R0_14_0`
+
+- Released by: trame
+- Version: 0.14.0
+- Released on: 2026-11-03
+- What changes: Time counts milliseconds too, and the bodies that met JavaScript's clocks receive Time instead of the prelude's ms and elapsed
+- Fingerprint: 46999c272f5c420d
+- Language: shared
+- Serves: A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again
+
 ### Version 0.2.0
 
 Release · `R0_2_0`

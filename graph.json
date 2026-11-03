@@ -16413,7 +16413,7 @@
       },
       "result": {
         "path": "out/local/trame-cli.ts",
-        "code": "6c9a3865"
+        "code": "98098268"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"

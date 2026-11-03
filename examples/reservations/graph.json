@@ -1,12 +1,12 @@
 {
-  "generated": "2026-10-30",
+  "generated": "2026-11-03",
   "nodes": [
     {
       "id": "api.CancelReservation",
       "kind": "entry",
       "title": "Cancel a reservation",
       "source": "src/api.ts:51",
-      "status": "held",
+      "status": "violated",
       "fields": {
         "owner": "karim",
         "trigger": {
@@ -52,7 +52,7 @@
       "kind": "function",
       "title": "Lead time of a cancellation",
       "source": "src/api.ts:28",
-      "status": "held",
+      "status": "violated",
       "fields": {
         "owner": "karim",
         "deps": {
@@ -430,7 +430,7 @@
         "expires": "2026-12-01"
       },
       "diagnostics": [
-        "warning: Check the assumption before 1 December 2026 (in 32 days)"
+        "warning: Check the assumption before 1 December 2026 (in 28 days)"
       ]
     },
     {
@@ -471,7 +471,7 @@
       "kind": "requirement",
       "title": "Refund on cancellation",
       "source": "src/cancellation.ts:85",
-      "status": "held",
+      "status": "violated",
       "fields": {
         "owner": "lea",
         "deps": {
@@ -480,14 +480,24 @@
         },
         "body": "(function)"
       },
-      "diagnostics": []
+      "amendedBy": [
+        {
+          "by": "committee.UltraLaunch",
+          "paths": [
+            "body"
+          ]
+        }
+      ],
+      "diagnostics": [
+        "error: “A day ahead, a full refund” refuses what this rule answers on example 1, 2, 3: its owner, karim, and the owner of this one settle it, by an amendment of one or the other"
+      ]
     },
     {
       "id": "cancellation.RefundCriteria",
       "kind": "acceptance",
       "title": "Refund criteria",
       "source": "src/cancellation.ts:108",
-      "status": "held",
+      "status": "violated",
       "fields": {
         "owner": "lea",
         "criteria": "(function)"
@@ -495,30 +505,43 @@
       "result": [
         {
           "name": "Cancelling two hours ahead costs nothing",
-          "status": "passed"
+          "status": "error",
+          "error": "previous is not a function"
         },
         {
           "name": "Exactly at the end of the free period, the driver is refunded",
-          "status": "passed"
+          "status": "error",
+          "error": "previous is not a function"
         },
         {
           "name": "Four minutes ahead, the driver pays the late fee",
-          "status": "passed"
+          "status": "error",
+          "error": "previous is not a function"
         },
         {
           "name": "On a fast charger, six minutes ahead is enough",
-          "status": "passed"
+          "status": "error",
+          "error": "previous is not a function"
         },
         {
           "name": "On an ultra charger, fifteen minutes ahead is enough",
-          "status": "passed"
+          "status": "error",
+          "error": "previous is not a function"
         },
         {
           "name": "The refund is never more than the price paid",
-          "status": "passed"
+          "status": "error",
+          "error": "previous is not a function"
         }
       ],
-      "diagnostics": []
+      "diagnostics": [
+        "error: Criterion not met: \"Cancelling two hours ahead costs nothing\"",
+        "error: Criterion not met: \"Exactly at the end of the free period, the driver is refunded\"",
+        "error: Criterion not met: \"Four minutes ahead, the driver pays the late fee\"",
+        "error: Criterion not met: \"On a fast charger, six minutes ahead is enough\"",
+        "error: Criterion not met: \"On an ultra charger, fifteen minutes ahead is enough\"",
+        "error: Criterion not met: \"The refund is never more than the price paid\""
+      ]
     },
     {
       "id": "cancellation.SwissFrancs",
@@ -549,7 +572,7 @@
           "body": "(function)"
         }
       },
-      "active": false,
+      "active": true,
       "diagnostics": []
     },
     {
@@ -586,7 +609,7 @@
       "kind": "requirement",
       "title": "A day ahead, a full refund",
       "source": "src/consumer.ts:25",
-      "status": "held",
+      "status": "violated",
       "fields": {
         "owner": "karim",
         "deps": {
@@ -620,18 +643,23 @@
       "result": [
         {
           "at": 1,
-          "status": "passed"
+          "status": "error",
+          "error": "previous is not a function"
         },
         {
           "at": 2,
-          "status": "passed"
+          "status": "error",
+          "error": "previous is not a function"
         },
         {
           "at": 3,
-          "status": "passed"
+          "status": "error",
+          "error": "previous is not a function"
         }
       ],
-      "diagnostics": []
+      "diagnostics": [
+        "error: Refuses what “Refund on cancellation” answers on example 1, 2, 3: lea, who answers for that rule, and the owner of this one settle it, by an amendment of one or the other"
+      ]
     },
     {
       "id": "consumer.FullRefundAheadCriteria",
@@ -693,7 +721,7 @@
       "kind": "function",
       "title": "Cancellations in SQL",
       "source": "src/infra.ts:212",
-      "status": "held",
+      "status": "violated",
       "fields": {
         "owner": "karim",
         "deps": {
@@ -1125,7 +1153,7 @@
       "kind": "binding",
       "title": "A stopped clock in the scenarios",
       "source": "src/infra.ts:377",
-      "status": "held",
+      "status": "violated",
       "fields": {
         "owner": "karim",
         "context": "The cancellation fee depends on the time left before the start: a scenario needs the same instant every time."
@@ -1152,7 +1180,7 @@
       "kind": "function",
       "title": "Simulated payment provider",
       "source": "src/infra.ts:243",
-      "status": "held",
+      "status": "violated",
       "fields": {
         "owner": "karim",
         "deps": {
@@ -1167,7 +1195,7 @@
       "kind": "binding",
       "title": "A simulated payment provider outside production",
       "source": "src/infra.ts:342",
-      "status": "held",
+      "status": "violated",
       "fields": {
         "owner": "karim",
         "context": "Refunds must be tried without money moving, and a scenario reads the calls that were made.",
@@ -1220,7 +1248,7 @@
       "kind": "binding",
       "title": "Reservations and cancellations as repositories over SQL",
       "source": "src/infra.ts:329",
-      "status": "held",
+      "status": "violated",
       "fields": {
         "owner": "karim",
         "context": "Reading a reservation and cancelling one ask for the domain's records, never for SQL: the repositories turn them into statements over a database port, whichever database answers it.",
@@ -1236,7 +1264,7 @@
       "kind": "function",
       "title": "Stopped clock",
       "source": "src/infra.ts:232",
-      "status": "held",
+      "status": "violated",
       "fields": {
         "owner": "karim",
         "deps": {
@@ -1343,7 +1371,7 @@
       "kind": "adr",
       "title": "A cancellation refunds once",
       "source": "src/principles.ts:15",
-      "status": "held",
+      "status": "violated",
       "fields": {
         "owner": "karim",
         "context": "A driver's phone repeats a request when the network drops; the provider must not refund twice.",
@@ -1375,7 +1403,7 @@
       "kind": "scenario",
       "title": "Every reservation is refunded according to the rule",
       "source": "src/scenarios.ts:67",
-      "status": "held",
+      "status": "violated",
       "fields": {
         "owner": "lea",
         "deps": {
@@ -1389,19 +1417,14 @@
       },
       "result": [
         {
-          "name": "R1 (normal, 120 min ahead) is refunded 20 CHF",
-          "status": "passed"
-        },
-        {
-          "name": "R2 (fast, 4 min ahead) is refunded 15 CHF",
-          "status": "passed"
-        },
-        {
-          "name": "R3 (ultra, 60 min ahead) is refunded 40 CHF",
-          "status": "passed"
+          "name": "run",
+          "status": "error",
+          "error": "previous is not a function"
         }
       ],
-      "diagnostics": []
+      "diagnostics": [
+        "error: Scenario failed (run): previous is not a function"
+      ]
     },
     {
       "id": "scenarios.ReadScenario",
@@ -1469,7 +1492,7 @@
       "kind": "scenario",
       "title": "Cancelling twice refunds only once",
       "source": "src/scenarios.ts:45",
-      "status": "held",
+      "status": "violated",
       "fields": {
         "owner": "karim",
         "deps": {
@@ -1485,19 +1508,14 @@
       },
       "result": [
         {
-          "name": "The first cancellation refunds according to the rule",
-          "status": "passed"
-        },
-        {
-          "name": "The second one returns the same refund",
-          "status": "passed"
-        },
-        {
-          "name": "The provider is called only once",
-          "status": "passed"
+          "name": "run",
+          "status": "error",
+          "error": "previous is not a function"
         }
       ],
-      "diagnostics": []
+      "diagnostics": [
+        "error: Scenario failed (run): previous is not a function"
+      ]
     },
     {
       "id": "scenarios.UnknownReservation",
@@ -1658,7 +1676,7 @@
       "kind": "shipment",
       "title": "A release",
       "source": "src/sdlc.ts:110",
-      "status": "unknown",
+      "status": "violated",
       "fields": {
         "owner": "karim",
         "target": "production"
@@ -1742,9 +1760,14 @@
       "diagnostics": [
         "warning: To ship: The program for a laptop is unknown",
         "warning: To ship: The program for production is unknown",
+        "warning: To ship: Cancelling twice refunds only once is violated",
+        "warning: To ship: Every reservation is refunded according to the rule is violated",
         "warning: To ship: Secrets stay out of the graph is unknown",
+        "warning: To ship: A cancellation refunds once is violated",
         "warning: To ship: On a laptop is unknown",
-        "warning: To ship: On staging is unknown"
+        "warning: To ship: On staging is unknown",
+        "warning: To ship: Refund on cancellation is violated",
+        "warning: To ship: A day ahead, a full refund is violated"
       ]
     },
     {
@@ -2692,8 +2715,7 @@
     {
       "from": "committee.UltraLaunch",
       "to": "cancellation.Refund",
-      "kind": "amends",
-      "active": false
+      "kind": "amends"
     },
     {
       "from": "committee.UltraPeriod",

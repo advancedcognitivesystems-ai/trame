@@ -1,13 +1,13 @@
 # Layers
 
-*The graph in force on 30 October 2026, ordered by distance to the goals.*
+*The graph in force on 3 November 2026, ordered by distance to the goals.*
 
 ```mermaid
 flowchart TB
   subgraph api["Reservations · API"]
-    n0["Cancel a reservation<br/><small>Entry point</small>"]:::held
+    n0["Cancel a reservation<br/><small>Entry point</small>"]:::violated
     n1["End of free cancellation<br/><small>Function</small>"]:::held
-    n2["Lead time of a cancellation<br/><small>Function</small>"]:::held
+    n2["Lead time of a cancellation<br/><small>Function</small>"]:::violated
     n3["Read a reservation<br/><small>Entry point</small>"]:::held
   end
   subgraph architecture["Reservations · Architecture"]
@@ -35,8 +35,8 @@ flowchart TB
     n23["Idempotent payment provider<br/><small>Assumption</small>"]:::unknown
     n24["Immediate refund<br/><small>Service level objective</small>"]:::unknown
     n25["Late cancellation fee<br/><small>Decision</small>"]:::neutral
-    n26["Refund on cancellation<br/><small>Requirement</small>"]:::held
-    n27["Refund criteria<br/><small>Acceptance criteria</small>"]:::held
+    n26["Refund on cancellation<br/><small>Requirement</small>"]:::violated
+    n27["Refund criteria<br/><small>Acceptance criteria</small>"]:::violated
     n28["Swiss francs<br/><small>Quantity</small>"]:::neutral
   end
   subgraph committee["Product committee · 15 October 2026"]
@@ -45,13 +45,13 @@ flowchart TB
     n31["Approval of the ultra period<br/><small>Approval</small>"]:::neutral
   end
   subgraph consumer["Reservations · Consumer law"]
-    n32["A day ahead, a full refund<br/><small>Requirement</small>"]:::held
+    n32["A day ahead, a full refund<br/><small>Requirement</small>"]:::violated
     n33["Criteria of a full refund a day ahead<br/><small>Acceptance criteria</small>"]:::held
     n34["Notice for a full refund<br/><small>Decision</small>"]:::neutral
   end
   subgraph infra["Reservations · Infrastructure"]
     n35["Backup retention<br/><small>Decision</small>"]:::neutral
-    n36["Cancellations in SQL<br/><small>Function</small>"]:::held
+    n36["Cancellations in SQL<br/><small>Function</small>"]:::violated
     n37["Status of a cancelled reservation<br/><small>Decision</small>"]:::neutral
     n38["Production database address<br/><small>Decision</small>"]:::neutral
     n39["Production database name<br/><small>Decision</small>"]:::neutral
@@ -75,14 +75,14 @@ flowchart TB
     n57["Reservations in SQL<br/><small>Function</small>"]:::held
     n58["Tables of the service<br/><small>Decision</small>"]:::neutral
     n59["End of a response<br/><small>Decision</small>"]:::neutral
-    n60["A stopped clock in the scenarios<br/><small>Technical choice</small>"]:::held
+    n60["A stopped clock in the scenarios<br/><small>Technical choice</small>"]:::violated
     n61["An in-memory SQLite database for the scenarios<br/><small>Technical choice</small>"]:::held
-    n62["Simulated payment provider<br/><small>Function</small>"]:::held
-    n63["A simulated payment provider outside production<br/><small>Technical choice</small>"]:::held
+    n62["Simulated payment provider<br/><small>Function</small>"]:::violated
+    n63["A simulated payment provider outside production<br/><small>Technical choice</small>"]:::violated
     n64["References of the simulated provider<br/><small>Decision</small>"]:::neutral
     n65["SQLite's dialect<br/><small>Function</small>"]:::held
-    n66["Reservations and cancellations as repositories over SQL<br/><small>Technical choice</small>"]:::held
-    n67["Stopped clock<br/><small>Function</small>"]:::held
+    n66["Reservations and cancellations as repositories over SQL<br/><small>Technical choice</small>"]:::violated
+    n67["Stopped clock<br/><small>Function</small>"]:::violated
     n68["System clock<br/><small>Implementation</small>"]:::unknown
     n69["Test<br/><small>Environment</small>"]:::neutral
     n70["Test database<br/><small>Decision</small>"]:::neutral
@@ -97,14 +97,14 @@ flowchart TB
     n75["Checks of the scenarios<br/><small>Message catalog</small>"]:::neutral
   end
   subgraph principles["Reservations · Principles"]
-    n76["A cancellation refunds once<br/><small>Architecture decision</small>"]:::held
+    n76["A cancellation refunds once<br/><small>Architecture decision</small>"]:::violated
     n77["Secrets stay out of the graph<br/><small>Architecture decision</small>"]:::unknown
   end
   subgraph scenarios["Reservations · Scenarios"]
-    n78["Every reservation is refunded according to the rule<br/><small>Scenario</small>"]:::held
+    n78["Every reservation is refunded according to the rule<br/><small>Scenario</small>"]:::violated
     n79["Read a reservation<br/><small>Scenario</small>"]:::held
     n80["A read never writes<br/><small>Scenario</small>"]:::held
-    n81["Cancelling twice refunds only once<br/><small>Scenario</small>"]:::held
+    n81["Cancelling twice refunds only once<br/><small>Scenario</small>"]:::violated
     n82["Unknown reservation<br/><small>Decision</small>"]:::neutral
   end
   subgraph sdlc["Reservations · SDLC"]
@@ -118,7 +118,7 @@ flowchart TB
     n90["The operators<br/><small>Role</small>"]:::neutral
     n91["The packages are safe<br/><small>Obligation</small>"]:::neutral
     n92["The program for production<br/><small>Artefact</small>"]:::unknown
-    n93["A release<br/><small>Shipment</small>"]:::unknown
+    n93["A release<br/><small>Shipment</small>"]:::violated
     n94["The way of a release<br/><small>Policy</small>"]:::neutral
     n95["The rules hold<br/><small>Obligation</small>"]:::neutral
   end
@@ -176,7 +176,7 @@ flowchart TB
   n26 -->|Depends on| n25
   n27 -->|Accepts| n26
   n28 -->|Written with| n20
-  n29 -->|Amends (not in force)| n26
+  n29 -->|Amends| n26
   n30 -->|Amends| n22
   n31 -->|Approves| n30
   n32 -->|Refines| n21
@@ -384,7 +384,6 @@ flowchart TB
   classDef unknown fill:#e9edf0,stroke:#65707c,color:#17202a
   classDef neutral fill:#ffffff,stroke:#5a6672,color:#17202a
   style n29,n30,n31,n112 stroke-dasharray:4 3
-  style n29 opacity:0.5
 ```
 
 *Each rank is one edge further from a goal than the rank above it. The nodes connected to no goal are at the very bottom.*

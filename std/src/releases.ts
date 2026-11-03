@@ -196,7 +196,7 @@ export const R0_14_0 = release({
   version: "0.14.0",
   date: "2026-11-03",
   what: "Time counts milliseconds too, and the bodies that met JavaScript's clocks receive Time instead of the prelude's ms and elapsed",
-  fingerprint: "b82c816013d69bed",
+  fingerprint: "46999c272f5c420d",
   language: "shared",
   serves: [CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules],
 })

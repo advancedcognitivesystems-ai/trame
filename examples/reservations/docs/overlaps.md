@@ -1,6 +1,6 @@
 # Overlaps
 
-*The values claimed by several nodes on 30 October 2026, and how each overlap was settled.*
+*The values claimed by several nodes on 3 November 2026, and how each overlap was settled.*
 
 ## Free cancellation period · value.ultra
 

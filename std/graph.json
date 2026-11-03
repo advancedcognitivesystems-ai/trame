@@ -2713,6 +2713,21 @@
       "diagnostics": []
     },
     {
+      "id": "releases.R0_14_0",
+      "kind": "release",
+      "title": "Version 0.14.0",
+      "source": "src/releases.ts:194",
+      "fields": {
+        "owner": "trame",
+        "version": "0.14.0",
+        "date": "2026-11-03",
+        "what": "Time counts milliseconds too, and the bodies that met JavaScript's clocks receive Time instead of the prelude's ms and elapsed",
+        "fingerprint": "46999c272f5c420d",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "releases.R0_2_0",
       "kind": "release",
       "title": "Version 0.2.0",
@@ -4956,6 +4971,31 @@
     },
     {
       "from": "releases.R0_13_0",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_14_0",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_14_0",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_14_0",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_14_0",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_14_0",
       "to": "product.SharedRules",
       "kind": "serves"
     },

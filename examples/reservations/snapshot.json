@@ -1,11 +1,11 @@
 {
-  "at": "2026-10-30",
+  "at": "2026-11-03",
   "nodes": [
     {
       "id": "api.CancelReservation",
       "kind": "entry",
       "title": "Cancel a reservation",
-      "status": "held",
+      "status": "violated",
       "fields": {
         "owner": "karim",
         "trigger": {
@@ -47,7 +47,7 @@
       "id": "api.LeadTime",
       "kind": "function",
       "title": "Lead time of a cancellation",
-      "status": "held",
+      "status": "violated",
       "fields": {
         "owner": "karim",
         "deps": {
@@ -395,7 +395,7 @@
       "id": "cancellation.Refund",
       "kind": "requirement",
       "title": "Refund on cancellation",
-      "status": "held",
+      "status": "violated",
       "fields": {
         "owner": "lea",
         "deps": {
@@ -409,7 +409,7 @@
       "id": "cancellation.RefundCriteria",
       "kind": "acceptance",
       "title": "Refund criteria",
-      "status": "held",
+      "status": "violated",
       "fields": {
         "owner": "lea",
         "criteria": "(function)"
@@ -432,7 +432,7 @@
       "id": "consumer.FullRefundAhead",
       "kind": "requirement",
       "title": "A day ahead, a full refund",
-      "status": "held",
+      "status": "violated",
       "fields": {
         "owner": "karim",
         "deps": {
@@ -503,7 +503,7 @@
       "id": "infra.CancellationsSql",
       "kind": "function",
       "title": "Cancellations in SQL",
-      "status": "held",
+      "status": "violated",
       "fields": {
         "owner": "karim",
         "deps": {
@@ -885,7 +885,7 @@
       "id": "infra.ScenarioClock",
       "kind": "binding",
       "title": "A stopped clock in the scenarios",
-      "status": "held",
+      "status": "violated",
       "fields": {
         "owner": "karim",
         "context": "The cancellation fee depends on the time left before the start: a scenario needs the same instant every time."
@@ -908,7 +908,7 @@
       "id": "infra.SimulatedPayment",
       "kind": "function",
       "title": "Simulated payment provider",
-      "status": "held",
+      "status": "violated",
       "fields": {
         "owner": "karim",
         "deps": {
@@ -921,7 +921,7 @@
       "id": "infra.SimulatedProvider",
       "kind": "binding",
       "title": "A simulated payment provider outside production",
-      "status": "held",
+      "status": "violated",
       "fields": {
         "owner": "karim",
         "context": "Refunds must be tried without money moving, and a scenario reads the calls that were made.",
@@ -968,7 +968,7 @@
       "id": "infra.SqlRepositories",
       "kind": "binding",
       "title": "Reservations and cancellations as repositories over SQL",
-      "status": "held",
+      "status": "violated",
       "fields": {
         "owner": "karim",
         "context": "Reading a reservation and cancelling one ask for the domain's records, never for SQL: the repositories turn them into statements over a database port, whichever database answers it.",
@@ -982,7 +982,7 @@
       "id": "infra.StoppedClock",
       "kind": "function",
       "title": "Stopped clock",
-      "status": "held",
+      "status": "violated",
       "fields": {
         "owner": "karim",
         "deps": {
@@ -1069,7 +1069,7 @@
       "id": "principles.RefundOnce",
       "kind": "adr",
       "title": "A cancellation refunds once",
-      "status": "held",
+      "status": "violated",
       "fields": {
         "owner": "karim",
         "context": "A driver's phone repeats a request when the network drops; the provider must not refund twice.",
@@ -1097,7 +1097,7 @@
       "id": "scenarios.ComplianceScenario",
       "kind": "scenario",
       "title": "Every reservation is refunded according to the rule",
-      "status": "held",
+      "status": "violated",
       "fields": {
         "owner": "lea",
         "deps": {
@@ -1151,7 +1151,7 @@
       "id": "scenarios.RepeatedCancellationScenario",
       "kind": "scenario",
       "title": "Cancelling twice refunds only once",
-      "status": "held",
+      "status": "violated",
       "fields": {
         "owner": "karim",
         "deps": {
@@ -1286,7 +1286,7 @@
       "id": "sdlc.Release",
       "kind": "shipment",
       "title": "A release",
-      "status": "unknown",
+      "status": "violated",
       "fields": {
         "owner": "karim",
         "target": "production"

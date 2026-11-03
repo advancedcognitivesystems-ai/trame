@@ -116,8 +116,8 @@ const body = (deps: Deps): Handler => async (req) => {
     writeFileSync(copy, text)
   }
 
-  // The library's manifest goes with it: its files are ES modules.
-  if (existsSync(join(home, layout.manifest))) trees.copy(join(home, layout.manifest), join(dest, layout.manifest))
+  // No manifest goes with it (since g96): in its library, the library's manifest says its files are ES modules and where
+  // the language is; published, the registry gives it one that says only the first, and its reader leads the language.
   // The fingerprint covers what was frozen, file by file.
   const hash = (text: string | Buffer) => deps.hashing.createHash(deps.sha256.algorithm).update(text).digest(deps.encodings.hex)
   const frozen = trees.files(dest)

@@ -102,6 +102,22 @@ Where a package comes from publishes too, and names its origins (PackageOrigins:
 - Released by: trame
 - Serves: [A published value is cited, not copied](product.md#CitedNotCopied), [Known designs, named](product.md#KnownDesigns), [Ports of the platform, realized once](product.md#RealizedOnce), [Shared operations instead of literals](product.md#SharedOperations), [Rules applied, not written again](product.md#SharedRules)
 
+<a id="R0_14_0"></a>
+
+### Version 0.14.0
+
+`R0_14_0` · `src/releases.ts:194`
+
+Time counts milliseconds too, and the bodies that met JavaScript's clocks receive Time instead of the prelude's ms and elapsed
+
+- Version: `0.14.0`
+- Released on: 3 November 2026
+- Fingerprint: `46999c272f5c420d`
+- Language: the repository's, shared
+
+- Released by: trame
+- Serves: [A published value is cited, not copied](product.md#CitedNotCopied), [Known designs, named](product.md#KnownDesigns), [Ports of the platform, realized once](product.md#RealizedOnce), [Shared operations instead of literals](product.md#SharedOperations), [Rules applied, not written again](product.md#SharedRules)
+
 <a id="R0_2_0"></a>
 
 ### Version 0.2.0

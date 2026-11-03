@@ -242,7 +242,7 @@ The program of Trame's command line, assembled from the graph for a machine: wha
 
 - Path: `out/local/trame-cli.ts`
 
-Built 2 November 2026 by claude, fingerprint `69d5261ca3c7f1af95e66ec6bed89d24161a03400429c89cd831dbb2e8b83c07`.
+Built 3 November 2026 by claude, fingerprint `ef61b533b6c42aa777c32e43e805b7d92f34cbf9e67299a5fbca0ad8c707adbe`.
 
 - Owner: trame
 - Produced by: [Trame on the command line](architecture.md#TrameCli)
@@ -260,7 +260,7 @@ The page trame export writes of Trame's graph, which a browser opens as it is: i
 - Path: `trame-page.html`
 - Media type: `text/html; charset=utf-8`
 
-Built 2 November 2026 by claude, fingerprint `14afb368c7219f50b5a20871905d3e2a454779ba3d84c47f48917b08731185d0`.
+Built 3 November 2026 by claude, fingerprint `1c75ac0ef917e359daad99f10d0742f128527a59228514ca0148de51096b4ca0`.
 
 - Owner: trame
 - Produced by: [Export the page](commands.md#Export)
@@ -279,7 +279,7 @@ The component that shows the graph page, assembled for the browser where the eng
 
 - Path: `out/browser/page-app.ts`
 
-Built 2 November 2026 by claude, fingerprint `0b0e175ff0eb7c8252a4cd1752291aaa7c503c8f924fcf954436dff061c129d9`.
+Built 3 November 2026 by claude, fingerprint `e78f02b13de76350defa25d8c6dcd13b32c7a53aa65125d88d40b902ea8dc3d5`.
 
 - Owner: trame
 - Produced by: [The page in a browser](architecture.md#PageApp)
@@ -296,7 +296,7 @@ Built 2 November 2026 by claude, fingerprint `0b0e175ff0eb7c8252a4cd1752291aaa7c
 
 The candidate engine plays the laws of every kind and view on drawn values: one broken law, and it is not shipped.
 
-Passed 2 November 2026 by claude.
+Passed 3 November 2026 by claude.
 
 - Owner: trame
 - Checks: [The candidate engine](#EngineCandidate)
@@ -312,7 +312,7 @@ Passed 2 November 2026 by claude.
 
 The candidate engine asks the machine it was assembled for whether it runs Trame (trame doctor): it reads and writes files, copies and compares trees, runs programs, serves HTTP, keeps the time, asks the registry. What its run proves is what no scenario in memory can run: the realizations of the machine.
 
-Passed 2 November 2026 by claude.
+Passed 3 November 2026 by claude.
 
 - Owner: trame
 - Checks: [The candidate engine](#EngineCandidate)
@@ -328,7 +328,7 @@ Passed 2 November 2026 by claude.
 
 The graph page exported, opened in a browser without a screen by a program of the SDLC: the program of the page runs there, with what realizes it in a browser.
 
-Passed 2 November 2026 by claude.
+Passed 3 November 2026 by claude.
 
 - Owner: trame
 - Checks: [The graph page](#GraphPage)
