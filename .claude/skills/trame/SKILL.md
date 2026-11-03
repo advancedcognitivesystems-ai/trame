@@ -41,8 +41,9 @@ The repository's `AGENTS.md` is the full guide; read it first, then keep to this
   `catalog` (a scenario's check labels too), a name shared by engine and language in a prelude vocabulary, a private
   value in the function's constants, what a number measures in a `quantity`.
 - A requirement's rule is a body (g79): `body: ({ … }) => (x) => …` with what it reads in `deps` (decisions, structures
-  such as `Counts`, other rules), never a node named inside it; held to every check of a body. `rule: (x) => …` is the
-  old form, read with a warning. An amendment of a rule patches `body` with `(previous) => (deps) => …`.
+  such as `Counts`, other rules), never a node named inside it; held to every check of a body (the only form since
+  g97). An amendment of a rule patches `body` with `(previous) => (deps) => …`. The prelude has no unit: durations and
+  ratios are std's quantities (`s`, `min`, `h`, `pct`); a body that meets JavaScript's clocks receives `Time`.
 - Quantities (g80): a `quantity` node declares units (`units: { second: 1, minute: 60 }`), its source, its catalog
   (`written`), whether it is a `ratio`; values are typed `Quantity<typeof Q>` with constructors from `unitsOf(Q)`. std
   has `Time` (`Duration`, `s`, `min`, `h`) and `Ratio` (`Share`, `pct`). Adding, subtracting or comparing two

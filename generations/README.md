@@ -47,5 +47,6 @@ fingerprint in `languages/<fingerprint>/` (the prelude, the kinds, the views, an
 Trame's libraries written in them); the advance replays the oldest and the newest generations that share the language, and gives the archive to one
 that no longer runs and to every older one that shares it (they lack what it lacks), which then run on their own copy.
 g10 to g46 received the archive `9e403b58c51e8c7d` by hand at g49, when the kinds moved to the lib and only g9 and g47
-had been replayed. `trame.sh --restore`, run from a project, installs in the folder
+had been replayed. g88 to g95 received the archive `b4ae1cf9bc47d1f7` from the advance to g97, when the prelude lost its units
+and the language the rule written as the function itself (B2). `trame.sh --restore`, run from a project, installs in the folder
 of the generation it pins the packages that generation was frozen with.

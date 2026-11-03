@@ -374,8 +374,12 @@ elements), a port answered differently in several environments is answered as in
   `docs/`, `graph.json`, `snapshot.json`, `out/`, `evidence/`, its artefacts and deliveries): a scenario that read its
   own project's outputs would not be played again when they change. Read another project's instead, as Trame's
   scenarios read the example's documents.
-- A rule written `rule: (x) => …` is the form before g79: it is read with a warning and escapes the checks of a body.
-  Write `body: ({ … }) => (x) => …` with its `deps`; an amendment of it patches `body` with `(previous) => (deps) => …`.
+- A rule is a body, the only form since B2 (g97): `body: ({ … }) => (x) => …` with its `deps`; an amendment of it
+  patches `body` with `(previous) => (deps) => …`. Called before the engine wired it, a rule says so rather than run.
+- `trame manifest` compiles the graph with the configuration it has: code that uses what a new version of a library
+  brings (std 0.14.0's millisecond) refuses it. Move the reference and run the manifest first, then write the code.
+- A release holds no manifest (g96): in its library, the library's says it is made of ES modules and where the
+  language is; published, the registry gives it one that says only the first, and its reader leads the language.
 - A published declaration the language changes the form of (a type renamed, a rule rewritten as a body) is an error
   of `trame.lock`: `trame publish --migrate "why"` publishes it again, and only it.
 - TypeScript keeps the path of a link: reached through `.trame/trame`, the kernel would be a second file whose types never
@@ -384,7 +388,8 @@ elements), a port answered differently in several environments is answered as in
 - A library frozen at a version brings its packages from its own installation (std's `node_modules`): `trame manifest`
   installs only those of the project and of the libraries it imports as they are.
 - `Quantity<…>` is a number: a value from an operation (`a * b`) has no quantity, so it never mixes; give it one by
-  its constructor when it is one (`chf(x)`).
+  its constructor when it is one (`chf(x)`). The prelude has no unit (B2): `s`, `min`, `h`, `pct` are std's, `chf` the
+  example's, and a body that meets JavaScript's clocks receives `Time` (`time.in.millisecond(d)`, `time.millisecond(n)`).
 - An amendment the code is written against has no date (`from`): dated today, a build at an earlier day (the day of the
   scenarios, which deliver Poselia's page) reads the code without it, and its criteria fail.
 - A program assembled for elsewhere (a page) wires a value that is not JSON (a quantity's units) from its declaration,

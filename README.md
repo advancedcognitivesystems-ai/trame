@@ -920,8 +920,9 @@ Called, by its acceptance criteria (`Refund(normal, h(2)) === chf(20)`) or by a 
 node is the rule its dependencies make: the engine wires it once the graph is compiled, and a value nobody decided is
 said where the rule reads it, as before. Wiring builds a node from its body before what its kind gives from its
 declaration, and a program refuses to freeze a body an amendment redefines in force. A rule written as the function
-itself (`rule:`), as until g78, is still read, with a warning: Poselia and the frozen releases of std still write theirs
-that way. Rewriting them found literals the old form hid: 30 rules of Poselia's body, 8 of std's, 6 of Trame's.
+itself (`rule:`), as until g78, was read with a warning while projects moved; rewriting them found literals the old form
+hid (30 rules of Poselia's body, 8 of std's, 6 of Trame's), and once nothing wrote it the form was removed (B2, g97): a
+requirement without a body is an error, and a rule called before the engine wired it says so.
 
 A rule that is right is not yet a rule the product follows. Its status says both: held when its acceptance criteria all
 pass and what follows it holds, the code that calls it (directly, or through another rule), the scenario or the check
@@ -963,13 +964,16 @@ families of rules and obligations, until std applies them to itself.
 
 A number measures something: a duration, an amount of one currency, a ratio. Until g79 three units were written in
 the prelude, as plain numbers recognised by their names (`Duration`, `Percent`, and the Swiss franc), and nothing kept
-minutes from being added to francs. Since g80 a **quantity** is a node of the graph, declared where its domain is:
+minutes from being added to francs. Since g80 a **quantity** is a node of the graph, declared where its domain is; the
+prelude's units were removed once nothing used them (B2, g96 and g97), with `ms` and `elapsed`: a body that meets
+JavaScript's clocks receives std's `Time` and writes `time.in.millisecond(d)` or `time.millisecond(n)`. An SLO's
+threshold and window are values of the quantity they are written in (`s(2)`, `pct(1)`, `h(1)`):
 
 ```ts
 export const Time = quantity({
   owner: "trame",
   source: "BIPM, The International System of Units (SI Brochure, 9th edition), Tables 2 and 8",
-  units: { second: 1, minute: 60, hour: 3600 },
+  units: { millisecond: 0.001, second: 1, minute: 60, hour: 3600 },
   written: UnitSymbols,
 })
 export type Duration = Quantity<typeof Time>
@@ -1198,9 +1202,6 @@ declarations with), the types of Node below 23 (they follow the Node.js that run
   shipped without one; 7.1 brings it (`typescript/sync`), in beta since October, its final release announced for late
   November.
 - **Delivery**: the targets after the page: a web application (PWA), then Capacitor for Android and iOS.
-- **Poselia on g80**: its thirty rules written as bodies, with structures for vectors and angles and quantities for
-  its durations and its angles; then a release of std that carries the rules as bodies, and the old form of a rule
-  removed once nothing writes it.
 - **The model**: two requirements that say they answer the same question, played on each other's cases, a
   disagreement settled as an overlap; a decision changed from the page, written into the repository as an amendment
   proposal.
