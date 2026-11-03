@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 2 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 3 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Poselia · The app in a browser
 
@@ -1426,7 +1426,7 @@ Artefact · `PageFile` · **held**
 
 ### The preview's script
 
-Artefact · `PreviewScript` · **unknown**
+Artefact · `PreviewScript` · **held**
 
 - Owner: ghalaax
 - Path: scripts/ship-preview.sh
@@ -1435,7 +1435,7 @@ Artefact · `PreviewScript` · **unknown**
 
 ### The preview's workflow
 
-Artefact · `PreviewWorkflow` · **unknown**
+Artefact · `PreviewWorkflow` · **held**
 
 - Owner: ghalaax
 - Path: ../../.github/workflows/poselia-preview.yml
@@ -1495,7 +1495,7 @@ Shipment · `PublicVersion` · **unknown**
 
 ### The files that run it elsewhere
 
-Shipment · `RunnersWritten` · **unknown**
+Shipment · `RunnersWritten` · **held**
 
 - Owner: ghalaax
 - Target: repository

@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-02",
+  "at": "2026-11-03",
   "nodes": [
     {
       "id": "app.BrowserScreen",
@@ -4835,7 +4835,7 @@
       "id": "sdlc.PreviewScript",
       "kind": "artifact",
       "title": "The preview's script",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "path": "scripts/ship-preview.sh",
@@ -4846,7 +4846,7 @@
       "id": "sdlc.PreviewWorkflow",
       "kind": "artifact",
       "title": "The preview's workflow",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "path": "../../.github/workflows/poselia-preview.yml",
@@ -4902,7 +4902,7 @@
       "id": "sdlc.RunnersWritten",
       "kind": "shipment",
       "title": "The files that run it elsewhere",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "target": "repository"

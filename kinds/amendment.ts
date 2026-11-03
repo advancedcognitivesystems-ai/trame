@@ -1,6 +1,6 @@
 import {
-  defineKind, field, optional, edge, optionalEdge, hole, doc, unitOf, patchLeaves, keysOf, edgesOf, DateRole, FieldType, RuleState, Validity,
-  KindName, ResolutionKind, Unit, ChangeWay, type AnyNode, type Lib, type Node, type PatchOf, type View, type Resolution,
+  defineKind, field, optional, edge, optionalEdge, hole, doc, patchLeaves, keysOf, edgesOf, DateRole, RuleState, Validity,
+  KindName, ResolutionKind, ChangeWay, type AnyNode, type Lib, type Node, type PatchOf, type View, type Resolution,
 } from "../trame/kernel"
 import { approval } from "./approval"
 import { sourceFields } from "./standard"
@@ -128,15 +128,8 @@ const kind = defineKind({
 })
 
 /** The unit of one of the target's values, to show it the way the target shows it: its quantity, when its type says one. */
-function unitFor(target: View, path: string, lib: Lib): Unit | string | undefined {
-  const quantity = target.quantityOf?.(lib.references.firstSegment(path))
-  if (quantity !== undefined) return quantity
-  const info = target.fieldInfo(lib.references.firstSegment(path))
-  if (info?.type === FieldType.duration) return Unit.duration
-  if (info?.type === FieldType.percent) return Unit.percent
-  if (info?.type === FieldType.chf) return Unit.chf
-  if (info?.type === FieldType.value) return unitOf(lib.sequences.head(target.decl?.typeArgs))
-  return undefined
+function unitFor(target: View, path: string, lib: Lib): string | undefined {
+  return target.quantityOf?.(lib.references.firstSegment(path))
 }
 
 interface AmendMeta {

@@ -1,12 +1,12 @@
 # Owners
 
-*What each person must decide, settle or watch on 2 November 2026, and what they own.*
+*What each person must decide, settle or watch on 3 November 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
 | A teacher who practises | 0 | 0 | 4 | 0 |
 | People who try it on a phone | 0 | 0 | 1 | 0 |
-| ghalaax | 0 | 0 | 9 | 212 |
+| ghalaax | 0 | 0 | 5 | 212 |
 
 <a id="A teacher who practises"></a>
 
@@ -48,14 +48,10 @@
 
 | Severity | What | Where | Owner | Consequence |
 |---|---|---|---|---|
-| warning | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The preview's script](sdlc.md#PreviewScript) | ghalaax |  |
-| warning | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The preview's workflow](sdlc.md#PreviewWorkflow) | ghalaax |  |
 | warning | To ship: On a phone is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
 | warning | To ship: The content, reviewed is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
 | warning | To ship: The content is data, behind a port is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
 | warning | To ship: Said aloud, the screen awake is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
-| warning | To ship: The preview's script is unknown | [The files that run it elsewhere](sdlc.md#RunnersWritten) | ghalaax |  |
-| warning | To ship: The preview's workflow is unknown | [The files that run it elsewhere](sdlc.md#RunnersWritten) | ghalaax |  |
 | warning | Nobody holds this role yet | [A teacher who practises](sdlc.md#Teachers) | ghalaax |  |
 
 ### Owns
@@ -234,14 +230,14 @@
 | [A preview](sdlc.md#Preview) | Shipment | **held** |
 | [The way of a preview](sdlc.md#PreviewMode) | Policy |  |
 | [When the preview runs on GitHub, and what it keeps there](sdlc.md#PreviewOnGitHub) | Decision |  |
-| [The preview's script](sdlc.md#PreviewScript) | Artefact | **unknown** |
-| [The preview's workflow](sdlc.md#PreviewWorkflow) | Artefact | **unknown** |
+| [The preview's script](sdlc.md#PreviewScript) | Artefact | **held** |
+| [The preview's workflow](sdlc.md#PreviewWorkflow) | Artefact | **held** |
 | [The product holds](sdlc.md#ProductServed) | Obligation |  |
 | [The page is checked by programs](sdlc.md#ProgramChecks) | Obligation |  |
 | [The way of a public version](sdlc.md#PublicMode) | Policy |  |
 | [A public version](sdlc.md#PublicVersion) | Shipment | **unknown** |
 | [The rules of the app hold](sdlc.md#RulesHeld) | Obligation |  |
-| [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **unknown** |
+| [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **held** |
 | [What the scenarios of the SDLC check](sdlc.md#SdlcChecks) | Message catalog |  |
 | [The SDLC in memory](sdlc.md#SdlcInMemory) | Technical choice | **held** |
 | [The SDLC is in the graph](sdlc.md#SdlcInTheGraph) | Architecture decision | **unknown** |

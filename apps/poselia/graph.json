@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-02",
+  "generated": "2026-11-03",
   "nodes": [
     {
       "id": "app.BrowserScreen",
@@ -6061,7 +6061,7 @@
       "kind": "artifact",
       "title": "The preview's script",
       "source": "src/sdlc.ts:381",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "path": "scripts/ship-preview.sh",
@@ -6071,16 +6071,14 @@
         "path": "scripts/ship-preview.sh",
         "code": "8fd0a0ae"
       },
-      "diagnostics": [
-        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.PreviewWorkflow",
       "kind": "artifact",
       "title": "The preview's workflow",
       "source": "src/sdlc.ts:366",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "path": "../../.github/workflows/poselia-preview.yml",
@@ -6090,9 +6088,7 @@
         "path": "../../.github/workflows/poselia-preview.yml",
         "code": "9bcf7c7e"
       },
-      "diagnostics": [
-        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.ProductServed",
@@ -6419,7 +6415,7 @@
       "kind": "shipment",
       "title": "The files that run it elsewhere",
       "source": "src/sdlc.ts:394",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "target": "repository"
@@ -6428,10 +6424,7 @@
         "derived": [],
         "gaps": []
       },
-      "diagnostics": [
-        "warning: To ship: The preview's script is unknown",
-        "warning: To ship: The preview's workflow is unknown"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.SdlcChecks",

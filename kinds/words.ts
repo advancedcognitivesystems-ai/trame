@@ -443,6 +443,8 @@ const body = () => ({
   sloConstrains: () => "Constrains",
   sloConstrainedBy: () => "Constrained by",
   sloNoProductionMeasurementWired: () => "No production measurement wired",
+  sloThresholdMeasuresNothing: () => "Its threshold measures nothing: write it in the units of a quantity (s(2), pct(1)), so that it says what it is",
+  sloWindowMeasuresNothing: () => "Its window measures nothing: write it in the units of time (h(1)), so that it says how long it is",
   sloOver: () => ", over ",
   sloPercentileOutside: (percentile: number, lowest: number, highest: number) =>
     `p${percentile} is outside the percentiles an objective may hold, from p${lowest} to p${highest}: below the median, most measures could miss it`,

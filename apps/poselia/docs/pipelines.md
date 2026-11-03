@@ -1,6 +1,6 @@
 # Pipelines
 
-*What trame ship runs for each shipment on 2 November 2026, in order, as the engine computes it: its artefacts produced, the checks a program makes, the obligations to prove, the programs that deploy it, the dossier.*
+*What trame ship runs for each shipment on 3 November 2026, in order, as the engine computes it: its artefacts produced, the checks a program makes, the obligations to prove, the programs that deploy it, the dossier.*
 
 <a id="Preview"></a>
 
@@ -279,17 +279,17 @@ flowchart TB
 
 ## The files that run it elsewhere
 
-> **The files that run it elsewhere does not ship yet: 1 of 3 obligations holds.**
+> **The files that run it elsewhere ships: every obligation holds.**
 
 For the target repository.
 
 ```mermaid
 flowchart TB
-  n0["The preview's script<br/><small>Artefact</small>"]:::unknown
+  n0["The preview's script<br/><small>Artefact</small>"]:::held
   n1["A script of Bash<br/><small>Syntax element</small>"]:::held
-  n2["The preview's workflow<br/><small>Artefact</small>"]:::unknown
+  n2["The preview's workflow<br/><small>Artefact</small>"]:::held
   n3["A workflow of GitHub Actions<br/><small>Syntax element</small>"]:::held
-  n4["The files that run it elsewhere<br/><small>Shipment</small>"]:::unknown
+  n4["The files that run it elsewhere<br/><small>Shipment</small>"]:::held
   n0 -->|Produced by| n1
   n2 -->|Produced by| n3
   n4 -->|Ships| n2
@@ -305,11 +305,11 @@ flowchart TB
 
 |  | Stage | Step | Run by | Why | Status | Latest evidence |
 |---|---|---|---|---|---|---|
-| 1 | produce | [The preview's script](sdlc.md#PreviewScript) · `scripts/ship-preview.sh` | [A script of Bash](../.trame/ci/docs/shell.md#ShellScript) | — | **unknown** | 29 October 2026 by claude  |
-| 2 | produce | [The preview's workflow](sdlc.md#PreviewWorkflow) · `../../.github/workflows/poselia-preview.yml` | [A workflow of GitHub Actions](../.trame/ci/docs/github.md#GitHubWorkflow) | — | **unknown** | 29 October 2026 by claude  |
+| 1 | produce | [The preview's script](sdlc.md#PreviewScript) · `scripts/ship-preview.sh` | [A script of Bash](../.trame/ci/docs/shell.md#ShellScript) | — | **held** | 2 November 2026 by claude  |
+| 2 | produce | [The preview's workflow](sdlc.md#PreviewWorkflow) · `../../.github/workflows/poselia-preview.yml` | [A workflow of GitHub Actions](../.trame/ci/docs/github.md#GitHubWorkflow) | — | **held** | 2 November 2026 by claude  |
 | 3 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
-| 4 | prove | [The preview's script](sdlc.md#PreviewScript) | — | the shipment | **unknown** | 29 October 2026 by claude  |
-| 5 | prove | [The preview's workflow](sdlc.md#PreviewWorkflow) | — | the shipment | **unknown** | 29 October 2026 by claude  |
-| 6 | record | [The files that run it elsewhere](sdlc.md#RunnersWritten) | — | — | **unknown** | 29 October 2026 by claude `evidence/shipments/RunnersWritten-2026-10-29-e74c8883.json` |
+| 4 | prove | [The preview's script](sdlc.md#PreviewScript) | — | the shipment | **held** | 2 November 2026 by claude  |
+| 5 | prove | [The preview's workflow](sdlc.md#PreviewWorkflow) | — | the shipment | **held** | 2 November 2026 by claude  |
+| 6 | record | [The files that run it elsewhere](sdlc.md#RunnersWritten) | — | — | **held** | 2 November 2026 by claude `evidence/shipments/RunnersWritten-2026-11-02-2b055261.json` |
 
 `trame ship RunnersWritten --by <name>`

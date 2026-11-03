@@ -1,4 +1,4 @@
-import { defineKind, field, optional, edge, hole, doc, keysOf, Status, KindName, Unit, ChangeWay} from "../trame/kernel"
+import { defineKind, field, optional, edge, hole, doc, keysOf, Status, KindName, ChangeWay} from "../trame/kernel"
 import words from "./words"
 
 const say = words()
@@ -7,8 +7,10 @@ const fields = {
   owner: field.owner(),
   signal: field.text(say.sloMeasuredSignal()),
   percentile: field.number(say.sloPercentile()),
-  threshold: field.duration(say.sloThreshold()),
-  window: field.duration(say.sloWindow()),
+  /** What the signal stays under: a value of the quantity it measures, a latency in time, an error rate as a ratio. */
+  threshold: field.number(say.sloThreshold()),
+  /** How long it is measured over: a value of time. */
+  window: field.number(say.sloWindow()),
   source: optional(field.text(say.sloMeasurementSource())),
 }
 const F = keysOf(fields)
@@ -29,6 +31,9 @@ export const slo = defineKind({
     const outside = g.lib.values.isNumber(self.percentile) && (self.percentile < lowest || self.percentile > highest)
     return [
       !self.source && hole.warning(say.sloNoProductionMeasurementWired()),
+      // What the threshold and the window measure is the quantity their values are written in (since B2).
+      self.quantityOf?.(F.threshold) === undefined && hole.warning(say.sloThresholdMeasuresNothing(), self.owner),
+      self.quantityOf?.(F.window) === undefined && hole.warning(say.sloWindowMeasuresNothing(), self.owner),
       outside && hole.error(say.sloPercentileOutside(self.percentile, lowest, highest), self.owner),
     ]
   },
@@ -40,6 +45,6 @@ export const slo = defineKind({
   },
 
   render: (self) => [
-    doc.para(...say.sloObjective(doc.value(self.percentile), doc.ident(self.signal), doc.value(self.threshold, self.quantityOf?.(F.threshold) ?? Unit.duration), doc.value(self.window, self.quantityOf?.(F.window) ?? Unit.duration))),
+    doc.para(...say.sloObjective(doc.value(self.percentile), doc.ident(self.signal), doc.value(self.threshold, self.quantityOf?.(F.threshold)), doc.value(self.window, self.quantityOf?.(F.window)))),
   ],
 })
