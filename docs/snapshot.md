@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 30 October 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 3 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Trame · Appearance
 
@@ -510,7 +510,7 @@ Decision · `AmendmentSamples`
 Decision · `AssemblySamples`
 
 - Decided by: trame
-- Value: { component: ReservationsApi, machine: Local, provisioned: Production, program: .ts, provision: .tf }
+- Value: { component: ReservationsApi, machine: Local, provisioned: Production, program: .ts, launcher: .node.ts, provision: .tf }
 
 ### Bodies the reader is given
 
@@ -1132,7 +1132,7 @@ Standard · `FrozenApi`
 
 - Maintained by: trame
 - Source: Trame, the prelude (trame/internal.ts: frozen)
-- Constants: { name: { value: frozen, meaning: What the prelude exports for frozen programs }, value: { value: value, meaning: The value of a node, read from its declaration (a rule) }, body: { value: body, meaning: The body of a node written inline in its declaration }, data: { value: data, meaning: Sets the data of a node as in force at the date of the assembly, for the rules that read it }, start: { value: start, meaning: Starts the component with its dependencies and its entry points }, limited: { value: limited, meaning: A capability: a realization limited to the methods its consumer uses (since g83) }, title: { value: title, meaning: The title of an entry point, given to start }, fields: { value: fields, meaning: The simple fields of an entry point, which the kind of the component reads }, entry: { value: value, meaning: What an entry point is, once built }, address: { value: address, meaning: What start gives back when the component answers somewhere }, code: { value: code, meaning: What start gives back when the component ends with an exit code } }
+- Constants: { name: { value: frozen, meaning: What the prelude exports for frozen programs }, value: { value: value, meaning: The value of a node, read from its declaration (a rule) }, body: { value: body, meaning: The body of a node written inline in its declaration }, data: { value: data, meaning: Sets the data of a node as in force at the date of the assembly, for the rules that read it }, start: { value: start, meaning: Starts the component with its dependencies and its entry points }, limited: { value: limited, meaning: A capability: a realization limited to the methods its consumer uses (since g83) }, title: { value: title, meaning: The title of an entry point, given to start }, fields: { value: fields, meaning: The simple fields of an entry point, which the kind of the component reads }, entry: { value: value, meaning: What an entry point is, once built }, address: { value: address, meaning: What start gives back when the component answers somewhere }, code: { value: code, meaning: What start gives back when the component ends with an exit code }, leading: { value: leading, meaning: The prelude's module that leads the names of packages for a program Node.js runs (since g99) }, lead: { value: lead, meaning: What that module exports: given where the names lead and the launcher's URL, it leads them } }
 
 ### Trame references
 
@@ -1394,9 +1394,9 @@ Architecture decision · `TheLanguageReceivesTheGraph` · **held**
 Function · `Assembly` · **held**
 
 - Owner: trame
-- Parameters: { line: conventions.TrameCommands, values: std/algebra.ValueTypes, layout: conventions.Layout, paths: architecture.Paths, wiring: engine.Wiring, prelude: architecture.Prelude, drivers: languages.Drivers, texts: std/algebra.Texts, messages: messages.CompilerMessages }
+- Parameters: { line: conventions.TrameCommands, values: std/algebra.ValueTypes, layout: conventions.Layout, paths: architecture.Paths, wiring: engine.Wiring, prelude: architecture.Prelude, drivers: languages.Drivers, texts: std/algebra.Texts, messages: messages.CompilerMessages, names: conventions.LanguageNames, specifiers: std/system.NodeModuleSpecifiers, language: typescript.TypeScript }
 - Serves: A specification that runs
-- Depends on: Trame's commands, Project layout, Paths, Wiring, Prelude, Drivers, Messages of the compiler
+- Depends on: Trame's commands, Project layout, Paths, Wiring, Prelude, Drivers, Messages of the compiler, The language's names, TypeScript
 
 ### Compilation API
 
@@ -5559,6 +5559,20 @@ Release · `G97`
 - Releases: Trame on the command line
 - Assembled by: Generation 96
 
+### Generation 98
+
+Release · `G98`
+
+- Released by: trame
+- Version: g98
+- Released on: 2026-11-03
+- What changes: the files that run a shipment elsewhere read a project's directories by their real paths, and prepare a package where it is installed
+- Fingerprint: 39230ba992ae1fce
+- Language: shared
+- Language archived: f4872eb1ea3a5e35
+- Releases: Trame on the command line
+- Assembled by: Generation 97
+
 ## Trame · Rendering
 
 ### Places in a sentence
@@ -5985,7 +5999,7 @@ Artefact · `GraphPage` · **unknown**
 
 ### The page's program
 
-Artefact · `PageProgram` · **unknown**
+Artefact · `PageProgram` · **held**
 
 - Owner: trame
 - Path: out/browser/page-app.ts
@@ -6544,7 +6558,7 @@ Standard · `TypeScriptSyntax`
 - Source: ECMA-262, ECMAScript 2024 (§ 12 lexical grammar, § 13 expressions, § 14 statements, § 16 modules); TypeScript 5.6 handbook (type assertions, object types, union types)
 - Address: https://tc39.es/ecma262/2024/
 - Constants: { endOfLine: { value: 
-, meaning: Ends each line of a program, refines: { node: std/text.TextFile, name: endOfLine } }, space: { value:  , meaning: Separates two tokens where the layout wants it (§ 12.2: U+0020) }, indent: { value:   , meaning: Begins an element written on a line of its own: two spaces }, comma: { value: ,, meaning: Separates the elements of a list: arguments, properties, elements of an array (§ 12.8) }, openParenthesis: { value: (, meaning: Opens arguments, a condition, a group (§ 12.8) }, closeParenthesis: { value: ), meaning: Closes what ( opened }, openBrace: { value: {, meaning: Opens an object, the names of an import, an object type (§ 12.8) }, closeBrace: { value: }, meaning: Closes what { opened }, equals: { value: =, meaning: Gives a value: the initializer of a declaration, an assignment (§ 12.8) }, colon: { value: :, meaning: Separates a property's name from its value or its type (§ 12.8) }, importKeyword: { value: import, meaning: Opens an import declaration (§ 16.2.2) }, fromKeyword: { value: from, meaning: Introduces the module an import reads (§ 16.2.2) }, undefined: { value: undefined, meaning: The value of what is not there (§ 19.1.4), and its type }, stringType: { value: string, meaning: The type of texts (TypeScript) }, numberType: { value: number, meaning: The type of numbers (TypeScript) }, docComment: { value: /**, meaning: Opens a documentation comment: a multi-line comment whose first character is an asterisk (JSDoc) }, commentEnd: { value: */, meaning: Closes a multi-line comment (§ 12.4) } }
+, meaning: Ends each line of a program, refines: { node: std/text.TextFile, name: endOfLine } }, space: { value:  , meaning: Separates two tokens where the layout wants it (§ 12.2: U+0020) }, indent: { value:   , meaning: Begins an element written on a line of its own: two spaces }, comma: { value: ,, meaning: Separates the elements of a list: arguments, properties, elements of an array (§ 12.8) }, openParenthesis: { value: (, meaning: Opens arguments, a condition, a group (§ 12.8) }, closeParenthesis: { value: ), meaning: Closes what ( opened }, openBrace: { value: {, meaning: Opens an object, the names of an import, an object type (§ 12.8) }, closeBrace: { value: }, meaning: Closes what { opened }, equals: { value: =, meaning: Gives a value: the initializer of a declaration, an assignment (§ 12.8) }, colon: { value: :, meaning: Separates a property's name from its value or its type (§ 12.8) }, importKeyword: { value: import, meaning: Opens an import declaration (§ 16.2.2), or, called, imports a module when the code runs (§ 13.3.10) }, moduleUrl: { value: import.meta.url, meaning: The URL of the module itself (§ 13.3.12; the host gives import.meta its url) }, fromKeyword: { value: from, meaning: Introduces the module an import reads (§ 16.2.2) }, undefined: { value: undefined, meaning: The value of what is not there (§ 19.1.4), and its type }, stringType: { value: string, meaning: The type of texts (TypeScript) }, numberType: { value: number, meaning: The type of numbers (TypeScript) }, docComment: { value: /**, meaning: Opens a documentation comment: a multi-line comment whose first character is an asterisk (JSDoc) }, commentEnd: { value: */, meaning: Closes a multi-line comment (§ 12.4) } }
 
 ### Globals that reach outside
 
@@ -7055,7 +7069,8 @@ fetch(url); Date.now(); new Date(); new Date(t), globals: fetch, Date.now, new D
 Decision · `ProgramNames`
 
 - Decided by: trame
-- Value: { result: started, bodyPrefix: body_ }
+- Value: { result: started, bodyPrefix: body_, launcher: .node }
+- Rejected: The leading written in the program itself, a program's imports are resolved before any line of it runs, and the same program is bundled for a browser, which has no module hooks
 
 ### TypeScript writer
 

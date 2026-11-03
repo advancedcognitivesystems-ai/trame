@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-30",
+  "at": "2026-11-03",
   "nodes": [
     {
       "id": "appearance.ExplorerDrawing",
@@ -1338,6 +1338,7 @@
           "machine": "Local",
           "provisioned": "Production",
           "program": ".ts",
+          "launcher": ".node.ts",
           "provision": ".tf"
         }
       }
@@ -3061,6 +3062,14 @@
           "code": {
             "value": "code",
             "meaning": "What start gives back when the component ends with an exit code"
+          },
+          "leading": {
+            "value": "leading",
+            "meaning": "The prelude's module that leads the names of packages for a program Node.js runs (since g99)"
+          },
+          "lead": {
+            "value": "lead",
+            "meaning": "What that module exports: given where the names lead and the launcher's URL, it leads them"
           }
         }
       }
@@ -3708,7 +3717,10 @@
           "prelude": "architecture.Prelude",
           "drivers": "languages.Drivers",
           "texts": "std/algebra.Texts",
-          "messages": "messages.CompilerMessages"
+          "messages": "messages.CompilerMessages",
+          "names": "conventions.LanguageNames",
+          "specifiers": "std/system.NodeModuleSpecifiers",
+          "language": "typescript.TypeScript"
         },
         "body": {
           "file": "./code/engine/assembly.ts",
@@ -12000,6 +12012,20 @@
       }
     },
     {
+      "id": "releases.G98",
+      "kind": "release",
+      "title": "Generation 98",
+      "fields": {
+        "owner": "trame",
+        "version": "g98",
+        "date": "2026-11-03",
+        "what": "the files that run a shipment elsewhere read a project's directories by their real paths, and prepare a package where it is installed",
+        "fingerprint": "39230ba992ae1fce",
+        "language": "shared",
+        "archive": "f4872eb1ea3a5e35"
+      }
+    },
+    {
       "id": "rendering.Common",
       "kind": "function",
       "title": "Common rendering",
@@ -12964,7 +12990,7 @@
       "id": "sdlc.PageProgram",
       "kind": "artifact",
       "title": "The page's program",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "out/browser/page-app.ts"
@@ -15085,7 +15111,11 @@
         "owner": "trame",
         "value": {
           "result": "started",
-          "bodyPrefix": "body_"
+          "bodyPrefix": "body_",
+          "launcher": ".node"
+        },
+        "rejected": {
+          "The leading written in the program itself": "a program's imports are resolved before any line of it runs, and the same program is bundled for a browser, which has no module hooks"
         }
       }
     },
@@ -15508,7 +15538,11 @@
           },
           "importKeyword": {
             "value": "import",
-            "meaning": "Opens an import declaration (§ 16.2.2)"
+            "meaning": "Opens an import declaration (§ 16.2.2), or, called, imports a module when the code runs (§ 13.3.10)"
+          },
+          "moduleUrl": {
+            "value": "import.meta.url",
+            "meaning": "The URL of the module itself (§ 13.3.12; the host gives import.meta its url)"
           },
           "fromKeyword": {
             "value": "from",
@@ -19518,6 +19552,16 @@
     {
       "from": "engine.Assembly",
       "to": "messages.CompilerMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "engine.Assembly",
+      "to": "conventions.LanguageNames",
+      "kind": "deps"
+    },
+    {
+      "from": "engine.Assembly",
+      "to": "typescript.TypeScript",
       "kind": "deps"
     },
     {
@@ -25038,6 +25082,16 @@
     {
       "from": "releases.G97",
       "to": "releases.G96",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G98",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G98",
+      "to": "releases.G97",
       "kind": "assembledBy"
     },
     {

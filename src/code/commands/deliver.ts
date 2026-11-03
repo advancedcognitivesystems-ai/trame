@@ -69,7 +69,9 @@ const body = (deps: Deps): Handler => async (req) => {
       deps.writing.mkdirSync(dirname(f.path), { recursive: true })
       deps.writing.writeFileSync(f.path, f.content)
     }
-    const [program] = files
+    // The program itself, for the browser: its launcher is for Node.js (since g99).
+    const [first] = files
+    const program = files.find((f) => !f.launches) ?? first
 
     // Its program, bundled into one script.
     const bundled = await deps.bundler.build({

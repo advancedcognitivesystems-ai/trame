@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-30",
+  "generated": "2026-11-03",
   "nodes": [
     {
       "id": "appearance.ExplorerDrawing",
@@ -1390,7 +1390,7 @@
       "id": "command-scenarios.AdvanceInMemory",
       "kind": "scenario",
       "title": "An advance, in memory",
-      "source": "src/command-scenarios.ts:886",
+      "source": "src/command-scenarios.ts:889",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1427,7 +1427,7 @@
           "status": "passed"
         },
         {
-          "name": "The candidate is accepted (  ✓ trame runs g98 |   ✓ reservations runs g98 | Advance succeeded.)",
+          "name": "The candidate is accepted (  ✓ trame runs g99 |   ✓ reservations runs g99 | Advance succeeded.)",
           "status": "passed"
         },
         {
@@ -1445,7 +1445,7 @@
       "id": "command-scenarios.AdvanceSamples",
       "kind": "decision",
       "title": "What the engines an advance starts answer in a scenario",
-      "source": "src/command-scenarios.ts:872",
+      "source": "src/command-scenarios.ts:875",
       "fields": {
         "owner": "trame",
         "value": {
@@ -1461,7 +1461,7 @@
       "id": "command-scenarios.AmendmentSamples",
       "kind": "decision",
       "title": "What an amendment is checked with",
-      "source": "src/command-scenarios.ts:357",
+      "source": "src/command-scenarios.ts:360",
       "fields": {
         "owner": "trame",
         "value": {
@@ -1500,6 +1500,7 @@
           "machine": "Local",
           "provisioned": "Production",
           "program": ".ts",
+          "launcher": ".node.ts",
           "provision": ".tf"
         }
       },
@@ -1586,7 +1587,7 @@
       "id": "command-scenarios.BuildPlanned",
       "kind": "scenario",
       "title": "A build planned",
-      "source": "src/command-scenarios.ts:304",
+      "source": "src/command-scenarios.ts:307",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1628,7 +1629,7 @@
       "id": "command-scenarios.CommandLineChooses",
       "kind": "scenario",
       "title": "The command line",
-      "source": "src/command-scenarios.ts:720",
+      "source": "src/command-scenarios.ts:723",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1684,7 +1685,7 @@
       },
       "result": [
         {
-          "name": "For Local, a program in TypeScript is written, nothing to provision",
+          "name": "For Local, a program in TypeScript and its launcher are written, nothing to provision",
           "status": "passed"
         },
         {
@@ -1702,7 +1703,7 @@
       "id": "command-scenarios.ComponentRun",
       "kind": "scenario",
       "title": "A component run",
-      "source": "src/command-scenarios.ts:645",
+      "source": "src/command-scenarios.ts:648",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1733,7 +1734,7 @@
       "id": "command-scenarios.DeclarationsPublished",
       "kind": "scenario",
       "title": "Declarations published",
-      "source": "src/command-scenarios.ts:410",
+      "source": "src/command-scenarios.ts:413",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1767,7 +1768,7 @@
       "id": "command-scenarios.DevFollowsTheGraph",
       "kind": "scenario",
       "title": "trame dev",
-      "source": "src/command-scenarios.ts:677",
+      "source": "src/command-scenarios.ts:680",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1822,7 +1823,7 @@
       "id": "command-scenarios.DevSamples",
       "kind": "decision",
       "title": "What trame dev is shown in a scenario",
-      "source": "src/command-scenarios.ts:666",
+      "source": "src/command-scenarios.ts:669",
       "fields": {
         "owner": "trame",
         "value": {
@@ -1838,7 +1839,7 @@
       "id": "command-scenarios.DoctorAsks",
       "kind": "scenario",
       "title": "The doctor",
-      "source": "src/command-scenarios.ts:845",
+      "source": "src/command-scenarios.ts:848",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1873,7 +1874,7 @@
       "id": "command-scenarios.LawsTested",
       "kind": "scenario",
       "title": "The laws, tested by their command",
-      "source": "src/command-scenarios.ts:251",
+      "source": "src/command-scenarios.ts:254",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1902,7 +1903,7 @@
       "id": "command-scenarios.LibraryReleased",
       "kind": "scenario",
       "title": "A library released",
-      "source": "src/command-scenarios.ts:550",
+      "source": "src/command-scenarios.ts:553",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1943,7 +1944,7 @@
       "id": "command-scenarios.ManifestWritten",
       "kind": "scenario",
       "title": "The manifest written",
-      "source": "src/command-scenarios.ts:584",
+      "source": "src/command-scenarios.ts:587",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1987,7 +1988,7 @@
       "id": "command-scenarios.PackagesAudited",
       "kind": "scenario",
       "title": "The packages audited",
-      "source": "src/command-scenarios.ts:527",
+      "source": "src/command-scenarios.ts:530",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2017,7 +2018,7 @@
       "id": "command-scenarios.PageDelivered",
       "kind": "scenario",
       "title": "The page delivered",
-      "source": "src/command-scenarios.ts:760",
+      "source": "src/command-scenarios.ts:763",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2047,7 +2048,7 @@
       "id": "command-scenarios.PageExported",
       "kind": "scenario",
       "title": "The page exported",
-      "source": "src/command-scenarios.ts:615",
+      "source": "src/command-scenarios.ts:618",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2170,7 +2171,7 @@
       "id": "command-scenarios.PlanSamples",
       "kind": "decision",
       "title": "What a plan is checked with",
-      "source": "src/command-scenarios.ts:292",
+      "source": "src/command-scenarios.ts:295",
       "fields": {
         "owner": "trame",
         "value": {
@@ -2188,7 +2189,7 @@
       "id": "command-scenarios.ProjectSamples",
       "kind": "decision",
       "title": "What the scenarios ask of those projects",
-      "source": "src/command-scenarios.ts:444",
+      "source": "src/command-scenarios.ts:447",
       "fields": {
         "owner": "trame",
         "value": {
@@ -2227,7 +2228,7 @@
       "id": "command-scenarios.ProjectStarted",
       "kind": "scenario",
       "title": "A project started",
-      "source": "src/command-scenarios.ts:493",
+      "source": "src/command-scenarios.ts:496",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2280,7 +2281,7 @@
       "id": "command-scenarios.RegistryFilled",
       "kind": "scenario",
       "title": "The registry filled",
-      "source": "src/command-scenarios.ts:470",
+      "source": "src/command-scenarios.ts:473",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2309,7 +2310,7 @@
       "id": "command-scenarios.RunSamples",
       "kind": "decision",
       "title": "What a program run in a scenario answers",
-      "source": "src/command-scenarios.ts:639",
+      "source": "src/command-scenarios.ts:642",
       "fields": {
         "owner": "trame",
         "value": {
@@ -2323,7 +2324,7 @@
       "id": "command-scenarios.ScenarioProjects",
       "kind": "decision",
       "title": "The projects of the repository the scenarios enter",
-      "source": "src/command-scenarios.ts:433",
+      "source": "src/command-scenarios.ts:436",
       "fields": {
         "owner": "trame",
         "value": {
@@ -2338,7 +2339,7 @@
       "id": "command-scenarios.ShipmentsRun",
       "kind": "scenario",
       "title": "Shipments run, evidence given",
-      "source": "src/command-scenarios.ts:786",
+      "source": "src/command-scenarios.ts:789",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2405,7 +2406,7 @@
       "id": "command-scenarios.SnapshotTaken",
       "kind": "scenario",
       "title": "The snapshot, taken by its command",
-      "source": "src/command-scenarios.ts:272",
+      "source": "src/command-scenarios.ts:275",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2447,7 +2448,7 @@
       "id": "command-scenarios.ValueAmended",
       "kind": "scenario",
       "title": "A value amended",
-      "source": "src/command-scenarios.ts:381",
+      "source": "src/command-scenarios.ts:384",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3553,7 +3554,7 @@
       "id": "conventions.AmendmentNaming",
       "kind": "decision",
       "title": "How an amendment is named",
-      "source": "src/conventions.ts:99",
+      "source": "src/conventions.ts:101",
       "fields": {
         "owner": "trame",
         "value": {
@@ -3567,7 +3568,7 @@
       "id": "conventions.DefaultRank",
       "kind": "decision",
       "title": "Default rank",
-      "source": "src/conventions.ts:195",
+      "source": "src/conventions.ts:197",
       "fields": {
         "owner": "trame",
         "value": 100
@@ -3578,7 +3579,7 @@
       "id": "conventions.DocComment",
       "kind": "decision",
       "title": "Documentation comment",
-      "source": "src/conventions.ts:217",
+      "source": "src/conventions.ts:219",
       "fields": {
         "owner": "trame",
         "value": {
@@ -3592,7 +3593,7 @@
       "id": "conventions.DocumentIds",
       "kind": "standard",
       "title": "Names of the documents",
-      "source": "src/conventions.ts:231",
+      "source": "src/conventions.ts:233",
       "fields": {
         "owner": "trame",
         "source": "Trame, the documents of its views (the engine names them, the page reads them)",
@@ -3661,6 +3662,14 @@
           "code": {
             "value": "code",
             "meaning": "What start gives back when the component ends with an exit code"
+          },
+          "leading": {
+            "value": "leading",
+            "meaning": "The prelude's module that leads the names of packages for a program Node.js runs (since g99)"
+          },
+          "lead": {
+            "value": "lead",
+            "meaning": "What that module exports: given where the names lead and the launcher's URL, it leads them"
           }
         }
       },
@@ -3670,7 +3679,7 @@
       "id": "conventions.JsonFormatting",
       "kind": "decision",
       "title": "JSON formatting",
-      "source": "src/conventions.ts:223",
+      "source": "src/conventions.ts:225",
       "fields": {
         "owner": "trame",
         "value": {
@@ -3791,7 +3800,7 @@
       "id": "conventions.ReferenceSyntax",
       "kind": "standard",
       "title": "Trame references",
-      "source": "src/conventions.ts:202",
+      "source": "src/conventions.ts:204",
       "fields": {
         "owner": "trame",
         "source": "Trame, the prelude (trame/kernel.ts: refOf, getPath)",
@@ -3820,7 +3829,7 @@
       "id": "conventions.StepNames",
       "kind": "decision",
       "title": "Names of steps",
-      "source": "src/conventions.ts:189",
+      "source": "src/conventions.ts:191",
       "fields": {
         "owner": "trame",
         "value": {
@@ -3833,7 +3842,7 @@
       "id": "conventions.TrameCommands",
       "kind": "standard",
       "title": "Trame's commands",
-      "source": "src/conventions.ts:114",
+      "source": "src/conventions.ts:116",
       "fields": {
         "owner": "trame",
         "source": "Trame, its command line (the entry points of commands, in the module commands)",
@@ -4050,7 +4059,7 @@
       "id": "conventions.TrameEnvironment",
       "kind": "standard",
       "title": "Trame's environment",
-      "source": "src/conventions.ts:176",
+      "source": "src/conventions.ts:178",
       "fields": {
         "owner": "trame",
         "source": "Trame, the variables of the environment it reads",
@@ -4067,7 +4076,7 @@
       "id": "conventions.ViewGroupOrder",
       "kind": "decision",
       "title": "Order of the view groups",
-      "source": "src/conventions.ts:245",
+      "source": "src/conventions.ts:247",
       "fields": {
         "owner": "trame",
         "value": [
@@ -4383,7 +4392,10 @@
           "prelude": "architecture.Prelude",
           "drivers": "languages.Drivers",
           "texts": "std/algebra.Texts",
-          "messages": "messages.CompilerMessages"
+          "messages": "messages.CompilerMessages",
+          "names": "conventions.LanguageNames",
+          "specifiers": "std/system.NodeModuleSpecifiers",
+          "language": "typescript.TypeScript"
         },
         "body": {
           "file": "./code/engine/assembly.ts",
@@ -9965,7 +9977,7 @@
       "id": "messages.AdvanceMessages",
       "kind": "catalog",
       "title": "Messages of an advance",
-      "source": "src/messages.ts:823",
+      "source": "src/messages.ts:825",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -9979,7 +9991,7 @@
       "id": "messages.CommandMessages",
       "kind": "catalog",
       "title": "Messages of the commands",
-      "source": "src/messages.ts:437",
+      "source": "src/messages.ts:439",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -10008,7 +10020,7 @@
       "id": "messages.CountsInTheLanguage",
       "kind": "adr",
       "title": "A catalog counts in its language",
-      "source": "src/messages.ts:912",
+      "source": "src/messages.ts:914",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -10040,7 +10052,7 @@
       "id": "messages.DevMessages",
       "kind": "catalog",
       "title": "Messages of trame dev",
-      "source": "src/messages.ts:413",
+      "source": "src/messages.ts:415",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -10066,7 +10078,7 @@
       "id": "messages.EngineViewWords",
       "kind": "catalog",
       "title": "Words of Trame's views",
-      "source": "src/messages.ts:641",
+      "source": "src/messages.ts:643",
       "fields": {
         "owner": "trame",
         "messages": {
@@ -10080,7 +10092,7 @@
       "id": "messages.KindWords",
       "kind": "catalog",
       "title": "Words of the kinds",
-      "source": "src/messages.ts:621",
+      "source": "src/messages.ts:623",
       "fields": {
         "owner": "trame",
         "messages": {
@@ -10122,7 +10134,7 @@
       "id": "messages.LawMessages",
       "kind": "catalog",
       "title": "Messages of the laws",
-      "source": "src/messages.ts:262",
+      "source": "src/messages.ts:264",
       "fields": {
         "owner": "trame",
         "messages": "(function)"
@@ -10148,7 +10160,7 @@
       "id": "messages.OutputMessages",
       "kind": "catalog",
       "title": "Messages of the outputs",
-      "source": "src/messages.ts:356",
+      "source": "src/messages.ts:358",
       "fields": {
         "owner": "trame",
         "messages": "(function)"
@@ -10159,7 +10171,7 @@
       "id": "messages.PageWords",
       "kind": "catalog",
       "title": "Words of the page",
-      "source": "src/messages.ts:652",
+      "source": "src/messages.ts:654",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -10176,7 +10188,7 @@
       "id": "messages.PlatformMessages",
       "kind": "catalog",
       "title": "Messages of the platform",
-      "source": "src/messages.ts:674",
+      "source": "src/messages.ts:676",
       "fields": {
         "owner": "trame",
         "messages": "(function)"
@@ -10187,7 +10199,7 @@
       "id": "messages.RenderingMessages",
       "kind": "catalog",
       "title": "Messages of the renderers",
-      "source": "src/messages.ts:664",
+      "source": "src/messages.ts:666",
       "fields": {
         "owner": "trame",
         "messages": {
@@ -10201,7 +10213,7 @@
       "id": "messages.ScenarioMessages",
       "kind": "catalog",
       "title": "Messages of the scenarios",
-      "source": "src/messages.ts:703",
+      "source": "src/messages.ts:705",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -10215,7 +10227,7 @@
       "id": "messages.ViewMessages",
       "kind": "catalog",
       "title": "Messages of the views",
-      "source": "src/messages.ts:305",
+      "source": "src/messages.ts:307",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -10229,7 +10241,7 @@
       "id": "messages.ViewWords",
       "kind": "catalog",
       "title": "Words of the views",
-      "source": "src/messages.ts:631",
+      "source": "src/messages.ts:633",
       "fields": {
         "owner": "trame",
         "messages": {
@@ -15442,6 +15454,22 @@
       "diagnostics": []
     },
     {
+      "id": "releases.G98",
+      "kind": "release",
+      "title": "Generation 98",
+      "source": "src/releases.ts:1445",
+      "fields": {
+        "owner": "trame",
+        "version": "g98",
+        "date": "2026-11-03",
+        "what": "the files that run a shipment elsewhere read a project's directories by their real paths, and prepare a package where it is installed",
+        "fingerprint": "39230ba992ae1fce",
+        "language": "shared",
+        "archive": "f4872eb1ea3a5e35"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "rendering.Common",
       "kind": "function",
       "title": "Common rendering",
@@ -16411,7 +16439,7 @@
         "owner": "trame"
       },
       "result": {
-        "code": "597615c2"
+        "code": "58b01a56"
       },
       "diagnostics": [
         "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
@@ -16427,7 +16455,7 @@
         "owner": "trame"
       },
       "result": {
-        "code": "ed1b8fa9"
+        "code": "37d3ccdd"
       },
       "diagnostics": [
         "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
@@ -16445,7 +16473,7 @@
       },
       "result": {
         "path": "out/local/trame-cli.ts",
-        "code": "e997bd09"
+        "code": "2c1ad2a9"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -16501,7 +16529,7 @@
       },
       "result": {
         "path": "trame-page.html",
-        "code": "a6ef3a84"
+        "code": "e03e6c10"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -17076,7 +17104,6 @@
       "diagnostics": [
         "warning: To ship: The candidate engine is unknown",
         "warning: To ship: The graph page is unknown",
-        "warning: To ship: The page's program is unknown",
         "warning: To ship: The page is assembled is unknown",
         "warning: To ship: The candidate plays the laws is unknown",
         "warning: To ship: The candidate runs on the machine is unknown",
@@ -17150,7 +17177,7 @@
       "kind": "artifact",
       "title": "The page's program",
       "source": "src/sdlc.ts:169",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "out/browser/page-app.ts"
@@ -17159,9 +17186,7 @@
         "path": "out/browser/page-app.ts",
         "code": "7928117f"
       },
-      "diagnostics": [
-        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.SdlcInMemory",
@@ -19099,7 +19124,7 @@
       "id": "typescript.ArrayLiteral",
       "kind": "syntax",
       "title": "List on several lines",
-      "source": "src/typescript.ts:494",
+      "source": "src/typescript.ts:495",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -19170,7 +19195,7 @@
       "id": "typescript.AsExpression",
       "kind": "syntax",
       "title": "Type assertion",
-      "source": "src/typescript.ts:640",
+      "source": "src/typescript.ts:641",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -19218,7 +19243,7 @@
       "id": "typescript.Assignment",
       "kind": "syntax",
       "title": "Assignment",
-      "source": "src/typescript.ts:749",
+      "source": "src/typescript.ts:750",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -19257,7 +19282,7 @@
       "id": "typescript.Await",
       "kind": "syntax",
       "title": "Waiting",
-      "source": "src/typescript.ts:387",
+      "source": "src/typescript.ts:388",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -19303,7 +19328,7 @@
       "id": "typescript.Call",
       "kind": "syntax",
       "title": "Call",
-      "source": "src/typescript.ts:367",
+      "source": "src/typescript.ts:368",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -19371,7 +19396,7 @@
       "id": "typescript.ConstDeclaration",
       "kind": "syntax",
       "title": "Constant",
-      "source": "src/typescript.ts:589",
+      "source": "src/typescript.ts:590",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -19415,7 +19440,7 @@
       "id": "typescript.DefaultImport",
       "kind": "syntax",
       "title": "Default import",
-      "source": "src/typescript.ts:623",
+      "source": "src/typescript.ts:624",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -19455,7 +19480,7 @@
       "id": "typescript.DocBlock",
       "kind": "syntax",
       "title": "Documentation comment",
-      "source": "src/typescript.ts:556",
+      "source": "src/typescript.ts:557",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -19501,7 +19526,7 @@
       "id": "typescript.ExportDeclaration",
       "kind": "syntax",
       "title": "Export",
-      "source": "src/typescript.ts:538",
+      "source": "src/typescript.ts:539",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -19543,7 +19568,7 @@
       "id": "typescript.IfStatement",
       "kind": "syntax",
       "title": "Condition",
-      "source": "src/typescript.ts:713",
+      "source": "src/typescript.ts:714",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -19587,7 +19612,7 @@
       "id": "typescript.InlineArray",
       "kind": "syntax",
       "title": "List on one line",
-      "source": "src/typescript.ts:471",
+      "source": "src/typescript.ts:472",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -19658,7 +19683,7 @@
       "id": "typescript.LineComment",
       "kind": "syntax",
       "title": "Comment",
-      "source": "src/typescript.ts:293",
+      "source": "src/typescript.ts:294",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -19700,7 +19725,7 @@
       "id": "typescript.MemberAccess",
       "kind": "syntax",
       "title": "Property access",
-      "source": "src/typescript.ts:330",
+      "source": "src/typescript.ts:331",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -19748,7 +19773,7 @@
       "id": "typescript.ModuleTitle",
       "kind": "syntax",
       "title": "Title of a module",
-      "source": "src/typescript.ts:574",
+      "source": "src/typescript.ts:575",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -19785,7 +19810,7 @@
       "id": "typescript.NamedImport",
       "kind": "syntax",
       "title": "Import of names",
-      "source": "src/typescript.ts:606",
+      "source": "src/typescript.ts:607",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -19831,7 +19856,7 @@
       "id": "typescript.ObjectBlock",
       "kind": "syntax",
       "title": "Object on several lines",
-      "source": "src/typescript.ts:518",
+      "source": "src/typescript.ts:519",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -19893,7 +19918,7 @@
       "id": "typescript.ObjectLiteral",
       "kind": "syntax",
       "title": "Object",
-      "source": "src/typescript.ts:449",
+      "source": "src/typescript.ts:450",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -19975,7 +20000,7 @@
       "id": "typescript.ObjectType",
       "kind": "syntax",
       "title": "Object type",
-      "source": "src/typescript.ts:676",
+      "source": "src/typescript.ts:677",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -20027,7 +20052,7 @@
       "id": "typescript.OptionalAccess",
       "kind": "syntax",
       "title": "Optional property access",
-      "source": "src/typescript.ts:349",
+      "source": "src/typescript.ts:350",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -20075,7 +20100,7 @@
       "id": "typescript.OptionalPropertySignature",
       "kind": "syntax",
       "title": "Optional property of a type",
-      "source": "src/typescript.ts:658",
+      "source": "src/typescript.ts:659",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -20123,7 +20148,7 @@
       "id": "typescript.Parenthesized",
       "kind": "syntax",
       "title": "Group",
-      "source": "src/typescript.ts:405",
+      "source": "src/typescript.ts:406",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -20164,12 +20189,16 @@
       "id": "typescript.ProgramNames",
       "kind": "decision",
       "title": "Names of a program",
-      "source": "src/typescript.ts:765",
+      "source": "src/typescript.ts:766",
       "fields": {
         "owner": "trame",
         "value": {
           "result": "started",
-          "bodyPrefix": "body_"
+          "bodyPrefix": "body_",
+          "launcher": ".node"
+        },
+        "rejected": {
+          "The leading written in the program itself": "a program's imports are resolved before any line of it runs, and the same program is bundled for a browser, which has no module hooks"
         }
       },
       "diagnostics": []
@@ -20178,7 +20207,7 @@
       "id": "typescript.Property",
       "kind": "syntax",
       "title": "Property",
-      "source": "src/typescript.ts:422",
+      "source": "src/typescript.ts:423",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -20265,7 +20294,7 @@
       "id": "typescript.StrictInequality",
       "kind": "syntax",
       "title": "Strict inequality",
-      "source": "src/typescript.ts:731",
+      "source": "src/typescript.ts:732",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -20313,7 +20342,7 @@
       "id": "typescript.StringLiteral",
       "kind": "syntax",
       "title": "Text",
-      "source": "src/typescript.ts:311",
+      "source": "src/typescript.ts:312",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -20932,7 +20961,11 @@
           },
           "importKeyword": {
             "value": "import",
-            "meaning": "Opens an import declaration (§ 16.2.2)"
+            "meaning": "Opens an import declaration (§ 16.2.2), or, called, imports a module when the code runs (§ 13.3.10)"
+          },
+          "moduleUrl": {
+            "value": "import.meta.url",
+            "meaning": "The URL of the module itself (§ 13.3.12; the host gives import.meta its url)"
           },
           "fromKeyword": {
             "value": "from",
@@ -20966,7 +20999,7 @@
       "id": "typescript.TypeScriptWriter",
       "kind": "function",
       "title": "TypeScript writer",
-      "source": "src/typescript.ts:776",
+      "source": "src/typescript.ts:780",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -21018,7 +21051,7 @@
       "id": "typescript.UnionType",
       "kind": "syntax",
       "title": "Union type",
-      "source": "src/typescript.ts:695",
+      "source": "src/typescript.ts:696",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -25868,6 +25901,21 @@
     {
       "from": "engine.Assembly",
       "to": "messages.CompilerMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "engine.Assembly",
+      "to": "conventions.LanguageNames",
+      "kind": "deps"
+    },
+    {
+      "from": "engine.Assembly",
+      "to": "std/system.NodeModuleSpecifiers",
+      "kind": "deps"
+    },
+    {
+      "from": "engine.Assembly",
+      "to": "typescript.TypeScript",
       "kind": "deps"
     },
     {
@@ -32708,6 +32756,16 @@
     {
       "from": "releases.G97",
       "to": "releases.G96",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G98",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G98",
+      "to": "releases.G97",
       "kind": "assembledBy"
     },
     {

@@ -1,8 +1,8 @@
 # Versions
 
-*The releases of the components on 30 October 2026, newest first. A project runs the release its configuration pins.*
+*The releases of the components on 3 November 2026, newest first. A project runs the release its configuration pins.*
 
-> **97 releases of 1 component; 95 releases on a language of their own**
+> **98 releases of 1 component; 95 releases on a language of their own**
 
 ## Trame on the command line
 
@@ -10,6 +10,7 @@ Each release, newest first: what changed, the release that assembled it, and whe
 
 | Release | Released on | What changes | Assembled by | Language |
 |---|---|---|---|---|
+| [Generation 98](releases.md#G98) | 3 November 2026 | the files that run a shipment elsewhere read a project's directories by their real paths, and prepare a package where it is installed | [Generation 97](releases.md#G97) | shared |
 | [Generation 97](releases.md#G97) | 3 November 2026 | the language has one form: the prelude's units and the rule written as the function itself are gone; older generations that relied on them run on their archived language | [Generation 96](releases.md#G96) | shared |
 | [Generation 96](releases.md#G96) | 3 November 2026 | the engine no longer uses the prelude's units (a number of no quantity is written as it is) and reads the language through its real paths; a release holds no manifest; Trame on std 0.14.0 | [Generation 95](releases.md#G95) | shared |
 | [Generation 95](releases.md#G95) | 2 November 2026 | the bundler is led by the names of packages as the engine leads Node.js: a library published once is bundled with the language and libraries of the project that delivers it | [Generation 94](releases.md#G94) | its own copy |

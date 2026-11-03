@@ -88,6 +88,8 @@ export const FrozenApi = standard({
     entry: { value: "value", meaning: "What an entry point is, once built" },
     address: { value: "address", meaning: "What start gives back when the component answers somewhere" },
     code: { value: "code", meaning: "What start gives back when the component ends with an exit code" },
+    leading: { value: "leading", meaning: "The prelude's module that leads the names of packages for a program Node.js runs (since g99)" },
+    lead: { value: "lead", meaning: "What that module exports: given where the names lead and the launcher's URL, it leads them" },
   },
 })
 

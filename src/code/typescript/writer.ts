@@ -65,7 +65,7 @@ const body = (deps: Deps) => {
   const { assertion, optionalProperty, objectType, union, condition, differs, assignment } = deps
   const { empty } = deps.texts
   const { head } = deps.sequences
-  const { join, relative, sep } = deps.paths
+  const { join, relative, sep, dirname } = deps.paths
   const { meta, refOf } = deps.prelude.internal
 
   /** The names the program itself declares or reads: no step may take them. */
@@ -171,10 +171,37 @@ const body = (deps: Deps) => {
       condition(differs(optional(names.result, frozen.code), syntax.undefined), assignment(member(node.process, node.exitCode), result(frozen.code))),
       blankLine,
     ]
+    const extension = head(language.extensions)
+    const programPath = join(a.out, name + extension)
+    // The launcher (since g99): what Node.js runs. It leads the names of packages as the engine led them when it read
+    // the project, each path from the program, then imports the program: its modules are resolved only then.
+    const leading = {
+      language: Object.fromEntries(Object.entries(a.leading.language).map(([n, file]) => [n, rel(file)])),
+      libraries: Object.fromEntries(Object.entries(a.leading.libraries).map(([n, dir]) => [n, rel(dir)])),
+      within: a.leading.within.map(rel),
+      names: a.leading.names,
+    }
+    const programSpecifier = rel(programPath)
+    const launcher = [
+      comment(messages.generatedBy(a.command, date)),
+      comment(messages.launcher(programSpecifier)),
+      blankLine,
+      namedImport([frozen.lead], rel(join(dirname(a.prelude), frozen.leading))),
+      blankLine,
+      call(frozen.lead, [JSON.stringify(leading), syntax.moduleUrl]),
+      wait(call(syntax.importKeyword, [text(programSpecifier)])),
+      blankLine,
+    ]
     return [{
-      path: join(a.out, name + head(language.extensions)),
+      path: programPath,
       content: lines.join(syntax.endOfLine),
       values: [...dataValues, ...stepValues, ...entryValues, started],
+    }, {
+      path: join(a.out, name + names.launcher + extension),
+      content: launcher.join(syntax.endOfLine),
+      // The specifier of the program is a module the reader reads as such, not a value.
+      values: [leading],
+      launches: true,
     }]
   }
 

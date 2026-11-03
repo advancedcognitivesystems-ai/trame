@@ -106,9 +106,11 @@ const body = (deps: Deps): Handler => async (req) => {
     const { files, errors: emitErrors } = deps.assembly.emitAssembly(assembly)
     if (emitErrors.length) return refuse(o, emitErrors)
     for (const f of files) save(f.path, f.content)
+    // What Node.js runs: the program's launcher, which leads the names of packages first (since g99).
     const [first] = files
-    programs.set(JSON.stringify([component.ref, where.ref]), first.path)
-    return first.path
+    const runs = files.find((f) => f.launches) ?? first
+    programs.set(JSON.stringify([component.ref, where.ref]), runs.path)
+    return runs.path
   }
   /** A program bundled with what it imports, as the decision "The fingerprint of a program" says. */
   const bundled = async (program: string): Promise<string> => {

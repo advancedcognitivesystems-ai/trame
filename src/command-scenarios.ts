@@ -208,16 +208,16 @@ export const PageOfTheGraph = scenario({
  * What the example is assembled for
  * Its component, an environment where it runs on a machine, and one that provisions its infrastructure.
  */
-export const AssemblySamples = decision<{ component: string; machine: string; provisioned: string; program: string; provision: string }>({
+export const AssemblySamples = decision<{ component: string; machine: string; provisioned: string; program: string; launcher: string; provision: string }>({
   owner: "trame",
-  value: { component: "ReservationsApi", machine: "Local", provisioned: "Production", program: ".ts", provision: ".tf" },
+  value: { component: "ReservationsApi", machine: "Local", provisioned: "Production", program: ".ts", launcher: ".node.ts", provision: ".tf" },
 })
 
 /**
  * A component assembled
  * trame assemble writes the example's component for an environment: a program in TypeScript, frozen, read back before
- * it is written; for the environment that provisions it, its infrastructure in Terraform too. Without an environment,
- * it is refused.
+ * it is written, and its launcher, which leads the names of packages before it runs the program (since g99); for the
+ * environment that provisions it, its infrastructure in Terraform too. Without an environment, it is refused.
  */
 export const ComponentAssembled = scenario({
   owner: "trame",
@@ -230,8 +230,11 @@ export const ComponentAssembled = scenario({
   body: ({ assemble, writeLog, terminalLog, line, exitStatus, layout, samples, commands, counts, messages }) => async (check) => {
     const written = () => [...writeLog.written().keys()]
     const local = await assemble({ params: { command: line.assemble }, body: { args: [samples.component, line.env, samples.machine] } })
-    const programs = written().filter((path) => path.includes(layout.output) && path.endsWith(samples.program))
-    check(messages.programWritten(samples.machine), local.status === exitStatus.success && programs.length === counts.one && written().every((p) => !p.endsWith(samples.provision)))
+    const out = written().filter((path) => path.includes(layout.output))
+    const launchers = out.filter((path) => path.endsWith(samples.launcher))
+    const programs = out.filter((path) => path.endsWith(samples.program) && !path.endsWith(samples.launcher))
+    check(messages.programWritten(samples.machine), local.status === exitStatus.success && programs.length === counts.one && launchers.length === counts.one
+      && written().every((p) => !p.endsWith(samples.provision)))
     await assemble({ params: { command: line.assemble }, body: { args: [samples.component, line.env, samples.provisioned] } })
     check(messages.infrastructureWritten(samples.provisioned), written().some((path) => path.endsWith(samples.provision)))
     let refused = false

@@ -38,6 +38,21 @@ export const QuantityMark = "quantity"
  * operation gives it; a value of another quantity is not. Since g80.
  */
 export type Quantity<Q> = number & { readonly [K in typeof QuantityMark]?: Q }
+/**
+ * Where the names of packages lead for a program Node.js runs (since g99): the table its launcher gives the prelude's
+ * module leading, each path from the program's directory (absolute in an assembly, before it is written).
+ */
+export interface Leading {
+  /** Each name of the language, a pattern or a module (`#trame/kinds/*`), and the file it leads to (`…/kinds/*.ts`). */
+  language: Record<string, string>
+  /** Each library's name and the directory of its sources. */
+  libraries: Record<string, string>
+  /** The directories whose files a library's name is led for: the project's and its libraries'. */
+  within: readonly string[]
+  /** What a name is written with: the mark of an import map's names, the separator, the pattern, the extension. */
+  names: { imports: string; separator: string; pattern: string; extension: string }
+}
+
 /** A value in each unit of a quantity (`const { minute: min } = unitsOf(Time)`), read from its declaration. */
 export function unitsOf<Q extends { readonly units: Record<string, number> }>(q: Q): { readonly [K in keyof Q["units"]]: (n: number) => Quantity<Q> } {
   const units = (meta(q).data.units ?? {}) as Record<string, number>

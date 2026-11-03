@@ -9,10 +9,13 @@ import type { Plan, WireHost } from "./wiring"
 import type { Api as DriversApi } from "../languages/drivers"
 import type { Compiled } from "./compiler"
 import { Direction, EdgeName, FieldType, KindName, Stage, WireMode } from "../../../trame/kernel"
-import type { AnyNode, ProvidedBy, WireContext } from "../../../trame/kernel"
+import type { AnyNode, ProvidedBy, WireContext, Leading } from "../../../trame/kernel"
 import type { CompilerMessages } from "../../messages"
 import type { Texts, ValueTypes } from "#std/algebra"
-import type { TrameCommands } from "../../conventions"
+import type { TrameCommands, LanguageNames } from "../../conventions"
+import type { NodeModuleSpecifiers } from "#std/system"
+import type { LanguageDescription } from "../../../kinds/language"
+
 
 export interface Provision {
   node: AnyNode
@@ -53,11 +56,19 @@ export interface Assembly {
   componentDeps: { param: string; node: AnyNode }[]
   /** The simple (JSON) fields of each entry point, which the kind of the component reads when it starts. */
   entryFields: Map<AnyNode, Record<string, unknown>>
+  /**
+   * Where the names of packages lead, as the engine leads them when it reads the project (since g99): each name of the
+   * language to its file, each library to its sources, for the files of the project and of its libraries. Absolute
+   * paths; a program's launcher writes them from itself.
+   */
+  leading: Leading
 }
 
 export interface Emitted {
   path: string
   content: string
+  /** A launcher (since g99): what Node.js runs, which leads the names of packages, then runs the program beside it. */
+  launches?: boolean
   /** The values written in it, in the order of the text: read back by the reader of its language, they must come back. */
   values?: readonly unknown[]
 }
@@ -72,6 +83,11 @@ export interface Deps {
   drivers: DriversApi
   messages: ProvidedBy<typeof CompilerMessages>
   texts: ProvidedBy<typeof Texts>
+  /** How a module names the language (#trame/kernel), and how a specifier is written. */
+  names: ProvidedBy<typeof LanguageNames>
+  specifiers: ProvidedBy<typeof NodeModuleSpecifiers>
+  /** The language the programs are written in: its extension. */
+  language: LanguageDescription
 }
 
 const body = (deps: Deps) => {
@@ -113,6 +129,16 @@ const body = (deps: Deps) => {
     if (!env) return { errors: [messages.unknownEnvironment(envRef)] }
     const g = c.graph
     const host: WireHost = { graph: g, root, today: c.today }
+    // Where the names of packages lead: as the compiler led them (since g99, written in the program's launcher).
+    const { imports, separator, pattern } = deps.specifiers
+    const [extension] = deps.language.extensions
+    const leading: Leading = {
+      language: Object.fromEntries(Object.entries(deps.names.modules).map(([name, module]) =>
+        [imports + deps.names.name + separator + name, join(deps.prelude.root, module) + extension])),
+      libraries: Object.fromEntries(c.libraries.map((lib) => [lib.name, join(lib.root, deps.layout.sources)])),
+      within: [root, ...c.libraries.map((lib) => lib.root)],
+      names: { imports, separator, pattern, extension },
+    }
     const entries = g.from(component).in(EdgeName.partOf).where((v) => v.kind === KindName.entry).nodes().map((v) => v.node)
     const needed = [...depsOf(component).map(([, n]) => n), ...entries]
     const p = plan(host, needed, env)
@@ -194,7 +220,7 @@ const body = (deps: Deps) => {
       entryFields.set(e, fields)
     }
     const assembly: Assembly = {
-      host, component, env, entries, plan: p, provisions, frozenValues, frozenData, changes: opts.changes, bodies, entryFields,
+      host, component, env, entries, plan: p, provisions, frozenValues, frozenData, changes: opts.changes, bodies, entryFields, leading,
       prelude: deps.prelude.path,
       componentDeps: depsOf(component).map(([param, node]) => ({ param, node })),
       out: join(root, deps.layout.output, kebab(meta(env).id ?? KindName.environment)),

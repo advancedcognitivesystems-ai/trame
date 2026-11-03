@@ -488,6 +488,9 @@ export const DevServer = fn({
 export const Assembly = fn({
   owner: "trame",
   serves: [ExecutableSpecification],
-  deps: { line: TrameCommands, values: ValueTypes, layout: Layout, paths: Paths, wiring: Wiring, prelude: Prelude, drivers: Drivers, texts: Texts, messages: CompilerMessages },
+  deps: {
+    line: TrameCommands, values: ValueTypes, layout: Layout, paths: Paths, wiring: Wiring, prelude: Prelude, drivers: Drivers, texts: Texts, messages: CompilerMessages,
+    names: LanguageNames, specifiers: NodeModuleSpecifiers, language: TypeScript,
+  },
   body: code.file<typeof import("./code/engine/assembly").default>("./code/engine/assembly.ts"),
 })

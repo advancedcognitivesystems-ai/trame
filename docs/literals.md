@@ -1,8 +1,8 @@
 # Literals
 
-*The values written in code bodies, found by the syntax reader with the queries of each language, on 30 October 2026.*
+*The values written in code bodies, found by the syntax reader with the queries of each language, on 3 November 2026.*
 
-> **0 literals to declare in 0 bodies, 0 of them already declared by a constant · 1872 declared by a catalog**
+> **0 literals to declare in 0 bodies, 0 of them already declared by a constant · 1873 declared by a catalog**
 
 A literal written in a body is an error of its node: its value belongs in the graph, with its meaning (a standard, a decision, a structure, a catalog), and the body receives it as a parameter. The text of a message catalog is what the catalog declares.
 
@@ -49,7 +49,7 @@ The text written in a message catalog is what the catalog declares: words said t
 | [Words of Trame's views](messages.md#EngineViewWords) | 72 | `"en-GB"` `"Literals"` `"This engine does not record literals."` |
 | [Messages of the outputs](messages.md#OutputMessages) | 40 | `"(function)"` `` `${…}: ${…}` `` `"Published element deleted: repeal it instead of removing it from t…` |
 | [Messages of the views](messages.md#ViewMessages) | 32 | `"?"` `"Complete declaration"` `"Answers on this graph, without crashing"` |
-| [Messages of the drivers](messages.md#DriverMessages) | 29 | `` `Access to the platform ("${…}"): reserved for implementations; go … `` `` `Hidden dependency: the body imports "${…}"; declare it as a parame… `` `"import() of a computed path"` |
+| [Messages of the drivers](messages.md#DriverMessages) | 30 | `` `Access to the platform ("${…}"): reserved for implementations; go … `` `` `Hidden dependency: the body imports "${…}"; declare it as a parame… `` `"import() of a computed path"` |
 | [Messages of the laws](messages.md#LawMessages) | 25 | `"Complete declaration"` `"Answers on any value, without crashing"` `"A blocking hole has an owner"` |
 | [Roles of a literal](syntax.md#LiteralRoles) | 21 | `"index"` `"concatenation"` `"arithmetic"` |
 | [Messages of trame dev](messages.md#DevMessages) | 15 | `` `trame dev · ${…} · graph of ${…}` `` `` `watching ${…} · Ctrl+C to stop` `` `""` |

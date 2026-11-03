@@ -269,7 +269,8 @@ export const TypeScriptSyntax = standard({
     closeBrace: { value: "}", meaning: "Closes what { opened" },
     equals: { value: "=", meaning: "Gives a value: the initializer of a declaration, an assignment (§ 12.8)" },
     colon: { value: ":", meaning: "Separates a property's name from its value or its type (§ 12.8)" },
-    importKeyword: { value: "import", meaning: "Opens an import declaration (§ 16.2.2)" },
+    importKeyword: { value: "import", meaning: "Opens an import declaration (§ 16.2.2), or, called, imports a module when the code runs (§ 13.3.10)" },
+    moduleUrl: { value: "import.meta.url", meaning: "The URL of the module itself (§ 13.3.12; the host gives import.meta its url)" },
     fromKeyword: { value: "from", meaning: "Introduces the module an import reads (§ 16.2.2)" },
     undefined: { value: "undefined", meaning: "The value of what is not there (§ 19.1.4), and its type" },
     stringType: { value: "string", meaning: "The type of texts (TypeScript)" },
@@ -762,9 +763,12 @@ export const Assignment = syntax({
  * How the TypeScript writer names what a program declares: the result of the start, the import of a body (the prefix,
  * then the name of the step). A step whose name is taken takes its module as a prefix, as in the plan (StepNames).
  */
-export const ProgramNames = decision<{ result: string; bodyPrefix: string }>({
+export const ProgramNames = decision<{ result: string; bodyPrefix: string; launcher: string }>({
   owner: "trame",
-  value: { result: "started", bodyPrefix: "body_" },
+  value: { result: "started", bodyPrefix: "body_", launcher: ".node" },
+  rejected: {
+    "The leading written in the program itself": "a program's imports are resolved before any line of it runs, and the same program is bundled for a browser, which has no module hooks",
+  },
 })
 
 /**
