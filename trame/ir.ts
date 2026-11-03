@@ -5,9 +5,7 @@
 // The vocabularies below are objects: code names a value by its key (`Status.held`), never by the value itself. The
 // values are the words that appear in machine outputs and documents.
 
-import type { Unit } from "./format"
 
-export type { Unit }
 
 type ValueOf<T> = T[keyof T]
 
@@ -81,7 +79,7 @@ export type ViewScope = ValueOf<typeof ViewScope>
 
 /** The kinds of field a kind can declare. */
 export const FieldType = {
-  person: "person", text: "text", date: "date", number: "number", duration: "duration", percent: "percent", chf: "chf",
+  person: "person", text: "text", date: "date", number: "number",
   range: "range", value: "value", map: "map", fn: "fn", patch: "patch",
   /** Named dependencies: each one is an edge, and becomes a parameter of the body. */
   deps: "deps",
@@ -255,7 +253,7 @@ export type Inline =
    * `unit`: a unit of the prelude, or the reference of a quantity of the graph (since g80); `shownAs`: the value as the
    * engine writes it in the units of its quantity, each number in words ("15 min"), for the renderers to print.
    */
-  | { t: typeof InlineType.value; value: Json; unit?: Unit | string; shownAs?: Json; type?: ValueType; open?: Openness; rule?: RuleState }
+  | { t: typeof InlineType.value; value: Json; unit?: string; shownAs?: Json; type?: ValueType; open?: Openness; rule?: RuleState }
   | ({ t: typeof InlineType.ref } & NodeRef)
   /** Another document (a module, a view). */
   | { t: typeof InlineType.doc; id: string; title: string }

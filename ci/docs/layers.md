@@ -1,6 +1,6 @@
 # Layers
 
-*The graph in force on 1 November 2026, ordered by distance to the goals.*
+*The graph in force on 3 November 2026, ordered by distance to the goals.*
 
 ```mermaid
 flowchart TB
@@ -22,19 +22,20 @@ flowchart TB
   subgraph releases["Continuous integration · Releases"]
     n7["Version 0.1.0<br/><small>Release</small>"]:::neutral
     n8["Version 0.2.0<br/><small>Release</small>"]:::neutral
+    n9["Version 0.3.0<br/><small>Release</small>"]:::neutral
   end
   subgraph shell["Continuous integration · Shell"]
-    n9["Bash scripts<br/><small>Standard</small>"]:::neutral
-    n10["A script of Bash<br/><small>Syntax element</small>"]:::held
+    n10["Bash scripts<br/><small>Standard</small>"]:::neutral
+    n11["A script of Bash<br/><small>Syntax element</small>"]:::held
   end
   subgraph yaml["Continuous integration · YAML"]
-    n11["YAML<br/><small>Standard</small>"]:::neutral
-    n12["A YAML document<br/><small>Syntax element</small>"]:::held
+    n12["YAML<br/><small>Standard</small>"]:::neutral
+    n13["A YAML document<br/><small>Syntax element</small>"]:::held
   end
   n0 -->|Serves| n5
   n1 -->|Defined by| n0
   n1 -->|Depends on| n0
-  n1 -->|Depends on| n12
+  n1 -->|Depends on| n13
   n1 -->|Depends on| n3
   n1 -->|Depends on| n2
   n3 -->|Serves| n5
@@ -44,12 +45,14 @@ flowchart TB
   n8 -->|Serves| n5
   n8 -->|Serves| n6
   n9 -->|Serves| n5
-  n10 -->|Defined by| n9
-  n10 -->|Depends on| n9
-  n10 -->|Depends on| n3
-  n11 -->|Serves| n5
-  n12 -->|Defined by| n11
-  n12 -->|Depends on| n11
+  n9 -->|Serves| n6
+  n10 -->|Serves| n5
+  n11 -->|Defined by| n10
+  n11 -->|Depends on| n10
+  n11 -->|Depends on| n3
+  n12 -->|Serves| n5
+  n13 -->|Defined by| n12
+  n13 -->|Depends on| n12
   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
   classDef blocked fill:#fbf0d9,stroke:#9a6200,color:#17202a
   classDef violated fill:#f9e3e1,stroke:#ad2a22,color:#17202a

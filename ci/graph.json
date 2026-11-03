@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-01",
+  "generated": "2026-11-03",
   "nodes": [
     {
       "id": "github.GitHubActions",
@@ -454,10 +454,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "91",
+        "version": "96",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g91"
+        "at": "../generations/g96"
       },
       "diagnostics": []
     },
@@ -507,6 +507,21 @@
         "date": "2026-10-28",
         "what": "A workflow publishes only what its artefact publishes in the graph, as an artefact of GitHub kept as many days as its settings say, records its address as evidence, and keeps the evidence only when its settings say so",
         "fingerprint": "249723edd6b389fd",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "releases.R0_3_0",
+      "kind": "release",
+      "title": "Version 0.3.0",
+      "source": "src/releases.ts:38",
+      "fields": {
+        "owner": "trame",
+        "version": "0.3.0",
+        "date": "2026-11-02",
+        "what": "The language named by its names (#trame/kernel, #trame/kinds/*); references in its graph",
+        "fingerprint": "f021383982b1c18c",
         "language": "shared"
       },
       "diagnostics": []
@@ -1131,6 +1146,16 @@
     },
     {
       "from": "releases.R0_2_0",
+      "to": "product.RunsElsewhere",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_3_0",
+      "to": "product.OneWriterPerPlace",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_3_0",
       "to": "product.RunsElsewhere",
       "kind": "serves"
     },

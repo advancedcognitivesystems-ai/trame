@@ -387,12 +387,7 @@ const body = () => ({
     `Refuses what “${rule}” answers on example ${at.join(", ")}: ${owner}, who answers for that rule, and the owner of this one settle it, by an amendment of one or the other`,
   requirementRefusedBy: (rule: string, owner: string, at: readonly number[]) =>
     `“${rule}” refuses what this rule answers on example ${at.join(", ")}: its owner, ${owner}, and the owner of this one settle it, by an amendment of one or the other`,
-  requirementRuleOnce: () => "A requirement writes its rule once: as a body (body), or, until every rule is one, as the function itself (rule)",
-  requirementRuleNotABody: () =>
-    "Its rule is written as the function itself: programs run it as code, yet it is not held to what holds a body (no literal, nothing of the platform, what it reads as parameters). Write it as a body: body, with what it reads in deps",
-
-  // rule -------------------------------------------------------------------------------------------------------
-
+  requirementRuleOnce: () => "A requirement writes its rule as a body (body), with what it reads in its dependencies (deps)",
   ruleArchitectureRule: () => "Architecture rule",
   ruleArchitectureRules: () => "Architecture rules",
   ruleRule: (p0: unknown, p1: unknown) => `${p0} (rule "${p1}")`,

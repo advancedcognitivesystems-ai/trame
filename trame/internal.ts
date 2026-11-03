@@ -170,10 +170,14 @@ export function instantiate(def: AnyKind, input: Record<string, unknown>): AnyNo
   }
   if (def.callable) {
     const key = def.callable
+    // A rule written as a body is the rule its dependencies make: the engine gives it once wired (since g79). Called
+    // before, it would be the body called with the rule's arguments: refused (since B2, the only form).
+    const asBody = def.fields[key]?.type === FieldType.body
     node = (...args: unknown[]) => {
       alive()
       const f = m.give ? m.give() : m.data[key]
       if (isHole(f)) throw new Hole(node as AnyNode, key)
+      if (asBody && !m.give) throw new Error(`"${refOf(node as AnyNode)}" is the rule its dependencies make: only the engine, once it has wired them, calls it`)
       return (f as (...a: unknown[]) => unknown)(...args)
     }
   } else {

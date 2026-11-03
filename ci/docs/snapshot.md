@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 1 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 3 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Continuous integration · GitHub Actions
 
@@ -118,10 +118,10 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 91
+- Version: 96
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../generations/g91
+- Its path: ../generations/g96
 - Serves: A shipment runs elsewhere as it runs here
 
 ## Continuous integration · Product
@@ -161,6 +161,18 @@ Release · `R0_2_0`
 - Released on: 2026-10-28
 - What changes: A workflow publishes only what its artefact publishes in the graph, as an artefact of GitHub kept as many days as its settings say, records its address as evidence, and keeps the evidence only when its settings say so
 - Fingerprint: 249723edd6b389fd
+- Language: shared
+- Serves: Each place is a writer, A shipment runs elsewhere as it runs here
+
+### Version 0.3.0
+
+Release · `R0_3_0`
+
+- Released by: trame
+- Version: 0.3.0
+- Released on: 2026-11-02
+- What changes: The language named by its names (#trame/kernel, #trame/kinds/*); references in its graph
+- Fingerprint: f021383982b1c18c
 - Language: shared
 - Serves: Each place is a writer, A shipment runs elsewhere as it runs here
 

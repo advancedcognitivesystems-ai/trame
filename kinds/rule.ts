@@ -2,7 +2,6 @@ import {
   defineKind, field, edge, optional, optionalEdge, hole, doc, keysOf, fieldsOf, edgesOf, isNode, Status, Severity, KindName, EdgeName, Direction,
   type Graph, type View, type GraphSketch, type SketchNode, type RuleFinding, type AnyNode,
 } from "../trame/kernel"
-import { requirement } from "./requirement"
 import { adrKind } from "./adr"
 import words from "./words"
 
@@ -71,7 +70,7 @@ export const rule = defineKind({
     const { values, texts, lists, counts } = g.lib
     const applied = g.from(self).out(E.applies).first()
     if (applied) {
-      const run = applied.given?.() ?? applied.field(fieldsOf(requirement).rule)
+      const run = applied.given?.()
       if (!values.isFunction(run)) return []
       const sketch = sketchOf(g)
       const found = (run as unknown as (s: GraphSketch, p: unknown) => RuleFinding[])(sketch, resolved(self.field(F.params), g, sketch)) ?? []

@@ -14,7 +14,6 @@ import {
   OPEN_KEY, DateRole, FieldType, JsonMark, Openness, RuleState, Severity, Stage, Status, Outcome, Validity, ViewGroup,
   Moment, Origin, ClaimOutcome, ClaimSide, ResolutionOutcome, WireMode, LiteralKind, PipelineStage, ChangeWay,
 } from "./ir"
-import type { Unit } from "./format"
 
 export { Hole, patchLeaves, getPath, isFileBody, isNode }
 export type { FileBody }
@@ -45,28 +44,6 @@ export function unitsOf<Q extends { readonly units: Record<string, number> }>(q:
   return Object.fromEntries(Object.entries(units).map(([name, factor]) => [name, (n: number) => n * factor])) as never
 }
 
-export type Duration = number // seconds
-export type CHF = number
-export type Percent = number // 0.5 = 50%
-
-export const s = (n: number): Duration => n
-export const min = (n: number): Duration => n * 60
-export const h = (n: number): Duration => n * 3600
-export const chf = (n: number): CHF => n
-export const pct = (n: number): Percent => n / 100
-/** A duration as JavaScript's dates count time: in milliseconds. */
-export const ms = (d: Duration): number => d * 1000
-/** The duration from one instant to another, both in milliseconds (as Date.parse and getTime give them). */
-export const elapsed = (from: number, to: number): Duration => (to - from) / 1000
-
-/** Guesses the unit from the text of a TypeScript type, for instance `Record<Tier, Duration>`. */
-export function unitOf(typeText?: string): Unit | undefined {
-  if (!typeText) return undefined
-  if (/\bDuration\b/.test(typeText)) return "duration"
-  if (/\bPercent\b/.test(typeText)) return "percent"
-  if (/\bCHF\b/.test(typeText)) return "chf"
-  return undefined
-}
 
 /** The type of the keys of a record, from the text of its TypeScript type: `Tier` for `Record<Tier, Duration>`. */
 export function recordKeyOf(typeText?: string): string | undefined {
@@ -118,9 +95,6 @@ export const field = {
   text: (label: string) => mk<string>(FieldType.text, label),
   date: (label: string, role: DateRole = DateRole.deadline) => mk<string>(FieldType.date, label, { role }),
   number: (label: string, o: { min?: number; max?: number } = {}) => mk<number>(FieldType.number, label, o),
-  duration: (label: string) => mk<Duration>(FieldType.duration, label),
-  percent: (label: string) => mk<Percent>(FieldType.percent, label),
-  chf: (label: string) => mk<CHF>(FieldType.chf, label),
   range: (label: string) => mk<[number, number]>(FieldType.range, label),
   value: <T = unknown>(label?: string) => mk<T>(FieldType.value, label),
   map: (label: string) => mk<Record<string, string>>(FieldType.map, label),
@@ -414,7 +388,7 @@ function toJson(v: unknown): Json {
 export const doc = {
   // In a sentence.
   /** A value with its unit. An undecided value, a rule, a contested value are said as such. */
-  value: (v: unknown, unit?: Unit | string, o: { type?: "date" | "range" | "map"; contested?: boolean; rule?: RuleState } = {}): Inline => {
+  value: (v: unknown, unit?: string, o: { type?: "date" | "range" | "map"; contested?: boolean; rule?: RuleState } = {}): Inline => {
     if (o.contested) return { t: "value", value: null, unit, open: Openness.contested }
     if (isHole(v)) return { t: "value", value: null, unit, open: Openness.undecided }
     if (typeof v === "function" || o.rule) return { t: "value", value: null, rule: o.rule ?? RuleState.original }
@@ -759,7 +733,7 @@ export interface Lib {
   /** The order of two versions, part by part from the major: negative, zero or positive; and whether one is below another. */
   versions: { compare(a: string, b: string): number; below(a: string, b: string): boolean }
   /** A value with its unit, in the words of the decided language: "15 min", "50%". */
-  units: { format(v: unknown, unit?: Unit): string }
+  units: { format(v: unknown): string }
   /** A text shown so that every character can be seen: in quotes, its hidden characters escaped; or as it is. */
   shown: { quoted(text: string): string; visible(text: string): string }
   /** The fingerprint of a value, enough to see that it changed (an engine before g58 has none). */

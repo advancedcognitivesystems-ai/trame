@@ -4,7 +4,6 @@ import {
   type Node, type View, type Graph, type GraphSketch, type ObligationReach, type ObligationFinding, type DerivedObligation,
 } from "../trame/kernel"
 import { latestOf } from "./artifact"
-import { requirement } from "./requirement"
 import { sketchOf, resolved } from "./rule"
 import { wiredBy } from "./scenario"
 import words from "./words"
@@ -96,7 +95,7 @@ const kind = defineKind({
     const gaps: Gap[] = []
     for (const o of g.from(policy).out(PolicyEdge.obligations).nodes()) {
       const family = g.from(o).out(EdgeName.applies).first()
-      const run = family?.given?.() ?? family?.field(fieldsOf(requirement).rule)
+      const run = family?.given?.()
       if (!values.isFunction(run)) continue
       const found = (run as unknown as (s: GraphSketch, r: ObligationReach, p: unknown) => ObligationFinding)(sketch, reach, resolved(o.field(ObligationField.params), g, sketch))
       const weight = o.field(ObligationField.gaps)

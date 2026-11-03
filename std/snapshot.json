@@ -1883,10 +1883,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "93",
+        "version": "96",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g93"
+        "at": "../generations/g96"
       }
     },
     {

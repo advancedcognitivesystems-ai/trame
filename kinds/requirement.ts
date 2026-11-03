@@ -14,10 +14,8 @@ const fields = {
   owner: optional(field.owner()),
   deps: optional(field.deps()),
   constants: optional(field.constants()),
-  /** The rule as a body: given what it reads (its dependencies, its constants), the rule. Since g79. */
+  /** The rule as a body: given what it reads (its dependencies, its constants), the rule. Since g79, the only form since B2. */
   body: optional(field.body<(...args: never[]) => unknown>()),
-  /** The rule written as the function itself, as before g79: still read, and warned, until every rule is a body. */
-  rule: optional(field.fn<(...args: never[]) => unknown>((lib) => () => lib.counts.zero)),
   /** A rule that constrains another (A3): the cases that rule is played on, each one its arguments. */
   examples: optional(field.value<readonly (readonly unknown[])[]>(say.requirementExamples())),
 }
@@ -43,14 +41,14 @@ interface Played {
 /**
  * A requirement: a pure function, the oracle the projected code will be judged against. Its rule is code that programs
  * run, so it is written as a body (since g79): it receives what it reads (decisions, structures, other rules) as
- * parameters, holds no literal and touches nothing; called, the node is the rule its dependencies make. A rule written
- * as the function itself, as before, is still read, with a warning, until every project and library has moved.
+ * parameters, holds no literal and touches nothing; called, the node is the rule its dependencies make. The rule written
+ * as the function itself, the form before g79, is gone (B2): nothing wrote it any more.
  */
 const kind = defineKind({
   name: KindName.requirement,
   label: { one: say.requirementRequirement(), many: say.requirementRequirements() },
-  main: F.rule,
-  callable: F.rule,
+  main: F.body,
+  callable: F.body,
   renderOwns: [F.body, F.examples],
   fields,
   edges,
@@ -86,7 +84,6 @@ const kind = defineKind({
   holes: (self, g) => {
     const owner = self.field(F.owner)
     const asBody = self.field(F.body) !== undefined
-    const asFunction = self.field(F.rule) !== undefined
     const constrained = g.lib.sequences.head(g.from(self).out(E.constrains).nodes())
     const refused = (self.result<Played[]>() ?? []).filter((x) => x.status === Outcome.failed || x.status === Outcome.error).map((x) => x.at)
     const ownerOf = (v: View) => v.owner ?? say.requirementNobody()
@@ -98,8 +95,7 @@ const kind = defineKind({
         hole.on(constrained, hole.error(say.requirementRefusedBy(self.title, ownerOf(self), refused), constrained.owner)),
       ] : []),
       !g.from(self).in(edgesOf(acceptance).accepts).exists() && hole.warning(say.requirementRequirementWithoutAcceptanceCriteria()),
-      asBody === asFunction && hole.error(say.requirementRuleOnce()),
-      asFunction && !asBody && hole.warning(say.requirementRuleNotABody()),
+      !asBody && hole.error(say.requirementRuleOnce()),
       self.field(F.owner) === undefined && hole.warning(say.ownerMissing()),
       // Two rules that answer the same question for the same goal may disagree, and who prevails would hide in the code.
       ...lookAlikes(self, g).map((o) => hole.warning(say.requirementLooksLike(o.title, ownerOf(o)), g.lib.values.isText(owner) ? owner : undefined)),
@@ -135,15 +131,9 @@ const kind = defineKind({
     return isRight && isFollowed ? Status.held : Status.unknown
   },
 
-  /**
-   * A rule written as the function itself gives that function. A rule written as a body is built from it (an engine
-   * since g79 wires a body first); a program assembled before reads this.
-   */
-  provide: (self) => self.rule,
-
   render(self, g) {
     const { positions, declarations } = g.lib
-    const written = self.field(F.body) !== undefined ? F.body : F.rule
+    const written = F.body
     const rule = self.decl?.props[written]
     const source = self.decl && positions.reference(self.decl.file, self.decl.line)
     const by = self.amendedBy.find((a) => a.paths.includes(written))?.by
@@ -185,8 +175,8 @@ function lookAlikes(self: View, g: Graph): View[] {
   })
 }
 
-/** What a node gives as its rule: wired from its body (since g79), or written as the function itself. */
-const ruleOf = (v: View): unknown => v.given?.() ?? v.field(F.rule)
+/** What a node gives as its rule: wired from its body by the engine. */
+const ruleOf = (v: View): unknown => v.given?.()
 
 /** What a constraint's examples say: refused if one is, waiting if one waits, kept when all are; unknown unplayed. */
 function playedStatus(c: View, g: Graph): Status {
@@ -236,7 +226,6 @@ interface AsBody<D extends Deps, C extends Record<string, Constant>, F extends F
   constants?: C
   /** Inline, or `code.file(…)`: given its parameters, the rule. */
   body: ((deps: Provided<D> & Values<C>) => F) | FileBody<(deps: Provided<D> & Values<C>) => F>
-  rule?: never
   constrains?: never
   examples?: never
 }
@@ -255,23 +244,12 @@ interface AsConstraint<C extends Fn & Node<typeof KindName.requirement>, D exten
   constants?: K
   /** Given what it reads, the constraint: the other rule's arguments and answer, kept or not. */
   body: ((deps: Provided<D> & Values<K>) => Judged<C>) | FileBody<(deps: Provided<D> & Values<K>) => Judged<C>>
-  rule?: never
-}
-
-interface AsFunction<F extends Fn> extends Declared {
-  owner?: string
-  rule: F
-  body?: never
-  deps?: never
-  constants?: never
 }
 
 /** Typed facade: the node is called like its rule; wired, it gives that rule. */
 export const requirement = kind as unknown as {
   <F extends Fn, D extends Deps = {}, const C extends Record<string, Constant> = {}>(input: AsBody<D, C, F>):
     Node<typeof KindName.requirement> & F & { readonly body: (deps: Provided<D> & Values<C>) => F } & Provides<F> & HasDeps<D> & Declares<C>
-  /** The rule written as the function itself, as before g79: warned, until every rule is a body. */
-  <F extends Fn>(input: AsFunction<F>): Node<typeof KindName.requirement> & F & { readonly rule: F } & Provides<F>
   /** A rule that constrains another (A3): played on that rule's examples at every build. */
   <C extends Fn & Node<typeof KindName.requirement>, D extends Deps = {}, const K extends Record<string, Constant> = {}>(input: AsConstraint<C, D, K>):
     Node<typeof KindName.requirement> & Judged<C> & { readonly body: (deps: Provided<D> & Values<K>) => Judged<C> } & Provides<Judged<C>> & HasDeps<D> & Declares<K>

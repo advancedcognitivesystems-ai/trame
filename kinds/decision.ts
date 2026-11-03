@@ -99,5 +99,5 @@ interface DecisionInput<T> {
   bounded?: readonly Node<"decision">[]
 }
 
-/** Typed facade: `decision<Percent>({ … })` keeps the type of the value. */
+/** Typed facade: `decision<Share>({ … })` keeps the type of the value. */
 export const decision = kind as unknown as (<T>(input: DecisionInput<T>) => DecisionNode<T>) & { def: typeof kind.def }

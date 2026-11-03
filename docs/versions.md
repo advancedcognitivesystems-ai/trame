@@ -1,8 +1,8 @@
 # Versions
 
-*The releases of the components on 30 October 2026, newest first. A project runs the release its configuration pins.*
+*The releases of the components on 3 November 2026, newest first. A project runs the release its configuration pins.*
 
-> **95 releases of 1 component; 87 releases on a language of their own**
+> **96 releases of 1 component; 87 releases on a language of their own**
 
 ## Trame on the command line
 
@@ -10,6 +10,7 @@ Each release, newest first: what changed, the release that assembled it, and whe
 
 | Release | Released on | What changes | Assembled by | Language |
 |---|---|---|---|---|
+| [Generation 96](releases.md#G96) | 3 November 2026 | the engine no longer uses the prelude's units (a number of no quantity is written as it is) and reads the language through its real paths; a release holds no manifest; Trame on std 0.14.0 | [Generation 95](releases.md#G95) | shared |
 | [Generation 95](releases.md#G95) | 2 November 2026 | the bundler is led by the names of packages as the engine leads Node.js: a library published once is bundled with the language and libraries of the project that delivers it | [Generation 94](releases.md#G94) | shared |
 | [Generation 94](releases.md#G94) | 1 November 2026 | E1h: trame init writes a project's references as package nodes of its graph; trame registry publishes the frozen generations (each with its language) and the releases of the home's libraries to the registry of this machine, which a clone elsewhere fills again with it | [Generation 93](releases.md#G93) | shared |
 | [Generation 93](releases.md#G93) | 1 November 2026 | E1g: the names of a project's libraries are led to their real paths (through a link, a module would be read twice); a version published to the registry holds its manifest (ES modules); the launcher sees a published engine's missing packages as ES modules resolve them | [Generation 92](releases.md#G92) | shared |

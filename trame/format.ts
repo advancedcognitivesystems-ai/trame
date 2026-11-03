@@ -2,10 +2,6 @@
 // Language decision or the catalog it writes; nothing here presumes one. Pure (no dependencies): the kernel, the
 // renderers and the page use it.
 
-/** The units a value of the graph is written in: a duration, a percentage, an amount in Swiss francs. */
-export const Unit = { duration: "duration", percent: "percent", chf: "chf" } as const
-export type Unit = (typeof Unit)[keyof typeof Unit]
-
 const parts = (iso: string) => iso.split("-").map(Number)
 const utc = (y: number, m: number, d = 1) => new Date(Date.UTC(y, m - 1, d))
 
