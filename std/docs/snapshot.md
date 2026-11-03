@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 1 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 3 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Standard library · Algebra
 
@@ -282,9 +282,9 @@ Quantity · `Ratio`
 Quantity · `Time`
 
 - Owner: trame
-- Source: BIPM, The International System of Units (SI Brochure, 9th edition), Tables 2 and 8
+- Source: BIPM, The International System of Units (SI Brochure, 9th edition), Tables 2, 7 and 8
 - Address: https://www.bipm.org/en/publications/si-brochure
-- Units: { second: 1, minute: 60, hour: 3600 }
+- Units: { millisecond: 0, second: 1, minute: 60, hour: 3600 }
 - Written with: Symbols of units
 - Serves: A published value is cited, not copied
 
@@ -588,7 +588,9 @@ Function · `WrittenSpeech` · **held**
 Implementation · `BrowserFrames`
 
 - Owner: trame
+- Parameters: { time: measures.Time }
 - Implements: Animation frames
+- Depends on: Time
 
 ### The browser's languages
 
@@ -1258,10 +1260,10 @@ Implementation · `NodeProgramCommands`
 Implementation · `PlaywrightBrowser`
 
 - Owner: trame
-- Parameters: { chromium: tooling.HeadlessChromium, api: tooling.PlaywrightApi, counts: algebra.Counts }
+- Parameters: { chromium: tooling.HeadlessChromium, api: tooling.PlaywrightApi, counts: algebra.Counts, time: measures.Time }
 - Implements: Headless browser
 - Uses: Playwright
-- Depends on: Chromium without a screen, Playwright's API, Counts
+- Depends on: Chromium without a screen, Playwright's API, Counts, Time
 
 ### Playwright
 

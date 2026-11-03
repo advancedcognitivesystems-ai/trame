@@ -4,10 +4,10 @@
 import { chromium as playwright, type Browser } from "playwright"
 import { resolve } from "node:path"
 import { pathToFileURL } from "node:url"
-import { ms, type BodyOf } from "#trame/kernel"
+import type { BodyOf } from "#trame/kernel"
 import type { PlaywrightBrowser } from "../../tooling"
 
-const body: BodyOf<typeof PlaywrightBrowser> = ({ chromium, api, counts }) => {
+const body: BodyOf<typeof PlaywrightBrowser> = ({ chromium, api, counts, time }) => {
   let started: Promise<Browser> | undefined
   return {
     open: async (path, language) => {
@@ -24,7 +24,7 @@ const body: BodyOf<typeof PlaywrightBrowser> = ({ chromium, api, counts }) => {
         text: async (selector) => ((await page.locator(selector).count()) > counts.zero ? (await page.locator(selector).first().textContent()) ?? undefined : undefined),
         click: (selector) => page.locator(selector).first().click(),
         choose: async (selector, value) => void (await page.locator(selector).first().selectOption(value)),
-        wait: (seconds) => page.waitForTimeout(ms(seconds)),
+        wait: (seconds) => page.waitForTimeout(time.in.millisecond(seconds)),
         close: async () => {
           await context.close()
           if (started) (await started).close().catch(() => undefined)

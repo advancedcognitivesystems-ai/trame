@@ -50,7 +50,7 @@ of it beside the engine's graph: the engine's bodies import its structures.
 | `web` | HTTP, media types, URIs, server-sent events, UI and pointer events, CSSOM View, media queries, Screen Wake Lock, Web Speech (its errors), Web Audio (its latency) |
 | `html` | HTML, WAI-ARIA, SVG and CSS: the elements, attributes, roles and marks a page and its style sheets write, the class selector and the descendant combinator |
 | `algorithms` | Mulberry32, multiplicative hashing, depth-first search, SHA-256; seeded draws (a number, an integer between bounds, an element by its weight, the same from the same seed) |
-| `measures` | Units of measure, ISO 8601 dates, semantic versioning, language tags (BCP 47, and the underscore form of Java and Android) |
+| `measures` | Units of measure (Time from the millisecond to the hour, Ratio), ISO 8601 dates, semantic versioning, language tags (BCP 47, and the underscore form of Java and Android) |
 | `system` | Exit status, POSIX signals and the current directory, Node.js process, events, command line, modules and encodings, npm |
 | `patterns` | Strategy, Adapter, Bridge, Abstract Factory, Repository |
 | `platform` | The loading of a page, and the device's services as ports (preferences, languages, a voice that says whether the device can speak, picks a voice of the language asked and keeps what it last failed with, the screen awake, the frames of the screen), with their browser realizations and, for scenarios, realizations kept in memory (what a voice said, whether the screen is awake, time turned by hand) |

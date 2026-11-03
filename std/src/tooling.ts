@@ -14,6 +14,7 @@ import { Sha256, SeededDraws } from "./algorithms"
 import { NodeEncodings, NodeArguments, ExitStatus } from "./system"
 import type { Exposure } from "#trame/kinds/component"
 import { RealizedOnce, CitedNotCopied } from "./product"
+import { Time } from "./measures"
 
 // The ports the code of a project's SDLC uses, beside the product's: the project's files (read, written, copied, their
 // fingerprint), and a browser without a screen that opens a page the project delivered and answers what it shows. Each
@@ -176,7 +177,7 @@ export const HeadlessChromium = decision<{ args: string[]; width: number; height
 export const PlaywrightBrowser = implementation({
   owner: "trame", implements: [HeadlessBrowser],
   packages: [PlaywrightPackage],
-  deps: { chromium: HeadlessChromium, api: PlaywrightApi, counts: Counts },
+  deps: { chromium: HeadlessChromium, api: PlaywrightApi, counts: Counts, time: Time },
   body: code.file("./code/tooling/playwright-browser.ts"),
 })
 

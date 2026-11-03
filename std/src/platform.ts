@@ -8,7 +8,7 @@ import type { Exposure } from "#trame/kinds/component"
 import { fn } from "#trame/kinds/function"
 import { UiEvents, ScreenWakeLockApi, WebSpeechApi } from "./web"
 import { Counts } from "./algebra"
-import { LanguageTags } from "./measures"
+import { LanguageTags, Time } from "./measures"
 import { RealizedOnce } from "./product"
 
 // What a product needs of a platform, as ports, with their realizations on that platform. A product binds, in each of its
@@ -235,6 +235,7 @@ export const AnimationFrames = port<Frames>({ owner: "trame", declaredEffects: [
  */
 export const BrowserFrames = implementation({
   owner: "trame", implements: [AnimationFrames],
+  deps: { time: Time },
   body: code.file("./code/platform/frames.ts"),
 })
 

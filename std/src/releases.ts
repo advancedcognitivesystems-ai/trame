@@ -187,3 +187,16 @@ export const R0_13_0 = release({
   language: "shared",
   serves: [CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules],
 })
+
+/**
+ * Version 0.14.0
+ */
+export const R0_14_0 = release({
+  owner: "trame",
+  version: "0.14.0",
+  date: "2026-11-03",
+  what: "Time counts milliseconds too, and the bodies that met JavaScript's clocks receive Time instead of the prelude's ms and elapsed",
+  fingerprint: "b82c816013d69bed",
+  language: "shared",
+  serves: [CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules],
+})

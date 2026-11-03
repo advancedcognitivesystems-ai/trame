@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-01",
+  "generated": "2026-11-03",
   "nodes": [
     {
       "id": "algebra.Counts",
@@ -1791,7 +1791,7 @@
       "id": "measures.Ratio",
       "kind": "quantity",
       "title": "Ratio",
-      "source": "src/measures.ts:123",
+      "source": "src/measures.ts:124",
       "fields": {
         "owner": "trame",
         "source": "BIPM, The International System of Units (SI Brochure, 9th edition), § 5.4.7",
@@ -1842,12 +1842,13 @@
       "id": "measures.Time",
       "kind": "quantity",
       "title": "Time",
-      "source": "src/measures.ts:105",
+      "source": "src/measures.ts:106",
       "fields": {
         "owner": "trame",
-        "source": "BIPM, The International System of Units (SI Brochure, 9th edition), Tables 2 and 8",
+        "source": "BIPM, The International System of Units (SI Brochure, 9th edition), Tables 2, 7 and 8",
         "url": "https://www.bipm.org/en/publications/si-brochure",
         "units": {
+          "millisecond": 0.001,
           "second": 1,
           "minute": 60,
           "hour": 3600
@@ -2307,6 +2308,9 @@
       "source": "src/platform.ts:236",
       "fields": {
         "owner": "trame",
+        "deps": {
+          "time": "measures.Time"
+        },
         "body": {
           "file": "./code/platform/frames.ts",
           "language": "typescript"
@@ -2398,7 +2402,7 @@
       "id": "platform.DeviceAsPorts",
       "kind": "adr",
       "title": "The device's services, as ports",
-      "source": "src/platform.ts:282",
+      "source": "src/platform.ts:283",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2427,7 +2431,7 @@
       "id": "platform.FramesByHand",
       "kind": "function",
       "title": "Frames turned by hand",
-      "source": "src/platform.ts:258",
+      "source": "src/platform.ts:259",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2549,7 +2553,7 @@
       "id": "platform.TimeTurned",
       "kind": "port",
       "title": "Time turned by hand",
-      "source": "src/platform.ts:251",
+      "source": "src/platform.ts:252",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -3678,7 +3682,7 @@
       "id": "tooling.BrowserInMemory",
       "kind": "function",
       "title": "A browser kept in memory",
-      "source": "src/tooling.ts:208",
+      "source": "src/tooling.ts:209",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3693,7 +3697,7 @@
       "id": "tooling.BrowserScripted",
       "kind": "port",
       "title": "Browser script",
-      "source": "src/tooling.ts:201",
+      "source": "src/tooling.ts:202",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -3704,7 +3708,7 @@
       "id": "tooling.Files",
       "kind": "port",
       "title": "Project files",
-      "source": "src/tooling.ts:56",
+      "source": "src/tooling.ts:57",
       "fields": {
         "owner": "trame",
         "declaredEffects": {
@@ -3732,7 +3736,7 @@
       "id": "tooling.FilesInMemory",
       "kind": "function",
       "title": "Files kept in memory",
-      "source": "src/tooling.ts:87",
+      "source": "src/tooling.ts:88",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3748,7 +3752,7 @@
       "id": "tooling.FilesKept",
       "kind": "port",
       "title": "Files written",
-      "source": "src/tooling.ts:70",
+      "source": "src/tooling.ts:71",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -3759,7 +3763,7 @@
       "id": "tooling.HeadlessBrowser",
       "kind": "port",
       "title": "Headless browser",
-      "source": "src/tooling.ts:130",
+      "source": "src/tooling.ts:131",
       "fields": {
         "owner": "trame",
         "declaredEffects": [
@@ -3776,7 +3780,7 @@
       "id": "tooling.HeadlessChromium",
       "kind": "decision",
       "title": "Chromium without a screen",
-      "source": "src/tooling.ts:162",
+      "source": "src/tooling.ts:163",
       "fields": {
         "owner": "trame",
         "value": {
@@ -3799,7 +3803,7 @@
       "id": "tooling.MachineFiles",
       "kind": "implementation",
       "title": "The machine's files",
-      "source": "src/tooling.ts:77",
+      "source": "src/tooling.ts:78",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -3817,7 +3821,7 @@
       "id": "tooling.NodeProgramCommands",
       "kind": "implementation",
       "title": "Node's command line",
-      "source": "src/tooling.ts:36",
+      "source": "src/tooling.ts:37",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -3836,7 +3840,7 @@
       "id": "tooling.PackageOrigins",
       "kind": "vocabulary",
       "title": "Where a package comes from",
-      "source": "src/tooling.ts:280",
+      "source": "src/tooling.ts:281",
       "fields": {
         "owner": "trame",
         "words": {
@@ -3850,7 +3854,7 @@
       "id": "tooling.PackageSources",
       "kind": "port",
       "title": "Where a package comes from",
-      "source": "src/tooling.ts:273",
+      "source": "src/tooling.ts:274",
       "fields": {
         "owner": "trame",
         "declaredEffects": {
@@ -3872,7 +3876,7 @@
       "id": "tooling.PlaywrightApi",
       "kind": "standard",
       "title": "Playwright's API",
-      "source": "src/tooling.ts:147",
+      "source": "src/tooling.ts:148",
       "fields": {
         "owner": "trame",
         "source": "Playwright documentation, class Page, event \"pageerror\"",
@@ -3890,13 +3894,14 @@
       "id": "tooling.PlaywrightBrowser",
       "kind": "implementation",
       "title": "Chromium, driven by Playwright",
-      "source": "src/tooling.ts:176",
+      "source": "src/tooling.ts:177",
       "fields": {
         "owner": "trame",
         "deps": {
           "chromium": "tooling.HeadlessChromium",
           "api": "tooling.PlaywrightApi",
-          "counts": "algebra.Counts"
+          "counts": "algebra.Counts",
+          "time": "measures.Time"
         },
         "body": {
           "file": "./code/tooling/playwright-browser.ts",
@@ -3909,7 +3914,7 @@
       "id": "tooling.PlaywrightPackage",
       "kind": "package",
       "title": "Playwright",
-      "source": "src/tooling.ts:137",
+      "source": "src/tooling.ts:138",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3931,7 +3936,7 @@
       "id": "tooling.ProgramCommands",
       "kind": "port",
       "title": "Commands of a program",
-      "source": "src/tooling.ts:28",
+      "source": "src/tooling.ts:29",
       "fields": {
         "owner": "trame",
         "declaredEffects": [
@@ -3944,7 +3949,7 @@
       "id": "tooling.ToolingAsPorts",
       "kind": "adr",
       "title": "The SDLC's tooling is realized once",
-      "source": "src/tooling.ts:295",
+      "source": "src/tooling.ts:296",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4623,6 +4628,11 @@
       "from": "platform.BrowserFrames",
       "to": "platform.AnimationFrames",
       "kind": "implements"
+    },
+    {
+      "from": "platform.BrowserFrames",
+      "to": "measures.Time",
+      "kind": "deps"
     },
     {
       "from": "platform.BrowserLanguages",
@@ -5567,6 +5577,11 @@
     {
       "from": "tooling.PlaywrightBrowser",
       "to": "algebra.Counts",
+      "kind": "deps"
+    },
+    {
+      "from": "tooling.PlaywrightBrowser",
+      "to": "measures.Time",
       "kind": "deps"
     },
     {

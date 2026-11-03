@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-01",
+  "at": "2026-11-03",
   "nodes": [
     {
       "id": "algebra.Counts",
@@ -1666,9 +1666,10 @@
       "title": "Time",
       "fields": {
         "owner": "trame",
-        "source": "BIPM, The International System of Units (SI Brochure, 9th edition), Tables 2 and 8",
+        "source": "BIPM, The International System of Units (SI Brochure, 9th edition), Tables 2, 7 and 8",
         "url": "https://www.bipm.org/en/publications/si-brochure",
         "units": {
+          "millisecond": 0.001,
           "second": 1,
           "minute": 60,
           "hour": 3600
@@ -1980,6 +1981,9 @@
       "title": "The browser's frames",
       "fields": {
         "owner": "trame",
+        "deps": {
+          "time": "measures.Time"
+        },
         "body": {
           "file": "./code/platform/frames.ts",
           "language": "typescript"
@@ -3301,7 +3305,8 @@
         "deps": {
           "chromium": "tooling.HeadlessChromium",
           "api": "tooling.PlaywrightApi",
-          "counts": "algebra.Counts"
+          "counts": "algebra.Counts",
+          "time": "measures.Time"
         },
         "body": {
           "file": "./code/tooling/playwright-browser.ts",
@@ -4001,6 +4006,11 @@
       "from": "platform.BrowserFrames",
       "to": "platform.AnimationFrames",
       "kind": "implements"
+    },
+    {
+      "from": "platform.BrowserFrames",
+      "to": "measures.Time",
+      "kind": "deps"
     },
     {
       "from": "platform.BrowserLanguages",
@@ -4945,6 +4955,11 @@
     {
       "from": "tooling.PlaywrightBrowser",
       "to": "algebra.Counts",
+      "kind": "deps"
+    },
+    {
+      "from": "tooling.PlaywrightBrowser",
+      "to": "measures.Time",
       "kind": "deps"
     },
     {

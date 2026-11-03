@@ -90,6 +90,7 @@ export const UnitSymbols = catalog({
   owner: "trame",
   language: SymbolsLanguage,
   messages: () => ({
+    millisecond: (n: string) => `${n} ms`,
     second: (n: string) => `${n} s`,
     minute: (n: string) => `${n} min`,
     hour: (n: string) => `${n} h`,
@@ -100,14 +101,14 @@ export const UnitSymbols = catalog({
 /**
  * Time
  * How long something lasts, counted in seconds; a minute is 60 of them and an hour 3,600 (the units accepted for use
- * with the SI).
+ * with the SI), a millisecond a thousandth of one (the prefix milli), as JavaScript's clocks count.
  */
 export const Time = quantity({
   owner: "trame",
   serves: [CitedNotCopied],
-  source: "BIPM, The International System of Units (SI Brochure, 9th edition), Tables 2 and 8",
+  source: "BIPM, The International System of Units (SI Brochure, 9th edition), Tables 2, 7 and 8",
   url: "https://www.bipm.org/en/publications/si-brochure",
-  units: { second: 1, minute: 60, hour: 3600 },
+  units: { millisecond: 0.001, second: 1, minute: 60, hour: 3600 },
   written: UnitSymbols,
 })
 

@@ -1,6 +1,6 @@
 # Layers
 
-*The graph in force on 1 November 2026, ordered by distance to the goals.*
+*The graph in force on 3 November 2026, ordered by distance to the goals.*
 
 ```mermaid
 flowchart TB
@@ -254,6 +254,7 @@ flowchart TB
   n51 -->|Implements| n64
   n51 -->|Implements| n65
   n52 -->|Implements| n50
+  n52 -->|Depends on| n26
   n53 -->|Implements| n59
   n54 -->|Implements| n62
   n54 -->|Depends on| n145
@@ -443,6 +444,7 @@ flowchart TB
   n135 -->|Depends on| n129
   n135 -->|Depends on| n134
   n135 -->|Depends on| n0
+  n135 -->|Depends on| n26
   n138 -->|Serves| n73
   n138 -->|Applied by| n137
   n138 -->|Applied by| n131
