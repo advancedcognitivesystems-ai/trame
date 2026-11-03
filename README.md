@@ -224,7 +224,9 @@ whichever generation and libraries read it, as a peer dependency (g91–g93), an
 and `trame ship` lead esbuild by the names the engine leads (g95), so a page holds one language and one version of
 each library; and a program Node.js runs leads them too: beside each program assembled, its launcher (`<name>.node.ts`,
 g99) writes where each name leads, from the program, has the prelude's `trame/leading` lead them, then imports the
-program, so it runs the same here, in a CI or by hand. Since g92 a version is published to the
+program, so it runs the same here, in a CI or by hand. Since g100 each origin says which versions it holds (the
+versions frozen beside the one a path reaches, those in the registry): a reference behind the newest is warned, and
+`trame upgrade [package…]` writes it again at the newest, then runs the manifest. Since g92 a version is published to the
 registry of this machine (`~/.trame/registry/<name>/<version>`, the decision `LocalRegistryPlace`): by `trame release`
 in a library (run on a version already frozen, it publishes it), and by the promotion of a generation, with its
 language copied for real, so a project that runs it from there keeps the language it was frozen with. `trame.sh`

@@ -40,7 +40,8 @@ Run from the project's directory, through the pinned generation:
 ./trame.sh export page.html            # the page, standalone: the dates the graph changes at, and the last days of its history
 ./trame.sh assemble <component> --env <environment>
 ./trame.sh audit                       # the registry's reports on the packages, kept as evidence
-./trame.sh manifest                    # the packages of the graph and the import map of the language and its libraries, written into package.json
+./trame.sh manifest                    # the packages of the graph and the import map of the language and its libraries, written into package.json; installs them when the lockfile disagrees (g100)
+./trame.sh upgrade [package…]          # each package of Trame the project references to the newest version its origin holds, then the manifest (g100)
 ../trame.sh init "Title" --by <owner>  # in an empty directory: starts a project (trame.json, src/product.ts, the guide, the skill, package.json)
 ./trame.sh release <version> "what"    # in a library: freezes a version, with its documents
 ./trame.sh publish [--migrate "why"]   # freezes the published declarations in trame.lock (--migrate: those the language changed the form of)
@@ -218,7 +219,9 @@ whichever generation and libraries read it, as a peer dependency (g91–g93), an
 and `trame ship` lead esbuild by the names the engine leads (g95), so a page holds one language and one version of
 each library; and a program Node.js runs leads them too: beside each program assembled, its launcher (`<name>.node.ts`,
 g99) writes where each name leads, from the program, has the prelude's `trame/leading` lead them, then imports the
-program, so it runs the same here, in a CI or by hand. Since g92 a version is published to the
+program, so it runs the same here, in a CI or by hand. Since g100 each origin says which versions it holds (the
+versions frozen beside the one a path reaches, those in the registry): a reference behind the newest is warned, and
+`trame upgrade [package…]` writes it again at the newest, then runs the manifest. Since g92 a version is published to the
 registry of this machine (`~/.trame/registry/<name>/<version>`, the decision `LocalRegistryPlace`): by `trame release`
 in a library (run on a version already frozen, it publishes it), and by the promotion of a generation, with its
 language copied for real, so a project that runs it from there keeps the language it was frozen with. `trame.sh`
@@ -380,8 +383,11 @@ elements), a port answered differently in several environments is answered as in
   patches `body` with `(previous) => (deps) => …`. Called before the engine wired it, a rule says so rather than run.
 - `trame manifest` compiles the graph with the configuration it has: code that uses what a new version of a library
   brings (std 0.14.0's millisecond) refuses it. Move the reference and run the manifest first, then write the code.
-- `trame manifest` writes the packages into `package.json`, not the lockfile: run `npm install` after it and commit
-  `package-lock.json`, or the `npm ci` of a CI refuses (Poselia's CI failed from 1 to 3 November for this).
+- `trame manifest` keeps the lockfile with what it writes (g100): when `package-lock.json` does not install what
+  `package.json` names, it installs them (port `PackageInstalls`, npm). Commit the lockfile: a CI installs with `npm ci`,
+  which refuses one out of step (Poselia's CI failed from 1 to 3 November for this).
+- An engine before g100 has no `trame upgrade`: move a project to g100 once by running g100's program itself
+  (`node <tsx> generations/g100/out/local/trame-cli.ts upgrade`), then `./trame.sh upgrade` runs it.
 - The files that run a shipment elsewhere place a project in the repository from its generation's real path (g98):
   reached through `.trame/trame`, two directories above the link would be the project itself.
 - A release holds no manifest (g96): in its library, the library's says it is made of ES modules and where the
