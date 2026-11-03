@@ -1,6 +1,6 @@
 # Technical choices
 
-*What answers each port in each environment on 3 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
+*What answers each port in each environment on 30 October 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
 
 > **9 technical choices for 9 ports, in 3 environments**
 
@@ -109,7 +109,7 @@ Consequences: Provisioned by Terraform with the graph's values; its statements c
 
 ### Reservations and cancellations as repositories over SQL
 
-`SqlRepositories` · `src/infra.ts:329` · status: **violated**
+`SqlRepositories` · `src/infra.ts:329` · status: **held**
 
 In [Local](infra.md#Local), [Production](infra.md#Production), [Test](infra.md#Test):
 
@@ -135,7 +135,7 @@ Consequences: The repositories hold no driver and write no SQL: they ask the dia
 
 ### A simulated payment provider outside production
 
-`SimulatedProvider` · `src/infra.ts:342` · status: **violated**
+`SimulatedProvider` · `src/infra.ts:342` · status: **held**
 
 In [Local](infra.md#Local), [Test](infra.md#Test):
 
@@ -200,7 +200,7 @@ Context: The API is a handful of routes: Node's server is enough, and the scenar
 
 ### A stopped clock in the scenarios
 
-`ScenarioClock` · `src/infra.ts:377` · status: **violated**
+`ScenarioClock` · `src/infra.ts:377` · status: **held**
 
 In [Test](infra.md#Test):
 

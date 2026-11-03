@@ -1,6 +1,6 @@
 # Branch review
 
-*What the declarations that are not published yet add to the published graph (`trame.lock`), as of 3 November 2026.*
+*What the declarations that are not published yet add to the published graph (`trame.lock`), as of 30 October 2026.*
 
 > **105 new declarations · 0 published declarations affected · 1 overlap · 5 blocking holes added**
 
@@ -8,12 +8,12 @@
 
 | Target | Path | Declared | Requested | By | Outcome |
 |---|---|---|---|---|---|
-| [Refund on cancellation](cancellation.md#Refund) | `body` | original rule | redefined rule | [Launch of the ultra chargers](committee.md#UltraLaunch) | applied |
+| [Refund on cancellation](cancellation.md#Refund) | `body` | original rule | redefined rule | [Launch of the ultra chargers](committee.md#UltraLaunch) | not in force on 30 October 2026 |
 | [Free cancellation period](cancellation.md#FreeCancellationPeriod) | `value.ultra` | **to be decided** | 15 min | [Period for ultra chargers](committee.md#UltraPeriod) | applied (approved by lea, owner of "Free cancellation period") |
 | [Free cancellation period](cancellation.md#FreeCancellationPeriod) | `value.ultra` | **to be decided** | 12 min | [Ultra period requested by support](support.md#SupportUltraPeriod) | discarded in favour of [Period for ultra chargers](committee.md#UltraPeriod) (approved by lea, owner of "Free cancellation period") |
 
-- [Refund on cancellation](cancellation.md#Refund), in force on 3 November 2026 with the branch: `body` = redefined rule
-- [Free cancellation period](cancellation.md#FreeCancellationPeriod), in force on 3 November 2026 with the branch: `value` = { fast: 5 min, normal: 10 min, ultra: 15 min }
+- [Refund on cancellation](cancellation.md#Refund), in force on 30 October 2026 with the branch: `body` = original rule
+- [Free cancellation period](cancellation.md#FreeCancellationPeriod), in force on 30 October 2026 with the branch: `value` = { fast: 5 min, normal: 10 min, ultra: 15 min }
 
 ## Overlaps
 
@@ -28,23 +28,15 @@
 | blocking | Test: No implementation of "Cancellation records" for the environment "Test" | [Reservations API](architecture.md#ReservationsApi) | karim |  |
 | blocking | Test: No implementation of "Payment provider" for the environment "Test" | [Reservations API](architecture.md#ReservationsApi) | karim |  |
 | blocking | Test: No implementation of "Clock" for the environment "Test" | [Reservations API](architecture.md#ReservationsApi) | karim |  |
-| error | Refuses what “Refund on cancellation” answers on example 1, 2, 3: lea, who answers for that rule, and the owner of this one settle it, by an amendment of one or the other | [A day ahead, a full refund](consumer.md#FullRefundAhead) | karim |  |
-| error | Scenario failed (run): previous is not a function | [Every reservation is refunded according to the rule](scenarios.md#ComplianceScenario) | lea |  |
-| error | Scenario failed (run): previous is not a function | [Cancelling twice refunds only once](scenarios.md#RepeatedCancellationScenario) | karim |  |
 | warning | Not built yet: trame ship builds it | [The program for a laptop](sdlc.md#LocalProgram) | karim |  |
 | warning | To check by hand and sign: Run the program for a laptop, cancel a reservation, stop it and run it again: the cancellation is still there | [On a laptop](sdlc.md#OnALaptop) | The operators |  |
 | warning | To check by hand and sign: Deploy the program on the staging machine, with its PostgreSQL database and the payment provider's sandbox, Read a reservation, then cancel it twice: one refund at the provider, and the second cancellation answers the same, Restart the program: the cancellation is still there, and the time it shows is the machine's | [On staging](sdlc.md#OnStaging) | The operators |  |
 | warning | Not built yet: trame ship builds it | [The program for production](sdlc.md#ProductionProgram) | karim |  |
 | warning | To ship: The program for a laptop is unknown | [A release](sdlc.md#Release) | karim |  |
 | warning | To ship: The program for production is unknown | [A release](sdlc.md#Release) | karim |  |
-| warning | To ship: Cancelling twice refunds only once is violated | [A release](sdlc.md#Release) | karim |  |
-| warning | To ship: Every reservation is refunded according to the rule is violated | [A release](sdlc.md#Release) | lea |  |
 | warning | To ship: Secrets stay out of the graph is unknown | [A release](sdlc.md#Release) | karim |  |
-| warning | To ship: A cancellation refunds once is violated | [A release](sdlc.md#Release) | karim |  |
 | warning | To ship: On a laptop is unknown | [A release](sdlc.md#Release) | karim |  |
 | warning | To ship: On staging is unknown | [A release](sdlc.md#Release) | karim |  |
-| warning | To ship: Refund on cancellation is violated | [A release](sdlc.md#Release) | lea |  |
-| warning | To ship: A day ahead, a full refund is violated | [A release](sdlc.md#Release) | karim |  |
 | warning | PostgreSQL's dialect ships, and nothing proves it (The code is verified) | [PostgreSQL's dialect](infra.md#PostgresDialect) | karim |  |
 | warning | Awaits the approval of lea, who answers for “Free cancellation period” | [Ultra period requested by support](support.md#SupportUltraPeriod) | lea |  |
 

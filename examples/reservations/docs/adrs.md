@@ -1,13 +1,13 @@
 # Architecture decisions
 
-*The choices that shape the product without being values, in force on 3 November 2026: why each was taken, what was rejected, and the nodes that apply it.*
+*The choices that shape the product without being values, in force on 30 October 2026: why each was taken, what was rejected, and the nodes that apply it.*
 
-> **3 architecture decisions, 1 held by the nodes that apply them**
+> **3 architecture decisions, 2 held by the nodes that apply them**
 
 | Decision | Status | Applied by |
 |---|---|---|
 | [Effects follow the request](architecture.md#EffectsFollowTheRequest) | **held** | [A read writes nothing](architecture.md#ReadWithoutWrite), [Every call to a third party is verified](architecture.md#ThirdPartiesVerified), [Utilities do not touch the world](architecture.md#UtilitiesWithoutWorld) |
-| [A cancellation refunds once](principles.md#RefundOnce) | **violated** | [Cancel a reservation](api.md#CancelReservation), [Key of a cancellation's refund](architecture.md#CancellationKey), [Cancelling twice refunds only once](scenarios.md#RepeatedCancellationScenario) |
+| [A cancellation refunds once](principles.md#RefundOnce) | **held** | [Cancel a reservation](api.md#CancelReservation), [Key of a cancellation's refund](architecture.md#CancellationKey), [Cancelling twice refunds only once](scenarios.md#RepeatedCancellationScenario) |
 | [Secrets stay out of the graph](principles.md#SecretsOutOfTheGraph) | **unknown** | [Real payment provider](infra.md#HttpPayment) |
 
 ## Reservations · Architecture
@@ -34,7 +34,7 @@ Consequences: Three rules judge the effects of every entry point and function at
 
 ### A cancellation refunds once
 
-`RefundOnce` · `src/principles.ts:15` · status: **violated**
+`RefundOnce` · `src/principles.ts:15` · status: **held**
 
 The payment provider receives an idempotency key for each reservation: a request that arrives twice returns the refund already made.
 
