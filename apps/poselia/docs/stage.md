@@ -158,7 +158,7 @@ Where the camera looks from (its turn around the body and its height, in radians
 
 ### The browser's stage
 
-`BrowserStage` · `src/stage.ts:126` · status: **unknown**
+`BrowserStage` · `src/stage.ts:126` · status: **held**
 
 The scene drawn with three.js in a canvas of the page, again at each frame of the screen: the mannequin as the body is now, the camera following it and turning with a finger, a pinch or a wheel, and to the view asked; the landmarks over it, made again when they change, their words placed at each frame where their points are on the screen.
 

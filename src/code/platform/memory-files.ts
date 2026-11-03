@@ -109,9 +109,11 @@ const body: BodyOf<typeof MemoryFiles> = ({ paths, temporary, diff, file, events
       const names = options?.recursive
         ? [...new Set(listing(dir).flatMap((f) => [f, ...ancestors(f)]))].sort()
         : children(dir)
-      // With their types, as Node gives them: a name, and what it is.
+      // With their types, as Node gives them: a name, and what it is. A file kept in memory is never a link.
       return options?.withFileTypes
-        ? names.map((name) => ({ name, parentPath: dir, isFile: () => !isDirectory(join(dir, name)), isDirectory: () => isDirectory(join(dir, name)) }))
+        ? names.map((name) => ({
+          name, parentPath: dir, isFile: () => !isDirectory(join(dir, name)), isDirectory: () => isDirectory(join(dir, name)), isSymbolicLink: () => false,
+        }))
         : names
     }) as never,
     watch: ((p: unknown, second: unknown, third?: unknown) => {

@@ -454,10 +454,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "96",
+        "version": "97",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g96"
+        "at": "../generations/g97"
       },
       "diagnostics": []
     },

@@ -1,12 +1,12 @@
 # Architecture decisions
 
-*The choices that shape the product without being values, in force on 30 October 2026: why each was taken, what was rejected, and the nodes that apply it.*
+*The choices that shape the product without being values, in force on 3 November 2026: why each was taken, what was rejected, and the nodes that apply it.*
 
-> **37 architecture decisions, 34 held by the nodes that apply them**
+> **37 architecture decisions, 35 held by the nodes that apply them**
 
 | Decision | Status | Applied by |
 |---|---|---|
-| [The page is assembled](browser.md#ThePageIsAssembled) | **unknown** | [Rendering does not read the graph](architecture.md#RenderingWithoutGraph), [Explorer of a graph](browser.md#ExplorerFigures), [Show the graph](browser.md#ShowGraph), [The browser runs the page](browser.md#TheBrowserRunsThePage) |
+| [The page is assembled](browser.md#ThePageIsAssembled) | **held** | [Rendering does not read the graph](architecture.md#RenderingWithoutGraph), [Explorer of a graph](browser.md#ExplorerFigures), [Show the graph](browser.md#ShowGraph), [The browser runs the page](browser.md#TheBrowserRunsThePage) |
 | [The punctuation is the language's](documents.md#PunctuationOfTheLanguage) | **held** | [Punctuation of documents](documents.md#Punctuation), [Language](messages.md#Language) |
 | [The language receives the graph's values](engine.md#TheLanguageReceivesTheGraph) | **held** | [Graph](engine.md#GraphApi), [Views](engine.md#Views) |
 | [The laws are requirements](engine.md#LawsAreRequirements) | **held** | [Laws](engine.md#Laws), [Views](engine.md#Views) |
@@ -50,7 +50,7 @@
 
 ### The page is assembled
 
-`ThePageIsAssembled` · `src/browser.ts:149` · status: **unknown**
+`ThePageIsAssembled` · `src/browser.ts:149` · status: **held**
 
 The page's script was the only code of Trame outside the graph: written by hand, wired by hand, its values written in it. It is now a component assembled for the browser, its entry point and its explorer bodies of the graph.
 

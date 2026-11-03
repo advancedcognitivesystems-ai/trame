@@ -15,14 +15,14 @@
 The language the writers are written in, at the generation the library pins: reached by its path in Trame's repository.
 
 - Name: `trame`
-- Version: `96`
+- Version: `97`
 - Installed: Not installed in the project: its lockfile lists no trame
 - Vulnerabilities: No report yet: trame audit asks the registry
 - Latest version: No report yet: trame audit asks the registry
 - What it may do: not said: an implementation that imports it cannot promise anything
 - How it joins the graph: `language`
 - Where it comes from: `path`
-- Its path: `../generations/g96`
+- Its path: `../generations/g97`
 
 - Owner: trame
 - Serves: [A shipment runs elsewhere as it runs here](product.md#RunsElsewhere)

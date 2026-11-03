@@ -1,11 +1,11 @@
 # Owners
 
-*What each person must decide, settle or watch on 30 October 2026, and what they own.*
+*What each person must decide, settle or watch on 3 November 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| Trame's maintainers | 0 | 0 | 3 | 0 |
-| trame | 0 | 0 | 10 | 661 |
+| Trame's maintainers | 0 | 0 | 2 | 0 |
+| trame | 0 | 0 | 2 | 662 |
 
 <a id="Trame's maintainers"></a>
 
@@ -17,7 +17,6 @@
 |---|---|---|---|---|
 | warning | Checked on another build of its artefacts, by another version of its program or another engine: to check again | [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws) | Trame's maintainers |  |
 | warning | Checked on another build of its artefacts, by another version of its program or another engine: to check again | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | Trame's maintainers |  |
-| warning | Checked on another build of its artefacts, by another version of its program or another engine: to check again | [The graph page opens](sdlc.md#GraphPageOpens) | Trame's maintainers |  |
 
 <a id="trame"></a>
 
@@ -25,16 +24,8 @@
 
 | Severity | What | Where | Owner | Consequence |
 |---|---|---|---|---|
-| warning | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The candidate engine](sdlc.md#EngineCandidate) | trame |  |
-| warning | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The graph page](sdlc.md#GraphPage) | trame |  |
-| warning | To ship: The candidate engine is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
-| warning | To ship: The graph page is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
-| warning | To ship: The page's program is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
-| warning | To ship: The page is assembled is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
 | warning | To ship: The candidate plays the laws is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
 | warning | To ship: The candidate runs on the machine is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
-| warning | To ship: The graph page opens is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
-| warning | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The page's program](sdlc.md#PageProgram) | trame |  |
 
 ### Owns
 
@@ -96,15 +87,15 @@
 | [Trame on the command line](architecture.md#TrameCli) | Component |  |
 | [TypeScript compiler](architecture.md#TypeScriptCompiler) | Port |  |
 | [Write log](architecture.md#WriteLog) | Port |  |
-| [Amendments sent to trame dev](browser.md#BrowserAmendments) | Implementation | **unknown** |
-| [The browser's gzip](browser.md#BrowserDecompression) | Implementation | **unknown** |
-| [The globals of the page, and trame dev](browser.md#BrowserFeed) | Implementation | **unknown** |
-| [Local storage](browser.md#BrowserMemory) | Implementation | **unknown** |
-| [The browser's window](browser.md#BrowserWindow) | Implementation | **unknown** |
-| [Explorer of a graph](browser.md#ExplorerFigures) | Function | **unknown** |
-| [Show the graph](browser.md#ShowGraph) | Entry point | **unknown** |
-| [The browser runs the page](browser.md#TheBrowserRunsThePage) | Technical choice | **unknown** |
-| [The page is assembled](browser.md#ThePageIsAssembled) | Architecture decision | **unknown** |
+| [Amendments sent to trame dev](browser.md#BrowserAmendments) | Implementation | **held** |
+| [The browser's gzip](browser.md#BrowserDecompression) | Implementation | **held** |
+| [The globals of the page, and trame dev](browser.md#BrowserFeed) | Implementation | **held** |
+| [Local storage](browser.md#BrowserMemory) | Implementation | **held** |
+| [The browser's window](browser.md#BrowserWindow) | Implementation | **held** |
+| [Explorer of a graph](browser.md#ExplorerFigures) | Function | **held** |
+| [Show the graph](browser.md#ShowGraph) | Entry point | **held** |
+| [The browser runs the page](browser.md#TheBrowserRunsThePage) | Technical choice | **held** |
+| [The page is assembled](browser.md#ThePageIsAssembled) | Architecture decision | **held** |
 | [An advance, in memory](command-scenarios.md#AdvanceInMemory) | Scenario | **held** |
 | [What the engines an advance starts answer in a scenario](command-scenarios.md#AdvanceSamples) | Decision |  |
 | [What an amendment is checked with](command-scenarios.md#AmendmentSamples) | Decision |  |
@@ -574,6 +565,7 @@
 | [Generation 94](releases.md#G94) | Release |  |
 | [Generation 95](releases.md#G95) | Release |  |
 | [Generation 96](releases.md#G96) | Release |  |
+| [Generation 97](releases.md#G97) | Release |  |
 | [Common rendering](rendering.md#Common) | Function | **held** |
 | [Documents in Markdown](rendering.md#DocumentsInMarkdown) | Technical choice | **held** |
 | [Figures in Mermaid](rendering.md#FiguresInMermaid) | Technical choice | **held** |
@@ -613,13 +605,13 @@
 | [The candidate is checked by programs](sdlc.md#CandidateChecked) | Obligation |  |
 | [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws) | Check | **unknown** |
 | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | Check | **unknown** |
-| [The candidate engine](sdlc.md#EngineCandidate) | Artefact | **unknown** |
+| [The candidate engine](sdlc.md#EngineCandidate) | Artefact | **held** |
 | [The packages are safe](sdlc.md#EnginePackagesSafe) | Obligation |  |
 | [The engine is verified](sdlc.md#EngineVerified) | Obligation |  |
 | [How a generation is made](sdlc.md#GenerationMode) | Policy |  |
-| [The graph page](sdlc.md#GraphPage) | Artefact | **unknown** |
+| [The graph page](sdlc.md#GraphPage) | Artefact | **held** |
 | [How the graph page is opened](sdlc.md#GraphPageOpening) | Decision |  |
-| [The graph page opens](sdlc.md#GraphPageOpens) | Check | **unknown** |
+| [The graph page opens](sdlc.md#GraphPageOpens) | Check | **held** |
 | [What the scenario of the graph page shows](sdlc.md#GraphPageScenarioData) | Decision |  |
 | [What the graph page is asked](sdlc.md#GraphPageSelectors) | Function | **held** |
 | [The language serves what it says](sdlc.md#LanguageServed) | Obligation |  |
@@ -627,9 +619,9 @@
 | [The next generation](sdlc.md#NextGeneration) | Shipment | **unknown** |
 | [The graph page is opened as a person would](sdlc.md#OpeningTheGraphPage) | Scenario | **held** |
 | [Open the graph page](sdlc.md#OpenTheGraphPage) | Entry point | **held** |
-| [The page's program](sdlc.md#PageProgram) | Artefact | **unknown** |
+| [The page's program](sdlc.md#PageProgram) | Artefact | **held** |
 | [The SDLC in memory](sdlc.md#SdlcInMemory) | Technical choice | **held** |
-| [The SDLC on the machine](sdlc.md#SdlcOnTheMachine) | Technical choice | **unknown** |
+| [The SDLC on the machine](sdlc.md#SdlcOnTheMachine) | Technical choice | **held** |
 | [What the programs of Trame's SDLC say](sdlc.md#SdlcWords) | Message catalog |  |
 | [Trame's SDLC](sdlc.md#TrameSdlc) | Component |  |
 | [Attribution](shipping.md#Attribution) | Function | **held** |

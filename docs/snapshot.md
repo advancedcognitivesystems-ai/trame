@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 30 October 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 3 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Trame · Appearance
 
@@ -403,7 +403,7 @@ Environment · `Test`
 
 ### The page is assembled
 
-Architecture decision · `ThePageIsAssembled` · **unknown**
+Architecture decision · `ThePageIsAssembled` · **held**
 
 - Decided by: trame
 - Context: The page's script built by hand what it shared with the engine and wrote its values (classes, identifiers, the explorer's geometry) as literals the catalogue could not see: a change in the graph did not reach it.
@@ -414,7 +414,7 @@ Architecture decision · `ThePageIsAssembled` · **unknown**
 
 ### Explorer of a graph
 
-Function · `ExplorerFigures` · **unknown**
+Function · `ExplorerFigures` · **held**
 
 - Owner: trame
 - Parameters: { html: std/html.Html, svg: std/html.Svg, aria: std/html.Aria, css: std/html.Css, page: page.ThePage, markup: markup.DocumentMarkup, figures: markup.FigureMarkup, explorer: markup.ExplorerMarkup, drawing: appearance.ExplorerDrawing, element: html.HtmlElement, start: html.HtmlStartTag, empty: html.SelfClosingTag, path: html.PathData, declaration: html.CssDeclaration, escape: html.EscapedText, common: rendering.Common, words: messages.PageWords, messages: messages.RenderingMessages, punctuation: documents.Punctuation, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts }
@@ -423,7 +423,7 @@ Function · `ExplorerFigures` · **unknown**
 
 ### Show the graph
 
-Entry point · `ShowGraph` · **unknown**
+Entry point · `ShowGraph` · **held**
 
 - Owner: trame
 - Trigger: { type: load }
@@ -434,7 +434,7 @@ Entry point · `ShowGraph` · **unknown**
 
 ### Amendments sent to trame dev
 
-Implementation · `BrowserAmendments` · **unknown**
+Implementation · `BrowserAmendments` · **held**
 
 - Owner: trame
 - Parameters: { page: page.ThePage, service: engine.DevService, http: std/web.Http, media: std/web.MediaTypes }
@@ -443,7 +443,7 @@ Implementation · `BrowserAmendments` · **unknown**
 
 ### The browser's gzip
 
-Implementation · `BrowserDecompression` · **unknown**
+Implementation · `BrowserDecompression` · **held**
 
 - Owner: trame
 - Parameters: { packing: page.PackedGraph, ecma: std/ecmascript.EcmaScript }
@@ -452,7 +452,7 @@ Implementation · `BrowserDecompression` · **unknown**
 
 ### The globals of the page, and trame dev
 
-Implementation · `BrowserFeed` · **unknown**
+Implementation · `BrowserFeed` · **held**
 
 - Owner: trame
 - Parameters: { page: page.ThePage, service: engine.DevService, values: std/algebra.ValueTypes }
@@ -461,7 +461,7 @@ Implementation · `BrowserFeed` · **unknown**
 
 ### Local storage
 
-Implementation · `BrowserMemory` · **unknown**
+Implementation · `BrowserMemory` · **held**
 
 - Owner: trame
 - Parameters: { page: page.ThePage }
@@ -470,7 +470,7 @@ Implementation · `BrowserMemory` · **unknown**
 
 ### The browser's window
 
-Implementation · `BrowserWindow` · **unknown**
+Implementation · `BrowserWindow` · **held**
 
 - Owner: trame
 - Parameters: { motion: std/web.MediaQueries5, feature: html.MediaFeature, counts: std/algebra.Counts }
@@ -479,7 +479,7 @@ Implementation · `BrowserWindow` · **unknown**
 
 ### The browser runs the page
 
-Technical choice · `TheBrowserRunsThePage` · **unknown**
+Technical choice · `TheBrowserRunsThePage` · **held**
 
 - Decided by: trame
 - Context: The page's script took what it needed from the browser itself, here and there: the graph could not say what the page asks of the browser, nor try it elsewhere.
@@ -5414,7 +5414,7 @@ Release · `G88`
 - Released on: 2026-11-01
 - What changes: E1b: the compiler is led to the language's files by its names (#trame/* in TypeScript's paths, to the files where they are, never through a link); trame init starts a project: its configuration (the generation that runs, the libraries the language's home uses), its first module with its goal, the guide for agents and the skill, then its manifest
 - Fingerprint: abbc9d8c61c5829e
-- Language: shared
+- Language: own
 - Language archived: c850998afbba6ca9
 - Releases: Trame on the command line
 - Assembled by: Generation 87
@@ -5428,7 +5428,7 @@ Release · `G89`
 - Released on: 2026-11-01
 - What changes: E1c: a relative import that leaves its package refuses the build and says the name to write (a version frozen of a library is its release's business); a library's release names the language by its name
 - Fingerprint: 72ddb072c1a1b0d3
-- Language: shared
+- Language: own
 - Language archived: c850998afbba6ca9
 - Releases: Trame on the command line
 - Assembled by: Generation 88
@@ -5456,7 +5456,7 @@ Release · `G90`
 - Released on: 2026-11-01
 - What changes: E1d: a project that installed no types is checked with those of the engine that reads it (a project outside the repository builds); std's table of the platform knows node:module's registerHooks, for the engine to lead the language's names to its own language
 - Fingerprint: 196c3b0f7ac15496
-- Language: shared
+- Language: own
 - Language archived: c850998afbba6ca9
 - Releases: Trame on the command line
 - Assembled by: Generation 89
@@ -5470,7 +5470,7 @@ Release · `G91`
 - Released on: 2026-11-01
 - What changes: E1e: the engine leads the language's names to its own language (a peer dependency); a package node says how it joins the graph, where it comes from (by its path, from the registry of this machine) and its path; trame manifest places the packages of Trame the graph references and derives trame.json from them; npm installs the packages of every library imported
 - Fingerprint: f501ff1b89e2784c
-- Language: shared
+- Language: own
 - Language archived: 3b7e0d08b54deb04
 - Releases: Trame on the command line
 - Assembled by: Generation 90
@@ -5484,7 +5484,7 @@ Release · `G92`
 - Released on: 2026-11-01
 - What changes: E1f: a version is published to the registry of this machine (a library's release; the promotion of a generation, its language copied for real); the engine leads the project's library names too, as peers; the launcher installs the packages of a published engine and runs it with its own tsx
 - Fingerprint: 30caf57f98eafc15
-- Language: shared
+- Language: own
 - Language archived: 10418831c37c9ead
 - Releases: Trame on the command line
 - Assembled by: Generation 91
@@ -5498,7 +5498,7 @@ Release · `G93`
 - Released on: 2026-11-01
 - What changes: E1g: the names of a project's libraries are led to their real paths (through a link, a module would be read twice); a version published to the registry holds its manifest (ES modules); the launcher sees a published engine's missing packages as ES modules resolve them
 - Fingerprint: 524fe0849917ff93
-- Language: shared
+- Language: own
 - Language archived: 10418831c37c9ead
 - Releases: Trame on the command line
 - Assembled by: Generation 92
@@ -5512,7 +5512,7 @@ Release · `G94`
 - Released on: 2026-11-01
 - What changes: E1h: trame init writes a project's references as package nodes of its graph; trame registry publishes the frozen generations (each with its language) and the releases of the home's libraries to the registry of this machine, which a clone elsewhere fills again with it
 - Fingerprint: 619450edc36af16c
-- Language: shared
+- Language: own
 - Language archived: 10418831c37c9ead
 - Releases: Trame on the command line
 - Assembled by: Generation 93
@@ -5526,7 +5526,7 @@ Release · `G95`
 - Released on: 2026-11-02
 - What changes: the bundler is led by the names of packages as the engine leads Node.js: a library published once is bundled with the language and libraries of the project that delivers it
 - Fingerprint: 805401dc53eb3a4a
-- Language: shared
+- Language: own
 - Language archived: 10418831c37c9ead
 - Releases: Trame on the command line
 - Assembled by: Generation 94
@@ -5544,6 +5544,20 @@ Release · `G96`
 - Language archived: b4ae1cf9bc47d1f7
 - Releases: Trame on the command line
 - Assembled by: Generation 95
+
+### Generation 97
+
+Release · `G97`
+
+- Released by: trame
+- Version: g97
+- Released on: 2026-11-03
+- What changes: the language has one form: the prelude's units and the rule written as the function itself are gone; older generations that relied on them run on their archived language
+- Fingerprint: f75cc6f9f159b789
+- Language: shared
+- Language archived: f4872eb1ea3a5e35
+- Releases: Trame on the command line
+- Assembled by: Generation 96
 
 ## Trame · Rendering
 
@@ -5928,7 +5942,7 @@ Technical choice · `SdlcInMemory` · **held**
 
 ### The SDLC on the machine
 
-Technical choice · `SdlcOnTheMachine` · **unknown**
+Technical choice · `SdlcOnTheMachine` · **held**
 
 - Decided by: trame
 - Context: The graph page must be opened as a person opens it: the file exported, in a real browser.
@@ -5953,7 +5967,7 @@ Role · `Maintainers`
 
 ### The candidate engine
 
-Artefact · `EngineCandidate` · **unknown**
+Artefact · `EngineCandidate` · **held**
 
 - Owner: trame
 - Path: out/local/trame-cli.ts
@@ -5961,7 +5975,7 @@ Artefact · `EngineCandidate` · **unknown**
 
 ### The graph page
 
-Artefact · `GraphPage` · **unknown**
+Artefact · `GraphPage` · **held**
 
 - Owner: trame
 - Path: trame-page.html
@@ -5971,7 +5985,7 @@ Artefact · `GraphPage` · **unknown**
 
 ### The page's program
 
-Artefact · `PageProgram` · **unknown**
+Artefact · `PageProgram` · **held**
 
 - Owner: trame
 - Path: out/browser/page-app.ts
@@ -5999,7 +6013,7 @@ Check · `CandidateRunsOnTheMachine` · **unknown**
 
 ### The graph page opens
 
-Check · `GraphPageOpens` · **unknown**
+Check · `GraphPageOpens` · **held**
 
 - Owner: trame
 - Checks: The graph page
