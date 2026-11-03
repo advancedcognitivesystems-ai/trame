@@ -216,7 +216,9 @@ version }`): a derived file, like the import map. The engine leads `#trame/*` to
 names of the project's libraries to their sources, when it loads a project: a package published once is read with
 whichever generation and libraries read it, as a peer dependency (g91–g93), and bundled the same way: `trame deliver`
 and `trame ship` lead esbuild by the names the engine leads (g95), so a page holds one language and one version of
-each library. Since g92 a version is published to the
+each library; and a program Node.js runs leads them too: beside each program assembled, its launcher (`<name>.node.ts`,
+g99) writes where each name leads, from the program, has the prelude's `trame/leading` lead them, then imports the
+program, so it runs the same here, in a CI or by hand. Since g92 a version is published to the
 registry of this machine (`~/.trame/registry/<name>/<version>`, the decision `LocalRegistryPlace`): by `trame release`
 in a library (run on a version already frozen, it publishes it), and by the promotion of a generation, with its
 language copied for real, so a project that runs it from there keeps the language it was frozen with. `trame.sh`
@@ -378,6 +380,10 @@ elements), a port answered differently in several environments is answered as in
   patches `body` with `(previous) => (deps) => …`. Called before the engine wired it, a rule says so rather than run.
 - `trame manifest` compiles the graph with the configuration it has: code that uses what a new version of a library
   brings (std 0.14.0's millisecond) refuses it. Move the reference and run the manifest first, then write the code.
+- `trame manifest` writes the packages into `package.json`, not the lockfile: run `npm install` after it and commit
+  `package-lock.json`, or the `npm ci` of a CI refuses (Poselia's CI failed from 1 to 3 November for this).
+- The files that run a shipment elsewhere place a project in the repository from its generation's real path (g98):
+  reached through `.trame/trame`, two directories above the link would be the project itself.
 - A release holds no manifest (g96): in its library, the library's says it is made of ES modules and where the
   language is; published, the registry gives it one that says only the first, and its reader leads the language.
 - A published declaration the language changes the form of (a type renamed, a rule rewritten as a body) is an error

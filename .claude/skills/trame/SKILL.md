@@ -65,7 +65,9 @@ The repository's `AGENTS.md` is the full guide; read it first, then keep to this
   version there, then `trame manifest` places it and writes `trame.json`; never edit `trame.json`'s references by hand.
   `from: "registry"` takes the version published under `~/.trame/registry` (`trame release <version>` in a library
   publishes it; a promoted generation is published with its language). A library published once runs, and is bundled
-  into a page, with the language and the libraries of the project that reads it (a peer).
+  into a page, with the language and the libraries of the project that reads it (a peer); a program Node.js runs is
+  its launcher (`<name>.node.ts`, g99), which leads the names the same way before it runs the program. After `trame
+  manifest`, run `npm install` and commit the lockfile: a CI installs with `npm ci`.
 - A choice is a concept: when someone could do it another way, name a port, its strategies (realizations) and the
   binding that says which applies where; a choice of value stays a decision with what it rejected; what nobody would
   change is just code.
