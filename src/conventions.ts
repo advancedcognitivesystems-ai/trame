@@ -104,7 +104,7 @@ export const AmendmentNaming = decision<{ suffix: string; first: number }>({ own
 export const commandNames = {
   assemble: "assemble", build: "build", dev: "dev", payload: "payload", export: "export", publish: "publish", run: "run",
   view: "view", snapshot: "snapshot", testKinds: "test-kinds", advance: "advance", audit: "audit", manifest: "manifest", release: "release", deliver: "deliver",
-  ship: "ship", evidence: "evidence", doctor: "doctor", plan: "plan", amend: "amend", init: "init", registry: "registry", fallback: "*",
+  ship: "ship", evidence: "evidence", doctor: "doctor", plan: "plan", amend: "amend", init: "init", registry: "registry", upgrade: "upgrade", fallback: "*",
 } as const
 
 /**
@@ -139,6 +139,7 @@ export const TrameCommands = standard({
     plan: { value: commandNames.plan, meaning: "Says what a build would change against the last one, and writes nothing" },
     amend: { value: commandNames.amend, meaning: "Changes a chosen value by an amendment, said first, then recorded where the project's amendments go" },
     registry: { value: commandNames.registry, meaning: "Publishes to the registry of this machine the generations and the releases frozen in the language's home" },
+    upgrade: { value: commandNames.upgrade, meaning: "Moves each package of Trame the project references to the newest version its origin holds, then writes its manifest" },
     init: { value: commandNames.init, meaning: "Starts a project in the current directory: its configuration, its first module, the guide for agents, its manifest" },
     fallback: { value: commandNames.fallback, meaning: "The command that receives a word naming no other one" },
     optionPrefix: { value: "-", meaning: "Opens an option, not a command" },

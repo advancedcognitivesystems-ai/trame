@@ -10,7 +10,7 @@
 
 ### Names of the documents
 
-`DocumentIds` · `src/conventions.ts:233`
+`DocumentIds` · `src/conventions.ts:234`
 
 How a document of a view is named: a view of the whole graph by its name; a view of a module by its name and the module ("layers.engine"), except the first view per module, named by the module alone; a view of a node by its name and the reference of the node ("impact:engine.Compiler"), which the page reads back to show it.
 
@@ -58,7 +58,7 @@ Source: Trame, the prelude (trame/internal.ts: frozen)
 
 ### Trame references
 
-`ReferenceSyntax` · `src/conventions.ts:204`
+`ReferenceSyntax` · `src/conventions.ts:205`
 
 How the language names a node and a field: "module.Identifier", "value.case". An empty path designates the whole node. A module of a library takes the library's name before its own: "std/algebra.Counts".
 
@@ -71,7 +71,7 @@ Source: Trame, the prelude (trame/kernel.ts: refOf, getPath)
 | `wholeNode` | `""` | The empty path: the whole node, not one of its fields (refines Texts.empty) |
 
 - Maintained by: trame
-- Refines: [Texts](../std/releases/0.14.0/docs/algebra.md#Texts)
+- Refines: [Texts](../std/releases/0.15.0/docs/algebra.md#Texts)
 - Used by: [Advance](commands.md#Advance), [Graph](engine.md#GraphApi), [References](engine.md#References), [Wiring](engine.md#Wiring), [Records of the releases](generations.md#ReleaseRecords), [Common rendering](rendering.md#Common), [TypeScript writer](typescript.md#TypeScriptWriter)
 
 <a id="TrameCommands"></a>
@@ -108,6 +108,7 @@ Source: Trame, its command line (the entry points of commands, in the module com
 | `plan` | `plan` | Says what a build would change against the last one, and writes nothing |
 | `amend` | `amend` | Changes a chosen value by an amendment, said first, then recorded where the project's amendments go |
 | `registry` | `registry` | Publishes to the registry of this machine the generations and the releases frozen in the language's home |
+| `upgrade` | `upgrade` | Moves each package of Trame the project references to the newest version its origin holds, then writes its manifest |
 | `init` | `init` | Starts a project in the current directory: its configuration, its first module, the guide for agents, its manifest |
 | `fallback` | `*` | The command that receives a word naming no other one |
 | `optionPrefix` | `-` | Opens an option, not a command |
@@ -139,13 +140,13 @@ Source: Trame, its command line (the entry points of commands, in the module com
 | `separator` | `" "` | Separates the words of a command, and the names of a list given as one parameter |
 
 - Maintained by: trame
-- Used by: [An advance, in memory](command-scenarios.md#AdvanceInMemory), [A build planned](command-scenarios.md#BuildPlanned), [The command line](command-scenarios.md#CommandLineChooses), [A component assembled](command-scenarios.md#ComponentAssembled), [A component run](command-scenarios.md#ComponentRun), [Declarations published](command-scenarios.md#DeclarationsPublished), [trame dev](command-scenarios.md#DevFollowsTheGraph), [The doctor](command-scenarios.md#DoctorAsks), [The laws, tested by their command](command-scenarios.md#LawsTested), [A library released](command-scenarios.md#LibraryReleased), [The manifest written](command-scenarios.md#ManifestWritten), [The packages audited](command-scenarios.md#PackagesAudited), [The page delivered](command-scenarios.md#PageDelivered), [The page exported](command-scenarios.md#PageExported), [The page of the graph](command-scenarios.md#PageOfTheGraph), [The graph in the intermediate format](command-scenarios.md#PayloadOfTheGraph), [A project started](command-scenarios.md#ProjectStarted), [The registry filled](command-scenarios.md#RegistryFilled), [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [The snapshot, taken by its command](command-scenarios.md#SnapshotTaken), [A value amended](command-scenarios.md#ValueAmended), [A view in the terminal](command-scenarios.md#ViewsInTheTerminal), [Advance](commands.md#Advance), [Start a project](commands.md#Init), [Preparation](commands.md#Preparation), [Record evidence](commands.md#RecordEvidence), [Render a view](commands.md#RenderView), [Ship](commands.md#Ship), [View by its name](commands.md#ViewByName), [Write the manifest](commands.md#WriteManifest), [Assembly](engine.md#Assembly), [Date bundle](engine.md#DateBundle), [trame dev server](engine.md#DevServer), [Brand](page.md#Brand), [Example process](platform.md#ExampleProcess), [Command line](platform.md#NodeCommandLine), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore), [The plan of a run elsewhere](shipping.md#ShipmentRunPlan)
+- Used by: [An advance, in memory](command-scenarios.md#AdvanceInMemory), [A build planned](command-scenarios.md#BuildPlanned), [The command line](command-scenarios.md#CommandLineChooses), [A component assembled](command-scenarios.md#ComponentAssembled), [A component run](command-scenarios.md#ComponentRun), [Declarations published](command-scenarios.md#DeclarationsPublished), [trame dev](command-scenarios.md#DevFollowsTheGraph), [The doctor](command-scenarios.md#DoctorAsks), [The laws, tested by their command](command-scenarios.md#LawsTested), [A library released](command-scenarios.md#LibraryReleased), [The manifest written](command-scenarios.md#ManifestWritten), [The packages audited](command-scenarios.md#PackagesAudited), [The packages upgraded](command-scenarios.md#PackagesUpgraded), [The page delivered](command-scenarios.md#PageDelivered), [The page exported](command-scenarios.md#PageExported), [The page of the graph](command-scenarios.md#PageOfTheGraph), [The graph in the intermediate format](command-scenarios.md#PayloadOfTheGraph), [A project started](command-scenarios.md#ProjectStarted), [The registry filled](command-scenarios.md#RegistryFilled), [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [The snapshot, taken by its command](command-scenarios.md#SnapshotTaken), [A value amended](command-scenarios.md#ValueAmended), [A view in the terminal](command-scenarios.md#ViewsInTheTerminal), [Advance](commands.md#Advance), [Start a project](commands.md#Init), [Preparation](commands.md#Preparation), [Record evidence](commands.md#RecordEvidence), [Render a view](commands.md#RenderView), [Ship](commands.md#Ship), [Upgrade](commands.md#Upgrade), [View by its name](commands.md#ViewByName), [Write the manifest](commands.md#WriteManifest), [Assembly](engine.md#Assembly), [Date bundle](engine.md#DateBundle), [trame dev server](engine.md#DevServer), [Brand](page.md#Brand), [Example process](platform.md#ExampleProcess), [Command line](platform.md#NodeCommandLine), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore), [The plan of a run elsewhere](shipping.md#ShipmentRunPlan)
 
 <a id="TrameEnvironment"></a>
 
 ### Trame's environment
 
-`TrameEnvironment` · `src/conventions.ts:178`
+`TrameEnvironment` · `src/conventions.ts:179`
 
 The variables of the environment Trame reads.
 
@@ -180,7 +181,7 @@ The name of the node it amends, then this word, then a number from the second on
 
 ### Default rank
 
-`DefaultRank` · `src/conventions.ts:197`
+`DefaultRank` · `src/conventions.ts:198`
 
 The place of a kind or a view that does not declare one, in documents and lists.
 
@@ -193,7 +194,7 @@ The place of a kind or a view that does not declare one, in documents and lists.
 
 ### Documentation comment
 
-`DocComment` · `src/conventions.ts:219`
+`DocComment` · `src/conventions.ts:220`
 
 What the comment before a declaration says: its first lines are the node's title, the following ones its description. The lines of each are joined into one text, by a space.
 
@@ -210,7 +211,7 @@ What the comment before a declaration says: its first lines are the node's title
 
 ### JSON formatting
 
-`JsonFormatting` · `src/conventions.ts:225`
+`JsonFormatting` · `src/conventions.ts:226`
 
 The JSON that Trame writes to be read (the lock, a view in JSON): indented.
 
@@ -278,7 +279,7 @@ Where a Trame project keeps its sources, its documents, its outputs; what its fi
 | launcher | trame.sh |
 
 - Decided by: trame
-- Used by: [An advance, in memory](command-scenarios.md#AdvanceInMemory), [A build planned](command-scenarios.md#BuildPlanned), [A component assembled](command-scenarios.md#ComponentAssembled), [Declarations published](command-scenarios.md#DeclarationsPublished), [trame dev](command-scenarios.md#DevFollowsTheGraph), [A library released](command-scenarios.md#LibraryReleased), [The manifest written](command-scenarios.md#ManifestWritten), [The page exported](command-scenarios.md#PageExported), [A project started](command-scenarios.md#ProjectStarted), [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [The snapshot, taken by its command](command-scenarios.md#SnapshotTaken), [Advance](commands.md#Advance), [An amendment prepared](commands.md#Amending), [Audit the packages](commands.md#Audit), [Build](commands.md#Build), [Export the page](commands.md#Export), [Start a project](commands.md#Init), [Plan](commands.md#Plan), [Preparation](commands.md#Preparation), [Fill the registry](commands.md#Registry), [Release a version](commands.md#Release), [Take the snapshot](commands.md#TakeSnapshot), [Write the manifest](commands.md#WriteManifest), [Assembly](engine.md#Assembly), [Compilation API](engine.md#CompilationApi), [Compiler](engine.md#Compiler), [trame dev server](engine.md#DevServer), [The fingerprint of an engine](engine.md#EngineFingerprint), [Graph](engine.md#GraphApi), [Laws](engine.md#Laws), [Lock](engine.md#Lock), [Payload](engine.md#PayloadBuilder), [Project](engine.md#Project), [Views](engine.md#Views), [Wiring](engine.md#Wiring), [Relative reference](markdown.md#RelativeReference), [Packages from the local registry](platform.md#LocalRegistry), [Page resources](platform.md#PageResources), [Runs kept on disk](platform.md#RunsOnDisk), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore), [Evidence of the SDLC](shipping.md#SdlcEvidence), [The plan of a run elsewhere](shipping.md#ShipmentRunPlan), [Syntax reader](syntax.md#SyntaxReader), [Terraform writer](terraform.md#TerraformWriter)
+- Used by: [An advance, in memory](command-scenarios.md#AdvanceInMemory), [A build planned](command-scenarios.md#BuildPlanned), [A component assembled](command-scenarios.md#ComponentAssembled), [Declarations published](command-scenarios.md#DeclarationsPublished), [trame dev](command-scenarios.md#DevFollowsTheGraph), [A library released](command-scenarios.md#LibraryReleased), [The manifest written](command-scenarios.md#ManifestWritten), [The packages upgraded](command-scenarios.md#PackagesUpgraded), [The page exported](command-scenarios.md#PageExported), [A project started](command-scenarios.md#ProjectStarted), [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [The snapshot, taken by its command](command-scenarios.md#SnapshotTaken), [Advance](commands.md#Advance), [An amendment prepared](commands.md#Amending), [Audit the packages](commands.md#Audit), [Build](commands.md#Build), [Ask the machine](commands.md#Doctor), [Export the page](commands.md#Export), [Start a project](commands.md#Init), [Plan](commands.md#Plan), [Preparation](commands.md#Preparation), [Fill the registry](commands.md#Registry), [Release a version](commands.md#Release), [Take the snapshot](commands.md#TakeSnapshot), [Write the manifest](commands.md#WriteManifest), [Assembly](engine.md#Assembly), [Compilation API](engine.md#CompilationApi), [Compiler](engine.md#Compiler), [trame dev server](engine.md#DevServer), [The fingerprint of an engine](engine.md#EngineFingerprint), [Graph](engine.md#GraphApi), [Laws](engine.md#Laws), [Lock](engine.md#Lock), [Payload](engine.md#PayloadBuilder), [Project](engine.md#Project), [Views](engine.md#Views), [Wiring](engine.md#Wiring), [Relative reference](markdown.md#RelativeReference), [Packages from the local registry](platform.md#LocalRegistry), [No installer in test](platform.md#NoInstallsInTest), [Page resources](platform.md#PageResources), [Runs kept on disk](platform.md#RunsOnDisk), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore), [Evidence of the SDLC](shipping.md#SdlcEvidence), [The plan of a run elsewhere](shipping.md#ShipmentRunPlan), [Syntax reader](syntax.md#SyntaxReader), [Terraform writer](terraform.md#TerraformWriter)
 
 <a id="PreludeApi"></a>
 
@@ -328,7 +329,7 @@ What trame init writes: the module that holds the goal the project serves (its n
 
 ### Names of steps
 
-`StepNames` · `src/conventions.ts:191`
+`StepNames` · `src/conventions.ts:192`
 
 When two steps of a wiring plan would take the same name, or a step a name that is taken, the second takes its module as a prefix, with this joint.
 
@@ -343,7 +344,7 @@ When two steps of a wiring plan would take the same name, or a step a name that 
 
 ### Order of the view groups
 
-`ViewGroupOrder` · `src/conventions.ts:247`
+`ViewGroupOrder` · `src/conventions.ts:248`
 
 Where the views of each group come in the list of documents: the documents of the modules first, then the other documents, the figures, the summary, and last the views of a node.
 

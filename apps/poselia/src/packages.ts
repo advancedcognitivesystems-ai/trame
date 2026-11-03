@@ -17,7 +17,7 @@ export const Language = pkg({
  * The structures, standards, ports of the device and of the SDLC Poselia builds on.
  */
 export const StandardLibrary = pkg({
-  owner: "ghalaax", packageName: "std", version: "0.14.0", joins: "library", from: "path", at: "../../std/releases/0.14.0",
+  owner: "ghalaax", packageName: "std", version: "0.15.0", joins: "library", from: "path", at: "../../std/releases/0.15.0",
   serves: [PractiseGuided],
 })
 

@@ -26,9 +26,9 @@ Section: Delivered page
 | `[], ["body { margin: 0; }"]` | `"body { margin: 0; }"` | held, read as CSS style sheets |
 
 - Owner: trame
-- Parameters: `standard` ← [CSS](../std/releases/0.14.0/docs/html.md#Css) · `rule` ← [Rule](html.md#CssRule) · `property` ← [Custom property](html.md#CustomProperty) · `file` ← [Text file](../std/releases/0.14.0/docs/text.md#TextFile) · `counts` ← [Counts](../std/releases/0.14.0/docs/algebra.md#Counts)
+- Parameters: `standard` ← [CSS](../std/releases/0.15.0/docs/html.md#Css) · `rule` ← [Rule](html.md#CssRule) · `property` ← [Custom property](html.md#CustomProperty) · `file` ← [Text file](../std/releases/0.15.0/docs/text.md#TextFile) · `counts` ← [Counts](../std/releases/0.15.0/docs/algebra.md#Counts)
 - Body: inline, in the declaration
-- Defined by: [CSS](../std/releases/0.14.0/docs/html.md#Css)
+- Defined by: [CSS](../std/releases/0.15.0/docs/html.md#Css)
 - Read in: [CSS style sheets](html.md#CssStyleSheets)
 - Used by: [Deliver](commands.md#Deliver)
 - Applies: [A product is delivered by a node of the graph](principles.md#DeliveredByTheGraph)

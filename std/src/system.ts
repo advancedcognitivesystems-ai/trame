@@ -150,13 +150,16 @@ export const NodeEncodings = standard({
 export const NpmCli = standard({
   owner: "trame",
   serves: [CitedNotCopied],
-  source: "npm documentation: npm audit, npm outdated (--json)",
+  source: "npm documentation: npm install, npm audit, npm outdated (--json)",
   url: "https://docs.npmjs.com/cli/commands/npm-audit",
   constants: {
     command: { value: "npm", meaning: "The command line of npm" },
     audit: { value: "audit", meaning: "Asks the registry for the known vulnerabilities of the packages installed" },
     outdated: { value: "outdated", meaning: "Lists the packages installed that are not at their latest version" },
     json: { value: "--json", meaning: "Answers in JSON rather than in a table" },
+    install: { value: "install", meaning: "Installs the packages package.json names and writes what it installed into the lockfile" },
+    noAudit: { value: "--no-audit", meaning: "Installs without asking the registry for vulnerabilities (trame audit asks it)" },
+    noFund: { value: "--no-fund", meaning: "Installs without the messages of packages looking for funding" },
   },
 })
 

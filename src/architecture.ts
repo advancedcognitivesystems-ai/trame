@@ -136,6 +136,13 @@ export interface KeptResults {
   /** Keeps a result under its key, in place of what was there. */
   set(key: string, value: unknown): void
 }
+export interface PackageInstalls {
+  /**
+   * Installs the packages a project's manifest names, in its directory, and writes what it installed into its lockfile
+   * (since g100): the exit status of the installer.
+   */
+  install(root: string): Promise<number>
+}
 export interface Programs {
   /** Runs a TypeScript program (another engine) in a directory: its standard output comes back, its errors go to the terminal. */
   run(program: string, args: readonly string[], cwd: string, env: Readonly<Record<string, string>>): Promise<{ status: number; output: string }>
@@ -438,6 +445,13 @@ export const Bundler = port<Bundler>({ owner: "trame", declaredEffects: effects(
  * What the registry says of the packages a project installs: their known vulnerabilities, their latest versions.
  */
 export const PackageReports = port<PackageReports>({ owner: "trame", declaredEffects: effects("process", "network") })
+
+/**
+ * Packages installed
+ * Installs the packages a project's manifest names and keeps its lockfile with them, so that what a runner installs
+ * from the lockfile is what the manifest says (since g100). A choice of installer: npm first.
+ */
+export const PackageInstalls = port<PackageInstalls>({ owner: "trame", declaredEffects: effects("process", "network", "write") })
 
 /**
  * Compression

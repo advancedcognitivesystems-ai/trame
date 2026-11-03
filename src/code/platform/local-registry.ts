@@ -29,6 +29,11 @@ const body: BodyOf<typeof LocalRegistry> = ({ trees, writing, reading, paths, pl
       }
       return at
     },
+    // The versions published, each a directory of the package's.
+    versions: ({ name }) => {
+      const dir = versionOf(name)
+      return reading.existsSync(dir) ? reading.readdirSync(dir, { withFileTypes: true }).filter((e) => e.isDirectory()).map((e) => e.name) : []
+    },
   }
 }
 

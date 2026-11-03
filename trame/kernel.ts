@@ -582,6 +582,11 @@ export interface Graph {
   /** The version a library is imported at, nothing when it is imported as it is (an engine before g68 does not say). */
   libraryVersion?(library: string): string | undefined
   /**
+   * The versions the origin of a package reference holds (the language's generations, a library's versions), by the
+   * reference: what tells it a newer one is out (an engine before g100 does not say).
+   */
+  packageVersions?(ref: string): readonly string[] | undefined
+  /**
    * The fingerprint of the code these nodes are: each one's declaration as it runs (its values, the nodes it names, its
    * bodies) and the files its bodies are written in. It changes when one of them does (an engine before g70 does not say).
    */

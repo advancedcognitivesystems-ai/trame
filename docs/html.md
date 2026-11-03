@@ -26,10 +26,10 @@ Section: Selectors Level 4, § 6.1 Attribute presence and value selectors · `ht
 | `"data-ref"` | `"[data-ref]"` | held, read as CSS style sheets |
 
 - Owner: trame
-- Parameters: `standard` ← [CSS](../std/releases/0.14.0/docs/html.md#Css)
+- Parameters: `standard` ← [CSS](../std/releases/0.15.0/docs/html.md#Css)
 - Body: inline, in the declaration
 - Read as: { before: , after:  {} }
-- Defined by: [CSS](../std/releases/0.14.0/docs/html.md#Css)
+- Defined by: [CSS](../std/releases/0.15.0/docs/html.md#Css)
 - Read in: [CSS style sheets](#CssStyleSheets)
 - Used by: [Show the graph](browser.md#ShowGraph)
 
@@ -55,10 +55,10 @@ Section: Selectors Level 4, § 6.1 Attribute presence and value selectors · `ht
 | `"data-theme", "dark"` | `"[data-theme=\"dark\"]"` | held, read as CSS style sheets |
 
 - Owner: trame
-- Parameters: `standard` ← [CSS](../std/releases/0.14.0/docs/html.md#Css)
+- Parameters: `standard` ← [CSS](../std/releases/0.15.0/docs/html.md#Css)
 - Body: inline, in the declaration
 - Read as: { before: , after:  {} }
-- Defined by: [CSS](../std/releases/0.14.0/docs/html.md#Css)
+- Defined by: [CSS](../std/releases/0.15.0/docs/html.md#Css)
 - Read in: [CSS style sheets](#CssStyleSheets)
 - Used by: [Show the graph](browser.md#ShowGraph), [Theme](page.md#Theme), [What the graph page is asked](sdlc.md#GraphPageSelectors)
 
@@ -81,10 +81,10 @@ Section: Selectors Level 4, § 6.6 Class selectors · `https://www.w3.org/TR/sel
 | `"st-held"` | `".st-held"` | held, read as CSS style sheets |
 
 - Owner: trame
-- Parameters: `standard` ← [CSS](../std/releases/0.14.0/docs/html.md#Css)
+- Parameters: `standard` ← [CSS](../std/releases/0.15.0/docs/html.md#Css)
 - Body: inline, in the declaration
 - Read as: { before: , after:  {} }
-- Defined by: [CSS](../std/releases/0.14.0/docs/html.md#Css)
+- Defined by: [CSS](../std/releases/0.15.0/docs/html.md#Css)
 - Read in: [CSS style sheets](#CssStyleSheets)
 - Used by: [Show the graph](browser.md#ShowGraph), [Colours of a status](page.md#StatusStyle)
 
@@ -103,10 +103,10 @@ Section: 5.4.6 Consume a declaration · `https://www.w3.org/TR/css-syntax-3/#con
 | `"color-scheme", "dark"` | `"color-scheme: dark;"` | held, read as CSS style sheets |
 
 - Owner: trame
-- Parameters: `standard` ← [CSS](../std/releases/0.14.0/docs/html.md#Css)
+- Parameters: `standard` ← [CSS](../std/releases/0.15.0/docs/html.md#Css)
 - Body: inline, in the declaration
 - Read as: { before: a { , after:  } }
-- Defined by: [CSS](../std/releases/0.14.0/docs/html.md#Css)
+- Defined by: [CSS](../std/releases/0.15.0/docs/html.md#Css)
 - Read in: [CSS style sheets](#CssStyleSheets)
 - Used by: [Explorer of a graph](browser.md#ExplorerFigures), [Custom property](#CustomProperty), [Page](page.md#Page), [Colours of a status](page.md#StatusStyle), [Theme](page.md#Theme), [Figures in SVG](rendering.md#SvgFigures)
 
@@ -125,9 +125,9 @@ Section: 5.4.3 Consume a qualified rule · `https://www.w3.org/TR/css-syntax-3/#
 | `"body", ["margin: 0;"]` | `"body { margin: 0; }"` | held, read as CSS style sheets |
 
 - Owner: trame
-- Parameters: `standard` ← [CSS](../std/releases/0.14.0/docs/html.md#Css)
+- Parameters: `standard` ← [CSS](../std/releases/0.15.0/docs/html.md#Css)
 - Body: inline, in the declaration
-- Defined by: [CSS](../std/releases/0.14.0/docs/html.md#Css)
+- Defined by: [CSS](../std/releases/0.15.0/docs/html.md#Css)
 - Read in: [CSS style sheets](#CssStyleSheets)
 - Used by: [Style of a delivered page](delivery.md#DeliveredStyle), [Page](page.md#Page), [Colours of a status](page.md#StatusStyle), [Theme](page.md#Theme)
 
@@ -151,10 +151,10 @@ Section: CSS Custom Properties for Cascading Variables Level 1, § 3 Using casca
 | `"accent"` | `"var(--accent)"` | held, read as CSS style sheets |
 
 - Owner: trame
-- Parameters: `standard` ← [CSS](../std/releases/0.14.0/docs/html.md#Css)
+- Parameters: `standard` ← [CSS](../std/releases/0.15.0/docs/html.md#Css)
 - Body: inline, in the declaration
 - Read as: { before: a { color: , after: ; } }
-- Defined by: [CSS](../std/releases/0.14.0/docs/html.md#Css)
+- Defined by: [CSS](../std/releases/0.15.0/docs/html.md#Css)
 - Read in: [CSS style sheets](#CssStyleSheets)
 - Used by: [Logo](page.md#Logo), [Colours of a status](page.md#StatusStyle)
 
@@ -177,10 +177,10 @@ Section: CSS Custom Properties for Cascading Variables Level 1, § 2 Defining cu
 | `"bg", "#f3f5f6"` | `"--bg: #f3f5f6;"` | held, read as CSS style sheets |
 
 - Owner: trame
-- Parameters: `standard` ← [CSS](../std/releases/0.14.0/docs/html.md#Css) · `declaration` ← [Declaration](#CssDeclaration)
+- Parameters: `standard` ← [CSS](../std/releases/0.15.0/docs/html.md#Css) · `declaration` ← [Declaration](#CssDeclaration)
 - Body: inline, in the declaration
 - Read as: { before: :root { , after:  } }
-- Defined by: [CSS](../std/releases/0.14.0/docs/html.md#Css)
+- Defined by: [CSS](../std/releases/0.15.0/docs/html.md#Css)
 - Read in: [CSS style sheets](#CssStyleSheets)
 - Used by: [Style of a delivered page](delivery.md#DeliveredStyle), [Theme](page.md#Theme)
 
@@ -203,9 +203,9 @@ Section: 13.1.1 The DOCTYPE · `https://html.spec.whatwg.org/multipage/syntax.ht
 | `` | `"<!doctype html>"` | held, read as HTML markup |
 
 - Owner: trame
-- Parameters: `standard` ← [HTML](../std/releases/0.14.0/docs/html.md#Html)
+- Parameters: `standard` ← [HTML](../std/releases/0.15.0/docs/html.md#Html)
 - Body: inline, in the declaration
-- Defined by: [HTML](../std/releases/0.14.0/docs/html.md#Html)
+- Defined by: [HTML](../std/releases/0.15.0/docs/html.md#Html)
 - Read in: [HTML markup](#HtmlMarkup)
 - Used by: [The page delivered](command-scenarios.md#PageDelivered), [Document of the page](page.md#PageDocument)
 
@@ -234,10 +234,10 @@ Section: 13.1.4 Character references · `https://html.spec.whatwg.org/multipage/
 | `"&lt;"` | `"&amp;lt;"` | held, read as HTML markup |
 
 - Owner: trame
-- Parameters: `standard` ← [HTML](../std/releases/0.14.0/docs/html.md#Html)
+- Parameters: `standard` ← [HTML](../std/releases/0.15.0/docs/html.md#Html)
 - Body: inline, in the declaration
 - Read as: { before: <p title=", after: "></p> }
-- Defined by: [HTML](../std/releases/0.14.0/docs/html.md#Html)
+- Defined by: [HTML](../std/releases/0.15.0/docs/html.md#Html)
 - Read in: [HTML markup](#HtmlMarkup)
 - Used by: [Explorer of a graph](browser.md#ExplorerFigures), [Show the graph](browser.md#ShowGraph), [HTML writer](rendering.md#HtmlSyntax), [Figures in SVG](rendering.md#SvgFigures)
 
@@ -262,10 +262,10 @@ Section: 13.1.2.3 Attributes · `https://html.spec.whatwg.org/multipage/syntax.h
 | `{"class":"banner","hidden":true}` | `" class=\"banner\" hidden"` | held, read as HTML markup |
 
 - Owner: trame
-- Parameters: `standard` ← [HTML](../std/releases/0.14.0/docs/html.md#Html) · `texts` ← [Texts](../std/releases/0.14.0/docs/algebra.md#Texts)
+- Parameters: `standard` ← [HTML](../std/releases/0.15.0/docs/html.md#Html) · `texts` ← [Texts](../std/releases/0.15.0/docs/algebra.md#Texts)
 - Body: inline, in the declaration
 - Read as: { before: <a, after: > }
-- Defined by: [HTML](../std/releases/0.14.0/docs/html.md#Html)
+- Defined by: [HTML](../std/releases/0.15.0/docs/html.md#Html)
 - Read in: [HTML markup](#HtmlMarkup)
 - Used by: [Start tag](#HtmlStartTag), [Self-closing tag](#SelfClosingTag)
 
@@ -288,9 +288,9 @@ Section: 13.1.2 Elements · `https://html.spec.whatwg.org/multipage/syntax.html#
 | `"main", {}, ["<article class=\"doc\" id=\"doc\"></article>"]` | `["<main>","  <article class=\"doc\" id=\"doc\"></article>","</main>"]` | held, read as HTML markup |
 
 - Owner: trame
-- Parameters: `standard` ← [HTML](../std/releases/0.14.0/docs/html.md#Html) · `startTag` ← [Start tag](#HtmlStartTag) · `endTag` ← [End tag](#HtmlEndTag)
+- Parameters: `standard` ← [HTML](../std/releases/0.15.0/docs/html.md#Html) · `startTag` ← [Start tag](#HtmlStartTag) · `endTag` ← [End tag](#HtmlEndTag)
 - Body: inline, in the declaration
-- Defined by: [HTML](../std/releases/0.14.0/docs/html.md#Html)
+- Defined by: [HTML](../std/releases/0.15.0/docs/html.md#Html)
 - Read in: [HTML markup](#HtmlMarkup)
 - Used by: [Brand](page.md#Brand), [Dates](page.md#DatePicker), [Head of the document](page.md#DocumentHead), [Document picker](page.md#DocumentPicker), [Arrowheads of the figures](page.md#FigureMarkers), [Logo](page.md#Logo), [Main area](page.md#MainArea), [Choice of rendering](page.md#RenderingToggle), [Shell](page.md#Shell), [Side bar](page.md#SideBar)
 
@@ -309,9 +309,9 @@ Section: 13.1.2 Elements · `https://html.spec.whatwg.org/multipage/syntax.html#
 | `"summary", {}, "The code"` | `"<summary>The code</summary>"` | held, read as HTML markup |
 
 - Owner: trame
-- Parameters: `standard` ← [HTML](../std/releases/0.14.0/docs/html.md#Html) · `startTag` ← [Start tag](#HtmlStartTag) · `endTag` ← [End tag](#HtmlEndTag)
+- Parameters: `standard` ← [HTML](../std/releases/0.15.0/docs/html.md#Html) · `startTag` ← [Start tag](#HtmlStartTag) · `endTag` ← [End tag](#HtmlEndTag)
 - Body: inline, in the declaration
-- Defined by: [HTML](../std/releases/0.14.0/docs/html.md#Html)
+- Defined by: [HTML](../std/releases/0.15.0/docs/html.md#Html)
 - Read in: [HTML markup](#HtmlMarkup)
 - Used by: [Explorer of a graph](browser.md#ExplorerFigures), [Show the graph](browser.md#ShowGraph), [Heading of a rank](#HtmlHeading), [Script](#ScriptElement), [Anchor](markdown.md#Anchor), [Collapsible block](markdown.md#Details), [Small text](markdown.md#Small), [Banner](page.md#Banner), [Brand](page.md#Brand), [State of the compilation](page.md#CompilationState), [Dates](page.md#DatePicker), [Head of the document](page.md#DocumentHead), [Document picker](page.md#DocumentPicker), [Arrowheads of the figures](page.md#FigureMarkers), [Logo](page.md#Logo), [Main area](page.md#MainArea), [Navigation](page.md#Navigation), [Document of the page](page.md#PageDocument), [Choice of rendering](page.md#RenderingToggle), [HTML writer](rendering.md#HtmlSyntax), [Figures in SVG](rendering.md#SvgFigures)
 
@@ -332,10 +332,10 @@ Section: 13.1.2.2 End tags · `https://html.spec.whatwg.org/multipage/syntax.htm
 | `"details"` | `"</details>"` | held, read as HTML markup |
 
 - Owner: trame
-- Parameters: `standard` ← [HTML](../std/releases/0.14.0/docs/html.md#Html)
+- Parameters: `standard` ← [HTML](../std/releases/0.15.0/docs/html.md#Html)
 - Body: inline, in the declaration
 - Read as: { before: <details>, after:  }
-- Defined by: [HTML](../std/releases/0.14.0/docs/html.md#Html)
+- Defined by: [HTML](../std/releases/0.15.0/docs/html.md#Html)
 - Read in: [HTML markup](#HtmlMarkup)
 - Used by: [Element over several lines](#HtmlBlock), [HTML element](#HtmlElement), [Collapsible block](markdown.md#Details), [Document of the page](page.md#PageDocument)
 
@@ -358,9 +358,9 @@ Section: 4.3.6 The h1, h2, h3, h4, h5, and h6 elements · `https://html.spec.wha
 | `2, {}, "Cards"` | `"<h2>Cards</h2>"` | held, read as HTML markup |
 
 - Owner: trame
-- Parameters: `standard` ← [HTML](../std/releases/0.14.0/docs/html.md#Html) · `element` ← [HTML element](#HtmlElement)
+- Parameters: `standard` ← [HTML](../std/releases/0.15.0/docs/html.md#Html) · `element` ← [HTML element](#HtmlElement)
 - Body: inline, in the declaration
-- Defined by: [HTML](../std/releases/0.14.0/docs/html.md#Html)
+- Defined by: [HTML](../std/releases/0.15.0/docs/html.md#Html)
 - Read in: [HTML markup](#HtmlMarkup)
 - Used by: [HTML writer](rendering.md#HtmlSyntax)
 
@@ -379,9 +379,9 @@ Section: 13.1.2.1 Start tags · `https://html.spec.whatwg.org/multipage/syntax.h
 | `"a", {"id":"Goal"}` | `"<a id=\"Goal\">"` | held, read as HTML markup |
 
 - Owner: trame
-- Parameters: `standard` ← [HTML](../std/releases/0.14.0/docs/html.md#Html) · `attributes` ← [Attributes](#HtmlAttributes)
+- Parameters: `standard` ← [HTML](../std/releases/0.15.0/docs/html.md#Html) · `attributes` ← [Attributes](#HtmlAttributes)
 - Body: inline, in the declaration
-- Defined by: [HTML](../std/releases/0.14.0/docs/html.md#Html)
+- Defined by: [HTML](../std/releases/0.15.0/docs/html.md#Html)
 - Read in: [HTML markup](#HtmlMarkup)
 - Used by: [Explorer of a graph](browser.md#ExplorerFigures), [Element over several lines](#HtmlBlock), [HTML element](#HtmlElement), [Collapsible block](markdown.md#Details), [Fonts](page.md#FontLinks), [Document of the page](page.md#PageDocument)
 
@@ -404,10 +404,10 @@ Section: 4.12.1.3 Restrictions for contents of script elements · `https://html.
 | `{"title":"</script>"}` | `"{\"title\":\"\\u003c/script>\"}"` | held, read as TypeScript |
 
 - Owner: trame
-- Parameters: `standard` ← [HTML](../std/releases/0.14.0/docs/html.md#Html)
+- Parameters: `standard` ← [HTML](../std/releases/0.15.0/docs/html.md#Html)
 - Body: inline, in the declaration
 - Read as: { before: x = , after:  }
-- Defined by: [HTML](../std/releases/0.14.0/docs/html.md#Html)
+- Defined by: [HTML](../std/releases/0.15.0/docs/html.md#Html)
 - Read in: [TypeScript](typescript.md#TypeScript)
 - Used by: [Scripts of the page](page.md#PageScripts)
 
@@ -426,10 +426,10 @@ Section: Media Queries Level 4, § 2.4 Media features · `https://www.w3.org/TR/
 | `"prefers-color-scheme", "dark"` | `"(prefers-color-scheme: dark)"` | held, read as CSS style sheets |
 
 - Owner: trame
-- Parameters: `standard` ← [CSS](../std/releases/0.14.0/docs/html.md#Css)
+- Parameters: `standard` ← [CSS](../std/releases/0.15.0/docs/html.md#Css)
 - Body: inline, in the declaration
 - Read as: { before: @media , after:  {} }
-- Defined by: [CSS](../std/releases/0.14.0/docs/html.md#Css)
+- Defined by: [CSS](../std/releases/0.15.0/docs/html.md#Css)
 - Read in: [CSS style sheets](#CssStyleSheets)
 - Used by: [The browser's window](browser.md#BrowserWindow), [Rules of a narrow screen](page.md#NarrowScreenRule), [Theme](page.md#Theme)
 
@@ -452,9 +452,9 @@ Section: CSS Conditional Rules Level 3, § 6 Media-specific style sheets: the @m
 | `"(prefers-color-scheme: dark)", ["body { margin: 0; }"]` | `"@media (prefers-color-scheme: dark) { body { margin: 0; } }"` | held, read as CSS style sheets |
 
 - Owner: trame
-- Parameters: `standard` ← [CSS](../std/releases/0.14.0/docs/html.md#Css)
+- Parameters: `standard` ← [CSS](../std/releases/0.15.0/docs/html.md#Css)
 - Body: inline, in the declaration
-- Defined by: [CSS](../std/releases/0.14.0/docs/html.md#Css)
+- Defined by: [CSS](../std/releases/0.15.0/docs/html.md#Css)
 - Read in: [CSS style sheets](#CssStyleSheets)
 - Used by: [Rules of a narrow screen](page.md#NarrowScreenRule), [Theme](page.md#Theme)
 
@@ -477,10 +477,10 @@ Section: Selectors Level 4, § 4.3 The negation pseudo-class · `https://www.w3.
 | `"[data-theme=\"light\"]"` | `":not([data-theme=\"light\"])"` | held, read as CSS style sheets |
 
 - Owner: trame
-- Parameters: `standard` ← [CSS](../std/releases/0.14.0/docs/html.md#Css)
+- Parameters: `standard` ← [CSS](../std/releases/0.15.0/docs/html.md#Css)
 - Body: inline, in the declaration
 - Read as: { before: , after:  {} }
-- Defined by: [CSS](../std/releases/0.14.0/docs/html.md#Css)
+- Defined by: [CSS](../std/releases/0.15.0/docs/html.md#Css)
 - Read in: [CSS style sheets](#CssStyleSheets)
 - Used by: [Theme](page.md#Theme)
 
@@ -507,9 +507,9 @@ Section: 9.3 Path data · `https://www.w3.org/TR/SVG2/paths.html#PathData`
 | `[5,8], [{"to":[12,16]},{"to":[5,24]}], true` | `"M5,8 L12,16 L5,24 z"` | held |
 
 - Owner: trame
-- Parameters: `standard` ← [SVG](../std/releases/0.14.0/docs/html.md#Svg)
+- Parameters: `standard` ← [SVG](../std/releases/0.15.0/docs/html.md#Svg)
 - Body: inline, in the declaration
-- Defined by: [SVG](../std/releases/0.14.0/docs/html.md#Svg)
+- Defined by: [SVG](../std/releases/0.15.0/docs/html.md#Svg)
 - Used by: [Explorer of a graph](browser.md#ExplorerFigures), [Arrowheads of the figures](page.md#FigureMarkers), [Figures in SVG](rendering.md#SvgFigures)
 
 <a id="ScriptElement"></a>
@@ -537,9 +537,9 @@ Section: 4.12.1.3 Restrictions for contents of script elements · `https://html.
 | `"const s = \"<!--\""` | `"<script>const s = \"<\\!--\"</script>"` | held, read as HTML markup |
 
 - Owner: trame
-- Parameters: `standard` ← [HTML](../std/releases/0.14.0/docs/html.md#Html) · `element` ← [HTML element](#HtmlElement)
+- Parameters: `standard` ← [HTML](../std/releases/0.15.0/docs/html.md#Html) · `element` ← [HTML element](#HtmlElement)
 - Body: inline, in the declaration
-- Defined by: [HTML](../std/releases/0.14.0/docs/html.md#Html)
+- Defined by: [HTML](../std/releases/0.15.0/docs/html.md#Html)
 - Read in: [HTML markup](#HtmlMarkup)
 - Used by: [Deliver](commands.md#Deliver), [Scripts of the page](page.md#PageScripts)
 
@@ -558,10 +558,10 @@ Section: Selectors Level 4, § 4.1 Selector lists · `https://www.w3.org/TR/sele
 | `["[data-ref]","[data-doc]"]` | `"[data-ref], [data-doc]"` | held, read as CSS style sheets |
 
 - Owner: trame
-- Parameters: `standard` ← [CSS](../std/releases/0.14.0/docs/html.md#Css)
+- Parameters: `standard` ← [CSS](../std/releases/0.15.0/docs/html.md#Css)
 - Body: inline, in the declaration
 - Read as: { before: , after:  {} }
-- Defined by: [CSS](../std/releases/0.14.0/docs/html.md#Css)
+- Defined by: [CSS](../std/releases/0.15.0/docs/html.md#Css)
 - Read in: [CSS style sheets](#CssStyleSheets)
 - Used by: [Show the graph](browser.md#ShowGraph)
 
@@ -584,9 +584,9 @@ Section: 13.1.2.1 Start tags (the self-closing flag of foreign elements) · `htt
 | `"path", {"d":"M7 5v16"}` | `"<path d=\"M7 5v16\"/>"` | held, read as HTML markup |
 
 - Owner: trame
-- Parameters: `standard` ← [HTML](../std/releases/0.14.0/docs/html.md#Html) · `attributes` ← [Attributes](#HtmlAttributes)
+- Parameters: `standard` ← [HTML](../std/releases/0.15.0/docs/html.md#Html) · `attributes` ← [Attributes](#HtmlAttributes)
 - Body: inline, in the declaration
-- Defined by: [HTML](../std/releases/0.14.0/docs/html.md#Html)
+- Defined by: [HTML](../std/releases/0.15.0/docs/html.md#Html)
 - Read in: [HTML markup](#HtmlMarkup)
 - Used by: [Explorer of a graph](browser.md#ExplorerFigures), [Arrowheads of the figures](page.md#FigureMarkers), [Logo](page.md#Logo), [Figures in SVG](rendering.md#SvgFigures)
 
@@ -673,7 +673,7 @@ Escape sequences open with `\`; numeric: `\` then 1 to 6 digits in base 16 (one 
 | `.e { --gap: var(--space-md); margin: var(--gap) var(--edge, var(--gap)); }` | literals [] · parameters ["--space-md","--gap","--edge","--gap"] · outputs ["--gap"] | held |
 
 - Owner: trame
-- Defined by: [CSS](../std/releases/0.14.0/docs/html.md#Css)
+- Defined by: [CSS](../std/releases/0.15.0/docs/html.md#Css)
 - Queries written in: [tree-sitter queries](standards.md#TreeSitterQueries)
 - Read by: [Syntax reader](syntax.md#SyntaxReader)
 - Uses: [Grammar of CSS](packages.md#CssGrammar)
@@ -740,7 +740,7 @@ Escape sequences open with `&`; named: `&amp;` "&", `&lt;` "<", `&gt;` ">", `&qu
 | `<!DOCTYPE html> <style>.a { margin: 0 }</style> <script>const x = 1</script> ` | literals [] | held |
 
 - Owner: trame
-- Defined by: [HTML](../std/releases/0.14.0/docs/html.md#Html)
+- Defined by: [HTML](../std/releases/0.15.0/docs/html.md#Html)
 - Queries written in: [tree-sitter queries](standards.md#TreeSitterQueries)
 - Read by: [Syntax reader](syntax.md#SyntaxReader)
 - Uses: [Grammar of HTML](packages.md#HtmlGrammar)

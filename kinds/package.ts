@@ -64,8 +64,15 @@ const kind = defineKind({
 
   holes(self, g) {
     const { counts, versions } = g.lib
-    // A package of Trame is placed by where it comes from: npm's lockfile and reports say nothing of it.
-    if (optionalText(self, F.joins, g.lib) !== undefined) return []
+    // A package of Trame is placed by where it comes from: npm's lockfile and reports say nothing of it; its origin says
+    // which versions it holds (an engine since g100), and a newer one than the reference names is said (C1).
+    if (optionalText(self, F.joins, g.lib) !== undefined) {
+      const named = optionalText(self, F.version, g.lib)
+      const newer = (g.packageVersions?.(self.ref) ?? []).filter((x) => named !== undefined && versions.below(named, x))
+      const newest = g.lib.sequences.last([...newer].sort(versions.compare))
+      const name = textOf(self, F.packageName, g.lib)
+      return named !== undefined && newest !== undefined ? [hole.warning(say.packageNewerVersion(name, named, newest), self.owner)] : []
+    }
     const name = textOf(self, F.packageName, g.lib)
     const version = textOf(self, F.version, g.lib)
     const installed = g.installed?.(name)

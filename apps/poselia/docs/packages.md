@@ -78,14 +78,14 @@ The language Poselia is written in, at the generation it pins: reached by its pa
 The structures, standards, ports of the device and of the SDLC Poselia builds on.
 
 - Name: `std`
-- Version: `0.14.0`
+- Version: `0.15.0`
 - Installed: Not installed in the project: its lockfile lists no std
 - Vulnerabilities: No report yet: trame audit asks the registry
 - Latest version: No report yet: trame audit asks the registry
 - What it may do: not said: an implementation that imports it cannot promise anything
 - How it joins the graph: `library`
 - Where it comes from: `path`
-- Its path: `../../std/releases/0.14.0`
+- Its path: `../../std/releases/0.15.0`
 
 - Owner: ghalaax
 - Serves: [Practise yoga on one's own, guided](product.md#PractiseGuided)

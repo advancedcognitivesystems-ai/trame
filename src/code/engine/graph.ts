@@ -51,6 +51,8 @@ export interface GraphState {
   installed?: Map<string, string>
   /** The libraries the project imports, by name, with the version each is frozen at (none: imported as it is). */
   libraries?: Map<string, string | undefined>
+  /** The versions the origin of each package reference holds, by the reference (since g100). */
+  versions?: Map<string, readonly string[]>
   /** The fingerprint of each node's code: its declaration as it runs, and the files its bodies are written in. */
   code?: Map<AnyNode, string>
   /** The fingerprint of the engine the project pins, when its generation records it. */
@@ -429,6 +431,7 @@ const body = (deps: Deps) => {
       lib,
       installed: (pkg) => st.installed?.get(pkg),
       libraryVersion: (library) => st.libraries?.get(library),
+      packageVersions: (ref) => st.versions?.get(ref),
       // The code of several nodes: each one's, by its reference, whatever order they are given in.
       code: (vs) => (st.code ? deps.fingerprints.of(Object.fromEntries(vs.map((v) => [v.ref, st.code?.get(v.node)]))) : undefined),
       engine: () => st.engine,

@@ -134,7 +134,7 @@ A kind has a label, names that the API does not reserve, edges towards kinds tha
 </details>
 
 - Owner: trame
-- Parameters: `counts` ← [Counts](../std/releases/0.14.0/docs/algebra.md#Counts)
+- Parameters: `counts` ← [Counts](../std/releases/0.15.0/docs/algebra.md#Counts)
 - Refines: [Kinds and views that can be trusted](#TrustedExtensions)
 - Used by: [Laws](engine.md#Laws)
 
@@ -266,7 +266,7 @@ Called twice on the same input, a function of a kind gives the same answer; run 
 </details>
 
 - Owner: trame
-- Parameters: `counts` ← [Counts](../std/releases/0.14.0/docs/algebra.md#Counts)
+- Parameters: `counts` ← [Counts](../std/releases/0.15.0/docs/algebra.md#Counts)
 - Refines: [Kinds and views that can be trusted](#TrustedExtensions)
 - Used by: [Laws](engine.md#Laws), [Views](engine.md#Views), [The resolution does not depend on the order](#OrderFree)
 - Refined by: [The resolution does not depend on the order](#OrderFree)

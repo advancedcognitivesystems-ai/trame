@@ -9,7 +9,8 @@ import { KindName, PackageField, PackageJoins, type ProvidedBy } from "../../../
 import type { EnginePin } from "../../generations"
 import type { Counts, ValueTypes } from "#std/algebra"
 import type { Handler } from "../../../kinds/entry-point"
-import type { FileReading, FileWriting, Layout, Paths, Prelude, Process, Terminal } from "../../architecture"
+import type { FileReading, FileWriting, Layout, PackageInstalls, Paths, Prelude, Process, Terminal } from "../../architecture"
+import type { NpmLockfile } from "../../packages"
 import type { CommandMessages } from "../../messages"
 import type { NodeEncodings, NodeEvents, NodeModuleSpecifiers, NpmManifest } from "#std/system"
 import type { Texts } from "#std/algebra"
@@ -33,6 +34,9 @@ export interface Deps {
   writing: FileWriting
   /** Where each package comes from: it places the package, and says where the import map leads. */
   packages: PackageSource
+  /** What installs the packages the manifest names, and keeps the lockfile with them (since g100). */
+  installs: PackageInstalls
+  lock: ProvidedBy<typeof NpmLockfile>
   names: ProvidedBy<typeof LanguageNames>
   /** Where the language the engine speaks is: for a project that pins no generation. */
   prelude: Prelude
@@ -146,7 +150,19 @@ const body = (deps: Deps): Handler => async (req) => {
     .sort(([a], [b]) => a.localeCompare(b))
   write({ ...read(), [npm.dependencies]: Object.fromEntries(versions) })
   deps.terminal.write(deps.messages.manifestWritten(versions.length, layout.manifest))
-  return { status: deps.exitStatus.success, body: versions.length }
+  // The lockfile follows (since g100): when what it locked is not what the manifest names, the packages are installed,
+  // and the installer writes what it installed. A runner that installs from the lockfile installs what the graph says.
+  const lockfile = join(o.root, layout.lockfile)
+  type Locked = Record<string, { [k: string]: Record<string, string> | undefined }>
+  const locked = deps.reading.existsSync(lockfile)
+    ? (JSON.parse(deps.reading.readFileSync(lockfile, deps.encodings.utf8)) as Record<string, Locked | undefined>)[deps.lock.packages]?.[deps.lock.root]?.[npm.dependencies]
+    : undefined
+  const sorted = (x: Record<string, string>) => JSON.stringify(Object.fromEntries(Object.entries(x).sort(([a], [b]) => a.localeCompare(b))))
+  if (sorted(locked ?? {}) === sorted(Object.fromEntries(versions))) return { status: deps.exitStatus.success, body: versions.length }
+  deps.terminal.write(deps.messages.lockfileFollows(layout.lockfile))
+  const installed = await deps.installs.install(o.root)
+  if (installed !== deps.exitStatus.success) deps.terminal.write(deps.messages.lockfileNotWritten(layout.lockfile))
+  return { status: installed === deps.exitStatus.success ? deps.exitStatus.success : deps.exitStatus.failure, body: versions.length }
 }
 
 export default body

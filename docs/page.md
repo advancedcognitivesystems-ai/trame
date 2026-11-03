@@ -40,7 +40,7 @@ Section: Main area
 | `` | `"<div class=\"banner\" id=\"banner\" hidden></div>"` | held, read as HTML markup |
 
 - Owner: trame
-- Parameters: `standard` ← [The page](#ThePage) · `regions` ← [Regions of the page](#PageRegions) · `html` ← [HTML](../std/releases/0.14.0/docs/html.md#Html) · `element` ← [HTML element](html.md#HtmlElement) · `texts` ← [Texts](../std/releases/0.14.0/docs/algebra.md#Texts)
+- Parameters: `standard` ← [The page](#ThePage) · `regions` ← [Regions of the page](#PageRegions) · `html` ← [HTML](../std/releases/0.15.0/docs/html.md#Html) · `element` ← [HTML element](html.md#HtmlElement) · `texts` ← [Texts](../std/releases/0.15.0/docs/algebra.md#Texts)
 - Body: inline, in the declaration
 - Defined by: [The page](#ThePage)
 - Read in: [HTML markup](html.md#HtmlMarkup)
@@ -66,7 +66,7 @@ Section: Side bar
 | `"graph"` | `["<div class=\"brand\">","  <svg width=\"26\" height=\"26\" viewBox=\"0 0 26 26\" aria-hidden=\"true\">","    <rect x=\"0\" y=\"0\" width=\"26\" height=\"26\" rx=\"6\" fill=\"var(--accent-soft)\"/>","    <g stroke=\"var(--accent)\" stroke-width=\"2.2\" stroke-linecap=\"round\" fill=\"none\"><path d=\"M7 5v16M13 5v16M19 5v16\"/></g>","    <g stroke=\"var(--ink)\" stroke-width=\"2.2\" stroke-linecap=\"round\" fill=\"none\"><path d=\"M5 9h3M10 9h6M18 9h3M5 17h3M10 17h6M18 17h3\"/></g>","  </svg>","  <div class=\"brand-name\">trame <span>graph</span></div>","</div>"]` | held, read as HTML markup |
 
 - Owner: trame
-- Parameters: `standard` ← [The page](#ThePage) · `html` ← [HTML](../std/releases/0.14.0/docs/html.md#Html) · `commands` ← [Trame's commands](conventions.md#TrameCommands) · `logo` ← [Logo](#Logo) · `block` ← [Element over several lines](html.md#HtmlBlock) · `element` ← [HTML element](html.md#HtmlElement)
+- Parameters: `standard` ← [The page](#ThePage) · `html` ← [HTML](../std/releases/0.15.0/docs/html.md#Html) · `commands` ← [Trame's commands](conventions.md#TrameCommands) · `logo` ← [Logo](#Logo) · `block` ← [Element over several lines](html.md#HtmlBlock) · `element` ← [HTML element](html.md#HtmlElement)
 - Body: inline, in the declaration
 - Defined by: [The page](#ThePage)
 - Read in: [HTML markup](html.md#HtmlMarkup)
@@ -87,7 +87,7 @@ Section: Side bar
 | `` | `"<div class=\"status\" id=\"status\"></div>"` | held, read as HTML markup |
 
 - Owner: trame
-- Parameters: `standard` ← [The page](#ThePage) · `regions` ← [Regions of the page](#PageRegions) · `html` ← [HTML](../std/releases/0.14.0/docs/html.md#Html) · `element` ← [HTML element](html.md#HtmlElement) · `texts` ← [Texts](../std/releases/0.14.0/docs/algebra.md#Texts)
+- Parameters: `standard` ← [The page](#ThePage) · `regions` ← [Regions of the page](#PageRegions) · `html` ← [HTML](../std/releases/0.15.0/docs/html.md#Html) · `element` ← [HTML element](html.md#HtmlElement) · `texts` ← [Texts](../std/releases/0.15.0/docs/algebra.md#Texts)
 - Body: inline, in the declaration
 - Defined by: [The page](#ThePage)
 - Read in: [HTML markup](html.md#HtmlMarkup)
@@ -113,7 +113,7 @@ Section: Side bar
 | `"Graph in force on"` | `["<div>","  <p class=\"label\" id=\"dates-label\">Graph in force on</p>","  <div class=\"dates\" id=\"dates\" role=\"group\" aria-labelledby=\"dates-label\"></div>","  <div class=\"date-note\" id=\"date-note\"></div>","</div>"]` | held, read as HTML markup |
 
 - Owner: trame
-- Parameters: `standard` ← [The page](#ThePage) · `regions` ← [Regions of the page](#PageRegions) · `html` ← [HTML](../std/releases/0.14.0/docs/html.md#Html) · `aria` ← [WAI-ARIA](../std/releases/0.14.0/docs/html.md#Aria) · `block` ← [Element over several lines](html.md#HtmlBlock) · `element` ← [HTML element](html.md#HtmlElement) · `texts` ← [Texts](../std/releases/0.14.0/docs/algebra.md#Texts)
+- Parameters: `standard` ← [The page](#ThePage) · `regions` ← [Regions of the page](#PageRegions) · `html` ← [HTML](../std/releases/0.15.0/docs/html.md#Html) · `aria` ← [WAI-ARIA](../std/releases/0.15.0/docs/html.md#Aria) · `block` ← [Element over several lines](html.md#HtmlBlock) · `element` ← [HTML element](html.md#HtmlElement) · `texts` ← [Texts](../std/releases/0.15.0/docs/algebra.md#Texts)
 - Body: inline, in the declaration
 - Defined by: [The page](#ThePage)
 - Read in: [HTML markup](html.md#HtmlMarkup)
@@ -140,7 +140,7 @@ Section: Main area
 | `"Rendering", ["Rendered","Markdown","Text"]` | `["<header class=\"doc-head\">","  <div class=\"path\" id=\"doc-path\"></div>","  <div class=\"toggle\" id=\"toggle\" role=\"group\" aria-label=\"Rendering\">","    <button type=\"button\" id=\"view-rendered\" aria-pressed=\"true\">Rendered</button>","    <button type=\"button\" id=\"view-markdown\" aria-pressed=\"false\">Markdown</button>","    <button type=\"button\" id=\"view-text\" aria-pressed=\"false\">Text</button>","  </div>","</header>"]` | held, read as HTML markup |
 
 - Owner: trame
-- Parameters: `standard` ← [The page](#ThePage) · `regions` ← [Regions of the page](#PageRegions) · `html` ← [HTML](../std/releases/0.14.0/docs/html.md#Html) · `block` ← [Element over several lines](html.md#HtmlBlock) · `element` ← [HTML element](html.md#HtmlElement) · `toggle` ← [Choice of rendering](#RenderingToggle) · `texts` ← [Texts](../std/releases/0.14.0/docs/algebra.md#Texts)
+- Parameters: `standard` ← [The page](#ThePage) · `regions` ← [Regions of the page](#PageRegions) · `html` ← [HTML](../std/releases/0.15.0/docs/html.md#Html) · `block` ← [Element over several lines](html.md#HtmlBlock) · `element` ← [HTML element](html.md#HtmlElement) · `toggle` ← [Choice of rendering](#RenderingToggle) · `texts` ← [Texts](../std/releases/0.15.0/docs/algebra.md#Texts)
 - Body: inline, in the declaration
 - Defined by: [The page](#ThePage)
 - Read in: [HTML markup](html.md#HtmlMarkup)
@@ -168,7 +168,7 @@ Section: Side bar
 | `"Document"` | `["<div class=\"mobile-pick\">","  <label class=\"label\" for=\"doc-select\">Document</label>","  <select id=\"doc-select\"></select>","</div>"]` | held, read as HTML markup |
 
 - Owner: trame
-- Parameters: `standard` ← [The page](#ThePage) · `regions` ← [Regions of the page](#PageRegions) · `html` ← [HTML](../std/releases/0.14.0/docs/html.md#Html) · `block` ← [Element over several lines](html.md#HtmlBlock) · `element` ← [HTML element](html.md#HtmlElement) · `texts` ← [Texts](../std/releases/0.14.0/docs/algebra.md#Texts)
+- Parameters: `standard` ← [The page](#ThePage) · `regions` ← [Regions of the page](#PageRegions) · `html` ← [HTML](../std/releases/0.15.0/docs/html.md#Html) · `block` ← [Element over several lines](html.md#HtmlBlock) · `element` ← [HTML element](html.md#HtmlElement) · `texts` ← [Texts](../std/releases/0.15.0/docs/algebra.md#Texts)
 - Body: inline, in the declaration
 - Defined by: [The page](#ThePage)
 - Read in: [HTML markup](html.md#HtmlMarkup)
@@ -189,7 +189,7 @@ Section: Figures
 | `` | `["<svg class=\"figure-defs\" width=\"0\" height=\"0\" aria-hidden=\"true\">","  <defs><marker id=\"arrow-base\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path class=\"arrow\" d=\"M0,0 L10,5 L0,10 z\"/></marker><marker id=\"arrow-to-accent\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path class=\"arrow-accent\" d=\"M0,0 L10,5 L0,10 z\"/></marker><marker id=\"arrow-to-bad\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path class=\"arrow-bad\" d=\"M0,0 L10,5 L0,10 z\"/></marker><marker id=\"arrow-to-warn\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path class=\"arrow-warn\" d=\"M0,0 L10,5 L0,10 z\"/></marker></defs>","</svg>"]` | held, read as HTML markup |
 
 - Owner: trame
-- Parameters: `standard` ← [The page](#ThePage) · `svg` ← [SVG](../std/releases/0.14.0/docs/html.md#Svg) · `aria` ← [WAI-ARIA](../std/releases/0.14.0/docs/html.md#Aria) · `html` ← [HTML](../std/releases/0.14.0/docs/html.md#Html) · `figures` ← [Figures in the page](markup.md#FigureMarkup) · `drawing` ← [Drawing of a graph](appearance.md#GraphDrawing) · `counts` ← [Counts](../std/releases/0.14.0/docs/algebra.md#Counts) · `texts` ← [Texts](../std/releases/0.14.0/docs/algebra.md#Texts) · `block` ← [Element over several lines](html.md#HtmlBlock) · `element` ← [HTML element](html.md#HtmlElement) · `empty` ← [Self-closing tag](html.md#SelfClosingTag) · `path` ← [Path data](html.md#PathData)
+- Parameters: `standard` ← [The page](#ThePage) · `svg` ← [SVG](../std/releases/0.15.0/docs/html.md#Svg) · `aria` ← [WAI-ARIA](../std/releases/0.15.0/docs/html.md#Aria) · `html` ← [HTML](../std/releases/0.15.0/docs/html.md#Html) · `figures` ← [Figures in the page](markup.md#FigureMarkup) · `drawing` ← [Drawing of a graph](appearance.md#GraphDrawing) · `counts` ← [Counts](../std/releases/0.15.0/docs/algebra.md#Counts) · `texts` ← [Texts](../std/releases/0.15.0/docs/algebra.md#Texts) · `block` ← [Element over several lines](html.md#HtmlBlock) · `element` ← [HTML element](html.md#HtmlElement) · `empty` ← [Self-closing tag](html.md#SelfClosingTag) · `path` ← [Path data](html.md#PathData)
 - Body: inline, in the declaration
 - Defined by: [The page](#ThePage)
 - Read in: [HTML markup](html.md#HtmlMarkup)
@@ -219,9 +219,9 @@ Section: 4.6.7.11 Link type preconnect; 4.6.7.17 Link type stylesheet; 2.5.4 COR
 | `"https://fonts.example", "https://files.example", "https://fonts.example/css"` | `"<link rel=\"preconnect\" href=\"https://fonts.example\"><link rel=\"preconnect\" href=\"https://files.example\" crossorigin><link rel=\"stylesheet\" href=\"https://fonts.example/css\">"` | held, read as HTML markup |
 
 - Owner: trame
-- Parameters: `standard` ← [HTML](../std/releases/0.14.0/docs/html.md#Html) · `startTag` ← [Start tag](html.md#HtmlStartTag) · `texts` ← [Texts](../std/releases/0.14.0/docs/algebra.md#Texts)
+- Parameters: `standard` ← [HTML](../std/releases/0.15.0/docs/html.md#Html) · `startTag` ← [Start tag](html.md#HtmlStartTag) · `texts` ← [Texts](../std/releases/0.15.0/docs/algebra.md#Texts)
 - Body: inline, in the declaration
-- Defined by: [HTML](../std/releases/0.14.0/docs/html.md#Html)
+- Defined by: [HTML](../std/releases/0.15.0/docs/html.md#Html)
 - Read in: [HTML markup](html.md#HtmlMarkup)
 - Used by: [Page](#Page)
 
@@ -250,7 +250,7 @@ Section: Brand
 | `` | `["<svg width=\"26\" height=\"26\" viewBox=\"0 0 26 26\" aria-hidden=\"true\">","  <rect x=\"0\" y=\"0\" width=\"26\" height=\"26\" rx=\"6\" fill=\"var(--accent-soft)\"/>","  <g stroke=\"var(--accent)\" stroke-width=\"2.2\" stroke-linecap=\"round\" fill=\"none\"><path d=\"M7 5v16M13 5v16M19 5v16\"/></g>","  <g stroke=\"var(--ink)\" stroke-width=\"2.2\" stroke-linecap=\"round\" fill=\"none\"><path d=\"M5 9h3M10 9h6M18 9h3M5 17h3M10 17h6M18 17h3\"/></g>","</svg>"]` | held, read as HTML markup |
 
 - Owner: trame
-- Parameters: `standard` ← [The page](#ThePage) · `svg` ← [SVG](../std/releases/0.14.0/docs/html.md#Svg) · `aria` ← [WAI-ARIA](../std/releases/0.14.0/docs/html.md#Aria) · `palette` ← [Palette](appearance.md#Palette) · `counts` ← [Counts](../std/releases/0.14.0/docs/algebra.md#Counts) · `block` ← [Element over several lines](html.md#HtmlBlock) · `element` ← [HTML element](html.md#HtmlElement) · `empty` ← [Self-closing tag](html.md#SelfClosingTag) · `variable` ← [Variable](html.md#CssVariable)
+- Parameters: `standard` ← [The page](#ThePage) · `svg` ← [SVG](../std/releases/0.15.0/docs/html.md#Svg) · `aria` ← [WAI-ARIA](../std/releases/0.15.0/docs/html.md#Aria) · `palette` ← [Palette](appearance.md#Palette) · `counts` ← [Counts](../std/releases/0.15.0/docs/algebra.md#Counts) · `block` ← [Element over several lines](html.md#HtmlBlock) · `element` ← [HTML element](html.md#HtmlElement) · `empty` ← [Self-closing tag](html.md#SelfClosingTag) · `variable` ← [Variable](html.md#CssVariable)
 - Body: inline, in the declaration
 - Defined by: [The page](#ThePage)
 - Read in: [HTML markup](html.md#HtmlMarkup)
@@ -276,7 +276,7 @@ Section: Main area
 | `{"subtitle":"graph","dates":"Dates","navigation":"Views","document":"Document","rendering":"Rendering","renderings":["Rendered","Markdown","Text"]}` | `["<main>","  <div class=\"banner\" id=\"banner\" hidden></div>","  <header class=\"doc-head\">","    <div class=\"path\" id=\"doc-path\"></div>","    <div class=\"toggle\" id=\"toggle\" role=\"group\" aria-label=\"Rendering\">","      <button type=\"button\" id=\"view-rendered\" aria-pressed=\"true\">Rendered</button>","      <button type=\"button\" id=\"view-markdown\" aria-pressed=\"false\">Markdown</button>","      <button type=\"button\" id=\"view-text\" aria-pressed=\"false\">Text</button>","    </div>","  </header>","  <article class=\"doc\" id=\"doc\"></article>","</main>"]` | held, read as HTML markup |
 
 - Owner: trame
-- Parameters: `standard` ← [The page](#ThePage) · `regions` ← [Regions of the page](#PageRegions) · `html` ← [HTML](../std/releases/0.14.0/docs/html.md#Html) · `block` ← [Element over several lines](html.md#HtmlBlock) · `element` ← [HTML element](html.md#HtmlElement) · `banner` ← [Banner](#Banner) · `head` ← [Head of the document](#DocumentHead) · `texts` ← [Texts](../std/releases/0.14.0/docs/algebra.md#Texts)
+- Parameters: `standard` ← [The page](#ThePage) · `regions` ← [Regions of the page](#PageRegions) · `html` ← [HTML](../std/releases/0.15.0/docs/html.md#Html) · `block` ← [Element over several lines](html.md#HtmlBlock) · `element` ← [HTML element](html.md#HtmlElement) · `banner` ← [Banner](#Banner) · `head` ← [Head of the document](#DocumentHead) · `texts` ← [Texts](../std/releases/0.15.0/docs/algebra.md#Texts)
 - Body: inline, in the declaration
 - Defined by: [The page](#ThePage)
 - Read in: [HTML markup](html.md#HtmlMarkup)
@@ -327,7 +327,7 @@ Section: Side bar
 | `"Documents and views"` | `"<nav class=\"nav\" id=\"nav\" aria-label=\"Documents and views\"></nav>"` | held, read as HTML markup |
 
 - Owner: trame
-- Parameters: `standard` ← [The page](#ThePage) · `regions` ← [Regions of the page](#PageRegions) · `html` ← [HTML](../std/releases/0.14.0/docs/html.md#Html) · `aria` ← [WAI-ARIA](../std/releases/0.14.0/docs/html.md#Aria) · `element` ← [HTML element](html.md#HtmlElement) · `texts` ← [Texts](../std/releases/0.14.0/docs/algebra.md#Texts)
+- Parameters: `standard` ← [The page](#ThePage) · `regions` ← [Regions of the page](#PageRegions) · `html` ← [HTML](../std/releases/0.15.0/docs/html.md#Html) · `aria` ← [WAI-ARIA](../std/releases/0.15.0/docs/html.md#Aria) · `element` ← [HTML element](html.md#HtmlElement) · `texts` ← [Texts](../std/releases/0.15.0/docs/algebra.md#Texts)
 - Body: inline, in the declaration
 - Defined by: [The page](#ThePage)
 - Read in: [HTML markup](html.md#HtmlMarkup)
@@ -366,7 +366,7 @@ Section: Document
 | `{"lang":"en-GB","title":"Trame graph","fonts":"<link>","style":"body { margin: 0; }","shell":["<div class=\"app\">","</div>"],"scripts":"<script>start()</script>","fragment":true}` | `"<title>Trame graph</title>\n<meta name=\"claude:viewport-fit-sides\" content=\"cover\">\n<link>\n<style>body { margin: 0; }</style>\n<div class=\"app\">\n</div>\n<script>start()</script>\n"` | held, read as HTML markup |
 
 - Owner: trame
-- Parameters: `standard` ← [The page](#ThePage) · `htmlNames` ← [HTML](../std/releases/0.14.0/docs/html.md#Html) · `doctype` ← [DOCTYPE](html.md#Doctype) · `startTag` ← [Start tag](html.md#HtmlStartTag) · `endTag` ← [End tag](html.md#HtmlEndTag) · `element` ← [HTML element](html.md#HtmlElement) · `file` ← [Text file](../std/releases/0.14.0/docs/text.md#TextFile) · `texts` ← [Texts](../std/releases/0.14.0/docs/algebra.md#Texts)
+- Parameters: `standard` ← [The page](#ThePage) · `htmlNames` ← [HTML](../std/releases/0.15.0/docs/html.md#Html) · `doctype` ← [DOCTYPE](html.md#Doctype) · `startTag` ← [Start tag](html.md#HtmlStartTag) · `endTag` ← [End tag](html.md#HtmlEndTag) · `element` ← [HTML element](html.md#HtmlElement) · `file` ← [Text file](../std/releases/0.15.0/docs/text.md#TextFile) · `texts` ← [Texts](../std/releases/0.15.0/docs/algebra.md#Texts)
 - Body: inline, in the declaration
 - Defined by: [The page](#ThePage)
 - Read in: [HTML markup](html.md#HtmlMarkup)
@@ -388,7 +388,7 @@ Section: Scripts
 | `"start()", undefined, undefined` | `"<script type=\"module\">start()</script>"` | held, read as HTML markup |
 
 - Owner: trame
-- Parameters: `standard` ← [The page](#ThePage) · `html` ← [HTML](../std/releases/0.14.0/docs/html.md#Html) · `script` ← [Script](html.md#ScriptElement) · `json` ← [JSON in a script](html.md#JsonInScript) · `member` ← [Property access](typescript.md#MemberAccess) · `assignment` ← [Assignment](typescript.md#Assignment) · `texts` ← [Texts](../std/releases/0.14.0/docs/algebra.md#Texts)
+- Parameters: `standard` ← [The page](#ThePage) · `html` ← [HTML](../std/releases/0.15.0/docs/html.md#Html) · `script` ← [Script](html.md#ScriptElement) · `json` ← [JSON in a script](html.md#JsonInScript) · `member` ← [Property access](typescript.md#MemberAccess) · `assignment` ← [Assignment](typescript.md#Assignment) · `texts` ← [Texts](../std/releases/0.15.0/docs/algebra.md#Texts)
 - Body: inline, in the declaration
 - Defined by: [The page](#ThePage)
 - Read in: [HTML markup](html.md#HtmlMarkup)
@@ -409,7 +409,7 @@ Section: Main area
 | `"Rendering", ["Rendered","Markdown","Text"]` | `["<div class=\"toggle\" id=\"toggle\" role=\"group\" aria-label=\"Rendering\">","  <button type=\"button\" id=\"view-rendered\" aria-pressed=\"true\">Rendered</button>","  <button type=\"button\" id=\"view-markdown\" aria-pressed=\"false\">Markdown</button>","  <button type=\"button\" id=\"view-text\" aria-pressed=\"false\">Text</button>","</div>"]` | held, read as HTML markup |
 
 - Owner: trame
-- Parameters: `standard` ← [The page](#ThePage) · `modes` ← [The renderings of a document](#RenderingModes) · `regions` ← [Regions of the page](#PageRegions) · `html` ← [HTML](../std/releases/0.14.0/docs/html.md#Html) · `aria` ← [WAI-ARIA](../std/releases/0.14.0/docs/html.md#Aria) · `block` ← [Element over several lines](html.md#HtmlBlock) · `element` ← [HTML element](html.md#HtmlElement) · `sequences` ← [Sequences](../std/releases/0.14.0/docs/algebra.md#Sequences)
+- Parameters: `standard` ← [The page](#ThePage) · `modes` ← [The renderings of a document](#RenderingModes) · `regions` ← [Regions of the page](#PageRegions) · `html` ← [HTML](../std/releases/0.15.0/docs/html.md#Html) · `aria` ← [WAI-ARIA](../std/releases/0.15.0/docs/html.md#Aria) · `block` ← [Element over several lines](html.md#HtmlBlock) · `element` ← [HTML element](html.md#HtmlElement) · `sequences` ← [Sequences](../std/releases/0.15.0/docs/algebra.md#Sequences)
 - Body: inline, in the declaration
 - Defined by: [The page](#ThePage)
 - Read in: [HTML markup](html.md#HtmlMarkup)
@@ -434,7 +434,7 @@ Section: Shell
 | `{"subtitle":"graph","dates":"Dates","navigation":"Views","document":"Document","rendering":"Rendering","renderings":["Rendered","Markdown","Text"]}` | `["<div class=\"app\">","  <aside class=\"side\">","    <div class=\"brand\">","      <svg width=\"26\" height=\"26\" viewBox=\"0 0 26 26\" aria-hidden=\"true\">","        <rect x=\"0\" y=\"0\" width=\"26\" height=\"26\" rx=\"6\" fill=\"var(--accent-soft)\"/>","        <g stroke=\"var(--accent)\" stroke-width=\"2.2\" stroke-linecap=\"round\" fill=\"none\"><path d=\"M7 5v16M13 5v16M19 5v16\"/></g>","        <g stroke=\"var(--ink)\" stroke-width=\"2.2\" stroke-linecap=\"round\" fill=\"none\"><path d=\"M5 9h3M10 9h6M18 9h3M5 17h3M10 17h6M18 17h3\"/></g>","      </svg>","      <div class=\"brand-name\">trame <span>graph</span></div>","    </div>","    <div class=\"status\" id=\"status\"></div>","    <div>","      <p class=\"label\" id=\"dates-label\">Dates</p>","      <div class=\"dates\" id=\"dates\" role=\"group\" aria-labelledby=\"dates-label\"></div>","      <div class=\"date-note\" id=\"date-note\"></div>","    </div>","    <nav class=\"nav\" id=\"nav\" aria-label=\"Views\"></nav>","    <div class=\"mobile-pick\">","      <label class=\"label\" for=\"doc-select\">Document</label>","      <select id=\"doc-select\"></select>","    </div>","  </aside>","  <main>","    <div class=\"banner\" id=\"banner\" hidden></div>","    <header class=\"doc-head\">","      <div class=\"path\" id=\"doc-path\"></div>","      <div class=\"toggle\" id=\"toggle\" role=\"group\" aria-label=\"Rendering\">","        <button type=\"button\" id=\"view-rendered\" aria-pressed=\"true\">Rendered</button>","        <button type=\"button\" id=\"view-markdown\" aria-pressed=\"false\">Markdown</button>","        <button type=\"button\" id=\"view-text\" aria-pressed=\"false\">Text</button>","      </div>","    </header>","    <article class=\"doc\" id=\"doc\"></article>","  </main>","  <svg class=\"figure-defs\" width=\"0\" height=\"0\" aria-hidden=\"true\">","    <defs><marker id=\"arrow-base\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path class=\"arrow\" d=\"M0,0 L10,5 L0,10 z\"/></marker><marker id=\"arrow-to-accent\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path class=\"arrow-accent\" d=\"M0,0 L10,5 L0,10 z\"/></marker><marker id=\"arrow-to-bad\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path class=\"arrow-bad\" d=\"M0,0 L10,5 L0,10 z\"/></marker><marker id=\"arrow-to-warn\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path class=\"arrow-warn\" d=\"M0,0 L10,5 L0,10 z\"/></marker></defs>","  </svg>","</div>"]` | held, read as HTML markup |
 
 - Owner: trame
-- Parameters: `standard` ← [The page](#ThePage) · `html` ← [HTML](../std/releases/0.14.0/docs/html.md#Html) · `block` ← [Element over several lines](html.md#HtmlBlock) · `side` ← [Side bar](#SideBar) · `main` ← [Main area](#MainArea) · `markers` ← [Arrowheads of the figures](#FigureMarkers)
+- Parameters: `standard` ← [The page](#ThePage) · `html` ← [HTML](../std/releases/0.15.0/docs/html.md#Html) · `block` ← [Element over several lines](html.md#HtmlBlock) · `side` ← [Side bar](#SideBar) · `main` ← [Main area](#MainArea) · `markers` ← [Arrowheads of the figures](#FigureMarkers)
 - Body: inline, in the declaration
 - Defined by: [The page](#ThePage)
 - Read in: [HTML markup](html.md#HtmlMarkup)
@@ -460,7 +460,7 @@ Section: Side bar
 | `{"subtitle":"graph","dates":"Dates","navigation":"Views","document":"Document","rendering":"Rendering","renderings":["Rendered","Markdown","Text"]}` | `["<aside class=\"side\">","  <div class=\"brand\">","    <svg width=\"26\" height=\"26\" viewBox=\"0 0 26 26\" aria-hidden=\"true\">","      <rect x=\"0\" y=\"0\" width=\"26\" height=\"26\" rx=\"6\" fill=\"var(--accent-soft)\"/>","      <g stroke=\"var(--accent)\" stroke-width=\"2.2\" stroke-linecap=\"round\" fill=\"none\"><path d=\"M7 5v16M13 5v16M19 5v16\"/></g>","      <g stroke=\"var(--ink)\" stroke-width=\"2.2\" stroke-linecap=\"round\" fill=\"none\"><path d=\"M5 9h3M10 9h6M18 9h3M5 17h3M10 17h6M18 17h3\"/></g>","    </svg>","    <div class=\"brand-name\">trame <span>graph</span></div>","  </div>","  <div class=\"status\" id=\"status\"></div>","  <div>","    <p class=\"label\" id=\"dates-label\">Dates</p>","    <div class=\"dates\" id=\"dates\" role=\"group\" aria-labelledby=\"dates-label\"></div>","    <div class=\"date-note\" id=\"date-note\"></div>","  </div>","  <nav class=\"nav\" id=\"nav\" aria-label=\"Views\"></nav>","  <div class=\"mobile-pick\">","    <label class=\"label\" for=\"doc-select\">Document</label>","    <select id=\"doc-select\"></select>","  </div>","</aside>"]` | held, read as HTML markup |
 
 - Owner: trame
-- Parameters: `standard` ← [The page](#ThePage) · `html` ← [HTML](../std/releases/0.14.0/docs/html.md#Html) · `block` ← [Element over several lines](html.md#HtmlBlock) · `brand` ← [Brand](#Brand) · `state` ← [State of the compilation](#CompilationState) · `dates` ← [Dates](#DatePicker) · `navigation` ← [Navigation](#Navigation) · `picker` ← [Document picker](#DocumentPicker)
+- Parameters: `standard` ← [The page](#ThePage) · `html` ← [HTML](../std/releases/0.15.0/docs/html.md#Html) · `block` ← [Element over several lines](html.md#HtmlBlock) · `brand` ← [Brand](#Brand) · `state` ← [State of the compilation](#CompilationState) · `dates` ← [Dates](#DatePicker) · `navigation` ← [Navigation](#Navigation) · `picker` ← [Document picker](#DocumentPicker)
 - Body: inline, in the declaration
 - Defined by: [The page](#ThePage)
 - Read in: [HTML markup](html.md#HtmlMarkup)
@@ -488,7 +488,7 @@ Section: Style
 | `"held", "ok-soft", "ok"` | `[".st-held { background: var(--ok-soft); color: var(--ok); }",".fn.st-held rect.box { fill: var(--ok-soft); stroke: var(--ok); }"]` | held, read as CSS style sheets |
 
 - Owner: trame
-- Parameters: `standard` ← [The page](#ThePage) · `css` ← [CSS](../std/releases/0.14.0/docs/html.md#Css) · `svg` ← [SVG](../std/releases/0.14.0/docs/html.md#Svg) · `rule` ← [Rule](html.md#CssRule) · `declaration` ← [Declaration](html.md#CssDeclaration) · `variable` ← [Variable](html.md#CssVariable) · `selector` ← [Class selector](html.md#ClassSelector)
+- Parameters: `standard` ← [The page](#ThePage) · `css` ← [CSS](../std/releases/0.15.0/docs/html.md#Css) · `svg` ← [SVG](../std/releases/0.15.0/docs/html.md#Svg) · `rule` ← [Rule](html.md#CssRule) · `declaration` ← [Declaration](html.md#CssDeclaration) · `variable` ← [Variable](html.md#CssVariable) · `selector` ← [Class selector](html.md#ClassSelector)
 - Body: inline, in the declaration
 - Defined by: [The page](#ThePage)
 - Read in: [CSS style sheets](html.md#CssStyleSheets)
@@ -680,7 +680,7 @@ Consequences: Each family of measures is a decision of appearance, and the theme
 The page put together: its shell, its theme and the style of a standalone document, written by the syntax elements of the page; its style sheet and its script (bundled by esbuild, once) read from the resources; the compiled graph. What it writes is read back before it is given (languages.ReadBackWhatIsWritten): the style in CSS, where each variable used must be written, and the page in HTML.
 
 - Owner: trame
-- Parameters: `pageBundle` ← [Bundle of the page](#PageBundle) · `standalone` ← [Style of the standalone document](#StandaloneStyle) · `encodings` ← [Node.js character encodings](../std/releases/0.14.0/docs/system.md#NodeEncodings) · `file` ← [Text file](../std/releases/0.14.0/docs/text.md#TextFile) · `palette` ← [Palette](appearance.md#Palette) · `typography` ← [Typography](appearance.md#Typography) · `narrowScreen` ← [Narrow screen](appearance.md#NarrowScreen) · `spacing` ← [Spacing](appearance.md#Spacing) · `radii` ← [Radii](appearance.md#Radii) · `typeScale` ← [Type scale](appearance.md#TypeScale) · `opacities` ← [Opacities](appearance.md#Opacities) · `strokes` ← [Strokes](appearance.md#Strokes) · `motion` ← [Motion](appearance.md#Motion) · `pageLayout` ← [Page layout](appearance.md#PageLayout) · `resources` ← [Page resources](architecture.md#Resources) · `reading` ← [File reading](architecture.md#FileReading) · `bundler` ← [Bundler](architecture.md#Bundler) · `compression` ← [Compression](architecture.md#Compression) · `shell` ← [Shell](#Shell) · `theme` ← [Theme](#Theme) · `statusStyle` ← [Colours of a status](#StatusStyle) · `narrow` ← [Rules of a narrow screen](#NarrowScreenRule) · `fonts` ← [Fonts](#FontLinks) · `scripts` ← [Scripts of the page](#PageScripts) · `document` ← [Document of the page](#PageDocument) · `rule` ← [Rule](html.md#CssRule) · `declaration` ← [Declaration](html.md#CssDeclaration) · `messages` ← [Messages of the outputs](messages.md#OutputMessages) · `language` ← [Language](messages.md#Language) · `reader` ← [Syntax reader](syntax.md#SyntaxReader) · `markup` ← [HTML markup](html.md#HtmlMarkup) · `sheets` ← [CSS style sheets](html.md#CssStyleSheets) · `gnu` ← [Positions in a file](../std/releases/0.14.0/docs/text.md#GnuPositions)
+- Parameters: `pageBundle` ← [Bundle of the page](#PageBundle) · `standalone` ← [Style of the standalone document](#StandaloneStyle) · `encodings` ← [Node.js character encodings](../std/releases/0.15.0/docs/system.md#NodeEncodings) · `file` ← [Text file](../std/releases/0.15.0/docs/text.md#TextFile) · `palette` ← [Palette](appearance.md#Palette) · `typography` ← [Typography](appearance.md#Typography) · `narrowScreen` ← [Narrow screen](appearance.md#NarrowScreen) · `spacing` ← [Spacing](appearance.md#Spacing) · `radii` ← [Radii](appearance.md#Radii) · `typeScale` ← [Type scale](appearance.md#TypeScale) · `opacities` ← [Opacities](appearance.md#Opacities) · `strokes` ← [Strokes](appearance.md#Strokes) · `motion` ← [Motion](appearance.md#Motion) · `pageLayout` ← [Page layout](appearance.md#PageLayout) · `resources` ← [Page resources](architecture.md#Resources) · `reading` ← [File reading](architecture.md#FileReading) · `bundler` ← [Bundler](architecture.md#Bundler) · `compression` ← [Compression](architecture.md#Compression) · `shell` ← [Shell](#Shell) · `theme` ← [Theme](#Theme) · `statusStyle` ← [Colours of a status](#StatusStyle) · `narrow` ← [Rules of a narrow screen](#NarrowScreenRule) · `fonts` ← [Fonts](#FontLinks) · `scripts` ← [Scripts of the page](#PageScripts) · `document` ← [Document of the page](#PageDocument) · `rule` ← [Rule](html.md#CssRule) · `declaration` ← [Declaration](html.md#CssDeclaration) · `messages` ← [Messages of the outputs](messages.md#OutputMessages) · `language` ← [Language](messages.md#Language) · `reader` ← [Syntax reader](syntax.md#SyntaxReader) · `markup` ← [HTML markup](html.md#HtmlMarkup) · `sheets` ← [CSS style sheets](html.md#CssStyleSheets) · `gnu` ← [Positions in a file](../std/releases/0.15.0/docs/text.md#GnuPositions)
 - Body: `./code/page/page.ts` (typescript)
 - Effects: execution, keeps, read
 - Serves: [A specification that runs](product.md#ExecutableSpecification)

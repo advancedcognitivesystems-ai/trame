@@ -16,6 +16,7 @@ import type { Api as CyclesApi } from "./cycles"
 import type { Api as DriversApi, LiteralFound, LiteralSource } from "../languages/drivers"
 import { AnyTarget, ArtifactField, DeliveryField, EdgeMode, EdgeName, FieldType, KindHook, KindName, Moment, Origin, PackageField, QuantityEdge, QuantityField, ResolutionKind, ResolutionOutcome, Severity, Stage } from "../../../trame/kernel"
 import type { AnyNode, AnyKind, Constant, Evidence, HoleSpec, Noun, ProvidedBy, Reach, Resolution, StaticInfo } from "../../../trame/kernel"
+import type { PackageSource } from "#std/tooling"
 import type { Reached } from "./static-analysis"
 import type { PlatformEffects, MayDo } from "#std/effects"
 import type { LanguageNames } from "../../conventions"
@@ -153,6 +154,8 @@ export interface Loaded {
   engine?: string
   /** The versions of the packages installed in the project, by name, as its lockfile says. */
   installed: Map<string, string>
+  /** The versions the origin of each package of Trame the project references holds, by the reference (since g100). */
+  versions: Map<string, readonly string[]>
   /** The bodies of the graph, by language: a file, or an inline property of a declaration. A shared body is listed once. */
   bodies: Map<string, LiteralSource[]>
   /** The literals of each code body, found by the driver of its language. */
@@ -198,6 +201,8 @@ export interface Deps {
   platform: ProvidedBy<typeof PlatformEffects>
   /** How a project names the language: the compiler is led to its files. */
   names: ProvidedBy<typeof LanguageNames>
+  /** Where each package of Trame comes from: asked which versions it holds, for a reference to warn of a newer one. */
+  packages: PackageSource
 }
 
 const body = (deps: Deps) => {
@@ -208,7 +213,7 @@ const body = (deps: Deps) => {
   const { head, pairs } = deps.sequences
   const { empty, optional } = deps.texts
   const { readdirSync, readFileSync, existsSync } = deps.reading
-  const { join, basename, dirname, relative } = deps.paths
+  const { join, basename, dirname, relative, resolve } = deps.paths
   const { analyze } = deps.analysis
   const { projectDirs } = deps.project
   const { makeGraph } = deps.graph
@@ -352,7 +357,25 @@ const body = (deps: Deps) => {
       if (r) reaches.set(n, r)
     }
     const bodies = bodiesOf(root, nodes, infos)
+    // The versions each origin holds of the packages of Trame the project references (since g100): the language at a
+    // generation, a library at a version. A reference reads them to say that a newer one is out.
+    const versions = new Map<string, readonly string[]>()
+    for (const n of nodes) {
+      const { def, data } = meta(n)
+      if (def.name !== KindName.package || !deps.values.isText(data[PackageField.joins])) continue
+      const text = (k: string) => (deps.values.isText(data[k]) ? data[k] : undefined)
+      const at = text(PackageField.at)
+      try {
+        versions.set(refOf(n), deps.packages.versions({
+          project: root, under: deps.layout.libraryLinks, name: String(data[PackageField.name]), version: text(PackageField.version),
+          from: text(PackageField.from), at: at === undefined ? undefined : resolve(root, at),
+        }))
+      } catch {
+        // An origin that cannot be read says nothing: no version is known there.
+      }
+    }
     return {
+      versions,
       code: codeOf(root, nodes, infos),
       root, modules: own.map((m) => m.module), moduleTitle, nodes, anonymous, infos, rests, typeErrors, quantityErrors, textAsCode, forgedCommands, uses, reaches, ...readEvidence(root), installed: loadInstalled(root),
       engine: dirs.engine === undefined ? undefined : deps.engines.recorded(dirs.engine),
@@ -828,7 +851,7 @@ const body = (deps: Deps) => {
       capabilities,
       wire: (deps, env) => wireDeps({ graph: g, root: l.root, today, refused }, deps, env),
       plan: (entries, env) => plan({ graph: g, root: l.root, today, refused }, entries, env),
-      evidence: given, installed: l.installed, libraries: new Map(l.libraries.map((lib) => [lib.name, lib.version])), code: l.code,
+      evidence: given, installed: l.installed, versions: l.versions, libraries: new Map(l.libraries.map((lib) => [lib.name, lib.version])), code: l.code,
       engine: l.engine,
       onBlocked: (hole, what, of) => {
         const byKey = blocked.get(hole.key) ?? new Map()

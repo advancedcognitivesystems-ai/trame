@@ -5,7 +5,7 @@
 
 import type { ProvidedBy } from "../../../trame/kernel"
 import type { Handler } from "../../../kinds/entry-point"
-import type { Clock, FileReading, FileTrees, FileWriting, HttpServer, KeptRuns, PackageReports, Paths, Programs, Terminal, Timer } from "../../architecture"
+import type { Clock, FileReading, FileTrees, FileWriting, HttpServer, KeptRuns, PackageReports, Paths, Programs, Terminal, Timer, PackageInstalls, Layout } from "../../architecture"
 import type { CommandMessages } from "../../messages"
 import type { Api as PreparationApi } from "./preparation"
 import type { Counts, Texts } from "#std/algebra"
@@ -28,6 +28,9 @@ export interface Deps {
   httpServer: HttpServer
   timer: Timer
   reports: PackageReports
+  /** What installs a project's packages and writes its lockfile (since g100). */
+  installs: PackageInstalls
+  layout: Layout
   clock: Clock
   paths: Paths
   terminal: Terminal
@@ -92,6 +95,11 @@ const body = (deps: Deps): Handler => async (req) => {
     deps.timer.setTimeout(() => done(clock.now().getTime() >= before), probe.pause)
   }))
   await ask(messages.doctorRegistry(), async () => Array.isArray(await deps.reports.audit(o.root)))
+  // A project that names no package: the installer writes its lockfile all the same (since g100).
+  await ask(messages.doctorInstalls(), async () => {
+    writing.writeFileSync(join(dir, deps.layout.manifest), JSON.stringify({}))
+    return (await deps.installs.install(dir)) === exitStatus.success && reading.existsSync(join(dir, deps.layout.lockfile))
+  })
   trees.remove(dir)
   trees.remove(copy)
   const answered = results.filter((r) => r)

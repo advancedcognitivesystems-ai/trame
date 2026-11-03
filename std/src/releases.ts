@@ -200,3 +200,16 @@ export const R0_14_0 = release({
   language: "shared",
   serves: [CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules],
 })
+
+/**
+ * Version 0.15.0
+ */
+export const R0_15_0 = release({
+  owner: "trame",
+  version: "0.15.0",
+  date: "2026-11-03",
+  what: "A package's source says which versions it holds; npm's words to install what a project names",
+  fingerprint: "911af2d98a5ddddd",
+  language: "shared",
+  serves: [CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules],
+})

@@ -30,7 +30,7 @@ import { ShowGraph, ExplorerFigures, BrowserWindow, BrowserMemory, BrowserFeed, 
 import { Verified, Served, Applied, Checked, Ruled, Safe } from "#std/obligations"
 import { TrameCli, Local } from "./architecture"
 import { TestKinds, Advance, Doctor } from "./commands"
-import { DiskReading, DiskWriting, DiskTrees, NodeProcess, NodePrograms, NodeTerminal, SystemClock, NpmReports, NodeHttpServer, RunsOnDisk } from "./platform"
+import { DiskReading, DiskWriting, DiskTrees, NodeProcess, NodePrograms, NodeTerminal, SystemClock, NpmReports, NpmInstall, NodeHttpServer, RunsOnDisk } from "./platform"
 import { ExecutableSpecification } from "./product"
 
 // How a new version of Trame becomes the one projects run, in Trame's graph. The engine described by the graph is
@@ -121,7 +121,7 @@ export const GenerationMode = policy({
  */
 export const CandidateRunsOnTheMachine = check({
   owner: "trame", on: [EngineCandidate], runs: Doctor, by: Maintainers,
-  verifies: [DiskReading, DiskWriting, DiskTrees, NodeProcess, NodePrograms, NodeTerminal, SystemClock, NpmReports, NodeHttpServer, RunsOnDisk],
+  verifies: [DiskReading, DiskWriting, DiskTrees, NodeProcess, NodePrograms, NodeTerminal, SystemClock, NpmReports, NpmInstall, NodeHttpServer, RunsOnDisk],
 })
 
 /**

@@ -741,6 +741,19 @@
       }
     },
     {
+      "id": "architecture.PackageInstalls",
+      "kind": "port",
+      "title": "Packages installed",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": [
+          "process",
+          "network",
+          "write"
+        ]
+      }
+    },
+    {
       "id": "architecture.PackageReports",
       "kind": "port",
       "title": "Reports on packages",
@@ -1049,7 +1062,7 @@
       "id": "browser.BrowserAmendments",
       "kind": "implementation",
       "title": "Amendments sent to trame dev",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1068,7 +1081,7 @@
       "id": "browser.BrowserDecompression",
       "kind": "implementation",
       "title": "The browser's gzip",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1085,7 +1098,7 @@
       "id": "browser.BrowserFeed",
       "kind": "implementation",
       "title": "The globals of the page, and trame dev",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1103,7 +1116,7 @@
       "id": "browser.BrowserMemory",
       "kind": "implementation",
       "title": "Local storage",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1119,7 +1132,7 @@
       "id": "browser.BrowserWindow",
       "kind": "implementation",
       "title": "The browser's window",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1137,7 +1150,7 @@
       "id": "browser.ExplorerFigures",
       "kind": "function",
       "title": "Explorer of a graph",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1174,7 +1187,7 @@
       "id": "browser.ShowGraph",
       "kind": "entry",
       "title": "Show the graph",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "trigger": {
@@ -1227,7 +1240,7 @@
       "id": "browser.TheBrowserRunsThePage",
       "kind": "binding",
       "title": "The browser runs the page",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "The page's script took what it needed from the browser itself, here and there: the graph could not say what the page asks of the browser, nor try it elsewhere.",
@@ -1242,7 +1255,7 @@
       "id": "browser.ThePageIsAssembled",
       "kind": "adr",
       "title": "The page is assembled",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "The page's script built by hand what it shared with the engine and wrote its values (classes, identifiers, the explorer's geometry) as literals the catalogue could not see: a change in the graph did not reach it.",
@@ -1667,6 +1680,30 @@
           "counts": "std/algebra.Counts",
           "messages": "messages.ScenarioMessages",
           "report": "packages.PackageAudit"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "command-scenarios.PackagesUpgraded",
+      "kind": "scenario",
+      "title": "The packages upgraded",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "upgrade": "commands.Upgrade",
+          "processLog": "architecture.ProcessLog",
+          "writeLog": "architecture.WriteLog",
+          "currentProcess": "architecture.Process",
+          "paths": "architecture.Paths",
+          "layout": "conventions.Layout",
+          "projects": "command-scenarios.ScenarioProjects",
+          "line": "conventions.TrameCommands",
+          "exitStatus": "std/system.ExitStatus",
+          "texts": "std/algebra.Texts",
+          "counts": "std/algebra.Counts",
+          "messages": "messages.ScenarioMessages"
         },
         "body": "(function)"
       }
@@ -2351,6 +2388,8 @@
           "httpServer": "architecture.HttpServer",
           "timer": "architecture.Timer",
           "reports": "architecture.PackageReports",
+          "installs": "architecture.PackageInstalls",
+          "layout": "conventions.Layout",
           "clock": "architecture.Clock",
           "paths": "architecture.Paths",
           "terminal": "architecture.Terminal",
@@ -2888,6 +2927,43 @@
       }
     },
     {
+      "id": "commands.Upgrade",
+      "kind": "entry",
+      "title": "Upgrade",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "trigger": {
+          "type": "command",
+          "name": "upgrade"
+        },
+        "deps": {
+          "exitStatus": "std/system.ExitStatus",
+          "preparation": "commands.Preparation",
+          "reading": "architecture.FileReading",
+          "writing": "architecture.FileWriting",
+          "paths": "architecture.Paths",
+          "versions": "packages.VersionOrder",
+          "text": "typescript.StringLiteral",
+          "file": "std/text.TextFile",
+          "encodings": "std/system.NodeEncodings",
+          "events": "std/system.NodeEvents",
+          "currentProcess": "architecture.Process",
+          "line": "conventions.TrameCommands",
+          "values": "std/algebra.ValueTypes",
+          "sequences": "std/algebra.Sequences",
+          "counts": "std/algebra.Counts",
+          "texts": "std/algebra.Texts",
+          "terminal": "architecture.Terminal",
+          "messages": "messages.CommandMessages"
+        },
+        "body": {
+          "file": "./code/commands/upgrade.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
       "id": "commands.ViewByName",
       "kind": "entry",
       "title": "View by its name",
@@ -2943,6 +3019,8 @@
           "counts": "std/algebra.Counts",
           "paths": "architecture.Paths",
           "encodings": "std/system.NodeEncodings",
+          "installs": "architecture.PackageInstalls",
+          "lock": "packages.NpmLockfile",
           "file": "std/text.TextFile",
           "json": "conventions.JsonFormatting",
           "language": "typescript.TypeScript",
@@ -3318,6 +3396,10 @@
           "registry": {
             "value": "registry",
             "meaning": "Publishes to the registry of this machine the generations and the releases frozen in the language's home"
+          },
+          "upgrade": {
+            "value": "upgrade",
+            "meaning": "Moves each package of Trame the project references to the newest version its origin holds, then writes its manifest"
           },
           "init": {
             "value": "init",
@@ -3792,7 +3874,8 @@
           "engines": "engine.EngineFingerprint",
           "runs": "architecture.KeptRuns",
           "platform": "std/effects.PlatformEffects",
-          "names": "conventions.LanguageNames"
+          "names": "conventions.LanguageNames",
+          "packages": "std/tooling.PackageSources"
         },
         "body": {
           "file": "./code/engine/compiler.ts",
@@ -7919,6 +8002,26 @@
       }
     },
     {
+      "id": "packages.NpmLockfile",
+      "kind": "standard",
+      "title": "npm's lockfile",
+      "fields": {
+        "owner": "trame",
+        "source": "npm documentation: package-lock.json (lockfileVersion 3: packages, the root project under the key \"\")",
+        "url": "https://docs.npmjs.com/cli/configuring-npm/package-lock-json#packages",
+        "constants": {
+          "packages": {
+            "value": "packages",
+            "meaning": "What was installed, by its place: the project's own under the empty key"
+          },
+          "root": {
+            "value": "",
+            "meaning": "The key of the project itself among the packages installed"
+          }
+        }
+      }
+    },
+    {
       "id": "packages.PackageAudit",
       "kind": "decision",
       "title": "Audit of the packages",
@@ -7945,10 +8048,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.14.0",
+        "version": "0.15.0",
         "joins": "library",
         "from": "path",
-        "at": "std/releases/0.14.0"
+        "at": "std/releases/0.15.0"
       }
     },
     {
@@ -9269,7 +9372,7 @@
       "id": "platform.DiskReading",
       "kind": "implementation",
       "title": "System files, for reading",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "body": {
@@ -9282,7 +9385,7 @@
       "id": "platform.DiskTrees",
       "kind": "implementation",
       "title": "Trees on disk",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -9300,7 +9403,7 @@
       "id": "platform.DiskWriting",
       "kind": "implementation",
       "title": "System files, for writing",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "body": {
@@ -9472,8 +9575,10 @@
         "deps": {
           "trees": "architecture.FileTrees",
           "writing": "architecture.FileWriting",
+          "reading": "architecture.FileReading",
           "paths": "architecture.Paths",
-          "specifiers": "std/system.NodeModuleSpecifiers"
+          "specifiers": "std/system.NodeModuleSpecifiers",
+          "sequences": "std/algebra.Sequences"
         },
         "body": {
           "file": "./code/platform/local-paths.ts",
@@ -9643,7 +9748,7 @@
       "id": "platform.NodeHttpServer",
       "kind": "implementation",
       "title": "Node HTTP server",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "body": {
@@ -9656,7 +9761,7 @@
       "id": "platform.NodeMachine",
       "kind": "binding",
       "title": "On a machine, Node.js reads, writes and runs",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "What changes the world (files written, processes, the terminal, the clock) is real only on a machine; the scenarios keep it in memory.",
@@ -9697,7 +9802,7 @@
       "id": "platform.NodeProcess",
       "kind": "implementation",
       "title": "Node process",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -9715,7 +9820,7 @@
       "id": "platform.NodePrograms",
       "kind": "implementation",
       "title": "Node programs",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -9733,7 +9838,7 @@
       "id": "platform.NodeTerminal",
       "kind": "implementation",
       "title": "Node terminal",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -9763,6 +9868,23 @@
       }
     },
     {
+      "id": "platform.NoInstallsInTest",
+      "kind": "implementation",
+      "title": "No installer in test",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "exitStatus": "std/system.ExitStatus",
+          "writing": "architecture.FileWriting",
+          "paths": "architecture.Paths",
+          "layout": "conventions.Layout",
+          "lock": "packages.NpmLockfile"
+        },
+        "body": "(function)"
+      }
+    },
+    {
       "id": "platform.NoReportsInTest",
       "kind": "function",
       "title": "No registry in test",
@@ -9773,10 +9895,29 @@
       }
     },
     {
+      "id": "platform.NpmInstall",
+      "kind": "implementation",
+      "title": "npm installs",
+      "status": "unknown",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "npm": "std/system.NpmCli",
+          "node": "std/system.NodeCli",
+          "events": "std/system.NodeEvents",
+          "exitStatus": "std/system.ExitStatus"
+        },
+        "body": {
+          "file": "./code/platform/npm-install.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
       "id": "platform.NpmReports",
       "kind": "implementation",
       "title": "npm's reports",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -9916,7 +10057,7 @@
       "id": "platform.RunsKeptOnDisk",
       "kind": "binding",
       "title": "On a machine, runs are kept on disk",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "The commands of a shipment and of an advance run as separate processes, each compiling the same graph: what one played, the next can find only on disk.",
@@ -9930,7 +10071,7 @@
       "id": "platform.RunsOnDisk",
       "kind": "implementation",
       "title": "Runs kept on disk",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -9968,7 +10109,7 @@
       "id": "platform.SystemClock",
       "kind": "implementation",
       "title": "System clock",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -10364,7 +10505,7 @@
       "id": "principles.ShippedThroughTheGraph",
       "kind": "adr",
       "title": "A version ships through the graph",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "Two products ship differently (a page placed where it is served, an engine frozen into a generation) and their pipelines lived in scripts and in their authors' heads: nothing said what had been checked, by whom, on which version, nor why a version could go.",
@@ -10380,7 +10521,7 @@
       "id": "principles.TechnologyInOneNode",
       "kind": "adr",
       "title": "A technology is chosen in one node",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "Each implementation said which environments it served: the choice of a technology was spread over its realizations, nothing said why, and a test double or a repository over a database port had to be declared as if it touched the platform.",
@@ -12807,7 +12948,7 @@
       "id": "sdlc.CandidateKeepsTheLaws",
       "kind": "check",
       "title": "The candidate plays the laws",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame"
       }
@@ -12816,7 +12957,7 @@
       "id": "sdlc.CandidateRunsOnTheMachine",
       "kind": "check",
       "title": "The candidate runs on the machine",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame"
       }
@@ -12825,7 +12966,7 @@
       "id": "sdlc.EngineCandidate",
       "kind": "artifact",
       "title": "The candidate engine",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "out/local/trame-cli.ts"
@@ -12866,7 +13007,7 @@
       "id": "sdlc.GraphPage",
       "kind": "artifact",
       "title": "The graph page",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "trame-page.html",
@@ -12888,7 +13029,7 @@
       "id": "sdlc.GraphPageOpens",
       "kind": "check",
       "title": "The graph page opens",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame"
       }
@@ -12946,7 +13087,7 @@
       "id": "sdlc.NextGeneration",
       "kind": "shipment",
       "title": "The next generation",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "generation"
@@ -13024,7 +13165,7 @@
       "id": "sdlc.SdlcOnTheMachine",
       "kind": "binding",
       "title": "The SDLC on the machine",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "The graph page must be opened as a person opens it: the file exported, in a real browser."
@@ -16800,6 +16941,11 @@
     },
     {
       "from": "command-scenarios.ManifestWritten",
+      "to": "platform.NoInstallsInTest",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.ManifestWritten",
       "to": "architecture.Test",
       "kind": "env"
     },
@@ -16921,6 +17067,71 @@
     {
       "from": "command-scenarios.PackagesAudited",
       "to": "packages.PackageAudit",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.PackagesUpgraded",
+      "to": "commands.Upgrade",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.PackagesUpgraded",
+      "to": "platform.PackagesByOrigin",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.PackagesUpgraded",
+      "to": "platform.LocalPaths",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.PackagesUpgraded",
+      "to": "architecture.Test",
+      "kind": "env"
+    },
+    {
+      "from": "command-scenarios.PackagesUpgraded",
+      "to": "commands.Upgrade",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.PackagesUpgraded",
+      "to": "architecture.ProcessLog",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.PackagesUpgraded",
+      "to": "architecture.WriteLog",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.PackagesUpgraded",
+      "to": "architecture.Process",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.PackagesUpgraded",
+      "to": "architecture.Paths",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.PackagesUpgraded",
+      "to": "conventions.Layout",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.PackagesUpgraded",
+      "to": "command-scenarios.ScenarioProjects",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.PackagesUpgraded",
+      "to": "conventions.TrameCommands",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.PackagesUpgraded",
+      "to": "messages.ScenarioMessages",
       "kind": "deps"
     },
     {
@@ -18305,6 +18516,16 @@
     },
     {
       "from": "commands.Doctor",
+      "to": "architecture.PackageInstalls",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Doctor",
+      "to": "conventions.Layout",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Doctor",
       "to": "architecture.Clock",
       "kind": "deps"
     },
@@ -19329,6 +19550,66 @@
       "kind": "deps"
     },
     {
+      "from": "commands.Upgrade",
+      "to": "product.SingleSource",
+      "kind": "serves"
+    },
+    {
+      "from": "commands.Upgrade",
+      "to": "architecture.TrameCli",
+      "kind": "in"
+    },
+    {
+      "from": "commands.Upgrade",
+      "to": "commands.Preparation",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Upgrade",
+      "to": "architecture.FileReading",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Upgrade",
+      "to": "architecture.FileWriting",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Upgrade",
+      "to": "architecture.Paths",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Upgrade",
+      "to": "packages.VersionOrder",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Upgrade",
+      "to": "typescript.StringLiteral",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Upgrade",
+      "to": "architecture.Process",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Upgrade",
+      "to": "conventions.TrameCommands",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Upgrade",
+      "to": "architecture.Terminal",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Upgrade",
+      "to": "messages.CommandMessages",
+      "kind": "deps"
+    },
+    {
       "from": "commands.ViewByName",
       "to": "product.ExecutableSpecification",
       "kind": "serves"
@@ -19426,6 +19707,16 @@
     {
       "from": "commands.WriteManifest",
       "to": "architecture.Paths",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.WriteManifest",
+      "to": "architecture.PackageInstalls",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.WriteManifest",
+      "to": "packages.NpmLockfile",
       "kind": "deps"
     },
     {
@@ -21674,6 +21965,11 @@
       "kind": "language"
     },
     {
+      "from": "packages.NpmLockfile",
+      "to": "product.SingleSource",
+      "kind": "serves"
+    },
+    {
       "from": "packages.StandardLibrary",
       "to": "product.SingleSource",
       "kind": "serves"
@@ -22725,6 +23021,11 @@
     },
     {
       "from": "platform.FilesInMemoryOverTheDisk",
+      "to": "platform.NoInstallsInTest",
+      "kind": "chooses"
+    },
+    {
+      "from": "platform.FilesInMemoryOverTheDisk",
       "to": "architecture.Test",
       "kind": "environments"
     },
@@ -22841,6 +23142,11 @@
     {
       "from": "platform.LocalPaths",
       "to": "architecture.FileWriting",
+      "kind": "deps"
+    },
+    {
+      "from": "platform.LocalPaths",
+      "to": "architecture.FileReading",
       "kind": "deps"
     },
     {
@@ -23030,6 +23336,11 @@
     },
     {
       "from": "platform.NodeMachine",
+      "to": "platform.NpmInstall",
+      "kind": "chooses"
+    },
+    {
+      "from": "platform.NodeMachine",
       "to": "platform.NodeHttpServer",
       "kind": "chooses"
     },
@@ -23129,8 +23440,38 @@
       "kind": "implements"
     },
     {
+      "from": "platform.NoInstallsInTest",
+      "to": "architecture.PackageInstalls",
+      "kind": "implements"
+    },
+    {
+      "from": "platform.NoInstallsInTest",
+      "to": "architecture.FileWriting",
+      "kind": "deps"
+    },
+    {
+      "from": "platform.NoInstallsInTest",
+      "to": "architecture.Paths",
+      "kind": "deps"
+    },
+    {
+      "from": "platform.NoInstallsInTest",
+      "to": "conventions.Layout",
+      "kind": "deps"
+    },
+    {
+      "from": "platform.NoInstallsInTest",
+      "to": "packages.NpmLockfile",
+      "kind": "deps"
+    },
+    {
       "from": "platform.NoReportsInTest",
       "to": "architecture.PackageReports",
+      "kind": "implements"
+    },
+    {
+      "from": "platform.NpmInstall",
+      "to": "architecture.PackageInstalls",
       "kind": "implements"
     },
     {
@@ -26341,6 +26682,11 @@
     {
       "from": "sdlc.CandidateRunsOnTheMachine",
       "to": "platform.NpmReports",
+      "kind": "verifies"
+    },
+    {
+      "from": "sdlc.CandidateRunsOnTheMachine",
+      "to": "platform.NpmInstall",
       "kind": "verifies"
     },
     {

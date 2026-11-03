@@ -5,7 +5,7 @@ import { fn } from "../kinds/function"
 import { entryPoint, command } from "../kinds/entry-point"
 import { ExecutableSpecification, SingleSource, SeverityOrder, DevPort } from "./product"
 import { decision } from "../kinds/decision"
-import { TrameCli, Terminal, Process, Clock, FileReading, FileWriting, Paths, Hashing, Programs, FileTrees, PackageReports, Bundler, Timer, HttpServer, KeptRuns, AmendmentPlace, Prelude } from "./architecture"
+import { TrameCli, Terminal, Process, Clock, FileReading, FileWriting, Paths, Hashing, Programs, FileTrees, PackageReports, PackageInstalls, Bundler, Timer, HttpServer, KeptRuns, AmendmentPlace, Prelude } from "./architecture"
 import { Compiler, CompilationApi, Laws, Views, Lock, MachineOutputs, PayloadBuilder, DateBundle, DevServer, Assembly, Fingerprint, References, Project, EngineFingerprint } from "./engine"
 import { Page, PageBundle, PageDocument } from "./page"
 import { Html } from "#std/html"
@@ -21,7 +21,7 @@ import { SemanticVersioning, Iso8601 } from "#std/measures"
 import { ReleaseIsSettled, LibraryReleaseNames } from "./libraries"
 import { UnifiedDiff, TextFile } from "#std/text"
 import { Uri } from "#std/web"
-import { PackageAudit, VersionOrder } from "./packages"
+import { PackageAudit, VersionOrder, NpmLockfile } from "./packages"
 import { CommandMessages, AdvanceMessages, OutputMessages } from "./messages"
 import { TerminalText, TerminalColumns, PaddedCell, Columns } from "./text"
 import { ExampleRoot, TestDay } from "./platform"
@@ -180,7 +180,7 @@ export const WriteManifest = entryPoint({
   deps: {
     exitStatus: ExitStatus, preparation: Preparation, npm: NpmManifest, layout: Layout, project: Project, specifiers: NodeModuleSpecifiers,
     reading: FileReading, writing: FileWriting, packages: PackageSources, names: LanguageNames, prelude: Prelude, pin: EnginePin, values: ValueTypes, counts: Counts,
-    paths: Paths, encodings: NodeEncodings,
+    paths: Paths, encodings: NodeEncodings, installs: PackageInstalls, lock: NpmLockfile,
     file: TextFile, json: JsonFormatting, language: TypeScript, terminal: Terminal, messages: CommandMessages, currentProcess: Process, events: NodeEvents,
     line: TrameCommands, texts: Texts,
   },
@@ -296,7 +296,7 @@ export const Doctor = entryPoint({
   trigger: command(commandNames.doctor),
   deps: {
     exitStatus: ExitStatus, preparation: Preparation, probe: DoctorProbe, iso: Iso8601, reading: FileReading, writing: FileWriting, trees: FileTrees,
-    programs: Programs, runs: KeptRuns, httpServer: HttpServer, timer: Timer, reports: PackageReports, clock: Clock, paths: Paths, terminal: Terminal,
+    programs: Programs, runs: KeptRuns, httpServer: HttpServer, timer: Timer, reports: PackageReports, installs: PackageInstalls, layout: Layout, clock: Clock, paths: Paths, terminal: Terminal,
     encodings: NodeEncodings, counts: Counts, texts: Texts, messages: CommandMessages,
   },
   body: code.file<typeof import("./code/commands/doctor").default>("./code/commands/doctor.ts"),
@@ -363,6 +363,22 @@ export const Amend = entryPoint({
     messages: CommandMessages,
   },
   body: code.file<typeof import("./code/commands/amend").default>("./code/commands/amend.ts"),
+})
+
+/**
+ * Upgrade
+ * Moves each package of Trame the project references, or those named, to the newest version its origin holds: the
+ * reference written again in its module, then the manifest (C1, since g100).
+ */
+export const Upgrade = entryPoint({
+  owner: "trame", in: TrameCli, serves: [SingleSource],
+  trigger: command(commandNames.upgrade),
+  deps: {
+    exitStatus: ExitStatus, preparation: Preparation, reading: FileReading, writing: FileWriting, paths: Paths, versions: VersionOrder, text: StringLiteral,
+    file: TextFile, encodings: NodeEncodings, events: NodeEvents, currentProcess: Process, line: TrameCommands, values: ValueTypes, sequences: Sequences,
+    counts: Counts, texts: Texts, terminal: Terminal, messages: CommandMessages,
+  },
+  body: code.file<typeof import("./code/commands/upgrade").default>("./code/commands/upgrade.ts"),
 })
 
 /**

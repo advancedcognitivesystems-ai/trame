@@ -260,6 +260,8 @@ const body = () => ({
   packageDisagree: (p0: unknown, p1: unknown) => `Declared ${p0}, installed ${p1}: the graph and the lockfile disagree`,
   packageVulnerable: (p0: unknown, p1: unknown) => `${p0} known ${Number(p0) === 1 ? "vulnerability" : "vulnerabilities"}, reported on ${p1}`,
   packageBehind: (p0: unknown, p1: unknown, p2: unknown) => `${p0} breaking ${Number(p0) === 1 ? "release" : "releases"} behind the latest (${p1}), reported on ${p2}`,
+  packageNewerVersion: (name: string, named: string, newest: string) =>
+    `${name} ${newest} is out, the reference names ${named}: trame upgrade ${name} moves it`,
   packageNoReport: () => "No report yet: trame audit asks the registry",
   packageAudit: () => "Vulnerabilities",
   packageOutdated: () => "Latest version",

@@ -36,7 +36,7 @@ Source: Playwright documentation, class Page, event "pageerror" · `https://play
 
 ### Where a package comes from
 
-`PackageOrigins` · `src/tooling.ts:281`
+`PackageOrigins` · `src/tooling.ts:289`
 
 The origins a reference to a package names: by its path (a directory on the machine, the package as it is or a version it froze), from a registry (a version published). npm will be one more.
 
@@ -74,7 +74,7 @@ How Chromium starts without a screen: WebGL drawn by software (ANGLE on SwiftSha
 
 ### The SDLC's tooling is realized once
 
-`ToolingAsPorts` · `src/tooling.ts:296` · status: **held**
+`ToolingAsPorts` · `src/tooling.ts:304` · status: **held**
 
 The files of a project and a headless browser are ports of the library, each realized for a machine and in memory: every project's checks and deployments use them, and play them in scenarios, rather than calling the machine itself.
 
@@ -170,7 +170,7 @@ Opens a page the project delivered, without a screen, and answers what it shows.
 
 ### Where a package comes from
 
-`PackageSources` · `src/tooling.ts:274`
+`PackageSources` · `src/tooling.ts:279`
 
 A project uses packages (the language of the generation it pins, its libraries) by their name only, each at its version; where the package's files come from is a choice with its strategies: a local path (a directory on the machine, reached through a link under the project), a registry (a package fetched at its version). The project's import map leads to where the strategy placed the package; moving a package elsewhere changes only its source.
 
@@ -178,6 +178,7 @@ A project uses packages (the language of the generation it pins, its libraries) 
 |---|---|
 | `place` | read, write |
 | `publish` | read, write |
+| `versions` | read |
 
 | Environment | Answered by | Chosen by |
 |---|---|---|

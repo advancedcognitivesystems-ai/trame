@@ -1085,7 +1085,7 @@ Standard · `NpmCli`
 - Maintained by: trame
 - Source: npm documentation: npm audit, npm outdated (--json)
 - Address: https://docs.npmjs.com/cli/commands/npm-audit
-- Constants: { command: { value: npm, meaning: The command line of npm }, audit: { value: audit, meaning: Asks the registry for the known vulnerabilities of the packages installed }, outdated: { value: outdated, meaning: Lists the packages installed that are not at their latest version }, json: { value: --json, meaning: Answers in JSON rather than in a table } }
+- Constants: { command: { value: npm, meaning: The command line of npm }, audit: { value: audit, meaning: Asks the registry for the known vulnerabilities of the packages installed }, outdated: { value: outdated, meaning: Lists the packages installed that are not at their latest version }, json: { value: --json, meaning: Answers in JSON rather than in a table }, install: { value: install, meaning: Installs the packages package.json names and writes what it installed into the lockfile }, noAudit: { value: --no-audit, meaning: Installs without asking the registry for vulnerabilities (trame audit asks it) }, noFund: { value: --no-fund, meaning: Installs without the messages of packages looking for funding } }
 - Serves: A published value is cited, not copied
 
 ### npm's manifest
@@ -1222,7 +1222,7 @@ Port · `HeadlessBrowser`
 Port · `PackageSources`
 
 - Owner: trame
-- Declared effects: { place: read, write, publish: read, write }
+- Declared effects: { place: read, write, publish: read, write, versions: read }
 
 ### Commands of a program
 

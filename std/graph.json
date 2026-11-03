@@ -3500,6 +3500,18 @@
           "json": {
             "value": "--json",
             "meaning": "Answers in JSON rather than in a table"
+          },
+          "install": {
+            "value": "install",
+            "meaning": "Installs the packages package.json names and writes what it installed into the lockfile"
+          },
+          "noAudit": {
+            "value": "--no-audit",
+            "meaning": "Installs without asking the registry for vulnerabilities (trame audit asks it)"
+          },
+          "noFund": {
+            "value": "--no-fund",
+            "meaning": "Installs without the messages of packages looking for funding"
           }
         }
       },
@@ -3509,7 +3521,7 @@
       "id": "system.NpmManifest",
       "kind": "standard",
       "title": "npm's manifest",
-      "source": "src/system.ts:168",
+      "source": "src/system.ts:171",
       "fields": {
         "owner": "trame",
         "source": "npm documentation: package.json (dependencies); Node.js documentation, Packages: \"imports\"",
@@ -3855,7 +3867,7 @@
       "id": "tooling.PackageOrigins",
       "kind": "vocabulary",
       "title": "Where a package comes from",
-      "source": "src/tooling.ts:281",
+      "source": "src/tooling.ts:289",
       "fields": {
         "owner": "trame",
         "words": {
@@ -3869,7 +3881,7 @@
       "id": "tooling.PackageSources",
       "kind": "port",
       "title": "Where a package comes from",
-      "source": "src/tooling.ts:274",
+      "source": "src/tooling.ts:279",
       "fields": {
         "owner": "trame",
         "declaredEffects": {
@@ -3880,6 +3892,9 @@
           "publish": [
             "read",
             "write"
+          ],
+          "versions": [
+            "read"
           ]
         }
       },
@@ -3964,7 +3979,7 @@
       "id": "tooling.ToolingAsPorts",
       "kind": "adr",
       "title": "The SDLC's tooling is realized once",
-      "source": "src/tooling.ts:296",
+      "source": "src/tooling.ts:304",
       "status": "held",
       "fields": {
         "owner": "trame",

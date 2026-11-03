@@ -13,6 +13,7 @@ import { Http, MediaTypes, ServerSentEvents, Uri } from "#std/web"
 import { Mulberry32, MultiplicativeHash, DepthFirstSearch, Sha256 } from "#std/algorithms"
 import { EcmaScript, EcmaScriptReservedWords, TextAsCode } from "#std/ecmascript"
 import { PlatformEffects } from "#std/effects"
+import { PackageSources } from "#std/tooling"
 import { TextFile, GnuPositions } from "#std/text"
 import { TypeScriptApi } from "./standards"
 import { ExitStatus, NodeEncodings, NodeEvents, NodeModuleSpecifiers } from "#std/system"
@@ -245,6 +246,7 @@ export const Compiler = fn({
     positions: Positions, loader: ModuleLoader, reading: FileReading, paths: Paths, analysis: StaticAnalysis, project: Project, graph: GraphApi,
     wiring: Wiring, drivers: Drivers, prelude: Prelude, counts: Counts, sequences: Sequences, texts: Texts, messages: CompilerMessages,
     fingerprints: Fingerprints, signatures: Signatures, engines: EngineFingerprint, runs: KeptRuns, platform: PlatformEffects, names: LanguageNames,
+    packages: PackageSources,
   },
   body: code.file<typeof import("./code/engine/compiler").default>("./code/engine/compiler.ts"),
 })

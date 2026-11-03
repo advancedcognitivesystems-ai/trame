@@ -262,6 +262,11 @@ export interface PackageSource {
   place(wanted: PackageWanted): string
   /** Publishes a version where the strategy keeps them (a version is never written twice); gives where it went. */
   publish(published: PackagePublished): string
+  /**
+   * The versions of the package its origin holds, as the reference names them (since 0.15.0): the versions frozen
+   * beside the one a path reaches, those published in a registry; none for a package reached as it is.
+   */
+  versions(wanted: PackageWanted): readonly string[]
 }
 
 /**
@@ -271,7 +276,10 @@ export interface PackageSource {
  * machine, reached through a link under the project), a registry (a package fetched at its version). The project's
  * import map leads to where the strategy placed the package; moving a package elsewhere changes only its source.
  */
-export const PackageSources = port<PackageSource>({ owner: "trame", declaredEffects: { place: ["read", "write"], publish: ["read", "write"] } })
+export const PackageSources = port<PackageSource>({
+  owner: "trame",
+  declaredEffects: { place: ["read", "write"], publish: ["read", "write"], versions: ["read"] },
+})
 
 /**
  * Where a package comes from

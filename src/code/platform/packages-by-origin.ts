@@ -8,9 +8,11 @@ import type { PackagesByOrigin } from "../../platform"
 
 const body: BodyOf<typeof PackagesByOrigin> = ({ path, registry }) => {
   const strategies: Readonly<Record<string, PackageSource>> = { path, registry }
+  const of = (wanted: Parameters<PackageSource["place"]>[0]) => (wanted.from !== undefined ? strategies[wanted.from] : wanted.at !== undefined ? path : registry)
   return {
-    place: (wanted) => (wanted.from !== undefined ? strategies[wanted.from] : wanted.at !== undefined ? path : registry).place(wanted),
+    place: (wanted) => of(wanted).place(wanted),
     publish: (published) => registry.publish(published),
+    versions: (wanted) => of(wanted).versions(wanted),
   }
 }
 

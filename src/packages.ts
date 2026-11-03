@@ -3,6 +3,7 @@
 import { pkg } from "../kinds/package"
 import { decision } from "../kinds/decision"
 import { fn } from "../kinds/function"
+import { standard } from "../kinds/standard"
 import { SemanticVersioning } from "#std/measures"
 import { Counts } from "#std/algebra"
 import { SingleSource } from "./product"
@@ -131,5 +132,21 @@ export const VersionOrder = fn({
  * repository, at the version it froze.
  */
 export const StandardLibrary = pkg({
-  owner: "trame", packageName: "std", version: "0.14.0", joins: "library", from: "path", at: "std/releases/0.14.0", serves: [SingleSource],
+  owner: "trame", packageName: "std", version: "0.15.0", joins: "library", from: "path", at: "std/releases/0.15.0", serves: [SingleSource],
+})
+
+/**
+ * npm's lockfile
+ * What npm writes after it installed a project's packages: each package installed, the project's own under the empty
+ * key, with the dependencies it names. The manifest compares them with what it wrote (since g100).
+ */
+export const NpmLockfile = standard({
+  owner: "trame",
+  serves: [SingleSource],
+  source: "npm documentation: package-lock.json (lockfileVersion 3: packages, the root project under the key \"\")",
+  url: "https://docs.npmjs.com/cli/configuring-npm/package-lock-json#packages",
+  constants: {
+    packages: { value: "packages", meaning: "What was installed, by its place: the project's own under the empty key" },
+    root: { value: "", meaning: "The key of the project itself among the packages installed" },
+  },
 })

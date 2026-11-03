@@ -7,7 +7,7 @@ import { fn } from "../kinds/function"
 import { binding } from "../kinds/binding"
 import {
   Prelude, FileReading, FileWriting, Paths, ModuleLoader, TypeScriptCompiler, SyntaxTrees, Hashing, KeptResults, Process, Terminal,
-  Clock, Timer, HttpServer, Bundler, Compression, Resources, CommandLine, WriteLog, TerminalLog, ProcessLog, ServerLog, Programs, FileTrees, PackageReports,
+  Clock, Timer, HttpServer, Bundler, Compression, Resources, CommandLine, WriteLog, TerminalLog, ProcessLog, ServerLog, Programs, FileTrees, PackageReports, PackageInstalls,
   Local, Test, Browser, PageWindow, PageMemory, GraphFeed, Decompression, RunStore, AmendmentPlace,
 } from "./architecture"
 import { TypeScriptSyntax, DocBlock, ExportDeclaration, ConstDeclaration, Call, ObjectLiteral, Property, StringLiteral, InlineArray, NamedImport } from "./typescript"
@@ -16,7 +16,7 @@ import { PackedGraph } from "./page"
 import { PageLoading } from "#std/platform"
 import { PackageSources } from "#std/tooling"
 import { Http } from "#std/web"
-import { TsxPackage, TypeScriptPackage, NodeTypes, WebTreeSitterPackage, EsbuildPackage } from "./packages"
+import { TsxPackage, TypeScriptPackage, NodeTypes, WebTreeSitterPackage, EsbuildPackage, NpmLockfile } from "./packages"
 import { ExitStatus, NodeArguments, NodeCli, NodeEvents, Posix, NpmCli, NodeModuleSpecifiers, NodeEncodings, NpmManifest } from "#std/system"
 import { Iso8601 } from "#std/measures"
 import { UnifiedDiff, TextFile } from "#std/text"
@@ -136,6 +136,17 @@ export const NodeCompression = implementation({
   owner: "trame", implements: [Compression],
   deps: { packing: PackedGraph },
   body: code.file("./code/platform/compression.ts"),
+})
+
+/**
+ * npm installs
+ * The packages a project's manifest names, installed by npm's command line in the project's directory, which writes
+ * what it installed into the lockfile; without the registry's audit, which trame audit asks.
+ */
+export const NpmInstall = implementation({
+  owner: "trame", implements: [PackageInstalls],
+  deps: { npm: NpmCli, node: NodeCli, events: NodeEvents, exitStatus: ExitStatus },
+  body: code.file("./code/platform/npm-install.ts"),
 })
 
 /**
@@ -276,6 +287,22 @@ export const NoReportsInTest = fn({
 })
 
 /**
+ * No installer in test
+ * The scenarios install nothing: an installation asked succeeds and writes, in memory, a lockfile that names nothing
+ * installed.
+ */
+export const NoInstallsInTest = implementation({
+  owner: "trame", implements: [PackageInstalls],
+  deps: { exitStatus: ExitStatus, writing: FileWriting, paths: Paths, layout: Layout, lock: NpmLockfile },
+  body: ({ exitStatus, writing, paths, layout, lock }) => ({
+    install: async (root: string) => {
+      writing.writeFileSync(paths.join(root, layout.lockfile), JSON.stringify({ [lock.packages]: { [lock.root]: {} } }))
+      return exitStatus.success
+    },
+  }),
+})
+
+/**
  * Temporary directories in memory
  * What a temporary directory in memory is named after, in the current directory, with its number.
  */
@@ -400,7 +427,7 @@ export const NodePlatform = binding({
  */
 export const NodeMachine = binding({
   owner: "trame",
-  chooses: [DiskReading, DiskWriting, DiskTrees, NodeProcess, NodePrograms, NodeTerminal, SystemClock, NpmReports, NodeHttpServer],
+  chooses: [DiskReading, DiskWriting, DiskTrees, NodeProcess, NodePrograms, NodeTerminal, SystemClock, NpmReports, NpmInstall, NodeHttpServer],
   environments: [Local],
   follows: [Adapter, AbstractFactory],
   serves: [ReplaceableTechnology],
@@ -412,11 +439,11 @@ export const NodeMachine = binding({
 /**
  * Scenarios write in memory, over the disk
  * In the scenarios, the files are read from the disk and what the engine writes is kept in memory over them: one
- * adapter that reads Node's file system and never writes it.
+ * adapter that reads Node's file system and never writes it; the installer writes its lockfile there too.
  */
 export const FilesInMemoryOverTheDisk = binding({
   owner: "trame",
-  chooses: [MemoryFiles],
+  chooses: [MemoryFiles, NoInstallsInTest],
   environments: [Test],
   follows: [Adapter],
   serves: [ReplaceableTechnology],
@@ -593,7 +620,7 @@ export const InPlaceSources = implementation({
 export const LocalPaths = implementation({
   owner: "trame",
   implements: [PackageSources],
-  deps: { trees: FileTrees, writing: FileWriting, paths: Paths, specifiers: NodeModuleSpecifiers },
+  deps: { trees: FileTrees, writing: FileWriting, reading: FileReading, paths: Paths, specifiers: NodeModuleSpecifiers, sequences: Sequences },
   body: code.file("./code/platform/local-paths.ts"),
 })
 

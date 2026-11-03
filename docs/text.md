@@ -46,7 +46,7 @@ Section: Code
 | `"  ", "const a = 1\nexport default a"` | `["      const a = 1","      export default a"]` | held |
 
 - Owner: trame
-- Parameters: `standard` ← [Terminal text](#TerminalText) · `file` ← [Text file](../std/releases/0.14.0/docs/text.md#TextFile)
+- Parameters: `standard` ← [Terminal text](#TerminalText) · `file` ← [Text file](../std/releases/0.15.0/docs/text.md#TextFile)
 - Body: inline, in the declaration
 - Defined by: [Terminal text](#TerminalText)
 - Used by: [trame dev server](engine.md#DevServer), [Plain text writer](rendering.md#PlainTextSyntax)
@@ -67,7 +67,7 @@ Section: Columns
 | `["Name","Kind"], [["Text","function"]], ""` | `["NAME  KIND","Text  function"]` | held |
 
 - Owner: trame
-- Parameters: `standard` ← [Terminal text](#TerminalText) · `cell` ← [Padded cell](#PaddedCell) · `columns` ← [Columns in the terminal](#TerminalColumns) · `texts` ← [Texts](../std/releases/0.14.0/docs/algebra.md#Texts) · `sequences` ← [Sequences](../std/releases/0.14.0/docs/algebra.md#Sequences)
+- Parameters: `standard` ← [Terminal text](#TerminalText) · `cell` ← [Padded cell](#PaddedCell) · `columns` ← [Columns in the terminal](#TerminalColumns) · `texts` ← [Texts](../std/releases/0.15.0/docs/algebra.md#Texts) · `sequences` ← [Sequences](../std/releases/0.15.0/docs/algebra.md#Sequences)
 - Body: inline, in the declaration
 - Defined by: [Terminal text](#TerminalText)
 - Used by: [Advance](commands.md#Advance), [Audit the packages](commands.md#Audit), [Plain text writer](rendering.md#PlainTextSyntax), [Figures as text](rendering.md#TextFigures)
@@ -158,7 +158,7 @@ Section: Lines
 | `["a","b"]` | `"a\nb\n"` | held |
 
 - Owner: trame
-- Parameters: `standard` ← [Terminal text](#TerminalText) · `file` ← [Text file](../std/releases/0.14.0/docs/text.md#TextFile) · `counts` ← [Counts](../std/releases/0.14.0/docs/algebra.md#Counts)
+- Parameters: `standard` ← [Terminal text](#TerminalText) · `file` ← [Text file](../std/releases/0.15.0/docs/text.md#TextFile) · `counts` ← [Counts](../std/releases/0.15.0/docs/algebra.md#Counts)
 - Body: inline, in the declaration
 - Defined by: [Terminal text](#TerminalText)
 - Used by: [Plain text writer](rendering.md#PlainTextSyntax)

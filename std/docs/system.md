@@ -165,6 +165,9 @@ Source: npm documentation: npm audit, npm outdated (--json) · `https://docs.npm
 | `audit` | `audit` | Asks the registry for the known vulnerabilities of the packages installed |
 | `outdated` | `outdated` | Lists the packages installed that are not at their latest version |
 | `json` | `--json` | Answers in JSON rather than in a table |
+| `install` | `install` | Installs the packages package.json names and writes what it installed into the lockfile |
+| `noAudit` | `--no-audit` | Installs without asking the registry for vulnerabilities (trame audit asks it) |
+| `noFund` | `--no-fund` | Installs without the messages of packages looking for funding |
 
 - Maintained by: trame
 - Serves: [A published value is cited, not copied](product.md#CitedNotCopied)
@@ -173,7 +176,7 @@ Source: npm documentation: npm audit, npm outdated (--json) · `https://docs.npm
 
 ### npm's manifest
 
-`NpmManifest` · `src/system.ts:168`
+`NpmManifest` · `src/system.ts:171`
 
 The file where a project names the packages it depends on, each at its version, for npm to install them, and its import map: where the specifiers it opens with # lead.
 

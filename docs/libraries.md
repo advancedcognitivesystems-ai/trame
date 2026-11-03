@@ -26,7 +26,7 @@ A module of a library joins the graph that imports it under the library's name, 
 </details>
 
 - Owner: trame
-- Parameters: `counts` ← [Counts](../std/releases/0.14.0/docs/algebra.md#Counts)
+- Parameters: `counts` ← [Counts](../std/releases/0.15.0/docs/algebra.md#Counts)
 - Refines: [What is generic is written once](product.md#WrittenOnce)
 - Used by: [References](engine.md#References)
 - Applies: [A library is a Trame project, imported by path](principles.md#LibrariesAreProjects)
@@ -58,7 +58,7 @@ A version freezes what a library says: nothing in it may be left to decide, nor 
 </details>
 
 - Owner: trame
-- Parameters: `counts` ← [Counts](../std/releases/0.14.0/docs/algebra.md#Counts)
+- Parameters: `counts` ← [Counts](../std/releases/0.15.0/docs/algebra.md#Counts)
 - Refines: [What is generic is written once](product.md#WrittenOnce)
 - Used by: [Release a version](commands.md#Release)
 - Applies: [A library is imported by its name](principles.md#LibrariesByName)

@@ -11,7 +11,7 @@ import {
 import { PayloadBuilder, Differences, Assembly, Project, Compiler, DateBundle, DevServer, DevService, ShipmentPipeline, Views, EngineFingerprint, ProjectRuns } from "./engine"
 import {
   ShowView, ViewByName, RenderView, EmitPayload, Assemble, Assembler, TestKinds, TakeSnapshot, Publish, Audit, Release, WriteManifest, Export, Run, Dev,
-  Deliver, Ship, RecordEvidence, Doctor, DoctorProbe, Advance, Build, Plan, Amend, Amending, BuildComparison, Init, ReferencesModule, Registry,
+  Deliver, Ship, RecordEvidence, Doctor, DoctorProbe, Advance, Build, Plan, Amend, Amending, BuildComparison, Init, ReferencesModule, Registry, Upgrade,
 } from "./commands"
 import { SyntaxReader, BodyChecks } from "./syntax"
 import { TypeScript, TypeScriptWriter, StringLiteral } from "./typescript"
@@ -22,7 +22,7 @@ import { Doctype } from "./html"
 import { NamesLed } from "./delivery"
 import { TerminalRendering, PlainTextSyntax, TextFigures, PageRendering, HtmlSyntax, SvgFigures } from "./rendering"
 import {
-  WebTreeSitter, Esbuild, NodeCompression, PageResources, StoppedClock, NoReportsInTest, MemoryHttpServer, NodeTimer, NodeCommandLine, MemoryTerminal,
+  WebTreeSitter, Esbuild, NodeCompression, PageResources, StoppedClock, NoReportsInTest, NoInstallsInTest, MemoryHttpServer, NodeTimer, NodeCommandLine, MemoryTerminal,
   NodeHashing, RunsInTheProcess, InPlaceSources,
 } from "./platform"
 import { ReleaseRecords, EnginePin } from "./generations"
@@ -586,7 +586,7 @@ export const LibraryReleased = scenario({
  */
 export const ManifestWritten = scenario({
   owner: "trame",
-  verifies: [WriteManifest, PackagesByOrigin, LocalPaths],
+  verifies: [WriteManifest, PackagesByOrigin, LocalPaths, NoInstallsInTest],
   env: Test,
   deps: {
     manifest: WriteManifest, processLog: ProcessLog, writeLog: WriteLog, reading: FileReading, currentProcess: Process, paths: Paths, layout: Layout,
@@ -607,6 +607,32 @@ export const ManifestWritten = scenario({
     const [extension] = language.extensions
     const named = specifiers.imports + names.name + specifiers.separator + first
     check(messages.languageNamed(named), written.imports?.[named] !== undefined && reading.existsSync(paths.join(home, layout.libraryLinks, names.name, module + extension)))
+  },
+})
+
+/**
+ * The packages upgraded
+ * trame upgrade, in the application, asks the origin of each package of Trame it references which versions it holds:
+ * a reference behind the newest is written again with it, in its module, and the manifest runs in a fresh engine; a
+ * project whose references are all at their newest is told so, and nothing is written (C1, since g100).
+ */
+export const PackagesUpgraded = scenario({
+  owner: "trame",
+  verifies: [Upgrade, PackagesByOrigin, LocalPaths],
+  env: Test,
+  deps: {
+    upgrade: Upgrade, processLog: ProcessLog, writeLog: WriteLog, currentProcess: Process, paths: Paths, layout: Layout,
+    projects: ScenarioProjects, line: TrameCommands, exitStatus: ExitStatus, texts: Texts, counts: Counts, messages: ScenarioMessages,
+  },
+  body: ({ upgrade, processLog, writeLog, currentProcess, paths, layout, projects, line, exitStatus, texts, counts, messages }) => async (check) => {
+    processLog.enter(projects.application)
+    processLog.answer(texts.empty, exitStatus.success)
+    const home = currentProcess.cwd()
+    const r = await upgrade({ params: { command: line.upgrade }, body: { args: [] } })
+    const modules = [...writeLog.written().keys()].filter((p) => p.startsWith(paths.join(home, layout.sources)))
+    const relaunched = processLog.started().some((s) => s.args.includes(line.manifest))
+    // Moved, its module is written and the manifest runs; at the newest already, nothing is written.
+    check(messages.packagesUpgraded(), r.status === exitStatus.success && relaunched === counts.any(modules))
   },
 })
 
