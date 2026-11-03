@@ -220,7 +220,9 @@ path or from the registry of this machine) and its path (`at`); `trame manifest`
 writes `trame.json` from them (the language as the engine to run, `.trame/trame`; each library as placed, `{ at,
 version }`): a derived file, like the import map. The engine leads `#trame/*` to its own language, and the
 names of the project's libraries to their sources, when it loads a project: a package published once is read with
-whichever generation and libraries read it, as a peer dependency (g91–g93). Since g92 a version is published to the
+whichever generation and libraries read it, as a peer dependency (g91–g93), and bundled the same way: `trame deliver`
+and `trame ship` lead esbuild by the names the engine leads (g95), so a page holds one language and one version of
+each library. Since g92 a version is published to the
 registry of this machine (`~/.trame/registry/<name>/<version>`, the decision `LocalRegistryPlace`): by `trame release`
 in a library (run on a version already frozen, it publishes it), and by the promotion of a generation, with its
 language copied for real, so a project that runs it from there keeps the language it was frozen with. `trame.sh`

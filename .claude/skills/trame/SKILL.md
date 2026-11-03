@@ -34,7 +34,8 @@ The repository's `AGENTS.md` is the full guide; read it first, then keep to this
 - A decided value changes by amendment, never in place (g85): `trame amend <node> <path> <value> --why … --by …` says
   first what it would change (a criterion that would fail refuses it), then writes `amend(…)` beside the node; its
   owner approves it when someone else wrote it. A cited value (a standard's constants, a quantity's units) changes only
-  with its source (`--source`); code changes in the code.
+  with its source (`--source`); code changes in the code. An amendment the code is written against has no date: dated,
+  a build at an earlier day reads the code without it.
 - No literal in a body, a kind or a view: each is an error. A published value goes in a `standard`, a chosen one in a
   `decision`, a shared operation in a `structure`, a closed set of words in a `vocabulary`, words for people in a
   `catalog` (a scenario's check labels too), a name shared by engine and language in a prelude vocabulary, a private
@@ -62,7 +63,8 @@ The repository's `AGENTS.md` is the full guide; read it first, then keep to this
 - The packages of Trame a project uses are `package` nodes of its graph (`joins`, `from`, `at`, `version`): change a
   version there, then `trame manifest` places it and writes `trame.json`; never edit `trame.json`'s references by hand.
   `from: "registry"` takes the version published under `~/.trame/registry` (`trame release <version>` in a library
-  publishes it; a promoted generation is published with its language).
+  publishes it; a promoted generation is published with its language). A library published once runs, and is bundled
+  into a page, with the language and the libraries of the project that reads it (a peer).
 - A choice is a concept: when someone could do it another way, name a port, its strategies (realizations) and the
   binding that says which applies where; a choice of value stays a decision with what it rejected; what nobody would
   change is just code.

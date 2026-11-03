@@ -214,7 +214,9 @@ path or from the registry of this machine) and its path (`at`); `trame manifest`
 writes `trame.json` from them (the language as the engine to run, `.trame/trame`; each library as placed, `{ at,
 version }`): a derived file, like the import map. The engine leads `#trame/*` to its own language, and the
 names of the project's libraries to their sources, when it loads a project: a package published once is read with
-whichever generation and libraries read it, as a peer dependency (g91–g93). Since g92 a version is published to the
+whichever generation and libraries read it, as a peer dependency (g91–g93), and bundled the same way: `trame deliver`
+and `trame ship` lead esbuild by the names the engine leads (g95), so a page holds one language and one version of
+each library. Since g92 a version is published to the
 registry of this machine (`~/.trame/registry/<name>/<version>`, the decision `LocalRegistryPlace`): by `trame release`
 in a library (run on a version already frozen, it publishes it), and by the promotion of a generation, with its
 language copied for real, so a project that runs it from there keeps the language it was frozen with. `trame.sh`
@@ -383,6 +385,12 @@ elements), a port answered differently in several environments is answered as in
   installs only those of the project and of the libraries it imports as they are.
 - `Quantity<…>` is a number: a value from an operation (`a * b`) has no quantity, so it never mixes; give it one by
   its constructor when it is one (`chf(x)`).
+- An amendment the code is written against has no date (`from`): dated today, a build at an earlier day (the day of the
+  scenarios, which deliver Poselia's page) reads the code without it, and its criteria fail.
+- A program assembled for elsewhere (a page) wires a value that is not JSON (a quantity's units) from its declaration,
+  through the frozen prelude: a kind's `provide` reads `self.field(…)` there, and nothing of the graph (`ctx.g` is absent).
+- `out/local/trame-cli.ts` reads the bodies as they are but wires them as they were assembled: after giving an entry
+  point a new dependency, `./trame.sh assemble TrameCli --env Local` before running a command through it.
 
 ## 10. Reading further
 
