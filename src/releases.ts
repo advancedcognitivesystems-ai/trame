@@ -1453,3 +1453,18 @@ export const G98 = release({
   archive: "f4872eb1ea3a5e35",
   assembledBy: G97,
 })
+
+/**
+ * Generation 99
+ */
+export const G99 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g99",
+  date: "2026-11-03",
+  what: "each program assembled has a launcher, what Node.js runs: it leads the names of packages as the engine does (the language, each library as the project reads it), then runs the program; a library published once runs as a peer wherever its program runs",
+  fingerprint: "0e54a0035869c5d7",
+  language: "shared",
+  archive: "20b57a86634eb57a",
+  assembledBy: G98,
+})
