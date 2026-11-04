@@ -184,7 +184,7 @@ export type DeliveryField = ValueOf<typeof DeliveryField>
  * reads to run it.
  */
 export const RoleField = { people: "people", notAuthor: "notAuthor", signature: "signature" } as const
-export const ArtifactField = { path: "path", media: "media" } as const
+export const ArtifactField = { path: "path", media: "media", version: "version" } as const
 export const ArtifactEdge = { producedBy: "producedBy", runs: "runs", settings: "settings", publishes: "publishes", carries: "carries" } as const
 export const CheckField = { steps: "steps" } as const
 export const CheckEdge = { on: "on", runs: "runs", by: "by" } as const

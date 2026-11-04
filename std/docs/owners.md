@@ -1,10 +1,10 @@
 # Owners
 
-*What each person must decide, settle or watch on 3 November 2026, and what they own.*
+*What each person must decide, settle or watch on 4 November 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 27 | 151 |
+| trame | 0 | 0 | 5 | 161 |
 
 <a id="trame"></a>
 
@@ -12,32 +12,10 @@
 
 | Severity | What | Where | Owner | Consequence |
 |---|---|---|---|---|
-| warning | Computes the same kind of answer from the same kind of arguments as “The data a shipment carries is reviewed” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [The decisions a shipment applies hold](obligations.md#Applied) | trame |  |
-| warning | Computes the same kind of answer from the same kind of arguments as “The packages a shipment uses are safe” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [The decisions a shipment applies hold](obligations.md#Applied) | trame |  |
-| warning | Computes the same kind of answer from the same kind of arguments as “The product a shipment serves holds” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [The decisions a shipment applies hold](obligations.md#Applied) | trame |  |
-| warning | Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it | [The decisions a shipment applies hold](obligations.md#Applied) | trame |  |
-| warning | Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it | [The artefacts a shipment ships are checked](obligations.md#Checked) | trame |  |
-| warning | Computes the same kind of answer from the same kind of arguments as “The decisions a shipment applies hold” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [The data a shipment carries is reviewed](obligations.md#Reviewed) | trame |  |
-| warning | Computes the same kind of answer from the same kind of arguments as “The packages a shipment uses are safe” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [The data a shipment carries is reviewed](obligations.md#Reviewed) | trame |  |
-| warning | Computes the same kind of answer from the same kind of arguments as “The product a shipment serves holds” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [The data a shipment carries is reviewed](obligations.md#Reviewed) | trame |  |
-| warning | Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it | [The data a shipment carries is reviewed](obligations.md#Reviewed) | trame |  |
-| warning | Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it | [The project's rules hold](obligations.md#Ruled) | trame |  |
-| warning | Computes the same kind of answer from the same kind of arguments as “The decisions a shipment applies hold” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [The packages a shipment uses are safe](obligations.md#Safe) | trame |  |
-| warning | Computes the same kind of answer from the same kind of arguments as “The data a shipment carries is reviewed” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [The packages a shipment uses are safe](obligations.md#Safe) | trame |  |
-| warning | Computes the same kind of answer from the same kind of arguments as “The product a shipment serves holds” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [The packages a shipment uses are safe](obligations.md#Safe) | trame |  |
-| warning | Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it | [The packages a shipment uses are safe](obligations.md#Safe) | trame |  |
-| warning | Computes the same kind of answer from the same kind of arguments as “The decisions a shipment applies hold” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [The product a shipment serves holds](obligations.md#Served) | trame |  |
-| warning | Computes the same kind of answer from the same kind of arguments as “The data a shipment carries is reviewed” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [The product a shipment serves holds](obligations.md#Served) | trame |  |
-| warning | Computes the same kind of answer from the same kind of arguments as “The packages a shipment uses are safe” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [The product a shipment serves holds](obligations.md#Served) | trame |  |
-| warning | Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it | [The product a shipment serves holds](obligations.md#Served) | trame |  |
-| warning | Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it | [The code a shipment ships is verified](obligations.md#Verified) | trame |  |
-| warning | Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it | [As many links as asked](rules.md#Linked) | trame |  |
 | warning | Computes the same kind of answer from the same kind of arguments as “A node reaches what it must” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [A node never reaches what it must not](rules.md#NeverReaches) | trame |  |
-| warning | Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it | [A node never reaches what it must not](rules.md#NeverReaches) | trame |  |
 | warning | Computes the same kind of answer from the same kind of arguments as “A node never reaches what it must not” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [A node reaches what it must](rules.md#Reaches) | trame |  |
-| warning | Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it | [A node reaches what it must](rules.md#Reaches) | trame |  |
-| warning | Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it | [Effects a node may not have](rules.md#WithoutEffects) | trame |  |
-| warning | Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it | [Words of a vocabulary](rules.md#WordsOf) | trame |  |
+| warning | To ship: The standard library is unknown | [The next version](sdlc.md#NextVersion) | trame |  |
+| warning | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The standard library](sdlc.md#TheLibrary) | trame |  |
 | warning | No realization, in any environment | [Where a package comes from](tooling.md#PackageSources) | trame |  |
 
 ### Owns
@@ -58,7 +36,7 @@
 | [ECMAScript types](ecmascript.md#EcmaScriptTypes) | Standard |  |
 | [Text run as code](ecmascript.md#TextAsCode) | Vocabulary |  |
 | [Unicode escape of a text](ecmascript.md#UnicodeEscape) | Standard |  |
-| [Commands](effects.md#Commands) | Function | **unknown** |
+| [Commands](effects.md#Commands) | Function | **held** |
 | [Effects](effects.md#Effects) | Vocabulary |  |
 | [What the platform may do](effects.md#PlatformEffects) | Decision |  |
 | [WAI-ARIA](html.md#Aria) | Standard |  |
@@ -73,20 +51,20 @@
 | [Time](measures.md#Time) | Quantity |  |
 | [Units of measure](measures.md#UnitsOfMeasure) | Standard |  |
 | [Symbols of units](measures.md#UnitSymbols) | Message catalog |  |
-| [The decisions a shipment applies hold](obligations.md#Applied) | Requirement | **unknown** |
+| [The decisions a shipment applies hold](obligations.md#Applied) | Requirement | **held** |
 | [Criteria of the decisions applied](obligations.md#AppliedCriteria) | Acceptance criteria | **held** |
-| [The artefacts a shipment ships are checked](obligations.md#Checked) | Requirement | **unknown** |
+| [The artefacts a shipment ships are checked](obligations.md#Checked) | Requirement | **held** |
 | [Criteria of the artefacts checked](obligations.md#CheckedCriteria) | Acceptance criteria | **held** |
 | [Ways of checking](obligations.md#CheckWays) | Vocabulary |  |
-| [The data a shipment carries is reviewed](obligations.md#Reviewed) | Requirement | **unknown** |
+| [The data a shipment carries is reviewed](obligations.md#Reviewed) | Requirement | **held** |
 | [Criteria of the data reviewed](obligations.md#ReviewedCriteria) | Acceptance criteria | **held** |
-| [The project's rules hold](obligations.md#Ruled) | Requirement | **unknown** |
+| [The project's rules hold](obligations.md#Ruled) | Requirement | **held** |
 | [Criteria of the rules held](obligations.md#RuledCriteria) | Acceptance criteria | **held** |
-| [The packages a shipment uses are safe](obligations.md#Safe) | Requirement | **unknown** |
+| [The packages a shipment uses are safe](obligations.md#Safe) | Requirement | **held** |
 | [Criteria of the packages safe](obligations.md#SafeCriteria) | Acceptance criteria | **held** |
-| [The product a shipment serves holds](obligations.md#Served) | Requirement | **unknown** |
+| [The product a shipment serves holds](obligations.md#Served) | Requirement | **held** |
 | [Criteria of the product served](obligations.md#ServedCriteria) | Acceptance criteria | **held** |
-| [The code a shipment ships is verified](obligations.md#Verified) | Requirement | **unknown** |
+| [The code a shipment ships is verified](obligations.md#Verified) | Requirement | **held** |
 | [Criteria of the code verified](obligations.md#VerifiedCriteria) | Acceptance criteria | **held** |
 | [Trame](packages.md#Language) | Package |  |
 | [Abstract Factory](patterns.md#AbstractFactory) | Design pattern |  |
@@ -120,6 +98,7 @@
 | [Ports of the platform, realized once](product.md#RealizedOnce) | Goal |  |
 | [Shared operations instead of literals](product.md#SharedOperations) | Goal |  |
 | [Rules applied, not written again](product.md#SharedRules) | Goal |  |
+| [Versions that hold](product.md#VersionsThatHold) | Goal |  |
 | [Version 0.1.0](releases.md#R0_1_0) | Release |  |
 | [Version 0.10.0](releases.md#R0_10_0) | Release |  |
 | [Version 0.11.0](releases.md#R0_11_0) | Release |  |
@@ -137,16 +116,17 @@
 | [Version 0.8.0](releases.md#R0_8_0) | Release |  |
 | [Version 0.9.0](releases.md#R0_9_0) | Release |  |
 | [Directions](rules.md#Directions) | Vocabulary |  |
-| [As many links as asked](rules.md#Linked) | Requirement | **unknown** |
+| [As many links as asked](rules.md#Linked) | Requirement | **held** |
 | [Criteria of as many links as asked](rules.md#LinkedCriteria) | Acceptance criteria | **held** |
-| [A node never reaches what it must not](rules.md#NeverReaches) | Requirement | **unknown** |
+| [A node never reaches what it must not](rules.md#NeverReaches) | Requirement | **held** |
 | [Criteria of a node that never reaches what it must not](rules.md#NeverReachesCriteria) | Acceptance criteria | **held** |
-| [A node reaches what it must](rules.md#Reaches) | Requirement | **unknown** |
+| [A node reaches what it must](rules.md#Reaches) | Requirement | **held** |
 | [Criteria of a node that reaches what it must](rules.md#ReachesCriteria) | Acceptance criteria | **held** |
-| [Effects a node may not have](rules.md#WithoutEffects) | Requirement | **unknown** |
+| [Effects a node may not have](rules.md#WithoutEffects) | Requirement | **held** |
 | [Criteria of effects a node may not have](rules.md#WithoutEffectsCriteria) | Acceptance criteria | **held** |
-| [Words of a vocabulary](rules.md#WordsOf) | Requirement | **unknown** |
+| [Words of a vocabulary](rules.md#WordsOf) | Requirement | **held** |
 | [Criteria of words of a vocabulary](rules.md#WordsOfCriteria) | Acceptance criteria | **held** |
+| [Commands are made for each effect](scenarios.md#CommandsMade) | Scenario | **held** |
 | [The device, in memory](scenarios.md#DeviceInMemory) | Scenario | **held** |
 | [Seeded draws keep their promise](scenarios.md#DrawsKeepTheirPromise) | Scenario | **held** |
 | [In memory](scenarios.md#InMemory) | Technical choice | **held** |
@@ -155,6 +135,14 @@
 | [The language of the library's scenarios](scenarios.md#ScenarioLanguage) | Decision |  |
 | [Test](scenarios.md#Test) | Environment |  |
 | [The tooling, in memory](scenarios.md#ToolingInMemory) | Scenario | **held** |
+| [Its decisions applied](sdlc.md#DecisionsApplied) | Obligation |  |
+| [Its functions verified](sdlc.md#FunctionsVerified) | Obligation |  |
+| [The next version](sdlc.md#NextVersion) | Shipment | **unknown** |
+| [Its packages safe](sdlc.md#PackagesSafe) | Obligation |  |
+| [Its requirements held](sdlc.md#RequirementsServed) | Obligation |  |
+| [Its rules held](sdlc.md#RulesHeld) | Obligation |  |
+| [The standard library](sdlc.md#TheLibrary) | Artefact | **unknown** |
+| [How a version is made](sdlc.md#VersionMode) | Policy |  |
 | [Exit status](system.md#ExitStatus) | Standard |  |
 | [Node.js process arguments](system.md#NodeArguments) | Standard |  |
 | [Node.js command line and child processes](system.md#NodeCli) | Standard |  |

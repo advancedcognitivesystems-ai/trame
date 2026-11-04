@@ -13,6 +13,7 @@ import {
 } from "./platform"
 import { Files, FilesKept, FilesInMemory, HeadlessBrowser, BrowserScripted, BrowserInMemory } from "./tooling"
 import { Strategy } from "./patterns"
+import { Commands, Effects } from "./effects"
 import { Counts } from "./algebra"
 
 // What the library offers to scenarios is code like the rest: its realizations kept in memory are played here, against
@@ -60,6 +61,7 @@ export const ScenarioChecks = catalog({
     framesTurned: () => "Time turned by hand calls each frame started with the seconds since its start, until it stops",
     filesKept: () => "A file written exists, is read back, copied, fingerprinted alike, and kept for the scenario",
     pageShown: () => "A page scripted shows what it was given: its elements, their text, its errors; the clicks and the choices are kept",
+    commandsMade: () => "A command is made for each effect, from its text, which it keeps as it is",
   }),
 })
 
@@ -77,6 +79,7 @@ export const ScenarioData = decision<{
   turned: number[]
   file: { path: string; text: string; copy: string }
   page: { path: string; selector: string; count: number; text: string; error: string; language: string }
+  command: string
 }>({
   owner: "trame",
   value: {
@@ -87,6 +90,23 @@ export const ScenarioData = decision<{
     turned: [0.5, 0.25],
     file: { path: "dist/page.html", text: "<p>a page</p>", copy: "public/index.html" },
     page: { path: "dist/page.html", selector: ".poses li", count: 12, text: "Mountain", error: "The page broke", language: "fr" },
+    command: "SELECT 1",
+  },
+})
+
+/**
+ * Commands are made for each effect
+ * The command maker gives, for each word of effects, a command of that intent from its text, and the text it was given
+ * is the command: nothing added, nothing lost.
+ */
+export const CommandsMade = scenario({
+  owner: "trame",
+  verifies: [Commands],
+  env: Test,
+  deps: { commands: Commands, effects: Effects, data: ScenarioData, checks: ScenarioChecks },
+  body: ({ commands, effects, data, checks }) => async (check) => {
+    const made = effects.map((e) => commands[e](data.command))
+    check(checks.commandsMade(), made.length === effects.length && made.every((c) => c === data.command))
   },
 })
 

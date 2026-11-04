@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-03",
+  "generated": "2026-11-04",
   "nodes": [
     {
       "id": "github.GitHubActions",
@@ -525,6 +525,43 @@
         "language": "shared"
       },
       "diagnostics": []
+    },
+    {
+      "id": "sdlc.NextVersion",
+      "kind": "shipment",
+      "title": "The next version",
+      "source": "src/sdlc.ts:25",
+      "status": "unknown",
+      "fields": {
+        "owner": "trame",
+        "target": "version"
+      },
+      "result": {
+        "derived": [],
+        "gaps": []
+      },
+      "diagnostics": [
+        "warning: To ship: The library of writers is unknown"
+      ]
+    },
+    {
+      "id": "sdlc.TheLibrary",
+      "kind": "artifact",
+      "title": "The library of writers",
+      "source": "src/sdlc.ts:18",
+      "status": "unknown",
+      "fields": {
+        "owner": "trame",
+        "path": "src",
+        "version": true
+      },
+      "result": {
+        "path": "src",
+        "code": "2eac90bd"
+      },
+      "diagnostics": [
+        "warning: Not built yet: trame ship builds it"
+      ]
     },
     {
       "id": "shell.BashScripts",
@@ -1158,6 +1195,26 @@
       "from": "releases.R0_3_0",
       "to": "product.RunsElsewhere",
       "kind": "serves"
+    },
+    {
+      "from": "sdlc.NextVersion",
+      "to": "sdlc.TheLibrary",
+      "kind": "ships"
+    },
+    {
+      "from": "sdlc.NextVersion",
+      "to": "yaml.YamlDocument",
+      "kind": "requires"
+    },
+    {
+      "from": "sdlc.NextVersion",
+      "to": "shell.ShellScript",
+      "kind": "requires"
+    },
+    {
+      "from": "sdlc.NextVersion",
+      "to": "github.GitHubWorkflow",
+      "kind": "requires"
     },
     {
       "from": "shell.BashScripts",

@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 3 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 4 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Continuous integration · GitHub Actions
 
@@ -175,6 +175,25 @@ Release · `R0_3_0`
 - Fingerprint: f021383982b1c18c
 - Language: shared
 - Serves: Each place is a writer, A shipment runs elsewhere as it runs here
+
+## Continuous integration · SDLC
+
+### The library of writers
+
+Artefact · `TheLibrary` · **unknown**
+
+- Owner: trame
+- Path: src
+- A version of the project: true
+
+### The next version
+
+Shipment · `NextVersion` · **unknown**
+
+- Owner: trame
+- Target: version
+- Ships: The library of writers
+- Requires: A YAML document, A script of Bash, A workflow of GitHub Actions
 
 ## Continuous integration · Shell
 

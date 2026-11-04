@@ -257,7 +257,7 @@ export const Release = entryPoint({
     names: LibraryReleaseNames, releases: Releases, records: ReleaseRecords, versions: SemanticVersioning, specifiers: NodeModuleSpecifiers,
     reading: FileReading, writing: FileWriting, trees: FileTrees, paths: Paths, hashing: Hashing, sha256: Sha256, fingerprint: Fingerprint,
     encodings: NodeEncodings, language: TypeScript, clock: Clock, terminal: Terminal, messages: CommandMessages, advance: AdvanceMessages, sequences: Sequences, counts: Counts,
-    drivers: Drivers, text: StringLiteral,
+    drivers: Drivers, text: StringLiteral, ship: Ship, line: TrameCommands,
   },
   body: code.file<typeof import("./code/commands/release").default>("./code/commands/release.ts"),
 })

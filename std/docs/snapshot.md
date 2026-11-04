@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 3 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 4 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Standard library · Algebra
 
@@ -160,7 +160,7 @@ Decision · `PlatformEffects`
 
 ### Commands
 
-Function · `Commands` · **unknown**
+Function · `Commands` · **held**
 
 - Owner: trame
 - Parameters: { effects: effects.Effects }
@@ -292,14 +292,14 @@ Quantity · `Time`
 
 ### The decisions a shipment applies hold
 
-Requirement · `Applied` · **unknown**
+Requirement · `Applied` · **held**
 
 - Owner: trame
 - Refines: Rules applied, not written again
 
 ### The artefacts a shipment ships are checked
 
-Requirement · `Checked` · **unknown**
+Requirement · `Checked` · **held**
 
 - Owner: trame
 - Parameters: { counts: algebra.Counts }
@@ -309,7 +309,7 @@ Requirement · `Checked` · **unknown**
 
 ### The data a shipment carries is reviewed
 
-Requirement · `Reviewed` · **unknown**
+Requirement · `Reviewed` · **held**
 
 - Owner: trame
 - Parameters: { counts: algebra.Counts }
@@ -318,28 +318,28 @@ Requirement · `Reviewed` · **unknown**
 
 ### The project's rules hold
 
-Requirement · `Ruled` · **unknown**
+Requirement · `Ruled` · **held**
 
 - Owner: trame
 - Refines: Rules applied, not written again
 
 ### The packages a shipment uses are safe
 
-Requirement · `Safe` · **unknown**
+Requirement · `Safe` · **held**
 
 - Owner: trame
 - Refines: Rules applied, not written again
 
 ### The product a shipment serves holds
 
-Requirement · `Served` · **unknown**
+Requirement · `Served` · **held**
 
 - Owner: trame
 - Refines: Rules applied, not written again
 
 ### The code a shipment ships is verified
 
-Requirement · `Verified` · **unknown**
+Requirement · `Verified` · **held**
 
 - Owner: trame
 - Parameters: { counts: algebra.Counts }
@@ -665,6 +665,12 @@ Goal · `SharedRules`
 
 - Owner: trame
 
+### Versions that hold
+
+Goal · `VersionsThatHold`
+
+- Owner: trame
+
 ## Standard library · Releases
 
 ### Version 0.1.0
@@ -863,7 +869,7 @@ Release · `R0_9_0`
 
 ### As many links as asked
 
-Requirement · `Linked` · **unknown**
+Requirement · `Linked` · **held**
 
 - Owner: trame
 - Parameters: { counts: algebra.Counts }
@@ -872,7 +878,7 @@ Requirement · `Linked` · **unknown**
 
 ### A node never reaches what it must not
 
-Requirement · `NeverReaches` · **unknown**
+Requirement · `NeverReaches` · **held**
 
 - Owner: trame
 - Parameters: { counts: algebra.Counts }
@@ -881,14 +887,14 @@ Requirement · `NeverReaches` · **unknown**
 
 ### A node reaches what it must
 
-Requirement · `Reaches` · **unknown**
+Requirement · `Reaches` · **held**
 
 - Owner: trame
 - Refines: Rules applied, not written again
 
 ### Effects a node may not have
 
-Requirement · `WithoutEffects` · **unknown**
+Requirement · `WithoutEffects` · **held**
 
 - Owner: trame
 - Parameters: { counts: algebra.Counts }
@@ -897,7 +903,7 @@ Requirement · `WithoutEffects` · **unknown**
 
 ### Words of a vocabulary
 
-Requirement · `WordsOf` · **unknown**
+Requirement · `WordsOf` · **held**
 
 - Owner: trame
 - Parameters: { counts: algebra.Counts }
@@ -954,7 +960,7 @@ Acceptance criteria · `WordsOfCriteria` · **held**
 Decision · `ScenarioData`
 
 - Decided by: trame
-- Value: { seeds: 1, 2, text: a seed, draws: 200, bounds: { lo: 1, hi: 6 }, weighted: { item: light, weight: 1 }, { item: heavy, weight: 3 }, { item: never, weight: 0 }, never: never, preference: { name: voice, value: off, unset: pace }, sentence: { text: Breathe in, language: en }, turned: 0.5, 0.25, file: { path: dist/page.html, text: <p>a page</p>, copy: public/index.html }, page: { path: dist/page.html, selector: .poses li, count: 12, text: Mountain, error: The page broke, language: fr } }
+- Value: { seeds: 1, 2, text: a seed, draws: 200, bounds: { lo: 1, hi: 6 }, weighted: { item: light, weight: 1 }, { item: heavy, weight: 3 }, { item: never, weight: 0 }, never: never, preference: { name: voice, value: off, unset: pace }, sentence: { text: Breathe in, language: en }, turned: 0.5, 0.25, file: { path: dist/page.html, text: <p>a page</p>, copy: public/index.html }, page: { path: dist/page.html, selector: .poses li, count: 12, text: Mountain, error: The page broke, language: fr }, command: SELECT 1 }
 
 ### The language of the library's scenarios
 
@@ -988,6 +994,16 @@ Environment · `Test`
 - Owner: trame
 - The build evaluates here: true
 
+### Commands are made for each effect
+
+Scenario · `CommandsMade` · **held**
+
+- Owner: trame
+- Parameters: { commands: effects.Commands, effects: effects.Effects, data: scenarios.ScenarioData, checks: scenarios.ScenarioChecks }
+- Verifies: Commands
+- In: Test
+- Depends on: Commands, Effects, What the library's scenarios are given, What the library's scenarios check
+
 ### The device, in memory
 
 Scenario · `DeviceInMemory` · **held**
@@ -1017,6 +1033,73 @@ Scenario · `ToolingInMemory` · **held**
 - Verifies: Files kept in memory, A browser kept in memory
 - In: Test
 - Depends on: Project files, Files written, Headless browser, Browser script, What the library's scenarios are given, What the library's scenarios check
+
+## Standard library · SDLC
+
+### The standard library
+
+Artefact · `TheLibrary` · **unknown**
+
+- Owner: trame
+- Path: src
+- A version of the project: true
+
+### The next version
+
+Shipment · `NextVersion` · **unknown**
+
+- Owner: trame
+- Target: version
+- Ships: The standard library
+- Follows the policy: How a version is made
+
+### Its decisions applied
+
+Obligation · `DecisionsApplied`
+
+- Owner: trame
+- Applies the family: The decisions a shipment applies hold
+- Serves: Versions that hold
+
+### Its functions verified
+
+Obligation · `FunctionsVerified`
+
+- Owner: trame
+- A gap weighs: error
+- Applies the family: The code a shipment ships is verified
+- Serves: Versions that hold
+
+### Its packages safe
+
+Obligation · `PackagesSafe`
+
+- Owner: trame
+- Applies the family: The packages a shipment uses are safe
+- Serves: Versions that hold
+
+### Its requirements held
+
+Obligation · `RequirementsServed`
+
+- Owner: trame
+- Applies the family: The product a shipment serves holds
+- Serves: Versions that hold
+
+### Its rules held
+
+Obligation · `RulesHeld`
+
+- Owner: trame
+- Applies the family: The project's rules hold
+- Serves: Versions that hold
+
+### How a version is made
+
+Policy · `VersionMode`
+
+- Owner: trame
+- Its obligations: Its functions verified, Its requirements held, Its decisions applied, Its rules held, Its packages safe
 
 ## Standard library · System
 

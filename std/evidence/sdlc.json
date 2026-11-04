@@ -1,0 +1,14 @@
+[
+  {
+    "node": "sdlc.TheLibrary",
+    "at": "2026-11-04",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "046eab19736f5c412321af9bd0ee7b0fc7f8926958ac9ecfafef2969f22bf1a4",
+    "code": "efc1c404",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "1889d937112450f6",
+    "seal": "4843a716777321913f4979888e96558e4ba5b6c17fb5cc22f8f02b1ba8de16d0"
+  }
+]

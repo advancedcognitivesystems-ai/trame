@@ -31,7 +31,11 @@ const body = ({ sequences: { head }, values, messages }: Deps) => {
       const [via] = g.node(d.via).nodes()
       return node && obligation ? [{ node, origin: { obligation, ...(via ? { via } : {}) } }] : []
     })
-    const required = unique([...out(shipment, ShipmentEdge.requires), ...derived.map((d) => d.node)])
+    // A version of the project offers what it holds (C1, since g101): a node that has no status in the project itself (an
+    // adapter it offers, a decision only such adapters apply) is judged where a project chooses it, not by the version.
+    const version = out(shipment, ShipmentEdge.ships).some((a) => a.field(ArtifactField.version) === true)
+    const offered = (v: View) => version && v.status === undefined
+    const required = unique([...out(shipment, ShipmentEdge.requires), ...derived.map((d) => d.node).filter((v) => !offered(v))])
     const checks = required.filter((v) => v.kind === KindName.check)
     const errors: string[] = []
 

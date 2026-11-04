@@ -217,11 +217,12 @@ const body = (deps: Deps) => {
   }
 
   /**
-   * Compiles the loaded graph again with the evidence as it is on disk now (after a command recorded some). With an
-   * engine, the evidence is judged by that one rather than by the engine the project pins.
+   * Compiles the loaded graph again with the evidence as it is on disk now (after a command recorded some), judged by
+   * the engine that recorded it rather than by the engine the project pins: by none when that engine does not say which
+   * it is (a program no generation records, as in the scenarios), whose evidence then names none either.
    */
-  async function reread(o: Options, engine?: string): Promise<Ctx> {
-    loaded = { ...loaded!, ...readEvidence(o.root), ...(engine === undefined ? {} : { engine }) }
+  async function reread(o: Options, engine: string | undefined): Promise<Ctx> {
+    loaded = { ...loaded!, ...readEvidence(o.root), engine }
     return at(o, o.today)
   }
 

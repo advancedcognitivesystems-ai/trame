@@ -431,11 +431,13 @@ export const DeclarationsPublished = scenario({
 
 /**
  * The projects of the repository the scenarios enter
- * A library, which releases versions; an application, which imports libraries outside its package and ships.
+ * A library, which ships and releases versions (the library of writers: the engine of the scenarios has the standard
+ * library's modules loaded already, so its graph would be read empty there); an application, which imports libraries
+ * outside its package and ships.
  */
 export const ScenarioProjects = decision<{ library: string; application: string; started: string }>({
   owner: "trame",
-  value: { library: "std", application: "apps/poselia", started: "examples/started" },
+  value: { library: "ci", application: "apps/poselia", started: "examples/started" },
 })
 
 /**
@@ -445,7 +447,7 @@ export const ScenarioProjects = decision<{ library: string; application: string;
  * and someone who is not.
  */
 export const ProjectSamples = decision<{
-  release: { version: string; what: string }
+  release: { version: string; what: string; by: string }
   imported: { library: string; specifier: string; module: string }
   delivery: string
   shipments: { runners: string; preview: string }
@@ -455,7 +457,7 @@ export const ProjectSamples = decision<{
 }>({
   owner: "trame",
   value: {
-    release: { version: "99.0.0", what: "A version released in memory, by a scenario" },
+    release: { version: "99.0.0", what: "A version released in memory, by a scenario", by: "claude" },
     imported: { library: "std", specifier: "#std/*", module: "src/algebra.ts" },
     delivery: "PoseliaPage",
     shipments: { runners: "RunnersWritten", preview: "Preview" },
@@ -548,7 +550,8 @@ export const PackagesAudited = scenario({
 /**
  * A library released
  * trame release, in the library, freezes a version: its graph, its code and its documents under releases/, its record
- * written in its module of releases; refused in the example, where a value is still to decide.
+ * written in its module of releases; refused in the example, where a value is still to decide. The library ships its
+ * versions through its graph (C1): the version is shipped first, attributed to who releases, and its dossier written.
  */
 export const LibraryReleased = scenario({
   owner: "trame",
@@ -557,8 +560,9 @@ export const LibraryReleased = scenario({
   deps: {
     release: Release, processLog: ProcessLog, writeLog: WriteLog, terminalLog: TerminalLog, currentProcess: Process, paths: Paths, layout: Layout,
     projects: ScenarioProjects, samples: ProjectSamples, line: TrameCommands, exitStatus: ExitStatus, text: StringLiteral, messages: ScenarioMessages,
+    shipping: ShippingRecords,
   },
-  body: ({ release, processLog, writeLog, terminalLog, currentProcess, paths, layout, projects, samples, line, exitStatus, text, messages }) => async (check) => {
+  body: ({ release, processLog, writeLog, terminalLog, currentProcess, paths, layout, projects, samples, line, exitStatus, text, messages, shipping }) => async (check) => {
     let refused = false
     try {
       await release({ params: { command: line.release }, body: { args: [samples.release.version, samples.release.what] } })
@@ -568,9 +572,10 @@ export const LibraryReleased = scenario({
     check(messages.releaseRefusedUnsettled(), refused)
     processLog.enter(projects.library)
     const home = currentProcess.cwd()
-    const r = await release({ params: { command: line.release }, body: { args: [samples.release.version, samples.release.what] } })
+    const r = await release({ params: { command: line.release }, body: { args: [samples.release.version, samples.release.what, line.by, samples.release.by] } })
     const frozen = paths.join(home, layout.releases, samples.release.version)
     const written = [...writeLog.written().keys()]
+    check(messages.versionShippedFirst(), written.some((p) => p.startsWith(paths.join(home, layout.evidence, shipping.dossiers))))
     check(messages.versionFrozen(samples.release.version),
       r.status === exitStatus.success && written.some((p) => p.startsWith(frozen + paths.sep + layout.sources)) && written.some((p) => p.startsWith(frozen + paths.sep + layout.documents)))
     const [, records] = [...writeLog.written()].find(([p]) => p.startsWith(paths.join(home, layout.sources)) && !p.startsWith(frozen)) ?? []

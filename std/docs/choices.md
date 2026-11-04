@@ -1,6 +1,6 @@
 # Technical choices
 
-*What answers each port in each environment on 3 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
+*What answers each port in each environment on 4 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
 
 > **1 technical choice for 11 ports, in 1 environment**
 
@@ -32,7 +32,7 @@
 
 ### In memory
 
-`InMemory` · `src/scenarios.ts:32` · status: **held**
+`InMemory` · `src/scenarios.ts:33` · status: **held**
 
 In the library's scenarios, each port of a device or of the tooling is answered by its realization kept in memory.
 

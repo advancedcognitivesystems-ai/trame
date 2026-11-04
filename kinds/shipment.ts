@@ -3,7 +3,7 @@ import {
   ArtifactEdge, CheckEdge, PolicyEdge, ObligationField, EvidenceSource,
   type Node, type View, type Graph, type GraphSketch, type ObligationReach, type ObligationFinding, type DerivedObligation,
 } from "../trame/kernel"
-import { latestOf } from "./artifact"
+import { latestOf, isVersion, ownNodes } from "./artifact"
 import { sketchOf, resolved } from "./rule"
 import { wiredBy } from "./scenario"
 import words from "./words"
@@ -56,6 +56,8 @@ const reachOf = (self: View, g: Graph): ObligationReach => {
   }
   for (const a of shipped) {
     add(a)
+    // A version of the project holds all its code (C1): every node of the project is reached.
+    if (isVersion(a)) for (const v of ownNodes(g)) add(v)
     program(g.from(a).out(ArtifactEdge.producedBy).first())
     for (const c of g.from(a).in(CheckEdge.on).nodes()) program(g.from(c).out(CheckEdge.runs).first())
   }
@@ -63,9 +65,14 @@ const reachOf = (self: View, g: Graph): ObligationReach => {
   return { shipped: shipped.map((a) => a.ref), reached: [...reached.keys()] }
 }
 
-/** What a shipment must prove: its artefacts built, every node it requires, every node its policy derives. */
+/**
+ * What a shipment must prove: its artefacts built, every node it requires, every node its policy derives. A version of
+ * the project offers what it holds (C1): a derived node that has no status in the project itself (an adapter it offers,
+ * a decision only such adapters apply) is judged where a project chooses it.
+ */
 const obligations = (self: View, g: Graph): View[] => {
-  const derived = (self.result<Result>()?.derived ?? []).flatMap((d) => g.node(d.node).nodes())
+  const version = g.from(self).out(E.ships).nodes().some(isVersion)
+  const derived = (self.result<Result>()?.derived ?? []).flatMap((d) => g.node(d.node).nodes()).filter((v) => !version || v.status !== undefined)
   return [...new Map([...g.from(self).out(E.ships).nodes(), ...g.from(self).out(E.requires).nodes(), ...derived].map((v) => [v.ref, v])).values()]
 }
 

@@ -115,6 +115,7 @@ The service for its users, the way of a release: the program for production, and
 |---|---|---|
 | [The program for a laptop](#LocalProgram) | **unknown** | shipped |
 | [The program for production](#ProductionProgram) | **unknown** | shipped |
+| [Commands are made for each effect](../../../std/docs/scenarios.md#CommandsMade) | **held** | [The code is verified](#CodeVerified), for [Commands](../../../std/docs/effects.md#Commands) |
 | [Read a reservation](scenarios.md#ReadScenario) | **held** | [The code is verified](#CodeVerified), for [Reservations in SQL](infra.md#ReservationsSql) |
 | [Cancelling twice refunds only once](scenarios.md#RepeatedCancellationScenario) | **held** | [The code is verified](#CodeVerified), for [Cancellations in SQL](infra.md#CancellationsSql) |
 | [Every reservation is refunded according to the rule](scenarios.md#ComplianceScenario) | **held** | [The code is verified](#CodeVerified), for [Refund on cancellation](cancellation.md#Refund) |

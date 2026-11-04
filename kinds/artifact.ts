@@ -11,13 +11,18 @@ const fields = {
   owner: field.owner(),
   [ArtifactField.path]: optional(field.value<string>(say.artifactPath())),
   [ArtifactField.media]: optional(field.value<string>(say.artifactMedia())),
+  /**
+   * A version of the project itself (C1): the project as its people write it, which a release freezes and other projects
+   * import at that version. It holds all the project's code: a shipment that ships it reaches every node of the project.
+   */
+  [ArtifactField.version]: optional(field.value<boolean>(say.artifactVersion())),
 }
 const F = keysOf(fields)
 const edges = {
-  [ArtifactEdge.producedBy]: edge.one(
+  [ArtifactEdge.producedBy]: optionalEdge(edge.one(
     [KindName.delivery, KindName.entry, KindName.release, KindName.component, KindName.syntax],
     { label: say.artifactProducedBy(), inverse: say.artifactProduces() },
-  ),
+  )),
   [ArtifactEdge.runs]: optionalEdge(edge.one([KindName.shipment], { label: say.artifactRuns(), inverse: say.artifactRunElsewhereBy() })),
   [ArtifactEdge.settings]: optionalEdge(edge.one([KindName.decision], { label: say.artifactSettings(), inverse: say.artifactSets() })),
   [ArtifactEdge.publishes]: optionalEdge(edge.many([KindName.artifact], { label: say.artifactPublishes(), inverse: say.artifactPublishedBy() })),
@@ -41,6 +46,12 @@ export const pathOf = (v: View, g: Graph): string | undefined => {
   const output = producer?.kind === KindName.delivery ? producer.field(DeliveryField.output) : undefined
   return g.lib.values.isText(output) ? output : undefined
 }
+
+/** Whether an artefact is a version of the project itself: all its code (C1). */
+export const isVersion = (v: View): boolean => v.field(ArtifactField.version) === true
+
+/** The nodes of the project itself, its libraries' left out: what a version of it holds. */
+export const ownNodes = (g: Graph): View[] => g.all().nodes().filter((v) => v.library === undefined)
 
 /** The fingerprint of an artefact as last built, if it was. */
 export const builtFingerprint = (v: View): string | undefined => latestOf(v, EvidenceSource.built)?.fingerprint
@@ -86,7 +97,9 @@ const madeOf = (self: View, g: Graph): View[] => {
     : producer?.kind === KindName.entry ? program([producer], g.from(producer).out(EdgeName.partOf).first(), where)
     : [...g.from(self).out(ArtifactEdge.runs).nodes(), ...g.from(self).out(ArtifactEdge.settings).nodes()]
   const carried = g.from(self).out(ArtifactEdge.carries).nodes().flatMap((c) => program(entriesOf(c), c, environments))
-  return [self, ...(producer ? [producer] : []), ...made, ...carried]
+  // A version of the project is made of all its code.
+  const version = isVersion(self) ? ownNodes(g) : []
+  return [self, ...(producer ? [producer] : []), ...made, ...carried, ...version]
 }
 
 /**
@@ -118,6 +131,8 @@ const kind = defineKind({
 
   holes: (self, g) => [
     pathOf(self, g) === undefined && hole.error(say.artifactWithoutPath(), self.owner),
+    !isVersion(self) && !g.from(self).out(E.producedBy).exists() && hole.error(say.artifactWithoutProducer(), self.owner),
+    isVersion(self) && g.from(self).out(E.producedBy).exists() && hole.error(say.artifactVersionProduced(), self.owner),
     g.from(self).out(E.producedBy).first()?.kind === KindName.syntax && !g.from(self).out(E.runs).exists() && hole.error(say.artifactRunsNothing(), self.owner),
     g.from(self).out(E.publishes).exists() && g.from(self).out(E.producedBy).first()?.kind !== KindName.syntax && hole.error(say.artifactPublishesWithoutWriter(), self.owner),
     builtFingerprint(self) === undefined && hole.warning(say.artifactNotBuilt(), self.owner),
@@ -140,7 +155,7 @@ const kind = defineKind({
   },
 })
 
-interface ArtifactInput {
+interface Produced {
   owner: string
   /** Where it lives, from the project's root; where its delivery writes it when a delivery produces it. */
   path?: string
@@ -148,6 +163,7 @@ interface ArtifactInput {
   media?: string
   /** What produces it: a delivery, a command of the SDLC, a component assembled, a release, a writer. */
   producedBy: Node<typeof KindName.delivery | typeof KindName.entry | typeof KindName.release | typeof KindName.component | typeof KindName.syntax>
+  version?: never
   /** Written by a writer: the shipment whose plan it writes, to run it elsewhere. */
   runs?: Node<typeof KindName.shipment>
   /** Written by a writer: the settings it is given (when it runs, on what, with which runtime, what it keeps). */
@@ -160,7 +176,20 @@ interface ArtifactInput {
   environment?: Node<typeof KindName.environment>
 }
 
-/** `artifact({ owner, path: "dist/poselia.html", media: "text/html", producedBy: PoseliaPage })` */
+/** A version of the project itself (C1): the project as its people write it, which nothing produces. */
+interface Version {
+  owner: string
+  /** Where it lives, from the project's root: its sources. */
+  path: string
+  version: true
+}
+
+type ArtifactInput = Produced | Version
+
+/**
+ * `artifact({ owner, path: "dist/poselia.html", media: "text/html", producedBy: PoseliaPage })`, or a version of the
+ * project: `artifact({ owner, path: "src", version: true })`.
+ */
 export function artifact(input: ArtifactInput): Node<typeof KindName.artifact> & Provides<{ path: string; media?: string }> {
   return kind(input as never) as never
 }

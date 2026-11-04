@@ -1,16 +1,19 @@
 # Owners
 
-*What each person must decide, settle or watch on 3 November 2026, and what they own.*
+*What each person must decide, settle or watch on 4 November 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 0 | 14 |
+| trame | 0 | 0 | 2 | 16 |
 
 <a id="trame"></a>
 
 ## trame
 
-Nothing to decide or watch.
+| Severity | What | Where | Owner | Consequence |
+|---|---|---|---|---|
+| warning | To ship: The library of writers is unknown | [The next version](sdlc.md#NextVersion) | trame |  |
+| warning | Not built yet: trame ship builds it | [The library of writers](sdlc.md#TheLibrary) | trame |  |
 
 ### Owns
 
@@ -26,6 +29,8 @@ Nothing to decide or watch.
 | [Version 0.1.0](releases.md#R0_1_0) | Release |  |
 | [Version 0.2.0](releases.md#R0_2_0) | Release |  |
 | [Version 0.3.0](releases.md#R0_3_0) | Release |  |
+| [The next version](sdlc.md#NextVersion) | Shipment | **unknown** |
+| [The library of writers](sdlc.md#TheLibrary) | Artefact | **unknown** |
 | [Bash scripts](shell.md#BashScripts) | Standard |  |
 | [A script of Bash](shell.md#ShellScript) | Syntax element | **held** |
 | [YAML](yaml.md#Yaml) | Standard |  |

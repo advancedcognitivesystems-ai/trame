@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-03",
+  "generated": "2026-11-04",
   "nodes": [
     {
       "id": "algebra.Counts",
@@ -656,7 +656,7 @@
       "kind": "function",
       "title": "Commands",
       "source": "src/effects.ts:174",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1898,17 +1898,12 @@
       "kind": "requirement",
       "title": "The decisions a shipment applies hold",
       "source": "src/obligations.ts:84",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "body": "(function)"
       },
-      "diagnostics": [
-        "warning: Computes the same kind of answer from the same kind of arguments as “The data a shipment carries is reviewed” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so",
-        "warning: Computes the same kind of answer from the same kind of arguments as “The packages a shipment uses are safe” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so",
-        "warning: Computes the same kind of answer from the same kind of arguments as “The product a shipment serves holds” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so",
-        "warning: Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it"
-      ]
+      "diagnostics": []
     },
     {
       "id": "obligations.AppliedCriteria",
@@ -1933,7 +1928,7 @@
       "kind": "requirement",
       "title": "The artefacts a shipment ships are checked",
       "source": "src/obligations.ts:130",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1947,9 +1942,7 @@
         },
         "body": "(function)"
       },
-      "diagnostics": [
-        "warning: Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it"
-      ]
+      "diagnostics": []
     },
     {
       "id": "obligations.CheckedCriteria",
@@ -1992,7 +1985,7 @@
       "kind": "requirement",
       "title": "The data a shipment carries is reviewed",
       "source": "src/obligations.ts:97",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -2000,12 +1993,7 @@
         },
         "body": "(function)"
       },
-      "diagnostics": [
-        "warning: Computes the same kind of answer from the same kind of arguments as “The decisions a shipment applies hold” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so",
-        "warning: Computes the same kind of answer from the same kind of arguments as “The packages a shipment uses are safe” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so",
-        "warning: Computes the same kind of answer from the same kind of arguments as “The product a shipment serves holds” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so",
-        "warning: Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it"
-      ]
+      "diagnostics": []
     },
     {
       "id": "obligations.ReviewedCriteria",
@@ -2034,14 +2022,12 @@
       "kind": "requirement",
       "title": "The project's rules hold",
       "source": "src/obligations.ts:147",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "body": "(function)"
       },
-      "diagnostics": [
-        "warning: Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it"
-      ]
+      "diagnostics": []
     },
     {
       "id": "obligations.RuledCriteria",
@@ -2066,17 +2052,12 @@
       "kind": "requirement",
       "title": "The packages a shipment uses are safe",
       "source": "src/obligations.ts:160",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "body": "(function)"
       },
-      "diagnostics": [
-        "warning: Computes the same kind of answer from the same kind of arguments as “The decisions a shipment applies hold” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so",
-        "warning: Computes the same kind of answer from the same kind of arguments as “The data a shipment carries is reviewed” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so",
-        "warning: Computes the same kind of answer from the same kind of arguments as “The product a shipment serves holds” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so",
-        "warning: Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it"
-      ]
+      "diagnostics": []
     },
     {
       "id": "obligations.SafeCriteria",
@@ -2101,17 +2082,12 @@
       "kind": "requirement",
       "title": "The product a shipment serves holds",
       "source": "src/obligations.ts:48",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "body": "(function)"
       },
-      "diagnostics": [
-        "warning: Computes the same kind of answer from the same kind of arguments as “The decisions a shipment applies hold” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so",
-        "warning: Computes the same kind of answer from the same kind of arguments as “The data a shipment carries is reviewed” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so",
-        "warning: Computes the same kind of answer from the same kind of arguments as “The packages a shipment uses are safe” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so",
-        "warning: Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it"
-      ]
+      "diagnostics": []
     },
     {
       "id": "obligations.ServedCriteria",
@@ -2140,7 +2116,7 @@
       "kind": "requirement",
       "title": "The code a shipment ships is verified",
       "source": "src/obligations.ts:33",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -2148,9 +2124,7 @@
         },
         "body": "(function)"
       },
-      "diagnostics": [
-        "warning: Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it"
-      ]
+      "diagnostics": []
     },
     {
       "id": "obligations.VerifiedCriteria",
@@ -2623,6 +2597,16 @@
       "diagnostics": []
     },
     {
+      "id": "product.VersionsThatHold",
+      "kind": "goal",
+      "title": "Versions that hold",
+      "source": "src/product.ts:51",
+      "fields": {
+        "owner": "trame"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "releases.R0_1_0",
       "kind": "release",
       "title": "Version 0.1.0",
@@ -2881,7 +2865,7 @@
       "kind": "requirement",
       "title": "As many links as asked",
       "source": "src/rules.ts:128",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -2889,9 +2873,7 @@
         },
         "body": "(function)"
       },
-      "diagnostics": [
-        "warning: Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it"
-      ]
+      "diagnostics": []
     },
     {
       "id": "rules.LinkedCriteria",
@@ -2920,7 +2902,7 @@
       "kind": "requirement",
       "title": "A node never reaches what it must not",
       "source": "src/rules.ts:109",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -2929,8 +2911,7 @@
         "body": "(function)"
       },
       "diagnostics": [
-        "warning: Computes the same kind of answer from the same kind of arguments as “A node reaches what it must” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so",
-        "warning: Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it"
+        "warning: Computes the same kind of answer from the same kind of arguments as “A node reaches what it must” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so"
       ]
     },
     {
@@ -2956,14 +2937,13 @@
       "kind": "requirement",
       "title": "A node reaches what it must",
       "source": "src/rules.ts:93",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "body": "(function)"
       },
       "diagnostics": [
-        "warning: Computes the same kind of answer from the same kind of arguments as “A node never reaches what it must not” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so",
-        "warning: Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it"
+        "warning: Computes the same kind of answer from the same kind of arguments as “A node never reaches what it must not” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so"
       ]
     },
     {
@@ -2993,7 +2973,7 @@
       "kind": "requirement",
       "title": "Effects a node may not have",
       "source": "src/rules.ts:149",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -3001,9 +2981,7 @@
         },
         "body": "(function)"
       },
-      "diagnostics": [
-        "warning: Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it"
-      ]
+      "diagnostics": []
     },
     {
       "id": "rules.WithoutEffectsCriteria",
@@ -3028,7 +3006,7 @@
       "kind": "requirement",
       "title": "Words of a vocabulary",
       "source": "src/rules.ts:172",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -3036,9 +3014,7 @@
         },
         "body": "(function)"
       },
-      "diagnostics": [
-        "warning: Nothing makes the product follow this rule: no code calls it, no scenario or check verifies the code against it, no rule or obligation applies it"
-      ]
+      "diagnostics": []
     },
     {
       "id": "rules.WordsOfCriteria",
@@ -3063,10 +3039,34 @@
       "diagnostics": []
     },
     {
+      "id": "scenarios.CommandsMade",
+      "kind": "scenario",
+      "title": "Commands are made for each effect",
+      "source": "src/scenarios.ts:102",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "commands": "effects.Commands",
+          "effects": "effects.Effects",
+          "data": "scenarios.ScenarioData",
+          "checks": "scenarios.ScenarioChecks"
+        },
+        "body": "(function)"
+      },
+      "result": [
+        {
+          "name": "A command is made for each effect, from its text, which it keeps as it is",
+          "status": "passed"
+        }
+      ],
+      "diagnostics": []
+    },
+    {
       "id": "scenarios.DeviceInMemory",
       "kind": "scenario",
       "title": "The device, in memory",
-      "source": "src/scenarios.ts:126",
+      "source": "src/scenarios.ts:146",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3108,7 +3108,7 @@
       "id": "scenarios.DrawsKeepTheirPromise",
       "kind": "scenario",
       "title": "Seeded draws keep their promise",
-      "source": "src/scenarios.ts:98",
+      "source": "src/scenarios.ts:118",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3144,7 +3144,7 @@
       "id": "scenarios.InMemory",
       "kind": "binding",
       "title": "In memory",
-      "source": "src/scenarios.ts:32",
+      "source": "src/scenarios.ts:33",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3156,7 +3156,7 @@
       "id": "scenarios.ScenarioChecks",
       "kind": "catalog",
       "title": "What the library's scenarios check",
-      "source": "src/scenarios.ts:49",
+      "source": "src/scenarios.ts:50",
       "fields": {
         "owner": "trame",
         "messages": "(function)"
@@ -3167,7 +3167,7 @@
       "id": "scenarios.ScenarioData",
       "kind": "decision",
       "title": "What the library's scenarios are given",
-      "source": "src/scenarios.ts:72",
+      "source": "src/scenarios.ts:74",
       "fields": {
         "owner": "trame",
         "value": {
@@ -3221,7 +3221,8 @@
             "text": "Mountain",
             "error": "The page broke",
             "language": "fr"
-          }
+          },
+          "command": "SELECT 1"
         }
       },
       "diagnostics": []
@@ -3230,7 +3231,7 @@
       "id": "scenarios.ScenarioLanguage",
       "kind": "decision",
       "title": "The language of the library's scenarios",
-      "source": "src/scenarios.ts:44",
+      "source": "src/scenarios.ts:45",
       "fields": {
         "owner": "trame",
         "value": {
@@ -3243,7 +3244,7 @@
       "id": "scenarios.Test",
       "kind": "environment",
       "title": "Test",
-      "source": "src/scenarios.ts:26",
+      "source": "src/scenarios.ts:27",
       "fields": {
         "owner": "trame",
         "evaluates": true
@@ -3254,7 +3255,7 @@
       "id": "scenarios.ToolingInMemory",
       "kind": "scenario",
       "title": "The tooling, in memory",
-      "source": "src/scenarios.ts:160",
+      "source": "src/scenarios.ts:180",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3278,6 +3279,210 @@
           "status": "passed"
         }
       ],
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.DecisionsApplied",
+      "kind": "obligation",
+      "title": "Its decisions applied",
+      "source": "src/sdlc.ts:41",
+      "fields": {
+        "owner": "trame"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.FunctionsVerified",
+      "kind": "obligation",
+      "title": "Its functions verified",
+      "source": "src/sdlc.ts:27",
+      "fields": {
+        "owner": "trame",
+        "params": {
+          "kinds": [
+            "function"
+          ]
+        },
+        "gaps": "error"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.NextVersion",
+      "kind": "shipment",
+      "title": "The next version",
+      "source": "src/sdlc.ts:70",
+      "status": "unknown",
+      "fields": {
+        "owner": "trame",
+        "target": "version"
+      },
+      "result": {
+        "derived": [
+          {
+            "node": "platform.DeviceAsPorts",
+            "via": "platform.AnimationFrames",
+            "obligation": "sdlc.DecisionsApplied"
+          },
+          {
+            "node": "platform.StartsWithThePage",
+            "via": "platform.BrowserLoading",
+            "obligation": "sdlc.DecisionsApplied"
+          },
+          {
+            "node": "tooling.ToolingAsPorts",
+            "via": "tooling.BrowserInMemory",
+            "obligation": "sdlc.DecisionsApplied"
+          },
+          {
+            "node": "scenarios.DrawsKeepTheirPromise",
+            "via": "algorithms.SeededDraws",
+            "obligation": "sdlc.FunctionsVerified"
+          },
+          {
+            "node": "scenarios.CommandsMade",
+            "via": "effects.Commands",
+            "obligation": "sdlc.FunctionsVerified"
+          },
+          {
+            "node": "scenarios.DeviceInMemory",
+            "via": "platform.AwakeInMemory",
+            "obligation": "sdlc.FunctionsVerified"
+          },
+          {
+            "node": "scenarios.ToolingInMemory",
+            "via": "tooling.BrowserInMemory",
+            "obligation": "sdlc.FunctionsVerified"
+          },
+          {
+            "node": "tooling.PlaywrightPackage",
+            "via": "tooling.PlaywrightBrowser",
+            "obligation": "sdlc.PackagesSafe"
+          },
+          {
+            "node": "obligations.Applied",
+            "via": "obligations.Applied",
+            "obligation": "sdlc.RequirementsServed"
+          },
+          {
+            "node": "obligations.Checked",
+            "via": "obligations.Applied",
+            "obligation": "sdlc.RequirementsServed"
+          },
+          {
+            "node": "obligations.Reviewed",
+            "via": "obligations.Applied",
+            "obligation": "sdlc.RequirementsServed"
+          },
+          {
+            "node": "obligations.Ruled",
+            "via": "obligations.Applied",
+            "obligation": "sdlc.RequirementsServed"
+          },
+          {
+            "node": "obligations.Safe",
+            "via": "obligations.Applied",
+            "obligation": "sdlc.RequirementsServed"
+          },
+          {
+            "node": "obligations.Served",
+            "via": "obligations.Applied",
+            "obligation": "sdlc.RequirementsServed"
+          },
+          {
+            "node": "obligations.Verified",
+            "via": "obligations.Applied",
+            "obligation": "sdlc.RequirementsServed"
+          },
+          {
+            "node": "rules.Linked",
+            "via": "obligations.Applied",
+            "obligation": "sdlc.RequirementsServed"
+          },
+          {
+            "node": "rules.NeverReaches",
+            "via": "obligations.Applied",
+            "obligation": "sdlc.RequirementsServed"
+          },
+          {
+            "node": "rules.Reaches",
+            "via": "obligations.Applied",
+            "obligation": "sdlc.RequirementsServed"
+          },
+          {
+            "node": "rules.WithoutEffects",
+            "via": "obligations.Applied",
+            "obligation": "sdlc.RequirementsServed"
+          },
+          {
+            "node": "rules.WordsOf",
+            "via": "obligations.Applied",
+            "obligation": "sdlc.RequirementsServed"
+          }
+        ],
+        "gaps": []
+      },
+      "diagnostics": [
+        "warning: To ship: The standard library is unknown"
+      ]
+    },
+    {
+      "id": "sdlc.PackagesSafe",
+      "kind": "obligation",
+      "title": "Its packages safe",
+      "source": "src/sdlc.ts:53",
+      "fields": {
+        "owner": "trame"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.RequirementsServed",
+      "kind": "obligation",
+      "title": "Its requirements held",
+      "source": "src/sdlc.ts:35",
+      "fields": {
+        "owner": "trame"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.RulesHeld",
+      "kind": "obligation",
+      "title": "Its rules held",
+      "source": "src/sdlc.ts:47",
+      "fields": {
+        "owner": "trame"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.TheLibrary",
+      "kind": "artifact",
+      "title": "The standard library",
+      "source": "src/sdlc.ts:20",
+      "status": "unknown",
+      "fields": {
+        "owner": "trame",
+        "path": "src",
+        "version": true
+      },
+      "result": {
+        "path": "src",
+        "code": "efc1c404"
+      },
+      "diagnostics": [
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+      ]
+    },
+    {
+      "id": "sdlc.VersionMode",
+      "kind": "policy",
+      "title": "How a version is made",
+      "source": "src/sdlc.ts:60",
+      "fields": {
+        "owner": "trame"
+      },
       "diagnostics": []
     },
     {
@@ -5300,6 +5505,36 @@
       "kind": "accepts"
     },
     {
+      "from": "scenarios.CommandsMade",
+      "to": "effects.Commands",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.CommandsMade",
+      "to": "scenarios.Test",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.CommandsMade",
+      "to": "effects.Commands",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.CommandsMade",
+      "to": "effects.Effects",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.CommandsMade",
+      "to": "scenarios.ScenarioData",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.CommandsMade",
+      "to": "scenarios.ScenarioChecks",
+      "kind": "deps"
+    },
+    {
       "from": "scenarios.DeviceInMemory",
       "to": "platform.MemoryPreferences",
       "kind": "verifies"
@@ -5498,6 +5733,91 @@
       "from": "scenarios.ToolingInMemory",
       "to": "scenarios.ScenarioChecks",
       "kind": "deps"
+    },
+    {
+      "from": "sdlc.DecisionsApplied",
+      "to": "obligations.Applied",
+      "kind": "applies"
+    },
+    {
+      "from": "sdlc.DecisionsApplied",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
+      "from": "sdlc.FunctionsVerified",
+      "to": "obligations.Verified",
+      "kind": "applies"
+    },
+    {
+      "from": "sdlc.FunctionsVerified",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
+      "from": "sdlc.NextVersion",
+      "to": "sdlc.TheLibrary",
+      "kind": "ships"
+    },
+    {
+      "from": "sdlc.NextVersion",
+      "to": "sdlc.VersionMode",
+      "kind": "policy"
+    },
+    {
+      "from": "sdlc.PackagesSafe",
+      "to": "obligations.Safe",
+      "kind": "applies"
+    },
+    {
+      "from": "sdlc.PackagesSafe",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
+      "from": "sdlc.RequirementsServed",
+      "to": "obligations.Served",
+      "kind": "applies"
+    },
+    {
+      "from": "sdlc.RequirementsServed",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
+      "from": "sdlc.RulesHeld",
+      "to": "obligations.Ruled",
+      "kind": "applies"
+    },
+    {
+      "from": "sdlc.RulesHeld",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
+      "from": "sdlc.VersionMode",
+      "to": "sdlc.FunctionsVerified",
+      "kind": "obligations"
+    },
+    {
+      "from": "sdlc.VersionMode",
+      "to": "sdlc.RequirementsServed",
+      "kind": "obligations"
+    },
+    {
+      "from": "sdlc.VersionMode",
+      "to": "sdlc.DecisionsApplied",
+      "kind": "obligations"
+    },
+    {
+      "from": "sdlc.VersionMode",
+      "to": "sdlc.RulesHeld",
+      "kind": "obligations"
+    },
+    {
+      "from": "sdlc.VersionMode",
+      "to": "sdlc.PackagesSafe",
+      "kind": "obligations"
     },
     {
       "from": "system.ExitStatus",

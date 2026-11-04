@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 3 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 4 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Trame · Appearance
 
@@ -410,7 +410,7 @@ Environment · `Test`
 
 ### The page is assembled
 
-Architecture decision · `ThePageIsAssembled` · **held**
+Architecture decision · `ThePageIsAssembled` · **unknown**
 
 - Decided by: trame
 - Context: The page's script built by hand what it shared with the engine and wrote its values (classes, identifiers, the explorer's geometry) as literals the catalogue could not see: a change in the graph did not reach it.
@@ -421,7 +421,7 @@ Architecture decision · `ThePageIsAssembled` · **held**
 
 ### Explorer of a graph
 
-Function · `ExplorerFigures` · **held**
+Function · `ExplorerFigures` · **unknown**
 
 - Owner: trame
 - Parameters: { html: std/html.Html, svg: std/html.Svg, aria: std/html.Aria, css: std/html.Css, page: page.ThePage, markup: markup.DocumentMarkup, figures: markup.FigureMarkup, explorer: markup.ExplorerMarkup, drawing: appearance.ExplorerDrawing, element: html.HtmlElement, start: html.HtmlStartTag, empty: html.SelfClosingTag, path: html.PathData, declaration: html.CssDeclaration, escape: html.EscapedText, common: rendering.Common, words: messages.PageWords, messages: messages.RenderingMessages, punctuation: documents.Punctuation, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts }
@@ -430,7 +430,7 @@ Function · `ExplorerFigures` · **held**
 
 ### Show the graph
 
-Entry point · `ShowGraph` · **held**
+Entry point · `ShowGraph` · **unknown**
 
 - Owner: trame
 - Trigger: { type: load }
@@ -441,7 +441,7 @@ Entry point · `ShowGraph` · **held**
 
 ### Amendments sent to trame dev
 
-Implementation · `BrowserAmendments` · **held**
+Implementation · `BrowserAmendments` · **unknown**
 
 - Owner: trame
 - Parameters: { page: page.ThePage, service: engine.DevService, http: std/web.Http, media: std/web.MediaTypes }
@@ -450,7 +450,7 @@ Implementation · `BrowserAmendments` · **held**
 
 ### The browser's gzip
 
-Implementation · `BrowserDecompression` · **held**
+Implementation · `BrowserDecompression` · **unknown**
 
 - Owner: trame
 - Parameters: { packing: page.PackedGraph, ecma: std/ecmascript.EcmaScript }
@@ -459,7 +459,7 @@ Implementation · `BrowserDecompression` · **held**
 
 ### The globals of the page, and trame dev
 
-Implementation · `BrowserFeed` · **held**
+Implementation · `BrowserFeed` · **unknown**
 
 - Owner: trame
 - Parameters: { page: page.ThePage, service: engine.DevService, values: std/algebra.ValueTypes }
@@ -468,7 +468,7 @@ Implementation · `BrowserFeed` · **held**
 
 ### Local storage
 
-Implementation · `BrowserMemory` · **held**
+Implementation · `BrowserMemory` · **unknown**
 
 - Owner: trame
 - Parameters: { page: page.ThePage }
@@ -477,7 +477,7 @@ Implementation · `BrowserMemory` · **held**
 
 ### The browser's window
 
-Implementation · `BrowserWindow` · **held**
+Implementation · `BrowserWindow` · **unknown**
 
 - Owner: trame
 - Parameters: { motion: std/web.MediaQueries5, feature: html.MediaFeature, counts: std/algebra.Counts }
@@ -486,7 +486,7 @@ Implementation · `BrowserWindow` · **held**
 
 ### The browser runs the page
 
-Technical choice · `TheBrowserRunsThePage` · **held**
+Technical choice · `TheBrowserRunsThePage` · **unknown**
 
 - Decided by: trame
 - Context: The page's script took what it needed from the browser itself, here and there: the graph could not say what the page asks of the browser, nor try it elsewhere.
@@ -546,7 +546,7 @@ Decision · `PlanSamples`
 Decision · `ProjectSamples`
 
 - Decided by: trame
-- Value: { release: { version: 99.0.0, what: A version released in memory, by a scenario }, imported: { library: std, specifier: #std/*, module: src/algebra.ts }, delivery: PoseliaPage, shipments: { runners: RunnersWritten, preview: Preview }, handCheck: { check: OnAPhone, tester: ghalaax, stranger: someone-else }, started: { title: Started in memory, owner: ghalaax }, registry: { home: ., generation: g93 } }
+- Value: { release: { version: 99.0.0, what: A version released in memory, by a scenario, by: claude }, imported: { library: std, specifier: #std/*, module: src/algebra.ts }, delivery: PoseliaPage, shipments: { runners: RunnersWritten, preview: Preview }, handCheck: { check: OnAPhone, tester: ghalaax, stranger: someone-else }, started: { title: Started in memory, owner: ghalaax }, registry: { home: ., generation: g93 } }
 
 ### What a program run in a scenario answers
 
@@ -560,7 +560,7 @@ Decision · `RunSamples`
 Decision · `ScenarioProjects`
 
 - Decided by: trame
-- Value: { library: std, application: apps/poselia, started: examples/started }
+- Value: { library: ci, application: apps/poselia, started: examples/started }
 
 ### What an SVG figure opens with
 
@@ -681,10 +681,10 @@ Scenario · `LawsTested` · **held**
 Scenario · `LibraryReleased` · **held**
 
 - Owner: trame
-- Parameters: { release: commands.Release, processLog: architecture.ProcessLog, writeLog: architecture.WriteLog, terminalLog: architecture.TerminalLog, currentProcess: architecture.Process, paths: architecture.Paths, layout: conventions.Layout, projects: command-scenarios.ScenarioProjects, samples: command-scenarios.ProjectSamples, line: conventions.TrameCommands, exitStatus: std/system.ExitStatus, text: typescript.StringLiteral, messages: messages.ScenarioMessages }
+- Parameters: { release: commands.Release, processLog: architecture.ProcessLog, writeLog: architecture.WriteLog, terminalLog: architecture.TerminalLog, currentProcess: architecture.Process, paths: architecture.Paths, layout: conventions.Layout, projects: command-scenarios.ScenarioProjects, samples: command-scenarios.ProjectSamples, line: conventions.TrameCommands, exitStatus: std/system.ExitStatus, text: typescript.StringLiteral, messages: messages.ScenarioMessages, shipping: shipping.ShippingRecords }
 - Verifies: Release a version, Records of the releases, Packages from the local registry
 - In: Test
-- Depends on: Release a version, Process log, Write log, Terminal log, Process, Paths, Project layout, The projects of the repository the scenarios enter, What the scenarios ask of those projects, Trame's commands, Text, Messages of the scenarios
+- Depends on: Release a version, Process log, Write log, Terminal log, Process, Paths, Project layout, The projects of the repository the scenarios enter, What the scenarios ask of those projects, Trame's commands, Text, Messages of the scenarios, Where the SDLC's evidence is kept
 
 ### The manifest written
 
@@ -1051,10 +1051,10 @@ Entry point · `Release` · **held**
 
 - Owner: trame
 - Trigger: { type: command, name: release }
-- Parameters: { packages: std/tooling.PackageSources, exitStatus: std/system.ExitStatus, preparation: commands.Preparation, layout: conventions.Layout, project: engine.Project, machine: engine.MachineOutputs, files: rendering.FileRendering, settled: (rule), names: libraries.LibraryReleaseNames, releases: generations.Releases, records: generations.ReleaseRecords, versions: std/measures.SemanticVersioning, specifiers: std/system.NodeModuleSpecifiers, reading: architecture.FileReading, writing: architecture.FileWriting, trees: architecture.FileTrees, paths: architecture.Paths, hashing: architecture.Hashing, sha256: std/algorithms.Sha256, fingerprint: engine.Fingerprint, encodings: std/system.NodeEncodings, language: typescript.TypeScript, clock: architecture.Clock, terminal: architecture.Terminal, messages: messages.CommandMessages, advance: messages.AdvanceMessages, sequences: std/algebra.Sequences, counts: std/algebra.Counts, drivers: languages.Drivers, text: typescript.StringLiteral }
+- Parameters: { packages: std/tooling.PackageSources, exitStatus: std/system.ExitStatus, preparation: commands.Preparation, layout: conventions.Layout, project: engine.Project, machine: engine.MachineOutputs, files: rendering.FileRendering, settled: (rule), names: libraries.LibraryReleaseNames, releases: generations.Releases, records: generations.ReleaseRecords, versions: std/measures.SemanticVersioning, specifiers: std/system.NodeModuleSpecifiers, reading: architecture.FileReading, writing: architecture.FileWriting, trees: architecture.FileTrees, paths: architecture.Paths, hashing: architecture.Hashing, sha256: std/algorithms.Sha256, fingerprint: engine.Fingerprint, encodings: std/system.NodeEncodings, language: typescript.TypeScript, clock: architecture.Clock, terminal: architecture.Terminal, messages: messages.CommandMessages, advance: messages.AdvanceMessages, sequences: std/algebra.Sequences, counts: std/algebra.Counts, drivers: languages.Drivers, text: typescript.StringLiteral, ship: commands.Ship, line: conventions.TrameCommands }
 - Serves: A single source of truth
 - Part of: Trame on the command line
-- Depends on: Preparation, Project layout, Project, Machine outputs, Rendering of the files, A release is settled, Names of a library's releases, Releases of the engine, Records of the releases, File reading, File writing, File trees, Paths, Hashing, Length of a fingerprint, TypeScript, Clock, Terminal, Messages of the commands, Messages of an advance, Drivers, Text
+- Depends on: Preparation, Project layout, Project, Machine outputs, Rendering of the files, A release is settled, Names of a library's releases, Releases of the engine, Records of the releases, File reading, File writing, File trees, Paths, Hashing, Length of a fingerprint, TypeScript, Clock, Terminal, Messages of the commands, Messages of an advance, Drivers, Text, Ship, Trame's commands
 
 ### Run a component
 
@@ -3484,14 +3484,14 @@ Function · `StoppedClock` · **held**
 
 ### System files, for reading
 
-Implementation · `DiskReading` · **held**
+Implementation · `DiskReading` · **unknown**
 
 - Owner: trame
 - Implements: File reading
 
 ### Trees on disk
 
-Implementation · `DiskTrees` · **held**
+Implementation · `DiskTrees` · **unknown**
 
 - Owner: trame
 - Parameters: { diff: std/text.UnifiedDiff, node: std/system.NodeCli, events: std/system.NodeEvents }
@@ -3499,7 +3499,7 @@ Implementation · `DiskTrees` · **held**
 
 ### System files, for writing
 
-Implementation · `DiskWriting` · **held**
+Implementation · `DiskWriting` · **unknown**
 
 - Owner: trame
 - Implements: File writing
@@ -3573,7 +3573,7 @@ Implementation · `NodeHashing` · **held**
 
 ### Node HTTP server
 
-Implementation · `NodeHttpServer` · **held**
+Implementation · `NodeHttpServer` · **unknown**
 
 - Owner: trame
 - Implements: HTTP server
@@ -3587,7 +3587,7 @@ Implementation · `NodePaths` · **held**
 
 ### Node process
 
-Implementation · `NodeProcess` · **held**
+Implementation · `NodeProcess` · **unknown**
 
 - Owner: trame
 - Parameters: { argv: std/system.NodeArguments, node: std/system.NodeCli, runner: platform.TypeScriptRunner }
@@ -3596,7 +3596,7 @@ Implementation · `NodeProcess` · **held**
 
 ### Node programs
 
-Implementation · `NodePrograms` · **held**
+Implementation · `NodePrograms` · **unknown**
 
 - Owner: trame
 - Parameters: { node: std/system.NodeCli, runner: platform.TypeScriptRunner, events: std/system.NodeEvents }
@@ -3605,7 +3605,7 @@ Implementation · `NodePrograms` · **held**
 
 ### Node terminal
 
-Implementation · `NodeTerminal` · **held**
+Implementation · `NodeTerminal` · **unknown**
 
 - Owner: trame
 - Parameters: { argv: std/system.NodeArguments, exitStatus: std/system.ExitStatus, events: std/system.NodeEvents, posix: std/system.Posix, messages: messages.PlatformMessages }
@@ -3630,7 +3630,7 @@ Implementation · `NoInstallsInTest` · **held**
 
 ### npm installs
 
-Implementation · `NpmInstall` · **held**
+Implementation · `NpmInstall` · **unknown**
 
 - Owner: trame
 - Parameters: { npm: std/system.NpmCli, node: std/system.NodeCli, events: std/system.NodeEvents, exitStatus: std/system.ExitStatus }
@@ -3638,7 +3638,7 @@ Implementation · `NpmInstall` · **held**
 
 ### npm's reports
 
-Implementation · `NpmReports` · **held**
+Implementation · `NpmReports` · **unknown**
 
 - Owner: trame
 - Parameters: { npm: std/system.NpmCli, values: std/algebra.ValueTypes, counts: std/algebra.Counts, punctuation: documents.Punctuation }
@@ -3686,7 +3686,7 @@ Implementation · `RunsInTheProcess` · **held**
 
 ### Runs kept on disk
 
-Implementation · `RunsOnDisk` · **held**
+Implementation · `RunsOnDisk` · **unknown**
 
 - Owner: trame
 - Parameters: { layout: conventions.Layout, files: platform.EngineFiles, engines: engine.EngineFingerprint, scope: engine.KeptRunsScope, encodings: std/system.NodeEncodings }
@@ -3695,7 +3695,7 @@ Implementation · `RunsOnDisk` · **held**
 
 ### System clock
 
-Implementation · `SystemClock` · **held**
+Implementation · `SystemClock` · **unknown**
 
 - Owner: trame
 - Parameters: { iso: std/measures.Iso8601, environment: conventions.TrameEnvironment, sequences: std/algebra.Sequences }
@@ -3802,7 +3802,7 @@ Technical choice · `InMemoryScenarios` · **held**
 
 ### On a machine, Node.js reads, writes and runs
 
-Technical choice · `NodeMachine` · **held**
+Technical choice · `NodeMachine` · **unknown**
 
 - Decided by: trame
 - Context: What changes the world (files written, processes, the terminal, the clock) is real only on a machine; the scenarios keep it in memory.
@@ -3862,7 +3862,7 @@ Technical choice · `RunsKeptInTheProcess` · **held**
 
 ### On a machine, runs are kept on disk
 
-Technical choice · `RunsKeptOnDisk` · **held**
+Technical choice · `RunsKeptOnDisk` · **unknown**
 
 - Decided by: trame
 - Context: The commands of a shipment and of an advance run as separate processes, each compiling the same graph: what one played, the next can find only on disk.
@@ -4104,7 +4104,7 @@ Architecture decision · `PreludeLayer` · **held**
 
 ### A version ships through the graph
 
-Architecture decision · `ShippedThroughTheGraph` · **held**
+Architecture decision · `ShippedThroughTheGraph` · **unknown**
 
 - Decided by: trame
 - Context: Two products ship differently (a page placed where it is served, an engine frozen into a generation) and their pipelines lived in scripts and in their authors' heads: nothing said what had been checked, by whom, on which version, nor why a version could go.
@@ -4115,7 +4115,7 @@ Architecture decision · `ShippedThroughTheGraph` · **held**
 
 ### A technology is chosen in one node
 
-Architecture decision · `TechnologyInOneNode` · **held**
+Architecture decision · `TechnologyInOneNode` · **unknown**
 
 - Decided by: trame
 - Context: Each implementation said which environments it served: the choice of a technology was spread over its realizations, nothing said why, and a test double or a repository over a database port had to be declared as if it touched the platform.
@@ -6039,7 +6039,7 @@ Technical choice · `SdlcInMemory` · **held**
 
 ### The SDLC on the machine
 
-Technical choice · `SdlcOnTheMachine` · **held**
+Technical choice · `SdlcOnTheMachine` · **unknown**
 
 - Decided by: trame
 - Context: The graph page must be opened as a person opens it: the file exported, in a real browser.
@@ -6064,7 +6064,7 @@ Role · `Maintainers`
 
 ### The candidate engine
 
-Artefact · `EngineCandidate` · **held**
+Artefact · `EngineCandidate` · **unknown**
 
 - Owner: trame
 - Path: out/local/trame-cli.ts
@@ -6072,7 +6072,7 @@ Artefact · `EngineCandidate` · **held**
 
 ### The graph page
 
-Artefact · `GraphPage` · **held**
+Artefact · `GraphPage` · **unknown**
 
 - Owner: trame
 - Path: trame-page.html
@@ -6091,7 +6091,7 @@ Artefact · `PageProgram` · **held**
 
 ### The candidate plays the laws
 
-Check · `CandidateKeepsTheLaws` · **held**
+Check · `CandidateKeepsTheLaws` · **unknown**
 
 - Owner: trame
 - Checks: The candidate engine
@@ -6100,7 +6100,7 @@ Check · `CandidateKeepsTheLaws` · **held**
 
 ### The candidate runs on the machine
 
-Check · `CandidateRunsOnTheMachine` · **held**
+Check · `CandidateRunsOnTheMachine` · **unknown**
 
 - Owner: trame
 - Checks: The candidate engine
@@ -6110,7 +6110,7 @@ Check · `CandidateRunsOnTheMachine` · **held**
 
 ### The graph page opens
 
-Check · `GraphPageOpens` · **held**
+Check · `GraphPageOpens` · **unknown**
 
 - Owner: trame
 - Checks: The graph page
@@ -6120,7 +6120,7 @@ Check · `GraphPageOpens` · **held**
 
 ### The next generation
 
-Shipment · `NextGeneration` · **held**
+Shipment · `NextGeneration` · **unknown**
 
 - Owner: trame
 - Target: generation

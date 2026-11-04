@@ -1,5 +1,5 @@
 import {
-  defineKind, field, optional, edge, optionalEdge, hole, doc, keysOf, edgesOf, Status, Outcome, Hole, KindName, EdgeName,
+  defineKind, field, optional, edge, optionalEdge, hole, doc, keysOf, edgesOf, Status, Outcome, Hole, KindName, EdgeName, ArtifactField,
   type AnyNode, type Node, type Provides, type HasDeps, type Provided, type FileBody, type Constant, type Values, type Declares,
   type Graph, type View,
 } from "../trame/kernel"
@@ -99,7 +99,7 @@ const kind = defineKind({
       self.field(F.owner) === undefined && hole.warning(say.ownerMissing()),
       // Two rules that answer the same question for the same goal may disagree, and who prevails would hide in the code.
       ...lookAlikes(self, g).map((o) => hole.warning(say.requirementLooksLike(o.title, ownerOf(o)), g.lib.values.isText(owner) ? owner : undefined)),
-      self.library === undefined && g.lib.counts.isEmpty(followers(self, g)) && hole.warning(say.requirementNotFollowed(), g.lib.values.isText(owner) ? owner : undefined),
+      self.library === undefined && !offersItself(g) && g.lib.counts.isEmpty(followers(self, g)) && hole.warning(say.requirementNotFollowed(), g.lib.values.isText(owner) ? owner : undefined),
     ]
   },
 
@@ -120,6 +120,13 @@ const kind = defineKind({
     const by = followers(self, g)
     // A library's rule nothing follows here is offered: the projects that follow it judge it, and the library itself.
     if (self.library !== undefined && g.lib.counts.isEmpty(by)) return undefined
+    // In the library itself (a project that ships versions of itself, C1), a rule nothing follows there is offered too:
+    // it holds when it is right; the projects that import it follow it.
+    if (g.lib.counts.isEmpty(by) && offersItself(g)) {
+      if (right.includes(Status.violated)) return Status.violated
+      if (right.includes(Status.blocked)) return Status.blocked
+      return g.lib.counts.any(right) && right.every((s) => s === Status.held) ? Status.held : Status.unknown
+    }
     const says = by.map((f) => (f.kind === KindName.dataset ? keepsItsRules(f, g.lib) : f.status))
     // A rule that constrains another is followed where that one is, and as far as that one keeps it on its examples.
     const kept = g.from(self).out(E.constrains).exists() ? [playedStatus(self, g)] : []
@@ -174,6 +181,9 @@ function lookAlikes(self: View, g: Graph): View[] {
       && parents(o).some((p) => above.includes(p)) && !linked(self, o) && !linked(o, self)
   })
 }
+
+/** Whether the project offers itself to others: it ships versions of itself (an artefact that is one, C1), as a library does. */
+const offersItself = (g: Graph): boolean => g.all(KindName.artifact).nodes().some((a) => a.field(ArtifactField.version) === true)
 
 /** What a node gives as its rule: wired from its body by the engine. */
 const ruleOf = (v: View): unknown => v.given?.()

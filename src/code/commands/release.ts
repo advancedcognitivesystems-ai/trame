@@ -2,9 +2,11 @@
 // graph and its code, and its documents, written at this version; an import that leaves the library (the language: the
 // prelude, the kinds) is written again from the copy's place, so that the copy reaches the same file without a link. The
 // release is then written in the library's module of releases, after the copy: a version is not in its own copy. A
-// project imports it by naming the version beside the library's path, in its configuration.
+// project imports it by naming the version beside the library's path, in its configuration. A library that ships its
+// versions through its graph (C1, since g101: a shipment that ships an artefact that is a version of the project) is
+// released only once that shipment holds: trame release ships it first, attributed to whoever releases (--by).
 
-import { KindName, LanguageUse, Severity, type ProvidedBy } from "../../../trame/kernel"
+import { ArtifactField, KindName, LanguageUse, Severity, ShipmentEdge, type ProvidedBy } from "../../../trame/kernel"
 import type { Handler } from "../../../kinds/entry-point"
 import type { LanguageDescription } from "../../../kinds/language"
 import type { Clock, FileReading, FileTrees, FileWriting, Hashing, Layout, Paths, Terminal } from "../../architecture"
@@ -22,6 +24,7 @@ import type { Api as MachineApi } from "../engine/machine"
 import type { Api as RenderingApi } from "../rendering/document"
 import type { Api as DriversApi } from "../languages/drivers"
 import type { StringLiteral } from "../../typescript"
+import type { TrameCommands } from "../../conventions"
 import type { PackageSource } from "#std/tooling"
 
 export interface Deps {
@@ -63,6 +66,9 @@ export interface Deps {
   packages: PackageSource
   /** A specifier as the code writes it, between quotes. */
   text: ProvidedBy<typeof StringLiteral>
+  /** What ships the version first, when the library ships its versions through its graph (since g101). */
+  ship: Handler
+  line: ProvidedBy<typeof TrameCommands>
 }
 
 const body = (deps: Deps): Handler => async (req) => {
@@ -90,6 +96,15 @@ const body = (deps: Deps): Handler => async (req) => {
   if (existsSync(dest)) {
     deps.terminal.write(messages.releasePublished(version, deps.packages.publish({ name, version, from: dest })))
     return { status: deps.exitStatus.success, body: version }
+  }
+
+  // The shipment of a version, when the library declares one: it must hold before anything is frozen.
+  const shipsVersion = ctx.comp.all(KindName.shipment).nodes()
+    .find((s) => ctx.comp.from(s).out(ShipmentEdge.ships).nodes().some((a) => a.field(ArtifactField.version) === true))
+  if (shipsVersion) {
+    if (o.by === undefined) return refuse(o, [messages.releaseShipsFirst(shipsVersion.title)])
+    const shipped = await deps.ship({ params: { command: deps.line.ship }, body: { args: [shipsVersion.id, deps.line.by, o.by] } })
+    if (shipped.status !== deps.exitStatus.success) return refuse(o, [messages.releaseKept(version, shipsVersion.title)])
   }
 
   // Its graph and its code, as they are; its documents, written at this version.

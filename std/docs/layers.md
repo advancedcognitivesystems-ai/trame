@@ -1,6 +1,6 @@
 # Layers
 
-*The graph in force on 3 November 2026, ordered by distance to the goals.*
+*The graph in force on 4 November 2026, ordered by distance to the goals.*
 
 ```mermaid
 flowchart TB
@@ -25,7 +25,7 @@ flowchart TB
     n13["Unicode escape of a text<br/><small>Standard</small>"]:::neutral
   end
   subgraph effects["Standard library · Effects"]
-    n14["Commands<br/><small>Function</small>"]:::unknown
+    n14["Commands<br/><small>Function</small>"]:::held
     n15["Effects<br/><small>Vocabulary</small>"]:::neutral
     n16["What the platform may do<br/><small>Decision</small>"]:::neutral
   end
@@ -46,20 +46,20 @@ flowchart TB
     n28["Symbols of units<br/><small>Message catalog</small>"]:::neutral
   end
   subgraph obligations["Standard library · Obligations"]
-    n29["The decisions a shipment applies hold<br/><small>Requirement</small>"]:::unknown
+    n29["The decisions a shipment applies hold<br/><small>Requirement</small>"]:::held
     n30["Criteria of the decisions applied<br/><small>Acceptance criteria</small>"]:::held
-    n31["The artefacts a shipment ships are checked<br/><small>Requirement</small>"]:::unknown
+    n31["The artefacts a shipment ships are checked<br/><small>Requirement</small>"]:::held
     n32["Criteria of the artefacts checked<br/><small>Acceptance criteria</small>"]:::held
     n33["Ways of checking<br/><small>Vocabulary</small>"]:::neutral
-    n34["The data a shipment carries is reviewed<br/><small>Requirement</small>"]:::unknown
+    n34["The data a shipment carries is reviewed<br/><small>Requirement</small>"]:::held
     n35["Criteria of the data reviewed<br/><small>Acceptance criteria</small>"]:::held
-    n36["The project's rules hold<br/><small>Requirement</small>"]:::unknown
+    n36["The project's rules hold<br/><small>Requirement</small>"]:::held
     n37["Criteria of the rules held<br/><small>Acceptance criteria</small>"]:::held
-    n38["The packages a shipment uses are safe<br/><small>Requirement</small>"]:::unknown
+    n38["The packages a shipment uses are safe<br/><small>Requirement</small>"]:::held
     n39["Criteria of the packages safe<br/><small>Acceptance criteria</small>"]:::held
-    n40["The product a shipment serves holds<br/><small>Requirement</small>"]:::unknown
+    n40["The product a shipment serves holds<br/><small>Requirement</small>"]:::held
     n41["Criteria of the product served<br/><small>Acceptance criteria</small>"]:::held
-    n42["The code a shipment ships is verified<br/><small>Requirement</small>"]:::unknown
+    n42["The code a shipment ships is verified<br/><small>Requirement</small>"]:::held
     n43["Criteria of the code verified<br/><small>Acceptance criteria</small>"]:::held
   end
   subgraph packages["Standard library · Packages"]
@@ -101,95 +101,107 @@ flowchart TB
     n73["Ports of the platform, realized once<br/><small>Goal</small>"]:::neutral
     n74["Shared operations instead of literals<br/><small>Goal</small>"]:::neutral
     n75["Rules applied, not written again<br/><small>Goal</small>"]:::neutral
+    n76["Versions that hold<br/><small>Goal</small>"]:::neutral
   end
   subgraph releases["Standard library · Releases"]
-    n76["Version 0.1.0<br/><small>Release</small>"]:::neutral
-    n77["Version 0.10.0<br/><small>Release</small>"]:::neutral
-    n78["Version 0.11.0<br/><small>Release</small>"]:::neutral
-    n79["Version 0.11.1<br/><small>Release</small>"]:::neutral
-    n80["Version 0.12.0<br/><small>Release</small>"]:::neutral
-    n81["Version 0.13.0<br/><small>Release</small>"]:::neutral
-    n82["Version 0.14.0<br/><small>Release</small>"]:::neutral
-    n83["Version 0.15.0<br/><small>Release</small>"]:::neutral
-    n84["Version 0.2.0<br/><small>Release</small>"]:::neutral
-    n85["Version 0.3.0<br/><small>Release</small>"]:::neutral
-    n86["Version 0.4.0<br/><small>Release</small>"]:::neutral
-    n87["Version 0.5.0<br/><small>Release</small>"]:::neutral
-    n88["Version 0.6.0<br/><small>Release</small>"]:::neutral
-    n89["Version 0.7.0<br/><small>Release</small>"]:::neutral
-    n90["Version 0.8.0<br/><small>Release</small>"]:::neutral
-    n91["Version 0.9.0<br/><small>Release</small>"]:::neutral
+    n77["Version 0.1.0<br/><small>Release</small>"]:::neutral
+    n78["Version 0.10.0<br/><small>Release</small>"]:::neutral
+    n79["Version 0.11.0<br/><small>Release</small>"]:::neutral
+    n80["Version 0.11.1<br/><small>Release</small>"]:::neutral
+    n81["Version 0.12.0<br/><small>Release</small>"]:::neutral
+    n82["Version 0.13.0<br/><small>Release</small>"]:::neutral
+    n83["Version 0.14.0<br/><small>Release</small>"]:::neutral
+    n84["Version 0.15.0<br/><small>Release</small>"]:::neutral
+    n85["Version 0.2.0<br/><small>Release</small>"]:::neutral
+    n86["Version 0.3.0<br/><small>Release</small>"]:::neutral
+    n87["Version 0.4.0<br/><small>Release</small>"]:::neutral
+    n88["Version 0.5.0<br/><small>Release</small>"]:::neutral
+    n89["Version 0.6.0<br/><small>Release</small>"]:::neutral
+    n90["Version 0.7.0<br/><small>Release</small>"]:::neutral
+    n91["Version 0.8.0<br/><small>Release</small>"]:::neutral
+    n92["Version 0.9.0<br/><small>Release</small>"]:::neutral
   end
   subgraph rules["Standard library · Rules"]
-    n92["Directions<br/><small>Vocabulary</small>"]:::neutral
-    n93["As many links as asked<br/><small>Requirement</small>"]:::unknown
-    n94["Criteria of as many links as asked<br/><small>Acceptance criteria</small>"]:::held
-    n95["A node never reaches what it must not<br/><small>Requirement</small>"]:::unknown
-    n96["Criteria of a node that never reaches what it must not<br/><small>Acceptance criteria</small>"]:::held
-    n97["A node reaches what it must<br/><small>Requirement</small>"]:::unknown
-    n98["Criteria of a node that reaches what it must<br/><small>Acceptance criteria</small>"]:::held
-    n99["Effects a node may not have<br/><small>Requirement</small>"]:::unknown
-    n100["Criteria of effects a node may not have<br/><small>Acceptance criteria</small>"]:::held
-    n101["Words of a vocabulary<br/><small>Requirement</small>"]:::unknown
-    n102["Criteria of words of a vocabulary<br/><small>Acceptance criteria</small>"]:::held
+    n93["Directions<br/><small>Vocabulary</small>"]:::neutral
+    n94["As many links as asked<br/><small>Requirement</small>"]:::held
+    n95["Criteria of as many links as asked<br/><small>Acceptance criteria</small>"]:::held
+    n96["A node never reaches what it must not<br/><small>Requirement</small>"]:::held
+    n97["Criteria of a node that never reaches what it must not<br/><small>Acceptance criteria</small>"]:::held
+    n98["A node reaches what it must<br/><small>Requirement</small>"]:::held
+    n99["Criteria of a node that reaches what it must<br/><small>Acceptance criteria</small>"]:::held
+    n100["Effects a node may not have<br/><small>Requirement</small>"]:::held
+    n101["Criteria of effects a node may not have<br/><small>Acceptance criteria</small>"]:::held
+    n102["Words of a vocabulary<br/><small>Requirement</small>"]:::held
+    n103["Criteria of words of a vocabulary<br/><small>Acceptance criteria</small>"]:::held
   end
   subgraph scenarios["Standard library · Scenarios"]
-    n103["The device, in memory<br/><small>Scenario</small>"]:::held
-    n104["Seeded draws keep their promise<br/><small>Scenario</small>"]:::held
-    n105["In memory<br/><small>Technical choice</small>"]:::held
-    n106["What the library's scenarios check<br/><small>Message catalog</small>"]:::neutral
-    n107["What the library's scenarios are given<br/><small>Decision</small>"]:::neutral
-    n108["The language of the library's scenarios<br/><small>Decision</small>"]:::neutral
-    n109["Test<br/><small>Environment</small>"]:::neutral
-    n110["The tooling, in memory<br/><small>Scenario</small>"]:::held
+    n104["Commands are made for each effect<br/><small>Scenario</small>"]:::held
+    n105["The device, in memory<br/><small>Scenario</small>"]:::held
+    n106["Seeded draws keep their promise<br/><small>Scenario</small>"]:::held
+    n107["In memory<br/><small>Technical choice</small>"]:::held
+    n108["What the library's scenarios check<br/><small>Message catalog</small>"]:::neutral
+    n109["What the library's scenarios are given<br/><small>Decision</small>"]:::neutral
+    n110["The language of the library's scenarios<br/><small>Decision</small>"]:::neutral
+    n111["Test<br/><small>Environment</small>"]:::neutral
+    n112["The tooling, in memory<br/><small>Scenario</small>"]:::held
+  end
+  subgraph sdlc["Standard library · SDLC"]
+    n113["Its decisions applied<br/><small>Obligation</small>"]:::neutral
+    n114["Its functions verified<br/><small>Obligation</small>"]:::neutral
+    n115["The next version<br/><small>Shipment</small>"]:::unknown
+    n116["Its packages safe<br/><small>Obligation</small>"]:::neutral
+    n117["Its requirements held<br/><small>Obligation</small>"]:::neutral
+    n118["Its rules held<br/><small>Obligation</small>"]:::neutral
+    n119["The standard library<br/><small>Artefact</small>"]:::unknown
+    n120["How a version is made<br/><small>Policy</small>"]:::neutral
   end
   subgraph system["Standard library · System"]
-    n111["Exit status<br/><small>Standard</small>"]:::neutral
-    n112["Node.js process arguments<br/><small>Standard</small>"]:::neutral
-    n113["Node.js command line and child processes<br/><small>Standard</small>"]:::neutral
-    n114["Node.js character encodings<br/><small>Standard</small>"]:::neutral
-    n115["Node.js events<br/><small>Standard</small>"]:::neutral
-    n116["Node.js module specifiers<br/><small>Standard</small>"]:::neutral
-    n117["Node.js process and console<br/><small>Standard</small>"]:::neutral
-    n118["npm's command line<br/><small>Standard</small>"]:::neutral
-    n119["npm's manifest<br/><small>Standard</small>"]:::neutral
-    n120["POSIX signals and errors<br/><small>Standard</small>"]:::neutral
+    n121["Exit status<br/><small>Standard</small>"]:::neutral
+    n122["Node.js process arguments<br/><small>Standard</small>"]:::neutral
+    n123["Node.js command line and child processes<br/><small>Standard</small>"]:::neutral
+    n124["Node.js character encodings<br/><small>Standard</small>"]:::neutral
+    n125["Node.js events<br/><small>Standard</small>"]:::neutral
+    n126["Node.js module specifiers<br/><small>Standard</small>"]:::neutral
+    n127["Node.js process and console<br/><small>Standard</small>"]:::neutral
+    n128["npm's command line<br/><small>Standard</small>"]:::neutral
+    n129["npm's manifest<br/><small>Standard</small>"]:::neutral
+    n130["POSIX signals and errors<br/><small>Standard</small>"]:::neutral
   end
   subgraph text["Standard library · Text"]
-    n121["Positions in a file<br/><small>Standard</small>"]:::neutral
-    n122["Characters that do not show<br/><small>Standard</small>"]:::neutral
-    n123["Text file<br/><small>Standard</small>"]:::neutral
-    n124["Unified differences<br/><small>Standard</small>"]:::neutral
+    n131["Positions in a file<br/><small>Standard</small>"]:::neutral
+    n132["Characters that do not show<br/><small>Standard</small>"]:::neutral
+    n133["Text file<br/><small>Standard</small>"]:::neutral
+    n134["Unified differences<br/><small>Standard</small>"]:::neutral
   end
   subgraph tooling["Standard library · Tooling"]
-    n125["A browser kept in memory<br/><small>Function</small>"]:::held
-    n126["Browser script<br/><small>Port</small>"]:::neutral
-    n127["Project files<br/><small>Port</small>"]:::neutral
-    n128["Files kept in memory<br/><small>Function</small>"]:::held
-    n129["Files written<br/><small>Port</small>"]:::neutral
-    n130["Headless browser<br/><small>Port</small>"]:::neutral
-    n131["Chromium without a screen<br/><small>Decision</small>"]:::neutral
-    n132["The machine's files<br/><small>Implementation</small>"]:::neutral
-    n133["Node's command line<br/><small>Implementation</small>"]:::neutral
-    n134["Where a package comes from<br/><small>Vocabulary</small>"]:::neutral
-    n135["Where a package comes from<br/><small>Port</small>"]:::neutral
-    n136["Playwright's API<br/><small>Standard</small>"]:::neutral
-    n137["Chromium, driven by Playwright<br/><small>Implementation</small>"]:::neutral
-    n138["Playwright<br/><small>Package</small>"]:::held
-    n139["Commands of a program<br/><small>Port</small>"]:::neutral
-    n140["The SDLC's tooling is realized once<br/><small>Architecture decision</small>"]:::held
+    n135["A browser kept in memory<br/><small>Function</small>"]:::held
+    n136["Browser script<br/><small>Port</small>"]:::neutral
+    n137["Project files<br/><small>Port</small>"]:::neutral
+    n138["Files kept in memory<br/><small>Function</small>"]:::held
+    n139["Files written<br/><small>Port</small>"]:::neutral
+    n140["Headless browser<br/><small>Port</small>"]:::neutral
+    n141["Chromium without a screen<br/><small>Decision</small>"]:::neutral
+    n142["The machine's files<br/><small>Implementation</small>"]:::neutral
+    n143["Node's command line<br/><small>Implementation</small>"]:::neutral
+    n144["Where a package comes from<br/><small>Vocabulary</small>"]:::neutral
+    n145["Where a package comes from<br/><small>Port</small>"]:::neutral
+    n146["Playwright's API<br/><small>Standard</small>"]:::neutral
+    n147["Chromium, driven by Playwright<br/><small>Implementation</small>"]:::neutral
+    n148["Playwright<br/><small>Package</small>"]:::held
+    n149["Commands of a program<br/><small>Port</small>"]:::neutral
+    n150["The SDLC's tooling is realized once<br/><small>Architecture decision</small>"]:::held
   end
   subgraph web["Standard library · Web"]
-    n141["CSSOM View<br/><small>Standard</small>"]:::neutral
-    n142["HTTP<br/><small>Standard</small>"]:::neutral
-    n143["Media Queries Level 5<br/><small>Standard</small>"]:::neutral
-    n144["Media types<br/><small>Standard</small>"]:::neutral
-    n145["Screen Wake Lock API<br/><small>Standard</small>"]:::neutral
-    n146["Server-sent events<br/><small>Standard</small>"]:::neutral
-    n147["UI events<br/><small>Standard</small>"]:::neutral
-    n148["URI<br/><small>Standard</small>"]:::neutral
-    n149["Web Audio API<br/><small>Standard</small>"]:::neutral
-    n150["Web Speech API<br/><small>Standard</small>"]:::neutral
+    n151["CSSOM View<br/><small>Standard</small>"]:::neutral
+    n152["HTTP<br/><small>Standard</small>"]:::neutral
+    n153["Media Queries Level 5<br/><small>Standard</small>"]:::neutral
+    n154["Media types<br/><small>Standard</small>"]:::neutral
+    n155["Screen Wake Lock API<br/><small>Standard</small>"]:::neutral
+    n156["Server-sent events<br/><small>Standard</small>"]:::neutral
+    n157["UI events<br/><small>Standard</small>"]:::neutral
+    n158["URI<br/><small>Standard</small>"]:::neutral
+    n159["Web Audio API<br/><small>Standard</small>"]:::neutral
+    n160["Web Speech API<br/><small>Standard</small>"]:::neutral
   end
   n0 -->|Serves| n74
   n1 -->|Serves| n74
@@ -259,13 +271,13 @@ flowchart TB
   n52 -->|Depends on| n26
   n53 -->|Implements| n59
   n54 -->|Implements| n62
-  n54 -->|Depends on| n147
+  n54 -->|Depends on| n157
   n55 -->|Implements| n63
   n56 -->|Implements| n67
   n56 -->|Depends on| n22
-  n56 -->|Depends on| n150
+  n56 -->|Depends on| n160
   n57 -->|Implements| n64
-  n57 -->|Depends on| n145
+  n57 -->|Depends on| n155
   n58 -->|Serves| n73
   n58 -->|Applied by| n63
   n58 -->|Applied by| n55
@@ -293,15 +305,10 @@ flowchart TB
   n68 -->|Applied by| n54
   n70 -->|Implements| n67
   n70 -->|Implements| n66
-  n76 -->|Serves| n71
-  n76 -->|Serves| n72
-  n76 -->|Serves| n73
-  n76 -->|Serves| n74
   n77 -->|Serves| n71
   n77 -->|Serves| n72
   n77 -->|Serves| n73
   n77 -->|Serves| n74
-  n77 -->|Serves| n75
   n78 -->|Serves| n71
   n78 -->|Serves| n72
   n78 -->|Serves| n73
@@ -336,6 +343,7 @@ flowchart TB
   n84 -->|Serves| n72
   n84 -->|Serves| n73
   n84 -->|Serves| n74
+  n84 -->|Serves| n75
   n85 -->|Serves| n71
   n85 -->|Serves| n72
   n85 -->|Serves| n73
@@ -360,125 +368,152 @@ flowchart TB
   n90 -->|Serves| n72
   n90 -->|Serves| n73
   n90 -->|Serves| n74
-  n90 -->|Serves| n75
   n91 -->|Serves| n71
   n91 -->|Serves| n72
   n91 -->|Serves| n73
   n91 -->|Serves| n74
   n91 -->|Serves| n75
+  n92 -->|Serves| n71
+  n92 -->|Serves| n72
+  n92 -->|Serves| n73
+  n92 -->|Serves| n74
   n92 -->|Serves| n75
-  n93 -->|Refines| n75
-  n93 -->|Depends on| n0
-  n94 -->|Accepts| n93
-  n95 -->|Refines| n75
-  n95 -->|Depends on| n0
-  n96 -->|Accepts| n95
-  n97 -->|Refines| n75
-  n98 -->|Accepts| n97
-  n99 -->|Refines| n75
-  n99 -->|Depends on| n0
-  n100 -->|Accepts| n99
-  n101 -->|Refines| n75
-  n101 -->|Depends on| n0
-  n102 -->|Accepts| n101
-  n103 -->|Verifies| n61
-  n103 -->|Verifies| n70
-  n103 -->|Verifies| n51
-  n103 -->|Verifies| n60
-  n103 -->|In| n109
-  n103 -->|Depends on| n63
-  n103 -->|Depends on| n67
-  n103 -->|Depends on| n66
-  n103 -->|Depends on| n64
-  n103 -->|Depends on| n65
-  n103 -->|Depends on| n50
-  n103 -->|Depends on| n69
-  n103 -->|Depends on| n107
-  n103 -->|Depends on| n0
-  n103 -->|Depends on| n106
-  n104 -->|Verifies| n7
-  n104 -->|In| n109
-  n104 -->|Depends on| n7
-  n104 -->|Depends on| n107
-  n104 -->|Depends on| n0
-  n104 -->|Depends on| n106
-  n105 -->|Chooses| n61
-  n105 -->|Chooses| n70
-  n105 -->|Chooses| n51
-  n105 -->|Chooses| n60
-  n105 -->|Chooses| n128
-  n105 -->|Chooses| n125
-  n105 -->|In| n109
-  n105 -->|Follows| n49
-  n105 -->|Serves| n73
-  n106 -->|Written in| n108
-  n110 -->|Verifies| n128
-  n110 -->|Verifies| n125
-  n110 -->|In| n109
-  n110 -->|Depends on| n127
-  n110 -->|Depends on| n129
-  n110 -->|Depends on| n130
-  n110 -->|Depends on| n126
-  n110 -->|Depends on| n107
-  n110 -->|Depends on| n106
-  n111 -->|Serves| n71
-  n112 -->|Serves| n71
-  n113 -->|Serves| n71
-  n114 -->|Serves| n71
-  n115 -->|Serves| n71
-  n116 -->|Serves| n71
-  n117 -->|Serves| n71
-  n118 -->|Serves| n71
-  n119 -->|Serves| n71
-  n120 -->|Serves| n71
+  n93 -->|Serves| n75
+  n94 -->|Refines| n75
+  n94 -->|Depends on| n0
+  n95 -->|Accepts| n94
+  n96 -->|Refines| n75
+  n96 -->|Depends on| n0
+  n97 -->|Accepts| n96
+  n98 -->|Refines| n75
+  n99 -->|Accepts| n98
+  n100 -->|Refines| n75
+  n100 -->|Depends on| n0
+  n101 -->|Accepts| n100
+  n102 -->|Refines| n75
+  n102 -->|Depends on| n0
+  n103 -->|Accepts| n102
+  n104 -->|Verifies| n14
+  n104 -->|In| n111
+  n104 -->|Depends on| n14
+  n104 -->|Depends on| n15
+  n104 -->|Depends on| n109
+  n104 -->|Depends on| n108
+  n105 -->|Verifies| n61
+  n105 -->|Verifies| n70
+  n105 -->|Verifies| n51
+  n105 -->|Verifies| n60
+  n105 -->|In| n111
+  n105 -->|Depends on| n63
+  n105 -->|Depends on| n67
+  n105 -->|Depends on| n66
+  n105 -->|Depends on| n64
+  n105 -->|Depends on| n65
+  n105 -->|Depends on| n50
+  n105 -->|Depends on| n69
+  n105 -->|Depends on| n109
+  n105 -->|Depends on| n0
+  n105 -->|Depends on| n108
+  n106 -->|Verifies| n7
+  n106 -->|In| n111
+  n106 -->|Depends on| n7
+  n106 -->|Depends on| n109
+  n106 -->|Depends on| n0
+  n106 -->|Depends on| n108
+  n107 -->|Chooses| n61
+  n107 -->|Chooses| n70
+  n107 -->|Chooses| n51
+  n107 -->|Chooses| n60
+  n107 -->|Chooses| n138
+  n107 -->|Chooses| n135
+  n107 -->|In| n111
+  n107 -->|Follows| n49
+  n107 -->|Serves| n73
+  n108 -->|Written in| n110
+  n112 -->|Verifies| n138
+  n112 -->|Verifies| n135
+  n112 -->|In| n111
+  n112 -->|Depends on| n137
+  n112 -->|Depends on| n139
+  n112 -->|Depends on| n140
+  n112 -->|Depends on| n136
+  n112 -->|Depends on| n109
+  n112 -->|Depends on| n108
+  n113 -->|Applies the family| n29
+  n113 -->|Serves| n76
+  n114 -->|Applies the family| n42
+  n114 -->|Serves| n76
+  n115 -->|Ships| n119
+  n115 -->|Follows the policy| n120
+  n116 -->|Applies the family| n38
+  n116 -->|Serves| n76
+  n117 -->|Applies the family| n40
+  n117 -->|Serves| n76
+  n118 -->|Applies the family| n36
+  n118 -->|Serves| n76
+  n120 -->|Its obligations| n114
+  n120 -->|Its obligations| n117
+  n120 -->|Its obligations| n113
+  n120 -->|Its obligations| n118
+  n120 -->|Its obligations| n116
   n121 -->|Serves| n71
   n122 -->|Serves| n71
   n123 -->|Serves| n71
   n124 -->|Serves| n71
-  n125 -->|Implements| n130
-  n125 -->|Implements| n126
-  n125 -->|Depends on| n0
-  n128 -->|Implements| n127
-  n128 -->|Implements| n129
-  n128 -->|Depends on| n7
-  n128 -->|Depends on| n2
-  n132 -->|Implements| n127
-  n132 -->|Depends on| n8
-  n132 -->|Depends on| n114
-  n133 -->|Implements| n139
-  n133 -->|Depends on| n112
-  n133 -->|Depends on| n111
-  n133 -->|Depends on| n3
-  n134 -->|Serves| n73
-  n136 -->|Serves| n71
-  n137 -->|Implements| n130
-  n137 -->|Uses| n138
-  n137 -->|Depends on| n131
-  n137 -->|Depends on| n136
-  n137 -->|Depends on| n0
-  n137 -->|Depends on| n26
-  n140 -->|Serves| n73
-  n140 -->|Applied by| n139
-  n140 -->|Applied by| n133
-  n140 -->|Applied by| n127
-  n140 -->|Applied by| n129
-  n140 -->|Applied by| n132
-  n140 -->|Applied by| n128
-  n140 -->|Applied by| n130
-  n140 -->|Applied by| n137
-  n140 -->|Applied by| n126
-  n140 -->|Applied by| n125
-  n140 -->|Applied by| n135
-  n141 -->|Serves| n71
-  n142 -->|Serves| n71
-  n143 -->|Serves| n71
-  n144 -->|Serves| n71
-  n145 -->|Serves| n71
+  n125 -->|Serves| n71
+  n126 -->|Serves| n71
+  n127 -->|Serves| n71
+  n128 -->|Serves| n71
+  n129 -->|Serves| n71
+  n130 -->|Serves| n71
+  n131 -->|Serves| n71
+  n132 -->|Serves| n71
+  n133 -->|Serves| n71
+  n134 -->|Serves| n71
+  n135 -->|Implements| n140
+  n135 -->|Implements| n136
+  n135 -->|Depends on| n0
+  n138 -->|Implements| n137
+  n138 -->|Implements| n139
+  n138 -->|Depends on| n7
+  n138 -->|Depends on| n2
+  n142 -->|Implements| n137
+  n142 -->|Depends on| n8
+  n142 -->|Depends on| n124
+  n143 -->|Implements| n149
+  n143 -->|Depends on| n122
+  n143 -->|Depends on| n121
+  n143 -->|Depends on| n3
+  n144 -->|Serves| n73
   n146 -->|Serves| n71
-  n147 -->|Serves| n71
-  n148 -->|Serves| n71
-  n149 -->|Serves| n71
-  n150 -->|Serves| n71
+  n147 -->|Implements| n140
+  n147 -->|Uses| n148
+  n147 -->|Depends on| n141
+  n147 -->|Depends on| n146
+  n147 -->|Depends on| n0
+  n147 -->|Depends on| n26
+  n150 -->|Serves| n73
+  n150 -->|Applied by| n149
+  n150 -->|Applied by| n143
+  n150 -->|Applied by| n137
+  n150 -->|Applied by| n139
+  n150 -->|Applied by| n142
+  n150 -->|Applied by| n138
+  n150 -->|Applied by| n140
+  n150 -->|Applied by| n147
+  n150 -->|Applied by| n136
+  n150 -->|Applied by| n135
+  n150 -->|Applied by| n145
+  n151 -->|Serves| n71
+  n152 -->|Serves| n71
+  n153 -->|Serves| n71
+  n154 -->|Serves| n71
+  n155 -->|Serves| n71
+  n156 -->|Serves| n71
+  n157 -->|Serves| n71
+  n158 -->|Serves| n71
+  n159 -->|Serves| n71
+  n160 -->|Serves| n71
   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
   classDef blocked fill:#fbf0d9,stroke:#9a6200,color:#17202a
   classDef violated fill:#f9e3e1,stroke:#ad2a22,color:#17202a

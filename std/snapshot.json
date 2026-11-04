@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-03",
+  "at": "2026-11-04",
   "nodes": [
     {
       "id": "algebra.Counts",
@@ -503,7 +503,7 @@
       "id": "effects.Commands",
       "kind": "function",
       "title": "Commands",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1713,7 +1713,7 @@
       "id": "obligations.Applied",
       "kind": "requirement",
       "title": "The decisions a shipment applies hold",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "body": "(function)"
@@ -1733,7 +1733,7 @@
       "id": "obligations.Checked",
       "kind": "requirement",
       "title": "The artefacts a shipment ships are checked",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1774,7 +1774,7 @@
       "id": "obligations.Reviewed",
       "kind": "requirement",
       "title": "The data a shipment carries is reviewed",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1797,7 +1797,7 @@
       "id": "obligations.Ruled",
       "kind": "requirement",
       "title": "The project's rules hold",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "body": "(function)"
@@ -1817,7 +1817,7 @@
       "id": "obligations.Safe",
       "kind": "requirement",
       "title": "The packages a shipment uses are safe",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "body": "(function)"
@@ -1837,7 +1837,7 @@
       "id": "obligations.Served",
       "kind": "requirement",
       "title": "The product a shipment serves holds",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "body": "(function)"
@@ -1857,7 +1857,7 @@
       "id": "obligations.Verified",
       "kind": "requirement",
       "title": "The code a shipment ships is verified",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -2249,6 +2249,14 @@
       }
     },
     {
+      "id": "product.VersionsThatHold",
+      "kind": "goal",
+      "title": "Versions that hold",
+      "fields": {
+        "owner": "trame"
+      }
+    },
+    {
       "id": "releases.R0_1_0",
       "kind": "release",
       "title": "Version 0.1.0",
@@ -2472,7 +2480,7 @@
       "id": "rules.Linked",
       "kind": "requirement",
       "title": "As many links as asked",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -2495,7 +2503,7 @@
       "id": "rules.NeverReaches",
       "kind": "requirement",
       "title": "A node never reaches what it must not",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -2518,7 +2526,7 @@
       "id": "rules.Reaches",
       "kind": "requirement",
       "title": "A node reaches what it must",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "body": "(function)"
@@ -2538,7 +2546,7 @@
       "id": "rules.WithoutEffects",
       "kind": "requirement",
       "title": "Effects a node may not have",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -2561,7 +2569,7 @@
       "id": "rules.WordsOf",
       "kind": "requirement",
       "title": "Words of a vocabulary",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -2578,6 +2586,22 @@
       "fields": {
         "owner": "trame",
         "criteria": "(function)"
+      }
+    },
+    {
+      "id": "scenarios.CommandsMade",
+      "kind": "scenario",
+      "title": "Commands are made for each effect",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "commands": "effects.Commands",
+          "effects": "effects.Effects",
+          "data": "scenarios.ScenarioData",
+          "checks": "scenarios.ScenarioChecks"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -2694,7 +2718,8 @@
             "text": "Mountain",
             "error": "The page broke",
             "language": "fr"
-          }
+          },
+          "command": "SELECT 1"
         }
       }
     },
@@ -2734,6 +2759,81 @@
           "checks": "scenarios.ScenarioChecks"
         },
         "body": "(function)"
+      }
+    },
+    {
+      "id": "sdlc.DecisionsApplied",
+      "kind": "obligation",
+      "title": "Its decisions applied",
+      "fields": {
+        "owner": "trame"
+      }
+    },
+    {
+      "id": "sdlc.FunctionsVerified",
+      "kind": "obligation",
+      "title": "Its functions verified",
+      "fields": {
+        "owner": "trame",
+        "params": {
+          "kinds": [
+            "function"
+          ]
+        },
+        "gaps": "error"
+      }
+    },
+    {
+      "id": "sdlc.NextVersion",
+      "kind": "shipment",
+      "title": "The next version",
+      "status": "unknown",
+      "fields": {
+        "owner": "trame",
+        "target": "version"
+      }
+    },
+    {
+      "id": "sdlc.PackagesSafe",
+      "kind": "obligation",
+      "title": "Its packages safe",
+      "fields": {
+        "owner": "trame"
+      }
+    },
+    {
+      "id": "sdlc.RequirementsServed",
+      "kind": "obligation",
+      "title": "Its requirements held",
+      "fields": {
+        "owner": "trame"
+      }
+    },
+    {
+      "id": "sdlc.RulesHeld",
+      "kind": "obligation",
+      "title": "Its rules held",
+      "fields": {
+        "owner": "trame"
+      }
+    },
+    {
+      "id": "sdlc.TheLibrary",
+      "kind": "artifact",
+      "title": "The standard library",
+      "status": "unknown",
+      "fields": {
+        "owner": "trame",
+        "path": "src",
+        "version": true
+      }
+    },
+    {
+      "id": "sdlc.VersionMode",
+      "kind": "policy",
+      "title": "How a version is made",
+      "fields": {
+        "owner": "trame"
       }
     },
     {
@@ -4674,6 +4774,36 @@
       "kind": "accepts"
     },
     {
+      "from": "scenarios.CommandsMade",
+      "to": "effects.Commands",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.CommandsMade",
+      "to": "scenarios.Test",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.CommandsMade",
+      "to": "effects.Commands",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.CommandsMade",
+      "to": "effects.Effects",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.CommandsMade",
+      "to": "scenarios.ScenarioData",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.CommandsMade",
+      "to": "scenarios.ScenarioChecks",
+      "kind": "deps"
+    },
+    {
       "from": "scenarios.DeviceInMemory",
       "to": "platform.MemoryPreferences",
       "kind": "verifies"
@@ -4872,6 +5002,91 @@
       "from": "scenarios.ToolingInMemory",
       "to": "scenarios.ScenarioChecks",
       "kind": "deps"
+    },
+    {
+      "from": "sdlc.DecisionsApplied",
+      "to": "obligations.Applied",
+      "kind": "applies"
+    },
+    {
+      "from": "sdlc.DecisionsApplied",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
+      "from": "sdlc.FunctionsVerified",
+      "to": "obligations.Verified",
+      "kind": "applies"
+    },
+    {
+      "from": "sdlc.FunctionsVerified",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
+      "from": "sdlc.NextVersion",
+      "to": "sdlc.TheLibrary",
+      "kind": "ships"
+    },
+    {
+      "from": "sdlc.NextVersion",
+      "to": "sdlc.VersionMode",
+      "kind": "policy"
+    },
+    {
+      "from": "sdlc.PackagesSafe",
+      "to": "obligations.Safe",
+      "kind": "applies"
+    },
+    {
+      "from": "sdlc.PackagesSafe",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
+      "from": "sdlc.RequirementsServed",
+      "to": "obligations.Served",
+      "kind": "applies"
+    },
+    {
+      "from": "sdlc.RequirementsServed",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
+      "from": "sdlc.RulesHeld",
+      "to": "obligations.Ruled",
+      "kind": "applies"
+    },
+    {
+      "from": "sdlc.RulesHeld",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
+      "from": "sdlc.VersionMode",
+      "to": "sdlc.FunctionsVerified",
+      "kind": "obligations"
+    },
+    {
+      "from": "sdlc.VersionMode",
+      "to": "sdlc.RequirementsServed",
+      "kind": "obligations"
+    },
+    {
+      "from": "sdlc.VersionMode",
+      "to": "sdlc.DecisionsApplied",
+      "kind": "obligations"
+    },
+    {
+      "from": "sdlc.VersionMode",
+      "to": "sdlc.RulesHeld",
+      "kind": "obligations"
+    },
+    {
+      "from": "sdlc.VersionMode",
+      "to": "sdlc.PackagesSafe",
+      "kind": "obligations"
     },
     {
       "from": "system.ExitStatus",

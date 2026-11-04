@@ -7,7 +7,6 @@
 | The operators | 0 | 0 | 2 | 0 |
 | karim | 6 | 0 | 11 | 102 |
 | lea | 0 | 0 | 1 | 11 |
-| trame | 0 | 0 | 1 | 0 |
 
 <a id="The operators"></a>
 
@@ -181,11 +180,3 @@
 | [Approval of the ultra period](committee.md#UltraPeriodApproval) | Approval |  |
 | [Checks of the scenarios](messages.md#ScenarioChecks) | Message catalog |  |
 | [Every reservation is refunded according to the rule](scenarios.md#ComplianceScenario) | Scenario | **held** |
-
-<a id="trame"></a>
-
-## trame
-
-| Severity | What | Where | Owner | Consequence |
-|---|---|---|---|---|
-| warning | Commands ships, and nothing proves it (The code is verified) | [Commands](../../../std/docs/effects.md#Commands) | trame |  |

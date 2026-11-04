@@ -42,3 +42,10 @@ export const RealizedOnce = goal({ owner: "trame" })
  * parameters, and its documents say what each rule asks.
  */
 export const SharedRules = goal({ owner: "trame" })
+
+/**
+ * Versions that hold
+ * A version of the library is released only when what it holds is proven: its code verified, the requirements of its
+ * goals held, its decisions applied, its rules held, its packages safe (C1).
+ */
+export const VersionsThatHold = goal({ owner: "trame" })

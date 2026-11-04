@@ -1671,6 +1671,11 @@
       "result": {
         "derived": [
           {
+            "node": "std/scenarios.CommandsMade",
+            "via": "std/effects.Commands",
+            "obligation": "sdlc.CodeVerified"
+          },
+          {
             "node": "scenarios.ReadScenario",
             "via": "infra.ReservationsSql",
             "obligation": "sdlc.CodeVerified"
@@ -1732,11 +1737,6 @@
           }
         ],
         "gaps": [
-          {
-            "node": "std/effects.Commands",
-            "obligation": "sdlc.CodeVerified",
-            "weight": "warning"
-          },
           {
             "node": "infra.PostgresDialect",
             "obligation": "sdlc.CodeVerified",

@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-03",
+  "at": "2026-11-04",
   "nodes": [
     {
       "id": "github.GitHubActions",
@@ -394,6 +394,27 @@
         "what": "The language named by its names (#trame/kernel, #trame/kinds/*); references in its graph",
         "fingerprint": "f021383982b1c18c",
         "language": "shared"
+      }
+    },
+    {
+      "id": "sdlc.NextVersion",
+      "kind": "shipment",
+      "title": "The next version",
+      "status": "unknown",
+      "fields": {
+        "owner": "trame",
+        "target": "version"
+      }
+    },
+    {
+      "id": "sdlc.TheLibrary",
+      "kind": "artifact",
+      "title": "The library of writers",
+      "status": "unknown",
+      "fields": {
+        "owner": "trame",
+        "path": "src",
+        "version": true
       }
     },
     {
@@ -829,6 +850,26 @@
       "from": "releases.R0_3_0",
       "to": "product.RunsElsewhere",
       "kind": "serves"
+    },
+    {
+      "from": "sdlc.NextVersion",
+      "to": "sdlc.TheLibrary",
+      "kind": "ships"
+    },
+    {
+      "from": "sdlc.NextVersion",
+      "to": "yaml.YamlDocument",
+      "kind": "requires"
+    },
+    {
+      "from": "sdlc.NextVersion",
+      "to": "shell.ShellScript",
+      "kind": "requires"
+    },
+    {
+      "from": "sdlc.NextVersion",
+      "to": "github.GitHubWorkflow",
+      "kind": "requires"
     },
     {
       "from": "shell.BashScripts",
