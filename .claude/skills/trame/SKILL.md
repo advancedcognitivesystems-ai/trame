@@ -63,8 +63,8 @@ The repository's `AGENTS.md` is the full guide; read it first, then keep to this
   library; never a relative path out of the package (refused). `trame manifest` writes where each name leads.
 - The packages of Trame a project uses are `package` nodes of its graph (`joins`, `from`, `at`, `version`): change a
   version there, then `trame manifest` places it and writes `trame.json`; never edit `trame.json`'s references by hand.
-  `from: "registry"` takes the version published under `~/.trame/registry` (`trame release <version>` in a library
-  publishes it; a promoted generation is published with its language). A library published once runs, and is bundled
+  `from: "registry"` takes the version published under `~/.trame/registry` (`trame release <version> "what" --by <name>` in a library
+  ships its version through the library's graph, freezes it and publishes it; a promoted generation is published with its language). A library published once runs, and is bundled
   into a page, with the language and the libraries of the project that reads it (a peer); a program Node.js runs is
   its launcher (`<name>.node.ts`, g99), which leads the names the same way before it runs the program. A reference
   behind the newest version its origin holds is warned: `trame upgrade [package…]` moves it, then runs the manifest,
@@ -121,7 +121,7 @@ How a version becomes available is declared in the graph, with the kinds `role`,
   family.
 - A `shipment` names a target, what it `ships`, the `policy` it follows, the entry points that `deploys` it, and the
   `environment` its programs are assembled for. What it must prove is derived from what it reaches (the artefacts,
-  what produces them, what its programs wire; a library frozen at a version is covered by its release): keep
+  what produces them, what its programs wire; a library frozen at a version is covered by its release, which its own shipment of a version proved): keep
   `requires` for what derivation cannot see, and read `docs/pipelines.md` to see why each step is there. A decision
   the shipment itself applies is not one of its obligations (it is their evidence). Every shipment also proves the
   foundations (no literal, no value nobody decided, no error of the graph), which no policy can drop.
@@ -189,5 +189,6 @@ language change that needs a new engine, keep it aside while assembling and ship
 compare the example with its documents, and the advance builds with both generations), try it with the candidate,
 then bring it back once the generation is in place. A frozen program wires what older kinds gave, through the live
 kinds: a change of a kind's form keeps the old form readable (with a warning) until nothing writes it. A
-library's new nodes reach a project that pins a version only after `trame release <version>` in the library and the new
+library's new nodes reach a project that pins a version only after `trame release <version> "what" --by <name>` in the library (it ships the library's `NextVersion`
+first, an artefact `version: true` that holds all its code, and freezes nothing while it does not hold) and the new
 version in the project's `trame.json`, then `trame manifest`.

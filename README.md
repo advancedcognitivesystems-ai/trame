@@ -16,7 +16,7 @@ npm install
 ./trame.sh export trame-by-trame.html              # the page of Trame's graph, every date included
 ./trame.sh manifest && npm install                 # writes package.json from the graph's packages, the language's and libraries' names, then installs them
 mkdir garden && cd garden && ../trame.sh init "Garden" --by me   # starts a project: trame.json, src/product.ts, AGENTS.md and the skill, package.json
-cd std && ../trame.sh release 0.1.0 "…"            # freezes a version of the standard library, with its documents
+cd std && ../trame.sh release 0.1.0 "…" --by me    # ships a version of the standard library through its graph, then freezes it
 cd apps/poselia && ../../trame.sh deliver          # writes the app's page, a file a browser opens as it is
 ./trame.sh audit                                   # asks npm about the packages; the answers are dated evidence (evidence/)
 cd examples/reservations && ../../trame.sh run ReservationsApi --env Local
@@ -199,8 +199,14 @@ follow, wherever they are declared.
 `import { Counts } from "#std/algebra"`, never a path into the library; `trame manifest` writes the import map of the
 project's `package.json` from its `trame.json` (`"#std/*": "./std/src/*.ts"`, or through a link under `.trame/` when the
 library is outside the package), and the engine gives the TypeScript compiler the same names. The laws refuse a file
-that reaches into a library by a path, and say which name to write. **A version is frozen** by `trame release 0.1.0
-"what changes"`, run in the library: its graph, its code and its documents are copied under `releases/0.1.0/`, the
+that reaches into a library by a path, and say which name to write. **A version is shipped, then frozen** by `trame release 0.1.0
+"what changes" --by <name>`, run in the library. Since g101 a library ships its versions through its own graph, as
+Trame ships its generations: an artefact that is a version of the project (`version: true`) holds all its code, so the
+shipment that ships it (`NextVersion`) reaches every node of the library, and its policy derives what to prove from all
+of it (std's: its functions verified, the requirements of its goals served, its decisions applied, its rules held, its
+packages safe; ci's writers, each by its examples); what the library only offers (an adapter, a requirement nothing in
+it follows) is judged where a project chooses it. The release ships that version first and freezes nothing while it
+does not hold. Then its graph, its code and its documents are copied under `releases/0.1.0/`, the
 imports that leave the library are written again from the copy's place, and the release is recorded in the library's
 module of releases (requirement "A release is settled": nothing to decide, no error). A project imports that version
 with `"std": { "path": "../std", "version": "0.1.0" }`: its documents then link to the frozen documents.
@@ -399,7 +405,7 @@ Since g68, what a shipment must prove is **derived**, not listed by hand. The sh
 artefacts it ships and what produces them, the programs behind them (a delivery's component in its environment, an
 entry point's or a component's in the shipment's environment), the programs that check and deploy it, each with every
 node it wires there, as `trame assemble` would. A node of a library frozen at a version is left out: its release
-covers it (checking a library's versions is the job of its own release process); a library of the same repository used
+covers it (the library's own shipment of a version proved it, g101); a library of the same repository used
 without a version counts as the project's own. An **obligation** applies one family of `#std/obligations` with its
 parameters, typed by the family's rule: `Verified` (each scenario that verifies reached code; reached code of the kinds
 named that no scenario verifies is a gap), `Served` (from what the reached code serves, up to the goals, then every

@@ -43,7 +43,7 @@ Run from the project's directory, through the pinned generation:
 ./trame.sh manifest                    # the packages of the graph and the import map of the language and its libraries, written into package.json; installs them when the lockfile disagrees (g100)
 ./trame.sh upgrade [package…]          # each package of Trame the project references to the newest version its origin holds, then the manifest (g100)
 ../trame.sh init "Title" --by <owner>  # in an empty directory: starts a project (trame.json, src/product.ts, the guide, the skill, package.json)
-./trame.sh release <version> "what"    # in a library: freezes a version, with its documents
+./trame.sh release <version> "what" --by <name>   # in a library: ships its version, then freezes it, with its documents (g101)
 ./trame.sh publish [--migrate "why"]   # freezes the published declarations in trame.lock (--migrate: those the language changed the form of)
 ./trame.sh deliver [delivery]          # writes the deliveries: a page a browser opens as it is
 ./trame.sh ship <shipment> --by <name> [--dry-run] [--promote "what"]   # builds, checks, refuses or deploys (section 4b)
@@ -105,7 +105,7 @@ A project declares how a version of it ships (ADR "A version ships through the g
 | Kind | What it says | Its evidence |
 |---|---|---|
 | `role` | who holds it (`people`), whether they may review their own work (`notAuthor`), how evidence is signed | — |
-| `artifact` | what is produced (`path`, or where its delivery writes it), its media type, what produces it (`producedBy`: a delivery, an entry point, a component, a release), the programs it `carries` when its producer does not say (a page exported carries its component, for the browser), the `environment` a component it is is assembled for when not its shipment's (the page's program, for the browser); wired, it gives `{ path, media }`, so a program names the artefact, never its path | `built`: the SHA-256 of the file (of its files, for a directory), with the code it was made from (g70) and the engine that made it (g72): it holds while that code is the code as it is and the project pins that engine |
+| `artifact` | what is produced (`path`, or where its delivery writes it), its media type, what produces it (`producedBy`: a delivery, an entry point, a component, a release), or a version of the project itself (`version: true`, its sources: all its code, which the shipment that ships it reaches whole, g101), the programs it `carries` when its producer does not say (a page exported carries its component, for the browser), the `environment` a component it is is assembled for when not its shipment's (the page's program, for the browser); wired, it gives `{ path, media }`, so a program names the artefact, never its path | `built`: the SHA-256 of the file (of its files, for a directory), with the code it was made from (g70) and the engine that made it (g72): it holds while that code is the code as it is and the project pins that engine |
 | `check` | what a scenario in memory cannot check: run by a program of the SDLC (`runs`) or made by hand (`steps`), signed by a role (`by`), on artefacts (`on`); the code it proves (`verifies`): what its program runs on a machine, or what its artefacts carry | `check`: passed or failed, for the artefacts as last built from the code as it is, by its program as it is (g70) |
 | `review` | what must be reviewed (`of`: the rows of a dataset in each language, or a node as written), by which role, by how many of its people (`approvals`, one) | `review` on the subject: each row and language, tied to the fingerprint of what was seen; each person's latest counts, a change asked holds it back |
 | `shipment` | a target, what it `ships`, the `policy` it follows, what it also `requires` that derivation cannot see, the entry points that `deploys` it, the `environment` its programs are assembled for | `shipped`, with the dossier |
@@ -114,7 +114,7 @@ A project declares how a version of it ships (ADR "A version ships through the g
 
 What a shipment must prove is derived, not listed (g68): its policy's obligations read what it reaches (the artefacts
 it ships, what produces them, what its programs wire in their environments; a library frozen at a version is left out,
-its release covers it) and give the nodes to prove, each with the reached node that brought it in, and the gaps
+its release covers it, which the library's own shipment of a version proved) and give the nodes to prove, each with the reached node that brought it in, and the gaps
 (reached code no scenario verifies, data nothing reviews). A decision the shipment itself applies is not one of its
 obligations: the shipment is its evidence, and each would wait for the other. Do not list in `requires` what the policy derives:
 `docs/pipelines.md` shows why each step is there. Every shipment also proves the **foundations**, which no policy
@@ -231,8 +231,11 @@ installs a published engine's packages the first time it runs it. `libs/geometry
 A library is a Trame project another project imports (ADR "A library is a Trame project, imported by path"). The
 project names it in its `trame.json` (`"libraries": { "std": "../std" }`, or `{ "path": "../std", "version": "0.1.0" }`
 for a frozen version) and imports its nodes by name (`import { Counts } from "#std/algebra"`); `./trame.sh manifest`
-writes where the name leads into `package.json`. A path into a library is refused. `./trame.sh release 0.1.0 "what"`,
-run in a library, freezes a version under `releases/0.1.0/` with its documents. In the project's graph its modules take the library's name
+writes where the name leads into `package.json`. A path into a library is refused. `./trame.sh release 0.1.0 "what" --by <name>`,
+run in a library, first ships the library's version through its own graph (since g101: the shipment that ships an
+artefact `version: true`, `NextVersion` in std and ci; its policy derives from all the library's code, std's proves its
+functions verified, its requirements served, its decisions applied, its rules held, its packages safe), freezes nothing
+while it does not hold, then freezes the version under `releases/0.1.0/` with its documents. In the project's graph its modules take the library's name
 (`std/algebra.Counts`): the project's nodes depend on them, the kinds read them, but the project's documents only link
 to the library's, its issues are counted apart (the index, the build summary) and its lock leaves them out. A library
 builds its own documents (`cd std && ../trame.sh build`).
@@ -390,6 +393,10 @@ elements), a port answered differently in several environments is answered as in
   (`node <tsx> generations/g100/out/local/trame-cli.ts upgrade`), then `./trame.sh upgrade` runs it.
 - The files that run a shipment elsewhere place a project in the repository from its generation's real path (g98):
   reached through `.trame/trame`, two directories above the link would be the project itself.
+- Trame's scenarios run in a process that has std's modules loaded already (Trame imports std): a scenario that
+  compiles std reads its graph empty. The release scenario enters ci instead.
+- In the scenarios no engine runs (the program named is the command a person types): what a ship records there names
+  no engine, and is judged by none (g101); on a machine, the engine that ships says which it is.
 - A release holds no manifest (g96): in its library, the library's says it is made of ES modules and where the
   language is; published, the registry gives it one that says only the first, and its reader leads the language.
 - A published declaration the language changes the form of (a type renamed, a rule rewritten as a body) is an error
