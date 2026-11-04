@@ -237,7 +237,7 @@ registry of this machine (`~/.trame/registry/<name>/<version>`, the decision `Lo
 in a library (run on a version already frozen, it publishes it), and by the promotion of a generation, with its
 language copied for real, so a project that runs it from there keeps the language it was frozen with. `trame.sh`
 installs a published engine's packages the first time it runs it. `libs/geometry` runs entirely from the registry
-(g93, std 0.12.0). The example and std keep a written pin, which an advance moves.
+(g102, std 0.16.0 since 4 November). The example and std keep a written pin, which an advance moves.
 
 g54 brought this to the engine without any project using it, and built everything as g53 did; g55 moved the nodes. A
 generation keeps a copy of Trame's libraries beside its graph, since its program imports their bodies (the structures),

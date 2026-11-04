@@ -226,16 +226,17 @@ registry of this machine (`~/.trame/registry/<name>/<version>`, the decision `Lo
 in a library (run on a version already frozen, it publishes it), and by the promotion of a generation, with its
 language copied for real, so a project that runs it from there keeps the language it was frozen with. `trame.sh`
 installs a published engine's packages the first time it runs it. `libs/geometry` runs entirely from the registry
-(g93, std 0.12.0). The example and std keep a written pin, which an advance moves.
+(g102, std 0.16.0 since 4 November). The example and std keep a written pin, which an advance moves.
 
 A library is a Trame project another project imports (ADR "A library is a Trame project, imported by path"). The
 project names it in its `trame.json` (`"libraries": { "std": "../std" }`, or `{ "path": "../std", "version": "0.1.0" }`
 for a frozen version) and imports its nodes by name (`import { Counts } from "#std/algebra"`); `./trame.sh manifest`
 writes where the name leads into `package.json`. A path into a library is refused. `./trame.sh release 0.1.0 "what" --by <name>`,
 run in a library, first ships the library's version through its own graph (since g101: the shipment that ships an
-artefact `version: true`, `NextVersion` in std and ci; its policy derives from all the library's code, std's proves its
+artefact `version: true`, `NextVersion` in std, ci and geometry; its policy derives from all the library's code, std's proves its
 functions verified, its requirements served, its decisions applied, its rules held, its packages safe), freezes nothing
-while it does not hold, then freezes the version under `releases/0.1.0/` with its documents. In the project's graph its modules take the library's name
+while it does not hold, then freezes the version under `releases/0.1.0/` with its documents. The record of a release is
+not part of the version it records (g102): once released, the version as it is still holds. In the project's graph its modules take the library's name
 (`std/algebra.Counts`): the project's nodes depend on them, the kinds read them, but the project's documents only link
 to the library's, its issues are counted apart (the index, the build summary) and its lock leaves them out. A library
 builds its own documents (`cd std && ../trame.sh build`).
@@ -397,6 +398,9 @@ elements), a port answered differently in several environments is answered as in
   compiles std reads its graph empty. The release scenario enters ci instead.
 - In the scenarios no engine runs (the program named is the command a person types): what a ship records there names
   no engine, and is judged by none (g101); on a machine, the engine that ships says which it is.
+- A project run from the registry (geometry) keeps the language its generation was published with: a change of a kind
+  reaches it only with the next generation published, while the projects that pin a generation by its path read the
+  language as it is (the record of a release left out of a version reached std and ci at once, geometry with g102).
 - A release holds no manifest (g96): in its library, the library's says it is made of ES modules and where the
   language is; published, the registry gives it one that says only the first, and its reader leads the language.
 - A published declaration the language changes the form of (a type renamed, a rule rewritten as a body) is an error
