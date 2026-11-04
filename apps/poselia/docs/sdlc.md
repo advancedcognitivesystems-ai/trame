@@ -600,7 +600,7 @@ The page as it is, for its author and the few people they show it to, the way of
 | [Each decision of architecture serves the product](#AdrsServeTheProduct) | **held** | [The rules of the app hold](#RulesHeld) |
 | [Code serves the product](#CodeServesTheProduct) | **held** | [The rules of the app hold](#RulesHeld) |
 
-Shipped 4 November 2026 by claude; its dossier: `evidence/shipments/Preview-2026-11-04-ed9e2c6f.json`.
+Shipped 4 November 2026 by claude; its dossier: `evidence/shipments/Preview-2026-11-04-71a6008f.json`.
 
 - Owner: ghalaax
 - Ships: [Poselia's page](#PageFile)
@@ -699,7 +699,7 @@ The workflow and the script that run the preview elsewhere, written by trame shi
 | [The preview's script](#PreviewScript) | **held** | shipped |
 | [The preview's workflow](#PreviewWorkflow) | **held** | shipped |
 
-Shipped 4 November 2026 by claude; its dossier: `evidence/shipments/RunnersWritten-2026-11-04-6c229595.json`.
+Shipped 4 November 2026 by claude; its dossier: `evidence/shipments/RunnersWritten-2026-11-04-1a13a840.json`.
 
 - Owner: ghalaax
 - Ships: [The preview's workflow](#PreviewWorkflow), [The preview's script](#PreviewScript)

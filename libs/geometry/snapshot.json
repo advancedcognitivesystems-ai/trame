@@ -32,7 +32,7 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "trame",
-        "version": "101",
+        "version": "102",
         "joins": "language",
         "from": "registry"
       }
@@ -95,7 +95,7 @@
       "id": "sdlc.NextVersion",
       "kind": "shipment",
       "title": "The next version",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "target": "version"
@@ -113,7 +113,7 @@
       "id": "sdlc.TheLibrary",
       "kind": "artifact",
       "title": "The library of geometry",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "path": "src",

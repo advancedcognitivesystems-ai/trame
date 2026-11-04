@@ -9,6 +9,6 @@ import { RunsElsewhere } from "./product"
  * repository.
  */
 export const Language = pkg({
-  owner: "trame", packageName: "trame", version: "101", joins: "language", from: "path", at: "../generations/g101",
+  owner: "trame", packageName: "trame", version: "102", joins: "language", from: "path", at: "../generations/g102",
   serves: [RunsElsewhere],
 })

@@ -37,7 +37,7 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "trame",
-        "version": "101",
+        "version": "102",
         "joins": "language",
         "from": "registry"
       },
@@ -112,7 +112,7 @@
       "kind": "shipment",
       "title": "The next version",
       "source": "src/sdlc.ts:44",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "target": "version"
@@ -127,9 +127,7 @@
         ],
         "gaps": []
       },
-      "diagnostics": [
-        "warning: To ship: The library of geometry is unknown"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.PackagesSafe",
@@ -146,7 +144,7 @@
       "kind": "artifact",
       "title": "The library of geometry",
       "source": "src/sdlc.ts:19",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "path": "src",
@@ -154,11 +152,9 @@
       },
       "result": {
         "path": "src",
-        "code": "129af004"
+        "code": "9799f949"
       },
-      "diagnostics": [
-        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.VersionMode",

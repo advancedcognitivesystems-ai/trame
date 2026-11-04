@@ -16,7 +16,7 @@ The library as its people write it: what a version freezes, and what projects im
 
 - Path: `src`
 
-Built 4 November 2026 by claude, fingerprint `832bf73d04ca2e78e9d21ccb3e861f5c94d03b6b0f43d370b8f73cef85a531ba`.
+Built 4 November 2026 by claude, fingerprint `6a7d337ed380cceb77f315010a7bc058a29d0c9a9d5721c9c987556e2f695a30`.
 
 - Owner: trame
 - A version of the project: true

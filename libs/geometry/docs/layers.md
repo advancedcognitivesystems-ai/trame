@@ -21,9 +21,9 @@ flowchart TB
   end
   subgraph sdlc["Geometry · SDLC"]
     n7["Its decisions applied<br/><small>Obligation</small>"]:::neutral
-    n8["The next version<br/><small>Shipment</small>"]:::unknown
+    n8["The next version<br/><small>Shipment</small>"]:::held
     n9["Its packages safe<br/><small>Obligation</small>"]:::neutral
-    n10["The library of geometry<br/><small>Artefact</small>"]:::unknown
+    n10["The library of geometry<br/><small>Artefact</small>"]:::held
     n11["How a version is made<br/><small>Policy</small>"]:::neutral
   end
   subgraph vectors["Geometry · Vectors"]

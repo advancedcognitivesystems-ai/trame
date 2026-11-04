@@ -29,7 +29,7 @@ Package · `Language`
 
 - Owner: ghalaax
 - Name: trame
-- Version: 101
+- Version: 102
 - How it joins the graph: language
 - Where it comes from: registry
 - Serves: Geometry written once
@@ -83,7 +83,7 @@ Release · `R0_2_0`
 
 ### The library of geometry
 
-Artefact · `TheLibrary` · **unknown**
+Artefact · `TheLibrary` · **held**
 
 - Owner: ghalaax
 - Path: src
@@ -91,7 +91,7 @@ Artefact · `TheLibrary` · **unknown**
 
 ### The next version
 
-Shipment · `NextVersion` · **unknown**
+Shipment · `NextVersion` · **held**
 
 - Owner: ghalaax
 - Target: version
