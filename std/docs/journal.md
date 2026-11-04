@@ -2,12 +2,16 @@
 
 *What happened to the project, day by day, the latest first, up to the date of the graph (4 November 2026): the versions released, and the evidence given, each with the node it is about and who gave it.*
 
-> **7 days · 16 versions released · 3 pieces of evidence**
+> **7 days · 17 versions released · 6 pieces of evidence**
 
 ## 4 November 2026
 
 | What | Node | By |
 |---|---|---|
+| Released as 0.16.0 | [Version 0.16.0](releases.md#R0_16_0) | trame |
+| Shipped | [The next version](sdlc.md#NextVersion) | claude |
+| Built | [The standard library](sdlc.md#TheLibrary) | claude |
+| Built | [The standard library](sdlc.md#TheLibrary) | claude |
 | Built | [The standard library](sdlc.md#TheLibrary) | claude |
 
 ## 3 November 2026

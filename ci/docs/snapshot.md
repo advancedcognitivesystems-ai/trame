@@ -118,10 +118,10 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 100
+- Version: 101
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../generations/g100
+- Its path: ../generations/g101
 - Serves: A shipment runs elsewhere as it runs here
 
 ## Continuous integration · Product
@@ -176,11 +176,23 @@ Release · `R0_3_0`
 - Language: shared
 - Serves: Each place is a writer, A shipment runs elsewhere as it runs here
 
+### Version 0.4.0
+
+Release · `R0_4_0`
+
+- Released by: trame
+- Version: 0.4.0
+- Released on: 2026-11-04
+- What changes: The library ships its versions through its own graph: NextVersion requires its writers, each held by its examples
+- Fingerprint: 7519ad6debc3455f
+- Language: shared
+- Serves: Each place is a writer, A shipment runs elsewhere as it runs here
+
 ## Continuous integration · SDLC
 
 ### The library of writers
 
-Artefact · `TheLibrary` · **unknown**
+Artefact · `TheLibrary` · **held**
 
 - Owner: trame
 - Path: src
@@ -188,7 +200,7 @@ Artefact · `TheLibrary` · **unknown**
 
 ### The next version
 
-Shipment · `NextVersion` · **unknown**
+Shipment · `NextVersion` · **held**
 
 - Owner: trame
 - Target: version

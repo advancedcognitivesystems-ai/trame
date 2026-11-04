@@ -411,10 +411,10 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 100
+- Version: 101
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../generations/g100
+- Its path: ../generations/g101
 - Serves: Ports of the platform, realized once
 
 ## Standard library · Design patterns
@@ -769,6 +769,18 @@ Release · `R0_15_0`
 - Language: shared
 - Serves: A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again
 
+### Version 0.16.0
+
+Release · `R0_16_0`
+
+- Released by: trame
+- Version: 0.16.0
+- Released on: 2026-11-04
+- What changes: The library ships its versions through its own graph: NextVersion, under VersionMode; the command maker verified by a scenario
+- Fingerprint: a6bf5318db876e16
+- Language: shared
+- Serves: A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again, Versions that hold
+
 ### Version 0.2.0
 
 Release · `R0_2_0`
@@ -1038,7 +1050,7 @@ Scenario · `ToolingInMemory` · **held**
 
 ### The standard library
 
-Artefact · `TheLibrary` · **unknown**
+Artefact · `TheLibrary` · **held**
 
 - Owner: trame
 - Path: src
@@ -1046,7 +1058,7 @@ Artefact · `TheLibrary` · **unknown**
 
 ### The next version
 
-Shipment · `NextVersion` · **unknown**
+Shipment · `NextVersion` · **held**
 
 - Owner: trame
 - Target: version

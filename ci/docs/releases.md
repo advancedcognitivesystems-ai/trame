@@ -53,3 +53,19 @@ The language named by its names (#trame/kernel, #trame/kinds/*); references in i
 
 - Released by: trame
 - Serves: [Each place is a writer](product.md#OneWriterPerPlace), [A shipment runs elsewhere as it runs here](product.md#RunsElsewhere)
+
+<a id="R0_4_0"></a>
+
+### Version 0.4.0
+
+`R0_4_0` · `src/releases.ts:51`
+
+The library ships its versions through its own graph: NextVersion requires its writers, each held by its examples
+
+- Version: `0.4.0`
+- Released on: 4 November 2026
+- Fingerprint: `7519ad6debc3455f`
+- Language: the repository's, shared
+
+- Released by: trame
+- Serves: [Each place is a writer](product.md#OneWriterPerPlace), [A shipment runs elsewhere as it runs here](product.md#RunsElsewhere)

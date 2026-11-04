@@ -1,0 +1,74 @@
+{
+  "shipment": "sdlc.NextVersion",
+  "title": "The next version",
+  "target": "version",
+  "at": "2026-11-04",
+  "by": "claude",
+  "signature": "attribution",
+  "artifacts": [
+    {
+      "node": "sdlc.TheLibrary",
+      "path": "src",
+      "fingerprint": "22581b9a7ddf5d605e71ab268cae4fb3a4c373e8c6e1ab619518957701d76def"
+    }
+  ],
+  "foundations": {
+    "problems": 0
+  },
+  "obligations": [
+    {
+      "node": "sdlc.TheLibrary",
+      "kind": "artifact",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-04",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "80358191f24b893e8605c6f7d86a8af228d69e003e5f38eca3b3ed98ab35558f",
+          "code": "2eac90bd",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "c8ef7119db1b811a",
+          "seal": "4d49d63ef845ef1b4fd41c568a81d215f8b4157308e76c9f84acd35f9dfba035"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-04",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "22581b9a7ddf5d605e71ab268cae4fb3a4c373e8c6e1ab619518957701d76def",
+          "code": "9c1030d1",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "22c1402e36086e44",
+          "seal": "a1d438dc150ce61a4de8f01d0dda401cf49a553bb5fcd82096011a10f8b02171"
+        }
+      ]
+    },
+    {
+      "node": "github.GitHubWorkflow",
+      "kind": "syntax",
+      "status": "held",
+      "owner": "trame",
+      "evidence": []
+    },
+    {
+      "node": "shell.ShellScript",
+      "kind": "syntax",
+      "status": "held",
+      "owner": "trame",
+      "evidence": []
+    },
+    {
+      "node": "yaml.YamlDocument",
+      "kind": "syntax",
+      "status": "held",
+      "owner": "trame",
+      "evidence": []
+    }
+  ],
+  "deployed": []
+}

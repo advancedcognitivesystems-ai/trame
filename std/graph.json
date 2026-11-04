@@ -2168,10 +2168,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "100",
+        "version": "101",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g100"
+        "at": "../generations/g101"
       },
       "diagnostics": []
     },
@@ -2722,6 +2722,21 @@
         "date": "2026-11-03",
         "what": "A package's source says which versions it holds; npm's words to install what a project names",
         "fingerprint": "911af2d98a5ddddd",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "releases.R0_16_0",
+      "kind": "release",
+      "title": "Version 0.16.0",
+      "source": "src/releases.ts:220",
+      "fields": {
+        "owner": "trame",
+        "version": "0.16.0",
+        "date": "2026-11-04",
+        "what": "The library ships its versions through its own graph: NextVersion, under VersionMode; the command maker verified by a scenario",
+        "fingerprint": "a6bf5318db876e16",
         "language": "shared"
       },
       "diagnostics": []
@@ -3312,7 +3327,7 @@
       "kind": "shipment",
       "title": "The next version",
       "source": "src/sdlc.ts:70",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "version"
@@ -3422,9 +3437,7 @@
         ],
         "gaps": []
       },
-      "diagnostics": [
-        "warning: To ship: The standard library is unknown"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.PackagesSafe",
@@ -3461,7 +3474,7 @@
       "kind": "artifact",
       "title": "The standard library",
       "source": "src/sdlc.ts:20",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "src",
@@ -3469,11 +3482,9 @@
       },
       "result": {
         "path": "src",
-        "code": "efc1c404"
+        "code": "4353d2c1"
       },
-      "diagnostics": [
-        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.VersionMode",
@@ -5257,6 +5268,36 @@
     {
       "from": "releases.R0_15_0",
       "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_16_0",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_16_0",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_16_0",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_16_0",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_16_0",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_16_0",
+      "to": "product.VersionsThatHold",
       "kind": "serves"
     },
     {

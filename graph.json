@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-30",
+  "generated": "2026-11-04",
   "nodes": [
     {
       "id": "appearance.ExplorerDrawing",
@@ -1180,7 +1180,7 @@
       "kind": "implementation",
       "title": "Amendments sent to trame dev",
       "source": "src/browser.ts:109",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1201,7 +1201,7 @@
       "kind": "implementation",
       "title": "The browser's gzip",
       "source": "src/browser.ts:119",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1220,7 +1220,7 @@
       "kind": "implementation",
       "title": "The globals of the page, and trame dev",
       "source": "src/browser.ts:99",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1240,7 +1240,7 @@
       "kind": "implementation",
       "title": "Local storage",
       "source": "src/browser.ts:88",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1258,7 +1258,7 @@
       "kind": "implementation",
       "title": "The browser's window",
       "source": "src/browser.ts:78",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1278,7 +1278,7 @@
       "kind": "function",
       "title": "Explorer of a graph",
       "source": "src/browser.ts:40",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1317,7 +1317,7 @@
       "kind": "entry",
       "title": "Show the graph",
       "source": "src/browser.ts:56",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "trigger": {
@@ -1372,7 +1372,7 @@
       "kind": "binding",
       "title": "The browser runs the page",
       "source": "src/browser.ts:130",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "The page's script took what it needed from the browser itself, here and there: the graph could not say what the page asks of the browser, nor try it elsewhere.",
@@ -1389,7 +1389,7 @@
       "kind": "adr",
       "title": "The page is assembled",
       "source": "src/browser.ts:149",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "The page's script built by hand what it shared with the engine and wrote its values (classes, identifiers, the explorer's geometry) as literals the catalogue could not see: a change in the graph did not reach it.",
@@ -1442,7 +1442,7 @@
           "status": "passed"
         },
         {
-          "name": "The candidate is accepted (  ✓ trame runs g101 |   ✓ reservations runs g101 | Advance succeeded.)",
+          "name": "The candidate is accepted (  ✓ trame runs g102 |   ✓ reservations runs g102 | Advance succeeded.)",
           "status": "passed"
         },
         {
@@ -10487,10 +10487,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.15.0",
+        "version": "0.16.0",
         "joins": "library",
         "from": "path",
-        "at": "std/releases/0.15.0"
+        "at": "std/releases/0.16.0"
       },
       "diagnostics": []
     },
@@ -12447,7 +12447,7 @@
       "kind": "implementation",
       "title": "System files, for reading",
       "source": "src/platform.ts:78",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "body": {
@@ -12462,7 +12462,7 @@
       "kind": "implementation",
       "title": "Trees on disk",
       "source": "src/platform.ts:232",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -12482,7 +12482,7 @@
       "kind": "implementation",
       "title": "System files, for writing",
       "source": "src/platform.ts:204",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "body": {
@@ -12869,7 +12869,7 @@
       "kind": "implementation",
       "title": "Node HTTP server",
       "source": "src/platform.ts:173",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "body": {
@@ -12884,7 +12884,7 @@
       "kind": "binding",
       "title": "On a machine, Node.js reads, writes and runs",
       "source": "src/platform.ts:428",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "What changes the world (files written, processes, the terminal, the clock) is real only on a machine; the scenarios keep it in memory.",
@@ -12931,7 +12931,7 @@
       "kind": "implementation",
       "title": "Node process",
       "source": "src/platform.ts:212",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -12951,7 +12951,7 @@
       "kind": "implementation",
       "title": "Node programs",
       "source": "src/platform.ts:222",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -12971,7 +12971,7 @@
       "kind": "implementation",
       "title": "Node terminal",
       "source": "src/platform.ts:241",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -13039,7 +13039,7 @@
       "kind": "implementation",
       "title": "npm installs",
       "source": "src/platform.ts:146",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -13060,7 +13060,7 @@
       "kind": "implementation",
       "title": "npm's reports",
       "source": "src/platform.ts:156",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -13218,7 +13218,7 @@
       "kind": "binding",
       "title": "On a machine, runs are kept on disk",
       "source": "src/platform.ts:495",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "The commands of a shipment and of an advance run as separate processes, each compiling the same graph: what one played, the next can find only on disk.",
@@ -13234,7 +13234,7 @@
       "kind": "implementation",
       "title": "Runs kept on disk",
       "source": "src/platform.ts:403",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -13276,7 +13276,7 @@
       "kind": "implementation",
       "title": "System clock",
       "source": "src/platform.ts:250",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -13728,7 +13728,7 @@
       "kind": "adr",
       "title": "A version ships through the graph",
       "source": "src/principles.ts:415",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "Two products ship differently (a page placed where it is served, an engine frozen into a generation) and their pipelines lived in scripts and in their authors' heads: nothing said what had been checked, by whom, on which version, nor why a version could go.",
@@ -13746,7 +13746,7 @@
       "kind": "adr",
       "title": "A technology is chosen in one node",
       "source": "src/principles.ts:233",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "Each implementation said which environments it served: the choice of a technology was spread over its realizations, nothing said why, and a test double or a repository over a database port had to be declared as if it touched the platform.",
@@ -14132,6 +14132,22 @@
         "fingerprint": "0230ee2457e71187",
         "language": "shared",
         "archive": "edf977f48addb616"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "releases.G101",
+      "kind": "release",
+      "title": "Generation 101",
+      "source": "src/releases.ts:1490",
+      "fields": {
+        "owner": "trame",
+        "version": "g101",
+        "date": "2026-11-04",
+        "what": "A library ships its versions through its own graph: trame release ships the version first and freezes nothing while it does not hold (C1)",
+        "fingerprint": "61ccef44eb3a4fe9",
+        "language": "shared",
+        "archive": "9e3693eedd0bd609"
       },
       "diagnostics": []
     },
@@ -16633,39 +16649,35 @@
       "kind": "check",
       "title": "The candidate plays the laws",
       "source": "src/sdlc.ts:61",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame"
       },
       "result": {
         "code": "cc378498"
       },
-      "diagnostics": [
-        "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.CandidateRunsOnTheMachine",
       "kind": "check",
       "title": "The candidate runs on the machine",
       "source": "src/sdlc.ts:122",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame"
       },
       "result": {
         "code": "cb6daaa8"
       },
-      "diagnostics": [
-        "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.EngineCandidate",
       "kind": "artifact",
       "title": "The candidate engine",
       "source": "src/sdlc.ts:55",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "out/local/trame-cli.ts"
@@ -16674,9 +16686,7 @@
         "path": "out/local/trame-cli.ts",
         "code": "98ad26fa"
       },
-      "diagnostics": [
-        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.EnginePackagesSafe",
@@ -16720,7 +16730,7 @@
       "kind": "artifact",
       "title": "The graph page",
       "source": "src/sdlc.ts:176",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "trame-page.html",
@@ -16730,9 +16740,7 @@
         "path": "trame-page.html",
         "code": "34b7cf61"
       },
-      "diagnostics": [
-        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.GraphPageOpening",
@@ -16752,16 +16760,14 @@
       "kind": "check",
       "title": "The graph page opens",
       "source": "src/sdlc.ts:250",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame"
       },
       "result": {
         "code": "4a92dae2"
       },
-      "diagnostics": [
-        "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.GraphPageScenarioData",
@@ -16825,7 +16831,7 @@
       "kind": "shipment",
       "title": "The next generation",
       "source": "src/sdlc.ts:296",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "generation"
@@ -17305,15 +17311,7 @@
         ],
         "gaps": []
       },
-      "diagnostics": [
-        "warning: To ship: The candidate engine is unknown",
-        "warning: To ship: The graph page is unknown",
-        "warning: To ship: The page's program is unknown",
-        "warning: To ship: The page is assembled is unknown",
-        "warning: To ship: The candidate plays the laws is unknown",
-        "warning: To ship: The candidate runs on the machine is unknown",
-        "warning: To ship: The graph page opens is unknown"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.OpeningTheGraphPage",
@@ -17382,7 +17380,7 @@
       "kind": "artifact",
       "title": "The page's program",
       "source": "src/sdlc.ts:169",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "out/browser/page-app.ts"
@@ -17391,9 +17389,7 @@
         "path": "out/browser/page-app.ts",
         "code": "7928117f"
       },
-      "diagnostics": [
-        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.SdlcInMemory",
@@ -17412,7 +17408,7 @@
       "kind": "binding",
       "title": "The SDLC on the machine",
       "source": "src/sdlc.ts:144",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "The graph page must be opened as a person opens it: the file exported, in a real browser."
@@ -32328,6 +32324,16 @@
     {
       "from": "releases.G100",
       "to": "releases.G99",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G101",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G101",
+      "to": "releases.G100",
       "kind": "assembledBy"
     },
     {

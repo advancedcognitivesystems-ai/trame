@@ -335,10 +335,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "100",
+        "version": "101",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g100"
+        "at": "../generations/g101"
       }
     },
     {
@@ -397,10 +397,23 @@
       }
     },
     {
+      "id": "releases.R0_4_0",
+      "kind": "release",
+      "title": "Version 0.4.0",
+      "fields": {
+        "owner": "trame",
+        "version": "0.4.0",
+        "date": "2026-11-04",
+        "what": "The library ships its versions through its own graph: NextVersion requires its writers, each held by its examples",
+        "fingerprint": "7519ad6debc3455f",
+        "language": "shared"
+      }
+    },
+    {
       "id": "sdlc.NextVersion",
       "kind": "shipment",
       "title": "The next version",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "version"
@@ -410,7 +423,7 @@
       "id": "sdlc.TheLibrary",
       "kind": "artifact",
       "title": "The library of writers",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "src",
@@ -848,6 +861,16 @@
     },
     {
       "from": "releases.R0_3_0",
+      "to": "product.RunsElsewhere",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_4_0",
+      "to": "product.OneWriterPerPlace",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_4_0",
       "to": "product.RunsElsewhere",
       "kind": "serves"
     },

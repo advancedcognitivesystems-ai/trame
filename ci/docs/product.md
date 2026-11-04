@@ -15,7 +15,7 @@
 A place that runs a shipment (GitHub Actions, a shell, another service tomorrow) is one writer, a syntax element with its examples, written once in this library; projects choose one by naming it as what produces an artefact.
 
 - Owner: trame
-- Served by: [GitHub Actions](github.md#GitHubActions), [npm](npm.md#Npm), [Version 0.1.0](releases.md#R0_1_0), [Version 0.2.0](releases.md#R0_2_0), [Version 0.3.0](releases.md#R0_3_0), [Bash scripts](shell.md#BashScripts), [YAML](yaml.md#Yaml)
+- Served by: [GitHub Actions](github.md#GitHubActions), [npm](npm.md#Npm), [Version 0.1.0](releases.md#R0_1_0), [Version 0.2.0](releases.md#R0_2_0), [Version 0.3.0](releases.md#R0_3_0), [Version 0.4.0](releases.md#R0_4_0), [Bash scripts](shell.md#BashScripts), [YAML](yaml.md#Yaml)
 
 <a id="RunsElsewhere"></a>
 
@@ -26,4 +26,4 @@ A place that runs a shipment (GitHub Actions, a shell, another service tomorrow)
 The file a service of continuous integration or another machine runs is written from the graph, by Trame: it prepares what the shipment's programs need, then runs trame ship, which checks, refuses or deploys as it does here. Nobody writes it by hand, so it never says something the graph does not.
 
 - Owner: trame
-- Served by: [Trame](packages.md#Language), [Version 0.1.0](releases.md#R0_1_0), [Version 0.2.0](releases.md#R0_2_0), [Version 0.3.0](releases.md#R0_3_0)
+- Served by: [Trame](packages.md#Language), [Version 0.1.0](releases.md#R0_1_0), [Version 0.2.0](releases.md#R0_2_0), [Version 0.3.0](releases.md#R0_3_0), [Version 0.4.0](releases.md#R0_4_0)

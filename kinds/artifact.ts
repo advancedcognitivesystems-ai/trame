@@ -50,8 +50,11 @@ export const pathOf = (v: View, g: Graph): string | undefined => {
 /** Whether an artefact is a version of the project itself: all its code (C1). */
 export const isVersion = (v: View): boolean => v.field(ArtifactField.version) === true
 
-/** The nodes of the project itself, its libraries' left out: what a version of it holds. */
-export const ownNodes = (g: Graph): View[] => g.all().nodes().filter((v) => v.library === undefined)
+/**
+ * The nodes of the project itself, its libraries' left out: what a version of it holds. The records of its releases are
+ * left out too: trame release writes each once the version holds, and the version it records is not made of it.
+ */
+export const ownNodes = (g: Graph): View[] => g.all().nodes().filter((v) => v.library === undefined && v.kind !== KindName.release)
 
 /** The fingerprint of an artefact as last built, if it was. */
 export const builtFingerprint = (v: View): string | undefined => latestOf(v, EvidenceSource.built)?.fingerprint

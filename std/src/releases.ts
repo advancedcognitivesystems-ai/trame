@@ -4,7 +4,7 @@
 // release's own record is written after its sources are copied, so it is not in its own copy.
 
 import { release } from "#trame/kinds/release"
-import { CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules } from "./product"
+import { CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold } from "./product"
 
 /**
  * Version 0.1.0
@@ -212,4 +212,17 @@ export const R0_15_0 = release({
   fingerprint: "911af2d98a5ddddd",
   language: "shared",
   serves: [CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules],
+})
+
+/**
+ * Version 0.16.0
+ */
+export const R0_16_0 = release({
+  owner: "trame",
+  version: "0.16.0",
+  date: "2026-11-04",
+  what: "The library ships its versions through its own graph: NextVersion, under VersionMode; the command maker verified by a scenario",
+  fingerprint: "a6bf5318db876e16",
+  language: "shared",
+  serves: [CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
 })

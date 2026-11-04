@@ -25,7 +25,7 @@
   },
   "type": "module",
   "imports": {
-    "#std/*": "./std/releases/0.15.0/src/*.ts",
+    "#std/*": "./std/releases/0.16.0/src/*.ts",
     "#trame/internal": "./trame/internal.ts",
     "#trame/kernel": "./trame/kernel.ts",
     "#trame/kinds/*": "./kinds/*.ts"

@@ -27,7 +27,7 @@ The libraries the project imports: their nodes take part in the graph, their doc
 
 | Library | Modules | Nodes | Open issues |
 |---|---|---|---|
-| [std](../../../std/docs/index.md) | Standard library · Algebra, Standard library · Algorithms, Standard library · ECMAScript, Standard library · Effects, Standard library · HTML and CSS, Standard library · Measures, Standard library · Obligations, Standard library · Packages, Standard library · Design patterns, Standard library · Platform, Standard library · Product, Standard library · Releases, Standard library · Rules, Standard library · Scenarios, Standard library · SDLC, Standard library · System, Standard library · Text, Standard library · Tooling, Standard library · Web | 161 | 1 error · 7 points to watch |
+| [std](../../../std/docs/index.md) | Standard library · Algebra, Standard library · Algorithms, Standard library · ECMAScript, Standard library · Effects, Standard library · HTML and CSS, Standard library · Measures, Standard library · Obligations, Standard library · Packages, Standard library · Design patterns, Standard library · Platform, Standard library · Product, Standard library · Releases, Standard library · Rules, Standard library · Scenarios, Standard library · SDLC, Standard library · System, Standard library · Text, Standard library · Tooling, Standard library · Web | 162 | 1 error · 7 points to watch |
 
 ## Open issues
 

@@ -44,3 +44,16 @@ export const R0_3_0 = release({
   language: "shared",
   serves: [OneWriterPerPlace, RunsElsewhere],
 })
+
+/**
+ * Version 0.4.0
+ */
+export const R0_4_0 = release({
+  owner: "trame",
+  version: "0.4.0",
+  date: "2026-11-04",
+  what: "The library ships its versions through its own graph: NextVersion requires its writers, each held by its examples",
+  fingerprint: "7519ad6debc3455f",
+  language: "shared",
+  serves: [OneWriterPerPlace, RunsElsewhere],
+})

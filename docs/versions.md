@@ -1,8 +1,8 @@
 # Versions
 
-*The releases of the components on 30 October 2026, newest first. A project runs the release its configuration pins.*
+*The releases of the components on 4 November 2026, newest first. A project runs the release its configuration pins.*
 
-> **100 releases of 1 component; 95 releases on a language of their own**
+> **101 releases of 1 component; 95 releases on a language of their own**
 
 ## Trame on the command line
 
@@ -10,6 +10,7 @@ Each release, newest first: what changed, the release that assembled it, and whe
 
 | Release | Released on | What changes | Assembled by | Language |
 |---|---|---|---|---|
+| [Generation 101](releases.md#G101) | 4 November 2026 | A library ships its versions through its own graph: trame release ships the version first and freezes nothing while it does not hold (C1) | [Generation 100](releases.md#G100) | shared |
 | [Generation 100](releases.md#G100) | 3 November 2026 | C1: trame upgrade moves each package of Trame a project references to the newest version its origin holds, and a reference behind is warned; the manifest keeps the lockfile with what it names (port PackageInstalls, npm first) | [Generation 99](releases.md#G99) | shared |
 | [Generation 99](releases.md#G99) | 3 November 2026 | each program assembled has a launcher, what Node.js runs: it leads the names of packages as the engine does (the language, each library as the project reads it), then runs the program; a library published once runs as a peer wherever its program runs | [Generation 98](releases.md#G98) | shared |
 | [Generation 98](releases.md#G98) | 3 November 2026 | the files that run a shipment elsewhere read a project's directories by their real paths, and prepare a package where it is installed | [Generation 97](releases.md#G97) | shared |

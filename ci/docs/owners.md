@@ -4,16 +4,13 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 2 | 16 |
+| trame | 0 | 0 | 0 | 17 |
 
 <a id="trame"></a>
 
 ## trame
 
-| Severity | What | Where | Owner | Consequence |
-|---|---|---|---|---|
-| warning | To ship: The library of writers is unknown | [The next version](sdlc.md#NextVersion) | trame |  |
-| warning | Not built yet: trame ship builds it | [The library of writers](sdlc.md#TheLibrary) | trame |  |
+Nothing to decide or watch.
 
 ### Owns
 
@@ -29,8 +26,9 @@
 | [Version 0.1.0](releases.md#R0_1_0) | Release |  |
 | [Version 0.2.0](releases.md#R0_2_0) | Release |  |
 | [Version 0.3.0](releases.md#R0_3_0) | Release |  |
-| [The next version](sdlc.md#NextVersion) | Shipment | **unknown** |
-| [The library of writers](sdlc.md#TheLibrary) | Artefact | **unknown** |
+| [Version 0.4.0](releases.md#R0_4_0) | Release |  |
+| [The next version](sdlc.md#NextVersion) | Shipment | **held** |
+| [The library of writers](sdlc.md#TheLibrary) | Artefact | **held** |
 | [Bash scripts](shell.md#BashScripts) | Standard |  |
 | [A script of Bash](shell.md#ShellScript) | Syntax element | **held** |
 | [YAML](yaml.md#Yaml) | Standard |  |

@@ -454,10 +454,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "100",
+        "version": "101",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g100"
+        "at": "../generations/g101"
       },
       "diagnostics": []
     },
@@ -527,11 +527,26 @@
       "diagnostics": []
     },
     {
+      "id": "releases.R0_4_0",
+      "kind": "release",
+      "title": "Version 0.4.0",
+      "source": "src/releases.ts:51",
+      "fields": {
+        "owner": "trame",
+        "version": "0.4.0",
+        "date": "2026-11-04",
+        "what": "The library ships its versions through its own graph: NextVersion requires its writers, each held by its examples",
+        "fingerprint": "7519ad6debc3455f",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "sdlc.NextVersion",
       "kind": "shipment",
       "title": "The next version",
       "source": "src/sdlc.ts:25",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "version"
@@ -540,16 +555,14 @@
         "derived": [],
         "gaps": []
       },
-      "diagnostics": [
-        "warning: To ship: The library of writers is unknown"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.TheLibrary",
       "kind": "artifact",
       "title": "The library of writers",
       "source": "src/sdlc.ts:18",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "src",
@@ -557,11 +570,9 @@
       },
       "result": {
         "path": "src",
-        "code": "2eac90bd"
+        "code": "6bbac234"
       },
-      "diagnostics": [
-        "warning: Not built yet: trame ship builds it"
-      ]
+      "diagnostics": []
     },
     {
       "id": "shell.BashScripts",
@@ -1193,6 +1204,16 @@
     },
     {
       "from": "releases.R0_3_0",
+      "to": "product.RunsElsewhere",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_4_0",
+      "to": "product.OneWriterPerPlace",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_4_0",
       "to": "product.RunsElsewhere",
       "kind": "serves"
     },

@@ -134,6 +134,22 @@ A package's source says which versions it holds; npm's words to install what a p
 - Released by: trame
 - Serves: [A published value is cited, not copied](product.md#CitedNotCopied), [Known designs, named](product.md#KnownDesigns), [Ports of the platform, realized once](product.md#RealizedOnce), [Shared operations instead of literals](product.md#SharedOperations), [Rules applied, not written again](product.md#SharedRules)
 
+<a id="R0_16_0"></a>
+
+### Version 0.16.0
+
+`R0_16_0` · `src/releases.ts:220`
+
+The library ships its versions through its own graph: NextVersion, under VersionMode; the command maker verified by a scenario
+
+- Version: `0.16.0`
+- Released on: 4 November 2026
+- Fingerprint: `a6bf5318db876e16`
+- Language: the repository's, shared
+
+- Released by: trame
+- Serves: [A published value is cited, not copied](product.md#CitedNotCopied), [Known designs, named](product.md#KnownDesigns), [Ports of the platform, realized once](product.md#RealizedOnce), [Shared operations instead of literals](product.md#SharedOperations), [Rules applied, not written again](product.md#SharedRules), [Versions that hold](product.md#VersionsThatHold)
+
 <a id="R0_2_0"></a>
 
 ### Version 0.2.0
