@@ -1498,3 +1498,18 @@ export const G101 = release({
   archive: "9e3693eedd0bd609",
   assembledBy: G100,
 })
+
+/**
+ * Generation 102
+ */
+export const G102 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g102",
+  date: "2026-11-04",
+  what: "Trame on std 0.16.0; the records of a library's releases are not part of what a version holds",
+  fingerprint: "0331f6a9b921c466",
+  language: "shared",
+  archive: "549bac6ef9c0c701",
+  assembledBy: G101,
+})
