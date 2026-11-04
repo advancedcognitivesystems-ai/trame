@@ -4384,10 +4384,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "geometry",
-        "version": "0.1.0",
+        "version": "0.2.0",
         "joins": "library",
         "from": "path",
-        "at": "../../libs/geometry/releases/0.1.0"
+        "at": "../../libs/geometry/releases/0.2.0"
       },
       "diagnostics": []
     },

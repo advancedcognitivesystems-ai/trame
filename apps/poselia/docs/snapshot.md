@@ -830,10 +830,10 @@ Package · `Geometry`
 
 - Owner: ghalaax
 - Name: geometry
-- Version: 0.1.0
+- Version: 0.2.0
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: ../../libs/geometry/releases/0.1.0
+- Its path: ../../libs/geometry/releases/0.2.0
 - Serves: Practise yoga on one's own, guided
 
 ### Trame

@@ -1,0 +1,25 @@
+[
+  {
+    "node": "sdlc.NextVersion",
+    "at": "2026-11-04",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "7074b77f",
+    "url": "evidence/shipments/NextVersion-2026-11-04-7074b77f.json",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "3a3a649e98b8e9286787bdae94a923fe6968aa47dbd69cbd2ba0826ed10d05b7"
+  },
+  {
+    "node": "sdlc.TheLibrary",
+    "at": "2026-11-04",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "fe4a1db271b50918ff66d8adf796cd983ed6c019f51d27a13f47285aa71e8d36",
+    "code": "0afb13b4",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "22c1402e36086e44",
+    "seal": "286c2c1d9193280ad27ab8aa2ea35104024acf017bf0e6e527453b42eb0233b3"
+  }
+]

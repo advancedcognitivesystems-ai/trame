@@ -18,3 +18,16 @@ export const R0_1_0 = release({
   language: "shared",
   serves: [GeometryWrittenOnce],
 })
+
+/**
+ * Version 0.2.0
+ */
+export const R0_2_0 = release({
+  owner: "ghalaax",
+  version: "0.2.0",
+  date: "2026-11-04",
+  what: "On g101 and std 0.16.0; the library ships its versions through its own graph: NextVersion, its decisions applied and its packages safe",
+  fingerprint: "541c5d013c8f9a50",
+  language: "shared",
+  serves: [GeometryWrittenOnce],
+})

@@ -1,0 +1,50 @@
+{
+  "shipment": "sdlc.NextVersion",
+  "title": "The next version",
+  "target": "version",
+  "at": "2026-11-04",
+  "by": "claude",
+  "signature": "attribution",
+  "artifacts": [
+    {
+      "node": "sdlc.TheLibrary",
+      "path": "src",
+      "fingerprint": "fe4a1db271b50918ff66d8adf796cd983ed6c019f51d27a13f47285aa71e8d36"
+    }
+  ],
+  "foundations": {
+    "problems": 0
+  },
+  "obligations": [
+    {
+      "node": "sdlc.TheLibrary",
+      "kind": "artifact",
+      "status": "held",
+      "owner": "ghalaax",
+      "evidence": [
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-04",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "fe4a1db271b50918ff66d8adf796cd983ed6c019f51d27a13f47285aa71e8d36",
+          "code": "0afb13b4",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "22c1402e36086e44",
+          "seal": "286c2c1d9193280ad27ab8aa2ea35104024acf017bf0e6e527453b42eb0233b3"
+        }
+      ]
+    },
+    {
+      "node": "vectors.VectorsAsTriples",
+      "kind": "adr",
+      "status": "held",
+      "owner": "ghalaax",
+      "evidence": [],
+      "obligation": "sdlc.DecisionsApplied",
+      "via": "angles.Angle"
+    }
+  ],
+  "deployed": []
+}

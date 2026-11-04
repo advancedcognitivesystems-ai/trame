@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 3 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 4 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Geometry · Angles
 
@@ -29,7 +29,7 @@ Package · `Language`
 
 - Owner: ghalaax
 - Name: trame
-- Version: 93
+- Version: 101
 - How it joins the graph: language
 - Where it comes from: registry
 - Serves: Geometry written once
@@ -40,7 +40,7 @@ Package · `StandardLibrary`
 
 - Owner: ghalaax
 - Name: std
-- Version: 0.12.0
+- Version: 0.16.0
 - How it joins the graph: library
 - Where it comes from: registry
 - Serves: Geometry written once
@@ -66,6 +66,58 @@ Release · `R0_1_0`
 - Fingerprint: 669d0698ae31c1c1
 - Language: shared
 - Serves: Geometry written once
+
+### Version 0.2.0
+
+Release · `R0_2_0`
+
+- Released by: ghalaax
+- Version: 0.2.0
+- Released on: 2026-11-04
+- What changes: On g101 and std 0.16.0; the library ships its versions through its own graph: NextVersion, its decisions applied and its packages safe
+- Fingerprint: 541c5d013c8f9a50
+- Language: shared
+- Serves: Geometry written once
+
+## Geometry · SDLC
+
+### The library of geometry
+
+Artefact · `TheLibrary` · **unknown**
+
+- Owner: ghalaax
+- Path: src
+- A version of the project: true
+
+### The next version
+
+Shipment · `NextVersion` · **unknown**
+
+- Owner: ghalaax
+- Target: version
+- Ships: The library of geometry
+- Follows the policy: How a version is made
+
+### Its decisions applied
+
+Obligation · `DecisionsApplied`
+
+- Owner: ghalaax
+- Serves: Geometry written once
+
+### Its packages safe
+
+Obligation · `PackagesSafe`
+
+- Owner: ghalaax
+- Serves: Geometry written once
+
+### How a version is made
+
+Policy · `VersionMode`
+
+- Owner: ghalaax
+- Its obligations: Its decisions applied, Its packages safe
 
 ## Geometry · Vectors
 

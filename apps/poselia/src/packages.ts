@@ -35,6 +35,6 @@ export const ContinuousIntegration = pkg({
  * The vectors and the angles the body computes with.
  */
 export const Geometry = pkg({
-  owner: "ghalaax", packageName: "geometry", version: "0.1.0", joins: "library", from: "path", at: "../../libs/geometry/releases/0.1.0",
+  owner: "ghalaax", packageName: "geometry", version: "0.2.0", joins: "library", from: "path", at: "../../libs/geometry/releases/0.2.0",
   serves: [PractiseGuided],
 })

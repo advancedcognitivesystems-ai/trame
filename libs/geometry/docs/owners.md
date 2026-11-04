@@ -1,16 +1,19 @@
 # Owners
 
-*What each person must decide, settle or watch on 3 November 2026, and what they own.*
+*What each person must decide, settle or watch on 4 November 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| ghalaax | 0 | 0 | 0 | 10 |
+| ghalaax | 0 | 0 | 2 | 16 |
 
 <a id="ghalaax"></a>
 
 ## ghalaax
 
-Nothing to decide or watch.
+| Severity | What | Where | Owner | Consequence |
+|---|---|---|---|---|
+| warning | To ship: The library of geometry is unknown | [The next version](sdlc.md#NextVersion) | ghalaax |  |
+| warning | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The library of geometry](sdlc.md#TheLibrary) | ghalaax |  |
 
 ### Owns
 
@@ -22,6 +25,12 @@ Nothing to decide or watch.
 | [The standard library](packages.md#StandardLibrary) | Package |  |
 | [Geometry written once](product.md#GeometryWrittenOnce) | Goal |  |
 | [Version 0.1.0](releases.md#R0_1_0) | Release |  |
+| [Version 0.2.0](releases.md#R0_2_0) | Release |  |
+| [Its decisions applied](sdlc.md#DecisionsApplied) | Obligation |  |
+| [The next version](sdlc.md#NextVersion) | Shipment | **unknown** |
+| [Its packages safe](sdlc.md#PackagesSafe) | Obligation |  |
+| [The library of geometry](sdlc.md#TheLibrary) | Artefact | **unknown** |
+| [How a version is made](sdlc.md#VersionMode) | Policy |  |
 | [The axes](vectors.md#Axes) | Decision |  |
 | [The tolerance](vectors.md#Tolerance) | Decision |  |
 | [Vectors](vectors.md#Vectors) | Algebraic structure | **held** |

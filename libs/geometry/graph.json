@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-03",
+  "generated": "2026-11-04",
   "nodes": [
     {
       "id": "angles.Angle",
@@ -37,7 +37,7 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "trame",
-        "version": "93",
+        "version": "101",
         "joins": "language",
         "from": "registry"
       },
@@ -51,7 +51,7 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "std",
-        "version": "0.12.0",
+        "version": "0.16.0",
         "joins": "library",
         "from": "registry"
       },
@@ -79,6 +79,94 @@
         "what": "Vectors in three dimensions with their laws, the quantity Angle (radian, degree, turn), the axes and the tolerance",
         "fingerprint": "669d0698ae31c1c1",
         "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "releases.R0_2_0",
+      "kind": "release",
+      "title": "Version 0.2.0",
+      "source": "src/releases.ts:25",
+      "fields": {
+        "owner": "ghalaax",
+        "version": "0.2.0",
+        "date": "2026-11-04",
+        "what": "On g101 and std 0.16.0; the library ships its versions through its own graph: NextVersion, its decisions applied and its packages safe",
+        "fingerprint": "541c5d013c8f9a50",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.DecisionsApplied",
+      "kind": "obligation",
+      "title": "Its decisions applied",
+      "source": "src/sdlc.ts:25",
+      "fields": {
+        "owner": "ghalaax"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.NextVersion",
+      "kind": "shipment",
+      "title": "The next version",
+      "source": "src/sdlc.ts:44",
+      "status": "unknown",
+      "fields": {
+        "owner": "ghalaax",
+        "target": "version"
+      },
+      "result": {
+        "derived": [
+          {
+            "node": "vectors.VectorsAsTriples",
+            "via": "angles.Angle",
+            "obligation": "sdlc.DecisionsApplied"
+          }
+        ],
+        "gaps": []
+      },
+      "diagnostics": [
+        "warning: To ship: The library of geometry is unknown"
+      ]
+    },
+    {
+      "id": "sdlc.PackagesSafe",
+      "kind": "obligation",
+      "title": "Its packages safe",
+      "source": "src/sdlc.ts:31",
+      "fields": {
+        "owner": "ghalaax"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.TheLibrary",
+      "kind": "artifact",
+      "title": "The library of geometry",
+      "source": "src/sdlc.ts:19",
+      "status": "unknown",
+      "fields": {
+        "owner": "ghalaax",
+        "path": "src",
+        "version": true
+      },
+      "result": {
+        "path": "src",
+        "code": "129af004"
+      },
+      "diagnostics": [
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+      ]
+    },
+    {
+      "id": "sdlc.VersionMode",
+      "kind": "policy",
+      "title": "How a version is made",
+      "source": "src/sdlc.ts:37",
+      "fields": {
+        "owner": "ghalaax"
       },
       "diagnostics": []
     },
@@ -265,6 +353,51 @@
       "from": "releases.R0_1_0",
       "to": "product.GeometryWrittenOnce",
       "kind": "serves"
+    },
+    {
+      "from": "releases.R0_2_0",
+      "to": "product.GeometryWrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "sdlc.DecisionsApplied",
+      "to": "std/obligations.Applied",
+      "kind": "applies"
+    },
+    {
+      "from": "sdlc.DecisionsApplied",
+      "to": "product.GeometryWrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "sdlc.NextVersion",
+      "to": "sdlc.TheLibrary",
+      "kind": "ships"
+    },
+    {
+      "from": "sdlc.NextVersion",
+      "to": "sdlc.VersionMode",
+      "kind": "policy"
+    },
+    {
+      "from": "sdlc.PackagesSafe",
+      "to": "std/obligations.Safe",
+      "kind": "applies"
+    },
+    {
+      "from": "sdlc.PackagesSafe",
+      "to": "product.GeometryWrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "sdlc.VersionMode",
+      "to": "sdlc.DecisionsApplied",
+      "kind": "obligations"
+    },
+    {
+      "from": "sdlc.VersionMode",
+      "to": "sdlc.PackagesSafe",
+      "kind": "obligations"
     },
     {
       "from": "vectors.Vectors",
