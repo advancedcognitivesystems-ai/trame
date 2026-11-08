@@ -411,13 +411,19 @@ parameters, typed by the family's rule: `Verified` (each scenario that verifies 
 named that no scenario verifies is a gap), `Served` (from what the reached code serves, up to the goals, then every
 requirement that refines them, at any depth), `Applied` (each ADR a reached node applies), `Reviewed` (each review of the
 data carried; data nothing reviews is a gap), `Checked` (the checks of the shipped artefacts a program runs, or all of
-them, by hand too), `Ruled` (the project's rules), `Safe` (the packages the reached code uses). The obligation says
+them, by hand too), `Ruled` (the project's rules), `Safe` (the packages the reached code uses), `Preceded` (the
+shipments named that ship an artefact this one ships, each to have shipped it first, the same file: a public version
+after its preview, since g103; an artefact none of them ships is a gap). The obligation says
 what a gap weighs: an error is an error of the graph (it stops what assembles and delivers: a gap is proof of a hole,
 which the graph must close), a warning is said, for a project on its way there. A **policy** groups the obligations of a way of working, one per
 family, and a shipment follows one. Every shipment, whatever its policy, also proves the **foundations**, which no
 policy can choose away: no literal in a body, no value nobody decided, no error of the graph (the errors and blockings
 not raised by a kind, in the project and its unfrozen libraries). The pipeline shows them as its first proof, then why
-each step is there (the obligation and the reached node that brought it in, or the shipment itself); `trame ship`
+each step is there (the obligation and the reached node that brought it in, or the shipment itself), and which
+artefacts are promoted rather than built: an artefact a shipment that precedes shipped first is taken as it is, the very
+file, once `trame ship` has checked it is the one last built, and each deployment records on its artefacts which
+shipment shipped them, as which file (C2: build once, then promote; rebuilding and comparing would prove nothing about
+what people saw); `trame ship`
 refuses on the foundations before anything runs, then on any obligation that does not hold and any gap that blocks.
 
 Since g69, what verifies code is backed by what runs it, and every piece of code is verified somewhere. A scenario may

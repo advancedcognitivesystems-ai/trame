@@ -1,0 +1,11 @@
+{
+  "imports": {
+    "#std/*": "./.trame/std/src/*.ts",
+    "#trame/kernel": "./.trame/trame/trame/kernel.ts",
+    "#trame/kinds/*": "./.trame/trame/kinds/*.ts"
+  },
+  "type": "module",
+  "dependencies": {
+    "playwright": "1.56.0"
+  }
+}

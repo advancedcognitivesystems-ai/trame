@@ -116,7 +116,7 @@ How a version becomes available is declared in the graph, with the kinds `role`,
 - A `review` names what must be reviewed (a dataset's rows in each language, or a node) and by which role; a role with
   `notAuthor` never reviews its own work.
 - An `obligation` applies one family of `#std/obligations` (`Verified`, `Served`, `Applied`, `Reviewed`, `Checked`,
-  `Ruled`, `Safe`) with its `params` (typed by the family's rule) and says what a gap weighs (`gaps: Severity.error` is
+  `Ruled`, `Safe`, `Preceded`) with its `params` (typed by the family's rule; a node where it reads one) and says what a gap weighs (`gaps: Severity.error` is
   an error of the graph, `Severity.warning` says it); a `policy` groups the obligations of a way of working, one per
   family.
 - A `shipment` names a target, what it `ships`, the `policy` it follows, the entry points that `deploys` it, and the
@@ -124,7 +124,9 @@ How a version becomes available is declared in the graph, with the kinds `role`,
   what produces them, what its programs wire; a library frozen at a version is covered by its release, which its own shipment of a version proved): keep
   `requires` for what derivation cannot see, and read `docs/pipelines.md` to see why each step is there. A decision
   the shipment itself applies is not one of its obligations (it is their evidence). Every shipment also proves the
-  foundations (no literal, no value nobody decided, no error of the graph), which no policy can drop.
+  foundations (no literal, no value nobody decided, no error of the graph), which no policy can drop. A stage that
+  follows others applies `Preceded` (`params: { by: [Preview] }`): `trame ship` promotes what they shipped first, the
+  same file, never builds it again (g103).
 - **Evidence expires with the code** (g70): an artefact holds while the code it was built from (its producer, wired
   where it ships; what it carries) is the code as it is, a check while its artefacts do and its program is the one that
   ran. After changing that code, ship again; evidence recorded before g70 has no code and is taken as stale.

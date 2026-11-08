@@ -3,5 +3,5 @@
 
 import { lead } from "../../trame/leading"
 
-lead({"language":{"#trame/kernel":"../../trame/kernel.ts","#trame/kinds/*":"../../kinds/*.ts"},"libraries":{"std":"../../std/releases/0.16.0/src"},"within":["../..","../../std/releases/0.16.0"],"names":{"imports":"#","separator":"/","pattern":"*","extension":".ts"}}, import.meta.url)
+lead({"language":{"#trame/kernel":"../../trame/kernel.ts","#trame/kinds/*":"../../kinds/*.ts"},"libraries":{"std":"../../std/releases/0.17.0/src"},"within":["../..","../../std/releases/0.17.0"],"names":{"imports":"#","separator":"/","pattern":"*","extension":".ts"}}, import.meta.url)
 await import("./page-app.ts")

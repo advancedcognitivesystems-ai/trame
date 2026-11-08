@@ -109,7 +109,7 @@ A project declares how a version of it ships (ADR "A version ships through the g
 | `check` | what a scenario in memory cannot check: run by a program of the SDLC (`runs`) or made by hand (`steps`), signed by a role (`by`), on artefacts (`on`); the code it proves (`verifies`): what its program runs on a machine, or what its artefacts carry | `check`: passed or failed, for the artefacts as last built from the code as it is, by its program as it is (g70) |
 | `review` | what must be reviewed (`of`: the rows of a dataset in each language, or a node as written), by which role, by how many of its people (`approvals`, one) | `review` on the subject: each row and language, tied to the fingerprint of what was seen; each person's latest counts, a change asked holds it back |
 | `shipment` | a target, what it `ships`, the `policy` it follows, what it also `requires` that derivation cannot see, the entry points that `deploys` it, the `environment` its programs are assembled for | `shipped`, with the dossier |
-| `obligation` | one family of `#std/obligations` it `applies` (Verified, Served, Applied, Reviewed, Checked, Ruled, Safe), its `params` (typed by the family's rule), what a gap weighs (`gaps`: `Severity.error` keeps the shipment, `Severity.warning` says it), why (`serves`) | — |
+| `obligation` | one family of `#std/obligations` it `applies` (Verified, Served, Applied, Reviewed, Checked, Ruled, Safe, Preceded), its `params` (typed by the family's rule; a node of the graph where it reads one: `by: [Preview]`), what a gap weighs (`gaps`: `Severity.error` keeps the shipment, `Severity.warning` says it), why (`serves`) | — |
 | `policy` | a way of working: its `obligations`, one per family | — |
 
 What a shipment must prove is derived, not listed (g68): its policy's obligations read what it reaches (the artefacts
@@ -120,7 +120,12 @@ obligations: the shipment is its evidence, and each would wait for the other. Do
 `docs/pipelines.md` shows why each step is there. Every shipment also proves the **foundations**, which no policy
 chooses: no literal in a body, no value nobody decided, no error of the graph; `trame ship` refuses on them first. A
 gap the obligation weighs as an error is an error of the graph: it stops what assembles and delivers, as any error does
-(an obligation unknown, evidence awaited, only keeps the shipment). A new family is a requirement of
+(an obligation unknown, evidence awaited, only keeps the shipment). A shipment may follow others (C2, g103): an
+obligation of the family `Preceded` names them (`params: { by: [Preview] }`, several if need be), and each one that
+ships an artefact the shipment ships must have shipped it first, the same file as it was last built; an artefact none of
+them ships is a gap. `trame ship` promotes such an artefact instead of building it again (the file as it is must be the
+one last built, which they shipped), and once deployed records on each artefact which shipment shipped it, as which
+file. Only a deployment recorded in the repository counts for now: a stage shipped on GitHub comes back with D2. A new family is a requirement of
 `#std/obligations` whose rule is `(sketch, reach, params) => { obliged, gaps }`, with acceptance criteria.
 
 `trame ship <shipment> --by <name>` produces the artefacts (a delivery is delivered, an entry point run, a component
@@ -401,6 +406,10 @@ elements), a port answered differently in several environments is answered as in
 - A project run from the registry (geometry) keeps the language its generation was published with: a change of a kind
   reaches it only with the next generation published, while the projects that pin a generation by its path read the
   language as it is (the record of a release left out of a version reached std and ci at once, geometry with g102).
+- A scenario that ships for real in memory answers each program the shipment starts: one answer per check a program
+  runs and per entry point that deploys (`processLog.answer`), or the scenario fails on the first one left unanswered.
+- An obligation whose `params` name a node (`by: [Preview]`) is declared after that node in its module, as a
+  scenario's `deps`: the module reads them when it loads.
 - A release holds no manifest (g96): in its library, the library's says it is made of ES modules and where the
   language is; published, the registry gives it one that says only the first, and its reader leads the language.
 - A published declaration the language changes the form of (a type renamed, a rule rewritten as a body) is an error
