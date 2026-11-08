@@ -57,11 +57,11 @@ flowchart TB
 
 |  | Stage | Step | Run by | Why | Status | Latest evidence |
 |---|---|---|---|---|---|---|
-| 1 | produce | [Poselia's page](sdlc.md#PageFile) · `dist/poselia.html` | [Poselia's page](app.md#PoseliaPage) | — | **held** | 4 November 2026 by claude  |
-| 2 | check | [The page opens](sdlc.md#PageOpens) | [Open the page](sdlc.md#OpenThePage) | — | **held** | passed, 4 November 2026 by claude  |
+| 1 | produce | [Poselia's page](sdlc.md#PageFile) · `dist/poselia.html` | [Poselia's page](app.md#PoseliaPage) | — | **held** | 8 November 2026 by claude  |
+| 2 | check | [The page opens](sdlc.md#PageOpens) | [Open the page](sdlc.md#OpenThePage) | — | **held** | passed, 8 November 2026 by claude  |
 | 3 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
-| 4 | prove | [Poselia's page](sdlc.md#PageFile) | — | the shipment | **held** | 4 November 2026 by claude  |
-| 5 | prove | [The page opens](sdlc.md#PageOpens) | [Open the page](sdlc.md#OpenThePage) | [The code shown is verified, a gap said](sdlc.md#CodeVerifiedSaid) via [The browser's stage](stage.md#BrowserStage) | **held** | passed, 4 November 2026 by claude  |
+| 4 | prove | [Poselia's page](sdlc.md#PageFile) | — | the shipment | **held** | 8 November 2026 by claude  |
+| 5 | prove | [The page opens](sdlc.md#PageOpens) | [Open the page](sdlc.md#OpenThePage) | [The code shown is verified, a gap said](sdlc.md#CodeVerifiedSaid) via [The browser's stage](stage.md#BrowserStage) | **held** | passed, 8 November 2026 by claude  |
 | 6 | prove | [The language of the home page](scenarios.md#HomeLanguage) | — | [The code shown is verified, a gap said](sdlc.md#CodeVerifiedSaid) via [The content the app carries](app.md#CarriedContent) | **held** |  |
 | 7 | prove | [The body stays on the floor](scenarios.md#BodyStaysOnTheFloor) | — | [The code shown is verified, a gap said](sdlc.md#CodeVerifiedSaid) via [The space of the mat](body.md#MatSpace) | **held** |  |
 | 8 | prove | [Holding the poses](scenarios.md#HoldThePoses) | — | [The code shown is verified, a gap said](sdlc.md#CodeVerifiedSaid) via [The voice the person chose](settings.md#VoiceChoice) | **held** |  |
@@ -75,8 +75,8 @@ flowchart TB
 | 16 | prove | [three.js, its types](stage.md#ThreeTypes) | — | [The packages are safe](sdlc.md#PackagesSafe) via [The browser's stage](stage.md#BrowserStage) | **held** | 29 October 2026 by   |
 | 17 | prove | [Each decision of architecture serves the product](sdlc.md#AdrsServeTheProduct) | — | [The rules of the app hold](sdlc.md#RulesHeld) | **held** |  |
 | 18 | prove | [Code serves the product](sdlc.md#CodeServesTheProduct) | — | [The rules of the app hold](sdlc.md#RulesHeld) | **held** |  |
-| 19 | deploy | [Place the page](sdlc.md#PlaceThePage) | itself | — | **held** | 4 November 2026 by claude  |
-| 20 | record | [A preview](sdlc.md#Preview) | — | — | **held** | 4 November 2026 by claude `evidence/shipments/Preview-2026-11-04-71a6008f.json` |
+| 19 | deploy | [Place the page](sdlc.md#PlaceThePage) | itself | — | **held** | 8 November 2026 by claude  |
+| 20 | record | [A preview](sdlc.md#Preview) | — | — | **held** | 8 November 2026 by claude `evidence/shipments/Preview-2026-11-08-aef38bfa.json` |
 
 `trame ship Preview --by <name>`
 
@@ -91,122 +91,119 @@ For the target public; its programs are assembled for [A machine](sdlc.md#Machin
 ```mermaid
 flowchart TB
   n0["Poselia's page<br/><small>Artefact</small>"]:::held
-  n1["Poselia's page<br/><small>Delivery</small>"]:::neutral
-  n2["The page opens<br/><small>Check</small>"]:::held
-  n3["Open the page<br/><small>Entry point</small>"]:::held
-  n4["A preview<br/><small>Shipment</small>"]:::held
-  n5["On a phone<br/><small>Check</small>"]:::unknown
-  n6["The language of the home page<br/><small>Scenario</small>"]:::held
-  n7["The body stays on the floor<br/><small>Scenario</small>"]:::held
-  n8["Holding the poses<br/><small>Scenario</small>"]:::held
-  n9["The person's breath and voice<br/><small>Scenario</small>"]:::held
-  n10["Learning a sequence<br/><small>Scenario</small>"]:::held
-  n11["Sequences drawn by lot<br/><small>Scenario</small>"]:::held
-  n12["A practice follows the breath<br/><small>Scenario</small>"]:::held
-  n13["The page is opened as a person would<br/><small>Scenario</small>"]:::held
-  n14["The page is placed where it is served<br/><small>Scenario</small>"]:::held
-  n15["The content, reviewed<br/><small>Review</small>"]:::unknown
-  n16["A page first, the phones after<br/><small>Architecture decision</small>"]:::held
-  n17["The content is data, behind a port<br/><small>Architecture decision</small>"]:::unknown
-  n18["The person's language, among those offered<br/><small>Architecture decision</small>"]:::held
-  n19["The breath is the clock<br/><small>Architecture decision</small>"]:::held
-  n20["Said aloud, the screen awake<br/><small>Architecture decision</small>"]:::unknown
-  n21["three.js<br/><small>Package</small>"]:::held
-  n22["three.js, its types<br/><small>Package</small>"]:::held
-  n23["The angle at a joint<br/><small>Requirement</small>"]:::held
-  n24["The body between two poses<br/><small>Requirement</small>"]:::held
-  n25["A foot on its way<br/><small>Requirement</small>"]:::held
-  n26["A hand on its way<br/><small>Requirement</small>"]:::held
-  n27["A pose ready to move<br/><small>Requirement</small>"]:::held
-  n28["Legs apart<br/><small>Requirement</small>"]:::held
-  n29["Every limb reaches<br/><small>Requirement</small>"]:::held
-  n30["A leg on its foot<br/><small>Requirement</small>"]:::held
-  n31["A pose rests on what it names<br/><small>Requirement</small>"]:::held
-  n32["The legs in front and behind<br/><small>Requirement</small>"]:::held
-  n33["Where a spot is<br/><small>Requirement</small>"]:::held
-  n34["A leg that steps<br/><small>Requirement</small>"]:::held
-  n35["The heights of the body's surface<br/><small>Requirement</small>"]:::held
-  n36["The trunk from its angles<br/><small>Requirement</small>"]:::held
-  n37["A limb reaches its end<br/><small>Requirement</small>"]:::held
-  n38["Rising on a breath in<br/><small>Requirement</small>"]:::held
-  n39["Where the leading leg goes<br/><small>Requirement</small>"]:::held
-  n40["A sequence that makes sense<br/><small>Requirement</small>"]:::held
-  n41["How long words take to say<br/><small>Requirement</small>"]:::held
-  n42["A landmark on the body<br/><small>Requirement</small>"]:::held
-  n43["The language of the app<br/><small>Requirement</small>"]:::held
-  n44["Breaths to say a cue<br/><small>Requirement</small>"]:::held
-  n45["A movement goes as a breath goes<br/><small>Requirement</small>"]:::held
-  n46["A hold of whole breaths<br/><small>Requirement</small>"]:::held
-  n47["How full the lungs are<br/><small>Requirement</small>"]:::held
-  n48["Where a practice is<br/><small>Requirement</small>"]:::held
-  n49["The breath of a moment<br/><small>Requirement</small>"]:::held
-  n50["A phase set by the person<br/><small>Requirement</small>"]:::held
-  n51["A breath read back<br/><small>Requirement</small>"]:::held
-  n52["A breath measured by tapping<br/><small>Requirement</small>"]:::held
-  n53["Each decision of architecture serves the product<br/><small>Architecture rule</small>"]:::held
-  n54["Code serves the product<br/><small>Architecture rule</small>"]:::held
-  n55["Place the page<br/><small>Entry point</small>"]:::held
-  n56["A public version<br/><small>Shipment</small>"]:::unknown
-  n24 -->|Depends on| n36
-  n24 -->|Depends on| n34
-  n24 -->|Depends on| n25
-  n24 -->|Depends on| n30
-  n24 -->|Depends on| n26
-  n24 -->|Depends on| n37
-  n27 -->|Depends on| n36
-  n29 -->|Depends on| n27
-  n29 -->|Depends on| n24
-  n30 -->|Depends on| n37
-  n31 -->|Depends on| n27
-  n31 -->|Depends on| n24
-  n31 -->|Depends on| n35
-  n34 -->|Depends on| n37
-  n38 -->|Depends on| n27
-  n38 -->|Depends on| n24
-  n42 -->|Depends on| n33
-  n42 -->|Depends on| n23
-  n44 -->|Depends on| n41
-  n19 -->|Applied by| n49
-  n19 -->|Applied by| n46
-  n18 -->|Applied by| n43
-  n16 -->|Applied by| n1
-  n16 -->|Applied by| n2
-  n7 -->|Verifies| n24
-  n7 -->|Verifies| n35
-  n7 -->|Verifies| n34
-  n7 -->|Verifies| n30
-  n7 -->|Verifies| n26
-  n7 -->|Verifies| n25
-  n7 -->|Verifies| n27
-  n7 -->|Verifies| n36
-  n7 -->|Verifies| n37
-  n7 -->|Depends on| n35
-  n11 -->|Verifies| n40
-  n11 -->|Verifies| n39
-  n11 -->|Verifies| n38
-  n11 -->|Depends on| n40
-  n11 -->|Depends on| n35
-  n8 -->|Verifies| n46
-  n8 -->|Verifies| n44
-  n10 -->|Verifies| n42
-  n9 -->|Verifies| n52
-  n9 -->|Verifies| n50
-  n5 -->|Checks| n0
-  n13 -->|Verifies| n3
-  n13 -->|Depends on| n3
+  n1["The page opens<br/><small>Check</small>"]:::held
+  n2["Open the page<br/><small>Entry point</small>"]:::held
+  n3["A preview<br/><small>Shipment</small>"]:::held
+  n4["On a phone<br/><small>Check</small>"]:::unknown
+  n5["The language of the home page<br/><small>Scenario</small>"]:::held
+  n6["The body stays on the floor<br/><small>Scenario</small>"]:::held
+  n7["Holding the poses<br/><small>Scenario</small>"]:::held
+  n8["The person's breath and voice<br/><small>Scenario</small>"]:::held
+  n9["Learning a sequence<br/><small>Scenario</small>"]:::held
+  n10["Sequences drawn by lot<br/><small>Scenario</small>"]:::held
+  n11["A practice follows the breath<br/><small>Scenario</small>"]:::held
+  n12["The page is opened as a person would<br/><small>Scenario</small>"]:::held
+  n13["The page is placed where it is served<br/><small>Scenario</small>"]:::held
+  n14["The content, reviewed<br/><small>Review</small>"]:::unknown
+  n15["A page first, the phones after<br/><small>Architecture decision</small>"]:::held
+  n16["The content is data, behind a port<br/><small>Architecture decision</small>"]:::unknown
+  n17["The person's language, among those offered<br/><small>Architecture decision</small>"]:::held
+  n18["The breath is the clock<br/><small>Architecture decision</small>"]:::held
+  n19["Said aloud, the screen awake<br/><small>Architecture decision</small>"]:::unknown
+  n20["three.js<br/><small>Package</small>"]:::held
+  n21["three.js, its types<br/><small>Package</small>"]:::held
+  n22["The angle at a joint<br/><small>Requirement</small>"]:::held
+  n23["The body between two poses<br/><small>Requirement</small>"]:::held
+  n24["A foot on its way<br/><small>Requirement</small>"]:::held
+  n25["A hand on its way<br/><small>Requirement</small>"]:::held
+  n26["A pose ready to move<br/><small>Requirement</small>"]:::held
+  n27["Legs apart<br/><small>Requirement</small>"]:::held
+  n28["Every limb reaches<br/><small>Requirement</small>"]:::held
+  n29["A leg on its foot<br/><small>Requirement</small>"]:::held
+  n30["A pose rests on what it names<br/><small>Requirement</small>"]:::held
+  n31["The legs in front and behind<br/><small>Requirement</small>"]:::held
+  n32["Where a spot is<br/><small>Requirement</small>"]:::held
+  n33["A leg that steps<br/><small>Requirement</small>"]:::held
+  n34["The heights of the body's surface<br/><small>Requirement</small>"]:::held
+  n35["The trunk from its angles<br/><small>Requirement</small>"]:::held
+  n36["A limb reaches its end<br/><small>Requirement</small>"]:::held
+  n37["Rising on a breath in<br/><small>Requirement</small>"]:::held
+  n38["Where the leading leg goes<br/><small>Requirement</small>"]:::held
+  n39["A sequence that makes sense<br/><small>Requirement</small>"]:::held
+  n40["How long words take to say<br/><small>Requirement</small>"]:::held
+  n41["A landmark on the body<br/><small>Requirement</small>"]:::held
+  n42["The language of the app<br/><small>Requirement</small>"]:::held
+  n43["Breaths to say a cue<br/><small>Requirement</small>"]:::held
+  n44["A movement goes as a breath goes<br/><small>Requirement</small>"]:::held
+  n45["A hold of whole breaths<br/><small>Requirement</small>"]:::held
+  n46["How full the lungs are<br/><small>Requirement</small>"]:::held
+  n47["Where a practice is<br/><small>Requirement</small>"]:::held
+  n48["The breath of a moment<br/><small>Requirement</small>"]:::held
+  n49["A phase set by the person<br/><small>Requirement</small>"]:::held
+  n50["A breath read back<br/><small>Requirement</small>"]:::held
+  n51["A breath measured by tapping<br/><small>Requirement</small>"]:::held
+  n52["Each decision of architecture serves the product<br/><small>Architecture rule</small>"]:::held
+  n53["Code serves the product<br/><small>Architecture rule</small>"]:::held
+  n54["Place the page<br/><small>Entry point</small>"]:::held
+  n55["A public version<br/><small>Shipment</small>"]:::unknown
+  n23 -->|Depends on| n35
+  n23 -->|Depends on| n33
+  n23 -->|Depends on| n24
+  n23 -->|Depends on| n29
+  n23 -->|Depends on| n25
+  n23 -->|Depends on| n36
+  n26 -->|Depends on| n35
+  n28 -->|Depends on| n26
+  n28 -->|Depends on| n23
+  n29 -->|Depends on| n36
+  n30 -->|Depends on| n26
+  n30 -->|Depends on| n23
+  n30 -->|Depends on| n34
+  n33 -->|Depends on| n36
+  n37 -->|Depends on| n26
+  n37 -->|Depends on| n23
+  n41 -->|Depends on| n32
+  n41 -->|Depends on| n22
+  n43 -->|Depends on| n40
+  n18 -->|Applied by| n48
+  n18 -->|Applied by| n45
+  n17 -->|Applied by| n42
+  n15 -->|Applied by| n1
+  n6 -->|Verifies| n23
+  n6 -->|Verifies| n34
+  n6 -->|Verifies| n33
+  n6 -->|Verifies| n29
+  n6 -->|Verifies| n25
+  n6 -->|Verifies| n24
+  n6 -->|Verifies| n26
+  n6 -->|Verifies| n35
+  n6 -->|Verifies| n36
+  n6 -->|Depends on| n34
+  n10 -->|Verifies| n39
+  n10 -->|Verifies| n38
+  n10 -->|Verifies| n37
+  n10 -->|Depends on| n39
+  n10 -->|Depends on| n34
+  n7 -->|Verifies| n45
+  n7 -->|Verifies| n43
+  n9 -->|Verifies| n41
+  n8 -->|Verifies| n51
+  n8 -->|Verifies| n49
+  n4 -->|Checks| n0
+  n12 -->|Verifies| n2
+  n12 -->|Depends on| n2
+  n12 -->|Depends on| n0
+  n2 -->|Depends on| n0
+  n1 -->|Checks| n0
+  n1 -->|Run by| n2
+  n54 -->|Depends on| n0
+  n13 -->|Verifies| n54
+  n13 -->|Depends on| n54
   n13 -->|Depends on| n0
-  n3 -->|Depends on| n0
-  n0 -->|Produced by| n1
-  n2 -->|Checks| n0
-  n2 -->|Run by| n3
-  n55 -->|Depends on| n0
-  n14 -->|Verifies| n55
-  n14 -->|Depends on| n55
-  n14 -->|Depends on| n0
-  n4 -->|Ships| n0
-  n4 -->|Deployed by| n55
-  n56 -->|Ships| n0
-  n56 -->|Deployed by| n55
+  n3 -->|Ships| n0
+  n3 -->|Deployed by| n54
+  n55 -->|Ships| n0
+  n55 -->|Deployed by| n54
   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
   classDef blocked fill:#fbf0d9,stroke:#9a6200,color:#17202a
   classDef violated fill:#f9e3e1,stroke:#ad2a22,color:#17202a
@@ -218,13 +215,13 @@ flowchart TB
 
 |  | Stage | Step | Run by | Why | Status | Latest evidence |
 |---|---|---|---|---|---|---|
-| 1 | produce | [Poselia's page](sdlc.md#PageFile) · `dist/poselia.html` | [Poselia's page](app.md#PoseliaPage) | — | **held** | 4 November 2026 by claude  |
-| 2 | check | [The page opens](sdlc.md#PageOpens) | [Open the page](sdlc.md#OpenThePage) | — | **held** | passed, 4 November 2026 by claude  |
+| 1 | produce | [Poselia's page](sdlc.md#PageFile) · `dist/poselia.html` | promoted, as shipped first by [A preview](sdlc.md#Preview) | — | **held** | 8 November 2026 by claude  |
+| 2 | check | [The page opens](sdlc.md#PageOpens) | [Open the page](sdlc.md#OpenThePage) | — | **held** | passed, 8 November 2026 by claude  |
 | 3 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
-| 4 | prove | [Poselia's page](sdlc.md#PageFile) | — | the shipment | **held** | 4 November 2026 by claude  |
-| 5 | prove | [A preview](sdlc.md#Preview) | — | [After the preview](sdlc.md#AfterThePreview) via [Poselia's page](sdlc.md#PageFile) | **held** | 4 November 2026 by claude `evidence/shipments/Preview-2026-11-04-71a6008f.json` |
+| 4 | prove | [Poselia's page](sdlc.md#PageFile) | — | the shipment | **held** | 8 November 2026 by claude  |
+| 5 | prove | [A preview](sdlc.md#Preview) | — | [After the preview](sdlc.md#AfterThePreview) via [Poselia's page](sdlc.md#PageFile) | **held** | 8 November 2026 by claude `evidence/shipments/Preview-2026-11-08-aef38bfa.json` |
 | 6 | prove | [On a phone](sdlc.md#OnAPhone) | by hand, signed by [People who try it on a phone](sdlc.md#PhoneTesters) | [The page is checked, by hand too](sdlc.md#AllChecks) via [Poselia's page](sdlc.md#PageFile) | **unknown** |  |
-| 7 | prove | [The page opens](sdlc.md#PageOpens) | [Open the page](sdlc.md#OpenThePage) | [The page is checked, by hand too](sdlc.md#AllChecks) via [Poselia's page](sdlc.md#PageFile) | **held** | passed, 4 November 2026 by claude  |
+| 7 | prove | [The page opens](sdlc.md#PageOpens) | [Open the page](sdlc.md#OpenThePage) | [The page is checked, by hand too](sdlc.md#AllChecks) via [Poselia's page](sdlc.md#PageFile) | **held** | passed, 8 November 2026 by claude  |
 | 8 | prove | [The language of the home page](scenarios.md#HomeLanguage) | — | [The code shown is verified](sdlc.md#CodeVerified) via [The content the app carries](app.md#CarriedContent) | **held** |  |
 | 9 | prove | [The body stays on the floor](scenarios.md#BodyStaysOnTheFloor) | — | [The code shown is verified](sdlc.md#CodeVerified) via [The space of the mat](body.md#MatSpace) | **held** |  |
 | 10 | prove | [Holding the poses](scenarios.md#HoldThePoses) | — | [The code shown is verified](sdlc.md#CodeVerified) via [The voice the person chose](settings.md#VoiceChoice) | **held** |  |
@@ -274,7 +271,7 @@ flowchart TB
 | 54 | prove | [A breath measured by tapping](settings.md#MeasuredBreath) | — | [The product holds](sdlc.md#ProductServed) via [The breath of a moment](product.md#BreathOf) | **held** |  |
 | 55 | prove | [Each decision of architecture serves the product](sdlc.md#AdrsServeTheProduct) | — | [The rules of the app hold](sdlc.md#RulesHeld) | **held** |  |
 | 56 | prove | [Code serves the product](sdlc.md#CodeServesTheProduct) | — | [The rules of the app hold](sdlc.md#RulesHeld) | **held** |  |
-| 57 | deploy | [Place the page](sdlc.md#PlaceThePage) | itself | — | **held** | 4 November 2026 by claude  |
+| 57 | deploy | [Place the page](sdlc.md#PlaceThePage) | itself | — | **held** | 8 November 2026 by claude  |
 | 58 | record | [A public version](sdlc.md#PublicVersion) | — | — | **unknown** |  |
 
 `trame ship PublicVersion --by <name>`
@@ -309,11 +306,11 @@ flowchart TB
 
 |  | Stage | Step | Run by | Why | Status | Latest evidence |
 |---|---|---|---|---|---|---|
-| 1 | produce | [The preview's script](sdlc.md#PreviewScript) · `scripts/ship-preview.sh` | [A script of Bash](../.trame/ci/docs/shell.md#ShellScript) | — | **held** | 4 November 2026 by claude  |
-| 2 | produce | [The preview's workflow](sdlc.md#PreviewWorkflow) · `../../.github/workflows/poselia-preview.yml` | [A workflow of GitHub Actions](../.trame/ci/docs/github.md#GitHubWorkflow) | — | **held** | 4 November 2026 by claude  |
+| 1 | produce | [The preview's script](sdlc.md#PreviewScript) · `scripts/ship-preview.sh` | [A script of Bash](../.trame/ci/docs/shell.md#ShellScript) | — | **held** | 8 November 2026 by claude  |
+| 2 | produce | [The preview's workflow](sdlc.md#PreviewWorkflow) · `../../.github/workflows/poselia-preview.yml` | [A workflow of GitHub Actions](../.trame/ci/docs/github.md#GitHubWorkflow) | — | **held** | 8 November 2026 by claude  |
 | 3 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
-| 4 | prove | [The preview's script](sdlc.md#PreviewScript) | — | the shipment | **held** | 4 November 2026 by claude  |
-| 5 | prove | [The preview's workflow](sdlc.md#PreviewWorkflow) | — | the shipment | **held** | 4 November 2026 by claude  |
-| 6 | record | [The files that run it elsewhere](sdlc.md#RunnersWritten) | — | — | **held** | 4 November 2026 by claude `evidence/shipments/RunnersWritten-2026-11-04-1a13a840.json` |
+| 4 | prove | [The preview's script](sdlc.md#PreviewScript) | — | the shipment | **held** | 8 November 2026 by claude  |
+| 5 | prove | [The preview's workflow](sdlc.md#PreviewWorkflow) | — | the shipment | **held** | 8 November 2026 by claude  |
+| 6 | record | [The files that run it elsewhere](sdlc.md#RunnersWritten) | — | — | **held** | 8 November 2026 by claude `evidence/shipments/RunnersWritten-2026-11-08-a43fa3ce.json` |
 
 `trame ship RunnersWritten --by <name>`

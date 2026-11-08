@@ -6,7 +6,7 @@
 |---|---|---|---|---|
 | A teacher who practises | 0 | 0 | 4 | 0 |
 | People who try it on a phone | 0 | 0 | 1 | 0 |
-| ghalaax | 0 | 0 | 6 | 213 |
+| ghalaax | 0 | 0 | 5 | 213 |
 
 <a id="A teacher who practises"></a>
 
@@ -48,7 +48,6 @@
 
 | Severity | What | Where | Owner | Consequence |
 |---|---|---|---|---|
-| warning | To ship: Poselia's page, shipped first by A preview as it is now | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
 | warning | To ship: On a phone is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
 | warning | To ship: The content, reviewed is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
 | warning | To ship: The content is data, behind a port is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |

@@ -6,13 +6,13 @@
 
 ## The next version
 
-> **The next version does not ship yet: 21 of 22 obligations hold.**
+> **The next version ships: every obligation holds.**
 
 For the target version.
 
 ```mermaid
 flowchart TB
-  n0["The standard library<br/><small>Artefact</small>"]:::unknown
+  n0["The standard library<br/><small>Artefact</small>"]:::held
   n1["The device's services, as ports<br/><small>Architecture decision</small>"]:::held
   n2["The SDLC's tooling is realized once<br/><small>Architecture decision</small>"]:::held
   n3["Seeded draws keep their promise<br/><small>Scenario</small>"]:::held
@@ -33,7 +33,7 @@ flowchart TB
   n18["A node reaches what it must<br/><small>Requirement</small>"]:::held
   n19["Effects a node may not have<br/><small>Requirement</small>"]:::held
   n20["Words of a vocabulary<br/><small>Requirement</small>"]:::held
-  n21["The next version<br/><small>Shipment</small>"]:::unknown
+  n21["The next version<br/><small>Shipment</small>"]:::held
   n21 -->|Ships| n0
   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
   classDef blocked fill:#fbf0d9,stroke:#9a6200,color:#17202a
@@ -46,9 +46,9 @@ flowchart TB
 
 |  | Stage | Step | Run by | Why | Status | Latest evidence |
 |---|---|---|---|---|---|---|
-| 1 | produce | [The standard library](sdlc.md#TheLibrary) · `src` | — | — | **unknown** | 4 November 2026 by claude  |
+| 1 | produce | [The standard library](sdlc.md#TheLibrary) · `src` | — | — | **held** | 8 November 2026 by claude  |
 | 2 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
-| 3 | prove | [The standard library](sdlc.md#TheLibrary) | — | the shipment | **unknown** | 4 November 2026 by claude  |
+| 3 | prove | [The standard library](sdlc.md#TheLibrary) | — | the shipment | **held** | 8 November 2026 by claude  |
 | 4 | prove | [The device's services, as ports](platform.md#DeviceAsPorts) | — | [Its decisions applied](sdlc.md#DecisionsApplied) via [Animation frames](platform.md#AnimationFrames) | **held** |  |
 | 5 | prove | [The SDLC's tooling is realized once](tooling.md#ToolingAsPorts) | — | [Its decisions applied](sdlc.md#DecisionsApplied) via [A browser kept in memory](tooling.md#BrowserInMemory) | **held** |  |
 | 6 | prove | [Seeded draws keep their promise](scenarios.md#DrawsKeepTheirPromise) | — | [Its functions verified](sdlc.md#FunctionsVerified) via [Seeded draws](algorithms.md#SeededDraws) | **held** |  |
@@ -69,6 +69,6 @@ flowchart TB
 | 21 | prove | [A node reaches what it must](rules.md#Reaches) | — | [Its requirements held](sdlc.md#RequirementsServed) via [The decisions a shipment applies hold](obligations.md#Applied) | **held** |  |
 | 22 | prove | [Effects a node may not have](rules.md#WithoutEffects) | — | [Its requirements held](sdlc.md#RequirementsServed) via [The decisions a shipment applies hold](obligations.md#Applied) | **held** |  |
 | 23 | prove | [Words of a vocabulary](rules.md#WordsOf) | — | [Its requirements held](sdlc.md#RequirementsServed) via [The decisions a shipment applies hold](obligations.md#Applied) | **held** |  |
-| 24 | record | [The next version](sdlc.md#NextVersion) | — | — | **unknown** | 4 November 2026 by claude `evidence/shipments/NextVersion-2026-11-04-efe47436.json` |
+| 24 | record | [The next version](sdlc.md#NextVersion) | — | — | **held** | 8 November 2026 by claude `evidence/shipments/NextVersion-2026-11-08-7598e822.json` |
 
 `trame ship NextVersion --by <name>`

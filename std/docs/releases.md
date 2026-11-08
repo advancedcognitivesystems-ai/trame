@@ -150,6 +150,22 @@ The library ships its versions through its own graph: NextVersion, under Version
 - Released by: trame
 - Serves: [A published value is cited, not copied](product.md#CitedNotCopied), [Known designs, named](product.md#KnownDesigns), [Ports of the platform, realized once](product.md#RealizedOnce), [Shared operations instead of literals](product.md#SharedOperations), [Rules applied, not written again](product.md#SharedRules), [Versions that hold](product.md#VersionsThatHold)
 
+<a id="R0_17_0"></a>
+
+### Version 0.17.0
+
+`R0_17_0` · `src/releases.ts:233`
+
+The family Preceded: a shipment waits for those that precede it to ship first the same artefacts, the same file (C2)
+
+- Version: `0.17.0`
+- Released on: 8 November 2026
+- Fingerprint: `ad52abcce7119bba`
+- Language: the repository's, shared
+
+- Released by: trame
+- Serves: [A published value is cited, not copied](product.md#CitedNotCopied), [Known designs, named](product.md#KnownDesigns), [Ports of the platform, realized once](product.md#RealizedOnce), [Shared operations instead of literals](product.md#SharedOperations), [Rules applied, not written again](product.md#SharedRules), [Versions that hold](product.md#VersionsThatHold)
+
 <a id="R0_2_0"></a>
 
 ### Version 0.2.0

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-04",
+  "generated": "2026-11-08",
   "nodes": [
     {
       "id": "angles.Angle",
@@ -37,7 +37,7 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "trame",
-        "version": "102",
+        "version": "103",
         "joins": "language",
         "from": "registry"
       },
@@ -51,7 +51,7 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "std",
-        "version": "0.16.0",
+        "version": "0.17.0",
         "joins": "library",
         "from": "registry"
       },
@@ -125,7 +125,8 @@
             "obligation": "sdlc.DecisionsApplied"
           }
         ],
-        "gaps": []
+        "gaps": [],
+        "preceded": []
       },
       "diagnostics": []
     },
@@ -152,7 +153,7 @@
       },
       "result": {
         "path": "src",
-        "code": "9799f949"
+        "code": "6c25af20"
       },
       "diagnostics": []
     },

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-04",
+  "generated": "2026-11-08",
   "nodes": [
     {
       "id": "github.GitHubActions",
@@ -454,10 +454,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "102",
+        "version": "103",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g102"
+        "at": "../generations/g103"
       },
       "diagnostics": []
     },
@@ -553,7 +553,8 @@
       },
       "result": {
         "derived": [],
-        "gaps": []
+        "gaps": [],
+        "preceded": []
       },
       "diagnostics": []
     },
@@ -570,7 +571,7 @@
       },
       "result": {
         "path": "src",
-        "code": "ddc50246"
+        "code": "a2281bb1"
       },
       "diagnostics": []
     },
