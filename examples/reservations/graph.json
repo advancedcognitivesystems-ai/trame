@@ -1742,7 +1742,8 @@
             "obligation": "sdlc.CodeVerified",
             "weight": "warning"
           }
-        ]
+        ],
+        "preceded": []
       },
       "diagnostics": [
         "warning: To ship: The program for a laptop is unknown",

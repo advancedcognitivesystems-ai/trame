@@ -1,6 +1,6 @@
 # Layers
 
-*The graph in force on 4 November 2026, ordered by distance to the goals.*
+*The graph in force on 8 November 2026, ordered by distance to the goals.*
 
 ```mermaid
 flowchart TB
@@ -179,84 +179,85 @@ flowchart TB
   end
   subgraph sdlc["Poselia · SDLC"]
     n147["Each decision of architecture serves the product<br/><small>Architecture rule</small>"]:::held
-    n148["The page is checked, by hand too<br/><small>Obligation</small>"]:::neutral
-    n149["Code serves the product<br/><small>Architecture rule</small>"]:::held
-    n150["The code shown is verified<br/><small>Obligation</small>"]:::neutral
-    n151["The code shown is verified, a gap said<br/><small>Obligation</small>"]:::neutral
-    n152["The content, reviewed<br/><small>Review</small>"]:::unknown
-    n153["The content is reviewed by a teacher<br/><small>Obligation</small>"]:::neutral
-    n154["The decisions hold<br/><small>Obligation</small>"]:::neutral
-    n155["A machine<br/><small>Environment</small>"]:::neutral
-    n156["On a phone<br/><small>Check</small>"]:::unknown
-    n157["On the machine<br/><small>Technical choice</small>"]:::held
-    n158["The page is opened as a person would<br/><small>Scenario</small>"]:::held
-    n159["Open the page<br/><small>Entry point</small>"]:::held
-    n160["The packages are safe<br/><small>Obligation</small>"]:::neutral
-    n161["Poselia's page<br/><small>Artefact</small>"]:::held
-    n162["How the page is opened<br/><small>Decision</small>"]:::neutral
-    n163["The page opens<br/><small>Check</small>"]:::held
-    n164["What the page is asked<br/><small>Function</small>"]:::held
-    n165["People who try it on a phone<br/><small>Role</small>"]:::neutral
-    n166["Place the page<br/><small>Entry point</small>"]:::held
-    n167["The page is placed where it is served<br/><small>Scenario</small>"]:::held
-    n168["Poselia's SDLC<br/><small>Component</small>"]:::neutral
-    n169["A preview<br/><small>Shipment</small>"]:::held
-    n170["The way of a preview<br/><small>Policy</small>"]:::neutral
-    n171["When the preview runs on GitHub, and what it keeps there<br/><small>Decision</small>"]:::neutral
-    n172["The preview's script<br/><small>Artefact</small>"]:::held
-    n173["The preview's workflow<br/><small>Artefact</small>"]:::held
-    n174["The product holds<br/><small>Obligation</small>"]:::neutral
-    n175["The page is checked by programs<br/><small>Obligation</small>"]:::neutral
-    n176["The way of a public version<br/><small>Policy</small>"]:::neutral
-    n177["A public version<br/><small>Shipment</small>"]:::unknown
-    n178["The rules of the app hold<br/><small>Obligation</small>"]:::neutral
-    n179["The files that run it elsewhere<br/><small>Shipment</small>"]:::held
-    n180["What the scenarios of the SDLC check<br/><small>Message catalog</small>"]:::neutral
-    n181["The SDLC in memory<br/><small>Technical choice</small>"]:::held
-    n182["The SDLC is in the graph<br/><small>Architecture decision</small>"]:::unknown
-    n183["What the scenarios of the SDLC write<br/><small>Decision</small>"]:::neutral
-    n184["What the programs of the SDLC say<br/><small>Message catalog</small>"]:::neutral
-    n185["Where the page is served<br/><small>Decision</small>"]:::neutral
-    n186["A teacher who practises<br/><small>Role</small>"]:::neutral
+    n148["After the preview<br/><small>Obligation</small>"]:::neutral
+    n149["The page is checked, by hand too<br/><small>Obligation</small>"]:::neutral
+    n150["Code serves the product<br/><small>Architecture rule</small>"]:::held
+    n151["The code shown is verified<br/><small>Obligation</small>"]:::neutral
+    n152["The code shown is verified, a gap said<br/><small>Obligation</small>"]:::neutral
+    n153["The content, reviewed<br/><small>Review</small>"]:::unknown
+    n154["The content is reviewed by a teacher<br/><small>Obligation</small>"]:::neutral
+    n155["The decisions hold<br/><small>Obligation</small>"]:::neutral
+    n156["A machine<br/><small>Environment</small>"]:::neutral
+    n157["On a phone<br/><small>Check</small>"]:::unknown
+    n158["On the machine<br/><small>Technical choice</small>"]:::held
+    n159["The page is opened as a person would<br/><small>Scenario</small>"]:::held
+    n160["Open the page<br/><small>Entry point</small>"]:::held
+    n161["The packages are safe<br/><small>Obligation</small>"]:::neutral
+    n162["Poselia's page<br/><small>Artefact</small>"]:::held
+    n163["How the page is opened<br/><small>Decision</small>"]:::neutral
+    n164["The page opens<br/><small>Check</small>"]:::held
+    n165["What the page is asked<br/><small>Function</small>"]:::held
+    n166["People who try it on a phone<br/><small>Role</small>"]:::neutral
+    n167["Place the page<br/><small>Entry point</small>"]:::held
+    n168["The page is placed where it is served<br/><small>Scenario</small>"]:::held
+    n169["Poselia's SDLC<br/><small>Component</small>"]:::neutral
+    n170["A preview<br/><small>Shipment</small>"]:::held
+    n171["The way of a preview<br/><small>Policy</small>"]:::neutral
+    n172["When the preview runs on GitHub, and what it keeps there<br/><small>Decision</small>"]:::neutral
+    n173["The preview's script<br/><small>Artefact</small>"]:::held
+    n174["The preview's workflow<br/><small>Artefact</small>"]:::held
+    n175["The product holds<br/><small>Obligation</small>"]:::neutral
+    n176["The page is checked by programs<br/><small>Obligation</small>"]:::neutral
+    n177["The way of a public version<br/><small>Policy</small>"]:::neutral
+    n178["A public version<br/><small>Shipment</small>"]:::unknown
+    n179["The rules of the app hold<br/><small>Obligation</small>"]:::neutral
+    n180["The files that run it elsewhere<br/><small>Shipment</small>"]:::held
+    n181["What the scenarios of the SDLC check<br/><small>Message catalog</small>"]:::neutral
+    n182["The SDLC in memory<br/><small>Technical choice</small>"]:::held
+    n183["The SDLC is in the graph<br/><small>Architecture decision</small>"]:::unknown
+    n184["What the scenarios of the SDLC write<br/><small>Decision</small>"]:::neutral
+    n185["What the programs of the SDLC say<br/><small>Message catalog</small>"]:::neutral
+    n186["Where the page is served<br/><small>Decision</small>"]:::neutral
+    n187["A teacher who practises<br/><small>Role</small>"]:::neutral
   end
   subgraph settings["Poselia · Settings"]
-    n187["A phase set by the person<br/><small>Requirement</small>"]:::held
-    n188["Criteria of a phase set by the person<br/><small>Acceptance criteria</small>"]:::held
-    n189["Bounds of a breath<br/><small>Decision</small>"]:::neutral
-    n190["A breath read back<br/><small>Requirement</small>"]:::held
-    n191["Criteria of a breath read back<br/><small>Acceptance criteria</small>"]:::held
-    n192["The landmarks the person chose<br/><small>Function</small>"]:::held
-    n193["A breath measured by tapping<br/><small>Requirement</small>"]:::held
-    n194["Criteria of a breath measured by tapping<br/><small>Acceptance criteria</small>"]:::held
-    n195["The person's breath<br/><small>Function</small>"]:::held
-    n196["Names of the settings<br/><small>Decision</small>"]:::neutral
-    n197["The settings view<br/><small>Function</small>"]:::held
-    n198["Show the settings<br/><small>Function</small>"]:::held
-    n199["Tapping<br/><small>Decision</small>"]:::neutral
-    n200["The voice the person chose<br/><small>Function</small>"]:::held
-    n201["What the practice says and rings<br/><small>Decision</small>"]:::neutral
+    n188["A phase set by the person<br/><small>Requirement</small>"]:::held
+    n189["Criteria of a phase set by the person<br/><small>Acceptance criteria</small>"]:::held
+    n190["Bounds of a breath<br/><small>Decision</small>"]:::neutral
+    n191["A breath read back<br/><small>Requirement</small>"]:::held
+    n192["Criteria of a breath read back<br/><small>Acceptance criteria</small>"]:::held
+    n193["The landmarks the person chose<br/><small>Function</small>"]:::held
+    n194["A breath measured by tapping<br/><small>Requirement</small>"]:::held
+    n195["Criteria of a breath measured by tapping<br/><small>Acceptance criteria</small>"]:::held
+    n196["The person's breath<br/><small>Function</small>"]:::held
+    n197["Names of the settings<br/><small>Decision</small>"]:::neutral
+    n198["The settings view<br/><small>Function</small>"]:::held
+    n199["Show the settings<br/><small>Function</small>"]:::held
+    n200["Tapping<br/><small>Decision</small>"]:::neutral
+    n201["The voice the person chose<br/><small>Function</small>"]:::held
+    n202["What the practice says and rings<br/><small>Decision</small>"]:::neutral
   end
   subgraph sound["Poselia · Sound"]
-    n202["Sound of the bowl<br/><small>Decision</small>"]:::neutral
-    n203["The browser's bowl<br/><small>Implementation</small>"]:::unknown
+    n203["Sound of the bowl<br/><small>Decision</small>"]:::neutral
+    n204["The browser's bowl<br/><small>Implementation</small>"]:::unknown
   end
   subgraph space["Poselia · Space"]
-    n204["The axes of the mat<br/><small>Amendment</small>"]:::neutral
+    n205["The axes of the mat<br/><small>Amendment</small>"]:::neutral
   end
   subgraph stage["Poselia · The stage"]
-    n205["The browser's stage<br/><small>Implementation</small>"]:::held
-    n206["Look of the mannequin<br/><small>Decision</small>"]:::neutral
-    n207["Look of the landmarks<br/><small>Decision</small>"]:::neutral
-    n208["Light of the stage<br/><small>Decision</small>"]:::neutral
-    n209["Views of the stage<br/><small>Decision</small>"]:::neutral
-    n210["three.js<br/><small>Package</small>"]:::held
-    n211["three.js, its types<br/><small>Package</small>"]:::held
+    n206["The browser's stage<br/><small>Implementation</small>"]:::held
+    n207["Look of the mannequin<br/><small>Decision</small>"]:::neutral
+    n208["Look of the landmarks<br/><small>Decision</small>"]:::neutral
+    n209["Light of the stage<br/><small>Decision</small>"]:::neutral
+    n210["Views of the stage<br/><small>Decision</small>"]:::neutral
+    n211["three.js<br/><small>Package</small>"]:::held
+    n212["three.js, its types<br/><small>Package</small>"]:::held
   end
   n0 -->|Implements| n16
   n0 -->|Depends on| n9
   n0 -->|Depends on| n82
   n0 -->|Depends on| n113
-  n0 -->|Depends on| n196
+  n0 -->|Depends on| n197
   n0 -->|Depends on| n64
   n0 -->|Depends on| n17
   n1 -->|Implements| n14
@@ -276,15 +277,15 @@ flowchart TB
   n4 -->|Depends on| n83
   n4 -->|Depends on| n84
   n5 -->|Chooses| n0
-  n5 -->|Chooses| n205
-  n5 -->|Chooses| n203
+  n5 -->|Chooses| n206
+  n5 -->|Chooses| n204
   n5 -->|In| n13
   n7 -->|Uses the variables of| n2
   n7 -->|Uses the variables of| n6
   n7 -->|Styles| n4
   n7 -->|Styles| n83
   n7 -->|Styles| n112
-  n7 -->|Styles| n197
+  n7 -->|Styles| n198
   n7 -->|Styles| n65
   n8 -->|Delivers| n15
   n8 -->|For| n13
@@ -298,8 +299,8 @@ flowchart TB
   n10 -->|Depends on| n4
   n10 -->|Depends on| n85
   n10 -->|Depends on| n114
-  n10 -->|Depends on| n198
-  n10 -->|Depends on| n195
+  n10 -->|Depends on| n199
+  n10 -->|Depends on| n196
   n10 -->|Depends on| n68
   n10 -->|Depends on| n67
   n15 -->|Deployed in| n13
@@ -487,13 +488,13 @@ flowchart TB
   n114 -->|Serves| n130
   n114 -->|Depends on| n16
   n114 -->|Depends on| n11
-  n114 -->|Depends on| n200
-  n114 -->|Depends on| n192
+  n114 -->|Depends on| n201
+  n114 -->|Depends on| n193
   n114 -->|Depends on| n115
   n114 -->|Depends on| n112
   n114 -->|Depends on| n88
   n114 -->|Depends on| n85
-  n114 -->|Depends on| n209
+  n114 -->|Depends on| n210
   n115 -->|Serves| n130
   n115 -->|Serves| n123
   n115 -->|Depends on| n121
@@ -512,7 +513,7 @@ flowchart TB
   n119 -->|Serves| n130
   n119 -->|Applied by| n15
   n119 -->|Applied by| n8
-  n119 -->|Applied by| n163
+  n119 -->|Applied by| n164
   n120 -->|Serves| n130
   n120 -->|Applied by| n129
   n120 -->|Applied by| n114
@@ -573,7 +574,7 @@ flowchart TB
   n135 -->|Verifies| n112
   n135 -->|Verifies| n106
   n135 -->|Verifies| n102
-  n135 -->|Verifies| n200
+  n135 -->|Verifies| n201
   n135 -->|Verifies| n141
   n135 -->|In| n18
   n135 -->|Depends on| n10
@@ -614,7 +615,7 @@ flowchart TB
   n138 -->|Verifies| n112
   n138 -->|Verifies| n95
   n138 -->|Verifies| n93
-  n138 -->|Verifies| n192
+  n138 -->|Verifies| n193
   n138 -->|In| n18
   n138 -->|Depends on| n10
   n138 -->|Depends on| n19
@@ -624,17 +625,17 @@ flowchart TB
   n138 -->|Depends on| n143
   n138 -->|Depends on| n76
   n138 -->|Depends on| n89
+  n139 -->|Verifies| n199
   n139 -->|Verifies| n198
-  n139 -->|Verifies| n197
-  n139 -->|Verifies| n195
-  n139 -->|Verifies| n200
-  n139 -->|Verifies| n193
-  n139 -->|Verifies| n187
+  n139 -->|Verifies| n196
+  n139 -->|Verifies| n201
+  n139 -->|Verifies| n194
+  n139 -->|Verifies| n188
   n139 -->|Verifies| n10
   n139 -->|In| n18
   n139 -->|Depends on| n10
   n139 -->|Depends on| n19
-  n139 -->|Depends on| n195
+  n139 -->|Depends on| n196
   n139 -->|Depends on| n146
   n139 -->|Depends on| n90
   n139 -->|Depends on| n143
@@ -655,141 +656,143 @@ flowchart TB
   n142 -->|Implements| n19
   n143 -->|Written in| n86
   n148 -->|Serves| n130
-  n150 -->|Serves| n130
+  n149 -->|Serves| n130
   n151 -->|Serves| n130
-  n152 -->|Reviews| n76
-  n152 -->|Reviews| n77
-  n152 -->|By the role| n186
-  n153 -->|Serves| n124
-  n154 -->|Serves| n130
-  n156 -->|Checks| n161
-  n156 -->|Signed by| n165
-  n156 -->|Verifies| n203
-  n157 -->|In| n155
-  n158 -->|Verifies| n159
-  n158 -->|Verifies| n164
-  n158 -->|In| n18
-  n158 -->|Depends on| n159
-  n158 -->|Depends on| n161
-  n158 -->|Depends on| n164
-  n158 -->|Depends on| n184
-  n158 -->|Depends on| n70
-  n158 -->|Depends on| n183
-  n158 -->|Depends on| n180
-  n159 -->|Serves| n130
-  n159 -->|Part of| n168
-  n159 -->|Depends on| n161
-  n159 -->|Depends on| n70
-  n159 -->|Depends on| n164
+  n152 -->|Serves| n130
+  n153 -->|Reviews| n76
+  n153 -->|Reviews| n77
+  n153 -->|By the role| n187
+  n154 -->|Serves| n124
+  n155 -->|Serves| n130
+  n157 -->|Checks| n162
+  n157 -->|Signed by| n166
+  n157 -->|Verifies| n204
+  n158 -->|In| n156
+  n159 -->|Verifies| n160
+  n159 -->|Verifies| n165
+  n159 -->|In| n18
+  n159 -->|Depends on| n160
   n159 -->|Depends on| n162
+  n159 -->|Depends on| n165
+  n159 -->|Depends on| n185
+  n159 -->|Depends on| n70
   n159 -->|Depends on| n184
+  n159 -->|Depends on| n181
   n160 -->|Serves| n130
-  n161 -->|Produced by| n8
-  n163 -->|Checks| n161
-  n163 -->|Run by| n159
-  n163 -->|Verifies| n0
-  n163 -->|Verifies| n205
-  n164 -->|Serves| n130
-  n164 -->|Depends on| n9
-  n164 -->|Depends on| n64
-  n164 -->|Depends on| n113
-  n166 -->|Serves| n130
-  n166 -->|Part of| n168
-  n166 -->|Depends on| n161
-  n166 -->|Depends on| n185
-  n166 -->|Depends on| n184
-  n167 -->|Verifies| n166
-  n167 -->|In| n18
-  n167 -->|Depends on| n166
-  n167 -->|Depends on| n161
+  n160 -->|Part of| n169
+  n160 -->|Depends on| n162
+  n160 -->|Depends on| n70
+  n160 -->|Depends on| n165
+  n160 -->|Depends on| n163
+  n160 -->|Depends on| n185
+  n161 -->|Serves| n130
+  n162 -->|Produced by| n8
+  n164 -->|Checks| n162
+  n164 -->|Run by| n160
+  n164 -->|Verifies| n0
+  n164 -->|Verifies| n206
+  n165 -->|Serves| n130
+  n165 -->|Depends on| n9
+  n165 -->|Depends on| n64
+  n165 -->|Depends on| n113
+  n167 -->|Serves| n130
+  n167 -->|Part of| n169
+  n167 -->|Depends on| n162
+  n167 -->|Depends on| n186
   n167 -->|Depends on| n185
-  n167 -->|Depends on| n183
-  n167 -->|Depends on| n180
-  n168 -->|Deployed in| n155
-  n169 -->|Ships| n161
-  n169 -->|Deployed by| n166
-  n169 -->|Programs assembled for| n155
-  n169 -->|Follows the policy| n170
-  n170 -->|Its obligations| n151
-  n170 -->|Its obligations| n175
-  n170 -->|Its obligations| n178
-  n170 -->|Its obligations| n160
-  n172 -->|Runs elsewhere| n169
-  n173 -->|Runs elsewhere| n169
-  n173 -->|Its writer's settings| n171
-  n173 -->|Makes available, once shipped| n161
-  n174 -->|Serves| n130
+  n168 -->|Verifies| n167
+  n168 -->|In| n18
+  n168 -->|Depends on| n167
+  n168 -->|Depends on| n162
+  n168 -->|Depends on| n186
+  n168 -->|Depends on| n184
+  n168 -->|Depends on| n181
+  n169 -->|Deployed in| n156
+  n170 -->|Ships| n162
+  n170 -->|Deployed by| n167
+  n170 -->|Programs assembled for| n156
+  n170 -->|Follows the policy| n171
+  n171 -->|Its obligations| n152
+  n171 -->|Its obligations| n176
+  n171 -->|Its obligations| n179
+  n171 -->|Its obligations| n161
+  n173 -->|Runs elsewhere| n170
+  n174 -->|Runs elsewhere| n170
+  n174 -->|Its writer's settings| n172
+  n174 -->|Makes available, once shipped| n162
   n175 -->|Serves| n130
-  n176 -->|Its obligations| n150
-  n176 -->|Its obligations| n174
-  n176 -->|Its obligations| n154
-  n176 -->|Its obligations| n153
-  n176 -->|Its obligations| n148
-  n176 -->|Its obligations| n178
-  n176 -->|Its obligations| n160
-  n177 -->|Ships| n161
-  n177 -->|Deployed by| n166
-  n177 -->|Programs assembled for| n155
-  n177 -->|Follows the policy| n176
-  n178 -->|Serves| n130
-  n179 -->|Ships| n173
-  n179 -->|Ships| n172
-  n180 -->|Written in| n86
-  n181 -->|In| n18
-  n182 -->|Serves| n124
-  n182 -->|Serves| n130
-  n182 -->|Applied by| n169
-  n182 -->|Applied by| n177
-  n182 -->|Applied by| n163
-  n182 -->|Applied by| n156
-  n182 -->|Applied by| n152
-  n182 -->|Applied by| n159
-  n182 -->|Applied by| n166
-  n182 -->|Applied by| n149
-  n182 -->|Applied by| n147
-  n182 -->|Applied by| n173
-  n182 -->|Applied by| n172
-  n182 -->|Applied by| n179
-  n184 -->|Written in| n86
-  n187 -->|Refines| n123
-  n187 -->|Depends on| n189
-  n188 -->|Accepts| n187
-  n190 -->|Refines| n123
-  n190 -->|Depends on| n189
-  n191 -->|Accepts| n190
-  n192 -->|Serves| n130
-  n192 -->|Depends on| n89
-  n193 -->|Refines| n123
-  n193 -->|Depends on| n189
-  n193 -->|Depends on| n199
-  n194 -->|Accepts| n193
-  n195 -->|Serves| n123
-  n195 -->|Depends on| n89
-  n195 -->|Depends on| n190
-  n197 -->|Serves| n123
-  n197 -->|Serves| n130
-  n197 -->|Depends on| n88
-  n197 -->|Depends on| n85
+  n176 -->|Serves| n130
+  n177 -->|Its obligations| n148
+  n177 -->|Its obligations| n151
+  n177 -->|Its obligations| n175
+  n177 -->|Its obligations| n155
+  n177 -->|Its obligations| n154
+  n177 -->|Its obligations| n149
+  n177 -->|Its obligations| n179
+  n177 -->|Its obligations| n161
+  n178 -->|Ships| n162
+  n178 -->|Deployed by| n167
+  n178 -->|Programs assembled for| n156
+  n178 -->|Follows the policy| n177
+  n179 -->|Serves| n130
+  n180 -->|Ships| n174
+  n180 -->|Ships| n173
+  n181 -->|Written in| n86
+  n182 -->|In| n18
+  n183 -->|Serves| n124
+  n183 -->|Serves| n130
+  n183 -->|Applied by| n170
+  n183 -->|Applied by| n178
+  n183 -->|Applied by| n164
+  n183 -->|Applied by| n157
+  n183 -->|Applied by| n153
+  n183 -->|Applied by| n160
+  n183 -->|Applied by| n167
+  n183 -->|Applied by| n150
+  n183 -->|Applied by| n147
+  n183 -->|Applied by| n174
+  n183 -->|Applied by| n173
+  n183 -->|Applied by| n180
+  n185 -->|Written in| n86
+  n188 -->|Refines| n123
+  n188 -->|Depends on| n190
+  n189 -->|Accepts| n188
+  n191 -->|Refines| n123
+  n191 -->|Depends on| n190
+  n192 -->|Accepts| n191
+  n193 -->|Serves| n130
+  n193 -->|Depends on| n89
+  n194 -->|Refines| n123
+  n194 -->|Depends on| n190
+  n194 -->|Depends on| n200
+  n195 -->|Accepts| n194
+  n196 -->|Serves| n123
+  n196 -->|Depends on| n89
+  n196 -->|Depends on| n191
   n198 -->|Serves| n123
   n198 -->|Serves| n130
-  n198 -->|Depends on| n16
-  n198 -->|Depends on| n195
-  n198 -->|Depends on| n200
-  n198 -->|Depends on| n197
-  n198 -->|Depends on| n187
-  n198 -->|Depends on| n193
-  n198 -->|Depends on| n127
-  n200 -->|Serves| n130
-  n200 -->|Depends on| n201
-  n203 -->|Implements| n11
-  n203 -->|Depends on| n202
-  n205 -->|Implements| n17
-  n205 -->|Uses| n210
-  n205 -->|Uses| n211
-  n205 -->|Depends on| n206
-  n205 -->|Depends on| n208
-  n205 -->|Depends on| n209
-  n205 -->|Depends on| n207
+  n198 -->|Depends on| n88
+  n198 -->|Depends on| n85
+  n199 -->|Serves| n123
+  n199 -->|Serves| n130
+  n199 -->|Depends on| n16
+  n199 -->|Depends on| n196
+  n199 -->|Depends on| n201
+  n199 -->|Depends on| n198
+  n199 -->|Depends on| n188
+  n199 -->|Depends on| n194
+  n199 -->|Depends on| n127
+  n201 -->|Serves| n130
+  n201 -->|Depends on| n202
+  n204 -->|Implements| n11
+  n204 -->|Depends on| n203
+  n206 -->|Implements| n17
+  n206 -->|Uses| n211
+  n206 -->|Uses| n212
+  n206 -->|Depends on| n207
+  n206 -->|Depends on| n209
+  n206 -->|Depends on| n210
+  n206 -->|Depends on| n208
   n23 -.->|Depends on| n24
   n23 -.->|Depends on| n31
   n23 -.->|Depends on| n40
@@ -820,12 +823,13 @@ flowchart TB
   n94 -.->|Depends on| n31
   n94 -.->|Depends on| n22
   n94 -.->|Depends on| n20
+  n148 -.->|Depends on| n170
   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
   classDef blocked fill:#fbf0d9,stroke:#9a6200,color:#17202a
   classDef violated fill:#f9e3e1,stroke:#ad2a22,color:#17202a
   classDef unknown fill:#e9edf0,stroke:#65707c,color:#17202a
   classDef neutral fill:#ffffff,stroke:#5a6672,color:#17202a
-  style n204 stroke-dasharray:4 3
+  style n205 stroke-dasharray:4 3
 ```
 
 *Each rank is one edge further from a goal than the rank above it. The nodes connected to no goal are at the very bottom.*

@@ -22,7 +22,7 @@ import {
   ProgramCommands, NodeProgramCommands, Files, FilesKept, MachineFiles, FilesInMemory, HeadlessBrowser, PlaywrightBrowser, BrowserScripted, BrowserInMemory,
 } from "#std/tooling"
 import { Reaches, Linked } from "#std/rules"
-import { Verified, Served, Applied, Reviewed, Checked, Ruled, Safe } from "#std/obligations"
+import { Verified, Served, Applied, Reviewed, Checked, Ruled, Safe, Preceded } from "#std/obligations"
 import { GitHubWorkflow, type WorkflowSettings } from "#ci/github"
 import { ShellScript } from "#ci/shell"
 import { Adapter, Strategy } from "#std/patterns"
@@ -302,16 +302,6 @@ export const PackagesSafe = obligation({ owner: "ghalaax", applies: Safe, serves
 export const PreviewMode = policy({ owner: "ghalaax", obligations: [CodeVerifiedSaid, ProgramChecks, RulesHeld, PackagesSafe] })
 
 /**
- * The way of a public version
- * For anyone: the code verified (a gap keeps it), the product's requirements held, the decisions held, the content
- * reviewed by a teacher, the page checked by programs and on a phone, the rules held, the packages safe.
- */
-export const PublicMode = policy({
-  owner: "ghalaax",
-  obligations: [CodeVerified, ProductServed, DecisionsApplied, ContentSeen, AllChecks, RulesHeld, PackagesSafe],
-})
-
-/**
  * A preview
  * The page as it is, for its author and the few people they show it to, the way of a preview. Placed where it is
  * served.
@@ -326,9 +316,34 @@ export const Preview = shipment({
 })
 
 /**
+ * After the preview
+ * The page goes public only as the preview shipped it first: the same file, which people saw. An artefact the preview
+ * does not ship keeps the public version.
+ */
+export const AfterThePreview = obligation({
+  owner: "ghalaax",
+  applies: Preceded,
+  params: { by: [Preview] },
+  gaps: Severity.error,
+  serves: [PractiseGuided],
+})
+
+/**
+ * The way of a public version
+ * For anyone: the page the preview shipped first, the code verified (a gap keeps it), the product's requirements held,
+ * the decisions held, the content reviewed by a teacher, the page checked by programs and on a phone, the rules held,
+ * the packages safe.
+ */
+export const PublicMode = policy({
+  owner: "ghalaax",
+  obligations: [AfterThePreview, CodeVerified, ProductServed, DecisionsApplied, ContentSeen, AllChecks, RulesHeld, PackagesSafe],
+})
+
+/**
  * A public version
- * The page for anyone, the way of a public version: the checks on a phone, the content reviewed by a teacher, the
- * product's requirements held. Placed where it is served.
+ * The page for anyone, the way of a public version: the page the preview shipped first, promoted as it is, never built
+ * again; the checks on a phone, the content reviewed by a teacher, the product's requirements held. Placed where it is
+ * served.
  */
 export const PublicVersion = shipment({
   owner: "ghalaax",

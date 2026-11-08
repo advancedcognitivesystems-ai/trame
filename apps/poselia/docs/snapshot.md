@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 4 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 8 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Poselia · The app in a browser
 
@@ -854,10 +854,10 @@ Package · `StandardLibrary`
 
 - Owner: ghalaax
 - Name: std
-- Version: 0.16.0
+- Version: 0.17.0
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: ../../std/releases/0.16.0
+- Its path: ../../std/releases/0.17.0
 - Serves: Practise yoga on one's own, guided
 
 ## Poselia · Practice
@@ -1501,6 +1501,15 @@ Shipment · `RunnersWritten` · **held**
 - Target: repository
 - Ships: The preview's workflow, The preview's script
 
+### After the preview
+
+Obligation · `AfterThePreview`
+
+- Owner: ghalaax
+- A gap weighs: error
+- Serves: Practise yoga on one's own, guided
+- Depends on: A preview
+
 ### The page is checked, by hand too
 
 Obligation · `AllChecks`
@@ -1579,7 +1588,7 @@ Policy · `PreviewMode`
 Policy · `PublicMode`
 
 - Owner: ghalaax
-- Its obligations: The code shown is verified, The product holds, The decisions hold, The content is reviewed by a teacher, The page is checked, by hand too, The rules of the app hold, The packages are safe
+- Its obligations: After the preview, The code shown is verified, The product holds, The decisions hold, The content is reviewed by a teacher, The page is checked, by hand too, The rules of the app hold, The packages are safe
 
 ## Poselia · Settings
 

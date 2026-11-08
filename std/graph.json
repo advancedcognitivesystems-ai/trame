@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-04",
+  "generated": "2026-11-08",
   "nodes": [
     {
       "id": "algebra.Counts",
@@ -1909,7 +1909,7 @@
       "id": "obligations.AppliedCriteria",
       "kind": "acceptance",
       "title": "Criteria of the decisions applied",
-      "source": "src/obligations.ts:224",
+      "source": "src/obligations.ts:265",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1948,7 +1948,7 @@
       "id": "obligations.CheckedCriteria",
       "kind": "acceptance",
       "title": "Criteria of the artefacts checked",
-      "source": "src/obligations.ts:243",
+      "source": "src/obligations.ts:284",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1981,6 +1981,44 @@
       "diagnostics": []
     },
     {
+      "id": "obligations.Preceded",
+      "kind": "requirement",
+      "title": "The artefacts a shipment ships were shipped first by those that precede it",
+      "source": "src/obligations.ts:176",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "body": "(function)"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "obligations.PrecededCriteria",
+      "kind": "acceptance",
+      "title": "Criteria of the stages",
+      "source": "src/obligations.ts:216",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "criteria": "(function)"
+      },
+      "result": [
+        {
+          "name": "Each shipment named that ships an artefact this one ships is to prove",
+          "status": "passed"
+        },
+        {
+          "name": "An artefact none of them ships is a gap",
+          "status": "passed"
+        },
+        {
+          "name": "A shipment named that ships none of its artefacts is not to prove",
+          "status": "passed"
+        }
+      ],
+      "diagnostics": []
+    },
+    {
       "id": "obligations.Reviewed",
       "kind": "requirement",
       "title": "The data a shipment carries is reviewed",
@@ -1999,7 +2037,7 @@
       "id": "obligations.ReviewedCriteria",
       "kind": "acceptance",
       "title": "Criteria of the data reviewed",
-      "source": "src/obligations.ts:233",
+      "source": "src/obligations.ts:274",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2033,7 +2071,7 @@
       "id": "obligations.RuledCriteria",
       "kind": "acceptance",
       "title": "Criteria of the rules held",
-      "source": "src/obligations.ts:253",
+      "source": "src/obligations.ts:294",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2063,7 +2101,7 @@
       "id": "obligations.SafeCriteria",
       "kind": "acceptance",
       "title": "Criteria of the packages safe",
-      "source": "src/obligations.ts:262",
+      "source": "src/obligations.ts:303",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2093,7 +2131,7 @@
       "id": "obligations.ServedCriteria",
       "kind": "acceptance",
       "title": "Criteria of the product served",
-      "source": "src/obligations.ts:214",
+      "source": "src/obligations.ts:255",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2130,7 +2168,7 @@
       "id": "obligations.VerifiedCriteria",
       "kind": "acceptance",
       "title": "Criteria of the code verified",
-      "source": "src/obligations.ts:189",
+      "source": "src/obligations.ts:230",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3327,7 +3365,7 @@
       "kind": "shipment",
       "title": "The next version",
       "source": "src/sdlc.ts:70",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "version"
@@ -3385,6 +3423,11 @@
             "obligation": "sdlc.RequirementsServed"
           },
           {
+            "node": "obligations.Preceded",
+            "via": "obligations.Applied",
+            "obligation": "sdlc.RequirementsServed"
+          },
+          {
             "node": "obligations.Reviewed",
             "via": "obligations.Applied",
             "obligation": "sdlc.RequirementsServed"
@@ -3435,9 +3478,12 @@
             "obligation": "sdlc.RequirementsServed"
           }
         ],
-        "gaps": []
+        "gaps": [],
+        "preceded": []
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: To ship: The standard library is unknown"
+      ]
     },
     {
       "id": "sdlc.PackagesSafe",
@@ -3474,7 +3520,7 @@
       "kind": "artifact",
       "title": "The standard library",
       "source": "src/sdlc.ts:20",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "src",
@@ -3482,9 +3528,11 @@
       },
       "result": {
         "path": "src",
-        "code": "8ad7d2d7"
+        "code": "2760ca18"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+      ]
     },
     {
       "id": "sdlc.VersionMode",
@@ -4784,6 +4832,16 @@
       "from": "obligations.CheckWays",
       "to": "product.SharedRules",
       "kind": "serves"
+    },
+    {
+      "from": "obligations.Preceded",
+      "to": "product.SharedRules",
+      "kind": "refines"
+    },
+    {
+      "from": "obligations.PrecededCriteria",
+      "to": "obligations.Preceded",
+      "kind": "accepts"
     },
     {
       "from": "obligations.Reviewed",

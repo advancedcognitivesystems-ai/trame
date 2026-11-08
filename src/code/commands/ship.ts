@@ -3,7 +3,9 @@
 // elsewhere), runs the checks a program of the SDLC makes, records
 // what they found as evidence attributed to the person who ships, then compiles again: while an obligation does not
 // hold, it says which and refuses; otherwise it runs the programs that deploy it and writes the shipment's dossier. The
-// programs of the SDLC are assembled for the shipment's environment.
+// programs of the SDLC are assembled for the shipment's environment. An artefact a shipment that precedes this one
+// shipped first is promoted, not built again: the file as it is must be the one last built, which that shipment shipped
+// (C2, since g103); once deployed, each artefact records that this shipment shipped it, as which file.
 
 import {
   KindName, EdgeName, Severity, Status, ShipmentField, ReviewEdge, ArtifactEdge, EntryField, EvidenceSource, SignatureType, TriggerType, PipelineStage,
@@ -138,6 +140,17 @@ const body = (deps: Deps): Handler => async (req) => {
   const built = new Map<string, string>()
   const recorded: Entry[] = []
   for (const step of stepsOf(pipeline, PipelineStage.produce)) {
+    // Promoted: the file a shipment that precedes shipped first, taken as it is, never built again (C2).
+    if (step.promoted?.length) {
+      const path = join(o.root, step.path!)
+      const before = step.promoted.map((s) => s.title)
+      const fingerprint = sdlc.built(path)
+      const last = step.node.evidence.filter((e) => e.source === EvidenceSource.built).map((e) => e.fingerprint)
+      if (fingerprint === undefined || fingerprint !== deps.sequences.last(last)) return refuse(o, [messages.promotedChanged(step.node.title, relative(o.root, path), before)])
+      built.set(step.node.ref, fingerprint)
+      terminal.write(messages.artifactPromoted(step.node.title, relative(o.root, path), fingerprint, before))
+      continue
+    }
     const producer = step.runs
     if (producer?.kind === KindName.delivery) await deps.deliver({ params: { command: line.deliver }, body: { args: [producer.id, line.at, o.today] } })
     if (producer?.kind === KindName.component) program(producer, head(out(step.node, EdgeName.environment)) ?? environment)
@@ -185,20 +198,21 @@ const body = (deps: Deps): Handler => async (req) => {
   ;({ c, comp } = await reread(o, engine))
   const shipment = shipmentsOf(comp).find((s) => s.ref === ref)!
   const proven = pipelineOf(comp, shipment)
-  const obligations = stepsOf(proven, PipelineStage.prove).filter((s) => !s.origin?.foundations).map((s) => s.node)
-  const statusOf = (v: View) => v.status ?? Status.unknown
+  const obligations = stepsOf(proven, PipelineStage.prove).filter((s) => !s.origin?.foundations)
+  // A step is judged by its standing when it has one (a shipment that precedes: shipped first), else by its node's status.
+  const statusOf = (s: { node: View; standing?: Status }) => s.standing ?? s.node.status ?? Status.unknown
   // A gap its policy says blocks (shipped code nothing proves) keeps it as an obligation unknown does.
   const blocking = (shipment.result<{ gaps?: readonly { node: string; obligation: string; weight?: string }[] }>()?.gaps ?? [])
     .filter((x) => x.weight === Severity.error)
   if (foundations(proven) > zero) return refuse(o, [messages.foundationsBroken(foundations(proven))])
   if (!deps.holds(obligations.map(statusOf)) || blocking.length) {
-    const missing = obligations.filter((v) => statusOf(v) !== Status.held)
+    const missing = obligations.filter((s) => statusOf(s) !== Status.held)
     const title = (ref: string) => comp.node(ref).first()?.title ?? ref
     return refuse(o, [
       messages.shipmentKept(shipment.title),
-      ...missing.flatMap((v) => [
-        messages.obligationMissing(v.title, statusOf(v)),
-        ...comp.issues({ node: v }).map((i) => messages.obligationIssue(i.what, i.owner)),
+      ...missing.flatMap((s) => [
+        messages.obligationMissing(s.node.title, statusOf(s)),
+        ...comp.issues({ node: s.node }).map((i) => messages.obligationIssue(i.what, i.owner)),
       ]),
       ...blocking.map((x) => messages.gapBlocks(title(x.node), title(x.obligation))),
     ])
@@ -231,8 +245,8 @@ const body = (deps: Deps): Handler => async (req) => {
     shipment: shipment.ref, title: shipment.title, target: shipment.field(ShipmentField.target), at: o.today, ...signed,
     artifacts: stepsOf(proven, PipelineStage.produce).map((s) => ({ node: s.node.ref, path: s.path, fingerprint: built.get(s.node.ref) })),
     foundations: { problems: foundations(proven) },
-    obligations: stepsOf(proven, PipelineStage.prove).filter((s) => !s.origin?.foundations).map(({ node: v, origin }) => ({
-      node: v.ref, kind: v.kind, status: statusOf(v), owner: v.owner, evidence: [...v.evidence, ...reviewed(v)],
+    obligations: obligations.map((step) => ({ step, v: step.node, origin: step.origin })).map(({ step, v, origin }) => ({
+      node: v.ref, kind: v.kind, status: statusOf(step), owner: v.owner, evidence: [...v.evidence, ...reviewed(v)],
       ...(origin?.obligation ? { obligation: origin.obligation.ref, via: origin.via?.ref } : {}),
       // A scenario's evidence is what it found at the build: each of its checks and its outcome.
       ...(v.kind === KindName.scenario ? { outcome: v.result() } : {}),
@@ -242,7 +256,11 @@ const body = (deps: Deps): Handler => async (req) => {
   const fingerprint = sdlc.of(dossier)
   const file = sdlc.dossier(o.root, shipment.id, o.today, fingerprint)
   save(file, sdlc.text(dossier))
-  record([...deployed, { node: shipment.ref, at: o.today, source: EvidenceSource.shipped, value: one, fingerprint, url: relative(o.root, file), ...signed }])
+  // Each artefact says this shipment shipped it, as which file: what a shipment that follows it takes (C2).
+  const shippedAs: Entry[] = stepsOf(proven, PipelineStage.produce).map((s) => ({
+    node: s.node.ref, at: o.today, source: EvidenceSource.shipped, value: one, fingerprint: built.get(s.node.ref), subject: shipment.ref, ...signed,
+  }))
+  record([...deployed, ...shippedAs, { node: shipment.ref, at: o.today, source: EvidenceSource.shipped, value: one, fingerprint, url: relative(o.root, file), ...signed }])
   terminal.write(messages.shipped(shipment.title, String(shipment.field(ShipmentField.target)), relative(o.root, file)))
   return { status: exitStatus.success, body: relative(o.root, file) }
 }

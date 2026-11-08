@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 4 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 8 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Standard library · Algebra
 
@@ -307,6 +307,13 @@ Requirement · `Checked` · **held**
 - Refines: Rules applied, not written again
 - Depends on: Counts
 
+### The artefacts a shipment ships were shipped first by those that precede it
+
+Requirement · `Preceded` · **held**
+
+- Owner: trame
+- Refines: Rules applied, not written again
+
 ### The data a shipment carries is reviewed
 
 Requirement · `Reviewed` · **held**
@@ -367,6 +374,13 @@ Acceptance criteria · `CheckedCriteria` · **held**
 
 - Owner: trame
 - Accepts: The artefacts a shipment ships are checked
+
+### Criteria of the stages
+
+Acceptance criteria · `PrecededCriteria` · **held**
+
+- Owner: trame
+- Accepts: The artefacts a shipment ships were shipped first by those that precede it
 
 ### Criteria of the data reviewed
 
@@ -1050,7 +1064,7 @@ Scenario · `ToolingInMemory` · **held**
 
 ### The standard library
 
-Artefact · `TheLibrary` · **held**
+Artefact · `TheLibrary` · **unknown**
 
 - Owner: trame
 - Path: src
@@ -1058,7 +1072,7 @@ Artefact · `TheLibrary` · **held**
 
 ### The next version
 
-Shipment · `NextVersion` · **held**
+Shipment · `NextVersion` · **unknown**
 
 - Owner: trame
 - Target: version

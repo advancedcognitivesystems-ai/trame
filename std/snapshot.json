@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-04",
+  "at": "2026-11-08",
   "nodes": [
     {
       "id": "algebra.Counts",
@@ -1771,6 +1771,26 @@
       }
     },
     {
+      "id": "obligations.Preceded",
+      "kind": "requirement",
+      "title": "The artefacts a shipment ships were shipped first by those that precede it",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "obligations.PrecededCriteria",
+      "kind": "acceptance",
+      "title": "Criteria of the stages",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "criteria": "(function)"
+      }
+    },
+    {
       "id": "obligations.Reviewed",
       "kind": "requirement",
       "title": "The data a shipment carries is reviewed",
@@ -2800,7 +2820,7 @@
       "id": "sdlc.NextVersion",
       "kind": "shipment",
       "title": "The next version",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "version"
@@ -2834,7 +2854,7 @@
       "id": "sdlc.TheLibrary",
       "kind": "artifact",
       "title": "The standard library",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "src",
@@ -4055,6 +4075,16 @@
       "from": "obligations.CheckWays",
       "to": "product.SharedRules",
       "kind": "serves"
+    },
+    {
+      "from": "obligations.Preceded",
+      "to": "product.SharedRules",
+      "kind": "refines"
+    },
+    {
+      "from": "obligations.PrecededCriteria",
+      "to": "obligations.Preceded",
+      "kind": "accepts"
     },
     {
       "from": "obligations.Reviewed",

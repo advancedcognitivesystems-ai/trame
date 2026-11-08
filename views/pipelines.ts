@@ -53,6 +53,9 @@ export default defineView({
         const role = c.from(s.node).out(ReviewEdge.by).first()
         return role ? [say.pipelinesReviewedBy(), doc.ref(role)] : [punctuation.absent]
       }
+      // Promoted: the file a shipment that precedes shipped first, not built again (C2).
+      const promoted = s.promoted ?? []
+      if (counts.any(promoted)) return [say.pipelinesPromoted(), ...lists.enumeration(promoted.map(doc.ref))]
       return s.runs && s.runs.ref !== s.node.ref ? [doc.ref(s.runs)] : [punctuation.absent]
     }
 
@@ -66,9 +69,12 @@ export default defineView({
       }
       return [say.pipelinesDeclared()]
     }
-    /** The status of a step: the foundations hold while no problem is found; another step, its node's. */
+    /**
+     * The status of a step: the foundations hold while no problem is found; a shipment that precedes, by whether it
+     * shipped first what both ship (its standing); another step, its node's.
+     */
     const statusOf = (s: PipelineStep): Status | undefined =>
-      s.origin?.foundations ? (s.origin.foundations.problems === counts.zero ? Status.held : Status.violated) : s.node.status
+      s.origin?.foundations ? (s.origin.foundations.problems === counts.zero ? Status.held : Status.violated) : s.standing ?? s.node.status
 
     const blocks: Block[] = shipments.map((shipment) => {
       const pipeline = c.pipeline?.(shipment)

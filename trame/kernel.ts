@@ -659,6 +659,16 @@ export interface DerivedObligation {
   readonly obligation: string
 }
 
+/**
+ * A shipment that precedes another (C2, since g103), as the one that follows judges it: held when it shipped first each
+ * artefact both ship, at the fingerprint that artefact was last built with; each such artefact, with that fingerprint.
+ */
+export interface Preceding {
+  readonly node: string
+  readonly status: Status
+  readonly artifacts: readonly { readonly node: string; readonly fingerprint?: string }[]
+}
+
 /** A noun, in the singular and in the plural: what a count counts. */
 export interface Noun {
   one: string
@@ -1004,6 +1014,16 @@ export interface PipelineStep {
    * an obligation of its policy and the reached node that brought it in, or nothing (it ships it, or requires it).
    */
   readonly origin?: { readonly foundations?: { readonly problems: number }; readonly obligation?: View; readonly via?: View }
+  /**
+   * What a step to prove is judged by when it is not its node's own status: a shipment that precedes this one holds for
+   * it when it shipped first, as they are now, the artefacts both ship (C2, since g103).
+   */
+  readonly standing?: Status
+  /**
+   * An artefact a shipment that precedes this one shipped first: it is not built again, but taken as it was shipped, the
+   * same file (C2, since g103).
+   */
+  readonly promoted?: readonly View[]
 }
 
 /** A shipment's pipeline, as trame ship runs it: the environment its programs are assembled for, its steps in order, and what keeps it from running. */

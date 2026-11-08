@@ -1,6 +1,6 @@
 # Architecture decisions
 
-*The choices that shape the product without being values, in force on 4 November 2026: why each was taken, what was rejected, and the nodes that apply it.*
+*The choices that shape the product without being values, in force on 8 November 2026: why each was taken, what was rejected, and the nodes that apply it.*
 
 > **6 architecture decisions, 3 held by the nodes that apply them**
 
@@ -122,7 +122,7 @@ Consequences: The component runs in a browser; its realizations are the browser'
 
 ### The SDLC is in the graph
 
-`SdlcInTheGraph` · `src/sdlc.ts:431` · status: **unknown**
+`SdlcInTheGraph` · `src/sdlc.ts:446` · status: **unknown**
 
 What makes a version of Poselia available is declared with the rest: its artefact, the checks and the review it requires and who signs them, the programs that check and deploy it, tested in memory; trame ship runs it and keeps the evidence. The rules of the graph are rules of the std library, applied with their parameters.
 

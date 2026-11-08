@@ -154,6 +154,9 @@ const kind = defineKind({
       ]),
       ...(built ? [doc.para(...say.artifactBuilt(doc.date(built.at), built.by ?? self.owner ?? g.lib.texts.empty, doc.ident(built.fingerprint ?? g.lib.texts.empty)))] : []),
       ...published.map((e) => doc.para(...say.artifactPublished(doc.date(e.at), doc.ident(e.url ?? g.lib.texts.empty)))),
+      // Where it was shipped, by which shipment and as which file: what a shipment that follows takes (C2).
+      ...self.evidence.filter((e) => e.source === EvidenceSource.shipped).flatMap((e) => g.node(e.subject ?? g.lib.texts.empty).nodes()
+        .map((s) => doc.para(...say.artifactShipped(doc.ref(s), doc.date(e.at), doc.ident(e.fingerprint ?? g.lib.texts.empty))))),
     ]
   },
 })

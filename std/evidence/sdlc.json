@@ -57,5 +57,28 @@
     "signature": "attribution",
     "engine": "8a22dee5b7b11c79",
     "seal": "ea5bfa9077a5359aa290db8fc3ef1861d0468252ce297906aea50d899fc2be13"
+  },
+  {
+    "node": "sdlc.NextVersion",
+    "at": "2026-11-08",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "7598e822",
+    "url": "evidence/shipments/NextVersion-2026-11-08-7598e822.json",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "8e294a7e55c110cf063f5327e1cc852ec7acd09720e4c9413cb7460defafa456"
+  },
+  {
+    "node": "sdlc.TheLibrary",
+    "at": "2026-11-08",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "179161ed9f17cf722ea6788c70f57eb80b3ab13b179d892a65b013972c118d7f",
+    "code": "2760ca18",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "8a22dee5b7b11c79",
+    "seal": "a3dbfccc49ffdd7c34a0b1f3ce3cb2fcfc660463753e3cf6a8afdae38b6ac4a6"
   }
 ]

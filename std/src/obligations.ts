@@ -3,7 +3,7 @@
 import { requirement } from "#trame/kinds/requirement"
 import { acceptance } from "#trame/kinds/acceptance"
 import { vocabulary, type WordOf } from "#trame/kinds/vocabulary"
-import { KindName, EdgeName, CheckEdge, ReviewEdge } from "#trame/kernel"
+import { KindName, EdgeName, CheckEdge, ReviewEdge, ShipmentEdge } from "#trame/kernel"
 import type { GraphSketch, SketchNode, ObligationReach, ObligationFinding } from "#trame/kernel"
 import { SharedRules } from "./product"
 import { Counts } from "./algebra"
@@ -166,6 +166,25 @@ export const Safe = requirement({
   }),
 })
 
+/**
+ * The artefacts a shipment ships were shipped first by those that precede it
+ * Each shipment named that ships an artefact this one ships is to prove: it must have shipped that artefact first, the
+ * same file, before this one may take it (a public version after its preview, a release after staging). A shipment may
+ * wait for several; each artefact waits for every one of them that ships it. An artefact none of them ships is a gap:
+ * it would go further without having been anywhere before.
+ */
+export const Preceded = requirement({
+  owner: "trame",
+  refines: [SharedRules],
+  body: () => (sketch: GraphSketch, reach: ObligationReach, p: { by: readonly SketchNode[] }): ObligationFinding => {
+    const ships = (s: SketchNode, a: string) => edgesFrom(sketch, s.ref, ShipmentEdge.ships).includes(a)
+    return {
+      obliged: once(reach.shipped.flatMap((a) => p.by.filter((s) => ships(s, a)).map((s) => ({ node: s.ref, via: a })))),
+      gaps: reach.shipped.filter((a) => !p.by.some((s) => ships(s, a))),
+    }
+  },
+})
+
 // A sketch written by hand, for the criteria.
 const sketch = (nodes: readonly (readonly [string, string, string?])[], edges: readonly (readonly [string, string, string])[]): GraphSketch => ({
   nodes: nodes.map(([ref, kind, library]): SketchNode => ({ ref, kind, module: "m", library, title: ref, effects: [], field: () => undefined })),
@@ -184,6 +203,28 @@ const fixture = sketch(
     ["Draw", "packages", "Three"]],
 )
 const shipping: ObligationReach = { shipped: ["Page"], reached: ["Page", "Show", "Draw", "Words", "Poses"] }
+
+// Three stages: a preview of the page, a beta of the page and its program, a public version of both.
+const stages = sketch(
+  [["Page", "artifact"], ["Api", "artifact"], ["Preview", "shipment"], ["Beta", "shipment"], ["Public", "shipment"]],
+  [["Preview", "ships", "Page"], ["Beta", "ships", "Page"], ["Beta", "ships", "Api"], ["Public", "ships", "Page"], ["Public", "ships", "Api"]],
+)
+const node = (graph: GraphSketch, ref: string) => graph.nodes.filter((n) => n.ref === ref)
+const publicVersion: ObligationReach = { shipped: ["Page", "Api"], reached: ["Page", "Api"] }
+
+/** Criteria of the stages */
+export const PrecededCriteria = acceptance({
+  accepts: Preceded,
+  owner: "trame",
+  criteria: (criterion) => {
+    criterion("Each shipment named that ships an artefact this one ships is to prove", () =>
+      refs(Preceded(stages, publicVersion, { by: [...node(stages, "Preview"), ...node(stages, "Beta")] })) === "Beta Preview")
+    criterion("An artefact none of them ships is a gap", () =>
+      Preceded(stages, publicVersion, { by: node(stages, "Preview") }).gaps.join(" ") === "Api")
+    criterion("A shipment named that ships none of its artefacts is not to prove", () =>
+      refs(Preceded(stages, { shipped: ["Api"], reached: ["Api"] }, { by: [...node(stages, "Preview"), ...node(stages, "Beta")] })) === "Beta")
+  },
+})
 
 /** Criteria of the code verified */
 export const VerifiedCriteria = acceptance({

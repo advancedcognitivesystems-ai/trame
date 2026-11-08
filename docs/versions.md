@@ -1,6 +1,6 @@
 # Versions
 
-*The releases of the components on 4 November 2026, newest first. A project runs the release its configuration pins.*
+*The releases of the components on 8 November 2026, newest first. A project runs the release its configuration pins.*
 
 > **102 releases of 1 component; 95 releases on a language of their own**
 

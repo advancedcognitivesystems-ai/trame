@@ -226,3 +226,16 @@ export const R0_16_0 = release({
   language: "shared",
   serves: [CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
 })
+
+/**
+ * Version 0.17.0
+ */
+export const R0_17_0 = release({
+  owner: "trame",
+  version: "0.17.0",
+  date: "2026-11-08",
+  what: "The family Preceded: a shipment waits for those that precede it to ship first the same artefacts, the same file (C2)",
+  fingerprint: "ad52abcce7119bba",
+  language: "shared",
+  serves: [CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
+})

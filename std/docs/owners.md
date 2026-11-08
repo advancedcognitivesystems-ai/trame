@@ -1,10 +1,10 @@
 # Owners
 
-*What each person must decide, settle or watch on 4 November 2026, and what they own.*
+*What each person must decide, settle or watch on 8 November 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 3 | 162 |
+| trame | 0 | 0 | 5 | 164 |
 
 <a id="trame"></a>
 
@@ -14,6 +14,8 @@
 |---|---|---|---|---|
 | warning | Computes the same kind of answer from the same kind of arguments as “A node reaches what it must” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [A node never reaches what it must not](rules.md#NeverReaches) | trame |  |
 | warning | Computes the same kind of answer from the same kind of arguments as “A node never reaches what it must not” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [A node reaches what it must](rules.md#Reaches) | trame |  |
+| warning | To ship: The standard library is unknown | [The next version](sdlc.md#NextVersion) | trame |  |
+| warning | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The standard library](sdlc.md#TheLibrary) | trame |  |
 | warning | No realization, in any environment | [Where a package comes from](tooling.md#PackageSources) | trame |  |
 
 ### Owns
@@ -54,6 +56,8 @@
 | [The artefacts a shipment ships are checked](obligations.md#Checked) | Requirement | **held** |
 | [Criteria of the artefacts checked](obligations.md#CheckedCriteria) | Acceptance criteria | **held** |
 | [Ways of checking](obligations.md#CheckWays) | Vocabulary |  |
+| [The artefacts a shipment ships were shipped first by those that precede it](obligations.md#Preceded) | Requirement | **held** |
+| [Criteria of the stages](obligations.md#PrecededCriteria) | Acceptance criteria | **held** |
 | [The data a shipment carries is reviewed](obligations.md#Reviewed) | Requirement | **held** |
 | [Criteria of the data reviewed](obligations.md#ReviewedCriteria) | Acceptance criteria | **held** |
 | [The project's rules hold](obligations.md#Ruled) | Requirement | **held** |
@@ -136,11 +140,11 @@
 | [The tooling, in memory](scenarios.md#ToolingInMemory) | Scenario | **held** |
 | [Its decisions applied](sdlc.md#DecisionsApplied) | Obligation |  |
 | [Its functions verified](sdlc.md#FunctionsVerified) | Obligation |  |
-| [The next version](sdlc.md#NextVersion) | Shipment | **held** |
+| [The next version](sdlc.md#NextVersion) | Shipment | **unknown** |
 | [Its packages safe](sdlc.md#PackagesSafe) | Obligation |  |
 | [Its requirements held](sdlc.md#RequirementsServed) | Obligation |  |
 | [Its rules held](sdlc.md#RulesHeld) | Obligation |  |
-| [The standard library](sdlc.md#TheLibrary) | Artefact | **held** |
+| [The standard library](sdlc.md#TheLibrary) | Artefact | **unknown** |
 | [How a version is made](sdlc.md#VersionMode) | Policy |  |
 | [Exit status](system.md#ExitStatus) | Standard |  |
 | [Node.js process arguments](system.md#NodeArguments) | Standard |  |

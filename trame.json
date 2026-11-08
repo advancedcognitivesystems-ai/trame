@@ -5,8 +5,8 @@
   ],
   "libraries": {
     "std": {
-      "at": "std/releases/0.16.0",
-      "version": "0.16.0"
+      "at": "std/releases/0.17.0",
+      "version": "0.17.0"
     }
   },
   "engine": "generations/g102"

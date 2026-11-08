@@ -587,6 +587,10 @@ export const CommandMessages = catalog({
     artifactWithoutPath: (title: string) => `${title} says nowhere where it lives: give its path`,
     artifactMissing: (title: string, path: string) => `${title}: ${path} is not there once produced`,
     artifactBuilt: (title: string, path: string, fingerprint: string) => `built ${title}: ${path} (${fingerprint.slice(0, 12)})`,
+    artifactPromoted: (title: string, path: string, fingerprint: string, before: string[]) =>
+      `promoted ${title}: ${path} (${fingerprint.slice(0, 12)}), the file ${before.join(", ")} shipped first`,
+    promotedChanged: (title: string, path: string, before: string[]) =>
+      `${title}: ${path} is not the file last built, which ${before.join(", ")} must ship first: ship it again, then this one`,
     checkRan: (title: string, passed: boolean) => `${passed ? "passed" : "FAILED"}: ${title}`,
     evidenceRecorded: (count: number, file: string) => `${plural(count, { one: "piece of evidence", other: "pieces of evidence" })} recorded in ${file}`,
     shipmentKept: (title: string) => `"${title}" does not ship (requirement "Ship only what holds"):`,
@@ -815,6 +819,10 @@ export const ScenarioMessages = catalog({
     unknownWithoutFallback: (word: string) => `Without such a command, "${word}" is refused`,
     pageDelivered: (delivery: string) => `trame deliver writes the page of ${delivery}, one document`,
     runnersShipped: (shipment: string) => `${shipment}: its files written by their writers, shipped, with a dossier`,
+    stageWaits: (shipment: string, before: string) => `${shipment} waits for ${before} to ship the page first`,
+    stagePromotes: (shipment: string, before: string) =>
+      `Once ${before} shipped the page, ${shipment} takes it as ${before} shipped it: promoted, not built again`,
+    stageRefusesAnother: (shipment: string, before: string) => `${shipment} refuses a page changed since ${before} shipped it`,
     previewWouldShip: (shipment: string) => `${shipment}, in a dry run: delivered, checked by its program, it would ship; no dossier`,
     builtWithItsCode: () => "What trame ship built carries the code it was made from",
     recordsSealed: () => "Each record of evidence carries a seal that matches what it says",

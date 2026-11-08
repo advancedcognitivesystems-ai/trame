@@ -3,10 +3,12 @@
 // program makes (required, or derived by its policy); every obligation to prove: the foundations first (no literal, a
 // sound graph, with the problems that break them), what it ships, what it requires, what its policy derives (with the
 // obligation and the reached node behind each); the entry points that deploy it, in order; the dossier. What keeps it from
-// running is said: an artefact that says nowhere where it lives, programs with no environment to assemble them for.
+// running is said: an artefact that says nowhere where it lives, programs with no environment to assemble them for. An
+// artefact a shipment that precedes this one shipped first is not produced again but promoted, the same file; that
+// shipment is to prove as the shipment's kind judges it: shipped first, as the artefacts are now (C2, since g103).
 
 import { KindName, ArtifactEdge, ArtifactField, CheckEdge, ShipmentEdge, PipelineStage } from "../../../trame/kernel"
-import type { DerivedObligation, Graph, Pipeline, PipelineStep, ProvidedBy, View } from "../../../trame/kernel"
+import type { DerivedObligation, Graph, Pipeline, PipelineStep, Preceding, ProvidedBy, View } from "../../../trame/kernel"
 import type { CommandMessages } from "../../messages"
 import type { Sequences, ValueTypes } from "#std/algebra"
 
@@ -38,6 +40,10 @@ const body = ({ sequences: { head }, values, messages }: Deps) => {
     const required = unique([...out(shipment, ShipmentEdge.requires), ...derived.map((d) => d.node).filter((v) => !offered(v))])
     const checks = required.filter((v) => v.kind === KindName.check)
     const errors: string[] = []
+    // The shipments that precede it, as its kind judges them: what each shipped first is promoted, not built again.
+    const preceded = shipment.result<{ preceded?: readonly Preceding[] }>()?.preceded ?? []
+    const standing = (v: View) => preceded.find((p) => p.node === v.ref)?.status
+    const before = (a: View) => preceded.filter((p) => p.artifacts.some((x) => x.node === a.ref)).flatMap((p) => g.node(p.node).nodes())
 
     // The programs assembled first (a page's program, before the page that carries it), then what runs or writes.
     const assembled = (a: View) => head(out(a, ArtifactEdge.producedBy))?.kind === KindName.component
@@ -46,7 +52,9 @@ const body = ({ sequences: { head }, values, messages }: Deps) => {
       const runs = head(out(a, ArtifactEdge.producedBy))
       const path = a.result<Record<string, unknown>>()?.[ArtifactField.path]
       if (!values.isText(path)) errors.push(messages.artifactWithoutPath(a.title))
-      return { stage: PipelineStage.produce, node: a, ...(runs ? { runs } : {}), ...(values.isText(path) ? { path } : {}) }
+      const promoted = before(a)
+      const made = promoted.length ? { promoted } : runs ? { runs } : {}
+      return { stage: PipelineStage.produce, node: a, ...made, ...(values.isText(path) ? { path } : {}) }
     })
     const check = checks.flatMap((k): PipelineStep[] => {
       const runs = head(out(k, CheckEdge.runs))
@@ -59,7 +67,8 @@ const body = ({ sequences: { head }, values, messages }: Deps) => {
       { stage: PipelineStage.prove, node: shipment, origin: { foundations: { problems } } },
       ...unique([...out(shipment, ShipmentEdge.ships), ...required]).map((v): PipelineStep => {
         const d = declared.has(v.ref) ? undefined : derived.find((x) => x.node.ref === v.ref)
-        return { stage: PipelineStage.prove, node: v, ...(d ? { origin: d.origin } : {}) }
+        const judged = standing(v)
+        return { stage: PipelineStage.prove, node: v, ...(d ? { origin: d.origin } : {}), ...(judged === undefined ? {} : { standing: judged }) }
       }),
     ]
     const deploy = out(shipment, ShipmentEdge.deploys).map((d): PipelineStep => ({ stage: PipelineStage.deploy, node: d, runs: d }))

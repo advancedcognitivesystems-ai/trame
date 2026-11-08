@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-04",
+  "at": "2026-11-08",
   "nodes": [
     {
       "id": "app.BrowserScreen",
@@ -3739,10 +3739,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "std",
-        "version": "0.16.0",
+        "version": "0.17.0",
         "joins": "library",
         "from": "path",
-        "at": "../../std/releases/0.16.0"
+        "at": "../../std/releases/0.17.0"
       }
     },
     {
@@ -4482,6 +4482,20 @@
           "edge": "serves",
           "atLeast": 1
         }
+      }
+    },
+    {
+      "id": "sdlc.AfterThePreview",
+      "kind": "obligation",
+      "title": "After the preview",
+      "fields": {
+        "owner": "ghalaax",
+        "params": {
+          "by": [
+            "sdlc.Preview"
+          ]
+        },
+        "gaps": "error"
       }
     },
     {
@@ -7561,6 +7575,11 @@
       "kind": "language"
     },
     {
+      "from": "sdlc.AfterThePreview",
+      "to": "product.PractiseGuided",
+      "kind": "serves"
+    },
+    {
       "from": "sdlc.AllChecks",
       "to": "product.PractiseGuided",
       "kind": "serves"
@@ -7889,6 +7908,11 @@
       "from": "sdlc.ProgramChecks",
       "to": "product.PractiseGuided",
       "kind": "serves"
+    },
+    {
+      "from": "sdlc.PublicMode",
+      "to": "sdlc.AfterThePreview",
+      "kind": "obligations"
     },
     {
       "from": "sdlc.PublicMode",
@@ -8388,6 +8412,11 @@
     {
       "from": "marks.MarkOnBodyCriteria",
       "to": "body.AngleBetween",
+      "kind": "uses"
+    },
+    {
+      "from": "sdlc.AfterThePreview",
+      "to": "sdlc.Preview",
       "kind": "uses"
     }
   ],

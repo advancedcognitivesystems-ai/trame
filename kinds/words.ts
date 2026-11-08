@@ -612,6 +612,7 @@ const body = () => ({
   artifactWithoutPath: () => "Says nowhere where it lives: give its path (only a delivery says it for its artefact)",
   artifactBuilt: (at: Inline, by: string, fingerprint: Inline): Inline[] => ["Built ", at, " by ", by, ", fingerprint ", fingerprint, "."],
   artifactPublished: (at: Inline, where: Inline): Inline[] => ["Published ", at, ": ", where],
+  artifactShipped: (shipment: Inline, at: Inline, fingerprint: Inline): Inline[] => ["Shipped by ", shipment, " ", at, ", fingerprint ", fingerprint, "."],
   checkCheck: () => "Check",
   checkChecks: () => "Checks",
   checkOn: () => "Checks",
@@ -675,6 +676,7 @@ const body = () => ({
   shipmentObligation: () => "Obligation",
   shipmentStatus: () => "Status",
   shipmentMissing: (what: string, status: string) => `To ship: ${what} is ${status}`,
+  shipmentNotPreceded: (what: string, before: string) => `To ship: ${what}, shipped first by ${before} as it is now`,
   shipmentLast: (at: Inline, by: string, dossier: Inline | undefined): Inline[] => ["Shipped ", at, " by ", by, ...(dossier ? ["; its dossier: ", dossier] : []), "."],
   shipmentNever: () => "Not shipped yet.",
 })

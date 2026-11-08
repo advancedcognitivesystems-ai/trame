@@ -1,9 +1,9 @@
 import {
   defineKind, field, edge, optionalEdge, hole, doc, keysOf, fieldsOf, Status, Severity, KindName, EdgeName, AnyTarget, ShipmentField, ShipmentEdge,
   ArtifactEdge, CheckEdge, PolicyEdge, ObligationField, EvidenceSource,
-  type Node, type View, type Graph, type GraphSketch, type ObligationReach, type ObligationFinding, type DerivedObligation,
+  type Node, type View, type Graph, type GraphSketch, type ObligationReach, type ObligationFinding, type DerivedObligation, type Preceding,
 } from "../trame/kernel"
-import { latestOf, isVersion, ownNodes } from "./artifact"
+import { latestOf, isVersion, ownNodes, builtFingerprint } from "./artifact"
 import { sketchOf, resolved } from "./rule"
 import { wiredBy } from "./scenario"
 import words from "./words"
@@ -27,8 +27,32 @@ const E = keysOf(edges)
 /** A gap a shipment's policy finds: the reached node nothing proves, the obligation that found it, what it weighs. */
 interface Gap { node: string; obligation: string; weight?: string }
 
-/** What a shipment computes once: the obligations its policy derives, and the gaps it finds. */
-interface Result { derived: DerivedObligation[]; gaps: Gap[] }
+/**
+ * What a shipment computes once: the obligations its policy derives, the gaps it finds, and how each shipment that
+ * precedes it stands for it (C2).
+ */
+interface Result { derived: DerivedObligation[]; gaps: Gap[]; preceded: Preceding[] }
+
+/**
+ * How a shipment that precedes this one stands for it (C2, since g103): for each artefact both ship, the fingerprint it
+ * was last built with, when that one shipped it first at that fingerprint (the same file); held when it shipped first
+ * every one of them. What the shipment that precedes must prove itself is its own business.
+ */
+const precedence = (self: View, before: View, g: Graph): Preceding => {
+  const ships = (s: View) => g.from(s).out(E.ships).nodes()
+  const artifacts = ships(self).filter((a) => ships(before).some((b) => b.ref === a.ref)).map((a) => {
+    const fingerprint = builtFingerprint(a)
+    const first = fingerprint !== undefined &&
+      a.evidence.some((e) => e.source === EvidenceSource.shipped && e.subject === before.ref && e.fingerprint === fingerprint)
+    return first ? { node: a.ref, fingerprint } : { node: a.ref }
+  })
+  const held = g.lib.counts.any(artifacts) && artifacts.every((a) => a.fingerprint !== undefined)
+  return { node: before.ref, status: held ? Status.held : Status.unknown, artifacts }
+}
+
+/** The status an obligation is judged by: a shipment that precedes, by its precedence; any other node, by its own. */
+const standing = (self: View, v: View): Status | undefined =>
+  self.result<Result>()?.preceded.find((p) => p.node === v.ref)?.status ?? v.status
 
 /**
  * What a shipment reaches: the artefacts it ships and what produces them; the programs behind them (a delivery's
@@ -94,7 +118,7 @@ const kind = defineKind({
 
   evaluate(self, g): Result {
     const policy = g.from(self).out(E.policy).first()
-    if (!policy) return { derived: [], gaps: [] }
+    if (!policy) return { derived: [], gaps: [], preceded: [] }
     const { values } = g.lib
     const reach = reachOf(self, g)
     const sketch: GraphSketch = sketchOf(g)
@@ -111,11 +135,16 @@ const kind = defineKind({
     }
     // A decision the shipment applies is proven by the shipment, not required of it: its status reads the shipment's.
     const applied = new Set(g.from(self).in(EdgeName.appliedBy).nodes().map((v) => v.ref))
-    return { derived: derived.filter((d, i) => !applied.has(d.node) && derived.findIndex((x) => x.node === d.node) === i), gaps }
+    const kept = derived.filter((d, i) => !applied.has(d.node) && derived.findIndex((x) => x.node === d.node) === i)
+    // A shipment it derives is one that precedes it (Preceded): judged by whether it shipped first what both ship.
+    const preceded = kept.flatMap((d) => g.node(d.node).nodes())
+      .filter((v) => v.kind === KindName.shipment && v.ref !== self.ref)
+      .map((before) => precedence(self, before, g))
+    return { derived: kept, gaps, preceded }
   },
 
   status(self, g) {
-    const all = obligations(self, g).map((v) => v.status)
+    const all = obligations(self, g).map((v) => standing(self, v))
     if (all.includes(Status.violated)) return Status.violated
     if (all.includes(Status.blocked)) return Status.blocked
     const blocking = (self.result<Result>()?.gaps ?? []).some((x) => x.weight === Severity.error)
@@ -124,8 +153,14 @@ const kind = defineKind({
 
   holes: (self, g) => [
     ...obligations(self, g)
-      .filter((v) => v.status !== Status.held)
-      .map((v) => hole.warning(say.shipmentMissing(v.title, String(v.status ?? Status.unknown)), v.owner ?? self.owner)),
+      .filter((v) => standing(self, v) !== Status.held)
+      .flatMap((v) => {
+        const before = self.result<Result>()?.preceded.find((p) => p.node === v.ref)
+        if (!before) return [hole.warning(say.shipmentMissing(v.title, String(v.status ?? Status.unknown)), v.owner ?? self.owner)]
+        // A shipment that precedes and has not shipped first, as they are now, the artefacts both ship: one hole each.
+        return before.artifacts.filter((a) => a.fingerprint === undefined).flatMap((a) => g.node(a.node).nodes())
+          .map((a) => hole.warning(say.shipmentNotPreceded(a.title, v.title), v.owner ?? self.owner))
+      }),
     ...(self.result<Result>()?.gaps ?? []).flatMap((x) => {
       const gap = g.node(x.node).first()
       const obligation = g.node(x.obligation).first()
@@ -153,7 +188,7 @@ const kind = defineKind({
     return [
       doc.facts([{ label: say.shipmentTarget(), value: [doc.ident(String(self.field(F.target)))] }]),
       doc.table([say.shipmentObligation(), say.shipmentStatus(), say.shipmentOrigin()],
-        obligations(self, g).map((v) => [[doc.ref(v)], [doc.status(v.status ?? Status.unknown)], originOf(v)])),
+        obligations(self, g).map((v) => [[doc.ref(v)], [doc.status(standing(self, v) ?? Status.unknown)], originOf(v)])),
       last ? doc.para(...say.shipmentLast(doc.date(last.at), last.by ?? texts.empty, last.url ? doc.ident(last.url) : undefined)) : doc.para(say.shipmentNever()),
     ]
   },

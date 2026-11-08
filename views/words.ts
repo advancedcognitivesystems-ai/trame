@@ -272,6 +272,7 @@ const body = () => ({
   pipelinesEvidence: (at: Inline, by: string): Inline[] => [at, ` by ${by} `],
   pipelinesItself: () => "itself",
   pipelinesByHand: () => "by hand",
+  pipelinesPromoted: () => "promoted, as shipped first by ",
   pipelinesSignedBy: () => ", signed by ",
   pipelinesReviewedBy: () => "reviewed by ",
   pipelinesCommand: (id: string) => `trame ship ${id} --by <name>`,

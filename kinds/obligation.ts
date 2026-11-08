@@ -1,6 +1,6 @@
 import {
   defineKind, field, optional, edge, optionalEdge, hole, doc, keysOf, edgesOf, KindName, EdgeName, Severity, ObligationField,
-  type Node,
+  type Node, type AnyNode, type SketchNode,
 } from "../trame/kernel"
 import { adrKind } from "./adr"
 import words from "./words"
@@ -53,12 +53,22 @@ const kind = defineKind({
 /** What a family is given: the third parameter of its rule (the graph's sketch and the reach come first). */
 type ParamsOf<R> = R extends (sketch: never, reach: never, params: infer P) => unknown ? P : never
 
+/**
+ * What a project writes for what a family is given: a node where the family reads it in the graph's sketch (the
+ * shipments that precede, for Preceded), the rest as the family types it.
+ */
+type Given<P> = P extends SketchNode ? AnyNode
+  : P extends readonly (infer X)[] ? readonly Given<X>[]
+  : P extends (...args: never[]) => unknown ? P
+  : P extends object ? { [K in keyof P]: Given<P[K]> }
+  : P
+
 interface ObligationInput<R> {
   owner: string
   /** The family it applies: a requirement of #std/obligations, or of the project. */
   applies: R
-  /** What the family is given, as its rule types it. */
-  params?: ParamsOf<R>
+  /** What the family is given, as its rule types it (a node of the graph where it reads one of the sketch). */
+  params?: Given<ParamsOf<R>>
   /** What a gap the family finds weighs: an error of the graph, or a warning while the project gets there. */
   gaps?: typeof Severity.error | typeof Severity.warning
   /** Why it is asked. */

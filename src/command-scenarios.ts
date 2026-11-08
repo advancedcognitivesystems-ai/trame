@@ -1,7 +1,7 @@
 /** Trame · Scenarios of the commands */
 
-import type { Bundle, Payload } from "../trame/kernel"
-import { AmendmentField, BundleMode, EvidenceSource, KindName, Severity, ShipmentEdge, Status, TriggerType } from "../trame/kernel"
+import type { Bundle, Payload, Pipeline } from "../trame/kernel"
+import { AmendmentField, BundleMode, EvidenceSource, KindName, PipelineStage, Severity, ShipmentEdge, Status, TriggerType } from "../trame/kernel"
 import { scenario } from "../kinds/scenario"
 import { decision } from "../kinds/decision"
 import {
@@ -450,7 +450,7 @@ export const ProjectSamples = decision<{
   release: { version: string; what: string; by: string }
   imported: { library: string; specifier: string; module: string }
   delivery: string
-  shipments: { runners: string; preview: string }
+  shipments: { runners: string; preview: string; publicVersion: string }
   handCheck: { check: string; tester: string; stranger: string }
   started: { title: string; owner: string }
   registry: { home: string; generation: string }
@@ -460,7 +460,7 @@ export const ProjectSamples = decision<{
     release: { version: "99.0.0", what: "A version released in memory, by a scenario", by: "claude" },
     imported: { library: "std", specifier: "#std/*", module: "src/algebra.ts" },
     delivery: "PoseliaPage",
-    shipments: { runners: "RunnersWritten", preview: "Preview" },
+    shipments: { runners: "RunnersWritten", preview: "Preview", publicVersion: "PublicVersion" },
     handCheck: { check: "OnAPhone", tester: "ghalaax", stranger: "someone-else" },
     started: { title: "Started in memory", owner: "ghalaax" },
     registry: { home: ".", generation: "g93" },
@@ -867,6 +867,56 @@ export const ShipmentsRun = scenario({
       refused = terminalLog.lines().some((l) => l.startsWith(samples.handCheck.stranger))
     }
     check(messages.strangerRefused(samples.handCheck.stranger), refused)
+  },
+})
+
+/**
+ * Stages shipped in order
+ * In the application, its evidence of the SDLC set aside: its public version waits for its preview to ship the page
+ * first; once the preview shipped it (deployed: its programs answer they checked and placed it), the public version
+ * takes the page as the preview shipped it, promoted rather than built again; a page changed since is refused, until
+ * the preview ships it again.
+ */
+export const StagesShipped = scenario({
+  owner: "trame",
+  verifies: [Ship, ShipmentPipeline],
+  env: Test,
+  deps: {
+    ship: Ship, processLog: ProcessLog, terminalLog: TerminalLog, currentProcess: Process, paths: Paths, trees: FileTrees, writing: FileWriting,
+    compiler: Compiler, clock: Clock, pipeline: ShipmentPipeline, commands: CommandMessages, layout: Layout, records: ShippingRecords,
+    projects: ScenarioProjects, samples: ProjectSamples, line: TrameCommands, exitStatus: ExitStatus, texts: Texts, counts: Counts, messages: ScenarioMessages,
+  },
+  body: (d) => async (check) => {
+    const { processLog, terminalLog, paths, samples, line, exitStatus, messages } = d
+    processLog.enter(d.projects.application)
+    const home = d.currentProcess.cwd()
+    d.trees.remove(paths.join(home, d.layout.evidence, d.records.evidence + d.layout.evidenceExtension))
+    const { preview, publicVersion } = samples.shipments
+    const pipelineOf = async (id: string): Promise<Pipeline | undefined> => {
+      const c = await d.compiler.compileAt(await d.compiler.load(home), d.clock.today())
+      const shipment = c.nodes.map((n) => c.graph.view(n)).find((v) => v.kind === KindName.shipment && v.id === id)
+      return shipment && d.pipeline(c.graph, shipment, d.counts.zero)
+    }
+    const standing = (p: Pipeline | undefined) => p?.steps.find((s) => s.standing !== undefined)?.standing
+    check(messages.stageWaits(publicVersion, preview), standing(await pipelineOf(publicVersion)) === Status.unknown)
+    // Each program the preview starts (its check, its deployment) answers it did what it does.
+    const started = (await pipelineOf(preview))?.steps.filter((s) => s.stage === PipelineStage.check || s.stage === PipelineStage.deploy) ?? []
+    for (const _ of started) processLog.answer(d.texts.empty, exitStatus.success)
+    const by = [line.by, samples.handCheck.tester]
+    const shipped = await d.ship({ params: { command: line.ship }, body: { args: [preview, ...by] } })
+    const after = await pipelineOf(publicVersion)
+    const [page] = (after?.steps ?? []).filter((s) => d.counts.any(s.promoted ?? []))
+    check(messages.stagePromotes(publicVersion, preview), shipped.status === exitStatus.success && standing(after) === Status.held && page !== undefined)
+    // The page written again since, by hand: not the file the preview shipped.
+    if (page?.path) d.writing.writeFileSync(paths.join(home, page.path), d.texts.empty)
+    const refusal = page?.path && d.commands.promotedChanged(page.node.title, page.path, (page.promoted ?? []).map((s) => s.title))
+    let refused = false
+    try {
+      await d.ship({ params: { command: line.ship }, body: { args: [publicVersion, ...by, line.dryRun] } })
+    } catch {
+      refused = terminalLog.lines().some((l) => l === refusal)
+    }
+    check(messages.stageRefusesAnother(publicVersion, preview), refused)
   },
 })
 

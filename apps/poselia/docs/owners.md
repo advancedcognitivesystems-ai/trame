@@ -1,12 +1,12 @@
 # Owners
 
-*What each person must decide, settle or watch on 4 November 2026, and what they own.*
+*What each person must decide, settle or watch on 8 November 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
 | A teacher who practises | 0 | 0 | 4 | 0 |
 | People who try it on a phone | 0 | 0 | 1 | 0 |
-| ghalaax | 0 | 0 | 5 | 212 |
+| ghalaax | 0 | 0 | 6 | 213 |
 
 <a id="A teacher who practises"></a>
 
@@ -48,6 +48,7 @@
 
 | Severity | What | Where | Owner | Consequence |
 |---|---|---|---|---|
+| warning | To ship: Poselia's page, shipped first by A preview as it is now | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
 | warning | To ship: On a phone is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
 | warning | To ship: The content, reviewed is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
 | warning | To ship: The content is data, behind a port is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
@@ -206,6 +207,7 @@
 | [Moments a scenario looks at](scenarios.md#ScenarioMoments) | Decision |  |
 | [Moments of the settings a scenario looks at](scenarios.md#SettingsMoments) | Decision |  |
 | [Each decision of architecture serves the product](sdlc.md#AdrsServeTheProduct) | Architecture rule | **held** |
+| [After the preview](sdlc.md#AfterThePreview) | Obligation |  |
 | [The page is checked, by hand too](sdlc.md#AllChecks) | Obligation |  |
 | [Code serves the product](sdlc.md#CodeServesTheProduct) | Architecture rule | **held** |
 | [The code shown is verified](sdlc.md#CodeVerified) | Obligation |  |
