@@ -5,6 +5,7 @@
       "id": "notes.Note",
       "kind": "entity",
       "title": "A note",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "fields": {
@@ -27,7 +28,15 @@
             }
           }
         },
-        "key": "title"
+        "key": "title",
+        "changes": {
+          "renamed": {
+            "title": "heading"
+          },
+          "dropped": [
+            "mood"
+          ]
+        }
       }
     },
     {

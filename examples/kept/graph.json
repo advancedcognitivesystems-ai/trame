@@ -5,7 +5,8 @@
       "id": "notes.Note",
       "kind": "entity",
       "title": "A note",
-      "source": "src/notes.ts:10",
+      "source": "src/notes.ts:11",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "fields": {
@@ -28,7 +29,45 @@
             }
           }
         },
-        "key": "title"
+        "key": "title",
+        "changes": {
+          "renamed": {
+            "title": "heading"
+          },
+          "dropped": [
+            "mood"
+          ]
+        }
+      },
+      "result": {
+        "deployed": {
+          "fields": {
+            "title": {
+              "type": "text"
+            },
+            "written": {
+              "type": "date"
+            },
+            "tags": {
+              "type": "list",
+              "of": {
+                "type": "text"
+              }
+            },
+            "pinned": {
+              "type": "optional",
+              "of": {
+                "type": "flag"
+              }
+            }
+          },
+          "key": "title"
+        },
+        "version": "665f0e7b",
+        "first": "665f0e7b",
+        "migrations": [],
+        "undecided": [],
+        "kept": []
       },
       "diagnostics": []
     },

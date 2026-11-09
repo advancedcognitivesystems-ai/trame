@@ -5,16 +5,17 @@ import { binding } from "#trame/kinds/binding"
 import { decision } from "#trame/kinds/decision"
 import { catalog } from "#trame/kinds/catalog"
 import { scenario } from "#trame/kinds/scenario"
-import { vocabulary } from "#trame/kinds/vocabulary"
 import { MemoryPreferences, PreferencesStore } from "#std/platform"
 import { SymbolsLanguage } from "#std/measures"
 import { Strategy } from "#std/patterns"
-import { entity, stored, type Model } from "./kinds/entity"
+import type { Model } from "./kinds/entity"
+import { Book } from "./shelves"
 import { Documents, DocumentsInPreferences, DocumentForm, Migrate, Conforms } from "./documents"
 import { DataDescribedOnce } from "./product"
 
 // What the library offers is code like the rest: its documents are played here, kept in the preferences of a device in
-// memory, on an entity of its own, with a migration written as an entity would compute it.
+// memory, on an entity of its own (in a module read after this one: wired before it is evaluated), with a migration
+// written as an entity would compute it.
 
 /**
  * Test
@@ -33,23 +34,6 @@ export const InMemory = binding({
   follows: [Strategy],
   serves: [DataDescribedOnce],
   context: "The library's documents are read and written as a product's would be, the device in memory.",
-})
-
-/**
- * Shelves
- * Where a book stands, in the library's scenarios.
- */
-export const Shelves = vocabulary({ owner: "trame", words: { reading: "Being read", read: "Read" }, serves: [DataDescribedOnce] })
-
-/**
- * A book
- * An entity of the library's scenarios: a title, its pages, where it stands, whether it was lent.
- */
-export const Book = entity({
-  owner: "trame",
-  keptAs: "data.book",
-  fields: { title: stored.text(), pages: stored.number(), shelf: stored.word(Shelves), lent: stored.optional(stored.flag()) },
-  serves: [DataDescribedOnce],
 })
 
 /**

@@ -8,7 +8,7 @@ import { PractiseGuided } from "./product"
  * The language Poselia is written in, at the generation it pins: reached by its path in Trame's repository.
  */
 export const Language = pkg({
-  owner: "ghalaax", packageName: "trame", version: "103", joins: "language", from: "path", at: "../../generations/g103",
+  owner: "ghalaax", packageName: "trame", version: "104", joins: "language", from: "path", at: "../../generations/g104",
   serves: [PractiseGuided],
 })
 
@@ -36,5 +36,14 @@ export const ContinuousIntegration = pkg({
  */
 export const Geometry = pkg({
   owner: "ghalaax", packageName: "geometry", version: "0.2.0", joins: "library", from: "path", at: "../../libs/geometry/releases/0.2.0",
+  serves: [PractiseGuided],
+})
+
+/**
+ * Data
+ * What the app keeps on the device, described once: the person's breath.
+ */
+export const Data = pkg({
+  owner: "ghalaax", packageName: "data", version: "0.1.1", joins: "library", from: "path", at: "../../libs/data/releases/0.1.1",
   serves: [PractiseGuided],
 })

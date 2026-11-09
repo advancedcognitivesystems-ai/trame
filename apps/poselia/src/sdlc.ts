@@ -22,6 +22,7 @@ import {
   ProgramCommands, NodeProgramCommands, Files, FilesKept, MachineFiles, FilesInMemory, HeadlessBrowser, PlaywrightBrowser, BrowserScripted, BrowserInMemory,
 } from "#std/tooling"
 import { Reaches, Linked } from "#std/rules"
+import { Migrated } from "#data/obligations"
 import { Verified, Served, Applied, Reviewed, Checked, Ruled, Safe, Preceded } from "#std/obligations"
 import { GitHubWorkflow, type WorkflowSettings } from "#ci/github"
 import { ShellScript } from "#ci/shell"
@@ -295,11 +296,18 @@ export const RulesHeld = obligation({ owner: "ghalaax", applies: Ruled, serves: 
 export const PackagesSafe = obligation({ owner: "ghalaax", applies: Safe, serves: [PractiseGuided] })
 
 /**
+ * What the device keeps, migrated
+ * What the page keeps on the device (the person's breath) migrates from every version a deployment kept: a step its
+ * owner has not decided keeps the shipment, since a person's breath would be lost.
+ */
+export const KeptMigrates = obligation({ owner: "ghalaax", applies: Migrated, gaps: Severity.error, serves: [PractiseGuided] })
+
+/**
  * The way of a preview
  * For its author and the few people they show it to: the code verified (a gap said), the page checked by programs, the
- * rules held, the packages safe; and the foundations, as always.
+ * rules held, the packages safe, what the device keeps migrated; and the foundations, as always.
  */
-export const PreviewMode = policy({ owner: "ghalaax", obligations: [CodeVerifiedSaid, ProgramChecks, RulesHeld, PackagesSafe] })
+export const PreviewMode = policy({ owner: "ghalaax", obligations: [CodeVerifiedSaid, ProgramChecks, RulesHeld, PackagesSafe, KeptMigrates] })
 
 /**
  * A preview
@@ -336,7 +344,7 @@ export const AfterThePreview = obligation({
  */
 export const PublicMode = policy({
   owner: "ghalaax",
-  obligations: [AfterThePreview, CodeVerified, ProductServed, DecisionsApplied, ContentSeen, AllChecks, RulesHeld, PackagesSafe],
+  obligations: [AfterThePreview, CodeVerified, ProductServed, DecisionsApplied, ContentSeen, AllChecks, RulesHeld, PackagesSafe, KeptMigrates],
 })
 
 /**

@@ -4,7 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 2 | 28 |
+| trame | 0 | 0 | 2 | 29 |
 
 <a id="trame"></a>
 
@@ -13,7 +13,7 @@
 | Severity | What | Where | Owner | Consequence |
 |---|---|---|---|---|
 | warning | To ship: The library of data is unknown | [The next version](sdlc.md#NextVersion) | trame |  |
-| warning | Not built yet: trame ship builds it | [The library of data](sdlc.md#TheLibrary) | trame |  |
+| warning | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The library of data](sdlc.md#TheLibrary) | trame |  |
 
 ### Owns
 
@@ -32,12 +32,11 @@
 | [std](packages.md#stdLibrary) | Package |  |
 | [An entity is described once](principles.md#DescribedOnce) | Architecture decision | **held** |
 | [Data described once](product.md#DataDescribedOnce) | Goal |  |
-| [A book](scenarios.md#Book) | Entity | **held** |
+| [Version 0.1.0](releases.md#R0_1_0) | Release |  |
 | [What the library's scenarios check](scenarios.md#DataChecks) | Message catalog |  |
 | [What the library's scenarios are given](scenarios.md#DataGiven) | Decision |  |
 | [Documents kept in the preferences](scenarios.md#DocumentsKept) | Scenario | **held** |
 | [Documents, in memory](scenarios.md#InMemory) | Technical choice | **held** |
-| [Shelves](scenarios.md#Shelves) | Vocabulary |  |
 | [Test](scenarios.md#Test) | Environment |  |
 | [Its decisions applied](sdlc.md#DecisionsApplied) | Obligation |  |
 | [Its functions verified](sdlc.md#FunctionsVerified) | Obligation |  |
@@ -46,4 +45,6 @@
 | [Its requirements held](sdlc.md#RequirementsServed) | Obligation |  |
 | [The library of data](sdlc.md#TheLibrary) | Artefact | **unknown** |
 | [How a version is made](sdlc.md#VersionMode) | Policy |  |
+| [A book](shelves.md#Book) | Entity | **held** |
+| [Shelves](shelves.md#Shelves) | Vocabulary |  |
 | [Words of the kinds of data](words.md#DataKindWords) | Message catalog |  |

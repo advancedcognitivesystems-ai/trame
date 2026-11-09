@@ -87,9 +87,9 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 103
+- Version: 104
 - How it joins the graph: language
-- Its path: ../../generations/g103
+- Its path: ../../generations/g104
 - Serves: Data described once
 
 ### std
@@ -124,15 +124,21 @@ Goal · `DataDescribedOnce`
 
 - Owner: trame
 
-## Data · Scenarios
+## Data · Releases
 
-### Shelves
+### Version 0.1.0
 
-Vocabulary · `Shelves`
+Release · `R0_1_0`
 
-- Owner: trame
-- Words: { reading: Being read, read: Read }
+- Released by: trame
+- Version: 0.1.0
+- Released on: 2026-11-09
+- What changes: The kind entity: data described once, its migrations computed from what deployments kept; documents kept in the preferences; the family Migrated
+- Fingerprint: b59ea0bf2828ba1b
+- Language: shared
 - Serves: Data described once
+
+## Data · Scenarios
 
 ### What the library's scenarios are given
 
@@ -169,20 +175,10 @@ Environment · `Test`
 Scenario · `DocumentsKept` · **held**
 
 - Owner: trame
-- Parameters: { documents: documents.Documents, preferences: std/platform.PreferencesStore, book: scenarios.Book, form: documents.DocumentForm, given: scenarios.DataGiven, checks: scenarios.DataChecks }
+- Parameters: { documents: documents.Documents, preferences: std/platform.PreferencesStore, book: shelves.Book, form: documents.DocumentForm, given: scenarios.DataGiven, checks: scenarios.DataChecks }
 - Verifies: Documents kept in the preferences, A value migrated, A value of the description it is of
 - In: Test
 - Depends on: Documents, A book, How a document is stored, What the library's scenarios are given, What the library's scenarios check
-
-### A book
-
-Entity · `Book` · **held**
-
-- Owner: trame
-- Fields: { title: { type: text }, pages: { type: number }, shelf: { type: word, vocabulary: scenarios.Shelves }, lent: { type: optional, of: { type: flag } } }
-- Kept as: data.book
-- Serves: Data described once
-- Depends on: Shelves
 
 ## Data · SDLC
 
@@ -238,6 +234,26 @@ Policy · `VersionMode`
 
 - Owner: trame
 - Its obligations: Its functions verified, Its requirements held, Its decisions applied, Its packages safe
+
+## Data · Shelves
+
+### Shelves
+
+Vocabulary · `Shelves`
+
+- Owner: trame
+- Words: { reading: Being read, read: Read }
+- Serves: Data described once
+
+### A book
+
+Entity · `Book` · **held**
+
+- Owner: trame
+- Fields: { title: { type: text }, pages: { type: number }, shelf: { type: word, vocabulary: shelves.Shelves }, lent: { type: optional, of: { type: flag } } }
+- Kept as: data.book
+- Serves: Data described once
+- Depends on: Shelves
 
 ## Data · Words
 

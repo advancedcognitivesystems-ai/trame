@@ -9,7 +9,7 @@
 | Severity | What | Where | Owner | Consequence |
 |---|---|---|---|---|
 | warning | To ship: The library of data is unknown | [The next version](#NextVersion) | trame |  |
-| warning | Not built yet: trame ship builds it | [The library of data](#TheLibrary) | trame |  |
+| warning | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The library of data](#TheLibrary) | trame |  |
 
 ## Artefact
 
@@ -22,6 +22,10 @@
 The library as its people write it: what a version freezes, and what projects import at that version.
 
 - Path: `src`
+
+Built 9 November 2026 by claude, fingerprint `ea2c3c5d89c39e767980c8639d9f7a092c51b8815e805979d8ea9986c2f31124`.
+
+Shipped by [The next version](#NextVersion) 9 November 2026, fingerprint `ea2c3c5d89c39e767980c8639d9f7a092c51b8815e805979d8ea9986c2f31124`.
 
 - Owner: trame
 - A version of the project: true
@@ -46,7 +50,7 @@ A version of the library of data, for the projects that import it: shipped by tr
 | [Documents kept in the preferences](scenarios.md#DocumentsKept) | **held** | [Its functions verified](#FunctionsVerified), for [A value of the description it is of](documents.md#Conforms) |
 | [What a shipment stores migrates](obligations.md#Migrated) | **held** | [Its requirements held](#RequirementsServed), for [A value of the description it is of](documents.md#Conforms) |
 
-Not shipped yet.
+Shipped 9 November 2026 by claude; its dossier: `evidence/shipments/NextVersion-2026-11-09-ec198b2a.json`.
 
 - Owner: trame
 - Ships: [The library of data](#TheLibrary)

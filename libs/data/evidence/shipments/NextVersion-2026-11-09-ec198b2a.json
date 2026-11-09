@@ -1,0 +1,94 @@
+{
+  "shipment": "sdlc.NextVersion",
+  "title": "The next version",
+  "target": "version",
+  "at": "2026-11-09",
+  "by": "claude",
+  "signature": "attribution",
+  "artifacts": [
+    {
+      "node": "sdlc.TheLibrary",
+      "path": "src",
+      "fingerprint": "ea2c3c5d89c39e767980c8639d9f7a092c51b8815e805979d8ea9986c2f31124"
+    }
+  ],
+  "foundations": {
+    "problems": 0
+  },
+  "obligations": [
+    {
+      "node": "sdlc.TheLibrary",
+      "kind": "artifact",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-09",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "ea2c3c5d89c39e767980c8639d9f7a092c51b8815e805979d8ea9986c2f31124",
+          "code": "bdbade1b",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "1a5d45f02c610d51",
+          "seal": "c805c3032e03bfb1ddf02f42091ea1f96534ae1747a4722b945c1cf1fd7a5850"
+        }
+      ]
+    },
+    {
+      "node": "principles.DescribedOnce",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.DecisionsApplied",
+      "via": "documents.Conforms"
+    },
+    {
+      "node": "scenarios.DocumentsKept",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.FunctionsVerified",
+      "via": "documents.Conforms",
+      "outcome": [
+        {
+          "name": "A document written is read back as it was, with the version of its description",
+          "status": "passed"
+        },
+        {
+          "name": "What was stored before versions were kept is read as the first version deployed",
+          "status": "passed"
+        },
+        {
+          "name": "A document of a version deployed is migrated: a field renamed moves, one dropped goes",
+          "status": "passed"
+        },
+        {
+          "name": "A document that does not keep its description is nothing: a number written as a text, a word of no vocabulary",
+          "status": "passed"
+        },
+        {
+          "name": "A document of a version nothing migrates from is nothing",
+          "status": "passed"
+        },
+        {
+          "name": "A document cleared is nothing",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "obligations.Migrated",
+      "kind": "requirement",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.RequirementsServed",
+      "via": "documents.Conforms"
+    }
+  ],
+  "deployed": []
+}

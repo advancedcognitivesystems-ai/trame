@@ -10,18 +10,20 @@
 
 ### A note
 
-`Note` · `src/notes.ts:10`
+`Note` · `src/notes.ts:11` · status: **held**
 
-What a person writes down: a title, the day it was written, its tags, whether it is pinned.
+What a person writes down: a title, the day it was written, its tags, whether it is pinned. Its first version called the title a heading and kept a mood.
 
-4 4 fields, found by `title`.
+4 fields, found by `title`.
 
 | Field | Type |
 |---|---|
 | `title` | a text |
 | `written` | a calendar date |
 | `tags` | a list of a text |
-| `pinned` | optional of yes or no |
+| `pinned` | yes or no, optional |
+
+Version `665f0e7b`; never deployed.
 
 - Owner: trame
 - Serves: [Notes kept](product.md#NotesKept)

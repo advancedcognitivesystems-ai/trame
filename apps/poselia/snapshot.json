@@ -5,7 +5,7 @@
       "id": "app.BrowserScreen",
       "kind": "implementation",
       "title": "The browser's screen",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "deps": {
@@ -3591,7 +3591,6 @@
         "owner": "ghalaax",
         "value": {
           "language": "poselia.language",
-          "breath": "poselia.breath",
           "marks": "poselia.marks"
         }
       }
@@ -3710,6 +3709,19 @@
       }
     },
     {
+      "id": "packages.Data",
+      "kind": "package",
+      "title": "Data",
+      "fields": {
+        "owner": "ghalaax",
+        "packageName": "data",
+        "version": "0.1.1",
+        "joins": "library",
+        "from": "path",
+        "at": "../../libs/data/releases/0.1.1"
+      }
+    },
+    {
       "id": "packages.Geometry",
       "kind": "package",
       "title": "Geometry",
@@ -3729,10 +3741,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "trame",
-        "version": "103",
+        "version": "104",
         "joins": "language",
         "from": "path",
-        "at": "../../generations/g103"
+        "at": "../../generations/g104"
       }
     },
     {
@@ -4028,7 +4040,7 @@
       "id": "principles.PageFirst",
       "kind": "adr",
       "title": "A page first, the phones after",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "context": "The app must be tried and shown before it is installed: a page shared as a link is the shortest way to the friends who review it.",
@@ -4598,6 +4610,15 @@
       }
     },
     {
+      "id": "sdlc.KeptMigrates",
+      "kind": "obligation",
+      "title": "What the device keeps, migrated",
+      "fields": {
+        "owner": "ghalaax",
+        "gaps": "error"
+      }
+    },
+    {
       "id": "sdlc.Machine",
       "kind": "environment",
       "title": "A machine",
@@ -4624,7 +4645,7 @@
       "id": "sdlc.OnTheMachine",
       "kind": "binding",
       "title": "On the machine",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "context": "A check must open the page a person opens: the file delivered, in a real browser."
@@ -4693,7 +4714,7 @@
       "id": "sdlc.PageFile",
       "kind": "artifact",
       "title": "Poselia's page",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "media": "text/html; charset=utf-8"
@@ -4715,7 +4736,7 @@
       "id": "sdlc.PageOpens",
       "kind": "check",
       "title": "The page opens",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax"
       }
@@ -4805,7 +4826,7 @@
       "id": "sdlc.Preview",
       "kind": "shipment",
       "title": "A preview",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "target": "preview"
@@ -5029,6 +5050,34 @@
       }
     },
     {
+      "id": "settings.Breath",
+      "kind": "entity",
+      "title": "The person's breath, kept",
+      "status": "held",
+      "fields": {
+        "owner": "ghalaax",
+        "fields": {
+          "inhale": {
+            "type": "number",
+            "quantity": "std/measures.Time"
+          },
+          "holdTop": {
+            "type": "number",
+            "quantity": "std/measures.Time"
+          },
+          "exhale": {
+            "type": "number",
+            "quantity": "std/measures.Time"
+          },
+          "holdBottom": {
+            "type": "number",
+            "quantity": "std/measures.Time"
+          }
+        },
+        "keptAs": "poselia.breath"
+      }
+    },
+    {
       "id": "settings.BreathBounds",
       "kind": "decision",
       "title": "Bounds of a breath",
@@ -5043,27 +5092,36 @@
       }
     },
     {
-      "id": "settings.BreathRead",
+      "id": "settings.BreathWithinBounds",
       "kind": "requirement",
-      "title": "A breath read back",
+      "title": "A breath within its bounds",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
         "deps": {
-          "b": "settings.BreathBounds",
-          "values": "std/algebra.ValueTypes"
+          "b": "settings.BreathBounds"
         },
         "body": "(function)"
       }
     },
     {
-      "id": "settings.BreathReadCriteria",
+      "id": "settings.BreathWithinBoundsCriteria",
       "kind": "acceptance",
       "title": "Criteria of a breath read back",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
         "criteria": "(function)"
+      }
+    },
+    {
+      "id": "settings.KeptOnTheDevice",
+      "kind": "binding",
+      "title": "Kept in the preferences of the device",
+      "status": "held",
+      "fields": {
+        "owner": "ghalaax",
+        "context": "The app keeps a little on the device, under names of its own: its preferences are where."
       }
     },
     {
@@ -5113,10 +5171,9 @@
       "fields": {
         "owner": "ghalaax",
         "deps": {
-          "preferences": "std/platform.PreferencesStore",
-          "names": "language.PreferenceNames",
-          "read": "(function)",
-          "texts": "std/algebra.Texts"
+          "documents": "data/documents.Documents",
+          "breath": "settings.Breath",
+          "within": "(function)"
         },
         "body": "(function)"
       }
@@ -5295,7 +5352,7 @@
       "id": "stage.BrowserStage",
       "kind": "implementation",
       "title": "The browser's stage",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "deps": {
@@ -6593,6 +6650,11 @@
       "kind": "serves"
     },
     {
+      "from": "packages.Data",
+      "to": "product.PractiseGuided",
+      "kind": "serves"
+    },
+    {
       "from": "packages.Geometry",
       "to": "product.PractiseGuided",
       "kind": "serves"
@@ -7623,6 +7685,11 @@
       "kind": "serves"
     },
     {
+      "from": "sdlc.KeptMigrates",
+      "to": "product.PractiseGuided",
+      "kind": "serves"
+    },
+    {
       "from": "sdlc.OnAPhone",
       "to": "sdlc.PageFile",
       "kind": "on"
@@ -7883,6 +7950,11 @@
       "kind": "obligations"
     },
     {
+      "from": "sdlc.PreviewMode",
+      "to": "sdlc.KeptMigrates",
+      "kind": "obligations"
+    },
+    {
       "from": "sdlc.PreviewScript",
       "to": "sdlc.Preview",
       "kind": "runs"
@@ -7950,6 +8022,11 @@
     {
       "from": "sdlc.PublicMode",
       "to": "sdlc.PackagesSafe",
+      "kind": "obligations"
+    },
+    {
+      "from": "sdlc.PublicMode",
+      "to": "sdlc.KeptMigrates",
       "kind": "obligations"
     },
     {
@@ -8088,19 +8165,34 @@
       "kind": "accepts"
     },
     {
-      "from": "settings.BreathRead",
+      "from": "settings.Breath",
+      "to": "product.BreathSetsThePace",
+      "kind": "serves"
+    },
+    {
+      "from": "settings.BreathWithinBounds",
       "to": "product.BreathSetsThePace",
       "kind": "refines"
     },
     {
-      "from": "settings.BreathRead",
+      "from": "settings.BreathWithinBounds",
       "to": "settings.BreathBounds",
       "kind": "deps"
     },
     {
-      "from": "settings.BreathReadCriteria",
-      "to": "settings.BreathRead",
+      "from": "settings.BreathWithinBoundsCriteria",
+      "to": "settings.BreathWithinBounds",
       "kind": "accepts"
+    },
+    {
+      "from": "settings.KeptOnTheDevice",
+      "to": "architecture.Browser",
+      "kind": "environments"
+    },
+    {
+      "from": "settings.KeptOnTheDevice",
+      "to": "architecture.Test",
+      "kind": "environments"
     },
     {
       "from": "settings.MarksChoice",
@@ -8139,12 +8231,12 @@
     },
     {
       "from": "settings.PersonBreath",
-      "to": "language.PreferenceNames",
+      "to": "settings.Breath",
       "kind": "deps"
     },
     {
       "from": "settings.PersonBreath",
-      "to": "settings.BreathRead",
+      "to": "settings.BreathWithinBounds",
       "kind": "deps"
     },
     {

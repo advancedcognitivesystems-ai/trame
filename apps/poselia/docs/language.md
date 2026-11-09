@@ -46,11 +46,10 @@ The names under which the app keeps the person's choices on the device: prefixed
 | Case | Value |
 |---|---|
 | language | poselia.language |
-| breath | poselia.breath |
 | marks | poselia.marks |
 
 - Decided by: ghalaax
-- Used by: [The app's language](#AppLanguage), [The language of the home page](scenarios.md#HomeLanguage), [Learning a sequence](scenarios.md#LearnTheSequence), [The landmarks the person chose](settings.md#MarksChoice), [The person's breath](settings.md#PersonBreath)
+- Used by: [The app's language](#AppLanguage), [The language of the home page](scenarios.md#HomeLanguage), [Learning a sequence](scenarios.md#LearnTheSequence), [The landmarks the person chose](settings.md#MarksChoice)
 
 ## Functions
 

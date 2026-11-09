@@ -4,16 +4,18 @@
 
 > **2 points to watch · 2 acceptance criteria passed out of 2 · 6 scenario checks passed out of 6**
 
-| Module | Goals | Requirements | Standards | Vocabularies | Decisions | Architecture decisions | Ports | Functions | Message catalogs | Packages | Technical choices | Environments | Scenarios | Artefacts | Shipments | Obligations | Policies | Entities | Open issues |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| [Data · Documents](documents.md) | 0 | 0 | 1 | 0 | 1 | 0 | 1 | 3 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Data · Obligations](obligations.md) | 0 | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Data · Packages](packages.md) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Data · Principles](principles.md) | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Data · Product](product.md) | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Data · Scenarios](scenarios.md) | 0 | 0 | 0 | 1 | 1 | 0 | 0 | 0 | 1 | 0 | 1 | 1 | 1 | 0 | 0 | 0 | 0 | 1 | 0 |
-| [Data · SDLC](sdlc.md) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 1 | 4 | 1 | 0 | 2 |
-| [Data · Words](words.md) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Module | Goals | Requirements | Standards | Vocabularies | Decisions | Architecture decisions | Ports | Releases | Functions | Message catalogs | Packages | Technical choices | Environments | Scenarios | Artefacts | Shipments | Obligations | Policies | Entities | Open issues |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| [Data · Documents](documents.md) | 0 | 0 | 1 | 0 | 1 | 0 | 1 | 0 | 3 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| [Data · Obligations](obligations.md) | 0 | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| [Data · Packages](packages.md) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| [Data · Principles](principles.md) | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| [Data · Product](product.md) | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| [Data · Releases](releases.md) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| [Data · Scenarios](scenarios.md) | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 1 | 0 | 1 | 1 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
+| [Data · SDLC](sdlc.md) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 1 | 4 | 1 | 0 | 2 |
+| [Data · Shelves](shelves.md) | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 |
+| [Data · Words](words.md) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 
 ## Libraries
 
@@ -28,4 +30,4 @@ The libraries the project imports: their nodes take part in the graph, their doc
 | Severity | What | Where | Owner | Consequence |
 |---|---|---|---|---|
 | warning | To ship: The library of data is unknown | [The next version](sdlc.md#NextVersion) | trame |  |
-| warning | Not built yet: trame ship builds it | [The library of data](sdlc.md#TheLibrary) | trame |  |
+| warning | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The library of data](sdlc.md#TheLibrary) | trame |  |

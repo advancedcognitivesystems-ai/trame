@@ -1,0 +1,140 @@
+[
+  {
+    "node": "scenarios.Book",
+    "at": "2026-11-09",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "48e05fc2",
+    "subject": "sdlc.NextVersion",
+    "kept": {
+      "fields": {
+        "title": {
+          "type": "text"
+        },
+        "pages": {
+          "type": "number"
+        },
+        "shelf": {
+          "type": "word",
+          "vocabulary": "scenarios.Shelves",
+          "words": [
+            "reading",
+            "read"
+          ]
+        },
+        "lent": {
+          "type": "optional",
+          "of": {
+            "type": "flag"
+          }
+        }
+      }
+    },
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "b0cf094350cee45d03f590c32bdbbe6b819291ed5ebf60573d32692443091edc"
+  },
+  {
+    "node": "sdlc.NextVersion",
+    "at": "2026-11-09",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "ec198b2a",
+    "url": "evidence/shipments/NextVersion-2026-11-09-ec198b2a.json",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "7111489b5fd4a7684b237495f12c4e498bbd2a99857a8ec3144276cd40902820"
+  },
+  {
+    "node": "sdlc.NextVersion",
+    "at": "2026-11-09",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "b844d9cf",
+    "url": "evidence/shipments/NextVersion-2026-11-09-b844d9cf.json",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "00c4af7cfc7467646d0ddf5c2a23a38ff4fa49567d70284a893cb4d3786888d9"
+  },
+  {
+    "node": "sdlc.TheLibrary",
+    "at": "2026-11-09",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "ea2c3c5d89c39e767980c8639d9f7a092c51b8815e805979d8ea9986c2f31124",
+    "code": "bdbade1b",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "1a5d45f02c610d51",
+    "seal": "c805c3032e03bfb1ddf02f42091ea1f96534ae1747a4722b945c1cf1fd7a5850"
+  },
+  {
+    "node": "sdlc.TheLibrary",
+    "at": "2026-11-09",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "ea2c3c5d89c39e767980c8639d9f7a092c51b8815e805979d8ea9986c2f31124",
+    "subject": "sdlc.NextVersion",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "ee08b5d3e7d9dda412974fa9749974f7d580e413ffb577eae28d24f16f6eb036"
+  },
+  {
+    "node": "sdlc.TheLibrary",
+    "at": "2026-11-09",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "68b22ed1cd115df25bc5842ec9fd50a0f8891f465737ffb687bd72af1f875b5c",
+    "code": "afcf14a2",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "1a5d45f02c610d51",
+    "seal": "42ae43172804b28761bae8be9ae1bf03d04b315260697347a3e64407cdf9a015"
+  },
+  {
+    "node": "sdlc.TheLibrary",
+    "at": "2026-11-09",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "68b22ed1cd115df25bc5842ec9fd50a0f8891f465737ffb687bd72af1f875b5c",
+    "subject": "sdlc.NextVersion",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "f261c11691c184b6993f204769900eeefa9af432fe473f4f251d73483ec44034"
+  },
+  {
+    "node": "shelves.Book",
+    "at": "2026-11-09",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "a08cdb3d",
+    "subject": "sdlc.NextVersion",
+    "kept": {
+      "fields": {
+        "title": {
+          "type": "text"
+        },
+        "pages": {
+          "type": "number"
+        },
+        "shelf": {
+          "type": "word",
+          "vocabulary": "shelves.Shelves",
+          "words": [
+            "reading",
+            "read"
+          ]
+        },
+        "lent": {
+          "type": "optional",
+          "of": {
+            "type": "flag"
+          }
+        }
+      }
+    },
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "ab3bd22c2ee6d9da20e666312d2adce95d791041d8dc4ce0d4a28f2ca09a0867"
+  }
+]

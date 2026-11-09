@@ -64,7 +64,7 @@ Entry point · `ShowHome` · **held**
 
 ### The browser's screen
 
-Implementation · `BrowserScreen` · **unknown**
+Implementation · `BrowserScreen` · **held**
 
 - Owner: ghalaax
 - Parameters: { html: std/html.Html, aria: std/html.Aria, svg: std/html.Svg, events: std/web.UiEvents, screen: app.ScreenNames, parts: drawing.DrawingParts, player: practice.PlayerNames, settings: settings.SettingsNames, composer: composing.ComposerNames, counts: std/algebra.Counts, texts: std/algebra.Texts, stage: architecture.Stage, time: std/measures.Time }
@@ -733,7 +733,7 @@ Decision · `French`
 Decision · `PreferenceNames`
 
 - Decided by: ghalaax
-- Value: { language: poselia.language, breath: poselia.breath, marks: poselia.marks }
+- Value: { language: poselia.language, marks: poselia.marks }
 
 ### The app's language
 
@@ -825,6 +825,18 @@ Package · `ContinuousIntegration`
 - Its path: ../../ci/releases/0.4.0
 - Serves: Practise yoga on one's own, guided
 
+### Data
+
+Package · `Data`
+
+- Owner: ghalaax
+- Name: data
+- Version: 0.1.1
+- How it joins the graph: library
+- Where it comes from: path
+- Its path: ../../libs/data/releases/0.1.1
+- Serves: Practise yoga on one's own, guided
+
 ### Geometry
 
 Package · `Geometry`
@@ -843,10 +855,10 @@ Package · `Language`
 
 - Owner: ghalaax
 - Name: trame
-- Version: 103
+- Version: 104
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../../generations/g103
+- Its path: ../../generations/g104
 - Serves: Practise yoga on one's own, guided
 
 ### The standard library
@@ -1019,7 +1031,7 @@ Architecture decision · `LanguageOffered` · **held**
 
 ### A page first, the phones after
 
-Architecture decision · `PageFirst` · **unknown**
+Architecture decision · `PageFirst` · **held**
 
 - Decided by: ghalaax
 - Context: The app must be tried and shown before it is installed: a page shared as a link is the shortest way to the friends who review it.
@@ -1362,7 +1374,7 @@ Message catalog · `SdlcWords`
 
 ### On the machine
 
-Technical choice · `OnTheMachine` · **unknown**
+Technical choice · `OnTheMachine` · **held**
 
 - Decided by: ghalaax
 - Context: A check must open the page a person opens: the file delivered, in a real browser.
@@ -1419,7 +1431,7 @@ Role · `Teachers`
 
 ### Poselia's page
 
-Artefact · `PageFile` · **unknown**
+Artefact · `PageFile` · **held**
 
 - Owner: ghalaax
 - Media type: text/html; charset=utf-8
@@ -1457,7 +1469,7 @@ Check · `OnAPhone` · **unknown**
 
 ### The page opens
 
-Check · `PageOpens` · **unknown**
+Check · `PageOpens` · **held**
 
 - Owner: ghalaax
 - Checks: Poselia's page
@@ -1474,7 +1486,7 @@ Review · `ContentReviewed` · **unknown**
 
 ### A preview
 
-Shipment · `Preview` · **unknown**
+Shipment · `Preview` · **held**
 
 - Owner: ghalaax
 - Target: preview
@@ -1549,6 +1561,14 @@ Obligation · `DecisionsApplied`
 - Owner: ghalaax
 - Serves: Practise yoga on one's own, guided
 
+### What the device keeps, migrated
+
+Obligation · `KeptMigrates`
+
+- Owner: ghalaax
+- A gap weighs: error
+- Serves: Practise yoga on one's own, guided
+
 ### The packages are safe
 
 Obligation · `PackagesSafe`
@@ -1582,14 +1602,14 @@ Obligation · `RulesHeld`
 Policy · `PreviewMode`
 
 - Owner: ghalaax
-- Its obligations: The code shown is verified, a gap said, The page is checked by programs, The rules of the app hold, The packages are safe
+- Its obligations: The code shown is verified, a gap said, The page is checked by programs, The rules of the app hold, The packages are safe, What the device keeps, migrated
 
 ### The way of a public version
 
 Policy · `PublicMode`
 
 - Owner: ghalaax
-- Its obligations: After the preview, The code shown is verified, The product holds, The decisions hold, The content is reviewed by a teacher, The page is checked, by hand too, The rules of the app hold, The packages are safe
+- Its obligations: After the preview, The code shown is verified, The product holds, The decisions hold, The content is reviewed by a teacher, The page is checked, by hand too, The rules of the app hold, The packages are safe, What the device keeps, migrated
 
 ## Poselia · Settings
 
@@ -1602,12 +1622,12 @@ Requirement · `AdjustedBreath` · **held**
 - Refines: The breath sets the pace
 - Depends on: Bounds of a breath
 
-### A breath read back
+### A breath within its bounds
 
-Requirement · `BreathRead` · **held**
+Requirement · `BreathWithinBounds` · **held**
 
 - Owner: ghalaax
-- Parameters: { b: settings.BreathBounds, values: std/algebra.ValueTypes }
+- Parameters: { b: settings.BreathBounds }
 - Refines: The breath sets the pace
 - Depends on: Bounds of a breath
 
@@ -1658,10 +1678,10 @@ Acceptance criteria · `AdjustedBreathCriteria` · **held**
 
 ### Criteria of a breath read back
 
-Acceptance criteria · `BreathReadCriteria` · **held**
+Acceptance criteria · `BreathWithinBoundsCriteria` · **held**
 
 - Owner: ghalaax
-- Accepts: A breath read back
+- Accepts: A breath within its bounds
 
 ### Criteria of a breath measured by tapping
 
@@ -1684,9 +1704,9 @@ Function · `MarksChoice` · **held**
 Function · `PersonBreath` · **held**
 
 - Owner: ghalaax
-- Parameters: { preferences: std/platform.PreferencesStore, names: language.PreferenceNames, read: (rule), texts: std/algebra.Texts }
+- Parameters: { documents: data/documents.Documents, breath: settings.Breath, within: (rule) }
 - Serves: The breath sets the pace
-- Depends on: Names of the preferences, A breath read back
+- Depends on: The person's breath, kept, A breath within its bounds
 
 ### The settings view
 
@@ -1715,6 +1735,23 @@ Function · `VoiceChoice` · **held**
 - Parameters: { preferences: std/platform.PreferencesStore, parts: settings.VoiceParts }
 - Serves: Practise yoga on one's own, guided
 - Depends on: What the practice says and rings
+
+### Kept in the preferences of the device
+
+Technical choice · `KeptOnTheDevice` · **held**
+
+- Decided by: ghalaax
+- Context: The app keeps a little on the device, under names of its own: its preferences are where.
+- In: Browser, Test
+
+### The person's breath, kept
+
+Entity · `Breath` · **held**
+
+- Owner: ghalaax
+- Fields: { inhale: { type: number, quantity: std/measures.Time }, holdTop: { type: number, quantity: std/measures.Time }, exhale: { type: number, quantity: std/measures.Time }, holdBottom: { type: number, quantity: std/measures.Time } }
+- Kept as: poselia.breath
+- Serves: The breath sets the pace
 
 ## Poselia · Sound
 
@@ -1768,7 +1805,7 @@ Decision · `StageViews`
 
 ### The browser's stage
 
-Implementation · `BrowserStage` · **unknown**
+Implementation · `BrowserStage` · **held**
 
 - Owner: ghalaax
 - Parameters: { look: stage.MannequinLook, light: stage.StageLight, views: stage.StageViews, style: stage.MarkStyle, counts: std/algebra.Counts, html: std/html.Html }

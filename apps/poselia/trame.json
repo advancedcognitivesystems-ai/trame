@@ -5,6 +5,10 @@
       "at": ".trame/ci",
       "version": "0.4.0"
     },
+    "data": {
+      "at": ".trame/data",
+      "version": "0.1.1"
+    },
     "geometry": {
       "at": ".trame/geometry",
       "version": "0.2.0"

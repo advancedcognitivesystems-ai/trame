@@ -16,5 +16,5 @@ Nothing to decide or watch.
 
 | Node | Kind | State |
 |---|---|---|
-| [A note](notes.md#Note) | Entity |  |
+| [A note](notes.md#Note) | Entity | **held** |
 | [Notes kept](product.md#NotesKept) | Goal |  |

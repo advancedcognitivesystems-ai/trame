@@ -5,7 +5,7 @@
 ```mermaid
 flowchart TB
   subgraph notes["Kept · Notes"]
-    n0["A note<br/><small>Entity</small>"]:::neutral
+    n0["A note<br/><small>Entity</small>"]:::held
   end
   subgraph product["Kept · Product"]
     n1["Notes kept<br/><small>Goal</small>"]:::neutral

@@ -4,32 +4,13 @@
 
 > **6 scenario checks passed out of 6**
 
-## Vocabulary
-
-<a id="Shelves"></a>
-
-### Shelves
-
-`Shelves` · `src/scenarios.ts:42`
-
-Where a book stands, in the library's scenarios.
-
-| Word | Meaning |
-|---|---|
-| `reading` | Being read |
-| `read` | Read |
-
-- Owner: trame
-- Serves: [Data described once](product.md#DataDescribedOnce)
-- Used by: [A book](#Book)
-
 ## Decision
 
 <a id="DataGiven"></a>
 
 ### What the library's scenarios are given
 
-`DataGiven` · `src/scenarios.ts:76`
+`DataGiven` · `src/scenarios.ts:60`
 
 A book; the same as it was stored before versions were kept; as a version deployed stored it (its title called a heading, a mood kept), with the steps that migrate it; a book whose pages are written as a text; a version unknown.
 
@@ -49,7 +30,7 @@ A book; the same as it was stored before versions were kept; as a version deploy
 
 ### What the library's scenarios check
 
-`DataChecks` · `src/scenarios.ts:58`
+`DataChecks` · `src/scenarios.ts:42`
 
 <details><summary>The messages, in code</summary>
 
@@ -76,7 +57,7 @@ A book; the same as it was stored before versions were kept; as a version deploy
 
 ### Documents, in memory
 
-`InMemory` · `src/scenarios.ts:29` · status: **held**
+`InMemory` · `src/scenarios.ts:30` · status: **held**
 
 In the library's scenarios, a document is kept in the preferences of a device kept in memory.
 
@@ -101,7 +82,7 @@ Context: The library's documents are read and written as a product's would be, t
 
 ### Test
 
-`Test` · `src/scenarios.ts:23`
+`Test` · `src/scenarios.ts:24`
 
 Where the library's scenarios run: the preferences of a device, kept in memory.
 
@@ -116,7 +97,7 @@ Where the library's scenarios run: the preferences of a device, kept in memory.
 
 ### Documents kept in the preferences
 
-`DocumentsKept` · `src/scenarios.ts:101` · status: **held**
+`DocumentsKept` · `src/scenarios.ts:85` · status: **held**
 
 A document written is read back as it was; what was stored before versions were kept is read as the first version; one of a version deployed is migrated; one that does not keep its description, or of a version nothing migrates from, is nothing; one cleared is nothing.
 
@@ -138,35 +119,8 @@ A document written is read back as it was; what was stored before versions were 
 </details>
 
 - Owner: trame
-- Parameters: `documents` ← [Documents](documents.md#Documents) · `preferences` ← [Preferences](../.trame/std/docs/platform.md#PreferencesStore) · `book` ← [A book](#Book) · `form` ← [How a document is stored](documents.md#DocumentForm) · `given` ← [What the library's scenarios are given](#DataGiven) · `checks` ← [What the library's scenarios check](#DataChecks)
+- Parameters: `documents` ← [Documents](documents.md#Documents) · `preferences` ← [Preferences](../.trame/std/docs/platform.md#PreferencesStore) · `book` ← [A book](shelves.md#Book) · `form` ← [How a document is stored](documents.md#DocumentForm) · `given` ← [What the library's scenarios are given](#DataGiven) · `checks` ← [What the library's scenarios check](#DataChecks)
 - Body: inline, in the declaration
 - Effects: read, write
 - Verifies: [Documents kept in the preferences](documents.md#DocumentsInPreferences), [A value migrated](documents.md#Migrate), [A value of the description it is of](documents.md#Conforms)
 - In: [Test](#Test)
-
-## Entity
-
-<a id="Book"></a>
-
-### A book
-
-`Book` · `src/scenarios.ts:48` · status: **held**
-
-An entity of the library's scenarios: a title, its pages, where it stands, whether it was lent.
-
-4 fields, kept whole.
-
-| Field | Type |
-|---|---|
-| `title` | a text |
-| `pages` | a number |
-| `shelf` | a word of a vocabulary in [Shelves](#Shelves) |
-| `lent` | yes or no, optional |
-
-Version `48e05fc2`; never deployed.
-
-- Owner: trame
-- Kept as: data.book
-- Serves: [Data described once](product.md#DataDescribedOnce)
-- Depends on: [Shelves](#Shelves)
-- Used by: [Documents kept in the preferences](#DocumentsKept)

@@ -6,7 +6,7 @@
       "kind": "implementation",
       "title": "The browser's screen",
       "source": "src/app.ts:77",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "deps": {
@@ -3616,168 +3616,168 @@
             "row": "pranamasana",
             "language": "fr",
             "review": "none",
-            "fingerprint": "3762002e",
+            "fingerprint": "f04bcd59",
             "approvedBy": []
           },
           {
             "row": "pranamasana",
             "language": "en",
             "review": "none",
-            "fingerprint": "621fdab3",
+            "fingerprint": "48f7fe74",
             "approvedBy": []
           },
           {
             "row": "hasta-uttanasana",
             "language": "fr",
             "review": "none",
-            "fingerprint": "aff92ebe",
+            "fingerprint": "a5c6f520",
             "approvedBy": []
           },
           {
             "row": "hasta-uttanasana",
             "language": "en",
             "review": "none",
-            "fingerprint": "3973cf06",
+            "fingerprint": "e5026348",
             "approvedBy": []
           },
           {
             "row": "padahastasana",
             "language": "fr",
             "review": "none",
-            "fingerprint": "b772a335",
+            "fingerprint": "b5cac6bf",
             "approvedBy": []
           },
           {
             "row": "padahastasana",
             "language": "en",
             "review": "none",
-            "fingerprint": "14a7fa58",
+            "fingerprint": "2aff4392",
             "approvedBy": []
           },
           {
             "row": "ashwa-sanchalanasana",
             "language": "fr",
             "review": "none",
-            "fingerprint": "0730c6b3",
+            "fingerprint": "4564ca43",
             "approvedBy": []
           },
           {
             "row": "ashwa-sanchalanasana",
             "language": "en",
             "review": "none",
-            "fingerprint": "15f15d34",
+            "fingerprint": "c0a56f74",
             "approvedBy": []
           },
           {
             "row": "dandasana",
             "language": "fr",
             "review": "none",
-            "fingerprint": "d5f004a1",
+            "fingerprint": "4f402859",
             "approvedBy": []
           },
           {
             "row": "dandasana",
             "language": "en",
             "review": "none",
-            "fingerprint": "639cca3c",
+            "fingerprint": "2b300ae4",
             "approvedBy": []
           },
           {
             "row": "ashtanga-namaskara",
             "language": "fr",
             "review": "none",
-            "fingerprint": "b16bb904",
+            "fingerprint": "d2cc926b",
             "approvedBy": []
           },
           {
             "row": "ashtanga-namaskara",
             "language": "en",
             "review": "none",
-            "fingerprint": "20a7ad16",
+            "fingerprint": "76f2b729",
             "approvedBy": []
           },
           {
             "row": "bhujangasana",
             "language": "fr",
             "review": "none",
-            "fingerprint": "80acbcf5",
+            "fingerprint": "383a4a3a",
             "approvedBy": []
           },
           {
             "row": "bhujangasana",
             "language": "en",
             "review": "none",
-            "fingerprint": "693eb5d9",
+            "fingerprint": "52bc7636",
             "approvedBy": []
           },
           {
             "row": "adho-mukha-svanasana",
             "language": "fr",
             "review": "none",
-            "fingerprint": "c54ea3d4",
+            "fingerprint": "ba73246f",
             "approvedBy": []
           },
           {
             "row": "adho-mukha-svanasana",
             "language": "en",
             "review": "none",
-            "fingerprint": "657d778a",
+            "fingerprint": "2df11e81",
             "approvedBy": []
           },
           {
             "row": "tadasana",
             "language": "fr",
             "review": "none",
-            "fingerprint": "1d7e9bf5",
+            "fingerprint": "dd83af24",
             "approvedBy": []
           },
           {
             "row": "tadasana",
             "language": "en",
             "review": "none",
-            "fingerprint": "acbf4cbf",
+            "fingerprint": "d058b74e",
             "approvedBy": []
           },
           {
             "row": "balasana",
             "language": "fr",
             "review": "none",
-            "fingerprint": "271cc4d9",
+            "fingerprint": "01647358",
             "approvedBy": []
           },
           {
             "row": "balasana",
             "language": "en",
             "review": "none",
-            "fingerprint": "20086b47",
+            "fingerprint": "42dabf66",
             "approvedBy": []
           },
           {
             "row": "marjaryasana",
             "language": "fr",
             "review": "none",
-            "fingerprint": "4a2b75fd",
+            "fingerprint": "af7ea690",
             "approvedBy": []
           },
           {
             "row": "marjaryasana",
             "language": "en",
             "review": "none",
-            "fingerprint": "29b5a94f",
+            "fingerprint": "e57ddba2",
             "approvedBy": []
           },
           {
             "row": "bitilasana",
             "language": "fr",
             "review": "none",
-            "fingerprint": "b04c3062",
+            "fingerprint": "ed0c1a3c",
             "approvedBy": []
           },
           {
             "row": "bitilasana",
             "language": "en",
             "review": "none",
-            "fingerprint": "343f6fb7",
+            "fingerprint": "f3dd2669",
             "approvedBy": []
           }
         ]
@@ -4230,7 +4230,6 @@
         "owner": "ghalaax",
         "value": {
           "language": "poselia.language",
-          "breath": "poselia.breath",
           "marks": "poselia.marks"
         }
       },
@@ -4380,6 +4379,21 @@
       "diagnostics": []
     },
     {
+      "id": "packages.Data",
+      "kind": "package",
+      "title": "Data",
+      "source": "src/packages.ts:46",
+      "fields": {
+        "owner": "ghalaax",
+        "packageName": "data",
+        "version": "0.1.1",
+        "joins": "library",
+        "from": "path",
+        "at": "../../libs/data/releases/0.1.1"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "packages.Geometry",
       "kind": "package",
       "title": "Geometry",
@@ -4402,10 +4416,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "trame",
-        "version": "103",
+        "version": "104",
         "joins": "language",
         "from": "path",
-        "at": "../../generations/g103"
+        "at": "../../generations/g104"
       },
       "diagnostics": []
     },
@@ -4815,7 +4829,7 @@
       "kind": "adr",
       "title": "A page first, the phones after",
       "source": "src/principles.ts:78",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "context": "The app must be tried and shown before it is installed: a page shared as a link is the shortest way to the friends who review it.",
@@ -5533,7 +5547,7 @@
       "id": "sdlc.AdrsServeTheProduct",
       "kind": "rule",
       "title": "Each decision of architecture serves the product",
-      "source": "src/sdlc.ts:434",
+      "source": "src/sdlc.ts:442",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -5554,7 +5568,7 @@
       "id": "sdlc.AfterThePreview",
       "kind": "obligation",
       "title": "After the preview",
-      "source": "src/sdlc.ts:323",
+      "source": "src/sdlc.ts:331",
       "fields": {
         "owner": "ghalaax",
         "params": {
@@ -5570,7 +5584,7 @@
       "id": "sdlc.AllChecks",
       "kind": "obligation",
       "title": "The page is checked, by hand too",
-      "source": "src/sdlc.ts:283",
+      "source": "src/sdlc.ts:284",
       "fields": {
         "owner": "ghalaax",
         "params": {
@@ -5583,7 +5597,7 @@
       "id": "sdlc.CodeServesTheProduct",
       "kind": "rule",
       "title": "Code serves the product",
-      "source": "src/sdlc.ts:420",
+      "source": "src/sdlc.ts:428",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -5615,7 +5629,7 @@
       "id": "sdlc.CodeVerified",
       "kind": "obligation",
       "title": "The code shown is verified",
-      "source": "src/sdlc.ts:251",
+      "source": "src/sdlc.ts:252",
       "fields": {
         "owner": "ghalaax",
         "params": {
@@ -5632,7 +5646,7 @@
       "id": "sdlc.CodeVerifiedSaid",
       "kind": "obligation",
       "title": "The code shown is verified, a gap said",
-      "source": "src/sdlc.ts:242",
+      "source": "src/sdlc.ts:243",
       "fields": {
         "owner": "ghalaax",
         "params": {
@@ -5649,7 +5663,7 @@
       "id": "sdlc.ContentReviewed",
       "kind": "review",
       "title": "The content, reviewed",
-      "source": "src/sdlc.ts:235",
+      "source": "src/sdlc.ts:236",
       "status": "unknown",
       "fields": {
         "owner": "ghalaax"
@@ -5665,7 +5679,7 @@
       "id": "sdlc.ContentSeen",
       "kind": "obligation",
       "title": "The content is reviewed by a teacher",
-      "source": "src/sdlc.ts:271",
+      "source": "src/sdlc.ts:272",
       "fields": {
         "owner": "ghalaax",
         "gaps": "error"
@@ -5676,9 +5690,20 @@
       "id": "sdlc.DecisionsApplied",
       "kind": "obligation",
       "title": "The decisions hold",
-      "source": "src/sdlc.ts:265",
+      "source": "src/sdlc.ts:266",
       "fields": {
         "owner": "ghalaax"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.KeptMigrates",
+      "kind": "obligation",
+      "title": "What the device keeps, migrated",
+      "source": "src/sdlc.ts:303",
+      "fields": {
+        "owner": "ghalaax",
+        "gaps": "error"
       },
       "diagnostics": []
     },
@@ -5686,7 +5711,7 @@
       "id": "sdlc.Machine",
       "kind": "environment",
       "title": "A machine",
-      "source": "src/sdlc.ts:67",
+      "source": "src/sdlc.ts:68",
       "fields": {
         "owner": "ghalaax"
       },
@@ -5696,7 +5721,7 @@
       "id": "sdlc.OnAPhone",
       "kind": "check",
       "title": "On a phone",
-      "source": "src/sdlc.ts:218",
+      "source": "src/sdlc.ts:219",
       "status": "unknown",
       "fields": {
         "owner": "ghalaax",
@@ -5715,8 +5740,8 @@
       "id": "sdlc.OnTheMachine",
       "kind": "binding",
       "title": "On the machine",
-      "source": "src/sdlc.ts:85",
-      "status": "unknown",
+      "source": "src/sdlc.ts:86",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "context": "A check must open the page a person opens: the file delivered, in a real browser."
@@ -5727,7 +5752,7 @@
       "id": "sdlc.OpeningThePage",
       "kind": "scenario",
       "title": "The page is opened as a person would",
-      "source": "src/sdlc.ts:491",
+      "source": "src/sdlc.ts:499",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -5766,7 +5791,7 @@
       "id": "sdlc.OpenThePage",
       "kind": "entry",
       "title": "Open the page",
-      "source": "src/sdlc.ts:174",
+      "source": "src/sdlc.ts:175",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -5796,7 +5821,7 @@
       "id": "sdlc.PackagesSafe",
       "kind": "obligation",
       "title": "The packages are safe",
-      "source": "src/sdlc.ts:295",
+      "source": "src/sdlc.ts:296",
       "fields": {
         "owner": "ghalaax"
       },
@@ -5806,25 +5831,23 @@
       "id": "sdlc.PageFile",
       "kind": "artifact",
       "title": "Poselia's page",
-      "source": "src/sdlc.ts:109",
-      "status": "unknown",
+      "source": "src/sdlc.ts:110",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "media": "text/html; charset=utf-8"
       },
       "result": {
         "path": "dist/poselia.html",
-        "code": "dd6fcebc"
+        "code": "524783e9"
       },
-      "diagnostics": [
-        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.PageOpening",
       "kind": "decision",
       "title": "How the page is opened",
-      "source": "src/sdlc.ts:126",
+      "source": "src/sdlc.ts:127",
       "fields": {
         "owner": "ghalaax",
         "value": {
@@ -5838,23 +5861,21 @@
       "id": "sdlc.PageOpens",
       "kind": "check",
       "title": "The page opens",
-      "source": "src/sdlc.ts:207",
-      "status": "unknown",
+      "source": "src/sdlc.ts:208",
+      "status": "held",
       "fields": {
         "owner": "ghalaax"
       },
       "result": {
         "code": "e5bed1b5"
       },
-      "diagnostics": [
-        "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.PageSelectors",
       "kind": "function",
       "title": "What the page is asked",
-      "source": "src/sdlc.ts:133",
+      "source": "src/sdlc.ts:134",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -5873,7 +5894,7 @@
       "id": "sdlc.PhoneTesters",
       "kind": "role",
       "title": "People who try it on a phone",
-      "source": "src/sdlc.ts:54",
+      "source": "src/sdlc.ts:55",
       "fields": {
         "owner": "ghalaax",
         "people": [
@@ -5886,7 +5907,7 @@
       "id": "sdlc.PlaceThePage",
       "kind": "entry",
       "title": "Place the page",
-      "source": "src/sdlc.ts:190",
+      "source": "src/sdlc.ts:191",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -5909,7 +5930,7 @@
       "id": "sdlc.PlacingThePage",
       "kind": "scenario",
       "title": "The page is placed where it is served",
-      "source": "src/sdlc.ts:521",
+      "source": "src/sdlc.ts:529",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -5941,7 +5962,7 @@
       "id": "sdlc.PoseliaSdlc",
       "kind": "component",
       "title": "Poselia's SDLC",
-      "source": "src/sdlc.ts:73",
+      "source": "src/sdlc.ts:74",
       "fields": {
         "owner": "ghalaax",
         "language": "typescript",
@@ -5955,8 +5976,8 @@
       "id": "sdlc.Preview",
       "kind": "shipment",
       "title": "A preview",
-      "source": "src/sdlc.ts:309",
-      "status": "unknown",
+      "source": "src/sdlc.ts:317",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "target": "preview"
@@ -6014,6 +6035,11 @@
             "obligation": "sdlc.CodeVerifiedSaid"
           },
           {
+            "node": "settings.Breath",
+            "via": "settings.Breath",
+            "obligation": "sdlc.KeptMigrates"
+          },
+          {
             "node": "stage.ThreePackage",
             "via": "stage.BrowserStage",
             "obligation": "sdlc.PackagesSafe"
@@ -6035,18 +6061,117 @@
           }
         ],
         "gaps": [],
-        "preceded": []
+        "preceded": [],
+        "reached": [
+          "sdlc.PageFile",
+          "app.PoseliaPage",
+          "architecture.PoseliaApp",
+          "app.ScreenNames",
+          "drawing.DrawingParts",
+          "practice.PlayerNames",
+          "settings.SettingsNames",
+          "composing.ComposerNames",
+          "stage.MannequinLook",
+          "stage.StageLight",
+          "stage.StageViews",
+          "stage.MarkStyle",
+          "stage.BrowserStage",
+          "app.BrowserScreen",
+          "content.Poses",
+          "content.Sequences",
+          "app.CarriedContent",
+          "language.WordsFr",
+          "language.WordsEn",
+          "content.Languages",
+          "product.ChosenLanguage",
+          "language.PreferenceNames",
+          "language.AppLanguage",
+          "language.InterfaceWords",
+          "content.CuePlaceholders",
+          "body.BodyMeasures",
+          "drawing.DrawingFrame",
+          "drawing.FigureDrawing",
+          "body.MatSpace",
+          "body.TrunkOf",
+          "body.SideNames",
+          "body.KeyOf",
+          "body.Movement",
+          "body.FootOf",
+          "body.LimbSlack",
+          "body.TwoBones",
+          "body.SteppingLeg",
+          "body.FootAngles",
+          "body.FootOnItsWay",
+          "body.KneeLift",
+          "body.PlantedLeg",
+          "body.HandOnItsWay",
+          "body.BodyAt",
+          "drawing.PoseBody",
+          "app.HomeViewOf",
+          "sound.BowlSound",
+          "sound.BrowserBowl",
+          "settings.VoiceParts",
+          "settings.VoiceChoice",
+          "settings.MarksChoice",
+          "product.DefaultBreath",
+          "product.BreathOf",
+          "practice.HoldPhases",
+          "content.SpeechRate",
+          "content.Spoken",
+          "practice.BreathsToSay",
+          "practice.PracticeOf",
+          "practice.MomentAt",
+          "practice.BreathEasing",
+          "practice.Eased",
+          "practice.LungsFull",
+          "body.SpotPlaces",
+          "body.SpotOn",
+          "body.AngleBetween",
+          "marks.MarkLook",
+          "marks.MarkOnBody",
+          "marks.MarksOn",
+          "body.SidesOf",
+          "marks.MarksWhen",
+          "practice.MomentOf",
+          "practice.PlayPractice",
+          "settings.Breath",
+          "settings.BreathBounds",
+          "settings.BreathWithinBounds",
+          "settings.PersonBreath",
+          "settings.SettingsViewOf",
+          "settings.AdjustedBreath",
+          "settings.Tapping",
+          "settings.MeasuredBreath",
+          "settings.ShowSettings",
+          "content.LevelWays",
+          "content.MakesSense",
+          "content.LeadingLegOf",
+          "composing.ComposerViewOf",
+          "composing.DrawnSequence",
+          "composing.BreathOfMove",
+          "body.LegsApart",
+          "composing.ComposedSequence",
+          "composing.HoldingDefaults",
+          "composing.ShowComposer",
+          "app.ShowHome",
+          "body.LimbsReach",
+          "body.RestsOnWhatItNames",
+          "sdlc.OpenThePage",
+          "sdlc.PoseliaSdlc",
+          "sdlc.PageSelectors",
+          "sdlc.PageOpening",
+          "sdlc.SdlcWords",
+          "sdlc.ServedPage",
+          "sdlc.PlaceThePage"
+        ]
       },
-      "diagnostics": [
-        "warning: To ship: Poselia's page is unknown",
-        "warning: To ship: The page opens is unknown"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.PreviewMode",
       "kind": "policy",
       "title": "The way of a preview",
-      "source": "src/sdlc.ts:302",
+      "source": "src/sdlc.ts:310",
       "fields": {
         "owner": "ghalaax"
       },
@@ -6056,7 +6181,7 @@
       "id": "sdlc.PreviewOnGitHub",
       "kind": "decision",
       "title": "When the preview runs on GitHub, and what it keeps there",
-      "source": "src/sdlc.ts:364",
+      "source": "src/sdlc.ts:372",
       "fields": {
         "owner": "ghalaax",
         "value": {
@@ -6088,7 +6213,7 @@
       "id": "sdlc.PreviewScript",
       "kind": "artifact",
       "title": "The preview's script",
-      "source": "src/sdlc.ts:396",
+      "source": "src/sdlc.ts:404",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -6105,7 +6230,7 @@
       "id": "sdlc.PreviewWorkflow",
       "kind": "artifact",
       "title": "The preview's workflow",
-      "source": "src/sdlc.ts:381",
+      "source": "src/sdlc.ts:389",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -6122,7 +6247,7 @@
       "id": "sdlc.ProductServed",
       "kind": "obligation",
       "title": "The product holds",
-      "source": "src/sdlc.ts:259",
+      "source": "src/sdlc.ts:260",
       "fields": {
         "owner": "ghalaax"
       },
@@ -6132,7 +6257,7 @@
       "id": "sdlc.ProgramChecks",
       "kind": "obligation",
       "title": "The page is checked by programs",
-      "source": "src/sdlc.ts:277",
+      "source": "src/sdlc.ts:278",
       "fields": {
         "owner": "ghalaax",
         "params": {
@@ -6145,7 +6270,7 @@
       "id": "sdlc.PublicMode",
       "kind": "policy",
       "title": "The way of a public version",
-      "source": "src/sdlc.ts:337",
+      "source": "src/sdlc.ts:345",
       "fields": {
         "owner": "ghalaax"
       },
@@ -6155,7 +6280,7 @@
       "id": "sdlc.PublicVersion",
       "kind": "shipment",
       "title": "A public version",
-      "source": "src/sdlc.ts:348",
+      "source": "src/sdlc.ts:356",
       "status": "unknown",
       "fields": {
         "owner": "ghalaax",
@@ -6252,6 +6377,11 @@
             "node": "principles.SaidAloud",
             "via": "practice.PlayPractice",
             "obligation": "sdlc.DecisionsApplied"
+          },
+          {
+            "node": "settings.Breath",
+            "via": "settings.Breath",
+            "obligation": "sdlc.KeptMigrates"
           },
           {
             "node": "stage.ThreePackage",
@@ -6404,7 +6534,7 @@
             "obligation": "sdlc.ProductServed"
           },
           {
-            "node": "settings.BreathRead",
+            "node": "settings.BreathWithinBounds",
             "via": "product.BreathOf",
             "obligation": "sdlc.ProductServed"
           },
@@ -6432,18 +6562,117 @@
             "artifacts": [
               {
                 "node": "sdlc.PageFile",
-                "fingerprint": "6e2e25b1ebea2dbade5f42eedd1fe6e00b06802989e6e52cd39283764658058e"
+                "fingerprint": "a9770fb8e5008c50eff854a2f4a353aeafe897947b6a193edd45923578a6a3ee"
               }
             ]
           }
+        ],
+        "reached": [
+          "sdlc.PageFile",
+          "app.PoseliaPage",
+          "architecture.PoseliaApp",
+          "app.ScreenNames",
+          "drawing.DrawingParts",
+          "practice.PlayerNames",
+          "settings.SettingsNames",
+          "composing.ComposerNames",
+          "stage.MannequinLook",
+          "stage.StageLight",
+          "stage.StageViews",
+          "stage.MarkStyle",
+          "stage.BrowserStage",
+          "app.BrowserScreen",
+          "content.Poses",
+          "content.Sequences",
+          "app.CarriedContent",
+          "language.WordsFr",
+          "language.WordsEn",
+          "content.Languages",
+          "product.ChosenLanguage",
+          "language.PreferenceNames",
+          "language.AppLanguage",
+          "language.InterfaceWords",
+          "content.CuePlaceholders",
+          "body.BodyMeasures",
+          "drawing.DrawingFrame",
+          "drawing.FigureDrawing",
+          "body.MatSpace",
+          "body.TrunkOf",
+          "body.SideNames",
+          "body.KeyOf",
+          "body.Movement",
+          "body.FootOf",
+          "body.LimbSlack",
+          "body.TwoBones",
+          "body.SteppingLeg",
+          "body.FootAngles",
+          "body.FootOnItsWay",
+          "body.KneeLift",
+          "body.PlantedLeg",
+          "body.HandOnItsWay",
+          "body.BodyAt",
+          "drawing.PoseBody",
+          "app.HomeViewOf",
+          "sound.BowlSound",
+          "sound.BrowserBowl",
+          "settings.VoiceParts",
+          "settings.VoiceChoice",
+          "settings.MarksChoice",
+          "product.DefaultBreath",
+          "product.BreathOf",
+          "practice.HoldPhases",
+          "content.SpeechRate",
+          "content.Spoken",
+          "practice.BreathsToSay",
+          "practice.PracticeOf",
+          "practice.MomentAt",
+          "practice.BreathEasing",
+          "practice.Eased",
+          "practice.LungsFull",
+          "body.SpotPlaces",
+          "body.SpotOn",
+          "body.AngleBetween",
+          "marks.MarkLook",
+          "marks.MarkOnBody",
+          "marks.MarksOn",
+          "body.SidesOf",
+          "marks.MarksWhen",
+          "practice.MomentOf",
+          "practice.PlayPractice",
+          "settings.Breath",
+          "settings.BreathBounds",
+          "settings.BreathWithinBounds",
+          "settings.PersonBreath",
+          "settings.SettingsViewOf",
+          "settings.AdjustedBreath",
+          "settings.Tapping",
+          "settings.MeasuredBreath",
+          "settings.ShowSettings",
+          "content.LevelWays",
+          "content.MakesSense",
+          "content.LeadingLegOf",
+          "composing.ComposerViewOf",
+          "composing.DrawnSequence",
+          "composing.BreathOfMove",
+          "body.LegsApart",
+          "composing.ComposedSequence",
+          "composing.HoldingDefaults",
+          "composing.ShowComposer",
+          "app.ShowHome",
+          "body.LimbsReach",
+          "body.RestsOnWhatItNames",
+          "sdlc.OpenThePage",
+          "sdlc.PoseliaSdlc",
+          "sdlc.PageSelectors",
+          "sdlc.PageOpening",
+          "sdlc.SdlcWords",
+          "sdlc.ServedPage",
+          "sdlc.PlaceThePage"
         ]
       },
       "diagnostics": [
-        "warning: To ship: Poselia's page is unknown",
         "warning: To ship: On a phone is unknown",
-        "warning: To ship: The page opens is unknown",
         "warning: To ship: The content, reviewed is unknown",
-        "warning: To ship: A page first, the phones after is unknown",
         "warning: To ship: The content is data, behind a port is unknown",
         "warning: To ship: Said aloud, the screen awake is unknown"
       ]
@@ -6452,7 +6681,7 @@
       "id": "sdlc.RulesHeld",
       "kind": "obligation",
       "title": "The rules of the app hold",
-      "source": "src/sdlc.ts:289",
+      "source": "src/sdlc.ts:290",
       "fields": {
         "owner": "ghalaax"
       },
@@ -6462,7 +6691,7 @@
       "id": "sdlc.RunnersWritten",
       "kind": "shipment",
       "title": "The files that run it elsewhere",
-      "source": "src/sdlc.ts:409",
+      "source": "src/sdlc.ts:417",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -6471,7 +6700,11 @@
       "result": {
         "derived": [],
         "gaps": [],
-        "preceded": []
+        "preceded": [],
+        "reached": [
+          "sdlc.PreviewScript",
+          "sdlc.PreviewWorkflow"
+        ]
       },
       "diagnostics": []
     },
@@ -6479,7 +6712,7 @@
       "id": "sdlc.SdlcChecks",
       "kind": "catalog",
       "title": "What the scenarios of the SDLC check",
-      "source": "src/sdlc.ts:473",
+      "source": "src/sdlc.ts:481",
       "fields": {
         "owner": "ghalaax",
         "messages": "(function)"
@@ -6490,7 +6723,7 @@
       "id": "sdlc.SdlcInMemory",
       "kind": "binding",
       "title": "The SDLC in memory",
-      "source": "src/sdlc.ts:97",
+      "source": "src/sdlc.ts:98",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -6502,7 +6735,7 @@
       "id": "sdlc.SdlcInTheGraph",
       "kind": "adr",
       "title": "The SDLC is in the graph",
-      "source": "src/sdlc.ts:446",
+      "source": "src/sdlc.ts:454",
       "status": "unknown",
       "fields": {
         "owner": "ghalaax",
@@ -6519,7 +6752,7 @@
       "id": "sdlc.SdlcScenarioData",
       "kind": "decision",
       "title": "What the scenarios of the SDLC write",
-      "source": "src/sdlc.ts:465",
+      "source": "src/sdlc.ts:473",
       "fields": {
         "owner": "ghalaax",
         "value": {
@@ -6533,7 +6766,7 @@
       "id": "sdlc.SdlcWords",
       "kind": "catalog",
       "title": "What the programs of the SDLC say",
-      "source": "src/sdlc.ts:153",
+      "source": "src/sdlc.ts:154",
       "fields": {
         "owner": "ghalaax",
         "messages": "(function)"
@@ -6544,7 +6777,7 @@
       "id": "sdlc.ServedPage",
       "kind": "decision",
       "title": "Where the page is served",
-      "source": "src/sdlc.ts:115",
+      "source": "src/sdlc.ts:116",
       "fields": {
         "owner": "ghalaax",
         "value": {
@@ -6560,7 +6793,7 @@
       "id": "sdlc.Teachers",
       "kind": "role",
       "title": "A teacher who practises",
-      "source": "src/sdlc.ts:61",
+      "source": "src/sdlc.ts:62",
       "fields": {
         "owner": "ghalaax",
         "people": [],
@@ -6574,7 +6807,7 @@
       "id": "settings.AdjustedBreath",
       "kind": "requirement",
       "title": "A phase set by the person",
-      "source": "src/settings.ts:76",
+      "source": "src/settings.ts:90",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -6589,7 +6822,7 @@
       "id": "settings.AdjustedBreathCriteria",
       "kind": "acceptance",
       "title": "Criteria of a phase set by the person",
-      "source": "src/settings.ts:87",
+      "source": "src/settings.ts:101",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -6612,10 +6845,72 @@
       "diagnostics": []
     },
     {
+      "id": "settings.Breath",
+      "kind": "entity",
+      "title": "The person's breath, kept",
+      "source": "src/settings.ts:38",
+      "status": "held",
+      "fields": {
+        "owner": "ghalaax",
+        "fields": {
+          "inhale": {
+            "type": "number",
+            "quantity": "std/measures.Time"
+          },
+          "holdTop": {
+            "type": "number",
+            "quantity": "std/measures.Time"
+          },
+          "exhale": {
+            "type": "number",
+            "quantity": "std/measures.Time"
+          },
+          "holdBottom": {
+            "type": "number",
+            "quantity": "std/measures.Time"
+          }
+        },
+        "keptAs": "poselia.breath"
+      },
+      "result": {
+        "deployed": {
+          "fields": {
+            "inhale": {
+              "type": "number",
+              "quantity": "std/measures.Time"
+            },
+            "holdTop": {
+              "type": "number",
+              "quantity": "std/measures.Time"
+            },
+            "exhale": {
+              "type": "number",
+              "quantity": "std/measures.Time"
+            },
+            "holdBottom": {
+              "type": "number",
+              "quantity": "std/measures.Time"
+            }
+          }
+        },
+        "version": "a2228bee",
+        "first": "a2228bee",
+        "migrations": [],
+        "undecided": [],
+        "kept": [
+          {
+            "version": "a2228bee",
+            "at": "2026-11-09"
+          }
+        ]
+      },
+      "diagnostics": []
+    },
+    {
       "id": "settings.BreathBounds",
       "kind": "decision",
       "title": "Bounds of a breath",
-      "source": "src/settings.ts:24",
+      "source": "src/settings.ts:28",
       "fields": {
         "owner": "ghalaax",
         "value": {
@@ -6628,26 +6923,25 @@
       "diagnostics": []
     },
     {
-      "id": "settings.BreathRead",
+      "id": "settings.BreathWithinBounds",
       "kind": "requirement",
-      "title": "A breath read back",
-      "source": "src/settings.ts:34",
+      "title": "A breath within its bounds",
+      "source": "src/settings.ts:63",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
         "deps": {
-          "b": "settings.BreathBounds",
-          "values": "std/algebra.ValueTypes"
+          "b": "settings.BreathBounds"
         },
         "body": "(function)"
       },
       "diagnostics": []
     },
     {
-      "id": "settings.BreathReadCriteria",
+      "id": "settings.BreathWithinBoundsCriteria",
       "kind": "acceptance",
       "title": "Criteria of a breath read back",
-      "source": "src/settings.ts:60",
+      "source": "src/settings.ts:74",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -6655,11 +6949,7 @@
       },
       "result": [
         {
-          "name": "A breath kept is read back as it was",
-          "status": "passed"
-        },
-        {
-          "name": "Nothing kept: no breath",
+          "name": "A breath of five seconds in, a second held, six out: followed",
           "status": "passed"
         },
         {
@@ -6667,17 +6957,29 @@
           "status": "passed"
         },
         {
-          "name": "Something else than a breath: no breath",
+          "name": "A hold longer than the most: no breath",
           "status": "passed"
         }
       ],
       "diagnostics": []
     },
     {
+      "id": "settings.KeptOnTheDevice",
+      "kind": "binding",
+      "title": "Kept in the preferences of the device",
+      "source": "src/settings.ts:50",
+      "status": "held",
+      "fields": {
+        "owner": "ghalaax",
+        "context": "The app keeps a little on the device, under names of its own: its preferences are where."
+      },
+      "diagnostics": []
+    },
+    {
       "id": "settings.MarksChoice",
       "kind": "function",
       "title": "The landmarks the person chose",
-      "source": "src/settings.ts:207",
+      "source": "src/settings.ts:224",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -6693,7 +6995,7 @@
       "id": "settings.MeasuredBreath",
       "kind": "requirement",
       "title": "A breath measured by tapping",
-      "source": "src/settings.ts:114",
+      "source": "src/settings.ts:128",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -6710,7 +7012,7 @@
       "id": "settings.MeasuredBreathCriteria",
       "kind": "acceptance",
       "title": "Criteria of a breath measured by tapping",
-      "source": "src/settings.ts:137",
+      "source": "src/settings.ts:151",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -6736,15 +7038,14 @@
       "id": "settings.PersonBreath",
       "kind": "function",
       "title": "The person's breath",
-      "source": "src/settings.ts:164",
+      "source": "src/settings.ts:178",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
         "deps": {
-          "preferences": "std/platform.PreferencesStore",
-          "names": "language.PreferenceNames",
-          "read": "(function)",
-          "texts": "std/algebra.Texts"
+          "documents": "data/documents.Documents",
+          "breath": "settings.Breath",
+          "within": "(function)"
         },
         "body": "(function)"
       },
@@ -6754,7 +7055,7 @@
       "id": "settings.SettingsNames",
       "kind": "decision",
       "title": "Names of the settings",
-      "source": "src/settings.ts:252",
+      "source": "src/settings.ts:269",
       "fields": {
         "owner": "ghalaax",
         "value": {
@@ -6770,7 +7071,7 @@
       "id": "settings.SettingsViewOf",
       "kind": "function",
       "title": "The settings view",
-      "source": "src/settings.ts:223",
+      "source": "src/settings.ts:240",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -6789,7 +7090,7 @@
       "id": "settings.ShowSettings",
       "kind": "function",
       "title": "Show the settings",
-      "source": "src/settings.ts:235",
+      "source": "src/settings.ts:252",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -6821,7 +7122,7 @@
       "id": "settings.Tapping",
       "kind": "decision",
       "title": "Tapping",
-      "source": "src/settings.ts:102",
+      "source": "src/settings.ts:116",
       "fields": {
         "owner": "ghalaax",
         "value": {
@@ -6837,7 +7138,7 @@
       "id": "settings.VoiceChoice",
       "kind": "function",
       "title": "The voice the person chose",
-      "source": "src/settings.ts:180",
+      "source": "src/settings.ts:197",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -6853,7 +7154,7 @@
       "id": "settings.VoiceParts",
       "kind": "decision",
       "title": "What the practice says and rings",
-      "source": "src/settings.ts:155",
+      "source": "src/settings.ts:169",
       "fields": {
         "owner": "ghalaax",
         "value": {
@@ -6967,7 +7268,7 @@
       "kind": "implementation",
       "title": "The browser's stage",
       "source": "src/stage.ts:126",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "deps": {
@@ -8498,6 +8799,11 @@
       "kind": "serves"
     },
     {
+      "from": "packages.Data",
+      "to": "product.PractiseGuided",
+      "kind": "serves"
+    },
+    {
       "from": "packages.Geometry",
       "to": "product.PractiseGuided",
       "kind": "serves"
@@ -9838,6 +10144,16 @@
       "kind": "serves"
     },
     {
+      "from": "sdlc.KeptMigrates",
+      "to": "data/obligations.Migrated",
+      "kind": "applies"
+    },
+    {
+      "from": "sdlc.KeptMigrates",
+      "to": "product.PractiseGuided",
+      "kind": "serves"
+    },
+    {
       "from": "sdlc.OnAPhone",
       "to": "sdlc.PageFile",
       "kind": "on"
@@ -10263,6 +10579,11 @@
       "kind": "obligations"
     },
     {
+      "from": "sdlc.PreviewMode",
+      "to": "sdlc.KeptMigrates",
+      "kind": "obligations"
+    },
+    {
       "from": "sdlc.PreviewScript",
       "to": "ci/shell.ShellScript",
       "kind": "producedBy"
@@ -10350,6 +10671,11 @@
     {
       "from": "sdlc.PublicMode",
       "to": "sdlc.PackagesSafe",
+      "kind": "obligations"
+    },
+    {
+      "from": "sdlc.PublicMode",
+      "to": "sdlc.KeptMigrates",
       "kind": "obligations"
     },
     {
@@ -10508,24 +10834,44 @@
       "kind": "accepts"
     },
     {
-      "from": "settings.BreathRead",
+      "from": "settings.Breath",
+      "to": "product.BreathSetsThePace",
+      "kind": "serves"
+    },
+    {
+      "from": "settings.BreathWithinBounds",
       "to": "product.BreathSetsThePace",
       "kind": "refines"
     },
     {
-      "from": "settings.BreathRead",
+      "from": "settings.BreathWithinBounds",
       "to": "settings.BreathBounds",
       "kind": "deps"
     },
     {
-      "from": "settings.BreathRead",
-      "to": "std/algebra.ValueTypes",
-      "kind": "deps"
+      "from": "settings.BreathWithinBoundsCriteria",
+      "to": "settings.BreathWithinBounds",
+      "kind": "accepts"
     },
     {
-      "from": "settings.BreathReadCriteria",
-      "to": "settings.BreathRead",
-      "kind": "accepts"
+      "from": "settings.KeptOnTheDevice",
+      "to": "data/documents.DocumentsInPreferences",
+      "kind": "chooses"
+    },
+    {
+      "from": "settings.KeptOnTheDevice",
+      "to": "architecture.Browser",
+      "kind": "environments"
+    },
+    {
+      "from": "settings.KeptOnTheDevice",
+      "to": "architecture.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "settings.KeptOnTheDevice",
+      "to": "std/patterns.Strategy",
+      "kind": "follows"
     },
     {
       "from": "settings.MarksChoice",
@@ -10574,22 +10920,17 @@
     },
     {
       "from": "settings.PersonBreath",
-      "to": "std/platform.PreferencesStore",
+      "to": "data/documents.Documents",
       "kind": "deps"
     },
     {
       "from": "settings.PersonBreath",
-      "to": "language.PreferenceNames",
+      "to": "settings.Breath",
       "kind": "deps"
     },
     {
       "from": "settings.PersonBreath",
-      "to": "settings.BreathRead",
-      "kind": "deps"
-    },
-    {
-      "from": "settings.PersonBreath",
-      "to": "std/algebra.Texts",
+      "to": "settings.BreathWithinBounds",
       "kind": "deps"
     },
     {
@@ -10935,6 +11276,12 @@
     {
       "from": "sdlc.AfterThePreview",
       "to": "sdlc.Preview",
+      "kind": "uses",
+      "inferred": true
+    },
+    {
+      "from": "settings.Breath",
+      "to": "std/measures.Time",
       "kind": "uses",
       "inferred": true
     }

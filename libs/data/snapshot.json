@@ -131,9 +131,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "103",
+        "version": "104",
         "joins": "language",
-        "at": "../../generations/g103"
+        "at": "../../generations/g104"
       }
     },
     {
@@ -173,31 +173,16 @@
       }
     },
     {
-      "id": "scenarios.Book",
-      "kind": "entity",
-      "title": "A book",
-      "status": "held",
+      "id": "releases.R0_1_0",
+      "kind": "release",
+      "title": "Version 0.1.0",
       "fields": {
         "owner": "trame",
-        "fields": {
-          "title": {
-            "type": "text"
-          },
-          "pages": {
-            "type": "number"
-          },
-          "shelf": {
-            "type": "word",
-            "vocabulary": "scenarios.Shelves"
-          },
-          "lent": {
-            "type": "optional",
-            "of": {
-              "type": "flag"
-            }
-          }
-        },
-        "keptAs": "data.book"
+        "version": "0.1.0",
+        "date": "2026-11-09",
+        "what": "The kind entity: data described once, its migrations computed from what deployments kept; documents kept in the preferences; the family Migrated",
+        "fingerprint": "b59ea0bf2828ba1b",
+        "language": "shared"
       }
     },
     {
@@ -267,7 +252,7 @@
         "deps": {
           "documents": "documents.Documents",
           "preferences": "std/platform.PreferencesStore",
-          "book": "scenarios.Book",
+          "book": "shelves.Book",
           "form": "documents.DocumentForm",
           "given": "scenarios.DataGiven",
           "checks": "scenarios.DataChecks"
@@ -283,18 +268,6 @@
       "fields": {
         "owner": "trame",
         "context": "The library's documents are read and written as a product's would be, the device in memory."
-      }
-    },
-    {
-      "id": "scenarios.Shelves",
-      "kind": "vocabulary",
-      "title": "Shelves",
-      "fields": {
-        "owner": "trame",
-        "words": {
-          "reading": "Being read",
-          "read": "Read"
-        }
       }
     },
     {
@@ -371,6 +344,46 @@
       "title": "How a version is made",
       "fields": {
         "owner": "trame"
+      }
+    },
+    {
+      "id": "shelves.Book",
+      "kind": "entity",
+      "title": "A book",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "fields": {
+          "title": {
+            "type": "text"
+          },
+          "pages": {
+            "type": "number"
+          },
+          "shelf": {
+            "type": "word",
+            "vocabulary": "shelves.Shelves"
+          },
+          "lent": {
+            "type": "optional",
+            "of": {
+              "type": "flag"
+            }
+          }
+        },
+        "keptAs": "data.book"
+      }
+    },
+    {
+      "id": "shelves.Shelves",
+      "kind": "vocabulary",
+      "title": "Shelves",
+      "fields": {
+        "owner": "trame",
+        "words": {
+          "reading": "Being read",
+          "read": "Read"
+        }
       }
     },
     {
@@ -488,7 +501,7 @@
       "kind": "appliedBy"
     },
     {
-      "from": "scenarios.Book",
+      "from": "releases.R0_1_0",
       "to": "product.DataDescribedOnce",
       "kind": "serves"
     },
@@ -519,7 +532,7 @@
     },
     {
       "from": "scenarios.DocumentsKept",
-      "to": "scenarios.Book",
+      "to": "shelves.Book",
       "kind": "deps"
     },
     {
@@ -549,11 +562,6 @@
     },
     {
       "from": "scenarios.InMemory",
-      "to": "product.DataDescribedOnce",
-      "kind": "serves"
-    },
-    {
-      "from": "scenarios.Shelves",
       "to": "product.DataDescribedOnce",
       "kind": "serves"
     },
@@ -608,8 +616,18 @@
       "kind": "obligations"
     },
     {
-      "from": "scenarios.Book",
-      "to": "scenarios.Shelves",
+      "from": "shelves.Book",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "shelves.Shelves",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "shelves.Book",
+      "to": "shelves.Shelves",
       "kind": "uses"
     }
   ],

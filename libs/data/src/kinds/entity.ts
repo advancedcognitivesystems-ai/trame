@@ -252,6 +252,34 @@ const written = (s: Stored, g: Graph): Inline[] => {
 /** How a step is written for people. */
 const stepWritten = (x: Step): Inline[] => [opWords[x.op] ?? x.op, doc.ident(x.field), ...(x.from === undefined ? [] : [say.opFrom(), doc.ident(x.from)])]
 
+/** What an entity computes: its description, its version, and how each version a deployment kept migrates to it. */
+const computed = (self: View, g: Graph): Result => {
+  const lib = g.lib
+  const key = self.field(F.key)
+  const deployed: Description = {
+    fields: Object.fromEntries(storedOf(self, lib).map(([k, s]) => [k, describe(s, g)])),
+    ...(lib.values.isText(key) ? { key } : {}),
+  }
+  const version = lib.fingerprint?.(deployed) ?? lib.texts.empty
+  const changes = self.field(F.changes)
+  const records = self.evidence.filter((e) => e.source === EvidenceSource.shipped && isPlain(e.kept, lib))
+  const kept: { version: string; at: string; description: Description }[] = []
+  for (const e of [...records].sort((a, b) => a.at.localeCompare(b.at))) {
+    const description = e.kept as Description
+    const v = lib.fingerprint?.(description) ?? lib.texts.empty
+    if (!kept.some((k) => k.version === v)) kept.push({ version: v, at: e.at, description })
+  }
+  const migrations: Migration[] = []
+  const undecided: Undecided[] = []
+  for (const k of kept.filter((x) => x.version !== version)) {
+    const m = migrate(k.description, deployed, isPlain(changes, lib) ? (changes as Changes) : {}, lib)
+    migrations.push({ from: k.version, steps: m.steps })
+    undecided.push(...m.undecided.filter((u) => !undecided.some((x) => x.what === u.what)))
+  }
+  const [first] = kept
+  return { deployed, version, first: first?.version ?? version, migrations, undecided, kept: kept.map(({ version: v, at }) => ({ version: v, at })) }
+}
+
 /**
  * An entity: a kind of data a product keeps outside the graph, described once (its fields, each with how it is stored;
  * its key, when it is kept as many). Wired, it gives its model: its fields, their names, the version of its description
@@ -268,32 +296,7 @@ const kind = defineKind({
   fields,
   edges,
 
-  evaluate(self, g): Result {
-    const lib = g.lib
-    const key = self.field(F.key)
-    const deployed: Description = {
-      fields: Object.fromEntries(storedOf(self, lib).map(([k, s]) => [k, describe(s, g)])),
-      ...(lib.values.isText(key) ? { key } : {}),
-    }
-    const version = lib.fingerprint?.(deployed) ?? lib.texts.empty
-    const changes = self.field(F.changes)
-    const records = self.evidence.filter((e) => e.source === EvidenceSource.shipped && isPlain(e.kept, lib))
-    const kept: { version: string; at: string; description: Description }[] = []
-    for (const e of [...records].sort((a, b) => a.at.localeCompare(b.at))) {
-      const description = e.kept as Description
-      const v = lib.fingerprint?.(description) ?? lib.texts.empty
-      if (!kept.some((k) => k.version === v)) kept.push({ version: v, at: e.at, description })
-    }
-    const migrations: Migration[] = []
-    const undecided: Undecided[] = []
-    for (const k of kept.filter((x) => x.version !== version)) {
-      const m = migrate(k.description, deployed, isPlain(changes, lib) ? (changes as Changes) : {}, lib)
-      migrations.push({ from: k.version, steps: m.steps })
-      undecided.push(...m.undecided.filter((u) => !undecided.some((x) => x.what === u.what)))
-    }
-    const [first] = kept
-    return { deployed, version, first: first?.version ?? version, migrations, undecided, kept: kept.map(({ version: v, at }) => ({ version: v, at })) }
-  },
+  evaluate: (self, g): Result => computed(self, g),
 
   status(self) {
     const r = self.result<Result>()
@@ -328,8 +331,9 @@ const kind = defineKind({
   },
 
   /** Wired as a dependency: its model, which the code reads its fields, their names and its migrations from. */
-  provide: (self) => {
-    const r = self.result<Result>()
+  provide: (self, ctx) => {
+    // Wired before it was evaluated (a scenario of a module evaluated earlier), it computes what it gives.
+    const r = self.result<Result>() ?? (ctx?.g ? computed(self, ctx.g) : undefined)
     const description = r?.deployed ?? { fields: {} }
     const names = Object.fromEntries(Object.keys(description.fields).map((k) => [k, k]))
     const keptAs = self.field(F.keptAs)

@@ -2,7 +2,7 @@
 
 *What answers each port in each environment on 9 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
 
-> **5 technical choices for 20 ports, in 3 environments**
+> **6 technical choices for 21 ports, in 3 environments**
 
 | Port | Browser | Test | A machine |
 |---|---|---|---|
@@ -12,6 +12,7 @@
 | [Screen](architecture.md#Screen) | [The browser's screen](app.md#BrowserScreen) | [A screen that records](scenarios.md#RecordedScreen) | — |
 | [Content](architecture.md#ContentSource) | [The content the app carries](app.md#CarriedContent) | [The content the app carries](app.md#CarriedContent) | — |
 | [Views shown](architecture.md#ViewsShown) | — | [A screen that records](scenarios.md#RecordedScreen) | — |
+| [Documents](../.trame/data/docs/documents.md#Documents) | [Documents kept in the preferences](../.trame/data/docs/documents.md#DocumentsInPreferences) | [Documents kept in the preferences](../.trame/data/docs/documents.md#DocumentsInPreferences) | — |
 | [Loading of a page](../.trame/std/docs/platform.md#PageLoading) | [The browser loads the page](../.trame/std/docs/platform.md#BrowserLoading) | — | — |
 | [Preferences](../.trame/std/docs/platform.md#PreferencesStore) | [The browser keeps the preferences](../.trame/std/docs/platform.md#BrowserPreferences) | [Preferences kept in memory](../.trame/std/docs/platform.md#MemoryPreferences) | — |
 | [Languages of the device](../.trame/std/docs/platform.md#DeviceLanguages) | [The browser's languages](../.trame/std/docs/platform.md#BrowserLanguages) | [The device's languages, given](scenarios.md#GivenLanguages) | — |
@@ -29,7 +30,7 @@
 
 | Pattern | Status | Followed by |
 |---|---|---|
-| [Strategy](../.trame/std/docs/patterns.md#Strategy) | **held** | [Content carried by the app](app.md#ContentCarried), [The app in memory](scenarios.md#InMemory), [The SDLC in memory](sdlc.md#SdlcInMemory), [In memory](../.trame/std/docs/scenarios.md#InMemory) |
+| [Strategy](../.trame/std/docs/patterns.md#Strategy) | **held** | [Content carried by the app](app.md#ContentCarried), [The app in memory](scenarios.md#InMemory), [The SDLC in memory](sdlc.md#SdlcInMemory), [Kept in the preferences of the device](settings.md#KeptOnTheDevice), [Documents, in memory](../.trame/data/docs/scenarios.md#InMemory), [In memory](../.trame/std/docs/scenarios.md#InMemory) |
 | [Adapter](../.trame/std/docs/patterns.md#Adapter) | **held** | [The browser's realizations](app.md#InTheBrowser), [On the machine](sdlc.md#OnTheMachine) |
 | [Abstract Factory](../.trame/std/docs/patterns.md#AbstractFactory) | **held** | [The app in memory](scenarios.md#InMemory) |
 
@@ -126,7 +127,7 @@ Consequences: The screen and what records it are chosen together: a scenario rea
 
 ### On the machine
 
-`OnTheMachine` · `src/sdlc.ts:85` · status: **unknown**
+`OnTheMachine` · `src/sdlc.ts:86` · status: **held**
 
 On a machine, the programs of the SDLC read their commands from Node's command line, the project's files from the disk, and open the page in Chromium driven by Playwright, as the standard library realizes them.
 
@@ -149,7 +150,7 @@ Context: A check must open the page a person opens: the file delivered, in a rea
 
 ### The SDLC in memory
 
-`SdlcInMemory` · `src/sdlc.ts:97` · status: **held**
+`SdlcInMemory` · `src/sdlc.ts:98` · status: **held**
 
 In the scenarios, the files are kept in memory and the browser shows the page a scenario writes.
 
@@ -165,4 +166,27 @@ Context: A program of the SDLC is code like the app's: its scenarios play it bef
 - Decided by: ghalaax
 - Chooses: [Files kept in memory](../.trame/std/docs/tooling.md#FilesInMemory), [A browser kept in memory](../.trame/std/docs/tooling.md#BrowserInMemory)
 - In: [Test](architecture.md#Test)
+- Follows: [Strategy](../.trame/std/docs/patterns.md#Strategy)
+
+## Poselia · Settings
+
+<a id="KeptOnTheDevice"></a>
+
+### Kept in the preferences of the device
+
+`KeptOnTheDevice` · `src/settings.ts:50` · status: **held**
+
+What the app keeps whole (the person's breath) lives in the preferences of the device, in the browser as in the scenarios: read back migrated and checked by the library of data.
+
+In [Browser](architecture.md#Browser), [Test](architecture.md#Test):
+
+| Port | Answered by | Which is |
+|---|---|---|
+| [Documents](../.trame/data/docs/documents.md#Documents) | [Documents kept in the preferences](../.trame/data/docs/documents.md#DocumentsInPreferences) | a function |
+
+Context: The app keeps a little on the device, under names of its own: its preferences are where.
+
+- Decided by: ghalaax
+- Chooses: [Documents kept in the preferences](../.trame/data/docs/documents.md#DocumentsInPreferences)
+- In: [Browser](architecture.md#Browser), [Test](architecture.md#Test)
 - Follows: [Strategy](../.trame/std/docs/patterns.md#Strategy)

@@ -26,9 +26,9 @@ export const English = decision<{ tag: string }>({ owner: "ghalaax", value: { ta
  * The names under which the app keeps the person's choices on the device: prefixed by the app's name, so that two apps
  * of the same origin never mix them.
  */
-export const PreferenceNames = decision<{ language: string; breath: string; marks: string }>({
+export const PreferenceNames = decision<{ language: string; marks: string }>({
   owner: "ghalaax",
-  value: { language: "poselia.language", breath: "poselia.breath", marks: "poselia.marks" },
+  value: { language: "poselia.language", marks: "poselia.marks" },
 })
 
 /**

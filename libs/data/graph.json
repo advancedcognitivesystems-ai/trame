@@ -160,9 +160,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "103",
+        "version": "104",
         "joins": "language",
-        "at": "../../generations/g103"
+        "at": "../../generations/g104"
       },
       "diagnostics": []
     },
@@ -209,63 +209,17 @@
       "diagnostics": []
     },
     {
-      "id": "scenarios.Book",
-      "kind": "entity",
-      "title": "A book",
-      "source": "src/scenarios.ts:48",
-      "status": "held",
+      "id": "releases.R0_1_0",
+      "kind": "release",
+      "title": "Version 0.1.0",
+      "source": "src/releases.ts:12",
       "fields": {
         "owner": "trame",
-        "fields": {
-          "title": {
-            "type": "text"
-          },
-          "pages": {
-            "type": "number"
-          },
-          "shelf": {
-            "type": "word",
-            "vocabulary": "scenarios.Shelves"
-          },
-          "lent": {
-            "type": "optional",
-            "of": {
-              "type": "flag"
-            }
-          }
-        },
-        "keptAs": "data.book"
-      },
-      "result": {
-        "deployed": {
-          "fields": {
-            "title": {
-              "type": "text"
-            },
-            "pages": {
-              "type": "number"
-            },
-            "shelf": {
-              "type": "word",
-              "vocabulary": "scenarios.Shelves",
-              "words": [
-                "reading",
-                "read"
-              ]
-            },
-            "lent": {
-              "type": "optional",
-              "of": {
-                "type": "flag"
-              }
-            }
-          }
-        },
-        "version": "48e05fc2",
-        "first": "48e05fc2",
-        "migrations": [],
-        "undecided": [],
-        "kept": []
+        "version": "0.1.0",
+        "date": "2026-11-09",
+        "what": "The kind entity: data described once, its migrations computed from what deployments kept; documents kept in the preferences; the family Migrated",
+        "fingerprint": "b59ea0bf2828ba1b",
+        "language": "shared"
       },
       "diagnostics": []
     },
@@ -273,7 +227,7 @@
       "id": "scenarios.DataChecks",
       "kind": "catalog",
       "title": "What the library's scenarios check",
-      "source": "src/scenarios.ts:58",
+      "source": "src/scenarios.ts:42",
       "fields": {
         "owner": "trame",
         "messages": "(function)"
@@ -284,7 +238,7 @@
       "id": "scenarios.DataGiven",
       "kind": "decision",
       "title": "What the library's scenarios are given",
-      "source": "src/scenarios.ts:76",
+      "source": "src/scenarios.ts:60",
       "fields": {
         "owner": "trame",
         "value": {
@@ -334,14 +288,14 @@
       "id": "scenarios.DocumentsKept",
       "kind": "scenario",
       "title": "Documents kept in the preferences",
-      "source": "src/scenarios.ts:101",
+      "source": "src/scenarios.ts:85",
       "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
           "documents": "documents.Documents",
           "preferences": "std/platform.PreferencesStore",
-          "book": "scenarios.Book",
+          "book": "shelves.Book",
           "form": "documents.DocumentForm",
           "given": "scenarios.DataGiven",
           "checks": "scenarios.DataChecks"
@@ -380,7 +334,7 @@
       "id": "scenarios.InMemory",
       "kind": "binding",
       "title": "Documents, in memory",
-      "source": "src/scenarios.ts:29",
+      "source": "src/scenarios.ts:30",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -389,24 +343,10 @@
       "diagnostics": []
     },
     {
-      "id": "scenarios.Shelves",
-      "kind": "vocabulary",
-      "title": "Shelves",
-      "source": "src/scenarios.ts:42",
-      "fields": {
-        "owner": "trame",
-        "words": {
-          "reading": "Being read",
-          "read": "Read"
-        }
-      },
-      "diagnostics": []
-    },
-    {
       "id": "scenarios.Test",
       "kind": "environment",
       "title": "Test",
-      "source": "src/scenarios.ts:23",
+      "source": "src/scenarios.ts:24",
       "fields": {
         "owner": "trame",
         "evaluates": true
@@ -484,12 +424,10 @@
           "packages.stdLibrary",
           "principles.DescribedOnce",
           "product.DataDescribedOnce",
-          "scenarios.Book",
           "scenarios.DataChecks",
           "scenarios.DataGiven",
           "scenarios.DocumentsKept",
           "scenarios.InMemory",
-          "scenarios.Shelves",
           "scenarios.Test",
           "sdlc.DecisionsApplied",
           "sdlc.FunctionsVerified",
@@ -497,6 +435,8 @@
           "sdlc.PackagesSafe",
           "sdlc.RequirementsServed",
           "sdlc.VersionMode",
+          "shelves.Book",
+          "shelves.Shelves",
           "words.DataKindWords"
         ]
       },
@@ -537,10 +477,10 @@
       },
       "result": {
         "path": "src",
-        "code": "0f924c50"
+        "code": "afcf14a2"
       },
       "diagnostics": [
-        "warning: Not built yet: trame ship builds it"
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
       ]
     },
     {
@@ -550,6 +490,81 @@
       "source": "src/sdlc.ts:51",
       "fields": {
         "owner": "trame"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "shelves.Book",
+      "kind": "entity",
+      "title": "A book",
+      "source": "src/shelves.ts:20",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "fields": {
+          "title": {
+            "type": "text"
+          },
+          "pages": {
+            "type": "number"
+          },
+          "shelf": {
+            "type": "word",
+            "vocabulary": "shelves.Shelves"
+          },
+          "lent": {
+            "type": "optional",
+            "of": {
+              "type": "flag"
+            }
+          }
+        },
+        "keptAs": "data.book"
+      },
+      "result": {
+        "deployed": {
+          "fields": {
+            "title": {
+              "type": "text"
+            },
+            "pages": {
+              "type": "number"
+            },
+            "shelf": {
+              "type": "word",
+              "vocabulary": "shelves.Shelves",
+              "words": [
+                "reading",
+                "read"
+              ]
+            },
+            "lent": {
+              "type": "optional",
+              "of": {
+                "type": "flag"
+              }
+            }
+          }
+        },
+        "version": "a08cdb3d",
+        "first": "a08cdb3d",
+        "migrations": [],
+        "undecided": [],
+        "kept": []
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "shelves.Shelves",
+      "kind": "vocabulary",
+      "title": "Shelves",
+      "source": "src/shelves.ts:14",
+      "fields": {
+        "owner": "trame",
+        "words": {
+          "reading": "Being read",
+          "read": "Read"
+        }
       },
       "diagnostics": []
     },
@@ -690,7 +705,7 @@
       "kind": "appliedBy"
     },
     {
-      "from": "scenarios.Book",
+      "from": "releases.R0_1_0",
       "to": "product.DataDescribedOnce",
       "kind": "serves"
     },
@@ -731,7 +746,7 @@
     },
     {
       "from": "scenarios.DocumentsKept",
-      "to": "scenarios.Book",
+      "to": "shelves.Book",
       "kind": "deps"
     },
     {
@@ -771,11 +786,6 @@
     },
     {
       "from": "scenarios.InMemory",
-      "to": "product.DataDescribedOnce",
-      "kind": "serves"
-    },
-    {
-      "from": "scenarios.Shelves",
       "to": "product.DataDescribedOnce",
       "kind": "serves"
     },
@@ -850,13 +860,23 @@
       "kind": "obligations"
     },
     {
+      "from": "shelves.Book",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "shelves.Shelves",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
       "from": "words.DataKindWords",
       "to": "std/measures.SymbolsLanguage",
       "kind": "language"
     },
     {
-      "from": "scenarios.Book",
-      "to": "scenarios.Shelves",
+      "from": "shelves.Book",
+      "to": "shelves.Shelves",
       "kind": "uses",
       "inferred": true
     }

@@ -30,12 +30,12 @@ flowchart TB
 
 |  | Stage | Step | Run by | Why | Status | Latest evidence |
 |---|---|---|---|---|---|---|
-| 1 | produce | [The library of data](sdlc.md#TheLibrary) · `src` | — | — | **unknown** |  |
+| 1 | produce | [The library of data](sdlc.md#TheLibrary) · `src` | — | — | **unknown** | 9 November 2026 by claude  |
 | 2 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
-| 3 | prove | [The library of data](sdlc.md#TheLibrary) | — | the shipment | **unknown** |  |
+| 3 | prove | [The library of data](sdlc.md#TheLibrary) | — | the shipment | **unknown** | 9 November 2026 by claude  |
 | 4 | prove | [An entity is described once](principles.md#DescribedOnce) | — | [Its decisions applied](sdlc.md#DecisionsApplied) via [A value of the description it is of](documents.md#Conforms) | **held** |  |
 | 5 | prove | [Documents kept in the preferences](scenarios.md#DocumentsKept) | — | [Its functions verified](sdlc.md#FunctionsVerified) via [A value of the description it is of](documents.md#Conforms) | **held** |  |
 | 6 | prove | [What a shipment stores migrates](obligations.md#Migrated) | — | [Its requirements held](sdlc.md#RequirementsServed) via [A value of the description it is of](documents.md#Conforms) | **held** |  |
-| 7 | record | [The next version](sdlc.md#NextVersion) | — | — | **unknown** |  |
+| 7 | record | [The next version](sdlc.md#NextVersion) | — | — | **unknown** | 9 November 2026 by claude `evidence/shipments/NextVersion-2026-11-09-ec198b2a.json` |
 
 `trame ship NextVersion --by <name>`

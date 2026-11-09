@@ -39,6 +39,7 @@ The bowl that marks a practice: struck, it rings and fades.
 |---|---|---|
 | [Browser](#Browser) | [The browser's bowl](sound.md#BrowserBowl) | [The browser's realizations](app.md#InTheBrowser) |
 | [Test](#Test) | [A bowl that counts](scenarios.md#RecordedBowl) | [The app in memory](scenarios.md#InMemory) |
+| [Test](../.trame/data/docs/scenarios.md#Test) | none | — |
 | [A machine](sdlc.md#Machine) | none | — |
 | [Test](../.trame/std/docs/scenarios.md#Test) | none | — |
 
@@ -59,6 +60,7 @@ How many times the bowl rang, for a scenario to read: realized together with the
 |---|---|---|
 | [Browser](#Browser) | none | — |
 | [Test](#Test) | [A bowl that counts](scenarios.md#RecordedBowl) | [The app in memory](scenarios.md#InMemory) |
+| [Test](../.trame/data/docs/scenarios.md#Test) | none | — |
 | [A machine](sdlc.md#Machine) | none | — |
 | [Test](../.trame/std/docs/scenarios.md#Test) | none | — |
 
@@ -78,6 +80,7 @@ Where the app reads its content: the poses, then the sequences and the exercises
 |---|---|---|
 | [Browser](#Browser) | [The content the app carries](app.md#CarriedContent) | [Content carried by the app](app.md#ContentCarried) |
 | [Test](#Test) | [The content the app carries](app.md#CarriedContent) | [Content carried by the app](app.md#ContentCarried) |
+| [Test](../.trame/data/docs/scenarios.md#Test) | none | — |
 | [A machine](sdlc.md#Machine) | none | — |
 | [Test](../.trame/std/docs/scenarios.md#Test) | none | — |
 
@@ -99,6 +102,7 @@ Shows a view to the person, in the page, and hears what they do on it; what move
 |---|---|---|
 | [Browser](#Browser) | [The browser's screen](app.md#BrowserScreen) | [The browser's realizations](app.md#InTheBrowser) |
 | [Test](#Test) | [A screen that records](scenarios.md#RecordedScreen) | [The app in memory](scenarios.md#InMemory) |
+| [Test](../.trame/data/docs/scenarios.md#Test) | none | — |
 | [A machine](sdlc.md#Machine) | none | — |
 | [Test](../.trame/std/docs/scenarios.md#Test) | none | — |
 
@@ -119,6 +123,7 @@ Draws the body in three dimensions, again at each frame of the screen, and turns
 |---|---|---|
 | [Browser](#Browser) | [The browser's stage](stage.md#BrowserStage) | [The browser's realizations](app.md#InTheBrowser) |
 | [Test](#Test) | none | — |
+| [Test](../.trame/data/docs/scenarios.md#Test) | none | — |
 | [A machine](sdlc.md#Machine) | none | — |
 | [Test](../.trame/std/docs/scenarios.md#Test) | none | — |
 
@@ -139,6 +144,7 @@ What the screen showed, for a scenario to read: realized together with the scree
 |---|---|---|
 | [Browser](#Browser) | none | — |
 | [Test](#Test) | [A screen that records](scenarios.md#RecordedScreen) | [The app in memory](scenarios.md#InMemory) |
+| [Test](../.trame/data/docs/scenarios.md#Test) | none | — |
 | [A machine](sdlc.md#Machine) | none | — |
 | [Test](../.trame/std/docs/scenarios.md#Test) | none | — |
 
@@ -157,7 +163,7 @@ What the screen showed, for a scenario to read: realized together with the scree
 A browser that opens Poselia's page: the page delivered as a file, before the phones.
 
 - Owner: ghalaax
-- Technical choices: [Content carried by the app](app.md#ContentCarried), [The browser's realizations](app.md#InTheBrowser)
+- Technical choices: [Content carried by the app](app.md#ContentCarried), [The browser's realizations](app.md#InTheBrowser), [Kept in the preferences of the device](settings.md#KeptOnTheDevice)
 - Delivery for: [Poselia's page](app.md#PoseliaPage)
 - Deploys: [Poselia in a browser](#PoseliaApp)
 
@@ -170,5 +176,5 @@ A browser that opens Poselia's page: the page delivered as a file, before the ph
 The scenarios: the app runs in memory, the device's languages given, the person's choices kept while it runs, and what the screen would show recorded.
 
 - Owner: ghalaax
-- Technical choices: [Content carried by the app](app.md#ContentCarried), [The app in memory](scenarios.md#InMemory), [The SDLC in memory](sdlc.md#SdlcInMemory)
+- Technical choices: [Content carried by the app](app.md#ContentCarried), [The app in memory](scenarios.md#InMemory), [The SDLC in memory](sdlc.md#SdlcInMemory), [Kept in the preferences of the device](settings.md#KeptOnTheDevice)
 - Scenarios: [The body stays on the floor](scenarios.md#BodyStaysOnTheFloor), [Sequences drawn by lot](scenarios.md#DrawnSequencesMakeSense), [Holding the poses](scenarios.md#HoldThePoses), [The language of the home page](scenarios.md#HomeLanguage), [Learning a sequence](scenarios.md#LearnTheSequence), [The person's breath and voice](scenarios.md#PersonSettings), [A practice follows the breath](scenarios.md#PracticeFollowsTheBreath), [The page is opened as a person would](sdlc.md#OpeningThePage), [The page is placed where it is served](sdlc.md#PlacingThePage)

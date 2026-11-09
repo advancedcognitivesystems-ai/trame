@@ -1,7 +1,11 @@
 /** Poselia · Settings */
 
 import { code } from "#trame/kernel"
-import { s, type Duration } from "#std/measures"
+import { s, Time, type Duration } from "#std/measures"
+import { entity, stored } from "#data/kinds/entity"
+import { Documents, DocumentsInPreferences } from "#data/documents"
+import { binding } from "#trame/kinds/binding"
+import { Strategy } from "#std/patterns"
 import { decision } from "#trame/kinds/decision"
 import { requirement } from "#trame/kinds/requirement"
 import { acceptance } from "#trame/kinds/acceptance"
@@ -9,7 +13,7 @@ import { fn } from "#trame/kinds/function"
 import { PreferencesStore, SpeechVoice } from "#std/platform"
 import { Texts, Counts, ValueTypes } from "#std/algebra"
 import { BreathSetsThePace, PractiseGuided, BreathPhase, DefaultBreath, type BreathPattern } from "./product"
-import { Screen } from "./architecture"
+import { Screen, Browser, Test } from "./architecture"
 import { PreferenceNames, InterfaceWords, AppLanguage } from "./language"
 
 // What the person sets once and the app keeps on the device: their breath, the four phases in seconds, set half a
@@ -27,45 +31,55 @@ export const BreathBounds = decision<{ step: Duration; least: Duration; most: Du
 })
 
 /**
- * A breath read back
- * What the device kept as the person's breath, read back: the four phases in seconds, a breath in and out within the
- * bounds, holds from nothing to the most; anything else is no breath, and the default one is followed.
+ * The person's breath, kept
+ * What the device keeps of the person's breath: the four phases, each a duration. Kept under the name it always had; the
+ * library of data reads it back migrated and checked against this description, or not at all.
  */
-export const BreathRead = requirement({
+export const Breath = entity({
+  owner: "ghalaax",
+  keptAs: "poselia.breath",
+  fields: { inhale: stored.number(Time), holdTop: stored.number(Time), exhale: stored.number(Time), holdBottom: stored.number(Time) },
+  serves: [BreathSetsThePace],
+})
+
+/**
+ * Kept in the preferences of the device
+ * What the app keeps whole (the person's breath) lives in the preferences of the device, in the browser as in the
+ * scenarios: read back migrated and checked by the library of data.
+ */
+export const KeptOnTheDevice = binding({
+  owner: "ghalaax",
+  chooses: [DocumentsInPreferences],
+  environments: [Browser, Test],
+  follows: [Strategy],
+  context: "The app keeps a little on the device, under names of its own: its preferences are where.",
+})
+
+/**
+ * A breath within its bounds
+ * A breath the device kept is followed only within the bounds: a breath in and out of a second at least, holds from
+ * nothing, none longer than the most; another is no breath, and the default one is followed.
+ */
+export const BreathWithinBounds = requirement({
   owner: "ghalaax",
   refines: [BreathSetsThePace],
-  deps: { b: BreathBounds, values: ValueTypes },
-  body: ({ b, values }) => (kept: string | undefined): BreathPattern | undefined => {
-    if (kept === undefined) return undefined
-    try {
-      const p: unknown = JSON.parse(kept)
-      if (!values.isObject(p)) return undefined
-      const phase = (name: BreathPhase, least: Duration): Duration | undefined => {
-        const v = (p as Partial<Record<BreathPhase, unknown>>)[name]
-        return values.isNumber(v) && Number.isFinite(v) && v >= least && v <= b.most ? (v as Duration) : undefined
-      }
-      const inhale = phase(BreathPhase.inhale, b.least)
-      const holdTop = phase(BreathPhase.holdTop, b.none)
-      const exhale = phase(BreathPhase.exhale, b.least)
-      const holdBottom = phase(BreathPhase.holdBottom, b.none)
-      if (inhale === undefined || holdTop === undefined || exhale === undefined || holdBottom === undefined) return undefined
-      return { inhale, holdTop, exhale, holdBottom }
-    } catch {
-      return undefined
-    }
+  deps: { b: BreathBounds },
+  body: ({ b }) => (p: BreathPattern): boolean => {
+    const within = (v: Duration, least: Duration) => v >= least && v <= b.most
+    return within(p.inhale, b.least) && within(p.holdTop, b.none) && within(p.exhale, b.least) && within(p.holdBottom, b.none)
   },
 })
 
 /** Criteria of a breath read back */
-export const BreathReadCriteria = acceptance({
-  accepts: BreathRead,
+export const BreathWithinBoundsCriteria = acceptance({
+  accepts: BreathWithinBounds,
   owner: "ghalaax",
   criteria: (criterion) => {
-    criterion("A breath kept is read back as it was",
-      () => BreathRead(JSON.stringify({ inhale: 5, holdTop: 1, exhale: 6, holdBottom: 0 }))?.exhale === 6)
-    criterion("Nothing kept: no breath", () => BreathRead(undefined) === undefined)
-    criterion("A breath in of no length: no breath", () => BreathRead(JSON.stringify({ inhale: 0, holdTop: 0, exhale: 4, holdBottom: 0 })) === undefined)
-    criterion("Something else than a breath: no breath", () => BreathRead("{oops") === undefined)
+    const breath = (inhale: number, holdTop: number, exhale: number, holdBottom: number): BreathPattern =>
+      ({ inhale: s(inhale), holdTop: s(holdTop), exhale: s(exhale), holdBottom: s(holdBottom) })
+    criterion("A breath of five seconds in, a second held, six out: followed", () => BreathWithinBounds(breath(5, 1, 6, 0)))
+    criterion("A breath in of no length: no breath", () => !BreathWithinBounds(breath(0, 0, 4, 0)))
+    criterion("A hold longer than the most: no breath", () => !BreathWithinBounds(breath(4, 30, 4, 0)))
   },
 })
 
@@ -164,11 +178,14 @@ export const VoiceParts = decision<{ voice: string; breath: string; cues: string
 export const PersonBreath = fn({
   owner: "ghalaax",
   serves: [BreathSetsThePace],
-  deps: { preferences: PreferencesStore, names: PreferenceNames, read: BreathRead, texts: Texts },
-  body: ({ preferences, names, read, texts }) => ({
-    current: () => read(preferences.get(names.breath)),
-    set: (pattern: BreathPattern) => preferences.set(names.breath, JSON.stringify(pattern)),
-    clear: () => preferences.set(names.breath, texts.empty),
+  deps: { documents: Documents, breath: Breath, within: BreathWithinBounds },
+  body: ({ documents, breath, within }) => ({
+    current: (): BreathPattern | undefined => {
+      const kept = documents.read(breath)
+      return kept && within(kept) ? kept : undefined
+    },
+    set: (pattern: BreathPattern) => documents.write(breath, pattern),
+    clear: () => documents.clear(breath),
   }),
 })
 

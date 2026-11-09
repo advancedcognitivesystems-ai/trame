@@ -15,13 +15,13 @@
 The language the project is written in, at the generation that started it: its owner moves it by an amendment.
 
 - Name: `trame`
-- Version: `103`
+- Version: `104`
 - Installed: Not installed in the project: its lockfile lists no trame
 - Vulnerabilities: No report yet: trame audit asks the registry
 - Latest version: No report yet: trame audit asks the registry
 - What it may do: not said: an implementation that imports it cannot promise anything
 - How it joins the graph: `language`
-- Its path: `../../generations/g103`
+- Its path: `../../generations/g104`
 
 - Owner: trame
 - Serves: [Data described once](product.md#DataDescribedOnce)
