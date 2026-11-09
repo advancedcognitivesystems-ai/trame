@@ -1,6 +1,6 @@
 # Technical choices
 
-*What answers each port in each environment on 8 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
+*What answers each port in each environment on 9 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
 
 > **5 technical choices for 20 ports, in 3 environments**
 
@@ -126,7 +126,7 @@ Consequences: The screen and what records it are chosen together: a scenario rea
 
 ### On the machine
 
-`OnTheMachine` · `src/sdlc.ts:85` · status: **held**
+`OnTheMachine` · `src/sdlc.ts:85` · status: **unknown**
 
 On a machine, the programs of the SDLC read their commands from Node's command line, the project's files from the disk, and open the page in Chromium driven by Playwright, as the standard library realizes them.
 

@@ -1,0 +1,116 @@
+{
+  "at": "2026-11-09",
+  "nodes": [
+    {
+      "id": "obligations.DataKinds",
+      "kind": "vocabulary",
+      "title": "The kinds the library carries",
+      "fields": {
+        "owner": "trame",
+        "words": {
+          "entity": "A kind of data a product keeps outside the graph, described once"
+        }
+      }
+    },
+    {
+      "id": "obligations.Migrated",
+      "kind": "requirement",
+      "title": "What a shipment stores migrates",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "kinds": "obligations.DataKinds"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "obligations.MigratedCriteria",
+      "kind": "acceptance",
+      "title": "Criteria of what a shipment stores",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "criteria": "(function)"
+      }
+    },
+    {
+      "id": "packages.Language",
+      "kind": "package",
+      "title": "Trame",
+      "fields": {
+        "owner": "trame",
+        "packageName": "trame",
+        "version": "103",
+        "joins": "language",
+        "at": "../../generations/g103"
+      }
+    },
+    {
+      "id": "packages.stdLibrary",
+      "kind": "package",
+      "title": "std",
+      "fields": {
+        "owner": "trame",
+        "packageName": "std",
+        "version": "0.17.0",
+        "joins": "library",
+        "at": "../../std/releases/0.17.0"
+      }
+    },
+    {
+      "id": "product.DataDescribedOnce",
+      "kind": "goal",
+      "title": "Data described once",
+      "fields": {
+        "owner": "trame"
+      }
+    },
+    {
+      "id": "words.DataKindWords",
+      "kind": "catalog",
+      "title": "Words of the kinds of data",
+      "fields": {
+        "owner": "trame",
+        "messages": {
+          "file": "./kinds/words.ts",
+          "language": "typescript"
+        }
+      }
+    }
+  ],
+  "edges": [
+    {
+      "from": "obligations.DataKinds",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "obligations.Migrated",
+      "to": "product.DataDescribedOnce",
+      "kind": "refines"
+    },
+    {
+      "from": "obligations.Migrated",
+      "to": "obligations.DataKinds",
+      "kind": "deps"
+    },
+    {
+      "from": "obligations.MigratedCriteria",
+      "to": "obligations.Migrated",
+      "kind": "accepts"
+    },
+    {
+      "from": "packages.Language",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "packages.stdLibrary",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    }
+  ],
+  "open": []
+}

@@ -1,0 +1,55 @@
+{
+  "generated": "2026-11-09",
+  "nodes": [
+    {
+      "id": "notes.Note",
+      "kind": "entity",
+      "title": "A note",
+      "source": "src/notes.ts:10",
+      "fields": {
+        "owner": "trame",
+        "fields": {
+          "title": {
+            "type": "text"
+          },
+          "written": {
+            "type": "date"
+          },
+          "tags": {
+            "type": "list",
+            "of": {
+              "type": "text"
+            }
+          },
+          "pinned": {
+            "type": "optional",
+            "of": {
+              "type": "flag"
+            }
+          }
+        },
+        "key": "title"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "product.NotesKept",
+      "kind": "goal",
+      "title": "Notes kept",
+      "source": "src/product.ts:9",
+      "fields": {
+        "owner": "trame"
+      },
+      "diagnostics": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "notes.Note",
+      "to": "product.NotesKept",
+      "kind": "serves"
+    }
+  ],
+  "resolutions": [],
+  "diagnostics": []
+}

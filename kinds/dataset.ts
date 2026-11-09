@@ -1,4 +1,4 @@
-import { defineKind, field, optional, edge, optionalEdge, hole, doc, keysOf, fieldsOf, Status, KindName, EdgeName, ReviewState, ReviewEdge, type Inline, type Lib, type Node, type Provides, type View, ChangeWay} from "../trame/kernel"
+import { defineKind, field, optional, edge, optionalEdge, hole, doc, keysOf, fieldsOf, Status, KindName, EdgeName, ReviewState, ReviewEdge, type Inline, type Lib, type Node, type PathOf, type Provides, type View, ChangeWay} from "../trame/kernel"
 import { decision } from "./decision"
 import { waitingFor } from "./review"
 import words from "./words"
@@ -35,6 +35,7 @@ const fields = {
   rows: field.value<readonly unknown[]>(say.datasetRows()),
   key: field.fn<(row: never) => string>((lib) => () => lib.texts.empty),
   rules: optional(field.value<readonly DataRule<never>[]>(say.datasetRules())),
+  technical: optional(field.value<readonly string[]>(say.datasetTechnical())),
 }
 const F = keysOf(fields)
 
@@ -66,7 +67,8 @@ const languagesOf = (self: View, g: { from(v: View): { out(e: string): { nodes()
  * key that names it, and the languages its texts are written in. A text in several languages is an object whose keys
  * are languages offered: each must be there. A review is evidence on the dataset: a row (its key), a language, who, the
  * fingerprint of what was seen, and whether it is approved; a review holds while the row, in that language, is what
- * was seen. Reviewed by review nodes, it holds when they await nothing of it: their role, their number of approvals.
+ * was seen. What a review does not judge (its technical parts, by path) is left out of what it sees (C3a): moving where
+ * a label is drawn expires no review, while a field added tomorrow is reviewed by default. Reviewed by review nodes, it holds when they await nothing of it: their role, their number of approvals.
  * Wired as a dependency, a dataset gives its rows.
  */
 const kind = defineKind({
@@ -139,13 +141,15 @@ const kind = defineKind({
     // on the row as it is outweighs the approvals; approved by at least one person, it is approved (how many people a
     // review asks, its review node counts); otherwise what was seen has changed, or nobody looked.
     const fingerprint = lib.fingerprint
+    const technical = self.field(F.technical)
+    const judged = (row: unknown) => (Array.isArray(technical) && lib.references.without ? lib.references.without(row, technical.filter(values.isText)) : row)
     const reviews: Result["reviews"] = []
     const asked = languages.length ? languages : [undefined]
     rows.forEach((row, i) => {
       for (const language of asked) {
         const given = self.evidence.filter((e) => e.subject === keys[i] && e.language === language)
         const latest = sequences.last(given)
-        const now = fingerprint?.(language === undefined ? row : inLanguage(row, language))
+        const now = fingerprint?.(language === undefined ? judged(row) : inLanguage(judged(row), language))
         const latestOf = [...new Map(given.map((e) => [e.by, e])).values()].filter((e) => now !== undefined && e.fingerprint === now)
         const approvedBy = latestOf.filter((e) => e.value === counts.one).map((e) => e.by).filter(values.isText)
         const review: Review = !latest ? Review.none
@@ -221,6 +225,8 @@ interface DatasetInput<R> {
   key: (row: R) => string
   /** What every row keeps. */
   rules?: readonly DataRule<R>[]
+  /** What a review does not judge of a row, by path (marks.label): technical parts, which expire no review. */
+  technical?: readonly PathOf<R>[]
   /** The decision that lists the languages offered: each text in several languages must be in each of them. */
   language?: Node<typeof KindName.decision>
   serves?: readonly Node<typeof KindName.goal>[]

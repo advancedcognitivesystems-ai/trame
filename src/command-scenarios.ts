@@ -435,9 +435,9 @@ export const DeclarationsPublished = scenario({
  * library's modules loaded already, so its graph would be read empty there); an application, which imports libraries
  * outside its package and ships.
  */
-export const ScenarioProjects = decision<{ library: string; application: string; started: string }>({
+export const ScenarioProjects = decision<{ library: string; application: string; started: string; carrier: string }>({
   owner: "trame",
-  value: { library: "ci", application: "apps/poselia", started: "examples/started" },
+  value: { library: "ci", application: "apps/poselia", started: "examples/started", carrier: "examples/kept" },
 })
 
 /**
@@ -451,6 +451,13 @@ export const ProjectSamples = decision<{
   imported: { library: string; specifier: string; module: string }
   delivery: string
   shipments: { runners: string; preview: string; publicVersion: string }
+  /** A node of a kind a library carries, in the project that imports it. */
+  carried: string
+  /**
+   * Two descriptions of it a deployment might have kept: one its changes migrate from (a field renamed, another dropped),
+   * one they do not (a field stored otherwise).
+   */
+  kept: { decided: unknown; undecided: unknown; changed: string; subject: string; by: string }
   handCheck: { check: string; tester: string; stranger: string }
   started: { title: string; owner: string }
   registry: { home: string; generation: string }
@@ -461,6 +468,14 @@ export const ProjectSamples = decision<{
     imported: { library: "std", specifier: "#std/*", module: "src/algebra.ts" },
     delivery: "PoseliaPage",
     shipments: { runners: "RunnersWritten", preview: "Preview", publicVersion: "PublicVersion" },
+    carried: "Note",
+    kept: {
+      decided: { fields: { heading: { type: "text" }, written: { type: "date" }, tags: { type: "list", of: { type: "text" } }, mood: { type: "text" } }, key: "heading" },
+      undecided: { fields: { title: { type: "text" }, written: { type: "text" }, tags: { type: "list", of: { type: "text" } } }, key: "title" },
+      changed: "written",
+      subject: "Somewhere",
+      by: "tester",
+    },
     handCheck: { check: "OnAPhone", tester: "ghalaax", stranger: "someone-else" },
     started: { title: "Started in memory", owner: "ghalaax" },
     registry: { home: ".", generation: "g93" },
@@ -867,6 +882,57 @@ export const ShipmentsRun = scenario({
       refused = terminalLog.lines().some((l) => l.startsWith(samples.handCheck.stranger))
     }
     check(messages.strangerRefused(samples.handCheck.stranger), refused)
+  },
+})
+
+/**
+ * A library carries kinds
+ * A project that imports a library carrying kinds in its sources (the library of data: its entities) writes nodes of
+ * those kinds: the compiler loads them into the project's language, TypeScript accepts the project as it is written,
+ * and a node of such a kind is read and holds no error. Then what deployments kept of the entity: a description its
+ * changes migrate from (a rename, a field dropped) holds; one they do not (a field stored otherwise) blocks, on the
+ * field it is about.
+ */
+export const KindsCarried = scenario({
+  owner: "trame",
+  verifies: [Compiler, Project],
+  env: Test,
+  deps: {
+    compiler: Compiler, processLog: ProcessLog, currentProcess: Process, clock: Clock, projects: ScenarioProjects, samples: ProjectSamples,
+    sdlc: SdlcEvidence, writing: FileWriting, counts: Counts, messages: ScenarioMessages,
+  },
+  body: (d) => async (check) => {
+    d.processLog.enter(d.projects.carrier)
+    const root = d.currentProcess.cwd()
+    await d.compiler.loadKinds(root)
+    const compiled = async () => {
+      const loaded = await d.compiler.load(root)
+      const c = await d.compiler.compileAt(loaded, d.clock.today())
+      const language: readonly string[] = Object.values(KindName)
+      const carried = c.nodes.map((n) => c.graph.view(n)).find((v) => !language.includes(v.kind) && v.id === d.samples.carried)
+      return { loaded, c, carried }
+    }
+    const first = await compiled()
+    check(d.messages.kindsCarried(d.projects.carrier, d.samples.carried),
+      d.counts.isEmpty(first.loaded.typeErrors) && first.carried !== undefined && first.c.diags.every((x) => x.severity !== Severity.error))
+    // What a deployment kept of the entity, recorded as trame ship records it.
+    const { kept } = d.samples
+    const keep = (description: unknown) => {
+      if (!first.carried) return
+      const { file, text } = d.sdlc.added(root, [{
+        node: first.carried.ref, at: d.clock.today(), source: EvidenceSource.shipped, value: d.counts.one, fingerprint: d.sdlc.of(description),
+        subject: kept.subject, by: kept.by, kept: description,
+      }])
+      d.writing.writeFileSync(file, text)
+    }
+    keep(kept.decided)
+    const decided = await compiled()
+    check(d.messages.migrationDecided(d.samples.carried), decided.carried?.status === Status.held)
+    keep(kept.undecided)
+    const undecided = await compiled()
+    const blocking = undecided.c.diags.filter((x) => x.severity === Severity.blocking && x.node === undecided.carried?.node)
+    check(d.messages.migrationUndecided(d.samples.carried, kept.changed),
+      undecided.carried?.status === Status.blocked && blocking.some((x) => x.what.includes(kept.changed)))
   },
 })
 

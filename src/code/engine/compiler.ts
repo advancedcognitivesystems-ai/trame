@@ -314,11 +314,12 @@ const body = (deps: Deps) => {
     // The libraries' modules join the graph under their library's name; their bodies are checked with the rest.
     const libraries = dirs.libraries.map((lib) => ({ ...lib, path: relative(root, lib.root), files: modulesIn(join(lib.root, sources), lib.name) }))
     const modules = [...libraries.flatMap((lib) => lib.files), ...own]
-    // The bodies written in files (subdirectories of src/) are checked by TypeScript with the rest.
-    const extra = [
+    // The bodies written in files (subdirectories of src/) are checked by TypeScript with the rest, as the kinds and the
+    // views a project or a library carries there (src/kinds), each file once.
+    const extra = [...new Set([
       ...dirs.kinds.flatMap(tsFiles), ...dirs.views.flatMap(tsFiles), ...bodyFiles(join(root, sources)),
       ...libraries.flatMap((lib) => bodyFiles(join(lib.root, sources))),
-    ]
+    ])]
     // Where each library's name leads, for the TypeScript compiler: its sources as they are on disk.
     const { imports, separator, pattern } = deps.specifiers
     const paths = Object.fromEntries(libraries.map((lib) => [imports + lib.name + separator + pattern, [join(lib.root, sources, pattern)]]))

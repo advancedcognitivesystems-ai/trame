@@ -28,10 +28,10 @@ const E = keysOf(edges)
 interface Gap { node: string; obligation: string; weight?: string }
 
 /**
- * What a shipment computes once: the obligations its policy derives, the gaps it finds, and how each shipment that
- * precedes it stands for it (C2).
+ * What a shipment computes once: the obligations its policy derives, the gaps it finds, how each shipment that precedes
+ * it stands for it (C2), and every node it reaches, of which trame ship records what a deployment keeps (since g104).
  */
-interface Result { derived: DerivedObligation[]; gaps: Gap[]; preceded: Preceding[] }
+interface Result { derived: DerivedObligation[]; gaps: Gap[]; preceded: Preceding[]; reached: string[] }
 
 /**
  * How a shipment that precedes this one stands for it (C2, since g103): for each artefact both ship, the fingerprint it
@@ -118,9 +118,9 @@ const kind = defineKind({
 
   evaluate(self, g): Result {
     const policy = g.from(self).out(E.policy).first()
-    if (!policy) return { derived: [], gaps: [], preceded: [] }
-    const { values } = g.lib
     const reach = reachOf(self, g)
+    if (!policy) return { derived: [], gaps: [], preceded: [], reached: [...reach.reached] }
+    const { values } = g.lib
     const sketch: GraphSketch = sketchOf(g)
     const derived: DerivedObligation[] = []
     const gaps: Gap[] = []
@@ -140,7 +140,7 @@ const kind = defineKind({
     const preceded = kept.flatMap((d) => g.node(d.node).nodes())
       .filter((v) => v.kind === KindName.shipment && v.ref !== self.ref)
       .map((before) => precedence(self, before, g))
-    return { derived: kept, gaps, preceded }
+    return { derived: kept, gaps, preceded, reached: [...reach.reached] }
   },
 
   status(self, g) {

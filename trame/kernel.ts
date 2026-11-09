@@ -383,6 +383,19 @@ export interface Evidence {
   seal?: string
   /** For what a program of the engine built or checked: the fingerprint of that engine (its program and its code). */
   engine?: string
+  /**
+   * For a deployment: what it keeps of a node it reached, as the node's kind says it in its result (`deployed`): an
+   * entity's description, which the next deployment migrates from (since g104). Its fingerprint is that of this value.
+   */
+  kept?: unknown
+}
+
+/**
+ * What a node's result may say a deployment keeps of it (since g104): trame ship records it on the node once the
+ * shipment that reached it is deployed, with that shipment as its subject (an entity keeps its description).
+ */
+export interface DeployedResult {
+  readonly deployed?: unknown
 }
 
 // The intermediate format, for authors -----------------------------------------
@@ -669,6 +682,15 @@ export interface Preceding {
   readonly artifacts: readonly { readonly node: string; readonly fingerprint?: string }[]
 }
 
+/**
+ * The paths into a value of type T, as the references of the graph write them: a field, then a field of it, joined by
+ * the separator of ReferenceSyntax; an element of a list is gone through (marks.label: the label of each mark).
+ */
+export type PathOf<T> = T extends readonly (infer X)[] ? PathOf<X>
+  : T extends (...args: never[]) => unknown ? never
+  : T extends object ? { [K in keyof T & string]: K | `${K}.${PathOf<NonNullable<T[K]>>}` }[keyof T & string]
+  : never
+
 /** A noun, in the singular and in the plural: what a count counts. */
 export interface Noun {
   one: string
@@ -743,6 +765,8 @@ export interface Lib {
     firstSegment(path: string): string
     join(steps: string[]): string
     within(path: string, prefix: string): boolean
+    /** A value without what these paths reach, an element of a list gone through (since g104). */
+    without?(value: unknown, paths: readonly string[]): unknown
   }
   /** A calendar date, as ISO 8601 writes it; written as the language of the documents writes it. */
   dates: { isCalendarDate(text: string): boolean; format(iso: string): string }

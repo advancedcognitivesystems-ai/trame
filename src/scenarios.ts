@@ -140,6 +140,7 @@ export const ReckoningData = decision<{
   reference: { ref: string; module: string; identifier: string }
   library: { module: string; name: string; own: string }
   fingerprinted: { value: Record<string, number>; reordered: Record<string, number>; changed: Record<string, number> }
+  without: { value: unknown; paths: string[]; left: unknown }
   place: { file: string; tsLine: number; line: number; written: string }
 }>({
   owner: "trame",
@@ -152,6 +153,11 @@ export const ReckoningData = decision<{
     reference: { ref: "engine.Compiler", module: "engine", identifier: "Compiler" },
     library: { module: "std/algebra", name: "std", own: "algebra" },
     fingerprinted: { value: { a: 1, b: 2 }, reordered: { b: 2, a: 1 }, changed: { a: 1, b: 3 } },
+    without: {
+      value: { name: "Mountain", marks: [{ title: "Feet", label: [1, 2] }, { title: "Crown", label: [3, 4] }], shape: { at: [0, 0], rests: ["feet"] } },
+      paths: ["marks.label", "shape.at"],
+      left: { name: "Mountain", marks: [{ title: "Feet" }, { title: "Crown" }], shape: { rests: ["feet"] } },
+    },
     place: { file: "src/engine.ts", tsLine: 9, line: 10, written: "src/engine.ts:10" },
   },
 })
@@ -161,7 +167,8 @@ export const ReckoningData = decision<{
  * A cycle is found once, from the vertex where the search closes it, not again from a vertex that only reaches it; the
  * same seed draws the same numbers, another seed others, and an integer drawn stays within its bounds; a value has the
  * same fingerprint whatever the order of its keys, another once it changes; a reference gives its module and its
- * identifier, a library's module its library and its own name; a line of the TypeScript API is written as messages
+ * identifier, a library's module its library and its own name; a value without what paths reach keeps the rest, an
+ * element of a list gone through; a line of the TypeScript API is written as messages
  * write it.
  */
 export const EngineReckons = scenario({
@@ -191,6 +198,7 @@ export const EngineReckons = scenario({
     check(messages.fingerprintSeesChange(), fingerprints.of(value) !== fingerprints.of(changed))
     check(messages.referenceRead(data.reference.ref),
       references.module(data.reference.ref) === data.reference.module && references.identifier(data.reference.ref) === data.reference.identifier)
+    check(messages.pathsLeftOut(data.without.paths), JSON.stringify(references.without(data.without.value, data.without.paths)) === JSON.stringify(data.without.left))
     check(messages.libraryModuleRead(data.library.module),
       references.library(data.library.module) === data.library.name && references.ownName(data.library.module) === data.library.own &&
         references.inLibrary(data.library.name, data.library.own) === data.library.module)

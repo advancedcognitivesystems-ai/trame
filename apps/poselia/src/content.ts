@@ -231,6 +231,8 @@ export const Poses = dataset({
   owner: "ghalaax",
   rows: poses,
   key: (p) => p.id,
+  // Where a landmark's label is drawn beside the body: placing it again changes nothing a teacher judges.
+  technical: ["marks.label"],
   rules: [
     { says: "A key is written in lower case, its words joined by hyphens", holds: (p) => /^[a-z]+(-[a-z]+)*$/.test(p.id) },
     { says: "A pose has its Sanskrit name", holds: (p) => p.sanskrit.trim() !== "" },

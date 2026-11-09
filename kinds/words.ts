@@ -551,6 +551,7 @@ const body = () => ({
   datasetDatasets: () => "Datasets",
   datasetRows: () => "Rows",
   datasetRules: () => "Rules",
+  datasetTechnical: () => "Not judged by a review",
   datasetLanguagesOffered: () => "Languages offered",
   datasetLanguagesOf: () => "Languages of",
   datasetRowAt: (n: number) => `row ${n}`,

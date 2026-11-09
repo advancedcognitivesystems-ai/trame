@@ -1,8 +1,8 @@
 # Architecture decisions
 
-*The choices that shape the product without being values, in force on 8 November 2026: why each was taken, what was rejected, and the nodes that apply it.*
+*The choices that shape the product without being values, in force on 9 November 2026: why each was taken, what was rejected, and the nodes that apply it.*
 
-> **6 architecture decisions, 3 held by the nodes that apply them**
+> **6 architecture decisions, 2 held by the nodes that apply them**
 
 | Decision | Status | Applied by |
 |---|---|---|
@@ -10,7 +10,7 @@
 | [The breath is the clock](principles.md#BreathIsTheClock) | **held** | [A hold of whole breaths](practice.md#HoldPhases), [The breath of a moment](product.md#BreathOf) |
 | [The person's language, among those offered](principles.md#LanguageOffered) | **held** | [Languages offered](content.md#Languages), [The language of the app](product.md#ChosenLanguage), [Languages of the device](../.trame/std/docs/platform.md#DeviceLanguages), [Preferences](../.trame/std/docs/platform.md#PreferencesStore) |
 | [Said aloud, the screen awake](principles.md#SaidAloud) | **unknown** | [Play a practice](practice.md#PlayPractice), [The phone stays on the mat](product.md#PhoneOnTheMat), [Screen kept awake](../.trame/std/docs/platform.md#ScreenAwake), [Speech](../.trame/std/docs/platform.md#SpeechVoice) |
-| [A page first, the phones after](principles.md#PageFirst) | **held** | [Poselia's page](app.md#PoseliaPage), [Poselia in a browser](architecture.md#PoseliaApp), [The page opens](sdlc.md#PageOpens) |
+| [A page first, the phones after](principles.md#PageFirst) | **unknown** | [Poselia's page](app.md#PoseliaPage), [Poselia in a browser](architecture.md#PoseliaApp), [The page opens](sdlc.md#PageOpens) |
 | [The SDLC is in the graph](sdlc.md#SdlcInTheGraph) | **unknown** | [Each decision of architecture serves the product](sdlc.md#AdrsServeTheProduct), [Code serves the product](sdlc.md#CodeServesTheProduct), [The content, reviewed](sdlc.md#ContentReviewed), [On a phone](sdlc.md#OnAPhone), [Open the page](sdlc.md#OpenThePage), [The page opens](sdlc.md#PageOpens), [Place the page](sdlc.md#PlaceThePage), [A preview](sdlc.md#Preview), [The preview's script](sdlc.md#PreviewScript), [The preview's workflow](sdlc.md#PreviewWorkflow), [A public version](sdlc.md#PublicVersion), [The files that run it elsewhere](sdlc.md#RunnersWritten) |
 
 ## Poselia · Principles
@@ -100,7 +100,7 @@ Consequences: A voice port says texts in the chosen language; each kind of sayin
 
 ### A page first, the phones after
 
-`PageFirst` · `src/principles.ts:78` · status: **held**
+`PageFirst` · `src/principles.ts:78` · status: **unknown**
 
 The app is first a page a browser opens as it is (trame deliver), then a web application, then Capacitor around the same page for iPhone and Android.
 

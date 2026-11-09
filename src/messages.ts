@@ -740,6 +740,7 @@ export const ScenarioMessages = catalog({
     fingerprintIgnoresOrder: () => "A value has the same fingerprint whatever the order of its keys",
     fingerprintSeesChange: () => "A value changed has another fingerprint",
     referenceRead: (ref: string) => `${ref} gives its module and its identifier`,
+    pathsLeftOut: (paths: string[]) => `A value without ${paths.join(" and ")} keeps the rest, an element of a list gone through`,
     libraryModuleRead: (module: string) => `${module} gives its library and its own name`,
     placeWritten: (place: string) => `A line of the TypeScript API is written ${place}`,
     dayWritten: (written: string) => `A day is written ${written}, short and as its month`,
@@ -819,6 +820,9 @@ export const ScenarioMessages = catalog({
     unknownWithoutFallback: (word: string) => `Without such a command, "${word}" is refused`,
     pageDelivered: (delivery: string) => `trame deliver writes the page of ${delivery}, one document`,
     runnersShipped: (shipment: string) => `${shipment}: its files written by their writers, shipped, with a dossier`,
+    migrationDecided: (node: string) => `${node}: what a deployment kept migrates by its changes (a rename, a field dropped), and it holds`,
+    migrationUndecided: (node: string, field: string) => `${node}: a field stored otherwise since a deployment (${field}) blocks, until its owner decides`,
+    kindsCarried: (project: string, node: string) => `${project} writes ${node}, of a kind its library carries: loaded, checked, without error`,
     stageWaits: (shipment: string, before: string) => `${shipment} waits for ${before} to ship the page first`,
     stagePromotes: (shipment: string, before: string) =>
       `Once ${before} shipped the page, ${shipment} takes it as ${before} shipped it: promoted, not built again`,

@@ -1,0 +1,50 @@
+{
+  "at": "2026-11-09",
+  "nodes": [
+    {
+      "id": "notes.Note",
+      "kind": "entity",
+      "title": "A note",
+      "fields": {
+        "owner": "trame",
+        "fields": {
+          "title": {
+            "type": "text"
+          },
+          "written": {
+            "type": "date"
+          },
+          "tags": {
+            "type": "list",
+            "of": {
+              "type": "text"
+            }
+          },
+          "pinned": {
+            "type": "optional",
+            "of": {
+              "type": "flag"
+            }
+          }
+        },
+        "key": "title"
+      }
+    },
+    {
+      "id": "product.NotesKept",
+      "kind": "goal",
+      "title": "Notes kept",
+      "fields": {
+        "owner": "trame"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "from": "notes.Note",
+      "to": "product.NotesKept",
+      "kind": "serves"
+    }
+  ],
+  "open": []
+}

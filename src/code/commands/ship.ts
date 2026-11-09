@@ -9,7 +9,7 @@
 
 import {
   KindName, EdgeName, Severity, Status, ShipmentField, ReviewEdge, ArtifactEdge, EntryField, EvidenceSource, SignatureType, TriggerType, PipelineStage,
-  type ProvidedBy, type View, type Compilation, type Pipeline, type RunPlan,
+  type ProvidedBy, type View, type Compilation, type Pipeline, type RunPlan, type DeployedResult,
 } from "../../../trame/kernel"
 import type { Handler, Trigger } from "../../../kinds/entry-point"
 import type { Bundler, FileReading, FileWriting, Paths, Process, Terminal } from "../../architecture"
@@ -260,7 +260,15 @@ const body = (deps: Deps): Handler => async (req) => {
   const shippedAs: Entry[] = stepsOf(proven, PipelineStage.produce).map((s) => ({
     node: s.node.ref, at: o.today, source: EvidenceSource.shipped, value: one, fingerprint: built.get(s.node.ref), subject: shipment.ref, ...signed,
   }))
-  record([...deployed, ...shippedAs, { node: shipment.ref, at: o.today, source: EvidenceSource.shipped, value: one, fingerprint, url: relative(o.root, file), ...signed }])
+  // What the deployment keeps of each node it reached whose kind says so (an entity's description, since g104): the next
+  // deployment migrates from it.
+  const kept: Entry[] = (shipment.result<{ reached?: readonly string[] }>()?.reached ?? []).flatMap((r) => comp.node(r).nodes()).flatMap((v) => {
+    const deployedAs = v.result<DeployedResult>()?.deployed
+    return deployedAs === undefined ? [] : [{
+      node: v.ref, at: o.today, source: EvidenceSource.shipped, value: one, fingerprint: sdlc.of(deployedAs), subject: shipment.ref, kept: deployedAs, ...signed,
+    }]
+  })
+  record([...deployed, ...shippedAs, ...kept, { node: shipment.ref, at: o.today, source: EvidenceSource.shipped, value: one, fingerprint, url: relative(o.root, file), ...signed }])
   terminal.write(messages.shipped(shipment.title, String(shipment.field(ShipmentField.target)), relative(o.root, file)))
   return { status: exitStatus.success, body: relative(o.root, file) }
 }

@@ -1,0 +1,8 @@
+{
+  "title": "Kept",
+  "libraries": {
+    "data": "../../libs/data",
+    "std": "../../std"
+  },
+  "engine": "../../generations/g103"
+}

@@ -1,0 +1,146 @@
+{
+  "generated": "2026-11-09",
+  "nodes": [
+    {
+      "id": "obligations.DataKinds",
+      "kind": "vocabulary",
+      "title": "The kinds the library carries",
+      "source": "src/obligations.ts:13",
+      "fields": {
+        "owner": "trame",
+        "words": {
+          "entity": "A kind of data a product keeps outside the graph, described once"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "obligations.Migrated",
+      "kind": "requirement",
+      "title": "What a shipment stores migrates",
+      "source": "src/obligations.ts:25",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "kinds": "obligations.DataKinds"
+        },
+        "body": "(function)"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "obligations.MigratedCriteria",
+      "kind": "acceptance",
+      "title": "Criteria of what a shipment stores",
+      "source": "src/obligations.ts:43",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "criteria": "(function)"
+      },
+      "result": [
+        {
+          "name": "Each entity the shipment reaches is to prove, and nothing else",
+          "status": "passed"
+        },
+        {
+          "name": "A shipment that reaches no entity has nothing to migrate",
+          "status": "passed"
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "packages.Language",
+      "kind": "package",
+      "title": "Trame",
+      "source": "src/packages.ts:10",
+      "fields": {
+        "owner": "trame",
+        "packageName": "trame",
+        "version": "103",
+        "joins": "language",
+        "at": "../../generations/g103"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "packages.stdLibrary",
+      "kind": "package",
+      "title": "std",
+      "source": "src/packages.ts:16",
+      "fields": {
+        "owner": "trame",
+        "packageName": "std",
+        "version": "0.17.0",
+        "joins": "library",
+        "at": "../../std/releases/0.17.0"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "product.DataDescribedOnce",
+      "kind": "goal",
+      "title": "Data described once",
+      "source": "src/product.ts:11",
+      "fields": {
+        "owner": "trame"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "words.DataKindWords",
+      "kind": "catalog",
+      "title": "Words of the kinds of data",
+      "source": "src/words.ts:13",
+      "fields": {
+        "owner": "trame",
+        "messages": {
+          "file": "./kinds/words.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "obligations.DataKinds",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "obligations.Migrated",
+      "to": "product.DataDescribedOnce",
+      "kind": "refines"
+    },
+    {
+      "from": "obligations.Migrated",
+      "to": "obligations.DataKinds",
+      "kind": "deps"
+    },
+    {
+      "from": "obligations.MigratedCriteria",
+      "to": "obligations.Migrated",
+      "kind": "accepts"
+    },
+    {
+      "from": "packages.Language",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "packages.stdLibrary",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "words.DataKindWords",
+      "to": "std/measures.SymbolsLanguage",
+      "kind": "language"
+    }
+  ],
+  "resolutions": [],
+  "diagnostics": []
+}

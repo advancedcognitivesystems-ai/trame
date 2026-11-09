@@ -44,9 +44,17 @@ import { Advancement, EnginePin } from "./generations"
 export const References = fn({
   owner: "trame",
   serves: [ExecutableSpecification],
-  deps: { syntax: ReferenceSyntax, libraryOf: LibraryOfAModule },
-  body: ({ syntax: { separator, wholeNode, library }, libraryOf }) => {
+  deps: { syntax: ReferenceSyntax, libraryOf: LibraryOfAModule, values: ValueTypes },
+  body: ({ syntax: { separator, wholeNode, library }, libraryOf, values }) => {
     const segments = (path: string): string[] => (path === wholeNode ? [] : path.split(separator))
+    /** A value without what a path's steps reach: an element of a list is gone through, each in turn. */
+    const drop = (v: unknown, steps: readonly string[]): unknown => {
+      const [step, ...rest] = steps
+      if (step === undefined) return v
+      if (Array.isArray(v)) return v.map((x) => drop(x, steps))
+      if (v === null || !values.isObject(v)) return v
+      return Object.fromEntries(Object.entries(v).flatMap(([k, x]) => (k !== step ? [[k, x]] : rest.length ? [[k, drop(x, rest)]] : [])))
+    }
     return {
       /** The steps of a path; none for the whole node. */
       segments,
@@ -71,6 +79,8 @@ export const References = fn({
       },
       /** Steps joined into a path. */
       join: (steps: string[]) => steps.join(separator),
+      /** A value without what these paths reach (an element of a list is gone through): what a review does not judge. */
+      without: (value: unknown, paths: readonly string[]) => paths.reduce((v, p) => drop(v, segments(p)), value),
       /** Is the path this one, or a path under it? */
       within: (path: string, prefix: string) => path === prefix || path.startsWith(prefix + separator),
       /** The library a module belongs to; nothing for a module of the project. */
