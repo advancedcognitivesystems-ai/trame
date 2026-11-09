@@ -138,6 +138,18 @@ Release · `R0_1_0`
 - Language: shared
 - Serves: Data described once
 
+### Version 0.1.1
+
+Release · `R0_1_1`
+
+- Released by: trame
+- Version: 0.1.1
+- Released on: 2026-11-09
+- What changes: An entity wired before it is evaluated (a scenario of a module read earlier) computes what it gives
+- Fingerprint: 80be07326b9dac85
+- Language: shared
+- Serves: Data described once
+
 ## Data · Scenarios
 
 ### What the library's scenarios are given
@@ -184,7 +196,7 @@ Scenario · `DocumentsKept` · **held**
 
 ### The library of data
 
-Artefact · `TheLibrary` · **unknown**
+Artefact · `TheLibrary` · **held**
 
 - Owner: trame
 - Path: src
@@ -192,7 +204,7 @@ Artefact · `TheLibrary` · **unknown**
 
 ### The next version
 
-Shipment · `NextVersion` · **unknown**
+Shipment · `NextVersion` · **held**
 
 - Owner: trame
 - Target: version

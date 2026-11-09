@@ -68,6 +68,9 @@ export interface StoredDescription {
   readonly vocabulary?: string
   /** The words of its vocabulary, for a word: what a value is read against where the graph is not. */
   readonly words?: readonly string[]
+  /** For the key of another entity: the name that entity is kept under, and its key. */
+  readonly keptAs?: string
+  readonly key?: string
   readonly entity?: string
   readonly of?: StoredDescription
 }
@@ -184,12 +187,16 @@ const describe = (s: Stored, g: Graph): StoredDescription => {
   const ref = (n: AnyNode | undefined) => (n && isNode(n) ? { ref: g.view(n).ref } : undefined)
   const [quantity, vocabulary, entity] = [ref(s.quantity), ref(s.vocabulary), ref(s.entity)]
   const words = vocabulary && s.vocabulary ? g.view(s.vocabulary).field(fieldsOf(vocabularyKind).words) : undefined
+  const other = entity && s.entity ? g.view(s.entity) : undefined
+  const otherKey = other?.field(F.key)
+  const otherName = other?.field(F.keptAs)
   return {
     type: s.type,
     ...(quantity ? { quantity: quantity.ref } : {}),
     ...(vocabulary ? { vocabulary: vocabulary.ref } : {}),
     ...(isPlain(words, g.lib) ? { words: Object.keys(words) } : {}),
-    ...(entity ? { entity: entity.ref } : {}),
+    ...(entity ? { entity: entity.ref, keptAs: g.lib.values.isText(otherName) ? otherName : entity.ref } : {}),
+    ...(g.lib.values.isText(otherKey) ? { key: otherKey } : {}),
     ...(s.of ? { of: describe(s.of, g) } : {}),
   }
 }
@@ -216,8 +223,9 @@ const migrate = (before: Description, now: Description, changes: Changes, lib: L
       steps.push({ op: MigrationOp.rename, field: name, from: old })
     }
     if (was === undefined) {
-      if (field.type === StoredType.optional) continue
-      if (name in defaults) steps.push({ op: MigrationOp.add, field: name, value: defaults[name] })
+      // A field added: what is stored takes its value, or none where it is optional (a table gains its column).
+      if (field.type === StoredType.optional) steps.push({ op: MigrationOp.add, field: name })
+      else if (name in defaults) steps.push({ op: MigrationOp.add, field: name, value: defaults[name] })
       else undecided.push({ field: name, what: say.entityAddedUndecided(name) })
     } else if (same(was, field) || widened(was, field)) {
       continue

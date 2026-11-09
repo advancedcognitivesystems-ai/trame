@@ -4,7 +4,7 @@
 
 > **Nothing to report**
 
-## Release
+## Releases
 
 <a id="R0_1_0"></a>
 
@@ -17,6 +17,22 @@ The kind entity: data described once, its migrations computed from what deployme
 - Version: `0.1.0`
 - Released on: 9 November 2026
 - Fingerprint: `b59ea0bf2828ba1b`
+- Language: the repository's, shared
+
+- Released by: trame
+- Serves: [Data described once](product.md#DataDescribedOnce)
+
+<a id="R0_1_1"></a>
+
+### Version 0.1.1
+
+`R0_1_1` · `src/releases.ts:25`
+
+An entity wired before it is evaluated (a scenario of a module read earlier) computes what it gives
+
+- Version: `0.1.1`
+- Released on: 9 November 2026
+- Fingerprint: `80be07326b9dac85`
 - Language: the repository's, shared
 
 - Released by: trame

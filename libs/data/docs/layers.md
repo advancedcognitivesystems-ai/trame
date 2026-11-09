@@ -29,29 +29,30 @@ flowchart TB
   end
   subgraph releases["Data · Releases"]
     n13["Version 0.1.0<br/><small>Release</small>"]:::neutral
+    n14["Version 0.1.1<br/><small>Release</small>"]:::neutral
   end
   subgraph scenarios["Data · Scenarios"]
-    n14["What the library's scenarios check<br/><small>Message catalog</small>"]:::neutral
-    n15["What the library's scenarios are given<br/><small>Decision</small>"]:::neutral
-    n16["Documents kept in the preferences<br/><small>Scenario</small>"]:::held
-    n17["Documents, in memory<br/><small>Technical choice</small>"]:::held
-    n18["Test<br/><small>Environment</small>"]:::neutral
+    n15["What the library's scenarios check<br/><small>Message catalog</small>"]:::neutral
+    n16["What the library's scenarios are given<br/><small>Decision</small>"]:::neutral
+    n17["Documents kept in the preferences<br/><small>Scenario</small>"]:::held
+    n18["Documents, in memory<br/><small>Technical choice</small>"]:::held
+    n19["Test<br/><small>Environment</small>"]:::neutral
   end
   subgraph sdlc["Data · SDLC"]
-    n19["Its decisions applied<br/><small>Obligation</small>"]:::neutral
-    n20["Its functions verified<br/><small>Obligation</small>"]:::neutral
-    n21["The next version<br/><small>Shipment</small>"]:::unknown
-    n22["Its packages safe<br/><small>Obligation</small>"]:::neutral
-    n23["Its requirements held<br/><small>Obligation</small>"]:::neutral
-    n24["The library of data<br/><small>Artefact</small>"]:::unknown
-    n25["How a version is made<br/><small>Policy</small>"]:::neutral
+    n20["Its decisions applied<br/><small>Obligation</small>"]:::neutral
+    n21["Its functions verified<br/><small>Obligation</small>"]:::neutral
+    n22["The next version<br/><small>Shipment</small>"]:::held
+    n23["Its packages safe<br/><small>Obligation</small>"]:::neutral
+    n24["Its requirements held<br/><small>Obligation</small>"]:::neutral
+    n25["The library of data<br/><small>Artefact</small>"]:::held
+    n26["How a version is made<br/><small>Policy</small>"]:::neutral
   end
   subgraph shelves["Data · Shelves"]
-    n26["A book<br/><small>Entity</small>"]:::held
-    n27["Shelves<br/><small>Vocabulary</small>"]:::neutral
+    n27["A book<br/><small>Entity</small>"]:::held
+    n28["Shelves<br/><small>Vocabulary</small>"]:::neutral
   end
   subgraph words["Data · Words"]
-    n28["Words of the kinds of data<br/><small>Message catalog</small>"]:::neutral
+    n29["Words of the kinds of data<br/><small>Message catalog</small>"]:::neutral
   end
   n0 -->|Serves| n12
   n3 -->|Serves| n12
@@ -74,31 +75,32 @@ flowchart TB
   n11 -->|Applied by| n0
   n11 -->|Applied by| n3
   n13 -->|Serves| n12
-  n16 -->|Verifies| n3
-  n16 -->|Verifies| n5
-  n16 -->|Verifies| n0
-  n16 -->|In| n18
-  n16 -->|Depends on| n2
-  n16 -->|Depends on| n26
-  n16 -->|Depends on| n1
-  n16 -->|Depends on| n15
-  n16 -->|Depends on| n14
-  n17 -->|Chooses| n3
-  n17 -->|In| n18
-  n17 -->|Serves| n12
-  n19 -->|Serves| n12
+  n14 -->|Serves| n12
+  n17 -->|Verifies| n3
+  n17 -->|Verifies| n5
+  n17 -->|Verifies| n0
+  n17 -->|In| n19
+  n17 -->|Depends on| n2
+  n17 -->|Depends on| n27
+  n17 -->|Depends on| n1
+  n17 -->|Depends on| n16
+  n17 -->|Depends on| n15
+  n18 -->|Chooses| n3
+  n18 -->|In| n19
+  n18 -->|Serves| n12
   n20 -->|Serves| n12
-  n21 -->|Ships| n24
-  n21 -->|Follows the policy| n25
-  n22 -->|Serves| n12
+  n21 -->|Serves| n12
+  n22 -->|Ships| n25
+  n22 -->|Follows the policy| n26
   n23 -->|Serves| n12
-  n25 -->|Its obligations| n20
-  n25 -->|Its obligations| n23
-  n25 -->|Its obligations| n19
-  n25 -->|Its obligations| n22
-  n26 -->|Serves| n12
+  n24 -->|Serves| n12
+  n26 -->|Its obligations| n21
+  n26 -->|Its obligations| n24
+  n26 -->|Its obligations| n20
+  n26 -->|Its obligations| n23
   n27 -->|Serves| n12
-  n26 -.->|Depends on| n27
+  n28 -->|Serves| n12
+  n27 -.->|Depends on| n28
   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
   classDef blocked fill:#fbf0d9,stroke:#9a6200,color:#17202a
   classDef violated fill:#f9e3e1,stroke:#ad2a22,color:#17202a

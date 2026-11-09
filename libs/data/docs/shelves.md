@@ -42,7 +42,7 @@ An entity of the library's scenarios: a title, its pages, where it stands, wheth
 | `shelf` | a word of a vocabulary in [Shelves](#Shelves) |
 | `lent` | yes or no, optional |
 
-Version `a08cdb3d`; never deployed.
+Version `a08cdb3d`; 1 version deployed so far.
 
 - Owner: trame
 - Kept as: data.book

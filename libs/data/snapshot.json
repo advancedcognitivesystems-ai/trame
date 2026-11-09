@@ -186,6 +186,19 @@
       }
     },
     {
+      "id": "releases.R0_1_1",
+      "kind": "release",
+      "title": "Version 0.1.1",
+      "fields": {
+        "owner": "trame",
+        "version": "0.1.1",
+        "date": "2026-11-09",
+        "what": "An entity wired before it is evaluated (a scenario of a module read earlier) computes what it gives",
+        "fingerprint": "80be07326b9dac85",
+        "language": "shared"
+      }
+    },
+    {
       "id": "scenarios.DataChecks",
       "kind": "catalog",
       "title": "What the library's scenarios check",
@@ -305,7 +318,7 @@
       "id": "sdlc.NextVersion",
       "kind": "shipment",
       "title": "The next version",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "version"
@@ -331,7 +344,7 @@
       "id": "sdlc.TheLibrary",
       "kind": "artifact",
       "title": "The library of data",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "src",
@@ -502,6 +515,11 @@
     },
     {
       "from": "releases.R0_1_0",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_1_1",
       "to": "product.DataDescribedOnce",
       "kind": "serves"
     },

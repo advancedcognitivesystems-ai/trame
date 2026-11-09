@@ -224,6 +224,21 @@
       "diagnostics": []
     },
     {
+      "id": "releases.R0_1_1",
+      "kind": "release",
+      "title": "Version 0.1.1",
+      "source": "src/releases.ts:25",
+      "fields": {
+        "owner": "trame",
+        "version": "0.1.1",
+        "date": "2026-11-09",
+        "what": "An entity wired before it is evaluated (a scenario of a module read earlier) computes what it gives",
+        "fingerprint": "80be07326b9dac85",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "scenarios.DataChecks",
       "kind": "catalog",
       "title": "What the library's scenarios check",
@@ -384,7 +399,7 @@
       "kind": "shipment",
       "title": "The next version",
       "source": "src/sdlc.ts:58",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "version"
@@ -440,9 +455,7 @@
           "words.DataKindWords"
         ]
       },
-      "diagnostics": [
-        "warning: To ship: The library of data is unknown"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.PackagesSafe",
@@ -469,7 +482,7 @@
       "kind": "artifact",
       "title": "The library of data",
       "source": "src/sdlc.ts:18",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "src",
@@ -479,9 +492,7 @@
         "path": "src",
         "code": "afcf14a2"
       },
-      "diagnostics": [
-        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.VersionMode",
@@ -550,7 +561,12 @@
         "first": "a08cdb3d",
         "migrations": [],
         "undecided": [],
-        "kept": []
+        "kept": [
+          {
+            "version": "a08cdb3d",
+            "at": "2026-11-09"
+          }
+        ]
       },
       "diagnostics": []
     },
@@ -706,6 +722,11 @@
     },
     {
       "from": "releases.R0_1_0",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_1_1",
       "to": "product.DataDescribedOnce",
       "kind": "serves"
     },
