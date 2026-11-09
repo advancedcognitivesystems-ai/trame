@@ -5,9 +5,10 @@
 // the library of data (A5): a project that imports the library writes entities.
 
 import {
-  defineKind, field, optional, optionalEdge, edge, hole, doc, keysOf, isNode, KindName, EdgeName, EvidenceSource, Status,
+  defineKind, field, optional, optionalEdge, edge, hole, doc, keysOf, fieldsOf, isNode, KindName, EdgeName, EvidenceSource, Status,
   type AnyNode, type Graph, type Inline, type Lib, type Node, type Provides, type Quantity, type View,
 } from "#trame/kernel"
+import { vocabularyKind } from "#trame/kinds/vocabulary"
 import words from "./words"
 
 const say = words()
@@ -65,6 +66,8 @@ export interface StoredDescription {
   readonly type: string
   readonly quantity?: string
   readonly vocabulary?: string
+  /** The words of its vocabulary, for a word: what a value is read against where the graph is not. */
+  readonly words?: readonly string[]
   readonly entity?: string
   readonly of?: StoredDescription
 }
@@ -97,12 +100,17 @@ export interface Migration {
  * the migration from each version deployed since.
  */
 export interface Model<F extends StoredFields = StoredFields> {
+  /** The name it is kept under, where it is kept whole (a document): the one its owner gives, or its reference. */
+  readonly name: string
   readonly fields: { readonly [K in keyof F]: StoredDescription }
   readonly names: { readonly [K in keyof F & string]: K }
   readonly key?: keyof F & string
   readonly version: string
   readonly first: string
   readonly migrations: readonly Migration[]
+  /** The names of the types a field is stored as, and of the steps of a migration: what the code that reads it tests. */
+  readonly types: typeof StoredType
+  readonly ops: typeof MigrationOp
 }
 
 /** What changed since a version deployed, decided by the entity's owner: renames, fields dropped, values for the others. */
@@ -137,6 +145,7 @@ const fields = {
   owner: field.owner(),
   fields: field.value<StoredFields>(say.entityFields()),
   key: optional(field.value<string>(say.entityKey())),
+  keptAs: optional(field.value<string>(say.entityKeptAs())),
   changes: optional(field.value<Changes>(say.entityChanges())),
 }
 const F = keysOf(fields)
@@ -165,7 +174,7 @@ interface Result {
 const isPlain = (v: unknown, { values }: Lib): v is Record<string, unknown> => v !== null && values.isObject(v) && !Array.isArray(v)
 
 /** The fields, whatever the value holds: something else than an object of fields gives none. */
-const fieldsOf = (self: View, lib: Lib): [string, Stored][] => {
+const storedOf = (self: View, lib: Lib): [string, Stored][] => {
   const raw = self.field(F.fields)
   return isPlain(raw, lib) ? Object.entries(raw).flatMap(([k, v]): [string, Stored][] => (isPlain(v, lib) ? [[k, v as unknown as Stored]] : [])) : []
 }
@@ -174,10 +183,12 @@ const fieldsOf = (self: View, lib: Lib): [string, Stored][] => {
 const describe = (s: Stored, g: Graph): StoredDescription => {
   const ref = (n: AnyNode | undefined) => (n && isNode(n) ? { ref: g.view(n).ref } : undefined)
   const [quantity, vocabulary, entity] = [ref(s.quantity), ref(s.vocabulary), ref(s.entity)]
+  const words = vocabulary && s.vocabulary ? g.view(s.vocabulary).field(fieldsOf(vocabularyKind).words) : undefined
   return {
     type: s.type,
     ...(quantity ? { quantity: quantity.ref } : {}),
     ...(vocabulary ? { vocabulary: vocabulary.ref } : {}),
+    ...(isPlain(words, g.lib) ? { words: Object.keys(words) } : {}),
     ...(entity ? { entity: entity.ref } : {}),
     ...(s.of ? { of: describe(s.of, g) } : {}),
   }
@@ -188,6 +199,9 @@ const migrate = (before: Description, now: Description, changes: Changes, lib: L
   const same = (a: StoredDescription | undefined, b: StoredDescription | undefined) => lib.fingerprint?.(a) === lib.fingerprint?.(b)
   const loosened = (a: StoredDescription, b: StoredDescription) => b.type === StoredType.optional && same(a, b.of)
   const tightened = (a: StoredDescription, b: StoredDescription) => a.type === StoredType.optional && same(a.of, b)
+  // A vocabulary that gained words still reads every word stored; one that lost some may not.
+  const widened = (a: StoredDescription, b: StoredDescription) =>
+    a.type === StoredType.word && b.type === StoredType.word && a.vocabulary === b.vocabulary && (a.words ?? []).every((w) => (b.words ?? []).includes(w))
   const renamed: Record<string, string> = isPlain(changes.renamed, lib) ? (changes.renamed as Record<string, string>) : {}
   const dropped = Array.isArray(changes.dropped) ? changes.dropped : []
   const defaults: Record<string, unknown> = isPlain(changes.defaults, lib) ? (changes.defaults as Record<string, unknown>) : {}
@@ -205,7 +219,7 @@ const migrate = (before: Description, now: Description, changes: Changes, lib: L
       if (field.type === StoredType.optional) continue
       if (name in defaults) steps.push({ op: MigrationOp.add, field: name, value: defaults[name] })
       else undecided.push({ field: name, what: say.entityAddedUndecided(name) })
-    } else if (same(was, field)) {
+    } else if (same(was, field) || widened(was, field)) {
       continue
     } else if (loosened(was, field)) {
       steps.push({ op: MigrationOp.loosen, field: name })
@@ -258,7 +272,7 @@ const kind = defineKind({
     const lib = g.lib
     const key = self.field(F.key)
     const deployed: Description = {
-      fields: Object.fromEntries(fieldsOf(self, lib).map(([k, s]) => [k, describe(s, g)])),
+      fields: Object.fromEntries(storedOf(self, lib).map(([k, s]) => [k, describe(s, g)])),
       ...(lib.values.isText(key) ? { key } : {}),
     }
     const version = lib.fingerprint?.(deployed) ?? lib.texts.empty
@@ -288,7 +302,7 @@ const kind = defineKind({
   },
 
   holes(self, g) {
-    const all = fieldsOf(self, g.lib)
+    const all = storedOf(self, g.lib)
     const key = self.field(F.key)
     return [
       ...(key !== undefined && !all.some(([k]) => k === key) ? [hole.error(say.entityKeyNamesNoField(String(key)), self.owner)] : []),
@@ -298,7 +312,7 @@ const kind = defineKind({
   },
 
   render(self, g) {
-    const all = fieldsOf(self, g.lib)
+    const all = storedOf(self, g.lib)
     const key = self.field(F.key)
     const r = self.result<Result>()
     return [
@@ -318,9 +332,11 @@ const kind = defineKind({
     const r = self.result<Result>()
     const description = r?.deployed ?? { fields: {} }
     const names = Object.fromEntries(Object.keys(description.fields).map((k) => [k, k]))
+    const keptAs = self.field(F.keptAs)
     return {
+      name: keptAs ?? self.ref,
       fields: description.fields, names, ...(description.key === undefined ? {} : { key: description.key }),
-      version: r?.version, first: r?.first, migrations: r?.migrations ?? [],
+      version: r?.version, first: r?.first, migrations: r?.migrations ?? [], types: StoredType, ops: MigrationOp,
     }
   },
 })
@@ -331,6 +347,8 @@ interface EntityInput<F extends StoredFields> {
   fields: F
   /** The field that names a value among the others, when the entity is kept as many (a table's rows). */
   key?: keyof F & string
+  /** The name it is kept under, kept whole (a document): by default, its reference in the graph. */
+  keptAs?: string
   /** What changed since a version deployed, which a migration cannot compute: decided by the owner. */
   changes?: Changes<F>
   serves?: readonly Node<typeof KindName.goal>[]

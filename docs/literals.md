@@ -1,6 +1,6 @@
 # Literals
 
-*The values written in code bodies, found by the syntax reader with the queries of each language, on 9 November 2026.*
+*The values written in code bodies, found by the syntax reader with the queries of each language, on 30 October 2026.*
 
 > **0 literals to declare in 0 bodies, 0 of them already declared by a constant · 1909 declared by a catalog**
 

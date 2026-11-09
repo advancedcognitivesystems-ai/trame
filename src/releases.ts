@@ -1528,3 +1528,18 @@ export const G103 = release({
   archive: "a0de014b518441e2",
   assembledBy: G102,
 })
+
+/**
+ * Generation 104
+ */
+export const G104 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g104",
+  date: "2026-11-09",
+  what: "A library carries kinds; what a review judges of a row; a deployment keeps what an entity's description is (C3a, C3b)",
+  fingerprint: "89930b21acc7f015",
+  language: "shared",
+  archive: "9638f5eb088605da",
+  assembledBy: G103,
+})

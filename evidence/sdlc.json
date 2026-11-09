@@ -3583,5 +3583,131 @@
     "by": "claude",
     "signature": "attribution",
     "seal": "797893232ca7be0dc5c431caf0a6865e737fdcc12d3db2735f69f48e1a5ef220"
+  },
+  {
+    "node": "commands.Advance",
+    "at": "2026-11-09",
+    "source": "deployed",
+    "value": 1,
+    "fingerprint": "3d7897dc",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "d95269f0ac3c2e86cea5c5dc5a8fde49f03ee0a0e12b70d57bb6a043ca9bf0c0"
+  },
+  {
+    "node": "sdlc.CandidateKeepsTheLaws",
+    "at": "2026-11-09",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "8826cad8",
+    "code": "f8c831b8",
+    "engine": "1a5d45f02c610d51",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "6aa1fd1d53b22cd236e9173eb65ee47dc1516564de83a1a389ea5740cd9b52d5"
+  },
+  {
+    "node": "sdlc.CandidateRunsOnTheMachine",
+    "at": "2026-11-09",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "8826cad8",
+    "code": "4dcdbe48",
+    "engine": "1a5d45f02c610d51",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "b2910dbd5b4119fb5191d5bc555595a2e4d33e027066e401b531e9bffe9abd1f"
+  },
+  {
+    "node": "sdlc.EngineCandidate",
+    "at": "2026-11-09",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "3cab4f63a93cbc5737e97bd2ccbeb99fbaca2b62540e46c56caada50a597c23f",
+    "code": "22b351b0",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "1a5d45f02c610d51",
+    "seal": "1227a28e88ed3760cf89612707610e33d7e9284d3a8ffd168b87fc99ab99e98c"
+  },
+  {
+    "node": "sdlc.EngineCandidate",
+    "at": "2026-11-09",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "3cab4f63a93cbc5737e97bd2ccbeb99fbaca2b62540e46c56caada50a597c23f",
+    "subject": "sdlc.NextGeneration",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "f176118c10d28b102022088186da964df8a6d26747b9f6185e4486f4fe07fa89"
+  },
+  {
+    "node": "sdlc.GraphPage",
+    "at": "2026-11-09",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "17fe3fcee1b69b66830125b304cf56c8e6fd0a08340f6a9f9eaee6970d3eec3a",
+    "code": "1e5775e1",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "1a5d45f02c610d51",
+    "seal": "e3425584ccdfbcbb0c7c9ec0341df8196e21ecf3a6ed2120bf5d131253d3c9a6"
+  },
+  {
+    "node": "sdlc.GraphPage",
+    "at": "2026-11-09",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "17fe3fcee1b69b66830125b304cf56c8e6fd0a08340f6a9f9eaee6970d3eec3a",
+    "subject": "sdlc.NextGeneration",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "86c2f425655b4c9f6a16e57dead4463c9063168fb004462c634b459c67f82350"
+  },
+  {
+    "node": "sdlc.GraphPageOpens",
+    "at": "2026-11-09",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "b7bc8edb",
+    "code": "4a92dae2",
+    "engine": "1a5d45f02c610d51",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "a192173bc7a3f4555c9fda2c69d9754b45c56d564c322757c8bdc2013a9121ea"
+  },
+  {
+    "node": "sdlc.NextGeneration",
+    "at": "2026-11-09",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "72b7d898",
+    "url": "evidence/shipments/NextGeneration-2026-11-09-72b7d898.json",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "445d9b7ccce29ba4431087c1f8a4d31f1127f3566b9a87d94b46312656cf4a81"
+  },
+  {
+    "node": "sdlc.PageProgram",
+    "at": "2026-11-09",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "66f319d49c05a2d941f313061a7e4e94ad6a8f5cdf1587aef5184a4e3cf2badb",
+    "code": "7928117f",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "1a5d45f02c610d51",
+    "seal": "b6acf42325ee2fe28c8ec7dd03b018e017268178008e72dd4e95608cfa5ff4f7"
+  },
+  {
+    "node": "sdlc.PageProgram",
+    "at": "2026-11-09",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "66f319d49c05a2d941f313061a7e4e94ad6a8f5cdf1587aef5184a4e3cf2badb",
+    "subject": "sdlc.NextGeneration",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "54057872cb10a8b55ff92e9e8fd47cce45f0da0293bb5ea7996fe5c873cc09cc"
   }
 ]

@@ -2,6 +2,95 @@
   "at": "2026-11-09",
   "nodes": [
     {
+      "id": "documents.Conforms",
+      "kind": "function",
+      "title": "A value of the description it is of",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "values": "std/algebra.ValueTypes",
+          "iso": "std/measures.Iso8601"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "documents.DocumentForm",
+      "kind": "decision",
+      "title": "How a document is stored",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "version": "version",
+          "value": "value"
+        }
+      }
+    },
+    {
+      "id": "documents.Documents",
+      "kind": "port",
+      "title": "Documents",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": {
+          "read": [
+            "read"
+          ],
+          "write": [
+            "write"
+          ],
+          "clear": [
+            "write"
+          ]
+        }
+      }
+    },
+    {
+      "id": "documents.DocumentsInPreferences",
+      "kind": "function",
+      "title": "Documents kept in the preferences",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "preferences": "std/platform.PreferencesStore",
+          "form": "documents.DocumentForm",
+          "json": "documents.Json",
+          "values": "std/algebra.ValueTypes",
+          "migrate": "documents.Migrate",
+          "conforms": "documents.Conforms"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "documents.Json",
+      "kind": "standard",
+      "title": "JSON",
+      "fields": {
+        "owner": "trame",
+        "source": "RFC 8259, The JavaScript Object Notation (JSON) Data Interchange Format",
+        "url": "https://www.rfc-editor.org/rfc/rfc8259",
+        "constants": {
+          "empty": {
+            "value": "",
+            "meaning": "Nothing stored: what clearing a document writes, where nothing can be removed"
+          }
+        }
+      }
+    },
+    {
+      "id": "documents.Migrate",
+      "kind": "function",
+      "title": "A value migrated",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "body": "(function)"
+      }
+    },
+    {
       "id": "obligations.DataKinds",
       "kind": "vocabulary",
       "title": "The kinds the library carries",
@@ -60,9 +149,226 @@
       }
     },
     {
+      "id": "principles.DescribedOnce",
+      "kind": "adr",
+      "title": "An entity is described once",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "The data a product kept outside the graph was described twice: a TypeScript interface, and a decision naming its tables and columns, or the names of its preferences; the code joined the two by texts and casts, read what was stored by a rule written by hand, and nothing saw a change of shape before stored data broke. The kinds of the language could not say it: a decision holds a value but knows no version deployed, and a status that says every version deployed reads into this one, nobody could compute (A5).",
+        "consequences": "A project that imports the library writes entities: their fields, each with how it is stored, their key. Wired, an entity gives its model: the type of a value (EntityOf), the names of its fields as values, the version of its description and the migration from each version deployed, computed from what each deployment kept; what a migration cannot decide blocks, for the owner to decide in its changes. A document is read migrated and checked, or not at all. The kind is the library's (src/kinds), with its laws played by every build, its words in a catalog, and the example of examples/kept.",
+        "rejected": {
+          "Composing the kinds of the language": "a decision for the shape, functions for the migrations, written by hand: the description twice again, and no status for what deployments kept",
+          "Migrations written by hand, version after version": "what a difference between two descriptions computes, a person would write again, and forget",
+          "The kind in the language itself": "storing data is the concern of the products that keep some (A5): a library they import"
+        }
+      }
+    },
+    {
       "id": "product.DataDescribedOnce",
       "kind": "goal",
       "title": "Data described once",
+      "fields": {
+        "owner": "trame"
+      }
+    },
+    {
+      "id": "scenarios.Book",
+      "kind": "entity",
+      "title": "A book",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "fields": {
+          "title": {
+            "type": "text"
+          },
+          "pages": {
+            "type": "number"
+          },
+          "shelf": {
+            "type": "word",
+            "vocabulary": "scenarios.Shelves"
+          },
+          "lent": {
+            "type": "optional",
+            "of": {
+              "type": "flag"
+            }
+          }
+        },
+        "keptAs": "data.book"
+      }
+    },
+    {
+      "id": "scenarios.DataChecks",
+      "kind": "catalog",
+      "title": "What the library's scenarios check",
+      "fields": {
+        "owner": "trame",
+        "messages": "(function)"
+      }
+    },
+    {
+      "id": "scenarios.DataGiven",
+      "kind": "decision",
+      "title": "What the library's scenarios are given",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "book": {
+            "title": "Middlemarch",
+            "pages": 880,
+            "shelf": "reading"
+          },
+          "older": {
+            "version": "an older version",
+            "value": {
+              "heading": "Middlemarch",
+              "pages": 880,
+              "shelf": "reading",
+              "mood": "patient"
+            },
+            "steps": [
+              {
+                "op": "rename",
+                "field": "title",
+                "from": "heading"
+              },
+              {
+                "op": "drop",
+                "field": "mood"
+              }
+            ]
+          },
+          "wrong": [
+            {
+              "title": "Middlemarch",
+              "pages": "eight hundred",
+              "shelf": "reading"
+            },
+            {
+              "title": "Middlemarch",
+              "pages": 880,
+              "shelf": "lost"
+            }
+          ],
+          "unknown": "a version nobody deployed"
+        }
+      }
+    },
+    {
+      "id": "scenarios.DocumentsKept",
+      "kind": "scenario",
+      "title": "Documents kept in the preferences",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "documents": "documents.Documents",
+          "preferences": "std/platform.PreferencesStore",
+          "book": "scenarios.Book",
+          "form": "documents.DocumentForm",
+          "given": "scenarios.DataGiven",
+          "checks": "scenarios.DataChecks"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "scenarios.InMemory",
+      "kind": "binding",
+      "title": "Documents, in memory",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "The library's documents are read and written as a product's would be, the device in memory."
+      }
+    },
+    {
+      "id": "scenarios.Shelves",
+      "kind": "vocabulary",
+      "title": "Shelves",
+      "fields": {
+        "owner": "trame",
+        "words": {
+          "reading": "Being read",
+          "read": "Read"
+        }
+      }
+    },
+    {
+      "id": "scenarios.Test",
+      "kind": "environment",
+      "title": "Test",
+      "fields": {
+        "owner": "trame",
+        "evaluates": true
+      }
+    },
+    {
+      "id": "sdlc.DecisionsApplied",
+      "kind": "obligation",
+      "title": "Its decisions applied",
+      "fields": {
+        "owner": "trame"
+      }
+    },
+    {
+      "id": "sdlc.FunctionsVerified",
+      "kind": "obligation",
+      "title": "Its functions verified",
+      "fields": {
+        "owner": "trame",
+        "params": {
+          "kinds": [
+            "function"
+          ]
+        },
+        "gaps": "error"
+      }
+    },
+    {
+      "id": "sdlc.NextVersion",
+      "kind": "shipment",
+      "title": "The next version",
+      "status": "unknown",
+      "fields": {
+        "owner": "trame",
+        "target": "version"
+      }
+    },
+    {
+      "id": "sdlc.PackagesSafe",
+      "kind": "obligation",
+      "title": "Its packages safe",
+      "fields": {
+        "owner": "trame"
+      }
+    },
+    {
+      "id": "sdlc.RequirementsServed",
+      "kind": "obligation",
+      "title": "Its requirements held",
+      "fields": {
+        "owner": "trame"
+      }
+    },
+    {
+      "id": "sdlc.TheLibrary",
+      "kind": "artifact",
+      "title": "The library of data",
+      "status": "unknown",
+      "fields": {
+        "owner": "trame",
+        "path": "src",
+        "version": true
+      }
+    },
+    {
+      "id": "sdlc.VersionMode",
+      "kind": "policy",
+      "title": "How a version is made",
       "fields": {
         "owner": "trame"
       }
@@ -81,6 +387,51 @@
     }
   ],
   "edges": [
+    {
+      "from": "documents.Conforms",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "documents.DocumentsInPreferences",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "documents.DocumentsInPreferences",
+      "to": "documents.Documents",
+      "kind": "implements"
+    },
+    {
+      "from": "documents.DocumentsInPreferences",
+      "to": "documents.DocumentForm",
+      "kind": "deps"
+    },
+    {
+      "from": "documents.DocumentsInPreferences",
+      "to": "documents.Json",
+      "kind": "deps"
+    },
+    {
+      "from": "documents.DocumentsInPreferences",
+      "to": "documents.Migrate",
+      "kind": "deps"
+    },
+    {
+      "from": "documents.DocumentsInPreferences",
+      "to": "documents.Conforms",
+      "kind": "deps"
+    },
+    {
+      "from": "documents.Json",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "documents.Migrate",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
     {
       "from": "obligations.DataKinds",
       "to": "product.DataDescribedOnce",
@@ -110,6 +461,156 @@
       "from": "packages.stdLibrary",
       "to": "product.DataDescribedOnce",
       "kind": "serves"
+    },
+    {
+      "from": "principles.DescribedOnce",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "principles.DescribedOnce",
+      "to": "obligations.Migrated",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.DescribedOnce",
+      "to": "documents.Migrate",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.DescribedOnce",
+      "to": "documents.Conforms",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.DescribedOnce",
+      "to": "documents.DocumentsInPreferences",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "scenarios.Book",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "scenarios.DocumentsKept",
+      "to": "documents.DocumentsInPreferences",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.DocumentsKept",
+      "to": "documents.Migrate",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.DocumentsKept",
+      "to": "documents.Conforms",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.DocumentsKept",
+      "to": "scenarios.Test",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.DocumentsKept",
+      "to": "documents.Documents",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.DocumentsKept",
+      "to": "scenarios.Book",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.DocumentsKept",
+      "to": "documents.DocumentForm",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.DocumentsKept",
+      "to": "scenarios.DataGiven",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.DocumentsKept",
+      "to": "scenarios.DataChecks",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.InMemory",
+      "to": "documents.DocumentsInPreferences",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.InMemory",
+      "to": "scenarios.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "scenarios.InMemory",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "scenarios.Shelves",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "sdlc.DecisionsApplied",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "sdlc.FunctionsVerified",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "sdlc.NextVersion",
+      "to": "sdlc.TheLibrary",
+      "kind": "ships"
+    },
+    {
+      "from": "sdlc.NextVersion",
+      "to": "sdlc.VersionMode",
+      "kind": "policy"
+    },
+    {
+      "from": "sdlc.PackagesSafe",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "sdlc.RequirementsServed",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "sdlc.VersionMode",
+      "to": "sdlc.FunctionsVerified",
+      "kind": "obligations"
+    },
+    {
+      "from": "sdlc.VersionMode",
+      "to": "sdlc.RequirementsServed",
+      "kind": "obligations"
+    },
+    {
+      "from": "sdlc.VersionMode",
+      "to": "sdlc.DecisionsApplied",
+      "kind": "obligations"
+    },
+    {
+      "from": "sdlc.VersionMode",
+      "to": "sdlc.PackagesSafe",
+      "kind": "obligations"
+    },
+    {
+      "from": "scenarios.Book",
+      "to": "scenarios.Shelves",
+      "kind": "uses"
     }
   ],
   "open": []

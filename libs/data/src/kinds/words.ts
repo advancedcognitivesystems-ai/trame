@@ -16,6 +16,7 @@ const body = () => ({
   entityServes: () => "Serves",
   entityServedBy: () => "Served by",
   entityChanges: () => "Changes decided",
+  entityKeptAs: () => "Kept as",
   entityField: () => "Field",
   entityFrom: () => "From the version",
   entitySteps: () => "Steps",

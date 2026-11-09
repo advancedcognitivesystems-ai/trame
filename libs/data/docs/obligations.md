@@ -28,6 +28,7 @@ Each entity the shipment reaches (what its programs store or read, kept outside 
 - Owner: trame
 - Parameters: `kinds` ← [The kinds the library carries](#DataKinds)
 - Refines: [Data described once](product.md#DataDescribedOnce)
+- Applies: [An entity is described once](principles.md#DescribedOnce)
 
 <a id="MigratedCriteria"></a>
 
