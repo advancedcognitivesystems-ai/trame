@@ -44,6 +44,7 @@ const body = () => ({
   opLoosen: () => "make optional",
   opFill: () => "fill",
   opFrom: () => " from ",
+  opStep: (op: string) => `${op} `,
 
   storedText: () => "a text",
   storedNumber: () => "a number",

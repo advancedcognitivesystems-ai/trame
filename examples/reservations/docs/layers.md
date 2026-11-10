@@ -147,6 +147,7 @@ flowchart TB
   n0 -->|Depends on| n2
   n0 -->|Depends on| n23
   n0 -->|Depends on| n4
+  n0 -->|Depends on| n6
   n0 -->|Depends on| n74
   n1 -->|Serves| n23
   n1 -->|Depends on| n19

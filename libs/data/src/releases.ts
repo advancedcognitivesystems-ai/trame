@@ -31,3 +31,16 @@ export const R0_1_1 = release({
   language: "shared",
   serves: [DataDescribedOnce],
 })
+
+/**
+ * Version 0.2.0
+ */
+export const R0_2_0 = release({
+  owner: "trame",
+  version: "0.2.0",
+  date: "2026-11-10",
+  what: "records in SQL: the tables of entities, made ready by a deployment and migrated from the version they hold, in SQLite or PostgreSQL",
+  fingerprint: "c3503ffdd30e2869",
+  language: "shared",
+  serves: [DataDescribedOnce],
+})

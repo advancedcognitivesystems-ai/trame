@@ -43,12 +43,15 @@ export const KeptReservation = entity({
 
 /**
  * The refund of a cancelled reservation
- * Found by its reservation: the amount refunded, and the provider's reference for it.
+ * Found by its reservation: the amount refunded, the provider's reference for it, and the instant it was recorded (ISO
+ * 8601), which the refunds recorded before it was kept do not say.
  */
 export const KeptRefund = entity({
   owner: "karim",
   keptAs: "refunds",
   key: "reservation",
-  fields: { reservation: stored.reference(KeptReservation), amount: stored.number(SwissFrancs), reference: stored.text() },
+  fields: {
+    reservation: stored.reference(KeptReservation), amount: stored.number(SwissFrancs), reference: stored.text(), at: stored.optional(stored.text()),
+  },
   serves: [CancelWithoutStress],
 })

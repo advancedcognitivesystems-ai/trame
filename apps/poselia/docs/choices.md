@@ -1,6 +1,6 @@
 # Technical choices
 
-*What answers each port in each environment on 9 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
+*What answers each port in each environment on 10 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
 
 > **6 technical choices for 21 ports, in 3 environments**
 
@@ -30,8 +30,8 @@
 
 | Pattern | Status | Followed by |
 |---|---|---|
-| [Strategy](../.trame/std/docs/patterns.md#Strategy) | **held** | [Content carried by the app](app.md#ContentCarried), [The app in memory](scenarios.md#InMemory), [The SDLC in memory](sdlc.md#SdlcInMemory), [Kept in the preferences of the device](settings.md#KeptOnTheDevice), [Documents, in memory](../.trame/data/docs/scenarios.md#InMemory), [In memory](../.trame/std/docs/scenarios.md#InMemory) |
-| [Adapter](../.trame/std/docs/patterns.md#Adapter) | **held** | [The browser's realizations](app.md#InTheBrowser), [On the machine](sdlc.md#OnTheMachine) |
+| [Strategy](../.trame/std/docs/patterns.md#Strategy) | **held** | [Content carried by the app](app.md#ContentCarried), [The app in memory](scenarios.md#InMemory), [The SDLC in memory](sdlc.md#SdlcInMemory), [Kept in the preferences of the device](settings.md#KeptOnTheDevice), [Documents, in memory](../.trame/data/docs/scenarios.md#InMemory), [PostgreSQL's dialect, read](../.trame/data/docs/scenarios.md#PostgresForScenarios), [In memory](../.trame/std/docs/scenarios.md#InMemory) |
+| [Adapter](../.trame/std/docs/patterns.md#Adapter) | **held** | [The browser's realizations](app.md#InTheBrowser), [On the machine](sdlc.md#OnTheMachine), [SQLite, in memory](../.trame/data/docs/scenarios.md#SqliteForScenarios) |
 | [Abstract Factory](../.trame/std/docs/patterns.md#AbstractFactory) | **held** | [The app in memory](scenarios.md#InMemory) |
 
 ## Poselia · The app in a browser

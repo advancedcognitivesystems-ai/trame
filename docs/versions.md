@@ -1,8 +1,8 @@
 # Versions
 
-*The releases of the components on 30 October 2026, newest first. A project runs the release its configuration pins.*
+*The releases of the components on 10 November 2026, newest first. A project runs the release its configuration pins.*
 
-> **104 releases of 1 component; 95 releases on a language of their own**
+> **105 releases of 1 component; 95 releases on a language of their own**
 
 ## Trame on the command line
 
@@ -10,6 +10,7 @@ Each release, newest first: what changed, the release that assembled it, and whe
 
 | Release | Released on | What changes | Assembled by | Language |
 |---|---|---|---|---|
+| [Generation 105](releases.md#G105) | 10 November 2026 | an amended body runs amended, assembled too; only a deployment keeps a description; a version's code holds the kinds it writes | [Generation 104](releases.md#G104) | shared |
 | [Generation 104](releases.md#G104) | 9 November 2026 | A library carries kinds; what a review judges of a row; a deployment keeps what an entity's description is (C3a, C3b) | [Generation 103](releases.md#G103) | shared |
 | [Generation 103](releases.md#G103) | 8 November 2026 | Stages: a shipment waits for those that precede it to ship first the same file, promoted rather than built again (C2) | [Generation 102](releases.md#G102) | shared |
 | [Generation 102](releases.md#G102) | 4 November 2026 | Trame on std 0.16.0; the records of a library's releases are not part of what a version holds | [Generation 101](releases.md#G101) | shared |

@@ -20,6 +20,7 @@
           "leadTime": "api.LeadTime",
           "refund": "(function)",
           "key": "architecture.CancellationKey",
+          "clock": "architecture.Clock",
           "http": "std/web.Http",
           "messages": "messages.ApiMessages"
         },
@@ -475,6 +476,12 @@
           },
           "reference": {
             "type": "text"
+          },
+          "at": {
+            "type": "optional",
+            "of": {
+              "type": "text"
+            }
           }
         },
         "key": "reservation",
@@ -1439,6 +1446,11 @@
     {
       "from": "api.CancelReservation",
       "to": "architecture.CancellationKey",
+      "kind": "deps"
+    },
+    {
+      "from": "api.CancelReservation",
+      "to": "architecture.Clock",
       "kind": "deps"
     },
     {

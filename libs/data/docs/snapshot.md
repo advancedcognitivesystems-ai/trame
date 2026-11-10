@@ -87,9 +87,9 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 104
+- Version: 105
 - How it joins the graph: language
-- Its path: ../../generations/g104
+- Its path: ../../generations/g105
 - Serves: Data described once
 
 ### std

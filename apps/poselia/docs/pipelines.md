@@ -1,6 +1,6 @@
 # Pipelines
 
-*What trame ship runs for each shipment on 9 November 2026, in order, as the engine computes it: its artefacts produced, the checks a program makes, the obligations to prove, the programs that deploy it, the dossier.*
+*What trame ship runs for each shipment on 10 November 2026, in order, as the engine computes it: its artefacts produced, the checks a program makes, the obligations to prove, the programs that deploy it, the dossier.*
 
 <a id="Preview"></a>
 
@@ -58,11 +58,11 @@ flowchart TB
 
 |  | Stage | Step | Run by | Why | Status | Latest evidence |
 |---|---|---|---|---|---|---|
-| 1 | produce | [Poselia's page](sdlc.md#PageFile) · `dist/poselia.html` | [Poselia's page](app.md#PoseliaPage) | — | **held** | 9 November 2026 by claude  |
-| 2 | check | [The page opens](sdlc.md#PageOpens) | [Open the page](sdlc.md#OpenThePage) | — | **held** | passed, 9 November 2026 by claude  |
+| 1 | produce | [Poselia's page](sdlc.md#PageFile) · `dist/poselia.html` | [Poselia's page](app.md#PoseliaPage) | — | **held** | 10 November 2026 by claude  |
+| 2 | check | [The page opens](sdlc.md#PageOpens) | [Open the page](sdlc.md#OpenThePage) | — | **held** | passed, 10 November 2026 by claude  |
 | 3 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
-| 4 | prove | [Poselia's page](sdlc.md#PageFile) | — | the shipment | **held** | 9 November 2026 by claude  |
-| 5 | prove | [The page opens](sdlc.md#PageOpens) | [Open the page](sdlc.md#OpenThePage) | [The code shown is verified, a gap said](sdlc.md#CodeVerifiedSaid) via [The browser's stage](stage.md#BrowserStage) | **held** | passed, 9 November 2026 by claude  |
+| 4 | prove | [Poselia's page](sdlc.md#PageFile) | — | the shipment | **held** | 10 November 2026 by claude  |
+| 5 | prove | [The page opens](sdlc.md#PageOpens) | [Open the page](sdlc.md#OpenThePage) | [The code shown is verified, a gap said](sdlc.md#CodeVerifiedSaid) via [The browser's stage](stage.md#BrowserStage) | **held** | passed, 10 November 2026 by claude  |
 | 6 | prove | [The language of the home page](scenarios.md#HomeLanguage) | — | [The code shown is verified, a gap said](sdlc.md#CodeVerifiedSaid) via [The content the app carries](app.md#CarriedContent) | **held** |  |
 | 7 | prove | [The body stays on the floor](scenarios.md#BodyStaysOnTheFloor) | — | [The code shown is verified, a gap said](sdlc.md#CodeVerifiedSaid) via [The space of the mat](body.md#MatSpace) | **held** |  |
 | 8 | prove | [Holding the poses](scenarios.md#HoldThePoses) | — | [The code shown is verified, a gap said](sdlc.md#CodeVerifiedSaid) via [The voice the person chose](settings.md#VoiceChoice) | **held** |  |
@@ -77,8 +77,8 @@ flowchart TB
 | 17 | prove | [three.js, its types](stage.md#ThreeTypes) | — | [The packages are safe](sdlc.md#PackagesSafe) via [The browser's stage](stage.md#BrowserStage) | **held** | 29 October 2026 by   |
 | 18 | prove | [Each decision of architecture serves the product](sdlc.md#AdrsServeTheProduct) | — | [The rules of the app hold](sdlc.md#RulesHeld) | **held** |  |
 | 19 | prove | [Code serves the product](sdlc.md#CodeServesTheProduct) | — | [The rules of the app hold](sdlc.md#RulesHeld) | **held** |  |
-| 20 | deploy | [Place the page](sdlc.md#PlaceThePage) | itself | — | **held** | 9 November 2026 by claude  |
-| 21 | record | [A preview](sdlc.md#Preview) | — | — | **held** | 9 November 2026 by claude `evidence/shipments/Preview-2026-11-09-d696a78b.json` |
+| 20 | deploy | [Place the page](sdlc.md#PlaceThePage) | itself | — | **held** | 10 November 2026 by claude  |
+| 21 | record | [A preview](sdlc.md#Preview) | — | — | **held** | 10 November 2026 by claude `evidence/shipments/Preview-2026-11-10-a19b6c40.json` |
 
 `trame ship Preview --by <name>`
 
@@ -218,13 +218,13 @@ flowchart TB
 
 |  | Stage | Step | Run by | Why | Status | Latest evidence |
 |---|---|---|---|---|---|---|
-| 1 | produce | [Poselia's page](sdlc.md#PageFile) · `dist/poselia.html` | promoted, as shipped first by [A preview](sdlc.md#Preview) | — | **held** | 9 November 2026 by claude  |
-| 2 | check | [The page opens](sdlc.md#PageOpens) | [Open the page](sdlc.md#OpenThePage) | — | **held** | passed, 9 November 2026 by claude  |
+| 1 | produce | [Poselia's page](sdlc.md#PageFile) · `dist/poselia.html` | promoted, as shipped first by [A preview](sdlc.md#Preview) | — | **held** | 10 November 2026 by claude  |
+| 2 | check | [The page opens](sdlc.md#PageOpens) | [Open the page](sdlc.md#OpenThePage) | — | **held** | passed, 10 November 2026 by claude  |
 | 3 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
-| 4 | prove | [Poselia's page](sdlc.md#PageFile) | — | the shipment | **held** | 9 November 2026 by claude  |
-| 5 | prove | [A preview](sdlc.md#Preview) | — | [After the preview](sdlc.md#AfterThePreview) via [Poselia's page](sdlc.md#PageFile) | **held** | 9 November 2026 by claude `evidence/shipments/Preview-2026-11-09-d696a78b.json` |
+| 4 | prove | [Poselia's page](sdlc.md#PageFile) | — | the shipment | **held** | 10 November 2026 by claude  |
+| 5 | prove | [A preview](sdlc.md#Preview) | — | [After the preview](sdlc.md#AfterThePreview) via [Poselia's page](sdlc.md#PageFile) | **held** | 10 November 2026 by claude `evidence/shipments/Preview-2026-11-10-a19b6c40.json` |
 | 6 | prove | [On a phone](sdlc.md#OnAPhone) | by hand, signed by [People who try it on a phone](sdlc.md#PhoneTesters) | [The page is checked, by hand too](sdlc.md#AllChecks) via [Poselia's page](sdlc.md#PageFile) | **unknown** |  |
-| 7 | prove | [The page opens](sdlc.md#PageOpens) | [Open the page](sdlc.md#OpenThePage) | [The page is checked, by hand too](sdlc.md#AllChecks) via [Poselia's page](sdlc.md#PageFile) | **held** | passed, 9 November 2026 by claude  |
+| 7 | prove | [The page opens](sdlc.md#PageOpens) | [Open the page](sdlc.md#OpenThePage) | [The page is checked, by hand too](sdlc.md#AllChecks) via [Poselia's page](sdlc.md#PageFile) | **held** | passed, 10 November 2026 by claude  |
 | 8 | prove | [The language of the home page](scenarios.md#HomeLanguage) | — | [The code shown is verified](sdlc.md#CodeVerified) via [The content the app carries](app.md#CarriedContent) | **held** |  |
 | 9 | prove | [The body stays on the floor](scenarios.md#BodyStaysOnTheFloor) | — | [The code shown is verified](sdlc.md#CodeVerified) via [The space of the mat](body.md#MatSpace) | **held** |  |
 | 10 | prove | [Holding the poses](scenarios.md#HoldThePoses) | — | [The code shown is verified](sdlc.md#CodeVerified) via [The voice the person chose](settings.md#VoiceChoice) | **held** |  |
@@ -275,7 +275,7 @@ flowchart TB
 | 55 | prove | [A breath measured by tapping](settings.md#MeasuredBreath) | — | [The product holds](sdlc.md#ProductServed) via [The breath of a moment](product.md#BreathOf) | **held** |  |
 | 56 | prove | [Each decision of architecture serves the product](sdlc.md#AdrsServeTheProduct) | — | [The rules of the app hold](sdlc.md#RulesHeld) | **held** |  |
 | 57 | prove | [Code serves the product](sdlc.md#CodeServesTheProduct) | — | [The rules of the app hold](sdlc.md#RulesHeld) | **held** |  |
-| 58 | deploy | [Place the page](sdlc.md#PlaceThePage) | itself | — | **held** | 9 November 2026 by claude  |
+| 58 | deploy | [Place the page](sdlc.md#PlaceThePage) | itself | — | **held** | 10 November 2026 by claude  |
 | 59 | record | [A public version](sdlc.md#PublicVersion) | — | — | **unknown** |  |
 
 `trame ship PublicVersion --by <name>`
@@ -310,11 +310,11 @@ flowchart TB
 
 |  | Stage | Step | Run by | Why | Status | Latest evidence |
 |---|---|---|---|---|---|---|
-| 1 | produce | [The preview's script](sdlc.md#PreviewScript) · `scripts/ship-preview.sh` | [A script of Bash](../.trame/ci/docs/shell.md#ShellScript) | — | **held** | 9 November 2026 by claude  |
-| 2 | produce | [The preview's workflow](sdlc.md#PreviewWorkflow) · `../../.github/workflows/poselia-preview.yml` | [A workflow of GitHub Actions](../.trame/ci/docs/github.md#GitHubWorkflow) | — | **held** | 9 November 2026 by claude  |
+| 1 | produce | [The preview's script](sdlc.md#PreviewScript) · `scripts/ship-preview.sh` | [A script of Bash](../.trame/ci/docs/shell.md#ShellScript) | — | **held** | 10 November 2026 by claude  |
+| 2 | produce | [The preview's workflow](sdlc.md#PreviewWorkflow) · `../../.github/workflows/poselia-preview.yml` | [A workflow of GitHub Actions](../.trame/ci/docs/github.md#GitHubWorkflow) | — | **held** | 10 November 2026 by claude  |
 | 3 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
-| 4 | prove | [The preview's script](sdlc.md#PreviewScript) | — | the shipment | **held** | 9 November 2026 by claude  |
-| 5 | prove | [The preview's workflow](sdlc.md#PreviewWorkflow) | — | the shipment | **held** | 9 November 2026 by claude  |
-| 6 | record | [The files that run it elsewhere](sdlc.md#RunnersWritten) | — | — | **held** | 9 November 2026 by claude `evidence/shipments/RunnersWritten-2026-11-09-64142be6.json` |
+| 4 | prove | [The preview's script](sdlc.md#PreviewScript) | — | the shipment | **held** | 10 November 2026 by claude  |
+| 5 | prove | [The preview's workflow](sdlc.md#PreviewWorkflow) | — | the shipment | **held** | 10 November 2026 by claude  |
+| 6 | record | [The files that run it elsewhere](sdlc.md#RunnersWritten) | — | — | **held** | 10 November 2026 by claude `evidence/shipments/RunnersWritten-2026-11-10-11c22c89.json` |
 
 `trame ship RunnersWritten --by <name>`

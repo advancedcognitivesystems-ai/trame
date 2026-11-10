@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-08",
+  "generated": "2026-11-10",
   "nodes": [
     {
       "id": "angles.Angle",
@@ -37,7 +37,7 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "trame",
-        "version": "103",
+        "version": "105",
         "joins": "language",
         "from": "registry"
       },
@@ -126,7 +126,23 @@
           }
         ],
         "gaps": [],
-        "preceded": []
+        "preceded": [],
+        "reached": [
+          "sdlc.TheLibrary",
+          "angles.Angle",
+          "angles.AngleSymbols",
+          "packages.Language",
+          "packages.StandardLibrary",
+          "product.GeometryWrittenOnce",
+          "sdlc.DecisionsApplied",
+          "sdlc.NextVersion",
+          "sdlc.PackagesSafe",
+          "sdlc.VersionMode",
+          "vectors.Axes",
+          "vectors.Tolerance",
+          "vectors.Vectors",
+          "vectors.VectorsAsTriples"
+        ]
       },
       "diagnostics": []
     },
@@ -153,7 +169,7 @@
       },
       "result": {
         "path": "src",
-        "code": "6c25af20"
+        "code": "ec0abedf"
       },
       "diagnostics": []
     },

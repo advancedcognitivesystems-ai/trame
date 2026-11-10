@@ -47,7 +47,8 @@ export const ReadReservation = entryPoint({
 
 /**
  * Cancel a reservation
- * Refunds according to the rule, only once, even if the request arrives twice.
+ * Refunds according to the rule, only once, even if the request arrives twice; the refund is recorded with the instant
+ * it is.
  */
 export const CancelReservation = entryPoint({
   owner: "karim",
@@ -56,7 +57,7 @@ export const CancelReservation = entryPoint({
   trigger: http("POST", "/reservations/:id/cancellation"),
   deps: {
     reservations: ReservationReading, cancellations: Cancellations, payment: Payment, leadTime: LeadTime, refund: Refund,
-    key: CancellationKey, http: Http, messages: ApiMessages,
+    key: CancellationKey, clock: Clock, http: Http, messages: ApiMessages,
   },
   body: code.file("./code/cancel-reservation.ts"),
 })

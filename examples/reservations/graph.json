@@ -5,7 +5,7 @@
       "id": "api.CancelReservation",
       "kind": "entry",
       "title": "Cancel a reservation",
-      "source": "src/api.ts:52",
+      "source": "src/api.ts:53",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -21,6 +21,7 @@
           "leadTime": "api.LeadTime",
           "refund": "(function)",
           "key": "architecture.CancellationKey",
+          "clock": "architecture.Clock",
           "http": "std/web.Http",
           "messages": "messages.ApiMessages"
         },
@@ -638,7 +639,7 @@
       "id": "data.KeptRefund",
       "kind": "entity",
       "title": "The refund of a cancelled reservation",
-      "source": "src/data.ts:48",
+      "source": "src/data.ts:49",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -653,6 +654,12 @@
           },
           "reference": {
             "type": "text"
+          },
+          "at": {
+            "type": "optional",
+            "of": {
+              "type": "text"
+            }
           }
         },
         "key": "reservation",
@@ -673,12 +680,18 @@
             },
             "reference": {
               "type": "text"
+            },
+            "at": {
+              "type": "optional",
+              "of": {
+                "type": "text"
+              }
             }
           },
           "key": "reservation"
         },
-        "version": "af743efb",
-        "first": "af743efb",
+        "version": "a2c32e34",
+        "first": "a2c32e34",
         "migrations": [],
         "undecided": [],
         "kept": []
@@ -1658,7 +1671,7 @@
       },
       "result": {
         "path": "out/local/reservations-api.ts",
-        "code": "ecb5f9f1"
+        "code": "84cb9d94"
       },
       "diagnostics": [
         "warning: Not built yet: trame ship builds it"
@@ -1914,7 +1927,7 @@
       },
       "result": {
         "path": "out/production/reservations-api.ts",
-        "code": "8250939f"
+        "code": "8e17d4ba"
       },
       "diagnostics": [
         "warning: Not built yet: trame ship builds it"
@@ -2242,6 +2255,11 @@
     {
       "from": "api.CancelReservation",
       "to": "architecture.CancellationKey",
+      "kind": "deps"
+    },
+    {
+      "from": "api.CancelReservation",
+      "to": "architecture.Clock",
       "kind": "deps"
     },
     {

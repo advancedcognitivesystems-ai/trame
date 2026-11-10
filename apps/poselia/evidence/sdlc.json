@@ -1023,5 +1023,149 @@
     "by": "claude",
     "signature": "attribution",
     "seal": "b2b7409a7955f5fe6c339e96d383525ca05a1ed8bb75dd5f8ec747027258bd5b"
+  },
+  {
+    "node": "sdlc.PageFile",
+    "at": "2026-11-10",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "1a455862cdc93b80600d6c27752693644f847be1998551dae6f9a7d03e916c30",
+    "code": "524783e9",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "59f20aefeccfc914",
+    "seal": "349ab09cffd3c2a4804544a456122f8d10d3adaedfa607c5c55bb6a529f2f4c9"
+  },
+  {
+    "node": "sdlc.PageFile",
+    "at": "2026-11-10",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "1a455862cdc93b80600d6c27752693644f847be1998551dae6f9a7d03e916c30",
+    "subject": "sdlc.Preview",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "fc9144ce44ff303b92e2cf35074c5dd5f5686d5f9f749b2b8c06d57a16c13686"
+  },
+  {
+    "node": "sdlc.PageOpens",
+    "at": "2026-11-10",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "1e4a58c4",
+    "code": "e5bed1b5",
+    "engine": "59f20aefeccfc914",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "703bf1104b2058b210625c92f066d04b930ba583ed21c431c39160a965db3784"
+  },
+  {
+    "node": "sdlc.PlaceThePage",
+    "at": "2026-11-10",
+    "source": "deployed",
+    "value": 1,
+    "fingerprint": "1e4a58c4",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "e388587634e6475136277eddb8e9ebca35501cf27a0550e2809e7ee84013ef12"
+  },
+  {
+    "node": "sdlc.Preview",
+    "at": "2026-11-10",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "a19b6c40",
+    "url": "evidence/shipments/Preview-2026-11-10-a19b6c40.json",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "817546dbf3d710f368341420aae0330c9d53567de6c6526b322ef35aa9d45ab3"
+  },
+  {
+    "node": "sdlc.PreviewScript",
+    "at": "2026-11-10",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "2db6ccc42278ce95ad44a7812f3da656741ba277e18c3ea168c66bffc96facbe",
+    "code": "8fd0a0ae",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "59f20aefeccfc914",
+    "seal": "191552262e11fca635932bc3337c164c76d1439e012a8f9b370cf728d7072aae"
+  },
+  {
+    "node": "sdlc.PreviewScript",
+    "at": "2026-11-10",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "2db6ccc42278ce95ad44a7812f3da656741ba277e18c3ea168c66bffc96facbe",
+    "subject": "sdlc.RunnersWritten",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "fd985a759a1f8997a7d6b3f2ef694287ff62019c05f2b6afd92c45dc260323f5"
+  },
+  {
+    "node": "sdlc.PreviewWorkflow",
+    "at": "2026-11-10",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "79f911c1de3ee14ac6e51751cde362b05cd7c2ae4003471a1f2db8e4f278b409",
+    "code": "9bcf7c7e",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "59f20aefeccfc914",
+    "seal": "03fa9eab39b7c165827ee19d93218eb766a65ba1f2ecb970f434e59e00b89309"
+  },
+  {
+    "node": "sdlc.PreviewWorkflow",
+    "at": "2026-11-10",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "79f911c1de3ee14ac6e51751cde362b05cd7c2ae4003471a1f2db8e4f278b409",
+    "subject": "sdlc.RunnersWritten",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "6f5826e659c80c0facee1ae102236f96a7494d9dc1d668c01f96c80c959b6175"
+  },
+  {
+    "node": "sdlc.RunnersWritten",
+    "at": "2026-11-10",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "11c22c89",
+    "url": "evidence/shipments/RunnersWritten-2026-11-10-11c22c89.json",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "1970c5f238b6971eb791cc8dbf90a7c1022d20b961e5abbf589e5d46583066c8"
+  },
+  {
+    "node": "settings.Breath",
+    "at": "2026-11-10",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "a2228bee",
+    "subject": "sdlc.Preview",
+    "kept": {
+      "fields": {
+        "inhale": {
+          "type": "number",
+          "quantity": "std/measures.Time"
+        },
+        "holdTop": {
+          "type": "number",
+          "quantity": "std/measures.Time"
+        },
+        "exhale": {
+          "type": "number",
+          "quantity": "std/measures.Time"
+        },
+        "holdBottom": {
+          "type": "number",
+          "quantity": "std/measures.Time"
+        }
+      }
+    },
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "1aa5ac1d83292b269fe0964e3a315cbfb730cf0d2ed6848ba2c49a45eabc3d74"
   }
 ]

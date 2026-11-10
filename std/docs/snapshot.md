@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 8 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 10 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Standard library · Algebra
 
@@ -425,10 +425,10 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 103
+- Version: 105
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../generations/g103
+- Its path: ../generations/g105
 - Serves: Ports of the platform, realized once
 
 ## Standard library · Design patterns

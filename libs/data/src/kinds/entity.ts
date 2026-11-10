@@ -258,7 +258,7 @@ const written = (s: Stored, g: Graph): Inline[] => {
 }
 
 /** How a step is written for people. */
-const stepWritten = (x: Step): Inline[] => [opWords[x.op] ?? x.op, doc.ident(x.field), ...(x.from === undefined ? [] : [say.opFrom(), doc.ident(x.from)])]
+const stepWritten = (x: Step): Inline[] => [say.opStep(opWords[x.op] ?? x.op), doc.ident(x.field), ...(x.from === undefined ? [] : [say.opFrom(), doc.ident(x.from)])]
 
 /** What an entity computes: its description, its version, and how each version a deployment kept migrates to it. */
 const computed = (self: View, g: Graph): Result => {

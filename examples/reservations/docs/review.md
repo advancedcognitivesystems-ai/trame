@@ -41,7 +41,7 @@
 
 | Declaration | Kind | Owner | Source |
 |---|---|---|---|
-| [Cancel a reservation](api.md#CancelReservation) | Entry point | karim | `src/api.ts:52` |
+| [Cancel a reservation](api.md#CancelReservation) | Entry point | karim | `src/api.ts:53` |
 | [End of free cancellation](api.md#FreeCancellationEnd) | Function | lea | `src/api.ts:16` |
 | [Lead time of a cancellation](api.md#LeadTime) | Function | karim | `src/api.ts:29` |
 | [Read a reservation](api.md#ReadReservation) | Entry point | karim | `src/api.ts:39` |
@@ -67,7 +67,7 @@
 | [Criteria of a full refund a day ahead](consumer.md#FullRefundAheadCriteria) | Acceptance criteria | karim | `src/consumer.ts:39` |
 | [Notice for a full refund](consumer.md#FullRefundNotice) | Decision | karim | `src/consumer.ts:14` |
 | [Chargers](data.md#Chargers) | Vocabulary | karim | `src/data.ts:15` |
-| [The refund of a cancelled reservation](data.md#KeptRefund) | Entity | karim | `src/data.ts:48` |
+| [The refund of a cancelled reservation](data.md#KeptRefund) | Entity | karim | `src/data.ts:49` |
 | [A reservation](data.md#KeptReservation) | Entity | karim | `src/data.ts:34` |
 | [Statuses of a reservation](data.md#ReservationStatuses) | Vocabulary | karim | `src/data.ts:24` |
 | [Backup retention](infra.md#BackupRetention) | Decision | karim | `src/infra.ts:83` |

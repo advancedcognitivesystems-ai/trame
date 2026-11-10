@@ -270,7 +270,28 @@ languages is an object keyed by the languages offered, and each must be there). 
 dataset: the row, the language, who, whether it is approved, and the fingerprint of what was seen. It holds while the
 row, in that language, still has that fingerprint (the engine gives the kinds `lib.fingerprint`); a row changed since
 is shown as such. The dataset is held when every row is approved in every language. Wired as a dependency, it gives
-its rows, frozen into a program like any value.
+its rows, frozen into a program like any value. A dataset says what a review does not judge of a row (C3a, g104: its
+`technical` parts, by path, typed by the row): a review is tied to the fingerprint of the rest only, so a mark's label
+changed expires no teacher's review, and a field added tomorrow is reviewed by default, never forgotten.
+
+The data a product **keeps** from one version to the next (a person's breath on their device, the reservations of a
+service) is not in the graph: what is in it is its description, an **entity** (C3, ADR "An entity is described once"),
+a kind the library `libs/data` carries (a library carries kinds in its `src/kinds`, found by convention since g104, and
+its version holds them in its code since g105). An entity says its fields, each with how it is stored
+(`stored.text()`, `stored.number(SwissFrancs)`, `stored.word(Chargers)`, `stored.reference(KeptReservation)`,
+`stored.list(…)`, `stored.optional(…)`), its key, the name it is kept under, and the changes its owner decided since a
+version deployed (`renamed`, `dropped`, `defaults`); `EntityOf<typeof KeptRefund>` is the type of a value. Each
+deployment keeps the description of every entity its shipment reaches (`trame ship` records it, for a shipment that
+deploys); from each version kept, the entity computes the migration to its description as it is (a field added
+optional or with a default, renamed, dropped as said, made optional), and what it cannot decide (a field added
+without a value, a type changed, a field gone unsaid, a key changed) is a hole of its owner, which the family
+`Migrated` makes keep a shipment. Wired, an entity gives its model: `Documents` keeps one value whole as JSON with its
+version (Poselia's breath, in the device's preferences: read migrated and checked, or nothing); `Records` keeps many in
+SQL (`RecordsInSql` over a `SqlDatabase` and a `TableDialect`, SQLite's or PostgreSQL's, written from the entity by
+syntax elements of the library): each entity a table, made ready by the deployment (created with what it starts with,
+or migrated from the version it holds, kept in a table of versions), its rows read back checked. The reservations
+example keeps its reservations and refunds so, with no SQL of its own: its shipment `OnThisMachine` builds the program
+for a laptop and runs `prepare-storage` on its database in a file, which a version that adds a field migrates.
 
 Poselia's graph is written by layers: its product (goals; the requirements "The breath of a moment", "A hold counts
 in breaths" and "The language of the app", each with acceptance criteria; an assumption), its principles (five ADRs),
@@ -1221,10 +1242,8 @@ declarations with), the types of Node below 23 (they follow the Node.js that run
 - **The model**: two requirements that say they answer the same question, played on each other's cases, a
   disagreement settled as an overlap; a decision changed from the page, written into the repository as an amendment
   proposal.
-- **Data**: migrations (proposed: a review on what a reviewer reads of a row, so a field nobody reads expires no
-  review; a migration node from one version of a stored shape to the next, and a family `Migrated` that obliges a
-  shipment whose stored shapes changed since the version deployed to carry them); a content update downloaded by the
-  app, checked by the same rules.
+- **Data**: a driver for PostgreSQL (the example's production database is described, provisioned by Terraform, not
+  connected); a content update downloaded by the app, checked by the same rules.
 - **Publication**: Trame's own graph has no `trame.lock` yet; tying `trame publish` to the merge into the main branch.
 - **The SDLC**: a shipment of a library version (its release, then a warning in the projects that import an older one; proposed); a
   signature with a key, read from outside the graph (the seal is an attribution); a status that reads itself said as an

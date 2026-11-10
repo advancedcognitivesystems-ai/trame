@@ -44,14 +44,14 @@ How long before the start of the slot the reservation is cancelled, in seconds.
 
 ### Cancel a reservation
 
-`CancelReservation` · `src/api.ts:52` · status: **held**
+`CancelReservation` · `src/api.ts:53` · status: **held**
 
-Refunds according to the rule, only once, even if the request arrives twice.
+Refunds according to the rule, only once, even if the request arrives twice; the refund is recorded with the instant it is.
 
 Triggered by `POST /reservations/:id/cancellation`
 
 - Owner: karim
-- Parameters: `reservations` ← [Reservation reading](architecture.md#ReservationReading) · `cancellations` ← [Cancellation records](architecture.md#Cancellations) · `payment` ← [Payment provider](architecture.md#Payment) · `leadTime` ← [Lead time of a cancellation](#LeadTime) · `refund` ← [Refund on cancellation](cancellation.md#Refund) · `key` ← [Key of a cancellation's refund](architecture.md#CancellationKey) · `http` ← [HTTP](../../../std/docs/web.md#Http) · `messages` ← [Messages of the API](messages.md#ApiMessages)
+- Parameters: `reservations` ← [Reservation reading](architecture.md#ReservationReading) · `cancellations` ← [Cancellation records](architecture.md#Cancellations) · `payment` ← [Payment provider](architecture.md#Payment) · `leadTime` ← [Lead time of a cancellation](#LeadTime) · `refund` ← [Refund on cancellation](cancellation.md#Refund) · `key` ← [Key of a cancellation's refund](architecture.md#CancellationKey) · `clock` ← [Clock](architecture.md#Clock) · `http` ← [HTTP](../../../std/docs/web.md#Http) · `messages` ← [Messages of the API](messages.md#ApiMessages)
 - Body: `./code/cancel-reservation.ts` (typescript)
 - Effects: asynchronous, network, read, third-party, time, write
 - Serves: [Refund on cancellation](cancellation.md#Refund)

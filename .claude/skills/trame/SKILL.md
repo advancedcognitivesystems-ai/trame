@@ -35,7 +35,8 @@ The repository's `AGENTS.md` is the full guide; read it first, then keep to this
   first what it would change (a criterion that would fail refuses it), then writes `amend(…)` beside the node; its
   owner approves it when someone else wrote it. A cited value (a standard's constants, a quantity's units) changes only
   with its source (`--source`); code changes in the code. An amendment the code is written against has no date: dated,
-  a build at an earlier day reads the code without it.
+  a build at an earlier day reads the code without it. A published `TODO` is decided by an amendment too, dated the day
+  it is decided. An amendment of a body is composed with it wherever it runs, wired or assembled (g105).
 - No literal in a body, a kind or a view: each is an error. A published value goes in a `standard`, a chosen one in a
   `decision`, a shared operation in a `structure`, a closed set of words in a `vocabulary`, words for people in a
   `catalog` (a scenario's check labels too), a name shared by engine and language in a prelude vocabulary, a private
@@ -74,7 +75,13 @@ The repository's `AGENTS.md` is the full guide; read it first, then keep to this
   change is just code.
 - A new kind is the last resort: compose the existing kinds first and say what they cannot do; a kind lives in a
   library, never in a product, and comes with an ADR (composing as its rejected option), its laws, its words, an example
-  and its documentation.
+  and its documentation. A library carries its kinds and views in `src/kinds` and `src/views` (g104), its words in a
+  catalog body; a project that imports it gets them.
+- What a product keeps outside the graph (settings, records) is an `entity` of `libs/data` (`fields` with `stored.…`,
+  `key`, `keptAs`, the `changes` its owner decided): wired, it gives its model; `Documents` keeps one value whole,
+  `Records` many in SQL (`RecordsInSql`, `SqliteTables` or `PostgresTables`). A deployment keeps each entity's
+  description; the entity computes the migration from each version kept, and the family `Migrated` keeps a shipment on
+  a step its owner has not decided. Type values with `EntityOf<typeof E>`, never by hand (AGENTS.md, section 5c).
 - A rule applies a requirement of `#std/rules` (`Reaches`, `NeverReaches`, `Linked`, `WithoutEffects`, `WordsOf`) with
   its `params`, never a hidden function, and says why: it `serves` a goal, or an ADR applies it.
 - Never edit `docs/`, `graph.json`, `snapshot.json`, `generations/`, `src/releases.ts` or `evidence/` by hand.
@@ -116,7 +123,7 @@ How a version becomes available is declared in the graph, with the kinds `role`,
 - A `review` names what must be reviewed (a dataset's rows in each language, or a node) and by which role; a role with
   `notAuthor` never reviews its own work.
 - An `obligation` applies one family of `#std/obligations` (`Verified`, `Served`, `Applied`, `Reviewed`, `Checked`,
-  `Ruled`, `Safe`, `Preceded`) with its `params` (typed by the family's rule; a node where it reads one) and says what a gap weighs (`gaps: Severity.error` is
+  `Ruled`, `Safe`, `Preceded`; `Migrated` from `#data/obligations`) with its `params` (typed by the family's rule; a node where it reads one) and says what a gap weighs (`gaps: Severity.error` is
   an error of the graph, `Severity.warning` says it); a `policy` groups the obligations of a way of working, one per
   family.
 - A `shipment` names a target, what it `ships`, the `policy` it follows, the entry points that `deploys` it, and the

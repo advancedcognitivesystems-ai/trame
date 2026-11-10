@@ -1,6 +1,6 @@
 # Pipelines
 
-*What trame ship runs for each shipment on 8 November 2026, in order, as the engine computes it: its artefacts produced, the checks a program makes, the obligations to prove, the programs that deploy it, the dossier.*
+*What trame ship runs for each shipment on 10 November 2026, in order, as the engine computes it: its artefacts produced, the checks a program makes, the obligations to prove, the programs that deploy it, the dossier.*
 
 <a id="NextVersion"></a>
 
@@ -46,9 +46,9 @@ flowchart TB
 
 |  | Stage | Step | Run by | Why | Status | Latest evidence |
 |---|---|---|---|---|---|---|
-| 1 | produce | [The standard library](sdlc.md#TheLibrary) · `src` | — | — | **held** | 8 November 2026 by claude  |
+| 1 | produce | [The standard library](sdlc.md#TheLibrary) · `src` | — | — | **held** | 10 November 2026 by claude  |
 | 2 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
-| 3 | prove | [The standard library](sdlc.md#TheLibrary) | — | the shipment | **held** | 8 November 2026 by claude  |
+| 3 | prove | [The standard library](sdlc.md#TheLibrary) | — | the shipment | **held** | 10 November 2026 by claude  |
 | 4 | prove | [The device's services, as ports](platform.md#DeviceAsPorts) | — | [Its decisions applied](sdlc.md#DecisionsApplied) via [Animation frames](platform.md#AnimationFrames) | **held** |  |
 | 5 | prove | [The SDLC's tooling is realized once](tooling.md#ToolingAsPorts) | — | [Its decisions applied](sdlc.md#DecisionsApplied) via [A browser kept in memory](tooling.md#BrowserInMemory) | **held** |  |
 | 6 | prove | [Seeded draws keep their promise](scenarios.md#DrawsKeepTheirPromise) | — | [Its functions verified](sdlc.md#FunctionsVerified) via [Seeded draws](algorithms.md#SeededDraws) | **held** |  |
@@ -69,6 +69,6 @@ flowchart TB
 | 21 | prove | [A node reaches what it must](rules.md#Reaches) | — | [Its requirements held](sdlc.md#RequirementsServed) via [The decisions a shipment applies hold](obligations.md#Applied) | **held** |  |
 | 22 | prove | [Effects a node may not have](rules.md#WithoutEffects) | — | [Its requirements held](sdlc.md#RequirementsServed) via [The decisions a shipment applies hold](obligations.md#Applied) | **held** |  |
 | 23 | prove | [Words of a vocabulary](rules.md#WordsOf) | — | [Its requirements held](sdlc.md#RequirementsServed) via [The decisions a shipment applies hold](obligations.md#Applied) | **held** |  |
-| 24 | record | [The next version](sdlc.md#NextVersion) | — | — | **held** | 8 November 2026 by claude `evidence/shipments/NextVersion-2026-11-08-7598e822.json` |
+| 24 | record | [The next version](sdlc.md#NextVersion) | — | — | **held** | 10 November 2026 by claude `evidence/shipments/NextVersion-2026-11-10-9bac754d.json` |
 
 `trame ship NextVersion --by <name>`

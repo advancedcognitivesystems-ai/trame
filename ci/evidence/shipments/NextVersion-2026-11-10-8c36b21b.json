@@ -1,0 +1,134 @@
+{
+  "shipment": "sdlc.NextVersion",
+  "title": "The next version",
+  "target": "version",
+  "at": "2026-11-10",
+  "by": "claude",
+  "signature": "attribution",
+  "artifacts": [
+    {
+      "node": "sdlc.TheLibrary",
+      "path": "src",
+      "fingerprint": "7062b1ff96ea931545cd68533926942458ca5021f1a282cc24383a01b878080f"
+    }
+  ],
+  "foundations": {
+    "problems": 0
+  },
+  "obligations": [
+    {
+      "node": "sdlc.TheLibrary",
+      "kind": "artifact",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-04",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "80358191f24b893e8605c6f7d86a8af228d69e003e5f38eca3b3ed98ab35558f",
+          "code": "2eac90bd",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "c8ef7119db1b811a",
+          "seal": "4d49d63ef845ef1b4fd41c568a81d215f8b4157308e76c9f84acd35f9dfba035"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-04",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "22581b9a7ddf5d605e71ab268cae4fb3a4c373e8c6e1ab619518957701d76def",
+          "code": "9c1030d1",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "22c1402e36086e44",
+          "seal": "a1d438dc150ce61a4de8f01d0dda401cf49a553bb5fcd82096011a10f8b02171"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-04",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "832bf73d04ca2e78e9d21ccb3e861f5c94d03b6b0f43d370b8f73cef85a531ba",
+          "code": "6bbac234",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "22c1402e36086e44",
+          "seal": "9b2fab8257f27dc571de94540267b30fbcf85e9382eaa40bd36010ef622ac9a1"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-04",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "6a7d337ed380cceb77f315010a7bc058a29d0c9a9d5721c9c987556e2f695a30",
+          "code": "ddc50246",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "8a22dee5b7b11c79",
+          "seal": "75072af89e16d94da7fbc06da223e27ca3df38a3632443bdb0e08d07c79edb4d"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-08",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "925d6f4347320352d24e6347e823c501412639c280d2b388a6da98a80f94fda9",
+          "code": "a2281bb1",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "929db2ea12c1f779",
+          "seal": "7d4b9b18a817870a9c15b2cf0977626adbaf42690338e74a6c4c58270558ed7b"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-09",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "d2be7c5e0f3ff087120e1edee7d73304a48417c3dd402f834031faa7bceff29b",
+          "code": "5d545dd2",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "1a5d45f02c610d51",
+          "seal": "5e8886875cd275c23edfe07503c2e5ebcc8c7f40695334a25566fce186778622"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-10",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "7062b1ff96ea931545cd68533926942458ca5021f1a282cc24383a01b878080f",
+          "code": "c1e5fd29",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "59f20aefeccfc914",
+          "seal": "e2049dd41beea771c1534ba7b86eafced737503e2d303712619b8bbd5f539166"
+        }
+      ]
+    },
+    {
+      "node": "github.GitHubWorkflow",
+      "kind": "syntax",
+      "status": "held",
+      "owner": "trame",
+      "evidence": []
+    },
+    {
+      "node": "shell.ShellScript",
+      "kind": "syntax",
+      "status": "held",
+      "owner": "trame",
+      "evidence": []
+    },
+    {
+      "node": "yaml.YamlDocument",
+      "kind": "syntax",
+      "status": "held",
+      "owner": "trame",
+      "evidence": []
+    }
+  ],
+  "deployed": []
+}

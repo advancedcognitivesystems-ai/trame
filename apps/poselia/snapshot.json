@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-09",
+  "at": "2026-11-10",
   "nodes": [
     {
       "id": "app.BrowserScreen",
@@ -3715,10 +3715,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "data",
-        "version": "0.1.1",
+        "version": "0.2.0",
         "joins": "library",
         "from": "path",
-        "at": "../../libs/data/releases/0.1.1"
+        "at": "../../libs/data/releases/0.2.0"
       }
     },
     {
@@ -3741,10 +3741,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "trame",
-        "version": "104",
+        "version": "105",
         "joins": "language",
         "from": "path",
-        "at": "../../generations/g104"
+        "at": "../../generations/g105"
       }
     },
     {

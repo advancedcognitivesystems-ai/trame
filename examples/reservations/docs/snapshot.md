@@ -28,10 +28,10 @@ Entry point · `CancelReservation` · **held**
 
 - Owner: karim
 - Trigger: { type: http, method: POST, path: /reservations/:id/cancellation }
-- Parameters: { reservations: architecture.ReservationReading, cancellations: architecture.Cancellations, payment: architecture.Payment, leadTime: api.LeadTime, refund: (rule), key: architecture.CancellationKey, http: std/web.Http, messages: messages.ApiMessages }
+- Parameters: { reservations: architecture.ReservationReading, cancellations: architecture.Cancellations, payment: architecture.Payment, leadTime: api.LeadTime, refund: (rule), key: architecture.CancellationKey, clock: architecture.Clock, http: std/web.Http, messages: messages.ApiMessages }
 - Serves: Refund on cancellation
 - Part of: Reservations API
-- Depends on: Reservation reading, Cancellation records, Payment provider, Lead time of a cancellation, Refund on cancellation, Key of a cancellation's refund, Messages of the API
+- Depends on: Reservation reading, Cancellation records, Payment provider, Lead time of a cancellation, Refund on cancellation, Key of a cancellation's refund, Clock, Messages of the API
 
 ### Read a reservation
 
@@ -270,7 +270,7 @@ Vocabulary · `ReservationStatuses`
 Entity · `KeptRefund` · **held**
 
 - Owner: karim
-- Fields: { reservation: { type: reference, entity: data.KeptReservation }, amount: { type: number, quantity: cancellation.SwissFrancs }, reference: { type: text } }
+- Fields: { reservation: { type: reference, entity: data.KeptReservation }, amount: { type: number, quantity: cancellation.SwissFrancs }, reference: { type: text }, at: { type: optional, of: { type: text } } }
 - Key: reservation
 - Kept as: refunds
 - Serves: Cancel without stress

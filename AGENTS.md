@@ -15,7 +15,7 @@ what the graph guarantees. The README explains why; this file says how.
 | `kinds/`, `views/`, `engine-views/` | The language: what a node can be, which questions are asked of the graph; their words in `words.ts` | you, reviewed |
 | `trame.json` | The project: its libraries (`"libraries"`), the generation it pins (`"engine"`), the kinds and views it carries besides the language's | you |
 | `package.json` | The project as a package: the import map of the language (`#trame/*`) and of its libraries (`#std/*`), the packages of the graph | `trame manifest` |
-| `libs/` | Libraries of a domain (`libs/geometry`: vectors, angles), each a project of its own | you |
+| `libs/` | Libraries of a domain (`libs/geometry`: vectors, angles; `libs/data`: the data a product keeps, and its kind `entity`), each a project of its own | you |
 | `std/` | The standard library: a Trame project of its own (structures, standards, patterns) that Trame and the example import | you |
 | `ci/` | The library of writers that run a shipment elsewhere (GitHub Actions, Bash), from the plan the engine computes | you |
 | `docs/`, `graph.json`, `snapshot.json` | What a build writes: documents for people, the graph and its snapshot for tools and agents | the build only |
@@ -89,7 +89,9 @@ Write a product top-down, one module per concern, each node linked to what it se
 6. **Technical choices**: bindings choose the realization of each port per environment and name the patterns they follow.
 7. **Scenarios**: real code wired in an environment that checks entry points and requirements.
 8. **Data**: the content a product carries (kind `dataset`: typed rows, a key, rules, languages offered); reviews are
-   dated evidence on it, tied to the fingerprint of what was seen.
+   dated evidence on it, tied to the fingerprint of what was seen, a row's `technical` parts left out (g104). The data
+   it keeps outside the graph from one version to the next (a person's settings, its records) is an `entity` of
+   `libs/data` (section 5c).
 9. **Delivery**: how a component reaches people (kind `delivery`: the component, its environment, a target, an output);
    `trame deliver` writes it.
 10. **SDLC**: how a version becomes available (section 4b): artefacts, checks, reviews, roles, obligations and the
@@ -109,7 +111,7 @@ A project declares how a version of it ships (ADR "A version ships through the g
 | `check` | what a scenario in memory cannot check: run by a program of the SDLC (`runs`) or made by hand (`steps`), signed by a role (`by`), on artefacts (`on`); the code it proves (`verifies`): what its program runs on a machine, or what its artefacts carry | `check`: passed or failed, for the artefacts as last built from the code as it is, by its program as it is (g70) |
 | `review` | what must be reviewed (`of`: the rows of a dataset in each language, or a node as written), by which role, by how many of its people (`approvals`, one) | `review` on the subject: each row and language, tied to the fingerprint of what was seen; each person's latest counts, a change asked holds it back |
 | `shipment` | a target, what it `ships`, the `policy` it follows, what it also `requires` that derivation cannot see, the entry points that `deploys` it, the `environment` its programs are assembled for | `shipped`, with the dossier |
-| `obligation` | one family of `#std/obligations` it `applies` (Verified, Served, Applied, Reviewed, Checked, Ruled, Safe, Preceded), its `params` (typed by the family's rule; a node of the graph where it reads one: `by: [Preview]`), what a gap weighs (`gaps`: `Severity.error` keeps the shipment, `Severity.warning` says it), why (`serves`) | — |
+| `obligation` | one family of `#std/obligations` it `applies` (Verified, Served, Applied, Reviewed, Checked, Ruled, Safe, Preceded; `#data/obligations`: Migrated), its `params` (typed by the family's rule; a node of the graph where it reads one: `by: [Preview]`), what a gap weighs (`gaps`: `Severity.error` keeps the shipment, `Severity.warning` says it), why (`serves`) | — |
 | `policy` | a way of working: its `obligations`, one per family | — |
 
 What a shipment must prove is derived, not listed (g68): its policy's obligations read what it reaches (the artefacts
@@ -160,7 +162,10 @@ why. A broken rule is an error, unless the rule says `severity: "warning"` while
 - **Everything is in the graph.** A value, a name, a choice that a person could change lives in a node, with its meaning.
 - **A value changes by amendment** (since g85): a kind says how each of its fields changes (`changes`: chosen, cited,
   code). A chosen value is amended (`trame amend`, or by hand with `amend(…)`) and approved by its owner; a cited one
-  only with its new source; code in the code. Never edit a decided value in place: amend it.
+  only with its new source; code in the code. Never edit a decided value in place: amend it. A value nobody decided
+  (`TODO`) that was published is decided by an amendment too, dated the day it is decided. An amendment of a body
+  (`body: (previous) => (deps) => …`) is composed with it wherever it runs: wired, and in a program assembled while it
+  is in force (g105).
 - **No literal in a body**, nor in a kind or a view: each one is an error, with its place. Where a value goes:
 
   | The value is… | It goes in… |
@@ -249,6 +254,32 @@ builds its own documents (`cd std && ../trame.sh build`).
 Before writing a structure, a standard or a pattern, look in `std/` (its `README.md` lists its modules): a generic
 node goes there, with `serves` naming the library's goal; what only one product needs stays in that product.
 
+## 5c. The data a product keeps (`libs/data`)
+
+What a product keeps outside the graph from one version to the next is described once, as an `entity` (ADR "An entity
+is described once", C3): its `fields`, each with how it is stored (`stored.text()`, `stored.number(SwissFrancs)`,
+`stored.word(Chargers)`, `stored.reference(KeptReservation)`, `stored.list(…)`, `stored.optional(…)`), its `key`, the
+name it is kept under (`keptAs`), and the `changes` its owner decided since a version deployed (`renamed`, `dropped`,
+`defaults`). `EntityOf<typeof KeptRefund>` is the type of a value; never write that type by hand.
+
+- **A deployment keeps its description.** `trame ship` records, for a shipment that deploys, the description of each
+  entity it reaches (since g104; only one that deploys, g105). From each version kept, the entity computes the
+  migration to its description as it is: a field added optional (or with a default), renamed, dropped as said, made
+  optional, a word added to its vocabulary. What it cannot decide (a field added without a value, a type changed, a
+  field gone unsaid, a key changed) is a hole of its owner, and an obligation of the family `Migrated` keeps the
+  shipment on it.
+- **Wired, an entity gives its model**: its fields as stored, their names as values (`refunds.names.reference`), its
+  version, its migrations. The code names the entity, never a table, a column or a key in a text.
+- **Kept whole** (one value: a person's breath): the port `Documents`, `DocumentsInPreferences` keeps it in std's
+  preferences as JSON with its version; read migrated and checked, or nothing.
+- **Kept as many** (records): the port `Records` (`prepare`, `find`, `insert`, `update`, `count`, `transaction`);
+  `RecordsInSql` over the ports `SqlDatabase` (a database: the library's `SqliteInMemory` for scenarios, a product's
+  own in a file or a server) and `TableDialect` (`SqliteTables`, `PostgresTables`), what a new table starts with by
+  `InitialRecords` (`StartEmpty`, or the product's). A deployment runs an entry point of the SDLC that `prepare`s each
+  entity (the example's `prepare-storage`): the table is created, or migrated from the version it holds (kept in the
+  table `data_versions`); a store also makes it ready the first time it is used where nothing deployed it.
+- A shipment's policy applies `Migrated` (`gaps: Severity.error`): what people kept is never lost by a version.
+
 ## 6. Writing kinds and views
 
 **A new kind is the last resort.** A kind is a type of node: what a node can say, how its status is computed, what the
@@ -258,7 +289,10 @@ engine does with it. Adding one can weaken a guarantee unseen and makes projects
    a dataset, a check) and say exactly what they cannot do: a status nobody can compute, a link nobody can express,
    evidence nobody can require.
 2. **A kind lives in a library, never in a product**: Trame's own, or a library of a domain or of hygiene, versioned
-   and shipped through its own graph; a project that imports the library gets its kinds.
+   and shipped through its own graph; a project that imports the library gets its kinds. A library carries them in
+   `src/kinds` and `src/views` (found by convention, g104: no `trame.json` entry); such a kind names itself from its
+   catalog of words (`keysOf({ entity: say.entityMeaning() })`, the words a body in `src/kinds/words.ts`), and a
+   version of the library holds them in its code (g105).
 3. **It is admitted with its file**: an ADR that says why composing was not enough (composing is its rejected option),
    its laws played by `test-kinds`, its words in a catalog, an example that uses it, and its place in the documents.
 
@@ -410,6 +444,17 @@ elements), a port answered differently in several environments is answered as in
   runs and per entry point that deploys (`processLog.answer`), or the scenario fails on the first one left unanswered.
 - An obligation whose `params` name a node (`by: [Preview]`) is declared after that node in its module, as a
   scenario's `deps`: the module reads them when it loads.
+- Before g105, an amendment of a body was set in place of the body: from the day it came into force, the rule gave a
+  function instead of an answer (the example's refund rule, violated from 1 November, unseen at the day of the
+  scenarios), and a program could not be assembled. Build at the real date too.
+- A library's scenario that wires a realization directly (`deps: { postgres: PostgresTables }`) is an error in a project
+  that chooses it by a binding ("reached directly, not through its port"): read it through its port, in an environment
+  of the library's own (data's `PostgresStatementsOnly`).
+- A component that names no environment is assembled in its own project's environments only: a library's `Test`
+  is not one (g104's component kind asked a product to realize std's and data's).
+- An entity wired by a scenario of a module read before the entity's is wired before the graph evaluates it: its model
+  is computed when it is given (data 0.1.1).
+- A table made ready in a transaction that fails is gone with it: the store makes it ready again (data 0.2.0).
 - A release holds no manifest (g96): in its library, the library's says it is made of ES modules and where the
   language is; published, the registry gives it one that says only the first, and its reader leads the language.
 - A published declaration the language changes the form of (a type renamed, a rule rewritten as a body) is an error

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-08",
+  "generated": "2026-11-10",
   "nodes": [
     {
       "id": "github.GitHubActions",
@@ -454,10 +454,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "103",
+        "version": "105",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g103"
+        "at": "../generations/g105"
       },
       "diagnostics": []
     },
@@ -554,7 +554,22 @@
       "result": {
         "derived": [],
         "gaps": [],
-        "preceded": []
+        "preceded": [],
+        "reached": [
+          "sdlc.TheLibrary",
+          "github.GitHubActions",
+          "github.GitHubWorkflow",
+          "github.PinnedActions",
+          "npm.Npm",
+          "packages.Language",
+          "product.OneWriterPerPlace",
+          "product.RunsElsewhere",
+          "sdlc.NextVersion",
+          "shell.BashScripts",
+          "shell.ShellScript",
+          "yaml.Yaml",
+          "yaml.YamlDocument"
+        ]
       },
       "diagnostics": []
     },
@@ -571,7 +586,7 @@
       },
       "result": {
         "path": "src",
-        "code": "a2281bb1"
+        "code": "c1e5fd29"
       },
       "diagnostics": []
     },

@@ -10,11 +10,11 @@ next (a person's breath on their device, the reservations of a database) is desc
   version a deployment kept (trame ship records the description of every entity a shipment reaches).
 - `src/documents.ts` — an entity kept whole, as one document: the port `Documents`, read migrated and checked, written
   with its version; `DocumentsInPreferences` keeps it in std's preferences.
-- `src/records.ts` — an entity kept as many records: the port `Records` (find by key, insert, update, count, a
-  transaction), `RecordsInSql` over the ports `SqlDatabase` and `TableDialect`: each entity a table, made ready the first
-  time it is used (created with what `InitialRecords` gives, or migrated from the version it holds, kept in the table of
-  versions), read back checked. `SqliteTables` and `PostgresTables` write the statements; `SqliteInMemory` is a database
-  for scenarios.
+- `src/records.ts` — an entity kept as many records: the port `Records` (prepare, find by key, insert, update, count, a
+  transaction), `RecordsInSql` over the ports `SqlDatabase` and `TableDialect`: each entity a table, made ready when a
+  deployment prepares it, or the first time it is used (created with what `InitialRecords` gives, or migrated from the
+  version it holds, kept in the table of versions; made ready again after a transaction that failed), read back
+  checked. `SqliteTables` and `PostgresTables` write the statements; `SqliteInMemory` is a database for scenarios.
 - `src/sql.ts` — the SQL the tables are written in: the standard and its statements (creation, ALTER TABLE to add,
   rename or drop a column, selection, insertion, update, deletion), SQLite's and PostgreSQL's dialects, as syntax
   elements with their examples.

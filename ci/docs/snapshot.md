@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 8 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 10 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Continuous integration · GitHub Actions
 
@@ -118,10 +118,10 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 103
+- Version: 105
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../generations/g103
+- Its path: ../generations/g105
 - Serves: A shipment runs elsewhere as it runs here
 
 ## Continuous integration · Product

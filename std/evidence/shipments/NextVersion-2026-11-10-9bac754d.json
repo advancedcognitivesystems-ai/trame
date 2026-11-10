@@ -1,0 +1,371 @@
+{
+  "shipment": "sdlc.NextVersion",
+  "title": "The next version",
+  "target": "version",
+  "at": "2026-11-10",
+  "by": "claude",
+  "signature": "attribution",
+  "artifacts": [
+    {
+      "node": "sdlc.TheLibrary",
+      "path": "src",
+      "fingerprint": "899a945c8e6cedd8f5b631d42814486280ce02f0b93c4e2b7dac85775c2c8c9d"
+    }
+  ],
+  "foundations": {
+    "problems": 0
+  },
+  "obligations": [
+    {
+      "node": "sdlc.TheLibrary",
+      "kind": "artifact",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-04",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "046eab19736f5c412321af9bd0ee7b0fc7f8926958ac9ecfafef2969f22bf1a4",
+          "code": "efc1c404",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "1889d937112450f6",
+          "seal": "4843a716777321913f4979888e96558e4ba5b6c17fb5cc22f8f02b1ba8de16d0"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-04",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "e285350ee9eac9dcd7ff54b991ffb93d9fd6d8c80c7b869caa6262899ccf810d",
+          "code": "1053eed2",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "22c1402e36086e44",
+          "seal": "93ec8984a70e8340a36c3a20dd9fcc3acc0b5887074179cd42237029f7bb998f"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-04",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "d7b44d93f23c644b5b544f5a47709ef012b0f8827695e0735ae6e3b255286cc7",
+          "code": "4353d2c1",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "22c1402e36086e44",
+          "seal": "e2bf10d4c1f00bd5d3222daa33d97bcf56824bb1f493a40ef3c559b3dd55f4f3"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-04",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "db1c8a95e225c1f059d820f16247bff2dac8f6b9b241a34a10c8b9106d21f1e0",
+          "code": "8ad7d2d7",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "8a22dee5b7b11c79",
+          "seal": "ea5bfa9077a5359aa290db8fc3ef1861d0468252ce297906aea50d899fc2be13"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-08",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "179161ed9f17cf722ea6788c70f57eb80b3ab13b179d892a65b013972c118d7f",
+          "code": "2760ca18",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "8a22dee5b7b11c79",
+          "seal": "a3dbfccc49ffdd7c34a0b1f3ce3cb2fcfc660463753e3cf6a8afdae38b6ac4a6"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-08",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "8c07e9fc12474aeddf9ea738dbc76c02e798ad177d11d4064414f34e2b0c2d20",
+          "code": "8c845acc",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "929db2ea12c1f779",
+          "seal": "dba191146ee6e42a5a5060b0dca557f394b8cfc074d6ba97bb1378af61784b6b"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-09",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "7aa9d83536a2c69026f345c0b3b141faf0d4fde7f1eed47f202378d3a61fc92f",
+          "code": "a174de7d",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "1a5d45f02c610d51",
+          "seal": "e5c0d531331ae223c83799b296ee8552306d79d76fa0ce883b516de5de647d28"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-10",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "899a945c8e6cedd8f5b631d42814486280ce02f0b93c4e2b7dac85775c2c8c9d",
+          "code": "b62aef01",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "59f20aefeccfc914",
+          "seal": "7f0ba9883539666b8428c954728869761e00a0da322d189d1f62270302d257f0"
+        }
+      ]
+    },
+    {
+      "node": "platform.DeviceAsPorts",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.DecisionsApplied",
+      "via": "platform.AnimationFrames"
+    },
+    {
+      "node": "tooling.ToolingAsPorts",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.DecisionsApplied",
+      "via": "tooling.BrowserInMemory"
+    },
+    {
+      "node": "scenarios.DrawsKeepTheirPromise",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.FunctionsVerified",
+      "via": "algorithms.SeededDraws",
+      "outcome": [
+        {
+          "name": "The same seed draws the same numbers, a text the same seed",
+          "status": "passed"
+        },
+        {
+          "name": "Another seed draws others",
+          "status": "passed"
+        },
+        {
+          "name": "Integers drawn between 1 and 6 stay between them, and reach both",
+          "status": "passed"
+        },
+        {
+          "name": "An element is drawn by its weight: one that weighs nothing never is; nothing from a list that weighs nothing",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.CommandsMade",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.FunctionsVerified",
+      "via": "effects.Commands",
+      "outcome": [
+        {
+          "name": "A command is made for each effect, from its text, which it keeps as it is",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.DeviceInMemory",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.FunctionsVerified",
+      "via": "platform.AwakeInMemory",
+      "outcome": [
+        {
+          "name": "A preference set is read back, another stays unset",
+          "status": "passed"
+        },
+        {
+          "name": "What the voice says is heard, in its language",
+          "status": "passed"
+        },
+        {
+          "name": "The screen is kept awake, then released",
+          "status": "passed"
+        },
+        {
+          "name": "Time turned by hand calls each frame started with the seconds since its start, until it stops",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.ToolingInMemory",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.FunctionsVerified",
+      "via": "tooling.BrowserInMemory",
+      "outcome": [
+        {
+          "name": "A file written exists, is read back, copied, fingerprinted alike, and kept for the scenario",
+          "status": "passed"
+        },
+        {
+          "name": "A page scripted shows what it was given: its elements, their text, its errors; the clicks and the choices are kept",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "tooling.PlaywrightPackage",
+      "kind": "package",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "tooling.PlaywrightPackage",
+          "at": "2026-10-27",
+          "source": "audit",
+          "value": 0
+        },
+        {
+          "node": "tooling.PlaywrightPackage",
+          "at": "2026-10-27",
+          "source": "outdated",
+          "value": 0,
+          "note": "1.64.1"
+        }
+      ],
+      "obligation": "sdlc.PackagesSafe",
+      "via": "tooling.PlaywrightBrowser"
+    },
+    {
+      "node": "obligations.Applied",
+      "kind": "requirement",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.RequirementsServed",
+      "via": "obligations.Applied"
+    },
+    {
+      "node": "obligations.Checked",
+      "kind": "requirement",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.RequirementsServed",
+      "via": "obligations.Applied"
+    },
+    {
+      "node": "obligations.Preceded",
+      "kind": "requirement",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.RequirementsServed",
+      "via": "obligations.Applied"
+    },
+    {
+      "node": "obligations.Reviewed",
+      "kind": "requirement",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.RequirementsServed",
+      "via": "obligations.Applied"
+    },
+    {
+      "node": "obligations.Ruled",
+      "kind": "requirement",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.RequirementsServed",
+      "via": "obligations.Applied"
+    },
+    {
+      "node": "obligations.Safe",
+      "kind": "requirement",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.RequirementsServed",
+      "via": "obligations.Applied"
+    },
+    {
+      "node": "obligations.Served",
+      "kind": "requirement",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.RequirementsServed",
+      "via": "obligations.Applied"
+    },
+    {
+      "node": "obligations.Verified",
+      "kind": "requirement",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.RequirementsServed",
+      "via": "obligations.Applied"
+    },
+    {
+      "node": "rules.Linked",
+      "kind": "requirement",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.RequirementsServed",
+      "via": "obligations.Applied"
+    },
+    {
+      "node": "rules.NeverReaches",
+      "kind": "requirement",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.RequirementsServed",
+      "via": "obligations.Applied"
+    },
+    {
+      "node": "rules.Reaches",
+      "kind": "requirement",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.RequirementsServed",
+      "via": "obligations.Applied"
+    },
+    {
+      "node": "rules.WithoutEffects",
+      "kind": "requirement",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.RequirementsServed",
+      "via": "obligations.Applied"
+    },
+    {
+      "node": "rules.WordsOf",
+      "kind": "requirement",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.RequirementsServed",
+      "via": "obligations.Applied"
+    }
+  ],
+  "deployed": []
+}

@@ -116,7 +116,7 @@ The current time.
 
 - Owner: karim
 - Effects: time
-- Used by: [Lead time of a cancellation](api.md#LeadTime)
+- Used by: [Cancel a reservation](api.md#CancelReservation), [Lead time of a cancellation](api.md#LeadTime)
 - Implemented by: [Stopped clock](infra.md#StoppedClock), [System clock](infra.md#SystemClock)
 
 <a id="HttpExposure"></a>

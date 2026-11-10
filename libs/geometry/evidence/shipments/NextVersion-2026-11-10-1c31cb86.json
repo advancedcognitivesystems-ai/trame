@@ -1,0 +1,98 @@
+{
+  "shipment": "sdlc.NextVersion",
+  "title": "The next version",
+  "target": "version",
+  "at": "2026-11-10",
+  "by": "claude",
+  "signature": "attribution",
+  "artifacts": [
+    {
+      "node": "sdlc.TheLibrary",
+      "path": "src",
+      "fingerprint": "d8b2c17306d579baa8c70bec5be06ba4d85373de4c3aeaf3023163b07e3ab4e5"
+    }
+  ],
+  "foundations": {
+    "problems": 0
+  },
+  "obligations": [
+    {
+      "node": "sdlc.TheLibrary",
+      "kind": "artifact",
+      "status": "held",
+      "owner": "ghalaax",
+      "evidence": [
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-04",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "fe4a1db271b50918ff66d8adf796cd983ed6c019f51d27a13f47285aa71e8d36",
+          "code": "0afb13b4",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "22c1402e36086e44",
+          "seal": "286c2c1d9193280ad27ab8aa2ea35104024acf017bf0e6e527453b42eb0233b3"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-04",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "ab93a186a1b7213e7e401776699f4131b975a859f1b6439870312ae7d74e8bb1",
+          "code": "9799f949",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "8a22dee5b7b11c79",
+          "seal": "94535fb0d1151e68f3fd406f344880ac0a1244103501d05b2c1928e70d95dcdd"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-08",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "d98e1d9d14622644fa40ff0933610b21ede0a0a8eeb70bf256f8eda0058769dc",
+          "code": "6c25af20",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "929db2ea12c1f779",
+          "seal": "95b95ecd3b26361aa596f577ccd6cc5985008d055f423325e61c3d99bf28f7bd"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-09",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "40466da8b5a668cda256e0a98913df67fbd6d94a2652ec3e589424d465bf1f73",
+          "code": "3975ee9c",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "1a5d45f02c610d51",
+          "seal": "e8b50429ef06e048d4dead113327f15e65be3d4602c662e6139145cc9319ba6b"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-10",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "d8b2c17306d579baa8c70bec5be06ba4d85373de4c3aeaf3023163b07e3ab4e5",
+          "code": "ec0abedf",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "59f20aefeccfc914",
+          "seal": "46c3e8fcc6530ead0726b10772cf9ff6891621e919bd8e2d232f630d34c24283"
+        }
+      ]
+    },
+    {
+      "node": "vectors.VectorsAsTriples",
+      "kind": "adr",
+      "status": "held",
+      "owner": "ghalaax",
+      "evidence": [],
+      "obligation": "sdlc.DecisionsApplied",
+      "via": "angles.Angle"
+    }
+  ],
+  "deployed": []
+}

@@ -45,19 +45,20 @@ The chargers a slot is reserved on, as a reservation keeps them.
 
 ### The refund of a cancelled reservation
 
-`KeptRefund` · `src/data.ts:48` · status: **held**
+`KeptRefund` · `src/data.ts:49` · status: **held**
 
-Found by its reservation: the amount refunded, and the provider's reference for it.
+Found by its reservation: the amount refunded, the provider's reference for it, and the instant it was recorded (ISO 8601), which the refunds recorded before it was kept do not say.
 
-3 fields, found by `reservation`.
+4 fields, found by `reservation`.
 
 | Field | Type |
 |---|---|
 | `reservation` | the key of another entity in [A reservation](#KeptReservation) |
 | `amount` | a number in [Swiss francs](cancellation.md#SwissFrancs) |
 | `reference` | a text |
+| `at` | a text, optional |
 
-Version `af743efb`; never deployed.
+Version `a2c32e34`; never deployed.
 
 - Owner: karim
 - Kept as: refunds
