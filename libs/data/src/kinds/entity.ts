@@ -5,7 +5,7 @@
 // the library of data (A5): a project that imports the library writes entities.
 
 import {
-  defineKind, field, optional, optionalEdge, edge, hole, doc, keysOf, fieldsOf, isNode, KindName, EdgeName, EvidenceSource, Status,
+  defineKind, field, optional, optionalEdge, edge, hole, doc, keysOf, fieldsOf, isNode, KindName, EdgeName, EvidenceSource, ShipmentEdge, Status,
   type AnyNode, type Graph, type Inline, type Lib, type Node, type Provides, type Quantity, type View,
 } from "#trame/kernel"
 import { vocabularyKind } from "#trame/kinds/vocabulary"
@@ -270,7 +270,12 @@ const computed = (self: View, g: Graph): Result => {
   }
   const version = lib.fingerprint?.(deployed) ?? lib.texts.empty
   const changes = self.field(F.changes)
-  const records = self.evidence.filter((e) => e.source === EvidenceSource.shipped && isPlain(e.kept, lib))
+  // What a shipment that deploys nothing kept (a library's version) is stored nowhere: only a deployment counts.
+  const deploys = (ref: string | undefined) => {
+    const shipment = ref === undefined ? undefined : g.node(ref).first()
+    return shipment?.kind !== KindName.shipment || g.from(shipment).out(ShipmentEdge.deploys).exists()
+  }
+  const records = self.evidence.filter((e) => e.source === EvidenceSource.shipped && isPlain(e.kept, lib) && deploys(e.subject))
   const kept: { version: string; at: string; description: Description }[] = []
   for (const e of [...records].sort((a, b) => a.at.localeCompare(b.at))) {
     const description = e.kept as Description

@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-09",
+  "at": "2026-11-10",
   "nodes": [
     {
       "id": "documents.Conforms",
@@ -173,6 +173,194 @@
       }
     },
     {
+      "id": "records.InitialRecords",
+      "kind": "port",
+      "title": "What a new table starts with",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": []
+      }
+    },
+    {
+      "id": "records.PostgresTables",
+      "kind": "function",
+      "title": "PostgreSQL's tables",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "types": "sql.PostgresSql",
+          "parameter": "sql.PostgresParameter",
+          "definition": "sql.ColumnDefinition",
+          "createTable": "sql.CreateTable",
+          "countRows": "sql.CountRows",
+          "insertRow": "sql.InsertRow",
+          "selectRows": "sql.SelectRows",
+          "updateRows": "sql.UpdateRows",
+          "deleteRows": "sql.DeleteRows",
+          "addColumn": "sql.AddColumn",
+          "renameColumn": "sql.RenameColumn",
+          "dropColumn": "sql.DropColumn",
+          "columnEquals": "sql.ColumnEquals",
+          "isNull": "sql.ColumnIsNull",
+          "commands": "std/effects.Commands",
+          "versions": "records.VersionsTable",
+          "counts": "std/algebra.Counts"
+        },
+        "body": {
+          "file": "./code/tables.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
+      "id": "records.Records",
+      "kind": "port",
+      "title": "Records",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": {
+          "find": [
+            "read"
+          ],
+          "insert": [
+            "write"
+          ],
+          "update": [
+            "write"
+          ],
+          "count": [
+            "read"
+          ],
+          "transaction": [
+            "write"
+          ]
+        }
+      }
+    },
+    {
+      "id": "records.RecordsInSql",
+      "kind": "function",
+      "title": "Records in SQL",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "database": "records.SqlDatabase",
+          "dialect": "records.TableDialect",
+          "initial": "records.InitialRecords",
+          "versions": "records.VersionsTable",
+          "conforms": "documents.Conforms",
+          "values": "std/algebra.ValueTypes",
+          "counts": "std/algebra.Counts"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "records.SqlDatabase",
+      "kind": "port",
+      "title": "A database of SQL",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": {
+          "read": [
+            "read"
+          ],
+          "write": [
+            "write"
+          ],
+          "transaction": [
+            "write"
+          ]
+        }
+      }
+    },
+    {
+      "id": "records.SqliteInMemory",
+      "kind": "implementation",
+      "title": "SQLite in memory",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "sqlite": "sql.Sqlite"
+        },
+        "body": {
+          "file": "./code/sqlite.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
+      "id": "records.SqliteTables",
+      "kind": "function",
+      "title": "SQLite's tables",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "types": "sql.SqliteSql",
+          "parameter": "sql.SqliteParameter",
+          "definition": "sql.ColumnDefinition",
+          "createTable": "sql.CreateTable",
+          "countRows": "sql.CountRows",
+          "insertRow": "sql.InsertRow",
+          "selectRows": "sql.SelectRows",
+          "updateRows": "sql.UpdateRows",
+          "deleteRows": "sql.DeleteRows",
+          "addColumn": "sql.AddColumn",
+          "renameColumn": "sql.RenameColumn",
+          "dropColumn": "sql.DropColumn",
+          "columnEquals": "sql.ColumnEquals",
+          "isNull": "sql.ColumnIsNull",
+          "commands": "std/effects.Commands",
+          "versions": "records.VersionsTable",
+          "counts": "std/algebra.Counts"
+        },
+        "body": {
+          "file": "./code/tables.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
+      "id": "records.StartEmpty",
+      "kind": "function",
+      "title": "No records to start with",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "records.TableDialect",
+      "kind": "port",
+      "title": "A dialect of SQL, for tables",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": []
+      }
+    },
+    {
+      "id": "records.VersionsTable",
+      "kind": "decision",
+      "title": "The table of versions",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "name": "data_versions",
+          "entity": "entity",
+          "version": "version",
+          "count": "n"
+        },
+        "rejected": {
+          "A version in each table": "a table would gain a column that is not the entity's"
+        }
+      }
+    },
+    {
       "id": "releases.R0_1_0",
       "kind": "release",
       "title": "Version 0.1.0",
@@ -251,7 +439,70 @@
               "shelf": "lost"
             }
           ],
-          "unknown": "a version nobody deployed"
+          "unknown": "a version nobody deployed",
+          "table": {
+            "version": "an older version",
+            "fields": {
+              "heading": {
+                "type": "text"
+              },
+              "pages": {
+                "type": "number"
+              },
+              "shelf": {
+                "type": "text"
+              },
+              "mood": {
+                "type": "text"
+              }
+            },
+            "key": "heading",
+            "row": [
+              "Middlemarch",
+              880,
+              "reading",
+              "patient"
+            ],
+            "steps": [
+              {
+                "op": "rename",
+                "field": "title",
+                "from": "heading"
+              },
+              {
+                "op": "drop",
+                "field": "mood"
+              },
+              {
+                "op": "add",
+                "field": "lent"
+              }
+            ],
+            "other": {
+              "title": "Persuasion",
+              "pages": 249,
+              "shelf": "read"
+            },
+            "pages": 250,
+            "count": 2,
+            "wrong": {
+              "title": "Lost Illusions",
+              "row": [
+                "Lost Illusions",
+                780,
+                "lost",
+                null
+              ]
+            }
+          },
+          "postgres": {
+            "create": "CREATE TABLE IF NOT EXISTS books (title TEXT PRIMARY KEY, pages DOUBLE PRECISION NOT NULL, shelf TEXT NOT NULL, lent INTEGER)",
+            "find": "SELECT title, pages, shelf, lent FROM books WHERE title = $1",
+            "update": "UPDATE books SET pages = $1 WHERE title = $2",
+            "add": "ALTER TABLE books ADD COLUMN lent INTEGER",
+            "exists": "SELECT table_name FROM information_schema.tables WHERE table_name = $1",
+            "field": "pages"
+          }
         }
       }
     },
@@ -281,6 +532,51 @@
       "fields": {
         "owner": "trame",
         "context": "The library's documents are read and written as a product's would be, the device in memory."
+      }
+    },
+    {
+      "id": "scenarios.PostgresStatements",
+      "kind": "scenario",
+      "title": "PostgreSQL's statements",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "postgres": "records.PostgresTables",
+          "book": "shelves.Book",
+          "given": "scenarios.DataGiven",
+          "checks": "scenarios.DataChecks"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "scenarios.RecordsKept",
+      "kind": "scenario",
+      "title": "Records kept in SQL",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "records": "records.Records",
+          "database": "records.SqlDatabase",
+          "dialect": "records.TableDialect",
+          "versions": "records.VersionsTable",
+          "book": "shelves.Book",
+          "given": "scenarios.DataGiven",
+          "checks": "scenarios.DataChecks"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "scenarios.SqliteForScenarios",
+      "kind": "binding",
+      "title": "SQLite, in memory",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "Records are written, migrated and read by SQLite itself, as a product's would be, and nothing is left behind."
       }
     },
     {
@@ -318,7 +614,7 @@
       "id": "sdlc.NextVersion",
       "kind": "shipment",
       "title": "The next version",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "version"
@@ -344,7 +640,7 @@
       "id": "sdlc.TheLibrary",
       "kind": "artifact",
       "title": "The library of data",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "src",
@@ -384,7 +680,8 @@
             }
           }
         },
-        "keptAs": "data.book"
+        "key": "title",
+        "keptAs": "books"
       }
     },
     {
@@ -397,6 +694,655 @@
           "reading": "Being read",
           "read": "Read"
         }
+      }
+    },
+    {
+      "id": "sql.AddColumn",
+      "kind": "syntax",
+      "title": "A column added",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "ALTER TABLE … ADD COLUMN",
+        "constants": {},
+        "deps": {
+          "standard": "sql.Sql"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "refunds",
+              "at TEXT"
+            ],
+            "output": "ALTER TABLE refunds ADD COLUMN at TEXT"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sql.ColumnDefinition",
+      "kind": "syntax",
+      "title": "Column definition",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "CREATE TABLE: column definitions and constraints",
+        "constants": {},
+        "deps": {
+          "standard": "sql.Sql"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "id",
+              "TEXT",
+              true,
+              true
+            ],
+            "output": "id TEXT PRIMARY KEY"
+          },
+          {
+            "input": [
+              "price",
+              "REAL",
+              false,
+              true
+            ],
+            "output": "price REAL NOT NULL"
+          },
+          {
+            "input": [
+              "at",
+              "TEXT",
+              false,
+              false
+            ],
+            "output": "at TEXT"
+          },
+          {
+            "input": [
+              "reservation",
+              "TEXT",
+              true,
+              true,
+              {
+                "table": "reservations",
+                "column": "id"
+              }
+            ],
+            "output": "reservation TEXT PRIMARY KEY REFERENCES reservations(id)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sql.ColumnEquals",
+      "kind": "syntax",
+      "title": "Condition on a column",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "Comparison predicates",
+        "constants": {},
+        "deps": {
+          "standard": "sql.Sql"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "id",
+              "?"
+            ],
+            "output": "id = ?"
+          },
+          {
+            "input": [
+              "id",
+              "$2"
+            ],
+            "output": "id = $2"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sql.ColumnIsNull",
+      "kind": "syntax",
+      "title": "A column with no value",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "Null predicate",
+        "constants": {},
+        "deps": {
+          "standard": "sql.Sql"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "at"
+            ],
+            "output": "at IS NULL"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sql.CountRows",
+      "kind": "syntax",
+      "title": "Count",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "SELECT with an aggregate function",
+        "constants": {},
+        "deps": {
+          "standard": "sql.Sql"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "reservations",
+              "n"
+            ],
+            "output": "SELECT count(*) AS n FROM reservations"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sql.CreateTable",
+      "kind": "syntax",
+      "title": "Table creation",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "CREATE TABLE",
+        "constants": {},
+        "deps": {
+          "standard": "sql.Sql",
+          "list": "sql.SqlList"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "refunds",
+              [
+                "reservation TEXT PRIMARY KEY",
+                "amount REAL NOT NULL"
+              ]
+            ],
+            "output": "CREATE TABLE IF NOT EXISTS refunds (reservation TEXT PRIMARY KEY, amount REAL NOT NULL)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sql.DeleteRows",
+      "kind": "syntax",
+      "title": "Deletion",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "DELETE",
+        "constants": {},
+        "deps": {
+          "standard": "sql.Sql"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "data_versions",
+              "entity = ?"
+            ],
+            "output": "DELETE FROM data_versions WHERE entity = ?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sql.DropColumn",
+      "kind": "syntax",
+      "title": "A column dropped",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "ALTER TABLE … DROP COLUMN",
+        "constants": {},
+        "deps": {
+          "standard": "sql.Sql"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "notes",
+              "mood"
+            ],
+            "output": "ALTER TABLE notes DROP COLUMN mood"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sql.InsertRow",
+      "kind": "syntax",
+      "title": "Insertion",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "INSERT",
+        "constants": {},
+        "deps": {
+          "standard": "sql.Sql",
+          "list": "sql.SqlList"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "refunds",
+              [
+                "reservation",
+                "amount"
+              ],
+              [
+                "?",
+                "?"
+              ]
+            ],
+            "output": "INSERT INTO refunds (reservation, amount) VALUES (?, ?)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sql.PostgresParameter",
+      "kind": "syntax",
+      "title": "PostgreSQL parameter",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "Positional parameters ($n)",
+        "constants": {},
+        "deps": {
+          "standard": "sql.PostgresSql"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              0
+            ],
+            "output": "$1"
+          },
+          {
+            "input": [
+              2
+            ],
+            "output": "$3"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sql.PostgresSql",
+      "kind": "standard",
+      "title": "PostgreSQL's dialect",
+      "fields": {
+        "owner": "trame",
+        "source": "PostgreSQL: Value Expressions, Positional Parameters ($n); Numeric Types (double precision, integer); Character Types (text); The Information Schema (tables)",
+        "url": "https://www.postgresql.org/docs/current/sql-expressions.html#SQL-EXPRESSIONS-PARAMETERS-POSITIONAL",
+        "constants": {
+          "parameter": {
+            "value": "$",
+            "meaning": "Opens a positional parameter: then its position"
+          },
+          "first": {
+            "value": 1,
+            "meaning": "The position of the first parameter"
+          },
+          "text": {
+            "value": "TEXT",
+            "meaning": "The type of a column of text"
+          },
+          "number": {
+            "value": "DOUBLE PRECISION",
+            "meaning": "The type of a column of numbers (an 8-byte floating point number, as SQLite's REAL)"
+          },
+          "integer": {
+            "value": "INTEGER",
+            "meaning": "The type of a column of whole numbers (yes or no, as 1 or 0)"
+          },
+          "exists": {
+            "value": "SELECT table_name FROM information_schema.tables WHERE table_name = $1",
+            "meaning": "The name of the table of this name, if there is one"
+          }
+        }
+      }
+    },
+    {
+      "id": "sql.RenameColumn",
+      "kind": "syntax",
+      "title": "A column renamed",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "ALTER TABLE … RENAME COLUMN",
+        "constants": {},
+        "deps": {
+          "standard": "sql.Sql"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "notes",
+              "heading",
+              "title"
+            ],
+            "output": "ALTER TABLE notes RENAME COLUMN heading TO title"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sql.SelectRows",
+      "kind": "syntax",
+      "title": "Selection",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "SELECT",
+        "constants": {},
+        "deps": {
+          "standard": "sql.Sql",
+          "list": "sql.SqlList"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              [
+                "id",
+                "status"
+              ],
+              "reservations",
+              "id = ?"
+            ],
+            "output": "SELECT id, status FROM reservations WHERE id = ?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sql.Sql",
+      "kind": "standard",
+      "title": "SQL",
+      "fields": {
+        "owner": "trame",
+        "source": "ISO/IEC 9075 (SQL): SELECT, INSERT, UPDATE, DELETE, CREATE TABLE, ALTER TABLE; CREATE TABLE IF NOT EXISTS and ALTER TABLE … RENAME COLUMN, … DROP COLUMN, as SQLite (3.35 on) and PostgreSQL both accept them",
+        "url": "https://www.postgresql.org/docs/current/sql-commands.html",
+        "constants": {
+          "space": {
+            "value": " ",
+            "meaning": "Separates the words of a statement"
+          },
+          "comma": {
+            "value": ",",
+            "meaning": "Separates the items of a list (columns, values, definitions)"
+          },
+          "open": {
+            "value": "(",
+            "meaning": "Opens a list of columns, of values or of definitions"
+          },
+          "close": {
+            "value": ")",
+            "meaning": "Closes it"
+          },
+          "equals": {
+            "value": "=",
+            "meaning": "Compares a column with a value, or gives it one"
+          },
+          "select": {
+            "value": "SELECT",
+            "meaning": "Reads columns"
+          },
+          "from": {
+            "value": "FROM",
+            "meaning": "Names the table read"
+          },
+          "where": {
+            "value": "WHERE",
+            "meaning": "Introduces the condition the rows must meet"
+          },
+          "insertInto": {
+            "value": "INSERT INTO",
+            "meaning": "Adds a row to a table"
+          },
+          "values": {
+            "value": "VALUES",
+            "meaning": "Introduces the values of the row"
+          },
+          "update": {
+            "value": "UPDATE",
+            "meaning": "Changes rows of a table"
+          },
+          "set": {
+            "value": "SET",
+            "meaning": "Introduces the columns changed"
+          },
+          "deleteFrom": {
+            "value": "DELETE FROM",
+            "meaning": "Removes rows of a table"
+          },
+          "createTable": {
+            "value": "CREATE TABLE IF NOT EXISTS",
+            "meaning": "Creates a table, unless it exists"
+          },
+          "alterTable": {
+            "value": "ALTER TABLE",
+            "meaning": "Changes a table"
+          },
+          "addColumn": {
+            "value": "ADD COLUMN",
+            "meaning": "Gives a table a column, empty in every row"
+          },
+          "renameColumn": {
+            "value": "RENAME COLUMN",
+            "meaning": "Gives a column another name, its values kept"
+          },
+          "to": {
+            "value": "TO",
+            "meaning": "Introduces the new name"
+          },
+          "dropColumn": {
+            "value": "DROP COLUMN",
+            "meaning": "Removes a column, and its values"
+          },
+          "primaryKey": {
+            "value": "PRIMARY KEY",
+            "meaning": "The column that identifies a row"
+          },
+          "notNull": {
+            "value": "NOT NULL",
+            "meaning": "A column that always has a value"
+          },
+          "isNull": {
+            "value": "IS NULL",
+            "meaning": "A column that has no value"
+          },
+          "references": {
+            "value": "REFERENCES",
+            "meaning": "A column whose value is the key of a row of another table"
+          },
+          "countAll": {
+            "value": "count(*)",
+            "meaning": "The number of rows"
+          },
+          "as": {
+            "value": "AS",
+            "meaning": "Names a result column"
+          }
+        }
+      }
+    },
+    {
+      "id": "sql.Sqlite",
+      "kind": "standard",
+      "title": "SQLite",
+      "fields": {
+        "owner": "trame",
+        "source": "SQLite: In-Memory Databases; SQL As Understood By SQLite (BEGIN, COMMIT, ROLLBACK); Pragma statements (query_only)",
+        "url": "https://www.sqlite.org/inmemorydb.html",
+        "constants": {
+          "memory": {
+            "value": ":memory:",
+            "meaning": "The name that opens a database in memory, new each time"
+          },
+          "begin": {
+            "value": "BEGIN",
+            "meaning": "Starts a transaction"
+          },
+          "commit": {
+            "value": "COMMIT",
+            "meaning": "Makes its writes last"
+          },
+          "rollback": {
+            "value": "ROLLBACK",
+            "meaning": "Undoes them"
+          },
+          "readOnly": {
+            "value": "PRAGMA query_only = ON",
+            "meaning": "From here on, the connection refuses any statement that would change the database"
+          },
+          "readWrite": {
+            "value": "PRAGMA query_only = OFF",
+            "meaning": "From here on, it accepts them again"
+          }
+        }
+      }
+    },
+    {
+      "id": "sql.SqliteParameter",
+      "kind": "syntax",
+      "title": "SQLite parameter",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "Parameters (?)",
+        "constants": {},
+        "deps": {
+          "standard": "sql.SqliteSql"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              0
+            ],
+            "output": "?"
+          },
+          {
+            "input": [
+              2
+            ],
+            "output": "?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sql.SqliteSql",
+      "kind": "standard",
+      "title": "SQLite's dialect",
+      "fields": {
+        "owner": "trame",
+        "source": "SQLite: SQL As Understood By SQLite, Parameters (?); Datatypes In SQLite (TEXT, REAL, INTEGER); The Schema Table (sqlite_schema)",
+        "url": "https://www.sqlite.org/lang_expr.html#varparam",
+        "constants": {
+          "parameter": {
+            "value": "?",
+            "meaning": "A parameter: the next value given with the statement"
+          },
+          "text": {
+            "value": "TEXT",
+            "meaning": "The type of a column of text"
+          },
+          "number": {
+            "value": "REAL",
+            "meaning": "The type of a column of numbers (an 8-byte floating point number)"
+          },
+          "integer": {
+            "value": "INTEGER",
+            "meaning": "The type of a column of whole numbers (yes or no, as 1 or 0)"
+          },
+          "exists": {
+            "value": "SELECT name FROM sqlite_master WHERE type = 'table' AND name = ?",
+            "meaning": "The name of the table of this name, if there is one"
+          }
+        }
+      }
+    },
+    {
+      "id": "sql.SqlList",
+      "kind": "syntax",
+      "title": "List",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "Lists of columns and values",
+        "constants": {},
+        "deps": {
+          "standard": "sql.Sql"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              [
+                "id",
+                "charger"
+              ]
+            ],
+            "output": "id, charger"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sql.UpdateRows",
+      "kind": "syntax",
+      "title": "Update",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "UPDATE",
+        "constants": {},
+        "deps": {
+          "standard": "sql.Sql",
+          "list": "sql.SqlList"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "reservations",
+              [
+                "status = ?"
+              ],
+              "id = ?"
+            ],
+            "output": "UPDATE reservations SET status = ? WHERE id = ?"
+          }
+        ]
       }
     },
     {
@@ -514,6 +1460,236 @@
       "kind": "appliedBy"
     },
     {
+      "from": "principles.DescribedOnce",
+      "to": "records.RecordsInSql",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "records.PostgresTables",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "records.PostgresTables",
+      "to": "records.TableDialect",
+      "kind": "implements"
+    },
+    {
+      "from": "records.PostgresTables",
+      "to": "sql.PostgresSql",
+      "kind": "deps"
+    },
+    {
+      "from": "records.PostgresTables",
+      "to": "sql.PostgresParameter",
+      "kind": "deps"
+    },
+    {
+      "from": "records.PostgresTables",
+      "to": "sql.ColumnDefinition",
+      "kind": "deps"
+    },
+    {
+      "from": "records.PostgresTables",
+      "to": "sql.CreateTable",
+      "kind": "deps"
+    },
+    {
+      "from": "records.PostgresTables",
+      "to": "sql.CountRows",
+      "kind": "deps"
+    },
+    {
+      "from": "records.PostgresTables",
+      "to": "sql.InsertRow",
+      "kind": "deps"
+    },
+    {
+      "from": "records.PostgresTables",
+      "to": "sql.SelectRows",
+      "kind": "deps"
+    },
+    {
+      "from": "records.PostgresTables",
+      "to": "sql.UpdateRows",
+      "kind": "deps"
+    },
+    {
+      "from": "records.PostgresTables",
+      "to": "sql.DeleteRows",
+      "kind": "deps"
+    },
+    {
+      "from": "records.PostgresTables",
+      "to": "sql.AddColumn",
+      "kind": "deps"
+    },
+    {
+      "from": "records.PostgresTables",
+      "to": "sql.RenameColumn",
+      "kind": "deps"
+    },
+    {
+      "from": "records.PostgresTables",
+      "to": "sql.DropColumn",
+      "kind": "deps"
+    },
+    {
+      "from": "records.PostgresTables",
+      "to": "sql.ColumnEquals",
+      "kind": "deps"
+    },
+    {
+      "from": "records.PostgresTables",
+      "to": "sql.ColumnIsNull",
+      "kind": "deps"
+    },
+    {
+      "from": "records.PostgresTables",
+      "to": "records.VersionsTable",
+      "kind": "deps"
+    },
+    {
+      "from": "records.RecordsInSql",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "records.RecordsInSql",
+      "to": "records.Records",
+      "kind": "implements"
+    },
+    {
+      "from": "records.RecordsInSql",
+      "to": "records.SqlDatabase",
+      "kind": "deps"
+    },
+    {
+      "from": "records.RecordsInSql",
+      "to": "records.TableDialect",
+      "kind": "deps"
+    },
+    {
+      "from": "records.RecordsInSql",
+      "to": "records.InitialRecords",
+      "kind": "deps"
+    },
+    {
+      "from": "records.RecordsInSql",
+      "to": "records.VersionsTable",
+      "kind": "deps"
+    },
+    {
+      "from": "records.RecordsInSql",
+      "to": "documents.Conforms",
+      "kind": "deps"
+    },
+    {
+      "from": "records.SqliteInMemory",
+      "to": "records.SqlDatabase",
+      "kind": "implements"
+    },
+    {
+      "from": "records.SqliteInMemory",
+      "to": "sql.Sqlite",
+      "kind": "deps"
+    },
+    {
+      "from": "records.SqliteTables",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "records.SqliteTables",
+      "to": "records.TableDialect",
+      "kind": "implements"
+    },
+    {
+      "from": "records.SqliteTables",
+      "to": "sql.SqliteSql",
+      "kind": "deps"
+    },
+    {
+      "from": "records.SqliteTables",
+      "to": "sql.SqliteParameter",
+      "kind": "deps"
+    },
+    {
+      "from": "records.SqliteTables",
+      "to": "sql.ColumnDefinition",
+      "kind": "deps"
+    },
+    {
+      "from": "records.SqliteTables",
+      "to": "sql.CreateTable",
+      "kind": "deps"
+    },
+    {
+      "from": "records.SqliteTables",
+      "to": "sql.CountRows",
+      "kind": "deps"
+    },
+    {
+      "from": "records.SqliteTables",
+      "to": "sql.InsertRow",
+      "kind": "deps"
+    },
+    {
+      "from": "records.SqliteTables",
+      "to": "sql.SelectRows",
+      "kind": "deps"
+    },
+    {
+      "from": "records.SqliteTables",
+      "to": "sql.UpdateRows",
+      "kind": "deps"
+    },
+    {
+      "from": "records.SqliteTables",
+      "to": "sql.DeleteRows",
+      "kind": "deps"
+    },
+    {
+      "from": "records.SqliteTables",
+      "to": "sql.AddColumn",
+      "kind": "deps"
+    },
+    {
+      "from": "records.SqliteTables",
+      "to": "sql.RenameColumn",
+      "kind": "deps"
+    },
+    {
+      "from": "records.SqliteTables",
+      "to": "sql.DropColumn",
+      "kind": "deps"
+    },
+    {
+      "from": "records.SqliteTables",
+      "to": "sql.ColumnEquals",
+      "kind": "deps"
+    },
+    {
+      "from": "records.SqliteTables",
+      "to": "sql.ColumnIsNull",
+      "kind": "deps"
+    },
+    {
+      "from": "records.SqliteTables",
+      "to": "records.VersionsTable",
+      "kind": "deps"
+    },
+    {
+      "from": "records.StartEmpty",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "records.StartEmpty",
+      "to": "records.InitialRecords",
+      "kind": "implements"
+    },
+    {
       "from": "releases.R0_1_0",
       "to": "product.DataDescribedOnce",
       "kind": "serves"
@@ -575,11 +1751,136 @@
     },
     {
       "from": "scenarios.InMemory",
+      "to": "records.RecordsInSql",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.InMemory",
+      "to": "records.SqliteTables",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.InMemory",
+      "to": "records.StartEmpty",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.InMemory",
       "to": "scenarios.Test",
       "kind": "environments"
     },
     {
       "from": "scenarios.InMemory",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "scenarios.PostgresStatements",
+      "to": "records.PostgresTables",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.PostgresStatements",
+      "to": "scenarios.Test",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.PostgresStatements",
+      "to": "records.PostgresTables",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PostgresStatements",
+      "to": "shelves.Book",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PostgresStatements",
+      "to": "scenarios.DataGiven",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PostgresStatements",
+      "to": "scenarios.DataChecks",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.RecordsKept",
+      "to": "records.RecordsInSql",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.RecordsKept",
+      "to": "records.SqliteTables",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.RecordsKept",
+      "to": "records.SqliteInMemory",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.RecordsKept",
+      "to": "records.StartEmpty",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.RecordsKept",
+      "to": "documents.Conforms",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.RecordsKept",
+      "to": "scenarios.Test",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.RecordsKept",
+      "to": "records.Records",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.RecordsKept",
+      "to": "records.SqlDatabase",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.RecordsKept",
+      "to": "records.TableDialect",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.RecordsKept",
+      "to": "records.VersionsTable",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.RecordsKept",
+      "to": "shelves.Book",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.RecordsKept",
+      "to": "scenarios.DataGiven",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.RecordsKept",
+      "to": "scenarios.DataChecks",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.SqliteForScenarios",
+      "to": "records.SqliteInMemory",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.SqliteForScenarios",
+      "to": "scenarios.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "scenarios.SqliteForScenarios",
       "to": "product.DataDescribedOnce",
       "kind": "serves"
     },
@@ -642,6 +1943,196 @@
       "from": "shelves.Shelves",
       "to": "product.DataDescribedOnce",
       "kind": "serves"
+    },
+    {
+      "from": "sql.AddColumn",
+      "to": "sql.Sql",
+      "kind": "standard"
+    },
+    {
+      "from": "sql.AddColumn",
+      "to": "sql.Sql",
+      "kind": "deps"
+    },
+    {
+      "from": "sql.ColumnDefinition",
+      "to": "sql.Sql",
+      "kind": "standard"
+    },
+    {
+      "from": "sql.ColumnDefinition",
+      "to": "sql.Sql",
+      "kind": "deps"
+    },
+    {
+      "from": "sql.ColumnEquals",
+      "to": "sql.Sql",
+      "kind": "standard"
+    },
+    {
+      "from": "sql.ColumnEquals",
+      "to": "sql.Sql",
+      "kind": "deps"
+    },
+    {
+      "from": "sql.ColumnIsNull",
+      "to": "sql.Sql",
+      "kind": "standard"
+    },
+    {
+      "from": "sql.ColumnIsNull",
+      "to": "sql.Sql",
+      "kind": "deps"
+    },
+    {
+      "from": "sql.CountRows",
+      "to": "sql.Sql",
+      "kind": "standard"
+    },
+    {
+      "from": "sql.CountRows",
+      "to": "sql.Sql",
+      "kind": "deps"
+    },
+    {
+      "from": "sql.CreateTable",
+      "to": "sql.Sql",
+      "kind": "standard"
+    },
+    {
+      "from": "sql.CreateTable",
+      "to": "sql.Sql",
+      "kind": "deps"
+    },
+    {
+      "from": "sql.CreateTable",
+      "to": "sql.SqlList",
+      "kind": "deps"
+    },
+    {
+      "from": "sql.DeleteRows",
+      "to": "sql.Sql",
+      "kind": "standard"
+    },
+    {
+      "from": "sql.DeleteRows",
+      "to": "sql.Sql",
+      "kind": "deps"
+    },
+    {
+      "from": "sql.DropColumn",
+      "to": "sql.Sql",
+      "kind": "standard"
+    },
+    {
+      "from": "sql.DropColumn",
+      "to": "sql.Sql",
+      "kind": "deps"
+    },
+    {
+      "from": "sql.InsertRow",
+      "to": "sql.Sql",
+      "kind": "standard"
+    },
+    {
+      "from": "sql.InsertRow",
+      "to": "sql.Sql",
+      "kind": "deps"
+    },
+    {
+      "from": "sql.InsertRow",
+      "to": "sql.SqlList",
+      "kind": "deps"
+    },
+    {
+      "from": "sql.PostgresParameter",
+      "to": "sql.PostgresSql",
+      "kind": "standard"
+    },
+    {
+      "from": "sql.PostgresParameter",
+      "to": "sql.PostgresSql",
+      "kind": "deps"
+    },
+    {
+      "from": "sql.PostgresSql",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "sql.RenameColumn",
+      "to": "sql.Sql",
+      "kind": "standard"
+    },
+    {
+      "from": "sql.RenameColumn",
+      "to": "sql.Sql",
+      "kind": "deps"
+    },
+    {
+      "from": "sql.SelectRows",
+      "to": "sql.Sql",
+      "kind": "standard"
+    },
+    {
+      "from": "sql.SelectRows",
+      "to": "sql.Sql",
+      "kind": "deps"
+    },
+    {
+      "from": "sql.SelectRows",
+      "to": "sql.SqlList",
+      "kind": "deps"
+    },
+    {
+      "from": "sql.Sql",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "sql.Sqlite",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "sql.SqliteParameter",
+      "to": "sql.SqliteSql",
+      "kind": "standard"
+    },
+    {
+      "from": "sql.SqliteParameter",
+      "to": "sql.SqliteSql",
+      "kind": "deps"
+    },
+    {
+      "from": "sql.SqliteSql",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "sql.SqlList",
+      "to": "sql.Sql",
+      "kind": "standard"
+    },
+    {
+      "from": "sql.SqlList",
+      "to": "sql.Sql",
+      "kind": "deps"
+    },
+    {
+      "from": "sql.UpdateRows",
+      "to": "sql.Sql",
+      "kind": "standard"
+    },
+    {
+      "from": "sql.UpdateRows",
+      "to": "sql.Sql",
+      "kind": "deps"
+    },
+    {
+      "from": "sql.UpdateRows",
+      "to": "sql.SqlList",
+      "kind": "deps"
     },
     {
       "from": "shelves.Book",

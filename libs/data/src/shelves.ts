@@ -15,11 +15,13 @@ export const Shelves = vocabulary({ owner: "trame", words: { reading: "Being rea
 
 /**
  * A book
- * An entity of the library's scenarios: a title, its pages, where it stands, whether it was lent.
+ * An entity of the library's scenarios: a title (which finds it among others), its pages, where it stands, whether it
+ * was lent.
  */
 export const Book = entity({
   owner: "trame",
-  keptAs: "data.book",
+  keptAs: "books",
+  key: "title",
   fields: { title: stored.text(), pages: stored.number(), shelf: stored.word(Shelves), lent: stored.optional(stored.flag()) },
   serves: [DataDescribedOnce],
 })

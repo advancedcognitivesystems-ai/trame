@@ -4,6 +4,7 @@ import { adr } from "#trame/kinds/adr"
 import { DataDescribedOnce } from "./product"
 import { Migrated } from "./obligations"
 import { Conforms, Migrate, DocumentsInPreferences } from "./documents"
+import { RecordsInSql } from "./records"
 
 /**
  * An entity is described once
@@ -20,5 +21,5 @@ export const DescribedOnce = adr({
     "The kind in the language itself": "storing data is the concern of the products that keep some (A5): a library they import",
   },
   serves: [DataDescribedOnce],
-  appliedBy: [Migrated, Migrate, Conforms, DocumentsInPreferences],
+  appliedBy: [Migrated, Migrate, Conforms, DocumentsInPreferences, RecordsInSql],
 })

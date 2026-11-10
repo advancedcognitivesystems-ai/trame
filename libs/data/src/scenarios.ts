@@ -7,10 +7,11 @@ import { catalog } from "#trame/kinds/catalog"
 import { scenario } from "#trame/kinds/scenario"
 import { MemoryPreferences, PreferencesStore } from "#std/platform"
 import { SymbolsLanguage } from "#std/measures"
-import { Strategy } from "#std/patterns"
+import { Strategy, Adapter } from "#std/patterns"
 import type { Model } from "./kinds/entity"
 import { Book } from "./shelves"
 import { Documents, DocumentsInPreferences, DocumentForm, Migrate, Conforms } from "./documents"
+import { Records, RecordsInSql, SqliteTables, PostgresTables, SqliteInMemory, StartEmpty, SqlDatabase, TableDialect, VersionsTable } from "./records"
 import { DataDescribedOnce } from "./product"
 
 // What the library offers is code like the rest: its documents are played here, kept in the preferences of a device in
@@ -29,11 +30,24 @@ export const Test = environment({ owner: "trame", evaluates: true })
  */
 export const InMemory = binding({
   owner: "trame",
-  chooses: [MemoryPreferences, DocumentsInPreferences],
+  chooses: [MemoryPreferences, DocumentsInPreferences, RecordsInSql, SqliteTables, StartEmpty],
   environments: [Test],
   follows: [Strategy],
   serves: [DataDescribedOnce],
   context: "The library's documents are read and written as a product's would be, the device in memory.",
+})
+
+/**
+ * SQLite, in memory
+ * In the library's scenarios, the records of an entity live in a SQLite database kept in memory.
+ */
+export const SqliteForScenarios = binding({
+  owner: "trame",
+  chooses: [SqliteInMemory],
+  environments: [Test],
+  follows: [Adapter],
+  serves: [DataDescribedOnce],
+  context: "Records are written, migrated and read by SQLite itself, as a product's would be, and nothing is left behind.",
 })
 
 /**
@@ -49,6 +63,12 @@ export const DataChecks = catalog({
     notConforming: () => "A document that does not keep its description is nothing: a number written as a text, a word of no vocabulary",
     unknownVersion: () => "A document of a version nothing migrates from is nothing",
     cleared: () => "A document cleared is nothing",
+    recordFound: () => "A record inserted is found by its key, as it was; the table counts it",
+    recordUpdated: () => "A record updated takes its new values, and keeps the others",
+    tableMigrated: () => "A table of a version deployed is migrated the first time it is used: a column renamed (its key), one dropped, one added; its rows read as the description is now, and the version kept is this one",
+    transactionUndone: () => "A transaction that fails writes nothing",
+    rowNotConforming: () => "A row that does not keep its description is nothing",
+    postgresWrites: () => "PostgreSQL's statements name their parameters by position, type a number as double precision, and ask the information schema whether a table exists",
   }),
 })
 
@@ -62,6 +82,20 @@ export const DataGiven = decision<{
   older: { version: string; value: Record<string, unknown>; steps: { op: string; field: string; from?: string }[] }
   wrong: Record<string, unknown>[]
   unknown: string
+  /** A table as an older version described it: its columns, its key, a row; the steps from it; a row stored wrong. */
+  table: {
+    version: string
+    fields: Record<string, { type: string; of?: { type: string } }>
+    key: string
+    row: unknown[]
+    steps: { op: string; field: string; from?: string }[]
+    other: { title: string; pages: number; shelf: "reading" | "read" }
+    pages: number
+    count: number
+    wrong: { title: string; row: (string | number | null)[] }
+  }
+  /** What PostgreSQL's tables write for the book: its table, a book found, updated, a column added, whether it exists. */
+  postgres: { create: string; find: string; update: string; add: string; exists: string; field: string }
 }>({
   owner: "trame",
   value: {
@@ -73,6 +107,25 @@ export const DataGiven = decision<{
     },
     wrong: [{ title: "Middlemarch", pages: "eight hundred", shelf: "reading" }, { title: "Middlemarch", pages: 880, shelf: "lost" }],
     unknown: "a version nobody deployed",
+    table: {
+      version: "an older version",
+      fields: { heading: { type: "text" }, pages: { type: "number" }, shelf: { type: "text" }, mood: { type: "text" } },
+      key: "heading",
+      row: ["Middlemarch", 880, "reading", "patient"],
+      steps: [{ op: "rename", field: "title", from: "heading" }, { op: "drop", field: "mood" }, { op: "add", field: "lent" }],
+      other: { title: "Persuasion", pages: 249, shelf: "read" },
+      pages: 250,
+      count: 2,
+      wrong: { title: "Lost Illusions", row: ["Lost Illusions", 780, "lost", null] },
+    },
+    postgres: {
+      create: "CREATE TABLE IF NOT EXISTS books (title TEXT PRIMARY KEY, pages DOUBLE PRECISION NOT NULL, shelf TEXT NOT NULL, lent INTEGER)",
+      find: "SELECT title, pages, shelf, lent FROM books WHERE title = $1",
+      update: "UPDATE books SET pages = $1 WHERE title = $2",
+      add: "ALTER TABLE books ADD COLUMN lent INTEGER",
+      exists: "SELECT table_name FROM information_schema.tables WHERE table_name = $1",
+      field: "pages",
+    },
   },
 })
 
@@ -109,5 +162,70 @@ export const DocumentsKept = scenario({
     documents.write(book, given.book)
     documents.clear(book)
     check(checks.cleared(), documents.read(book) === undefined)
+  },
+})
+
+/**
+ * Records kept in SQL
+ * In a SQLite database in memory: a table of an older version (its key called otherwise, a column more, one less) is
+ * migrated the first time it is used, and its row read as the description is now; a record inserted is found and
+ * counted; one updated keeps what it did not change; a transaction that fails writes nothing; a row that does not keep
+ * its description is nothing.
+ */
+export const RecordsKept = scenario({
+  owner: "trame",
+  verifies: [RecordsInSql, SqliteTables, SqliteInMemory, StartEmpty, Conforms],
+  env: Test,
+  deps: {
+    records: Records, database: SqlDatabase, dialect: TableDialect, versions: VersionsTable, book: Book, given: DataGiven,
+    checks: DataChecks,
+  },
+  body: ({ records, database, dialect, versions, book, given, checks }) => async (check) => {
+    const sorted = (v: unknown) => JSON.stringify(Object.entries(v ?? {}).sort(([a], [b]) => a.localeCompare(b)))
+    const same = (a: unknown, b: unknown) => sorted(a) === sorted(b)
+    // The table as an older version made it, with its row, and that version kept.
+    const { table } = given
+    const older = { ...book, fields: table.fields, key: table.key } as unknown as Model
+    await database.write(dialect.create(older))
+    await database.write(dialect.insert(older), ...(table.row as (string | number)[]))
+    await database.write(dialect.versions.create())
+    await database.write(dialect.versions.write(), book.name, table.version)
+    const migrated: Model = { ...book, migrations: [{ from: table.version, steps: table.steps }] }
+    const now = migrated as typeof book
+    const found = await records.find(now, given.book.title)
+    const [kept] = await database.read<Record<string, unknown>>(dialect.versions.read(), book.name)
+    check(checks.tableMigrated(), same(found, given.book) && kept?.[versions.version] === book.version)
+    await records.insert(now, table.other)
+    check(checks.recordFound(), same(await records.find(now, table.other.title), table.other) && (await records.count(now)) === table.count)
+    await records.update(now, table.other.title, { pages: table.pages })
+    check(checks.recordUpdated(), same(await records.find(now, table.other.title), { ...table.other, pages: table.pages }))
+    const before = await records.count(now)
+    await records.transaction(async () => {
+      await records.insert(now, { ...table.other, title: book.name })
+      throw new Error(book.name)
+    }).catch(() => undefined)
+    check(checks.transactionUndone(), (await records.count(now)) === before)
+    await database.write(dialect.insert(now), ...table.wrong.row)
+    check(checks.rowNotConforming(), (await records.find(now, table.wrong.title)) === undefined)
+  },
+})
+
+/**
+ * PostgreSQL's statements
+ * The statements PostgreSQL's tables write for the book, read as they are: its table created, a book found by its title
+ * and updated (parameters by position), a column added, whether a table exists.
+ */
+export const PostgresStatements = scenario({
+  owner: "trame",
+  verifies: [PostgresTables],
+  env: Test,
+  deps: { postgres: PostgresTables, book: Book, given: DataGiven, checks: DataChecks },
+  body: ({ postgres, book, given, checks }) => async (check) => {
+    const { names } = book
+    const written = [
+      postgres.create(book), postgres.find(book), postgres.update(book, [given.postgres.field]), postgres.addColumn(book, names.lent), postgres.exists(book),
+    ]
+    const expected = [given.postgres.create, given.postgres.find, given.postgres.update, given.postgres.add, given.postgres.exists]
+    check(checks.postgresWrites(), written.join() === expected.join())
   },
 })

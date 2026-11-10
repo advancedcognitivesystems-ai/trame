@@ -1,12 +1,12 @@
 # Architecture decisions
 
-*The choices that shape the product without being values, in force on 9 November 2026: why each was taken, what was rejected, and the nodes that apply it.*
+*The choices that shape the product without being values, in force on 10 November 2026: why each was taken, what was rejected, and the nodes that apply it.*
 
 > **1 architecture decision, 1 held by the nodes that apply them**
 
 | Decision | Status | Applied by |
 |---|---|---|
-| [An entity is described once](principles.md#DescribedOnce) | **held** | [A value of the description it is of](documents.md#Conforms), [Documents kept in the preferences](documents.md#DocumentsInPreferences), [A value migrated](documents.md#Migrate), [What a shipment stores migrates](obligations.md#Migrated) |
+| [An entity is described once](principles.md#DescribedOnce) | **held** | [A value of the description it is of](documents.md#Conforms), [Documents kept in the preferences](documents.md#DocumentsInPreferences), [A value migrated](documents.md#Migrate), [What a shipment stores migrates](obligations.md#Migrated), [Records in SQL](records.md#RecordsInSql) |
 
 ## Data · Principles
 
@@ -14,7 +14,7 @@
 
 ### An entity is described once
 
-`DescribedOnce` · `src/principles.ts:13` · status: **held**
+`DescribedOnce` · `src/principles.ts:14` · status: **held**
 
 The data a product keeps outside the graph is a kind of node, carried by this library: its description is the one source of its type, its names, its stored form, its reading and its migrations.
 
@@ -30,4 +30,4 @@ Consequences: A project that imports the library writes entities: their fields, 
 
 - Decided by: trame
 - Serves: [Data described once](product.md#DataDescribedOnce)
-- Applied by: [What a shipment stores migrates](obligations.md#Migrated), [A value migrated](documents.md#Migrate), [A value of the description it is of](documents.md#Conforms), [Documents kept in the preferences](documents.md#DocumentsInPreferences)
+- Applied by: [What a shipment stores migrates](obligations.md#Migrated), [A value migrated](documents.md#Migrate), [A value of the description it is of](documents.md#Conforms), [Documents kept in the preferences](documents.md#DocumentsInPreferences), [Records in SQL](records.md#RecordsInSql)
