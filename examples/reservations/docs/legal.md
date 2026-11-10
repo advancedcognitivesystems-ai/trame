@@ -8,7 +8,7 @@
 
 | Severity | What | Where | Owner | Consequence |
 |---|---|---|---|---|
-| blocking | Decide "Legal cap on cancellation fees" | [Legal cap on cancellation fees](#FeeCap) | karim | concerns "Late cancellation fee" |
+| blocking | Decide "Legal cap on cancellation fees" | [Legal cap on cancellation fees](#FeeCap) | karim | concerns "Late cancellation fee", "The cap, decided" |
 
 ## Decision
 
@@ -16,7 +16,7 @@
 
 ### Legal cap on cancellation fees
 
-`FeeCap` · `src/legal.ts:11` · published
+`FeeCap` · `src/legal.ts:12` · published
 
 The largest share of the price that may legally be kept, in Switzerland and in France.
 
@@ -24,3 +24,33 @@ The largest share of the price that may legally be kept, in Switzerland and in F
 
 - Decided by: karim
 - Caps: [Late cancellation fee](cancellation.md#LateFee)
+- Amended by (not in force): [The cap, decided](#FeeCapDecided)
+
+## Amendment
+
+<a id="FeeCapDecided"></a>
+
+### The cap, decided
+
+`FeeCapDecided` · `src/legal.ts:21`
+
+Half the price: a reservation cancelled late never keeps more.
+
+**Not yet in force**: from 10 November 2026
+
+| What changes | Before | After |
+|---|---|---|
+| `value` | **to be decided** | 50% |
+
+<details><summary>The amendment, in the code</summary>
+
+```typescript
+{ value: pct(50) }
+```
+
+</details>
+
+- Decided by: karim
+- Reason: the late fee is bounded by it, and has kept half the price since the beginning
+- In force from: 10 November 2026
+- Amends (not in force): [Legal cap on cancellation fees](#FeeCap)

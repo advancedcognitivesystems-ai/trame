@@ -58,7 +58,7 @@ const body = (deps: Deps) => {
   const { steps } = deps
   const { values } = deps
   const { dirname, resolve } = deps.paths
-  const { meta, refOf, isNode, isFileBody } = deps.prelude.internal
+  const { meta, refOf, isNode, isFileBody, amendBody } = deps.prelude.internal
   const { driverFor } = deps.drivers
   const { messages } = deps
   const { head, rest } = deps.sequences
@@ -201,13 +201,21 @@ const body = (deps: Deps) => {
   }
 
   /** Loads a body: an inline function, or a file through the driver of its language. */
+  /** The amendments in force that patch a node's body, in the order they were applied (since g105). */
+  function bodyAmendments(host: WireHost, n: AnyNode, stage: Stage = Stage.execution): AnyNode[] {
+    const k = fieldOf(n, FieldType.body, stage)
+    return k === undefined ? [] : host.graph.view(n).amendedBy.filter((a) => a.paths.includes(k)).map((a) => a.by.node)
+  }
+
+  /** A node's body, as declared (inline, or loaded from its file), then as its amendments in force make it. */
   async function loadBody(host: WireHost, n: AnyNode, stage: Stage = Stage.execution): Promise<(deps: Record<string, unknown>) => unknown> {
     const body = bodyOf(n, stage)
-    if (values.isFunction(body)) return body as (deps: Record<string, unknown>) => unknown
+    const amended = (declared: unknown) => amendBody(n, declared, bodyAmendments(host, n, stage)) as (deps: Record<string, unknown>) => unknown
+    if (values.isFunction(body)) return amended(body)
     if (isFileBody(body)) {
       const driver = driverFor(body.language)
       if (!driver?.load) throw new Error(messages.noDriverToRun(body.language, host.graph.view(n).title))
-      return (await driver.load(bodyPath(host, n, body))) as (deps: Record<string, unknown>) => unknown
+      return amended(await driver.load(bodyPath(host, n, body)))
     }
     throw new Error(messages.noBody(host.graph.view(n).title))
   }
@@ -271,7 +279,7 @@ const body = (deps: Deps) => {
 
   const refName = (n: AnyNode) => refOf(n)
 
-  return { depsOf, constantsOf, bodyOf, bodyPath, plan, loadBody, Session, wireDeps, refName }
+  return { depsOf, constantsOf, bodyOf, bodyPath, bodyAmendments, plan, loadBody, Session, wireDeps, refName }
 }
 
 export type Api = ReturnType<typeof body>

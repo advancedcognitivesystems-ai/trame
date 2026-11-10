@@ -10,7 +10,7 @@
 
 ### API of the payment provider
 
-`PaymentProviderApi` · `src/standards.ts:40`
+`PaymentProviderApi` · `src/standards.ts:22`
 
 The address of a refund, under the provider's address, and the header of the idempotency key.
 
@@ -41,25 +41,3 @@ Source: Trame, the trigger of an HTTP entry point (kinds/entry-point.ts, http)
 
 - Maintained by: karim
 - Used by: [Node HTTP server](infra.md#NodeServer)
-
-<a id="Sqlite"></a>
-
-### SQLite
-
-`Sqlite` · `src/standards.ts:22`
-
-The name of a database that lives in memory, and the statements of a transaction.
-
-Source: SQLite: In-Memory Databases; SQL As Understood By SQLite (BEGIN, COMMIT, ROLLBACK); Pragma statements (query_only) · `https://www.sqlite.org/inmemorydb.html`
-
-| Constant | Value | Meaning |
-|---|---|---|
-| `memory` | `:memory:` | The name that opens a database in memory, new each time |
-| `begin` | `BEGIN` | Starts a transaction |
-| `commit` | `COMMIT` | Makes its writes last |
-| `rollback` | `ROLLBACK` | Undoes them |
-| `readOnly` | `PRAGMA query_only = ON` | From here on, the connection refuses any statement that would change the database |
-| `readWrite` | `PRAGMA query_only = OFF` | From here on, it accepts them again |
-
-- Maintained by: karim
-- Used by: [Local SQLite database](infra.md#FileDatabase), [In-memory SQLite database](infra.md#InMemoryDatabase)

@@ -13,6 +13,8 @@ gantt
     In force : 2026-10-15, 2027-03-31
   section Launch of the ultra chargers
     In force : 2026-11-01, 2026-12-31
+  section The cap, decided
+    In force : 2026-11-10, 2027-03-31
   section Idempotent payment provider
     Check before : milestone, 2026-12-01, 0d
   section Free cancellation period

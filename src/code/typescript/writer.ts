@@ -125,13 +125,16 @@ const body = (deps: Deps) => {
         ...step.deps.map((d) => property(d.param, d.members ? frozenCall(frozen.limited, [ident(d.name), JSON.stringify(d.members)]) : ident(d.name))),
       ])
       const src = a.bodies.get(step.node)!
+      let declared: string
       if (src.file !== undefined) {
-        const imported = names.bodyPrefix + step.name
-        bodyImports.push(defaultImport(imported, rel(src.file)))
-        steps.push(constant(ident(step.name), wait(call(imported, [args]))))
+        declared = names.bodyPrefix + step.name
+        bodyImports.push(defaultImport(declared, rel(src.file)))
       } else {
-        steps.push(constant(ident(step.name), wait(call(frozenCall(frozen.body, [declare(step.node)]), [args]))))
+        declared = frozenCall(frozen.body, [declare(step.node)])
       }
+      // A body amended at the date of the assembly: composed with its amendments, in their order (since g105).
+      const body = src.amendments.length ? frozenCall(frozen.amended, [declare(step.node), declared, array(src.amendments.map(declare))]) : declared
+      steps.push(constant(ident(step.name), wait(call(body, [args]))))
     }
     const dataValues: unknown[] = []
     const frozenData = [...(a.frozenData ?? [])].map(([n, json]) => {

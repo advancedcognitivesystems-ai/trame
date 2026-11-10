@@ -4,10 +4,16 @@ import { Time } from "#std/measures"
 import { decision } from "#trame/kinds/decision"
 import { scenario } from "#trame/kinds/scenario"
 import { FreeCancellationPeriod, Refund } from "./cancellation"
-import { PaymentLog, ReadOnlyDatabase, Dialect } from "./architecture"
-import { Test, InitialReservations, TestInstant, ReservationsSql, CancellationsSql, InMemoryDatabase, SqliteDialect, SimulatedPayment, StoppedClock, ReservationTables, CancelledStatus } from "./infra"
+import { PaymentLog } from "./architecture"
+import { Test, InitialReservations, TestInstant, ReservationRecords, CancellationRecords, FirstReservations, SimulatedPayment, StoppedClock, CancelledStatus } from "./infra"
+import { KeptReservation, KeptRefund } from "./data"
 import { Commands } from "#std/effects"
+import { ExitStatus } from "#std/system"
+import { Counts } from "#std/algebra"
+import { Records, RecordsInSql, SqlDatabase, TableDialect, SqliteInMemory, SqliteTables } from "#data/records"
+import { Conforms } from "#data/documents"
 import { ReadReservation, CancelReservation, FreeCancellationEnd, LeadTime } from "./api"
+import { PrepareStorage } from "./sdlc"
 import { Http } from "#std/web"
 import { ScenarioChecks } from "./messages"
 
@@ -19,12 +25,12 @@ export const UnknownReservation = decision<string>({ owner: "karim", value: "R40
 
 /**
  * Read a reservation
- * A reservation is read from the database through its SQL, with the end of its free cancellation; an unknown one is
- * not found.
+ * A reservation is read from the database, its table made with the first reservations, with the end of its free
+ * cancellation; an unknown one is not found.
  */
 export const ReadScenario = scenario({
   owner: "karim",
-  verifies: [ReadReservation, FreeCancellationEnd, ReservationsSql, InMemoryDatabase, SqliteDialect],
+  verifies: [ReadReservation, FreeCancellationEnd, ReservationRecords, FirstReservations, RecordsInSql, SqliteTables, SqliteInMemory, Conforms],
   env: Test,
   deps: { read: ReadReservation, initial: InitialReservations, freePeriod: FreeCancellationPeriod, unknown: UnknownReservation, http: Http, time: Time, says: ScenarioChecks },
   body: ({ read, initial, freePeriod, unknown, http, time, says }) => async (check) => {
@@ -44,7 +50,7 @@ export const ReadScenario = scenario({
  */
 export const RepeatedCancellationScenario = scenario({
   owner: "karim",
-  verifies: [CancelReservation, LeadTime, CancellationsSql, SimulatedPayment, StoppedClock],
+  verifies: [CancelReservation, LeadTime, CancellationRecords, SimulatedPayment, StoppedClock],
   env: Test,
   deps: { cancel: CancelReservation, log: PaymentLog, refund: Refund, initial: InitialReservations, instant: TestInstant, http: Http, time: Time, says: ScenarioChecks },
   body: ({ cancel, log, refund, initial, instant, http, time, says }) => async (check) => {
@@ -81,22 +87,43 @@ export const ComplianceScenario = scenario({
 /**
  * A read never writes
  * A statement that writes, passed off as a read (made a read by the command maker itself, as nothing else can), goes to
- * the database that only reads: the database refuses it, and the reservation it would have cancelled is as it was.
+ * the database, which reads it on a connection that refuses to change anything: the database refuses it, and the
+ * reservation it would have cancelled is as it was.
  */
 export const ReadsNeverWrite = scenario({
   owner: "karim",
-  verifies: [InMemoryDatabase],
+  verifies: [SqliteInMemory],
   env: Test,
   deps: {
-    database: ReadOnlyDatabase, commands: Commands, dialect: Dialect, tables: ReservationTables, cancelled: CancelledStatus,
+    database: SqlDatabase, commands: Commands, dialect: TableDialect, records: Records, reservations: KeptReservation, cancelled: CancelledStatus,
     initial: InitialReservations, says: ScenarioChecks,
   },
-  body: ({ database, commands, dialect, tables, cancelled, initial, says }) => async (check) => {
+  body: ({ database, commands, dialect, records, reservations, cancelled, initial, says }) => async (check) => {
     const [r1] = initial
-    const { reservations, status } = tables
-    const disguised = commands.read(dialect.update(reservations.name, [status], reservations.key))
+    await records.prepare(reservations)
+    const disguised = commands.read(dialect.update(reservations, [reservations.names.status]))
     const refused = await database.read(disguised, cancelled, r1.id).then(() => false, () => true)
-    const [row] = await database.read<Record<string, unknown>>(dialect.find(reservations.name, [status], reservations.key), r1.id)
-    check(says.disguisedWriteRefused(), refused && row?.[status] !== cancelled)
+    const found = await records.find(reservations, r1.id)
+    check(says.disguisedWriteRefused(), refused && found?.status !== cancelled)
+  },
+})
+
+/**
+ * The storage is prepared
+ * What a deployment runs before the service starts: the table of each entity made ready, the reservations with the first
+ * ones, the refunds empty.
+ */
+export const StoragePrepared = scenario({
+  owner: "karim",
+  verifies: [PrepareStorage],
+  env: Test,
+  deps: {
+    prepare: PrepareStorage, records: Records, reservations: KeptReservation, refunds: KeptRefund, initial: InitialReservations, exit: ExitStatus,
+    counts: Counts, says: ScenarioChecks,
+  },
+  body: ({ prepare, records, reservations, refunds, initial, exit, counts, says }) => async (check) => {
+    const done = await prepare({ params: {} })
+    const counted = [await records.count(reservations), await records.count(refunds)]
+    check(says.storagePrepared(), done.status === exit.success && counted.join() === [initial.length, counts.zero].join())
   },
 })

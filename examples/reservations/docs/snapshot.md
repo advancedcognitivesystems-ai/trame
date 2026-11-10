@@ -93,20 +93,6 @@ Port · `Clock`
 - Owner: karim
 - Declared effects: time
 
-### Database
-
-Port · `Database`
-
-- Owner: karim
-- Declared effects: { read: read, asynchronous, write: write, asynchronous, transaction: read, write, asynchronous }
-
-### SQL dialect
-
-Port · `Dialect`
-
-- Owner: karim
-- Declared effects: 
-
 ### HTTP exposure
 
 Port · `HttpExposure`
@@ -127,13 +113,6 @@ Port · `PaymentLog`
 
 - Owner: karim
 - Declared effects: 
-
-### Read-only database
-
-Port · `ReadOnlyDatabase`
-
-- Owner: karim
-- Declared effects: read, asynchronous
 
 ### Reservation reading
 
@@ -268,6 +247,46 @@ Acceptance criteria · `FullRefundAheadCriteria` · **held**
 - Owner: karim
 - Accepts: A day ahead, a full refund
 
+## Reservations · Data
+
+### Chargers
+
+Vocabulary · `Chargers`
+
+- Owner: karim
+- Words: { fast: A fast charger, normal: A normal charger, ultra: An ultra-fast charger }
+- Serves: Cancel without stress
+
+### Statuses of a reservation
+
+Vocabulary · `ReservationStatuses`
+
+- Owner: karim
+- Words: { active: Reserved, and not cancelled, cancelled: Cancelled, its refund recorded }
+- Serves: Cancel without stress
+
+### The refund of a cancelled reservation
+
+Entity · `KeptRefund` · **held**
+
+- Owner: karim
+- Fields: { reservation: { type: reference, entity: data.KeptReservation }, amount: { type: number, quantity: cancellation.SwissFrancs }, reference: { type: text } }
+- Key: reservation
+- Kept as: refunds
+- Serves: Cancel without stress
+- Depends on: A reservation, Swiss francs
+
+### A reservation
+
+Entity · `KeptReservation` · **held**
+
+- Owner: karim
+- Fields: { id: { type: text }, charger: { type: word, vocabulary: data.Chargers }, price: { type: number, quantity: cancellation.SwissFrancs }, start: { type: text }, status: { type: word, vocabulary: data.ReservationStatuses } }
+- Key: id
+- Kept as: reservations
+- Serves: Cancel without stress
+- Depends on: Chargers, Swiss francs, Statuses of a reservation
+
 ## Reservations · Infrastructure
 
 ### Backup retention
@@ -327,13 +346,6 @@ Decision · `ProviderUrl`
 - Decided by: karim
 - Value: https://payments.example.com/v1
 
-### Tables of the service
-
-Decision · `ReservationTables`
-
-- Decided by: karim
-- Value: { reservations: { name: reservations, key: id, columns: { id: text, charger: text, price: number, start: text, status: text } }, refunds: { name: refunds, key: reservation, columns: { reservation: text, amount: number, reference: text }, references: { reservation: { table: reservations, column: id } } }, status: status, count: n }
-
 ### End of a response
 
 Decision · `ResponseEnding`
@@ -348,13 +360,6 @@ Decision · `SimulatedReference`
 - Decided by: karim
 - Value: simulated-
 
-### Test database
-
-Decision · `TestDatabasePath`
-
-- Decided by: karim
-- Value: :memory:
-
 ### Test instant
 
 Decision · `TestInstant`
@@ -362,32 +367,31 @@ Decision · `TestInstant`
 - Decided by: karim
 - Value: 2026-10-20T10:00:00.000Z
 
-### Cancellations in SQL
+### Cancellations as records
 
-Function · `CancellationsSql` · **held**
+Function · `CancellationRecords` · **held**
 
 - Owner: karim
-- Parameters: { database: architecture.Database, dialect: architecture.Dialect, tables: infra.ReservationTables, cancelled: infra.CancelledStatus }
+- Parameters: { records: data/records.Records, reservations: data.KeptReservation, refunds: data.KeptRefund, cancelled: infra.CancelledStatus }
 - Implements: Cancellation records
-- Depends on: Database, SQL dialect, Tables of the service, Status of a cancelled reservation
+- Depends on: A reservation, The refund of a cancelled reservation, Status of a cancelled reservation
 
-### PostgreSQL's dialect
+### The first reservations
 
-Function · `PostgresDialect` · **unknown**
-
-- Owner: karim
-- Parameters: { types: sql.PostgresSql, parameter: sql.PostgresParameter, definition: sql.ColumnDefinition, createTable: sql.CreateTable, countRows: sql.CountRows, insertRow: sql.InsertRow, selectRows: sql.SelectRows, updateRows: sql.UpdateRows, columnEquals: sql.ColumnEquals, commands: std/effects.Commands }
-- Implements: SQL dialect
-- Depends on: PostgreSQL's dialect, PostgreSQL parameter, Column definition, Table creation, Count, Insertion, Selection, Update, Condition on a column
-
-### Reservations in SQL
-
-Function · `ReservationsSql` · **held**
+Function · `FirstReservations` · **held**
 
 - Owner: karim
-- Parameters: { database: architecture.ReadOnlyDatabase, dialect: architecture.Dialect, tables: infra.ReservationTables }
+- Parameters: { reservations: infra.InitialReservations, kept: data.KeptReservation }
+- Depends on: Initial reservations, A reservation
+
+### Reservations as records
+
+Function · `ReservationRecords` · **held**
+
+- Owner: karim
+- Parameters: { records: data/records.Records, reservations: data.KeptReservation }
 - Implements: Reservation reading
-- Depends on: Read-only database, SQL dialect, Tables of the service
+- Depends on: A reservation
 
 ### Simulated payment provider
 
@@ -397,15 +401,6 @@ Function · `SimulatedPayment` · **held**
 - Parameters: { prefix: infra.SimulatedReference }
 - Implements: Payment provider, Payment log
 - Depends on: References of the simulated provider
-
-### SQLite's dialect
-
-Function · `SqliteDialect` · **held**
-
-- Owner: karim
-- Parameters: { types: sql.SqliteSql, parameter: sql.SqliteParameter, definition: sql.ColumnDefinition, createTable: sql.CreateTable, countRows: sql.CountRows, insertRow: sql.InsertRow, selectRows: sql.SelectRows, updateRows: sql.UpdateRows, columnEquals: sql.ColumnEquals, commands: std/effects.Commands }
-- Implements: SQL dialect
-- Depends on: SQLite's dialect, SQLite parameter, Column definition, Table creation, Count, Insertion, Selection, Update, Condition on a column
 
 ### Stopped clock
 
@@ -421,9 +416,8 @@ Function · `StoppedClock` · **held**
 Implementation · `FileDatabase` · **unknown**
 
 - Owner: karim
-- Parameters: { path: infra.LocalDatabasePath, tables: infra.ReservationTables, dialect: architecture.Dialect, reservations: infra.InitialReservations, sqlite: standards.Sqlite }
-- Implements: Database, Read-only database
-- Depends on: Local database file, Tables of the service, SQL dialect, Initial reservations, SQLite
+- Parameters: { path: infra.LocalDatabasePath, sqlite: data/sql.Sqlite }
+- Depends on: Local database file
 
 ### Real payment provider
 
@@ -433,15 +427,6 @@ Implementation · `HttpPayment` · **unknown**
 - Parameters: { url: infra.ProviderUrl, api: standards.PaymentProviderApi, http: std/web.Http, mediaTypes: std/web.MediaTypes, uri: std/web.Uri, messages: messages.ApiMessages }
 - Implements: Payment provider
 - Depends on: Payment provider address, API of the payment provider, Messages of the API
-
-### In-memory SQLite database
-
-Implementation · `InMemoryDatabase` · **held**
-
-- Owner: karim
-- Parameters: { path: infra.TestDatabasePath, tables: infra.ReservationTables, dialect: architecture.Dialect, reservations: infra.InitialReservations, sqlite: standards.Sqlite }
-- Implements: Database, Read-only database
-- Depends on: Test database, Tables of the service, SQL dialect, Initial reservations, SQLite
 
 ### Node HTTP server
 
@@ -459,7 +444,6 @@ Implementation · `PostgresDatabase` · **unknown**
 - Owner: karim
 - Parameters: { messages: messages.ApiMessages }
 - Variables: { name: infra.DatabaseName, size: infra.DatabaseSize, backup_retention_days: infra.BackupRetention, address: infra.DatabaseAddress }
-- Implements: Database, Read-only database
 - Depends on: Messages of the API, Production database name, Production database size, Backup retention, Production database address
 
 ### System clock
@@ -468,6 +452,23 @@ Implementation · `SystemClock` · **unknown**
 
 - Owner: karim
 - Implements: Clock
+
+### Nothing to start with in production
+
+Technical choice · `EmptyInProduction` · **unknown**
+
+- Decided by: karim
+- Context: In production, the reservations are the drivers': a table starts empty.
+- In: Production
+
+### The first reservations outside production
+
+Technical choice · `FirstReservationsOutsideProduction` · **held**
+
+- Decided by: karim
+- Context: A scenario and a developer need reservations to read and cancel, and the service makes none.
+- Chooses: The first reservations
+- In: Test, Local
 
 ### Node's HTTP server
 
@@ -479,6 +480,16 @@ Technical choice · `HttpServerChoice` · **unknown**
 - Chooses: Node HTTP server
 - In: Test, Local, Production
 
+### What the service keeps, as tables
+
+Technical choice · `KeptAsTables` · **held**
+
+- Decided by: karim
+- Context: A reservation is a row, and refunds are many: a database of SQL keeps them, and finds one by its key.
+- Consequences: No statement is written by hand: the dialect writes them from the entities, and a change of an entity is a migration its owner decides in the graph.
+- Rejected: A document per reservation, a reservation is found by its key among many, and two writes are kept together
+- In: Test, Local, Production
+
 ### A SQLite file on the developer's machine
 
 Technical choice · `LocalDatabase` · **unknown**
@@ -486,7 +497,7 @@ Technical choice · `LocalDatabase` · **unknown**
 - Decided by: karim
 - Context: A developer runs the service without installing a database server; the reservations survive a restart.
 - Rejected: Postgres in a container, one more thing to install and start for a prototype
-- Chooses: Local SQLite database, SQLite's dialect
+- Chooses: Local SQLite database
 - In: Local
 
 ### Postgres in production
@@ -497,7 +508,7 @@ Technical choice · `ProductionDatabase` · **unknown**
 - Context: Several instances of the service write at once, and the provider keeps the backups.
 - Consequences: Provisioned by Terraform with the graph's values; its statements come from PostgreSQL's dialect, which cannot be mixed with SQLite's. The prototype ships no Postgres driver yet.
 - Rejected: SQLite in production, one writer at a time, and the backups would be ours
-- Chooses: Production Postgres database, PostgreSQL's dialect
+- Chooses: Production Postgres database
 - In: Production
 
 ### The provider's API in production
@@ -518,6 +529,17 @@ Technical choice · `RealClock` · **unknown**
 - Chooses: System clock
 - In: Local, Production
 
+### Reservations and cancellations as repositories over the records
+
+Technical choice · `RecordRepositories` · **held**
+
+- Decided by: karim
+- Context: Reading a reservation and cancelling one ask for the domain's records, never for SQL: the repositories ask the records of the entities, whichever database keeps them.
+- Consequences: The repositories hold no driver and write no SQL: they name the entities, and the records find, insert and update them. Changing the database changes its choice (the driver and the dialect together), not them.
+- Rejected: Statements in the entry points, the cancellation would know the tables and the dialect
+- Chooses: Reservations as records, Cancellations as records
+- In: Test, Local, Production
+
 ### A stopped clock in the scenarios
 
 Technical choice · `ScenarioClock` · **held**
@@ -527,14 +549,13 @@ Technical choice · `ScenarioClock` · **held**
 - Chooses: Stopped clock
 - In: Test
 
-### An in-memory SQLite database for the scenarios
+### A SQLite database in memory for the scenarios
 
 Technical choice · `ScenarioDatabase` · **held**
 
 - Decided by: karim
 - Context: Every scenario starts from the initial reservations and leaves nothing behind.
 - Rejected: A shared file, a scenario would see what the previous one wrote
-- Chooses: In-memory SQLite database, SQLite's dialect
 - In: Test
 
 ### A simulated payment provider outside production
@@ -546,17 +567,6 @@ Technical choice · `SimulatedProvider` · **held**
 - Rejected: The provider's sandbox, a network call in every scenario, and an account to keep
 - Chooses: Simulated payment provider
 - In: Test, Local
-
-### Reservations and cancellations as repositories over SQL
-
-Technical choice · `SqlRepositories` · **held**
-
-- Decided by: karim
-- Context: Reading a reservation and cancelling one ask for the domain's records, never for SQL: the repositories turn them into statements over a database port, whichever database answers it.
-- Consequences: The repositories hold no driver and write no SQL: they ask the dialect port for their statements, and the database port runs them. Changing the database changes its choice (the driver and the dialect together), not them.
-- Rejected: Statements in the entry points, the cancellation would know the tables and the dialect
-- Chooses: Reservations in SQL, Cancellations in SQL
-- In: Test, Local, Production
 
 ### Local
 
@@ -657,7 +667,7 @@ Scenario · `ReadScenario` · **held**
 
 - Owner: karim
 - Parameters: { read: api.ReadReservation, initial: infra.InitialReservations, freePeriod: cancellation.FreeCancellationPeriod, unknown: scenarios.UnknownReservation, http: std/web.Http, time: std/measures.Time, says: messages.ScenarioChecks }
-- Verifies: Read a reservation, End of free cancellation, Reservations in SQL, In-memory SQLite database, SQLite's dialect
+- Verifies: Read a reservation, End of free cancellation, Reservations as records, The first reservations
 - In: Test
 - Depends on: Read a reservation, Initial reservations, Free cancellation period, Unknown reservation, Checks of the scenarios
 
@@ -666,10 +676,9 @@ Scenario · `ReadScenario` · **held**
 Scenario · `ReadsNeverWrite` · **held**
 
 - Owner: karim
-- Parameters: { database: architecture.ReadOnlyDatabase, commands: std/effects.Commands, dialect: architecture.Dialect, tables: infra.ReservationTables, cancelled: infra.CancelledStatus, initial: infra.InitialReservations, says: messages.ScenarioChecks }
-- Verifies: In-memory SQLite database
+- Parameters: { database: data/records.SqlDatabase, commands: std/effects.Commands, dialect: data/records.TableDialect, records: data/records.Records, reservations: data.KeptReservation, cancelled: infra.CancelledStatus, initial: infra.InitialReservations, says: messages.ScenarioChecks }
 - In: Test
-- Depends on: Read-only database, SQL dialect, Tables of the service, Status of a cancelled reservation, Initial reservations, Checks of the scenarios
+- Depends on: A reservation, Status of a cancelled reservation, Initial reservations, Checks of the scenarios
 
 ### Cancelling twice refunds only once
 
@@ -677,11 +686,49 @@ Scenario · `RepeatedCancellationScenario` · **held**
 
 - Owner: karim
 - Parameters: { cancel: api.CancelReservation, log: architecture.PaymentLog, refund: (rule), initial: infra.InitialReservations, instant: infra.TestInstant, http: std/web.Http, time: std/measures.Time, says: messages.ScenarioChecks }
-- Verifies: Cancel a reservation, Lead time of a cancellation, Cancellations in SQL, Simulated payment provider, Stopped clock
+- Verifies: Cancel a reservation, Lead time of a cancellation, Cancellations as records, Simulated payment provider, Stopped clock
 - In: Test
 - Depends on: Cancel a reservation, Payment log, Refund on cancellation, Initial reservations, Test instant, Checks of the scenarios
 
+### The storage is prepared
+
+Scenario · `StoragePrepared` · **held**
+
+- Owner: karim
+- Parameters: { prepare: sdlc.PrepareStorage, records: data/records.Records, reservations: data.KeptReservation, refunds: data.KeptRefund, initial: infra.InitialReservations, exit: std/system.ExitStatus, counts: std/algebra.Counts, says: messages.ScenarioChecks }
+- Verifies: Prepare the storage
+- In: Test
+- Depends on: Prepare the storage, A reservation, The refund of a cancelled reservation, Initial reservations, Checks of the scenarios
+
 ## Reservations · SDLC
+
+### The service's SDLC
+
+Component · `ReservationsSdlc`
+
+- Owner: karim
+- Language: typescript
+- Startup: { exposure: std/tooling.ProgramCommands }
+- Deployed in: Local
+
+### Prepare the storage
+
+Entry point · `PrepareStorage` · **held**
+
+- Owner: karim
+- Trigger: { type: command, name: prepare-storage }
+- Parameters: { records: data/records.Records, reservations: data.KeptReservation, refunds: data.KeptRefund, say: messages.ApiMessages, exit: std/system.ExitStatus }
+- Serves: Cancel without stress
+- Part of: The service's SDLC
+- Depends on: A reservation, The refund of a cancelled reservation, Messages of the API
+
+### Commands on this machine
+
+Technical choice · `CommandsOnThisMachine` · **unknown**
+
+- Decided by: karim
+- Context: trame ship runs the programs that deploy as a person would run them, with Node.
+- In: Local
 
 ### The operators
 
@@ -697,6 +744,7 @@ Artefact · `LocalProgram` · **unknown**
 - Owner: karim
 - Path: out/local/reservations-api.ts
 - Produced by: Reservations API
+- Assembled for: Local
 
 ### The program for production
 
@@ -721,10 +769,21 @@ Check · `OnALaptop` · **unknown**
 Check · `OnStaging` · **unknown**
 
 - Owner: karim
-- Steps: Deploy the program on the staging machine, with its PostgreSQL database and the payment provider's sandbox, Read a reservation, then cancel it twice: one refund at the provider, and the second cancellation answers the same, Restart the program: the cancellation is still there, and the time it shows is the machine's
+- Steps: Deploy the program on the staging machine, with its PostgreSQL database and the payment provider's sandbox: its tables are created empty, Insert a reservation, read it, then cancel it twice: one refund at the provider, and the second cancellation answers the same, Restart the program: the cancellation is still there, and the time it shows is the machine's
 - Checks: The program for production
 - Signed by: The operators
-- Verifies: Node HTTP server, Production Postgres database, PostgreSQL's dialect, Real payment provider, System clock
+- Verifies: Node HTTP server, Production Postgres database, Real payment provider, System clock
+
+### On this machine
+
+Shipment · `OnThisMachine` · **unknown**
+
+- Owner: karim
+- Target: local
+- Ships: The program for a laptop
+- Deployed by: Prepare the storage
+- Programs assembled for: Local
+- Follows the policy: The way of this machine
 
 ### A release
 
@@ -765,6 +824,14 @@ Obligation · `GoalServed`
 - Owner: karim
 - Serves: Cancel without stress
 
+### What the service keeps, migrated
+
+Obligation · `KeptMigrates`
+
+- Owner: karim
+- A gap weighs: error
+- Serves: Cancel without stress
+
 ### The packages are safe
 
 Obligation · `PackagesSafe`
@@ -779,161 +846,19 @@ Obligation · `RulesHeld`
 - Owner: karim
 - Serves: Cancel without stress
 
+### The way of this machine
+
+Policy · `MachineMode`
+
+- Owner: karim
+- Its obligations: The code is verified, The rules hold, What the service keeps, migrated
+
 ### The way of a release
 
 Policy · `ReleaseMode`
 
 - Owner: karim
-- Its obligations: The code is verified, The requirements of the goal hold, The decisions hold, Every check is signed, The rules hold, The packages are safe
-
-## Reservations · SQL
-
-### PostgreSQL's dialect
-
-Standard · `PostgresSql`
-
-- Maintained by: karim
-- Source: PostgreSQL: Value Expressions, Positional Parameters ($n); Numeric Types (double precision); Character Types (text)
-- Address: https://www.postgresql.org/docs/current/sql-expressions.html#SQL-EXPRESSIONS-PARAMETERS-POSITIONAL
-- Constants: { parameter: { value: $, meaning: Opens a positional parameter: then its position }, first: { value: 1, meaning: The position of the first parameter }, text: { value: TEXT, meaning: The type of a column of text }, number: { value: DOUBLE PRECISION, meaning: The type of a column of numbers (an 8-byte floating point number, as SQLite's REAL) } }
-
-### SQL
-
-Standard · `Sql`
-
-- Maintained by: karim
-- Source: ISO/IEC 9075 (SQL): SELECT, INSERT, UPDATE, CREATE TABLE; CREATE TABLE IF NOT EXISTS, as SQLite and PostgreSQL both accept it
-- Address: https://www.postgresql.org/docs/current/sql-commands.html
-- Constants: { space: { value:  , meaning: Separates the words of a statement }, comma: { value: ,, meaning: Separates the items of a list (columns, values, definitions) }, open: { value: (, meaning: Opens a list of columns, of values or of definitions }, close: { value: ), meaning: Closes it }, equals: { value: =, meaning: Compares a column with a value, or gives it one }, select: { value: SELECT, meaning: Reads columns }, from: { value: FROM, meaning: Names the table read }, where: { value: WHERE, meaning: Introduces the condition the rows must meet }, insertInto: { value: INSERT INTO, meaning: Adds a row to a table }, values: { value: VALUES, meaning: Introduces the values of the row }, update: { value: UPDATE, meaning: Changes rows of a table }, set: { value: SET, meaning: Introduces the columns changed }, createTable: { value: CREATE TABLE IF NOT EXISTS, meaning: Creates a table, unless it exists }, primaryKey: { value: PRIMARY KEY, meaning: The column that identifies a row }, notNull: { value: NOT NULL, meaning: A column that always has a value }, references: { value: REFERENCES, meaning: A column whose value is the key of a row of another table }, countAll: { value: count(*), meaning: The number of rows }, as: { value: AS, meaning: Names a result column } }
-
-### SQLite's dialect
-
-Standard · `SqliteSql`
-
-- Maintained by: karim
-- Source: SQLite: SQL As Understood By SQLite, Parameters (?); Datatypes In SQLite (TEXT, REAL)
-- Address: https://www.sqlite.org/lang_expr.html#varparam
-- Constants: { parameter: { value: ?, meaning: A parameter: the next value given with the statement }, text: { value: TEXT, meaning: The type of a column of text }, number: { value: REAL, meaning: The type of a column of numbers (an 8-byte floating point number) } }
-
-### Column definition
-
-Syntax element · `ColumnDefinition` · **held**
-
-- Owner: karim
-- Section: CREATE TABLE: column definitions and constraints
-- Marks: {  }
-- Parameters: { standard: sql.Sql }
-- Examples: { input: id, TEXT, true, output: id TEXT PRIMARY KEY }, { input: price, REAL, false, output: price REAL NOT NULL }, { input: reservation, TEXT, true, { table: reservations, column: id }, output: reservation TEXT PRIMARY KEY REFERENCES reservations(id) }
-- Defined by: SQL
-- Depends on: SQL
-
-### Condition on a column
-
-Syntax element · `ColumnEquals` · **held**
-
-- Owner: karim
-- Section: Comparison predicates
-- Marks: {  }
-- Parameters: { standard: sql.Sql }
-- Examples: { input: id, ?, output: id = ? }, { input: id, $2, output: id = $2 }
-- Defined by: SQL
-- Depends on: SQL
-
-### Count
-
-Syntax element · `CountRows` · **held**
-
-- Owner: karim
-- Section: SELECT with an aggregate function
-- Marks: {  }
-- Parameters: { standard: sql.Sql }
-- Examples: { input: reservations, n, output: SELECT count(*) AS n FROM reservations }
-- Defined by: SQL
-- Depends on: SQL
-
-### Table creation
-
-Syntax element · `CreateTable` · **held**
-
-- Owner: karim
-- Section: CREATE TABLE
-- Marks: {  }
-- Parameters: { standard: sql.Sql, list: sql.SqlList }
-- Examples: { input: refunds, reservation TEXT PRIMARY KEY, amount REAL NOT NULL, output: CREATE TABLE IF NOT EXISTS refunds (reservation TEXT PRIMARY KEY, amount REAL NOT NULL) }
-- Defined by: SQL
-- Depends on: SQL, List
-
-### Insertion
-
-Syntax element · `InsertRow` · **held**
-
-- Owner: karim
-- Section: INSERT
-- Marks: {  }
-- Parameters: { standard: sql.Sql, list: sql.SqlList }
-- Examples: { input: refunds, reservation, amount, ?, ?, output: INSERT INTO refunds (reservation, amount) VALUES (?, ?) }
-- Defined by: SQL
-- Depends on: SQL, List
-
-### PostgreSQL parameter
-
-Syntax element · `PostgresParameter` · **held**
-
-- Owner: karim
-- Section: Positional parameters ($n)
-- Marks: {  }
-- Parameters: { standard: sql.PostgresSql }
-- Examples: { input: 0, output: $1 }, { input: 2, output: $3 }
-- Defined by: PostgreSQL's dialect
-- Depends on: PostgreSQL's dialect
-
-### Selection
-
-Syntax element · `SelectRows` · **held**
-
-- Owner: karim
-- Section: SELECT
-- Marks: {  }
-- Parameters: { standard: sql.Sql, list: sql.SqlList }
-- Examples: { input: id, status, reservations, id = ?, output: SELECT id, status FROM reservations WHERE id = ? }
-- Defined by: SQL
-- Depends on: SQL, List
-
-### SQLite parameter
-
-Syntax element · `SqliteParameter` · **held**
-
-- Owner: karim
-- Section: Parameters (?)
-- Marks: {  }
-- Parameters: { standard: sql.SqliteSql }
-- Examples: { input: 0, output: ? }, { input: 2, output: ? }
-- Defined by: SQLite's dialect
-- Depends on: SQLite's dialect
-
-### List
-
-Syntax element · `SqlList` · **held**
-
-- Owner: karim
-- Section: Lists of columns and values
-- Marks: {  }
-- Parameters: { standard: sql.Sql }
-- Examples: { input: id, charger, output: id, charger }
-- Defined by: SQL
-- Depends on: SQL
-
-### Update
-
-Syntax element · `UpdateRows` · **held**
-
-- Owner: karim
-- Section: UPDATE
-- Marks: {  }
-- Parameters: { standard: sql.Sql, list: sql.SqlList }
-- Examples: { input: reservations, status = ?, id = ?, output: UPDATE reservations SET status = ? WHERE id = ? }
-- Defined by: SQL
-- Depends on: SQL, List
+- Its obligations: The code is verified, The requirements of the goal hold, The decisions hold, Every check is signed, The rules hold, The packages are safe, What the service keeps, migrated
 
 ## Reservations · Standards
 
@@ -953,20 +878,6 @@ Standard · `RouteSyntax`
 - Source: Trame, the trigger of an HTTP entry point (kinds/entry-point.ts, http)
 - Constants: { separator: { value: /, meaning: Separates the segments of a path }, parameter: { value: :, meaning: Begins a segment that is a parameter: what follows is its name } }
 
-### SQLite
-
-Standard · `Sqlite`
-
-- Maintained by: karim
-- Source: SQLite: In-Memory Databases; SQL As Understood By SQLite (BEGIN, COMMIT, ROLLBACK); Pragma statements (query_only)
-- Address: https://www.sqlite.org/inmemorydb.html
-- Constants: { memory: { value: :memory:, meaning: The name that opens a database in memory, new each time }, begin: { value: BEGIN, meaning: Starts a transaction }, commit: { value: COMMIT, meaning: Makes its writes last }, rollback: { value: ROLLBACK, meaning: Undoes them }, readOnly: { value: PRAGMA query_only = ON, meaning: From here on, the connection refuses any statement that would change the database }, readWrite: { value: PRAGMA query_only = OFF, meaning: From here on, it accepts them again } }
-
 ## Still open
 
 - Decide "Legal cap on cancellation fees" · karim
-- Test: No implementation of "HTTP exposure" for the environment "Test" · karim
-- Test: No implementation of "Reservation reading" for the environment "Test" · karim
-- Test: No implementation of "Cancellation records" for the environment "Test" · karim
-- Test: No implementation of "Payment provider" for the environment "Test" · karim
-- Test: No implementation of "Clock" for the environment "Test" · karim

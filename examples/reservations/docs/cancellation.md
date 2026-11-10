@@ -23,9 +23,9 @@
 A driver can change their mind without fearing an unfair penalty.
 
 - Owner: lea
-- Served by: [Read a reservation](api.md#ReadReservation), [Effects follow the request](architecture.md#EffectsFollowTheRequest), [A cancellation refunds once](principles.md#RefundOnce), [Secrets stay out of the graph](principles.md#SecretsOutOfTheGraph)
+- Served by: [Read a reservation](api.md#ReadReservation), [Effects follow the request](architecture.md#EffectsFollowTheRequest), [Chargers](data.md#Chargers), [The refund of a cancelled reservation](data.md#KeptRefund), [A reservation](data.md#KeptReservation), [Statuses of a reservation](data.md#ReservationStatuses), [A cancellation refunds once](principles.md#RefundOnce), [Secrets stay out of the graph](principles.md#SecretsOutOfTheGraph), [Prepare the storage](sdlc.md#PrepareStorage)
 - Refined by: [Refund on cancellation](#Refund), [A day ahead, a full refund](consumer.md#FullRefundAhead)
-- Kept by the rule: [The code is verified](sdlc.md#CodeVerified), [The decisions hold](sdlc.md#DecisionsApplied), [Every check is signed](sdlc.md#EveryCheck), [The requirements of the goal hold](sdlc.md#GoalServed), [The packages are safe](sdlc.md#PackagesSafe), [The rules hold](sdlc.md#RulesHeld)
+- Kept by the rule: [The code is verified](sdlc.md#CodeVerified), [The decisions hold](sdlc.md#DecisionsApplied), [Every check is signed](sdlc.md#EveryCheck), [The requirements of the goal hold](sdlc.md#GoalServed), [What the service keeps, migrated](sdlc.md#KeptMigrates), [The packages are safe](sdlc.md#PackagesSafe), [The rules hold](sdlc.md#RulesHeld)
 
 ## Requirement
 
@@ -182,3 +182,4 @@ Source: ISO 4217, Codes for the representation of currencies: CHF · `https://ww
 
 - Owner: karim
 - Written with: [How an amount is written](#AmountWords)
+- Used by: [The refund of a cancelled reservation](data.md#KeptRefund), [A reservation](data.md#KeptReservation)

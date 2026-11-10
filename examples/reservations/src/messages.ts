@@ -25,6 +25,7 @@ export const ApiMessages = catalog({
     providerRefused: (status: number) => `Payment provider: ${status}`,
     noApiKey: () => "Payment provider: no API key in the environment (PAYMENT_API_KEY)",
     noPostgresDriver: () => "Prototype: no Postgres driver is installed. The database is described (Terraform) but not connected.",
+    prepared: (tables: string[]) => `Ready: ${tables.join(", ")}`,
   }),
 })
 
@@ -43,6 +44,7 @@ export const ScenarioChecks = catalog({
     secondSameRefund: () => "The second one returns the same refund",
     providerCalledOnce: () => "The provider is called only once",
     disguisedWriteRefused: () => "A statement that writes, passed off as a read, is refused, and changes nothing",
+    storagePrepared: () => "The storage is made ready: the reservations with the first ones, the refunds without any",
     refundedByRule: (id: string, charger: string, lead: Duration, amount: CHF) =>
       `${id} (${charger}, ${Math.round(lead / 60)} min ahead) is refunded ${amount} CHF`,
   }),

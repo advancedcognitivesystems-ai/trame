@@ -125,7 +125,8 @@ const kind = defineKind({
 
   // Where it lives and the code it is made from, computed once: the engine reads them here to produce it, to fingerprint
   // it and to record what made it.
-  evaluate: (self, g): Made => ({ [F.path]: pathOf(self, g), code: g.code?.(madeOf(self, g)) }),
+  // A version holds the kinds and views its project writes too (a library that carries kinds, since g105).
+  evaluate: (self, g): Made => ({ [F.path]: pathOf(self, g), code: g.code?.(madeOf(self, g), isVersion(self)) }),
 
   // Wired, an artefact gives where it lives and its media type: a program of the SDLC names it, not its path.
   provide: (self, ctx) => ({ [F.path]: pathOf(self, ctx.g), ...(self.field(F.media) === undefined ? {} : { [F.media]: self.field(F.media) }) }),

@@ -7,20 +7,18 @@ import { implementation } from "#trame/kinds/implementation"
 import { fn } from "#trame/kinds/function"
 import { binding } from "#trame/kinds/binding"
 import { ChargerType, chf } from "./cancellation"
-import {
-  Database, ReadOnlyDatabase, ReservationReading, Cancellations, Payment, PaymentLog, Clock, HttpExposure, HttpPort, Dialect,
-  type StoredReservation, type Tables,
-} from "./architecture"
+import { ReservationReading, Cancellations, Payment, PaymentLog, Clock, HttpExposure, HttpPort, type StoredReservation, type RefundRecord } from "./architecture"
+import { KeptReservation, KeptRefund } from "./data"
 import { Http, MediaTypes, Uri } from "#std/web"
-import { RouteSyntax, Sqlite, PaymentProviderApi } from "./standards"
+import { RouteSyntax, PaymentProviderApi } from "./standards"
 import { ApiMessages } from "./messages"
 import { Adapter, Strategy, Repository, AbstractFactory } from "#std/patterns"
-import { Commands } from "#std/effects"
-import { SqliteSql, PostgresSql, SqliteParameter, PostgresParameter, ColumnDefinition, CreateTable, CountRows, InsertRow, SelectRows, UpdateRows, ColumnEquals } from "./sql"
+import { Records, RecordsInSql, SqlDatabase, SqliteTables, PostgresTables, SqliteInMemory, InitialRecords, StartEmpty, type Initial } from "#data/records"
+import { Sqlite } from "#data/sql"
 
 /**
  * Test
- * Where the scenarios run: an in-memory database, a fixed time, a simulated payment provider.
+ * Where the scenarios run: a database in memory, a fixed time, a simulated payment provider.
  */
 export const Test = environment({ owner: "karim" })
 
@@ -39,7 +37,7 @@ export const Production = environment({ owner: "karim" })
 
 /**
  * Initial reservations
- * Inserted when a database starts empty, in test and locally.
+ * What the table of reservations holds when it is created, in test and locally.
  */
 export const InitialReservations = decision<StoredReservation[]>({
   owner: "karim",
@@ -55,11 +53,6 @@ export const InitialReservations = decision<StoredReservation[]>({
  * The time the scenarios see.
  */
 export const TestInstant = decision<string>({ owner: "karim", value: "2026-10-20T10:00:00.000Z" })
-
-/**
- * Test database
- */
-export const TestDatabasePath = decision<string>({ owner: "karim", value: ":memory:" })
 
 /**
  * Local database file
@@ -95,24 +88,6 @@ export const BackupRetention = decision<number>({ owner: "karim", value: 7, rang
 export const ProviderUrl = decision<string>({ owner: "karim", value: "https://payments.example.com/v1" })
 
 /**
- * Tables of the service
- * The reservations, and the refund of each cancelled one (its key is the reservation's); the column of a reservation's
- * status, and the name a count is read under. Whatever the database: each dialect writes them in its own SQL.
- */
-export const ReservationTables = decision<Tables>({
-  owner: "karim",
-  value: {
-    reservations: { name: "reservations", key: "id", columns: { id: "text", charger: "text", price: "number", start: "text", status: "text" } },
-    refunds: {
-      name: "refunds", key: "reservation", columns: { reservation: "text", amount: "number", reference: "text" },
-      references: { reservation: { table: "reservations", column: "id" } },
-    },
-    status: "status",
-    count: "n",
-  },
-})
-
-/**
  * Status of a cancelled reservation
  * As the reservations table stores it.
  */
@@ -133,25 +108,14 @@ export const ResponseEnding = decision<string>({ owner: "karim", value: "\n" })
 // Code ----------------------------------------------------------------------
 
 /**
- * In-memory SQLite database
- * New for each session: every scenario starts from the initial reservations.
- */
-export const InMemoryDatabase = implementation({
-  owner: "karim",
-  implements: [Database, ReadOnlyDatabase],
-  deps: { path: TestDatabasePath, tables: ReservationTables, dialect: Dialect, reservations: InitialReservations, sqlite: Sqlite },
-  body: code.file("./code/sqlite-database.ts"),
-})
-
-/**
  * Local SQLite database
  * In a file on the developer's machine, created on the first start.
  */
 export const FileDatabase = implementation({
   owner: "karim",
-  implements: [Database, ReadOnlyDatabase],
-  deps: { path: LocalDatabasePath, tables: ReservationTables, dialect: Dialect, reservations: InitialReservations, sqlite: Sqlite },
-  body: code.file("./code/sqlite-database.ts"),
+  implements: [SqlDatabase],
+  deps: { path: LocalDatabasePath, sqlite: Sqlite },
+  body: code.file("./code/sqlite-file.ts"),
 })
 
 /**
@@ -160,7 +124,7 @@ export const FileDatabase = implementation({
  */
 export const PostgresDatabase = implementation({
   owner: "karim",
-  implements: [Database, ReadOnlyDatabase],
+  implements: [SqlDatabase],
   deps: { messages: ApiMessages },
   body: code.file("./code/postgres-database.ts"),
   variables: { name: DatabaseName, size: DatabaseSize, backup_retention_days: BackupRetention, address: DatabaseAddress },
@@ -168,52 +132,44 @@ export const PostgresDatabase = implementation({
 })
 
 /**
- * SQLite's dialect
- * Parameters as question marks; text and real numbers.
+ * The first reservations
+ * A table of reservations starts with the initial ones; any other table starts empty.
  */
-export const SqliteDialect = fn({
+export const FirstReservations = fn({
   owner: "karim",
-  implements: [Dialect],
-  deps: {
-    types: SqliteSql, parameter: SqliteParameter, definition: ColumnDefinition, createTable: CreateTable, countRows: CountRows,
-    insertRow: InsertRow, selectRows: SelectRows, updateRows: UpdateRows, columnEquals: ColumnEquals, commands: Commands,
-  },
-  body: code.file("./code/sql-dialect.ts"),
+  implements: [InitialRecords],
+  deps: { reservations: InitialReservations, kept: KeptReservation },
+  body: ({ reservations, kept }): Initial => ({ of: (model) => (model.name === kept.name ? reservations : []) }),
 })
 
 /**
- * PostgreSQL's dialect
- * Positional parameters ($1, $2…); text and double precision numbers.
+ * Reservations as records
+ * A reservation is found by its identifier among the records of its entity.
  */
-export const PostgresDialect = fn({
-  owner: "karim",
-  implements: [Dialect],
-  deps: {
-    types: PostgresSql, parameter: PostgresParameter, definition: ColumnDefinition, createTable: CreateTable, countRows: CountRows,
-    insertRow: InsertRow, selectRows: SelectRows, updateRows: UpdateRows, columnEquals: ColumnEquals, commands: Commands,
-  },
-  body: code.file("./code/sql-dialect.ts"),
-})
-
-/**
- * Reservations in SQL
- */
-export const ReservationsSql = fn({
+export const ReservationRecords = fn({
   owner: "karim",
   implements: [ReservationReading],
-  deps: { database: ReadOnlyDatabase, dialect: Dialect, tables: ReservationTables },
-  body: code.file("./code/reservations-sql.ts"),
+  deps: { records: Records, reservations: KeptReservation },
+  body: ({ records, reservations }) => ({ find: (id: string): Promise<StoredReservation | undefined> => records.find(reservations, id) }),
 })
 
 /**
- * Cancellations in SQL
- * The cancellation and its refund are written in the same transaction.
+ * Cancellations as records
+ * The refund of a reservation is a record of its own; recording it cancels the reservation in the same transaction.
  */
-export const CancellationsSql = fn({
+export const CancellationRecords = fn({
   owner: "karim",
   implements: [Cancellations],
-  deps: { database: Database, dialect: Dialect, tables: ReservationTables, cancelled: CancelledStatus },
-  body: code.file("./code/cancellations-sql.ts"),
+  deps: { records: Records, reservations: KeptReservation, refunds: KeptRefund, cancelled: CancelledStatus },
+  body: ({ records, reservations, refunds, cancelled }) => ({
+    refundFor: (reservation: string): Promise<RefundRecord | undefined> => records.find(refunds, reservation),
+    async record(r: RefundRecord) {
+      await records.transaction(async () => {
+        await records.insert(refunds, r)
+        await records.update(reservations, r.reservation, { status: cancelled })
+      })
+    },
+  }),
 })
 
 /**
@@ -284,12 +240,12 @@ export const NodeServer = implementation({
 // Technical choices ---------------------------------------------------------------------
 
 /**
- * An in-memory SQLite database for the scenarios
+ * A SQLite database in memory for the scenarios
  * The database and its dialect, chosen together.
  */
 export const ScenarioDatabase = binding({
   owner: "karim",
-  chooses: [InMemoryDatabase, SqliteDialect],
+  chooses: [SqliteInMemory, SqliteTables],
   environments: [Test],
   follows: [AbstractFactory],
   context: "Every scenario starts from the initial reservations and leaves nothing behind.",
@@ -302,7 +258,7 @@ export const ScenarioDatabase = binding({
  */
 export const LocalDatabase = binding({
   owner: "karim",
-  chooses: [FileDatabase, SqliteDialect],
+  chooses: [FileDatabase, SqliteTables],
   environments: [Local],
   follows: [AbstractFactory],
   context: "A developer runs the service without installing a database server; the reservations survive a restart.",
@@ -315,7 +271,7 @@ export const LocalDatabase = binding({
  */
 export const ProductionDatabase = binding({
   owner: "karim",
-  chooses: [PostgresDatabase, PostgresDialect],
+  chooses: [PostgresDatabase, PostgresTables],
   environments: [Production],
   follows: [AbstractFactory],
   context: "Several instances of the service write at once, and the provider keeps the backups.",
@@ -324,15 +280,52 @@ export const ProductionDatabase = binding({
 })
 
 /**
- * Reservations and cancellations as repositories over SQL
+ * What the service keeps, as tables
+ * Each entity the service keeps is a table, made ready by a deployment, migrated from the version the previous one
+ * kept and read back checked, by the library of data, whichever database answers.
  */
-export const SqlRepositories = binding({
+export const KeptAsTables = binding({
   owner: "karim",
-  chooses: [ReservationsSql, CancellationsSql],
+  chooses: [RecordsInSql],
+  environments: [Test, Local, Production],
+  follows: [Strategy],
+  context: "A reservation is a row, and refunds are many: a database of SQL keeps them, and finds one by its key.",
+  consequences: "No statement is written by hand: the dialect writes them from the entities, and a change of an entity is a migration its owner decides in the graph.",
+  rejected: { "A document per reservation": "a reservation is found by its key among many, and two writes are kept together" },
+})
+
+/**
+ * The first reservations outside production
+ */
+export const FirstReservationsOutsideProduction = binding({
+  owner: "karim",
+  chooses: [FirstReservations],
+  environments: [Test, Local],
+  follows: [Strategy],
+  context: "A scenario and a developer need reservations to read and cancel, and the service makes none.",
+})
+
+/**
+ * Nothing to start with in production
+ */
+export const EmptyInProduction = binding({
+  owner: "karim",
+  chooses: [StartEmpty],
+  environments: [Production],
+  follows: [Strategy],
+  context: "In production, the reservations are the drivers': a table starts empty.",
+})
+
+/**
+ * Reservations and cancellations as repositories over the records
+ */
+export const RecordRepositories = binding({
+  owner: "karim",
+  chooses: [ReservationRecords, CancellationRecords],
   environments: [Test, Local, Production],
   follows: [Repository],
-  context: "Reading a reservation and cancelling one ask for the domain's records, never for SQL: the repositories turn them into statements over a database port, whichever database answers it.",
-  consequences: "The repositories hold no driver and write no SQL: they ask the dialect port for their statements, and the database port runs them. Changing the database changes its choice (the driver and the dialect together), not them.",
+  context: "Reading a reservation and cancelling one ask for the domain's records, never for SQL: the repositories ask the records of the entities, whichever database keeps them.",
+  consequences: "The repositories hold no driver and write no SQL: they name the entities, and the records find, insert and update them. Changing the database changes its choice (the driver and the dialect together), not them.",
   rejected: { "Statements in the entry points": "the cancellation would know the tables and the dialect" },
 })
 

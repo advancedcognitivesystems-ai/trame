@@ -146,7 +146,7 @@ Port · `InitialRecords`
 Port · `Records`
 
 - Owner: trame
-- Declared effects: { find: read, insert: write, update: write, count: read, transaction: write }
+- Declared effects: { prepare: write, find: read, insert: write, update: write, count: read, transaction: write }
 
 ### A database of SQL
 
@@ -242,7 +242,7 @@ Release · `R0_1_1`
 Decision · `DataGiven`
 
 - Decided by: trame
-- Value: { book: { title: Middlemarch, pages: 880, shelf: reading }, older: { version: an older version, value: { heading: Middlemarch, pages: 880, shelf: reading, mood: patient }, steps: { op: rename, field: title, from: heading }, { op: drop, field: mood } }, wrong: { title: Middlemarch, pages: eight hundred, shelf: reading }, { title: Middlemarch, pages: 880, shelf: lost }, unknown: a version nobody deployed, table: { version: an older version, fields: { heading: { type: text }, pages: { type: number }, shelf: { type: text }, mood: { type: text } }, key: heading, row: Middlemarch, 880, reading, patient, steps: { op: rename, field: title, from: heading }, { op: drop, field: mood }, { op: add, field: lent }, other: { title: Persuasion, pages: 249, shelf: read }, pages: 250, count: 2, wrong: { title: Lost Illusions, row: Lost Illusions, 780, lost, none } }, postgres: { create: CREATE TABLE IF NOT EXISTS books (title TEXT PRIMARY KEY, pages DOUBLE PRECISION NOT NULL, shelf TEXT NOT NULL, lent INTEGER), find: SELECT title, pages, shelf, lent FROM books WHERE title = $1, update: UPDATE books SET pages = $1 WHERE title = $2, add: ALTER TABLE books ADD COLUMN lent INTEGER, exists: SELECT table_name FROM information_schema.tables WHERE table_name = $1, field: pages } }
+- Value: { book: { title: Middlemarch, pages: 880, shelf: reading }, older: { version: an older version, value: { heading: Middlemarch, pages: 880, shelf: reading, mood: patient }, steps: { op: rename, field: title, from: heading }, { op: drop, field: mood } }, wrong: { title: Middlemarch, pages: eight hundred, shelf: reading }, { title: Middlemarch, pages: 880, shelf: lost }, unknown: a version nobody deployed, table: { version: an older version, fields: { heading: { type: text }, pages: { type: number }, shelf: { type: text }, mood: { type: text } }, key: heading, row: Middlemarch, 880, reading, patient, steps: { op: rename, field: title, from: heading }, { op: drop, field: mood }, { op: add, field: lent }, other: { title: Persuasion, pages: 249, shelf: read }, pages: 250, count: 2, wrong: { title: Lost Illusions, row: Lost Illusions, 780, lost, none }, another: lent_books }, postgres: { create: CREATE TABLE IF NOT EXISTS books (title TEXT PRIMARY KEY, pages DOUBLE PRECISION NOT NULL, shelf TEXT NOT NULL, lent INTEGER), find: SELECT title, pages, shelf, lent FROM books WHERE title = $1, update: UPDATE books SET pages = $1 WHERE title = $2, add: ALTER TABLE books ADD COLUMN lent INTEGER, exists: SELECT table_name FROM information_schema.tables WHERE table_name = $1, field: pages } }
 
 ### What the library's scenarios check
 
@@ -260,6 +260,16 @@ Technical choice · `InMemory` · **held**
 - In: Test
 - Serves: Data described once
 
+### PostgreSQL's dialect, read
+
+Technical choice · `PostgresForScenarios` · **held**
+
+- Decided by: trame
+- Context: What PostgreSQL's tables write is read as a product's tables would ask it, through the dialect's port; no database answers.
+- Chooses: PostgreSQL's tables
+- In: PostgreSQL's statements
+- Serves: Data described once
+
 ### SQLite, in memory
 
 Technical choice · `SqliteForScenarios` · **held**
@@ -269,6 +279,12 @@ Technical choice · `SqliteForScenarios` · **held**
 - Chooses: SQLite in memory
 - In: Test
 - Serves: Data described once
+
+### PostgreSQL's statements
+
+Environment · `PostgresStatementsOnly`
+
+- Owner: trame
 
 ### Test
 
@@ -292,17 +308,17 @@ Scenario · `DocumentsKept` · **held**
 Scenario · `PostgresStatements` · **held**
 
 - Owner: trame
-- Parameters: { postgres: records.PostgresTables, book: shelves.Book, given: scenarios.DataGiven, checks: scenarios.DataChecks }
+- Parameters: { postgres: records.TableDialect, book: shelves.Book, given: scenarios.DataGiven, checks: scenarios.DataChecks }
 - Verifies: PostgreSQL's tables
-- In: Test
-- Depends on: PostgreSQL's tables, A book, What the library's scenarios are given, What the library's scenarios check
+- In: PostgreSQL's statements
+- Depends on: A dialect of SQL, for tables, A book, What the library's scenarios are given, What the library's scenarios check
 
 ### Records kept in SQL
 
 Scenario · `RecordsKept` · **held**
 
 - Owner: trame
-- Parameters: { records: records.Records, database: records.SqlDatabase, dialect: records.TableDialect, versions: records.VersionsTable, book: shelves.Book, given: scenarios.DataGiven, checks: scenarios.DataChecks }
+- Parameters: { records: records.Records, database: records.SqlDatabase, dialect: records.TableDialect, versions: records.VersionsTable, book: shelves.Book, given: scenarios.DataGiven, checks: scenarios.DataChecks, counts: std/algebra.Counts }
 - Verifies: Records in SQL, SQLite's tables, SQLite in memory, No records to start with, A value of the description it is of
 - In: Test
 - Depends on: Records, A database of SQL, A dialect of SQL, for tables, The table of versions, A book, What the library's scenarios are given, What the library's scenarios check

@@ -212,8 +212,8 @@ export function ownerOf(n: AnyNode): string | undefined {
 
 // Frozen programs --------------------------------------------------------------
 // A "frozen" assembled program does not compile the graph when it starts. It imports the few declarations it needs
-// (inline bodies, rules, the component), and these tools read them as declared. The values are written in the program
-// at the date of the assembly.
+// (inline bodies, rules, the amendments of a body, the component), and these tools read them as declared. The values
+// are written in the program at the date of the assembly.
 
 // A node as its kind reads it in such a program: its title, its fields by name, and by path as a view gives them.
 const declared = (n: AnyNode) =>
@@ -258,9 +258,28 @@ export const limited = (value: unknown, members: readonly string[]): unknown => 
   })
 }
 
+/** The field that holds a node's body, at execution: what an amendment of its body patches. */
+const executionBody = (n: AnyNode): string | undefined =>
+  Object.entries(meta(n).def.fields).find(([, f]) => f.type === FieldType.body && (f.stage ?? Stage.execution) === Stage.execution)?.[0]
+
+/**
+ * A body as amendments make it (since g105): each one, in the order they were applied, claims on the body a function that
+ * receives the body before it and gives the body after (`body: (previous) => (deps) => …`). Its claims are read as its
+ * kind gives them, from its declaration.
+ */
+export function amendBody(n: AnyNode, base: unknown, by: readonly AnyNode[]): unknown {
+  const k = executionBody(n)
+  return by.reduce((body, a) => {
+    const claim = (meta(a).def.claims?.(declared(a) as never, undefined as never) ?? []).find((c) => c.path === k)
+    return typeof claim?.value === "function" ? (claim.value as (previous: unknown) => unknown)(body) : body
+  }, base)
+}
+
 export const frozen = {
   /** A capability: a realization limited to what its consumer uses. */
   limited,
+  /** A body as the amendments in force at the date of the assembly make it, in the order they were applied (since g105). */
+  amended: amendBody,
   /** The data in force of a node that a rule reads by name, at the date of the assembly. */
   data(n: AnyNode, ref: string, data: Record<string, unknown>): void {
     const m = meta(n)
@@ -271,7 +290,7 @@ export const frozen = {
   },
   /** A node's inline body, as declared. */
   body(n: AnyNode): (deps: Record<string, unknown>) => unknown {
-    const k = Object.entries(meta(n).def.fields).find(([, f]) => f.type === FieldType.body && (f.stage ?? Stage.execution) === Stage.execution)?.[0]
+    const k = executionBody(n)
     const body = k ? meta(n).data[k] : undefined
     if (typeof body !== "function") throw new Error(`"${refOf(n)}" has no inline body`)
     return body as (deps: Record<string, unknown>) => unknown

@@ -37,6 +37,7 @@ The records a table holds when it is created (a service's first reservations, in
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
+| [PostgreSQL's statements](scenarios.md#PostgresStatementsOnly) | none | — |
 | [Test](scenarios.md#Test) | [No records to start with](#StartEmpty) | [Documents, in memory](scenarios.md#InMemory) |
 | [Test](../.trame/std/docs/scenarios.md#Test) | none | — |
 
@@ -48,12 +49,13 @@ The records a table holds when it is created (a service's first reservations, in
 
 ### Records
 
-`Records` · `src/records.ts:113`
+`Records` · `src/records.ts:119`
 
-Where the entities a product keeps as many live: a reservation found by its key, a refund inserted.
+Where the entities a product keeps as many live: a reservation found by its key, a refund inserted. A deployment makes the place of each one ready (migrated from the version it holds) before the product uses it; a store may still make it ready the first time it is used, where nothing deployed it (a scenario's database in memory).
 
 | Method | What it may do |
 |---|---|
+| `prepare` | write |
 | `find` | read |
 | `insert` | write |
 | `update` | write |
@@ -62,6 +64,7 @@ Where the entities a product keeps as many live: a reservation found by its key,
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
+| [PostgreSQL's statements](scenarios.md#PostgresStatementsOnly) | none | — |
 | [Test](scenarios.md#Test) | [Records in SQL](#RecordsInSql) | [Documents, in memory](scenarios.md#InMemory) |
 | [Test](../.trame/std/docs/scenarios.md#Test) | none | — |
 
@@ -86,6 +89,7 @@ Where the tables of the entities live.
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
+| [PostgreSQL's statements](scenarios.md#PostgresStatementsOnly) | none | — |
 | [Test](scenarios.md#Test) | [SQLite in memory](#SqliteInMemory) | [SQLite, in memory](scenarios.md#SqliteForScenarios) |
 | [Test](../.trame/std/docs/scenarios.md#Test) | none | — |
 
@@ -104,12 +108,13 @@ The statements a table of an entity needs, written for one database.
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
+| [PostgreSQL's statements](scenarios.md#PostgresStatementsOnly) | [PostgreSQL's tables](#PostgresTables) | [PostgreSQL's dialect, read](scenarios.md#PostgresForScenarios) |
 | [Test](scenarios.md#Test) | [SQLite's tables](#SqliteTables) | [Documents, in memory](scenarios.md#InMemory) |
 | [Test](../.trame/std/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
 - Implemented by: [PostgreSQL's tables](#PostgresTables), [SQLite's tables](#SqliteTables)
-- Used by: [Records in SQL](#RecordsInSql), [Records kept in SQL](scenarios.md#RecordsKept)
+- Used by: [Records in SQL](#RecordsInSql), [PostgreSQL's statements](scenarios.md#PostgresStatements), [Records kept in SQL](scenarios.md#RecordsKept)
 
 ## Functions
 
@@ -117,7 +122,7 @@ The statements a table of an entity needs, written for one database.
 
 ### PostgreSQL's tables
 
-`PostgresTables` · `src/records.ts:250` · status: **held**
+`PostgresTables` · `src/records.ts:267` · status: **held**
 
 Positional parameters ($1, $2…); text, double precision and whole numbers; the information schema says a table exists.
 
@@ -126,16 +131,16 @@ Positional parameters ($1, $2…); text, double precision and whole numbers; the
 - Body: `./code/tables.ts` (typescript)
 - Serves: [Data described once](product.md#DataDescribedOnce)
 - Implements: [A dialect of SQL, for tables](#TableDialect)
+- Chosen by: [PostgreSQL's dialect, read](scenarios.md#PostgresForScenarios)
 - Verified by: [PostgreSQL's statements](scenarios.md#PostgresStatements)
-- Used by: [PostgreSQL's statements](scenarios.md#PostgresStatements)
 
 <a id="RecordsInSql"></a>
 
 ### Records in SQL
 
-`RecordsInSql` · `src/records.ts:125` · status: **held**
+`RecordsInSql` · `src/records.ts:132` · status: **held**
 
-Each entity a table, under its name: made ready the first time it is used (created with what it starts with, or migrated from the version it holds, then that version written), in a transaction. A value is written field by field (a list as JSON, yes or no as 1 or 0, nothing as NULL) and read back the same way, checked against the description: a row that does not keep it is nothing. A table older than the versions (no version kept) holds the first version deployed.
+Each entity a table, under its name: made ready when a deployment asks, or the first time it is used (created with what it starts with, or migrated from the version it holds, then that version written), in a transaction; made ready within a transaction that fails, it is made ready again. A value is written field by field (a list as JSON, yes or no as 1 or 0, nothing as NULL) and read back the same way, checked against the description: a row that does not keep it is nothing. A table older than the versions (no version kept) holds the first version deployed.
 
 - Owner: trame
 - Parameters: `database` ← [A database of SQL](#SqlDatabase) · `dialect` ← [A dialect of SQL, for tables](#TableDialect) · `initial` ← [What a new table starts with](#InitialRecords) · `versions` ← [The table of versions](#VersionsTable) · `conforms` ← [A value of the description it is of](documents.md#Conforms) · `values` ← [Types of values](../.trame/std/docs/algebra.md#ValueTypes) · `counts` ← [Counts](../.trame/std/docs/algebra.md#Counts)
@@ -151,7 +156,7 @@ Each entity a table, under its name: made ready the first time it is used (creat
 
 ### SQLite's tables
 
-`SqliteTables` · `src/records.ts:233` · status: **held**
+`SqliteTables` · `src/records.ts:250` · status: **held**
 
 Parameters as question marks; text, real numbers and whole numbers; the table of the schema says a table exists.
 
@@ -184,7 +189,7 @@ A table is created empty.
 
 ### SQLite in memory
 
-`SqliteInMemory` · `src/records.ts:267` · status: **held**
+`SqliteInMemory` · `src/records.ts:284` · status: **held**
 
 A database new each time it is opened: what a scenario keeps its records in, and leaves nothing behind.
 

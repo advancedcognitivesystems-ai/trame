@@ -1,5 +1,6 @@
 {
   "imports": {
+    "#data/*": "./.trame/data/src/*.ts",
     "#std/*": "./.trame/std/src/*.ts",
     "#trame/kernel": "./.trame/trame/trame/kernel.ts",
     "#trame/kinds/*": "./.trame/trame/kinds/*.ts"

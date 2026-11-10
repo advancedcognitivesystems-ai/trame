@@ -11,63 +11,17 @@ import { entryKind } from "#trame/kinds/entry-point"
 import { edgesOf, fieldsOf } from "#trame/kernel"
 import { WithoutEffects, Linked } from "#std/rules"
 import { CancelWithoutStress } from "./cancellation"
-import type { Reservation, CHF } from "./cancellation"
-import type { Command } from "#std/effects"
+import type { CHF } from "./cancellation"
+import type { EntityOf } from "#data/kinds/entity"
+import type { KeptReservation, KeptRefund } from "./data"
 
-// The contracts: what the code asks of the world. Types, not implementations.
+// The contracts: what the code asks of the world. Types, not implementations. What the service keeps is described once
+// (data): a reservation and a refund are the values of their entities.
 
-export type Param = string | number | null
-/** A statement that only reads, and one that writes: the dialect makes each, and says which it makes. */
-export type ReadStatement = Command<"read">
-export type WriteStatement = Command<"write">
-export interface ReadConnection {
-  /** Runs a statement that only reads: one that would write is refused by the database itself. */
-  read<T = Record<string, unknown>>(sql: ReadStatement, ...params: Param[]): Promise<T[]>
-}
-export interface Connection extends ReadConnection {
-  write(sql: WriteStatement, ...params: Param[]): Promise<number>
-  transaction<T>(work: () => Promise<T>): Promise<T>
-}
-/** The type of a column, whatever the database: each dialect names it. */
-export type ColumnType = "text" | "number"
-/** A table, whatever the database: its name, its key, its columns in their order, and the columns that hold the key of another table's row. */
-export interface Table {
-  name: string
-  key: string
-  columns: Record<string, ColumnType>
-  references?: Record<string, { table: string; column: string }>
-}
-/** The tables of the service: the reservations, the refund of each cancelled one; the column of a reservation's status; the name a count is read under. */
-export interface Tables {
-  reservations: Table
-  refunds: Table
-  status: string
-  count: string
-}
-/** What depends on the database's dialect: each statement the repositories need, written for it. */
-export interface SqlDialect {
-  /** Creates a table unless it exists. */
-  create(table: Table): WriteStatement
-  /** Counts the rows of a table, as a column of this name. */
-  count(name: string, as: string): ReadStatement
-  /** Inserts a row: one parameter per column, in their order. */
-  insert(name: string, columns: readonly string[]): WriteStatement
-  /** Reads these columns of the row whose key is the parameter. */
-  find(name: string, columns: readonly string[], key: string): ReadStatement
-  /** Gives these columns new values (one parameter each, in their order), in the row whose key is the last parameter. */
-  update(name: string, columns: readonly string[], key: string): WriteStatement
-}
-export interface StoredReservation extends Reservation {
-  id: string
-  /** Start of the slot, ISO 8601. */
-  start: string
-  status: "active" | "cancelled"
-}
-export interface RefundRecord {
-  reservation: string
-  amount: CHF
-  reference: string
-}
+/** A reservation as it is kept. */
+export type StoredReservation = EntityOf<typeof KeptReservation>
+/** The refund of a cancelled reservation, as it is kept. */
+export type RefundRecord = EntityOf<typeof KeptRefund>
 export interface ReservationReader {
   find(id: string): Promise<StoredReservation | undefined>
 }
@@ -84,28 +38,6 @@ export interface CallLog {
 export interface TimeSource {
   now(): Date
 }
-
-/**
- * SQL dialect
- * The statements the repositories need, written in the dialect of the database that answers them: its parameters, the
- * types of its columns. It touches nothing.
- */
-export const Dialect = port<SqlDialect>({ owner: "karim", declaredEffects: [] })
-
-/**
- * Database
- * A full SQL connection: reads, writes and transactions.
- */
-export const Database = port<Connection>({
-  owner: "karim",
-  declaredEffects: { read: ["read", "asynchronous"], write: ["write", "asynchronous"], transaction: ["read", "write", "asynchronous"] },
-})
-
-/**
- * Read-only database
- * The same database, seen as read-only.
- */
-export const ReadOnlyDatabase = port<ReadConnection>({ owner: "karim", declaredEffects: ["read", "asynchronous"] })
 
 /**
  * Reservation reading

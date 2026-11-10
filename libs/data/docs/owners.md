@@ -4,7 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 2 | 62 |
+| trame | 0 | 0 | 2 | 64 |
 
 <a id="trame"></a>
 
@@ -48,7 +48,9 @@
 | [What the library's scenarios are given](scenarios.md#DataGiven) | Decision |  |
 | [Documents kept in the preferences](scenarios.md#DocumentsKept) | Scenario | **held** |
 | [Documents, in memory](scenarios.md#InMemory) | Technical choice | **held** |
+| [PostgreSQL's dialect, read](scenarios.md#PostgresForScenarios) | Technical choice | **held** |
 | [PostgreSQL's statements](scenarios.md#PostgresStatements) | Scenario | **held** |
+| [PostgreSQL's statements](scenarios.md#PostgresStatementsOnly) | Environment |  |
 | [Records kept in SQL](scenarios.md#RecordsKept) | Scenario | **held** |
 | [SQLite, in memory](scenarios.md#SqliteForScenarios) | Technical choice | **held** |
 | [Test](scenarios.md#Test) | Environment |  |

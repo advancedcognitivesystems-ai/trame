@@ -2,20 +2,20 @@
 
 *What answers each port in each environment on 10 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
 
-> **2 technical choices for 6 ports, in 1 environment**
+> **3 technical choices for 6 ports, in 2 environments**
 
-| Port | Test |
-|---|---|
-| [Documents](documents.md#Documents) | [Documents kept in the preferences](documents.md#DocumentsInPreferences) |
-| [A database of SQL](records.md#SqlDatabase) | [SQLite in memory](records.md#SqliteInMemory) |
-| [A dialect of SQL, for tables](records.md#TableDialect) | [SQLite's tables](records.md#SqliteTables) |
-| [What a new table starts with](records.md#InitialRecords) | [No records to start with](records.md#StartEmpty) |
-| [Records](records.md#Records) | [Records in SQL](records.md#RecordsInSql) |
-| [Preferences](../.trame/std/docs/platform.md#PreferencesStore) | [Preferences kept in memory](../.trame/std/docs/platform.md#MemoryPreferences) |
+| Port | Test | PostgreSQL's statements |
+|---|---|---|
+| [Documents](documents.md#Documents) | [Documents kept in the preferences](documents.md#DocumentsInPreferences) | — |
+| [A database of SQL](records.md#SqlDatabase) | [SQLite in memory](records.md#SqliteInMemory) | — |
+| [A dialect of SQL, for tables](records.md#TableDialect) | [SQLite's tables](records.md#SqliteTables) | [PostgreSQL's tables](records.md#PostgresTables) |
+| [What a new table starts with](records.md#InitialRecords) | [No records to start with](records.md#StartEmpty) | — |
+| [Records](records.md#Records) | [Records in SQL](records.md#RecordsInSql) | — |
+| [Preferences](../.trame/std/docs/platform.md#PreferencesStore) | [Preferences kept in memory](../.trame/std/docs/platform.md#MemoryPreferences) | — |
 
 | Pattern | Status | Followed by |
 |---|---|---|
-| [Strategy](../.trame/std/docs/patterns.md#Strategy) | **held** | [Documents, in memory](scenarios.md#InMemory), [In memory](../.trame/std/docs/scenarios.md#InMemory) |
+| [Strategy](../.trame/std/docs/patterns.md#Strategy) | **held** | [Documents, in memory](scenarios.md#InMemory), [PostgreSQL's dialect, read](scenarios.md#PostgresForScenarios), [In memory](../.trame/std/docs/scenarios.md#InMemory) |
 | [Adapter](../.trame/std/docs/patterns.md#Adapter) | **held** | [SQLite, in memory](scenarios.md#SqliteForScenarios) |
 
 ## Data · Scenarios
@@ -24,7 +24,7 @@
 
 ### Documents, in memory
 
-`InMemory` · `src/scenarios.ts:31` · status: **held**
+`InMemory` · `src/scenarios.ts:38` · status: **held**
 
 In the library's scenarios, a document is kept in the preferences of a device kept in memory.
 
@@ -50,7 +50,7 @@ Context: The library's documents are read and written as a product's would be, t
 
 ### SQLite, in memory
 
-`SqliteForScenarios` · `src/scenarios.ts:44` · status: **held**
+`SqliteForScenarios` · `src/scenarios.ts:51` · status: **held**
 
 In the library's scenarios, the records of an entity live in a SQLite database kept in memory.
 
@@ -66,4 +66,26 @@ Context: Records are written, migrated and read by SQLite itself, as a product's
 - Chooses: [SQLite in memory](records.md#SqliteInMemory)
 - In: [Test](scenarios.md#Test)
 - Follows: [Adapter](../.trame/std/docs/patterns.md#Adapter)
+- Serves: [Data described once](product.md#DataDescribedOnce)
+
+<a id="PostgresForScenarios"></a>
+
+### PostgreSQL's dialect, read
+
+`PostgresForScenarios` · `src/scenarios.ts:64` · status: **held**
+
+Where the library's scenarios read PostgreSQL's statements, the dialect of the tables is PostgreSQL's.
+
+In [PostgreSQL's statements](scenarios.md#PostgresStatementsOnly):
+
+| Port | Answered by | Which is |
+|---|---|---|
+| [A dialect of SQL, for tables](records.md#TableDialect) | [PostgreSQL's tables](records.md#PostgresTables) | a function |
+
+Context: What PostgreSQL's tables write is read as a product's tables would ask it, through the dialect's port; no database answers.
+
+- Decided by: trame
+- Chooses: [PostgreSQL's tables](records.md#PostgresTables)
+- In: [PostgreSQL's statements](scenarios.md#PostgresStatementsOnly)
+- Follows: [Strategy](../.trame/std/docs/patterns.md#Strategy)
 - Serves: [Data described once](product.md#DataDescribedOnce)

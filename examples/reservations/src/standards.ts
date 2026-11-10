@@ -16,24 +16,6 @@ export const RouteSyntax = standard({
 })
 
 /**
- * SQLite
- * The name of a database that lives in memory, and the statements of a transaction.
- */
-export const Sqlite = standard({
-  owner: "karim",
-  source: "SQLite: In-Memory Databases; SQL As Understood By SQLite (BEGIN, COMMIT, ROLLBACK); Pragma statements (query_only)",
-  url: "https://www.sqlite.org/inmemorydb.html",
-  constants: {
-    memory: { value: ":memory:", meaning: "The name that opens a database in memory, new each time" },
-    begin: { value: "BEGIN", meaning: "Starts a transaction" },
-    commit: { value: "COMMIT", meaning: "Makes its writes last" },
-    rollback: { value: "ROLLBACK", meaning: "Undoes them" },
-    readOnly: { value: "PRAGMA query_only = ON", meaning: "From here on, the connection refuses any statement that would change the database" },
-    readWrite: { value: "PRAGMA query_only = OFF", meaning: "From here on, it accepts them again" },
-  },
-})
-
-/**
  * API of the payment provider
  * The address of a refund, under the provider's address, and the header of the idempotency key.
  */

@@ -3709,5 +3709,131 @@
     "by": "claude",
     "signature": "attribution",
     "seal": "54057872cb10a8b55ff92e9e8fd47cce45f0da0293bb5ea7996fe5c873cc09cc"
+  },
+  {
+    "node": "commands.Advance",
+    "at": "2026-11-10",
+    "source": "deployed",
+    "value": 1,
+    "fingerprint": "94ac16d2",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "8d76f0fd7ed5e48e9df044e61b8d60e5e605ecb58561e49123bddf73624acb49"
+  },
+  {
+    "node": "sdlc.CandidateKeepsTheLaws",
+    "at": "2026-11-10",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "c08827fa",
+    "code": "1f4174c0",
+    "engine": "59f20aefeccfc914",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "8282664737e29d59be1f8fc70deca1860326be200b2f96b939d7a5b89cc5907d"
+  },
+  {
+    "node": "sdlc.CandidateRunsOnTheMachine",
+    "at": "2026-11-10",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "c08827fa",
+    "code": "df53e5e0",
+    "engine": "59f20aefeccfc914",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "c40ac2d28a344eec7f04778989b71a024f69e6c621908d0959c8eef7c74e064c"
+  },
+  {
+    "node": "sdlc.EngineCandidate",
+    "at": "2026-11-10",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "b2d8e9407a68ed7e8524447c457360cd5949d4402600c5bcf7ad6140c6974bfe",
+    "code": "c93090e8",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "59f20aefeccfc914",
+    "seal": "a3daf561487016910827a99070e0f5d5c656cc6a45e8be0c953462a00cec123e"
+  },
+  {
+    "node": "sdlc.EngineCandidate",
+    "at": "2026-11-10",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "b2d8e9407a68ed7e8524447c457360cd5949d4402600c5bcf7ad6140c6974bfe",
+    "subject": "sdlc.NextGeneration",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "0726c9863d9d659f5e230a12c92fd3ae097907651ccc72074de661761cd41edb"
+  },
+  {
+    "node": "sdlc.GraphPage",
+    "at": "2026-11-10",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "55c41aff3220a74e03b1633ada76282be1c5f3f22d55980006ea642642f9ff60",
+    "code": "76ddfd69",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "59f20aefeccfc914",
+    "seal": "73ca961c1d6d2b8b39e4cfece95161306a7417af08192c9890e5eca7d5142efe"
+  },
+  {
+    "node": "sdlc.GraphPage",
+    "at": "2026-11-10",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "55c41aff3220a74e03b1633ada76282be1c5f3f22d55980006ea642642f9ff60",
+    "subject": "sdlc.NextGeneration",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "bbe0b77c9462a2c9aeaf18bb72d74dcb91127bc09aeb2f5d2546f4bd501e57be"
+  },
+  {
+    "node": "sdlc.GraphPageOpens",
+    "at": "2026-11-10",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "37362c94",
+    "code": "4a92dae2",
+    "engine": "59f20aefeccfc914",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "d0469f5ab38ee623185b3143e0745fb79669b13ed0c1b689c4edf95560498b03"
+  },
+  {
+    "node": "sdlc.NextGeneration",
+    "at": "2026-11-10",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "41c255a0",
+    "url": "evidence/shipments/NextGeneration-2026-11-10-41c255a0.json",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "b86a1ba23d7e29f35e6f9160eab7298fbf5f13ab37c66f634e193da2dbbfd59f"
+  },
+  {
+    "node": "sdlc.PageProgram",
+    "at": "2026-11-10",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "a1d2ebc2145ca1bf7bc8f867b7bcd93ad192fea457e741eb52235c7403d62390",
+    "code": "7928117f",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "59f20aefeccfc914",
+    "seal": "0a7c0a9e732b965072c000c04004ffbffc0e21e21f94bc432ab2d8fef7ba20e7"
+  },
+  {
+    "node": "sdlc.PageProgram",
+    "at": "2026-11-10",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "a1d2ebc2145ca1bf7bc8f867b7bcd93ad192fea457e741eb52235c7403d62390",
+    "subject": "sdlc.NextGeneration",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "c4408168621dfb54ed00306ffb0b0a2410b8a9285fc597248e3476b156b0f4a9"
   }
 ]

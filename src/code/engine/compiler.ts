@@ -164,6 +164,8 @@ export interface Loaded {
   language: { file: string; items: LiteralFound[] }[]
   /** The fingerprint of each node's code: its declaration as it runs, and the files its bodies are written in. */
   code: Map<AnyNode, string>
+  /** The fingerprint of the kinds and views the project writes itself, inside its root (since g105). */
+  languageCode: string
 }
 
 export interface Deps {
@@ -384,7 +386,15 @@ const body = (deps: Deps) => {
       bodies: new Map([...bodies].map(([language, { sources }]) => [language, sources])),
       literals: readLiterals(root, bodies, infos),
       language: readLanguage(root, new Set([...bodies.values()].flatMap((b) => b.sources.map((x) => x.file)))),
+      languageCode: deps.fingerprints.of(ownLanguage(root).map((file) => [relative(root, file), String(readFileSync(file, encodings.utf8))])),
     }
+  }
+
+  /** The files of the kinds and views a project writes itself: inside its root (a project that takes Trame's does not). */
+  function ownLanguage(root: string): string[] {
+    const dirs = projectDirs(root)
+    const inside = (dir: string) => !relative(root, dir).startsWith(deps.specifiers.parent)
+    return [...dirs.kinds, ...dirs.views].filter(inside).flatMap((d) => [...tsFiles(d), ...bodyFiles(d)])
   }
 
   /**
@@ -395,9 +405,7 @@ const body = (deps: Deps) => {
   function readLanguage(root: string, bodies: Set<string>): Loaded["language"] {
     const driver = graphDriver()
     if (!driver.literals) return []
-    const dirs = projectDirs(root)
-    const inside = (dir: string) => !relative(root, dir).startsWith(deps.specifiers.parent)
-    const files = [...dirs.kinds, ...dirs.views].filter(inside).flatMap((d) => [...tsFiles(d), ...bodyFiles(d)]).filter((f) => !bodies.has(f))
+    const files = ownLanguage(root).filter((f) => !bodies.has(f))
     const found = driver.literals(files.map((file) => ({ key: file, file })))
     return files.map((file) => ({ file: relative(root, file), items: found.get(file) ?? [] })).filter((x) => any(x.items))
   }
@@ -760,11 +768,14 @@ const body = (deps: Deps) => {
       tm.base ??= cloneData(tm.data)
       const previous = getPath(tm.data, c.path)
       let value = c.value
-      if (tm.def.fields[references.firstSegment(c.path)]?.type === FieldType.fn && values.isFunction(value)) {
+      const type = tm.def.fields[references.firstSegment(c.path)]?.type
+      if (type === FieldType.fn && values.isFunction(value)) {
         const before = isHole(previous) ? () => { throw new Hole(c.target, c.path) } : previous
         value = (c.value as (p: unknown) => unknown)(before)
       }
-      setPath(tm.data, c.path, value)
+      // A body stays as declared (inline, or in its file): wiring, and the program assembled, compose it with the
+      // amendments of it, in the order they are applied here (since g105).
+      if (type !== FieldType.body) setPath(tm.data, c.path, value)
       const entry = (tm.amendedBy ??= []).find((a) => a.by === c.by)
       if (entry) entry.paths.push(c.path)
       else tm.amendedBy.push({ by: c.by, paths: [c.path] })
@@ -853,6 +864,7 @@ const body = (deps: Deps) => {
       wire: (deps, env) => wireDeps({ graph: g, root: l.root, today, refused }, deps, env),
       plan: (entries, env) => plan({ graph: g, root: l.root, today, refused }, entries, env),
       evidence: given, installed: l.installed, versions: l.versions, libraries: new Map(l.libraries.map((lib) => [lib.name, lib.version])), code: l.code,
+      languageCode: l.languageCode,
       engine: l.engine,
       onBlocked: (hole, what, of) => {
         const byKey = blocked.get(hole.key) ?? new Map()

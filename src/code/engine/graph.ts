@@ -55,6 +55,8 @@ export interface GraphState {
   versions?: Map<string, readonly string[]>
   /** The fingerprint of each node's code: its declaration as it runs, and the files its bodies are written in. */
   code?: Map<AnyNode, string>
+  /** The fingerprint of the kinds and views the project writes itself (since g105). */
+  languageCode?: string
   /** The fingerprint of the engine the project pins, when its generation records it. */
   engine?: string
   /** Where the runs of the project are kept: in the process, or beyond it while its files are as they were. */
@@ -433,7 +435,12 @@ const body = (deps: Deps) => {
       libraryVersion: (library) => st.libraries?.get(library),
       packageVersions: (ref) => st.versions?.get(ref),
       // The code of several nodes: each one's, by its reference, whatever order they are given in.
-      code: (vs) => (st.code ? deps.fingerprints.of(Object.fromEntries(vs.map((v) => [v.ref, st.code?.get(v.node)]))) : undefined),
+      // With the language: the kinds and views the project writes itself, under no reference a node can have.
+      code: (vs, language) => {
+        if (!st.code) return undefined
+        const nodes = Object.fromEntries(vs.map((v) => [v.ref, st.code?.get(v.node)]))
+        return deps.fingerprints.of(language && st.languageCode !== undefined ? [nodes, st.languageCode] : nodes)
+      },
       engine: () => st.engine,
       asGiven: () => st.asGiven === true,
       inUnits: (value: number, quantity: string) => {

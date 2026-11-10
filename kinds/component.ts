@@ -39,10 +39,13 @@ const kind = defineKind({
 
   language: (self, g) => g.lib.texts.optional(self.field(F.language) as string | undefined),
 
-  /** Assembled in each environment where it is deployed: what cannot be wired blocks. */
+  /**
+   * Assembled in each environment where it is deployed: what cannot be wired blocks. Without environments named, each
+   * environment of its own project: a library's (where its own scenarios run) is not one a product deploys to.
+   */
   holes: (self, g) => {
     const { counts, texts, lists } = g.lib
-    const envs = counts.any(self.environments) ? self.environments : g.all(KindName.environment).nodes()
+    const envs = counts.any(self.environments) ? self.environments : g.all(KindName.environment).nodes().filter((v) => v.library === self.library)
     const needed = [...self.dependencies.map((d) => d.node), ...entriesOf(self, g)]
     // The same error in several environments is said once.
     const byError = new Map<string, Set<string>>()

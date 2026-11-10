@@ -261,8 +261,10 @@ const body = (deps: Deps): Handler => async (req) => {
     node: s.node.ref, at: o.today, source: EvidenceSource.shipped, value: one, fingerprint: built.get(s.node.ref), subject: shipment.ref, ...signed,
   }))
   // What the deployment keeps of each node it reached whose kind says so (an entity's description, since g104): the next
-  // deployment migrates from it.
-  const kept: Entry[] = (shipment.result<{ reached?: readonly string[] }>()?.reached ?? []).flatMap((r) => comp.node(r).nodes()).flatMap((v) => {
+  // deployment migrates from it. A shipment that deploys nothing keeps nothing (since g105): what it ships stores nothing
+  // anywhere (a version of a library).
+  const reached = deps.counts.any(deployed) ? shipment.result<{ reached?: readonly string[] }>()?.reached ?? [] : []
+  const kept: Entry[] = reached.flatMap((r) => comp.node(r).nodes()).flatMap((v) => {
     const deployedAs = v.result<DeployedResult>()?.deployed
     return deployedAs === undefined ? [] : [{
       node: v.ref, at: o.today, source: EvidenceSource.shipped, value: one, fingerprint: sdlc.of(deployedAs), subject: shipment.ref, kept: deployedAs, ...signed,

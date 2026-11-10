@@ -48,8 +48,11 @@ export interface Assembly {
   frozenData: Map<AnyNode, string>
   /** The dated changes of the graph after the assembly, which a frozen program will not see. */
   changes?: string[]
-  /** Where the body of each built node is: a file (absolute path), or inline in its declaration. */
-  bodies: Map<AnyNode, { file: string; inline?: undefined } | { file?: undefined; inline: true }>
+  /**
+   * Where the body of each built node is: a file (absolute path), or inline in its declaration; and the amendments in
+   * force that make it otherwise, in the order they apply (since g105).
+   */
+  bodies: Map<AnyNode, ({ file: string; inline?: undefined } | { file?: undefined; inline: true }) & { amendments: AnyNode[] }>
   /** The module of the prelude (the tooling of frozen programs), absolute path without extension. */
   prelude: string
   /** The dependencies of the component, by parameter name. */
@@ -95,7 +98,7 @@ const body = (deps: Deps) => {
   const { values } = deps
   const { optional } = deps.texts
   const { join } = deps.paths
-  const { plan, depsOf, bodyOf, bodyPath } = deps.wiring
+  const { plan, depsOf, bodyOf, bodyPath, bodyAmendments } = deps.wiring
   const { meta, refOf, isFileBody, isNode } = deps.prelude.internal
   const { driverFor } = deps.drivers
   const { messages } = deps
@@ -167,12 +170,6 @@ const body = (deps: Deps) => {
       })
       provisions.push({ node: step.node, language: provision.language, module: bodyPath(host, step.node, provision), variables })
     }
-    // A body is run as declared: one a claim redefines in force (an amended rule) cannot be frozen.
-    for (const step of p.steps.filter((s) => s.how === WireMode.body)) {
-      const v = g.view(step.node)
-      const fields = meta(step.node).def.fields
-      if (v.amendedBy.some((a) => a.paths.some((path) => fields[path]?.type === FieldType.body))) errors.push(messages.amendedBody(v.title))
-    }
     // Each value is read now. An amended value that cannot be written as JSON cannot be frozen.
     const frozenValues: Assembly["frozenValues"] = new Map()
     for (const step of p.steps.filter((s) => s.how === WireMode.value)) {
@@ -206,7 +203,9 @@ const body = (deps: Deps) => {
     const bodies: Assembly["bodies"] = new Map()
     for (const step of p.steps.filter((s) => s.how === WireMode.body)) {
       const b = bodyOf(step.node)
-      bodies.set(step.node, isFileBody(b) ? { file: bodyPath(host, step.node, b) } : { inline: true })
+      // A body amended at this date (an amended rule) is run as its amendments make it: the program composes them.
+      const amendments = bodyAmendments(host, step.node)
+      bodies.set(step.node, isFileBody(b) ? { file: bodyPath(host, step.node, b), amendments } : { inline: true, amendments })
     }
     const entryFields: Assembly["entryFields"] = new Map()
     for (const e of entries) {

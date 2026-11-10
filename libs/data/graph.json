@@ -223,7 +223,7 @@
       "id": "records.PostgresTables",
       "kind": "function",
       "title": "PostgreSQL's tables",
-      "source": "src/records.ts:250",
+      "source": "src/records.ts:267",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -257,10 +257,13 @@
       "id": "records.Records",
       "kind": "port",
       "title": "Records",
-      "source": "src/records.ts:113",
+      "source": "src/records.ts:119",
       "fields": {
         "owner": "trame",
         "declaredEffects": {
+          "prepare": [
+            "write"
+          ],
           "find": [
             "read"
           ],
@@ -284,7 +287,7 @@
       "id": "records.RecordsInSql",
       "kind": "function",
       "title": "Records in SQL",
-      "source": "src/records.ts:125",
+      "source": "src/records.ts:132",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -326,7 +329,7 @@
       "id": "records.SqliteInMemory",
       "kind": "implementation",
       "title": "SQLite in memory",
-      "source": "src/records.ts:267",
+      "source": "src/records.ts:284",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -344,7 +347,7 @@
       "id": "records.SqliteTables",
       "kind": "function",
       "title": "SQLite's tables",
-      "source": "src/records.ts:233",
+      "source": "src/records.ts:250",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -450,7 +453,7 @@
       "id": "scenarios.DataChecks",
       "kind": "catalog",
       "title": "What the library's scenarios check",
-      "source": "src/scenarios.ts:56",
+      "source": "src/scenarios.ts:76",
       "fields": {
         "owner": "trame",
         "messages": "(function)"
@@ -461,7 +464,7 @@
       "id": "scenarios.DataGiven",
       "kind": "decision",
       "title": "What the library's scenarios are given",
-      "source": "src/scenarios.ts:80",
+      "source": "src/scenarios.ts:101",
       "fields": {
         "owner": "trame",
         "value": {
@@ -556,7 +559,8 @@
                 "lost",
                 null
               ]
-            }
+            },
+            "another": "lent_books"
           },
           "postgres": {
             "create": "CREATE TABLE IF NOT EXISTS books (title TEXT PRIMARY KEY, pages DOUBLE PRECISION NOT NULL, shelf TEXT NOT NULL, lent INTEGER)",
@@ -574,7 +578,7 @@
       "id": "scenarios.DocumentsKept",
       "kind": "scenario",
       "title": "Documents kept in the preferences",
-      "source": "src/scenarios.ts:138",
+      "source": "src/scenarios.ts:164",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -620,7 +624,7 @@
       "id": "scenarios.InMemory",
       "kind": "binding",
       "title": "Documents, in memory",
-      "source": "src/scenarios.ts:31",
+      "source": "src/scenarios.ts:38",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -629,15 +633,27 @@
       "diagnostics": []
     },
     {
+      "id": "scenarios.PostgresForScenarios",
+      "kind": "binding",
+      "title": "PostgreSQL's dialect, read",
+      "source": "src/scenarios.ts:64",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "What PostgreSQL's tables write is read as a product's tables would ask it, through the dialect's port; no database answers."
+      },
+      "diagnostics": []
+    },
+    {
       "id": "scenarios.PostgresStatements",
       "kind": "scenario",
       "title": "PostgreSQL's statements",
-      "source": "src/scenarios.ts:218",
+      "source": "src/scenarios.ts:251",
       "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
-          "postgres": "records.PostgresTables",
+          "postgres": "records.TableDialect",
           "book": "shelves.Book",
           "given": "scenarios.DataGiven",
           "checks": "scenarios.DataChecks"
@@ -653,10 +669,20 @@
       "diagnostics": []
     },
     {
+      "id": "scenarios.PostgresStatementsOnly",
+      "kind": "environment",
+      "title": "PostgreSQL's statements",
+      "source": "src/scenarios.ts:32",
+      "fields": {
+        "owner": "trame"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "scenarios.RecordsKept",
       "kind": "scenario",
       "title": "Records kept in SQL",
-      "source": "src/scenarios.ts:175",
+      "source": "src/scenarios.ts:201",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -667,13 +693,14 @@
           "versions": "records.VersionsTable",
           "book": "shelves.Book",
           "given": "scenarios.DataGiven",
-          "checks": "scenarios.DataChecks"
+          "checks": "scenarios.DataChecks",
+          "counts": "std/algebra.Counts"
         },
         "body": "(function)"
       },
       "result": [
         {
-          "name": "A table of a version deployed is migrated the first time it is used: a column renamed (its key), one dropped, one added; its rows read as the description is now, and the version kept is this one",
+          "name": "A table of a version deployed is migrated when it is made ready: a column renamed (its key), one dropped, one added; its rows read as the description is now, and the version kept is this one",
           "status": "passed"
         },
         {
@@ -689,6 +716,10 @@
           "status": "passed"
         },
         {
+          "name": "A table made ready in a transaction that fails is made ready again the next time it is used",
+          "status": "passed"
+        },
+        {
           "name": "A row that does not keep its description is nothing",
           "status": "passed"
         }
@@ -699,7 +730,7 @@
       "id": "scenarios.SqliteForScenarios",
       "kind": "binding",
       "title": "SQLite, in memory",
-      "source": "src/scenarios.ts:44",
+      "source": "src/scenarios.ts:51",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -711,7 +742,7 @@
       "id": "scenarios.Test",
       "kind": "environment",
       "title": "Test",
-      "source": "src/scenarios.ts:25",
+      "source": "src/scenarios.ts:26",
       "fields": {
         "owner": "trame",
         "evaluates": true
@@ -813,7 +844,9 @@
           "scenarios.DataGiven",
           "scenarios.DocumentsKept",
           "scenarios.InMemory",
+          "scenarios.PostgresForScenarios",
           "scenarios.PostgresStatements",
+          "scenarios.PostgresStatementsOnly",
           "scenarios.RecordsKept",
           "scenarios.SqliteForScenarios",
           "scenarios.Test",
@@ -884,7 +917,7 @@
       },
       "result": {
         "path": "src",
-        "code": "8d3f6193"
+        "code": "247f020c"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -2412,18 +2445,38 @@
       "kind": "serves"
     },
     {
+      "from": "scenarios.PostgresForScenarios",
+      "to": "records.PostgresTables",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.PostgresForScenarios",
+      "to": "scenarios.PostgresStatementsOnly",
+      "kind": "environments"
+    },
+    {
+      "from": "scenarios.PostgresForScenarios",
+      "to": "std/patterns.Strategy",
+      "kind": "follows"
+    },
+    {
+      "from": "scenarios.PostgresForScenarios",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
       "from": "scenarios.PostgresStatements",
       "to": "records.PostgresTables",
       "kind": "verifies"
     },
     {
       "from": "scenarios.PostgresStatements",
-      "to": "scenarios.Test",
+      "to": "scenarios.PostgresStatementsOnly",
       "kind": "env"
     },
     {
       "from": "scenarios.PostgresStatements",
-      "to": "records.PostgresTables",
+      "to": "records.TableDialect",
       "kind": "deps"
     },
     {
@@ -2504,6 +2557,11 @@
     {
       "from": "scenarios.RecordsKept",
       "to": "scenarios.DataChecks",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.RecordsKept",
+      "to": "std/algebra.Counts",
       "kind": "deps"
     },
     {

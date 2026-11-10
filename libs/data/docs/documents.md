@@ -60,6 +60,7 @@ Where the entities a product keeps whole live, each under its name: a person's b
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
+| [PostgreSQL's statements](scenarios.md#PostgresStatementsOnly) | none | — |
 | [Test](scenarios.md#Test) | [Documents kept in the preferences](#DocumentsInPreferences) | [Documents, in memory](scenarios.md#InMemory) |
 | [Test](../.trame/std/docs/scenarios.md#Test) | none | — |
 

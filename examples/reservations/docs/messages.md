@@ -41,6 +41,7 @@ What the service answers when it cannot do what it is asked.
     providerRefused: (status: number) => `Payment provider: ${status}`,
     noApiKey: () => "Payment provider: no API key in the environment (PAYMENT_API_KEY)",
     noPostgresDriver: () => "Prototype: no Postgres driver is installed. The database is described (Terraform) but not connected.",
+    prepared: (tables: string[]) => `Ready: ${tables.join(", ")}`,
   })
 ```
 
@@ -48,13 +49,13 @@ What the service answers when it cannot do what it is asked.
 
 - Owner: karim
 - Written in: [Language](#Language)
-- Used by: [Cancel a reservation](api.md#CancelReservation), [Read a reservation](api.md#ReadReservation), [Real payment provider](infra.md#HttpPayment), [Node HTTP server](infra.md#NodeServer), [Production Postgres database](infra.md#PostgresDatabase)
+- Used by: [Cancel a reservation](api.md#CancelReservation), [Read a reservation](api.md#ReadReservation), [Real payment provider](infra.md#HttpPayment), [Node HTTP server](infra.md#NodeServer), [Production Postgres database](infra.md#PostgresDatabase), [Prepare the storage](sdlc.md#PrepareStorage)
 
 <a id="ScenarioChecks"></a>
 
 ### Checks of the scenarios
 
-`ScenarioChecks` · `src/messages.ts:35`
+`ScenarioChecks` · `src/messages.ts:36`
 
 What each scenario checks, as its report says it.
 
@@ -69,6 +70,7 @@ What each scenario checks, as its report says it.
     secondSameRefund: () => "The second one returns the same refund",
     providerCalledOnce: () => "The provider is called only once",
     disguisedWriteRefused: () => "A statement that writes, passed off as a read, is refused, and changes nothing",
+    storagePrepared: () => "The storage is made ready: the reservations with the first ones, the refunds without any",
     refundedByRule: (id: string, charger: string, lead: Duration, amount: CHF) =>
       `${id} (${charger}, ${Math.round(lead / 60)} min ahead) is refunded ${amount} CHF`,
   })
@@ -78,4 +80,4 @@ What each scenario checks, as its report says it.
 
 - Owner: lea
 - Written in: [Language](#Language)
-- Used by: [Every reservation is refunded according to the rule](scenarios.md#ComplianceScenario), [Read a reservation](scenarios.md#ReadScenario), [A read never writes](scenarios.md#ReadsNeverWrite), [Cancelling twice refunds only once](scenarios.md#RepeatedCancellationScenario)
+- Used by: [Every reservation is refunded according to the rule](scenarios.md#ComplianceScenario), [Read a reservation](scenarios.md#ReadScenario), [A read never writes](scenarios.md#ReadsNeverWrite), [Cancelling twice refunds only once](scenarios.md#RepeatedCancellationScenario), [The storage is prepared](scenarios.md#StoragePrepared)

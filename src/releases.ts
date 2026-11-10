@@ -1543,3 +1543,18 @@ export const G104 = release({
   archive: "9638f5eb088605da",
   assembledBy: G103,
 })
+
+/**
+ * Generation 105
+ */
+export const G105 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g105",
+  date: "2026-11-10",
+  what: "an amended body runs amended, assembled too; only a deployment keeps a description; a version's code holds the kinds it writes",
+  fingerprint: "b287b518746a2b3f",
+  language: "shared",
+  archive: "09556b41ea46b0ac",
+  assembledBy: G104,
+})

@@ -201,7 +201,6 @@ export const CompilerMessages = catalog({
     variableWithoutValue: (node: string, variable: string, error: string) => `"${node}": the variable "${variable}" has no value (${error})`,
     amendedNotJson: (node: string) => `"${node}" is amended at this date and cannot be written as JSON: it cannot be frozen`,
     /** A body a claim redefines in force (a requirement's rule amended): a program reads bodies as declared. */
-    amendedBody: (node: string) => `the body of "${node}" is amended at this date: a program runs bodies as they are declared, so it cannot be frozen`,
     amendedFieldNotJson: (node: string, field: string) =>
       `"${node}" is amended at this date and its field "${field}", which a rule reads, cannot be written as JSON: it cannot be frozen`,
     nothingToFreeze: (node: string, error: string) => `"${node}" has no value to freeze (${error})`,
@@ -724,6 +723,10 @@ export const ScenarioMessages = catalog({
     exampleNodes: (nodes: number, scenarios: number) => `The example has ${plural(nodes, { one: "node", other: "nodes" })}, ${plural(scenarios, { one: "scenario", other: "scenarios" })} among them`,
     noErrorInTheExample: () => "No error in the example",
     exampleScenariosHold: () => "The scenarios of the example hold",
+    amendedRuleRuns: (rule: string, day: string) =>
+      `On ${day}, "${rule}" is called as its amendment in force makes it, and its criteria hold`,
+    amendedBodyAssembled: (component: string, environment: string) =>
+      `Assembled for ${environment} that day, ${component} composes the rule with its amendment`,
     kindsRespectTheirLaws: (passed: number, total: number) => `${passed} kinds out of ${total} respect all their laws`,
     buildSucceeds: () => "The build succeeds",
     summaryShown: () => "The summary is shown",

@@ -10,6 +10,9 @@ import {
   References, Positions,
 } from "./engine"
 import { Build, Preparation } from "./commands"
+import { Assembly } from "./engine"
+import { TypeScriptWriter } from "./typescript"
+import { FrozenApi } from "./conventions"
 import { ExitStatus, NodeEncodings } from "#std/system"
 import { CommandMessages, ScenarioMessages, Lists, Dates, Language } from "./messages"
 import { Counts, Texts } from "#std/algebra"
@@ -23,7 +26,7 @@ import { VersionOrder } from "./packages"
  * Shape of the example
  * How many scenarios the example project holds: the described engine must find them all.
  */
-export const ExampleShape = decision<{ scenarios: number }>({ owner: "trame", value: { scenarios: 4 } })
+export const ExampleShape = decision<{ scenarios: number }>({ owner: "trame", value: { scenarios: 5 } })
 
 /**
  * The described engine compiles the example
@@ -54,6 +57,49 @@ export const CompileExample = scenario({
     const same = (a: typeof l, b: typeof l) => JSON.stringify([...a.infos.values()]) === JSON.stringify([...b.infos.values()]) &&
       JSON.stringify(a.typeErrors) === JSON.stringify(b.typeErrors)
     check(messages.loadedAgainReadsTheSame(), same(l, again))
+  },
+})
+
+/**
+ * A day an amendment of a body is in force
+ * A day of the launch of the example's ultra chargers, when an amendment makes the rule of its refunds otherwise: the
+ * rule, its criteria and the amendment, by their references; a reservation on an ultra charger cancelled at the last
+ * moment (its price, the lead time in seconds); the component and the environment it is assembled for.
+ */
+export const AmendedDay = decision<{
+  day: string; rule: string; criteria: string; amendment: string; reservation: { charger: string; price: number }; lead: number
+  component: string; environment: string
+}>({
+  owner: "trame",
+  value: {
+    day: "2026-11-15", rule: "cancellation.Refund", criteria: "cancellation.RefundCriteria", amendment: "committee.UltraLaunch",
+    reservation: { charger: "ultra", price: 40 }, lead: 0, component: "ReservationsApi", environment: "Local",
+  },
+})
+
+/**
+ * A body amended runs amended
+ * The example compiled on a day an amendment of a rule's body is in force: the rule called is the rule as amended (a
+ * cancellation at the last moment on an ultra charger refunds the whole price) and holds its criteria; its component,
+ * assembled that day, composes the rule with that amendment in the program (since g105).
+ */
+export const AmendedBodiesRun = scenario({
+  owner: "trame",
+  verifies: [Compiler, Wiring, Assembly, TypeScriptWriter],
+  env: Test,
+  deps: { compiler: Compiler, currentProcess: Process, assembly: Assembly, frozen: FrozenApi, given: AmendedDay, counts: Counts, messages: ScenarioMessages },
+  body: ({ compiler, currentProcess, assembly, frozen, given, counts, messages }) => async (check) => {
+    const root = currentProcess.cwd()
+    const c = await compiler.compileAt(await compiler.load(root), given.day)
+    const view = (ref: string) => c.nodes.map((n) => c.graph.view(n)).find((v) => v.ref === ref)
+    const rule = view(given.rule)
+    const refunded = rule ? (rule.node as unknown as (r: unknown, lead: number) => number)(given.reservation, given.lead) : undefined
+    check(messages.amendedRuleRuns(given.rule, given.day), refunded === given.reservation.price && view(given.criteria)?.status === Status.held)
+    const { assembly: a, errors } = assembly.prepareAssembly(c, root, given.component, given.environment)
+    const composed = a && rule ? a.bodies.get(rule.node)?.amendments.map((n) => c.graph.view(n).ref) : undefined
+    const program = a ? assembly.emitAssembly(a).files.find((f) => !f.launches)?.content : undefined
+    check(messages.amendedBodyAssembled(given.component, given.environment), counts.isEmpty(errors) && composed?.join() === given.amendment &&
+      !!program?.includes(frozen.amended))
   },
 })
 

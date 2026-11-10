@@ -602,8 +602,9 @@ export interface Graph {
   /**
    * The fingerprint of the code these nodes are: each one's declaration as it runs (its values, the nodes it names, its
    * bodies) and the files its bodies are written in. It changes when one of them does (an engine before g70 does not say).
+   * With the language, also the kinds and views the project writes itself (a library that carries kinds, since g105).
    */
-  code?(nodes: readonly View[]): string | undefined
+  code?(nodes: readonly View[], language?: boolean): string | undefined
   /** The fingerprint of the engine the project pins (its program and its code), when its generation says it (g72 on). */
   engine?(): string | undefined
   /**

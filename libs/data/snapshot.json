@@ -220,6 +220,9 @@
       "fields": {
         "owner": "trame",
         "declaredEffects": {
+          "prepare": [
+            "write"
+          ],
           "find": [
             "read"
           ],
@@ -493,7 +496,8 @@
                 "lost",
                 null
               ]
-            }
+            },
+            "another": "lent_books"
           },
           "postgres": {
             "create": "CREATE TABLE IF NOT EXISTS books (title TEXT PRIMARY KEY, pages DOUBLE PRECISION NOT NULL, shelf TEXT NOT NULL, lent INTEGER)",
@@ -535,6 +539,16 @@
       }
     },
     {
+      "id": "scenarios.PostgresForScenarios",
+      "kind": "binding",
+      "title": "PostgreSQL's dialect, read",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "What PostgreSQL's tables write is read as a product's tables would ask it, through the dialect's port; no database answers."
+      }
+    },
+    {
       "id": "scenarios.PostgresStatements",
       "kind": "scenario",
       "title": "PostgreSQL's statements",
@@ -542,12 +556,20 @@
       "fields": {
         "owner": "trame",
         "deps": {
-          "postgres": "records.PostgresTables",
+          "postgres": "records.TableDialect",
           "book": "shelves.Book",
           "given": "scenarios.DataGiven",
           "checks": "scenarios.DataChecks"
         },
         "body": "(function)"
+      }
+    },
+    {
+      "id": "scenarios.PostgresStatementsOnly",
+      "kind": "environment",
+      "title": "PostgreSQL's statements",
+      "fields": {
+        "owner": "trame"
       }
     },
     {
@@ -564,7 +586,8 @@
           "versions": "records.VersionsTable",
           "book": "shelves.Book",
           "given": "scenarios.DataGiven",
-          "checks": "scenarios.DataChecks"
+          "checks": "scenarios.DataChecks",
+          "counts": "std/algebra.Counts"
         },
         "body": "(function)"
       }
@@ -1775,18 +1798,33 @@
       "kind": "serves"
     },
     {
+      "from": "scenarios.PostgresForScenarios",
+      "to": "records.PostgresTables",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.PostgresForScenarios",
+      "to": "scenarios.PostgresStatementsOnly",
+      "kind": "environments"
+    },
+    {
+      "from": "scenarios.PostgresForScenarios",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
       "from": "scenarios.PostgresStatements",
       "to": "records.PostgresTables",
       "kind": "verifies"
     },
     {
       "from": "scenarios.PostgresStatements",
-      "to": "scenarios.Test",
+      "to": "scenarios.PostgresStatementsOnly",
       "kind": "env"
     },
     {
       "from": "scenarios.PostgresStatements",
-      "to": "records.PostgresTables",
+      "to": "records.TableDialect",
       "kind": "deps"
     },
     {

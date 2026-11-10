@@ -80,9 +80,9 @@ export const VersionsTable = decision<{ name: string; entity: string; version: s
   rejected: { "A version in each table": "a table would gain a column that is not the entity's" },
 })
 
-/** What a new table starts with: the records its entity gives, if any. */
+/** What a new table starts with: the records of its entity, if any, read as values of it. */
 export interface Initial {
-  of<F extends StoredFields>(model: Model<F>): readonly ValueOfFields<F>[]
+  of(model: Model): readonly Readonly<Record<string, unknown>>[]
 }
 
 /**
@@ -97,8 +97,12 @@ export const InitialRecords = port<Initial>({ owner: "trame", declaredEffects: [
  */
 export const StartEmpty = fn({ owner: "trame", serves: [DataDescribedOnce], implements: [InitialRecords], body: () => ({ of: () => [] }) })
 
-/** Where the records of entities live: each found by its key, inserted, updated, counted; several writes kept together. */
+/**
+ * Where the records of entities live: each found by its key, inserted, updated, counted; several writes kept together;
+ * the place of an entity made ready (created, or migrated from the version it holds), which a deployment does once.
+ */
 export interface RecordStore {
+  prepare(model: Model): Promise<void>
   find<F extends StoredFields>(model: Model<F>, key: string): Promise<ValueOfFields<F> | undefined>
   insert<F extends StoredFields>(model: Model<F>, value: ValueOfFields<F>): Promise<void>
   update<F extends StoredFields>(model: Model<F>, key: string, fields: Partial<ValueOfFields<F>>): Promise<void>
@@ -108,19 +112,22 @@ export interface RecordStore {
 
 /**
  * Records
- * Where the entities a product keeps as many live: a reservation found by its key, a refund inserted.
+ * Where the entities a product keeps as many live: a reservation found by its key, a refund inserted. A deployment
+ * makes the place of each one ready (migrated from the version it holds) before the product uses it; a store may still
+ * make it ready the first time it is used, where nothing deployed it (a scenario's database in memory).
  */
 export const Records = port<RecordStore>({
   owner: "trame",
-  declaredEffects: { find: ["read"], insert: ["write"], update: ["write"], count: ["read"], transaction: ["write"] },
+  declaredEffects: { prepare: ["write"], find: ["read"], insert: ["write"], update: ["write"], count: ["read"], transaction: ["write"] },
 })
 
 /**
  * Records in SQL
- * Each entity a table, under its name: made ready the first time it is used (created with what it starts with, or
- * migrated from the version it holds, then that version written), in a transaction. A value is written field by field (a
- * list as JSON, yes or no as 1 or 0, nothing as NULL) and read back the same way, checked against the description: a row
- * that does not keep it is nothing. A table older than the versions (no version kept) holds the first version deployed.
+ * Each entity a table, under its name: made ready when a deployment asks, or the first time it is used (created with
+ * what it starts with, or migrated from the version it holds, then that version written), in a transaction; made ready
+ * within a transaction that fails, it is made ready again. A value is written field by field (a list as JSON, yes or no
+ * as 1 or 0, nothing as NULL) and read back the same way, checked against the description: a row that does not keep it
+ * is nothing. A table older than the versions (no version kept) holds the first version deployed.
  */
 export const RecordsInSql = fn({
   owner: "trame",
@@ -132,15 +139,21 @@ export const RecordsInSql = fn({
   },
   body: ({ database, dialect, initial, versions, conforms, values, counts }): RecordStore => {
     const ready = new Map<string, Promise<void>>()
-    // Whether a transaction of this store runs: a table made ready within it is made ready in it, not in one of its own.
+    // Whether a transaction of this store runs: a table made ready within it is made ready in it, not in one of its own,
+    // and is ready only if it is kept (the tables made ready in it, forgotten if it fails).
     let within = false
+    let made: string[] = []
     const together = async <T>(work: () => Promise<T>): Promise<T> => {
       if (within) return work()
       within = true
       try {
         return await database.transaction(work)
+      } catch (e) {
+        for (const name of made) ready.delete(name)
+        throw e
       } finally {
         within = false
+        made = []
       }
     }
     const columnsOf = (model: Model) => Object.keys(model.fields)
@@ -169,6 +182,7 @@ export const RecordsInSql = fn({
     const prepare = (model: Model): Promise<void> => {
       const known = ready.get(model.name)
       if (known) return known
+      const nested = within
       const done = together(async () => {
         await database.write(dialect.versions.create())
         const [kept] = await database.read<Record<string, unknown>>(dialect.versions.read(), model.name)
@@ -176,7 +190,7 @@ export const RecordsInSql = fn({
         const held = kept && values.isText(kept[versions.version]) ? (kept[versions.version] as string) : there ? model.first : undefined
         if (held === undefined) {
           await database.write(dialect.create(model))
-          for (const value of initial.of(model)) await database.write(dialect.insert(model), ...columnsOf(model).map((f) => written(model, f, (value as Record<string, unknown>)[f])))
+          for (const value of initial.of(model)) await database.write(dialect.insert(model), ...columnsOf(model).map((f) => written(model, f, value[f])))
         } else if (held !== model.version) {
           const migration = model.migrations.find((m) => m.from === held)
           if (!migration) throw new Error(model.name)
@@ -195,9 +209,12 @@ export const RecordsInSql = fn({
         }
       })
       ready.set(model.name, done)
+      if (nested) made.push(model.name)
+      done.catch(() => ready.delete(model.name))
       return done
     }
     return {
+      prepare,
       async find<F extends StoredFields>(model: Model<F>, key: string) {
         await prepare(model)
         const [row] = await database.read<Record<string, unknown>>(dialect.find(model), key)

@@ -1,7 +1,8 @@
 {
   "title": "Reservations",
   "libraries": {
-    "std": "../../std"
+    "std": "../../std",
+    "data": "../../libs/data"
   },
-  "engine": "../../generations/g104"
+  "engine": "../../generations/g105"
 }
