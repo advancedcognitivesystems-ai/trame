@@ -23,6 +23,7 @@ export const Book = entity({
   keptAs: "books",
   key: "title",
   fields: { title: stored.text(), pages: stored.number(), shelf: stored.word(Shelves), lent: stored.optional(stored.flag()) },
+  seed: [{ title: "Bleak House", pages: 1017, shelf: "reading" }],
   serves: [DataDescribedOnce],
 })
 

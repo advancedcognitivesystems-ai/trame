@@ -516,7 +516,30 @@
           }
         },
         "key": "id",
-        "keptAs": "reservations"
+        "keptAs": "reservations",
+        "seed": [
+          {
+            "id": "R1",
+            "charger": "normal",
+            "price": 20,
+            "start": "2026-10-20T12:00:00.000Z",
+            "status": "active"
+          },
+          {
+            "id": "R2",
+            "charger": "fast",
+            "price": 30,
+            "start": "2026-10-20T10:04:00.000Z",
+            "status": "active"
+          },
+          {
+            "id": "R3",
+            "charger": "ultra",
+            "price": 40,
+            "start": "2026-10-20T11:00:00.000Z",
+            "status": "active"
+          }
+        ]
       }
     },
     {
@@ -627,27 +650,13 @@
       }
     },
     {
-      "id": "infra.FirstReservations",
-      "kind": "function",
-      "title": "The first reservations",
-      "status": "held",
-      "fields": {
-        "owner": "karim",
-        "deps": {
-          "reservations": "infra.InitialReservations",
-          "kept": "data.KeptReservation"
-        },
-        "body": "(function)"
-      }
-    },
-    {
       "id": "infra.FirstReservationsOutsideProduction",
       "kind": "binding",
       "title": "The first reservations outside production",
       "status": "held",
       "fields": {
         "owner": "karim",
-        "context": "A scenario and a developer need reservations to read and cancel, and the service makes none."
+        "context": "A scenario and a developer need reservations to read and cancel, and the service makes none: a table starts with the ones its entity declares."
       }
     },
     {
@@ -682,37 +691,6 @@
         "rejected": {
           "A web framework": "a dependency for routing that the route syntax already declares"
         }
-      }
-    },
-    {
-      "id": "infra.InitialReservations",
-      "kind": "decision",
-      "title": "Initial reservations",
-      "fields": {
-        "owner": "karim",
-        "value": [
-          {
-            "id": "R1",
-            "charger": "normal",
-            "price": 20,
-            "start": "2026-10-20T12:00:00.000Z",
-            "status": "active"
-          },
-          {
-            "id": "R2",
-            "charger": "fast",
-            "price": 30,
-            "start": "2026-10-20T10:04:00.000Z",
-            "status": "active"
-          },
-          {
-            "id": "R3",
-            "charger": "ultra",
-            "price": 40,
-            "start": "2026-10-20T11:00:00.000Z",
-            "status": "active"
-          }
-        ]
       }
     },
     {
@@ -1069,7 +1047,7 @@
         "deps": {
           "cancel": "api.CancelReservation",
           "refund": "(function)",
-          "initial": "infra.InitialReservations",
+          "kept": "data.KeptReservation",
           "instant": "infra.TestInstant",
           "time": "std/measures.Time",
           "says": "messages.ScenarioChecks"
@@ -1086,7 +1064,7 @@
         "owner": "karim",
         "deps": {
           "read": "api.ReadReservation",
-          "initial": "infra.InitialReservations",
+          "kept": "data.KeptReservation",
           "freePeriod": "cancellation.FreeCancellationPeriod",
           "unknown": "scenarios.UnknownReservation",
           "http": "std/web.Http",
@@ -1110,7 +1088,6 @@
           "records": "data/records.Records",
           "reservations": "data.KeptReservation",
           "cancelled": "infra.CancelledStatus",
-          "initial": "infra.InitialReservations",
           "says": "messages.ScenarioChecks"
         },
         "body": "(function)"
@@ -1127,7 +1104,7 @@
           "cancel": "api.CancelReservation",
           "log": "architecture.PaymentLog",
           "refund": "(function)",
-          "initial": "infra.InitialReservations",
+          "kept": "data.KeptReservation",
           "instant": "infra.TestInstant",
           "http": "std/web.Http",
           "time": "std/measures.Time",
@@ -1148,7 +1125,6 @@
           "records": "data/records.Records",
           "reservations": "data.KeptReservation",
           "refunds": "data.KeptRefund",
-          "initial": "infra.InitialReservations",
           "exit": "std/system.ExitStatus",
           "counts": "std/algebra.Counts",
           "says": "messages.ScenarioChecks"
@@ -1639,21 +1615,6 @@
       "kind": "deps"
     },
     {
-      "from": "infra.FirstReservations",
-      "to": "infra.InitialReservations",
-      "kind": "deps"
-    },
-    {
-      "from": "infra.FirstReservations",
-      "to": "data.KeptReservation",
-      "kind": "deps"
-    },
-    {
-      "from": "infra.FirstReservationsOutsideProduction",
-      "to": "infra.FirstReservations",
-      "kind": "chooses"
-    },
-    {
       "from": "infra.FirstReservationsOutsideProduction",
       "to": "infra.Test",
       "kind": "environments"
@@ -1975,7 +1936,7 @@
     },
     {
       "from": "scenarios.ComplianceScenario",
-      "to": "infra.InitialReservations",
+      "to": "data.KeptReservation",
       "kind": "deps"
     },
     {
@@ -2005,11 +1966,6 @@
     },
     {
       "from": "scenarios.ReadScenario",
-      "to": "infra.FirstReservations",
-      "kind": "verifies"
-    },
-    {
-      "from": "scenarios.ReadScenario",
       "to": "infra.Test",
       "kind": "env"
     },
@@ -2020,7 +1976,7 @@
     },
     {
       "from": "scenarios.ReadScenario",
-      "to": "infra.InitialReservations",
+      "to": "data.KeptReservation",
       "kind": "deps"
     },
     {
@@ -2051,11 +2007,6 @@
     {
       "from": "scenarios.ReadsNeverWrite",
       "to": "infra.CancelledStatus",
-      "kind": "deps"
-    },
-    {
-      "from": "scenarios.ReadsNeverWrite",
-      "to": "infra.InitialReservations",
       "kind": "deps"
     },
     {
@@ -2110,7 +2061,7 @@
     },
     {
       "from": "scenarios.RepeatedCancellationScenario",
-      "to": "infra.InitialReservations",
+      "to": "data.KeptReservation",
       "kind": "deps"
     },
     {
@@ -2146,11 +2097,6 @@
     {
       "from": "scenarios.StoragePrepared",
       "to": "data.KeptRefund",
-      "kind": "deps"
-    },
-    {
-      "from": "scenarios.StoragePrepared",
-      "to": "infra.InitialReservations",
       "kind": "deps"
     },
     {

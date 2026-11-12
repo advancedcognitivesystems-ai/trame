@@ -1,6 +1,7 @@
 import {
-  defineKind, field, optional, edge, optionalEdge, hole, doc, patchLeaves, keysOf, edgesOf, DateRole, RuleState, Validity,
-  KindName, ResolutionKind, ChangeWay, type AnyNode, type Lib, type Node, type PatchOf, type View, type Resolution,
+  defineKind, field, optional, edge, optionalEdge, hole, doc, patchLeaves, keysOf, edgesOf, addDays, daysBetween, isHole, DateRole, RuleState,
+  Validity, KindName, ResolutionKind, ChangeWay, type AnyNode, type Graph, type HoleSpec, type Lib, type Node, type PatchOf, type View,
+  type Resolution,
 } from "../trame/kernel"
 import { approval } from "./approval"
 import { sourceFields } from "./standard"
@@ -101,6 +102,7 @@ const kind = defineKind({
         .map(([p]) => hole.warning(say.amendmentChangesNothingAlreadyHasThisValue(p))),
       ...(counts.any(cited) && !fields.includes(source) ? cited.map((f) => hole.error(say.amendmentCitedWithoutSource(f), self.owner)) : []),
       !approved && hole.warning(say.amendmentAwaitsApproval(owner, target.title), owner),
+      ...ending(self.until, self.node, target, leaves.map(([p]) => p), g),
     ]
   },
 
@@ -126,6 +128,32 @@ const kind = defineKind({
     ]
   },
 })
+
+/**
+ * What the end of an amendment leaves (since g106). Only an amendment has an end; the day after its last, its target is
+ * as its declaration and the amendments then in force make it. A path that nothing then decides is an error, to the
+ * target's owner: on that day the graph would hold no value, and a program assembled before would have nothing to
+ * answer with. Its own owner is warned as it nears its end, so they prolong it or let it end knowingly.
+ */
+function ending(until: string | undefined, self: AnyNode, target: View, paths: readonly string[], g: Graph): HoleSpec[] {
+  const { counts, dates, references, settings, values } = g.lib
+  if (!values.isText(until) || until < g.today) return []
+  const after = addDays(until, counts.one)
+  const inForce = (v: View) => {
+    const [from, to] = [v.field(F.from), v.field(F.until)]
+    return (!values.isText(from) || from <= after) && (!values.isText(to) || after <= to)
+  }
+  const others = g.from(target).in(E.amends).nodes().filter((v) => v.node !== self && !v.repealedBy && inForce(v))
+  const decides = (p: string) =>
+    others.some((v) => patchLeaves(v.field(F.patch)).some(([q]) => q === p || references.within(p, q) || references.within(q, p)))
+  const nothing = paths.filter((p) => !decides(p) && isHole(target.base(p)))
+  const days = daysBetween(g.today, until)
+  const notice = settings.amendment?.warnWithin
+  return [
+    ...nothing.map((p) => hole.error(say.amendmentEndsOnNothing(dates.format(until), dates.format(after), target.title, p), target.owner)),
+    ...(notice !== undefined && days <= notice ? [hole.warning(say.amendmentEndsSoon(dates.format(until), days, target.title))] : []),
+  ]
+}
 
 /** The unit of one of the target's values, to show it the way the target shows it: its quantity, when its type says one. */
 function unitFor(target: View, path: string, lib: Lib): string | undefined {

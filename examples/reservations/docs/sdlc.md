@@ -183,6 +183,7 @@ The service on a developer's machine, the way of this machine: the program for a
 | [Commands are made for each effect](../../../std/docs/scenarios.md#CommandsMade) | **held** | [The code is verified](#CodeVerified), for [Commands](../../../std/docs/effects.md#Commands) |
 | [Records kept in SQL](../../../libs/data/docs/scenarios.md#RecordsKept) | **held** | [The code is verified](#CodeVerified), for [SQLite's tables](../../../libs/data/docs/records.md#SqliteTables) |
 | [Read a reservation](scenarios.md#ReadScenario) | **held** | [The code is verified](#CodeVerified), for [SQLite's tables](../../../libs/data/docs/records.md#SqliteTables) |
+| [Records seeded](../../../libs/data/docs/scenarios.md#RecordsSeeded) | **held** | [The code is verified](#CodeVerified), for [The records its entity starts with](../../../libs/data/docs/records.md#SeedOfTheEntity) |
 | [Documents kept in the preferences](../../../libs/data/docs/scenarios.md#DocumentsKept) | **held** | [The code is verified](#CodeVerified), for [A value of the description it is of](../../../libs/data/docs/documents.md#Conforms) |
 | [Cancelling twice refunds only once](scenarios.md#RepeatedCancellationScenario) | **held** | [The code is verified](#CodeVerified), for [Cancellations as records](infra.md#CancellationRecords) |
 | [Every reservation is refunded according to the rule](scenarios.md#ComplianceScenario) | **held** | [The code is verified](#CodeVerified), for [Refund on cancellation](cancellation.md#Refund) |

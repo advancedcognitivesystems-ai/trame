@@ -98,6 +98,18 @@ export const InitialRecords = port<Initial>({ owner: "trame", declaredEffects: [
 export const StartEmpty = fn({ owner: "trame", serves: [DataDescribedOnce], implements: [InitialRecords], body: () => ({ of: () => [] }) })
 
 /**
+ * The records its entity starts with
+ * A table is created with the records its entity declares to start with (its seed), none if it declares none: a
+ * scenario's database, a developer's. Where a binding chooses it, a table starts so; elsewhere, StartEmpty.
+ */
+export const SeedOfTheEntity = fn({
+  owner: "trame",
+  serves: [DataDescribedOnce],
+  implements: [InitialRecords],
+  body: (): Initial => ({ of: (model) => model.seed ?? [] }),
+})
+
+/**
  * Where the records of entities live: each found by its key, inserted, updated, counted; several writes kept together;
  * the place of an entity made ready (created, or migrated from the version it holds), which a deployment does once.
  */

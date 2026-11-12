@@ -45,7 +45,7 @@ The chargers a slot is reserved on, as a reservation keeps them.
 
 ### The refund of a cancelled reservation
 
-`KeptRefund` · `src/data.ts:49` · status: **held**
+`KeptRefund` · `src/data.ts:55` · status: **held**
 
 Found by its reservation: the amount refunded, the provider's reference for it, and the instant it was recorded (ISO 8601), which the refunds recorded before it was kept do not say.
 
@@ -70,9 +70,9 @@ Version `a2c32e34`; never deployed.
 
 ### A reservation
 
-`KeptReservation` · `src/data.ts:34` · status: **held**
+`KeptReservation` · `src/data.ts:35` · status: **held**
 
-A slot on a charger: its price, the instant it starts (ISO 8601), whether it was cancelled; found by its identifier.
+A slot on a charger: its price, the instant it starts (ISO 8601), whether it was cancelled; found by its identifier. A table of reservations starts with three, where a binding seeds it (in test, and on a developer's machine).
 
 5 fields, found by `id`.
 
@@ -86,9 +86,11 @@ A slot on a charger: its price, the instant it starts (ISO 8601), whether it was
 
 Version `6c591614`; never deployed.
 
+A new place of it starts with 3 records, where a binding seeds it.
+
 - Owner: karim
 - Kept as: reservations
 - Serves: [Cancel without stress](cancellation.md#CancelWithoutStress)
 - Depends on: [Chargers](#Chargers), [Swiss francs](cancellation.md#SwissFrancs), [Statuses of a reservation](#ReservationStatuses)
-- Used by: [Cancellations as records](infra.md#CancellationRecords), [The first reservations](infra.md#FirstReservations), [Reservations as records](infra.md#ReservationRecords), [A read never writes](scenarios.md#ReadsNeverWrite), [The storage is prepared](scenarios.md#StoragePrepared), [Prepare the storage](sdlc.md#PrepareStorage)
+- Used by: [Cancellations as records](infra.md#CancellationRecords), [Reservations as records](infra.md#ReservationRecords), [Every reservation is refunded according to the rule](scenarios.md#ComplianceScenario), [Read a reservation](scenarios.md#ReadScenario), [A read never writes](scenarios.md#ReadsNeverWrite), [Cancelling twice refunds only once](scenarios.md#RepeatedCancellationScenario), [The storage is prepared](scenarios.md#StoragePrepared), [Prepare the storage](sdlc.md#PrepareStorage)
 - Used by: [The refund of a cancelled reservation](#KeptRefund)

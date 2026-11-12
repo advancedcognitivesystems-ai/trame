@@ -51,6 +51,10 @@ const body = () => ({
   amendmentAwaitsApproval: (owner: string | undefined, target: string) =>
     `Awaits the approval of ${owner}, who answers for “${target}”`,
   amendmentChangesNothingAlreadyHasThisValue: (p0: unknown) => `Changes nothing: ${p0} already has this value`,
+  amendmentEndsOnNothing: (until: string, after: string, target: string, path: string) =>
+    `Ends on ${until}: from ${after}, ${path} of “${target}” has no value (its declaration decides none, nor does an amendment then in force); decide it, or prolong this amendment`,
+  amendmentEndsSoon: (until: string, days: number, target: string) =>
+    `Ends on ${until} (in ${plural(days, { one: "day", other: "days" })}): “${target}” then returns to its declaration and the amendments then in force; prolong it, or let it end`,
   amendmentBefore: () => "Before",
   amendmentAfter: () => "After",
   amendmentTheAmendmentInTheCode: () => "The amendment, in the code",

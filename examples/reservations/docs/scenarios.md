@@ -37,12 +37,12 @@ An identifier that no reservation has.
 
 <details><summary>The code it runs: 12 nodes</summary>
 
-[SQLite in memory](../../../libs/data/docs/records.md#SqliteInMemory), [Commands](../../../std/docs/effects.md#Commands), [SQLite's tables](../../../libs/data/docs/records.md#SqliteTables), [The first reservations](infra.md#FirstReservations), [A value of the description it is of](../../../libs/data/docs/documents.md#Conforms), [Records in SQL](../../../libs/data/docs/records.md#RecordsInSql), [Reservations as records](infra.md#ReservationRecords), [Cancellations as records](infra.md#CancellationRecords), [Simulated payment provider](infra.md#SimulatedPayment), [Stopped clock](infra.md#StoppedClock), [Lead time of a cancellation](api.md#LeadTime), [Cancel a reservation](api.md#CancelReservation)
+[SQLite in memory](../../../libs/data/docs/records.md#SqliteInMemory), [Commands](../../../std/docs/effects.md#Commands), [SQLite's tables](../../../libs/data/docs/records.md#SqliteTables), [The records its entity starts with](../../../libs/data/docs/records.md#SeedOfTheEntity), [A value of the description it is of](../../../libs/data/docs/documents.md#Conforms), [Records in SQL](../../../libs/data/docs/records.md#RecordsInSql), [Reservations as records](infra.md#ReservationRecords), [Cancellations as records](infra.md#CancellationRecords), [Simulated payment provider](infra.md#SimulatedPayment), [Stopped clock](infra.md#StoppedClock), [Lead time of a cancellation](api.md#LeadTime), [Cancel a reservation](api.md#CancelReservation)
 
 </details>
 
 - Owner: lea
-- Parameters: `cancel` ← [Cancel a reservation](api.md#CancelReservation) · `refund` ← [Refund on cancellation](cancellation.md#Refund) · `initial` ← [Initial reservations](infra.md#InitialReservations) · `instant` ← [Test instant](infra.md#TestInstant) · `time` ← [Time](../../../std/docs/measures.md#Time) · `says` ← [Checks of the scenarios](messages.md#ScenarioChecks)
+- Parameters: `cancel` ← [Cancel a reservation](api.md#CancelReservation) · `refund` ← [Refund on cancellation](cancellation.md#Refund) · `kept` ← [A reservation](data.md#KeptReservation) · `instant` ← [Test instant](infra.md#TestInstant) · `time` ← [Time](../../../std/docs/measures.md#Time) · `says` ← [Checks of the scenarios](messages.md#ScenarioChecks)
 - Body: inline, in the declaration
 - Effects: asynchronous, network, read, third-party, time, write
 - Verifies: [Cancel a reservation](api.md#CancelReservation), [Refund on cancellation](cancellation.md#Refund)
@@ -66,15 +66,15 @@ A reservation is read from the database, its table made with the first reservati
 
 <details><summary>The code it runs: 9 nodes</summary>
 
-[SQLite in memory](../../../libs/data/docs/records.md#SqliteInMemory), [Commands](../../../std/docs/effects.md#Commands), [SQLite's tables](../../../libs/data/docs/records.md#SqliteTables), [The first reservations](infra.md#FirstReservations), [A value of the description it is of](../../../libs/data/docs/documents.md#Conforms), [Records in SQL](../../../libs/data/docs/records.md#RecordsInSql), [Reservations as records](infra.md#ReservationRecords), [End of free cancellation](api.md#FreeCancellationEnd), [Read a reservation](api.md#ReadReservation)
+[SQLite in memory](../../../libs/data/docs/records.md#SqliteInMemory), [Commands](../../../std/docs/effects.md#Commands), [SQLite's tables](../../../libs/data/docs/records.md#SqliteTables), [The records its entity starts with](../../../libs/data/docs/records.md#SeedOfTheEntity), [A value of the description it is of](../../../libs/data/docs/documents.md#Conforms), [Records in SQL](../../../libs/data/docs/records.md#RecordsInSql), [Reservations as records](infra.md#ReservationRecords), [End of free cancellation](api.md#FreeCancellationEnd), [Read a reservation](api.md#ReadReservation)
 
 </details>
 
 - Owner: karim
-- Parameters: `read` ← [Read a reservation](api.md#ReadReservation) · `initial` ← [Initial reservations](infra.md#InitialReservations) · `freePeriod` ← [Free cancellation period](cancellation.md#FreeCancellationPeriod) · `unknown` ← [Unknown reservation](#UnknownReservation) · `http` ← [HTTP](../../../std/docs/web.md#Http) · `time` ← [Time](../../../std/docs/measures.md#Time) · `says` ← [Checks of the scenarios](messages.md#ScenarioChecks)
+- Parameters: `read` ← [Read a reservation](api.md#ReadReservation) · `kept` ← [A reservation](data.md#KeptReservation) · `freePeriod` ← [Free cancellation period](cancellation.md#FreeCancellationPeriod) · `unknown` ← [Unknown reservation](#UnknownReservation) · `http` ← [HTTP](../../../std/docs/web.md#Http) · `time` ← [Time](../../../std/docs/measures.md#Time) · `says` ← [Checks of the scenarios](messages.md#ScenarioChecks)
 - Body: inline, in the declaration
 - Effects: asynchronous, read
-- Verifies: [Read a reservation](api.md#ReadReservation), [End of free cancellation](api.md#FreeCancellationEnd), [Reservations as records](infra.md#ReservationRecords), [The first reservations](infra.md#FirstReservations), [Records in SQL](../../../libs/data/docs/records.md#RecordsInSql), [SQLite's tables](../../../libs/data/docs/records.md#SqliteTables), [SQLite in memory](../../../libs/data/docs/records.md#SqliteInMemory), [A value of the description it is of](../../../libs/data/docs/documents.md#Conforms)
+- Verifies: [Read a reservation](api.md#ReadReservation), [End of free cancellation](api.md#FreeCancellationEnd), [Reservations as records](infra.md#ReservationRecords), [The records its entity starts with](../../../libs/data/docs/records.md#SeedOfTheEntity), [Records in SQL](../../../libs/data/docs/records.md#RecordsInSql), [SQLite's tables](../../../libs/data/docs/records.md#SqliteTables), [SQLite in memory](../../../libs/data/docs/records.md#SqliteInMemory), [A value of the description it is of](../../../libs/data/docs/documents.md#Conforms)
 - In: [Test](infra.md#Test)
 
 <a id="ReadsNeverWrite"></a>
@@ -93,12 +93,12 @@ A statement that writes, passed off as a read (made a read by the command maker 
 
 <details><summary>The code it runs: 6 nodes</summary>
 
-[SQLite in memory](../../../libs/data/docs/records.md#SqliteInMemory), [Commands](../../../std/docs/effects.md#Commands), [SQLite's tables](../../../libs/data/docs/records.md#SqliteTables), [The first reservations](infra.md#FirstReservations), [A value of the description it is of](../../../libs/data/docs/documents.md#Conforms), [Records in SQL](../../../libs/data/docs/records.md#RecordsInSql)
+[SQLite in memory](../../../libs/data/docs/records.md#SqliteInMemory), [Commands](../../../std/docs/effects.md#Commands), [SQLite's tables](../../../libs/data/docs/records.md#SqliteTables), [The records its entity starts with](../../../libs/data/docs/records.md#SeedOfTheEntity), [A value of the description it is of](../../../libs/data/docs/documents.md#Conforms), [Records in SQL](../../../libs/data/docs/records.md#RecordsInSql)
 
 </details>
 
 - Owner: karim
-- Parameters: `database` ← [A database of SQL](../../../libs/data/docs/records.md#SqlDatabase) · `commands` ← [Commands](../../../std/docs/effects.md#Commands) · `dialect` ← [A dialect of SQL, for tables](../../../libs/data/docs/records.md#TableDialect) · `records` ← [Records](../../../libs/data/docs/records.md#Records) · `reservations` ← [A reservation](data.md#KeptReservation) · `cancelled` ← [Status of a cancelled reservation](infra.md#CancelledStatus) · `initial` ← [Initial reservations](infra.md#InitialReservations) · `says` ← [Checks of the scenarios](messages.md#ScenarioChecks)
+- Parameters: `database` ← [A database of SQL](../../../libs/data/docs/records.md#SqlDatabase) · `commands` ← [Commands](../../../std/docs/effects.md#Commands) · `dialect` ← [A dialect of SQL, for tables](../../../libs/data/docs/records.md#TableDialect) · `records` ← [Records](../../../libs/data/docs/records.md#Records) · `reservations` ← [A reservation](data.md#KeptReservation) · `cancelled` ← [Status of a cancelled reservation](infra.md#CancelledStatus) · `says` ← [Checks of the scenarios](messages.md#ScenarioChecks)
 - Body: inline, in the declaration
 - Effects: read, write
 - Verifies: [SQLite in memory](../../../libs/data/docs/records.md#SqliteInMemory)
@@ -122,12 +122,12 @@ The first cancellation refunds by the rule, for the lead time to the start at th
 
 <details><summary>The code it runs: 12 nodes</summary>
 
-[SQLite in memory](../../../libs/data/docs/records.md#SqliteInMemory), [Commands](../../../std/docs/effects.md#Commands), [SQLite's tables](../../../libs/data/docs/records.md#SqliteTables), [The first reservations](infra.md#FirstReservations), [A value of the description it is of](../../../libs/data/docs/documents.md#Conforms), [Records in SQL](../../../libs/data/docs/records.md#RecordsInSql), [Reservations as records](infra.md#ReservationRecords), [Cancellations as records](infra.md#CancellationRecords), [Simulated payment provider](infra.md#SimulatedPayment), [Stopped clock](infra.md#StoppedClock), [Lead time of a cancellation](api.md#LeadTime), [Cancel a reservation](api.md#CancelReservation)
+[SQLite in memory](../../../libs/data/docs/records.md#SqliteInMemory), [Commands](../../../std/docs/effects.md#Commands), [SQLite's tables](../../../libs/data/docs/records.md#SqliteTables), [The records its entity starts with](../../../libs/data/docs/records.md#SeedOfTheEntity), [A value of the description it is of](../../../libs/data/docs/documents.md#Conforms), [Records in SQL](../../../libs/data/docs/records.md#RecordsInSql), [Reservations as records](infra.md#ReservationRecords), [Cancellations as records](infra.md#CancellationRecords), [Simulated payment provider](infra.md#SimulatedPayment), [Stopped clock](infra.md#StoppedClock), [Lead time of a cancellation](api.md#LeadTime), [Cancel a reservation](api.md#CancelReservation)
 
 </details>
 
 - Owner: karim
-- Parameters: `cancel` ← [Cancel a reservation](api.md#CancelReservation) · `log` ← [Payment log](architecture.md#PaymentLog) · `refund` ← [Refund on cancellation](cancellation.md#Refund) · `initial` ← [Initial reservations](infra.md#InitialReservations) · `instant` ← [Test instant](infra.md#TestInstant) · `http` ← [HTTP](../../../std/docs/web.md#Http) · `time` ← [Time](../../../std/docs/measures.md#Time) · `says` ← [Checks of the scenarios](messages.md#ScenarioChecks)
+- Parameters: `cancel` ← [Cancel a reservation](api.md#CancelReservation) · `log` ← [Payment log](architecture.md#PaymentLog) · `refund` ← [Refund on cancellation](cancellation.md#Refund) · `kept` ← [A reservation](data.md#KeptReservation) · `instant` ← [Test instant](infra.md#TestInstant) · `http` ← [HTTP](../../../std/docs/web.md#Http) · `time` ← [Time](../../../std/docs/measures.md#Time) · `says` ← [Checks of the scenarios](messages.md#ScenarioChecks)
 - Body: inline, in the declaration
 - Effects: asynchronous, network, read, third-party, time, write
 - Verifies: [Cancel a reservation](api.md#CancelReservation), [Lead time of a cancellation](api.md#LeadTime), [Cancellations as records](infra.md#CancellationRecords), [Simulated payment provider](infra.md#SimulatedPayment), [Stopped clock](infra.md#StoppedClock)
@@ -150,12 +150,12 @@ What a deployment runs before the service starts: the table of each entity made 
 
 <details><summary>The code it runs: 7 nodes</summary>
 
-[SQLite in memory](../../../libs/data/docs/records.md#SqliteInMemory), [Commands](../../../std/docs/effects.md#Commands), [SQLite's tables](../../../libs/data/docs/records.md#SqliteTables), [The first reservations](infra.md#FirstReservations), [A value of the description it is of](../../../libs/data/docs/documents.md#Conforms), [Records in SQL](../../../libs/data/docs/records.md#RecordsInSql), [Prepare the storage](sdlc.md#PrepareStorage)
+[SQLite in memory](../../../libs/data/docs/records.md#SqliteInMemory), [Commands](../../../std/docs/effects.md#Commands), [SQLite's tables](../../../libs/data/docs/records.md#SqliteTables), [The records its entity starts with](../../../libs/data/docs/records.md#SeedOfTheEntity), [A value of the description it is of](../../../libs/data/docs/documents.md#Conforms), [Records in SQL](../../../libs/data/docs/records.md#RecordsInSql), [Prepare the storage](sdlc.md#PrepareStorage)
 
 </details>
 
 - Owner: karim
-- Parameters: `prepare` ← [Prepare the storage](sdlc.md#PrepareStorage) · `records` ← [Records](../../../libs/data/docs/records.md#Records) · `reservations` ← [A reservation](data.md#KeptReservation) · `refunds` ← [The refund of a cancelled reservation](data.md#KeptRefund) · `initial` ← [Initial reservations](infra.md#InitialReservations) · `exit` ← [Exit status](../../../std/docs/system.md#ExitStatus) · `counts` ← [Counts](../../../std/docs/algebra.md#Counts) · `says` ← [Checks of the scenarios](messages.md#ScenarioChecks)
+- Parameters: `prepare` ← [Prepare the storage](sdlc.md#PrepareStorage) · `records` ← [Records](../../../libs/data/docs/records.md#Records) · `reservations` ← [A reservation](data.md#KeptReservation) · `refunds` ← [The refund of a cancelled reservation](data.md#KeptRefund) · `exit` ← [Exit status](../../../std/docs/system.md#ExitStatus) · `counts` ← [Counts](../../../std/docs/algebra.md#Counts) · `says` ← [Checks of the scenarios](messages.md#ScenarioChecks)
 - Body: inline, in the declaration
 - Effects: read, write
 - Verifies: [Prepare the storage](sdlc.md#PrepareStorage)

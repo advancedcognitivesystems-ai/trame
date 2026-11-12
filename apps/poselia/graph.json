@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-10",
+  "generated": "2026-11-12",
   "nodes": [
     {
       "id": "app.BrowserScreen",
@@ -4386,10 +4386,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "data",
-        "version": "0.2.0",
+        "version": "0.3.0",
         "joins": "library",
         "from": "path",
-        "at": "../../libs/data/releases/0.2.0"
+        "at": "../../libs/data/releases/0.3.0"
       },
       "diagnostics": []
     },
@@ -4416,10 +4416,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "trame",
-        "version": "105",
+        "version": "106",
         "joins": "language",
         "from": "path",
-        "at": "../../generations/g105"
+        "at": "../../generations/g106"
       },
       "diagnostics": []
     },
@@ -6562,7 +6562,7 @@
             "artifacts": [
               {
                 "node": "sdlc.PageFile",
-                "fingerprint": "1a455862cdc93b80600d6c27752693644f847be1998551dae6f9a7d03e916c30"
+                "fingerprint": "5609378bdb3c550a93f281b0af028ea0d834a5bc58cba635ca3e4788119c20bf"
               }
             ]
           }

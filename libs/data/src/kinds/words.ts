@@ -17,6 +17,10 @@ const body = () => ({
   entityServedBy: () => "Served by",
   entityChanges: () => "Changes decided",
   entityKeptAs: () => "Kept as",
+  entitySeed: () => "Starts with",
+  entitySeeded: (n: number) => `A new place of it starts with ${plural(n, { one: "record", other: "records" })}, where a binding seeds it.`,
+  entityReseeded: (shipment: string, date: string) =>
+    `The records a new place starts with changed since ${shipment} deployed it on ${date}: a place made before keeps those it started with`,
   entityField: () => "Field",
   entityFrom: () => "From the version",
   entitySteps: () => "Steps",

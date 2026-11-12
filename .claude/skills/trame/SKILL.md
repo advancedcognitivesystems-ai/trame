@@ -37,6 +37,10 @@ The repository's `AGENTS.md` is the full guide; read it first, then keep to this
   with its source (`--source`); code changes in the code. An amendment the code is written against has no date: dated,
   a build at an earlier day reads the code without it. A published `TODO` is decided by an amendment too, dated the day
   it is decided. An amendment of a body is composed with it wherever it runs, wired or assembled (g105).
+- A value holds at every date (g106): only an amendment has an end; one that ends over a value nobody decided is an
+  error, and its owner is warned before it ends. A program switches at the days its amendments start or end, by
+  `TRAME_TODAY` or today's UTC day. What the project decides and ships lives in the graph; what the product writes while
+  it runs, for its users or its operators, is an entity.
 - No literal in a body, a kind or a view: each is an error. A published value goes in a `standard`, a chosen one in a
   `decision`, a shared operation in a `structure`, a closed set of words in a `vocabulary`, words for people in a
   `catalog` (a scenario's check labels too), a name shared by engine and language in a prelude vocabulary, a private
@@ -81,7 +85,8 @@ The repository's `AGENTS.md` is the full guide; read it first, then keep to this
   `key`, `keptAs`, the `changes` its owner decided): wired, it gives its model; `Documents` keeps one value whole,
   `Records` many in SQL (`RecordsInSql`, `SqliteTables` or `PostgresTables`). A deployment keeps each entity's
   description; the entity computes the migration from each version kept, and the family `Migrated` keeps a shipment on
-  a step its owner has not decided. Type values with `EntityOf<typeof E>`, never by hand (AGENTS.md, section 5c).
+  a step its owner has not decided. A new table starts with the entity's `seed` where a binding chooses
+  `SeedOfTheEntity`. Type values with `EntityOf<typeof E>`, never by hand (AGENTS.md, section 5c).
 - A rule applies a requirement of `#std/rules` (`Reaches`, `NeverReaches`, `Linked`, `WithoutEffects`, `WordsOf`) with
   its `params`, never a hidden function, and says why: it `serves` a goal, or an ADR applies it.
 - Never edit `docs/`, `graph.json`, `snapshot.json`, `generations/`, `src/releases.ts` or `evidence/` by hand.

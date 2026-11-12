@@ -12,7 +12,7 @@
 | [Product committee · 15 October 2026](committee.md) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Reservations · Consumer law](consumer.md) | 0 | 1 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Reservations · Data](data.md) | 0 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 0 |
-| [Reservations · Infrastructure](infra.md) | 0 | 0 | 0 | 0 | 0 | 11 | 0 | 0 | 0 | 0 | 0 | 0 | 5 | 0 | 0 | 5 | 12 | 3 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| [Reservations · Infrastructure](infra.md) | 0 | 0 | 0 | 0 | 0 | 10 | 0 | 0 | 0 | 0 | 0 | 0 | 4 | 0 | 0 | 5 | 12 | 3 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Legal](legal.md) | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 |
 | [Reservations · Messages](messages.md) | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Reservations · Principles](principles.md) | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
@@ -27,7 +27,7 @@ The libraries the project imports: their nodes take part in the graph, their doc
 
 | Library | Modules | Nodes | Open issues |
 |---|---|---|---|
-| [data](../../../libs/data/docs/index.md) | Data · Documents, Data · Obligations, Data · Packages, Data · Principles, Data · Product, Data · Records, Data · Releases, Data · Scenarios, Data · SDLC, Data · Shelves, Data · SQL, Data · Words | 65 | 3 points to watch |
+| [data](../../../libs/data/docs/index.md) | Data · Documents, Data · Obligations, Data · Packages, Data · Principles, Data · Product, Data · Records, Data · Releases, Data · Scenarios, Data · SDLC, Data · Shelves, Data · SQL, Data · Words | 70 | 3 points to watch |
 | [std](../../../std/docs/index.md) | Standard library · Algebra, Standard library · Algorithms, Standard library · ECMAScript, Standard library · Effects, Standard library · HTML and CSS, Standard library · Measures, Standard library · Obligations, Standard library · Packages, Standard library · Design patterns, Standard library · Platform, Standard library · Product, Standard library · Releases, Standard library · Rules, Standard library · Scenarios, Standard library · SDLC, Standard library · System, Standard library · Text, Standard library · Tooling, Standard library · Web | 165 | 6 points to watch |
 
 ## Open issues

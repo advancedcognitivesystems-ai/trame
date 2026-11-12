@@ -166,6 +166,15 @@ why. A broken rule is an error, unless the rule says `severity: "warning"` while
   (`TODO`) that was published is decided by an amendment too, dated the day it is decided. An amendment of a body
   (`body: (previous) => (deps) => …`) is composed with it wherever it runs: wired, and in a program assembled while it
   is in force (g105).
+- **A value holds at every date** (C5, g106). Only an amendment has an end (`until`); the day after, its target is as
+  its declaration and the amendments then in force make it. An amendment that ends over a value nobody decided is an
+  error to that value's owner, now; the amendment's owner is warned as its end nears (`LanguageSettings.amendment`). A
+  program assembled before a dated change that reaches it switches at that day: the assembly compiles the graph at each
+  such day and the program answers by the day (`TRAME_TODAY`, or today's in UTC). Try the other side with
+  `TRAME_TODAY=<day>` on the program.
+- **Graph or data.** What the project decides and ships with a version lives in the graph; what the product writes while
+  it runs (for its users, or for the people of the project through entry points of their own: a platform service) is an
+  entity (section 5c). A value people steer while the product runs is never a decision.
 - **No literal in a body**, nor in a kind or a view: each one is an error, with its place. Where a value goes:
 
   | The value is… | It goes in… |
@@ -278,6 +287,10 @@ name it is kept under (`keptAs`), and the `changes` its owner decided since a ve
   `InitialRecords` (`StartEmpty`, or the product's). A deployment runs an entry point of the SDLC that `prepare`s each
   entity (the example's `prepare-storage`): the table is created, or migrated from the version it holds (kept in the
   table `data_versions`); a store also makes it ready the first time it is used where nothing deployed it.
+- **What a new table starts with** is the entity's `seed` (typed by its fields), where a binding chooses
+  `SeedOfTheEntity` (a scenario's database, a developer's), `StartEmpty` elsewhere (data 0.3.0). A deployment keeps the
+  seed's fingerprint; a seed changed since the last deployment is a warning to the owner: a table made before keeps the
+  records it started with.
 - A shipment's policy applies `Migrated` (`gaps: Severity.error`): what people kept is never lost by a version.
 
 ## 6. Writing kinds and views
@@ -455,6 +468,14 @@ elements), a port answered differently in several environments is answered as in
 - An entity wired by a scenario of a module read before the entity's is wired before the graph evaluates it: its model
   is computed when it is given (data 0.1.1).
 - A table made ready in a transaction that fails is gone with it: the store makes it ready again (data 0.2.0).
+- Before g106, a program kept the values of the day it was assembled: the example's launch of the ultra chargers would
+  have gone on after 31 December until someone assembled it again. The days a program switches are those of the
+  amendments that reach it; a dated change of what a component is given (its exposure) or of what a rule reads by name
+  is refused: assemble again at that date.
+- An entity cannot name the environments where it is seeded: they live with the infrastructure, which imports the
+  entities, and two modules that import each other fail at load. Where a table starts with its seed is a binding's
+  choice (`SeedOfTheEntity`).
+- A scenario's step names are the plan's (`cancelReservation`, its first letter lowered): a program's text names them so.
 - A release holds no manifest (g96): in its library, the library's says it is made of ES modules and where the
   language is; published, the registry gives it one that says only the first, and its reader leads the language.
 - A published declaration the language changes the form of (a type renamed, a rule rewritten as a body) is an error

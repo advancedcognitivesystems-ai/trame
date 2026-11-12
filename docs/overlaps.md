@@ -1,5 +1,5 @@
 # Overlaps
 
-*The values claimed by several nodes on 30 October 2026, and how each overlap was settled.*
+*The values claimed by several nodes on 12 November 2026, and how each overlap was settled.*
 
-There is no overlap on 30 October 2026: no value is claimed by two nodes at once.
+There is no overlap on 12 November 2026: no value is claimed by two nodes at once.

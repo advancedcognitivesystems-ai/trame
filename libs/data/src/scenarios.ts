@@ -12,7 +12,9 @@ import { Strategy, Adapter } from "#std/patterns"
 import type { Model } from "./kinds/entity"
 import { Book } from "./shelves"
 import { Documents, DocumentsInPreferences, DocumentForm, Migrate, Conforms } from "./documents"
-import { Records, RecordsInSql, SqliteTables, PostgresTables, SqliteInMemory, StartEmpty, SqlDatabase, TableDialect, VersionsTable } from "./records"
+import {
+  Records, RecordsInSql, SqliteTables, PostgresTables, SqliteInMemory, StartEmpty, SeedOfTheEntity, SqlDatabase, TableDialect, VersionsTable,
+} from "./records"
 import { DataDescribedOnce } from "./product"
 
 // What the library offers is code like the rest: its documents are played here, kept in the preferences of a device in
@@ -24,6 +26,12 @@ import { DataDescribedOnce } from "./product"
  * Where the library's scenarios run: the preferences of a device, kept in memory.
  */
 export const Test = environment({ owner: "trame", evaluates: true })
+
+/**
+ * Seeded tables
+ * Where the library's scenarios create tables that start with the records their entity declares.
+ */
+export const SeededTables = environment({ owner: "trame" })
 
 /**
  * PostgreSQL's statements
@@ -51,10 +59,23 @@ export const InMemory = binding({
 export const SqliteForScenarios = binding({
   owner: "trame",
   chooses: [SqliteInMemory],
-  environments: [Test],
+  environments: [Test, SeededTables],
   follows: [Adapter],
   serves: [DataDescribedOnce],
   context: "Records are written, migrated and read by SQLite itself, as a product's would be, and nothing is left behind.",
+})
+
+/**
+ * Tables seeded, in memory
+ * Where the library's scenarios seed their tables, a table created starts with the records its entity declares.
+ */
+export const SeededForScenarios = binding({
+  owner: "trame",
+  chooses: [RecordsInSql, SqliteTables, SeedOfTheEntity],
+  environments: [SeededTables],
+  follows: [Strategy],
+  serves: [DataDescribedOnce],
+  context: "A scenario's database, or a developer's, starts with the records the entity declares, as a product's would.",
 })
 
 /**
@@ -88,6 +109,7 @@ export const DataChecks = catalog({
     tableMigrated: () => "A table of a version deployed is migrated when it is made ready: a column renamed (its key), one dropped, one added; its rows read as the description is now, and the version kept is this one",
     transactionUndone: () => "A transaction that fails writes nothing",
     madeReadyAgain: () => "A table made ready in a transaction that fails is made ready again the next time it is used",
+    seeded: () => "Where a binding seeds it, a table created starts with the records its entity declares: each found, and counted",
     rowNotConforming: () => "A row that does not keep its description is nothing",
     postgresWrites: () => "PostgreSQL's statements name their parameters by position, type a number as double precision, and ask the information schema whether a table exists",
   }),
@@ -260,5 +282,22 @@ export const PostgresStatements = scenario({
     ]
     const expected = [given.postgres.create, given.postgres.find, given.postgres.update, given.postgres.add, given.postgres.exists]
     check(checks.postgresWrites(), written.join() === expected.join())
+  },
+})
+
+/**
+ * Records seeded
+ * Where a binding seeds it, a table created starts with the records its entity declares: each found by its key, and
+ * counted.
+ */
+export const RecordsSeeded = scenario({
+  owner: "trame",
+  verifies: [SeedOfTheEntity],
+  env: SeededTables,
+  deps: { records: Records, book: Book, checks: DataChecks },
+  body: ({ records, book, checks }) => async (check) => {
+    const seed = book.seed ?? []
+    const found = await Promise.all(seed.map((b) => records.find(book, b.title)))
+    check(checks.seeded(), (await records.count(book)) === seed.length && found.every((f, i) => f?.title === seed[i]?.title))
   },
 })

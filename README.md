@@ -289,7 +289,10 @@ without a value, a type changed, a field gone unsaid, a key changed) is a hole o
 version (Poselia's breath, in the device's preferences: read migrated and checked, or nothing); `Records` keeps many in
 SQL (`RecordsInSql` over a `SqlDatabase` and a `TableDialect`, SQLite's or PostgreSQL's, written from the entity by
 syntax elements of the library): each entity a table, made ready by the deployment (created with what it starts with,
-or migrated from the version it holds, kept in a table of versions), its rows read back checked. The reservations
+or migrated from the version it holds, kept in a table of versions), its rows read back checked. What a new table starts
+with is the entity's `seed`, where a binding chooses `SeedOfTheEntity` (a scenario's database, a developer's;
+`StartEmpty` elsewhere); a deployment keeps its fingerprint, and a seed changed since the last deployment is said to its
+owner, since a table made before keeps the records it started with (data 0.3.0). The reservations
 example keeps its reservations and refunds so, with no SQL of its own: its shipment `OnThisMachine` builds the program
 for a laptop and runs `prepare-storage` on its database in a file, which a version that adds a field migrates.
 
@@ -956,7 +959,9 @@ export const Refund = requirement({
 Called, by its acceptance criteria (`Refund(normal, h(2)) === chf(20)`) or by a kind through its view (`given()`), the
 node is the rule its dependencies make: the engine wires it once the graph is compiled, and a value nobody decided is
 said where the rule reads it, as before. Wiring builds a node from its body before what its kind gives from its
-declaration, and a program refuses to freeze a body an amendment redefines in force. A rule written as the function
+declaration; an amendment of a body is composed with it wherever it runs, wired and in a program assembled while it is
+in force (g105: before, it replaced the body, and the example's refund rule was violated from the day its launch began,
+unseen at the day of its scenarios). A rule written as the function
 itself (`rule:`), as until g78, was read with a warning while projects moved; rewriting them found literals the old form
 hid (30 rules of Poselia's body, 8 of std's, 6 of Trame's), and once nothing wrote it the form was removed (B2, g97): a
 requirement without a body is an error, and a rule called before the engine wired it says so.
@@ -1038,6 +1043,24 @@ amendment its owner approves; a standard's constants and a quantity's units are 
 source that changed them, which the amendment names; what code is built on (a structure, a vocabulary, a body) changes
 in the code only. An amendment of a cited value that names no source is an error, and one that awaits its owner's
 approval says so to that owner: the example's support asked for a free period on ultra chargers, which awaits lea's.
+
+**A value in time** (C5, g106). Only an amendment has an end (`until`): the day after its last, its target is as its
+declaration and the amendments then in force make it, so a value always falls back on something. When nothing is there
+(an amendment that ends over a value nobody decided), the graph would hold no value that day: an error, to the owner of
+the value, now and not on that day; and the owner of an amendment is warned as its end nears (the language settings say
+how long before), to prolong it or let it end knowingly. A program does what the graph says on each day: the assembly
+finds the days after its date when an amendment that reaches what it runs starts or ends, compiles the graph at each,
+and the program builds each period at startup, what changes in it only, and answers each call by the day it is (the one
+`TRAME_TODAY` fixes, as for the engine, or today's in UTC). The example's program switches on 1 January, when the launch
+of the ultra chargers ends: a late cancellation on an ultra charger refunds 40 CHF on 31 December and 20 CHF the day
+after, which `TRAME_TODAY` shows without waiting. A new dated amendment written after the assembly needs a new assembly,
+as any change of the graph. What the program is given at startup (a component's exposure) or what a rule reads by name
+cannot change while it runs: the assembly refuses such a change, to assemble again at that date.
+
+What lives in the graph and what lives in the data: what the project decides and ships with a version (a cap, a price
+list, a promotion with its dates) is a value of the graph; what the product writes while it runs, for its users or for
+the people of the project through entry points of their own (a reservation, the price of the day an operator sets), is
+an entity, kept outside the graph and migrated by each deployment.
 
 `trame amend <node> <path> <value> --why "…" --by <name> [--from <date>]` writes one. It first compiles the graph with
 the amendment, in memory, the day it comes into force, and says what it would change, as `trame plan` does: lowering the
@@ -1244,6 +1267,15 @@ declarations with), the types of Node below 23 (they follow the Node.js that run
   proposal.
 - **Data**: a driver for PostgreSQL (the example's production database is described, provisioned by Terraform, not
   connected); a content update downloaded by the app, checked by the same rules.
+- **Access** (decided on 12 November, the design not frozen): every entry point says its public, and saying none is an
+  error; anonymous is a choice, never a default. The base publics (anyone on the network, the person at the device or
+  the machine, the system) carry no identity, which makes them detectable: an entry point whose body reads who calls it,
+  or that reaches data an entity says belongs to someone (a person, a tenant), is an error. Identity and tenancy then
+  travel from the entry point to every resource it reaches, data first: the records of an owned entity are read within
+  the caller's scope, and the graph checks every path hands it on. Then, after C4, a library of access: identities
+  (accounts, or a remote provider of which the graph has only the client), RBAC, ReBAC and ABAC as composable
+  strategies, the check written by the graph into the program before the body, and the platform services the people of
+  the project steer.
 - **Publication**: Trame's own graph has no `trame.lock` yet; tying `trame publish` to the merge into the main branch.
 - **The SDLC**: a shipment of a library version (its release, then a warning in the projects that import an older one; proposed); a
   signature with a key, read from outside the graph (the seal is an attribution); a status that reads itself said as an

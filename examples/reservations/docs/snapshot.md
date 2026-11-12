@@ -284,6 +284,7 @@ Entity · `KeptReservation` · **held**
 - Fields: { id: { type: text }, charger: { type: word, vocabulary: data.Chargers }, price: { type: number, quantity: cancellation.SwissFrancs }, start: { type: text }, status: { type: word, vocabulary: data.ReservationStatuses } }
 - Key: id
 - Kept as: reservations
+- Starts with: { id: R1, charger: normal, price: 20, start: 2026-10-20T12:00:00.000Z, status: active }, { id: R2, charger: fast, price: 30, start: 2026-10-20T10:04:00.000Z, status: active }, { id: R3, charger: ultra, price: 40, start: 2026-10-20T11:00:00.000Z, status: active }
 - Serves: Cancel without stress
 - Depends on: Chargers, Swiss francs, Statuses of a reservation
 
@@ -324,13 +325,6 @@ Decision · `DatabaseSize`
 
 - Decided by: karim
 - Value: { cpu: 2, memory_gb: 4 }
-
-### Initial reservations
-
-Decision · `InitialReservations`
-
-- Decided by: karim
-- Value: { id: R1, charger: normal, price: 20, start: 2026-10-20T12:00:00.000Z, status: active }, { id: R2, charger: fast, price: 30, start: 2026-10-20T10:04:00.000Z, status: active }, { id: R3, charger: ultra, price: 40, start: 2026-10-20T11:00:00.000Z, status: active }
 
 ### Local database file
 
@@ -375,14 +369,6 @@ Function · `CancellationRecords` · **held**
 - Parameters: { records: data/records.Records, reservations: data.KeptReservation, refunds: data.KeptRefund, cancelled: infra.CancelledStatus }
 - Implements: Cancellation records
 - Depends on: A reservation, The refund of a cancelled reservation, Status of a cancelled reservation
-
-### The first reservations
-
-Function · `FirstReservations` · **held**
-
-- Owner: karim
-- Parameters: { reservations: infra.InitialReservations, kept: data.KeptReservation }
-- Depends on: Initial reservations, A reservation
 
 ### Reservations as records
 
@@ -466,8 +452,7 @@ Technical choice · `EmptyInProduction` · **unknown**
 Technical choice · `FirstReservationsOutsideProduction` · **held**
 
 - Decided by: karim
-- Context: A scenario and a developer need reservations to read and cancel, and the service makes none.
-- Chooses: The first reservations
+- Context: A scenario and a developer need reservations to read and cancel, and the service makes none: a table starts with the ones its entity declares.
 - In: Test, Local
 
 ### Node's HTTP server
@@ -656,49 +641,49 @@ Decision · `UnknownReservation`
 Scenario · `ComplianceScenario` · **held**
 
 - Owner: lea
-- Parameters: { cancel: api.CancelReservation, refund: (rule), initial: infra.InitialReservations, instant: infra.TestInstant, time: std/measures.Time, says: messages.ScenarioChecks }
+- Parameters: { cancel: api.CancelReservation, refund: (rule), kept: data.KeptReservation, instant: infra.TestInstant, time: std/measures.Time, says: messages.ScenarioChecks }
 - Verifies: Cancel a reservation, Refund on cancellation
 - In: Test
-- Depends on: Cancel a reservation, Refund on cancellation, Initial reservations, Test instant, Checks of the scenarios
+- Depends on: Cancel a reservation, Refund on cancellation, A reservation, Test instant, Checks of the scenarios
 
 ### Read a reservation
 
 Scenario · `ReadScenario` · **held**
 
 - Owner: karim
-- Parameters: { read: api.ReadReservation, initial: infra.InitialReservations, freePeriod: cancellation.FreeCancellationPeriod, unknown: scenarios.UnknownReservation, http: std/web.Http, time: std/measures.Time, says: messages.ScenarioChecks }
-- Verifies: Read a reservation, End of free cancellation, Reservations as records, The first reservations
+- Parameters: { read: api.ReadReservation, kept: data.KeptReservation, freePeriod: cancellation.FreeCancellationPeriod, unknown: scenarios.UnknownReservation, http: std/web.Http, time: std/measures.Time, says: messages.ScenarioChecks }
+- Verifies: Read a reservation, End of free cancellation, Reservations as records
 - In: Test
-- Depends on: Read a reservation, Initial reservations, Free cancellation period, Unknown reservation, Checks of the scenarios
+- Depends on: Read a reservation, A reservation, Free cancellation period, Unknown reservation, Checks of the scenarios
 
 ### A read never writes
 
 Scenario · `ReadsNeverWrite` · **held**
 
 - Owner: karim
-- Parameters: { database: data/records.SqlDatabase, commands: std/effects.Commands, dialect: data/records.TableDialect, records: data/records.Records, reservations: data.KeptReservation, cancelled: infra.CancelledStatus, initial: infra.InitialReservations, says: messages.ScenarioChecks }
+- Parameters: { database: data/records.SqlDatabase, commands: std/effects.Commands, dialect: data/records.TableDialect, records: data/records.Records, reservations: data.KeptReservation, cancelled: infra.CancelledStatus, says: messages.ScenarioChecks }
 - In: Test
-- Depends on: A reservation, Status of a cancelled reservation, Initial reservations, Checks of the scenarios
+- Depends on: A reservation, Status of a cancelled reservation, Checks of the scenarios
 
 ### Cancelling twice refunds only once
 
 Scenario · `RepeatedCancellationScenario` · **held**
 
 - Owner: karim
-- Parameters: { cancel: api.CancelReservation, log: architecture.PaymentLog, refund: (rule), initial: infra.InitialReservations, instant: infra.TestInstant, http: std/web.Http, time: std/measures.Time, says: messages.ScenarioChecks }
+- Parameters: { cancel: api.CancelReservation, log: architecture.PaymentLog, refund: (rule), kept: data.KeptReservation, instant: infra.TestInstant, http: std/web.Http, time: std/measures.Time, says: messages.ScenarioChecks }
 - Verifies: Cancel a reservation, Lead time of a cancellation, Cancellations as records, Simulated payment provider, Stopped clock
 - In: Test
-- Depends on: Cancel a reservation, Payment log, Refund on cancellation, Initial reservations, Test instant, Checks of the scenarios
+- Depends on: Cancel a reservation, Payment log, Refund on cancellation, A reservation, Test instant, Checks of the scenarios
 
 ### The storage is prepared
 
 Scenario · `StoragePrepared` · **held**
 
 - Owner: karim
-- Parameters: { prepare: sdlc.PrepareStorage, records: data/records.Records, reservations: data.KeptReservation, refunds: data.KeptRefund, initial: infra.InitialReservations, exit: std/system.ExitStatus, counts: std/algebra.Counts, says: messages.ScenarioChecks }
+- Parameters: { prepare: sdlc.PrepareStorage, records: data/records.Records, reservations: data.KeptReservation, refunds: data.KeptRefund, exit: std/system.ExitStatus, counts: std/algebra.Counts, says: messages.ScenarioChecks }
 - Verifies: Prepare the storage
 - In: Test
-- Depends on: Prepare the storage, A reservation, The refund of a cancelled reservation, Initial reservations, Checks of the scenarios
+- Depends on: Prepare the storage, A reservation, The refund of a cancelled reservation, Checks of the scenarios
 
 ## Reservations · SDLC
 

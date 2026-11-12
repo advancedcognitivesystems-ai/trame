@@ -5,7 +5,7 @@
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
 | The operators | 0 | 0 | 2 | 0 |
-| karim | 1 | 0 | 11 | 96 |
+| karim | 1 | 0 | 11 | 94 |
 | lea | 0 | 0 | 1 | 11 |
 
 <a id="The operators"></a>
@@ -84,11 +84,9 @@
 | [Production database size](infra.md#DatabaseSize) | Decision |  |
 | [Nothing to start with in production](infra.md#EmptyInProduction) | Technical choice | **unknown** |
 | [Local SQLite database](infra.md#FileDatabase) | Implementation | **unknown** |
-| [The first reservations](infra.md#FirstReservations) | Function | **held** |
 | [The first reservations outside production](infra.md#FirstReservationsOutsideProduction) | Technical choice | **held** |
 | [Real payment provider](infra.md#HttpPayment) | Implementation | **unknown** |
 | [Node's HTTP server](infra.md#HttpServerChoice) | Technical choice | **unknown** |
-| [Initial reservations](infra.md#InitialReservations) | Decision |  |
 | [What the service keeps, as tables](infra.md#KeptAsTables) | Technical choice | **held** |
 | [Local](infra.md#Local) | Environment |  |
 | [A SQLite file on the developer's machine](infra.md#LocalDatabase) | Technical choice | **unknown** |

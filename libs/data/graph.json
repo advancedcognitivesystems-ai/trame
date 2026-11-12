@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-10",
+  "generated": "2026-11-12",
   "nodes": [
     {
       "id": "documents.Conforms",
@@ -164,7 +164,9 @@
         "joins": "language",
         "at": "../../generations/g105"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: trame 106 is out, the reference names 105: trame upgrade trame moves it"
+      ]
     },
     {
       "id": "packages.stdLibrary",
@@ -223,7 +225,7 @@
       "id": "records.PostgresTables",
       "kind": "function",
       "title": "PostgreSQL's tables",
-      "source": "src/records.ts:267",
+      "source": "src/records.ts:279",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -257,7 +259,7 @@
       "id": "records.Records",
       "kind": "port",
       "title": "Records",
-      "source": "src/records.ts:119",
+      "source": "src/records.ts:131",
       "fields": {
         "owner": "trame",
         "declaredEffects": {
@@ -287,7 +289,7 @@
       "id": "records.RecordsInSql",
       "kind": "function",
       "title": "Records in SQL",
-      "source": "src/records.ts:132",
+      "source": "src/records.ts:144",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -300,6 +302,18 @@
           "values": "std/algebra.ValueTypes",
           "counts": "std/algebra.Counts"
         },
+        "body": "(function)"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "records.SeedOfTheEntity",
+      "kind": "function",
+      "title": "The records its entity starts with",
+      "source": "src/records.ts:105",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
         "body": "(function)"
       },
       "diagnostics": []
@@ -329,7 +343,7 @@
       "id": "records.SqliteInMemory",
       "kind": "implementation",
       "title": "SQLite in memory",
-      "source": "src/records.ts:284",
+      "source": "src/records.ts:296",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -347,7 +361,7 @@
       "id": "records.SqliteTables",
       "kind": "function",
       "title": "SQLite's tables",
-      "source": "src/records.ts:250",
+      "source": "src/records.ts:262",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -450,10 +464,25 @@
       "diagnostics": []
     },
     {
+      "id": "releases.R0_2_0",
+      "kind": "release",
+      "title": "Version 0.2.0",
+      "source": "src/releases.ts:38",
+      "fields": {
+        "owner": "trame",
+        "version": "0.2.0",
+        "date": "2026-11-10",
+        "what": "records in SQL: the tables of entities, made ready by a deployment and migrated from the version they hold, in SQLite or PostgreSQL",
+        "fingerprint": "c3503ffdd30e2869",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "scenarios.DataChecks",
       "kind": "catalog",
       "title": "What the library's scenarios check",
-      "source": "src/scenarios.ts:76",
+      "source": "src/scenarios.ts:97",
       "fields": {
         "owner": "trame",
         "messages": "(function)"
@@ -464,7 +493,7 @@
       "id": "scenarios.DataGiven",
       "kind": "decision",
       "title": "What the library's scenarios are given",
-      "source": "src/scenarios.ts:101",
+      "source": "src/scenarios.ts:123",
       "fields": {
         "owner": "trame",
         "value": {
@@ -578,7 +607,7 @@
       "id": "scenarios.DocumentsKept",
       "kind": "scenario",
       "title": "Documents kept in the preferences",
-      "source": "src/scenarios.ts:164",
+      "source": "src/scenarios.ts:186",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -624,7 +653,7 @@
       "id": "scenarios.InMemory",
       "kind": "binding",
       "title": "Documents, in memory",
-      "source": "src/scenarios.ts:38",
+      "source": "src/scenarios.ts:46",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -636,7 +665,7 @@
       "id": "scenarios.PostgresForScenarios",
       "kind": "binding",
       "title": "PostgreSQL's dialect, read",
-      "source": "src/scenarios.ts:64",
+      "source": "src/scenarios.ts:85",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -648,7 +677,7 @@
       "id": "scenarios.PostgresStatements",
       "kind": "scenario",
       "title": "PostgreSQL's statements",
-      "source": "src/scenarios.ts:251",
+      "source": "src/scenarios.ts:273",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -672,7 +701,7 @@
       "id": "scenarios.PostgresStatementsOnly",
       "kind": "environment",
       "title": "PostgreSQL's statements",
-      "source": "src/scenarios.ts:32",
+      "source": "src/scenarios.ts:40",
       "fields": {
         "owner": "trame"
       },
@@ -682,7 +711,7 @@
       "id": "scenarios.RecordsKept",
       "kind": "scenario",
       "title": "Records kept in SQL",
-      "source": "src/scenarios.ts:201",
+      "source": "src/scenarios.ts:223",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -727,10 +756,55 @@
       "diagnostics": []
     },
     {
+      "id": "scenarios.RecordsSeeded",
+      "kind": "scenario",
+      "title": "Records seeded",
+      "source": "src/scenarios.ts:293",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "records": "records.Records",
+          "book": "shelves.Book",
+          "checks": "scenarios.DataChecks"
+        },
+        "body": "(function)"
+      },
+      "result": [
+        {
+          "name": "Where a binding seeds it, a table created starts with the records its entity declares: each found, and counted",
+          "status": "passed"
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "scenarios.SeededForScenarios",
+      "kind": "binding",
+      "title": "Tables seeded, in memory",
+      "source": "src/scenarios.ts:72",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "A scenario's database, or a developer's, starts with the records the entity declares, as a product's would."
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "scenarios.SeededTables",
+      "kind": "environment",
+      "title": "Seeded tables",
+      "source": "src/scenarios.ts:34",
+      "fields": {
+        "owner": "trame"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "scenarios.SqliteForScenarios",
       "kind": "binding",
       "title": "SQLite, in memory",
-      "source": "src/scenarios.ts:51",
+      "source": "src/scenarios.ts:59",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -742,7 +816,7 @@
       "id": "scenarios.Test",
       "kind": "environment",
       "title": "Test",
-      "source": "src/scenarios.ts:26",
+      "source": "src/scenarios.ts:28",
       "fields": {
         "owner": "trame",
         "evaluates": true
@@ -808,6 +882,11 @@
             "obligation": "sdlc.FunctionsVerified"
           },
           {
+            "node": "scenarios.RecordsSeeded",
+            "via": "records.SeedOfTheEntity",
+            "obligation": "sdlc.FunctionsVerified"
+          },
+          {
             "node": "obligations.Migrated",
             "via": "documents.Conforms",
             "obligation": "sdlc.RequirementsServed"
@@ -834,6 +913,7 @@
           "records.PostgresTables",
           "records.Records",
           "records.RecordsInSql",
+          "records.SeedOfTheEntity",
           "records.SqlDatabase",
           "records.SqliteInMemory",
           "records.SqliteTables",
@@ -848,6 +928,9 @@
           "scenarios.PostgresStatements",
           "scenarios.PostgresStatementsOnly",
           "scenarios.RecordsKept",
+          "scenarios.RecordsSeeded",
+          "scenarios.SeededForScenarios",
+          "scenarios.SeededTables",
           "scenarios.SqliteForScenarios",
           "scenarios.Test",
           "sdlc.DecisionsApplied",
@@ -917,7 +1000,7 @@
       },
       "result": {
         "path": "src",
-        "code": "cc74c7da"
+        "code": "248b26f4"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -960,7 +1043,14 @@
           }
         },
         "key": "title",
-        "keptAs": "books"
+        "keptAs": "books",
+        "seed": [
+          {
+            "title": "Bleak House",
+            "pages": 1017,
+            "shelf": "reading"
+          }
+        ]
       },
       "result": {
         "deployed": {
@@ -986,7 +1076,8 @@
               }
             }
           },
-          "key": "title"
+          "key": "title",
+          "seed": "cf3cfc19"
         },
         "version": "a6f35fec",
         "first": "a6f35fec",
@@ -2225,6 +2316,16 @@
       "kind": "deps"
     },
     {
+      "from": "records.SeedOfTheEntity",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "records.SeedOfTheEntity",
+      "to": "records.InitialRecords",
+      "kind": "implements"
+    },
+    {
       "from": "records.SqliteInMemory",
       "to": "records.SqlDatabase",
       "kind": "implements"
@@ -2346,6 +2447,11 @@
     },
     {
       "from": "releases.R0_1_1",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_2_0",
       "to": "product.DataDescribedOnce",
       "kind": "serves"
     },
@@ -2565,6 +2671,61 @@
       "kind": "deps"
     },
     {
+      "from": "scenarios.RecordsSeeded",
+      "to": "records.SeedOfTheEntity",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.RecordsSeeded",
+      "to": "scenarios.SeededTables",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.RecordsSeeded",
+      "to": "records.Records",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.RecordsSeeded",
+      "to": "shelves.Book",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.RecordsSeeded",
+      "to": "scenarios.DataChecks",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.SeededForScenarios",
+      "to": "records.RecordsInSql",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.SeededForScenarios",
+      "to": "records.SqliteTables",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.SeededForScenarios",
+      "to": "records.SeedOfTheEntity",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.SeededForScenarios",
+      "to": "scenarios.SeededTables",
+      "kind": "environments"
+    },
+    {
+      "from": "scenarios.SeededForScenarios",
+      "to": "std/patterns.Strategy",
+      "kind": "follows"
+    },
+    {
+      "from": "scenarios.SeededForScenarios",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
       "from": "scenarios.SqliteForScenarios",
       "to": "records.SqliteInMemory",
       "kind": "chooses"
@@ -2572,6 +2733,11 @@
     {
       "from": "scenarios.SqliteForScenarios",
       "to": "scenarios.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "scenarios.SqliteForScenarios",
+      "to": "scenarios.SeededTables",
       "kind": "environments"
     },
     {

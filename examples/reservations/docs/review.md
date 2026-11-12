@@ -2,7 +2,7 @@
 
 *What the declarations that are not published yet add to the published graph (`trame.lock`), as of 30 October 2026.*
 
-> **99 new declarations · 0 published declarations affected · 1 overlap · 0 blocking holes added**
+> **97 new declarations · 0 published declarations affected · 1 overlap · 0 blocking holes added**
 
 ## What the branch redefines
 
@@ -67,45 +67,43 @@
 | [Criteria of a full refund a day ahead](consumer.md#FullRefundAheadCriteria) | Acceptance criteria | karim | `src/consumer.ts:39` |
 | [Notice for a full refund](consumer.md#FullRefundNotice) | Decision | karim | `src/consumer.ts:14` |
 | [Chargers](data.md#Chargers) | Vocabulary | karim | `src/data.ts:15` |
-| [The refund of a cancelled reservation](data.md#KeptRefund) | Entity | karim | `src/data.ts:49` |
-| [A reservation](data.md#KeptReservation) | Entity | karim | `src/data.ts:34` |
+| [The refund of a cancelled reservation](data.md#KeptRefund) | Entity | karim | `src/data.ts:55` |
+| [A reservation](data.md#KeptReservation) | Entity | karim | `src/data.ts:35` |
 | [Statuses of a reservation](data.md#ReservationStatuses) | Vocabulary | karim | `src/data.ts:24` |
-| [Backup retention](infra.md#BackupRetention) | Decision | karim | `src/infra.ts:83` |
-| [Cancellations as records](infra.md#CancellationRecords) | Function | karim | `src/infra.ts:160` |
-| [Status of a cancelled reservation](infra.md#CancelledStatus) | Decision | karim | `src/infra.ts:94` |
-| [Production database address](infra.md#DatabaseAddress) | Decision | karim | `src/infra.ts:77` |
-| [Production database name](infra.md#DatabaseName) | Decision | karim | `src/infra.ts:65` |
-| [Production database size](infra.md#DatabaseSize) | Decision | karim | `src/infra.ts:70` |
-| [Nothing to start with in production](infra.md#EmptyInProduction) | Technical choice | karim | `src/infra.ts:311` |
-| [Local SQLite database](infra.md#FileDatabase) | Implementation | karim | `src/infra.ts:114` |
-| [The first reservations](infra.md#FirstReservations) | Function | karim | `src/infra.ts:138` |
-| [The first reservations outside production](infra.md#FirstReservationsOutsideProduction) | Technical choice | karim | `src/infra.ts:300` |
-| [Real payment provider](infra.md#HttpPayment) | Implementation | karim | `src/infra.ts:223` |
-| [Node's HTTP server](infra.md#HttpServerChoice) | Technical choice | karim | `src/infra.ts:358` |
-| [Initial reservations](infra.md#InitialReservations) | Decision | karim | `src/infra.ts:42` |
-| [What the service keeps, as tables](infra.md#KeptAsTables) | Technical choice | karim | `src/infra.ts:287` |
-| [Local](infra.md#Local) | Environment | karim | `src/infra.ts:29` |
-| [A SQLite file on the developer's machine](infra.md#LocalDatabase) | Technical choice | karim | `src/infra.ts:259` |
-| [Local database file](infra.md#LocalDatabasePath) | Decision | karim | `src/infra.ts:60` |
-| [Node HTTP server](infra.md#NodeServer) | Implementation | karim | `src/infra.ts:233` |
-| [Production Postgres database](infra.md#PostgresDatabase) | Implementation | karim | `src/infra.ts:125` |
-| [Production](infra.md#Production) | Environment | karim | `src/infra.ts:34` |
-| [Postgres in production](infra.md#ProductionDatabase) | Technical choice | karim | `src/infra.ts:272` |
-| [The provider's API in production](infra.md#ProviderApi) | Technical choice | karim | `src/infra.ts:347` |
-| [Payment provider address](infra.md#ProviderUrl) | Decision | karim | `src/infra.ts:88` |
-| [The system clock elsewhere](infra.md#RealClock) | Technical choice | karim | `src/infra.ts:381` |
-| [Reservations and cancellations as repositories over the records](infra.md#RecordRepositories) | Technical choice | karim | `src/infra.ts:322` |
-| [Reservations as records](infra.md#ReservationRecords) | Function | karim | `src/infra.ts:149` |
-| [End of a response](infra.md#ResponseEnding) | Decision | karim | `src/infra.ts:106` |
-| [A stopped clock in the scenarios](infra.md#ScenarioClock) | Technical choice | karim | `src/infra.ts:370` |
-| [A SQLite database in memory for the scenarios](infra.md#ScenarioDatabase) | Technical choice | karim | `src/infra.ts:246` |
-| [Simulated payment provider](infra.md#SimulatedPayment) | Function | karim | `src/infra.ts:199` |
-| [A simulated payment provider outside production](infra.md#SimulatedProvider) | Technical choice | karim | `src/infra.ts:335` |
-| [References of the simulated provider](infra.md#SimulatedReference) | Decision | karim | `src/infra.ts:100` |
-| [Stopped clock](infra.md#StoppedClock) | Function | karim | `src/infra.ts:188` |
-| [System clock](infra.md#SystemClock) | Implementation | karim | `src/infra.ts:178` |
-| [Test](infra.md#Test) | Environment | karim | `src/infra.ts:23` |
-| [Test instant](infra.md#TestInstant) | Decision | karim | `src/infra.ts:55` |
+| [Backup retention](infra.md#BackupRetention) | Decision | karim | `src/infra.ts:69` |
+| [Cancellations as records](infra.md#CancellationRecords) | Function | karim | `src/infra.ts:135` |
+| [Status of a cancelled reservation](infra.md#CancelledStatus) | Decision | karim | `src/infra.ts:80` |
+| [Production database address](infra.md#DatabaseAddress) | Decision | karim | `src/infra.ts:63` |
+| [Production database name](infra.md#DatabaseName) | Decision | karim | `src/infra.ts:51` |
+| [Production database size](infra.md#DatabaseSize) | Decision | karim | `src/infra.ts:56` |
+| [Nothing to start with in production](infra.md#EmptyInProduction) | Technical choice | karim | `src/infra.ts:286` |
+| [Local SQLite database](infra.md#FileDatabase) | Implementation | karim | `src/infra.ts:100` |
+| [The first reservations outside production](infra.md#FirstReservationsOutsideProduction) | Technical choice | karim | `src/infra.ts:275` |
+| [Real payment provider](infra.md#HttpPayment) | Implementation | karim | `src/infra.ts:198` |
+| [Node's HTTP server](infra.md#HttpServerChoice) | Technical choice | karim | `src/infra.ts:333` |
+| [What the service keeps, as tables](infra.md#KeptAsTables) | Technical choice | karim | `src/infra.ts:262` |
+| [Local](infra.md#Local) | Environment | karim | `src/infra.ts:28` |
+| [A SQLite file on the developer's machine](infra.md#LocalDatabase) | Technical choice | karim | `src/infra.ts:234` |
+| [Local database file](infra.md#LocalDatabasePath) | Decision | karim | `src/infra.ts:46` |
+| [Node HTTP server](infra.md#NodeServer) | Implementation | karim | `src/infra.ts:208` |
+| [Production Postgres database](infra.md#PostgresDatabase) | Implementation | karim | `src/infra.ts:111` |
+| [Production](infra.md#Production) | Environment | karim | `src/infra.ts:33` |
+| [Postgres in production](infra.md#ProductionDatabase) | Technical choice | karim | `src/infra.ts:247` |
+| [The provider's API in production](infra.md#ProviderApi) | Technical choice | karim | `src/infra.ts:322` |
+| [Payment provider address](infra.md#ProviderUrl) | Decision | karim | `src/infra.ts:74` |
+| [The system clock elsewhere](infra.md#RealClock) | Technical choice | karim | `src/infra.ts:356` |
+| [Reservations and cancellations as repositories over the records](infra.md#RecordRepositories) | Technical choice | karim | `src/infra.ts:297` |
+| [Reservations as records](infra.md#ReservationRecords) | Function | karim | `src/infra.ts:124` |
+| [End of a response](infra.md#ResponseEnding) | Decision | karim | `src/infra.ts:92` |
+| [A stopped clock in the scenarios](infra.md#ScenarioClock) | Technical choice | karim | `src/infra.ts:345` |
+| [A SQLite database in memory for the scenarios](infra.md#ScenarioDatabase) | Technical choice | karim | `src/infra.ts:221` |
+| [Simulated payment provider](infra.md#SimulatedPayment) | Function | karim | `src/infra.ts:174` |
+| [A simulated payment provider outside production](infra.md#SimulatedProvider) | Technical choice | karim | `src/infra.ts:310` |
+| [References of the simulated provider](infra.md#SimulatedReference) | Decision | karim | `src/infra.ts:86` |
+| [Stopped clock](infra.md#StoppedClock) | Function | karim | `src/infra.ts:163` |
+| [System clock](infra.md#SystemClock) | Implementation | karim | `src/infra.ts:153` |
+| [Test](infra.md#Test) | Environment | karim | `src/infra.ts:22` |
+| [Test instant](infra.md#TestInstant) | Decision | karim | `src/infra.ts:41` |
 | [The cap, decided](legal.md#FeeCapDecided) | Amendment | karim | `src/legal.ts:21` |
 | [Messages of the API](messages.md#ApiMessages) | Message catalog | karim | `src/messages.ts:18` |
 | [Language](messages.md#Language) | Decision | karim | `src/messages.ts:12` |

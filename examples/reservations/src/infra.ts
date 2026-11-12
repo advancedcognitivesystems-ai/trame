@@ -6,14 +6,13 @@ import { environment } from "#trame/kinds/environment"
 import { implementation } from "#trame/kinds/implementation"
 import { fn } from "#trame/kinds/function"
 import { binding } from "#trame/kinds/binding"
-import { ChargerType, chf } from "./cancellation"
 import { ReservationReading, Cancellations, Payment, PaymentLog, Clock, HttpExposure, HttpPort, type StoredReservation, type RefundRecord } from "./architecture"
 import { KeptReservation, KeptRefund } from "./data"
 import { Http, MediaTypes, Uri } from "#std/web"
 import { RouteSyntax, PaymentProviderApi } from "./standards"
 import { ApiMessages } from "./messages"
 import { Adapter, Strategy, Repository, AbstractFactory } from "#std/patterns"
-import { Records, RecordsInSql, SqlDatabase, SqliteTables, PostgresTables, SqliteInMemory, InitialRecords, StartEmpty, type Initial } from "#data/records"
+import { Records, RecordsInSql, SqlDatabase, SqliteTables, PostgresTables, SqliteInMemory, StartEmpty, SeedOfTheEntity } from "#data/records"
 import { Sqlite } from "#data/sql"
 
 /**
@@ -34,19 +33,6 @@ export const Local = environment({ owner: "karim" })
 export const Production = environment({ owner: "karim" })
 
 // Values --------------------------------------------------------------------
-
-/**
- * Initial reservations
- * What the table of reservations holds when it is created, in test and locally.
- */
-export const InitialReservations = decision<StoredReservation[]>({
-  owner: "karim",
-  value: [
-    { id: "R1", charger: ChargerType.normal, price: chf(20), start: "2026-10-20T12:00:00.000Z", status: "active" },
-    { id: "R2", charger: ChargerType.fast, price: chf(30), start: "2026-10-20T10:04:00.000Z", status: "active" },
-    { id: "R3", charger: ChargerType.ultra, price: chf(40), start: "2026-10-20T11:00:00.000Z", status: "active" },
-  ],
-})
 
 /**
  * Test instant
@@ -129,17 +115,6 @@ export const PostgresDatabase = implementation({
   body: code.file("./code/postgres-database.ts"),
   variables: { name: DatabaseName, size: DatabaseSize, backup_retention_days: BackupRetention, address: DatabaseAddress },
   provision: code.file("./infra/postgres-database", "hcl"),
-})
-
-/**
- * The first reservations
- * A table of reservations starts with the initial ones; any other table starts empty.
- */
-export const FirstReservations = fn({
-  owner: "karim",
-  implements: [InitialRecords],
-  deps: { reservations: InitialReservations, kept: KeptReservation },
-  body: ({ reservations, kept }): Initial => ({ of: (model) => (model.name === kept.name ? reservations : []) }),
 })
 
 /**
@@ -299,10 +274,10 @@ export const KeptAsTables = binding({
  */
 export const FirstReservationsOutsideProduction = binding({
   owner: "karim",
-  chooses: [FirstReservations],
+  chooses: [SeedOfTheEntity],
   environments: [Test, Local],
   follows: [Strategy],
-  context: "A scenario and a developer need reservations to read and cancel, and the service makes none.",
+  context: "A scenario and a developer need reservations to read and cancel, and the service makes none: a table starts with the ones its entity declares.",
 })
 
 /**

@@ -86,6 +86,7 @@ Tells whether a reservation is already cancelled, and records a cancellation wit
 | Environment | Answered by | Chosen by |
 |---|---|---|
 | [PostgreSQL's statements](../../../libs/data/docs/scenarios.md#PostgresStatementsOnly) | none | — |
+| [Seeded tables](../../../libs/data/docs/scenarios.md#SeededTables) | none | — |
 | [Test](../../../libs/data/docs/scenarios.md#Test) | none | — |
 | [Local](infra.md#Local) | [Cancellations as records](infra.md#CancellationRecords) | [Reservations and cancellations as repositories over the records](infra.md#RecordRepositories) |
 | [Production](infra.md#Production) | [Cancellations as records](infra.md#CancellationRecords) | [Reservations and cancellations as repositories over the records](infra.md#RecordRepositories) |
@@ -108,6 +109,7 @@ The current time.
 | Environment | Answered by | Chosen by |
 |---|---|---|
 | [PostgreSQL's statements](../../../libs/data/docs/scenarios.md#PostgresStatementsOnly) | none | — |
+| [Seeded tables](../../../libs/data/docs/scenarios.md#SeededTables) | none | — |
 | [Test](../../../libs/data/docs/scenarios.md#Test) | none | — |
 | [Local](infra.md#Local) | [System clock](infra.md#SystemClock) | [The system clock elsewhere](infra.md#RealClock) |
 | [Production](infra.md#Production) | [System clock](infra.md#SystemClock) | [The system clock elsewhere](infra.md#RealClock) |
@@ -130,6 +132,7 @@ Serves entry points on a port.
 | Environment | Answered by | Chosen by |
 |---|---|---|
 | [PostgreSQL's statements](../../../libs/data/docs/scenarios.md#PostgresStatementsOnly) | none | — |
+| [Seeded tables](../../../libs/data/docs/scenarios.md#SeededTables) | none | — |
 | [Test](../../../libs/data/docs/scenarios.md#Test) | none | — |
 | [Local](infra.md#Local) | [Node HTTP server](infra.md#NodeServer) | [Node's HTTP server](infra.md#HttpServerChoice) |
 | [Production](infra.md#Production) | [Node HTTP server](infra.md#NodeServer) | [Node's HTTP server](infra.md#HttpServerChoice) |
@@ -152,6 +155,7 @@ Refunds a driver. One call per idempotency key.
 | Environment | Answered by | Chosen by |
 |---|---|---|
 | [PostgreSQL's statements](../../../libs/data/docs/scenarios.md#PostgresStatementsOnly) | none | — |
+| [Seeded tables](../../../libs/data/docs/scenarios.md#SeededTables) | none | — |
 | [Test](../../../libs/data/docs/scenarios.md#Test) | none | — |
 | [Local](infra.md#Local) | [Simulated payment provider](infra.md#SimulatedPayment) | [A simulated payment provider outside production](infra.md#SimulatedProvider) |
 | [Production](infra.md#Production) | [Real payment provider](infra.md#HttpPayment) | [The provider's API in production](infra.md#ProviderApi) |
@@ -174,6 +178,7 @@ The calls made to the provider. It exists only where the provider is simulated.
 | Environment | Answered by | Chosen by |
 |---|---|---|
 | [PostgreSQL's statements](../../../libs/data/docs/scenarios.md#PostgresStatementsOnly) | none | — |
+| [Seeded tables](../../../libs/data/docs/scenarios.md#SeededTables) | none | — |
 | [Test](../../../libs/data/docs/scenarios.md#Test) | none | — |
 | [Local](infra.md#Local) | [Simulated payment provider](infra.md#SimulatedPayment) | [A simulated payment provider outside production](infra.md#SimulatedProvider) |
 | [Production](infra.md#Production) | none | — |
@@ -195,6 +200,7 @@ Finds a reservation by its identifier.
 | Environment | Answered by | Chosen by |
 |---|---|---|
 | [PostgreSQL's statements](../../../libs/data/docs/scenarios.md#PostgresStatementsOnly) | none | — |
+| [Seeded tables](../../../libs/data/docs/scenarios.md#SeededTables) | none | — |
 | [Test](../../../libs/data/docs/scenarios.md#Test) | none | — |
 | [Local](infra.md#Local) | [Reservations as records](infra.md#ReservationRecords) | [Reservations and cancellations as repositories over the records](infra.md#RecordRepositories) |
 | [Production](infra.md#Production) | [Reservations as records](infra.md#ReservationRecords) | [Reservations and cancellations as repositories over the records](infra.md#RecordRepositories) |

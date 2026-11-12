@@ -44,3 +44,16 @@ export const R0_2_0 = release({
   language: "shared",
   serves: [DataDescribedOnce],
 })
+
+/**
+ * Version 0.3.0
+ */
+export const R0_3_0 = release({
+  owner: "trame",
+  version: "0.3.0",
+  date: "2026-11-12",
+  what: "an entity's seed: the records a new table starts with, where a binding seeds it (SeedOfTheEntity), said to its owner when it changes after a deployment",
+  fingerprint: "44f729a295c3c9df",
+  language: "shared",
+  serves: [DataDescribedOnce],
+})

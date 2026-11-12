@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-10",
+  "at": "2026-11-12",
   "nodes": [
     {
       "id": "documents.Conforms",
@@ -261,6 +261,16 @@
       }
     },
     {
+      "id": "records.SeedOfTheEntity",
+      "kind": "function",
+      "title": "The records its entity starts with",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "body": "(function)"
+      }
+    },
+    {
       "id": "records.SqlDatabase",
       "kind": "port",
       "title": "A database of SQL",
@@ -386,6 +396,19 @@
         "date": "2026-11-09",
         "what": "An entity wired before it is evaluated (a scenario of a module read earlier) computes what it gives",
         "fingerprint": "80be07326b9dac85",
+        "language": "shared"
+      }
+    },
+    {
+      "id": "releases.R0_2_0",
+      "kind": "release",
+      "title": "Version 0.2.0",
+      "fields": {
+        "owner": "trame",
+        "version": "0.2.0",
+        "date": "2026-11-10",
+        "what": "records in SQL: the tables of entities, made ready by a deployment and migrated from the version they hold, in SQLite or PostgreSQL",
+        "fingerprint": "c3503ffdd30e2869",
         "language": "shared"
       }
     },
@@ -593,6 +616,39 @@
       }
     },
     {
+      "id": "scenarios.RecordsSeeded",
+      "kind": "scenario",
+      "title": "Records seeded",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "records": "records.Records",
+          "book": "shelves.Book",
+          "checks": "scenarios.DataChecks"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "scenarios.SeededForScenarios",
+      "kind": "binding",
+      "title": "Tables seeded, in memory",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "A scenario's database, or a developer's, starts with the records the entity declares, as a product's would."
+      }
+    },
+    {
+      "id": "scenarios.SeededTables",
+      "kind": "environment",
+      "title": "Seeded tables",
+      "fields": {
+        "owner": "trame"
+      }
+    },
+    {
       "id": "scenarios.SqliteForScenarios",
       "kind": "binding",
       "title": "SQLite, in memory",
@@ -704,7 +760,14 @@
           }
         },
         "key": "title",
-        "keptAs": "books"
+        "keptAs": "books",
+        "seed": [
+          {
+            "title": "Bleak House",
+            "pages": 1017,
+            "shelf": "reading"
+          }
+        ]
       }
     },
     {
@@ -1608,6 +1671,16 @@
       "kind": "deps"
     },
     {
+      "from": "records.SeedOfTheEntity",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "records.SeedOfTheEntity",
+      "to": "records.InitialRecords",
+      "kind": "implements"
+    },
+    {
       "from": "records.SqliteInMemory",
       "to": "records.SqlDatabase",
       "kind": "implements"
@@ -1719,6 +1792,11 @@
     },
     {
       "from": "releases.R0_1_1",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_2_0",
       "to": "product.DataDescribedOnce",
       "kind": "serves"
     },
@@ -1908,6 +1986,56 @@
       "kind": "deps"
     },
     {
+      "from": "scenarios.RecordsSeeded",
+      "to": "records.SeedOfTheEntity",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.RecordsSeeded",
+      "to": "scenarios.SeededTables",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.RecordsSeeded",
+      "to": "records.Records",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.RecordsSeeded",
+      "to": "shelves.Book",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.RecordsSeeded",
+      "to": "scenarios.DataChecks",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.SeededForScenarios",
+      "to": "records.RecordsInSql",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.SeededForScenarios",
+      "to": "records.SqliteTables",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.SeededForScenarios",
+      "to": "records.SeedOfTheEntity",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.SeededForScenarios",
+      "to": "scenarios.SeededTables",
+      "kind": "environments"
+    },
+    {
+      "from": "scenarios.SeededForScenarios",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
       "from": "scenarios.SqliteForScenarios",
       "to": "records.SqliteInMemory",
       "kind": "chooses"
@@ -1915,6 +2043,11 @@
     {
       "from": "scenarios.SqliteForScenarios",
       "to": "scenarios.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "scenarios.SqliteForScenarios",
+      "to": "scenarios.SeededTables",
       "kind": "environments"
     },
     {

@@ -1,0 +1,228 @@
+{
+  "shipment": "sdlc.NextVersion",
+  "title": "The next version",
+  "target": "version",
+  "at": "2026-11-12",
+  "by": "claude",
+  "signature": "attribution",
+  "artifacts": [
+    {
+      "node": "sdlc.TheLibrary",
+      "path": "src",
+      "fingerprint": "2898e2d876804bd1c702b3e43cde0d87ad37f3a0a8f897d951eb622710b652ca"
+    }
+  ],
+  "foundations": {
+    "problems": 0
+  },
+  "obligations": [
+    {
+      "node": "sdlc.TheLibrary",
+      "kind": "artifact",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-09",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "ea2c3c5d89c39e767980c8639d9f7a092c51b8815e805979d8ea9986c2f31124",
+          "code": "bdbade1b",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "1a5d45f02c610d51",
+          "seal": "c805c3032e03bfb1ddf02f42091ea1f96534ae1747a4722b945c1cf1fd7a5850"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-09",
+          "source": "shipped",
+          "value": 1,
+          "fingerprint": "ea2c3c5d89c39e767980c8639d9f7a092c51b8815e805979d8ea9986c2f31124",
+          "subject": "sdlc.NextVersion",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "ee08b5d3e7d9dda412974fa9749974f7d580e413ffb577eae28d24f16f6eb036"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-09",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "68b22ed1cd115df25bc5842ec9fd50a0f8891f465737ffb687bd72af1f875b5c",
+          "code": "afcf14a2",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "1a5d45f02c610d51",
+          "seal": "42ae43172804b28761bae8be9ae1bf03d04b315260697347a3e64407cdf9a015"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-09",
+          "source": "shipped",
+          "value": 1,
+          "fingerprint": "68b22ed1cd115df25bc5842ec9fd50a0f8891f465737ffb687bd72af1f875b5c",
+          "subject": "sdlc.NextVersion",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "f261c11691c184b6993f204769900eeefa9af432fe473f4f251d73483ec44034"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-10",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "4f85734a2065f157b202ad442968d7965880a31d42e5fb9cf57391d80a17bbc6",
+          "code": "cc74c7da",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "59f20aefeccfc914",
+          "seal": "5ac51dfffbfabd6c254bddde3f6d99b0aba6170ed8872ff3ae894e9cd10362a8"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-10",
+          "source": "shipped",
+          "value": 1,
+          "fingerprint": "4f85734a2065f157b202ad442968d7965880a31d42e5fb9cf57391d80a17bbc6",
+          "subject": "sdlc.NextVersion",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "b98ee15b92b0def4428d22ae6dbae3677904afa7d6e337f7ed92bf680640b7e5"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-12",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "2898e2d876804bd1c702b3e43cde0d87ad37f3a0a8f897d951eb622710b652ca",
+          "code": "e54ee21e",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "85baa19400d3c6fb",
+          "seal": "7e91b86fd386b606fa8cf427bbf3a8676ae50d0d16d8af0913a59eeefc61acbd"
+        }
+      ]
+    },
+    {
+      "node": "principles.DescribedOnce",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.DecisionsApplied",
+      "via": "documents.Conforms"
+    },
+    {
+      "node": "scenarios.DocumentsKept",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.FunctionsVerified",
+      "via": "documents.Conforms",
+      "outcome": [
+        {
+          "name": "A document written is read back as it was, with the version of its description",
+          "status": "passed"
+        },
+        {
+          "name": "What was stored before versions were kept is read as the first version deployed",
+          "status": "passed"
+        },
+        {
+          "name": "A document of a version deployed is migrated: a field renamed moves, one dropped goes",
+          "status": "passed"
+        },
+        {
+          "name": "A document that does not keep its description is nothing: a number written as a text, a word of no vocabulary",
+          "status": "passed"
+        },
+        {
+          "name": "A document of a version nothing migrates from is nothing",
+          "status": "passed"
+        },
+        {
+          "name": "A document cleared is nothing",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.RecordsKept",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.FunctionsVerified",
+      "via": "documents.Conforms",
+      "outcome": [
+        {
+          "name": "A table of a version deployed is migrated when it is made ready: a column renamed (its key), one dropped, one added; its rows read as the description is now, and the version kept is this one",
+          "status": "passed"
+        },
+        {
+          "name": "A record inserted is found by its key, as it was; the table counts it",
+          "status": "passed"
+        },
+        {
+          "name": "A record updated takes its new values, and keeps the others",
+          "status": "passed"
+        },
+        {
+          "name": "A transaction that fails writes nothing",
+          "status": "passed"
+        },
+        {
+          "name": "A table made ready in a transaction that fails is made ready again the next time it is used",
+          "status": "passed"
+        },
+        {
+          "name": "A row that does not keep its description is nothing",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.PostgresStatements",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.FunctionsVerified",
+      "via": "records.PostgresTables",
+      "outcome": [
+        {
+          "name": "PostgreSQL's statements name their parameters by position, type a number as double precision, and ask the information schema whether a table exists",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.RecordsSeeded",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.FunctionsVerified",
+      "via": "records.SeedOfTheEntity",
+      "outcome": [
+        {
+          "name": "Where a binding seeds it, a table created starts with the records its entity declares: each found, and counted",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "obligations.Migrated",
+      "kind": "requirement",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.RequirementsServed",
+      "via": "documents.Conforms"
+    }
+  ],
+  "deployed": []
+}

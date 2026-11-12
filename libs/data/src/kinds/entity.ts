@@ -111,6 +111,8 @@ export interface Model<F extends StoredFields = StoredFields> {
   readonly version: string
   readonly first: string
   readonly migrations: readonly Migration[]
+  /** The records a new place of it starts with, where a binding chooses to seed it (since data 0.3.0). */
+  readonly seed?: readonly ValueOfFields<F>[]
   /** The names of the types a field is stored as, and of the steps of a migration: what the code that reads it tests. */
   readonly types: typeof StoredType
   readonly ops: typeof MigrationOp
@@ -150,6 +152,7 @@ const fields = {
   key: optional(field.value<string>(say.entityKey())),
   keptAs: optional(field.value<string>(say.entityKeptAs())),
   changes: optional(field.value<Changes>(say.entityChanges())),
+  seed: optional(field.value<readonly Record<string, unknown>[]>(say.entitySeed())),
 }
 const F = keysOf(fields)
 const edges = {
@@ -162,10 +165,17 @@ interface Undecided {
   readonly what: string
 }
 
+/** What a deployment keeps of an entity: its description, and the fingerprint of the records a new place starts with. */
+interface Deployed extends Description {
+  readonly seed?: string
+}
+
 /** What an entity computes once: its description, its version, what each deployment kept and how it migrates. */
 interface Result {
   /** What a deployment keeps of it: trame ship records it (since g104). */
-  readonly deployed: Description
+  readonly deployed: Deployed
+  /** The last deployment that kept other records to start with than the ones declared now: its shipment, its day. */
+  readonly reseeded?: { readonly shipment: string; readonly at: string }
   readonly version: string
   readonly first: string
   readonly migrations: readonly Migration[]
@@ -260,15 +270,26 @@ const written = (s: Stored, g: Graph): Inline[] => {
 /** How a step is written for people. */
 const stepWritten = (x: Step): Inline[] => [say.opStep(opWords[x.op] ?? x.op), doc.ident(x.field), ...(x.from === undefined ? [] : [say.opFrom(), doc.ident(x.from)])]
 
+/** The records to start with changed since a deployment kept others: said to the owner, with that deployment. */
+const reseededHoles = (reseeded: Result["reseeded"], g: Graph, owner: string | undefined) => {
+  if (!reseeded) return []
+  const shipment = g.node(reseeded.shipment).first()
+  return [hole.warning(say.entityReseeded(shipment?.title ?? reseeded.shipment, g.lib.dates.format(reseeded.at)), owner)]
+}
+
 /** What an entity computes: its description, its version, and how each version a deployment kept migrates to it. */
 const computed = (self: View, g: Graph): Result => {
   const lib = g.lib
   const key = self.field(F.key)
-  const deployed: Description = {
+  const description: Description = {
     fields: Object.fromEntries(storedOf(self, lib).map(([k, s]) => [k, describe(s, g)])),
     ...(lib.values.isText(key) ? { key } : {}),
   }
-  const version = lib.fingerprint?.(deployed) ?? lib.texts.empty
+  // The version is the description's: the records a new place starts with change no table, only what a new one holds.
+  const version = lib.fingerprint?.(description) ?? lib.texts.empty
+  const rows = self.field(F.seed)
+  const seed = Array.isArray(rows) ? lib.fingerprint?.(rows) : undefined
+  const deployed: Deployed = { ...description, ...(seed === undefined ? {} : { seed }) }
   const changes = self.field(F.changes)
   // What a shipment that deploys nothing kept (a library's version) is stored nowhere: only a deployment counts.
   const deploys = (ref: string | undefined) => {
@@ -277,10 +298,14 @@ const computed = (self: View, g: Graph): Result => {
   }
   const records = self.evidence.filter((e) => e.source === EvidenceSource.shipped && isPlain(e.kept, lib) && deploys(e.subject))
   const kept: { version: string; at: string; description: Description }[] = []
+  let reseeded: Result["reseeded"]
   for (const e of [...records].sort((a, b) => a.at.localeCompare(b.at))) {
-    const description = e.kept as Description
-    const v = lib.fingerprint?.(description) ?? lib.texts.empty
-    if (!kept.some((k) => k.version === v)) kept.push({ version: v, at: e.at, description })
+    const { seed: started, ...was } = e.kept as Deployed
+    const v = lib.fingerprint?.(was) ?? lib.texts.empty
+    if (!kept.some((k) => k.version === v)) kept.push({ version: v, at: e.at, description: was })
+    // The last deployment kept other records to start with: a place it made keeps those it started with, until the next
+    // deployment keeps these.
+    reseeded = started !== undefined && started !== seed && e.subject !== undefined ? { shipment: e.subject, at: e.at } : undefined
   }
   const migrations: Migration[] = []
   const undecided: Undecided[] = []
@@ -290,7 +315,10 @@ const computed = (self: View, g: Graph): Result => {
     undecided.push(...m.undecided.filter((u) => !undecided.some((x) => x.what === u.what)))
   }
   const [first] = kept
-  return { deployed, version, first: first?.version ?? version, migrations, undecided, kept: kept.map(({ version: v, at }) => ({ version: v, at })) }
+  return {
+    deployed, version, first: first?.version ?? version, migrations, undecided, kept: kept.map(({ version: v, at }) => ({ version: v, at })),
+    ...(reseeded ? { reseeded } : {}),
+  }
 }
 
 /**
@@ -305,7 +333,7 @@ const computed = (self: View, g: Graph): Result => {
 const kind = defineKind({
   name: DataKind.entity,
   label: { one: say.entityEntity(), many: say.entityEntities() },
-  renderOwns: [F.fields, F.key, F.changes],
+  renderOwns: [F.fields, F.key, F.changes, F.seed],
   fields,
   edges,
 
@@ -324,6 +352,7 @@ const kind = defineKind({
       ...(key !== undefined && !all.some(([k]) => k === key) ? [hole.error(say.entityKeyNamesNoField(String(key)), self.owner)] : []),
       ...all.filter(([, s]) => typeWords[s.type] === undefined).map(([k]) => hole.error(say.entityFieldWithoutType(k), self.owner)),
       ...(self.result<Result>()?.undecided ?? []).map((u) => hole.blocking(u.what, self.owner)),
+      ...reseededHoles(self.result<Result>()?.reseeded, g, self.owner),
     ]
   },
 
@@ -335,6 +364,7 @@ const kind = defineKind({
       doc.para(...say.entitySummary(all.length, key === undefined ? undefined : doc.ident(String(key)))),
       doc.table([say.entityField(), say.entityType()], all.map(([k, s]) => [[doc.ident(k)], written(s, g)])),
       ...(r ? [doc.para(...say.entityVersion(doc.ident(r.version), r.kept.length))] : []),
+      ...(Array.isArray(self.field(F.seed)) ? [doc.para(say.entitySeeded((self.field(F.seed) as readonly unknown[]).length))] : []),
       ...(r && r.migrations.length
         ? [doc.table([say.entityFrom(), say.entitySteps()], r.migrations.map((m) => [
             [doc.ident(m.from)], m.steps.length ? m.steps.flatMap((x, i) => [...(i ? [g.lib.punctuation.items] : []), ...stepWritten(x)]) : [say.entityNothingToDo()],
@@ -350,10 +380,11 @@ const kind = defineKind({
     const description = r?.deployed ?? { fields: {} }
     const names = Object.fromEntries(Object.keys(description.fields).map((k) => [k, k]))
     const keptAs = self.field(F.keptAs)
+    const seed = self.field(F.seed)
     return {
       name: keptAs ?? self.ref,
       fields: description.fields, names, ...(description.key === undefined ? {} : { key: description.key }),
-      version: r?.version, first: r?.first, migrations: r?.migrations ?? [], types: StoredType, ops: MigrationOp,
+      version: r?.version, first: r?.first, migrations: r?.migrations ?? [], ...(Array.isArray(seed) ? { seed } : {}), types: StoredType, ops: MigrationOp,
     }
   },
 })
@@ -368,6 +399,11 @@ interface EntityInput<F extends StoredFields> {
   keptAs?: string
   /** What changed since a version deployed, which a migration cannot compute: decided by the owner. */
   changes?: Changes<F>
+  /**
+   * The records a new place of it starts with (a table created), where a binding chooses to seed it (SeedOfTheEntity):
+   * a scenario's database, a developer's. A place made before keeps those it started with.
+   */
+  seed?: readonly NoInfer<ValueOfFields<F>>[]
   serves?: readonly Node<typeof KindName.goal>[]
 }
 

@@ -8,7 +8,7 @@ import { GeometryWrittenOnce } from "./product"
  * The language the library is written in, at the generation it pins: from the registry of this machine.
  */
 export const Language = pkg({
-  owner: "ghalaax", packageName: "trame", version: "105", joins: "language", from: "registry",
+  owner: "ghalaax", packageName: "trame", version: "106", joins: "language", from: "registry",
   serves: [GeometryWrittenOnce],
 })
 

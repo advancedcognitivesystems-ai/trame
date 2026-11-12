@@ -193,5 +193,128 @@
     "by": "claude",
     "signature": "attribution",
     "seal": "a5487d3600ab2b1c975fff1cc27c29153df90346aa9606078b32b18c4bf97fa2"
+  },
+  {
+    "node": "data.KeptRefund",
+    "at": "2026-11-12",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "a2c32e34",
+    "subject": "sdlc.OnThisMachine",
+    "kept": {
+      "fields": {
+        "reservation": {
+          "type": "reference",
+          "entity": "data.KeptReservation",
+          "keptAs": "reservations",
+          "key": "id"
+        },
+        "amount": {
+          "type": "number",
+          "quantity": "cancellation.SwissFrancs"
+        },
+        "reference": {
+          "type": "text"
+        },
+        "at": {
+          "type": "optional",
+          "of": {
+            "type": "text"
+          }
+        }
+      },
+      "key": "reservation"
+    },
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "f6dd902f1695a2ba8bd4d13c343af7af79b0fb02de98b9cf1bed8ab2d68a5068"
+  },
+  {
+    "node": "data.KeptReservation",
+    "at": "2026-11-12",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "8d33335e",
+    "subject": "sdlc.OnThisMachine",
+    "kept": {
+      "fields": {
+        "id": {
+          "type": "text"
+        },
+        "charger": {
+          "type": "word",
+          "vocabulary": "data.Chargers",
+          "words": [
+            "fast",
+            "normal",
+            "ultra"
+          ]
+        },
+        "price": {
+          "type": "number",
+          "quantity": "cancellation.SwissFrancs"
+        },
+        "start": {
+          "type": "text"
+        },
+        "status": {
+          "type": "word",
+          "vocabulary": "data.ReservationStatuses",
+          "words": [
+            "active",
+            "cancelled"
+          ]
+        }
+      },
+      "key": "id",
+      "seed": "0fa27854"
+    },
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "da041537096a1571eb9edb5f702b7d59a4f77a8d691f8090bdd219820e9be940"
+  },
+  {
+    "node": "sdlc.LocalProgram",
+    "at": "2026-11-12",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "0722d470a85bdb7be673f33d615f50d29222fd50cb4ef6d699697fadc4e98831",
+    "code": "b4a70b0a",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "85baa19400d3c6fb",
+    "seal": "b11f2fc25118fac095ed8e206e279729cecd5d49f840cce059bca15c1b293d3d"
+  },
+  {
+    "node": "sdlc.LocalProgram",
+    "at": "2026-11-12",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "0722d470a85bdb7be673f33d615f50d29222fd50cb4ef6d699697fadc4e98831",
+    "subject": "sdlc.OnThisMachine",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "3b40d70becea928eb9863c06e034897a339def83f13a4f74340908e5de565796"
+  },
+  {
+    "node": "sdlc.OnThisMachine",
+    "at": "2026-11-12",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "28afb5cc",
+    "url": "evidence/shipments/OnThisMachine-2026-11-12-28afb5cc.json",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "b8aad5cda309e595b836442842d1c5fde7e53e68e535d5d9c6b35e4699e178a9"
+  },
+  {
+    "node": "sdlc.PrepareStorage",
+    "at": "2026-11-12",
+    "source": "deployed",
+    "value": 1,
+    "fingerprint": "174c5852",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "df7ceb88bd1eb19f994c4b077bc9f2e275b44f166eb1f504dd8fb3a4353275f3"
   }
 ]

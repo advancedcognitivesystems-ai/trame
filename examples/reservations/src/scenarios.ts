@@ -5,12 +5,12 @@ import { decision } from "#trame/kinds/decision"
 import { scenario } from "#trame/kinds/scenario"
 import { FreeCancellationPeriod, Refund } from "./cancellation"
 import { PaymentLog } from "./architecture"
-import { Test, InitialReservations, TestInstant, ReservationRecords, CancellationRecords, FirstReservations, SimulatedPayment, StoppedClock, CancelledStatus } from "./infra"
+import { Test, TestInstant, ReservationRecords, CancellationRecords, SimulatedPayment, StoppedClock, CancelledStatus } from "./infra"
 import { KeptReservation, KeptRefund } from "./data"
 import { Commands } from "#std/effects"
 import { ExitStatus } from "#std/system"
 import { Counts } from "#std/algebra"
-import { Records, RecordsInSql, SqlDatabase, TableDialect, SqliteInMemory, SqliteTables } from "#data/records"
+import { Records, RecordsInSql, SqlDatabase, TableDialect, SqliteInMemory, SqliteTables, SeedOfTheEntity } from "#data/records"
 import { Conforms } from "#data/documents"
 import { ReadReservation, CancelReservation, FreeCancellationEnd, LeadTime } from "./api"
 import { PrepareStorage } from "./sdlc"
@@ -30,11 +30,11 @@ export const UnknownReservation = decision<string>({ owner: "karim", value: "R40
  */
 export const ReadScenario = scenario({
   owner: "karim",
-  verifies: [ReadReservation, FreeCancellationEnd, ReservationRecords, FirstReservations, RecordsInSql, SqliteTables, SqliteInMemory, Conforms],
+  verifies: [ReadReservation, FreeCancellationEnd, ReservationRecords, SeedOfTheEntity, RecordsInSql, SqliteTables, SqliteInMemory, Conforms],
   env: Test,
-  deps: { read: ReadReservation, initial: InitialReservations, freePeriod: FreeCancellationPeriod, unknown: UnknownReservation, http: Http, time: Time, says: ScenarioChecks },
-  body: ({ read, initial, freePeriod, unknown, http, time, says }) => async (check) => {
-    const [r1] = initial
+  deps: { read: ReadReservation, kept: KeptReservation, freePeriod: FreeCancellationPeriod, unknown: UnknownReservation, http: Http, time: Time, says: ScenarioChecks },
+  body: ({ read, kept, freePeriod, unknown, http, time, says }) => async (check) => {
+    const [r1] = kept.seed ?? []
     const response = await read({ params: { id: r1.id } })
     const body = response.body as { id: string; freeUntil: string }
     check(says.existingReturned(), response.status === http.ok && body.id === r1.id)
@@ -52,9 +52,9 @@ export const RepeatedCancellationScenario = scenario({
   owner: "karim",
   verifies: [CancelReservation, LeadTime, CancellationRecords, SimulatedPayment, StoppedClock],
   env: Test,
-  deps: { cancel: CancelReservation, log: PaymentLog, refund: Refund, initial: InitialReservations, instant: TestInstant, http: Http, time: Time, says: ScenarioChecks },
-  body: ({ cancel, log, refund, initial, instant, http, time, says }) => async (check) => {
-    const [r1] = initial
+  deps: { cancel: CancelReservation, log: PaymentLog, refund: Refund, kept: KeptReservation, instant: TestInstant, http: Http, time: Time, says: ScenarioChecks },
+  body: ({ cancel, log, refund, kept, instant, http, time, says }) => async (check) => {
+    const [r1] = kept.seed ?? []
     const leadTime = time.millisecond(Date.parse(r1.start) - Date.parse(instant))
     const first = await cancel({ params: { id: r1.id } })
     const second = await cancel({ params: { id: r1.id } })
@@ -74,9 +74,9 @@ export const ComplianceScenario = scenario({
   owner: "lea",
   verifies: [CancelReservation, Refund],
   env: Test,
-  deps: { cancel: CancelReservation, refund: Refund, initial: InitialReservations, instant: TestInstant, time: Time, says: ScenarioChecks },
-  body: ({ cancel, refund, initial, instant, time, says }) => async (check) => {
-    for (const r of initial) {
+  deps: { cancel: CancelReservation, refund: Refund, kept: KeptReservation, instant: TestInstant, time: Time, says: ScenarioChecks },
+  body: ({ cancel, refund, kept, instant, time, says }) => async (check) => {
+    for (const r of kept.seed ?? []) {
       const leadTime = time.millisecond(Date.parse(r.start) - Date.parse(instant))
       const refunded = (await cancel({ params: { id: r.id } })).body as { amount: number }
       check(says.refundedByRule(r.id, r.charger, leadTime, refunded.amount), refunded.amount === refund(r, leadTime))
@@ -96,10 +96,10 @@ export const ReadsNeverWrite = scenario({
   env: Test,
   deps: {
     database: SqlDatabase, commands: Commands, dialect: TableDialect, records: Records, reservations: KeptReservation, cancelled: CancelledStatus,
-    initial: InitialReservations, says: ScenarioChecks,
+    says: ScenarioChecks,
   },
-  body: ({ database, commands, dialect, records, reservations, cancelled, initial, says }) => async (check) => {
-    const [r1] = initial
+  body: ({ database, commands, dialect, records, reservations, cancelled, says }) => async (check) => {
+    const [r1] = reservations.seed ?? []
     await records.prepare(reservations)
     const disguised = commands.read(dialect.update(reservations, [reservations.names.status]))
     const refused = await database.read(disguised, cancelled, r1.id).then(() => false, () => true)
@@ -118,12 +118,12 @@ export const StoragePrepared = scenario({
   verifies: [PrepareStorage],
   env: Test,
   deps: {
-    prepare: PrepareStorage, records: Records, reservations: KeptReservation, refunds: KeptRefund, initial: InitialReservations, exit: ExitStatus,
+    prepare: PrepareStorage, records: Records, reservations: KeptReservation, refunds: KeptRefund, exit: ExitStatus,
     counts: Counts, says: ScenarioChecks,
   },
-  body: ({ prepare, records, reservations, refunds, initial, exit, counts, says }) => async (check) => {
+  body: ({ prepare, records, reservations, refunds, exit, counts, says }) => async (check) => {
     const done = await prepare({ params: {} })
     const counted = [await records.count(reservations), await records.count(refunds)]
-    check(says.storagePrepared(), done.status === exit.success && counted.join() === [initial.length, counts.zero].join())
+    check(says.storagePrepared(), done.status === exit.success && counted.join() === [(reservations.seed ?? []).length, counts.zero].join())
   },
 })

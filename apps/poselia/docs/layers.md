@@ -1,6 +1,6 @@
 # Layers
 
-*The graph in force on 10 November 2026, ordered by distance to the goals.*
+*The graph in force on 12 November 2026, ordered by distance to the goals.*
 
 ```mermaid
 flowchart TB

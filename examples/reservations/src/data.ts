@@ -2,7 +2,7 @@
 
 import { vocabulary } from "#trame/kinds/vocabulary"
 import { entity, stored } from "#data/kinds/entity"
-import { ChargerType, SwissFrancs, CancelWithoutStress } from "./cancellation"
+import { ChargerType, SwissFrancs, CancelWithoutStress, chf } from "./cancellation"
 
 // What the service keeps from one version to the next, described once: a reservation, and the refund of each cancelled
 // one. The library of data makes each a table, in SQLite or in PostgreSQL, and a deployment migrates it from the
@@ -29,7 +29,8 @@ export const ReservationStatuses = vocabulary({
 
 /**
  * A reservation
- * A slot on a charger: its price, the instant it starts (ISO 8601), whether it was cancelled; found by its identifier.
+ * A slot on a charger: its price, the instant it starts (ISO 8601), whether it was cancelled; found by its identifier. A
+ * table of reservations starts with three, where a binding seeds it (in test, and on a developer's machine).
  */
 export const KeptReservation = entity({
   owner: "karim",
@@ -38,6 +39,11 @@ export const KeptReservation = entity({
   fields: {
     id: stored.text(), charger: stored.word(Chargers), price: stored.number(SwissFrancs), start: stored.text(), status: stored.word(ReservationStatuses),
   },
+  seed: [
+    { id: "R1", charger: ChargerType.normal, price: chf(20), start: "2026-10-20T12:00:00.000Z", status: "active" },
+    { id: "R2", charger: ChargerType.fast, price: chf(30), start: "2026-10-20T10:04:00.000Z", status: "active" },
+    { id: "R3", charger: ChargerType.ultra, price: chf(40), start: "2026-10-20T11:00:00.000Z", status: "active" },
+  ],
   serves: [CancelWithoutStress],
 })
 

@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 10 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 12 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Data · Documents
 
@@ -182,6 +182,14 @@ Function · `RecordsInSql` · **held**
 - Implements: Records
 - Depends on: A database of SQL, A dialect of SQL, for tables, What a new table starts with, The table of versions, A value of the description it is of
 
+### The records its entity starts with
+
+Function · `SeedOfTheEntity` · **held**
+
+- Owner: trame
+- Serves: Data described once
+- Implements: What a new table starts with
+
 ### SQLite's tables
 
 Function · `SqliteTables` · **held**
@@ -235,6 +243,18 @@ Release · `R0_1_1`
 - Language: shared
 - Serves: Data described once
 
+### Version 0.2.0
+
+Release · `R0_2_0`
+
+- Released by: trame
+- Version: 0.2.0
+- Released on: 2026-11-10
+- What changes: records in SQL: the tables of entities, made ready by a deployment and migrated from the version they hold, in SQLite or PostgreSQL
+- Fingerprint: c3503ffdd30e2869
+- Language: shared
+- Serves: Data described once
+
 ## Data · Scenarios
 
 ### What the library's scenarios are given
@@ -270,6 +290,16 @@ Technical choice · `PostgresForScenarios` · **held**
 - In: PostgreSQL's statements
 - Serves: Data described once
 
+### Tables seeded, in memory
+
+Technical choice · `SeededForScenarios` · **held**
+
+- Decided by: trame
+- Context: A scenario's database, or a developer's, starts with the records the entity declares, as a product's would.
+- Chooses: Records in SQL, SQLite's tables, The records its entity starts with
+- In: Seeded tables
+- Serves: Data described once
+
 ### SQLite, in memory
 
 Technical choice · `SqliteForScenarios` · **held**
@@ -277,12 +307,18 @@ Technical choice · `SqliteForScenarios` · **held**
 - Decided by: trame
 - Context: Records are written, migrated and read by SQLite itself, as a product's would be, and nothing is left behind.
 - Chooses: SQLite in memory
-- In: Test
+- In: Test, Seeded tables
 - Serves: Data described once
 
 ### PostgreSQL's statements
 
 Environment · `PostgresStatementsOnly`
+
+- Owner: trame
+
+### Seeded tables
+
+Environment · `SeededTables`
 
 - Owner: trame
 
@@ -322,6 +358,16 @@ Scenario · `RecordsKept` · **held**
 - Verifies: Records in SQL, SQLite's tables, SQLite in memory, No records to start with, A value of the description it is of
 - In: Test
 - Depends on: Records, A database of SQL, A dialect of SQL, for tables, The table of versions, A book, What the library's scenarios are given, What the library's scenarios check
+
+### Records seeded
+
+Scenario · `RecordsSeeded` · **held**
+
+- Owner: trame
+- Parameters: { records: records.Records, book: shelves.Book, checks: scenarios.DataChecks }
+- Verifies: The records its entity starts with
+- In: Seeded tables
+- Depends on: Records, A book, What the library's scenarios check
 
 ## Data · SDLC
 
@@ -396,6 +442,7 @@ Entity · `Book` · **held**
 - Fields: { title: { type: text }, pages: { type: number }, shelf: { type: word, vocabulary: shelves.Shelves }, lent: { type: optional, of: { type: flag } } }
 - Key: title
 - Kept as: books
+- Starts with: { title: Bleak House, pages: 1017, shelf: reading }
 - Serves: Data described once
 - Depends on: Shelves
 

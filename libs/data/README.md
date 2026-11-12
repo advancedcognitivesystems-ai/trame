@@ -14,7 +14,11 @@ next (a person's breath on their device, the reservations of a database) is desc
   transaction), `RecordsInSql` over the ports `SqlDatabase` and `TableDialect`: each entity a table, made ready when a
   deployment prepares it, or the first time it is used (created with what `InitialRecords` gives, or migrated from the
   version it holds, kept in the table of versions; made ready again after a transaction that failed), read back
-  checked. `SqliteTables` and `PostgresTables` write the statements; `SqliteInMemory` is a database for scenarios.
+  checked. `SqliteTables` and `PostgresTables` write the statements; `SqliteInMemory` is a database for scenarios. What
+  a new table starts with is chosen per environment by `InitialRecords`: `SeedOfTheEntity` (the records the entity
+  declares in `seed`, for a scenario's database or a developer's) or `StartEmpty`. A deployment keeps the fingerprint of
+  the seed; the entity says to its owner when the seed changed since the last deployment (a table made before keeps the
+  records it started with).
 - `src/sql.ts` — the SQL the tables are written in: the standard and its statements (creation, ALTER TABLE to add,
   rename or drop a column, selection, insertion, update, deletion), SQLite's and PostgreSQL's dialects, as syntax
   elements with their examples.
