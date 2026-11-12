@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 10 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 30 October 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Trame · Appearance
 
@@ -410,7 +410,7 @@ Environment · `Test`
 
 ### The page is assembled
 
-Architecture decision · `ThePageIsAssembled` · **held**
+Architecture decision · `ThePageIsAssembled` · **unknown**
 
 - Decided by: trame
 - Context: The page's script built by hand what it shared with the engine and wrote its values (classes, identifiers, the explorer's geometry) as literals the catalogue could not see: a change in the graph did not reach it.
@@ -421,7 +421,7 @@ Architecture decision · `ThePageIsAssembled` · **held**
 
 ### Explorer of a graph
 
-Function · `ExplorerFigures` · **held**
+Function · `ExplorerFigures` · **unknown**
 
 - Owner: trame
 - Parameters: { html: std/html.Html, svg: std/html.Svg, aria: std/html.Aria, css: std/html.Css, page: page.ThePage, markup: markup.DocumentMarkup, figures: markup.FigureMarkup, explorer: markup.ExplorerMarkup, drawing: appearance.ExplorerDrawing, element: html.HtmlElement, start: html.HtmlStartTag, empty: html.SelfClosingTag, path: html.PathData, declaration: html.CssDeclaration, escape: html.EscapedText, common: rendering.Common, words: messages.PageWords, messages: messages.RenderingMessages, punctuation: documents.Punctuation, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts }
@@ -430,7 +430,7 @@ Function · `ExplorerFigures` · **held**
 
 ### Show the graph
 
-Entry point · `ShowGraph` · **held**
+Entry point · `ShowGraph` · **unknown**
 
 - Owner: trame
 - Trigger: { type: load }
@@ -441,7 +441,7 @@ Entry point · `ShowGraph` · **held**
 
 ### Amendments sent to trame dev
 
-Implementation · `BrowserAmendments` · **held**
+Implementation · `BrowserAmendments` · **unknown**
 
 - Owner: trame
 - Parameters: { page: page.ThePage, service: engine.DevService, http: std/web.Http, media: std/web.MediaTypes }
@@ -450,7 +450,7 @@ Implementation · `BrowserAmendments` · **held**
 
 ### The browser's gzip
 
-Implementation · `BrowserDecompression` · **held**
+Implementation · `BrowserDecompression` · **unknown**
 
 - Owner: trame
 - Parameters: { packing: page.PackedGraph, ecma: std/ecmascript.EcmaScript }
@@ -459,7 +459,7 @@ Implementation · `BrowserDecompression` · **held**
 
 ### The globals of the page, and trame dev
 
-Implementation · `BrowserFeed` · **held**
+Implementation · `BrowserFeed` · **unknown**
 
 - Owner: trame
 - Parameters: { page: page.ThePage, service: engine.DevService, values: std/algebra.ValueTypes }
@@ -468,7 +468,7 @@ Implementation · `BrowserFeed` · **held**
 
 ### Local storage
 
-Implementation · `BrowserMemory` · **held**
+Implementation · `BrowserMemory` · **unknown**
 
 - Owner: trame
 - Parameters: { page: page.ThePage }
@@ -477,7 +477,7 @@ Implementation · `BrowserMemory` · **held**
 
 ### The browser's window
 
-Implementation · `BrowserWindow` · **held**
+Implementation · `BrowserWindow` · **unknown**
 
 - Owner: trame
 - Parameters: { motion: std/web.MediaQueries5, feature: html.MediaFeature, counts: std/algebra.Counts }
@@ -486,7 +486,7 @@ Implementation · `BrowserWindow` · **held**
 
 ### The browser runs the page
 
-Technical choice · `TheBrowserRunsThePage` · **held**
+Technical choice · `TheBrowserRunsThePage` · **unknown**
 
 - Decided by: trame
 - Context: The page's script took what it needed from the browser itself, here and there: the graph could not say what the page asks of the browser, nor try it elsewhere.
@@ -517,7 +517,7 @@ Decision · `AmendmentSamples`
 Decision · `AssemblySamples`
 
 - Decided by: trame
-- Value: { component: ReservationsApi, machine: Local, provisioned: Production, program: .ts, launcher: .node.ts, provision: .tf }
+- Value: { component: ReservationsApi, machine: Local, provisioned: Production, program: .ts, launcher: .node.ts, provision: .tf, switches: 2026-11-01, 2027-01-01, dated: cancelReservation }
 
 ### Bodies the reader is given
 
@@ -621,10 +621,10 @@ Scenario · `CommandLineChooses` · **held**
 Scenario · `ComponentAssembled` · **held**
 
 - Owner: trame
-- Parameters: { assemble: commands.Assemble, writeLog: architecture.WriteLog, terminalLog: architecture.TerminalLog, line: conventions.TrameCommands, exitStatus: std/system.ExitStatus, layout: conventions.Layout, samples: command-scenarios.AssemblySamples, commands: messages.CommandMessages, counts: std/algebra.Counts, messages: messages.ScenarioMessages }
+- Parameters: { assemble: commands.Assemble, writeLog: architecture.WriteLog, terminalLog: architecture.TerminalLog, line: conventions.TrameCommands, exitStatus: std/system.ExitStatus, layout: conventions.Layout, samples: command-scenarios.AssemblySamples, frozen: conventions.FrozenApi, commands: messages.CommandMessages, counts: std/algebra.Counts, messages: messages.ScenarioMessages }
 - Verifies: Assemble a component, Assembler, Assembly, TypeScript writer, Terraform writer, Drivers, Stopped clock
 - In: Test
-- Depends on: Assemble a component, Write log, Terminal log, Trame's commands, Project layout, What the example is assembled for, Messages of the commands, Messages of the scenarios
+- Depends on: Assemble a component, Write log, Terminal log, Trame's commands, Project layout, What the example is assembled for, The frozen API, Messages of the commands, Messages of the scenarios
 
 ### A component run
 
@@ -860,7 +860,7 @@ Function · `Amending` · **held**
 Function · `Assembler` · **held**
 
 - Owner: trame
-- Parameters: { preparation: commands.Preparation, assembly: engine.Assembly, layout: text.TerminalText, punctuation: documents.Punctuation, texts: std/algebra.Texts, messages: messages.CommandMessages }
+- Parameters: { preparation: commands.Preparation, assembly: engine.Assembly, layout: text.TerminalText, punctuation: documents.Punctuation, texts: std/algebra.Texts, counts: std/algebra.Counts, messages: messages.CommandMessages }
 - Serves: A specification that runs
 - Depends on: Preparation, Assembly, Terminal text, Punctuation of documents, Messages of the commands
 
@@ -961,10 +961,10 @@ Entry point · `Deliver` · **held**
 
 - Owner: trame
 - Trigger: { type: command, name: deliver }
-- Parameters: { exitStatus: std/system.ExitStatus, preparation: commands.Preparation, assembly: engine.Assembly, bundler: architecture.Bundler, led: delivery.NamesLed, bundle: page.PageBundle, document: page.PageDocument, html: std/html.Html, script: html.ScriptElement, style: delivery.DeliveredStyle, reading: architecture.FileReading, writing: architecture.FileWriting, paths: architecture.Paths, encodings: std/system.NodeEncodings, terminal: architecture.Terminal, sequences: std/algebra.Sequences, texts: std/algebra.Texts, values: std/algebra.ValueTypes, messages: messages.CommandMessages }
+- Parameters: { exitStatus: std/system.ExitStatus, preparation: commands.Preparation, assembly: engine.Assembly, assembler: commands.Assembler, bundler: architecture.Bundler, led: delivery.NamesLed, bundle: page.PageBundle, document: page.PageDocument, html: std/html.Html, script: html.ScriptElement, style: delivery.DeliveredStyle, reading: architecture.FileReading, writing: architecture.FileWriting, paths: architecture.Paths, encodings: std/system.NodeEncodings, terminal: architecture.Terminal, sequences: std/algebra.Sequences, texts: std/algebra.Texts, values: std/algebra.ValueTypes, messages: messages.CommandMessages }
 - Serves: A specification that runs
 - Part of: Trame on the command line
-- Depends on: Preparation, Assembly, Bundler, The names a bundle is led by, Bundle of the page, Document of the page, Script, Style of a delivered page, File reading, File writing, Paths, Terminal, Messages of the commands
+- Depends on: Preparation, Assembly, Assembler, Bundler, The names a bundle is led by, Bundle of the page, Document of the page, Script, Style of a delivered page, File reading, File writing, Paths, Terminal, Messages of the commands
 
 ### Start trame dev
 
@@ -1093,10 +1093,10 @@ Entry point · `Ship` · **held**
 
 - Owner: trame
 - Trigger: { type: command, name: ship }
-- Parameters: { exitStatus: std/system.ExitStatus, line: conventions.TrameCommands, preparation: commands.Preparation, deliver: commands.Deliver, assembly: engine.Assembly, sdlc: shipping.SdlcEvidence, runPlan: shipping.ShipmentRunPlan, holds: (rule), bundler: architecture.Bundler, led: delivery.NamesLed, programBundle: shipping.ProgramBundle, currentProcess: architecture.Process, events: std/system.NodeEvents, reading: architecture.FileReading, writing: architecture.FileWriting, paths: architecture.Paths, encodings: std/system.NodeEncodings, terminal: architecture.Terminal, sequences: std/algebra.Sequences, counts: std/algebra.Counts, values: std/algebra.ValueTypes, engines: engine.EngineFingerprint, messages: messages.CommandMessages }
+- Parameters: { exitStatus: std/system.ExitStatus, line: conventions.TrameCommands, preparation: commands.Preparation, deliver: commands.Deliver, assembly: engine.Assembly, assembler: commands.Assembler, sdlc: shipping.SdlcEvidence, runPlan: shipping.ShipmentRunPlan, holds: (rule), bundler: architecture.Bundler, led: delivery.NamesLed, programBundle: shipping.ProgramBundle, currentProcess: architecture.Process, events: std/system.NodeEvents, reading: architecture.FileReading, writing: architecture.FileWriting, paths: architecture.Paths, encodings: std/system.NodeEncodings, terminal: architecture.Terminal, sequences: std/algebra.Sequences, counts: std/algebra.Counts, values: std/algebra.ValueTypes, engines: engine.EngineFingerprint, messages: messages.CommandMessages }
 - Serves: Ship only what holds
 - Part of: Trame on the command line
-- Depends on: Trame's commands, Preparation, Deliver, Assembly, Evidence of the SDLC, The plan of a run elsewhere, Ship only what holds, Bundler, The names a bundle is led by, The fingerprint of a program, Process, File reading, File writing, Paths, Terminal, The fingerprint of an engine, Messages of the commands
+- Depends on: Trame's commands, Preparation, Deliver, Assembly, Assembler, Evidence of the SDLC, The plan of a run elsewhere, Ship only what holds, Bundler, The names a bundle is led by, The fingerprint of a program, Process, File reading, File writing, Paths, Terminal, The fingerprint of an engine, Messages of the commands
 
 ### Show a view
 
@@ -1180,7 +1180,7 @@ Standard · `FrozenApi`
 
 - Maintained by: trame
 - Source: Trame, the prelude (trame/internal.ts: frozen)
-- Constants: { name: { value: frozen, meaning: What the prelude exports for frozen programs }, value: { value: value, meaning: The value of a node, read from its declaration (a rule) }, body: { value: body, meaning: The body of a node written inline in its declaration }, data: { value: data, meaning: Sets the data of a node as in force at the date of the assembly, for the rules that read it }, start: { value: start, meaning: Starts the component with its dependencies and its entry points }, limited: { value: limited, meaning: A capability: a realization limited to the methods its consumer uses (since g83) }, amended: { value: amended, meaning: A body as the amendments in force at the date of the assembly make it, in their order (since g105) }, title: { value: title, meaning: The title of an entry point, given to start }, fields: { value: fields, meaning: The simple fields of an entry point, which the kind of the component reads }, entry: { value: value, meaning: What an entry point is, once built }, address: { value: address, meaning: What start gives back when the component answers somewhere }, code: { value: code, meaning: What start gives back when the component ends with an exit code }, leading: { value: leading, meaning: The prelude's module that leads the names of packages for a program Node.js runs (since g99) }, lead: { value: lead, meaning: What that module exports: given where the names lead and the launcher's URL, it leads them } }
+- Constants: { name: { value: frozen, meaning: What the prelude exports for frozen programs }, value: { value: value, meaning: The value of a node, read from its declaration (a rule) }, body: { value: body, meaning: The body of a node written inline in its declaration }, data: { value: data, meaning: Sets the data of a node as in force at the date of the assembly, for the rules that read it }, start: { value: start, meaning: Starts the component with its dependencies and its entry points }, limited: { value: limited, meaning: A capability: a realization limited to the methods its consumer uses (since g83) }, amended: { value: amended, meaning: A body as the amendments in force at the date of the assembly make it, in their order (since g105) }, periods: { value: periods, meaning: The periods of a program whose graph changes at known dates, each built when it starts, and the one of the day (since g106) }, dated: { value: dated, meaning: An entry point of such a program: each call answered by the entry of the period of the day (since g106) }, title: { value: title, meaning: The title of an entry point, given to start }, fields: { value: fields, meaning: The simple fields of an entry point, which the kind of the component reads }, entry: { value: value, meaning: What an entry point is, once built }, address: { value: address, meaning: What start gives back when the component answers somewhere }, code: { value: code, meaning: What start gives back when the component ends with an exit code }, leading: { value: leading, meaning: The prelude's module that leads the names of packages for a program Node.js runs (since g99) }, lead: { value: lead, meaning: What that module exports: given where the names lead and the launcher's URL, it leads them } }
 
 ### Trame references
 
@@ -1316,7 +1316,7 @@ Function · `NamesLed` · **held**
 Decision · `LanguageSettings`
 
 - Decided by: trame
-- Value: { timeline: { before: 14, after: 30 }, catalogue: { examples: 3, frequent: 5, repeated: 40, unrepeated: separator }, assumption: { warnWithin: 60 }, slo: { percentile: 50, 100 } }
+- Value: { timeline: { before: 14, after: 30 }, catalogue: { examples: 3, frequent: 5, repeated: 40, unrepeated: separator }, assumption: { warnWithin: 60 }, amendment: { warnWithin: 30 }, slo: { percentile: 50, 100 } }
 
 ### How Mermaid figures are drawn
 
@@ -3504,14 +3504,14 @@ Function · `StoppedClock` · **held**
 
 ### System files, for reading
 
-Implementation · `DiskReading` · **held**
+Implementation · `DiskReading` · **unknown**
 
 - Owner: trame
 - Implements: File reading
 
 ### Trees on disk
 
-Implementation · `DiskTrees` · **held**
+Implementation · `DiskTrees` · **unknown**
 
 - Owner: trame
 - Parameters: { diff: std/text.UnifiedDiff, node: std/system.NodeCli, events: std/system.NodeEvents }
@@ -3519,7 +3519,7 @@ Implementation · `DiskTrees` · **held**
 
 ### System files, for writing
 
-Implementation · `DiskWriting` · **held**
+Implementation · `DiskWriting` · **unknown**
 
 - Owner: trame
 - Implements: File writing
@@ -3593,7 +3593,7 @@ Implementation · `NodeHashing` · **held**
 
 ### Node HTTP server
 
-Implementation · `NodeHttpServer` · **held**
+Implementation · `NodeHttpServer` · **unknown**
 
 - Owner: trame
 - Implements: HTTP server
@@ -3607,7 +3607,7 @@ Implementation · `NodePaths` · **held**
 
 ### Node process
 
-Implementation · `NodeProcess` · **held**
+Implementation · `NodeProcess` · **unknown**
 
 - Owner: trame
 - Parameters: { argv: std/system.NodeArguments, node: std/system.NodeCli, runner: platform.TypeScriptRunner }
@@ -3616,7 +3616,7 @@ Implementation · `NodeProcess` · **held**
 
 ### Node programs
 
-Implementation · `NodePrograms` · **held**
+Implementation · `NodePrograms` · **unknown**
 
 - Owner: trame
 - Parameters: { node: std/system.NodeCli, runner: platform.TypeScriptRunner, events: std/system.NodeEvents }
@@ -3625,7 +3625,7 @@ Implementation · `NodePrograms` · **held**
 
 ### Node terminal
 
-Implementation · `NodeTerminal` · **held**
+Implementation · `NodeTerminal` · **unknown**
 
 - Owner: trame
 - Parameters: { argv: std/system.NodeArguments, exitStatus: std/system.ExitStatus, events: std/system.NodeEvents, posix: std/system.Posix, messages: messages.PlatformMessages }
@@ -3650,7 +3650,7 @@ Implementation · `NoInstallsInTest` · **held**
 
 ### npm installs
 
-Implementation · `NpmInstall` · **held**
+Implementation · `NpmInstall` · **unknown**
 
 - Owner: trame
 - Parameters: { npm: std/system.NpmCli, node: std/system.NodeCli, events: std/system.NodeEvents, exitStatus: std/system.ExitStatus }
@@ -3658,7 +3658,7 @@ Implementation · `NpmInstall` · **held**
 
 ### npm's reports
 
-Implementation · `NpmReports` · **held**
+Implementation · `NpmReports` · **unknown**
 
 - Owner: trame
 - Parameters: { npm: std/system.NpmCli, values: std/algebra.ValueTypes, counts: std/algebra.Counts, punctuation: documents.Punctuation }
@@ -3706,7 +3706,7 @@ Implementation · `RunsInTheProcess` · **held**
 
 ### Runs kept on disk
 
-Implementation · `RunsOnDisk` · **held**
+Implementation · `RunsOnDisk` · **unknown**
 
 - Owner: trame
 - Parameters: { layout: conventions.Layout, files: platform.EngineFiles, engines: engine.EngineFingerprint, scope: engine.KeptRunsScope, encodings: std/system.NodeEncodings }
@@ -3715,7 +3715,7 @@ Implementation · `RunsOnDisk` · **held**
 
 ### System clock
 
-Implementation · `SystemClock` · **held**
+Implementation · `SystemClock` · **unknown**
 
 - Owner: trame
 - Parameters: { iso: std/measures.Iso8601, environment: conventions.TrameEnvironment, sequences: std/algebra.Sequences }
@@ -3822,7 +3822,7 @@ Technical choice · `InMemoryScenarios` · **held**
 
 ### On a machine, Node.js reads, writes and runs
 
-Technical choice · `NodeMachine` · **held**
+Technical choice · `NodeMachine` · **unknown**
 
 - Decided by: trame
 - Context: What changes the world (files written, processes, the terminal, the clock) is real only on a machine; the scenarios keep it in memory.
@@ -3882,7 +3882,7 @@ Technical choice · `RunsKeptInTheProcess` · **held**
 
 ### On a machine, runs are kept on disk
 
-Technical choice · `RunsKeptOnDisk` · **held**
+Technical choice · `RunsKeptOnDisk` · **unknown**
 
 - Decided by: trame
 - Context: The commands of a shipment and of an advance run as separate processes, each compiling the same graph: what one played, the next can find only on disk.
@@ -4124,7 +4124,7 @@ Architecture decision · `PreludeLayer` · **held**
 
 ### A version ships through the graph
 
-Architecture decision · `ShippedThroughTheGraph` · **held**
+Architecture decision · `ShippedThroughTheGraph` · **unknown**
 
 - Decided by: trame
 - Context: Two products ship differently (a page placed where it is served, an engine frozen into a generation) and their pipelines lived in scripts and in their authors' heads: nothing said what had been checked, by whom, on which version, nor why a version could go.
@@ -4135,7 +4135,7 @@ Architecture decision · `ShippedThroughTheGraph` · **held**
 
 ### A technology is chosen in one node
 
-Architecture decision · `TechnologyInOneNode` · **held**
+Architecture decision · `TechnologyInOneNode` · **unknown**
 
 - Decided by: trame
 - Context: Each implementation said which environments it served: the choice of a technology was spread over its realizations, nothing said why, and a test double or a repository over a database port had to be declared as if it touched the platform.
@@ -6146,7 +6146,7 @@ Technical choice · `SdlcInMemory` · **held**
 
 ### The SDLC on the machine
 
-Technical choice · `SdlcOnTheMachine` · **held**
+Technical choice · `SdlcOnTheMachine` · **unknown**
 
 - Decided by: trame
 - Context: The graph page must be opened as a person opens it: the file exported, in a real browser.
@@ -6171,7 +6171,7 @@ Role · `Maintainers`
 
 ### The candidate engine
 
-Artefact · `EngineCandidate` · **held**
+Artefact · `EngineCandidate` · **unknown**
 
 - Owner: trame
 - Path: out/local/trame-cli.ts
@@ -6179,7 +6179,7 @@ Artefact · `EngineCandidate` · **held**
 
 ### The graph page
 
-Artefact · `GraphPage` · **held**
+Artefact · `GraphPage` · **unknown**
 
 - Owner: trame
 - Path: trame-page.html
@@ -6189,7 +6189,7 @@ Artefact · `GraphPage` · **held**
 
 ### The page's program
 
-Artefact · `PageProgram` · **held**
+Artefact · `PageProgram` · **unknown**
 
 - Owner: trame
 - Path: out/browser/page-app.ts
@@ -6198,7 +6198,7 @@ Artefact · `PageProgram` · **held**
 
 ### The candidate plays the laws
 
-Check · `CandidateKeepsTheLaws` · **held**
+Check · `CandidateKeepsTheLaws` · **unknown**
 
 - Owner: trame
 - Checks: The candidate engine
@@ -6207,7 +6207,7 @@ Check · `CandidateKeepsTheLaws` · **held**
 
 ### The candidate runs on the machine
 
-Check · `CandidateRunsOnTheMachine` · **held**
+Check · `CandidateRunsOnTheMachine` · **unknown**
 
 - Owner: trame
 - Checks: The candidate engine
@@ -6217,7 +6217,7 @@ Check · `CandidateRunsOnTheMachine` · **held**
 
 ### The graph page opens
 
-Check · `GraphPageOpens` · **held**
+Check · `GraphPageOpens` · **unknown**
 
 - Owner: trame
 - Checks: The graph page
@@ -6227,7 +6227,7 @@ Check · `GraphPageOpens` · **held**
 
 ### The next generation
 
-Shipment · `NextGeneration` · **held**
+Shipment · `NextGeneration` · **unknown**
 
 - Owner: trame
 - Target: generation
@@ -6805,6 +6805,24 @@ Syntax element · `Assignment` · **held**
 - Read in: TypeScript
 - Depends on: The syntax of the programs Trame writes
 
+### Async function of a block
+
+Syntax element · `AsyncBlockFunction` · **held**
+
+- Owner: trame
+- Section: 15.9 Async arrow function definitions
+- Address: https://tc39.es/ecma262/2024/#sec-async-arrow-function-definitions
+- Marks: { asyncKeyword: { value: async, meaning: Makes a function that gives a promise, in which await may wait }, arrow: { value: =>, meaning: Separates the parameters of an arrow function from its body }, returnKeyword: { value: return, meaning: Ends the function with the value it gives (§ 14.10) } }
+- Parameters: { standard: typescript.TypeScriptSyntax }
+- Examples: { input: const a = await f({}), { a }, output: async () => {
+  const a = await f({})
+  return { a }
+} }
+- Read as: { before: (, after: ) }
+- Defined by: The syntax of the programs Trame writes
+- Read in: TypeScript
+- Depends on: The syntax of the programs Trame writes
+
 ### Waiting
 
 Syntax element · `Await` · **held**
@@ -7259,7 +7277,7 @@ fetch(url); Date.now(); new Date(); new Date(t), globals: fetch, Date.now, new D
 Decision · `ProgramNames`
 
 - Decided by: trame
-- Value: { result: started, bodyPrefix: body_, launcher: .node }
+- Value: { result: started, bodyPrefix: body_, launcher: .node, periods: periods, periodPrefix: period_ }
 - Rejected: The leading written in the program itself, a program's imports are resolved before any line of it runs, and the same program is bundled for a browser, which has no module hooks
 
 ### TypeScript writer
@@ -7267,6 +7285,6 @@ Decision · `ProgramNames`
 Function · `TypeScriptWriter` · **held**
 
 - Owner: trame
-- Parameters: { language: typescript.TypeScript, syntax: typescript.TypeScriptSyntax, frozen: conventions.FrozenApi, node: std/system.NodeProcessApi, specifiers: std/system.NodeModuleSpecifiers, names: typescript.ProgramNames, stepNames: conventions.StepNames, references: conventions.ReferenceSyntax, comment: typescript.LineComment, text: typescript.StringLiteral, member: typescript.MemberAccess, optional: typescript.OptionalAccess, call: typescript.Call, wait: typescript.Await, group: typescript.Parenthesized, property: typescript.Property, object: typescript.ObjectLiteral, array: typescript.ArrayLiteral, constant: typescript.ConstDeclaration, namedImport: typescript.NamedImport, defaultImport: typescript.DefaultImport, assertion: typescript.AsExpression, optionalProperty: typescript.OptionalPropertySignature, objectType: typescript.ObjectType, union: typescript.UnionType, condition: typescript.IfStatement, differs: typescript.StrictInequality, assignment: typescript.Assignment, paths: architecture.Paths, prelude: architecture.Prelude, reservedWords: std/ecmascript.EcmaScriptReservedWords, sequences: std/algebra.Sequences, texts: std/algebra.Texts, dates: messages.Dates, messages: messages.DriverMessages }
+- Parameters: { language: typescript.TypeScript, syntax: typescript.TypeScriptSyntax, frozen: conventions.FrozenApi, node: std/system.NodeProcessApi, specifiers: std/system.NodeModuleSpecifiers, names: typescript.ProgramNames, stepNames: conventions.StepNames, references: conventions.ReferenceSyntax, comment: typescript.LineComment, text: typescript.StringLiteral, member: typescript.MemberAccess, optional: typescript.OptionalAccess, call: typescript.Call, wait: typescript.Await, group: typescript.Parenthesized, property: typescript.Property, object: typescript.ObjectLiteral, array: typescript.ArrayLiteral, constant: typescript.ConstDeclaration, namedImport: typescript.NamedImport, defaultImport: typescript.DefaultImport, assertion: typescript.AsExpression, optionalProperty: typescript.OptionalPropertySignature, objectType: typescript.ObjectType, union: typescript.UnionType, condition: typescript.IfStatement, differs: typescript.StrictInequality, assignment: typescript.Assignment, inline: typescript.InlineArray, block: typescript.AsyncBlockFunction, environment: conventions.TrameEnvironment, paths: architecture.Paths, prelude: architecture.Prelude, reservedWords: std/ecmascript.EcmaScriptReservedWords, sequences: std/algebra.Sequences, texts: std/algebra.Texts, dates: messages.Dates, messages: messages.DriverMessages }
 - Serves: A specification that runs
-- Depends on: TypeScript, The syntax of the programs Trame writes, The frozen API, Names of a program, Names of steps, Trame references, Comment, Text, Property access, Optional property access, Call, Waiting, Group, Property, Object, List on several lines, Constant, Import of names, Default import, Type assertion, Optional property of a type, Object type, Union type, Condition, Strict inequality, Assignment, Paths, Prelude, Dates, Messages of the drivers
+- Depends on: TypeScript, The syntax of the programs Trame writes, The frozen API, Names of a program, Names of steps, Trame references, Comment, Text, Property access, Optional property access, Call, Waiting, Group, Property, Object, List on several lines, Constant, Import of names, Default import, Type assertion, Optional property of a type, Object type, Union type, Condition, Strict inequality, Assignment, List on one line, Async function of a block, Trame's environment, Paths, Prelude, Dates, Messages of the drivers

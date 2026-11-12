@@ -79,7 +79,8 @@ export const PunctuationOfTheLanguage = adr({
  * Settings of the documents
  * How far the timeline reaches before the first date it shows and after the last one, in days; how many examples, most
  * frequent values and repeated values the catalogue of literals shows, and the categories it leaves out of the repeated
- * values (a separator repeats by nature); how many days before it expires an assumption warns; the percentiles a service
+ * values (a separator repeats by nature); how many days before it expires an assumption warns, and before its end an
+ * amendment warns its owner, so they prolong it or let it end knowingly; the percentiles a service
  * level objective may hold (below the median, an objective would say that most measures may miss it). The kinds and the
  * views receive them from the engine.
  */
@@ -87,6 +88,7 @@ export const LanguageSettings = decision<{
   timeline: { before: number; after: number }
   catalogue: { examples: number; frequent: number; repeated: number; unrepeated: readonly string[] }
   assumption: { warnWithin: number }
+  amendment: { warnWithin: number }
   slo: { percentile: readonly [number, number] }
 }>({
   owner: "trame",
@@ -94,6 +96,7 @@ export const LanguageSettings = decision<{
     timeline: { before: 14, after: 30 },
     catalogue: { examples: 3, frequent: 5, repeated: 40, unrepeated: ["separator"] },
     assumption: { warnWithin: 60 },
+    amendment: { warnWithin: 30 },
     slo: { percentile: [50, 100] },
   },
 })

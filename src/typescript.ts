@@ -13,7 +13,7 @@ import { EcmaScript, EcmaScriptReservedWords } from "#std/ecmascript"
 import { TreeSitterQueries } from "./standards"
 import { TextFile } from "#std/text"
 import { NodeModuleSpecifiers, NodeProcessApi } from "#std/system"
-import { FrozenApi, ReferenceSyntax, StepNames } from "./conventions"
+import { FrozenApi, ReferenceSyntax, StepNames, TrameEnvironment } from "./conventions"
 import { Paths, Prelude } from "./architecture"
 import { Counts, Sequences, Texts } from "#std/algebra"
 import { Dates, DriverMessages } from "./messages"
@@ -759,13 +759,41 @@ export const Assignment = syntax({
 })
 
 /**
+ * Async function of a block
+ * The keyword async, no parameter, an arrow, then a block: each statement on a line of its own, indented, and last the
+ * keyword return with the value it gives.
+ */
+export const AsyncBlockFunction = syntax({
+  owner: "trame",
+  standard: TypeScriptSyntax,
+  section: "15.9 Async arrow function definitions",
+  url: "https://tc39.es/ecma262/2024/#sec-async-arrow-function-definitions",
+  language: TypeScript,
+  fragment: expression,
+  constants: {
+    asyncKeyword: { value: "async", meaning: "Makes a function that gives a promise, in which await may wait" },
+    arrow: { value: "=>", meaning: "Separates the parameters of an arrow function from its body" },
+    returnKeyword: { value: "return", meaning: "Ends the function with the value it gives (§ 14.10)" },
+  },
+  write: ({ standard: { endOfLine, indent, space, openParenthesis, closeParenthesis, openBrace, closeBrace }, asyncKeyword, arrow, returnKeyword }) =>
+    (statements: readonly string[], result: string) => [
+      asyncKeyword + space + openParenthesis + closeParenthesis + space + arrow + space + openBrace,
+      ...statements.map((s) => indent + s),
+      indent + returnKeyword + space + result,
+      closeBrace,
+    ].join(endOfLine),
+  examples: [{ input: [["const a = await f({})"], "{ a }"], output: "async () => {\n  const a = await f({})\n  return { a }\n}" }],
+})
+
+/**
  * Names of a program
  * How the TypeScript writer names what a program declares: the result of the start, the import of a body (the prefix,
- * then the name of the step). A step whose name is taken takes its module as a prefix, as in the plan (StepNames).
+ * then the name of the step), the periods of a graph that changes at known dates and the builder of each (the prefix,
+ * then its position). A step whose name is taken takes its module as a prefix, as in the plan (StepNames).
  */
-export const ProgramNames = decision<{ result: string; bodyPrefix: string; launcher: string }>({
+export const ProgramNames = decision<{ result: string; bodyPrefix: string; launcher: string; periods: string; periodPrefix: string }>({
   owner: "trame",
-  value: { result: "started", bodyPrefix: "body_", launcher: ".node" },
+  value: { result: "started", bodyPrefix: "body_", launcher: ".node", periods: "periods", periodPrefix: "period_" },
   rejected: {
     "The leading written in the program itself": "a program's imports are resolved before any line of it runs, and the same program is bundled for a browser, which has no module hooks",
   },
@@ -785,7 +813,7 @@ export const TypeScriptWriter = fn({
     comment: LineComment, text: StringLiteral, member: MemberAccess, optional: OptionalAccess, call: Call, wait: Await, group: Parenthesized,
     property: Property, object: ObjectLiteral, array: ArrayLiteral, constant: ConstDeclaration, namedImport: NamedImport, defaultImport: DefaultImport,
     assertion: AsExpression, optionalProperty: OptionalPropertySignature, objectType: ObjectType, union: UnionType, condition: IfStatement,
-    differs: StrictInequality, assignment: Assignment,
+    differs: StrictInequality, assignment: Assignment, inline: InlineArray, block: AsyncBlockFunction, environment: TrameEnvironment,
     paths: Paths, prelude: Prelude, reservedWords: EcmaScriptReservedWords, sequences: Sequences, texts: Texts, dates: Dates, messages: DriverMessages,
   },
   body: code.file<typeof import("./code/typescript/writer").default>("./code/typescript/writer.ts"),

@@ -70,8 +70,9 @@ export const LanguageNames = decision<{ name: string; modules: Readonly<Record<s
 /**
  * The frozen API
  * What an assembled program calls in the prelude (trame/internal.ts, frozen): the value of a node read from its
- * declaration, the body of an inline node, a body as its amendments make it, the data a rule reads, the start of the
- * component with its entry points; and what the start gives back.
+ * declaration, the body of an inline node, a body as its amendments make it, the data a rule reads, the periods of a
+ * graph that changes at known dates and the entry points that answer by the day, the start of the component with its
+ * entry points; and what the start gives back.
  */
 export const FrozenApi = standard({
   owner: "trame",
@@ -84,6 +85,8 @@ export const FrozenApi = standard({
     start: { value: "start", meaning: "Starts the component with its dependencies and its entry points" },
     limited: { value: "limited", meaning: "A capability: a realization limited to the methods its consumer uses (since g83)" },
     amended: { value: "amended", meaning: "A body as the amendments in force at the date of the assembly make it, in their order (since g105)" },
+    periods: { value: "periods", meaning: "The periods of a program whose graph changes at known dates, each built when it starts, and the one of the day (since g106)" },
+    dated: { value: "dated", meaning: "An entry point of such a program: each call answered by the entry of the period of the day (since g106)" },
     title: { value: "title", meaning: "The title of an entry point, given to start" },
     fields: { value: "fields", meaning: "The simple fields of an entry point, which the kind of the component reads" },
     entry: { value: "value", meaning: "What an entry point is, once built" },

@@ -204,6 +204,10 @@ export const CompilerMessages = catalog({
     amendedFieldNotJson: (node: string, field: string) =>
       `"${node}" is amended at this date and its field "${field}", which a rule reads, cannot be written as JSON: it cannot be frozen`,
     nothingToFreeze: (node: string, error: string) => `"${node}" has no value to freeze (${error})`,
+    componentDependencyDated: (component: string, deps: string[]) =>
+      `"${component}" is given ${deps.map((d) => `"${d}"`).join(", ")}, which change${deps.length > 1 ? "" : "s"} at a date: a component cannot change what it is given while it runs; assemble it again at that date`,
+    datedDataRead: (day: string, nodes: string[]) =>
+      `On ${day}, what a rule reads by name changes (${nodes.map((n) => `"${n}"`).join(", ")}): a program cannot change it while it runs; assemble it again at that date`,
     noDriverToAssemble: (language: string) => `No driver can assemble a component in "${language}"`,
     noDriverToProvision: (language: string) => `No driver can write the provisioning in "${language}"`,
     }
@@ -243,8 +247,10 @@ export const DriverMessages = catalog({
     frozenProgram: () => "Frozen program: the build order, the implementation choices and the values of the graph are written here.",
     launcher: (program: string) =>
       `What Node.js runs: it leads the names of packages as the engine leads them (the language, each library as the project reads it), then runs ${program}.`,
-    notCompiledAtStartup: (changes: string[]) =>
-      `It does not compile the graph at startup. Dated changes it will not see: ${changes.length ? changes.join("; ") : "none"}.`,
+    notCompiledAtStartup: (switches: string[]) =>
+      `It does not compile the graph at startup. ${switches.length ? `The graph changes on ${switches.join(", ")}: the program answers each day as the graph of that day.` : "No dated change of the graph after its date reaches it."}`,
+    periodsOfTheProgram: (variable: string) =>
+      `The periods: each built at startup, from its first day; the day is the graph's (${variable}, or today's in UTC).`,
     whatRulesRead: (date: string) => `What the rules read, as in force on ${date}.`,
     /** Before the construction of a node: its title, its kind, and the ports that delegate to it. */
     stepComment: (title: string, kind: string, via: string[]) =>
@@ -442,6 +448,7 @@ export const CommandMessages = catalog({
   messages: ({ language }) => {
     const plural = plurals(language.tag)
     return {
+      onDay: (day: string, error: string) => `On ${day}: ${error}`,
     /** The last line of `trame build`. (`written([])` is its beginning: the scenarios look for it.) */
     written: (files: string[]) => `written: ${files.join(", ")}`,
 
@@ -775,6 +782,8 @@ export const ScenarioMessages = catalog({
     versionShippedFirst: () => "The library's version is shipped through its graph before it is frozen: its dossier is written",
     packagesUpgraded: () => "A reference behind the newest version is written again and the manifest runs; at the newest, nothing is written",
     programWritten: (environment: string) => `For ${environment}, a program in TypeScript and its launcher are written, nothing to provision`,
+    programSwitches: (days: readonly string[], entry: string) =>
+      `The program switches on ${days.join(" and ")}: each period built at startup, "${entry}" answered by the period of the day`,
     infrastructureWritten: (environment: string) => `For ${environment}, its infrastructure is written in Terraform`,
     assemblyWithoutEnvironmentRefused: () => "Without an environment, the assembly is refused and says how to ask for it",
     everyKindHolds: (kinds: number, views: number) => `trame test-kinds says the laws of each of the ${kinds} kinds and ${views} views hold`,

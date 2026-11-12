@@ -803,6 +803,8 @@ export interface LanguageSettings {
   timeline: { before: number; after: number }
   catalogue: { examples: number; frequent: number; repeated: number; unrepeated: readonly string[] }
   assumption: { warnWithin: number }
+  /** How many days before its end an amendment warns its owner (since g106; an engine before says nothing). */
+  amendment?: { warnWithin: number }
   slo: { percentile: readonly [number, number] }
 }
 

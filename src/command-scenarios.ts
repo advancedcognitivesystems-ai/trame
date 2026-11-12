@@ -32,7 +32,7 @@ import { DevDebounce } from "./product"
 import { ExitStatus, NodeEncodings, NodeModuleSpecifiers } from "#std/system"
 import { Counts, Sequences, Texts, ValueTypes } from "#std/algebra"
 import { ServerSentEvents, Http } from "#std/web"
-import { TrameCommands, Layout, LanguageNames, ProjectStart } from "./conventions"
+import { TrameCommands, Layout, LanguageNames, ProjectStart, FrozenApi } from "./conventions"
 import { LocalPaths, PackagesByOrigin, LocalRegistry } from "./platform"
 import { ScenarioMessages, DriverMessages, OutputMessages, CommandMessages, PlatformMessages, AdvanceMessages, CompilerMessages } from "./messages"
 import { GnuPositions, TextFile } from "#std/text"
@@ -208,16 +208,23 @@ export const PageOfTheGraph = scenario({
  * What the example is assembled for
  * Its component, an environment where it runs on a machine, and one that provisions its infrastructure.
  */
-export const AssemblySamples = decision<{ component: string; machine: string; provisioned: string; program: string; launcher: string; provision: string }>({
+export const AssemblySamples = decision<{
+  component: string; machine: string; provisioned: string; program: string; launcher: string; provision: string; switches: readonly string[]; dated: string
+}>({
   owner: "trame",
-  value: { component: "ReservationsApi", machine: "Local", provisioned: "Production", program: ".ts", launcher: ".node.ts", provision: ".tf" },
+  value: {
+    component: "ReservationsApi", machine: "Local", provisioned: "Production", program: ".ts", launcher: ".node.ts", provision: ".tf",
+    switches: ["2026-11-01", "2027-01-01"], dated: "cancelReservation",
+  },
 })
 
 /**
  * A component assembled
  * trame assemble writes the example's component for an environment: a program in TypeScript, frozen, read back before
  * it is written, and its launcher, which leads the names of packages before it runs the program (since g99); for the
- * environment that provisions it, its infrastructure in Terraform too. Without an environment, it is refused.
+ * environment that provisions it, its infrastructure in Terraform too. Without an environment, it is refused. Its graph
+ * changes after the day of the scenarios (the launch of the ultra chargers starts, then ends): the program holds a period
+ * for each, and the cancellation, which the launch changes, answers by the day (since g106).
  */
 export const ComponentAssembled = scenario({
   owner: "trame",
@@ -225,9 +232,9 @@ export const ComponentAssembled = scenario({
   env: Test,
   deps: {
     assemble: Assemble, writeLog: WriteLog, terminalLog: TerminalLog, line: TrameCommands, exitStatus: ExitStatus, layout: Layout, samples: AssemblySamples,
-    commands: CommandMessages, counts: Counts, messages: ScenarioMessages,
+    frozen: FrozenApi, commands: CommandMessages, counts: Counts, messages: ScenarioMessages,
   },
-  body: ({ assemble, writeLog, terminalLog, line, exitStatus, layout, samples, commands, counts, messages }) => async (check) => {
+  body: ({ assemble, writeLog, terminalLog, line, exitStatus, layout, samples, frozen, commands, counts, messages }) => async (check) => {
     const written = () => [...writeLog.written().keys()]
     const local = await assemble({ params: { command: line.assemble }, body: { args: [samples.component, line.env, samples.machine] } })
     const out = written().filter((path) => path.includes(layout.output))
@@ -235,6 +242,9 @@ export const ComponentAssembled = scenario({
     const programs = out.filter((path) => path.endsWith(samples.program) && !path.endsWith(samples.launcher))
     check(messages.programWritten(samples.machine), local.status === exitStatus.success && programs.length === counts.one && launchers.length === counts.one
       && written().every((p) => !p.endsWith(samples.provision)))
+    const [content] = programs.map((path) => writeLog.written().get(path) ?? String())
+    check(messages.programSwitches(samples.switches, samples.dated), !!content?.includes(frozen.periods) &&
+      samples.switches.every((day) => content.includes(day)) && content.includes(frozen.dated) && content.includes(samples.dated))
     await assemble({ params: { command: line.assemble }, body: { args: [samples.component, line.env, samples.provisioned] } })
     check(messages.infrastructureWritten(samples.provisioned), written().some((path) => path.endsWith(samples.provision)))
     let refused = false

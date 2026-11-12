@@ -1558,3 +1558,18 @@ export const G105 = release({
   archive: "09556b41ea46b0ac",
   assembledBy: G104,
 })
+
+/**
+ * Generation 106
+ */
+export const G106 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g106",
+  date: "2026-11-12",
+  what: "a program switches at the dates its graph changes, each period built at startup; an amendment's end is announced",
+  fingerprint: "27c84c5508a06037",
+  language: "shared",
+  archive: "905de57a97b7019b",
+  assembledBy: G105,
+})

@@ -3835,5 +3835,131 @@
     "by": "claude",
     "signature": "attribution",
     "seal": "c4408168621dfb54ed00306ffb0b0a2410b8a9285fc597248e3476b156b0f4a9"
+  },
+  {
+    "node": "commands.Advance",
+    "at": "2026-11-12",
+    "source": "deployed",
+    "value": 1,
+    "fingerprint": "afbb26f2",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "9d3576c43f88823544b5d5a7dd4f12e25f751c73a3ea3b9e56604c213c984475"
+  },
+  {
+    "node": "sdlc.CandidateKeepsTheLaws",
+    "at": "2026-11-12",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "da95d395",
+    "code": "140581f6",
+    "engine": "85baa19400d3c6fb",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "bf11f9cd07695fbbcb3b7f0be0fc6b35947aa29ef8cb5c7b7e136c5e412dd514"
+  },
+  {
+    "node": "sdlc.CandidateRunsOnTheMachine",
+    "at": "2026-11-12",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "da95d395",
+    "code": "2d975786",
+    "engine": "85baa19400d3c6fb",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "a2a94458f7cb9389cbea52c93c1de177c77423f5055b754c5f01280369a0aa7c"
+  },
+  {
+    "node": "sdlc.EngineCandidate",
+    "at": "2026-11-12",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "6fd34c1d69e290d6a7de3a947e14ee13b00dec363aac9d3e0f3635c948865c39",
+    "code": "a7d630d6",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "85baa19400d3c6fb",
+    "seal": "ce1290da9d2341e07c28063fd8de4fcebeb938138e29cb5f174ea1096f5892c4"
+  },
+  {
+    "node": "sdlc.EngineCandidate",
+    "at": "2026-11-12",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "6fd34c1d69e290d6a7de3a947e14ee13b00dec363aac9d3e0f3635c948865c39",
+    "subject": "sdlc.NextGeneration",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "1ae8f4af22d7b45fbe5b3782b3ff2ee983c4e300d78d1e3939025783b379780f"
+  },
+  {
+    "node": "sdlc.GraphPage",
+    "at": "2026-11-12",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "27e888ca3491d00ab7459a5207b0c33d1d6fbb49a811e7c5b0c5b967965f3aa7",
+    "code": "31f8f51f",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "85baa19400d3c6fb",
+    "seal": "b9fbf63d415d19e2c25b4bd2a9396fdd990a9554578ec13fd8142ce0de5694eb"
+  },
+  {
+    "node": "sdlc.GraphPage",
+    "at": "2026-11-12",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "27e888ca3491d00ab7459a5207b0c33d1d6fbb49a811e7c5b0c5b967965f3aa7",
+    "subject": "sdlc.NextGeneration",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "185a1bfac7087e0f2fe344bdeca1f953880d3d323c7c95a0411feecd96384792"
+  },
+  {
+    "node": "sdlc.GraphPageOpens",
+    "at": "2026-11-12",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "853808eb",
+    "code": "4a92dae2",
+    "engine": "85baa19400d3c6fb",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "4ab19bebe7311a1c670ebebb1b3001d69e531f16f94c8f91a3f415fb5db7de99"
+  },
+  {
+    "node": "sdlc.NextGeneration",
+    "at": "2026-11-12",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "3b9958cc",
+    "url": "evidence/shipments/NextGeneration-2026-11-12-3b9958cc.json",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "8d84d38e177d363a6080cce43852c92872f5bcc0d462512a53432b26f1810f34"
+  },
+  {
+    "node": "sdlc.PageProgram",
+    "at": "2026-11-12",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "0a3f5818c08d19e576690f09ac16f8549a847548e392862a2ced49520de325ea",
+    "code": "7928117f",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "85baa19400d3c6fb",
+    "seal": "2efab518a1330068ed60e3d5467e66563e04d7c43349d79789981331539e6b78"
+  },
+  {
+    "node": "sdlc.PageProgram",
+    "at": "2026-11-12",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "0a3f5818c08d19e576690f09ac16f8549a847548e392862a2ced49520de325ea",
+    "subject": "sdlc.NextGeneration",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "2f7e0633bb960043434a3ab4724aa94d2364db2ea7fc819f1a1d739922114565"
   }
 ]

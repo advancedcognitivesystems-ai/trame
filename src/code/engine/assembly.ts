@@ -46,8 +46,17 @@ export interface Assembly {
    * frozen too, so that the rule reads them as they are at the date of the assembly. JSON, by node.
    */
   frozenData: Map<AnyNode, string>
-  /** The dated changes of the graph after the assembly, which a frozen program will not see. */
-  changes?: string[]
+  /**
+   * The days after the assembly when what the program runs changes (since g106), each with the assembly of the graph as
+   * it is that day: an amendment that reaches the program starts or ends then. The program builds each period and
+   * answers by the day it is.
+   */
+  periods?: readonly Period[]
+  /**
+   * The steps built in each period (since g106): those that are not the same in every period, and those given one of
+   * them. The others are built once.
+   */
+  dated?: ReadonlySet<string>
   /**
    * Where the body of each built node is: a file (absolute path), or inline in its declaration; and the amendments in
    * force that make it otherwise, in the order they apply (since g105).
@@ -65,6 +74,12 @@ export interface Assembly {
    * paths; a program's launcher writes them from itself.
    */
   leading: Leading
+}
+
+/** A period of a program: the day it starts, and the assembly of the graph as it is that day. */
+export interface Period {
+  from: string
+  assembly: Assembly
 }
 
 export interface Emitted {
@@ -123,9 +138,27 @@ const body = (deps: Deps) => {
     return c.nodes.find((n) => (refOf(n) === ref || meta(n).id === ref) && (!kind || meta(n).def.name === kind))
   }
 
-  function prepareAssembly(
-    c: Compiled, root: string, componentRef: string, envRef: string, opts: { changes?: string[] } = {},
-  ): { assembly?: Assembly; errors: string[] } {
+  /**
+   * What a step of the plan is in an assembly, written as a text: how it is built, its value or its body and the
+   * amendments composed with it, what it is given. Two periods whose steps say the same build the same program.
+   */
+  function stepSignature(a: Assembly, step: Plan["steps"][number]): string {
+    const body = a.bodies.get(step.node)
+    const value = a.frozenValues.get(step.node)
+    return JSON.stringify([
+      step.how, value?.json ?? value?.declaration, body?.file ?? body?.inline, body?.amendments.map(refOf),
+      step.constants ?? null, step.deps.map((d) => [d.param, d.name, d.members ?? null]),
+    ])
+  }
+
+  /** Whether a node's claims (an amendment's) reach what the program runs: a step of its plan, or what a rule reads by name. */
+  function reaches(a: Assembly, n: AnyNode): boolean {
+    const g = a.host.graph
+    const run = new Set<AnyNode>([...a.plan.steps.map((s) => s.node), ...a.frozenData.keys()])
+    return (meta(n).def.claims?.(g.self(n) as never, g) ?? []).some((claim) => run.has(claim.target.node))
+  }
+
+  function prepareAssembly(c: Compiled, root: string, componentRef: string, envRef: string): { assembly?: Assembly; errors: string[] } {
     const component = findNode(c, componentRef, KindName.component)
     const env = findNode(c, envRef, KindName.environment)
     if (!component) return { errors: [messages.unknownComponent(componentRef)] }
@@ -219,7 +252,7 @@ const body = (deps: Deps) => {
       entryFields.set(e, fields)
     }
     const assembly: Assembly = {
-      host, component, env, entries, plan: p, provisions, frozenValues, frozenData, changes: opts.changes, bodies, entryFields, leading,
+      host, component, env, entries, plan: p, provisions, frozenValues, frozenData, bodies, entryFields, leading,
       prelude: deps.prelude.path,
       componentDeps: depsOf(component).map(([param, node]) => ({ param, node })),
       out: join(root, deps.layout.output, kebab(meta(env).id ?? KindName.environment)),
@@ -228,8 +261,34 @@ const body = (deps: Deps) => {
     return { assembly, errors }
   }
 
+  /**
+   * The steps built in each period: those not the same in every period, and those given one of them. A component given
+   * one cannot change while it runs, nor can what a rule reads by name: both are refused.
+   */
+  function datedSteps(a: Assembly): { dated: Set<string>; errors: string[] } {
+    const dated = new Set<string>()
+    const periods = a.periods ?? []
+    if (!periods.length) return { dated, errors: [] }
+    const mine = new Map(a.plan.steps.map((s) => [s.name, stepSignature(a, s)]))
+    for (const { assembly: x } of periods) for (const s of x.plan.steps) if (mine.get(s.name) !== stepSignature(x, s)) dated.add(s.name)
+    // In the order of the plan, each step after what it is given: one given a dated step is dated.
+    for (const { assembly: x } of [{ assembly: a }, ...periods]) for (const s of x.plan.steps) if (s.deps.some((d) => dated.has(d.name))) dated.add(s.name)
+    const g = a.host.graph
+    const errors: string[] = []
+    const fixed = a.componentDeps.filter((d) => dated.has(a.plan.names.get(d.node)!))
+    if (fixed.length) errors.push(messages.componentDependencyDated(g.view(a.component).title, fixed.map((d) => g.view(d.node).title)))
+    for (const { from, assembly: x } of periods) {
+      const read = [...x.frozenData].filter(([n, json]) => a.frozenData.get(n) !== json)
+      if (read.length) errors.push(messages.datedDataRead(from, read.map(([n]) => g.view(n).title)))
+    }
+    return { dated, errors }
+  }
+
   /** Writes the program and the infrastructure of a component for an environment. */
-  function emitAssembly(a: Assembly): { files: Emitted[]; errors: string[] } {
+  function emitAssembly(given: Assembly): { files: Emitted[]; errors: string[] } {
+    const { dated, errors: refused } = datedSteps(given)
+    if (refused.length) return { files: [], errors: refused }
+    const a: Assembly = { ...given, dated }
     // The language of the program: the kind of the component says it.
     const lang = optional(meta(a.component).def.language?.(a.host.graph.self(a.component) as never, a.host.graph))
     const program = driverFor(lang)
@@ -251,7 +310,7 @@ const body = (deps: Deps) => {
     return { files, errors }
   }
 
-  return { findNode, prepareAssembly, emitAssembly }
+  return { findNode, prepareAssembly, stepSignature, reaches, emitAssembly }
 }
 
 export type Api = ReturnType<typeof body>

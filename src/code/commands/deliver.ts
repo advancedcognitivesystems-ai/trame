@@ -14,12 +14,15 @@ import type { NodeEncodings } from "#std/system"
 import type { Sequences, Texts, ValueTypes } from "#std/algebra"
 import type { Api as PreparationApi } from "./preparation"
 import type { Api as AssemblyApi } from "../engine/assembly"
+import type { Api as AssemblerApi } from "./assembler"
 
 export interface Deps {
   /** The status the command returns to the system (POSIX). */
   exitStatus: { success: number; failure: number }
   preparation: PreparationApi
   assembly: AssemblyApi
+  /** A component prepared with the periods of its program (since g106). */
+  assembler: AssemblerApi
   bundler: Bundler
   /** What leads the bundler by the names of packages, as the engine leads Node.js (since g95). */
   led: import("esbuild").Plugin
@@ -61,7 +64,7 @@ const body = (deps: Deps): Handler => async (req) => {
     if (d.field(DeliveryField.target) !== DeliveryTarget.page || !component || !environment) return refuse(o, [messages.deliveryIncomplete(d.title)])
 
     // The component, assembled for its environment, as trame assemble writes it.
-    const { assembly, errors: refused } = deps.assembly.prepareAssembly(c, o.root, component.id, environment.id)
+    const { assembly, errors: refused } = await deps.assembler.prepared(o, { c, comp }, component.id, environment.id)
     if (!assembly) return refuse(o, [messages.assemblyRefused(), ...refused])
     const { files, errors: emitErrors } = deps.assembly.emitAssembly(assembly)
     if (emitErrors.length) return refuse(o, emitErrors)

@@ -1,6 +1,6 @@
 # Layers
 
-*The graph in force on 10 November 2026, ordered by distance to the goals.*
+*The graph in force on 30 October 2026, ordered by distance to the goals.*
 
 ```mermaid
 flowchart TB
@@ -66,15 +66,15 @@ flowchart TB
     n56["Write log<br/><small>Port</small>"]:::neutral
   end
   subgraph browser["Trame · The page in a browser"]
-    n57["Amendments sent to trame dev<br/><small>Implementation</small>"]:::held
-    n58["The browser's gzip<br/><small>Implementation</small>"]:::held
-    n59["The globals of the page, and trame dev<br/><small>Implementation</small>"]:::held
-    n60["Local storage<br/><small>Implementation</small>"]:::held
-    n61["The browser's window<br/><small>Implementation</small>"]:::held
-    n62["Explorer of a graph<br/><small>Function</small>"]:::held
-    n63["Show the graph<br/><small>Entry point</small>"]:::held
-    n64["The browser runs the page<br/><small>Technical choice</small>"]:::held
-    n65["The page is assembled<br/><small>Architecture decision</small>"]:::held
+    n57["Amendments sent to trame dev<br/><small>Implementation</small>"]:::unknown
+    n58["The browser's gzip<br/><small>Implementation</small>"]:::unknown
+    n59["The globals of the page, and trame dev<br/><small>Implementation</small>"]:::unknown
+    n60["Local storage<br/><small>Implementation</small>"]:::unknown
+    n61["The browser's window<br/><small>Implementation</small>"]:::unknown
+    n62["Explorer of a graph<br/><small>Function</small>"]:::unknown
+    n63["Show the graph<br/><small>Entry point</small>"]:::unknown
+    n64["The browser runs the page<br/><small>Technical choice</small>"]:::unknown
+    n65["The page is assembled<br/><small>Architecture decision</small>"]:::unknown
   end
   subgraph command-scenarios["Trame · Scenarios of the commands"]
     n66["An advance, in memory<br/><small>Scenario</small>"]:::held
@@ -396,9 +396,9 @@ flowchart TB
   subgraph platform["Trame · Platform"]
     n349["Amendments go in the sources<br/><small>Technical choice</small>"]:::held
     n350["The TypeScript compiler reads the declarations<br/><small>Technical choice</small>"]:::held
-    n351["System files, for reading<br/><small>Implementation</small>"]:::held
-    n352["Trees on disk<br/><small>Implementation</small>"]:::held
-    n353["System files, for writing<br/><small>Implementation</small>"]:::held
+    n351["System files, for reading<br/><small>Implementation</small>"]:::unknown
+    n352["Trees on disk<br/><small>Implementation</small>"]:::unknown
+    n353["System files, for writing<br/><small>Implementation</small>"]:::unknown
     n354["Where the engine's own files are<br/><small>Decision</small>"]:::neutral
     n355["The engine's own files sit beside its code<br/><small>Technical choice</small>"]:::held
     n356["esbuild<br/><small>Implementation</small>"]:::held
@@ -419,18 +419,18 @@ flowchart TB
     n371["Command line<br/><small>Implementation</small>"]:::held
     n372["gzip, with Node's zlib<br/><small>Implementation</small>"]:::held
     n373["SHA-256 hashes<br/><small>Implementation</small>"]:::held
-    n374["Node HTTP server<br/><small>Implementation</small>"]:::held
-    n375["On a machine, Node.js reads, writes and runs<br/><small>Technical choice</small>"]:::held
+    n374["Node HTTP server<br/><small>Implementation</small>"]:::unknown
+    n375["On a machine, Node.js reads, writes and runs<br/><small>Technical choice</small>"]:::unknown
     n376["Node paths<br/><small>Implementation</small>"]:::held
     n377["NodePlatform<br/><small>Technical choice</small>"]:::held
-    n378["Node process<br/><small>Implementation</small>"]:::held
-    n379["Node programs<br/><small>Implementation</small>"]:::held
-    n380["Node terminal<br/><small>Implementation</small>"]:::held
+    n378["Node process<br/><small>Implementation</small>"]:::unknown
+    n379["Node programs<br/><small>Implementation</small>"]:::unknown
+    n380["Node terminal<br/><small>Implementation</small>"]:::unknown
     n381["Node timer<br/><small>Implementation</small>"]:::held
     n382["No installer in test<br/><small>Implementation</small>"]:::held
     n383["No registry in test<br/><small>Function</small>"]:::held
-    n384["npm installs<br/><small>Implementation</small>"]:::held
-    n385["npm's reports<br/><small>Implementation</small>"]:::held
+    n384["npm installs<br/><small>Implementation</small>"]:::unknown
+    n385["npm's reports<br/><small>Implementation</small>"]:::unknown
     n386["Packages by their origin<br/><small>Implementation</small>"]:::held
     n387["Each package comes from where its reference says<br/><small>Technical choice</small>"]:::held
     n388["Page resources<br/><small>Implementation</small>"]:::held
@@ -439,10 +439,10 @@ flowchart TB
     n391["A run is kept while what it reads is as it was<br/><small>Technical choice</small>"]:::held
     n392["Runs kept in the process<br/><small>Implementation</small>"]:::held
     n393["In the scenarios, runs are kept in the process<br/><small>Technical choice</small>"]:::held
-    n394["On a machine, runs are kept on disk<br/><small>Technical choice</small>"]:::held
-    n395["Runs kept on disk<br/><small>Implementation</small>"]:::held
+    n394["On a machine, runs are kept on disk<br/><small>Technical choice</small>"]:::unknown
+    n395["Runs kept on disk<br/><small>Implementation</small>"]:::unknown
     n396["Stopped clock<br/><small>Function</small>"]:::held
-    n397["System clock<br/><small>Implementation</small>"]:::held
+    n397["System clock<br/><small>Implementation</small>"]:::unknown
     n398["Day of the scenarios<br/><small>Decision</small>"]:::neutral
     n399["Time of the scenarios<br/><small>Decision</small>"]:::neutral
     n400["Trame's prelude<br/><small>Implementation</small>"]:::held
@@ -472,8 +472,8 @@ flowchart TB
     n422["The traversal API is the only way to read the graph<br/><small>Architecture decision</small>"]:::held
     n423["A package is used by its name<br/><small>Architecture decision</small>"]:::held
     n424["The prelude: the runtime of the language<br/><small>Architecture decision</small>"]:::held
-    n425["A version ships through the graph<br/><small>Architecture decision</small>"]:::held
-    n426["A technology is chosen in one node<br/><small>Architecture decision</small>"]:::held
+    n425["A version ships through the graph<br/><small>Architecture decision</small>"]:::unknown
+    n426["A technology is chosen in one node<br/><small>Architecture decision</small>"]:::unknown
     n427["Trame builds Trame<br/><small>Architecture decision</small>"]:::held
     n428["An undecided value blocks; it does not crash<br/><small>Architecture decision</small>"]:::held
     n429["Without evidence, a status is unknown<br/><small>Architecture decision</small>"]:::held
@@ -647,25 +647,25 @@ flowchart TB
     n587["The decisions of the architecture hold<br/><small>Obligation</small>"]:::neutral
     n588["The rules of the architecture hold<br/><small>Obligation</small>"]:::neutral
     n589["The candidate is checked by programs<br/><small>Obligation</small>"]:::neutral
-    n590["The candidate plays the laws<br/><small>Check</small>"]:::held
-    n591["The candidate runs on the machine<br/><small>Check</small>"]:::held
-    n592["The candidate engine<br/><small>Artefact</small>"]:::held
+    n590["The candidate plays the laws<br/><small>Check</small>"]:::unknown
+    n591["The candidate runs on the machine<br/><small>Check</small>"]:::unknown
+    n592["The candidate engine<br/><small>Artefact</small>"]:::unknown
     n593["The packages are safe<br/><small>Obligation</small>"]:::neutral
     n594["The engine is verified<br/><small>Obligation</small>"]:::neutral
     n595["How a generation is made<br/><small>Policy</small>"]:::neutral
-    n596["The graph page<br/><small>Artefact</small>"]:::held
+    n596["The graph page<br/><small>Artefact</small>"]:::unknown
     n597["How the graph page is opened<br/><small>Decision</small>"]:::neutral
-    n598["The graph page opens<br/><small>Check</small>"]:::held
+    n598["The graph page opens<br/><small>Check</small>"]:::unknown
     n599["What the scenario of the graph page shows<br/><small>Decision</small>"]:::neutral
     n600["What the graph page is asked<br/><small>Function</small>"]:::held
     n601["The language serves what it says<br/><small>Obligation</small>"]:::neutral
     n602["Trame's maintainers<br/><small>Role</small>"]:::neutral
-    n603["The next generation<br/><small>Shipment</small>"]:::held
+    n603["The next generation<br/><small>Shipment</small>"]:::unknown
     n604["The graph page is opened as a person would<br/><small>Scenario</small>"]:::held
     n605["Open the graph page<br/><small>Entry point</small>"]:::held
-    n606["The page's program<br/><small>Artefact</small>"]:::held
+    n606["The page's program<br/><small>Artefact</small>"]:::unknown
     n607["The SDLC in memory<br/><small>Technical choice</small>"]:::held
-    n608["The SDLC on the machine<br/><small>Technical choice</small>"]:::held
+    n608["The SDLC on the machine<br/><small>Technical choice</small>"]:::unknown
     n609["What the programs of Trame's SDLC say<br/><small>Message catalog</small>"]:::neutral
     n610["Trame's SDLC<br/><small>Component</small>"]:::neutral
   end
@@ -721,34 +721,35 @@ flowchart TB
     n649["List on several lines<br/><small>Syntax element</small>"]:::held
     n650["Type assertion<br/><small>Syntax element</small>"]:::held
     n651["Assignment<br/><small>Syntax element</small>"]:::held
-    n652["Waiting<br/><small>Syntax element</small>"]:::held
-    n653["Call<br/><small>Syntax element</small>"]:::held
-    n654["Constant<br/><small>Syntax element</small>"]:::held
-    n655["Default import<br/><small>Syntax element</small>"]:::held
-    n656["Documentation comment<br/><small>Syntax element</small>"]:::held
-    n657["Export<br/><small>Syntax element</small>"]:::held
-    n658["Condition<br/><small>Syntax element</small>"]:::held
-    n659["List on one line<br/><small>Syntax element</small>"]:::held
-    n660["Comment<br/><small>Syntax element</small>"]:::held
-    n661["Property access<br/><small>Syntax element</small>"]:::held
-    n662["Title of a module<br/><small>Syntax element</small>"]:::held
-    n663["Import of names<br/><small>Syntax element</small>"]:::held
-    n664["Object on several lines<br/><small>Syntax element</small>"]:::held
-    n665["Object<br/><small>Syntax element</small>"]:::held
-    n666["Object type<br/><small>Syntax element</small>"]:::held
-    n667["Optional property access<br/><small>Syntax element</small>"]:::held
-    n668["Optional property of a type<br/><small>Syntax element</small>"]:::held
-    n669["Group<br/><small>Syntax element</small>"]:::held
-    n670["Names of a program<br/><small>Decision</small>"]:::neutral
-    n671["Property<br/><small>Syntax element</small>"]:::held
-    n672["Strict inequality<br/><small>Syntax element</small>"]:::held
-    n673["Text<br/><small>Syntax element</small>"]:::held
-    n674["TypeScript<br/><small>Language</small>"]:::held
-    n675["TypeScript's libraries of types<br/><small>Standard</small>"]:::neutral
-    n676["The syntax of the programs Trame writes<br/><small>Standard</small>"]:::neutral
-    n677["TypeScript writer<br/><small>Function</small>"]:::held
-    n678["Union type<br/><small>Syntax element</small>"]:::held
-    n679["Globals that reach outside<br/><small>Vocabulary</small>"]:::neutral
+    n652["Async function of a block<br/><small>Syntax element</small>"]:::held
+    n653["Waiting<br/><small>Syntax element</small>"]:::held
+    n654["Call<br/><small>Syntax element</small>"]:::held
+    n655["Constant<br/><small>Syntax element</small>"]:::held
+    n656["Default import<br/><small>Syntax element</small>"]:::held
+    n657["Documentation comment<br/><small>Syntax element</small>"]:::held
+    n658["Export<br/><small>Syntax element</small>"]:::held
+    n659["Condition<br/><small>Syntax element</small>"]:::held
+    n660["List on one line<br/><small>Syntax element</small>"]:::held
+    n661["Comment<br/><small>Syntax element</small>"]:::held
+    n662["Property access<br/><small>Syntax element</small>"]:::held
+    n663["Title of a module<br/><small>Syntax element</small>"]:::held
+    n664["Import of names<br/><small>Syntax element</small>"]:::held
+    n665["Object on several lines<br/><small>Syntax element</small>"]:::held
+    n666["Object<br/><small>Syntax element</small>"]:::held
+    n667["Object type<br/><small>Syntax element</small>"]:::held
+    n668["Optional property access<br/><small>Syntax element</small>"]:::held
+    n669["Optional property of a type<br/><small>Syntax element</small>"]:::held
+    n670["Group<br/><small>Syntax element</small>"]:::held
+    n671["Names of a program<br/><small>Decision</small>"]:::neutral
+    n672["Property<br/><small>Syntax element</small>"]:::held
+    n673["Strict inequality<br/><small>Syntax element</small>"]:::held
+    n674["Text<br/><small>Syntax element</small>"]:::held
+    n675["TypeScript<br/><small>Language</small>"]:::held
+    n676["TypeScript's libraries of types<br/><small>Standard</small>"]:::neutral
+    n677["The syntax of the programs Trame writes<br/><small>Standard</small>"]:::neutral
+    n678["TypeScript writer<br/><small>Function</small>"]:::held
+    n679["Union type<br/><small>Syntax element</small>"]:::held
+    n680["Globals that reach outside<br/><small>Vocabulary</small>"]:::neutral
   end
   n36 -->|Deployed in| n15
   n54 -->|Deployed in| n30
@@ -844,7 +845,7 @@ flowchart TB
   n70 -->|In| n52
   n70 -->|Depends on| n629
   n70 -->|Depends on| n622
-  n70 -->|Depends on| n674
+  n70 -->|Depends on| n675
   n70 -->|Depends on| n71
   n70 -->|Depends on| n293
   n70 -->|Depends on| n303
@@ -874,7 +875,7 @@ flowchart TB
   n74 -->|Verifies| n106
   n74 -->|Verifies| n107
   n74 -->|Verifies| n160
-  n74 -->|Verifies| n677
+  n74 -->|Verifies| n678
   n74 -->|Verifies| n638
   n74 -->|Verifies| n222
   n74 -->|Verifies| n396
@@ -885,6 +886,7 @@ flowchart TB
   n74 -->|Depends on| n146
   n74 -->|Depends on| n141
   n74 -->|Depends on| n69
+  n74 -->|Depends on| n138
   n74 -->|Depends on| n288
   n74 -->|Depends on| n303
   n75 -->|Verifies| n126
@@ -977,7 +979,7 @@ flowchart TB
   n82 -->|Depends on| n95
   n82 -->|Depends on| n91
   n82 -->|Depends on| n146
-  n82 -->|Depends on| n673
+  n82 -->|Depends on| n674
   n82 -->|Depends on| n303
   n82 -->|Depends on| n618
   n83 -->|Verifies| n133
@@ -997,7 +999,7 @@ flowchart TB
   n83 -->|Depends on| n146
   n83 -->|Depends on| n303
   n83 -->|Depends on| n140
-  n83 -->|Depends on| n674
+  n83 -->|Depends on| n675
   n84 -->|Verifies| n108
   n84 -->|Verifies| n383
   n84 -->|In| n52
@@ -1093,7 +1095,7 @@ flowchart TB
   n92 -->|Depends on| n146
   n92 -->|Depends on| n303
   n92 -->|Depends on| n140
-  n92 -->|Depends on| n674
+  n92 -->|Depends on| n675
   n93 -->|Verifies| n123
   n93 -->|Verifies| n365
   n93 -->|In| n52
@@ -1103,7 +1105,7 @@ flowchart TB
   n93 -->|Depends on| n146
   n93 -->|Depends on| n303
   n93 -->|Depends on| n140
-  n93 -->|Depends on| n674
+  n93 -->|Depends on| n675
   n93 -->|Depends on| n91
   n96 -->|Verifies| n127
   n96 -->|Verifies| n121
@@ -1199,7 +1201,7 @@ flowchart TB
   n103 -->|Depends on| n359
   n103 -->|Depends on| n398
   n103 -->|Depends on| n147
-  n103 -->|Depends on| n674
+  n103 -->|Depends on| n675
   n103 -->|Depends on| n43
   n103 -->|Depends on| n22
   n103 -->|Depends on| n21
@@ -1288,6 +1290,7 @@ flowchart TB
   n111 -->|Part of| n54
   n111 -->|Depends on| n119
   n111 -->|Depends on| n160
+  n111 -->|Depends on| n107
   n111 -->|Depends on| n16
   n111 -->|Depends on| n151
   n111 -->|Depends on| n335
@@ -1355,17 +1358,17 @@ flowchart TB
   n117 -->|Depends on| n23
   n117 -->|Depends on| n39
   n117 -->|Depends on| n139
-  n117 -->|Depends on| n674
-  n117 -->|Depends on| n676
-  n117 -->|Depends on| n662
-  n117 -->|Depends on| n656
-  n117 -->|Depends on| n657
-  n117 -->|Depends on| n654
-  n117 -->|Depends on| n653
-  n117 -->|Depends on| n665
-  n117 -->|Depends on| n671
-  n117 -->|Depends on| n673
+  n117 -->|Depends on| n675
+  n117 -->|Depends on| n677
   n117 -->|Depends on| n663
+  n117 -->|Depends on| n657
+  n117 -->|Depends on| n658
+  n117 -->|Depends on| n655
+  n117 -->|Depends on| n654
+  n117 -->|Depends on| n666
+  n117 -->|Depends on| n672
+  n117 -->|Depends on| n674
+  n117 -->|Depends on| n664
   n117 -->|Depends on| n50
   n117 -->|Depends on| n288
   n117 -->|Depends on| n41
@@ -1422,17 +1425,17 @@ flowchart TB
   n121 -->|Depends on| n50
   n121 -->|Depends on| n288
   n122 -->|Serves| n443
-  n122 -->|Depends on| n676
-  n122 -->|Depends on| n662
-  n122 -->|Depends on| n656
-  n122 -->|Depends on| n657
-  n122 -->|Depends on| n654
-  n122 -->|Depends on| n653
-  n122 -->|Depends on| n665
-  n122 -->|Depends on| n671
-  n122 -->|Depends on| n673
-  n122 -->|Depends on| n659
+  n122 -->|Depends on| n677
   n122 -->|Depends on| n663
+  n122 -->|Depends on| n657
+  n122 -->|Depends on| n658
+  n122 -->|Depends on| n655
+  n122 -->|Depends on| n654
+  n122 -->|Depends on| n666
+  n122 -->|Depends on| n672
+  n122 -->|Depends on| n674
+  n122 -->|Depends on| n660
+  n122 -->|Depends on| n664
   n123 -->|Serves| n443
   n123 -->|Part of| n54
   n123 -->|Depends on| n119
@@ -1461,13 +1464,13 @@ flowchart TB
   n124 -->|Depends on| n39
   n124 -->|Depends on| n25
   n124 -->|Depends on| n169
-  n124 -->|Depends on| n674
+  n124 -->|Depends on| n675
   n124 -->|Depends on| n17
   n124 -->|Depends on| n50
   n124 -->|Depends on| n288
   n124 -->|Depends on| n287
   n124 -->|Depends on| n222
-  n124 -->|Depends on| n673
+  n124 -->|Depends on| n674
   n124 -->|Depends on| n127
   n124 -->|Depends on| n146
   n125 -->|Serves| n436
@@ -1489,6 +1492,7 @@ flowchart TB
   n127 -->|Depends on| n119
   n127 -->|Depends on| n111
   n127 -->|Depends on| n160
+  n127 -->|Depends on| n107
   n127 -->|Depends on| n613
   n127 -->|Depends on| n615
   n127 -->|Depends on| n616
@@ -1534,7 +1538,7 @@ flowchart TB
   n131 -->|Depends on| n23
   n131 -->|Depends on| n39
   n131 -->|Depends on| n317
-  n131 -->|Depends on| n673
+  n131 -->|Depends on| n674
   n131 -->|Depends on| n41
   n131 -->|Depends on| n146
   n131 -->|Depends on| n50
@@ -1562,7 +1566,7 @@ flowchart TB
   n133 -->|Depends on| n33
   n133 -->|Depends on| n311
   n133 -->|Depends on| n139
-  n133 -->|Depends on| n674
+  n133 -->|Depends on| n675
   n133 -->|Depends on| n50
   n133 -->|Depends on| n288
   n133 -->|Depends on| n41
@@ -1590,7 +1594,7 @@ flowchart TB
   n160 -->|Depends on| n222
   n160 -->|Depends on| n289
   n160 -->|Depends on| n140
-  n160 -->|Depends on| n674
+  n160 -->|Depends on| n675
   n161 -->|Serves| n436
   n161 -->|Depends on| n135
   n161 -->|Depends on| n180
@@ -1655,7 +1659,7 @@ flowchart TB
   n168 -->|Serves| n436
   n168 -->|Depends on| n141
   n168 -->|Depends on| n192
-  n168 -->|Depends on| n674
+  n168 -->|Depends on| n675
   n168 -->|Depends on| n181
   n168 -->|Depends on| n21
   n168 -->|Depends on| n39
@@ -1677,7 +1681,7 @@ flowchart TB
   n172 -->|Depends on| n171
   n172 -->|Depends on| n444
   n172 -->|Depends on| n141
-  n172 -->|Depends on| n674
+  n172 -->|Depends on| n675
   n172 -->|Depends on| n317
   n172 -->|Depends on| n158
   n172 -->|Depends on| n159
@@ -1743,7 +1747,7 @@ flowchart TB
   n181 -->|Depends on| n193
   n181 -->|Depends on| n40
   n181 -->|Depends on| n140
-  n181 -->|Depends on| n674
+  n181 -->|Depends on| n675
   n182 -->|Serves| n436
   n182 -->|Implements| n28
   n182 -->|Depends on| n21
@@ -1757,7 +1761,7 @@ flowchart TB
   n184 -->|Serves| n436
   n184 -->|Depends on| n288
   n185 -->|Serves| n436
-  n185 -->|Depends on| n676
+  n185 -->|Depends on| n677
   n185 -->|Depends on| n183
   n185 -->|Depends on| n187
   n185 -->|Depends on| n55
@@ -1768,7 +1772,7 @@ flowchart TB
   n185 -->|Depends on| n180
   n185 -->|Depends on| n136
   n185 -->|Depends on| n289
-  n185 -->|Depends on| n675
+  n185 -->|Depends on| n676
   n185 -->|Depends on| n142
   n185 -->|Depends on| n40
   n186 -->|Serves| n443
@@ -1803,19 +1807,19 @@ flowchart TB
   n191 -->|Accepts| n190
   n195 -->|Serves| n436
   n195 -->|Depends on| n196
-  n195 -->|Depends on| n676
+  n195 -->|Depends on| n677
   n195 -->|Depends on| n144
-  n195 -->|Depends on| n656
-  n195 -->|Depends on| n662
-  n195 -->|Depends on| n660
-  n195 -->|Depends on| n663
   n195 -->|Depends on| n657
-  n195 -->|Depends on| n654
-  n195 -->|Depends on| n653
+  n195 -->|Depends on| n663
+  n195 -->|Depends on| n661
   n195 -->|Depends on| n664
-  n195 -->|Depends on| n671
-  n195 -->|Depends on| n673
-  n195 -->|Depends on| n659
+  n195 -->|Depends on| n658
+  n195 -->|Depends on| n655
+  n195 -->|Depends on| n654
+  n195 -->|Depends on| n665
+  n195 -->|Depends on| n672
+  n195 -->|Depends on| n674
+  n195 -->|Depends on| n660
   n197 -->|Read in| n202
   n198 -->|Read in| n202
   n199 -->|Read in| n202
@@ -1844,7 +1848,7 @@ flowchart TB
   n212 -->|Uses| n309
   n213 -->|Read in| n212
   n213 -->|Depends on| n207
-  n214 -->|Read in| n674
+  n214 -->|Read in| n675
   n215 -->|Read in| n202
   n216 -->|Read in| n202
   n217 -->|Read in| n202
@@ -1856,9 +1860,9 @@ flowchart TB
   n222 -->|Serves| n436
   n222 -->|Depends on| n629
   n222 -->|Depends on| n622
-  n222 -->|Depends on| n674
+  n222 -->|Depends on| n675
   n222 -->|Depends on| n202
-  n222 -->|Depends on| n677
+  n222 -->|Depends on| n678
   n222 -->|Depends on| n636
   n222 -->|Depends on| n637
   n222 -->|Depends on| n638
@@ -2133,7 +2137,7 @@ flowchart TB
   n338 -->|Depends on| n348
   n338 -->|Depends on| n219
   n338 -->|Depends on| n214
-  n338 -->|Depends on| n661
+  n338 -->|Depends on| n662
   n338 -->|Depends on| n651
   n339 -->|Uses the variables of| n7
   n339 -->|Uses the variables of| n13
@@ -2234,16 +2238,16 @@ flowchart TB
   n362 -->|Implements| n14
   n362 -->|Depends on| n21
   n362 -->|Depends on| n23
-  n362 -->|Depends on| n676
-  n362 -->|Depends on| n656
+  n362 -->|Depends on| n677
   n362 -->|Depends on| n657
+  n362 -->|Depends on| n658
+  n362 -->|Depends on| n655
   n362 -->|Depends on| n654
-  n362 -->|Depends on| n653
-  n362 -->|Depends on| n665
-  n362 -->|Depends on| n671
-  n362 -->|Depends on| n673
-  n362 -->|Depends on| n659
-  n362 -->|Depends on| n663
+  n362 -->|Depends on| n666
+  n362 -->|Depends on| n672
+  n362 -->|Depends on| n674
+  n362 -->|Depends on| n660
+  n362 -->|Depends on| n664
   n364 -->|Depends on| n22
   n364 -->|Depends on| n23
   n364 -->|Depends on| n21
@@ -2324,7 +2328,7 @@ flowchart TB
   n388 -->|Depends on| n354
   n388 -->|Depends on| n141
   n388 -->|Depends on| n192
-  n388 -->|Depends on| n674
+  n388 -->|Depends on| n675
   n389 -->|Implements| n55
   n389 -->|Uses| n316
   n389 -->|Uses| n310
@@ -2360,7 +2364,7 @@ flowchart TB
   n402 -->|Uses| n314
   n402 -->|Depends on| n40
   n402 -->|Depends on| n140
-  n402 -->|Depends on| n674
+  n402 -->|Depends on| n675
   n403 -->|Chooses| n402
   n403 -->|In| n30
   n403 -->|In| n52
@@ -2393,7 +2397,7 @@ flowchart TB
   n412 -->|Serves| n436
   n412 -->|Applied by| n185
   n412 -->|Applied by| n55
-  n412 -->|Applied by| n674
+  n412 -->|Applied by| n675
   n412 -->|Applied by| n136
   n413 -->|Serves| n436
   n413 -->|Applied by| n162
@@ -2873,7 +2877,7 @@ flowchart TB
   n576 -->|Verifies| n162
   n576 -->|Verifies| n189
   n576 -->|Verifies| n160
-  n576 -->|Verifies| n677
+  n576 -->|Verifies| n678
   n576 -->|In| n52
   n576 -->|Depends on| n162
   n576 -->|Depends on| n41
@@ -3138,120 +3142,126 @@ flowchart TB
   n648 -->|Defined by| n647
   n648 -->|Depends on| n647
   n648 -->|Depends on| n639
-  n649 -->|Defined by| n676
-  n649 -->|Read in| n674
-  n649 -->|Depends on| n676
-  n650 -->|Defined by| n676
-  n650 -->|Read in| n674
-  n650 -->|Depends on| n676
-  n651 -->|Defined by| n676
-  n651 -->|Read in| n674
-  n651 -->|Depends on| n676
-  n652 -->|Defined by| n676
-  n652 -->|Read in| n674
-  n652 -->|Depends on| n676
-  n653 -->|Defined by| n676
-  n653 -->|Read in| n674
-  n653 -->|Depends on| n676
-  n654 -->|Defined by| n676
-  n654 -->|Read in| n674
-  n654 -->|Depends on| n676
-  n655 -->|Defined by| n676
-  n655 -->|Read in| n674
-  n655 -->|Depends on| n676
-  n655 -->|Depends on| n673
-  n656 -->|Defined by| n676
-  n656 -->|Read in| n674
-  n656 -->|Depends on| n676
-  n657 -->|Defined by| n676
-  n657 -->|Read in| n674
-  n657 -->|Depends on| n676
-  n658 -->|Defined by| n676
-  n658 -->|Read in| n674
-  n658 -->|Depends on| n676
-  n659 -->|Defined by| n676
-  n659 -->|Read in| n674
-  n659 -->|Depends on| n676
-  n660 -->|Defined by| n676
-  n660 -->|Read in| n674
-  n660 -->|Depends on| n676
-  n661 -->|Defined by| n676
-  n661 -->|Read in| n674
-  n661 -->|Depends on| n676
-  n662 -->|Defined by| n676
-  n662 -->|Read in| n674
-  n662 -->|Depends on| n676
-  n663 -->|Defined by| n676
-  n663 -->|Read in| n674
-  n663 -->|Depends on| n676
-  n663 -->|Depends on| n673
-  n664 -->|Defined by| n676
-  n664 -->|Read in| n674
-  n664 -->|Depends on| n676
-  n665 -->|Defined by| n676
-  n665 -->|Read in| n674
-  n665 -->|Depends on| n676
-  n666 -->|Defined by| n676
-  n666 -->|Read in| n674
-  n666 -->|Depends on| n676
-  n667 -->|Defined by| n676
-  n667 -->|Read in| n674
-  n667 -->|Depends on| n676
-  n668 -->|Defined by| n676
-  n668 -->|Read in| n674
-  n668 -->|Depends on| n676
-  n669 -->|Defined by| n676
-  n669 -->|Read in| n674
-  n669 -->|Depends on| n676
-  n671 -->|Defined by| n676
-  n671 -->|Read in| n674
-  n671 -->|Depends on| n676
-  n671 -->|Depends on| n673
-  n672 -->|Defined by| n676
-  n672 -->|Read in| n674
-  n672 -->|Depends on| n676
-  n673 -->|Defined by| n676
-  n673 -->|Read in| n674
-  n673 -->|Depends on| n676
-  n674 -->|Queries written in| n620
-  n674 -->|Read by| n629
-  n674 -->|Watches the globals| n679
-  n674 -->|Uses| n315
-  n675 -->|Serves| n436
-  n677 -->|Serves| n436
-  n677 -->|Depends on| n674
-  n677 -->|Depends on| n676
-  n677 -->|Depends on| n138
-  n677 -->|Depends on| n670
-  n677 -->|Depends on| n145
-  n677 -->|Depends on| n144
-  n677 -->|Depends on| n660
-  n677 -->|Depends on| n673
-  n677 -->|Depends on| n661
-  n677 -->|Depends on| n667
-  n677 -->|Depends on| n653
-  n677 -->|Depends on| n652
-  n677 -->|Depends on| n669
-  n677 -->|Depends on| n671
-  n677 -->|Depends on| n665
-  n677 -->|Depends on| n649
-  n677 -->|Depends on| n654
-  n677 -->|Depends on| n663
-  n677 -->|Depends on| n655
-  n677 -->|Depends on| n650
-  n677 -->|Depends on| n668
-  n677 -->|Depends on| n666
-  n677 -->|Depends on| n678
-  n677 -->|Depends on| n658
-  n677 -->|Depends on| n672
-  n677 -->|Depends on| n651
-  n677 -->|Depends on| n39
-  n677 -->|Depends on| n40
-  n677 -->|Depends on| n291
-  n677 -->|Depends on| n293
-  n678 -->|Defined by| n676
-  n678 -->|Read in| n674
-  n678 -->|Depends on| n676
+  n649 -->|Defined by| n677
+  n649 -->|Read in| n675
+  n649 -->|Depends on| n677
+  n650 -->|Defined by| n677
+  n650 -->|Read in| n675
+  n650 -->|Depends on| n677
+  n651 -->|Defined by| n677
+  n651 -->|Read in| n675
+  n651 -->|Depends on| n677
+  n652 -->|Defined by| n677
+  n652 -->|Read in| n675
+  n652 -->|Depends on| n677
+  n653 -->|Defined by| n677
+  n653 -->|Read in| n675
+  n653 -->|Depends on| n677
+  n654 -->|Defined by| n677
+  n654 -->|Read in| n675
+  n654 -->|Depends on| n677
+  n655 -->|Defined by| n677
+  n655 -->|Read in| n675
+  n655 -->|Depends on| n677
+  n656 -->|Defined by| n677
+  n656 -->|Read in| n675
+  n656 -->|Depends on| n677
+  n656 -->|Depends on| n674
+  n657 -->|Defined by| n677
+  n657 -->|Read in| n675
+  n657 -->|Depends on| n677
+  n658 -->|Defined by| n677
+  n658 -->|Read in| n675
+  n658 -->|Depends on| n677
+  n659 -->|Defined by| n677
+  n659 -->|Read in| n675
+  n659 -->|Depends on| n677
+  n660 -->|Defined by| n677
+  n660 -->|Read in| n675
+  n660 -->|Depends on| n677
+  n661 -->|Defined by| n677
+  n661 -->|Read in| n675
+  n661 -->|Depends on| n677
+  n662 -->|Defined by| n677
+  n662 -->|Read in| n675
+  n662 -->|Depends on| n677
+  n663 -->|Defined by| n677
+  n663 -->|Read in| n675
+  n663 -->|Depends on| n677
+  n664 -->|Defined by| n677
+  n664 -->|Read in| n675
+  n664 -->|Depends on| n677
+  n664 -->|Depends on| n674
+  n665 -->|Defined by| n677
+  n665 -->|Read in| n675
+  n665 -->|Depends on| n677
+  n666 -->|Defined by| n677
+  n666 -->|Read in| n675
+  n666 -->|Depends on| n677
+  n667 -->|Defined by| n677
+  n667 -->|Read in| n675
+  n667 -->|Depends on| n677
+  n668 -->|Defined by| n677
+  n668 -->|Read in| n675
+  n668 -->|Depends on| n677
+  n669 -->|Defined by| n677
+  n669 -->|Read in| n675
+  n669 -->|Depends on| n677
+  n670 -->|Defined by| n677
+  n670 -->|Read in| n675
+  n670 -->|Depends on| n677
+  n672 -->|Defined by| n677
+  n672 -->|Read in| n675
+  n672 -->|Depends on| n677
+  n672 -->|Depends on| n674
+  n673 -->|Defined by| n677
+  n673 -->|Read in| n675
+  n673 -->|Depends on| n677
+  n674 -->|Defined by| n677
+  n674 -->|Read in| n675
+  n674 -->|Depends on| n677
+  n675 -->|Queries written in| n620
+  n675 -->|Read by| n629
+  n675 -->|Watches the globals| n680
+  n675 -->|Uses| n315
+  n676 -->|Serves| n436
+  n678 -->|Serves| n436
+  n678 -->|Depends on| n675
+  n678 -->|Depends on| n677
+  n678 -->|Depends on| n138
+  n678 -->|Depends on| n671
+  n678 -->|Depends on| n145
+  n678 -->|Depends on| n144
+  n678 -->|Depends on| n661
+  n678 -->|Depends on| n674
+  n678 -->|Depends on| n662
+  n678 -->|Depends on| n668
+  n678 -->|Depends on| n654
+  n678 -->|Depends on| n653
+  n678 -->|Depends on| n670
+  n678 -->|Depends on| n672
+  n678 -->|Depends on| n666
+  n678 -->|Depends on| n649
+  n678 -->|Depends on| n655
+  n678 -->|Depends on| n664
+  n678 -->|Depends on| n656
+  n678 -->|Depends on| n650
+  n678 -->|Depends on| n669
+  n678 -->|Depends on| n667
+  n678 -->|Depends on| n679
+  n678 -->|Depends on| n659
+  n678 -->|Depends on| n673
+  n678 -->|Depends on| n651
+  n678 -->|Depends on| n660
+  n678 -->|Depends on| n652
+  n678 -->|Depends on| n147
+  n678 -->|Depends on| n39
+  n678 -->|Depends on| n40
+  n678 -->|Depends on| n291
+  n678 -->|Depends on| n293
+  n679 -->|Defined by| n677
+  n679 -->|Read in| n675
+  n679 -->|Depends on| n677
   n44 -.->|Depends on| n40
   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
   classDef blocked fill:#fbf0d9,stroke:#9a6200,color:#17202a

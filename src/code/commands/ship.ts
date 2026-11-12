@@ -19,6 +19,7 @@ import type { NodeEvents, NodeEncodings } from "#std/system"
 import type { Counts, Sequences, ValueTypes } from "#std/algebra"
 import type { Api as PreparationApi } from "./preparation"
 import type { Api as AssemblyApi } from "../engine/assembly"
+import type { Api as AssemblerApi } from "./assembler"
 import type { Api as SdlcApi, Entry } from "./sdlc-evidence"
 import type { Api as EnginesApi } from "../engine/engine-fingerprint"
 import type { Api as RunPlanApi } from "./run-plan"
@@ -30,6 +31,8 @@ export interface Deps {
   preparation: PreparationApi
   deliver: Handler
   assembly: AssemblyApi
+  /** A component prepared with the periods of its program (since g106). */
+  assembler: AssemblerApi
   sdlc: SdlcApi
   /** What a runner elsewhere needs to run a shipment, which a writer gives a form. */
   runPlan: RunPlanApi
@@ -99,11 +102,11 @@ const body = (deps: Deps): Handler => async (req) => {
    * page's program, for the browser); a program of the SDLC is then run with its command.
    */
   const programs = new Map<string, string>()
-  const program = (component: View, where: View | undefined = environment): string => {
+  const program = async (component: View, where: View | undefined = environment): Promise<string> => {
     const known = programs.get(JSON.stringify([component.ref, where?.ref]))
     if (known !== undefined) return known
     if (!where) return refuse(o, [messages.shipmentWithoutEnvironment(found.title)])
-    const { assembly, errors: refused } = deps.assembly.prepareAssembly(c, o.root, component.id, where.id)
+    const { assembly, errors: refused } = await deps.assembler.prepared(o, { c, comp }, component.id, where.id)
     if (!assembly) return refuse(o, [messages.assemblyRefused(), ...refused])
     const { files, errors: emitErrors } = deps.assembly.emitAssembly(assembly)
     if (emitErrors.length) return refuse(o, emitErrors)
@@ -126,7 +129,7 @@ const body = (deps: Deps): Handler => async (req) => {
     const component = head(out(entry, EdgeName.partOf))
     if (!component) return exitStatus.failure
     const trigger = entry.field(EntryField.trigger) as Trigger | undefined
-    const child = deps.currentProcess.runTs(program(component), [...(trigger?.type === TriggerType.command ? [trigger.name] : []), ...forwarded])
+    const child = deps.currentProcess.runTs(await program(component), [...(trigger?.type === TriggerType.command ? [trigger.name] : []), ...forwarded])
     return new Promise<number>((end) => child.on(deps.events.exit, (code: number | null) => end(code ?? exitStatus.failure)))
   }
 
@@ -153,7 +156,7 @@ const body = (deps: Deps): Handler => async (req) => {
     }
     const producer = step.runs
     if (producer?.kind === KindName.delivery) await deps.deliver({ params: { command: line.deliver }, body: { args: [producer.id, line.at, o.today] } })
-    if (producer?.kind === KindName.component) program(producer, head(out(step.node, EdgeName.environment)) ?? environment)
+    if (producer?.kind === KindName.component) await program(producer, head(out(step.node, EdgeName.environment)) ?? environment)
     if (producer?.kind === KindName.entry) {
       const code = await run(producer)
       if (code !== exitStatus.success) return refuse(o, [messages.programFailed(producer.title, code)])

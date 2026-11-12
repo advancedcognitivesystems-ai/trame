@@ -65,7 +65,7 @@ export const RenderView = fn({
 export const Assembler = fn({
   owner: "trame",
   serves: [ExecutableSpecification],
-  deps: { preparation: Preparation, assembly: Assembly, layout: TerminalText, punctuation: Punctuation, texts: Texts, messages: CommandMessages },
+  deps: { preparation: Preparation, assembly: Assembly, layout: TerminalText, punctuation: Punctuation, texts: Texts, counts: Counts, messages: CommandMessages },
   body: code.file<typeof import("./code/commands/assembler").default>("./code/commands/assembler.ts"),
 })
 
@@ -197,7 +197,7 @@ export const Deliver = entryPoint({
   owner: "trame", in: TrameCli, serves: [ExecutableSpecification],
   trigger: command(commandNames.deliver),
   deps: {
-    exitStatus: ExitStatus, preparation: Preparation, assembly: Assembly, bundler: Bundler, led: NamesLed, bundle: PageBundle, document: PageDocument,
+    exitStatus: ExitStatus, preparation: Preparation, assembly: Assembly, assembler: Assembler, bundler: Bundler, led: NamesLed, bundle: PageBundle, document: PageDocument,
     html: Html, script: ScriptElement, style: DeliveredStyle, reading: FileReading, writing: FileWriting, paths: Paths, encodings: NodeEncodings,
     terminal: Terminal, sequences: Sequences, texts: Texts, values: ValueTypes, messages: CommandMessages,
   },
@@ -217,7 +217,7 @@ export const Ship = entryPoint({
   owner: "trame", in: TrameCli, serves: [ShipOnlyWhatHolds],
   trigger: command(commandNames.ship),
   deps: {
-    exitStatus: ExitStatus, line: TrameCommands, preparation: Preparation, deliver: Deliver, assembly: Assembly, sdlc: SdlcEvidence, runPlan: ShipmentRunPlan,
+    exitStatus: ExitStatus, line: TrameCommands, preparation: Preparation, deliver: Deliver, assembly: Assembly, assembler: Assembler, sdlc: SdlcEvidence, runPlan: ShipmentRunPlan,
     holds: ShipOnlyWhatHolds, bundler: Bundler, led: NamesLed, programBundle: ProgramBundle,
     currentProcess: Process, events: NodeEvents, reading: FileReading, writing: FileWriting, paths: Paths, encodings: NodeEncodings, terminal: Terminal,
     sequences: Sequences, counts: Counts, values: ValueTypes, engines: EngineFingerprint, messages: CommandMessages,

@@ -280,6 +280,31 @@ export const frozen = {
   limited,
   /** A body as the amendments in force at the date of the assembly make it, in the order they were applied (since g105). */
   amended: amendBody,
+  /**
+   * The periods of a program whose graph changes at dates known when it was assembled (since g106): each from its first
+   * day, with what it built when the program started; the one of the day answers. The day is the graph's: the one the
+   * variable of the environment fixes, as the engine reads it, or today's in UTC.
+   */
+  periods(variable: string, periods: readonly (readonly [string, Record<string, unknown>])[]): { current(): Record<string, unknown> } {
+    const env = (globalThis as { process?: { env?: Record<string, string | undefined> } }).process?.env
+    const today = () => env?.[variable] ?? new Date().toISOString().slice(0, 10)
+    return {
+      current() {
+        const day = today()
+        let found: Record<string, unknown> = periods[0]?.[1] ?? {}
+        for (const [from, built] of periods) if (from <= day) found = built
+        return found
+      },
+    }
+  },
+  /** An entry point of a program with periods (since g106): each call is answered by the entry of the period of the day. */
+  dated(periods: { current(): Record<string, unknown> }, name: string): (...args: unknown[]) => unknown {
+    return (...args: unknown[]) => {
+      const entry = periods.current()[name]
+      if (typeof entry !== "function") throw new Error(`"${name}" is not an entry point that can be called`)
+      return (entry as (...a: unknown[]) => unknown)(...args)
+    }
+  },
   /** The data in force of a node that a rule reads by name, at the date of the assembly. */
   data(n: AnyNode, ref: string, data: Record<string, unknown>): void {
     const m = meta(n)
