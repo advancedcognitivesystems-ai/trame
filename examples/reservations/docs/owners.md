@@ -5,7 +5,7 @@
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
 | The operators | 0 | 0 | 2 | 0 |
-| karim | 1 | 0 | 11 | 94 |
+| karim | 1 | 0 | 13 | 96 |
 | lea | 0 | 0 | 1 | 11 |
 
 <a id="The operators"></a>
@@ -33,6 +33,7 @@
 | Severity | What | Where | Owner | Consequence |
 |---|---|---|---|---|
 | blocking | Decide "Legal cap on cancellation fees" | [Legal cap on cancellation fees](legal.md#FeeCap) | karim | concerns "Late cancellation fee", "The cap, decided" |
+| warning | Nothing identifies it yet (C7): whoever reaches its 2 entry points calls as one of it | [Drivers](access.md#Drivers) | karim |  |
 | warning | Check the assumption before 1 December 2026 (in 32 days) | [Idempotent payment provider](cancellation.md#IdempotentProvider) | karim | no evidence yet |
 | warning | No production measurement wired | [Immediate refund](cancellation.md#ImmediateRefund) | karim |  |
 | warning | Cap cannot be checked: "Legal cap on cancellation fees" is not decided | [Late cancellation fee](cancellation.md#LateFee) | karim |  |
@@ -44,11 +45,13 @@
 | warning | To ship: Secrets stay out of the graph is unknown | [A release](sdlc.md#Release) | karim |  |
 | warning | To ship: On a laptop is unknown | [A release](sdlc.md#Release) | karim |  |
 | warning | To ship: On staging is unknown | [A release](sdlc.md#Release) | karim |  |
+| warning | Drivers ships, and nothing proves it (Who calls, identified) | [Drivers](access.md#Drivers) | karim |  |
 
 ### Owns
 
 | Node | Kind | State |
 |---|---|---|
+| [Drivers](access.md#Drivers) | Audience |  |
 | [Cancel a reservation](api.md#CancelReservation) | Entry point | **held** |
 | [Lead time of a cancellation](api.md#LeadTime) | Function | **held** |
 | [Read a reservation](api.md#ReadReservation) | Entry point | **held** |
@@ -121,6 +124,7 @@
 | [Cancelling twice refunds only once](scenarios.md#RepeatedCancellationScenario) | Scenario | **held** |
 | [The storage is prepared](scenarios.md#StoragePrepared) | Scenario | **held** |
 | [Unknown reservation](scenarios.md#UnknownReservation) | Decision |  |
+| [Who calls, identified](sdlc.md#CallersIdentified) | Obligation |  |
 | [The code is verified](sdlc.md#CodeVerified) | Obligation |  |
 | [Commands on this machine](sdlc.md#CommandsOnThisMachine) | Technical choice | **unknown** |
 | [The decisions hold](sdlc.md#DecisionsApplied) | Obligation |  |

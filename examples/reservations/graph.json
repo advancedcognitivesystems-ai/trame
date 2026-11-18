@@ -2,10 +2,26 @@
   "generated": "2026-10-30",
   "nodes": [
     {
+      "id": "access.Drivers",
+      "kind": "audience",
+      "title": "Drivers",
+      "source": "src/access.ts:15",
+      "fields": {
+        "owner": "karim",
+        "carries": [
+          "person"
+        ]
+      },
+      "diagnostics": [
+        "warning: Nothing identifies it yet (C7): whoever reaches its 2 entry points calls as one of it",
+        "warning: Drivers ships, and nothing proves it (Who calls, identified)"
+      ]
+    },
+    {
       "id": "api.CancelReservation",
       "kind": "entry",
       "title": "Cancel a reservation",
-      "source": "src/api.ts:53",
+      "source": "src/api.ts:55",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -36,7 +52,7 @@
       "id": "api.FreeCancellationEnd",
       "kind": "function",
       "title": "End of free cancellation",
-      "source": "src/api.ts:16",
+      "source": "src/api.ts:17",
       "status": "held",
       "fields": {
         "owner": "lea",
@@ -53,7 +69,7 @@
       "id": "api.LeadTime",
       "kind": "function",
       "title": "Lead time of a cancellation",
-      "source": "src/api.ts:29",
+      "source": "src/api.ts:30",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -69,7 +85,7 @@
       "id": "api.ReadReservation",
       "kind": "entry",
       "title": "Read a reservation",
-      "source": "src/api.ts:39",
+      "source": "src/api.ts:40",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -639,7 +655,7 @@
       "id": "data.KeptRefund",
       "kind": "entity",
       "title": "The refund of a cancelled reservation",
-      "source": "src/data.ts:55",
+      "source": "src/data.ts:59",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -660,10 +676,21 @@
             "of": {
               "type": "text"
             }
+          },
+          "driver": {
+            "type": "text"
           }
         },
         "key": "reservation",
-        "keptAs": "refunds"
+        "keptAs": "refunds",
+        "changes": {
+          "defaults": {
+            "driver": "unknown"
+          }
+        },
+        "ownedBy": {
+          "person": "driver"
+        }
       },
       "result": {
         "deployed": {
@@ -686,12 +713,15 @@
               "of": {
                 "type": "text"
               }
+            },
+            "driver": {
+              "type": "text"
             }
           },
           "key": "reservation"
         },
-        "version": "a2c32e34",
-        "first": "a2c32e34",
+        "version": "3b989bf5",
+        "first": "3b989bf5",
         "migrations": [],
         "undecided": [],
         "kept": []
@@ -702,7 +732,7 @@
       "id": "data.KeptReservation",
       "kind": "entity",
       "title": "A reservation",
-      "source": "src/data.ts:35",
+      "source": "src/data.ts:36",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -724,33 +754,47 @@
           "status": {
             "type": "word",
             "vocabulary": "data.ReservationStatuses"
+          },
+          "driver": {
+            "type": "text"
           }
         },
         "key": "id",
         "keptAs": "reservations",
+        "changes": {
+          "defaults": {
+            "driver": "unknown"
+          }
+        },
         "seed": [
           {
             "id": "R1",
             "charger": "normal",
             "price": 20,
             "start": "2026-10-20T12:00:00.000Z",
-            "status": "active"
+            "status": "active",
+            "driver": "alice"
           },
           {
             "id": "R2",
             "charger": "fast",
             "price": 30,
             "start": "2026-10-20T10:04:00.000Z",
-            "status": "active"
+            "status": "active",
+            "driver": "bob"
           },
           {
             "id": "R3",
             "charger": "ultra",
             "price": 40,
             "start": "2026-10-20T11:00:00.000Z",
-            "status": "active"
+            "status": "active",
+            "driver": "alice"
           }
-        ]
+        ],
+        "ownedBy": {
+          "person": "driver"
+        }
       },
       "result": {
         "deployed": {
@@ -781,13 +825,16 @@
                 "active",
                 "cancelled"
               ]
+            },
+            "driver": {
+              "type": "text"
             }
           },
           "key": "id",
-          "seed": "0fa27854"
+          "seed": "f10fa9e3"
         },
-        "version": "6c591614",
-        "first": "6c591614",
+        "version": "79ff6aa5",
+        "first": "79ff6aa5",
         "migrations": [],
         "undecided": [],
         "kept": []
@@ -1560,10 +1607,21 @@
       "diagnostics": []
     },
     {
+      "id": "sdlc.CallersIdentified",
+      "kind": "obligation",
+      "title": "Who calls, identified",
+      "source": "src/sdlc.ts:169",
+      "fields": {
+        "owner": "karim",
+        "gaps": "warning"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "sdlc.CodeVerified",
       "kind": "obligation",
       "title": "The code is verified",
-      "source": "src/sdlc.ts:125",
+      "source": "src/sdlc.ts:127",
       "fields": {
         "owner": "karim",
         "params": {
@@ -1580,7 +1638,7 @@
       "id": "sdlc.CommandsOnThisMachine",
       "kind": "binding",
       "title": "Commands on this machine",
-      "source": "src/sdlc.ts:66",
+      "source": "src/sdlc.ts:67",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -1592,7 +1650,7 @@
       "id": "sdlc.DecisionsApplied",
       "kind": "obligation",
       "title": "The decisions hold",
-      "source": "src/sdlc.ts:137",
+      "source": "src/sdlc.ts:139",
       "fields": {
         "owner": "karim"
       },
@@ -1602,7 +1660,7 @@
       "id": "sdlc.EveryCheck",
       "kind": "obligation",
       "title": "Every check is signed",
-      "source": "src/sdlc.ts:142",
+      "source": "src/sdlc.ts:144",
       "fields": {
         "owner": "karim",
         "params": {
@@ -1615,7 +1673,7 @@
       "id": "sdlc.GoalServed",
       "kind": "obligation",
       "title": "The requirements of the goal hold",
-      "source": "src/sdlc.ts:132",
+      "source": "src/sdlc.ts:134",
       "fields": {
         "owner": "karim"
       },
@@ -1625,7 +1683,7 @@
       "id": "sdlc.KeptMigrates",
       "kind": "obligation",
       "title": "What the service keeps, migrated",
-      "source": "src/sdlc.ts:159",
+      "source": "src/sdlc.ts:161",
       "fields": {
         "owner": "karim",
         "gaps": "error"
@@ -1636,7 +1694,7 @@
       "id": "sdlc.LocalProgram",
       "kind": "artifact",
       "title": "The program for a laptop",
-      "source": "src/sdlc.ts:49",
+      "source": "src/sdlc.ts:50",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -1644,7 +1702,7 @@
       },
       "result": {
         "path": "out/local/reservations-api.ts",
-        "code": "b4a70b0a"
+        "code": "b745731d"
       },
       "diagnostics": [
         "warning: Not built yet: trame ship builds it"
@@ -1654,7 +1712,7 @@
       "id": "sdlc.MachineMode",
       "kind": "policy",
       "title": "The way of this machine",
-      "source": "src/sdlc.ts:170",
+      "source": "src/sdlc.ts:183",
       "fields": {
         "owner": "karim"
       },
@@ -1664,7 +1722,7 @@
       "id": "sdlc.OnALaptop",
       "kind": "check",
       "title": "On a laptop",
-      "source": "src/sdlc.ts:113",
+      "source": "src/sdlc.ts:115",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -1680,7 +1738,7 @@
       "id": "sdlc.OnStaging",
       "kind": "check",
       "title": "On staging",
-      "source": "src/sdlc.ts:97",
+      "source": "src/sdlc.ts:99",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -1698,7 +1756,7 @@
       "id": "sdlc.OnThisMachine",
       "kind": "shipment",
       "title": "On this machine",
-      "source": "src/sdlc.ts:183",
+      "source": "src/sdlc.ts:196",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -1850,7 +1908,7 @@
       "id": "sdlc.Operators",
       "kind": "role",
       "title": "The operators",
-      "source": "src/sdlc.ts:37",
+      "source": "src/sdlc.ts:38",
       "fields": {
         "owner": "karim",
         "people": [
@@ -1863,7 +1921,7 @@
       "id": "sdlc.PackagesSafe",
       "kind": "obligation",
       "title": "The packages are safe",
-      "source": "src/sdlc.ts:152",
+      "source": "src/sdlc.ts:154",
       "fields": {
         "owner": "karim"
       },
@@ -1873,7 +1931,7 @@
       "id": "sdlc.PrepareStorage",
       "kind": "entry",
       "title": "Prepare the storage",
-      "source": "src/sdlc.ts:79",
+      "source": "src/sdlc.ts:80",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -1896,7 +1954,7 @@
       "id": "sdlc.ProductionProgram",
       "kind": "artifact",
       "title": "The program for production",
-      "source": "src/sdlc.ts:43",
+      "source": "src/sdlc.ts:44",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -1904,7 +1962,7 @@
       },
       "result": {
         "path": "out/production/reservations-api.ts",
-        "code": "80341022"
+        "code": "0258a635"
       },
       "diagnostics": [
         "warning: Not built yet: trame ship builds it"
@@ -1914,7 +1972,7 @@
       "id": "sdlc.Release",
       "kind": "shipment",
       "title": "A release",
-      "source": "src/sdlc.ts:176",
+      "source": "src/sdlc.ts:189",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -2023,7 +2081,13 @@
             "obligation": "sdlc.RulesHeld"
           }
         ],
-        "gaps": [],
+        "gaps": [
+          {
+            "node": "access.Drivers",
+            "obligation": "sdlc.CallersIdentified",
+            "weight": "warning"
+          }
+        ],
         "preceded": [],
         "reached": [
           "sdlc.LocalProgram",
@@ -2100,7 +2164,7 @@
       "id": "sdlc.ReleaseMode",
       "kind": "policy",
       "title": "The way of a release",
-      "source": "src/sdlc.ts:164",
+      "source": "src/sdlc.ts:174",
       "fields": {
         "owner": "karim"
       },
@@ -2110,7 +2174,7 @@
       "id": "sdlc.ReservationsSdlc",
       "kind": "component",
       "title": "The service's SDLC",
-      "source": "src/sdlc.ts:55",
+      "source": "src/sdlc.ts:56",
       "fields": {
         "owner": "karim",
         "language": "typescript",
@@ -2124,7 +2188,7 @@
       "id": "sdlc.RulesHeld",
       "kind": "obligation",
       "title": "The rules hold",
-      "source": "src/sdlc.ts:147",
+      "source": "src/sdlc.ts:149",
       "fields": {
         "owner": "karim"
       },
@@ -2195,6 +2259,11 @@
   ],
   "edges": [
     {
+      "from": "access.Drivers",
+      "to": "cancellation.CancelWithoutStress",
+      "kind": "serves"
+    },
+    {
       "from": "api.CancelReservation",
       "to": "cancellation.Refund",
       "kind": "serves"
@@ -2203,6 +2272,11 @@
       "from": "api.CancelReservation",
       "to": "architecture.ReservationsApi",
       "kind": "in"
+    },
+    {
+      "from": "api.CancelReservation",
+      "to": "access.Drivers",
+      "kind": "for"
     },
     {
       "from": "api.CancelReservation",
@@ -2283,6 +2357,11 @@
       "from": "api.ReadReservation",
       "to": "architecture.ReservationsApi",
       "kind": "in"
+    },
+    {
+      "from": "api.ReadReservation",
+      "to": "access.Drivers",
+      "kind": "for"
     },
     {
       "from": "api.ReadReservation",
@@ -3212,6 +3291,16 @@
       "kind": "deps"
     },
     {
+      "from": "sdlc.CallersIdentified",
+      "to": "std/obligations.Identified",
+      "kind": "applies"
+    },
+    {
+      "from": "sdlc.CallersIdentified",
+      "to": "cancellation.CancelWithoutStress",
+      "kind": "serves"
+    },
+    {
       "from": "sdlc.CodeVerified",
       "to": "std/obligations.Verified",
       "kind": "applies"
@@ -3398,6 +3487,11 @@
     },
     {
       "from": "sdlc.PrepareStorage",
+      "to": "std/access.TheOperators",
+      "kind": "for"
+    },
+    {
+      "from": "sdlc.PrepareStorage",
       "to": "data/records.Records",
       "kind": "deps"
     },
@@ -3479,6 +3573,11 @@
     {
       "from": "sdlc.ReleaseMode",
       "to": "sdlc.KeptMigrates",
+      "kind": "obligations"
+    },
+    {
+      "from": "sdlc.ReleaseMode",
+      "to": "sdlc.CallersIdentified",
       "kind": "obligations"
     },
     {

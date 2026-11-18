@@ -84,7 +84,8 @@ Write a product top-down, one module per concern, each node linked to what it se
    that apply it (`appliedBy`), which make its status.
 3. **Standards and vocabularies**: what is published elsewhere (an RFC, a registry, an algorithm) with its source, and
    closed sets of words.
-4. **Architecture**: components, ports (with their effects), environments.
+4. **Architecture**: components, ports (with their effects), environments; the audiences their entry points are for
+   (kind `audience`, section 5d).
 5. **Code**: functions (pure), implementations (the only nodes that touch the platform), entry points, catalogs.
 6. **Technical choices**: bindings choose the realization of each port per environment and name the patterns they follow.
 7. **Scenarios**: real code wired in an environment that checks entry points and requirements.
@@ -111,7 +112,7 @@ A project declares how a version of it ships (ADR "A version ships through the g
 | `check` | what a scenario in memory cannot check: run by a program of the SDLC (`runs`) or made by hand (`steps`), signed by a role (`by`), on artefacts (`on`); the code it proves (`verifies`): what its program runs on a machine, or what its artefacts carry | `check`: passed or failed, for the artefacts as last built from the code as it is, by its program as it is (g70) |
 | `review` | what must be reviewed (`of`: the rows of a dataset in each language, or a node as written), by which role, by how many of its people (`approvals`, one) | `review` on the subject: each row and language, tied to the fingerprint of what was seen; each person's latest counts, a change asked holds it back |
 | `shipment` | a target, what it `ships`, the `policy` it follows, what it also `requires` that derivation cannot see, the entry points that `deploys` it, the `environment` its programs are assembled for | `shipped`, with the dossier |
-| `obligation` | one family of `#std/obligations` it `applies` (Verified, Served, Applied, Reviewed, Checked, Ruled, Safe, Preceded; `#data/obligations`: Migrated), its `params` (typed by the family's rule; a node of the graph where it reads one: `by: [Preview]`), what a gap weighs (`gaps`: `Severity.error` keeps the shipment, `Severity.warning` says it), why (`serves`) | — |
+| `obligation` | one family of `#std/obligations` it `applies` (Verified, Served, Applied, Reviewed, Checked, Ruled, Safe, Preceded, Identified; `#data/obligations`: Migrated), its `params` (typed by the family's rule; a node of the graph where it reads one: `by: [Preview]`), what a gap weighs (`gaps`: `Severity.error` keeps the shipment, `Severity.warning` says it), why (`serves`) | — |
 | `policy` | a way of working: its `obligations`, one per family | — |
 
 What a shipment must prove is derived, not listed (g68): its policy's obligations read what it reaches (the artefacts
@@ -292,6 +293,30 @@ name it is kept under (`keptAs`), and the `changes` its owner decided since a ve
   seed's fingerprint; a seed changed since the last deployment is a warning to the owner: a table made before keeps the
   records it started with.
 - A shipment's policy applies `Migrated` (`gaps: Severity.error`): what people kept is never lost by a version.
+- **Whose records** (data 0.4.0): an entity that keeps what belongs to someone says by which field (`ownedBy: { person:
+  "driver" }`, or `tenant`). An entry point that reaches it must be for an audience carrying that identity (section 5d).
+
+## 5d. Who calls an entry point (C6, g107)
+
+Every entry point says who calls it (`for:`); one that does not is an error. The audience is declared, where it may be
+called from is derived from its trigger (an HTTP route: the network; a command: the machine; a page: the device; a
+schedule or a message: nobody, the platform calls it). `docs/callers.md` (view `callers`) shows each one.
+
+| Audience | Who | Where |
+|---|---|---|
+| `Anyone` (`#std/access`) | whoever reaches it, nobody known: a person at a terminal, a public page | carries no identity |
+| `TheSystem` | the platform itself | a schedule or a message only: called by a person, an error |
+| `TheOperators` | the project's people, through the SDLC (deployment, migrations) | reaches every owner's records (`everyOwner`), as a role that bypasses row-level security |
+| the product's own | `audience({ owner, carries: [Identity.person], serves })` | carries what identifies each caller (`person`, `tenant`) |
+
+- An entry point that reaches, in one of its environments, an entity owned by a person (or a tenant) is for an audience
+  that carries that identity, or `everyOwner`: otherwise an error, naming the entity and the environment.
+- An audience that carries an identity is a promise: nothing identifies it yet (C7 brings `libs/access`: how a caller is
+  identified, and the scope each body receives, as PostgreSQL's row-level security). Until then its owner is warned, and
+  the family `Identified` makes it a gap of a shipment (the example weighs it a warning, std's and Trame's policies an
+  error: they offer none).
+- A webhook is called by another system that identifies itself: an audience of its own that carries an identity, never
+  `TheSystem`.
 
 ## 6. Writing kinds and views
 
@@ -478,6 +503,13 @@ elements), a port answered differently in several environments is answered as in
 - A scenario's step names are the plan's (`cancelReservation`, its first letter lowered): a program's text names them so.
 - A release holds no manifest (g96): in its library, the library's says it is made of ES modules and where the
   language is; published, the registry gives it one that says only the first, and its reader leads the language.
+- A view is named apart from the modules: a view `access` wrote `docs/access.md` over the example's module of that name
+  (it is `callers`).
+- Before g107 a version (`version: true`) read in a project that imports its library held the project's nodes: std's
+  shipment, in the example, found the example's audience as its own gap. A version holds its own project's nodes.
+- `trame upgrade` compiles the graph with the version it has: when the newer version of a library refuses it (std
+  0.18.0 requires `for` on each entry point), move the references by hand (`src/packages.ts`, `trame.json`,
+  `package.json`, the links under `.trame`), run the manifest, then write the code.
 - A published declaration the language changes the form of (a type renamed, a rule rewritten as a body) is an error
   of `trame.lock`: `trame publish --migrate "why"` publishes it again, and only it.
 - TypeScript keeps the path of a link: reached through `.trame/trame`, the kernel would be a second file whose types never

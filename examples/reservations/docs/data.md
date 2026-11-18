@@ -45,11 +45,11 @@ The chargers a slot is reserved on, as a reservation keeps them.
 
 ### The refund of a cancelled reservation
 
-`KeptRefund` · `src/data.ts:55` · status: **held**
+`KeptRefund` · `src/data.ts:59` · status: **held**
 
-Found by its reservation: the amount refunded, the provider's reference for it, and the instant it was recorded (ISO 8601), which the refunds recorded before it was kept do not say.
+Found by its reservation: the amount refunded, the provider's reference for it, the instant it was recorded (ISO 8601), which the refunds recorded before it was kept do not say; the driver's own, as the reservation is.
 
-4 fields, found by `reservation`.
+5 fields, found by `reservation`.
 
 | Field | Type |
 |---|---|
@@ -57,8 +57,11 @@ Found by its reservation: the amount refunded, the provider's reference for it, 
 | `amount` | a number in [Swiss francs](cancellation.md#SwissFrancs) |
 | `reference` | a text |
 | `at` | a text, optional |
+| `driver` | a text |
 
-Version `a2c32e34`; never deployed.
+Version `3b989bf5`; never deployed.
+
+Each record belongs to a person, held in `driver`.
 
 - Owner: karim
 - Kept as: refunds
@@ -70,11 +73,11 @@ Version `a2c32e34`; never deployed.
 
 ### A reservation
 
-`KeptReservation` · `src/data.ts:35` · status: **held**
+`KeptReservation` · `src/data.ts:36` · status: **held**
 
-A slot on a charger: its price, the instant it starts (ISO 8601), whether it was cancelled; found by its identifier. A table of reservations starts with three, where a binding seeds it (in test, and on a developer's machine).
+A slot on a charger: its price, the instant it starts (ISO 8601), whether it was cancelled, the driver who made it; found by its identifier, and the driver's own. A table of reservations starts with three, where a binding seeds it (in test, and on a developer's machine); those kept before drivers were said belong to nobody known.
 
-5 fields, found by `id`.
+6 fields, found by `id`.
 
 | Field | Type |
 |---|---|
@@ -83,10 +86,13 @@ A slot on a charger: its price, the instant it starts (ISO 8601), whether it was
 | `price` | a number in [Swiss francs](cancellation.md#SwissFrancs) |
 | `start` | a text |
 | `status` | a word of a vocabulary in [Statuses of a reservation](#ReservationStatuses) |
+| `driver` | a text |
 
-Version `6c591614`; never deployed.
+Version `79ff6aa5`; never deployed.
 
 A new place of it starts with 3 records, where a binding seeds it.
+
+Each record belongs to a person, held in `driver`.
 
 - Owner: karim
 - Kept as: reservations

@@ -3,7 +3,7 @@
 import { requirement } from "#trame/kinds/requirement"
 import { acceptance } from "#trame/kinds/acceptance"
 import { vocabulary, type WordOf } from "#trame/kinds/vocabulary"
-import { KindName, EdgeName, CheckEdge, ReviewEdge, ShipmentEdge } from "#trame/kernel"
+import { KindName, EdgeName, CheckEdge, ReviewEdge, ShipmentEdge, EntryEdge, AudienceField } from "#trame/kernel"
 import type { GraphSketch, SketchNode, ObligationReach, ObligationFinding } from "#trame/kernel"
 import { SharedRules } from "./product"
 import { Counts } from "./algebra"
@@ -167,6 +167,26 @@ export const Safe = requirement({
 })
 
 /**
+ * Who calls a shipment's programs is identified
+ * Each entry point the shipment reaches names its audience; an audience whose callers carry an identity (a person, a
+ * tenant) is identified where the shipment runs it, or the program lets whoever reaches the entry point call as one of
+ * it. Until identification comes (C7), nothing identifies one: each such audience reached is a gap.
+ */
+export const Identified = requirement({
+  owner: "trame",
+  refines: [SharedRules],
+  body: () => (sketch: GraphSketch, reach: ObligationReach): ObligationFinding => {
+    const audiences = once(reach.reached.filter((r) => kindOf(sketch, r) === KindName.entry)
+      .flatMap((e) => edgesFrom(sketch, e, EntryEdge.audience).map((a) => ({ node: a, via: e }))))
+    const carries = (ref: string) => {
+      const c = sketch.nodes.find((n) => n.ref === ref)?.field(AudienceField.carries)
+      return Array.isArray(c) ? c : []
+    }
+    return { obliged: [], gaps: audiences.filter((a) => carries(a.node).length).map((a) => a.node) }
+  },
+})
+
+/**
  * The artefacts a shipment ships were shipped first by those that precede it
  * Each shipment named that ships an artefact this one ships is to prove: it must have shipped that artefact first, the
  * same file, before this one may take it (a public version after its preview, a release after staging). A shipment may
@@ -211,6 +231,27 @@ const stages = sketch(
 )
 const node = (graph: GraphSketch, ref: string) => graph.nodes.filter((n) => n.ref === ref)
 const publicVersion: ObligationReach = { shipped: ["Page", "Api"], reached: ["Page", "Api"] }
+
+// Two entry points reached: one for drivers (who carry a person), one for anyone; a third, for drivers too, not reached.
+const callers: GraphSketch = {
+  nodes: [["Read", "entry"], ["Cancel", "entry"], ["Admin", "entry"], ["Drivers", "audience"], ["Anyone", "audience"]].map(([ref, kind]): SketchNode => ({
+    ref, kind, module: "m", title: ref, effects: [], field: (path) => (ref === "Drivers" && path === AudienceField.carries ? ["person"] : undefined),
+  })),
+  edges: [["Read", "for", "Drivers"], ["Cancel", "for", "Anyone"], ["Admin", "for", "Drivers"]].map(([from, name, to]) => ({ from, to, name })),
+}
+
+/** Criteria of who calls */
+export const IdentifiedCriteria = acceptance({
+  accepts: Identified,
+  owner: "trame",
+  criteria: (criterion) => {
+    criterion("An audience that carries an identity, reached through an entry point, is a gap while nothing identifies it", () =>
+      Identified(callers, { shipped: [], reached: ["Read", "Cancel"] }).gaps.join(" ") === "Drivers")
+    criterion("An audience that carries none is no gap", () => Identified(callers, { shipped: [], reached: ["Cancel"] }).gaps.length === 0)
+    criterion("An audience reached through several entry points is one gap", () =>
+      Identified(callers, { shipped: [], reached: ["Read", "Admin"] }).gaps.join(" ") === "Drivers")
+  },
+})
 
 /** Criteria of the stages */
 export const PrecededCriteria = acceptance({

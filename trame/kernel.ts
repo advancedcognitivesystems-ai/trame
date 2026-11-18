@@ -229,7 +229,7 @@ export const KindName = {
   release: "release", rule: "rule", function: "function", stylesheet: "stylesheet", entry: "entry", catalog: "catalog",
   implementation: "implementation", package: "package", binding: "binding", environment: "environment", scenario: "scenario",
   delivery: "delivery", dataset: "dataset", role: "role", artifact: "artifact", check: "check", review: "review", shipment: "shipment",
-  obligation: "obligation", policy: "policy", quantity: "quantity",
+  obligation: "obligation", policy: "policy", quantity: "quantity", audience: "audience",
 } as const
 
 /** The views of the language, in the order documents list them within their group: named and placed like the kinds. */
@@ -237,7 +237,7 @@ export const ViewName = {
   module: "module", index: "index", snapshot: "snapshot", adrs: "adrs", choices: "choices", versions: "versions", owners: "owners",
   schedule: "schedule", review: "review", literals: "literals", layers: "layers", timeline: "timeline", overlaps: "overlaps",
   summary: "summary", impact: "impact", why: "why", history: "history", assembly: "assembly", pipelines: "pipelines",
-  journal: "journal",
+  journal: "journal", callers: "callers",
 } as const
 
 /** The place of a word in a vocabulary, from 1: the order of a kind or a view that does not give its own. */

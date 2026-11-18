@@ -1,16 +1,18 @@
 # Owners
 
-*What each person must decide, settle or watch on 10 November 2026, and what they own.*
+*What each person must decide, settle or watch on 18 November 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| ghalaax | 0 | 0 | 0 | 16 |
+| ghalaax | 0 | 0 | 1 | 16 |
 
 <a id="ghalaax"></a>
 
 ## ghalaax
 
-Nothing to decide or watch.
+| Severity | What | Where | Owner | Consequence |
+|---|---|---|---|---|
+| warning | std 0.18.0 is out, the reference names 0.17.0: trame upgrade std moves it | [The standard library](packages.md#StandardLibrary) | ghalaax |  |
 
 ### Owns
 

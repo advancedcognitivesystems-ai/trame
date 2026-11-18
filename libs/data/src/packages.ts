@@ -13,4 +13,4 @@ export const Language = pkg({ owner: "trame", packageName: "trame", version: "10
  * std
  * A library the project builds on, at the version the language's home uses.
  */
-export const stdLibrary = pkg({ owner: "trame", packageName: "std", version: "0.17.0", joins: "library", at: "../../std/releases/0.17.0", serves: [DataDescribedOnce] })
+export const stdLibrary = pkg({ owner: "trame", packageName: "std", version: "0.18.0", joins: "library", at: "../../std/releases/0.18.0", serves: [DataDescribedOnce] })

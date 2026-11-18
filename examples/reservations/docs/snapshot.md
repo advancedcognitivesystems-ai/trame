@@ -2,6 +2,16 @@
 
 *The exact state expected on 30 October 2026, without history: the values in force, without the amendments that produced them.*
 
+## Reservations · Access
+
+### Drivers
+
+Audience · `Drivers`
+
+- Owner: karim
+- Carries: person
+- Serves: Cancel without stress
+
 ## Reservations · API
 
 ### End of free cancellation
@@ -31,6 +41,7 @@ Entry point · `CancelReservation` · **held**
 - Parameters: { reservations: architecture.ReservationReading, cancellations: architecture.Cancellations, payment: architecture.Payment, leadTime: api.LeadTime, refund: (rule), key: architecture.CancellationKey, clock: architecture.Clock, http: std/web.Http, messages: messages.ApiMessages }
 - Serves: Refund on cancellation
 - Part of: Reservations API
+- For: Drivers
 - Depends on: Reservation reading, Cancellation records, Payment provider, Lead time of a cancellation, Refund on cancellation, Key of a cancellation's refund, Clock, Messages of the API
 
 ### Read a reservation
@@ -42,6 +53,7 @@ Entry point · `ReadReservation` · **held**
 - Parameters: { reservations: architecture.ReservationReading, freeCancellationEnd: api.FreeCancellationEnd, http: std/web.Http, messages: messages.ApiMessages }
 - Serves: Cancel without stress
 - Part of: Reservations API
+- For: Drivers
 - Depends on: Reservation reading, End of free cancellation, Messages of the API
 
 ## Reservations · Architecture
@@ -270,9 +282,11 @@ Vocabulary · `ReservationStatuses`
 Entity · `KeptRefund` · **held**
 
 - Owner: karim
-- Fields: { reservation: { type: reference, entity: data.KeptReservation }, amount: { type: number, quantity: cancellation.SwissFrancs }, reference: { type: text }, at: { type: optional, of: { type: text } } }
+- Fields: { reservation: { type: reference, entity: data.KeptReservation }, amount: { type: number, quantity: cancellation.SwissFrancs }, reference: { type: text }, at: { type: optional, of: { type: text } }, driver: { type: text } }
 - Key: reservation
 - Kept as: refunds
+- Changes decided: { defaults: { driver: unknown } }
+- Owned by: { person: driver }
 - Serves: Cancel without stress
 - Depends on: A reservation, Swiss francs
 
@@ -281,10 +295,12 @@ Entity · `KeptRefund` · **held**
 Entity · `KeptReservation` · **held**
 
 - Owner: karim
-- Fields: { id: { type: text }, charger: { type: word, vocabulary: data.Chargers }, price: { type: number, quantity: cancellation.SwissFrancs }, start: { type: text }, status: { type: word, vocabulary: data.ReservationStatuses } }
+- Fields: { id: { type: text }, charger: { type: word, vocabulary: data.Chargers }, price: { type: number, quantity: cancellation.SwissFrancs }, start: { type: text }, status: { type: word, vocabulary: data.ReservationStatuses }, driver: { type: text } }
 - Key: id
 - Kept as: reservations
-- Starts with: { id: R1, charger: normal, price: 20, start: 2026-10-20T12:00:00.000Z, status: active }, { id: R2, charger: fast, price: 30, start: 2026-10-20T10:04:00.000Z, status: active }, { id: R3, charger: ultra, price: 40, start: 2026-10-20T11:00:00.000Z, status: active }
+- Changes decided: { defaults: { driver: unknown } }
+- Starts with: { id: R1, charger: normal, price: 20, start: 2026-10-20T12:00:00.000Z, status: active, driver: alice }, { id: R2, charger: fast, price: 30, start: 2026-10-20T10:04:00.000Z, status: active, driver: bob }, { id: R3, charger: ultra, price: 40, start: 2026-10-20T11:00:00.000Z, status: active, driver: alice }
+- Owned by: { person: driver }
 - Serves: Cancel without stress
 - Depends on: Chargers, Swiss francs, Statuses of a reservation
 
@@ -780,6 +796,14 @@ Shipment · `Release` · **unknown**
 - Programs assembled for: Production
 - Follows the policy: The way of a release
 
+### Who calls, identified
+
+Obligation · `CallersIdentified`
+
+- Owner: karim
+- A gap weighs: warning
+- Serves: Cancel without stress
+
 ### The code is verified
 
 Obligation · `CodeVerified`
@@ -843,7 +867,7 @@ Policy · `MachineMode`
 Policy · `ReleaseMode`
 
 - Owner: karim
-- Its obligations: The code is verified, The requirements of the goal hold, The decisions hold, Every check is signed, The rules hold, The packages are safe, What the service keeps, migrated
+- Its obligations: The code is verified, The requirements of the goal hold, The decisions hold, Every check is signed, The rules hold, The packages are safe, What the service keeps, migrated, Who calls, identified
 
 ## Reservations · Standards
 

@@ -2,7 +2,7 @@
 
 *What the declarations that are not published yet add to the published graph (`trame.lock`), as of 30 October 2026.*
 
-> **97 new declarations · 0 published declarations affected · 1 overlap · 0 blocking holes added**
+> **99 new declarations · 0 published declarations affected · 1 overlap · 0 blocking holes added**
 
 ## What the branch redefines
 
@@ -25,6 +25,7 @@
 
 | Severity | What | Where | Owner | Consequence |
 |---|---|---|---|---|
+| warning | Nothing identifies it yet (C7): whoever reaches its 2 entry points calls as one of it | [Drivers](access.md#Drivers) | karim |  |
 | warning | Not built yet: trame ship builds it | [The program for a laptop](sdlc.md#LocalProgram) | karim |  |
 | warning | To check by hand and sign: Run the program for a laptop, cancel a reservation, stop it and run it again: the cancellation is still there | [On a laptop](sdlc.md#OnALaptop) | The operators |  |
 | warning | To check by hand and sign: Deploy the program on the staging machine, with its PostgreSQL database and the payment provider's sandbox: its tables are created empty, Insert a reservation, read it, then cancel it twice: one refund at the provider, and the second cancellation answers the same, Restart the program: the cancellation is still there, and the time it shows is the machine's | [On staging](sdlc.md#OnStaging) | The operators |  |
@@ -35,16 +36,18 @@
 | warning | To ship: Secrets stay out of the graph is unknown | [A release](sdlc.md#Release) | karim |  |
 | warning | To ship: On a laptop is unknown | [A release](sdlc.md#Release) | karim |  |
 | warning | To ship: On staging is unknown | [A release](sdlc.md#Release) | karim |  |
+| warning | Drivers ships, and nothing proves it (Who calls, identified) | [Drivers](access.md#Drivers) | karim |  |
 | warning | Awaits the approval of lea, who answers for “Free cancellation period” | [Ultra period requested by support](support.md#SupportUltraPeriod) | lea |  |
 
 ## New declarations
 
 | Declaration | Kind | Owner | Source |
 |---|---|---|---|
-| [Cancel a reservation](api.md#CancelReservation) | Entry point | karim | `src/api.ts:53` |
-| [End of free cancellation](api.md#FreeCancellationEnd) | Function | lea | `src/api.ts:16` |
-| [Lead time of a cancellation](api.md#LeadTime) | Function | karim | `src/api.ts:29` |
-| [Read a reservation](api.md#ReadReservation) | Entry point | karim | `src/api.ts:39` |
+| [Drivers](access.md#Drivers) | Audience | karim | `src/access.ts:15` |
+| [Cancel a reservation](api.md#CancelReservation) | Entry point | karim | `src/api.ts:55` |
+| [End of free cancellation](api.md#FreeCancellationEnd) | Function | lea | `src/api.ts:17` |
+| [Lead time of a cancellation](api.md#LeadTime) | Function | karim | `src/api.ts:30` |
+| [Read a reservation](api.md#ReadReservation) | Entry point | karim | `src/api.ts:40` |
 | [Key of a cancellation's refund](architecture.md#CancellationKey) | Decision | karim | `src/architecture.ts:88` |
 | [Cancellation records](architecture.md#Cancellations) | Port | karim | `src/architecture.ts:52` |
 | [Clock](architecture.md#Clock) | Port | karim | `src/architecture.ts:70` |
@@ -67,8 +70,8 @@
 | [Criteria of a full refund a day ahead](consumer.md#FullRefundAheadCriteria) | Acceptance criteria | karim | `src/consumer.ts:39` |
 | [Notice for a full refund](consumer.md#FullRefundNotice) | Decision | karim | `src/consumer.ts:14` |
 | [Chargers](data.md#Chargers) | Vocabulary | karim | `src/data.ts:15` |
-| [The refund of a cancelled reservation](data.md#KeptRefund) | Entity | karim | `src/data.ts:55` |
-| [A reservation](data.md#KeptReservation) | Entity | karim | `src/data.ts:35` |
+| [The refund of a cancelled reservation](data.md#KeptRefund) | Entity | karim | `src/data.ts:59` |
+| [A reservation](data.md#KeptReservation) | Entity | karim | `src/data.ts:36` |
 | [Statuses of a reservation](data.md#ReservationStatuses) | Vocabulary | karim | `src/data.ts:24` |
 | [Backup retention](infra.md#BackupRetention) | Decision | karim | `src/infra.ts:69` |
 | [Cancellations as records](infra.md#CancellationRecords) | Function | karim | `src/infra.ts:135` |
@@ -116,25 +119,26 @@
 | [Cancelling twice refunds only once](scenarios.md#RepeatedCancellationScenario) | Scenario | karim | `src/scenarios.ts:51` |
 | [The storage is prepared](scenarios.md#StoragePrepared) | Scenario | karim | `src/scenarios.ts:116` |
 | [Unknown reservation](scenarios.md#UnknownReservation) | Decision | karim | `src/scenarios.ts:24` |
-| [The code is verified](sdlc.md#CodeVerified) | Obligation | karim | `src/sdlc.ts:125` |
-| [Commands on this machine](sdlc.md#CommandsOnThisMachine) | Technical choice | karim | `src/sdlc.ts:66` |
-| [The decisions hold](sdlc.md#DecisionsApplied) | Obligation | karim | `src/sdlc.ts:137` |
-| [Every check is signed](sdlc.md#EveryCheck) | Obligation | karim | `src/sdlc.ts:142` |
-| [The requirements of the goal hold](sdlc.md#GoalServed) | Obligation | karim | `src/sdlc.ts:132` |
-| [What the service keeps, migrated](sdlc.md#KeptMigrates) | Obligation | karim | `src/sdlc.ts:159` |
-| [The program for a laptop](sdlc.md#LocalProgram) | Artefact | karim | `src/sdlc.ts:49` |
-| [The way of this machine](sdlc.md#MachineMode) | Policy | karim | `src/sdlc.ts:170` |
-| [On a laptop](sdlc.md#OnALaptop) | Check | karim | `src/sdlc.ts:113` |
-| [On staging](sdlc.md#OnStaging) | Check | karim | `src/sdlc.ts:97` |
-| [On this machine](sdlc.md#OnThisMachine) | Shipment | karim | `src/sdlc.ts:183` |
-| [The operators](sdlc.md#Operators) | Role | karim | `src/sdlc.ts:37` |
-| [The packages are safe](sdlc.md#PackagesSafe) | Obligation | karim | `src/sdlc.ts:152` |
-| [Prepare the storage](sdlc.md#PrepareStorage) | Entry point | karim | `src/sdlc.ts:79` |
-| [The program for production](sdlc.md#ProductionProgram) | Artefact | karim | `src/sdlc.ts:43` |
-| [A release](sdlc.md#Release) | Shipment | karim | `src/sdlc.ts:176` |
-| [The way of a release](sdlc.md#ReleaseMode) | Policy | karim | `src/sdlc.ts:164` |
-| [The service's SDLC](sdlc.md#ReservationsSdlc) | Component | karim | `src/sdlc.ts:55` |
-| [The rules hold](sdlc.md#RulesHeld) | Obligation | karim | `src/sdlc.ts:147` |
+| [Who calls, identified](sdlc.md#CallersIdentified) | Obligation | karim | `src/sdlc.ts:169` |
+| [The code is verified](sdlc.md#CodeVerified) | Obligation | karim | `src/sdlc.ts:127` |
+| [Commands on this machine](sdlc.md#CommandsOnThisMachine) | Technical choice | karim | `src/sdlc.ts:67` |
+| [The decisions hold](sdlc.md#DecisionsApplied) | Obligation | karim | `src/sdlc.ts:139` |
+| [Every check is signed](sdlc.md#EveryCheck) | Obligation | karim | `src/sdlc.ts:144` |
+| [The requirements of the goal hold](sdlc.md#GoalServed) | Obligation | karim | `src/sdlc.ts:134` |
+| [What the service keeps, migrated](sdlc.md#KeptMigrates) | Obligation | karim | `src/sdlc.ts:161` |
+| [The program for a laptop](sdlc.md#LocalProgram) | Artefact | karim | `src/sdlc.ts:50` |
+| [The way of this machine](sdlc.md#MachineMode) | Policy | karim | `src/sdlc.ts:183` |
+| [On a laptop](sdlc.md#OnALaptop) | Check | karim | `src/sdlc.ts:115` |
+| [On staging](sdlc.md#OnStaging) | Check | karim | `src/sdlc.ts:99` |
+| [On this machine](sdlc.md#OnThisMachine) | Shipment | karim | `src/sdlc.ts:196` |
+| [The operators](sdlc.md#Operators) | Role | karim | `src/sdlc.ts:38` |
+| [The packages are safe](sdlc.md#PackagesSafe) | Obligation | karim | `src/sdlc.ts:154` |
+| [Prepare the storage](sdlc.md#PrepareStorage) | Entry point | karim | `src/sdlc.ts:80` |
+| [The program for production](sdlc.md#ProductionProgram) | Artefact | karim | `src/sdlc.ts:44` |
+| [A release](sdlc.md#Release) | Shipment | karim | `src/sdlc.ts:189` |
+| [The way of a release](sdlc.md#ReleaseMode) | Policy | karim | `src/sdlc.ts:174` |
+| [The service's SDLC](sdlc.md#ReservationsSdlc) | Component | karim | `src/sdlc.ts:56` |
+| [The rules hold](sdlc.md#RulesHeld) | Obligation | karim | `src/sdlc.ts:149` |
 | [API of the payment provider](standards.md#PaymentProviderApi) | Standard | karim | `src/standards.ts:22` |
 | [Paths of entry points](standards.md#RouteSyntax) | Standard | karim | `src/standards.ts:9` |
 | [Ultra period requested by support](support.md#SupportUltraPeriod) | Amendment | karim | `src/support.ts:11` |

@@ -24,6 +24,7 @@ import { ShowSettings, PersonBreath, SettingsViewOf, SettingsNames } from "./set
 import { BrowserStage } from "./stage"
 import { BrowserBowl } from "./sound"
 import { ShowComposer, HoldingDefaults, ComposerNames, ComposerViewOf } from "./composing"
+import { Anyone } from "#std/access"
 
 // The home page: the app's name, the languages to choose from, the poses and the sun salutation, step by step, in the
 // language the app speaks, and the way to compose a practice of poses held. It is what trame deliver writes.
@@ -51,6 +52,7 @@ export const HomeViewOf = fn({
 export const ShowHome = entryPoint({
   owner: "ghalaax",
   in: PoseliaApp,
+  for: Anyone,
   serves: [PractiseGuided],
   trigger: load(),
   deps: {

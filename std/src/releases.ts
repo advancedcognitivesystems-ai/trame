@@ -239,3 +239,16 @@ export const R0_17_0 = release({
   language: "shared",
   serves: [CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
 })
+
+/**
+ * Version 0.18.0
+ */
+export const R0_18_0 = release({
+  owner: "trame",
+  version: "0.18.0",
+  date: "2026-11-18",
+  what: "access: the audiences Anyone, TheSystem and TheOperators; the family Identified",
+  fingerprint: "7e9e89a93567af15",
+  language: "shared",
+  serves: [CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
+})

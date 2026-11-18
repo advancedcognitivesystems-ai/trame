@@ -586,6 +586,30 @@ const body = () => ({
   // The SDLC: roles, artefacts, checks, reviews, shipments.
   roleRole: () => "Role",
   roleRoles: () => "Roles",
+
+  audienceAudience: () => "Audience",
+  audienceAudiences: () => "Audiences",
+  audienceCarries: () => "Carries",
+  audienceSystem: () => "Nobody calls",
+  audienceEveryOwner: () => "Reaches every owner's records",
+  audiencePerson: () => "a person",
+  audienceTenant: () => "a tenant",
+  audienceNobody: () => "nobody: a schedule, a message",
+  audienceNothing: () => "no identity",
+  audienceFor: () => "For",
+  audienceCalls: () => "May call",
+  audienceNotIdentified: (entries: number) =>
+    `Nothing identifies it yet (C7): whoever reaches its ${plural(entries, { one: "entry point", other: "entry points" })} calls as one of it`,
+  audienceCarriesUnknown: (word: string) => `Carries ${word}, which is no identity a caller may carry (a person, a tenant)`,
+  entryPointFromNetwork: () => "a network: whoever is on it",
+  entryPointFromMachine: () => "a machine: whoever has a terminal there",
+  entryPointFromDevice: () => "a device: whoever holds it",
+  entryPointFromNobody: () => "nowhere: nobody calls it",
+  entryPointWithoutAudience: () => "Says nobody it is for: name its audience (for: Anyone, an audience of the product)",
+  entryPointSystemCalled: (audience: string, trigger: string) =>
+    `Is for “${audience}”, which nobody calls, but is triggered by ${trigger}, which someone calls: name the audience that calls it`,
+  entryPointOwnedUnreached: (audience: string, data: string, identities: string, environments: string) =>
+    `Reaches “${data}” (in ${environments}), whose records belong to ${identities}: its audience “${audience}” carries none to scope them by`,
   rolePeople: () => "People",
   roleNotAuthor: () => "Never on their own work",
   roleSignature: () => "Signature",

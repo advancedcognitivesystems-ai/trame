@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 12 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 18 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Data · Documents
 
@@ -87,9 +87,9 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 105
+- Version: 106
 - How it joins the graph: language
-- Its path: ../../generations/g105
+- Its path: ../../generations/g106
 - Serves: Data described once
 
 ### std
@@ -98,9 +98,9 @@ Package · `stdLibrary`
 
 - Owner: trame
 - Name: std
-- Version: 0.17.0
+- Version: 0.18.0
 - How it joins the graph: library
-- Its path: ../../std/releases/0.17.0
+- Its path: ../../std/releases/0.18.0
 - Serves: Data described once
 
 ## Data · Principles
@@ -255,6 +255,30 @@ Release · `R0_2_0`
 - Language: shared
 - Serves: Data described once
 
+### Version 0.3.0
+
+Release · `R0_3_0`
+
+- Released by: trame
+- Version: 0.3.0
+- Released on: 2026-11-12
+- What changes: an entity's seed: the records a new table starts with, where a binding seeds it (SeedOfTheEntity), said to its owner when it changes after a deployment
+- Fingerprint: 44f729a295c3c9df
+- Language: shared
+- Serves: Data described once
+
+### Version 0.4.0
+
+Release · `R0_4_0`
+
+- Released by: trame
+- Version: 0.4.0
+- Released on: 2026-11-18
+- What changes: an entity says whose its records are (ownedBy: a person, a tenant), which the entry points that reach them answer for
+- Fingerprint: d39bb7725d8ecba3
+- Language: shared
+- Serves: Data described once
+
 ## Data · Scenarios
 
 ### What the library's scenarios are given
@@ -373,7 +397,7 @@ Scenario · `RecordsSeeded` · **held**
 
 ### The library of data
 
-Artefact · `TheLibrary` · **unknown**
+Artefact · `TheLibrary` · **held**
 
 - Owner: trame
 - Path: src
@@ -381,7 +405,7 @@ Artefact · `TheLibrary` · **unknown**
 
 ### The next version
 
-Shipment · `NextVersion` · **unknown**
+Shipment · `NextVersion` · **held**
 
 - Owner: trame
 - Target: version

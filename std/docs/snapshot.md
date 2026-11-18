@@ -1,6 +1,42 @@
 # Snapshot
 
-*The exact state expected on 10 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 18 November 2026, without history: the values in force, without the amendments that produced them.*
+
+## Standard library · Access
+
+### An entry point says who may call it
+
+Architecture decision · `SaysItsAudience` · **held**
+
+- Decided by: trame
+- Context: Who may call an entry point decides whose records it may touch. Left unsaid, an entry point is open to whoever reaches it, and nothing tells a reader or a review that it is.
+- Consequences: Every entry point names its audience (an error otherwise); an audience nobody calls is for no trigger a person calls; an entry point that reaches records owned by a person or a tenant has an audience that carries one, or that reaches every owner's. A shipment whose policy applies Identified proves that each audience carrying an identity is identified where it runs (C7).
+- Rejected: Anyone by default, whatever is forgotten would be open, the classic hole; A role, as the SDLC's, a role names the people who sign evidence; an audience is a kind of caller, its members known only at run time; A word of a vocabulary, a word cannot say what its callers carry, nor be read against what an entry point reaches
+- Serves: Rules applied, not written again
+- Applied by: Who calls a shipment's programs is identified
+
+### Anyone
+
+Audience · `Anyone`
+
+- Owner: trame
+- Serves: Rules applied, not written again
+
+### The operators
+
+Audience · `TheOperators`
+
+- Owner: trame
+- Reaches every owner's records: true
+- Serves: Rules applied, not written again
+
+### The system
+
+Audience · `TheSystem`
+
+- Owner: trame
+- Nobody calls: true
+- Serves: Rules applied, not written again
 
 ## Standard library · Algebra
 
@@ -307,6 +343,13 @@ Requirement · `Checked` · **held**
 - Refines: Rules applied, not written again
 - Depends on: Counts
 
+### Who calls a shipment's programs is identified
+
+Requirement · `Identified` · **held**
+
+- Owner: trame
+- Refines: Rules applied, not written again
+
 ### The artefacts a shipment ships were shipped first by those that precede it
 
 Requirement · `Preceded` · **held**
@@ -375,6 +418,13 @@ Acceptance criteria · `CheckedCriteria` · **held**
 - Owner: trame
 - Accepts: The artefacts a shipment ships are checked
 
+### Criteria of who calls
+
+Acceptance criteria · `IdentifiedCriteria` · **held**
+
+- Owner: trame
+- Accepts: Who calls a shipment's programs is identified
+
 ### Criteria of the stages
 
 Acceptance criteria · `PrecededCriteria` · **held**
@@ -425,10 +475,10 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 105
+- Version: 106
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../generations/g105
+- Its path: ../generations/g106
 - Serves: Ports of the platform, realized once
 
 ## Standard library · Design patterns
@@ -807,6 +857,18 @@ Release · `R0_17_0`
 - Language: shared
 - Serves: A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again, Versions that hold
 
+### Version 0.18.0
+
+Release · `R0_18_0`
+
+- Released by: trame
+- Version: 0.18.0
+- Released on: 2026-11-18
+- What changes: access: the audiences Anyone, TheSystem and TheOperators; the family Identified
+- Fingerprint: 7e9e89a93567af15
+- Language: shared
+- Serves: A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again, Versions that hold
+
 ### Version 0.2.0
 
 Release · `R0_2_0`
@@ -1091,6 +1153,15 @@ Shipment · `NextVersion` · **held**
 - Ships: The standard library
 - Follows the policy: How a version is made
 
+### Its callers identified
+
+Obligation · `CallersIdentified`
+
+- Owner: trame
+- A gap weighs: error
+- Applies the family: Who calls a shipment's programs is identified
+- Serves: Versions that hold
+
 ### Its decisions applied
 
 Obligation · `DecisionsApplied`
@@ -1137,7 +1208,7 @@ Obligation · `RulesHeld`
 Policy · `VersionMode`
 
 - Owner: trame
-- Its obligations: Its functions verified, Its requirements held, Its decisions applied, Its rules held, Its packages safe
+- Its obligations: Its functions verified, Its requirements held, Its decisions applied, Its rules held, Its packages safe, Its callers identified
 
 ## Standard library · System
 

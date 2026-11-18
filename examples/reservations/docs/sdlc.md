@@ -25,7 +25,7 @@
 
 ### The service's SDLC
 
-`ReservationsSdlc` · `src/sdlc.ts:55`
+`ReservationsSdlc` · `src/sdlc.ts:56`
 
 The programs that deploy the service, run by trame ship (or by a person): the first word names the command.
 
@@ -44,7 +44,7 @@ The programs that deploy the service, run by trame ship (or by a person): the fi
 
 ### Prepare the storage
 
-`PrepareStorage` · `src/sdlc.ts:79` · status: **held**
+`PrepareStorage` · `src/sdlc.ts:80` · status: **held**
 
 Makes the table of each entity the service keeps ready, before the service starts: created with what it starts with, or migrated from the version the previous deployment kept.
 
@@ -56,6 +56,7 @@ Triggered by `command prepare-storage`
 - Effects: write
 - Serves: [Cancel without stress](cancellation.md#CancelWithoutStress)
 - Part of: [The service's SDLC](#ReservationsSdlc)
+- For: [The operators](../../../std/docs/access.md#TheOperators)
 - Verified by: [The storage is prepared](scenarios.md#StoragePrepared)
 - Used by: [The storage is prepared](scenarios.md#StoragePrepared)
 - Deploys: [On this machine](#OnThisMachine)
@@ -66,7 +67,7 @@ Triggered by `command prepare-storage`
 
 ### Commands on this machine
 
-`CommandsOnThisMachine` · `src/sdlc.ts:66` · status: **unknown**
+`CommandsOnThisMachine` · `src/sdlc.ts:67` · status: **unknown**
 
 The programs of the SDLC read their commands from Node's command line, as the standard library realizes it.
 
@@ -89,7 +90,7 @@ Context: trame ship runs the programs that deploy as a person would run them, wi
 
 ### The operators
 
-`Operators` · `src/sdlc.ts:37`
+`Operators` · `src/sdlc.ts:38`
 
 Who runs the service, and checks by hand what only a machine shows.
 
@@ -104,7 +105,7 @@ Who runs the service, and checks by hand what only a machine shows.
 
 ### The program for a laptop
 
-`LocalProgram` · `src/sdlc.ts:49` · status: **unknown**
+`LocalProgram` · `src/sdlc.ts:50` · status: **unknown**
 
 The service assembled for a developer's machine, its database in a file.
 
@@ -120,7 +121,7 @@ The service assembled for a developer's machine, its database in a file.
 
 ### The program for production
 
-`ProductionProgram` · `src/sdlc.ts:43` · status: **unknown**
+`ProductionProgram` · `src/sdlc.ts:44` · status: **unknown**
 
 The service assembled for production: what a release ships.
 
@@ -137,7 +138,7 @@ The service assembled for production: what a release ships.
 
 ### On a laptop
 
-`OnALaptop` · `src/sdlc.ts:113` · status: **unknown**
+`OnALaptop` · `src/sdlc.ts:115` · status: **unknown**
 
 The program for a laptop, run with its database in a file.
 
@@ -152,7 +153,7 @@ The program for a laptop, run with its database in a file.
 
 ### On staging
 
-`OnStaging` · `src/sdlc.ts:97` · status: **unknown**
+`OnStaging` · `src/sdlc.ts:99` · status: **unknown**
 
 The program for production, run on the staging machine with its database and the provider's sandbox: what no scenario in memory can show.
 
@@ -171,7 +172,7 @@ The program for production, run on the staging machine with its database and the
 
 ### On this machine
 
-`OnThisMachine` · `src/sdlc.ts:183` · status: **unknown**
+`OnThisMachine` · `src/sdlc.ts:196` · status: **unknown**
 
 The service on a developer's machine, the way of this machine: the program for a laptop built, and its database made ready, migrated from what the previous deployment kept.
 
@@ -206,7 +207,7 @@ Not shipped yet.
 
 ### A release
 
-`Release` · `src/sdlc.ts:176` · status: **unknown**
+`Release` · `src/sdlc.ts:189` · status: **unknown**
 
 The service for its users, the way of a release: the program for production, and the one developers run.
 
@@ -246,11 +247,26 @@ Not shipped yet.
 
 ## Obligations
 
+<a id="CallersIdentified"></a>
+
+### Who calls, identified
+
+`CallersIdentified` · `src/sdlc.ts:169`
+
+Each audience the service's entry points are for that carries an identity (drivers) is identified where a release runs it: otherwise whoever reaches the service would call as any driver. A gap is said, not yet refused: nothing can identify anyone before C7.
+
+A gap it finds is a warning.
+
+- Owner: karim
+- Applies the family: [Who calls a shipment's programs is identified](../../../std/docs/obligations.md#Identified)
+- Serves: [Cancel without stress](cancellation.md#CancelWithoutStress)
+- In the policies: [The way of a release](#ReleaseMode)
+
 <a id="CodeVerified"></a>
 
 ### The code is verified
 
-`CodeVerified` · `src/sdlc.ts:125`
+`CodeVerified` · `src/sdlc.ts:127`
 
 Every scenario that verifies code the program reaches; an entry point or a function nothing verifies is said.
 
@@ -273,7 +289,7 @@ A gap it finds is a warning.
 
 ### The decisions hold
 
-`DecisionsApplied` · `src/sdlc.ts:137`
+`DecisionsApplied` · `src/sdlc.ts:139`
 
 - Owner: karim
 - Applies the family: [The decisions a shipment applies hold](../../../std/docs/obligations.md#Applied)
@@ -284,7 +300,7 @@ A gap it finds is a warning.
 
 ### Every check is signed
 
-`EveryCheck` · `src/sdlc.ts:142`
+`EveryCheck` · `src/sdlc.ts:144`
 
 <details><summary>Its parameters</summary>
 
@@ -303,7 +319,7 @@ A gap it finds is a warning.
 
 ### The requirements of the goal hold
 
-`GoalServed` · `src/sdlc.ts:132`
+`GoalServed` · `src/sdlc.ts:134`
 
 - Owner: karim
 - Applies the family: [The product a shipment serves holds](../../../std/docs/obligations.md#Served)
@@ -314,7 +330,7 @@ A gap it finds is a warning.
 
 ### What the service keeps, migrated
 
-`KeptMigrates` · `src/sdlc.ts:159`
+`KeptMigrates` · `src/sdlc.ts:161`
 
 The reservations and the refunds migrate from every version a deployment kept: a step their owner has not decided keeps the shipment, since what drivers reserved and were refunded would be lost.
 
@@ -329,7 +345,7 @@ A gap it finds is an error of the graph.
 
 ### The packages are safe
 
-`PackagesSafe` · `src/sdlc.ts:152`
+`PackagesSafe` · `src/sdlc.ts:154`
 
 - Owner: karim
 - Applies the family: [The packages a shipment uses are safe](../../../std/docs/obligations.md#Safe)
@@ -340,7 +356,7 @@ A gap it finds is an error of the graph.
 
 ### The rules hold
 
-`RulesHeld` · `src/sdlc.ts:147`
+`RulesHeld` · `src/sdlc.ts:149`
 
 - Owner: karim
 - Applies the family: [The project's rules hold](../../../std/docs/obligations.md#Ruled)
@@ -353,7 +369,7 @@ A gap it finds is an error of the graph.
 
 ### The way of this machine
 
-`MachineMode` · `src/sdlc.ts:170`
+`MachineMode` · `src/sdlc.ts:183`
 
 For a developer: the code verified (a gap said), the rules held, what the service keeps migrated.
 
@@ -367,10 +383,10 @@ And, as every policy, the foundations: no literal in a body, and a sound graph (
 
 ### The way of a release
 
-`ReleaseMode` · `src/sdlc.ts:164`
+`ReleaseMode` · `src/sdlc.ts:174`
 
 And, as every policy, the foundations: no literal in a body, and a sound graph (nothing undecided, no error of the graph).
 
 - Owner: karim
-- Its obligations: [The code is verified](#CodeVerified), [The requirements of the goal hold](#GoalServed), [The decisions hold](#DecisionsApplied), [Every check is signed](#EveryCheck), [The rules hold](#RulesHeld), [The packages are safe](#PackagesSafe), [What the service keeps, migrated](#KeptMigrates)
+- Its obligations: [The code is verified](#CodeVerified), [The requirements of the goal hold](#GoalServed), [The decisions hold](#DecisionsApplied), [Every check is signed](#EveryCheck), [The rules hold](#RulesHeld), [The packages are safe](#PackagesSafe), [What the service keeps, migrated](#KeptMigrates), [Who calls, identified](#CallersIdentified)
 - Followed by: [A release](#Release)

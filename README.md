@@ -294,7 +294,26 @@ with is the entity's `seed`, where a binding chooses `SeedOfTheEntity` (a scenar
 `StartEmpty` elsewhere); a deployment keeps its fingerprint, and a seed changed since the last deployment is said to its
 owner, since a table made before keeps the records it started with (data 0.3.0). The reservations
 example keeps its reservations and refunds so, with no SQL of its own: its shipment `OnThisMachine` builds the program
-for a laptop and runs `prepare-storage` on its database in a file, which a version that adds a field migrates.
+for a laptop and runs `prepare-storage` on its database in a file, which a version that adds a field migrates. An
+entity that keeps what belongs to someone says by which field (`ownedBy: { person: "driver" }`, or a `tenant`; data
+0.4.0): the example's reservations and refunds are each a driver's, those kept before drivers were said belonging to
+nobody known (a default, migrated).
+
+**Who calls** (C6, g107, ADR "An entry point says who may call it"). Every entry point names the audience it is for
+(`for:`, kind `audience`); one that names none is an error: anonymous is a choice, never a default. The audience is
+declared; where it may be called from is derived from its trigger (an HTTP route from the network, a command from the
+machine, a page from the device, a schedule or a message from nobody: the platform calls it). std's `#std/access`
+gives three: `Anyone` (whoever reaches it, nobody known), `TheSystem` (the platform itself, only on a schedule or a
+message: a person's call for it is an error) and `TheOperators` (the project's people through the SDLC, who reach every
+owner's records, as a role that bypasses PostgreSQL's row-level security). A product declares its own, saying the
+identity each caller carries (`audience({ carries: [Identity.person] })`). An entry point that reaches, in one of its
+environments, an entity owned by a person or a tenant is for an audience carrying that identity, or an error names the
+entity and the environment. Nothing identifies an audience yet: its owner is warned, and the family `Identified` makes
+it a gap of a shipment (the example's drivers, said and not refused; std's and Trame's policies would refuse one).
+`docs/callers.md` lists each entry point, its audience, where it is called from and the owned records it reaches. The
+next step (C7, after C4) is a library of access: how a caller is identified (accounts, or a remote provider the graph
+has only the client of), RBAC, ReBAC and ABAC as composable strategies, and the scope each body receives, by which the
+records of an owned entity are read: the graph will check every path hands it on.
 
 Poselia's graph is written by layers: its product (goals; the requirements "The breath of a moment", "A hold counts
 in breaths" and "The language of the app", each with acceptance criteria; an assumption), its principles (five ADRs),
@@ -1267,15 +1286,11 @@ declarations with), the types of Node below 23 (they follow the Node.js that run
   proposal.
 - **Data**: a driver for PostgreSQL (the example's production database is described, provisioned by Terraform, not
   connected); a content update downloaded by the app, checked by the same rules.
-- **Access** (decided on 12 November, the design not frozen): every entry point says its public, and saying none is an
-  error; anonymous is a choice, never a default. The base publics (anyone on the network, the person at the device or
-  the machine, the system) carry no identity, which makes them detectable: an entry point whose body reads who calls it,
-  or that reaches data an entity says belongs to someone (a person, a tenant), is an error. Identity and tenancy then
-  travel from the entry point to every resource it reaches, data first: the records of an owned entity are read within
-  the caller's scope, and the graph checks every path hands it on. Then, after C4, a library of access: identities
-  (accounts, or a remote provider of which the graph has only the client), RBAC, ReBAC and ABAC as composable
-  strategies, the check written by the graph into the program before the body, and the platform services the people of
-  the project steer.
+- **Access**: the foundations are in place (C6, g107: each entry point says its audience, the identity owned data asks
+  is checked in the graph). Then, after C4, a library of access (C7): identities (accounts, or a remote provider of
+  which the graph has only the client), RBAC, ReBAC and ABAC as composable strategies, the scope each body receives
+  (as row-level security), the check written by the graph into the program before the body, and the platform services
+  the people of the project steer.
 - **Publication**: Trame's own graph has no `trame.lock` yet; tying `trame publish` to the merge into the main branch.
 - **The SDLC**: a shipment of a library version (its release, then a warning in the projects that import an older one; proposed); a
   signature with a key, read from outside the graph (the seal is an attribution); a status that reads itself said as an

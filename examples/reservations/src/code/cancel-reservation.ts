@@ -9,7 +9,7 @@ const body: BodyOf<typeof CancelReservation> = ({ reservations, cancellations, p
   if (existing) return { status: http.ok, body: existing }
   const amount = refund(r, leadTime(r))
   const { reference } = await payment.refund(key + r.id, amount)
-  const record = { reservation: r.id, amount, reference, at: clock.now().toISOString() }
+  const record = { reservation: r.id, amount, reference, at: clock.now().toISOString(), driver: r.driver }
   await cancellations.record(record)
   return { status: http.ok, body: record }
 }

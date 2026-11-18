@@ -10,7 +10,7 @@
 
 ### End of free cancellation
 
-`FreeCancellationEnd` · `src/api.ts:16` · status: **held**
+`FreeCancellationEnd` · `src/api.ts:17` · status: **held**
 
 The moment until which a reservation can be cancelled at no cost.
 
@@ -27,7 +27,7 @@ Must stay synchronous.
 
 ### Lead time of a cancellation
 
-`LeadTime` · `src/api.ts:29` · status: **held**
+`LeadTime` · `src/api.ts:30` · status: **held**
 
 How long before the start of the slot the reservation is cancelled, in seconds.
 
@@ -44,7 +44,7 @@ How long before the start of the slot the reservation is cancelled, in seconds.
 
 ### Cancel a reservation
 
-`CancelReservation` · `src/api.ts:53` · status: **held**
+`CancelReservation` · `src/api.ts:55` · status: **held**
 
 Refunds according to the rule, only once, even if the request arrives twice; the refund is recorded with the instant it is.
 
@@ -56,6 +56,7 @@ Triggered by `POST /reservations/:id/cancellation`
 - Effects: asynchronous, network, read, third-party, time, write
 - Serves: [Refund on cancellation](cancellation.md#Refund)
 - Part of: [Reservations API](architecture.md#ReservationsApi)
+- For: [Drivers](access.md#Drivers)
 - Applies: [A cancellation refunds once](principles.md#RefundOnce)
 - Verified by: [Every reservation is refunded according to the rule](scenarios.md#ComplianceScenario), [Cancelling twice refunds only once](scenarios.md#RepeatedCancellationScenario)
 - Used by: [Every reservation is refunded according to the rule](scenarios.md#ComplianceScenario), [Cancelling twice refunds only once](scenarios.md#RepeatedCancellationScenario)
@@ -64,7 +65,7 @@ Triggered by `POST /reservations/:id/cancellation`
 
 ### Read a reservation
 
-`ReadReservation` · `src/api.ts:39` · status: **held**
+`ReadReservation` · `src/api.ts:40` · status: **held**
 
 The reservation, and the moment until which it can be cancelled for free.
 
@@ -76,5 +77,6 @@ Triggered by `GET /reservations/:id`
 - Effects: asynchronous, read
 - Serves: [Cancel without stress](cancellation.md#CancelWithoutStress)
 - Part of: [Reservations API](architecture.md#ReservationsApi)
+- For: [Drivers](access.md#Drivers)
 - Verified by: [Read a reservation](scenarios.md#ReadScenario)
 - Used by: [Read a reservation](scenarios.md#ReadScenario)

@@ -1,12 +1,12 @@
 {
-  "generated": "2026-11-12",
+  "generated": "2026-11-18",
   "nodes": [
     {
       "id": "app.BrowserScreen",
       "kind": "implementation",
       "title": "The browser's screen",
-      "source": "src/app.ts:77",
-      "status": "held",
+      "source": "src/app.ts:79",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "deps": {
@@ -35,7 +35,7 @@
       "id": "app.CarriedContent",
       "kind": "function",
       "title": "The content the app carries",
-      "source": "src/app.ts:105",
+      "source": "src/app.ts:107",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -51,7 +51,7 @@
       "id": "app.Colours",
       "kind": "decision",
       "title": "Colours",
-      "source": "src/app.ts:130",
+      "source": "src/app.ts:132",
       "fields": {
         "owner": "ghalaax",
         "value": {
@@ -75,7 +75,7 @@
       "id": "app.ContentCarried",
       "kind": "binding",
       "title": "Content carried by the app",
-      "source": "src/app.ts:116",
+      "source": "src/app.ts:118",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -90,7 +90,7 @@
       "id": "app.HomeViewOf",
       "kind": "function",
       "title": "The home view",
-      "source": "src/app.ts:35",
+      "source": "src/app.ts:36",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -116,7 +116,7 @@
       "id": "app.InTheBrowser",
       "kind": "binding",
       "title": "The browser's realizations",
-      "source": "src/app.ts:93",
+      "source": "src/app.ts:95",
       "status": "unknown",
       "fields": {
         "owner": "ghalaax",
@@ -128,7 +128,7 @@
       "id": "app.Measures",
       "kind": "decision",
       "title": "Measures",
-      "source": "src/app.ts:140",
+      "source": "src/app.ts:142",
       "fields": {
         "owner": "ghalaax",
         "value": {
@@ -183,7 +183,7 @@
       "id": "app.PageStyle",
       "kind": "stylesheet",
       "title": "Style of the page",
-      "source": "src/app.ts:159",
+      "source": "src/app.ts:161",
       "fields": {
         "owner": "ghalaax",
         "body": {
@@ -197,7 +197,7 @@
       "id": "app.PoseliaPage",
       "kind": "delivery",
       "title": "Poselia's page",
-      "source": "src/app.ts:170",
+      "source": "src/app.ts:172",
       "fields": {
         "owner": "ghalaax",
         "target": "page",
@@ -210,7 +210,7 @@
       "id": "app.ScreenNames",
       "kind": "decision",
       "title": "Names of the screen",
-      "source": "src/app.ts:67",
+      "source": "src/app.ts:69",
       "fields": {
         "owner": "ghalaax",
         "value": {
@@ -231,7 +231,7 @@
       "id": "app.ShowHome",
       "kind": "entry",
       "title": "Show the home page",
-      "source": "src/app.ts:51",
+      "source": "src/app.ts:52",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -4386,10 +4386,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "data",
-        "version": "0.3.0",
+        "version": "0.4.0",
         "joins": "library",
         "from": "path",
-        "at": "../../libs/data/releases/0.3.0"
+        "at": "../../libs/data/releases/0.4.0"
       },
       "diagnostics": []
     },
@@ -4431,10 +4431,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "std",
-        "version": "0.17.0",
+        "version": "0.18.0",
         "joins": "library",
         "from": "path",
-        "at": "../../std/releases/0.17.0"
+        "at": "../../std/releases/0.18.0"
       },
       "diagnostics": []
     },
@@ -4829,7 +4829,7 @@
       "kind": "adr",
       "title": "A page first, the phones after",
       "source": "src/principles.ts:78",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "context": "The app must be tried and shown before it is installed: a page shared as a link is the shortest way to the friends who review it.",
@@ -5547,7 +5547,7 @@
       "id": "sdlc.AdrsServeTheProduct",
       "kind": "rule",
       "title": "Each decision of architecture serves the product",
-      "source": "src/sdlc.ts:442",
+      "source": "src/sdlc.ts:445",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -5568,7 +5568,7 @@
       "id": "sdlc.AfterThePreview",
       "kind": "obligation",
       "title": "After the preview",
-      "source": "src/sdlc.ts:331",
+      "source": "src/sdlc.ts:334",
       "fields": {
         "owner": "ghalaax",
         "params": {
@@ -5584,7 +5584,7 @@
       "id": "sdlc.AllChecks",
       "kind": "obligation",
       "title": "The page is checked, by hand too",
-      "source": "src/sdlc.ts:284",
+      "source": "src/sdlc.ts:287",
       "fields": {
         "owner": "ghalaax",
         "params": {
@@ -5597,7 +5597,7 @@
       "id": "sdlc.CodeServesTheProduct",
       "kind": "rule",
       "title": "Code serves the product",
-      "source": "src/sdlc.ts:428",
+      "source": "src/sdlc.ts:431",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -5629,7 +5629,7 @@
       "id": "sdlc.CodeVerified",
       "kind": "obligation",
       "title": "The code shown is verified",
-      "source": "src/sdlc.ts:252",
+      "source": "src/sdlc.ts:255",
       "fields": {
         "owner": "ghalaax",
         "params": {
@@ -5646,7 +5646,7 @@
       "id": "sdlc.CodeVerifiedSaid",
       "kind": "obligation",
       "title": "The code shown is verified, a gap said",
-      "source": "src/sdlc.ts:243",
+      "source": "src/sdlc.ts:246",
       "fields": {
         "owner": "ghalaax",
         "params": {
@@ -5663,7 +5663,7 @@
       "id": "sdlc.ContentReviewed",
       "kind": "review",
       "title": "The content, reviewed",
-      "source": "src/sdlc.ts:236",
+      "source": "src/sdlc.ts:239",
       "status": "unknown",
       "fields": {
         "owner": "ghalaax"
@@ -5679,7 +5679,7 @@
       "id": "sdlc.ContentSeen",
       "kind": "obligation",
       "title": "The content is reviewed by a teacher",
-      "source": "src/sdlc.ts:272",
+      "source": "src/sdlc.ts:275",
       "fields": {
         "owner": "ghalaax",
         "gaps": "error"
@@ -5690,7 +5690,7 @@
       "id": "sdlc.DecisionsApplied",
       "kind": "obligation",
       "title": "The decisions hold",
-      "source": "src/sdlc.ts:266",
+      "source": "src/sdlc.ts:269",
       "fields": {
         "owner": "ghalaax"
       },
@@ -5700,7 +5700,7 @@
       "id": "sdlc.KeptMigrates",
       "kind": "obligation",
       "title": "What the device keeps, migrated",
-      "source": "src/sdlc.ts:303",
+      "source": "src/sdlc.ts:306",
       "fields": {
         "owner": "ghalaax",
         "gaps": "error"
@@ -5711,7 +5711,7 @@
       "id": "sdlc.Machine",
       "kind": "environment",
       "title": "A machine",
-      "source": "src/sdlc.ts:68",
+      "source": "src/sdlc.ts:69",
       "fields": {
         "owner": "ghalaax"
       },
@@ -5721,7 +5721,7 @@
       "id": "sdlc.OnAPhone",
       "kind": "check",
       "title": "On a phone",
-      "source": "src/sdlc.ts:219",
+      "source": "src/sdlc.ts:222",
       "status": "unknown",
       "fields": {
         "owner": "ghalaax",
@@ -5740,8 +5740,8 @@
       "id": "sdlc.OnTheMachine",
       "kind": "binding",
       "title": "On the machine",
-      "source": "src/sdlc.ts:86",
-      "status": "held",
+      "source": "src/sdlc.ts:87",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "context": "A check must open the page a person opens: the file delivered, in a real browser."
@@ -5752,7 +5752,7 @@
       "id": "sdlc.OpeningThePage",
       "kind": "scenario",
       "title": "The page is opened as a person would",
-      "source": "src/sdlc.ts:499",
+      "source": "src/sdlc.ts:502",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -5791,7 +5791,7 @@
       "id": "sdlc.OpenThePage",
       "kind": "entry",
       "title": "Open the page",
-      "source": "src/sdlc.ts:175",
+      "source": "src/sdlc.ts:176",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -5821,7 +5821,7 @@
       "id": "sdlc.PackagesSafe",
       "kind": "obligation",
       "title": "The packages are safe",
-      "source": "src/sdlc.ts:296",
+      "source": "src/sdlc.ts:299",
       "fields": {
         "owner": "ghalaax"
       },
@@ -5831,23 +5831,25 @@
       "id": "sdlc.PageFile",
       "kind": "artifact",
       "title": "Poselia's page",
-      "source": "src/sdlc.ts:110",
-      "status": "held",
+      "source": "src/sdlc.ts:111",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "media": "text/html; charset=utf-8"
       },
       "result": {
         "path": "dist/poselia.html",
-        "code": "524783e9"
+        "code": "c227094a"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+      ]
     },
     {
       "id": "sdlc.PageOpening",
       "kind": "decision",
       "title": "How the page is opened",
-      "source": "src/sdlc.ts:127",
+      "source": "src/sdlc.ts:128",
       "fields": {
         "owner": "ghalaax",
         "value": {
@@ -5861,21 +5863,23 @@
       "id": "sdlc.PageOpens",
       "kind": "check",
       "title": "The page opens",
-      "source": "src/sdlc.ts:208",
-      "status": "held",
+      "source": "src/sdlc.ts:211",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax"
       },
       "result": {
-        "code": "e5bed1b5"
+        "code": "20164e5d"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
+      ]
     },
     {
       "id": "sdlc.PageSelectors",
       "kind": "function",
       "title": "What the page is asked",
-      "source": "src/sdlc.ts:134",
+      "source": "src/sdlc.ts:135",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -5894,7 +5898,7 @@
       "id": "sdlc.PhoneTesters",
       "kind": "role",
       "title": "People who try it on a phone",
-      "source": "src/sdlc.ts:55",
+      "source": "src/sdlc.ts:56",
       "fields": {
         "owner": "ghalaax",
         "people": [
@@ -5907,7 +5911,7 @@
       "id": "sdlc.PlaceThePage",
       "kind": "entry",
       "title": "Place the page",
-      "source": "src/sdlc.ts:191",
+      "source": "src/sdlc.ts:193",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -5930,7 +5934,7 @@
       "id": "sdlc.PlacingThePage",
       "kind": "scenario",
       "title": "The page is placed where it is served",
-      "source": "src/sdlc.ts:529",
+      "source": "src/sdlc.ts:532",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -5962,7 +5966,7 @@
       "id": "sdlc.PoseliaSdlc",
       "kind": "component",
       "title": "Poselia's SDLC",
-      "source": "src/sdlc.ts:74",
+      "source": "src/sdlc.ts:75",
       "fields": {
         "owner": "ghalaax",
         "language": "typescript",
@@ -5976,8 +5980,8 @@
       "id": "sdlc.Preview",
       "kind": "shipment",
       "title": "A preview",
-      "source": "src/sdlc.ts:317",
-      "status": "held",
+      "source": "src/sdlc.ts:320",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "target": "preview"
@@ -6165,13 +6169,16 @@
           "sdlc.PlaceThePage"
         ]
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: To ship: Poselia's page is unknown",
+        "warning: To ship: The page opens is unknown"
+      ]
     },
     {
       "id": "sdlc.PreviewMode",
       "kind": "policy",
       "title": "The way of a preview",
-      "source": "src/sdlc.ts:310",
+      "source": "src/sdlc.ts:313",
       "fields": {
         "owner": "ghalaax"
       },
@@ -6181,7 +6188,7 @@
       "id": "sdlc.PreviewOnGitHub",
       "kind": "decision",
       "title": "When the preview runs on GitHub, and what it keeps there",
-      "source": "src/sdlc.ts:372",
+      "source": "src/sdlc.ts:375",
       "fields": {
         "owner": "ghalaax",
         "value": {
@@ -6213,7 +6220,7 @@
       "id": "sdlc.PreviewScript",
       "kind": "artifact",
       "title": "The preview's script",
-      "source": "src/sdlc.ts:404",
+      "source": "src/sdlc.ts:407",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -6230,7 +6237,7 @@
       "id": "sdlc.PreviewWorkflow",
       "kind": "artifact",
       "title": "The preview's workflow",
-      "source": "src/sdlc.ts:389",
+      "source": "src/sdlc.ts:392",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -6247,7 +6254,7 @@
       "id": "sdlc.ProductServed",
       "kind": "obligation",
       "title": "The product holds",
-      "source": "src/sdlc.ts:260",
+      "source": "src/sdlc.ts:263",
       "fields": {
         "owner": "ghalaax"
       },
@@ -6257,7 +6264,7 @@
       "id": "sdlc.ProgramChecks",
       "kind": "obligation",
       "title": "The page is checked by programs",
-      "source": "src/sdlc.ts:278",
+      "source": "src/sdlc.ts:281",
       "fields": {
         "owner": "ghalaax",
         "params": {
@@ -6270,7 +6277,7 @@
       "id": "sdlc.PublicMode",
       "kind": "policy",
       "title": "The way of a public version",
-      "source": "src/sdlc.ts:345",
+      "source": "src/sdlc.ts:348",
       "fields": {
         "owner": "ghalaax"
       },
@@ -6280,7 +6287,7 @@
       "id": "sdlc.PublicVersion",
       "kind": "shipment",
       "title": "A public version",
-      "source": "src/sdlc.ts:356",
+      "source": "src/sdlc.ts:359",
       "status": "unknown",
       "fields": {
         "owner": "ghalaax",
@@ -6671,8 +6678,11 @@
         ]
       },
       "diagnostics": [
+        "warning: To ship: Poselia's page is unknown",
         "warning: To ship: On a phone is unknown",
+        "warning: To ship: The page opens is unknown",
         "warning: To ship: The content, reviewed is unknown",
+        "warning: To ship: A page first, the phones after is unknown",
         "warning: To ship: The content is data, behind a port is unknown",
         "warning: To ship: Said aloud, the screen awake is unknown"
       ]
@@ -6681,7 +6691,7 @@
       "id": "sdlc.RulesHeld",
       "kind": "obligation",
       "title": "The rules of the app hold",
-      "source": "src/sdlc.ts:290",
+      "source": "src/sdlc.ts:293",
       "fields": {
         "owner": "ghalaax"
       },
@@ -6691,7 +6701,7 @@
       "id": "sdlc.RunnersWritten",
       "kind": "shipment",
       "title": "The files that run it elsewhere",
-      "source": "src/sdlc.ts:417",
+      "source": "src/sdlc.ts:420",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -6712,7 +6722,7 @@
       "id": "sdlc.SdlcChecks",
       "kind": "catalog",
       "title": "What the scenarios of the SDLC check",
-      "source": "src/sdlc.ts:481",
+      "source": "src/sdlc.ts:484",
       "fields": {
         "owner": "ghalaax",
         "messages": "(function)"
@@ -6723,7 +6733,7 @@
       "id": "sdlc.SdlcInMemory",
       "kind": "binding",
       "title": "The SDLC in memory",
-      "source": "src/sdlc.ts:98",
+      "source": "src/sdlc.ts:99",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -6735,7 +6745,7 @@
       "id": "sdlc.SdlcInTheGraph",
       "kind": "adr",
       "title": "The SDLC is in the graph",
-      "source": "src/sdlc.ts:454",
+      "source": "src/sdlc.ts:457",
       "status": "unknown",
       "fields": {
         "owner": "ghalaax",
@@ -6752,7 +6762,7 @@
       "id": "sdlc.SdlcScenarioData",
       "kind": "decision",
       "title": "What the scenarios of the SDLC write",
-      "source": "src/sdlc.ts:473",
+      "source": "src/sdlc.ts:476",
       "fields": {
         "owner": "ghalaax",
         "value": {
@@ -6766,7 +6776,7 @@
       "id": "sdlc.SdlcWords",
       "kind": "catalog",
       "title": "What the programs of the SDLC say",
-      "source": "src/sdlc.ts:154",
+      "source": "src/sdlc.ts:155",
       "fields": {
         "owner": "ghalaax",
         "messages": "(function)"
@@ -6777,7 +6787,7 @@
       "id": "sdlc.ServedPage",
       "kind": "decision",
       "title": "Where the page is served",
-      "source": "src/sdlc.ts:116",
+      "source": "src/sdlc.ts:117",
       "fields": {
         "owner": "ghalaax",
         "value": {
@@ -6793,7 +6803,7 @@
       "id": "sdlc.Teachers",
       "kind": "role",
       "title": "A teacher who practises",
-      "source": "src/sdlc.ts:62",
+      "source": "src/sdlc.ts:63",
       "fields": {
         "owner": "ghalaax",
         "people": [],
@@ -7268,7 +7278,7 @@
       "kind": "implementation",
       "title": "The browser's stage",
       "source": "src/stage.ts:126",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "deps": {
@@ -7837,6 +7847,11 @@
       "from": "app.ShowHome",
       "to": "architecture.PoseliaApp",
       "kind": "in"
+    },
+    {
+      "from": "app.ShowHome",
+      "to": "std/access.Anyone",
+      "kind": "for"
     },
     {
       "from": "app.ShowHome",
@@ -10295,6 +10310,11 @@
     },
     {
       "from": "sdlc.OpenThePage",
+      "to": "std/access.TheOperators",
+      "kind": "for"
+    },
+    {
+      "from": "sdlc.OpenThePage",
       "to": "std/tooling.HeadlessBrowser",
       "kind": "deps"
     },
@@ -10447,6 +10467,11 @@
       "from": "sdlc.PlaceThePage",
       "to": "sdlc.PoseliaSdlc",
       "kind": "in"
+    },
+    {
+      "from": "sdlc.PlaceThePage",
+      "to": "std/access.TheOperators",
+      "kind": "for"
     },
     {
       "from": "sdlc.PlaceThePage",

@@ -197,6 +197,18 @@ export const PolicyEdge = { obligations: "obligations" } as const
 export const EntryField = { trigger: "trigger" } as const
 
 /**
+ * Who may call an entry point (C6): the edge by which an entry point names its audience, and what an audience says (the
+ * identities a caller of it carries, whether nobody calls it, whether it reaches every owner's records); the identities
+ * a caller may carry; and the field by which a kind of data says whose records its nodes hold, which the language reads
+ * on whatever an entry point reaches.
+ */
+export const EntryEdge = { audience: "for" } as const
+export const AudienceField = { carries: "carries", system: "system", everyOwner: "everyOwner" } as const
+export const Identity = { person: "person", tenant: "tenant" } as const
+export type Identity = (typeof Identity)[keyof typeof Identity]
+export const OwnedField = { ownedBy: "ownedBy" } as const
+
+/**
  * Where a piece of evidence of the SDLC comes from: an artefact built, a check run or signed, a review given, a
  * deployment made, a shipment finished.
  */

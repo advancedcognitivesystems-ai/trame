@@ -57,3 +57,16 @@ export const R0_3_0 = release({
   language: "shared",
   serves: [DataDescribedOnce],
 })
+
+/**
+ * Version 0.4.0
+ */
+export const R0_4_0 = release({
+  owner: "trame",
+  version: "0.4.0",
+  date: "2026-11-18",
+  what: "an entity says whose its records are (ownedBy: a person, a tenant), which the entry points that reach them answer for",
+  fingerprint: "d39bb7725d8ecba3",
+  language: "shared",
+  serves: [DataDescribedOnce],
+})

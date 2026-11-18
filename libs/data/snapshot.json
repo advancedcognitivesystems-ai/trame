@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-12",
+  "at": "2026-11-18",
   "nodes": [
     {
       "id": "documents.Conforms",
@@ -131,9 +131,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "105",
+        "version": "106",
         "joins": "language",
-        "at": "../../generations/g105"
+        "at": "../../generations/g106"
       }
     },
     {
@@ -143,9 +143,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.17.0",
+        "version": "0.18.0",
         "joins": "library",
-        "at": "../../std/releases/0.17.0"
+        "at": "../../std/releases/0.18.0"
       }
     },
     {
@@ -409,6 +409,32 @@
         "date": "2026-11-10",
         "what": "records in SQL: the tables of entities, made ready by a deployment and migrated from the version they hold, in SQLite or PostgreSQL",
         "fingerprint": "c3503ffdd30e2869",
+        "language": "shared"
+      }
+    },
+    {
+      "id": "releases.R0_3_0",
+      "kind": "release",
+      "title": "Version 0.3.0",
+      "fields": {
+        "owner": "trame",
+        "version": "0.3.0",
+        "date": "2026-11-12",
+        "what": "an entity's seed: the records a new table starts with, where a binding seeds it (SeedOfTheEntity), said to its owner when it changes after a deployment",
+        "fingerprint": "44f729a295c3c9df",
+        "language": "shared"
+      }
+    },
+    {
+      "id": "releases.R0_4_0",
+      "kind": "release",
+      "title": "Version 0.4.0",
+      "fields": {
+        "owner": "trame",
+        "version": "0.4.0",
+        "date": "2026-11-18",
+        "what": "an entity says whose its records are (ownedBy: a person, a tenant), which the entry points that reach them answer for",
+        "fingerprint": "d39bb7725d8ecba3",
         "language": "shared"
       }
     },
@@ -693,7 +719,7 @@
       "id": "sdlc.NextVersion",
       "kind": "shipment",
       "title": "The next version",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "version"
@@ -719,7 +745,7 @@
       "id": "sdlc.TheLibrary",
       "kind": "artifact",
       "title": "The library of data",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "src",
@@ -1797,6 +1823,16 @@
     },
     {
       "from": "releases.R0_2_0",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_3_0",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_4_0",
       "to": "product.DataDescribedOnce",
       "kind": "serves"
     },

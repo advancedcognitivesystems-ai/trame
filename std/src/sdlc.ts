@@ -5,7 +5,7 @@ import { obligation } from "#trame/kinds/obligation"
 import { policy } from "#trame/kinds/policy"
 import { shipment } from "#trame/kinds/shipment"
 import { KindName, Severity } from "#trame/kernel"
-import { Verified, Served, Applied, Ruled, Safe } from "./obligations"
+import { Verified, Served, Applied, Ruled, Safe, Identified } from "./obligations"
 import { VersionsThatHold } from "./product"
 
 // How a version of the standard library becomes available (C1): as Trame ships its generations, the library ships its
@@ -53,13 +53,21 @@ export const RulesHeld = obligation({ owner: "trame", applies: Ruled, serves: [V
 export const PackagesSafe = obligation({ owner: "trame", applies: Safe, serves: [VersionsThatHold] })
 
 /**
+ * Its callers identified
+ * An entry point the library offers is for an audience its version identifies: one carrying an identity that nothing
+ * identifies keeps the version (C6; the library offers none yet).
+ */
+export const CallersIdentified = obligation({ owner: "trame", applies: Identified, gaps: Severity.error, serves: [VersionsThatHold] })
+
+/**
  * How a version is made
  * The way the standard library releases a version: its functions verified (a gap is an error), the requirements of its
- * goals held, its decisions applied, its rules held, its packages safe; and the foundations, as always.
+ * goals held, its decisions applied, its rules held, its packages safe, its callers identified; and the foundations, as
+ * always.
  */
 export const VersionMode = policy({
   owner: "trame",
-  obligations: [FunctionsVerified, RequirementsServed, DecisionsApplied, RulesHeld, PackagesSafe],
+  obligations: [FunctionsVerified, RequirementsServed, DecisionsApplied, RulesHeld, PackagesSafe, CallersIdentified],
 })
 
 /**

@@ -6,7 +6,7 @@
 
 import {
   defineKind, field, optional, optionalEdge, edge, hole, doc, keysOf, fieldsOf, isNode, KindName, EdgeName, EvidenceSource, ShipmentEdge, Status,
-  type AnyNode, type Graph, type Inline, type Lib, type Node, type Provides, type Quantity, type View,
+  OwnedField, Identity, type AnyNode, type Graph, type Inline, type Lib, type Node, type Provides, type Quantity, type View,
 } from "#trame/kernel"
 import { vocabularyKind } from "#trame/kinds/vocabulary"
 import words from "./words"
@@ -153,6 +153,7 @@ const fields = {
   keptAs: optional(field.value<string>(say.entityKeptAs())),
   changes: optional(field.value<Changes>(say.entityChanges())),
   seed: optional(field.value<readonly Record<string, unknown>[]>(say.entitySeed())),
+  [OwnedField.ownedBy]: optional(field.value<Readonly<Partial<Record<Identity, string>>>>(say.entityOwnedBy())),
 }
 const F = keysOf(fields)
 const edges = {
@@ -270,6 +271,22 @@ const written = (s: Stored, g: Graph): Inline[] => {
 /** How a step is written for people. */
 const stepWritten = (x: Step): Inline[] => [say.opStep(opWords[x.op] ?? x.op), doc.ident(x.field), ...(x.from === undefined ? [] : [say.opFrom(), doc.ident(x.from)])]
 
+/** The identities an entity's records belong to, each with the field that holds it, as declared. */
+const ownersOf = (self: View, lib: Lib): [Identity, string][] => {
+  const owned = self.field(F.ownedBy)
+  if (!owned || !lib.values.isObject(owned)) return []
+  return Object.values(Identity).flatMap((i): [Identity, string][] => {
+    const k = (owned as Record<string, unknown>)[i]
+    return lib.values.isText(k) ? [[i, k]] : []
+  })
+}
+
+/** Whether a field may hold an owner: a text, or the key of another entity. */
+const ownable = (s: { readonly type: string }) => s.type === StoredType.text || s.type === StoredType.reference
+
+/** An identity, in words. */
+const identityWords: Record<Identity, () => string> = { [Identity.person]: say.entityPerson, [Identity.tenant]: say.entityTenant }
+
 /** The records to start with changed since a deployment kept others: said to the owner, with that deployment. */
 const reseededHoles = (reseeded: Result["reseeded"], g: Graph, owner: string | undefined) => {
   if (!reseeded) return []
@@ -333,7 +350,7 @@ const computed = (self: View, g: Graph): Result => {
 const kind = defineKind({
   name: DataKind.entity,
   label: { one: say.entityEntity(), many: say.entityEntities() },
-  renderOwns: [F.fields, F.key, F.changes, F.seed],
+  renderOwns: [F.fields, F.key, F.changes, F.seed, F.ownedBy],
   fields,
   edges,
 
@@ -351,6 +368,9 @@ const kind = defineKind({
     return [
       ...(key !== undefined && !all.some(([k]) => k === key) ? [hole.error(say.entityKeyNamesNoField(String(key)), self.owner)] : []),
       ...all.filter(([, s]) => typeWords[s.type] === undefined).map(([k]) => hole.error(say.entityFieldWithoutType(k), self.owner)),
+      // Whose records they are (C6): each owner held by a field of its own, kept as a text or the key of another entity.
+      ...ownersOf(self, g.lib).filter(([, k]) => !all.some(([f, s]) => f === k && ownable(s))).map(([i, k]) =>
+        hole.error(say.entityOwnerNamesNoField(identityWords[i](), k), self.owner)),
       ...(self.result<Result>()?.undecided ?? []).map((u) => hole.blocking(u.what, self.owner)),
       ...reseededHoles(self.result<Result>()?.reseeded, g, self.owner),
     ]
@@ -365,6 +385,7 @@ const kind = defineKind({
       doc.table([say.entityField(), say.entityType()], all.map(([k, s]) => [[doc.ident(k)], written(s, g)])),
       ...(r ? [doc.para(...say.entityVersion(doc.ident(r.version), r.kept.length))] : []),
       ...(Array.isArray(self.field(F.seed)) ? [doc.para(say.entitySeeded((self.field(F.seed) as readonly unknown[]).length))] : []),
+      ...ownersOf(self, g.lib).map(([i, k]) => doc.para(...say.entityOwnedByIn(identityWords[i](), doc.ident(k)))),
       ...(r && r.migrations.length
         ? [doc.table([say.entityFrom(), say.entitySteps()], r.migrations.map((m) => [
             [doc.ident(m.from)], m.steps.length ? m.steps.flatMap((x, i) => [...(i ? [g.lib.punctuation.items] : []), ...stepWritten(x)]) : [say.entityNothingToDo()],
@@ -404,6 +425,11 @@ interface EntityInput<F extends StoredFields> {
    * a scenario's database, a developer's. A place made before keeps those it started with.
    */
   seed?: readonly NoInfer<ValueOfFields<F>>[]
+  /**
+   * Whose its records are (C6): the field that holds the person, the tenant, they belong to. An entry point that reaches
+   * them is for an audience that carries those identities; identified (C7), a caller reads and writes only its own.
+   */
+  ownedBy?: { readonly [I in Identity]?: keyof F & string }
   serves?: readonly Node<typeof KindName.goal>[]
 }
 

@@ -1,14 +1,39 @@
 # Architecture decisions
 
-*The choices that shape the product without being values, in force on 10 November 2026: why each was taken, what was rejected, and the nodes that apply it.*
+*The choices that shape the product without being values, in force on 18 November 2026: why each was taken, what was rejected, and the nodes that apply it.*
 
-> **3 architecture decisions, 2 held by the nodes that apply them**
+> **4 architecture decisions, 3 held by the nodes that apply them**
 
 | Decision | Status | Applied by |
 |---|---|---|
+| [An entry point says who may call it](access.md#SaysItsAudience) | **held** | [Who calls a shipment's programs is identified](obligations.md#Identified) |
 | [A component in a browser starts with its page](platform.md#StartsWithThePage) | unknown | [The browser loads the page](platform.md#BrowserLoading), [Loading of a page](platform.md#PageLoading) |
 | [The device's services, as ports](platform.md#DeviceAsPorts) | **held** | [Animation frames](platform.md#AnimationFrames), [The screen kept awake, in memory](platform.md#AwakeInMemory), [The browser's frames](platform.md#BrowserFrames), [The browser's languages](platform.md#BrowserLanguages), [The browser keeps the preferences](platform.md#BrowserPreferences), [The browser's voice](platform.md#BrowserSpeech), [The browser keeps the screen awake](platform.md#BrowserWakeLock), [Languages of the device](platform.md#DeviceLanguages), [Frames turned by hand](platform.md#FramesByHand), [Preferences kept in memory](platform.md#MemoryPreferences), [Preferences](platform.md#PreferencesStore), [Screen kept awake](platform.md#ScreenAwake), [Whether the screen is kept awake](platform.md#ScreenKeptAwake), [What was said](platform.md#SpeechHeard), [Speech](platform.md#SpeechVoice), [Time turned by hand](platform.md#TimeTurned), [A voice that writes down](platform.md#WrittenSpeech) |
 | [The SDLC's tooling is realized once](tooling.md#ToolingAsPorts) | **held** | [A browser kept in memory](tooling.md#BrowserInMemory), [Browser script](tooling.md#BrowserScripted), [Project files](tooling.md#Files), [Files kept in memory](tooling.md#FilesInMemory), [Files written](tooling.md#FilesKept), [Headless browser](tooling.md#HeadlessBrowser), [The machine's files](tooling.md#MachineFiles), [Node's command line](tooling.md#NodeProgramCommands), [Where a package comes from](tooling.md#PackageSources), [Chromium, driven by Playwright](tooling.md#PlaywrightBrowser), [Commands of a program](tooling.md#ProgramCommands) |
+
+## Standard library · Access
+
+<a id="SaysItsAudience"></a>
+
+### An entry point says who may call it
+
+`SaysItsAudience` · `src/access.ts:39` · status: **held**
+
+Each entry point names its audience, and the graph checks it against what the entry point reaches: records that belong to someone (a person, a tenant) ask an audience that carries that identity.
+
+Context: Who may call an entry point decides whose records it may touch. Left unsaid, an entry point is open to whoever reaches it, and nothing tells a reader or a review that it is.
+
+Consequences: Every entry point names its audience (an error otherwise); an audience nobody calls is for no trigger a person calls; an entry point that reaches records owned by a person or a tenant has an audience that carries one, or that reaches every owner's. A shipment whose policy applies Identified proves that each audience carrying an identity is identified where it runs (C7).
+
+| Rejected | Why |
+|---|---|
+| Anyone by default | whatever is forgotten would be open, the classic hole |
+| A role, as the SDLC's | a role names the people who sign evidence; an audience is a kind of caller, its members known only at run time |
+| A word of a vocabulary | a word cannot say what its callers carry, nor be read against what an entry point reaches |
+
+- Decided by: trame
+- Serves: [Rules applied, not written again](product.md#SharedRules)
+- Applied by: [Who calls a shipment's programs is identified](obligations.md#Identified)
 
 ## Standard library · Platform
 

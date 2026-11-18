@@ -1,10 +1,10 @@
 # Owners
 
-*What each person must decide, settle or watch on 10 November 2026, and what they own.*
+*What each person must decide, settle or watch on 18 November 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 3 | 165 |
+| trame | 0 | 0 | 3 | 173 |
 
 <a id="trame"></a>
 
@@ -20,6 +20,10 @@
 
 | Node | Kind | State |
 |---|---|---|
+| [Anyone](access.md#Anyone) | Audience |  |
+| [An entry point says who may call it](access.md#SaysItsAudience) | Architecture decision | **held** |
+| [The operators](access.md#TheOperators) | Audience |  |
+| [The system](access.md#TheSystem) | Audience |  |
 | [Counts](algebra.md#Counts) | Algebraic structure | **held** |
 | [Sequences](algebra.md#Sequences) | Algebraic structure | **held** |
 | [Texts](algebra.md#Texts) | Algebraic structure | **held** |
@@ -54,6 +58,8 @@
 | [The artefacts a shipment ships are checked](obligations.md#Checked) | Requirement | **held** |
 | [Criteria of the artefacts checked](obligations.md#CheckedCriteria) | Acceptance criteria | **held** |
 | [Ways of checking](obligations.md#CheckWays) | Vocabulary |  |
+| [Who calls a shipment's programs is identified](obligations.md#Identified) | Requirement | **held** |
+| [Criteria of who calls](obligations.md#IdentifiedCriteria) | Acceptance criteria | **held** |
 | [The artefacts a shipment ships were shipped first by those that precede it](obligations.md#Preceded) | Requirement | **held** |
 | [Criteria of the stages](obligations.md#PrecededCriteria) | Acceptance criteria | **held** |
 | [The data a shipment carries is reviewed](obligations.md#Reviewed) | Requirement | **held** |
@@ -109,6 +115,7 @@
 | [Version 0.15.0](releases.md#R0_15_0) | Release |  |
 | [Version 0.16.0](releases.md#R0_16_0) | Release |  |
 | [Version 0.17.0](releases.md#R0_17_0) | Release |  |
+| [Version 0.18.0](releases.md#R0_18_0) | Release |  |
 | [Version 0.2.0](releases.md#R0_2_0) | Release |  |
 | [Version 0.3.0](releases.md#R0_3_0) | Release |  |
 | [Version 0.4.0](releases.md#R0_4_0) | Release |  |
@@ -137,6 +144,7 @@
 | [The language of the library's scenarios](scenarios.md#ScenarioLanguage) | Decision |  |
 | [Test](scenarios.md#Test) | Environment |  |
 | [The tooling, in memory](scenarios.md#ToolingInMemory) | Scenario | **held** |
+| [Its callers identified](sdlc.md#CallersIdentified) | Obligation |  |
 | [Its decisions applied](sdlc.md#DecisionsApplied) | Obligation |  |
 | [Its functions verified](sdlc.md#FunctionsVerified) | Obligation |  |
 | [The next version](sdlc.md#NextVersion) | Shipment | **held** |

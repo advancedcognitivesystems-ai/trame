@@ -1,6 +1,56 @@
 {
-  "generated": "2026-11-10",
+  "generated": "2026-11-18",
   "nodes": [
+    {
+      "id": "access.Anyone",
+      "kind": "audience",
+      "title": "Anyone",
+      "source": "src/access.ts:18",
+      "fields": {
+        "owner": "trame"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "access.SaysItsAudience",
+      "kind": "adr",
+      "title": "An entry point says who may call it",
+      "source": "src/access.ts:39",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "Who may call an entry point decides whose records it may touch. Left unsaid, an entry point is open to whoever reaches it, and nothing tells a reader or a review that it is.",
+        "consequences": "Every entry point names its audience (an error otherwise); an audience nobody calls is for no trigger a person calls; an entry point that reaches records owned by a person or a tenant has an audience that carries one, or that reaches every owner's. A shipment whose policy applies Identified proves that each audience carrying an identity is identified where it runs (C7).",
+        "rejected": {
+          "Anyone by default": "whatever is forgotten would be open, the classic hole",
+          "A role, as the SDLC's": "a role names the people who sign evidence; an audience is a kind of caller, its members known only at run time",
+          "A word of a vocabulary": "a word cannot say what its callers carry, nor be read against what an entry point reaches"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "access.TheOperators",
+      "kind": "audience",
+      "title": "The operators",
+      "source": "src/access.ts:32",
+      "fields": {
+        "owner": "trame",
+        "everyOwner": true
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "access.TheSystem",
+      "kind": "audience",
+      "title": "The system",
+      "source": "src/access.ts:25",
+      "fields": {
+        "owner": "trame",
+        "system": true
+      },
+      "diagnostics": []
+    },
     {
       "id": "algebra.Counts",
       "kind": "structure",
@@ -1909,7 +1959,7 @@
       "id": "obligations.AppliedCriteria",
       "kind": "acceptance",
       "title": "Criteria of the decisions applied",
-      "source": "src/obligations.ts:265",
+      "source": "src/obligations.ts:306",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1948,7 +1998,7 @@
       "id": "obligations.CheckedCriteria",
       "kind": "acceptance",
       "title": "Criteria of the artefacts checked",
-      "source": "src/obligations.ts:284",
+      "source": "src/obligations.ts:325",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1981,10 +2031,48 @@
       "diagnostics": []
     },
     {
+      "id": "obligations.Identified",
+      "kind": "requirement",
+      "title": "Who calls a shipment's programs is identified",
+      "source": "src/obligations.ts:175",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "body": "(function)"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "obligations.IdentifiedCriteria",
+      "kind": "acceptance",
+      "title": "Criteria of who calls",
+      "source": "src/obligations.ts:244",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "criteria": "(function)"
+      },
+      "result": [
+        {
+          "name": "An audience that carries an identity, reached through an entry point, is a gap while nothing identifies it",
+          "status": "passed"
+        },
+        {
+          "name": "An audience that carries none is no gap",
+          "status": "passed"
+        },
+        {
+          "name": "An audience reached through several entry points is one gap",
+          "status": "passed"
+        }
+      ],
+      "diagnostics": []
+    },
+    {
       "id": "obligations.Preceded",
       "kind": "requirement",
       "title": "The artefacts a shipment ships were shipped first by those that precede it",
-      "source": "src/obligations.ts:176",
+      "source": "src/obligations.ts:196",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1996,7 +2084,7 @@
       "id": "obligations.PrecededCriteria",
       "kind": "acceptance",
       "title": "Criteria of the stages",
-      "source": "src/obligations.ts:216",
+      "source": "src/obligations.ts:257",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2037,7 +2125,7 @@
       "id": "obligations.ReviewedCriteria",
       "kind": "acceptance",
       "title": "Criteria of the data reviewed",
-      "source": "src/obligations.ts:274",
+      "source": "src/obligations.ts:315",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2071,7 +2159,7 @@
       "id": "obligations.RuledCriteria",
       "kind": "acceptance",
       "title": "Criteria of the rules held",
-      "source": "src/obligations.ts:294",
+      "source": "src/obligations.ts:335",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2101,7 +2189,7 @@
       "id": "obligations.SafeCriteria",
       "kind": "acceptance",
       "title": "Criteria of the packages safe",
-      "source": "src/obligations.ts:303",
+      "source": "src/obligations.ts:344",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2131,7 +2219,7 @@
       "id": "obligations.ServedCriteria",
       "kind": "acceptance",
       "title": "Criteria of the product served",
-      "source": "src/obligations.ts:255",
+      "source": "src/obligations.ts:296",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2168,7 +2256,7 @@
       "id": "obligations.VerifiedCriteria",
       "kind": "acceptance",
       "title": "Criteria of the code verified",
-      "source": "src/obligations.ts:230",
+      "source": "src/obligations.ts:271",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2206,10 +2294,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "105",
+        "version": "106",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g105"
+        "at": "../generations/g106"
       },
       "diagnostics": []
     },
@@ -2795,6 +2883,21 @@
       "diagnostics": []
     },
     {
+      "id": "releases.R0_18_0",
+      "kind": "release",
+      "title": "Version 0.18.0",
+      "source": "src/releases.ts:246",
+      "fields": {
+        "owner": "trame",
+        "version": "0.18.0",
+        "date": "2026-11-18",
+        "what": "access: the audiences Anyone, TheSystem and TheOperators; the family Identified",
+        "fingerprint": "7e9e89a93567af15",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "releases.R0_2_0",
       "kind": "release",
       "title": "Version 0.2.0",
@@ -3350,6 +3453,17 @@
       "diagnostics": []
     },
     {
+      "id": "sdlc.CallersIdentified",
+      "kind": "obligation",
+      "title": "Its callers identified",
+      "source": "src/sdlc.ts:60",
+      "fields": {
+        "owner": "trame",
+        "gaps": "error"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "sdlc.DecisionsApplied",
       "kind": "obligation",
       "title": "Its decisions applied",
@@ -3379,7 +3493,7 @@
       "id": "sdlc.NextVersion",
       "kind": "shipment",
       "title": "The next version",
-      "source": "src/sdlc.ts:70",
+      "source": "src/sdlc.ts:78",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3387,6 +3501,11 @@
       },
       "result": {
         "derived": [
+          {
+            "node": "access.SaysItsAudience",
+            "via": "obligations.Identified",
+            "obligation": "sdlc.DecisionsApplied"
+          },
           {
             "node": "platform.DeviceAsPorts",
             "via": "platform.AnimationFrames",
@@ -3429,67 +3548,72 @@
           },
           {
             "node": "obligations.Applied",
-            "via": "obligations.Applied",
+            "via": "access.Anyone",
             "obligation": "sdlc.RequirementsServed"
           },
           {
             "node": "obligations.Checked",
-            "via": "obligations.Applied",
+            "via": "access.Anyone",
+            "obligation": "sdlc.RequirementsServed"
+          },
+          {
+            "node": "obligations.Identified",
+            "via": "access.Anyone",
             "obligation": "sdlc.RequirementsServed"
           },
           {
             "node": "obligations.Preceded",
-            "via": "obligations.Applied",
+            "via": "access.Anyone",
             "obligation": "sdlc.RequirementsServed"
           },
           {
             "node": "obligations.Reviewed",
-            "via": "obligations.Applied",
+            "via": "access.Anyone",
             "obligation": "sdlc.RequirementsServed"
           },
           {
             "node": "obligations.Ruled",
-            "via": "obligations.Applied",
+            "via": "access.Anyone",
             "obligation": "sdlc.RequirementsServed"
           },
           {
             "node": "obligations.Safe",
-            "via": "obligations.Applied",
+            "via": "access.Anyone",
             "obligation": "sdlc.RequirementsServed"
           },
           {
             "node": "obligations.Served",
-            "via": "obligations.Applied",
+            "via": "access.Anyone",
             "obligation": "sdlc.RequirementsServed"
           },
           {
             "node": "obligations.Verified",
-            "via": "obligations.Applied",
+            "via": "access.Anyone",
             "obligation": "sdlc.RequirementsServed"
           },
           {
             "node": "rules.Linked",
-            "via": "obligations.Applied",
+            "via": "access.Anyone",
             "obligation": "sdlc.RequirementsServed"
           },
           {
             "node": "rules.NeverReaches",
-            "via": "obligations.Applied",
+            "via": "access.Anyone",
             "obligation": "sdlc.RequirementsServed"
           },
           {
             "node": "rules.Reaches",
-            "via": "obligations.Applied",
+            "via": "access.Anyone",
             "obligation": "sdlc.RequirementsServed"
           },
           {
             "node": "rules.WithoutEffects",
-            "via": "obligations.Applied",
+            "via": "access.Anyone",
             "obligation": "sdlc.RequirementsServed"
           },
           {
             "node": "rules.WordsOf",
-            "via": "obligations.Applied",
+            "via": "access.Anyone",
             "obligation": "sdlc.RequirementsServed"
           }
         ],
@@ -3497,6 +3621,10 @@
         "preceded": [],
         "reached": [
           "sdlc.TheLibrary",
+          "access.Anyone",
+          "access.SaysItsAudience",
+          "access.TheOperators",
+          "access.TheSystem",
           "algebra.Counts",
           "algebra.Sequences",
           "algebra.Texts",
@@ -3531,6 +3659,8 @@
           "obligations.Checked",
           "obligations.CheckedCriteria",
           "obligations.CheckWays",
+          "obligations.Identified",
+          "obligations.IdentifiedCriteria",
           "obligations.Preceded",
           "obligations.PrecededCriteria",
           "obligations.Reviewed",
@@ -3596,6 +3726,7 @@
           "scenarios.ScenarioLanguage",
           "scenarios.Test",
           "scenarios.ToolingInMemory",
+          "sdlc.CallersIdentified",
           "sdlc.DecisionsApplied",
           "sdlc.FunctionsVerified",
           "sdlc.NextVersion",
@@ -3690,7 +3821,7 @@
       },
       "result": {
         "path": "src",
-        "code": "b62aef01"
+        "code": "020ce79e"
       },
       "diagnostics": []
     },
@@ -3698,7 +3829,7 @@
       "id": "sdlc.VersionMode",
       "kind": "policy",
       "title": "How a version is made",
-      "source": "src/sdlc.ts:60",
+      "source": "src/sdlc.ts:68",
       "fields": {
         "owner": "trame"
       },
@@ -4774,6 +4905,31 @@
   ],
   "edges": [
     {
+      "from": "access.Anyone",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "access.SaysItsAudience",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "access.SaysItsAudience",
+      "to": "obligations.Identified",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "access.TheOperators",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "access.TheSystem",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
       "from": "algebra.Counts",
       "to": "product.SharedOperations",
       "kind": "serves"
@@ -4992,6 +5148,16 @@
       "from": "obligations.CheckWays",
       "to": "product.SharedRules",
       "kind": "serves"
+    },
+    {
+      "from": "obligations.Identified",
+      "to": "product.SharedRules",
+      "kind": "refines"
+    },
+    {
+      "from": "obligations.IdentifiedCriteria",
+      "to": "obligations.Identified",
+      "kind": "accepts"
     },
     {
       "from": "obligations.Preceded",
@@ -5549,6 +5715,36 @@
       "kind": "serves"
     },
     {
+      "from": "releases.R0_18_0",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_18_0",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_18_0",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_18_0",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_18_0",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_18_0",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
       "from": "releases.R0_2_0",
       "to": "product.CitedNotCopied",
       "kind": "serves"
@@ -6024,6 +6220,16 @@
       "kind": "deps"
     },
     {
+      "from": "sdlc.CallersIdentified",
+      "to": "obligations.Identified",
+      "kind": "applies"
+    },
+    {
+      "from": "sdlc.CallersIdentified",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
       "from": "sdlc.DecisionsApplied",
       "to": "obligations.Applied",
       "kind": "applies"
@@ -6106,6 +6312,11 @@
     {
       "from": "sdlc.VersionMode",
       "to": "sdlc.PackagesSafe",
+      "kind": "obligations"
+    },
+    {
+      "from": "sdlc.VersionMode",
+      "to": "sdlc.CallersIdentified",
       "kind": "obligations"
     },
     {

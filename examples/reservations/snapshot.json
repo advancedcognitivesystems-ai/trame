@@ -2,6 +2,17 @@
   "at": "2026-10-30",
   "nodes": [
     {
+      "id": "access.Drivers",
+      "kind": "audience",
+      "title": "Drivers",
+      "fields": {
+        "owner": "karim",
+        "carries": [
+          "person"
+        ]
+      }
+    },
+    {
       "id": "api.CancelReservation",
       "kind": "entry",
       "title": "Cancel a reservation",
@@ -482,10 +493,21 @@
             "of": {
               "type": "text"
             }
+          },
+          "driver": {
+            "type": "text"
           }
         },
         "key": "reservation",
-        "keptAs": "refunds"
+        "keptAs": "refunds",
+        "changes": {
+          "defaults": {
+            "driver": "unknown"
+          }
+        },
+        "ownedBy": {
+          "person": "driver"
+        }
       }
     },
     {
@@ -513,33 +535,47 @@
           "status": {
             "type": "word",
             "vocabulary": "data.ReservationStatuses"
+          },
+          "driver": {
+            "type": "text"
           }
         },
         "key": "id",
         "keptAs": "reservations",
+        "changes": {
+          "defaults": {
+            "driver": "unknown"
+          }
+        },
         "seed": [
           {
             "id": "R1",
             "charger": "normal",
             "price": 20,
             "start": "2026-10-20T12:00:00.000Z",
-            "status": "active"
+            "status": "active",
+            "driver": "alice"
           },
           {
             "id": "R2",
             "charger": "fast",
             "price": 30,
             "start": "2026-10-20T10:04:00.000Z",
-            "status": "active"
+            "status": "active",
+            "driver": "bob"
           },
           {
             "id": "R3",
             "charger": "ultra",
             "price": 40,
             "start": "2026-10-20T11:00:00.000Z",
-            "status": "active"
+            "status": "active",
+            "driver": "alice"
           }
-        ]
+        ],
+        "ownedBy": {
+          "person": "driver"
+        }
       }
     },
     {
@@ -1142,6 +1178,15 @@
       }
     },
     {
+      "id": "sdlc.CallersIdentified",
+      "kind": "obligation",
+      "title": "Who calls, identified",
+      "fields": {
+        "owner": "karim",
+        "gaps": "warning"
+      }
+    },
+    {
       "id": "sdlc.CodeVerified",
       "kind": "obligation",
       "title": "The code is verified",
@@ -1385,6 +1430,11 @@
   ],
   "edges": [
     {
+      "from": "access.Drivers",
+      "to": "cancellation.CancelWithoutStress",
+      "kind": "serves"
+    },
+    {
       "from": "api.CancelReservation",
       "to": "cancellation.Refund",
       "kind": "serves"
@@ -1393,6 +1443,11 @@
       "from": "api.CancelReservation",
       "to": "architecture.ReservationsApi",
       "kind": "in"
+    },
+    {
+      "from": "api.CancelReservation",
+      "to": "access.Drivers",
+      "kind": "for"
     },
     {
       "from": "api.CancelReservation",
@@ -1458,6 +1513,11 @@
       "from": "api.ReadReservation",
       "to": "architecture.ReservationsApi",
       "kind": "in"
+    },
+    {
+      "from": "api.ReadReservation",
+      "to": "access.Drivers",
+      "kind": "for"
     },
     {
       "from": "api.ReadReservation",
@@ -2105,6 +2165,11 @@
       "kind": "deps"
     },
     {
+      "from": "sdlc.CallersIdentified",
+      "to": "cancellation.CancelWithoutStress",
+      "kind": "serves"
+    },
+    {
       "from": "sdlc.CodeVerified",
       "to": "cancellation.CancelWithoutStress",
       "kind": "serves"
@@ -2312,6 +2377,11 @@
     {
       "from": "sdlc.ReleaseMode",
       "to": "sdlc.KeptMigrates",
+      "kind": "obligations"
+    },
+    {
+      "from": "sdlc.ReleaseMode",
+      "to": "sdlc.CallersIdentified",
       "kind": "obligations"
     },
     {

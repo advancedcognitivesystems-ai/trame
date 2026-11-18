@@ -51,10 +51,13 @@ export const pathOf = (v: View, g: Graph): string | undefined => {
 export const isVersion = (v: View): boolean => v.field(ArtifactField.version) === true
 
 /**
- * The nodes of the project itself, its libraries' left out: what a version of it holds. The records of its releases are
- * left out too: trame release writes each once the version holds, and the version it records is not made of it.
+ * The nodes of the project a version is of, the other projects of the graph left out: what that version holds. A
+ * library's version, read in a project that imports it, holds the library's nodes, never the project's. The records of
+ * its releases are left out too: trame release writes each once the version holds, and the version it records is not
+ * made of it.
  */
-export const ownNodes = (g: Graph): View[] => g.all().nodes().filter((v) => v.library === undefined && v.kind !== KindName.release)
+export const ownNodes = (g: Graph, version: View): View[] =>
+  g.all().nodes().filter((v) => v.library === version.library && v.kind !== KindName.release)
 
 /** The fingerprint of an artefact as last built, if it was. */
 export const builtFingerprint = (v: View): string | undefined => latestOf(v, EvidenceSource.built)?.fingerprint
@@ -101,7 +104,7 @@ const madeOf = (self: View, g: Graph): View[] => {
     : [...g.from(self).out(ArtifactEdge.runs).nodes(), ...g.from(self).out(ArtifactEdge.settings).nodes()]
   const carried = g.from(self).out(ArtifactEdge.carries).nodes().flatMap((c) => program(entriesOf(c), c, environments))
   // A version of the project is made of all its code.
-  const version = isVersion(self) ? ownNodes(g) : []
+  const version = isVersion(self) ? ownNodes(g, self) : []
   return [self, ...(producer ? [producer] : []), ...made, ...carried, ...version]
 }
 

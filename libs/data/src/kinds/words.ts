@@ -18,6 +18,12 @@ const body = () => ({
   entityChanges: () => "Changes decided",
   entityKeptAs: () => "Kept as",
   entitySeed: () => "Starts with",
+  entityOwnedBy: () => "Owned by",
+  entityPerson: () => "a person",
+  entityTenant: () => "a tenant",
+  entityOwnedByIn: (identity: string, field: Inline): Inline[] => [`Each record belongs to ${identity}, held in `, field, "."],
+  entityOwnerNamesNoField: (identity: string, field: string) =>
+    `Its records belong to ${identity} held in ${field}, which is no field of the entity kept as a text or the key of another`,
   entitySeeded: (n: number) => `A new place of it starts with ${plural(n, { one: "record", other: "records" })}, where a binding seeds it.`,
   entityReseeded: (shipment: string, date: string) =>
     `The records a new place starts with changed since ${shipment} deployed it on ${date}: a place made before keeps those it started with`,

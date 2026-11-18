@@ -17,7 +17,7 @@ export const Language = pkg({
  * The structures, standards, ports of the device and of the SDLC Poselia builds on.
  */
 export const StandardLibrary = pkg({
-  owner: "ghalaax", packageName: "std", version: "0.17.0", joins: "library", from: "path", at: "../../std/releases/0.17.0",
+  owner: "ghalaax", packageName: "std", version: "0.18.0", joins: "library", from: "path", at: "../../std/releases/0.18.0",
   serves: [PractiseGuided],
 })
 
@@ -44,6 +44,6 @@ export const Geometry = pkg({
  * What the app keeps on the device, described once: the person's breath.
  */
 export const Data = pkg({
-  owner: "ghalaax", packageName: "data", version: "0.3.0", joins: "library", from: "path", at: "../../libs/data/releases/0.3.0",
+  owner: "ghalaax", packageName: "data", version: "0.4.0", joins: "library", from: "path", at: "../../libs/data/releases/0.4.0",
   serves: [PractiseGuided],
 })

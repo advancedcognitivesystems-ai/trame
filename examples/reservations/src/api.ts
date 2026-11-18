@@ -8,6 +8,7 @@ import { FreeCancellationPeriod, Refund, CancelWithoutStress } from "./cancellat
 import { ReservationsApi, ReservationReading, Cancellations, Payment, Clock, CancellationKey, type StoredReservation } from "./architecture"
 import { Http } from "#std/web"
 import { ApiMessages } from "./messages"
+import { Drivers } from "./access"
 
 /**
  * End of free cancellation
@@ -39,6 +40,7 @@ export const LeadTime = fn({
 export const ReadReservation = entryPoint({
   owner: "karim",
   in: ReservationsApi,
+  for: Drivers,
   serves: [CancelWithoutStress],
   trigger: http("GET", "/reservations/:id"),
   deps: { reservations: ReservationReading, freeCancellationEnd: FreeCancellationEnd, http: Http, messages: ApiMessages },
@@ -53,6 +55,7 @@ export const ReadReservation = entryPoint({
 export const CancelReservation = entryPoint({
   owner: "karim",
   in: ReservationsApi,
+  for: Drivers,
   serves: [Refund],
   trigger: http("POST", "/reservations/:id/cancellation"),
   deps: {

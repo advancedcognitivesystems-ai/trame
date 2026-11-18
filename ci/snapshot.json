@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-10",
+  "at": "2026-11-18",
   "nodes": [
     {
       "id": "github.GitHubActions",
@@ -335,10 +335,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "105",
+        "version": "106",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g105"
+        "at": "../generations/g106"
       }
     },
     {

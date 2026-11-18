@@ -81,7 +81,7 @@ const reachOf = (self: View, g: Graph): ObligationReach => {
   for (const a of shipped) {
     add(a)
     // A version of the project holds all its code (C1): every node of the project is reached.
-    if (isVersion(a)) for (const v of ownNodes(g)) add(v)
+    if (isVersion(a)) for (const v of ownNodes(g, a)) add(v)
     program(g.from(a).out(ArtifactEdge.producedBy).first())
     for (const c of g.from(a).in(CheckEdge.on).nodes()) program(g.from(c).out(CheckEdge.runs).first())
   }

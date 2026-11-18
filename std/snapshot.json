@@ -1,6 +1,48 @@
 {
-  "at": "2026-11-10",
+  "at": "2026-11-18",
   "nodes": [
+    {
+      "id": "access.Anyone",
+      "kind": "audience",
+      "title": "Anyone",
+      "fields": {
+        "owner": "trame"
+      }
+    },
+    {
+      "id": "access.SaysItsAudience",
+      "kind": "adr",
+      "title": "An entry point says who may call it",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "Who may call an entry point decides whose records it may touch. Left unsaid, an entry point is open to whoever reaches it, and nothing tells a reader or a review that it is.",
+        "consequences": "Every entry point names its audience (an error otherwise); an audience nobody calls is for no trigger a person calls; an entry point that reaches records owned by a person or a tenant has an audience that carries one, or that reaches every owner's. A shipment whose policy applies Identified proves that each audience carrying an identity is identified where it runs (C7).",
+        "rejected": {
+          "Anyone by default": "whatever is forgotten would be open, the classic hole",
+          "A role, as the SDLC's": "a role names the people who sign evidence; an audience is a kind of caller, its members known only at run time",
+          "A word of a vocabulary": "a word cannot say what its callers carry, nor be read against what an entry point reaches"
+        }
+      }
+    },
+    {
+      "id": "access.TheOperators",
+      "kind": "audience",
+      "title": "The operators",
+      "fields": {
+        "owner": "trame",
+        "everyOwner": true
+      }
+    },
+    {
+      "id": "access.TheSystem",
+      "kind": "audience",
+      "title": "The system",
+      "fields": {
+        "owner": "trame",
+        "system": true
+      }
+    },
     {
       "id": "algebra.Counts",
       "kind": "structure",
@@ -1771,6 +1813,26 @@
       }
     },
     {
+      "id": "obligations.Identified",
+      "kind": "requirement",
+      "title": "Who calls a shipment's programs is identified",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "obligations.IdentifiedCriteria",
+      "kind": "acceptance",
+      "title": "Criteria of who calls",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "criteria": "(function)"
+      }
+    },
+    {
       "id": "obligations.Preceded",
       "kind": "requirement",
       "title": "The artefacts a shipment ships were shipped first by those that precede it",
@@ -1903,10 +1965,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "105",
+        "version": "106",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g105"
+        "at": "../generations/g106"
       }
     },
     {
@@ -2407,6 +2469,19 @@
       }
     },
     {
+      "id": "releases.R0_18_0",
+      "kind": "release",
+      "title": "Version 0.18.0",
+      "fields": {
+        "owner": "trame",
+        "version": "0.18.0",
+        "date": "2026-11-18",
+        "what": "access: the audiences Anyone, TheSystem and TheOperators; the family Identified",
+        "fingerprint": "7e9e89a93567af15",
+        "language": "shared"
+      }
+    },
+    {
       "id": "releases.R0_2_0",
       "kind": "release",
       "title": "Version 0.2.0",
@@ -2805,6 +2880,15 @@
           "checks": "scenarios.ScenarioChecks"
         },
         "body": "(function)"
+      }
+    },
+    {
+      "id": "sdlc.CallersIdentified",
+      "kind": "obligation",
+      "title": "Its callers identified",
+      "fields": {
+        "owner": "trame",
+        "gaps": "error"
       }
     },
     {
@@ -3870,6 +3954,31 @@
   ],
   "edges": [
     {
+      "from": "access.Anyone",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "access.SaysItsAudience",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "access.SaysItsAudience",
+      "to": "obligations.Identified",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "access.TheOperators",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "access.TheSystem",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
       "from": "algebra.Counts",
       "to": "product.SharedOperations",
       "kind": "serves"
@@ -4088,6 +4197,16 @@
       "from": "obligations.CheckWays",
       "to": "product.SharedRules",
       "kind": "serves"
+    },
+    {
+      "from": "obligations.Identified",
+      "to": "product.SharedRules",
+      "kind": "refines"
+    },
+    {
+      "from": "obligations.IdentifiedCriteria",
+      "to": "obligations.Identified",
+      "kind": "accepts"
     },
     {
       "from": "obligations.Preceded",
@@ -4645,6 +4764,36 @@
       "kind": "serves"
     },
     {
+      "from": "releases.R0_18_0",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_18_0",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_18_0",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_18_0",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_18_0",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_18_0",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
       "from": "releases.R0_2_0",
       "to": "product.CitedNotCopied",
       "kind": "serves"
@@ -5120,6 +5269,16 @@
       "kind": "deps"
     },
     {
+      "from": "sdlc.CallersIdentified",
+      "to": "obligations.Identified",
+      "kind": "applies"
+    },
+    {
+      "from": "sdlc.CallersIdentified",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
       "from": "sdlc.DecisionsApplied",
       "to": "obligations.Applied",
       "kind": "applies"
@@ -5202,6 +5361,11 @@
     {
       "from": "sdlc.VersionMode",
       "to": "sdlc.PackagesSafe",
+      "kind": "obligations"
+    },
+    {
+      "from": "sdlc.VersionMode",
+      "to": "sdlc.CallersIdentified",
       "kind": "obligations"
     },
     {

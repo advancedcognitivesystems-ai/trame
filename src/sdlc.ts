@@ -27,11 +27,12 @@ import { DocumentMarkup } from "./markup"
 import { AttributeSelector } from "./html"
 import { Language, ScenarioMessages } from "./messages"
 import { ShowGraph, ExplorerFigures, BrowserWindow, BrowserMemory, BrowserFeed, BrowserAmendments, BrowserDecompression } from "./browser"
-import { Verified, Served, Applied, Checked, Ruled, Safe } from "#std/obligations"
+import { Verified, Served, Applied, Checked, Ruled, Safe, Identified } from "#std/obligations"
 import { TrameCli, Local } from "./architecture"
 import { TestKinds, Advance, Doctor } from "./commands"
 import { DiskReading, DiskWriting, DiskTrees, NodeProcess, NodePrograms, NodeTerminal, SystemClock, NpmReports, NpmInstall, NodeHttpServer, RunsOnDisk } from "./platform"
 import { ExecutableSpecification } from "./product"
+import { TheOperators } from "#std/access"
 
 // How a new version of Trame becomes the one projects run, in Trame's graph. The engine described by the graph is
 // assembled into a program (the candidate); it plays the laws of the kinds and the views; the rules of the
@@ -103,14 +104,21 @@ export const ArchitectureRuled = obligation({ owner: "trame", applies: Ruled, se
 export const EnginePackagesSafe = obligation({ owner: "trame", applies: Safe, serves: [ExecutableSpecification] })
 
 /**
+ * Its callers identified
+ * Each command is for an audience that carries no identity (whoever is at the terminal, the operators of the project),
+ * or one that something identifies: an audience carrying an identity that nothing identifies keeps the generation (C6).
+ */
+export const EngineCallersIdentified = obligation({ owner: "trame", applies: Identified, gaps: Severity.error, serves: [ExecutableSpecification] })
+
+/**
  * How a generation is made
  * The way Trame advances its engine: the code it reaches verified (a gap is an error), the goals it serves held, the
- * decisions it applies held, the candidate checked by programs, the rules held, the packages safe; and the foundations,
- * as always.
+ * decisions it applies held, the candidate checked by programs, the rules held, the packages safe, its callers
+ * identified; and the foundations, as always.
  */
 export const GenerationMode = policy({
   owner: "trame",
-  obligations: [EngineVerified, LanguageServed, ArchitectureApplied, CandidateChecked, ArchitectureRuled, EnginePackagesSafe],
+  obligations: [EngineVerified, LanguageServed, ArchitectureApplied, CandidateChecked, ArchitectureRuled, EnginePackagesSafe, EngineCallersIdentified],
 })
 
 /**
@@ -232,7 +240,7 @@ export const SdlcWords = catalog({
  */
 export const OpenTheGraphPage = entryPoint({
   owner: "trame",
-  in: TrameSdlc,
+  in: TrameSdlc, for: TheOperators,
   serves: [ExecutableSpecification],
   trigger: command("open-graph-page"),
   deps: {

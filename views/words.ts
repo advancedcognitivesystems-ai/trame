@@ -48,6 +48,18 @@ const body = () => ({
 
   assemblyPort: () => "Port",
   choicesTechnicalChoices: () => "Technical choices",
+  accessWhoMayCall: () => "Callers",
+  accessIntro: () => "Who may call each entry point, from where, and the records it reaches that belong to someone, as of ",
+  accessIntroMore: () =>
+    ". Its audience says who may call it; its trigger says where from. Records that belong to a person or a tenant ask an audience that carries that identity, or one that reaches every owner's records; until identification comes (C7), nothing checks who calls.",
+  accessNone: () => "The graph has no entry point.",
+  accessEntryPoint: () => "Entry point",
+  accessFor: () => "For",
+  accessFrom: () => "Called from",
+  accessOwned: () => "Records it reaches that belong to someone",
+  accessOwnedIn: (identities: string, environments: string) => ` (${identities}; in ${environments})`,
+  accessSummary: (entries: number, audiences: number, owned: number) =>
+    `${plural(entries, { one: "entry point", other: "entry points" })} for ${plural(audiences, { one: "audience", other: "audiences" })}; ${plural(owned, { one: "of them reaches", other: "of them reach" })} records that belong to someone`,
   choicesTheGraphMakesNoTechnicalChoice: () => "The graph makes no technical choice: each implementation names the environments it serves.",
   choicesPattern: () => "Pattern",
   choicesFollowedBy: () => "Followed by",

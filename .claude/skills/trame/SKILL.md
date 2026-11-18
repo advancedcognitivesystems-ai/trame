@@ -86,7 +86,13 @@ The repository's `AGENTS.md` is the full guide; read it first, then keep to this
   `Records` many in SQL (`RecordsInSql`, `SqliteTables` or `PostgresTables`). A deployment keeps each entity's
   description; the entity computes the migration from each version kept, and the family `Migrated` keeps a shipment on
   a step its owner has not decided. A new table starts with the entity's `seed` where a binding chooses
-  `SeedOfTheEntity`. Type values with `EntityOf<typeof E>`, never by hand (AGENTS.md, section 5c).
+  `SeedOfTheEntity`. Type values with `EntityOf<typeof E>`, never by hand (AGENTS.md, section 5c). An entity that
+  keeps what belongs to someone says by which field (`ownedBy: { person: "driver" }`, or `tenant`).
+- Every entry point says who calls it (`for:`), or the build refuses: `Anyone`, `TheSystem` (a schedule or a message
+  only), `TheOperators` (the SDLC's programs, every owner's records) from `#std/access`, or the product's own
+  `audience({ owner, carries: [Identity.person], serves })`. An entry point that reaches an owned entity is for an
+  audience carrying that identity; nothing identifies one yet (C7), so the family `Identified` makes it a gap
+  (AGENTS.md, section 5d; `docs/callers.md`).
 - A rule applies a requirement of `#std/rules` (`Reaches`, `NeverReaches`, `Linked`, `WithoutEffects`, `WordsOf`) with
   its `params`, never a hidden function, and says why: it `serves` a goal, or an ADR applies it.
 - Never edit `docs/`, `graph.json`, `snapshot.json`, `generations/`, `src/releases.ts` or `evidence/` by hand.
@@ -128,7 +134,7 @@ How a version becomes available is declared in the graph, with the kinds `role`,
 - A `review` names what must be reviewed (a dataset's rows in each language, or a node) and by which role; a role with
   `notAuthor` never reviews its own work.
 - An `obligation` applies one family of `#std/obligations` (`Verified`, `Served`, `Applied`, `Reviewed`, `Checked`,
-  `Ruled`, `Safe`, `Preceded`; `Migrated` from `#data/obligations`) with its `params` (typed by the family's rule; a node where it reads one) and says what a gap weighs (`gaps: Severity.error` is
+  `Ruled`, `Safe`, `Preceded`, `Identified`; `Migrated` from `#data/obligations`) with its `params` (typed by the family's rule; a node where it reads one) and says what a gap weighs (`gaps: Severity.error` is
   an error of the graph, `Severity.warning` says it); a `policy` groups the obligations of a way of working, one per
   family.
 - A `shipment` names a target, what it `ships`, the `policy` it follows, the entry points that `deploys` it, and the

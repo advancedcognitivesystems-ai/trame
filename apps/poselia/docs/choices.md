@@ -1,6 +1,6 @@
 # Technical choices
 
-*What answers each port in each environment on 12 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
+*What answers each port in each environment on 18 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
 
 > **6 technical choices for 21 ports, in 3 environments**
 
@@ -40,7 +40,7 @@
 
 ### The browser's realizations
 
-`InTheBrowser` · `src/app.ts:93` · status: **unknown**
+`InTheBrowser` · `src/app.ts:95` · status: **unknown**
 
 In a browser, the page loads, keeps the person's choices, reads the device's languages, speaks, keeps the screen awake and moves with the screen's frames as the standard library's realizations do; the screen is the document, the stage a scene of three.js in it, the bowl a sound made with Web Audio.
 
@@ -69,7 +69,7 @@ Context: The first delivery is a page a browser opens as it is; the phones come 
 
 ### Content carried by the app
 
-`ContentCarried` · `src/app.ts:116` · status: **held**
+`ContentCarried` · `src/app.ts:118` · status: **held**
 
 Until updates are downloaded, the app reads the content it was delivered with.
 
@@ -127,7 +127,7 @@ Consequences: The screen and what records it are chosen together: a scenario rea
 
 ### On the machine
 
-`OnTheMachine` · `src/sdlc.ts:86` · status: **held**
+`OnTheMachine` · `src/sdlc.ts:87` · status: **unknown**
 
 On a machine, the programs of the SDLC read their commands from Node's command line, the project's files from the disk, and open the page in Chromium driven by Playwright, as the standard library realizes them.
 
@@ -150,7 +150,7 @@ Context: A check must open the page a person opens: the file delivered, in a rea
 
 ### The SDLC in memory
 
-`SdlcInMemory` · `src/sdlc.ts:98` · status: **held**
+`SdlcInMemory` · `src/sdlc.ts:99` · status: **held**
 
 In the scenarios, the files are kept in memory and the browser shows the page a scenario writes.
 

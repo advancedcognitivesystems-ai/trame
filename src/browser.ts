@@ -27,6 +27,7 @@ import { EcmaScript } from "#std/ecmascript"
 import { Counts, Sequences, Texts, ValueTypes } from "#std/algebra"
 import { Adapter } from "#std/patterns"
 import { ExecutableSpecification, ReplaceableTechnology } from "./product"
+import { Anyone } from "#std/access"
 
 // The page Trame writes is a program of its own: the component "The page in a browser", assembled for the environment
 // Browser as the command line is for a machine. Its entry point shows the documents the engine wrote; its explorer
@@ -54,7 +55,7 @@ export const ExplorerFigures = fn({
  * in the rendering they chose; the graph comes packed in an exported page, or from trame dev at each compilation.
  */
 export const ShowGraph = entryPoint({
-  owner: "trame", in: PageApp, serves: [ExecutableSpecification],
+  owner: "trame", in: PageApp, for: Anyone, serves: [ExecutableSpecification],
   trigger: load(),
   deps: {
     window: PageWindow, memory: PageMemory, feed: GraphFeed, unpacking: Decompression, amendments: PageAmendments, explorer: ExplorerFigures, common: Common,

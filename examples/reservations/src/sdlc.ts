@@ -10,11 +10,12 @@ import { check } from "#trame/kinds/check"
 import { obligation } from "#trame/kinds/obligation"
 import { policy } from "#trame/kinds/policy"
 import { shipment } from "#trame/kinds/shipment"
-import { Verified, Served, Applied, Checked, Ruled, Safe } from "#std/obligations"
+import { Verified, Served, Applied, Checked, Ruled, Safe, Identified } from "#std/obligations"
 import { Migrated } from "#data/obligations"
 import { Records, PostgresTables, StartEmpty } from "#data/records"
 import { ProgramCommands, NodeProgramCommands } from "#std/tooling"
 import { ExitStatus } from "#std/system"
+import { TheOperators } from "#std/access"
 import { Adapter } from "#std/patterns"
 import { CancelWithoutStress } from "./cancellation"
 import { ReservationsApi } from "./architecture"
@@ -79,6 +80,7 @@ export const CommandsOnThisMachine = binding({
 export const PrepareStorage = entryPoint({
   owner: "karim",
   in: ReservationsSdlc,
+  for: TheOperators,
   serves: [CancelWithoutStress],
   trigger: command("prepare-storage"),
   deps: { records: Records, reservations: KeptReservation, refunds: KeptRefund, say: ApiMessages, exit: ExitStatus },
@@ -159,9 +161,20 @@ export const PackagesSafe = obligation({ owner: "karim", applies: Safe, serves: 
 export const KeptMigrates = obligation({ owner: "karim", applies: Migrated, gaps: Severity.error, serves: [CancelWithoutStress] })
 
 /**
+ * Who calls, identified
+ * Each audience the service's entry points are for that carries an identity (drivers) is identified where a release runs
+ * it: otherwise whoever reaches the service would call as any driver. A gap is said, not yet refused: nothing can
+ * identify anyone before C7.
+ */
+export const CallersIdentified = obligation({ owner: "karim", applies: Identified, gaps: Severity.warning, serves: [CancelWithoutStress] })
+
+/**
  * The way of a release
  */
-export const ReleaseMode = policy({ owner: "karim", obligations: [CodeVerified, GoalServed, DecisionsApplied, EveryCheck, RulesHeld, PackagesSafe, KeptMigrates] })
+export const ReleaseMode = policy({
+  owner: "karim",
+  obligations: [CodeVerified, GoalServed, DecisionsApplied, EveryCheck, RulesHeld, PackagesSafe, KeptMigrates, CallersIdentified],
+})
 
 /**
  * The way of this machine

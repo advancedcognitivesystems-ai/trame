@@ -30,6 +30,7 @@ import { Drivers } from "./languages"
 import { Advancement, AcceptCandidate, EnginePin, LanguageSharing, Releases, ReleaseRecords } from "./generations"
 import { Punctuation } from "./documents"
 import { ShipOnlyWhatHolds, SdlcEvidence, ShipmentRunPlan, ProgramBundle } from "./shipping"
+import { Anyone } from "#std/access"
 
 /**
  * Preparation
@@ -74,7 +75,7 @@ export const Assembler = fn({
  * Checks, writes docs/ in Markdown, graph.json and snapshot.json, shows the summary.
  */
 export const Build = entryPoint({
-  owner: "trame", in: TrameCli, serves: [ExecutableSpecification],
+  owner: "trame", in: TrameCli, for: Anyone, serves: [ExecutableSpecification],
   trigger: command(commandNames.build),
   deps: { exitStatus: ExitStatus, layout: Layout, preparation: Preparation, machine: MachineOutputs, files: FileRendering, screen: TerminalRendering, writing: FileWriting, paths: Paths, terminal: Terminal, messages: CommandMessages },
   body: code.file<typeof import("./code/commands/build").default>("./code/commands/build.ts"),
@@ -88,7 +89,7 @@ export const Build = entryPoint({
  * assembled from and of its libraries'.
  */
 export const Advance = entryPoint({
-  owner: "trame", in: TrameCli, serves: [ExecutableSpecification],
+  owner: "trame", in: TrameCli, for: Anyone, serves: [ExecutableSpecification],
   trigger: command(commandNames.advance),
   deps: {
     exitStatus: ExitStatus, preparation: Preparation, engines: EngineFingerprint, line: TrameCommands, layout: Layout, advancement: Advancement, accept: AcceptCandidate,
@@ -108,7 +109,7 @@ export const Advance = entryPoint({
  * The laws of kinds and views, and the imports.
  */
 export const TestKinds = entryPoint({
-  owner: "trame", in: TrameCli, serves: [ExecutableSpecification],
+  owner: "trame", in: TrameCli, for: Anyone, serves: [ExecutableSpecification],
   trigger: command(commandNames.testKinds),
   deps: {
     exitStatus: ExitStatus, preparation: Preparation, compiler: Compiler, views: Views, laws: Laws, terminal: Terminal,
@@ -121,7 +122,7 @@ export const TestKinds = entryPoint({
  * Take the snapshot
  */
 export const TakeSnapshot = entryPoint({
-  owner: "trame", in: TrameCli, serves: [SingleSource],
+  owner: "trame", in: TrameCli, for: Anyone, serves: [SingleSource],
   trigger: command(commandNames.snapshot),
   deps: { exitStatus: ExitStatus, layout: Layout, preparation: Preparation, machine: MachineOutputs, files: FileRendering, writing: FileWriting, paths: Paths, terminal: Terminal, messages: CommandMessages },
   body: code.file<typeof import("./code/commands/snapshot").default>("./code/commands/snapshot.ts"),
@@ -132,7 +133,7 @@ export const TakeSnapshot = entryPoint({
  * The current declarations enter trame.lock and no longer change.
  */
 export const Publish = entryPoint({
-  owner: "trame", in: TrameCli, serves: [SingleSource],
+  owner: "trame", in: TrameCli, for: Anyone, serves: [SingleSource],
   trigger: command(commandNames.publish),
   deps: {
     exitStatus: ExitStatus, preparation: Preparation, lock: Lock, writing: FileWriting, terminal: Terminal,
@@ -146,7 +147,7 @@ export const Publish = entryPoint({
  * The compiled graph in the intermediate format, at one date or at all of them.
  */
 export const EmitPayload = entryPoint({
-  owner: "trame", in: TrameCli, serves: [ExecutableSpecification],
+  owner: "trame", in: TrameCli, for: Anyone, serves: [ExecutableSpecification],
   trigger: command(commandNames.payload),
   deps: { exitStatus: ExitStatus, preparation: Preparation, payload: PayloadBuilder, files: FileRendering, screen: TerminalRendering, pageRendering: PageRendering, terminal: Terminal },
   body: code.file<typeof import("./code/commands/payload").default>("./code/commands/payload.ts"),
@@ -157,7 +158,7 @@ export const EmitPayload = entryPoint({
  * Asks the registry about each package of the graph: its known vulnerabilities, its latest version.
  */
 export const Audit = entryPoint({
-  owner: "trame", in: TrameCli, serves: [SingleSource],
+  owner: "trame", in: TrameCli, for: Anyone, serves: [SingleSource],
   trigger: command(commandNames.audit),
   deps: {
     exitStatus: ExitStatus, preparation: Preparation, reports: PackageReports, audit: PackageAudit, layout: Layout,
@@ -175,7 +176,7 @@ export const Audit = entryPoint({
  * #trame/kinds/*: the generation it pins), each package placed by where it comes from.
  */
 export const WriteManifest = entryPoint({
-  owner: "trame", in: TrameCli, serves: [SingleSource],
+  owner: "trame", in: TrameCli, for: Anyone, serves: [SingleSource],
   trigger: command(commandNames.manifest),
   deps: {
     exitStatus: ExitStatus, preparation: Preparation, npm: NpmManifest, layout: Layout, project: Project, specifiers: NodeModuleSpecifiers,
@@ -194,7 +195,7 @@ export const WriteManifest = entryPoint({
  * use, in one document a browser opens as it is. Refused while the graph is in error.
  */
 export const Deliver = entryPoint({
-  owner: "trame", in: TrameCli, serves: [ExecutableSpecification],
+  owner: "trame", in: TrameCli, for: Anyone, serves: [ExecutableSpecification],
   trigger: command(commandNames.deliver),
   deps: {
     exitStatus: ExitStatus, preparation: Preparation, assembly: Assembly, assembler: Assembler, bundler: Bundler, led: NamesLed, bundle: PageBundle, document: PageDocument,
@@ -214,7 +215,7 @@ export const Deliver = entryPoint({
  * for the shipment's environment.
  */
 export const Ship = entryPoint({
-  owner: "trame", in: TrameCli, serves: [ShipOnlyWhatHolds],
+  owner: "trame", in: TrameCli, for: Anyone, serves: [ShipOnlyWhatHolds],
   trigger: command(commandNames.ship),
   deps: {
     exitStatus: ExitStatus, line: TrameCommands, preparation: Preparation, deliver: Deliver, assembly: Assembly, assembler: Assembler, sdlc: SdlcEvidence, runPlan: ShipmentRunPlan,
@@ -233,7 +234,7 @@ export const Ship = entryPoint({
  * own work when the role forbids it.
  */
 export const RecordEvidence = entryPoint({
-  owner: "trame", in: TrameCli, serves: [ShipOnlyWhatHolds],
+  owner: "trame", in: TrameCli, for: Anyone, serves: [ShipOnlyWhatHolds],
   trigger: command(commandNames.evidence),
   deps: {
     exitStatus: ExitStatus, line: TrameCommands, preparation: Preparation, sdlc: SdlcEvidence, writing: FileWriting, paths: Paths, terminal: Terminal,
@@ -249,7 +250,7 @@ export const RecordEvidence = entryPoint({
  * release in the library's module of releases. Refused when something is left to decide or in error.
  */
 export const Release = entryPoint({
-  owner: "trame", in: TrameCli, serves: [SingleSource],
+  owner: "trame", in: TrameCli, for: Anyone, serves: [SingleSource],
   trigger: command(commandNames.release),
   deps: {
     packages: PackageSources,
@@ -266,7 +267,7 @@ export const Release = entryPoint({
  * Export the page
  */
 export const Export = entryPoint({
-  owner: "trame", in: TrameCli, serves: [ExecutableSpecification],
+  owner: "trame", in: TrameCli, for: Anyone, serves: [ExecutableSpecification],
   trigger: command(commandNames.export),
   deps: { exitStatus: ExitStatus, layout: Layout, preparation: Preparation, bundle: DateBundle, page: Page, project: Project, writing: FileWriting, paths: Paths, terminal: Terminal, messages: CommandMessages },
   body: code.file<typeof import("./code/commands/export").default>("./code/commands/export.ts"),
@@ -292,7 +293,7 @@ export const DoctorProbe = decision<{ file: string; text: string; program: strin
  * check of Trame's shipment, it proves the realizations no scenario in memory can run.
  */
 export const Doctor = entryPoint({
-  owner: "trame", in: TrameCli, serves: [ExecutableSpecification],
+  owner: "trame", in: TrameCli, for: Anyone, serves: [ExecutableSpecification],
   trigger: command(commandNames.doctor),
   deps: {
     exitStatus: ExitStatus, preparation: Preparation, probe: DoctorProbe, iso: Iso8601, reading: FileReading, writing: FileWriting, trees: FileTrees,
@@ -322,7 +323,7 @@ export const BuildComparison = fn({
 })
 
 export const Plan = entryPoint({
-  owner: "trame", in: TrameCli, serves: [ExecutableSpecification],
+  owner: "trame", in: TrameCli, for: Anyone, serves: [ExecutableSpecification],
   trigger: command(commandNames.plan),
   deps: {
     exitStatus: ExitStatus, layout: Layout, text: TerminalText, preparation: Preparation, machine: MachineOutputs, comparison: BuildComparison,
@@ -356,7 +357,7 @@ export const Amending = fn({
  * only says. A cited value changes only with its source (--source); a value code is built on, never from here.
  */
 export const Amend = entryPoint({
-  owner: "trame", in: TrameCli, serves: [SingleSource],
+  owner: "trame", in: TrameCli, for: Anyone, serves: [SingleSource],
   trigger: command(commandNames.amend),
   deps: {
     exitStatus: ExitStatus, preparation: Preparation, amending: Amending, place: AmendmentPlace, paths: Paths, text: TerminalText, terminal: Terminal,
@@ -371,7 +372,7 @@ export const Amend = entryPoint({
  * reference written again in its module, then the manifest (C1, since g100).
  */
 export const Upgrade = entryPoint({
-  owner: "trame", in: TrameCli, serves: [SingleSource],
+  owner: "trame", in: TrameCli, for: Anyone, serves: [SingleSource],
   trigger: command(commandNames.upgrade),
   deps: {
     exitStatus: ExitStatus, preparation: Preparation, reading: FileReading, writing: FileWriting, paths: Paths, versions: VersionOrder, text: StringLiteral,
@@ -387,7 +388,7 @@ export const Upgrade = entryPoint({
  * and the releases of its libraries; after a clone, what fills the registry again.
  */
 export const Registry = entryPoint({
-  owner: "trame", in: TrameCli, serves: [SingleSource],
+  owner: "trame", in: TrameCli, for: Anyone, serves: [SingleSource],
   trigger: command(commandNames.registry),
   deps: {
     exitStatus: ExitStatus, preparation: Preparation, layout: Layout, project: Project, packages: PackageSources, names: LanguageNames,
@@ -416,7 +417,7 @@ export const ReferencesModule = fn({
  * first module with the goal it serves, the guide for agents and the skill, then its manifest, by a fresh engine.
  */
 export const Init = entryPoint({
-  owner: "trame", in: TrameCli, serves: [SingleSource],
+  owner: "trame", in: TrameCli, for: Anyone, serves: [SingleSource],
   trigger: command(commandNames.init),
   deps: {
     exitStatus: ExitStatus, preparation: Preparation, layout: Layout, project: Project, prelude: Prelude, start: ProjectStart, pin: EnginePin,
@@ -432,7 +433,7 @@ export const Init = entryPoint({
  * Start trame dev
  */
 export const Dev = entryPoint({
-  owner: "trame", in: TrameCli, serves: [ExecutableSpecification],
+  owner: "trame", in: TrameCli, for: Anyone, serves: [ExecutableSpecification],
   trigger: command(commandNames.dev),
   deps: { preparation: Preparation, devServer: DevServer, amending: Amending, place: AmendmentPlace, paths: Paths },
   body: code.file<typeof import("./code/commands/dev").default>("./code/commands/dev.ts"),
@@ -442,7 +443,7 @@ export const Dev = entryPoint({
  * Assemble a component
  */
 export const Assemble = entryPoint({
-  owner: "trame", in: TrameCli, serves: [ExecutableSpecification],
+  owner: "trame", in: TrameCli, for: Anyone, serves: [ExecutableSpecification],
   trigger: command(commandNames.assemble),
   deps: { exitStatus: ExitStatus, preparation: Preparation, assembler: Assembler, writing: FileWriting, paths: Paths, terminal: Terminal, messages: CommandMessages },
   body: code.file<typeof import("./code/commands/assemble").default>("./code/commands/assemble.ts"),
@@ -453,7 +454,7 @@ export const Assemble = entryPoint({
  * Assembles, then runs the program and exits with its code.
  */
 export const Run = entryPoint({
-  owner: "trame", in: TrameCli, serves: [ExecutableSpecification],
+  owner: "trame", in: TrameCli, for: Anyone, serves: [ExecutableSpecification],
   trigger: command(commandNames.run),
   deps: { exitStatus: ExitStatus, assemble: Assemble, currentProcess: Process, posix: Posix, events: NodeEvents },
   body: code.file<typeof import("./code/commands/run").default>("./code/commands/run.ts"),
@@ -463,7 +464,7 @@ export const Run = entryPoint({
  * Show a view
  */
 export const ShowView = entryPoint({
-  owner: "trame", in: TrameCli, serves: [ExecutableSpecification],
+  owner: "trame", in: TrameCli, for: Anyone, serves: [ExecutableSpecification],
   trigger: command(commandNames.view),
   deps: { exitStatus: ExitStatus, preparation: Preparation, renderView: RenderView },
   body: code.file<typeof import("./code/commands/show-view").default>("./code/commands/show-view.ts"),
@@ -474,7 +475,7 @@ export const ShowView = entryPoint({
  * Any other command: the name of a view.
  */
 export const ViewByName = entryPoint({
-  owner: "trame", in: TrameCli, serves: [ExecutableSpecification],
+  owner: "trame", in: TrameCli, for: Anyone, serves: [ExecutableSpecification],
   trigger: command(commandNames.fallback),
   deps: { line: TrameCommands, exitStatus: ExitStatus, preparation: Preparation, renderView: RenderView, compiler: Compiler, views: Views, terminal: Terminal, texts: Texts, messages: CommandMessages },
   body: code.file<typeof import("./code/commands/view-by-name").default>("./code/commands/view-by-name.ts"),

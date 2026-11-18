@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-10",
+  "generated": "2026-11-18",
   "nodes": [
     {
       "id": "angles.Angle",
@@ -37,7 +37,7 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "trame",
-        "version": "105",
+        "version": "106",
         "joins": "language",
         "from": "registry"
       },
@@ -55,7 +55,9 @@
         "joins": "library",
         "from": "registry"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: std 0.18.0 is out, the reference names 0.17.0: trame upgrade std moves it"
+      ]
     },
     {
       "id": "product.GeometryWrittenOnce",
@@ -169,7 +171,7 @@
       },
       "result": {
         "path": "src",
-        "code": "ec0abedf"
+        "code": "53b2d571"
       },
       "diagnostics": []
     },

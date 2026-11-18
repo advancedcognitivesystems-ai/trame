@@ -40,6 +40,7 @@ import { Poses, Sequences, Languages } from "./content"
 import { PlayerNames } from "./practice"
 import { ComposerNames } from "./composing"
 import { English } from "./language"
+import { TheOperators } from "#std/access"
 
 // How a version of Poselia reaches people, in its graph: the page is an artefact its delivery produces; a program of
 // the SDLC opens it in a browser without a screen, another places it where it is served; a person checks it on a phone;
@@ -175,6 +176,7 @@ export const SdlcWords = catalog({
 export const OpenThePage = entryPoint({
   owner: "ghalaax",
   in: PoseliaSdlc,
+  for: TheOperators,
   serves: [PractiseGuided],
   trigger: command("open-page"),
   deps: {
@@ -191,6 +193,7 @@ export const OpenThePage = entryPoint({
 export const PlaceThePage = entryPoint({
   owner: "ghalaax",
   in: PoseliaSdlc,
+  for: TheOperators,
   serves: [PractiseGuided],
   trigger: command("place-page"),
   deps: { files: Files, page: PageFile, served: ServedPage, say: SdlcWords, exit: ExitStatus },
