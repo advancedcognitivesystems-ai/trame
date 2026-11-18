@@ -1,6 +1,6 @@
 # Architecture decisions
 
-*The choices that shape the product without being values, in force on 18 November 2026: why each was taken, what was rejected, and the nodes that apply it.*
+*The choices that shape the product without being values, in force on 30 October 2026: why each was taken, what was rejected, and the nodes that apply it.*
 
 > **37 architecture decisions, 34 held by the nodes that apply them**
 
@@ -277,7 +277,7 @@ A published declaration is never erased: it is amended or repealed, and the grap
 
 Context: A decision is read by people who took it, people who apply it, and auditors who must know what was in force on a date.
 
-Consequences: trame publish freezes the fingerprint of each declaration in trame.lock; changing or removing a published one is an error. --at gives the graph of any date.
+Consequences: trame publish freezes in trame.lock, part by part, what the kind of each declaration says people decide: a value chosen or cited, a statement (D1, since g108). Changing a frozen part is an error: an amendment changes a value, a new node that repeals it a statement, and a migration publishes again a form, never a value. Removing a published declaration is an error. Its code stays free, held by what verifies it. --at gives the graph of any date.
 
 | Rejected | Why |
 |---|---|

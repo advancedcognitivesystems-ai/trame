@@ -1,6 +1,6 @@
 # Layers
 
-*The graph in force on 18 November 2026, ordered by distance to the goals.*
+*The graph in force on 30 October 2026, ordered by distance to the goals.*
 
 ```mermaid
 flowchart TB
@@ -667,7 +667,7 @@ flowchart TB
     n607["The next generation<br/><small>Shipment</small>"]:::unknown
     n608["The graph page is opened as a person would<br/><small>Scenario</small>"]:::held
     n609["Open the graph page<br/><small>Entry point</small>"]:::held
-    n610["The page's program<br/><small>Artefact</small>"]:::held
+    n610["The page's program<br/><small>Artefact</small>"]:::unknown
     n611["The SDLC in memory<br/><small>Technical choice</small>"]:::held
     n612["The SDLC on the machine<br/><small>Technical choice</small>"]:::unknown
     n613["What the programs of Trame's SDLC say<br/><small>Message catalog</small>"]:::neutral
