@@ -68,7 +68,7 @@ The programs that check what a generation ships and that the engine does not run
 
 - Owner: trame
 - Language: typescript
-- Startup: `exposure` ← [Commands of a program](../std/releases/0.18.0/docs/tooling.md#ProgramCommands)
+- Startup: `exposure` ← [Commands of a program](../std/releases/0.18.1/docs/tooling.md#ProgramCommands)
 - Effects: terminal
 - Deployed in: [Local](architecture.md#Local)
 - Exposes: [Open the graph page](#OpenTheGraphPage)
@@ -84,7 +84,7 @@ The programs that check what a generation ships and that the engine does not run
 The selectors of what a person sees, from the regions the page declares: the documents of its navigation, the links of the document shown, the nodes of its picker, the entry of the figure of the layers, the picker of documents (what a phone shows in place of the navigation) and the figure's document, and a figure drawn.
 
 - Owner: trame
-- Parameters: `regions` ← [Regions of the page](page.md#PageRegions) · `markup` ← [Documents in the page](markup.md#DocumentMarkup) · `attribute` ← [Attribute selector](html.md#AttributeSelector) · `html` ← [HTML](../std/releases/0.18.0/docs/html.md#Html) · `css` ← [CSS](../std/releases/0.18.0/docs/html.md#Css) · `svg` ← [SVG](../std/releases/0.18.0/docs/html.md#Svg)
+- Parameters: `regions` ← [Regions of the page](page.md#PageRegions) · `markup` ← [Documents in the page](markup.md#DocumentMarkup) · `attribute` ← [Attribute selector](html.md#AttributeSelector) · `html` ← [HTML](../std/releases/0.18.1/docs/html.md#Html) · `css` ← [CSS](../std/releases/0.18.1/docs/html.md#Css) · `svg` ← [SVG](../std/releases/0.18.1/docs/html.md#Svg)
 - Body: inline, in the declaration
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Verified by: [The graph page is opened as a person would](#OpeningTheGraphPage)
@@ -103,12 +103,12 @@ Opens the graph page in Chromium without a screen, a phone's width: the navigati
 Triggered by `command open-graph-page`
 
 - Owner: trame
-- Parameters: `browser` ← [Headless browser](../std/releases/0.18.0/docs/tooling.md#HeadlessBrowser) · `page` ← [The graph page](#GraphPage) · `language` ← [Language](messages.md#Language) · `selectors` ← [What the graph page is asked](#GraphPageSelectors) · `opening` ← [How the graph page is opened](#GraphPageOpening) · `say` ← [What the programs of Trame's SDLC say](#SdlcWords) · `exit` ← [Exit status](../std/releases/0.18.0/docs/system.md#ExitStatus) · `counts` ← [Counts](../std/releases/0.18.0/docs/algebra.md#Counts)
+- Parameters: `browser` ← [Headless browser](../std/releases/0.18.1/docs/tooling.md#HeadlessBrowser) · `page` ← [The graph page](#GraphPage) · `language` ← [Language](messages.md#Language) · `selectors` ← [What the graph page is asked](#GraphPageSelectors) · `opening` ← [How the graph page is opened](#GraphPageOpening) · `say` ← [What the programs of Trame's SDLC say](#SdlcWords) · `exit` ← [Exit status](../std/releases/0.18.1/docs/system.md#ExitStatus) · `counts` ← [Counts](../std/releases/0.18.1/docs/algebra.md#Counts)
 - Body: `./code/sdlc/open-the-graph-page.ts` (typescript)
 - Effects: asynchronous, display, network, process, time
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Part of: [Trame's SDLC](#TrameSdlc)
-- For: [The operators](../std/releases/0.18.0/docs/access.md#TheOperators)
+- For: [The operators](../std/releases/0.18.1/docs/access.md#TheOperators)
 - Runs: [The graph page opens](#GraphPageOpens)
 - Verified by: [The graph page is opened as a person would](#OpeningTheGraphPage)
 - Used by: [The graph page is opened as a person would](#OpeningTheGraphPage)
@@ -155,14 +155,14 @@ In [Test](architecture.md#Test):
 
 | Port | Answered by | Which is |
 |---|---|---|
-| [Browser script](../std/releases/0.18.0/docs/tooling.md#BrowserScripted), [Headless browser](../std/releases/0.18.0/docs/tooling.md#HeadlessBrowser) | [A browser kept in memory](../std/releases/0.18.0/docs/tooling.md#BrowserInMemory) | a function |
+| [Browser script](../std/releases/0.18.1/docs/tooling.md#BrowserScripted), [Headless browser](../std/releases/0.18.1/docs/tooling.md#HeadlessBrowser) | [A browser kept in memory](../std/releases/0.18.1/docs/tooling.md#BrowserInMemory) | a function |
 
 Context: A program of the SDLC is code like the engine's: its scenarios play it before it runs on a machine.
 
 - Decided by: trame
-- Chooses: [A browser kept in memory](../std/releases/0.18.0/docs/tooling.md#BrowserInMemory)
+- Chooses: [A browser kept in memory](../std/releases/0.18.1/docs/tooling.md#BrowserInMemory)
 - In: [Test](architecture.md#Test)
-- Follows: [Strategy](../std/releases/0.18.0/docs/patterns.md#Strategy)
+- Follows: [Strategy](../std/releases/0.18.1/docs/patterns.md#Strategy)
 
 <a id="SdlcOnTheMachine"></a>
 
@@ -176,15 +176,15 @@ In [Local](architecture.md#Local):
 
 | Port | Answered by | Which is |
 |---|---|---|
-| [Commands of a program](../std/releases/0.18.0/docs/tooling.md#ProgramCommands) | [Node's command line](../std/releases/0.18.0/docs/tooling.md#NodeProgramCommands) | an implementation |
-| [Headless browser](../std/releases/0.18.0/docs/tooling.md#HeadlessBrowser) | [Chromium, driven by Playwright](../std/releases/0.18.0/docs/tooling.md#PlaywrightBrowser) | an implementation |
+| [Commands of a program](../std/releases/0.18.1/docs/tooling.md#ProgramCommands) | [Node's command line](../std/releases/0.18.1/docs/tooling.md#NodeProgramCommands) | an implementation |
+| [Headless browser](../std/releases/0.18.1/docs/tooling.md#HeadlessBrowser) | [Chromium, driven by Playwright](../std/releases/0.18.1/docs/tooling.md#PlaywrightBrowser) | an implementation |
 
 Context: The graph page must be opened as a person opens it: the file exported, in a real browser.
 
 - Decided by: trame
-- Chooses: [Node's command line](../std/releases/0.18.0/docs/tooling.md#NodeProgramCommands), [Chromium, driven by Playwright](../std/releases/0.18.0/docs/tooling.md#PlaywrightBrowser)
+- Chooses: [Node's command line](../std/releases/0.18.1/docs/tooling.md#NodeProgramCommands), [Chromium, driven by Playwright](../std/releases/0.18.1/docs/tooling.md#PlaywrightBrowser)
 - In: [Local](architecture.md#Local)
-- Follows: [Adapter](../std/releases/0.18.0/docs/patterns.md#Adapter)
+- Follows: [Adapter](../std/releases/0.18.1/docs/patterns.md#Adapter)
 
 ## Scenario
 
@@ -205,15 +205,15 @@ In memory, the browser shows a page with its documents, a document, its nodes an
 
 <details><summary>The code it runs: 3 nodes</summary>
 
-[A browser kept in memory](../std/releases/0.18.0/docs/tooling.md#BrowserInMemory), [What the graph page is asked](#GraphPageSelectors), [Open the graph page](#OpenTheGraphPage)
+[A browser kept in memory](../std/releases/0.18.1/docs/tooling.md#BrowserInMemory), [What the graph page is asked](#GraphPageSelectors), [Open the graph page](#OpenTheGraphPage)
 
 </details>
 
 - Owner: trame
-- Parameters: `open` ← [Open the graph page](#OpenTheGraphPage) · `script` ← [Browser script](../std/releases/0.18.0/docs/tooling.md#BrowserScripted) · `page` ← [The graph page](#GraphPage) · `selectors` ← [What the graph page is asked](#GraphPageSelectors) · `exit` ← [Exit status](../std/releases/0.18.0/docs/system.md#ExitStatus) · `say` ← [What the programs of Trame's SDLC say](#SdlcWords) · `data` ← [What the scenario of the graph page shows](#GraphPageScenarioData) · `counts` ← [Counts](../std/releases/0.18.0/docs/algebra.md#Counts) · `messages` ← [Messages of the scenarios](messages.md#ScenarioMessages)
+- Parameters: `open` ← [Open the graph page](#OpenTheGraphPage) · `script` ← [Browser script](../std/releases/0.18.1/docs/tooling.md#BrowserScripted) · `page` ← [The graph page](#GraphPage) · `selectors` ← [What the graph page is asked](#GraphPageSelectors) · `exit` ← [Exit status](../std/releases/0.18.1/docs/system.md#ExitStatus) · `say` ← [What the programs of Trame's SDLC say](#SdlcWords) · `data` ← [What the scenario of the graph page shows](#GraphPageScenarioData) · `counts` ← [Counts](../std/releases/0.18.1/docs/algebra.md#Counts) · `messages` ← [Messages of the scenarios](messages.md#ScenarioMessages)
 - Body: inline, in the declaration
 - Effects: asynchronous, display, network, process, time
-- Verifies: [Open the graph page](#OpenTheGraphPage), [What the graph page is asked](#GraphPageSelectors), [A browser kept in memory](../std/releases/0.18.0/docs/tooling.md#BrowserInMemory)
+- Verifies: [Open the graph page](#OpenTheGraphPage), [What the graph page is asked](#GraphPageSelectors), [A browser kept in memory](../std/releases/0.18.1/docs/tooling.md#BrowserInMemory)
 - In: [Test](architecture.md#Test)
 
 ## Role
@@ -243,7 +243,7 @@ The program of Trame's command line, assembled from the graph for a machine: wha
 
 - Path: `out/local/trame-cli.ts`
 
-Built 12 November 2026 by claude, fingerprint `6fd34c1d69e290d6a7de3a947e14ee13b00dec363aac9d3e0f3635c948865c39`.
+Built 18 November 2026 by claude, fingerprint `bb75f3708d4af46fbe563f29850e268ea0b66342c81e0d112b1772556934fb25`.
 
 Shipped by [The next generation](#NextGeneration) 8 November 2026, fingerprint `7b37d575242fcf8f0998170f818ac1b266c2f3408a5dc31f62eedaf3cbf0f2f4`.
 
@@ -269,7 +269,7 @@ The page trame export writes of Trame's graph, which a browser opens as it is: i
 - Path: `trame-page.html`
 - Media type: `text/html; charset=utf-8`
 
-Built 12 November 2026 by claude, fingerprint `27e888ca3491d00ab7459a5207b0c33d1d6fbb49a811e7c5b0c5b967965f3aa7`.
+Built 18 November 2026 by claude, fingerprint `e27050d391dc229427981167f05ba252f120a65f509a4ba0000725ecdc5710ce`.
 
 Shipped by [The next generation](#NextGeneration) 8 November 2026, fingerprint `99d138159c0e7fce465ffd74ec828b3cfa1bb501acf7d08ed97f495b21eca67a`.
 
@@ -296,7 +296,7 @@ The component that shows the graph page, assembled for the browser where the eng
 
 - Path: `out/browser/page-app.ts`
 
-Built 12 November 2026 by claude, fingerprint `0a3f5818c08d19e576690f09ac16f8549a847548e392862a2ced49520de325ea`.
+Built 18 November 2026 by claude, fingerprint `cf3d5da09cfa6c116b8268d918050a16ffbe83067ad50ff6aea01e2657e795f5`.
 
 Shipped by [The next generation](#NextGeneration) 8 November 2026, fingerprint `6416e1b80c44d0c602d83fd12a79c6785cb84f3d295f9795ed017ce759e2af04`.
 
@@ -321,7 +321,7 @@ Shipped by [The next generation](#NextGeneration) 12 November 2026, fingerprint 
 
 The candidate engine plays the laws of every kind and view on drawn values: one broken law, and it is not shipped.
 
-Passed 12 November 2026 by claude.
+Passed 18 November 2026 by claude.
 
 - Owner: trame
 - Checks: [The candidate engine](#EngineCandidate)
@@ -337,7 +337,7 @@ Passed 12 November 2026 by claude.
 
 The candidate engine asks the machine it was assembled for whether it runs Trame (trame doctor): it reads and writes files, copies and compares trees, runs programs, serves HTTP, keeps the time, asks the registry. What its run proves is what no scenario in memory can run: the realizations of the machine.
 
-Passed 12 November 2026 by claude.
+Passed 18 November 2026 by claude.
 
 - Owner: trame
 - Checks: [The candidate engine](#EngineCandidate)
@@ -353,13 +353,13 @@ Passed 12 November 2026 by claude.
 
 The graph page exported, opened in a browser without a screen by a program of the SDLC: the program of the page runs there, with what realizes it in a browser.
 
-Passed 12 November 2026 by claude.
+Failed 18 November 2026 by claude.
 
 - Owner: trame
 - Checks: [The graph page](#GraphPage)
 - Run by: [Open the graph page](#OpenTheGraphPage)
 - Signed by: [Trame's maintainers](#Maintainers)
-- Verifies: [Show the graph](browser.md#ShowGraph), [Explorer of a graph](browser.md#ExplorerFigures), [The browser loads the page](../std/releases/0.18.0/docs/platform.md#BrowserLoading), [The browser's window](browser.md#BrowserWindow), [Local storage](browser.md#BrowserMemory), [The globals of the page, and trame dev](browser.md#BrowserFeed), [Amendments sent to trame dev](browser.md#BrowserAmendments), [The browser's gzip](browser.md#BrowserDecompression), [Node's command line](../std/releases/0.18.0/docs/tooling.md#NodeProgramCommands), [Chromium, driven by Playwright](../std/releases/0.18.0/docs/tooling.md#PlaywrightBrowser)
+- Verifies: [Show the graph](browser.md#ShowGraph), [Explorer of a graph](browser.md#ExplorerFigures), [The browser loads the page](../std/releases/0.18.1/docs/platform.md#BrowserLoading), [The browser's window](browser.md#BrowserWindow), [Local storage](browser.md#BrowserMemory), [The globals of the page, and trame dev](browser.md#BrowserFeed), [Amendments sent to trame dev](browser.md#BrowserAmendments), [The browser's gzip](browser.md#BrowserDecompression), [Node's command line](../std/releases/0.18.1/docs/tooling.md#NodeProgramCommands), [Chromium, driven by Playwright](../std/releases/0.18.1/docs/tooling.md#PlaywrightBrowser)
 
 ## Shipment
 
@@ -496,7 +496,7 @@ Shipped 12 November 2026 by claude; its dossier: `evidence/shipments/NextGenerat
 Every ADR a reached node applies holds: an ADR applied only by what proves nothing is a hole to close, not one to leave out of the policy.
 
 - Owner: trame
-- Applies the family: [The decisions a shipment applies hold](../std/releases/0.18.0/docs/obligations.md#Applied)
+- Applies the family: [The decisions a shipment applies hold](../std/releases/0.18.1/docs/obligations.md#Applied)
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - In the policies: [How a generation is made](#GenerationMode)
 
@@ -509,7 +509,7 @@ Every ADR a reached node applies holds: an ADR applied only by what proves nothi
 Every rule of Trame's graph holds: none broken.
 
 - Owner: trame
-- Applies the family: [The project's rules hold](../std/releases/0.18.0/docs/obligations.md#Ruled)
+- Applies the family: [The project's rules hold](../std/releases/0.18.1/docs/obligations.md#Ruled)
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - In the policies: [How a generation is made](#GenerationMode)
 
@@ -530,7 +530,7 @@ Every check of the candidate a program runs: a generation is advanced by a machi
 </details>
 
 - Owner: trame
-- Applies the family: [The artefacts a shipment ships are checked](../std/releases/0.18.0/docs/obligations.md#Checked)
+- Applies the family: [The artefacts a shipment ships are checked](../std/releases/0.18.1/docs/obligations.md#Checked)
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - In the policies: [How a generation is made](#GenerationMode)
 
@@ -545,7 +545,7 @@ Each command is for an audience that carries no identity (whoever is at the term
 A gap it finds is an error of the graph.
 
 - Owner: trame
-- Applies the family: [Who calls a shipment's programs is identified](../std/releases/0.18.0/docs/obligations.md#Identified)
+- Applies the family: [Who calls a shipment's programs is identified](../std/releases/0.18.1/docs/obligations.md#Identified)
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - In the policies: [How a generation is made](#GenerationMode)
 
@@ -558,7 +558,7 @@ A gap it finds is an error of the graph.
 Every package the engine uses is installed at its version, without a known vulnerability.
 
 - Owner: trame
-- Applies the family: [The packages a shipment uses are safe](../std/releases/0.18.0/docs/obligations.md#Safe)
+- Applies the family: [The packages a shipment uses are safe](../std/releases/0.18.1/docs/obligations.md#Safe)
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - In the policies: [How a generation is made](#GenerationMode)
 
@@ -581,7 +581,7 @@ A gap it finds is an error of the graph.
 </details>
 
 - Owner: trame
-- Applies the family: [The code a shipment ships is verified](../std/releases/0.18.0/docs/obligations.md#Verified)
+- Applies the family: [The code a shipment ships is verified](../std/releases/0.18.1/docs/obligations.md#Verified)
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - In the policies: [How a generation is made](#GenerationMode)
 
@@ -594,7 +594,7 @@ A gap it finds is an error of the graph.
 Every requirement of the goals the reached code serves holds, at any depth.
 
 - Owner: trame
-- Applies the family: [The product a shipment serves holds](../std/releases/0.18.0/docs/obligations.md#Served)
+- Applies the family: [The product a shipment serves holds](../std/releases/0.18.1/docs/obligations.md#Served)
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - In the policies: [How a generation is made](#GenerationMode)
 

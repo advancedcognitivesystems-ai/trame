@@ -252,3 +252,16 @@ export const R0_18_0 = release({
   language: "shared",
   serves: [CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
 })
+
+/**
+ * Version 0.18.1
+ */
+export const R0_18_1 = release({
+  owner: "trame",
+  version: "0.18.1",
+  date: "2026-11-18",
+  what: "Playwright 1.63.0, whose Chromium the machine has",
+  fingerprint: "7c6f86977099fcef",
+  language: "shared",
+  serves: [CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
+})

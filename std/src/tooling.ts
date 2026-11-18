@@ -136,7 +136,7 @@ export const HeadlessBrowser = port<Browser>({ owner: "trame", declaredEffects: 
  * it drives, with what the system needs to run it: a machine that runs a check of the page does it first.
  */
 export const PlaywrightPackage = pkg({
-  owner: "trame", packageName: "playwright", version: "1.56.0", url: "https://www.npmjs.com/package/playwright",
+  owner: "trame", packageName: "playwright", version: "1.63.0", url: "https://www.npmjs.com/package/playwright",
   prepare: "npx playwright install --with-deps chromium",
   declaredEffects: ["process", "display", "network", "time", "asynchronous"],
 })

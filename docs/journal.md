@@ -2,7 +2,18 @@
 
 *What happened to the project, day by day, the latest first, up to the date of the graph (18 November 2026): the versions released, and the evidence given, each with the node it is about and who gave it.*
 
-> **23 days · 106 versions released · 387 pieces of evidence**
+> **24 days · 106 versions released · 393 pieces of evidence**
+
+## 18 November 2026
+
+| What | Node | By |
+|---|---|---|
+| Check passed | [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws) | claude |
+| Check passed | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | claude |
+| Built | [The candidate engine](sdlc.md#EngineCandidate) | claude |
+| Built | [The graph page](sdlc.md#GraphPage) | claude |
+| Check failed | [The graph page opens](sdlc.md#GraphPageOpens) | claude |
+| Built | [The page's program](sdlc.md#PageProgram) | claude |
 
 ## 12 November 2026
 

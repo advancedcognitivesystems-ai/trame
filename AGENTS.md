@@ -503,6 +503,10 @@ elements), a port answered differently in several environments is answered as in
 - A scenario's step names are the plan's (`cancelReservation`, its first letter lowered): a program's text names them so.
 - A release holds no manifest (g96): in its library, the library's says it is made of ES modules and where the
   language is; published, the registry gives it one that says only the first, and its reader leads the language.
+- Playwright drives the Chromium its own version names: a machine whose browsers moved (`/opt/pw-browsers` holding
+  `chromium_headless_shell-1243`) refuses a check run by an older one ("Executable doesn't exist at
+  …headless_shell-1194"), and `trame doctor` does not see it. Move std's `PlaywrightPackage` to the version whose
+  browser the machine has (1.63.0 since std 0.18.1), release std, then upgrade the projects; never install browsers.
 - A view is named apart from the modules: a view `access` wrote `docs/access.md` over the example's module of that name
   (it is `callers`).
 - Before g107 a version (`version: true`) read in a project that imports its library held the project's nodes: std's

@@ -2993,10 +2993,10 @@ Package · `StandardLibrary`
 
 - Owner: trame
 - Name: std
-- Version: 0.18.0
+- Version: 0.18.1
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: std/releases/0.18.0
+- Its path: std/releases/0.18.1
 - Serves: A single source of truth
 
 ### tsx
