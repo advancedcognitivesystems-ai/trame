@@ -36,7 +36,10 @@ The repository's `AGENTS.md` is the full guide; read it first, then keep to this
   owner approves it when someone else wrote it. A cited value (a standard's constants, a quantity's units) changes only
   with its source (`--source`); code changes in the code. An amendment the code is written against has no date: dated,
   a build at an earlier day reads the code without it. A published `TODO` is decided by an amendment too, dated the day
-  it is decided. An amendment of a body is composed with it wherever it runs, wired or assembled (g105).
+  it is decided. An amendment of a body is composed with it wherever it runs, wired or assembled (g105); a body is
+  amended in the code. A publication (g108) freezes what each kind says people decide (values chosen or cited, what is
+  stated: a goal, an ADR, a decision's or a requirement's text, a rule); code stays free. A statement changes by a new
+  node that repeals it; `--migrate "why"` republishes a form, never a value.
 - A value holds at every date (g106): only an amendment has an end; one that ends over a value nobody decided is an
   error, and its owner is warned before it ends. A program switches at the days its amendments start or end, by
   `TRAME_TODAY` or today's UTC day. What the project decides and ships lives in the graph; what the product writes while
@@ -134,7 +137,7 @@ How a version becomes available is declared in the graph, with the kinds `role`,
 - A `review` names what must be reviewed (a dataset's rows in each language, or a node) and by which role; a role with
   `notAuthor` never reviews its own work.
 - An `obligation` applies one family of `#std/obligations` (`Verified`, `Served`, `Applied`, `Reviewed`, `Checked`,
-  `Ruled`, `Safe`, `Preceded`, `Identified`; `Migrated` from `#data/obligations`) with its `params` (typed by the family's rule; a node where it reads one) and says what a gap weighs (`gaps: Severity.error` is
+  `Ruled`, `Safe`, `Preceded`, `Identified`, `Published`; `Migrated` from `#data/obligations`) with its `params` (typed by the family's rule; a node where it reads one) and says what a gap weighs (`gaps: Severity.error` is
   an error of the graph, `Severity.warning` says it); a `policy` groups the obligations of a way of working, one per
   family.
 - A `shipment` names a target, what it `ships`, the `policy` it follows, the entry points that `deploys` it, and the
@@ -169,7 +172,7 @@ Run it:
 ./trame.sh doctor                                   # does this machine run Trame? one line per question
 ./trame.sh plan [--at <date>]                       # what a build would change against graph.json, written nowhere
 ./trame.sh amend <node> <path> <value> --why "…" --by <name> [--dry-run]   # a chosen value, by amendment, said first
-./trame.sh publish [--migrate "why"]                # freeze declarations in trame.lock; --migrate: republish those the language reshaped
+./trame.sh publish [--migrate "why"]                # freeze what people decided, part by part; --migrate: a form, never a value
 ```
 
 Attribute what you run to yourself (`--by claude`), never to the user: a check by hand, a review or a phone test is
