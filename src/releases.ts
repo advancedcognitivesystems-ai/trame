@@ -1588,3 +1588,19 @@ export const G107 = release({
   archive: "8a10289d172e9505",
   assembledBy: G106,
 })
+
+/**
+ * Generation 108
+ */
+export const G108 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g108",
+  date: "2026-11-18",
+  what: "D1: a publication freezes, part by part, what the kind of each declaration says people decide (chosen, cited, stated), its code left free; a migration publishes again a form, never a value",
+  fingerprint: "900fc84c2df0bdb5",
+  language: "shared",
+  archive: "f57520d042348d7c",
+  differences: "differences.diff",
+  assembledBy: G107,
+})
