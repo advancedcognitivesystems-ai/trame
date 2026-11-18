@@ -182,6 +182,22 @@ access: the audiences Anyone, TheSystem and TheOperators; the family Identified
 - Released by: trame
 - Serves: [A published value is cited, not copied](product.md#CitedNotCopied), [Known designs, named](product.md#KnownDesigns), [Ports of the platform, realized once](product.md#RealizedOnce), [Shared operations instead of literals](product.md#SharedOperations), [Rules applied, not written again](product.md#SharedRules), [Versions that hold](product.md#VersionsThatHold)
 
+<a id="R0_18_1"></a>
+
+### Version 0.18.1
+
+`R0_18_1` · `src/releases.ts:259`
+
+Playwright 1.63.0, whose Chromium the machine has
+
+- Version: `0.18.1`
+- Released on: 18 November 2026
+- Fingerprint: `7c6f86977099fcef`
+- Language: the repository's, shared
+
+- Released by: trame
+- Serves: [A published value is cited, not copied](product.md#CitedNotCopied), [Known designs, named](product.md#KnownDesigns), [Ports of the platform, realized once](product.md#RealizedOnce), [Shared operations instead of literals](product.md#SharedOperations), [Rules applied, not written again](product.md#SharedRules), [Versions that hold](product.md#VersionsThatHold)
+
 <a id="R0_2_0"></a>
 
 ### Version 0.2.0

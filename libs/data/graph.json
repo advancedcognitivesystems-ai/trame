@@ -160,9 +160,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "106",
+        "version": "107",
         "joins": "language",
-        "at": "../../generations/g106"
+        "at": "../../generations/g107"
       },
       "diagnostics": []
     },
@@ -174,9 +174,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.18.0",
+        "version": "0.18.1",
         "joins": "library",
-        "at": "../../std/releases/0.18.0"
+        "at": "../../std/releases/0.18.1"
       },
       "diagnostics": []
     },
@@ -1026,7 +1026,7 @@
       },
       "result": {
         "path": "src",
-        "code": "35263acc"
+        "code": "f5f71785"
       },
       "diagnostics": []
     },

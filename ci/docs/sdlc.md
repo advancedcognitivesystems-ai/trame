@@ -16,11 +16,13 @@ The library as its people write it: what a version freezes, and what projects im
 
 - Path: `src`
 
-Built 12 November 2026 by claude, fingerprint `f6b82052d3243a778c732b429fd180fb31d6a124456fdaf0bec4e86299e58744`.
+Built 18 November 2026 by claude, fingerprint `d6c481adec0bcf276dd756675a9bd302d1b47fe828c0c79e7127d0dd2d3939fe`.
 
 Shipped by [The next version](#NextVersion) 10 November 2026, fingerprint `7062b1ff96ea931545cd68533926942458ca5021f1a282cc24383a01b878080f`.
 
 Shipped by [The next version](#NextVersion) 12 November 2026, fingerprint `f6b82052d3243a778c732b429fd180fb31d6a124456fdaf0bec4e86299e58744`.
+
+Shipped by [The next version](#NextVersion) 18 November 2026, fingerprint `d6c481adec0bcf276dd756675a9bd302d1b47fe828c0c79e7127d0dd2d3939fe`.
 
 - Owner: trame
 - A version of the project: true
@@ -45,7 +47,7 @@ A version of the library of writers, for the projects that import it: shipped by
 | [A script of Bash](shell.md#ShellScript) | **held** | required |
 | [A YAML document](yaml.md#YamlDocument) | **held** | required |
 
-Shipped 12 November 2026 by claude; its dossier: `evidence/shipments/NextVersion-2026-11-12-2b421d5a.json`.
+Shipped 18 November 2026 by claude; its dossier: `evidence/shipments/NextVersion-2026-11-18-02a863e2.json`.
 
 - Owner: trame
 - Ships: [The library of writers](#TheLibrary)

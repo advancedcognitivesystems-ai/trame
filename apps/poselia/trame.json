@@ -15,7 +15,7 @@
     },
     "std": {
       "at": ".trame/std",
-      "version": "0.18.0"
+      "version": "0.18.1"
     }
   },
   "engine": ".trame/trame"

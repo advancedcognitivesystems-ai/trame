@@ -316,5 +316,134 @@
     "by": "claude",
     "signature": "attribution",
     "seal": "df7ceb88bd1eb19f994c4b077bc9f2e275b44f166eb1f504dd8fb3a4353275f3"
+  },
+  {
+    "node": "data.KeptRefund",
+    "at": "2026-11-18",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "3b989bf5",
+    "subject": "sdlc.OnThisMachine",
+    "kept": {
+      "fields": {
+        "reservation": {
+          "type": "reference",
+          "entity": "data.KeptReservation",
+          "keptAs": "reservations",
+          "key": "id"
+        },
+        "amount": {
+          "type": "number",
+          "quantity": "cancellation.SwissFrancs"
+        },
+        "reference": {
+          "type": "text"
+        },
+        "at": {
+          "type": "optional",
+          "of": {
+            "type": "text"
+          }
+        },
+        "driver": {
+          "type": "text"
+        }
+      },
+      "key": "reservation"
+    },
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "1d3ba368080e675dede2795ce5681074b8232b35534a4acec459b917acf0321b"
+  },
+  {
+    "node": "data.KeptReservation",
+    "at": "2026-11-18",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "1fb2a2fb",
+    "subject": "sdlc.OnThisMachine",
+    "kept": {
+      "fields": {
+        "id": {
+          "type": "text"
+        },
+        "charger": {
+          "type": "word",
+          "vocabulary": "data.Chargers",
+          "words": [
+            "fast",
+            "normal",
+            "ultra"
+          ]
+        },
+        "price": {
+          "type": "number",
+          "quantity": "cancellation.SwissFrancs"
+        },
+        "start": {
+          "type": "text"
+        },
+        "status": {
+          "type": "word",
+          "vocabulary": "data.ReservationStatuses",
+          "words": [
+            "active",
+            "cancelled"
+          ]
+        },
+        "driver": {
+          "type": "text"
+        }
+      },
+      "key": "id",
+      "seed": "f10fa9e3"
+    },
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "b2447f48ec81841517874a009ec1e9959b15d414ef5d8bf99448b8c25b842cfc"
+  },
+  {
+    "node": "sdlc.LocalProgram",
+    "at": "2026-11-18",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "0ac427b17b936f91715dc96e2c272a70faf55b81a764150b45b3bc78a8d33efa",
+    "code": "b745731d",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "760ba6a3c07285dd",
+    "seal": "f08ea76f23001899bded14c4db28c7c903cea1947e2967432bb7384946fc1898"
+  },
+  {
+    "node": "sdlc.LocalProgram",
+    "at": "2026-11-18",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "0ac427b17b936f91715dc96e2c272a70faf55b81a764150b45b3bc78a8d33efa",
+    "subject": "sdlc.OnThisMachine",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "68d29a52f6e7548d06f5f964eb7a3d9bfe149e2008a63e823f3ef77904f87cb6"
+  },
+  {
+    "node": "sdlc.OnThisMachine",
+    "at": "2026-11-18",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "46442bc5",
+    "url": "evidence/shipments/OnThisMachine-2026-11-18-46442bc5.json",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "8649f1a1ea8ed48ce0304209c5e22722194548a7c7f8db3c5c0ea27c5dd0ba0c"
+  },
+  {
+    "node": "sdlc.PrepareStorage",
+    "at": "2026-11-18",
+    "source": "deployed",
+    "value": 1,
+    "fingerprint": "84bbce31",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "cfba823e41a7787c05ea61163bd04104b426158b85c59fd599aafab674273ebd"
   }
 ]

@@ -16,11 +16,13 @@ The library as its people write it: what a version freezes, and what projects im
 
 - Path: `src`
 
-Built 12 November 2026 by claude, fingerprint `7d6724346db6cd5be68eb07b0c0fccd73f0d43077a7de65d62e0ed18fe75e3ee`.
+Built 18 November 2026 by claude, fingerprint `9017270695c7cb965194911559acf33ff5c3e1863ef38fd5c65319746f9eb035`.
 
 Shipped by [The next version](#NextVersion) 10 November 2026, fingerprint `d8b2c17306d579baa8c70bec5be06ba4d85373de4c3aeaf3023163b07e3ab4e5`.
 
 Shipped by [The next version](#NextVersion) 12 November 2026, fingerprint `7d6724346db6cd5be68eb07b0c0fccd73f0d43077a7de65d62e0ed18fe75e3ee`.
+
+Shipped by [The next version](#NextVersion) 18 November 2026, fingerprint `9017270695c7cb965194911559acf33ff5c3e1863ef38fd5c65319746f9eb035`.
 
 - Owner: ghalaax
 - A version of the project: true
@@ -43,7 +45,7 @@ A version of the library of geometry, for the projects that import it: shipped b
 | [The library of geometry](#TheLibrary) | **held** | shipped |
 | [A vector is three numbers](vectors.md#VectorsAsTriples) | **held** | [Its decisions applied](#DecisionsApplied), for [Angle](angles.md#Angle) |
 
-Shipped 12 November 2026 by claude; its dossier: `evidence/shipments/NextVersion-2026-11-12-c260e778.json`.
+Shipped 18 November 2026 by claude; its dossier: `evidence/shipments/NextVersion-2026-11-18-af60914f.json`.
 
 - Owner: ghalaax
 - Ships: [The library of geometry](#TheLibrary)

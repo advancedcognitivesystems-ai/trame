@@ -64,7 +64,7 @@ Entry point · `ShowHome` · **held**
 
 ### The browser's screen
 
-Implementation · `BrowserScreen` · **unknown**
+Implementation · `BrowserScreen` · **held**
 
 - Owner: ghalaax
 - Parameters: { html: std/html.Html, aria: std/html.Aria, svg: std/html.Svg, events: std/web.UiEvents, screen: app.ScreenNames, parts: drawing.DrawingParts, player: practice.PlayerNames, settings: settings.SettingsNames, composer: composing.ComposerNames, counts: std/algebra.Counts, texts: std/algebra.Texts, stage: architecture.Stage, time: std/measures.Time }
@@ -855,10 +855,10 @@ Package · `Language`
 
 - Owner: ghalaax
 - Name: trame
-- Version: 106
+- Version: 107
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../../generations/g106
+- Its path: ../../generations/g107
 - Serves: Practise yoga on one's own, guided
 
 ### The standard library
@@ -867,10 +867,10 @@ Package · `StandardLibrary`
 
 - Owner: ghalaax
 - Name: std
-- Version: 0.18.0
+- Version: 0.18.1
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: ../../std/releases/0.18.0
+- Its path: ../../std/releases/0.18.1
 - Serves: Practise yoga on one's own, guided
 
 ## Poselia · Practice
@@ -1031,7 +1031,7 @@ Architecture decision · `LanguageOffered` · **held**
 
 ### A page first, the phones after
 
-Architecture decision · `PageFirst` · **unknown**
+Architecture decision · `PageFirst` · **held**
 
 - Decided by: ghalaax
 - Context: The app must be tried and shown before it is installed: a page shared as a link is the shortest way to the friends who review it.
@@ -1374,7 +1374,7 @@ Message catalog · `SdlcWords`
 
 ### On the machine
 
-Technical choice · `OnTheMachine` · **unknown**
+Technical choice · `OnTheMachine` · **held**
 
 - Decided by: ghalaax
 - Context: A check must open the page a person opens: the file delivered, in a real browser.
@@ -1431,7 +1431,7 @@ Role · `Teachers`
 
 ### Poselia's page
 
-Artefact · `PageFile` · **unknown**
+Artefact · `PageFile` · **held**
 
 - Owner: ghalaax
 - Media type: text/html; charset=utf-8
@@ -1469,7 +1469,7 @@ Check · `OnAPhone` · **unknown**
 
 ### The page opens
 
-Check · `PageOpens` · **unknown**
+Check · `PageOpens` · **held**
 
 - Owner: ghalaax
 - Checks: Poselia's page
@@ -1486,7 +1486,7 @@ Review · `ContentReviewed` · **unknown**
 
 ### A preview
 
-Shipment · `Preview` · **unknown**
+Shipment · `Preview` · **held**
 
 - Owner: ghalaax
 - Target: preview
@@ -1805,7 +1805,7 @@ Decision · `StageViews`
 
 ### The browser's stage
 
-Implementation · `BrowserStage` · **unknown**
+Implementation · `BrowserStage` · **held**
 
 - Owner: ghalaax
 - Parameters: { look: stage.MannequinLook, light: stage.StageLight, views: stage.StageViews, style: stage.MarkStyle, counts: std/algebra.Counts, html: std/html.Html }

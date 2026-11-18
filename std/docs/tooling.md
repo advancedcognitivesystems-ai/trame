@@ -295,8 +295,8 @@ The headless browser of a machine: Chromium started by Playwright as decided, a 
 Drives Chromium without a screen: the version whose browser the machine has. Once installed, it installs the Chromium it drives, with what the system needs to run it: a machine that runs a check of the page does it first.
 
 - Name: `playwright` https://www.npmjs.com/package/playwright
-- Version: `1.56.0`
-- Installed: `1.56.0`
+- Version: `1.63.0`
+- Installed: `1.63.0`
 - Vulnerabilities: none known (2026-10-27)
 - Latest version: 1.64.1 (2026-10-27)
 - Once installed: `npx playwright install --with-deps chromium`

@@ -8,7 +8,7 @@ import { PractiseGuided } from "./product"
  * The language Poselia is written in, at the generation it pins: reached by its path in Trame's repository.
  */
 export const Language = pkg({
-  owner: "ghalaax", packageName: "trame", version: "106", joins: "language", from: "path", at: "../../generations/g106",
+  owner: "ghalaax", packageName: "trame", version: "107", joins: "language", from: "path", at: "../../generations/g107",
   serves: [PractiseGuided],
 })
 
@@ -17,7 +17,7 @@ export const Language = pkg({
  * The structures, standards, ports of the device and of the SDLC Poselia builds on.
  */
 export const StandardLibrary = pkg({
-  owner: "ghalaax", packageName: "std", version: "0.18.0", joins: "library", from: "path", at: "../../std/releases/0.18.0",
+  owner: "ghalaax", packageName: "std", version: "0.18.1", joins: "library", from: "path", at: "../../std/releases/0.18.1",
   serves: [PractiseGuided],
 })
 

@@ -37,7 +37,7 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "trame",
-        "version": "106",
+        "version": "107",
         "joins": "language",
         "from": "registry"
       },
@@ -51,13 +51,11 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "std",
-        "version": "0.17.0",
+        "version": "0.18.1",
         "joins": "library",
         "from": "registry"
       },
-      "diagnostics": [
-        "warning: std 0.18.0 is out, the reference names 0.17.0: trame upgrade std moves it"
-      ]
+      "diagnostics": []
     },
     {
       "id": "product.GeometryWrittenOnce",
@@ -171,7 +169,7 @@
       },
       "result": {
         "path": "src",
-        "code": "53b2d571"
+        "code": "96dceb44"
       },
       "diagnostics": []
     },

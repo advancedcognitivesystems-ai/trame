@@ -6,7 +6,7 @@
       "kind": "implementation",
       "title": "The browser's screen",
       "source": "src/app.ts:79",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "deps": {
@@ -4416,10 +4416,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "trame",
-        "version": "106",
+        "version": "107",
         "joins": "language",
         "from": "path",
-        "at": "../../generations/g106"
+        "at": "../../generations/g107"
       },
       "diagnostics": []
     },
@@ -4431,10 +4431,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "std",
-        "version": "0.18.0",
+        "version": "0.18.1",
         "joins": "library",
         "from": "path",
-        "at": "../../std/releases/0.18.0"
+        "at": "../../std/releases/0.18.1"
       },
       "diagnostics": []
     },
@@ -4829,7 +4829,7 @@
       "kind": "adr",
       "title": "A page first, the phones after",
       "source": "src/principles.ts:78",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "context": "The app must be tried and shown before it is installed: a page shared as a link is the shortest way to the friends who review it.",
@@ -5741,7 +5741,7 @@
       "kind": "binding",
       "title": "On the machine",
       "source": "src/sdlc.ts:87",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "context": "A check must open the page a person opens: the file delivered, in a real browser."
@@ -5832,7 +5832,7 @@
       "kind": "artifact",
       "title": "Poselia's page",
       "source": "src/sdlc.ts:111",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "media": "text/html; charset=utf-8"
@@ -5841,9 +5841,7 @@
         "path": "dist/poselia.html",
         "code": "c227094a"
       },
-      "diagnostics": [
-        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.PageOpening",
@@ -5864,16 +5862,14 @@
       "kind": "check",
       "title": "The page opens",
       "source": "src/sdlc.ts:211",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax"
       },
       "result": {
         "code": "20164e5d"
       },
-      "diagnostics": [
-        "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.PageSelectors",
@@ -5981,7 +5977,7 @@
       "kind": "shipment",
       "title": "A preview",
       "source": "src/sdlc.ts:320",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "target": "preview"
@@ -6169,10 +6165,7 @@
           "sdlc.PlaceThePage"
         ]
       },
-      "diagnostics": [
-        "warning: To ship: Poselia's page is unknown",
-        "warning: To ship: The page opens is unknown"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.PreviewMode",
@@ -6569,7 +6562,7 @@
             "artifacts": [
               {
                 "node": "sdlc.PageFile",
-                "fingerprint": "5609378bdb3c550a93f281b0af028ea0d834a5bc58cba635ca3e4788119c20bf"
+                "fingerprint": "d83dce2f862e3206578c50e2b444c43e56c893d598ad57775bf606fd27ca8123"
               }
             ]
           }
@@ -6678,11 +6671,8 @@
         ]
       },
       "diagnostics": [
-        "warning: To ship: Poselia's page is unknown",
         "warning: To ship: On a phone is unknown",
-        "warning: To ship: The page opens is unknown",
         "warning: To ship: The content, reviewed is unknown",
-        "warning: To ship: A page first, the phones after is unknown",
         "warning: To ship: The content is data, behind a port is unknown",
         "warning: To ship: Said aloud, the screen awake is unknown"
       ]
@@ -7278,7 +7268,7 @@
       "kind": "implementation",
       "title": "The browser's stage",
       "source": "src/stage.ts:126",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "deps": {

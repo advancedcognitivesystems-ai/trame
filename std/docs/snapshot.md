@@ -475,10 +475,10 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 106
+- Version: 107
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../generations/g106
+- Its path: ../generations/g107
 - Serves: Ports of the platform, realized once
 
 ## Standard library · Design patterns
@@ -866,6 +866,18 @@ Release · `R0_18_0`
 - Released on: 2026-11-18
 - What changes: access: the audiences Anyone, TheSystem and TheOperators; the family Identified
 - Fingerprint: 7e9e89a93567af15
+- Language: shared
+- Serves: A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again, Versions that hold
+
+### Version 0.18.1
+
+Release · `R0_18_1`
+
+- Released by: trame
+- Version: 0.18.1
+- Released on: 2026-11-18
+- What changes: Playwright 1.63.0, whose Chromium the machine has
+- Fingerprint: 7c6f86977099fcef
 - Language: shared
 - Serves: A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again, Versions that hold
 
@@ -1487,7 +1499,7 @@ Package · `PlaywrightPackage` · **held**
 
 - Owner: trame
 - Name: playwright
-- Version: 1.56.0
+- Version: 1.63.0
 - In the registry: https://www.npmjs.com/package/playwright
 - Once installed: npx playwright install --with-deps chromium
 - What it may do: process, display, network, time, asynchronous

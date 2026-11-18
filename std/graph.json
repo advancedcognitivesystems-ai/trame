@@ -2294,10 +2294,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "106",
+        "version": "107",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g106"
+        "at": "../generations/g107"
       },
       "diagnostics": []
     },
@@ -2893,6 +2893,21 @@
         "date": "2026-11-18",
         "what": "access: the audiences Anyone, TheSystem and TheOperators; the family Identified",
         "fingerprint": "7e9e89a93567af15",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "releases.R0_18_1",
+      "kind": "release",
+      "title": "Version 0.18.1",
+      "source": "src/releases.ts:259",
+      "fields": {
+        "owner": "trame",
+        "version": "0.18.1",
+        "date": "2026-11-18",
+        "what": "Playwright 1.63.0, whose Chromium the machine has",
+        "fingerprint": "7c6f86977099fcef",
         "language": "shared"
       },
       "diagnostics": []
@@ -3821,7 +3836,7 @@
       },
       "result": {
         "path": "src",
-        "code": "020ce79e"
+        "code": "87411834"
       },
       "diagnostics": []
     },
@@ -4519,7 +4534,7 @@
       "fields": {
         "owner": "trame",
         "packageName": "playwright",
-        "version": "1.56.0",
+        "version": "1.63.0",
         "url": "https://www.npmjs.com/package/playwright",
         "prepare": "npx playwright install --with-deps chromium",
         "declaredEffects": [
@@ -5741,6 +5756,36 @@
     },
     {
       "from": "releases.R0_18_0",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_18_1",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_18_1",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_18_1",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_18_1",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_18_1",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_18_1",
       "to": "product.VersionsThatHold",
       "kind": "serves"
     },

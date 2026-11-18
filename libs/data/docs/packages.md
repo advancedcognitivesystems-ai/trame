@@ -15,13 +15,13 @@
 The language the project is written in, at the generation that started it: its owner moves it by an amendment.
 
 - Name: `trame`
-- Version: `106`
+- Version: `107`
 - Installed: Not installed in the project: its lockfile lists no trame
 - Vulnerabilities: No report yet: trame audit asks the registry
 - Latest version: No report yet: trame audit asks the registry
 - What it may do: not said: an implementation that imports it cannot promise anything
 - How it joins the graph: `language`
-- Its path: `../../generations/g106`
+- Its path: `../../generations/g107`
 
 - Owner: trame
 - Serves: [Data described once](product.md#DataDescribedOnce)
@@ -35,13 +35,13 @@ The language the project is written in, at the generation that started it: its o
 A library the project builds on, at the version the language's home uses.
 
 - Name: `std`
-- Version: `0.18.0`
+- Version: `0.18.1`
 - Installed: Not installed in the project: its lockfile lists no std
 - Vulnerabilities: No report yet: trame audit asks the registry
 - Latest version: No report yet: trame audit asks the registry
 - What it may do: not said: an implementation that imports it cannot promise anything
 - How it joins the graph: `library`
-- Its path: `../../std/releases/0.18.0`
+- Its path: `../../std/releases/0.18.1`
 
 - Owner: trame
 - Serves: [Data described once](product.md#DataDescribedOnce)

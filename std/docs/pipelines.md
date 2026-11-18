@@ -74,6 +74,6 @@ flowchart TB
 | 23 | prove | [A node reaches what it must](rules.md#Reaches) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
 | 24 | prove | [Effects a node may not have](rules.md#WithoutEffects) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
 | 25 | prove | [Words of a vocabulary](rules.md#WordsOf) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
-| 26 | record | [The next version](sdlc.md#NextVersion) | — | — | **held** | 18 November 2026 by claude `evidence/shipments/NextVersion-2026-11-18-6caf84a9.json` |
+| 26 | record | [The next version](sdlc.md#NextVersion) | — | — | **held** | 18 November 2026 by claude `evidence/shipments/NextVersion-2026-11-18-d2d1141a.json` |
 
 `trame ship NextVersion --by <name>`

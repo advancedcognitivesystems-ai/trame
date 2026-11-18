@@ -4,15 +4,13 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| ghalaax | 0 | 0 | 1 | 16 |
+| ghalaax | 0 | 0 | 0 | 16 |
 
 <a id="ghalaax"></a>
 
 ## ghalaax
 
-| Severity | What | Where | Owner | Consequence |
-|---|---|---|---|---|
-| warning | std 0.18.0 is out, the reference names 0.17.0: trame upgrade std moves it | [The standard library](packages.md#StandardLibrary) | ghalaax |  |
+Nothing to decide or watch.
 
 ### Owns
 
