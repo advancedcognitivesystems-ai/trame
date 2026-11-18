@@ -4,7 +4,7 @@
 // of the one it replaces, or when it raises an error (unless accepted). trame amend and trame dev record it then,
 // through the port "Where an amendment goes": this function writes nothing.
 
-import { AmendmentField, ChangeWay, KindName, Severity, type ProvidedBy } from "../../../trame/kernel"
+import { AmendmentField, ChangeWay, FieldType, KindName, Severity, type ProvidedBy } from "../../../trame/kernel"
 import type { AmendmentToRecord, Layout, Paths, Prelude } from "../../architecture"
 import type { CommandMessages } from "../../messages"
 import type { References } from "../../engine"
@@ -72,6 +72,10 @@ const body = (deps: Deps) => {
     const field = references.firstSegment(a.path)
     const way = view.fieldInfo(field)?.changes ?? ChangeWay.code
     if (way === ChangeWay.code) return refused(messages.amendInTheCode(view.title, field))
+    if (way === ChangeWay.stated) return refused(messages.amendStated(view.title, field))
+    // A body is amended in the code, by a function of the one in force (since g105): neither the page nor a line writes one.
+    const type = view.fieldInfo(field)?.type
+    if (type === FieldType.body || type === FieldType.fn) return refused(messages.amendBodyInTheCode(view.title, field))
     if (way === ChangeWay.cited && a.source === undefined) return refused(messages.amendCitedNeedsSource(view.title, field))
 
     // The value: JSON, or a text as it is; of the same type as the one it replaces, unless that one is undecided.

@@ -94,7 +94,7 @@ const body = (deps: Deps) => {
   const { makeCompilation } = deps.compilationApi
   const { checkKinds, checkImports } = deps.laws
   const { loadViews, runViews, checkViewDecls } = deps.views
-  const { checkLock, readLock } = deps.lock
+  const { checkLock, publishedOf } = deps.lock
   const { locate } = deps.common
   const { terminal, messages } = deps
 
@@ -200,7 +200,7 @@ const body = (deps: Deps) => {
     const lockIssues = checkLock(c, o.root)
     c.diags.push(...lockIssues)
     c.diags.sort((a, b) => deps.severityOrder(a.severity) - deps.severityOrder(b.severity))
-    const published = new Set(Object.keys(readLock(o.root).published))
+    const published = publishedOf(c, o.root)
     c.published = published
     c.lockIssues = lockIssues
     return { c, comp: makeCompilation(c, { published, lockIssues, views: deps.views.sortedViews() }) }

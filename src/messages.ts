@@ -371,7 +371,10 @@ export const OutputMessages = catalog({
 
     // trame.lock
     publishedRemoved: () => "Published element deleted: repeal it instead of removing it from the code",
-    publishedChanged: () => "Modified after publication: create an amendment instead of changing the declaration",
+    publishedChanged: (part: string) => `Its ${part} changed after publication: an amendment changes it (trame amend), not the declaration`,
+    publishedCitedChanged: (part: string) => `Its ${part} changed after publication: an amendment that cites the new source changes it, not the declaration`,
+    publishedStatedChanged: (part: string) => `Its ${part} changed after publication: a new node that repeals it states the new one (trame publish --migrate "why" when only its form changed)`,
+    publishedOutdated: () => `Published before its parts were (g108): trame publish --migrate "why" publishes them`,
 
     // The page, read back before it is given.
     styleNotTheLanguage: (language: string, places: string[]) => `The style of the page does not follow the grammar of ${language}, at ${places.join(", ")}: the page is not given`,
@@ -525,10 +528,10 @@ export const CommandMessages = catalog({
     audited: (packages: number, vulnerable: number, file: string) => `${plural(packages, { one: "package", other: "packages" })} audited, ${vulnerable} vulnerable · written: ${file}`,
     exported: (dates: number, file: string) => `export · ${plural(dates, { one: "date", other: "dates" })} · written: ${file}`,
     /** After the published declarations that changed. */
-    publicationRefused: () => "publication refused: a published declaration has changed (an amendment changes its meaning; --migrate \"why\" publishes it again when only the language changed its form)",
+    publicationRefused: () => "publication refused: a published declaration has changed (an amendment changes a value; --migrate \"why\" publishes again a statement whose form only changed, or a declaration published before its parts were)",
     published: (declarations: number) => `published: ${plural(declarations, { one: "declaration", other: "declarations" })} frozen in trame.lock`,
     nothingToPublish: () => "nothing new to publish",
-    publishedAgain: (declarations: number) => `published again: ${plural(declarations, { one: "declaration", other: "declarations" })} whose form the language changed, not the meaning`,
+    publishedAgain: (declarations: number) => `published again: ${plural(declarations, { one: "declaration", other: "declarations" })} whose form changed, not the meaning`,
 
     // trame plan: what a build would change.
     /** The first line: what changes, against the build of which date, compiled at which date. */
@@ -572,6 +575,8 @@ export const CommandMessages = catalog({
     initGoal: (title: string) => `What ${title} is for: its owner says it here, and what serves it links to it.`,
     initWritten: (title: string, engine: string) => `${title} started · pins ${engine} · written: trame.json, src/, the guide for agents · the manifest next`,
     amendInTheCode: (title: string, field: string) => `${field} of “${title}” changes in the code, never from here: code is built on it`,
+    amendBodyInTheCode: (title: string, field: string) => `${field} of “${title}” is amended in the code: amend({ ${field}: (previous) => … }), composed with the one in force`,
+    amendStated: (title: string, field: string) => `${field} of “${title}” is stated, not amended: a new node that repeals it states the new one`,
     amendCitedNeedsSource: (title: string, field: string) => `${field} of “${title}” is cited: it changes only with the source that changed it (--source)`,
     amendNotTheSame: (path: string) => `The value given for ${path} is not of the type of the one it replaces`,
     amendNoKind: () => "The project's language has no kind of amendments",
@@ -807,6 +812,8 @@ export const ScenarioMessages = catalog({
     planTouchesShipments: (shipment: string) => `The plan names ${shipment} among the shipments touched: what it ships changes`,
     declarationsFrozen: (count: number) => `trame publish freezes ${plural(count, { one: "declaration", other: "declarations" })} in trame.lock`,
     nothingNewThen: () => "Published again, nothing is new",
+    publishedValueRefused: (node: string) => `The value of ${node}, changed after it was published, is refused: an amendment changes it`,
+    migrationKeepsAValue: () => "A migration does not publish a value again: it publishes a form",
     packagesAudited: (entries: number) => `trame audit keeps ${plural(entries, { one: "answer", other: "answers" })} of the registry as evidence, none vulnerable`,
     releaseRefusedUnsettled: () => "In the example, where a value is still to decide, a release is refused",
     versionFrozen: (version: string) => `In the library, ${version} is frozen: its graph, its code, its documents`,

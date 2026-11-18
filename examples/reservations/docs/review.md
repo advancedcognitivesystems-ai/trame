@@ -2,7 +2,7 @@
 
 *What the declarations that are not published yet add to the published graph (`trame.lock`), as of 30 October 2026.*
 
-> **99 new declarations · 0 published declarations affected · 1 overlap · 0 blocking holes added**
+> **103 new declarations · 0 published declarations affected · 1 overlap · 0 blocking holes added**
 
 ## What the branch redefines
 
@@ -26,6 +26,7 @@
 | Severity | What | Where | Owner | Consequence |
 |---|---|---|---|---|
 | warning | Nothing identifies it yet (C7): whoever reaches its 2 entry points calls as one of it | [Drivers](access.md#Drivers) | karim |  |
+| warning | Check the assumption before 1 December 2026 (in 32 days) | [Idempotent payment provider](cancellation.md#IdempotentProvider) | karim | no evidence yet |
 | warning | Not built yet: trame ship builds it | [The program for a laptop](sdlc.md#LocalProgram) | karim |  |
 | warning | To check by hand and sign: Run the program for a laptop, cancel a reservation, stop it and run it again: the cancellation is still there | [On a laptop](sdlc.md#OnALaptop) | The operators |  |
 | warning | To check by hand and sign: Deploy the program on the staging machine, with its PostgreSQL database and the payment provider's sandbox: its tables are created empty, Insert a reservation, read it, then cancel it twice: one refund at the provider, and the second cancellation answers the same, Restart the program: the cancellation is still there, and the time it shows is the machine's | [On staging](sdlc.md#OnStaging) | The operators |  |
@@ -62,6 +63,10 @@
 | [Every call to a third party is verified](architecture.md#ThirdPartiesVerified) | Architecture rule | karim | `src/architecture.ts:129` |
 | [Utilities do not touch the world](architecture.md#UtilitiesWithoutWorld) | Architecture rule | karim | `src/architecture.ts:119` |
 | [How an amount is written](cancellation.md#AmountWords) | Message catalog | karim | `src/cancellation.ts:26` |
+| [Cancel without stress](cancellation.md#CancelWithoutStress) | Goal | lea | `src/cancellation.ts:20` |
+| [Idempotent payment provider](cancellation.md#IdempotentProvider) | Assumption | karim | `src/cancellation.ts:79` |
+| [Refund on cancellation](cancellation.md#Refund) | Requirement | lea | `src/cancellation.ts:85` |
+| [Refund criteria](cancellation.md#RefundCriteria) | Acceptance criteria | lea | `src/cancellation.ts:108` |
 | [Swiss francs](cancellation.md#SwissFrancs) | Quantity | karim | `src/cancellation.ts:36` |
 | [Launch of the ultra chargers](committee.md#UltraLaunch) | Amendment | lea | `src/committee.ts:29` |
 | [Period for ultra chargers](committee.md#UltraPeriod) | Amendment | lea | `src/committee.ts:12` |

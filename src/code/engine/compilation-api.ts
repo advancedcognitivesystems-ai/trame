@@ -175,7 +175,8 @@ const body = (deps: Deps) => {
         allIssues().filter((i) =>
           (!scope.node || i.node?.node === scope.node.node) && (!scope.module || i.module === scope.module)),
       lockIssues: () => (o.lockIssues ?? []).map(toIssue),
-      published: (v: View) => (o.published ? o.published.has(v.ref) : undefined),
+      // Nothing to say of a node whose kind freezes nothing (its code), nor in a project that has published nothing.
+      published: (v: View) => (o.published && c.parts?.has(v.node) ? o.published.has(v.ref) : undefined),
 
       claims: (v: View, side: ClaimSide) =>
         c.claims
@@ -258,7 +259,8 @@ const body = (deps: Deps) => {
         // What a person may amend of it (since g86): the fields its kind says are chosen or cited, with their value in force.
         const amendable: AmendableValue[] = Object.entries(def.fields).flatMap(([k, f]) => {
           const way = def.changes?.[k]
-          if (way === undefined || way === ChangeWay.code) return []
+          // A statement is not amended: a new node that repeals it states the new one.
+          if (way === undefined || way === ChangeWay.code || way === ChangeWay.stated || f.type === FieldType.body || f.type === FieldType.fn) return []
           const raw = v.field(k)
           // A list (a dataset's rows) is amended item by item, by its path: its whole value is not carried.
           const value = raw === undefined || isHole(raw) || Array.isArray(raw) ? undefined : (JSON.parse(JSON.stringify(raw) ?? JSON.stringify(null)) as Json)

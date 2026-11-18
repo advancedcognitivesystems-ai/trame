@@ -1,13 +1,25 @@
 {
   "published": {
-    "cancellation.CancelWithoutStress": "91e2756d3b0e96f5",
-    "cancellation.FreeCancellationPeriod": "d0cb5219df993e55",
-    "cancellation.IdempotentProvider": "97a0a9923b559807",
-    "cancellation.ImmediateRefund": "a7a4923dbbdb2f31",
-    "cancellation.LateFee": "9c335fbd664ac0d7",
-    "cancellation.Refund": "c3f5f2705f32ed8f",
-    "cancellation.RefundCriteria": "7a27ff06e8420fbb",
-    "legal.FeeCap": "d899ab109672e4e0"
+    "cancellation.FreeCancellationPeriod": {
+      "value": "0fc43e6b",
+      "review": "f4e9d60e",
+      "range": "c54285ad"
+    },
+    "cancellation.ImmediateRefund": {
+      "percentile": "addc0c97",
+      "threshold": "f0f96dc5",
+      "window": "944c7382"
+    },
+    "cancellation.LateFee": {
+      "value": "b7358c4c",
+      "review": "6a09e667",
+      "range": "6a09e667"
+    },
+    "legal.FeeCap": {
+      "value": "6a09e667",
+      "review": "6a09e667",
+      "range": "6a09e667"
+    }
   },
   "migrations": [
     {
@@ -24,6 +36,20 @@
       "nodes": [
         "cancellation.CancelWithoutStress",
         "cancellation.Refund"
+      ]
+    },
+    {
+      "at": "2026-11-18",
+      "why": "D1 (g108): a publication freezes the parts of a declaration its kind says people decide, not the whole declaration",
+      "nodes": [
+        "cancellation.FreeCancellationPeriod",
+        "cancellation.ImmediateRefund",
+        "cancellation.LateFee",
+        "legal.FeeCap",
+        "cancellation.CancelWithoutStress",
+        "cancellation.IdempotentProvider",
+        "cancellation.Refund",
+        "cancellation.RefundCriteria"
       ]
     }
   ]

@@ -379,8 +379,8 @@ Triggered by `command publish`
 - Serves: [A single source of truth](product.md#SingleSource)
 - Part of: [Trame on the command line](architecture.md#TrameCli)
 - For: [Anyone](../std/releases/0.18.1/docs/access.md#Anyone)
-- Verified by: [Declarations published](command-scenarios.md#DeclarationsPublished)
-- Used by: [Declarations published](command-scenarios.md#DeclarationsPublished)
+- Verified by: [Declarations published](command-scenarios.md#DeclarationsPublished), [A published value changed](command-scenarios.md#PublishedValueChanged)
+- Used by: [Declarations published](command-scenarios.md#DeclarationsPublished), [A published value changed](command-scenarios.md#PublishedValueChanged)
 - Applies: [The source carries the history](principles.md#HistoryInTheSource)
 
 <a id="RecordEvidence"></a>

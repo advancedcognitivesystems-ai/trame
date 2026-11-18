@@ -10,7 +10,7 @@
 
 ### What trame dev serves
 
-`DevService` · `src/engine.ts:472`
+`DevService` · `src/engine.ts:473`
 
 The paths the page is asked at, the bundle of the graph, the stream of its changes; the events of that stream; the host it answers on; the endings of the files an editor leaves while it saves, which change nothing.
 
@@ -39,7 +39,7 @@ How many hexadecimal characters of the SHA-256 digest a lock keeps to fingerprin
 - Value: 16
 
 - Decided by: trame
-- Used by: [Advance](commands.md#Advance), [Release a version](commands.md#Release), [The fingerprint of an engine](#EngineFingerprint), [Lock](#Lock)
+- Used by: [Advance](commands.md#Advance), [Release a version](commands.md#Release), [The fingerprint of an engine](#EngineFingerprint)
 
 <a id="KeptRunsScope"></a>
 
@@ -62,7 +62,7 @@ A run kept (a scenario played) is given back while what it ran and the files the
 
 ### The days of history a page offers
 
-`PageHistory` · `src/engine.ts:421`
+`PageHistory` · `src/engine.ts:422`
 
 Besides the dates where the graph changes, an export offers the last days something was given (a version released, evidence recorded), each with what was proven by then, judged as it was given: the most recent, so many. Each date is a compilation; its documents and figures that differ from today's but for the date are carried once more, without the views of each node, the snapshot and the outputs for tools.
 
@@ -139,7 +139,7 @@ Consequences: The engine gives them the graph's values through the graph they re
 
 ### Assembly
 
-`Assembly` · `src/engine.ts:500` · status: **held**
+`Assembly` · `src/engine.ts:501` · status: **held**
 
 The plan of a component for an environment, written as a program by the driver of its language.
 
@@ -205,7 +205,7 @@ Finds the cycles of a relation with a depth-first search: the vertices from whic
 
 ### Date bundle
 
-`DateBundle` · `src/engine.ts:449` · status: **held**
+`DateBundle` · `src/engine.ts:450` · status: **held**
 
 Compiles the graph at each date where it can change, in a fresh process: the engine relaunches itself.
 
@@ -221,7 +221,7 @@ Compiles the graph at each date where it can change, in a fresh process: the eng
 
 ### trame dev server
 
-`DevServer` · `src/engine.ts:484` · status: **held**
+`DevServer` · `src/engine.ts:485` · status: **held**
 
 Watches the project, recompiles it at each save, pushes the updated page.
 
@@ -237,7 +237,7 @@ Watches the project, recompiles it at each save, pushes the updated page.
 
 ### Differences
 
-`Differences` · `src/engine.ts:460` · status: **held**
+`Differences` · `src/engine.ts:461` · status: **held**
 
 What a change altered between two compilations: statuses, holes, overlaps.
 
@@ -339,18 +339,18 @@ Tests each kind on nodes drawn at random, and its resolution on sets of claims; 
 
 ### Lock
 
-`Lock` · `src/engine.ts:407` · status: **held**
+`Lock` · `src/engine.ts:408` · status: **held**
 
-trame.lock: the hash of each published declaration, and what the code has done to them since.
+trame.lock: the fingerprint of each part of a declaration a publication freezes (what its kind says people decide: chosen, cited, stated), and what the code has done to them since.
 
 - Owner: trame
-- Parameters: `encodings` ← [Node.js character encodings](../std/releases/0.18.1/docs/system.md#NodeEncodings) · `sha256` ← [SHA-256](../std/releases/0.18.1/docs/algorithms.md#Sha256) · `fingerprint` ← [Length of a fingerprint](#Fingerprint) · `layout` ← [Project layout](conventions.md#Layout) · `json` ← [JSON formatting](conventions.md#JsonFormatting) · `textFile` ← [Text file](../std/releases/0.18.1/docs/text.md#TextFile) · `references` ← [References](#References) · `codeSpan` ← [Code span](markdown.md#CodeSpan) · `hashing` ← [Hashing](architecture.md#Hashing) · `reading` ← [File reading](architecture.md#FileReading) · `paths` ← [Paths](architecture.md#Paths) · `prelude` ← [Prelude](architecture.md#Prelude) · `sequences` ← [Sequences](../std/releases/0.18.1/docs/algebra.md#Sequences) · `messages` ← [Messages of the outputs](messages.md#OutputMessages)
+- Parameters: `encodings` ← [Node.js character encodings](../std/releases/0.18.1/docs/system.md#NodeEncodings) · `layout` ← [Project layout](conventions.md#Layout) · `json` ← [JSON formatting](conventions.md#JsonFormatting) · `textFile` ← [Text file](../std/releases/0.18.1/docs/text.md#TextFile) · `references` ← [References](#References) · `codeSpan` ← [Code span](markdown.md#CodeSpan) · `reading` ← [File reading](architecture.md#FileReading) · `paths` ← [Paths](architecture.md#Paths) · `prelude` ← [Prelude](architecture.md#Prelude) · `messages` ← [Messages of the outputs](messages.md#OutputMessages)
 - Body: `./code/engine/lock.ts` (typescript)
 - Effects: read
 - Serves: [A single source of truth](product.md#SingleSource)
+- Verified by: [A published value changed](command-scenarios.md#PublishedValueChanged), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore)
 - Used by: [Preparation](commands.md#Preparation), [Publish](commands.md#Publish)
 - Applies: [The source carries the history](principles.md#HistoryInTheSource)
-- Verified by: [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore)
 
 <a id="MachineOutputs"></a>
 
@@ -373,7 +373,7 @@ graph.json and snapshot.json.
 
 ### Payload
 
-`PayloadBuilder` · `src/engine.ts:435` · status: **held**
+`PayloadBuilder` · `src/engine.ts:436` · status: **held**
 
 The compiled graph in the intermediate format, for the page. It carries the language, so that the page writes dates as the documents do.
 
@@ -447,7 +447,7 @@ Reads a reference ("module.Identifier") and a path in a field ("value.case"), fo
 - Parameters: `syntax` ← [Trame references](conventions.md#ReferenceSyntax) · `libraryOf` ← [What belongs to a library](libraries.md#LibraryOfAModule) · `values` ← [Types of values](../std/releases/0.18.1/docs/algebra.md#ValueTypes)
 - Body: inline, in the declaration
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
-- Used by: [An amendment prepared](commands.md#Amending), [Preparation](commands.md#Preparation), [Compilation API](#CompilationApi), [Compiler](#Compiler), [Graph](#GraphApi), [Laws](#Laws), [Lock](#Lock), [Static reading](#StaticAnalysis), [The engine reckons as it says](scenarios.md#EngineReckons)
+- Used by: [A published value changed](command-scenarios.md#PublishedValueChanged), [An amendment prepared](commands.md#Amending), [Preparation](commands.md#Preparation), [Compilation API](#CompilationApi), [Compiler](#Compiler), [Graph](#GraphApi), [Laws](#Laws), [Lock](#Lock), [Static reading](#StaticAnalysis), [The engine reckons as it says](scenarios.md#EngineReckons)
 - Applies: [A library is a Trame project, imported by path](principles.md#LibrariesAreProjects)
 - Verified by: [The engine reckons as it says](scenarios.md#EngineReckons)
 

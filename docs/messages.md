@@ -31,7 +31,7 @@ The language Trame speaks to people: British English. Its messages are written i
 
 ### A catalog counts in its language
 
-`CountsInTheLanguage` · `src/messages.ts:947` · status: **held**
+`CountsInTheLanguage` · `src/messages.ts:954` · status: **held**
 
 A count and its noun follow the plural rules of the language the catalog is written in, with the forms the catalog writes for each category; nothing below the catalogs presumes a language.
 
@@ -87,7 +87,7 @@ Joins the items of a list as people write it in the decided language: "A, B and 
 
 ### Messages of an advance
 
-`AdvanceMessages` · `src/messages.ts:858`
+`AdvanceMessages` · `src/messages.ts:865`
 
 What trame advance says as it goes, and what a generation says of itself.
 
@@ -186,7 +186,7 @@ What trame advance says as it goes, and what a generation says of itself.
 
 ### Messages of the commands
 
-`CommandMessages` · `src/messages.ts:444`
+`CommandMessages` · `src/messages.ts:447`
 
 What the commands print: summaries, usage, refusals.
 
@@ -273,10 +273,10 @@ What the commands print: summaries, usage, refusals.
     audited: (packages: number, vulnerable: number, file: string) => `${plural(packages, { one: "package", other: "packages" })} audited, ${vulnerable} vulnerable · written: ${file}`,
     exported: (dates: number, file: string) => `export · ${plural(dates, { one: "date", other: "dates" })} · written: ${file}`,
     /** After the published declarations that changed. */
-    publicationRefused: () => "publication refused: a published declaration has changed (an amendment changes its meaning; --migrate \"why\" publishes it again when only the language changed its form)",
+    publicationRefused: () => "publication refused: a published declaration has changed (an amendment changes a value; --migrate \"why\" publishes again a statement whose form only changed, or a declaration published before its parts were)",
     published: (declarations: number) => `published: ${plural(declarations, { one: "declaration", other: "declarations" })} frozen in trame.lock`,
     nothingToPublish: () => "nothing new to publish",
-    publishedAgain: (declarations: number) => `published again: ${plural(declarations, { one: "declaration", other: "declarations" })} whose form the language changed, not the meaning`,
+    publishedAgain: (declarations: number) => `published again: ${plural(declarations, { one: "declaration", other: "declarations" })} whose form changed, not the meaning`,
 
     // trame plan: what a build would change.
     /** The first line: what changes, against the build of which date, compiled at which date. */
@@ -320,6 +320,8 @@ What the commands print: summaries, usage, refusals.
     initGoal: (title: string) => `What ${title} is for: its owner says it here, and what serves it links to it.`,
     initWritten: (title: string, engine: string) => `${title} started · pins ${engine} · written: trame.json, src/, the guide for agents · the manifest next`,
     amendInTheCode: (title: string, field: string) => `${field} of “${title}” changes in the code, never from here: code is built on it`,
+    amendBodyInTheCode: (title: string, field: string) => `${field} of “${title}” is amended in the code: amend({ ${field}: (previous) => … }), composed with the one in force`,
+    amendStated: (title: string, field: string) => `${field} of “${title}” is stated, not amended: a new node that repeals it states the new one`,
     amendCitedNeedsSource: (title: string, field: string) => `${field} of “${title}” is cited: it changes only with the source that changed it (--source)`,
     amendNotTheSame: (path: string) => `The value given for ${path} is not of the type of the one it replaces`,
     amendNoKind: () => "The project's language has no kind of amendments",
@@ -533,7 +535,7 @@ What the compiler, the wiring and the assembly say: diagnostics on the graph, re
 
 ### Messages of trame dev
 
-`DevMessages` · `src/messages.ts:420`
+`DevMessages` · `src/messages.ts:423`
 
 What the dev server prints while it watches the project.
 
@@ -627,7 +629,7 @@ What the drivers say about a body: hidden dependencies, access to the platform, 
 
 ### Words of Trame's views
 
-`EngineViewWords` · `src/messages.ts:660`
+`EngineViewWords` · `src/messages.ts:665`
 
 What the views of Trame's own graph say: the catalogue of literals, the versions of the engine.
 
@@ -640,7 +642,7 @@ The messages are written in `../engine-views/words.ts`.
 
 ### Words of the kinds
 
-`KindWords` · `src/messages.ts:640`
+`KindWords` · `src/messages.ts:645`
 
 What the kinds say: their labels, the labels of their fields and edges, what their holes say, what they render. The kinds are files of the language, outside the graph: their words are a catalog all the same, which they call; a kind writes no text of its own.
 
@@ -722,7 +724,10 @@ What the machine outputs, the lock, the payload, the date bundle, the difference
 
     // trame.lock
     publishedRemoved: () => "Published element deleted: repeal it instead of removing it from the code",
-    publishedChanged: () => "Modified after publication: create an amendment instead of changing the declaration",
+    publishedChanged: (part: string) => `Its ${part} changed after publication: an amendment changes it (trame amend), not the declaration`,
+    publishedCitedChanged: (part: string) => `Its ${part} changed after publication: an amendment that cites the new source changes it, not the declaration`,
+    publishedStatedChanged: (part: string) => `Its ${part} changed after publication: a new node that repeals it states the new one (trame publish --migrate "why" when only its form changed)`,
+    publishedOutdated: () => `Published before its parts were (g108): trame publish --migrate "why" publishes them`,
 
     // The page, read back before it is given.
     styleNotTheLanguage: (language: string, places: string[]) => `The style of the page does not follow the grammar of ${language}, at ${places.join(", ")}: the page is not given`,
@@ -768,14 +773,14 @@ What the machine outputs, the lock, the payload, the date bundle, the difference
 
 - Owner: trame
 - Written in: [Language](#Language)
-- Used by: [trame dev](command-scenarios.md#DevFollowsTheGraph), [The page exported](command-scenarios.md#PageExported), [The page of the graph](command-scenarios.md#PageOfTheGraph), [The graph in the intermediate format](command-scenarios.md#PayloadOfTheGraph), [Two builds compared](commands.md#BuildComparison), [Date bundle](engine.md#DateBundle), [Differences](engine.md#Differences), [Lock](engine.md#Lock), [Machine outputs](engine.md#MachineOutputs), [Views](engine.md#Views), [Page](page.md#Page)
+- Used by: [trame dev](command-scenarios.md#DevFollowsTheGraph), [The page exported](command-scenarios.md#PageExported), [The page of the graph](command-scenarios.md#PageOfTheGraph), [The graph in the intermediate format](command-scenarios.md#PayloadOfTheGraph), [A published value changed](command-scenarios.md#PublishedValueChanged), [Two builds compared](commands.md#BuildComparison), [Date bundle](engine.md#DateBundle), [Differences](engine.md#Differences), [Lock](engine.md#Lock), [Machine outputs](engine.md#MachineOutputs), [Views](engine.md#Views), [Page](page.md#Page)
 - Applies: [The words are in catalogs](principles.md#WordsInCatalogs)
 
 <a id="PageWords"></a>
 
 ### Words of the page
 
-`PageWords` · `src/messages.ts:671`
+`PageWords` · `src/messages.ts:676`
 
 What the page says around the documents the engine wrote: the state of the compilation, the dates, the navigation, the banner, the figures, the explorer.
 
@@ -791,7 +796,7 @@ The messages are written in `./code/page/words.ts`.
 
 ### Messages of the platform
 
-`PlatformMessages` · `src/messages.ts:693`
+`PlatformMessages` · `src/messages.ts:698`
 
 What the implementations of the ports say (the command line, the terminal, the processes).
 
@@ -831,7 +836,7 @@ What the implementations of the ports say (the command line, the terminal, the p
 
 ### Messages of the renderers
 
-`RenderingMessages` · `src/messages.ts:683`
+`RenderingMessages` · `src/messages.ts:688`
 
 The words that the renderers add to the intermediate format: labels, notes, the names of statuses and outcomes. Written in a file: the page, which runs in the browser where nothing is wired, reads it too.
 
@@ -846,7 +851,7 @@ The messages are written in `./code/rendering/messages.ts`.
 
 ### Messages of the scenarios
 
-`ScenarioMessages` · `src/messages.ts:722`
+`ScenarioMessages` · `src/messages.ts:727`
 
 The names of the checks that the engine's scenarios make.
 
@@ -937,6 +942,8 @@ The names of the checks that the engine's scenarios make.
     planTouchesShipments: (shipment: string) => `The plan names ${shipment} among the shipments touched: what it ships changes`,
     declarationsFrozen: (count: number) => `trame publish freezes ${plural(count, { one: "declaration", other: "declarations" })} in trame.lock`,
     nothingNewThen: () => "Published again, nothing is new",
+    publishedValueRefused: (node: string) => `The value of ${node}, changed after it was published, is refused: an amendment changes it`,
+    migrationKeepsAValue: () => "A migration does not publish a value again: it publishes a form",
     packagesAudited: (entries: number) => `trame audit keeps ${plural(entries, { one: "answer", other: "answers" })} of the registry as evidence, none vulnerable`,
     releaseRefusedUnsettled: () => "In the example, where a value is still to decide, a release is refused",
     versionFrozen: (version: string) => `In the library, ${version} is frozen: its graph, its code, its documents`,
@@ -986,7 +993,7 @@ The names of the checks that the engine's scenarios make.
 - Owner: trame
 - Parameters: `language` ← [Language](#Language)
 - Written in: [Language](#Language)
-- Used by: [An advance, in memory](command-scenarios.md#AdvanceInMemory), [A body is read and checked](command-scenarios.md#BodiesReadAndChecked), [A build planned](command-scenarios.md#BuildPlanned), [The command line](command-scenarios.md#CommandLineChooses), [A component assembled](command-scenarios.md#ComponentAssembled), [A component run](command-scenarios.md#ComponentRun), [Declarations published](command-scenarios.md#DeclarationsPublished), [trame dev](command-scenarios.md#DevFollowsTheGraph), [The doctor](command-scenarios.md#DoctorAsks), [A library carries kinds](command-scenarios.md#KindsCarried), [The laws, tested by their command](command-scenarios.md#LawsTested), [A library released](command-scenarios.md#LibraryReleased), [The manifest written](command-scenarios.md#ManifestWritten), [The packages audited](command-scenarios.md#PackagesAudited), [The packages upgraded](command-scenarios.md#PackagesUpgraded), [The page delivered](command-scenarios.md#PageDelivered), [The page exported](command-scenarios.md#PageExported), [The page of the graph](command-scenarios.md#PageOfTheGraph), [The graph in the intermediate format](command-scenarios.md#PayloadOfTheGraph), [A project started](command-scenarios.md#ProjectStarted), [The registry filled](command-scenarios.md#RegistryFilled), [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [The snapshot, taken by its command](command-scenarios.md#SnapshotTaken), [Stages shipped in order](command-scenarios.md#StagesShipped), [A value amended](command-scenarios.md#ValueAmended), [A view in the terminal](command-scenarios.md#ViewsInTheTerminal), [A body amended runs amended](scenarios.md#AmendedBodiesRun), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore), [The described engine compiles the example](scenarios.md#CompileExample), [The documents write in the decided language](scenarios.md#DocumentWords), [The engine reckons as it says](scenarios.md#EngineReckons), [The laws of the kinds hold](scenarios.md#KindLaws), [The graph page is opened as a person would](sdlc.md#OpeningTheGraphPage)
+- Used by: [An advance, in memory](command-scenarios.md#AdvanceInMemory), [A body is read and checked](command-scenarios.md#BodiesReadAndChecked), [A build planned](command-scenarios.md#BuildPlanned), [The command line](command-scenarios.md#CommandLineChooses), [A component assembled](command-scenarios.md#ComponentAssembled), [A component run](command-scenarios.md#ComponentRun), [Declarations published](command-scenarios.md#DeclarationsPublished), [trame dev](command-scenarios.md#DevFollowsTheGraph), [The doctor](command-scenarios.md#DoctorAsks), [A library carries kinds](command-scenarios.md#KindsCarried), [The laws, tested by their command](command-scenarios.md#LawsTested), [A library released](command-scenarios.md#LibraryReleased), [The manifest written](command-scenarios.md#ManifestWritten), [The packages audited](command-scenarios.md#PackagesAudited), [The packages upgraded](command-scenarios.md#PackagesUpgraded), [The page delivered](command-scenarios.md#PageDelivered), [The page exported](command-scenarios.md#PageExported), [The page of the graph](command-scenarios.md#PageOfTheGraph), [The graph in the intermediate format](command-scenarios.md#PayloadOfTheGraph), [A project started](command-scenarios.md#ProjectStarted), [A published value changed](command-scenarios.md#PublishedValueChanged), [The registry filled](command-scenarios.md#RegistryFilled), [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [The snapshot, taken by its command](command-scenarios.md#SnapshotTaken), [Stages shipped in order](command-scenarios.md#StagesShipped), [A value amended](command-scenarios.md#ValueAmended), [A view in the terminal](command-scenarios.md#ViewsInTheTerminal), [A body amended runs amended](scenarios.md#AmendedBodiesRun), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore), [The described engine compiles the example](scenarios.md#CompileExample), [The documents write in the decided language](scenarios.md#DocumentWords), [The engine reckons as it says](scenarios.md#EngineReckons), [The laws of the kinds hold](scenarios.md#KindLaws), [The graph page is opened as a person would](sdlc.md#OpeningTheGraphPage)
 - Applies: [A catalog counts in its language](#CountsInTheLanguage), [The words are in catalogs](principles.md#WordsInCatalogs)
 
 <a id="ViewMessages"></a>
@@ -1055,7 +1062,7 @@ What the loading of views and the compilation API say.
 
 ### Words of the views
 
-`ViewWords` · `src/messages.ts:650`
+`ViewWords` · `src/messages.ts:655`
 
 What the views say: their titles, their introductions, their headings, what they say of the graph.
 

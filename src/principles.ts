@@ -85,7 +85,7 @@ export const OneWayToRead = adr({
 export const HistoryInTheSource = adr({
   owner: "trame",
   context: "A decision is read by people who took it, people who apply it, and auditors who must know what was in force on a date.",
-  consequences: "trame publish freezes the fingerprint of each declaration in trame.lock; changing or removing a published one is an error. --at gives the graph of any date.",
+  consequences: "trame publish freezes in trame.lock, part by part, what the kind of each declaration says people decide: a value chosen or cited, a statement (D1, since g108). Changing a frozen part is an error: an amendment changes a value, a new node that repeals it a statement, and a migration publishes again a form, never a value. Removing a published declaration is an error. Its code stays free, held by what verifies it. --at gives the graph of any date.",
   rejected: { "The history of Git": "it records lines, not decisions, and it is not read by the build" },
   serves: [SingleSource],
   appliedBy: [Lock, Publish],
