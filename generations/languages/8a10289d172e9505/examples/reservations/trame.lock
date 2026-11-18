@@ -1,0 +1,30 @@
+{
+  "published": {
+    "cancellation.CancelWithoutStress": "91e2756d3b0e96f5",
+    "cancellation.FreeCancellationPeriod": "d0cb5219df993e55",
+    "cancellation.IdempotentProvider": "97a0a9923b559807",
+    "cancellation.ImmediateRefund": "a7a4923dbbdb2f31",
+    "cancellation.LateFee": "9c335fbd664ac0d7",
+    "cancellation.Refund": "c3f5f2705f32ed8f",
+    "cancellation.RefundCriteria": "7a27ff06e8420fbb",
+    "legal.FeeCap": "d899ab109672e4e0"
+  },
+  "migrations": [
+    {
+      "at": "2026-10-30",
+      "why": "Units are quantities of the graph (g80): a share of the price is typed with std's Ratio, no longer the prelude's Percent",
+      "nodes": [
+        "cancellation.LateFee",
+        "legal.FeeCap"
+      ]
+    },
+    {
+      "at": "2026-10-30",
+      "why": "Every node has an owner (A6): goals and requirements name theirs",
+      "nodes": [
+        "cancellation.CancelWithoutStress",
+        "cancellation.Refund"
+      ]
+    }
+  ]
+}
