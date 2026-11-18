@@ -10,7 +10,7 @@
 
 ### A landmark on the body
 
-`MarkOnBody` · `src/marks.ts:58` · status: **held**
+`MarkOnBody` · `src/marks.ts:58` · status: **held** · published
 
 What a landmark draws on a body: each line from spot to spot (dashed in dashes and gaps), a plumb line dashed down to the floor, a dot, an arrow and its head, an angle as an arc between the two directions with its two rays, soft, and its measure rounded, set beyond the arc on the line that halves it; a soft thin line from its spot to its words.
 
@@ -86,7 +86,7 @@ What a landmark draws on a body: each line from spot to spot (dashed in dashes a
 
 ### How landmarks are drawn
 
-`MarkLook` · `src/marks.ts:25`
+`MarkLook` · `src/marks.ts:25` · published
 
 The lengths of a landmark's drawing, in metres: a dash and the gap after it, the width of a line, of a thin line and of an arrow's shaft, the radius of a dot; an angle's arc in 24 pieces, its two rays a quarter longer than its radius, its measure 9 cm beyond the arc and rounded to 5°.
 
@@ -110,7 +110,7 @@ The lengths of a landmark's drawing, in metres: a dash and the gap after it, the
 
 ### When the landmarks are drawn
 
-`MarksWhen` · `src/marks.ts:35`
+`MarksWhen` · `src/marks.ts:35` · published
 
 Whenever the person wants them, in every practice: while a pose is held, at a pause and at the end, drawn once on the still body; while the body moves, those of the pose it goes to, on the body as it is, following it.
 
@@ -129,7 +129,7 @@ Whenever the person wants them, in every practice: while a pose is held, at a pa
 
 ### The landmarks of a pose
 
-`MarksOn` · `src/marks.ts:139` · status: **held**
+`MarksOn` · `src/marks.ts:139` · status: **held** · published
 
 What the stage draws of a pose's landmarks on the body as it is, in the language the app speaks: each landmark's pieces, its number and its words, the measure of each angle; and the list of their sentences, numbered. It touches nothing.
 

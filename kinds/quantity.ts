@@ -41,7 +41,8 @@ const kind = defineKind({
   main: F.units,
   renderOwns: [F.source, F.url, F.units],
   fields,
-  changes: { [F.units]: ChangeWay.cited },
+  statement: ChangeWay.stated,
+  changes: { [F.units]: ChangeWay.cited, [F.source]: ChangeWay.cited, [F.url]: ChangeWay.cited },
   edges,
 
   holes: (self, g) => {

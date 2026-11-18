@@ -2,13 +2,16 @@
 
 *What happened to the project, day by day, the latest first, up to the date of the graph (18 November 2026): the versions released, and the evidence given, each with the node it is about and who gave it.*
 
-> **7 days · 2 versions released · 14 pieces of evidence**
+> **7 days · 2 versions released · 17 pieces of evidence**
 
 ## 18 November 2026
 
 | What | Node | By |
 |---|---|---|
 | Shipped | [The next version](sdlc.md#NextVersion) | claude |
+| Shipped | [The next version](sdlc.md#NextVersion) | claude |
+| Built | [The library of geometry](sdlc.md#TheLibrary) | claude |
+| Shipped | [The library of geometry](sdlc.md#TheLibrary) | claude |
 | Built | [The library of geometry](sdlc.md#TheLibrary) | claude |
 | Shipped | [The library of geometry](sdlc.md#TheLibrary) | claude |
 

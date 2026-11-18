@@ -265,3 +265,16 @@ export const R0_18_1 = release({
   language: "shared",
   serves: [CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
 })
+
+/**
+ * Version 0.19.0
+ */
+export const R0_19_0 = release({
+  owner: "trame",
+  version: "0.19.0",
+  date: "2026-11-18",
+  what: "Published: what people decided is published before a shipment takes it (D1); a version proves its data reviewed",
+  fingerprint: "7e2307f67b6a5327",
+  language: "shared",
+  serves: [CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
+})

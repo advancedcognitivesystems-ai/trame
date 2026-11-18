@@ -10,7 +10,7 @@
 
 ### Where the leading leg goes
 
-`LeadingLegOf` · `src/content.ts:93` · status: **held**
+`LeadingLegOf` · `src/content.ts:93` · status: **held** · published
 
 In a pose that sets the legs apart, reached from a level above (standing, folded), the leading leg steps back; reached from the floor (a plank, a dog), it comes forward between the hands.
 
@@ -41,7 +41,7 @@ In a pose that sets the legs apart, reached from a level above (standing, folded
 
 ### A sequence that makes sense
 
-`MakesSense` · `src/content.ts:117` · status: **held**
+`MakesSense` · `src/content.ts:117` · status: **held** · published
 
 The poses of a sequence, judged by their level: it begins standing and ends standing; each pose is at the level of the one before or at a level a body reaches from it in one movement; it does not go back and forth between two levels twice in a row (standing, folding, standing, folding); no pose follows itself. It gives what is wrong: whether it begins and ends standing, where it jumps, where it goes back and forth once too often, where a pose repeats.
 
@@ -95,7 +95,7 @@ The poses of a sequence, judged by their level: it begins standing and ends stan
 
 ### How long words take to say
 
-`Spoken` · `src/content.ts:70` · status: **held**
+`Spoken` · `src/content.ts:70` · status: **held** · published
 
 The seconds a voice takes to say a text, at the rate voices speak, with the breath word before it or not.
 
@@ -129,7 +129,7 @@ The seconds a voice takes to say a text, at the rate voices speak, with the brea
 
 ### Placeholders of a cue
 
-`CuePlaceholders` · `src/content.ts:289`
+`CuePlaceholders` · `src/content.ts:289` · published
 
 Where a cue says the leg that leads this round: the app puts its name there, in the language it speaks.
 
@@ -145,7 +145,7 @@ Where a cue says the leg that leads this round: the app puts its name there, in 
 
 ### Languages offered
 
-`Languages` · `src/content.ts:24`
+`Languages` · `src/content.ts:24` · published
 
 The languages the content is written in: each text of a row holds each of them.
 
@@ -163,7 +163,7 @@ The languages the content is written in: each text of a row holds each of them.
 
 ### The ways between levels
 
-`LevelWays` · `src/content.ts:37`
+`LevelWays` · `src/content.ts:37` · published
 
 From each level, the levels a body reaches in one movement, one foot stepping at a time: from standing it folds forward; folded, it steps one leg back into a lunge; from a lunge, a plank or a dog; from a plank it lowers to the floor, comes onto its knees, or lifts its hips into a dog; lying on its front, it pushes back into a plank or a dog; kneeling, it comes onto all fours or into a dog; on all fours, into a dog or a plank. The ways go both ways, and each keeps the body on the floor as the engine moves it (a criterion of "A sequence that makes sense").
 
@@ -187,7 +187,7 @@ From each level, the levels a body reaches in one movement, one foot stepping at
 
 ### How fast a voice speaks
 
-`SpeechRate` · `src/content.ts:61`
+`SpeechRate` · `src/content.ts:61` · published
 
 About fourteen characters a second, in French or in English, for the voices of the devices at their usual rate; a breath word (breathe in, breathe out) takes about a second.
 
@@ -205,7 +205,7 @@ About fourteen characters a second, in French or in English, for the voices of t
 
 ### Poses
 
-`Poses` · `src/content.ts:230` · status: **unknown**
+`Poses` · `src/content.ts:230` · status: **unknown** · published
 
 The poses of the sun salutation in twelve steps (eight poses, some of them twice), and poses to hold: the mountain, the child, the cat and the cow.
 
@@ -239,7 +239,7 @@ The poses of the sun salutation in twelve steps (eight poses, some of them twice
 
 ### Sequences
 
-`Sequences` · `src/content.ts:296` · status: **unknown**
+`Sequences` · `src/content.ts:296` · status: **unknown** · published
 
 The sequences of poses, with the breath of each step and what to do: first the sun salutation, in twelve steps and two rounds.
 

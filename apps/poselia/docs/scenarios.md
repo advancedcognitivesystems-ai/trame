@@ -10,7 +10,7 @@
 
 ### Moments of the poses held
 
-`HoldMoments` · `src/scenarios.ts:347`
+`HoldMoments` · `src/scenarios.ts:347` · published
 
 The composer draws eight poses; a pose too far is added (the cobra, lying on the front), then taken out; the holds are made one breath shorter (four breaths); the practice is looked at every half second for ten minutes, the voice turned off after a minute and back on after two. A sequence learnt is looked at five seconds in, during the first hold. The draws are tried with seeds 1 to 12, for 3, 6, 9 and 12 poses, each pose held one breath, looked at every quarter of a second; at least eight different sequences of nine poses come out of the twelve seeds.
 
@@ -35,7 +35,7 @@ The composer draws eight poses; a pose too far is added (the cobra, lying on the
 
 ### The device of the scenarios
 
-`ScenarioDevice` · `src/scenarios.ts:34`
+`ScenarioDevice` · `src/scenarios.ts:34` · published
 
 The languages a device gives in the scenarios: British English only.
 
@@ -50,7 +50,7 @@ The languages a device gives in the scenarios: British English only.
 
 ### Moments a scenario looks at
 
-`ScenarioMoments` · `src/scenarios.ts:176`
+`ScenarioMoments` · `src/scenarios.ts:176` · published
 
 With the default breath (four seconds a phase): a breath and a half in, the second step is half gone; then a pause while ten seconds pass; resumed, two seconds later the third step begins; two minutes are past the end. A whole practice is looked at every quarter of a second; in the sun salutation, no ankle rises more than 30 cm off the floor.
 
@@ -72,7 +72,7 @@ With the default breath (four seconds a phase): a breath and a half in, the seco
 
 ### Moments of the settings a scenario looks at
 
-`SettingsMoments` · `src/scenarios.ts:262`
+`SettingsMoments` · `src/scenarios.ts:262` · published
 
 Two steps longer, the default breath in (four seconds) lasts five; taps at 0, 5 and 11 seconds measure five seconds in and six out; five seconds into a practice, the first step (a breath out of six seconds) is still under way.
 
@@ -94,7 +94,7 @@ Two steps longer, the default breath in (four seconds) lasts five; taps at 0, 5 
 
 ### The device's languages, given
 
-`GivenLanguages` · `src/scenarios.ts:40` · status: **held**
+`GivenLanguages` · `src/scenarios.ts:40` · status: **held** · published
 
 In a scenario, the device gives the languages the scenarios decide.
 
@@ -109,7 +109,7 @@ In a scenario, the device gives the languages the scenarios decide.
 
 ### A bowl that counts
 
-`RecordedBowl` · `src/scenarios.ts:88` · status: **held**
+`RecordedBowl` · `src/scenarios.ts:88` · status: **held** · published
 
 In a scenario, the bowl makes no sound: it counts how many times it was struck.
 
@@ -124,7 +124,7 @@ In a scenario, the bowl makes no sound: it counts how many times it was struck.
 
 ### A screen that records
 
-`RecordedScreen` · `src/scenarios.ts:52` · status: **held**
+`RecordedScreen` · `src/scenarios.ts:52` · status: **held** · published
 
 In a scenario, the screen keeps the last home view, player, settings and composer it was given, with what the person could do on them, and every moment it showed.
 
@@ -140,7 +140,7 @@ In a scenario, the screen keeps the last home view, player, settings and compose
 
 ### What the scenarios check
 
-`ScenarioChecks` · `src/scenarios.ts:121`
+`ScenarioChecks` · `src/scenarios.ts:121` · published
 
 <details><summary>The messages, in code</summary>
 

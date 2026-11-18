@@ -198,6 +198,22 @@ Playwright 1.63.0, whose Chromium the machine has
 - Released by: trame
 - Serves: [A published value is cited, not copied](product.md#CitedNotCopied), [Known designs, named](product.md#KnownDesigns), [Ports of the platform, realized once](product.md#RealizedOnce), [Shared operations instead of literals](product.md#SharedOperations), [Rules applied, not written again](product.md#SharedRules), [Versions that hold](product.md#VersionsThatHold)
 
+<a id="R0_19_0"></a>
+
+### Version 0.19.0
+
+`R0_19_0` · `src/releases.ts:272`
+
+Published: what people decided is published before a shipment takes it (D1); a version proves its data reviewed
+
+- Version: `0.19.0`
+- Released on: 18 November 2026
+- Fingerprint: `7e2307f67b6a5327`
+- Language: the repository's, shared
+
+- Released by: trame
+- Serves: [A published value is cited, not copied](product.md#CitedNotCopied), [Known designs, named](product.md#KnownDesigns), [Ports of the platform, realized once](product.md#RealizedOnce), [Shared operations instead of literals](product.md#SharedOperations), [Rules applied, not written again](product.md#SharedRules), [Versions that hold](product.md#VersionsThatHold)
+
 <a id="R0_2_0"></a>
 
 ### Version 0.2.0

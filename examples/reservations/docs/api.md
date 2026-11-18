@@ -10,7 +10,7 @@
 
 ### End of free cancellation
 
-`FreeCancellationEnd` · `src/api.ts:17` · status: **held**
+`FreeCancellationEnd` · `src/api.ts:17` · status: **held** · published
 
 The moment until which a reservation can be cancelled at no cost.
 
@@ -27,7 +27,7 @@ Must stay synchronous.
 
 ### Lead time of a cancellation
 
-`LeadTime` · `src/api.ts:30` · status: **held**
+`LeadTime` · `src/api.ts:30` · status: **held** · published
 
 How long before the start of the slot the reservation is cancelled, in seconds.
 

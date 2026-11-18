@@ -31,7 +31,8 @@ export const sketchOf = (g: Graph): GraphSketch => {
   const views = g.all().nodes()
   const sketch: GraphSketch = {
     nodes: views.map((v) => ({
-      ref: v.ref, kind: v.kind, module: v.module, library: v.library, title: v.title, owner: v.owner, effects: v.effects, field: (path: string) => v.field(path),
+      ref: v.ref, kind: v.kind, module: v.module, library: v.library, title: v.title, owner: v.owner, effects: v.effects, publication: g.publication?.(v),
+      field: (path: string) => v.field(path),
     })),
     edges: views.flatMap((v) => g.edges(v, Direction.out).filter((e) => e.active).map((e) => ({ from: v.ref, to: e.other.ref, name: e.name }))),
   }

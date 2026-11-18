@@ -357,6 +357,13 @@ Requirement · `Preceded` · **held**
 - Owner: trame
 - Refines: Rules applied, not written again
 
+### What people decided is published
+
+Requirement · `Published` · **held**
+
+- Owner: trame
+- Refines: Rules applied, not written again
+
 ### The data a shipment carries is reviewed
 
 Requirement · `Reviewed` · **held**
@@ -432,6 +439,13 @@ Acceptance criteria · `PrecededCriteria` · **held**
 - Owner: trame
 - Accepts: The artefacts a shipment ships were shipped first by those that precede it
 
+### Criteria of what is published
+
+Acceptance criteria · `PublishedCriteria` · **held**
+
+- Owner: trame
+- Accepts: What people decided is published
+
 ### Criteria of the data reviewed
 
 Acceptance criteria · `ReviewedCriteria` · **held**
@@ -475,10 +489,10 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 107
+- Version: 108
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../generations/g107
+- Its path: ../generations/g108
 - Serves: Ports of the platform, realized once
 
 ## Standard library · Design patterns
@@ -881,6 +895,18 @@ Release · `R0_18_1`
 - Language: shared
 - Serves: A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again, Versions that hold
 
+### Version 0.19.0
+
+Release · `R0_19_0`
+
+- Released by: trame
+- Version: 0.19.0
+- Released on: 2026-11-18
+- What changes: Published: what people decided is published before a shipment takes it (D1); a version proves its data reviewed
+- Fingerprint: 7e2307f67b6a5327
+- Language: shared
+- Serves: A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again, Versions that hold
+
 ### Version 0.2.0
 
 Release · `R0_2_0`
@@ -1174,6 +1200,15 @@ Obligation · `CallersIdentified`
 - Applies the family: Who calls a shipment's programs is identified
 - Serves: Versions that hold
 
+### Its data reviewed
+
+Obligation · `DataReviewed`
+
+- Owner: trame
+- A gap weighs: error
+- Applies the family: The data a shipment carries is reviewed
+- Serves: Versions that hold
+
 ### Its decisions applied
 
 Obligation · `DecisionsApplied`
@@ -1220,7 +1255,7 @@ Obligation · `RulesHeld`
 Policy · `VersionMode`
 
 - Owner: trame
-- Its obligations: Its functions verified, Its requirements held, Its decisions applied, Its rules held, Its packages safe, Its callers identified
+- Its obligations: Its functions verified, Its requirements held, Its decisions applied, Its rules held, Its packages safe, Its callers identified, Its data reviewed
 
 ## Standard library · System
 

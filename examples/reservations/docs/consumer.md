@@ -10,7 +10,7 @@
 
 ### A day ahead, a full refund
 
-`FullRefundAhead` · `src/consumer.ts:25` · status: **held**
+`FullRefundAhead` · `src/consumer.ts:25` · status: **held** · published
 
 Whatever the product decides about late fees, a reservation cancelled at least the notice ahead is refunded in full. The legal team answers for it; it constrains the refund the product computes, played on its examples at every build.
 
@@ -63,7 +63,7 @@ Whatever the product decides about late fees, a reservation cancelled at least t
 
 ### Notice for a full refund
 
-`FullRefundNotice` · `src/consumer.ts:14`
+`FullRefundNotice` · `src/consumer.ts:14` · published
 
 How long before its slot a reservation cancelled is refunded in full, as the legal team reads consumer law for a service booked in advance.
 

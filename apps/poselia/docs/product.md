@@ -10,7 +10,7 @@
 
 ### The breath sets the pace
 
-`BreathSetsThePace` · `src/product.ts:27`
+`BreathSetsThePace` · `src/product.ts:27` · published
 
 Nothing in a practice is counted in seconds that the person did not choose: a movement lasts a phase of their breath, a hold lasts whole breaths.
 
@@ -22,7 +22,7 @@ Nothing in a practice is counted in seconds that the person did not choose: a mo
 
 ### Content checked by people who practise
 
-`CheckedContent` · `src/product.ts:40`
+`CheckedContent` · `src/product.ts:40` · published
 
 What a pose asks, and how a sequence goes, is reviewed by people who practise and teach, in each language, before it reaches others.
 
@@ -35,7 +35,7 @@ What a pose asks, and how a sequence goes, is reviewed by people who practise an
 
 ### In the person's language
 
-`InTheirLanguage` · `src/product.ts:33`
+`InTheirLanguage` · `src/product.ts:33` · published
 
 Every word the app shows or says is in the language the person chose, among those offered.
 
@@ -47,7 +47,7 @@ Every word the app shows or says is in the language the person chose, among thos
 
 ### Practise yoga on one's own, guided
 
-`PractiseGuided` · `src/product.ts:20`
+`PractiseGuided` · `src/product.ts:20` · published
 
 A person practises at home with the phone on the mat: each pose is shown still and clear, each sequence moves with their breath, and a voice says what to do, in their language.
 
@@ -62,7 +62,7 @@ A person practises at home with the phone on the mat: each pose is shown still a
 
 ### The breath of a moment
 
-`BreathOf` · `src/product.ts:77` · status: **held**
+`BreathOf` · `src/product.ts:77` · status: **held** · published
 
 The breath a moment of a practice follows: the setting of the most specific level that has one (an exercise, then the step, then the sequence, then the pose), applied to the person's pattern, or to the default one.
 
@@ -106,7 +106,7 @@ The breath a moment of a practice follows: the setting of the most specific leve
 
 ### The language of the app
 
-`ChosenLanguage` · `src/product.ts:117` · status: **held**
+`ChosenLanguage` · `src/product.ts:117` · status: **held** · published
 
 The one the person chose, if it is offered; otherwise the first of the device's languages that is offered; otherwise the first language offered.
 
@@ -148,7 +148,7 @@ The one the person chose, if it is offered; otherwise the first of the device's 
 
 ### The breath of someone who has set nothing
 
-`DefaultBreath` · `src/product.ts:66`
+`DefaultBreath` · `src/product.ts:66` · published
 
 The pattern a practice follows until the person sets their own, in the settings or by tapping their breath: four seconds in, four seconds out, no pause at the top or at the bottom. A product decision.
 
@@ -170,7 +170,7 @@ The pattern a practice follows until the person sets their own, in the settings 
 
 ### The phone stays on the mat
 
-`PhoneOnTheMat` · `src/product.ts:151` · status: **unknown**
+`PhoneOnTheMat` · `src/product.ts:151` · status: **unknown** · published
 
 During a practice the person does not hold the phone: they glance at it and listen. What matters is said aloud, and the screen stays awake.
 

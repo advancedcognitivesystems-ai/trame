@@ -10,7 +10,7 @@
 
 ### Sound of the bowl
 
-`BowlSound` · `src/sound.ts:22`
+`BowlSound` · `src/sound.ts:22` · published
 
 A Tibetan singing bowl, struck: its first tone (220 Hz), its partials (their ratio to the first tone; the loudness of each of their two tones; the seconds they take to fade to silence; how far each tone is from the partial, in hertz, so that the two beat at twice that), the attack of the strike, how quiet silence is, how long the sound lasts; the mallet's touch (a burst of noise: its loudness, how fast it fades, for how many of those fades it lasts, how low it is filtered); the volume.
 

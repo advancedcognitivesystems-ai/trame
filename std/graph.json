@@ -1959,7 +1959,7 @@
       "id": "obligations.AppliedCriteria",
       "kind": "acceptance",
       "title": "Criteria of the decisions applied",
-      "source": "src/obligations.ts:306",
+      "source": "src/obligations.ts:345",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1998,7 +1998,7 @@
       "id": "obligations.CheckedCriteria",
       "kind": "acceptance",
       "title": "Criteria of the artefacts checked",
-      "source": "src/obligations.ts:325",
+      "source": "src/obligations.ts:364",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2046,7 +2046,7 @@
       "id": "obligations.IdentifiedCriteria",
       "kind": "acceptance",
       "title": "Criteria of who calls",
-      "source": "src/obligations.ts:244",
+      "source": "src/obligations.ts:260",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2072,7 +2072,7 @@
       "id": "obligations.Preceded",
       "kind": "requirement",
       "title": "The artefacts a shipment ships were shipped first by those that precede it",
-      "source": "src/obligations.ts:196",
+      "source": "src/obligations.ts:212",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2084,7 +2084,7 @@
       "id": "obligations.PrecededCriteria",
       "kind": "acceptance",
       "title": "Criteria of the stages",
-      "source": "src/obligations.ts:257",
+      "source": "src/obligations.ts:296",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2101,6 +2101,48 @@
         },
         {
           "name": "A shipment named that ships none of its artefacts is not to prove",
+          "status": "passed"
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "obligations.Published",
+      "kind": "requirement",
+      "title": "What people decided is published",
+      "source": "src/obligations.ts:196",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "body": "(function)"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "obligations.PublishedCriteria",
+      "kind": "acceptance",
+      "title": "Criteria of what is published",
+      "source": "src/obligations.ts:282",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "criteria": "(function)"
+      },
+      "result": [
+        {
+          "name": "A reached declaration with a part not published yet is a gap",
+          "status": "passed"
+        },
+        {
+          "name": "A part changed after it was published is no gap: it is an error of the graph already",
+          "status": "passed"
+        },
+        {
+          "name": "Code, which a publication does not freeze, is no gap",
+          "status": "passed"
+        },
+        {
+          "name": "A declaration not reached is no gap",
           "status": "passed"
         }
       ],
@@ -2125,7 +2167,7 @@
       "id": "obligations.ReviewedCriteria",
       "kind": "acceptance",
       "title": "Criteria of the data reviewed",
-      "source": "src/obligations.ts:315",
+      "source": "src/obligations.ts:354",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2159,7 +2201,7 @@
       "id": "obligations.RuledCriteria",
       "kind": "acceptance",
       "title": "Criteria of the rules held",
-      "source": "src/obligations.ts:335",
+      "source": "src/obligations.ts:374",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2189,7 +2231,7 @@
       "id": "obligations.SafeCriteria",
       "kind": "acceptance",
       "title": "Criteria of the packages safe",
-      "source": "src/obligations.ts:344",
+      "source": "src/obligations.ts:383",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2219,7 +2261,7 @@
       "id": "obligations.ServedCriteria",
       "kind": "acceptance",
       "title": "Criteria of the product served",
-      "source": "src/obligations.ts:296",
+      "source": "src/obligations.ts:335",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2256,7 +2298,7 @@
       "id": "obligations.VerifiedCriteria",
       "kind": "acceptance",
       "title": "Criteria of the code verified",
-      "source": "src/obligations.ts:271",
+      "source": "src/obligations.ts:310",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2294,10 +2336,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "107",
+        "version": "108",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g107"
+        "at": "../generations/g108"
       },
       "diagnostics": []
     },
@@ -2913,6 +2955,21 @@
       "diagnostics": []
     },
     {
+      "id": "releases.R0_19_0",
+      "kind": "release",
+      "title": "Version 0.19.0",
+      "source": "src/releases.ts:272",
+      "fields": {
+        "owner": "trame",
+        "version": "0.19.0",
+        "date": "2026-11-18",
+        "what": "Published: what people decided is published before a shipment takes it (D1); a version proves its data reviewed",
+        "fingerprint": "7e2307f67b6a5327",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "releases.R0_2_0",
       "kind": "release",
       "title": "Version 0.2.0",
@@ -3479,6 +3536,17 @@
       "diagnostics": []
     },
     {
+      "id": "sdlc.DataReviewed",
+      "kind": "obligation",
+      "title": "Its data reviewed",
+      "source": "src/sdlc.ts:67",
+      "fields": {
+        "owner": "trame",
+        "gaps": "error"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "sdlc.DecisionsApplied",
       "kind": "obligation",
       "title": "Its decisions applied",
@@ -3508,7 +3576,7 @@
       "id": "sdlc.NextVersion",
       "kind": "shipment",
       "title": "The next version",
-      "source": "src/sdlc.ts:78",
+      "source": "src/sdlc.ts:85",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3578,6 +3646,11 @@
           },
           {
             "node": "obligations.Preceded",
+            "via": "access.Anyone",
+            "obligation": "sdlc.RequirementsServed"
+          },
+          {
+            "node": "obligations.Published",
             "via": "access.Anyone",
             "obligation": "sdlc.RequirementsServed"
           },
@@ -3678,6 +3751,8 @@
           "obligations.IdentifiedCriteria",
           "obligations.Preceded",
           "obligations.PrecededCriteria",
+          "obligations.Published",
+          "obligations.PublishedCriteria",
           "obligations.Reviewed",
           "obligations.ReviewedCriteria",
           "obligations.Ruled",
@@ -3742,6 +3817,7 @@
           "scenarios.Test",
           "scenarios.ToolingInMemory",
           "sdlc.CallersIdentified",
+          "sdlc.DataReviewed",
           "sdlc.DecisionsApplied",
           "sdlc.FunctionsVerified",
           "sdlc.NextVersion",
@@ -3836,7 +3912,7 @@
       },
       "result": {
         "path": "src",
-        "code": "87411834"
+        "code": "bdb2342f"
       },
       "diagnostics": []
     },
@@ -3844,7 +3920,7 @@
       "id": "sdlc.VersionMode",
       "kind": "policy",
       "title": "How a version is made",
-      "source": "src/sdlc.ts:68",
+      "source": "src/sdlc.ts:75",
       "fields": {
         "owner": "trame"
       },
@@ -5185,6 +5261,16 @@
       "kind": "accepts"
     },
     {
+      "from": "obligations.Published",
+      "to": "product.SharedRules",
+      "kind": "refines"
+    },
+    {
+      "from": "obligations.PublishedCriteria",
+      "to": "obligations.Published",
+      "kind": "accepts"
+    },
+    {
       "from": "obligations.Reviewed",
       "to": "product.SharedRules",
       "kind": "refines"
@@ -5790,6 +5876,36 @@
       "kind": "serves"
     },
     {
+      "from": "releases.R0_19_0",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_19_0",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_19_0",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_19_0",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_19_0",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_19_0",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
       "from": "releases.R0_2_0",
       "to": "product.CitedNotCopied",
       "kind": "serves"
@@ -6275,6 +6391,16 @@
       "kind": "serves"
     },
     {
+      "from": "sdlc.DataReviewed",
+      "to": "obligations.Reviewed",
+      "kind": "applies"
+    },
+    {
+      "from": "sdlc.DataReviewed",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
       "from": "sdlc.DecisionsApplied",
       "to": "obligations.Applied",
       "kind": "applies"
@@ -6362,6 +6488,11 @@
     {
       "from": "sdlc.VersionMode",
       "to": "sdlc.CallersIdentified",
+      "kind": "obligations"
+    },
+    {
+      "from": "sdlc.VersionMode",
+      "to": "sdlc.DataReviewed",
       "kind": "obligations"
     },
     {

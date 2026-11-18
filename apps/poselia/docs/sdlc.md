@@ -25,7 +25,7 @@
 
 ### How the page is opened
 
-`PageOpening` · `src/sdlc.ts:128`
+`PageOpening` · `src/sdlc.ts:128` · published
 
 How long the page settles once opened, then how long a sequence plays before its landmarks are looked for, in seconds.
 
@@ -41,7 +41,7 @@ How long the page settles once opened, then how long a sequence plays before its
 
 ### When the preview runs on GitHub, and what it keeps there
 
-`PreviewOnGitHub` · `src/sdlc.ts:375`
+`PreviewOnGitHub` · `src/sdlc.ts:375` · published
 
 By hand from GitHub, and at each push on main; on GitHub's Ubuntu 24.04 machine, with Node.js 22, the version Trame runs on here (its types are those of Node 22). What it publishes (the page, as its workflow says) GitHub keeps thirty days: a preview is looked at, then replaced. The evidence is kept too, ninety days, whatever the preview answered: a refused preview says why, and someone reads it later.
 
@@ -60,7 +60,7 @@ By hand from GitHub, and at each push on main; on GitHub's Ubuntu 24.04 machine,
 
 ### What the scenarios of the SDLC write
 
-`SdlcScenarioData` · `src/sdlc.ts:476`
+`SdlcScenarioData` · `src/sdlc.ts:476` · published
 
 The error a page raises in a scenario, and the text of a page built in memory.
 
@@ -76,7 +76,7 @@ The error a page raises in a scenario, and the text of a page built in memory.
 
 ### Where the page is served
 
-`ServedPage` · `src/sdlc.ts:117`
+`ServedPage` · `src/sdlc.ts:117` · published
 
 The file a web server serves Poselia from, in the project: the page is placed there when a version ships.
 
@@ -94,7 +94,7 @@ The file a web server serves Poselia from, in the project: the page is placed th
 
 ### The SDLC is in the graph
 
-`SdlcInTheGraph` · `src/sdlc.ts:457` · status: **unknown**
+`SdlcInTheGraph` · `src/sdlc.ts:457` · status: **unknown** · published
 
 What makes a version of Poselia available is declared with the rest: its artefact, the checks and the review it requires and who signs them, the programs that check and deploy it, tested in memory; trame ship runs it and keeps the evidence. The rules of the graph are rules of the std library, applied with their parameters.
 
@@ -184,7 +184,7 @@ Respected everywhere.
 
 ### What the page is asked
 
-`PageSelectors` · `src/sdlc.ts:135` · status: **held**
+`PageSelectors` · `src/sdlc.ts:135` · status: **held** · published
 
 The selectors of what a person sees on the page, from the names its screen gives its parts: the poses listed, the sequences, the button that plays the first one, the player, the landmarks it lists.
 
@@ -247,7 +247,7 @@ Triggered by `command place-page`
 
 ### What the scenarios of the SDLC check
 
-`SdlcChecks` · `src/sdlc.ts:484`
+`SdlcChecks` · `src/sdlc.ts:484` · published
 
 <details><summary>The messages, in code</summary>
 
@@ -271,7 +271,7 @@ Triggered by `command place-page`
 
 ### What the programs of the SDLC say
 
-`SdlcWords` · `src/sdlc.ts:155`
+`SdlcWords` · `src/sdlc.ts:155` · published
 
 <details><summary>The messages, in code</summary>
 
@@ -457,7 +457,7 @@ The page its delivery writes, which a browser opens as it is: what every version
 - Path: `dist/poselia.html`
 - Media type: `text/html; charset=utf-8`
 
-Built 18 November 2026 by claude, fingerprint `d83dce2f862e3206578c50e2b444c43e56c893d598ad57775bf606fd27ca8123`.
+Built 18 November 2026 by claude, fingerprint `98e4555892199b51fa3d0f28fbf9d4e6db72aeef6d3a8c22160b095f5fe61d41`.
 
 Published 27 October 2026: `https://claude.ai/artifact/RMTniA6qYS1hMLJDJm92HY`
 
@@ -480,6 +480,8 @@ Shipped by [A preview](#Preview) 10 November 2026, fingerprint `1a455862cdc93b80
 Shipped by [A preview](#Preview) 12 November 2026, fingerprint `5609378bdb3c550a93f281b0af028ea0d834a5bc58cba635ca3e4788119c20bf`.
 
 Shipped by [A preview](#Preview) 18 November 2026, fingerprint `d83dce2f862e3206578c50e2b444c43e56c893d598ad57775bf606fd27ca8123`.
+
+Shipped by [A preview](#Preview) 18 November 2026, fingerprint `98e4555892199b51fa3d0f28fbf9d4e6db72aeef6d3a8c22160b095f5fe61d41`.
 
 - Owner: ghalaax
 - Produced by: [Poselia's page](app.md#PoseliaPage)
@@ -633,7 +635,7 @@ The page as it is, for its author and the few people they show it to, the way of
 | [Each decision of architecture serves the product](#AdrsServeTheProduct) | **held** | [The rules of the app hold](#RulesHeld) |
 | [Code serves the product](#CodeServesTheProduct) | **held** | [The rules of the app hold](#RulesHeld) |
 
-Shipped 18 November 2026 by claude; its dossier: `evidence/shipments/Preview-2026-11-18-f5eb191e.json`.
+Shipped 18 November 2026 by claude; its dossier: `evidence/shipments/Preview-2026-11-18-291a9957.json`.
 
 - Owner: ghalaax
 - Ships: [Poselia's page](#PageFile)
@@ -735,7 +737,7 @@ The workflow and the script that run the preview elsewhere, written by trame shi
 | [The preview's script](#PreviewScript) | **held** | shipped |
 | [The preview's workflow](#PreviewWorkflow) | **held** | shipped |
 
-Shipped 18 November 2026 by claude; its dossier: `evidence/shipments/RunnersWritten-2026-11-18-8afaf52f.json`.
+Shipped 18 November 2026 by claude; its dossier: `evidence/shipments/RunnersWritten-2026-11-18-105d5fba.json`.
 
 - Owner: ghalaax
 - Ships: [The preview's workflow](#PreviewWorkflow), [The preview's script](#PreviewScript)

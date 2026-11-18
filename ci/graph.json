@@ -454,10 +454,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "107",
+        "version": "108",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g107"
+        "at": "../generations/g108"
       },
       "diagnostics": []
     },
@@ -586,7 +586,7 @@
       },
       "result": {
         "path": "src",
-        "code": "c7d0b77e"
+        "code": "d339bd0e"
       },
       "diagnostics": []
     },

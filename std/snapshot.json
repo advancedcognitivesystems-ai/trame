@@ -1853,6 +1853,26 @@
       }
     },
     {
+      "id": "obligations.Published",
+      "kind": "requirement",
+      "title": "What people decided is published",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "obligations.PublishedCriteria",
+      "kind": "acceptance",
+      "title": "Criteria of what is published",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "criteria": "(function)"
+      }
+    },
+    {
       "id": "obligations.Reviewed",
       "kind": "requirement",
       "title": "The data a shipment carries is reviewed",
@@ -1965,10 +1985,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "107",
+        "version": "108",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g107"
+        "at": "../generations/g108"
       }
     },
     {
@@ -2495,6 +2515,19 @@
       }
     },
     {
+      "id": "releases.R0_19_0",
+      "kind": "release",
+      "title": "Version 0.19.0",
+      "fields": {
+        "owner": "trame",
+        "version": "0.19.0",
+        "date": "2026-11-18",
+        "what": "Published: what people decided is published before a shipment takes it (D1); a version proves its data reviewed",
+        "fingerprint": "7e2307f67b6a5327",
+        "language": "shared"
+      }
+    },
+    {
       "id": "releases.R0_2_0",
       "kind": "release",
       "title": "Version 0.2.0",
@@ -2899,6 +2932,15 @@
       "id": "sdlc.CallersIdentified",
       "kind": "obligation",
       "title": "Its callers identified",
+      "fields": {
+        "owner": "trame",
+        "gaps": "error"
+      }
+    },
+    {
+      "id": "sdlc.DataReviewed",
+      "kind": "obligation",
+      "title": "Its data reviewed",
       "fields": {
         "owner": "trame",
         "gaps": "error"
@@ -4232,6 +4274,16 @@
       "kind": "accepts"
     },
     {
+      "from": "obligations.Published",
+      "to": "product.SharedRules",
+      "kind": "refines"
+    },
+    {
+      "from": "obligations.PublishedCriteria",
+      "to": "obligations.Published",
+      "kind": "accepts"
+    },
+    {
       "from": "obligations.Reviewed",
       "to": "product.SharedRules",
       "kind": "refines"
@@ -4837,6 +4889,36 @@
       "kind": "serves"
     },
     {
+      "from": "releases.R0_19_0",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_19_0",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_19_0",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_19_0",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_19_0",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_19_0",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
       "from": "releases.R0_2_0",
       "to": "product.CitedNotCopied",
       "kind": "serves"
@@ -5322,6 +5404,16 @@
       "kind": "serves"
     },
     {
+      "from": "sdlc.DataReviewed",
+      "to": "obligations.Reviewed",
+      "kind": "applies"
+    },
+    {
+      "from": "sdlc.DataReviewed",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
       "from": "sdlc.DecisionsApplied",
       "to": "obligations.Applied",
       "kind": "applies"
@@ -5409,6 +5501,11 @@
     {
       "from": "sdlc.VersionMode",
       "to": "sdlc.CallersIdentified",
+      "kind": "obligations"
+    },
+    {
+      "from": "sdlc.VersionMode",
+      "to": "sdlc.DataReviewed",
       "kind": "obligations"
     },
     {

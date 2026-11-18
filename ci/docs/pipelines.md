@@ -39,6 +39,6 @@ flowchart TB
 | 4 | prove | [A workflow of GitHub Actions](github.md#GitHubWorkflow) | — | the shipment | **held** |  |
 | 5 | prove | [A script of Bash](shell.md#ShellScript) | — | the shipment | **held** |  |
 | 6 | prove | [A YAML document](yaml.md#YamlDocument) | — | the shipment | **held** |  |
-| 7 | record | [The next version](sdlc.md#NextVersion) | — | — | **held** | 18 November 2026 by claude `evidence/shipments/NextVersion-2026-11-18-02a863e2.json` |
+| 7 | record | [The next version](sdlc.md#NextVersion) | — | — | **held** | 18 November 2026 by claude `evidence/shipments/NextVersion-2026-11-18-7031cddb.json` |
 
 `trame ship NextVersion --by <name>`

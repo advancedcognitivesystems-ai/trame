@@ -10,7 +10,7 @@
 
 ### Language
 
-`Language` · `src/messages.ts:12`
+`Language` · `src/messages.ts:12` · published
 
 The language of what the service and its scenarios say: British English.
 
@@ -27,7 +27,7 @@ The language of what the service and its scenarios say: British English.
 
 ### Messages of the API
 
-`ApiMessages` · `src/messages.ts:18`
+`ApiMessages` · `src/messages.ts:18` · published
 
 What the service answers when it cannot do what it is asked.
 
@@ -55,7 +55,7 @@ What the service answers when it cannot do what it is asked.
 
 ### Checks of the scenarios
 
-`ScenarioChecks` · `src/messages.ts:36`
+`ScenarioChecks` · `src/messages.ts:36` · published
 
 What each scenario checks, as its report says it.
 

@@ -4,7 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 3 | 174 |
+| trame | 0 | 0 | 3 | 178 |
 
 <a id="trame"></a>
 
@@ -62,6 +62,8 @@
 | [Criteria of who calls](obligations.md#IdentifiedCriteria) | Acceptance criteria | **held** |
 | [The artefacts a shipment ships were shipped first by those that precede it](obligations.md#Preceded) | Requirement | **held** |
 | [Criteria of the stages](obligations.md#PrecededCriteria) | Acceptance criteria | **held** |
+| [What people decided is published](obligations.md#Published) | Requirement | **held** |
+| [Criteria of what is published](obligations.md#PublishedCriteria) | Acceptance criteria | **held** |
 | [The data a shipment carries is reviewed](obligations.md#Reviewed) | Requirement | **held** |
 | [Criteria of the data reviewed](obligations.md#ReviewedCriteria) | Acceptance criteria | **held** |
 | [The project's rules hold](obligations.md#Ruled) | Requirement | **held** |
@@ -117,6 +119,7 @@
 | [Version 0.17.0](releases.md#R0_17_0) | Release |  |
 | [Version 0.18.0](releases.md#R0_18_0) | Release |  |
 | [Version 0.18.1](releases.md#R0_18_1) | Release |  |
+| [Version 0.19.0](releases.md#R0_19_0) | Release |  |
 | [Version 0.2.0](releases.md#R0_2_0) | Release |  |
 | [Version 0.3.0](releases.md#R0_3_0) | Release |  |
 | [Version 0.4.0](releases.md#R0_4_0) | Release |  |
@@ -146,6 +149,7 @@
 | [Test](scenarios.md#Test) | Environment |  |
 | [The tooling, in memory](scenarios.md#ToolingInMemory) | Scenario | **held** |
 | [Its callers identified](sdlc.md#CallersIdentified) | Obligation |  |
+| [Its data reviewed](sdlc.md#DataReviewed) | Obligation |  |
 | [Its decisions applied](sdlc.md#DecisionsApplied) | Obligation |  |
 | [Its functions verified](sdlc.md#FunctionsVerified) | Obligation |  |
 | [The next version](sdlc.md#NextVersion) | Shipment | **held** |

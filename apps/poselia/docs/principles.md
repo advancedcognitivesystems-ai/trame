@@ -10,7 +10,7 @@
 
 ### The breath is the clock
 
-`BreathIsTheClock` · `src/principles.ts:36` · status: **held**
+`BreathIsTheClock` · `src/principles.ts:36` · status: **held** · published
 
 A practice is timed by the person's breath, not by seconds: a movement lasts a phase, a hold lasts whole breaths, and each level may set the breath (follow it, impose a ratio, exact timings, or a speed), the most specific winning.
 
@@ -30,7 +30,7 @@ Consequences: The person's pattern (four phases) is kept in the preferences; a h
 
 ### The content is data, behind a port
 
-`ContentAsData` · `src/principles.ts:19` · status: **unknown**
+`ContentAsData` · `src/principles.ts:19` · status: **unknown** · published
 
 The poses, the sequences and the exercises are datasets the app reads through one port: its first realization reads the rows the app carries, an update downloaded later will be another.
 
@@ -51,7 +51,7 @@ Consequences: Each kind of content is a dataset with its rules and its languages
 
 ### The person's language, among those offered
 
-`LanguageOffered` · `src/principles.ts:50` · status: **held**
+`LanguageOffered` · `src/principles.ts:50` · status: **held** · published
 
 Every text of the content is written in each language offered; the app speaks the one the person chose, or the device's, or the first offered; the choice is kept on the device.
 
@@ -71,7 +71,7 @@ Consequences: The languages offered are a decision the datasets read: a text mis
 
 ### A page first, the phones after
 
-`PageFirst` · `src/principles.ts:78` · status: **held**
+`PageFirst` · `src/principles.ts:78` · status: **held** · published
 
 The app is first a page a browser opens as it is (trame deliver), then a web application, then Capacitor around the same page for iPhone and Android.
 
@@ -91,7 +91,7 @@ Consequences: The component runs in a browser; its realizations are the browser'
 
 ### Said aloud, the screen awake
 
-`SaidAloud` · `src/principles.ts:64` · status: **unknown**
+`SaidAloud` · `src/principles.ts:64` · status: **unknown** · published
 
 The phone stays on the mat: the breath, the cues and the angles are said by the platform's voice, and the screen is kept awake during a practice.
 

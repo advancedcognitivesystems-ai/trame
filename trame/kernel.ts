@@ -921,9 +921,10 @@ export interface KindDef<N extends string, F extends Fields, E extends Edges> {
   render?(self: SelfOf<F, E>, g: Graph): Block[]
   /**
    * How each of its fields changes once declared (since g85): chosen, cited, stated or code (ChangeWay). A field it does
-   * not name changes in the code only. A publication freezes all but code (since g108).
+   * not name changes in the code only. A publication freezes all but code (since g108); an edge may be named too (the
+   * node an amendment amends), which a publication then freezes as the reference of the node it leads to.
    */
-  changes?: Readonly<Partial<Record<keyof F & string, ChangeWay>>>
+  changes?: Readonly<Partial<Record<(keyof F | keyof E) & string, ChangeWay>>>
   /**
    * How its statement (the title and description its documentation comment gives it) changes once declared (since
    * g108): stated for what people state (a goal, an ADR); in the code when it says nothing.

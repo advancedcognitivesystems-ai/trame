@@ -18,7 +18,7 @@
 
 ### Cancel without stress
 
-`CancelWithoutStress` · `src/cancellation.ts:20`
+`CancelWithoutStress` · `src/cancellation.ts:20` · published
 
 A driver can change their mind without fearing an unfair penalty.
 
@@ -33,7 +33,7 @@ A driver can change their mind without fearing an unfair penalty.
 
 ### Refund on cancellation
 
-`Refund` · `src/cancellation.ts:85` · status: **held**
+`Refund` · `src/cancellation.ts:85` · status: **held** · published
 
 The amount returned to the driver when they cancel their reservation.
 
@@ -132,7 +132,7 @@ The share of the price that is kept when the driver cancels after the free perio
 
 ### Idempotent payment provider
 
-`IdempotentProvider` · `src/cancellation.ts:79` · status: **unknown**
+`IdempotentProvider` · `src/cancellation.ts:79` · status: **unknown** · published
 
 The payment provider moves money only once per idempotency key.
 
@@ -148,7 +148,7 @@ The payment provider moves money only once per idempotency key.
 
 ### How an amount is written
 
-`AmountWords` · `src/cancellation.ts:26`
+`AmountWords` · `src/cancellation.ts:26` · published
 
 An amount of Swiss francs: the code of the currency, then the number.
 
@@ -170,7 +170,7 @@ An amount of Swiss francs: the code of the currency, then the number.
 
 ### Swiss francs
 
-`SwissFrancs` · `src/cancellation.ts:36`
+`SwissFrancs` · `src/cancellation.ts:36` · published
 
 The currency of the prices and of the refunds: an amount of one currency never adds up with another.
 

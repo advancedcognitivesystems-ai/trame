@@ -1,8 +1,8 @@
 # Versions
 
-*The releases of the components on 30 October 2026, newest first. A project runs the release its configuration pins.*
+*The releases of the components on 18 November 2026, newest first. A project runs the release its configuration pins.*
 
-> **107 releases of 1 component; 95 releases on a language of their own**
+> **108 releases of 1 component; 95 releases on a language of their own**
 
 ## Trame on the command line
 
@@ -10,6 +10,7 @@ Each release, newest first: what changed, the release that assembled it, and whe
 
 | Release | Released on | What changes | Assembled by | Language |
 |---|---|---|---|---|
+| [Generation 108](releases.md#G108) | 18 November 2026 | D1: a publication freezes, part by part, what the kind of each declaration says people decide (chosen, cited, stated), its code left free; a migration publishes again a form, never a value | [Generation 107](releases.md#G107) | shared |
 | [Generation 107](releases.md#G107) | 18 November 2026 | C6: every entry point says its audience (kind audience, edge for); the reach is derived from the trigger; an audience that does not carry the identity the data it reaches is owned by, or the system called by a person, is an error; the family Identified; a version holds only its own project's nodes | [Generation 106](releases.md#G106) | shared |
 | [Generation 106](releases.md#G106) | 12 November 2026 | a program switches at the dates its graph changes, each period built at startup; an amendment's end is announced | [Generation 105](releases.md#G105) | shared |
 | [Generation 105](releases.md#G105) | 10 November 2026 | an amended body runs amended, assembled too; only a deployment keeps a description; a version's code holds the kinds it writes | [Generation 104](releases.md#G104) | shared |

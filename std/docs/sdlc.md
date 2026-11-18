@@ -16,7 +16,7 @@ The library as its people write it: what a version freezes, and what projects im
 
 - Path: `src`
 
-Built 18 November 2026 by claude, fingerprint `29133c17c25f6472c83eccd4066333de4184748b1b088c11f954b41108bfe824`.
+Built 18 November 2026 by claude, fingerprint `d00995e9aed51fb4812b451cb904ecbe20ae47e26b5d01d1c6514875396d77f5`.
 
 Shipped by [The next version](#NextVersion) 10 November 2026, fingerprint `899a945c8e6cedd8f5b631d42814486280ce02f0b93c4e2b7dac85775c2c8c9d`.
 
@@ -28,6 +28,8 @@ Shipped by [The next version](#NextVersion) 18 November 2026, fingerprint `b7a56
 
 Shipped by [The next version](#NextVersion) 18 November 2026, fingerprint `29133c17c25f6472c83eccd4066333de4184748b1b088c11f954b41108bfe824`.
 
+Shipped by [The next version](#NextVersion) 18 November 2026, fingerprint `d00995e9aed51fb4812b451cb904ecbe20ae47e26b5d01d1c6514875396d77f5`.
+
 - Owner: trame
 - A version of the project: true
 - Shipped by: [The next version](#NextVersion)
@@ -38,7 +40,7 @@ Shipped by [The next version](#NextVersion) 18 November 2026, fingerprint `29133
 
 ### The next version
 
-`NextVersion` · `src/sdlc.ts:78` · status: **held**
+`NextVersion` · `src/sdlc.ts:85` · status: **held**
 
 A version of the standard library, for the projects that import it: shipped by trame release, which freezes and publishes it once it holds.
 
@@ -59,6 +61,7 @@ A version of the standard library, for the projects that import it: shipped by t
 | [The artefacts a shipment ships are checked](obligations.md#Checked) | **held** | [Its requirements held](#RequirementsServed), for [Anyone](access.md#Anyone) |
 | [Who calls a shipment's programs is identified](obligations.md#Identified) | **held** | [Its requirements held](#RequirementsServed), for [Anyone](access.md#Anyone) |
 | [The artefacts a shipment ships were shipped first by those that precede it](obligations.md#Preceded) | **held** | [Its requirements held](#RequirementsServed), for [Anyone](access.md#Anyone) |
+| [What people decided is published](obligations.md#Published) | **held** | [Its requirements held](#RequirementsServed), for [Anyone](access.md#Anyone) |
 | [The data a shipment carries is reviewed](obligations.md#Reviewed) | **held** | [Its requirements held](#RequirementsServed), for [Anyone](access.md#Anyone) |
 | [The project's rules hold](obligations.md#Ruled) | **held** | [Its requirements held](#RequirementsServed), for [Anyone](access.md#Anyone) |
 | [The packages a shipment uses are safe](obligations.md#Safe) | **held** | [Its requirements held](#RequirementsServed), for [Anyone](access.md#Anyone) |
@@ -70,7 +73,7 @@ A version of the standard library, for the projects that import it: shipped by t
 | [Effects a node may not have](rules.md#WithoutEffects) | **held** | [Its requirements held](#RequirementsServed), for [Anyone](access.md#Anyone) |
 | [Words of a vocabulary](rules.md#WordsOf) | **held** | [Its requirements held](#RequirementsServed), for [Anyone](access.md#Anyone) |
 
-Shipped 18 November 2026 by claude; its dossier: `evidence/shipments/NextVersion-2026-11-18-d2d1141a.json`.
+Shipped 18 November 2026 by claude; its dossier: `evidence/shipments/NextVersion-2026-11-18-22a68d8e.json`.
 
 - Owner: trame
 - Ships: [The standard library](#TheLibrary)
@@ -90,6 +93,21 @@ A gap it finds is an error of the graph.
 
 - Owner: trame
 - Applies the family: [Who calls a shipment's programs is identified](obligations.md#Identified)
+- Serves: [Versions that hold](product.md#VersionsThatHold)
+- In the policies: [How a version is made](#VersionMode)
+
+<a id="DataReviewed"></a>
+
+### Its data reviewed
+
+`DataReviewed` · `src/sdlc.ts:67`
+
+Every dataset the library's version carries is reviewed by the people of a role: one no review reviews keeps the version (the library carries none yet).
+
+A gap it finds is an error of the graph.
+
+- Owner: trame
+- Applies the family: [The data a shipment carries is reviewed](obligations.md#Reviewed)
 - Serves: [Versions that hold](product.md#VersionsThatHold)
 - In the policies: [How a version is made](#VersionMode)
 
@@ -174,12 +192,12 @@ Every rule of the library's graph holds.
 
 ### How a version is made
 
-`VersionMode` · `src/sdlc.ts:68`
+`VersionMode` · `src/sdlc.ts:75`
 
-The way the standard library releases a version: its functions verified (a gap is an error), the requirements of its goals held, its decisions applied, its rules held, its packages safe, its callers identified; and the foundations, as always.
+The way the standard library releases a version: its functions verified (a gap is an error), the requirements of its goals held, its decisions applied, its rules held, its packages safe, its callers identified, its data reviewed; and the foundations, as always.
 
 And, as every policy, the foundations: no literal in a body, and a sound graph (nothing undecided, no error of the graph).
 
 - Owner: trame
-- Its obligations: [Its functions verified](#FunctionsVerified), [Its requirements held](#RequirementsServed), [Its decisions applied](#DecisionsApplied), [Its rules held](#RulesHeld), [Its packages safe](#PackagesSafe), [Its callers identified](#CallersIdentified)
+- Its obligations: [Its functions verified](#FunctionsVerified), [Its requirements held](#RequirementsServed), [Its decisions applied](#DecisionsApplied), [Its rules held](#RulesHeld), [Its packages safe](#PackagesSafe), [Its callers identified](#CallersIdentified), [Its data reviewed](#DataReviewed)
 - Followed by: [The next version](#NextVersion)

@@ -78,7 +78,7 @@ flowchart TB
 | 18 | prove | [Each decision of architecture serves the product](sdlc.md#AdrsServeTheProduct) | — | [The rules of the app hold](sdlc.md#RulesHeld) | **held** |  |
 | 19 | prove | [Code serves the product](sdlc.md#CodeServesTheProduct) | — | [The rules of the app hold](sdlc.md#RulesHeld) | **held** |  |
 | 20 | deploy | [Place the page](sdlc.md#PlaceThePage) | itself | — | **held** | 18 November 2026 by claude  |
-| 21 | record | [A preview](sdlc.md#Preview) | — | — | **held** | 18 November 2026 by claude `evidence/shipments/Preview-2026-11-18-f5eb191e.json` |
+| 21 | record | [A preview](sdlc.md#Preview) | — | — | **held** | 18 November 2026 by claude `evidence/shipments/Preview-2026-11-18-291a9957.json` |
 
 `trame ship Preview --by <name>`
 
@@ -222,7 +222,7 @@ flowchart TB
 | 2 | check | [The page opens](sdlc.md#PageOpens) | [Open the page](sdlc.md#OpenThePage) | — | **held** | passed, 18 November 2026 by claude  |
 | 3 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
 | 4 | prove | [Poselia's page](sdlc.md#PageFile) | — | the shipment | **held** | 18 November 2026 by claude  |
-| 5 | prove | [A preview](sdlc.md#Preview) | — | [After the preview](sdlc.md#AfterThePreview) via [Poselia's page](sdlc.md#PageFile) | **held** | 18 November 2026 by claude `evidence/shipments/Preview-2026-11-18-f5eb191e.json` |
+| 5 | prove | [A preview](sdlc.md#Preview) | — | [After the preview](sdlc.md#AfterThePreview) via [Poselia's page](sdlc.md#PageFile) | **held** | 18 November 2026 by claude `evidence/shipments/Preview-2026-11-18-291a9957.json` |
 | 6 | prove | [On a phone](sdlc.md#OnAPhone) | by hand, signed by [People who try it on a phone](sdlc.md#PhoneTesters) | [The page is checked, by hand too](sdlc.md#AllChecks) via [Poselia's page](sdlc.md#PageFile) | **unknown** |  |
 | 7 | prove | [The page opens](sdlc.md#PageOpens) | [Open the page](sdlc.md#OpenThePage) | [The page is checked, by hand too](sdlc.md#AllChecks) via [Poselia's page](sdlc.md#PageFile) | **held** | passed, 18 November 2026 by claude  |
 | 8 | prove | [The language of the home page](scenarios.md#HomeLanguage) | — | [The code shown is verified](sdlc.md#CodeVerified) via [The content the app carries](app.md#CarriedContent) | **held** |  |
@@ -315,6 +315,6 @@ flowchart TB
 | 3 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
 | 4 | prove | [The preview's script](sdlc.md#PreviewScript) | — | the shipment | **held** | 18 November 2026 by claude  |
 | 5 | prove | [The preview's workflow](sdlc.md#PreviewWorkflow) | — | the shipment | **held** | 18 November 2026 by claude  |
-| 6 | record | [The files that run it elsewhere](sdlc.md#RunnersWritten) | — | — | **held** | 18 November 2026 by claude `evidence/shipments/RunnersWritten-2026-11-18-8afaf52f.json` |
+| 6 | record | [The files that run it elsewhere](sdlc.md#RunnersWritten) | — | — | **held** | 18 November 2026 by claude `evidence/shipments/RunnersWritten-2026-11-18-105d5fba.json` |
 
 `trame ship RunnersWritten --by <name>`

@@ -16,7 +16,7 @@ The library as its people write it: what a version freezes, and what projects im
 
 - Path: `src`
 
-Built 18 November 2026 by claude, fingerprint `79ddc8960025f69bf2d2f68b7f4adb1a70eddca429cb12607d3ed944f7ec1ddf`.
+Built 18 November 2026 by claude, fingerprint `0b5c80e0a7ca9244c867b1e2b7ea62d3bb998669cc06fb535ea6e001566a221c`.
 
 Shipped by [The next version](#NextVersion) 9 November 2026, fingerprint `ea2c3c5d89c39e767980c8639d9f7a092c51b8815e805979d8ea9986c2f31124`.
 
@@ -29,6 +29,8 @@ Shipped by [The next version](#NextVersion) 12 November 2026, fingerprint `2898e
 Shipped by [The next version](#NextVersion) 18 November 2026, fingerprint `5306e38e527c93e6ad87486ae9299c51236c9b87f2fb479555eaa36f739726cb`.
 
 Shipped by [The next version](#NextVersion) 18 November 2026, fingerprint `79ddc8960025f69bf2d2f68b7f4adb1a70eddca429cb12607d3ed944f7ec1ddf`.
+
+Shipped by [The next version](#NextVersion) 18 November 2026, fingerprint `0b5c80e0a7ca9244c867b1e2b7ea62d3bb998669cc06fb535ea6e001566a221c`.
 
 - Owner: trame
 - A version of the project: true
@@ -56,7 +58,7 @@ A version of the library of data, for the projects that import it: shipped by tr
 | [Records seeded](scenarios.md#RecordsSeeded) | **held** | [Its functions verified](#FunctionsVerified), for [The records its entity starts with](records.md#SeedOfTheEntity) |
 | [What a shipment stores migrates](obligations.md#Migrated) | **held** | [Its requirements held](#RequirementsServed), for [A value of the description it is of](documents.md#Conforms) |
 
-Shipped 18 November 2026 by claude; its dossier: `evidence/shipments/NextVersion-2026-11-18-67a70676.json`.
+Shipped 18 November 2026 by claude; its dossier: `evidence/shipments/NextVersion-2026-11-18-ba22a315.json`.
 
 - Owner: trame
 - Ships: [The library of data](#TheLibrary)
