@@ -1125,6 +1125,12 @@ export interface RunPlan {
    * A place that reviews a pull request puts there the lock of the branch it merges into, then writes the review.
    */
   readonly review: { readonly command: readonly string[]; readonly lock: string }
+  /**
+   * Where the file written comes from in the graph (since g110): the artefact it is and the decision of its settings,
+   * by their references, and the file that declares the artefact, from the repository's root. A writer says it at the
+   * top of the file: to change what it says, change those nodes, then ship.
+   */
+  readonly from: { readonly artefact: string; readonly settings?: string; readonly declared?: string }
 }
 
 /** The compiled graph, as a view sees it: the traversal API, plus what the compilation found. */

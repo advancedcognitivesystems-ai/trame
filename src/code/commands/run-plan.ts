@@ -46,6 +46,7 @@ const body = ({ line, project, layout, pin, reading, paths, encodings, values, s
     const from = (to: string, base = repository) => relative(base, to) || posix.currentDirectory
     const libraries = project.projectDirs(root).libraries.map((l) => ({ ...l, home: real(l.home) }))
     const locked = (dir: string) => reading.existsSync(join(dir, layout.lockfile))
+    const settingsOf = (v: View) => sequences.head(comp.from(v).out(ArtifactEdge.settings).nodes())
 
     // What the shipment's programs wire in its environment, and the packages those nodes use.
     const environment = pipeline.environment
@@ -94,6 +95,13 @@ const body = ({ line, project, layout, pin, reading, paths, encodings, values, s
       deployed: { command: [launcher, line.evidence], verdict: line.passed, by: line.by, url: line.url },
       // What a pull request adds to what is published: the view review, against the lock of the branch it merges into.
       review: { command: [launcher, line.view, ViewName.review, line.format, line.markdown], lock: layout.lock },
+      // Where the file comes from in the graph (since g110): the artefact it is, the decision of its settings, and the
+      // file that declares the artefact, from the repository's root; what a file written says to whoever reads it.
+      from: {
+        artefact: written.ref,
+        ...(settingsOf(written) ? { settings: settingsOf(written)!.ref } : {}),
+        ...(written.decl ? { declared: from(join(root, written.decl.file)) } : {}),
+      },
     }
   }
 }

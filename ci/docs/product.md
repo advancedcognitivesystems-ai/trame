@@ -15,7 +15,18 @@
 A place that runs a shipment (GitHub Actions, a shell, another service tomorrow) is one writer, a syntax element with its examples, written once in this library; projects choose one by naming it as what produces an artefact.
 
 - Owner: trame
-- Served by: [GitHub Actions](github.md#GitHubActions), [How a pull request is merged](github.md#MergeWays), [npm](npm.md#Npm), [Version 0.1.0](releases.md#R0_1_0), [Version 0.2.0](releases.md#R0_2_0), [Version 0.3.0](releases.md#R0_3_0), [Version 0.4.0](releases.md#R0_4_0), [Version 0.5.0](releases.md#R0_5_0), [Version 0.6.0](releases.md#R0_6_0), [GitHub's API for a repository](repository.md#GitHubRepositoryApi), [How GitHub merges a pull request](repository.md#MergeMethods), [Bash scripts](shell.md#BashScripts), [YAML](yaml.md#Yaml)
+- Served by: [GitHub Actions](github.md#GitHubActions), [How a pull request is merged](github.md#MergeWays), [npm](npm.md#Npm), [Version 0.1.0](releases.md#R0_1_0), [Version 0.2.0](releases.md#R0_2_0), [Version 0.3.0](releases.md#R0_3_0), [Version 0.4.0](releases.md#R0_4_0), [Version 0.5.0](releases.md#R0_5_0), [Version 0.6.0](releases.md#R0_6_0), [Bash scripts](shell.md#BashScripts), [YAML](yaml.md#Yaml)
+
+<a id="RepositoryAsDecided"></a>
+
+### A repository is set as its graph decides
+
+`RepositoryAsDecided` · `src/product.ts:32`
+
+The settings of the repository a project lives in (its main branch protected, the checks a pull request passes, how it merges, its pages) are a decision of the graph, which a program of the project's SDLC applies and reads back: what someone changes by hand is seen, and set again by trame ship.
+
+- Owner: trame
+- Served by: [GitHub's API for a repository](repository.md#GitHubRepositoryApi), [How GitHub merges a pull request](repository.md#MergeMethods), [A repository kept in memory](repository.md#RepositoryInMemory)
 
 <a id="RunsElsewhere"></a>
 

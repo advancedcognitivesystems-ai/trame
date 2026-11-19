@@ -18,16 +18,17 @@ Source: GitHub REST API: Repositories (Update a repository), Rules (Create, Get 
 
 | Constant | Value | Meaning |
 |---|---|---|
-| `gh` | `gh api` | Calls GitHub's API, with the token of the person who runs it |
+| `program` | `gh` | GitHub's command line, with the token of the person who runs it |
+| `api` | `api` | Calls GitHub's API |
 | `method` | `--method` | The method of the call |
 | `patch` | `PATCH` | Changes what it names |
 | `post` | `POST` | Creates |
 | `put` | `PUT` | Replaces |
-| `input` | `--input -` | The body of the call, read from what the command is given |
-| `field` | `-f` | A field of the body, as a text |
-| `jq` | `--jq` | What gh keeps of the answer, a jq filter |
+| `input` | `--input` | The body of the call, read from a file |
+| `standardInput` | `-` | As a file: what the command is given |
 | `repos` | `repos/` | Before the repository, owner/name |
 | `rulesets` | `/rulesets` | After it: its rulesets |
+| `branchRules` | `/rules/branches/` | After it, before a branch: the rules in force on the branch |
 | `pages` | `/pages` | After it: its pages |
 | `separator` | `/` | Between the steps of a path |
 | `allowMerge` | `allow_merge_commit` | Whether a pull request may be merged with a merge commit |
@@ -60,14 +61,12 @@ Source: GitHub REST API: Repositories (Update a repository), Rules (Create, Get 
 | `statusChecks` | `required_status_checks` | The checks a pull request must pass |
 | `strict` | `strict_required_status_checks_policy` | Whether the branch must be up to date with the main one first |
 | `context` | `context` | A check, by the name of the job that runs it |
-| `buildType` | `build_type=workflow` | Pages built and published by a workflow |
-| `named` | `".[] \| select(.name == "` | Opens the jq filter of the ruleset of a name, given as a JSON text |
-| `identified` | `) \| .id` | Closes it: the ruleset's identifier |
+| `buildType` | `build_type` | How the pages are built |
+| `workflow` | `workflow` | By a workflow |
+| `id` | `id` | The identifier of a ruleset |
 
 - Maintained by: trame
-- Serves: [Each place is a writer](product.md#OneWriterPerPlace)
-- Defines: [The settings of a repository](#GitHubRepository)
-- Used by: [The settings of a repository](#GitHubRepository)
+- Serves: [A repository is set as its graph decides](product.md#RepositoryAsDecided)
 
 ## Vocabulary
 
@@ -86,48 +85,53 @@ A merge commit keeps each commit of the branch (a generation is a commit); squas
 | `rebase` | Each commit replayed on the main branch |
 
 - Owner: trame
-- Serves: [Each place is a writer](product.md#OneWriterPerPlace)
-- Used by: [The settings of a repository](#GitHubRepository)
+- Serves: [A repository is set as its graph decides](product.md#RepositoryAsDecided)
 
-## Syntax element
+## Ports
 
-<a id="GitHubRepository"></a>
+<a id="RepositoryApi"></a>
 
-### The settings of a repository
+### A repository on GitHub
 
-`GitHubRepository` · `src/repository.ts:110` · status: **held**
+`RepositoryApi` · `src/repository.ts:130`
 
-The script an administrator of the repository runs, giving it as owner/name: it sets the merge methods (the one the graph chooses, alone), whether GitHub merges a pull request once it holds and deletes its branch; writes the ruleset of the main branch (created, or replaced when one of its name exists): never deleted nor rewritten, reached only by a pull request that passes the checks the graph names, merged by that method; and has the pages built by a workflow when the graph says so. It stops at the first call that fails.
+Applies a project's settings to a repository and reads them back, with the rights of whoever asks: only an administrator of the repository may apply them.
 
-Section: Repository rulesets: rules deletion, non_fast_forward, pull_request, required_status_checks · `https://docs.github.com/en/rest/repos/rules#create-a-repository-ruleset`
+| Method | What it may do |
+|---|---|
+| `apply` | process, network, asynchronous |
+| `read` | process, network, asynchronous |
 
-| Mark | Value | Meaning |
+| Environment | Answered by | Chosen by |
 |---|---|---|
-| `repository` | `repo` | The variable that holds the repository, owner/name |
-| `usage` | `give the repository, as owner/name` | What the script says when it is run without one |
-| `found` | `id` | The variable that holds the identifier of the ruleset already there |
-| `written` | `Written by trame ship from the graph: the settings of the repository, for the branch` | What the script's first comment says |
-| `run` | `Run by an administrator: bash <this script> owner/name` | Who runs it, and how |
-| `edit` | `Do not edit: edit the graph, then ship.` | The comment that says where to change it |
-| `document` | `<<'JSON'` | Opens the body of a call, written as it is until its end (a here-document) |
-| `end` | `JSON` | Ends it |
-| `quiet` | `> /dev/null` | Keeps the answer of a call off the terminal |
-| `test` | `if [ -n` | Opens the test of a text that is not empty |
-| `then` | `]; then` | Then |
-| `otherwise` | `; else` | Otherwise |
-| `done` | `; fi` | Ends the test |
-| `or` | `\|\|` | When the call before fails |
-| `capture` | `"$(` | Opens a command whose output is kept, as one word |
-| `captured` | `)"` | Closes it |
-| `indentation` | `2` | The spaces of a level of the body |
-| `filter` | `'` | Around the jq filter, which the shell gives as it is |
-| `approvals` | `0` | The approvals a pull request needs: none, the checks hold it, and a person merges what people decided |
-
-| Input | Writes | Checked |
-|---|---|---|
-| `undefined, {"branch":"main","checks":["trame","poselia"],"method":"merge","autoMerge":true,"pages":true}` | `"#!/usr/bin/env bash\n# Written by trame ship from the graph: the settings of the repository, for the branch main\n# Run by an administrator: bash <this script> owner/name\n# Do not edit: edit the graph, then ship.\nset -euo pipefail\nrepo=\"${1:?give the repository, as owner/name}\"\ngh api --method PATCH \"repos/$repo\" --input - > /dev/null <<'JSON'\n{\n  \"allow_merge_commit\": true,\n  \"allow_squash_merge\": false,\n  \"allow_rebase_merge\": false,\n  \"allow_auto_merge\": true,\n  \"delete_branch_on_merge\": true\n}\nJSON\nid=\"$(gh api \"repos/$repo/rulesets\" --jq '.[] \| select(.name == \"main\") \| .id')\"\nif [ -n \"$id\" ]; then gh api --method PUT \"repos/$repo/rulesets/$id\" --input - > /dev/null ; else gh api --method POST \"repos/$repo/rulesets\" --input - > /dev/null ; fi <<'JSON'\n{\n  \"name\": \"main\",\n  \"target\": \"branch\",\n  \"enforcement\": \"active\",\n  \"conditions\": {\n    \"ref_name\": {\n      \"include\": [\n        \"refs/heads/main\"\n      ],\n      \"exclude\": []\n    }\n  },\n  \"rules\": [\n    {\n      \"type\": \"deletion\"\n    },\n    {\n      \"type\": \"non_fast_forward\"\n    },\n    {\n      \"type\": \"pull_request\",\n      \"parameters\": {\n        \"required_approving_review_count\": 0,\n        \"dismiss_stale_reviews_on_push\": false,\n        \"require_code_owner_review\": false,\n        \"require_last_push_approval\": false,\n        \"required_review_thread_resolution\": false,\n        \"allowed_merge_methods\": [\n          \"merge\"\n        ]\n      }\n    },\n    {\n      \"type\": \"required_status_checks\",\n      \"parameters\": {\n        \"strict_required_status_checks_policy\": false,\n        \"required_status_checks\": [\n          {\n            \"context\": \"trame\"\n          },\n          {\n            \"context\": \"poselia\"\n          }\n        ]\n      }\n    }\n  ]\n}\nJSON\ngh api --method POST \"repos/$repo/pages\" -f build_type=workflow > /dev/null \|\| gh api --method PUT \"repos/$repo/pages\" -f build_type=workflow > /dev/null\n"` | held |
 
 - Owner: trame
-- Parameters: `standard` ← [GitHub's API for a repository](#GitHubRepositoryApi) · `sh` ← [Bash scripts](shell.md#BashScripts) · `methods` ← [How GitHub merges a pull request](#MergeMethods)
+- Effects: asynchronous, network, process
+- Implemented by: [A repository kept in memory](#RepositoryInMemory)
+
+<a id="RepositoryKept"></a>
+
+### The repositories a scenario keeps in memory.
+
+`RepositoryKept` · `src/repository.ts:144`
+
+| Environment | Answered by | Chosen by |
+|---|---|---|
+
+- Owner: trame
+- Implemented by: [A repository kept in memory](#RepositoryInMemory)
+
+## Function
+
+<a id="RepositoryInMemory"></a>
+
+### A repository kept in memory
+
+`RepositoryInMemory` · `src/repository.ts:152` · status: **unknown**
+
+In a scenario, applying settings keeps them and makes the repository so: one method, the automatic merge as said, the branch protected, the checks named, the pages as said; reading gives back what the repository is, protected by nothing until something was applied or set.
+
+- Owner: trame
 - Body: inline, in the declaration
-- Defined by: [GitHub's API for a repository](#GitHubRepositoryApi)
+- Serves: [A repository is set as its graph decides](product.md#RepositoryAsDecided)
+- Implements: [A repository on GitHub](#RepositoryApi), [The repositories a scenario keeps in memory.](#RepositoryKept)

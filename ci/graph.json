@@ -262,9 +262,25 @@
             "value": "of",
             "meaning": "Between the shipment and its project, in that comment"
           },
+          "fromArtefact": {
+            "value": "From the artefact",
+            "meaning": "Opens the comment that names the nodes the file comes from (ci 0.7.0)"
+          },
+          "andSettings": {
+            "value": "and its settings",
+            "meaning": "Before the decision of its settings, in that comment"
+          },
+          "declaredIn": {
+            "value": "declared in",
+            "meaning": "Before the file that declares them, in that comment"
+          },
           "edit": {
-            "value": "Do not edit: edit the graph, then ship.",
+            "value": "Do not edit: change those nodes, then ship.",
             "meaning": "The comment that says where to change it"
+          },
+          "named": {
+            "value": "·",
+            "meaning": "Between the job and the shipment, in the workflow's name"
           }
         },
         "deps": {
@@ -326,6 +342,11 @@
                     "md"
                   ],
                   "lock": "trame.lock"
+                },
+                "from": {
+                  "artefact": "sdlc.TheFile",
+                  "settings": "sdlc.TheSettings",
+                  "declared": "apps/poselia/src/sdlc.ts"
                 }
               },
               {
@@ -345,7 +366,7 @@
                 }
               }
             ],
-            "output": "# Written by trame ship from the graph, for the shipment \"A preview\" of apps/poselia\n# Do not edit: edit the graph, then ship.\nname: A preview\non:\n  workflow_dispatch:\n  push:\n    branches:\n      - main\npermissions:\n  contents: read\njobs:\n  ship:\n    runs-on: ubuntu-24.04\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 22\n      - run: npm ci\n        working-directory: \".\"\n      - run: npm ci\n        working-directory: std\n      - run: npm ci\n        working-directory: apps/poselia\n      - run: npx playwright install --with-deps chromium\n        working-directory: std\n      - run: \"../../trame.sh ship Preview --by \\\"${{ github.actor }}\\\"\"\n        working-directory: apps/poselia\n      - id: delivered\n        uses: actions/upload-artifact@v4\n        with:\n          name: Preview\n          path: |\n            apps/poselia/dist/poselia.html\n          retention-days: 30\n      - run: \"../../trame.sh evidence PageFile passed --by \\\"${{ github.actor }}\\\" --url \\\"${{ steps.delivered.outputs.artifact-url }}\\\"\"\n        working-directory: apps/poselia\n      - uses: actions/upload-artifact@v4\n        if: \"always()\"\n        with:\n          name: Preview-evidence\n          path: apps/poselia/evidence\n          retention-days: 90\n"
+            "output": "# Written by trame ship from the graph, for the shipment \"A preview\" of apps/poselia\n# From the artefact sdlc.TheFile and its settings sdlc.TheSettings declared in apps/poselia/src/sdlc.ts\n# Do not edit: change those nodes, then ship.\nname: A preview\non:\n  workflow_dispatch:\n  push:\n    branches:\n      - main\npermissions:\n  contents: read\njobs:\n  ship:\n    runs-on: ubuntu-24.04\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 22\n      - run: npm ci\n        working-directory: \".\"\n      - run: npm ci\n        working-directory: std\n      - run: npm ci\n        working-directory: apps/poselia\n      - run: npx playwright install --with-deps chromium\n        working-directory: std\n      - run: \"../../trame.sh ship Preview --by \\\"${{ github.actor }}\\\"\"\n        working-directory: apps/poselia\n      - id: delivered\n        uses: actions/upload-artifact@v4\n        with:\n          name: Preview\n          path: |\n            apps/poselia/dist/poselia.html\n          retention-days: 30\n      - run: \"../../trame.sh evidence PageFile passed --by \\\"${{ github.actor }}\\\" --url \\\"${{ steps.delivered.outputs.artifact-url }}\\\"\"\n        working-directory: apps/poselia\n      - uses: actions/upload-artifact@v4\n        if: \"always()\"\n        with:\n          name: Preview-evidence\n          path: apps/poselia/evidence\n          retention-days: 90\n"
           },
           {
             "input": [
@@ -385,6 +406,11 @@
                     "md"
                   ],
                   "lock": "trame.lock"
+                },
+                "from": {
+                  "artefact": "sdlc.TheFile",
+                  "settings": "sdlc.TheSettings",
+                  "declared": "apps/poselia/src/sdlc.ts"
                 }
               },
               {
@@ -398,7 +424,7 @@
                 }
               }
             ],
-            "output": "# Written by trame ship from the graph, for the shipment \"A preview\" of .\n# Do not edit: edit the graph, then ship.\nname: A preview\non:\n  schedule:\n    - cron: \"0 6 * * 1\"\npermissions:\n  contents: read\njobs:\n  ship:\n    runs-on: ubuntu-24.04\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 22\n      - run: npm ci\n        working-directory: \".\"\n      - run: \"./trame.sh ship Preview --by \\\"${{ github.actor }}\\\"\"\n        working-directory: \".\"\n"
+            "output": "# Written by trame ship from the graph, for the shipment \"A preview\" of .\n# From the artefact sdlc.TheFile and its settings sdlc.TheSettings declared in apps/poselia/src/sdlc.ts\n# Do not edit: change those nodes, then ship.\nname: A preview\non:\n  schedule:\n    - cron: \"0 6 * * 1\"\npermissions:\n  contents: read\njobs:\n  ship:\n    runs-on: ubuntu-24.04\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 22\n      - run: npm ci\n        working-directory: \".\"\n      - run: \"./trame.sh ship Preview --by \\\"${{ github.actor }}\\\"\"\n        working-directory: \".\"\n"
           },
           {
             "input": [
@@ -439,6 +465,11 @@
                     "md"
                   ],
                   "lock": "trame.lock"
+                },
+                "from": {
+                  "artefact": "sdlc.TheFile",
+                  "settings": "sdlc.TheSettings",
+                  "declared": "apps/poselia/src/sdlc.ts"
                 }
               },
               {
@@ -463,7 +494,7 @@
                 }
               }
             ],
-            "output": "# Written by trame ship from the graph, for the shipment \"Into the main branch\" of apps/poselia\n# Do not edit: edit the graph, then ship.\nname: Into the main branch\non:\n  pull_request:\n    branches:\n      - main\npermissions:\n  contents: read\n  pull-requests: write\njobs:\n  poselia:\n    runs-on: ubuntu-24.04\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 22\n      - run: npm ci\n        working-directory: \".\"\n      - run: npm ci\n        working-directory: apps/poselia\n      - run: npm ci\n        working-directory: libs/geometry\n      - run: \"git fetch --depth=1 origin \\\"$GITHUB_BASE_REF\\\"\"\n        working-directory: apps/poselia\n      - run: |\n          git show \"FETCH_HEAD:./$LOCK\" > \"$LOCK\" || rm -f \"$LOCK\"\n          ../../trame.sh view review --format md > \"$RUNNER_TEMP/review.md\"\n          git checkout -- \"$LOCK\" || rm -f \"$LOCK\"\n          printf '%s\\n\\n' \"$MARKER\" | cat - \"$RUNNER_TEMP/review.md\" > \"$RUNNER_TEMP/comment.md\"\n          id=\"$(gh api \"repos/$GITHUB_REPOSITORY/issues/$NUMBER/comments\" --paginate --jq '[.[] | select(.body | startswith(env.MARKER))][0].id // empty')\"\n          if [ -n \"$id\" ]; then gh api --method PATCH \"repos/$GITHUB_REPOSITORY/issues/comments/$id\" -F \"body=@$RUNNER_TEMP/comment.md\" > /dev/null; else gh pr comment \"$NUMBER\" --body-file \"$RUNNER_TEMP/comment.md\"; fi\n        working-directory: apps/poselia\n        env:\n          GH_TOKEN: \"${{ github.token }}\"\n          NUMBER: \"${{ github.event.pull_request.number }}\"\n          LOCK: trame.lock\n          MARKER: \"<!-- The review of apps/poselia -->\"\n      - run: |\n          git diff --quiet FETCH_HEAD -- \":(glob)**/$LOCK\" || gh pr merge \"$NUMBER\" --disable-auto || true\n        working-directory: apps/poselia\n        env:\n          GH_TOKEN: \"${{ github.token }}\"\n          NUMBER: \"${{ github.event.pull_request.number }}\"\n          LOCK: trame.lock\n          MARKER: \"<!-- The review of apps/poselia -->\"\n      - run: \"../../trame.sh ship IntoMain --by \\\"${{ github.actor }}\\\"\"\n        working-directory: apps/poselia\n"
+            "output": "# Written by trame ship from the graph, for the shipment \"Into the main branch\" of apps/poselia\n# From the artefact sdlc.TheFile and its settings sdlc.TheSettings declared in apps/poselia/src/sdlc.ts\n# Do not edit: change those nodes, then ship.\nname: \"poselia · Into the main branch\"\non:\n  pull_request:\n    branches:\n      - main\npermissions:\n  contents: read\n  pull-requests: write\njobs:\n  poselia:\n    runs-on: ubuntu-24.04\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 22\n      - run: npm ci\n        working-directory: \".\"\n      - run: npm ci\n        working-directory: apps/poselia\n      - run: npm ci\n        working-directory: libs/geometry\n      - run: \"git fetch --depth=1 origin \\\"$GITHUB_BASE_REF\\\"\"\n        working-directory: apps/poselia\n      - run: |\n          git show \"FETCH_HEAD:./$LOCK\" > \"$LOCK\" || rm -f \"$LOCK\"\n          ../../trame.sh view review --format md > \"$RUNNER_TEMP/review.md\"\n          git checkout -- \"$LOCK\" || rm -f \"$LOCK\"\n          printf '%s\\n\\n' \"$MARKER\" | cat - \"$RUNNER_TEMP/review.md\" > \"$RUNNER_TEMP/comment.md\"\n          id=\"$(gh api \"repos/$GITHUB_REPOSITORY/issues/$NUMBER/comments\" --paginate --jq '[.[] | select(.body | startswith(env.MARKER))][0].id // empty')\"\n          if [ -n \"$id\" ]; then gh api --method PATCH \"repos/$GITHUB_REPOSITORY/issues/comments/$id\" -F \"body=@$RUNNER_TEMP/comment.md\" > /dev/null; else gh pr comment \"$NUMBER\" --body-file \"$RUNNER_TEMP/comment.md\"; fi\n        working-directory: apps/poselia\n        env:\n          GH_TOKEN: \"${{ github.token }}\"\n          NUMBER: \"${{ github.event.pull_request.number }}\"\n          LOCK: trame.lock\n          MARKER: \"<!-- The review of apps/poselia -->\"\n      - run: |\n          git diff --quiet FETCH_HEAD -- \":(glob)**/$LOCK\" || gh pr merge \"$NUMBER\" --disable-auto || true\n        working-directory: apps/poselia\n        env:\n          GH_TOKEN: \"${{ github.token }}\"\n          NUMBER: \"${{ github.event.pull_request.number }}\"\n          LOCK: trame.lock\n          MARKER: \"<!-- The review of apps/poselia -->\"\n      - run: \"../../trame.sh ship IntoMain --by \\\"${{ github.actor }}\\\"\"\n        working-directory: apps/poselia\n"
           }
         ]
       },
@@ -518,6 +549,11 @@
                   "md"
                 ],
                 "lock": "trame.lock"
+              },
+              "from": {
+                "artefact": "sdlc.TheFile",
+                "settings": "sdlc.TheSettings",
+                "declared": "apps/poselia/src/sdlc.ts"
               }
             },
             {
@@ -537,8 +573,8 @@
               }
             }
           ],
-          "expected": "# Written by trame ship from the graph, for the shipment \"A preview\" of apps/poselia\n# Do not edit: edit the graph, then ship.\nname: A preview\non:\n  workflow_dispatch:\n  push:\n    branches:\n      - main\npermissions:\n  contents: read\njobs:\n  ship:\n    runs-on: ubuntu-24.04\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 22\n      - run: npm ci\n        working-directory: \".\"\n      - run: npm ci\n        working-directory: std\n      - run: npm ci\n        working-directory: apps/poselia\n      - run: npx playwright install --with-deps chromium\n        working-directory: std\n      - run: \"../../trame.sh ship Preview --by \\\"${{ github.actor }}\\\"\"\n        working-directory: apps/poselia\n      - id: delivered\n        uses: actions/upload-artifact@v4\n        with:\n          name: Preview\n          path: |\n            apps/poselia/dist/poselia.html\n          retention-days: 30\n      - run: \"../../trame.sh evidence PageFile passed --by \\\"${{ github.actor }}\\\" --url \\\"${{ steps.delivered.outputs.artifact-url }}\\\"\"\n        working-directory: apps/poselia\n      - uses: actions/upload-artifact@v4\n        if: \"always()\"\n        with:\n          name: Preview-evidence\n          path: apps/poselia/evidence\n          retention-days: 90\n",
-          "actual": "# Written by trame ship from the graph, for the shipment \"A preview\" of apps/poselia\n# Do not edit: edit the graph, then ship.\nname: A preview\non:\n  workflow_dispatch:\n  push:\n    branches:\n      - main\npermissions:\n  contents: read\njobs:\n  ship:\n    runs-on: ubuntu-24.04\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 22\n      - run: npm ci\n        working-directory: \".\"\n      - run: npm ci\n        working-directory: std\n      - run: npm ci\n        working-directory: apps/poselia\n      - run: npx playwright install --with-deps chromium\n        working-directory: std\n      - run: \"../../trame.sh ship Preview --by \\\"${{ github.actor }}\\\"\"\n        working-directory: apps/poselia\n      - id: delivered\n        uses: actions/upload-artifact@v4\n        with:\n          name: Preview\n          path: |\n            apps/poselia/dist/poselia.html\n          retention-days: 30\n      - run: \"../../trame.sh evidence PageFile passed --by \\\"${{ github.actor }}\\\" --url \\\"${{ steps.delivered.outputs.artifact-url }}\\\"\"\n        working-directory: apps/poselia\n      - uses: actions/upload-artifact@v4\n        if: \"always()\"\n        with:\n          name: Preview-evidence\n          path: apps/poselia/evidence\n          retention-days: 90\n",
+          "expected": "# Written by trame ship from the graph, for the shipment \"A preview\" of apps/poselia\n# From the artefact sdlc.TheFile and its settings sdlc.TheSettings declared in apps/poselia/src/sdlc.ts\n# Do not edit: change those nodes, then ship.\nname: A preview\non:\n  workflow_dispatch:\n  push:\n    branches:\n      - main\npermissions:\n  contents: read\njobs:\n  ship:\n    runs-on: ubuntu-24.04\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 22\n      - run: npm ci\n        working-directory: \".\"\n      - run: npm ci\n        working-directory: std\n      - run: npm ci\n        working-directory: apps/poselia\n      - run: npx playwright install --with-deps chromium\n        working-directory: std\n      - run: \"../../trame.sh ship Preview --by \\\"${{ github.actor }}\\\"\"\n        working-directory: apps/poselia\n      - id: delivered\n        uses: actions/upload-artifact@v4\n        with:\n          name: Preview\n          path: |\n            apps/poselia/dist/poselia.html\n          retention-days: 30\n      - run: \"../../trame.sh evidence PageFile passed --by \\\"${{ github.actor }}\\\" --url \\\"${{ steps.delivered.outputs.artifact-url }}\\\"\"\n        working-directory: apps/poselia\n      - uses: actions/upload-artifact@v4\n        if: \"always()\"\n        with:\n          name: Preview-evidence\n          path: apps/poselia/evidence\n          retention-days: 90\n",
+          "actual": "# Written by trame ship from the graph, for the shipment \"A preview\" of apps/poselia\n# From the artefact sdlc.TheFile and its settings sdlc.TheSettings declared in apps/poselia/src/sdlc.ts\n# Do not edit: change those nodes, then ship.\nname: A preview\non:\n  workflow_dispatch:\n  push:\n    branches:\n      - main\npermissions:\n  contents: read\njobs:\n  ship:\n    runs-on: ubuntu-24.04\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 22\n      - run: npm ci\n        working-directory: \".\"\n      - run: npm ci\n        working-directory: std\n      - run: npm ci\n        working-directory: apps/poselia\n      - run: npx playwright install --with-deps chromium\n        working-directory: std\n      - run: \"../../trame.sh ship Preview --by \\\"${{ github.actor }}\\\"\"\n        working-directory: apps/poselia\n      - id: delivered\n        uses: actions/upload-artifact@v4\n        with:\n          name: Preview\n          path: |\n            apps/poselia/dist/poselia.html\n          retention-days: 30\n      - run: \"../../trame.sh evidence PageFile passed --by \\\"${{ github.actor }}\\\" --url \\\"${{ steps.delivered.outputs.artifact-url }}\\\"\"\n        working-directory: apps/poselia\n      - uses: actions/upload-artifact@v4\n        if: \"always()\"\n        with:\n          name: Preview-evidence\n          path: apps/poselia/evidence\n          retention-days: 90\n",
           "held": true
         },
         {
@@ -579,6 +615,11 @@
                   "md"
                 ],
                 "lock": "trame.lock"
+              },
+              "from": {
+                "artefact": "sdlc.TheFile",
+                "settings": "sdlc.TheSettings",
+                "declared": "apps/poselia/src/sdlc.ts"
               }
             },
             {
@@ -592,8 +633,8 @@
               }
             }
           ],
-          "expected": "# Written by trame ship from the graph, for the shipment \"A preview\" of .\n# Do not edit: edit the graph, then ship.\nname: A preview\non:\n  schedule:\n    - cron: \"0 6 * * 1\"\npermissions:\n  contents: read\njobs:\n  ship:\n    runs-on: ubuntu-24.04\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 22\n      - run: npm ci\n        working-directory: \".\"\n      - run: \"./trame.sh ship Preview --by \\\"${{ github.actor }}\\\"\"\n        working-directory: \".\"\n",
-          "actual": "# Written by trame ship from the graph, for the shipment \"A preview\" of .\n# Do not edit: edit the graph, then ship.\nname: A preview\non:\n  schedule:\n    - cron: \"0 6 * * 1\"\npermissions:\n  contents: read\njobs:\n  ship:\n    runs-on: ubuntu-24.04\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 22\n      - run: npm ci\n        working-directory: \".\"\n      - run: \"./trame.sh ship Preview --by \\\"${{ github.actor }}\\\"\"\n        working-directory: \".\"\n",
+          "expected": "# Written by trame ship from the graph, for the shipment \"A preview\" of .\n# From the artefact sdlc.TheFile and its settings sdlc.TheSettings declared in apps/poselia/src/sdlc.ts\n# Do not edit: change those nodes, then ship.\nname: A preview\non:\n  schedule:\n    - cron: \"0 6 * * 1\"\npermissions:\n  contents: read\njobs:\n  ship:\n    runs-on: ubuntu-24.04\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 22\n      - run: npm ci\n        working-directory: \".\"\n      - run: \"./trame.sh ship Preview --by \\\"${{ github.actor }}\\\"\"\n        working-directory: \".\"\n",
+          "actual": "# Written by trame ship from the graph, for the shipment \"A preview\" of .\n# From the artefact sdlc.TheFile and its settings sdlc.TheSettings declared in apps/poselia/src/sdlc.ts\n# Do not edit: change those nodes, then ship.\nname: A preview\non:\n  schedule:\n    - cron: \"0 6 * * 1\"\npermissions:\n  contents: read\njobs:\n  ship:\n    runs-on: ubuntu-24.04\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 22\n      - run: npm ci\n        working-directory: \".\"\n      - run: \"./trame.sh ship Preview --by \\\"${{ github.actor }}\\\"\"\n        working-directory: \".\"\n",
           "held": true
         },
         {
@@ -635,6 +676,11 @@
                   "md"
                 ],
                 "lock": "trame.lock"
+              },
+              "from": {
+                "artefact": "sdlc.TheFile",
+                "settings": "sdlc.TheSettings",
+                "declared": "apps/poselia/src/sdlc.ts"
               }
             },
             {
@@ -659,8 +705,8 @@
               }
             }
           ],
-          "expected": "# Written by trame ship from the graph, for the shipment \"Into the main branch\" of apps/poselia\n# Do not edit: edit the graph, then ship.\nname: Into the main branch\non:\n  pull_request:\n    branches:\n      - main\npermissions:\n  contents: read\n  pull-requests: write\njobs:\n  poselia:\n    runs-on: ubuntu-24.04\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 22\n      - run: npm ci\n        working-directory: \".\"\n      - run: npm ci\n        working-directory: apps/poselia\n      - run: npm ci\n        working-directory: libs/geometry\n      - run: \"git fetch --depth=1 origin \\\"$GITHUB_BASE_REF\\\"\"\n        working-directory: apps/poselia\n      - run: |\n          git show \"FETCH_HEAD:./$LOCK\" > \"$LOCK\" || rm -f \"$LOCK\"\n          ../../trame.sh view review --format md > \"$RUNNER_TEMP/review.md\"\n          git checkout -- \"$LOCK\" || rm -f \"$LOCK\"\n          printf '%s\\n\\n' \"$MARKER\" | cat - \"$RUNNER_TEMP/review.md\" > \"$RUNNER_TEMP/comment.md\"\n          id=\"$(gh api \"repos/$GITHUB_REPOSITORY/issues/$NUMBER/comments\" --paginate --jq '[.[] | select(.body | startswith(env.MARKER))][0].id // empty')\"\n          if [ -n \"$id\" ]; then gh api --method PATCH \"repos/$GITHUB_REPOSITORY/issues/comments/$id\" -F \"body=@$RUNNER_TEMP/comment.md\" > /dev/null; else gh pr comment \"$NUMBER\" --body-file \"$RUNNER_TEMP/comment.md\"; fi\n        working-directory: apps/poselia\n        env:\n          GH_TOKEN: \"${{ github.token }}\"\n          NUMBER: \"${{ github.event.pull_request.number }}\"\n          LOCK: trame.lock\n          MARKER: \"<!-- The review of apps/poselia -->\"\n      - run: |\n          git diff --quiet FETCH_HEAD -- \":(glob)**/$LOCK\" || gh pr merge \"$NUMBER\" --disable-auto || true\n        working-directory: apps/poselia\n        env:\n          GH_TOKEN: \"${{ github.token }}\"\n          NUMBER: \"${{ github.event.pull_request.number }}\"\n          LOCK: trame.lock\n          MARKER: \"<!-- The review of apps/poselia -->\"\n      - run: \"../../trame.sh ship IntoMain --by \\\"${{ github.actor }}\\\"\"\n        working-directory: apps/poselia\n",
-          "actual": "# Written by trame ship from the graph, for the shipment \"Into the main branch\" of apps/poselia\n# Do not edit: edit the graph, then ship.\nname: Into the main branch\non:\n  pull_request:\n    branches:\n      - main\npermissions:\n  contents: read\n  pull-requests: write\njobs:\n  poselia:\n    runs-on: ubuntu-24.04\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 22\n      - run: npm ci\n        working-directory: \".\"\n      - run: npm ci\n        working-directory: apps/poselia\n      - run: npm ci\n        working-directory: libs/geometry\n      - run: \"git fetch --depth=1 origin \\\"$GITHUB_BASE_REF\\\"\"\n        working-directory: apps/poselia\n      - run: |\n          git show \"FETCH_HEAD:./$LOCK\" > \"$LOCK\" || rm -f \"$LOCK\"\n          ../../trame.sh view review --format md > \"$RUNNER_TEMP/review.md\"\n          git checkout -- \"$LOCK\" || rm -f \"$LOCK\"\n          printf '%s\\n\\n' \"$MARKER\" | cat - \"$RUNNER_TEMP/review.md\" > \"$RUNNER_TEMP/comment.md\"\n          id=\"$(gh api \"repos/$GITHUB_REPOSITORY/issues/$NUMBER/comments\" --paginate --jq '[.[] | select(.body | startswith(env.MARKER))][0].id // empty')\"\n          if [ -n \"$id\" ]; then gh api --method PATCH \"repos/$GITHUB_REPOSITORY/issues/comments/$id\" -F \"body=@$RUNNER_TEMP/comment.md\" > /dev/null; else gh pr comment \"$NUMBER\" --body-file \"$RUNNER_TEMP/comment.md\"; fi\n        working-directory: apps/poselia\n        env:\n          GH_TOKEN: \"${{ github.token }}\"\n          NUMBER: \"${{ github.event.pull_request.number }}\"\n          LOCK: trame.lock\n          MARKER: \"<!-- The review of apps/poselia -->\"\n      - run: |\n          git diff --quiet FETCH_HEAD -- \":(glob)**/$LOCK\" || gh pr merge \"$NUMBER\" --disable-auto || true\n        working-directory: apps/poselia\n        env:\n          GH_TOKEN: \"${{ github.token }}\"\n          NUMBER: \"${{ github.event.pull_request.number }}\"\n          LOCK: trame.lock\n          MARKER: \"<!-- The review of apps/poselia -->\"\n      - run: \"../../trame.sh ship IntoMain --by \\\"${{ github.actor }}\\\"\"\n        working-directory: apps/poselia\n",
+          "expected": "# Written by trame ship from the graph, for the shipment \"Into the main branch\" of apps/poselia\n# From the artefact sdlc.TheFile and its settings sdlc.TheSettings declared in apps/poselia/src/sdlc.ts\n# Do not edit: change those nodes, then ship.\nname: \"poselia · Into the main branch\"\non:\n  pull_request:\n    branches:\n      - main\npermissions:\n  contents: read\n  pull-requests: write\njobs:\n  poselia:\n    runs-on: ubuntu-24.04\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 22\n      - run: npm ci\n        working-directory: \".\"\n      - run: npm ci\n        working-directory: apps/poselia\n      - run: npm ci\n        working-directory: libs/geometry\n      - run: \"git fetch --depth=1 origin \\\"$GITHUB_BASE_REF\\\"\"\n        working-directory: apps/poselia\n      - run: |\n          git show \"FETCH_HEAD:./$LOCK\" > \"$LOCK\" || rm -f \"$LOCK\"\n          ../../trame.sh view review --format md > \"$RUNNER_TEMP/review.md\"\n          git checkout -- \"$LOCK\" || rm -f \"$LOCK\"\n          printf '%s\\n\\n' \"$MARKER\" | cat - \"$RUNNER_TEMP/review.md\" > \"$RUNNER_TEMP/comment.md\"\n          id=\"$(gh api \"repos/$GITHUB_REPOSITORY/issues/$NUMBER/comments\" --paginate --jq '[.[] | select(.body | startswith(env.MARKER))][0].id // empty')\"\n          if [ -n \"$id\" ]; then gh api --method PATCH \"repos/$GITHUB_REPOSITORY/issues/comments/$id\" -F \"body=@$RUNNER_TEMP/comment.md\" > /dev/null; else gh pr comment \"$NUMBER\" --body-file \"$RUNNER_TEMP/comment.md\"; fi\n        working-directory: apps/poselia\n        env:\n          GH_TOKEN: \"${{ github.token }}\"\n          NUMBER: \"${{ github.event.pull_request.number }}\"\n          LOCK: trame.lock\n          MARKER: \"<!-- The review of apps/poselia -->\"\n      - run: |\n          git diff --quiet FETCH_HEAD -- \":(glob)**/$LOCK\" || gh pr merge \"$NUMBER\" --disable-auto || true\n        working-directory: apps/poselia\n        env:\n          GH_TOKEN: \"${{ github.token }}\"\n          NUMBER: \"${{ github.event.pull_request.number }}\"\n          LOCK: trame.lock\n          MARKER: \"<!-- The review of apps/poselia -->\"\n      - run: \"../../trame.sh ship IntoMain --by \\\"${{ github.actor }}\\\"\"\n        working-directory: apps/poselia\n",
+          "actual": "# Written by trame ship from the graph, for the shipment \"Into the main branch\" of apps/poselia\n# From the artefact sdlc.TheFile and its settings sdlc.TheSettings declared in apps/poselia/src/sdlc.ts\n# Do not edit: change those nodes, then ship.\nname: \"poselia · Into the main branch\"\non:\n  pull_request:\n    branches:\n      - main\npermissions:\n  contents: read\n  pull-requests: write\njobs:\n  poselia:\n    runs-on: ubuntu-24.04\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 22\n      - run: npm ci\n        working-directory: \".\"\n      - run: npm ci\n        working-directory: apps/poselia\n      - run: npm ci\n        working-directory: libs/geometry\n      - run: \"git fetch --depth=1 origin \\\"$GITHUB_BASE_REF\\\"\"\n        working-directory: apps/poselia\n      - run: |\n          git show \"FETCH_HEAD:./$LOCK\" > \"$LOCK\" || rm -f \"$LOCK\"\n          ../../trame.sh view review --format md > \"$RUNNER_TEMP/review.md\"\n          git checkout -- \"$LOCK\" || rm -f \"$LOCK\"\n          printf '%s\\n\\n' \"$MARKER\" | cat - \"$RUNNER_TEMP/review.md\" > \"$RUNNER_TEMP/comment.md\"\n          id=\"$(gh api \"repos/$GITHUB_REPOSITORY/issues/$NUMBER/comments\" --paginate --jq '[.[] | select(.body | startswith(env.MARKER))][0].id // empty')\"\n          if [ -n \"$id\" ]; then gh api --method PATCH \"repos/$GITHUB_REPOSITORY/issues/comments/$id\" -F \"body=@$RUNNER_TEMP/comment.md\" > /dev/null; else gh pr comment \"$NUMBER\" --body-file \"$RUNNER_TEMP/comment.md\"; fi\n        working-directory: apps/poselia\n        env:\n          GH_TOKEN: \"${{ github.token }}\"\n          NUMBER: \"${{ github.event.pull_request.number }}\"\n          LOCK: trame.lock\n          MARKER: \"<!-- The review of apps/poselia -->\"\n      - run: |\n          git diff --quiet FETCH_HEAD -- \":(glob)**/$LOCK\" || gh pr merge \"$NUMBER\" --disable-auto || true\n        working-directory: apps/poselia\n        env:\n          GH_TOKEN: \"${{ github.token }}\"\n          NUMBER: \"${{ github.event.pull_request.number }}\"\n          LOCK: trame.lock\n          MARKER: \"<!-- The review of apps/poselia -->\"\n      - run: \"../../trame.sh ship IntoMain --by \\\"${{ github.actor }}\\\"\"\n        working-directory: apps/poselia\n",
           "held": true
         }
       ],
@@ -738,6 +784,16 @@
       "kind": "goal",
       "title": "Each place is a writer",
       "source": "src/product.ts:24",
+      "fields": {
+        "owner": "trame"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "product.RepositoryAsDecided",
+      "kind": "goal",
+      "title": "A repository is set as its graph decides",
+      "source": "src/product.ts:32",
       "fields": {
         "owner": "trame"
       },
@@ -844,141 +900,6 @@
       "diagnostics": []
     },
     {
-      "id": "repository.GitHubRepository",
-      "kind": "syntax",
-      "title": "The settings of a repository",
-      "source": "src/repository.ts:110",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Repository rulesets: rules deletion, non_fast_forward, pull_request, required_status_checks",
-        "url": "https://docs.github.com/en/rest/repos/rules#create-a-repository-ruleset",
-        "constants": {
-          "repository": {
-            "value": "repo",
-            "meaning": "The variable that holds the repository, owner/name"
-          },
-          "usage": {
-            "value": "give the repository, as owner/name",
-            "meaning": "What the script says when it is run without one"
-          },
-          "found": {
-            "value": "id",
-            "meaning": "The variable that holds the identifier of the ruleset already there"
-          },
-          "written": {
-            "value": "Written by trame ship from the graph: the settings of the repository, for the branch",
-            "meaning": "What the script's first comment says"
-          },
-          "run": {
-            "value": "Run by an administrator: bash <this script> owner/name",
-            "meaning": "Who runs it, and how"
-          },
-          "edit": {
-            "value": "Do not edit: edit the graph, then ship.",
-            "meaning": "The comment that says where to change it"
-          },
-          "document": {
-            "value": "<<'JSON'",
-            "meaning": "Opens the body of a call, written as it is until its end (a here-document)"
-          },
-          "end": {
-            "value": "JSON",
-            "meaning": "Ends it"
-          },
-          "quiet": {
-            "value": "> /dev/null",
-            "meaning": "Keeps the answer of a call off the terminal"
-          },
-          "test": {
-            "value": "if [ -n",
-            "meaning": "Opens the test of a text that is not empty"
-          },
-          "then": {
-            "value": "]; then",
-            "meaning": "Then"
-          },
-          "otherwise": {
-            "value": "; else",
-            "meaning": "Otherwise"
-          },
-          "done": {
-            "value": "; fi",
-            "meaning": "Ends the test"
-          },
-          "or": {
-            "value": "||",
-            "meaning": "When the call before fails"
-          },
-          "capture": {
-            "value": "\"$(",
-            "meaning": "Opens a command whose output is kept, as one word"
-          },
-          "captured": {
-            "value": ")\"",
-            "meaning": "Closes it"
-          },
-          "indentation": {
-            "value": 2,
-            "meaning": "The spaces of a level of the body"
-          },
-          "filter": {
-            "value": "'",
-            "meaning": "Around the jq filter, which the shell gives as it is"
-          },
-          "approvals": {
-            "value": 0,
-            "meaning": "The approvals a pull request needs: none, the checks hold it, and a person merges what people decided"
-          }
-        },
-        "deps": {
-          "standard": "repository.GitHubRepositoryApi",
-          "sh": "shell.BashScripts",
-          "methods": "repository.MergeMethods"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              null,
-              {
-                "branch": "main",
-                "checks": [
-                  "trame",
-                  "poselia"
-                ],
-                "method": "merge",
-                "autoMerge": true,
-                "pages": true
-              }
-            ],
-            "output": "#!/usr/bin/env bash\n# Written by trame ship from the graph: the settings of the repository, for the branch main\n# Run by an administrator: bash <this script> owner/name\n# Do not edit: edit the graph, then ship.\nset -euo pipefail\nrepo=\"${1:?give the repository, as owner/name}\"\ngh api --method PATCH \"repos/$repo\" --input - > /dev/null <<'JSON'\n{\n  \"allow_merge_commit\": true,\n  \"allow_squash_merge\": false,\n  \"allow_rebase_merge\": false,\n  \"allow_auto_merge\": true,\n  \"delete_branch_on_merge\": true\n}\nJSON\nid=\"$(gh api \"repos/$repo/rulesets\" --jq '.[] | select(.name == \"main\") | .id')\"\nif [ -n \"$id\" ]; then gh api --method PUT \"repos/$repo/rulesets/$id\" --input - > /dev/null ; else gh api --method POST \"repos/$repo/rulesets\" --input - > /dev/null ; fi <<'JSON'\n{\n  \"name\": \"main\",\n  \"target\": \"branch\",\n  \"enforcement\": \"active\",\n  \"conditions\": {\n    \"ref_name\": {\n      \"include\": [\n        \"refs/heads/main\"\n      ],\n      \"exclude\": []\n    }\n  },\n  \"rules\": [\n    {\n      \"type\": \"deletion\"\n    },\n    {\n      \"type\": \"non_fast_forward\"\n    },\n    {\n      \"type\": \"pull_request\",\n      \"parameters\": {\n        \"required_approving_review_count\": 0,\n        \"dismiss_stale_reviews_on_push\": false,\n        \"require_code_owner_review\": false,\n        \"require_last_push_approval\": false,\n        \"required_review_thread_resolution\": false,\n        \"allowed_merge_methods\": [\n          \"merge\"\n        ]\n      }\n    },\n    {\n      \"type\": \"required_status_checks\",\n      \"parameters\": {\n        \"strict_required_status_checks_policy\": false,\n        \"required_status_checks\": [\n          {\n            \"context\": \"trame\"\n          },\n          {\n            \"context\": \"poselia\"\n          }\n        ]\n      }\n    }\n  ]\n}\nJSON\ngh api --method POST \"repos/$repo/pages\" -f build_type=workflow > /dev/null || gh api --method PUT \"repos/$repo/pages\" -f build_type=workflow > /dev/null\n"
-          }
-        ]
-      },
-      "result": [
-        {
-          "input": [
-            null,
-            {
-              "branch": "main",
-              "checks": [
-                "trame",
-                "poselia"
-              ],
-              "method": "merge",
-              "autoMerge": true,
-              "pages": true
-            }
-          ],
-          "expected": "#!/usr/bin/env bash\n# Written by trame ship from the graph: the settings of the repository, for the branch main\n# Run by an administrator: bash <this script> owner/name\n# Do not edit: edit the graph, then ship.\nset -euo pipefail\nrepo=\"${1:?give the repository, as owner/name}\"\ngh api --method PATCH \"repos/$repo\" --input - > /dev/null <<'JSON'\n{\n  \"allow_merge_commit\": true,\n  \"allow_squash_merge\": false,\n  \"allow_rebase_merge\": false,\n  \"allow_auto_merge\": true,\n  \"delete_branch_on_merge\": true\n}\nJSON\nid=\"$(gh api \"repos/$repo/rulesets\" --jq '.[] | select(.name == \"main\") | .id')\"\nif [ -n \"$id\" ]; then gh api --method PUT \"repos/$repo/rulesets/$id\" --input - > /dev/null ; else gh api --method POST \"repos/$repo/rulesets\" --input - > /dev/null ; fi <<'JSON'\n{\n  \"name\": \"main\",\n  \"target\": \"branch\",\n  \"enforcement\": \"active\",\n  \"conditions\": {\n    \"ref_name\": {\n      \"include\": [\n        \"refs/heads/main\"\n      ],\n      \"exclude\": []\n    }\n  },\n  \"rules\": [\n    {\n      \"type\": \"deletion\"\n    },\n    {\n      \"type\": \"non_fast_forward\"\n    },\n    {\n      \"type\": \"pull_request\",\n      \"parameters\": {\n        \"required_approving_review_count\": 0,\n        \"dismiss_stale_reviews_on_push\": false,\n        \"require_code_owner_review\": false,\n        \"require_last_push_approval\": false,\n        \"required_review_thread_resolution\": false,\n        \"allowed_merge_methods\": [\n          \"merge\"\n        ]\n      }\n    },\n    {\n      \"type\": \"required_status_checks\",\n      \"parameters\": {\n        \"strict_required_status_checks_policy\": false,\n        \"required_status_checks\": [\n          {\n            \"context\": \"trame\"\n          },\n          {\n            \"context\": \"poselia\"\n          }\n        ]\n      }\n    }\n  ]\n}\nJSON\ngh api --method POST \"repos/$repo/pages\" -f build_type=workflow > /dev/null || gh api --method PUT \"repos/$repo/pages\" -f build_type=workflow > /dev/null\n",
-          "actual": "#!/usr/bin/env bash\n# Written by trame ship from the graph: the settings of the repository, for the branch main\n# Run by an administrator: bash <this script> owner/name\n# Do not edit: edit the graph, then ship.\nset -euo pipefail\nrepo=\"${1:?give the repository, as owner/name}\"\ngh api --method PATCH \"repos/$repo\" --input - > /dev/null <<'JSON'\n{\n  \"allow_merge_commit\": true,\n  \"allow_squash_merge\": false,\n  \"allow_rebase_merge\": false,\n  \"allow_auto_merge\": true,\n  \"delete_branch_on_merge\": true\n}\nJSON\nid=\"$(gh api \"repos/$repo/rulesets\" --jq '.[] | select(.name == \"main\") | .id')\"\nif [ -n \"$id\" ]; then gh api --method PUT \"repos/$repo/rulesets/$id\" --input - > /dev/null ; else gh api --method POST \"repos/$repo/rulesets\" --input - > /dev/null ; fi <<'JSON'\n{\n  \"name\": \"main\",\n  \"target\": \"branch\",\n  \"enforcement\": \"active\",\n  \"conditions\": {\n    \"ref_name\": {\n      \"include\": [\n        \"refs/heads/main\"\n      ],\n      \"exclude\": []\n    }\n  },\n  \"rules\": [\n    {\n      \"type\": \"deletion\"\n    },\n    {\n      \"type\": \"non_fast_forward\"\n    },\n    {\n      \"type\": \"pull_request\",\n      \"parameters\": {\n        \"required_approving_review_count\": 0,\n        \"dismiss_stale_reviews_on_push\": false,\n        \"require_code_owner_review\": false,\n        \"require_last_push_approval\": false,\n        \"required_review_thread_resolution\": false,\n        \"allowed_merge_methods\": [\n          \"merge\"\n        ]\n      }\n    },\n    {\n      \"type\": \"required_status_checks\",\n      \"parameters\": {\n        \"strict_required_status_checks_policy\": false,\n        \"required_status_checks\": [\n          {\n            \"context\": \"trame\"\n          },\n          {\n            \"context\": \"poselia\"\n          }\n        ]\n      }\n    }\n  ]\n}\nJSON\ngh api --method POST \"repos/$repo/pages\" -f build_type=workflow > /dev/null || gh api --method PUT \"repos/$repo/pages\" -f build_type=workflow > /dev/null\n",
-          "held": true
-        }
-      ],
-      "diagnostics": []
-    },
-    {
       "id": "repository.GitHubRepositoryApi",
       "kind": "standard",
       "title": "GitHub's API for a repository",
@@ -988,9 +909,13 @@
         "source": "GitHub REST API: Repositories (Update a repository), Rules (Create, Get and Update a repository ruleset), Pages (Create a GitHub Pages site, build_type workflow); GitHub CLI manual: gh api (--method, --input, --jq, -f)",
         "url": "https://docs.github.com/en/rest/repos/rules",
         "constants": {
-          "gh": {
-            "value": "gh api",
-            "meaning": "Calls GitHub's API, with the token of the person who runs it"
+          "program": {
+            "value": "gh",
+            "meaning": "GitHub's command line, with the token of the person who runs it"
+          },
+          "api": {
+            "value": "api",
+            "meaning": "Calls GitHub's API"
           },
           "method": {
             "value": "--method",
@@ -1009,16 +934,12 @@
             "meaning": "Replaces"
           },
           "input": {
-            "value": "--input -",
-            "meaning": "The body of the call, read from what the command is given"
+            "value": "--input",
+            "meaning": "The body of the call, read from a file"
           },
-          "field": {
-            "value": "-f",
-            "meaning": "A field of the body, as a text"
-          },
-          "jq": {
-            "value": "--jq",
-            "meaning": "What gh keeps of the answer, a jq filter"
+          "standardInput": {
+            "value": "-",
+            "meaning": "As a file: what the command is given"
           },
           "repos": {
             "value": "repos/",
@@ -1027,6 +948,10 @@
           "rulesets": {
             "value": "/rulesets",
             "meaning": "After it: its rulesets"
+          },
+          "branchRules": {
+            "value": "/rules/branches/",
+            "meaning": "After it, before a branch: the rules in force on the branch"
           },
           "pages": {
             "value": "/pages",
@@ -1157,16 +1082,16 @@
             "meaning": "A check, by the name of the job that runs it"
           },
           "buildType": {
-            "value": "build_type=workflow",
-            "meaning": "Pages built and published by a workflow"
+            "value": "build_type",
+            "meaning": "How the pages are built"
           },
-          "named": {
-            "value": ".[] | select(.name == ",
-            "meaning": "Opens the jq filter of the ruleset of a name, given as a JSON text"
+          "workflow": {
+            "value": "workflow",
+            "meaning": "By a workflow"
           },
-          "identified": {
-            "value": ") | .id",
-            "meaning": "Closes it: the ruleset's identifier"
+          "id": {
+            "value": "id",
+            "meaning": "The identifier of a ruleset"
           }
         }
       },
@@ -1188,11 +1113,56 @@
       "diagnostics": []
     },
     {
+      "id": "repository.RepositoryApi",
+      "kind": "port",
+      "title": "A repository on GitHub",
+      "source": "src/repository.ts:130",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": {
+          "apply": [
+            "process",
+            "network",
+            "asynchronous"
+          ],
+          "read": [
+            "process",
+            "network",
+            "asynchronous"
+          ]
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "repository.RepositoryInMemory",
+      "kind": "function",
+      "title": "A repository kept in memory",
+      "source": "src/repository.ts:152",
+      "status": "unknown",
+      "fields": {
+        "owner": "trame",
+        "body": "(function)"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "repository.RepositoryKept",
+      "kind": "port",
+      "title": "The repositories a scenario keeps in memory.",
+      "source": "src/repository.ts:144",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": []
+      },
+      "diagnostics": []
+    },
+    {
       "id": "sdlc.NextVersion",
       "kind": "shipment",
       "title": "The next version",
       "source": "src/sdlc.ts:26",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "version"
@@ -1210,10 +1180,13 @@
           "npm.Npm",
           "packages.Language",
           "product.OneWriterPerPlace",
+          "product.RepositoryAsDecided",
           "product.RunsElsewhere",
-          "repository.GitHubRepository",
           "repository.GitHubRepositoryApi",
           "repository.MergeMethods",
+          "repository.RepositoryApi",
+          "repository.RepositoryInMemory",
+          "repository.RepositoryKept",
           "sdlc.NextVersion",
           "sdlc.PullRequestsOnGitHub",
           "sdlc.PullRequestWorkflow",
@@ -1224,7 +1197,9 @@
           "yaml.YamlDocument"
         ]
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: To ship: The library of writers is unknown"
+      ]
     },
     {
       "id": "sdlc.PullRequestsOnGitHub",
@@ -1262,7 +1237,7 @@
       "kind": "artifact",
       "title": "The pull requests' workflow",
       "source": "src/sdlc.ts:54",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "../.github/workflows/ci-pull-request.yml",
@@ -1270,16 +1245,18 @@
       },
       "result": {
         "path": "../.github/workflows/ci-pull-request.yml",
-        "code": "3e6f808d"
+        "code": "b0ccd0f6"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+      ]
     },
     {
       "id": "sdlc.RunnersWritten",
       "kind": "shipment",
       "title": "The files that run it elsewhere",
       "source": "src/sdlc.ts:68",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "repository"
@@ -1293,14 +1270,16 @@
           "github.GitHubWorkflow"
         ]
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: To ship: The pull requests' workflow is unknown"
+      ]
     },
     {
       "id": "sdlc.TheLibrary",
       "kind": "artifact",
       "title": "The library of writers",
       "source": "src/sdlc.ts:19",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "src",
@@ -1308,9 +1287,11 @@
       },
       "result": {
         "path": "src",
-        "code": "cfc708c6"
+        "code": "27a57f63"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+      ]
     },
     {
       "id": "shell.BashScripts",
@@ -1417,8 +1398,20 @@
             "value": "of",
             "meaning": "Between the shipment and its project, in that comment"
           },
+          "fromArtefact": {
+            "value": "From the artefact",
+            "meaning": "Opens the comment that names the nodes the file comes from (ci 0.7.0)"
+          },
+          "andSettings": {
+            "value": "and its settings",
+            "meaning": "Before the decision of its settings, in that comment"
+          },
+          "declaredIn": {
+            "value": "declared in",
+            "meaning": "Before the file that declares them, in that comment"
+          },
           "edit": {
-            "value": "Do not edit: edit the graph, then ship.",
+            "value": "Do not edit: change those nodes, then ship.",
             "meaning": "The comment that says where to change it"
           }
         },
@@ -1478,10 +1471,15 @@
                     "md"
                   ],
                   "lock": "trame.lock"
+                },
+                "from": {
+                  "artefact": "sdlc.TheFile",
+                  "settings": "sdlc.TheSettings",
+                  "declared": "apps/poselia/src/sdlc.ts"
                 }
               }
             ],
-            "output": "#!/usr/bin/env bash\n# Written by trame ship from the graph, for the shipment \"A preview\" of apps/poselia\n# Do not edit: edit the graph, then ship.\nset -euo pipefail\nby=\"${1:?give the name of the person who ships}\"\ncd \"$(dirname \"$0\")/../../..\"\n(cd \".\" && npm ci)\n(cd \"std\" && npm ci)\n(cd \"apps/poselia\" && npm ci)\n(cd \"std\" && npx playwright install --with-deps chromium)\ncd \"apps/poselia\"\n../../trame.sh ship Preview --by \"$by\"\n"
+            "output": "#!/usr/bin/env bash\n# Written by trame ship from the graph, for the shipment \"A preview\" of apps/poselia\n# From the artefact sdlc.TheFile and its settings sdlc.TheSettings declared in apps/poselia/src/sdlc.ts\n# Do not edit: change those nodes, then ship.\nset -euo pipefail\nby=\"${1:?give the name of the person who ships}\"\ncd \"$(dirname \"$0\")/../../..\"\n(cd \".\" && npm ci)\n(cd \"std\" && npm ci)\n(cd \"apps/poselia\" && npm ci)\n(cd \"std\" && npx playwright install --with-deps chromium)\ncd \"apps/poselia\"\n../../trame.sh ship Preview --by \"$by\"\n"
           }
         ]
       },
@@ -1536,11 +1534,16 @@
                   "md"
                 ],
                 "lock": "trame.lock"
+              },
+              "from": {
+                "artefact": "sdlc.TheFile",
+                "settings": "sdlc.TheSettings",
+                "declared": "apps/poselia/src/sdlc.ts"
               }
             }
           ],
-          "expected": "#!/usr/bin/env bash\n# Written by trame ship from the graph, for the shipment \"A preview\" of apps/poselia\n# Do not edit: edit the graph, then ship.\nset -euo pipefail\nby=\"${1:?give the name of the person who ships}\"\ncd \"$(dirname \"$0\")/../../..\"\n(cd \".\" && npm ci)\n(cd \"std\" && npm ci)\n(cd \"apps/poselia\" && npm ci)\n(cd \"std\" && npx playwright install --with-deps chromium)\ncd \"apps/poselia\"\n../../trame.sh ship Preview --by \"$by\"\n",
-          "actual": "#!/usr/bin/env bash\n# Written by trame ship from the graph, for the shipment \"A preview\" of apps/poselia\n# Do not edit: edit the graph, then ship.\nset -euo pipefail\nby=\"${1:?give the name of the person who ships}\"\ncd \"$(dirname \"$0\")/../../..\"\n(cd \".\" && npm ci)\n(cd \"std\" && npm ci)\n(cd \"apps/poselia\" && npm ci)\n(cd \"std\" && npx playwright install --with-deps chromium)\ncd \"apps/poselia\"\n../../trame.sh ship Preview --by \"$by\"\n",
+          "expected": "#!/usr/bin/env bash\n# Written by trame ship from the graph, for the shipment \"A preview\" of apps/poselia\n# From the artefact sdlc.TheFile and its settings sdlc.TheSettings declared in apps/poselia/src/sdlc.ts\n# Do not edit: change those nodes, then ship.\nset -euo pipefail\nby=\"${1:?give the name of the person who ships}\"\ncd \"$(dirname \"$0\")/../../..\"\n(cd \".\" && npm ci)\n(cd \"std\" && npm ci)\n(cd \"apps/poselia\" && npm ci)\n(cd \"std\" && npx playwright install --with-deps chromium)\ncd \"apps/poselia\"\n../../trame.sh ship Preview --by \"$by\"\n",
+          "actual": "#!/usr/bin/env bash\n# Written by trame ship from the graph, for the shipment \"A preview\" of apps/poselia\n# From the artefact sdlc.TheFile and its settings sdlc.TheSettings declared in apps/poselia/src/sdlc.ts\n# Do not edit: change those nodes, then ship.\nset -euo pipefail\nby=\"${1:?give the name of the person who ships}\"\ncd \"$(dirname \"$0\")/../../..\"\n(cd \".\" && npm ci)\n(cd \"std\" && npm ci)\n(cd \"apps/poselia\" && npm ci)\n(cd \"std\" && npx playwright install --with-deps chromium)\ncd \"apps/poselia\"\n../../trame.sh ship Preview --by \"$by\"\n",
           "held": true
         }
       ],
@@ -2006,34 +2009,29 @@
       "kind": "serves"
     },
     {
-      "from": "repository.GitHubRepository",
-      "to": "repository.GitHubRepositoryApi",
-      "kind": "standard"
-    },
-    {
-      "from": "repository.GitHubRepository",
-      "to": "repository.GitHubRepositoryApi",
-      "kind": "deps"
-    },
-    {
-      "from": "repository.GitHubRepository",
-      "to": "shell.BashScripts",
-      "kind": "deps"
-    },
-    {
-      "from": "repository.GitHubRepository",
-      "to": "repository.MergeMethods",
-      "kind": "deps"
-    },
-    {
       "from": "repository.GitHubRepositoryApi",
-      "to": "product.OneWriterPerPlace",
+      "to": "product.RepositoryAsDecided",
       "kind": "serves"
     },
     {
       "from": "repository.MergeMethods",
-      "to": "product.OneWriterPerPlace",
+      "to": "product.RepositoryAsDecided",
       "kind": "serves"
+    },
+    {
+      "from": "repository.RepositoryInMemory",
+      "to": "product.RepositoryAsDecided",
+      "kind": "serves"
+    },
+    {
+      "from": "repository.RepositoryInMemory",
+      "to": "repository.RepositoryApi",
+      "kind": "implements"
+    },
+    {
+      "from": "repository.RepositoryInMemory",
+      "to": "repository.RepositoryKept",
+      "kind": "implements"
     },
     {
       "from": "sdlc.NextVersion",

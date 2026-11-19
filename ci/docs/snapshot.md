@@ -29,10 +29,11 @@ Syntax element · `GitHubWorkflow` · **held**
 - Owner: trame
 - Section: Workflow syntax: on, permissions, jobs.<job_id>.runs-on, jobs.<job_id>.steps[*].uses, with, run, working-directory, if, env
 - Address: https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions
-- Marks: { fetchBase: { value: git fetch --depth=1 origin "$GITHUB_BASE_REF", meaning: Fetches the branch the pull request merges into (git-fetch; GITHUB_BASE_REF, set by Actions on a pull request) }, baseLock: { value: git show "FETCH_HEAD:./$LOCK" > "$LOCK" || rm -f "$LOCK", meaning: Puts the lock of that branch in the project's, or none when it has none (git-show) }, toReview: { value: > "$RUNNER_TEMP/review.md", meaning: After the words that write the review: where it is written }, branchLock: { value: git checkout -- "$LOCK" || rm -f "$LOCK", meaning: Puts the branch's lock back, or none when it has none }, marked: { value: printf '%s\n\n' "$MARKER" | cat - "$RUNNER_TEMP/review.md" > "$RUNNER_TEMP/comment.md", meaning: The comment: the mark of the project's review, then the review }, findComment: { value: id="$(gh api "repos/$GITHUB_REPOSITORY/issues/$NUMBER/comments" --paginate --jq '[.[] | select(.body | startswith(env.MARKER))][0].id // empty')", meaning: The comment of the project's review already written, by its mark (gh api; the REST API's issue comments) }, writeComment: { value: if [ -n "$id" ]; then gh api --method PATCH "repos/$GITHUB_REPOSITORY/issues/comments/$id" -F "body=@$RUNNER_TEMP/comment.md" > /dev/null; else gh pr comment "$NUMBER" --body-file "$RUNNER_TEMP/comment.md"; fi, meaning: Writes it again, or writes it the first time }, keepByHand: { value: gh pr merge "$NUMBER" --disable-auto || true, meaning: Keeps GitHub from merging it: a person merges it (gh pr merge --disable-auto) }, keepWhenDecided: { value: git diff --quiet FETCH_HEAD -- ":(glob)**/$LOCK" || gh pr merge "$NUMBER" --disable-auto || true, meaning: Keeps GitHub from merging it when a lock of the repository changed: what people decided (git-diff --quiet; a pathspec with the glob magic) }, tokenVariable: { value: GH_TOKEN, meaning: The variable gh reads its token from }, numberVariable: { value: NUMBER, meaning: The variable that holds the pull request's number }, lockVariable: { value: LOCK, meaning: The variable that holds the project's lock }, markerVariable: { value: MARKER, meaning: The variable that holds the mark of the project's review }, markOpen: { value: <!-- The review of, meaning: Opens the mark of a project's review, a comment Markdown does not show }, markClose: { value: -->, meaning: Closes it }, job: { value: ship, meaning: The name of the one job }, delivered: { value: delivered, meaning: The name of the step that uploads what the shipment ships, whose address is recorded after it }, evidence: { value: evidence, meaning: After the shipment's name: the name of the artefact that keeps its evidence }, joint: { value: -, meaning: Between the shipment's name and that word }, space: { value:  , meaning: Separates the words of a command }, quote: { value: ", meaning: Around the person's name, given to the shell as one word }, written: { value: Written by trame ship from the graph, for the shipment, meaning: What the workflow's first comment says }, of: { value: of, meaning: Between the shipment and its project, in that comment }, edit: { value: Do not edit: edit the graph, then ship., meaning: The comment that says where to change it } }
+- Marks: { fetchBase: { value: git fetch --depth=1 origin "$GITHUB_BASE_REF", meaning: Fetches the branch the pull request merges into (git-fetch; GITHUB_BASE_REF, set by Actions on a pull request) }, baseLock: { value: git show "FETCH_HEAD:./$LOCK" > "$LOCK" || rm -f "$LOCK", meaning: Puts the lock of that branch in the project's, or none when it has none (git-show) }, toReview: { value: > "$RUNNER_TEMP/review.md", meaning: After the words that write the review: where it is written }, branchLock: { value: git checkout -- "$LOCK" || rm -f "$LOCK", meaning: Puts the branch's lock back, or none when it has none }, marked: { value: printf '%s\n\n' "$MARKER" | cat - "$RUNNER_TEMP/review.md" > "$RUNNER_TEMP/comment.md", meaning: The comment: the mark of the project's review, then the review }, findComment: { value: id="$(gh api "repos/$GITHUB_REPOSITORY/issues/$NUMBER/comments" --paginate --jq '[.[] | select(.body | startswith(env.MARKER))][0].id // empty')", meaning: The comment of the project's review already written, by its mark (gh api; the REST API's issue comments) }, writeComment: { value: if [ -n "$id" ]; then gh api --method PATCH "repos/$GITHUB_REPOSITORY/issues/comments/$id" -F "body=@$RUNNER_TEMP/comment.md" > /dev/null; else gh pr comment "$NUMBER" --body-file "$RUNNER_TEMP/comment.md"; fi, meaning: Writes it again, or writes it the first time }, keepByHand: { value: gh pr merge "$NUMBER" --disable-auto || true, meaning: Keeps GitHub from merging it: a person merges it (gh pr merge --disable-auto) }, keepWhenDecided: { value: git diff --quiet FETCH_HEAD -- ":(glob)**/$LOCK" || gh pr merge "$NUMBER" --disable-auto || true, meaning: Keeps GitHub from merging it when a lock of the repository changed: what people decided (git-diff --quiet; a pathspec with the glob magic) }, tokenVariable: { value: GH_TOKEN, meaning: The variable gh reads its token from }, numberVariable: { value: NUMBER, meaning: The variable that holds the pull request's number }, lockVariable: { value: LOCK, meaning: The variable that holds the project's lock }, markerVariable: { value: MARKER, meaning: The variable that holds the mark of the project's review }, markOpen: { value: <!-- The review of, meaning: Opens the mark of a project's review, a comment Markdown does not show }, markClose: { value: -->, meaning: Closes it }, job: { value: ship, meaning: The name of the one job }, delivered: { value: delivered, meaning: The name of the step that uploads what the shipment ships, whose address is recorded after it }, evidence: { value: evidence, meaning: After the shipment's name: the name of the artefact that keeps its evidence }, joint: { value: -, meaning: Between the shipment's name and that word }, space: { value:  , meaning: Separates the words of a command }, quote: { value: ", meaning: Around the person's name, given to the shell as one word }, written: { value: Written by trame ship from the graph, for the shipment, meaning: What the workflow's first comment says }, of: { value: of, meaning: Between the shipment and its project, in that comment }, fromArtefact: { value: From the artefact, meaning: Opens the comment that names the nodes the file comes from (ci 0.7.0) }, andSettings: { value: and its settings, meaning: Before the decision of its settings, in that comment }, declaredIn: { value: declared in, meaning: Before the file that declares them, in that comment }, edit: { value: Do not edit: change those nodes, then ship., meaning: The comment that says where to change it }, named: { value: ·, meaning: Between the job and the shipment, in the workflow's name } }
 - Parameters: { standard: github.GitHubActions, yaml: yaml.YamlDocument, npm: npm.Npm, actions: github.PinnedActions, ways: github.MergeWays }
-- Examples: { input: { shipment: Preview, title: A preview, project: apps/poselia, command: ../../trame.sh, ship, Preview, --by, file: .github/workflows/poselia-preview.yml, toRoot: ../.., installs: ., std, apps/poselia, prepares: { dir: std, run: npx playwright install --with-deps chromium }, delivers: { artifact: PageFile, path: apps/poselia/dist/poselia.html }, evidence: apps/poselia/evidence, deployed: { command: ../../trame.sh, evidence, verdict: passed, by: --by, url: --url }, review: { command: ../../trame.sh, view, review, --format, md, lock: trame.lock } }, { on: { manual: true, branches: main }, runsOn: ubuntu-24.04, node: 22, artefacts: { days: 30, evidence: { days: 90 } } }, output: # Written by trame ship from the graph, for the shipment "A preview" of apps/poselia
-# Do not edit: edit the graph, then ship.
+- Examples: { input: { shipment: Preview, title: A preview, project: apps/poselia, command: ../../trame.sh, ship, Preview, --by, file: .github/workflows/poselia-preview.yml, toRoot: ../.., installs: ., std, apps/poselia, prepares: { dir: std, run: npx playwright install --with-deps chromium }, delivers: { artifact: PageFile, path: apps/poselia/dist/poselia.html }, evidence: apps/poselia/evidence, deployed: { command: ../../trame.sh, evidence, verdict: passed, by: --by, url: --url }, review: { command: ../../trame.sh, view, review, --format, md, lock: trame.lock }, from: { artefact: sdlc.TheFile, settings: sdlc.TheSettings, declared: apps/poselia/src/sdlc.ts } }, { on: { manual: true, branches: main }, runsOn: ubuntu-24.04, node: 22, artefacts: { days: 30, evidence: { days: 90 } } }, output: # Written by trame ship from the graph, for the shipment "A preview" of apps/poselia
+# From the artefact sdlc.TheFile and its settings sdlc.TheSettings declared in apps/poselia/src/sdlc.ts
+# Do not edit: change those nodes, then ship.
 name: A preview
 on:
   workflow_dispatch:
@@ -74,8 +75,9 @@ jobs:
           name: Preview-evidence
           path: apps/poselia/evidence
           retention-days: 90
- }, { input: { shipment: Preview, title: A preview, project: ., command: ./trame.sh, ship, Preview, --by, file: .github/workflows/preview.yml, toRoot: ../.., installs: ., prepares: , delivers: , evidence: evidence, deployed: { command: ./trame.sh, evidence, verdict: passed, by: --by, url: --url }, review: { command: ./trame.sh, view, review, --format, md, lock: trame.lock } }, { on: { schedule: 0 6 * * 1 }, runsOn: ubuntu-24.04, node: 22, artefacts: { days: 30 } }, output: # Written by trame ship from the graph, for the shipment "A preview" of .
-# Do not edit: edit the graph, then ship.
+ }, { input: { shipment: Preview, title: A preview, project: ., command: ./trame.sh, ship, Preview, --by, file: .github/workflows/preview.yml, toRoot: ../.., installs: ., prepares: , delivers: , evidence: evidence, deployed: { command: ./trame.sh, evidence, verdict: passed, by: --by, url: --url }, review: { command: ./trame.sh, view, review, --format, md, lock: trame.lock }, from: { artefact: sdlc.TheFile, settings: sdlc.TheSettings, declared: apps/poselia/src/sdlc.ts } }, { on: { schedule: 0 6 * * 1 }, runsOn: ubuntu-24.04, node: 22, artefacts: { days: 30 } }, output: # Written by trame ship from the graph, for the shipment "A preview" of .
+# From the artefact sdlc.TheFile and its settings sdlc.TheSettings declared in apps/poselia/src/sdlc.ts
+# Do not edit: change those nodes, then ship.
 name: A preview
 on:
   schedule:
@@ -94,9 +96,10 @@ jobs:
         working-directory: "."
       - run: "./trame.sh ship Preview --by \"${{ github.actor }}\""
         working-directory: "."
- }, { input: { shipment: IntoMain, title: Into the main branch, project: apps/poselia, command: ../../trame.sh, ship, IntoMain, --by, file: .github/workflows/poselia-merge.yml, toRoot: ../.., installs: ., apps/poselia, prepares: , delivers: , evidence: apps/poselia/evidence, deployed: { command: ../../trame.sh, evidence, verdict: passed, by: --by, url: --url }, review: { command: ../../trame.sh, view, review, --format, md, lock: trame.lock } }, { on: { pullRequests: main }, job: poselia, alsoInstalls: libs/geometry, apps/poselia, runsOn: ubuntu-24.04, node: 22, artefacts: { days: 30 }, pullRequest: { review: true, merge: onceItHoldsUnlessDecided } }, output: # Written by trame ship from the graph, for the shipment "Into the main branch" of apps/poselia
-# Do not edit: edit the graph, then ship.
-name: Into the main branch
+ }, { input: { shipment: IntoMain, title: Into the main branch, project: apps/poselia, command: ../../trame.sh, ship, IntoMain, --by, file: .github/workflows/poselia-merge.yml, toRoot: ../.., installs: ., apps/poselia, prepares: , delivers: , evidence: apps/poselia/evidence, deployed: { command: ../../trame.sh, evidence, verdict: passed, by: --by, url: --url }, review: { command: ../../trame.sh, view, review, --format, md, lock: trame.lock }, from: { artefact: sdlc.TheFile, settings: sdlc.TheSettings, declared: apps/poselia/src/sdlc.ts } }, { on: { pullRequests: main }, job: poselia, alsoInstalls: libs/geometry, apps/poselia, runsOn: ubuntu-24.04, node: 22, artefacts: { days: 30 }, pullRequest: { review: true, merge: onceItHoldsUnlessDecided } }, output: # Written by trame ship from the graph, for the shipment "Into the main branch" of apps/poselia
+# From the artefact sdlc.TheFile and its settings sdlc.TheSettings declared in apps/poselia/src/sdlc.ts
+# Do not edit: change those nodes, then ship.
+name: "poselia · Into the main branch"
 on:
   pull_request:
     branches:
@@ -189,6 +192,12 @@ Goal · `OneWriterPerPlace`
 
 - Owner: trame
 
+### A repository is set as its graph decides
+
+Goal · `RepositoryAsDecided`
+
+- Owner: trame
+
 ### A shipment runs elsewhere as it runs here
 
 Goal · `RunsElsewhere`
@@ -278,8 +287,8 @@ Standard · `GitHubRepositoryApi`
 - Maintained by: trame
 - Source: GitHub REST API: Repositories (Update a repository), Rules (Create, Get and Update a repository ruleset), Pages (Create a GitHub Pages site, build_type workflow); GitHub CLI manual: gh api (--method, --input, --jq, -f)
 - Address: https://docs.github.com/en/rest/repos/rules
-- Constants: { gh: { value: gh api, meaning: Calls GitHub's API, with the token of the person who runs it }, method: { value: --method, meaning: The method of the call }, patch: { value: PATCH, meaning: Changes what it names }, post: { value: POST, meaning: Creates }, put: { value: PUT, meaning: Replaces }, input: { value: --input -, meaning: The body of the call, read from what the command is given }, field: { value: -f, meaning: A field of the body, as a text }, jq: { value: --jq, meaning: What gh keeps of the answer, a jq filter }, repos: { value: repos/, meaning: Before the repository, owner/name }, rulesets: { value: /rulesets, meaning: After it: its rulesets }, pages: { value: /pages, meaning: After it: its pages }, separator: { value: /, meaning: Between the steps of a path }, allowMerge: { value: allow_merge_commit, meaning: Whether a pull request may be merged with a merge commit }, allowSquash: { value: allow_squash_merge, meaning: Whether it may be squashed }, allowRebase: { value: allow_rebase_merge, meaning: Whether it may be rebased }, allowAutoMerge: { value: allow_auto_merge, meaning: Whether GitHub may merge it once it holds, when asked }, deleteBranch: { value: delete_branch_on_merge, meaning: Whether its branch is deleted once merged }, name: { value: name, meaning: The name of a ruleset }, target: { value: target, meaning: What a ruleset protects }, branchTarget: { value: branch, meaning: Branches }, enforcement: { value: enforcement, meaning: Whether a ruleset applies }, active: { value: active, meaning: It applies }, conditions: { value: conditions, meaning: Which branches it protects }, refName: { value: ref_name, meaning: By their names }, include: { value: include, meaning: Those it protects }, exclude: { value: exclude, meaning: Those it leaves out }, heads: { value: refs/heads/, meaning: Before a branch's name }, rules: { value: rules, meaning: Its rules }, type: { value: type, meaning: The kind of a rule }, parameters: { value: parameters, meaning: What a rule is given }, deletion: { value: deletion, meaning: The branch is never deleted }, nonFastForward: { value: non_fast_forward, meaning: The branch is never rewritten }, pullRequest: { value: pull_request, meaning: The branch receives nothing but pull requests }, approvals: { value: required_approving_review_count, meaning: How many approvals a pull request needs }, dismissStale: { value: dismiss_stale_reviews_on_push, meaning: Whether a push dismisses the approvals given }, codeOwners: { value: require_code_owner_review, meaning: Whether the owners of the files changed must approve }, lastPush: { value: require_last_push_approval, meaning: Whether the last push needs an approval of its own }, threads: { value: required_review_thread_resolution, meaning: Whether every thread of the review must be resolved }, methods: { value: allowed_merge_methods, meaning: How a pull request may be merged }, statusChecks: { value: required_status_checks, meaning: The checks a pull request must pass }, strict: { value: strict_required_status_checks_policy, meaning: Whether the branch must be up to date with the main one first }, context: { value: context, meaning: A check, by the name of the job that runs it }, buildType: { value: build_type=workflow, meaning: Pages built and published by a workflow }, named: { value: .[] | select(.name == , meaning: Opens the jq filter of the ruleset of a name, given as a JSON text }, identified: { value: ) | .id, meaning: Closes it: the ruleset's identifier } }
-- Serves: Each place is a writer
+- Constants: { program: { value: gh, meaning: GitHub's command line, with the token of the person who runs it }, api: { value: api, meaning: Calls GitHub's API }, method: { value: --method, meaning: The method of the call }, patch: { value: PATCH, meaning: Changes what it names }, post: { value: POST, meaning: Creates }, put: { value: PUT, meaning: Replaces }, input: { value: --input, meaning: The body of the call, read from a file }, standardInput: { value: -, meaning: As a file: what the command is given }, repos: { value: repos/, meaning: Before the repository, owner/name }, rulesets: { value: /rulesets, meaning: After it: its rulesets }, branchRules: { value: /rules/branches/, meaning: After it, before a branch: the rules in force on the branch }, pages: { value: /pages, meaning: After it: its pages }, separator: { value: /, meaning: Between the steps of a path }, allowMerge: { value: allow_merge_commit, meaning: Whether a pull request may be merged with a merge commit }, allowSquash: { value: allow_squash_merge, meaning: Whether it may be squashed }, allowRebase: { value: allow_rebase_merge, meaning: Whether it may be rebased }, allowAutoMerge: { value: allow_auto_merge, meaning: Whether GitHub may merge it once it holds, when asked }, deleteBranch: { value: delete_branch_on_merge, meaning: Whether its branch is deleted once merged }, name: { value: name, meaning: The name of a ruleset }, target: { value: target, meaning: What a ruleset protects }, branchTarget: { value: branch, meaning: Branches }, enforcement: { value: enforcement, meaning: Whether a ruleset applies }, active: { value: active, meaning: It applies }, conditions: { value: conditions, meaning: Which branches it protects }, refName: { value: ref_name, meaning: By their names }, include: { value: include, meaning: Those it protects }, exclude: { value: exclude, meaning: Those it leaves out }, heads: { value: refs/heads/, meaning: Before a branch's name }, rules: { value: rules, meaning: Its rules }, type: { value: type, meaning: The kind of a rule }, parameters: { value: parameters, meaning: What a rule is given }, deletion: { value: deletion, meaning: The branch is never deleted }, nonFastForward: { value: non_fast_forward, meaning: The branch is never rewritten }, pullRequest: { value: pull_request, meaning: The branch receives nothing but pull requests }, approvals: { value: required_approving_review_count, meaning: How many approvals a pull request needs }, dismissStale: { value: dismiss_stale_reviews_on_push, meaning: Whether a push dismisses the approvals given }, codeOwners: { value: require_code_owner_review, meaning: Whether the owners of the files changed must approve }, lastPush: { value: require_last_push_approval, meaning: Whether the last push needs an approval of its own }, threads: { value: required_review_thread_resolution, meaning: Whether every thread of the review must be resolved }, methods: { value: allowed_merge_methods, meaning: How a pull request may be merged }, statusChecks: { value: required_status_checks, meaning: The checks a pull request must pass }, strict: { value: strict_required_status_checks_policy, meaning: Whether the branch must be up to date with the main one first }, context: { value: context, meaning: A check, by the name of the job that runs it }, buildType: { value: build_type, meaning: How the pages are built }, workflow: { value: workflow, meaning: By a workflow }, id: { value: id, meaning: The identifier of a ruleset } }
+- Serves: A repository is set as its graph decides
 
 ### How GitHub merges a pull request
 
@@ -287,87 +296,29 @@ Vocabulary · `MergeMethods`
 
 - Owner: trame
 - Words: { merge: A merge commit: each commit of the branch kept, squash: One commit for the branch, rebase: Each commit replayed on the main branch }
-- Serves: Each place is a writer
+- Serves: A repository is set as its graph decides
 
-### The settings of a repository
+### A repository on GitHub
 
-Syntax element · `GitHubRepository` · **held**
+Port · `RepositoryApi`
 
 - Owner: trame
-- Section: Repository rulesets: rules deletion, non_fast_forward, pull_request, required_status_checks
-- Address: https://docs.github.com/en/rest/repos/rules#create-a-repository-ruleset
-- Marks: { repository: { value: repo, meaning: The variable that holds the repository, owner/name }, usage: { value: give the repository, as owner/name, meaning: What the script says when it is run without one }, found: { value: id, meaning: The variable that holds the identifier of the ruleset already there }, written: { value: Written by trame ship from the graph: the settings of the repository, for the branch, meaning: What the script's first comment says }, run: { value: Run by an administrator: bash <this script> owner/name, meaning: Who runs it, and how }, edit: { value: Do not edit: edit the graph, then ship., meaning: The comment that says where to change it }, document: { value: <<'JSON', meaning: Opens the body of a call, written as it is until its end (a here-document) }, end: { value: JSON, meaning: Ends it }, quiet: { value: > /dev/null, meaning: Keeps the answer of a call off the terminal }, test: { value: if [ -n, meaning: Opens the test of a text that is not empty }, then: { value: ]; then, meaning: Then }, otherwise: { value: ; else, meaning: Otherwise }, done: { value: ; fi, meaning: Ends the test }, or: { value: ||, meaning: When the call before fails }, capture: { value: "$(, meaning: Opens a command whose output is kept, as one word }, captured: { value: )", meaning: Closes it }, indentation: { value: 2, meaning: The spaces of a level of the body }, filter: { value: ', meaning: Around the jq filter, which the shell gives as it is }, approvals: { value: 0, meaning: The approvals a pull request needs: none, the checks hold it, and a person merges what people decided } }
-- Parameters: { standard: repository.GitHubRepositoryApi, sh: shell.BashScripts, methods: repository.MergeMethods }
-- Examples: { input: none, { branch: main, checks: trame, poselia, method: merge, autoMerge: true, pages: true }, output: #!/usr/bin/env bash
-# Written by trame ship from the graph: the settings of the repository, for the branch main
-# Run by an administrator: bash <this script> owner/name
-# Do not edit: edit the graph, then ship.
-set -euo pipefail
-repo="${1:?give the repository, as owner/name}"
-gh api --method PATCH "repos/$repo" --input - > /dev/null <<'JSON'
-{
-  "allow_merge_commit": true,
-  "allow_squash_merge": false,
-  "allow_rebase_merge": false,
-  "allow_auto_merge": true,
-  "delete_branch_on_merge": true
-}
-JSON
-id="$(gh api "repos/$repo/rulesets" --jq '.[] | select(.name == "main") | .id')"
-if [ -n "$id" ]; then gh api --method PUT "repos/$repo/rulesets/$id" --input - > /dev/null ; else gh api --method POST "repos/$repo/rulesets" --input - > /dev/null ; fi <<'JSON'
-{
-  "name": "main",
-  "target": "branch",
-  "enforcement": "active",
-  "conditions": {
-    "ref_name": {
-      "include": [
-        "refs/heads/main"
-      ],
-      "exclude": []
-    }
-  },
-  "rules": [
-    {
-      "type": "deletion"
-    },
-    {
-      "type": "non_fast_forward"
-    },
-    {
-      "type": "pull_request",
-      "parameters": {
-        "required_approving_review_count": 0,
-        "dismiss_stale_reviews_on_push": false,
-        "require_code_owner_review": false,
-        "require_last_push_approval": false,
-        "required_review_thread_resolution": false,
-        "allowed_merge_methods": [
-          "merge"
-        ]
-      }
-    },
-    {
-      "type": "required_status_checks",
-      "parameters": {
-        "strict_required_status_checks_policy": false,
-        "required_status_checks": [
-          {
-            "context": "trame"
-          },
-          {
-            "context": "poselia"
-          }
-        ]
-      }
-    }
-  ]
-}
-JSON
-gh api --method POST "repos/$repo/pages" -f build_type=workflow > /dev/null || gh api --method PUT "repos/$repo/pages" -f build_type=workflow > /dev/null
- }
-- Defined by: GitHub's API for a repository
-- Depends on: GitHub's API for a repository, Bash scripts, How GitHub merges a pull request
+- Declared effects: { apply: process, network, asynchronous, read: process, network, asynchronous }
+
+### The repositories a scenario keeps in memory.
+
+Port · `RepositoryKept`
+
+- Owner: trame
+- Declared effects: 
+
+### A repository kept in memory
+
+Function · `RepositoryInMemory` · **unknown**
+
+- Owner: trame
+- Serves: A repository is set as its graph decides
+- Implements: A repository on GitHub, The repositories a scenario keeps in memory.
 
 ## Continuous integration · SDLC
 
@@ -381,7 +332,7 @@ Decision · `PullRequestsOnGitHub`
 
 ### The pull requests' workflow
 
-Artefact · `PullRequestWorkflow` · **held**
+Artefact · `PullRequestWorkflow` · **unknown**
 
 - Owner: trame
 - Path: ../.github/workflows/ci-pull-request.yml
@@ -392,7 +343,7 @@ Artefact · `PullRequestWorkflow` · **held**
 
 ### The library of writers
 
-Artefact · `TheLibrary` · **held**
+Artefact · `TheLibrary` · **unknown**
 
 - Owner: trame
 - Path: src
@@ -400,7 +351,7 @@ Artefact · `TheLibrary` · **held**
 
 ### The next version
 
-Shipment · `NextVersion` · **held**
+Shipment · `NextVersion` · **unknown**
 
 - Owner: trame
 - Target: version
@@ -409,7 +360,7 @@ Shipment · `NextVersion` · **held**
 
 ### The files that run it elsewhere
 
-Shipment · `RunnersWritten` · **held**
+Shipment · `RunnersWritten` · **unknown**
 
 - Owner: trame
 - Target: repository
@@ -435,11 +386,12 @@ Syntax element · `ShellScript` · **held**
 - Owner: trame
 - Section: § 3.2.5 Compound Commands; § 3.5.3 Shell Parameter Expansion; § 4.3.1 The Set Builtin
 - Address: https://www.gnu.org/software/bash/manual/bash.html#Shell-Parameter-Expansion
-- Marks: { person: { value: by, meaning: The variable that holds the name of the person who ships }, usage: { value: give the name of the person who ships, meaning: What the script says when it is run without a name }, written: { value: Written by trame ship from the graph, for the shipment, meaning: What the script's first comment says }, of: { value: of, meaning: Between the shipment and its project, in that comment }, edit: { value: Do not edit: edit the graph, then ship., meaning: The comment that says where to change it } }
+- Marks: { person: { value: by, meaning: The variable that holds the name of the person who ships }, usage: { value: give the name of the person who ships, meaning: What the script says when it is run without a name }, written: { value: Written by trame ship from the graph, for the shipment, meaning: What the script's first comment says }, of: { value: of, meaning: Between the shipment and its project, in that comment }, fromArtefact: { value: From the artefact, meaning: Opens the comment that names the nodes the file comes from (ci 0.7.0) }, andSettings: { value: and its settings, meaning: Before the decision of its settings, in that comment }, declaredIn: { value: declared in, meaning: Before the file that declares them, in that comment }, edit: { value: Do not edit: change those nodes, then ship., meaning: The comment that says where to change it } }
 - Parameters: { standard: shell.BashScripts, npm: npm.Npm }
-- Examples: { input: { shipment: Preview, title: A preview, project: apps/poselia, command: ../../trame.sh, ship, Preview, --by, file: apps/poselia/scripts/ship-preview.sh, toRoot: ../../.., installs: ., std, apps/poselia, prepares: { dir: std, run: npx playwright install --with-deps chromium }, delivers: { artifact: PageFile, path: apps/poselia/dist/poselia.html }, evidence: apps/poselia/evidence, deployed: { command: ../../trame.sh, evidence, verdict: passed, by: --by, url: --url }, review: { command: ../../trame.sh, view, review, --format, md, lock: trame.lock } }, output: #!/usr/bin/env bash
+- Examples: { input: { shipment: Preview, title: A preview, project: apps/poselia, command: ../../trame.sh, ship, Preview, --by, file: apps/poselia/scripts/ship-preview.sh, toRoot: ../../.., installs: ., std, apps/poselia, prepares: { dir: std, run: npx playwright install --with-deps chromium }, delivers: { artifact: PageFile, path: apps/poselia/dist/poselia.html }, evidence: apps/poselia/evidence, deployed: { command: ../../trame.sh, evidence, verdict: passed, by: --by, url: --url }, review: { command: ../../trame.sh, view, review, --format, md, lock: trame.lock }, from: { artefact: sdlc.TheFile, settings: sdlc.TheSettings, declared: apps/poselia/src/sdlc.ts } }, output: #!/usr/bin/env bash
 # Written by trame ship from the graph, for the shipment "A preview" of apps/poselia
-# Do not edit: edit the graph, then ship.
+# From the artefact sdlc.TheFile and its settings sdlc.TheSettings declared in apps/poselia/src/sdlc.ts
+# Do not edit: change those nodes, then ship.
 set -euo pipefail
 by="${1:?give the name of the person who ships}"
 cd "$(dirname "$0")/../../.."

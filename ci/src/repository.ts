@@ -1,17 +1,17 @@
 /** Continuous integration · The repository on GitHub */
 
 import { standard } from "#trame/kinds/standard"
-import { syntax } from "#trame/kinds/syntax"
 import { vocabulary } from "#trame/kinds/vocabulary"
+import { port } from "#trame/kinds/port"
+import { fn } from "#trame/kinds/function"
 import type { ProvidedBy } from "#trame/kernel"
-import { OneWriterPerPlace } from "./product"
-import { BashScripts } from "./shell"
+import { RepositoryAsDecided } from "./product"
 
 // The settings of a repository on GitHub, as a project's graph decides them (D1): its main branch receives nothing but
 // pull requests, which pass the checks the graph names; GitHub may merge one once it holds, by the method the graph
-// chooses; its pages are published by a workflow. A writer of this module writes them as a script of calls to GitHub's
-// API, which an administrator runs: nothing changes a repository's settings but a person who may, and the script says
-// what the graph decided.
+// chooses; its pages are published by a workflow. A project applies them with a program of its SDLC, through the port
+// RepositoryApi, and reads them back (ci 0.7.0): nothing changes a repository's settings but a person who may, by trame
+// ship, and what the repository holds is compared with what the graph decides.
 
 /**
  * How GitHub merges a pull request
@@ -20,7 +20,7 @@ import { BashScripts } from "./shell"
  */
 export const MergeMethods = vocabulary({
   owner: "trame",
-  serves: [OneWriterPerPlace],
+  serves: [RepositoryAsDecided],
   words: { merge: "A merge commit: each commit of the branch kept", squash: "One commit for the branch", rebase: "Each commit replayed on the main branch" },
 })
 export type MergeMethod = ProvidedBy<typeof MergeMethods>[number]
@@ -47,20 +47,21 @@ export interface RepositorySettings {
  */
 export const GitHubRepositoryApi = standard({
   owner: "trame",
-  serves: [OneWriterPerPlace],
+  serves: [RepositoryAsDecided],
   source: "GitHub REST API: Repositories (Update a repository), Rules (Create, Get and Update a repository ruleset), Pages (Create a GitHub Pages site, build_type workflow); GitHub CLI manual: gh api (--method, --input, --jq, -f)",
   url: "https://docs.github.com/en/rest/repos/rules",
   constants: {
-    gh: { value: "gh api", meaning: "Calls GitHub's API, with the token of the person who runs it" },
+    program: { value: "gh", meaning: "GitHub's command line, with the token of the person who runs it" },
+    api: { value: "api", meaning: "Calls GitHub's API" },
     method: { value: "--method", meaning: "The method of the call" },
     patch: { value: "PATCH", meaning: "Changes what it names" },
     post: { value: "POST", meaning: "Creates" },
     put: { value: "PUT", meaning: "Replaces" },
-    input: { value: "--input -", meaning: "The body of the call, read from what the command is given" },
-    field: { value: "-f", meaning: "A field of the body, as a text" },
-    jq: { value: "--jq", meaning: "What gh keeps of the answer, a jq filter" },
+    input: { value: "--input", meaning: "The body of the call, read from a file" },
+    standardInput: { value: "-", meaning: "As a file: what the command is given" },
     repos: { value: "repos/", meaning: "Before the repository, owner/name" },
     rulesets: { value: "/rulesets", meaning: "After it: its rulesets" },
+    branchRules: { value: "/rules/branches/", meaning: "After it, before a branch: the rules in force on the branch" },
     pages: { value: "/pages", meaning: "After it: its pages" },
     separator: { value: "/", meaning: "Between the steps of a path" },
     allowMerge: { value: "allow_merge_commit", meaning: "Whether a pull request may be merged with a merge commit" },
@@ -93,174 +94,78 @@ export const GitHubRepositoryApi = standard({
     statusChecks: { value: "required_status_checks", meaning: "The checks a pull request must pass" },
     strict: { value: "strict_required_status_checks_policy", meaning: "Whether the branch must be up to date with the main one first" },
     context: { value: "context", meaning: "A check, by the name of the job that runs it" },
-    buildType: { value: "build_type=workflow", meaning: "Pages built and published by a workflow" },
-    named: { value: ".[] | select(.name == ", meaning: "Opens the jq filter of the ruleset of a name, given as a JSON text" },
-    identified: { value: ") | .id", meaning: "Closes it: the ruleset's identifier" },
+    buildType: { value: "build_type", meaning: "How the pages are built" },
+    workflow: { value: "workflow", meaning: "By a workflow" },
+    id: { value: "id", meaning: "The identifier of a ruleset" },
   },
 })
 
+/** A repository's settings as they are, read back: what a project's settings can be compared with. */
+export interface RepositoryState {
+  /** The methods a pull request may be merged by. */
+  readonly methods: readonly MergeMethod[]
+  /** Whether GitHub may merge a pull request once it holds. */
+  readonly autoMerge: boolean
+  /** Whether the branch is never deleted nor rewritten, and reached only by a pull request. */
+  readonly protected: boolean
+  /** The checks a pull request into the branch must pass. */
+  readonly checks: readonly string[]
+  /** Whether its pages are built by a workflow; nothing when it was not asked. */
+  readonly pages?: boolean
+}
+
+/** What a repository on GitHub is asked: to take the settings a project decides, and what its settings are. */
+export interface Repository {
+  /** Sets the repository (owner/name) as the settings say: its merge methods and automatic merge, the ruleset of the branch, its pages. */
+  apply(repository: string, settings: RepositorySettings): Promise<void>
+  /** The repository's settings as they are, for the branch; its pages when asked. */
+  read(repository: string, branch: string, pages: boolean): Promise<RepositoryState>
+}
+
 /**
- * The settings of a repository
- * The script an administrator of the repository runs, giving it as owner/name: it sets the merge methods (the one the
- * graph chooses, alone), whether GitHub merges a pull request once it holds and deletes its branch; writes the ruleset of
- * the main branch (created, or replaced when one of its name exists): never deleted nor rewritten, reached only by a pull
- * request that passes the checks the graph names, merged by that method; and has the pages built by a workflow when the
- * graph says so. It stops at the first call that fails.
+ * A repository on GitHub
+ * Applies a project's settings to a repository and reads them back, with the rights of whoever asks: only an
+ * administrator of the repository may apply them.
  */
-export const GitHubRepository = syntax({
+export const RepositoryApi = port<Repository>({
   owner: "trame",
-  standard: GitHubRepositoryApi,
-  section: "Repository rulesets: rules deletion, non_fast_forward, pull_request, required_status_checks",
-  url: "https://docs.github.com/en/rest/repos/rules#create-a-repository-ruleset",
-  constants: {
-    repository: { value: "repo", meaning: "The variable that holds the repository, owner/name" },
-    usage: { value: "give the repository, as owner/name", meaning: "What the script says when it is run without one" },
-    found: { value: "id", meaning: "The variable that holds the identifier of the ruleset already there" },
-    written: { value: "Written by trame ship from the graph: the settings of the repository, for the branch", meaning: "What the script's first comment says" },
-    run: { value: "Run by an administrator: bash <this script> owner/name", meaning: "Who runs it, and how" },
-    edit: { value: "Do not edit: edit the graph, then ship.", meaning: "The comment that says where to change it" },
-    document: { value: "<<'JSON'", meaning: "Opens the body of a call, written as it is until its end (a here-document)" },
-    end: { value: "JSON", meaning: "Ends it" },
-    quiet: { value: "> /dev/null", meaning: "Keeps the answer of a call off the terminal" },
-    test: { value: "if [ -n", meaning: "Opens the test of a text that is not empty" },
-    then: { value: "]; then", meaning: "Then" },
-    otherwise: { value: "; else", meaning: "Otherwise" },
-    done: { value: "; fi", meaning: "Ends the test" },
-    or: { value: "||", meaning: "When the call before fails" },
-    capture: { value: "\"$(", meaning: "Opens a command whose output is kept, as one word" },
-    captured: { value: ")\"", meaning: "Closes it" },
-    indentation: { value: 2, meaning: "The spaces of a level of the body" },
-    filter: { value: "'", meaning: "Around the jq filter, which the shell gives as it is" },
-    approvals: { value: 0, meaning: "The approvals a pull request needs: none, the checks hold it, and a person merges what people decided" },
-  },
-  deps: { sh: BashScripts, methods: MergeMethods },
-  write: ({
-    standard: api, sh, methods, repository, usage, found, written, run, edit, document, end, quiet, test, then, otherwise, done, or,
-    capture, captured, indentation, filter, approvals,
-  }) => (_plan: unknown, settings: RepositorySettings): string => {
-    const words = (ws: readonly string[]) => ws.join(sh.space)
-    const quoted = (w: string) => sh.quote + w + sh.quote
-    const repo = sh.dollar + repository
-    const path = (after = String()) => quoted(api.repos + repo + after)
-    const call = (method: string, at: string, ...rest: string[]) => words([api.gh, api.method, method, at, ...rest])
-    const body = (value: unknown) => JSON.stringify(value, null, indentation)
-    const [merge, squash, rebase] = methods
-    const repositoryBody = {
-      [api.allowMerge]: settings.method === merge, [api.allowSquash]: settings.method === squash, [api.allowRebase]: settings.method === rebase,
-      [api.allowAutoMerge]: settings.autoMerge, [api.deleteBranch]: true,
+  declaredEffects: { apply: ["process", "network", "asynchronous"], read: ["process", "network", "asynchronous"] },
+})
+
+/** What a scenario does with a repository kept in memory: sets it as someone changed it by hand, reads what was applied. */
+export interface RepositoryScript {
+  /** The repository as it is now, as someone left it. */
+  set(repository: string, state: RepositoryState): void
+  /** The settings applied, in their order. */
+  applied(): readonly { repository: string; settings: RepositorySettings }[]
+}
+
+/** The repositories a scenario keeps in memory. */
+export const RepositoryKept = port<RepositoryScript>({ owner: "trame", declaredEffects: [] })
+
+/**
+ * A repository kept in memory
+ * In a scenario, applying settings keeps them and makes the repository so: one method, the automatic merge as said,
+ * the branch protected, the checks named, the pages as said; reading gives back what the repository is, protected by
+ * nothing until something was applied or set.
+ */
+export const RepositoryInMemory = fn({
+  owner: "trame", implements: [RepositoryApi, RepositoryKept], serves: [RepositoryAsDecided],
+  body: () => {
+    const states = new Map<string, RepositoryState>()
+    const applied: { repository: string; settings: RepositorySettings }[] = []
+    const none: RepositoryState = { methods: [], autoMerge: false, protected: false, checks: [] }
+    return {
+      apply: async (repository: string, settings: RepositorySettings) => {
+        applied.push({ repository, settings })
+        states.set(repository, { methods: [settings.method], autoMerge: settings.autoMerge, protected: true, checks: settings.checks, pages: settings.pages })
+      },
+      read: async (repository: string, _branch: string, pages: boolean) => {
+        const { pages: built, ...state } = states.get(repository) ?? none
+        return pages ? { ...state, pages: built === true } : state
+      },
+      set: (repository: string, state: RepositoryState) => void states.set(repository, state),
+      applied: () => applied,
     }
-    const rulesetBody = {
-      [api.name]: settings.branch,
-      [api.target]: api.branchTarget,
-      [api.enforcement]: api.active,
-      [api.conditions]: { [api.refName]: { [api.include]: [api.heads + settings.branch], [api.exclude]: [] } },
-      [api.rules]: [
-        { [api.type]: api.deletion },
-        { [api.type]: api.nonFastForward },
-        { [api.type]: api.pullRequest, [api.parameters]: {
-          [api.approvals]: approvals, [api.dismissStale]: false, [api.codeOwners]: false, [api.lastPush]: false,
-          [api.threads]: false, [api.methods]: [settings.method],
-        } },
-        { [api.type]: api.statusChecks, [api.parameters]: {
-          [api.strict]: false, [api.statusChecks]: settings.checks.map((c) => ({ [api.context]: c })),
-        } },
-      ],
-    }
-    const rulesets = path(api.rulesets)
-    return [
-      sh.interpreter,
-      words([sh.comment, written, settings.branch]),
-      words([sh.comment, run]),
-      words([sh.comment, edit]),
-      sh.strict,
-      repository + sh.assign + quoted(sh.required + usage + sh.closeBrace),
-      words([call(api.patch, path(), api.input), quiet, document]),
-      body(repositoryBody),
-      end,
-      found + sh.assign + capture + words([api.gh, rulesets, api.jq, filter + api.named + JSON.stringify(settings.branch) + api.identified + filter]) + captured,
-      words([test, quoted(sh.dollar + found), then, call(api.put, path(api.rulesets + api.separator + sh.dollar + found), api.input), quiet,
-        otherwise, call(api.post, rulesets, api.input), quiet, done, document]),
-      body(rulesetBody),
-      end,
-      ...(settings.pages ? [words([call(api.post, path(api.pages), api.field, api.buildType), quiet, or, call(api.put, path(api.pages), api.field, api.buildType), quiet])] : []),
-    ].join(sh.endOfLine) + sh.endOfLine
   },
-  examples: [
-    {
-      input: [
-        undefined,
-        { branch: "main", checks: ["trame", "poselia"], method: "merge", autoMerge: true, pages: true },
-      ],
-      output: [
-        "#!/usr/bin/env bash",
-        "# Written by trame ship from the graph: the settings of the repository, for the branch main",
-        "# Run by an administrator: bash <this script> owner/name",
-        "# Do not edit: edit the graph, then ship.",
-        "set -euo pipefail",
-        "repo=\"${1:?give the repository, as owner/name}\"",
-        "gh api --method PATCH \"repos/$repo\" --input - > /dev/null <<'JSON'",
-        "{",
-        "  \"allow_merge_commit\": true,",
-        "  \"allow_squash_merge\": false,",
-        "  \"allow_rebase_merge\": false,",
-        "  \"allow_auto_merge\": true,",
-        "  \"delete_branch_on_merge\": true",
-        "}",
-        "JSON",
-        "id=\"$(gh api \"repos/$repo/rulesets\" --jq '.[] | select(.name == \"main\") | .id')\"",
-        "if [ -n \"$id\" ]; then gh api --method PUT \"repos/$repo/rulesets/$id\" --input - > /dev/null ; else gh api --method POST \"repos/$repo/rulesets\" --input - > /dev/null ; fi <<'JSON'",
-        "{",
-        "  \"name\": \"main\",",
-        "  \"target\": \"branch\",",
-        "  \"enforcement\": \"active\",",
-        "  \"conditions\": {",
-        "    \"ref_name\": {",
-        "      \"include\": [",
-        "        \"refs/heads/main\"",
-        "      ],",
-        "      \"exclude\": []",
-        "    }",
-        "  },",
-        "  \"rules\": [",
-        "    {",
-        "      \"type\": \"deletion\"",
-        "    },",
-        "    {",
-        "      \"type\": \"non_fast_forward\"",
-        "    },",
-        "    {",
-        "      \"type\": \"pull_request\",",
-        "      \"parameters\": {",
-        "        \"required_approving_review_count\": 0,",
-        "        \"dismiss_stale_reviews_on_push\": false,",
-        "        \"require_code_owner_review\": false,",
-        "        \"require_last_push_approval\": false,",
-        "        \"required_review_thread_resolution\": false,",
-        "        \"allowed_merge_methods\": [",
-        "          \"merge\"",
-        "        ]",
-        "      }",
-        "    },",
-        "    {",
-        "      \"type\": \"required_status_checks\",",
-        "      \"parameters\": {",
-        "        \"strict_required_status_checks_policy\": false,",
-        "        \"required_status_checks\": [",
-        "          {",
-        "            \"context\": \"trame\"",
-        "          },",
-        "          {",
-        "            \"context\": \"poselia\"",
-        "          }",
-        "        ]",
-        "      }",
-        "    }",
-        "  ]",
-        "}",
-        "JSON",
-        "gh api --method POST \"repos/$repo/pages\" -f build_type=workflow > /dev/null || gh api --method PUT \"repos/$repo/pages\" -f build_type=workflow > /dev/null",
-        "",
-      ].join("\n"),
-    },
-  ],
 })

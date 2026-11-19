@@ -170,11 +170,15 @@ export const GitHubWorkflow = syntax({
     quote: { value: "\"", meaning: "Around the person's name, given to the shell as one word" },
     written: { value: "Written by trame ship from the graph, for the shipment", meaning: "What the workflow's first comment says" },
     of: { value: "of", meaning: "Between the shipment and its project, in that comment" },
-    edit: { value: "Do not edit: edit the graph, then ship.", meaning: "The comment that says where to change it" },
+    fromArtefact: { value: "From the artefact", meaning: "Opens the comment that names the nodes the file comes from (ci 0.7.0)" },
+    andSettings: { value: "and its settings", meaning: "Before the decision of its settings, in that comment" },
+    declaredIn: { value: "declared in", meaning: "Before the file that declares them, in that comment" },
+    edit: { value: "Do not edit: change those nodes, then ship.", meaning: "The comment that says where to change it" },
+    named: { value: "·", meaning: "Between the job and the shipment, in the workflow's name" },
   },
   deps: { yaml: YamlDocument, npm: Npm, actions: PinnedActions, ways: MergeWays },
   write: ({
-    standard: gh, job, delivered, evidence, joint, space, quote, written, of, edit, yaml, npm, actions, ways,
+    standard: gh, job, delivered, evidence, joint, space, quote, written, of, fromArtefact, andSettings, declaredIn, edit, named, yaml, npm, actions, ways,
     fetchBase, baseLock, toReview, branchLock, marked, findComment, writeComment, keepByHand, keepWhenDecided,
     tokenVariable, numberVariable, lockVariable, markerVariable, markOpen, markClose,
   }) => (plan: RunPlan, settings: WorkflowSettings): string => {
@@ -228,8 +232,14 @@ export const GitHubWorkflow = syntax({
         [gh.name, text([plan.shipment, evidence].join(joint))], [gh.path, text(plan.evidence)], [gh.retentionDays, { number: e!.days }],
       ] }])),
     ]
-    return yaml([[written, JSON.stringify(plan.title), of, plan.project].join(space), edit], { map: [
-      [gh.name, text(plan.title)],
+    // What the file comes from: the artefact, the decision of its settings, the file that declares them (ci 0.7.0).
+    const origin = [
+      fromArtefact, plan.from.artefact, ...(plan.from.settings ? [andSettings, plan.from.settings] : []),
+      ...(plan.from.declared ? [declaredIn, plan.from.declared] : []),
+    ].join(space)
+    return yaml([[written, JSON.stringify(plan.title), of, plan.project].join(space), origin, edit], { map: [
+      // Named by its job when it has one: several projects' workflows run shipments of the same title.
+      [gh.name, text(settings.job ? [settings.job, named, plan.title].join(space) : plan.title)],
       [gh.on, { map: on }],
       [gh.permissions, { map: [[gh.contents, text(gh.read)], ...(pr ? [[gh.pullRequests, text(gh.write)] as const] : [])] }],
       [gh.jobs, { map: [[settings.job ?? job, { map: [[gh.runsOn, text(settings.runsOn)], [gh.steps, { list: steps }]] }]] }],
@@ -245,12 +255,14 @@ export const GitHubWorkflow = syntax({
           delivers: [{ artifact: "PageFile", path: "apps/poselia/dist/poselia.html" }], evidence: "apps/poselia/evidence",
           deployed: { command: ["../../trame.sh", "evidence"], verdict: "passed", by: "--by", url: "--url" },
           review: { command: ["../../trame.sh", "view", "review", "--format", "md"], lock: "trame.lock" },
+          from: { artefact: "sdlc.TheFile", settings: "sdlc.TheSettings", declared: "apps/poselia/src/sdlc.ts" },
         },
         { on: { manual: true, branches: ["main"] }, runsOn: "ubuntu-24.04", node: 22, artefacts: { days: 30, evidence: { days: 90 } } },
       ],
       output: [
         "# Written by trame ship from the graph, for the shipment \"A preview\" of apps/poselia",
-        "# Do not edit: edit the graph, then ship.",
+        "# From the artefact sdlc.TheFile and its settings sdlc.TheSettings declared in apps/poselia/src/sdlc.ts",
+        "# Do not edit: change those nodes, then ship.",
         "name: A preview",
         "on:",
         "  workflow_dispatch:",
@@ -302,12 +314,14 @@ export const GitHubWorkflow = syntax({
           file: ".github/workflows/preview.yml", toRoot: "../..", installs: ["."], prepares: [], delivers: [], evidence: "evidence",
           deployed: { command: ["./trame.sh", "evidence"], verdict: "passed", by: "--by", url: "--url" },
           review: { command: ["./trame.sh", "view", "review", "--format", "md"], lock: "trame.lock" },
+          from: { artefact: "sdlc.TheFile", settings: "sdlc.TheSettings", declared: "apps/poselia/src/sdlc.ts" },
         },
         { on: { schedule: "0 6 * * 1" }, runsOn: "ubuntu-24.04", node: 22, artefacts: { days: 30 } },
       ],
       output: [
         "# Written by trame ship from the graph, for the shipment \"A preview\" of .",
-        "# Do not edit: edit the graph, then ship.",
+        "# From the artefact sdlc.TheFile and its settings sdlc.TheSettings declared in apps/poselia/src/sdlc.ts",
+        "# Do not edit: change those nodes, then ship.",
         "name: A preview",
         "on:",
         "  schedule:",
@@ -337,6 +351,7 @@ export const GitHubWorkflow = syntax({
           evidence: "apps/poselia/evidence",
           deployed: { command: ["../../trame.sh", "evidence"], verdict: "passed", by: "--by", url: "--url" },
           review: { command: ["../../trame.sh", "view", "review", "--format", "md"], lock: "trame.lock" },
+          from: { artefact: "sdlc.TheFile", settings: "sdlc.TheSettings", declared: "apps/poselia/src/sdlc.ts" },
         },
         {
           on: { pullRequests: ["main"] }, job: "poselia", alsoInstalls: ["libs/geometry", "apps/poselia"], runsOn: "ubuntu-24.04", node: 22, artefacts: { days: 30 },
@@ -345,8 +360,9 @@ export const GitHubWorkflow = syntax({
       ],
       output: [
         "# Written by trame ship from the graph, for the shipment \"Into the main branch\" of apps/poselia",
-        "# Do not edit: edit the graph, then ship.",
-        "name: Into the main branch",
+        "# From the artefact sdlc.TheFile and its settings sdlc.TheSettings declared in apps/poselia/src/sdlc.ts",
+        "# Do not edit: change those nodes, then ship.",
+        "name: \"poselia \u00b7 Into the main branch\"",
         "on:",
         "  pull_request:",
         "    branches:",
