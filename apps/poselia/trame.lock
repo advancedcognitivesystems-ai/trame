@@ -629,6 +629,13 @@
       "range": "6a09e667",
       "rejected": "59b7aa16"
     },
+    "sdlc.PullRequestsOnGitHub": {
+      "statement": "9ee8b3f5",
+      "value": "523079a6",
+      "review": "6a09e667",
+      "range": "6a09e667",
+      "rejected": "20a27e26"
+    },
     "sdlc.SdlcChecks": {
       "messages": "8ddc6190"
     },

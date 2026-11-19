@@ -57,3 +57,16 @@ export const R0_4_0 = release({
   language: "shared",
   serves: [OneWriterPerPlace, RunsElsewhere],
 })
+
+/**
+ * Version 0.5.0
+ */
+export const R0_5_0 = release({
+  owner: "trame",
+  version: "0.5.0",
+  date: "2026-11-19",
+  what: "Pull requests: a workflow names its job, writes the review of the branch, keeps GitHub from merging what people decided; the settings of a repository (D1)",
+  fingerprint: "39e1a1af260c128e",
+  language: "shared",
+  serves: [OneWriterPerPlace, RunsElsewhere],
+})

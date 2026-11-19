@@ -136,6 +136,16 @@ export const StandardLibrary = pkg({
 })
 
 /**
+ * The library of continuous integration
+ * The writers of the files that run a shipment elsewhere (GitHub Actions) and of the settings of a repository, at the
+ * version Trame pins: the workflow that checks each pull request, and the settings of the repository, are written from
+ * Trame's graph (D1).
+ */
+export const ContinuousIntegration = pkg({
+  owner: "trame", packageName: "ci", version: "0.5.0", joins: "library", from: "path", at: "ci/releases/0.5.0", serves: [SingleSource],
+})
+
+/**
  * npm's lockfile
  * What npm writes after it installed a project's packages: each package installed, the project's own under the empty
  * key, with the dependencies it names. The manifest compares them with what it wrote (since g100).

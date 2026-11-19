@@ -37,8 +37,8 @@ Source: GNU Bash Reference Manual (5.2): § 3.1.2 Quoting, § 3.2.5 Compound Com
 
 - Maintained by: trame
 - Serves: [Each place is a writer](product.md#OneWriterPerPlace)
+- Used by: [The settings of a repository](repository.md#GitHubRepository), [A script of Bash](#ShellScript)
 - Defines: [A script of Bash](#ShellScript)
-- Used by: [A script of Bash](#ShellScript)
 
 ## Syntax element
 
@@ -62,7 +62,7 @@ Section: § 3.2.5 Compound Commands; § 3.5.3 Shell Parameter Expansion; § 4.3.
 
 | Input | Writes | Checked |
 |---|---|---|
-| `{"shipment":"Preview","title":"A preview","project":"apps/poselia","command":["../../trame.sh","ship","Preview","--by"],"file":"apps/poselia/scripts/ship-preview.sh","toRoot":"../../..","installs":[".","std","apps/poselia"],"prepares":[{"dir":"std","run":"npx playwright install --with-deps chromium"}],"delivers":[{"artifact":"PageFile","path":"apps/poselia/dist/poselia.html"}],"evidence":"apps/poselia/evidence","deployed":{"command":["../../trame.sh","evidence"],"verdict":"passed","by":"--by","url":"--url"},"review":{"command":["../../trame.sh","view","review"],"lock":"trame.lock"}}` | `"#!/usr/bin/env bash\n# Written by trame ship from the graph, for the shipment \"A preview\" of apps/poselia\n# Do not edit: edit the graph, then ship.\nset -euo pipefail\nby=\"${1:?give the name of the person who ships}\"\ncd \"$(dirname \"$0\")/../../..\"\n(cd \".\" && npm ci)\n(cd \"std\" && npm ci)\n(cd \"apps/poselia\" && npm ci)\n(cd \"std\" && npx playwright install --with-deps chromium)\ncd \"apps/poselia\"\n../../trame.sh ship Preview --by \"$by\"\n"` | held |
+| `{"shipment":"Preview","title":"A preview","project":"apps/poselia","command":["../../trame.sh","ship","Preview","--by"],"file":"apps/poselia/scripts/ship-preview.sh","toRoot":"../../..","installs":[".","std","apps/poselia"],"prepares":[{"dir":"std","run":"npx playwright install --with-deps chromium"}],"delivers":[{"artifact":"PageFile","path":"apps/poselia/dist/poselia.html"}],"evidence":"apps/poselia/evidence","deployed":{"command":["../../trame.sh","evidence"],"verdict":"passed","by":"--by","url":"--url"},"review":{"command":["../../trame.sh","view","review","--format","md"],"lock":"trame.lock"}}` | `"#!/usr/bin/env bash\n# Written by trame ship from the graph, for the shipment \"A preview\" of apps/poselia\n# Do not edit: edit the graph, then ship.\nset -euo pipefail\nby=\"${1:?give the name of the person who ships}\"\ncd \"$(dirname \"$0\")/../../..\"\n(cd \".\" && npm ci)\n(cd \"std\" && npm ci)\n(cd \"apps/poselia\" && npm ci)\n(cd \"std\" && npx playwright install --with-deps chromium)\ncd \"apps/poselia\"\n../../trame.sh ship Preview --by \"$by\"\n"` | held |
 
 - Owner: trame
 - Parameters: `standard` ← [Bash scripts](#BashScripts) · `npm` ← [npm](npm.md#Npm)

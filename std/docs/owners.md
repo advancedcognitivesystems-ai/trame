@@ -1,10 +1,10 @@
 # Owners
 
-*What each person must decide, settle or watch on 18 November 2026, and what they own.*
+*What each person must decide, settle or watch on 19 November 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 3 | 178 |
+| trame | 0 | 0 | 3 | 182 |
 
 <a id="trame"></a>
 
@@ -74,6 +74,7 @@
 | [Criteria of the product served](obligations.md#ServedCriteria) | Acceptance criteria | **held** |
 | [The code a shipment ships is verified](obligations.md#Verified) | Requirement | **held** |
 | [Criteria of the code verified](obligations.md#VerifiedCriteria) | Acceptance criteria | **held** |
+| [The library of continuous integration](packages.md#ContinuousIntegration) | Package |  |
 | [Trame](packages.md#Language) | Package |  |
 | [Abstract Factory](patterns.md#AbstractFactory) | Design pattern |  |
 | [Adapter](patterns.md#Adapter) | Design pattern |  |
@@ -154,8 +155,11 @@
 | [Its functions verified](sdlc.md#FunctionsVerified) | Obligation |  |
 | [The next version](sdlc.md#NextVersion) | Shipment | **held** |
 | [Its packages safe](sdlc.md#PackagesSafe) | Obligation |  |
+| [How a pull request is checked on GitHub](sdlc.md#PullRequestsOnGitHub) | Decision |  |
+| [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **held** |
 | [Its requirements held](sdlc.md#RequirementsServed) | Obligation |  |
 | [Its rules held](sdlc.md#RulesHeld) | Obligation |  |
+| [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **held** |
 | [The standard library](sdlc.md#TheLibrary) | Artefact | **held** |
 | [How a version is made](sdlc.md#VersionMode) | Policy |  |
 | [Exit status](system.md#ExitStatus) | Standard |  |

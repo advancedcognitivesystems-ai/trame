@@ -10,7 +10,7 @@ import { check } from "#trame/kinds/check"
 import { obligation } from "#trame/kinds/obligation"
 import { policy } from "#trame/kinds/policy"
 import { shipment } from "#trame/kinds/shipment"
-import { Verified, Served, Applied, Checked, Ruled, Safe, Identified } from "#std/obligations"
+import { Verified, Served, Applied, Checked, Ruled, Safe, Identified, Published } from "#std/obligations"
 import { Migrated } from "#data/obligations"
 import { Records, PostgresTables, StartEmpty } from "#data/records"
 import { ProgramCommands, NodeProgramCommands } from "#std/tooling"
@@ -22,6 +22,8 @@ import { ReservationsApi } from "./architecture"
 import { KeptReservation, KeptRefund } from "./data"
 import { ApiMessages } from "./messages"
 import { Production, Local, PostgresDatabase, HttpPayment, SystemClock, NodeServer, FileDatabase } from "./infra"
+import { GitHubWorkflow, type WorkflowSettings } from "#ci/github"
+import { decision } from "#trame/kinds/decision"
 
 // How a version of the reservations service reaches people. The scenarios run it in memory; what only a machine shows
 // (the database of production, the provider's real API, the server, the clock, the database in a file) a person of
@@ -200,4 +202,74 @@ export const OnThisMachine = shipment({
   policy: MachineMode,
   deploys: [PrepareStorage],
   environment: Local,
+})
+
+/**
+ * The service
+ * The service as its people write it: what a pull request brings into the main branch, all its code.
+ */
+export const TheService = artifact({ owner: "karim", path: "src", version: true })
+
+/**
+ * What people decided, published
+ * Each part of a declaration people decide (a value, a statement) is published in trame.lock before it merges: what the
+ * pull request changes of it is then its review.
+ */
+export const PublishedBeforeMerging = obligation({ owner: "karim", applies: Published, gaps: Severity.error, serves: [CancelWithoutStress] })
+
+/**
+ * How a change merges
+ * The way the service takes a change into its main branch: what people decided is published; and the foundations, as
+ * always.
+ */
+export const MergeMode = policy({ owner: "karim", obligations: [PublishedBeforeMerging] })
+
+/**
+ * Into the main branch
+ * A pull request into main: it merges once it holds, as the repository's settings say (D1).
+ */
+export const IntoMain = shipment({ owner: "karim", target: "main", ships: [TheService], policy: MergeMode })
+
+/**
+ * How a pull request is checked on GitHub
+ * At each pull request into main, on GitHub's Ubuntu 24.04 machine with Node.js 22: its job, named reservations, is a check the
+ * repository requires; it writes in it the review of the branch (what its declarations not yet published add to those published), and keeps GitHub from merging a pull request that changes what people decided (a
+ * trame.lock of the repository), which a person then merges (D1).
+ */
+export const PullRequestsOnGitHub = decision<WorkflowSettings>({
+  owner: "karim",
+  value: {
+    on: { pullRequests: ["main"] }, job: "reservations", runsOn: "ubuntu-24.04", node: 22, artefacts: { days: 30 },
+    pullRequest: { review: true, merge: "onceItHoldsUnlessDecided" },
+  },
+  rejected: {
+    "Only when a pull request touches the project": "GitHub keeps a pull request waiting for a check it requires and that never ran",
+    "Merged by GitHub whatever it changes": "what people decided would reach main without a person",
+  },
+})
+
+/**
+ * The pull requests' workflow
+ * The workflow that checks a pull request on GitHub, written from the pipeline of the shipment it runs: it prepares the
+ * machine as the plan says, writes the review of the branch in the pull request, keeps GitHub from merging what people decided, then
+ * runs trame ship.
+ */
+export const PullRequestWorkflow = artifact({
+  owner: "karim",
+  path: "../../.github/workflows/reservations-pull-request.yml",
+  media: "application/yaml",
+  producedBy: GitHubWorkflow,
+  runs: IntoMain,
+  settings: PullRequestsOnGitHub,
+})
+
+/**
+ * The files that run it elsewhere
+ * The workflow that checks each pull request, written by trame ship from the graph and kept in the repository where
+ * GitHub finds it; shipped again when the pipeline it runs changes.
+ */
+export const RunnersWritten = shipment({
+  owner: "karim",
+  target: "repository",
+  ships: [PullRequestWorkflow],
 })

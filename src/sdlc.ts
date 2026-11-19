@@ -33,6 +33,8 @@ import { TestKinds, Advance, Doctor } from "./commands"
 import { DiskReading, DiskWriting, DiskTrees, NodeProcess, NodePrograms, NodeTerminal, SystemClock, NpmReports, NpmInstall, NodeHttpServer, RunsOnDisk } from "./platform"
 import { ExecutableSpecification } from "./product"
 import { TheOperators } from "#std/access"
+import { GitHubWorkflow, type WorkflowSettings } from "#ci/github"
+import { GitHubRepository, type RepositorySettings } from "#ci/repository"
 
 // How a new version of Trame becomes the one projects run, in Trame's graph. The engine described by the graph is
 // assembled into a program (the candidate); it plays the laws of the kinds and the views; the rules of the
@@ -309,3 +311,101 @@ export const NextGeneration = shipment({
   deploys: [Advance],
   environment: Local,
 })
+
+/**
+ * The engine
+ * Trame as its people write it: what a pull request brings into the main branch, all its code.
+ */
+export const TheEngine = artifact({ owner: "trame", path: "src", version: true })
+
+/**
+ * How a change merges
+ * The way Trame takes a change into its main branch: the code it brings verified (a gap is an error), the rules held;
+ * and the foundations, as always. What the candidate of a generation proves besides is the advance's business.
+ */
+export const MergeMode = policy({ owner: "trame", obligations: [EngineVerified, ArchitectureRuled] })
+
+/**
+ * Into the main branch
+ * A pull request into main: it merges once it holds, as the repository's settings say (D1). The programs of the SDLC
+ * it reaches are those of this machine.
+ */
+export const IntoMain = shipment({ owner: "trame", target: "main", ships: [TheEngine], policy: MergeMode, environment: Local })
+
+/**
+ * How a pull request is checked on GitHub
+ * At each pull request into main, on GitHub's Ubuntu 24.04 machine with Node.js 22: its job, named trame, is a check the
+ * repository requires; it keeps GitHub from merging a pull request that changes what people decided (a trame.lock of the
+ * repository), which a person then merges (D1).
+ */
+export const PullRequestsOnGitHub = decision<WorkflowSettings>({
+  owner: "trame",
+  value: {
+    on: { pullRequests: ["main"] }, job: "trame", runsOn: "ubuntu-24.04", node: 22, artefacts: { days: 30 },
+    pullRequest: { review: false, merge: "onceItHoldsUnlessDecided" },
+  },
+  rejected: {
+    "Only when a pull request touches the project": "GitHub keeps a pull request waiting for a check it requires and that never ran",
+    "Merged by GitHub whatever it changes": "what people decided would reach main without a person",
+    "The review of the branch": "Trame publishes nothing yet: its graph is published once the plan is done",
+  },
+})
+
+/**
+ * The pull requests' workflow
+ * The workflow that checks a pull request on GitHub, written from the pipeline of the shipment into main: it prepares
+ * the machine as the plan says, keeps GitHub from merging what people decided, then runs trame ship.
+ */
+export const PullRequestWorkflow = artifact({
+  owner: "trame",
+  path: ".github/workflows/trame-pull-request.yml",
+  media: "application/yaml",
+  producedBy: GitHubWorkflow,
+  runs: IntoMain,
+  settings: PullRequestsOnGitHub,
+})
+
+/**
+ * How the repository merges into main
+ * The main branch of the repository receives nothing but pull requests, and is never deleted nor rewritten; a pull
+ * request passes the check of each project the repository holds (its job), and merges as a merge commit, which keeps
+ * each commit of the branch (a generation is a commit); GitHub may merge it once it holds, when someone asks it to, and
+ * deletes its branch then. No approval is required: the workflows keep from merging itself what people decided, which a
+ * person merges.
+ */
+export const MainBranch = decision<RepositorySettings>({
+  owner: "trame",
+  value: { branch: "main", checks: ["trame", "std", "ci", "data", "reservations", "poselia"], method: "merge", autoMerge: true, pages: false },
+  rejected: {
+    "Squashed": "a branch would merge as one commit, and the generations it advances are each a commit",
+    "An approval required": "the person who opens a pull request with their own account cannot approve it",
+    "The check of geometry": "geometry runs from the registry of a machine, which a runner of GitHub does not have yet",
+    "Pages now": "the site that gathers Trame's graph and Poselia's preview is still to be decided",
+  },
+})
+
+/**
+ * The settings of the repository
+ * The script an administrator runs to set the repository as the graph decides: the merge method, the automatic merge,
+ * the ruleset of main with the checks it requires.
+ */
+export const RepositorySettingsScript = artifact({
+  owner: "trame",
+  path: ".github/settings.sh",
+  media: "text/x-shellscript",
+  producedBy: GitHubRepository,
+  runs: IntoMain,
+  settings: MainBranch,
+})
+
+/**
+ * The files that run it elsewhere
+ * The workflow that checks each pull request and the settings of the repository, written by trame ship from the graph
+ * and kept in the repository where GitHub and its administrator find them.
+ */
+export const RunnersWritten = shipment({
+  owner: "trame",
+  target: "repository",
+  ships: [PullRequestWorkflow, RepositorySettingsScript],
+})
+

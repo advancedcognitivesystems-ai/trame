@@ -1,5 +1,10 @@
 {
   "title": "Standard library",
   "engine": ".trame/trame",
-  "libraries": {}
+  "libraries": {
+    "ci": {
+      "at": ".trame/ci",
+      "version": "0.5.0"
+    }
+  }
 }

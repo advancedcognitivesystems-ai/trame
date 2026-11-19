@@ -1,0 +1,47 @@
+# Written by trame ship from the graph, for the shipment "Into the main branch" of apps/poselia
+# Do not edit: edit the graph, then ship.
+name: Into the main branch
+on:
+  pull_request:
+    branches:
+      - main
+permissions:
+  contents: read
+  pull-requests: write
+jobs:
+  poselia:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+        working-directory: "."
+      - run: npm ci
+        working-directory: apps/poselia
+      - run: "git fetch --depth=1 origin \"$GITHUB_BASE_REF\""
+        working-directory: apps/poselia
+      - run: |
+          git show "FETCH_HEAD:./$LOCK" > "$LOCK" || rm -f "$LOCK"
+          ../../trame.sh view review --format md > "$RUNNER_TEMP/review.md"
+          git checkout -- "$LOCK" || rm -f "$LOCK"
+          printf '%s\n\n' "$MARKER" | cat - "$RUNNER_TEMP/review.md" > "$RUNNER_TEMP/comment.md"
+          id="$(gh api "repos/$GITHUB_REPOSITORY/issues/$NUMBER/comments" --paginate --jq '[.[] | select(.body | startswith(env.MARKER))][0].id // empty')"
+          if [ -n "$id" ]; then gh api --method PATCH "repos/$GITHUB_REPOSITORY/issues/comments/$id" -F "body=@$RUNNER_TEMP/comment.md" > /dev/null; else gh pr comment "$NUMBER" --body-file "$RUNNER_TEMP/comment.md"; fi
+        working-directory: apps/poselia
+        env:
+          GH_TOKEN: "${{ github.token }}"
+          NUMBER: "${{ github.event.pull_request.number }}"
+          LOCK: trame.lock
+          MARKER: "<!-- The review of apps/poselia -->"
+      - run: |
+          git diff --quiet FETCH_HEAD -- ":(glob)**/$LOCK" || gh pr merge "$NUMBER" --disable-auto || true
+        working-directory: apps/poselia
+        env:
+          GH_TOKEN: "${{ github.token }}"
+          NUMBER: "${{ github.event.pull_request.number }}"
+          LOCK: trame.lock
+          MARKER: "<!-- The review of apps/poselia -->"
+      - run: "../../trame.sh ship IntoMain --by \"${{ github.actor }}\""
+        working-directory: apps/poselia

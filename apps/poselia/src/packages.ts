@@ -8,7 +8,7 @@ import { PractiseGuided } from "./product"
  * The language Poselia is written in, at the generation it pins: reached by its path in Trame's repository.
  */
 export const Language = pkg({
-  owner: "ghalaax", packageName: "trame", version: "108", joins: "language", from: "path", at: "../../generations/g108",
+  owner: "ghalaax", packageName: "trame", version: "109", joins: "language", from: "path", at: "../../generations/g109",
   serves: [PractiseGuided],
 })
 
@@ -26,7 +26,7 @@ export const StandardLibrary = pkg({
  * The writers of the workflow and the script that ship Poselia's preview elsewhere.
  */
 export const ContinuousIntegration = pkg({
-  owner: "ghalaax", packageName: "ci", version: "0.4.0", joins: "library", from: "path", at: "../../ci/releases/0.4.0",
+  owner: "ghalaax", packageName: "ci", version: "0.5.0", joins: "library", from: "path", at: "../../ci/releases/0.5.0",
   serves: [PractiseGuided],
 })
 

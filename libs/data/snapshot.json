@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-18",
+  "at": "2026-11-19",
   "nodes": [
     {
       "id": "documents.Conforms",
@@ -125,15 +125,28 @@
       }
     },
     {
+      "id": "packages.ContinuousIntegration",
+      "kind": "package",
+      "title": "The library of continuous integration",
+      "fields": {
+        "owner": "trame",
+        "packageName": "ci",
+        "version": "0.5.0",
+        "joins": "library",
+        "from": "path",
+        "at": "../../ci/releases/0.5.0"
+      }
+    },
+    {
       "id": "packages.Language",
       "kind": "package",
       "title": "Trame",
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "108",
+        "version": "109",
         "joins": "language",
-        "at": "../../generations/g108"
+        "at": "../../generations/g109"
       }
     },
     {
@@ -734,11 +747,61 @@
       }
     },
     {
+      "id": "sdlc.PullRequestsOnGitHub",
+      "kind": "decision",
+      "title": "How a pull request is checked on GitHub",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "on": {
+            "pullRequests": [
+              "main"
+            ]
+          },
+          "job": "data",
+          "runsOn": "ubuntu-24.04",
+          "node": 22,
+          "artefacts": {
+            "days": 30
+          },
+          "pullRequest": {
+            "review": false,
+            "merge": "onceItHoldsUnlessDecided"
+          }
+        },
+        "rejected": {
+          "Only when a pull request touches the project": "GitHub keeps a pull request waiting for a check it requires and that never ran",
+          "Merged by GitHub whatever it changes": "what people decided would reach main without a person"
+        }
+      }
+    },
+    {
+      "id": "sdlc.PullRequestWorkflow",
+      "kind": "artifact",
+      "title": "The pull requests' workflow",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "path": "../../.github/workflows/data-pull-request.yml",
+        "media": "application/yaml"
+      }
+    },
+    {
       "id": "sdlc.RequirementsServed",
       "kind": "obligation",
       "title": "Its requirements held",
       "fields": {
         "owner": "trame"
+      }
+    },
+    {
+      "id": "sdlc.RunnersWritten",
+      "kind": "shipment",
+      "title": "The files that run it elsewhere",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "target": "repository"
       }
     },
     {
@@ -1537,6 +1600,11 @@
       "kind": "accepts"
     },
     {
+      "from": "packages.ContinuousIntegration",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
       "from": "packages.Language",
       "to": "product.DataDescribedOnce",
       "kind": "serves"
@@ -2117,9 +2185,24 @@
       "kind": "serves"
     },
     {
+      "from": "sdlc.PullRequestWorkflow",
+      "to": "sdlc.NextVersion",
+      "kind": "runs"
+    },
+    {
+      "from": "sdlc.PullRequestWorkflow",
+      "to": "sdlc.PullRequestsOnGitHub",
+      "kind": "settings"
+    },
+    {
       "from": "sdlc.RequirementsServed",
       "to": "product.DataDescribedOnce",
       "kind": "serves"
+    },
+    {
+      "from": "sdlc.RunnersWritten",
+      "to": "sdlc.PullRequestWorkflow",
+      "kind": "ships"
     },
     {
       "from": "sdlc.VersionMode",

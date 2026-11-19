@@ -1,6 +1,6 @@
 # Architecture decisions
 
-*The choices that shape the product without being values, in force on 18 November 2026: why each was taken, what was rejected, and the nodes that apply it.*
+*The choices that shape the product without being values, in force on 19 November 2026: why each was taken, what was rejected, and the nodes that apply it.*
 
 > **4 architecture decisions, 3 held by the nodes that apply them**
 

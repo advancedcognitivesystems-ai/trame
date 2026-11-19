@@ -1,12 +1,12 @@
 # Owners
 
-*What each person must decide, settle or watch on 18 November 2026, and what they own.*
+*What each person must decide, settle or watch on 19 November 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
 | A teacher who practises | 0 | 0 | 4 | 0 |
 | People who try it on a phone | 0 | 0 | 1 | 0 |
-| ghalaax | 0 | 0 | 5 | 217 |
+| ghalaax | 0 | 0 | 5 | 223 |
 
 <a id="A teacher who practises"></a>
 
@@ -215,8 +215,10 @@
 | [The content, reviewed](sdlc.md#ContentReviewed) | Review | **unknown** |
 | [The content is reviewed by a teacher](sdlc.md#ContentSeen) | Obligation |  |
 | [The decisions hold](sdlc.md#DecisionsApplied) | Obligation |  |
+| [Into the main branch](sdlc.md#IntoMain) | Shipment | **held** |
 | [What the device keeps, migrated](sdlc.md#KeptMigrates) | Obligation |  |
 | [A machine](sdlc.md#Machine) | Environment |  |
+| [How a change merges](sdlc.md#MergeMode) | Policy |  |
 | [On a phone](sdlc.md#OnAPhone) | Check | **unknown** |
 | [On the machine](sdlc.md#OnTheMachine) | Technical choice | **held** |
 | [The page is opened as a person would](sdlc.md#OpeningThePage) | Scenario | **held** |
@@ -239,6 +241,9 @@
 | [The page is checked by programs](sdlc.md#ProgramChecks) | Obligation |  |
 | [The way of a public version](sdlc.md#PublicMode) | Policy |  |
 | [A public version](sdlc.md#PublicVersion) | Shipment | **unknown** |
+| [What people decided, published](sdlc.md#PublishedBeforeMerging) | Obligation |  |
+| [How a pull request is checked on GitHub](sdlc.md#PullRequestsOnGitHub) | Decision |  |
+| [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **held** |
 | [The rules of the app hold](sdlc.md#RulesHeld) | Obligation |  |
 | [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **held** |
 | [What the scenarios of the SDLC check](sdlc.md#SdlcChecks) | Message catalog |  |
@@ -248,6 +253,7 @@
 | [What the programs of the SDLC say](sdlc.md#SdlcWords) | Message catalog |  |
 | [Where the page is served](sdlc.md#ServedPage) | Decision |  |
 | [A teacher who practises](sdlc.md#Teachers) | Role |  |
+| [Poselia](sdlc.md#ThePoseliaApp) | Artefact | **held** |
 | [A phase set by the person](settings.md#AdjustedBreath) | Requirement | **held** |
 | [Criteria of a phase set by the person](settings.md#AdjustedBreathCriteria) | Acceptance criteria | **held** |
 | [The person's breath, kept](settings.md#Breath) | Entity | **held** |

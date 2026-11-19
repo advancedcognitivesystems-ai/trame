@@ -1610,7 +1610,7 @@
       "id": "sdlc.CallersIdentified",
       "kind": "obligation",
       "title": "Who calls, identified",
-      "source": "src/sdlc.ts:169",
+      "source": "src/sdlc.ts:171",
       "fields": {
         "owner": "karim",
         "gaps": "warning"
@@ -1621,7 +1621,7 @@
       "id": "sdlc.CodeVerified",
       "kind": "obligation",
       "title": "The code is verified",
-      "source": "src/sdlc.ts:127",
+      "source": "src/sdlc.ts:129",
       "fields": {
         "owner": "karim",
         "params": {
@@ -1638,7 +1638,7 @@
       "id": "sdlc.CommandsOnThisMachine",
       "kind": "binding",
       "title": "Commands on this machine",
-      "source": "src/sdlc.ts:67",
+      "source": "src/sdlc.ts:69",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -1650,7 +1650,7 @@
       "id": "sdlc.DecisionsApplied",
       "kind": "obligation",
       "title": "The decisions hold",
-      "source": "src/sdlc.ts:139",
+      "source": "src/sdlc.ts:141",
       "fields": {
         "owner": "karim"
       },
@@ -1660,7 +1660,7 @@
       "id": "sdlc.EveryCheck",
       "kind": "obligation",
       "title": "Every check is signed",
-      "source": "src/sdlc.ts:144",
+      "source": "src/sdlc.ts:146",
       "fields": {
         "owner": "karim",
         "params": {
@@ -1673,17 +1673,152 @@
       "id": "sdlc.GoalServed",
       "kind": "obligation",
       "title": "The requirements of the goal hold",
-      "source": "src/sdlc.ts:134",
+      "source": "src/sdlc.ts:136",
       "fields": {
         "owner": "karim"
       },
       "diagnostics": []
     },
     {
+      "id": "sdlc.IntoMain",
+      "kind": "shipment",
+      "title": "Into the main branch",
+      "source": "src/sdlc.ts:231",
+      "status": "unknown",
+      "fields": {
+        "owner": "karim",
+        "target": "main"
+      },
+      "result": {
+        "derived": [],
+        "gaps": [],
+        "preceded": [],
+        "reached": [
+          "sdlc.TheService",
+          "access.Drivers",
+          "api.CancelReservation",
+          "api.FreeCancellationEnd",
+          "api.LeadTime",
+          "api.ReadReservation",
+          "architecture.CancellationKey",
+          "architecture.Cancellations",
+          "architecture.Clock",
+          "architecture.EffectsFollowTheRequest",
+          "architecture.HttpExposure",
+          "architecture.HttpPort",
+          "architecture.Payment",
+          "architecture.PaymentLog",
+          "architecture.ReadWithoutWrite",
+          "architecture.ReservationReading",
+          "architecture.ReservationsApi",
+          "architecture.ThirdPartiesVerified",
+          "architecture.UtilitiesWithoutWorld",
+          "cancellation.AmountWords",
+          "cancellation.CancelWithoutStress",
+          "cancellation.FreeCancellationPeriod",
+          "cancellation.IdempotentProvider",
+          "cancellation.ImmediateRefund",
+          "cancellation.LateFee",
+          "cancellation.Refund",
+          "cancellation.RefundCriteria",
+          "cancellation.SwissFrancs",
+          "committee.UltraLaunch",
+          "committee.UltraPeriod",
+          "committee.UltraPeriodApproval",
+          "consumer.FullRefundAhead",
+          "consumer.FullRefundAheadCriteria",
+          "consumer.FullRefundNotice",
+          "data.Chargers",
+          "data.KeptRefund",
+          "data.KeptReservation",
+          "data.ReservationStatuses",
+          "infra.BackupRetention",
+          "infra.CancellationRecords",
+          "infra.CancelledStatus",
+          "infra.DatabaseAddress",
+          "infra.DatabaseName",
+          "infra.DatabaseSize",
+          "infra.EmptyInProduction",
+          "infra.FileDatabase",
+          "infra.FirstReservationsOutsideProduction",
+          "infra.HttpPayment",
+          "infra.HttpServerChoice",
+          "infra.KeptAsTables",
+          "infra.Local",
+          "infra.LocalDatabase",
+          "infra.LocalDatabasePath",
+          "infra.NodeServer",
+          "infra.PostgresDatabase",
+          "infra.Production",
+          "infra.ProductionDatabase",
+          "infra.ProviderApi",
+          "infra.ProviderUrl",
+          "infra.RealClock",
+          "infra.RecordRepositories",
+          "infra.ReservationRecords",
+          "infra.ResponseEnding",
+          "infra.ScenarioClock",
+          "infra.ScenarioDatabase",
+          "infra.SimulatedPayment",
+          "infra.SimulatedProvider",
+          "infra.SimulatedReference",
+          "infra.StoppedClock",
+          "infra.SystemClock",
+          "infra.Test",
+          "infra.TestInstant",
+          "legal.FeeCap",
+          "legal.FeeCapDecided",
+          "messages.ApiMessages",
+          "messages.Language",
+          "messages.ScenarioChecks",
+          "principles.RefundOnce",
+          "principles.SecretsOutOfTheGraph",
+          "scenarios.ComplianceScenario",
+          "scenarios.ReadScenario",
+          "scenarios.ReadsNeverWrite",
+          "scenarios.RepeatedCancellationScenario",
+          "scenarios.StoragePrepared",
+          "scenarios.UnknownReservation",
+          "sdlc.CallersIdentified",
+          "sdlc.CodeVerified",
+          "sdlc.CommandsOnThisMachine",
+          "sdlc.DecisionsApplied",
+          "sdlc.EveryCheck",
+          "sdlc.GoalServed",
+          "sdlc.IntoMain",
+          "sdlc.KeptMigrates",
+          "sdlc.LocalProgram",
+          "sdlc.MachineMode",
+          "sdlc.MergeMode",
+          "sdlc.OnALaptop",
+          "sdlc.OnStaging",
+          "sdlc.OnThisMachine",
+          "sdlc.Operators",
+          "sdlc.PackagesSafe",
+          "sdlc.PrepareStorage",
+          "sdlc.ProductionProgram",
+          "sdlc.PublishedBeforeMerging",
+          "sdlc.PullRequestsOnGitHub",
+          "sdlc.PullRequestWorkflow",
+          "sdlc.Release",
+          "sdlc.ReleaseMode",
+          "sdlc.ReservationsSdlc",
+          "sdlc.RulesHeld",
+          "sdlc.RunnersWritten",
+          "standards.PaymentProviderApi",
+          "standards.RouteSyntax",
+          "support.SupportUltraPeriod"
+        ]
+      },
+      "diagnostics": [
+        "warning: To ship: The service is unknown"
+      ]
+    },
+    {
       "id": "sdlc.KeptMigrates",
       "kind": "obligation",
       "title": "What the service keeps, migrated",
-      "source": "src/sdlc.ts:161",
+      "source": "src/sdlc.ts:163",
       "fields": {
         "owner": "karim",
         "gaps": "error"
@@ -1694,7 +1829,7 @@
       "id": "sdlc.LocalProgram",
       "kind": "artifact",
       "title": "The program for a laptop",
-      "source": "src/sdlc.ts:50",
+      "source": "src/sdlc.ts:52",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -1712,7 +1847,17 @@
       "id": "sdlc.MachineMode",
       "kind": "policy",
       "title": "The way of this machine",
-      "source": "src/sdlc.ts:183",
+      "source": "src/sdlc.ts:185",
+      "fields": {
+        "owner": "karim"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.MergeMode",
+      "kind": "policy",
+      "title": "How a change merges",
+      "source": "src/sdlc.ts:225",
       "fields": {
         "owner": "karim"
       },
@@ -1722,7 +1867,7 @@
       "id": "sdlc.OnALaptop",
       "kind": "check",
       "title": "On a laptop",
-      "source": "src/sdlc.ts:115",
+      "source": "src/sdlc.ts:117",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -1738,7 +1883,7 @@
       "id": "sdlc.OnStaging",
       "kind": "check",
       "title": "On staging",
-      "source": "src/sdlc.ts:99",
+      "source": "src/sdlc.ts:101",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -1756,7 +1901,7 @@
       "id": "sdlc.OnThisMachine",
       "kind": "shipment",
       "title": "On this machine",
-      "source": "src/sdlc.ts:196",
+      "source": "src/sdlc.ts:198",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -1908,7 +2053,7 @@
       "id": "sdlc.Operators",
       "kind": "role",
       "title": "The operators",
-      "source": "src/sdlc.ts:38",
+      "source": "src/sdlc.ts:40",
       "fields": {
         "owner": "karim",
         "people": [
@@ -1921,7 +2066,7 @@
       "id": "sdlc.PackagesSafe",
       "kind": "obligation",
       "title": "The packages are safe",
-      "source": "src/sdlc.ts:154",
+      "source": "src/sdlc.ts:156",
       "fields": {
         "owner": "karim"
       },
@@ -1931,7 +2076,7 @@
       "id": "sdlc.PrepareStorage",
       "kind": "entry",
       "title": "Prepare the storage",
-      "source": "src/sdlc.ts:80",
+      "source": "src/sdlc.ts:82",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -1954,7 +2099,7 @@
       "id": "sdlc.ProductionProgram",
       "kind": "artifact",
       "title": "The program for production",
-      "source": "src/sdlc.ts:44",
+      "source": "src/sdlc.ts:46",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -1969,10 +2114,71 @@
       ]
     },
     {
+      "id": "sdlc.PublishedBeforeMerging",
+      "kind": "obligation",
+      "title": "What people decided, published",
+      "source": "src/sdlc.ts:218",
+      "fields": {
+        "owner": "karim",
+        "gaps": "error"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.PullRequestsOnGitHub",
+      "kind": "decision",
+      "title": "How a pull request is checked on GitHub",
+      "source": "src/sdlc.ts:239",
+      "fields": {
+        "owner": "karim",
+        "value": {
+          "on": {
+            "pullRequests": [
+              "main"
+            ]
+          },
+          "job": "reservations",
+          "runsOn": "ubuntu-24.04",
+          "node": 22,
+          "artefacts": {
+            "days": 30
+          },
+          "pullRequest": {
+            "review": true,
+            "merge": "onceItHoldsUnlessDecided"
+          }
+        },
+        "rejected": {
+          "Only when a pull request touches the project": "GitHub keeps a pull request waiting for a check it requires and that never ran",
+          "Merged by GitHub whatever it changes": "what people decided would reach main without a person"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.PullRequestWorkflow",
+      "kind": "artifact",
+      "title": "The pull requests' workflow",
+      "source": "src/sdlc.ts:257",
+      "status": "unknown",
+      "fields": {
+        "owner": "karim",
+        "path": "../../.github/workflows/reservations-pull-request.yml",
+        "media": "application/yaml"
+      },
+      "result": {
+        "path": "../../.github/workflows/reservations-pull-request.yml",
+        "code": "589afa4b"
+      },
+      "diagnostics": [
+        "warning: Not built yet: trame ship builds it"
+      ]
+    },
+    {
       "id": "sdlc.Release",
       "kind": "shipment",
       "title": "A release",
-      "source": "src/sdlc.ts:189",
+      "source": "src/sdlc.ts:191",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -2164,7 +2370,7 @@
       "id": "sdlc.ReleaseMode",
       "kind": "policy",
       "title": "The way of a release",
-      "source": "src/sdlc.ts:174",
+      "source": "src/sdlc.ts:176",
       "fields": {
         "owner": "karim"
       },
@@ -2174,7 +2380,7 @@
       "id": "sdlc.ReservationsSdlc",
       "kind": "component",
       "title": "The service's SDLC",
-      "source": "src/sdlc.ts:56",
+      "source": "src/sdlc.ts:58",
       "fields": {
         "owner": "karim",
         "language": "typescript",
@@ -2188,11 +2394,52 @@
       "id": "sdlc.RulesHeld",
       "kind": "obligation",
       "title": "The rules hold",
-      "source": "src/sdlc.ts:149",
+      "source": "src/sdlc.ts:151",
       "fields": {
         "owner": "karim"
       },
       "diagnostics": []
+    },
+    {
+      "id": "sdlc.RunnersWritten",
+      "kind": "shipment",
+      "title": "The files that run it elsewhere",
+      "source": "src/sdlc.ts:271",
+      "status": "unknown",
+      "fields": {
+        "owner": "karim",
+        "target": "repository"
+      },
+      "result": {
+        "derived": [],
+        "gaps": [],
+        "preceded": [],
+        "reached": [
+          "sdlc.PullRequestWorkflow"
+        ]
+      },
+      "diagnostics": [
+        "warning: To ship: The pull requests' workflow is unknown"
+      ]
+    },
+    {
+      "id": "sdlc.TheService",
+      "kind": "artifact",
+      "title": "The service",
+      "source": "src/sdlc.ts:211",
+      "status": "unknown",
+      "fields": {
+        "owner": "karim",
+        "path": "src",
+        "version": true
+      },
+      "result": {
+        "path": "src",
+        "code": "57098a07"
+      },
+      "diagnostics": [
+        "warning: Not built yet: trame ship builds it"
+      ]
     },
     {
       "id": "standards.PaymentProviderApi",
@@ -3356,6 +3603,16 @@
       "kind": "serves"
     },
     {
+      "from": "sdlc.IntoMain",
+      "to": "sdlc.TheService",
+      "kind": "ships"
+    },
+    {
+      "from": "sdlc.IntoMain",
+      "to": "sdlc.MergeMode",
+      "kind": "policy"
+    },
+    {
       "from": "sdlc.KeptMigrates",
       "to": "data/obligations.Migrated",
       "kind": "applies"
@@ -3388,6 +3645,11 @@
     {
       "from": "sdlc.MachineMode",
       "to": "sdlc.KeptMigrates",
+      "kind": "obligations"
+    },
+    {
+      "from": "sdlc.MergeMode",
+      "to": "sdlc.PublishedBeforeMerging",
       "kind": "obligations"
     },
     {
@@ -3521,6 +3783,31 @@
       "kind": "producedBy"
     },
     {
+      "from": "sdlc.PublishedBeforeMerging",
+      "to": "std/obligations.Published",
+      "kind": "applies"
+    },
+    {
+      "from": "sdlc.PublishedBeforeMerging",
+      "to": "cancellation.CancelWithoutStress",
+      "kind": "serves"
+    },
+    {
+      "from": "sdlc.PullRequestWorkflow",
+      "to": "ci/github.GitHubWorkflow",
+      "kind": "producedBy"
+    },
+    {
+      "from": "sdlc.PullRequestWorkflow",
+      "to": "sdlc.IntoMain",
+      "kind": "runs"
+    },
+    {
+      "from": "sdlc.PullRequestWorkflow",
+      "to": "sdlc.PullRequestsOnGitHub",
+      "kind": "settings"
+    },
+    {
       "from": "sdlc.Release",
       "to": "sdlc.ProductionProgram",
       "kind": "ships"
@@ -3599,6 +3886,11 @@
       "from": "sdlc.RulesHeld",
       "to": "cancellation.CancelWithoutStress",
       "kind": "serves"
+    },
+    {
+      "from": "sdlc.RunnersWritten",
+      "to": "sdlc.PullRequestWorkflow",
+      "kind": "ships"
     },
     {
       "from": "support.SupportUltraPeriod",

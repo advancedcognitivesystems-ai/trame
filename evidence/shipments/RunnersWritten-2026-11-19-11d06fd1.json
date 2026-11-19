@@ -1,0 +1,66 @@
+{
+  "shipment": "sdlc.RunnersWritten",
+  "title": "The files that run it elsewhere",
+  "target": "repository",
+  "at": "2026-11-19",
+  "by": "claude",
+  "signature": "attribution",
+  "artifacts": [
+    {
+      "node": "sdlc.PullRequestWorkflow",
+      "path": ".github/workflows/trame-pull-request.yml",
+      "fingerprint": "e6e30c9f9b9d3a2ecd0c2d6520dad0607ee54b255baf830b53781f6d74fb8ac6"
+    },
+    {
+      "node": "sdlc.RepositorySettingsScript",
+      "path": ".github/settings.sh",
+      "fingerprint": "7e8f750d03e3c4847e75302067ce72a2e2d4debcc46e9f29880239b251077ab1"
+    }
+  ],
+  "foundations": {
+    "problems": 0
+  },
+  "obligations": [
+    {
+      "node": "sdlc.PullRequestWorkflow",
+      "kind": "artifact",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-19",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "e6e30c9f9b9d3a2ecd0c2d6520dad0607ee54b255baf830b53781f6d74fb8ac6",
+          "code": "821c3989",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "987e2ef986dc7b6b",
+          "seal": "864baaed3124e6064ccbfc331b52cc4cb21699a7b13e6020c8e6f9730a78e00f"
+        }
+      ]
+    },
+    {
+      "node": "sdlc.RepositorySettingsScript",
+      "kind": "artifact",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "sdlc.RepositorySettingsScript",
+          "at": "2026-11-19",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "7e8f750d03e3c4847e75302067ce72a2e2d4debcc46e9f29880239b251077ab1",
+          "code": "c6278851",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "987e2ef986dc7b6b",
+          "seal": "bd929935e992ebcd7e8cda7ee48c6af3de197856433101552429c06b9c4c9703"
+        }
+      ]
+    }
+  ],
+  "deployed": []
+}

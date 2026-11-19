@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-30",
+  "generated": "2026-11-19",
   "nodes": [
     {
       "id": "appearance.ExplorerDrawing",
@@ -1180,7 +1180,7 @@
       "kind": "implementation",
       "title": "Amendments sent to trame dev",
       "source": "src/browser.ts:110",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1201,7 +1201,7 @@
       "kind": "implementation",
       "title": "The browser's gzip",
       "source": "src/browser.ts:120",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1220,7 +1220,7 @@
       "kind": "implementation",
       "title": "The globals of the page, and trame dev",
       "source": "src/browser.ts:100",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1240,7 +1240,7 @@
       "kind": "implementation",
       "title": "Local storage",
       "source": "src/browser.ts:89",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1258,7 +1258,7 @@
       "kind": "implementation",
       "title": "The browser's window",
       "source": "src/browser.ts:79",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1278,7 +1278,7 @@
       "kind": "function",
       "title": "Explorer of a graph",
       "source": "src/browser.ts:41",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1317,7 +1317,7 @@
       "kind": "entry",
       "title": "Show the graph",
       "source": "src/browser.ts:57",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "trigger": {
@@ -1372,7 +1372,7 @@
       "kind": "binding",
       "title": "The browser runs the page",
       "source": "src/browser.ts:131",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "The page's script took what it needed from the browser itself, here and there: the graph could not say what the page asks of the browser, nor try it elsewhere.",
@@ -1389,7 +1389,7 @@
       "kind": "adr",
       "title": "The page is assembled",
       "source": "src/browser.ts:150",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "The page's script built by hand what it shared with the engine and wrote its values (classes, identifiers, the explorer's geometry) as literals the catalogue could not see: a change in the graph did not reach it.",
@@ -1442,7 +1442,7 @@
           "status": "passed"
         },
         {
-          "name": "The candidate is accepted (  ✓ trame runs g109 |   ✓ reservations runs g109 | Advance succeeded.)",
+          "name": "The candidate is accepted (  ✓ trame runs g110 |   ✓ reservations runs g110 | Advance succeeded.)",
           "status": "passed"
         },
         {
@@ -1639,7 +1639,7 @@
           "status": "passed"
         },
         {
-          "name": "The plan names On this machine among the shipments touched: what it ships changes",
+          "name": "The plan names Into the main branch among the shipments touched: what it ships changes",
           "status": "passed"
         }
       ],
@@ -2245,7 +2245,7 @@
       },
       "result": [
         {
-          "name": "The payload holds 107 nodes and 252 documents",
+          "name": "The payload holds 114 nodes and 266 documents",
           "status": "passed"
         },
         {
@@ -10549,6 +10549,21 @@
       "diagnostics": []
     },
     {
+      "id": "packages.ContinuousIntegration",
+      "kind": "package",
+      "title": "The library of continuous integration",
+      "source": "src/packages.ts:144",
+      "fields": {
+        "owner": "trame",
+        "packageName": "ci",
+        "version": "0.5.0",
+        "joins": "library",
+        "from": "path",
+        "at": "ci/releases/0.5.0"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "packages.CssGrammar",
       "kind": "package",
       "title": "Grammar of CSS",
@@ -10633,7 +10648,7 @@
       "id": "packages.NpmLockfile",
       "kind": "standard",
       "title": "npm's lockfile",
-      "source": "src/packages.ts:143",
+      "source": "src/packages.ts:153",
       "fields": {
         "owner": "trame",
         "source": "npm documentation: package-lock.json (lockfileVersion 3: packages, the root project under the key \"\")",
@@ -12641,7 +12656,7 @@
       "kind": "implementation",
       "title": "System files, for reading",
       "source": "src/platform.ts:78",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "body": {
@@ -12656,7 +12671,7 @@
       "kind": "implementation",
       "title": "Trees on disk",
       "source": "src/platform.ts:232",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -12676,7 +12691,7 @@
       "kind": "implementation",
       "title": "System files, for writing",
       "source": "src/platform.ts:204",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "body": {
@@ -13063,7 +13078,7 @@
       "kind": "implementation",
       "title": "Node HTTP server",
       "source": "src/platform.ts:173",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "body": {
@@ -13078,7 +13093,7 @@
       "kind": "binding",
       "title": "On a machine, Node.js reads, writes and runs",
       "source": "src/platform.ts:428",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "What changes the world (files written, processes, the terminal, the clock) is real only on a machine; the scenarios keep it in memory.",
@@ -13125,7 +13140,7 @@
       "kind": "implementation",
       "title": "Node process",
       "source": "src/platform.ts:212",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -13145,7 +13160,7 @@
       "kind": "implementation",
       "title": "Node programs",
       "source": "src/platform.ts:222",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -13165,7 +13180,7 @@
       "kind": "implementation",
       "title": "Node terminal",
       "source": "src/platform.ts:241",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -13233,7 +13248,7 @@
       "kind": "implementation",
       "title": "npm installs",
       "source": "src/platform.ts:146",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -13254,7 +13269,7 @@
       "kind": "implementation",
       "title": "npm's reports",
       "source": "src/platform.ts:156",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -13412,7 +13427,7 @@
       "kind": "binding",
       "title": "On a machine, runs are kept on disk",
       "source": "src/platform.ts:495",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "The commands of a shipment and of an advance run as separate processes, each compiling the same graph: what one played, the next can find only on disk.",
@@ -13428,7 +13443,7 @@
       "kind": "implementation",
       "title": "Runs kept on disk",
       "source": "src/platform.ts:403",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -13470,7 +13485,7 @@
       "kind": "implementation",
       "title": "System clock",
       "source": "src/platform.ts:250",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -13940,7 +13955,7 @@
       "kind": "adr",
       "title": "A technology is chosen in one node",
       "source": "src/principles.ts:233",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "Each implementation said which environments it served: the choice of a technology was spread over its realizations, nothing said why, and a test double or a repository over a database port had to be declared as if it touched the platform.",
@@ -14455,6 +14470,22 @@
         "language": "shared",
         "archive": "f57520d042348d7c",
         "differences": "differences.diff"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "releases.G109",
+      "kind": "release",
+      "title": "Generation 109",
+      "source": "src/releases.ts:1611",
+      "fields": {
+        "owner": "trame",
+        "version": "g109",
+        "date": "2026-11-19",
+        "what": "D1: the run plan carries the review of a branch, written in Markdown, which a place that reviews a pull request writes against the lock of the branch it merges into",
+        "fingerprint": "1044691fc5b09d47",
+        "language": "shared",
+        "archive": "48b53a6cd95905bc"
       },
       "diagnostics": []
     },
@@ -16627,7 +16658,7 @@
           "status": "passed"
         },
         {
-          "name": "The example has 107 nodes, 5 scenarios among them",
+          "name": "The example has 114 nodes, 5 scenarios among them",
           "status": "passed"
         },
         {
@@ -17030,7 +17061,7 @@
       "id": "sdlc.ArchitectureApplied",
       "kind": "obligation",
       "title": "The decisions of the architecture hold",
-      "source": "src/sdlc.ts:86",
+      "source": "src/sdlc.ts:88",
       "fields": {
         "owner": "trame"
       },
@@ -17040,7 +17071,7 @@
       "id": "sdlc.ArchitectureRuled",
       "kind": "obligation",
       "title": "The rules of the architecture hold",
-      "source": "src/sdlc.ts:98",
+      "source": "src/sdlc.ts:100",
       "fields": {
         "owner": "trame"
       },
@@ -17050,7 +17081,7 @@
       "id": "sdlc.CandidateChecked",
       "kind": "obligation",
       "title": "The candidate is checked by programs",
-      "source": "src/sdlc.ts:92",
+      "source": "src/sdlc.ts:94",
       "fields": {
         "owner": "trame",
         "params": {
@@ -17063,7 +17094,7 @@
       "id": "sdlc.CandidateKeepsTheLaws",
       "kind": "check",
       "title": "The candidate plays the laws",
-      "source": "src/sdlc.ts:62",
+      "source": "src/sdlc.ts:64",
       "status": "unknown",
       "fields": {
         "owner": "trame"
@@ -17079,23 +17110,21 @@
       "id": "sdlc.CandidateRunsOnTheMachine",
       "kind": "check",
       "title": "The candidate runs on the machine",
-      "source": "src/sdlc.ts:130",
-      "status": "unknown",
+      "source": "src/sdlc.ts:132",
+      "status": "held",
       "fields": {
         "owner": "trame"
       },
       "result": {
         "code": "89b67516"
       },
-      "diagnostics": [
-        "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.EngineCallersIdentified",
       "kind": "obligation",
       "title": "Its callers identified",
-      "source": "src/sdlc.ts:111",
+      "source": "src/sdlc.ts:113",
       "fields": {
         "owner": "trame",
         "gaps": "error"
@@ -17106,8 +17135,8 @@
       "id": "sdlc.EngineCandidate",
       "kind": "artifact",
       "title": "The candidate engine",
-      "source": "src/sdlc.ts:56",
-      "status": "unknown",
+      "source": "src/sdlc.ts:58",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "out/local/trame-cli.ts"
@@ -17116,15 +17145,13 @@
         "path": "out/local/trame-cli.ts",
         "code": "51228c03"
       },
-      "diagnostics": [
-        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.EnginePackagesSafe",
       "kind": "obligation",
       "title": "The packages are safe",
-      "source": "src/sdlc.ts:104",
+      "source": "src/sdlc.ts:106",
       "fields": {
         "owner": "trame"
       },
@@ -17134,7 +17161,7 @@
       "id": "sdlc.EngineVerified",
       "kind": "obligation",
       "title": "The engine is verified",
-      "source": "src/sdlc.ts:70",
+      "source": "src/sdlc.ts:72",
       "fields": {
         "owner": "trame",
         "params": {
@@ -17151,7 +17178,7 @@
       "id": "sdlc.GenerationMode",
       "kind": "policy",
       "title": "How a generation is made",
-      "source": "src/sdlc.ts:119",
+      "source": "src/sdlc.ts:121",
       "fields": {
         "owner": "trame"
       },
@@ -17161,8 +17188,8 @@
       "id": "sdlc.GraphPage",
       "kind": "artifact",
       "title": "The graph page",
-      "source": "src/sdlc.ts:184",
-      "status": "unknown",
+      "source": "src/sdlc.ts:186",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "trame-page.html",
@@ -17172,15 +17199,13 @@
         "path": "trame-page.html",
         "code": "a0f6fde6"
       },
-      "diagnostics": [
-        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.GraphPageOpening",
       "kind": "decision",
       "title": "How the graph page is opened",
-      "source": "src/sdlc.ts:190",
+      "source": "src/sdlc.ts:192",
       "fields": {
         "owner": "trame",
         "value": {
@@ -17193,23 +17218,21 @@
       "id": "sdlc.GraphPageOpens",
       "kind": "check",
       "title": "The graph page opens",
-      "source": "src/sdlc.ts:258",
-      "status": "unknown",
+      "source": "src/sdlc.ts:260",
+      "status": "held",
       "fields": {
         "owner": "trame"
       },
       "result": {
         "code": "2ead2dd3"
       },
-      "diagnostics": [
-        "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.GraphPageScenarioData",
       "kind": "decision",
       "title": "What the scenario of the graph page shows",
-      "source": "src/sdlc.ts:267",
+      "source": "src/sdlc.ts:269",
       "fields": {
         "owner": "trame",
         "value": {
@@ -17222,7 +17245,7 @@
       "id": "sdlc.GraphPageSelectors",
       "kind": "function",
       "title": "What the graph page is asked",
-      "source": "src/sdlc.ts:198",
+      "source": "src/sdlc.ts:200",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -17239,12 +17262,844 @@
       "diagnostics": []
     },
     {
+      "id": "sdlc.IntoMain",
+      "kind": "shipment",
+      "title": "Into the main branch",
+      "source": "src/sdlc.ts:333",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "target": "main"
+      },
+      "result": {
+        "derived": [
+          {
+            "node": "architecture.KnownEffects",
+            "via": "architecture.KnownEffects",
+            "obligation": "sdlc.ArchitectureRuled"
+          },
+          {
+            "node": "architecture.OnlyCommandsWrite",
+            "via": "architecture.OnlyCommandsWrite",
+            "obligation": "sdlc.ArchitectureRuled"
+          },
+          {
+            "node": "architecture.RenderingWithoutGraph",
+            "via": "architecture.RenderingWithoutGraph",
+            "obligation": "sdlc.ArchitectureRuled"
+          },
+          {
+            "node": "sdlc.GraphPageOpens",
+            "via": "browser.BrowserAmendments",
+            "obligation": "sdlc.EngineVerified"
+          },
+          {
+            "node": "command-scenarios.AdvanceInMemory",
+            "via": "commands.Advance",
+            "obligation": "sdlc.EngineVerified"
+          },
+          {
+            "node": "command-scenarios.ValueAmended",
+            "via": "commands.Amend",
+            "obligation": "sdlc.EngineVerified"
+          },
+          {
+            "node": "command-scenarios.ComponentAssembled",
+            "via": "commands.Assemble",
+            "obligation": "sdlc.EngineVerified"
+          },
+          {
+            "node": "command-scenarios.PackagesAudited",
+            "via": "commands.Audit",
+            "obligation": "sdlc.EngineVerified"
+          },
+          {
+            "node": "scenarios.BuildLikeBefore",
+            "via": "commands.Build",
+            "obligation": "sdlc.EngineVerified"
+          },
+          {
+            "node": "command-scenarios.PageDelivered",
+            "via": "commands.Deliver",
+            "obligation": "sdlc.EngineVerified"
+          },
+          {
+            "node": "command-scenarios.DevFollowsTheGraph",
+            "via": "commands.Dev",
+            "obligation": "sdlc.EngineVerified"
+          },
+          {
+            "node": "command-scenarios.DoctorAsks",
+            "via": "commands.Doctor",
+            "obligation": "sdlc.EngineVerified"
+          },
+          {
+            "node": "command-scenarios.PayloadOfTheGraph",
+            "via": "commands.EmitPayload",
+            "obligation": "sdlc.EngineVerified"
+          },
+          {
+            "node": "command-scenarios.PageExported",
+            "via": "commands.Export",
+            "obligation": "sdlc.EngineVerified"
+          },
+          {
+            "node": "command-scenarios.ProjectStarted",
+            "via": "commands.Init",
+            "obligation": "sdlc.EngineVerified"
+          },
+          {
+            "node": "command-scenarios.BuildPlanned",
+            "via": "commands.Plan",
+            "obligation": "sdlc.EngineVerified"
+          },
+          {
+            "node": "command-scenarios.DeclarationsPublished",
+            "via": "commands.Publish",
+            "obligation": "sdlc.EngineVerified"
+          },
+          {
+            "node": "command-scenarios.PublishedValueChanged",
+            "via": "commands.Publish",
+            "obligation": "sdlc.EngineVerified"
+          },
+          {
+            "node": "command-scenarios.ShipmentsRun",
+            "via": "commands.RecordEvidence",
+            "obligation": "sdlc.EngineVerified"
+          },
+          {
+            "node": "command-scenarios.RegistryFilled",
+            "via": "commands.Registry",
+            "obligation": "sdlc.EngineVerified"
+          },
+          {
+            "node": "command-scenarios.LibraryReleased",
+            "via": "commands.Release",
+            "obligation": "sdlc.EngineVerified"
+          },
+          {
+            "node": "command-scenarios.ViewsInTheTerminal",
+            "via": "commands.RenderView",
+            "obligation": "sdlc.EngineVerified"
+          },
+          {
+            "node": "command-scenarios.ComponentRun",
+            "via": "commands.Run",
+            "obligation": "sdlc.EngineVerified"
+          },
+          {
+            "node": "command-scenarios.StagesShipped",
+            "via": "commands.Ship",
+            "obligation": "sdlc.EngineVerified"
+          },
+          {
+            "node": "command-scenarios.SnapshotTaken",
+            "via": "commands.TakeSnapshot",
+            "obligation": "sdlc.EngineVerified"
+          },
+          {
+            "node": "command-scenarios.LawsTested",
+            "via": "commands.TestKinds",
+            "obligation": "sdlc.EngineVerified"
+          },
+          {
+            "node": "command-scenarios.PackagesUpgraded",
+            "via": "commands.Upgrade",
+            "obligation": "sdlc.EngineVerified"
+          },
+          {
+            "node": "command-scenarios.ManifestWritten",
+            "via": "commands.WriteManifest",
+            "obligation": "sdlc.EngineVerified"
+          },
+          {
+            "node": "scenarios.DocumentWords",
+            "via": "documents.Punctuation",
+            "obligation": "sdlc.EngineVerified"
+          },
+          {
+            "node": "scenarios.AmendedBodiesRun",
+            "via": "engine.Assembly",
+            "obligation": "sdlc.EngineVerified"
+          },
+          {
+            "node": "command-scenarios.KindsCarried",
+            "via": "engine.Compiler",
+            "obligation": "sdlc.EngineVerified"
+          },
+          {
+            "node": "scenarios.CompileExample",
+            "via": "engine.Compiler",
+            "obligation": "sdlc.EngineVerified"
+          },
+          {
+            "node": "scenarios.EngineReckons",
+            "via": "engine.Cycles",
+            "obligation": "sdlc.EngineVerified"
+          },
+          {
+            "node": "scenarios.KindLaws",
+            "via": "engine.Laws",
+            "obligation": "sdlc.EngineVerified"
+          },
+          {
+            "node": "command-scenarios.PageOfTheGraph",
+            "via": "page.Page",
+            "obligation": "sdlc.EngineVerified"
+          },
+          {
+            "node": "sdlc.CandidateRunsOnTheMachine",
+            "via": "platform.DiskReading",
+            "obligation": "sdlc.EngineVerified"
+          },
+          {
+            "node": "command-scenarios.CommandLineChooses",
+            "via": "platform.MemoryTerminal",
+            "obligation": "sdlc.EngineVerified"
+          },
+          {
+            "node": "command-scenarios.BodiesReadAndChecked",
+            "via": "platform.WebTreeSitter",
+            "obligation": "sdlc.EngineVerified"
+          },
+          {
+            "node": "sdlc.OpeningTheGraphPage",
+            "via": "sdlc.GraphPageSelectors",
+            "obligation": "sdlc.EngineVerified"
+          }
+        ],
+        "gaps": [],
+        "preceded": [],
+        "reached": [
+          "sdlc.TheEngine",
+          "appearance.ExplorerDrawing",
+          "appearance.GraphDrawing",
+          "appearance.LegendDrawing",
+          "appearance.Motion",
+          "appearance.NarrowScreen",
+          "appearance.Opacities",
+          "appearance.PageLayout",
+          "appearance.Palette",
+          "appearance.Radii",
+          "appearance.Spacing",
+          "appearance.Strokes",
+          "appearance.TimelineDrawing",
+          "appearance.TypeScale",
+          "appearance.Typography",
+          "architecture.AmendmentPlace",
+          "architecture.Browser",
+          "architecture.Bundler",
+          "architecture.Clock",
+          "architecture.CommandLine",
+          "architecture.Compression",
+          "architecture.Decompression",
+          "architecture.FileReading",
+          "architecture.FileTrees",
+          "architecture.FileWriting",
+          "architecture.GraphFeed",
+          "architecture.Hashing",
+          "architecture.HttpServer",
+          "architecture.KeptResults",
+          "architecture.KeptRuns",
+          "architecture.KnownEffects",
+          "architecture.Local",
+          "architecture.ModuleLoader",
+          "architecture.OnlyCommandsWrite",
+          "architecture.PackageInstalls",
+          "architecture.PackageReports",
+          "architecture.PageAmendments",
+          "architecture.PageApp",
+          "architecture.PageMemory",
+          "architecture.PageWindow",
+          "architecture.Paths",
+          "architecture.Prelude",
+          "architecture.Process",
+          "architecture.ProcessLog",
+          "architecture.Programs",
+          "architecture.RenderingWithoutGraph",
+          "architecture.Resources",
+          "architecture.RunStore",
+          "architecture.ServerLog",
+          "architecture.Signatures",
+          "architecture.SyntaxTrees",
+          "architecture.Terminal",
+          "architecture.TerminalLog",
+          "architecture.Test",
+          "architecture.Timer",
+          "architecture.TrameCli",
+          "architecture.TypeScriptCompiler",
+          "architecture.WriteLog",
+          "browser.BrowserAmendments",
+          "browser.BrowserDecompression",
+          "browser.BrowserFeed",
+          "browser.BrowserMemory",
+          "browser.BrowserWindow",
+          "browser.ExplorerFigures",
+          "browser.ShowGraph",
+          "browser.TheBrowserRunsThePage",
+          "browser.ThePageIsAssembled",
+          "command-scenarios.AdvanceInMemory",
+          "command-scenarios.AdvanceSamples",
+          "command-scenarios.AmendmentSamples",
+          "command-scenarios.AssemblySamples",
+          "command-scenarios.BodiesReadAndChecked",
+          "command-scenarios.BodySamples",
+          "command-scenarios.BuildPlanned",
+          "command-scenarios.CommandLineChooses",
+          "command-scenarios.ComponentAssembled",
+          "command-scenarios.ComponentRun",
+          "command-scenarios.DeclarationsPublished",
+          "command-scenarios.DevFollowsTheGraph",
+          "command-scenarios.DevSamples",
+          "command-scenarios.DoctorAsks",
+          "command-scenarios.KindsCarried",
+          "command-scenarios.LawsTested",
+          "command-scenarios.LibraryReleased",
+          "command-scenarios.ManifestWritten",
+          "command-scenarios.PackagesAudited",
+          "command-scenarios.PackagesUpgraded",
+          "command-scenarios.PageDelivered",
+          "command-scenarios.PageExported",
+          "command-scenarios.PageOfTheGraph",
+          "command-scenarios.PayloadOfTheGraph",
+          "command-scenarios.PlanSamples",
+          "command-scenarios.ProjectSamples",
+          "command-scenarios.ProjectStarted",
+          "command-scenarios.PublishedValueChanged",
+          "command-scenarios.RegistryFilled",
+          "command-scenarios.RunSamples",
+          "command-scenarios.ScenarioProjects",
+          "command-scenarios.ShipmentsRun",
+          "command-scenarios.SnapshotTaken",
+          "command-scenarios.StagesShipped",
+          "command-scenarios.SvgSample",
+          "command-scenarios.ValueAmended",
+          "command-scenarios.ViewSamples",
+          "command-scenarios.ViewsInTheTerminal",
+          "commands.Advance",
+          "commands.Amend",
+          "commands.Amending",
+          "commands.Assemble",
+          "commands.Assembler",
+          "commands.Audit",
+          "commands.Build",
+          "commands.BuildComparison",
+          "commands.Deliver",
+          "commands.Dev",
+          "commands.Doctor",
+          "commands.DoctorProbe",
+          "commands.EmitPayload",
+          "commands.Export",
+          "commands.Init",
+          "commands.Plan",
+          "commands.Preparation",
+          "commands.Publish",
+          "commands.RecordEvidence",
+          "commands.ReferencesModule",
+          "commands.Registry",
+          "commands.Release",
+          "commands.RenderView",
+          "commands.Run",
+          "commands.Ship",
+          "commands.ShowView",
+          "commands.TakeSnapshot",
+          "commands.TestKinds",
+          "commands.Upgrade",
+          "commands.ViewByName",
+          "commands.WriteManifest",
+          "conventions.AmendmentNaming",
+          "conventions.DefaultRank",
+          "conventions.DocComment",
+          "conventions.DocumentIds",
+          "conventions.FrozenApi",
+          "conventions.JsonFormatting",
+          "conventions.LanguageNames",
+          "conventions.Layout",
+          "conventions.PreludeApi",
+          "conventions.ProjectStart",
+          "conventions.ReferenceSyntax",
+          "conventions.StepNames",
+          "conventions.TrameCommands",
+          "conventions.TrameEnvironment",
+          "conventions.ViewGroupOrder",
+          "delivery.BundlerLeading",
+          "delivery.DeliveredStyle",
+          "delivery.NamesLed",
+          "documents.LanguageSettings",
+          "documents.MermaidFigures",
+          "documents.NumberDisplay",
+          "documents.Punctuation",
+          "documents.PunctuationOfTheLanguage",
+          "documents.TextRendering",
+          "documents.Units",
+          "documents.VisibleText",
+          "engine.Assembly",
+          "engine.CompilationApi",
+          "engine.Compiler",
+          "engine.Cycles",
+          "engine.DateBundle",
+          "engine.DevServer",
+          "engine.DevService",
+          "engine.Differences",
+          "engine.EngineFingerprint",
+          "engine.Fingerprint",
+          "engine.Fingerprints",
+          "engine.Generator",
+          "engine.GraphApi",
+          "engine.KeptRunsScope",
+          "engine.Laws",
+          "engine.LawsAreRequirements",
+          "engine.Lock",
+          "engine.MachineOutputs",
+          "engine.PageHistory",
+          "engine.PayloadBuilder",
+          "engine.Positions",
+          "engine.Project",
+          "engine.ProjectRuns",
+          "engine.References",
+          "engine.ShipmentPipeline",
+          "engine.StaticAnalysis",
+          "engine.TheLanguageReceivesTheGraph",
+          "engine.TypeScriptOptions",
+          "engine.Views",
+          "engine.Wiring",
+          "generations.AcceptCandidate",
+          "generations.AcceptCandidateCriteria",
+          "generations.Advancement",
+          "generations.EnginePin",
+          "generations.LanguageSharing",
+          "generations.ReleaseRecords",
+          "generations.Releases",
+          "html.AttributePresence",
+          "html.AttributeSelector",
+          "html.ClassSelector",
+          "html.CssDeclaration",
+          "html.CssRule",
+          "html.CssStyleSheets",
+          "html.CssVariable",
+          "html.CustomProperty",
+          "html.Doctype",
+          "html.EscapedText",
+          "html.HtmlAttributes",
+          "html.HtmlBlock",
+          "html.HtmlElement",
+          "html.HtmlEndTag",
+          "html.HtmlHeading",
+          "html.HtmlMarkup",
+          "html.HtmlStartTag",
+          "html.JsonInScript",
+          "html.MediaFeature",
+          "html.MediaRule",
+          "html.NegationSelector",
+          "html.PathData",
+          "html.ScriptElement",
+          "html.SelectorList",
+          "html.SelfClosingTag",
+          "languages.Drivers",
+          "languages.ReadBackWhatIsWritten",
+          "laws.AnswersWithoutCrashing",
+          "laws.AnswersWithoutCrashingCriteria",
+          "laws.BlockingHoleHasOwner",
+          "laws.BlockingHoleHasOwnerCriteria",
+          "laws.ClosedResolution",
+          "laws.ClosedResolutionCriteria",
+          "laws.CompleteDeclaration",
+          "laws.CompleteDeclarationCriteria",
+          "laws.CompleteViewDeclaration",
+          "laws.CompleteViewDeclarationCriteria",
+          "laws.IntermediateFormatOnly",
+          "laws.IntermediateFormatOnlyCriteria",
+          "laws.OrderFree",
+          "laws.OrderFreeCriteria",
+          "laws.SameInputSameAnswer",
+          "laws.SameInputSameAnswerCriteria",
+          "laws.TrustedExtensions",
+          "laws.UnknownWithoutEvidence",
+          "laws.UnknownWithoutEvidenceCriteria",
+          "libraries.LibraryOfAModule",
+          "libraries.LibraryOfAModuleCriteria",
+          "libraries.LibraryReleaseNames",
+          "libraries.ReleaseIsSettled",
+          "libraries.ReleaseIsSettledCriteria",
+          "markdown.Anchor",
+          "markdown.BacktickString",
+          "markdown.BlankLine",
+          "markdown.BlockQuote",
+          "markdown.Blocks",
+          "markdown.CodeBlock",
+          "markdown.CodeSpan",
+          "markdown.CommonMark",
+          "markdown.Details",
+          "markdown.Emphasis",
+          "markdown.Gfm",
+          "markdown.Heading",
+          "markdown.Link",
+          "markdown.ListItem",
+          "markdown.RelativeReference",
+          "markdown.Small",
+          "markdown.StrongEmphasis",
+          "markdown.Table",
+          "markdown.TableCell",
+          "markdown.TableDelimiterRow",
+          "markdown.TableRow",
+          "markup.AroundMarkup",
+          "markup.DocumentMarkup",
+          "markup.ExplorerMarkup",
+          "markup.FigureMarkup",
+          "mermaid.ClassDefinition",
+          "mermaid.Flowchart",
+          "mermaid.Gantt",
+          "mermaid.GanttName",
+          "mermaid.GanttSection",
+          "mermaid.GanttTask",
+          "mermaid.Mermaid",
+          "mermaid.MermaidLabel",
+          "mermaid.MermaidLink",
+          "mermaid.MermaidNode",
+          "mermaid.Milestone",
+          "mermaid.NodeStyle",
+          "mermaid.StyleProperties",
+          "mermaid.Subgraph",
+          "messages.AdvanceMessages",
+          "messages.CommandMessages",
+          "messages.CompilerMessages",
+          "messages.CountsInTheLanguage",
+          "messages.Dates",
+          "messages.DevMessages",
+          "messages.DriverMessages",
+          "messages.EngineViewWords",
+          "messages.KindWords",
+          "messages.Language",
+          "messages.LawMessages",
+          "messages.Lists",
+          "messages.OutputMessages",
+          "messages.PageWords",
+          "messages.PlatformMessages",
+          "messages.RenderingMessages",
+          "messages.ScenarioMessages",
+          "messages.ViewMessages",
+          "messages.ViewWords",
+          "packages.ContinuousIntegration",
+          "packages.CssGrammar",
+          "packages.EsbuildPackage",
+          "packages.HclGrammar",
+          "packages.HtmlGrammar",
+          "packages.NodeTypes",
+          "packages.NpmLockfile",
+          "packages.PackageAudit",
+          "packages.StandardLibrary",
+          "packages.TsxPackage",
+          "packages.TypeScriptGrammar",
+          "packages.TypeScriptPackage",
+          "packages.VersionOrder",
+          "packages.WebTreeSitterPackage",
+          "page.Banner",
+          "page.Brand",
+          "page.CompilationState",
+          "page.DatePicker",
+          "page.DocumentHead",
+          "page.DocumentPicker",
+          "page.FigureMarkers",
+          "page.FontLinks",
+          "page.Logo",
+          "page.MachineHighlighting",
+          "page.MainArea",
+          "page.NarrowScreenRule",
+          "page.NarrowScreenStyle",
+          "page.Navigation",
+          "page.PackedGraph",
+          "page.Page",
+          "page.PageBundle",
+          "page.PageDocument",
+          "page.PageRegions",
+          "page.PageScripts",
+          "page.PageStyle",
+          "page.RenderingModes",
+          "page.RenderingToggle",
+          "page.Shell",
+          "page.SideBar",
+          "page.StandaloneStyle",
+          "page.StatusStyle",
+          "page.StyleThroughVariables",
+          "page.Theme",
+          "page.ThePage",
+          "platform.AmendmentsInPlace",
+          "platform.CompilerReadsDeclarations",
+          "platform.DiskReading",
+          "platform.DiskTrees",
+          "platform.DiskWriting",
+          "platform.EngineFiles",
+          "platform.EngineFilesBesideCode",
+          "platform.Esbuild",
+          "platform.EsbuildBundles",
+          "platform.ExampleProcess",
+          "platform.ExampleRoot",
+          "platform.FilesInMemoryOverTheDisk",
+          "platform.InMemoryScenarios",
+          "platform.InPlaceSources",
+          "platform.LinesOnExit",
+          "platform.LocalPaths",
+          "platform.LocalRegistry",
+          "platform.LocalRegistryPlace",
+          "platform.MemoryFiles",
+          "platform.MemoryHttpServer",
+          "platform.MemoryTemporary",
+          "platform.MemoryTerminal",
+          "platform.NodeCommandLine",
+          "platform.NodeCompression",
+          "platform.NodeHashing",
+          "platform.NodeHttpServer",
+          "platform.NodeMachine",
+          "platform.NodePaths",
+          "platform.NodePlatform",
+          "platform.NodeProcess",
+          "platform.NodePrograms",
+          "platform.NodeTerminal",
+          "platform.NodeTimer",
+          "platform.NoInstallsInTest",
+          "platform.NoReportsInTest",
+          "platform.NpmInstall",
+          "platform.NpmReports",
+          "platform.PackagesByOrigin",
+          "platform.PackagesByTheirOrigin",
+          "platform.PageResources",
+          "platform.RealTypeScript",
+          "platform.ResultsInTheProcess",
+          "platform.RunsByWhatTheyRead",
+          "platform.RunsInTheProcess",
+          "platform.RunsKeptInTheProcess",
+          "platform.RunsKeptOnDisk",
+          "platform.RunsOnDisk",
+          "platform.StoppedClock",
+          "platform.SystemClock",
+          "platform.TestDay",
+          "platform.TestTime",
+          "platform.TramePrelude",
+          "platform.TreeSitterReads",
+          "platform.TsxLoader",
+          "platform.TsxRuns",
+          "platform.TypeScriptRunner",
+          "platform.WebTreeSitter",
+          "principles.ChangesAreClaims",
+          "principles.DataAsDatasets",
+          "principles.DeliveredByTheGraph",
+          "principles.EngineLayer",
+          "principles.EveryLiteralDeclared",
+          "principles.GenerationLayer",
+          "principles.GraphInTypeScript",
+          "principles.GraphLayer",
+          "principles.HistoryInTheSource",
+          "principles.KeysOfParts",
+          "principles.LibrariesAreProjects",
+          "principles.LibrariesByName",
+          "principles.NoHiddenDecision",
+          "principles.NoKindInTheCore",
+          "principles.NoLiteralInTheLanguage",
+          "principles.OneOutputPerReader",
+          "principles.OneWayToRead",
+          "principles.PackagesByName",
+          "principles.PreludeLayer",
+          "principles.ShippedThroughTheGraph",
+          "principles.TechnologyInOneNode",
+          "principles.TrameBuildsTrame",
+          "principles.UndecidedBlocks",
+          "principles.UnknownWithoutEvidence",
+          "principles.VocabularyLayer",
+          "principles.WordsInCatalogs",
+          "product.CandidateDates",
+          "product.ClaimSets",
+          "product.DevDebounce",
+          "product.DevPort",
+          "product.ExecutableSpecification",
+          "product.ReplaceableTechnology",
+          "product.SampleCount",
+          "product.SampledOwners",
+          "product.SampledValues",
+          "product.SeverityOrder",
+          "product.SeverityOrderCriteria",
+          "product.SingleSource",
+          "product.StructureDraws",
+          "product.WrittenOnce",
+          "rendering.Common",
+          "rendering.DocumentsInMarkdown",
+          "rendering.FiguresInMermaid",
+          "rendering.FileFigures",
+          "rendering.FileRendering",
+          "rendering.FileSyntax",
+          "rendering.HtmlSyntax",
+          "rendering.MarkdownSyntax",
+          "rendering.MeaningThenLook",
+          "rendering.MermaidDiagrams",
+          "rendering.OneRendererManySyntaxes",
+          "rendering.PageFigures",
+          "rendering.PageFiguresDrawn",
+          "rendering.PageInHtml",
+          "rendering.PageRendering",
+          "rendering.PageSyntax",
+          "rendering.PlainTextSyntax",
+          "rendering.SentenceSlots",
+          "rendering.SvgFigures",
+          "rendering.TerminalFigures",
+          "rendering.TerminalFiguresAsText",
+          "rendering.TerminalInText",
+          "rendering.TerminalRendering",
+          "rendering.TerminalSyntax",
+          "rendering.TextFigures",
+          "scenarios.AmendedBodiesRun",
+          "scenarios.AmendedDay",
+          "scenarios.BuildLikeBefore",
+          "scenarios.CompileExample",
+          "scenarios.DocumentWords",
+          "scenarios.DocumentWordsData",
+          "scenarios.EngineReckons",
+          "scenarios.ExampleShape",
+          "scenarios.ExpectedDifferences",
+          "scenarios.KindLaws",
+          "scenarios.ReckoningData",
+          "sdlc.ArchitectureApplied",
+          "sdlc.ArchitectureRuled",
+          "sdlc.CandidateChecked",
+          "sdlc.CandidateKeepsTheLaws",
+          "sdlc.CandidateRunsOnTheMachine",
+          "sdlc.EngineCallersIdentified",
+          "sdlc.EngineCandidate",
+          "sdlc.EnginePackagesSafe",
+          "sdlc.EngineVerified",
+          "sdlc.GenerationMode",
+          "sdlc.GraphPage",
+          "sdlc.GraphPageOpening",
+          "sdlc.GraphPageOpens",
+          "sdlc.GraphPageScenarioData",
+          "sdlc.GraphPageSelectors",
+          "sdlc.IntoMain",
+          "sdlc.LanguageServed",
+          "sdlc.MainBranch",
+          "sdlc.Maintainers",
+          "sdlc.MergeMode",
+          "sdlc.NextGeneration",
+          "sdlc.OpeningTheGraphPage",
+          "sdlc.OpenTheGraphPage",
+          "sdlc.PageProgram",
+          "sdlc.PullRequestsOnGitHub",
+          "sdlc.PullRequestWorkflow",
+          "sdlc.RepositorySettingsScript",
+          "sdlc.RunnersWritten",
+          "sdlc.SdlcInMemory",
+          "sdlc.SdlcOnTheMachine",
+          "sdlc.SdlcWords",
+          "sdlc.TrameSdlc",
+          "shipping.Attribution",
+          "shipping.ProgramBundle",
+          "shipping.SdlcEvidence",
+          "shipping.SealedByAttribution",
+          "shipping.ShipmentRunPlan",
+          "shipping.ShipOnlyWhatHolds",
+          "shipping.ShipOnlyWhatHoldsCriteria",
+          "shipping.ShippingRecords",
+          "standards.TreeSitterApi",
+          "standards.TreeSitterQueries",
+          "standards.TypeScriptApi",
+          "syntax.BodyChecks",
+          "syntax.Captures",
+          "syntax.LiteralCategories",
+          "syntax.LiteralDisplay",
+          "syntax.LiteralRoles",
+          "syntax.PredicatesAsTreeSitterReadsThem",
+          "syntax.ReadLanguagesAlike",
+          "syntax.SyntaxReader",
+          "terraform.HclAttribute",
+          "terraform.HclComment",
+          "terraform.HclString",
+          "terraform.HclSyntax",
+          "terraform.HclValue",
+          "terraform.ModuleBlock",
+          "terraform.Terraform",
+          "terraform.TerraformModules",
+          "terraform.TerraformWriter",
+          "text.BoxDrawing",
+          "text.CodeLines",
+          "text.Columns",
+          "text.ItemLine",
+          "text.PaddedCell",
+          "text.PathStep",
+          "text.TerminalColumns",
+          "text.TerminalLines",
+          "text.TerminalText",
+          "text.TreeBranch",
+          "typescript.ArrayLiteral",
+          "typescript.AsExpression",
+          "typescript.Assignment",
+          "typescript.AsyncBlockFunction",
+          "typescript.Await",
+          "typescript.Call",
+          "typescript.ConstDeclaration",
+          "typescript.DefaultImport",
+          "typescript.DocBlock",
+          "typescript.ExportDeclaration",
+          "typescript.IfStatement",
+          "typescript.InlineArray",
+          "typescript.LineComment",
+          "typescript.MemberAccess",
+          "typescript.ModuleTitle",
+          "typescript.NamedImport",
+          "typescript.ObjectBlock",
+          "typescript.ObjectLiteral",
+          "typescript.ObjectType",
+          "typescript.OptionalAccess",
+          "typescript.OptionalPropertySignature",
+          "typescript.Parenthesized",
+          "typescript.ProgramNames",
+          "typescript.Property",
+          "typescript.StrictInequality",
+          "typescript.StringLiteral",
+          "typescript.TypeScript",
+          "typescript.TypeScriptLibraries",
+          "typescript.TypeScriptSyntax",
+          "typescript.TypeScriptWriter",
+          "typescript.UnionType",
+          "typescript.WorldGlobals"
+        ]
+      },
+      "diagnostics": []
+    },
+    {
       "id": "sdlc.LanguageServed",
       "kind": "obligation",
       "title": "The language serves what it says",
-      "source": "src/sdlc.ts:79",
+      "source": "src/sdlc.ts:81",
       "fields": {
         "owner": "trame"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.MainBranch",
+      "kind": "decision",
+      "title": "How the repository merges into main",
+      "source": "src/sdlc.ts:376",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "branch": "main",
+          "checks": [
+            "trame",
+            "std",
+            "ci",
+            "data",
+            "reservations",
+            "poselia"
+          ],
+          "method": "merge",
+          "autoMerge": true,
+          "pages": false
+        },
+        "rejected": {
+          "Squashed": "a branch would merge as one commit, and the generations it advances are each a commit",
+          "An approval required": "the person who opens a pull request with their own account cannot approve it",
+          "The check of geometry": "geometry runs from the registry of a machine, which a runner of GitHub does not have yet",
+          "Pages now": "the site that gathers Trame's graph and Poselia's preview is still to be decided"
+        }
       },
       "diagnostics": []
     },
@@ -17252,7 +18107,7 @@
       "id": "sdlc.Maintainers",
       "kind": "role",
       "title": "Trame's maintainers",
-      "source": "src/sdlc.ts:50",
+      "source": "src/sdlc.ts:52",
       "fields": {
         "owner": "trame",
         "people": [
@@ -17263,10 +18118,20 @@
       "diagnostics": []
     },
     {
+      "id": "sdlc.MergeMode",
+      "kind": "policy",
+      "title": "How a change merges",
+      "source": "src/sdlc.ts:326",
+      "fields": {
+        "owner": "trame"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "sdlc.NextGeneration",
       "kind": "shipment",
       "title": "The next generation",
-      "source": "src/sdlc.ts:304",
+      "source": "src/sdlc.ts:306",
       "status": "unknown",
       "fields": {
         "owner": "trame",
@@ -18124,20 +18989,14 @@
         ]
       },
       "diagnostics": [
-        "warning: To ship: The candidate engine is unknown",
-        "warning: To ship: The graph page is unknown",
-        "warning: To ship: The page's program is unknown",
-        "warning: To ship: The page is assembled is unknown",
-        "warning: To ship: The candidate plays the laws is unknown",
-        "warning: To ship: The candidate runs on the machine is unknown",
-        "warning: To ship: The graph page opens is unknown"
+        "warning: To ship: The candidate plays the laws is unknown"
       ]
     },
     {
       "id": "sdlc.OpeningTheGraphPage",
       "kind": "scenario",
       "title": "The graph page is opened as a person would",
-      "source": "src/sdlc.ts:274",
+      "source": "src/sdlc.ts:276",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -18170,7 +19029,7 @@
       "id": "sdlc.OpenTheGraphPage",
       "kind": "entry",
       "title": "Open the graph page",
-      "source": "src/sdlc.ts:241",
+      "source": "src/sdlc.ts:243",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -18199,8 +19058,8 @@
       "id": "sdlc.PageProgram",
       "kind": "artifact",
       "title": "The page's program",
-      "source": "src/sdlc.ts:177",
-      "status": "unknown",
+      "source": "src/sdlc.ts:179",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "out/browser/page-app.ts"
@@ -18209,15 +19068,100 @@
         "path": "out/browser/page-app.ts",
         "code": "cc111f36"
       },
-      "diagnostics": [
-        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
-      ]
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.PullRequestsOnGitHub",
+      "kind": "decision",
+      "title": "How a pull request is checked on GitHub",
+      "source": "src/sdlc.ts:341",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "on": {
+            "pullRequests": [
+              "main"
+            ]
+          },
+          "job": "trame",
+          "runsOn": "ubuntu-24.04",
+          "node": 22,
+          "artefacts": {
+            "days": 30
+          },
+          "pullRequest": {
+            "review": false,
+            "merge": "onceItHoldsUnlessDecided"
+          }
+        },
+        "rejected": {
+          "Only when a pull request touches the project": "GitHub keeps a pull request waiting for a check it requires and that never ran",
+          "Merged by GitHub whatever it changes": "what people decided would reach main without a person",
+          "The review of the branch": "Trame publishes nothing yet: its graph is published once the plan is done"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.PullRequestWorkflow",
+      "kind": "artifact",
+      "title": "The pull requests' workflow",
+      "source": "src/sdlc.ts:359",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "path": ".github/workflows/trame-pull-request.yml",
+        "media": "application/yaml"
+      },
+      "result": {
+        "path": ".github/workflows/trame-pull-request.yml",
+        "code": "8dd273bc"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.RepositorySettingsScript",
+      "kind": "artifact",
+      "title": "The settings of the repository",
+      "source": "src/sdlc.ts:392",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "path": ".github/settings.sh",
+        "media": "text/x-shellscript"
+      },
+      "result": {
+        "path": ".github/settings.sh",
+        "code": "fe8e1634"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.RunnersWritten",
+      "kind": "shipment",
+      "title": "The files that run it elsewhere",
+      "source": "src/sdlc.ts:406",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "target": "repository"
+      },
+      "result": {
+        "derived": [],
+        "gaps": [],
+        "preceded": [],
+        "reached": [
+          "sdlc.PullRequestWorkflow",
+          "sdlc.RepositorySettingsScript"
+        ]
+      },
+      "diagnostics": []
     },
     {
       "id": "sdlc.SdlcInMemory",
       "kind": "binding",
       "title": "The SDLC in memory",
-      "source": "src/sdlc.ts:164",
+      "source": "src/sdlc.ts:166",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -18229,8 +19173,8 @@
       "id": "sdlc.SdlcOnTheMachine",
       "kind": "binding",
       "title": "The SDLC on the machine",
-      "source": "src/sdlc.ts:152",
-      "status": "unknown",
+      "source": "src/sdlc.ts:154",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "The graph page must be opened as a person opens it: the file exported, in a real browser."
@@ -18241,7 +19185,7 @@
       "id": "sdlc.SdlcWords",
       "kind": "catalog",
       "title": "What the programs of Trame's SDLC say",
-      "source": "src/sdlc.ts:220",
+      "source": "src/sdlc.ts:222",
       "fields": {
         "owner": "trame",
         "messages": "(function)"
@@ -18249,10 +19193,27 @@
       "diagnostics": []
     },
     {
+      "id": "sdlc.TheEngine",
+      "kind": "artifact",
+      "title": "The engine",
+      "source": "src/sdlc.ts:319",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "path": "src",
+        "version": true
+      },
+      "result": {
+        "path": "src",
+        "code": "4c43066f"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "sdlc.TrameSdlc",
       "kind": "component",
       "title": "Trame's SDLC",
-      "source": "src/sdlc.ts:140",
+      "source": "src/sdlc.ts:142",
       "fields": {
         "owner": "trame",
         "language": "typescript",
@@ -30484,6 +31445,11 @@
       "kind": "language"
     },
     {
+      "from": "packages.ContinuousIntegration",
+      "to": "product.SingleSource",
+      "kind": "serves"
+    },
+    {
       "from": "packages.NpmLockfile",
       "to": "product.SingleSource",
       "kind": "serves"
@@ -33689,6 +34655,16 @@
       "kind": "assembledBy"
     },
     {
+      "from": "releases.G109",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G109",
+      "to": "releases.G108",
+      "kind": "assembledBy"
+    },
+    {
       "from": "releases.G11",
       "to": "architecture.TrameCli",
       "kind": "component"
@@ -36384,6 +37360,21 @@
       "kind": "deps"
     },
     {
+      "from": "sdlc.IntoMain",
+      "to": "sdlc.TheEngine",
+      "kind": "ships"
+    },
+    {
+      "from": "sdlc.IntoMain",
+      "to": "architecture.Local",
+      "kind": "environment"
+    },
+    {
+      "from": "sdlc.IntoMain",
+      "to": "sdlc.MergeMode",
+      "kind": "policy"
+    },
+    {
       "from": "sdlc.LanguageServed",
       "to": "std/obligations.Served",
       "kind": "applies"
@@ -36392,6 +37383,16 @@
       "from": "sdlc.LanguageServed",
       "to": "product.ExecutableSpecification",
       "kind": "serves"
+    },
+    {
+      "from": "sdlc.MergeMode",
+      "to": "sdlc.EngineVerified",
+      "kind": "obligations"
+    },
+    {
+      "from": "sdlc.MergeMode",
+      "to": "sdlc.ArchitectureRuled",
+      "kind": "obligations"
     },
     {
       "from": "sdlc.NextGeneration",
@@ -36552,6 +37553,46 @@
       "from": "sdlc.PageProgram",
       "to": "architecture.Browser",
       "kind": "environment"
+    },
+    {
+      "from": "sdlc.PullRequestWorkflow",
+      "to": "ci/github.GitHubWorkflow",
+      "kind": "producedBy"
+    },
+    {
+      "from": "sdlc.PullRequestWorkflow",
+      "to": "sdlc.IntoMain",
+      "kind": "runs"
+    },
+    {
+      "from": "sdlc.PullRequestWorkflow",
+      "to": "sdlc.PullRequestsOnGitHub",
+      "kind": "settings"
+    },
+    {
+      "from": "sdlc.RepositorySettingsScript",
+      "to": "ci/repository.GitHubRepository",
+      "kind": "producedBy"
+    },
+    {
+      "from": "sdlc.RepositorySettingsScript",
+      "to": "sdlc.IntoMain",
+      "kind": "runs"
+    },
+    {
+      "from": "sdlc.RepositorySettingsScript",
+      "to": "sdlc.MainBranch",
+      "kind": "settings"
+    },
+    {
+      "from": "sdlc.RunnersWritten",
+      "to": "sdlc.PullRequestWorkflow",
+      "kind": "ships"
+    },
+    {
+      "from": "sdlc.RunnersWritten",
+      "to": "sdlc.RepositorySettingsScript",
+      "kind": "ships"
     },
     {
       "from": "sdlc.SdlcInMemory",

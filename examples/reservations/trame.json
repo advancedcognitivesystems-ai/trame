@@ -2,7 +2,11 @@
   "title": "Reservations",
   "libraries": {
     "std": "../../std",
-    "data": "../../libs/data"
+    "data": "../../libs/data",
+    "ci": {
+      "path": "../../ci",
+      "version": "0.5.0"
+    }
   },
   "engine": "../../generations/g109"
 }

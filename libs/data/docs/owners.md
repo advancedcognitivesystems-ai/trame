@@ -1,10 +1,10 @@
 # Owners
 
-*What each person must decide, settle or watch on 18 November 2026, and what they own.*
+*What each person must decide, settle or watch on 19 November 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 0 | 71 |
+| trame | 0 | 0 | 0 | 75 |
 
 <a id="trame"></a>
 
@@ -25,6 +25,7 @@ Nothing to decide or watch.
 | [The kinds the library carries](obligations.md#DataKinds) | Vocabulary |  |
 | [What a shipment stores migrates](obligations.md#Migrated) | Requirement | **held** |
 | [Criteria of what a shipment stores](obligations.md#MigratedCriteria) | Acceptance criteria | **held** |
+| [The library of continuous integration](packages.md#ContinuousIntegration) | Package |  |
 | [Trame](packages.md#Language) | Package |  |
 | [std](packages.md#stdLibrary) | Package |  |
 | [An entity is described once](principles.md#DescribedOnce) | Architecture decision | **held** |
@@ -62,7 +63,10 @@ Nothing to decide or watch.
 | [Its functions verified](sdlc.md#FunctionsVerified) | Obligation |  |
 | [The next version](sdlc.md#NextVersion) | Shipment | **held** |
 | [Its packages safe](sdlc.md#PackagesSafe) | Obligation |  |
+| [How a pull request is checked on GitHub](sdlc.md#PullRequestsOnGitHub) | Decision |  |
+| [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **held** |
 | [Its requirements held](sdlc.md#RequirementsServed) | Obligation |  |
+| [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **held** |
 | [The library of data](sdlc.md#TheLibrary) | Artefact | **held** |
 | [How a version is made](sdlc.md#VersionMode) | Policy |  |
 | [A book](shelves.md#Book) | Entity | **held** |

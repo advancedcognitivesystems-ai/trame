@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 18 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 19 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Data · Documents
 
@@ -81,15 +81,27 @@ Acceptance criteria · `MigratedCriteria` · **held**
 
 ## Data · Packages
 
+### The library of continuous integration
+
+Package · `ContinuousIntegration`
+
+- Owner: trame
+- Name: ci
+- Version: 0.5.0
+- How it joins the graph: library
+- Where it comes from: path
+- Its path: ../../ci/releases/0.5.0
+- Serves: Data described once
+
 ### Trame
 
 Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 108
+- Version: 109
 - How it joins the graph: language
-- Its path: ../../generations/g108
+- Its path: ../../generations/g109
 - Serves: Data described once
 
 ### std
@@ -395,6 +407,24 @@ Scenario · `RecordsSeeded` · **held**
 
 ## Data · SDLC
 
+### How a pull request is checked on GitHub
+
+Decision · `PullRequestsOnGitHub`
+
+- Decided by: trame
+- Value: { on: { pullRequests: main }, job: data, runsOn: ubuntu-24.04, node: 22, artefacts: { days: 30 }, pullRequest: { review: false, merge: onceItHoldsUnlessDecided } }
+- Rejected: Only when a pull request touches the project, GitHub keeps a pull request waiting for a check it requires and that never ran; Merged by GitHub whatever it changes, what people decided would reach main without a person
+
+### The pull requests' workflow
+
+Artefact · `PullRequestWorkflow` · **held**
+
+- Owner: trame
+- Path: ../../.github/workflows/data-pull-request.yml
+- Media type: application/yaml
+- Runs elsewhere: The next version
+- Its writer's settings: How a pull request is checked on GitHub
+
 ### The library of data
 
 Artefact · `TheLibrary` · **held**
@@ -411,6 +441,14 @@ Shipment · `NextVersion` · **held**
 - Target: version
 - Ships: The library of data
 - Follows the policy: How a version is made
+
+### The files that run it elsewhere
+
+Shipment · `RunnersWritten` · **held**
+
+- Owner: trame
+- Target: repository
+- Ships: The pull requests' workflow
 
 ### Its decisions applied
 

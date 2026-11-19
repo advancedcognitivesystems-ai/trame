@@ -1,0 +1,2046 @@
+{
+  "shipment": "sdlc.IntoMain",
+  "title": "Into the main branch",
+  "target": "main",
+  "at": "2026-11-19",
+  "by": "claude",
+  "signature": "attribution",
+  "artifacts": [
+    {
+      "node": "sdlc.EngineCandidate",
+      "path": "out/local/trame-cli.ts",
+      "fingerprint": "e107af9c9cf0376e14d4d177d78236c278820bd06d12a0872e0ccf7ebc857a54"
+    },
+    {
+      "node": "sdlc.TheEngine",
+      "path": "src",
+      "fingerprint": "70056b0e0c3584fdb3e15ff38356564d76375a389952ff9247a05e00dede53af"
+    },
+    {
+      "node": "sdlc.GraphPage",
+      "path": "trame-page.html",
+      "fingerprint": "83aefb89fcaea35d02b7707e2d5aae1b2e62281576f70e6b1da8cf41112212f7"
+    }
+  ],
+  "foundations": {
+    "problems": 0
+  },
+  "obligations": [
+    {
+      "node": "sdlc.TheEngine",
+      "kind": "artifact",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "sdlc.TheEngine",
+          "at": "2026-11-19",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "70056b0e0c3584fdb3e15ff38356564d76375a389952ff9247a05e00dede53af",
+          "code": "4c43066f",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "987e2ef986dc7b6b",
+          "seal": "939931ac3563f54329d348bc13c03f879b811d5786953a535e842d58b0d9cc30"
+        }
+      ]
+    },
+    {
+      "node": "architecture.KnownEffects",
+      "kind": "rule",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureRuled",
+      "via": "architecture.KnownEffects"
+    },
+    {
+      "node": "architecture.OnlyCommandsWrite",
+      "kind": "rule",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureRuled",
+      "via": "architecture.OnlyCommandsWrite"
+    },
+    {
+      "node": "architecture.RenderingWithoutGraph",
+      "kind": "rule",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.ArchitectureRuled",
+      "via": "architecture.RenderingWithoutGraph"
+    },
+    {
+      "node": "sdlc.GraphPageOpens",
+      "kind": "check",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 0,
+          "fingerprint": "d877bed6",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "e4b91282",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "091a29ef",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "646a5050",
+          "code": "cae603c5",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "4ce78061",
+          "code": "cae603c5",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "e75879e0",
+          "code": "cae603c5",
+          "engine": "7892d9a176b6ca8f",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "b2938c4b31f50451fced79f73cb04cd8fc04be877dbe0433d5ccc621b8318f61"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "8dc5473b",
+          "code": "cae603c5",
+          "engine": "7bb44e3076451cc5",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "de6c0baab8c46dbaa539fc28a77c904cbe6df5d8f3d3cdaa943b7ad9e526c3e2"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "2da0c3cf",
+          "code": "cae603c5",
+          "engine": "37fff53530297e61",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "33543029b7eac0143e6b09015edc8ea7b3a0192c5b1388a327131730f71626c4"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-30",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "697efa8a",
+          "code": "cae603c5",
+          "engine": "a65551cada3fc05b",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "1ad6fdc0c2dca256c707adcaac05c82cddb0fffe0f354fcc3dc238f30aeaf838"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-30",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "3763b58f",
+          "code": "cae603c5",
+          "engine": "0e49ed12f1ca5fbe",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "797655f436bce7fd18e0ecb11ef1f83597902a593a7d0fdd532414fe25ea566f"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-30",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "71e7ba7f",
+          "code": "cae603c5",
+          "engine": "7729674bebf640d4",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "28532a7551660eaef2a9350136ca88053abba6cc5f4b5def41ebb40a4555fdec"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-30",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "93876e21",
+          "code": "cae603c5",
+          "engine": "429d6815b3cf606f",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "a455c03daa6b9bd1c3cc0a031ea224a56a2e29069490adec79de2d0c17a20754"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-30",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "22d87a61",
+          "code": "cae603c5",
+          "engine": "85b02f09dbd6a7a0",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "f220b35d088f3ce03efdf047e0ccda2164379b6aae84f343e0b5d7a01498a762"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-31",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "62474b17",
+          "code": "cae603c5",
+          "engine": "b2f7959e92dbe055",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "17a047f4c172c54efa5a6922c38d854efb900b407351a86926074b024dee06f1"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-31",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "447e8f75",
+          "code": "cae603c5",
+          "engine": "7b9f31fbc0a62d15",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "5927c258484dc968dd201545e0b87d21ae6292b69bd42168d361954c41db73e5"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-31",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "48c7bbe2",
+          "code": "cae603c5",
+          "engine": "cb52643ba1d1cbaa",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "aab8f4b25e2ac54dd11841ffc5a22589524e0d763a550fc8aa53425775333d93"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-31",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "28dee484",
+          "code": "cae603c5",
+          "engine": "eb306b1c338f7615",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "c3e76ab70b83c0c311dbde21074d2d1f5a2cd349821aa1928b67659180104ed2"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-31",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "1a06fe4b",
+          "code": "cae603c5",
+          "engine": "74d077cf27e815f3",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "87bbc181896563798ec62d9615d8061b3e4be442901933b88f089bd647e65501"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-31",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "910396a0",
+          "code": "cae603c5",
+          "engine": "ee2e5c95ae8e5502",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "c25ec0a48dfea1710d8a5ae3b43a1308018a31c016ecd808f8f3757e935d042d"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-31",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "b4b82482",
+          "code": "cae603c5",
+          "engine": "1f76d36ba049edec",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "0bcf6c50b14083a8b9890845c29f29b5de1233833e0151d3bbb4d451de56a2ea"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-31",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "85374dd4",
+          "code": "bf494bc5",
+          "engine": "c64822361e3d2054",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "7a77cada488cdc7669bf1b07479f91d7cd9691c53a8497c85fff7542849ba6f6"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-10-31",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "60f171fb",
+          "code": "bf494bc5",
+          "engine": "6fec2fa0bc56b3ad",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "3d3b7aef07780c0504760b689127d8f1d87bcdcd7c93bca791cfcec2cb98298d"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-11-01",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "29331313",
+          "code": "bf494bc5",
+          "engine": "a054e73aad6aa579",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "e3502bdf3fae3abd5e3694145a517d24238db66577dc187456eb43b73f674dee"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-11-01",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "3ddb36a6",
+          "code": "bf494bc5",
+          "engine": "d642977f919da8da",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "82af242f6f363b73ce552bfb4fc4c14e90ef06b639c247d0e1b8c8f4eb35f212"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-11-01",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "86ff0379",
+          "code": "db8bd66c",
+          "engine": "864a3bf5ae54fec6",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "69c1a889eb6d042bd041435f7e00378c87ce3f317b291bec6740434b689d56f9"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-11-01",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "94fc6a80",
+          "code": "db8bd66c",
+          "engine": "c64cf8416dff54f6",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "547098706ab633c000578a0489eceae8caf208ce8f19fafd57862bb71d81eeda"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-11-01",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "16215c11",
+          "code": "db8bd66c",
+          "engine": "2b217cd62a6cd073",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "8c5458aded0611195615fda8fb4c15a7ffdb16c4bb363602861e39a625226867"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-11-01",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "9f3d79d8",
+          "code": "db8bd66c",
+          "engine": "92566816ba1ae174",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "2fa1fbf3eee050ef49c592e5b09d465426c56ea189277815986be7e7ce1dd24b"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-11-01",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "e615ea31",
+          "code": "db8bd66c",
+          "engine": "ef8def1ed0ea0f08",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "226a79472618aceaa64e27210f7ffb7a254dd61afbe1532b2eff6e1325e4cf29"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-11-01",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "7cde46b0",
+          "code": "db8bd66c",
+          "engine": "694eabbf31f19d32",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "974b647a3c6994c3aa2802b34f46a780fb6249042493ee398c087b3b4df87473"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-11-02",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "04d01250",
+          "code": "db8bd66c",
+          "engine": "6598eae85cc088ce",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "3e2f6cfb92b56a864de28cb316b15ac307059849472d423512767d1b2f4563cb"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-11-03",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "77aa358e",
+          "code": "4a92dae2",
+          "engine": "864ffa1b64ff9129",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "d36394876a2b0529322749aa97e340ef83877a0aa0c9b409d098b5f6074dccf2"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-11-03",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "dfe62c1b",
+          "code": "4a92dae2",
+          "engine": "074fe8b804967ef6",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "b719affdb6d954a586814781be65d196996a86b27092808e349b9524f94d4cac"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-11-03",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "a448a732",
+          "code": "4a92dae2",
+          "engine": "aa6b9b5c5dc57877",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "a998ce4c588fc9f329331d10762dc817896b781e4dbcc5546f807146cd0380c7"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-11-03",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "6cd46905",
+          "code": "4a92dae2",
+          "engine": "32f6e7e406246b01",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "7cf13f42f10c223c5b8d4f92497f55d6612f9f7f57f588ccd8380deab87e800a"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-11-03",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "ae1e85a0",
+          "code": "4a92dae2",
+          "engine": "413c50361b63ff2c",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "97866f0c480a69fda0ce0bd544c71ae122c5403a27069caea9d9ebfe08c1a0de"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-11-03",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "61a48df9",
+          "code": "4a92dae2",
+          "engine": "9be05502e0c7182b",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "17c496d578e6571c3be3608ffd91eed9468499a0d78be86329c4b43b793e3b95"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-11-04",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "7fbab822",
+          "code": "4a92dae2",
+          "engine": "22c1402e36086e44",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "a40fafedc1989568d9934d2d17d80fc3b9584d5945b5cb777e496285a21df946"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-11-04",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "5b776182",
+          "code": "4a92dae2",
+          "engine": "8a22dee5b7b11c79",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "b5b619199a5ea057cfa5179949f14455ba87387a40792abd19d5fd0e842615ca"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-11-08",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "e9efa47f",
+          "code": "4a92dae2",
+          "engine": "929db2ea12c1f779",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "51ce8d480d7ebfa7ebe7bb26ec75df03049c3bfc60cfd700108c4aa1b1c072ac"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-11-09",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "b7bc8edb",
+          "code": "4a92dae2",
+          "engine": "1a5d45f02c610d51",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "a192173bc7a3f4555c9fda2c69d9754b45c56d564c322757c8bdc2013a9121ea"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-11-10",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "37362c94",
+          "code": "4a92dae2",
+          "engine": "59f20aefeccfc914",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "d0469f5ab38ee623185b3143e0745fb79669b13ed0c1b689c4edf95560498b03"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-11-12",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "853808eb",
+          "code": "4a92dae2",
+          "engine": "85baa19400d3c6fb",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "4ab19bebe7311a1c670ebebb1b3001d69e531f16f94c8f91a3f415fb5db7de99"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-11-18",
+          "source": "check",
+          "value": 0,
+          "fingerprint": "01e203ae",
+          "code": "2ead2dd3",
+          "engine": "a1278671ca5afd12",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "1159562e18feda679d8cde367c710210360036d029dd577ec53569238fa5f193"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-11-18",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "88e1e0ef",
+          "code": "2ead2dd3",
+          "engine": "760ba6a3c07285dd",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "2e42b5135dd41d2a1bdea33031c632bc8727ede2ec9a5af7b279a00b2bebb623"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-11-18",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "d400e2e7",
+          "code": "2ead2dd3",
+          "engine": "bd6e78c45df8d244",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "e84eb9f844429afb3d1d2a2467168e5f7b6e7420f0f2cb06b4e6b7f44eaf1c22"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-11-19",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "fdf05b83",
+          "code": "2ead2dd3",
+          "engine": "987e2ef986dc7b6b",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "430486a9c39380f647d30c317e07707320563d1b0efa84146c42c68f99732322"
+        },
+        {
+          "node": "sdlc.GraphPageOpens",
+          "at": "2026-11-19",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "f44dbf2c",
+          "code": "2ead2dd3",
+          "engine": "987e2ef986dc7b6b",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "f866613e756554c8a1a039885708ef4fc5c5ee89ecdd127ac5cf1c4e2d58b675"
+        }
+      ],
+      "obligation": "sdlc.EngineVerified",
+      "via": "browser.BrowserAmendments"
+    },
+    {
+      "node": "command-scenarios.AdvanceInMemory",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "commands.Advance",
+      "outcome": [
+        {
+          "name": "trame advance stops at the first build that fails",
+          "status": "passed"
+        },
+        {
+          "name": "The generation in place builds first",
+          "status": "passed"
+        },
+        {
+          "name": "The candidate is accepted (  ✓ trame runs g110 |   ✓ reservations runs g110 | Advance succeeded.)",
+          "status": "passed"
+        },
+        {
+          "name": "With --promote, it is frozen as the next generation, its origin written, the pin moved",
+          "status": "passed"
+        },
+        {
+          "name": "The generation frozen records the fingerprint of its engine, by which evidence names it",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.ValueAmended",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "commands.Amend",
+      "outcome": [
+        {
+          "name": "An amendment that makes a criterion fail is not recorded",
+          "status": "passed"
+        },
+        {
+          "name": "A value code is built on is not amended from here",
+          "status": "passed"
+        },
+        {
+          "name": "With --dry-run, what the amendment would change is said, and nothing is written",
+          "status": "passed"
+        },
+        {
+          "name": "The amendment is recorded at the end of src/cancellation.ts, with the import of amendments",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.ComponentAssembled",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "commands.Assemble",
+      "outcome": [
+        {
+          "name": "For Local, a program in TypeScript and its launcher are written, nothing to provision",
+          "status": "passed"
+        },
+        {
+          "name": "The program switches on 2026-11-01 and 2027-01-01: each period built at startup, \"cancelReservation\" answered by the period of the day",
+          "status": "passed"
+        },
+        {
+          "name": "For Production, its infrastructure is written in Terraform",
+          "status": "passed"
+        },
+        {
+          "name": "Without an environment, the assembly is refused and says how to ask for it",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.PackagesAudited",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "commands.Audit",
+      "outcome": [
+        {
+          "name": "trame audit keeps 22 answers of the registry as evidence, none vulnerable",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.BuildLikeBefore",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "commands.Build",
+      "outcome": [
+        {
+          "name": "The build succeeds",
+          "status": "passed"
+        },
+        {
+          "name": "The summary is shown",
+          "status": "passed"
+        },
+        {
+          "name": "graph.json and snapshot.json are written as the engine in place wrote them",
+          "status": "passed"
+        },
+        {
+          "name": "28 documents in Markdown, figures included, as the engine in place wrote them",
+          "status": "passed"
+        },
+        {
+          "name": "30 files written, identical to those of the engine in place",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.PageDelivered",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "commands.Deliver",
+      "outcome": [
+        {
+          "name": "trame deliver writes the page of PoseliaPage, one document",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.DevFollowsTheGraph",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "commands.Dev",
+      "outcome": [
+        {
+          "name": "trame dev serves the page, titled after the project",
+          "status": "passed"
+        },
+        {
+          "name": "It serves the graph, at every date the engine compiled",
+          "status": "passed"
+        },
+        {
+          "name": "The page posts an amendment to trame dev and reads, before anything is recorded, what it would change",
+          "status": "passed"
+        },
+        {
+          "name": "A file written under the project is seen; the graph, compiled again, is announced on the stream",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.DoctorAsks",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "commands.Doctor",
+      "outcome": [
+        {
+          "name": "trame doctor asks 9 questions of the machine, and each is answered",
+          "status": "passed"
+        },
+        {
+          "name": "A program that does not print what it was given fails the doctor, which says so",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.PayloadOfTheGraph",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "commands.EmitPayload",
+      "outcome": [
+        {
+          "name": "The payload holds 114 nodes and 266 documents",
+          "status": "passed"
+        },
+        {
+          "name": "Each document is rendered in Markdown, in text and in HTML",
+          "status": "passed"
+        },
+        {
+          "name": "The figures of the HTML are drawn in SVG",
+          "status": "passed"
+        },
+        {
+          "name": "Two payloads alike differ in nothing",
+          "status": "passed"
+        },
+        {
+          "name": "A node removed, the difference says so",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.PageExported",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "commands.Export",
+      "outcome": [
+        {
+          "name": "The dates are compiled in a fresh process of the engine",
+          "status": "passed"
+        },
+        {
+          "name": "trame export writes trame-page.html, titled after the project",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.ProjectStarted",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "commands.Init",
+      "outcome": [
+        {
+          "name": "trame init writes the configuration: the generation that runs, the libraries",
+          "status": "passed"
+        },
+        {
+          "name": "The first module declares the goal, owned by whoever started the project, and names the language by its name",
+          "status": "passed"
+        },
+        {
+          "name": "Its references are package nodes of its graph: the language, at the generation that started it, and its libraries",
+          "status": "passed"
+        },
+        {
+          "name": "The guide for agents comes with it, and the file that points to it",
+          "status": "passed"
+        },
+        {
+          "name": "Then a fresh engine writes the manifest",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.BuildPlanned",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "commands.Plan",
+      "outcome": [
+        {
+          "name": "trame plan, right after a build, says nothing changes, and writes nothing",
+          "status": "passed"
+        },
+        {
+          "name": "Against a graph.json changed by hand, trame plan says the node it lacks is added, the node it invented is removed, the status it changed changes back, and the issue it added is resolved",
+          "status": "passed"
+        },
+        {
+          "name": "The plan names Into the main branch among the shipments touched: what it ships changes",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.DeclarationsPublished",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "commands.Publish",
+      "outcome": [
+        {
+          "name": "trame publish freezes 0 declarations in trame.lock",
+          "status": "passed"
+        },
+        {
+          "name": "Published again, nothing is new",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.PublishedValueChanged",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "commands.Publish",
+      "outcome": [
+        {
+          "name": "The value of LateFee, changed after it was published, is refused: an amendment changes it",
+          "status": "passed"
+        },
+        {
+          "name": "A migration does not publish a value again: it publishes a form",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.ShipmentsRun",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "commands.RecordEvidence",
+      "outcome": [
+        {
+          "name": "RunnersWritten: its files written by their writers, shipped, with a dossier",
+          "status": "passed"
+        },
+        {
+          "name": "What trame ship built carries the code it was made from",
+          "status": "passed"
+        },
+        {
+          "name": "Each record of evidence carries a seal that matches what it says",
+          "status": "passed"
+        },
+        {
+          "name": "A record changed by hand no longer matches its seal: it is not counted, and the compiler says which",
+          "status": "passed"
+        },
+        {
+          "name": "Preview, in a dry run: delivered, checked by its program, it would ship; no dossier",
+          "status": "passed"
+        },
+        {
+          "name": "trame evidence records OnAPhone, made by hand, attributed to whoever gives it",
+          "status": "passed"
+        },
+        {
+          "name": "someone-else, who is not of the role, is refused",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.RegistryFilled",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "commands.Registry",
+      "outcome": [
+        {
+          "name": "trame registry publishes a generation it names, its language copied: the kernel is a file there",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.LibraryReleased",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "commands.Release",
+      "outcome": [
+        {
+          "name": "In the example, where a value is still to decide, a release is refused",
+          "status": "passed"
+        },
+        {
+          "name": "The library's version is shipped through its graph before it is frozen: its dossier is written",
+          "status": "passed"
+        },
+        {
+          "name": "In the library, 99.0.0 is frozen: its graph, its code, its documents",
+          "status": "passed"
+        },
+        {
+          "name": "Its record is written in the library's module of releases",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.ViewsInTheTerminal",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "commands.RenderView",
+      "outcome": [
+        {
+          "name": "trame view adrs writes the view in plain text",
+          "status": "passed"
+        },
+        {
+          "name": "trame adrs writes the same",
+          "status": "passed"
+        },
+        {
+          "name": "A figure is drawn as text, Reservations API in it",
+          "status": "passed"
+        },
+        {
+          "name": "Asked in JSON, the view is the intermediate format",
+          "status": "passed"
+        },
+        {
+          "name": "\"nothing-named-so\", neither a command nor a view, is refused",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.ComponentRun",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "commands.Run",
+      "outcome": [
+        {
+          "name": "trame run runs the program it assembled",
+          "status": "passed"
+        },
+        {
+          "name": "It exits with the program's status, 3",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.StagesShipped",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "commands.Ship",
+      "outcome": [
+        {
+          "name": "PublicVersion waits for Preview to ship the page first",
+          "status": "passed"
+        },
+        {
+          "name": "Once Preview shipped the page, PublicVersion takes it as Preview shipped it: promoted, not built again",
+          "status": "passed"
+        },
+        {
+          "name": "PublicVersion refuses a page changed since Preview shipped it",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.SnapshotTaken",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "commands.TakeSnapshot",
+      "outcome": [
+        {
+          "name": "trame snapshot writes snapshot.json as the build of the engine in place wrote it",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.LawsTested",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "commands.TestKinds",
+      "outcome": [
+        {
+          "name": "trame test-kinds says the laws of each of the 41 kinds and 19 views hold",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.PackagesUpgraded",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "commands.Upgrade",
+      "outcome": [
+        {
+          "name": "A reference behind the newest version is written again and the manifest runs; at the newest, nothing is written",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.ManifestWritten",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "commands.WriteManifest",
+      "outcome": [
+        {
+          "name": "trame manifest writes where #std/* leads",
+          "status": "passed"
+        },
+        {
+          "name": "The link leads to the version of std the application pins",
+          "status": "passed"
+        },
+        {
+          "name": "The language is named too: #trame/kernel leads to the generation the application pins",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.DocumentWords",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "documents.Punctuation",
+      "outcome": [
+        {
+          "name": "A day is written 17 October 2026, short and as its month",
+          "status": "passed"
+        },
+        {
+          "name": "Items are joined as \"kinds, views and the prelude\"",
+          "status": "passed"
+        },
+        {
+          "name": "A duration is written in the largest unit it is a whole number of",
+          "status": "passed"
+        },
+        {
+          "name": "A ratio is written 50%",
+          "status": "passed"
+        },
+        {
+          "name": "A character nobody sees is shown escaped; a plain text as it is",
+          "status": "passed"
+        },
+        {
+          "name": "The marks between parts are those of en-GB",
+          "status": "passed"
+        },
+        {
+          "name": "1.9.0 comes before 1.10.0",
+          "status": "passed"
+        },
+        {
+          "name": "The releases that break are counted by major version, by minor version before 1.0",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.AmendedBodiesRun",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "engine.Assembly",
+      "outcome": [
+        {
+          "name": "On 2026-11-15, \"cancellation.Refund\" is called as its amendment in force makes it, and its criteria hold",
+          "status": "passed"
+        },
+        {
+          "name": "Assembled for Local that day, ReservationsApi composes the rule with its amendment",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.KindsCarried",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "engine.Compiler",
+      "outcome": [
+        {
+          "name": "examples/kept writes Note, of a kind its library carries: loaded, checked, without error",
+          "status": "passed"
+        },
+        {
+          "name": "Note: what a deployment kept migrates by its changes (a rename, a field dropped), and it holds",
+          "status": "passed"
+        },
+        {
+          "name": "Note: a field stored otherwise since a deployment (written) blocks, until its owner decides",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.CompileExample",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "engine.Compiler",
+      "outcome": [
+        {
+          "name": "TypeScript accepts the example",
+          "status": "passed"
+        },
+        {
+          "name": "The example has 114 nodes, 5 scenarios among them",
+          "status": "passed"
+        },
+        {
+          "name": "No error in the example",
+          "status": "passed"
+        },
+        {
+          "name": "The scenarios of the example hold",
+          "status": "passed"
+        },
+        {
+          "name": "Loaded again, the example reads the same: what the compiler of TypeScript read is kept",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.EngineReckons",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "engine.Cycles",
+      "outcome": [
+        {
+          "name": "A cycle is found once, where the search closes it",
+          "status": "passed"
+        },
+        {
+          "name": "The same seed draws the same numbers",
+          "status": "passed"
+        },
+        {
+          "name": "Another seed draws others",
+          "status": "passed"
+        },
+        {
+          "name": "An integer drawn between 1 and 6 stays between them",
+          "status": "passed"
+        },
+        {
+          "name": "A value has the same fingerprint whatever the order of its keys",
+          "status": "passed"
+        },
+        {
+          "name": "A value changed has another fingerprint",
+          "status": "passed"
+        },
+        {
+          "name": "engine.Compiler gives its module and its identifier",
+          "status": "passed"
+        },
+        {
+          "name": "A value without marks.label and shape.at keeps the rest, an element of a list gone through",
+          "status": "passed"
+        },
+        {
+          "name": "std/algebra gives its library and its own name",
+          "status": "passed"
+        },
+        {
+          "name": "A line of the TypeScript API is written src/engine.ts:10",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.KindLaws",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "engine.Laws",
+      "outcome": [
+        {
+          "name": "42 kinds out of 42 respect all their laws",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.PageOfTheGraph",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "page.Page",
+      "outcome": [
+        {
+          "name": "The page is titled \"Reservations graph\"",
+          "status": "passed"
+        },
+        {
+          "name": "The page carries the graph, packed",
+          "status": "passed"
+        },
+        {
+          "name": "As a fragment, the page leaves its document out",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "sdlc.CandidateRunsOnTheMachine",
+      "kind": "check",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 0,
+          "fingerprint": "4b02460b",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 0,
+          "fingerprint": "30e6588d",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "013d6291",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "36d0ab22",
+          "code": "be80985f",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "fb0f4efe",
+          "code": "37f39c48",
+          "by": "claude",
+          "signature": "attribution"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "8e8f4da2",
+          "code": "3d338393",
+          "engine": "7892d9a176b6ca8f",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "a66b7e146585163f56940f181ddce0078430c37efd24ceb7188d9267a3aaca37"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "e3fb40a0",
+          "code": "86d094a4",
+          "engine": "7bb44e3076451cc5",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "1529b3c014da1db24df0d8e11947d9e517e59fdbcc6009c1b914a73b8ef6c34b"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-29",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "7ec77676",
+          "code": "836b2536",
+          "engine": "37fff53530297e61",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "d21be9b56a2beb3e95fef17252950268d4005d1cff8e2672729cb1727f8d6b69"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-30",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "8623d6bf",
+          "code": "f94201d7",
+          "engine": "a65551cada3fc05b",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "192a6825260b252f7321bbe27c46a470318f086f48c322c40a81eecdbbf2711a"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-30",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "0fe4fe4b",
+          "code": "c8166ab0",
+          "engine": "0e49ed12f1ca5fbe",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "6454a5d7411177a65a4200538af74c42951c927a761d88997541b13cbc11e2ef"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-30",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "16c14e77",
+          "code": "f3442365",
+          "engine": "7729674bebf640d4",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "a8377b8467aa4ec20bb54d007a88ae5857e10d5f147d53dacb95621471ed320b"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-30",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "544ab305",
+          "code": "13356db4",
+          "engine": "429d6815b3cf606f",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "8049593edfd33e1f20bcecd4c7552aba5e148ade98dfc555ef1861303d703cf9"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-30",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "7edef7f0",
+          "code": "157b1b5a",
+          "engine": "85b02f09dbd6a7a0",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "9523269893c9158ffde9553c274010c0d40f834d5f2812ea5e42ff566b640d2f"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-31",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "3b45e972",
+          "code": "3ae13647",
+          "engine": "b2f7959e92dbe055",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "9dbb7f89df7df7426618c18cd5f1d4f1d1243eab2c7029243d3be56a7e6504d8"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-31",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "3b3e79cf",
+          "code": "4b879195",
+          "engine": "7b9f31fbc0a62d15",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "0422385a0d62efe0661630ebcdf9a262d8383693a9ff23c82baf80ea668525d4"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-31",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "4ddad128",
+          "code": "ef297744",
+          "engine": "cb52643ba1d1cbaa",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "37fbc3ac2e128bf82123d56bfb33524a77bbb338c362dab3bce05cda5068a694"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-31",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "58078529",
+          "code": "93824d25",
+          "engine": "eb306b1c338f7615",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "36c467a59a990745b9a59ce4e95bf35630c26fe330dcd9da6cf23262d6be79db"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-31",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "e9ecad69",
+          "code": "acaecd75",
+          "engine": "74d077cf27e815f3",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "08b8451eb68329eb95083117dce65d3894bfc9d6bd2c36f23f8f10e42eae00cd"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-31",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "ee9c31eb",
+          "code": "6dbc58d1",
+          "engine": "ee2e5c95ae8e5502",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "47ac333987f446b4152fe7972d124b3220d3f17bd21c1929a2b31f5ea3a98533"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-31",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "6036f001",
+          "code": "cccf6256",
+          "engine": "1f76d36ba049edec",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "773753b8baf0995c897e7f874f2bb72dd2be7208a37728eee77d9f8a7996be0f"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-10-31",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "29413575",
+          "code": "766a3e54",
+          "engine": "6fec2fa0bc56b3ad",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "199feefee2d0ca45f13a7d3929385b712e3d6fb25a8fe86d8e133e8a2848e3dd"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-11-01",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "6be5f2dd",
+          "code": "1d62fcf9",
+          "engine": "a054e73aad6aa579",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "305ca8c56d68260bc51b3671938e77efaf511315e5651b1d7a66d7dab790e2fc"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-11-01",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "66e6736d",
+          "code": "65960aef",
+          "engine": "d642977f919da8da",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "a37062d47169daff45beddb992571c48fd17abd10b702fd3f8de36fd031f66d5"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-11-01",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "a06be0cb",
+          "code": "34871d0a",
+          "engine": "864a3bf5ae54fec6",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "f4451afe5c8f29aadb18b444732bbdc4aba5ea614fa7f0d04095545c8f9463d4"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-11-01",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "9614b019",
+          "code": "1aaa375b",
+          "engine": "c64cf8416dff54f6",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "253c5f4e250ea7ee573e17ca396242bb35a1f093e1c4e1b83da833927095b96a"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-11-01",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "4bbfcb32",
+          "code": "fa23cf7a",
+          "engine": "2b217cd62a6cd073",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "4f28a2ec9a7a48097bcb2cf251d5e4df99f6357b59e501df87c12d9d9e1db86e"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-11-01",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "5fcf8ec3",
+          "code": "615270f3",
+          "engine": "92566816ba1ae174",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "38052e8404548a94c222187af5d15c918dab4fae39cd15ebfba0f5f7fc1d409a"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-11-01",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "b04dbc6a",
+          "code": "48d65ea0",
+          "engine": "ef8def1ed0ea0f08",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "63efc4ba19131c230c2538ee2a93b3aa01f1968baeaacf7b26e9b55e13de7527"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-11-01",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "126cb9b4",
+          "code": "b5255c9e",
+          "engine": "694eabbf31f19d32",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "8cd84e2ce807d5ad1fdd22e7c6329a03c83a6e9a242b7f57cb817e2549361ea2"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-11-02",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "68517b90",
+          "code": "4f354863",
+          "engine": "6598eae85cc088ce",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "22f02a3d51ac2aa00f1b7ded2b972b3542670aa9b5e088c6c3da738b13c193b1"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-11-03",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "b266caa1",
+          "code": "3a3371d0",
+          "engine": "864ffa1b64ff9129",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "39b0db1d8d4e267d63873333c65043ee99bf69630be28f5f868f83523ee28291"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-11-03",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "e5e656fb",
+          "code": "3a3371d0",
+          "engine": "074fe8b804967ef6",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "dab27d9595ce456f951bf6ac95ac618cfbce647183503603100fa863b5332efe"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-11-03",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "4fa170da",
+          "code": "3a3371d0",
+          "engine": "aa6b9b5c5dc57877",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "b7a9b55f14e358121698163ab50c496e21bfdc3fafa99b94aa2dc6d9d485e4b0"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-11-03",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "4743d753",
+          "code": "ed1b8fa9",
+          "engine": "32f6e7e406246b01",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "63b86e805da8654aa53c7ed8b265faa12afba679ced95183cafe81c46be25e3a"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-11-03",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "65d3bd72",
+          "code": "37d3ccdd",
+          "engine": "413c50361b63ff2c",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "1689e456462631e013646ca1a0a50e479d21c1a1e74a1c35261e68e4b5593a28"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-11-03",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "4464d9b6",
+          "code": "4144788a",
+          "engine": "9be05502e0c7182b",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "92f33967dd66b4761ce4b066d4291229b938c4999de221ad7f4c8ecc7278ddc3"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-11-04",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "48aaf129",
+          "code": "cb6daaa8",
+          "engine": "22c1402e36086e44",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "494c2e712f0797c161a14341c115f2127eacae802c55c12f8474a6ec7a27925f"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-11-04",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "ae88a340",
+          "code": "cb6daaa8",
+          "engine": "8a22dee5b7b11c79",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "b2a6c5d49e3f133b90f40e5beb4cb9f36f9d84a42883b5baf4d021440f233aa3"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-11-08",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "47d8b7ba",
+          "code": "2890e05c",
+          "engine": "929db2ea12c1f779",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "b08937ab55bdc3260b38fedc95088ca0321f3ff3ef7114bce7d7a8e361703c70"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-11-09",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "8826cad8",
+          "code": "4dcdbe48",
+          "engine": "1a5d45f02c610d51",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "b2910dbd5b4119fb5191d5bc555595a2e4d33e027066e401b531e9bffe9abd1f"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-11-10",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "c08827fa",
+          "code": "df53e5e0",
+          "engine": "59f20aefeccfc914",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "c40ac2d28a344eec7f04778989b71a024f69e6c621908d0959c8eef7c74e064c"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-11-12",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "da95d395",
+          "code": "2d975786",
+          "engine": "85baa19400d3c6fb",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "a2a94458f7cb9389cbea52c93c1de177c77423f5055b754c5f01280369a0aa7c"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-11-18",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "0c0be064",
+          "code": "5265c617",
+          "engine": "a1278671ca5afd12",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "ebbce9e362901898cde1b890772bd0eb5383c4af04e3dfc7cedf5357bd3530ee"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-11-18",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "a516821b",
+          "code": "5265c617",
+          "engine": "760ba6a3c07285dd",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "418efb8a163adc84d600a0d7ae067270a08338eae8e2c13efd0905e23f37635c"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-11-18",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "fdaa1af0",
+          "code": "89b67516",
+          "engine": "bd6e78c45df8d244",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "2538d42eb3a5877c556134c6fd71cdb22bc7553f085a5aea3400473b714353af"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-11-19",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "caf77099",
+          "code": "89b67516",
+          "engine": "987e2ef986dc7b6b",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "45a7f65960137bd490546060c68864ebc3f8dc89d9236316c5b88370cc995359"
+        },
+        {
+          "node": "sdlc.CandidateRunsOnTheMachine",
+          "at": "2026-11-19",
+          "source": "check",
+          "value": 1,
+          "fingerprint": "0443026d",
+          "code": "89b67516",
+          "engine": "987e2ef986dc7b6b",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "4d6aaa64e09b7829337d780d2f2b7f6baaec15d3074caa963a62a1d031f712bb"
+        }
+      ],
+      "obligation": "sdlc.EngineVerified",
+      "via": "platform.DiskReading"
+    },
+    {
+      "node": "command-scenarios.CommandLineChooses",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "platform.MemoryTerminal",
+      "outcome": [
+        {
+          "name": "Nothing typed, or an option first, is the build",
+          "status": "passed"
+        },
+        {
+          "name": "\"adrs\" goes to the command that takes any word, with the names of the others",
+          "status": "passed"
+        },
+        {
+          "name": "Without such a command, \"nothing-named-so\" is refused",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "command-scenarios.BodiesReadAndChecked",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "platform.WebTreeSitter",
+      "outcome": [
+        {
+          "name": "The reader finds the 2 literals of a body, with their roles",
+          "status": "passed"
+        },
+        {
+          "name": "A body that imports ./limits is refused: a hidden dependency",
+          "status": "passed"
+        },
+        {
+          "name": "A body that reaches the platform through fetch is refused, unless its kind may touch it",
+          "status": "passed"
+        },
+        {
+          "name": "A file body that exports nothing is refused",
+          "status": "passed"
+        },
+        {
+          "name": "A text that does not follow the grammar is refused, with its places",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "sdlc.OpeningTheGraphPage",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.EngineVerified",
+      "via": "sdlc.GraphPageSelectors",
+      "outcome": [
+        {
+          "name": "A graph page that shows everything passes, and says so",
+          "status": "passed"
+        },
+        {
+          "name": "A graph page whose figure is not drawn, raising an error, fails and says why",
+          "status": "passed"
+        }
+      ]
+    }
+  ],
+  "deployed": []
+}

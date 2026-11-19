@@ -25,6 +25,7 @@
   },
   "type": "module",
   "imports": {
+    "#ci/*": "./ci/releases/0.5.0/src/*.ts",
     "#std/*": "./std/releases/0.19.0/src/*.ts",
     "#trame/internal": "./trame/internal.ts",
     "#trame/kernel": "./trame/kernel.ts",

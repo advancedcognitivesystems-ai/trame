@@ -1,7 +1,7 @@
 /** Standard library · Packages */
 
 import { pkg } from "#trame/kinds/package"
-import { RealizedOnce } from "./product"
+import { RealizedOnce, VersionsThatHold } from "./product"
 
 /**
  * Trame
@@ -9,6 +9,16 @@ import { RealizedOnce } from "./product"
  * owner moves it when a version of the library needs a newer language.
  */
 export const Language = pkg({
-  owner: "trame", packageName: "trame", version: "108", joins: "language", from: "path", at: "../generations/g108",
+  owner: "trame", packageName: "trame", version: "109", joins: "language", from: "path", at: "../generations/g109",
   serves: [RealizedOnce],
+})
+
+/**
+ * The library of continuous integration
+ * The writers of the files that run a shipment elsewhere (GitHub Actions), at the version the project uses, by its path
+ * in Trame's repository: the workflow that checks each pull request is written from the graph.
+ */
+export const ContinuousIntegration = pkg({
+  owner: "trame", packageName: "ci", version: "0.5.0", joins: "library", from: "path", at: "../ci/releases/0.5.0",
+  serves: [VersionsThatHold],
 })

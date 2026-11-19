@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 18 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 19 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Poselia · The app in a browser
 
@@ -819,10 +819,10 @@ Package · `ContinuousIntegration`
 
 - Owner: ghalaax
 - Name: ci
-- Version: 0.4.0
+- Version: 0.5.0
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: ../../ci/releases/0.4.0
+- Its path: ../../ci/releases/0.5.0
 - Serves: Practise yoga on one's own, guided
 
 ### Data
@@ -855,10 +855,10 @@ Package · `Language`
 
 - Owner: ghalaax
 - Name: trame
-- Version: 108
+- Version: 109
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../../generations/g108
+- Its path: ../../generations/g109
 - Serves: Practise yoga on one's own, guided
 
 ### The standard library
@@ -1280,6 +1280,14 @@ Decision · `PreviewOnGitHub`
 - Value: { on: { manual: true, branches: main }, runsOn: ubuntu-24.04, node: 22, artefacts: { days: 30, evidence: { days: 90 } } }
 - Rejected: At each pull request, a preview is placed where it is served: a pull request would place a page nobody merged; On a schedule, nothing changes the page between two pushes; The evidence not kept, what was checked, by whom and on which page would stay on a machine GitHub throws away; GitHub's ninety days for the page too, a preview replaced every push need not stay three months
 
+### How a pull request is checked on GitHub
+
+Decision · `PullRequestsOnGitHub`
+
+- Decided by: ghalaax
+- Value: { on: { pullRequests: main }, job: poselia, runsOn: ubuntu-24.04, node: 22, artefacts: { days: 30 }, pullRequest: { review: true, merge: onceItHoldsUnlessDecided } }
+- Rejected: Only when a pull request touches the project, GitHub keeps a pull request waiting for a check it requires and that never ran; Merged by GitHub whatever it changes, what people decided would reach main without a person
+
 ### What the scenarios of the SDLC write
 
 Decision · `SdlcScenarioData`
@@ -1457,6 +1465,24 @@ Artefact · `PreviewWorkflow` · **held**
 - Its writer's settings: When the preview runs on GitHub, and what it keeps there
 - Makes available, once shipped: Poselia's page
 
+### The pull requests' workflow
+
+Artefact · `PullRequestWorkflow` · **held**
+
+- Owner: ghalaax
+- Path: ../../.github/workflows/poselia-pull-request.yml
+- Media type: application/yaml
+- Runs elsewhere: Into the main branch
+- Its writer's settings: How a pull request is checked on GitHub
+
+### Poselia
+
+Artefact · `ThePoseliaApp` · **held**
+
+- Owner: ghalaax
+- Path: src
+- A version of the project: true
+
 ### On a phone
 
 Check · `OnAPhone` · **unknown**
@@ -1483,6 +1509,15 @@ Review · `ContentReviewed` · **unknown**
 - Owner: ghalaax
 - Reviews: Poses, Sequences
 - By the role: A teacher who practises
+
+### Into the main branch
+
+Shipment · `IntoMain` · **held**
+
+- Owner: ghalaax
+- Target: main
+- Ships: Poselia
+- Follows the policy: How a change merges
 
 ### A preview
 
@@ -1512,7 +1547,7 @@ Shipment · `RunnersWritten` · **held**
 
 - Owner: ghalaax
 - Target: repository
-- Ships: The preview's workflow, The preview's script
+- Ships: The preview's workflow, The preview's script, The pull requests' workflow
 
 ### After the preview
 
@@ -1590,12 +1625,27 @@ Obligation · `ProgramChecks`
 - Owner: ghalaax
 - Serves: Practise yoga on one's own, guided
 
+### What people decided, published
+
+Obligation · `PublishedBeforeMerging`
+
+- Owner: ghalaax
+- A gap weighs: error
+- Serves: Practise yoga on one's own, guided
+
 ### The rules of the app hold
 
 Obligation · `RulesHeld`
 
 - Owner: ghalaax
 - Serves: Practise yoga on one's own, guided
+
+### How a change merges
+
+Policy · `MergeMode`
+
+- Owner: ghalaax
+- Its obligations: What people decided, published
 
 ### The way of a preview
 

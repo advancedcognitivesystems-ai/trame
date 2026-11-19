@@ -703,6 +703,14 @@ Scenario · `StoragePrepared` · **held**
 
 ## Reservations · SDLC
 
+### How a pull request is checked on GitHub
+
+Decision · `PullRequestsOnGitHub`
+
+- Decided by: karim
+- Value: { on: { pullRequests: main }, job: reservations, runsOn: ubuntu-24.04, node: 22, artefacts: { days: 30 }, pullRequest: { review: true, merge: onceItHoldsUnlessDecided } }
+- Rejected: Only when a pull request touches the project, GitHub keeps a pull request waiting for a check it requires and that never ran; Merged by GitHub whatever it changes, what people decided would reach main without a person
+
 ### The service's SDLC
 
 Component · `ReservationsSdlc`
@@ -755,6 +763,24 @@ Artefact · `ProductionProgram` · **unknown**
 - Path: out/production/reservations-api.ts
 - Produced by: Reservations API
 
+### The pull requests' workflow
+
+Artefact · `PullRequestWorkflow` · **unknown**
+
+- Owner: karim
+- Path: ../../.github/workflows/reservations-pull-request.yml
+- Media type: application/yaml
+- Runs elsewhere: Into the main branch
+- Its writer's settings: How a pull request is checked on GitHub
+
+### The service
+
+Artefact · `TheService` · **unknown**
+
+- Owner: karim
+- Path: src
+- A version of the project: true
+
 ### On a laptop
 
 Check · `OnALaptop` · **unknown**
@@ -774,6 +800,15 @@ Check · `OnStaging` · **unknown**
 - Checks: The program for production
 - Signed by: The operators
 - Verifies: Node HTTP server, Production Postgres database, Real payment provider, System clock
+
+### Into the main branch
+
+Shipment · `IntoMain` · **unknown**
+
+- Owner: karim
+- Target: main
+- Ships: The service
+- Follows the policy: How a change merges
 
 ### On this machine
 
@@ -795,6 +830,14 @@ Shipment · `Release` · **unknown**
 - Ships: The program for production, The program for a laptop
 - Programs assembled for: Production
 - Follows the policy: The way of a release
+
+### The files that run it elsewhere
+
+Shipment · `RunnersWritten` · **unknown**
+
+- Owner: karim
+- Target: repository
+- Ships: The pull requests' workflow
 
 ### Who calls, identified
 
@@ -848,6 +891,14 @@ Obligation · `PackagesSafe`
 - Owner: karim
 - Serves: Cancel without stress
 
+### What people decided, published
+
+Obligation · `PublishedBeforeMerging`
+
+- Owner: karim
+- A gap weighs: error
+- Serves: Cancel without stress
+
 ### The rules hold
 
 Obligation · `RulesHeld`
@@ -861,6 +912,13 @@ Policy · `MachineMode`
 
 - Owner: karim
 - Its obligations: The code is verified, The rules hold, What the service keeps, migrated
+
+### How a change merges
+
+Policy · `MergeMode`
+
+- Owner: karim
+- Its obligations: What people decided, published
 
 ### The way of a release
 

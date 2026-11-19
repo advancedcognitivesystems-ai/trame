@@ -244,6 +244,13 @@
       "range": "6a09e667",
       "rejected": "6a09e667"
     },
+    "sdlc.PullRequestsOnGitHub": {
+      "statement": "c2213f33",
+      "value": "29eda3a0",
+      "review": "6a09e667",
+      "range": "6a09e667",
+      "rejected": "20a27e26"
+    },
     "standards.PaymentProviderApi": {
       "statement": "cbab046e",
       "constants": "5e2cb86a",

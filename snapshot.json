@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-30",
+  "at": "2026-11-19",
   "nodes": [
     {
       "id": "appearance.ExplorerDrawing",
@@ -1062,7 +1062,7 @@
       "id": "browser.BrowserAmendments",
       "kind": "implementation",
       "title": "Amendments sent to trame dev",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1081,7 +1081,7 @@
       "id": "browser.BrowserDecompression",
       "kind": "implementation",
       "title": "The browser's gzip",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1098,7 +1098,7 @@
       "id": "browser.BrowserFeed",
       "kind": "implementation",
       "title": "The globals of the page, and trame dev",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1116,7 +1116,7 @@
       "id": "browser.BrowserMemory",
       "kind": "implementation",
       "title": "Local storage",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1132,7 +1132,7 @@
       "id": "browser.BrowserWindow",
       "kind": "implementation",
       "title": "The browser's window",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1150,7 +1150,7 @@
       "id": "browser.ExplorerFigures",
       "kind": "function",
       "title": "Explorer of a graph",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1187,7 +1187,7 @@
       "id": "browser.ShowGraph",
       "kind": "entry",
       "title": "Show the graph",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "trigger": {
@@ -1240,7 +1240,7 @@
       "id": "browser.TheBrowserRunsThePage",
       "kind": "binding",
       "title": "The browser runs the page",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "The page's script took what it needed from the browser itself, here and there: the graph could not say what the page asks of the browser, nor try it elsewhere.",
@@ -1255,7 +1255,7 @@
       "id": "browser.ThePageIsAssembled",
       "kind": "adr",
       "title": "The page is assembled",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "The page's script built by hand what it shared with the engine and wrote its values (classes, identifiers, the explorer's geometry) as literals the catalogue could not see: a change in the graph did not reach it.",
@@ -8081,6 +8081,19 @@
       }
     },
     {
+      "id": "packages.ContinuousIntegration",
+      "kind": "package",
+      "title": "The library of continuous integration",
+      "fields": {
+        "owner": "trame",
+        "packageName": "ci",
+        "version": "0.5.0",
+        "joins": "library",
+        "from": "path",
+        "at": "ci/releases/0.5.0"
+      }
+    },
+    {
       "id": "packages.CssGrammar",
       "kind": "package",
       "title": "Grammar of CSS",
@@ -9522,7 +9535,7 @@
       "id": "platform.DiskReading",
       "kind": "implementation",
       "title": "System files, for reading",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "body": {
@@ -9535,7 +9548,7 @@
       "id": "platform.DiskTrees",
       "kind": "implementation",
       "title": "Trees on disk",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -9553,7 +9566,7 @@
       "id": "platform.DiskWriting",
       "kind": "implementation",
       "title": "System files, for writing",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "body": {
@@ -9898,7 +9911,7 @@
       "id": "platform.NodeHttpServer",
       "kind": "implementation",
       "title": "Node HTTP server",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "body": {
@@ -9911,7 +9924,7 @@
       "id": "platform.NodeMachine",
       "kind": "binding",
       "title": "On a machine, Node.js reads, writes and runs",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "What changes the world (files written, processes, the terminal, the clock) is real only on a machine; the scenarios keep it in memory.",
@@ -9952,7 +9965,7 @@
       "id": "platform.NodeProcess",
       "kind": "implementation",
       "title": "Node process",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -9970,7 +9983,7 @@
       "id": "platform.NodePrograms",
       "kind": "implementation",
       "title": "Node programs",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -9988,7 +10001,7 @@
       "id": "platform.NodeTerminal",
       "kind": "implementation",
       "title": "Node terminal",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -10048,7 +10061,7 @@
       "id": "platform.NpmInstall",
       "kind": "implementation",
       "title": "npm installs",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -10067,7 +10080,7 @@
       "id": "platform.NpmReports",
       "kind": "implementation",
       "title": "npm's reports",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -10207,7 +10220,7 @@
       "id": "platform.RunsKeptOnDisk",
       "kind": "binding",
       "title": "On a machine, runs are kept on disk",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "The commands of a shipment and of an advance run as separate processes, each compiling the same graph: what one played, the next can find only on disk.",
@@ -10221,7 +10234,7 @@
       "id": "platform.RunsOnDisk",
       "kind": "implementation",
       "title": "Runs kept on disk",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -10259,7 +10272,7 @@
       "id": "platform.SystemClock",
       "kind": "implementation",
       "title": "System clock",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -10671,7 +10684,7 @@
       "id": "principles.TechnologyInOneNode",
       "kind": "adr",
       "title": "A technology is chosen in one node",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "Each implementation said which environments it served: the choice of a technology was spread over its realizations, nothing said why, and a test double or a repository over a database port had to be declared as if it touched the platform.",
@@ -11116,6 +11129,20 @@
         "language": "shared",
         "archive": "f57520d042348d7c",
         "differences": "differences.diff"
+      }
+    },
+    {
+      "id": "releases.G109",
+      "kind": "release",
+      "title": "Generation 109",
+      "fields": {
+        "owner": "trame",
+        "version": "g109",
+        "date": "2026-11-19",
+        "what": "D1: the run plan carries the review of a branch, written in Markdown, which a place that reviews a pull request writes against the lock of the branch it merges into",
+        "fingerprint": "1044691fc5b09d47",
+        "language": "shared",
+        "archive": "48b53a6cd95905bc"
       }
     },
     {
@@ -13324,7 +13351,7 @@
       "id": "sdlc.CandidateRunsOnTheMachine",
       "kind": "check",
       "title": "The candidate runs on the machine",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame"
       }
@@ -13342,7 +13369,7 @@
       "id": "sdlc.EngineCandidate",
       "kind": "artifact",
       "title": "The candidate engine",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "out/local/trame-cli.ts"
@@ -13383,7 +13410,7 @@
       "id": "sdlc.GraphPage",
       "kind": "artifact",
       "title": "The graph page",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "trame-page.html",
@@ -13405,7 +13432,7 @@
       "id": "sdlc.GraphPageOpens",
       "kind": "check",
       "title": "The graph page opens",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame"
       }
@@ -13440,11 +13467,49 @@
       }
     },
     {
+      "id": "sdlc.IntoMain",
+      "kind": "shipment",
+      "title": "Into the main branch",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "target": "main"
+      }
+    },
+    {
       "id": "sdlc.LanguageServed",
       "kind": "obligation",
       "title": "The language serves what it says",
       "fields": {
         "owner": "trame"
+      }
+    },
+    {
+      "id": "sdlc.MainBranch",
+      "kind": "decision",
+      "title": "How the repository merges into main",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "branch": "main",
+          "checks": [
+            "trame",
+            "std",
+            "ci",
+            "data",
+            "reservations",
+            "poselia"
+          ],
+          "method": "merge",
+          "autoMerge": true,
+          "pages": false
+        },
+        "rejected": {
+          "Squashed": "a branch would merge as one commit, and the generations it advances are each a commit",
+          "An approval required": "the person who opens a pull request with their own account cannot approve it",
+          "The check of geometry": "geometry runs from the registry of a machine, which a runner of GitHub does not have yet",
+          "Pages now": "the site that gathers Trame's graph and Poselia's preview is still to be decided"
+        }
       }
     },
     {
@@ -13457,6 +13522,14 @@
           "ghalaax",
           "claude"
         ]
+      }
+    },
+    {
+      "id": "sdlc.MergeMode",
+      "kind": "policy",
+      "title": "How a change merges",
+      "fields": {
+        "owner": "trame"
       }
     },
     {
@@ -13521,10 +13594,72 @@
       "id": "sdlc.PageProgram",
       "kind": "artifact",
       "title": "The page's program",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "out/browser/page-app.ts"
+      }
+    },
+    {
+      "id": "sdlc.PullRequestsOnGitHub",
+      "kind": "decision",
+      "title": "How a pull request is checked on GitHub",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "on": {
+            "pullRequests": [
+              "main"
+            ]
+          },
+          "job": "trame",
+          "runsOn": "ubuntu-24.04",
+          "node": 22,
+          "artefacts": {
+            "days": 30
+          },
+          "pullRequest": {
+            "review": false,
+            "merge": "onceItHoldsUnlessDecided"
+          }
+        },
+        "rejected": {
+          "Only when a pull request touches the project": "GitHub keeps a pull request waiting for a check it requires and that never ran",
+          "Merged by GitHub whatever it changes": "what people decided would reach main without a person",
+          "The review of the branch": "Trame publishes nothing yet: its graph is published once the plan is done"
+        }
+      }
+    },
+    {
+      "id": "sdlc.PullRequestWorkflow",
+      "kind": "artifact",
+      "title": "The pull requests' workflow",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "path": ".github/workflows/trame-pull-request.yml",
+        "media": "application/yaml"
+      }
+    },
+    {
+      "id": "sdlc.RepositorySettingsScript",
+      "kind": "artifact",
+      "title": "The settings of the repository",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "path": ".github/settings.sh",
+        "media": "text/x-shellscript"
+      }
+    },
+    {
+      "id": "sdlc.RunnersWritten",
+      "kind": "shipment",
+      "title": "The files that run it elsewhere",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "target": "repository"
       }
     },
     {
@@ -13541,7 +13676,7 @@
       "id": "sdlc.SdlcOnTheMachine",
       "kind": "binding",
       "title": "The SDLC on the machine",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "The graph page must be opened as a person opens it: the file exported, in a real browser."
@@ -13554,6 +13689,17 @@
       "fields": {
         "owner": "trame",
         "messages": "(function)"
+      }
+    },
+    {
+      "id": "sdlc.TheEngine",
+      "kind": "artifact",
+      "title": "The engine",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "path": "src",
+        "version": true
       }
     },
     {
@@ -22645,6 +22791,11 @@
       "kind": "language"
     },
     {
+      "from": "packages.ContinuousIntegration",
+      "to": "product.SingleSource",
+      "kind": "serves"
+    },
+    {
       "from": "packages.NpmLockfile",
       "to": "product.SingleSource",
       "kind": "serves"
@@ -25260,6 +25411,16 @@
       "kind": "assembledBy"
     },
     {
+      "from": "releases.G109",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G109",
+      "to": "releases.G108",
+      "kind": "assembledBy"
+    },
+    {
       "from": "releases.G11",
       "to": "architecture.TrameCli",
       "kind": "component"
@@ -27660,9 +27821,34 @@
       "kind": "deps"
     },
     {
+      "from": "sdlc.IntoMain",
+      "to": "sdlc.TheEngine",
+      "kind": "ships"
+    },
+    {
+      "from": "sdlc.IntoMain",
+      "to": "architecture.Local",
+      "kind": "environment"
+    },
+    {
+      "from": "sdlc.IntoMain",
+      "to": "sdlc.MergeMode",
+      "kind": "policy"
+    },
+    {
       "from": "sdlc.LanguageServed",
       "to": "product.ExecutableSpecification",
       "kind": "serves"
+    },
+    {
+      "from": "sdlc.MergeMode",
+      "to": "sdlc.EngineVerified",
+      "kind": "obligations"
+    },
+    {
+      "from": "sdlc.MergeMode",
+      "to": "sdlc.ArchitectureRuled",
+      "kind": "obligations"
     },
     {
       "from": "sdlc.NextGeneration",
@@ -27783,6 +27969,36 @@
       "from": "sdlc.PageProgram",
       "to": "architecture.Browser",
       "kind": "environment"
+    },
+    {
+      "from": "sdlc.PullRequestWorkflow",
+      "to": "sdlc.IntoMain",
+      "kind": "runs"
+    },
+    {
+      "from": "sdlc.PullRequestWorkflow",
+      "to": "sdlc.PullRequestsOnGitHub",
+      "kind": "settings"
+    },
+    {
+      "from": "sdlc.RepositorySettingsScript",
+      "to": "sdlc.IntoMain",
+      "kind": "runs"
+    },
+    {
+      "from": "sdlc.RepositorySettingsScript",
+      "to": "sdlc.MainBranch",
+      "kind": "settings"
+    },
+    {
+      "from": "sdlc.RunnersWritten",
+      "to": "sdlc.PullRequestWorkflow",
+      "kind": "ships"
+    },
+    {
+      "from": "sdlc.RunnersWritten",
+      "to": "sdlc.RepositorySettingsScript",
+      "kind": "ships"
     },
     {
       "from": "sdlc.SdlcInMemory",

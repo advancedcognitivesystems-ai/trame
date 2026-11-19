@@ -69,3 +69,19 @@ The library ships its versions through its own graph: NextVersion requires its w
 
 - Released by: trame
 - Serves: [Each place is a writer](product.md#OneWriterPerPlace), [A shipment runs elsewhere as it runs here](product.md#RunsElsewhere)
+
+<a id="R0_5_0"></a>
+
+### Version 0.5.0
+
+`R0_5_0` · `src/releases.ts:64`
+
+Pull requests: a workflow names its job, writes the review of the branch, keeps GitHub from merging what people decided; the settings of a repository (D1)
+
+- Version: `0.5.0`
+- Released on: 19 November 2026
+- Fingerprint: `39e1a1af260c128e`
+- Language: the repository's, shared
+
+- Released by: trame
+- Serves: [Each place is a writer](product.md#OneWriterPerPlace), [A shipment runs elsewhere as it runs here](product.md#RunsElsewhere)
