@@ -1604,3 +1604,18 @@ export const G108 = release({
   differences: "differences.diff",
   assembledBy: G107,
 })
+
+/**
+ * Generation 109
+ */
+export const G109 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g109",
+  date: "2026-11-19",
+  what: "D1: the run plan carries the review of a branch, written in Markdown, which a place that reviews a pull request writes against the lock of the branch it merges into",
+  fingerprint: "1044691fc5b09d47",
+  language: "shared",
+  archive: "48b53a6cd95905bc",
+  assembledBy: G108,
+})

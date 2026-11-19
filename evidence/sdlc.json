@@ -4285,5 +4285,131 @@
     "by": "claude",
     "signature": "attribution",
     "seal": "863e18117d6b08b7abf3e7444f480245e6d76947c12fe93138db8cb165a94c83"
+  },
+  {
+    "node": "commands.Advance",
+    "at": "2026-11-19",
+    "source": "deployed",
+    "value": 1,
+    "fingerprint": "b0be4278",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "7e3f770278cae772f3f28681881ee680812a1118d4bbd21115dc625fd74189f7"
+  },
+  {
+    "node": "sdlc.CandidateKeepsTheLaws",
+    "at": "2026-11-19",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "caf77099",
+    "code": "d4f4acd6",
+    "engine": "987e2ef986dc7b6b",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "2511438b1e01352d701417a80c3106df6141f546c11159a51b56e31a6b61acb3"
+  },
+  {
+    "node": "sdlc.CandidateRunsOnTheMachine",
+    "at": "2026-11-19",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "caf77099",
+    "code": "89b67516",
+    "engine": "987e2ef986dc7b6b",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "45a7f65960137bd490546060c68864ebc3f8dc89d9236316c5b88370cc995359"
+  },
+  {
+    "node": "sdlc.EngineCandidate",
+    "at": "2026-11-19",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "dbd087bcf88f2bba1341e1176334ef16b23422fe221c93a8b15706d1aea14003",
+    "code": "51228c03",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "987e2ef986dc7b6b",
+    "seal": "e4d039b5f981c0448beeed9dffe4d68a5e7534ae60a2d9193833b6c0cfe1ede3"
+  },
+  {
+    "node": "sdlc.EngineCandidate",
+    "at": "2026-11-19",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "dbd087bcf88f2bba1341e1176334ef16b23422fe221c93a8b15706d1aea14003",
+    "subject": "sdlc.NextGeneration",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "de052cb356493abd4304b3aa4920bf95146d0cea51858efc444df3c217da1bed"
+  },
+  {
+    "node": "sdlc.GraphPage",
+    "at": "2026-11-19",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "7a9aa8aa56f50da7fd08f514f0afaf0dcbc883d66f09b574736e347455467ad4",
+    "code": "a0f6fde6",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "987e2ef986dc7b6b",
+    "seal": "e7dab012d6fa105c42301c556ac86e6685ad40e5a5eef3eb79ccdbe688b8d3c5"
+  },
+  {
+    "node": "sdlc.GraphPage",
+    "at": "2026-11-19",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "7a9aa8aa56f50da7fd08f514f0afaf0dcbc883d66f09b574736e347455467ad4",
+    "subject": "sdlc.NextGeneration",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "233faef9a8bd992caf8ecb76a5c5dfaccb2d9cc0fbaec831404297ce9a165fe4"
+  },
+  {
+    "node": "sdlc.GraphPageOpens",
+    "at": "2026-11-19",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "fdf05b83",
+    "code": "2ead2dd3",
+    "engine": "987e2ef986dc7b6b",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "430486a9c39380f647d30c317e07707320563d1b0efa84146c42c68f99732322"
+  },
+  {
+    "node": "sdlc.NextGeneration",
+    "at": "2026-11-19",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "64f3adf7",
+    "url": "evidence/shipments/NextGeneration-2026-11-19-64f3adf7.json",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "ecc8fb118002dccbeabc1c2c1c5c2abec1d2d7325f73f0c599f84c98ba15377a"
+  },
+  {
+    "node": "sdlc.PageProgram",
+    "at": "2026-11-19",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "a23c5229bb3fc4c262c7a42820870ae3d36c7e3face38bb128ea3f37825516c3",
+    "code": "cc111f36",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "987e2ef986dc7b6b",
+    "seal": "3f8d5a8797eb8dc091757be5571517c0977722402068dcf0c99c9c3481dfab5a"
+  },
+  {
+    "node": "sdlc.PageProgram",
+    "at": "2026-11-19",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "a23c5229bb3fc4c262c7a42820870ae3d36c7e3face38bb128ea3f37825516c3",
+    "subject": "sdlc.NextGeneration",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "e5144d8ef22d402434145bf291d328cf411eb6185abd5411402de880014b3211"
   }
 ]
