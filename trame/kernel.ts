@@ -1119,6 +1119,12 @@ export interface RunPlan {
    * artefact's name, the verdict, the option the person's name follows, the option the address follows.
    */
   readonly deployed: { readonly command: readonly string[]; readonly verdict: string; readonly by: string; readonly url: string }
+  /**
+   * The review of a branch (since g109): the words that write, run from the project's directory, what its declarations
+   * not yet published add to those published (the view review), and the project's lock, from the project's directory.
+   * A place that reviews a pull request puts there the lock of the branch it merges into, then writes the review.
+   */
+  readonly review: { readonly command: readonly string[]; readonly lock: string }
 }
 
 /** The compiled graph, as a view sees it: the traversal API, plus what the compilation found. */

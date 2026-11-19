@@ -1,6 +1,6 @@
 # Technical choices
 
-*What answers each port in each environment on 18 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
+*What answers each port in each environment on 19 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
 
 > **24 technical choices for 46 ports, in 3 environments**
 
@@ -136,7 +136,7 @@ Consequences: Node's built-in modules appear only in these implementations; movi
 
 ### On a machine, Node.js reads, writes and runs
 
-`NodeMachine` · `src/platform.ts:428` · status: **held**
+`NodeMachine` · `src/platform.ts:428` · status: **unknown**
 
 On the machine where trame is started, Node.js reads and writes the files, copies and compares trees, starts processes and other engines, serves HTTP, shows the terminal and gives the time.
 
@@ -266,7 +266,7 @@ Consequences: A scenario is played again only when the code it wires or a file i
 
 ### On a machine, runs are kept on disk
 
-`RunsKeptOnDisk` · `src/platform.ts:495` · status: **held**
+`RunsKeptOnDisk` · `src/platform.ts:495` · status: **unknown**
 
 In [Local](architecture.md#Local):
 

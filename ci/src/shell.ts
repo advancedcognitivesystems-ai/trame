@@ -89,6 +89,7 @@ export const ShellScript = syntax({
           prepares: [{ dir: "std", run: "npx playwright install --with-deps chromium" }],
           delivers: [{ artifact: "PageFile", path: "apps/poselia/dist/poselia.html" }], evidence: "apps/poselia/evidence",
           deployed: { command: ["../../trame.sh", "evidence"], verdict: "passed", by: "--by", url: "--url" },
+          review: { command: ["../../trame.sh", "view", "review"], lock: "trame.lock" },
         },
       ],
       output: [

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-18",
+  "generated": "2026-11-19",
   "nodes": [
     {
       "id": "github.GitHubActions",
@@ -231,6 +231,14 @@
                   "verdict": "passed",
                   "by": "--by",
                   "url": "--url"
+                },
+                "review": {
+                  "command": [
+                    "../../trame.sh",
+                    "view",
+                    "review"
+                  ],
+                  "lock": "trame.lock"
                 }
               },
               {
@@ -280,6 +288,14 @@
                   "verdict": "passed",
                   "by": "--by",
                   "url": "--url"
+                },
+                "review": {
+                  "command": [
+                    "./trame.sh",
+                    "view",
+                    "review"
+                  ],
+                  "lock": "trame.lock"
                 }
               },
               {
@@ -338,6 +354,14 @@
                 "verdict": "passed",
                 "by": "--by",
                 "url": "--url"
+              },
+              "review": {
+                "command": [
+                  "../../trame.sh",
+                  "view",
+                  "review"
+                ],
+                "lock": "trame.lock"
               }
             },
             {
@@ -389,6 +413,14 @@
                 "verdict": "passed",
                 "by": "--by",
                 "url": "--url"
+              },
+              "review": {
+                "command": [
+                  "./trame.sh",
+                  "view",
+                  "review"
+                ],
+                "lock": "trame.lock"
               }
             },
             {
@@ -546,7 +578,7 @@
       "kind": "shipment",
       "title": "The next version",
       "source": "src/sdlc.ts:25",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "version"
@@ -571,14 +603,16 @@
           "yaml.YamlDocument"
         ]
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: To ship: The library of writers is unknown"
+      ]
     },
     {
       "id": "sdlc.TheLibrary",
       "kind": "artifact",
       "title": "The library of writers",
       "source": "src/sdlc.ts:18",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "src",
@@ -586,9 +620,11 @@
       },
       "result": {
         "path": "src",
-        "code": "d339bd0e"
+        "code": "2fcb53ff"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+      ]
     },
     {
       "id": "shell.BashScripts",
@@ -746,6 +782,14 @@
                   "verdict": "passed",
                   "by": "--by",
                   "url": "--url"
+                },
+                "review": {
+                  "command": [
+                    "../../trame.sh",
+                    "view",
+                    "review"
+                  ],
+                  "lock": "trame.lock"
                 }
               }
             ],
@@ -794,6 +838,14 @@
                 "verdict": "passed",
                 "by": "--by",
                 "url": "--url"
+              },
+              "review": {
+                "command": [
+                  "../../trame.sh",
+                  "view",
+                  "review"
+                ],
+                "lock": "trame.lock"
               }
             }
           ],

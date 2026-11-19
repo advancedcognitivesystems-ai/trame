@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 18 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 19 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Continuous integration · GitHub Actions
 
@@ -23,7 +23,7 @@ Syntax element · `GitHubWorkflow` · **held**
 - Address: https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions
 - Marks: { job: { value: ship, meaning: The name of the one job }, delivered: { value: delivered, meaning: The name of the step that uploads what the shipment ships, whose address is recorded after it }, evidence: { value: evidence, meaning: After the shipment's name: the name of the artefact that keeps its evidence }, joint: { value: -, meaning: Between the shipment's name and that word }, space: { value:  , meaning: Separates the words of a command }, quote: { value: ", meaning: Around the person's name, given to the shell as one word }, written: { value: Written by trame ship from the graph, for the shipment, meaning: What the workflow's first comment says }, of: { value: of, meaning: Between the shipment and its project, in that comment }, edit: { value: Do not edit: edit the graph, then ship., meaning: The comment that says where to change it } }
 - Parameters: { standard: github.GitHubActions, yaml: yaml.YamlDocument, npm: npm.Npm, actions: github.PinnedActions }
-- Examples: { input: { shipment: Preview, title: A preview, project: apps/poselia, command: ../../trame.sh, ship, Preview, --by, file: .github/workflows/poselia-preview.yml, toRoot: ../.., installs: ., std, apps/poselia, prepares: { dir: std, run: npx playwright install --with-deps chromium }, delivers: { artifact: PageFile, path: apps/poselia/dist/poselia.html }, evidence: apps/poselia/evidence, deployed: { command: ../../trame.sh, evidence, verdict: passed, by: --by, url: --url } }, { on: { manual: true, branches: main }, runsOn: ubuntu-24.04, node: 22, artefacts: { days: 30, evidence: { days: 90 } } }, output: # Written by trame ship from the graph, for the shipment "A preview" of apps/poselia
+- Examples: { input: { shipment: Preview, title: A preview, project: apps/poselia, command: ../../trame.sh, ship, Preview, --by, file: .github/workflows/poselia-preview.yml, toRoot: ../.., installs: ., std, apps/poselia, prepares: { dir: std, run: npx playwright install --with-deps chromium }, delivers: { artifact: PageFile, path: apps/poselia/dist/poselia.html }, evidence: apps/poselia/evidence, deployed: { command: ../../trame.sh, evidence, verdict: passed, by: --by, url: --url }, review: { command: ../../trame.sh, view, review, lock: trame.lock } }, { on: { manual: true, branches: main }, runsOn: ubuntu-24.04, node: 22, artefacts: { days: 30, evidence: { days: 90 } } }, output: # Written by trame ship from the graph, for the shipment "A preview" of apps/poselia
 # Do not edit: edit the graph, then ship.
 name: A preview
 on:
@@ -66,7 +66,7 @@ jobs:
           name: Preview-evidence
           path: apps/poselia/evidence
           retention-days: 90
- }, { input: { shipment: Preview, title: A preview, project: ., command: ./trame.sh, ship, Preview, --by, file: .github/workflows/preview.yml, toRoot: ../.., installs: ., prepares: , delivers: , evidence: evidence, deployed: { command: ./trame.sh, evidence, verdict: passed, by: --by, url: --url } }, { on: { schedule: 0 6 * * 1 }, runsOn: ubuntu-24.04, node: 22, artefacts: { days: 30 } }, output: # Written by trame ship from the graph, for the shipment "A preview" of .
+ }, { input: { shipment: Preview, title: A preview, project: ., command: ./trame.sh, ship, Preview, --by, file: .github/workflows/preview.yml, toRoot: ../.., installs: ., prepares: , delivers: , evidence: evidence, deployed: { command: ./trame.sh, evidence, verdict: passed, by: --by, url: --url }, review: { command: ./trame.sh, view, review, lock: trame.lock } }, { on: { schedule: 0 6 * * 1 }, runsOn: ubuntu-24.04, node: 22, artefacts: { days: 30 } }, output: # Written by trame ship from the graph, for the shipment "A preview" of .
 # Do not edit: edit the graph, then ship.
 name: A preview
 on:
@@ -192,7 +192,7 @@ Release · `R0_4_0`
 
 ### The library of writers
 
-Artefact · `TheLibrary` · **held**
+Artefact · `TheLibrary` · **unknown**
 
 - Owner: trame
 - Path: src
@@ -200,7 +200,7 @@ Artefact · `TheLibrary` · **held**
 
 ### The next version
 
-Shipment · `NextVersion` · **held**
+Shipment · `NextVersion` · **unknown**
 
 - Owner: trame
 - Target: version
@@ -229,7 +229,7 @@ Syntax element · `ShellScript` · **held**
 - Address: https://www.gnu.org/software/bash/manual/bash.html#Shell-Parameter-Expansion
 - Marks: { person: { value: by, meaning: The variable that holds the name of the person who ships }, usage: { value: give the name of the person who ships, meaning: What the script says when it is run without a name }, written: { value: Written by trame ship from the graph, for the shipment, meaning: What the script's first comment says }, of: { value: of, meaning: Between the shipment and its project, in that comment }, edit: { value: Do not edit: edit the graph, then ship., meaning: The comment that says where to change it } }
 - Parameters: { standard: shell.BashScripts, npm: npm.Npm }
-- Examples: { input: { shipment: Preview, title: A preview, project: apps/poselia, command: ../../trame.sh, ship, Preview, --by, file: apps/poselia/scripts/ship-preview.sh, toRoot: ../../.., installs: ., std, apps/poselia, prepares: { dir: std, run: npx playwright install --with-deps chromium }, delivers: { artifact: PageFile, path: apps/poselia/dist/poselia.html }, evidence: apps/poselia/evidence, deployed: { command: ../../trame.sh, evidence, verdict: passed, by: --by, url: --url } }, output: #!/usr/bin/env bash
+- Examples: { input: { shipment: Preview, title: A preview, project: apps/poselia, command: ../../trame.sh, ship, Preview, --by, file: apps/poselia/scripts/ship-preview.sh, toRoot: ../../.., installs: ., std, apps/poselia, prepares: { dir: std, run: npx playwright install --with-deps chromium }, delivers: { artifact: PageFile, path: apps/poselia/dist/poselia.html }, evidence: apps/poselia/evidence, deployed: { command: ../../trame.sh, evidence, verdict: passed, by: --by, url: --url }, review: { command: ../../trame.sh, view, review, lock: trame.lock } }, output: #!/usr/bin/env bash
 # Written by trame ship from the graph, for the shipment "A preview" of apps/poselia
 # Do not edit: edit the graph, then ship.
 set -euo pipefail

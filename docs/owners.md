@@ -1,16 +1,33 @@
 # Owners
 
-*What each person must decide, settle or watch on 18 November 2026, and what they own.*
+*What each person must decide, settle or watch on 19 November 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 0 | 686 |
+| Trame's maintainers | 0 | 0 | 2 | 0 |
+| trame | 0 | 0 | 4 | 686 |
+
+<a id="Trame's maintainers"></a>
+
+## Trame's maintainers
+
+- Held by: ghalaax and claude
+
+| Severity | What | Where | Owner | Consequence |
+|---|---|---|---|---|
+| warning | Checked on another build of its artefacts, by another version of its program or another engine: to check again | [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws) | Trame's maintainers |  |
+| warning | Checked on another build of its artefacts, by another version of its program or another engine: to check again | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | Trame's maintainers |  |
 
 <a id="trame"></a>
 
 ## trame
 
-Nothing to decide or watch.
+| Severity | What | Where | Owner | Consequence |
+|---|---|---|---|---|
+| warning | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The candidate engine](sdlc.md#EngineCandidate) | trame |  |
+| warning | To ship: The candidate engine is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
+| warning | To ship: The candidate plays the laws is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
+| warning | To ship: The candidate runs on the machine is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
 
 ### Owns
 
@@ -368,9 +385,9 @@ Nothing to decide or watch.
 | [The page](page.md#ThePage) | Decision |  |
 | [Amendments go in the sources](platform.md#AmendmentsInPlace) | Technical choice | **held** |
 | [The TypeScript compiler reads the declarations](platform.md#CompilerReadsDeclarations) | Technical choice | **held** |
-| [System files, for reading](platform.md#DiskReading) | Implementation | **held** |
-| [Trees on disk](platform.md#DiskTrees) | Implementation | **held** |
-| [System files, for writing](platform.md#DiskWriting) | Implementation | **held** |
+| [System files, for reading](platform.md#DiskReading) | Implementation | **unknown** |
+| [Trees on disk](platform.md#DiskTrees) | Implementation | **unknown** |
+| [System files, for writing](platform.md#DiskWriting) | Implementation | **unknown** |
 | [Where the engine's own files are](platform.md#EngineFiles) | Decision |  |
 | [The engine's own files sit beside its code](platform.md#EngineFilesBesideCode) | Technical choice | **held** |
 | [esbuild](platform.md#Esbuild) | Implementation | **held** |
@@ -391,18 +408,18 @@ Nothing to decide or watch.
 | [Command line](platform.md#NodeCommandLine) | Implementation | **held** |
 | [gzip, with Node's zlib](platform.md#NodeCompression) | Implementation | **held** |
 | [SHA-256 hashes](platform.md#NodeHashing) | Implementation | **held** |
-| [Node HTTP server](platform.md#NodeHttpServer) | Implementation | **held** |
-| [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine) | Technical choice | **held** |
+| [Node HTTP server](platform.md#NodeHttpServer) | Implementation | **unknown** |
+| [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine) | Technical choice | **unknown** |
 | [Node paths](platform.md#NodePaths) | Implementation | **held** |
 | [NodePlatform](platform.md#NodePlatform) | Technical choice | **held** |
-| [Node process](platform.md#NodeProcess) | Implementation | **held** |
-| [Node programs](platform.md#NodePrograms) | Implementation | **held** |
-| [Node terminal](platform.md#NodeTerminal) | Implementation | **held** |
+| [Node process](platform.md#NodeProcess) | Implementation | **unknown** |
+| [Node programs](platform.md#NodePrograms) | Implementation | **unknown** |
+| [Node terminal](platform.md#NodeTerminal) | Implementation | **unknown** |
 | [Node timer](platform.md#NodeTimer) | Implementation | **held** |
 | [No installer in test](platform.md#NoInstallsInTest) | Implementation | **held** |
 | [No registry in test](platform.md#NoReportsInTest) | Function | **held** |
-| [npm installs](platform.md#NpmInstall) | Implementation | **held** |
-| [npm's reports](platform.md#NpmReports) | Implementation | **held** |
+| [npm installs](platform.md#NpmInstall) | Implementation | **unknown** |
+| [npm's reports](platform.md#NpmReports) | Implementation | **unknown** |
 | [Packages by their origin](platform.md#PackagesByOrigin) | Implementation | **held** |
 | [Each package comes from where its reference says](platform.md#PackagesByTheirOrigin) | Technical choice | **held** |
 | [Page resources](platform.md#PageResources) | Implementation | **held** |
@@ -411,10 +428,10 @@ Nothing to decide or watch.
 | [A run is kept while what it reads is as it was](platform.md#RunsByWhatTheyRead) | Technical choice | **held** |
 | [Runs kept in the process](platform.md#RunsInTheProcess) | Implementation | **held** |
 | [In the scenarios, runs are kept in the process](platform.md#RunsKeptInTheProcess) | Technical choice | **held** |
-| [On a machine, runs are kept on disk](platform.md#RunsKeptOnDisk) | Technical choice | **held** |
-| [Runs kept on disk](platform.md#RunsOnDisk) | Implementation | **held** |
+| [On a machine, runs are kept on disk](platform.md#RunsKeptOnDisk) | Technical choice | **unknown** |
+| [Runs kept on disk](platform.md#RunsOnDisk) | Implementation | **unknown** |
 | [Stopped clock](platform.md#StoppedClock) | Function | **held** |
-| [System clock](platform.md#SystemClock) | Implementation | **held** |
+| [System clock](platform.md#SystemClock) | Implementation | **unknown** |
 | [Day of the scenarios](platform.md#TestDay) | Decision |  |
 | [Time of the scenarios](platform.md#TestTime) | Decision |  |
 | [Trame's prelude](platform.md#TramePrelude) | Implementation | **held** |
@@ -442,8 +459,8 @@ Nothing to decide or watch.
 | [The traversal API is the only way to read the graph](principles.md#OneWayToRead) | Architecture decision | **held** |
 | [A package is used by its name](principles.md#PackagesByName) | Architecture decision | **held** |
 | [The prelude: the runtime of the language](principles.md#PreludeLayer) | Architecture decision | **held** |
-| [A version ships through the graph](principles.md#ShippedThroughTheGraph) | Architecture decision | **held** |
-| [A technology is chosen in one node](principles.md#TechnologyInOneNode) | Architecture decision | **held** |
+| [A version ships through the graph](principles.md#ShippedThroughTheGraph) | Architecture decision | **unknown** |
+| [A technology is chosen in one node](principles.md#TechnologyInOneNode) | Architecture decision | **unknown** |
 | [Trame builds Trame](principles.md#TrameBuildsTrame) | Architecture decision | **held** |
 | [An undecided value blocks; it does not crash](principles.md#UndecidedBlocks) | Architecture decision | **held** |
 | [Without evidence, a status is unknown](principles.md#UnknownWithoutEvidence) | Architecture decision | **held** |
@@ -610,10 +627,10 @@ Nothing to decide or watch.
 | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) | Obligation |  |
 | [The rules of the architecture hold](sdlc.md#ArchitectureRuled) | Obligation |  |
 | [The candidate is checked by programs](sdlc.md#CandidateChecked) | Obligation |  |
-| [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws) | Check | **held** |
-| [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | Check | **held** |
+| [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws) | Check | **unknown** |
+| [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | Check | **unknown** |
 | [Its callers identified](sdlc.md#EngineCallersIdentified) | Obligation |  |
-| [The candidate engine](sdlc.md#EngineCandidate) | Artefact | **held** |
+| [The candidate engine](sdlc.md#EngineCandidate) | Artefact | **unknown** |
 | [The packages are safe](sdlc.md#EnginePackagesSafe) | Obligation |  |
 | [The engine is verified](sdlc.md#EngineVerified) | Obligation |  |
 | [How a generation is made](sdlc.md#GenerationMode) | Policy |  |
@@ -624,7 +641,7 @@ Nothing to decide or watch.
 | [What the graph page is asked](sdlc.md#GraphPageSelectors) | Function | **held** |
 | [The language serves what it says](sdlc.md#LanguageServed) | Obligation |  |
 | [Trame's maintainers](sdlc.md#Maintainers) | Role |  |
-| [The next generation](sdlc.md#NextGeneration) | Shipment | **held** |
+| [The next generation](sdlc.md#NextGeneration) | Shipment | **unknown** |
 | [The graph page is opened as a person would](sdlc.md#OpeningTheGraphPage) | Scenario | **held** |
 | [Open the graph page](sdlc.md#OpenTheGraphPage) | Entry point | **held** |
 | [The page's program](sdlc.md#PageProgram) | Artefact | **held** |

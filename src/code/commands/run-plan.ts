@@ -3,10 +3,11 @@
 // ship it through the launcher, the directories whose packages are installed from their lockfile (Trame's, the
 // libraries', the project's), the words that install the generation's own packages when it has its own, what the
 // packages the shipment's programs wire ask once installed, what the place makes available (what the file it writes
-// publishes, as the graph says: nothing by default), where the evidence is, and the words that record where an artefact
-// was made available. A writer gives it a form; it decides nothing.
+// publishes, as the graph says: nothing by default), where the evidence is, the words that record where an artefact
+// was made available, and those that write the review of a branch (since g109). A writer gives it a form; it decides
+// nothing.
 
-import { ArtifactEdge, EdgeName, KindName, PackageField, PipelineStage } from "../../../trame/kernel"
+import { ArtifactEdge, EdgeName, KindName, PackageField, PipelineStage, ViewName } from "../../../trame/kernel"
 import type { Compilation, Pipeline, ProvidedBy, RunPlan, View } from "../../../trame/kernel"
 import type { FileReading, Layout, Paths } from "../../architecture"
 import type { TrameCommands } from "../../conventions"
@@ -91,6 +92,8 @@ const body = ({ line, project, layout, pin, reading, paths, encodings, values, s
       delivers,
       evidence: from(join(root, layout.evidence)),
       deployed: { command: [launcher, line.evidence], verdict: line.passed, by: line.by, url: line.url },
+      // What a pull request adds to what is published: the view review, against the lock of the branch it merges into.
+      review: { command: [launcher, line.view, ViewName.review], lock: layout.lock },
     }
   }
 }
