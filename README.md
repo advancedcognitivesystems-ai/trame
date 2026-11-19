@@ -1059,7 +1059,17 @@ whose form changes, not its meaning (a statement reworded, a fee typed `Percent`
 published before its parts were), is published again by `trame publish --migrate "why"`, which records when, why and
 which in the lock; a migration never publishes a value again. A project says it publishes by applying std's family
 `Published` in the policy of the shipment that merges into main: a part not published yet is then a gap. The example
-publishes 45 declarations, Poselia 149; Trame and its libraries will once the plan is done.
+publishes 46 declarations, Poselia 150; Trame and its libraries will once the plan is done.
+
+**A change reaches main by a pull request** (D1, g109, ci 0.5.0). The merge into main is a shipment of each project,
+`IntoMain`: it ships the project's version (all its code) and follows a policy, which for the example and Poselia proves
+that what people decided is published. Each project writes the workflow that checks a pull request on GitHub, with ci's
+writer: its job is a check the repository requires; it writes in the pull request the review of the branch (what its
+declarations not yet published add to those published, against the lock of main) and keeps GitHub from merging a pull
+request that changes a `trame.lock`, which a person merges once they read it; then it runs the shipment. A library's
+check is the shipment of its next version. The settings of the repository (main never deleted nor rewritten, reached
+only by a pull request that passes the checks of Trame, std, ci, data, the example and Poselia, merged as a merge
+commit) are a decision of Trame's graph, which ci writes as a script of calls to GitHub's API an administrator runs.
 
 ## Amending a value
 
@@ -1299,9 +1309,10 @@ declarations with), the types of Node below 23 (they follow the Node.js that run
   which the graph has only the client), RBAC, ReBAC and ABAC as composable strategies, the scope each body receives
   (as row-level security), the check written by the graph into the program before the body, and the platform services
   the people of the project steer.
-- **Publication** (D1, in progress): a publication freezes what people decide, part by part (g108); next, the merge into
-  main as a shipment whose policy applies `Published`, merged automatically once it holds unless it changes what people
-  decided, with the pull request's workflow, the repository's settings and Pages written from the graph. Trame's own
+- **Publication** (D1, in progress): a publication freezes what people decide, part by part (g108); the merge into main
+  is a shipment of each project, checked on GitHub at each pull request by a workflow written from the graph, which
+  writes the review of the branch and keeps GitHub from merging what people decided; the repository's settings are a
+  script written from the graph (g109, ci 0.5.0). Left: Pages, and a check that reads the settings back. Trame's own
   graph is published once the plan is done.
 - **The SDLC**: a shipment of a library version (its release, then a warning in the projects that import an older one; proposed); a
   signature with a key, read from outside the graph (the seal is an attribution); a status that reads itself said as an

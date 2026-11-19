@@ -40,6 +40,10 @@ The repository's `AGENTS.md` is the full guide; read it first, then keep to this
   amended in the code. A publication (g108) freezes what each kind says people decide (values chosen or cited, what is
   stated: a goal, an ADR, a decision's or a requirement's text, a rule); code stays free. A statement changes by a new
   node that repeals it; `--migrate "why"` republishes a form, never a value.
+- A change reaches main by a pull request (D1, g109): work on a branch, `trame publish` what people decided in it,
+  open the pull request; each project's workflow (written by `trame ship RunnersWritten`) runs its `IntoMain` (or a
+  library's `NextVersion`) and writes the review in the pull request. `gh pr merge <n> --merge --auto` merges a pull
+  request that changes no `trame.lock` once it holds; one that does waits for its owner (AGENTS.md, section 4b).
 - A value holds at every date (g106): only an amendment has an end; one that ends over a value nobody decided is an
   error, and its owner is warned before it ends. A program switches at the days its amendments start or end, by
   `TRAME_TODAY` or today's UTC day. What the project decides and ships lives in the graph; what the product writes while

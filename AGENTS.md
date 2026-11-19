@@ -144,6 +144,20 @@ record changed afterwards no longer matches its seal, is not counted, and is an 
 by hand, and never record evidence in someone else's name: attribute what you run to yourself. `docs/owners.md` says who
 holds each role and, for each piece of evidence a role awaits, the command that gives it.
 
+**A change reaches main by a pull request** (D1, g109, ci 0.5.0). The merge into main is a shipment of each project,
+`IntoMain` (target `main`), which ships the project's version (an artefact `version: true`, all its code) and follows
+its policy (`MergeMode`): a project that publishes applies `Published` (a part of a declaration people decide that is
+not published yet is a gap), so `trame publish` runs in the branch, before the pull request. A library's check is its
+`NextVersion`. Each project writes, with ci's `GitHubWorkflow`, the workflow that checks a pull request: its settings
+(a decision) say `on: { pullRequests: ["main"] }`, the `job` (the name of the check the repository requires) and
+`pullRequest: { review, merge }`: the review of the branch written in the pull request (one comment per project,
+against the lock of main), and a word of `MergeWays` (`onceItHoldsUnlessDecided`: the workflow keeps GitHub from
+merging a pull request that changes a `trame.lock`; a person merges it). The repository's settings are a decision of
+Trame's graph (`MainBranch`), written by ci's `GitHubRepository` as `.github/settings.sh`, which an administrator runs
+(`bash .github/settings.sh owner/name`). Work on a branch, open the pull request (`gh api repos/{owner}/{repo}/pulls
+--method POST`), then: `gh pr merge <n> --merge --auto` when it changes nothing people decided, otherwise its owner
+reads the review (`gh pr view <n> --comments`) and merges it.
+
 A file that runs a shipment elsewhere (a workflow of GitHub Actions, a Bash script) is an `artifact` produced by a writer
 of the library `ci` (`GitHubWorkflow`, `ShellScript`), naming the shipment it `runs`, its `settings` (a decision) and
 what that place makes available once shipped (`publishes`): the engine computes the plan of the run from the graph, the
@@ -516,6 +530,13 @@ elements), a port answered differently in several environments is answered as in
   `chromium_headless_shell-1243`) refuses a check run by an older one ("Executable doesn't exist at
   …headless_shell-1194"), and `trame doctor` does not see it. Move std's `PlaywrightPackage` to the version whose
   browser the machine has (1.63.0 since std 0.18.1), release std, then upgrade the projects; never install browsers.
+- A project Trame's scenarios compile (the example) imports a library they release (ci) at a frozen version: imported
+  as it is, its modules are loaded by the example's compilation, and the release of the library reads its graph empty
+  (no shipment of its version: nothing shipped first).
+- A merge GitHub makes for a workflow's token starts no other workflow: the automatic merge is asked by a person
+  (`gh pr merge --auto`), and a workflow only takes it back (`--disable-auto`) when a pull request changes what people
+  decided.
+- A project that runs from the registry of a machine (geometry) has no check on GitHub: a runner has no registry.
 - A view is named apart from the modules: a view `access` wrote `docs/access.md` over the example's module of that name
   (it is `callers`).
 - Before g107 a version (`version: true`) read in a project that imports its library held the project's nodes: std's
