@@ -2336,10 +2336,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "ci",
-        "version": "0.5.0",
+        "version": "0.6.0",
         "joins": "library",
         "from": "path",
-        "at": "../ci/releases/0.5.0"
+        "at": "../ci/releases/0.6.0"
       },
       "diagnostics": []
     },
@@ -3592,7 +3592,7 @@
       "kind": "shipment",
       "title": "The next version",
       "source": "src/sdlc.ts:87",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "version"
@@ -3886,7 +3886,9 @@
           "web.WebSpeechApi"
         ]
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: To ship: The standard library is unknown"
+      ]
     },
     {
       "id": "sdlc.PackagesSafe",
@@ -3942,7 +3944,7 @@
       },
       "result": {
         "path": "../.github/workflows/std-pull-request.yml",
-        "code": "a0a65958"
+        "code": "7754dfa8"
       },
       "diagnostics": []
     },
@@ -3991,7 +3993,7 @@
       "kind": "artifact",
       "title": "The standard library",
       "source": "src/sdlc.ts:22",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "src",
@@ -3999,9 +4001,11 @@
       },
       "result": {
         "path": "src",
-        "code": "62b2e4dd"
+        "code": "cdec65e1"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+      ]
     },
     {
       "id": "sdlc.VersionMode",

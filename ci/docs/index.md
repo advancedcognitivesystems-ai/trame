@@ -10,7 +10,7 @@
 | [Continuous integration · npm](npm.md) | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Continuous integration · Packages](packages.md) | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 |
 | [Continuous integration · Product](product.md) | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Continuous integration · Releases](releases.md) | 0 | 0 | 0 | 0 | 0 | 5 | 0 | 0 | 0 | 0 |
+| [Continuous integration · Releases](releases.md) | 0 | 0 | 0 | 0 | 0 | 6 | 0 | 0 | 0 | 0 |
 | [Continuous integration · The repository on GitHub](repository.md) | 0 | 1 | 1 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Continuous integration · SDLC](sdlc.md) | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 2 | 2 | 0 |
 | [Continuous integration · Shell](shell.md) | 0 | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |

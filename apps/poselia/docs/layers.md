@@ -188,7 +188,7 @@ flowchart TB
     n154["The content, reviewed<br/><small>Review</small>"]:::unknown
     n155["The content is reviewed by a teacher<br/><small>Obligation</small>"]:::neutral
     n156["The decisions hold<br/><small>Obligation</small>"]:::neutral
-    n157["Into the main branch<br/><small>Shipment</small>"]:::held
+    n157["Into the main branch<br/><small>Shipment</small>"]:::unknown
     n158["What the device keeps, migrated<br/><small>Obligation</small>"]:::neutral
     n159["A machine<br/><small>Environment</small>"]:::neutral
     n160["How a change merges<br/><small>Policy</small>"]:::neutral
@@ -226,7 +226,7 @@ flowchart TB
     n192["What the programs of the SDLC say<br/><small>Message catalog</small>"]:::neutral
     n193["Where the page is served<br/><small>Decision</small>"]:::neutral
     n194["A teacher who practises<br/><small>Role</small>"]:::neutral
-    n195["Poselia<br/><small>Artefact</small>"]:::held
+    n195["Poselia<br/><small>Artefact</small>"]:::unknown
   end
   subgraph settings["Poselia · Settings"]
     n196["A phase set by the person<br/><small>Requirement</small>"]:::held

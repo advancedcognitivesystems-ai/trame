@@ -43,6 +43,11 @@ export interface WorkflowSettings {
   /** The name of its job, by which a repository requires it among the checks of a pull request; ship when it says none. */
   readonly job?: string
   /**
+   * The directories whose packages it installs besides those of the plan, from the repository's root (ci 0.6.0): the
+   * projects the shipment's scenarios enter, whose code they compile (Trame's enter Poselia, which uses three.js).
+   */
+  readonly alsoInstalls?: readonly string[]
+  /**
    * On a pull request: whether it writes in it the review of the branch (what its declarations not yet published add to
    * those published, against the lock of the branch it merges into), one comment for the project, written again at each
    * push; and how the pull request is merged (a word of MergeWays).
@@ -205,7 +210,7 @@ export const GitHubWorkflow = syntax({
     const steps: YamlNode[] = [
       step([gh.uses, text(actions.checkout)]),
       step([gh.uses, text(actions.setupNode)], [gh.with, { map: [[gh.nodeVersion, { number: settings.node }]] }]),
-      ...plan.installs.map((dir) => run([npm.install], dir)),
+      ...[...new Set([...plan.installs, ...(settings.alsoInstalls ?? [])])].map((dir) => run([npm.install], dir)),
       ...(plan.restore ? [run(plan.restore, plan.project)] : []),
       ...plan.prepares.map((p) => run([p.run], p.dir)),
       ...reviewed,
@@ -334,7 +339,7 @@ export const GitHubWorkflow = syntax({
           review: { command: ["../../trame.sh", "view", "review", "--format", "md"], lock: "trame.lock" },
         },
         {
-          on: { pullRequests: ["main"] }, job: "poselia", runsOn: "ubuntu-24.04", node: 22, artefacts: { days: 30 },
+          on: { pullRequests: ["main"] }, job: "poselia", alsoInstalls: ["libs/geometry", "apps/poselia"], runsOn: "ubuntu-24.04", node: 22, artefacts: { days: 30 },
           pullRequest: { review: true, merge: "onceItHoldsUnlessDecided" },
         },
       ],
@@ -361,6 +366,8 @@ export const GitHubWorkflow = syntax({
         "        working-directory: \".\"",
         "      - run: npm ci",
         "        working-directory: apps/poselia",
+        "      - run: npm ci",
+        "        working-directory: libs/geometry",
         "      - run: \"git fetch --depth=1 origin \\\"$GITHUB_BASE_REF\\\"\"",
         "        working-directory: apps/poselia",
         "      - run: |",

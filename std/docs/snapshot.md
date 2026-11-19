@@ -489,10 +489,10 @@ Package · `ContinuousIntegration`
 
 - Owner: trame
 - Name: ci
-- Version: 0.5.0
+- Version: 0.6.0
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: ../ci/releases/0.5.0
+- Its path: ../ci/releases/0.6.0
 - Serves: Versions that hold
 
 ### Trame
@@ -1206,7 +1206,7 @@ Artefact · `PullRequestWorkflow` · **held**
 
 ### The standard library
 
-Artefact · `TheLibrary` · **held**
+Artefact · `TheLibrary` · **unknown**
 
 - Owner: trame
 - Path: src
@@ -1214,7 +1214,7 @@ Artefact · `TheLibrary` · **held**
 
 ### The next version
 
-Shipment · `NextVersion` · **held**
+Shipment · `NextVersion` · **unknown**
 
 - Owner: trame
 - Target: version

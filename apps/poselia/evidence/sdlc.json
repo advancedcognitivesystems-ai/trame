@@ -1628,6 +1628,18 @@
   {
     "node": "sdlc.PreviewWorkflow",
     "at": "2026-11-19",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "79f911c1de3ee14ac6e51751cde362b05cd7c2ae4003471a1f2db8e4f278b409",
+    "code": "9afed1df",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "987e2ef986dc7b6b",
+    "seal": "302353b2cb0d893a34a33234e5dc28770080c257a09662f222222ba0bec23732"
+  },
+  {
+    "node": "sdlc.PreviewWorkflow",
+    "at": "2026-11-19",
     "source": "shipped",
     "value": 1,
     "fingerprint": "79f911c1de3ee14ac6e51751cde362b05cd7c2ae4003471a1f2db8e4f278b409",
@@ -1651,6 +1663,18 @@
   {
     "node": "sdlc.PullRequestWorkflow",
     "at": "2026-11-19",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "1a71d81f502d8f2758ba9c89f92e96dd075b6c05fb315b37a7bbeac231a2ebea",
+    "code": "228b948d",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "987e2ef986dc7b6b",
+    "seal": "c27c16db5f109bbb066e0b274319af06ea6bddd2d680cf29d7441eef5806349a"
+  },
+  {
+    "node": "sdlc.PullRequestWorkflow",
+    "at": "2026-11-19",
     "source": "shipped",
     "value": 1,
     "fingerprint": "1a71d81f502d8f2758ba9c89f92e96dd075b6c05fb315b37a7bbeac231a2ebea",
@@ -1669,6 +1693,17 @@
     "by": "claude",
     "signature": "attribution",
     "seal": "e5a1c7c720d242320cd2aeb1b166febb3022b9401a5e609434caebbd09529ee9"
+  },
+  {
+    "node": "sdlc.RunnersWritten",
+    "at": "2026-11-19",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "e83dba0d",
+    "url": "evidence/shipments/RunnersWritten-2026-11-19-e83dba0d.json",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "7f1436db77aa347c07399375eb49f575e2f9c5127c1c30e419ff08d5affa851e"
   },
   {
     "node": "sdlc.ThePoseliaApp",

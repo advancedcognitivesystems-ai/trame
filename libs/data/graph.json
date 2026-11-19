@@ -160,10 +160,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "ci",
-        "version": "0.5.0",
+        "version": "0.6.0",
         "joins": "library",
         "from": "path",
-        "at": "../../ci/releases/0.5.0"
+        "at": "../../ci/releases/0.6.0"
       },
       "diagnostics": []
     },
@@ -897,7 +897,7 @@
       "kind": "shipment",
       "title": "The next version",
       "source": "src/sdlc.ts:60",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "version"
@@ -1010,7 +1010,9 @@
           "words.DataKindWords"
         ]
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: To ship: The library of data is unknown"
+      ]
     },
     {
       "id": "sdlc.PackagesSafe",
@@ -1066,7 +1068,7 @@
       },
       "result": {
         "path": "../../.github/workflows/data-pull-request.yml",
-        "code": "46400194"
+        "code": "afc4b844"
       },
       "diagnostics": []
     },
@@ -1105,7 +1107,7 @@
       "kind": "artifact",
       "title": "The library of data",
       "source": "src/sdlc.ts:20",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "src",
@@ -1113,9 +1115,11 @@
       },
       "result": {
         "path": "src",
-        "code": "df241a49"
+        "code": "aef53c15"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+      ]
     },
     {
       "id": "sdlc.VersionMode",

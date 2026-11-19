@@ -445,6 +445,10 @@
                   ]
                 },
                 "job": "poselia",
+                "alsoInstalls": [
+                  "libs/geometry",
+                  "apps/poselia"
+                ],
                 "runsOn": "ubuntu-24.04",
                 "node": 22,
                 "artefacts": {
@@ -456,7 +460,7 @@
                 }
               }
             ],
-            "output": "# Written by trame ship from the graph, for the shipment \"Into the main branch\" of apps/poselia\n# Do not edit: edit the graph, then ship.\nname: Into the main branch\non:\n  pull_request:\n    branches:\n      - main\npermissions:\n  contents: read\n  pull-requests: write\njobs:\n  poselia:\n    runs-on: ubuntu-24.04\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 22\n      - run: npm ci\n        working-directory: \".\"\n      - run: npm ci\n        working-directory: apps/poselia\n      - run: \"git fetch --depth=1 origin \\\"$GITHUB_BASE_REF\\\"\"\n        working-directory: apps/poselia\n      - run: |\n          git show \"FETCH_HEAD:./$LOCK\" > \"$LOCK\" || rm -f \"$LOCK\"\n          ../../trame.sh view review --format md > \"$RUNNER_TEMP/review.md\"\n          git checkout -- \"$LOCK\" || rm -f \"$LOCK\"\n          printf '%s\\n\\n' \"$MARKER\" | cat - \"$RUNNER_TEMP/review.md\" > \"$RUNNER_TEMP/comment.md\"\n          id=\"$(gh api \"repos/$GITHUB_REPOSITORY/issues/$NUMBER/comments\" --paginate --jq '[.[] | select(.body | startswith(env.MARKER))][0].id // empty')\"\n          if [ -n \"$id\" ]; then gh api --method PATCH \"repos/$GITHUB_REPOSITORY/issues/comments/$id\" -F \"body=@$RUNNER_TEMP/comment.md\" > /dev/null; else gh pr comment \"$NUMBER\" --body-file \"$RUNNER_TEMP/comment.md\"; fi\n        working-directory: apps/poselia\n        env:\n          GH_TOKEN: \"${{ github.token }}\"\n          NUMBER: \"${{ github.event.pull_request.number }}\"\n          LOCK: trame.lock\n          MARKER: \"<!-- The review of apps/poselia -->\"\n      - run: |\n          git diff --quiet FETCH_HEAD -- \":(glob)**/$LOCK\" || gh pr merge \"$NUMBER\" --disable-auto || true\n        working-directory: apps/poselia\n        env:\n          GH_TOKEN: \"${{ github.token }}\"\n          NUMBER: \"${{ github.event.pull_request.number }}\"\n          LOCK: trame.lock\n          MARKER: \"<!-- The review of apps/poselia -->\"\n      - run: \"../../trame.sh ship IntoMain --by \\\"${{ github.actor }}\\\"\"\n        working-directory: apps/poselia\n"
+            "output": "# Written by trame ship from the graph, for the shipment \"Into the main branch\" of apps/poselia\n# Do not edit: edit the graph, then ship.\nname: Into the main branch\non:\n  pull_request:\n    branches:\n      - main\npermissions:\n  contents: read\n  pull-requests: write\njobs:\n  poselia:\n    runs-on: ubuntu-24.04\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 22\n      - run: npm ci\n        working-directory: \".\"\n      - run: npm ci\n        working-directory: apps/poselia\n      - run: npm ci\n        working-directory: libs/geometry\n      - run: \"git fetch --depth=1 origin \\\"$GITHUB_BASE_REF\\\"\"\n        working-directory: apps/poselia\n      - run: |\n          git show \"FETCH_HEAD:./$LOCK\" > \"$LOCK\" || rm -f \"$LOCK\"\n          ../../trame.sh view review --format md > \"$RUNNER_TEMP/review.md\"\n          git checkout -- \"$LOCK\" || rm -f \"$LOCK\"\n          printf '%s\\n\\n' \"$MARKER\" | cat - \"$RUNNER_TEMP/review.md\" > \"$RUNNER_TEMP/comment.md\"\n          id=\"$(gh api \"repos/$GITHUB_REPOSITORY/issues/$NUMBER/comments\" --paginate --jq '[.[] | select(.body | startswith(env.MARKER))][0].id // empty')\"\n          if [ -n \"$id\" ]; then gh api --method PATCH \"repos/$GITHUB_REPOSITORY/issues/comments/$id\" -F \"body=@$RUNNER_TEMP/comment.md\" > /dev/null; else gh pr comment \"$NUMBER\" --body-file \"$RUNNER_TEMP/comment.md\"; fi\n        working-directory: apps/poselia\n        env:\n          GH_TOKEN: \"${{ github.token }}\"\n          NUMBER: \"${{ github.event.pull_request.number }}\"\n          LOCK: trame.lock\n          MARKER: \"<!-- The review of apps/poselia -->\"\n      - run: |\n          git diff --quiet FETCH_HEAD -- \":(glob)**/$LOCK\" || gh pr merge \"$NUMBER\" --disable-auto || true\n        working-directory: apps/poselia\n        env:\n          GH_TOKEN: \"${{ github.token }}\"\n          NUMBER: \"${{ github.event.pull_request.number }}\"\n          LOCK: trame.lock\n          MARKER: \"<!-- The review of apps/poselia -->\"\n      - run: \"../../trame.sh ship IntoMain --by \\\"${{ github.actor }}\\\"\"\n        working-directory: apps/poselia\n"
           }
         ]
       }
@@ -598,6 +602,19 @@
         "date": "2026-11-19",
         "what": "Pull requests: a workflow names its job, writes the review of the branch, keeps GitHub from merging what people decided; the settings of a repository (D1)",
         "fingerprint": "39e1a1af260c128e",
+        "language": "shared"
+      }
+    },
+    {
+      "id": "releases.R0_6_0",
+      "kind": "release",
+      "title": "Version 0.6.0",
+      "fields": {
+        "owner": "trame",
+        "version": "0.6.0",
+        "date": "2026-11-19",
+        "what": "A workflow installs the projects its shipment's scenarios enter",
+        "fingerprint": "ba68ab30f89a5df8",
         "language": "shared"
       }
     },
@@ -1461,6 +1478,16 @@
     },
     {
       "from": "releases.R0_5_0",
+      "to": "product.RunsElsewhere",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_6_0",
+      "to": "product.OneWriterPerPlace",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_6_0",
       "to": "product.RunsElsewhere",
       "kind": "serves"
     },

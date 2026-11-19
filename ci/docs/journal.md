@@ -2,18 +2,24 @@
 
 *What happened to the project, day by day, the latest first, up to the date of the graph (19 November 2026): the versions released, and the evidence given, each with the node it is about and who gave it.*
 
-> **9 days · 5 versions released · 28 pieces of evidence**
+> **9 days · 6 versions released · 33 pieces of evidence**
 
 ## 19 November 2026
 
 | What | Node | By |
 |---|---|---|
 | Released as 0.5.0 | [Version 0.5.0](releases.md#R0_5_0) | trame |
+| Released as 0.6.0 | [Version 0.6.0](releases.md#R0_6_0) | trame |
+| Shipped | [The next version](sdlc.md#NextVersion) | claude |
 | Shipped | [The next version](sdlc.md#NextVersion) | claude |
 | Shipped | [The next version](sdlc.md#NextVersion) | claude |
 | Built | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
+| Built | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
 | Shipped | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
 | Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
+| Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
+| Built | [The library of writers](sdlc.md#TheLibrary) | claude |
+| Shipped | [The library of writers](sdlc.md#TheLibrary) | claude |
 | Built | [The library of writers](sdlc.md#TheLibrary) | claude |
 | Shipped | [The library of writers](sdlc.md#TheLibrary) | claude |
 | Built | [The library of writers](sdlc.md#TheLibrary) | claude |

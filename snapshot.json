@@ -8087,10 +8087,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "ci",
-        "version": "0.5.0",
+        "version": "0.6.0",
         "joins": "library",
         "from": "path",
-        "at": "ci/releases/0.5.0"
+        "at": "ci/releases/0.6.0"
       }
     },
     {
@@ -13470,7 +13470,7 @@
       "id": "sdlc.IntoMain",
       "kind": "shipment",
       "title": "Into the main branch",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "main"
@@ -13613,6 +13613,9 @@
             ]
           },
           "job": "trame",
+          "alsoInstalls": [
+            "apps/poselia"
+          ],
           "runsOn": "ubuntu-24.04",
           "node": 22,
           "artefacts": {
@@ -13695,7 +13698,7 @@
       "id": "sdlc.TheEngine",
       "kind": "artifact",
       "title": "The engine",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "src",

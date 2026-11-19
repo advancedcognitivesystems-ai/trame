@@ -18,6 +18,8 @@ jobs:
           node-version: 22
       - run: npm ci
         working-directory: "."
+      - run: npm ci
+        working-directory: apps/poselia
       - run: npx playwright install --with-deps chromium
         working-directory: "."
       - run: "git fetch --depth=1 origin \"$GITHUB_BASE_REF\""

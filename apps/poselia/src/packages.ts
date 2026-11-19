@@ -26,7 +26,7 @@ export const StandardLibrary = pkg({
  * The writers of the workflow and the script that ship Poselia's preview elsewhere.
  */
 export const ContinuousIntegration = pkg({
-  owner: "ghalaax", packageName: "ci", version: "0.5.0", joins: "library", from: "path", at: "../../ci/releases/0.5.0",
+  owner: "ghalaax", packageName: "ci", version: "0.6.0", joins: "library", from: "path", at: "../../ci/releases/0.6.0",
   serves: [PractiseGuided],
 })
 

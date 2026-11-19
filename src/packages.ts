@@ -142,7 +142,7 @@ export const StandardLibrary = pkg({
  * Trame's graph (D1).
  */
 export const ContinuousIntegration = pkg({
-  owner: "trame", packageName: "ci", version: "0.5.0", joins: "library", from: "path", at: "ci/releases/0.5.0", serves: [SingleSource],
+  owner: "trame", packageName: "ci", version: "0.6.0", joins: "library", from: "path", at: "ci/releases/0.6.0", serves: [SingleSource],
 })
 
 /**

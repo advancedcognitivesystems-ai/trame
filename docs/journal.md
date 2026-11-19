@@ -2,7 +2,7 @@
 
 *What happened to the project, day by day, the latest first, up to the date of the graph (19 November 2026): the versions released, and the evidence given, each with the node it is about and who gave it.*
 
-> **25 days · 109 versions released · 444 pieces of evidence**
+> **25 days · 109 versions released · 447 pieces of evidence**
 
 ## 19 November 2026
 
@@ -31,9 +31,12 @@
 | Shipped | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
 | Built | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
 | Shipped | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
+| Built | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
+| Shipped | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
 | Built | [The settings of the repository](sdlc.md#RepositorySettingsScript) | claude |
 | Built | [The settings of the repository](sdlc.md#RepositorySettingsScript) | claude |
 | Shipped | [The settings of the repository](sdlc.md#RepositorySettingsScript) | claude |
+| Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
 | Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
 | Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
 | Built | [The engine](sdlc.md#TheEngine) | claude |

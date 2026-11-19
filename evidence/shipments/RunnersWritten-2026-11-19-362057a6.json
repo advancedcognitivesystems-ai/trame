@@ -1,0 +1,135 @@
+{
+  "shipment": "sdlc.RunnersWritten",
+  "title": "The files that run it elsewhere",
+  "target": "repository",
+  "at": "2026-11-19",
+  "by": "claude",
+  "signature": "attribution",
+  "artifacts": [
+    {
+      "node": "sdlc.PullRequestWorkflow",
+      "path": ".github/workflows/trame-pull-request.yml",
+      "fingerprint": "bc6d338bc67d351cd4171f5a461d988da472ce4081c49e584d2c4f0be9b95fd4"
+    },
+    {
+      "node": "sdlc.RepositorySettingsScript",
+      "path": ".github/settings.sh",
+      "fingerprint": "7e8f750d03e3c4847e75302067ce72a2e2d4debcc46e9f29880239b251077ab1"
+    }
+  ],
+  "foundations": {
+    "problems": 0
+  },
+  "obligations": [
+    {
+      "node": "sdlc.PullRequestWorkflow",
+      "kind": "artifact",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-19",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "e6e30c9f9b9d3a2ecd0c2d6520dad0607ee54b255baf830b53781f6d74fb8ac6",
+          "code": "821c3989",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "987e2ef986dc7b6b",
+          "seal": "864baaed3124e6064ccbfc331b52cc4cb21699a7b13e6020c8e6f9730a78e00f"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-19",
+          "source": "shipped",
+          "value": 1,
+          "fingerprint": "e6e30c9f9b9d3a2ecd0c2d6520dad0607ee54b255baf830b53781f6d74fb8ac6",
+          "subject": "sdlc.RunnersWritten",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "9d07e0135810be505f310f3b8656bf9258d5f4ebf50d02a29298e162c6b821aa"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-19",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "20982d5b054a65100a11ba99db438a4716fe872c3cddc79c47d007a0c09d2de3",
+          "code": "8dd273bc",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "987e2ef986dc7b6b",
+          "seal": "9d145e7fe80b368651c00501bdd9c81ea9fddb6fb7578d0eaf1bfd4985062fcd"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-19",
+          "source": "shipped",
+          "value": 1,
+          "fingerprint": "20982d5b054a65100a11ba99db438a4716fe872c3cddc79c47d007a0c09d2de3",
+          "subject": "sdlc.RunnersWritten",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "494a34927afb4032ff8c8eb23dba57956441d4ea63a7c2b4586d65fd3910d0a9"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-19",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "bc6d338bc67d351cd4171f5a461d988da472ce4081c49e584d2c4f0be9b95fd4",
+          "code": "8745061e",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "987e2ef986dc7b6b",
+          "seal": "84ab7d10f98641ee52ffd0f6c377ad8c1d74d847e3f348195853d4b88524994e"
+        }
+      ]
+    },
+    {
+      "node": "sdlc.RepositorySettingsScript",
+      "kind": "artifact",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "sdlc.RepositorySettingsScript",
+          "at": "2026-11-19",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "7e8f750d03e3c4847e75302067ce72a2e2d4debcc46e9f29880239b251077ab1",
+          "code": "c6278851",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "987e2ef986dc7b6b",
+          "seal": "bd929935e992ebcd7e8cda7ee48c6af3de197856433101552429c06b9c4c9703"
+        },
+        {
+          "node": "sdlc.RepositorySettingsScript",
+          "at": "2026-11-19",
+          "source": "shipped",
+          "value": 1,
+          "fingerprint": "7e8f750d03e3c4847e75302067ce72a2e2d4debcc46e9f29880239b251077ab1",
+          "subject": "sdlc.RunnersWritten",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "c17d6af84cf2d196c626dabe862f4924bc8d8b1f50f74ec1b77ad8d5dd1ec2ba"
+        },
+        {
+          "node": "sdlc.RepositorySettingsScript",
+          "at": "2026-11-19",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "7e8f750d03e3c4847e75302067ce72a2e2d4debcc46e9f29880239b251077ab1",
+          "code": "fe8e1634",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "987e2ef986dc7b6b",
+          "seal": "798418fb6012cdee9eefffcda3c8370f3d7f75dbcd429b2c45a0052178a1215f"
+        }
+      ]
+    }
+  ],
+  "deployed": []
+}

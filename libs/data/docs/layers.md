@@ -66,13 +66,13 @@ flowchart TB
   subgraph sdlc["Data · SDLC"]
     n43["Its decisions applied<br/><small>Obligation</small>"]:::neutral
     n44["Its functions verified<br/><small>Obligation</small>"]:::neutral
-    n45["The next version<br/><small>Shipment</small>"]:::held
+    n45["The next version<br/><small>Shipment</small>"]:::unknown
     n46["Its packages safe<br/><small>Obligation</small>"]:::neutral
     n47["How a pull request is checked on GitHub<br/><small>Decision</small>"]:::neutral
     n48["The pull requests' workflow<br/><small>Artefact</small>"]:::held
     n49["Its requirements held<br/><small>Obligation</small>"]:::neutral
     n50["The files that run it elsewhere<br/><small>Shipment</small>"]:::held
-    n51["The library of data<br/><small>Artefact</small>"]:::held
+    n51["The library of data<br/><small>Artefact</small>"]:::unknown
     n52["How a version is made<br/><small>Policy</small>"]:::neutral
   end
   subgraph shelves["Data · Shelves"]

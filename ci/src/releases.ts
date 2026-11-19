@@ -70,3 +70,16 @@ export const R0_5_0 = release({
   language: "shared",
   serves: [OneWriterPerPlace, RunsElsewhere],
 })
+
+/**
+ * Version 0.6.0
+ */
+export const R0_6_0 = release({
+  owner: "trame",
+  version: "0.6.0",
+  date: "2026-11-19",
+  what: "A workflow installs the projects its shipment's scenarios enter",
+  fingerprint: "ba68ab30f89a5df8",
+  language: "shared",
+  serves: [OneWriterPerPlace, RunsElsewhere],
+})

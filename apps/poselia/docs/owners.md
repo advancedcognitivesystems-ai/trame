@@ -6,7 +6,7 @@
 |---|---|---|---|---|
 | A teacher who practises | 0 | 0 | 4 | 0 |
 | People who try it on a phone | 0 | 0 | 1 | 0 |
-| ghalaax | 0 | 0 | 5 | 223 |
+| ghalaax | 0 | 0 | 7 | 223 |
 
 <a id="A teacher who practises"></a>
 
@@ -48,11 +48,13 @@
 
 | Severity | What | Where | Owner | Consequence |
 |---|---|---|---|---|
+| warning | To ship: Poselia is unknown | [Into the main branch](sdlc.md#IntoMain) | ghalaax |  |
 | warning | To ship: On a phone is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
 | warning | To ship: The content, reviewed is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
 | warning | To ship: The content is data, behind a port is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
 | warning | To ship: Said aloud, the screen awake is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
 | warning | Nobody holds this role yet | [A teacher who practises](sdlc.md#Teachers) | ghalaax |  |
+| warning | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [Poselia](sdlc.md#ThePoseliaApp) | ghalaax |  |
 
 ### Owns
 
@@ -215,7 +217,7 @@
 | [The content, reviewed](sdlc.md#ContentReviewed) | Review | **unknown** |
 | [The content is reviewed by a teacher](sdlc.md#ContentSeen) | Obligation |  |
 | [The decisions hold](sdlc.md#DecisionsApplied) | Obligation |  |
-| [Into the main branch](sdlc.md#IntoMain) | Shipment | **held** |
+| [Into the main branch](sdlc.md#IntoMain) | Shipment | **unknown** |
 | [What the device keeps, migrated](sdlc.md#KeptMigrates) | Obligation |  |
 | [A machine](sdlc.md#Machine) | Environment |  |
 | [How a change merges](sdlc.md#MergeMode) | Policy |  |
@@ -253,7 +255,7 @@
 | [What the programs of the SDLC say](sdlc.md#SdlcWords) | Message catalog |  |
 | [Where the page is served](sdlc.md#ServedPage) | Decision |  |
 | [A teacher who practises](sdlc.md#Teachers) | Role |  |
-| [Poselia](sdlc.md#ThePoseliaApp) | Artefact | **held** |
+| [Poselia](sdlc.md#ThePoseliaApp) | Artefact | **unknown** |
 | [A phase set by the person](settings.md#AdjustedBreath) | Requirement | **held** |
 | [Criteria of a phase set by the person](settings.md#AdjustedBreathCriteria) | Acceptance criteria | **held** |
 | [The person's breath, kept](settings.md#Breath) | Entity | **held** |

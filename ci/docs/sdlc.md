@@ -60,7 +60,7 @@ The library as its people write it: what a version freezes, and what projects im
 
 - Path: `src`
 
-Built 19 November 2026 by claude, fingerprint `4aa6f895e208826ed2e3c1ce8594e9595bfff877dfa634b7f1493ebbbbbad316`.
+Built 19 November 2026 by claude, fingerprint `99a5b995b9ca09d74c2e21345cef6771ec18d9534a8b045f283f209b30332fe3`.
 
 Shipped by [The next version](#NextVersion) 10 November 2026, fingerprint `7062b1ff96ea931545cd68533926942458ca5021f1a282cc24383a01b878080f`.
 
@@ -73,6 +73,8 @@ Shipped by [The next version](#NextVersion) 18 November 2026, fingerprint `cd079
 Shipped by [The next version](#NextVersion) 19 November 2026, fingerprint `393dae54defe5b206302716a84f2230324c6c6aa905dbe60be8a8e01fdd00ec1`.
 
 Shipped by [The next version](#NextVersion) 19 November 2026, fingerprint `4aa6f895e208826ed2e3c1ce8594e9595bfff877dfa634b7f1493ebbbbbad316`.
+
+Shipped by [The next version](#NextVersion) 19 November 2026, fingerprint `99a5b995b9ca09d74c2e21345cef6771ec18d9534a8b045f283f209b30332fe3`.
 
 - Owner: trame
 - A version of the project: true
@@ -97,7 +99,7 @@ A version of the library of writers, for the projects that import it: shipped by
 | [A script of Bash](shell.md#ShellScript) | **held** | required |
 | [A YAML document](yaml.md#YamlDocument) | **held** | required |
 
-Shipped 19 November 2026 by claude; its dossier: `evidence/shipments/NextVersion-2026-11-19-756d6be9.json`.
+Shipped 19 November 2026 by claude; its dossier: `evidence/shipments/NextVersion-2026-11-19-85d8b004.json`.
 
 - Owner: trame
 - Ships: [The library of writers](#TheLibrary)
@@ -118,7 +120,7 @@ The workflow that checks each pull request, written by trame ship from the graph
 |---|---|---|
 | [The pull requests' workflow](#PullRequestWorkflow) | **held** | shipped |
 
-Shipped 19 November 2026 by claude; its dossier: `evidence/shipments/RunnersWritten-2026-11-19-7c199fdf.json`.
+Shipped 19 November 2026 by claude; its dossier: `evidence/shipments/RunnersWritten-2026-11-19-e571ef61.json`.
 
 - Owner: trame
 - Ships: [The pull requests' workflow](#PullRequestWorkflow)

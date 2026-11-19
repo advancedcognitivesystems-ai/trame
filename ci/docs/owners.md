@@ -4,7 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 0 | 25 |
+| trame | 0 | 0 | 0 | 26 |
 
 <a id="trame"></a>
 
@@ -29,6 +29,7 @@ Nothing to decide or watch.
 | [Version 0.3.0](releases.md#R0_3_0) | Release |  |
 | [Version 0.4.0](releases.md#R0_4_0) | Release |  |
 | [Version 0.5.0](releases.md#R0_5_0) | Release |  |
+| [Version 0.6.0](releases.md#R0_6_0) | Release |  |
 | [The settings of a repository](repository.md#GitHubRepository) | Syntax element | **held** |
 | [GitHub's API for a repository](repository.md#GitHubRepositoryApi) | Standard |  |
 | [How GitHub merges a pull request](repository.md#MergeMethods) | Vocabulary |  |

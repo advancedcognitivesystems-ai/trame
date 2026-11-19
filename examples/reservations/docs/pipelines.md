@@ -222,7 +222,7 @@ flowchart TB
 
 |  | Stage | Step | Run by | Why | Status | Latest evidence |
 |---|---|---|---|---|---|---|
-| 1 | produce | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) · `../../.github/workflows/reservations-pull-request.yml` | [A workflow of GitHub Actions](../../../ci/releases/0.5.0/docs/github.md#GitHubWorkflow) | — | **unknown** |  |
+| 1 | produce | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) · `../../.github/workflows/reservations-pull-request.yml` | [A workflow of GitHub Actions](../../../ci/releases/0.6.0/docs/github.md#GitHubWorkflow) | — | **unknown** |  |
 | 2 | prove | The foundations (1 problem) | itself | every shipment: no literal in a body, a sound graph | **violated** |  |
 | 3 | prove | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | — | the shipment | **unknown** |  |
 | 4 | record | [The files that run it elsewhere](sdlc.md#RunnersWritten) | — | — | **unknown** |  |

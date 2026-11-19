@@ -336,12 +336,13 @@ export const IntoMain = shipment({ owner: "trame", target: "main", ships: [TheEn
  * How a pull request is checked on GitHub
  * At each pull request into main, on GitHub's Ubuntu 24.04 machine with Node.js 22: its job, named trame, is a check the
  * repository requires; it keeps GitHub from merging a pull request that changes what people decided (a trame.lock of the
- * repository), which a person then merges (D1).
+ * repository), which a person then merges (D1). It installs Poselia's packages too: the scenarios enter Poselia
+ * (ScenarioProjects), whose code uses three.js.
  */
 export const PullRequestsOnGitHub = decision<WorkflowSettings>({
   owner: "trame",
   value: {
-    on: { pullRequests: ["main"] }, job: "trame", runsOn: "ubuntu-24.04", node: 22, artefacts: { days: 30 },
+    on: { pullRequests: ["main"] }, job: "trame", alsoInstalls: ["apps/poselia"], runsOn: "ubuntu-24.04", node: 22, artefacts: { days: 30 },
     pullRequest: { review: false, merge: "onceItHoldsUnlessDecided" },
   },
   rejected: {

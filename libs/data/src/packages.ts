@@ -21,6 +21,6 @@ export const stdLibrary = pkg({ owner: "trame", packageName: "std", version: "0.
  * in Trame's repository: the workflow that checks each pull request is written from the graph.
  */
 export const ContinuousIntegration = pkg({
-  owner: "trame", packageName: "ci", version: "0.5.0", joins: "library", from: "path", at: "../../ci/releases/0.5.0",
+  owner: "trame", packageName: "ci", version: "0.6.0", joins: "library", from: "path", at: "../../ci/releases/0.6.0",
   serves: [DataDescribedOnce],
 })

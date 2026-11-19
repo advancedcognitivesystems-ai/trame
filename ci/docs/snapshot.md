@@ -94,7 +94,7 @@ jobs:
         working-directory: "."
       - run: "./trame.sh ship Preview --by \"${{ github.actor }}\""
         working-directory: "."
- }, { input: { shipment: IntoMain, title: Into the main branch, project: apps/poselia, command: ../../trame.sh, ship, IntoMain, --by, file: .github/workflows/poselia-merge.yml, toRoot: ../.., installs: ., apps/poselia, prepares: , delivers: , evidence: apps/poselia/evidence, deployed: { command: ../../trame.sh, evidence, verdict: passed, by: --by, url: --url }, review: { command: ../../trame.sh, view, review, --format, md, lock: trame.lock } }, { on: { pullRequests: main }, job: poselia, runsOn: ubuntu-24.04, node: 22, artefacts: { days: 30 }, pullRequest: { review: true, merge: onceItHoldsUnlessDecided } }, output: # Written by trame ship from the graph, for the shipment "Into the main branch" of apps/poselia
+ }, { input: { shipment: IntoMain, title: Into the main branch, project: apps/poselia, command: ../../trame.sh, ship, IntoMain, --by, file: .github/workflows/poselia-merge.yml, toRoot: ../.., installs: ., apps/poselia, prepares: , delivers: , evidence: apps/poselia/evidence, deployed: { command: ../../trame.sh, evidence, verdict: passed, by: --by, url: --url }, review: { command: ../../trame.sh, view, review, --format, md, lock: trame.lock } }, { on: { pullRequests: main }, job: poselia, alsoInstalls: libs/geometry, apps/poselia, runsOn: ubuntu-24.04, node: 22, artefacts: { days: 30 }, pullRequest: { review: true, merge: onceItHoldsUnlessDecided } }, output: # Written by trame ship from the graph, for the shipment "Into the main branch" of apps/poselia
 # Do not edit: edit the graph, then ship.
 name: Into the main branch
 on:
@@ -116,6 +116,8 @@ jobs:
         working-directory: "."
       - run: npm ci
         working-directory: apps/poselia
+      - run: npm ci
+        working-directory: libs/geometry
       - run: "git fetch --depth=1 origin \"$GITHUB_BASE_REF\""
         working-directory: apps/poselia
       - run: |
@@ -252,6 +254,18 @@ Release · `R0_5_0`
 - Released on: 2026-11-19
 - What changes: Pull requests: a workflow names its job, writes the review of the branch, keeps GitHub from merging what people decided; the settings of a repository (D1)
 - Fingerprint: 39e1a1af260c128e
+- Language: shared
+- Serves: Each place is a writer, A shipment runs elsewhere as it runs here
+
+### Version 0.6.0
+
+Release · `R0_6_0`
+
+- Released by: trame
+- Version: 0.6.0
+- Released on: 2026-11-19
+- What changes: A workflow installs the projects its shipment's scenarios enter
+- Fingerprint: ba68ab30f89a5df8
 - Language: shared
 - Serves: Each place is a writer, A shipment runs elsewhere as it runs here
 

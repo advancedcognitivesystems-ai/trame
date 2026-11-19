@@ -665,7 +665,7 @@ flowchart TB
     n605["The graph page opens<br/><small>Check</small>"]:::held
     n606["What the scenario of the graph page shows<br/><small>Decision</small>"]:::neutral
     n607["What the graph page is asked<br/><small>Function</small>"]:::held
-    n608["Into the main branch<br/><small>Shipment</small>"]:::held
+    n608["Into the main branch<br/><small>Shipment</small>"]:::unknown
     n609["The language serves what it says<br/><small>Obligation</small>"]:::neutral
     n610["How the repository merges into main<br/><small>Decision</small>"]:::neutral
     n611["Trame's maintainers<br/><small>Role</small>"]:::neutral
@@ -681,7 +681,7 @@ flowchart TB
     n621["The SDLC in memory<br/><small>Technical choice</small>"]:::held
     n622["The SDLC on the machine<br/><small>Technical choice</small>"]:::held
     n623["What the programs of Trame's SDLC say<br/><small>Message catalog</small>"]:::neutral
-    n624["The engine<br/><small>Artefact</small>"]:::held
+    n624["The engine<br/><small>Artefact</small>"]:::unknown
     n625["Trame's SDLC<br/><small>Component</small>"]:::neutral
   end
   subgraph shipping["Trame · Shipping"]

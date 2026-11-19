@@ -4371,10 +4371,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "ci",
-        "version": "0.5.0",
+        "version": "0.6.0",
         "joins": "library",
         "from": "path",
-        "at": "../../ci/releases/0.5.0"
+        "at": "../../ci/releases/0.6.0"
       },
       "diagnostics": []
     },
@@ -5701,7 +5701,7 @@
       "kind": "shipment",
       "title": "Into the main branch",
       "source": "src/sdlc.ts:438",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "target": "main"
@@ -5936,7 +5936,9 @@
           "stage.ThreeTypes"
         ]
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: To ship: Poselia is unknown"
+      ]
     },
     {
       "id": "sdlc.KeptMigrates",
@@ -6491,7 +6493,7 @@
       },
       "result": {
         "path": "../../.github/workflows/poselia-preview.yml",
-        "code": "9958bd0f"
+        "code": "9afed1df"
       },
       "diagnostics": []
     },
@@ -6984,7 +6986,7 @@
       },
       "result": {
         "path": "../../.github/workflows/poselia-pull-request.yml",
-        "code": "e76d665d"
+        "code": "228b948d"
       },
       "diagnostics": []
     },
@@ -7120,7 +7122,7 @@
       "kind": "artifact",
       "title": "Poselia",
       "source": "src/sdlc.ts:419",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "path": "src",
@@ -7128,9 +7130,11 @@
       },
       "result": {
         "path": "src",
-        "code": "d289b826"
+        "code": "7eaf1350"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+      ]
     },
     {
       "id": "settings.AdjustedBreath",

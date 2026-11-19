@@ -15,14 +15,14 @@
 The writers of the workflow and the script that ship Poselia's preview elsewhere.
 
 - Name: `ci`
-- Version: `0.5.0`
+- Version: `0.6.0`
 - Installed: Not installed in the project: its lockfile lists no ci
 - Vulnerabilities: No report yet: trame audit asks the registry
 - Latest version: No report yet: trame audit asks the registry
 - What it may do: not said: an implementation that imports it cannot promise anything
 - How it joins the graph: `library`
 - Where it comes from: `path`
-- Its path: `../../ci/releases/0.5.0`
+- Its path: `../../ci/releases/0.6.0`
 
 - Owner: ghalaax
 - Serves: [Practise yoga on one's own, guided](product.md#PractiseGuided)

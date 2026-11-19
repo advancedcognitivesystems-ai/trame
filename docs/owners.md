@@ -5,7 +5,7 @@
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
 | Trame's maintainers | 0 | 0 | 1 | 0 |
-| trame | 0 | 0 | 1 | 696 |
+| trame | 0 | 0 | 3 | 696 |
 
 <a id="Trame's maintainers"></a>
 
@@ -23,7 +23,9 @@
 
 | Severity | What | Where | Owner | Consequence |
 |---|---|---|---|---|
+| warning | To ship: The engine is unknown | [Into the main branch](sdlc.md#IntoMain) | trame |  |
 | warning | To ship: The candidate plays the laws is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
+| warning | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The engine](sdlc.md#TheEngine) | trame |  |
 
 ### Owns
 
@@ -637,7 +639,7 @@
 | [The graph page opens](sdlc.md#GraphPageOpens) | Check | **held** |
 | [What the scenario of the graph page shows](sdlc.md#GraphPageScenarioData) | Decision |  |
 | [What the graph page is asked](sdlc.md#GraphPageSelectors) | Function | **held** |
-| [Into the main branch](sdlc.md#IntoMain) | Shipment | **held** |
+| [Into the main branch](sdlc.md#IntoMain) | Shipment | **unknown** |
 | [The language serves what it says](sdlc.md#LanguageServed) | Obligation |  |
 | [How the repository merges into main](sdlc.md#MainBranch) | Decision |  |
 | [Trame's maintainers](sdlc.md#Maintainers) | Role |  |
@@ -653,7 +655,7 @@
 | [The SDLC in memory](sdlc.md#SdlcInMemory) | Technical choice | **held** |
 | [The SDLC on the machine](sdlc.md#SdlcOnTheMachine) | Technical choice | **held** |
 | [What the programs of Trame's SDLC say](sdlc.md#SdlcWords) | Message catalog |  |
-| [The engine](sdlc.md#TheEngine) | Artefact | **held** |
+| [The engine](sdlc.md#TheEngine) | Artefact | **unknown** |
 | [Trame's SDLC](sdlc.md#TrameSdlc) | Component |  |
 | [Attribution](shipping.md#Attribution) | Function | **held** |
 | [The fingerprint of a program](shipping.md#ProgramBundle) | Decision |  |

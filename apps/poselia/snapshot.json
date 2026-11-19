@@ -3702,10 +3702,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "ci",
-        "version": "0.5.0",
+        "version": "0.6.0",
         "joins": "library",
         "from": "path",
-        "at": "../../ci/releases/0.5.0"
+        "at": "../../ci/releases/0.6.0"
       }
     },
     {
@@ -4613,7 +4613,7 @@
       "id": "sdlc.IntoMain",
       "kind": "shipment",
       "title": "Into the main branch",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "target": "main"
@@ -5097,7 +5097,7 @@
       "id": "sdlc.ThePoseliaApp",
       "kind": "artifact",
       "title": "Poselia",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "path": "src",

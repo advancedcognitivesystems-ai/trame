@@ -85,3 +85,19 @@ Pull requests: a workflow names its job, writes the review of the branch, keeps 
 
 - Released by: trame
 - Serves: [Each place is a writer](product.md#OneWriterPerPlace), [A shipment runs elsewhere as it runs here](product.md#RunsElsewhere)
+
+<a id="R0_6_0"></a>
+
+### Version 0.6.0
+
+`R0_6_0` · `src/releases.ts:77`
+
+A workflow installs the projects its shipment's scenarios enter
+
+- Version: `0.6.0`
+- Released on: 19 November 2026
+- Fingerprint: `ba68ab30f89a5df8`
+- Language: the repository's, shared
+
+- Released by: trame
+- Serves: [Each place is a writer](product.md#OneWriterPerPlace), [A shipment runs elsewhere as it runs here](product.md#RunsElsewhere)

@@ -6,7 +6,7 @@
 
 ## Into the main branch
 
-> **Into the main branch ships: every obligation holds.**
+> **Into the main branch does not ship yet: 40 of 41 obligations hold.**
 
 For the target main; its programs are assembled for [Local](architecture.md#Local).
 
@@ -16,7 +16,7 @@ Run elsewhere by [The pull requests' workflow](sdlc.md#PullRequestWorkflow), [Th
 flowchart TB
   n0["The candidate engine<br/><small>Artefact</small>"]:::held
   n1["Trame on the command line<br/><small>Component</small>"]:::neutral
-  n2["The engine<br/><small>Artefact</small>"]:::held
+  n2["The engine<br/><small>Artefact</small>"]:::unknown
   n3["The graph page<br/><small>Artefact</small>"]:::held
   n4["Export the page<br/><small>Entry point</small>"]:::held
   n5["The graph page opens<br/><small>Check</small>"]:::held
@@ -60,7 +60,7 @@ flowchart TB
   n43["The command line<br/><small>Scenario</small>"]:::held
   n44["A body is read and checked<br/><small>Scenario</small>"]:::held
   n45["The graph page is opened as a person would<br/><small>Scenario</small>"]:::held
-  n46["Into the main branch<br/><small>Shipment</small>"]:::held
+  n46["Into the main branch<br/><small>Shipment</small>"]:::unknown
   n19 -->|Verifies| n8
   n19 -->|Depends on| n8
   n21 -->|Verifies| n4
@@ -90,12 +90,12 @@ flowchart TB
 |  | Stage | Step | Run by | Why | Status | Latest evidence |
 |---|---|---|---|---|---|---|
 | 1 | produce | [The candidate engine](sdlc.md#EngineCandidate) · `out/local/trame-cli.ts` | [Trame on the command line](architecture.md#TrameCli) | — | **held** | 19 November 2026 by claude  |
-| 2 | produce | [The engine](sdlc.md#TheEngine) · `src` | — | — | **held** | 19 November 2026 by claude  |
+| 2 | produce | [The engine](sdlc.md#TheEngine) · `src` | — | — | **unknown** | 19 November 2026 by claude  |
 | 3 | produce | [The graph page](sdlc.md#GraphPage) · `trame-page.html` | [Export the page](commands.md#Export) | — | **held** | 19 November 2026 by claude  |
 | 4 | check | [The graph page opens](sdlc.md#GraphPageOpens) | [Open the graph page](sdlc.md#OpenTheGraphPage), signed by [Trame's maintainers](sdlc.md#Maintainers) | — | **held** | passed, 19 November 2026 by claude  |
 | 5 | check | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | [Ask the machine](commands.md#Doctor), signed by [Trame's maintainers](sdlc.md#Maintainers) | — | **held** | passed, 19 November 2026 by claude  |
 | 6 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
-| 7 | prove | [The engine](sdlc.md#TheEngine) | — | the shipment | **held** | 19 November 2026 by claude  |
+| 7 | prove | [The engine](sdlc.md#TheEngine) | — | the shipment | **unknown** | 19 November 2026 by claude  |
 | 8 | prove | [Effects come from the vocabulary](architecture.md#KnownEffects) | — | [The rules of the architecture hold](sdlc.md#ArchitectureRuled) | **held** |  |
 | 9 | prove | [Only commands write](architecture.md#OnlyCommandsWrite) | — | [The rules of the architecture hold](sdlc.md#ArchitectureRuled) | **held** |  |
 | 10 | prove | [Rendering does not read the graph](architecture.md#RenderingWithoutGraph) | — | [The rules of the architecture hold](sdlc.md#ArchitectureRuled) | **held** |  |
@@ -135,7 +135,7 @@ flowchart TB
 | 44 | prove | [The command line](command-scenarios.md#CommandLineChooses) | — | [The engine is verified](sdlc.md#EngineVerified) via [Terminal in memory](platform.md#MemoryTerminal) | **held** |  |
 | 45 | prove | [A body is read and checked](command-scenarios.md#BodiesReadAndChecked) | — | [The engine is verified](sdlc.md#EngineVerified) via [tree-sitter in WebAssembly](platform.md#WebTreeSitter) | **held** |  |
 | 46 | prove | [The graph page is opened as a person would](sdlc.md#OpeningTheGraphPage) | — | [The engine is verified](sdlc.md#EngineVerified) via [What the graph page is asked](sdlc.md#GraphPageSelectors) | **held** |  |
-| 47 | record | [Into the main branch](sdlc.md#IntoMain) | — | — | **held** | 19 November 2026 by claude `evidence/shipments/IntoMain-2026-11-19-6a9aa3c4.json` |
+| 47 | record | [Into the main branch](sdlc.md#IntoMain) | — | — | **unknown** | 19 November 2026 by claude `evidence/shipments/IntoMain-2026-11-19-6a9aa3c4.json` |
 
 `trame ship IntoMain --by <name>`
 
@@ -467,11 +467,11 @@ flowchart TB
 
 |  | Stage | Step | Run by | Why | Status | Latest evidence |
 |---|---|---|---|---|---|---|
-| 1 | produce | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) · `.github/workflows/trame-pull-request.yml` | [A workflow of GitHub Actions](../ci/releases/0.5.0/docs/github.md#GitHubWorkflow) | — | **held** | 19 November 2026 by claude  |
-| 2 | produce | [The settings of the repository](sdlc.md#RepositorySettingsScript) · `.github/settings.sh` | [The settings of a repository](../ci/releases/0.5.0/docs/repository.md#GitHubRepository) | — | **held** | 19 November 2026 by claude  |
+| 1 | produce | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) · `.github/workflows/trame-pull-request.yml` | [A workflow of GitHub Actions](../ci/releases/0.6.0/docs/github.md#GitHubWorkflow) | — | **held** | 19 November 2026 by claude  |
+| 2 | produce | [The settings of the repository](sdlc.md#RepositorySettingsScript) · `.github/settings.sh` | [The settings of a repository](../ci/releases/0.6.0/docs/repository.md#GitHubRepository) | — | **held** | 19 November 2026 by claude  |
 | 3 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
 | 4 | prove | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | — | the shipment | **held** | 19 November 2026 by claude  |
 | 5 | prove | [The settings of the repository](sdlc.md#RepositorySettingsScript) | — | the shipment | **held** | 19 November 2026 by claude  |
-| 6 | record | [The files that run it elsewhere](sdlc.md#RunnersWritten) | — | — | **held** | 19 November 2026 by claude `evidence/shipments/RunnersWritten-2026-11-19-f8eed367.json` |
+| 6 | record | [The files that run it elsewhere](sdlc.md#RunnersWritten) | — | — | **held** | 19 November 2026 by claude `evidence/shipments/RunnersWritten-2026-11-19-362057a6.json` |
 
 `trame ship RunnersWritten --by <name>`

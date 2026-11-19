@@ -171,7 +171,7 @@ The workflow that checks a pull request on GitHub, written from the pipeline of 
 - Media type: `application/yaml`
 
 - Owner: karim
-- Produced by: [A workflow of GitHub Actions](../../../ci/releases/0.5.0/docs/github.md#GitHubWorkflow)
+- Produced by: [A workflow of GitHub Actions](../../../ci/releases/0.6.0/docs/github.md#GitHubWorkflow)
 - Runs elsewhere: [Into the main branch](#IntoMain)
 - Its writer's settings: [How a pull request is checked on GitHub](#PullRequestsOnGitHub)
 - Shipped by: [The files that run it elsewhere](#RunnersWritten)

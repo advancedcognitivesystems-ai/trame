@@ -15,14 +15,14 @@
 The writers of the files that run a shipment elsewhere (GitHub Actions), at the version the project uses, by its path in Trame's repository: the workflow that checks each pull request is written from the graph.
 
 - Name: `ci`
-- Version: `0.5.0`
+- Version: `0.6.0`
 - Installed: Not installed in the project: its lockfile lists no ci
 - Vulnerabilities: No report yet: trame audit asks the registry
 - Latest version: No report yet: trame audit asks the registry
 - What it may do: not said: an implementation that imports it cannot promise anything
 - How it joins the graph: `library`
 - Where it comes from: `path`
-- Its path: `../../ci/releases/0.5.0`
+- Its path: `../../ci/releases/0.6.0`
 
 - Owner: trame
 - Serves: [Data described once](product.md#DataDescribedOnce)

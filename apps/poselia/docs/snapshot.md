@@ -819,10 +819,10 @@ Package · `ContinuousIntegration`
 
 - Owner: ghalaax
 - Name: ci
-- Version: 0.5.0
+- Version: 0.6.0
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: ../../ci/releases/0.5.0
+- Its path: ../../ci/releases/0.6.0
 - Serves: Practise yoga on one's own, guided
 
 ### Data
@@ -1477,7 +1477,7 @@ Artefact · `PullRequestWorkflow` · **held**
 
 ### Poselia
 
-Artefact · `ThePoseliaApp` · **held**
+Artefact · `ThePoseliaApp` · **unknown**
 
 - Owner: ghalaax
 - Path: src
@@ -1512,7 +1512,7 @@ Review · `ContentReviewed` · **unknown**
 
 ### Into the main branch
 
-Shipment · `IntoMain` · **held**
+Shipment · `IntoMain` · **unknown**
 
 - Owner: ghalaax
 - Target: main

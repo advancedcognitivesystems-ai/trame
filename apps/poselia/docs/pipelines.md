@@ -6,7 +6,7 @@
 
 ## Into the main branch
 
-> **Into the main branch ships: every obligation holds.**
+> **Into the main branch does not ship yet: 1 of 2 obligations holds.**
 
 For the target main.
 
@@ -14,8 +14,8 @@ Run elsewhere by [The pull requests' workflow](sdlc.md#PullRequestWorkflow), wri
 
 ```mermaid
 flowchart TB
-  n0["Poselia<br/><small>Artefact</small>"]:::held
-  n1["Into the main branch<br/><small>Shipment</small>"]:::held
+  n0["Poselia<br/><small>Artefact</small>"]:::unknown
+  n1["Into the main branch<br/><small>Shipment</small>"]:::unknown
   n1 -->|Ships| n0
   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
   classDef blocked fill:#fbf0d9,stroke:#9a6200,color:#17202a
@@ -28,10 +28,10 @@ flowchart TB
 
 |  | Stage | Step | Run by | Why | Status | Latest evidence |
 |---|---|---|---|---|---|---|
-| 1 | produce | [Poselia](sdlc.md#ThePoseliaApp) · `src` | — | — | **held** | 19 November 2026 by claude  |
+| 1 | produce | [Poselia](sdlc.md#ThePoseliaApp) · `src` | — | — | **unknown** | 19 November 2026 by claude  |
 | 2 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
-| 3 | prove | [Poselia](sdlc.md#ThePoseliaApp) | — | the shipment | **held** | 19 November 2026 by claude  |
-| 4 | record | [Into the main branch](sdlc.md#IntoMain) | — | — | **held** | 19 November 2026 by claude `evidence/shipments/IntoMain-2026-11-19-b7ec005a.json` |
+| 3 | prove | [Poselia](sdlc.md#ThePoseliaApp) | — | the shipment | **unknown** | 19 November 2026 by claude  |
+| 4 | record | [Into the main branch](sdlc.md#IntoMain) | — | — | **unknown** | 19 November 2026 by claude `evidence/shipments/IntoMain-2026-11-19-b7ec005a.json` |
 
 `trame ship IntoMain --by <name>`
 
@@ -353,6 +353,6 @@ flowchart TB
 | 5 | prove | [The preview's script](sdlc.md#PreviewScript) | — | the shipment | **held** | 19 November 2026 by claude  |
 | 6 | prove | [The preview's workflow](sdlc.md#PreviewWorkflow) | — | the shipment | **held** | 19 November 2026 by claude  |
 | 7 | prove | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | — | the shipment | **held** | 19 November 2026 by claude  |
-| 8 | record | [The files that run it elsewhere](sdlc.md#RunnersWritten) | — | — | **held** | 19 November 2026 by claude `evidence/shipments/RunnersWritten-2026-11-19-e5c76022.json` |
+| 8 | record | [The files that run it elsewhere](sdlc.md#RunnersWritten) | — | — | **held** | 19 November 2026 by claude `evidence/shipments/RunnersWritten-2026-11-19-e83dba0d.json` |
 
 `trame ship RunnersWritten --by <name>`

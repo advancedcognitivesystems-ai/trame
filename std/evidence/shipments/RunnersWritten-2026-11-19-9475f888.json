@@ -1,0 +1,64 @@
+{
+  "shipment": "sdlc.RunnersWritten",
+  "title": "The files that run it elsewhere",
+  "target": "repository",
+  "at": "2026-11-19",
+  "by": "claude",
+  "signature": "attribution",
+  "artifacts": [
+    {
+      "node": "sdlc.PullRequestWorkflow",
+      "path": "../.github/workflows/std-pull-request.yml",
+      "fingerprint": "822da0f07b6f23d43a3f7567285ff69d3934c9fe04db4e84df4ed9e9d8459667"
+    }
+  ],
+  "foundations": {
+    "problems": 0
+  },
+  "obligations": [
+    {
+      "node": "sdlc.PullRequestWorkflow",
+      "kind": "artifact",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-19",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "822da0f07b6f23d43a3f7567285ff69d3934c9fe04db4e84df4ed9e9d8459667",
+          "code": "a0a65958",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "987e2ef986dc7b6b",
+          "seal": "5cc7e91c6f1f2879e3f6efb2e416d41437e11a5ec5ac2eefa46d40951b996f10"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-19",
+          "source": "shipped",
+          "value": 1,
+          "fingerprint": "822da0f07b6f23d43a3f7567285ff69d3934c9fe04db4e84df4ed9e9d8459667",
+          "subject": "sdlc.RunnersWritten",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "493cd1f44c0ab331223763f05c10723c34a93ad777c865a96403795958290f9d"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-19",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "822da0f07b6f23d43a3f7567285ff69d3934c9fe04db4e84df4ed9e9d8459667",
+          "code": "7754dfa8",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "987e2ef986dc7b6b",
+          "seal": "7a421f55badda9795b882a1ed416d48689437e7e6b8429a5a7c425f0a9a5ceb2"
+        }
+      ]
+    }
+  ],
+  "deployed": []
+}

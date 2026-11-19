@@ -10556,10 +10556,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "ci",
-        "version": "0.5.0",
+        "version": "0.6.0",
         "joins": "library",
         "from": "path",
-        "at": "ci/releases/0.5.0"
+        "at": "ci/releases/0.6.0"
       },
       "diagnostics": []
     },
@@ -17266,7 +17266,7 @@
       "kind": "shipment",
       "title": "Into the main branch",
       "source": "src/sdlc.ts:333",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "main"
@@ -18061,7 +18061,9 @@
           "typescript.WorldGlobals"
         ]
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: To ship: The engine is unknown"
+      ]
     },
     {
       "id": "sdlc.LanguageServed",
@@ -18077,7 +18079,7 @@
       "id": "sdlc.MainBranch",
       "kind": "decision",
       "title": "How the repository merges into main",
-      "source": "src/sdlc.ts:376",
+      "source": "src/sdlc.ts:377",
       "fields": {
         "owner": "trame",
         "value": {
@@ -19074,7 +19076,7 @@
       "id": "sdlc.PullRequestsOnGitHub",
       "kind": "decision",
       "title": "How a pull request is checked on GitHub",
-      "source": "src/sdlc.ts:341",
+      "source": "src/sdlc.ts:342",
       "fields": {
         "owner": "trame",
         "value": {
@@ -19084,6 +19086,9 @@
             ]
           },
           "job": "trame",
+          "alsoInstalls": [
+            "apps/poselia"
+          ],
           "runsOn": "ubuntu-24.04",
           "node": 22,
           "artefacts": {
@@ -19106,7 +19111,7 @@
       "id": "sdlc.PullRequestWorkflow",
       "kind": "artifact",
       "title": "The pull requests' workflow",
-      "source": "src/sdlc.ts:359",
+      "source": "src/sdlc.ts:360",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -19115,7 +19120,7 @@
       },
       "result": {
         "path": ".github/workflows/trame-pull-request.yml",
-        "code": "8dd273bc"
+        "code": "8745061e"
       },
       "diagnostics": []
     },
@@ -19123,7 +19128,7 @@
       "id": "sdlc.RepositorySettingsScript",
       "kind": "artifact",
       "title": "The settings of the repository",
-      "source": "src/sdlc.ts:392",
+      "source": "src/sdlc.ts:393",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -19140,7 +19145,7 @@
       "id": "sdlc.RunnersWritten",
       "kind": "shipment",
       "title": "The files that run it elsewhere",
-      "source": "src/sdlc.ts:406",
+      "source": "src/sdlc.ts:407",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -19197,7 +19202,7 @@
       "kind": "artifact",
       "title": "The engine",
       "source": "src/sdlc.ts:319",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "src",
@@ -19205,9 +19210,11 @@
       },
       "result": {
         "path": "src",
-        "code": "4c43066f"
+        "code": "463e744e"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+      ]
     },
     {
       "id": "sdlc.TrameSdlc",

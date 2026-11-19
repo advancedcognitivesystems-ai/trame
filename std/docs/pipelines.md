@@ -6,7 +6,7 @@
 
 ## The next version
 
-> **The next version ships: every obligation holds.**
+> **The next version does not ship yet: 24 of 25 obligations hold.**
 
 For the target version.
 
@@ -14,7 +14,7 @@ Run elsewhere by [The pull requests' workflow](sdlc.md#PullRequestWorkflow), wri
 
 ```mermaid
 flowchart TB
-  n0["The standard library<br/><small>Artefact</small>"]:::held
+  n0["The standard library<br/><small>Artefact</small>"]:::unknown
   n1["An entry point says who may call it<br/><small>Architecture decision</small>"]:::held
   n2["The device's services, as ports<br/><small>Architecture decision</small>"]:::held
   n3["The SDLC's tooling is realized once<br/><small>Architecture decision</small>"]:::held
@@ -38,7 +38,7 @@ flowchart TB
   n21["A node reaches what it must<br/><small>Requirement</small>"]:::held
   n22["Effects a node may not have<br/><small>Requirement</small>"]:::held
   n23["Words of a vocabulary<br/><small>Requirement</small>"]:::held
-  n24["The next version<br/><small>Shipment</small>"]:::held
+  n24["The next version<br/><small>Shipment</small>"]:::unknown
   n1 -->|Applied by| n11
   n24 -->|Ships| n0
   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
@@ -52,9 +52,9 @@ flowchart TB
 
 |  | Stage | Step | Run by | Why | Status | Latest evidence |
 |---|---|---|---|---|---|---|
-| 1 | produce | [The standard library](sdlc.md#TheLibrary) · `src` | — | — | **held** | 19 November 2026 by claude  |
+| 1 | produce | [The standard library](sdlc.md#TheLibrary) · `src` | — | — | **unknown** | 19 November 2026 by claude  |
 | 2 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
-| 3 | prove | [The standard library](sdlc.md#TheLibrary) | — | the shipment | **held** | 19 November 2026 by claude  |
+| 3 | prove | [The standard library](sdlc.md#TheLibrary) | — | the shipment | **unknown** | 19 November 2026 by claude  |
 | 4 | prove | [An entry point says who may call it](access.md#SaysItsAudience) | — | [Its decisions applied](sdlc.md#DecisionsApplied) via [Who calls a shipment's programs is identified](obligations.md#Identified) | **held** |  |
 | 5 | prove | [The device's services, as ports](platform.md#DeviceAsPorts) | — | [Its decisions applied](sdlc.md#DecisionsApplied) via [Animation frames](platform.md#AnimationFrames) | **held** |  |
 | 6 | prove | [The SDLC's tooling is realized once](tooling.md#ToolingAsPorts) | — | [Its decisions applied](sdlc.md#DecisionsApplied) via [A browser kept in memory](tooling.md#BrowserInMemory) | **held** |  |
@@ -78,7 +78,7 @@ flowchart TB
 | 24 | prove | [A node reaches what it must](rules.md#Reaches) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
 | 25 | prove | [Effects a node may not have](rules.md#WithoutEffects) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
 | 26 | prove | [Words of a vocabulary](rules.md#WordsOf) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
-| 27 | record | [The next version](sdlc.md#NextVersion) | — | — | **held** | 19 November 2026 by claude `evidence/shipments/NextVersion-2026-11-19-76afb2d6.json` |
+| 27 | record | [The next version](sdlc.md#NextVersion) | — | — | **unknown** | 19 November 2026 by claude `evidence/shipments/NextVersion-2026-11-19-76afb2d6.json` |
 
 `trame ship NextVersion --by <name>`
 
@@ -111,6 +111,6 @@ flowchart TB
 | 1 | produce | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) · `../.github/workflows/std-pull-request.yml` | [A workflow of GitHub Actions](../.trame/ci/docs/github.md#GitHubWorkflow) | — | **held** | 19 November 2026 by claude  |
 | 2 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
 | 3 | prove | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | — | the shipment | **held** | 19 November 2026 by claude  |
-| 4 | record | [The files that run it elsewhere](sdlc.md#RunnersWritten) | — | — | **held** | 19 November 2026 by claude `evidence/shipments/RunnersWritten-2026-11-19-5d6df035.json` |
+| 4 | record | [The files that run it elsewhere](sdlc.md#RunnersWritten) | — | — | **held** | 19 November 2026 by claude `evidence/shipments/RunnersWritten-2026-11-19-9475f888.json` |
 
 `trame ship RunnersWritten --by <name>`

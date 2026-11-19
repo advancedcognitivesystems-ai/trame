@@ -131,10 +131,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "ci",
-        "version": "0.5.0",
+        "version": "0.6.0",
         "joins": "library",
         "from": "path",
-        "at": "../../ci/releases/0.5.0"
+        "at": "../../ci/releases/0.6.0"
       }
     },
     {
@@ -732,7 +732,7 @@
       "id": "sdlc.NextVersion",
       "kind": "shipment",
       "title": "The next version",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "version"
@@ -808,7 +808,7 @@
       "id": "sdlc.TheLibrary",
       "kind": "artifact",
       "title": "The library of data",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "src",

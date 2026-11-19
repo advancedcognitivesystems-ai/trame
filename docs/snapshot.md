@@ -2951,10 +2951,10 @@ Package · `ContinuousIntegration`
 
 - Owner: trame
 - Name: ci
-- Version: 0.5.0
+- Version: 0.6.0
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: ci/releases/0.5.0
+- Its path: ci/releases/0.6.0
 - Serves: A single source of truth
 
 ### Grammar of CSS
@@ -6192,7 +6192,7 @@ Decision · `MainBranch`
 Decision · `PullRequestsOnGitHub`
 
 - Decided by: trame
-- Value: { on: { pullRequests: main }, job: trame, runsOn: ubuntu-24.04, node: 22, artefacts: { days: 30 }, pullRequest: { review: false, merge: onceItHoldsUnlessDecided } }
+- Value: { on: { pullRequests: main }, job: trame, alsoInstalls: apps/poselia, runsOn: ubuntu-24.04, node: 22, artefacts: { days: 30 }, pullRequest: { review: false, merge: onceItHoldsUnlessDecided } }
 - Rejected: Only when a pull request touches the project, GitHub keeps a pull request waiting for a check it requires and that never ran; Merged by GitHub whatever it changes, what people decided would reach main without a person; The review of the branch, Trame publishes nothing yet: its graph is published once the plan is done
 
 ### Trame's SDLC
@@ -6313,7 +6313,7 @@ Artefact · `RepositorySettingsScript` · **held**
 
 ### The engine
 
-Artefact · `TheEngine` · **held**
+Artefact · `TheEngine` · **unknown**
 
 - Owner: trame
 - Path: src
@@ -6350,7 +6350,7 @@ Check · `GraphPageOpens` · **held**
 
 ### Into the main branch
 
-Shipment · `IntoMain` · **held**
+Shipment · `IntoMain` · **unknown**
 
 - Owner: trame
 - Target: main

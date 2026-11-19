@@ -4540,6 +4540,29 @@
     "seal": "494a34927afb4032ff8c8eb23dba57956441d4ea63a7c2b4586d65fd3910d0a9"
   },
   {
+    "node": "sdlc.PullRequestWorkflow",
+    "at": "2026-11-19",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "bc6d338bc67d351cd4171f5a461d988da472ce4081c49e584d2c4f0be9b95fd4",
+    "code": "8745061e",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "987e2ef986dc7b6b",
+    "seal": "84ab7d10f98641ee52ffd0f6c377ad8c1d74d847e3f348195853d4b88524994e"
+  },
+  {
+    "node": "sdlc.PullRequestWorkflow",
+    "at": "2026-11-19",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "bc6d338bc67d351cd4171f5a461d988da472ce4081c49e584d2c4f0be9b95fd4",
+    "subject": "sdlc.RunnersWritten",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "f96a925a07bc59d554c4b7cf11b37def0793285454ef1490f7294dc6e14919c8"
+  },
+  {
     "node": "sdlc.RepositorySettingsScript",
     "at": "2026-11-19",
     "source": "built",
@@ -4595,6 +4618,17 @@
     "by": "claude",
     "signature": "attribution",
     "seal": "33b40b93caf0f3375de1d45ecd1b958407bb4f80b2c8a9c7f32a63b0423e91c5"
+  },
+  {
+    "node": "sdlc.RunnersWritten",
+    "at": "2026-11-19",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "362057a6",
+    "url": "evidence/shipments/RunnersWritten-2026-11-19-362057a6.json",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "a6e51c949f7d8c108f5741722d9c59330e057f0c1d1b4600951702c1c6185918"
   },
   {
     "node": "sdlc.TheEngine",
