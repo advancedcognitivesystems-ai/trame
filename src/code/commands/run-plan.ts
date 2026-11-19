@@ -93,7 +93,7 @@ const body = ({ line, project, layout, pin, reading, paths, encodings, values, s
       evidence: from(join(root, layout.evidence)),
       deployed: { command: [launcher, line.evidence], verdict: line.passed, by: line.by, url: line.url },
       // What a pull request adds to what is published: the view review, against the lock of the branch it merges into.
-      review: { command: [launcher, line.view, ViewName.review], lock: layout.lock },
+      review: { command: [launcher, line.view, ViewName.review, line.format, line.markdown], lock: layout.lock },
     }
   }
 }
