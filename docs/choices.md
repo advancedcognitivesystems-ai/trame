@@ -1,6 +1,6 @@
 # Technical choices
 
-*What answers each port in each environment on 19 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
+*What answers each port in each environment on 30 October 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
 
 > **24 technical choices for 46 ports, in 3 environments**
 
@@ -66,7 +66,7 @@
 
 ### The browser runs the page
 
-`TheBrowserRunsThePage` · `src/browser.ts:131` · status: **held**
+`TheBrowserRunsThePage` · `src/browser.ts:131` · status: **unknown**
 
 In the browser, the page loads, writes in its window, keeps the person's place, receives the graph and makes it whole again with what every browser has: the DOM, local storage, fetch and server-sent events, DecompressionStream.
 
@@ -694,7 +694,7 @@ Consequences: Graphs, legends and timelines are written by the engine, with the 
 
 ### The SDLC on the machine
 
-`SdlcOnTheMachine` · `src/sdlc.ts:154` · status: **held**
+`SdlcOnTheMachine` · `src/sdlc.ts:154` · status: **unknown**
 
 On the machine, the programs of the SDLC read their command from Node's command line and open pages in Chromium driven by Playwright, as the standard library realizes them.
 

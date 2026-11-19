@@ -1,6 +1,6 @@
 # Layers
 
-*The graph in force on 19 November 2026, ordered by distance to the goals.*
+*The graph in force on 30 October 2026, ordered by distance to the goals.*
 
 ```mermaid
 flowchart TB
@@ -66,15 +66,15 @@ flowchart TB
     n56["Write log<br/><small>Port</small>"]:::neutral
   end
   subgraph browser["Trame · The page in a browser"]
-    n57["Amendments sent to trame dev<br/><small>Implementation</small>"]:::held
-    n58["The browser's gzip<br/><small>Implementation</small>"]:::held
-    n59["The globals of the page, and trame dev<br/><small>Implementation</small>"]:::held
-    n60["Local storage<br/><small>Implementation</small>"]:::held
-    n61["The browser's window<br/><small>Implementation</small>"]:::held
-    n62["Explorer of a graph<br/><small>Function</small>"]:::held
-    n63["Show the graph<br/><small>Entry point</small>"]:::held
-    n64["The browser runs the page<br/><small>Technical choice</small>"]:::held
-    n65["The page is assembled<br/><small>Architecture decision</small>"]:::held
+    n57["Amendments sent to trame dev<br/><small>Implementation</small>"]:::unknown
+    n58["The browser's gzip<br/><small>Implementation</small>"]:::unknown
+    n59["The globals of the page, and trame dev<br/><small>Implementation</small>"]:::unknown
+    n60["Local storage<br/><small>Implementation</small>"]:::unknown
+    n61["The browser's window<br/><small>Implementation</small>"]:::unknown
+    n62["Explorer of a graph<br/><small>Function</small>"]:::unknown
+    n63["Show the graph<br/><small>Entry point</small>"]:::unknown
+    n64["The browser runs the page<br/><small>Technical choice</small>"]:::unknown
+    n65["The page is assembled<br/><small>Architecture decision</small>"]:::unknown
   end
   subgraph command-scenarios["Trame · Scenarios of the commands"]
     n66["An advance, in memory<br/><small>Scenario</small>"]:::held
@@ -660,9 +660,9 @@ flowchart TB
     n600["The packages are safe<br/><small>Obligation</small>"]:::neutral
     n601["The engine is verified<br/><small>Obligation</small>"]:::neutral
     n602["How a generation is made<br/><small>Policy</small>"]:::neutral
-    n603["The graph page<br/><small>Artefact</small>"]:::held
+    n603["The graph page<br/><small>Artefact</small>"]:::unknown
     n604["How the graph page is opened<br/><small>Decision</small>"]:::neutral
-    n605["The graph page opens<br/><small>Check</small>"]:::held
+    n605["The graph page opens<br/><small>Check</small>"]:::unknown
     n606["What the scenario of the graph page shows<br/><small>Decision</small>"]:::neutral
     n607["What the graph page is asked<br/><small>Function</small>"]:::held
     n608["Into the main branch<br/><small>Shipment</small>"]:::unknown
@@ -673,13 +673,13 @@ flowchart TB
     n613["The next generation<br/><small>Shipment</small>"]:::unknown
     n614["The graph page is opened as a person would<br/><small>Scenario</small>"]:::held
     n615["Open the graph page<br/><small>Entry point</small>"]:::held
-    n616["The page's program<br/><small>Artefact</small>"]:::held
+    n616["The page's program<br/><small>Artefact</small>"]:::unknown
     n617["How a pull request is checked on GitHub<br/><small>Decision</small>"]:::neutral
-    n618["The pull requests' workflow<br/><small>Artefact</small>"]:::held
-    n619["The settings of the repository<br/><small>Artefact</small>"]:::held
-    n620["The files that run it elsewhere<br/><small>Shipment</small>"]:::held
+    n618["The pull requests' workflow<br/><small>Artefact</small>"]:::unknown
+    n619["The settings of the repository<br/><small>Artefact</small>"]:::unknown
+    n620["The files that run it elsewhere<br/><small>Shipment</small>"]:::unknown
     n621["The SDLC in memory<br/><small>Technical choice</small>"]:::held
-    n622["The SDLC on the machine<br/><small>Technical choice</small>"]:::held
+    n622["The SDLC on the machine<br/><small>Technical choice</small>"]:::unknown
     n623["What the programs of Trame's SDLC say<br/><small>Message catalog</small>"]:::neutral
     n624["The engine<br/><small>Artefact</small>"]:::unknown
     n625["Trame's SDLC<br/><small>Component</small>"]:::neutral

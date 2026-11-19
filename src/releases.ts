@@ -1619,3 +1619,18 @@ export const G109 = release({
   archive: "48b53a6cd95905bc",
   assembledBy: G108,
 })
+
+/**
+ * Generation 110
+ */
+export const G110 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g110",
+  date: "2026-11-19",
+  what: "D1: the run plan says the nodes a file written comes from (the artefact, the decision of its settings, the file that declares them)",
+  fingerprint: "ea7f70d71823986b",
+  language: "shared",
+  archive: "b86153ccec9980c7",
+  assembledBy: G109,
+})

@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 19 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 30 October 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Trame · Appearance
 
@@ -410,7 +410,7 @@ Environment · `Test`
 
 ### The page is assembled
 
-Architecture decision · `ThePageIsAssembled` · **held**
+Architecture decision · `ThePageIsAssembled` · **unknown**
 
 - Decided by: trame
 - Context: The page's script built by hand what it shared with the engine and wrote its values (classes, identifiers, the explorer's geometry) as literals the catalogue could not see: a change in the graph did not reach it.
@@ -421,7 +421,7 @@ Architecture decision · `ThePageIsAssembled` · **held**
 
 ### Explorer of a graph
 
-Function · `ExplorerFigures` · **held**
+Function · `ExplorerFigures` · **unknown**
 
 - Owner: trame
 - Parameters: { html: std/html.Html, svg: std/html.Svg, aria: std/html.Aria, css: std/html.Css, page: page.ThePage, markup: markup.DocumentMarkup, figures: markup.FigureMarkup, explorer: markup.ExplorerMarkup, drawing: appearance.ExplorerDrawing, element: html.HtmlElement, start: html.HtmlStartTag, empty: html.SelfClosingTag, path: html.PathData, declaration: html.CssDeclaration, escape: html.EscapedText, common: rendering.Common, words: messages.PageWords, messages: messages.RenderingMessages, punctuation: documents.Punctuation, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts }
@@ -430,7 +430,7 @@ Function · `ExplorerFigures` · **held**
 
 ### Show the graph
 
-Entry point · `ShowGraph` · **held**
+Entry point · `ShowGraph` · **unknown**
 
 - Owner: trame
 - Trigger: { type: load }
@@ -441,7 +441,7 @@ Entry point · `ShowGraph` · **held**
 
 ### Amendments sent to trame dev
 
-Implementation · `BrowserAmendments` · **held**
+Implementation · `BrowserAmendments` · **unknown**
 
 - Owner: trame
 - Parameters: { page: page.ThePage, service: engine.DevService, http: std/web.Http, media: std/web.MediaTypes }
@@ -450,7 +450,7 @@ Implementation · `BrowserAmendments` · **held**
 
 ### The browser's gzip
 
-Implementation · `BrowserDecompression` · **held**
+Implementation · `BrowserDecompression` · **unknown**
 
 - Owner: trame
 - Parameters: { packing: page.PackedGraph, ecma: std/ecmascript.EcmaScript }
@@ -459,7 +459,7 @@ Implementation · `BrowserDecompression` · **held**
 
 ### The globals of the page, and trame dev
 
-Implementation · `BrowserFeed` · **held**
+Implementation · `BrowserFeed` · **unknown**
 
 - Owner: trame
 - Parameters: { page: page.ThePage, service: engine.DevService, values: std/algebra.ValueTypes }
@@ -468,7 +468,7 @@ Implementation · `BrowserFeed` · **held**
 
 ### Local storage
 
-Implementation · `BrowserMemory` · **held**
+Implementation · `BrowserMemory` · **unknown**
 
 - Owner: trame
 - Parameters: { page: page.ThePage }
@@ -477,7 +477,7 @@ Implementation · `BrowserMemory` · **held**
 
 ### The browser's window
 
-Implementation · `BrowserWindow` · **held**
+Implementation · `BrowserWindow` · **unknown**
 
 - Owner: trame
 - Parameters: { motion: std/web.MediaQueries5, feature: html.MediaFeature, counts: std/algebra.Counts }
@@ -486,7 +486,7 @@ Implementation · `BrowserWindow` · **held**
 
 ### The browser runs the page
 
-Technical choice · `TheBrowserRunsThePage` · **held**
+Technical choice · `TheBrowserRunsThePage` · **unknown**
 
 - Decided by: trame
 - Context: The page's script took what it needed from the browser itself, here and there: the graph could not say what the page asks of the browser, nor try it elsewhere.
@@ -6241,7 +6241,7 @@ Technical choice · `SdlcInMemory` · **held**
 
 ### The SDLC on the machine
 
-Technical choice · `SdlcOnTheMachine` · **held**
+Technical choice · `SdlcOnTheMachine` · **unknown**
 
 - Decided by: trame
 - Context: The graph page must be opened as a person opens it: the file exported, in a real browser.
@@ -6274,7 +6274,7 @@ Artefact · `EngineCandidate` · **unknown**
 
 ### The graph page
 
-Artefact · `GraphPage` · **held**
+Artefact · `GraphPage` · **unknown**
 
 - Owner: trame
 - Path: trame-page.html
@@ -6284,7 +6284,7 @@ Artefact · `GraphPage` · **held**
 
 ### The page's program
 
-Artefact · `PageProgram` · **held**
+Artefact · `PageProgram` · **unknown**
 
 - Owner: trame
 - Path: out/browser/page-app.ts
@@ -6293,7 +6293,7 @@ Artefact · `PageProgram` · **held**
 
 ### The pull requests' workflow
 
-Artefact · `PullRequestWorkflow` · **held**
+Artefact · `PullRequestWorkflow` · **unknown**
 
 - Owner: trame
 - Path: .github/workflows/trame-pull-request.yml
@@ -6303,7 +6303,7 @@ Artefact · `PullRequestWorkflow` · **held**
 
 ### The settings of the repository
 
-Artefact · `RepositorySettingsScript` · **held**
+Artefact · `RepositorySettingsScript` · **unknown**
 
 - Owner: trame
 - Path: .github/settings.sh
@@ -6340,7 +6340,7 @@ Check · `CandidateRunsOnTheMachine` · **unknown**
 
 ### The graph page opens
 
-Check · `GraphPageOpens` · **held**
+Check · `GraphPageOpens` · **unknown**
 
 - Owner: trame
 - Checks: The graph page
@@ -6371,7 +6371,7 @@ Shipment · `NextGeneration` · **unknown**
 
 ### The files that run it elsewhere
 
-Shipment · `RunnersWritten` · **held**
+Shipment · `RunnersWritten` · **unknown**
 
 - Owner: trame
 - Target: repository

@@ -1,11 +1,11 @@
 # Owners
 
-*What each person must decide, settle or watch on 19 November 2026, and what they own.*
+*What each person must decide, settle or watch on 30 October 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| Trame's maintainers | 0 | 0 | 2 | 0 |
-| trame | 0 | 0 | 7 | 696 |
+| Trame's maintainers | 0 | 0 | 3 | 0 |
+| trame | 0 | 0 | 18 | 696 |
 
 <a id="Trame's maintainers"></a>
 
@@ -17,6 +17,7 @@
 |---|---|---|---|---|
 | warning | Checked on another build of its artefacts, by another version of its program or another engine: to check again | [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws) | Trame's maintainers |  |
 | warning | Checked on another build of its artefacts, by another version of its program or another engine: to check again | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | Trame's maintainers |  |
+| warning | Checked on another build of its artefacts, by another version of its program or another engine: to check again | [The graph page opens](sdlc.md#GraphPageOpens) | Trame's maintainers |  |
 
 <a id="trame"></a>
 
@@ -25,12 +26,23 @@
 | Severity | What | Where | Owner | Consequence |
 |---|---|---|---|---|
 | warning | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The candidate engine](sdlc.md#EngineCandidate) | trame |  |
+| warning | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The graph page](sdlc.md#GraphPage) | trame |  |
 | warning | To ship: The engine is unknown | [Into the main branch](sdlc.md#IntoMain) | trame |  |
+| warning | To ship: The graph page opens is unknown | [Into the main branch](sdlc.md#IntoMain) | trame |  |
 | warning | To ship: The candidate runs on the machine is unknown | [Into the main branch](sdlc.md#IntoMain) | trame |  |
 | warning | To ship: The candidate engine is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
+| warning | To ship: The graph page is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
+| warning | To ship: The page's program is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
+| warning | To ship: The page is assembled is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
 | warning | To ship: The candidate plays the laws is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
 | warning | To ship: The candidate runs on the machine is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
-| warning | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The engine](sdlc.md#TheEngine) | trame |  |
+| warning | To ship: The graph page opens is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
+| warning | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The page's program](sdlc.md#PageProgram) | trame |  |
+| warning | Not built yet: trame ship builds it | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | trame |  |
+| warning | Not built yet: trame ship builds it | [The settings of the repository](sdlc.md#RepositorySettingsScript) | trame |  |
+| warning | To ship: The pull requests' workflow is unknown | [The files that run it elsewhere](sdlc.md#RunnersWritten) | trame |  |
+| warning | To ship: The settings of the repository is unknown | [The files that run it elsewhere](sdlc.md#RunnersWritten) | trame |  |
+| warning | Not built yet: trame ship builds it | [The engine](sdlc.md#TheEngine) | trame |  |
 
 ### Owns
 
@@ -93,15 +105,15 @@
 | [Trame on the command line](architecture.md#TrameCli) | Component |  |
 | [TypeScript compiler](architecture.md#TypeScriptCompiler) | Port |  |
 | [Write log](architecture.md#WriteLog) | Port |  |
-| [Amendments sent to trame dev](browser.md#BrowserAmendments) | Implementation | **held** |
-| [The browser's gzip](browser.md#BrowserDecompression) | Implementation | **held** |
-| [The globals of the page, and trame dev](browser.md#BrowserFeed) | Implementation | **held** |
-| [Local storage](browser.md#BrowserMemory) | Implementation | **held** |
-| [The browser's window](browser.md#BrowserWindow) | Implementation | **held** |
-| [Explorer of a graph](browser.md#ExplorerFigures) | Function | **held** |
-| [Show the graph](browser.md#ShowGraph) | Entry point | **held** |
-| [The browser runs the page](browser.md#TheBrowserRunsThePage) | Technical choice | **held** |
-| [The page is assembled](browser.md#ThePageIsAssembled) | Architecture decision | **held** |
+| [Amendments sent to trame dev](browser.md#BrowserAmendments) | Implementation | **unknown** |
+| [The browser's gzip](browser.md#BrowserDecompression) | Implementation | **unknown** |
+| [The globals of the page, and trame dev](browser.md#BrowserFeed) | Implementation | **unknown** |
+| [Local storage](browser.md#BrowserMemory) | Implementation | **unknown** |
+| [The browser's window](browser.md#BrowserWindow) | Implementation | **unknown** |
+| [Explorer of a graph](browser.md#ExplorerFigures) | Function | **unknown** |
+| [Show the graph](browser.md#ShowGraph) | Entry point | **unknown** |
+| [The browser runs the page](browser.md#TheBrowserRunsThePage) | Technical choice | **unknown** |
+| [The page is assembled](browser.md#ThePageIsAssembled) | Architecture decision | **unknown** |
 | [An advance, in memory](command-scenarios.md#AdvanceInMemory) | Scenario | **held** |
 | [What the engines an advance starts answer in a scenario](command-scenarios.md#AdvanceSamples) | Decision |  |
 | [What an amendment is checked with](command-scenarios.md#AmendmentSamples) | Decision |  |
@@ -639,9 +651,9 @@
 | [The packages are safe](sdlc.md#EnginePackagesSafe) | Obligation |  |
 | [The engine is verified](sdlc.md#EngineVerified) | Obligation |  |
 | [How a generation is made](sdlc.md#GenerationMode) | Policy |  |
-| [The graph page](sdlc.md#GraphPage) | Artefact | **held** |
+| [The graph page](sdlc.md#GraphPage) | Artefact | **unknown** |
 | [How the graph page is opened](sdlc.md#GraphPageOpening) | Decision |  |
-| [The graph page opens](sdlc.md#GraphPageOpens) | Check | **held** |
+| [The graph page opens](sdlc.md#GraphPageOpens) | Check | **unknown** |
 | [What the scenario of the graph page shows](sdlc.md#GraphPageScenarioData) | Decision |  |
 | [What the graph page is asked](sdlc.md#GraphPageSelectors) | Function | **held** |
 | [Into the main branch](sdlc.md#IntoMain) | Shipment | **unknown** |
@@ -652,13 +664,13 @@
 | [The next generation](sdlc.md#NextGeneration) | Shipment | **unknown** |
 | [The graph page is opened as a person would](sdlc.md#OpeningTheGraphPage) | Scenario | **held** |
 | [Open the graph page](sdlc.md#OpenTheGraphPage) | Entry point | **held** |
-| [The page's program](sdlc.md#PageProgram) | Artefact | **held** |
+| [The page's program](sdlc.md#PageProgram) | Artefact | **unknown** |
 | [How a pull request is checked on GitHub](sdlc.md#PullRequestsOnGitHub) | Decision |  |
-| [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **held** |
-| [The settings of the repository](sdlc.md#RepositorySettingsScript) | Artefact | **held** |
-| [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **held** |
+| [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **unknown** |
+| [The settings of the repository](sdlc.md#RepositorySettingsScript) | Artefact | **unknown** |
+| [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **unknown** |
 | [The SDLC in memory](sdlc.md#SdlcInMemory) | Technical choice | **held** |
-| [The SDLC on the machine](sdlc.md#SdlcOnTheMachine) | Technical choice | **held** |
+| [The SDLC on the machine](sdlc.md#SdlcOnTheMachine) | Technical choice | **unknown** |
 | [What the programs of Trame's SDLC say](sdlc.md#SdlcWords) | Message catalog |  |
 | [The engine](sdlc.md#TheEngine) | Artefact | **unknown** |
 | [Trame's SDLC](sdlc.md#TrameSdlc) | Component |  |
