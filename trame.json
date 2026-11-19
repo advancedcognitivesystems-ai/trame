@@ -4,10 +4,14 @@
     "engine-views"
   ],
   "libraries": {
+    "ci": {
+      "at": "ci/releases/0.7.0",
+      "version": "0.7.0"
+    },
     "std": {
-      "at": "std/releases/0.18.1",
-      "version": "0.18.1"
+      "at": "std/releases/0.20.0",
+      "version": "0.20.0"
     }
   },
-  "engine": "generations/g107"
+  "engine": "generations/g110"
 }

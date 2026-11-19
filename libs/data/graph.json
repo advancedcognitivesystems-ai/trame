@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-18",
+  "generated": "2026-11-19",
   "nodes": [
     {
       "id": "documents.Conforms",
@@ -153,6 +153,21 @@
       "diagnostics": []
     },
     {
+      "id": "packages.ContinuousIntegration",
+      "kind": "package",
+      "title": "The library of continuous integration",
+      "source": "src/packages.ts:23",
+      "fields": {
+        "owner": "trame",
+        "packageName": "ci",
+        "version": "0.7.0",
+        "joins": "library",
+        "from": "path",
+        "at": "../../ci/releases/0.7.0"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "packages.Language",
       "kind": "package",
       "title": "Trame",
@@ -160,9 +175,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "107",
+        "version": "110",
         "joins": "language",
-        "at": "../../generations/g107"
+        "at": "../../generations/g110"
       },
       "diagnostics": []
     },
@@ -174,9 +189,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.18.1",
+        "version": "0.20.0",
         "joins": "library",
-        "at": "../../std/releases/0.18.1"
+        "at": "../../std/releases/0.20.0"
       },
       "diagnostics": []
     },
@@ -855,7 +870,7 @@
       "id": "sdlc.DecisionsApplied",
       "kind": "obligation",
       "title": "Its decisions applied",
-      "source": "src/sdlc.ts:38",
+      "source": "src/sdlc.ts:40",
       "fields": {
         "owner": "trame"
       },
@@ -865,7 +880,7 @@
       "id": "sdlc.FunctionsVerified",
       "kind": "obligation",
       "title": "Its functions verified",
-      "source": "src/sdlc.ts:24",
+      "source": "src/sdlc.ts:26",
       "fields": {
         "owner": "trame",
         "params": {
@@ -881,8 +896,8 @@
       "id": "sdlc.NextVersion",
       "kind": "shipment",
       "title": "The next version",
-      "source": "src/sdlc.ts:58",
-      "status": "held",
+      "source": "src/sdlc.ts:60",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "version"
@@ -933,6 +948,7 @@
           "obligations.DataKinds",
           "obligations.Migrated",
           "obligations.MigratedCriteria",
+          "packages.ContinuousIntegration",
           "packages.Language",
           "packages.stdLibrary",
           "principles.DescribedOnce",
@@ -965,7 +981,10 @@
           "sdlc.FunctionsVerified",
           "sdlc.NextVersion",
           "sdlc.PackagesSafe",
+          "sdlc.PullRequestsOnGitHub",
+          "sdlc.PullRequestWorkflow",
           "sdlc.RequirementsServed",
+          "sdlc.RunnersWritten",
           "sdlc.VersionMode",
           "shelves.Book",
           "shelves.Shelves",
@@ -991,15 +1010,65 @@
           "words.DataKindWords"
         ]
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: To ship: The library of data is unknown"
+      ]
     },
     {
       "id": "sdlc.PackagesSafe",
       "kind": "obligation",
       "title": "Its packages safe",
-      "source": "src/sdlc.ts:44",
+      "source": "src/sdlc.ts:46",
       "fields": {
         "owner": "trame"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.PullRequestsOnGitHub",
+      "kind": "decision",
+      "title": "How a pull request is checked on GitHub",
+      "source": "src/sdlc.ts:68",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "on": {
+            "pullRequests": [
+              "main"
+            ]
+          },
+          "job": "data",
+          "runsOn": "ubuntu-24.04",
+          "node": 22,
+          "artefacts": {
+            "days": 30
+          },
+          "pullRequest": {
+            "review": false,
+            "merge": "onceItHoldsUnlessDecided"
+          }
+        },
+        "rejected": {
+          "Only when a pull request touches the project": "GitHub keeps a pull request waiting for a check it requires and that never ran",
+          "Merged by GitHub whatever it changes": "what people decided would reach main without a person"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.PullRequestWorkflow",
+      "kind": "artifact",
+      "title": "The pull requests' workflow",
+      "source": "src/sdlc.ts:86",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "path": "../../.github/workflows/data-pull-request.yml",
+        "media": "application/yaml"
+      },
+      "result": {
+        "path": "../../.github/workflows/data-pull-request.yml",
+        "code": "c605982c"
       },
       "diagnostics": []
     },
@@ -1007,9 +1076,29 @@
       "id": "sdlc.RequirementsServed",
       "kind": "obligation",
       "title": "Its requirements held",
-      "source": "src/sdlc.ts:32",
+      "source": "src/sdlc.ts:34",
       "fields": {
         "owner": "trame"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.RunnersWritten",
+      "kind": "shipment",
+      "title": "The files that run it elsewhere",
+      "source": "src/sdlc.ts:100",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "target": "repository"
+      },
+      "result": {
+        "derived": [],
+        "gaps": [],
+        "preceded": [],
+        "reached": [
+          "sdlc.PullRequestWorkflow"
+        ]
       },
       "diagnostics": []
     },
@@ -1017,8 +1106,8 @@
       "id": "sdlc.TheLibrary",
       "kind": "artifact",
       "title": "The library of data",
-      "source": "src/sdlc.ts:18",
-      "status": "held",
+      "source": "src/sdlc.ts:20",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "src",
@@ -1026,15 +1115,17 @@
       },
       "result": {
         "path": "src",
-        "code": "f5f71785"
+        "code": "1911c1c6"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+      ]
     },
     {
       "id": "sdlc.VersionMode",
       "kind": "policy",
       "title": "How a version is made",
-      "source": "src/sdlc.ts:51",
+      "source": "src/sdlc.ts:53",
       "fields": {
         "owner": "trame"
       },
@@ -2160,6 +2251,11 @@
       "kind": "accepts"
     },
     {
+      "from": "packages.ContinuousIntegration",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
       "from": "packages.Language",
       "to": "product.DataDescribedOnce",
       "kind": "serves"
@@ -2825,6 +2921,21 @@
       "kind": "serves"
     },
     {
+      "from": "sdlc.PullRequestWorkflow",
+      "to": "ci/github.GitHubWorkflow",
+      "kind": "producedBy"
+    },
+    {
+      "from": "sdlc.PullRequestWorkflow",
+      "to": "sdlc.NextVersion",
+      "kind": "runs"
+    },
+    {
+      "from": "sdlc.PullRequestWorkflow",
+      "to": "sdlc.PullRequestsOnGitHub",
+      "kind": "settings"
+    },
+    {
       "from": "sdlc.RequirementsServed",
       "to": "std/obligations.Served",
       "kind": "applies"
@@ -2833,6 +2944,11 @@
       "from": "sdlc.RequirementsServed",
       "to": "product.DataDescribedOnce",
       "kind": "serves"
+    },
+    {
+      "from": "sdlc.RunnersWritten",
+      "to": "sdlc.PullRequestWorkflow",
+      "kind": "ships"
     },
     {
       "from": "sdlc.VersionMode",

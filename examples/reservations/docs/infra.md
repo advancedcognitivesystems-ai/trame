@@ -10,7 +10,7 @@
 
 ### Backup retention
 
-`BackupRetention` · `src/infra.ts:69`
+`BackupRetention` · `src/infra.ts:69` · published
 
 In days.
 
@@ -24,7 +24,7 @@ In days.
 
 ### Status of a cancelled reservation
 
-`CancelledStatus` · `src/infra.ts:80`
+`CancelledStatus` · `src/infra.ts:80` · published
 
 As the reservations table stores it.
 
@@ -37,7 +37,7 @@ As the reservations table stores it.
 
 ### Production database address
 
-`DatabaseAddress` · `src/infra.ts:63`
+`DatabaseAddress` · `src/infra.ts:63` · published
 
 Where the service finds the database: the name of the database stands for each %s (as Terraform's format writes it), on the provider's internal network, on Postgres's port.
 
@@ -50,7 +50,7 @@ Where the service finds the database: the name of the database stands for each %
 
 ### Production database name
 
-`DatabaseName` · `src/infra.ts:51`
+`DatabaseName` · `src/infra.ts:51` · published
 
 - Value: reservations
 
@@ -61,7 +61,7 @@ Where the service finds the database: the name of the database stands for each %
 
 ### Production database size
 
-`DatabaseSize` · `src/infra.ts:56`
+`DatabaseSize` · `src/infra.ts:56` · published
 
 | Case | Value |
 |---|---|
@@ -75,7 +75,7 @@ Where the service finds the database: the name of the database stands for each %
 
 ### Local database file
 
-`LocalDatabasePath` · `src/infra.ts:46`
+`LocalDatabasePath` · `src/infra.ts:46` · published
 
 - Value: .data/reservations.db
 
@@ -86,7 +86,7 @@ Where the service finds the database: the name of the database stands for each %
 
 ### Payment provider address
 
-`ProviderUrl` · `src/infra.ts:74`
+`ProviderUrl` · `src/infra.ts:74` · published
 
 - Value: https://payments.example.com/v1
 
@@ -97,7 +97,7 @@ Where the service finds the database: the name of the database stands for each %
 
 ### End of a response
 
-`ResponseEnding` · `src/infra.ts:92`
+`ResponseEnding` · `src/infra.ts:92` · published
 
 A JSON response ends with a line feed: a terminal shows what follows on its own line.
 
@@ -110,7 +110,7 @@ A JSON response ends with a line feed: a terminal shows what follows on its own 
 
 ### References of the simulated provider
 
-`SimulatedReference` · `src/infra.ts:86`
+`SimulatedReference` · `src/infra.ts:86` · published
 
 What the simulated provider answers for a refund: this prefix, then the number of the call.
 
@@ -123,7 +123,7 @@ What the simulated provider answers for a refund: this prefix, then the number o
 
 ### Test instant
 
-`TestInstant` · `src/infra.ts:41`
+`TestInstant` · `src/infra.ts:41` · published
 
 The time the scenarios see.
 
@@ -138,7 +138,7 @@ The time the scenarios see.
 
 ### Cancellations as records
 
-`CancellationRecords` · `src/infra.ts:135` · status: **held**
+`CancellationRecords` · `src/infra.ts:135` · status: **held** · published
 
 The refund of a reservation is a record of its own; recording it cancels the reservation in the same transaction.
 
@@ -154,7 +154,7 @@ The refund of a reservation is a record of its own; recording it cancels the res
 
 ### Reservations as records
 
-`ReservationRecords` · `src/infra.ts:124` · status: **held**
+`ReservationRecords` · `src/infra.ts:124` · status: **held** · published
 
 A reservation is found by its identifier among the records of its entity.
 
@@ -170,7 +170,7 @@ A reservation is found by its identifier among the records of its entity.
 
 ### Simulated payment provider
 
-`SimulatedPayment` · `src/infra.ts:174` · status: **held**
+`SimulatedPayment` · `src/infra.ts:174` · status: **held** · published
 
 Keeps every call in memory. A key seen before returns the same reference, without a new call.
 
@@ -185,7 +185,7 @@ Keeps every call in memory. A key seen before returns the same reference, withou
 
 ### Stopped clock
 
-`StoppedClock` · `src/infra.ts:163` · status: **held**
+`StoppedClock` · `src/infra.ts:163` · status: **held** · published
 
 Always the test instant.
 

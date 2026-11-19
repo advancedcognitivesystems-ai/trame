@@ -136,11 +136,24 @@ export type PackageReport = ValueOf<typeof PackageReport>
 export const CoveredEffects: Readonly<Record<string, readonly string[]>> = { keeps: ["write"] }
 /**
  * How a value of a node changes once declared (since g85). Chosen: by an amendment its owner approves, which the page
- * and trame amend can write. Cited: only with the source that changed it, an amendment that names the new source. Code:
- * in the code, never from outside it (what code is built on: a structure's constants, a vocabulary's words, a body).
+ * and trame amend can write. Cited: only with the source that changed it, an amendment that names the new source.
+ * Stated (since g108): a statement (a goal, the reasons of an ADR), changed by a new node that repeals it, or published
+ * again saying why when only its form changed. Code: in the code, never from outside it (what code is built on: a
+ * structure's constants, a vocabulary's words, a body). A publication freezes all but code (D1).
  */
-export const ChangeWay = { chosen: "chosen", cited: "cited", code: "code" } as const
+export const ChangeWay = { chosen: "chosen", cited: "cited", stated: "stated", code: "code" } as const
 export type ChangeWay = (typeof ChangeWay)[keyof typeof ChangeWay]
+/**
+ * The parts of a declaration a publication freezes besides its fields (since g108): its statement, the title and the
+ * description its documentation comment gives it.
+ */
+export const DeclarationPart = { statement: "statement" } as const
+/**
+ * Where a frozen part of a declaration stands against trame.lock (since g108): published as it is; changed since it was
+ * published; not published yet; published in a form before its parts were (the whole declaration, before g108).
+ */
+export const PublicationState = { published: "published", changed: "changed", unpublished: "unpublished", outdated: "outdated" } as const
+export type PublicationState = (typeof PublicationState)[keyof typeof PublicationState]
 /** How an amendment is declared (since g85): the function that makes one, and the names of what it says. */
 export const AmendmentField = { facade: "amend", owner: "owner", why: "why", from: "from", until: "until", source: "source" } as const
 export const PackageField = { name: "packageName", version: "version", ceiling: "holdsBelow", prepare: "prepare", effects: "declaredEffects", joins: "joins", from: "from", at: "at" } as const

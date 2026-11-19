@@ -13,6 +13,7 @@ import type {
 import {
   OPEN_KEY, DateRole, FieldType, JsonMark, Openness, RuleState, Severity, Stage, Status, Outcome, Validity, ViewGroup,
   Moment, Origin, ClaimOutcome, ClaimSide, ResolutionOutcome, WireMode, LiteralKind, PipelineStage, ChangeWay,
+  PublicationState,
 } from "./ir"
 
 export { Hole, patchLeaves, getPath, isFileBody, isNode }
@@ -605,6 +606,11 @@ export interface Graph {
    * With the language, also the kinds and views the project writes itself (a library that carries kinds, since g105).
    */
   code?(nodes: readonly View[], language?: boolean): string | undefined
+  /**
+   * The parts of a node of the project a publication freezes, each where it stands against trame.lock (since g108):
+   * none for a node whose kind freezes nothing, a library's node, or an engine before g108.
+   */
+  publication?(v: View): readonly PartPublication[] | undefined
   /** The fingerprint of the engine the project pins (its program and its code), when its generation says it (g72 on). */
   engine?(): string | undefined
   /**
@@ -633,7 +639,19 @@ export interface SketchNode {
   readonly title: string
   readonly owner?: string
   readonly effects: readonly string[]
+  /** Its frozen parts against trame.lock (since g108): none when its kind freezes nothing or the engine does not say. */
+  readonly publication?: readonly PartPublication[]
   field(path: string): unknown
+}
+
+/**
+ * A part of a declaration a publication freezes (since g108): a field its kind says is chosen, cited or stated, or its
+ * statement; how it changes; where it stands against trame.lock.
+ */
+export interface PartPublication {
+  readonly part: string
+  readonly way: ChangeWay
+  readonly state: PublicationState
 }
 
 /** The graph as a rule of a library reads it: its nodes, and its edges in force, by name, from one node to another. */
@@ -902,10 +920,16 @@ export interface KindDef<N extends string, F extends Fields, E extends Edges> {
   /** What the kind says about a node, as blocks of the intermediate format. */
   render?(self: SelfOf<F, E>, g: Graph): Block[]
   /**
-   * How each of its fields changes once declared (since g85): chosen, cited or code (ChangeWay). A field it does not name
-   * changes in the code only.
+   * How each of its fields changes once declared (since g85): chosen, cited, stated or code (ChangeWay). A field it does
+   * not name changes in the code only. A publication freezes all but code (since g108); an edge may be named too (the
+   * node an amendment amends), which a publication then freezes as the reference of the node it leads to.
    */
-  changes?: Readonly<Partial<Record<keyof F & string, ChangeWay>>>
+  changes?: Readonly<Partial<Record<(keyof F | keyof E) & string, ChangeWay>>>
+  /**
+   * How its statement (the title and description its documentation comment gives it) changes once declared (since
+   * g108): stated for what people state (a goal, an ADR); in the code when it says nothing.
+   */
+  statement?: ChangeWay
   /**
    * Its own effects (the effects of its dependencies are added). `uses`: the operations a node that depends on it uses
    * (the methods of a port), when the engine can tell (since g82); without it, all of them.
@@ -1095,6 +1119,18 @@ export interface RunPlan {
    * artefact's name, the verdict, the option the person's name follows, the option the address follows.
    */
   readonly deployed: { readonly command: readonly string[]; readonly verdict: string; readonly by: string; readonly url: string }
+  /**
+   * The review of a branch (since g109): the words that write in Markdown, run from the project's directory, what its
+   * declarations not yet published add to those published (the view review), and the project's lock, from its directory.
+   * A place that reviews a pull request puts there the lock of the branch it merges into, then writes the review.
+   */
+  readonly review: { readonly command: readonly string[]; readonly lock: string }
+  /**
+   * Where the file written comes from in the graph (since g110): the artefact it is and the decision of its settings,
+   * by their references, and the file that declares the artefact, from the repository's root. A writer says it at the
+   * top of the file: to change what it says, change those nodes, then ship.
+   */
+  readonly from: { readonly artefact: string; readonly settings?: string; readonly declared?: string }
 }
 
 /** The compiled graph, as a view sees it: the traversal API, plus what the compilation found. */

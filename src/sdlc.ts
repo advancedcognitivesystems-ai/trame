@@ -33,6 +33,9 @@ import { TestKinds, Advance, Doctor } from "./commands"
 import { DiskReading, DiskWriting, DiskTrees, NodeProcess, NodePrograms, NodeTerminal, SystemClock, NpmReports, NpmInstall, NodeHttpServer, RunsOnDisk } from "./platform"
 import { ExecutableSpecification } from "./product"
 import { TheOperators } from "#std/access"
+import { GitHubWorkflow, type WorkflowSettings } from "#ci/github"
+import { RepositoryApi, RepositoryKept, RepositoryCompared, GitHubCliRepository, RepositoryInMemory } from "#std/repository"
+import type { RepositorySettings, RepositoryState } from "#std/repository"
 
 // How a new version of Trame becomes the one projects run, in Trame's graph. The engine described by the graph is
 // assembled into a program (the candidate); it plays the laws of the kinds and the views; the rules of the
@@ -146,24 +149,24 @@ export const TrameSdlc = component({
 
 /**
  * The SDLC on the machine
- * On the machine, the programs of the SDLC read their command from Node's command line and open pages in Chromium
- * driven by Playwright, as the standard library realizes them.
+ * On the machine, the programs of the SDLC read their command from Node's command line, open pages in Chromium driven
+ * by Playwright, and set the repository on GitHub by its command line, as the standard library realizes them.
  */
 export const SdlcOnTheMachine = binding({
   owner: "trame",
-  chooses: [NodeProgramCommands, PlaywrightBrowser],
+  chooses: [NodeProgramCommands, PlaywrightBrowser, GitHubCliRepository],
   environments: [Local],
   follows: [Adapter],
-  context: "The graph page must be opened as a person opens it: the file exported, in a real browser.",
+  context: "The graph page must be opened as a person opens it: the file exported, in a real browser; the repository is set and read by GitHub's command line, with the token of whoever runs it.",
 })
 
 /**
  * The SDLC in memory
- * In the scenarios, the browser shows the page a scenario writes.
+ * In the scenarios, the browser shows the page a scenario writes, and the repository is kept in memory.
  */
 export const SdlcInMemory = binding({
   owner: "trame",
-  chooses: [BrowserInMemory],
+  chooses: [BrowserInMemory, RepositoryInMemory],
   environments: [Test],
   follows: [Strategy],
   context: "A program of the SDLC is code like the engine's: its scenarios play it before it runs on a machine.",
@@ -228,6 +231,13 @@ export const SdlcWords = catalog({
     noFigureDocument: () => "The navigation has no figure of the layers",
     noFigure: () => "The figure of the layers is not drawn",
     pageError: (error: string) => `The page raised "${error}"`,
+    asDecided: (repository: string) => `${repository} holds the settings the graph decides`,
+    notAsDecided: (repository: string) => `${repository} does not hold the settings the graph decides:`,
+    differs: (part: string, decided: string, found: string) => `  ${part}: decided ${decided}, found ${found}`,
+    nothing: () => "nothing",
+    set: (repository: string) => `${repository} is set as the graph decides, and read back so`,
+    callRefused: (call: string) => `GitHub did not take the call ${call}: only an administrator of the repository may set it`,
+    unreadable: (repository: string) => `${repository} cannot be read: GitHub's command line, signed in, reads it`,
   }),
 })
 
@@ -308,4 +318,195 @@ export const NextGeneration = shipment({
   policy: GenerationMode,
   deploys: [Advance],
   environment: Local,
+})
+
+/**
+ * The engine
+ * Trame as its people write it: what a pull request brings into the main branch, all its code.
+ */
+export const TheEngine = artifact({ owner: "trame", path: "src", version: true })
+
+/**
+ * How a change merges
+ * The way Trame takes a change into its main branch: the code it brings verified (a gap is an error), the rules held;
+ * and the foundations, as always. What the candidate of a generation proves besides is the advance's business.
+ */
+export const MergeMode = policy({ owner: "trame", obligations: [EngineVerified, ArchitectureRuled] })
+
+/**
+ * Into the main branch
+ * A pull request into main: it merges once it holds, as the repository's settings say (D1). The programs of the SDLC
+ * it reaches are those of this machine.
+ */
+export const IntoMain = shipment({ owner: "trame", target: "main", ships: [TheEngine], policy: MergeMode, environment: Local })
+
+/**
+ * How a pull request is checked on GitHub
+ * At each pull request into main, on GitHub's Ubuntu 24.04 machine with Node.js 22: its job, named trame, is a check the
+ * repository requires; it keeps GitHub from merging a pull request that changes what people decided (a trame.lock of the
+ * repository), which a person then merges (D1). It installs Poselia's packages too: the scenarios enter Poselia
+ * (ScenarioProjects), whose code uses three.js.
+ */
+export const PullRequestsOnGitHub = decision<WorkflowSettings>({
+  owner: "trame",
+  value: {
+    on: { pullRequests: ["main"] }, job: "trame", alsoInstalls: ["apps/poselia"], runsOn: "ubuntu-24.04", node: 22, artefacts: { days: 30 },
+    pullRequest: { review: false, merge: "onceItHoldsUnlessDecided" },
+  },
+  rejected: {
+    "Only when a pull request touches the project": "GitHub keeps a pull request waiting for a check it requires and that never ran",
+    "Merged by GitHub whatever it changes": "what people decided would reach main without a person",
+    "The review of the branch": "Trame publishes nothing yet: its graph is published once the plan is done",
+  },
+})
+
+/**
+ * The pull requests' workflow
+ * The workflow that checks a pull request on GitHub, written from the pipeline of the shipment into main: it prepares
+ * the machine as the plan says, keeps GitHub from merging what people decided, then runs trame ship.
+ */
+export const PullRequestWorkflow = artifact({
+  owner: "trame",
+  path: ".github/workflows/trame-pull-request.yml",
+  media: "application/yaml",
+  producedBy: GitHubWorkflow,
+  runs: IntoMain,
+  settings: PullRequestsOnGitHub,
+})
+
+/**
+ * How the repository merges into main
+ * The main branch of the repository receives nothing but pull requests, and is never deleted nor rewritten; a pull
+ * request passes the check of each project the repository holds (its job), need not be up to date with main, and merges
+ * as a merge commit, which keeps each commit of the branch (a generation is a commit); GitHub may merge it once it
+ * holds, when someone asks it to, and deletes its branch then. No approval is required: the workflows keep from merging
+ * itself what people decided, which a person merges.
+ */
+export const MainBranch = decision<RepositorySettings>({
+  owner: "trame",
+  value: {
+    branch: "main", checks: ["trame", "std", "ci", "data", "reservations", "poselia"], upToDate: false, approvals: 0,
+    method: "merge", autoMerge: true, deletesMerged: true, pages: false,
+  },
+  rejected: {
+    "Squashed": "a branch would merge as one commit, and the generations it advances are each a commit",
+    "An approval required": "the person who opens a pull request with their own account cannot approve it",
+    "Up to date with main first": "each pull request would merge main into itself again, and run its checks again, whenever another one merged",
+    "The check of geometry": "geometry runs from the registry of a machine, which a runner of GitHub does not have yet",
+    "Pages now": "the site that gathers Trame's graph and Poselia's preview is still to be decided",
+  },
+})
+
+/**
+ * Trame's repository
+ * Where Trame lives on GitHub, by its owner and name: what its settings are applied to.
+ */
+export const TheRepository = decision<{ name: string }>({ owner: "trame", value: { name: "advancedcognitivesystems-ai/trame" } })
+
+/**
+ * Read the repository's settings
+ * Reads Trame's repository on GitHub as it is and compares it with the settings the graph decides: it says whether it
+ * holds them, and each part it does not, with what was decided and what was found. It fails only when the repository
+ * cannot be read; what differs, the shipment that sets the repository sets.
+ */
+export const ReadTheRepositorySettings = entryPoint({
+  owner: "trame",
+  in: TrameSdlc, for: TheOperators,
+  serves: [ExecutableSpecification],
+  trigger: command("read-repository-settings"),
+  deps: { repository: RepositoryApi, name: TheRepository, settings: MainBranch, compared: RepositoryCompared, say: SdlcWords, exit: ExitStatus, counts: Counts },
+  body: code.file("./code/sdlc/read-the-repository-settings.ts"),
+})
+
+/**
+ * Set the repository's settings
+ * Sets Trame's repository on GitHub as the graph decides, with the rights of whoever runs it (an administrator of the
+ * repository), then reads it back: it succeeds when the repository holds every part of the settings, and fails saying
+ * the call GitHub did not take, or each part that still differs.
+ */
+export const ApplyTheRepositorySettings = entryPoint({
+  owner: "trame",
+  in: TrameSdlc, for: TheOperators,
+  serves: [ExecutableSpecification],
+  trigger: command("apply-repository-settings"),
+  deps: { repository: RepositoryApi, name: TheRepository, settings: MainBranch, compared: RepositoryCompared, say: SdlcWords, exit: ExitStatus, counts: Counts },
+  body: code.file("./code/sdlc/apply-the-repository-settings.ts"),
+})
+
+/**
+ * The repository is read from GitHub
+ * A program of the SDLC reads Trame's repository through GitHub's command line, with the token of whoever ships: what
+ * its run proves is the realization of the machine, which no scenario in memory runs. It passes whether or not the
+ * repository holds the settings, which it says.
+ */
+export const RepositoryRead = check({ owner: "trame", on: [], runs: ReadTheRepositorySettings, by: Maintainers, verifies: [GitHubCliRepository] })
+
+/**
+ * The repository left by hand, in the scenario
+ * The state of the repository as someone left it: every method offered, nothing protected, one check required.
+ */
+export const RepositoryScenarioData = decision<{ left: RepositoryState }>({
+  owner: "trame",
+  value: { left: { methods: ["merge", "squash", "rebase"], autoMerge: false, deletesMerged: false, protected: false, checks: ["trame"], upToDate: false } },
+})
+
+/**
+ * The repository is set as the graph decides
+ * In memory, a repository left by hand is read: it does not hold the settings, and each part that differs is said;
+ * setting it applies the settings once, and it holds them, read back; read again, it says so.
+ */
+export const SettingTheRepository = scenario({
+  owner: "trame",
+  verifies: [ReadTheRepositorySettings, ApplyTheRepositorySettings],
+  env: Test,
+  deps: {
+    read: ReadTheRepositorySettings, apply: ApplyTheRepositorySettings, kept: RepositoryKept, name: TheRepository, settings: MainBranch,
+    data: RepositoryScenarioData, say: SdlcWords, exit: ExitStatus, counts: Counts, messages: ScenarioMessages,
+  },
+  body: ({ read, apply, kept, name, settings, data, say, exit, counts, messages }) => async (check) => {
+    kept.set(name.name, data.left)
+    const left = await read({ params: {} })
+    const [first, ...parts] = left.body as string[]
+    check(messages.repositoryReadAsLeft(), left.status === exit.success && first === say.notAsDecided(name.name) && counts.any(parts))
+    const set = await apply({ params: {} })
+    const [applied] = kept.applied()
+    check(messages.repositorySet(), set.status === exit.success && JSON.stringify(set.body) === JSON.stringify([say.set(name.name)]) &&
+      counts.single(kept.applied()) && applied?.repository === name.name && JSON.stringify(applied?.settings) === JSON.stringify(settings))
+    const after = await read({ params: {} })
+    check(messages.repositoryReadAsSet(), after.status === exit.success && JSON.stringify(after.body) === JSON.stringify([say.asDecided(name.name)]))
+  },
+})
+
+/**
+ * How the repository is set
+ * The way Trame sets its repository: the program that sets it verified (a gap is an error), the rules held, its callers
+ * identified; and the foundations, as always.
+ */
+export const SettingsMode = policy({ owner: "trame", obligations: [EngineVerified, ArchitectureRuled, EngineCallersIdentified] })
+
+/**
+ * The repository as decided
+ * Trame's repository on GitHub set as the graph decides (MainBranch): the repository read from GitHub first, then set by
+ * a program of the SDLC and read back. An administrator of the repository ships it, with their own token:
+ * ./trame.sh ship RepositorySet --by <name>.
+ */
+export const RepositorySet = shipment({
+  owner: "trame",
+  target: "github",
+  ships: [],
+  requires: [RepositoryRead],
+  policy: SettingsMode,
+  deploys: [ApplyTheRepositorySettings],
+  environment: Local,
+})
+
+/**
+ * The files that run it elsewhere
+ * The workflow that checks each pull request, written by trame ship from the graph and kept in the repository where
+ * GitHub finds it.
+ */
+export const RunnersWritten = shipment({
+  owner: "trame",
+  target: "repository",
+  ships: [PullRequestWorkflow],
 })

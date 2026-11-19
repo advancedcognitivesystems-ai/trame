@@ -1,10 +1,10 @@
 # Owners
 
-*What each person must decide, settle or watch on 18 November 2026, and what they own.*
+*What each person must decide, settle or watch on 19 November 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 0 | 17 |
+| trame | 0 | 0 | 0 | 24 |
 
 <a id="trame"></a>
 
@@ -18,6 +18,7 @@ Nothing to decide or watch.
 |---|---|---|
 | [GitHub Actions](github.md#GitHubActions) | Standard |  |
 | [A workflow of GitHub Actions](github.md#GitHubWorkflow) | Syntax element | **held** |
+| [How a pull request is merged](github.md#MergeWays) | Vocabulary |  |
 | [The actions a workflow uses](github.md#PinnedActions) | Decision |  |
 | [npm](npm.md#Npm) | Standard |  |
 | [Trame](packages.md#Language) | Package |  |
@@ -27,7 +28,13 @@ Nothing to decide or watch.
 | [Version 0.2.0](releases.md#R0_2_0) | Release |  |
 | [Version 0.3.0](releases.md#R0_3_0) | Release |  |
 | [Version 0.4.0](releases.md#R0_4_0) | Release |  |
+| [Version 0.5.0](releases.md#R0_5_0) | Release |  |
+| [Version 0.6.0](releases.md#R0_6_0) | Release |  |
+| [Version 0.7.0](releases.md#R0_7_0) | Release |  |
 | [The next version](sdlc.md#NextVersion) | Shipment | **held** |
+| [How a pull request is checked on GitHub](sdlc.md#PullRequestsOnGitHub) | Decision |  |
+| [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **held** |
+| [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **held** |
 | [The library of writers](sdlc.md#TheLibrary) | Artefact | **held** |
 | [Bash scripts](shell.md#BashScripts) | Standard |  |
 | [A script of Bash](shell.md#ShellScript) | Syntax element | **held** |

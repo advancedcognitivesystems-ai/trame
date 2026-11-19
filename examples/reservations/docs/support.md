@@ -16,7 +16,7 @@
 
 ### Ultra period requested by support
 
-`SupportUltraPeriod` · `src/support.ts:11`
+`SupportUltraPeriod` · `src/support.ts:11` · published
 
 Support receives complaints: without a free period, drivers on ultra chargers pay a fee when they cancel at the last minute.
 

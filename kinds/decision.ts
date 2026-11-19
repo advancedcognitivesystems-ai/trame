@@ -22,7 +22,9 @@ const kind = defineKind({
   main: F.value,
   renderOwns: [F.value, F.range],
   fields,
-  changes: { [F.value]: ChangeWay.chosen, [F.review]: ChangeWay.chosen, [F.range]: ChangeWay.chosen },
+  /** A decision states why, and chooses a value (D1): the options it rejected are part of what it states. */
+  statement: ChangeWay.stated,
+  changes: { [F.value]: ChangeWay.chosen, [F.review]: ChangeWay.chosen, [F.range]: ChangeWay.chosen, [F.rejected]: ChangeWay.stated },
   edges: {
     bounded: optionalEdge(edge.many([KindName.decision], { label: say.decisionCappedBy(), inverse: say.decisionCaps() })),
   },

@@ -23,7 +23,7 @@ import {
 } from "#std/tooling"
 import { Reaches, Linked } from "#std/rules"
 import { Migrated } from "#data/obligations"
-import { Verified, Served, Applied, Reviewed, Checked, Ruled, Safe, Preceded } from "#std/obligations"
+import { Verified, Served, Applied, Reviewed, Checked, Ruled, Safe, Preceded, Published } from "#std/obligations"
 import { GitHubWorkflow, type WorkflowSettings } from "#ci/github"
 import { ShellScript } from "#ci/shell"
 import { Adapter, Strategy } from "#std/patterns"
@@ -413,14 +413,73 @@ export const PreviewScript = artifact({
 })
 
 /**
+ * Poselia
+ * The app as its people write it: what a pull request brings into the main branch, all its code.
+ */
+export const ThePoseliaApp = artifact({ owner: "ghalaax", path: "src", version: true })
+
+/**
+ * What people decided, published
+ * Each part of a declaration people decide (a value, a rule, a statement, the content's rows) is published in trame.lock
+ * before it merges: what the pull request changes of it is then its review.
+ */
+export const PublishedBeforeMerging = obligation({ owner: "ghalaax", applies: Published, gaps: Severity.error, serves: [PractiseGuided] })
+
+/**
+ * How a change merges
+ * The way Poselia takes a change into its main branch: what people decided is published; and the foundations, as always.
+ */
+export const MergeMode = policy({ owner: "ghalaax", obligations: [PublishedBeforeMerging] })
+
+/**
+ * Into the main branch
+ * A pull request into main: it merges once it holds, as the repository's settings say (D1).
+ */
+export const IntoMain = shipment({ owner: "ghalaax", target: "main", ships: [ThePoseliaApp], policy: MergeMode })
+
+/**
+ * How a pull request is checked on GitHub
+ * At each pull request into main, on GitHub's Ubuntu 24.04 machine with Node.js 22: its job, named poselia, is a check the
+ * repository requires; it writes in it the review of the branch (what its declarations not yet published add to those published), and keeps GitHub from merging a pull request that changes what people decided (a
+ * trame.lock of the repository), which a person then merges (D1).
+ */
+export const PullRequestsOnGitHub = decision<WorkflowSettings>({
+  owner: "ghalaax",
+  value: {
+    on: { pullRequests: ["main"] }, job: "poselia", runsOn: "ubuntu-24.04", node: 22, artefacts: { days: 30 },
+    pullRequest: { review: true, merge: "onceItHoldsUnlessDecided" },
+  },
+  rejected: {
+    "Only when a pull request touches the project": "GitHub keeps a pull request waiting for a check it requires and that never ran",
+    "Merged by GitHub whatever it changes": "what people decided would reach main without a person",
+  },
+})
+
+/**
+ * The pull requests' workflow
+ * The workflow that checks a pull request on GitHub, written from the pipeline of the shipment it runs: it prepares the
+ * machine as the plan says, writes the review of the branch in the pull request, keeps GitHub from merging what people decided, then
+ * runs trame ship.
+ */
+export const PullRequestWorkflow = artifact({
+  owner: "ghalaax",
+  path: "../../.github/workflows/poselia-pull-request.yml",
+  media: "application/yaml",
+  producedBy: GitHubWorkflow,
+  runs: IntoMain,
+  settings: PullRequestsOnGitHub,
+})
+
+/**
  * The files that run it elsewhere
- * The workflow and the script that run the preview elsewhere, written by trame ship from the graph and kept in the
- * repository where GitHub and a person find them; shipped again when the preview's pipeline changes.
+ * The workflow and the script that run the preview elsewhere, and the workflow that checks each pull request, written
+ * by trame ship from the graph and kept in the repository where GitHub and a person find them; shipped again when the
+ * pipeline one runs changes.
  */
 export const RunnersWritten = shipment({
   owner: "ghalaax",
   target: "repository",
-  ships: [PreviewWorkflow, PreviewScript],
+  ships: [PreviewWorkflow, PreviewScript, PullRequestWorkflow],
 })
 
 /**

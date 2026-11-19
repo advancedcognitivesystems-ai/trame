@@ -16,7 +16,7 @@
 
 ### Effects follow the request
 
-`EffectsFollowTheRequest` · `src/architecture.ts:140` · status: **held**
+`EffectsFollowTheRequest` · `src/architecture.ts:140` · status: **held** · published
 
 What an entry point may do follows what it is asked: a read changes nothing, a utility touches nothing, and a call to the payment provider is verified by a scenario before it reaches a driver.
 
@@ -34,7 +34,7 @@ Consequences: Three rules judge the effects of every entry point and function at
 
 ### A cancellation refunds once
 
-`RefundOnce` · `src/principles.ts:15` · status: **held**
+`RefundOnce` · `src/principles.ts:15` · status: **held** · published
 
 The payment provider receives an idempotency key for each reservation: a request that arrives twice returns the refund already made.
 
@@ -54,7 +54,7 @@ Consequences: The refund is recorded with the cancellation, in one transaction; 
 
 ### Secrets stay out of the graph
 
-`SecretsOutOfTheGraph` · `src/principles.ts:28` · status: **unknown**
+`SecretsOutOfTheGraph` · `src/principles.ts:28` · status: **unknown** · published
 
 The payment provider's API key comes from the environment of the process, never from a decision.
 

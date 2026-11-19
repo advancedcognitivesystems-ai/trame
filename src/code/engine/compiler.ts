@@ -14,8 +14,8 @@ import type { Edge, GraphImpl } from "./graph"
 import type { Api as WiringApi } from "./wiring"
 import type { Api as CyclesApi } from "./cycles"
 import type { Api as DriversApi, LiteralFound, LiteralSource } from "../languages/drivers"
-import { AnyTarget, ArtifactField, DeliveryField, EdgeMode, EdgeName, FieldType, KindHook, KindName, Moment, Origin, PackageField, QuantityEdge, QuantityField, ResolutionKind, ResolutionOutcome, Severity, Stage } from "../../../trame/kernel"
-import type { AnyNode, AnyKind, Constant, Evidence, HoleSpec, Noun, ProvidedBy, Reach, Resolution, StaticInfo } from "../../../trame/kernel"
+import { AnyTarget, ArtifactField, ChangeWay, DeclarationPart, DeliveryField, EdgeMode, EdgeName, FieldType, KindHook, KindName, Moment, Origin, PackageField, PublicationState, QuantityEdge, QuantityField, ResolutionKind, ResolutionOutcome, Severity, Stage } from "../../../trame/kernel"
+import type { AnyNode, AnyKind, Constant, Evidence, HoleSpec, Noun, PartPublication, ProvidedBy, Reach, Resolution, StaticInfo } from "../../../trame/kernel"
 import type { PackageSource } from "#std/tooling"
 import type { Reached } from "./static-analysis"
 import type { PlatformEffects, MayDo } from "#std/effects"
@@ -78,6 +78,10 @@ export interface Compiled {
   graph: GraphImpl
   /** The references frozen in trame.lock (filled in by the command line). */
   published?: Set<string>
+  /** The parts of each node of the project a publication freezes, with their fingerprint (since g108). */
+  parts?: Map<AnyNode, readonly FrozenPart[]>
+  /** Where each of those parts stands against trame.lock, as it was when the graph was compiled (since g108). */
+  publication?: Map<AnyNode, readonly PartPublication[]>
   /** What the code does to the published declarations (filled in by the command line). */
   lockIssues?: Diag[]
   /** The type errors: the compilation reports them, the command line refuses. */
@@ -99,6 +103,19 @@ export interface Compiled {
    */
   libraries: CompiledLibrary[]
 }
+
+/** A part of a declaration a publication freezes (since g108): a field, or its statement; how it changes; its fingerprint. */
+export interface FrozenPart {
+  part: string
+  way: ChangeWay
+  fingerprint: string
+}
+
+/**
+ * What trame.lock says of a declaration: the fingerprint of each frozen part (since g108), or a text, the fingerprint of
+ * the whole declaration, published before its parts were.
+ */
+export type LockEntry = string | Readonly<Record<string, string>>
 
 /** A quantity of the graph, as documents write its values: its units from the largest, and the words of each one. */
 export interface CompiledQuantity {
@@ -164,6 +181,8 @@ export interface Loaded {
   language: { file: string; items: LiteralFound[] }[]
   /** The fingerprint of each node's code: its declaration as it runs, and the files its bodies are written in. */
   code: Map<AnyNode, string>
+  /** The parts of each node of the project a publication freezes, with their fingerprint (since g108). */
+  parts: Map<AnyNode, readonly FrozenPart[]>
   /** The fingerprint of the kinds and views the project writes itself, inside its root (since g105). */
   languageCode: string
 }
@@ -380,6 +399,7 @@ const body = (deps: Deps) => {
     return {
       versions,
       code: codeOf(root, nodes, infos),
+      parts: partsOf(root, nodes, infos),
       root, modules: own.map((m) => m.module), moduleTitle, nodes, anonymous, infos, rests, typeErrors, quantityErrors, textAsCode, forgedCommands, uses, reaches, ...readEvidence(root), installed: loadInstalled(root),
       engine: dirs.engine === undefined ? undefined : deps.engines.recorded(dirs.engine),
       libraries: libraries.map(({ name, root: at, path, version, files }) => ({ name, root: at, path, version, modules: files.map((m) => m.module) })),
@@ -429,22 +449,81 @@ const body = (deps: Deps) => {
     const code = new Map<AnyNode, string>()
     for (const n of nodes) {
       const info = infos.get(n)
-      const written = (v: unknown): unknown => {
-        if (isNode(v)) return refOf(v)
-        if (isFileBody(v)) {
-          const path = info ? join(root, dirname(info.file), v.file) : v.file
-          const file = driverFor(v.language)?.bodyFile?.(path) ?? path
-          return existsSync(file) ? String(readFileSync(file, encodings.utf8)) : v.file
-        }
-        if (Array.isArray(v)) return v.map(written)
-        if (v !== null && values.isObject(v)) return Object.fromEntries(Object.entries(v).map(([k, x]) => [k, written(x)]))
-        return v
-      }
       // The declared data: a compilation earlier in the process may have left a claim applied (it undoes it only when
       // the next one starts), and the code of a node is what is written, not what a claim made of it.
-      code.set(n, deps.fingerprints.of([info?.sourceText, written(meta(n).base ?? meta(n).data)]))
+      code.set(n, deps.fingerprints.of([info?.sourceText, writtenOf(root, info)(meta(n).base ?? meta(n).data)]))
     }
     return code
+  }
+
+  /** A value as it is written: a node by its reference, a body in a file by the file's content. */
+  function writtenOf(root: string, info: StaticInfo | undefined): (v: unknown) => unknown {
+    const written = (v: unknown): unknown => {
+      if (isNode(v)) return refOf(v)
+      if (isFileBody(v)) {
+        const path = info ? join(root, dirname(info.file), v.file) : v.file
+        const file = driverFor(v.language)?.bodyFile?.(path) ?? path
+        return existsSync(file) ? String(readFileSync(file, encodings.utf8)) : v.file
+      }
+      if (Array.isArray(v)) return v.map(written)
+      if (v !== null && values.isObject(v)) return Object.fromEntries(Object.entries(v).map(([k, x]) => [k, written(x)]))
+      return v
+    }
+    return written
+  }
+
+  /**
+   * The parts of each node of the project a publication freezes (D1, since g108): each field its kind says changes
+   * otherwise than in the code, and its statement when its kind says it is stated; each with the fingerprint of what is
+   * written (a value, a body in a file by its content, a body written in place by its text with normalised spaces). A
+   * field left out is a part too: writing it later changes what was published.
+   */
+  function partsOf(root: string, nodes: AnyNode[], infos: Map<AnyNode, StaticInfo>): Map<AnyNode, readonly FrozenPart[]> {
+    const parts = new Map<AnyNode, readonly FrozenPart[]>()
+    const { squeeze } = deps.texts
+    for (const n of nodes) {
+      if (references.library(optional(meta(n).module)) !== undefined) continue
+      const { def } = meta(n)
+      const info = infos.get(n)
+      const data = meta(n).base ?? meta(n).data
+      const written = writtenOf(root, info)
+      const frozen = (way: ChangeWay | undefined): way is ChangeWay => way !== undefined && way !== ChangeWay.code
+      const fields = Object.entries(def.changes ?? {}).flatMap(([part, way]) => {
+        if (!frozen(way)) return []
+        const value = data[part]
+        const text = info?.props[part]
+        const as = values.isFunction(value) && text !== undefined ? squeeze(text) : written(value)
+        return [{ part, way, fingerprint: deps.fingerprints.of(as) }]
+      })
+      const statement = frozen(def.statement)
+        ? [{ part: DeclarationPart.statement, way: def.statement, fingerprint: deps.fingerprints.of([info?.title, info?.description]) }]
+        : []
+      const all = [...statement, ...fields]
+      if (all.length) parts.set(n, all)
+    }
+    return parts
+  }
+
+  /**
+   * Where each frozen part stands against what trame.lock says of its declaration (since g108): not published when it
+   * says nothing; published in an earlier form when it holds the whole declaration's fingerprint, or not this part;
+   * changed when the fingerprints differ.
+   */
+  function publicationOf(parts: readonly FrozenPart[], entry: LockEntry | undefined): PartPublication[] {
+    return parts.map(({ part, way, fingerprint }) => {
+      if (entry === undefined) return { part, way, state: PublicationState.unpublished }
+      if (values.isText(entry)) return { part, way, state: PublicationState.outdated }
+      const was = entry[part]
+      const state = was === undefined ? PublicationState.outdated : was === fingerprint ? PublicationState.published : PublicationState.changed
+      return { part, way, state }
+    })
+  }
+
+  /** What trame.lock says of each declaration, by its reference: nothing when the project has no lock. */
+  function lockOf(root: string): Record<string, LockEntry> | undefined {
+    const file = join(root, deps.layout.lock)
+    if (!existsSync(file)) return undefined
+    return (JSON.parse(String(readFileSync(file, encodings.utf8))) as { published: Record<string, LockEntry> }).published
   }
 
   /** The bodies of the graph, by language: a file, or an inline property of a declaration. A shared body is listed once. */
@@ -858,12 +937,16 @@ const body = (deps: Deps) => {
     const given = new Map([...l.evidence].map(([ref, records]) => [ref, records.filter((e) => e.at <= today || e.at.startsWith(today))]))
     // The quantities of the graph, filled once their catalogs are wired (below): kinds write a value in its units.
     const quantities = new Map<string, CompiledQuantity>()
+    // Where the frozen parts of each node stand against trame.lock, read again at each compilation (since g108).
+    const lock = lockOf(l.root)
+    const publication = new Map([...l.parts].map(([n, parts]) => [n, publicationOf(parts, lock?.[refOf(n)])]))
     const g: GraphImpl = makeGraph({
       moment: Moment.consolidated, today, nodes, edges, infos, inactive, results, effects, kept, asGiven: opts.asGiven, quantities, reaches: reachesOf(l, nodes),
       capabilities,
       wire: (deps, env) => wireDeps({ graph: g, root: l.root, today, refused }, deps, env),
       plan: (entries, env) => plan({ graph: g, root: l.root, today, refused }, entries, env),
       evidence: given, installed: l.installed, versions: l.versions, libraries: new Map(l.libraries.map((lib) => [lib.name, lib.version])), code: l.code,
+      publication,
       languageCode: l.languageCode,
       engine: l.engine,
       onBlocked: (hole, what, of) => {
@@ -1140,7 +1223,7 @@ const body = (deps: Deps) => {
     }
     const isOwn = (n: AnyNode) => libraryOf(n) === undefined
     return {
-      today, modules, moduleTitle, graph: g, typeErrors, quantityErrors, quantities, language: l.language,
+      today, modules, moduleTitle, graph: g, typeErrors, quantityErrors, quantities, language: l.language, parts: l.parts, publication,
       nodes: nodes.filter(isOwn),
       edges: edges.filter((e) => isOwn(e.from)),
       diags: diags.filter((d) => ofDiag(d) === undefined),

@@ -2,6 +2,39 @@
 
 *What trame ship runs for each shipment on 30 October 2026, in order, as the engine computes it: its artefacts produced, the checks a program makes, the obligations to prove, the programs that deploy it, the dossier.*
 
+<a id="IntoMain"></a>
+
+## Into the main branch
+
+> **Into the main branch does not ship yet: 0 of 2 obligations hold.**
+
+For the target main.
+
+Run elsewhere by [The pull requests' workflow](sdlc.md#PullRequestWorkflow), written from this pipeline by trame ship.
+
+```mermaid
+flowchart TB
+  n0["The service<br/><small>Artefact</small>"]:::unknown
+  n1["Into the main branch<br/><small>Shipment</small>"]:::unknown
+  n1 -->|Ships| n0
+  classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
+  classDef blocked fill:#fbf0d9,stroke:#9a6200,color:#17202a
+  classDef violated fill:#f9e3e1,stroke:#ad2a22,color:#17202a
+  classDef unknown fill:#e9edf0,stroke:#65707c,color:#17202a
+  classDef neutral fill:#ffffff,stroke:#5a6672,color:#17202a
+```
+
+*Its steps, one rank per stage: produce, check, prove, deploy, record.*
+
+|  | Stage | Step | Run by | Why | Status | Latest evidence |
+|---|---|---|---|---|---|---|
+| 1 | produce | [The service](sdlc.md#TheService) · `src` | — | — | **unknown** |  |
+| 2 | prove | The foundations (1 problem) | itself | every shipment: no literal in a body, a sound graph | **violated** |  |
+| 3 | prove | [The service](sdlc.md#TheService) | — | the shipment | **unknown** |  |
+| 4 | record | [Into the main branch](sdlc.md#IntoMain) | — | — | **unknown** |  |
+
+`trame ship IntoMain --by <name>`
+
 <a id="OnThisMachine"></a>
 
 ## On this machine
@@ -162,3 +195,36 @@ flowchart TB
 | 26 | record | [A release](sdlc.md#Release) | — | — | **unknown** |  |
 
 `trame ship Release --by <name>`
+
+<a id="RunnersWritten"></a>
+
+## The files that run it elsewhere
+
+> **The files that run it elsewhere does not ship yet: 0 of 2 obligations hold.**
+
+For the target repository.
+
+```mermaid
+flowchart TB
+  n0["The pull requests' workflow<br/><small>Artefact</small>"]:::unknown
+  n1["A workflow of GitHub Actions<br/><small>Syntax element</small>"]:::held
+  n2["The files that run it elsewhere<br/><small>Shipment</small>"]:::unknown
+  n0 -->|Produced by| n1
+  n2 -->|Ships| n0
+  classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
+  classDef blocked fill:#fbf0d9,stroke:#9a6200,color:#17202a
+  classDef violated fill:#f9e3e1,stroke:#ad2a22,color:#17202a
+  classDef unknown fill:#e9edf0,stroke:#65707c,color:#17202a
+  classDef neutral fill:#ffffff,stroke:#5a6672,color:#17202a
+```
+
+*Its steps, one rank per stage: produce, check, prove, deploy, record.*
+
+|  | Stage | Step | Run by | Why | Status | Latest evidence |
+|---|---|---|---|---|---|---|
+| 1 | produce | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) · `../../.github/workflows/reservations-pull-request.yml` | [A workflow of GitHub Actions](../../../ci/releases/0.7.0/docs/github.md#GitHubWorkflow) | — | **unknown** |  |
+| 2 | prove | The foundations (1 problem) | itself | every shipment: no literal in a body, a sound graph | **violated** |  |
+| 3 | prove | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | — | the shipment | **unknown** |  |
+| 4 | record | [The files that run it elsewhere](sdlc.md#RunnersWritten) | — | — | **unknown** |  |
+
+`trame ship RunnersWritten --by <name>`

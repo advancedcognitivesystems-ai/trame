@@ -1,0 +1,41 @@
+{
+  "shipment": "sdlc.IntoMain",
+  "title": "Into the main branch",
+  "target": "main",
+  "at": "2026-11-19",
+  "by": "claude",
+  "signature": "attribution",
+  "artifacts": [
+    {
+      "node": "sdlc.ThePoseliaApp",
+      "path": "src",
+      "fingerprint": "1bc73801cc87f2cc3a66fe0e956e17915eabf9197daa6a3a5fc73a2afed4ba3e"
+    }
+  ],
+  "foundations": {
+    "problems": 0
+  },
+  "obligations": [
+    {
+      "node": "sdlc.ThePoseliaApp",
+      "kind": "artifact",
+      "status": "held",
+      "owner": "ghalaax",
+      "evidence": [
+        {
+          "node": "sdlc.ThePoseliaApp",
+          "at": "2026-11-19",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "1bc73801cc87f2cc3a66fe0e956e17915eabf9197daa6a3a5fc73a2afed4ba3e",
+          "code": "d289b826",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "987e2ef986dc7b6b",
+          "seal": "bef7ca75fbb4ad43b0ef7e6ef6a178693429f6ba19350fc65be1d1fd078f8052"
+        }
+      ]
+    }
+  ],
+  "deployed": []
+}

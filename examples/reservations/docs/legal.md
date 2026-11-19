@@ -32,7 +32,7 @@ The largest share of the price that may legally be kept, in Switzerland and in F
 
 ### The cap, decided
 
-`FeeCapDecided` · `src/legal.ts:21`
+`FeeCapDecided` · `src/legal.ts:21` · published
 
 Half the price: a reservation cancelled late never keeps more.
 

@@ -1,5 +1,5 @@
 import {
-  defineKind, field, optional, edge, optionalEdge, hole, doc, keysOf, edgesOf, Status, Outcome, Hole, KindName, EdgeName, ArtifactField,
+  defineKind, field, optional, edge, optionalEdge, hole, doc, keysOf, edgesOf, Status, Outcome, Hole, KindName, EdgeName, ArtifactField, ChangeWay,
   type AnyNode, type Node, type Provides, type HasDeps, type Provided, type FileBody, type Constant, type Values, type Declares,
   type Graph, type View,
 } from "../trame/kernel"
@@ -52,6 +52,12 @@ const kind = defineKind({
   renderOwns: [F.body, F.examples],
   fields,
   edges,
+  /**
+   * What people decide of a rule (D1): its statement, the rule itself, its constants and the cases it is played on.
+   * Once published, an amendment of its body changes it, composed with the rule in force; what it reads stays code.
+   */
+  statement: ChangeWay.stated,
+  changes: { [F.body]: ChangeWay.chosen, [F.constants]: ChangeWay.chosen, [F.examples]: ChangeWay.chosen },
 
   /**
    * A rule that constrains another plays each of its examples on that rule, then itself on the arguments and the answer

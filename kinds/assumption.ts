@@ -1,17 +1,23 @@
-import { defineKind, field, hole, doc, daysBetween, DateRole, Status, KindName } from "../trame/kernel"
+import { defineKind, field, hole, doc, daysBetween, keysOf, DateRole, Status, KindName, ChangeWay } from "../trame/kernel"
 import words from "./words"
 
 const say = words()
+
+const fields = {
+  owner: field.owner(),
+  expires: field.date(say.assumptionCheckBefore(), DateRole.deadline),
+}
+const F = keysOf(fields)
 
 /** An assumption about the outside world, to check before a date. */
 export const assume = defineKind({
   name: KindName.assumption,
   label: { one: say.assumptionAssumption(), many: say.assumptionAssumptions() },
-  fields: {
-    owner: field.owner(),
-    expires: field.date(say.assumptionCheckBefore(), DateRole.deadline),
-  },
+  fields,
   edges: {},
+  /** What is assumed is stated (D1); the date it is checked by is chosen, moved by an amendment. */
+  statement: ChangeWay.stated,
+  changes: { [F.expires]: ChangeWay.chosen },
 
   holes(self, g) {
     const { counts, dates, settings } = g.lib

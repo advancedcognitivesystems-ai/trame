@@ -1,4 +1,4 @@
-import { defineKind, field, optional, edge, optionalEdge, hole, doc, keysOf, AnyTarget, Status, KindName, EdgeName, type Block, type Lib, type Node, type View } from "../trame/kernel"
+import { defineKind, field, optional, edge, optionalEdge, hole, doc, keysOf, AnyTarget, Status, KindName, EdgeName, ChangeWay, type Block, type Lib, type Node, type View } from "../trame/kernel"
 import words from "./words"
 
 const say = words()
@@ -58,6 +58,9 @@ const kind = defineKind({
   renderOwns: reasonsShown,
   fields,
   edges,
+  /** An architecture decision is stated (D1): once published, a new one that repeals it says another, as ADRs are superseded. */
+  statement: ChangeWay.stated,
+  changes: { [F.context]: ChangeWay.stated, [F.consequences]: ChangeWay.stated, [F.rejected]: ChangeWay.stated },
 
   holes: (self, g) => {
     const appliers = g.from(self).out(E.appliedBy).nodes()

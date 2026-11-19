@@ -1,12 +1,12 @@
 {
-  "generated": "2026-11-18",
+  "generated": "2026-11-19",
   "nodes": [
     {
       "id": "app.BrowserScreen",
       "kind": "implementation",
       "title": "The browser's screen",
       "source": "src/app.ts:79",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "deps": {
@@ -4371,10 +4371,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "ci",
-        "version": "0.4.0",
+        "version": "0.7.0",
         "joins": "library",
         "from": "path",
-        "at": "../../ci/releases/0.4.0"
+        "at": "../../ci/releases/0.7.0"
       },
       "diagnostics": []
     },
@@ -4416,10 +4416,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "trame",
-        "version": "107",
+        "version": "110",
         "joins": "language",
         "from": "path",
-        "at": "../../generations/g107"
+        "at": "../../generations/g110"
       },
       "diagnostics": []
     },
@@ -4431,10 +4431,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "std",
-        "version": "0.18.1",
+        "version": "0.20.0",
         "joins": "library",
         "from": "path",
-        "at": "../../std/releases/0.18.1"
+        "at": "../../std/releases/0.20.0"
       },
       "diagnostics": []
     },
@@ -4829,7 +4829,7 @@
       "kind": "adr",
       "title": "A page first, the phones after",
       "source": "src/principles.ts:78",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "context": "The app must be tried and shown before it is installed: a page shared as a link is the shortest way to the friends who review it.",
@@ -5547,7 +5547,7 @@
       "id": "sdlc.AdrsServeTheProduct",
       "kind": "rule",
       "title": "Each decision of architecture serves the product",
-      "source": "src/sdlc.ts:445",
+      "source": "src/sdlc.ts:504",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -5597,7 +5597,7 @@
       "id": "sdlc.CodeServesTheProduct",
       "kind": "rule",
       "title": "Code serves the product",
-      "source": "src/sdlc.ts:431",
+      "source": "src/sdlc.ts:490",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -5697,6 +5697,250 @@
       "diagnostics": []
     },
     {
+      "id": "sdlc.IntoMain",
+      "kind": "shipment",
+      "title": "Into the main branch",
+      "source": "src/sdlc.ts:438",
+      "status": "unknown",
+      "fields": {
+        "owner": "ghalaax",
+        "target": "main"
+      },
+      "result": {
+        "derived": [],
+        "gaps": [],
+        "preceded": [],
+        "reached": [
+          "sdlc.ThePoseliaApp",
+          "app.BrowserScreen",
+          "app.CarriedContent",
+          "app.Colours",
+          "app.ContentCarried",
+          "app.HomeViewOf",
+          "app.InTheBrowser",
+          "app.Measures",
+          "app.PageStyle",
+          "app.PoseliaPage",
+          "app.ScreenNames",
+          "app.ShowHome",
+          "architecture.Bowl",
+          "architecture.BowlRung",
+          "architecture.Browser",
+          "architecture.ContentSource",
+          "architecture.PoseliaApp",
+          "architecture.Screen",
+          "architecture.Stage",
+          "architecture.Test",
+          "architecture.ViewsShown",
+          "body.AngleBetween",
+          "body.AngleBetweenCriteria",
+          "body.BodyAt",
+          "body.BodyAtCriteria",
+          "body.BodyMeasures",
+          "body.FootAngles",
+          "body.FootOf",
+          "body.FootOnItsWay",
+          "body.FootOnItsWayCriteria",
+          "body.HandOnItsWay",
+          "body.HandOnItsWayCriteria",
+          "body.KeyOf",
+          "body.KeyOfCriteria",
+          "body.KneeLift",
+          "body.LegsApart",
+          "body.LegsApartCriteria",
+          "body.LimbSlack",
+          "body.LimbsReach",
+          "body.LimbsReachCriteria",
+          "body.MatSpace",
+          "body.Movement",
+          "body.PlantedLeg",
+          "body.PlantedLegCriteria",
+          "body.RestPoints",
+          "body.RestsOnWhatItNames",
+          "body.RestsOnWhatItNamesCriteria",
+          "body.SideNames",
+          "body.SidesOf",
+          "body.SidesOfCriteria",
+          "body.SpotOn",
+          "body.SpotOnCriteria",
+          "body.SpotPlaces",
+          "body.SteppingLeg",
+          "body.SteppingLegCriteria",
+          "body.SurfaceHeights",
+          "body.SurfaceHeightsCriteria",
+          "body.Touching",
+          "body.TrunkOf",
+          "body.TrunkOfCriteria",
+          "body.TwoBones",
+          "body.TwoBonesCriteria",
+          "composing.BreathOfMove",
+          "composing.BreathOfMoveCriteria",
+          "composing.ComposedSequence",
+          "composing.ComposerNames",
+          "composing.ComposerViewOf",
+          "composing.DrawnSequence",
+          "composing.HoldingDefaults",
+          "composing.ShowComposer",
+          "content.CuePlaceholders",
+          "content.Languages",
+          "content.LeadingLegOf",
+          "content.LeadingLegOfCriteria",
+          "content.LevelWays",
+          "content.MakesSense",
+          "content.MakesSenseCriteria",
+          "content.Poses",
+          "content.Sequences",
+          "content.SpeechRate",
+          "content.Spoken",
+          "content.SpokenCriteria",
+          "drawing.DrawingFrame",
+          "drawing.DrawingParts",
+          "drawing.FigureDrawing",
+          "drawing.PoseBody",
+          "language.AppLanguage",
+          "language.English",
+          "language.French",
+          "language.InterfaceWords",
+          "language.PreferenceNames",
+          "language.WordsEn",
+          "language.WordsFr",
+          "marks.MarkLook",
+          "marks.MarkOnBody",
+          "marks.MarkOnBodyCriteria",
+          "marks.MarksOn",
+          "marks.MarksWhen",
+          "packages.ContinuousIntegration",
+          "packages.Data",
+          "packages.Geometry",
+          "packages.Language",
+          "packages.StandardLibrary",
+          "practice.BreathEasing",
+          "practice.BreathsToSay",
+          "practice.BreathsToSayCriteria",
+          "practice.Eased",
+          "practice.EasedCriteria",
+          "practice.HoldPhases",
+          "practice.HoldPhasesCriteria",
+          "practice.LungsFull",
+          "practice.LungsFullCriteria",
+          "practice.MomentAt",
+          "practice.MomentAtCriteria",
+          "practice.MomentOf",
+          "practice.PlayerNames",
+          "practice.PlayPractice",
+          "practice.PracticeOf",
+          "principles.BreathIsTheClock",
+          "principles.ContentAsData",
+          "principles.LanguageOffered",
+          "principles.PageFirst",
+          "principles.SaidAloud",
+          "product.BreathOf",
+          "product.BreathOfCriteria",
+          "product.BreathSetsThePace",
+          "product.CheckedContent",
+          "product.ChosenLanguage",
+          "product.ChosenLanguageCriteria",
+          "product.DefaultBreath",
+          "product.InTheirLanguage",
+          "product.PhoneOnTheMat",
+          "product.PractiseGuided",
+          "scenarios.BodyStaysOnTheFloor",
+          "scenarios.DrawnSequencesMakeSense",
+          "scenarios.GivenLanguages",
+          "scenarios.HoldMoments",
+          "scenarios.HoldThePoses",
+          "scenarios.HomeLanguage",
+          "scenarios.InMemory",
+          "scenarios.LearnTheSequence",
+          "scenarios.PersonSettings",
+          "scenarios.PracticeFollowsTheBreath",
+          "scenarios.RecordedBowl",
+          "scenarios.RecordedScreen",
+          "scenarios.ScenarioChecks",
+          "scenarios.ScenarioDevice",
+          "scenarios.ScenarioMoments",
+          "scenarios.SettingsMoments",
+          "sdlc.AdrsServeTheProduct",
+          "sdlc.AfterThePreview",
+          "sdlc.AllChecks",
+          "sdlc.CodeServesTheProduct",
+          "sdlc.CodeVerified",
+          "sdlc.CodeVerifiedSaid",
+          "sdlc.ContentReviewed",
+          "sdlc.ContentSeen",
+          "sdlc.DecisionsApplied",
+          "sdlc.IntoMain",
+          "sdlc.KeptMigrates",
+          "sdlc.Machine",
+          "sdlc.MergeMode",
+          "sdlc.OnAPhone",
+          "sdlc.OnTheMachine",
+          "sdlc.OpeningThePage",
+          "sdlc.OpenThePage",
+          "sdlc.PackagesSafe",
+          "sdlc.PageFile",
+          "sdlc.PageOpening",
+          "sdlc.PageOpens",
+          "sdlc.PageSelectors",
+          "sdlc.PhoneTesters",
+          "sdlc.PlaceThePage",
+          "sdlc.PlacingThePage",
+          "sdlc.PoseliaSdlc",
+          "sdlc.Preview",
+          "sdlc.PreviewMode",
+          "sdlc.PreviewOnGitHub",
+          "sdlc.PreviewScript",
+          "sdlc.PreviewWorkflow",
+          "sdlc.ProductServed",
+          "sdlc.ProgramChecks",
+          "sdlc.PublicMode",
+          "sdlc.PublicVersion",
+          "sdlc.PublishedBeforeMerging",
+          "sdlc.PullRequestsOnGitHub",
+          "sdlc.PullRequestWorkflow",
+          "sdlc.RulesHeld",
+          "sdlc.RunnersWritten",
+          "sdlc.SdlcChecks",
+          "sdlc.SdlcInMemory",
+          "sdlc.SdlcInTheGraph",
+          "sdlc.SdlcScenarioData",
+          "sdlc.SdlcWords",
+          "sdlc.ServedPage",
+          "sdlc.Teachers",
+          "settings.AdjustedBreath",
+          "settings.AdjustedBreathCriteria",
+          "settings.Breath",
+          "settings.BreathBounds",
+          "settings.BreathWithinBounds",
+          "settings.BreathWithinBoundsCriteria",
+          "settings.KeptOnTheDevice",
+          "settings.MarksChoice",
+          "settings.MeasuredBreath",
+          "settings.MeasuredBreathCriteria",
+          "settings.PersonBreath",
+          "settings.SettingsNames",
+          "settings.SettingsViewOf",
+          "settings.ShowSettings",
+          "settings.Tapping",
+          "settings.VoiceChoice",
+          "settings.VoiceParts",
+          "sound.BowlSound",
+          "sound.BrowserBowl",
+          "space.AxesOfTheMat",
+          "stage.BrowserStage",
+          "stage.MannequinLook",
+          "stage.MarkStyle",
+          "stage.StageLight",
+          "stage.StageViews",
+          "stage.ThreePackage",
+          "stage.ThreeTypes"
+        ]
+      },
+      "diagnostics": [
+        "warning: To ship: Poselia is unknown"
+      ]
+    },
+    {
       "id": "sdlc.KeptMigrates",
       "kind": "obligation",
       "title": "What the device keeps, migrated",
@@ -5712,6 +5956,16 @@
       "kind": "environment",
       "title": "A machine",
       "source": "src/sdlc.ts:69",
+      "fields": {
+        "owner": "ghalaax"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.MergeMode",
+      "kind": "policy",
+      "title": "How a change merges",
+      "source": "src/sdlc.ts:432",
       "fields": {
         "owner": "ghalaax"
       },
@@ -5741,7 +5995,7 @@
       "kind": "binding",
       "title": "On the machine",
       "source": "src/sdlc.ts:87",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "context": "A check must open the page a person opens: the file delivered, in a real browser."
@@ -5752,7 +6006,7 @@
       "id": "sdlc.OpeningThePage",
       "kind": "scenario",
       "title": "The page is opened as a person would",
-      "source": "src/sdlc.ts:502",
+      "source": "src/sdlc.ts:561",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -5832,7 +6086,7 @@
       "kind": "artifact",
       "title": "Poselia's page",
       "source": "src/sdlc.ts:111",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "media": "text/html; charset=utf-8"
@@ -5841,7 +6095,9 @@
         "path": "dist/poselia.html",
         "code": "c227094a"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+      ]
     },
     {
       "id": "sdlc.PageOpening",
@@ -5862,14 +6118,16 @@
       "kind": "check",
       "title": "The page opens",
       "source": "src/sdlc.ts:211",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax"
       },
       "result": {
         "code": "20164e5d"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
+      ]
     },
     {
       "id": "sdlc.PageSelectors",
@@ -5930,7 +6188,7 @@
       "id": "sdlc.PlacingThePage",
       "kind": "scenario",
       "title": "The page is placed where it is served",
-      "source": "src/sdlc.ts:532",
+      "source": "src/sdlc.ts:591",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -5977,7 +6235,7 @@
       "kind": "shipment",
       "title": "A preview",
       "source": "src/sdlc.ts:320",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "target": "preview"
@@ -6165,7 +6423,10 @@
           "sdlc.PlaceThePage"
         ]
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: To ship: Poselia's page is unknown",
+        "warning: To ship: The page opens is unknown"
+      ]
     },
     {
       "id": "sdlc.PreviewMode",
@@ -6222,7 +6483,7 @@
       },
       "result": {
         "path": "scripts/ship-preview.sh",
-        "code": "8fd0a0ae"
+        "code": "3ecbf9b8"
       },
       "diagnostics": []
     },
@@ -6239,7 +6500,7 @@
       },
       "result": {
         "path": "../../.github/workflows/poselia-preview.yml",
-        "code": "9bcf7c7e"
+        "code": "87961637"
       },
       "diagnostics": []
     },
@@ -6562,7 +6823,7 @@
             "artifacts": [
               {
                 "node": "sdlc.PageFile",
-                "fingerprint": "d83dce2f862e3206578c50e2b444c43e56c893d598ad57775bf606fd27ca8123"
+                "fingerprint": "98e4555892199b51fa3d0f28fbf9d4e6db72aeef6d3a8c22160b095f5fe61d41"
               }
             ]
           }
@@ -6671,11 +6932,73 @@
         ]
       },
       "diagnostics": [
+        "warning: To ship: Poselia's page is unknown",
         "warning: To ship: On a phone is unknown",
+        "warning: To ship: The page opens is unknown",
         "warning: To ship: The content, reviewed is unknown",
+        "warning: To ship: A page first, the phones after is unknown",
         "warning: To ship: The content is data, behind a port is unknown",
         "warning: To ship: Said aloud, the screen awake is unknown"
       ]
+    },
+    {
+      "id": "sdlc.PublishedBeforeMerging",
+      "kind": "obligation",
+      "title": "What people decided, published",
+      "source": "src/sdlc.ts:426",
+      "fields": {
+        "owner": "ghalaax",
+        "gaps": "error"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.PullRequestsOnGitHub",
+      "kind": "decision",
+      "title": "How a pull request is checked on GitHub",
+      "source": "src/sdlc.ts:446",
+      "fields": {
+        "owner": "ghalaax",
+        "value": {
+          "on": {
+            "pullRequests": [
+              "main"
+            ]
+          },
+          "job": "poselia",
+          "runsOn": "ubuntu-24.04",
+          "node": 22,
+          "artefacts": {
+            "days": 30
+          },
+          "pullRequest": {
+            "review": true,
+            "merge": "onceItHoldsUnlessDecided"
+          }
+        },
+        "rejected": {
+          "Only when a pull request touches the project": "GitHub keeps a pull request waiting for a check it requires and that never ran",
+          "Merged by GitHub whatever it changes": "what people decided would reach main without a person"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.PullRequestWorkflow",
+      "kind": "artifact",
+      "title": "The pull requests' workflow",
+      "source": "src/sdlc.ts:464",
+      "status": "held",
+      "fields": {
+        "owner": "ghalaax",
+        "path": "../../.github/workflows/poselia-pull-request.yml",
+        "media": "application/yaml"
+      },
+      "result": {
+        "path": "../../.github/workflows/poselia-pull-request.yml",
+        "code": "494580a5"
+      },
+      "diagnostics": []
     },
     {
       "id": "sdlc.RulesHeld",
@@ -6691,7 +7014,7 @@
       "id": "sdlc.RunnersWritten",
       "kind": "shipment",
       "title": "The files that run it elsewhere",
-      "source": "src/sdlc.ts:420",
+      "source": "src/sdlc.ts:479",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -6703,7 +7026,8 @@
         "preceded": [],
         "reached": [
           "sdlc.PreviewScript",
-          "sdlc.PreviewWorkflow"
+          "sdlc.PreviewWorkflow",
+          "sdlc.PullRequestWorkflow"
         ]
       },
       "diagnostics": []
@@ -6712,7 +7036,7 @@
       "id": "sdlc.SdlcChecks",
       "kind": "catalog",
       "title": "What the scenarios of the SDLC check",
-      "source": "src/sdlc.ts:484",
+      "source": "src/sdlc.ts:543",
       "fields": {
         "owner": "ghalaax",
         "messages": "(function)"
@@ -6735,7 +7059,7 @@
       "id": "sdlc.SdlcInTheGraph",
       "kind": "adr",
       "title": "The SDLC is in the graph",
-      "source": "src/sdlc.ts:457",
+      "source": "src/sdlc.ts:516",
       "status": "unknown",
       "fields": {
         "owner": "ghalaax",
@@ -6752,7 +7076,7 @@
       "id": "sdlc.SdlcScenarioData",
       "kind": "decision",
       "title": "What the scenarios of the SDLC write",
-      "source": "src/sdlc.ts:476",
+      "source": "src/sdlc.ts:535",
       "fields": {
         "owner": "ghalaax",
         "value": {
@@ -6801,6 +7125,25 @@
       },
       "diagnostics": [
         "warning: Nobody holds this role yet"
+      ]
+    },
+    {
+      "id": "sdlc.ThePoseliaApp",
+      "kind": "artifact",
+      "title": "Poselia",
+      "source": "src/sdlc.ts:419",
+      "status": "unknown",
+      "fields": {
+        "owner": "ghalaax",
+        "path": "src",
+        "version": true
+      },
+      "result": {
+        "path": "src",
+        "code": "d5dd84d7"
+      },
+      "diagnostics": [
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
       ]
     },
     {
@@ -7268,7 +7611,7 @@
       "kind": "implementation",
       "title": "The browser's stage",
       "source": "src/stage.ts:126",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "deps": {
@@ -10149,6 +10492,16 @@
       "kind": "serves"
     },
     {
+      "from": "sdlc.IntoMain",
+      "to": "sdlc.ThePoseliaApp",
+      "kind": "ships"
+    },
+    {
+      "from": "sdlc.IntoMain",
+      "to": "sdlc.MergeMode",
+      "kind": "policy"
+    },
+    {
       "from": "sdlc.KeptMigrates",
       "to": "data/obligations.Migrated",
       "kind": "applies"
@@ -10157,6 +10510,11 @@
       "from": "sdlc.KeptMigrates",
       "to": "product.PractiseGuided",
       "kind": "serves"
+    },
+    {
+      "from": "sdlc.MergeMode",
+      "to": "sdlc.PublishedBeforeMerging",
+      "kind": "obligations"
     },
     {
       "from": "sdlc.OnAPhone",
@@ -10714,6 +11072,31 @@
       "kind": "policy"
     },
     {
+      "from": "sdlc.PublishedBeforeMerging",
+      "to": "std/obligations.Published",
+      "kind": "applies"
+    },
+    {
+      "from": "sdlc.PublishedBeforeMerging",
+      "to": "product.PractiseGuided",
+      "kind": "serves"
+    },
+    {
+      "from": "sdlc.PullRequestWorkflow",
+      "to": "ci/github.GitHubWorkflow",
+      "kind": "producedBy"
+    },
+    {
+      "from": "sdlc.PullRequestWorkflow",
+      "to": "sdlc.IntoMain",
+      "kind": "runs"
+    },
+    {
+      "from": "sdlc.PullRequestWorkflow",
+      "to": "sdlc.PullRequestsOnGitHub",
+      "kind": "settings"
+    },
+    {
       "from": "sdlc.RulesHeld",
       "to": "std/obligations.Ruled",
       "kind": "applies"
@@ -10731,6 +11114,11 @@
     {
       "from": "sdlc.RunnersWritten",
       "to": "sdlc.PreviewScript",
+      "kind": "ships"
+    },
+    {
+      "from": "sdlc.RunnersWritten",
+      "to": "sdlc.PullRequestWorkflow",
       "kind": "ships"
     },
     {

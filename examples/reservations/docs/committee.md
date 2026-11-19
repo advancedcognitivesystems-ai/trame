@@ -10,7 +10,7 @@
 
 ### Launch of the ultra chargers
 
-`UltraLaunch` · `src/committee.ts:29`
+`UltraLaunch` · `src/committee.ts:29` · published
 
 During the launch, cancelling a reservation on an ultra charger is always free.
 
@@ -43,7 +43,7 @@ During the launch, cancelling a reservation on an ultra charger is always free.
 
 ### Period for ultra chargers
 
-`UltraPeriod` · `src/committee.ts:12`
+`UltraPeriod` · `src/committee.ts:12` · published
 
 Ultra chargers finally get their free cancellation period.
 

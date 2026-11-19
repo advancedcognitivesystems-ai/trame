@@ -1,14 +1,15 @@
 # Architecture decisions
 
-*The choices that shape the product without being values, in force on 18 November 2026: why each was taken, what was rejected, and the nodes that apply it.*
+*The choices that shape the product without being values, in force on 19 November 2026: why each was taken, what was rejected, and the nodes that apply it.*
 
-> **4 architecture decisions, 3 held by the nodes that apply them**
+> **5 architecture decisions, 4 held by the nodes that apply them**
 
 | Decision | Status | Applied by |
 |---|---|---|
 | [An entry point says who may call it](access.md#SaysItsAudience) | **held** | [Who calls a shipment's programs is identified](obligations.md#Identified) |
 | [A component in a browser starts with its page](platform.md#StartsWithThePage) | unknown | [The browser loads the page](platform.md#BrowserLoading), [Loading of a page](platform.md#PageLoading) |
 | [The device's services, as ports](platform.md#DeviceAsPorts) | **held** | [Animation frames](platform.md#AnimationFrames), [The screen kept awake, in memory](platform.md#AwakeInMemory), [The browser's frames](platform.md#BrowserFrames), [The browser's languages](platform.md#BrowserLanguages), [The browser keeps the preferences](platform.md#BrowserPreferences), [The browser's voice](platform.md#BrowserSpeech), [The browser keeps the screen awake](platform.md#BrowserWakeLock), [Languages of the device](platform.md#DeviceLanguages), [Frames turned by hand](platform.md#FramesByHand), [Preferences kept in memory](platform.md#MemoryPreferences), [Preferences](platform.md#PreferencesStore), [Screen kept awake](platform.md#ScreenAwake), [Whether the screen is kept awake](platform.md#ScreenKeptAwake), [What was said](platform.md#SpeechHeard), [Speech](platform.md#SpeechVoice), [Time turned by hand](platform.md#TimeTurned), [A voice that writes down](platform.md#WrittenSpeech) |
+| [A repository is set by its project's graph](repository.md#RepositoryThroughItsApi) | **held** | [GitHub's command line](repository.md#GitHubCliRepository), [How GitHub merges a pull request](repository.md#MergeMethods), [A repository on GitHub](repository.md#RepositoryApi), [A repository compared with its settings](repository.md#RepositoryCompared), [A repository kept in memory](repository.md#RepositoryInMemory), [The repositories a scenario keeps](repository.md#RepositoryKept), [The parts of a repository's settings](repository.md#RepositoryParts) |
 | [The SDLC's tooling is realized once](tooling.md#ToolingAsPorts) | **held** | [A browser kept in memory](tooling.md#BrowserInMemory), [Browser script](tooling.md#BrowserScripted), [Project files](tooling.md#Files), [Files kept in memory](tooling.md#FilesInMemory), [Files written](tooling.md#FilesKept), [Headless browser](tooling.md#HeadlessBrowser), [The machine's files](tooling.md#MachineFiles), [Node's command line](tooling.md#NodeProgramCommands), [Where a package comes from](tooling.md#PackageSources), [Chromium, driven by Playwright](tooling.md#PlaywrightBrowser), [Commands of a program](tooling.md#ProgramCommands) |
 
 ## Standard library · Access
@@ -76,6 +77,29 @@ Consequences: Each service is a port with its effects; the browser's realization
 - Decided by: trame
 - Serves: [Ports of the platform, realized once](product.md#RealizedOnce)
 - Applied by: [Preferences](platform.md#PreferencesStore), [The browser keeps the preferences](platform.md#BrowserPreferences), [Preferences kept in memory](platform.md#MemoryPreferences), [Languages of the device](platform.md#DeviceLanguages), [The browser's languages](platform.md#BrowserLanguages), [Speech](platform.md#SpeechVoice), [The browser's voice](platform.md#BrowserSpeech), [A voice that writes down](platform.md#WrittenSpeech), [What was said](platform.md#SpeechHeard), [Screen kept awake](platform.md#ScreenAwake), [The browser keeps the screen awake](platform.md#BrowserWakeLock), [The screen kept awake, in memory](platform.md#AwakeInMemory), [Whether the screen is kept awake](platform.md#ScreenKeptAwake), [Animation frames](platform.md#AnimationFrames), [The browser's frames](platform.md#BrowserFrames), [Frames turned by hand](platform.md#FramesByHand), [Time turned by hand](platform.md#TimeTurned)
+
+## Standard library · Repositories on GitHub
+
+<a id="RepositoryThroughItsApi"></a>
+
+### A repository is set by its project's graph
+
+`RepositoryThroughItsApi` · `src/repository.ts:276` · status: **held**
+
+The settings of a repository are a decision of the project's graph, applied through a port of the library and read back: realized once for a machine (GitHub's command line) and once in memory.
+
+Context: A repository's settings decide what reaches its main branch: set by hand in GitHub's pages, nothing says why, and nothing tells when they drift from what the project decided.
+
+Consequences: A project decides its settings (RepositorySettings) and applies them by a program of its SDLC that a shipment deploys, which reads them back and compares them (RepositoryCompared); its scenarios play that program with the repository kept in memory, and a check reads the repository as it is.
+
+| Rejected | Why |
+|---|---|
+| A script the graph writes, which an administrator runs | nothing reads the repository back, and nothing records who set it |
+| A writer in ci | a program that calls GitHub is code a project runs and verifies, not a file a place runs |
+
+- Decided by: trame
+- Serves: [Ports of the platform, realized once](product.md#RealizedOnce)
+- Applied by: [How GitHub merges a pull request](repository.md#MergeMethods), [The parts of a repository's settings](repository.md#RepositoryParts), [A repository compared with its settings](repository.md#RepositoryCompared), [A repository on GitHub](repository.md#RepositoryApi), [GitHub's command line](repository.md#GitHubCliRepository), [The repositories a scenario keeps](repository.md#RepositoryKept), [A repository kept in memory](repository.md#RepositoryInMemory)
 
 ## Standard library · Tooling
 

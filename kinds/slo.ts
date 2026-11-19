@@ -21,7 +21,8 @@ export const slo = defineKind({
   label: { one: say.sloServiceLevelObjective(), many: say.sloServiceLevelObjectives() },
   renderOwns: [F.signal, F.percentile, F.threshold, F.window],
   fields,
-  changes: { [F.percentile]: ChangeWay.chosen, [F.threshold]: ChangeWay.chosen, [F.window]: ChangeWay.chosen },
+  statement: ChangeWay.stated,
+  changes: { [F.signal]: ChangeWay.chosen, [F.percentile]: ChangeWay.chosen, [F.threshold]: ChangeWay.chosen, [F.window]: ChangeWay.chosen, [F.source]: ChangeWay.cited },
   edges: {
     constrains: edge.many([KindName.requirement], { label: say.sloConstrains(), inverse: say.sloConstrainedBy() }),
   },

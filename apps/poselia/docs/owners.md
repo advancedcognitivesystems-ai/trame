@@ -1,12 +1,12 @@
 # Owners
 
-*What each person must decide, settle or watch on 18 November 2026, and what they own.*
+*What each person must decide, settle or watch on 19 November 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
 | A teacher who practises | 0 | 0 | 4 | 0 |
 | People who try it on a phone | 0 | 0 | 1 | 0 |
-| ghalaax | 0 | 0 | 5 | 217 |
+| ghalaax | 0 | 0 | 14 | 223 |
 
 <a id="A teacher who practises"></a>
 
@@ -48,17 +48,26 @@
 
 | Severity | What | Where | Owner | Consequence |
 |---|---|---|---|---|
+| warning | To ship: Poselia is unknown | [Into the main branch](sdlc.md#IntoMain) | ghalaax |  |
+| warning | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [Poselia's page](sdlc.md#PageFile) | ghalaax |  |
+| warning | Checked on another build of its artefacts, by another version of its program or another engine: to check again | [The page opens](sdlc.md#PageOpens) | ghalaax |  |
+| warning | To ship: Poselia's page is unknown | [A preview](sdlc.md#Preview) | ghalaax |  |
+| warning | To ship: The page opens is unknown | [A preview](sdlc.md#Preview) | ghalaax |  |
+| warning | To ship: Poselia's page is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
 | warning | To ship: On a phone is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
+| warning | To ship: The page opens is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
 | warning | To ship: The content, reviewed is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
+| warning | To ship: A page first, the phones after is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
 | warning | To ship: The content is data, behind a port is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
 | warning | To ship: Said aloud, the screen awake is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
 | warning | Nobody holds this role yet | [A teacher who practises](sdlc.md#Teachers) | ghalaax |  |
+| warning | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [Poselia](sdlc.md#ThePoseliaApp) | ghalaax |  |
 
 ### Owns
 
 | Node | Kind | State |
 |---|---|---|
-| [The browser's screen](app.md#BrowserScreen) | Implementation | **held** |
+| [The browser's screen](app.md#BrowserScreen) | Implementation | **unknown** |
 | [The content the app carries](app.md#CarriedContent) | Function | **held** |
 | [Colours](app.md#Colours) | Decision |  |
 | [Content carried by the app](app.md#ContentCarried) | Technical choice | **held** |
@@ -178,7 +187,7 @@
 | [The breath is the clock](principles.md#BreathIsTheClock) | Architecture decision | **held** |
 | [The content is data, behind a port](principles.md#ContentAsData) | Architecture decision | **unknown** |
 | [The person's language, among those offered](principles.md#LanguageOffered) | Architecture decision | **held** |
-| [A page first, the phones after](principles.md#PageFirst) | Architecture decision | **held** |
+| [A page first, the phones after](principles.md#PageFirst) | Architecture decision | **unknown** |
 | [Said aloud, the screen awake](principles.md#SaidAloud) | Architecture decision | **unknown** |
 | [The breath of a moment](product.md#BreathOf) | Requirement | **held** |
 | [Criteria of the breath of a moment](product.md#BreathOfCriteria) | Acceptance criteria | **held** |
@@ -215,22 +224,24 @@
 | [The content, reviewed](sdlc.md#ContentReviewed) | Review | **unknown** |
 | [The content is reviewed by a teacher](sdlc.md#ContentSeen) | Obligation |  |
 | [The decisions hold](sdlc.md#DecisionsApplied) | Obligation |  |
+| [Into the main branch](sdlc.md#IntoMain) | Shipment | **unknown** |
 | [What the device keeps, migrated](sdlc.md#KeptMigrates) | Obligation |  |
 | [A machine](sdlc.md#Machine) | Environment |  |
+| [How a change merges](sdlc.md#MergeMode) | Policy |  |
 | [On a phone](sdlc.md#OnAPhone) | Check | **unknown** |
-| [On the machine](sdlc.md#OnTheMachine) | Technical choice | **held** |
+| [On the machine](sdlc.md#OnTheMachine) | Technical choice | **unknown** |
 | [The page is opened as a person would](sdlc.md#OpeningThePage) | Scenario | **held** |
 | [Open the page](sdlc.md#OpenThePage) | Entry point | **held** |
 | [The packages are safe](sdlc.md#PackagesSafe) | Obligation |  |
-| [Poselia's page](sdlc.md#PageFile) | Artefact | **held** |
+| [Poselia's page](sdlc.md#PageFile) | Artefact | **unknown** |
 | [How the page is opened](sdlc.md#PageOpening) | Decision |  |
-| [The page opens](sdlc.md#PageOpens) | Check | **held** |
+| [The page opens](sdlc.md#PageOpens) | Check | **unknown** |
 | [What the page is asked](sdlc.md#PageSelectors) | Function | **held** |
 | [People who try it on a phone](sdlc.md#PhoneTesters) | Role |  |
 | [Place the page](sdlc.md#PlaceThePage) | Entry point | **held** |
 | [The page is placed where it is served](sdlc.md#PlacingThePage) | Scenario | **held** |
 | [Poselia's SDLC](sdlc.md#PoseliaSdlc) | Component |  |
-| [A preview](sdlc.md#Preview) | Shipment | **held** |
+| [A preview](sdlc.md#Preview) | Shipment | **unknown** |
 | [The way of a preview](sdlc.md#PreviewMode) | Policy |  |
 | [When the preview runs on GitHub, and what it keeps there](sdlc.md#PreviewOnGitHub) | Decision |  |
 | [The preview's script](sdlc.md#PreviewScript) | Artefact | **held** |
@@ -239,6 +250,9 @@
 | [The page is checked by programs](sdlc.md#ProgramChecks) | Obligation |  |
 | [The way of a public version](sdlc.md#PublicMode) | Policy |  |
 | [A public version](sdlc.md#PublicVersion) | Shipment | **unknown** |
+| [What people decided, published](sdlc.md#PublishedBeforeMerging) | Obligation |  |
+| [How a pull request is checked on GitHub](sdlc.md#PullRequestsOnGitHub) | Decision |  |
+| [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **held** |
 | [The rules of the app hold](sdlc.md#RulesHeld) | Obligation |  |
 | [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **held** |
 | [What the scenarios of the SDLC check](sdlc.md#SdlcChecks) | Message catalog |  |
@@ -248,6 +262,7 @@
 | [What the programs of the SDLC say](sdlc.md#SdlcWords) | Message catalog |  |
 | [Where the page is served](sdlc.md#ServedPage) | Decision |  |
 | [A teacher who practises](sdlc.md#Teachers) | Role |  |
+| [Poselia](sdlc.md#ThePoseliaApp) | Artefact | **unknown** |
 | [A phase set by the person](settings.md#AdjustedBreath) | Requirement | **held** |
 | [Criteria of a phase set by the person](settings.md#AdjustedBreathCriteria) | Acceptance criteria | **held** |
 | [The person's breath, kept](settings.md#Breath) | Entity | **held** |
@@ -268,7 +283,7 @@
 | [Sound of the bowl](sound.md#BowlSound) | Decision |  |
 | [The browser's bowl](sound.md#BrowserBowl) | Implementation | **unknown** |
 | [The axes of the mat](space.md#AxesOfTheMat) | Amendment | in force |
-| [The browser's stage](stage.md#BrowserStage) | Implementation | **held** |
+| [The browser's stage](stage.md#BrowserStage) | Implementation | **unknown** |
 | [Look of the mannequin](stage.md#MannequinLook) | Decision |  |
 | [Look of the landmarks](stage.md#MarkStyle) | Decision |  |
 | [Light of the stage](stage.md#StageLight) | Decision |  |

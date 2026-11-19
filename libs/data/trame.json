@@ -1,9 +1,13 @@
 {
   "title": "Data",
   "libraries": {
+    "ci": {
+      "at": ".trame/ci",
+      "version": "0.7.0"
+    },
     "std": {
       "at": ".trame/std",
-      "version": "0.18.1"
+      "version": "0.20.0"
     }
   },
   "engine": ".trame/trame"

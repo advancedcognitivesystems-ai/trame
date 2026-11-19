@@ -1588,3 +1588,49 @@ export const G107 = release({
   archive: "8a10289d172e9505",
   assembledBy: G106,
 })
+
+/**
+ * Generation 108
+ */
+export const G108 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g108",
+  date: "2026-11-18",
+  what: "D1: a publication freezes, part by part, what the kind of each declaration says people decide (chosen, cited, stated), its code left free; a migration publishes again a form, never a value",
+  fingerprint: "900fc84c2df0bdb5",
+  language: "shared",
+  archive: "f57520d042348d7c",
+  differences: "differences.diff",
+  assembledBy: G107,
+})
+
+/**
+ * Generation 109
+ */
+export const G109 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g109",
+  date: "2026-11-19",
+  what: "D1: the run plan carries the review of a branch, written in Markdown, which a place that reviews a pull request writes against the lock of the branch it merges into",
+  fingerprint: "1044691fc5b09d47",
+  language: "shared",
+  archive: "48b53a6cd95905bc",
+  assembledBy: G108,
+})
+
+/**
+ * Generation 110
+ */
+export const G110 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g110",
+  date: "2026-11-19",
+  what: "D1: the run plan says the nodes a file written comes from (the artefact, the decision of its settings, the file that declares them)",
+  fingerprint: "ea7f70d71823986b",
+  language: "shared",
+  archive: "b86153ccec9980c7",
+  assembledBy: G109,
+})

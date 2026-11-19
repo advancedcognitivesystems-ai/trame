@@ -1049,9 +1049,31 @@ by itself is a ratio). A build that does is refused, as one with a type error is
 quantities do not add up, nor compare`. A document writes each value of a quantity in the largest of its units it makes
 a whole number of, with the words of the catalog the quantity names: 10 min, 2 s, 50%, CHF 20.
 
-A declaration published in `trame.lock` whose form the language changes, not its meaning (a fee typed `Percent` that
-becomes a `Share`), is published again by `trame publish --migrate "why"`, which records when, why and which in the
-lock; a change of meaning stays an amendment's business.
+**What a publication freezes** (D1, g108). `trame publish` freezes in `trame.lock`, part by part, what the kind of each
+declaration says people decide: its values chosen or cited, and what is stated (the title and description of a goal, an
+ADR, an assumption, a decision or a requirement, an ADR's reasons; an amendment, a repeal or an approval whole). A
+requirement freezes its rule, its constants and its examples; a catalog its words; a dataset its rows. Code stays free,
+held by what verifies it. A frozen part changed is an error that says how it changes: an amendment for a value (in the
+code for a body, composed with the one in force), a new node that repeals it for a statement. A declaration published
+whose form changes, not its meaning (a statement reworded, a fee typed `Percent` that becomes a `Share`, a declaration
+published before its parts were), is published again by `trame publish --migrate "why"`, which records when, why and
+which in the lock; a migration never publishes a value again. A project says it publishes by applying std's family
+`Published` in the policy of the shipment that merges into main: a part not published yet is then a gap. The example
+publishes 46 declarations, Poselia 150; Trame and its libraries will once the plan is done.
+
+**A change reaches main by a pull request** (D1, g109, ci 0.5.0). The merge into main is a shipment of each project,
+`IntoMain`: it ships the project's version (all its code) and follows a policy, which for the example and Poselia proves
+that what people decided is published. Each project writes the workflow that checks a pull request on GitHub, with ci's
+writer: its job is a check the repository requires; it writes in the pull request the review of the branch (what its
+declarations not yet published add to those published, against the lock of main) and keeps GitHub from merging a pull
+request that changes a `trame.lock`, which a person merges once they read it; then it runs the shipment. A library's
+check is the shipment of its next version. The settings of the repository (main never deleted nor rewritten, reached
+only by a pull request that passes the checks of Trame, std, ci, data, the example and Poselia, merged as a merge
+commit, its branch deleted, no approval asked) are a decision of Trame's graph, which a shipment of Trame applies: it
+reads the repository from GitHub, then a program of its SDLC sets it through std's port `RepositoryApi` (GitHub's
+command line, with the token of the administrator who ships it) and reads it back, failing on each part that still
+differs (`./trame.sh ship RepositorySet --by <name>`). A file written from the graph names, at its top, the nodes it
+comes from: the artefact, the decision of its settings, the file that declares them.
 
 ## Amending a value
 
@@ -1291,7 +1313,11 @@ declarations with), the types of Node below 23 (they follow the Node.js that run
   which the graph has only the client), RBAC, ReBAC and ABAC as composable strategies, the scope each body receives
   (as row-level security), the check written by the graph into the program before the body, and the platform services
   the people of the project steer.
-- **Publication**: Trame's own graph has no `trame.lock` yet; tying `trame publish` to the merge into the main branch.
+- **Publication** (D1, in progress): a publication freezes what people decide, part by part (g108); the merge into main
+  is a shipment of each project, checked on GitHub at each pull request by a workflow written from the graph, which
+  writes the review of the branch and keeps GitHub from merging what people decided; the repository's settings are a
+  decision of the graph, which a shipment of Trame applies and reads back (g110, std 0.20.0, ci 0.7.0). Left: Pages.
+  Trame's own graph is published once the plan is done.
 - **The SDLC**: a shipment of a library version (its release, then a warning in the projects that import an older one; proposed); a
   signature with a key, read from outside the graph (the seal is an attribution); a status that reads itself said as an
   error of the graph rather than unknown (since g69 no kind lets one be written); a deployment in a workflow that publishes somewhere real (GitHub

@@ -1,24 +1,32 @@
 import {
-  defineKind, field, optional, edge, hole, doc, REMOVE, DateRole, Validity, KindName, ResolutionKind,
+  defineKind, field, optional, edge, hole, doc, keysOf, REMOVE, DateRole, Validity, KindName, ResolutionKind, ChangeWay,
   type AnyNode, type Node, type Resolution,
 } from "../trame/kernel"
 import words from "./words"
 
 const say = words()
 
+const fields = {
+  owner: field.owner(say.adrDecidedBy()),
+  why: field.text(say.amendmentReason()),
+  from: optional(field.date(say.amendmentInForceFrom(), DateRole.start)),
+}
+const F = keysOf(fields)
+const edges = {
+  repeals: edge.amends({ label: say.repealRepeals(), inverse: say.repealRepealedBy() }),
+}
+const E = keysOf(edges)
+
 /** A repeal: takes a published node out of the graph in force, without erasing it from the code. */
 const kind = defineKind({
   name: KindName.repeal,
   label: { one: say.repealRepeal(), many: say.repealRepeals() },
   history: true,
-  fields: {
-    owner: field.owner(say.adrDecidedBy()),
-    why: field.text(say.amendmentReason()),
-    from: optional(field.date(say.amendmentInForceFrom(), DateRole.start)),
-  },
-  edges: {
-    repeals: edge.amends({ label: say.repealRepeals(), inverse: say.repealRepealedBy() }),
-  },
+  fields,
+  edges,
+  /** A repeal is a record (D1): once published, nothing of it changes. */
+  statement: ChangeWay.stated,
+  changes: { [F.owner]: ChangeWay.stated, [F.why]: ChangeWay.stated, [F.from]: ChangeWay.stated, [E.repeals]: ChangeWay.stated },
 
   activeAt: (self, g) => !self.from || self.from <= g.today,
 

@@ -16,7 +16,8 @@ export default defineView({
     if (!all.some((v) => c.published(v))) {
       return { title: say.reviewBranchReview(), intro, blocks: [doc.para(say.reviewNothingIsPublishedYetTheWhole(), doc.ident(say.reviewNpmRunPublish()), say.reviewFreezesTheCurrentState())] }
     }
-    const fresh = all.filter((v) => !c.published(v))
+    // What a publication would freeze and has not yet (since g108): a node whose kind freezes nothing is code, free.
+    const fresh = all.filter((v) => c.published(v) === false)
     const isFresh = (v: View) => fresh.some((f) => f.ref === v.ref)
     const lock = c.lockIssues()
     const claims = fresh.flatMap((v) => c.claims(v, ClaimSide.by))

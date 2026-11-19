@@ -1239,6 +1239,16 @@
       }
     },
     {
+      "id": "sdlc.IntoMain",
+      "kind": "shipment",
+      "title": "Into the main branch",
+      "status": "unknown",
+      "fields": {
+        "owner": "karim",
+        "target": "main"
+      }
+    },
+    {
       "id": "sdlc.KeptMigrates",
       "kind": "obligation",
       "title": "What the service keeps, migrated",
@@ -1261,6 +1271,14 @@
       "id": "sdlc.MachineMode",
       "kind": "policy",
       "title": "The way of this machine",
+      "fields": {
+        "owner": "karim"
+      }
+    },
+    {
+      "id": "sdlc.MergeMode",
+      "kind": "policy",
+      "title": "How a change merges",
       "fields": {
         "owner": "karim"
       }
@@ -1352,6 +1370,55 @@
       }
     },
     {
+      "id": "sdlc.PublishedBeforeMerging",
+      "kind": "obligation",
+      "title": "What people decided, published",
+      "fields": {
+        "owner": "karim",
+        "gaps": "error"
+      }
+    },
+    {
+      "id": "sdlc.PullRequestsOnGitHub",
+      "kind": "decision",
+      "title": "How a pull request is checked on GitHub",
+      "fields": {
+        "owner": "karim",
+        "value": {
+          "on": {
+            "pullRequests": [
+              "main"
+            ]
+          },
+          "job": "reservations",
+          "runsOn": "ubuntu-24.04",
+          "node": 22,
+          "artefacts": {
+            "days": 30
+          },
+          "pullRequest": {
+            "review": true,
+            "merge": "onceItHoldsUnlessDecided"
+          }
+        },
+        "rejected": {
+          "Only when a pull request touches the project": "GitHub keeps a pull request waiting for a check it requires and that never ran",
+          "Merged by GitHub whatever it changes": "what people decided would reach main without a person"
+        }
+      }
+    },
+    {
+      "id": "sdlc.PullRequestWorkflow",
+      "kind": "artifact",
+      "title": "The pull requests' workflow",
+      "status": "unknown",
+      "fields": {
+        "owner": "karim",
+        "path": "../../.github/workflows/reservations-pull-request.yml",
+        "media": "application/yaml"
+      }
+    },
+    {
       "id": "sdlc.Release",
       "kind": "shipment",
       "title": "A release",
@@ -1387,6 +1454,27 @@
       "title": "The rules hold",
       "fields": {
         "owner": "karim"
+      }
+    },
+    {
+      "id": "sdlc.RunnersWritten",
+      "kind": "shipment",
+      "title": "The files that run it elsewhere",
+      "status": "unknown",
+      "fields": {
+        "owner": "karim",
+        "target": "repository"
+      }
+    },
+    {
+      "id": "sdlc.TheService",
+      "kind": "artifact",
+      "title": "The service",
+      "status": "unknown",
+      "fields": {
+        "owner": "karim",
+        "path": "src",
+        "version": true
       }
     },
     {
@@ -2195,6 +2283,16 @@
       "kind": "serves"
     },
     {
+      "from": "sdlc.IntoMain",
+      "to": "sdlc.TheService",
+      "kind": "ships"
+    },
+    {
+      "from": "sdlc.IntoMain",
+      "to": "sdlc.MergeMode",
+      "kind": "policy"
+    },
+    {
       "from": "sdlc.KeptMigrates",
       "to": "cancellation.CancelWithoutStress",
       "kind": "serves"
@@ -2222,6 +2320,11 @@
     {
       "from": "sdlc.MachineMode",
       "to": "sdlc.KeptMigrates",
+      "kind": "obligations"
+    },
+    {
+      "from": "sdlc.MergeMode",
+      "to": "sdlc.PublishedBeforeMerging",
       "kind": "obligations"
     },
     {
@@ -2325,6 +2428,21 @@
       "kind": "producedBy"
     },
     {
+      "from": "sdlc.PublishedBeforeMerging",
+      "to": "cancellation.CancelWithoutStress",
+      "kind": "serves"
+    },
+    {
+      "from": "sdlc.PullRequestWorkflow",
+      "to": "sdlc.IntoMain",
+      "kind": "runs"
+    },
+    {
+      "from": "sdlc.PullRequestWorkflow",
+      "to": "sdlc.PullRequestsOnGitHub",
+      "kind": "settings"
+    },
+    {
       "from": "sdlc.Release",
       "to": "sdlc.ProductionProgram",
       "kind": "ships"
@@ -2393,6 +2511,11 @@
       "from": "sdlc.RulesHeld",
       "to": "cancellation.CancelWithoutStress",
       "kind": "serves"
+    },
+    {
+      "from": "sdlc.RunnersWritten",
+      "to": "sdlc.PullRequestWorkflow",
+      "kind": "ships"
     },
     {
       "from": "cancellation.RefundCriteria",

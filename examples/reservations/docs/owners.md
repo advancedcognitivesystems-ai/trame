@@ -5,7 +5,7 @@
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
 | The operators | 0 | 0 | 2 | 0 |
-| karim | 1 | 0 | 13 | 96 |
+| karim | 1 | 0 | 17 | 103 |
 | lea | 0 | 0 | 1 | 11 |
 
 <a id="The operators"></a>
@@ -37,15 +37,19 @@
 | warning | Check the assumption before 1 December 2026 (in 32 days) | [Idempotent payment provider](cancellation.md#IdempotentProvider) | karim | no evidence yet |
 | warning | No production measurement wired | [Immediate refund](cancellation.md#ImmediateRefund) | karim |  |
 | warning | Cap cannot be checked: "Legal cap on cancellation fees" is not decided | [Late cancellation fee](cancellation.md#LateFee) | karim |  |
+| warning | To ship: The service is unknown | [Into the main branch](sdlc.md#IntoMain) | karim |  |
 | warning | Not built yet: trame ship builds it | [The program for a laptop](sdlc.md#LocalProgram) | karim |  |
 | warning | To ship: The program for a laptop is unknown | [On this machine](sdlc.md#OnThisMachine) | karim |  |
 | warning | Not built yet: trame ship builds it | [The program for production](sdlc.md#ProductionProgram) | karim |  |
+| warning | Not built yet: trame ship builds it | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | karim |  |
 | warning | To ship: The program for a laptop is unknown | [A release](sdlc.md#Release) | karim |  |
 | warning | To ship: The program for production is unknown | [A release](sdlc.md#Release) | karim |  |
 | warning | To ship: Secrets stay out of the graph is unknown | [A release](sdlc.md#Release) | karim |  |
 | warning | To ship: On a laptop is unknown | [A release](sdlc.md#Release) | karim |  |
 | warning | To ship: On staging is unknown | [A release](sdlc.md#Release) | karim |  |
 | warning | Drivers ships, and nothing proves it (Who calls, identified) | [Drivers](access.md#Drivers) | karim |  |
+| warning | To ship: The pull requests' workflow is unknown | [The files that run it elsewhere](sdlc.md#RunnersWritten) | karim |  |
+| warning | Not built yet: trame ship builds it | [The service](sdlc.md#TheService) | karim |  |
 
 ### Owns
 
@@ -130,9 +134,11 @@
 | [The decisions hold](sdlc.md#DecisionsApplied) | Obligation |  |
 | [Every check is signed](sdlc.md#EveryCheck) | Obligation |  |
 | [The requirements of the goal hold](sdlc.md#GoalServed) | Obligation |  |
+| [Into the main branch](sdlc.md#IntoMain) | Shipment | **unknown** |
 | [What the service keeps, migrated](sdlc.md#KeptMigrates) | Obligation |  |
 | [The program for a laptop](sdlc.md#LocalProgram) | Artefact | **unknown** |
 | [The way of this machine](sdlc.md#MachineMode) | Policy |  |
+| [How a change merges](sdlc.md#MergeMode) | Policy |  |
 | [On a laptop](sdlc.md#OnALaptop) | Check | **unknown** |
 | [On staging](sdlc.md#OnStaging) | Check | **unknown** |
 | [On this machine](sdlc.md#OnThisMachine) | Shipment | **unknown** |
@@ -140,10 +146,15 @@
 | [The packages are safe](sdlc.md#PackagesSafe) | Obligation |  |
 | [Prepare the storage](sdlc.md#PrepareStorage) | Entry point | **held** |
 | [The program for production](sdlc.md#ProductionProgram) | Artefact | **unknown** |
+| [What people decided, published](sdlc.md#PublishedBeforeMerging) | Obligation |  |
+| [How a pull request is checked on GitHub](sdlc.md#PullRequestsOnGitHub) | Decision |  |
+| [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **unknown** |
 | [A release](sdlc.md#Release) | Shipment | **unknown** |
 | [The way of a release](sdlc.md#ReleaseMode) | Policy |  |
 | [The service's SDLC](sdlc.md#ReservationsSdlc) | Component |  |
 | [The rules hold](sdlc.md#RulesHeld) | Obligation |  |
+| [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **unknown** |
+| [The service](sdlc.md#TheService) | Artefact | **unknown** |
 | [API of the payment provider](standards.md#PaymentProviderApi) | Standard |  |
 | [Paths of entry points](standards.md#RouteSyntax) | Standard |  |
 | [Ultra period requested by support](support.md#SupportUltraPeriod) | Amendment | in force |

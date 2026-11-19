@@ -1,0 +1,56 @@
+{
+  "published": {
+    "cancellation.FreeCancellationPeriod": {
+      "value": "0fc43e6b",
+      "review": "f4e9d60e",
+      "range": "c54285ad"
+    },
+    "cancellation.ImmediateRefund": {
+      "percentile": "addc0c97",
+      "threshold": "f0f96dc5",
+      "window": "944c7382"
+    },
+    "cancellation.LateFee": {
+      "value": "b7358c4c",
+      "review": "6a09e667",
+      "range": "6a09e667"
+    },
+    "legal.FeeCap": {
+      "value": "6a09e667",
+      "review": "6a09e667",
+      "range": "6a09e667"
+    }
+  },
+  "migrations": [
+    {
+      "at": "2026-10-30",
+      "why": "Units are quantities of the graph (g80): a share of the price is typed with std's Ratio, no longer the prelude's Percent",
+      "nodes": [
+        "cancellation.LateFee",
+        "legal.FeeCap"
+      ]
+    },
+    {
+      "at": "2026-10-30",
+      "why": "Every node has an owner (A6): goals and requirements name theirs",
+      "nodes": [
+        "cancellation.CancelWithoutStress",
+        "cancellation.Refund"
+      ]
+    },
+    {
+      "at": "2026-11-18",
+      "why": "D1 (g108): a publication freezes the parts of a declaration its kind says people decide, not the whole declaration",
+      "nodes": [
+        "cancellation.FreeCancellationPeriod",
+        "cancellation.ImmediateRefund",
+        "cancellation.LateFee",
+        "legal.FeeCap",
+        "cancellation.CancelWithoutStress",
+        "cancellation.IdempotentProvider",
+        "cancellation.Refund",
+        "cancellation.RefundCriteria"
+      ]
+    }
+  ]
+}

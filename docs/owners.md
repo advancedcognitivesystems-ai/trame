@@ -1,16 +1,33 @@
 # Owners
 
-*What each person must decide, settle or watch on 18 November 2026, and what they own.*
+*What each person must decide, settle or watch on 19 November 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 0 | 684 |
+| Trame's maintainers | 0 | 0 | 1 | 0 |
+| trame | 0 | 0 | 5 | 704 |
+
+<a id="Trame's maintainers"></a>
+
+## Trame's maintainers
+
+- Held by: ghalaax and claude
+
+| Severity | What | Where | Owner | Consequence |
+|---|---|---|---|---|
+| warning | Checked on another build of its artefacts, by another version of its program or another engine: to check again | [The graph page opens](sdlc.md#GraphPageOpens) | Trame's maintainers |  |
 
 <a id="trame"></a>
 
 ## trame
 
-Nothing to decide or watch.
+| Severity | What | Where | Owner | Consequence |
+|---|---|---|---|---|
+| warning | To ship: The engine is unknown | [Into the main branch](sdlc.md#IntoMain) | trame |  |
+| warning | To ship: The graph page opens is unknown | [Into the main branch](sdlc.md#IntoMain) | trame |  |
+| warning | To ship: The page is assembled is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
+| warning | To ship: The graph page opens is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
+| warning | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The engine](sdlc.md#TheEngine) | trame |  |
 
 ### Owns
 
@@ -73,15 +90,15 @@ Nothing to decide or watch.
 | [Trame on the command line](architecture.md#TrameCli) | Component |  |
 | [TypeScript compiler](architecture.md#TypeScriptCompiler) | Port |  |
 | [Write log](architecture.md#WriteLog) | Port |  |
-| [Amendments sent to trame dev](browser.md#BrowserAmendments) | Implementation | **held** |
-| [The browser's gzip](browser.md#BrowserDecompression) | Implementation | **held** |
-| [The globals of the page, and trame dev](browser.md#BrowserFeed) | Implementation | **held** |
-| [Local storage](browser.md#BrowserMemory) | Implementation | **held** |
-| [The browser's window](browser.md#BrowserWindow) | Implementation | **held** |
-| [Explorer of a graph](browser.md#ExplorerFigures) | Function | **held** |
-| [Show the graph](browser.md#ShowGraph) | Entry point | **held** |
-| [The browser runs the page](browser.md#TheBrowserRunsThePage) | Technical choice | **held** |
-| [The page is assembled](browser.md#ThePageIsAssembled) | Architecture decision | **held** |
+| [Amendments sent to trame dev](browser.md#BrowserAmendments) | Implementation | **unknown** |
+| [The browser's gzip](browser.md#BrowserDecompression) | Implementation | **unknown** |
+| [The globals of the page, and trame dev](browser.md#BrowserFeed) | Implementation | **unknown** |
+| [Local storage](browser.md#BrowserMemory) | Implementation | **unknown** |
+| [The browser's window](browser.md#BrowserWindow) | Implementation | **unknown** |
+| [Explorer of a graph](browser.md#ExplorerFigures) | Function | **unknown** |
+| [Show the graph](browser.md#ShowGraph) | Entry point | **unknown** |
+| [The browser runs the page](browser.md#TheBrowserRunsThePage) | Technical choice | **unknown** |
+| [The page is assembled](browser.md#ThePageIsAssembled) | Architecture decision | **unknown** |
 | [An advance, in memory](command-scenarios.md#AdvanceInMemory) | Scenario | **held** |
 | [What the engines an advance starts answer in a scenario](command-scenarios.md#AdvanceSamples) | Decision |  |
 | [What an amendment is checked with](command-scenarios.md#AmendmentSamples) | Decision |  |
@@ -109,6 +126,7 @@ Nothing to decide or watch.
 | [What a plan is checked with](command-scenarios.md#PlanSamples) | Decision |  |
 | [What the scenarios ask of those projects](command-scenarios.md#ProjectSamples) | Decision |  |
 | [A project started](command-scenarios.md#ProjectStarted) | Scenario | **held** |
+| [A published value changed](command-scenarios.md#PublishedValueChanged) | Scenario | **held** |
 | [The registry filled](command-scenarios.md#RegistryFilled) | Scenario | **held** |
 | [What a program run in a scenario answers](command-scenarios.md#RunSamples) | Decision |  |
 | [The projects of the repository the scenarios enter](command-scenarios.md#ScenarioProjects) | Decision |  |
@@ -322,6 +340,7 @@ Nothing to decide or watch.
 | [Messages of the scenarios](messages.md#ScenarioMessages) | Message catalog |  |
 | [Messages of the views](messages.md#ViewMessages) | Message catalog |  |
 | [Words of the views](messages.md#ViewWords) | Message catalog |  |
+| [The library of continuous integration](packages.md#ContinuousIntegration) | Package |  |
 | [Grammar of CSS](packages.md#CssGrammar) | Package | **held** |
 | [esbuild](packages.md#EsbuildPackage) | Package | **held** |
 | [Grammar of HCL](packages.md#HclGrammar) | Package | **held** |
@@ -441,7 +460,7 @@ Nothing to decide or watch.
 | [The traversal API is the only way to read the graph](principles.md#OneWayToRead) | Architecture decision | **held** |
 | [A package is used by its name](principles.md#PackagesByName) | Architecture decision | **held** |
 | [The prelude: the runtime of the language](principles.md#PreludeLayer) | Architecture decision | **held** |
-| [A version ships through the graph](principles.md#ShippedThroughTheGraph) | Architecture decision | **held** |
+| [A version ships through the graph](principles.md#ShippedThroughTheGraph) | Architecture decision | **unknown** |
 | [A technology is chosen in one node](principles.md#TechnologyInOneNode) | Architecture decision | **held** |
 | [Trame builds Trame](principles.md#TrameBuildsTrame) | Architecture decision | **held** |
 | [An undecided value blocks; it does not crash](principles.md#UndecidedBlocks) | Architecture decision | **held** |
@@ -472,7 +491,10 @@ Nothing to decide or watch.
 | [Generation 105](releases.md#G105) | Release |  |
 | [Generation 106](releases.md#G106) | Release |  |
 | [Generation 107](releases.md#G107) | Release |  |
+| [Generation 108](releases.md#G108) | Release |  |
+| [Generation 109](releases.md#G109) | Release |  |
 | [Generation 11](releases.md#G11) | Release |  |
+| [Generation 110](releases.md#G110) | Release |  |
 | [Generation 12](releases.md#G12) | Release |  |
 | [Generation 13](releases.md#G13) | Release |  |
 | [Generation 14](releases.md#G14) | Release |  |
@@ -605,6 +627,7 @@ Nothing to decide or watch.
 | [Expected differences on the example](scenarios.md#ExpectedDifferences) | Decision |  |
 | [The laws of the kinds hold](scenarios.md#KindLaws) | Scenario | **held** |
 | [What the engine's reckoning is checked with](scenarios.md#ReckoningData) | Decision |  |
+| [Set the repository's settings](sdlc.md#ApplyTheRepositorySettings) | Entry point | **held** |
 | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) | Obligation |  |
 | [The rules of the architecture hold](sdlc.md#ArchitectureRuled) | Obligation |  |
 | [The candidate is checked by programs](sdlc.md#CandidateChecked) | Obligation |  |
@@ -617,18 +640,32 @@ Nothing to decide or watch.
 | [How a generation is made](sdlc.md#GenerationMode) | Policy |  |
 | [The graph page](sdlc.md#GraphPage) | Artefact | **held** |
 | [How the graph page is opened](sdlc.md#GraphPageOpening) | Decision |  |
-| [The graph page opens](sdlc.md#GraphPageOpens) | Check | **held** |
+| [The graph page opens](sdlc.md#GraphPageOpens) | Check | **unknown** |
 | [What the scenario of the graph page shows](sdlc.md#GraphPageScenarioData) | Decision |  |
 | [What the graph page is asked](sdlc.md#GraphPageSelectors) | Function | **held** |
+| [Into the main branch](sdlc.md#IntoMain) | Shipment | **unknown** |
 | [The language serves what it says](sdlc.md#LanguageServed) | Obligation |  |
+| [How the repository merges into main](sdlc.md#MainBranch) | Decision |  |
 | [Trame's maintainers](sdlc.md#Maintainers) | Role |  |
-| [The next generation](sdlc.md#NextGeneration) | Shipment | **held** |
+| [How a change merges](sdlc.md#MergeMode) | Policy |  |
+| [The next generation](sdlc.md#NextGeneration) | Shipment | **unknown** |
 | [The graph page is opened as a person would](sdlc.md#OpeningTheGraphPage) | Scenario | **held** |
 | [Open the graph page](sdlc.md#OpenTheGraphPage) | Entry point | **held** |
 | [The page's program](sdlc.md#PageProgram) | Artefact | **held** |
+| [How a pull request is checked on GitHub](sdlc.md#PullRequestsOnGitHub) | Decision |  |
+| [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **held** |
+| [Read the repository's settings](sdlc.md#ReadTheRepositorySettings) | Entry point | **held** |
+| [The repository is read from GitHub](sdlc.md#RepositoryRead) | Check | **held** |
+| [The repository left by hand, in the scenario](sdlc.md#RepositoryScenarioData) | Decision |  |
+| [The repository as decided](sdlc.md#RepositorySet) | Shipment | **held** |
+| [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **held** |
 | [The SDLC in memory](sdlc.md#SdlcInMemory) | Technical choice | **held** |
-| [The SDLC on the machine](sdlc.md#SdlcOnTheMachine) | Technical choice | **held** |
+| [The SDLC on the machine](sdlc.md#SdlcOnTheMachine) | Technical choice | **unknown** |
 | [What the programs of Trame's SDLC say](sdlc.md#SdlcWords) | Message catalog |  |
+| [How the repository is set](sdlc.md#SettingsMode) | Policy |  |
+| [The repository is set as the graph decides](sdlc.md#SettingTheRepository) | Scenario | **held** |
+| [The engine](sdlc.md#TheEngine) | Artefact | **unknown** |
+| [Trame's repository](sdlc.md#TheRepository) | Decision |  |
 | [Trame's SDLC](sdlc.md#TrameSdlc) | Component |  |
 | [Attribution](shipping.md#Attribution) | Function | **held** |
 | [The fingerprint of a program](shipping.md#ProgramBundle) | Decision |  |

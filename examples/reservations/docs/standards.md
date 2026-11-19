@@ -10,7 +10,7 @@
 
 ### API of the payment provider
 
-`PaymentProviderApi` · `src/standards.ts:22`
+`PaymentProviderApi` · `src/standards.ts:22` · published
 
 The address of a refund, under the provider's address, and the header of the idempotency key.
 
@@ -28,7 +28,7 @@ Source: The payment provider's API, version 1: refunds
 
 ### Paths of entry points
 
-`RouteSyntax` · `src/standards.ts:9`
+`RouteSyntax` · `src/standards.ts:9` · published
 
 How an HTTP entry point names its path: segments separated by slashes, a parameter as a colon followed by its name.
 

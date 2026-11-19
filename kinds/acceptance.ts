@@ -1,4 +1,4 @@
-import { defineKind, field, edge, hole, doc, keysOf, Hole, Outcome, Status, KindName, type Inline } from "../trame/kernel"
+import { defineKind, field, edge, hole, doc, keysOf, Hole, Outcome, Status, KindName, ChangeWay, type Inline } from "../trame/kernel"
 import words from "./words"
 
 const say = words()
@@ -14,6 +14,12 @@ interface Result {
   error?: string
 }
 
+const fields = {
+  owner: field.owner(),
+  criteria: field.fn<Criteria>(() => (criterion) => criterion(say.acceptanceExample(), () => true)),
+}
+const F = keysOf(fields)
+
 const edges = {
   accepts: edge.one([KindName.requirement], { label: say.acceptanceAccepts(), inverse: say.acceptanceAcceptanceCriteria() }),
 }
@@ -24,11 +30,11 @@ export const acceptance = defineKind({
   name: KindName.acceptance,
   label: { one: say.acceptanceAcceptanceCriteria(), many: say.acceptanceAcceptanceCriteria() },
   inline: E.accepts,
-  fields: {
-    owner: field.owner(),
-    criteria: field.fn<Criteria>(() => (criterion) => criterion(say.acceptanceExample(), () => true)),
-  },
+  fields,
   edges,
+  /** What people decide of a requirement's acceptance (D1): the criteria, amended in the code once published. */
+  statement: ChangeWay.stated,
+  changes: { [F.criteria]: ChangeWay.chosen },
 
   evaluate(self, g): Result[] {
     const list: [string, Check][] = []

@@ -10,7 +10,7 @@
 
 ### Key of a cancellation's refund
 
-`CancellationKey` · `src/architecture.ts:88`
+`CancellationKey` · `src/architecture.ts:88` · published
 
 The idempotency key the provider receives: this prefix, then the reservation. A request repeated for the same reservation refunds only once.
 
@@ -24,7 +24,7 @@ The idempotency key the provider receives: this prefix, then the reservation. A 
 
 ### HTTP port of the API
 
-`HttpPort` · `src/architecture.ts:81`
+`HttpPort` · `src/architecture.ts:81` · published
 
 - Value: 4180
 
@@ -37,7 +37,7 @@ The idempotency key the provider receives: this prefix, then the reservation. A 
 
 ### Effects follow the request
 
-`EffectsFollowTheRequest` · `src/architecture.ts:140` · status: **held**
+`EffectsFollowTheRequest` · `src/architecture.ts:140` · status: **held** · published
 
 What an entry point may do follows what it is asked: a read changes nothing, a utility touches nothing, and a call to the payment provider is verified by a scenario before it reaches a driver.
 

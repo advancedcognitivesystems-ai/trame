@@ -1,10 +1,10 @@
 # Owners
 
-*What each person must decide, settle or watch on 18 November 2026, and what they own.*
+*What each person must decide, settle or watch on 19 November 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 3 | 174 |
+| trame | 0 | 0 | 5 | 193 |
 
 <a id="trame"></a>
 
@@ -14,6 +14,8 @@
 |---|---|---|---|---|
 | warning | Computes the same kind of answer from the same kind of arguments as “A node reaches what it must” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [A node never reaches what it must not](rules.md#NeverReaches) | trame |  |
 | warning | Computes the same kind of answer from the same kind of arguments as “A node never reaches what it must not” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [A node reaches what it must](rules.md#Reaches) | trame |  |
+| warning | To ship: The standard library is unknown | [The next version](sdlc.md#NextVersion) | trame |  |
+| warning | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The standard library](sdlc.md#TheLibrary) | trame |  |
 | warning | No realization, in any environment | [Where a package comes from](tooling.md#PackageSources) | trame |  |
 
 ### Owns
@@ -62,6 +64,8 @@
 | [Criteria of who calls](obligations.md#IdentifiedCriteria) | Acceptance criteria | **held** |
 | [The artefacts a shipment ships were shipped first by those that precede it](obligations.md#Preceded) | Requirement | **held** |
 | [Criteria of the stages](obligations.md#PrecededCriteria) | Acceptance criteria | **held** |
+| [What people decided is published](obligations.md#Published) | Requirement | **held** |
+| [Criteria of what is published](obligations.md#PublishedCriteria) | Acceptance criteria | **held** |
 | [The data a shipment carries is reviewed](obligations.md#Reviewed) | Requirement | **held** |
 | [Criteria of the data reviewed](obligations.md#ReviewedCriteria) | Acceptance criteria | **held** |
 | [The project's rules hold](obligations.md#Ruled) | Requirement | **held** |
@@ -72,6 +76,7 @@
 | [Criteria of the product served](obligations.md#ServedCriteria) | Acceptance criteria | **held** |
 | [The code a shipment ships is verified](obligations.md#Verified) | Requirement | **held** |
 | [Criteria of the code verified](obligations.md#VerifiedCriteria) | Acceptance criteria | **held** |
+| [The library of continuous integration](packages.md#ContinuousIntegration) | Package |  |
 | [Trame](packages.md#Language) | Package |  |
 | [Abstract Factory](patterns.md#AbstractFactory) | Design pattern |  |
 | [Adapter](patterns.md#Adapter) | Design pattern |  |
@@ -117,7 +122,9 @@
 | [Version 0.17.0](releases.md#R0_17_0) | Release |  |
 | [Version 0.18.0](releases.md#R0_18_0) | Release |  |
 | [Version 0.18.1](releases.md#R0_18_1) | Release |  |
+| [Version 0.19.0](releases.md#R0_19_0) | Release |  |
 | [Version 0.2.0](releases.md#R0_2_0) | Release |  |
+| [Version 0.20.0](releases.md#R0_20_0) | Release |  |
 | [Version 0.3.0](releases.md#R0_3_0) | Release |  |
 | [Version 0.4.0](releases.md#R0_4_0) | Release |  |
 | [Version 0.5.0](releases.md#R0_5_0) | Release |  |
@@ -125,6 +132,15 @@
 | [Version 0.7.0](releases.md#R0_7_0) | Release |  |
 | [Version 0.8.0](releases.md#R0_8_0) | Release |  |
 | [Version 0.9.0](releases.md#R0_9_0) | Release |  |
+| [GitHub's command line](repository.md#GitHubCliRepository) | Implementation |  |
+| [GitHub's API for a repository](repository.md#GitHubRepositoryApi) | Standard |  |
+| [How GitHub merges a pull request](repository.md#MergeMethods) | Vocabulary |  |
+| [A repository on GitHub](repository.md#RepositoryApi) | Port |  |
+| [A repository compared with its settings](repository.md#RepositoryCompared) | Function | **held** |
+| [A repository kept in memory](repository.md#RepositoryInMemory) | Function | **held** |
+| [The repositories a scenario keeps](repository.md#RepositoryKept) | Port |  |
+| [The parts of a repository's settings](repository.md#RepositoryParts) | Vocabulary |  |
+| [A repository is set by its project's graph](repository.md#RepositoryThroughItsApi) | Architecture decision | **held** |
 | [Directions](rules.md#Directions) | Vocabulary |  |
 | [As many links as asked](rules.md#Linked) | Requirement | **held** |
 | [Criteria of as many links as asked](rules.md#LinkedCriteria) | Acceptance criteria | **held** |
@@ -140,19 +156,24 @@
 | [The device, in memory](scenarios.md#DeviceInMemory) | Scenario | **held** |
 | [Seeded draws keep their promise](scenarios.md#DrawsKeepTheirPromise) | Scenario | **held** |
 | [In memory](scenarios.md#InMemory) | Technical choice | **held** |
+| [A repository kept in memory](scenarios.md#RepositoryInMemoryKeeps) | Scenario | **held** |
 | [What the library's scenarios check](scenarios.md#ScenarioChecks) | Message catalog |  |
 | [What the library's scenarios are given](scenarios.md#ScenarioData) | Decision |  |
 | [The language of the library's scenarios](scenarios.md#ScenarioLanguage) | Decision |  |
 | [Test](scenarios.md#Test) | Environment |  |
 | [The tooling, in memory](scenarios.md#ToolingInMemory) | Scenario | **held** |
 | [Its callers identified](sdlc.md#CallersIdentified) | Obligation |  |
+| [Its data reviewed](sdlc.md#DataReviewed) | Obligation |  |
 | [Its decisions applied](sdlc.md#DecisionsApplied) | Obligation |  |
 | [Its functions verified](sdlc.md#FunctionsVerified) | Obligation |  |
-| [The next version](sdlc.md#NextVersion) | Shipment | **held** |
+| [The next version](sdlc.md#NextVersion) | Shipment | **unknown** |
 | [Its packages safe](sdlc.md#PackagesSafe) | Obligation |  |
+| [How a pull request is checked on GitHub](sdlc.md#PullRequestsOnGitHub) | Decision |  |
+| [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **held** |
 | [Its requirements held](sdlc.md#RequirementsServed) | Obligation |  |
 | [Its rules held](sdlc.md#RulesHeld) | Obligation |  |
-| [The standard library](sdlc.md#TheLibrary) | Artefact | **held** |
+| [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **held** |
+| [The standard library](sdlc.md#TheLibrary) | Artefact | **unknown** |
 | [How a version is made](sdlc.md#VersionMode) | Policy |  |
 | [Exit status](system.md#ExitStatus) | Standard |  |
 | [Node.js process arguments](system.md#NodeArguments) | Standard |  |

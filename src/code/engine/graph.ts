@@ -5,7 +5,7 @@
 import type { Prelude } from "../../architecture"
 import type { Hole } from "#trame/internal"
 import { Direction, EdgeMode, Moment, Stage, Status } from "../../../trame/kernel"
-import type { AnyNode, View, Q, Graph, EdgeInfo, StaticInfo, Evidence, Reach, SelfOf, Fields, Edges, ProvidedBy, WireMode, Lib, Noun } from "../../../trame/kernel"
+import type { AnyNode, View, Q, Graph, EdgeInfo, StaticInfo, Evidence, Reach, SelfOf, Fields, Edges, ProvidedBy, WireMode, Lib, Noun, PartPublication } from "../../../trame/kernel"
 import type { CompilerMessages, Dates, Lists } from "../../messages"
 import type { Layout } from "../../architecture"
 import type { ReferenceSyntax } from "../../conventions"
@@ -57,6 +57,8 @@ export interface GraphState {
   code?: Map<AnyNode, string>
   /** The fingerprint of the kinds and views the project writes itself (since g105). */
   languageCode?: string
+  /** Where the frozen parts of each node of the project stand against trame.lock (since g108). */
+  publication?: Map<AnyNode, readonly PartPublication[]>
   /** The fingerprint of the engine the project pins, when its generation records it. */
   engine?: string
   /** Where the runs of the project are kept: in the process, or beyond it while its files are as they were. */
@@ -442,6 +444,7 @@ const body = (deps: Deps) => {
         return deps.fingerprints.of(language && st.languageCode !== undefined ? [nodes, st.languageCode] : nodes)
       },
       engine: () => st.engine,
+      publication: (v) => st.publication?.get(v.node),
       asGiven: () => st.asGiven === true,
       inUnits: (value: number, quantity: string) => {
         const q = st.quantities?.get(quantity)

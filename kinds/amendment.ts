@@ -31,6 +31,15 @@ const kind = defineKind({
   history: true,
   fields,
   edges,
+  /**
+   * An amendment is a record (D1): once published, nothing of it changes; a new amendment that replaces it says another
+   * (its end moved, its value changed).
+   */
+  statement: ChangeWay.stated,
+  changes: {
+    [F.owner]: ChangeWay.stated, [F.why]: ChangeWay.stated, [F.from]: ChangeWay.stated, [F.until]: ChangeWay.stated, [F.patch]: ChangeWay.stated,
+    [E.amends]: ChangeWay.stated,
+  },
 
   activeAt: (self, g) => (!self.from || self.from <= g.today) && (!self.until || g.today <= self.until),
 

@@ -10,7 +10,7 @@
 
 ### Unknown reservation
 
-`UnknownReservation` · `src/scenarios.ts:24`
+`UnknownReservation` · `src/scenarios.ts:24` · published
 
 An identifier that no reservation has.
 

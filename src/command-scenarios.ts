@@ -8,7 +8,7 @@ import {
   Process, WriteLog, TerminalLog, ProcessLog, ServerLog, Test, Compression, Clock, FileReading, FileWriting, FileTrees, Paths, Timer, CommandLine,
   Signatures,
 } from "./architecture"
-import { PayloadBuilder, Differences, Assembly, Project, Compiler, DateBundle, DevServer, DevService, ShipmentPipeline, Views, EngineFingerprint, ProjectRuns } from "./engine"
+import { PayloadBuilder, Differences, Assembly, Project, Compiler, Lock, References, DateBundle, DevServer, DevService, ShipmentPipeline, Views, EngineFingerprint, ProjectRuns } from "./engine"
 import {
   ShowView, ViewByName, RenderView, EmitPayload, Assemble, Assembler, TestKinds, TakeSnapshot, Publish, Audit, Release, WriteManifest, Export, Run, Dev,
   Deliver, Ship, RecordEvidence, Doctor, DoctorProbe, Advance, Build, Plan, Amend, Amending, BuildComparison, Init, ReferencesModule, Registry, Upgrade,
@@ -436,6 +436,35 @@ export const DeclarationsPublished = scenario({
     check(messages.declarationsFrozen(added.length), first.status === exitStatus.success && added.every((ref) => published.includes(ref)))
     await publish({ params: { command: line.publish }, body: { args: [] } })
     check(messages.nothingNewThen(), terminalLog.lines().includes(commands.nothingToPublish()))
+  },
+})
+
+/**
+ * A published value changed
+ * The example's late fee, as if its value had been written otherwise after it was published: trame publish refuses it
+ * and says to amend it; with a migration too, which publishes again a form, never a value (D1, since g108).
+ */
+export const PublishedValueChanged = scenario({
+  owner: "trame",
+  verifies: [Publish, Lock],
+  env: Test,
+  deps: {
+    publish: Publish, writing: FileWriting, reading: FileReading, terminalLog: TerminalLog, currentProcess: Process, paths: Paths, layout: Layout,
+    line: TrameCommands, exitStatus: ExitStatus, references: References, encodings: NodeEncodings, samples: AmendmentSamples, output: OutputMessages,
+    messages: ScenarioMessages,
+  },
+  body: (d) => async (check) => {
+    const { line, samples, messages } = d
+    const lock = d.paths.join(d.currentProcess.cwd(), d.layout.lock)
+    const was = JSON.parse(String(d.reading.readFileSync(lock, d.encodings.utf8))) as { published: Record<string, Record<string, string>> }
+    const ref = Object.keys(was.published).find((r) => d.references.identifier(r) === samples.refused.node) ?? samples.refused.node
+    const parts = was.published[ref] ?? {}
+    const fingerprint = parts[samples.refused.path] ?? String()
+    d.writing.writeFileSync(lock, JSON.stringify({ ...was, published: { ...was.published, [ref]: { ...parts, [samples.refused.path]: fingerprint + fingerprint } } }))
+    const run = (args: readonly string[]) => d.publish({ params: { command: line.publish }, body: { args } }).then((r) => r.status, () => d.exitStatus.failure)
+    const said = () => d.terminalLog.lines().some((l) => l.includes(d.output.publishedChanged(samples.refused.path)))
+    check(messages.publishedValueRefused(samples.refused.node), (await run([])) === d.exitStatus.failure && said())
+    check(messages.migrationKeepsAValue(), (await run([line.migrate, samples.why])) === d.exitStatus.failure)
   },
 })
 

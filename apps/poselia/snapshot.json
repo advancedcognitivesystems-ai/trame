@@ -1,11 +1,11 @@
 {
-  "at": "2026-11-18",
+  "at": "2026-11-19",
   "nodes": [
     {
       "id": "app.BrowserScreen",
       "kind": "implementation",
       "title": "The browser's screen",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "deps": {
@@ -3702,10 +3702,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "ci",
-        "version": "0.4.0",
+        "version": "0.7.0",
         "joins": "library",
         "from": "path",
-        "at": "../../ci/releases/0.4.0"
+        "at": "../../ci/releases/0.7.0"
       }
     },
     {
@@ -3741,10 +3741,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "trame",
-        "version": "107",
+        "version": "110",
         "joins": "language",
         "from": "path",
-        "at": "../../generations/g107"
+        "at": "../../generations/g110"
       }
     },
     {
@@ -3754,10 +3754,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "std",
-        "version": "0.18.1",
+        "version": "0.20.0",
         "joins": "library",
         "from": "path",
-        "at": "../../std/releases/0.18.1"
+        "at": "../../std/releases/0.20.0"
       }
     },
     {
@@ -4040,7 +4040,7 @@
       "id": "principles.PageFirst",
       "kind": "adr",
       "title": "A page first, the phones after",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "context": "The app must be tried and shown before it is installed: a page shared as a link is the shortest way to the friends who review it.",
@@ -4610,6 +4610,16 @@
       }
     },
     {
+      "id": "sdlc.IntoMain",
+      "kind": "shipment",
+      "title": "Into the main branch",
+      "status": "unknown",
+      "fields": {
+        "owner": "ghalaax",
+        "target": "main"
+      }
+    },
+    {
       "id": "sdlc.KeptMigrates",
       "kind": "obligation",
       "title": "What the device keeps, migrated",
@@ -4622,6 +4632,14 @@
       "id": "sdlc.Machine",
       "kind": "environment",
       "title": "A machine",
+      "fields": {
+        "owner": "ghalaax"
+      }
+    },
+    {
+      "id": "sdlc.MergeMode",
+      "kind": "policy",
+      "title": "How a change merges",
       "fields": {
         "owner": "ghalaax"
       }
@@ -4645,7 +4663,7 @@
       "id": "sdlc.OnTheMachine",
       "kind": "binding",
       "title": "On the machine",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "context": "A check must open the page a person opens: the file delivered, in a real browser."
@@ -4714,7 +4732,7 @@
       "id": "sdlc.PageFile",
       "kind": "artifact",
       "title": "Poselia's page",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "media": "text/html; charset=utf-8"
@@ -4736,7 +4754,7 @@
       "id": "sdlc.PageOpens",
       "kind": "check",
       "title": "The page opens",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax"
       }
@@ -4826,7 +4844,7 @@
       "id": "sdlc.Preview",
       "kind": "shipment",
       "title": "A preview",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "target": "preview"
@@ -4930,6 +4948,55 @@
       }
     },
     {
+      "id": "sdlc.PublishedBeforeMerging",
+      "kind": "obligation",
+      "title": "What people decided, published",
+      "fields": {
+        "owner": "ghalaax",
+        "gaps": "error"
+      }
+    },
+    {
+      "id": "sdlc.PullRequestsOnGitHub",
+      "kind": "decision",
+      "title": "How a pull request is checked on GitHub",
+      "fields": {
+        "owner": "ghalaax",
+        "value": {
+          "on": {
+            "pullRequests": [
+              "main"
+            ]
+          },
+          "job": "poselia",
+          "runsOn": "ubuntu-24.04",
+          "node": 22,
+          "artefacts": {
+            "days": 30
+          },
+          "pullRequest": {
+            "review": true,
+            "merge": "onceItHoldsUnlessDecided"
+          }
+        },
+        "rejected": {
+          "Only when a pull request touches the project": "GitHub keeps a pull request waiting for a check it requires and that never ran",
+          "Merged by GitHub whatever it changes": "what people decided would reach main without a person"
+        }
+      }
+    },
+    {
+      "id": "sdlc.PullRequestWorkflow",
+      "kind": "artifact",
+      "title": "The pull requests' workflow",
+      "status": "held",
+      "fields": {
+        "owner": "ghalaax",
+        "path": "../../.github/workflows/poselia-pull-request.yml",
+        "media": "application/yaml"
+      }
+    },
+    {
       "id": "sdlc.RulesHeld",
       "kind": "obligation",
       "title": "The rules of the app hold",
@@ -5024,6 +5091,17 @@
         "owner": "ghalaax",
         "people": [],
         "notAuthor": true
+      }
+    },
+    {
+      "id": "sdlc.ThePoseliaApp",
+      "kind": "artifact",
+      "title": "Poselia",
+      "status": "unknown",
+      "fields": {
+        "owner": "ghalaax",
+        "path": "src",
+        "version": true
       }
     },
     {
@@ -5352,7 +5430,7 @@
       "id": "stage.BrowserStage",
       "kind": "implementation",
       "title": "The browser's stage",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "deps": {
@@ -7685,9 +7763,24 @@
       "kind": "serves"
     },
     {
+      "from": "sdlc.IntoMain",
+      "to": "sdlc.ThePoseliaApp",
+      "kind": "ships"
+    },
+    {
+      "from": "sdlc.IntoMain",
+      "to": "sdlc.MergeMode",
+      "kind": "policy"
+    },
+    {
       "from": "sdlc.KeptMigrates",
       "to": "product.PractiseGuided",
       "kind": "serves"
+    },
+    {
+      "from": "sdlc.MergeMode",
+      "to": "sdlc.PublishedBeforeMerging",
+      "kind": "obligations"
     },
     {
       "from": "sdlc.OnAPhone",
@@ -8050,6 +8143,21 @@
       "kind": "policy"
     },
     {
+      "from": "sdlc.PublishedBeforeMerging",
+      "to": "product.PractiseGuided",
+      "kind": "serves"
+    },
+    {
+      "from": "sdlc.PullRequestWorkflow",
+      "to": "sdlc.IntoMain",
+      "kind": "runs"
+    },
+    {
+      "from": "sdlc.PullRequestWorkflow",
+      "to": "sdlc.PullRequestsOnGitHub",
+      "kind": "settings"
+    },
+    {
       "from": "sdlc.RulesHeld",
       "to": "product.PractiseGuided",
       "kind": "serves"
@@ -8062,6 +8170,11 @@
     {
       "from": "sdlc.RunnersWritten",
       "to": "sdlc.PreviewScript",
+      "kind": "ships"
+    },
+    {
+      "from": "sdlc.RunnersWritten",
+      "to": "sdlc.PullRequestWorkflow",
       "kind": "ships"
     },
     {

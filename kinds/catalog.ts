@@ -1,5 +1,5 @@
 import {
-  defineKind, field, optional, edge, optionalEdge, hole, doc, isFileBody, keysOf, KindName, EdgeName,
+  defineKind, field, optional, edge, optionalEdge, hole, doc, isFileBody, keysOf, KindName, EdgeName, ChangeWay,
   type AnyNode, type Node, type Provides, type HasDeps, type Provided, type FileBody, type Inline,
 } from "../trame/kernel"
 import words from "./words"
@@ -36,6 +36,8 @@ const kind = defineKind({
   renderOwns: [F.messages],
   fields,
   edges,
+  /** The words said to people are chosen (D1): once published, an amendment of the catalog changes them. */
+  changes: { [F.messages]: ChangeWay.chosen },
 
   /** A translation says the same messages (TypeScript checks it) in another language than the catalog it translates. */
   holes(self, g) {

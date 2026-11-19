@@ -1,8 +1,8 @@
 # Architecture decisions
 
-*The choices that shape the product without being values, in force on 18 November 2026: why each was taken, what was rejected, and the nodes that apply it.*
+*The choices that shape the product without being values, in force on 19 November 2026: why each was taken, what was rejected, and the nodes that apply it.*
 
-> **6 architecture decisions, 3 held by the nodes that apply them**
+> **6 architecture decisions, 2 held by the nodes that apply them**
 
 | Decision | Status | Applied by |
 |---|---|---|
@@ -10,7 +10,7 @@
 | [The breath is the clock](principles.md#BreathIsTheClock) | **held** | [A hold of whole breaths](practice.md#HoldPhases), [The breath of a moment](product.md#BreathOf) |
 | [The person's language, among those offered](principles.md#LanguageOffered) | **held** | [Languages offered](content.md#Languages), [The language of the app](product.md#ChosenLanguage), [Languages of the device](../.trame/std/docs/platform.md#DeviceLanguages), [Preferences](../.trame/std/docs/platform.md#PreferencesStore) |
 | [Said aloud, the screen awake](principles.md#SaidAloud) | **unknown** | [Play a practice](practice.md#PlayPractice), [The phone stays on the mat](product.md#PhoneOnTheMat), [Screen kept awake](../.trame/std/docs/platform.md#ScreenAwake), [Speech](../.trame/std/docs/platform.md#SpeechVoice) |
-| [A page first, the phones after](principles.md#PageFirst) | **held** | [Poselia's page](app.md#PoseliaPage), [Poselia in a browser](architecture.md#PoseliaApp), [The page opens](sdlc.md#PageOpens) |
+| [A page first, the phones after](principles.md#PageFirst) | **unknown** | [Poselia's page](app.md#PoseliaPage), [Poselia in a browser](architecture.md#PoseliaApp), [The page opens](sdlc.md#PageOpens) |
 | [The SDLC is in the graph](sdlc.md#SdlcInTheGraph) | **unknown** | [Each decision of architecture serves the product](sdlc.md#AdrsServeTheProduct), [Code serves the product](sdlc.md#CodeServesTheProduct), [The content, reviewed](sdlc.md#ContentReviewed), [On a phone](sdlc.md#OnAPhone), [Open the page](sdlc.md#OpenThePage), [The page opens](sdlc.md#PageOpens), [Place the page](sdlc.md#PlaceThePage), [A preview](sdlc.md#Preview), [The preview's script](sdlc.md#PreviewScript), [The preview's workflow](sdlc.md#PreviewWorkflow), [A public version](sdlc.md#PublicVersion), [The files that run it elsewhere](sdlc.md#RunnersWritten) |
 
 ## Poselia · Principles
@@ -19,7 +19,7 @@
 
 ### The content is data, behind a port
 
-`ContentAsData` · `src/principles.ts:19` · status: **unknown**
+`ContentAsData` · `src/principles.ts:19` · status: **unknown** · published
 
 The poses, the sequences and the exercises are datasets the app reads through one port: its first realization reads the rows the app carries, an update downloaded later will be another.
 
@@ -40,7 +40,7 @@ Consequences: Each kind of content is a dataset with its rules and its languages
 
 ### The breath is the clock
 
-`BreathIsTheClock` · `src/principles.ts:36` · status: **held**
+`BreathIsTheClock` · `src/principles.ts:36` · status: **held** · published
 
 A practice is timed by the person's breath, not by seconds: a movement lasts a phase, a hold lasts whole breaths, and each level may set the breath (follow it, impose a ratio, exact timings, or a speed), the most specific winning.
 
@@ -60,7 +60,7 @@ Consequences: The person's pattern (four phases) is kept in the preferences; a h
 
 ### The person's language, among those offered
 
-`LanguageOffered` · `src/principles.ts:50` · status: **held**
+`LanguageOffered` · `src/principles.ts:50` · status: **held** · published
 
 Every text of the content is written in each language offered; the app speaks the one the person chose, or the device's, or the first offered; the choice is kept on the device.
 
@@ -80,7 +80,7 @@ Consequences: The languages offered are a decision the datasets read: a text mis
 
 ### Said aloud, the screen awake
 
-`SaidAloud` · `src/principles.ts:64` · status: **unknown**
+`SaidAloud` · `src/principles.ts:64` · status: **unknown** · published
 
 The phone stays on the mat: the breath, the cues and the angles are said by the platform's voice, and the screen is kept awake during a practice.
 
@@ -100,7 +100,7 @@ Consequences: A voice port says texts in the chosen language; each kind of sayin
 
 ### A page first, the phones after
 
-`PageFirst` · `src/principles.ts:78` · status: **held**
+`PageFirst` · `src/principles.ts:78` · status: **unknown** · published
 
 The app is first a page a browser opens as it is (trame deliver), then a web application, then Capacitor around the same page for iPhone and Android.
 
@@ -122,7 +122,7 @@ Consequences: The component runs in a browser; its realizations are the browser'
 
 ### The SDLC is in the graph
 
-`SdlcInTheGraph` · `src/sdlc.ts:457` · status: **unknown**
+`SdlcInTheGraph` · `src/sdlc.ts:516` · status: **unknown** · published
 
 What makes a version of Poselia available is declared with the rest: its artefact, the checks and the review it requires and who signs them, the programs that check and deploy it, tested in memory; trame ship runs it and keeps the evidence. The rules of the graph are rules of the std library, applied with their parameters.
 

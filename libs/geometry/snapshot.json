@@ -32,7 +32,7 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "trame",
-        "version": "107",
+        "version": "108",
         "joins": "language",
         "from": "registry"
       }
@@ -44,7 +44,7 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "std",
-        "version": "0.18.1",
+        "version": "0.19.0",
         "joins": "library",
         "from": "registry"
       }

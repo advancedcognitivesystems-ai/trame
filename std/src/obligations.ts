@@ -3,7 +3,7 @@
 import { requirement } from "#trame/kinds/requirement"
 import { acceptance } from "#trame/kinds/acceptance"
 import { vocabulary, type WordOf } from "#trame/kinds/vocabulary"
-import { KindName, EdgeName, CheckEdge, ReviewEdge, ShipmentEdge, EntryEdge, AudienceField } from "#trame/kernel"
+import { KindName, EdgeName, CheckEdge, ReviewEdge, ShipmentEdge, EntryEdge, AudienceField, PublicationState } from "#trame/kernel"
 import type { GraphSketch, SketchNode, ObligationReach, ObligationFinding } from "#trame/kernel"
 import { SharedRules } from "./product"
 import { Counts } from "./algebra"
@@ -187,6 +187,22 @@ export const Identified = requirement({
 })
 
 /**
+ * What people decided is published
+ * Each part of a declaration the shipment reaches that a publication freezes (what its kind says people decide: a value
+ * chosen or cited, a statement) is in trame.lock as it is (D1). A declaration with a part not published yet is a gap:
+ * trame publish freezes it, in the pull request that brings it. A part changed after it was published is an error of the
+ * graph already: an amendment changes a value, a new node that repeals it a statement.
+ */
+export const Published = requirement({
+  owner: "trame",
+  refines: [SharedRules],
+  body: () => (sketch: GraphSketch, reach: ObligationReach): ObligationFinding => ({
+    obliged: [],
+    gaps: reach.reached.filter((r) => (sketch.nodes.find((n) => n.ref === r)?.publication ?? []).some((p) => p.state === PublicationState.unpublished)),
+  }),
+})
+
+/**
  * The artefacts a shipment ships were shipped first by those that precede it
  * Each shipment named that ships an artefact this one ships is to prove: it must have shipped that artefact first, the
  * same file, before this one may take it (a public version after its preview, a release after staging). A shipment may
@@ -250,6 +266,29 @@ export const IdentifiedCriteria = acceptance({
     criterion("An audience that carries none is no gap", () => Identified(callers, { shipped: [], reached: ["Cancel"] }).gaps.length === 0)
     criterion("An audience reached through several entry points is one gap", () =>
       Identified(callers, { shipped: [], reached: ["Read", "Admin"] }).gaps.join(" ") === "Drivers")
+  },
+})
+
+// Declarations as a publication finds them: one published, one changed since, one new, one that freezes nothing.
+const parts = (state: PublicationState) => [{ part: "value", way: "chosen", state }] as const
+const decided: GraphSketch = {
+  nodes: [["Fee", PublicationState.published], ["Cap", PublicationState.changed], ["Period", PublicationState.unpublished]]
+    .map(([ref, state]): SketchNode => ({ ref, kind: KindName.decision, module: "m", title: ref, effects: [], publication: parts(state as PublicationState), field: () => undefined }))
+    .concat([{ ref: "Cancel", kind: KindName.entry, module: "m", title: "Cancel", effects: [], field: () => undefined }]),
+  edges: [],
+}
+
+/** Criteria of what is published */
+export const PublishedCriteria = acceptance({
+  accepts: Published,
+  owner: "trame",
+  criteria: (criterion) => {
+    criterion("A reached declaration with a part not published yet is a gap", () =>
+      Published(decided, { shipped: [], reached: ["Fee", "Period"] }).gaps.join(" ") === "Period")
+    criterion("A part changed after it was published is no gap: it is an error of the graph already", () =>
+      Published(decided, { shipped: [], reached: ["Cap"] }).gaps.length === 0)
+    criterion("Code, which a publication does not freeze, is no gap", () => Published(decided, { shipped: [], reached: ["Cancel"] }).gaps.length === 0)
+    criterion("A declaration not reached is no gap", () => Published(decided, { shipped: [], reached: [] }).gaps.length === 0)
   },
 })
 

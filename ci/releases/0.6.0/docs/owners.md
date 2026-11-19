@@ -1,0 +1,48 @@
+# Owners
+
+*What each person must decide, settle or watch on 19 November 2026, and what they own.*
+
+| Owner | To decide or settle | Errors | To watch | Owns |
+|---|---|---|---|---|
+| trame | 0 | 0 | 4 | 25 |
+
+<a id="trame"></a>
+
+## trame
+
+| Severity | What | Where | Owner | Consequence |
+|---|---|---|---|---|
+| warning | To ship: The library of writers is unknown | [The next version](sdlc.md#NextVersion) | trame |  |
+| warning | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | trame |  |
+| warning | To ship: The pull requests' workflow is unknown | [The files that run it elsewhere](sdlc.md#RunnersWritten) | trame |  |
+| warning | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The library of writers](sdlc.md#TheLibrary) | trame |  |
+
+### Owns
+
+| Node | Kind | State |
+|---|---|---|
+| [GitHub Actions](github.md#GitHubActions) | Standard |  |
+| [A workflow of GitHub Actions](github.md#GitHubWorkflow) | Syntax element | **held** |
+| [How a pull request is merged](github.md#MergeWays) | Vocabulary |  |
+| [The actions a workflow uses](github.md#PinnedActions) | Decision |  |
+| [npm](npm.md#Npm) | Standard |  |
+| [Trame](packages.md#Language) | Package |  |
+| [Each place is a writer](product.md#OneWriterPerPlace) | Goal |  |
+| [A shipment runs elsewhere as it runs here](product.md#RunsElsewhere) | Goal |  |
+| [Version 0.1.0](releases.md#R0_1_0) | Release |  |
+| [Version 0.2.0](releases.md#R0_2_0) | Release |  |
+| [Version 0.3.0](releases.md#R0_3_0) | Release |  |
+| [Version 0.4.0](releases.md#R0_4_0) | Release |  |
+| [Version 0.5.0](releases.md#R0_5_0) | Release |  |
+| [The settings of a repository](repository.md#GitHubRepository) | Syntax element | **held** |
+| [GitHub's API for a repository](repository.md#GitHubRepositoryApi) | Standard |  |
+| [How GitHub merges a pull request](repository.md#MergeMethods) | Vocabulary |  |
+| [The next version](sdlc.md#NextVersion) | Shipment | **unknown** |
+| [How a pull request is checked on GitHub](sdlc.md#PullRequestsOnGitHub) | Decision |  |
+| [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **unknown** |
+| [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **unknown** |
+| [The library of writers](sdlc.md#TheLibrary) | Artefact | **unknown** |
+| [Bash scripts](shell.md#BashScripts) | Standard |  |
+| [A script of Bash](shell.md#ShellScript) | Syntax element | **held** |
+| [YAML](yaml.md#Yaml) | Standard |  |
+| [A YAML document](yaml.md#YamlDocument) | Syntax element | **held** |

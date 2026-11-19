@@ -25,7 +25,7 @@ A driver can change their mind without fearing an unfair penalty.
 - Owner: lea
 - Served by: [Drivers](access.md#Drivers), [Read a reservation](api.md#ReadReservation), [Effects follow the request](architecture.md#EffectsFollowTheRequest), [Chargers](data.md#Chargers), [The refund of a cancelled reservation](data.md#KeptRefund), [A reservation](data.md#KeptReservation), [Statuses of a reservation](data.md#ReservationStatuses), [A cancellation refunds once](principles.md#RefundOnce), [Secrets stay out of the graph](principles.md#SecretsOutOfTheGraph), [Prepare the storage](sdlc.md#PrepareStorage)
 - Refined by: [Refund on cancellation](#Refund), [A day ahead, a full refund](consumer.md#FullRefundAhead)
-- Kept by the rule: [Who calls, identified](sdlc.md#CallersIdentified), [The code is verified](sdlc.md#CodeVerified), [The decisions hold](sdlc.md#DecisionsApplied), [Every check is signed](sdlc.md#EveryCheck), [The requirements of the goal hold](sdlc.md#GoalServed), [What the service keeps, migrated](sdlc.md#KeptMigrates), [The packages are safe](sdlc.md#PackagesSafe), [The rules hold](sdlc.md#RulesHeld)
+- Kept by the rule: [Who calls, identified](sdlc.md#CallersIdentified), [The code is verified](sdlc.md#CodeVerified), [The decisions hold](sdlc.md#DecisionsApplied), [Every check is signed](sdlc.md#EveryCheck), [The requirements of the goal hold](sdlc.md#GoalServed), [What the service keeps, migrated](sdlc.md#KeptMigrates), [The packages are safe](sdlc.md#PackagesSafe), [What people decided, published](sdlc.md#PublishedBeforeMerging), [The rules hold](sdlc.md#RulesHeld)
 
 ## Requirement
 
@@ -148,7 +148,7 @@ The payment provider moves money only once per idempotency key.
 
 ### How an amount is written
 
-`AmountWords` · `src/cancellation.ts:26`
+`AmountWords` · `src/cancellation.ts:26` · published
 
 An amount of Swiss francs: the code of the currency, then the number.
 
@@ -170,7 +170,7 @@ An amount of Swiss francs: the code of the currency, then the number.
 
 ### Swiss francs
 
-`SwissFrancs` · `src/cancellation.ts:36`
+`SwissFrancs` · `src/cancellation.ts:36` · published
 
 The currency of the prices and of the refunds: an amount of one currency never adds up with another.
 

@@ -44,7 +44,7 @@ Run from the project's directory, through the pinned generation:
 ./trame.sh upgrade [package…]          # each package of Trame the project references to the newest version its origin holds, then the manifest (g100)
 ../trame.sh init "Title" --by <owner>  # in an empty directory: starts a project (trame.json, src/product.ts, the guide, the skill, package.json)
 ./trame.sh release <version> "what" --by <name>   # in a library: ships its version, then freezes it, with its documents (g101)
-./trame.sh publish [--migrate "why"]   # freezes the published declarations in trame.lock (--migrate: those the language changed the form of)
+./trame.sh publish [--migrate "why"]   # freezes, part by part, what people decided in trame.lock (--migrate: a form changed, never a value; g108)
 ./trame.sh deliver [delivery]          # writes the deliveries: a page a browser opens as it is
 ./trame.sh ship <shipment> --by <name> [--dry-run] [--promote "what"]   # builds, checks, refuses or deploys (section 4b)
 ./trame.sh evidence <node> passed|failed --by <name> [--subject <row>] [--language <tag>] [--note "…"] [--url <where>]
@@ -112,7 +112,7 @@ A project declares how a version of it ships (ADR "A version ships through the g
 | `check` | what a scenario in memory cannot check: run by a program of the SDLC (`runs`) or made by hand (`steps`), signed by a role (`by`), on artefacts (`on`); the code it proves (`verifies`): what its program runs on a machine, or what its artefacts carry | `check`: passed or failed, for the artefacts as last built from the code as it is, by its program as it is (g70) |
 | `review` | what must be reviewed (`of`: the rows of a dataset in each language, or a node as written), by which role, by how many of its people (`approvals`, one) | `review` on the subject: each row and language, tied to the fingerprint of what was seen; each person's latest counts, a change asked holds it back |
 | `shipment` | a target, what it `ships`, the `policy` it follows, what it also `requires` that derivation cannot see, the entry points that `deploys` it, the `environment` its programs are assembled for | `shipped`, with the dossier |
-| `obligation` | one family of `#std/obligations` it `applies` (Verified, Served, Applied, Reviewed, Checked, Ruled, Safe, Preceded, Identified; `#data/obligations`: Migrated), its `params` (typed by the family's rule; a node of the graph where it reads one: `by: [Preview]`), what a gap weighs (`gaps`: `Severity.error` keeps the shipment, `Severity.warning` says it), why (`serves`) | — |
+| `obligation` | one family of `#std/obligations` it `applies` (Verified, Served, Applied, Reviewed, Checked, Ruled, Safe, Preceded, Identified, Published; `#data/obligations`: Migrated), its `params` (typed by the family's rule; a node of the graph where it reads one: `by: [Preview]`), what a gap weighs (`gaps`: `Severity.error` keeps the shipment, `Severity.warning` says it), why (`serves`) | — |
 | `policy` | a way of working: its `obligations`, one per family | — |
 
 What a shipment must prove is derived, not listed (g68): its policy's obligations read what it reaches (the artefacts
@@ -144,6 +144,25 @@ record changed afterwards no longer matches its seal, is not counted, and is an 
 by hand, and never record evidence in someone else's name: attribute what you run to yourself. `docs/owners.md` says who
 holds each role and, for each piece of evidence a role awaits, the command that gives it.
 
+**A change reaches main by a pull request** (D1, g109, ci 0.5.0). The merge into main is a shipment of each project,
+`IntoMain` (target `main`), which ships the project's version (an artefact `version: true`, all its code) and follows
+its policy (`MergeMode`): a project that publishes applies `Published` (a part of a declaration people decide that is
+not published yet is a gap), so `trame publish` runs in the branch, before the pull request. A library's check is its
+`NextVersion`. Each project writes, with ci's `GitHubWorkflow`, the workflow that checks a pull request: its settings
+(a decision) say `on: { pullRequests: ["main"] }`, the `job` (the name of the check the repository requires) and
+`pullRequest: { review, merge }`: the review of the branch written in the pull request (one comment per project,
+against the lock of main), and a word of `MergeWays` (`onceItHoldsUnlessDecided`: the workflow keeps GitHub from
+merging a pull request that changes a `trame.lock`; a person merges it). A file written names, at its top, the nodes
+it comes from (the artefact, the decision of its settings, the file that declares them: g110, ci 0.7.0); a workflow's
+name says its job. The repository's settings are a decision of Trame's graph (`MainBranch`, std's `RepositorySettings`:
+the checks, up to date or not, the approvals, the merge method, the automatic merge, merged branches deleted, the
+pages), applied by a shipment of Trame (`RepositorySet`): the check `RepositoryRead` reads the repository through std's
+port `RepositoryApi` (GitHub's command line on the machine), then the program `apply-repository-settings` sets it and
+reads it back, failing on each part that still differs. An administrator of the repository ships it, with their own
+token: `./trame.sh ship RepositorySet --by <name>`; `--dry-run` only reads it and says what differs. Work on a branch,
+open the pull request (`gh api repos/{owner}/{repo}/pulls --method POST`), then: `gh pr merge <n> --merge --auto` when
+it changes nothing people decided, otherwise its owner reads the review (`gh pr view <n> --comments`) and merges it.
+
 A file that runs a shipment elsewhere (a workflow of GitHub Actions, a Bash script) is an `artifact` produced by a writer
 of the library `ci` (`GitHubWorkflow`, `ShellScript`), naming the shipment it `runs`, its `settings` (a decision) and
 what that place makes available once shipped (`publishes`): the engine computes the plan of the run from the graph, the
@@ -151,8 +170,9 @@ writer only gives it a form. What is published, how long it is kept, whether the
 writer never decides it. Never write such a file by hand; a new place to run is a new writer in `ci`, with its examples.
 
 The programs of the SDLC are a component of the project (its exposure `ProgramCommands` from `#std/tooling`, the first
-argument naming the command), whose entry points use the ports `Files` and `HeadlessBrowser`; a binding chooses their
-machine realizations (`NodeProgramCommands`, `MachineFiles`, `PlaywrightBrowser`) for the shipment's environment, and
+argument naming the command), whose entry points use the ports `Files`, `HeadlessBrowser` and `RepositoryApi`; a binding
+chooses their machine realizations (`NodeProgramCommands`, `MachineFiles`, `PlaywrightBrowser`, `GitHubCliRepository`)
+for the shipment's environment, and
 another their memory realizations for the scenarios that test them. Governance is rules: a `rule` applies a
 requirement of `#std/rules` (`Reaches`, `NeverReaches`, `Linked`, `WithoutEffects`, `WordsOf`) with its `params` (a
 direction is a word of the vocabulary `Directions`: `way: "in"`), and `serves` a goal or is applied by an ADR that says
@@ -166,7 +186,16 @@ why. A broken rule is an error, unless the rule says `severity: "warning"` while
   only with its new source; code in the code. Never edit a decided value in place: amend it. A value nobody decided
   (`TODO`) that was published is decided by an amendment too, dated the day it is decided. An amendment of a body
   (`body: (previous) => (deps) => …`) is composed with it wherever it runs: wired, and in a program assembled while it
-  is in force (g105).
+  is in force (g105); a body is amended in the code, never from the page or the line.
+- **A publication freezes what people decide** (D1, g108). `trame publish` freezes in `trame.lock`, part by part, what
+  each declaration's kind says people decide: its fields chosen or cited, and what is *stated* (the title and
+  description of a goal, an ADR, an assumption, a decision, a requirement; an ADR's reasons; an amendment, a repeal, an
+  approval whole). Code stays free, held by what verifies it: a function's body, an implementation, an entry point, a
+  scenario, a binding. A frozen part changed is an error naming how it changes: an amendment for a value, a new node
+  that repeals it for a statement; `--migrate "why"` publishes again a form (a statement reworded, a declaration
+  published before its parts were), never a value. A project shows it publishes by applying `Published` in the policy
+  of the shipment that merges into main: a part not published yet is then a gap. The example and Poselia publish;
+  Trame, std and the libraries will once the plan is done.
 - **A value holds at every date** (C5, g106). Only an amendment has an end (`until`); the day after, its target is as
   its declaration and the amendments then in force make it. An amendment that ends over a value nobody decided is an
   error to that value's owner, now; the amendment's owner is warned as its end nears (`LanguageSettings.amendment`). A
@@ -507,6 +536,13 @@ elements), a port answered differently in several environments is answered as in
   `chromium_headless_shell-1243`) refuses a check run by an older one ("Executable doesn't exist at
   …headless_shell-1194"), and `trame doctor` does not see it. Move std's `PlaywrightPackage` to the version whose
   browser the machine has (1.63.0 since std 0.18.1), release std, then upgrade the projects; never install browsers.
+- A project Trame's scenarios compile (the example) imports a library they release (ci) at a frozen version: imported
+  as it is, its modules are loaded by the example's compilation, and the release of the library reads its graph empty
+  (no shipment of its version: nothing shipped first).
+- A merge GitHub makes for a workflow's token starts no other workflow: the automatic merge is asked by a person
+  (`gh pr merge --auto`), and a workflow only takes it back (`--disable-auto`) when a pull request changes what people
+  decided.
+- A project that runs from the registry of a machine (geometry) has no check on GitHub: a runner has no registry.
 - A view is named apart from the modules: a view `access` wrote `docs/access.md` over the example's module of that name
   (it is `callers`).
 - Before g107 a version (`version: true`) read in a project that imports its library held the project's nodes: std's
@@ -514,8 +550,12 @@ elements), a port answered differently in several environments is answered as in
 - `trame upgrade` compiles the graph with the version it has: when the newer version of a library refuses it (std
   0.18.0 requires `for` on each entry point), move the references by hand (`src/packages.ts`, `trame.json`,
   `package.json`, the links under `.trame`), run the manifest, then write the code.
-- A published declaration the language changes the form of (a type renamed, a rule rewritten as a body) is an error
-  of `trame.lock`: `trame publish --migrate "why"` publishes it again, and only it.
+- A published declaration the language changes the form of (a type renamed, a rule rewritten as a body, a kind that
+  freezes a new part) is an error of `trame.lock`: `trame publish --migrate "why"` publishes it again, and only it.
+- A change of what `trame.lock` holds (g108: the parts of a declaration, no longer its whole text) is read wrongly by the
+  generation in place during an advance: the example's documents differ, accepted with `--accept`. Publish the example
+  again with the candidate first (`npx tsx ../../out/local/trame-cli.ts publish --migrate "why"`), or Trame's scenarios
+  find it out of date.
 - TypeScript keeps the path of a link: reached through `.trame/trame`, the kernel would be a second file whose types never
   match the first. The engine leads `#trame/*` to the files where they are (g88); a `tsconfig.json` that checks a
   project by itself needs the same `paths` (Trame's has them).

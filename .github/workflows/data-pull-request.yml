@@ -1,0 +1,35 @@
+# Written by trame ship from the graph, for the shipment "The next version" of libs/data
+# From the artefact sdlc.PullRequestWorkflow and its settings sdlc.PullRequestsOnGitHub declared in libs/data/src/sdlc.ts
+# Do not edit: change those nodes, then ship.
+name: "data · The next version"
+on:
+  pull_request:
+    branches:
+      - main
+permissions:
+  contents: read
+  pull-requests: write
+jobs:
+  data:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+        working-directory: "."
+      - run: npm ci
+        working-directory: libs/data
+      - run: "git fetch --depth=1 origin \"$GITHUB_BASE_REF\""
+        working-directory: libs/data
+      - run: |
+          git diff --quiet FETCH_HEAD -- ":(glob)**/$LOCK" || gh pr merge "$NUMBER" --disable-auto || true
+        working-directory: libs/data
+        env:
+          GH_TOKEN: "${{ github.token }}"
+          NUMBER: "${{ github.event.pull_request.number }}"
+          LOCK: trame.lock
+          MARKER: "<!-- The review of libs/data -->"
+      - run: "../../trame.sh ship NextVersion --by \"${{ github.actor }}\""
+        working-directory: libs/data

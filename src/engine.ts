@@ -402,12 +402,13 @@ export const MachineOutputs = fn({
 
 /**
  * Lock
- * trame.lock: the hash of each published declaration, and what the code has done to them since.
+ * trame.lock: the fingerprint of each part of a declaration a publication freezes (what its kind says people decide:
+ * chosen, cited, stated), and what the code has done to them since.
  */
 export const Lock = fn({
   owner: "trame",
   serves: [SingleSource],
-  deps: { encodings: NodeEncodings, sha256: Sha256, fingerprint: Fingerprint, layout: Layout, json: JsonFormatting, textFile: TextFile, references: References, codeSpan: CodeSpan, hashing: Hashing, reading: FileReading, paths: Paths, prelude: Prelude, sequences: Sequences, messages: OutputMessages },
+  deps: { encodings: NodeEncodings, layout: Layout, json: JsonFormatting, textFile: TextFile, references: References, codeSpan: CodeSpan, reading: FileReading, paths: Paths, prelude: Prelude, messages: OutputMessages },
   body: code.file<typeof import("./code/engine/lock").default>("./code/engine/lock.ts"),
 })
 

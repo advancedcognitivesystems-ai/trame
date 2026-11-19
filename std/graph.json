@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-18",
+  "generated": "2026-11-19",
   "nodes": [
     {
       "id": "access.Anyone",
@@ -1959,7 +1959,7 @@
       "id": "obligations.AppliedCriteria",
       "kind": "acceptance",
       "title": "Criteria of the decisions applied",
-      "source": "src/obligations.ts:306",
+      "source": "src/obligations.ts:345",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1998,7 +1998,7 @@
       "id": "obligations.CheckedCriteria",
       "kind": "acceptance",
       "title": "Criteria of the artefacts checked",
-      "source": "src/obligations.ts:325",
+      "source": "src/obligations.ts:364",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2046,7 +2046,7 @@
       "id": "obligations.IdentifiedCriteria",
       "kind": "acceptance",
       "title": "Criteria of who calls",
-      "source": "src/obligations.ts:244",
+      "source": "src/obligations.ts:260",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2072,7 +2072,7 @@
       "id": "obligations.Preceded",
       "kind": "requirement",
       "title": "The artefacts a shipment ships were shipped first by those that precede it",
-      "source": "src/obligations.ts:196",
+      "source": "src/obligations.ts:212",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2084,7 +2084,7 @@
       "id": "obligations.PrecededCriteria",
       "kind": "acceptance",
       "title": "Criteria of the stages",
-      "source": "src/obligations.ts:257",
+      "source": "src/obligations.ts:296",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2101,6 +2101,48 @@
         },
         {
           "name": "A shipment named that ships none of its artefacts is not to prove",
+          "status": "passed"
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "obligations.Published",
+      "kind": "requirement",
+      "title": "What people decided is published",
+      "source": "src/obligations.ts:196",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "body": "(function)"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "obligations.PublishedCriteria",
+      "kind": "acceptance",
+      "title": "Criteria of what is published",
+      "source": "src/obligations.ts:282",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "criteria": "(function)"
+      },
+      "result": [
+        {
+          "name": "A reached declaration with a part not published yet is a gap",
+          "status": "passed"
+        },
+        {
+          "name": "A part changed after it was published is no gap: it is an error of the graph already",
+          "status": "passed"
+        },
+        {
+          "name": "Code, which a publication does not freeze, is no gap",
+          "status": "passed"
+        },
+        {
+          "name": "A declaration not reached is no gap",
           "status": "passed"
         }
       ],
@@ -2125,7 +2167,7 @@
       "id": "obligations.ReviewedCriteria",
       "kind": "acceptance",
       "title": "Criteria of the data reviewed",
-      "source": "src/obligations.ts:315",
+      "source": "src/obligations.ts:354",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2159,7 +2201,7 @@
       "id": "obligations.RuledCriteria",
       "kind": "acceptance",
       "title": "Criteria of the rules held",
-      "source": "src/obligations.ts:335",
+      "source": "src/obligations.ts:374",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2189,7 +2231,7 @@
       "id": "obligations.SafeCriteria",
       "kind": "acceptance",
       "title": "Criteria of the packages safe",
-      "source": "src/obligations.ts:344",
+      "source": "src/obligations.ts:383",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2219,7 +2261,7 @@
       "id": "obligations.ServedCriteria",
       "kind": "acceptance",
       "title": "Criteria of the product served",
-      "source": "src/obligations.ts:296",
+      "source": "src/obligations.ts:335",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2256,7 +2298,7 @@
       "id": "obligations.VerifiedCriteria",
       "kind": "acceptance",
       "title": "Criteria of the code verified",
-      "source": "src/obligations.ts:271",
+      "source": "src/obligations.ts:310",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2287,6 +2329,21 @@
       "diagnostics": []
     },
     {
+      "id": "packages.ContinuousIntegration",
+      "kind": "package",
+      "title": "The library of continuous integration",
+      "source": "src/packages.ts:21",
+      "fields": {
+        "owner": "trame",
+        "packageName": "ci",
+        "version": "0.7.0",
+        "joins": "library",
+        "from": "path",
+        "at": "../ci/releases/0.7.0"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "packages.Language",
       "kind": "package",
       "title": "Trame",
@@ -2294,10 +2351,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "107",
+        "version": "110",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g107"
+        "at": "../generations/g110"
       },
       "diagnostics": []
     },
@@ -2913,6 +2970,21 @@
       "diagnostics": []
     },
     {
+      "id": "releases.R0_19_0",
+      "kind": "release",
+      "title": "Version 0.19.0",
+      "source": "src/releases.ts:272",
+      "fields": {
+        "owner": "trame",
+        "version": "0.19.0",
+        "date": "2026-11-18",
+        "what": "Published: what people decided is published before a shipment takes it (D1); a version proves its data reviewed",
+        "fingerprint": "7e2307f67b6a5327",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "releases.R0_2_0",
       "kind": "release",
       "title": "Version 0.2.0",
@@ -2923,6 +2995,21 @@
         "date": "2026-10-26",
         "what": "The device's services as ports: preferences, the device's languages, a voice, the screen kept awake, with the browser's realizations and, for scenarios, realizations kept in memory; the Screen Wake Lock API",
         "fingerprint": "29b96f4135a8d58c",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "releases.R0_20_0",
+      "kind": "release",
+      "title": "Version 0.20.0",
+      "source": "src/releases.ts:285",
+      "fields": {
+        "owner": "trame",
+        "version": "0.20.0",
+        "date": "2026-11-19",
+        "what": "A repository on GitHub as a project's graph decides it: its settings (the branch, the checks, up to date, the approvals, the merge method, the automatic merge, merged branches deleted, the pages), the port RepositoryApi that applies and reads them back, realized by GitHub's command line and in memory; RepositoryCompared says the parts a repository does not hold; GitHub's REST API cited; moved from ci, where a writer of a script set them",
+        "fingerprint": "f10b88a0025a0d32",
         "language": "shared"
       },
       "diagnostics": []
@@ -3029,6 +3116,339 @@
         "what": "The vocabulary Directions for the way a rule follows an edge; what Playwright asks once installed (its Chromium), for the plan of a run elsewhere; the current directory of POSIX",
         "fingerprint": "bb918531117eb046",
         "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "repository.GitHubCliRepository",
+      "kind": "implementation",
+      "title": "GitHub's command line",
+      "source": "src/repository.ts:221",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "api": "repository.GitHubRepositoryApi",
+          "cli": "system.NodeCli",
+          "events": "system.NodeEvents",
+          "exit": "system.ExitStatus",
+          "methods": "repository.MergeMethods",
+          "texts": "algebra.Texts",
+          "values": "algebra.ValueTypes"
+        },
+        "body": {
+          "file": "./code/tooling/github-cli-repository.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "repository.GitHubRepositoryApi",
+      "kind": "standard",
+      "title": "GitHub's API for a repository",
+      "source": "src/repository.ts:158",
+      "fields": {
+        "owner": "trame",
+        "source": "GitHub REST API: Repositories (Get, Update a repository), Rules (Get rules for a branch; Get, Create and Update a repository ruleset), Pages (Get, Create a GitHub Pages site, build_type workflow); GitHub CLI manual: gh api (--method, --input)",
+        "url": "https://docs.github.com/en/rest/repos/rules",
+        "constants": {
+          "program": {
+            "value": "gh",
+            "meaning": "GitHub's command line, with the token of the person who runs it"
+          },
+          "api": {
+            "value": "api",
+            "meaning": "Calls GitHub's API"
+          },
+          "method": {
+            "value": "--method",
+            "meaning": "The method of the call"
+          },
+          "patch": {
+            "value": "PATCH",
+            "meaning": "Changes what it names"
+          },
+          "post": {
+            "value": "POST",
+            "meaning": "Creates"
+          },
+          "put": {
+            "value": "PUT",
+            "meaning": "Replaces"
+          },
+          "input": {
+            "value": "--input",
+            "meaning": "The body of the call, read from a file"
+          },
+          "standardInput": {
+            "value": "-",
+            "meaning": "As a file: what the command is given"
+          },
+          "repos": {
+            "value": "repos/",
+            "meaning": "Before the repository, owner/name"
+          },
+          "rulesets": {
+            "value": "/rulesets",
+            "meaning": "After it: its rulesets"
+          },
+          "branchRules": {
+            "value": "/rules/branches/",
+            "meaning": "After it, before a branch: the rules in force on the branch"
+          },
+          "pages": {
+            "value": "/pages",
+            "meaning": "After it: its pages"
+          },
+          "separator": {
+            "value": "/",
+            "meaning": "Between the steps of a path"
+          },
+          "allowMerge": {
+            "value": "allow_merge_commit",
+            "meaning": "Whether a pull request may be merged with a merge commit"
+          },
+          "allowSquash": {
+            "value": "allow_squash_merge",
+            "meaning": "Whether it may be squashed"
+          },
+          "allowRebase": {
+            "value": "allow_rebase_merge",
+            "meaning": "Whether it may be rebased"
+          },
+          "allowAutoMerge": {
+            "value": "allow_auto_merge",
+            "meaning": "Whether GitHub may merge it once it holds, when asked"
+          },
+          "deleteBranch": {
+            "value": "delete_branch_on_merge",
+            "meaning": "Whether its branch is deleted once merged"
+          },
+          "name": {
+            "value": "name",
+            "meaning": "The name of a ruleset"
+          },
+          "target": {
+            "value": "target",
+            "meaning": "What a ruleset protects"
+          },
+          "branchTarget": {
+            "value": "branch",
+            "meaning": "Branches"
+          },
+          "enforcement": {
+            "value": "enforcement",
+            "meaning": "Whether a ruleset applies"
+          },
+          "active": {
+            "value": "active",
+            "meaning": "It applies"
+          },
+          "conditions": {
+            "value": "conditions",
+            "meaning": "Which branches it protects"
+          },
+          "refName": {
+            "value": "ref_name",
+            "meaning": "By their names"
+          },
+          "include": {
+            "value": "include",
+            "meaning": "Those it protects"
+          },
+          "exclude": {
+            "value": "exclude",
+            "meaning": "Those it leaves out"
+          },
+          "heads": {
+            "value": "refs/heads/",
+            "meaning": "Before a branch's name"
+          },
+          "rules": {
+            "value": "rules",
+            "meaning": "Its rules"
+          },
+          "type": {
+            "value": "type",
+            "meaning": "The kind of a rule"
+          },
+          "parameters": {
+            "value": "parameters",
+            "meaning": "What a rule is given"
+          },
+          "deletion": {
+            "value": "deletion",
+            "meaning": "The branch is never deleted"
+          },
+          "nonFastForward": {
+            "value": "non_fast_forward",
+            "meaning": "The branch is never rewritten"
+          },
+          "pullRequest": {
+            "value": "pull_request",
+            "meaning": "The branch receives nothing but pull requests"
+          },
+          "approvals": {
+            "value": "required_approving_review_count",
+            "meaning": "How many approvals a pull request needs"
+          },
+          "dismissStale": {
+            "value": "dismiss_stale_reviews_on_push",
+            "meaning": "Whether a push dismisses the approvals given (GitHub's default: no)"
+          },
+          "codeOwners": {
+            "value": "require_code_owner_review",
+            "meaning": "Whether the owners of the files changed must approve (GitHub's default: no)"
+          },
+          "lastPush": {
+            "value": "require_last_push_approval",
+            "meaning": "Whether the last push needs an approval of its own (GitHub's default: no)"
+          },
+          "threads": {
+            "value": "required_review_thread_resolution",
+            "meaning": "Whether every thread of the review must be resolved (GitHub's default: no)"
+          },
+          "methods": {
+            "value": "allowed_merge_methods",
+            "meaning": "How a pull request may be merged"
+          },
+          "statusChecks": {
+            "value": "required_status_checks",
+            "meaning": "The checks a pull request must pass"
+          },
+          "strict": {
+            "value": "strict_required_status_checks_policy",
+            "meaning": "Whether the branch must be up to date with the main one first"
+          },
+          "context": {
+            "value": "context",
+            "meaning": "A check, by the name of the job that runs it"
+          },
+          "buildType": {
+            "value": "build_type",
+            "meaning": "How the pages are built"
+          },
+          "workflow": {
+            "value": "workflow",
+            "meaning": "By a workflow"
+          },
+          "id": {
+            "value": "id",
+            "meaning": "The identifier of a ruleset"
+          }
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "repository.MergeMethods",
+      "kind": "vocabulary",
+      "title": "How GitHub merges a pull request",
+      "source": "src/repository.ts:27",
+      "fields": {
+        "owner": "trame",
+        "words": {
+          "merge": "A merge commit: each commit of the branch kept",
+          "squash": "One commit for the branch",
+          "rebase": "Each commit replayed on the main branch"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "repository.RepositoryApi",
+      "kind": "port",
+      "title": "A repository on GitHub",
+      "source": "src/repository.ts:146",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": {
+          "apply": [
+            "process",
+            "network",
+            "asynchronous"
+          ],
+          "read": [
+            "process",
+            "network",
+            "asynchronous"
+          ]
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "repository.RepositoryCompared",
+      "kind": "function",
+      "title": "A repository compared with its settings",
+      "source": "src/repository.ts:108",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "parts": "repository.RepositoryParts"
+        },
+        "body": "(function)"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "repository.RepositoryInMemory",
+      "kind": "function",
+      "title": "A repository kept in memory",
+      "source": "src/repository.ts:248",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "body": "(function)"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "repository.RepositoryKept",
+      "kind": "port",
+      "title": "The repositories a scenario keeps",
+      "source": "src/repository.ts:239",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": []
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "repository.RepositoryParts",
+      "kind": "vocabulary",
+      "title": "The parts of a repository's settings",
+      "source": "src/repository.ts:78",
+      "fields": {
+        "owner": "trame",
+        "words": {
+          "methods": "The ways a pull request may be merged: only the one decided",
+          "autoMerge": "Whether GitHub merges a pull request once it holds, when asked",
+          "deletesMerged": "Whether the branch of a pull request is deleted once merged",
+          "protected": "Whether the branch is never deleted nor rewritten, and receives nothing but pull requests",
+          "approvals": "How many approvals a pull request needs",
+          "checks": "The checks a pull request must pass",
+          "upToDate": "Whether a pull request must be up to date with the branch first",
+          "pages": "Whether the pages are built by a workflow"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "repository.RepositoryThroughItsApi",
+      "kind": "adr",
+      "title": "A repository is set by its project's graph",
+      "source": "src/repository.ts:276",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "A repository's settings decide what reaches its main branch: set by hand in GitHub's pages, nothing says why, and nothing tells when they drift from what the project decided.",
+        "consequences": "A project decides its settings (RepositorySettings) and applies them by a program of its SDLC that a shipment deploys, which reads them back and compares them (RepositoryCompared); its scenarios play that program with the repository kept in memory, and a check reads the repository as it is.",
+        "rejected": {
+          "A script the graph writes, which an administrator runs": "nothing reads the repository back, and nothing records who set it",
+          "A writer in ci": "a program that calls GitHub is code a project runs and verifies, not a file a place runs"
+        }
       },
       "diagnostics": []
     },
@@ -3228,7 +3648,7 @@
       "id": "scenarios.CommandsMade",
       "kind": "scenario",
       "title": "Commands are made for each effect",
-      "source": "src/scenarios.ts:102",
+      "source": "src/scenarios.ts:137",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3252,7 +3672,7 @@
       "id": "scenarios.DeviceInMemory",
       "kind": "scenario",
       "title": "The device, in memory",
-      "source": "src/scenarios.ts:146",
+      "source": "src/scenarios.ts:181",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3294,7 +3714,7 @@
       "id": "scenarios.DrawsKeepTheirPromise",
       "kind": "scenario",
       "title": "Seeded draws keep their promise",
-      "source": "src/scenarios.ts:118",
+      "source": "src/scenarios.ts:153",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3330,7 +3750,7 @@
       "id": "scenarios.InMemory",
       "kind": "binding",
       "title": "In memory",
-      "source": "src/scenarios.ts:33",
+      "source": "src/scenarios.ts:35",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3339,10 +3759,40 @@
       "diagnostics": []
     },
     {
+      "id": "scenarios.RepositoryInMemoryKeeps",
+      "kind": "scenario",
+      "title": "A repository kept in memory",
+      "source": "src/scenarios.ts:113",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "repository": "repository.RepositoryApi",
+          "kept": "repository.RepositoryKept",
+          "compared": "repository.RepositoryCompared",
+          "data": "scenarios.ScenarioData",
+          "checks": "scenarios.ScenarioChecks",
+          "counts": "algebra.Counts"
+        },
+        "body": "(function)"
+      },
+      "result": [
+        {
+          "name": "A repository left by hand is read back as it was left, and differs from the settings where it does",
+          "status": "passed"
+        },
+        {
+          "name": "Settings applied are kept, and the repository read back holds them all, its pages when asked",
+          "status": "passed"
+        }
+      ],
+      "diagnostics": []
+    },
+    {
       "id": "scenarios.ScenarioChecks",
       "kind": "catalog",
       "title": "What the library's scenarios check",
-      "source": "src/scenarios.ts:50",
+      "source": "src/scenarios.ts:52",
       "fields": {
         "owner": "trame",
         "messages": "(function)"
@@ -3353,7 +3803,7 @@
       "id": "scenarios.ScenarioData",
       "kind": "decision",
       "title": "What the library's scenarios are given",
-      "source": "src/scenarios.ts:74",
+      "source": "src/scenarios.ts:78",
       "fields": {
         "owner": "trame",
         "value": {
@@ -3408,7 +3858,43 @@
             "error": "The page broke",
             "language": "fr"
           },
-          "command": "SELECT 1"
+          "command": "SELECT 1",
+          "repository": {
+            "name": "owner/project",
+            "settings": {
+              "branch": "main",
+              "checks": [
+                "project",
+                "library"
+              ],
+              "upToDate": false,
+              "approvals": 1,
+              "method": "merge",
+              "autoMerge": true,
+              "deletesMerged": true,
+              "pages": true
+            },
+            "left": {
+              "methods": [
+                "merge",
+                "squash"
+              ],
+              "autoMerge": false,
+              "deletesMerged": true,
+              "protected": false,
+              "checks": [
+                "library"
+              ],
+              "upToDate": false
+            },
+            "differs": [
+              "methods",
+              "autoMerge",
+              "protected",
+              "approvals",
+              "checks"
+            ]
+          }
         }
       },
       "diagnostics": []
@@ -3417,7 +3903,7 @@
       "id": "scenarios.ScenarioLanguage",
       "kind": "decision",
       "title": "The language of the library's scenarios",
-      "source": "src/scenarios.ts:45",
+      "source": "src/scenarios.ts:47",
       "fields": {
         "owner": "trame",
         "value": {
@@ -3430,7 +3916,7 @@
       "id": "scenarios.Test",
       "kind": "environment",
       "title": "Test",
-      "source": "src/scenarios.ts:27",
+      "source": "src/scenarios.ts:29",
       "fields": {
         "owner": "trame",
         "evaluates": true
@@ -3441,7 +3927,7 @@
       "id": "scenarios.ToolingInMemory",
       "kind": "scenario",
       "title": "The tooling, in memory",
-      "source": "src/scenarios.ts:180",
+      "source": "src/scenarios.ts:215",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3471,7 +3957,18 @@
       "id": "sdlc.CallersIdentified",
       "kind": "obligation",
       "title": "Its callers identified",
-      "source": "src/sdlc.ts:60",
+      "source": "src/sdlc.ts:62",
+      "fields": {
+        "owner": "trame",
+        "gaps": "error"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.DataReviewed",
+      "kind": "obligation",
+      "title": "Its data reviewed",
+      "source": "src/sdlc.ts:69",
       "fields": {
         "owner": "trame",
         "gaps": "error"
@@ -3482,7 +3979,7 @@
       "id": "sdlc.DecisionsApplied",
       "kind": "obligation",
       "title": "Its decisions applied",
-      "source": "src/sdlc.ts:41",
+      "source": "src/sdlc.ts:43",
       "fields": {
         "owner": "trame"
       },
@@ -3492,7 +3989,7 @@
       "id": "sdlc.FunctionsVerified",
       "kind": "obligation",
       "title": "Its functions verified",
-      "source": "src/sdlc.ts:27",
+      "source": "src/sdlc.ts:29",
       "fields": {
         "owner": "trame",
         "params": {
@@ -3508,8 +4005,8 @@
       "id": "sdlc.NextVersion",
       "kind": "shipment",
       "title": "The next version",
-      "source": "src/sdlc.ts:78",
-      "status": "held",
+      "source": "src/sdlc.ts:87",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "version"
@@ -3532,6 +4029,11 @@
             "obligation": "sdlc.DecisionsApplied"
           },
           {
+            "node": "repository.RepositoryThroughItsApi",
+            "via": "repository.GitHubCliRepository",
+            "obligation": "sdlc.DecisionsApplied"
+          },
+          {
             "node": "tooling.ToolingAsPorts",
             "via": "tooling.BrowserInMemory",
             "obligation": "sdlc.DecisionsApplied"
@@ -3549,6 +4051,11 @@
           {
             "node": "scenarios.DeviceInMemory",
             "via": "platform.AwakeInMemory",
+            "obligation": "sdlc.FunctionsVerified"
+          },
+          {
+            "node": "scenarios.RepositoryInMemoryKeeps",
+            "via": "repository.RepositoryCompared",
             "obligation": "sdlc.FunctionsVerified"
           },
           {
@@ -3578,6 +4085,11 @@
           },
           {
             "node": "obligations.Preceded",
+            "via": "access.Anyone",
+            "obligation": "sdlc.RequirementsServed"
+          },
+          {
+            "node": "obligations.Published",
             "via": "access.Anyone",
             "obligation": "sdlc.RequirementsServed"
           },
@@ -3678,6 +4190,8 @@
           "obligations.IdentifiedCriteria",
           "obligations.Preceded",
           "obligations.PrecededCriteria",
+          "obligations.Published",
+          "obligations.PublishedCriteria",
           "obligations.Reviewed",
           "obligations.ReviewedCriteria",
           "obligations.Ruled",
@@ -3688,6 +4202,7 @@
           "obligations.ServedCriteria",
           "obligations.Verified",
           "obligations.VerifiedCriteria",
+          "packages.ContinuousIntegration",
           "packages.Language",
           "patterns.AbstractFactory",
           "patterns.Adapter",
@@ -3721,6 +4236,15 @@
           "product.SharedOperations",
           "product.SharedRules",
           "product.VersionsThatHold",
+          "repository.GitHubCliRepository",
+          "repository.GitHubRepositoryApi",
+          "repository.MergeMethods",
+          "repository.RepositoryApi",
+          "repository.RepositoryCompared",
+          "repository.RepositoryInMemory",
+          "repository.RepositoryKept",
+          "repository.RepositoryParts",
+          "repository.RepositoryThroughItsApi",
           "rules.Directions",
           "rules.Linked",
           "rules.LinkedCriteria",
@@ -3736,18 +4260,23 @@
           "scenarios.DeviceInMemory",
           "scenarios.DrawsKeepTheirPromise",
           "scenarios.InMemory",
+          "scenarios.RepositoryInMemoryKeeps",
           "scenarios.ScenarioChecks",
           "scenarios.ScenarioData",
           "scenarios.ScenarioLanguage",
           "scenarios.Test",
           "scenarios.ToolingInMemory",
           "sdlc.CallersIdentified",
+          "sdlc.DataReviewed",
           "sdlc.DecisionsApplied",
           "sdlc.FunctionsVerified",
           "sdlc.NextVersion",
           "sdlc.PackagesSafe",
+          "sdlc.PullRequestsOnGitHub",
+          "sdlc.PullRequestWorkflow",
           "sdlc.RequirementsServed",
           "sdlc.RulesHeld",
+          "sdlc.RunnersWritten",
           "sdlc.VersionMode",
           "system.ExitStatus",
           "system.NodeArguments",
@@ -3791,15 +4320,65 @@
           "web.WebSpeechApi"
         ]
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: To ship: The standard library is unknown"
+      ]
     },
     {
       "id": "sdlc.PackagesSafe",
       "kind": "obligation",
       "title": "Its packages safe",
-      "source": "src/sdlc.ts:53",
+      "source": "src/sdlc.ts:55",
       "fields": {
         "owner": "trame"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.PullRequestsOnGitHub",
+      "kind": "decision",
+      "title": "How a pull request is checked on GitHub",
+      "source": "src/sdlc.ts:95",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "on": {
+            "pullRequests": [
+              "main"
+            ]
+          },
+          "job": "std",
+          "runsOn": "ubuntu-24.04",
+          "node": 22,
+          "artefacts": {
+            "days": 30
+          },
+          "pullRequest": {
+            "review": false,
+            "merge": "onceItHoldsUnlessDecided"
+          }
+        },
+        "rejected": {
+          "Only when a pull request touches the project": "GitHub keeps a pull request waiting for a check it requires and that never ran",
+          "Merged by GitHub whatever it changes": "what people decided would reach main without a person"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.PullRequestWorkflow",
+      "kind": "artifact",
+      "title": "The pull requests' workflow",
+      "source": "src/sdlc.ts:113",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "path": "../.github/workflows/std-pull-request.yml",
+        "media": "application/yaml"
+      },
+      "result": {
+        "path": "../.github/workflows/std-pull-request.yml",
+        "code": "d1296f00"
       },
       "diagnostics": []
     },
@@ -3807,7 +4386,7 @@
       "id": "sdlc.RequirementsServed",
       "kind": "obligation",
       "title": "Its requirements held",
-      "source": "src/sdlc.ts:35",
+      "source": "src/sdlc.ts:37",
       "fields": {
         "owner": "trame"
       },
@@ -3817,9 +4396,29 @@
       "id": "sdlc.RulesHeld",
       "kind": "obligation",
       "title": "Its rules held",
-      "source": "src/sdlc.ts:47",
+      "source": "src/sdlc.ts:49",
       "fields": {
         "owner": "trame"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.RunnersWritten",
+      "kind": "shipment",
+      "title": "The files that run it elsewhere",
+      "source": "src/sdlc.ts:127",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "target": "repository"
+      },
+      "result": {
+        "derived": [],
+        "gaps": [],
+        "preceded": [],
+        "reached": [
+          "sdlc.PullRequestWorkflow"
+        ]
       },
       "diagnostics": []
     },
@@ -3827,8 +4426,8 @@
       "id": "sdlc.TheLibrary",
       "kind": "artifact",
       "title": "The standard library",
-      "source": "src/sdlc.ts:20",
-      "status": "held",
+      "source": "src/sdlc.ts:22",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "src",
@@ -3836,15 +4435,17 @@
       },
       "result": {
         "path": "src",
-        "code": "87411834"
+        "code": "086375ff"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+      ]
     },
     {
       "id": "sdlc.VersionMode",
       "kind": "policy",
       "title": "How a version is made",
-      "source": "src/sdlc.ts:68",
+      "source": "src/sdlc.ts:77",
       "fields": {
         "owner": "trame"
       },
@@ -5185,6 +5786,16 @@
       "kind": "accepts"
     },
     {
+      "from": "obligations.Published",
+      "to": "product.SharedRules",
+      "kind": "refines"
+    },
+    {
+      "from": "obligations.PublishedCriteria",
+      "to": "obligations.Published",
+      "kind": "accepts"
+    },
+    {
       "from": "obligations.Reviewed",
       "to": "product.SharedRules",
       "kind": "refines"
@@ -5243,6 +5854,11 @@
       "from": "obligations.VerifiedCriteria",
       "to": "obligations.Verified",
       "kind": "accepts"
+    },
+    {
+      "from": "packages.ContinuousIntegration",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
     },
     {
       "from": "packages.Language",
@@ -5790,6 +6406,36 @@
       "kind": "serves"
     },
     {
+      "from": "releases.R0_19_0",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_19_0",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_19_0",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_19_0",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_19_0",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_19_0",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
       "from": "releases.R0_2_0",
       "to": "product.CitedNotCopied",
       "kind": "serves"
@@ -5807,6 +6453,36 @@
     {
       "from": "releases.R0_2_0",
       "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_20_0",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_20_0",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_20_0",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_20_0",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_20_0",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_20_0",
+      "to": "product.VersionsThatHold",
       "kind": "serves"
     },
     {
@@ -5958,6 +6634,126 @@
       "from": "releases.R0_9_0",
       "to": "product.SharedRules",
       "kind": "serves"
+    },
+    {
+      "from": "repository.GitHubCliRepository",
+      "to": "repository.RepositoryApi",
+      "kind": "implements"
+    },
+    {
+      "from": "repository.GitHubCliRepository",
+      "to": "repository.GitHubRepositoryApi",
+      "kind": "deps"
+    },
+    {
+      "from": "repository.GitHubCliRepository",
+      "to": "system.NodeCli",
+      "kind": "deps"
+    },
+    {
+      "from": "repository.GitHubCliRepository",
+      "to": "system.NodeEvents",
+      "kind": "deps"
+    },
+    {
+      "from": "repository.GitHubCliRepository",
+      "to": "system.ExitStatus",
+      "kind": "deps"
+    },
+    {
+      "from": "repository.GitHubCliRepository",
+      "to": "repository.MergeMethods",
+      "kind": "deps"
+    },
+    {
+      "from": "repository.GitHubCliRepository",
+      "to": "algebra.Texts",
+      "kind": "deps"
+    },
+    {
+      "from": "repository.GitHubCliRepository",
+      "to": "algebra.ValueTypes",
+      "kind": "deps"
+    },
+    {
+      "from": "repository.GitHubRepositoryApi",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "repository.MergeMethods",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "repository.RepositoryCompared",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "repository.RepositoryCompared",
+      "to": "repository.RepositoryParts",
+      "kind": "deps"
+    },
+    {
+      "from": "repository.RepositoryInMemory",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "repository.RepositoryInMemory",
+      "to": "repository.RepositoryApi",
+      "kind": "implements"
+    },
+    {
+      "from": "repository.RepositoryInMemory",
+      "to": "repository.RepositoryKept",
+      "kind": "implements"
+    },
+    {
+      "from": "repository.RepositoryParts",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "repository.RepositoryThroughItsApi",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "repository.RepositoryThroughItsApi",
+      "to": "repository.MergeMethods",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "repository.RepositoryThroughItsApi",
+      "to": "repository.RepositoryParts",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "repository.RepositoryThroughItsApi",
+      "to": "repository.RepositoryCompared",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "repository.RepositoryThroughItsApi",
+      "to": "repository.RepositoryApi",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "repository.RepositoryThroughItsApi",
+      "to": "repository.GitHubCliRepository",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "repository.RepositoryThroughItsApi",
+      "to": "repository.RepositoryKept",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "repository.RepositoryThroughItsApi",
+      "to": "repository.RepositoryInMemory",
+      "kind": "appliedBy"
     },
     {
       "from": "rules.Directions",
@@ -6201,6 +6997,11 @@
     },
     {
       "from": "scenarios.InMemory",
+      "to": "repository.RepositoryInMemory",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.InMemory",
       "to": "scenarios.Test",
       "kind": "environments"
     },
@@ -6213,6 +7014,51 @@
       "from": "scenarios.InMemory",
       "to": "product.RealizedOnce",
       "kind": "serves"
+    },
+    {
+      "from": "scenarios.RepositoryInMemoryKeeps",
+      "to": "repository.RepositoryInMemory",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.RepositoryInMemoryKeeps",
+      "to": "repository.RepositoryCompared",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.RepositoryInMemoryKeeps",
+      "to": "scenarios.Test",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.RepositoryInMemoryKeeps",
+      "to": "repository.RepositoryApi",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.RepositoryInMemoryKeeps",
+      "to": "repository.RepositoryKept",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.RepositoryInMemoryKeeps",
+      "to": "repository.RepositoryCompared",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.RepositoryInMemoryKeeps",
+      "to": "scenarios.ScenarioData",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.RepositoryInMemoryKeeps",
+      "to": "scenarios.ScenarioChecks",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.RepositoryInMemoryKeeps",
+      "to": "algebra.Counts",
+      "kind": "deps"
     },
     {
       "from": "scenarios.ScenarioChecks",
@@ -6275,6 +7121,16 @@
       "kind": "serves"
     },
     {
+      "from": "sdlc.DataReviewed",
+      "to": "obligations.Reviewed",
+      "kind": "applies"
+    },
+    {
+      "from": "sdlc.DataReviewed",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
       "from": "sdlc.DecisionsApplied",
       "to": "obligations.Applied",
       "kind": "applies"
@@ -6315,6 +7171,21 @@
       "kind": "serves"
     },
     {
+      "from": "sdlc.PullRequestWorkflow",
+      "to": "ci/github.GitHubWorkflow",
+      "kind": "producedBy"
+    },
+    {
+      "from": "sdlc.PullRequestWorkflow",
+      "to": "sdlc.NextVersion",
+      "kind": "runs"
+    },
+    {
+      "from": "sdlc.PullRequestWorkflow",
+      "to": "sdlc.PullRequestsOnGitHub",
+      "kind": "settings"
+    },
+    {
       "from": "sdlc.RequirementsServed",
       "to": "obligations.Served",
       "kind": "applies"
@@ -6333,6 +7204,11 @@
       "from": "sdlc.RulesHeld",
       "to": "product.VersionsThatHold",
       "kind": "serves"
+    },
+    {
+      "from": "sdlc.RunnersWritten",
+      "to": "sdlc.PullRequestWorkflow",
+      "kind": "ships"
     },
     {
       "from": "sdlc.VersionMode",
@@ -6362,6 +7238,11 @@
     {
       "from": "sdlc.VersionMode",
       "to": "sdlc.CallersIdentified",
+      "kind": "obligations"
+    },
+    {
+      "from": "sdlc.VersionMode",
+      "to": "sdlc.DataReviewed",
       "kind": "obligations"
     },
     {

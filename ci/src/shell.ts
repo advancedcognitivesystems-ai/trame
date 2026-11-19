@@ -59,16 +59,23 @@ export const ShellScript = syntax({
     usage: { value: "give the name of the person who ships", meaning: "What the script says when it is run without a name" },
     written: { value: "Written by trame ship from the graph, for the shipment", meaning: "What the script's first comment says" },
     of: { value: "of", meaning: "Between the shipment and its project, in that comment" },
-    edit: { value: "Do not edit: edit the graph, then ship.", meaning: "The comment that says where to change it" },
+    fromArtefact: { value: "From the artefact", meaning: "Opens the comment that names the nodes the file comes from (ci 0.7.0)" },
+    andSettings: { value: "and its settings", meaning: "Before the decision of its settings, in that comment" },
+    declaredIn: { value: "declared in", meaning: "Before the file that declares them, in that comment" },
+    edit: { value: "Do not edit: change those nodes, then ship.", meaning: "The comment that says where to change it" },
   },
   deps: { npm: Npm },
-  write: ({ standard: sh, person, usage, written, of, edit, npm }) => (plan: RunPlan): string => {
+  write: ({ standard: sh, person, usage, written, of, fromArtefact, andSettings, declaredIn, edit, npm }) => (plan: RunPlan): string => {
     const quoted = (w: string) => sh.quote + w + sh.quote
     const words = (ws: readonly string[]) => ws.join(sh.space)
     const inside = (dir: string, command: string) => sh.open + words([sh.cd, quoted(dir), sh.and, command]) + sh.close
     return [
       sh.interpreter,
       words([sh.comment, written, JSON.stringify(plan.title), of, plan.project]),
+      words([
+        sh.comment, fromArtefact, plan.from.artefact, ...(plan.from.settings ? [andSettings, plan.from.settings] : []),
+        ...(plan.from.declared ? [declaredIn, plan.from.declared] : []),
+      ]),
       words([sh.comment, edit]),
       sh.strict,
       person + sh.assign + quoted(sh.required + usage + sh.closeBrace),
@@ -89,12 +96,15 @@ export const ShellScript = syntax({
           prepares: [{ dir: "std", run: "npx playwright install --with-deps chromium" }],
           delivers: [{ artifact: "PageFile", path: "apps/poselia/dist/poselia.html" }], evidence: "apps/poselia/evidence",
           deployed: { command: ["../../trame.sh", "evidence"], verdict: "passed", by: "--by", url: "--url" },
+          review: { command: ["../../trame.sh", "view", "review", "--format", "md"], lock: "trame.lock" },
+          from: { artefact: "sdlc.TheFile", settings: "sdlc.TheSettings", declared: "apps/poselia/src/sdlc.ts" },
         },
       ],
       output: [
         "#!/usr/bin/env bash",
         "# Written by trame ship from the graph, for the shipment \"A preview\" of apps/poselia",
-        "# Do not edit: edit the graph, then ship.",
+        "# From the artefact sdlc.TheFile and its settings sdlc.TheSettings declared in apps/poselia/src/sdlc.ts",
+        "# Do not edit: change those nodes, then ship.",
         "set -euo pipefail",
         "by=\"${1:?give the name of the person who ships}\"",
         "cd \"$(dirname \"$0\")/../../..\"",
