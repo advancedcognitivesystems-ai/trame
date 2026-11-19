@@ -187,7 +187,7 @@ Triggered by `the loading of the page`
 
 ### The browser's screen
 
-`BrowserScreen` · `src/app.ts:79` · status: **held**
+`BrowserScreen` · `src/app.ts:79` · status: **unknown**
 
 The view written in the document with the elements of HTML, the drawings with those of SVG; a language chosen runs the action.
 

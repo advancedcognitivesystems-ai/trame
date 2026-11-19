@@ -230,6 +230,22 @@ The device's services as ports: preferences, the device's languages, a voice, th
 - Released by: trame
 - Serves: [A published value is cited, not copied](product.md#CitedNotCopied), [Known designs, named](product.md#KnownDesigns), [Ports of the platform, realized once](product.md#RealizedOnce), [Shared operations instead of literals](product.md#SharedOperations)
 
+<a id="R0_20_0"></a>
+
+### Version 0.20.0
+
+`R0_20_0` · `src/releases.ts:285`
+
+A repository on GitHub as a project's graph decides it: its settings (the branch, the checks, up to date, the approvals, the merge method, the automatic merge, merged branches deleted, the pages), the port RepositoryApi that applies and reads them back, realized by GitHub's command line and in memory; RepositoryCompared says the parts a repository does not hold; GitHub's REST API cited; moved from ci, where a writer of a script set them
+
+- Version: `0.20.0`
+- Released on: 19 November 2026
+- Fingerprint: `f10b88a0025a0d32`
+- Language: the repository's, shared
+
+- Released by: trame
+- Serves: [A published value is cited, not copied](product.md#CitedNotCopied), [Known designs, named](product.md#KnownDesigns), [Ports of the platform, realized once](product.md#RealizedOnce), [Shared operations instead of literals](product.md#SharedOperations), [Rules applied, not written again](product.md#SharedRules), [Versions that hold](product.md#VersionsThatHold)
+
 <a id="R0_3_0"></a>
 
 ### Version 0.3.0

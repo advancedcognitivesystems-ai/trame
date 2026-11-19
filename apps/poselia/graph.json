@@ -6,7 +6,7 @@
       "kind": "implementation",
       "title": "The browser's screen",
       "source": "src/app.ts:79",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "deps": {
@@ -4371,10 +4371,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "ci",
-        "version": "0.6.0",
+        "version": "0.7.0",
         "joins": "library",
         "from": "path",
-        "at": "../../ci/releases/0.6.0"
+        "at": "../../ci/releases/0.7.0"
       },
       "diagnostics": []
     },
@@ -4416,10 +4416,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "trame",
-        "version": "109",
+        "version": "110",
         "joins": "language",
         "from": "path",
-        "at": "../../generations/g109"
+        "at": "../../generations/g110"
       },
       "diagnostics": []
     },
@@ -4431,10 +4431,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "std",
-        "version": "0.19.0",
+        "version": "0.20.0",
         "joins": "library",
         "from": "path",
-        "at": "../../std/releases/0.19.0"
+        "at": "../../std/releases/0.20.0"
       },
       "diagnostics": []
     },
@@ -4829,7 +4829,7 @@
       "kind": "adr",
       "title": "A page first, the phones after",
       "source": "src/principles.ts:78",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "context": "The app must be tried and shown before it is installed: a page shared as a link is the shortest way to the friends who review it.",
@@ -5995,7 +5995,7 @@
       "kind": "binding",
       "title": "On the machine",
       "source": "src/sdlc.ts:87",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "context": "A check must open the page a person opens: the file delivered, in a real browser."
@@ -6086,7 +6086,7 @@
       "kind": "artifact",
       "title": "Poselia's page",
       "source": "src/sdlc.ts:111",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "media": "text/html; charset=utf-8"
@@ -6095,7 +6095,9 @@
         "path": "dist/poselia.html",
         "code": "c227094a"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+      ]
     },
     {
       "id": "sdlc.PageOpening",
@@ -6116,14 +6118,16 @@
       "kind": "check",
       "title": "The page opens",
       "source": "src/sdlc.ts:211",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax"
       },
       "result": {
         "code": "20164e5d"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
+      ]
     },
     {
       "id": "sdlc.PageSelectors",
@@ -6231,7 +6235,7 @@
       "kind": "shipment",
       "title": "A preview",
       "source": "src/sdlc.ts:320",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "target": "preview"
@@ -6419,7 +6423,10 @@
           "sdlc.PlaceThePage"
         ]
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: To ship: Poselia's page is unknown",
+        "warning: To ship: The page opens is unknown"
+      ]
     },
     {
       "id": "sdlc.PreviewMode",
@@ -6476,7 +6483,7 @@
       },
       "result": {
         "path": "scripts/ship-preview.sh",
-        "code": "b6c82515"
+        "code": "3ecbf9b8"
       },
       "diagnostics": []
     },
@@ -6493,7 +6500,7 @@
       },
       "result": {
         "path": "../../.github/workflows/poselia-preview.yml",
-        "code": "9afed1df"
+        "code": "87961637"
       },
       "diagnostics": []
     },
@@ -6925,8 +6932,11 @@
         ]
       },
       "diagnostics": [
+        "warning: To ship: Poselia's page is unknown",
         "warning: To ship: On a phone is unknown",
+        "warning: To ship: The page opens is unknown",
         "warning: To ship: The content, reviewed is unknown",
+        "warning: To ship: A page first, the phones after is unknown",
         "warning: To ship: The content is data, behind a port is unknown",
         "warning: To ship: Said aloud, the screen awake is unknown"
       ]
@@ -6986,7 +6996,7 @@
       },
       "result": {
         "path": "../../.github/workflows/poselia-pull-request.yml",
-        "code": "228b948d"
+        "code": "494580a5"
       },
       "diagnostics": []
     },
@@ -7130,7 +7140,7 @@
       },
       "result": {
         "path": "src",
-        "code": "7eaf1350"
+        "code": "d5dd84d7"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -7601,7 +7611,7 @@
       "kind": "implementation",
       "title": "The browser's stage",
       "source": "src/stage.ts:126",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "deps": {

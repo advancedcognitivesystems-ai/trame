@@ -2,7 +2,7 @@
 
 *What happened to the project, day by day, the latest first, up to the date of the graph (19 November 2026): the versions released, and the evidence given, each with the node it is about and who gave it.*
 
-> **13 days · 0 versions released · 160 pieces of evidence**
+> **13 days · 0 versions released · 167 pieces of evidence**
 
 ## 19 November 2026
 
@@ -16,12 +16,19 @@
 | Shipped | [A preview](sdlc.md#Preview) | claude |
 | Built | [The preview's script](sdlc.md#PreviewScript) | claude |
 | Shipped | [The preview's script](sdlc.md#PreviewScript) | claude |
+| Built | [The preview's script](sdlc.md#PreviewScript) | claude |
+| Shipped | [The preview's script](sdlc.md#PreviewScript) | claude |
 | Built | [The preview's workflow](sdlc.md#PreviewWorkflow) | claude |
+| Built | [The preview's workflow](sdlc.md#PreviewWorkflow) | claude |
+| Shipped | [The preview's workflow](sdlc.md#PreviewWorkflow) | claude |
 | Built | [The preview's workflow](sdlc.md#PreviewWorkflow) | claude |
 | Shipped | [The preview's workflow](sdlc.md#PreviewWorkflow) | claude |
 | Built | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
 | Built | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
 | Shipped | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
+| Built | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
+| Shipped | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
+| Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
 | Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
 | Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
 | Built | [Poselia](sdlc.md#ThePoseliaApp) | claude |

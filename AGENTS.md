@@ -152,11 +152,16 @@ not published yet is a gap), so `trame publish` runs in the branch, before the p
 (a decision) say `on: { pullRequests: ["main"] }`, the `job` (the name of the check the repository requires) and
 `pullRequest: { review, merge }`: the review of the branch written in the pull request (one comment per project,
 against the lock of main), and a word of `MergeWays` (`onceItHoldsUnlessDecided`: the workflow keeps GitHub from
-merging a pull request that changes a `trame.lock`; a person merges it). The repository's settings are a decision of
-Trame's graph (`MainBranch`), written by ci's `GitHubRepository` as `.github/settings.sh`, which an administrator runs
-(`bash .github/settings.sh owner/name`). Work on a branch, open the pull request (`gh api repos/{owner}/{repo}/pulls
---method POST`), then: `gh pr merge <n> --merge --auto` when it changes nothing people decided, otherwise its owner
-reads the review (`gh pr view <n> --comments`) and merges it.
+merging a pull request that changes a `trame.lock`; a person merges it). A file written names, at its top, the nodes
+it comes from (the artefact, the decision of its settings, the file that declares them: g110, ci 0.7.0); a workflow's
+name says its job. The repository's settings are a decision of Trame's graph (`MainBranch`, std's `RepositorySettings`:
+the checks, up to date or not, the approvals, the merge method, the automatic merge, merged branches deleted, the
+pages), applied by a shipment of Trame (`RepositorySet`): the check `RepositoryRead` reads the repository through std's
+port `RepositoryApi` (GitHub's command line on the machine), then the program `apply-repository-settings` sets it and
+reads it back, failing on each part that still differs. An administrator of the repository ships it, with their own
+token: `./trame.sh ship RepositorySet --by <name>`; `--dry-run` only reads it and says what differs. Work on a branch,
+open the pull request (`gh api repos/{owner}/{repo}/pulls --method POST`), then: `gh pr merge <n> --merge --auto` when
+it changes nothing people decided, otherwise its owner reads the review (`gh pr view <n> --comments`) and merges it.
 
 A file that runs a shipment elsewhere (a workflow of GitHub Actions, a Bash script) is an `artifact` produced by a writer
 of the library `ci` (`GitHubWorkflow`, `ShellScript`), naming the shipment it `runs`, its `settings` (a decision) and
@@ -165,8 +170,9 @@ writer only gives it a form. What is published, how long it is kept, whether the
 writer never decides it. Never write such a file by hand; a new place to run is a new writer in `ci`, with its examples.
 
 The programs of the SDLC are a component of the project (its exposure `ProgramCommands` from `#std/tooling`, the first
-argument naming the command), whose entry points use the ports `Files` and `HeadlessBrowser`; a binding chooses their
-machine realizations (`NodeProgramCommands`, `MachineFiles`, `PlaywrightBrowser`) for the shipment's environment, and
+argument naming the command), whose entry points use the ports `Files`, `HeadlessBrowser` and `RepositoryApi`; a binding
+chooses their machine realizations (`NodeProgramCommands`, `MachineFiles`, `PlaywrightBrowser`, `GitHubCliRepository`)
+for the shipment's environment, and
 another their memory realizations for the scenarios that test them. Governance is rules: a `rule` applies a
 requirement of `#std/rules` (`Reaches`, `NeverReaches`, `Linked`, `WithoutEffects`, `WordsOf`) with its `params` (a
 direction is a word of the vocabulary `Directions`: `way: "in"`), and `serves` a goal or is applied by an ADR that says

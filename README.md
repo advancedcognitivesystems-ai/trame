@@ -1069,7 +1069,11 @@ declarations not yet published add to those published, against the lock of main)
 request that changes a `trame.lock`, which a person merges once they read it; then it runs the shipment. A library's
 check is the shipment of its next version. The settings of the repository (main never deleted nor rewritten, reached
 only by a pull request that passes the checks of Trame, std, ci, data, the example and Poselia, merged as a merge
-commit) are a decision of Trame's graph, which ci writes as a script of calls to GitHub's API an administrator runs.
+commit, its branch deleted, no approval asked) are a decision of Trame's graph, which a shipment of Trame applies: it
+reads the repository from GitHub, then a program of its SDLC sets it through std's port `RepositoryApi` (GitHub's
+command line, with the token of the administrator who ships it) and reads it back, failing on each part that still
+differs (`./trame.sh ship RepositorySet --by <name>`). A file written from the graph names, at its top, the nodes it
+comes from: the artefact, the decision of its settings, the file that declares them.
 
 ## Amending a value
 
@@ -1312,8 +1316,8 @@ declarations with), the types of Node below 23 (they follow the Node.js that run
 - **Publication** (D1, in progress): a publication freezes what people decide, part by part (g108); the merge into main
   is a shipment of each project, checked on GitHub at each pull request by a workflow written from the graph, which
   writes the review of the branch and keeps GitHub from merging what people decided; the repository's settings are a
-  script written from the graph (g109, ci 0.5.0). Left: Pages, and a check that reads the settings back. Trame's own
-  graph is published once the plan is done.
+  decision of the graph, which a shipment of Trame applies and reads back (g110, std 0.20.0, ci 0.7.0). Left: Pages.
+  Trame's own graph is published once the plan is done.
 - **The SDLC**: a shipment of a library version (its release, then a warning in the projects that import an older one; proposed); a
   signature with a key, read from outside the graph (the seal is an attribution); a status that reads itself said as an
   error of the graph rather than unknown (since g69 no kind lets one be written); a deployment in a workflow that publishes somewhere real (GitHub

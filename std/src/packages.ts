@@ -9,7 +9,7 @@ import { RealizedOnce, VersionsThatHold } from "./product"
  * owner moves it when a version of the library needs a newer language.
  */
 export const Language = pkg({
-  owner: "trame", packageName: "trame", version: "109", joins: "language", from: "path", at: "../generations/g109",
+  owner: "trame", packageName: "trame", version: "110", joins: "language", from: "path", at: "../generations/g110",
   serves: [RealizedOnce],
 })
 
@@ -19,6 +19,6 @@ export const Language = pkg({
  * in Trame's repository: the workflow that checks each pull request is written from the graph.
  */
 export const ContinuousIntegration = pkg({
-  owner: "trame", packageName: "ci", version: "0.6.0", joins: "library", from: "path", at: "../ci/releases/0.6.0",
+  owner: "trame", packageName: "ci", version: "0.7.0", joins: "library", from: "path", at: "../ci/releases/0.7.0",
   serves: [VersionsThatHold],
 })

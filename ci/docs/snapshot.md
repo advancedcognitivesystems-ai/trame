@@ -178,10 +178,10 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 109
+- Version: 110
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../generations/g109
+- Its path: ../generations/g110
 - Serves: A shipment runs elsewhere as it runs here
 
 ## Continuous integration · Product
@@ -189,12 +189,6 @@ Package · `Language`
 ### Each place is a writer
 
 Goal · `OneWriterPerPlace`
-
-- Owner: trame
-
-### A repository is set as its graph decides
-
-Goal · `RepositoryAsDecided`
 
 - Owner: trame
 
@@ -278,47 +272,17 @@ Release · `R0_6_0`
 - Language: shared
 - Serves: Each place is a writer, A shipment runs elsewhere as it runs here
 
-## Continuous integration · The repository on GitHub
+### Version 0.7.0
 
-### GitHub's API for a repository
+Release · `R0_7_0`
 
-Standard · `GitHubRepositoryApi`
-
-- Maintained by: trame
-- Source: GitHub REST API: Repositories (Update a repository), Rules (Create, Get and Update a repository ruleset), Pages (Create a GitHub Pages site, build_type workflow); GitHub CLI manual: gh api (--method, --input, --jq, -f)
-- Address: https://docs.github.com/en/rest/repos/rules
-- Constants: { program: { value: gh, meaning: GitHub's command line, with the token of the person who runs it }, api: { value: api, meaning: Calls GitHub's API }, method: { value: --method, meaning: The method of the call }, patch: { value: PATCH, meaning: Changes what it names }, post: { value: POST, meaning: Creates }, put: { value: PUT, meaning: Replaces }, input: { value: --input, meaning: The body of the call, read from a file }, standardInput: { value: -, meaning: As a file: what the command is given }, repos: { value: repos/, meaning: Before the repository, owner/name }, rulesets: { value: /rulesets, meaning: After it: its rulesets }, branchRules: { value: /rules/branches/, meaning: After it, before a branch: the rules in force on the branch }, pages: { value: /pages, meaning: After it: its pages }, separator: { value: /, meaning: Between the steps of a path }, allowMerge: { value: allow_merge_commit, meaning: Whether a pull request may be merged with a merge commit }, allowSquash: { value: allow_squash_merge, meaning: Whether it may be squashed }, allowRebase: { value: allow_rebase_merge, meaning: Whether it may be rebased }, allowAutoMerge: { value: allow_auto_merge, meaning: Whether GitHub may merge it once it holds, when asked }, deleteBranch: { value: delete_branch_on_merge, meaning: Whether its branch is deleted once merged }, name: { value: name, meaning: The name of a ruleset }, target: { value: target, meaning: What a ruleset protects }, branchTarget: { value: branch, meaning: Branches }, enforcement: { value: enforcement, meaning: Whether a ruleset applies }, active: { value: active, meaning: It applies }, conditions: { value: conditions, meaning: Which branches it protects }, refName: { value: ref_name, meaning: By their names }, include: { value: include, meaning: Those it protects }, exclude: { value: exclude, meaning: Those it leaves out }, heads: { value: refs/heads/, meaning: Before a branch's name }, rules: { value: rules, meaning: Its rules }, type: { value: type, meaning: The kind of a rule }, parameters: { value: parameters, meaning: What a rule is given }, deletion: { value: deletion, meaning: The branch is never deleted }, nonFastForward: { value: non_fast_forward, meaning: The branch is never rewritten }, pullRequest: { value: pull_request, meaning: The branch receives nothing but pull requests }, approvals: { value: required_approving_review_count, meaning: How many approvals a pull request needs }, dismissStale: { value: dismiss_stale_reviews_on_push, meaning: Whether a push dismisses the approvals given }, codeOwners: { value: require_code_owner_review, meaning: Whether the owners of the files changed must approve }, lastPush: { value: require_last_push_approval, meaning: Whether the last push needs an approval of its own }, threads: { value: required_review_thread_resolution, meaning: Whether every thread of the review must be resolved }, methods: { value: allowed_merge_methods, meaning: How a pull request may be merged }, statusChecks: { value: required_status_checks, meaning: The checks a pull request must pass }, strict: { value: strict_required_status_checks_policy, meaning: Whether the branch must be up to date with the main one first }, context: { value: context, meaning: A check, by the name of the job that runs it }, buildType: { value: build_type, meaning: How the pages are built }, workflow: { value: workflow, meaning: By a workflow }, id: { value: id, meaning: The identifier of a ruleset } }
-- Serves: A repository is set as its graph decides
-
-### How GitHub merges a pull request
-
-Vocabulary · `MergeMethods`
-
-- Owner: trame
-- Words: { merge: A merge commit: each commit of the branch kept, squash: One commit for the branch, rebase: Each commit replayed on the main branch }
-- Serves: A repository is set as its graph decides
-
-### A repository on GitHub
-
-Port · `RepositoryApi`
-
-- Owner: trame
-- Declared effects: { apply: process, network, asynchronous, read: process, network, asynchronous }
-
-### The repositories a scenario keeps in memory.
-
-Port · `RepositoryKept`
-
-- Owner: trame
-- Declared effects: 
-
-### A repository kept in memory
-
-Function · `RepositoryInMemory` · **unknown**
-
-- Owner: trame
-- Serves: A repository is set as its graph decides
-- Implements: A repository on GitHub, The repositories a scenario keeps in memory.
+- Released by: trame
+- Version: 0.7.0
+- Released on: 2026-11-19
+- What changes: A file written names the nodes it comes from at its top (the artefact, the decision of its settings, the file that declares them), and a workflow's name says its job; the repository's settings leave ci for std (0.20.0), where a program of the project's SDLC applies and reads them back, and the writer of a script that set them is gone
+- Fingerprint: b1a205a7d08e6a57
+- Language: shared
+- Serves: Each place is a writer, A shipment runs elsewhere as it runs here
 
 ## Continuous integration · SDLC
 
@@ -332,7 +296,7 @@ Decision · `PullRequestsOnGitHub`
 
 ### The pull requests' workflow
 
-Artefact · `PullRequestWorkflow` · **unknown**
+Artefact · `PullRequestWorkflow` · **held**
 
 - Owner: trame
 - Path: ../.github/workflows/ci-pull-request.yml
@@ -343,7 +307,7 @@ Artefact · `PullRequestWorkflow` · **unknown**
 
 ### The library of writers
 
-Artefact · `TheLibrary` · **unknown**
+Artefact · `TheLibrary` · **held**
 
 - Owner: trame
 - Path: src
@@ -351,7 +315,7 @@ Artefact · `TheLibrary` · **unknown**
 
 ### The next version
 
-Shipment · `NextVersion` · **unknown**
+Shipment · `NextVersion` · **held**
 
 - Owner: trame
 - Target: version
@@ -360,7 +324,7 @@ Shipment · `NextVersion` · **unknown**
 
 ### The files that run it elsewhere
 
-Shipment · `RunnersWritten` · **unknown**
+Shipment · `RunnersWritten` · **held**
 
 - Owner: trame
 - Target: repository

@@ -1,5 +1,6 @@
 # Written by trame ship from the graph, for the shipment "A preview" of apps/poselia
-# Do not edit: edit the graph, then ship.
+# From the artefact sdlc.PreviewWorkflow and its settings sdlc.PreviewOnGitHub declared in apps/poselia/src/sdlc.ts
+# Do not edit: change those nodes, then ship.
 name: A preview
 on:
   workflow_dispatch:

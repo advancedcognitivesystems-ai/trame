@@ -1,6 +1,7 @@
 # Written by trame ship from the graph, for the shipment "The next version" of libs/data
-# Do not edit: edit the graph, then ship.
-name: The next version
+# From the artefact sdlc.PullRequestWorkflow and its settings sdlc.PullRequestsOnGitHub declared in libs/data/src/sdlc.ts
+# Do not edit: change those nodes, then ship.
+name: "data · The next version"
 on:
   pull_request:
     branches:

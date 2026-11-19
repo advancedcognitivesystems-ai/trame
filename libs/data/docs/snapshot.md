@@ -87,10 +87,10 @@ Package · `ContinuousIntegration`
 
 - Owner: trame
 - Name: ci
-- Version: 0.6.0
+- Version: 0.7.0
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: ../../ci/releases/0.6.0
+- Its path: ../../ci/releases/0.7.0
 - Serves: Data described once
 
 ### Trame
@@ -99,9 +99,9 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 109
+- Version: 110
 - How it joins the graph: language
-- Its path: ../../generations/g109
+- Its path: ../../generations/g110
 - Serves: Data described once
 
 ### std
@@ -110,9 +110,9 @@ Package · `stdLibrary`
 
 - Owner: trame
 - Name: std
-- Version: 0.19.0
+- Version: 0.20.0
 - How it joins the graph: library
-- Its path: ../../std/releases/0.19.0
+- Its path: ../../std/releases/0.20.0
 - Serves: Data described once
 
 ## Data · Principles

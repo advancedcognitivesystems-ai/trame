@@ -47,9 +47,11 @@ The workflow that checks a pull request on GitHub, written from the pipeline of 
 - Path: `../.github/workflows/std-pull-request.yml`
 - Media type: `application/yaml`
 
-Built 19 November 2026 by claude, fingerprint `822da0f07b6f23d43a3f7567285ff69d3934c9fe04db4e84df4ed9e9d8459667`.
+Built 19 November 2026 by claude, fingerprint `7669696240d0f40a2b0fae4d5761a6562c306aee3c1ff2643312942d38a31b14`.
 
 Shipped by [The files that run it elsewhere](#RunnersWritten) 19 November 2026, fingerprint `822da0f07b6f23d43a3f7567285ff69d3934c9fe04db4e84df4ed9e9d8459667`.
+
+Shipped by [The files that run it elsewhere](#RunnersWritten) 19 November 2026, fingerprint `7669696240d0f40a2b0fae4d5761a6562c306aee3c1ff2643312942d38a31b14`.
 
 - Owner: trame
 - Produced by: [A workflow of GitHub Actions](../.trame/ci/docs/github.md#GitHubWorkflow)
@@ -67,7 +69,7 @@ The library as its people write it: what a version freezes, and what projects im
 
 - Path: `src`
 
-Built 19 November 2026 by claude, fingerprint `c62dd8d8961932412ab9d4989609edb97c02f3dcc28c3c5dec00775851f6f965`.
+Built 19 November 2026 by claude, fingerprint `d20be663dc304cf9353c645935763f7445eb7e927fd6e2e4da48c9dc0c9238c6`.
 
 Shipped by [The next version](#NextVersion) 10 November 2026, fingerprint `899a945c8e6cedd8f5b631d42814486280ce02f0b93c4e2b7dac85775c2c8c9d`.
 
@@ -82,6 +84,8 @@ Shipped by [The next version](#NextVersion) 18 November 2026, fingerprint `29133
 Shipped by [The next version](#NextVersion) 18 November 2026, fingerprint `d00995e9aed51fb4812b451cb904ecbe20ae47e26b5d01d1c6514875396d77f5`.
 
 Shipped by [The next version](#NextVersion) 19 November 2026, fingerprint `c62dd8d8961932412ab9d4989609edb97c02f3dcc28c3c5dec00775851f6f965`.
+
+Shipped by [The next version](#NextVersion) 19 November 2026, fingerprint `d20be663dc304cf9353c645935763f7445eb7e927fd6e2e4da48c9dc0c9238c6`.
 
 - Owner: trame
 - A version of the project: true
@@ -104,10 +108,12 @@ A version of the standard library, for the projects that import it: shipped by t
 | [The standard library](#TheLibrary) | **unknown** | shipped |
 | [An entry point says who may call it](access.md#SaysItsAudience) | **held** | [Its decisions applied](#DecisionsApplied), for [Who calls a shipment's programs is identified](obligations.md#Identified) |
 | [The device's services, as ports](platform.md#DeviceAsPorts) | **held** | [Its decisions applied](#DecisionsApplied), for [Animation frames](platform.md#AnimationFrames) |
+| [A repository is set by its project's graph](repository.md#RepositoryThroughItsApi) | **held** | [Its decisions applied](#DecisionsApplied), for [GitHub's command line](repository.md#GitHubCliRepository) |
 | [The SDLC's tooling is realized once](tooling.md#ToolingAsPorts) | **held** | [Its decisions applied](#DecisionsApplied), for [A browser kept in memory](tooling.md#BrowserInMemory) |
 | [Seeded draws keep their promise](scenarios.md#DrawsKeepTheirPromise) | **held** | [Its functions verified](#FunctionsVerified), for [Seeded draws](algorithms.md#SeededDraws) |
 | [Commands are made for each effect](scenarios.md#CommandsMade) | **held** | [Its functions verified](#FunctionsVerified), for [Commands](effects.md#Commands) |
 | [The device, in memory](scenarios.md#DeviceInMemory) | **held** | [Its functions verified](#FunctionsVerified), for [The screen kept awake, in memory](platform.md#AwakeInMemory) |
+| [A repository kept in memory](scenarios.md#RepositoryInMemoryKeeps) | **held** | [Its functions verified](#FunctionsVerified), for [A repository compared with its settings](repository.md#RepositoryCompared) |
 | [The tooling, in memory](scenarios.md#ToolingInMemory) | **held** | [Its functions verified](#FunctionsVerified), for [A browser kept in memory](tooling.md#BrowserInMemory) |
 | [Playwright](tooling.md#PlaywrightPackage) | **held** | [Its packages safe](#PackagesSafe), for [Chromium, driven by Playwright](tooling.md#PlaywrightBrowser) |
 | [The decisions a shipment applies hold](obligations.md#Applied) | **held** | [Its requirements held](#RequirementsServed), for [Anyone](access.md#Anyone) |
@@ -126,7 +132,7 @@ A version of the standard library, for the projects that import it: shipped by t
 | [Effects a node may not have](rules.md#WithoutEffects) | **held** | [Its requirements held](#RequirementsServed), for [Anyone](access.md#Anyone) |
 | [Words of a vocabulary](rules.md#WordsOf) | **held** | [Its requirements held](#RequirementsServed), for [Anyone](access.md#Anyone) |
 
-Shipped 19 November 2026 by claude; its dossier: `evidence/shipments/NextVersion-2026-11-19-76afb2d6.json`.
+Shipped 19 November 2026 by claude; its dossier: `evidence/shipments/NextVersion-2026-11-19-c8b6e91d.json`.
 
 - Owner: trame
 - Ships: [The standard library](#TheLibrary)
@@ -147,7 +153,7 @@ The workflow that checks each pull request, written by trame ship from the graph
 |---|---|---|
 | [The pull requests' workflow](#PullRequestWorkflow) | **held** | shipped |
 
-Shipped 19 November 2026 by claude; its dossier: `evidence/shipments/RunnersWritten-2026-11-19-9475f888.json`.
+Shipped 19 November 2026 by claude; its dossier: `evidence/shipments/RunnersWritten-2026-11-19-c61530ad.json`.
 
 - Owner: trame
 - Ships: [The pull requests' workflow](#PullRequestWorkflow)

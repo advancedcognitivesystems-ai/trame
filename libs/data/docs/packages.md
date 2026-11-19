@@ -15,14 +15,14 @@
 The writers of the files that run a shipment elsewhere (GitHub Actions), at the version the project uses, by its path in Trame's repository: the workflow that checks each pull request is written from the graph.
 
 - Name: `ci`
-- Version: `0.6.0`
+- Version: `0.7.0`
 - Installed: Not installed in the project: its lockfile lists no ci
 - Vulnerabilities: No report yet: trame audit asks the registry
 - Latest version: No report yet: trame audit asks the registry
 - What it may do: not said: an implementation that imports it cannot promise anything
 - How it joins the graph: `library`
 - Where it comes from: `path`
-- Its path: `../../ci/releases/0.6.0`
+- Its path: `../../ci/releases/0.7.0`
 
 - Owner: trame
 - Serves: [Data described once](product.md#DataDescribedOnce)
@@ -36,13 +36,13 @@ The writers of the files that run a shipment elsewhere (GitHub Actions), at the 
 The language the project is written in, at the generation that started it: its owner moves it by an amendment.
 
 - Name: `trame`
-- Version: `109`
+- Version: `110`
 - Installed: Not installed in the project: its lockfile lists no trame
 - Vulnerabilities: No report yet: trame audit asks the registry
 - Latest version: No report yet: trame audit asks the registry
 - What it may do: not said: an implementation that imports it cannot promise anything
 - How it joins the graph: `language`
-- Its path: `../../generations/g109`
+- Its path: `../../generations/g110`
 
 - Owner: trame
 - Serves: [Data described once](product.md#DataDescribedOnce)
@@ -56,13 +56,13 @@ The language the project is written in, at the generation that started it: its o
 A library the project builds on, at the version the language's home uses.
 
 - Name: `std`
-- Version: `0.19.0`
+- Version: `0.20.0`
 - Installed: Not installed in the project: its lockfile lists no std
 - Vulnerabilities: No report yet: trame audit asks the registry
 - Latest version: No report yet: trame audit asks the registry
 - What it may do: not said: an implementation that imports it cannot promise anything
 - How it joins the graph: `library`
-- Its path: `../../std/releases/0.19.0`
+- Its path: `../../std/releases/0.20.0`
 
 - Owner: trame
 - Serves: [Data described once](product.md#DataDescribedOnce)

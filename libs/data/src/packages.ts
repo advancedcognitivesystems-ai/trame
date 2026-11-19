@@ -7,13 +7,13 @@ import { DataDescribedOnce } from "./product"
  * Trame
  * The language the project is written in, at the generation that started it: its owner moves it by an amendment.
  */
-export const Language = pkg({ owner: "trame", packageName: "trame", version: "109", joins: "language", at: "../../generations/g109", serves: [DataDescribedOnce] })
+export const Language = pkg({ owner: "trame", packageName: "trame", version: "110", joins: "language", at: "../../generations/g110", serves: [DataDescribedOnce] })
 
 /**
  * std
  * A library the project builds on, at the version the language's home uses.
  */
-export const stdLibrary = pkg({ owner: "trame", packageName: "std", version: "0.19.0", joins: "library", at: "../../std/releases/0.19.0", serves: [DataDescribedOnce] })
+export const stdLibrary = pkg({ owner: "trame", packageName: "std", version: "0.20.0", joins: "library", at: "../../std/releases/0.20.0", serves: [DataDescribedOnce] })
 
 /**
  * The library of continuous integration
@@ -21,6 +21,6 @@ export const stdLibrary = pkg({ owner: "trame", packageName: "std", version: "0.
  * in Trame's repository: the workflow that checks each pull request is written from the graph.
  */
 export const ContinuousIntegration = pkg({
-  owner: "trame", packageName: "ci", version: "0.6.0", joins: "library", from: "path", at: "../../ci/releases/0.6.0",
+  owner: "trame", packageName: "ci", version: "0.7.0", joins: "library", from: "path", at: "../../ci/releases/0.7.0",
   serves: [DataDescribedOnce],
 })

@@ -83,3 +83,16 @@ export const R0_6_0 = release({
   language: "shared",
   serves: [OneWriterPerPlace, RunsElsewhere],
 })
+
+/**
+ * Version 0.7.0
+ */
+export const R0_7_0 = release({
+  owner: "trame",
+  version: "0.7.0",
+  date: "2026-11-19",
+  what: "A file written names the nodes it comes from at its top (the artefact, the decision of its settings, the file that declares them), and a workflow's name says its job; the repository's settings leave ci for std (0.20.0), where a program of the project's SDLC applies and reads them back, and the writer of a script that set them is gone",
+  fingerprint: "b1a205a7d08e6a57",
+  language: "shared",
+  serves: [OneWriterPerPlace, RunsElsewhere],
+})

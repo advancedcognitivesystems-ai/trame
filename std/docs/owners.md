@@ -4,7 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 5 | 182 |
+| trame | 0 | 0 | 5 | 193 |
 
 <a id="trame"></a>
 
@@ -124,6 +124,7 @@
 | [Version 0.18.1](releases.md#R0_18_1) | Release |  |
 | [Version 0.19.0](releases.md#R0_19_0) | Release |  |
 | [Version 0.2.0](releases.md#R0_2_0) | Release |  |
+| [Version 0.20.0](releases.md#R0_20_0) | Release |  |
 | [Version 0.3.0](releases.md#R0_3_0) | Release |  |
 | [Version 0.4.0](releases.md#R0_4_0) | Release |  |
 | [Version 0.5.0](releases.md#R0_5_0) | Release |  |
@@ -131,6 +132,15 @@
 | [Version 0.7.0](releases.md#R0_7_0) | Release |  |
 | [Version 0.8.0](releases.md#R0_8_0) | Release |  |
 | [Version 0.9.0](releases.md#R0_9_0) | Release |  |
+| [GitHub's command line](repository.md#GitHubCliRepository) | Implementation |  |
+| [GitHub's API for a repository](repository.md#GitHubRepositoryApi) | Standard |  |
+| [How GitHub merges a pull request](repository.md#MergeMethods) | Vocabulary |  |
+| [A repository on GitHub](repository.md#RepositoryApi) | Port |  |
+| [A repository compared with its settings](repository.md#RepositoryCompared) | Function | **held** |
+| [A repository kept in memory](repository.md#RepositoryInMemory) | Function | **held** |
+| [The repositories a scenario keeps](repository.md#RepositoryKept) | Port |  |
+| [The parts of a repository's settings](repository.md#RepositoryParts) | Vocabulary |  |
+| [A repository is set by its project's graph](repository.md#RepositoryThroughItsApi) | Architecture decision | **held** |
 | [Directions](rules.md#Directions) | Vocabulary |  |
 | [As many links as asked](rules.md#Linked) | Requirement | **held** |
 | [Criteria of as many links as asked](rules.md#LinkedCriteria) | Acceptance criteria | **held** |
@@ -146,6 +156,7 @@
 | [The device, in memory](scenarios.md#DeviceInMemory) | Scenario | **held** |
 | [Seeded draws keep their promise](scenarios.md#DrawsKeepTheirPromise) | Scenario | **held** |
 | [In memory](scenarios.md#InMemory) | Technical choice | **held** |
+| [A repository kept in memory](scenarios.md#RepositoryInMemoryKeeps) | Scenario | **held** |
 | [What the library's scenarios check](scenarios.md#ScenarioChecks) | Message catalog |  |
 | [What the library's scenarios are given](scenarios.md#ScenarioData) | Decision |  |
 | [The language of the library's scenarios](scenarios.md#ScenarioLanguage) | Decision |  |

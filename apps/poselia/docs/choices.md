@@ -127,7 +127,7 @@ Consequences: The screen and what records it are chosen together: a scenario rea
 
 ### On the machine
 
-`OnTheMachine` · `src/sdlc.ts:87` · status: **held**
+`OnTheMachine` · `src/sdlc.ts:87` · status: **unknown**
 
 On a machine, the programs of the SDLC read their commands from Node's command line, the project's files from the disk, and open the page in Chromium driven by Playwright, as the standard library realizes them.
 

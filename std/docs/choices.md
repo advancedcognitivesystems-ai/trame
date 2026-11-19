@@ -2,7 +2,7 @@
 
 *What answers each port in each environment on 19 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
 
-> **1 technical choice for 11 ports, in 1 environment**
+> **1 technical choice for 13 ports, in 1 environment**
 
 | Port | Test |
 |---|---|
@@ -13,6 +13,8 @@
 | [Whether the screen is kept awake](platform.md#ScreenKeptAwake) | [The screen kept awake, in memory](platform.md#AwakeInMemory) |
 | [Animation frames](platform.md#AnimationFrames) | [Frames turned by hand](platform.md#FramesByHand) |
 | [Time turned by hand](platform.md#TimeTurned) | [Frames turned by hand](platform.md#FramesByHand) |
+| [A repository on GitHub](repository.md#RepositoryApi) | [A repository kept in memory](repository.md#RepositoryInMemory) |
+| [The repositories a scenario keeps](repository.md#RepositoryKept) | [A repository kept in memory](repository.md#RepositoryInMemory) |
 | [Project files](tooling.md#Files) | [Files kept in memory](tooling.md#FilesInMemory) |
 | [Files written](tooling.md#FilesKept) | [Files kept in memory](tooling.md#FilesInMemory) |
 | [Headless browser](tooling.md#HeadlessBrowser) | [A browser kept in memory](tooling.md#BrowserInMemory) |
@@ -32,7 +34,7 @@
 
 ### In memory
 
-`InMemory` · `src/scenarios.ts:33` · status: **held**
+`InMemory` · `src/scenarios.ts:35` · status: **held**
 
 In the library's scenarios, each port of a device or of the tooling is answered by its realization kept in memory.
 
@@ -44,13 +46,14 @@ In [Test](scenarios.md#Test):
 | [Animation frames](platform.md#AnimationFrames), [Time turned by hand](platform.md#TimeTurned) | [Frames turned by hand](platform.md#FramesByHand) | a function |
 | [Preferences](platform.md#PreferencesStore) | [Preferences kept in memory](platform.md#MemoryPreferences) | a function |
 | [What was said](platform.md#SpeechHeard), [Speech](platform.md#SpeechVoice) | [A voice that writes down](platform.md#WrittenSpeech) | a function |
+| [A repository on GitHub](repository.md#RepositoryApi), [The repositories a scenario keeps](repository.md#RepositoryKept) | [A repository kept in memory](repository.md#RepositoryInMemory) | a function |
 | [Browser script](tooling.md#BrowserScripted), [Headless browser](tooling.md#HeadlessBrowser) | [A browser kept in memory](tooling.md#BrowserInMemory) | a function |
 | [Project files](tooling.md#Files), [Files written](tooling.md#FilesKept) | [Files kept in memory](tooling.md#FilesInMemory) | a function |
 
 Context: A realization kept in memory is what a project's scenarios run in place of the device: it must keep its port's promise.
 
 - Decided by: trame
-- Chooses: [Preferences kept in memory](platform.md#MemoryPreferences), [A voice that writes down](platform.md#WrittenSpeech), [The screen kept awake, in memory](platform.md#AwakeInMemory), [Frames turned by hand](platform.md#FramesByHand), [Files kept in memory](tooling.md#FilesInMemory), [A browser kept in memory](tooling.md#BrowserInMemory)
+- Chooses: [Preferences kept in memory](platform.md#MemoryPreferences), [A voice that writes down](platform.md#WrittenSpeech), [The screen kept awake, in memory](platform.md#AwakeInMemory), [Frames turned by hand](platform.md#FramesByHand), [Files kept in memory](tooling.md#FilesInMemory), [A browser kept in memory](tooling.md#BrowserInMemory), [A repository kept in memory](repository.md#RepositoryInMemory)
 - In: [Test](scenarios.md#Test)
 - Follows: [Strategy](patterns.md#Strategy)
 - Serves: [Ports of the platform, realized once](product.md#RealizedOnce)

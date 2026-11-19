@@ -101,3 +101,19 @@ A workflow installs the projects its shipment's scenarios enter
 
 - Released by: trame
 - Serves: [Each place is a writer](product.md#OneWriterPerPlace), [A shipment runs elsewhere as it runs here](product.md#RunsElsewhere)
+
+<a id="R0_7_0"></a>
+
+### Version 0.7.0
+
+`R0_7_0` · `src/releases.ts:90`
+
+A file written names the nodes it comes from at its top (the artefact, the decision of its settings, the file that declares them), and a workflow's name says its job; the repository's settings leave ci for std (0.20.0), where a program of the project's SDLC applies and reads them back, and the writer of a script that set them is gone
+
+- Version: `0.7.0`
+- Released on: 19 November 2026
+- Fingerprint: `b1a205a7d08e6a57`
+- Language: the repository's, shared
+
+- Released by: trame
+- Serves: [Each place is a writer](product.md#OneWriterPerPlace), [A shipment runs elsewhere as it runs here](product.md#RunsElsewhere)

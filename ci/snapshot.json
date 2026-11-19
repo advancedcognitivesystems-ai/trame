@@ -549,24 +549,16 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "109",
+        "version": "110",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g109"
+        "at": "../generations/g110"
       }
     },
     {
       "id": "product.OneWriterPerPlace",
       "kind": "goal",
       "title": "Each place is a writer",
-      "fields": {
-        "owner": "trame"
-      }
-    },
-    {
-      "id": "product.RepositoryAsDecided",
-      "kind": "goal",
-      "title": "A repository is set as its graph decides",
       "fields": {
         "owner": "trame"
       }
@@ -658,258 +650,23 @@
       }
     },
     {
-      "id": "repository.GitHubRepositoryApi",
-      "kind": "standard",
-      "title": "GitHub's API for a repository",
+      "id": "releases.R0_7_0",
+      "kind": "release",
+      "title": "Version 0.7.0",
       "fields": {
         "owner": "trame",
-        "source": "GitHub REST API: Repositories (Update a repository), Rules (Create, Get and Update a repository ruleset), Pages (Create a GitHub Pages site, build_type workflow); GitHub CLI manual: gh api (--method, --input, --jq, -f)",
-        "url": "https://docs.github.com/en/rest/repos/rules",
-        "constants": {
-          "program": {
-            "value": "gh",
-            "meaning": "GitHub's command line, with the token of the person who runs it"
-          },
-          "api": {
-            "value": "api",
-            "meaning": "Calls GitHub's API"
-          },
-          "method": {
-            "value": "--method",
-            "meaning": "The method of the call"
-          },
-          "patch": {
-            "value": "PATCH",
-            "meaning": "Changes what it names"
-          },
-          "post": {
-            "value": "POST",
-            "meaning": "Creates"
-          },
-          "put": {
-            "value": "PUT",
-            "meaning": "Replaces"
-          },
-          "input": {
-            "value": "--input",
-            "meaning": "The body of the call, read from a file"
-          },
-          "standardInput": {
-            "value": "-",
-            "meaning": "As a file: what the command is given"
-          },
-          "repos": {
-            "value": "repos/",
-            "meaning": "Before the repository, owner/name"
-          },
-          "rulesets": {
-            "value": "/rulesets",
-            "meaning": "After it: its rulesets"
-          },
-          "branchRules": {
-            "value": "/rules/branches/",
-            "meaning": "After it, before a branch: the rules in force on the branch"
-          },
-          "pages": {
-            "value": "/pages",
-            "meaning": "After it: its pages"
-          },
-          "separator": {
-            "value": "/",
-            "meaning": "Between the steps of a path"
-          },
-          "allowMerge": {
-            "value": "allow_merge_commit",
-            "meaning": "Whether a pull request may be merged with a merge commit"
-          },
-          "allowSquash": {
-            "value": "allow_squash_merge",
-            "meaning": "Whether it may be squashed"
-          },
-          "allowRebase": {
-            "value": "allow_rebase_merge",
-            "meaning": "Whether it may be rebased"
-          },
-          "allowAutoMerge": {
-            "value": "allow_auto_merge",
-            "meaning": "Whether GitHub may merge it once it holds, when asked"
-          },
-          "deleteBranch": {
-            "value": "delete_branch_on_merge",
-            "meaning": "Whether its branch is deleted once merged"
-          },
-          "name": {
-            "value": "name",
-            "meaning": "The name of a ruleset"
-          },
-          "target": {
-            "value": "target",
-            "meaning": "What a ruleset protects"
-          },
-          "branchTarget": {
-            "value": "branch",
-            "meaning": "Branches"
-          },
-          "enforcement": {
-            "value": "enforcement",
-            "meaning": "Whether a ruleset applies"
-          },
-          "active": {
-            "value": "active",
-            "meaning": "It applies"
-          },
-          "conditions": {
-            "value": "conditions",
-            "meaning": "Which branches it protects"
-          },
-          "refName": {
-            "value": "ref_name",
-            "meaning": "By their names"
-          },
-          "include": {
-            "value": "include",
-            "meaning": "Those it protects"
-          },
-          "exclude": {
-            "value": "exclude",
-            "meaning": "Those it leaves out"
-          },
-          "heads": {
-            "value": "refs/heads/",
-            "meaning": "Before a branch's name"
-          },
-          "rules": {
-            "value": "rules",
-            "meaning": "Its rules"
-          },
-          "type": {
-            "value": "type",
-            "meaning": "The kind of a rule"
-          },
-          "parameters": {
-            "value": "parameters",
-            "meaning": "What a rule is given"
-          },
-          "deletion": {
-            "value": "deletion",
-            "meaning": "The branch is never deleted"
-          },
-          "nonFastForward": {
-            "value": "non_fast_forward",
-            "meaning": "The branch is never rewritten"
-          },
-          "pullRequest": {
-            "value": "pull_request",
-            "meaning": "The branch receives nothing but pull requests"
-          },
-          "approvals": {
-            "value": "required_approving_review_count",
-            "meaning": "How many approvals a pull request needs"
-          },
-          "dismissStale": {
-            "value": "dismiss_stale_reviews_on_push",
-            "meaning": "Whether a push dismisses the approvals given"
-          },
-          "codeOwners": {
-            "value": "require_code_owner_review",
-            "meaning": "Whether the owners of the files changed must approve"
-          },
-          "lastPush": {
-            "value": "require_last_push_approval",
-            "meaning": "Whether the last push needs an approval of its own"
-          },
-          "threads": {
-            "value": "required_review_thread_resolution",
-            "meaning": "Whether every thread of the review must be resolved"
-          },
-          "methods": {
-            "value": "allowed_merge_methods",
-            "meaning": "How a pull request may be merged"
-          },
-          "statusChecks": {
-            "value": "required_status_checks",
-            "meaning": "The checks a pull request must pass"
-          },
-          "strict": {
-            "value": "strict_required_status_checks_policy",
-            "meaning": "Whether the branch must be up to date with the main one first"
-          },
-          "context": {
-            "value": "context",
-            "meaning": "A check, by the name of the job that runs it"
-          },
-          "buildType": {
-            "value": "build_type",
-            "meaning": "How the pages are built"
-          },
-          "workflow": {
-            "value": "workflow",
-            "meaning": "By a workflow"
-          },
-          "id": {
-            "value": "id",
-            "meaning": "The identifier of a ruleset"
-          }
-        }
-      }
-    },
-    {
-      "id": "repository.MergeMethods",
-      "kind": "vocabulary",
-      "title": "How GitHub merges a pull request",
-      "fields": {
-        "owner": "trame",
-        "words": {
-          "merge": "A merge commit: each commit of the branch kept",
-          "squash": "One commit for the branch",
-          "rebase": "Each commit replayed on the main branch"
-        }
-      }
-    },
-    {
-      "id": "repository.RepositoryApi",
-      "kind": "port",
-      "title": "A repository on GitHub",
-      "fields": {
-        "owner": "trame",
-        "declaredEffects": {
-          "apply": [
-            "process",
-            "network",
-            "asynchronous"
-          ],
-          "read": [
-            "process",
-            "network",
-            "asynchronous"
-          ]
-        }
-      }
-    },
-    {
-      "id": "repository.RepositoryInMemory",
-      "kind": "function",
-      "title": "A repository kept in memory",
-      "status": "unknown",
-      "fields": {
-        "owner": "trame",
-        "body": "(function)"
-      }
-    },
-    {
-      "id": "repository.RepositoryKept",
-      "kind": "port",
-      "title": "The repositories a scenario keeps in memory.",
-      "fields": {
-        "owner": "trame",
-        "declaredEffects": []
+        "version": "0.7.0",
+        "date": "2026-11-19",
+        "what": "A file written names the nodes it comes from at its top (the artefact, the decision of its settings, the file that declares them), and a workflow's name says its job; the repository's settings leave ci for std (0.20.0), where a program of the project's SDLC applies and reads them back, and the writer of a script that set them is gone",
+        "fingerprint": "b1a205a7d08e6a57",
+        "language": "shared"
       }
     },
     {
       "id": "sdlc.NextVersion",
       "kind": "shipment",
       "title": "The next version",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "version"
@@ -948,7 +705,7 @@
       "id": "sdlc.PullRequestWorkflow",
       "kind": "artifact",
       "title": "The pull requests' workflow",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "../.github/workflows/ci-pull-request.yml",
@@ -959,7 +716,7 @@
       "id": "sdlc.RunnersWritten",
       "kind": "shipment",
       "title": "The files that run it elsewhere",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "repository"
@@ -969,7 +726,7 @@
       "id": "sdlc.TheLibrary",
       "kind": "artifact",
       "title": "The library of writers",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "src",
@@ -1478,29 +1235,14 @@
       "kind": "serves"
     },
     {
-      "from": "repository.GitHubRepositoryApi",
-      "to": "product.RepositoryAsDecided",
+      "from": "releases.R0_7_0",
+      "to": "product.OneWriterPerPlace",
       "kind": "serves"
     },
     {
-      "from": "repository.MergeMethods",
-      "to": "product.RepositoryAsDecided",
+      "from": "releases.R0_7_0",
+      "to": "product.RunsElsewhere",
       "kind": "serves"
-    },
-    {
-      "from": "repository.RepositoryInMemory",
-      "to": "product.RepositoryAsDecided",
-      "kind": "serves"
-    },
-    {
-      "from": "repository.RepositoryInMemory",
-      "to": "repository.RepositoryApi",
-      "kind": "implements"
-    },
-    {
-      "from": "repository.RepositoryInMemory",
-      "to": "repository.RepositoryKept",
-      "kind": "implements"
     },
     {
       "from": "sdlc.NextVersion",

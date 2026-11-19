@@ -131,10 +131,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "ci",
-        "version": "0.6.0",
+        "version": "0.7.0",
         "joins": "library",
         "from": "path",
-        "at": "../../ci/releases/0.6.0"
+        "at": "../../ci/releases/0.7.0"
       }
     },
     {
@@ -144,9 +144,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "109",
+        "version": "110",
         "joins": "language",
-        "at": "../../generations/g109"
+        "at": "../../generations/g110"
       }
     },
     {
@@ -156,9 +156,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.19.0",
+        "version": "0.20.0",
         "joins": "library",
-        "at": "../../std/releases/0.19.0"
+        "at": "../../std/releases/0.20.0"
       }
     },
     {

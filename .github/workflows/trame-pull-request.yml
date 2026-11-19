@@ -1,6 +1,7 @@
 # Written by trame ship from the graph, for the shipment "Into the main branch" of .
-# Do not edit: edit the graph, then ship.
-name: Into the main branch
+# From the artefact sdlc.PullRequestWorkflow and its settings sdlc.PullRequestsOnGitHub declared in src/sdlc.ts
+# Do not edit: change those nodes, then ship.
+name: "trame · Into the main branch"
 on:
   pull_request:
     branches:

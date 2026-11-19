@@ -22,11 +22,3 @@ export const RunsElsewhere = goal({ owner: "trame" })
  * its examples, written once in this library; projects choose one by naming it as what produces an artefact.
  */
 export const OneWriterPerPlace = goal({ owner: "trame" })
-
-/**
- * A repository is set as its graph decides
- * The settings of the repository a project lives in (its main branch protected, the checks a pull request passes, how
- * it merges, its pages) are a decision of the graph, which a program of the project's SDLC applies and reads back: what
- * someone changes by hand is seen, and set again by trame ship.
- */
-export const RepositoryAsDecided = goal({ owner: "trame" })

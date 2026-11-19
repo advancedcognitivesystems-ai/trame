@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 30 October 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 19 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Trame · Appearance
 
@@ -2951,10 +2951,10 @@ Package · `ContinuousIntegration`
 
 - Owner: trame
 - Name: ci
-- Version: 0.6.0
+- Version: 0.7.0
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: ci/releases/0.6.0
+- Its path: ci/releases/0.7.0
 - Serves: A single source of truth
 
 ### Grammar of CSS
@@ -3015,10 +3015,10 @@ Package · `StandardLibrary`
 
 - Owner: trame
 - Name: std
-- Version: 0.19.0
+- Version: 0.20.0
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: std/releases/0.19.0
+- Its path: std/releases/0.20.0
 - Serves: A single source of truth
 
 ### tsx
@@ -3526,14 +3526,14 @@ Function · `StoppedClock` · **held**
 
 ### System files, for reading
 
-Implementation · `DiskReading` · **unknown**
+Implementation · `DiskReading` · **held**
 
 - Owner: trame
 - Implements: File reading
 
 ### Trees on disk
 
-Implementation · `DiskTrees` · **unknown**
+Implementation · `DiskTrees` · **held**
 
 - Owner: trame
 - Parameters: { diff: std/text.UnifiedDiff, node: std/system.NodeCli, events: std/system.NodeEvents }
@@ -3541,7 +3541,7 @@ Implementation · `DiskTrees` · **unknown**
 
 ### System files, for writing
 
-Implementation · `DiskWriting` · **unknown**
+Implementation · `DiskWriting` · **held**
 
 - Owner: trame
 - Implements: File writing
@@ -3615,7 +3615,7 @@ Implementation · `NodeHashing` · **held**
 
 ### Node HTTP server
 
-Implementation · `NodeHttpServer` · **unknown**
+Implementation · `NodeHttpServer` · **held**
 
 - Owner: trame
 - Implements: HTTP server
@@ -3629,7 +3629,7 @@ Implementation · `NodePaths` · **held**
 
 ### Node process
 
-Implementation · `NodeProcess` · **unknown**
+Implementation · `NodeProcess` · **held**
 
 - Owner: trame
 - Parameters: { argv: std/system.NodeArguments, node: std/system.NodeCli, runner: platform.TypeScriptRunner }
@@ -3638,7 +3638,7 @@ Implementation · `NodeProcess` · **unknown**
 
 ### Node programs
 
-Implementation · `NodePrograms` · **unknown**
+Implementation · `NodePrograms` · **held**
 
 - Owner: trame
 - Parameters: { node: std/system.NodeCli, runner: platform.TypeScriptRunner, events: std/system.NodeEvents }
@@ -3647,7 +3647,7 @@ Implementation · `NodePrograms` · **unknown**
 
 ### Node terminal
 
-Implementation · `NodeTerminal` · **unknown**
+Implementation · `NodeTerminal` · **held**
 
 - Owner: trame
 - Parameters: { argv: std/system.NodeArguments, exitStatus: std/system.ExitStatus, events: std/system.NodeEvents, posix: std/system.Posix, messages: messages.PlatformMessages }
@@ -3672,7 +3672,7 @@ Implementation · `NoInstallsInTest` · **held**
 
 ### npm installs
 
-Implementation · `NpmInstall` · **unknown**
+Implementation · `NpmInstall` · **held**
 
 - Owner: trame
 - Parameters: { npm: std/system.NpmCli, node: std/system.NodeCli, events: std/system.NodeEvents, exitStatus: std/system.ExitStatus }
@@ -3680,7 +3680,7 @@ Implementation · `NpmInstall` · **unknown**
 
 ### npm's reports
 
-Implementation · `NpmReports` · **unknown**
+Implementation · `NpmReports` · **held**
 
 - Owner: trame
 - Parameters: { npm: std/system.NpmCli, values: std/algebra.ValueTypes, counts: std/algebra.Counts, punctuation: documents.Punctuation }
@@ -3728,7 +3728,7 @@ Implementation · `RunsInTheProcess` · **held**
 
 ### Runs kept on disk
 
-Implementation · `RunsOnDisk` · **unknown**
+Implementation · `RunsOnDisk` · **held**
 
 - Owner: trame
 - Parameters: { layout: conventions.Layout, files: platform.EngineFiles, engines: engine.EngineFingerprint, scope: engine.KeptRunsScope, encodings: std/system.NodeEncodings }
@@ -3737,7 +3737,7 @@ Implementation · `RunsOnDisk` · **unknown**
 
 ### System clock
 
-Implementation · `SystemClock` · **unknown**
+Implementation · `SystemClock` · **held**
 
 - Owner: trame
 - Parameters: { iso: std/measures.Iso8601, environment: conventions.TrameEnvironment, sequences: std/algebra.Sequences }
@@ -3844,7 +3844,7 @@ Technical choice · `InMemoryScenarios` · **held**
 
 ### On a machine, Node.js reads, writes and runs
 
-Technical choice · `NodeMachine` · **unknown**
+Technical choice · `NodeMachine` · **held**
 
 - Decided by: trame
 - Context: What changes the world (files written, processes, the terminal, the clock) is real only on a machine; the scenarios keep it in memory.
@@ -3904,7 +3904,7 @@ Technical choice · `RunsKeptInTheProcess` · **held**
 
 ### On a machine, runs are kept on disk
 
-Technical choice · `RunsKeptOnDisk` · **unknown**
+Technical choice · `RunsKeptOnDisk` · **held**
 
 - Decided by: trame
 - Context: The commands of a shipment and of an advance run as separate processes, each compiling the same graph: what one played, the next can find only on disk.
@@ -4157,7 +4157,7 @@ Architecture decision · `ShippedThroughTheGraph` · **unknown**
 
 ### A technology is chosen in one node
 
-Architecture decision · `TechnologyInOneNode` · **unknown**
+Architecture decision · `TechnologyInOneNode` · **held**
 
 - Decided by: trame
 - Context: Each implementation said which environments it served: the choice of a technology was spread over its realizations, nothing said why, and a test double or a repository over a database port had to be declared as if it touched the platform.
@@ -4498,6 +4498,20 @@ Release · `G11`
 - Language: own
 - Releases: Trame on the command line
 - Assembled by: Generation 10
+
+### Generation 110
+
+Release · `G110`
+
+- Released by: trame
+- Version: g110
+- Released on: 2026-11-19
+- What changes: D1: the run plan says the nodes a file written comes from (the artefact, the decision of its settings, the file that declares them)
+- Fingerprint: ea7f70d71823986b
+- Language: shared
+- Language archived: b86153ccec9980c7
+- Releases: Trame on the command line
+- Assembled by: Generation 109
 
 ### Generation 12
 
@@ -6184,8 +6198,8 @@ Decision · `GraphPageScenarioData`
 Decision · `MainBranch`
 
 - Decided by: trame
-- Value: { branch: main, checks: trame, std, ci, data, reservations, poselia, method: merge, autoMerge: true, pages: false }
-- Rejected: Squashed, a branch would merge as one commit, and the generations it advances are each a commit; An approval required, the person who opens a pull request with their own account cannot approve it; The check of geometry, geometry runs from the registry of a machine, which a runner of GitHub does not have yet; Pages now, the site that gathers Trame's graph and Poselia's preview is still to be decided
+- Value: { branch: main, checks: trame, std, ci, data, reservations, poselia, upToDate: false, approvals: 0, method: merge, autoMerge: true, deletesMerged: true, pages: false }
+- Rejected: Squashed, a branch would merge as one commit, and the generations it advances are each a commit; An approval required, the person who opens a pull request with their own account cannot approve it; Up to date with main first, each pull request would merge main into itself again, and run its checks again, whenever another one merged; The check of geometry, geometry runs from the registry of a machine, which a runner of GitHub does not have yet; Pages now, the site that gathers Trame's graph and Poselia's preview is still to be decided
 
 ### How a pull request is checked on GitHub
 
@@ -6194,6 +6208,20 @@ Decision · `PullRequestsOnGitHub`
 - Decided by: trame
 - Value: { on: { pullRequests: main }, job: trame, alsoInstalls: apps/poselia, runsOn: ubuntu-24.04, node: 22, artefacts: { days: 30 }, pullRequest: { review: false, merge: onceItHoldsUnlessDecided } }
 - Rejected: Only when a pull request touches the project, GitHub keeps a pull request waiting for a check it requires and that never ran; Merged by GitHub whatever it changes, what people decided would reach main without a person; The review of the branch, Trame publishes nothing yet: its graph is published once the plan is done
+
+### The repository left by hand, in the scenario
+
+Decision · `RepositoryScenarioData`
+
+- Decided by: trame
+- Value: { left: { methods: merge, squash, rebase, autoMerge: false, deletesMerged: false, protected: false, checks: trame, upToDate: false } }
+
+### Trame's repository
+
+Decision · `TheRepository`
+
+- Decided by: trame
+- Value: { name: advancedcognitivesystems-ai/trame }
 
 ### Trame's SDLC
 
@@ -6213,6 +6241,17 @@ Function · `GraphPageSelectors` · **held**
 - Serves: A specification that runs
 - Depends on: Regions of the page, Documents in the page, Attribute selector
 
+### Set the repository's settings
+
+Entry point · `ApplyTheRepositorySettings` · **held**
+
+- Owner: trame
+- Trigger: { type: command, name: apply-repository-settings }
+- Parameters: { repository: std/repository.RepositoryApi, name: sdlc.TheRepository, settings: sdlc.MainBranch, compared: std/repository.RepositoryCompared, say: sdlc.SdlcWords, exit: std/system.ExitStatus, counts: std/algebra.Counts }
+- Serves: A specification that runs
+- Part of: Trame's SDLC
+- Depends on: Trame's repository, How the repository merges into main, What the programs of Trame's SDLC say
+
 ### Open the graph page
 
 Entry point · `OpenTheGraphPage` · **held**
@@ -6223,6 +6262,17 @@ Entry point · `OpenTheGraphPage` · **held**
 - Serves: A specification that runs
 - Part of: Trame's SDLC
 - Depends on: The graph page, Language, What the graph page is asked, How the graph page is opened, What the programs of Trame's SDLC say
+
+### Read the repository's settings
+
+Entry point · `ReadTheRepositorySettings` · **held**
+
+- Owner: trame
+- Trigger: { type: command, name: read-repository-settings }
+- Parameters: { repository: std/repository.RepositoryApi, name: sdlc.TheRepository, settings: sdlc.MainBranch, compared: std/repository.RepositoryCompared, say: sdlc.SdlcWords, exit: std/system.ExitStatus, counts: std/algebra.Counts }
+- Serves: A specification that runs
+- Part of: Trame's SDLC
+- Depends on: Trame's repository, How the repository merges into main, What the programs of Trame's SDLC say
 
 ### What the programs of Trame's SDLC say
 
@@ -6244,7 +6294,7 @@ Technical choice · `SdlcInMemory` · **held**
 Technical choice · `SdlcOnTheMachine` · **unknown**
 
 - Decided by: trame
-- Context: The graph page must be opened as a person opens it: the file exported, in a real browser.
+- Context: The graph page must be opened as a person opens it: the file exported, in a real browser; the repository is set and read by GitHub's command line, with the token of whoever runs it.
 - In: Local
 
 ### The graph page is opened as a person would
@@ -6257,6 +6307,16 @@ Scenario · `OpeningTheGraphPage` · **held**
 - In: Test
 - Depends on: Open the graph page, The graph page, What the graph page is asked, What the programs of Trame's SDLC say, What the scenario of the graph page shows, Messages of the scenarios
 
+### The repository is set as the graph decides
+
+Scenario · `SettingTheRepository` · **held**
+
+- Owner: trame
+- Parameters: { read: sdlc.ReadTheRepositorySettings, apply: sdlc.ApplyTheRepositorySettings, kept: std/repository.RepositoryKept, name: sdlc.TheRepository, settings: sdlc.MainBranch, data: sdlc.RepositoryScenarioData, say: sdlc.SdlcWords, exit: std/system.ExitStatus, counts: std/algebra.Counts, messages: messages.ScenarioMessages }
+- Verifies: Read the repository's settings, Set the repository's settings
+- In: Test
+- Depends on: Read the repository's settings, Set the repository's settings, Trame's repository, How the repository merges into main, The repository left by hand, in the scenario, What the programs of Trame's SDLC say, Messages of the scenarios
+
 ### Trame's maintainers
 
 Role · `Maintainers`
@@ -6266,7 +6326,7 @@ Role · `Maintainers`
 
 ### The candidate engine
 
-Artefact · `EngineCandidate` · **unknown**
+Artefact · `EngineCandidate` · **held**
 
 - Owner: trame
 - Path: out/local/trame-cli.ts
@@ -6274,7 +6334,7 @@ Artefact · `EngineCandidate` · **unknown**
 
 ### The graph page
 
-Artefact · `GraphPage` · **unknown**
+Artefact · `GraphPage` · **held**
 
 - Owner: trame
 - Path: trame-page.html
@@ -6284,7 +6344,7 @@ Artefact · `GraphPage` · **unknown**
 
 ### The page's program
 
-Artefact · `PageProgram` · **unknown**
+Artefact · `PageProgram` · **held**
 
 - Owner: trame
 - Path: out/browser/page-app.ts
@@ -6293,23 +6353,13 @@ Artefact · `PageProgram` · **unknown**
 
 ### The pull requests' workflow
 
-Artefact · `PullRequestWorkflow` · **unknown**
+Artefact · `PullRequestWorkflow` · **held**
 
 - Owner: trame
 - Path: .github/workflows/trame-pull-request.yml
 - Media type: application/yaml
 - Runs elsewhere: Into the main branch
 - Its writer's settings: How a pull request is checked on GitHub
-
-### The settings of the repository
-
-Artefact · `RepositorySettingsScript` · **unknown**
-
-- Owner: trame
-- Path: .github/settings.sh
-- Media type: text/x-shellscript
-- Runs elsewhere: Into the main branch
-- Its writer's settings: How the repository merges into main
 
 ### The engine
 
@@ -6321,7 +6371,7 @@ Artefact · `TheEngine` · **unknown**
 
 ### The candidate plays the laws
 
-Check · `CandidateKeepsTheLaws` · **unknown**
+Check · `CandidateKeepsTheLaws` · **held**
 
 - Owner: trame
 - Checks: The candidate engine
@@ -6330,7 +6380,7 @@ Check · `CandidateKeepsTheLaws` · **unknown**
 
 ### The candidate runs on the machine
 
-Check · `CandidateRunsOnTheMachine` · **unknown**
+Check · `CandidateRunsOnTheMachine` · **held**
 
 - Owner: trame
 - Checks: The candidate engine
@@ -6347,6 +6397,14 @@ Check · `GraphPageOpens` · **unknown**
 - Run by: Open the graph page
 - Signed by: Trame's maintainers
 - Verifies: Show the graph, Explorer of a graph, The browser's window, Local storage, The globals of the page, and trame dev, Amendments sent to trame dev, The browser's gzip
+
+### The repository is read from GitHub
+
+Check · `RepositoryRead` · **held**
+
+- Owner: trame
+- Run by: Read the repository's settings
+- Signed by: Trame's maintainers
 
 ### Into the main branch
 
@@ -6369,13 +6427,24 @@ Shipment · `NextGeneration` · **unknown**
 - Programs assembled for: Local
 - Follows the policy: How a generation is made
 
+### The repository as decided
+
+Shipment · `RepositorySet` · **held**
+
+- Owner: trame
+- Target: github
+- Requires: The repository is read from GitHub
+- Deployed by: Set the repository's settings
+- Programs assembled for: Local
+- Follows the policy: How the repository is set
+
 ### The files that run it elsewhere
 
-Shipment · `RunnersWritten` · **unknown**
+Shipment · `RunnersWritten` · **held**
 
 - Owner: trame
 - Target: repository
-- Ships: The pull requests' workflow, The settings of the repository
+- Ships: The pull requests' workflow
 
 ### The decisions of the architecture hold
 
@@ -6441,6 +6510,13 @@ Policy · `MergeMode`
 
 - Owner: trame
 - Its obligations: The engine is verified, The rules of the architecture hold
+
+### How the repository is set
+
+Policy · `SettingsMode`
+
+- Owner: trame
+- Its obligations: The engine is verified, The rules of the architecture hold, Its callers identified
 
 ## Trame · Shipping
 

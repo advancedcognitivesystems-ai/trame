@@ -160,10 +160,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "ci",
-        "version": "0.6.0",
+        "version": "0.7.0",
         "joins": "library",
         "from": "path",
-        "at": "../../ci/releases/0.6.0"
+        "at": "../../ci/releases/0.7.0"
       },
       "diagnostics": []
     },
@@ -175,9 +175,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "109",
+        "version": "110",
         "joins": "language",
-        "at": "../../generations/g109"
+        "at": "../../generations/g110"
       },
       "diagnostics": []
     },
@@ -189,9 +189,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.19.0",
+        "version": "0.20.0",
         "joins": "library",
-        "at": "../../std/releases/0.19.0"
+        "at": "../../std/releases/0.20.0"
       },
       "diagnostics": []
     },
@@ -1068,7 +1068,7 @@
       },
       "result": {
         "path": "../../.github/workflows/data-pull-request.yml",
-        "code": "afc4b844"
+        "code": "c605982c"
       },
       "diagnostics": []
     },
@@ -1115,7 +1115,7 @@
       },
       "result": {
         "path": "src",
-        "code": "aef53c15"
+        "code": "1911c1c6"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"

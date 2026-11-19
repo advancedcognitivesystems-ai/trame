@@ -15,6 +15,8 @@ import { Files, FilesKept, FilesInMemory, HeadlessBrowser, BrowserScripted, Brow
 import { Strategy } from "./patterns"
 import { Commands, Effects } from "./effects"
 import { Counts } from "./algebra"
+import { RepositoryApi, RepositoryKept, RepositoryInMemory, RepositoryCompared } from "./repository"
+import type { RepositorySettings, RepositoryState } from "./repository"
 
 // What the library offers to scenarios is code like the rest: its realizations kept in memory are played here, against
 // the contract of their ports, and its draws against what they promise. Its realizations on a device or a machine are
@@ -32,7 +34,7 @@ export const Test = environment({ owner: "trame", evaluates: true })
  */
 export const InMemory = binding({
   owner: "trame",
-  chooses: [MemoryPreferences, WrittenSpeech, AwakeInMemory, FramesByHand, FilesInMemory, BrowserInMemory],
+  chooses: [MemoryPreferences, WrittenSpeech, AwakeInMemory, FramesByHand, FilesInMemory, BrowserInMemory, RepositoryInMemory],
   environments: [Test],
   follows: [Strategy],
   serves: [RealizedOnce],
@@ -62,6 +64,8 @@ export const ScenarioChecks = catalog({
     filesKept: () => "A file written exists, is read back, copied, fingerprinted alike, and kept for the scenario",
     pageShown: () => "A page scripted shows what it was given: its elements, their text, its errors; the clicks and the choices are kept",
     commandsMade: () => "A command is made for each effect, from its text, which it keeps as it is",
+    repositoryLeft: () => "A repository left by hand is read back as it was left, and differs from the settings where it does",
+    repositoryApplied: () => "Settings applied are kept, and the repository read back holds them all, its pages when asked",
   }),
 })
 
@@ -80,6 +84,7 @@ export const ScenarioData = decision<{
   file: { path: string; text: string; copy: string }
   page: { path: string; selector: string; count: number; text: string; error: string; language: string }
   command: string
+  repository: { name: string; settings: RepositorySettings; left: RepositoryState; differs: string[] }
 }>({
   owner: "trame",
   value: {
@@ -91,6 +96,36 @@ export const ScenarioData = decision<{
     file: { path: "dist/page.html", text: "<p>a page</p>", copy: "public/index.html" },
     page: { path: "dist/page.html", selector: ".poses li", count: 12, text: "Mountain", error: "The page broke", language: "fr" },
     command: "SELECT 1",
+    repository: {
+      name: "owner/project",
+      settings: { branch: "main", checks: ["project", "library"], upToDate: false, approvals: 1, method: "merge", autoMerge: true, deletesMerged: true, pages: true },
+      left: { methods: ["merge", "squash"], autoMerge: false, deletesMerged: true, protected: false, checks: ["library"], upToDate: false },
+      differs: ["methods", "autoMerge", "protected", "approvals", "checks"],
+    },
+  },
+})
+
+/**
+ * A repository kept in memory
+ * A repository left by hand is read back as it was, and compared with the settings: what differs is said, part by part.
+ * The settings applied are kept for the scenario, and the repository read back holds them all, its pages when asked.
+ */
+export const RepositoryInMemoryKeeps = scenario({
+  owner: "trame",
+  verifies: [RepositoryInMemory, RepositoryCompared],
+  env: Test,
+  deps: { repository: RepositoryApi, kept: RepositoryKept, compared: RepositoryCompared, data: ScenarioData, checks: ScenarioChecks, counts: Counts },
+  body: ({ repository, kept, compared, data, checks, counts }) => async (check) => {
+    const { name, settings, left, differs } = data.repository
+    kept.set(name, left)
+    const before = await repository.read(name, settings.branch, false)
+    const found = before && compared(settings, before).map((d) => d.part)
+    check(checks.repositoryLeft(), JSON.stringify(before) === JSON.stringify(left) && JSON.stringify(found) === JSON.stringify(differs))
+    const failed = await repository.apply(name, settings)
+    const after = await repository.read(name, settings.branch, settings.pages)
+    const [applied] = kept.applied()
+    check(checks.repositoryApplied(), failed === undefined && after !== undefined && after.pages === settings.pages &&
+      counts.isEmpty(compared(settings, after)) && applied?.repository === name && counts.single(kept.applied()))
   },
 })
 

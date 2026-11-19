@@ -278,3 +278,16 @@ export const R0_19_0 = release({
   language: "shared",
   serves: [CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
 })
+
+/**
+ * Version 0.20.0
+ */
+export const R0_20_0 = release({
+  owner: "trame",
+  version: "0.20.0",
+  date: "2026-11-19",
+  what: "A repository on GitHub as a project's graph decides it: its settings (the branch, the checks, up to date, the approvals, the merge method, the automatic merge, merged branches deleted, the pages), the port RepositoryApi that applies and reads them back, realized by GitHub's command line and in memory; RepositoryCompared says the parts a repository does not hold; GitHub's REST API cited; moved from ci, where a writer of a script set them",
+  fingerprint: "f10b88a0025a0d32",
+  language: "shared",
+  serves: [CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
+})

@@ -47,9 +47,11 @@ The workflow that checks a pull request on GitHub, written from the pipeline of 
 - Path: `../../.github/workflows/data-pull-request.yml`
 - Media type: `application/yaml`
 
-Built 19 November 2026 by claude, fingerprint `fdd03e46d04a50f0c4cbd7e58160fe589f92183012db0130dd19316d0d5add13`.
+Built 19 November 2026 by claude, fingerprint `8ad49a4e32da3579d8e727a3b8c25ba593dce7c86fa7eba72b8d731513ed4a83`.
 
 Shipped by [The files that run it elsewhere](#RunnersWritten) 19 November 2026, fingerprint `fdd03e46d04a50f0c4cbd7e58160fe589f92183012db0130dd19316d0d5add13`.
+
+Shipped by [The files that run it elsewhere](#RunnersWritten) 19 November 2026, fingerprint `8ad49a4e32da3579d8e727a3b8c25ba593dce7c86fa7eba72b8d731513ed4a83`.
 
 - Owner: trame
 - Produced by: [A workflow of GitHub Actions](../.trame/ci/docs/github.md#GitHubWorkflow)
@@ -132,7 +134,7 @@ The workflow that checks each pull request, written by trame ship from the graph
 |---|---|---|
 | [The pull requests' workflow](#PullRequestWorkflow) | **held** | shipped |
 
-Shipped 19 November 2026 by claude; its dossier: `evidence/shipments/RunnersWritten-2026-11-19-6d1dfc48.json`.
+Shipped 19 November 2026 by claude; its dossier: `evidence/shipments/RunnersWritten-2026-11-19-b4056b95.json`.
 
 - Owner: trame
 - Ships: [The pull requests' workflow](#PullRequestWorkflow)
