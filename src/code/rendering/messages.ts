@@ -50,6 +50,8 @@ const body = () => {
     statusName: (status: KeyOf<typeof Status>) => statusNames[status],
     /** A severity, by its key in `Severity`. */
     severityName: (severity: KeyOf<typeof Severity>) => severityNames[severity],
+    /** A severity the project's way of judging raised, with the one the language gave (C4). */
+    raisedSeverity: (severity: string, from: string) => `${severity}, raised from ${from}`,
     /** The outcome of a check, by its key in `Outcome`. */
     outcomeName: (outcome: KeyOf<typeof Outcome>) => outcomeNames[outcome],
     /** Whether a node is in force, by its key in `Validity`. */

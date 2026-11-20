@@ -182,8 +182,18 @@ export const HoleCode = {
   publishedRemoved: "published-removed",
   publishedOutdated: "published-outdated",
   publishedChanged: "published-changed",
+  // How a project judges (C4, since g112).
+  hardeningLowers: "hardening-lowers",
+  hardeningFailed: "hardening-failed",
 } as const
 export type HoleCode = ValueOf<typeof HoleCode>
+
+/**
+ * The ports of the judgment the engine asks a project's graph (C4, since g112), by their reference: std's Hardening,
+ * whose realization a binding chooses where the project's build evaluates. In E3 they move to the library of the
+ * judgment.
+ */
+export const JudgmentPort = { hardening: "std/judgment.Hardening" } as const
 
 /** The result of one check (a criterion, a scenario step). */
 export const Outcome = { passed: "passed", failed: "failed", blocked: "blocked", error: "error" } as const
@@ -356,6 +366,9 @@ export const CheckEdge = { on: "on", runs: "runs", by: "by" } as const
 export const ReviewField = { approvals: "approvals" } as const
 export const ReviewEdge = { of: "of", by: "by" } as const
 export const ShipmentField = { target: "target" } as const
+/** Where the build evaluates (an environment), and what a technical choice chooses: the engine reads them (C4, g112). */
+export const EnvironmentField = { evaluates: "evaluates" } as const
+export const BindingEdge = { chooses: "chooses" } as const
 export const ShipmentEdge = { ships: "ships", requires: "requires", deploys: "deploys", environment: "environment", policy: "policy" } as const
 export const ObligationField = { params: "params", gaps: "gaps" } as const
 export const PolicyEdge = { obligations: "obligations" } as const
@@ -454,6 +467,8 @@ export interface IssueItem {
   severity: Severity
   /** What is wrong, by its code (C4): a word of HoleCode, or of the library whose kind raised it. */
   code?: string
+  /** The severity the language gave it, when the project's way of judging raised it (C4, since g112). */
+  raisedFrom?: Severity
   what: string
   where?: NodeRef | string
   /** File and line, when the problem is about a node. */

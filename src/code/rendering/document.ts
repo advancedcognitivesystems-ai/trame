@@ -92,7 +92,7 @@ const body = (deps: Deps) => {
         case BlockType.summary: return s.summary(line(b.content), depth)
         case BlockType.issues:
           return s.issues(b.items.map((x) => ({
-            severity: x.severity, words: severityText(x.severity), ...(x.code === undefined ? {} : { code: x.code }), source: x.source, what: x.what,
+            severity: x.severity, words: x.raisedFrom === undefined ? severityText(x.severity) : messages.raisedSeverity(severityText(x.severity), severityText(x.raisedFrom)), ...(x.code === undefined ? {} : { code: x.code }), source: x.source, what: x.what,
             whereText: values.isText(x.where) ? x.where : undefined,
             whereRef: x.where && !values.isText(x.where) ? reference(x.where) : undefined,
             owner: x.owner, effect: x.effect,

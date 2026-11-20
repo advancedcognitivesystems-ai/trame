@@ -4,7 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 7 | 193 |
+| trame | 0 | 0 | 7 | 203 |
 
 <a id="trame"></a>
 
@@ -49,6 +49,11 @@
 | [CSS](html.md#Css) | Standard |  |
 | [HTML](html.md#Html) | Standard |  |
 | [SVG](html.md#Svg) | Standard |  |
+| [As the language says](judgment.md#AsTheLanguageSays) | Function | **held** |
+| [Every warning an error](judgment.md#EveryWarning) | Function | **held** |
+| [Hardening](judgment.md#Hardening) | Port |  |
+| [A project judges harder than the language, never softer](judgment.md#HarderNeverSofter) | Architecture decision | **held** |
+| [Raising](judgment.md#Raising) | Algebraic structure | **held** |
 | [ISO 8601 dates](measures.md#Iso8601) | Standard |  |
 | [Language tags](measures.md#LanguageTags) | Standard |  |
 | [Ratio](measures.md#Ratio) | Quantity |  |
@@ -158,10 +163,15 @@
 | [The device, in memory](scenarios.md#DeviceInMemory) | Scenario | **held** |
 | [Seeded draws keep their promise](scenarios.md#DrawsKeepTheirPromise) | Scenario | **held** |
 | [In memory](scenarios.md#InMemory) | Technical choice | **held** |
+| [Judged as the language says](scenarios.md#JudgedAsTheLanguage) | Scenario | **held** |
+| [Judged strictly](scenarios.md#JudgedStrictly) | Scenario | **held** |
+| [Judged as the language says](scenarios.md#LanguageJudgment) | Technical choice | **held** |
 | [A repository kept in memory](scenarios.md#RepositoryInMemoryKeeps) | Scenario | **held** |
 | [What the library's scenarios check](scenarios.md#ScenarioChecks) | Message catalog |  |
 | [What the library's scenarios are given](scenarios.md#ScenarioData) | Decision |  |
 | [The language of the library's scenarios](scenarios.md#ScenarioLanguage) | Decision |  |
+| [Strict](scenarios.md#Strict) | Environment |  |
+| [Judged strictly](scenarios.md#StrictJudgment) | Technical choice | **held** |
 | [Test](scenarios.md#Test) | Environment |  |
 | [The tooling, in memory](scenarios.md#ToolingInMemory) | Scenario | **held** |
 | [Its callers identified](sdlc.md#CallersIdentified) | Obligation |  |

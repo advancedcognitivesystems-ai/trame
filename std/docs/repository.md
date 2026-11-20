@@ -154,6 +154,7 @@ Applies a project's settings to a repository and reads them back, with the right
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
+| [Strict](scenarios.md#Strict) | none | — |
 | [Test](scenarios.md#Test) | [A repository kept in memory](#RepositoryInMemory) | [In memory](scenarios.md#InMemory) |
 
 - Owner: trame
@@ -172,6 +173,7 @@ What a scenario sets of a repository kept in memory, and the settings applied to
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
+| [Strict](scenarios.md#Strict) | none | — |
 | [Test](scenarios.md#Test) | [A repository kept in memory](#RepositoryInMemory) | [In memory](scenarios.md#InMemory) |
 
 - Owner: trame

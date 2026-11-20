@@ -58,6 +58,7 @@ Calls back before each frame the screen paints, with the seconds since it starte
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
+| [Strict](scenarios.md#Strict) | none | — |
 | [Test](scenarios.md#Test) | [Frames turned by hand](#FramesByHand) | [In memory](scenarios.md#InMemory) |
 
 - Owner: trame
@@ -76,6 +77,7 @@ The languages the device says its person reads, in their order of preference, as
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
+| [Strict](scenarios.md#Strict) | none | — |
 | [Test](scenarios.md#Test) | none | — |
 
 - Owner: trame
@@ -93,6 +95,7 @@ Runs the entry points of a page once its document is loaded: what exposes a comp
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
+| [Strict](scenarios.md#Strict) | none | — |
 | [Test](scenarios.md#Test) | none | — |
 
 - Owner: trame
@@ -115,6 +118,7 @@ What the person chose (a language, a pace, a voice turned off), kept on the devi
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
+| [Strict](scenarios.md#Strict) | none | — |
 | [Test](scenarios.md#Test) | [Preferences kept in memory](#MemoryPreferences) | [In memory](scenarios.md#InMemory) |
 
 - Owner: trame
@@ -133,6 +137,7 @@ Keeps the screen on while the product needs it to be read from afar, then lets i
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
+| [Strict](scenarios.md#Strict) | none | — |
 | [Test](scenarios.md#Test) | [The screen kept awake, in memory](#AwakeInMemory) | [In memory](scenarios.md#InMemory) |
 
 - Owner: trame
@@ -151,6 +156,7 @@ For a scenario: realized together with the screen kept awake in memory.
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
+| [Strict](scenarios.md#Strict) | none | — |
 | [Test](scenarios.md#Test) | [The screen kept awake, in memory](#AwakeInMemory) | [In memory](scenarios.md#InMemory) |
 
 - Owner: trame
@@ -168,6 +174,7 @@ The texts a voice was asked to say, in order, with their language: realized toge
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
+| [Strict](scenarios.md#Strict) | none | — |
 | [Test](scenarios.md#Test) | [A voice that writes down](#WrittenSpeech) | [In memory](scenarios.md#InMemory) |
 
 - Owner: trame
@@ -185,6 +192,7 @@ Says a text aloud in a language, after what it is already saying; stops at once 
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
+| [Strict](scenarios.md#Strict) | none | — |
 | [Test](scenarios.md#Test) | [A voice that writes down](#WrittenSpeech) | [In memory](scenarios.md#InMemory) |
 
 - Owner: trame
@@ -203,6 +211,7 @@ For a scenario: the frames come when it turns the time, by the seconds it says; 
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
+| [Strict](scenarios.md#Strict) | none | — |
 | [Test](scenarios.md#Test) | [Frames turned by hand](#FramesByHand) | [In memory](scenarios.md#InMemory) |
 
 - Owner: trame

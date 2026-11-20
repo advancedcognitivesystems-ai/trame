@@ -859,7 +859,7 @@
       "id": "infra.BackupRetention",
       "kind": "decision",
       "title": "Backup retention",
-      "source": "src/infra.ts:69",
+      "source": "src/infra.ts:70",
       "fields": {
         "owner": "karim",
         "value": 7,
@@ -874,7 +874,7 @@
       "id": "infra.CancellationRecords",
       "kind": "function",
       "title": "Cancellations as records",
-      "source": "src/infra.ts:135",
+      "source": "src/infra.ts:136",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -892,7 +892,7 @@
       "id": "infra.CancelledStatus",
       "kind": "decision",
       "title": "Status of a cancelled reservation",
-      "source": "src/infra.ts:80",
+      "source": "src/infra.ts:81",
       "fields": {
         "owner": "karim",
         "value": "cancelled"
@@ -903,7 +903,7 @@
       "id": "infra.DatabaseAddress",
       "kind": "decision",
       "title": "Production database address",
-      "source": "src/infra.ts:63",
+      "source": "src/infra.ts:64",
       "fields": {
         "owner": "karim",
         "value": "postgres://%s.internal:5432/%s"
@@ -914,7 +914,7 @@
       "id": "infra.DatabaseName",
       "kind": "decision",
       "title": "Production database name",
-      "source": "src/infra.ts:51",
+      "source": "src/infra.ts:52",
       "fields": {
         "owner": "karim",
         "value": "reservations"
@@ -925,7 +925,7 @@
       "id": "infra.DatabaseSize",
       "kind": "decision",
       "title": "Production database size",
-      "source": "src/infra.ts:56",
+      "source": "src/infra.ts:57",
       "fields": {
         "owner": "karim",
         "value": {
@@ -939,7 +939,7 @@
       "id": "infra.EmptyInProduction",
       "kind": "binding",
       "title": "Nothing to start with in production",
-      "source": "src/infra.ts:286",
+      "source": "src/infra.ts:287",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -951,7 +951,7 @@
       "id": "infra.FileDatabase",
       "kind": "implementation",
       "title": "Local SQLite database",
-      "source": "src/infra.ts:100",
+      "source": "src/infra.ts:101",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -970,7 +970,7 @@
       "id": "infra.FirstReservationsOutsideProduction",
       "kind": "binding",
       "title": "The first reservations outside production",
-      "source": "src/infra.ts:275",
+      "source": "src/infra.ts:276",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -982,7 +982,7 @@
       "id": "infra.HttpPayment",
       "kind": "implementation",
       "title": "Real payment provider",
-      "source": "src/infra.ts:198",
+      "source": "src/infra.ts:199",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -1005,7 +1005,7 @@
       "id": "infra.HttpServerChoice",
       "kind": "binding",
       "title": "Node's HTTP server",
-      "source": "src/infra.ts:333",
+      "source": "src/infra.ts:334",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -1020,7 +1020,7 @@
       "id": "infra.KeptAsTables",
       "kind": "binding",
       "title": "What the service keeps, as tables",
-      "source": "src/infra.ts:262",
+      "source": "src/infra.ts:263",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -1036,7 +1036,7 @@
       "id": "infra.Local",
       "kind": "environment",
       "title": "Local",
-      "source": "src/infra.ts:28",
+      "source": "src/infra.ts:29",
       "fields": {
         "owner": "karim"
       },
@@ -1046,7 +1046,7 @@
       "id": "infra.LocalDatabase",
       "kind": "binding",
       "title": "A SQLite file on the developer's machine",
-      "source": "src/infra.ts:234",
+      "source": "src/infra.ts:235",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -1061,7 +1061,7 @@
       "id": "infra.LocalDatabasePath",
       "kind": "decision",
       "title": "Local database file",
-      "source": "src/infra.ts:46",
+      "source": "src/infra.ts:47",
       "fields": {
         "owner": "karim",
         "value": ".data/reservations.db"
@@ -1072,7 +1072,7 @@
       "id": "infra.NodeServer",
       "kind": "implementation",
       "title": "Node HTTP server",
-      "source": "src/infra.ts:208",
+      "source": "src/infra.ts:209",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -1096,7 +1096,7 @@
       "id": "infra.PostgresDatabase",
       "kind": "implementation",
       "title": "Production Postgres database",
-      "source": "src/infra.ts:111",
+      "source": "src/infra.ts:112",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -1124,7 +1124,7 @@
       "id": "infra.Production",
       "kind": "environment",
       "title": "Production",
-      "source": "src/infra.ts:33",
+      "source": "src/infra.ts:34",
       "fields": {
         "owner": "karim"
       },
@@ -1134,7 +1134,7 @@
       "id": "infra.ProductionDatabase",
       "kind": "binding",
       "title": "Postgres in production",
-      "source": "src/infra.ts:247",
+      "source": "src/infra.ts:248",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -1150,7 +1150,7 @@
       "id": "infra.ProviderApi",
       "kind": "binding",
       "title": "The provider's API in production",
-      "source": "src/infra.ts:322",
+      "source": "src/infra.ts:323",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -1162,7 +1162,7 @@
       "id": "infra.ProviderUrl",
       "kind": "decision",
       "title": "Payment provider address",
-      "source": "src/infra.ts:74",
+      "source": "src/infra.ts:75",
       "fields": {
         "owner": "karim",
         "value": "https://payments.example.com/v1"
@@ -1173,7 +1173,7 @@
       "id": "infra.RealClock",
       "kind": "binding",
       "title": "The system clock elsewhere",
-      "source": "src/infra.ts:356",
+      "source": "src/infra.ts:357",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -1185,7 +1185,7 @@
       "id": "infra.RecordRepositories",
       "kind": "binding",
       "title": "Reservations and cancellations as repositories over the records",
-      "source": "src/infra.ts:297",
+      "source": "src/infra.ts:298",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -1201,7 +1201,7 @@
       "id": "infra.ReservationRecords",
       "kind": "function",
       "title": "Reservations as records",
-      "source": "src/infra.ts:124",
+      "source": "src/infra.ts:125",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -1217,7 +1217,7 @@
       "id": "infra.ResponseEnding",
       "kind": "decision",
       "title": "End of a response",
-      "source": "src/infra.ts:92",
+      "source": "src/infra.ts:93",
       "fields": {
         "owner": "karim",
         "value": "\n"
@@ -1228,7 +1228,7 @@
       "id": "infra.ScenarioClock",
       "kind": "binding",
       "title": "A stopped clock in the scenarios",
-      "source": "src/infra.ts:345",
+      "source": "src/infra.ts:346",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -1240,7 +1240,7 @@
       "id": "infra.ScenarioDatabase",
       "kind": "binding",
       "title": "A SQLite database in memory for the scenarios",
-      "source": "src/infra.ts:221",
+      "source": "src/infra.ts:222",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -1255,7 +1255,7 @@
       "id": "infra.SimulatedPayment",
       "kind": "function",
       "title": "Simulated payment provider",
-      "source": "src/infra.ts:174",
+      "source": "src/infra.ts:175",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -1270,7 +1270,7 @@
       "id": "infra.SimulatedProvider",
       "kind": "binding",
       "title": "A simulated payment provider outside production",
-      "source": "src/infra.ts:310",
+      "source": "src/infra.ts:311",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -1285,7 +1285,7 @@
       "id": "infra.SimulatedReference",
       "kind": "decision",
       "title": "References of the simulated provider",
-      "source": "src/infra.ts:86",
+      "source": "src/infra.ts:87",
       "fields": {
         "owner": "karim",
         "value": "simulated-"
@@ -1296,7 +1296,7 @@
       "id": "infra.StoppedClock",
       "kind": "function",
       "title": "Stopped clock",
-      "source": "src/infra.ts:163",
+      "source": "src/infra.ts:164",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -1311,7 +1311,7 @@
       "id": "infra.SystemClock",
       "kind": "implementation",
       "title": "System clock",
-      "source": "src/infra.ts:153",
+      "source": "src/infra.ts:154",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -1323,9 +1323,10 @@
       "id": "infra.Test",
       "kind": "environment",
       "title": "Test",
-      "source": "src/infra.ts:22",
+      "source": "src/infra.ts:23",
       "fields": {
-        "owner": "karim"
+        "owner": "karim",
+        "evaluates": true
       },
       "diagnostics": []
     },
@@ -1333,11 +1334,93 @@
       "id": "infra.TestInstant",
       "kind": "decision",
       "title": "Test instant",
-      "source": "src/infra.ts:41",
+      "source": "src/infra.ts:42",
       "fields": {
         "owner": "karim",
         "value": "2026-10-20T10:00:00.000Z"
       },
+      "diagnostics": []
+    },
+    {
+      "id": "judgment.CodesWeRaise",
+      "kind": "decision",
+      "title": "The problems the service will not leave",
+      "source": "src/judgment.ts:23",
+      "fields": {
+        "owner": "karim",
+        "value": {
+          "codes": [
+            "owner-missing",
+            "requirement-without-criteria",
+            "adr-not-applied"
+          ]
+        },
+        "rejected": {
+          "Every warning an error": "a check awaited, a review awaited, an assumption to check are work in progress, not mistakes: the service would never ship",
+          "As the language says": "a requirement without criteria would ship as a wish"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "judgment.JudgedOurWay",
+      "kind": "binding",
+      "title": "How the service is judged",
+      "source": "src/judgment.ts:46",
+      "status": "held",
+      "fields": {
+        "owner": "karim",
+        "context": "The build of the service evaluates in Test: its way of judging applies there, to the whole graph."
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "judgment.JudgmentChecks",
+      "kind": "catalog",
+      "title": "What the scenario of the judgment checks",
+      "source": "src/judgment.ts:57",
+      "fields": {
+        "owner": "lea",
+        "messages": "(function)"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "judgment.OurJudgment",
+      "kind": "function",
+      "title": "Judged our way",
+      "source": "src/judgment.ts:36",
+      "status": "held",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "raising": "std/judgment.Raising",
+          "raised": "judgment.CodesWeRaise"
+        },
+        "body": "(function)"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "judgment.OurJudgmentApplied",
+      "kind": "scenario",
+      "title": "The service's problems judged",
+      "source": "src/judgment.ts:69",
+      "status": "held",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "judge": "std/judgment.Hardening",
+          "checks": "judgment.JudgmentChecks"
+        },
+        "body": "(function)"
+      },
+      "result": [
+        {
+          "name": "A node without an owner is an error, an assumption to check a warning",
+          "status": "passed"
+        }
+      ],
       "diagnostics": []
     },
     {
@@ -1766,6 +1849,11 @@
           "infra.SystemClock",
           "infra.Test",
           "infra.TestInstant",
+          "judgment.CodesWeRaise",
+          "judgment.JudgedOurWay",
+          "judgment.JudgmentChecks",
+          "judgment.OurJudgment",
+          "judgment.OurJudgmentApplied",
           "legal.FeeCap",
           "legal.FeeCapDecided",
           "messages.ApiMessages",
@@ -2435,7 +2523,7 @@
       },
       "result": {
         "path": "src",
-        "code": "57098a07"
+        "code": "0f2301b5"
       },
       "diagnostics": [
         "warning: Not built yet: trame ship builds it"
@@ -3205,6 +3293,66 @@
       "from": "infra.SystemClock",
       "to": "architecture.Clock",
       "kind": "implements"
+    },
+    {
+      "from": "judgment.JudgedOurWay",
+      "to": "judgment.OurJudgment",
+      "kind": "chooses"
+    },
+    {
+      "from": "judgment.JudgedOurWay",
+      "to": "infra.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "judgment.JudgedOurWay",
+      "to": "std/patterns.Strategy",
+      "kind": "follows"
+    },
+    {
+      "from": "judgment.JudgmentChecks",
+      "to": "messages.Language",
+      "kind": "language"
+    },
+    {
+      "from": "judgment.OurJudgment",
+      "to": "cancellation.CancelWithoutStress",
+      "kind": "serves"
+    },
+    {
+      "from": "judgment.OurJudgment",
+      "to": "std/judgment.Hardening",
+      "kind": "implements"
+    },
+    {
+      "from": "judgment.OurJudgment",
+      "to": "std/judgment.Raising",
+      "kind": "deps"
+    },
+    {
+      "from": "judgment.OurJudgment",
+      "to": "judgment.CodesWeRaise",
+      "kind": "deps"
+    },
+    {
+      "from": "judgment.OurJudgmentApplied",
+      "to": "judgment.OurJudgment",
+      "kind": "verifies"
+    },
+    {
+      "from": "judgment.OurJudgmentApplied",
+      "to": "infra.Test",
+      "kind": "env"
+    },
+    {
+      "from": "judgment.OurJudgmentApplied",
+      "to": "std/judgment.Hardening",
+      "kind": "deps"
+    },
+    {
+      "from": "judgment.OurJudgmentApplied",
+      "to": "judgment.JudgmentChecks",
+      "kind": "deps"
     },
     {
       "from": "legal.FeeCapDecided",

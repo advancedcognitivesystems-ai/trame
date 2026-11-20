@@ -19,7 +19,7 @@ The language of what the service and its scenarios say: British English.
 | tag | en-GB |
 
 - Decided by: karim
-- Language of: [How an amount is written](cancellation.md#AmountWords), [Messages of the API](#ApiMessages), [Checks of the scenarios](#ScenarioChecks)
+- Language of: [How an amount is written](cancellation.md#AmountWords), [What the scenario of the judgment checks](judgment.md#JudgmentChecks), [Messages of the API](#ApiMessages), [Checks of the scenarios](#ScenarioChecks)
 
 ## Message catalogs
 

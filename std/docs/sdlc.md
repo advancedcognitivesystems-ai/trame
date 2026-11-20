@@ -108,12 +108,15 @@ A version of the standard library, for the projects that import it: shipped by t
 | Obligation | Status | Why |
 |---|---|---|
 | [The standard library](#TheLibrary) | **unknown** | shipped |
+| [A project judges harder than the language, never softer](judgment.md#HarderNeverSofter) | **held** | [Its decisions applied](#DecisionsApplied), for [As the language says](judgment.md#AsTheLanguageSays) |
 | [An entry point says who may call it](access.md#SaysItsAudience) | **held** | [Its decisions applied](#DecisionsApplied), for [Who calls a shipment's programs is identified](obligations.md#Identified) |
 | [The device's services, as ports](platform.md#DeviceAsPorts) | **held** | [Its decisions applied](#DecisionsApplied), for [Animation frames](platform.md#AnimationFrames) |
 | [A repository is set by its project's graph](repository.md#RepositoryThroughItsApi) | **held** | [Its decisions applied](#DecisionsApplied), for [GitHub's command line](repository.md#GitHubCliRepository) |
 | [The SDLC's tooling is realized once](tooling.md#ToolingAsPorts) | **held** | [Its decisions applied](#DecisionsApplied), for [A browser kept in memory](tooling.md#BrowserInMemory) |
 | [Seeded draws keep their promise](scenarios.md#DrawsKeepTheirPromise) | **held** | [Its functions verified](#FunctionsVerified), for [Seeded draws](algorithms.md#SeededDraws) |
 | [Commands are made for each effect](scenarios.md#CommandsMade) | **held** | [Its functions verified](#FunctionsVerified), for [Commands](effects.md#Commands) |
+| [Judged as the language says](scenarios.md#JudgedAsTheLanguage) | **held** | [Its functions verified](#FunctionsVerified), for [As the language says](judgment.md#AsTheLanguageSays) |
+| [Judged strictly](scenarios.md#JudgedStrictly) | **held** | [Its functions verified](#FunctionsVerified), for [Every warning an error](judgment.md#EveryWarning) |
 | [The device, in memory](scenarios.md#DeviceInMemory) | **held** | [Its functions verified](#FunctionsVerified), for [The screen kept awake, in memory](platform.md#AwakeInMemory) |
 | [A repository kept in memory](scenarios.md#RepositoryInMemoryKeeps) | **held** | [Its functions verified](#FunctionsVerified), for [A repository compared with its settings](repository.md#RepositoryCompared) |
 | [The tooling, in memory](scenarios.md#ToolingInMemory) | **held** | [Its functions verified](#FunctionsVerified), for [A browser kept in memory](tooling.md#BrowserInMemory) |

@@ -586,6 +586,52 @@ Environment · `Production`
 Environment · `Test`
 
 - Owner: karim
+- The build evaluates here: true
+
+## Reservations · Judgment
+
+### The problems the service will not leave
+
+Decision · `CodesWeRaise`
+
+- Decided by: karim
+- Value: { codes: owner-missing, requirement-without-criteria, adr-not-applied }
+- Rejected: Every warning an error, a check awaited, a review awaited, an assumption to check are work in progress, not mistakes: the service would never ship; As the language says, a requirement without criteria would ship as a wish
+
+### Judged our way
+
+Function · `OurJudgment` · **held**
+
+- Owner: karim
+- Parameters: { raising: std/judgment.Raising, raised: judgment.CodesWeRaise }
+- Serves: Cancel without stress
+- Depends on: The problems the service will not leave
+
+### What the scenario of the judgment checks
+
+Message catalog · `JudgmentChecks`
+
+- Owner: lea
+- Written in: Language
+
+### How the service is judged
+
+Technical choice · `JudgedOurWay` · **held**
+
+- Decided by: karim
+- Context: The build of the service evaluates in Test: its way of judging applies there, to the whole graph.
+- Chooses: Judged our way
+- In: Test
+
+### The service's problems judged
+
+Scenario · `OurJudgmentApplied` · **held**
+
+- Owner: karim
+- Parameters: { judge: std/judgment.Hardening, checks: judgment.JudgmentChecks }
+- Verifies: Judged our way
+- In: Test
+- Depends on: What the scenario of the judgment checks
 
 ## Legal
 

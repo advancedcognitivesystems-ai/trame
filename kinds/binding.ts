@@ -1,4 +1,4 @@
-import { defineKind, field, optionalEdge, edge, hole, doc, keysOf, Status, KindName, EdgeName, type Block, type Graph, type Inline, type Node, type View, HoleCode } from "../trame/kernel"
+import { defineKind, field, optionalEdge, edge, hole, doc, keysOf, Status, KindName, EdgeName, BindingEdge, type Block, type Graph, type Inline, type Node, type View, HoleCode } from "../trame/kernel"
 import { chosenBy, portsOf, requiresOf, requiresSaid, shapeOf, unmet } from "./pattern"
 import { reasonFields, reasonsOf, reasonsShown } from "./adr"
 import words from "./words"
@@ -6,7 +6,7 @@ import words from "./words"
 const say = words()
 
 const edges = {
-  chooses: edge.many([KindName.implementation, KindName.function], { label: say.bindingChooses(), inverse: say.bindingChosenBy() }),
+  [BindingEdge.chooses]: edge.many([KindName.implementation, KindName.function], { label: say.bindingChooses(), inverse: say.bindingChosenBy() }),
   [EdgeName.environments]: edge.many([KindName.environment], { label: say.bindingIn(), inverse: say.bindingTechnicalChoices() }),
   follows: optionalEdge(edge.many([KindName.pattern], { label: say.bindingFollows(), inverse: say.bindingFollowedBy() })),
   [EdgeName.serves]: optionalEdge(edge.many([KindName.goal], { label: say.adrServes(), inverse: say.adrServedBy() })),

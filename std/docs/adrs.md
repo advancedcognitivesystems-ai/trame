@@ -2,11 +2,12 @@
 
 *The choices that shape the product without being values, in force on 20 November 2026: why each was taken, what was rejected, and the nodes that apply it.*
 
-> **5 architecture decisions, 4 held by the nodes that apply them**
+> **6 architecture decisions, 5 held by the nodes that apply them**
 
 | Decision | Status | Applied by |
 |---|---|---|
 | [An entry point says who may call it](access.md#SaysItsAudience) | **held** | [Who calls a shipment's programs is identified](obligations.md#Identified) |
+| [A project judges harder than the language, never softer](judgment.md#HarderNeverSofter) | **held** | [As the language says](judgment.md#AsTheLanguageSays), [Every warning an error](judgment.md#EveryWarning), [Hardening](judgment.md#Hardening), [Raising](judgment.md#Raising) |
 | [A component in a browser starts with its page](platform.md#StartsWithThePage) | unknown | [The browser loads the page](platform.md#BrowserLoading), [Loading of a page](platform.md#PageLoading) |
 | [The device's services, as ports](platform.md#DeviceAsPorts) | **held** | [Animation frames](platform.md#AnimationFrames), [The screen kept awake, in memory](platform.md#AwakeInMemory), [The browser's frames](platform.md#BrowserFrames), [The browser's languages](platform.md#BrowserLanguages), [The browser keeps the preferences](platform.md#BrowserPreferences), [The browser's voice](platform.md#BrowserSpeech), [The browser keeps the screen awake](platform.md#BrowserWakeLock), [Languages of the device](platform.md#DeviceLanguages), [Frames turned by hand](platform.md#FramesByHand), [Preferences kept in memory](platform.md#MemoryPreferences), [Preferences](platform.md#PreferencesStore), [Screen kept awake](platform.md#ScreenAwake), [Whether the screen is kept awake](platform.md#ScreenKeptAwake), [What was said](platform.md#SpeechHeard), [Speech](platform.md#SpeechVoice), [Time turned by hand](platform.md#TimeTurned), [A voice that writes down](platform.md#WrittenSpeech) |
 | [A repository is set by its project's graph](repository.md#RepositoryThroughItsApi) | **held** | [GitHub's command line](repository.md#GitHubCliRepository), [How GitHub merges a pull request](repository.md#MergeMethods), [A repository on GitHub](repository.md#RepositoryApi), [A repository compared with its settings](repository.md#RepositoryCompared), [A repository kept in memory](repository.md#RepositoryInMemory), [The repositories a scenario keeps](repository.md#RepositoryKept), [The parts of a repository's settings](repository.md#RepositoryParts) |
@@ -35,6 +36,29 @@ Consequences: Every entry point names its audience (an error otherwise); an audi
 - Decided by: trame
 - Serves: [Rules applied, not written again](product.md#SharedRules)
 - Applied by: [Who calls a shipment's programs is identified](obligations.md#Identified)
+
+## Standard library · Judgment
+
+<a id="HarderNeverSofter"></a>
+
+### A project judges harder than the language, never softer
+
+`HarderNeverSofter` · `src/judgment.ts:113` · status: **held**
+
+A project raises the problems the language judges (a warning it will not leave, by its code), by a strategy of its own; the engine keeps the harder severity whatever the strategy answers.
+
+Context: The language judges every project alike; a project that wants no missing owner, or no warning at all, has no way to say so, and a way to lower a problem would let it hide what the language guarantees.
+
+Consequences: A project chooses a realization of Hardening by a binding where its build evaluates: AsTheLanguageSays, EveryWarning, or one of its own built on Raising (the codes it lists in a decision of its own); the engine keeps the harder of the two severities, and a way that would lower one is an error of the project (hardening-lowers).
+
+| Rejected | Why |
+|---|---|
+| A decision the engine reads | one way only, the codes listed; a project that wants every warning raised, or to raise by kind, would wait for the engine |
+| A rule of std, Raised | a broken rule is one error for all, not each problem raised where it is, with its owner |
+
+- Decided by: trame
+- Serves: [Ports of the platform, realized once](product.md#RealizedOnce)
+- Applied by: [Raising](judgment.md#Raising), [Hardening](judgment.md#Hardening), [As the language says](judgment.md#AsTheLanguageSays), [Every warning an error](judgment.md#EveryWarning)
 
 ## Standard library · Platform
 

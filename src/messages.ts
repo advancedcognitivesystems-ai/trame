@@ -115,6 +115,9 @@ export const CompilerMessages = catalog({
     hiddenDependency: (identifier: string) => `Hidden dependency: the body reads "${identifier}" without receiving it as a parameter`,
     /** A function of a kind (activeAt, claims, resolve…) threw an error. */
     hookFailed: (hook: string, error: string) => `${hook}() failed: ${error}`,
+    hardeningFailed: (error: string) => `The way this project judges failed: ${error}; its problems stay as the language judges them`,
+    hardeningGaveNoSeverity: (code: string, answer: string) => `The way this project judges answered "${answer}" for ${code}, which is no severity: the language's stays`,
+    hardeningLowers: (code: string, from: string, to: string) => `The way this project judges would lower ${code} from ${from} to ${to}: a project raises a problem, never lowers it; ${from} stays`,
     /** A record of evidence whose seal no longer matches what it says. */
     sealBroken: (source: string, at: string, by?: string) =>
       `A record of evidence (${source}, ${at}${by ? `, by ${by}` : ""}) was changed after it was recorded: its seal no longer matches, and it is not counted; record what holds again with trame ship or trame evidence`,
@@ -751,6 +754,8 @@ export const ScenarioMessages = catalog({
     machineOutputsAsBefore: () => "graph.json and snapshot.json are written as the engine in place wrote them",
     documentsAsBefore: (documents: number) => `${plural(documents, { one: "document", other: "documents" })} in Markdown, figures included, as the engine in place wrote them`,
     cycleFoundOnce: () => "A cycle is found once, where the search closes it",
+    judgedHarder: () => "A way of judging raises a problem, never lowers it: the raised keeps the language's severity, the lowered is said",
+    misjudgedSaid: () => "A way of judging that answers no severity, or that fails, is said, and the problems stay as the language judged them",
     sameSeedSameDraws: () => "The same seed draws the same numbers",
     otherSeedOtherDraws: () => "Another seed draws others",
     integersWithinBounds: (lo: number, hi: number) => `An integer drawn between ${lo} and ${hi} stays between them`,

@@ -5,6 +5,7 @@
 // 4. Consolidated graph: the values in force, evaluated, then checked.
 // Nothing here knows a particular kind: everything goes through the definitions of kinds/.
 
+import type { Api as JudgedApi, Judge } from "./judged-harder"
 import type { FileReading, KeptRuns, Layout, ModuleLoader, Paths, Prelude, Signatures } from "../../architecture"
 import type { Api as EnginesApi } from "./engine-fingerprint"
 import type { Api as AnalysisApi } from "./static-analysis"
@@ -14,7 +15,7 @@ import type { Edge, GraphImpl } from "./graph"
 import type { Api as WiringApi } from "./wiring"
 import type { Api as CyclesApi } from "./cycles"
 import type { Api as DriversApi, LiteralFound, LiteralSource } from "../languages/drivers"
-import { AnyTarget, ArtifactField, ChangeWay, DeclarationPart, DeliveryField, EdgeMode, EdgeName, FieldType, KindHook, KindName, Moment, Origin, PackageField, PublicationState, QuantityEdge, QuantityField, ResolutionKind, ResolutionOutcome, Severity, Stage, HoleCode } from "../../../trame/kernel"
+import { AnyTarget, ArtifactField, ChangeWay, DeclarationPart, DeliveryField, EdgeMode, EdgeName, FieldType, KindHook, KindName, Moment, Origin, PackageField, PublicationState, QuantityEdge, QuantityField, ResolutionKind, ResolutionOutcome, Severity, Stage, HoleCode, JudgmentPort, EnvironmentField, BindingEdge } from "../../../trame/kernel"
 import type { AnyNode, AnyKind, Constant, Evidence, HoleSpec, Noun, PartPublication, ProvidedBy, Reach, Resolution, StaticInfo } from "../../../trame/kernel"
 import type { PackageSource } from "#std/tooling"
 import type { Reached } from "./static-analysis"
@@ -28,6 +29,8 @@ import type { NodeEncodings, NodeModuleSpecifiers } from "#std/system"
 
 export interface Diag {
   severity: Severity
+  /** The severity the language gave it, when the project's way of judging raised it (C4, since g112). */
+  raisedFrom?: Severity
   /** What is wrong, by its code (C4, since g111): a word of HoleCode, or of the library whose kind raised it. */
   code?: string
   /** Where the problem comes from: a value to decide, a resolution of claims, a kind, the structure of the graph, publication, code. */
@@ -226,6 +229,8 @@ export interface Deps {
   names: ProvidedBy<typeof LanguageNames>
   /** Where each package of Trame comes from: asked which versions it holds, for a reference to warn of a newer one. */
   packages: PackageSource
+  /** How a project judges harder than the language (C4, since g112). */
+  judged: JudgedApi
 }
 
 const body = (deps: Deps) => {
@@ -1215,7 +1220,6 @@ const body = (deps: Deps) => {
       }
     }
 
-    diags.sort((a, b) => deps.severityOrder(a.severity) - deps.severityOrder(b.severity))
     // What is the project's own, and what each library keeps: its nodes, the edges that leave them, their issues.
     const libraryOf = (n: AnyNode) => references.library(optional(meta(n).module))
     // An issue belongs to whoever raised it: a rule of the project that judges a library's node raises the project's.
@@ -1223,6 +1227,34 @@ const body = (deps: Deps) => {
       const module = d.by ? meta(d.by).module : moduleOf(d)
       return module === undefined ? undefined : references.library(module)
     }
+
+    // A project judges harder than the language, never softer (C4, since g112): the realization of std's port Hardening
+    // a binding chooses where the project's build evaluates gives each of its own problems a severity; the engine keeps
+    // the harder of the two, and says when a way would have lowered one. Without such a choice, the language judges.
+    // The project's own choice only: a realization of the port that a binding of the project chooses where its build
+    // evaluates (a library's choices are its own, in its own environments).
+    const evaluating = g.all(KindName.environment).where((e) => e.library === undefined && e.field(EnvironmentField.evaluates) === true).first()
+    const chosen = evaluating ? g.all(KindName.binding)
+      .where((b) => b.library === undefined && g.from(b).out(EdgeName.environments).where((e) => e.ref === evaluating.ref).exists()).nodes()
+      .flatMap((b) => g.from(b).out(BindingEdge.chooses).where((r) => g.from(r).out(EdgeName.implements).where((p) => p.ref === JudgmentPort.hardening).exists()).nodes())
+      : []
+    // What goes wrong with the way a project judges is the project's: on no node of the library that offers the port.
+    const misjudged = (code: HoleCode, what: string) =>
+      diags.push({ severity: Severity.error, code, origin: Origin.graph, where: JudgmentPort.hardening, what })
+    const [strategy] = chosen
+    if (evaluating && strategy) {
+      let judge: Judge | undefined
+      try {
+        judge = (await g.wire([{ name: JudgmentPort.hardening, node: strategy }], evaluating))[JudgmentPort.hardening] as Judge
+      } catch (e) {
+        misjudged(HoleCode.hardeningFailed, messages.hardeningFailed(message(e)))
+      }
+      const own = diags.filter((d) => ofDiag(d) === undefined)
+      const found = judge ? deps.judged(own, judge, (d) => ({ kind: d.node && meta(d.node).def.name, module: moduleOf(d) })) : []
+      for (const m of found) misjudged(m.code, m.what)
+    }
+
+    diags.sort((a, b) => deps.severityOrder(a.severity) - deps.severityOrder(b.severity))
     const isOwn = (n: AnyNode) => libraryOf(n) === undefined
     return {
       today, modules, moduleTitle, graph: g, typeErrors, quantityErrors, quantities, language: l.language, parts: l.parts, publication,

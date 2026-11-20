@@ -245,6 +245,20 @@ export const EngineFingerprint = fn({
 })
 
 /**
+ * Judged harder
+ * A project judges harder than the language, never softer (C4, since g112): for each of the project's problems, the
+ * severity its way of judging answers (the realization of std's Hardening a binding chooses where its build evaluates)
+ * is kept when it is harder, with the one the language gave. A way that would lower a problem, answers what is no
+ * severity, or fails, is a problem of the project's judgment, and the language's severity stays.
+ */
+export const JudgedHarder = fn({
+  owner: "trame",
+  serves: [ExecutableSpecification],
+  deps: { severityOrder: SeverityOrder, messages: CompilerMessages },
+  body: code.file<typeof import("./code/engine/judged-harder").default>("./code/engine/judged-harder.ts"),
+})
+
+/**
  * Compiler
  * Loads the project once (the code of each node fingerprinted), then compiles it at a date: frozen graph, claims,
  * resolution, consolidated graph, evaluation, statuses, holes.
@@ -256,7 +270,7 @@ export const Compiler = fn({
     positions: Positions, loader: ModuleLoader, reading: FileReading, paths: Paths, analysis: StaticAnalysis, project: Project, graph: GraphApi,
     wiring: Wiring, drivers: Drivers, prelude: Prelude, counts: Counts, sequences: Sequences, texts: Texts, messages: CompilerMessages,
     fingerprints: Fingerprints, signatures: Signatures, engines: EngineFingerprint, runs: KeptRuns, platform: PlatformEffects, names: LanguageNames,
-    packages: PackageSources,
+    packages: PackageSources, judged: JudgedHarder,
   },
   body: code.file<typeof import("./code/engine/compiler").default>("./code/engine/compiler.ts"),
 })

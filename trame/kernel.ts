@@ -981,6 +981,8 @@ export interface Issue {
   severity: Severity
   /** What is wrong, by its code (C4); an engine before g111 gives none. */
   code?: string
+  /** The severity the language gave it, when the project's way of judging raised it (C4, since g112). */
+  raisedFrom?: Severity
   /** Where the problem comes from. */
   origin?: Origin
   what: string

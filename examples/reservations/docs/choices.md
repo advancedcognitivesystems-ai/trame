@@ -2,7 +2,7 @@
 
 *What answers each port in each environment on 30 October 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
 
-> **13 technical choices for 11 ports, in 3 environments**
+> **14 technical choices for 12 ports, in 3 environments**
 
 | Port | Test | Local | Production |
 |---|---|---|---|
@@ -16,11 +16,12 @@
 | [A dialect of SQL, for tables](../../../libs/data/docs/records.md#TableDialect) | [SQLite's tables](../../../libs/data/docs/records.md#SqliteTables) | [SQLite's tables](../../../libs/data/docs/records.md#SqliteTables) | [PostgreSQL's tables](../../../libs/data/docs/records.md#PostgresTables) |
 | [What a new table starts with](../../../libs/data/docs/records.md#InitialRecords) | [The records its entity starts with](../../../libs/data/docs/records.md#SeedOfTheEntity) | [The records its entity starts with](../../../libs/data/docs/records.md#SeedOfTheEntity) | [No records to start with](../../../libs/data/docs/records.md#StartEmpty) |
 | [Records](../../../libs/data/docs/records.md#Records) | [Records in SQL](../../../libs/data/docs/records.md#RecordsInSql) | [Records in SQL](../../../libs/data/docs/records.md#RecordsInSql) | [Records in SQL](../../../libs/data/docs/records.md#RecordsInSql) |
+| [Hardening](../../../std/docs/judgment.md#Hardening) | [Judged our way](judgment.md#OurJudgment) | — | — |
 | [Commands of a program](../../../std/docs/tooling.md#ProgramCommands) | — | [Node's command line](../../../std/docs/tooling.md#NodeProgramCommands) | — |
 
 | Pattern | Status | Followed by |
 |---|---|---|
-| [Strategy](../../../std/docs/patterns.md#Strategy) | **held** | [What the service keeps, as tables](infra.md#KeptAsTables), [The first reservations outside production](infra.md#FirstReservationsOutsideProduction), [Nothing to start with in production](infra.md#EmptyInProduction), [A simulated payment provider outside production](infra.md#SimulatedProvider), [A stopped clock in the scenarios](infra.md#ScenarioClock), [Documents, in memory](../../../libs/data/docs/scenarios.md#InMemory), [Tables seeded, in memory](../../../libs/data/docs/scenarios.md#SeededForScenarios), [PostgreSQL's dialect, read](../../../libs/data/docs/scenarios.md#PostgresForScenarios), [In memory](../../../std/docs/scenarios.md#InMemory) |
+| [Strategy](../../../std/docs/patterns.md#Strategy) | **held** | [What the service keeps, as tables](infra.md#KeptAsTables), [The first reservations outside production](infra.md#FirstReservationsOutsideProduction), [Nothing to start with in production](infra.md#EmptyInProduction), [A simulated payment provider outside production](infra.md#SimulatedProvider), [A stopped clock in the scenarios](infra.md#ScenarioClock), [How the service is judged](judgment.md#JudgedOurWay), [Documents, in memory](../../../libs/data/docs/scenarios.md#InMemory), [Tables seeded, in memory](../../../libs/data/docs/scenarios.md#SeededForScenarios), [PostgreSQL's dialect, read](../../../libs/data/docs/scenarios.md#PostgresForScenarios), [In memory](../../../std/docs/scenarios.md#InMemory), [Judged as the language says](../../../std/docs/scenarios.md#LanguageJudgment), [Judged strictly](../../../std/docs/scenarios.md#StrictJudgment) |
 | [Adapter](../../../std/docs/patterns.md#Adapter) | **held** | [The provider's API in production](infra.md#ProviderApi), [Node's HTTP server](infra.md#HttpServerChoice), [The system clock elsewhere](infra.md#RealClock), [Commands on this machine](sdlc.md#CommandsOnThisMachine), [SQLite, in memory](../../../libs/data/docs/scenarios.md#SqliteForScenarios) |
 | [Abstract Factory](../../../std/docs/patterns.md#AbstractFactory) | **held** | [A SQLite database in memory for the scenarios](infra.md#ScenarioDatabase), [A SQLite file on the developer's machine](infra.md#LocalDatabase), [Postgres in production](infra.md#ProductionDatabase) |
 | [Repository](../../../std/docs/patterns.md#Repository) | **held** | [Reservations and cancellations as repositories over the records](infra.md#RecordRepositories) |
@@ -31,7 +32,7 @@
 
 ### A SQLite database in memory for the scenarios
 
-`ScenarioDatabase` · `src/infra.ts:221` · status: **held**
+`ScenarioDatabase` · `src/infra.ts:222` · status: **held**
 
 The database and its dialect, chosen together.
 
@@ -57,7 +58,7 @@ Context: Every scenario starts from the initial reservations and leaves nothing 
 
 ### A SQLite file on the developer's machine
 
-`LocalDatabase` · `src/infra.ts:234` · status: **unknown**
+`LocalDatabase` · `src/infra.ts:235` · status: **unknown**
 
 The database and its dialect, chosen together.
 
@@ -83,7 +84,7 @@ Context: A developer runs the service without installing a database server; the 
 
 ### Postgres in production
 
-`ProductionDatabase` · `src/infra.ts:247` · status: **unknown**
+`ProductionDatabase` · `src/infra.ts:248` · status: **unknown**
 
 The database and its dialect, chosen together.
 
@@ -111,7 +112,7 @@ Consequences: Provisioned by Terraform with the graph's values; its statements c
 
 ### What the service keeps, as tables
 
-`KeptAsTables` · `src/infra.ts:262` · status: **held**
+`KeptAsTables` · `src/infra.ts:263` · status: **held**
 
 Each entity the service keeps is a table, made ready by a deployment, migrated from the version the previous one kept and read back checked, by the library of data, whichever database answers.
 
@@ -138,7 +139,7 @@ Consequences: No statement is written by hand: the dialect writes them from the 
 
 ### The first reservations outside production
 
-`FirstReservationsOutsideProduction` · `src/infra.ts:275` · status: **held**
+`FirstReservationsOutsideProduction` · `src/infra.ts:276` · status: **held**
 
 In [Local](infra.md#Local), [Test](infra.md#Test):
 
@@ -157,7 +158,7 @@ Context: A scenario and a developer need reservations to read and cancel, and th
 
 ### Nothing to start with in production
 
-`EmptyInProduction` · `src/infra.ts:286` · status: **unknown**
+`EmptyInProduction` · `src/infra.ts:287` · status: **unknown**
 
 In [Production](infra.md#Production):
 
@@ -176,7 +177,7 @@ Context: In production, the reservations are the drivers': a table starts empty.
 
 ### Reservations and cancellations as repositories over the records
 
-`RecordRepositories` · `src/infra.ts:297` · status: **held**
+`RecordRepositories` · `src/infra.ts:298` · status: **held**
 
 In [Local](infra.md#Local), [Production](infra.md#Production), [Test](infra.md#Test):
 
@@ -202,7 +203,7 @@ Consequences: The repositories hold no driver and write no SQL: they name the en
 
 ### A simulated payment provider outside production
 
-`SimulatedProvider` · `src/infra.ts:310` · status: **held**
+`SimulatedProvider` · `src/infra.ts:311` · status: **held**
 
 In [Local](infra.md#Local), [Test](infra.md#Test):
 
@@ -225,7 +226,7 @@ Context: Refunds must be tried without money moving, and a scenario reads the ca
 
 ### The provider's API in production
 
-`ProviderApi` · `src/infra.ts:322` · status: **unknown**
+`ProviderApi` · `src/infra.ts:323` · status: **unknown**
 
 In [Production](infra.md#Production):
 
@@ -244,7 +245,7 @@ Context: Refunds go through the payment provider, over HTTPS, with an idempotenc
 
 ### Node's HTTP server
 
-`HttpServerChoice` · `src/infra.ts:333` · status: **unknown**
+`HttpServerChoice` · `src/infra.ts:334` · status: **unknown**
 
 In [Local](infra.md#Local), [Production](infra.md#Production), [Test](infra.md#Test):
 
@@ -267,7 +268,7 @@ Context: The API is a handful of routes: Node's server is enough, and the scenar
 
 ### A stopped clock in the scenarios
 
-`ScenarioClock` · `src/infra.ts:345` · status: **held**
+`ScenarioClock` · `src/infra.ts:346` · status: **held**
 
 In [Test](infra.md#Test):
 
@@ -286,7 +287,7 @@ Context: The cancellation fee depends on the time left before the start: a scena
 
 ### The system clock elsewhere
 
-`RealClock` · `src/infra.ts:356` · status: **unknown**
+`RealClock` · `src/infra.ts:357` · status: **unknown**
 
 In [Local](infra.md#Local), [Production](infra.md#Production):
 
@@ -300,6 +301,29 @@ Context: Outside the scenarios, the fee is computed at the real instant.
 - Chooses: [System clock](infra.md#SystemClock)
 - In: [Local](infra.md#Local), [Production](infra.md#Production)
 - Follows: [Adapter](../../../std/docs/patterns.md#Adapter)
+
+## Reservations · Judgment
+
+<a id="JudgedOurWay"></a>
+
+### How the service is judged
+
+`JudgedOurWay` · `src/judgment.ts:46` · status: **held**
+
+Where its build evaluates, the service judges its own way.
+
+In [Test](infra.md#Test):
+
+| Port | Answered by | Which is |
+|---|---|---|
+| [Hardening](../../../std/docs/judgment.md#Hardening) | [Judged our way](judgment.md#OurJudgment) | a function |
+
+Context: The build of the service evaluates in Test: its way of judging applies there, to the whole graph.
+
+- Decided by: karim
+- Chooses: [Judged our way](judgment.md#OurJudgment)
+- In: [Test](infra.md#Test)
+- Follows: [Strategy](../../../std/docs/patterns.md#Strategy)
 
 ## Reservations · SDLC
 

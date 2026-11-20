@@ -674,6 +674,11 @@ and views that can be trusted": a pure rule, with its acceptance criteria played
 Since g111 every hole also says what is wrong by its code (`HoleHasCode`): the words of the prelude's `HoleCode`
 (`value-undecided`, `literal-in-body`, `check-stale`…), or of a library whose kind raises its own (data's `entity-…`).
 The documents show it beside each issue, the terminal too: it is the name by which a project raises a problem (C4).
+Since g112 a project judges harder than the language, never softer: a binding chooses, where its build evaluates, a
+realization of std's port `Hardening` (`AsTheLanguageSays`, `EveryWarning`, or its own built on `Raising`: the example
+raises a missing owner, a requirement without criteria and an ADR nothing applies to errors); the engine asks it for
+each of the project's problems and keeps the harder severity, said with the one the language gave. A way that would
+lower a problem is itself an error: what the language guarantees, no project hides.
 The functions `Laws` and `Views` receive the rules as dependencies: they draw nodes at random, call the kind in a
 sandbox, catch what it throws, and ask the rule whether what they saw keeps the law (decision "The laws are
 requirements").
@@ -1311,8 +1316,9 @@ declarations with), the types of Node below 23 (they follow the Node.js that run
   proposal.
 - **Data**: a driver for PostgreSQL (the example's production database is described, provisioned by Terraform, not
   connected); a content update downloaded by the app, checked by the same rules.
-- **Who acts** (C4, in progress): every problem has its code (g111); then a project raises the codes it chooses by a
-  strategy (a port of std, chosen by a binding, never lowering what the language judges), the actors declared (a
+- **Who acts** (C4, in progress): every problem has its code (g111), and a project raises what it chooses by a
+  strategy (g112, std 0.21.0: a port of std chosen by a binding, never lowering what the language judges); then the
+  actors declared (a
   library of the repository's people: the team, its people, an agent, a runner; an owner nobody declares is an error),
   and evidence given on behalf of someone (Claude for ghalaax, a runner for whoever started it), the delegation dated and
   limited to roles.

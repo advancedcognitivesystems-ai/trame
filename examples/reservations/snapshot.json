@@ -995,7 +995,8 @@
       "kind": "environment",
       "title": "Test",
       "fields": {
-        "owner": "karim"
+        "owner": "karim",
+        "evaluates": true
       }
     },
     {
@@ -1005,6 +1006,72 @@
       "fields": {
         "owner": "karim",
         "value": "2026-10-20T10:00:00.000Z"
+      }
+    },
+    {
+      "id": "judgment.CodesWeRaise",
+      "kind": "decision",
+      "title": "The problems the service will not leave",
+      "fields": {
+        "owner": "karim",
+        "value": {
+          "codes": [
+            "owner-missing",
+            "requirement-without-criteria",
+            "adr-not-applied"
+          ]
+        },
+        "rejected": {
+          "Every warning an error": "a check awaited, a review awaited, an assumption to check are work in progress, not mistakes: the service would never ship",
+          "As the language says": "a requirement without criteria would ship as a wish"
+        }
+      }
+    },
+    {
+      "id": "judgment.JudgedOurWay",
+      "kind": "binding",
+      "title": "How the service is judged",
+      "status": "held",
+      "fields": {
+        "owner": "karim",
+        "context": "The build of the service evaluates in Test: its way of judging applies there, to the whole graph."
+      }
+    },
+    {
+      "id": "judgment.JudgmentChecks",
+      "kind": "catalog",
+      "title": "What the scenario of the judgment checks",
+      "fields": {
+        "owner": "lea",
+        "messages": "(function)"
+      }
+    },
+    {
+      "id": "judgment.OurJudgment",
+      "kind": "function",
+      "title": "Judged our way",
+      "status": "held",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "raising": "std/judgment.Raising",
+          "raised": "judgment.CodesWeRaise"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "judgment.OurJudgmentApplied",
+      "kind": "scenario",
+      "title": "The service's problems judged",
+      "status": "held",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "judge": "std/judgment.Hardening",
+          "checks": "judgment.JudgmentChecks"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -2016,6 +2083,46 @@
       "from": "infra.SystemClock",
       "to": "architecture.Clock",
       "kind": "implements"
+    },
+    {
+      "from": "judgment.JudgedOurWay",
+      "to": "judgment.OurJudgment",
+      "kind": "chooses"
+    },
+    {
+      "from": "judgment.JudgedOurWay",
+      "to": "infra.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "judgment.JudgmentChecks",
+      "to": "messages.Language",
+      "kind": "language"
+    },
+    {
+      "from": "judgment.OurJudgment",
+      "to": "cancellation.CancelWithoutStress",
+      "kind": "serves"
+    },
+    {
+      "from": "judgment.OurJudgment",
+      "to": "judgment.CodesWeRaise",
+      "kind": "deps"
+    },
+    {
+      "from": "judgment.OurJudgmentApplied",
+      "to": "judgment.OurJudgment",
+      "kind": "verifies"
+    },
+    {
+      "from": "judgment.OurJudgmentApplied",
+      "to": "infra.Test",
+      "kind": "env"
+    },
+    {
+      "from": "judgment.OurJudgmentApplied",
+      "to": "judgment.JudgmentChecks",
+      "kind": "deps"
     },
     {
       "from": "messages.ApiMessages",

@@ -17,9 +17,10 @@ import { Sqlite } from "#data/sql"
 
 /**
  * Test
- * Where the scenarios run: a database in memory, a fixed time, a simulated payment provider.
+ * Where the scenarios run: a database in memory, a fixed time, a simulated payment provider. The build evaluates there
+ * too: the criteria, and the way the service judges its graph.
  */
-export const Test = environment({ owner: "karim" })
+export const Test = environment({ owner: "karim", evaluates: true })
 
 /**
  * Local

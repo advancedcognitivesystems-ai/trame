@@ -5,8 +5,8 @@
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
 | The operators | 0 | 0 | 2 | 0 |
-| karim | 1 | 0 | 17 | 103 |
-| lea | 0 | 0 | 1 | 11 |
+| karim | 1 | 0 | 17 | 107 |
+| lea | 0 | 0 | 1 | 12 |
 
 <a id="The operators"></a>
 
@@ -117,6 +117,10 @@
 | [System clock](infra.md#SystemClock) | Implementation | **unknown** |
 | [Test](infra.md#Test) | Environment |  |
 | [Test instant](infra.md#TestInstant) | Decision |  |
+| [The problems the service will not leave](judgment.md#CodesWeRaise) | Decision |  |
+| [How the service is judged](judgment.md#JudgedOurWay) | Technical choice | **held** |
+| [Judged our way](judgment.md#OurJudgment) | Function | **held** |
+| [The service's problems judged](judgment.md#OurJudgmentApplied) | Scenario | **held** |
 | [Legal cap on cancellation fees](legal.md#FeeCap) | Decision | to decide |
 | [The cap, decided](legal.md#FeeCapDecided) | Amendment | not in force |
 | [Messages of the API](messages.md#ApiMessages) | Message catalog |  |
@@ -180,5 +184,6 @@
 | [Launch of the ultra chargers](committee.md#UltraLaunch) | Amendment | not in force |
 | [Period for ultra chargers](committee.md#UltraPeriod) | Amendment | in force |
 | [Approval of the ultra period](committee.md#UltraPeriodApproval) | Approval |  |
+| [What the scenario of the judgment checks](judgment.md#JudgmentChecks) | Message catalog |  |
 | [Checks of the scenarios](messages.md#ScenarioChecks) | Message catalog |  |
 | [Every reservation is refunded according to the rule](scenarios.md#ComplianceScenario) | Scenario | **held** |

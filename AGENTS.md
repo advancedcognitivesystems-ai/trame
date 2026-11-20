@@ -65,7 +65,13 @@ Trame tells you what is left; read it before writing code.
   settled), *error* (a broken rule, a literal in a body, a realization that does more than its port promises), *warning*
   (no measure, no acceptance criteria, nothing applying an ADR). Each names its node, its owner and its code (C4, g111:
   `value-undecided`, `literal-in-body`, `check-stale`…, the words of the prelude's `HoleCode`; a library's kind names
-  its own, data's `entity-…`), by which a project will raise it.
+  its own, data's `entity-…`), by which a project raises it: a project judges harder than the language, never softer
+  (C4, g112, std 0.21.0). Its way of judging is a realization of std's port `Hardening` (`#std/judgment`) that a binding
+  of the project chooses in the environment where its build evaluates (`evaluates: true`): std's `AsTheLanguageSays`
+  or `EveryWarning`, or one of its own built on std's `Raising` (the example's `OurJudgment` raises the codes its
+  decision `CodesWeRaise` lists). The engine keeps the harder severity, shown with the one the language gave
+  (`error, raised from warning`); a way that would lower one, answers no severity or fails is an error of the project
+  (`hardening-lowers`, `hardening-failed`).
 - **`docs/owners.md`**: what each person must decide, settle or watch.
 - **`docs/review.md`**: what the declarations not yet published change.
 - **`./trame.sh view impact <node>`** before changing a node: everything that depends on it. **`why <node>`**: its

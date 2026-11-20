@@ -1770,6 +1770,123 @@
       "diagnostics": []
     },
     {
+      "id": "judgment.AsTheLanguageSays",
+      "kind": "function",
+      "title": "As the language says",
+      "source": "src/judgment.ts:91",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "raising": "judgment.Raising"
+        },
+        "body": "(function)"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "judgment.EveryWarning",
+      "kind": "function",
+      "title": "Every warning an error",
+      "source": "src/judgment.ts:102",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "raising": "judgment.Raising"
+        },
+        "body": "(function)"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "judgment.Hardening",
+      "kind": "port",
+      "title": "Hardening",
+      "source": "src/judgment.ts:85",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": []
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "judgment.HarderNeverSofter",
+      "kind": "adr",
+      "title": "A project judges harder than the language, never softer",
+      "source": "src/judgment.ts:113",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "The language judges every project alike; a project that wants no missing owner, or no warning at all, has no way to say so, and a way to lower a problem would let it hide what the language guarantees.",
+        "consequences": "A project chooses a realization of Hardening by a binding where its build evaluates: AsTheLanguageSays, EveryWarning, or one of its own built on Raising (the codes it lists in a decision of its own); the engine keeps the harder of the two severities, and a way that would lower one is an error of the project (hardening-lowers).",
+        "rejected": {
+          "A decision the engine reads": "one way only, the codes listed; a project that wants every warning raised, or to raise by kind, would wait for the engine",
+          "A rule of std, Raised": "a broken rule is one error for all, not each problem raised where it is, with its owner"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "judgment.Raising",
+      "kind": "structure",
+      "title": "Raising",
+      "source": "src/judgment.ts:29",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "operations": {
+          "file": "./code/judgment/raising.ts",
+          "language": "typescript"
+        },
+        "laws": [
+          {
+            "says": "Each way raises a problem or leaves it, never lowers it",
+            "holds": "(function)"
+          },
+          {
+            "says": "As the language says changes nothing",
+            "holds": "(function)"
+          },
+          {
+            "says": "Every warning becomes an error; an error and a blocking problem stay as they are",
+            "holds": "(function)"
+          },
+          {
+            "says": "Raising codes makes the warnings of those codes errors, and leaves the others",
+            "holds": "(function)"
+          },
+          {
+            "says": "The harder of two severities is one of them, at least as serious as both",
+            "holds": "(function)"
+          }
+        ]
+      },
+      "result": [
+        {
+          "says": "Each way raises a problem or leaves it, never lowers it",
+          "draws": 100
+        },
+        {
+          "says": "As the language says changes nothing",
+          "draws": 100
+        },
+        {
+          "says": "Every warning becomes an error; an error and a blocking problem stay as they are",
+          "draws": 100
+        },
+        {
+          "says": "Raising codes makes the warnings of those codes errors, and leaves the others",
+          "draws": 100
+        },
+        {
+          "says": "The harder of two severities is one of them, at least as serious as both",
+          "draws": 100
+        }
+      ],
+      "diagnostics": []
+    },
+    {
       "id": "measures.Iso8601",
       "kind": "standard",
       "title": "ISO 8601 dates",
@@ -3648,7 +3765,7 @@
       "id": "scenarios.CommandsMade",
       "kind": "scenario",
       "title": "Commands are made for each effect",
-      "source": "src/scenarios.ts:137",
+      "source": "src/scenarios.ts:204",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3672,7 +3789,7 @@
       "id": "scenarios.DeviceInMemory",
       "kind": "scenario",
       "title": "The device, in memory",
-      "source": "src/scenarios.ts:181",
+      "source": "src/scenarios.ts:248",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3714,7 +3831,7 @@
       "id": "scenarios.DrawsKeepTheirPromise",
       "kind": "scenario",
       "title": "Seeded draws keep their promise",
-      "source": "src/scenarios.ts:153",
+      "source": "src/scenarios.ts:220",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3750,7 +3867,7 @@
       "id": "scenarios.InMemory",
       "kind": "binding",
       "title": "In memory",
-      "source": "src/scenarios.ts:35",
+      "source": "src/scenarios.ts:37",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3759,10 +3876,66 @@
       "diagnostics": []
     },
     {
+      "id": "scenarios.JudgedAsTheLanguage",
+      "kind": "scenario",
+      "title": "Judged as the language says",
+      "source": "src/scenarios.ts:172",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "judge": "judgment.Hardening",
+          "checks": "scenarios.ScenarioChecks"
+        },
+        "body": "(function)"
+      },
+      "result": [
+        {
+          "name": "As the language says, a warning stays a warning and an error an error",
+          "status": "passed"
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "scenarios.JudgedStrictly",
+      "kind": "scenario",
+      "title": "Judged strictly",
+      "source": "src/scenarios.ts:187",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "judge": "judgment.Hardening",
+          "checks": "scenarios.ScenarioChecks"
+        },
+        "body": "(function)"
+      },
+      "result": [
+        {
+          "name": "Strictly, a warning becomes an error, and an error and a blocking problem stay as they are",
+          "status": "passed"
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "scenarios.LanguageJudgment",
+      "kind": "binding",
+      "title": "Judged as the language says",
+      "source": "src/scenarios.ts:50",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "The library raises nothing the language does not: its warnings are points to watch, as in any project that says nothing."
+      },
+      "diagnostics": []
+    },
+    {
       "id": "scenarios.RepositoryInMemoryKeeps",
       "kind": "scenario",
       "title": "A repository kept in memory",
-      "source": "src/scenarios.ts:113",
+      "source": "src/scenarios.ts:149",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3792,7 +3965,7 @@
       "id": "scenarios.ScenarioChecks",
       "kind": "catalog",
       "title": "What the library's scenarios check",
-      "source": "src/scenarios.ts:52",
+      "source": "src/scenarios.ts:86",
       "fields": {
         "owner": "trame",
         "messages": "(function)"
@@ -3803,7 +3976,7 @@
       "id": "scenarios.ScenarioData",
       "kind": "decision",
       "title": "What the library's scenarios are given",
-      "source": "src/scenarios.ts:78",
+      "source": "src/scenarios.ts:114",
       "fields": {
         "owner": "trame",
         "value": {
@@ -3903,7 +4076,7 @@
       "id": "scenarios.ScenarioLanguage",
       "kind": "decision",
       "title": "The language of the library's scenarios",
-      "source": "src/scenarios.ts:47",
+      "source": "src/scenarios.ts:81",
       "fields": {
         "owner": "trame",
         "value": {
@@ -3913,10 +4086,32 @@
       "diagnostics": []
     },
     {
+      "id": "scenarios.Strict",
+      "kind": "environment",
+      "title": "Strict",
+      "source": "src/scenarios.ts:63",
+      "fields": {
+        "owner": "trame"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "scenarios.StrictJudgment",
+      "kind": "binding",
+      "title": "Judged strictly",
+      "source": "src/scenarios.ts:69",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "A project that leaves nothing to watch chooses it; the library plays it here, through its port, as such a project would."
+      },
+      "diagnostics": []
+    },
+    {
       "id": "scenarios.Test",
       "kind": "environment",
       "title": "Test",
-      "source": "src/scenarios.ts:29",
+      "source": "src/scenarios.ts:31",
       "fields": {
         "owner": "trame",
         "evaluates": true
@@ -3927,7 +4122,7 @@
       "id": "scenarios.ToolingInMemory",
       "kind": "scenario",
       "title": "The tooling, in memory",
-      "source": "src/scenarios.ts:215",
+      "source": "src/scenarios.ts:282",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4014,6 +4209,11 @@
       "result": {
         "derived": [
           {
+            "node": "judgment.HarderNeverSofter",
+            "via": "judgment.AsTheLanguageSays",
+            "obligation": "sdlc.DecisionsApplied"
+          },
+          {
             "node": "access.SaysItsAudience",
             "via": "obligations.Identified",
             "obligation": "sdlc.DecisionsApplied"
@@ -4046,6 +4246,16 @@
           {
             "node": "scenarios.CommandsMade",
             "via": "effects.Commands",
+            "obligation": "sdlc.FunctionsVerified"
+          },
+          {
+            "node": "scenarios.JudgedAsTheLanguage",
+            "via": "judgment.AsTheLanguageSays",
+            "obligation": "sdlc.FunctionsVerified"
+          },
+          {
+            "node": "scenarios.JudgedStrictly",
+            "via": "judgment.EveryWarning",
             "obligation": "sdlc.FunctionsVerified"
           },
           {
@@ -4173,6 +4383,11 @@
           "html.Css",
           "html.Html",
           "html.Svg",
+          "judgment.AsTheLanguageSays",
+          "judgment.EveryWarning",
+          "judgment.Hardening",
+          "judgment.HarderNeverSofter",
+          "judgment.Raising",
           "measures.Iso8601",
           "measures.LanguageTags",
           "measures.Ratio",
@@ -4260,10 +4475,15 @@
           "scenarios.DeviceInMemory",
           "scenarios.DrawsKeepTheirPromise",
           "scenarios.InMemory",
+          "scenarios.JudgedAsTheLanguage",
+          "scenarios.JudgedStrictly",
+          "scenarios.LanguageJudgment",
           "scenarios.RepositoryInMemoryKeeps",
           "scenarios.ScenarioChecks",
           "scenarios.ScenarioData",
           "scenarios.ScenarioLanguage",
+          "scenarios.Strict",
+          "scenarios.StrictJudgment",
           "scenarios.Test",
           "scenarios.ToolingInMemory",
           "sdlc.CallersIdentified",
@@ -4439,7 +4659,7 @@
       },
       "result": {
         "path": "src",
-        "code": "58671420"
+        "code": "c1ad0cab"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -5692,6 +5912,66 @@
     {
       "from": "html.Svg",
       "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "judgment.AsTheLanguageSays",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "judgment.AsTheLanguageSays",
+      "to": "judgment.Hardening",
+      "kind": "implements"
+    },
+    {
+      "from": "judgment.AsTheLanguageSays",
+      "to": "judgment.Raising",
+      "kind": "deps"
+    },
+    {
+      "from": "judgment.EveryWarning",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "judgment.EveryWarning",
+      "to": "judgment.Hardening",
+      "kind": "implements"
+    },
+    {
+      "from": "judgment.EveryWarning",
+      "to": "judgment.Raising",
+      "kind": "deps"
+    },
+    {
+      "from": "judgment.HarderNeverSofter",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "judgment.HarderNeverSofter",
+      "to": "judgment.Raising",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "judgment.HarderNeverSofter",
+      "to": "judgment.Hardening",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "judgment.HarderNeverSofter",
+      "to": "judgment.AsTheLanguageSays",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "judgment.HarderNeverSofter",
+      "to": "judgment.EveryWarning",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "judgment.Raising",
+      "to": "product.SharedOperations",
       "kind": "serves"
     },
     {
@@ -7020,6 +7300,66 @@
       "kind": "serves"
     },
     {
+      "from": "scenarios.JudgedAsTheLanguage",
+      "to": "judgment.AsTheLanguageSays",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.JudgedAsTheLanguage",
+      "to": "scenarios.Test",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.JudgedAsTheLanguage",
+      "to": "judgment.Hardening",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.JudgedAsTheLanguage",
+      "to": "scenarios.ScenarioChecks",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.JudgedStrictly",
+      "to": "judgment.EveryWarning",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.JudgedStrictly",
+      "to": "scenarios.Strict",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.JudgedStrictly",
+      "to": "judgment.Hardening",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.JudgedStrictly",
+      "to": "scenarios.ScenarioChecks",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.LanguageJudgment",
+      "to": "judgment.AsTheLanguageSays",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.LanguageJudgment",
+      "to": "scenarios.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "scenarios.LanguageJudgment",
+      "to": "patterns.Strategy",
+      "kind": "follows"
+    },
+    {
+      "from": "scenarios.LanguageJudgment",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
       "from": "scenarios.RepositoryInMemoryKeeps",
       "to": "repository.RepositoryInMemory",
       "kind": "verifies"
@@ -7068,6 +7408,26 @@
       "from": "scenarios.ScenarioChecks",
       "to": "scenarios.ScenarioLanguage",
       "kind": "language"
+    },
+    {
+      "from": "scenarios.StrictJudgment",
+      "to": "judgment.EveryWarning",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.StrictJudgment",
+      "to": "scenarios.Strict",
+      "kind": "environments"
+    },
+    {
+      "from": "scenarios.StrictJudgment",
+      "to": "patterns.Strategy",
+      "kind": "follows"
+    },
+    {
+      "from": "scenarios.StrictJudgment",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
     },
     {
       "from": "scenarios.ToolingInMemory",
