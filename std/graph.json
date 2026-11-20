@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-19",
+  "generated": "2026-11-20",
   "nodes": [
     {
       "id": "access.Anyone",
@@ -2351,10 +2351,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "110",
+        "version": "111",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g110"
+        "at": "../generations/g111"
       },
       "diagnostics": []
     },
@@ -4370,7 +4370,7 @@
       "kind": "artifact",
       "title": "The pull requests' workflow",
       "source": "src/sdlc.ts:113",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "../.github/workflows/std-pull-request.yml",
@@ -4380,7 +4380,9 @@
         "path": "../.github/workflows/std-pull-request.yml",
         "code": "d1296f00"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+      ]
     },
     {
       "id": "sdlc.RequirementsServed",
@@ -4407,7 +4409,7 @@
       "kind": "shipment",
       "title": "The files that run it elsewhere",
       "source": "src/sdlc.ts:127",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "repository"
@@ -4420,7 +4422,9 @@
           "sdlc.PullRequestWorkflow"
         ]
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: To ship: The pull requests' workflow is unknown"
+      ]
     },
     {
       "id": "sdlc.TheLibrary",
@@ -4435,7 +4439,7 @@
       },
       "result": {
         "path": "src",
-        "code": "086375ff"
+        "code": "58671420"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"

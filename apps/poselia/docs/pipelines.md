@@ -317,18 +317,18 @@ flowchart TB
 
 ## The files that run it elsewhere
 
-> **The files that run it elsewhere ships: every obligation holds.**
+> **The files that run it elsewhere does not ship yet: 1 of 4 obligations holds.**
 
 For the target repository.
 
 ```mermaid
 flowchart TB
-  n0["The preview's script<br/><small>Artefact</small>"]:::held
+  n0["The preview's script<br/><small>Artefact</small>"]:::unknown
   n1["A script of Bash<br/><small>Syntax element</small>"]:::held
-  n2["The preview's workflow<br/><small>Artefact</small>"]:::held
+  n2["The preview's workflow<br/><small>Artefact</small>"]:::unknown
   n3["A workflow of GitHub Actions<br/><small>Syntax element</small>"]:::held
-  n4["The pull requests' workflow<br/><small>Artefact</small>"]:::held
-  n5["The files that run it elsewhere<br/><small>Shipment</small>"]:::held
+  n4["The pull requests' workflow<br/><small>Artefact</small>"]:::unknown
+  n5["The files that run it elsewhere<br/><small>Shipment</small>"]:::unknown
   n0 -->|Produced by| n1
   n2 -->|Produced by| n3
   n4 -->|Produced by| n3
@@ -346,13 +346,13 @@ flowchart TB
 
 |  | Stage | Step | Run by | Why | Status | Latest evidence |
 |---|---|---|---|---|---|---|
-| 1 | produce | [The preview's script](sdlc.md#PreviewScript) · `scripts/ship-preview.sh` | [A script of Bash](../.trame/ci/docs/shell.md#ShellScript) | — | **held** | 19 November 2026 by claude  |
-| 2 | produce | [The preview's workflow](sdlc.md#PreviewWorkflow) · `../../.github/workflows/poselia-preview.yml` | [A workflow of GitHub Actions](../.trame/ci/docs/github.md#GitHubWorkflow) | — | **held** | 19 November 2026 by claude  |
-| 3 | produce | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) · `../../.github/workflows/poselia-pull-request.yml` | [A workflow of GitHub Actions](../.trame/ci/docs/github.md#GitHubWorkflow) | — | **held** | 19 November 2026 by claude  |
+| 1 | produce | [The preview's script](sdlc.md#PreviewScript) · `scripts/ship-preview.sh` | [A script of Bash](../.trame/ci/docs/shell.md#ShellScript) | — | **unknown** | 19 November 2026 by claude  |
+| 2 | produce | [The preview's workflow](sdlc.md#PreviewWorkflow) · `../../.github/workflows/poselia-preview.yml` | [A workflow of GitHub Actions](../.trame/ci/docs/github.md#GitHubWorkflow) | — | **unknown** | 19 November 2026 by claude  |
+| 3 | produce | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) · `../../.github/workflows/poselia-pull-request.yml` | [A workflow of GitHub Actions](../.trame/ci/docs/github.md#GitHubWorkflow) | — | **unknown** | 19 November 2026 by claude  |
 | 4 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
-| 5 | prove | [The preview's script](sdlc.md#PreviewScript) | — | the shipment | **held** | 19 November 2026 by claude  |
-| 6 | prove | [The preview's workflow](sdlc.md#PreviewWorkflow) | — | the shipment | **held** | 19 November 2026 by claude  |
-| 7 | prove | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | — | the shipment | **held** | 19 November 2026 by claude  |
-| 8 | record | [The files that run it elsewhere](sdlc.md#RunnersWritten) | — | — | **held** | 19 November 2026 by claude `evidence/shipments/RunnersWritten-2026-11-19-d8507a96.json` |
+| 5 | prove | [The preview's script](sdlc.md#PreviewScript) | — | the shipment | **unknown** | 19 November 2026 by claude  |
+| 6 | prove | [The preview's workflow](sdlc.md#PreviewWorkflow) | — | the shipment | **unknown** | 19 November 2026 by claude  |
+| 7 | prove | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | — | the shipment | **unknown** | 19 November 2026 by claude  |
+| 8 | record | [The files that run it elsewhere](sdlc.md#RunnersWritten) | — | — | **unknown** | 19 November 2026 by claude `evidence/shipments/RunnersWritten-2026-11-19-d8507a96.json` |
 
 `trame ship RunnersWritten --by <name>`

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-19",
+  "generated": "2026-11-20",
   "nodes": [
     {
       "id": "github.GitHubActions",
@@ -772,10 +772,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "110",
+        "version": "111",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g110"
+        "at": "../generations/g111"
       },
       "diagnostics": []
     },
@@ -909,7 +909,7 @@
       "kind": "shipment",
       "title": "The next version",
       "source": "src/sdlc.ts:26",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "version"
@@ -938,7 +938,9 @@
           "yaml.YamlDocument"
         ]
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: To ship: The library of writers is unknown"
+      ]
     },
     {
       "id": "sdlc.PullRequestsOnGitHub",
@@ -976,7 +978,7 @@
       "kind": "artifact",
       "title": "The pull requests' workflow",
       "source": "src/sdlc.ts:54",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "../.github/workflows/ci-pull-request.yml",
@@ -986,14 +988,16 @@
         "path": "../.github/workflows/ci-pull-request.yml",
         "code": "b0ccd0f6"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+      ]
     },
     {
       "id": "sdlc.RunnersWritten",
       "kind": "shipment",
       "title": "The files that run it elsewhere",
       "source": "src/sdlc.ts:68",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "repository"
@@ -1007,14 +1011,16 @@
           "github.GitHubWorkflow"
         ]
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: To ship: The pull requests' workflow is unknown"
+      ]
     },
     {
       "id": "sdlc.TheLibrary",
       "kind": "artifact",
       "title": "The library of writers",
       "source": "src/sdlc.ts:19",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "src",
@@ -1022,9 +1028,11 @@
       },
       "result": {
         "path": "src",
-        "code": "e2070174"
+        "code": "c736599e"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+      ]
     },
     {
       "id": "shell.BashScripts",

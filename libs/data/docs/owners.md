@@ -4,16 +4,18 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 2 | 75 |
+| trame | 0 | 0 | 4 | 76 |
 
 <a id="trame"></a>
 
 ## trame
 
-| Severity | What | Where | Owner | Consequence |
-|---|---|---|---|---|
-| warning | To ship: The library of data is unknown | [The next version](sdlc.md#NextVersion) | trame |  |
-| warning | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The library of data](sdlc.md#TheLibrary) | trame |  |
+| Severity | Code | What | Where | Owner | Consequence |
+|---|---|---|---|---|---|
+| warning | `shipment-awaits` | To ship: The library of data is unknown | [The next version](sdlc.md#NextVersion) | trame |  |
+| warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | trame |  |
+| warning | `shipment-awaits` | To ship: The pull requests' workflow is unknown | [The files that run it elsewhere](sdlc.md#RunnersWritten) | trame |  |
+| warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The library of data](sdlc.md#TheLibrary) | trame |  |
 
 ### Owns
 
@@ -49,6 +51,7 @@
 | [Version 0.2.0](releases.md#R0_2_0) | Release |  |
 | [Version 0.3.0](releases.md#R0_3_0) | Release |  |
 | [Version 0.4.0](releases.md#R0_4_0) | Release |  |
+| [Version 0.5.0](releases.md#R0_5_0) | Release |  |
 | [What the library's scenarios check](scenarios.md#DataChecks) | Message catalog |  |
 | [What the library's scenarios are given](scenarios.md#DataGiven) | Decision |  |
 | [Documents kept in the preferences](scenarios.md#DocumentsKept) | Scenario | **held** |
@@ -67,9 +70,9 @@
 | [The next version](sdlc.md#NextVersion) | Shipment | **unknown** |
 | [Its packages safe](sdlc.md#PackagesSafe) | Obligation |  |
 | [How a pull request is checked on GitHub](sdlc.md#PullRequestsOnGitHub) | Decision |  |
-| [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **held** |
+| [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **unknown** |
 | [Its requirements held](sdlc.md#RequirementsServed) | Obligation |  |
-| [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **held** |
+| [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **unknown** |
 | [The library of data](sdlc.md#TheLibrary) | Artefact | **unknown** |
 | [How a version is made](sdlc.md#VersionMode) | Policy |  |
 | [A book](shelves.md#Book) | Entity | **held** |

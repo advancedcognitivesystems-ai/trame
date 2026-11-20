@@ -855,10 +855,10 @@ Package · `Language`
 
 - Owner: ghalaax
 - Name: trame
-- Version: 110
+- Version: 111
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../../generations/g110
+- Its path: ../../generations/g111
 - Serves: Practise yoga on one's own, guided
 
 ### The standard library
@@ -1447,7 +1447,7 @@ Artefact · `PageFile` · **unknown**
 
 ### The preview's script
 
-Artefact · `PreviewScript` · **held**
+Artefact · `PreviewScript` · **unknown**
 
 - Owner: ghalaax
 - Path: scripts/ship-preview.sh
@@ -1456,7 +1456,7 @@ Artefact · `PreviewScript` · **held**
 
 ### The preview's workflow
 
-Artefact · `PreviewWorkflow` · **held**
+Artefact · `PreviewWorkflow` · **unknown**
 
 - Owner: ghalaax
 - Path: ../../.github/workflows/poselia-preview.yml
@@ -1467,7 +1467,7 @@ Artefact · `PreviewWorkflow` · **held**
 
 ### The pull requests' workflow
 
-Artefact · `PullRequestWorkflow` · **held**
+Artefact · `PullRequestWorkflow` · **unknown**
 
 - Owner: ghalaax
 - Path: ../../.github/workflows/poselia-pull-request.yml
@@ -1543,7 +1543,7 @@ Shipment · `PublicVersion` · **unknown**
 
 ### The files that run it elsewhere
 
-Shipment · `RunnersWritten` · **held**
+Shipment · `RunnersWritten` · **unknown**
 
 - Owner: ghalaax
 - Target: repository

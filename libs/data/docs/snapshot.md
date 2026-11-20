@@ -99,9 +99,9 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 110
+- Version: 111
 - How it joins the graph: language
-- Its path: ../../generations/g110
+- Its path: ../../generations/g111
 - Serves: Data described once
 
 ### std
@@ -291,6 +291,18 @@ Release · `R0_4_0`
 - Language: shared
 - Serves: Data described once
 
+### Version 0.5.0
+
+Release · `R0_5_0`
+
+- Released by: trame
+- Version: 0.5.0
+- Released on: 2026-11-20
+- What changes: Each problem an entity raises has its code (C4): entity-reseeded, entity-key-unknown, entity-field-without-type, entity-owner-field-unknown, entity-migration-undecided; the language's holes now name their code first
+- Fingerprint: a3754897cae809d3
+- Language: shared
+- Serves: Data described once
+
 ## Data · Scenarios
 
 ### What the library's scenarios are given
@@ -417,7 +429,7 @@ Decision · `PullRequestsOnGitHub`
 
 ### The pull requests' workflow
 
-Artefact · `PullRequestWorkflow` · **held**
+Artefact · `PullRequestWorkflow` · **unknown**
 
 - Owner: trame
 - Path: ../../.github/workflows/data-pull-request.yml
@@ -444,7 +456,7 @@ Shipment · `NextVersion` · **unknown**
 
 ### The files that run it elsewhere
 
-Shipment · `RunnersWritten` · **held**
+Shipment · `RunnersWritten` · **unknown**
 
 - Owner: trame
 - Target: repository

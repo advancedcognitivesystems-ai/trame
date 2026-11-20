@@ -1,0 +1,12 @@
+{
+  "title": "Reservations",
+  "libraries": {
+    "std": "../../std",
+    "data": "../../libs/data",
+    "ci": {
+      "path": "../../ci",
+      "version": "0.7.0"
+    }
+  },
+  "engine": "../../generations/g110"
+}

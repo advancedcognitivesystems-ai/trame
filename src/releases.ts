@@ -1634,3 +1634,19 @@ export const G110 = release({
   archive: "b86153ccec9980c7",
   assembledBy: G109,
 })
+
+/**
+ * Generation 111
+ */
+export const G111 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g111",
+  date: "2026-11-20",
+  what: "C4, the codes: every problem the language and the engine raise has its code (HoleCode, a vocabulary of the prelude), carried by the holes, the diagnostics and the issues, shown in the documents and the terminal; a law plays that every hole has one",
+  fingerprint: "1d80bb2f140d4091",
+  language: "shared",
+  archive: "7d8c76a685022809",
+  differences: "differences.diff",
+  assembledBy: G110,
+})

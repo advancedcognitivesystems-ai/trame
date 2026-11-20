@@ -1,6 +1,6 @@
 # Layers
 
-*The graph in force on 19 November 2026, ordered by distance to the goals.*
+*The graph in force on 20 November 2026, ordered by distance to the goals.*
 
 ```mermaid
 flowchart TB
@@ -30,11 +30,11 @@ flowchart TB
     n14["Version 0.7.0<br/><small>Release</small>"]:::neutral
   end
   subgraph sdlc["Continuous integration · SDLC"]
-    n15["The next version<br/><small>Shipment</small>"]:::held
+    n15["The next version<br/><small>Shipment</small>"]:::unknown
     n16["How a pull request is checked on GitHub<br/><small>Decision</small>"]:::neutral
-    n17["The pull requests' workflow<br/><small>Artefact</small>"]:::held
-    n18["The files that run it elsewhere<br/><small>Shipment</small>"]:::held
-    n19["The library of writers<br/><small>Artefact</small>"]:::held
+    n17["The pull requests' workflow<br/><small>Artefact</small>"]:::unknown
+    n18["The files that run it elsewhere<br/><small>Shipment</small>"]:::unknown
+    n19["The library of writers<br/><small>Artefact</small>"]:::unknown
   end
   subgraph shell["Continuous integration · Shell"]
     n20["Bash scripts<br/><small>Standard</small>"]:::neutral

@@ -1,16 +1,21 @@
 # Owners
 
-*What each person must decide, settle or watch on 19 November 2026, and what they own.*
+*What each person must decide, settle or watch on 20 November 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 0 | 24 |
+| trame | 0 | 0 | 4 | 24 |
 
 <a id="trame"></a>
 
 ## trame
 
-Nothing to decide or watch.
+| Severity | Code | What | Where | Owner | Consequence |
+|---|---|---|---|---|---|
+| warning | `shipment-awaits` | To ship: The library of writers is unknown | [The next version](sdlc.md#NextVersion) | trame |  |
+| warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | trame |  |
+| warning | `shipment-awaits` | To ship: The pull requests' workflow is unknown | [The files that run it elsewhere](sdlc.md#RunnersWritten) | trame |  |
+| warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The library of writers](sdlc.md#TheLibrary) | trame |  |
 
 ### Owns
 
@@ -31,11 +36,11 @@ Nothing to decide or watch.
 | [Version 0.5.0](releases.md#R0_5_0) | Release |  |
 | [Version 0.6.0](releases.md#R0_6_0) | Release |  |
 | [Version 0.7.0](releases.md#R0_7_0) | Release |  |
-| [The next version](sdlc.md#NextVersion) | Shipment | **held** |
+| [The next version](sdlc.md#NextVersion) | Shipment | **unknown** |
 | [How a pull request is checked on GitHub](sdlc.md#PullRequestsOnGitHub) | Decision |  |
-| [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **held** |
-| [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **held** |
-| [The library of writers](sdlc.md#TheLibrary) | Artefact | **held** |
+| [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **unknown** |
+| [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **unknown** |
+| [The library of writers](sdlc.md#TheLibrary) | Artefact | **unknown** |
 | [Bash scripts](shell.md#BashScripts) | Standard |  |
 | [A script of Bash](shell.md#ShellScript) | Syntax element | **held** |
 | [YAML](yaml.md#Yaml) | Standard |  |

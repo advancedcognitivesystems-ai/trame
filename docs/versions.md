@@ -1,8 +1,8 @@
 # Versions
 
-*The releases of the components on 30 October 2026, newest first. A project runs the release its configuration pins.*
+*The releases of the components on 20 November 2026, newest first. A project runs the release its configuration pins.*
 
-> **110 releases of 1 component; 95 releases on a language of their own**
+> **111 releases of 1 component; 95 releases on a language of their own**
 
 ## Trame on the command line
 
@@ -10,6 +10,7 @@ Each release, newest first: what changed, the release that assembled it, and whe
 
 | Release | Released on | What changes | Assembled by | Language |
 |---|---|---|---|---|
+| [Generation 111](releases.md#G111) | 20 November 2026 | C4, the codes: every problem the language and the engine raise has its code (HoleCode, a vocabulary of the prelude), carried by the holes, the diagnostics and the issues, shown in the documents and the terminal; a law plays that every hole has one | [Generation 110](releases.md#G110) | shared |
 | [Generation 110](releases.md#G110) | 19 November 2026 | D1: the run plan says the nodes a file written comes from (the artefact, the decision of its settings, the file that declares them) | [Generation 109](releases.md#G109) | shared |
 | [Generation 109](releases.md#G109) | 19 November 2026 | D1: the run plan carries the review of a branch, written in Markdown, which a place that reviews a pull request writes against the lock of the branch it merges into | [Generation 108](releases.md#G108) | shared |
 | [Generation 108](releases.md#G108) | 18 November 2026 | D1: a publication freezes, part by part, what the kind of each declaration says people decide (chosen, cited, stated), its code left free; a migration publishes again a form, never a value | [Generation 107](releases.md#G107) | shared |

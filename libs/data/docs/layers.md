@@ -47,61 +47,62 @@ flowchart TB
     n27["Version 0.2.0<br/><small>Release</small>"]:::neutral
     n28["Version 0.3.0<br/><small>Release</small>"]:::neutral
     n29["Version 0.4.0<br/><small>Release</small>"]:::neutral
+    n30["Version 0.5.0<br/><small>Release</small>"]:::neutral
   end
   subgraph scenarios["Data · Scenarios"]
-    n30["What the library's scenarios check<br/><small>Message catalog</small>"]:::neutral
-    n31["What the library's scenarios are given<br/><small>Decision</small>"]:::neutral
-    n32["Documents kept in the preferences<br/><small>Scenario</small>"]:::held
-    n33["Documents, in memory<br/><small>Technical choice</small>"]:::held
-    n34["PostgreSQL's dialect, read<br/><small>Technical choice</small>"]:::held
-    n35["PostgreSQL's statements<br/><small>Scenario</small>"]:::held
-    n36["PostgreSQL's statements<br/><small>Environment</small>"]:::neutral
-    n37["Records kept in SQL<br/><small>Scenario</small>"]:::held
-    n38["Records seeded<br/><small>Scenario</small>"]:::held
-    n39["Tables seeded, in memory<br/><small>Technical choice</small>"]:::held
-    n40["Seeded tables<br/><small>Environment</small>"]:::neutral
-    n41["SQLite, in memory<br/><small>Technical choice</small>"]:::held
-    n42["Test<br/><small>Environment</small>"]:::neutral
+    n31["What the library's scenarios check<br/><small>Message catalog</small>"]:::neutral
+    n32["What the library's scenarios are given<br/><small>Decision</small>"]:::neutral
+    n33["Documents kept in the preferences<br/><small>Scenario</small>"]:::held
+    n34["Documents, in memory<br/><small>Technical choice</small>"]:::held
+    n35["PostgreSQL's dialect, read<br/><small>Technical choice</small>"]:::held
+    n36["PostgreSQL's statements<br/><small>Scenario</small>"]:::held
+    n37["PostgreSQL's statements<br/><small>Environment</small>"]:::neutral
+    n38["Records kept in SQL<br/><small>Scenario</small>"]:::held
+    n39["Records seeded<br/><small>Scenario</small>"]:::held
+    n40["Tables seeded, in memory<br/><small>Technical choice</small>"]:::held
+    n41["Seeded tables<br/><small>Environment</small>"]:::neutral
+    n42["SQLite, in memory<br/><small>Technical choice</small>"]:::held
+    n43["Test<br/><small>Environment</small>"]:::neutral
   end
   subgraph sdlc["Data · SDLC"]
-    n43["Its decisions applied<br/><small>Obligation</small>"]:::neutral
-    n44["Its functions verified<br/><small>Obligation</small>"]:::neutral
-    n45["The next version<br/><small>Shipment</small>"]:::unknown
-    n46["Its packages safe<br/><small>Obligation</small>"]:::neutral
-    n47["How a pull request is checked on GitHub<br/><small>Decision</small>"]:::neutral
-    n48["The pull requests' workflow<br/><small>Artefact</small>"]:::held
-    n49["Its requirements held<br/><small>Obligation</small>"]:::neutral
-    n50["The files that run it elsewhere<br/><small>Shipment</small>"]:::held
-    n51["The library of data<br/><small>Artefact</small>"]:::unknown
-    n52["How a version is made<br/><small>Policy</small>"]:::neutral
+    n44["Its decisions applied<br/><small>Obligation</small>"]:::neutral
+    n45["Its functions verified<br/><small>Obligation</small>"]:::neutral
+    n46["The next version<br/><small>Shipment</small>"]:::unknown
+    n47["Its packages safe<br/><small>Obligation</small>"]:::neutral
+    n48["How a pull request is checked on GitHub<br/><small>Decision</small>"]:::neutral
+    n49["The pull requests' workflow<br/><small>Artefact</small>"]:::unknown
+    n50["Its requirements held<br/><small>Obligation</small>"]:::neutral
+    n51["The files that run it elsewhere<br/><small>Shipment</small>"]:::unknown
+    n52["The library of data<br/><small>Artefact</small>"]:::unknown
+    n53["How a version is made<br/><small>Policy</small>"]:::neutral
   end
   subgraph shelves["Data · Shelves"]
-    n53["A book<br/><small>Entity</small>"]:::held
-    n54["Shelves<br/><small>Vocabulary</small>"]:::neutral
+    n54["A book<br/><small>Entity</small>"]:::held
+    n55["Shelves<br/><small>Vocabulary</small>"]:::neutral
   end
   subgraph sql["Data · SQL"]
-    n55["A column added<br/><small>Syntax element</small>"]:::held
-    n56["Column definition<br/><small>Syntax element</small>"]:::held
-    n57["Condition on a column<br/><small>Syntax element</small>"]:::held
-    n58["A column with no value<br/><small>Syntax element</small>"]:::held
-    n59["Count<br/><small>Syntax element</small>"]:::held
-    n60["Table creation<br/><small>Syntax element</small>"]:::held
-    n61["Deletion<br/><small>Syntax element</small>"]:::held
-    n62["A column dropped<br/><small>Syntax element</small>"]:::held
-    n63["Insertion<br/><small>Syntax element</small>"]:::held
-    n64["PostgreSQL parameter<br/><small>Syntax element</small>"]:::held
-    n65["PostgreSQL's dialect<br/><small>Standard</small>"]:::neutral
-    n66["A column renamed<br/><small>Syntax element</small>"]:::held
-    n67["Selection<br/><small>Syntax element</small>"]:::held
-    n68["SQL<br/><small>Standard</small>"]:::neutral
-    n69["SQLite<br/><small>Standard</small>"]:::neutral
-    n70["SQLite parameter<br/><small>Syntax element</small>"]:::held
-    n71["SQLite's dialect<br/><small>Standard</small>"]:::neutral
-    n72["List<br/><small>Syntax element</small>"]:::held
-    n73["Update<br/><small>Syntax element</small>"]:::held
+    n56["A column added<br/><small>Syntax element</small>"]:::held
+    n57["Column definition<br/><small>Syntax element</small>"]:::held
+    n58["Condition on a column<br/><small>Syntax element</small>"]:::held
+    n59["A column with no value<br/><small>Syntax element</small>"]:::held
+    n60["Count<br/><small>Syntax element</small>"]:::held
+    n61["Table creation<br/><small>Syntax element</small>"]:::held
+    n62["Deletion<br/><small>Syntax element</small>"]:::held
+    n63["A column dropped<br/><small>Syntax element</small>"]:::held
+    n64["Insertion<br/><small>Syntax element</small>"]:::held
+    n65["PostgreSQL parameter<br/><small>Syntax element</small>"]:::held
+    n66["PostgreSQL's dialect<br/><small>Standard</small>"]:::neutral
+    n67["A column renamed<br/><small>Syntax element</small>"]:::held
+    n68["Selection<br/><small>Syntax element</small>"]:::held
+    n69["SQL<br/><small>Standard</small>"]:::neutral
+    n70["SQLite<br/><small>Standard</small>"]:::neutral
+    n71["SQLite parameter<br/><small>Syntax element</small>"]:::held
+    n72["SQLite's dialect<br/><small>Standard</small>"]:::neutral
+    n73["List<br/><small>Syntax element</small>"]:::held
+    n74["Update<br/><small>Syntax element</small>"]:::held
   end
   subgraph words["Data · Words"]
-    n74["Words of the kinds of data<br/><small>Message catalog</small>"]:::neutral
+    n75["Words of the kinds of data<br/><small>Message catalog</small>"]:::neutral
   end
   n0 -->|Serves| n13
   n3 -->|Serves| n13
@@ -127,20 +128,20 @@ flowchart TB
   n12 -->|Applied by| n17
   n15 -->|Serves| n13
   n15 -->|Implements| n23
-  n15 -->|Depends on| n65
-  n15 -->|Depends on| n64
-  n15 -->|Depends on| n56
-  n15 -->|Depends on| n60
-  n15 -->|Depends on| n59
-  n15 -->|Depends on| n63
-  n15 -->|Depends on| n67
-  n15 -->|Depends on| n73
-  n15 -->|Depends on| n61
-  n15 -->|Depends on| n55
   n15 -->|Depends on| n66
-  n15 -->|Depends on| n62
+  n15 -->|Depends on| n65
   n15 -->|Depends on| n57
+  n15 -->|Depends on| n61
+  n15 -->|Depends on| n60
+  n15 -->|Depends on| n64
+  n15 -->|Depends on| n68
+  n15 -->|Depends on| n74
+  n15 -->|Depends on| n62
+  n15 -->|Depends on| n56
+  n15 -->|Depends on| n67
+  n15 -->|Depends on| n63
   n15 -->|Depends on| n58
+  n15 -->|Depends on| n59
   n15 -->|Depends on| n24
   n17 -->|Serves| n13
   n17 -->|Implements| n16
@@ -152,23 +153,23 @@ flowchart TB
   n18 -->|Serves| n13
   n18 -->|Implements| n14
   n20 -->|Implements| n19
-  n20 -->|Depends on| n69
+  n20 -->|Depends on| n70
   n21 -->|Serves| n13
   n21 -->|Implements| n23
+  n21 -->|Depends on| n72
   n21 -->|Depends on| n71
-  n21 -->|Depends on| n70
-  n21 -->|Depends on| n56
-  n21 -->|Depends on| n60
-  n21 -->|Depends on| n59
-  n21 -->|Depends on| n63
-  n21 -->|Depends on| n67
-  n21 -->|Depends on| n73
-  n21 -->|Depends on| n61
-  n21 -->|Depends on| n55
-  n21 -->|Depends on| n66
-  n21 -->|Depends on| n62
   n21 -->|Depends on| n57
+  n21 -->|Depends on| n61
+  n21 -->|Depends on| n60
+  n21 -->|Depends on| n64
+  n21 -->|Depends on| n68
+  n21 -->|Depends on| n74
+  n21 -->|Depends on| n62
+  n21 -->|Depends on| n56
+  n21 -->|Depends on| n67
+  n21 -->|Depends on| n63
   n21 -->|Depends on| n58
+  n21 -->|Depends on| n59
   n21 -->|Depends on| n24
   n22 -->|Serves| n13
   n22 -->|Implements| n14
@@ -177,111 +178,112 @@ flowchart TB
   n27 -->|Serves| n13
   n28 -->|Serves| n13
   n29 -->|Serves| n13
-  n32 -->|Verifies| n3
-  n32 -->|Verifies| n5
-  n32 -->|Verifies| n0
-  n32 -->|In| n42
-  n32 -->|Depends on| n2
-  n32 -->|Depends on| n53
-  n32 -->|Depends on| n1
-  n32 -->|Depends on| n31
-  n32 -->|Depends on| n30
-  n33 -->|Chooses| n3
-  n33 -->|Chooses| n17
-  n33 -->|Chooses| n21
-  n33 -->|Chooses| n22
-  n33 -->|In| n42
-  n33 -->|Serves| n13
-  n34 -->|Chooses| n15
-  n34 -->|In| n36
+  n30 -->|Serves| n13
+  n33 -->|Verifies| n3
+  n33 -->|Verifies| n5
+  n33 -->|Verifies| n0
+  n33 -->|In| n43
+  n33 -->|Depends on| n2
+  n33 -->|Depends on| n54
+  n33 -->|Depends on| n1
+  n33 -->|Depends on| n32
+  n33 -->|Depends on| n31
+  n34 -->|Chooses| n3
+  n34 -->|Chooses| n17
+  n34 -->|Chooses| n21
+  n34 -->|Chooses| n22
+  n34 -->|In| n43
   n34 -->|Serves| n13
-  n35 -->|Verifies| n15
-  n35 -->|In| n36
-  n35 -->|Depends on| n23
-  n35 -->|Depends on| n53
-  n35 -->|Depends on| n31
-  n35 -->|Depends on| n30
-  n37 -->|Verifies| n17
-  n37 -->|Verifies| n21
-  n37 -->|Verifies| n20
-  n37 -->|Verifies| n22
-  n37 -->|Verifies| n0
-  n37 -->|In| n42
-  n37 -->|Depends on| n16
-  n37 -->|Depends on| n19
-  n37 -->|Depends on| n23
-  n37 -->|Depends on| n24
-  n37 -->|Depends on| n53
-  n37 -->|Depends on| n31
-  n37 -->|Depends on| n30
-  n38 -->|Verifies| n18
-  n38 -->|In| n40
+  n35 -->|Chooses| n15
+  n35 -->|In| n37
+  n35 -->|Serves| n13
+  n36 -->|Verifies| n15
+  n36 -->|In| n37
+  n36 -->|Depends on| n23
+  n36 -->|Depends on| n54
+  n36 -->|Depends on| n32
+  n36 -->|Depends on| n31
+  n38 -->|Verifies| n17
+  n38 -->|Verifies| n21
+  n38 -->|Verifies| n20
+  n38 -->|Verifies| n22
+  n38 -->|Verifies| n0
+  n38 -->|In| n43
   n38 -->|Depends on| n16
-  n38 -->|Depends on| n53
-  n38 -->|Depends on| n30
-  n39 -->|Chooses| n17
-  n39 -->|Chooses| n21
-  n39 -->|Chooses| n18
-  n39 -->|In| n40
-  n39 -->|Serves| n13
-  n41 -->|Chooses| n20
-  n41 -->|In| n42
-  n41 -->|In| n40
-  n41 -->|Serves| n13
-  n43 -->|Serves| n13
+  n38 -->|Depends on| n19
+  n38 -->|Depends on| n23
+  n38 -->|Depends on| n24
+  n38 -->|Depends on| n54
+  n38 -->|Depends on| n32
+  n38 -->|Depends on| n31
+  n39 -->|Verifies| n18
+  n39 -->|In| n41
+  n39 -->|Depends on| n16
+  n39 -->|Depends on| n54
+  n39 -->|Depends on| n31
+  n40 -->|Chooses| n17
+  n40 -->|Chooses| n21
+  n40 -->|Chooses| n18
+  n40 -->|In| n41
+  n40 -->|Serves| n13
+  n42 -->|Chooses| n20
+  n42 -->|In| n43
+  n42 -->|In| n41
+  n42 -->|Serves| n13
   n44 -->|Serves| n13
-  n45 -->|Ships| n51
-  n45 -->|Follows the policy| n52
-  n46 -->|Serves| n13
-  n48 -->|Runs elsewhere| n45
-  n48 -->|Its writer's settings| n47
-  n49 -->|Serves| n13
-  n50 -->|Ships| n48
-  n52 -->|Its obligations| n44
-  n52 -->|Its obligations| n49
-  n52 -->|Its obligations| n43
-  n52 -->|Its obligations| n46
-  n53 -->|Serves| n13
+  n45 -->|Serves| n13
+  n46 -->|Ships| n52
+  n46 -->|Follows the policy| n53
+  n47 -->|Serves| n13
+  n49 -->|Runs elsewhere| n46
+  n49 -->|Its writer's settings| n48
+  n50 -->|Serves| n13
+  n51 -->|Ships| n49
+  n53 -->|Its obligations| n45
+  n53 -->|Its obligations| n50
+  n53 -->|Its obligations| n44
+  n53 -->|Its obligations| n47
   n54 -->|Serves| n13
-  n55 -->|Defined by| n68
-  n55 -->|Depends on| n68
-  n56 -->|Defined by| n68
-  n56 -->|Depends on| n68
-  n57 -->|Defined by| n68
-  n57 -->|Depends on| n68
-  n58 -->|Defined by| n68
-  n58 -->|Depends on| n68
-  n59 -->|Defined by| n68
-  n59 -->|Depends on| n68
-  n60 -->|Defined by| n68
-  n60 -->|Depends on| n68
-  n60 -->|Depends on| n72
-  n61 -->|Defined by| n68
-  n61 -->|Depends on| n68
-  n62 -->|Defined by| n68
-  n62 -->|Depends on| n68
-  n63 -->|Defined by| n68
-  n63 -->|Depends on| n68
-  n63 -->|Depends on| n72
-  n64 -->|Defined by| n65
-  n64 -->|Depends on| n65
-  n65 -->|Serves| n13
-  n66 -->|Defined by| n68
-  n66 -->|Depends on| n68
-  n67 -->|Defined by| n68
-  n67 -->|Depends on| n68
-  n67 -->|Depends on| n72
-  n68 -->|Serves| n13
+  n55 -->|Serves| n13
+  n56 -->|Defined by| n69
+  n56 -->|Depends on| n69
+  n57 -->|Defined by| n69
+  n57 -->|Depends on| n69
+  n58 -->|Defined by| n69
+  n58 -->|Depends on| n69
+  n59 -->|Defined by| n69
+  n59 -->|Depends on| n69
+  n60 -->|Defined by| n69
+  n60 -->|Depends on| n69
+  n61 -->|Defined by| n69
+  n61 -->|Depends on| n69
+  n61 -->|Depends on| n73
+  n62 -->|Defined by| n69
+  n62 -->|Depends on| n69
+  n63 -->|Defined by| n69
+  n63 -->|Depends on| n69
+  n64 -->|Defined by| n69
+  n64 -->|Depends on| n69
+  n64 -->|Depends on| n73
+  n65 -->|Defined by| n66
+  n65 -->|Depends on| n66
+  n66 -->|Serves| n13
+  n67 -->|Defined by| n69
+  n67 -->|Depends on| n69
+  n68 -->|Defined by| n69
+  n68 -->|Depends on| n69
+  n68 -->|Depends on| n73
   n69 -->|Serves| n13
-  n70 -->|Defined by| n71
-  n70 -->|Depends on| n71
-  n71 -->|Serves| n13
-  n72 -->|Defined by| n68
-  n72 -->|Depends on| n68
-  n73 -->|Defined by| n68
-  n73 -->|Depends on| n68
-  n73 -->|Depends on| n72
-  n53 -.->|Depends on| n54
+  n70 -->|Serves| n13
+  n71 -->|Defined by| n72
+  n71 -->|Depends on| n72
+  n72 -->|Serves| n13
+  n73 -->|Defined by| n69
+  n73 -->|Depends on| n69
+  n74 -->|Defined by| n69
+  n74 -->|Depends on| n69
+  n74 -->|Depends on| n73
+  n54 -.->|Depends on| n55
   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
   classDef blocked fill:#fbf0d9,stroke:#9a6200,color:#17202a
   classDef violated fill:#f9e3e1,stroke:#ad2a22,color:#17202a

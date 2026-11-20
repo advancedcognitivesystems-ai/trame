@@ -85,3 +85,19 @@ an entity says whose its records are (ownedBy: a person, a tenant), which the en
 
 - Released by: trame
 - Serves: [Data described once](product.md#DataDescribedOnce)
+
+<a id="R0_5_0"></a>
+
+### Version 0.5.0
+
+`R0_5_0` · `src/releases.ts:77`
+
+Each problem an entity raises has its code (C4): entity-reseeded, entity-key-unknown, entity-field-without-type, entity-owner-field-unknown, entity-migration-undecided; the language's holes now name their code first
+
+- Version: `0.5.0`
+- Released on: 20 November 2026
+- Fingerprint: `a3754897cae809d3`
+- Language: the repository's, shared
+
+- Released by: trame
+- Serves: [Data described once](product.md#DataDescribedOnce)

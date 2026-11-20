@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 19 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 20 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Continuous integration · GitHub Actions
 
@@ -178,10 +178,10 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 110
+- Version: 111
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../generations/g110
+- Its path: ../generations/g111
 - Serves: A shipment runs elsewhere as it runs here
 
 ## Continuous integration · Product
@@ -296,7 +296,7 @@ Decision · `PullRequestsOnGitHub`
 
 ### The pull requests' workflow
 
-Artefact · `PullRequestWorkflow` · **held**
+Artefact · `PullRequestWorkflow` · **unknown**
 
 - Owner: trame
 - Path: ../.github/workflows/ci-pull-request.yml
@@ -307,7 +307,7 @@ Artefact · `PullRequestWorkflow` · **held**
 
 ### The library of writers
 
-Artefact · `TheLibrary` · **held**
+Artefact · `TheLibrary` · **unknown**
 
 - Owner: trame
 - Path: src
@@ -315,7 +315,7 @@ Artefact · `TheLibrary` · **held**
 
 ### The next version
 
-Shipment · `NextVersion` · **held**
+Shipment · `NextVersion` · **unknown**
 
 - Owner: trame
 - Target: version
@@ -324,7 +324,7 @@ Shipment · `NextVersion` · **held**
 
 ### The files that run it elsewhere
 
-Shipment · `RunnersWritten` · **held**
+Shipment · `RunnersWritten` · **unknown**
 
 - Owner: trame
 - Target: repository

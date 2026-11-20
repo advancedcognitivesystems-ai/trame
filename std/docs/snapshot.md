@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 19 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 20 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Standard library · Access
 
@@ -501,10 +501,10 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 110
+- Version: 111
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../generations/g110
+- Its path: ../generations/g111
 - Serves: Ports of the platform, realized once
 
 ## Standard library · Design patterns
@@ -1297,7 +1297,7 @@ Decision · `PullRequestsOnGitHub`
 
 ### The pull requests' workflow
 
-Artefact · `PullRequestWorkflow` · **held**
+Artefact · `PullRequestWorkflow` · **unknown**
 
 - Owner: trame
 - Path: ../.github/workflows/std-pull-request.yml
@@ -1324,7 +1324,7 @@ Shipment · `NextVersion` · **unknown**
 
 ### The files that run it elsewhere
 
-Shipment · `RunnersWritten` · **held**
+Shipment · `RunnersWritten` · **unknown**
 
 - Owner: trame
 - Target: repository
