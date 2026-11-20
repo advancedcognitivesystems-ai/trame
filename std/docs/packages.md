@@ -10,7 +10,7 @@
 
 ### The library of continuous integration
 
-`ContinuousIntegration` · `src/packages.ts:21`
+`ContinuousIntegration` · `src/packages.ts:23`
 
 The writers of the files that run a shipment elsewhere (GitHub Actions), at the version the project uses, by its path in Trame's repository: the workflow that checks each pull request is written from the graph.
 
@@ -31,7 +31,7 @@ The writers of the files that run a shipment elsewhere (GitHub Actions), at the 
 
 ### Trame
 
-`Language` · `src/packages.ts:11`
+`Language` · `src/packages.ts:13`
 
 The language the library is written in, at the generation it pins: reached by its path in Trame's repository. Its owner moves it when a version of the library needs a newer language.
 
@@ -47,3 +47,24 @@ The language the library is written in, at the generation it pins: reached by it
 
 - Owner: trame
 - Serves: [Ports of the platform, realized once](product.md#RealizedOnce)
+
+<a id="People"></a>
+
+### The people of the repository
+
+`People` · `src/packages.ts:32`
+
+Who works on Trame's repository, declared once as actors (C4): every owner of this project names one of them.
+
+- Name: `team`
+- Version: `0.1.0`
+- Installed: Not installed in the project: its lockfile lists no team
+- Vulnerabilities: No report yet: trame audit asks the registry
+- Latest version: No report yet: trame audit asks the registry
+- What it may do: not said: an implementation that imports it cannot promise anything
+- How it joins the graph: `library`
+- Where it comes from: `path`
+- Its path: `../libs/team/releases/0.1.0`
+
+- Owner: trame
+- Serves: [Versions that hold](product.md#VersionsThatHold)

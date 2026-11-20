@@ -25,7 +25,7 @@ import { PackageAudit, VersionOrder, NpmLockfile } from "./packages"
 import { CommandMessages, AdvanceMessages, OutputMessages } from "./messages"
 import { TerminalText, TerminalColumns, PaddedCell, Columns } from "./text"
 import { ExampleRoot, TestDay } from "./platform"
-import { TypeScript, StringLiteral, TypeScriptSyntax, ModuleTitle, DocBlock, ExportDeclaration, ConstDeclaration, Call, ObjectLiteral, Property, NamedImport, InlineArray } from "./typescript"
+import { TypeScript, StringLiteral, TypeScriptSyntax, ModuleTitle, DocBlock, ExportDeclaration, ConstDeclaration, Call, ObjectLiteral, Property, NamedImport, InlineArray, MemberAccess } from "./typescript"
 import { Drivers } from "./languages"
 import { Advancement, AcceptCandidate, EnginePin, LanguageSharing, Releases, ReleaseRecords } from "./generations"
 import { Punctuation } from "./documents"
@@ -425,6 +425,7 @@ export const Init = entryPoint({
     syntax: TypeScriptSyntax, title: ModuleTitle, doc: DocBlock, exported: ExportDeclaration, constant: ConstDeclaration, call: Call, object: ObjectLiteral,
     property: Property, text: StringLiteral, imports: NamedImport, terminal: Terminal, messages: CommandMessages, currentProcess: Process,
     events: NodeEvents, line: TrameCommands, texts: Texts, references: ReferencesModule, names: LanguageNames, specifiers: NodeModuleSpecifiers,
+    member: MemberAccess, list: InlineArray,
   },
   body: code.file<typeof import("./code/commands/init").default>("./code/commands/init.ts"),
 })

@@ -4,7 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 7 | 204 |
+| trame | 0 | 0 | 7 | 205 |
 
 <a id="trame"></a>
 
@@ -85,6 +85,7 @@
 | [Criteria of the code verified](obligations.md#VerifiedCriteria) | Acceptance criteria | **held** |
 | [The library of continuous integration](packages.md#ContinuousIntegration) | Package |  |
 | [Trame](packages.md#Language) | Package |  |
+| [The people of the repository](packages.md#People) | Package |  |
 | [Abstract Factory](patterns.md#AbstractFactory) | Design pattern |  |
 | [Adapter](patterns.md#Adapter) | Design pattern |  |
 | [Bridge](patterns.md#Bridge) | Design pattern |  |

@@ -4,24 +4,25 @@
 
 > **1 decision to take · 20 points to watch · 9 acceptance criteria passed out of 9 · 12 scenario checks passed out of 12**
 
-| Module | Goals | Requirements | Service level objectives | Standards | Vocabularies | Decisions | Architecture decisions | Assumptions | Amendments | Components | Ports | Architecture rules | Functions | Entry points | Message catalogs | Implementations | Technical choices | Environments | Scenarios | Roles | Artefacts | Checks | Shipments | Obligations | Policies | Quantities | Audiences | Entities | Open issues |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| [Reservations · Access](access.md) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 2 |
-| [Reservations · API](api.md) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Reservations · Architecture](architecture.md) | 0 | 0 | 0 | 0 | 0 | 2 | 1 | 0 | 0 | 1 | 6 | 3 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Reservations · Cancellation](cancellation.md) | 1 | 1 | 1 | 0 | 0 | 2 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 3 |
-| [Product committee · 15 October 2026](committee.md) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Reservations · Consumer law](consumer.md) | 0 | 1 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Reservations · Data](data.md) | 0 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 0 |
-| [Reservations · Infrastructure](infra.md) | 0 | 0 | 0 | 0 | 0 | 10 | 0 | 0 | 0 | 0 | 0 | 0 | 4 | 0 | 0 | 5 | 12 | 3 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Reservations · Judgment](judgment.md) | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 1 | 0 | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Legal](legal.md) | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 |
-| [Reservations · Messages](messages.md) | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Reservations · Principles](principles.md) | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Reservations · Scenarios](scenarios.md) | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 5 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Reservations · SDLC](sdlc.md) | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 1 | 0 | 0 | 1 | 0 | 0 | 1 | 4 | 2 | 4 | 9 | 3 | 0 | 0 | 0 | 14 |
-| [Reservations · Standards](standards.md) | 0 | 0 | 0 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Support requests](support.md) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 |
+| Module | Goals | Requirements | Service level objectives | Standards | Vocabularies | Decisions | Architecture decisions | Assumptions | Amendments | Components | Ports | Architecture rules | Functions | Entry points | Message catalogs | Implementations | Technical choices | Environments | Scenarios | Roles | Artefacts | Checks | Shipments | Obligations | Policies | Quantities | Audiences | Actors | Entities | Open issues |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| [Reservations · Access](access.md) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 2 |
+| [Reservations · API](api.md) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| [Reservations · Architecture](architecture.md) | 0 | 0 | 0 | 0 | 0 | 2 | 1 | 0 | 0 | 1 | 6 | 3 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| [Reservations · Cancellation](cancellation.md) | 1 | 1 | 1 | 0 | 0 | 2 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 3 |
+| [Product committee · 15 October 2026](committee.md) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| [Reservations · Consumer law](consumer.md) | 0 | 1 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| [Reservations · Data](data.md) | 0 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 0 |
+| [Reservations · Infrastructure](infra.md) | 0 | 0 | 0 | 0 | 0 | 10 | 0 | 0 | 0 | 0 | 0 | 0 | 4 | 0 | 0 | 5 | 12 | 3 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| [Reservations · Judgment](judgment.md) | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 1 | 0 | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| [Legal](legal.md) | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 |
+| [Reservations · Messages](messages.md) | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| [Reservations · People](people.md) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 3 | 0 | 0 |
+| [Reservations · Principles](principles.md) | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| [Reservations · Scenarios](scenarios.md) | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 5 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| [Reservations · SDLC](sdlc.md) | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 1 | 0 | 0 | 1 | 0 | 0 | 1 | 4 | 2 | 4 | 9 | 3 | 0 | 0 | 0 | 0 | 14 |
+| [Reservations · Standards](standards.md) | 0 | 0 | 0 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| [Support requests](support.md) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 |
 
 ## Libraries
 
@@ -30,8 +31,9 @@ The libraries the project imports: their nodes take part in the graph, their doc
 | Library | Modules | Nodes | Open issues |
 |---|---|---|---|
 | [ci 0.7.0](../../../ci/releases/0.7.0/docs/index.md) | Continuous integration · GitHub Actions, Continuous integration · npm, Continuous integration · Packages, Continuous integration · Product, Continuous integration · Releases, Continuous integration · SDLC, Continuous integration · Shell, Continuous integration · YAML | 23 | 4 points to watch |
-| [data](../../../libs/data/docs/index.md) | Data · Documents, Data · Obligations, Data · Packages, Data · Principles, Data · Product, Data · Records, Data · Releases, Data · Scenarios, Data · SDLC, Data · Shelves, Data · SQL, Data · Words | 76 | 4 points to watch |
-| [std](../../../std/docs/index.md) | Standard library · Access, Standard library · Algebra, Standard library · Algorithms, Standard library · ECMAScript, Standard library · Effects, Standard library · HTML and CSS, Standard library · Judgment, Standard library · Measures, Standard library · Obligations, Standard library · Packages, Standard library · Design patterns, Standard library · Platform, Standard library · Product, Standard library · Releases, Standard library · Repositories on GitHub, Standard library · Rules, Standard library · Scenarios, Standard library · SDLC, Standard library · System, Standard library · Text, Standard library · Tooling, Standard library · Web | 204 | 9 points to watch |
+| [data](../../../libs/data/docs/index.md) | Data · Documents, Data · Obligations, Data · Packages, Data · Principles, Data · Product, Data · Records, Data · Releases, Data · Scenarios, Data · SDLC, Data · Shelves, Data · SQL, Data · Words | 77 | 4 points to watch |
+| [std](../../../std/docs/index.md) | Standard library · Access, Standard library · Algebra, Standard library · Algorithms, Standard library · ECMAScript, Standard library · Effects, Standard library · HTML and CSS, Standard library · Judgment, Standard library · Measures, Standard library · Obligations, Standard library · Packages, Standard library · Design patterns, Standard library · Platform, Standard library · Product, Standard library · Releases, Standard library · Repositories on GitHub, Standard library · Rules, Standard library · Scenarios, Standard library · SDLC, Standard library · System, Standard library · Text, Standard library · Tooling, Standard library · Web | 205 | 9 points to watch |
+| [team 0.1.0](../../../libs/team/releases/0.1.0/docs/index.md) | Team · Packages, Team · People, Team · Product, Team · SDLC | 12 | 4 points to watch |
 
 ## Open issues
 

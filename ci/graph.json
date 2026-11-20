@@ -780,6 +780,60 @@
       "diagnostics": []
     },
     {
+      "id": "people.Claude",
+      "kind": "actor",
+      "title": "Claude",
+      "source": "src/people.ts:21",
+      "fields": {
+        "owner": "ghalaax",
+        "handle": "claude",
+        "sort": "agent"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "people.Ghalaax",
+      "kind": "actor",
+      "title": "ghalaax",
+      "source": "src/people.ts:15",
+      "fields": {
+        "owner": "ghalaax",
+        "handle": "ghalaax",
+        "sort": "person",
+        "identities": {
+          "github": "ghalaax"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "people.GitHubRunner",
+      "kind": "actor",
+      "title": "The runner of GitHub Actions",
+      "source": "src/people.ts:27",
+      "fields": {
+        "owner": "ghalaax",
+        "handle": "github-actions",
+        "sort": "machine",
+        "identities": {
+          "github": "github-actions[bot]"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "people.Trame",
+      "kind": "actor",
+      "title": "Trame's team",
+      "source": "src/people.ts:33",
+      "fields": {
+        "owner": "ghalaax",
+        "handle": "trame",
+        "sort": "team"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "product.OneWriterPerPlace",
       "kind": "goal",
       "title": "Each place is a writer",
@@ -926,6 +980,10 @@
           "github.PinnedActions",
           "npm.Npm",
           "packages.Language",
+          "people.Claude",
+          "people.Ghalaax",
+          "people.GitHubRunner",
+          "people.Trame",
           "product.OneWriterPerPlace",
           "product.RunsElsewhere",
           "sdlc.NextVersion",
@@ -1028,7 +1086,7 @@
       },
       "result": {
         "path": "src",
-        "code": "0d00bd41"
+        "code": "8800a999"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -1686,6 +1744,36 @@
     },
     {
       "from": "packages.Language",
+      "to": "product.RunsElsewhere",
+      "kind": "serves"
+    },
+    {
+      "from": "people.Claude",
+      "to": "product.RunsElsewhere",
+      "kind": "serves"
+    },
+    {
+      "from": "people.Ghalaax",
+      "to": "product.RunsElsewhere",
+      "kind": "serves"
+    },
+    {
+      "from": "people.GitHubRunner",
+      "to": "product.RunsElsewhere",
+      "kind": "serves"
+    },
+    {
+      "from": "people.Trame",
+      "to": "people.Ghalaax",
+      "kind": "members"
+    },
+    {
+      "from": "people.Trame",
+      "to": "people.Claude",
+      "kind": "members"
+    },
+    {
+      "from": "people.Trame",
       "to": "product.RunsElsewhere",
       "kind": "serves"
     },

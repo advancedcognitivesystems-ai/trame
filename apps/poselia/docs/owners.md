@@ -6,7 +6,7 @@
 |---|---|---|---|---|
 | A teacher who practises | 0 | 0 | 4 | 0 |
 | People who try it on a phone | 0 | 0 | 1 | 0 |
-| ghalaax | 0 | 0 | 20 | 223 |
+| ghalaax | 0 | 0 | 20 | 224 |
 
 <a id="A teacher who practises"></a>
 
@@ -174,6 +174,7 @@
 | [Data](packages.md#Data) | Package |  |
 | [Geometry](packages.md#Geometry) | Package |  |
 | [Trame](packages.md#Language) | Package |  |
+| [The people of the repository](packages.md#People) | Package |  |
 | [The standard library](packages.md#StandardLibrary) | Package |  |
 | [How a movement eases](practice.md#BreathEasing) | Decision |  |
 | [Breaths to say a cue](practice.md#BreathsToSay) | Requirement | **held** |

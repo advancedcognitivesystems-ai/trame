@@ -165,8 +165,8 @@ trame build, run by the described engine on the example, writes character for ch
 | The build succeeds | passed |
 | The summary is shown | passed |
 | graph.json and snapshot.json are written as the engine in place wrote them | passed |
-| 29 documents in Markdown, figures included, as the engine in place wrote them | passed |
-| 31 files written, identical to those of the engine in place | passed |
+| 30 documents in Markdown, figures included, as the engine in place wrote them | passed |
+| 32 files written, identical to those of the engine in place | passed |
 
 <details><summary>The code it runs: 55 nodes</summary>
 
@@ -195,7 +195,7 @@ The compiler assembled from this graph loads the reservations project (its files
 | Criterion | Result |
 |---|---|
 | TypeScript accepts the example | passed |
-| The example has 119 nodes, 6 scenarios among them | passed |
+| The example has 122 nodes, 6 scenarios among them | passed |
 | No error in the example | passed |
 | The scenarios of the example hold | passed |
 | Loaded again, the example reads the same: what the compiler of TypeScript read is kept | passed |
@@ -317,7 +317,7 @@ A way of judging that raises a missing owner to an error and would lower a liter
 
 | Criterion | Result |
 |---|---|
-| 42 kinds out of 42 respect all their laws | passed |
+| 43 kinds out of 43 respect all their laws | passed |
 
 <details><summary>The code it runs: 40 nodes</summary>
 

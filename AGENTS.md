@@ -15,7 +15,7 @@ what the graph guarantees. The README explains why; this file says how.
 | `kinds/`, `views/`, `engine-views/` | The language: what a node can be, which questions are asked of the graph; their words in `words.ts` | you, reviewed |
 | `trame.json` | The project: its libraries (`"libraries"`), the generation it pins (`"engine"`), the kinds and views it carries besides the language's | you |
 | `package.json` | The project as a package: the import map of the language (`#trame/*`) and of its libraries (`#std/*`), the packages of the graph | `trame manifest` |
-| `libs/` | Libraries of a domain (`libs/geometry`: vectors, angles; `libs/data`: the data a product keeps, and its kind `entity`), each a project of its own | you |
+| `libs/` | Libraries of a domain (`libs/geometry`: vectors, angles; `libs/data`: the data a product keeps, and its kind `entity`; `libs/team`: the repository's people), each a project of its own | you |
 | `std/` | The standard library: a Trame project of its own (structures, standards, patterns) that Trame and the example import | you |
 | `ci/` | The library of writers that run a shipment elsewhere (GitHub Actions, Bash), from the plan the engine computes | you |
 | `docs/`, `graph.json`, `snapshot.json` | What a build writes: documents for people, the graph and its snapshot for tools and agents | the build only |
@@ -107,7 +107,14 @@ Write a product top-down, one module per concern, each node linked to what it se
    policies that group them, shipments, and the programs of the SDLC that check and deploy, tested in memory like the
    product's code.
 
-Every node has an owner (a person) and a documentation comment: its first line is its title, the rest its description.
+Every node has an owner and a documentation comment: its first line is its title, the rest its description. An owner
+is the handle of an actor the graph declares (C4, g113: kind `actor`, a person, a team, an agent, a machine); one
+nobody declares is an error (`owner-undeclared`), and so is a role's person (`person-undeclared`). Trame's repository
+declares its people once in `libs/team` (`trame`, the team of `ghalaax` and `claude`; `github-actions`, the runner),
+which each project imports (`import "#team/people"` in its packages module); `ci`, which writes team's workflow,
+declares the same actors itself; a project may declare its own (the example's `karim` and `lea`), the same actor
+declared twice saying the same thing. `trame init` declares whoever starts a project. A graph that declares no actor
+is told once (`actors-undeclared`).
 
 ## 4b. The SDLC is in the graph
 

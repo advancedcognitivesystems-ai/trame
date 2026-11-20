@@ -150,6 +150,19 @@
       }
     },
     {
+      "id": "packages.People",
+      "kind": "package",
+      "title": "The people of the repository",
+      "fields": {
+        "owner": "trame",
+        "packageName": "team",
+        "version": "0.1.0",
+        "joins": "library",
+        "from": "path",
+        "at": "../team/releases/0.1.0"
+      }
+    },
+    {
       "id": "packages.stdLibrary",
       "kind": "package",
       "title": "std",
@@ -1619,6 +1632,11 @@
     },
     {
       "from": "packages.Language",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "packages.People",
       "to": "product.DataDescribedOnce",
       "kind": "serves"
     },

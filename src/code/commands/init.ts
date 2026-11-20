@@ -4,7 +4,7 @@
 // a CLAUDE.md that points to it, the skill), copied from the language's home. A fresh engine then writes the manifest:
 // where the language's names and the libraries' lead. Refused where a project already is, and without a title or an owner.
 
-import { KindName, PackageJoins, type ProvidedBy } from "../../../trame/kernel"
+import { ActorField, ActorSort, EdgeName, KindName, PackageJoins, type ProvidedBy } from "../../../trame/kernel"
 import type { Api as ReferencesApi } from "./references"
 import type { LanguageNames } from "../../conventions"
 import type { NodeModuleSpecifiers } from "#std/system"
@@ -17,7 +17,7 @@ import type { TextFile } from "#std/text"
 import type { ProjectStart, TrameCommands } from "../../conventions"
 import type { EnginePin } from "../../generations"
 import type { LanguageDescription } from "../../../kinds/language"
-import type { ConstDeclaration, Call, ExportDeclaration, DocBlock, ModuleTitle, NamedImport, ObjectLiteral, Property, StringLiteral, TypeScriptSyntax } from "../../typescript"
+import type { ConstDeclaration, Call, ExportDeclaration, DocBlock, InlineArray, MemberAccess, ModuleTitle, NamedImport, ObjectLiteral, Property, StringLiteral, TypeScriptSyntax } from "../../typescript"
 import type { Api as PreparationApi } from "./preparation"
 import type { Api as ProjectApi } from "../engine/project"
 
@@ -50,6 +50,8 @@ export interface Deps {
   property: ProvidedBy<typeof Property>
   text: ProvidedBy<typeof StringLiteral>
   imports: ProvidedBy<typeof NamedImport>
+  member: ProvidedBy<typeof MemberAccess>
+  list: ProvidedBy<typeof InlineArray>
   terminal: Terminal
   messages: ProvidedBy<typeof CommandMessages>
   /** Starts a fresh engine on the project, which reads its configuration to write its manifest. */
@@ -92,10 +94,19 @@ const body = (deps: Deps): Handler => async (req) => {
   const module = [
     deps.title(messages.initModuleTitle(title)),
     texts.empty,
+    deps.imports([start.actorSorts], deps.project.languageModule(o.root, sources, start.kernel)),
     deps.imports([KindName.goal], deps.project.languageModule(o.root, sources, start.goalKind)),
+    deps.imports([KindName.actor], deps.project.languageModule(o.root, sources, start.actorKind)),
     texts.empty,
     deps.doc([title, messages.initGoal(title)]),
     deps.exported(deps.constant(start.goal, deps.call(KindName.goal, [deps.object([deps.property(start.owner, deps.text(owner))])]))),
+    texts.empty,
+    // Who started it (C4): the owner it names is an actor the graph declares.
+    deps.doc([owner, messages.initOwner(title)]),
+    deps.exported(deps.constant(start.actor, deps.call(KindName.actor, [deps.object([
+      deps.property(start.owner, deps.text(owner)), deps.property(ActorField.handle, deps.text(owner)),
+      deps.property(ActorField.sort, deps.member(start.actorSorts, ActorSort.person)), deps.property(EdgeName.serves, deps.list([start.goal])),
+    ])]))),
     texts.empty,
   ].join(deps.syntax.endOfLine)
   write(join(layout.sources, start.module + extension), module)

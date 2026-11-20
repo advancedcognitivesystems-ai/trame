@@ -10,7 +10,7 @@
 
 ### npm's lockfile
 
-`NpmLockfile` · `src/packages.ts:153`
+`NpmLockfile` · `src/packages.ts:155`
 
 What npm writes after it installed a project's packages: each package installed, the project's own under the empty key, with the dependencies it names. The manifest compares them with what it wrote (since g100).
 
@@ -31,7 +31,7 @@ Source: npm documentation: package-lock.json (lockfileVersion 3: packages, the r
 
 ### Audit of the packages
 
-`PackageAudit` · `src/packages.ts:84`
+`PackageAudit` · `src/packages.ts:86`
 
 trame audit asks the registry, for each package of the graph, its known vulnerabilities and its latest version, and writes the answers as dated evidence, which the packages read: a package is violated by a vulnerability of the severities counted; it is behind by the releases that break what uses it (majors, or minors under 1.0.0), up to the version it is held below. The value names the file of the evidence and the severities counted; the fields of a package the commands read (PackageField) and the reports (PackageReport) are words of the prelude, which the kind declares.
 
@@ -50,7 +50,7 @@ trame audit asks the registry, for each package of the graph, its known vulnerab
 
 ### Order of versions
 
-`VersionOrder` · `src/packages.ts:102` · status: **held**
+`VersionOrder` · `src/packages.ts:104` · status: **held**
 
 Two versions compared part by part, as numbers, from the major (a part one of them lacks counts as zero): a version is below another if it comes before it. The releases between two versions that break what uses the package are its majors, or its minors while its major is that of initial development. trame audit counts with it; the kind of a package checks with it that a package stays below the version it is held below.
 
@@ -67,7 +67,7 @@ Two versions compared part by part, as numbers, from the major (a part one of th
 
 ### The library of continuous integration
 
-`ContinuousIntegration` · `src/packages.ts:144`
+`ContinuousIntegration` · `src/packages.ts:146`
 
 The writers of the files that run a shipment elsewhere (GitHub Actions) and of the settings of a repository, at the version Trame pins: the workflow that checks each pull request, and the settings of the repository, are written from Trame's graph (D1).
 
@@ -88,7 +88,7 @@ The writers of the files that run a shipment elsewhere (GitHub Actions) and of t
 
 ### Grammar of CSS
 
-`CssGrammar` · `src/packages.ts:58` · status: **held**
+`CssGrammar` · `src/packages.ts:60` · status: **held**
 
 - Name: `tree-sitter-css` https://www.npmjs.com/package/tree-sitter-css
 - Version: `0.25.0`
@@ -104,7 +104,7 @@ The writers of the files that run a shipment elsewhere (GitHub Actions) and of t
 
 ### esbuild
 
-`EsbuildPackage` · `src/packages.ts:31` · status: **held**
+`EsbuildPackage` · `src/packages.ts:33` · status: **held**
 
 Bundles the page's program into one module.
 
@@ -122,7 +122,7 @@ Bundles the page's program into one module.
 
 ### Grammar of HCL
 
-`HclGrammar` · `src/packages.ts:64` · status: **held**
+`HclGrammar` · `src/packages.ts:66` · status: **held**
 
 The grammar Terraform's modules are read with.
 
@@ -140,7 +140,7 @@ The grammar Terraform's modules are read with.
 
 ### Grammar of HTML
 
-`HtmlGrammar` · `src/packages.ts:53` · status: **held**
+`HtmlGrammar` · `src/packages.ts:55` · status: **held**
 
 - Name: `tree-sitter-html` https://www.npmjs.com/package/tree-sitter-html
 - Version: `0.23.2`
@@ -156,7 +156,7 @@ The grammar Terraform's modules are read with.
 
 ### Types of Node.js
 
-`NodeTypes` · `src/packages.ts:70` · status: **held**
+`NodeTypes` · `src/packages.ts:72` · status: **held**
 
 The declarations of Node's modules, which the compiler reads for the implementations that import them.
 
@@ -171,11 +171,32 @@ The declarations of Node's modules, which the compiler reads for the implementat
 - Owner: trame
 - Used by: [TypeScript compiler](platform.md#RealTypeScript)
 
+<a id="People"></a>
+
+### The people of the repository
+
+`People` · `src/packages.ts:170`
+
+Who works on Trame's repository, declared once as actors (C4): every owner of this project names one of them.
+
+- Name: `team`
+- Version: `0.1.0`
+- Installed: Not installed in the project: its lockfile lists no team
+- Vulnerabilities: No report yet: trame audit asks the registry
+- Latest version: No report yet: trame audit asks the registry
+- What it may do: not said: an implementation that imports it cannot promise anything
+- How it joins the graph: `library`
+- Where it comes from: `path`
+- Its path: `libs/team/releases/0.1.0`
+
+- Owner: trame
+- Serves: [A single source of truth](product.md#SingleSource)
+
 <a id="StandardLibrary"></a>
 
 ### The standard library
 
-`StandardLibrary` · `src/packages.ts:134`
+`StandardLibrary` · `src/packages.ts:136`
 
 The structures, standards, patterns and ports Trame's graph and its engine build on, at the version Trame pins: std ships its versions apart, and Trame moves to a new one once it is released (E1). Reached by its path in this repository, at the version it froze.
 
@@ -196,7 +217,7 @@ The structures, standards, patterns and ports Trame's graph and its engine build
 
 ### tsx
 
-`TsxPackage` · `src/packages.ts:37` · status: **held**
+`TsxPackage` · `src/packages.ts:39` · status: **held**
 
 Runs TypeScript as it is, without a build: the engines, the loader of the graph's modules.
 
@@ -214,7 +235,7 @@ Runs TypeScript as it is, without a build: the engines, the loader of the graph'
 
 ### Grammar of TypeScript
 
-`TypeScriptGrammar` · `src/packages.ts:48` · status: **held**
+`TypeScriptGrammar` · `src/packages.ts:50` · status: **held**
 
 - Name: `tree-sitter-typescript` https://www.npmjs.com/package/tree-sitter-typescript
 - Version: `0.23.2`
@@ -230,7 +251,7 @@ Runs TypeScript as it is, without a build: the engines, the loader of the graph'
 
 ### TypeScript
 
-`TypeScriptPackage` · `src/packages.ts:20` · status: **held**
+`TypeScriptPackage` · `src/packages.ts:22` · status: **held**
 
 The compiler: it reads the declarations of the graph, checks the bodies against their parameters, and transpiles.
 
@@ -249,7 +270,7 @@ The compiler: it reads the declarations of the graph, checks the bodies against 
 
 ### web-tree-sitter
 
-`WebTreeSitterPackage` · `src/packages.ts:43` · status: **held**
+`WebTreeSitterPackage` · `src/packages.ts:45` · status: **held**
 
 tree-sitter in WebAssembly: the syntax trees of the bodies.
 

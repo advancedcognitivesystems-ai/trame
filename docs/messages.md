@@ -31,7 +31,7 @@ The language Trame speaks to people: British English. Its messages are written i
 
 ### A catalog counts in its language
 
-`CountsInTheLanguage` · `src/messages.ts:964` · status: **held**
+`CountsInTheLanguage` · `src/messages.ts:967` · status: **held**
 
 A count and its noun follow the plural rules of the language the catalog is written in, with the forms the catalog writes for each category; nothing below the catalogs presumes a language.
 
@@ -87,7 +87,7 @@ Joins the items of a list as people write it in the decided language: "A, B and 
 
 ### Messages of an advance
 
-`AdvanceMessages` · `src/messages.ts:875`
+`AdvanceMessages` · `src/messages.ts:878`
 
 What trame advance says as it goes, and what a generation says of itself.
 
@@ -186,7 +186,7 @@ What trame advance says as it goes, and what a generation says of itself.
 
 ### Messages of the commands
 
-`CommandMessages` · `src/messages.ts:452`
+`CommandMessages` · `src/messages.ts:454`
 
 What the commands print: summaries, usage, refusals.
 
@@ -318,6 +318,7 @@ What the commands print: summaries, usage, refusals.
     initLibrary: (name: string) => name,
     initLibraryDoc: () => "A library the project builds on, at the version the language's home uses.",
     initGoal: (title: string) => `What ${title} is for: its owner says it here, and what serves it links to it.`,
+    initOwner: (title: string) => `Who started ${title}, and owns its first nodes: an owner names someone the graph declares.`,
     initWritten: (title: string, engine: string) => `${title} started · pins ${engine} · written: trame.json, src/, the guide for agents · the manifest next`,
     amendInTheCode: (title: string, field: string) => `${field} of “${title}” changes in the code, never from here: code is built on it`,
     amendBodyInTheCode: (title: string, field: string) => `${field} of “${title}” is amended in the code: amend({ ${field}: (previous) => … }), composed with the one in force`,
@@ -424,6 +425,8 @@ What the compiler, the wiring and the assembly say: diagnostics on the graph, re
     hiddenDependency: (identifier: string) => `Hidden dependency: the body reads "${identifier}" without receiving it as a parameter`,
     /** A function of a kind (activeAt, claims, resolve…) threw an error. */
     hookFailed: (hook: string, error: string) => `${hook}() failed: ${error}`,
+    ownerUndeclared: (owner: string) => `Owned by ${owner}, whom no actor of the graph declares: declare them (an actor, its handle ${owner}), or name an owner it declares`,
+    actorsUndeclared: () => "The graph declares no actor: nobody says who its owners are, and they are not checked; declare who acts (the actors of a library, or the project's own)",
     hardeningFailed: (error: string) => `The way this project judges failed: ${error}; its problems stay as the language judges them`,
     hardeningGaveNoSeverity: (code: string, answer: string) => `The way this project judges answered "${answer}" for ${code}, which is no severity: the language's stays`,
     hardeningLowers: (code: string, from: string, to: string) => `The way this project judges would lower ${code} from ${from} to ${to}: a project raises a problem, never lowers it; ${from} stays`,
@@ -538,7 +541,7 @@ What the compiler, the wiring and the assembly say: diagnostics on the graph, re
 
 ### Messages of trame dev
 
-`DevMessages` · `src/messages.ts:428`
+`DevMessages` · `src/messages.ts:430`
 
 What the dev server prints while it watches the project.
 
@@ -573,7 +576,7 @@ What the dev server prints while it watches the project.
 
 ### Messages of the drivers
 
-`DriverMessages` · `src/messages.ts:224`
+`DriverMessages` · `src/messages.ts:226`
 
 What the drivers say about a body: hidden dependencies, access to the platform, a missing file; and the comments of the programs they write.
 
@@ -632,7 +635,7 @@ What the drivers say about a body: hidden dependencies, access to the platform, 
 
 ### Words of Trame's views
 
-`EngineViewWords` · `src/messages.ts:670`
+`EngineViewWords` · `src/messages.ts:673`
 
 What the views of Trame's own graph say: the catalogue of literals, the versions of the engine.
 
@@ -645,7 +648,7 @@ The messages are written in `../engine-views/words.ts`.
 
 ### Words of the kinds
 
-`KindWords` · `src/messages.ts:650`
+`KindWords` · `src/messages.ts:653`
 
 What the kinds say: their labels, the labels of their fields and edges, what their holes say, what they render. The kinds are files of the language, outside the graph: their words are a catalog all the same, which they call; a kind writes no text of its own.
 
@@ -658,7 +661,7 @@ The messages are written in `../kinds/words.ts`.
 
 ### Messages of the laws
 
-`LawMessages` · `src/messages.ts:272`
+`LawMessages` · `src/messages.ts:274`
 
 What the laws of kinds and views report when one does not hold.
 
@@ -714,7 +717,7 @@ What the laws of kinds and views report when one does not hold.
 
 ### Messages of the outputs
 
-`OutputMessages` · `src/messages.ts:368`
+`OutputMessages` · `src/messages.ts:370`
 
 What the machine outputs, the lock, the payload, the date bundle, the differences and the page say.
 
@@ -785,7 +788,7 @@ What the machine outputs, the lock, the payload, the date bundle, the difference
 
 ### Words of the page
 
-`PageWords` · `src/messages.ts:681`
+`PageWords` · `src/messages.ts:684`
 
 What the page says around the documents the engine wrote: the state of the compilation, the dates, the navigation, the banner, the figures, the explorer.
 
@@ -801,7 +804,7 @@ The messages are written in `./code/page/words.ts`.
 
 ### Messages of the platform
 
-`PlatformMessages` · `src/messages.ts:703`
+`PlatformMessages` · `src/messages.ts:706`
 
 What the implementations of the ports say (the command line, the terminal, the processes).
 
@@ -841,7 +844,7 @@ What the implementations of the ports say (the command line, the terminal, the p
 
 ### Messages of the renderers
 
-`RenderingMessages` · `src/messages.ts:693`
+`RenderingMessages` · `src/messages.ts:696`
 
 The words that the renderers add to the intermediate format: labels, notes, the names of statuses and outcomes. Written in a file: the page, which runs in the browser where nothing is wired, reads it too.
 
@@ -856,7 +859,7 @@ The messages are written in `./code/rendering/messages.ts`.
 
 ### Messages of the scenarios
 
-`ScenarioMessages` · `src/messages.ts:732`
+`ScenarioMessages` · `src/messages.ts:735`
 
 The names of the checks that the engine's scenarios make.
 
@@ -961,7 +964,7 @@ The names of the checks that the engine's scenarios make.
     importMapWritten: (specifier: string) => `trame manifest writes where ${specifier} leads`,
     linkLeadsToTheLibrary: (library: string) => `The link leads to the version of ${library} the application pins`,
     startedConfiguration: () => "trame init writes the configuration: the generation that runs, the libraries",
-    startedModule: () => "The first module declares the goal, owned by whoever started the project, and names the language by its name",
+    startedModule: () => "The first module declares the goal and whoever started the project, an actor who owns it, and names the language by its name",
     registryPublished: () => "trame registry publishes a generation it names, its language copied: the kernel is a file there",
     startedReferences: () => "Its references are package nodes of its graph: the language, at the generation that started it, and its libraries",
     startedGuide: () => "The guide for agents comes with it, and the file that points to it",
@@ -1010,7 +1013,7 @@ The names of the checks that the engine's scenarios make.
 
 ### Messages of the views
 
-`ViewMessages` · `src/messages.ts:317`
+`ViewMessages` · `src/messages.ts:319`
 
 What the loading of views and the compilation API say.
 
@@ -1072,7 +1075,7 @@ What the loading of views and the compilation API say.
 
 ### Words of the views
 
-`ViewWords` · `src/messages.ts:660`
+`ViewWords` · `src/messages.ts:663`
 
 What the views say: their titles, their introductions, their headings, what they say of the graph.
 

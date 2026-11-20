@@ -4367,7 +4367,7 @@
       "id": "packages.ContinuousIntegration",
       "kind": "package",
       "title": "Continuous integration",
-      "source": "src/packages.ts:28",
+      "source": "src/packages.ts:30",
       "fields": {
         "owner": "ghalaax",
         "packageName": "ci",
@@ -4382,7 +4382,7 @@
       "id": "packages.Data",
       "kind": "package",
       "title": "Data",
-      "source": "src/packages.ts:46",
+      "source": "src/packages.ts:48",
       "fields": {
         "owner": "ghalaax",
         "packageName": "data",
@@ -4397,7 +4397,7 @@
       "id": "packages.Geometry",
       "kind": "package",
       "title": "Geometry",
-      "source": "src/packages.ts:37",
+      "source": "src/packages.ts:39",
       "fields": {
         "owner": "ghalaax",
         "packageName": "geometry",
@@ -4412,7 +4412,7 @@
       "id": "packages.Language",
       "kind": "package",
       "title": "Trame",
-      "source": "src/packages.ts:10",
+      "source": "src/packages.ts:12",
       "fields": {
         "owner": "ghalaax",
         "packageName": "trame",
@@ -4424,10 +4424,25 @@
       "diagnostics": []
     },
     {
+      "id": "packages.People",
+      "kind": "package",
+      "title": "The people of the repository",
+      "source": "src/packages.ts:57",
+      "fields": {
+        "owner": "ghalaax",
+        "packageName": "team",
+        "version": "0.1.0",
+        "joins": "library",
+        "from": "path",
+        "at": "../../libs/team/releases/0.1.0"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "packages.StandardLibrary",
       "kind": "package",
       "title": "The standard library",
-      "source": "src/packages.ts:19",
+      "source": "src/packages.ts:21",
       "fields": {
         "owner": "ghalaax",
         "packageName": "std",
@@ -5813,6 +5828,7 @@
           "packages.Data",
           "packages.Geometry",
           "packages.Language",
+          "packages.People",
           "packages.StandardLibrary",
           "practice.BreathEasing",
           "practice.BreathsToSay",
@@ -7150,7 +7166,7 @@
       },
       "result": {
         "path": "src",
-        "code": "47f1e3f8"
+        "code": "cd8d4697"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -9168,6 +9184,11 @@
     },
     {
       "from": "packages.Language",
+      "to": "product.PractiseGuided",
+      "kind": "serves"
+    },
+    {
+      "from": "packages.People",
       "to": "product.PractiseGuided",
       "kind": "serves"
     },

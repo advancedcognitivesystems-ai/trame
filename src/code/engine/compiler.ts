@@ -15,7 +15,7 @@ import type { Edge, GraphImpl } from "./graph"
 import type { Api as WiringApi } from "./wiring"
 import type { Api as CyclesApi } from "./cycles"
 import type { Api as DriversApi, LiteralFound, LiteralSource } from "../languages/drivers"
-import { AnyTarget, ArtifactField, ChangeWay, DeclarationPart, DeliveryField, EdgeMode, EdgeName, FieldType, KindHook, KindName, Moment, Origin, PackageField, PublicationState, QuantityEdge, QuantityField, ResolutionKind, ResolutionOutcome, Severity, Stage, HoleCode, JudgmentPort, EnvironmentField, BindingEdge } from "../../../trame/kernel"
+import { AnyTarget, ArtifactField, ChangeWay, DeclarationPart, DeliveryField, EdgeMode, EdgeName, FieldType, KindHook, KindName, Moment, Origin, PackageField, PublicationState, QuantityEdge, QuantityField, ResolutionKind, ResolutionOutcome, Severity, Stage, HoleCode, JudgmentPort, EnvironmentField, BindingEdge, ActorField } from "../../../trame/kernel"
 import type { AnyNode, AnyKind, Constant, Evidence, HoleSpec, Noun, PartPublication, ProvidedBy, Reach, Resolution, StaticInfo } from "../../../trame/kernel"
 import type { PackageSource } from "#std/tooling"
 import type { Reached } from "./static-analysis"
@@ -1226,6 +1226,21 @@ const body = (deps: Deps) => {
     const ofDiag = (d: Diag) => {
       const module = d.by ? meta(d.by).module : moduleOf(d)
       return module === undefined ? undefined : references.library(module)
+    }
+
+    // Who acts is declared (C4, since g113): each owner of the project's nodes names an actor the graph declares, its own
+    // or a library's; a project that declares none is told so once, and its owners are not checked.
+    const handles = new Set(g.all(KindName.actor).nodes().map((v) => v.field(ActorField.handle)).filter(deps.values.isText))
+    const ownNodes = nodes.filter((n) => libraryOf(n) === undefined)
+    if (deps.counts.isEmpty(handles)) {
+      if (deps.counts.any(ownNodes)) diags.push({ severity: Severity.warning, code: HoleCode.actorsUndeclared, origin: Origin.graph, where: deps.layout.configuration, what: messages.actorsUndeclared() })
+    } else {
+      for (const n of ownNodes) {
+        const owner = ownerOf(n)
+        if (deps.values.isText(owner) && !handles.has(owner)) {
+          diags.push({ severity: Severity.error, code: HoleCode.ownerUndeclared, origin: Origin.graph, node: n, what: messages.ownerUndeclared(owner), owner })
+        }
+      }
     }
 
     // A project judges harder than the language, never softer (C4, since g112): the realization of std's port Hardening

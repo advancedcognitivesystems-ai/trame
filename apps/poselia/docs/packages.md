@@ -10,7 +10,7 @@
 
 ### Continuous integration
 
-`ContinuousIntegration` · `src/packages.ts:28`
+`ContinuousIntegration` · `src/packages.ts:30`
 
 The writers of the workflow and the script that ship Poselia's preview elsewhere.
 
@@ -31,7 +31,7 @@ The writers of the workflow and the script that ship Poselia's preview elsewhere
 
 ### Data
 
-`Data` · `src/packages.ts:46`
+`Data` · `src/packages.ts:48`
 
 What the app keeps on the device, described once: the person's breath.
 
@@ -52,7 +52,7 @@ What the app keeps on the device, described once: the person's breath.
 
 ### Geometry
 
-`Geometry` · `src/packages.ts:37`
+`Geometry` · `src/packages.ts:39`
 
 The vectors and the angles the body computes with.
 
@@ -73,7 +73,7 @@ The vectors and the angles the body computes with.
 
 ### Trame
 
-`Language` · `src/packages.ts:10`
+`Language` · `src/packages.ts:12`
 
 The language Poselia is written in, at the generation it pins: reached by its path in Trame's repository.
 
@@ -90,11 +90,32 @@ The language Poselia is written in, at the generation it pins: reached by its pa
 - Owner: ghalaax
 - Serves: [Practise yoga on one's own, guided](product.md#PractiseGuided)
 
+<a id="People"></a>
+
+### The people of the repository
+
+`People` · `src/packages.ts:57`
+
+Who works on Trame's repository, declared once as actors (C4): every owner of this project names one of them.
+
+- Name: `team`
+- Version: `0.1.0`
+- Installed: Not installed in the project: its lockfile lists no team
+- Vulnerabilities: No report yet: trame audit asks the registry
+- Latest version: No report yet: trame audit asks the registry
+- What it may do: not said: an implementation that imports it cannot promise anything
+- How it joins the graph: `library`
+- Where it comes from: `path`
+- Its path: `../../libs/team/releases/0.1.0`
+
+- Owner: ghalaax
+- Serves: [Practise yoga on one's own, guided](product.md#PractiseGuided)
+
 <a id="StandardLibrary"></a>
 
 ### The standard library
 
-`StandardLibrary` · `src/packages.ts:19`
+`StandardLibrary` · `src/packages.ts:21`
 
 The structures, standards, ports of the device and of the SDLC Poselia builds on.
 

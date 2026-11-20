@@ -1,4 +1,5 @@
 import { defineKind, field, optional, hole, doc, keysOf, KindName, RoleField, type Node, type SignatureType, HoleCode } from "../trame/kernel"
+import { declaredHandles } from "./actor"
 import words from "./words"
 
 const say = words()
@@ -29,7 +30,17 @@ const kind = defineKind({
   fields,
   edges: {},
 
-  holes: (self, g) => [g.lib.counts.isEmpty(peopleOf(self, g.lib.values.isText)) && hole.warning(HoleCode.roleEmpty, say.roleNobody(), self.owner)],
+  holes: (self, g) => {
+    const { counts, values, texts, lists } = g.lib
+    const people = peopleOf(self, values.isText)
+    // Each person it lists is an actor of the graph (C4), once the graph declares any.
+    const declared = declaredHandles(g)
+    const undeclared = counts.any(declared) ? people.filter((p) => !declared.has(p)) : []
+    return [
+      counts.isEmpty(people) && hole.warning(HoleCode.roleEmpty, say.roleNobody(), self.owner),
+      counts.any(undeclared) && hole.error(HoleCode.personUndeclared, say.actorPeopleUndeclared(texts.concat(lists.conjunction(undeclared).map(String))), self.owner),
+    ]
+  },
 
   render(self, g) {
     const { texts, lists, values } = g.lib

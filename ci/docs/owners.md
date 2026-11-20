@@ -4,7 +4,23 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
+| ghalaax | 0 | 0 | 0 | 4 |
 | trame | 0 | 0 | 4 | 24 |
+
+<a id="ghalaax"></a>
+
+## ghalaax
+
+Nothing to decide or watch.
+
+### Owns
+
+| Node | Kind | State |
+|---|---|---|
+| [Claude](people.md#Claude) | Actor |  |
+| [ghalaax](people.md#Ghalaax) | Actor |  |
+| [The runner of GitHub Actions](people.md#GitHubRunner) | Actor |  |
+| [Trame's team](people.md#Trame) | Actor |  |
 
 <a id="trame"></a>
 

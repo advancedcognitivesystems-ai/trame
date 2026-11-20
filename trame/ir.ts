@@ -182,6 +182,13 @@ export const HoleCode = {
   publishedRemoved: "published-removed",
   publishedOutdated: "published-outdated",
   publishedChanged: "published-changed",
+  // Who acts (C4, since g113).
+  ownerUndeclared: "owner-undeclared",
+  actorsUndeclared: "actors-undeclared",
+  personUndeclared: "person-undeclared",
+  actorDeclaredTwice: "actor-declared-twice",
+  actorSortUnknown: "actor-sort-unknown",
+  teamWithoutMembers: "team-without-members",
   // How a project judges (C4, since g112).
   hardeningLowers: "hardening-lowers",
   hardeningFailed: "hardening-failed",
@@ -385,6 +392,16 @@ export const AudienceField = { carries: "carries", system: "system", everyOwner:
 export const Identity = { person: "person", tenant: "tenant" } as const
 export type Identity = (typeof Identity)[keyof typeof Identity]
 export const OwnedField = { ownedBy: "ownedBy" } as const
+
+/**
+ * Who acts (C4, since g113): an actor's handle (the text an owner, a role's people, a piece of evidence give), what it is,
+ * the members of a team, its identities elsewhere (its login on GitHub); the engine reads the names.
+ */
+export const ActorField = { handle: "handle", sort: "sort", identities: "identities" } as const
+export const ActorEdge = { members: "members" } as const
+/** What an actor is: a person, a team of actors, an agent acting for people, a machine. */
+export const ActorSort = { person: "person", team: "team", agent: "agent", machine: "machine" } as const
+export type ActorSort = (typeof ActorSort)[keyof typeof ActorSort]
 
 /**
  * Where a piece of evidence of the SDLC comes from: an artefact built, a check run or signed, a review given, a

@@ -10,7 +10,7 @@
 
 ### The library of continuous integration
 
-`ContinuousIntegration` · `src/packages.ts:23`
+`ContinuousIntegration` · `src/packages.ts:25`
 
 The writers of the files that run a shipment elsewhere (GitHub Actions), at the version the project uses, by its path in Trame's repository: the workflow that checks each pull request is written from the graph.
 
@@ -31,7 +31,7 @@ The writers of the files that run a shipment elsewhere (GitHub Actions), at the 
 
 ### Trame
 
-`Language` · `src/packages.ts:10`
+`Language` · `src/packages.ts:12`
 
 The language the project is written in, at the generation that started it: its owner moves it by an amendment.
 
@@ -47,11 +47,32 @@ The language the project is written in, at the generation that started it: its o
 - Owner: trame
 - Serves: [Data described once](product.md#DataDescribedOnce)
 
+<a id="People"></a>
+
+### The people of the repository
+
+`People` · `src/packages.ts:34`
+
+Who works on Trame's repository, declared once as actors (C4): every owner of this project names one of them.
+
+- Name: `team`
+- Version: `0.1.0`
+- Installed: Not installed in the project: its lockfile lists no team
+- Vulnerabilities: No report yet: trame audit asks the registry
+- Latest version: No report yet: trame audit asks the registry
+- What it may do: not said: an implementation that imports it cannot promise anything
+- How it joins the graph: `library`
+- Where it comes from: `path`
+- Its path: `../team/releases/0.1.0`
+
+- Owner: trame
+- Serves: [Data described once](product.md#DataDescribedOnce)
+
 <a id="stdLibrary"></a>
 
 ### std
 
-`stdLibrary` · `src/packages.ts:16`
+`stdLibrary` · `src/packages.ts:18`
 
 A library the project builds on, at the version the language's home uses.
 

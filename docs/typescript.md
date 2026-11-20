@@ -393,7 +393,7 @@ Section: 13.2.4 Array initializer · `https://tc39.es/ecma262/2024/#sec-array-in
 - Read as: { before: (, after: ) }
 - Defined by: [The syntax of the programs Trame writes](#TypeScriptSyntax)
 - Read in: [TypeScript](#TypeScript)
-- Used by: [A module of references](commands.md#ReferencesModule), [Records of the releases](generations.md#ReleaseRecords), [Amendments in place](platform.md#InPlaceSources), [TypeScript writer](#TypeScriptWriter)
+- Used by: [Start a project](commands.md#Init), [A module of references](commands.md#ReferencesModule), [Records of the releases](generations.md#ReleaseRecords), [Amendments in place](platform.md#InPlaceSources), [TypeScript writer](#TypeScriptWriter)
 
 <a id="LineComment"></a>
 
@@ -444,7 +444,7 @@ Section: 13.3.2 Property accessors · `https://tc39.es/ecma262/2024/#sec-propert
 - Read as: { before: (, after: ) }
 - Defined by: [The syntax of the programs Trame writes](#TypeScriptSyntax)
 - Read in: [TypeScript](#TypeScript)
-- Used by: [Scripts of the page](page.md#PageScripts), [TypeScript writer](#TypeScriptWriter)
+- Used by: [Start a project](commands.md#Init), [Scripts of the page](page.md#PageScripts), [TypeScript writer](#TypeScriptWriter)
 
 <a id="ModuleTitle"></a>
 

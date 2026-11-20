@@ -1,5 +1,7 @@
 /** Data · Packages */
 
+// The people of the repository, who own this project's nodes: loaded so that the graph declares them (C4).
+import "#team/people"
 import { pkg } from "#trame/kinds/package"
 import { DataDescribedOnce } from "./product"
 
@@ -22,5 +24,14 @@ export const stdLibrary = pkg({ owner: "trame", packageName: "std", version: "0.
  */
 export const ContinuousIntegration = pkg({
   owner: "trame", packageName: "ci", version: "0.7.0", joins: "library", from: "path", at: "../../ci/releases/0.7.0",
+  serves: [DataDescribedOnce],
+})
+
+/**
+ * The people of the repository
+ * Who works on Trame's repository, declared once as actors (C4): every owner of this project names one of them.
+ */
+export const People = pkg({
+  owner: "trame", packageName: "team", version: "0.1.0", joins: "library", from: "path", at: "../team/releases/0.1.0",
   serves: [DataDescribedOnce],
 })

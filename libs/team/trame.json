@@ -1,0 +1,10 @@
+{
+  "title": "Team",
+  "libraries": {
+    "ci": {
+      "at": ".trame/ci",
+      "version": "0.7.0"
+    }
+  },
+  "engine": ".trame/trame"
+}

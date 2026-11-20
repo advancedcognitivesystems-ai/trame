@@ -37,16 +37,19 @@ export const PreludeApi = decision<{ directory: string; endings: readonly string
 /**
  * How a project starts
  * What trame init writes: the module that holds the goal the project serves (its name, the kind it declares, the field
- * that names its owner), the guides for agents it copies from the language's home (this guide, the skill), and the file
- * that points an agent to the guide.
+ * that names its owner) and the person who started it, an actor (C4: the node it is, the kind, the module of the
+ * language that holds what an actor is); the guides for agents it copies from the language's home (this guide, the
+ * skill), and the file that points an agent to the guide.
  */
 export const ProjectStart = decision<{
   module: string; goal: string; goalKind: string; owner: string; guides: readonly string[]; pointer: string; pointerText: string
   references: string; packageKind: string; packageFacade: string; language: string; library: string
+  actor: string; actorKind: string; kernel: string; actorSorts: string
 }>({
   owner: "trame",
   value: {
     module: "product", goal: "Purpose", goalKind: "kinds/goal", owner: "owner",
+    actor: "Owner", actorKind: "kinds/actor", kernel: "kernel", actorSorts: "ActorSort",
     references: "packages", packageKind: "kinds/package", packageFacade: "pkg", language: "Language", library: "Library",
     guides: ["AGENTS.md", ".claude/skills/trame/SKILL.md"], pointer: "CLAUDE.md", pointerText: "@AGENTS.md",
   },

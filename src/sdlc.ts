@@ -385,7 +385,7 @@ export const PullRequestWorkflow = artifact({
 export const MainBranch = decision<RepositorySettings>({
   owner: "trame",
   value: {
-    branch: "main", checks: ["trame", "std", "ci", "data", "reservations", "poselia"], upToDate: false, approvals: 0,
+    branch: "main", checks: ["trame", "std", "ci", "data", "team", "reservations", "poselia"], upToDate: false, approvals: 0,
     method: "merge", autoMerge: true, deletesMerged: true, pages: false,
   },
   rejected: {

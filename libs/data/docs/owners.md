@@ -4,7 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 4 | 76 |
+| trame | 0 | 0 | 4 | 77 |
 
 <a id="trame"></a>
 
@@ -32,6 +32,7 @@
 | [Criteria of what a shipment stores](obligations.md#MigratedCriteria) | Acceptance criteria | **held** |
 | [The library of continuous integration](packages.md#ContinuousIntegration) | Package |  |
 | [Trame](packages.md#Language) | Package |  |
+| [The people of the repository](packages.md#People) | Package |  |
 | [std](packages.md#stdLibrary) | Package |  |
 | [An entity is described once](principles.md#DescribedOnce) | Architecture decision | **held** |
 | [Data described once](product.md#DataDescribedOnce) | Goal |  |

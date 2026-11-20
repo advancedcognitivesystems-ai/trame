@@ -1,0 +1,237 @@
+{
+  "at": "2026-11-20",
+  "nodes": [
+    {
+      "id": "packages.ContinuousIntegration",
+      "kind": "package",
+      "title": "The library of continuous integration",
+      "fields": {
+        "owner": "trame",
+        "packageName": "ci",
+        "version": "0.7.0",
+        "joins": "library",
+        "from": "path",
+        "at": "../../ci/releases/0.7.0"
+      }
+    },
+    {
+      "id": "packages.Language",
+      "kind": "package",
+      "title": "Trame",
+      "fields": {
+        "owner": "trame",
+        "packageName": "trame",
+        "version": "112",
+        "joins": "language",
+        "from": "path",
+        "at": "../../generations/g112"
+      }
+    },
+    {
+      "id": "people.Claude",
+      "kind": "actor",
+      "title": "Claude",
+      "fields": {
+        "owner": "ghalaax",
+        "handle": "claude",
+        "sort": "agent"
+      }
+    },
+    {
+      "id": "people.Ghalaax",
+      "kind": "actor",
+      "title": "ghalaax",
+      "fields": {
+        "owner": "ghalaax",
+        "handle": "ghalaax",
+        "sort": "person",
+        "identities": {
+          "github": "ghalaax"
+        }
+      }
+    },
+    {
+      "id": "people.GitHubRunner",
+      "kind": "actor",
+      "title": "The runner of GitHub Actions",
+      "fields": {
+        "owner": "ghalaax",
+        "handle": "github-actions",
+        "sort": "machine",
+        "identities": {
+          "github": "github-actions[bot]"
+        }
+      }
+    },
+    {
+      "id": "people.Trame",
+      "kind": "actor",
+      "title": "Trame's team",
+      "fields": {
+        "owner": "ghalaax",
+        "handle": "trame",
+        "sort": "team"
+      }
+    },
+    {
+      "id": "product.DeclaredOnce",
+      "kind": "goal",
+      "title": "Who acts is declared once",
+      "fields": {
+        "owner": "trame"
+      }
+    },
+    {
+      "id": "releases.R0_1_0",
+      "kind": "release",
+      "title": "Version 0.1.0",
+      "fields": {
+        "owner": "trame",
+        "version": "0.1.0",
+        "date": "2026-11-20",
+        "what": "Who works on Trame's repository, declared once (C4): ghalaax, a person; Claude, an agent; the runner of GitHub Actions, a machine; trame, the team of ghalaax and Claude",
+        "fingerprint": "c5d2496591cc61d5",
+        "language": "shared"
+      }
+    },
+    {
+      "id": "sdlc.NextVersion",
+      "kind": "shipment",
+      "title": "The next version",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "target": "version"
+      }
+    },
+    {
+      "id": "sdlc.PullRequestsOnGitHub",
+      "kind": "decision",
+      "title": "How a pull request is checked on GitHub",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "on": {
+            "pullRequests": [
+              "main"
+            ]
+          },
+          "job": "team",
+          "runsOn": "ubuntu-24.04",
+          "node": 22,
+          "artefacts": {
+            "days": 30
+          },
+          "pullRequest": {
+            "review": false,
+            "merge": "onceItHoldsUnlessDecided"
+          }
+        },
+        "rejected": {
+          "Only when a pull request touches the project": "GitHub keeps a pull request waiting for a check it requires and that never ran",
+          "Merged by GitHub whatever it changes": "what people decided would reach main without a person"
+        }
+      }
+    },
+    {
+      "id": "sdlc.PullRequestWorkflow",
+      "kind": "artifact",
+      "title": "The pull requests' workflow",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "path": "../../.github/workflows/team-pull-request.yml",
+        "media": "application/yaml"
+      }
+    },
+    {
+      "id": "sdlc.RunnersWritten",
+      "kind": "shipment",
+      "title": "The files that run it elsewhere",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "target": "repository"
+      }
+    },
+    {
+      "id": "sdlc.TheLibrary",
+      "kind": "artifact",
+      "title": "The people of the repository",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "path": "src",
+        "version": true
+      }
+    }
+  ],
+  "edges": [
+    {
+      "from": "packages.ContinuousIntegration",
+      "to": "product.DeclaredOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "packages.Language",
+      "to": "product.DeclaredOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "people.Claude",
+      "to": "product.DeclaredOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "people.Ghalaax",
+      "to": "product.DeclaredOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "people.GitHubRunner",
+      "to": "product.DeclaredOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "people.Trame",
+      "to": "people.Ghalaax",
+      "kind": "members"
+    },
+    {
+      "from": "people.Trame",
+      "to": "people.Claude",
+      "kind": "members"
+    },
+    {
+      "from": "people.Trame",
+      "to": "product.DeclaredOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_1_0",
+      "to": "product.DeclaredOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "sdlc.NextVersion",
+      "to": "sdlc.TheLibrary",
+      "kind": "ships"
+    },
+    {
+      "from": "sdlc.PullRequestWorkflow",
+      "to": "sdlc.NextVersion",
+      "kind": "runs"
+    },
+    {
+      "from": "sdlc.PullRequestWorkflow",
+      "to": "sdlc.PullRequestsOnGitHub",
+      "kind": "settings"
+    },
+    {
+      "from": "sdlc.RunnersWritten",
+      "to": "sdlc.PullRequestWorkflow",
+      "kind": "ships"
+    }
+  ],
+  "open": []
+}

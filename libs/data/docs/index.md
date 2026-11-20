@@ -8,7 +8,7 @@
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | [Data · Documents](documents.md) | 0 | 0 | 1 | 0 | 0 | 1 | 0 | 1 | 0 | 3 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Data · Obligations](obligations.md) | 0 | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Data · Packages](packages.md) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| [Data · Packages](packages.md) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 4 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Data · Principles](principles.md) | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Data · Product](product.md) | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Data · Records](records.md) | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 4 | 0 | 5 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
@@ -27,6 +27,7 @@ The libraries the project imports: their nodes take part in the graph, their doc
 |---|---|---|---|
 | [ci 0.7.0](../.trame/ci/docs/index.md) | Continuous integration · GitHub Actions, Continuous integration · npm, Continuous integration · Packages, Continuous integration · Product, Continuous integration · Releases, Continuous integration · SDLC, Continuous integration · Shell, Continuous integration · YAML | 23 | 4 points to watch |
 | [std 0.21.0](../.trame/std/docs/index.md) | Standard library · Access, Standard library · Algebra, Standard library · Algorithms, Standard library · ECMAScript, Standard library · Effects, Standard library · HTML and CSS, Standard library · Judgment, Standard library · Measures, Standard library · Obligations, Standard library · Packages, Standard library · Design patterns, Standard library · Platform, Standard library · Product, Standard library · Releases, Standard library · Repositories on GitHub, Standard library · Rules, Standard library · Scenarios, Standard library · SDLC, Standard library · System, Standard library · Text, Standard library · Tooling, Standard library · Web | 203 | 7 points to watch |
+| [team 0.1.0](../.trame/team/docs/index.md) | Team · Packages, Team · People, Team · Product, Team · SDLC | 12 | 4 points to watch |
 
 ## Open issues
 

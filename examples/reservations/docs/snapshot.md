@@ -665,6 +665,36 @@ Message catalog · `ScenarioChecks`
 - Owner: lea
 - Written in: Language
 
+## Reservations · People
+
+### Karim
+
+Actor · `Karim`
+
+- Owner: karim
+- Handle: karim
+- What it is: person
+- Serves: Cancel without stress
+
+### Léa
+
+Actor · `Lea`
+
+- Owner: lea
+- Handle: lea
+- What it is: person
+- Serves: Cancel without stress
+
+### The service's team
+
+Actor · `ServiceTeam`
+
+- Owner: karim
+- Handle: reservations
+- What it is: team
+- Members: Karim, Léa
+- Serves: Cancel without stress
+
 ## Reservations · Principles
 
 ### A cancellation refunds once

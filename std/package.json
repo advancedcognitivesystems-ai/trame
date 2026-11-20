@@ -4,6 +4,7 @@
   "type": "module",
   "imports": {
     "#ci/*": "./.trame/ci/src/*.ts",
+    "#team/*": "./.trame/team/src/*.ts",
     "#trame/kernel": "./.trame/trame/trame/kernel.ts",
     "#trame/kinds/*": "./.trame/trame/kinds/*.ts"
   },

@@ -2449,7 +2449,7 @@
       "id": "packages.ContinuousIntegration",
       "kind": "package",
       "title": "The library of continuous integration",
-      "source": "src/packages.ts:21",
+      "source": "src/packages.ts:23",
       "fields": {
         "owner": "trame",
         "packageName": "ci",
@@ -2464,7 +2464,7 @@
       "id": "packages.Language",
       "kind": "package",
       "title": "Trame",
-      "source": "src/packages.ts:11",
+      "source": "src/packages.ts:13",
       "fields": {
         "owner": "trame",
         "packageName": "trame",
@@ -2472,6 +2472,21 @@
         "joins": "language",
         "from": "path",
         "at": "../generations/g112"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "packages.People",
+      "kind": "package",
+      "title": "The people of the repository",
+      "source": "src/packages.ts:32",
+      "fields": {
+        "owner": "trame",
+        "packageName": "team",
+        "version": "0.1.0",
+        "joins": "library",
+        "from": "path",
+        "at": "../libs/team/releases/0.1.0"
       },
       "diagnostics": []
     },
@@ -4434,6 +4449,7 @@
           "obligations.VerifiedCriteria",
           "packages.ContinuousIntegration",
           "packages.Language",
+          "packages.People",
           "patterns.AbstractFactory",
           "patterns.Adapter",
           "patterns.Bridge",
@@ -4674,7 +4690,7 @@
       },
       "result": {
         "path": "src",
-        "code": "7cacc20b"
+        "code": "e504aa9d"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -6162,6 +6178,11 @@
     {
       "from": "packages.Language",
       "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "packages.People",
+      "to": "product.VersionsThatHold",
       "kind": "serves"
     },
     {

@@ -861,6 +861,18 @@ Package · `Language`
 - Its path: ../../generations/g112
 - Serves: Practise yoga on one's own, guided
 
+### The people of the repository
+
+Package · `People`
+
+- Owner: ghalaax
+- Name: team
+- Version: 0.1.0
+- How it joins the graph: library
+- Where it comes from: path
+- Its path: ../../libs/team/releases/0.1.0
+- Serves: Practise yoga on one's own, guided
+
 ### The standard library
 
 Package · `StandardLibrary`

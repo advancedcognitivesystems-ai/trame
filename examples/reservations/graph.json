@@ -1488,6 +1488,42 @@
       "diagnostics": []
     },
     {
+      "id": "people.Karim",
+      "kind": "actor",
+      "title": "Karim",
+      "source": "src/people.ts:13",
+      "fields": {
+        "owner": "karim",
+        "handle": "karim",
+        "sort": "person"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "people.Lea",
+      "kind": "actor",
+      "title": "Léa",
+      "source": "src/people.ts:19",
+      "fields": {
+        "owner": "lea",
+        "handle": "lea",
+        "sort": "person"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "people.ServiceTeam",
+      "kind": "actor",
+      "title": "The service's team",
+      "source": "src/people.ts:25",
+      "fields": {
+        "owner": "karim",
+        "handle": "reservations",
+        "sort": "team"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "principles.RefundOnce",
       "kind": "adr",
       "title": "A cancellation refunds once",
@@ -1859,6 +1895,9 @@
           "messages.ApiMessages",
           "messages.Language",
           "messages.ScenarioChecks",
+          "people.Karim",
+          "people.Lea",
+          "people.ServiceTeam",
           "principles.RefundOnce",
           "principles.SecretsOutOfTheGraph",
           "scenarios.ComplianceScenario",
@@ -2523,7 +2562,7 @@
       },
       "result": {
         "path": "src",
-        "code": "0f2301b5"
+        "code": "4c168867"
       },
       "diagnostics": [
         "warning: Not built yet: trame ship builds it"
@@ -3369,6 +3408,31 @@
       "from": "messages.ScenarioChecks",
       "to": "messages.Language",
       "kind": "language"
+    },
+    {
+      "from": "people.Karim",
+      "to": "cancellation.CancelWithoutStress",
+      "kind": "serves"
+    },
+    {
+      "from": "people.Lea",
+      "to": "cancellation.CancelWithoutStress",
+      "kind": "serves"
+    },
+    {
+      "from": "people.ServiceTeam",
+      "to": "people.Karim",
+      "kind": "members"
+    },
+    {
+      "from": "people.ServiceTeam",
+      "to": "people.Lea",
+      "kind": "members"
+    },
+    {
+      "from": "people.ServiceTeam",
+      "to": "cancellation.CancelWithoutStress",
+      "kind": "serves"
     },
     {
       "from": "principles.RefundOnce",

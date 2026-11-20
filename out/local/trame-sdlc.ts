@@ -50,7 +50,7 @@ const gitHubCliRepository = await body_gitHubCliRepository({ api: gitHubReposito
 // "Trame's repository" · decision
 const theRepository = {"name":"advancedcognitivesystems-ai/trame"}
 // "How the repository merges into main" · decision
-const mainBranch = {"branch":"main","checks":["trame","std","ci","data","reservations","poselia"],"upToDate":false,"approvals":0,"method":"merge","autoMerge":true,"deletesMerged":true,"pages":false}
+const mainBranch = {"branch":"main","checks":["trame","std","ci","data","team","reservations","poselia"],"upToDate":false,"approvals":0,"method":"merge","autoMerge":true,"deletesMerged":true,"pages":false}
 // "The parts of a repository's settings" · vocabulary
 const repositoryParts = ["methods","autoMerge","deletesMerged","protected","approvals","checks","upToDate","pages"]
 // "A repository compared with its settings" · function

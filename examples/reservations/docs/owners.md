@@ -5,8 +5,8 @@
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
 | The operators | 0 | 0 | 2 | 0 |
-| karim | 1 | 0 | 17 | 107 |
-| lea | 0 | 0 | 1 | 12 |
+| karim | 1 | 0 | 17 | 109 |
+| lea | 0 | 0 | 1 | 13 |
 
 <a id="The operators"></a>
 
@@ -125,6 +125,8 @@
 | [The cap, decided](legal.md#FeeCapDecided) | Amendment | not in force |
 | [Messages of the API](messages.md#ApiMessages) | Message catalog |  |
 | [Language](messages.md#Language) | Decision |  |
+| [Karim](people.md#Karim) | Actor |  |
+| [The service's team](people.md#ServiceTeam) | Actor |  |
 | [A cancellation refunds once](principles.md#RefundOnce) | Architecture decision | **held** |
 | [Secrets stay out of the graph](principles.md#SecretsOutOfTheGraph) | Architecture decision | **unknown** |
 | [Read a reservation](scenarios.md#ReadScenario) | Scenario | **held** |
@@ -186,4 +188,5 @@
 | [Approval of the ultra period](committee.md#UltraPeriodApproval) | Approval |  |
 | [What the scenario of the judgment checks](judgment.md#JudgmentChecks) | Message catalog |  |
 | [Checks of the scenarios](messages.md#ScenarioChecks) | Message catalog |  |
+| [Léa](people.md#Lea) | Actor |  |
 | [Every reservation is refunded according to the rule](scenarios.md#ComplianceScenario) | Scenario | **held** |

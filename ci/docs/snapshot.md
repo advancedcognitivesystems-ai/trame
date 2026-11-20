@@ -184,6 +184,47 @@ Package · `Language`
 - Its path: ../generations/g112
 - Serves: A shipment runs elsewhere as it runs here
 
+## Continuous integration · People
+
+### Claude
+
+Actor · `Claude`
+
+- Owner: ghalaax
+- Handle: claude
+- What it is: agent
+- Serves: A shipment runs elsewhere as it runs here
+
+### ghalaax
+
+Actor · `Ghalaax`
+
+- Owner: ghalaax
+- Handle: ghalaax
+- What it is: person
+- Identities: github, ghalaax
+- Serves: A shipment runs elsewhere as it runs here
+
+### The runner of GitHub Actions
+
+Actor · `GitHubRunner`
+
+- Owner: ghalaax
+- Handle: github-actions
+- What it is: machine
+- Identities: github, github-actions[bot]
+- Serves: A shipment runs elsewhere as it runs here
+
+### Trame's team
+
+Actor · `Trame`
+
+- Owner: ghalaax
+- Handle: trame
+- What it is: team
+- Members: ghalaax, Claude
+- Serves: A shipment runs elsewhere as it runs here
+
 ## Continuous integration · Product
 
 ### Each place is a writer

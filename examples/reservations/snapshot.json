@@ -1113,6 +1113,36 @@
       }
     },
     {
+      "id": "people.Karim",
+      "kind": "actor",
+      "title": "Karim",
+      "fields": {
+        "owner": "karim",
+        "handle": "karim",
+        "sort": "person"
+      }
+    },
+    {
+      "id": "people.Lea",
+      "kind": "actor",
+      "title": "Léa",
+      "fields": {
+        "owner": "lea",
+        "handle": "lea",
+        "sort": "person"
+      }
+    },
+    {
+      "id": "people.ServiceTeam",
+      "kind": "actor",
+      "title": "The service's team",
+      "fields": {
+        "owner": "karim",
+        "handle": "reservations",
+        "sort": "team"
+      }
+    },
+    {
       "id": "principles.RefundOnce",
       "kind": "adr",
       "title": "A cancellation refunds once",
@@ -2133,6 +2163,31 @@
       "from": "messages.ScenarioChecks",
       "to": "messages.Language",
       "kind": "language"
+    },
+    {
+      "from": "people.Karim",
+      "to": "cancellation.CancelWithoutStress",
+      "kind": "serves"
+    },
+    {
+      "from": "people.Lea",
+      "to": "cancellation.CancelWithoutStress",
+      "kind": "serves"
+    },
+    {
+      "from": "people.ServiceTeam",
+      "to": "people.Karim",
+      "kind": "members"
+    },
+    {
+      "from": "people.ServiceTeam",
+      "to": "people.Lea",
+      "kind": "members"
+    },
+    {
+      "from": "people.ServiceTeam",
+      "to": "cancellation.CancelWithoutStress",
+      "kind": "serves"
     },
     {
       "from": "principles.RefundOnce",

@@ -14,7 +14,7 @@
 | [Poselia · Drawings](drawing.md) | 0 | 0 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Poselia · Language](language.md) | 0 | 0 | 3 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 0 | 0 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Poselia · Landmarks](marks.md) | 0 | 1 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Poselia · Packages](packages.md) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 5 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| [Poselia · Packages](packages.md) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 6 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Poselia · Practice](practice.md) | 0 | 5 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Poselia · Principles](principles.md) | 0 | 0 | 0 | 5 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Poselia · Product](product.md) | 4 | 2 | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
@@ -35,6 +35,7 @@ The libraries the project imports: their nodes take part in the graph, their doc
 | [data 0.5.0](../.trame/data/docs/index.md) | Data · Documents, Data · Obligations, Data · Packages, Data · Principles, Data · Product, Data · Records, Data · Releases, Data · Scenarios, Data · SDLC, Data · Shelves, Data · SQL, Data · Words | 75 | 6 points to watch |
 | [geometry 0.2.0](../.trame/geometry/docs/index.md) | Geometry · Angles, Geometry · Packages, Geometry · Product, Geometry · Releases, Geometry · SDLC, Geometry · Vectors | 15 | 4 points to watch |
 | [std 0.21.0](../.trame/std/docs/index.md) | Standard library · Access, Standard library · Algebra, Standard library · Algorithms, Standard library · ECMAScript, Standard library · Effects, Standard library · HTML and CSS, Standard library · Judgment, Standard library · Measures, Standard library · Obligations, Standard library · Packages, Standard library · Design patterns, Standard library · Platform, Standard library · Product, Standard library · Releases, Standard library · Repositories on GitHub, Standard library · Rules, Standard library · Scenarios, Standard library · SDLC, Standard library · System, Standard library · Text, Standard library · Tooling, Standard library · Web | 203 | 7 points to watch |
+| [team 0.1.0](../.trame/team/docs/index.md) | Team · Packages, Team · People, Team · Product, Team · SDLC | 12 | 4 points to watch |
 
 ## Open issues
 

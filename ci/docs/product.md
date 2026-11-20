@@ -26,4 +26,4 @@ A place that runs a shipment (GitHub Actions, a shell, another service tomorrow)
 The file a service of continuous integration or another machine runs is written from the graph, by Trame: it prepares what the shipment's programs need, then runs trame ship, which checks, refuses or deploys as it does here. Nobody writes it by hand, so it never says something the graph does not.
 
 - Owner: trame
-- Served by: [Trame](packages.md#Language), [Version 0.1.0](releases.md#R0_1_0), [Version 0.2.0](releases.md#R0_2_0), [Version 0.3.0](releases.md#R0_3_0), [Version 0.4.0](releases.md#R0_4_0), [Version 0.5.0](releases.md#R0_5_0), [Version 0.6.0](releases.md#R0_6_0), [Version 0.7.0](releases.md#R0_7_0)
+- Served by: [Trame](packages.md#Language), [Claude](people.md#Claude), [ghalaax](people.md#Ghalaax), [The runner of GitHub Actions](people.md#GitHubRunner), [Trame's team](people.md#Trame), [Version 0.1.0](releases.md#R0_1_0), [Version 0.2.0](releases.md#R0_2_0), [Version 0.3.0](releases.md#R0_3_0), [Version 0.4.0](releases.md#R0_4_0), [Version 0.5.0](releases.md#R0_5_0), [Version 0.6.0](releases.md#R0_6_0), [Version 0.7.0](releases.md#R0_7_0)

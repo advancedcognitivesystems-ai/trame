@@ -10,7 +10,7 @@
 
 ### What the engines an advance starts answer in a scenario
 
-`AdvanceSamples` · `src/command-scenarios.ts:1061`
+`AdvanceSamples` · `src/command-scenarios.ts:1062`
 
 What each prints (a build, an assembly, the laws), how many may be started at most, what the promotion says.
 
@@ -88,7 +88,7 @@ A body with a literal, and what the reader finds in it; a body that imports a mo
 
 ### What trame dev is shown in a scenario
 
-`DevSamples` · `src/command-scenarios.ts:754`
+`DevSamples` · `src/command-scenarios.ts:755`
 
 The file written under the project and its text; how many pauses of the debounce the scenario waits; how many times the engine is relaunched (at the start, then after the change).
 
@@ -145,7 +145,7 @@ A version to release and what it changes; a library the application imports, and
 
 ### What a program run in a scenario answers
 
-`RunSamples` · `src/command-scenarios.ts:727`
+`RunSamples` · `src/command-scenarios.ts:728`
 
 | Case | Value |
 |---|---|
@@ -209,7 +209,7 @@ A view of the whole project and what it shows; a view of one module, with a figu
 
 ### An advance, in memory
 
-`AdvanceInMemory` · `src/command-scenarios.ts:1075` · status: **held**
+`AdvanceInMemory` · `src/command-scenarios.ts:1076` · status: **held**
 
 trame advance, in Trame's repository: the generation in place builds the libraries, the example and Trame, and assembles the candidate; the candidate builds them as it did, reassembles itself to a fixed point, plays the laws; the older generations run. Here each engine it starts answers what the scenario says, and what it compares is what the disk holds: a build that fails stops it; otherwise the candidate is accepted and, with --promote, frozen as the next generation (its program, its graph, its origin, the fingerprint of its engine for the machines), the pins moved, all in memory.
 
@@ -300,7 +300,7 @@ trame plan writes nothing. Right after a build, nothing changes. Against the gra
 
 ### The command line
 
-`CommandLineChooses` · `src/command-scenarios.ts:808` · status: **held**
+`CommandLineChooses` · `src/command-scenarios.ts:809` · status: **held**
 
 The first word typed chooses the command: none, or an option, is the build; a word that names no command goes to the command that takes any word, with the names of the others; without such a command, it is refused.
 
@@ -359,7 +359,7 @@ trame assemble writes the example's component for an environment: a program in T
 
 ### A component run
 
-`ComponentRun` · `src/command-scenarios.ts:733` · status: **held**
+`ComponentRun` · `src/command-scenarios.ts:734` · status: **held**
 
 trame run assembles the example's component, runs the program it wrote, and exits with the program's status.
 
@@ -415,7 +415,7 @@ trame publish freezes the example's declarations not yet published in trame.lock
 
 ### trame dev
 
-`DevFollowsTheGraph` · `src/command-scenarios.ts:765` · status: **held**
+`DevFollowsTheGraph` · `src/command-scenarios.ts:766` · status: **held**
 
 trame dev serves the page of the example and its graph, compiled at each date in a fresh process of the engine, and opens a stream of events; a file written under the project is seen, and after a pause the graph is compiled again and announced on the stream.
 
@@ -445,7 +445,7 @@ trame dev serves the page of the example and its graph, compiled at each date in
 
 ### The doctor
 
-`DoctorAsks` · `src/command-scenarios.ts:1034` · status: **held**
+`DoctorAsks` · `src/command-scenarios.ts:1035` · status: **held**
 
 trame doctor asks the machine (here, the one of the scenarios: files in memory, a server in memory, a program that answers what the scenario says) whether it runs Trame, and answers each question on a line; a program that does not print what it was given fails the doctor.
 
@@ -473,7 +473,7 @@ trame doctor asks the machine (here, the one of the scenarios: files in memory, 
 
 ### A library carries kinds
 
-`KindsCarried` · `src/command-scenarios.ts:935` · status: **held**
+`KindsCarried` · `src/command-scenarios.ts:936` · status: **held**
 
 A project that imports a library carrying kinds in its sources (the library of data: its entities) writes nodes of those kinds: the compiler loads them into the project's language, TypeScript accepts the project as it is written, and a node of such a kind is read and holds no error. Then what deployments kept of the entity: a description its changes migrate from (a rename, a field dropped) holds; one they do not (a field stored otherwise) blocks, on the field it is about.
 
@@ -510,7 +510,7 @@ trame test-kinds plays the laws of every kind of the example's language on drawn
 
 | Criterion | Result |
 |---|---|
-| trame test-kinds says the laws of each of the 41 kinds and 19 views hold | passed |
+| trame test-kinds says the laws of each of the 42 kinds and 19 views hold | passed |
 
 <details><summary>The code it runs: 48 nodes</summary>
 
@@ -529,7 +529,7 @@ trame test-kinds plays the laws of every kind of the example's language on drawn
 
 ### A library released
 
-`LibraryReleased` · `src/command-scenarios.ts:610` · status: **held**
+`LibraryReleased` · `src/command-scenarios.ts:611` · status: **held**
 
 trame release, in the library, freezes a version: its graph, its code and its documents under releases/, its record written in its module of releases; refused in the example, where a value is still to decide. The library ships its versions through its graph (C1): the version is shipped first, attributed to who releases, and its dossier written.
 
@@ -559,7 +559,7 @@ trame release, in the library, freezes a version: its graph, its code and its do
 
 ### The manifest written
 
-`ManifestWritten` · `src/command-scenarios.ts:646` · status: **held**
+`ManifestWritten` · `src/command-scenarios.ts:647` · status: **held**
 
 trame manifest, in the application, writes the packages of its graph into package.json, and the import map of the libraries it imports from outside its package: each name leads to a link, and the link to the version it pins. The language's names lead to the generation it pins (since g87); the import map changed, a fresh engine reads the graph.
 
@@ -588,7 +588,7 @@ trame manifest, in the application, writes the packages of its graph into packag
 
 ### The packages audited
 
-`PackagesAudited` · `src/command-scenarios.ts:586` · status: **held**
+`PackagesAudited` · `src/command-scenarios.ts:587` · status: **held**
 
 trame audit, in the application, asks the registry about each package of its graph (in memory, the registry knows of no advisory and no later version) and keeps its answers as evidence: two pieces for each package, none vulnerable.
 
@@ -596,7 +596,7 @@ trame audit, in the application, asks the registry about each package of its gra
 
 | Criterion | Result |
 |---|---|
-| trame audit keeps 22 answers of the registry as evidence, none vulnerable | passed |
+| trame audit keeps 24 answers of the registry as evidence, none vulnerable | passed |
 
 <details><summary>The code it runs: 49 nodes</summary>
 
@@ -615,7 +615,7 @@ trame audit, in the application, asks the registry about each package of its gra
 
 ### The packages upgraded
 
-`PackagesUpgraded` · `src/command-scenarios.ts:678` · status: **held**
+`PackagesUpgraded` · `src/command-scenarios.ts:679` · status: **held**
 
 trame upgrade, in the application, asks the origin of each package of Trame it references which versions it holds: a reference behind the newest is written again with it, in its module, and the manifest runs in a fresh engine; a project whose references are all at their newest is told so, and nothing is written (C1, since g100).
 
@@ -642,7 +642,7 @@ trame upgrade, in the application, asks the origin of each package of Trame it r
 
 ### The page delivered
 
-`PageDelivered` · `src/command-scenarios.ts:848` · status: **held**
+`PageDelivered` · `src/command-scenarios.ts:849` · status: **held**
 
 trame deliver, in the application, writes its page: the component assembled for the browser, its program bundled into one script, its style sheets, in one document a browser opens as it is. The libraries it reads at a version published once (geometry, which names std 0.12.0) are bundled with the language and the std of the application, as they run.
 
@@ -669,7 +669,7 @@ trame deliver, in the application, writes its page: the component assembled for 
 
 ### The page exported
 
-`PageExported` · `src/command-scenarios.ts:703` · status: **held**
+`PageExported` · `src/command-scenarios.ts:704` · status: **held**
 
 trame export compiles the example at each date where it may change, in a fresh process of the engine (here, one that answers what the payload command printed), and writes the page that carries them all.
 
@@ -734,7 +734,7 @@ trame payload writes the example compiled at its date: its nodes, its documents,
 
 | Criterion | Result |
 |---|---|
-| The payload holds 119 nodes and 277 documents | passed |
+| The payload holds 122 nodes and 284 documents | passed |
 | Each document is rendered in Markdown, in text and in HTML | passed |
 | The figures of the HTML are drawn in SVG | passed |
 | Two payloads alike differ in nothing | passed |
@@ -766,7 +766,7 @@ trame init, in a directory where no project is, writes the configuration (the ge
 | Criterion | Result |
 |---|---|
 | trame init writes the configuration: the generation that runs, the libraries | passed |
-| The first module declares the goal, owned by whoever started the project, and names the language by its name | passed |
+| The first module declares the goal and whoever started the project, an actor who owns it, and names the language by its name | passed |
 | Its references are package nodes of its graph: the language, at the generation that started it, and its libraries | passed |
 | The guide for agents comes with it, and the file that points to it | passed |
 | Then a fresh engine writes the manifest | passed |
@@ -843,7 +843,7 @@ trame registry, in Trame's repository, publishes a generation it names to the re
 
 ### Shipments run, evidence given
 
-`ShipmentsRun` · `src/command-scenarios.ts:874` · status: **held**
+`ShipmentsRun` · `src/command-scenarios.ts:875` · status: **held**
 
 In the application, its evidence of the SDLC set aside (the scenario's day is before it): trame ship writes the files that run its preview elsewhere (each by its writer, from the plan the engine computes), records that they were built and from which code, each record sealed, compiles again with that evidence, ships, and writes the dossier; a record changed by hand afterwards is not counted, an error; the preview, in a dry run, is delivered, its check run by its program (which answers it passed), and would ship, with nothing deployed and no dossier. trame evidence records a check made by hand by someone of its role, attributed to them; someone who is not of it is refused.
 
@@ -903,7 +903,7 @@ trame snapshot writes the example's snapshot.json as the build of the engine in 
 
 ### Stages shipped in order
 
-`StagesShipped` · `src/command-scenarios.ts:985` · status: **held**
+`StagesShipped` · `src/command-scenarios.ts:986` · status: **held**
 
 In the application, its evidence of the SDLC set aside: its public version waits for its preview to ship the page first; once the preview shipped it (deployed: its programs answer they checked and placed it), the public version takes the page as the preview shipped it, promoted rather than built again; a page changed since is refused, until the preview ships it again.
 

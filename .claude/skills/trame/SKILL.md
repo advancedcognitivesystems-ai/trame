@@ -17,7 +17,8 @@ The repository's `AGENTS.md` is the full guide; read it first, then keep to this
    from the day it was given; `--at <date>` shows the graph as it was that day). Read the summary's open issues, `docs/index.md`,
    `docs/owners.md` and `docs/review.md`: they are the work left (blocking holes, errors, warnings, each with its owner
    or its role, and its code: `value-undecided`, `literal-in-body`…, g111; a project raises codes by a binding to a
-   realization of std's `Hardening` where its build evaluates, g112).
+   realization of std's `Hardening` where its build evaluates, g112). An owner is the handle of a declared actor (g113:
+   kind `actor`; Trame's repository imports its people from `libs/team`); one nobody declares is an error.
 3. Take the inventory: every node that is not held. Each unknown must be a **wait** (evidence a person or a machine
    will give: a check by hand, a review, an assumption, a measurement), never a **hole** (something the graph can never
    prove as written). A hole is fixed in the graph, not waited for.

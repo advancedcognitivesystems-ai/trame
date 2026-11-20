@@ -6,6 +6,28 @@
 
 ## Architecture decisions
 
+<a id="ActorsDeclared"></a>
+
+### Who acts is declared
+
+`ActorsDeclared` · `src/principles.ts:434` · status: **held**
+
+The people, the agents and the machines that act in a project are actors of its graph (kind actor, in the language): a person, a team of actors, an agent that acts for people, a machine. An owner, a role's people, the evidence given name one of them by its handle; a name nobody declares is an error.
+
+Context: An owner, a role's people and the evidence given were texts nobody checked: a typo made a new person, a team (trame) was no one in particular, and nothing could say that Claude acts for ghalaax, or a runner for whoever started it (C4).
+
+Consequences: The language holds the kind actor (its handle, what it is, a team's members, its identities elsewhere). The compiler checks each owner of the project's nodes against the actors its graph declares, its own and its libraries' (owner-undeclared); a role checks its people (person-undeclared); an actor declared twice must say the same thing (actor-declared-twice). A project that declares none is told once (actors-undeclared). Trame's repository declares its people once, in the library team, which every project of it imports; trame init declares whoever starts a project. Evidence given on someone's behalf comes next.
+
+| Rejected | Why |
+|---|---|
+| Composing: a vocabulary of the people | a word has no members, no identity elsewhere, and cannot say for whom it acts |
+| Composing: the people of a role | a role says who may sign a kind of evidence; who owns a node is not a role, and a team is not a list of signatures |
+| Owners as edges to actors | every node of every project would change its owner field at once; a text checked against the actors says the same |
+
+- Decided by: trame
+- Serves: [A specification that runs](product.md#ExecutableSpecification)
+- Applied by: [Compiler](engine.md#Compiler), [Start a project](commands.md#Init)
+
 <a id="ChangesAreClaims"></a>
 
 ### A change to a node is a claim
@@ -390,7 +412,7 @@ Consequences: The graph describes the prelude as a port; a body imports only its
 
 ### A version ships through the graph
 
-`ShippedThroughTheGraph` · `src/principles.ts:415` · status: **held**
+`ShippedThroughTheGraph` · `src/principles.ts:415` · status: **unknown**
 
 What makes a version available is declared in the project's graph: the artefacts it produces and what produces them (kind artifact), the checks a scenario in memory cannot make, run by a program of the SDLC or made by hand and signed by a role (kind check), the reviews and the role that gives them (kinds review and role), and the shipment that requires them and the programs that deploy it (kind shipment). trame ship and trame evidence record what was found, attributed to a person and tied to the fingerprint of what was seen; the next build reads it.
 
@@ -412,7 +434,7 @@ Consequences: A shipment holds when each obligation holds; trame ship builds its
 
 ### A technology is chosen in one node
 
-`TechnologyInOneNode` · `src/principles.ts:233` · status: **held**
+`TechnologyInOneNode` · `src/principles.ts:233` · status: **unknown**
 
 What answers a port in an environment is said by a technical choice (a binding), never by the realization itself nor by the code that uses the port. A realization that touches nothing is a function; one that touches the platform is an implementation. The choice names the patterns it follows, and its shape is checked against them.
 
@@ -506,7 +528,7 @@ Consequences: A project names the directories of its kinds and views (trame.json
 
 ### The words are in catalogs
 
-`WordsInCatalogs` · `src/principles.ts:433` · status: **held**
+`WordsInCatalogs` · `src/principles.ts:452` · status: **held**
 
 What a part of the product says to people, in a terminal or a document, is written in a message catalog, in the decided language; code calls its messages by name.
 

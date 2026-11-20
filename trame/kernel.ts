@@ -230,7 +230,7 @@ export const KindName = {
   release: "release", rule: "rule", function: "function", stylesheet: "stylesheet", entry: "entry", catalog: "catalog",
   implementation: "implementation", package: "package", binding: "binding", environment: "environment", scenario: "scenario",
   delivery: "delivery", dataset: "dataset", role: "role", artifact: "artifact", check: "check", review: "review", shipment: "shipment",
-  obligation: "obligation", policy: "policy", quantity: "quantity", audience: "audience",
+  obligation: "obligation", policy: "policy", quantity: "quantity", audience: "audience", actor: "actor",
 } as const
 
 /** The views of the language, in the order documents list them within their group: named and placed like the kinds. */

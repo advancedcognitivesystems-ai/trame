@@ -15,7 +15,7 @@
 | [Standard library · Judgment](judgment.md) | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 1 | 1 | 0 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Standard library · Measures](measures.md) | 0 | 0 | 4 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 0 | 0 |
 | [Standard library · Obligations](obligations.md) | 0 | 10 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Standard library · Packages](packages.md) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| [Standard library · Packages](packages.md) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Standard library · Design patterns](patterns.md) | 0 | 0 | 0 | 0 | 0 | 5 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Standard library · Platform](platform.md) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 9 | 0 | 4 | 0 | 6 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Standard library · Product](product.md) | 6 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
@@ -36,6 +36,7 @@ The libraries the project imports: their nodes take part in the graph, their doc
 | Library | Modules | Nodes | Open issues |
 |---|---|---|---|
 | [ci 0.7.0](../.trame/ci/docs/index.md) | Continuous integration · GitHub Actions, Continuous integration · npm, Continuous integration · Packages, Continuous integration · Product, Continuous integration · Releases, Continuous integration · SDLC, Continuous integration · Shell, Continuous integration · YAML | 23 | 5 points to watch |
+| [team 0.1.0](../.trame/team/docs/index.md) | Team · Packages, Team · People, Team · Product, Team · SDLC | 12 | 4 points to watch |
 
 ## Open issues
 

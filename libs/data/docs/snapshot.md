@@ -104,6 +104,18 @@ Package · `Language`
 - Its path: ../../generations/g112
 - Serves: Data described once
 
+### The people of the repository
+
+Package · `People`
+
+- Owner: trame
+- Name: team
+- Version: 0.1.0
+- How it joins the graph: library
+- Where it comes from: path
+- Its path: ../team/releases/0.1.0
+- Serves: Data described once
+
 ### std
 
 Package · `stdLibrary`

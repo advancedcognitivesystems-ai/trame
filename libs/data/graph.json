@@ -156,7 +156,7 @@
       "id": "packages.ContinuousIntegration",
       "kind": "package",
       "title": "The library of continuous integration",
-      "source": "src/packages.ts:23",
+      "source": "src/packages.ts:25",
       "fields": {
         "owner": "trame",
         "packageName": "ci",
@@ -171,7 +171,7 @@
       "id": "packages.Language",
       "kind": "package",
       "title": "Trame",
-      "source": "src/packages.ts:10",
+      "source": "src/packages.ts:12",
       "fields": {
         "owner": "trame",
         "packageName": "trame",
@@ -182,10 +182,25 @@
       "diagnostics": []
     },
     {
+      "id": "packages.People",
+      "kind": "package",
+      "title": "The people of the repository",
+      "source": "src/packages.ts:34",
+      "fields": {
+        "owner": "trame",
+        "packageName": "team",
+        "version": "0.1.0",
+        "joins": "library",
+        "from": "path",
+        "at": "../team/releases/0.1.0"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "packages.stdLibrary",
       "kind": "package",
       "title": "std",
-      "source": "src/packages.ts:16",
+      "source": "src/packages.ts:18",
       "fields": {
         "owner": "trame",
         "packageName": "std",
@@ -965,6 +980,7 @@
           "obligations.MigratedCriteria",
           "packages.ContinuousIntegration",
           "packages.Language",
+          "packages.People",
           "packages.stdLibrary",
           "principles.DescribedOnce",
           "product.DataDescribedOnce",
@@ -1134,7 +1150,7 @@
       },
       "result": {
         "path": "src",
-        "code": "24dbed93"
+        "code": "2bf90a83"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -2276,6 +2292,11 @@
     },
     {
       "from": "packages.Language",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "packages.People",
       "to": "product.DataDescribedOnce",
       "kind": "serves"
     },

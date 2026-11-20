@@ -2090,6 +2090,19 @@
       }
     },
     {
+      "id": "packages.People",
+      "kind": "package",
+      "title": "The people of the repository",
+      "fields": {
+        "owner": "trame",
+        "packageName": "team",
+        "version": "0.1.0",
+        "joins": "library",
+        "from": "path",
+        "at": "../libs/team/releases/0.1.0"
+      }
+    },
+    {
       "id": "patterns.AbstractFactory",
       "kind": "pattern",
       "title": "Abstract Factory",
@@ -5010,6 +5023,11 @@
     {
       "from": "packages.Language",
       "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "packages.People",
+      "to": "product.VersionsThatHold",
       "kind": "serves"
     },
     {

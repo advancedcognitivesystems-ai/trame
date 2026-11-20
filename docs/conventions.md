@@ -10,7 +10,7 @@
 
 ### Names of the documents
 
-`DocumentIds` · `src/conventions.ts:238`
+`DocumentIds` · `src/conventions.ts:241`
 
 How a document of a view is named: a view of the whole graph by its name; a view of a module by its name and the module ("layers.engine"), except the first view per module, named by the module alone; a view of a node by its name and the reference of the node ("impact:engine.Compiler"), which the page reads back to show it.
 
@@ -28,7 +28,7 @@ Source: Trame, the documents of its views (the engine names them, the page reads
 
 ### The frozen API
 
-`FrozenApi` · `src/conventions.ts:77`
+`FrozenApi` · `src/conventions.ts:80`
 
 What an assembled program calls in the prelude (trame/internal.ts, frozen): the value of a node read from its declaration, the body of an inline node, a body as its amendments make it, the data a rule reads, the periods of a graph that changes at known dates and the entry points that answer by the day, the start of the component with its entry points; and what the start gives back.
 
@@ -61,7 +61,7 @@ Source: Trame, the prelude (trame/internal.ts: frozen)
 
 ### Trame references
 
-`ReferenceSyntax` · `src/conventions.ts:209`
+`ReferenceSyntax` · `src/conventions.ts:212`
 
 How the language names a node and a field: "module.Identifier", "value.case". An empty path designates the whole node. A module of a library takes the library's name before its own: "std/algebra.Counts".
 
@@ -81,7 +81,7 @@ Source: Trame, the prelude (trame/kernel.ts: refOf, getPath)
 
 ### Trame's commands
 
-`TrameCommands` · `src/conventions.ts:120`
+`TrameCommands` · `src/conventions.ts:123`
 
 How a person calls Trame in a terminal: the program, its commands, its options, the formats a view is written in. A word that names no command goes to the fallback command (in Trame: the name of a view); with no command, or an option first, Trame builds.
 
@@ -149,7 +149,7 @@ Source: Trame, its command line (the entry points of commands, in the module com
 
 ### Trame's environment
 
-`TrameEnvironment` · `src/conventions.ts:183`
+`TrameEnvironment` · `src/conventions.ts:186`
 
 The variables of the environment Trame reads.
 
@@ -168,7 +168,7 @@ Source: Trame, the variables of the environment it reads
 
 ### How an amendment is named
 
-`AmendmentNaming` · `src/conventions.ts:105`
+`AmendmentNaming` · `src/conventions.ts:108`
 
 The name of the node it amends, then this word, then a number from the second one on: LateFeeAmendment, LateFeeAmendment2.
 
@@ -184,7 +184,7 @@ The name of the node it amends, then this word, then a number from the second on
 
 ### Default rank
 
-`DefaultRank` · `src/conventions.ts:202`
+`DefaultRank` · `src/conventions.ts:205`
 
 The place of a kind or a view that does not declare one, in documents and lists.
 
@@ -197,7 +197,7 @@ The place of a kind or a view that does not declare one, in documents and lists.
 
 ### Documentation comment
 
-`DocComment` · `src/conventions.ts:224`
+`DocComment` · `src/conventions.ts:227`
 
 What the comment before a declaration says: its first lines are the node's title, the following ones its description. The lines of each are joined into one text, by a space.
 
@@ -214,7 +214,7 @@ What the comment before a declaration says: its first lines are the node's title
 
 ### JSON formatting
 
-`JsonFormatting` · `src/conventions.ts:230`
+`JsonFormatting` · `src/conventions.ts:233`
 
 The JSON that Trame writes to be read (the lock, a view in JSON): indented.
 
@@ -229,7 +229,7 @@ The JSON that Trame writes to be read (the lock, a view in JSON): indented.
 
 ### The language's names
 
-`LanguageNames` · `src/conventions.ts:65`
+`LanguageNames` · `src/conventions.ts:68`
 
 How a project names the language it is written in, as a package (since g87): the prelude's public API and the kinds, each module by a name its import map leads to the generation it pins (#trame/kernel, #trame/kinds/decision). Only the language's own repository reaches them where they are: it is their home.
 
@@ -305,9 +305,9 @@ How a body names the prelude's public API (trame/kernel), the only module it may
 
 ### How a project starts
 
-`ProjectStart` · `src/conventions.ts:43`
+`ProjectStart` · `src/conventions.ts:44`
 
-What trame init writes: the module that holds the goal the project serves (its name, the kind it declares, the field that names its owner), the guides for agents it copies from the language's home (this guide, the skill), and the file that points an agent to the guide.
+What trame init writes: the module that holds the goal the project serves (its name, the kind it declares, the field that names its owner) and the person who started it, an actor (C4: the node it is, the kind, the module of the language that holds what an actor is); the guides for agents it copies from the language's home (this guide, the skill), and the file that points an agent to the guide.
 
 | Case | Value |
 |---|---|
@@ -315,6 +315,10 @@ What trame init writes: the module that holds the goal the project serves (its n
 | goal | Purpose |
 | goalKind | kinds/goal |
 | owner | owner |
+| actor | Owner |
+| actorKind | kinds/actor |
+| kernel | kernel |
+| actorSorts | ActorSort |
 | references | packages |
 | packageKind | kinds/package |
 | packageFacade | pkg |
@@ -332,7 +336,7 @@ What trame init writes: the module that holds the goal the project serves (its n
 
 ### Names of steps
 
-`StepNames` · `src/conventions.ts:196`
+`StepNames` · `src/conventions.ts:199`
 
 When two steps of a wiring plan would take the same name, or a step a name that is taken, the second takes its module as a prefix, with this joint.
 
@@ -347,7 +351,7 @@ When two steps of a wiring plan would take the same name, or a step a name that 
 
 ### Order of the view groups
 
-`ViewGroupOrder` · `src/conventions.ts:252`
+`ViewGroupOrder` · `src/conventions.ts:255`
 
 Where the views of each group come in the list of documents: the documents of the modules first, then the other documents, the figures, the summary, and last the views of a node.
 

@@ -169,7 +169,7 @@ Triggered by `command amend`
 
 ### Assemble a component
 
-`Assemble` · `src/commands.ts:445` · status: **held**
+`Assemble` · `src/commands.ts:446` · status: **held**
 
 Triggered by `command assemble`
 
@@ -249,7 +249,7 @@ Triggered by `command deliver`
 
 ### Start trame dev
 
-`Dev` · `src/commands.ts:435` · status: **held**
+`Dev` · `src/commands.ts:436` · status: **held**
 
 Triggered by `command dev`
 
@@ -334,7 +334,7 @@ In an empty directory: its configuration (the generation that runs, the librarie
 Triggered by `command init`
 
 - Owner: trame
-- Parameters: `exitStatus` ← [Exit status](../std/releases/0.21.0/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `layout` ← [Project layout](conventions.md#Layout) · `project` ← [Project](engine.md#Project) · `prelude` ← [Prelude](architecture.md#Prelude) · `start` ← [How a project starts](conventions.md#ProjectStart) · `pin` ← [The engine a project runs](generations.md#EnginePin) · `reading` ← [File reading](architecture.md#FileReading) · `writing` ← [File writing](architecture.md#FileWriting) · `paths` ← [Paths](architecture.md#Paths) · `encodings` ← [Node.js character encodings](../std/releases/0.21.0/docs/system.md#NodeEncodings) · `file` ← [Text file](../std/releases/0.21.0/docs/text.md#TextFile) · `json` ← [JSON formatting](conventions.md#JsonFormatting) · `language` ← [TypeScript](typescript.md#TypeScript) · `syntax` ← [The syntax of the programs Trame writes](typescript.md#TypeScriptSyntax) · `title` ← [Title of a module](typescript.md#ModuleTitle) · `doc` ← [Documentation comment](typescript.md#DocBlock) · `exported` ← [Export](typescript.md#ExportDeclaration) · `constant` ← [Constant](typescript.md#ConstDeclaration) · `call` ← [Call](typescript.md#Call) · `object` ← [Object](typescript.md#ObjectLiteral) · `property` ← [Property](typescript.md#Property) · `text` ← [Text](typescript.md#StringLiteral) · `imports` ← [Import of names](typescript.md#NamedImport) · `terminal` ← [Terminal](architecture.md#Terminal) · `messages` ← [Messages of the commands](messages.md#CommandMessages) · `currentProcess` ← [Process](architecture.md#Process) · `events` ← [Node.js events](../std/releases/0.21.0/docs/system.md#NodeEvents) · `line` ← [Trame's commands](conventions.md#TrameCommands) · `texts` ← [Texts](../std/releases/0.21.0/docs/algebra.md#Texts) · `references` ← [A module of references](#ReferencesModule) · `names` ← [The language's names](conventions.md#LanguageNames) · `specifiers` ← [Node.js module specifiers](../std/releases/0.21.0/docs/system.md#NodeModuleSpecifiers)
+- Parameters: `exitStatus` ← [Exit status](../std/releases/0.21.0/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `layout` ← [Project layout](conventions.md#Layout) · `project` ← [Project](engine.md#Project) · `prelude` ← [Prelude](architecture.md#Prelude) · `start` ← [How a project starts](conventions.md#ProjectStart) · `pin` ← [The engine a project runs](generations.md#EnginePin) · `reading` ← [File reading](architecture.md#FileReading) · `writing` ← [File writing](architecture.md#FileWriting) · `paths` ← [Paths](architecture.md#Paths) · `encodings` ← [Node.js character encodings](../std/releases/0.21.0/docs/system.md#NodeEncodings) · `file` ← [Text file](../std/releases/0.21.0/docs/text.md#TextFile) · `json` ← [JSON formatting](conventions.md#JsonFormatting) · `language` ← [TypeScript](typescript.md#TypeScript) · `syntax` ← [The syntax of the programs Trame writes](typescript.md#TypeScriptSyntax) · `title` ← [Title of a module](typescript.md#ModuleTitle) · `doc` ← [Documentation comment](typescript.md#DocBlock) · `exported` ← [Export](typescript.md#ExportDeclaration) · `constant` ← [Constant](typescript.md#ConstDeclaration) · `call` ← [Call](typescript.md#Call) · `object` ← [Object](typescript.md#ObjectLiteral) · `property` ← [Property](typescript.md#Property) · `text` ← [Text](typescript.md#StringLiteral) · `imports` ← [Import of names](typescript.md#NamedImport) · `terminal` ← [Terminal](architecture.md#Terminal) · `messages` ← [Messages of the commands](messages.md#CommandMessages) · `currentProcess` ← [Process](architecture.md#Process) · `events` ← [Node.js events](../std/releases/0.21.0/docs/system.md#NodeEvents) · `line` ← [Trame's commands](conventions.md#TrameCommands) · `texts` ← [Texts](../std/releases/0.21.0/docs/algebra.md#Texts) · `references` ← [A module of references](#ReferencesModule) · `names` ← [The language's names](conventions.md#LanguageNames) · `specifiers` ← [Node.js module specifiers](../std/releases/0.21.0/docs/system.md#NodeModuleSpecifiers) · `member` ← [Property access](typescript.md#MemberAccess) · `list` ← [List on one line](typescript.md#InlineArray)
 - Body: `./code/commands/init.ts` (typescript)
 - Effects: execution, keeps, process, read, terminal, time, write
 - Serves: [A single source of truth](product.md#SingleSource)
@@ -342,7 +342,7 @@ Triggered by `command init`
 - For: [Anyone](../std/releases/0.21.0/docs/access.md#Anyone)
 - Verified by: [A project started](command-scenarios.md#ProjectStarted)
 - Used by: [A project started](command-scenarios.md#ProjectStarted)
-- Applies: [A package is used by its name](principles.md#PackagesByName)
+- Applies: [Who acts is declared](principles.md#ActorsDeclared), [A package is used by its name](principles.md#PackagesByName)
 
 <a id="Plan"></a>
 
@@ -449,7 +449,7 @@ Triggered by `command release`
 
 ### Run a component
 
-`Run` · `src/commands.ts:456` · status: **held**
+`Run` · `src/commands.ts:457` · status: **held**
 
 Assembles, then runs the program and exits with its code.
 
@@ -490,7 +490,7 @@ Triggered by `command ship`
 
 ### Show a view
 
-`ShowView` · `src/commands.ts:466` · status: **held**
+`ShowView` · `src/commands.ts:467` · status: **held**
 
 Triggered by `command view`
 
@@ -568,7 +568,7 @@ Triggered by `command upgrade`
 
 ### View by its name
 
-`ViewByName` · `src/commands.ts:477` · status: **held**
+`ViewByName` · `src/commands.ts:478` · status: **held**
 
 Any other command: the name of a view.
 
