@@ -338,6 +338,28 @@ Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Ge
 - Released by: trame
 - Releases: [Trame on the command line](architecture.md#TrameCli)
 - Assembled by: [Generation 111](#G111)
+- Assembled: [Generation 113](#G113)
+
+<a id="G113"></a>
+
+### Generation 113
+
+`G113` · `src/releases.ts:1672`
+
+C4, the actors: the language holds the kind actor (a person, a team, an agent, a machine; its handle, a team's members, its identities); the compiler checks each owner of the project's nodes against the actors the graph declares, a role its people; trame init declares whoever starts a project
+
+Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Generation 112](#G112).
+
+- Version: `g113`
+- Released on: 20 November 2026
+- Fingerprint: `a60ba2b9a14b062d`
+- Language: the repository's, shared
+- Language archived: `b0ead947077d2a4b`
+- Accepted differences: `differences.diff`
+
+- Released by: trame
+- Releases: [Trame on the command line](architecture.md#TrameCli)
+- Assembled by: [Generation 112](#G112)
 
 <a id="G12"></a>
 

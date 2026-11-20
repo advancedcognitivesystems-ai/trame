@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 18 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 20 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Geometry · Angles
 
@@ -23,14 +23,36 @@ Quantity · `Angle`
 
 ## Geometry · Packages
 
+### The library of continuous integration
+
+Package · `ContinuousIntegration`
+
+- Owner: ghalaax
+- Name: ci
+- Version: 0.7.0
+- How it joins the graph: library
+- Where it comes from: registry
+- Serves: Geometry written once
+
 ### Trame
 
 Package · `Language`
 
 - Owner: ghalaax
 - Name: trame
-- Version: 108
+- Version: 113
 - How it joins the graph: language
+- Where it comes from: registry
+- Serves: Geometry written once
+
+### The people of the repository
+
+Package · `People`
+
+- Owner: ghalaax
+- Name: team
+- Version: 0.1.0
+- How it joins the graph: library
 - Where it comes from: registry
 - Serves: Geometry written once
 
@@ -40,7 +62,7 @@ Package · `StandardLibrary`
 
 - Owner: ghalaax
 - Name: std
-- Version: 0.19.0
+- Version: 0.21.0
 - How it joins the graph: library
 - Where it comes from: registry
 - Serves: Geometry written once
@@ -83,7 +105,7 @@ Release · `R0_2_0`
 
 ### The library of geometry
 
-Artefact · `TheLibrary` · **held**
+Artefact · `TheLibrary` · **unknown**
 
 - Owner: ghalaax
 - Path: src
@@ -91,7 +113,7 @@ Artefact · `TheLibrary` · **held**
 
 ### The next version
 
-Shipment · `NextVersion` · **held**
+Shipment · `NextVersion` · **unknown**
 
 - Owner: ghalaax
 - Target: version

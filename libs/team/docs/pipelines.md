@@ -6,7 +6,7 @@
 
 ## The next version
 
-> **The next version ships: every obligation holds.**
+> **The next version does not ship yet: 1 of 2 obligations holds.**
 
 For the target version.
 
@@ -14,8 +14,8 @@ Run elsewhere by [The pull requests' workflow](sdlc.md#PullRequestWorkflow), wri
 
 ```mermaid
 flowchart TB
-  n0["The people of the repository<br/><small>Artefact</small>"]:::held
-  n1["The next version<br/><small>Shipment</small>"]:::held
+  n0["The people of the repository<br/><small>Artefact</small>"]:::unknown
+  n1["The next version<br/><small>Shipment</small>"]:::unknown
   n1 -->|Ships| n0
   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
   classDef blocked fill:#fbf0d9,stroke:#9a6200,color:#17202a
@@ -28,10 +28,10 @@ flowchart TB
 
 |  | Stage | Step | Run by | Why | Status | Latest evidence |
 |---|---|---|---|---|---|---|
-| 1 | produce | [The people of the repository](sdlc.md#TheLibrary) · `src` | — | — | **held** | 20 November 2026 by claude  |
+| 1 | produce | [The people of the repository](sdlc.md#TheLibrary) · `src` | — | — | **unknown** | 20 November 2026 by claude  |
 | 2 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
-| 3 | prove | [The people of the repository](sdlc.md#TheLibrary) | — | the shipment | **held** | 20 November 2026 by claude  |
-| 4 | record | [The next version](sdlc.md#NextVersion) | — | — | **held** | 20 November 2026 by claude `evidence/shipments/NextVersion-2026-11-20-482774b3.json` |
+| 3 | prove | [The people of the repository](sdlc.md#TheLibrary) | — | the shipment | **unknown** | 20 November 2026 by claude  |
+| 4 | record | [The next version](sdlc.md#NextVersion) | — | — | **unknown** | 20 November 2026 by claude `evidence/shipments/NextVersion-2026-11-20-482774b3.json` |
 
 `trame ship NextVersion --by <name>`
 
@@ -39,15 +39,15 @@ flowchart TB
 
 ## The files that run it elsewhere
 
-> **The files that run it elsewhere ships: every obligation holds.**
+> **The files that run it elsewhere does not ship yet: 1 of 2 obligations holds.**
 
 For the target repository.
 
 ```mermaid
 flowchart TB
-  n0["The pull requests' workflow<br/><small>Artefact</small>"]:::held
+  n0["The pull requests' workflow<br/><small>Artefact</small>"]:::unknown
   n1["A workflow of GitHub Actions<br/><small>Syntax element</small>"]:::held
-  n2["The files that run it elsewhere<br/><small>Shipment</small>"]:::held
+  n2["The files that run it elsewhere<br/><small>Shipment</small>"]:::unknown
   n0 -->|Produced by| n1
   n2 -->|Ships| n0
   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
@@ -61,9 +61,9 @@ flowchart TB
 
 |  | Stage | Step | Run by | Why | Status | Latest evidence |
 |---|---|---|---|---|---|---|
-| 1 | produce | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) · `../../.github/workflows/team-pull-request.yml` | [A workflow of GitHub Actions](../.trame/ci/docs/github.md#GitHubWorkflow) | — | **held** | 20 November 2026 by claude  |
+| 1 | produce | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) · `../../.github/workflows/team-pull-request.yml` | [A workflow of GitHub Actions](../.trame/ci/docs/github.md#GitHubWorkflow) | — | **unknown** | 20 November 2026 by claude  |
 | 2 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
-| 3 | prove | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | — | the shipment | **held** | 20 November 2026 by claude  |
-| 4 | record | [The files that run it elsewhere](sdlc.md#RunnersWritten) | — | — | **held** | 20 November 2026 by claude `evidence/shipments/RunnersWritten-2026-11-20-30532db0.json` |
+| 3 | prove | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | — | the shipment | **unknown** | 20 November 2026 by claude  |
+| 4 | record | [The files that run it elsewhere](sdlc.md#RunnersWritten) | — | — | **unknown** | 20 November 2026 by claude `evidence/shipments/RunnersWritten-2026-11-20-30532db0.json` |
 
 `trame ship RunnersWritten --by <name>`

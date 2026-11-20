@@ -21,11 +21,11 @@ flowchart TB
     n7["Version 0.1.0<br/><small>Release</small>"]:::neutral
   end
   subgraph sdlc["Team · SDLC"]
-    n8["The next version<br/><small>Shipment</small>"]:::held
+    n8["The next version<br/><small>Shipment</small>"]:::unknown
     n9["How a pull request is checked on GitHub<br/><small>Decision</small>"]:::neutral
-    n10["The pull requests' workflow<br/><small>Artefact</small>"]:::held
-    n11["The files that run it elsewhere<br/><small>Shipment</small>"]:::held
-    n12["The people of the repository<br/><small>Artefact</small>"]:::held
+    n10["The pull requests' workflow<br/><small>Artefact</small>"]:::unknown
+    n11["The files that run it elsewhere<br/><small>Shipment</small>"]:::unknown
+    n12["The people of the repository<br/><small>Artefact</small>"]:::unknown
   end
   n0 -->|Serves| n6
   n1 -->|Serves| n6

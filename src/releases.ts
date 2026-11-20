@@ -1665,3 +1665,19 @@ export const G112 = release({
   archive: "3dbc458ad3bb8f3f",
   assembledBy: G111,
 })
+
+/**
+ * Generation 113
+ */
+export const G113 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g113",
+  date: "2026-11-20",
+  what: "C4, the actors: the language holds the kind actor (a person, a team, an agent, a machine; its handle, a team's members, its identities); the compiler checks each owner of the project's nodes against the actors the graph declares, a role its people; trame init declares whoever starts a project",
+  fingerprint: "a60ba2b9a14b062d",
+  language: "shared",
+  archive: "b0ead947077d2a4b",
+  differences: "differences.diff",
+  assembledBy: G112,
+})

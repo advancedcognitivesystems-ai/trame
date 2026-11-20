@@ -36,14 +36,14 @@ The writers of the files that run a shipment elsewhere (GitHub Actions), at the 
 The language the people are declared in, at the generation the library pins: reached by its path in Trame's repository.
 
 - Name: `trame`
-- Version: `112`
+- Version: `113`
 - Installed: Not installed in the project: its lockfile lists no trame
 - Vulnerabilities: No report yet: trame audit asks the registry
 - Latest version: No report yet: trame audit asks the registry
 - What it may do: not said: an implementation that imports it cannot promise anything
 - How it joins the graph: `language`
 - Where it comes from: `path`
-- Its path: `../../generations/g112`
+- Its path: `../../generations/g113`
 
 - Owner: trame
 - Serves: [Who acts is declared once](product.md#DeclaredOnce)
