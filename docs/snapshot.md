@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 19 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 30 October 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Trame · Appearance
 
@@ -1549,9 +1549,9 @@ Function · `GraphApi` · **held**
 Function · `Laws` · **held**
 
 - Owner: trame
-- Parameters: { kept: architecture.KeptResults, drivers: languages.Drivers, preludeApi: conventions.PreludeApi, specifiers: std/system.NodeModuleSpecifiers, layout: conventions.Layout, samples: product.SampleCount, claimSets: product.ClaimSets, generator: engine.Generator, owners: product.SampledOwners, sampled: product.SampledValues, iso: std/measures.Iso8601, references: engine.References, reading: architecture.FileReading, paths: architecture.Paths, project: engine.Project, graph: engine.GraphApi, prelude: architecture.Prelude, names: conventions.LanguageNames, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, messages: messages.LawMessages, declaration: (rule), answers: (rule), owned: (rule), evidence: (rule), same: (rule), orderFree: (rule), closed: (rule) }
+- Parameters: { kept: architecture.KeptResults, drivers: languages.Drivers, preludeApi: conventions.PreludeApi, specifiers: std/system.NodeModuleSpecifiers, layout: conventions.Layout, samples: product.SampleCount, claimSets: product.ClaimSets, generator: engine.Generator, owners: product.SampledOwners, sampled: product.SampledValues, iso: std/measures.Iso8601, references: engine.References, reading: architecture.FileReading, paths: architecture.Paths, project: engine.Project, graph: engine.GraphApi, prelude: architecture.Prelude, names: conventions.LanguageNames, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, messages: messages.LawMessages, declaration: (rule), answers: (rule), owned: (rule), coded: (rule), evidence: (rule), same: (rule), orderFree: (rule), closed: (rule) }
 - Serves: A specification that runs
-- Depends on: Results kept, Drivers, The prelude's public API, Project layout, Nodes drawn per kind, Claim sets, Pseudo-random generator, Owners drawn at random, Values drawn by the laws, References, File reading, Paths, Project, Graph, Prelude, The language's names, Messages of the laws, Complete declaration, Answers without crashing, A blocking hole has an owner, Without evidence, the status is unknown, Same input, same answer, The resolution does not depend on the order, The resolution returns only what it is given
+- Depends on: Results kept, Drivers, The prelude's public API, Project layout, Nodes drawn per kind, Claim sets, Pseudo-random generator, Owners drawn at random, Values drawn by the laws, References, File reading, Paths, Project, Graph, Prelude, The language's names, Messages of the laws, Complete declaration, Answers without crashing, A blocking hole has an owner, A hole says what is wrong by its code, Without evidence, the status is unknown, Same input, same answer, The resolution does not depend on the order, The resolution returns only what it is given
 
 ### Lock
 
@@ -2140,6 +2140,14 @@ Requirement · `CompleteViewDeclaration` · **held**
 - Owner: trame
 - Refines: Kinds and views that can be trusted
 
+### A hole says what is wrong by its code
+
+Requirement · `HoleHasCode` · **held**
+
+- Owner: trame
+- Parameters: { values: std/algebra.ValueTypes, counts: std/algebra.Counts }
+- Refines: Kinds and views that can be trusted
+
 ### Produces only the intermediate format
 
 Requirement · `IntermediateFormatOnly` · **held**
@@ -2205,6 +2213,13 @@ Acceptance criteria · `CompleteViewDeclarationCriteria` · **held**
 
 - Owner: trame
 - Accepts: Complete declaration of a view
+
+### Criteria of the code of a hole
+
+Acceptance criteria · `HoleHasCodeCriteria` · **held**
+
+- Owner: trame
+- Accepts: A hole says what is wrong by its code
 
 ### Criteria of the intermediate format
 
@@ -3526,14 +3541,14 @@ Function · `StoppedClock` · **held**
 
 ### System files, for reading
 
-Implementation · `DiskReading` · **held**
+Implementation · `DiskReading` · **unknown**
 
 - Owner: trame
 - Implements: File reading
 
 ### Trees on disk
 
-Implementation · `DiskTrees` · **held**
+Implementation · `DiskTrees` · **unknown**
 
 - Owner: trame
 - Parameters: { diff: std/text.UnifiedDiff, node: std/system.NodeCli, events: std/system.NodeEvents }
@@ -3541,7 +3556,7 @@ Implementation · `DiskTrees` · **held**
 
 ### System files, for writing
 
-Implementation · `DiskWriting` · **held**
+Implementation · `DiskWriting` · **unknown**
 
 - Owner: trame
 - Implements: File writing
@@ -3615,7 +3630,7 @@ Implementation · `NodeHashing` · **held**
 
 ### Node HTTP server
 
-Implementation · `NodeHttpServer` · **held**
+Implementation · `NodeHttpServer` · **unknown**
 
 - Owner: trame
 - Implements: HTTP server
@@ -3629,7 +3644,7 @@ Implementation · `NodePaths` · **held**
 
 ### Node process
 
-Implementation · `NodeProcess` · **held**
+Implementation · `NodeProcess` · **unknown**
 
 - Owner: trame
 - Parameters: { argv: std/system.NodeArguments, node: std/system.NodeCli, runner: platform.TypeScriptRunner }
@@ -3638,7 +3653,7 @@ Implementation · `NodeProcess` · **held**
 
 ### Node programs
 
-Implementation · `NodePrograms` · **held**
+Implementation · `NodePrograms` · **unknown**
 
 - Owner: trame
 - Parameters: { node: std/system.NodeCli, runner: platform.TypeScriptRunner, events: std/system.NodeEvents }
@@ -3647,7 +3662,7 @@ Implementation · `NodePrograms` · **held**
 
 ### Node terminal
 
-Implementation · `NodeTerminal` · **held**
+Implementation · `NodeTerminal` · **unknown**
 
 - Owner: trame
 - Parameters: { argv: std/system.NodeArguments, exitStatus: std/system.ExitStatus, events: std/system.NodeEvents, posix: std/system.Posix, messages: messages.PlatformMessages }
@@ -3672,7 +3687,7 @@ Implementation · `NoInstallsInTest` · **held**
 
 ### npm installs
 
-Implementation · `NpmInstall` · **held**
+Implementation · `NpmInstall` · **unknown**
 
 - Owner: trame
 - Parameters: { npm: std/system.NpmCli, node: std/system.NodeCli, events: std/system.NodeEvents, exitStatus: std/system.ExitStatus }
@@ -3680,7 +3695,7 @@ Implementation · `NpmInstall` · **held**
 
 ### npm's reports
 
-Implementation · `NpmReports` · **held**
+Implementation · `NpmReports` · **unknown**
 
 - Owner: trame
 - Parameters: { npm: std/system.NpmCli, values: std/algebra.ValueTypes, counts: std/algebra.Counts, punctuation: documents.Punctuation }
@@ -3728,7 +3743,7 @@ Implementation · `RunsInTheProcess` · **held**
 
 ### Runs kept on disk
 
-Implementation · `RunsOnDisk` · **held**
+Implementation · `RunsOnDisk` · **unknown**
 
 - Owner: trame
 - Parameters: { layout: conventions.Layout, files: platform.EngineFiles, engines: engine.EngineFingerprint, scope: engine.KeptRunsScope, encodings: std/system.NodeEncodings }
@@ -3737,7 +3752,7 @@ Implementation · `RunsOnDisk` · **held**
 
 ### System clock
 
-Implementation · `SystemClock` · **held**
+Implementation · `SystemClock` · **unknown**
 
 - Owner: trame
 - Parameters: { iso: std/measures.Iso8601, environment: conventions.TrameEnvironment, sequences: std/algebra.Sequences }
@@ -3844,7 +3859,7 @@ Technical choice · `InMemoryScenarios` · **held**
 
 ### On a machine, Node.js reads, writes and runs
 
-Technical choice · `NodeMachine` · **held**
+Technical choice · `NodeMachine` · **unknown**
 
 - Decided by: trame
 - Context: What changes the world (files written, processes, the terminal, the clock) is real only on a machine; the scenarios keep it in memory.
@@ -3904,7 +3919,7 @@ Technical choice · `RunsKeptInTheProcess` · **held**
 
 ### On a machine, runs are kept on disk
 
-Technical choice · `RunsKeptOnDisk` · **held**
+Technical choice · `RunsKeptOnDisk` · **unknown**
 
 - Decided by: trame
 - Context: The commands of a shipment and of an advance run as separate processes, each compiling the same graph: what one played, the next can find only on disk.
@@ -4157,7 +4172,7 @@ Architecture decision · `ShippedThroughTheGraph` · **unknown**
 
 ### A technology is chosen in one node
 
-Architecture decision · `TechnologyInOneNode` · **held**
+Architecture decision · `TechnologyInOneNode` · **unknown**
 
 - Decided by: trame
 - Context: Each implementation said which environments it served: the choice of a technology was spread over its realizations, nothing said why, and a test double or a repository over a database port had to be declared as if it touched the platform.
@@ -6326,7 +6341,7 @@ Role · `Maintainers`
 
 ### The candidate engine
 
-Artefact · `EngineCandidate` · **held**
+Artefact · `EngineCandidate` · **unknown**
 
 - Owner: trame
 - Path: out/local/trame-cli.ts
@@ -6334,7 +6349,7 @@ Artefact · `EngineCandidate` · **held**
 
 ### The graph page
 
-Artefact · `GraphPage` · **held**
+Artefact · `GraphPage` · **unknown**
 
 - Owner: trame
 - Path: trame-page.html
@@ -6344,7 +6359,7 @@ Artefact · `GraphPage` · **held**
 
 ### The page's program
 
-Artefact · `PageProgram` · **held**
+Artefact · `PageProgram` · **unknown**
 
 - Owner: trame
 - Path: out/browser/page-app.ts
@@ -6353,7 +6368,7 @@ Artefact · `PageProgram` · **held**
 
 ### The pull requests' workflow
 
-Artefact · `PullRequestWorkflow` · **held**
+Artefact · `PullRequestWorkflow` · **unknown**
 
 - Owner: trame
 - Path: .github/workflows/trame-pull-request.yml
@@ -6371,7 +6386,7 @@ Artefact · `TheEngine` · **unknown**
 
 ### The candidate plays the laws
 
-Check · `CandidateKeepsTheLaws` · **held**
+Check · `CandidateKeepsTheLaws` · **unknown**
 
 - Owner: trame
 - Checks: The candidate engine
@@ -6380,7 +6395,7 @@ Check · `CandidateKeepsTheLaws` · **held**
 
 ### The candidate runs on the machine
 
-Check · `CandidateRunsOnTheMachine` · **held**
+Check · `CandidateRunsOnTheMachine` · **unknown**
 
 - Owner: trame
 - Checks: The candidate engine
@@ -6400,7 +6415,7 @@ Check · `GraphPageOpens` · **unknown**
 
 ### The repository is read from GitHub
 
-Check · `RepositoryRead` · **held**
+Check · `RepositoryRead` · **unknown**
 
 - Owner: trame
 - Run by: Read the repository's settings
@@ -6429,7 +6444,7 @@ Shipment · `NextGeneration` · **unknown**
 
 ### The repository as decided
 
-Shipment · `RepositorySet` · **held**
+Shipment · `RepositorySet` · **unknown**
 
 - Owner: trame
 - Target: github
@@ -6440,7 +6455,7 @@ Shipment · `RepositorySet` · **held**
 
 ### The files that run it elsewhere
 
-Shipment · `RunnersWritten` · **held**
+Shipment · `RunnersWritten` · **unknown**
 
 - Owner: trame
 - Target: repository
@@ -6950,7 +6965,7 @@ Syntax element · `TreeBranch` · **held**
 Decision · `TerminalColumns`
 
 - Decided by: trame
-- Value: { gap: 2, minimumGap: 1, widths: { rank: 9, severity: 15, source: 22, name: 14 } }
+- Value: { gap: 2, minimumGap: 1, widths: { rank: 9, severity: 15, code: 30, source: 22, name: 14 } }
 
 ### Terminal text
 

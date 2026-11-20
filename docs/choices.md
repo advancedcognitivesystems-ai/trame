@@ -1,6 +1,6 @@
 # Technical choices
 
-*What answers each port in each environment on 19 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
+*What answers each port in each environment on 30 October 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
 
 > **24 technical choices for 48 ports, in 3 environments**
 
@@ -138,7 +138,7 @@ Consequences: Node's built-in modules appear only in these implementations; movi
 
 ### On a machine, Node.js reads, writes and runs
 
-`NodeMachine` · `src/platform.ts:428` · status: **held**
+`NodeMachine` · `src/platform.ts:428` · status: **unknown**
 
 On the machine where trame is started, Node.js reads and writes the files, copies and compares trees, starts processes and other engines, serves HTTP, shows the terminal and gives the time.
 
@@ -268,7 +268,7 @@ Consequences: A scenario is played again only when the code it wires or a file i
 
 ### On a machine, runs are kept on disk
 
-`RunsKeptOnDisk` · `src/platform.ts:495` · status: **held**
+`RunsKeptOnDisk` · `src/platform.ts:495` · status: **unknown**
 
 In [Local](architecture.md#Local):
 
@@ -513,7 +513,7 @@ Consequences: The amendment is a declaration in the module of the node it amends
 
 ### Documents in Markdown
 
-`DocumentsInMarkdown` · `src/rendering.ts:346` · status: **held**
+`DocumentsInMarkdown` · `src/rendering.ts:348` · status: **held**
 
 Trame's documents are written in Markdown: CommonMark, with GFM tables. They read as they are in a terminal or an editor, compare line by line in a review, and forges (GitHub, GitLab) as well as most editors display them formatted. HTML serves only for anchors and collapsible blocks.
 
@@ -544,7 +544,7 @@ Consequences: Another syntax for the files is a realization of "Syntax of the do
 
 ### Figures in Mermaid
 
-`FiguresInMermaid` · `src/rendering.ts:366` · status: **held**
+`FiguresInMermaid` · `src/rendering.ts:368` · status: **held**
 
 A figure (the layers of the graph, the tree of an impact, a timeline) is written in a document as a Mermaid diagram, in a "mermaid" block: GitHub, GitLab and most editors draw it, and it stays text, which a review compares line by line.
 
@@ -575,7 +575,7 @@ Consequences: The Markdown writer puts the lines of a figure in a code block, in
 
 ### The terminal in plain text
 
-`TerminalInText` · `src/rendering.ts:385` · status: **held**
+`TerminalInText` · `src/rendering.ts:387` · status: **held**
 
 What a command prints is text, with the punctuation of documents: indented, aligned in columns, without marks.
 
@@ -605,7 +605,7 @@ Consequences: A view printed in Markdown is the --format md option, which render
 
 ### Figures in the terminal, as text
 
-`TerminalFiguresAsText` · `src/rendering.ts:403` · status: **held**
+`TerminalFiguresAsText` · `src/rendering.ts:405` · status: **held**
 
 In the terminal, a tree is drawn with box-drawing characters, a path step by step, a timeline as dated lines.
 
@@ -634,7 +634,7 @@ Consequences: The terminal syntax indents the lines of a figure like any other c
 
 ### The page in HTML
 
-`PageInHtml` · `src/rendering.ts:419` · status: **held**
+`PageInHtml` · `src/rendering.ts:421` · status: **held**
 
 The engine writes each document in HTML for the page, with the renderer of every other format: the page has no renderer of its own, and shows what the engine wrote.
 
@@ -664,7 +664,7 @@ Consequences: The payload holds each document in Markdown, in text and in HTML; 
 
 ### The page's figures in SVG
 
-`PageFiguresDrawn` · `src/rendering.ts:438` · status: **held**
+`PageFiguresDrawn` · `src/rendering.ts:440` · status: **held**
 
 The engine draws the page's figures in SVG, beside their document: the page shows them as they are, and explores in the browser a graph too large to be read whole.
 
