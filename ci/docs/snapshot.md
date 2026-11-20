@@ -178,10 +178,10 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 111
+- Version: 112
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../generations/g111
+- Its path: ../generations/g112
 - Serves: A shipment runs elsewhere as it runs here
 
 ## Continuous integration · Product

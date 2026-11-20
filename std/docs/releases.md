@@ -246,6 +246,22 @@ A repository on GitHub as a project's graph decides it: its settings (the branch
 - Released by: trame
 - Serves: [A published value is cited, not copied](product.md#CitedNotCopied), [Known designs, named](product.md#KnownDesigns), [Ports of the platform, realized once](product.md#RealizedOnce), [Shared operations instead of literals](product.md#SharedOperations), [Rules applied, not written again](product.md#SharedRules), [Versions that hold](product.md#VersionsThatHold)
 
+<a id="R0_21_0"></a>
+
+### Version 0.21.0
+
+`R0_21_0` · `src/releases.ts:298`
+
+How a project judges harder than the language, never softer (C4): the port Hardening, the structure Raising and its laws, the strategies AsTheLanguageSays and EveryWarning chosen by a binding where a project's build evaluates
+
+- Version: `0.21.0`
+- Released on: 20 November 2026
+- Fingerprint: `11af7c0453654031`
+- Language: the repository's, shared
+
+- Released by: trame
+- Serves: [A published value is cited, not copied](product.md#CitedNotCopied), [Known designs, named](product.md#KnownDesigns), [Ports of the platform, realized once](product.md#RealizedOnce), [Shared operations instead of literals](product.md#SharedOperations), [Rules applied, not written again](product.md#SharedRules), [Versions that hold](product.md#VersionsThatHold)
+
 <a id="R0_3_0"></a>
 
 ### Version 0.3.0

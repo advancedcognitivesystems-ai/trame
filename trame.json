@@ -9,9 +9,9 @@
       "version": "0.7.0"
     },
     "std": {
-      "at": "std/releases/0.20.0",
-      "version": "0.20.0"
+      "at": "std/releases/0.21.0",
+      "version": "0.21.0"
     }
   },
-  "engine": "generations/g111"
+  "engine": "generations/g112"
 }

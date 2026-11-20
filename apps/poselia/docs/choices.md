@@ -30,7 +30,7 @@
 
 | Pattern | Status | Followed by |
 |---|---|---|
-| [Strategy](../.trame/std/docs/patterns.md#Strategy) | **held** | [Content carried by the app](app.md#ContentCarried), [The app in memory](scenarios.md#InMemory), [The SDLC in memory](sdlc.md#SdlcInMemory), [Kept in the preferences of the device](settings.md#KeptOnTheDevice), [Documents, in memory](../.trame/data/docs/scenarios.md#InMemory), [Tables seeded, in memory](../.trame/data/docs/scenarios.md#SeededForScenarios), [PostgreSQL's dialect, read](../.trame/data/docs/scenarios.md#PostgresForScenarios), [In memory](../.trame/std/docs/scenarios.md#InMemory) |
+| [Strategy](../.trame/std/docs/patterns.md#Strategy) | **held** | [Content carried by the app](app.md#ContentCarried), [The app in memory](scenarios.md#InMemory), [The SDLC in memory](sdlc.md#SdlcInMemory), [Kept in the preferences of the device](settings.md#KeptOnTheDevice), [Documents, in memory](../.trame/data/docs/scenarios.md#InMemory), [Tables seeded, in memory](../.trame/data/docs/scenarios.md#SeededForScenarios), [PostgreSQL's dialect, read](../.trame/data/docs/scenarios.md#PostgresForScenarios), [In memory](../.trame/std/docs/scenarios.md#InMemory), [Judged as the language says](../.trame/std/docs/scenarios.md#LanguageJudgment), [Judged strictly](../.trame/std/docs/scenarios.md#StrictJudgment) |
 | [Adapter](../.trame/std/docs/patterns.md#Adapter) | **held** | [The browser's realizations](app.md#InTheBrowser), [On the machine](sdlc.md#OnTheMachine), [SQLite, in memory](../.trame/data/docs/scenarios.md#SqliteForScenarios) |
 | [Abstract Factory](../.trame/std/docs/patterns.md#AbstractFactory) | **held** | [The app in memory](scenarios.md#InMemory) |
 

@@ -1470,9 +1470,9 @@ Function · `CompilationApi` · **held**
 Function · `Compiler` · **held**
 
 - Owner: trame
-- Parameters: { encodings: std/system.NodeEncodings, specifiers: std/system.NodeModuleSpecifiers, values: std/algebra.ValueTypes, layout: conventions.Layout, severityOrder: (rule), cycles: engine.Cycles, references: engine.References, positions: engine.Positions, loader: architecture.ModuleLoader, reading: architecture.FileReading, paths: architecture.Paths, analysis: engine.StaticAnalysis, project: engine.Project, graph: engine.GraphApi, wiring: engine.Wiring, drivers: languages.Drivers, prelude: architecture.Prelude, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, messages: messages.CompilerMessages, fingerprints: engine.Fingerprints, signatures: architecture.Signatures, engines: engine.EngineFingerprint, runs: architecture.KeptRuns, platform: std/effects.PlatformEffects, names: conventions.LanguageNames, packages: std/tooling.PackageSources }
+- Parameters: { encodings: std/system.NodeEncodings, specifiers: std/system.NodeModuleSpecifiers, values: std/algebra.ValueTypes, layout: conventions.Layout, severityOrder: (rule), cycles: engine.Cycles, references: engine.References, positions: engine.Positions, loader: architecture.ModuleLoader, reading: architecture.FileReading, paths: architecture.Paths, analysis: engine.StaticAnalysis, project: engine.Project, graph: engine.GraphApi, wiring: engine.Wiring, drivers: languages.Drivers, prelude: architecture.Prelude, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, messages: messages.CompilerMessages, fingerprints: engine.Fingerprints, signatures: architecture.Signatures, engines: engine.EngineFingerprint, runs: architecture.KeptRuns, platform: std/effects.PlatformEffects, names: conventions.LanguageNames, packages: std/tooling.PackageSources, judged: engine.JudgedHarder }
 - Serves: A specification that runs
-- Depends on: Project layout, Sort problems by severity, Cycles, References, Positions, Module loader, File reading, Paths, Static reading, Project, Graph, Wiring, Drivers, Prelude, Messages of the compiler, Fingerprints, Signatures, The fingerprint of an engine, Runs kept, The language's names
+- Depends on: Project layout, Sort problems by severity, Cycles, References, Positions, Module loader, File reading, Paths, Static reading, Project, Graph, Wiring, Drivers, Prelude, Messages of the compiler, Fingerprints, Signatures, The fingerprint of an engine, Runs kept, The language's names, Judged harder
 
 ### Cycles
 
@@ -1543,6 +1543,15 @@ Function · `GraphApi` · **held**
 - Parameters: { prelude: architecture.Prelude, syntax: conventions.ReferenceSyntax, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, messages: messages.CompilerMessages, values: std/algebra.ValueTypes, lists: messages.Lists, dates: messages.Dates, punctuation: documents.Punctuation, positions: engine.Positions, references: engine.References, iso: std/measures.Iso8601, file: std/text.TextFile, settings: documents.LanguageSettings, generator: engine.Generator, structureDraws: product.StructureDraws, layout: conventions.Layout, typescript: typescript.TypeScript, versions: packages.VersionOrder, units: documents.Units, visible: documents.VisibleText, fingerprints: engine.Fingerprints }
 - Serves: A specification that runs
 - Depends on: Prelude, Trame references, Messages of the compiler, Lists, Dates, Punctuation of documents, Positions, References, Settings of the documents, Pseudo-random generator, Values drawn by the laws of a structure, Project layout, TypeScript, Order of versions, Values with their units, Visible text, Fingerprints
+
+### Judged harder
+
+Function · `JudgedHarder` · **held**
+
+- Owner: trame
+- Parameters: { severityOrder: (rule), messages: messages.CompilerMessages }
+- Serves: A specification that runs
+- Depends on: Sort problems by severity, Messages of the compiler
 
 ### Laws
 
@@ -3030,10 +3039,10 @@ Package · `StandardLibrary`
 
 - Owner: trame
 - Name: std
-- Version: 0.20.0
+- Version: 0.21.0
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: std/releases/0.20.0
+- Its path: std/releases/0.21.0
 - Serves: A single source of truth
 
 ### tsx
@@ -4542,6 +4551,20 @@ Release · `G111`
 - Accepted differences: differences.diff
 - Releases: Trame on the command line
 - Assembled by: Generation 110
+
+### Generation 112
+
+Release · `G112`
+
+- Released by: trame
+- Version: g112
+- Released on: 2026-11-20
+- What changes: C4, the judgment: a project judges harder than the language, never softer; the engine asks the realization of std's Hardening a binding of the project chooses where its build evaluates (JudgedHarder), keeps the harder severity with the one the language gave, and says when a way would lower one, answers no severity or fails
+- Fingerprint: 46bcf9ff280e1d8a
+- Language: shared
+- Language archived: 3dbc458ad3bb8f3f
+- Releases: Trame on the command line
+- Assembled by: Generation 111
 
 ### Generation 12
 
@@ -6131,7 +6154,7 @@ Decision · `DocumentWordsData`
 Decision · `ExampleShape`
 
 - Decided by: trame
-- Value: { scenarios: 5 }
+- Value: { scenarios: 6 }
 
 ### Expected differences on the example
 
@@ -6139,6 +6162,13 @@ Decision · `ExpectedDifferences`
 
 - Decided by: trame
 - Value: {  }
+
+### What the scenario of the judgment answers
+
+Decision · `JudgingData`
+
+- Decided by: trame
+- Value: { noSeverity: fatal, failure: The way of judging broke }
 
 ### What the engine's reckoning is checked with
 
@@ -6187,7 +6217,7 @@ Scenario · `DocumentWords` · **held**
 - In: Test
 - Depends on: Dates, Lists, Values with their units, Visible text, Punctuation of documents, Language, Order of versions, How the documents write what they show, checked, Messages of the scenarios
 
-### The engine reckons as it says
+### EngineReckons
 
 Scenario · `EngineReckons` · **held**
 
@@ -6196,6 +6226,16 @@ Scenario · `EngineReckons` · **held**
 - Verifies: Cycles, Pseudo-random generator, Fingerprints, References, Positions
 - In: Test
 - Depends on: Cycles, Pseudo-random generator, Fingerprints, References, Positions, What the engine's reckoning is checked with, Messages of the scenarios
+
+### A project judges harder, never softer
+
+Scenario · `JudgingHarder` · **held**
+
+- Owner: trame
+- Parameters: { judged: engine.JudgedHarder, data: scenarios.JudgingData, messages: messages.ScenarioMessages }
+- Verifies: Judged harder
+- In: Test
+- Depends on: Judged harder, What the scenario of the judgment answers, Messages of the scenarios
 
 ### The laws of the kinds hold
 
@@ -6321,7 +6361,7 @@ Technical choice · `SdlcInMemory` · **held**
 
 ### The SDLC on the machine
 
-Technical choice · `SdlcOnTheMachine` · **unknown**
+Technical choice · `SdlcOnTheMachine` · **held**
 
 - Decided by: trame
 - Context: The graph page must be opened as a person opens it: the file exported, in a real browser; the repository is set and read by GitHub's command line, with the token of whoever runs it.
@@ -6430,7 +6470,7 @@ Check · `GraphPageOpens` · **held**
 
 ### The repository is read from GitHub
 
-Check · `RepositoryRead` · **unknown**
+Check · `RepositoryRead` · **held**
 
 - Owner: trame
 - Run by: Read the repository's settings
@@ -6459,7 +6499,7 @@ Shipment · `NextGeneration` · **held**
 
 ### The repository as decided
 
-Shipment · `RepositorySet` · **unknown**
+Shipment · `RepositorySet` · **held**
 
 - Owner: trame
 - Target: github

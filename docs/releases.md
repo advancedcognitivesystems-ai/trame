@@ -317,6 +317,27 @@ Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Ge
 - Released by: trame
 - Releases: [Trame on the command line](architecture.md#TrameCli)
 - Assembled by: [Generation 110](#G110)
+- Assembled: [Generation 112](#G112)
+
+<a id="G112"></a>
+
+### Generation 112
+
+`G112` · `src/releases.ts:1657`
+
+C4, the judgment: a project judges harder than the language, never softer; the engine asks the realization of std's Hardening a binding of the project chooses where its build evaluates (JudgedHarder), keeps the harder severity with the one the language gave, and says when a way would lower one, answers no severity or fails
+
+Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Generation 111](#G111).
+
+- Version: `g112`
+- Released on: 20 November 2026
+- Fingerprint: `46bcf9ff280e1d8a`
+- Language: the repository's, shared
+- Language archived: `3dbc458ad3bb8f3f`
+
+- Released by: trame
+- Releases: [Trame on the command line](architecture.md#TrameCli)
+- Assembled by: [Generation 111](#G111)
 
 <a id="G12"></a>
 

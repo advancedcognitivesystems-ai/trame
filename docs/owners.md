@@ -4,18 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| Trame's maintainers | 0 | 0 | 1 | 0 |
-| trame | 0 | 0 | 5 | 707 |
-
-<a id="Trame's maintainers"></a>
-
-## Trame's maintainers
-
-- Held by: ghalaax and claude
-
-| Severity | Code | What | Where | Owner | Consequence |
-|---|---|---|---|---|---|
-| warning | `check-stale` | Checked on another build of its artefacts, by another version of its program or another engine: to check again | [The repository is read from GitHub](sdlc.md#RepositoryRead) | Trame's maintainers |  |
+| trame | 0 | 0 | 4 | 711 |
 
 <a id="trame"></a>
 
@@ -25,7 +14,6 @@
 |---|---|---|---|---|---|
 | warning | `shipment-awaits` | To ship: The engine is unknown | [Into the main branch](sdlc.md#IntoMain) | trame |  |
 | warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | trame |  |
-| warning | `shipment-awaits` | To ship: The repository is read from GitHub is unknown | [The repository as decided](sdlc.md#RepositorySet) | trame |  |
 | warning | `shipment-awaits` | To ship: The pull requests' workflow is unknown | [The files that run it elsewhere](sdlc.md#RunnersWritten) | trame |  |
 | warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The engine](sdlc.md#TheEngine) | trame |  |
 
@@ -207,6 +195,7 @@
 | [Fingerprints](engine.md#Fingerprints) | Function | **held** |
 | [Pseudo-random generator](engine.md#Generator) | Function | **held** |
 | [Graph](engine.md#GraphApi) | Function | **held** |
+| [Judged harder](engine.md#JudgedHarder) | Function | **held** |
 | [What tells a project's runs apart](engine.md#KeptRunsScope) | Decision |  |
 | [Laws](engine.md#Laws) | Function | **held** |
 | [The laws are requirements](engine.md#LawsAreRequirements) | Architecture decision | **held** |
@@ -498,6 +487,7 @@
 | [Generation 11](releases.md#G11) | Release |  |
 | [Generation 110](releases.md#G110) | Release |  |
 | [Generation 111](releases.md#G111) | Release |  |
+| [Generation 112](releases.md#G112) | Release |  |
 | [Generation 12](releases.md#G12) | Release |  |
 | [Generation 13](releases.md#G13) | Release |  |
 | [Generation 14](releases.md#G14) | Release |  |
@@ -625,9 +615,11 @@
 | [The described engine compiles the example](scenarios.md#CompileExample) | Scenario | **held** |
 | [The documents write in the decided language](scenarios.md#DocumentWords) | Scenario | **held** |
 | [How the documents write what they show, checked](scenarios.md#DocumentWordsData) | Decision |  |
-| [The engine reckons as it says](scenarios.md#EngineReckons) | Scenario | **held** |
+| [EngineReckons](scenarios.md#EngineReckons) | Scenario | **held** |
 | [Shape of the example](scenarios.md#ExampleShape) | Decision |  |
 | [Expected differences on the example](scenarios.md#ExpectedDifferences) | Decision |  |
+| [What the scenario of the judgment answers](scenarios.md#JudgingData) | Decision |  |
+| [A project judges harder, never softer](scenarios.md#JudgingHarder) | Scenario | **held** |
 | [The laws of the kinds hold](scenarios.md#KindLaws) | Scenario | **held** |
 | [What the engine's reckoning is checked with](scenarios.md#ReckoningData) | Decision |  |
 | [Set the repository's settings](sdlc.md#ApplyTheRepositorySettings) | Entry point | **held** |
@@ -658,12 +650,12 @@
 | [How a pull request is checked on GitHub](sdlc.md#PullRequestsOnGitHub) | Decision |  |
 | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **unknown** |
 | [Read the repository's settings](sdlc.md#ReadTheRepositorySettings) | Entry point | **held** |
-| [The repository is read from GitHub](sdlc.md#RepositoryRead) | Check | **unknown** |
+| [The repository is read from GitHub](sdlc.md#RepositoryRead) | Check | **held** |
 | [The repository left by hand, in the scenario](sdlc.md#RepositoryScenarioData) | Decision |  |
-| [The repository as decided](sdlc.md#RepositorySet) | Shipment | **unknown** |
+| [The repository as decided](sdlc.md#RepositorySet) | Shipment | **held** |
 | [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **unknown** |
 | [The SDLC in memory](sdlc.md#SdlcInMemory) | Technical choice | **held** |
-| [The SDLC on the machine](sdlc.md#SdlcOnTheMachine) | Technical choice | **unknown** |
+| [The SDLC on the machine](sdlc.md#SdlcOnTheMachine) | Technical choice | **held** |
 | [What the programs of Trame's SDLC say](sdlc.md#SdlcWords) | Message catalog |  |
 | [How the repository is set](sdlc.md#SettingsMode) | Policy |  |
 | [The repository is set as the graph decides](sdlc.md#SettingTheRepository) | Scenario | **held** |

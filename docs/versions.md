@@ -2,7 +2,7 @@
 
 *The releases of the components on 20 November 2026, newest first. A project runs the release its configuration pins.*
 
-> **111 releases of 1 component; 95 releases on a language of their own**
+> **112 releases of 1 component; 95 releases on a language of their own**
 
 ## Trame on the command line
 
@@ -10,6 +10,7 @@ Each release, newest first: what changed, the release that assembled it, and whe
 
 | Release | Released on | What changes | Assembled by | Language |
 |---|---|---|---|---|
+| [Generation 112](releases.md#G112) | 20 November 2026 | C4, the judgment: a project judges harder than the language, never softer; the engine asks the realization of std's Hardening a binding of the project chooses where its build evaluates (JudgedHarder), keeps the harder severity with the one the language gave, and says when a way would lower one, answers no severity or fails | [Generation 111](releases.md#G111) | shared |
 | [Generation 111](releases.md#G111) | 20 November 2026 | C4, the codes: every problem the language and the engine raise has its code (HoleCode, a vocabulary of the prelude), carried by the holes, the diagnostics and the issues, shown in the documents and the terminal; a law plays that every hole has one | [Generation 110](releases.md#G110) | shared |
 | [Generation 110](releases.md#G110) | 19 November 2026 | D1: the run plan says the nodes a file written comes from (the artefact, the decision of its settings, the file that declares them) | [Generation 109](releases.md#G109) | shared |
 | [Generation 109](releases.md#G109) | 19 November 2026 | D1: the run plan carries the review of a branch, written in Markdown, which a place that reviews a pull request writes against the lock of the branch it merges into | [Generation 108](releases.md#G108) | shared |

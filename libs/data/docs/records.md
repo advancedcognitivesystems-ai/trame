@@ -40,6 +40,7 @@ The records a table holds when it is created (a service's first reservations, in
 | [PostgreSQL's statements](scenarios.md#PostgresStatementsOnly) | none | — |
 | [Seeded tables](scenarios.md#SeededTables) | [The records its entity starts with](#SeedOfTheEntity) | [Tables seeded, in memory](scenarios.md#SeededForScenarios) |
 | [Test](scenarios.md#Test) | [No records to start with](#StartEmpty) | [Documents, in memory](scenarios.md#InMemory) |
+| [Strict](../.trame/std/docs/scenarios.md#Strict) | none | — |
 | [Test](../.trame/std/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
@@ -68,6 +69,7 @@ Where the entities a product keeps as many live: a reservation found by its key,
 | [PostgreSQL's statements](scenarios.md#PostgresStatementsOnly) | none | — |
 | [Seeded tables](scenarios.md#SeededTables) | [Records in SQL](#RecordsInSql) | [Tables seeded, in memory](scenarios.md#SeededForScenarios) |
 | [Test](scenarios.md#Test) | [Records in SQL](#RecordsInSql) | [Documents, in memory](scenarios.md#InMemory) |
+| [Strict](../.trame/std/docs/scenarios.md#Strict) | none | — |
 | [Test](../.trame/std/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
@@ -94,6 +96,7 @@ Where the tables of the entities live.
 | [PostgreSQL's statements](scenarios.md#PostgresStatementsOnly) | none | — |
 | [Seeded tables](scenarios.md#SeededTables) | [SQLite in memory](#SqliteInMemory) | [SQLite, in memory](scenarios.md#SqliteForScenarios) |
 | [Test](scenarios.md#Test) | [SQLite in memory](#SqliteInMemory) | [SQLite, in memory](scenarios.md#SqliteForScenarios) |
+| [Strict](../.trame/std/docs/scenarios.md#Strict) | none | — |
 | [Test](../.trame/std/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
@@ -114,6 +117,7 @@ The statements a table of an entity needs, written for one database.
 | [PostgreSQL's statements](scenarios.md#PostgresStatementsOnly) | [PostgreSQL's tables](#PostgresTables) | [PostgreSQL's dialect, read](scenarios.md#PostgresForScenarios) |
 | [Seeded tables](scenarios.md#SeededTables) | [SQLite's tables](#SqliteTables) | [Tables seeded, in memory](scenarios.md#SeededForScenarios) |
 | [Test](scenarios.md#Test) | [SQLite's tables](#SqliteTables) | [Documents, in memory](scenarios.md#InMemory) |
+| [Strict](../.trame/std/docs/scenarios.md#Strict) | none | — |
 | [Test](../.trame/std/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame

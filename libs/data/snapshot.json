@@ -144,9 +144,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "111",
+        "version": "112",
         "joins": "language",
-        "at": "../../generations/g111"
+        "at": "../../generations/g112"
       }
     },
     {
@@ -156,9 +156,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.20.0",
+        "version": "0.21.0",
         "joins": "library",
-        "at": "../../std/releases/0.20.0"
+        "at": "../../std/releases/0.21.0"
       }
     },
     {

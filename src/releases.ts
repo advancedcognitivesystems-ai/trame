@@ -1650,3 +1650,18 @@ export const G111 = release({
   differences: "differences.diff",
   assembledBy: G110,
 })
+
+/**
+ * Generation 112
+ */
+export const G112 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g112",
+  date: "2026-11-20",
+  what: "C4, the judgment: a project judges harder than the language, never softer; the engine asks the realization of std's Hardening a binding of the project chooses where its build evaluates (JudgedHarder), keeps the harder severity with the one the language gave, and says when a way would lower one, answers no severity or fails",
+  fingerprint: "46bcf9ff280e1d8a",
+  language: "shared",
+  archive: "3dbc458ad3bb8f3f",
+  assembledBy: G111,
+})

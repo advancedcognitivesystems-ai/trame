@@ -549,10 +549,10 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 111
+- Version: 112
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../generations/g111
+- Its path: ../generations/g112
 - Serves: Ports of the platform, realized once
 
 ## Standard library · Design patterns
@@ -988,6 +988,18 @@ Release · `R0_20_0`
 - Released on: 2026-11-19
 - What changes: A repository on GitHub as a project's graph decides it: its settings (the branch, the checks, up to date, the approvals, the merge method, the automatic merge, merged branches deleted, the pages), the port RepositoryApi that applies and reads them back, realized by GitHub's command line and in memory; RepositoryCompared says the parts a repository does not hold; GitHub's REST API cited; moved from ci, where a writer of a script set them
 - Fingerprint: f10b88a0025a0d32
+- Language: shared
+- Serves: A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again, Versions that hold
+
+### Version 0.21.0
+
+Release · `R0_21_0`
+
+- Released by: trame
+- Version: 0.21.0
+- Released on: 2026-11-20
+- What changes: How a project judges harder than the language, never softer (C4): the port Hardening, the structure Raising and its laws, the strategies AsTheLanguageSays and EveryWarning chosen by a binding where a project's build evaluates
+- Fingerprint: 11af7c0453654031
 - Language: shared
 - Serves: A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again, Versions that hold
 

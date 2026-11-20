@@ -63,6 +63,7 @@ Where the entities a product keeps whole live, each under its name: a person's b
 | [PostgreSQL's statements](scenarios.md#PostgresStatementsOnly) | none | — |
 | [Seeded tables](scenarios.md#SeededTables) | none | — |
 | [Test](scenarios.md#Test) | [Documents kept in the preferences](#DocumentsInPreferences) | [Documents, in memory](scenarios.md#InMemory) |
+| [Strict](../.trame/std/docs/scenarios.md#Strict) | none | — |
 | [Test](../.trame/std/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame

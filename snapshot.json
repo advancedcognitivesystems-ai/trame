@@ -4028,7 +4028,8 @@
           "runs": "architecture.KeptRuns",
           "platform": "std/effects.PlatformEffects",
           "names": "conventions.LanguageNames",
-          "packages": "std/tooling.PackageSources"
+          "packages": "std/tooling.PackageSources",
+          "judged": "engine.JudgedHarder"
         },
         "body": {
           "file": "./code/engine/compiler.ts",
@@ -4284,6 +4285,23 @@
         },
         "body": {
           "file": "./code/engine/graph.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
+      "id": "engine.JudgedHarder",
+      "kind": "function",
+      "title": "Judged harder",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "severityOrder": "(function)",
+          "messages": "messages.CompilerMessages"
+        },
+        "body": {
+          "file": "./code/engine/judged-harder.ts",
           "language": "typescript"
         }
       }
@@ -8236,10 +8254,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.20.0",
+        "version": "0.21.0",
         "joins": "library",
         "from": "path",
-        "at": "std/releases/0.20.0"
+        "at": "std/releases/0.21.0"
       }
     },
     {
@@ -11213,6 +11231,20 @@
       }
     },
     {
+      "id": "releases.G112",
+      "kind": "release",
+      "title": "Generation 112",
+      "fields": {
+        "owner": "trame",
+        "version": "g112",
+        "date": "2026-11-20",
+        "what": "C4, the judgment: a project judges harder than the language, never softer; the engine asks the realization of std's Hardening a binding of the project chooses where its build evaluates (JudgedHarder), keeps the harder severity with the one the language gave, and says when a way would lower one, answers no severity or fails",
+        "fingerprint": "46bcf9ff280e1d8a",
+        "language": "shared",
+        "archive": "3dbc458ad3bb8f3f"
+      }
+    },
+    {
       "id": "releases.G12",
       "kind": "release",
       "title": "Generation 12",
@@ -13195,7 +13227,6 @@
     {
       "id": "scenarios.EngineReckons",
       "kind": "scenario",
-      "title": "The engine reckons as it says",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -13218,7 +13249,7 @@
       "fields": {
         "owner": "trame",
         "value": {
-          "scenarios": 5
+          "scenarios": 6
         }
       }
     },
@@ -13229,6 +13260,33 @@
       "fields": {
         "owner": "trame",
         "value": {}
+      }
+    },
+    {
+      "id": "scenarios.JudgingData",
+      "kind": "decision",
+      "title": "What the scenario of the judgment answers",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "noSeverity": "fatal",
+          "failure": "The way of judging broke"
+        }
+      }
+    },
+    {
+      "id": "scenarios.JudgingHarder",
+      "kind": "scenario",
+      "title": "A project judges harder, never softer",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "judged": "engine.JudgedHarder",
+          "data": "scenarios.JudgingData",
+          "messages": "messages.ScenarioMessages"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -13758,7 +13816,7 @@
       "id": "sdlc.RepositoryRead",
       "kind": "check",
       "title": "The repository is read from GitHub",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame"
       }
@@ -13791,7 +13849,7 @@
       "id": "sdlc.RepositorySet",
       "kind": "shipment",
       "title": "The repository as decided",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "github"
@@ -13821,7 +13879,7 @@
       "id": "sdlc.SdlcOnTheMachine",
       "kind": "binding",
       "title": "The SDLC on the machine",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "The graph page must be opened as a person opens it: the file exported, in a real browser; the repository is set and read by GitHub's command line, with the token of whoever runs it."
@@ -21053,6 +21111,11 @@
       "kind": "deps"
     },
     {
+      "from": "engine.Compiler",
+      "to": "engine.JudgedHarder",
+      "kind": "deps"
+    },
+    {
       "from": "engine.Cycles",
       "to": "product.ExecutableSpecification",
       "kind": "serves"
@@ -21345,6 +21408,21 @@
     {
       "from": "engine.GraphApi",
       "to": "engine.Fingerprints",
+      "kind": "deps"
+    },
+    {
+      "from": "engine.JudgedHarder",
+      "to": "product.ExecutableSpecification",
+      "kind": "serves"
+    },
+    {
+      "from": "engine.JudgedHarder",
+      "to": "product.SeverityOrder",
+      "kind": "deps"
+    },
+    {
+      "from": "engine.JudgedHarder",
+      "to": "messages.CompilerMessages",
       "kind": "deps"
     },
     {
@@ -25653,6 +25731,16 @@
       "kind": "assembledBy"
     },
     {
+      "from": "releases.G112",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G112",
+      "to": "releases.G111",
+      "kind": "assembledBy"
+    },
+    {
       "from": "releases.G12",
       "to": "architecture.TrameCli",
       "kind": "component"
@@ -27769,6 +27857,31 @@
     },
     {
       "from": "scenarios.EngineReckons",
+      "to": "messages.ScenarioMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.JudgingHarder",
+      "to": "engine.JudgedHarder",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.JudgingHarder",
+      "to": "architecture.Test",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.JudgingHarder",
+      "to": "engine.JudgedHarder",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.JudgingHarder",
+      "to": "scenarios.JudgingData",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.JudgingHarder",
       "to": "messages.ScenarioMessages",
       "kind": "deps"
     },

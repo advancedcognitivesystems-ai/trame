@@ -2468,10 +2468,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "111",
+        "version": "112",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g111"
+        "at": "../generations/g112"
       },
       "diagnostics": []
     },
@@ -3127,6 +3127,21 @@
         "date": "2026-11-19",
         "what": "A repository on GitHub as a project's graph decides it: its settings (the branch, the checks, up to date, the approvals, the merge method, the automatic merge, merged branches deleted, the pages), the port RepositoryApi that applies and reads them back, realized by GitHub's command line and in memory; RepositoryCompared says the parts a repository does not hold; GitHub's REST API cited; moved from ci, where a writer of a script set them",
         "fingerprint": "f10b88a0025a0d32",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "releases.R0_21_0",
+      "kind": "release",
+      "title": "Version 0.21.0",
+      "source": "src/releases.ts:298",
+      "fields": {
+        "owner": "trame",
+        "version": "0.21.0",
+        "date": "2026-11-20",
+        "what": "How a project judges harder than the language, never softer (C4): the port Hardening, the structure Raising and its laws, the strategies AsTheLanguageSays and EveryWarning chosen by a binding where a project's build evaluates",
+        "fingerprint": "11af7c0453654031",
         "language": "shared"
       },
       "diagnostics": []
@@ -4659,7 +4674,7 @@
       },
       "result": {
         "path": "src",
-        "code": "c1ad0cab"
+        "code": "7cacc20b"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -6766,6 +6781,36 @@
     },
     {
       "from": "releases.R0_20_0",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_21_0",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_21_0",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_21_0",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_21_0",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_21_0",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_21_0",
       "to": "product.VersionsThatHold",
       "kind": "serves"
     },

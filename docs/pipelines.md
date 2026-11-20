@@ -6,7 +6,7 @@
 
 ## Into the main branch
 
-> **Into the main branch does not ship yet: 41 of 42 obligations hold.**
+> **Into the main branch does not ship yet: 42 of 43 obligations hold.**
 
 For the target main; its programs are assembled for [Local](architecture.md#Local).
 
@@ -54,14 +54,15 @@ flowchart TB
   n37["A body amended runs amended<br/><small>Scenario</small>"]:::held
   n38["A library carries kinds<br/><small>Scenario</small>"]:::held
   n39["The described engine compiles the example<br/><small>Scenario</small>"]:::held
-  n40["The engine reckons as it says<br/><small>Scenario</small>"]:::held
-  n41["The laws of the kinds hold<br/><small>Scenario</small>"]:::held
-  n42["The page of the graph<br/><small>Scenario</small>"]:::held
-  n43["The command line<br/><small>Scenario</small>"]:::held
-  n44["A body is read and checked<br/><small>Scenario</small>"]:::held
-  n45["The repository is set as the graph decides<br/><small>Scenario</small>"]:::held
-  n46["The graph page is opened as a person would<br/><small>Scenario</small>"]:::held
-  n47["Into the main branch<br/><small>Shipment</small>"]:::unknown
+  n40["EngineReckons<br/><small>Scenario</small>"]:::held
+  n41["A project judges harder, never softer<br/><small>Scenario</small>"]:::held
+  n42["The laws of the kinds hold<br/><small>Scenario</small>"]:::held
+  n43["The page of the graph<br/><small>Scenario</small>"]:::held
+  n44["The command line<br/><small>Scenario</small>"]:::held
+  n45["A body is read and checked<br/><small>Scenario</small>"]:::held
+  n46["The repository is set as the graph decides<br/><small>Scenario</small>"]:::held
+  n47["The graph page is opened as a person would<br/><small>Scenario</small>"]:::held
+  n48["Into the main branch<br/><small>Shipment</small>"]:::unknown
   n19 -->|Verifies| n8
   n19 -->|Depends on| n8
   n21 -->|Verifies| n4
@@ -74,10 +75,10 @@ flowchart TB
   n3 -->|Produced by| n4
   n5 -->|Checks| n3
   n5 -->|Run by| n6
-  n47 -->|Ships| n2
-  n46 -->|Verifies| n6
-  n46 -->|Depends on| n6
-  n46 -->|Depends on| n3
+  n48 -->|Ships| n2
+  n47 -->|Verifies| n6
+  n47 -->|Depends on| n6
+  n47 -->|Depends on| n3
   n6 -->|Depends on| n3
   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
   classDef blocked fill:#fbf0d9,stroke:#9a6200,color:#17202a
@@ -129,15 +130,16 @@ flowchart TB
 | 37 | prove | [A body amended runs amended](scenarios.md#AmendedBodiesRun) | — | [The engine is verified](sdlc.md#EngineVerified) via [Assembly](engine.md#Assembly) | **held** |  |
 | 38 | prove | [A library carries kinds](command-scenarios.md#KindsCarried) | — | [The engine is verified](sdlc.md#EngineVerified) via [Compiler](engine.md#Compiler) | **held** |  |
 | 39 | prove | [The described engine compiles the example](scenarios.md#CompileExample) | — | [The engine is verified](sdlc.md#EngineVerified) via [Compiler](engine.md#Compiler) | **held** |  |
-| 40 | prove | [The engine reckons as it says](scenarios.md#EngineReckons) | — | [The engine is verified](sdlc.md#EngineVerified) via [Cycles](engine.md#Cycles) | **held** |  |
-| 41 | prove | [The laws of the kinds hold](scenarios.md#KindLaws) | — | [The engine is verified](sdlc.md#EngineVerified) via [Laws](engine.md#Laws) | **held** |  |
-| 42 | prove | [The page of the graph](command-scenarios.md#PageOfTheGraph) | — | [The engine is verified](sdlc.md#EngineVerified) via [Page](page.md#Page) | **held** |  |
-| 43 | prove | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | [Ask the machine](commands.md#Doctor), signed by [Trame's maintainers](sdlc.md#Maintainers) | [The engine is verified](sdlc.md#EngineVerified) via [System files, for reading](platform.md#DiskReading) | **held** | passed, 20 November 2026 by claude  |
-| 44 | prove | [The command line](command-scenarios.md#CommandLineChooses) | — | [The engine is verified](sdlc.md#EngineVerified) via [Terminal in memory](platform.md#MemoryTerminal) | **held** |  |
-| 45 | prove | [A body is read and checked](command-scenarios.md#BodiesReadAndChecked) | — | [The engine is verified](sdlc.md#EngineVerified) via [tree-sitter in WebAssembly](platform.md#WebTreeSitter) | **held** |  |
-| 46 | prove | [The repository is set as the graph decides](sdlc.md#SettingTheRepository) | — | [The engine is verified](sdlc.md#EngineVerified) via [Set the repository's settings](sdlc.md#ApplyTheRepositorySettings) | **held** |  |
-| 47 | prove | [The graph page is opened as a person would](sdlc.md#OpeningTheGraphPage) | — | [The engine is verified](sdlc.md#EngineVerified) via [What the graph page is asked](sdlc.md#GraphPageSelectors) | **held** |  |
-| 48 | record | [Into the main branch](sdlc.md#IntoMain) | — | — | **unknown** | 19 November 2026 by claude `evidence/shipments/IntoMain-2026-11-19-6a9aa3c4.json` |
+| 40 | prove | [EngineReckons](scenarios.md#EngineReckons) | — | [The engine is verified](sdlc.md#EngineVerified) via [Cycles](engine.md#Cycles) | **held** |  |
+| 41 | prove | [A project judges harder, never softer](scenarios.md#JudgingHarder) | — | [The engine is verified](sdlc.md#EngineVerified) via [Judged harder](engine.md#JudgedHarder) | **held** |  |
+| 42 | prove | [The laws of the kinds hold](scenarios.md#KindLaws) | — | [The engine is verified](sdlc.md#EngineVerified) via [Laws](engine.md#Laws) | **held** |  |
+| 43 | prove | [The page of the graph](command-scenarios.md#PageOfTheGraph) | — | [The engine is verified](sdlc.md#EngineVerified) via [Page](page.md#Page) | **held** |  |
+| 44 | prove | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | [Ask the machine](commands.md#Doctor), signed by [Trame's maintainers](sdlc.md#Maintainers) | [The engine is verified](sdlc.md#EngineVerified) via [System files, for reading](platform.md#DiskReading) | **held** | passed, 20 November 2026 by claude  |
+| 45 | prove | [The command line](command-scenarios.md#CommandLineChooses) | — | [The engine is verified](sdlc.md#EngineVerified) via [Terminal in memory](platform.md#MemoryTerminal) | **held** |  |
+| 46 | prove | [A body is read and checked](command-scenarios.md#BodiesReadAndChecked) | — | [The engine is verified](sdlc.md#EngineVerified) via [tree-sitter in WebAssembly](platform.md#WebTreeSitter) | **held** |  |
+| 47 | prove | [The repository is set as the graph decides](sdlc.md#SettingTheRepository) | — | [The engine is verified](sdlc.md#EngineVerified) via [Set the repository's settings](sdlc.md#ApplyTheRepositorySettings) | **held** |  |
+| 48 | prove | [The graph page is opened as a person would](sdlc.md#OpeningTheGraphPage) | — | [The engine is verified](sdlc.md#EngineVerified) via [What the graph page is asked](sdlc.md#GraphPageSelectors) | **held** |  |
+| 49 | record | [Into the main branch](sdlc.md#IntoMain) | — | — | **unknown** | 19 November 2026 by claude `evidence/shipments/IntoMain-2026-11-19-6a9aa3c4.json` |
 
 `trame ship IntoMain --by <name>`
 
@@ -211,7 +213,7 @@ flowchart TB
   n57["esbuild<br/><small>Package</small>"]:::held
   n58["Grammar of HTML<br/><small>Package</small>"]:::held
   n59["The command line<br/><small>Scenario</small>"]:::held
-  n60["The engine reckons as it says<br/><small>Scenario</small>"]:::held
+  n60["EngineReckons<br/><small>Scenario</small>"]:::held
   n61["The described engine compiles the example<br/><small>Scenario</small>"]:::held
   n62["A library carries kinds<br/><small>Scenario</small>"]:::held
   n63["Shipments run, evidence given<br/><small>Scenario</small>"]:::held
@@ -225,79 +227,80 @@ flowchart TB
   n71["The packages upgraded<br/><small>Scenario</small>"]:::held
   n72["A library released<br/><small>Scenario</small>"]:::held
   n73["The registry filled<br/><small>Scenario</small>"]:::held
-  n74["Stages shipped in order<br/><small>Scenario</small>"]:::held
-  n75["The build writes the same documents as the engine in place<br/><small>Scenario</small>"]:::held
-  n76["The laws of the kinds hold<br/><small>Scenario</small>"]:::held
-  n77["A published value changed<br/><small>Scenario</small>"]:::held
-  n78["A value amended<br/><small>Scenario</small>"]:::held
-  n79["The packages audited<br/><small>Scenario</small>"]:::held
-  n80["A view in the terminal<br/><small>Scenario</small>"]:::held
-  n81["The page of the graph<br/><small>Scenario</small>"]:::held
-  n82["The page delivered<br/><small>Scenario</small>"]:::held
-  n83["trame dev<br/><small>Scenario</small>"]:::held
-  n84["The page exported<br/><small>Scenario</small>"]:::held
-  n85["The graph in the intermediate format<br/><small>Scenario</small>"]:::held
-  n86["A project started<br/><small>Scenario</small>"]:::held
-  n87["A build planned<br/><small>Scenario</small>"]:::held
-  n88["Declarations published<br/><small>Scenario</small>"]:::held
-  n89["A component run<br/><small>Scenario</small>"]:::held
-  n90["The snapshot, taken by its command<br/><small>Scenario</small>"]:::held
-  n91["The laws, tested by their command<br/><small>Scenario</small>"]:::held
-  n92["The graph page is opened as a person would<br/><small>Scenario</small>"]:::held
-  n93["The repository is set as the graph decides<br/><small>Scenario</small>"]:::held
-  n94["Accept a candidate<br/><small>Requirement</small>"]:::held
-  n95["Sort problems by severity<br/><small>Requirement</small>"]:::held
-  n96["Ship only what holds<br/><small>Requirement</small>"]:::held
-  n97["What belongs to a library<br/><small>Requirement</small>"]:::held
-  n98["A release is settled<br/><small>Requirement</small>"]:::held
-  n99["Answers without crashing<br/><small>Requirement</small>"]:::held
-  n100["A blocking hole has an owner<br/><small>Requirement</small>"]:::held
-  n101["The resolution returns only what it is given<br/><small>Requirement</small>"]:::held
-  n102["Complete declaration<br/><small>Requirement</small>"]:::held
-  n103["Complete declaration of a view<br/><small>Requirement</small>"]:::held
-  n104["A hole says what is wrong by its code<br/><small>Requirement</small>"]:::held
-  n105["Produces only the intermediate format<br/><small>Requirement</small>"]:::held
-  n106["Same input, same answer<br/><small>Requirement</small>"]:::held
-  n107["The resolution does not depend on the order<br/><small>Requirement</small>"]:::held
-  n108["Without evidence, the status is unknown<br/><small>Requirement</small>"]:::held
-  n109["Advance<br/><small>Entry point</small>"]:::held
-  n110["The next generation<br/><small>Shipment</small>"]:::held
+  n74["A project judges harder, never softer<br/><small>Scenario</small>"]:::held
+  n75["Stages shipped in order<br/><small>Scenario</small>"]:::held
+  n76["The build writes the same documents as the engine in place<br/><small>Scenario</small>"]:::held
+  n77["The laws of the kinds hold<br/><small>Scenario</small>"]:::held
+  n78["A published value changed<br/><small>Scenario</small>"]:::held
+  n79["A value amended<br/><small>Scenario</small>"]:::held
+  n80["The packages audited<br/><small>Scenario</small>"]:::held
+  n81["A view in the terminal<br/><small>Scenario</small>"]:::held
+  n82["The page of the graph<br/><small>Scenario</small>"]:::held
+  n83["The page delivered<br/><small>Scenario</small>"]:::held
+  n84["trame dev<br/><small>Scenario</small>"]:::held
+  n85["The page exported<br/><small>Scenario</small>"]:::held
+  n86["The graph in the intermediate format<br/><small>Scenario</small>"]:::held
+  n87["A project started<br/><small>Scenario</small>"]:::held
+  n88["A build planned<br/><small>Scenario</small>"]:::held
+  n89["Declarations published<br/><small>Scenario</small>"]:::held
+  n90["A component run<br/><small>Scenario</small>"]:::held
+  n91["The snapshot, taken by its command<br/><small>Scenario</small>"]:::held
+  n92["The laws, tested by their command<br/><small>Scenario</small>"]:::held
+  n93["The graph page is opened as a person would<br/><small>Scenario</small>"]:::held
+  n94["The repository is set as the graph decides<br/><small>Scenario</small>"]:::held
+  n95["Accept a candidate<br/><small>Requirement</small>"]:::held
+  n96["Sort problems by severity<br/><small>Requirement</small>"]:::held
+  n97["Ship only what holds<br/><small>Requirement</small>"]:::held
+  n98["What belongs to a library<br/><small>Requirement</small>"]:::held
+  n99["A release is settled<br/><small>Requirement</small>"]:::held
+  n100["Answers without crashing<br/><small>Requirement</small>"]:::held
+  n101["A blocking hole has an owner<br/><small>Requirement</small>"]:::held
+  n102["The resolution returns only what it is given<br/><small>Requirement</small>"]:::held
+  n103["Complete declaration<br/><small>Requirement</small>"]:::held
+  n104["Complete declaration of a view<br/><small>Requirement</small>"]:::held
+  n105["A hole says what is wrong by its code<br/><small>Requirement</small>"]:::held
+  n106["Produces only the intermediate format<br/><small>Requirement</small>"]:::held
+  n107["Same input, same answer<br/><small>Requirement</small>"]:::held
+  n108["The resolution does not depend on the order<br/><small>Requirement</small>"]:::held
+  n109["Without evidence, the status is unknown<br/><small>Requirement</small>"]:::held
+  n110["Advance<br/><small>Entry point</small>"]:::held
+  n111["The next generation<br/><small>Shipment</small>"]:::held
   n46 -->|Applied by| n49
-  n64 -->|Verifies| n109
-  n64 -->|Depends on| n109
+  n64 -->|Verifies| n110
+  n64 -->|Depends on| n110
   n69 -->|Verifies| n9
   n69 -->|Depends on| n9
-  n91 -->|Verifies| n7
-  n91 -->|Depends on| n7
-  n84 -->|Verifies| n5
-  n84 -->|Depends on| n5
-  n109 -->|Part of| n1
-  n109 -->|Depends on| n94
+  n92 -->|Verifies| n7
+  n92 -->|Depends on| n7
+  n85 -->|Verifies| n5
+  n85 -->|Depends on| n5
+  n110 -->|Part of| n1
+  n110 -->|Depends on| n95
   n9 -->|Part of| n1
   n5 -->|Part of| n1
   n7 -->|Part of| n1
-  n107 -->|Refines| n106
-  n107 -->|Depends on| n106
+  n108 -->|Refines| n107
+  n108 -->|Depends on| n107
   n12 -->|Applied by| n1
   n12 -->|Applied by| n49
   n12 -->|Applied by| n48
   n12 -->|Applied by| n47
-  n40 -->|Applied by| n109
-  n40 -->|Applied by| n94
-  n40 -->|Applied by| n75
-  n14 -->|Applied by| n97
-  n14 -->|Applied by| n109
-  n16 -->|Applied by| n98
+  n40 -->|Applied by| n110
+  n40 -->|Applied by| n95
+  n40 -->|Applied by| n76
+  n14 -->|Applied by| n98
+  n14 -->|Applied by| n110
+  n16 -->|Applied by| n99
   n31 -->|Applied by| n47
   n31 -->|Applied by| n48
   n26 -->|Applied by| n49
-  n18 -->|Applied by| n109
-  n41 -->|Applied by| n109
-  n41 -->|Applied by| n94
+  n18 -->|Applied by| n110
+  n41 -->|Applied by| n110
+  n41 -->|Applied by| n95
   n41 -->|Applied by| n61
-  n41 -->|Applied by| n75
   n41 -->|Applied by| n76
-  n37 -->|Applied by| n76
+  n41 -->|Applied by| n77
+  n37 -->|Applied by| n77
   n39 -->|Applied by| n49
   n6 -->|Checks| n0
   n6 -->|Run by| n7
@@ -308,13 +311,13 @@ flowchart TB
   n4 -->|Carries| n3
   n10 -->|Checks| n4
   n10 -->|Run by| n11
-  n110 -->|Ships| n0
-  n110 -->|Ships| n2
-  n110 -->|Ships| n4
-  n110 -->|Deployed by| n109
-  n92 -->|Verifies| n11
-  n92 -->|Depends on| n11
-  n92 -->|Depends on| n4
+  n111 -->|Ships| n0
+  n111 -->|Ships| n2
+  n111 -->|Ships| n4
+  n111 -->|Deployed by| n110
+  n93 -->|Verifies| n11
+  n93 -->|Depends on| n11
+  n93 -->|Depends on| n4
   n11 -->|Depends on| n4
   n2 -->|Produced by| n3
   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
@@ -389,7 +392,7 @@ flowchart TB
 | 59 | prove | [esbuild](packages.md#EsbuildPackage) | — | [The packages are safe](sdlc.md#EnginePackagesSafe) via [esbuild](platform.md#Esbuild) | **held** | 29 October 2026 by   |
 | 60 | prove | [Grammar of HTML](packages.md#HtmlGrammar) | — | [The packages are safe](sdlc.md#EnginePackagesSafe) via [HTML markup](html.md#HtmlMarkup) | **held** | 29 October 2026 by   |
 | 61 | prove | [The command line](command-scenarios.md#CommandLineChooses) | — | [The engine is verified](sdlc.md#EngineVerified) via [Command line](platform.md#NodeCommandLine) | **held** |  |
-| 62 | prove | [The engine reckons as it says](scenarios.md#EngineReckons) | — | [The engine is verified](sdlc.md#EngineVerified) via [Cycles](engine.md#Cycles) | **held** |  |
+| 62 | prove | [EngineReckons](scenarios.md#EngineReckons) | — | [The engine is verified](sdlc.md#EngineVerified) via [Cycles](engine.md#Cycles) | **held** |  |
 | 63 | prove | [The described engine compiles the example](scenarios.md#CompileExample) | — | [The engine is verified](sdlc.md#EngineVerified) via [Trame's prelude](platform.md#TramePrelude) | **held** |  |
 | 64 | prove | [A library carries kinds](command-scenarios.md#KindsCarried) | — | [The engine is verified](sdlc.md#EngineVerified) via [Project](engine.md#Project) | **held** |  |
 | 65 | prove | [Shipments run, evidence given](command-scenarios.md#ShipmentsRun) | — | [The engine is verified](sdlc.md#EngineVerified) via [SHA-256 hashes](platform.md#NodeHashing) | **held** |  |
@@ -403,43 +406,44 @@ flowchart TB
 | 73 | prove | [The packages upgraded](command-scenarios.md#PackagesUpgraded) | — | [The engine is verified](sdlc.md#EngineVerified) via [Packages by their local path](platform.md#LocalPaths) | **held** |  |
 | 74 | prove | [A library released](command-scenarios.md#LibraryReleased) | — | [The engine is verified](sdlc.md#EngineVerified) via [Packages from the local registry](platform.md#LocalRegistry) | **held** |  |
 | 75 | prove | [The registry filled](command-scenarios.md#RegistryFilled) | — | [The engine is verified](sdlc.md#EngineVerified) via [Packages from the local registry](platform.md#LocalRegistry) | **held** |  |
-| 76 | prove | [Stages shipped in order](command-scenarios.md#StagesShipped) | — | [The engine is verified](sdlc.md#EngineVerified) via [A shipment's pipeline](engine.md#ShipmentPipeline) | **held** |  |
-| 77 | prove | [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore) | — | [The engine is verified](sdlc.md#EngineVerified) via [Compilation API](engine.md#CompilationApi) | **held** |  |
-| 78 | prove | [The laws of the kinds hold](scenarios.md#KindLaws) | — | [The engine is verified](sdlc.md#EngineVerified) via [Laws](engine.md#Laws) | **held** |  |
-| 79 | prove | [A published value changed](command-scenarios.md#PublishedValueChanged) | — | [The engine is verified](sdlc.md#EngineVerified) via [Lock](engine.md#Lock) | **held** |  |
-| 80 | prove | [A value amended](command-scenarios.md#ValueAmended) | — | [The engine is verified](sdlc.md#EngineVerified) via [Two builds compared](commands.md#BuildComparison) | **held** |  |
-| 81 | prove | [The packages audited](command-scenarios.md#PackagesAudited) | — | [The engine is verified](sdlc.md#EngineVerified) via [Audit the packages](commands.md#Audit) | **held** |  |
-| 82 | prove | [A view in the terminal](command-scenarios.md#ViewsInTheTerminal) | — | [The engine is verified](sdlc.md#EngineVerified) via [Figures as text](rendering.md#TextFigures) | **held** |  |
-| 83 | prove | [The page of the graph](command-scenarios.md#PageOfTheGraph) | — | [The engine is verified](sdlc.md#EngineVerified) via [esbuild](platform.md#Esbuild) | **held** |  |
-| 84 | prove | [The page delivered](command-scenarios.md#PageDelivered) | — | [The engine is verified](sdlc.md#EngineVerified) via [The names a bundle is led by](delivery.md#NamesLed) | **held** |  |
-| 85 | prove | [trame dev](command-scenarios.md#DevFollowsTheGraph) | — | [The engine is verified](sdlc.md#EngineVerified) via [Node timer](platform.md#NodeTimer) | **held** |  |
-| 86 | prove | [The page exported](command-scenarios.md#PageExported) | — | [The engine is verified](sdlc.md#EngineVerified) via [Date bundle](engine.md#DateBundle) | **held** |  |
-| 87 | prove | [The graph in the intermediate format](command-scenarios.md#PayloadOfTheGraph) | — | [The engine is verified](sdlc.md#EngineVerified) via [Differences](engine.md#Differences) | **held** |  |
-| 88 | prove | [A project started](command-scenarios.md#ProjectStarted) | — | [The engine is verified](sdlc.md#EngineVerified) via [A module of references](commands.md#ReferencesModule) | **held** |  |
-| 89 | prove | [A build planned](command-scenarios.md#BuildPlanned) | — | [The engine is verified](sdlc.md#EngineVerified) via [Plan](commands.md#Plan) | **held** |  |
-| 90 | prove | [Declarations published](command-scenarios.md#DeclarationsPublished) | — | [The engine is verified](sdlc.md#EngineVerified) via [Publish](commands.md#Publish) | **held** |  |
-| 91 | prove | [A component run](command-scenarios.md#ComponentRun) | — | [The engine is verified](sdlc.md#EngineVerified) via [Run a component](commands.md#Run) | **held** |  |
-| 92 | prove | [The snapshot, taken by its command](command-scenarios.md#SnapshotTaken) | — | [The engine is verified](sdlc.md#EngineVerified) via [Take the snapshot](commands.md#TakeSnapshot) | **held** |  |
-| 93 | prove | [The laws, tested by their command](command-scenarios.md#LawsTested) | — | [The engine is verified](sdlc.md#EngineVerified) via [Test the laws](commands.md#TestKinds) | **held** |  |
-| 94 | prove | [The graph page is opened as a person would](sdlc.md#OpeningTheGraphPage) | — | [The engine is verified](sdlc.md#EngineVerified) via [Open the graph page](sdlc.md#OpenTheGraphPage) | **held** |  |
-| 95 | prove | [The repository is set as the graph decides](sdlc.md#SettingTheRepository) | — | [The engine is verified](sdlc.md#EngineVerified) via [Set the repository's settings](sdlc.md#ApplyTheRepositorySettings) | **held** |  |
-| 96 | prove | [Accept a candidate](generations.md#AcceptCandidate) | — | [The language serves what it says](sdlc.md#LanguageServed) via [Sort problems by severity](product.md#SeverityOrder) | **held** |  |
-| 97 | prove | [Sort problems by severity](product.md#SeverityOrder) | — | [The language serves what it says](sdlc.md#LanguageServed) | **held** |  |
-| 98 | prove | [Ship only what holds](shipping.md#ShipOnlyWhatHolds) | — | [The language serves what it says](sdlc.md#LanguageServed) via [Sort problems by severity](product.md#SeverityOrder) | **held** |  |
-| 99 | prove | [What belongs to a library](libraries.md#LibraryOfAModule) | — | [The language serves what it says](sdlc.md#LanguageServed) | **held** |  |
-| 100 | prove | [A release is settled](libraries.md#ReleaseIsSettled) | — | [The language serves what it says](sdlc.md#LanguageServed) via [What belongs to a library](libraries.md#LibraryOfAModule) | **held** |  |
-| 101 | prove | [Answers without crashing](laws.md#AnswersWithoutCrashing) | — | [The language serves what it says](sdlc.md#LanguageServed) via [Complete declaration](laws.md#CompleteDeclaration) | **held** |  |
-| 102 | prove | [A blocking hole has an owner](laws.md#BlockingHoleHasOwner) | — | [The language serves what it says](sdlc.md#LanguageServed) via [Complete declaration](laws.md#CompleteDeclaration) | **held** |  |
-| 103 | prove | [The resolution returns only what it is given](laws.md#ClosedResolution) | — | [The language serves what it says](sdlc.md#LanguageServed) via [Complete declaration](laws.md#CompleteDeclaration) | **held** |  |
-| 104 | prove | [Complete declaration](laws.md#CompleteDeclaration) | — | [The language serves what it says](sdlc.md#LanguageServed) | **held** |  |
-| 105 | prove | [Complete declaration of a view](laws.md#CompleteViewDeclaration) | — | [The language serves what it says](sdlc.md#LanguageServed) via [Complete declaration](laws.md#CompleteDeclaration) | **held** |  |
-| 106 | prove | [A hole says what is wrong by its code](laws.md#HoleHasCode) | — | [The language serves what it says](sdlc.md#LanguageServed) via [Complete declaration](laws.md#CompleteDeclaration) | **held** |  |
-| 107 | prove | [Produces only the intermediate format](laws.md#IntermediateFormatOnly) | — | [The language serves what it says](sdlc.md#LanguageServed) via [Complete declaration](laws.md#CompleteDeclaration) | **held** |  |
-| 108 | prove | [Same input, same answer](laws.md#SameInputSameAnswer) | — | [The language serves what it says](sdlc.md#LanguageServed) via [Complete declaration](laws.md#CompleteDeclaration) | **held** |  |
-| 109 | prove | [The resolution does not depend on the order](laws.md#OrderFree) | — | [The language serves what it says](sdlc.md#LanguageServed) via [Complete declaration](laws.md#CompleteDeclaration) | **held** |  |
-| 110 | prove | [Without evidence, the status is unknown](laws.md#UnknownWithoutEvidence) | — | [The language serves what it says](sdlc.md#LanguageServed) via [Complete declaration](laws.md#CompleteDeclaration) | **held** |  |
-| 111 | deploy | [Advance](commands.md#Advance) | itself | — | **held** | 20 November 2026 by claude  |
-| 112 | record | [The next generation](sdlc.md#NextGeneration) | — | — | **held** | 20 November 2026 by claude `evidence/shipments/NextGeneration-2026-11-20-30393779.json` |
+| 76 | prove | [A project judges harder, never softer](scenarios.md#JudgingHarder) | — | [The engine is verified](sdlc.md#EngineVerified) via [Judged harder](engine.md#JudgedHarder) | **held** |  |
+| 77 | prove | [Stages shipped in order](command-scenarios.md#StagesShipped) | — | [The engine is verified](sdlc.md#EngineVerified) via [A shipment's pipeline](engine.md#ShipmentPipeline) | **held** |  |
+| 78 | prove | [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore) | — | [The engine is verified](sdlc.md#EngineVerified) via [Compilation API](engine.md#CompilationApi) | **held** |  |
+| 79 | prove | [The laws of the kinds hold](scenarios.md#KindLaws) | — | [The engine is verified](sdlc.md#EngineVerified) via [Laws](engine.md#Laws) | **held** |  |
+| 80 | prove | [A published value changed](command-scenarios.md#PublishedValueChanged) | — | [The engine is verified](sdlc.md#EngineVerified) via [Lock](engine.md#Lock) | **held** |  |
+| 81 | prove | [A value amended](command-scenarios.md#ValueAmended) | — | [The engine is verified](sdlc.md#EngineVerified) via [Two builds compared](commands.md#BuildComparison) | **held** |  |
+| 82 | prove | [The packages audited](command-scenarios.md#PackagesAudited) | — | [The engine is verified](sdlc.md#EngineVerified) via [Audit the packages](commands.md#Audit) | **held** |  |
+| 83 | prove | [A view in the terminal](command-scenarios.md#ViewsInTheTerminal) | — | [The engine is verified](sdlc.md#EngineVerified) via [Figures as text](rendering.md#TextFigures) | **held** |  |
+| 84 | prove | [The page of the graph](command-scenarios.md#PageOfTheGraph) | — | [The engine is verified](sdlc.md#EngineVerified) via [esbuild](platform.md#Esbuild) | **held** |  |
+| 85 | prove | [The page delivered](command-scenarios.md#PageDelivered) | — | [The engine is verified](sdlc.md#EngineVerified) via [The names a bundle is led by](delivery.md#NamesLed) | **held** |  |
+| 86 | prove | [trame dev](command-scenarios.md#DevFollowsTheGraph) | — | [The engine is verified](sdlc.md#EngineVerified) via [Node timer](platform.md#NodeTimer) | **held** |  |
+| 87 | prove | [The page exported](command-scenarios.md#PageExported) | — | [The engine is verified](sdlc.md#EngineVerified) via [Date bundle](engine.md#DateBundle) | **held** |  |
+| 88 | prove | [The graph in the intermediate format](command-scenarios.md#PayloadOfTheGraph) | — | [The engine is verified](sdlc.md#EngineVerified) via [Differences](engine.md#Differences) | **held** |  |
+| 89 | prove | [A project started](command-scenarios.md#ProjectStarted) | — | [The engine is verified](sdlc.md#EngineVerified) via [A module of references](commands.md#ReferencesModule) | **held** |  |
+| 90 | prove | [A build planned](command-scenarios.md#BuildPlanned) | — | [The engine is verified](sdlc.md#EngineVerified) via [Plan](commands.md#Plan) | **held** |  |
+| 91 | prove | [Declarations published](command-scenarios.md#DeclarationsPublished) | — | [The engine is verified](sdlc.md#EngineVerified) via [Publish](commands.md#Publish) | **held** |  |
+| 92 | prove | [A component run](command-scenarios.md#ComponentRun) | — | [The engine is verified](sdlc.md#EngineVerified) via [Run a component](commands.md#Run) | **held** |  |
+| 93 | prove | [The snapshot, taken by its command](command-scenarios.md#SnapshotTaken) | — | [The engine is verified](sdlc.md#EngineVerified) via [Take the snapshot](commands.md#TakeSnapshot) | **held** |  |
+| 94 | prove | [The laws, tested by their command](command-scenarios.md#LawsTested) | — | [The engine is verified](sdlc.md#EngineVerified) via [Test the laws](commands.md#TestKinds) | **held** |  |
+| 95 | prove | [The graph page is opened as a person would](sdlc.md#OpeningTheGraphPage) | — | [The engine is verified](sdlc.md#EngineVerified) via [Open the graph page](sdlc.md#OpenTheGraphPage) | **held** |  |
+| 96 | prove | [The repository is set as the graph decides](sdlc.md#SettingTheRepository) | — | [The engine is verified](sdlc.md#EngineVerified) via [Set the repository's settings](sdlc.md#ApplyTheRepositorySettings) | **held** |  |
+| 97 | prove | [Accept a candidate](generations.md#AcceptCandidate) | — | [The language serves what it says](sdlc.md#LanguageServed) via [Sort problems by severity](product.md#SeverityOrder) | **held** |  |
+| 98 | prove | [Sort problems by severity](product.md#SeverityOrder) | — | [The language serves what it says](sdlc.md#LanguageServed) | **held** |  |
+| 99 | prove | [Ship only what holds](shipping.md#ShipOnlyWhatHolds) | — | [The language serves what it says](sdlc.md#LanguageServed) via [Sort problems by severity](product.md#SeverityOrder) | **held** |  |
+| 100 | prove | [What belongs to a library](libraries.md#LibraryOfAModule) | — | [The language serves what it says](sdlc.md#LanguageServed) | **held** |  |
+| 101 | prove | [A release is settled](libraries.md#ReleaseIsSettled) | — | [The language serves what it says](sdlc.md#LanguageServed) via [What belongs to a library](libraries.md#LibraryOfAModule) | **held** |  |
+| 102 | prove | [Answers without crashing](laws.md#AnswersWithoutCrashing) | — | [The language serves what it says](sdlc.md#LanguageServed) via [Complete declaration](laws.md#CompleteDeclaration) | **held** |  |
+| 103 | prove | [A blocking hole has an owner](laws.md#BlockingHoleHasOwner) | — | [The language serves what it says](sdlc.md#LanguageServed) via [Complete declaration](laws.md#CompleteDeclaration) | **held** |  |
+| 104 | prove | [The resolution returns only what it is given](laws.md#ClosedResolution) | — | [The language serves what it says](sdlc.md#LanguageServed) via [Complete declaration](laws.md#CompleteDeclaration) | **held** |  |
+| 105 | prove | [Complete declaration](laws.md#CompleteDeclaration) | — | [The language serves what it says](sdlc.md#LanguageServed) | **held** |  |
+| 106 | prove | [Complete declaration of a view](laws.md#CompleteViewDeclaration) | — | [The language serves what it says](sdlc.md#LanguageServed) via [Complete declaration](laws.md#CompleteDeclaration) | **held** |  |
+| 107 | prove | [A hole says what is wrong by its code](laws.md#HoleHasCode) | — | [The language serves what it says](sdlc.md#LanguageServed) via [Complete declaration](laws.md#CompleteDeclaration) | **held** |  |
+| 108 | prove | [Produces only the intermediate format](laws.md#IntermediateFormatOnly) | — | [The language serves what it says](sdlc.md#LanguageServed) via [Complete declaration](laws.md#CompleteDeclaration) | **held** |  |
+| 109 | prove | [Same input, same answer](laws.md#SameInputSameAnswer) | — | [The language serves what it says](sdlc.md#LanguageServed) via [Complete declaration](laws.md#CompleteDeclaration) | **held** |  |
+| 110 | prove | [The resolution does not depend on the order](laws.md#OrderFree) | — | [The language serves what it says](sdlc.md#LanguageServed) via [Complete declaration](laws.md#CompleteDeclaration) | **held** |  |
+| 111 | prove | [Without evidence, the status is unknown](laws.md#UnknownWithoutEvidence) | — | [The language serves what it says](sdlc.md#LanguageServed) via [Complete declaration](laws.md#CompleteDeclaration) | **held** |  |
+| 112 | deploy | [Advance](commands.md#Advance) | itself | — | **held** | 20 November 2026 by claude  |
+| 113 | record | [The next generation](sdlc.md#NextGeneration) | — | — | **held** | 20 November 2026 by claude `evidence/shipments/NextGeneration-2026-11-20-a1fefe8b.json` |
 
 `trame ship NextGeneration --by <name>`
 
@@ -447,13 +451,13 @@ flowchart TB
 
 ## The repository as decided
 
-> **The repository as decided does not ship yet: 6 of 7 obligations hold.**
+> **The repository as decided ships: every obligation holds.**
 
 For the target github; its programs are assembled for [Local](architecture.md#Local).
 
 ```mermaid
 flowchart TB
-  n0["The repository is read from GitHub<br/><small>Check</small>"]:::unknown
+  n0["The repository is read from GitHub<br/><small>Check</small>"]:::held
   n1["Read the repository's settings<br/><small>Entry point</small>"]:::held
   n2["Effects come from the vocabulary<br/><small>Architecture rule</small>"]:::held
   n3["Only commands write<br/><small>Architecture rule</small>"]:::held
@@ -461,7 +465,7 @@ flowchart TB
   n5["The repository is set as the graph decides<br/><small>Scenario</small>"]:::held
   n6["The graph page is opened as a person would<br/><small>Scenario</small>"]:::held
   n7["Set the repository's settings<br/><small>Entry point</small>"]:::held
-  n8["The repository as decided<br/><small>Shipment</small>"]:::unknown
+  n8["The repository as decided<br/><small>Shipment</small>"]:::held
   n0 -->|Run by| n1
   n8 -->|Requires| n0
   n8 -->|Deployed by| n7
@@ -480,16 +484,16 @@ flowchart TB
 
 |  | Stage | Step | Run by | Why | Status | Latest evidence |
 |---|---|---|---|---|---|---|
-| 1 | check | [The repository is read from GitHub](sdlc.md#RepositoryRead) | [Read the repository's settings](sdlc.md#ReadTheRepositorySettings), signed by [Trame's maintainers](sdlc.md#Maintainers) | — | **unknown** | passed, 19 November 2026 by claude  |
+| 1 | check | [The repository is read from GitHub](sdlc.md#RepositoryRead) | [Read the repository's settings](sdlc.md#ReadTheRepositorySettings), signed by [Trame's maintainers](sdlc.md#Maintainers) | — | **held** | passed, 20 November 2026 by claude  |
 | 2 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
-| 3 | prove | [The repository is read from GitHub](sdlc.md#RepositoryRead) | [Read the repository's settings](sdlc.md#ReadTheRepositorySettings), signed by [Trame's maintainers](sdlc.md#Maintainers) | the shipment | **unknown** | passed, 19 November 2026 by claude  |
+| 3 | prove | [The repository is read from GitHub](sdlc.md#RepositoryRead) | [Read the repository's settings](sdlc.md#ReadTheRepositorySettings), signed by [Trame's maintainers](sdlc.md#Maintainers) | the shipment | **held** | passed, 20 November 2026 by claude  |
 | 4 | prove | [Effects come from the vocabulary](architecture.md#KnownEffects) | — | [The rules of the architecture hold](sdlc.md#ArchitectureRuled) | **held** |  |
 | 5 | prove | [Only commands write](architecture.md#OnlyCommandsWrite) | — | [The rules of the architecture hold](sdlc.md#ArchitectureRuled) | **held** |  |
 | 6 | prove | [Rendering does not read the graph](architecture.md#RenderingWithoutGraph) | — | [The rules of the architecture hold](sdlc.md#ArchitectureRuled) | **held** |  |
 | 7 | prove | [The repository is set as the graph decides](sdlc.md#SettingTheRepository) | — | [The engine is verified](sdlc.md#EngineVerified) via [Set the repository's settings](sdlc.md#ApplyTheRepositorySettings) | **held** |  |
 | 8 | prove | [The graph page is opened as a person would](sdlc.md#OpeningTheGraphPage) | — | [The engine is verified](sdlc.md#EngineVerified) via [What the graph page is asked](sdlc.md#GraphPageSelectors) | **held** |  |
 | 9 | deploy | [Set the repository's settings](sdlc.md#ApplyTheRepositorySettings) | itself | — | **held** |  |
-| 10 | record | [The repository as decided](sdlc.md#RepositorySet) | — | — | **unknown** |  |
+| 10 | record | [The repository as decided](sdlc.md#RepositorySet) | — | — | **held** |  |
 
 `trame ship RepositorySet --by <name>`
 
