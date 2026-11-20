@@ -65,7 +65,7 @@ const body = (deps: Deps) => {
       fields: Object.entries(k.fields).map(([name, f]) => ({ name, type: f.type, label: f.label, role: f.role })),
     })
     const toIssue = (d: Diag): Issue => ({
-      severity: d.severity, origin: d.origin, what: d.what, node: d.node && view(d.node), module: d.node ? meta(d.node).module : d.module,
+      severity: d.severity, ...(d.code === undefined ? {} : { code: d.code }), origin: d.origin, what: d.what, node: d.node && view(d.node), module: d.node ? meta(d.node).module : d.module,
       where: d.where, owner: d.owner, effect: d.effect,
     })
     const allIssues = () => c.diags.map(toIssue)
@@ -195,7 +195,7 @@ const body = (deps: Deps) => {
         arbiter: r.arbiter, because: r.because.map(nref),
       }),
       issueItem: (i: Issue): IssueItem => ({
-        severity: i.severity, what: i.what,
+        severity: i.severity, ...(i.code === undefined ? {} : { code: i.code }), what: i.what,
         where: i.node ? nref(i.node) : i.where,
         source: i.node?.decl ? deps.positions.reference(i.node.decl.file, i.node.decl.line) : i.where,
         owner: i.owner, effect: i.effect,

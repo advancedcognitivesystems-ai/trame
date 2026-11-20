@@ -29,34 +29,34 @@ The libraries the project imports: their nodes take part in the graph, their doc
 | Library | Modules | Nodes | Open issues |
 |---|---|---|---|
 | [ci 0.7.0](../../../ci/releases/0.7.0/docs/index.md) | Continuous integration · GitHub Actions, Continuous integration · npm, Continuous integration · Packages, Continuous integration · Product, Continuous integration · Releases, Continuous integration · SDLC, Continuous integration · Shell, Continuous integration · YAML | 23 | 4 points to watch |
-| [data](../../../libs/data/docs/index.md) | Data · Documents, Data · Obligations, Data · Packages, Data · Principles, Data · Product, Data · Records, Data · Releases, Data · Scenarios, Data · SDLC, Data · Shelves, Data · SQL, Data · Words | 75 | 4 points to watch |
+| [data](../../../libs/data/docs/index.md) | Data · Documents, Data · Obligations, Data · Packages, Data · Principles, Data · Product, Data · Records, Data · Releases, Data · Scenarios, Data · SDLC, Data · Shelves, Data · SQL, Data · Words | 76 | 4 points to watch |
 | [std](../../../std/docs/index.md) | Standard library · Access, Standard library · Algebra, Standard library · Algorithms, Standard library · ECMAScript, Standard library · Effects, Standard library · HTML and CSS, Standard library · Measures, Standard library · Obligations, Standard library · Packages, Standard library · Design patterns, Standard library · Platform, Standard library · Product, Standard library · Releases, Standard library · Repositories on GitHub, Standard library · Rules, Standard library · Scenarios, Standard library · SDLC, Standard library · System, Standard library · Text, Standard library · Tooling, Standard library · Web | 193 | 9 points to watch |
 
 ## Open issues
 
-| Severity | What | Where | Owner | Consequence |
-|---|---|---|---|---|
-| blocking | Decide "Legal cap on cancellation fees" | [Legal cap on cancellation fees](legal.md#FeeCap) | karim | concerns "Late cancellation fee", "The cap, decided" |
-| warning | Nothing identifies it yet (C7): whoever reaches its 2 entry points calls as one of it | [Drivers](access.md#Drivers) | karim |  |
-| warning | Check the assumption before 1 December 2026 (in 32 days) | [Idempotent payment provider](cancellation.md#IdempotentProvider) | karim | no evidence yet |
-| warning | No production measurement wired | [Immediate refund](cancellation.md#ImmediateRefund) | karim |  |
-| warning | Cap cannot be checked: "Legal cap on cancellation fees" is not decided | [Late cancellation fee](cancellation.md#LateFee) | karim |  |
-| warning | To ship: The service is unknown | [Into the main branch](sdlc.md#IntoMain) | karim |  |
-| warning | Not built yet: trame ship builds it | [The program for a laptop](sdlc.md#LocalProgram) | karim |  |
-| warning | To check by hand and sign: Run the program for a laptop, cancel a reservation, stop it and run it again: the cancellation is still there | [On a laptop](sdlc.md#OnALaptop) | The operators |  |
-| warning | To check by hand and sign: Deploy the program on the staging machine, with its PostgreSQL database and the payment provider's sandbox: its tables are created empty, Insert a reservation, read it, then cancel it twice: one refund at the provider, and the second cancellation answers the same, Restart the program: the cancellation is still there, and the time it shows is the machine's | [On staging](sdlc.md#OnStaging) | The operators |  |
-| warning | To ship: The program for a laptop is unknown | [On this machine](sdlc.md#OnThisMachine) | karim |  |
-| warning | Not built yet: trame ship builds it | [The program for production](sdlc.md#ProductionProgram) | karim |  |
-| warning | Not built yet: trame ship builds it | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | karim |  |
-| warning | To ship: The program for a laptop is unknown | [A release](sdlc.md#Release) | karim |  |
-| warning | To ship: The program for production is unknown | [A release](sdlc.md#Release) | karim |  |
-| warning | To ship: Secrets stay out of the graph is unknown | [A release](sdlc.md#Release) | karim |  |
-| warning | To ship: On a laptop is unknown | [A release](sdlc.md#Release) | karim |  |
-| warning | To ship: On staging is unknown | [A release](sdlc.md#Release) | karim |  |
-| warning | Drivers ships, and nothing proves it (Who calls, identified) | [Drivers](access.md#Drivers) | karim |  |
-| warning | To ship: The pull requests' workflow is unknown | [The files that run it elsewhere](sdlc.md#RunnersWritten) | karim |  |
-| warning | Not built yet: trame ship builds it | [The service](sdlc.md#TheService) | karim |  |
-| warning | Awaits the approval of lea, who answers for “Free cancellation period” | [Ultra period requested by support](support.md#SupportUltraPeriod) | lea |  |
+| Severity | Code | What | Where | Owner | Consequence |
+|---|---|---|---|---|---|
+| blocking | `value-undecided` | Decide "Legal cap on cancellation fees" | [Legal cap on cancellation fees](legal.md#FeeCap) | karim | concerns "Late cancellation fee", "The cap, decided" |
+| warning | `audience-not-identified` | Nothing identifies it yet (C7): whoever reaches its 2 entry points calls as one of it | [Drivers](access.md#Drivers) | karim |  |
+| warning | `assumption-to-check` | Check the assumption before 1 December 2026 (in 32 days) | [Idempotent payment provider](cancellation.md#IdempotentProvider) | karim | no evidence yet |
+| warning | `slo-unmeasured` | No production measurement wired | [Immediate refund](cancellation.md#ImmediateRefund) | karim |  |
+| warning | `decision-cap-uncheckable` | Cap cannot be checked: "Legal cap on cancellation fees" is not decided | [Late cancellation fee](cancellation.md#LateFee) | karim |  |
+| warning | `shipment-awaits` | To ship: The service is unknown | [Into the main branch](sdlc.md#IntoMain) | karim |  |
+| warning | `artifact-not-built` | Not built yet: trame ship builds it | [The program for a laptop](sdlc.md#LocalProgram) | karim |  |
+| warning | `check-awaited` | To check by hand and sign: Run the program for a laptop, cancel a reservation, stop it and run it again: the cancellation is still there | [On a laptop](sdlc.md#OnALaptop) | The operators |  |
+| warning | `check-awaited` | To check by hand and sign: Deploy the program on the staging machine, with its PostgreSQL database and the payment provider's sandbox: its tables are created empty, Insert a reservation, read it, then cancel it twice: one refund at the provider, and the second cancellation answers the same, Restart the program: the cancellation is still there, and the time it shows is the machine's | [On staging](sdlc.md#OnStaging) | The operators |  |
+| warning | `shipment-awaits` | To ship: The program for a laptop is unknown | [On this machine](sdlc.md#OnThisMachine) | karim |  |
+| warning | `artifact-not-built` | Not built yet: trame ship builds it | [The program for production](sdlc.md#ProductionProgram) | karim |  |
+| warning | `artifact-not-built` | Not built yet: trame ship builds it | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | karim |  |
+| warning | `shipment-awaits` | To ship: The program for a laptop is unknown | [A release](sdlc.md#Release) | karim |  |
+| warning | `shipment-awaits` | To ship: The program for production is unknown | [A release](sdlc.md#Release) | karim |  |
+| warning | `shipment-awaits` | To ship: Secrets stay out of the graph is unknown | [A release](sdlc.md#Release) | karim |  |
+| warning | `shipment-awaits` | To ship: On a laptop is unknown | [A release](sdlc.md#Release) | karim |  |
+| warning | `shipment-awaits` | To ship: On staging is unknown | [A release](sdlc.md#Release) | karim |  |
+| warning | `shipment-gap` | Drivers ships, and nothing proves it (Who calls, identified) | [Drivers](access.md#Drivers) | karim |  |
+| warning | `shipment-awaits` | To ship: The pull requests' workflow is unknown | [The files that run it elsewhere](sdlc.md#RunnersWritten) | karim |  |
+| warning | `artifact-not-built` | Not built yet: trame ship builds it | [The service](sdlc.md#TheService) | karim |  |
+| warning | `amendment-awaits-approval` | Awaits the approval of lea, who answers for “Free cancellation period” | [Ultra period requested by support](support.md#SupportUltraPeriod) | lea |  |
 
 ## Overlaps
 

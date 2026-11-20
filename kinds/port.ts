@@ -1,4 +1,4 @@
-import { defineKind, field, hole, doc, keysOf, KindName, EdgeName, type Graph, type Node, type Provides, type View } from "../trame/kernel"
+import { defineKind, field, hole, doc, keysOf, KindName, EdgeName, type Graph, type Node, type Provides, type View, HoleCode } from "../trame/kernel"
 import { choicesOf, holdsIn } from "./binding"
 import { environmentFields } from "./environment"
 import words from "./words"
@@ -49,10 +49,10 @@ const kind = defineKind({
   holes: (self, g) => {
     const { counts, texts, lists } = g.lib
     return [
-      !g.from(self).in(EdgeName.implements).exists() && hole.warning(say.portNoRealizationInAnyEnvironment(), self.owner),
+      !g.from(self).in(EdgeName.implements).exists() && hole.warning(HoleCode.portUnrealized, say.portNoRealizationInAnyEnvironment(), self.owner),
       ...g.all(KindName.environment).nodes().map((env) => {
         const mine = answering(g, self, env)
-        return counts.several(mine) && hole.error(say.portSeveralRealizationsFor(env.title, texts.concat(lists.enumeration(mine.map((v) => v.title)))))
+        return counts.several(mine) && hole.error(HoleCode.portRealizedTwice, say.portSeveralRealizationsFor(env.title, texts.concat(lists.enumeration(mine.map((v) => v.title)))))
       }),
     ]
   },

@@ -1,6 +1,6 @@
 import {
   defineKind, field, optional, edge, hole, doc, keysOf, REMOVE, DateRole, Validity, KindName, ResolutionKind, ChangeWay,
-  type AnyNode, type Node, type Resolution,
+  type AnyNode, type Node, type Resolution, HoleCode,
 } from "../trame/kernel"
 import words from "./words"
 
@@ -45,7 +45,7 @@ const kind = defineKind({
     return g.from(target).in()
       .where((v) => v.node !== self.node && v.kind !== self.kind && v.active && !v.repealedBy)
       .nodes()
-      .map((v) => hole.warning(say.repealStillDependsOnWhichIsRepealed(v.title, target.title), v.owner))
+      .map((v) => hole.warning(HoleCode.dependsOnRepealed, say.repealStillDependsOnWhichIsRepealed(v.title, target.title), v.owner))
   },
 
   render: (self) => [doc.validity(self.active ? Validity.inForce : Validity.notYet, self.from)],

@@ -12,6 +12,14 @@ import { vocabularyKind } from "#trame/kinds/vocabulary"
 import words from "./words"
 
 const say = words()
+/** What is wrong with an entity, by its code (C4). */
+const codes = {
+  reseeded: say.entityCodeReseeded(),
+  keyUnknown: say.entityCodeKeyUnknown(),
+  fieldWithoutType: say.entityCodeFieldWithoutType(),
+  ownerFieldUnknown: say.entityCodeOwnerFieldUnknown(),
+  migrationUndecided: say.entityCodeMigrationUndecided(),
+}
 
 /** The kinds the library carries: each named by its key, with its meaning in the library's words. */
 export const DataKind = keysOf({ entity: say.entityMeaning() })
@@ -291,7 +299,7 @@ const identityWords: Record<Identity, () => string> = { [Identity.person]: say.e
 const reseededHoles = (reseeded: Result["reseeded"], g: Graph, owner: string | undefined) => {
   if (!reseeded) return []
   const shipment = g.node(reseeded.shipment).first()
-  return [hole.warning(say.entityReseeded(shipment?.title ?? reseeded.shipment, g.lib.dates.format(reseeded.at)), owner)]
+  return [hole.warning(codes.reseeded, say.entityReseeded(shipment?.title ?? reseeded.shipment, g.lib.dates.format(reseeded.at)), owner)]
 }
 
 /** What an entity computes: its description, its version, and how each version a deployment kept migrates to it. */
@@ -366,12 +374,12 @@ const kind = defineKind({
     const all = storedOf(self, g.lib)
     const key = self.field(F.key)
     return [
-      ...(key !== undefined && !all.some(([k]) => k === key) ? [hole.error(say.entityKeyNamesNoField(String(key)), self.owner)] : []),
-      ...all.filter(([, s]) => typeWords[s.type] === undefined).map(([k]) => hole.error(say.entityFieldWithoutType(k), self.owner)),
+      ...(key !== undefined && !all.some(([k]) => k === key) ? [hole.error(codes.keyUnknown, say.entityKeyNamesNoField(String(key)), self.owner)] : []),
+      ...all.filter(([, s]) => typeWords[s.type] === undefined).map(([k]) => hole.error(codes.fieldWithoutType, say.entityFieldWithoutType(k), self.owner)),
       // Whose records they are (C6): each owner held by a field of its own, kept as a text or the key of another entity.
       ...ownersOf(self, g.lib).filter(([, k]) => !all.some(([f, s]) => f === k && ownable(s))).map(([i, k]) =>
-        hole.error(say.entityOwnerNamesNoField(identityWords[i](), k), self.owner)),
-      ...(self.result<Result>()?.undecided ?? []).map((u) => hole.blocking(u.what, self.owner)),
+        hole.error(codes.ownerFieldUnknown, say.entityOwnerNamesNoField(identityWords[i](), k), self.owner)),
+      ...(self.result<Result>()?.undecided ?? []).map((u) => hole.blocking(codes.migrationUndecided, u.what, self.owner)),
       ...reseededHoles(self.result<Result>()?.reseeded, g, self.owner),
     ]
   },

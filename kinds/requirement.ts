@@ -1,7 +1,7 @@
 import {
   defineKind, field, optional, edge, optionalEdge, hole, doc, keysOf, edgesOf, Status, Outcome, Hole, KindName, EdgeName, ArtifactField, ChangeWay,
   type AnyNode, type Node, type Provides, type HasDeps, type Provided, type FileBody, type Constant, type Values, type Declares,
-  type Graph, type View,
+  type Graph, type View, HoleCode,
 } from "../trame/kernel"
 import { acceptance } from "./acceptance"
 import { keepsItsRules } from "./dataset"
@@ -94,18 +94,18 @@ const kind = defineKind({
     const refused = (self.result<Played[]>() ?? []).filter((x) => x.status === Outcome.failed || x.status === Outcome.error).map((x) => x.at)
     const ownerOf = (v: View) => v.owner ?? say.requirementNobody()
     return [
-      (constrained === undefined) !== (self.field(F.examples) === undefined) && hole.error(say.requirementConstraintWhole()),
+      (constrained === undefined) !== (self.field(F.examples) === undefined) && hole.error(HoleCode.constraintNotWhole, say.requirementConstraintWhole()),
       // A disagreement between two owners: each is told, until one amends their rule.
       ...(constrained && g.lib.counts.any(refused) ? [
-        hole.error(say.requirementRefuses(constrained.title, ownerOf(constrained), refused), g.lib.values.isText(owner) ? owner : undefined),
-        hole.on(constrained, hole.error(say.requirementRefusedBy(self.title, ownerOf(self), refused), constrained.owner)),
+        hole.error(HoleCode.constraintRefuses, say.requirementRefuses(constrained.title, ownerOf(constrained), refused), g.lib.values.isText(owner) ? owner : undefined),
+        hole.on(constrained, hole.error(HoleCode.constraintRefused, say.requirementRefusedBy(self.title, ownerOf(self), refused), constrained.owner)),
       ] : []),
-      !g.from(self).in(edgesOf(acceptance).accepts).exists() && hole.warning(say.requirementRequirementWithoutAcceptanceCriteria()),
-      !asBody && hole.error(say.requirementRuleOnce()),
-      self.field(F.owner) === undefined && hole.warning(say.ownerMissing()),
+      !g.from(self).in(edgesOf(acceptance).accepts).exists() && hole.warning(HoleCode.requirementWithoutCriteria, say.requirementRequirementWithoutAcceptanceCriteria()),
+      !asBody && hole.error(HoleCode.ruleAsBody, say.requirementRuleOnce()),
+      self.field(F.owner) === undefined && hole.warning(HoleCode.ownerMissing, say.ownerMissing()),
       // Two rules that answer the same question for the same goal may disagree, and who prevails would hide in the code.
-      ...lookAlikes(self, g).map((o) => hole.warning(say.requirementLooksLike(o.title, ownerOf(o)), g.lib.values.isText(owner) ? owner : undefined)),
-      self.library === undefined && !offersItself(g) && g.lib.counts.isEmpty(followers(self, g)) && hole.warning(say.requirementNotFollowed(), g.lib.values.isText(owner) ? owner : undefined),
+      ...lookAlikes(self, g).map((o) => hole.warning(HoleCode.rulesLookAlike, say.requirementLooksLike(o.title, ownerOf(o)), g.lib.values.isText(owner) ? owner : undefined)),
+      self.library === undefined && !offersItself(g) && g.lib.counts.isEmpty(followers(self, g)) && hole.warning(HoleCode.requirementNotFollowed, say.requirementNotFollowed(), g.lib.values.isText(owner) ? owner : undefined),
     ]
   },
 

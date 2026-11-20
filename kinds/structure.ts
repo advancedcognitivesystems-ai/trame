@@ -1,6 +1,6 @@
 import {
   defineKind, field, edge, optionalEdge, optional, hole, doc, isFileBody, keysOf, Status, KindName, EdgeName,
-  type AnyNode, type Node, type Provides, type HasDeps, type Provided, type FileBody, type Constant, type Values, type Inline, type Declares, type Lib,
+  type AnyNode, type Node, type Provides, type HasDeps, type Provided, type FileBody, type Constant, type Values, type Inline, type Declares, type Lib, HoleCode,
 } from "../trame/kernel"
 import words from "./words"
 
@@ -132,7 +132,7 @@ const kind = defineKind({
   holes: (self) =>
     (self.result<Result[]>() ?? [])
       .filter((r) => !held(r))
-      .map((r) => hole.error(r.drawn === undefined
+      .map((r) => hole.error(HoleCode.lawBroken, r.drawn === undefined
         ? say.structureLawNotPlayed(r.says, r.error)
         : say.structureLawBroken(r.says, r.drawn || say.structureNoValueDrawn(), r.error))),
 

@@ -1,6 +1,6 @@
 import {
   defineKind, field, optional, edge, optionalEdge, hole, doc, isFileBody, keysOf, KindName, EdgeName, ChangeWay,
-  type AnyNode, type Node, type Provides, type HasDeps, type Provided, type FileBody, type Inline,
+  type AnyNode, type Node, type Provides, type HasDeps, type Provided, type FileBody, type Inline, HoleCode,
 } from "../trame/kernel"
 import words from "./words"
 
@@ -45,7 +45,7 @@ const kind = defineKind({
     const original = sequences.head(g.from(self).out(E.translates).nodes())
     const mine = sequences.head(g.from(self).out(EdgeName.language).nodes())
     const theirs = original && sequences.head(g.from(original).out(EdgeName.language).nodes())
-    return [!!original && !!mine && !!theirs && mine.node === theirs.node && hole.error(say.catalogTranslationInSameLanguage(original.title))]
+    return [!!original && !!mine && !!theirs && mine.node === theirs.node && hole.error(HoleCode.translationSameLanguage, say.catalogTranslationInSameLanguage(original.title))]
   },
 
   render(self, g) {

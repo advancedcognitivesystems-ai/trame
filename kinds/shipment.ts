@@ -1,7 +1,7 @@
 import {
   defineKind, field, edge, optionalEdge, hole, doc, keysOf, fieldsOf, Status, Severity, KindName, EdgeName, AnyTarget, ShipmentField, ShipmentEdge,
   ArtifactEdge, CheckEdge, PolicyEdge, ObligationField, EvidenceSource,
-  type Node, type View, type Graph, type GraphSketch, type ObligationReach, type ObligationFinding, type DerivedObligation, type Preceding,
+  type Node, type View, type Graph, type GraphSketch, type ObligationReach, type ObligationFinding, type DerivedObligation, type Preceding, HoleCode,
 } from "../trame/kernel"
 import { latestOf, isVersion, ownNodes, builtFingerprint } from "./artifact"
 import { sketchOf, resolved } from "./rule"
@@ -156,21 +156,21 @@ const kind = defineKind({
       .filter((v) => standing(self, v) !== Status.held)
       .flatMap((v) => {
         const before = self.result<Result>()?.preceded.find((p) => p.node === v.ref)
-        if (!before) return [hole.warning(say.shipmentMissing(v.title, String(v.status ?? Status.unknown)), v.owner ?? self.owner)]
+        if (!before) return [hole.warning(HoleCode.shipmentAwaits, say.shipmentMissing(v.title, String(v.status ?? Status.unknown)), v.owner ?? self.owner)]
         // A shipment that precedes and has not shipped first, as they are now, the artefacts both ship: one hole each.
         return before.artifacts.filter((a) => a.fingerprint === undefined).flatMap((a) => g.node(a.node).nodes())
-          .map((a) => hole.warning(say.shipmentNotPreceded(a.title, v.title), v.owner ?? self.owner))
+          .map((a) => hole.warning(HoleCode.shipmentNotPreceded, say.shipmentNotPreceded(a.title, v.title), v.owner ?? self.owner))
       }),
     ...(self.result<Result>()?.gaps ?? []).flatMap((x) => {
       const gap = g.node(x.node).first()
       const obligation = g.node(x.obligation).first()
       if (!gap || !obligation) return []
-      if (x.weight === undefined) return [hole.error(say.obligationWeightless(obligation.title), obligation.owner)]
+      if (x.weight === undefined) return [hole.error(HoleCode.obligationWeightless, say.obligationWeightless(obligation.title), obligation.owner)]
       // A gap is a hole of the graph (what it ships, nothing can prove as it is written): one its obligation says blocks
       // is an error of the graph, which stops what assembles and delivers it as any error does; unlike an obligation
       // unknown (evidence awaited: a check by hand, a review), which only keeps the shipment.
       const what = say.shipmentGap(gap.title, obligation.title)
-      return [hole.on(gap, x.weight === Severity.error ? hole.error(what, gap.owner ?? self.owner) : hole.warning(what, gap.owner ?? self.owner))]
+      return [hole.on(gap, x.weight === Severity.error ? hole.error(HoleCode.shipmentGap, what, gap.owner ?? self.owner) : hole.warning(HoleCode.shipmentGap, what, gap.owner ?? self.owner))]
     }),
   ],
 

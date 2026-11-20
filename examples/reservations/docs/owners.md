@@ -19,10 +19,10 @@
 - [On a laptop](sdlc.md#OnALaptop): `trame evidence OnALaptop passed --by karim`
 - [On staging](sdlc.md#OnStaging): `trame evidence OnStaging passed --by karim`
 
-| Severity | What | Where | Owner | Consequence |
-|---|---|---|---|---|
-| warning | To check by hand and sign: Run the program for a laptop, cancel a reservation, stop it and run it again: the cancellation is still there | [On a laptop](sdlc.md#OnALaptop) | The operators |  |
-| warning | To check by hand and sign: Deploy the program on the staging machine, with its PostgreSQL database and the payment provider's sandbox: its tables are created empty, Insert a reservation, read it, then cancel it twice: one refund at the provider, and the second cancellation answers the same, Restart the program: the cancellation is still there, and the time it shows is the machine's | [On staging](sdlc.md#OnStaging) | The operators |  |
+| Severity | Code | What | Where | Owner | Consequence |
+|---|---|---|---|---|---|
+| warning | `check-awaited` | To check by hand and sign: Run the program for a laptop, cancel a reservation, stop it and run it again: the cancellation is still there | [On a laptop](sdlc.md#OnALaptop) | The operators |  |
+| warning | `check-awaited` | To check by hand and sign: Deploy the program on the staging machine, with its PostgreSQL database and the payment provider's sandbox: its tables are created empty, Insert a reservation, read it, then cancel it twice: one refund at the provider, and the second cancellation answers the same, Restart the program: the cancellation is still there, and the time it shows is the machine's | [On staging](sdlc.md#OnStaging) | The operators |  |
 
 <a id="karim"></a>
 
@@ -30,26 +30,26 @@
 
 - Holds the roles: [The operators](sdlc.md#Operators)
 
-| Severity | What | Where | Owner | Consequence |
-|---|---|---|---|---|
-| blocking | Decide "Legal cap on cancellation fees" | [Legal cap on cancellation fees](legal.md#FeeCap) | karim | concerns "Late cancellation fee", "The cap, decided" |
-| warning | Nothing identifies it yet (C7): whoever reaches its 2 entry points calls as one of it | [Drivers](access.md#Drivers) | karim |  |
-| warning | Check the assumption before 1 December 2026 (in 32 days) | [Idempotent payment provider](cancellation.md#IdempotentProvider) | karim | no evidence yet |
-| warning | No production measurement wired | [Immediate refund](cancellation.md#ImmediateRefund) | karim |  |
-| warning | Cap cannot be checked: "Legal cap on cancellation fees" is not decided | [Late cancellation fee](cancellation.md#LateFee) | karim |  |
-| warning | To ship: The service is unknown | [Into the main branch](sdlc.md#IntoMain) | karim |  |
-| warning | Not built yet: trame ship builds it | [The program for a laptop](sdlc.md#LocalProgram) | karim |  |
-| warning | To ship: The program for a laptop is unknown | [On this machine](sdlc.md#OnThisMachine) | karim |  |
-| warning | Not built yet: trame ship builds it | [The program for production](sdlc.md#ProductionProgram) | karim |  |
-| warning | Not built yet: trame ship builds it | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | karim |  |
-| warning | To ship: The program for a laptop is unknown | [A release](sdlc.md#Release) | karim |  |
-| warning | To ship: The program for production is unknown | [A release](sdlc.md#Release) | karim |  |
-| warning | To ship: Secrets stay out of the graph is unknown | [A release](sdlc.md#Release) | karim |  |
-| warning | To ship: On a laptop is unknown | [A release](sdlc.md#Release) | karim |  |
-| warning | To ship: On staging is unknown | [A release](sdlc.md#Release) | karim |  |
-| warning | Drivers ships, and nothing proves it (Who calls, identified) | [Drivers](access.md#Drivers) | karim |  |
-| warning | To ship: The pull requests' workflow is unknown | [The files that run it elsewhere](sdlc.md#RunnersWritten) | karim |  |
-| warning | Not built yet: trame ship builds it | [The service](sdlc.md#TheService) | karim |  |
+| Severity | Code | What | Where | Owner | Consequence |
+|---|---|---|---|---|---|
+| blocking | `value-undecided` | Decide "Legal cap on cancellation fees" | [Legal cap on cancellation fees](legal.md#FeeCap) | karim | concerns "Late cancellation fee", "The cap, decided" |
+| warning | `audience-not-identified` | Nothing identifies it yet (C7): whoever reaches its 2 entry points calls as one of it | [Drivers](access.md#Drivers) | karim |  |
+| warning | `assumption-to-check` | Check the assumption before 1 December 2026 (in 32 days) | [Idempotent payment provider](cancellation.md#IdempotentProvider) | karim | no evidence yet |
+| warning | `slo-unmeasured` | No production measurement wired | [Immediate refund](cancellation.md#ImmediateRefund) | karim |  |
+| warning | `decision-cap-uncheckable` | Cap cannot be checked: "Legal cap on cancellation fees" is not decided | [Late cancellation fee](cancellation.md#LateFee) | karim |  |
+| warning | `shipment-awaits` | To ship: The service is unknown | [Into the main branch](sdlc.md#IntoMain) | karim |  |
+| warning | `artifact-not-built` | Not built yet: trame ship builds it | [The program for a laptop](sdlc.md#LocalProgram) | karim |  |
+| warning | `shipment-awaits` | To ship: The program for a laptop is unknown | [On this machine](sdlc.md#OnThisMachine) | karim |  |
+| warning | `artifact-not-built` | Not built yet: trame ship builds it | [The program for production](sdlc.md#ProductionProgram) | karim |  |
+| warning | `artifact-not-built` | Not built yet: trame ship builds it | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | karim |  |
+| warning | `shipment-awaits` | To ship: The program for a laptop is unknown | [A release](sdlc.md#Release) | karim |  |
+| warning | `shipment-awaits` | To ship: The program for production is unknown | [A release](sdlc.md#Release) | karim |  |
+| warning | `shipment-awaits` | To ship: Secrets stay out of the graph is unknown | [A release](sdlc.md#Release) | karim |  |
+| warning | `shipment-awaits` | To ship: On a laptop is unknown | [A release](sdlc.md#Release) | karim |  |
+| warning | `shipment-awaits` | To ship: On staging is unknown | [A release](sdlc.md#Release) | karim |  |
+| warning | `shipment-gap` | Drivers ships, and nothing proves it (Who calls, identified) | [Drivers](access.md#Drivers) | karim |  |
+| warning | `shipment-awaits` | To ship: The pull requests' workflow is unknown | [The files that run it elsewhere](sdlc.md#RunnersWritten) | karim |  |
+| warning | `artifact-not-built` | Not built yet: trame ship builds it | [The service](sdlc.md#TheService) | karim |  |
 
 ### Owns
 
@@ -163,9 +163,9 @@
 
 ## lea
 
-| Severity | What | Where | Owner | Consequence |
-|---|---|---|---|---|
-| warning | Awaits the approval of lea, who answers for “Free cancellation period” | [Ultra period requested by support](support.md#SupportUltraPeriod) | lea |  |
+| Severity | Code | What | Where | Owner | Consequence |
+|---|---|---|---|---|---|
+| warning | `amendment-awaits-approval` | Awaits the approval of lea, who answers for “Free cancellation period” | [Ultra period requested by support](support.md#SupportUltraPeriod) | lea |  |
 
 ### Owns
 

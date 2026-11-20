@@ -1,7 +1,7 @@
 import {
   defineKind, field, optional, edge, optionalEdge, hole, doc, patchLeaves, keysOf, edgesOf, addDays, daysBetween, isHole, DateRole, RuleState,
   Validity, KindName, ResolutionKind, ChangeWay, type AnyNode, type Graph, type HoleSpec, type Lib, type Node, type PatchOf, type View,
-  type Resolution,
+  type Resolution, HoleCode,
 } from "../trame/kernel"
 import { approval } from "./approval"
 import { sourceFields } from "./standard"
@@ -95,7 +95,7 @@ const kind = defineKind({
   holes(self, g) {
     const { counts, references } = g.lib
     const leaves = patchLeaves(self.field(F.patch))
-    if (counts.isEmpty(leaves)) return [hole.warning(say.amendmentAmendmentWithoutEffectItRedefinesNothing())]
+    if (counts.isEmpty(leaves)) return [hole.warning(HoleCode.amendmentWithoutEffect, say.amendmentAmendmentWithoutEffectItRedefinesNothing())]
     const target = self.amends
     if (!target) return []
     const fields = leaves.map(([p]) => references.firstSegment(p))
@@ -108,9 +108,9 @@ const kind = defineKind({
     return [
       ...leaves
         .filter(([p, v]) => !g.lib.values.isFunction(v) && JSON.stringify(target.base(p)) === JSON.stringify(v))
-        .map(([p]) => hole.warning(say.amendmentChangesNothingAlreadyHasThisValue(p))),
-      ...(counts.any(cited) && !fields.includes(source) ? cited.map((f) => hole.error(say.amendmentCitedWithoutSource(f), self.owner)) : []),
-      !approved && hole.warning(say.amendmentAwaitsApproval(owner, target.title), owner),
+        .map(([p]) => hole.warning(HoleCode.amendmentSameValue, say.amendmentChangesNothingAlreadyHasThisValue(p))),
+      ...(counts.any(cited) && !fields.includes(source) ? cited.map((f) => hole.error(HoleCode.amendmentWithoutSource, say.amendmentCitedWithoutSource(f), self.owner)) : []),
+      !approved && hole.warning(HoleCode.amendmentAwaitsApproval, say.amendmentAwaitsApproval(owner, target.title), owner),
       ...ending(self.until, self.node, target, leaves.map(([p]) => p), g),
     ]
   },
@@ -159,8 +159,8 @@ function ending(until: string | undefined, self: AnyNode, target: View, paths: r
   const days = daysBetween(g.today, until)
   const notice = settings.amendment?.warnWithin
   return [
-    ...nothing.map((p) => hole.error(say.amendmentEndsOnNothing(dates.format(until), dates.format(after), target.title, p), target.owner)),
-    ...(notice !== undefined && days <= notice ? [hole.warning(say.amendmentEndsSoon(dates.format(until), days, target.title))] : []),
+    ...nothing.map((p) => hole.error(HoleCode.amendmentEndsOnNothing, say.amendmentEndsOnNothing(dates.format(until), dates.format(after), target.title, p), target.owner)),
+    ...(notice !== undefined && days <= notice ? [hole.warning(HoleCode.amendmentEndsSoon, say.amendmentEndsSoon(dates.format(until), days, target.title))] : []),
   ]
 }
 

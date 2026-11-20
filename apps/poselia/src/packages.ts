@@ -44,6 +44,6 @@ export const Geometry = pkg({
  * What the app keeps on the device, described once: the person's breath.
  */
 export const Data = pkg({
-  owner: "ghalaax", packageName: "data", version: "0.4.0", joins: "library", from: "path", at: "../../libs/data/releases/0.4.0",
+  owner: "ghalaax", packageName: "data", version: "0.5.0", joins: "library", from: "path", at: "../../libs/data/releases/0.5.0",
   serves: [PractiseGuided],
 })

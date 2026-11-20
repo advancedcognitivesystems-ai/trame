@@ -1,4 +1,4 @@
-import { defineKind, field, hole, doc, daysBetween, keysOf, DateRole, Status, KindName, ChangeWay } from "../trame/kernel"
+import { defineKind, field, hole, doc, daysBetween, keysOf, DateRole, Status, KindName, ChangeWay, HoleCode } from "../trame/kernel"
 import words from "./words"
 
 const say = words()
@@ -23,9 +23,9 @@ export const assume = defineKind({
     const { counts, dates, settings } = g.lib
     if (counts.any(self.evidence)) return []
     const days = daysBetween(g.today, self.expires)
-    if (days < counts.zero) return [hole.error(say.assumptionAssumptionExpiredOnWithoutEvidence(dates.format(self.expires)))]
+    if (days < counts.zero) return [hole.error(HoleCode.assumptionExpired, say.assumptionAssumptionExpiredOnWithoutEvidence(dates.format(self.expires)))]
     if (days <= settings.assumption.warnWithin) {
-      return [hole.warning(say.assumptionCheckTheAssumptionBeforeIn(dates.format(self.expires), days), undefined, say.assumptionNoEvidenceYet())]
+      return [hole.warning(HoleCode.assumptionToCheck, say.assumptionCheckTheAssumptionBeforeIn(dates.format(self.expires), days), undefined, say.assumptionNoEvidenceYet())]
     }
     return []
   },

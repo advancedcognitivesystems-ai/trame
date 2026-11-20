@@ -6,22 +6,22 @@
 
 ## Open issues
 
-| Severity | What | Where | Owner | Consequence |
-|---|---|---|---|---|
-| warning | To ship: The service is unknown | [Into the main branch](#IntoMain) | karim |  |
-| warning | Not built yet: trame ship builds it | [The program for a laptop](#LocalProgram) | karim |  |
-| warning | To check by hand and sign: Run the program for a laptop, cancel a reservation, stop it and run it again: the cancellation is still there | [On a laptop](#OnALaptop) | The operators |  |
-| warning | To check by hand and sign: Deploy the program on the staging machine, with its PostgreSQL database and the payment provider's sandbox: its tables are created empty, Insert a reservation, read it, then cancel it twice: one refund at the provider, and the second cancellation answers the same, Restart the program: the cancellation is still there, and the time it shows is the machine's | [On staging](#OnStaging) | The operators |  |
-| warning | To ship: The program for a laptop is unknown | [On this machine](#OnThisMachine) | karim |  |
-| warning | Not built yet: trame ship builds it | [The program for production](#ProductionProgram) | karim |  |
-| warning | Not built yet: trame ship builds it | [The pull requests' workflow](#PullRequestWorkflow) | karim |  |
-| warning | To ship: The program for a laptop is unknown | [A release](#Release) | karim |  |
-| warning | To ship: The program for production is unknown | [A release](#Release) | karim |  |
-| warning | To ship: Secrets stay out of the graph is unknown | [A release](#Release) | karim |  |
-| warning | To ship: On a laptop is unknown | [A release](#Release) | karim |  |
-| warning | To ship: On staging is unknown | [A release](#Release) | karim |  |
-| warning | To ship: The pull requests' workflow is unknown | [The files that run it elsewhere](#RunnersWritten) | karim |  |
-| warning | Not built yet: trame ship builds it | [The service](#TheService) | karim |  |
+| Severity | Code | What | Where | Owner | Consequence |
+|---|---|---|---|---|---|
+| warning | `shipment-awaits` | To ship: The service is unknown | [Into the main branch](#IntoMain) | karim |  |
+| warning | `artifact-not-built` | Not built yet: trame ship builds it | [The program for a laptop](#LocalProgram) | karim |  |
+| warning | `check-awaited` | To check by hand and sign: Run the program for a laptop, cancel a reservation, stop it and run it again: the cancellation is still there | [On a laptop](#OnALaptop) | The operators |  |
+| warning | `check-awaited` | To check by hand and sign: Deploy the program on the staging machine, with its PostgreSQL database and the payment provider's sandbox: its tables are created empty, Insert a reservation, read it, then cancel it twice: one refund at the provider, and the second cancellation answers the same, Restart the program: the cancellation is still there, and the time it shows is the machine's | [On staging](#OnStaging) | The operators |  |
+| warning | `shipment-awaits` | To ship: The program for a laptop is unknown | [On this machine](#OnThisMachine) | karim |  |
+| warning | `artifact-not-built` | Not built yet: trame ship builds it | [The program for production](#ProductionProgram) | karim |  |
+| warning | `artifact-not-built` | Not built yet: trame ship builds it | [The pull requests' workflow](#PullRequestWorkflow) | karim |  |
+| warning | `shipment-awaits` | To ship: The program for a laptop is unknown | [A release](#Release) | karim |  |
+| warning | `shipment-awaits` | To ship: The program for production is unknown | [A release](#Release) | karim |  |
+| warning | `shipment-awaits` | To ship: Secrets stay out of the graph is unknown | [A release](#Release) | karim |  |
+| warning | `shipment-awaits` | To ship: On a laptop is unknown | [A release](#Release) | karim |  |
+| warning | `shipment-awaits` | To ship: On staging is unknown | [A release](#Release) | karim |  |
+| warning | `shipment-awaits` | To ship: The pull requests' workflow is unknown | [The files that run it elsewhere](#RunnersWritten) | karim |  |
+| warning | `artifact-not-built` | Not built yet: trame ship builds it | [The service](#TheService) | karim |  |
 
 ## Decision
 

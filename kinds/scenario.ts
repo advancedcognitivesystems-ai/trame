@@ -1,6 +1,6 @@
 import {
   defineKind, field, edge, hole, doc, Hole, Outcome, Status, KindName, EdgeName,
-  type AnyNode, type Node, type Provided, type FileBody, type Inline, type View, type Graph,
+  type AnyNode, type Node, type Provided, type FileBody, type Inline, type View, type Graph, HoleCode,
 } from "../trame/kernel"
 import words from "./words"
 
@@ -111,8 +111,8 @@ const kind = defineKind({
     return [
       ...(self.result<Result[]>() ?? [])
         .filter((r) => r.status === Outcome.failed || r.status === Outcome.error)
-        .map((r) => hole.error(r.error ? say.scenarioScenarioFailed(r.name, r.error) : say.scenarioCheckNotMet(r.name))),
-      ...g.from(self).out(EdgeName.verifies).where((v) => !wired.has(v.ref)).nodes().map((v) => hole.error(say.scenarioVerifiesUnwired(v.title))),
+        .map((r) => hole.error(HoleCode.scenarioFailed, r.error ? say.scenarioScenarioFailed(r.name, r.error) : say.scenarioCheckNotMet(r.name))),
+      ...g.from(self).out(EdgeName.verifies).where((v) => !wired.has(v.ref)).nodes().map((v) => hole.error(HoleCode.verifiesUnrun, say.scenarioVerifiesUnwired(v.title))),
     ]
   },
 

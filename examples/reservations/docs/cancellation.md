@@ -6,11 +6,11 @@
 
 ## Open issues
 
-| Severity | What | Where | Owner | Consequence |
-|---|---|---|---|---|
-| warning | Check the assumption before 1 December 2026 (in 32 days) | [Idempotent payment provider](#IdempotentProvider) | karim | no evidence yet |
-| warning | No production measurement wired | [Immediate refund](#ImmediateRefund) | karim |  |
-| warning | Cap cannot be checked: "Legal cap on cancellation fees" is not decided | [Late cancellation fee](#LateFee) | karim |  |
+| Severity | Code | What | Where | Owner | Consequence |
+|---|---|---|---|---|---|
+| warning | `assumption-to-check` | Check the assumption before 1 December 2026 (in 32 days) | [Idempotent payment provider](#IdempotentProvider) | karim | no evidence yet |
+| warning | `slo-unmeasured` | No production measurement wired | [Immediate refund](#ImmediateRefund) | karim |  |
+| warning | `decision-cap-uncheckable` | Cap cannot be checked: "Legal cap on cancellation fees" is not decided | [Late cancellation fee](#LateFee) | karim |  |
 
 ## Goal
 

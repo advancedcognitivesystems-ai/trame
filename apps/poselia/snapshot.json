@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-19",
+  "at": "2026-11-20",
   "nodes": [
     {
       "id": "app.BrowserScreen",
@@ -3715,10 +3715,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "data",
-        "version": "0.4.0",
+        "version": "0.5.0",
         "joins": "library",
         "from": "path",
-        "at": "../../libs/data/releases/0.4.0"
+        "at": "../../libs/data/releases/0.5.0"
       }
     },
     {

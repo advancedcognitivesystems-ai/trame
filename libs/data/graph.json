@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-19",
+  "generated": "2026-11-20",
   "nodes": [
     {
       "id": "documents.Conforms",
@@ -1115,7 +1115,7 @@
       },
       "result": {
         "path": "src",
-        "code": "1911c1c6"
+        "code": "528839d3"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"

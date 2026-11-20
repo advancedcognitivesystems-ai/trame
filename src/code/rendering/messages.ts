@@ -115,6 +115,8 @@ const body = () => {
     resultHeader: () => "Result",
     /** The header of the column of severities, in a table of issues. */
     severityHeader: () => "Severity",
+    /** The header of the column of codes, in a table of issues: what is wrong, by its code. */
+    codeHeader: () => "Code",
     /** The header of the column of problems, in a table of issues. */
     whatHeader: () => "What",
     /** The header of the column of places, in a table of issues. */

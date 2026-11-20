@@ -7,7 +7,7 @@
     },
     "data": {
       "at": ".trame/data",
-      "version": "0.4.0"
+      "version": "0.5.0"
     },
     "geometry": {
       "at": ".trame/geometry",

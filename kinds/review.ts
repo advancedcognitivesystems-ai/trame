@@ -1,6 +1,6 @@
 import {
   defineKind, field, optional, edge, hole, doc, keysOf, Status, KindName, AnyTarget, ReviewField, ReviewEdge, ReviewState, RoleField, EvidenceSource,
-  type Node, type View, type Graph,
+  type Node, type View, type Graph, HoleCode,
 } from "../trame/kernel"
 import { peopleOf } from "./role"
 import words from "./words"
@@ -83,10 +83,10 @@ const kind = defineKind({
     // Who may give it: the people of the role, or the role itself while nobody holds it.
     const people = counts.isEmpty(listed) ? owner ?? texts.empty : texts.concat(lists.conjunction(listed).map(String))
     return awaited(self, g).flatMap((a) => {
-      if (a.subject.kind !== KindName.dataset) return counts.any(a.waiting) ? [hole.warning(say.reviewNodeAwaiting(a.subject.title, people), owner)] : []
+      if (a.subject.kind !== KindName.dataset) return counts.any(a.waiting) ? [hole.warning(HoleCode.reviewAwaited, say.reviewNodeAwaiting(a.subject.title, people), owner)] : []
       const languages = [...new Set(a.waiting.map((w) => w.language))]
       return languages.map((language) =>
-        hole.warning(say.reviewAwaiting(a.waiting.filter((w) => w.language === language).length, a.subject.title, language, people), owner))
+        hole.warning(HoleCode.reviewAwaited, say.reviewAwaiting(a.waiting.filter((w) => w.language === language).length, a.subject.title, language, people), owner))
     })
   },
 

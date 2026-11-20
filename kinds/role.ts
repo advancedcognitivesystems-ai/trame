@@ -1,4 +1,4 @@
-import { defineKind, field, optional, hole, doc, keysOf, KindName, RoleField, type Node, type SignatureType } from "../trame/kernel"
+import { defineKind, field, optional, hole, doc, keysOf, KindName, RoleField, type Node, type SignatureType, HoleCode } from "../trame/kernel"
 import words from "./words"
 
 const say = words()
@@ -29,7 +29,7 @@ const kind = defineKind({
   fields,
   edges: {},
 
-  holes: (self, g) => [g.lib.counts.isEmpty(peopleOf(self, g.lib.values.isText)) && hole.warning(say.roleNobody(), self.owner)],
+  holes: (self, g) => [g.lib.counts.isEmpty(peopleOf(self, g.lib.values.isText)) && hole.warning(HoleCode.roleEmpty, say.roleNobody(), self.owner)],
 
   render(self, g) {
     const { texts, lists, values } = g.lib

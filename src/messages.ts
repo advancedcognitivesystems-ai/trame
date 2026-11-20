@@ -274,6 +274,7 @@ export const LawMessages = catalog({
     lawDeclared: () => "Complete declaration",
     lawTotal: () => "Answers on any value, without crashing",
     lawOwner: () => "A blocking hole has an owner",
+    lawCoded: () => "A hole says what is wrong by its code",
     lawUnknown: () => "Without evidence, the status is unknown",
     lawDeterministic: () => "Same input, same answer",
     lawOrderFree: () => "The resolution does not depend on the order",
@@ -292,6 +293,7 @@ export const LawMessages = catalog({
     resolveReturnsNonClaimant: (ref: string) => `resolve() returns "${ref}", which claims nothing`,
     twoCallsTwoAnswers: () => "two identical calls give two answers",
     noOwner: (what: string) => `"${what}" has no owner`,
+    noCode: (what: string) => `"${what}" has no code`,
     statusWithoutEvidence: (status: string) => `status() returns "${status}" although no evidence exists`,
     claimNotOnNode: () => "claims() targets something other than a node",
 

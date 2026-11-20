@@ -15,7 +15,7 @@ import type { Iso8601 } from "#std/measures"
 import type { NodeModuleSpecifiers } from "#std/system"
 import type { Counts, Sequences, Texts } from "#std/algebra"
 import type { Api as DriversApi } from "../languages/drivers"
-import type { AnswersWithoutCrashing, BlockingHoleHasOwner, ClosedResolution, CompleteDeclaration, OrderFree, SameInputSameAnswer, UnknownWithoutEvidence } from "../../laws"
+import type { AnswersWithoutCrashing, BlockingHoleHasOwner, ClosedResolution, HoleHasCode, CompleteDeclaration, OrderFree, SameInputSameAnswer, UnknownWithoutEvidence } from "../../laws"
 
 export interface LawFailure {
   law: string
@@ -60,6 +60,7 @@ export interface Deps {
   declaration: ProvidedBy<typeof CompleteDeclaration>
   answers: ProvidedBy<typeof AnswersWithoutCrashing>
   owned: ProvidedBy<typeof BlockingHoleHasOwner>
+  coded: ProvidedBy<typeof HoleHasCode>
   evidence: ProvidedBy<typeof UnknownWithoutEvidence>
   same: ProvidedBy<typeof SameInputSameAnswer>
   orderFree: ProvidedBy<typeof OrderFree>
@@ -81,7 +82,7 @@ const body = (deps: Deps) => {
   const { lib } = emptyGraph(deps.texts.empty, Moment.frozen)
   const { kinds, sandbox, instantiate, ownerOf, meta, isNode, Hole, Contested, RESERVED, HOLE } = deps.prelude.internal
   const { messages } = deps
-  const { declaration, answers, owned, evidence, same, orderFree, closed } = deps
+  const { declaration, answers, owned, coded, evidence, same, orderFree, closed } = deps
   /** A kind may stop at an undecided value: that is a decision to take, not a crash. */
   const kindsMayStop = true
 
@@ -89,6 +90,7 @@ const body = (deps: Deps) => {
     declared: messages.lawDeclared(),
     total: messages.lawTotal(),
     owner: messages.lawOwner(),
+    coded: messages.lawCoded(),
     unknown: messages.lawUnknown(),
     deterministic: messages.lawDeterministic(),
     orderFree: messages.lawOrderFree(),
@@ -266,6 +268,7 @@ const body = (deps: Deps) => {
             if (!same([JSON.stringify(a), JSON.stringify(b)])) fail(LAWS.deterministic, messages.twoCallsTwoAnswers())
             for (const x of (a.holes ?? []).filter((y): y is HoleSpec => !!y)) {
               if (!owned(x, ownerOf(n))) fail(LAWS.owner, messages.noOwner(x.what))
+              if (!coded(x)) fail(LAWS.coded, messages.noCode(x.what))
             }
             if (!evidence(a.status, g !== bare)) fail(LAWS.unknown, messages.statusWithoutEvidence(String(a.status)))
           }

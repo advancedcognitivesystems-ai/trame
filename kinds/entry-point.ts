@@ -1,6 +1,6 @@
 import {
   defineKind, field, optional, edge, optionalEdge, doc, hole, keysOf, edgesOf, Status, KindName, EdgeName, TriggerType, EntryField, EntryEdge,
-  OwnedField, Identity, type AnyNode, type Node, type Provides, type HasDeps, type Provided, type FileBody, type Signature, type View, type Graph,
+  OwnedField, Identity, type AnyNode, type Node, type Provides, type HasDeps, type Provided, type FileBody, type Signature, type View, type Graph, HoleCode,
 } from "../trame/kernel"
 import { verifiedStatus } from "./scenario"
 import { carriedBy, bySystem, overEveryOwner } from "./audience"
@@ -62,12 +62,12 @@ const kind = defineKind({
    */
   holes: (self, g) => {
     const audience = g.from(self).out(EntryEdge.audience).first()
-    if (!audience) return [hole.error(say.entryPointWithoutAudience(), self.owner)]
+    if (!audience) return [hole.error(HoleCode.entryWithoutAudience, say.entryPointWithoutAudience(), self.owner)]
     const t = self.field(F.trigger) as Trigger | undefined
     const called = !!t && g.lib.values.isObject(t) && t.type !== TriggerType.scheduled && t.type !== TriggerType.message
     return [
-      bySystem(audience) && called && hole.error(say.entryPointSystemCalled(audience.title, triggerWords(t)), self.owner),
-      ...ownedUnreached(self, audience, g).map((u) => hole.error(say.entryPointOwnedUnreached(
+      bySystem(audience) && called && hole.error(HoleCode.systemCalledByPeople, say.entryPointSystemCalled(audience.title, triggerWords(t)), self.owner),
+      ...ownedUnreached(self, audience, g).map((u) => hole.error(HoleCode.ownerNotCarried, say.entryPointOwnedUnreached(
         audience.title, u.data.title, g.lib.texts.concat(g.lib.lists.conjunction(u.identities.map(identityWord)).map(String)),
         g.lib.texts.concat(g.lib.lists.conjunction(u.environments.map((e) => e.title)).map(String)),
       ), self.owner)),

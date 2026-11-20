@@ -1,6 +1,6 @@
 import {
   defineKind, field, optional, edge, optionalEdge, hole, doc, keysOf, edgesOf, KindName, EdgeName, Severity, ObligationField,
-  type Node, type AnyNode, type SketchNode,
+  type Node, type AnyNode, type SketchNode, HoleCode,
 } from "../trame/kernel"
 import { adrKind } from "./adr"
 import words from "./words"
@@ -35,7 +35,7 @@ const kind = defineKind({
   edges,
 
   holes: (self, g) => [
-    !g.from(self).out(E.serves).exists() && !g.from(self).in(edgesOf(adrKind).appliedBy).exists() && hole.warning(say.obligationWithoutReason(), self.owner),
+    !g.from(self).out(E.serves).exists() && !g.from(self).in(edgesOf(adrKind).appliedBy).exists() && hole.warning(HoleCode.obligationWithoutReason, say.obligationWithoutReason(), self.owner),
   ],
 
   render(self, g) {

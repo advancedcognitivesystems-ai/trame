@@ -1,6 +1,6 @@
 import {
   defineKind, field, edge, optionalEdge, hole, doc, isHole, keysOf, fieldsOf, Status, KindName, EdgeName,
-  type Node, type Provides, type Constant, type Inline, type HoleSpec, type View, type Lib,
+  type Node, type Provides, type Constant, type Inline, type HoleSpec, type View, type Lib, HoleCode,
 } from "../trame/kernel"
 import { standardFields } from "./standard"
 import { vocabularyFields } from "./vocabulary"
@@ -259,13 +259,13 @@ const kind = defineKind({
     const out: HoleSpec[] = []
     const queries = queriesOf(self.field(F.queries), g.lib)
     // What tree-sitter keeps aside when it parses a query filters nothing: the pattern would catch too much.
-    for (const [name, operator] of self.result<Evaluation>()?.aside ?? []) out.push(hole.error(say.languageTheQueryUsesWhichTreeSitter(name, operator)))
+    for (const [name, operator] of self.result<Evaluation>()?.aside ?? []) out.push(hole.error(HoleCode.languageQueryInvalid, say.languageTheQueryUsesWhichTreeSitter(name, operator)))
     const watched = self.globals
     const words = watched ? Object.keys((watched.field(vocabularyFields.words) ?? {}) as Record<string, string>) : []
     const all = queries.map(([, c]) => String(c.value)).join(file.endOfLine)
-    for (const w of words) if (!all.includes(show(w))) out.push(hole.error(say.languageNoQueryWatchesTheGlobalOf(w, watched!.title)))
+    for (const w of words) if (!all.includes(show(w))) out.push(hole.error(HoleCode.languageGlobalUnwatched, say.languageNoQueryWatchesTheGlobalOf(w, watched!.title)))
     for (const r of self.result<Evaluation>()?.examples ?? []) {
-      if (!r.held) out.push(hole.error(r.error ? say.languageExampleNotRead(show(r.code), r.error) : say.languageExampleNotMetReads(show(r.code), show(r.found))))
+      if (!r.held) out.push(hole.error(HoleCode.languageExampleNotMet, r.error ? say.languageExampleNotRead(show(r.code), r.error) : say.languageExampleNotMetReads(show(r.code), show(r.found))))
     }
     return out
   },

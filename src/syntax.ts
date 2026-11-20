@@ -1,6 +1,6 @@
 /** Trame · Syntax */
 
-import { code, type LiteralKind, type Severity } from "../trame/kernel"
+import { code, type HoleCode, type LiteralKind, type Severity } from "../trame/kernel"
 import { standard } from "../kinds/standard"
 import { decision } from "../kinds/decision"
 import { catalog } from "../kinds/catalog"
@@ -85,6 +85,8 @@ export interface BodySource {
 /** What a check finds wrong in a body. */
 export interface DriverIssue {
   severity: typeof Severity.error | typeof Severity.warning
+  /** What is wrong, by its code (C4). */
+  code: HoleCode
   what: string
 }
 

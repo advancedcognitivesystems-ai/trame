@@ -1,4 +1,4 @@
-import { defineKind, field, optional, optionalEdge, edge, hole, doc, keysOf, Status, KindName, EdgeName, PackageField, PackageReport, type PackageJoins, type Evidence, type Lib, type Node, type View } from "../trame/kernel"
+import { defineKind, field, optional, optionalEdge, edge, hole, doc, keysOf, Status, KindName, EdgeName, PackageField, PackageReport, type PackageJoins, type Evidence, type Lib, type Node, type View, HoleCode } from "../trame/kernel"
 import words from "./words"
 
 const say = words()
@@ -71,7 +71,7 @@ const kind = defineKind({
       const newer = (g.packageVersions?.(self.ref) ?? []).filter((x) => named !== undefined && versions.below(named, x))
       const newest = g.lib.sequences.last([...newer].sort(versions.compare))
       const name = textOf(self, F.packageName, g.lib)
-      return named !== undefined && newest !== undefined ? [hole.warning(say.packageNewerVersion(name, named, newest), self.owner)] : []
+      return named !== undefined && newest !== undefined ? [hole.warning(HoleCode.packageNewer, say.packageNewerVersion(name, named, newest), self.owner)] : []
     }
     const name = textOf(self, F.packageName, g.lib)
     const version = textOf(self, F.version, g.lib)
@@ -79,18 +79,18 @@ const kind = defineKind({
     const out = []
     // The graph decides the version and the lockfile says what is installed: until trame manifest and npm install follow
     // the graph, the package is violated, but nothing stops the engine that writes the manifest from being assembled.
-    if (g.installed && installed === undefined) out.push(hole.warning(say.packageNotInstalled(name), self.owner))
-    if (installed !== undefined && installed !== version) out.push(hole.warning(say.packageDisagree(version, installed), self.owner))
+    if (g.installed && installed === undefined) out.push(hole.warning(HoleCode.packageNotInstalled, say.packageNotInstalled(name), self.owner))
+    if (installed !== undefined && installed !== version) out.push(hole.warning(HoleCode.packageVersionsDisagree, say.packageDisagree(version, installed), self.owner))
     const ceiling = optionalText(self, F.holdsBelow, g.lib)
-    if (ceiling !== undefined && !versions.below(version, ceiling)) out.push(hole.error(say.packageNotBelow(version, ceiling), self.owner))
-    if (ceiling !== undefined && optionalText(self, F.because, g.lib) === undefined) out.push(hole.warning(say.packageHeldWithoutReason(ceiling), self.owner))
+    if (ceiling !== undefined && !versions.below(version, ceiling)) out.push(hole.error(HoleCode.packageAboveCeiling, say.packageNotBelow(version, ceiling), self.owner))
+    if (ceiling !== undefined && optionalText(self, F.because, g.lib) === undefined) out.push(hole.warning(HoleCode.packageHeldWithoutReason, say.packageHeldWithoutReason(ceiling), self.owner))
     const audit = last(self, PackageReport.audit, g.lib)
     const outdated = last(self, PackageReport.outdated, g.lib)
     // Known, and reported: the package is violated, and what uses it; it does not stop an assembly, which must still be
     // able to ship the version that fixes it.
-    if (audit && audit.value > counts.zero) out.push(hole.warning(say.packageVulnerable(audit.value, audit.at), self.owner))
-    if (outdated && outdated.value > counts.zero) out.push(hole.warning(say.packageBehind(outdated.value, outdated.note ?? g.lib.texts.empty, outdated.at), self.owner))
-    if (!audit && !outdated) out.push(hole.warning(say.packageNoReport(), self.owner))
+    if (audit && audit.value > counts.zero) out.push(hole.warning(HoleCode.packageVulnerable, say.packageVulnerable(audit.value, audit.at), self.owner))
+    if (outdated && outdated.value > counts.zero) out.push(hole.warning(HoleCode.packageBehind, say.packageBehind(outdated.value, outdated.note ?? g.lib.texts.empty, outdated.at), self.owner))
+    if (!audit && !outdated) out.push(hole.warning(HoleCode.packageUnaudited, say.packageNoReport(), self.owner))
     return out
   },
 

@@ -1,4 +1,4 @@
-import { defineKind, field, optional, edge, optionalEdge, hole, doc, keysOf, fieldsOf, Status, KindName, EdgeName, ReviewState, ReviewEdge, type Inline, type Lib, type Node, type PathOf, type Provides, type View, ChangeWay} from "../trame/kernel"
+import { defineKind, field, optional, edge, optionalEdge, hole, doc, keysOf, fieldsOf, Status, KindName, EdgeName, ReviewState, ReviewEdge, type Inline, type Lib, type Node, type PathOf, type Provides, type View, ChangeWay, HoleCode} from "../trame/kernel"
 import { decision } from "./decision"
 import { waitingFor } from "./review"
 import words from "./words"
@@ -181,12 +181,12 @@ const kind = defineKind({
       return languages.map((language) => [language, r.reviews.filter((x) => x.review === review && x.language === language).length] as const)
     }
     return [
-      ...r.findings.map((f) => hole.error(say.datasetFinding(f.row, g.lib.texts.concat(f.what.filter(g.lib.values.isText))))),
+      ...r.findings.map((f) => hole.error(HoleCode.rowRefused, say.datasetFinding(f.row, g.lib.texts.concat(f.what.filter(g.lib.values.isText))))),
       // A review node that reviews the dataset says, for its role, what awaits a review: the dataset says it otherwise.
       ...(g.from(self).in(ReviewEdge.of).exists() ? [] : [
-        ...byLanguage(Review.changes).map(([language, n]) => hole.warning(say.datasetChangesAsked(n, language))),
-        ...byLanguage(Review.stale).map(([language, n]) => hole.warning(say.datasetStale(n, language))),
-        ...byLanguage(Review.none).map(([language, n]) => hole.warning(say.datasetAwaitReview(n, language))),
+        ...byLanguage(Review.changes).map(([language, n]) => hole.warning(HoleCode.reviewChangesAsked, say.datasetChangesAsked(n, language))),
+        ...byLanguage(Review.stale).map(([language, n]) => hole.warning(HoleCode.reviewStale, say.datasetStale(n, language))),
+        ...byLanguage(Review.none).map(([language, n]) => hole.warning(HoleCode.reviewAwaited, say.datasetAwaitReview(n, language))),
       ]),
     ]
   },

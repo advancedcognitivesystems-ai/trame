@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 19 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 20 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Poselia · The app in a browser
 
@@ -831,10 +831,10 @@ Package · `Data`
 
 - Owner: ghalaax
 - Name: data
-- Version: 0.4.0
+- Version: 0.5.0
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: ../../libs/data/releases/0.4.0
+- Its path: ../../libs/data/releases/0.5.0
 - Serves: Practise yoga on one's own, guided
 
 ### Geometry

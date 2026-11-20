@@ -1,4 +1,4 @@
-import { defineKind, field, optional, edge, optionalEdge, hole, doc, isHole, keysOf, KindName, EdgeName, QuantityEdge, QuantityField, type Node, type Provides, type Lib, type Quantity, ChangeWay} from "../trame/kernel"
+import { defineKind, field, optional, edge, optionalEdge, hole, doc, isHole, keysOf, KindName, EdgeName, QuantityEdge, QuantityField, type Node, type Provides, type Lib, type Quantity, ChangeWay, HoleCode} from "../trame/kernel"
 import { sourceOf } from "./standard"
 import words from "./words"
 
@@ -47,7 +47,7 @@ const kind = defineKind({
 
   holes: (self, g) => {
     const units = unitsOf(self.field(F.units), g.lib)
-    return [(g.lib.counts.isEmpty(units) || units.some(([, factor]) => factor <= g.lib.counts.zero)) && hole.error(say.quantityWithoutUnit())]
+    return [(g.lib.counts.isEmpty(units) || units.some(([, factor]) => factor <= g.lib.counts.zero)) && hole.error(HoleCode.quantityWithoutUnit, say.quantityWithoutUnit())]
   },
 
   /**

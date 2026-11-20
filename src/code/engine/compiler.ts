@@ -14,7 +14,7 @@ import type { Edge, GraphImpl } from "./graph"
 import type { Api as WiringApi } from "./wiring"
 import type { Api as CyclesApi } from "./cycles"
 import type { Api as DriversApi, LiteralFound, LiteralSource } from "../languages/drivers"
-import { AnyTarget, ArtifactField, ChangeWay, DeclarationPart, DeliveryField, EdgeMode, EdgeName, FieldType, KindHook, KindName, Moment, Origin, PackageField, PublicationState, QuantityEdge, QuantityField, ResolutionKind, ResolutionOutcome, Severity, Stage } from "../../../trame/kernel"
+import { AnyTarget, ArtifactField, ChangeWay, DeclarationPart, DeliveryField, EdgeMode, EdgeName, FieldType, KindHook, KindName, Moment, Origin, PackageField, PublicationState, QuantityEdge, QuantityField, ResolutionKind, ResolutionOutcome, Severity, Stage, HoleCode } from "../../../trame/kernel"
 import type { AnyNode, AnyKind, Constant, Evidence, HoleSpec, Noun, PartPublication, ProvidedBy, Reach, Resolution, StaticInfo } from "../../../trame/kernel"
 import type { PackageSource } from "#std/tooling"
 import type { Reached } from "./static-analysis"
@@ -28,6 +28,8 @@ import type { NodeEncodings, NodeModuleSpecifiers } from "#std/system"
 
 export interface Diag {
   severity: Severity
+  /** What is wrong, by its code (C4, since g111): a word of HoleCode, or of the library whose kind raised it. */
+  code?: string
   /** Where the problem comes from: a value to decide, a resolution of claims, a kind, the structure of the graph, publication, code. */
   origin?: Origin
   node?: AnyNode
@@ -635,10 +637,10 @@ const body = (deps: Deps) => {
     }
     const diags: Diag[] = []
     const title = (n: AnyNode) => infos.get(n)?.title ?? meta(n).id ?? meta(n).def.label.one
-    const error = (node: AnyNode, what: string, owner?: string) => diags.push({ severity: Severity.error, origin: Origin.graph, node, what, owner })
+    const error = (node: AnyNode, code: HoleCode, what: string, owner?: string) => diags.push({ severity: Severity.error, code, origin: Origin.graph, node, what, owner })
 
     for (const n of l.anonymous) {
-      error(n, messages.unnamedNode(meta(n).def.label.one))
+      error(n, HoleCode.nodeUnnamed, messages.unnamedNode(meta(n).def.label.one))
     }
 
     /** Declared edges (read in the current data), then edges inferred from the code ("depends on"). */
@@ -651,7 +653,7 @@ const body = (deps: Deps) => {
           const v = data[name]
           const targets = spec.mode === EdgeMode.many ? (Array.isArray(v) ? v : []) : v ? [v] : []
           if (check && !spec.optional && isEmpty(targets) && spec.mode === EdgeMode.one) {
-            error(n, messages.missingEdge(spec.label))
+            error(n, HoleCode.edgeMissing, messages.missingEdge(spec.label))
           }
           for (const t of targets) {
             if (!isNode(t)) continue
@@ -659,9 +661,9 @@ const body = (deps: Deps) => {
             if (!check) continue
             const tk = meta(t).def.name
             if (!spec.targets.includes(tk) && !spec.targets.includes(AnyTarget)) {
-              error(n, messages.wrongEdgeTarget(spec.label, [...spec.targets], tk))
+              error(n, HoleCode.edgeWrongTarget, messages.wrongEdgeTarget(spec.label, [...spec.targets], tk))
             }
-            if (!meta(t).id) error(n, messages.edgeToUnnamedNode(spec.label))
+            if (!meta(t).id) error(n, HoleCode.edgeToUnnamed, messages.edgeToUnnamedNode(spec.label))
           }
         }
         // The named dependencies: one edge per parameter.
@@ -671,14 +673,14 @@ const body = (deps: Deps) => {
           if (!v || !values.isObject(v)) continue
           for (const [param, t] of Object.entries(v as Record<string, unknown>)) {
             if (!isNode(t)) {
-              if (check) error(n, messages.parameterNotANode(param))
+              if (check) error(n, HoleCode.dependencyNotANode, messages.parameterNotANode(param))
               continue
             }
             edges.push({
               from: n, to: t, name: EdgeName.deps, label: messages.dependsOn(), inverse: messages.usedBy(),
               inferred: false, derived: false, active, param, stage: f.stage ?? Stage.execution,
             })
-            if (check && !meta(t).id) error(n, messages.parameterToUnnamedNode(param))
+            if (check && !meta(t).id) error(n, HoleCode.dependencyUnnamed, messages.parameterToUnnamedNode(param))
           }
         }
       }
@@ -688,7 +690,7 @@ const body = (deps: Deps) => {
           if (r.prop && r.prop in def.edges) continue // already declared
           // A body that names another node instead of receiving it as a parameter: a hidden dependency.
           if (check && r.prop && def.fields[r.prop]?.type === FieldType.body) {
-            diags.push({ severity: Severity.error, origin: Origin.code, node: n, what: messages.hiddenDependency(references.identifier(r.target)) })
+            diags.push({ severity: Severity.error, code: HoleCode.dependencyHidden, origin: Origin.code, node: n, what: messages.hiddenDependency(references.identifier(r.target)) })
           }
           const target = nodes.find((x) => refOf(x) === r.target)
           if (!target || target === n) continue
@@ -714,7 +716,7 @@ const body = (deps: Deps) => {
       if (!def.activeAt) continue
       const r = g0.track(() => def.activeAt!(g0.self(n) as never, g0))
       if (r.error instanceof Hole) continue // date not decided: it is considered in force
-      if (r.error) error(n, messages.hookFailed(KindHook.activeAt, message(r.error)))
+      if (r.error) error(n, HoleCode.kindHookFailed, messages.hookFailed(KindHook.activeAt, message(r.error)))
       else if (!r.value) inactive.add(n)
     }
     const frozenEdges = buildEdges(inactive, false)
@@ -726,26 +728,26 @@ const body = (deps: Deps) => {
       if (!def.claims) continue
       const r = g1.track(() => def.claims!(g1.self(n) as never, g1))
       if (r.error) {
-        if (!(r.error instanceof Hole)) error(n, messages.hookFailed(KindHook.claims, message(r.error)))
+        if (!(r.error instanceof Hole)) error(n, HoleCode.kindHookFailed, messages.hookFailed(KindHook.claims, message(r.error)))
         continue
       }
       for (const c of r.value ?? []) {
         if (!c.target) continue // missing edge: reported below
         const target = c.target.node
         if (!nodes.includes(target)) {
-          error(n, messages.claimOutsideGraph())
+          error(n, HoleCode.claimOutsideGraph, messages.claimOutsideGraph())
           continue
         }
         const tdef = meta(target).def
         if (references.isWholeNode(c.path)) {
           if (c.value !== REMOVE) {
-            error(n, messages.wholeNodeClaim(title(target)))
+            error(n, HoleCode.claimWholeNode, messages.wholeNodeClaim(title(target)))
             continue
           }
         } else {
           const first = references.firstSegment(c.path)
           if (!(first in tdef.fields) && !(first in tdef.edges)) {
-            error(n, messages.unknownClaimPath(c.path, title(target)))
+            error(n, HoleCode.claimUnknownPath, messages.unknownClaimPath(c.path, title(target)))
             continue
           }
         }
@@ -802,9 +804,8 @@ const body = (deps: Deps) => {
           const e = failed.error
           if (e instanceof Hole) contest(messages.decisionMissingToResolve(e.label))
           else {
-            error(reporter, e instanceof Contested
-              ? messages.resolutionReadsContested(def.name, e.message)
-              : messages.hookFailed(KindHook.resolve, message(e)))
+            if (e instanceof Contested) error(reporter, HoleCode.resolutionReadsContested, messages.resolutionReadsContested(def.name, e.message))
+            else error(reporter, HoleCode.kindHookFailed, messages.hookFailed(KindHook.resolve, message(e)))
             contest(messages.resolutionFailed())
           }
           continue
@@ -813,7 +814,7 @@ const body = (deps: Deps) => {
           ? { kind: r.kind, order: r.order.map((v) => v.ref), replaced: (r.replaced ?? []).map(([a, b]) => JSON.stringify([a.ref, b.ref])).sort() }
           : { kind: r.kind, arbiter: r.arbiter })
         if (norm(first.value!) !== norm(second.value!)) {
-          error(reporter, messages.orderLawBroken(def.name))
+          error(reporter, HoleCode.resolutionOrderLaw, messages.orderLawBroken(def.name))
           contest(messages.resolutionDependsOnOrder())
           continue
         }
@@ -823,7 +824,7 @@ const body = (deps: Deps) => {
           const outside = [...res.order, ...(res.replaced ?? []).flat()].filter((v) => !claimants.includes(v.node))
           const outsider = head(outside)
           if (outsider) {
-            error(reporter, messages.givenLawBroken(def.name, outsider.title))
+            error(reporter, HoleCode.resolutionGivenLaw, messages.givenLawBroken(def.name, outsider.title))
             contest(messages.resolutionReturnedOutsider())
             continue
           }
@@ -887,7 +888,7 @@ const body = (deps: Deps) => {
       const sub = edges.filter((e) => e.name === name)
       const [first] = sub
       const starts = deps.cycles.cycleStarts(nodes, (n) => sub.filter((e) => e.from === n).map((e) => e.to))
-      for (const n of starts) error(n, messages.cycleOnEdge(first.label))
+      for (const n of starts) error(n, HoleCode.edgeCycle, messages.cycleOnEdge(first.label))
     }
     if (kinds.some((k) => k.root)) {
       const reached = new Set(nodes.filter((n) => meta(n).def.root))
@@ -905,7 +906,7 @@ const body = (deps: Deps) => {
       }
       for (const n of nodes) {
         if (!reached.has(n) && !repealed(n)) {
-          diags.push({ severity: Severity.warning, origin: Origin.graph, node: n, what: messages.notConnectedToRoot(kinds.filter((k) => k.root).map((k) => k.label.one)) })
+          diags.push({ severity: Severity.warning, code: HoleCode.notConnectedToRoot, origin: Origin.graph, node: n, what: messages.notConnectedToRoot(kinds.filter((k) => k.root).map((k) => k.label.one)) })
         }
       }
     }
@@ -957,7 +958,7 @@ const body = (deps: Deps) => {
         byKey.set(k, cur)
         blocked.set(hole.key, byKey)
       },
-      onStatusError: (n, e) => error(n, messages.hookFailed(KindHook.status, e.message)),
+      onStatusError: (n, e) => error(n, HoleCode.kindHookFailed, messages.hookFailed(KindHook.status, e.message)),
     })
     // Effects: those of the node, plus those of everything it depends on at run time; of a dependency, what the node
     // uses of it when the engine can tell (the methods of a port its bodies call, since g82), all of it otherwise.
@@ -967,7 +968,7 @@ const body = (deps: Deps) => {
       try {
         own.set(n, def.effects ? def.effects(g.self(n) as never) : [])
       } catch (e) {
-        if (!(e instanceof Hole)) error(n, messages.hookFailed(KindHook.effects, message(e)))
+        if (!(e instanceof Hole)) error(n, HoleCode.kindHookFailed, messages.hookFailed(KindHook.effects, message(e)))
         own.set(n, [])
       }
     }
@@ -1031,7 +1032,7 @@ const body = (deps: Deps) => {
         const v = data[k]
         if (f.type !== FieldType.constants || v === undefined) continue
         if (!v || !values.isObject(v) || isHole(v)) {
-          error(n, messages.constantsExpected(f.label ?? k))
+          error(n, HoleCode.constantsExpected, messages.constantsExpected(f.label ?? k))
           continue
         }
         const params = new Set(depsOf(n).map(([p]) => p))
@@ -1039,13 +1040,13 @@ const body = (deps: Deps) => {
           const value = c && values.isObject(c) ? c.value : undefined
           const meaning = c && values.isObject(c) ? c.meaning : undefined
           if ((!values.isText(value) && !values.isNumber(value)) || !values.isText(meaning) || !meaning.trim()) {
-            error(n, messages.constantNeedsValueAndMeaning(name))
+            error(n, HoleCode.constantIncomplete, messages.constantNeedsValueAndMeaning(name))
           }
-          if (params.has(name)) error(n, messages.constantNamedLikeDependency(name))
+          if (params.has(name)) error(n, HoleCode.constantShadowsDependency, messages.constantNamedLikeDependency(name))
           // A refinement has the value of the constant it refines.
           const refined = c && values.isObject(c) ? (c as Constant).refines : undefined
           if (refined && constantsOf(refined.node)[refined.name] !== value) {
-            error(n, messages.refinementDiffers(name, references.join([meta(refined.node).id ?? refined.name, refined.name])))
+            error(n, HoleCode.refinementDiffers, messages.refinementDiffers(name, references.join([meta(refined.node).id ?? refined.name, refined.name])))
           }
         }
       }
@@ -1061,7 +1062,7 @@ const body = (deps: Deps) => {
           const deps = depsOf(n, f.stage ?? Stage.execution).map(([p]) => p)
           if (info) {
             for (const issue of graphDriver().check(inlineSource(l.root, info, k), { ambient: !!def.ambient, deps, root: l.root })) {
-              diags.push({ severity: issue.severity, origin: Origin.code, node: n, what: messages.inlineBodyIssue(issue.what) })
+              diags.push({ severity: issue.severity, code: issue.code, origin: Origin.code, node: n, what: messages.inlineBodyIssue(issue.what) })
             }
           }
           continue
@@ -1069,13 +1070,13 @@ const body = (deps: Deps) => {
         if (f.type !== FieldType.body || !isFileBody(v)) continue
         const driver = driverFor(v.language)
         if (!driver) {
-          diags.push({ severity: Severity.warning, origin: Origin.code, node: n, what: messages.noDriverForLanguage(v.language) })
+          diags.push({ severity: Severity.warning, code: HoleCode.languageWithoutDriver, origin: Origin.code, node: n, what: messages.noDriverForLanguage(v.language) })
           continue
         }
         const file = bodyPath({ graph: g, root: l.root, today }, n, v)
         const deps = depsOf(n, f.stage ?? Stage.execution).map(([p]) => p)
         for (const issue of driver.check({ key: file, file }, { ambient: !!def.ambient, deps, root: l.root })) {
-          diags.push({ severity: issue.severity, origin: Origin.code, node: n, what: messages.fileBodyIssue(v.file, issue.what) })
+          diags.push({ severity: issue.severity, code: issue.code, origin: Origin.code, node: n, what: messages.fileBodyIssue(v.file, issue.what) })
         }
       }
     }
@@ -1128,19 +1129,19 @@ const body = (deps: Deps) => {
     // The body still runs: a literal hides a meaning, it does not reach the platform.
     for (const n of nodes) {
       const literals = (l.literals.get(n) ?? []).flatMap((x) => x.items.map((i) => ({ ...i, file: x.file }))).filter((i) => !i.declaredBy)
-      if (any(literals)) diags.push({ severity: Severity.error, origin: Origin.code, node: n, what: messages.literalsInBody(literals.map((i) => ({ value: i.value, where: positions.reference(i.file, i.line) }))) })
+      if (any(literals)) diags.push({ severity: Severity.error, code: HoleCode.literalInBody, origin: Origin.code, node: n, what: messages.literalsInBody(literals.map((i) => ({ value: i.value, where: positions.reference(i.file, i.line) }))) })
     }
     // A record of evidence changed after it was recorded is not counted: an error on the node it speaks of.
     for (const e of l.broken ?? []) {
       const n = nodes.find((x) => refOf(x) === e.node)
       const what = messages.sealBroken(e.source ?? empty, e.at, e.by)
-      if (n) error(n, what)
-      else diags.push({ severity: Severity.error, origin: Origin.graph, where: deps.layout.evidence, what })
+      if (n) error(n, HoleCode.sealBroken, what)
+      else diags.push({ severity: Severity.error, code: HoleCode.sealBroken, origin: Origin.graph, where: deps.layout.evidence, what })
     }
     // The same rule for the language the project writes: a value a kind or a view needs comes from the graph, through the
     // engine, and its words from its catalog. One error per file, with each place.
     for (const x of l.language) {
-      diags.push({ severity: Severity.error, origin: Origin.code, where: x.file, what: messages.literalsInLanguage(x.file, x.items.map((i) => ({ value: i.value, where: positions.reference(x.file, i.line) }))) })
+      diags.push({ severity: Severity.error, code: HoleCode.literalInLanguage, origin: Origin.code, where: x.file, what: messages.literalsInLanguage(x.file, x.items.map((i) => ({ value: i.value, where: positions.reference(x.file, i.line) }))) })
     }
 
     for (const n of nodes) {
@@ -1149,7 +1150,7 @@ const body = (deps: Deps) => {
       try {
         results.set(n, await def.evaluate(g.self(n) as never, g))
       } catch (e) {
-        if (!(e instanceof Hole)) error(n, messages.hookFailed(KindHook.evaluate, message(e)))
+        if (!(e instanceof Hole)) error(n, HoleCode.kindHookFailed, messages.hookFailed(KindHook.evaluate, message(e)))
       }
     }
     for (const n of nodes) g.status(n)
@@ -1182,7 +1183,7 @@ const body = (deps: Deps) => {
         const what = first === def.main || first === def.callable
           ? messages.decide(title(n), undefined, forCase)
           : messages.decide(title(n), def.fields[first]?.label ?? first, forCase)
-        diags.push({ severity: Severity.blocking, origin: Origin.value, node: n, what, owner: ownerOf(n), effect: effectOf(n, [path]) })
+        diags.push({ severity: Severity.blocking, code: HoleCode.valueUndecided, origin: Origin.value, node: n, what, owner: ownerOf(n), effect: effectOf(n, [path]) })
       }
     }
 
@@ -1190,6 +1191,7 @@ const body = (deps: Deps) => {
       const paths = r.paths.map((p) => (references.isWholeNode(p) ? messages.wholeNode() : p))
       diags.push({
         severity: Severity.blocking,
+        code: HoleCode.claimsContested,
         origin: Origin.resolution,
         node: r.target,
         what: messages.settle(title(r.target), paths, r.claimants.map((c) => ({ title: title(c), owner: ownerOf(c) }))),
@@ -1205,11 +1207,11 @@ const body = (deps: Deps) => {
       try {
         list = def.holes(g.self(n) as never, g).filter((x): x is HoleSpec => !!x)
       } catch (e) {
-        if (!(e instanceof Hole)) error(n, messages.hookFailed(KindHook.holes, message(e)))
+        if (!(e instanceof Hole)) error(n, HoleCode.kindHookFailed, messages.hookFailed(KindHook.holes, message(e)))
       }
       for (const x of list) {
         const on = x.on ? x.on.node : n
-        diags.push({ severity: x.severity, origin: Origin.kind, node: on, by: n, what: x.what, owner: x.owner ?? ownerOf(on) ?? ownerOf(n), effect: x.effect })
+        diags.push({ severity: x.severity, code: x.code, origin: Origin.kind, node: on, by: n, what: x.what, owner: x.owner ?? ownerOf(on) ?? ownerOf(n), effect: x.effect })
       }
     }
 

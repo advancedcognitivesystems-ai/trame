@@ -6,7 +6,7 @@ import { decision } from "../kinds/decision"
 import { adr } from "../kinds/adr"
 import { ExecutableSpecification, SingleSource, SampleCount, ClaimSets, DevDebounce, SampledOwners, SampledValues, SeverityOrder, CandidateDates, StructureDraws } from "./product"
 import {
-  CompleteDeclaration, AnswersWithoutCrashing, BlockingHoleHasOwner, UnknownWithoutEvidence, SameInputSameAnswer, OrderFree, ClosedResolution,
+  CompleteDeclaration, AnswersWithoutCrashing, BlockingHoleHasOwner, HoleHasCode, UnknownWithoutEvidence, SameInputSameAnswer, OrderFree, ClosedResolution,
   CompleteViewDeclaration, IntermediateFormatOnly, TrustedExtensions,
 } from "./laws"
 import { Http, MediaTypes, ServerSentEvents, Uri } from "#std/web"
@@ -304,7 +304,7 @@ export const Laws = fn({
     samples: SampleCount, claimSets: ClaimSets, generator: Generator, owners: SampledOwners, sampled: SampledValues, iso: Iso8601, references: References,
     reading: FileReading, paths: Paths, project: Project, graph: GraphApi, prelude: Prelude, names: LanguageNames,
     counts: Counts, sequences: Sequences, texts: Texts, messages: LawMessages,
-    declaration: CompleteDeclaration, answers: AnswersWithoutCrashing, owned: BlockingHoleHasOwner, evidence: UnknownWithoutEvidence,
+    declaration: CompleteDeclaration, answers: AnswersWithoutCrashing, owned: BlockingHoleHasOwner, coded: HoleHasCode, evidence: UnknownWithoutEvidence,
     same: SameInputSameAnswer, orderFree: OrderFree, closed: ClosedResolution,
   },
   body: code.file<typeof import("./code/engine/laws").default>("./code/engine/laws.ts"),

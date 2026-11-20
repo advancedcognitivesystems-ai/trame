@@ -1,4 +1,4 @@
-import { defineKind, field, optional, edge, optionalEdge, hole, doc, keysOf, AnyTarget, Status, KindName, EdgeName, ChangeWay, type Block, type Lib, type Node, type View } from "../trame/kernel"
+import { defineKind, field, optional, edge, optionalEdge, hole, doc, keysOf, AnyTarget, Status, KindName, EdgeName, ChangeWay, type Block, type Lib, type Node, type View, HoleCode } from "../trame/kernel"
 import words from "./words"
 
 const say = words()
@@ -64,8 +64,8 @@ const kind = defineKind({
 
   holes: (self, g) => {
     const appliers = g.from(self).out(E.appliedBy).nodes()
-    if (g.lib.counts.isEmpty(appliers)) return [hole.warning(say.adrNothingAppliesItYetAWish(), self.owner)]
-    return [appliers.every((v) => v.status === undefined && !offered(v)) && hole.error(say.adrNothingProvableAppliesIt(), self.owner)]
+    if (g.lib.counts.isEmpty(appliers)) return [hole.warning(HoleCode.adrNotApplied, say.adrNothingAppliesItYetAWish(), self.owner)]
+    return [appliers.every((v) => v.status === undefined && !offered(v)) && hole.error(HoleCode.adrUnprovable, say.adrNothingProvableAppliesIt(), self.owner)]
   },
 
   status(self, g) {

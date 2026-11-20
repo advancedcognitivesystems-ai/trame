@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 19 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 20 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Data · Documents
 

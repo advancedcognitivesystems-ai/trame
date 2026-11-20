@@ -102,9 +102,9 @@ const body = (deps: Deps): DocumentSyntax => {
       heading(depth > headings.section ? headings.nested : headings.section, none, escape(title)) + joined(content))),
     summary: (line) => one(classed(html.div, classes.summary, line)),
     issues: (issues) => one(table(
-      [messages.severityHeader(), messages.whatHeader(), messages.whereHeader(), messages.ownerHeader(), messages.effectHeader()],
+      [messages.severityHeader(), messages.codeHeader(), messages.whatHeader(), messages.whereHeader(), messages.ownerHeader(), messages.effectHeader()],
       issues.map((x) => [
-        severity(x.words, x.severity), escape(x.what),
+        severity(x.words, x.severity), x.code === undefined ? empty : element(html.code, none, escape(x.code)), escape(x.what),
         x.whereText !== undefined ? element(html.code, none, escape(x.whereText)) : x.whereRef ?? empty,
         x.owner ? classed(html.span, classes.person, escape(x.owner)) : escape(messages.unassigned()), escape(optional(x.effect)),
       ]),

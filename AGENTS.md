@@ -63,7 +63,9 @@ Trame tells you what is left; read it before writing code.
 
 - **The open issues** of the build summary and of `docs/index.md`: *blocking* (a value nobody decided, a claim nobody
   settled), *error* (a broken rule, a literal in a body, a realization that does more than its port promises), *warning*
-  (no measure, no acceptance criteria, nothing applying an ADR). Each names its node and its owner.
+  (no measure, no acceptance criteria, nothing applying an ADR). Each names its node, its owner and its code (C4, g111:
+  `value-undecided`, `literal-in-body`, `check-stale`…, the words of the prelude's `HoleCode`; a library's kind names
+  its own, data's `entity-…`), by which a project will raise it.
 - **`docs/owners.md`**: what each person must decide, settle or watch.
 - **`docs/review.md`**: what the declarations not yet published change.
 - **`./trame.sh view impact <node>`** before changing a node: everything that depends on it. **`why <node>`**: its
@@ -372,9 +374,12 @@ Kinds and views are files, not nodes; they hold no literal either. They get the 
   `positions`, `references` (paths), `settings`, `draws`, `layout`, `declarations` (the language code is shown in),
   `versions`, `units`, `shown` (visible text).
 - **Words**: in `kinds/words.ts`, `views/words.ts`, `engine-views/words.ts`; a sentence with pieces returns `Inline[]`.
-- **Laws**: every kind answers on any value without crashing, names an owner for a blocking hole, says nothing held or
-  violated without evidence, gives the same answer twice, settles claims whatever their order. `./trame.sh test-kinds`
-  plays them on drawn values; a kind that breaks one refuses the build.
+- **Holes**: a hole names its code first, then what it says and its owner: `hole.warning(HoleCode.ownerMissing,
+  say.ownerMissing(), self.owner)`. A new problem gets a new word of `HoleCode` (a library's kind, a word of its own
+  catalog: `say.entityCodeReseeded()`).
+- **Laws**: every kind answers on any value without crashing, names an owner for a blocking hole, says what is wrong by
+  its code, says nothing held or violated without evidence, gives the same answer twice, settles claims whatever their
+  order. `./trame.sh test-kinds` plays them on drawn values; a kind that breaks one refuses the build.
 - Destructure instead of indexing (`const [, second] = xs`), test types with `g.lib.values`, name a wired value by the
   node's `ref`, not by a text.
 
@@ -568,6 +573,10 @@ elements), a port answered differently in several environments is answered as in
   scenarios, which deliver Poselia's page) reads the code without it, and its criteria fail.
 - A program assembled for elsewhere (a page) wires a value that is not JSON (a quantity's units) from its declaration,
   through the frozen prelude: a kind's `provide` reads `self.field(…)` there, and nothing of the graph (`ctx.g` is absent).
+- The prelude's kind API is the API of every library's kinds, frozen versions included: when it changes (g111: a hole
+  names its code first), a frozen version that calls it the old way refuses the project that imports it (Poselia on
+  data 0.4.0). Release the library with its kinds moved (data 0.5.0), move the project's reference by hand, then
+  advance. A catalog's message gives a text or pieces of one, never an object: one message per word.
 - `out/local/trame-cli.ts` reads the bodies as they are but wires them as they were assembled: after giving an entry
   point a new dependency, `./trame.sh assemble TrameCli --env Local` before running a command through it.
 

@@ -1,6 +1,6 @@
 import {
   defineKind, field, optional, edge, optionalEdge, hole, doc, keysOf, Status, KindName, EdgeName, ArtifactField, ArtifactEdge, DeliveryField, EvidenceSource,
-  ShipmentEdge, type Node, type View, type Evidence, type Provides, type Graph,
+  ShipmentEdge, type Node, type View, type Evidence, type Provides, type Graph, HoleCode,
 } from "../trame/kernel"
 import { wiredBy } from "./scenario"
 import words from "./words"
@@ -137,13 +137,13 @@ const kind = defineKind({
   status: (self, g) => (builtNow(self, g) === undefined ? Status.unknown : Status.held),
 
   holes: (self, g) => [
-    pathOf(self, g) === undefined && hole.error(say.artifactWithoutPath(), self.owner),
-    !isVersion(self) && !g.from(self).out(E.producedBy).exists() && hole.error(say.artifactWithoutProducer(), self.owner),
-    isVersion(self) && g.from(self).out(E.producedBy).exists() && hole.error(say.artifactVersionProduced(), self.owner),
-    g.from(self).out(E.producedBy).first()?.kind === KindName.syntax && !g.from(self).out(E.runs).exists() && hole.error(say.artifactRunsNothing(), self.owner),
-    g.from(self).out(E.publishes).exists() && g.from(self).out(E.producedBy).first()?.kind !== KindName.syntax && hole.error(say.artifactPublishesWithoutWriter(), self.owner),
-    builtFingerprint(self) === undefined && hole.warning(say.artifactNotBuilt(), self.owner),
-    builtFingerprint(self) !== undefined && builtNow(self, g) === undefined && hole.warning(say.artifactBuiltFromOlderCode(), self.owner),
+    pathOf(self, g) === undefined && hole.error(HoleCode.artifactWithoutPath, say.artifactWithoutPath(), self.owner),
+    !isVersion(self) && !g.from(self).out(E.producedBy).exists() && hole.error(HoleCode.artifactWithoutProducer, say.artifactWithoutProducer(), self.owner),
+    isVersion(self) && g.from(self).out(E.producedBy).exists() && hole.error(HoleCode.artifactVersionProduced, say.artifactVersionProduced(), self.owner),
+    g.from(self).out(E.producedBy).first()?.kind === KindName.syntax && !g.from(self).out(E.runs).exists() && hole.error(HoleCode.artifactRunsNothing, say.artifactRunsNothing(), self.owner),
+    g.from(self).out(E.publishes).exists() && g.from(self).out(E.producedBy).first()?.kind !== KindName.syntax && hole.error(HoleCode.artifactPublishesWithoutWriter, say.artifactPublishesWithoutWriter(), self.owner),
+    builtFingerprint(self) === undefined && hole.warning(HoleCode.artifactNotBuilt, say.artifactNotBuilt(), self.owner),
+    builtFingerprint(self) !== undefined && builtNow(self, g) === undefined && hole.warning(HoleCode.artifactStale, say.artifactBuiltFromOlderCode(), self.owner),
   ],
 
   render(self, g) {

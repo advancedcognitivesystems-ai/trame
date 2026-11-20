@@ -1,4 +1,4 @@
-import { defineKind, field, optional, hole, keysOf, KindName, ChangeWay } from "../trame/kernel"
+import { defineKind, field, optional, hole, keysOf, KindName, ChangeWay, HoleCode } from "../trame/kernel"
 import words from "./words"
 
 const say = words()
@@ -22,5 +22,5 @@ export const goal = defineKind({
   /** What a goal says is stated: once published, a new goal that repeals it says another (D1). */
   statement: ChangeWay.stated,
 
-  holes: (self) => [self.field(F.owner) === undefined && hole.warning(say.ownerMissing())],
+  holes: (self) => [self.field(F.owner) === undefined && hole.warning(HoleCode.ownerMissing, say.ownerMissing())],
 })

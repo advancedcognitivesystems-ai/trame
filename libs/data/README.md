@@ -10,7 +10,8 @@ next (a person's breath on their device, the reservations of a database) is desc
   version a deployment kept (trame ship records the description of every entity a shipment reaches). An entity says
   whose its records are (`ownedBy: { person: "driver" }`, a tenant too, since 0.4.0): an entry point that reaches them
   is for an audience that carries those identities, or one that reaches every owner's (C6); identified (C7), a caller
-  reads and writes only its own.
+  reads and writes only its own. Each problem it raises has its code (0.5.0, C4): `entity-reseeded`,
+  `entity-key-unknown`, `entity-field-without-type`, `entity-owner-field-unknown`, `entity-migration-undecided`.
 - `src/documents.ts` — an entity kept whole, as one document: the port `Documents`, read migrated and checked, written
   with its version; `DocumentsInPreferences` keeps it in std's preferences.
 - `src/records.ts` — an entity kept as many records: the port `Records` (prepare, find by key, insert, update, count, a

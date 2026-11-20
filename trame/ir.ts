@@ -33,6 +33,158 @@ export type Status = ValueOf<typeof Status>
 export const Severity = { blocking: "blocking", error: "error", warning: "warning" } as const
 export type Severity = ValueOf<typeof Severity>
 
+/**
+ * The problems the language and the engine raise, each by its code (C4): the code says what is wrong, the message says
+ * it of a node. A project raises the codes it chooses, never lowers one; a library's kind names its own.
+ */
+export const HoleCode = {
+  // What a node says of itself.
+  ownerMissing: "owner-missing",
+  nodeUnnamed: "node-unnamed",
+  notConnectedToRoot: "not-connected-to-root",
+  valueUndecided: "value-undecided",
+  // Edges and dependencies.
+  edgeMissing: "edge-missing",
+  edgeWrongTarget: "edge-wrong-target",
+  edgeToUnnamed: "edge-to-unnamed",
+  edgeCycle: "edge-cycle",
+  dependencyNotANode: "dependency-not-a-node",
+  dependencyUnnamed: "dependency-unnamed",
+  dependencyHidden: "dependency-hidden",
+  dependencyUndeclared: "dependency-undeclared",
+  dependencyUnused: "dependency-unused",
+  dependsOnRepealed: "depends-on-repealed",
+  // Claims, and how a kind settles them.
+  claimOutsideGraph: "claim-outside-graph",
+  claimWholeNode: "claim-whole-node",
+  claimUnknownPath: "claim-unknown-path",
+  claimsContested: "claims-contested",
+  resolutionReadsContested: "resolution-reads-contested",
+  resolutionOrderLaw: "resolution-order-law",
+  resolutionGivenLaw: "resolution-given-law",
+  kindHookFailed: "kind-hook-failed",
+  // Bodies, constants and literals.
+  bodyNotFound: "body-not-found",
+  moduleNotFound: "module-not-found",
+  bodyNotInItsLanguage: "body-not-in-its-language",
+  bodyWithoutDefaultExport: "body-without-default-export",
+  languageWithoutDriver: "language-without-driver",
+  literalInBody: "literal-in-body",
+  literalInLanguage: "literal-in-language",
+  constantsExpected: "constants-expected",
+  constantIncomplete: "constant-incomplete",
+  constantShadowsDependency: "constant-shadows-dependency",
+  refinementDiffers: "refinement-differs",
+  // Effects and the platform.
+  platformAccess: "platform-access",
+  effectUndescribed: "effect-undescribed",
+  effectBeyondPort: "effect-beyond-port",
+  realizationExceedsPort: "realization-exceeds-port",
+  functionNotSynchronous: "function-not-synchronous",
+  // Requirements, rules and their criteria.
+  requirementWithoutCriteria: "requirement-without-criteria",
+  requirementNotFollowed: "requirement-not-followed",
+  criterionNotMet: "criterion-not-met",
+  ruleAsBody: "rule-as-body",
+  ruleWithoutReason: "rule-without-reason",
+  rulesLookAlike: "rules-look-alike",
+  constraintNotWhole: "constraint-not-whole",
+  constraintRefuses: "constraint-refuses",
+  constraintRefused: "constraint-refused",
+  // Decisions, assumptions, amendments.
+  decisionOutsideRange: "decision-outside-range",
+  decisionExceedsCap: "decision-exceeds-cap",
+  decisionCapUncheckable: "decision-cap-uncheckable",
+  assumptionExpired: "assumption-expired",
+  assumptionToCheck: "assumption-to-check",
+  amendmentWithoutEffect: "amendment-without-effect",
+  amendmentSameValue: "amendment-same-value",
+  amendmentWithoutSource: "amendment-without-source",
+  amendmentAwaitsApproval: "amendment-awaits-approval",
+  amendmentEndsOnNothing: "amendment-ends-on-nothing",
+  amendmentEndsSoon: "amendment-ends-soon",
+  // Architecture: ADRs, ports, bindings, components, audiences.
+  adrNotApplied: "adr-not-applied",
+  adrUnprovable: "adr-unprovable",
+  portUnrealized: "port-unrealized",
+  portRealizedTwice: "port-realized-twice",
+  bindingChoosesNothing: "binding-chooses-nothing",
+  bindingInNoEnvironment: "binding-in-no-environment",
+  bindingChoosesNoPort: "binding-chooses-no-port",
+  bindingChoosesTwice: "binding-chooses-twice",
+  bindingWithoutPattern: "binding-without-pattern",
+  bindingPatternBroken: "binding-pattern-broken",
+  realizationReachedDirectly: "realization-reached-directly",
+  implementationNamesEnvironments: "implementation-names-environments",
+  componentUnwirable: "component-unwirable",
+  deliveryUnknownTarget: "delivery-unknown-target",
+  deliveryComponentElsewhere: "delivery-component-elsewhere",
+  entryWithoutAudience: "entry-without-audience",
+  systemCalledByPeople: "system-called-by-people",
+  ownerNotCarried: "owner-not-carried",
+  audienceCarriesUnknown: "audience-carries-unknown",
+  audienceNotIdentified: "audience-not-identified",
+  // Standards, quantities, words, the languages code is written in.
+  quantityWithoutUnit: "quantity-without-unit",
+  translationSameLanguage: "translation-same-language",
+  lawBroken: "law-broken",
+  syntaxExampleNotMet: "syntax-example-not-met",
+  languageExampleNotMet: "language-example-not-met",
+  languageQueryInvalid: "language-query-invalid",
+  languageGlobalUnwatched: "language-global-unwatched",
+  // What verifies code.
+  scenarioFailed: "scenario-failed",
+  verifiesUnrun: "verifies-unrun",
+  checkAwaited: "check-awaited",
+  checkFailed: "check-failed",
+  checkStale: "check-stale",
+  // Data and its reviews.
+  rowRefused: "row-refused",
+  reviewAwaited: "review-awaited",
+  reviewChangesAsked: "review-changes-asked",
+  reviewStale: "review-stale",
+  // Service levels.
+  sloUnmeasured: "slo-unmeasured",
+  sloThresholdMeasuresNothing: "slo-threshold-measures-nothing",
+  sloWindowMeasuresNothing: "slo-window-measures-nothing",
+  sloPercentileOutside: "slo-percentile-outside",
+  // Packages.
+  packageNewer: "package-newer",
+  packageBehind: "package-behind",
+  packageNotInstalled: "package-not-installed",
+  packageVersionsDisagree: "package-versions-disagree",
+  packageAboveCeiling: "package-above-ceiling",
+  packageHeldWithoutReason: "package-held-without-reason",
+  packageVulnerable: "package-vulnerable",
+  packageUnaudited: "package-unaudited",
+  // The SDLC: artefacts, obligations, policies, shipments, evidence.
+  artifactWithoutPath: "artifact-without-path",
+  artifactWithoutProducer: "artifact-without-producer",
+  artifactVersionProduced: "artifact-version-produced",
+  artifactRunsNothing: "artifact-runs-nothing",
+  artifactPublishesWithoutWriter: "artifact-publishes-without-writer",
+  artifactNotBuilt: "artifact-not-built",
+  artifactStale: "artifact-stale",
+  obligationWithoutReason: "obligation-without-reason",
+  obligationWeightless: "obligation-weightless",
+  policyFamilyTwice: "policy-family-twice",
+  shipmentAwaits: "shipment-awaits",
+  shipmentNotPreceded: "shipment-not-preceded",
+  shipmentGap: "shipment-gap",
+  roleEmpty: "role-empty",
+  sealBroken: "seal-broken",
+  // Generations.
+  releaseDateInvalid: "release-date-invalid",
+  releaseLanguageInvalid: "release-language-invalid",
+  releaseWithoutFingerprint: "release-without-fingerprint",
+  releaseAssembledByOther: "release-assembled-by-other",
+  // Publication.
+  publishedRemoved: "published-removed",
+  publishedOutdated: "published-outdated",
+  publishedChanged: "published-changed",
+} as const
+export type HoleCode = ValueOf<typeof HoleCode>
+
 /** The result of one check (a criterion, a scenario step). */
 export const Outcome = { passed: "passed", failed: "failed", blocked: "blocked", error: "error" } as const
 export type Outcome = ValueOf<typeof Outcome>
@@ -300,6 +452,8 @@ export interface Fact {
 
 export interface IssueItem {
   severity: Severity
+  /** What is wrong, by its code (C4): a word of HoleCode, or of the library whose kind raised it. */
+  code?: string
   what: string
   where?: NodeRef | string
   /** File and line, when the problem is about a node. */

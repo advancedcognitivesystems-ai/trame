@@ -2,7 +2,7 @@
 // A published declaration is not modified: it is amended. It is not deleted: it is repealed. Since g108 a publication
 // freezes the parts of a declaration its kind says people decide (chosen, cited, stated), not its code.
 
-import { ChangeWay, Origin, PublicationState, Severity } from "../../../trame/kernel"
+import { ChangeWay, HoleCode, Origin, PublicationState, Severity } from "../../../trame/kernel"
 import type { AnyNode, PartPublication, ProvidedBy } from "../../../trame/kernel"
 import type { FileReading, Layout, Paths, Prelude } from "../../architecture"
 import type { OutputMessages } from "../../messages"
@@ -68,16 +68,16 @@ const body = (deps: Deps) => {
     const out: Diag[] = []
     for (const ref of Object.keys(lock.published)) {
       if (c.nodes.some((x) => refOf(x) === ref)) continue
-      out.push({ severity: Severity.error, origin: Origin.publication, module: deps.references.module(ref), where: deps.codeSpan(ref), what: messages.publishedRemoved() })
+      out.push({ severity: Severity.error, code: HoleCode.publishedRemoved, origin: Origin.publication, module: deps.references.module(ref), where: deps.codeSpan(ref), what: messages.publishedRemoved() })
     }
     for (const [node, parts] of c.publication ?? []) {
       if (lock.published[refOf(node)] === undefined) continue
       if (parts.some((p) => p.state === PublicationState.outdated)) {
-        out.push({ severity: Severity.error, origin: Origin.publication, node, what: messages.publishedOutdated() })
+        out.push({ severity: Severity.error, code: HoleCode.publishedOutdated, origin: Origin.publication, node, what: messages.publishedOutdated() })
         continue
       }
       for (const p of parts.filter((x) => x.state === PublicationState.changed)) {
-        out.push({ severity: Severity.error, origin: Origin.publication, node, what: changedPart(p) })
+        out.push({ severity: Severity.error, code: HoleCode.publishedChanged, origin: Origin.publication, node, what: changedPart(p) })
       }
     }
     return out

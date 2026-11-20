@@ -6,9 +6,9 @@
 
 ## Open issues
 
-| Severity | What | Where | Owner | Consequence |
-|---|---|---|---|---|
-| warning | Awaits the approval of lea, who answers for “Free cancellation period” | [Ultra period requested by support](#SupportUltraPeriod) | lea |  |
+| Severity | Code | What | Where | Owner | Consequence |
+|---|---|---|---|---|---|
+| warning | `amendment-awaits-approval` | Awaits the approval of lea, who answers for “Free cancellation period” | [Ultra period requested by support](#SupportUltraPeriod) | lea |  |
 
 ## Amendment
 

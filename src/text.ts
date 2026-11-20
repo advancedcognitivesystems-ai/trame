@@ -31,12 +31,12 @@ export const TerminalText = decision<{ space: string; indent: string; maxBlankLi
  * Columns in the terminal
  * The terminal shows tables as columns of text: each column as wide as its widest cell, then a gap. Lines written one
  * at a time (a report as it goes, the issues of a list, the layers of the graph) do not know their widest cell: their
- * columns have a fixed width, the rank of a layer, the severity and the source of an issue, the name of a kind or of a
+ * columns have a fixed width, the rank of a layer, the severity, the code and the source of an issue, the name of a kind or of a
  * view. A text too wide for its column still keeps the smallest gap before the next one.
  */
-export const TerminalColumns = decision<{ gap: number; minimumGap: number; widths: { rank: number; severity: number; source: number; name: number } }>({
+export const TerminalColumns = decision<{ gap: number; minimumGap: number; widths: { rank: number; severity: number; code: number; source: number; name: number } }>({
   owner: "trame",
-  value: { gap: 2, minimumGap: 1, widths: { rank: 9, severity: 15, source: 22, name: 14 } },
+  value: { gap: 2, minimumGap: 1, widths: { rank: 9, severity: 15, code: 30, source: 22, name: 14 } },
 })
 
 /**

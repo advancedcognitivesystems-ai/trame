@@ -81,9 +81,9 @@ const body = (deps: Deps): DocumentSyntax => {
     section: (title, id, content, depth) => present(id && [anchor(id)], [heading(depth, title)], ...content),
     summary: (line) => [[blockQuote(strong(line))]],
     issues: (issues) => [table(
-      [messages.severityHeader(), messages.whatHeader(), messages.whereHeader(), messages.ownerHeader(), messages.effectHeader()],
+      [messages.severityHeader(), messages.codeHeader(), messages.whatHeader(), messages.whereHeader(), messages.ownerHeader(), messages.effectHeader()],
       issues.map((x) => [
-        x.words, tableCell(x.what),
+        x.words, x.code === undefined ? empty : codeSpan(x.code), tableCell(x.what),
         x.whereText !== undefined ? tableCell(x.whereText) : x.whereRef ?? empty,
         x.owner ?? messages.unassigned(), tableCell(optional(x.effect)),
       ]),

@@ -1,6 +1,6 @@
 import {
   defineKind, field, edge, optional, optionalEdge, hole, doc, keysOf, fieldsOf, edgesOf, isNode, Status, Severity, KindName, EdgeName, Direction,
-  type Graph, type View, type GraphSketch, type SketchNode, type RuleFinding, type AnyNode,
+  type Graph, type View, type GraphSketch, type SketchNode, type RuleFinding, type AnyNode, HoleCode,
 } from "../trame/kernel"
 import { adrKind } from "./adr"
 import words from "./words"
@@ -99,7 +99,7 @@ export const rule = defineKind({
   holes: (self, g) => [
     ...(self.result<Violation[]>() ?? []).map((v) =>
       hole.on(v.on, (self.field(F.severity) === Severity.warning ? hole.warning : hole.error)(say.ruleRule(v.what, self.title), self.owner))),
-    ...(g.from(self).out(E.serves).exists() || g.from(self).in(edgesOf(adrKind).appliedBy).exists() ? [] : [hole.warning(say.ruleWithoutReason())]),
+    ...(g.from(self).out(E.serves).exists() || g.from(self).in(edgesOf(adrKind).appliedBy).exists() ? [] : [hole.warning(HoleCode.ruleWithoutReason, say.ruleWithoutReason())]),
   ],
 
   render(self, g) {
