@@ -1062,7 +1062,7 @@
       "id": "browser.BrowserAmendments",
       "kind": "implementation",
       "title": "Amendments sent to trame dev",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1081,7 +1081,7 @@
       "id": "browser.BrowserDecompression",
       "kind": "implementation",
       "title": "The browser's gzip",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1098,7 +1098,7 @@
       "id": "browser.BrowserFeed",
       "kind": "implementation",
       "title": "The globals of the page, and trame dev",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1116,7 +1116,7 @@
       "id": "browser.BrowserMemory",
       "kind": "implementation",
       "title": "Local storage",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1132,7 +1132,7 @@
       "id": "browser.BrowserWindow",
       "kind": "implementation",
       "title": "The browser's window",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1150,7 +1150,7 @@
       "id": "browser.ExplorerFigures",
       "kind": "function",
       "title": "Explorer of a graph",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1187,7 +1187,7 @@
       "id": "browser.ShowGraph",
       "kind": "entry",
       "title": "Show the graph",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "trigger": {
@@ -1240,7 +1240,7 @@
       "id": "browser.TheBrowserRunsThePage",
       "kind": "binding",
       "title": "The browser runs the page",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "The page's script took what it needed from the browser itself, here and there: the graph could not say what the page asks of the browser, nor try it elsewhere.",
@@ -1255,7 +1255,7 @@
       "id": "browser.ThePageIsAssembled",
       "kind": "adr",
       "title": "The page is assembled",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "The page's script built by hand what it shared with the engine and wrote its values (classes, identifiers, the explorer's geometry) as literals the catalogue could not see: a change in the graph did not reach it.",
@@ -2722,6 +2722,7 @@
           "views": "engine.Views",
           "terminal": "architecture.Terminal",
           "cell": "text.PaddedCell",
+          "columns": "text.TerminalColumns",
           "messages": "messages.CommandMessages"
         },
         "body": {
@@ -11443,6 +11444,20 @@
       }
     },
     {
+      "id": "releases.G116",
+      "kind": "release",
+      "title": "Generation 116",
+      "fields": {
+        "owner": "trame",
+        "version": "g116",
+        "date": "2026-11-21",
+        "what": "E3, part 1: trame <name> runs a command of the project (an entry point of a component std's ProgramCommands exposes, assembled for its environment); a name the engine or a view already answers is an error (command-hidden); trame help",
+        "fingerprint": "74156ba66627e032",
+        "language": "shared",
+        "archive": "448ee554dabc9b98"
+      }
+    },
+    {
       "id": "releases.G12",
       "kind": "release",
       "title": "Generation 12",
@@ -13746,7 +13761,7 @@
       "id": "sdlc.GraphPage",
       "kind": "artifact",
       "title": "The graph page",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "trame-page.html",
@@ -13768,7 +13783,7 @@
       "id": "sdlc.GraphPageOpens",
       "kind": "check",
       "title": "The graph page opens",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame"
       }
@@ -20131,6 +20146,11 @@
     },
     {
       "from": "commands.Help",
+      "to": "text.TerminalColumns",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Help",
       "to": "messages.CommandMessages",
       "kind": "deps"
     },
@@ -26202,6 +26222,16 @@
     {
       "from": "releases.G115",
       "to": "releases.G114",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G116",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G116",
+      "to": "releases.G115",
       "kind": "assembledBy"
     },
     {

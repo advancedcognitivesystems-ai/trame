@@ -44,7 +44,7 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "trame",
-        "version": "115",
+        "version": "116",
         "joins": "language",
         "from": "registry"
       }

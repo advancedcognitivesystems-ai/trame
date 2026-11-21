@@ -252,7 +252,7 @@ What the commands print: summaries, usage, refusals.
     /** trame help: the commands of the engine, then those of the project, then the views. */
     helpEngine: (commands: string[]) => `Commands of the engine: ${commands.join(", ")}`,
     helpProject: (count: number) => (count ? `Commands of the project (${plural(count, { one: "command", other: "commands" })}):` : "Commands of the project: none"),
-    helpProjectCommand: (name: string, title: string, component: string) => `  ${name}  ${title} (${component})`,
+    helpProjectCommand: (name: string, title: string, component: string) => `  ${name} ${title} (${component})`,
     helpViews: (views: string[]) => `Views (trame <view> [node]): ${views.join(", ")}`,
 
     // trame assemble

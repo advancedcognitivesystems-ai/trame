@@ -509,6 +509,6 @@ export const CommandOrView = entryPoint({
 export const Help = entryPoint({
   owner: "trame", in: TrameCli, for: Anyone, serves: [ExecutableSpecification],
   trigger: command(commandNames.help),
-  deps: { exitStatus: ExitStatus, preparation: Preparation, projectCommands: ProjectCommands, views: Views, terminal: Terminal, cell: PaddedCell, messages: CommandMessages },
+  deps: { exitStatus: ExitStatus, preparation: Preparation, projectCommands: ProjectCommands, views: Views, terminal: Terminal, cell: PaddedCell, columns: TerminalColumns, messages: CommandMessages },
   body: code.file<typeof import("./code/commands/help").default>("./code/commands/help.ts"),
 })

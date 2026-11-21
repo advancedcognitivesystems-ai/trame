@@ -1711,3 +1711,18 @@ export const G115 = release({
   archive: "90ba5b1d790e9acb",
   assembledBy: G114,
 })
+
+/**
+ * Generation 116
+ */
+export const G116 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g116",
+  date: "2026-11-21",
+  what: "E3, part 1: trame <name> runs a command of the project (an entry point of a component std's ProgramCommands exposes, assembled for its environment); a name the engine or a view already answers is an error (command-hidden); trame help",
+  fingerprint: "74156ba66627e032",
+  language: "shared",
+  archive: "448ee554dabc9b98",
+  assembledBy: G115,
+})

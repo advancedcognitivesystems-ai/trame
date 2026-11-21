@@ -4416,10 +4416,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "trame",
-        "version": "115",
+        "version": "116",
         "joins": "language",
         "from": "path",
-        "at": "../../generations/g115"
+        "at": "../../generations/g116"
       },
       "diagnostics": []
     },
@@ -7166,7 +7166,7 @@
       },
       "result": {
         "path": "src",
-        "code": "47407cd9"
+        "code": "f3aadd53"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"

@@ -370,7 +370,7 @@ What a person may type here: the commands of the engine, those of the project wi
 Triggered by `command help`
 
 - Owner: trame
-- Parameters: `exitStatus` ← [Exit status](../std/releases/0.21.0/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `projectCommands` ← [The project's commands](#ProjectCommands) · `views` ← [Views](engine.md#Views) · `terminal` ← [Terminal](architecture.md#Terminal) · `cell` ← [Padded cell](text.md#PaddedCell) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
+- Parameters: `exitStatus` ← [Exit status](../std/releases/0.21.0/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `projectCommands` ← [The project's commands](#ProjectCommands) · `views` ← [Views](engine.md#Views) · `terminal` ← [Terminal](architecture.md#Terminal) · `cell` ← [Padded cell](text.md#PaddedCell) · `columns` ← [Columns in the terminal](text.md#TerminalColumns) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
 - Body: `./code/commands/help.ts` (typescript)
 - Effects: execution, keeps, process, read, terminal, time
 - Serves: [A specification that runs](product.md#ExecutableSpecification)

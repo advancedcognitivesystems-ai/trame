@@ -8,7 +8,7 @@ import type { CommandMessages } from "../../messages"
 import type { Api as PreparationApi } from "./preparation"
 import type { Api as ProjectCommandsApi } from "./project-commands"
 import type { Api as ViewsApi } from "../engine/views"
-import type { PaddedCell } from "../../text"
+import type { PaddedCell, TerminalColumns } from "../../text"
 
 export interface Deps {
   /** The status the command returns to the system (POSIX). */
@@ -19,6 +19,7 @@ export interface Deps {
   terminal: Terminal
   /** A name padded to the width of the longest, so that the titles line up. */
   cell: ProvidedBy<typeof PaddedCell>
+  columns: ProvidedBy<typeof TerminalColumns>
   messages: ProvidedBy<typeof CommandMessages>
 }
 
@@ -29,7 +30,8 @@ const body = (deps: Deps): Handler => async (req) => {
   const own = deps.projectCommands.of(c).sort((a, b) => a.name.localeCompare(b.name))
   terminal.write(messages.helpEngine([...o.commands].sort()))
   terminal.write(messages.helpProject(own.length))
-  const width = Math.max(...own.map((x) => x.name.length))
+  // The longest name and its gap: every title starts in the same column.
+  const width = Math.max(...own.map((x) => x.name.length)) + deps.columns.minimumGap
   for (const { name, entry, component } of own) terminal.write(messages.helpProjectCommand(deps.cell(name, width), entry.title, component.title))
   terminal.write(messages.helpViews(deps.views.sortedViews().map((v) => v.name)))
   return { status: deps.exitStatus.success, body: undefined }

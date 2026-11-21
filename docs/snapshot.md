@@ -410,7 +410,7 @@ Environment · `Test`
 
 ### The page is assembled
 
-Architecture decision · `ThePageIsAssembled` · **unknown**
+Architecture decision · `ThePageIsAssembled` · **held**
 
 - Decided by: trame
 - Context: The page's script built by hand what it shared with the engine and wrote its values (classes, identifiers, the explorer's geometry) as literals the catalogue could not see: a change in the graph did not reach it.
@@ -421,7 +421,7 @@ Architecture decision · `ThePageIsAssembled` · **unknown**
 
 ### Explorer of a graph
 
-Function · `ExplorerFigures` · **unknown**
+Function · `ExplorerFigures` · **held**
 
 - Owner: trame
 - Parameters: { html: std/html.Html, svg: std/html.Svg, aria: std/html.Aria, css: std/html.Css, page: page.ThePage, markup: markup.DocumentMarkup, figures: markup.FigureMarkup, explorer: markup.ExplorerMarkup, drawing: appearance.ExplorerDrawing, element: html.HtmlElement, start: html.HtmlStartTag, empty: html.SelfClosingTag, path: html.PathData, declaration: html.CssDeclaration, escape: html.EscapedText, common: rendering.Common, words: messages.PageWords, messages: messages.RenderingMessages, punctuation: documents.Punctuation, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts }
@@ -430,7 +430,7 @@ Function · `ExplorerFigures` · **unknown**
 
 ### Show the graph
 
-Entry point · `ShowGraph` · **unknown**
+Entry point · `ShowGraph` · **held**
 
 - Owner: trame
 - Trigger: { type: load }
@@ -441,7 +441,7 @@ Entry point · `ShowGraph` · **unknown**
 
 ### Amendments sent to trame dev
 
-Implementation · `BrowserAmendments` · **unknown**
+Implementation · `BrowserAmendments` · **held**
 
 - Owner: trame
 - Parameters: { page: page.ThePage, service: engine.DevService, http: std/web.Http, media: std/web.MediaTypes }
@@ -450,7 +450,7 @@ Implementation · `BrowserAmendments` · **unknown**
 
 ### The browser's gzip
 
-Implementation · `BrowserDecompression` · **unknown**
+Implementation · `BrowserDecompression` · **held**
 
 - Owner: trame
 - Parameters: { packing: page.PackedGraph, ecma: std/ecmascript.EcmaScript }
@@ -459,7 +459,7 @@ Implementation · `BrowserDecompression` · **unknown**
 
 ### The globals of the page, and trame dev
 
-Implementation · `BrowserFeed` · **unknown**
+Implementation · `BrowserFeed` · **held**
 
 - Owner: trame
 - Parameters: { page: page.ThePage, service: engine.DevService, values: std/algebra.ValueTypes }
@@ -468,7 +468,7 @@ Implementation · `BrowserFeed` · **unknown**
 
 ### Local storage
 
-Implementation · `BrowserMemory` · **unknown**
+Implementation · `BrowserMemory` · **held**
 
 - Owner: trame
 - Parameters: { page: page.ThePage }
@@ -477,7 +477,7 @@ Implementation · `BrowserMemory` · **unknown**
 
 ### The browser's window
 
-Implementation · `BrowserWindow` · **unknown**
+Implementation · `BrowserWindow` · **held**
 
 - Owner: trame
 - Parameters: { motion: std/web.MediaQueries5, feature: html.MediaFeature, counts: std/algebra.Counts }
@@ -486,7 +486,7 @@ Implementation · `BrowserWindow` · **unknown**
 
 ### The browser runs the page
 
-Technical choice · `TheBrowserRunsThePage` · **unknown**
+Technical choice · `TheBrowserRunsThePage` · **held**
 
 - Decided by: trame
 - Context: The page's script took what it needed from the browser itself, here and there: the graph could not say what the page asks of the browser, nor try it elsewhere.
@@ -1066,10 +1066,10 @@ Entry point · `Help` · **held**
 
 - Owner: trame
 - Trigger: { type: command, name: help }
-- Parameters: { exitStatus: std/system.ExitStatus, preparation: commands.Preparation, projectCommands: commands.ProjectCommands, views: engine.Views, terminal: architecture.Terminal, cell: text.PaddedCell, messages: messages.CommandMessages }
+- Parameters: { exitStatus: std/system.ExitStatus, preparation: commands.Preparation, projectCommands: commands.ProjectCommands, views: engine.Views, terminal: architecture.Terminal, cell: text.PaddedCell, columns: text.TerminalColumns, messages: messages.CommandMessages }
 - Serves: A specification that runs
 - Part of: Trame on the command line
-- Depends on: Preparation, The project's commands, Views, Terminal, Padded cell, Messages of the commands
+- Depends on: Preparation, The project's commands, Views, Terminal, Padded cell, Columns in the terminal, Messages of the commands
 
 ### Start a project
 
@@ -4672,6 +4672,20 @@ Release · `G115`
 - Releases: Trame on the command line
 - Assembled by: Generation 114
 
+### Generation 116
+
+Release · `G116`
+
+- Released by: trame
+- Version: g116
+- Released on: 2026-11-21
+- What changes: E3, part 1: trame <name> runs a command of the project (an entry point of a component std's ProgramCommands exposes, assembled for its environment); a name the engine or a view already answers is an error (command-hidden); trame help
+- Fingerprint: 74156ba66627e032
+- Language: shared
+- Language archived: 448ee554dabc9b98
+- Releases: Trame on the command line
+- Assembled by: Generation 115
+
 ### Generation 12
 
 Release · `G12`
@@ -6510,7 +6524,7 @@ Artefact · `EngineCandidate` · **unknown**
 
 ### The graph page
 
-Artefact · `GraphPage` · **unknown**
+Artefact · `GraphPage` · **held**
 
 - Owner: trame
 - Path: trame-page.html
@@ -6566,7 +6580,7 @@ Check · `CandidateRunsOnTheMachine` · **unknown**
 
 ### The graph page opens
 
-Check · `GraphPageOpens` · **unknown**
+Check · `GraphPageOpens` · **held**
 
 - Owner: trame
 - Checks: The graph page
