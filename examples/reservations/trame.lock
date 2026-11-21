@@ -278,6 +278,11 @@
       "range": "6a09e667",
       "rejected": "6a09e667"
     },
+    "sdlc.Operators": {
+      "people": "6be38b0d",
+      "notAuthor": "6a09e667",
+      "delegations": "d9e202e6"
+    },
     "sdlc.PullRequestsOnGitHub": {
       "statement": "c2213f33",
       "value": "29eda3a0",

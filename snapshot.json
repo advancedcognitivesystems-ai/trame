@@ -1595,6 +1595,30 @@
       }
     },
     {
+      "id": "command-scenarios.EvidenceForSomeone",
+      "kind": "scenario",
+      "title": "Evidence given for someone",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "evidence": "commands.RecordEvidence",
+          "writeLog": "architecture.WriteLog",
+          "currentProcess": "architecture.Process",
+          "paths": "architecture.Paths",
+          "layout": "conventions.Layout",
+          "records": "shipping.ShippingRecords",
+          "samples": "command-scenarios.ProjectSamples",
+          "line": "conventions.TrameCommands",
+          "exitStatus": "std/system.ExitStatus",
+          "signatures": "architecture.Signatures",
+          "counts": "std/algebra.Counts",
+          "messages": "messages.ScenarioMessages"
+        },
+        "body": "(function)"
+      }
+    },
+    {
       "id": "command-scenarios.KindsCarried",
       "kind": "scenario",
       "title": "A library carries kinds",
@@ -1916,6 +1940,13 @@
             "check": "OnAPhone",
             "tester": "ghalaax",
             "stranger": "someone-else"
+          },
+          "delegated": {
+            "check": "OnALaptop",
+            "agent": "lea",
+            "person": "karim",
+            "within": "2026-12-01",
+            "after": "2027-01-05"
           },
           "started": {
             "title": "Started in memory",
@@ -3612,6 +3643,10 @@
           "by": {
             "value": "--by",
             "meaning": "Who gives the evidence, or writes the amendment: the person it is attributed to"
+          },
+          "for": {
+            "value": "--for",
+            "meaning": "For whom: the person of the role the evidence is theirs, given by an agent (--by) a delegation of the role lets act for them (C4)"
           },
           "why": {
             "value": "--why",
@@ -11309,6 +11344,20 @@
       }
     },
     {
+      "id": "releases.G115",
+      "kind": "release",
+      "title": "Generation 115",
+      "fields": {
+        "owner": "trame",
+        "version": "g115",
+        "date": "2026-11-21",
+        "what": "C4, on behalf of someone: a role says who may act for one of its people until a day (delegations); trame evidence and trame ship take --for, the evidence theirs and the agent named with it, sealed (through)",
+        "fingerprint": "b020b81cbbc519f2",
+        "language": "shared",
+        "archive": "90ba5b1d790e9acb"
+      }
+    },
+    {
       "id": "releases.G12",
       "kind": "release",
       "title": "Generation 12",
@@ -17677,6 +17726,66 @@
     },
     {
       "from": "command-scenarios.DoctorAsks",
+      "to": "messages.ScenarioMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.EvidenceForSomeone",
+      "to": "commands.RecordEvidence",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.EvidenceForSomeone",
+      "to": "architecture.Test",
+      "kind": "env"
+    },
+    {
+      "from": "command-scenarios.EvidenceForSomeone",
+      "to": "commands.RecordEvidence",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.EvidenceForSomeone",
+      "to": "architecture.WriteLog",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.EvidenceForSomeone",
+      "to": "architecture.Process",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.EvidenceForSomeone",
+      "to": "architecture.Paths",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.EvidenceForSomeone",
+      "to": "conventions.Layout",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.EvidenceForSomeone",
+      "to": "shipping.ShippingRecords",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.EvidenceForSomeone",
+      "to": "command-scenarios.ProjectSamples",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.EvidenceForSomeone",
+      "to": "conventions.TrameCommands",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.EvidenceForSomeone",
+      "to": "architecture.Signatures",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.EvidenceForSomeone",
       "to": "messages.ScenarioMessages",
       "kind": "deps"
     },
@@ -25853,6 +25962,16 @@
     {
       "from": "releases.G114",
       "to": "releases.G113",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G115",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G115",
+      "to": "releases.G114",
       "kind": "assembledBy"
     },
     {

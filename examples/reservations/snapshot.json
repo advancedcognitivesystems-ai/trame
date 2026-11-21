@@ -1424,6 +1424,13 @@
         "owner": "karim",
         "people": [
           "karim"
+        ],
+        "delegations": [
+          {
+            "agent": "lea",
+            "for": "karim",
+            "until": "2026-12-31"
+          }
         ]
       }
     },

@@ -178,10 +178,10 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 114
+- Version: 115
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../generations/g114
+- Its path: ../generations/g115
 - Serves: A shipment runs elsewhere as it runs here
 
 ### The people of the repository

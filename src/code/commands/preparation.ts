@@ -65,6 +65,8 @@ export interface Options {
   migrate?: string
   /** --by: who gives the evidence. --subject, --language: the row reviewed, in which language. --note, --url. */
   by?: string
+  /** --for: whom an agent (--by) gives the evidence for, under a delegation of the role (C4, since g115). */
+  for?: string
   /** --why, --from, --until, --source: why an amendment changes a value, from and until when, the source a cited one names. */
   why?: string
   from?: string
@@ -125,6 +127,7 @@ const body = (deps: Deps) => {
     const promote = take(line.promote)
     const migrate = take(line.migrate)
     const by = take(line.by)
+    const onBehalf = take(line.for)
     const subject = take(line.subject)
     const language = take(line.language)
     const note = take(line.note)
@@ -136,7 +139,7 @@ const body = (deps: Deps) => {
     const source = take(line.source)
     return {
       root: deps.currentProcess.cwd(), command, today, format, port, fragment, envName, all, history, accept, promote, migrate,
-      by, subject, language, note, url, dryRun, why, from, until, source, args: argv,
+      by, ...(onBehalf === undefined ? {} : { for: onBehalf }), subject, language, note, url, dryRun, why, from, until, source, args: argv,
     }
   }
 

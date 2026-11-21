@@ -1325,8 +1325,8 @@ declarations with), the types of Node below 23 (they follow the Node.js that run
 - **Who acts** (C4, in progress): every problem has its code (g111), a project raises what it chooses by a strategy
   (g112, std 0.21.0: a port of std chosen by a binding, never lowering what the language judges), and the actors are
   declared (g113: the kind actor; the library team declares the repository's people; an owner nobody declares is an
-  error); then evidence given on behalf of someone (Claude for ghalaax, a runner for whoever started it), the delegation
-  dated and limited to roles.
+  error), and evidence is given on behalf of someone under a delegation a role declares, dated (g115: `--by lea --for
+  karim`, the evidence karim's, lea named with it). C4 is done; how a runner of GitHub signs comes with D2.
 - **Access**: the foundations are in place (C6, g107: each entry point says its audience, the identity owned data asks
   is checked in the graph). Then, after C4, a library of access (C7): identities (accounts, or a remote provider of
   which the graph has only the client), RBAC, ReBAC and ABAC as composable strategies, the scope each body receives

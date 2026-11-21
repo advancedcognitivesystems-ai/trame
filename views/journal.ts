@@ -12,8 +12,8 @@ export default defineView({
   label: say.journalJournal(),
   group: ViewGroup.document,
   run(c) {
-    const { values, texts, counts, dates } = c.lib
-    interface Entry { day: string; what: Inline[]; node: View; by?: string }
+    const { values, texts, counts, dates, lists } = c.lib
+    interface Entry { day: string; what: Inline[]; node: View; by?: string; through?: string[] }
     const nodes = c.all().nodes()
     const released: Entry[] = nodes.filter((v) => v.kind === KindName.release).flatMap((v) => {
       const date = v.field(ReleaseField.date)
@@ -27,7 +27,7 @@ export default defineView({
             : e.source === EvidenceSource.deployed ? [say.journalDeployed(), ...(e.url ? [doc.ident(e.url)] : [])]
               : e.source === EvidenceSource.shipped ? [say.journalShipped()]
                 : [say.journalGiven()]
-    const given: Entry[] = nodes.flatMap((v) => v.evidence.filter((e) => e.source !== undefined).map((e) => ({ day: e.at, what: said(e), node: v, by: e.by })))
+    const given: Entry[] = nodes.flatMap((v) => v.evidence.filter((e) => e.source !== undefined).map((e) => ({ day: e.at, what: said(e), node: v, by: e.by, ...(e.through ? { through: e.through } : {}) })))
     const entries = [...released, ...given]
     const days = [...new Set(entries.map((e) => e.day))].sort().reverse()
     const title = say.journalJournal()
@@ -40,7 +40,10 @@ export default defineView({
         doc.summary(...say.journalSummary(days.length, released.length, given.length)),
         ...days.map((day) => doc.section(dates.isCalendarDate(day) ? dates.format(day) : day, [
           doc.table([say.journalWhat(), say.assemblyNode(), say.journalBy()],
-            entries.filter((e) => e.day === day).map((e) => [e.what, [doc.ref(e.node)], e.by ? [doc.person(e.by)] : [texts.empty]])),
+            entries.filter((e) => e.day === day).map((e) => [e.what, [doc.ref(e.node)], e.by
+              // Given for someone (C4): theirs, through the agent who gave it.
+              ? [doc.person(e.by), ...(counts.any(e.through ?? []) ? say.journalThrough(texts.concat(lists.conjunction(e.through ?? []).map(String))) : [])]
+              : [texts.empty]])),
         ])),
       ],
     }

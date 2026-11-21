@@ -76,7 +76,7 @@ The file of the evidence directory trame ship and trame evidence write (one file
 
 - Decided by: trame
 - Rejected: A file per shipment, a check or a review serves several shipments: its evidence is read by all of them
-- Used by: [A library released](command-scenarios.md#LibraryReleased), [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [Stages shipped in order](command-scenarios.md#StagesShipped), [Evidence of the SDLC](#SdlcEvidence)
+- Used by: [Evidence given for someone](command-scenarios.md#EvidenceForSomeone), [A library released](command-scenarios.md#LibraryReleased), [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [Stages shipped in order](command-scenarios.md#StagesShipped), [Evidence of the SDLC](#SdlcEvidence)
 - Applies: [A version ships through the graph](principles.md#ShippedThroughTheGraph)
 
 ## Functions

@@ -5,7 +5,7 @@
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
 | Trame's maintainers | 0 | 0 | 1 | 0 |
-| trame | 0 | 0 | 5 | 715 |
+| trame | 0 | 0 | 5 | 717 |
 
 <a id="Trame's maintainers"></a>
 
@@ -113,6 +113,7 @@
 | [trame dev](command-scenarios.md#DevFollowsTheGraph) | Scenario | **held** |
 | [What trame dev is shown in a scenario](command-scenarios.md#DevSamples) | Decision |  |
 | [The doctor](command-scenarios.md#DoctorAsks) | Scenario | **held** |
+| [Evidence given for someone](command-scenarios.md#EvidenceForSomeone) | Scenario | **held** |
 | [A library carries kinds](command-scenarios.md#KindsCarried) | Scenario | **held** |
 | [The laws, tested by their command](command-scenarios.md#LawsTested) | Scenario | **held** |
 | [A library released](command-scenarios.md#LibraryReleased) | Scenario | **held** |
@@ -504,6 +505,7 @@
 | [Generation 112](releases.md#G112) | Release |  |
 | [Generation 113](releases.md#G113) | Release |  |
 | [Generation 114](releases.md#G114) | Release |  |
+| [Generation 115](releases.md#G115) | Release |  |
 | [Generation 12](releases.md#G12) | Release |  |
 | [Generation 13](releases.md#G13) | Release |  |
 | [Generation 14](releases.md#G14) | Release |  |

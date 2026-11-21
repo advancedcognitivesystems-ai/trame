@@ -47,7 +47,7 @@ Run from the project's directory, through the pinned generation:
 ./trame.sh publish [--migrate "why"]   # freezes, part by part, what people decided in trame.lock (--migrate: a form changed, never a value; g108)
 ./trame.sh deliver [delivery]          # writes the deliveries: a page a browser opens as it is
 ./trame.sh ship <shipment> --by <name> [--dry-run] [--promote "what"]   # builds, checks, refuses or deploys (section 4b)
-./trame.sh evidence <node> passed|failed --by <name> [--subject <row>] [--language <tag>] [--note "…"] [--url <where>]
+./trame.sh evidence <node> passed|failed --by <name> [--for <name>] [--subject <row>] [--language <tag>] [--note "…"] [--url <where>]
 ./trame.sh amend <node> <path> <value> --why "…" --by <name> [--from <date>] [--until <date>] [--source "…"] [--dry-run] [--accept]
                                        # changes a chosen value by an amendment, said first (g85); in trame dev, from the page (g86)
 ./advance.sh [--accept] [--promote "what changes"]   # the next generation (see section 7)
@@ -123,7 +123,7 @@ A project declares how a version of it ships (ADR "A version ships through the g
 
 | Kind | What it says | Its evidence |
 |---|---|---|
-| `role` | who holds it (`people`), whether they may review their own work (`notAuthor`), how evidence is signed | — |
+| `role` | who holds it (`people`), whether they may review their own work (`notAuthor`), how evidence is signed, who may act for one of its people until a day (`delegations: [{ agent, for, until }]`, C4, g115) | — |
 | `artifact` | what is produced (`path`, or where its delivery writes it), its media type, what produces it (`producedBy`: a delivery, an entry point, a component, a release), or a version of the project itself (`version: true`, its sources: all its code, which the shipment that ships it reaches whole, g101), the programs it `carries` when its producer does not say (a page exported carries its component, for the browser), the `environment` a component it is is assembled for when not its shipment's (the page's program, for the browser); wired, it gives `{ path, media }`, so a program names the artefact, never its path | `built`: the SHA-256 of the file (of its files, for a directory), with the code it was made from (g70) and the engine that made it (g72): it holds while that code is the code as it is and the project pins that engine |
 | `check` | what a scenario in memory cannot check: run by a program of the SDLC (`runs`) or made by hand (`steps`), signed by a role (`by`), on artefacts (`on`); the code it proves (`verifies`): what its program runs on a machine, or what its artefacts carry | `check`: passed or failed, for the artefacts as last built from the code as it is, by its program as it is (g70) |
 | `review` | what must be reviewed (`of`: the rows of a dataset in each language, or a node as written), by which role, by how many of its people (`approvals`, one) | `review` on the subject: each row and language, tied to the fingerprint of what was seen; each person's latest counts, a change asked holds it back |
@@ -157,7 +157,13 @@ what runs each step, its status and its latest evidence: read it to see what a s
 records what a person gives, refused to someone not of the role (or the author, when the role says `notAuthor`). Each
 record either writes is sealed (g72: the port `Signatures`, an attribution: the SHA-256 of what the record says): a
 record changed afterwards no longer matches its seal, is not counted, and is an error naming it. Never write `evidence/`
-by hand, and never record evidence in someone else's name: attribute what you run to yourself. `docs/owners.md` says who
+by hand, and never record evidence in someone else's name: attribute what you run to yourself. An agent gives
+evidence for one of a role's people only under a delegation of that role still in force (C4, g115): `trame evidence
+<check> passed --by lea --for karim` records it as karim's, `through: ["lea"]` sealed with it (as OAuth's token exchange
+names who acts, RFC 8693); without the delegation, or once its day is past, it is refused; `notAuthor` holds for both.
+`trame ship --for` names the person a shipment is given for the same way. A delegation is decided, frozen by a
+publication; one without a day, or for someone who does not hold the role, is an error, one past its day a warning.
+How a runner of GitHub signs comes with D2. `docs/owners.md` says who
 holds each role and, for each piece of evidence a role awaits, the command that gives it.
 
 **A change reaches main by a pull request** (D1, g109, ci 0.5.0). The merge into main is a shipment of each project,

@@ -29,7 +29,7 @@
 
 ### How a pull request is checked on GitHub
 
-`PullRequestsOnGitHub` · `src/sdlc.ts:239` · published
+`PullRequestsOnGitHub` · `src/sdlc.ts:240` · published
 
 At each pull request into main, on GitHub's Ubuntu 24.04 machine with Node.js 22: its job, named reservations, is a check the repository requires; it writes in it the review of the branch (what its declarations not yet published add to those published), and keeps GitHub from merging a pull request that changes what people decided (a trame.lock of the repository), which a person then merges (D1).
 
@@ -52,7 +52,7 @@ At each pull request into main, on GitHub's Ubuntu 24.04 machine with Node.js 22
 
 ### The service's SDLC
 
-`ReservationsSdlc` · `src/sdlc.ts:58`
+`ReservationsSdlc` · `src/sdlc.ts:59`
 
 The programs that deploy the service, run by trame ship (or by a person): the first word names the command.
 
@@ -71,7 +71,7 @@ The programs that deploy the service, run by trame ship (or by a person): the fi
 
 ### Prepare the storage
 
-`PrepareStorage` · `src/sdlc.ts:82` · status: **held**
+`PrepareStorage` · `src/sdlc.ts:83` · status: **held**
 
 Makes the table of each entity the service keeps ready, before the service starts: created with what it starts with, or migrated from the version the previous deployment kept.
 
@@ -94,7 +94,7 @@ Triggered by `command prepare-storage`
 
 ### Commands on this machine
 
-`CommandsOnThisMachine` · `src/sdlc.ts:69` · status: **unknown**
+`CommandsOnThisMachine` · `src/sdlc.ts:70` · status: **unknown**
 
 The programs of the SDLC read their commands from Node's command line, as the standard library realizes it.
 
@@ -117,11 +117,15 @@ Context: trame ship runs the programs that deploy as a person would run them, wi
 
 ### The operators
 
-`Operators` · `src/sdlc.ts:40`
+`Operators` · `src/sdlc.ts:41` · published
 
-Who runs the service, and checks by hand what only a machine shows.
+Who runs the service, and checks by hand what only a machine shows. While Karim is away in December, Léa signs his checks for him (C4): the evidence is his, she is named with it.
 
 - People: karim
+
+| Agent | For | Until |
+|---|---|---|
+| lea | karim | 31 December 2026 |
 
 - Owner: karim
 - Signs: [On a laptop](#OnALaptop), [On staging](#OnStaging)
@@ -132,7 +136,7 @@ Who runs the service, and checks by hand what only a machine shows.
 
 ### The program for a laptop
 
-`LocalProgram` · `src/sdlc.ts:52` · status: **unknown**
+`LocalProgram` · `src/sdlc.ts:53` · status: **unknown**
 
 The service assembled for a developer's machine, its database in a file.
 
@@ -148,7 +152,7 @@ The service assembled for a developer's machine, its database in a file.
 
 ### The program for production
 
-`ProductionProgram` · `src/sdlc.ts:46` · status: **unknown**
+`ProductionProgram` · `src/sdlc.ts:47` · status: **unknown**
 
 The service assembled for production: what a release ships.
 
@@ -163,7 +167,7 @@ The service assembled for production: what a release ships.
 
 ### The pull requests' workflow
 
-`PullRequestWorkflow` · `src/sdlc.ts:257` · status: **unknown**
+`PullRequestWorkflow` · `src/sdlc.ts:258` · status: **unknown**
 
 The workflow that checks a pull request on GitHub, written from the pipeline of the shipment it runs: it prepares the machine as the plan says, writes the review of the branch in the pull request, keeps GitHub from merging what people decided, then runs trame ship.
 
@@ -180,7 +184,7 @@ The workflow that checks a pull request on GitHub, written from the pipeline of 
 
 ### The service
 
-`TheService` · `src/sdlc.ts:211` · status: **unknown**
+`TheService` · `src/sdlc.ts:212` · status: **unknown**
 
 The service as its people write it: what a pull request brings into the main branch, all its code.
 
@@ -196,7 +200,7 @@ The service as its people write it: what a pull request brings into the main bra
 
 ### On a laptop
 
-`OnALaptop` · `src/sdlc.ts:117` · status: **unknown**
+`OnALaptop` · `src/sdlc.ts:118` · status: **unknown**
 
 The program for a laptop, run with its database in a file.
 
@@ -211,7 +215,7 @@ The program for a laptop, run with its database in a file.
 
 ### On staging
 
-`OnStaging` · `src/sdlc.ts:101` · status: **unknown**
+`OnStaging` · `src/sdlc.ts:102` · status: **unknown**
 
 The program for production, run on the staging machine with its database and the provider's sandbox: what no scenario in memory can show.
 
@@ -230,7 +234,7 @@ The program for production, run on the staging machine with its database and the
 
 ### Into the main branch
 
-`IntoMain` · `src/sdlc.ts:231` · status: **unknown**
+`IntoMain` · `src/sdlc.ts:232` · status: **unknown**
 
 A pull request into main: it merges once it holds, as the repository's settings say (D1).
 
@@ -251,7 +255,7 @@ Not shipped yet.
 
 ### On this machine
 
-`OnThisMachine` · `src/sdlc.ts:198` · status: **unknown**
+`OnThisMachine` · `src/sdlc.ts:199` · status: **unknown**
 
 The service on a developer's machine, the way of this machine: the program for a laptop built, and its database made ready, migrated from what the previous deployment kept.
 
@@ -286,7 +290,7 @@ Not shipped yet.
 
 ### A release
 
-`Release` · `src/sdlc.ts:191` · status: **unknown**
+`Release` · `src/sdlc.ts:192` · status: **unknown**
 
 The service for its users, the way of a release: the program for production, and the one developers run.
 
@@ -328,7 +332,7 @@ Not shipped yet.
 
 ### The files that run it elsewhere
 
-`RunnersWritten` · `src/sdlc.ts:271` · status: **unknown**
+`RunnersWritten` · `src/sdlc.ts:272` · status: **unknown**
 
 The workflow that checks each pull request, written by trame ship from the graph and kept in the repository where GitHub finds it; shipped again when the pipeline it runs changes.
 
@@ -349,7 +353,7 @@ Not shipped yet.
 
 ### Who calls, identified
 
-`CallersIdentified` · `src/sdlc.ts:171`
+`CallersIdentified` · `src/sdlc.ts:172`
 
 Each audience the service's entry points are for that carries an identity (drivers) is identified where a release runs it: otherwise whoever reaches the service would call as any driver. A gap is said, not yet refused: nothing can identify anyone before C7.
 
@@ -364,7 +368,7 @@ A gap it finds is a warning.
 
 ### The code is verified
 
-`CodeVerified` · `src/sdlc.ts:129`
+`CodeVerified` · `src/sdlc.ts:130`
 
 Every scenario that verifies code the program reaches; an entry point or a function nothing verifies is said.
 
@@ -387,7 +391,7 @@ A gap it finds is a warning.
 
 ### The decisions hold
 
-`DecisionsApplied` · `src/sdlc.ts:141`
+`DecisionsApplied` · `src/sdlc.ts:142`
 
 - Owner: karim
 - Applies the family: [The decisions a shipment applies hold](../../../std/docs/obligations.md#Applied)
@@ -398,7 +402,7 @@ A gap it finds is a warning.
 
 ### Every check is signed
 
-`EveryCheck` · `src/sdlc.ts:146`
+`EveryCheck` · `src/sdlc.ts:147`
 
 <details><summary>Its parameters</summary>
 
@@ -417,7 +421,7 @@ A gap it finds is a warning.
 
 ### The requirements of the goal hold
 
-`GoalServed` · `src/sdlc.ts:136`
+`GoalServed` · `src/sdlc.ts:137`
 
 - Owner: karim
 - Applies the family: [The product a shipment serves holds](../../../std/docs/obligations.md#Served)
@@ -428,7 +432,7 @@ A gap it finds is a warning.
 
 ### What the service keeps, migrated
 
-`KeptMigrates` · `src/sdlc.ts:163`
+`KeptMigrates` · `src/sdlc.ts:164`
 
 The reservations and the refunds migrate from every version a deployment kept: a step their owner has not decided keeps the shipment, since what drivers reserved and were refunded would be lost.
 
@@ -443,7 +447,7 @@ A gap it finds is an error of the graph.
 
 ### The packages are safe
 
-`PackagesSafe` · `src/sdlc.ts:156`
+`PackagesSafe` · `src/sdlc.ts:157`
 
 - Owner: karim
 - Applies the family: [The packages a shipment uses are safe](../../../std/docs/obligations.md#Safe)
@@ -454,7 +458,7 @@ A gap it finds is an error of the graph.
 
 ### What people decided, published
 
-`PublishedBeforeMerging` · `src/sdlc.ts:218`
+`PublishedBeforeMerging` · `src/sdlc.ts:219`
 
 Each part of a declaration people decide (a value, a statement) is published in trame.lock before it merges: what the pull request changes of it is then its review.
 
@@ -469,7 +473,7 @@ A gap it finds is an error of the graph.
 
 ### The rules hold
 
-`RulesHeld` · `src/sdlc.ts:151`
+`RulesHeld` · `src/sdlc.ts:152`
 
 - Owner: karim
 - Applies the family: [The project's rules hold](../../../std/docs/obligations.md#Ruled)
@@ -482,7 +486,7 @@ A gap it finds is an error of the graph.
 
 ### The way of this machine
 
-`MachineMode` · `src/sdlc.ts:185`
+`MachineMode` · `src/sdlc.ts:186`
 
 For a developer: the code verified (a gap said), the rules held, what the service keeps migrated.
 
@@ -496,7 +500,7 @@ And, as every policy, the foundations: no literal in a body, and a sound graph (
 
 ### How a change merges
 
-`MergeMode` · `src/sdlc.ts:225`
+`MergeMode` · `src/sdlc.ts:226`
 
 The way the service takes a change into its main branch: what people decided is published; and the foundations, as always.
 
@@ -510,7 +514,7 @@ And, as every policy, the foundations: no literal in a body, and a sound graph (
 
 ### The way of a release
 
-`ReleaseMode` · `src/sdlc.ts:176`
+`ReleaseMode` · `src/sdlc.ts:177`
 
 And, as every policy, the foundations: no literal in a body, and a sound graph (nothing undecided, no error of the graph).
 

@@ -1696,3 +1696,18 @@ export const G114 = release({
   archive: "b0ead947077d2a4b",
   assembledBy: G113,
 })
+
+/**
+ * Generation 115
+ */
+export const G115 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g115",
+  date: "2026-11-21",
+  what: "C4, on behalf of someone: a role says who may act for one of its people until a day (delegations); trame evidence and trame ship take --for, the evidence theirs and the agent named with it, sealed (through)",
+  fingerprint: "b020b81cbbc519f2",
+  language: "shared",
+  archive: "90ba5b1d790e9acb",
+  assembledBy: G114,
+})

@@ -6,7 +6,7 @@
 // is refused.
 
 import {
-  KindName, CheckEdge, ReviewEdge, RoleField, EvidenceSource, SignatureType, type ProvidedBy, type View, type Compilation,
+  KindName, CheckEdge, ReviewEdge, RoleField, EvidenceSource, SignatureType, daysBetween, type Delegation, type ProvidedBy, type View, type Compilation,
 } from "../../../trame/kernel"
 import type { Handler } from "../../../kinds/entry-point"
 import type { FileWriting, Paths, Terminal } from "../../architecture"
@@ -48,19 +48,35 @@ const body = (deps: Deps): Handler => async (req) => {
   const target = comp.all().nodes().find((v) => v.id === name || v.ref === name)
   if (!target) return refuse(o, [messages.noNodeNamed(name)])
   const out = (g: Compilation, v: View, edge: string) => g.from(v).out(edge).nodes()
+  // For someone (--for, C4): the evidence is theirs, the agent who gives it named with it, under a delegation of the role.
+  const principal = o.for ?? by
   const given = {
-    at: o.today, value: verdict === line.passed ? one : zero, by, signature: SignatureType.attribution,
+    at: o.today, value: verdict === line.passed ? one : zero, by: principal, ...(o.for === undefined ? {} : { through: [by] }),
+    signature: SignatureType.attribution,
     ...(o.note === undefined ? {} : { note: o.note }), ...(o.url === undefined ? {} : { url: o.url }),
   }
   const lastBuilt = (a: View) => last(a.evidence.filter((e) => e.source === EvidenceSource.built))?.fingerprint
 
-  /** The role that signs it, if any: the person must be one of its people, and not the author when it forbids it. */
+  /**
+   * The role that signs it, if any: the person must be one of its people, and not the author when it forbids it. Given
+   * for someone (C4), that person must be, and the agent must act for them under a delegation of the role still in
+   * force; neither may be the author when the role forbids it.
+   */
   const signs = (role: View | undefined, author?: string) => {
     if (!role) return
     const people = role.field(RoleField.people)
     const listed = Array.isArray(people) ? people.filter(values.isText) : []
-    if (!listed.includes(by)) refuse(o, [messages.notOfTheRole(by, role.title, listed)])
-    if (role.field(RoleField.notAuthor) === true && by === author) refuse(o, [messages.ownWork(by, role.title)])
+    if (!listed.includes(principal)) refuse(o, [messages.notOfTheRole(principal, role.title, listed)])
+    if (o.for !== undefined) {
+      const declared = role.field(RoleField.delegations)
+      const delegations = (Array.isArray(declared) ? declared : []) as Delegation[]
+      const mine = delegations.filter((d) => d.agent === by && d.for === principal)
+      if (!mine.length) refuse(o, [messages.notDelegated(by, principal, role.title)])
+      if (!mine.some((d) => values.isText(d.until) && daysBetween(o.today, d.until) >= zero)) {
+        refuse(o, [messages.delegationOver(by, principal, role.title)])
+      }
+    }
+    if (role.field(RoleField.notAuthor) === true && (principal === author || by === author)) refuse(o, [messages.ownWork(by, role.title)])
   }
 
   /** A review of a subject: each row of a dataset, in each language (those named), or the node as it is written. */

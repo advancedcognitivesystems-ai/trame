@@ -161,6 +161,7 @@ export const TrameCommands = standard({
     promote: { value: "--promote", meaning: "The candidate becomes the next generation, with what changes" },
     migrate: { value: "--migrate", meaning: "With publish: the published declarations that changed form, not meaning, as the language moved, are published again, with why" },
     by: { value: "--by", meaning: "Who gives the evidence, or writes the amendment: the person it is attributed to" },
+    for: { value: "--for", meaning: "For whom: the person of the role the evidence is theirs, given by an agent (--by) a delegation of the role lets act for them (C4)" },
     why: { value: "--why", meaning: "Why an amendment changes the value" },
     from: { value: "--from", meaning: "The day an amendment comes into force" },
     until: { value: "--until", meaning: "The last day an amendment is in force" },
