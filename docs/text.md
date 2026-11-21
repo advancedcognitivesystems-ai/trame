@@ -115,7 +115,7 @@ Section: Columns
 - Parameters: `standard` ← [Terminal text](#TerminalText) · `columns` ← [Columns in the terminal](#TerminalColumns)
 - Body: inline, in the declaration
 - Defined by: [Terminal text](#TerminalText)
-- Used by: [Preparation](commands.md#Preparation), [Publish](commands.md#Publish), [Test the laws](commands.md#TestKinds), [Plain text writer](rendering.md#PlainTextSyntax), [Figures as text](rendering.md#TextFigures), [Columns](#Columns)
+- Used by: [Help](commands.md#Help), [Preparation](commands.md#Preparation), [Publish](commands.md#Publish), [Test the laws](commands.md#TestKinds), [Plain text writer](rendering.md#PlainTextSyntax), [Figures as text](rendering.md#TextFigures), [Columns](#Columns)
 
 <a id="PathStep"></a>
 

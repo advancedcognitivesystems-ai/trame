@@ -195,6 +195,7 @@ export const HoleCode = {
   // How a project judges (C4, since g112).
   hardeningLowers: "hardening-lowers",
   hardeningFailed: "hardening-failed",
+  commandHidden: "command-hidden",
 } as const
 export type HoleCode = ValueOf<typeof HoleCode>
 
@@ -204,6 +205,12 @@ export type HoleCode = ValueOf<typeof HoleCode>
  * judgment.
  */
 export const JudgmentPort = { hardening: "std/judgment.Hardening" } as const
+
+/**
+ * The exposure of a project's own commands (E3, since g116), by its reference: std's ProgramCommands. An entry point a
+ * command triggers, in a component exposed by it, is a command of the project: `trame <name>` runs it.
+ */
+export const CommandsPort = { programs: "std/tooling.ProgramCommands" } as const
 
 /** The result of one check (a criterion, a scenario step). */
 export const Outcome = { passed: "passed", failed: "failed", blocked: "blocked", error: "error" } as const

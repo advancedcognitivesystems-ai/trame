@@ -2,7 +2,7 @@
 
 *Who may call each entry point, from where, and the records it reaches that belong to someone, as of 21 November 2026. Its audience says who may call it; its trigger says where from. Records that belong to a person or a tenant ask an audience that carries that identity, or one that reaches every owner's records; until identification comes (C7), nothing checks who calls.*
 
-> **28 entry points for 2 audiences; 0 of them reach records that belong to someone**
+> **29 entry points for 2 audiences; 0 of them reach records that belong to someone**
 
 | Entry point | For | Called from | Records it reaches that belong to someone |
 |---|---|---|---|
@@ -30,7 +30,8 @@
 | [Assemble a component](commands.md#Assemble) | [Anyone](../std/releases/0.21.0/docs/access.md#Anyone) | a machine: whoever has a terminal there | — |
 | [Run a component](commands.md#Run) | [Anyone](../std/releases/0.21.0/docs/access.md#Anyone) | a machine: whoever has a terminal there | — |
 | [Show a view](commands.md#ShowView) | [Anyone](../std/releases/0.21.0/docs/access.md#Anyone) | a machine: whoever has a terminal there | — |
-| [View by its name](commands.md#ViewByName) | [Anyone](../std/releases/0.21.0/docs/access.md#Anyone) | a machine: whoever has a terminal there | — |
+| [A command of the project, or a view](commands.md#CommandOrView) | [Anyone](../std/releases/0.21.0/docs/access.md#Anyone) | a machine: whoever has a terminal there | — |
+| [Help](commands.md#Help) | [Anyone](../std/releases/0.21.0/docs/access.md#Anyone) | a machine: whoever has a terminal there | — |
 | [Open the graph page](sdlc.md#OpenTheGraphPage) | [The operators](../std/releases/0.21.0/docs/access.md#TheOperators) | a machine: whoever has a terminal there | — |
 | [Read the repository's settings](sdlc.md#ReadTheRepositorySettings) | [The operators](../std/releases/0.21.0/docs/access.md#TheOperators) | a machine: whoever has a terminal there | — |
 | [Set the repository's settings](sdlc.md#ApplyTheRepositorySettings) | [The operators](../std/releases/0.21.0/docs/access.md#TheOperators) | a machine: whoever has a terminal there | — |

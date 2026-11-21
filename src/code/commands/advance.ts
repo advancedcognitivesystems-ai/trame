@@ -91,7 +91,7 @@ const body = (deps: Deps): Handler => async (req) => {
   const { next } = deps.counts
   const { head, last, take } = deps.sequences
   const { concat, lowerWords, optional, empty } = deps.texts
-  const o = deps.preparation.options(req.params.command, (req.body as { args: string[] }).args)
+  const o = deps.preparation.options(req.params.command, (req.body as { args: string[] }).args, req.params.commands)
   const root = o.root
   const write = (text: string) => terminal.write(text)
   const stop = () => ({ status: deps.exitStatus.failure, body: undefined })

@@ -111,7 +111,7 @@ export const AmendmentNaming = decision<{ suffix: string; first: number }>({ own
 export const commandNames = {
   assemble: "assemble", build: "build", dev: "dev", payload: "payload", export: "export", publish: "publish", run: "run",
   view: "view", snapshot: "snapshot", testKinds: "test-kinds", advance: "advance", audit: "audit", manifest: "manifest", release: "release", deliver: "deliver",
-  ship: "ship", evidence: "evidence", doctor: "doctor", plan: "plan", amend: "amend", init: "init", registry: "registry", upgrade: "upgrade", fallback: "*",
+  ship: "ship", evidence: "evidence", doctor: "doctor", plan: "plan", amend: "amend", init: "init", registry: "registry", upgrade: "upgrade", help: "help", fallback: "*",
 } as const
 
 /**
@@ -148,7 +148,8 @@ export const TrameCommands = standard({
     registry: { value: commandNames.registry, meaning: "Publishes to the registry of this machine the generations and the releases frozen in the language's home" },
     upgrade: { value: commandNames.upgrade, meaning: "Moves each package of Trame the project references to the newest version its origin holds, then writes its manifest" },
     init: { value: commandNames.init, meaning: "Starts a project in the current directory: its configuration, its first module, the guide for agents, its manifest" },
-    fallback: { value: commandNames.fallback, meaning: "The command that receives a word naming no other one" },
+    help: { value: commandNames.help, meaning: "Says what may be typed: the commands of the engine, those of the project, the views" },
+    fallback: { value: commandNames.fallback, meaning: "The command that receives a word naming no other one: a view, or a command of the project" },
     optionPrefix: { value: "-", meaning: "Opens an option, not a command" },
     at: { value: "--at", meaning: "The date at which the graph is compiled" },
     format: { value: "--format", meaning: "The format a view is written in" },

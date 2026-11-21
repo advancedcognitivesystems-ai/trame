@@ -26,7 +26,7 @@ export interface Deps {
 
 const body = (deps: Deps): Handler => async (req) => {
   const { options, refuse } = deps.preparation
-  const o = options(req.params.command, (req.body as { args: string[] }).args)
+  const o = options(req.params.command, (req.body as { args: string[] }).args, req.params.commands)
   const [file = deps.layout.page] = o.args
   const bundle = await deps.bundle.makeBundle(o.root, o.today, BundleMode.export)
   if (bundle.error) refuse(o, [bundle.error])

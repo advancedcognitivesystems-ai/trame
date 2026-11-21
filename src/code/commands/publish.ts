@@ -31,7 +31,7 @@ const body = (deps: Deps): Handler => async (req) => {
   const { empty, concat, optional } = deps.texts
   /** A line with nothing on it, between the refused declarations and the reason. */
   const blankLine = empty
-  const o = options(req.params.command, (req.body as { args: string[] }).args)
+  const o = options(req.params.command, (req.body as { args: string[] }).args, req.params.commands)
   const { c } = await prepare(o)
   const { added, migrated, refused, file, text } = deps.lock.publish(c, o.root, o.migrate === undefined ? undefined : { at: o.today, why: o.migrate })
   if (refused.length) {

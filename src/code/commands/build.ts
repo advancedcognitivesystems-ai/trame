@@ -30,7 +30,7 @@ const body = (deps: Deps): Handler => {
   const { writeFileSync, mkdirSync } = deps.writing
   const { join } = deps.paths
   return async (req) => {
-    const o = options(req.params.command, (req.body as { args: string[] }).args)
+    const o = options(req.params.command, (req.body as { args: string[] }).args, req.params.commands)
     const { c, comp } = await prepare(o)
     const docs = views(o, comp)
     const ctx = renderingContext(docs, { c, comp })

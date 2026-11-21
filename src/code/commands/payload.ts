@@ -64,7 +64,7 @@ const body = (deps: Deps): Handler => async (req) => {
       same: { date: today.date, order: p.documents.map((doc) => doc.id) },
     }
   }
-  const o = options(req.params.command, (req.body as { args: string[] }).args)
+  const o = options(req.params.command, (req.body as { args: string[] }).args, req.params.commands)
   const { c, comp } = await prepare(o)
   const first = makePayload(c, comp, views(o, comp))
   if (!o.all) {

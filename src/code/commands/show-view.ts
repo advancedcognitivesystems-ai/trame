@@ -12,7 +12,7 @@ export interface Deps {
 }
 
 const body = (deps: Deps): Handler => async (req) => {
-  const o = deps.preparation.options(req.params.command, (req.body as { args: string[] }).args)
+  const o = deps.preparation.options(req.params.command, (req.body as { args: string[] }).args, req.params.commands)
   const [view, target] = o.args
   await deps.renderView.view(o, view, target)
   return { status: deps.exitStatus.success, body: undefined }

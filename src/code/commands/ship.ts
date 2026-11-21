@@ -64,7 +64,7 @@ const body = (deps: Deps): Handler => async (req) => {
   const { join, dirname, basename, relative } = deps.paths
   const { head } = deps.sequences
   const { one, zero } = deps.counts
-  const o = options(req.params.command, (req.body as { args: string[] }).args)
+  const o = options(req.params.command, (req.body as { args: string[] }).args, req.params.commands)
   const [name] = o.args
   const by = o.by
   if (by === undefined) return refuse(o, [messages.evidenceNeedsBy()])

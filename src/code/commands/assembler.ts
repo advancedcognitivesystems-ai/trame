@@ -61,23 +61,32 @@ const body = (deps: Deps) => {
     return { assembly: { ...a, periods }, errors: [] }
   }
 
-  /** Always frozen: the program carries the values of the graph, it does not compile the graph when it starts. */
-  async function assemble(o: Options): Promise<{ files: Emitted[]; steps: number }> {
-    const { c, comp } = await prepare(o)
-    const [name] = o.args
-    if (!name || !o.envName) refuse(o, [messages.assembleUsage(o.command)])
+  /**
+   * A component assembled for an environment from the graph as compiled, refused while the graph has an error: the
+   * command assemble, and a command of the project, which trame runs from its program (since g116).
+   */
+  async function assembled(o: Options, ctx: Ctx, componentRef: string, envRef: string): Promise<{ files: Emitted[]; steps: number }> {
+    const { c } = ctx
     const errors = c.diags.filter((d) => d.severity === Severity.error)
     if (errors.length) {
       refuse(o, [messages.assemblyRefusedForErrors(errors.length), ...errors.map((d) => concat([indent, d.node ? c.graph.view(d.node).ref : optional(d.module), parts, d.what]))])
     }
-    const { assembly: a, errors: refused } = await prepared(o, { c, comp }, name!, o.envName!)
+    const { assembly: a, errors: refused } = await prepared(o, ctx, componentRef, envRef)
     if (!a) return refuse(o, [messages.assemblyRefused(), ...refused.map((e) => indent + e)])
     const { files, errors: emitErrors } = emitAssembly(a)
     if (emitErrors.length) refuse(o, emitErrors)
     return { files, steps: a.plan.steps.length }
   }
 
-  return { assemble, prepared }
+  /** Always frozen: the program carries the values of the graph, it does not compile the graph when it starts. */
+  async function assemble(o: Options): Promise<{ files: Emitted[]; steps: number }> {
+    const ctx = await prepare(o)
+    const [name] = o.args
+    if (!name || !o.envName) refuse(o, [messages.assembleUsage(o.command)])
+    return assembled(o, ctx, name!, o.envName!)
+  }
+
+  return { assemble, assembled, prepared }
 }
 
 export type Api = ReturnType<typeof body>

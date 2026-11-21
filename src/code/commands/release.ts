@@ -77,7 +77,7 @@ const body = (deps: Deps): Handler => async (req) => {
   const { join, relative, dirname, resolve, basename } = deps.paths
   const { existsSync, readFileSync } = deps.reading
   const { writeFileSync, mkdirSync } = deps.writing
-  const o = options(req.params.command, (req.body as { args: string[] }).args)
+  const o = options(req.params.command, (req.body as { args: string[] }).args, req.params.commands)
   const [version, what] = o.args
   if (!version || !what) return refuse(o, [messages.releaseNeedsVersion()])
   const ctx = await prepare(o)

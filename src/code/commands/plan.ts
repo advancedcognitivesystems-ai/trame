@@ -34,7 +34,7 @@ const body = (deps: Deps): Handler => {
   const { messages, terminal, comparison } = deps
 
   return async (req) => {
-    const o = options(req.params.command, (req.body as { args: string[] }).args)
+    const o = options(req.params.command, (req.body as { args: string[] }).args, req.params.commands)
     const { c } = await prepare(o)
     const file = deps.paths.join(o.root, deps.layout.graph)
     if (!existsSync(file)) {

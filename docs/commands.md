@@ -10,7 +10,7 @@
 
 ### What the doctor writes, runs and waits for
 
-`DoctorProbe` · `src/commands.ts:282`
+`DoctorProbe` · `src/commands.ts:296`
 
 A file and its text; a program that prints that text, run with the engine's loader; how long it waits, in milliseconds.
 
@@ -31,7 +31,7 @@ A file and its text; a program that prints that text, run with the engine's load
 
 ### An amendment prepared
 
-`Amending` · `src/commands.ts:342` · status: **held**
+`Amending` · `src/commands.ts:356` · status: **held**
 
 A chosen value of a node changed by an amendment, compiled first with the graph in memory, the day it comes into force: what it would change, or why it is refused (a value code is built on, a cited one without its source, a value of another type, an error raised). It writes nothing: trame amend and trame dev record it, through the port "Where an amendment goes".
 
@@ -47,7 +47,7 @@ A chosen value of a node changed by an amendment, compiled first with the graph 
 
 ### Assembler
 
-`Assembler` · `src/commands.ts:66` · status: **held**
+`Assembler` · `src/commands.ts:80` · status: **held**
 
 The program of a component for an environment, and its infrastructure, ready to write.
 
@@ -57,13 +57,13 @@ The program of a component for an environment, and its infrastructure, ready to 
 - Effects: execution, keeps, process, read, terminal, time
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Verified by: [A component assembled](command-scenarios.md#ComponentAssembled)
-- Used by: [Assemble a component](#Assemble), [Deliver](#Deliver), [Ship](#Ship)
+- Used by: [Assemble a component](#Assemble), [A command of the project, or a view](#CommandOrView), [Deliver](#Deliver), [Ship](#Ship)
 
 <a id="BuildComparison"></a>
 
 ### Two builds compared
 
-`BuildComparison` · `src/commands.ts:318` · status: **held**
+`BuildComparison` · `src/commands.ts:332` · status: **held**
 
 The nodes added and removed, the statuses that change, the nodes whose fields, result or edges change, the issues raised and resolved, the shipments touched; then said line by line. What trame plan and trame amend show.
 
@@ -78,23 +78,39 @@ The nodes added and removed, the statuses that change, the nodes whose fields, r
 
 ### Preparation
 
-`Preparation` · `src/commands.ts:39` · status: **held**
+`Preparation` · `src/commands.ts:52` · status: **held**
 
 Reads the options, checks and compiles the project, refuses cleanly: what all commands share.
 
 - Owner: trame
-- Parameters: `line` ← [Trame's commands](conventions.md#TrameCommands) · `compiler` ← [Compiler](engine.md#Compiler) · `compilationApi` ← [Compilation API](engine.md#CompilationApi) · `laws` ← [Laws](engine.md#Laws) · `views` ← [Views](engine.md#Views) · `lock` ← [Lock](engine.md#Lock) · `common` ← [Common rendering](rendering.md#Common) · `terminal` ← [Terminal](architecture.md#Terminal) · `currentProcess` ← [Process](architecture.md#Process) · `clock` ← [Clock](architecture.md#Clock) · `severityOrder` ← [Sort problems by severity](product.md#SeverityOrder) · `devPort` ← [Port of trame dev](product.md#DevPort) · `exitStatus` ← [Exit status](../std/releases/0.21.0/docs/system.md#ExitStatus) · `layout` ← [Terminal text](text.md#TerminalText) · `columns` ← [Columns in the terminal](text.md#TerminalColumns) · `cell` ← [Padded cell](text.md#PaddedCell) · `counts` ← [Counts](../std/releases/0.21.0/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/releases/0.21.0/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/releases/0.21.0/docs/algebra.md#Texts) · `messages` ← [Messages of the commands](messages.md#CommandMessages) · `projectLayout` ← [Project layout](conventions.md#Layout) · `uri` ← [URI](../std/releases/0.21.0/docs/web.md#Uri) · `references` ← [References](engine.md#References)
+- Parameters: `line` ← [Trame's commands](conventions.md#TrameCommands) · `compiler` ← [Compiler](engine.md#Compiler) · `compilationApi` ← [Compilation API](engine.md#CompilationApi) · `laws` ← [Laws](engine.md#Laws) · `views` ← [Views](engine.md#Views) · `lock` ← [Lock](engine.md#Lock) · `common` ← [Common rendering](rendering.md#Common) · `terminal` ← [Terminal](architecture.md#Terminal) · `currentProcess` ← [Process](architecture.md#Process) · `clock` ← [Clock](architecture.md#Clock) · `severityOrder` ← [Sort problems by severity](product.md#SeverityOrder) · `devPort` ← [Port of trame dev](product.md#DevPort) · `exitStatus` ← [Exit status](../std/releases/0.21.0/docs/system.md#ExitStatus) · `layout` ← [Terminal text](text.md#TerminalText) · `columns` ← [Columns in the terminal](text.md#TerminalColumns) · `cell` ← [Padded cell](text.md#PaddedCell) · `counts` ← [Counts](../std/releases/0.21.0/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/releases/0.21.0/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/releases/0.21.0/docs/algebra.md#Texts) · `messages` ← [Messages of the commands](messages.md#CommandMessages) · `projectLayout` ← [Project layout](conventions.md#Layout) · `uri` ← [URI](../std/releases/0.21.0/docs/web.md#Uri) · `references` ← [References](engine.md#References) · `projectCommands` ← [The project's commands](#ProjectCommands)
 - Body: `./code/commands/preparation.ts` (typescript)
 - Effects: execution, keeps, process, read, terminal, time
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
-- Used by: [Advance](#Advance), [Amend](#Amend), [An amendment prepared](#Amending), [Assemble a component](#Assemble), [Assembler](#Assembler), [Audit the packages](#Audit), [Build](#Build), [Deliver](#Deliver), [Start trame dev](#Dev), [Ask the machine](#Doctor), [Payload](#EmitPayload), [Export the page](#Export), [Start a project](#Init), [Plan](#Plan), [Publish](#Publish), [Record evidence](#RecordEvidence), [Fill the registry](#Registry), [Release a version](#Release), [Render a view](#RenderView), [Ship](#Ship), [Show a view](#ShowView), [Take the snapshot](#TakeSnapshot), [Test the laws](#TestKinds), [Upgrade](#Upgrade), [View by its name](#ViewByName), [Write the manifest](#WriteManifest)
+- Used by: [Advance](#Advance), [Amend](#Amend), [An amendment prepared](#Amending), [Assemble a component](#Assemble), [Assembler](#Assembler), [Audit the packages](#Audit), [Build](#Build), [A command of the project, or a view](#CommandOrView), [Deliver](#Deliver), [Start trame dev](#Dev), [Ask the machine](#Doctor), [Payload](#EmitPayload), [Export the page](#Export), [Help](#Help), [Start a project](#Init), [Plan](#Plan), [Publish](#Publish), [Record evidence](#RecordEvidence), [Fill the registry](#Registry), [Release a version](#Release), [Render a view](#RenderView), [Ship](#Ship), [Show a view](#ShowView), [Take the snapshot](#TakeSnapshot), [Test the laws](#TestKinds), [Upgrade](#Upgrade), [Write the manifest](#WriteManifest)
 - Verified by: [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore)
+
+<a id="ProjectCommands"></a>
+
+### The project's commands
+
+`ProjectCommands` · `src/commands.ts:41` · status: **held**
+
+The commands of a project (E3): the entry points a command triggers in the components of its own graph that std's ProgramCommands exposes; and those of them that never run, which a command of the engine or a view answers first, or another command of the project has the name of.
+
+- Owner: trame
+- Parameters: `wiring` ← [Wiring](engine.md#Wiring) · `counts` ← [Counts](../std/releases/0.21.0/docs/algebra.md#Counts) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
+- Body: `./code/commands/project-commands.ts` (typescript)
+- Effects: execution, keeps, read
+- Serves: [A specification that runs](product.md#ExecutableSpecification)
+- Verified by: [A command of the project](command-scenarios.md#ProjectCommandRun)
+- Used by: [A command of the project, or a view](#CommandOrView), [Help](#Help), [Preparation](#Preparation)
 
 <a id="ReferencesModule"></a>
 
 ### A module of references
 
-`ReferencesModule` · `src/commands.ts:405` · status: **held**
+`ReferencesModule` · `src/commands.ts:419` · status: **held**
 
 Writes the packages of Trame a project uses as package nodes, as a person would: trame init writes the first, an advance the example's language.
 
@@ -109,7 +125,7 @@ Writes the packages of Trame a project uses as package nodes, as a person would:
 
 ### Render a view
 
-`RenderView` · `src/commands.ts:55` · status: **held**
+`RenderView` · `src/commands.ts:69` · status: **held**
 
 A view, rendered for the terminal, in Markdown or in JSON.
 
@@ -119,7 +135,7 @@ A view, rendered for the terminal, in Markdown or in JSON.
 - Effects: execution, keeps, process, read, terminal, time
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Verified by: [A view in the terminal](command-scenarios.md#ViewsInTheTerminal)
-- Used by: [Show a view](#ShowView), [View by its name](#ViewByName)
+- Used by: [A command of the project, or a view](#CommandOrView), [Show a view](#ShowView)
 
 ## Entry points
 
@@ -127,7 +143,7 @@ A view, rendered for the terminal, in Markdown or in JSON.
 
 ### Advance
 
-`Advance` · `src/commands.ts:91` · status: **held**
+`Advance` · `src/commands.ts:105` · status: **held**
 
 The generation in place builds Trame's libraries, the example and Trame's graph, assembles the candidate; the candidate builds them all as it did, reassembles itself to a fixed point, and the laws hold. The requirement "Accept a candidate" decides; with --promote, the candidate becomes the next generation, with a copy of the graph it was assembled from and of its libraries'.
 
@@ -149,7 +165,7 @@ Triggered by `command advance`
 
 ### Amend
 
-`Amend` · `src/commands.ts:359` · status: **held**
+`Amend` · `src/commands.ts:373` · status: **held**
 
 Changes a chosen value of a node by an amendment: who, why, from when, the value. What it would change is said first (statuses, issues raised, a criterion or a scenario that would fail); unless it raises an error (or --accept), it is recorded where the project's amendments go, and its owner's approval awaited when someone else wrote it. --dry-run only says. A cited value changes only with its source (--source); a value code is built on, never from here.
 
@@ -169,7 +185,7 @@ Triggered by `command amend`
 
 ### Assemble a component
 
-`Assemble` · `src/commands.ts:446` · status: **held**
+`Assemble` · `src/commands.ts:460` · status: **held**
 
 Triggered by `command assemble`
 
@@ -187,7 +203,7 @@ Triggered by `command assemble`
 
 ### Audit the packages
 
-`Audit` · `src/commands.ts:160` · status: **held**
+`Audit` · `src/commands.ts:174` · status: **held**
 
 Asks the registry about each package of the graph: its known vulnerabilities, its latest version.
 
@@ -207,7 +223,7 @@ Triggered by `command audit`
 
 ### Build
 
-`Build` · `src/commands.ts:77` · status: **held**
+`Build` · `src/commands.ts:91` · status: **held**
 
 Checks, writes docs/ in Markdown, graph.json and snapshot.json, shows the summary.
 
@@ -224,11 +240,31 @@ Triggered by `command build`
 - Applies: [The graph: the description of a product](principles.md#GraphLayer), [One output for each reader](principles.md#OneOutputPerReader)
 - Verified by: [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore)
 
+<a id="CommandOrView"></a>
+
+### A command of the project, or a view
+
+`CommandOrView` · `src/commands.ts:493` · status: **held**
+
+Any other word: the name of a view, or of a command of the project (E3), whose component is assembled for its environment and run with the rest of the line, as trame run would.
+
+Triggered by `command *`
+
+- Owner: trame
+- Parameters: `line` ← [Trame's commands](conventions.md#TrameCommands) · `exitStatus` ← [Exit status](../std/releases/0.21.0/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `renderView` ← [Render a view](#RenderView) · `compiler` ← [Compiler](engine.md#Compiler) · `views` ← [Views](engine.md#Views) · `assembler` ← [Assembler](#Assembler) · `projectCommands` ← [The project's commands](#ProjectCommands) · `writing` ← [File writing](architecture.md#FileWriting) · `paths` ← [Paths](architecture.md#Paths) · `currentProcess` ← [Process](architecture.md#Process) · `posix` ← [POSIX signals and errors](../std/releases/0.21.0/docs/system.md#Posix) · `events` ← [Node.js events](../std/releases/0.21.0/docs/system.md#NodeEvents) · `terminal` ← [Terminal](architecture.md#Terminal) · `counts` ← [Counts](../std/releases/0.21.0/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/releases/0.21.0/docs/algebra.md#Sequences) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
+- Body: `./code/commands/command-or-view.ts` (typescript)
+- Effects: execution, keeps, process, read, terminal, time, write
+- Serves: [A specification that runs](product.md#ExecutableSpecification)
+- Part of: [Trame on the command line](architecture.md#TrameCli)
+- For: [Anyone](../std/releases/0.21.0/docs/access.md#Anyone)
+- Verified by: [A command of the project](command-scenarios.md#ProjectCommandRun), [A view in the terminal](command-scenarios.md#ViewsInTheTerminal)
+- Used by: [A command of the project](command-scenarios.md#ProjectCommandRun), [A view in the terminal](command-scenarios.md#ViewsInTheTerminal)
+
 <a id="Deliver"></a>
 
 ### Deliver
 
-`Deliver` · `src/commands.ts:197` · status: **held**
+`Deliver` · `src/commands.ts:211` · status: **held**
 
 Writes the deliveries of the project, or the one named: for a page, the component assembled for its environment, its program bundled into one script with the bundler's settings of the page, its style sheets after the variables they use, in one document a browser opens as it is. Refused while the graph is in error.
 
@@ -249,7 +285,7 @@ Triggered by `command deliver`
 
 ### Start trame dev
 
-`Dev` · `src/commands.ts:436` · status: **held**
+`Dev` · `src/commands.ts:450` · status: **held**
 
 Triggered by `command dev`
 
@@ -267,7 +303,7 @@ Triggered by `command dev`
 
 ### Ask the machine
 
-`Doctor` · `src/commands.ts:295` · status: **held**
+`Doctor` · `src/commands.ts:309` · status: **held**
 
 trame doctor: does this machine run Trame? It says the day, writes a file and reads it back, copies a directory and compares the copy, runs a program with the engine's loader, keeps a run until a file changes, serves HTTP on a port the system gives, waits, and asks the registry about the project's packages: one line for each, and the status of the whole. Run on a machine by a check of Trame's shipment, it proves the realizations no scenario in memory can run.
 
@@ -288,7 +324,7 @@ Triggered by `command doctor`
 
 ### Payload
 
-`EmitPayload` · `src/commands.ts:149` · status: **held**
+`EmitPayload` · `src/commands.ts:163` · status: **held**
 
 The compiled graph in the intermediate format, at one date or at all of them.
 
@@ -308,7 +344,7 @@ Triggered by `command payload`
 
 ### Export the page
 
-`Export` · `src/commands.ts:269` · status: **held**
+`Export` · `src/commands.ts:283` · status: **held**
 
 Triggered by `command export`
 
@@ -323,11 +359,31 @@ Triggered by `command export`
 - Used by: [The page exported](command-scenarios.md#PageExported)
 - Produces: [The graph page](sdlc.md#GraphPage)
 
+<a id="Help"></a>
+
+### Help
+
+`Help` · `src/commands.ts:509` · status: **held**
+
+What a person may type here: the commands of the engine, those of the project with the entry point and the component each runs, and the views.
+
+Triggered by `command help`
+
+- Owner: trame
+- Parameters: `exitStatus` ← [Exit status](../std/releases/0.21.0/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `projectCommands` ← [The project's commands](#ProjectCommands) · `views` ← [Views](engine.md#Views) · `terminal` ← [Terminal](architecture.md#Terminal) · `cell` ← [Padded cell](text.md#PaddedCell) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
+- Body: `./code/commands/help.ts` (typescript)
+- Effects: execution, keeps, process, read, terminal, time
+- Serves: [A specification that runs](product.md#ExecutableSpecification)
+- Part of: [Trame on the command line](architecture.md#TrameCli)
+- For: [Anyone](../std/releases/0.21.0/docs/access.md#Anyone)
+- Verified by: [A command of the project](command-scenarios.md#ProjectCommandRun)
+- Used by: [A command of the project](command-scenarios.md#ProjectCommandRun)
+
 <a id="Init"></a>
 
 ### Start a project
 
-`Init` · `src/commands.ts:419` · status: **held**
+`Init` · `src/commands.ts:433` · status: **held**
 
 In an empty directory: its configuration (the generation that runs, the libraries the language's home uses), a first module with the goal it serves, the guide for agents and the skill, then its manifest, by a fresh engine.
 
@@ -348,7 +404,7 @@ Triggered by `command init`
 
 ### Plan
 
-`Plan` · `src/commands.ts:325` · status: **held**
+`Plan` · `src/commands.ts:339` · status: **held**
 
 Triggered by `command plan`
 
@@ -366,7 +422,7 @@ Triggered by `command plan`
 
 ### Publish
 
-`Publish` · `src/commands.ts:135` · status: **held**
+`Publish` · `src/commands.ts:149` · status: **held**
 
 The current declarations enter trame.lock and no longer change.
 
@@ -387,7 +443,7 @@ Triggered by `command publish`
 
 ### Record evidence
 
-`RecordEvidence` · `src/commands.ts:236` · status: **held**
+`RecordEvidence` · `src/commands.ts:250` · status: **held**
 
 trame evidence <node> passed|failed --by <name>: what a person gives, attributed to them, on what is there now: a check made by hand (for the artefacts as last built), a review (each row of a dataset in each language, or a node as it is written), where an artefact was deployed. Refused to someone not of the role that signs it, or who reviews their own work when the role forbids it.
 
@@ -408,7 +464,7 @@ Triggered by `command evidence`
 
 ### Fill the registry
 
-`Registry` · `src/commands.ts:390` · status: **held**
+`Registry` · `src/commands.ts:404` · status: **held**
 
 Publishes to the registry of this machine the generations frozen in the language's home (each with its language) and the releases of its libraries; after a clone, what fills the registry again.
 
@@ -428,7 +484,7 @@ Triggered by `command registry`
 
 ### Release a version
 
-`Release` · `src/commands.ts:252` · status: **held**
+`Release` · `src/commands.ts:266` · status: **held**
 
 Freezes a version of a library under releases/<version>: its graph, its code, and its documents written at that version; links the language at the same place, so that the copy reaches it as the library does; then writes the release in the library's module of releases. Refused when something is left to decide or in error.
 
@@ -449,7 +505,7 @@ Triggered by `command release`
 
 ### Run a component
 
-`Run` · `src/commands.ts:457` · status: **held**
+`Run` · `src/commands.ts:471` · status: **held**
 
 Assembles, then runs the program and exits with its code.
 
@@ -469,7 +525,7 @@ Triggered by `command run`
 
 ### Ship
 
-`Ship` · `src/commands.ts:217` · status: **held**
+`Ship` · `src/commands.ts:231` · status: **held**
 
 trame ship <shipment> --by <name>: runs the shipment's pipeline as the engine computes it (the one the view of the pipelines shows): builds its artefacts (and those its checks read), runs the checks a program of the SDLC makes, records what they found as evidence attributed to the person who ships; compiles again, and refuses while an obligation does not hold, saying which and whose (requirement "Ship only what holds"); then runs the programs that deploy it, in order, and writes its dossier. --dry-run stops before deploying. The programs of the SDLC are assembled for the shipment's environment.
 
@@ -490,7 +546,7 @@ Triggered by `command ship`
 
 ### Show a view
 
-`ShowView` · `src/commands.ts:467` · status: **held**
+`ShowView` · `src/commands.ts:481` · status: **held**
 
 Triggered by `command view`
 
@@ -508,7 +564,7 @@ Triggered by `command view`
 
 ### Take the snapshot
 
-`TakeSnapshot` · `src/commands.ts:124` · status: **held**
+`TakeSnapshot` · `src/commands.ts:138` · status: **held**
 
 Triggered by `command snapshot`
 
@@ -527,7 +583,7 @@ Triggered by `command snapshot`
 
 ### Test the laws
 
-`TestKinds` · `src/commands.ts:111` · status: **held**
+`TestKinds` · `src/commands.ts:125` · status: **held**
 
 The laws of kinds and views, and the imports.
 
@@ -548,7 +604,7 @@ Triggered by `command test-kinds`
 
 ### Upgrade
 
-`Upgrade` · `src/commands.ts:374` · status: **held**
+`Upgrade` · `src/commands.ts:388` · status: **held**
 
 Moves each package of Trame the project references, or those named, to the newest version its origin holds: the reference written again in its module, then the manifest (C1, since g100).
 
@@ -564,31 +620,11 @@ Triggered by `command upgrade`
 - Verified by: [The packages upgraded](command-scenarios.md#PackagesUpgraded)
 - Used by: [The packages upgraded](command-scenarios.md#PackagesUpgraded)
 
-<a id="ViewByName"></a>
-
-### View by its name
-
-`ViewByName` · `src/commands.ts:478` · status: **held**
-
-Any other command: the name of a view.
-
-Triggered by `command *`
-
-- Owner: trame
-- Parameters: `line` ← [Trame's commands](conventions.md#TrameCommands) · `exitStatus` ← [Exit status](../std/releases/0.21.0/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `renderView` ← [Render a view](#RenderView) · `compiler` ← [Compiler](engine.md#Compiler) · `views` ← [Views](engine.md#Views) · `terminal` ← [Terminal](architecture.md#Terminal) · `texts` ← [Texts](../std/releases/0.21.0/docs/algebra.md#Texts) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
-- Body: `./code/commands/view-by-name.ts` (typescript)
-- Effects: execution, keeps, process, read, terminal, time
-- Serves: [A specification that runs](product.md#ExecutableSpecification)
-- Part of: [Trame on the command line](architecture.md#TrameCli)
-- For: [Anyone](../std/releases/0.21.0/docs/access.md#Anyone)
-- Verified by: [A view in the terminal](command-scenarios.md#ViewsInTheTerminal)
-- Used by: [A view in the terminal](command-scenarios.md#ViewsInTheTerminal)
-
 <a id="WriteManifest"></a>
 
 ### Write the manifest
 
-`WriteManifest` · `src/commands.ts:178` · status: **held**
+`WriteManifest` · `src/commands.ts:192` · status: **held**
 
 The packages of the graph, at the versions their nodes declare, written as the dependencies of package.json: the graph decides the versions, npm installs them. And the import map: where the name of each library the project imports leads (#std/* to its sources, or to a version it froze), and where the language's names lead (#trame/kernel, #trame/kinds/*: the generation it pins), each package placed by where it comes from.
 

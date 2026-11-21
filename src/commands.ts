@@ -6,7 +6,7 @@ import { entryPoint, command } from "../kinds/entry-point"
 import { ExecutableSpecification, SingleSource, SeverityOrder, DevPort } from "./product"
 import { decision } from "../kinds/decision"
 import { TrameCli, Terminal, Process, Clock, FileReading, FileWriting, Paths, Hashing, Programs, FileTrees, PackageReports, PackageInstalls, Bundler, Timer, HttpServer, KeptRuns, AmendmentPlace, Prelude } from "./architecture"
-import { Compiler, CompilationApi, Laws, Views, Lock, MachineOutputs, PayloadBuilder, DateBundle, DevServer, Assembly, Fingerprint, References, Project, EngineFingerprint } from "./engine"
+import { Compiler, CompilationApi, Laws, Views, Lock, MachineOutputs, PayloadBuilder, DateBundle, DevServer, Assembly, Fingerprint, References, Project, EngineFingerprint, Wiring } from "./engine"
 import { Page, PageBundle, PageDocument } from "./page"
 import { Html } from "#std/html"
 import { ScriptElement } from "./html"
@@ -33,6 +33,19 @@ import { ShipOnlyWhatHolds, SdlcEvidence, ShipmentRunPlan, ProgramBundle } from 
 import { Anyone } from "#std/access"
 
 /**
+ * The project's commands
+ * The commands of a project (E3): the entry points a command triggers in the components of its own graph that std's
+ * ProgramCommands exposes; and those of them that never run, which a command of the engine or a view answers first, or
+ * another command of the project has the name of.
+ */
+export const ProjectCommands = fn({
+  owner: "trame",
+  serves: [ExecutableSpecification],
+  deps: { wiring: Wiring, counts: Counts, messages: CommandMessages },
+  body: code.file<typeof import("./code/commands/project-commands").default>("./code/commands/project-commands.ts"),
+})
+
+/**
  * Preparation
  * Reads the options, checks and compiles the project, refuses cleanly: what all commands share.
  */
@@ -44,6 +57,7 @@ export const Preparation = fn({
     terminal: Terminal, currentProcess: Process, clock: Clock, severityOrder: SeverityOrder, devPort: DevPort, exitStatus: ExitStatus,
     layout: TerminalText, columns: TerminalColumns, cell: PaddedCell,
     counts: Counts, sequences: Sequences, texts: Texts, messages: CommandMessages, projectLayout: Layout, uri: Uri, references: References,
+    projectCommands: ProjectCommands,
   },
   body: code.file<typeof import("./code/commands/preparation").default>("./code/commands/preparation.ts"),
 })
@@ -472,12 +486,29 @@ export const ShowView = entryPoint({
 })
 
 /**
- * View by its name
- * Any other command: the name of a view.
+ * A command of the project, or a view
+ * Any other word: the name of a view, or of a command of the project (E3), whose component is assembled for its
+ * environment and run with the rest of the line, as trame run would.
  */
-export const ViewByName = entryPoint({
+export const CommandOrView = entryPoint({
   owner: "trame", in: TrameCli, for: Anyone, serves: [ExecutableSpecification],
   trigger: command(commandNames.fallback),
-  deps: { line: TrameCommands, exitStatus: ExitStatus, preparation: Preparation, renderView: RenderView, compiler: Compiler, views: Views, terminal: Terminal, texts: Texts, messages: CommandMessages },
-  body: code.file<typeof import("./code/commands/view-by-name").default>("./code/commands/view-by-name.ts"),
+  deps: {
+    line: TrameCommands, exitStatus: ExitStatus, preparation: Preparation, renderView: RenderView, compiler: Compiler, views: Views,
+    assembler: Assembler, projectCommands: ProjectCommands, writing: FileWriting, paths: Paths, currentProcess: Process, posix: Posix, events: NodeEvents,
+    terminal: Terminal, counts: Counts, sequences: Sequences, messages: CommandMessages,
+  },
+  body: code.file<typeof import("./code/commands/command-or-view").default>("./code/commands/command-or-view.ts"),
+})
+
+/**
+ * Help
+ * What a person may type here: the commands of the engine, those of the project with the entry point and the component
+ * each runs, and the views.
+ */
+export const Help = entryPoint({
+  owner: "trame", in: TrameCli, for: Anyone, serves: [ExecutableSpecification],
+  trigger: command(commandNames.help),
+  deps: { exitStatus: ExitStatus, preparation: Preparation, projectCommands: ProjectCommands, views: Views, terminal: Terminal, cell: PaddedCell, messages: CommandMessages },
+  body: code.file<typeof import("./code/commands/help").default>("./code/commands/help.ts"),
 })

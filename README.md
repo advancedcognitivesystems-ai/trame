@@ -578,7 +578,9 @@ released, and each piece of evidence with the node it is about and who gave it.
 
 The programs of the SDLC are code like the product's: a component of the project whose entry points use the ports of
 `#std/tooling` (`ProgramCommands`, `Files`, `HeadlessBrowser`), realized on a machine by Node's command line, the disk and
-Playwright, and in memory for the scenarios that test them. Governance is rules too: a `rule` applies a requirement of
+Playwright, and in memory for the scenarios that test them. They are the project's commands (E3): `trame <command>` finds
+the entry point in the project's graph, assembles its component for its environment and runs it; a project's command
+never takes the name of the engine's, nor of a view, and `trame help` lists them all. Governance is rules too: a `rule` applies a requirement of
 `#std/rules` (`Reaches`, `NeverReaches`, `Linked`, `WithoutEffects`, `WordsOf`) with its parameters, and says why
 through what it serves or the ADR that applies it, instead of hiding a function.
 

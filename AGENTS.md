@@ -36,6 +36,8 @@ Run from the project's directory, through the pinned generation:
 ./trame.sh build --at 2026-10-27        # the graph as it was that day: evidence counts from the day it was given (g75)
 ./trame.sh test-kinds                  # the laws of the kinds and views
 ./trame.sh view <view> [node|module]   # one view in the terminal: impact, why, history, assembly take a node
+./trame.sh help                        # what may be typed here: the engine's commands, the project's, the views (g116)
+./trame.sh <command> [args] [--env <e>] # a command of the project (E3, g116): its component assembled, its program run (Trame: open-graph-page)
 ./trame.sh dev                         # the page, recompiled at each change
 ./trame.sh export page.html            # the page, standalone: the dates the graph changes at, and the last days of its history
 ./trame.sh assemble <component> --env <environment>
@@ -194,11 +196,14 @@ writer never decides it. Never write such a file by hand; a new place to run is 
 The programs of the SDLC are a component of the project (its exposure `ProgramCommands` from `#std/tooling`, the first
 argument naming the command), whose entry points use the ports `Files`, `HeadlessBrowser` and `RepositoryApi`; a binding
 chooses their machine realizations (`NodeProgramCommands`, `MachineFiles`, `PlaywrightBrowser`, `GitHubCliRepository`)
-for the shipment's environment, and
-another their memory realizations for the scenarios that test them. Governance is rules: a `rule` applies a
-requirement of `#std/rules` (`Reaches`, `NeverReaches`, `Linked`, `WithoutEffects`, `WordsOf`) with its `params` (a
-direction is a word of the vocabulary `Directions`: `way: "in"`), and `serves` a goal or is applied by an ADR that says
-why. A broken rule is an error, unless the rule says `severity: "warning"` while the project gets there.
+for the shipment's environment, and another their memory realizations for the scenarios that test them. They are the
+project's commands (E3, g116): `./trame.sh <command>` runs one, its component assembled for its environment (`--env`
+when it has several), then its program run with the rest of the line, as `trame ship` runs a check; `./trame.sh help`
+lists them. A command of the project named like a command of the engine, a view or another of its commands would never
+run: an error of the graph (`command-hidden`). Never run an assembled program by its path (`npx tsx out/local/…`): type
+its command. Governance is rules: a `rule` applies a requirement of `#std/rules` (`Reaches`, `NeverReaches`, `Linked`,
+`WithoutEffects`, `WordsOf`) with its `params` (a direction is a word of the vocabulary `Directions`: `way: "in"`), and
+`serves` a goal or is applied by an ADR that says why. A broken rule is an error, unless the rule says `severity: "warning"` while the project gets there.
 
 ## 5. The rules the build enforces
 
@@ -436,7 +441,8 @@ then `--accept` if they are wanted (the promoted generation keeps them), or fix 
 - Compare the documents with those of the previous state: a change of the language should change no document; a change
   of the graph should change only what it means to. Node views (impact, why, history, assembly) are not in `docs/`:
   render them with `./trame.sh view`.
-- The page: export it and open it in Chromium (Playwright is installed) to see it runs without errors.
+- The page: export it and open it in Chromium to see it runs without errors: in Trame, `./trame.sh export trame-page.html`
+  then `./trame.sh open-graph-page`, its own program (g116).
 
 ## 8b. What verifies code
 

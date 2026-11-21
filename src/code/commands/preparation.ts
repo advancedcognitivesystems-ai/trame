@@ -15,6 +15,7 @@ import type { TrameCommands } from "../../conventions"
 import type { Uri } from "#std/web"
 import type { References } from "../../engine"
 import type { PaddedCell, TerminalColumns, TerminalText } from "../../text"
+import type { Api as ProjectCommandsApi } from "./project-commands"
 
 export interface Deps {
   line: ProvidedBy<typeof TrameCommands>
@@ -43,6 +44,8 @@ export interface Deps {
   projectLayout: Layout
   uri: ProvidedBy<typeof Uri>
   references: ProvidedBy<typeof References>
+  /** The commands of the project's graph, and those of them that never run (E3, since g116). */
+  projectCommands: ProjectCommandsApi
 }
 
 export interface Options {
@@ -80,6 +83,8 @@ export interface Options {
   dryRun: boolean
   /** What remains once the options are read. */
   args: string[]
+  /** The commands of the engine, as its command line names them: a command of the project never takes their names. */
+  commands: string[]
 }
 
 export type Ctx = { c: Compiled; comp: Compilation }
@@ -100,7 +105,7 @@ const body = (deps: Deps) => {
   const { locate } = deps.common
   const { terminal, messages } = deps
 
-  function options(command: string, raw: string[]): Options {
+  function options(command: string, raw: string[], commands?: string): Options {
     const argv = [...raw]
     /** An option and its value: both leave the arguments; the value is given back. */
     const take = (flag: string) => {
@@ -140,6 +145,7 @@ const body = (deps: Deps) => {
     return {
       root: deps.currentProcess.cwd(), command, today, format, port, fragment, envName, all, history, accept, promote, migrate,
       by, ...(onBehalf === undefined ? {} : { for: onBehalf }), subject, language, note, url, dryRun, why, from, until, source, args: argv,
+      commands: deps.texts.optional(commands).split(line.separator).filter(Boolean),
     }
   }
 
@@ -201,7 +207,8 @@ const body = (deps: Deps) => {
     // A day before today: what was proven then is judged as it was given, the code and the engine of that day unknown.
     const c = await compileAt(loaded!, date, { asGiven: date < deps.clock.today() })
     const lockIssues = checkLock(c, o.root)
-    c.diags.push(...lockIssues)
+    const hidden = deps.projectCommands.hidden(c, o.commands, deps.views.sortedViews().map((v) => v.name))
+    c.diags.push(...lockIssues, ...hidden)
     c.diags.sort((a, b) => deps.severityOrder(a.severity) - deps.severityOrder(b.severity))
     const published = publishedOf(c, o.root)
     c.published = published
