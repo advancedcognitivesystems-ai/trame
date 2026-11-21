@@ -17,4 +17,7 @@ and loads its people where it declares what they own: `import "#team/people"`. A
 besides (the example's karim and lea); the same actor declared twice must say the same thing. Each actor's `handle`
 is the text an owner gives; one nobody declares is an error of the project (g113).
 
+The library writes its workflow with `ci`, and `ci` imports it: each at a frozen version of the other. Inside `ci`, the
+name `#ci` that this library's workflow imports leads to ci's own sources (g114: a project's own name leads to itself).
+
 Build it with `../../trame.sh build`; release a version with `../../trame.sh release <version> "what" --by <name>`.

@@ -58,6 +58,10 @@ example).
 Each writer is a syntax element: its examples (a plan, settings, and the file it must write) are played at every build.
 A new place (GitLab CI, another service) is a new writer here; neither the plan nor the engine changes.
 
+The owners of its nodes are the repository's people, which it imports from the library `team` (C4), as every project
+of the repository does, though `team` writes its own workflow with this library: each imports the other at a frozen
+version, and here the name `#ci` that team's workflow imports leads to this library's own sources (g114).
+
 ## Building it
 
 ```
