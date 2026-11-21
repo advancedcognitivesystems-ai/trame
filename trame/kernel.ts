@@ -371,6 +371,11 @@ export interface Evidence {
   subject?: string
   language?: string
   by?: string
+  /**
+   * The actors who gave it for `by`, nearest first (C4, since g115): an agent acting under a delegation of the role, as
+   * OAuth's token exchange names who acts (RFC 8693, act). Sealed with the rest.
+   */
+  through?: string[]
   fingerprint?: string
   /**
    * For what was built or checked by a program: the fingerprint of the code that made it (what produced the artefact, the

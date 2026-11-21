@@ -33,7 +33,8 @@ export default defineView({
       const e = sequences.last(v.evidence.filter((x) => x.source !== undefined && x.subject === undefined))
       if (!e) return []
       const verdict = e.source === EvidenceSource.check ? [e.value === counts.one ? say.pipelinesPassed() : say.pipelinesFailed()] : []
-      return [...verdict, ...say.pipelinesEvidence(doc.date(e.at), e.by ?? texts.empty), ...(e.url ? [doc.ident(e.url)] : [])]
+      const by = counts.any(e.through ?? []) ? say.pipelinesThrough(e.by ?? texts.empty, texts.concat(lists.conjunction(e.through ?? []).map(String))) : e.by ?? texts.empty
+      return [...verdict, ...say.pipelinesEvidence(doc.date(e.at), by), ...(e.url ? [doc.ident(e.url)] : [])]
     }
     /**
      * What runs a step: a delivery, a program, a component assembled; a check, the program that runs it or the hand that

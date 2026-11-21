@@ -74,7 +74,8 @@ const body = (deps: Deps): Handler => async (req) => {
   if (!found) return refuse(o, [messages.noShipment(name, shipmentsOf(comp).map((s) => s.id))])
   const ref = found.ref
   const out = (v: View, edge: string) => comp.from(v).out(edge).nodes()
-  const signed = { by, signature: SignatureType.attribution }
+  // Given for someone (--for, C4): theirs, with the agent who gave it named; the evidence of a program is no role's.
+  const signed = o.for === undefined ? { by, signature: SignatureType.attribution } : { by: o.for, through: [by], signature: SignatureType.attribution }
   const save = (file: string, text: string) => {
     deps.writing.mkdirSync(dirname(file), { recursive: true })
     deps.writing.writeFileSync(file, text)
