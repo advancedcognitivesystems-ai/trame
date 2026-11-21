@@ -183,7 +183,7 @@ Loads the project once (the code of each node fingerprinted), then compiles it a
 - Effects: execution, keeps, read
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Verified by: [A library carries kinds](command-scenarios.md#KindsCarried), [A body amended runs amended](scenarios.md#AmendedBodiesRun), [The described engine compiles the example](scenarios.md#CompileExample)
-- Used by: [A library carries kinds](command-scenarios.md#KindsCarried), [The laws, tested by their command](command-scenarios.md#LawsTested), [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [Stages shipped in order](command-scenarios.md#StagesShipped), [Preparation](commands.md#Preparation), [Test the laws](commands.md#TestKinds), [View by its name](commands.md#ViewByName), [A body amended runs amended](scenarios.md#AmendedBodiesRun), [The described engine compiles the example](scenarios.md#CompileExample), [The laws of the kinds hold](scenarios.md#KindLaws)
+- Used by: [A library carries kinds](command-scenarios.md#KindsCarried), [The laws, tested by their command](command-scenarios.md#LawsTested), [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [Stages shipped in order](command-scenarios.md#StagesShipped), [A command of the project, or a view](commands.md#CommandOrView), [Preparation](commands.md#Preparation), [Test the laws](commands.md#TestKinds), [A body amended runs amended](scenarios.md#AmendedBodiesRun), [The described engine compiles the example](scenarios.md#CompileExample), [The laws of the kinds hold](scenarios.md#KindLaws)
 - Applies: [Who acts is declared](principles.md#ActorsDeclared), [A change to a node is a claim](principles.md#ChangesAreClaims), [A literal in a body is an error](principles.md#EveryLiteralDeclared), [The graph: the description of a product](principles.md#GraphLayer), [A key is made of its parts](principles.md#KeysOfParts), [A library is a Trame project, imported by path](principles.md#LibrariesAreProjects), [Code holds no hidden decision](principles.md#NoHiddenDecision), [The prelude and the compiler know no kind of node](principles.md#NoKindInTheCore), [A literal in a kind or a view is an error](principles.md#NoLiteralInTheLanguage), [An undecided value blocks; it does not crash](principles.md#UndecidedBlocks)
 
 <a id="Cycles"></a>
@@ -515,7 +515,7 @@ Loads them, lists their instances, runs them under their laws.
 - Body: `./code/engine/views.ts` (typescript)
 - Effects: execution, keeps, read
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
-- Used by: [The laws, tested by their command](command-scenarios.md#LawsTested), [Preparation](commands.md#Preparation), [Render a view](commands.md#RenderView), [Test the laws](commands.md#TestKinds), [View by its name](commands.md#ViewByName), [Payload](#PayloadBuilder)
+- Used by: [The laws, tested by their command](command-scenarios.md#LawsTested), [A command of the project, or a view](commands.md#CommandOrView), [Help](commands.md#Help), [Preparation](commands.md#Preparation), [Render a view](commands.md#RenderView), [Test the laws](commands.md#TestKinds), [Payload](#PayloadBuilder)
 - Applies: [The laws are requirements](#LawsAreRequirements), [The language receives the graph's values](#TheLanguageReceivesTheGraph), [The traversal API is the only way to read the graph](principles.md#OneWayToRead), [Kinds and views: the vocabulary, as reviewed files](principles.md#VocabularyLayer)
 - Verified by: [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore)
 
@@ -532,6 +532,6 @@ The plan: what to build, in which order, with which implementation for each port
 - Body: `./code/engine/wiring.ts` (typescript)
 - Effects: execution, keeps, read
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
-- Used by: [Assembly](#Assembly), [Compiler](#Compiler)
+- Used by: [The project's commands](commands.md#ProjectCommands), [Assembly](#Assembly), [Compiler](#Compiler)
 - Applies: [An undecided value blocks; it does not crash](principles.md#UndecidedBlocks)
 - Verified by: [A body amended runs amended](scenarios.md#AmendedBodiesRun), [The described engine compiles the example](scenarios.md#CompileExample)

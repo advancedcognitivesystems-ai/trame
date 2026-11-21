@@ -64,7 +64,7 @@ const body = (deps: Deps): Handler => async (req) => {
   const { npm, layout, specifiers } = deps
   const { join, sep, resolve } = deps.paths
   const { empty } = deps.texts
-  const o = options(req.params.command, (req.body as { args: string[] }).args)
+  const o = options(req.params.command, (req.body as { args: string[] }).args, req.params.commands)
   const file = join(o.root, layout.manifest)
   const read = () => (deps.reading.existsSync(file) ? (JSON.parse(deps.reading.readFileSync(file, deps.encodings.utf8)) as Record<string, unknown>) : {})
   const write = (manifest: Record<string, unknown>) => deps.writing.writeFileSync(file, JSON.stringify(manifest, undefined, deps.json.indentation) + deps.file.endOfLine)

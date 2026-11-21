@@ -24,7 +24,7 @@ const body = (deps: Deps): Handler => async (req) => {
   const { options, refuse } = deps.preparation
   const { messages, terminal } = deps
   const { indent } = deps.text
-  const o = options(req.params.command, (req.body as { args: string[] }).args)
+  const o = options(req.params.command, (req.body as { args: string[] }).args, req.params.commands)
   const [node, path, value] = o.args
   if (node === undefined || path === undefined || value === undefined || o.why === undefined || o.by === undefined) return refuse(o, [messages.amendUsage()])
   const prepared = await deps.amending.prepareAmendment(o, { node, path, value, why: o.why, by: o.by, from: o.from, until: o.until, source: o.source, accept: o.accept })

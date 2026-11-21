@@ -17,7 +17,7 @@ export interface Deps {
 }
 
 const body = (deps: Deps): Handler => async (req) => {
-  const o = deps.preparation.options(req.params.command, (req.body as { args: string[] }).args)
+  const o = deps.preparation.options(req.params.command, (req.body as { args: string[] }).args, req.params.commands)
   /** An amendment the page posts: prepared, then recorded unless refused or only previewed. */
   const amend = async (asked: unknown) => {
     const a = asked as AmendmentAsked & { dryRun?: boolean }

@@ -41,7 +41,7 @@ export interface Deps {
 const body = (deps: Deps): Handler => async (req) => {
   const { paths, messages, terminal, exitStatus } = deps
   const { join, dirname, basename } = paths
-  const o = deps.preparation.options(req.params.command, (req.body as { args: string[] }).args)
+  const o = deps.preparation.options(req.params.command, (req.body as { args: string[] }).args, req.params.commands)
   const { c, comp } = await deps.preparation.prepare(o)
   const text = (v: { field(name: string): unknown }, name: string) => {
     const x = v.field(name)

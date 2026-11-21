@@ -168,7 +168,9 @@ How a version becomes available is declared in the graph, with the kinds `role`,
   just built by the engine that built it; a build judges by the engine the project pins.
 - The SDLC's programs are a component whose exposure is `ProgramCommands` (`#std/tooling`), using the ports `Files` and
   `HeadlessBrowser`; one binding chooses their machine realizations, another their memory ones, and scenarios test them
-  in memory before they run for real.
+  in memory before they run for real. They are the project's commands (E3, g116): `./trame.sh <command>` assembles and
+  runs one, `./trame.sh help` lists them; never run an assembled program by its path. A name the engine or a view
+  already has is an error (`command-hidden`).
 - A file that runs a shipment elsewhere (a GitHub workflow, a Bash script) is an `artifact` produced by a writer of `ci`
   (`GitHubWorkflow`, `ShellScript`), naming the shipment it `runs`, its `settings` and what it `publishes`: the graph
   decides what is published and kept, never the writer.
@@ -201,7 +203,8 @@ theirs to give with `trame evidence`. Record where you published an artefact (`t
 - Compare the documents with the previous ones: a change of the language changes no document; a change of the graph
   changes only what it means to. `./trame.sh test-kinds` plays the laws of the kinds and views.
 - A page: export or deliver it and open it in Chromium (Playwright is installed) to see it runs without errors; in a
-  project that declares it, `trame ship <shipment> --dry-run` does this through its own check.
+  project that declares it, `trame ship <shipment> --dry-run` does this through its own check, and in Trame
+  `./trame.sh open-graph-page` opens the exported page.
 
 ## Changing the engine (Trame's own repository)
 

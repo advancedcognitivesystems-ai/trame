@@ -44,7 +44,7 @@ const body = (deps: Deps): Handler => async (req) => {
   const { probe, reading, writing, trees, programs, clock, terminal, messages, exitStatus } = deps
   const { join } = deps.paths
   const { zero } = deps.counts
-  const o = deps.preparation.options(req.params.command, (req.body as { args: string[] }).args)
+  const o = deps.preparation.options(req.params.command, (req.body as { args: string[] }).args, req.params.commands)
   const results: boolean[] = []
   /** Asks one thing of the machine: its answer, or what went wrong, on one line. */
   const ask = async (what: string, answer: () => boolean | Promise<boolean>) => {

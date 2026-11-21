@@ -33,7 +33,7 @@ const body = (deps: Deps): Handler => {
   const { indent } = deps.layout
   const { widths } = deps.columns
   return async (req) => {
-    const o = options(req.params.command, (req.body as { args: string[] }).args)
+    const o = options(req.params.command, (req.body as { args: string[] }).args, req.params.commands)
     await loadKinds(o.root)
     await loadViews(o.root)
     const imports = checkImports(o.root)

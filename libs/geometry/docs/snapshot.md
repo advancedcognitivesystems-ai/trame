@@ -40,7 +40,7 @@ Package · `Language`
 
 - Owner: ghalaax
 - Name: trame
-- Version: 115
+- Version: 116
 - How it joins the graph: language
 - Where it comes from: registry
 - Serves: Geometry written once

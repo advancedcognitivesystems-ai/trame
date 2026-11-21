@@ -19,7 +19,7 @@ export interface Deps {
 }
 
 const body = (deps: Deps): Handler => async (req) => {
-  const o = deps.preparation.options(req.params.command, (req.body as { args: string[] }).args)
+  const o = deps.preparation.options(req.params.command, (req.body as { args: string[] }).args, req.params.commands)
   const { files, steps } = await deps.assembler.assemble(o)
   for (const f of files) {
     deps.writing.mkdirSync(deps.paths.dirname(f.path), { recursive: true })

@@ -10,8 +10,9 @@ import {
 } from "./architecture"
 import { PayloadBuilder, Differences, Assembly, Project, Compiler, Lock, References, DateBundle, DevServer, DevService, ShipmentPipeline, Views, EngineFingerprint, ProjectRuns } from "./engine"
 import {
-  ShowView, ViewByName, RenderView, EmitPayload, Assemble, Assembler, TestKinds, TakeSnapshot, Publish, Audit, Release, WriteManifest, Export, Run, Dev,
+  ShowView, CommandOrView, RenderView, EmitPayload, Assemble, Assembler, TestKinds, TakeSnapshot, Publish, Audit, Release, WriteManifest, Export, Run, Dev,
   Deliver, Ship, RecordEvidence, Doctor, DoctorProbe, Advance, Build, Plan, Amend, Amending, BuildComparison, Init, ReferencesModule, Registry, Upgrade,
+  ProjectCommands, Help,
 } from "./commands"
 import { SyntaxReader, BodyChecks } from "./syntax"
 import { TypeScript, TypeScriptWriter, StringLiteral } from "./typescript"
@@ -116,10 +117,10 @@ export const ViewSamples = decision<{ project: { view: string; shows: string }; 
  */
 export const ViewsInTheTerminal = scenario({
   owner: "trame",
-  verifies: [ShowView, ViewByName, RenderView, TerminalRendering, PlainTextSyntax, TextFigures],
+  verifies: [ShowView, CommandOrView, RenderView, TerminalRendering, PlainTextSyntax, TextFigures],
   env: Test,
   deps: {
-    show: ShowView, byName: ViewByName, terminalLog: TerminalLog, line: TrameCommands, exitStatus: ExitStatus, samples: ViewSamples,
+    show: ShowView, byName: CommandOrView, terminalLog: TerminalLog, line: TrameCommands, exitStatus: ExitStatus, samples: ViewSamples,
     texts: Texts, counts: Counts, messages: ScenarioMessages,
   },
   body: ({ show, byName, terminalLog, line, exitStatus, samples, texts, counts, messages }) => async (check) => {
@@ -503,6 +504,11 @@ export const ProjectSamples = decision<{
    * once what it checks was built, and a day the delegation is over.
    */
   delegated: { check: string; agent: string; person: string; within: string; after: string }
+  /**
+   * A command of the example (E3): the word typed, a word after it the program receives, the environment the dispatch
+   * reads, and the title of the component that runs it.
+   */
+  command: { name: string; argument: string; environment: string; component: string }
   started: { title: string; owner: string }
   registry: { home: string; generation: string }
 }>({
@@ -522,6 +528,7 @@ export const ProjectSamples = decision<{
     },
     handCheck: { check: "OnAPhone", tester: "ghalaax", stranger: "someone-else" },
     delegated: { check: "OnALaptop", agent: "lea", person: "karim", within: "2026-12-01", after: "2027-01-05" },
+    command: { name: "prepare-storage", argument: "--dry-run", environment: "Local", component: "The service's SDLC" },
     started: { title: "Started in memory", owner: "ghalaax" },
     registry: { home: ".", generation: "g93" },
   },
@@ -968,6 +975,38 @@ export const EvidenceForSomeone = scenario({
     check(messages.givenForSomeone(agent, person), given.status === d.exitStatus.success && counts.single(mine) && entry?.by === person &&
       JSON.stringify(entry?.through) === JSON.stringify([agent]) && entry?.seal === d.signatures.seal({ ...entry }))
     check(messages.delegationOverRefused(agent), await refused([node, line.passed, line.by, agent, line.for, person, line.at, after]))
+  },
+})
+
+/**
+ * A command of the project
+ * trame prepare-storage, in the example (E3): neither the engine nor a view answers that word, the example's graph says
+ * it is an entry point of its SDLC; its component is assembled for its environment, then run with the rest of the line,
+ * the environment left out, and its status is the command's. trame help lists it with its component. Had the engine a
+ * command of that name, the project's would never run: an error of the graph, which refuses to assemble it.
+ */
+export const ProjectCommandRun = scenario({
+  owner: "trame",
+  verifies: [CommandOrView, ProjectCommands, Help],
+  env: Test,
+  deps: {
+    byName: CommandOrView, help: Help, processLog: ProcessLog, terminalLog: TerminalLog, line: TrameCommands, exitStatus: ExitStatus,
+    samples: ProjectSamples, texts: Texts, said: CommandMessages, messages: ScenarioMessages,
+  },
+  body: (d) => async (check) => {
+    const { line, exitStatus, texts, messages } = d
+    const { name, argument, environment, component } = d.samples.command
+    const printed = (from: number) => texts.concat(d.terminalLog.lines().slice(from))
+    d.processLog.answer(texts.empty, exitStatus.success)
+    const ran = await d.byName({ params: { command: name, commands: line.build }, body: { args: [argument, line.env, environment] } })
+    const started = d.processLog.started().find((s) => s.args.includes(name))
+    check(messages.projectCommandRun(name), ran.status === exitStatus.success && JSON.stringify(started?.args) === JSON.stringify([name, argument]))
+    let from = d.terminalLog.lines().length
+    await d.help({ params: { command: line.help, commands: line.build }, body: { args: [] } })
+    check(messages.helpListsTheProject(name), printed(from).includes(name) && printed(from).includes(component))
+    from = d.terminalLog.lines().length
+    const refused = await d.byName({ params: { command: name, commands: name }, body: { args: [] } }).then(() => false, () => true)
+    check(messages.hiddenCommandRefused(name), refused && printed(from).includes(d.said.commandHiddenByEngine(name)))
   },
 })
 

@@ -39,7 +39,7 @@ const body = (deps: Deps): Handler => async (req) => {
   const { audit, layout, versions, messages, terminal } = deps
   const { join } = deps.paths
   const { zero, one } = deps.counts
-  const o = options(req.params.command, (req.body as { args: string[] }).args)
+  const o = options(req.params.command, (req.body as { args: string[] }).args, req.params.commands)
   const { c, comp } = await prepare(o)
   // Its packages, and those of the libraries it imports as they are (which count as its own); a library frozen at a
   // version is proven by its release.

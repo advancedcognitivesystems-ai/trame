@@ -29,7 +29,7 @@ const SNAPSHOT_VIEW = DocumentName.snapshot
 const body = (deps: Deps): Handler => async (req) => {
   const { options, prepare, views, renderingContext } = deps.preparation
   const { join } = deps.paths
-  const o = options(req.params.command, (req.body as { args: string[] }).args)
+  const o = options(req.params.command, (req.body as { args: string[] }).args, req.params.commands)
   const { c, comp } = await prepare(o)
   const docs = views(o, comp)
   deps.writing.writeFileSync(join(o.root, deps.layout.snapshot), deps.machine.snapshotJson(c))

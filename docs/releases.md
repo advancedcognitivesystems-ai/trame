@@ -402,6 +402,27 @@ Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Ge
 - Released by: trame
 - Releases: [Trame on the command line](architecture.md#TrameCli)
 - Assembled by: [Generation 114](#G114)
+- Assembled: [Generation 116](#G116)
+
+<a id="G116"></a>
+
+### Generation 116
+
+`G116` · `src/releases.ts:1718`
+
+E3, part 1: trame <name> runs a command of the project (an entry point of a component std's ProgramCommands exposes, assembled for its environment); a name the engine or a view already answers is an error (command-hidden); trame help
+
+Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Generation 115](#G115).
+
+- Version: `g116`
+- Released on: 21 November 2026
+- Fingerprint: `74156ba66627e032`
+- Language: the repository's, shared
+- Language archived: `448ee554dabc9b98`
+
+- Released by: trame
+- Releases: [Trame on the command line](architecture.md#TrameCli)
+- Assembled by: [Generation 115](#G115)
 
 <a id="G12"></a>
 

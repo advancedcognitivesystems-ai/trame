@@ -30,7 +30,7 @@ const body = (deps: Deps): Handler => async (req) => {
   const { layout, paths, messages } = deps
   const { join, basename } = paths
   const { existsSync, readdirSync } = deps.reading
-  const o = deps.preparation.options(req.params.command, (req.body as { args: string[] }).args)
+  const o = deps.preparation.options(req.params.command, (req.body as { args: string[] }).args, req.params.commands)
   const generations = join(o.root, layout.generations)
   const named = (dir: string) => !o.args.length || o.args.includes(dir)
   const published: string[] = []

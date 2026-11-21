@@ -71,7 +71,7 @@ const body = (deps: Deps): Handler => async (req) => {
   const { specifiers } = deps
   const { existsSync, readFileSync } = deps.reading
   const { writeFileSync, mkdirSync } = deps.writing
-  const o = options(req.params.command, (req.body as { args: string[] }).args)
+  const o = options(req.params.command, (req.body as { args: string[] }).args, req.params.commands)
   const [title] = o.args
   const owner = o.by
   if (!title || !owner) return refuse(o, [messages.initNeedsTitle()])

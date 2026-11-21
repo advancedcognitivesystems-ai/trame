@@ -115,7 +115,7 @@ Section: Columns
 - Parameters: `standard` ← [Terminal text](#TerminalText) · `columns` ← [Columns in the terminal](#TerminalColumns)
 - Body: inline, in the declaration
 - Defined by: [Terminal text](#TerminalText)
-- Used by: [Preparation](commands.md#Preparation), [Publish](commands.md#Publish), [Test the laws](commands.md#TestKinds), [Plain text writer](rendering.md#PlainTextSyntax), [Figures as text](rendering.md#TextFigures), [Columns](#Columns)
+- Used by: [Help](commands.md#Help), [Preparation](commands.md#Preparation), [Publish](commands.md#Publish), [Test the laws](commands.md#TestKinds), [Plain text writer](rendering.md#PlainTextSyntax), [Figures as text](rendering.md#TextFigures), [Columns](#Columns)
 
 <a id="PathStep"></a>
 
@@ -201,7 +201,7 @@ The terminal shows tables as columns of text: each column as wide as its widest 
 | widths | { rank: 9, severity: 15, code: 30, source: 22, name: 14 } |
 
 - Decided by: trame
-- Used by: [Preparation](commands.md#Preparation), [Publish](commands.md#Publish), [Test the laws](commands.md#TestKinds), [Plain text writer](rendering.md#PlainTextSyntax), [Figures as text](rendering.md#TextFigures), [Columns](#Columns), [Padded cell](#PaddedCell)
+- Used by: [Help](commands.md#Help), [Preparation](commands.md#Preparation), [Publish](commands.md#Publish), [Test the laws](commands.md#TestKinds), [Plain text writer](rendering.md#PlainTextSyntax), [Figures as text](rendering.md#TextFigures), [Columns](#Columns), [Padded cell](#PaddedCell)
 
 <a id="TerminalText"></a>
 

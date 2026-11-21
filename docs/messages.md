@@ -31,7 +31,7 @@ The language Trame speaks to people: British English. Its messages are written i
 
 ### A catalog counts in its language
 
-`CountsInTheLanguage` · `src/messages.ts:972` · status: **held**
+`CountsInTheLanguage` · `src/messages.ts:993` · status: **held**
 
 A count and its noun follow the plural rules of the language the catalog is written in, with the forms the catalog writes for each category; nothing below the catalogs presumes a language.
 
@@ -87,7 +87,7 @@ Joins the items of a list as people write it in the decided language: "A, B and 
 
 ### Messages of an advance
 
-`AdvanceMessages` · `src/messages.ts:883`
+`AdvanceMessages` · `src/messages.ts:904`
 
 What trame advance says as it goes, and what a generation says of itself.
 
@@ -234,8 +234,26 @@ What the commands print: summaries, usage, refusals.
     viewDoesNotApply: (view: string, node: string) => `The view "${view}" does not apply to ${node}.`,
     unknownModule: (module: string | undefined, modules: string[]) => `Unknown module: ${module ?? "(none)"}. Modules: ${modules.join(", ")}`,
     /** A command that is neither a command nor a view: the commands and the views that exist. */
-    unknownCommandOrView: (command: string, commands: string[], views: string[]) =>
-      `Unknown command: ${command}. Commands: ${commands.join(", ")}, or a view: ${views.join(", ")}`,
+    unknownCommandOrView: (command: string, commands: string[], own: string[], views: string[]) =>
+      `Unknown command: ${command}. Commands: ${commands.join(", ")}${own.length ? `; of the project: ${own.join(", ")}` : ""}; or a view: ${views.join(", ")}`,
+
+    // The commands of a project (E3, since g116).
+    /** A command of the project that the engine answers first. */
+    commandHiddenByEngine: (name: string) => `The engine has a command ${name}: this one would never run. Name it otherwise`,
+    /** A command of the project that a view answers first. */
+    commandHiddenByView: (name: string) => `A view is named ${name}: this command would never run. Name it otherwise`,
+    /** Two commands of the project with the same name. */
+    commandTwice: (name: string, where: string[]) => `Several commands of the project are named ${name} (${where.join(", ")}): name them otherwise`,
+    /** A component of commands assembled for several environments, none named. */
+    commandEnvironment: (name: string, component: string, environments: string[]) =>
+      `${name} runs in ${component}, which is assembled for ${environments.join(", ")}: say which with --env`,
+    /** A component of commands assembled for no environment. */
+    commandWithoutEnvironment: (name: string, component: string) => `${name} runs in ${component}, which names no environment to be assembled for`,
+    /** trame help: the commands of the engine, then those of the project, then the views. */
+    helpEngine: (commands: string[]) => `Commands of the engine: ${commands.join(", ")}`,
+    helpProject: (count: number) => (count ? `Commands of the project (${plural(count, { one: "command", other: "commands" })}):` : "Commands of the project: none"),
+    helpProjectCommand: (name: string, title: string, component: string) => `  ${name} ${title} (${component})`,
+    helpViews: (views: string[]) => `Views (trame <view> [node]): ${views.join(", ")}`,
 
     // trame assemble
     assembleUsage: (command: string) => `Usage: trame ${command} <component> --env <environment>`,
@@ -389,7 +407,7 @@ What the commands print: summaries, usage, refusals.
 - Owner: trame
 - Parameters: `language` ← [Language](#Language)
 - Written in: [Language](#Language)
-- Used by: [A build planned](command-scenarios.md#BuildPlanned), [A component assembled](command-scenarios.md#ComponentAssembled), [Declarations published](command-scenarios.md#DeclarationsPublished), [The doctor](command-scenarios.md#DoctorAsks), [The laws, tested by their command](command-scenarios.md#LawsTested), [Stages shipped in order](command-scenarios.md#StagesShipped), [Advance](commands.md#Advance), [Amend](commands.md#Amend), [An amendment prepared](commands.md#Amending), [Assemble a component](commands.md#Assemble), [Assembler](commands.md#Assembler), [Audit the packages](commands.md#Audit), [Build](commands.md#Build), [Two builds compared](commands.md#BuildComparison), [Deliver](commands.md#Deliver), [Ask the machine](commands.md#Doctor), [Export the page](commands.md#Export), [Start a project](commands.md#Init), [Plan](commands.md#Plan), [Preparation](commands.md#Preparation), [Publish](commands.md#Publish), [Record evidence](commands.md#RecordEvidence), [Fill the registry](commands.md#Registry), [Release a version](commands.md#Release), [Render a view](commands.md#RenderView), [Ship](commands.md#Ship), [Take the snapshot](commands.md#TakeSnapshot), [Test the laws](commands.md#TestKinds), [Upgrade](commands.md#Upgrade), [View by its name](commands.md#ViewByName), [Write the manifest](commands.md#WriteManifest), [A shipment's pipeline](engine.md#ShipmentPipeline), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore)
+- Used by: [A build planned](command-scenarios.md#BuildPlanned), [A component assembled](command-scenarios.md#ComponentAssembled), [Declarations published](command-scenarios.md#DeclarationsPublished), [The doctor](command-scenarios.md#DoctorAsks), [The laws, tested by their command](command-scenarios.md#LawsTested), [A command of the project](command-scenarios.md#ProjectCommandRun), [Stages shipped in order](command-scenarios.md#StagesShipped), [Advance](commands.md#Advance), [Amend](commands.md#Amend), [An amendment prepared](commands.md#Amending), [Assemble a component](commands.md#Assemble), [Assembler](commands.md#Assembler), [Audit the packages](commands.md#Audit), [Build](commands.md#Build), [Two builds compared](commands.md#BuildComparison), [A command of the project, or a view](commands.md#CommandOrView), [Deliver](commands.md#Deliver), [Ask the machine](commands.md#Doctor), [Export the page](commands.md#Export), [Help](commands.md#Help), [Start a project](commands.md#Init), [Plan](commands.md#Plan), [Preparation](commands.md#Preparation), [The project's commands](commands.md#ProjectCommands), [Publish](commands.md#Publish), [Record evidence](commands.md#RecordEvidence), [Fill the registry](commands.md#Registry), [Release a version](commands.md#Release), [Render a view](commands.md#RenderView), [Ship](commands.md#Ship), [Take the snapshot](commands.md#TakeSnapshot), [Test the laws](commands.md#TestKinds), [Upgrade](commands.md#Upgrade), [Write the manifest](commands.md#WriteManifest), [A shipment's pipeline](engine.md#ShipmentPipeline), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore)
 - Applies: [A catalog counts in its language](#CountsInTheLanguage), [The words are in catalogs](principles.md#WordsInCatalogs)
 
 <a id="CompilerMessages"></a>
@@ -637,7 +655,7 @@ What the drivers say about a body: hidden dependencies, access to the platform, 
 
 ### Words of Trame's views
 
-`EngineViewWords` · `src/messages.ts:675`
+`EngineViewWords` · `src/messages.ts:693`
 
 What the views of Trame's own graph say: the catalogue of literals, the versions of the engine.
 
@@ -650,7 +668,7 @@ The messages are written in `../engine-views/words.ts`.
 
 ### Words of the kinds
 
-`KindWords` · `src/messages.ts:655`
+`KindWords` · `src/messages.ts:673`
 
 What the kinds say: their labels, the labels of their fields and edges, what their holes say, what they render. The kinds are files of the language, outside the graph: their words are a catalog all the same, which they call; a kind writes no text of its own.
 
@@ -790,7 +808,7 @@ What the machine outputs, the lock, the payload, the date bundle, the difference
 
 ### Words of the page
 
-`PageWords` · `src/messages.ts:686`
+`PageWords` · `src/messages.ts:704`
 
 What the page says around the documents the engine wrote: the state of the compilation, the dates, the navigation, the banner, the figures, the explorer.
 
@@ -806,7 +824,7 @@ The messages are written in `./code/page/words.ts`.
 
 ### Messages of the platform
 
-`PlatformMessages` · `src/messages.ts:708`
+`PlatformMessages` · `src/messages.ts:726`
 
 What the implementations of the ports say (the command line, the terminal, the processes).
 
@@ -846,7 +864,7 @@ What the implementations of the ports say (the command line, the terminal, the p
 
 ### Messages of the renderers
 
-`RenderingMessages` · `src/messages.ts:698`
+`RenderingMessages` · `src/messages.ts:716`
 
 The words that the renderers add to the intermediate format: labels, notes, the names of statuses and outcomes. Written in a file: the page, which runs in the browser where nothing is wired, reads it too.
 
@@ -861,7 +879,7 @@ The messages are written in `./code/rendering/messages.ts`.
 
 ### Messages of the scenarios
 
-`ScenarioMessages` · `src/messages.ts:737`
+`ScenarioMessages` · `src/messages.ts:755`
 
 The names of the checks that the engine's scenarios make.
 
@@ -969,6 +987,9 @@ The names of the checks that the engine's scenarios make.
     agentAloneRefused: (agent: string) => `${agent}, of no role that signs it, is refused alone`,
     givenForSomeone: (agent: string, person: string) => `Given by ${agent} for ${person} under a delegation of the role: ${person}'s, ${agent} named with it, sealed with the rest`,
     delegationOverRefused: (agent: string) => `Once the delegation is over, ${agent} is refused again`,
+    projectCommandRun: (name: string) => `trame ${name} runs the example's command: its component assembled, its program started with the rest of the line`,
+    helpListsTheProject: (name: string) => `trame help lists ${name}, with the component that runs it`,
+    hiddenCommandRefused: (name: string) => `Were ${name} a command of the engine, the project's would never run: an error of the graph, nothing assembled`,
     startedModule: () => "The first module declares the goal and whoever started the project, an actor who owns it, and names the language by its name",
     registryPublished: () => "trame registry publishes a generation it names, its language copied: the kernel is a file there",
     startedReferences: () => "Its references are package nodes of its graph: the language, at the generation that started it, and its libraries",
@@ -1011,7 +1032,7 @@ The names of the checks that the engine's scenarios make.
 - Owner: trame
 - Parameters: `language` ← [Language](#Language)
 - Written in: [Language](#Language)
-- Used by: [An advance, in memory](command-scenarios.md#AdvanceInMemory), [A body is read and checked](command-scenarios.md#BodiesReadAndChecked), [A build planned](command-scenarios.md#BuildPlanned), [The command line](command-scenarios.md#CommandLineChooses), [A component assembled](command-scenarios.md#ComponentAssembled), [A component run](command-scenarios.md#ComponentRun), [Declarations published](command-scenarios.md#DeclarationsPublished), [trame dev](command-scenarios.md#DevFollowsTheGraph), [The doctor](command-scenarios.md#DoctorAsks), [Evidence given for someone](command-scenarios.md#EvidenceForSomeone), [A library carries kinds](command-scenarios.md#KindsCarried), [The laws, tested by their command](command-scenarios.md#LawsTested), [A library released](command-scenarios.md#LibraryReleased), [The manifest written](command-scenarios.md#ManifestWritten), [The packages audited](command-scenarios.md#PackagesAudited), [The packages upgraded](command-scenarios.md#PackagesUpgraded), [The page delivered](command-scenarios.md#PageDelivered), [The page exported](command-scenarios.md#PageExported), [The page of the graph](command-scenarios.md#PageOfTheGraph), [The graph in the intermediate format](command-scenarios.md#PayloadOfTheGraph), [A project started](command-scenarios.md#ProjectStarted), [A published value changed](command-scenarios.md#PublishedValueChanged), [The registry filled](command-scenarios.md#RegistryFilled), [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [The snapshot, taken by its command](command-scenarios.md#SnapshotTaken), [Stages shipped in order](command-scenarios.md#StagesShipped), [A value amended](command-scenarios.md#ValueAmended), [A view in the terminal](command-scenarios.md#ViewsInTheTerminal), [A body amended runs amended](scenarios.md#AmendedBodiesRun), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore), [The described engine compiles the example](scenarios.md#CompileExample), [The documents write in the decided language](scenarios.md#DocumentWords), [EngineReckons](scenarios.md#EngineReckons), [A project judges harder, never softer](scenarios.md#JudgingHarder), [The laws of the kinds hold](scenarios.md#KindLaws), [The graph page is opened as a person would](sdlc.md#OpeningTheGraphPage), [The repository is set as the graph decides](sdlc.md#SettingTheRepository)
+- Used by: [An advance, in memory](command-scenarios.md#AdvanceInMemory), [A body is read and checked](command-scenarios.md#BodiesReadAndChecked), [A build planned](command-scenarios.md#BuildPlanned), [The command line](command-scenarios.md#CommandLineChooses), [A component assembled](command-scenarios.md#ComponentAssembled), [A component run](command-scenarios.md#ComponentRun), [Declarations published](command-scenarios.md#DeclarationsPublished), [trame dev](command-scenarios.md#DevFollowsTheGraph), [The doctor](command-scenarios.md#DoctorAsks), [Evidence given for someone](command-scenarios.md#EvidenceForSomeone), [A library carries kinds](command-scenarios.md#KindsCarried), [The laws, tested by their command](command-scenarios.md#LawsTested), [A library released](command-scenarios.md#LibraryReleased), [The manifest written](command-scenarios.md#ManifestWritten), [The packages audited](command-scenarios.md#PackagesAudited), [The packages upgraded](command-scenarios.md#PackagesUpgraded), [The page delivered](command-scenarios.md#PageDelivered), [The page exported](command-scenarios.md#PageExported), [The page of the graph](command-scenarios.md#PageOfTheGraph), [The graph in the intermediate format](command-scenarios.md#PayloadOfTheGraph), [A command of the project](command-scenarios.md#ProjectCommandRun), [A project started](command-scenarios.md#ProjectStarted), [A published value changed](command-scenarios.md#PublishedValueChanged), [The registry filled](command-scenarios.md#RegistryFilled), [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [The snapshot, taken by its command](command-scenarios.md#SnapshotTaken), [Stages shipped in order](command-scenarios.md#StagesShipped), [A value amended](command-scenarios.md#ValueAmended), [A view in the terminal](command-scenarios.md#ViewsInTheTerminal), [A body amended runs amended](scenarios.md#AmendedBodiesRun), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore), [The described engine compiles the example](scenarios.md#CompileExample), [The documents write in the decided language](scenarios.md#DocumentWords), [EngineReckons](scenarios.md#EngineReckons), [A project judges harder, never softer](scenarios.md#JudgingHarder), [The laws of the kinds hold](scenarios.md#KindLaws), [The graph page is opened as a person would](sdlc.md#OpeningTheGraphPage), [The repository is set as the graph decides](sdlc.md#SettingTheRepository)
 - Applies: [A catalog counts in its language](#CountsInTheLanguage), [The words are in catalogs](principles.md#WordsInCatalogs)
 
 <a id="ViewMessages"></a>
@@ -1080,7 +1101,7 @@ What the loading of views and the compilation API say.
 
 ### Words of the views
 
-`ViewWords` · `src/messages.ts:665`
+`ViewWords` · `src/messages.ts:683`
 
 What the views say: their titles, their introductions, their headings, what they say of the graph.
 
