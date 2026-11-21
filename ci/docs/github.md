@@ -134,7 +134,7 @@ Section: Workflow syntax: on, permissions, jobs.<job_id>.runs-on, jobs.<job_id>.
 - Body: inline, in the declaration
 - Defined by: [GitHub Actions](#GitHubActions)
 - Required by: [The next version](sdlc.md#NextVersion)
-- Produces: [The pull requests' workflow](sdlc.md#PullRequestWorkflow)
+- Produces: [The pull requests' workflow](sdlc.md#PullRequestWorkflow), [The pull requests' workflow](../.trame/team/docs/sdlc.md#PullRequestWorkflow)
 
 ## Decision
 

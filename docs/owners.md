@@ -1,11 +1,11 @@
 # Owners
 
-*What each person must decide, settle or watch on 20 November 2026, and what they own.*
+*What each person must decide, settle or watch on 21 November 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
 | Trame's maintainers | 0 | 0 | 1 | 0 |
-| trame | 0 | 0 | 5 | 714 |
+| trame | 0 | 0 | 5 | 715 |
 
 <a id="Trame's maintainers"></a>
 
@@ -503,6 +503,7 @@
 | [Generation 111](releases.md#G111) | Release |  |
 | [Generation 112](releases.md#G112) | Release |  |
 | [Generation 113](releases.md#G113) | Release |  |
+| [Generation 114](releases.md#G114) | Release |  |
 | [Generation 12](releases.md#G12) | Release |  |
 | [Generation 13](releases.md#G13) | Release |  |
 | [Generation 14](releases.md#G14) | Release |  |

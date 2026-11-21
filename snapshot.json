@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-20",
+  "at": "2026-11-21",
   "nodes": [
     {
       "id": "appearance.ExplorerDrawing",
@@ -11292,6 +11292,20 @@
         "language": "shared",
         "archive": "b0ead947077d2a4b",
         "differences": "differences.diff"
+      }
+    },
+    {
+      "id": "releases.G114",
+      "kind": "release",
+      "title": "Generation 114",
+      "fields": {
+        "owner": "trame",
+        "version": "g114",
+        "date": "2026-11-21",
+        "what": "A project's own name leads to its own sources (in the engine and the manifest): a library it imports may name it, as team names the ci that writes its workflow, so ci imports team instead of declaring the same actors again",
+        "fingerprint": "f9147dfc45d61df4",
+        "language": "shared",
+        "archive": "b0ead947077d2a4b"
       }
     },
     {
@@ -25829,6 +25843,16 @@
     {
       "from": "releases.G113",
       "to": "releases.G112",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G114",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G114",
+      "to": "releases.G113",
       "kind": "assembledBy"
     },
     {

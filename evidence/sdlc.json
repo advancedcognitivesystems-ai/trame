@@ -5238,5 +5238,131 @@
     "by": "claude",
     "signature": "attribution",
     "seal": "1b65bff82c217de8e73ba858752f7d784fd03bb93b3b3a90c36d14c1114bda2b"
+  },
+  {
+    "node": "commands.Advance",
+    "at": "2026-11-21",
+    "source": "deployed",
+    "value": 1,
+    "fingerprint": "d43dab8e",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "046e7a34cf64c86ab13a0ac546d5ca1f285ad59d8a7ee924126191a62a79839c"
+  },
+  {
+    "node": "sdlc.CandidateKeepsTheLaws",
+    "at": "2026-11-21",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "186c3726",
+    "code": "02d75d4c",
+    "engine": "f13222cca82f5a1a",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "e4086fd8d1382eec4725b50fbb06c9ab20bf0a6a93dd0e8649fb7bab625496e0"
+  },
+  {
+    "node": "sdlc.CandidateRunsOnTheMachine",
+    "at": "2026-11-21",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "186c3726",
+    "code": "1456ac2c",
+    "engine": "f13222cca82f5a1a",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "693a448b1758fb28a8db730a76c0f1fff7a4fc88c981118bc8518c87764e9e2c"
+  },
+  {
+    "node": "sdlc.EngineCandidate",
+    "at": "2026-11-21",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "bb14efbfc7ca6ed668f05c44ac445116f4f57565534490d0b1f721109a04998b",
+    "code": "10a0217f",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "f13222cca82f5a1a",
+    "seal": "26a6c45170bb7635035e078110e3babcb6d569e4884435e5279b36cb6ff71544"
+  },
+  {
+    "node": "sdlc.EngineCandidate",
+    "at": "2026-11-21",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "bb14efbfc7ca6ed668f05c44ac445116f4f57565534490d0b1f721109a04998b",
+    "subject": "sdlc.NextGeneration",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "1f5768e063d6306a0ab7990b3cb7c61489ef7000a41d453cbcca97cfccc3131d"
+  },
+  {
+    "node": "sdlc.GraphPage",
+    "at": "2026-11-21",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "3f2b232137d7a80a684cc9659566e06b29fa1f8a67fbafdeb99692d3ac24221d",
+    "code": "530e2d6c",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "f13222cca82f5a1a",
+    "seal": "e807f0ecef05046391d296bbb94eb1b11397744a1b5d6dd2e539c564b19f4a6b"
+  },
+  {
+    "node": "sdlc.GraphPage",
+    "at": "2026-11-21",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "3f2b232137d7a80a684cc9659566e06b29fa1f8a67fbafdeb99692d3ac24221d",
+    "subject": "sdlc.NextGeneration",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "115a6af592351070be8116cd9e89f8e2af27c9b37d981d2f6759bc7435aabc80"
+  },
+  {
+    "node": "sdlc.GraphPageOpens",
+    "at": "2026-11-21",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "c63df84c",
+    "code": "a5f50cc8",
+    "engine": "f13222cca82f5a1a",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "040d7ba00f92d83d5848ff47ac202b530d187ee6db106eba2163d5ebbe8d7010"
+  },
+  {
+    "node": "sdlc.NextGeneration",
+    "at": "2026-11-21",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "1fb0ef7f",
+    "url": "evidence/shipments/NextGeneration-2026-11-21-1fb0ef7f.json",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "b5e19b4ad1fb151bb1160ba9c7a43f959b8f57a7ccb52ea1e7a395ee142ac0a5"
+  },
+  {
+    "node": "sdlc.PageProgram",
+    "at": "2026-11-21",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "425b57b95d79afe3e25cb0f2b7eec6e30369f647ccfdddf0ef3eab913fb4e21b",
+    "code": "d01a4a12",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "f13222cca82f5a1a",
+    "seal": "187a9391e70cbaa2a51ba7855b647a69aa54ffb9ea6868252a175b0cb0d7d5dc"
+  },
+  {
+    "node": "sdlc.PageProgram",
+    "at": "2026-11-21",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "425b57b95d79afe3e25cb0f2b7eec6e30369f647ccfdddf0ef3eab913fb4e21b",
+    "subject": "sdlc.NextGeneration",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "c28f2f029fe5589cea43514f2864eb61c42fc20dd9629e0a272062e6493fa845"
   }
 ]

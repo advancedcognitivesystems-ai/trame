@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 20 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 21 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Standard library · Access
 
@@ -549,10 +549,10 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 113
+- Version: 114
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../generations/g113
+- Its path: ../generations/g114
 - Serves: Ports of the platform, realized once
 
 ### The people of the repository

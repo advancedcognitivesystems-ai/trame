@@ -1681,3 +1681,18 @@ export const G113 = release({
   differences: "differences.diff",
   assembledBy: G112,
 })
+
+/**
+ * Generation 114
+ */
+export const G114 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g114",
+  date: "2026-11-21",
+  what: "A project's own name leads to its own sources (in the engine and the manifest): a library it imports may name it, as team names the ci that writes its workflow, so ci imports team instead of declaring the same actors again",
+  fingerprint: "f9147dfc45d61df4",
+  language: "shared",
+  archive: "b0ead947077d2a4b",
+  assembledBy: G113,
+})

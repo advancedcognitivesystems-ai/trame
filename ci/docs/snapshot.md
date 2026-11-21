@@ -178,51 +178,22 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 113
+- Version: 114
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../generations/g113
+- Its path: ../generations/g114
 - Serves: A shipment runs elsewhere as it runs here
 
-## Continuous integration · People
+### The people of the repository
 
-### Claude
+Package · `People`
 
-Actor · `Claude`
-
-- Owner: ghalaax
-- Handle: claude
-- What it is: agent
-- Serves: A shipment runs elsewhere as it runs here
-
-### ghalaax
-
-Actor · `Ghalaax`
-
-- Owner: ghalaax
-- Handle: ghalaax
-- What it is: person
-- Identities: github, ghalaax
-- Serves: A shipment runs elsewhere as it runs here
-
-### The runner of GitHub Actions
-
-Actor · `GitHubRunner`
-
-- Owner: ghalaax
-- Handle: github-actions
-- What it is: machine
-- Identities: github, github-actions[bot]
-- Serves: A shipment runs elsewhere as it runs here
-
-### Trame's team
-
-Actor · `Trame`
-
-- Owner: ghalaax
-- Handle: trame
-- What it is: team
-- Members: ghalaax, Claude
+- Owner: trame
+- Name: team
+- Version: 0.1.0
+- How it joins the graph: library
+- Where it comes from: path
+- Its path: ../libs/team/releases/0.1.0
 - Serves: A shipment runs elsewhere as it runs here
 
 ## Continuous integration · Product

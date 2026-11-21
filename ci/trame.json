@@ -1,5 +1,10 @@
 {
   "title": "Continuous integration",
   "engine": ".trame/trame",
-  "libraries": {}
+  "libraries": {
+    "team": {
+      "at": ".trame/team",
+      "version": "0.1.0"
+    }
+  }
 }

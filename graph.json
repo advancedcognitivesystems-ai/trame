@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-20",
+  "generated": "2026-11-21",
   "nodes": [
     {
       "id": "appearance.ExplorerDrawing",
@@ -1442,7 +1442,7 @@
           "status": "passed"
         },
         {
-          "name": "The candidate is accepted (  ✓ trame runs g114 |   ✓ reservations runs g114 | Advance succeeded.)",
+          "name": "The candidate is accepted (  ✓ trame runs g115 |   ✓ reservations runs g115 | Advance succeeded.)",
           "status": "passed"
         },
         {
@@ -14673,6 +14673,22 @@
       "diagnostics": []
     },
     {
+      "id": "releases.G114",
+      "kind": "release",
+      "title": "Generation 114",
+      "source": "src/releases.ts:1688",
+      "fields": {
+        "owner": "trame",
+        "version": "g114",
+        "date": "2026-11-21",
+        "what": "A project's own name leads to its own sources (in the engine and the manifest): a library it imports may name it, as team names the ci that writes its workflow, so ci imports team instead of declaring the same actors again",
+        "fingerprint": "f9147dfc45d61df4",
+        "language": "shared",
+        "archive": "b0ead947077d2a4b"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "releases.G12",
       "kind": "release",
       "title": "Generation 12",
@@ -17336,7 +17352,7 @@
         "owner": "trame"
       },
       "result": {
-        "code": "e0a90af8"
+        "code": "02d75d4c"
       },
       "diagnostics": []
     },
@@ -17350,7 +17366,7 @@
         "owner": "trame"
       },
       "result": {
-        "code": "7b2a4138"
+        "code": "1456ac2c"
       },
       "diagnostics": []
     },
@@ -17377,7 +17393,7 @@
       },
       "result": {
         "path": "out/local/trame-cli.ts",
-        "code": "7c0923cb"
+        "code": "10a0217f"
       },
       "diagnostics": []
     },
@@ -17431,7 +17447,7 @@
       },
       "result": {
         "path": "trame-page.html",
-        "code": "c3ca4db8"
+        "code": "530e2d6c"
       },
       "diagnostics": []
     },
@@ -19662,7 +19678,7 @@
       },
       "result": {
         "path": "src",
-        "code": "9a8ba803"
+        "code": "c7029397"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -35260,6 +35276,16 @@
     {
       "from": "releases.G113",
       "to": "releases.G112",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G114",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G114",
+      "to": "releases.G113",
       "kind": "assembledBy"
     },
     {

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-20",
+  "generated": "2026-11-21",
   "nodes": [
     {
       "id": "angles.Angle",
@@ -51,7 +51,7 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "trame",
-        "version": "113",
+        "version": "114",
         "joins": "language",
         "from": "registry"
       },
@@ -201,7 +201,7 @@
       },
       "result": {
         "path": "src",
-        "code": "cf3385d0"
+        "code": "ebe89b2f"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"

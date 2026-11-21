@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 20 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 21 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Trame · Appearance
 
@@ -4603,6 +4603,20 @@ Release · `G113`
 - Accepted differences: differences.diff
 - Releases: Trame on the command line
 - Assembled by: Generation 112
+
+### Generation 114
+
+Release · `G114`
+
+- Released by: trame
+- Version: g114
+- Released on: 2026-11-21
+- What changes: A project's own name leads to its own sources (in the engine and the manifest): a library it imports may name it, as team names the ci that writes its workflow, so ci imports team instead of declaring the same actors again
+- Fingerprint: f9147dfc45d61df4
+- Language: shared
+- Language archived: b0ead947077d2a4b
+- Releases: Trame on the command line
+- Assembled by: Generation 113
 
 ### Generation 12
 

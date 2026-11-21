@@ -4,23 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| ghalaax | 0 | 0 | 0 | 4 |
-| trame | 0 | 0 | 4 | 24 |
-
-<a id="ghalaax"></a>
-
-## ghalaax
-
-Nothing to decide or watch.
-
-### Owns
-
-| Node | Kind | State |
-|---|---|---|
-| [Claude](people.md#Claude) | Actor |  |
-| [ghalaax](people.md#Ghalaax) | Actor |  |
-| [The runner of GitHub Actions](people.md#GitHubRunner) | Actor |  |
-| [Trame's team](people.md#Trame) | Actor |  |
+| trame | 0 | 0 | 4 | 25 |
 
 <a id="trame"></a>
 
@@ -43,6 +27,7 @@ Nothing to decide or watch.
 | [The actions a workflow uses](github.md#PinnedActions) | Decision |  |
 | [npm](npm.md#Npm) | Standard |  |
 | [Trame](packages.md#Language) | Package |  |
+| [The people of the repository](packages.md#People) | Package |  |
 | [Each place is a writer](product.md#OneWriterPerPlace) | Goal |  |
 | [A shipment runs elsewhere as it runs here](product.md#RunsElsewhere) | Goal |  |
 | [Version 0.1.0](releases.md#R0_1_0) | Release |  |

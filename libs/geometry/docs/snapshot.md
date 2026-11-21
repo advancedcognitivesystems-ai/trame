@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 20 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 21 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Geometry · Angles
 
@@ -40,7 +40,7 @@ Package · `Language`
 
 - Owner: ghalaax
 - Name: trame
-- Version: 113
+- Version: 114
 - How it joins the graph: language
 - Where it comes from: registry
 - Serves: Geometry written once

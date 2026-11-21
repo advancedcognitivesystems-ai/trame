@@ -4,25 +4,46 @@
 
 > **Nothing to report**
 
-## Package
+## Packages
 
 <a id="Language"></a>
 
 ### Trame
 
-`Language` · `src/packages.ts:11`
+`Language` · `src/packages.ts:13`
 
 The language the writers are written in, at the generation the library pins: reached by its path in Trame's repository.
 
 - Name: `trame`
-- Version: `113`
+- Version: `114`
 - Installed: Not installed in the project: its lockfile lists no trame
 - Vulnerabilities: No report yet: trame audit asks the registry
 - Latest version: No report yet: trame audit asks the registry
 - What it may do: not said: an implementation that imports it cannot promise anything
 - How it joins the graph: `language`
 - Where it comes from: `path`
-- Its path: `../generations/g113`
+- Its path: `../generations/g114`
+
+- Owner: trame
+- Serves: [A shipment runs elsewhere as it runs here](product.md#RunsElsewhere)
+
+<a id="People"></a>
+
+### The people of the repository
+
+`People` · `src/packages.ts:24`
+
+Who works on Trame's repository, declared once as actors (C4): every owner of this library names one of them. The library team writes its workflow with this one, at a frozen version: each imports the other's, never the one being written (since g114, a project's own name leads to its own sources).
+
+- Name: `team`
+- Version: `0.1.0`
+- Installed: Not installed in the project: its lockfile lists no team
+- Vulnerabilities: No report yet: trame audit asks the registry
+- Latest version: No report yet: trame audit asks the registry
+- What it may do: not said: an implementation that imports it cannot promise anything
+- How it joins the graph: `library`
+- Where it comes from: `path`
+- Its path: `../libs/team/releases/0.1.0`
 
 - Owner: trame
 - Serves: [A shipment runs elsewhere as it runs here](product.md#RunsElsewhere)

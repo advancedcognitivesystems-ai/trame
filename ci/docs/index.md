@@ -4,17 +4,24 @@
 
 > **4 points to watch**
 
-| Module | Goals | Standards | Vocabularies | Syntax elements | Decisions | Releases | Packages | Artefacts | Shipments | Actors | Open issues |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| [Continuous integration · GitHub Actions](github.md) | 0 | 1 | 1 | 1 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Continuous integration · npm](npm.md) | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Continuous integration · Packages](packages.md) | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 |
-| [Continuous integration · People](people.md) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 4 | 0 |
-| [Continuous integration · Product](product.md) | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Continuous integration · Releases](releases.md) | 0 | 0 | 0 | 0 | 0 | 7 | 0 | 0 | 0 | 0 | 0 |
-| [Continuous integration · SDLC](sdlc.md) | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 2 | 2 | 0 | 4 |
-| [Continuous integration · Shell](shell.md) | 0 | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Continuous integration · YAML](yaml.md) | 0 | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Module | Goals | Standards | Vocabularies | Syntax elements | Decisions | Releases | Packages | Artefacts | Shipments | Open issues |
+|---|---|---|---|---|---|---|---|---|---|---|
+| [Continuous integration · GitHub Actions](github.md) | 0 | 1 | 1 | 1 | 1 | 0 | 0 | 0 | 0 | 0 |
+| [Continuous integration · npm](npm.md) | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| [Continuous integration · Packages](packages.md) | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 0 | 0 | 0 |
+| [Continuous integration · Product](product.md) | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| [Continuous integration · Releases](releases.md) | 0 | 0 | 0 | 0 | 0 | 7 | 0 | 0 | 0 | 0 |
+| [Continuous integration · SDLC](sdlc.md) | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 2 | 2 | 4 |
+| [Continuous integration · Shell](shell.md) | 0 | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
+| [Continuous integration · YAML](yaml.md) | 0 | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
+
+## Libraries
+
+The libraries the project imports: their nodes take part in the graph, their documents and their issues are their own.
+
+| Library | Modules | Nodes | Open issues |
+|---|---|---|---|
+| [team 0.1.0](../.trame/team/docs/index.md) | Team · Packages, Team · People, Team · Product, Team · SDLC | 12 | 4 points to watch |
 
 ## Open issues
 

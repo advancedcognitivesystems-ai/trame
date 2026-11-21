@@ -549,56 +549,23 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "113",
+        "version": "114",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g113"
+        "at": "../generations/g114"
       }
     },
     {
-      "id": "people.Claude",
-      "kind": "actor",
-      "title": "Claude",
+      "id": "packages.People",
+      "kind": "package",
+      "title": "The people of the repository",
       "fields": {
-        "owner": "ghalaax",
-        "handle": "claude",
-        "sort": "agent"
-      }
-    },
-    {
-      "id": "people.Ghalaax",
-      "kind": "actor",
-      "title": "ghalaax",
-      "fields": {
-        "owner": "ghalaax",
-        "handle": "ghalaax",
-        "sort": "person",
-        "identities": {
-          "github": "ghalaax"
-        }
-      }
-    },
-    {
-      "id": "people.GitHubRunner",
-      "kind": "actor",
-      "title": "The runner of GitHub Actions",
-      "fields": {
-        "owner": "ghalaax",
-        "handle": "github-actions",
-        "sort": "machine",
-        "identities": {
-          "github": "github-actions[bot]"
-        }
-      }
-    },
-    {
-      "id": "people.Trame",
-      "kind": "actor",
-      "title": "Trame's team",
-      "fields": {
-        "owner": "ghalaax",
-        "handle": "trame",
-        "sort": "team"
+        "owner": "trame",
+        "packageName": "team",
+        "version": "0.1.0",
+        "joins": "library",
+        "from": "path",
+        "at": "../libs/team/releases/0.1.0"
       }
     },
     {
@@ -1221,32 +1188,7 @@
       "kind": "serves"
     },
     {
-      "from": "people.Claude",
-      "to": "product.RunsElsewhere",
-      "kind": "serves"
-    },
-    {
-      "from": "people.Ghalaax",
-      "to": "product.RunsElsewhere",
-      "kind": "serves"
-    },
-    {
-      "from": "people.GitHubRunner",
-      "to": "product.RunsElsewhere",
-      "kind": "serves"
-    },
-    {
-      "from": "people.Trame",
-      "to": "people.Ghalaax",
-      "kind": "members"
-    },
-    {
-      "from": "people.Trame",
-      "to": "people.Claude",
-      "kind": "members"
-    },
-    {
-      "from": "people.Trame",
+      "from": "packages.People",
       "to": "product.RunsElsewhere",
       "kind": "serves"
     },
