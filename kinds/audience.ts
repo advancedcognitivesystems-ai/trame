@@ -1,5 +1,5 @@
 import {
-  defineKind, field, optional, optionalEdge, edge, hole, doc, keysOf, KindName, EdgeName, AudienceField, Identity, EntryEdge, type Node,
+  defineKind, field, optional, optionalEdge, edge, hole, doc, keysOf, KindName, EdgeName, AudienceField, Identity, EntryEdge, type Node, HoleCode,
 } from "../trame/kernel"
 import words from "./words"
 
@@ -47,9 +47,9 @@ const kind = defineKind({
     const unknown = Array.isArray(declared) ? declared.filter((x) => !values.isText(x) || !Object.values(Identity).some((i) => i === x)) : []
     const entries = g.from(self).in(EntryEdge.audience).nodes()
     return [
-      ...unknown.map((x) => hole.error(say.audienceCarriesUnknown(String(x)), self.owner)),
+      ...unknown.map((x) => hole.error(HoleCode.audienceCarriesUnknown, say.audienceCarriesUnknown(String(x)), self.owner)),
       // Until identification comes (C7), nothing identifies an audience that carries an identity.
-      counts.any(carriedBy(self)) && counts.any(entries) && hole.warning(say.audienceNotIdentified(entries.length), self.owner),
+      counts.any(carriedBy(self)) && counts.any(entries) && hole.warning(HoleCode.audienceNotIdentified, say.audienceNotIdentified(entries.length), self.owner),
     ]
   },
 

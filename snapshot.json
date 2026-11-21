@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-19",
+  "at": "2026-11-21",
   "nodes": [
     {
       "id": "appearance.ExplorerDrawing",
@@ -1062,7 +1062,7 @@
       "id": "browser.BrowserAmendments",
       "kind": "implementation",
       "title": "Amendments sent to trame dev",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1081,7 +1081,7 @@
       "id": "browser.BrowserDecompression",
       "kind": "implementation",
       "title": "The browser's gzip",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1098,7 +1098,7 @@
       "id": "browser.BrowserFeed",
       "kind": "implementation",
       "title": "The globals of the page, and trame dev",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1116,7 +1116,7 @@
       "id": "browser.BrowserMemory",
       "kind": "implementation",
       "title": "Local storage",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1132,7 +1132,7 @@
       "id": "browser.BrowserWindow",
       "kind": "implementation",
       "title": "The browser's window",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1150,7 +1150,7 @@
       "id": "browser.ExplorerFigures",
       "kind": "function",
       "title": "Explorer of a graph",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1187,7 +1187,7 @@
       "id": "browser.ShowGraph",
       "kind": "entry",
       "title": "Show the graph",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "trigger": {
@@ -1240,7 +1240,7 @@
       "id": "browser.TheBrowserRunsThePage",
       "kind": "binding",
       "title": "The browser runs the page",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "The page's script took what it needed from the browser itself, here and there: the graph could not say what the page asks of the browser, nor try it elsewhere.",
@@ -1255,7 +1255,7 @@
       "id": "browser.ThePageIsAssembled",
       "kind": "adr",
       "title": "The page is assembled",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "The page's script built by hand what it shared with the engine and wrote its values (classes, identifiers, the explorer's geometry) as literals the catalogue could not see: a change in the graph did not reach it.",
@@ -2653,7 +2653,9 @@
           "texts": "std/algebra.Texts",
           "references": "commands.ReferencesModule",
           "names": "conventions.LanguageNames",
-          "specifiers": "std/system.NodeModuleSpecifiers"
+          "specifiers": "std/system.NodeModuleSpecifiers",
+          "member": "typescript.MemberAccess",
+          "list": "typescript.InlineArray"
         },
         "body": {
           "file": "./code/commands/init.ts",
@@ -3395,6 +3397,10 @@
           "goal": "Purpose",
           "goalKind": "kinds/goal",
           "owner": "owner",
+          "actor": "Owner",
+          "actorKind": "kinds/actor",
+          "kernel": "kernel",
+          "actorSorts": "ActorSort",
           "references": "packages",
           "packageKind": "kinds/package",
           "packageFacade": "pkg",
@@ -4028,7 +4034,8 @@
           "runs": "architecture.KeptRuns",
           "platform": "std/effects.PlatformEffects",
           "names": "conventions.LanguageNames",
-          "packages": "std/tooling.PackageSources"
+          "packages": "std/tooling.PackageSources",
+          "judged": "engine.JudgedHarder"
         },
         "body": {
           "file": "./code/engine/compiler.ts",
@@ -4289,6 +4296,23 @@
       }
     },
     {
+      "id": "engine.JudgedHarder",
+      "kind": "function",
+      "title": "Judged harder",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "severityOrder": "(function)",
+          "messages": "messages.CompilerMessages"
+        },
+        "body": {
+          "file": "./code/engine/judged-harder.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
       "id": "engine.KeptRunsScope",
       "kind": "decision",
       "title": "What tells a project's runs apart",
@@ -4342,6 +4366,7 @@
           "declaration": "(function)",
           "answers": "(function)",
           "owned": "(function)",
+          "coded": "(function)",
           "evidence": "(function)",
           "same": "(function)",
           "orderFree": "(function)",
@@ -6065,6 +6090,30 @@
       "id": "laws.CompleteViewDeclarationCriteria",
       "kind": "acceptance",
       "title": "Criteria of the declaration of a view",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "criteria": "(function)"
+      }
+    },
+    {
+      "id": "laws.HoleHasCode",
+      "kind": "requirement",
+      "title": "A hole says what is wrong by its code",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "values": "std/algebra.ValueTypes",
+          "counts": "std/algebra.Counts"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "laws.HoleHasCodeCriteria",
+      "kind": "acceptance",
+      "title": "Criteria of the code of a hole",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -8205,16 +8254,29 @@
       }
     },
     {
+      "id": "packages.People",
+      "kind": "package",
+      "title": "The people of the repository",
+      "fields": {
+        "owner": "trame",
+        "packageName": "team",
+        "version": "0.1.0",
+        "joins": "library",
+        "from": "path",
+        "at": "libs/team/releases/0.1.0"
+      }
+    },
+    {
       "id": "packages.StandardLibrary",
       "kind": "package",
       "title": "The standard library",
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.20.0",
+        "version": "0.21.0",
         "joins": "library",
         "from": "path",
-        "at": "std/releases/0.20.0"
+        "at": "std/releases/0.21.0"
       }
     },
     {
@@ -10395,6 +10457,22 @@
       }
     },
     {
+      "id": "principles.ActorsDeclared",
+      "kind": "adr",
+      "title": "Who acts is declared",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "An owner, a role's people and the evidence given were texts nobody checked: a typo made a new person, a team (trame) was no one in particular, and nothing could say that Claude acts for ghalaax, or a runner for whoever started it (C4).",
+        "consequences": "The language holds the kind actor (its handle, what it is, a team's members, its identities elsewhere). The compiler checks each owner of the project's nodes against the actors its graph declares, its own and its libraries' (owner-undeclared); a role checks its people (person-undeclared); an actor declared twice must say the same thing (actor-declared-twice). A project that declares none is told once (actors-undeclared). Trame's repository declares its people once, in the library team, which every project of it imports; trame init declares whoever starts a project. Evidence given on someone's behalf comes next.",
+        "rejected": {
+          "Composing: a vocabulary of the people": "a word has no members, no identity elsewhere, and cannot say for whom it acts",
+          "Composing: the people of a role": "a role says who may sign a kind of evidence; who owns a node is not a role, and a team is not a list of signatures",
+          "Owners as edges to actors": "every node of every project would change its owner field at once; a text checked against the actors says the same"
+        }
+      }
+    },
+    {
       "id": "principles.ChangesAreClaims",
       "kind": "adr",
       "title": "A change to a node is a claim",
@@ -10668,7 +10746,7 @@
       "id": "principles.ShippedThroughTheGraph",
       "kind": "adr",
       "title": "A version ships through the graph",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "Two products ship differently (a page placed where it is served, an engine frozen into a generation) and their pipelines lived in scripts and in their authors' heads: nothing said what had been checked, by whom, on which version, nor why a version could go.",
@@ -11170,6 +11248,64 @@
         "fingerprint": "ea7f70d71823986b",
         "language": "shared",
         "archive": "b86153ccec9980c7"
+      }
+    },
+    {
+      "id": "releases.G111",
+      "kind": "release",
+      "title": "Generation 111",
+      "fields": {
+        "owner": "trame",
+        "version": "g111",
+        "date": "2026-11-20",
+        "what": "C4, the codes: every problem the language and the engine raise has its code (HoleCode, a vocabulary of the prelude), carried by the holes, the diagnostics and the issues, shown in the documents and the terminal; a law plays that every hole has one",
+        "fingerprint": "1d80bb2f140d4091",
+        "language": "shared",
+        "archive": "7d8c76a685022809",
+        "differences": "differences.diff"
+      }
+    },
+    {
+      "id": "releases.G112",
+      "kind": "release",
+      "title": "Generation 112",
+      "fields": {
+        "owner": "trame",
+        "version": "g112",
+        "date": "2026-11-20",
+        "what": "C4, the judgment: a project judges harder than the language, never softer; the engine asks the realization of std's Hardening a binding of the project chooses where its build evaluates (JudgedHarder), keeps the harder severity with the one the language gave, and says when a way would lower one, answers no severity or fails",
+        "fingerprint": "46bcf9ff280e1d8a",
+        "language": "shared",
+        "archive": "3dbc458ad3bb8f3f"
+      }
+    },
+    {
+      "id": "releases.G113",
+      "kind": "release",
+      "title": "Generation 113",
+      "fields": {
+        "owner": "trame",
+        "version": "g113",
+        "date": "2026-11-20",
+        "what": "C4, the actors: the language holds the kind actor (a person, a team, an agent, a machine; its handle, a team's members, its identities); the compiler checks each owner of the project's nodes against the actors the graph declares, a role its people; trame init declares whoever starts a project",
+        "fingerprint": "a60ba2b9a14b062d",
+        "language": "shared",
+        "archive": "b0ead947077d2a4b",
+        "differences": "differences.diff"
+      }
+    },
+    {
+      "id": "releases.G114",
+      "kind": "release",
+      "title": "Generation 114",
+      "fields": {
+        "owner": "trame",
+        "version": "g114",
+        "date": "2026-11-21",
+        "what": "A project's own name leads to its own sources (in the engine and the manifest): a library it imports may name it, as team names the ci that writes its workflow, so ci imports team instead of declaring the same actors again",
+        "fingerprint": "f9147dfc45d61df4",
+        "language": "shared",
+        "archive": "b0ead947077d2a4b"
       }
     },
     {
@@ -13155,7 +13291,6 @@
     {
       "id": "scenarios.EngineReckons",
       "kind": "scenario",
-      "title": "The engine reckons as it says",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -13178,7 +13313,7 @@
       "fields": {
         "owner": "trame",
         "value": {
-          "scenarios": 5
+          "scenarios": 6
         }
       }
     },
@@ -13189,6 +13324,33 @@
       "fields": {
         "owner": "trame",
         "value": {}
+      }
+    },
+    {
+      "id": "scenarios.JudgingData",
+      "kind": "decision",
+      "title": "What the scenario of the judgment answers",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "noSeverity": "fatal",
+          "failure": "The way of judging broke"
+        }
+      }
+    },
+    {
+      "id": "scenarios.JudgingHarder",
+      "kind": "scenario",
+      "title": "A project judges harder, never softer",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "judged": "engine.JudgedHarder",
+          "data": "scenarios.JudgingData",
+          "messages": "messages.ScenarioMessages"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -13472,7 +13634,7 @@
       "id": "sdlc.GraphPageOpens",
       "kind": "check",
       "title": "The graph page opens",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame"
       }
@@ -13537,6 +13699,7 @@
             "std",
             "ci",
             "data",
+            "team",
             "reservations",
             "poselia"
           ],
@@ -13580,7 +13743,7 @@
       "id": "sdlc.NextGeneration",
       "kind": "shipment",
       "title": "The next generation",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "generation"
@@ -13681,7 +13844,7 @@
       "id": "sdlc.PullRequestWorkflow",
       "kind": "artifact",
       "title": "The pull requests' workflow",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": ".github/workflows/trame-pull-request.yml",
@@ -13718,7 +13881,7 @@
       "id": "sdlc.RepositoryRead",
       "kind": "check",
       "title": "The repository is read from GitHub",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame"
       }
@@ -13751,7 +13914,7 @@
       "id": "sdlc.RepositorySet",
       "kind": "shipment",
       "title": "The repository as decided",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "github"
@@ -13761,7 +13924,7 @@
       "id": "sdlc.RunnersWritten",
       "kind": "shipment",
       "title": "The files that run it elsewhere",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "repository"
@@ -15118,6 +15281,7 @@
           "widths": {
             "rank": 9,
             "severity": 15,
+            "code": 30,
             "source": 22,
             "name": 14
           }
@@ -19752,6 +19916,16 @@
       "kind": "deps"
     },
     {
+      "from": "commands.Init",
+      "to": "typescript.MemberAccess",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Init",
+      "to": "typescript.InlineArray",
+      "kind": "deps"
+    },
+    {
       "from": "commands.Plan",
       "to": "product.ExecutableSpecification",
       "kind": "serves"
@@ -21012,6 +21186,11 @@
       "kind": "deps"
     },
     {
+      "from": "engine.Compiler",
+      "to": "engine.JudgedHarder",
+      "kind": "deps"
+    },
+    {
       "from": "engine.Cycles",
       "to": "product.ExecutableSpecification",
       "kind": "serves"
@@ -21307,6 +21486,21 @@
       "kind": "deps"
     },
     {
+      "from": "engine.JudgedHarder",
+      "to": "product.ExecutableSpecification",
+      "kind": "serves"
+    },
+    {
+      "from": "engine.JudgedHarder",
+      "to": "product.SeverityOrder",
+      "kind": "deps"
+    },
+    {
+      "from": "engine.JudgedHarder",
+      "to": "messages.CompilerMessages",
+      "kind": "deps"
+    },
+    {
       "from": "engine.Laws",
       "to": "product.ExecutableSpecification",
       "kind": "serves"
@@ -21409,6 +21603,11 @@
     {
       "from": "engine.Laws",
       "to": "laws.BlockingHoleHasOwner",
+      "kind": "deps"
+    },
+    {
+      "from": "engine.Laws",
+      "to": "laws.HoleHasCode",
       "kind": "deps"
     },
     {
@@ -22282,6 +22481,16 @@
       "kind": "accepts"
     },
     {
+      "from": "laws.HoleHasCode",
+      "to": "laws.TrustedExtensions",
+      "kind": "refines"
+    },
+    {
+      "from": "laws.HoleHasCodeCriteria",
+      "to": "laws.HoleHasCode",
+      "kind": "accepts"
+    },
+    {
       "from": "laws.IntermediateFormatOnly",
       "to": "laws.TrustedExtensions",
       "kind": "refines"
@@ -22943,6 +23152,11 @@
     },
     {
       "from": "packages.NpmLockfile",
+      "to": "product.SingleSource",
+      "kind": "serves"
+    },
+    {
+      "from": "packages.People",
       "to": "product.SingleSource",
       "kind": "serves"
     },
@@ -24732,6 +24946,21 @@
       "kind": "deps"
     },
     {
+      "from": "principles.ActorsDeclared",
+      "to": "product.ExecutableSpecification",
+      "kind": "serves"
+    },
+    {
+      "from": "principles.ActorsDeclared",
+      "to": "engine.Compiler",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.ActorsDeclared",
+      "to": "commands.Init",
+      "kind": "appliedBy"
+    },
+    {
       "from": "principles.ChangesAreClaims",
       "to": "product.SingleSource",
       "kind": "serves"
@@ -25584,6 +25813,46 @@
     {
       "from": "releases.G110",
       "to": "releases.G109",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G111",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G111",
+      "to": "releases.G110",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G112",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G112",
+      "to": "releases.G111",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G113",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G113",
+      "to": "releases.G112",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G114",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G114",
+      "to": "releases.G113",
       "kind": "assembledBy"
     },
     {
@@ -27703,6 +27972,31 @@
     },
     {
       "from": "scenarios.EngineReckons",
+      "to": "messages.ScenarioMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.JudgingHarder",
+      "to": "engine.JudgedHarder",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.JudgingHarder",
+      "to": "architecture.Test",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.JudgingHarder",
+      "to": "engine.JudgedHarder",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.JudgingHarder",
+      "to": "scenarios.JudgingData",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.JudgingHarder",
       "to": "messages.ScenarioMessages",
       "kind": "deps"
     },

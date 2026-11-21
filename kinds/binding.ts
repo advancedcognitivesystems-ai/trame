@@ -1,4 +1,4 @@
-import { defineKind, field, optionalEdge, edge, hole, doc, keysOf, Status, KindName, EdgeName, type Block, type Graph, type Inline, type Node, type View } from "../trame/kernel"
+import { defineKind, field, optionalEdge, edge, hole, doc, keysOf, Status, KindName, EdgeName, BindingEdge, type Block, type Graph, type Inline, type Node, type View, HoleCode } from "../trame/kernel"
 import { chosenBy, portsOf, requiresOf, requiresSaid, shapeOf, unmet } from "./pattern"
 import { reasonFields, reasonsOf, reasonsShown } from "./adr"
 import words from "./words"
@@ -6,7 +6,7 @@ import words from "./words"
 const say = words()
 
 const edges = {
-  chooses: edge.many([KindName.implementation, KindName.function], { label: say.bindingChooses(), inverse: say.bindingChosenBy() }),
+  [BindingEdge.chooses]: edge.many([KindName.implementation, KindName.function], { label: say.bindingChooses(), inverse: say.bindingChosenBy() }),
   [EdgeName.environments]: edge.many([KindName.environment], { label: say.bindingIn(), inverse: say.bindingTechnicalChoices() }),
   follows: optionalEdge(edge.many([KindName.pattern], { label: say.bindingFollows(), inverse: say.bindingFollowedBy() })),
   [EdgeName.serves]: optionalEdge(edge.many([KindName.goal], { label: say.adrServes(), inverse: say.adrServedBy() })),
@@ -42,22 +42,22 @@ const kind = defineKind({
     const { counts, texts, lists } = g.lib
     const chosen = chosenBy(g, self)
     const out = []
-    if (counts.isEmpty(chosen)) out.push(hole.error(say.bindingChoosesNothing(), self.owner))
-    if (!g.from(self).out(E.environments).exists()) out.push(hole.error(say.bindingHoldsInNoEnvironment(), self.owner))
-    if (!g.from(self).out(E.follows).exists()) out.push(hole.warning(say.bindingFollowsNoPatternTheShapeOf(), self.owner))
+    if (counts.isEmpty(chosen)) out.push(hole.error(HoleCode.bindingChoosesNothing, say.bindingChoosesNothing(), self.owner))
+    if (!g.from(self).out(E.environments).exists()) out.push(hole.error(HoleCode.bindingInNoEnvironment, say.bindingHoldsInNoEnvironment(), self.owner))
+    if (!g.from(self).out(E.follows).exists()) out.push(hole.warning(HoleCode.bindingWithoutPattern, say.bindingFollowsNoPatternTheShapeOf(), self.owner))
     // Each realization answers a port, and a port is answered once in a choice.
     const seen = new Map<string, View>()
     for (const r of chosen) {
       const ports = portsOf(g, r)
-      if (counts.isEmpty(ports)) out.push(hole.error(say.bindingImplementsNoPortThereIsNothing(r.title), self.owner))
+      if (counts.isEmpty(ports)) out.push(hole.error(HoleCode.bindingChoosesNoPort, say.bindingImplementsNoPortThereIsNothing(r.title), self.owner))
       for (const p of ports) {
         const other = seen.get(p.ref)
-        if (other) out.push(hole.error(say.bindingChoosesAndForTheSamePort(other.title, r.title, p.title), self.owner))
+        if (other) out.push(hole.error(HoleCode.bindingChoosesTwice, say.bindingChoosesAndForTheSamePort(other.title, r.title, p.title), self.owner))
         else seen.set(p.ref, r)
       }
       // Reached through its port: a node that depends on the realization itself would not follow the choice.
       for (const user of g.from(r).in(EdgeName.deps).nodes()) {
-        out.push(hole.error(say.bindingIsReachedDirectlyByNotThrough(r.title, user.title), self.owner))
+        out.push(hole.error(HoleCode.realizationReachedDirectly, say.bindingIsReachedDirectlyByNotThrough(r.title, user.title), self.owner))
       }
     }
     // The shape each pattern requires.
@@ -67,7 +67,7 @@ const kind = defineKind({
       const missing = unmet(requires, shape)
       if (counts.any(missing)) {
         const wanted = requiresSaid(Object.fromEntries(missing.map((k) => [k, requires[k]])))
-        out.push(hole.error(say.bindingFollowsWhichRequires(p.title, texts.concat(lists.conjunction(wanted))), self.owner))
+        out.push(hole.error(HoleCode.bindingPatternBroken, say.bindingFollowsWhichRequires(p.title, texts.concat(lists.conjunction(wanted))), self.owner))
       }
     }
     return out

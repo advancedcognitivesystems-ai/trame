@@ -15,7 +15,7 @@ what the graph guarantees. The README explains why; this file says how.
 | `kinds/`, `views/`, `engine-views/` | The language: what a node can be, which questions are asked of the graph; their words in `words.ts` | you, reviewed |
 | `trame.json` | The project: its libraries (`"libraries"`), the generation it pins (`"engine"`), the kinds and views it carries besides the language's | you |
 | `package.json` | The project as a package: the import map of the language (`#trame/*`) and of its libraries (`#std/*`), the packages of the graph | `trame manifest` |
-| `libs/` | Libraries of a domain (`libs/geometry`: vectors, angles; `libs/data`: the data a product keeps, and its kind `entity`), each a project of its own | you |
+| `libs/` | Libraries of a domain (`libs/geometry`: vectors, angles; `libs/data`: the data a product keeps, and its kind `entity`; `libs/team`: the repository's people), each a project of its own | you |
 | `std/` | The standard library: a Trame project of its own (structures, standards, patterns) that Trame and the example import | you |
 | `ci/` | The library of writers that run a shipment elsewhere (GitHub Actions, Bash), from the plan the engine computes | you |
 | `docs/`, `graph.json`, `snapshot.json` | What a build writes: documents for people, the graph and its snapshot for tools and agents | the build only |
@@ -63,7 +63,15 @@ Trame tells you what is left; read it before writing code.
 
 - **The open issues** of the build summary and of `docs/index.md`: *blocking* (a value nobody decided, a claim nobody
   settled), *error* (a broken rule, a literal in a body, a realization that does more than its port promises), *warning*
-  (no measure, no acceptance criteria, nothing applying an ADR). Each names its node and its owner.
+  (no measure, no acceptance criteria, nothing applying an ADR). Each names its node, its owner and its code (C4, g111:
+  `value-undecided`, `literal-in-body`, `check-stale`…, the words of the prelude's `HoleCode`; a library's kind names
+  its own, data's `entity-…`), by which a project raises it: a project judges harder than the language, never softer
+  (C4, g112, std 0.21.0). Its way of judging is a realization of std's port `Hardening` (`#std/judgment`) that a binding
+  of the project chooses in the environment where its build evaluates (`evaluates: true`): std's `AsTheLanguageSays`
+  or `EveryWarning`, or one of its own built on std's `Raising` (the example's `OurJudgment` raises the codes its
+  decision `CodesWeRaise` lists). The engine keeps the harder severity, shown with the one the language gave
+  (`error, raised from warning`); a way that would lower one, answers no severity or fails is an error of the project
+  (`hardening-lowers`, `hardening-failed`).
 - **`docs/owners.md`**: what each person must decide, settle or watch.
 - **`docs/review.md`**: what the declarations not yet published change.
 - **`./trame.sh view impact <node>`** before changing a node: everything that depends on it. **`why <node>`**: its
@@ -99,7 +107,15 @@ Write a product top-down, one module per concern, each node linked to what it se
    policies that group them, shipments, and the programs of the SDLC that check and deploy, tested in memory like the
    product's code.
 
-Every node has an owner (a person) and a documentation comment: its first line is its title, the rest its description.
+Every node has an owner and a documentation comment: its first line is its title, the rest its description. An owner
+is the handle of an actor the graph declares (C4, g113: kind `actor`, a person, a team, an agent, a machine); one
+nobody declares is an error (`owner-undeclared`), and so is a role's person (`person-undeclared`). Trame's repository
+declares its people once in `libs/team` (`trame`, the team of `ghalaax` and `claude`; `github-actions`, the runner),
+which each project imports (`import "#team/people"` in its packages module), `ci` too, though team writes its workflow
+with ci: each imports the other at a frozen version, and a project's own name leads to its own sources (g114); a
+project may declare its own actors (the example's `karim` and `lea`), the same actor declared twice saying the same
+thing. `trame init` declares whoever starts a project. A graph that declares no actor
+is told once (`actors-undeclared`).
 
 ## 4b. The SDLC is in the graph
 
@@ -280,7 +296,9 @@ installs a published engine's packages the first time it runs it. `libs/geometry
 A library is a Trame project another project imports (ADR "A library is a Trame project, imported by path"). The
 project names it in its `trame.json` (`"libraries": { "std": "../std" }`, or `{ "path": "../std", "version": "0.1.0" }`
 for a frozen version) and imports its nodes by name (`import { Counts } from "#std/algebra"`); `./trame.sh manifest`
-writes where the name leads into `package.json`. A path into a library is refused. `./trame.sh release 0.1.0 "what" --by <name>`,
+writes where the name leads into `package.json`. A path into a library is refused. A project's own name (its
+directory's, which `trame release` publishes it under) leads to its own sources, in the engine and the manifest (g114):
+a library it imports may name it (team's workflow is written by ci, and ci imports team). `./trame.sh release 0.1.0 "what" --by <name>`,
 run in a library, first ships the library's version through its own graph (since g101: the shipment that ships an
 artefact `version: true`, `NextVersion` in std, ci and geometry; its policy derives from all the library's code, std's proves its
 functions verified, its requirements served, its decisions applied, its rules held, its packages safe), freezes nothing
@@ -372,9 +390,12 @@ Kinds and views are files, not nodes; they hold no literal either. They get the 
   `positions`, `references` (paths), `settings`, `draws`, `layout`, `declarations` (the language code is shown in),
   `versions`, `units`, `shown` (visible text).
 - **Words**: in `kinds/words.ts`, `views/words.ts`, `engine-views/words.ts`; a sentence with pieces returns `Inline[]`.
-- **Laws**: every kind answers on any value without crashing, names an owner for a blocking hole, says nothing held or
-  violated without evidence, gives the same answer twice, settles claims whatever their order. `./trame.sh test-kinds`
-  plays them on drawn values; a kind that breaks one refuses the build.
+- **Holes**: a hole names its code first, then what it says and its owner: `hole.warning(HoleCode.ownerMissing,
+  say.ownerMissing(), self.owner)`. A new problem gets a new word of `HoleCode` (a library's kind, a word of its own
+  catalog: `say.entityCodeReseeded()`).
+- **Laws**: every kind answers on any value without crashing, names an owner for a blocking hole, says what is wrong by
+  its code, says nothing held or violated without evidence, gives the same answer twice, settles claims whatever their
+  order. `./trame.sh test-kinds` plays them on drawn values; a kind that breaks one refuses the build.
 - Destructure instead of indexing (`const [, second] = xs`), test types with `g.lib.values`, name a wired value by the
   node's `ref`, not by a text.
 
@@ -568,6 +589,10 @@ elements), a port answered differently in several environments is answered as in
   scenarios, which deliver Poselia's page) reads the code without it, and its criteria fail.
 - A program assembled for elsewhere (a page) wires a value that is not JSON (a quantity's units) from its declaration,
   through the frozen prelude: a kind's `provide` reads `self.field(…)` there, and nothing of the graph (`ctx.g` is absent).
+- The prelude's kind API is the API of every library's kinds, frozen versions included: when it changes (g111: a hole
+  names its code first), a frozen version that calls it the old way refuses the project that imports it (Poselia on
+  data 0.4.0). Release the library with its kinds moved (data 0.5.0), move the project's reference by hand, then
+  advance. A catalog's message gives a text or pieces of one, never an object: one message per word.
 - `out/local/trame-cli.ts` reads the bodies as they are but wires them as they were assembled: after giving an entry
   point a new dependency, `./trame.sh assemble TrameCli --env Local` before running a command through it.
 

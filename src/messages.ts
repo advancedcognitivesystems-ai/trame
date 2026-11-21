@@ -115,6 +115,11 @@ export const CompilerMessages = catalog({
     hiddenDependency: (identifier: string) => `Hidden dependency: the body reads "${identifier}" without receiving it as a parameter`,
     /** A function of a kind (activeAt, claims, resolve…) threw an error. */
     hookFailed: (hook: string, error: string) => `${hook}() failed: ${error}`,
+    ownerUndeclared: (owner: string) => `Owned by ${owner}, whom no actor of the graph declares: declare them (an actor, its handle ${owner}), or name an owner it declares`,
+    actorsUndeclared: () => "The graph declares no actor: nobody says who its owners are, and they are not checked; declare who acts (the actors of a library, or the project's own)",
+    hardeningFailed: (error: string) => `The way this project judges failed: ${error}; its problems stay as the language judges them`,
+    hardeningGaveNoSeverity: (code: string, answer: string) => `The way this project judges answered "${answer}" for ${code}, which is no severity: the language's stays`,
+    hardeningLowers: (code: string, from: string, to: string) => `The way this project judges would lower ${code} from ${from} to ${to}: a project raises a problem, never lowers it; ${from} stays`,
     /** A record of evidence whose seal no longer matches what it says. */
     sealBroken: (source: string, at: string, by?: string) =>
       `A record of evidence (${source}, ${at}${by ? `, by ${by}` : ""}) was changed after it was recorded: its seal no longer matches, and it is not counted; record what holds again with trame ship or trame evidence`,
@@ -274,6 +279,7 @@ export const LawMessages = catalog({
     lawDeclared: () => "Complete declaration",
     lawTotal: () => "Answers on any value, without crashing",
     lawOwner: () => "A blocking hole has an owner",
+    lawCoded: () => "A hole says what is wrong by its code",
     lawUnknown: () => "Without evidence, the status is unknown",
     lawDeterministic: () => "Same input, same answer",
     lawOrderFree: () => "The resolution does not depend on the order",
@@ -292,6 +298,7 @@ export const LawMessages = catalog({
     resolveReturnsNonClaimant: (ref: string) => `resolve() returns "${ref}", which claims nothing`,
     twoCallsTwoAnswers: () => "two identical calls give two answers",
     noOwner: (what: string) => `"${what}" has no owner`,
+    noCode: (what: string) => `"${what}" has no code`,
     statusWithoutEvidence: (status: string) => `status() returns "${status}" although no evidence exists`,
     claimNotOnNode: () => "claims() targets something other than a node",
 
@@ -573,6 +580,7 @@ export const CommandMessages = catalog({
     initLibrary: (name: string) => name,
     initLibraryDoc: () => "A library the project builds on, at the version the language's home uses.",
     initGoal: (title: string) => `What ${title} is for: its owner says it here, and what serves it links to it.`,
+    initOwner: (title: string) => `Who started ${title}, and owns its first nodes: an owner names someone the graph declares.`,
     initWritten: (title: string, engine: string) => `${title} started · pins ${engine} · written: trame.json, src/, the guide for agents · the manifest next`,
     amendInTheCode: (title: string, field: string) => `${field} of “${title}” changes in the code, never from here: code is built on it`,
     amendBodyInTheCode: (title: string, field: string) => `${field} of “${title}” is amended in the code: amend({ ${field}: (previous) => … }), composed with the one in force`,
@@ -749,6 +757,8 @@ export const ScenarioMessages = catalog({
     machineOutputsAsBefore: () => "graph.json and snapshot.json are written as the engine in place wrote them",
     documentsAsBefore: (documents: number) => `${plural(documents, { one: "document", other: "documents" })} in Markdown, figures included, as the engine in place wrote them`,
     cycleFoundOnce: () => "A cycle is found once, where the search closes it",
+    judgedHarder: () => "A way of judging raises a problem, never lowers it: the raised keeps the language's severity, the lowered is said",
+    misjudgedSaid: () => "A way of judging that answers no severity, or that fails, is said, and the problems stay as the language judged them",
     sameSeedSameDraws: () => "The same seed draws the same numbers",
     otherSeedOtherDraws: () => "Another seed draws others",
     integersWithinBounds: (lo: number, hi: number) => `An integer drawn between ${lo} and ${hi} stays between them`,
@@ -824,7 +834,7 @@ export const ScenarioMessages = catalog({
     importMapWritten: (specifier: string) => `trame manifest writes where ${specifier} leads`,
     linkLeadsToTheLibrary: (library: string) => `The link leads to the version of ${library} the application pins`,
     startedConfiguration: () => "trame init writes the configuration: the generation that runs, the libraries",
-    startedModule: () => "The first module declares the goal, owned by whoever started the project, and names the language by its name",
+    startedModule: () => "The first module declares the goal and whoever started the project, an actor who owns it, and names the language by its name",
     registryPublished: () => "trame registry publishes a generation it names, its language copied: the kernel is a file there",
     startedReferences: () => "Its references are package nodes of its graph: the language, at the generation that started it, and its libraries",
     startedGuide: () => "The guide for agents comes with it, and the file that points to it",

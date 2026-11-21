@@ -96,6 +96,8 @@ export interface WrittenCheck {
 export interface WrittenIssue {
   severity: Severity
   words: string
+  /** What is wrong, by its code (C4). */
+  code?: string
   source?: string
   what: string
   whereText?: string

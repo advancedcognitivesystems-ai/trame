@@ -1,4 +1,4 @@
-import { defineKind, field, optional, edge, optionalEdge, hole, doc, keysOf, KindName, EdgeName, LanguageUse, ReleaseEdge, type Block, type Lib, type Node, type View } from "../trame/kernel"
+import { defineKind, field, optional, edge, optionalEdge, hole, doc, keysOf, KindName, EdgeName, LanguageUse, ReleaseEdge, type Block, type Lib, type Node, type View, HoleCode } from "../trame/kernel"
 import words from "./words"
 
 const say = words()
@@ -51,16 +51,16 @@ const kind = defineKind({
     const { dates, sequences } = g.lib
     const out = []
     const text = (name: string) => textOf(self, name, g.lib)
-    if (!dates.isCalendarDate(text(F.date))) out.push(hole.error(say.releaseItsDateIsNotACalendar(), self.owner))
+    if (!dates.isCalendarDate(text(F.date))) out.push(hole.error(HoleCode.releaseDateInvalid, say.releaseItsDateIsNotACalendar(), self.owner))
     if (!Object.values(LanguageUse).includes(text(F.language) as LanguageUse)) {
-      out.push(hole.error(say.releaseItsLanguageIsNeitherNor(LanguageUse.shared, LanguageUse.own), self.owner))
+      out.push(hole.error(HoleCode.releaseLanguageInvalid, say.releaseItsLanguageIsNeitherNor(LanguageUse.shared, LanguageUse.own), self.owner))
     }
-    if (!text(F.fingerprint)) out.push(hole.error(say.releaseNoFingerprintNothingSaysWhatWas(), self.owner))
+    if (!text(F.fingerprint)) out.push(hole.error(HoleCode.releaseWithoutFingerprint, say.releaseNoFingerprintNothingSaysWhatWas(), self.owner))
     const component = sequences.head(g.from(self).out(E.component).nodes())
     for (const by of g.from(self).out(E.assembledBy).nodes()) {
       const theirs = sequences.head(g.from(by).out(E.component).nodes())
       if (theirs && component && theirs.node !== component.node) {
-        out.push(hole.error(say.releaseAssembledByAReleaseOfAnother(by.title), self.owner))
+        out.push(hole.error(HoleCode.releaseAssembledByOther, say.releaseAssembledByAReleaseOfAnother(by.title), self.owner))
       }
     }
     return out

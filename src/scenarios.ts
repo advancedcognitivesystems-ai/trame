@@ -1,13 +1,13 @@
 /** Trame · Scenarios */
 
-import { KindName, Severity, Status } from "../trame/kernel"
+import { HoleCode, KindName, Severity, Status } from "../trame/kernel"
 import { UnitSymbols } from "#std/measures"
 import { scenario } from "../kinds/scenario"
 import { decision } from "../kinds/decision"
 import { Process, Clock, FileReading, Paths, WriteLog, TerminalLog, Test } from "./architecture"
 import {
   Compiler, Laws, Project, StaticAnalysis, Wiring, GraphApi, CompilationApi, Views, MachineOutputs, Lock, Cycles, Generator, Fingerprints,
-  References, Positions,
+  References, Positions, JudgedHarder,
 } from "./engine"
 import { Build, Preparation } from "./commands"
 import { Assembly } from "./engine"
@@ -26,7 +26,7 @@ import { VersionOrder } from "./packages"
  * Shape of the example
  * How many scenarios the example project holds: the described engine must find them all.
  */
-export const ExampleShape = decision<{ scenarios: number }>({ owner: "trame", value: { scenarios: 5 } })
+export const ExampleShape = decision<{ scenarios: number }>({ owner: "trame", value: { scenarios: 6 } })
 
 /**
  * The described engine compiles the example
@@ -217,6 +217,51 @@ export const ReckoningData = decision<{
  * element of a list gone through; a line of the TypeScript API is written as messages
  * write it.
  */
+/**
+ * What the scenario of the judgment answers
+ * What a way of judging that is no severity answers, and the words a way that fails throws.
+ */
+export const JudgingData = decision<{ noSeverity: string; failure: string }>({
+  owner: "trame",
+  value: { noSeverity: "fatal", failure: "The way of judging broke" },
+})
+
+/**
+ * A project judges harder, never softer
+ * A way of judging that raises a missing owner to an error and would lower a literal in a body to a warning: the
+ * missing owner is an error, raised from a warning; the literal stays an error, and the lowering is said; a problem
+ * it leaves is as the language judged it. A way that answers what is no severity, or that fails, is said, and the
+ * problems stay as they were.
+ */
+export const JudgingHarder = scenario({
+  owner: "trame",
+  verifies: [JudgedHarder],
+  env: Test,
+  deps: { judged: JudgedHarder, data: JudgingData, messages: ScenarioMessages },
+  body: ({ judged, data, messages }) => async (check) => {
+    const problems = (): { code: string; severity: Severity; raisedFrom?: Severity }[] => [
+      { code: HoleCode.ownerMissing, severity: Severity.warning },
+      { code: HoleCode.literalInBody, severity: Severity.error },
+      { code: HoleCode.checkStale, severity: Severity.warning },
+    ]
+    const nowhere = () => ({})
+    const [owner, literal, stale] = problems()
+    const said = judged([owner, literal, stale], {
+      severityOf: (p) => (p.code === HoleCode.ownerMissing ? Severity.error : p.code === HoleCode.literalInBody ? Severity.warning : p.severity),
+    }, nowhere)
+    check(messages.judgedHarder(), owner.severity === Severity.error && owner.raisedFrom === Severity.warning &&
+      literal.severity === Severity.error && literal.raisedFrom === undefined && stale.severity === Severity.warning && stale.raisedFrom === undefined &&
+      said.map((m) => m.code).join() === HoleCode.hardeningLowers)
+    const [first] = problems()
+    const answered = judged([first], { severityOf: () => data.noSeverity }, nowhere)
+    const [second] = problems()
+    const broken = judged([second], { severityOf: () => { throw new Error(data.failure) } }, nowhere)
+    check(messages.misjudgedSaid(), first.severity === Severity.warning && second.severity === Severity.warning &&
+      answered.map((m) => m.code).join() === HoleCode.hardeningFailed && broken.map((m) => m.code).join() === HoleCode.hardeningFailed &&
+      broken.some((m) => m.what.includes(data.failure)))
+  },
+})
+
 export const EngineReckons = scenario({
   owner: "trame",
   verifies: [Cycles, Generator, Fingerprints, References, Positions],

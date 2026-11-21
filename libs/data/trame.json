@@ -5,9 +5,13 @@
       "at": ".trame/ci",
       "version": "0.7.0"
     },
+    "team": {
+      "at": ".trame/team",
+      "version": "0.1.0"
+    },
     "std": {
       "at": ".trame/std",
-      "version": "0.20.0"
+      "version": "0.21.0"
     }
   },
   "engine": ".trame/trame"

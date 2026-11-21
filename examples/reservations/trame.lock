@@ -196,6 +196,19 @@
       "range": "6a09e667",
       "rejected": "6a09e667"
     },
+    "judgment.CodesWeRaise": {
+      "statement": "61c0fb2a",
+      "value": "1e856c1c",
+      "review": "6a09e667",
+      "range": "6a09e667",
+      "rejected": "35b33d5f"
+    },
+    "judgment.JudgmentChecks": {
+      "messages": "68ef4c17"
+    },
+    "judgment.OurJudgment": {
+      "constants": "6a09e667"
+    },
     "legal.FeeCap": {
       "statement": "cbb7344c",
       "value": "6a09e667",
@@ -224,6 +237,27 @@
     },
     "messages.ScenarioChecks": {
       "messages": "7f76b3e0"
+    },
+    "people.Karim": {
+      "statement": "709fac47",
+      "handle": "05b7abeb",
+      "sort": "3d33cb82",
+      "identities": "6a09e667",
+      "members": "6a09e667"
+    },
+    "people.Lea": {
+      "statement": "d26050e5",
+      "handle": "5498e5ef",
+      "sort": "3d33cb82",
+      "identities": "6a09e667",
+      "members": "6a09e667"
+    },
+    "people.ServiceTeam": {
+      "statement": "2d995295",
+      "handle": "f405919c",
+      "sort": "f2fcefca",
+      "identities": "6a09e667",
+      "members": "a03edb89"
     },
     "principles.RefundOnce": {
       "statement": "24745eac",

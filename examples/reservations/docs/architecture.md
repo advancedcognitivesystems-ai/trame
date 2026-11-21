@@ -91,6 +91,7 @@ Tells whether a reservation is already cancelled, and records a cancellation wit
 | [Local](infra.md#Local) | [Cancellations as records](infra.md#CancellationRecords) | [Reservations and cancellations as repositories over the records](infra.md#RecordRepositories) |
 | [Production](infra.md#Production) | [Cancellations as records](infra.md#CancellationRecords) | [Reservations and cancellations as repositories over the records](infra.md#RecordRepositories) |
 | [Test](infra.md#Test) | [Cancellations as records](infra.md#CancellationRecords) | [Reservations and cancellations as repositories over the records](infra.md#RecordRepositories) |
+| [Strict](../../../std/docs/scenarios.md#Strict) | none | — |
 | [Test](../../../std/docs/scenarios.md#Test) | none | — |
 
 - Owner: karim
@@ -114,6 +115,7 @@ The current time.
 | [Local](infra.md#Local) | [System clock](infra.md#SystemClock) | [The system clock elsewhere](infra.md#RealClock) |
 | [Production](infra.md#Production) | [System clock](infra.md#SystemClock) | [The system clock elsewhere](infra.md#RealClock) |
 | [Test](infra.md#Test) | [Stopped clock](infra.md#StoppedClock) | [A stopped clock in the scenarios](infra.md#ScenarioClock) |
+| [Strict](../../../std/docs/scenarios.md#Strict) | none | — |
 | [Test](../../../std/docs/scenarios.md#Test) | none | — |
 
 - Owner: karim
@@ -137,6 +139,7 @@ Serves entry points on a port.
 | [Local](infra.md#Local) | [Node HTTP server](infra.md#NodeServer) | [Node's HTTP server](infra.md#HttpServerChoice) |
 | [Production](infra.md#Production) | [Node HTTP server](infra.md#NodeServer) | [Node's HTTP server](infra.md#HttpServerChoice) |
 | [Test](infra.md#Test) | [Node HTTP server](infra.md#NodeServer) | [Node's HTTP server](infra.md#HttpServerChoice) |
+| [Strict](../../../std/docs/scenarios.md#Strict) | none | — |
 | [Test](../../../std/docs/scenarios.md#Test) | none | — |
 
 - Owner: karim
@@ -160,6 +163,7 @@ Refunds a driver. One call per idempotency key.
 | [Local](infra.md#Local) | [Simulated payment provider](infra.md#SimulatedPayment) | [A simulated payment provider outside production](infra.md#SimulatedProvider) |
 | [Production](infra.md#Production) | [Real payment provider](infra.md#HttpPayment) | [The provider's API in production](infra.md#ProviderApi) |
 | [Test](infra.md#Test) | [Simulated payment provider](infra.md#SimulatedPayment) | [A simulated payment provider outside production](infra.md#SimulatedProvider) |
+| [Strict](../../../std/docs/scenarios.md#Strict) | none | — |
 | [Test](../../../std/docs/scenarios.md#Test) | none | — |
 
 - Owner: karim
@@ -183,6 +187,7 @@ The calls made to the provider. It exists only where the provider is simulated.
 | [Local](infra.md#Local) | [Simulated payment provider](infra.md#SimulatedPayment) | [A simulated payment provider outside production](infra.md#SimulatedProvider) |
 | [Production](infra.md#Production) | none | — |
 | [Test](infra.md#Test) | [Simulated payment provider](infra.md#SimulatedPayment) | [A simulated payment provider outside production](infra.md#SimulatedProvider) |
+| [Strict](../../../std/docs/scenarios.md#Strict) | none | — |
 | [Test](../../../std/docs/scenarios.md#Test) | none | — |
 
 - Owner: karim
@@ -205,6 +210,7 @@ Finds a reservation by its identifier.
 | [Local](infra.md#Local) | [Reservations as records](infra.md#ReservationRecords) | [Reservations and cancellations as repositories over the records](infra.md#RecordRepositories) |
 | [Production](infra.md#Production) | [Reservations as records](infra.md#ReservationRecords) | [Reservations and cancellations as repositories over the records](infra.md#RecordRepositories) |
 | [Test](infra.md#Test) | [Reservations as records](infra.md#ReservationRecords) | [Reservations and cancellations as repositories over the records](infra.md#RecordRepositories) |
+| [Strict](../../../std/docs/scenarios.md#Strict) | none | — |
 | [Test](../../../std/docs/scenarios.md#Test) | none | — |
 
 - Owner: karim

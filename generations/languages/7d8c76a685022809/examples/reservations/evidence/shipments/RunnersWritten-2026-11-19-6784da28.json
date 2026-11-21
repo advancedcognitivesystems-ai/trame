@@ -1,0 +1,64 @@
+{
+  "shipment": "sdlc.RunnersWritten",
+  "title": "The files that run it elsewhere",
+  "target": "repository",
+  "at": "2026-11-19",
+  "by": "claude",
+  "signature": "attribution",
+  "artifacts": [
+    {
+      "node": "sdlc.PullRequestWorkflow",
+      "path": "../../.github/workflows/reservations-pull-request.yml",
+      "fingerprint": "169f440e75c1b9d7477914499a0f58ab668fadef40e8561721011d5457b541e8"
+    }
+  ],
+  "foundations": {
+    "problems": 0
+  },
+  "obligations": [
+    {
+      "node": "sdlc.PullRequestWorkflow",
+      "kind": "artifact",
+      "status": "held",
+      "owner": "karim",
+      "evidence": [
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-19",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "169f440e75c1b9d7477914499a0f58ab668fadef40e8561721011d5457b541e8",
+          "code": "589afa4b",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "987e2ef986dc7b6b",
+          "seal": "6c4525f8d24b9c2c23c16176dc6f24d143c38098433c66d4d1b5b7c377391ca2"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-19",
+          "source": "shipped",
+          "value": 1,
+          "fingerprint": "169f440e75c1b9d7477914499a0f58ab668fadef40e8561721011d5457b541e8",
+          "subject": "sdlc.RunnersWritten",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "edfbae4aa42ef7cd9759ce5708387b47d811677a6a7c95d6d11fba3bf26c1558"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-19",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "169f440e75c1b9d7477914499a0f58ab668fadef40e8561721011d5457b541e8",
+          "code": "ab79d3db",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "987e2ef986dc7b6b",
+          "seal": "d33e081ae4385c309bceeb72873741b962d101137c7b08f396c038b5959426eb"
+        }
+      ]
+    }
+  ],
+  "deployed": []
+}

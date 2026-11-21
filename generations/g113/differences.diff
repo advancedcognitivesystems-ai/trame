@@ -1,0 +1,24 @@
+diff -ru /tmp/KTPxbj/reference/trame/docs/command-scenarios.md /tmp/KTPxbj/candidate/trame/docs/command-scenarios.md
+--- /tmp/KTPxbj/reference/trame/docs/command-scenarios.md	2026-11-20 22:03:52.901456525 +0100
++++ /tmp/KTPxbj/candidate/trame/docs/command-scenarios.md	2026-11-20 22:04:15.733426013 +0100
+@@ -510,7 +510,7 @@
+ 
+ | Criterion | Result |
+ |---|---|
+-| trame test-kinds says the laws of each of the 42 kinds and 19 views hold | passed |
++| trame test-kinds says the laws of each of the 43 kinds and 19 views hold | passed |
+ 
+ <details><summary>The code it runs: 48 nodes</summary>
+ 
+diff -ru /tmp/KTPxbj/reference/trame/graph.json /tmp/KTPxbj/candidate/trame/graph.json
+--- /tmp/KTPxbj/reference/trame/graph.json	2026-11-20 22:03:52.902844403 +0100
++++ /tmp/KTPxbj/candidate/trame/graph.json	2026-11-20 22:04:15.737722071 +0100
+@@ -1956,7 +1956,7 @@
+       },
+       "result": [
+         {
+-          "name": "trame test-kinds says the laws of each of the 42 kinds and 19 views hold",
++          "name": "trame test-kinds says the laws of each of the 43 kinds and 19 views hold",
+           "status": "passed"
+         }
+       ],

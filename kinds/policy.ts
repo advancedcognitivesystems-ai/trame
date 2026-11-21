@@ -1,4 +1,4 @@
-import { defineKind, field, edge, hole, doc, keysOf, KindName, EdgeName, PolicyEdge, type Node } from "../trame/kernel"
+import { defineKind, field, edge, hole, doc, keysOf, KindName, EdgeName, PolicyEdge, type Node, HoleCode } from "../trame/kernel"
 import words from "./words"
 
 const say = words()
@@ -25,7 +25,7 @@ const kind = defineKind({
     const families = obligations.map((o) => g.from(o).out(EdgeName.applies).first()?.ref)
     return obligations
       .filter((_, i) => families.indexOf(families[i]) !== i)
-      .map((o) => hole.error(say.policyTwice(o.title, g.from(o).out(EdgeName.applies).first()?.title ?? o.title), self.owner))
+      .map((o) => hole.error(HoleCode.policyFamilyTwice, say.policyTwice(o.title, g.from(o).out(EdgeName.applies).first()?.title ?? o.title), self.owner))
   },
 
   render: () => [doc.para(say.policyFoundations())],

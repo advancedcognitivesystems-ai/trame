@@ -1,6 +1,6 @@
 import {
   defineKind, field, optional, edge, optionalEdge, hole, doc, isHole, keysOf, edgesOf, Status, KindName, EdgeName,
-  type AnyNode, type Node, type Provides, type ProvidedBy, type HasDeps, type Provided, type Constant, type Values, type Inline, type Declares, type Lib,
+  type AnyNode, type Node, type Provides, type ProvidedBy, type HasDeps, type Provided, type Constant, type Values, type Inline, type Declares, type Lib, HoleCode,
 } from "../trame/kernel"
 import { languageKind } from "./language"
 import { wiredBy } from "./scenario"
@@ -131,7 +131,7 @@ const kind = defineKind({
 
   holes: (self, g) =>
     (self.result<Result[]>() ?? []).filter((r) => !r.held).map((r) =>
-      hole.error(r.parses === false
+      hole.error(HoleCode.syntaxExampleNotMet, r.parses === false
         ? say.syntaxExampleNotReadDoesNotFollow(show(r.expected), self.language?.title ?? say.syntaxItsLanguage())
         : say.syntaxExampleNotMetMustWrite(inputsOf(r, g.lib), show(r.expected), r.error ? say.syntaxFails(r.error) : say.syntaxWritesValue(show(r.actual))))),
 

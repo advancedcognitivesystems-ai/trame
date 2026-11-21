@@ -1,4 +1,4 @@
-import { defineKind, field, edge, hole, doc, keysOf, Hole, Outcome, Status, KindName, ChangeWay, type Inline } from "../trame/kernel"
+import { defineKind, field, edge, hole, doc, keysOf, Hole, Outcome, Status, KindName, ChangeWay, type Inline, HoleCode } from "../trame/kernel"
 import words from "./words"
 
 const say = words()
@@ -64,7 +64,7 @@ export const acceptance = defineKind({
   holes: (self) =>
     (self.result<Result[]>() ?? [])
       .filter((r) => r.status === Outcome.failed || r.status === Outcome.error)
-      .map((r) => hole.error(say.acceptanceCriterionNotMet(r.name))),
+      .map((r) => hole.error(HoleCode.criterionNotMet, say.acceptanceCriterionNotMet(r.name))),
 
   render(self) {
     const r = self.result<Result[]>() ?? []

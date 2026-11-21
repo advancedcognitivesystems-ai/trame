@@ -1,8 +1,68 @@
 # Journal
 
-*What happened to the project, day by day, the latest first, up to the date of the graph (19 November 2026): the versions released, and the evidence given, each with the node it is about and who gave it.*
+*What happened to the project, day by day, the latest first, up to the date of the graph (21 November 2026): the versions released, and the evidence given, each with the node it is about and who gave it.*
 
-> **25 days · 110 versions released · 460 pieces of evidence**
+> **27 days · 114 versions released · 506 pieces of evidence**
+
+## 21 November 2026
+
+| What | Node | By |
+|---|---|---|
+| Released as g114 | [Generation 114](releases.md#G114) | trame |
+| Deployed | [Advance](commands.md#Advance) | claude |
+| Check passed | [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws) | claude |
+| Check passed | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | claude |
+| Built | [The candidate engine](sdlc.md#EngineCandidate) | claude |
+| Shipped | [The candidate engine](sdlc.md#EngineCandidate) | claude |
+| Built | [The graph page](sdlc.md#GraphPage) | claude |
+| Shipped | [The graph page](sdlc.md#GraphPage) | claude |
+| Check passed | [The graph page opens](sdlc.md#GraphPageOpens) | claude |
+| Shipped | [The next generation](sdlc.md#NextGeneration) | claude |
+| Built | [The page's program](sdlc.md#PageProgram) | claude |
+| Shipped | [The page's program](sdlc.md#PageProgram) | claude |
+
+## 20 November 2026
+
+| What | Node | By |
+|---|---|---|
+| Released as g111 | [Generation 111](releases.md#G111) | trame |
+| Released as g112 | [Generation 112](releases.md#G112) | trame |
+| Released as g113 | [Generation 113](releases.md#G113) | trame |
+| Deployed | [Advance](commands.md#Advance) | claude |
+| Deployed | [Advance](commands.md#Advance) | claude |
+| Deployed | [Advance](commands.md#Advance) | claude |
+| Check passed | [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws) | claude |
+| Check passed | [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws) | claude |
+| Check passed | [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws) | claude |
+| Check passed | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | claude |
+| Check passed | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | claude |
+| Check passed | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | claude |
+| Built | [The candidate engine](sdlc.md#EngineCandidate) | claude |
+| Shipped | [The candidate engine](sdlc.md#EngineCandidate) | claude |
+| Built | [The candidate engine](sdlc.md#EngineCandidate) | claude |
+| Shipped | [The candidate engine](sdlc.md#EngineCandidate) | claude |
+| Built | [The candidate engine](sdlc.md#EngineCandidate) | claude |
+| Shipped | [The candidate engine](sdlc.md#EngineCandidate) | claude |
+| Built | [The graph page](sdlc.md#GraphPage) | claude |
+| Shipped | [The graph page](sdlc.md#GraphPage) | claude |
+| Built | [The graph page](sdlc.md#GraphPage) | claude |
+| Shipped | [The graph page](sdlc.md#GraphPage) | claude |
+| Built | [The graph page](sdlc.md#GraphPage) | claude |
+| Shipped | [The graph page](sdlc.md#GraphPage) | claude |
+| Check passed | [The graph page opens](sdlc.md#GraphPageOpens) | claude |
+| Check passed | [The graph page opens](sdlc.md#GraphPageOpens) | claude |
+| Check passed | [The graph page opens](sdlc.md#GraphPageOpens) | claude |
+| Shipped | [The next generation](sdlc.md#NextGeneration) | claude |
+| Shipped | [The next generation](sdlc.md#NextGeneration) | claude |
+| Shipped | [The next generation](sdlc.md#NextGeneration) | claude |
+| Built | [The page's program](sdlc.md#PageProgram) | claude |
+| Shipped | [The page's program](sdlc.md#PageProgram) | claude |
+| Built | [The page's program](sdlc.md#PageProgram) | claude |
+| Shipped | [The page's program](sdlc.md#PageProgram) | claude |
+| Built | [The page's program](sdlc.md#PageProgram) | claude |
+| Shipped | [The page's program](sdlc.md#PageProgram) | claude |
+| Check passed | [The repository is read from GitHub](sdlc.md#RepositoryRead) | claude |
+| Check passed | [The repository is read from GitHub](sdlc.md#RepositoryRead) | claude |
 
 ## 19 November 2026
 

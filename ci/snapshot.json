@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-19",
+  "at": "2026-11-21",
   "nodes": [
     {
       "id": "github.GitHubActions",
@@ -549,10 +549,23 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "110",
+        "version": "114",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g110"
+        "at": "../generations/g114"
+      }
+    },
+    {
+      "id": "packages.People",
+      "kind": "package",
+      "title": "The people of the repository",
+      "fields": {
+        "owner": "trame",
+        "packageName": "team",
+        "version": "0.1.0",
+        "joins": "library",
+        "from": "path",
+        "at": "../libs/team/releases/0.1.0"
       }
     },
     {
@@ -666,7 +679,7 @@
       "id": "sdlc.NextVersion",
       "kind": "shipment",
       "title": "The next version",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "version"
@@ -705,7 +718,7 @@
       "id": "sdlc.PullRequestWorkflow",
       "kind": "artifact",
       "title": "The pull requests' workflow",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "../.github/workflows/ci-pull-request.yml",
@@ -716,7 +729,7 @@
       "id": "sdlc.RunnersWritten",
       "kind": "shipment",
       "title": "The files that run it elsewhere",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "repository"
@@ -726,7 +739,7 @@
       "id": "sdlc.TheLibrary",
       "kind": "artifact",
       "title": "The library of writers",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "src",
@@ -1171,6 +1184,11 @@
     },
     {
       "from": "packages.Language",
+      "to": "product.RunsElsewhere",
+      "kind": "serves"
+    },
+    {
+      "from": "packages.People",
       "to": "product.RunsElsewhere",
       "kind": "serves"
     },

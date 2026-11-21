@@ -1,6 +1,6 @@
 import {
   defineKind, field, optional, edge, optionalEdge, hole, doc, isHole, recordKeyOf, keysOf, DateRole, KindName,
-  type Node, type HoleSpec, type Block, type Inline, type View, type Provides, ChangeWay
+  type Node, type HoleSpec, type Block, type Inline, type View, type Provides, ChangeWay, HoleCode
 } from "../trame/kernel"
 import words from "./words"
 
@@ -42,14 +42,14 @@ const kind = defineKind({
       if (!Array.isArray(range)) continue
       const [lo, hi] = range as [number, number]
       if (values.isNumber(x) && (x < lo || x > hi)) {
-        out.push(hole.error(say.decisionIsOutsideTheRange(formatUnit(x), key, formatUnit(lo), formatUnit(hi))))
+        out.push(hole.error(HoleCode.decisionOutsideRange, say.decisionIsOutsideTheRange(formatUnit(x), key, formatUnit(lo), formatUnit(hi))))
       }
     }
     for (const b of self.bounded) {
       const bv = b.field(F.value)
-      if (isHole(bv)) out.push(hole.warning(say.decisionCapCannotBeCheckedIsNot(b.title), b.owner))
+      if (isHole(bv)) out.push(hole.warning(HoleCode.decisionCapUncheckable, say.decisionCapCannotBeCheckedIsNot(b.title), b.owner))
       else if (values.isNumber(v) && values.isNumber(bv) && v > bv) {
-        out.push(hole.error(say.decisionExceeds(formatUnit(v), b.title, formatUnit(bv))))
+        out.push(hole.error(HoleCode.decisionExceedsCap, say.decisionExceeds(formatUnit(v), b.title, formatUnit(bv))))
       }
     }
     return out

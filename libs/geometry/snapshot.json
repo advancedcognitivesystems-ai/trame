@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-18",
+  "at": "2026-11-21",
   "nodes": [
     {
       "id": "angles.Angle",
@@ -26,14 +26,38 @@
       }
     },
     {
+      "id": "packages.ContinuousIntegration",
+      "kind": "package",
+      "title": "The library of continuous integration",
+      "fields": {
+        "owner": "ghalaax",
+        "packageName": "ci",
+        "version": "0.7.0",
+        "joins": "library",
+        "from": "registry"
+      }
+    },
+    {
       "id": "packages.Language",
       "kind": "package",
       "title": "Trame",
       "fields": {
         "owner": "ghalaax",
         "packageName": "trame",
-        "version": "108",
+        "version": "114",
         "joins": "language",
+        "from": "registry"
+      }
+    },
+    {
+      "id": "packages.People",
+      "kind": "package",
+      "title": "The people of the repository",
+      "fields": {
+        "owner": "ghalaax",
+        "packageName": "team",
+        "version": "0.1.0",
+        "joins": "library",
         "from": "registry"
       }
     },
@@ -44,7 +68,7 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "std",
-        "version": "0.19.0",
+        "version": "0.21.0",
         "joins": "library",
         "from": "registry"
       }
@@ -95,7 +119,7 @@
       "id": "sdlc.NextVersion",
       "kind": "shipment",
       "title": "The next version",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "target": "version"
@@ -113,7 +137,7 @@
       "id": "sdlc.TheLibrary",
       "kind": "artifact",
       "title": "The library of geometry",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "path": "src",
@@ -255,7 +279,17 @@
       "kind": "serves"
     },
     {
+      "from": "packages.ContinuousIntegration",
+      "to": "product.GeometryWrittenOnce",
+      "kind": "serves"
+    },
+    {
       "from": "packages.Language",
+      "to": "product.GeometryWrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "packages.People",
       "to": "product.GeometryWrittenOnce",
       "kind": "serves"
     },

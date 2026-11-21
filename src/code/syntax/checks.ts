@@ -3,7 +3,7 @@
 // a hidden dependency; the platform (packages, built-in modules, a computed load, the globals that reach outside) is
 // reserved for the kinds that may touch it (implementations). A file body gives something; a body follows its grammar.
 
-import { Severity } from "../../../trame/kernel"
+import { HoleCode, Severity } from "../../../trame/kernel"
 import type { ProvidedBy } from "../../../trame/kernel"
 import type { GnuPositions } from "#std/text"
 import type { NodeModuleSpecifiers } from "#std/system"
@@ -37,16 +37,16 @@ const body = ({ prelude, specifiers, gnu, sequences, messages }: Deps) => {
   return {
     check(reading: Reading, ctx: BodyContext): DriverIssue[] {
       const found: { line: number; issue: DriverIssue }[] = []
-      const error = (line: number, what: string) => found.push({ line, issue: { severity: Severity.error, what } })
+      const error = (line: number, code: HoleCode, what: string) => found.push({ line, issue: { severity: Severity.error, code, what } })
       const platform = (line: number, what: string) => {
-        if (!ctx.ambient) error(line, messages.platformAccess(what))
+        if (!ctx.ambient) error(line, HoleCode.platformAccess, messages.platformAccess(what))
       }
       const first = sequences.head(reading.errors)
-      if (first) error(first.line, messages.notTheLanguage(ctx.language, reading.errors.map((e) => e.line + gnu.separator + e.column)))
+      if (first) error(first.line, HoleCode.bodyNotInItsLanguage, messages.notTheLanguage(ctx.language, reading.errors.map((e) => e.line + gnu.separator + e.column)))
       for (const i of reading.imports) {
         if (i.computed) platform(i.line, messages.computedImport())
         else if (i.typeOnly || isPrelude(i.module)) continue
-        else if (isRelative(i.module)) error(i.line, messages.hiddenDependency(i.module))
+        else if (isRelative(i.module)) error(i.line, HoleCode.dependencyHidden, messages.hiddenDependency(i.module))
         else platform(i.line, i.module)
       }
       // Each global once, where it first appears.
@@ -57,7 +57,7 @@ const body = ({ prelude, specifiers, gnu, sequences, messages }: Deps) => {
         platform(g.line, g.name)
       }
       const issues = found.sort((a, b) => a.line - b.line).map((f) => f.issue)
-      if (ctx.entry && !reading.entry) issues.push({ severity: Severity.error, what: messages.noDefaultExport() })
+      if (ctx.entry && !reading.entry) issues.push({ severity: Severity.error, code: HoleCode.bodyWithoutDefaultExport, what: messages.noDefaultExport() })
       return issues
     },
 
@@ -65,8 +65,8 @@ const body = ({ prelude, specifiers, gnu, sequences, messages }: Deps) => {
     parameters(reading: Reading, deps: readonly string[]): DriverIssue[] {
       const declared = reading.parameters.map((p) => p.name)
       return [
-        ...deps.filter((d) => !declared.includes(d)).map((d): DriverIssue => ({ severity: Severity.error, what: messages.undeclaredVariable(d) })),
-        ...declared.filter((v) => !deps.includes(v)).map((v): DriverIssue => ({ severity: Severity.warning, what: messages.unusedVariable(v) })),
+        ...deps.filter((d) => !declared.includes(d)).map((d): DriverIssue => ({ severity: Severity.error, code: HoleCode.dependencyUndeclared, what: messages.undeclaredVariable(d) })),
+        ...declared.filter((v) => !deps.includes(v)).map((v): DriverIssue => ({ severity: Severity.warning, code: HoleCode.dependencyUnused, what: messages.unusedVariable(v) })),
       ]
     },
   }

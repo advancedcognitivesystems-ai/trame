@@ -70,3 +70,16 @@ export const R0_4_0 = release({
   language: "shared",
   serves: [DataDescribedOnce],
 })
+
+/**
+ * Version 0.5.0
+ */
+export const R0_5_0 = release({
+  owner: "trame",
+  version: "0.5.0",
+  date: "2026-11-20",
+  what: "Each problem an entity raises has its code (C4): entity-reseeded, entity-key-unknown, entity-field-without-type, entity-owner-field-unknown, entity-migration-undecided; the language's holes now name their code first",
+  fingerprint: "a3754897cae809d3",
+  language: "shared",
+  serves: [DataDescribedOnce],
+})

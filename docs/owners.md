@@ -1,11 +1,11 @@
 # Owners
 
-*What each person must decide, settle or watch on 19 November 2026, and what they own.*
+*What each person must decide, settle or watch on 21 November 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
 | Trame's maintainers | 0 | 0 | 1 | 0 |
-| trame | 0 | 0 | 5 | 704 |
+| trame | 0 | 0 | 5 | 715 |
 
 <a id="Trame's maintainers"></a>
 
@@ -13,21 +13,21 @@
 
 - Held by: ghalaax and claude
 
-| Severity | What | Where | Owner | Consequence |
-|---|---|---|---|---|
-| warning | Checked on another build of its artefacts, by another version of its program or another engine: to check again | [The graph page opens](sdlc.md#GraphPageOpens) | Trame's maintainers |  |
+| Severity | Code | What | Where | Owner | Consequence |
+|---|---|---|---|---|---|
+| warning | `check-stale` | Checked on another build of its artefacts, by another version of its program or another engine: to check again | [The repository is read from GitHub](sdlc.md#RepositoryRead) | Trame's maintainers |  |
 
 <a id="trame"></a>
 
 ## trame
 
-| Severity | What | Where | Owner | Consequence |
-|---|---|---|---|---|
-| warning | To ship: The engine is unknown | [Into the main branch](sdlc.md#IntoMain) | trame |  |
-| warning | To ship: The graph page opens is unknown | [Into the main branch](sdlc.md#IntoMain) | trame |  |
-| warning | To ship: The page is assembled is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
-| warning | To ship: The graph page opens is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
-| warning | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The engine](sdlc.md#TheEngine) | trame |  |
+| Severity | Code | What | Where | Owner | Consequence |
+|---|---|---|---|---|---|
+| warning | `shipment-awaits` | To ship: The engine is unknown | [Into the main branch](sdlc.md#IntoMain) | trame |  |
+| warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | trame |  |
+| warning | `shipment-awaits` | To ship: The repository is read from GitHub is unknown | [The repository as decided](sdlc.md#RepositorySet) | trame |  |
+| warning | `shipment-awaits` | To ship: The pull requests' workflow is unknown | [The files that run it elsewhere](sdlc.md#RunnersWritten) | trame |  |
+| warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The engine](sdlc.md#TheEngine) | trame |  |
 
 ### Owns
 
@@ -90,15 +90,15 @@
 | [Trame on the command line](architecture.md#TrameCli) | Component |  |
 | [TypeScript compiler](architecture.md#TypeScriptCompiler) | Port |  |
 | [Write log](architecture.md#WriteLog) | Port |  |
-| [Amendments sent to trame dev](browser.md#BrowserAmendments) | Implementation | **unknown** |
-| [The browser's gzip](browser.md#BrowserDecompression) | Implementation | **unknown** |
-| [The globals of the page, and trame dev](browser.md#BrowserFeed) | Implementation | **unknown** |
-| [Local storage](browser.md#BrowserMemory) | Implementation | **unknown** |
-| [The browser's window](browser.md#BrowserWindow) | Implementation | **unknown** |
-| [Explorer of a graph](browser.md#ExplorerFigures) | Function | **unknown** |
-| [Show the graph](browser.md#ShowGraph) | Entry point | **unknown** |
-| [The browser runs the page](browser.md#TheBrowserRunsThePage) | Technical choice | **unknown** |
-| [The page is assembled](browser.md#ThePageIsAssembled) | Architecture decision | **unknown** |
+| [Amendments sent to trame dev](browser.md#BrowserAmendments) | Implementation | **held** |
+| [The browser's gzip](browser.md#BrowserDecompression) | Implementation | **held** |
+| [The globals of the page, and trame dev](browser.md#BrowserFeed) | Implementation | **held** |
+| [Local storage](browser.md#BrowserMemory) | Implementation | **held** |
+| [The browser's window](browser.md#BrowserWindow) | Implementation | **held** |
+| [Explorer of a graph](browser.md#ExplorerFigures) | Function | **held** |
+| [Show the graph](browser.md#ShowGraph) | Entry point | **held** |
+| [The browser runs the page](browser.md#TheBrowserRunsThePage) | Technical choice | **held** |
+| [The page is assembled](browser.md#ThePageIsAssembled) | Architecture decision | **held** |
 | [An advance, in memory](command-scenarios.md#AdvanceInMemory) | Scenario | **held** |
 | [What the engines an advance starts answer in a scenario](command-scenarios.md#AdvanceSamples) | Decision |  |
 | [What an amendment is checked with](command-scenarios.md#AmendmentSamples) | Decision |  |
@@ -207,6 +207,7 @@
 | [Fingerprints](engine.md#Fingerprints) | Function | **held** |
 | [Pseudo-random generator](engine.md#Generator) | Function | **held** |
 | [Graph](engine.md#GraphApi) | Function | **held** |
+| [Judged harder](engine.md#JudgedHarder) | Function | **held** |
 | [What tells a project's runs apart](engine.md#KeptRunsScope) | Decision |  |
 | [Laws](engine.md#Laws) | Function | **held** |
 | [The laws are requirements](engine.md#LawsAreRequirements) | Architecture decision | **held** |
@@ -268,6 +269,8 @@
 | [Criteria of the complete declaration](laws.md#CompleteDeclarationCriteria) | Acceptance criteria | **held** |
 | [Complete declaration of a view](laws.md#CompleteViewDeclaration) | Requirement | **held** |
 | [Criteria of the declaration of a view](laws.md#CompleteViewDeclarationCriteria) | Acceptance criteria | **held** |
+| [A hole says what is wrong by its code](laws.md#HoleHasCode) | Requirement | **held** |
+| [Criteria of the code of a hole](laws.md#HoleHasCodeCriteria) | Acceptance criteria | **held** |
 | [Produces only the intermediate format](laws.md#IntermediateFormatOnly) | Requirement | **held** |
 | [Criteria of the intermediate format](laws.md#IntermediateFormatOnlyCriteria) | Acceptance criteria | **held** |
 | [The resolution does not depend on the order](laws.md#OrderFree) | Requirement | **held** |
@@ -348,6 +351,7 @@
 | [Types of Node.js](packages.md#NodeTypes) | Package | **held** |
 | [npm's lockfile](packages.md#NpmLockfile) | Standard |  |
 | [Audit of the packages](packages.md#PackageAudit) | Decision |  |
+| [The people of the repository](packages.md#People) | Package |  |
 | [The standard library](packages.md#StandardLibrary) | Package |  |
 | [tsx](packages.md#TsxPackage) | Package | **held** |
 | [Grammar of TypeScript](packages.md#TypeScriptGrammar) | Package | **held** |
@@ -441,6 +445,7 @@
 | [tsx runs TypeScript](platform.md#TsxRuns) | Technical choice | **held** |
 | [Runner of TypeScript](platform.md#TypeScriptRunner) | Decision |  |
 | [tree-sitter in WebAssembly](platform.md#WebTreeSitter) | Implementation | **held** |
+| [Who acts is declared](principles.md#ActorsDeclared) | Architecture decision | **held** |
 | [A change to a node is a claim](principles.md#ChangesAreClaims) | Architecture decision | **held** |
 | [The data a product carries is a dataset](principles.md#DataAsDatasets) | Architecture decision | **held** |
 | [A product is delivered by a node of the graph](principles.md#DeliveredByTheGraph) | Architecture decision | **held** |
@@ -460,7 +465,7 @@
 | [The traversal API is the only way to read the graph](principles.md#OneWayToRead) | Architecture decision | **held** |
 | [A package is used by its name](principles.md#PackagesByName) | Architecture decision | **held** |
 | [The prelude: the runtime of the language](principles.md#PreludeLayer) | Architecture decision | **held** |
-| [A version ships through the graph](principles.md#ShippedThroughTheGraph) | Architecture decision | **unknown** |
+| [A version ships through the graph](principles.md#ShippedThroughTheGraph) | Architecture decision | **held** |
 | [A technology is chosen in one node](principles.md#TechnologyInOneNode) | Architecture decision | **held** |
 | [Trame builds Trame](principles.md#TrameBuildsTrame) | Architecture decision | **held** |
 | [An undecided value blocks; it does not crash](principles.md#UndecidedBlocks) | Architecture decision | **held** |
@@ -495,6 +500,10 @@
 | [Generation 109](releases.md#G109) | Release |  |
 | [Generation 11](releases.md#G11) | Release |  |
 | [Generation 110](releases.md#G110) | Release |  |
+| [Generation 111](releases.md#G111) | Release |  |
+| [Generation 112](releases.md#G112) | Release |  |
+| [Generation 113](releases.md#G113) | Release |  |
+| [Generation 114](releases.md#G114) | Release |  |
 | [Generation 12](releases.md#G12) | Release |  |
 | [Generation 13](releases.md#G13) | Release |  |
 | [Generation 14](releases.md#G14) | Release |  |
@@ -622,9 +631,11 @@
 | [The described engine compiles the example](scenarios.md#CompileExample) | Scenario | **held** |
 | [The documents write in the decided language](scenarios.md#DocumentWords) | Scenario | **held** |
 | [How the documents write what they show, checked](scenarios.md#DocumentWordsData) | Decision |  |
-| [The engine reckons as it says](scenarios.md#EngineReckons) | Scenario | **held** |
+| [EngineReckons](scenarios.md#EngineReckons) | Scenario | **held** |
 | [Shape of the example](scenarios.md#ExampleShape) | Decision |  |
 | [Expected differences on the example](scenarios.md#ExpectedDifferences) | Decision |  |
+| [What the scenario of the judgment answers](scenarios.md#JudgingData) | Decision |  |
+| [A project judges harder, never softer](scenarios.md#JudgingHarder) | Scenario | **held** |
 | [The laws of the kinds hold](scenarios.md#KindLaws) | Scenario | **held** |
 | [What the engine's reckoning is checked with](scenarios.md#ReckoningData) | Decision |  |
 | [Set the repository's settings](sdlc.md#ApplyTheRepositorySettings) | Entry point | **held** |
@@ -640,7 +651,7 @@
 | [How a generation is made](sdlc.md#GenerationMode) | Policy |  |
 | [The graph page](sdlc.md#GraphPage) | Artefact | **held** |
 | [How the graph page is opened](sdlc.md#GraphPageOpening) | Decision |  |
-| [The graph page opens](sdlc.md#GraphPageOpens) | Check | **unknown** |
+| [The graph page opens](sdlc.md#GraphPageOpens) | Check | **held** |
 | [What the scenario of the graph page shows](sdlc.md#GraphPageScenarioData) | Decision |  |
 | [What the graph page is asked](sdlc.md#GraphPageSelectors) | Function | **held** |
 | [Into the main branch](sdlc.md#IntoMain) | Shipment | **unknown** |
@@ -648,17 +659,17 @@
 | [How the repository merges into main](sdlc.md#MainBranch) | Decision |  |
 | [Trame's maintainers](sdlc.md#Maintainers) | Role |  |
 | [How a change merges](sdlc.md#MergeMode) | Policy |  |
-| [The next generation](sdlc.md#NextGeneration) | Shipment | **unknown** |
+| [The next generation](sdlc.md#NextGeneration) | Shipment | **held** |
 | [The graph page is opened as a person would](sdlc.md#OpeningTheGraphPage) | Scenario | **held** |
 | [Open the graph page](sdlc.md#OpenTheGraphPage) | Entry point | **held** |
 | [The page's program](sdlc.md#PageProgram) | Artefact | **held** |
 | [How a pull request is checked on GitHub](sdlc.md#PullRequestsOnGitHub) | Decision |  |
-| [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **held** |
+| [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **unknown** |
 | [Read the repository's settings](sdlc.md#ReadTheRepositorySettings) | Entry point | **held** |
-| [The repository is read from GitHub](sdlc.md#RepositoryRead) | Check | **held** |
+| [The repository is read from GitHub](sdlc.md#RepositoryRead) | Check | **unknown** |
 | [The repository left by hand, in the scenario](sdlc.md#RepositoryScenarioData) | Decision |  |
-| [The repository as decided](sdlc.md#RepositorySet) | Shipment | **held** |
-| [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **held** |
+| [The repository as decided](sdlc.md#RepositorySet) | Shipment | **unknown** |
+| [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **unknown** |
 | [The SDLC in memory](sdlc.md#SdlcInMemory) | Technical choice | **held** |
 | [The SDLC on the machine](sdlc.md#SdlcOnTheMachine) | Technical choice | **unknown** |
 | [What the programs of Trame's SDLC say](sdlc.md#SdlcWords) | Message catalog |  |

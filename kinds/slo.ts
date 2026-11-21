@@ -1,4 +1,4 @@
-import { defineKind, field, optional, edge, hole, doc, keysOf, Status, KindName, ChangeWay} from "../trame/kernel"
+import { defineKind, field, optional, edge, hole, doc, keysOf, Status, KindName, ChangeWay, HoleCode} from "../trame/kernel"
 import words from "./words"
 
 const say = words()
@@ -31,11 +31,11 @@ export const slo = defineKind({
     const [lowest, highest] = g.lib.settings.slo.percentile
     const outside = g.lib.values.isNumber(self.percentile) && (self.percentile < lowest || self.percentile > highest)
     return [
-      !self.source && hole.warning(say.sloNoProductionMeasurementWired()),
+      !self.source && hole.warning(HoleCode.sloUnmeasured, say.sloNoProductionMeasurementWired()),
       // What the threshold and the window measure is the quantity their values are written in (since B2).
-      self.quantityOf?.(F.threshold) === undefined && hole.warning(say.sloThresholdMeasuresNothing(), self.owner),
-      self.quantityOf?.(F.window) === undefined && hole.warning(say.sloWindowMeasuresNothing(), self.owner),
-      outside && hole.error(say.sloPercentileOutside(self.percentile, lowest, highest), self.owner),
+      self.quantityOf?.(F.threshold) === undefined && hole.warning(HoleCode.sloThresholdMeasuresNothing, say.sloThresholdMeasuresNothing(), self.owner),
+      self.quantityOf?.(F.window) === undefined && hole.warning(HoleCode.sloWindowMeasuresNothing, say.sloWindowMeasuresNothing(), self.owner),
+      outside && hole.error(HoleCode.sloPercentileOutside, say.sloPercentileOutside(self.percentile, lowest, highest), self.owner),
     ]
   },
 

@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 19 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 21 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Poselia · The app in a browser
 
@@ -831,10 +831,10 @@ Package · `Data`
 
 - Owner: ghalaax
 - Name: data
-- Version: 0.4.0
+- Version: 0.5.0
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: ../../libs/data/releases/0.4.0
+- Its path: ../../libs/data/releases/0.5.0
 - Serves: Practise yoga on one's own, guided
 
 ### Geometry
@@ -855,10 +855,22 @@ Package · `Language`
 
 - Owner: ghalaax
 - Name: trame
-- Version: 110
+- Version: 114
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../../generations/g110
+- Its path: ../../generations/g114
+- Serves: Practise yoga on one's own, guided
+
+### The people of the repository
+
+Package · `People`
+
+- Owner: ghalaax
+- Name: team
+- Version: 0.1.0
+- How it joins the graph: library
+- Where it comes from: path
+- Its path: ../../libs/team/releases/0.1.0
 - Serves: Practise yoga on one's own, guided
 
 ### The standard library
@@ -867,10 +879,10 @@ Package · `StandardLibrary`
 
 - Owner: ghalaax
 - Name: std
-- Version: 0.20.0
+- Version: 0.21.0
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: ../../std/releases/0.20.0
+- Its path: ../../std/releases/0.21.0
 - Serves: Practise yoga on one's own, guided
 
 ## Poselia · Practice
@@ -1447,7 +1459,7 @@ Artefact · `PageFile` · **unknown**
 
 ### The preview's script
 
-Artefact · `PreviewScript` · **held**
+Artefact · `PreviewScript` · **unknown**
 
 - Owner: ghalaax
 - Path: scripts/ship-preview.sh
@@ -1456,7 +1468,7 @@ Artefact · `PreviewScript` · **held**
 
 ### The preview's workflow
 
-Artefact · `PreviewWorkflow` · **held**
+Artefact · `PreviewWorkflow` · **unknown**
 
 - Owner: ghalaax
 - Path: ../../.github/workflows/poselia-preview.yml
@@ -1467,7 +1479,7 @@ Artefact · `PreviewWorkflow` · **held**
 
 ### The pull requests' workflow
 
-Artefact · `PullRequestWorkflow` · **held**
+Artefact · `PullRequestWorkflow` · **unknown**
 
 - Owner: ghalaax
 - Path: ../../.github/workflows/poselia-pull-request.yml
@@ -1543,7 +1555,7 @@ Shipment · `PublicVersion` · **unknown**
 
 ### The files that run it elsewhere
 
-Shipment · `RunnersWritten` · **held**
+Shipment · `RunnersWritten` · **unknown**
 
 - Owner: ghalaax
 - Target: repository

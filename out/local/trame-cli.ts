@@ -10,7 +10,7 @@ import { Punctuation, Units, VisibleText } from "../../src/documents.ts"
 import { Positions, References } from "../../src/engine.ts"
 import { AcceptCandidate } from "../../src/generations.ts"
 import { AttributeSelector, ClassSelector, CssDeclaration, CssRule, CssVariable, CustomProperty, Doctype, EscapedText, HtmlAttributes, HtmlBlock, HtmlElement, HtmlEndTag, HtmlHeading, HtmlStartTag, JsonInScript, MediaFeature, MediaRule, NegationSelector, PathData, ScriptElement, SelfClosingTag } from "../../src/html.ts"
-import { AnswersWithoutCrashing, BlockingHoleHasOwner, ClosedResolution, CompleteDeclaration, CompleteViewDeclaration, IntermediateFormatOnly, OrderFree, SameInputSameAnswer, UnknownWithoutEvidence } from "../../src/laws.ts"
+import { AnswersWithoutCrashing, BlockingHoleHasOwner, ClosedResolution, CompleteDeclaration, CompleteViewDeclaration, HoleHasCode, IntermediateFormatOnly, OrderFree, SameInputSameAnswer, UnknownWithoutEvidence } from "../../src/laws.ts"
 import { LibraryOfAModule, ReleaseIsSettled } from "../../src/libraries.ts"
 import { Anchor, BacktickString, BlankLine, BlockQuote, Blocks, CodeBlock, CodeSpan, Details, Emphasis, Heading, Link, ListItem, RelativeReference, Small, StrongEmphasis, Table, TableCell, TableDelimiterRow, TableRow } from "../../src/markdown.ts"
 import { ClassDefinition, Flowchart, Gantt, GanttName, GanttSection, GanttTask, MermaidLabel, MermaidLink, MermaidNode, Milestone, NodeStyle, StyleProperties, Subgraph } from "../../src/mermaid.ts"
@@ -25,9 +25,9 @@ import { CodeLines, Columns, ItemLine, PaddedCell, PathStep, TerminalLines, Tree
 import { ArrayLiteral, AsExpression, Assignment, AsyncBlockFunction, Await, Call, ConstDeclaration, DefaultImport, DocBlock, ExportDeclaration, IfStatement, InlineArray, LineComment, MemberAccess, ModuleTitle, NamedImport, ObjectBlock, ObjectLiteral, ObjectType, OptionalAccess, OptionalPropertySignature, Parenthesized, Property, StrictInequality, StringLiteral, UnionType } from "../../src/typescript.ts"
 import body_nodeTerminal from "../../src/code/platform/terminal.ts"
 import body_nodeCommandLine from "../../src/code/platform/command-line.ts"
-import body_valueTypes from "../../std/releases/0.19.0/src/code/algebra/values.ts"
+import body_valueTypes from "../../std/releases/0.21.0/src/code/algebra/values.ts"
 import body_cycles from "../../src/code/engine/cycles.ts"
-import body_counts from "../../std/releases/0.19.0/src/code/algebra/counts.ts"
+import body_counts from "../../std/releases/0.21.0/src/code/algebra/counts.ts"
 import body_tramePrelude from "../../src/code/platform/prelude.ts"
 import body_tsxLoader from "../../src/code/platform/tsx-loader.ts"
 import body_diskReading from "../../src/code/platform/disk-reading.ts"
@@ -36,8 +36,8 @@ import body_realTypeScript from "../../src/code/platform/typescript.ts"
 import body_resultsInTheProcess from "../../src/code/platform/kept-results.ts"
 import body_project from "../../src/code/engine/project.ts"
 import body_nodeHashing from "../../src/code/platform/hashing.ts"
-import body_sequences from "../../std/releases/0.19.0/src/code/algebra/sequences.ts"
-import body_texts from "../../std/releases/0.19.0/src/code/algebra/texts.ts"
+import body_sequences from "../../std/releases/0.21.0/src/code/algebra/sequences.ts"
+import body_texts from "../../std/releases/0.21.0/src/code/algebra/texts.ts"
 import body_engineFingerprint from "../../src/code/engine/engine-fingerprint.ts"
 import body_runsOnDisk from "../../src/code/platform/runs-on-disk.ts"
 import body_staticAnalysis from "../../src/code/engine/static-analysis.ts"
@@ -58,6 +58,7 @@ import body_diskWriting from "../../src/code/platform/disk-writing.ts"
 import body_localPaths from "../../src/code/platform/local-paths.ts"
 import body_localRegistry from "../../src/code/platform/local-registry.ts"
 import body_packagesByOrigin from "../../src/code/platform/packages-by-origin.ts"
+import body_judgedHarder from "../../src/code/engine/judged-harder.ts"
 import body_compiler from "../../src/code/engine/compiler.ts"
 import body_shipmentPipeline from "../../src/code/engine/pipeline.ts"
 import body_compilationApi from "../../src/code/engine/compilation-api.ts"
@@ -204,7 +205,7 @@ const advancement = {"component":"TrameCli","environment":"Local","page":{"compo
 // "The engine a project runs" · decision
 const enginePin = {"key":"engine"}
 // "Project" · function
-const project = await body_project({ encodings: nodeEncodings, values: valueTypes, layout, reading: frozen.limited(diskReading, ["existsSync","readFileSync"]), paths: frozen.limited(nodePaths, ["join","relative","resolve","sep"]), pin: enginePin, prelude: frozen.limited(tramePrelude, ["root"]), names: languageNames, specifiers: nodeModuleSpecifiers, language: typeScript })
+const project = await body_project({ encodings: nodeEncodings, values: valueTypes, layout, reading: frozen.limited(diskReading, ["existsSync","readFileSync"]), paths: frozen.limited(nodePaths, ["basename","join","relative","resolve","sep"]), pin: enginePin, prelude: frozen.limited(tramePrelude, ["root"]), names: languageNames, specifiers: nodeModuleSpecifiers, language: typeScript })
 // "SHA-256 hashes" · implementation, for "Hashing"
 const nodeHashing = await body_nodeHashing({})
 // "SHA-256" · standard
@@ -399,8 +400,10 @@ const npmManifest = {"dependencies":"dependencies","imports":"imports","type":"t
 const localRegistry = await body_localRegistry({ trees: frozen.limited(diskTrees, ["copy","link","remove"]), writing: frozen.limited(diskWriting, ["mkdirSync","writeFileSync"]), reading: frozen.limited(diskReading, ["existsSync","readdirSync"]), paths: frozen.limited(nodePaths, ["dirname","join","relative"]), place: localRegistryPlace, npm: npmManifest, layout })
 // "Packages by their origin" · implementation, for "Where a package comes from"
 const packagesByOrigin = await body_packagesByOrigin({ path: localPaths, registry: localRegistry })
+// "Judged harder" · function
+const judgedHarder = await body_judgedHarder({ severityOrder, messages: compilerMessages })
 // "Compiler" · function
-const compiler = await body_compiler({ encodings: nodeEncodings, specifiers: nodeModuleSpecifiers, values: valueTypes, layout, severityOrder, cycles, references, positions, loader: frozen.limited(tsxLoader, ["import","lead"]), reading: frozen.limited(diskReading, ["existsSync","readFileSync","readdirSync"]), paths: frozen.limited(nodePaths, ["basename","dirname","join","relative","resolve"]), analysis: staticAnalysis, project, graph: graphApi, wiring, drivers, prelude: frozen.limited(tramePrelude, ["internal","root"]), counts, sequences, texts, messages: compilerMessages, fingerprints, signatures: frozen.limited(attribution, ["seal"]), engines: engineFingerprint, runs: frozen.limited(projectRuns, ["open"]), platform: platformEffects, names: languageNames, packages: frozen.limited(packagesByOrigin, ["versions"]) })
+const compiler = await body_compiler({ encodings: nodeEncodings, specifiers: nodeModuleSpecifiers, values: valueTypes, layout, severityOrder, cycles, references, positions, loader: frozen.limited(tsxLoader, ["import","lead"]), reading: frozen.limited(diskReading, ["existsSync","readFileSync","readdirSync"]), paths: frozen.limited(nodePaths, ["basename","dirname","join","relative","resolve"]), analysis: staticAnalysis, project, graph: graphApi, wiring, drivers, prelude: frozen.limited(tramePrelude, ["internal","root"]), counts, sequences, texts, messages: compilerMessages, fingerprints, signatures: frozen.limited(attribution, ["seal"]), engines: engineFingerprint, runs: frozen.limited(projectRuns, ["open"]), platform: platformEffects, names: languageNames, packages: frozen.limited(packagesByOrigin, ["versions"]), judged: judgedHarder })
 // "Default rank" · decision
 const defaultRank = 100
 // "Names of the documents" · standard
@@ -431,6 +434,8 @@ const completeDeclaration = await frozen.body(CompleteDeclaration)({ counts })
 const answersWithoutCrashing = await frozen.body(AnswersWithoutCrashing)({})
 // "A blocking hole has an owner" · requirement
 const blockingHoleHasOwner = await frozen.body(BlockingHoleHasOwner)({})
+// "A hole says what is wrong by its code" · requirement
+const holeHasCode = await frozen.body(HoleHasCode)({ values: valueTypes, counts })
 // "Without evidence, the status is unknown" · requirement
 const unknownWithoutEvidence = await frozen.body(UnknownWithoutEvidence)({})
 // "Same input, same answer" · requirement
@@ -440,7 +445,7 @@ const orderFree = await frozen.body(OrderFree)({ same: sameInputSameAnswer })
 // "The resolution returns only what it is given" · requirement
 const closedResolution = await frozen.body(ClosedResolution)({})
 // "Laws" · function
-const laws = await body_laws({ kept: frozen.limited(resultsInTheProcess, ["get","set"]), drivers, preludeApi, specifiers: nodeModuleSpecifiers, layout, samples: sampleCount, claimSets, generator, owners: sampledOwners, sampled: sampledValues, iso: iso8601, references, reading: frozen.limited(diskReading, ["existsSync","readdirSync"]), paths: frozen.limited(nodePaths, ["dirname","join","relative","resolve","sep"]), project, graph: graphApi, prelude: frozen.limited(tramePrelude, ["internal","root"]), names: languageNames, counts, sequences, texts, messages: lawMessages, declaration: completeDeclaration, answers: answersWithoutCrashing, owned: blockingHoleHasOwner, evidence: unknownWithoutEvidence, same: sameInputSameAnswer, orderFree, closed: closedResolution })
+const laws = await body_laws({ kept: frozen.limited(resultsInTheProcess, ["get","set"]), drivers, preludeApi, specifiers: nodeModuleSpecifiers, layout, samples: sampleCount, claimSets, generator, owners: sampledOwners, sampled: sampledValues, iso: iso8601, references, reading: frozen.limited(diskReading, ["existsSync","readdirSync"]), paths: frozen.limited(nodePaths, ["dirname","join","relative","resolve","sep"]), project, graph: graphApi, prelude: frozen.limited(tramePrelude, ["internal","root"]), names: languageNames, counts, sequences, texts, messages: lawMessages, declaration: completeDeclaration, answers: answersWithoutCrashing, owned: blockingHoleHasOwner, coded: holeHasCode, evidence: unknownWithoutEvidence, same: sameInputSameAnswer, orderFree, closed: closedResolution })
 // "Order of the view groups" · decision
 const viewGroupOrder = ["module","document","figure","summary","node"]
 // "Messages of the outputs" · message catalog
@@ -476,7 +481,7 @@ const devPort = 4170
 // "Terminal text" · decision
 const terminalText = {"space":" ","indent":"  ","maxBlankLines":1}
 // "Columns in the terminal" · decision
-const terminalColumns = {"gap":2,"minimumGap":1,"widths":{"rank":9,"severity":15,"source":22,"name":14}}
+const terminalColumns = {"gap":2,"minimumGap":1,"widths":{"rank":9,"severity":15,"code":30,"source":22,"name":14}}
 // "Padded cell" · syntax element
 const paddedCell = await frozen.body(PaddedCell)({ standard: terminalText, columns: terminalColumns })
 // "Preparation" · function
@@ -826,11 +831,11 @@ const emitPayload = await body_emitPayload({ exitStatus, preparation, payload: p
 // "Export the page" · entry point
 const commands_export = await body_export({ exitStatus, layout, preparation, bundle: dateBundle, page, project, writing: frozen.limited(diskWriting, ["writeFileSync"]), paths: frozen.limited(nodePaths, ["resolve"]), terminal: frozen.limited(nodeTerminal, ["write"]), messages: commandMessages })
 // "How a project starts" · decision
-const projectStart = {"module":"product","goal":"Purpose","goalKind":"kinds/goal","owner":"owner","references":"packages","packageKind":"kinds/package","packageFacade":"pkg","language":"Language","library":"Library","guides":["AGENTS.md",".claude/skills/trame/SKILL.md"],"pointer":"CLAUDE.md","pointerText":"@AGENTS.md"}
+const projectStart = {"module":"product","goal":"Purpose","goalKind":"kinds/goal","owner":"owner","actor":"Owner","actorKind":"kinds/actor","kernel":"kernel","actorSorts":"ActorSort","references":"packages","packageKind":"kinds/package","packageFacade":"pkg","language":"Language","library":"Library","guides":["AGENTS.md",".claude/skills/trame/SKILL.md"],"pointer":"CLAUDE.md","pointerText":"@AGENTS.md"}
 // "A module of references" · function
 const referencesModule = await body_referencesModule({ syntax: typeScriptSyntax, title: moduleTitle, doc: docBlock, exported: exportDeclaration, constant: constDeclaration, call, object: objectLiteral, property, text: stringLiteral, list: inlineArray, imports: namedImport, texts })
 // "Start a project" · entry point
-const init = await body_init({ exitStatus, preparation, layout, project, prelude: frozen.limited(tramePrelude, ["engine","root"]), start: projectStart, pin: enginePin, reading: frozen.limited(diskReading, ["existsSync","readFileSync"]), writing: frozen.limited(diskWriting, ["mkdirSync","writeFileSync"]), paths: frozen.limited(nodePaths, ["basename","dirname","join","relative"]), encodings: nodeEncodings, file: textFile, json: jsonFormatting, language: typeScript, syntax: typeScriptSyntax, title: moduleTitle, doc: docBlock, exported: exportDeclaration, constant: constDeclaration, call, object: objectLiteral, property, text: stringLiteral, imports: namedImport, terminal: frozen.limited(nodeTerminal, ["write","writeRaw"]), messages: commandMessages, currentProcess: frozen.limited(nodeProcess, ["relaunch"]), events: nodeEvents, line: trameCommands, texts, references: referencesModule, names: languageNames, specifiers: nodeModuleSpecifiers })
+const init = await body_init({ exitStatus, preparation, layout, project, prelude: frozen.limited(tramePrelude, ["engine","root"]), start: projectStart, pin: enginePin, reading: frozen.limited(diskReading, ["existsSync","readFileSync"]), writing: frozen.limited(diskWriting, ["mkdirSync","writeFileSync"]), paths: frozen.limited(nodePaths, ["basename","dirname","join","relative"]), encodings: nodeEncodings, file: textFile, json: jsonFormatting, language: typeScript, syntax: typeScriptSyntax, title: moduleTitle, doc: docBlock, exported: exportDeclaration, constant: constDeclaration, call, object: objectLiteral, property, text: stringLiteral, imports: namedImport, terminal: frozen.limited(nodeTerminal, ["write","writeRaw"]), messages: commandMessages, currentProcess: frozen.limited(nodeProcess, ["relaunch"]), events: nodeEvents, line: trameCommands, texts, references: referencesModule, names: languageNames, specifiers: nodeModuleSpecifiers, member: memberAccess, list: inlineArray })
 // "Plan" · entry point
 const plan = await body_plan({ exitStatus, layout, text: terminalText, preparation, machine: machineOutputs, comparison: buildComparison, reading: frozen.limited(diskReading, ["existsSync","readFileSync"]), paths: frozen.limited(nodePaths, ["join"]), encodings: nodeEncodings, terminal: frozen.limited(nodeTerminal, ["write"]), messages: commandMessages })
 // "Publish" · entry point

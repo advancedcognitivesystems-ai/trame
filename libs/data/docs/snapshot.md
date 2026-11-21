@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 19 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 21 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Data · Documents
 
@@ -99,9 +99,21 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 110
+- Version: 114
 - How it joins the graph: language
-- Its path: ../../generations/g110
+- Its path: ../../generations/g114
+- Serves: Data described once
+
+### The people of the repository
+
+Package · `People`
+
+- Owner: trame
+- Name: team
+- Version: 0.1.0
+- How it joins the graph: library
+- Where it comes from: path
+- Its path: ../team/releases/0.1.0
 - Serves: Data described once
 
 ### std
@@ -110,9 +122,9 @@ Package · `stdLibrary`
 
 - Owner: trame
 - Name: std
-- Version: 0.20.0
+- Version: 0.21.0
 - How it joins the graph: library
-- Its path: ../../std/releases/0.20.0
+- Its path: ../../std/releases/0.21.0
 - Serves: Data described once
 
 ## Data · Principles
@@ -291,6 +303,18 @@ Release · `R0_4_0`
 - Language: shared
 - Serves: Data described once
 
+### Version 0.5.0
+
+Release · `R0_5_0`
+
+- Released by: trame
+- Version: 0.5.0
+- Released on: 2026-11-20
+- What changes: Each problem an entity raises has its code (C4): entity-reseeded, entity-key-unknown, entity-field-without-type, entity-owner-field-unknown, entity-migration-undecided; the language's holes now name their code first
+- Fingerprint: a3754897cae809d3
+- Language: shared
+- Serves: Data described once
+
 ## Data · Scenarios
 
 ### What the library's scenarios are given
@@ -417,7 +441,7 @@ Decision · `PullRequestsOnGitHub`
 
 ### The pull requests' workflow
 
-Artefact · `PullRequestWorkflow` · **held**
+Artefact · `PullRequestWorkflow` · **unknown**
 
 - Owner: trame
 - Path: ../../.github/workflows/data-pull-request.yml
@@ -444,7 +468,7 @@ Shipment · `NextVersion` · **unknown**
 
 ### The files that run it elsewhere
 
-Shipment · `RunnersWritten` · **held**
+Shipment · `RunnersWritten` · **unknown**
 
 - Owner: trame
 - Target: repository

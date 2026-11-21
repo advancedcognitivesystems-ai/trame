@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-19",
+  "at": "2026-11-21",
   "nodes": [
     {
       "id": "app.BrowserScreen",
@@ -3715,10 +3715,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "data",
-        "version": "0.4.0",
+        "version": "0.5.0",
         "joins": "library",
         "from": "path",
-        "at": "../../libs/data/releases/0.4.0"
+        "at": "../../libs/data/releases/0.5.0"
       }
     },
     {
@@ -3741,10 +3741,23 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "trame",
-        "version": "110",
+        "version": "114",
         "joins": "language",
         "from": "path",
-        "at": "../../generations/g110"
+        "at": "../../generations/g114"
+      }
+    },
+    {
+      "id": "packages.People",
+      "kind": "package",
+      "title": "The people of the repository",
+      "fields": {
+        "owner": "ghalaax",
+        "packageName": "team",
+        "version": "0.1.0",
+        "joins": "library",
+        "from": "path",
+        "at": "../../libs/team/releases/0.1.0"
       }
     },
     {
@@ -3754,10 +3767,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "std",
-        "version": "0.20.0",
+        "version": "0.21.0",
         "joins": "library",
         "from": "path",
-        "at": "../../std/releases/0.20.0"
+        "at": "../../std/releases/0.21.0"
       }
     },
     {
@@ -4892,7 +4905,7 @@
       "id": "sdlc.PreviewScript",
       "kind": "artifact",
       "title": "The preview's script",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "path": "scripts/ship-preview.sh",
@@ -4903,7 +4916,7 @@
       "id": "sdlc.PreviewWorkflow",
       "kind": "artifact",
       "title": "The preview's workflow",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "path": "../../.github/workflows/poselia-preview.yml",
@@ -4989,7 +5002,7 @@
       "id": "sdlc.PullRequestWorkflow",
       "kind": "artifact",
       "title": "The pull requests' workflow",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "path": "../../.github/workflows/poselia-pull-request.yml",
@@ -5008,7 +5021,7 @@
       "id": "sdlc.RunnersWritten",
       "kind": "shipment",
       "title": "The files that run it elsewhere",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "target": "repository"
@@ -6739,6 +6752,11 @@
     },
     {
       "from": "packages.Language",
+      "to": "product.PractiseGuided",
+      "kind": "serves"
+    },
+    {
+      "from": "packages.People",
       "to": "product.PractiseGuided",
       "kind": "serves"
     },

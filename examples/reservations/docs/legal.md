@@ -6,9 +6,9 @@
 
 ## Open issues
 
-| Severity | What | Where | Owner | Consequence |
-|---|---|---|---|---|
-| blocking | Decide "Legal cap on cancellation fees" | [Legal cap on cancellation fees](#FeeCap) | karim | concerns "Late cancellation fee", "The cap, decided" |
+| Severity | Code | What | Where | Owner | Consequence |
+|---|---|---|---|---|---|
+| blocking | `value-undecided` | Decide "Legal cap on cancellation fees" | [Legal cap on cancellation fees](#FeeCap) | karim | concerns "Late cancellation fee", "The cap, decided" |
 
 ## Decision
 

@@ -569,7 +569,8 @@ export const ProjectStarted = scenario({
       check(messages.startedConfiguration(), r.status === exitStatus.success && configuration[pin.key] !== undefined && configuration.libraries !== undefined)
       const [extension] = language.extensions
       const module = written.get(paths.join(home, layout.sources, start.module + extension)) ?? texts.empty
-      check(messages.startedModule(), module.includes(specifiers.imports + names.name + specifiers.separator) && module.includes(samples.started.owner))
+      check(messages.startedModule(), module.includes(specifiers.imports + names.name + specifiers.separator) && module.includes(samples.started.owner) &&
+        module.includes(start.actor) && module.includes(start.actorSorts))
       const references = written.get(paths.join(home, layout.sources, start.references + extension)) ?? texts.empty
       check(messages.startedReferences(), references.includes(start.language) && references.includes(names.name))
       const [guide] = start.guides

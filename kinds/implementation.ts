@@ -1,6 +1,6 @@
 import {
   defineKind, field, optional, edge, optionalEdge, hole, keysOf, edgesOf, Stage, Status, KindName, EdgeName, CoveredEffects,
-  type AnyNode, type Node, type Provides, type HasDeps, type Provided, type ProvidedBy, type FileBody, type Signature, type View, type Reach,
+  type AnyNode, type Node, type Provides, type HasDeps, type Provided, type ProvidedBy, type FileBody, type Signature, type View, type Reach, HoleCode,
 } from "../trame/kernel"
 import { bindingKind } from "./binding"
 import { verifiedStatus } from "./scenario"
@@ -57,18 +57,18 @@ const kind = defineKind({
     const reached = self.reaches?.() ?? []
     const named = (r: Reach) => say.implementationReached(r.module, r.name, r.global, r.member)
     return [
-      ...reached.filter((r) => r.effects === undefined).map((r) => hole.error(say.implementationReachesUnsaid(named(r), r.where))),
+      ...reached.filter((r) => r.effects === undefined).map((r) => hole.error(HoleCode.effectUndescribed, say.implementationReachesUnsaid(named(r), r.where))),
       ...reached.map((r) => {
         const beyond = (r.effects ?? []).filter((e) => !promised.has(e))
-        return counts.any(beyond) && hole.error(say.implementationReachesBeyond(named(r), texts.concat(lists.enumeration(beyond)), r.where))
+        return counts.any(beyond) && hole.error(HoleCode.effectBeyondPort, say.implementationReachesBeyond(named(r), texts.concat(lists.enumeration(beyond)), r.where))
       }),
       ...self.implements.map((port) => {
         const promised = new Set(port.effects)
         const extra = self.effects.filter((e) => !promised.has(e))
-        return counts.any(extra) && hole.error(say.functionDoesMoreThanPromises(port.title, texts.concat(lists.enumeration(extra))))
+        return counts.any(extra) && hole.error(HoleCode.realizationExceedsPort, say.functionDoesMoreThanPromises(port.title, texts.concat(lists.enumeration(extra))))
       }),
       g.from(self).out(E.environments).exists() && g.from(self).in(edgesOf(bindingKind).chooses).exists() &&
-        hole.warning(say.implementationNamesItsOwnEnvironmentsAndIs()),
+        hole.warning(HoleCode.implementationNamesEnvironments, say.implementationNamesItsOwnEnvironmentsAndIs()),
     ]
   },
 })

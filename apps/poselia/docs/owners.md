@@ -1,12 +1,12 @@
 # Owners
 
-*What each person must decide, settle or watch on 19 November 2026, and what they own.*
+*What each person must decide, settle or watch on 21 November 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
 | A teacher who practises | 0 | 0 | 4 | 0 |
 | People who try it on a phone | 0 | 0 | 1 | 0 |
-| ghalaax | 0 | 0 | 14 | 223 |
+| ghalaax | 0 | 0 | 20 | 224 |
 
 <a id="A teacher who practises"></a>
 
@@ -19,12 +19,12 @@
 - [Poses](content.md#Poses): `trame evidence Poses passed --by <name> --subject <row> --language <language>`
 - [Sequences](content.md#Sequences): `trame evidence Sequences passed --by <name> --subject <row> --language <language>`
 
-| Severity | What | Where | Owner | Consequence |
-|---|---|---|---|---|
-| warning | 12 rows of Poses await a review in fr by A teacher who practises | [The content, reviewed](sdlc.md#ContentReviewed) | A teacher who practises |  |
-| warning | 12 rows of Poses await a review in en by A teacher who practises | [The content, reviewed](sdlc.md#ContentReviewed) | A teacher who practises |  |
-| warning | 1 row of Sequences awaits a review in fr by A teacher who practises | [The content, reviewed](sdlc.md#ContentReviewed) | A teacher who practises |  |
-| warning | 1 row of Sequences awaits a review in en by A teacher who practises | [The content, reviewed](sdlc.md#ContentReviewed) | A teacher who practises |  |
+| Severity | Code | What | Where | Owner | Consequence |
+|---|---|---|---|---|---|
+| warning | `review-awaited` | 12 rows of Poses await a review in fr by A teacher who practises | [The content, reviewed](sdlc.md#ContentReviewed) | A teacher who practises |  |
+| warning | `review-awaited` | 12 rows of Poses await a review in en by A teacher who practises | [The content, reviewed](sdlc.md#ContentReviewed) | A teacher who practises |  |
+| warning | `review-awaited` | 1 row of Sequences awaits a review in fr by A teacher who practises | [The content, reviewed](sdlc.md#ContentReviewed) | A teacher who practises |  |
+| warning | `review-awaited` | 1 row of Sequences awaits a review in en by A teacher who practises | [The content, reviewed](sdlc.md#ContentReviewed) | A teacher who practises |  |
 
 <a id="People who try it on a phone"></a>
 
@@ -36,9 +36,9 @@
 
 - [On a phone](sdlc.md#OnAPhone): `trame evidence OnAPhone passed --by ghalaax`
 
-| Severity | What | Where | Owner | Consequence |
-|---|---|---|---|---|
-| warning | To check by hand and sign: Open the page in Chrome on an Android phone, and in Safari on an iPhone, Play the sun salutation: the voice says the breath and the cues, the screen stays awake, Hold the poses: the bowl rings at each change, the voice says each pose, The landmarks follow the body, in the flow and in the holds | [On a phone](sdlc.md#OnAPhone) | People who try it on a phone |  |
+| Severity | Code | What | Where | Owner | Consequence |
+|---|---|---|---|---|---|
+| warning | `check-awaited` | To check by hand and sign: Open the page in Chrome on an Android phone, and in Safari on an iPhone, Play the sun salutation: the voice says the breath and the cues, the screen stays awake, Hold the poses: the bowl rings at each change, the voice says each pose, The landmarks follow the body, in the flow and in the holds | [On a phone](sdlc.md#OnAPhone) | People who try it on a phone |  |
 
 <a id="ghalaax"></a>
 
@@ -46,22 +46,28 @@
 
 - Holds the roles: [People who try it on a phone](sdlc.md#PhoneTesters)
 
-| Severity | What | Where | Owner | Consequence |
-|---|---|---|---|---|
-| warning | To ship: Poselia is unknown | [Into the main branch](sdlc.md#IntoMain) | ghalaax |  |
-| warning | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [Poselia's page](sdlc.md#PageFile) | ghalaax |  |
-| warning | Checked on another build of its artefacts, by another version of its program or another engine: to check again | [The page opens](sdlc.md#PageOpens) | ghalaax |  |
-| warning | To ship: Poselia's page is unknown | [A preview](sdlc.md#Preview) | ghalaax |  |
-| warning | To ship: The page opens is unknown | [A preview](sdlc.md#Preview) | ghalaax |  |
-| warning | To ship: Poselia's page is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
-| warning | To ship: On a phone is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
-| warning | To ship: The page opens is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
-| warning | To ship: The content, reviewed is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
-| warning | To ship: A page first, the phones after is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
-| warning | To ship: The content is data, behind a port is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
-| warning | To ship: Said aloud, the screen awake is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
-| warning | Nobody holds this role yet | [A teacher who practises](sdlc.md#Teachers) | ghalaax |  |
-| warning | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [Poselia](sdlc.md#ThePoseliaApp) | ghalaax |  |
+| Severity | Code | What | Where | Owner | Consequence |
+|---|---|---|---|---|---|
+| warning | `shipment-awaits` | To ship: Poselia is unknown | [Into the main branch](sdlc.md#IntoMain) | ghalaax |  |
+| warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [Poselia's page](sdlc.md#PageFile) | ghalaax |  |
+| warning | `check-stale` | Checked on another build of its artefacts, by another version of its program or another engine: to check again | [The page opens](sdlc.md#PageOpens) | ghalaax |  |
+| warning | `shipment-awaits` | To ship: Poselia's page is unknown | [A preview](sdlc.md#Preview) | ghalaax |  |
+| warning | `shipment-awaits` | To ship: The page opens is unknown | [A preview](sdlc.md#Preview) | ghalaax |  |
+| warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The preview's script](sdlc.md#PreviewScript) | ghalaax |  |
+| warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The preview's workflow](sdlc.md#PreviewWorkflow) | ghalaax |  |
+| warning | `shipment-awaits` | To ship: Poselia's page is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
+| warning | `shipment-awaits` | To ship: On a phone is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
+| warning | `shipment-awaits` | To ship: The page opens is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
+| warning | `shipment-awaits` | To ship: The content, reviewed is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
+| warning | `shipment-awaits` | To ship: A page first, the phones after is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
+| warning | `shipment-awaits` | To ship: The content is data, behind a port is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
+| warning | `shipment-awaits` | To ship: Said aloud, the screen awake is unknown | [A public version](sdlc.md#PublicVersion) | ghalaax |  |
+| warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | ghalaax |  |
+| warning | `shipment-awaits` | To ship: The preview's script is unknown | [The files that run it elsewhere](sdlc.md#RunnersWritten) | ghalaax |  |
+| warning | `shipment-awaits` | To ship: The preview's workflow is unknown | [The files that run it elsewhere](sdlc.md#RunnersWritten) | ghalaax |  |
+| warning | `shipment-awaits` | To ship: The pull requests' workflow is unknown | [The files that run it elsewhere](sdlc.md#RunnersWritten) | ghalaax |  |
+| warning | `role-empty` | Nobody holds this role yet | [A teacher who practises](sdlc.md#Teachers) | ghalaax |  |
+| warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [Poselia](sdlc.md#ThePoseliaApp) | ghalaax |  |
 
 ### Owns
 
@@ -168,6 +174,7 @@
 | [Data](packages.md#Data) | Package |  |
 | [Geometry](packages.md#Geometry) | Package |  |
 | [Trame](packages.md#Language) | Package |  |
+| [The people of the repository](packages.md#People) | Package |  |
 | [The standard library](packages.md#StandardLibrary) | Package |  |
 | [How a movement eases](practice.md#BreathEasing) | Decision |  |
 | [Breaths to say a cue](practice.md#BreathsToSay) | Requirement | **held** |
@@ -244,17 +251,17 @@
 | [A preview](sdlc.md#Preview) | Shipment | **unknown** |
 | [The way of a preview](sdlc.md#PreviewMode) | Policy |  |
 | [When the preview runs on GitHub, and what it keeps there](sdlc.md#PreviewOnGitHub) | Decision |  |
-| [The preview's script](sdlc.md#PreviewScript) | Artefact | **held** |
-| [The preview's workflow](sdlc.md#PreviewWorkflow) | Artefact | **held** |
+| [The preview's script](sdlc.md#PreviewScript) | Artefact | **unknown** |
+| [The preview's workflow](sdlc.md#PreviewWorkflow) | Artefact | **unknown** |
 | [The product holds](sdlc.md#ProductServed) | Obligation |  |
 | [The page is checked by programs](sdlc.md#ProgramChecks) | Obligation |  |
 | [The way of a public version](sdlc.md#PublicMode) | Policy |  |
 | [A public version](sdlc.md#PublicVersion) | Shipment | **unknown** |
 | [What people decided, published](sdlc.md#PublishedBeforeMerging) | Obligation |  |
 | [How a pull request is checked on GitHub](sdlc.md#PullRequestsOnGitHub) | Decision |  |
-| [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **held** |
+| [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **unknown** |
 | [The rules of the app hold](sdlc.md#RulesHeld) | Obligation |  |
-| [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **held** |
+| [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **unknown** |
 | [What the scenarios of the SDLC check](sdlc.md#SdlcChecks) | Message catalog |  |
 | [The SDLC in memory](sdlc.md#SdlcInMemory) | Technical choice | **held** |
 | [The SDLC is in the graph](sdlc.md#SdlcInTheGraph) | Architecture decision | **unknown** |

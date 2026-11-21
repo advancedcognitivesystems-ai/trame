@@ -91,62 +91,74 @@ flowchart TB
     n69["Test<br/><small>Environment</small>"]:::neutral
     n70["Test instant<br/><small>Decision</small>"]:::neutral
   end
+  subgraph judgment["Reservations · Judgment"]
+    n71["The problems the service will not leave<br/><small>Decision</small>"]:::neutral
+    n72["How the service is judged<br/><small>Technical choice</small>"]:::held
+    n73["What the scenario of the judgment checks<br/><small>Message catalog</small>"]:::neutral
+    n74["Judged our way<br/><small>Function</small>"]:::held
+    n75["The service's problems judged<br/><small>Scenario</small>"]:::held
+  end
   subgraph legal["Legal"]
-    n71["Legal cap on cancellation fees<br/><small>Decision</small>"]:::neutral
-    n72["The cap, decided<br/><small>Amendment</small>"]:::neutral
+    n76["Legal cap on cancellation fees<br/><small>Decision</small>"]:::neutral
+    n77["The cap, decided<br/><small>Amendment</small>"]:::neutral
   end
   subgraph messages["Reservations · Messages"]
-    n73["Messages of the API<br/><small>Message catalog</small>"]:::neutral
-    n74["Language<br/><small>Decision</small>"]:::neutral
-    n75["Checks of the scenarios<br/><small>Message catalog</small>"]:::neutral
+    n78["Messages of the API<br/><small>Message catalog</small>"]:::neutral
+    n79["Language<br/><small>Decision</small>"]:::neutral
+    n80["Checks of the scenarios<br/><small>Message catalog</small>"]:::neutral
+  end
+  subgraph people["Reservations · People"]
+    n81["Karim<br/><small>Actor</small>"]:::neutral
+    n82["Léa<br/><small>Actor</small>"]:::neutral
+    n83["The service's team<br/><small>Actor</small>"]:::neutral
   end
   subgraph principles["Reservations · Principles"]
-    n76["A cancellation refunds once<br/><small>Architecture decision</small>"]:::held
-    n77["Secrets stay out of the graph<br/><small>Architecture decision</small>"]:::unknown
+    n84["A cancellation refunds once<br/><small>Architecture decision</small>"]:::held
+    n85["Secrets stay out of the graph<br/><small>Architecture decision</small>"]:::unknown
   end
   subgraph scenarios["Reservations · Scenarios"]
-    n78["Every reservation is refunded according to the rule<br/><small>Scenario</small>"]:::held
-    n79["Read a reservation<br/><small>Scenario</small>"]:::held
-    n80["A read never writes<br/><small>Scenario</small>"]:::held
-    n81["Cancelling twice refunds only once<br/><small>Scenario</small>"]:::held
-    n82["The storage is prepared<br/><small>Scenario</small>"]:::held
-    n83["Unknown reservation<br/><small>Decision</small>"]:::neutral
+    n86["Every reservation is refunded according to the rule<br/><small>Scenario</small>"]:::held
+    n87["Read a reservation<br/><small>Scenario</small>"]:::held
+    n88["A read never writes<br/><small>Scenario</small>"]:::held
+    n89["Cancelling twice refunds only once<br/><small>Scenario</small>"]:::held
+    n90["The storage is prepared<br/><small>Scenario</small>"]:::held
+    n91["Unknown reservation<br/><small>Decision</small>"]:::neutral
   end
   subgraph sdlc["Reservations · SDLC"]
-    n84["Who calls, identified<br/><small>Obligation</small>"]:::neutral
-    n85["The code is verified<br/><small>Obligation</small>"]:::neutral
-    n86["Commands on this machine<br/><small>Technical choice</small>"]:::unknown
-    n87["The decisions hold<br/><small>Obligation</small>"]:::neutral
-    n88["Every check is signed<br/><small>Obligation</small>"]:::neutral
-    n89["The requirements of the goal hold<br/><small>Obligation</small>"]:::neutral
-    n90["Into the main branch<br/><small>Shipment</small>"]:::unknown
-    n91["What the service keeps, migrated<br/><small>Obligation</small>"]:::neutral
-    n92["The program for a laptop<br/><small>Artefact</small>"]:::unknown
-    n93["The way of this machine<br/><small>Policy</small>"]:::neutral
-    n94["How a change merges<br/><small>Policy</small>"]:::neutral
-    n95["On a laptop<br/><small>Check</small>"]:::unknown
-    n96["On staging<br/><small>Check</small>"]:::unknown
-    n97["On this machine<br/><small>Shipment</small>"]:::unknown
-    n98["The operators<br/><small>Role</small>"]:::neutral
-    n99["The packages are safe<br/><small>Obligation</small>"]:::neutral
-    n100["Prepare the storage<br/><small>Entry point</small>"]:::held
-    n101["The program for production<br/><small>Artefact</small>"]:::unknown
-    n102["What people decided, published<br/><small>Obligation</small>"]:::neutral
-    n103["How a pull request is checked on GitHub<br/><small>Decision</small>"]:::neutral
-    n104["The pull requests' workflow<br/><small>Artefact</small>"]:::unknown
-    n105["A release<br/><small>Shipment</small>"]:::unknown
-    n106["The way of a release<br/><small>Policy</small>"]:::neutral
-    n107["The service's SDLC<br/><small>Component</small>"]:::neutral
-    n108["The rules hold<br/><small>Obligation</small>"]:::neutral
-    n109["The files that run it elsewhere<br/><small>Shipment</small>"]:::unknown
-    n110["The service<br/><small>Artefact</small>"]:::unknown
+    n92["Who calls, identified<br/><small>Obligation</small>"]:::neutral
+    n93["The code is verified<br/><small>Obligation</small>"]:::neutral
+    n94["Commands on this machine<br/><small>Technical choice</small>"]:::unknown
+    n95["The decisions hold<br/><small>Obligation</small>"]:::neutral
+    n96["Every check is signed<br/><small>Obligation</small>"]:::neutral
+    n97["The requirements of the goal hold<br/><small>Obligation</small>"]:::neutral
+    n98["Into the main branch<br/><small>Shipment</small>"]:::unknown
+    n99["What the service keeps, migrated<br/><small>Obligation</small>"]:::neutral
+    n100["The program for a laptop<br/><small>Artefact</small>"]:::unknown
+    n101["The way of this machine<br/><small>Policy</small>"]:::neutral
+    n102["How a change merges<br/><small>Policy</small>"]:::neutral
+    n103["On a laptop<br/><small>Check</small>"]:::unknown
+    n104["On staging<br/><small>Check</small>"]:::unknown
+    n105["On this machine<br/><small>Shipment</small>"]:::unknown
+    n106["The operators<br/><small>Role</small>"]:::neutral
+    n107["The packages are safe<br/><small>Obligation</small>"]:::neutral
+    n108["Prepare the storage<br/><small>Entry point</small>"]:::held
+    n109["The program for production<br/><small>Artefact</small>"]:::unknown
+    n110["What people decided, published<br/><small>Obligation</small>"]:::neutral
+    n111["How a pull request is checked on GitHub<br/><small>Decision</small>"]:::neutral
+    n112["The pull requests' workflow<br/><small>Artefact</small>"]:::unknown
+    n113["A release<br/><small>Shipment</small>"]:::unknown
+    n114["The way of a release<br/><small>Policy</small>"]:::neutral
+    n115["The service's SDLC<br/><small>Component</small>"]:::neutral
+    n116["The rules hold<br/><small>Obligation</small>"]:::neutral
+    n117["The files that run it elsewhere<br/><small>Shipment</small>"]:::unknown
+    n118["The service<br/><small>Artefact</small>"]:::unknown
   end
   subgraph standards["Reservations · Standards"]
-    n111["API of the payment provider<br/><small>Standard</small>"]:::neutral
-    n112["Paths of entry points<br/><small>Standard</small>"]:::neutral
+    n119["API of the payment provider<br/><small>Standard</small>"]:::neutral
+    n120["Paths of entry points<br/><small>Standard</small>"]:::neutral
   end
   subgraph support["Support requests"]
-    n113["Ultra period requested by support<br/><small>Amendment</small>"]:::neutral
+    n121["Ultra period requested by support<br/><small>Amendment</small>"]:::neutral
   end
   n0 -->|Serves| n19
   n1 -->|Serves| n24
@@ -159,7 +171,7 @@ flowchart TB
   n1 -->|Depends on| n24
   n1 -->|Depends on| n5
   n1 -->|Depends on| n7
-  n1 -->|Depends on| n73
+  n1 -->|Depends on| n78
   n2 -->|Serves| n24
   n2 -->|Depends on| n20
   n3 -->|Depends on| n7
@@ -168,15 +180,15 @@ flowchart TB
   n4 -->|For| n0
   n4 -->|Depends on| n14
   n4 -->|Depends on| n2
-  n4 -->|Depends on| n73
+  n4 -->|Depends on| n78
   n8 -->|Serves| n19
   n8 -->|Applied by| n13
   n8 -->|Applied by| n17
   n8 -->|Applied by| n16
   n15 -->|Depends on| n9
-  n18 -->|Written in| n74
+  n18 -->|Written in| n79
   n22 -->|Constrains| n24
-  n23 -->|Capped by| n71
+  n23 -->|Capped by| n76
   n24 -->|Refines| n19
   n24 -->|Assumes| n21
   n24 -->|Depends on| n20
@@ -204,8 +216,8 @@ flowchart TB
   n45 -->|In| n49
   n46 -->|Implements| n11
   n46 -->|Depends on| n57
-  n46 -->|Depends on| n111
-  n46 -->|Depends on| n73
+  n46 -->|Depends on| n119
+  n46 -->|Depends on| n78
   n47 -->|Chooses| n52
   n47 -->|In| n69
   n47 -->|In| n49
@@ -217,10 +229,10 @@ flowchart TB
   n50 -->|In| n49
   n52 -->|Implements| n9
   n52 -->|Depends on| n10
-  n52 -->|Depends on| n112
+  n52 -->|Depends on| n120
   n52 -->|Depends on| n61
-  n52 -->|Depends on| n73
-  n53 -->|Depends on| n73
+  n52 -->|Depends on| n78
+  n53 -->|Depends on| n78
   n53 -->|Depends on| n41
   n53 -->|Depends on| n42
   n53 -->|Depends on| n37
@@ -251,123 +263,136 @@ flowchart TB
   n67 -->|Implements| n7
   n67 -->|Depends on| n70
   n68 -->|Implements| n7
-  n72 -->|Amends (not in force)| n71
-  n73 -->|Written in| n74
-  n75 -->|Written in| n74
-  n76 -->|Serves| n19
-  n76 -->|Applied by| n1
-  n76 -->|Applied by| n5
-  n76 -->|Applied by| n81
-  n77 -->|Serves| n19
-  n77 -->|Applied by| n46
-  n78 -->|Verifies| n1
-  n78 -->|Verifies| n24
-  n78 -->|In| n69
-  n78 -->|Depends on| n1
-  n78 -->|Depends on| n24
-  n78 -->|Depends on| n35
-  n78 -->|Depends on| n70
-  n78 -->|Depends on| n75
-  n79 -->|Verifies| n4
-  n79 -->|Verifies| n2
-  n79 -->|Verifies| n60
-  n79 -->|In| n69
-  n79 -->|Depends on| n4
-  n79 -->|Depends on| n35
-  n79 -->|Depends on| n20
-  n79 -->|Depends on| n83
-  n79 -->|Depends on| n75
-  n80 -->|In| n69
-  n80 -->|Depends on| n35
-  n80 -->|Depends on| n39
-  n80 -->|Depends on| n75
-  n81 -->|Verifies| n1
-  n81 -->|Verifies| n3
-  n81 -->|Verifies| n38
-  n81 -->|Verifies| n64
-  n81 -->|Verifies| n67
-  n81 -->|In| n69
-  n81 -->|Depends on| n1
-  n81 -->|Depends on| n12
-  n81 -->|Depends on| n24
-  n81 -->|Depends on| n35
-  n81 -->|Depends on| n70
-  n81 -->|Depends on| n75
-  n82 -->|Verifies| n100
-  n82 -->|In| n69
-  n82 -->|Depends on| n100
-  n82 -->|Depends on| n35
-  n82 -->|Depends on| n34
-  n82 -->|Depends on| n75
+  n72 -->|Chooses| n74
+  n72 -->|In| n69
+  n73 -->|Written in| n79
+  n74 -->|Serves| n19
+  n74 -->|Depends on| n71
+  n75 -->|Verifies| n74
+  n75 -->|In| n69
+  n75 -->|Depends on| n73
+  n77 -->|Amends (not in force)| n76
+  n78 -->|Written in| n79
+  n80 -->|Written in| n79
+  n81 -->|Serves| n19
+  n82 -->|Serves| n19
+  n83 -->|Members| n81
+  n83 -->|Members| n82
+  n83 -->|Serves| n19
   n84 -->|Serves| n19
+  n84 -->|Applied by| n1
+  n84 -->|Applied by| n5
+  n84 -->|Applied by| n89
   n85 -->|Serves| n19
-  n86 -->|In| n49
-  n87 -->|Serves| n19
-  n88 -->|Serves| n19
-  n89 -->|Serves| n19
-  n90 -->|Ships| n110
-  n90 -->|Follows the policy| n94
-  n91 -->|Serves| n19
-  n92 -->|Produced by| n15
-  n92 -->|Assembled for| n49
-  n93 -->|Its obligations| n85
-  n93 -->|Its obligations| n108
-  n93 -->|Its obligations| n91
-  n94 -->|Its obligations| n102
-  n95 -->|Checks| n92
-  n95 -->|Signed by| n98
-  n95 -->|Verifies| n44
-  n96 -->|Checks| n101
-  n96 -->|Signed by| n98
-  n96 -->|Verifies| n52
-  n96 -->|Verifies| n53
-  n96 -->|Verifies| n46
-  n96 -->|Verifies| n68
-  n97 -->|Ships| n92
-  n97 -->|Deployed by| n100
-  n97 -->|Programs assembled for| n49
-  n97 -->|Follows the policy| n93
+  n85 -->|Applied by| n46
+  n86 -->|Verifies| n1
+  n86 -->|Verifies| n24
+  n86 -->|In| n69
+  n86 -->|Depends on| n1
+  n86 -->|Depends on| n24
+  n86 -->|Depends on| n35
+  n86 -->|Depends on| n70
+  n86 -->|Depends on| n80
+  n87 -->|Verifies| n4
+  n87 -->|Verifies| n2
+  n87 -->|Verifies| n60
+  n87 -->|In| n69
+  n87 -->|Depends on| n4
+  n87 -->|Depends on| n35
+  n87 -->|Depends on| n20
+  n87 -->|Depends on| n91
+  n87 -->|Depends on| n80
+  n88 -->|In| n69
+  n88 -->|Depends on| n35
+  n88 -->|Depends on| n39
+  n88 -->|Depends on| n80
+  n89 -->|Verifies| n1
+  n89 -->|Verifies| n3
+  n89 -->|Verifies| n38
+  n89 -->|Verifies| n64
+  n89 -->|Verifies| n67
+  n89 -->|In| n69
+  n89 -->|Depends on| n1
+  n89 -->|Depends on| n12
+  n89 -->|Depends on| n24
+  n89 -->|Depends on| n35
+  n89 -->|Depends on| n70
+  n89 -->|Depends on| n80
+  n90 -->|Verifies| n108
+  n90 -->|In| n69
+  n90 -->|Depends on| n108
+  n90 -->|Depends on| n35
+  n90 -->|Depends on| n34
+  n90 -->|Depends on| n80
+  n92 -->|Serves| n19
+  n93 -->|Serves| n19
+  n94 -->|In| n49
+  n95 -->|Serves| n19
+  n96 -->|Serves| n19
+  n97 -->|Serves| n19
+  n98 -->|Ships| n118
+  n98 -->|Follows the policy| n102
   n99 -->|Serves| n19
-  n100 -->|Serves| n19
-  n100 -->|Part of| n107
-  n100 -->|Depends on| n35
-  n100 -->|Depends on| n34
-  n100 -->|Depends on| n73
-  n101 -->|Produced by| n15
-  n102 -->|Serves| n19
-  n104 -->|Runs elsewhere| n90
-  n104 -->|Its writer's settings| n103
-  n105 -->|Ships| n101
-  n105 -->|Ships| n92
-  n105 -->|Programs assembled for| n54
-  n105 -->|Follows the policy| n106
-  n106 -->|Its obligations| n85
-  n106 -->|Its obligations| n89
-  n106 -->|Its obligations| n87
-  n106 -->|Its obligations| n88
-  n106 -->|Its obligations| n108
-  n106 -->|Its obligations| n99
-  n106 -->|Its obligations| n91
-  n106 -->|Its obligations| n84
-  n107 -->|Deployed in| n49
+  n100 -->|Produced by| n15
+  n100 -->|Assembled for| n49
+  n101 -->|Its obligations| n93
+  n101 -->|Its obligations| n116
+  n101 -->|Its obligations| n99
+  n102 -->|Its obligations| n110
+  n103 -->|Checks| n100
+  n103 -->|Signed by| n106
+  n103 -->|Verifies| n44
+  n104 -->|Checks| n109
+  n104 -->|Signed by| n106
+  n104 -->|Verifies| n52
+  n104 -->|Verifies| n53
+  n104 -->|Verifies| n46
+  n104 -->|Verifies| n68
+  n105 -->|Ships| n100
+  n105 -->|Deployed by| n108
+  n105 -->|Programs assembled for| n49
+  n105 -->|Follows the policy| n101
+  n107 -->|Serves| n19
   n108 -->|Serves| n19
-  n109 -->|Ships| n104
-  n113 -->|Amends| n20
+  n108 -->|Part of| n115
+  n108 -->|Depends on| n35
+  n108 -->|Depends on| n34
+  n108 -->|Depends on| n78
+  n109 -->|Produced by| n15
+  n110 -->|Serves| n19
+  n112 -->|Runs elsewhere| n98
+  n112 -->|Its writer's settings| n111
+  n113 -->|Ships| n109
+  n113 -->|Ships| n100
+  n113 -->|Programs assembled for| n54
+  n113 -->|Follows the policy| n114
+  n114 -->|Its obligations| n93
+  n114 -->|Its obligations| n97
+  n114 -->|Its obligations| n95
+  n114 -->|Its obligations| n96
+  n114 -->|Its obligations| n116
+  n114 -->|Its obligations| n107
+  n114 -->|Its obligations| n99
+  n114 -->|Its obligations| n92
+  n115 -->|Deployed in| n49
+  n116 -->|Serves| n19
+  n117 -->|Ships| n112
+  n121 -->|Amends| n20
   n25 -.->|Depends on| n20
   n34 -.->|Depends on| n35
   n34 -.->|Depends on| n26
   n35 -.->|Depends on| n33
   n35 -.->|Depends on| n26
   n35 -.->|Depends on| n36
-  n28 -.-|Overlaps| n113
+  n28 -.-|Overlaps| n121
   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
   classDef blocked fill:#fbf0d9,stroke:#9a6200,color:#17202a
   classDef violated fill:#f9e3e1,stroke:#ad2a22,color:#17202a
   classDef unknown fill:#e9edf0,stroke:#65707c,color:#17202a
   classDef neutral fill:#ffffff,stroke:#5a6672,color:#17202a
-  style n27,n28,n29,n72,n113 stroke-dasharray:4 3
+  style n27,n28,n29,n77,n121 stroke-dasharray:4 3
   style n27 opacity:0.5
-  style n72 opacity:0.5
+  style n77 opacity:0.5
 ```
 
 *Each rank is one edge further from a goal than the rank above it. The nodes connected to no goal are at the very bottom.*

@@ -8,6 +8,12 @@ const plural = plurals("en-GB")
 
 const body = () => ({
   entityMeaning: () => "a kind of data a product keeps outside the graph, described once",
+  // The codes of the problems an entity raises (C4): what is wrong, by its code, as the language's are.
+  entityCodeReseeded: () => "entity-reseeded",
+  entityCodeKeyUnknown: () => "entity-key-unknown",
+  entityCodeFieldWithoutType: () => "entity-field-without-type",
+  entityCodeOwnerFieldUnknown: () => "entity-owner-field-unknown",
+  entityCodeMigrationUndecided: () => "entity-migration-undecided",
   entityEntity: () => "Entity",
   entityEntities: () => "Entities",
   entityFields: () => "Fields",

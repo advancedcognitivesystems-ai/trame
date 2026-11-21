@@ -5,6 +5,10 @@
     "ci": {
       "at": ".trame/ci",
       "version": "0.7.0"
+    },
+    "team": {
+      "at": ".trame/team",
+      "version": "0.1.0"
     }
   }
 }

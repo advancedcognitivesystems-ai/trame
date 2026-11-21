@@ -73,6 +73,7 @@ const body = (deps: Deps): DocumentSyntax => {
     issues: (issues, depth) => [issues.map((x) => concat([
       indent(depth),
       cell(x.words, widths.severity),
+      when(x.code, (code) => cell(code, widths.code)),
       when(x.source, (source) => cell(source, widths.source)),
       x.what,
       when(x.owner, (owner) => parts + owner),

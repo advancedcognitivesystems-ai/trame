@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-18",
+  "generated": "2026-11-21",
   "nodes": [
     {
       "id": "angles.Angle",
@@ -30,15 +30,43 @@
       "diagnostics": []
     },
     {
+      "id": "packages.ContinuousIntegration",
+      "kind": "package",
+      "title": "The library of continuous integration",
+      "source": "src/packages.ts:32",
+      "fields": {
+        "owner": "ghalaax",
+        "packageName": "ci",
+        "version": "0.7.0",
+        "joins": "library",
+        "from": "registry"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "packages.Language",
       "kind": "package",
       "title": "Trame",
-      "source": "src/packages.ts:10",
+      "source": "src/packages.ts:12",
       "fields": {
         "owner": "ghalaax",
         "packageName": "trame",
-        "version": "108",
+        "version": "114",
         "joins": "language",
+        "from": "registry"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "packages.People",
+      "kind": "package",
+      "title": "The people of the repository",
+      "source": "src/packages.ts:42",
+      "fields": {
+        "owner": "ghalaax",
+        "packageName": "team",
+        "version": "0.1.0",
+        "joins": "library",
         "from": "registry"
       },
       "diagnostics": []
@@ -47,11 +75,11 @@
       "id": "packages.StandardLibrary",
       "kind": "package",
       "title": "The standard library",
-      "source": "src/packages.ts:20",
+      "source": "src/packages.ts:22",
       "fields": {
         "owner": "ghalaax",
         "packageName": "std",
-        "version": "0.19.0",
+        "version": "0.21.0",
         "joins": "library",
         "from": "registry"
       },
@@ -112,7 +140,7 @@
       "kind": "shipment",
       "title": "The next version",
       "source": "src/sdlc.ts:44",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "target": "version"
@@ -131,7 +159,9 @@
           "sdlc.TheLibrary",
           "angles.Angle",
           "angles.AngleSymbols",
+          "packages.ContinuousIntegration",
           "packages.Language",
+          "packages.People",
           "packages.StandardLibrary",
           "product.GeometryWrittenOnce",
           "sdlc.DecisionsApplied",
@@ -144,7 +174,9 @@
           "vectors.VectorsAsTriples"
         ]
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: To ship: The library of geometry is unknown"
+      ]
     },
     {
       "id": "sdlc.PackagesSafe",
@@ -161,7 +193,7 @@
       "kind": "artifact",
       "title": "The library of geometry",
       "source": "src/sdlc.ts:19",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "path": "src",
@@ -169,9 +201,11 @@
       },
       "result": {
         "path": "src",
-        "code": "1798a3a6"
+        "code": "ebe89b2f"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+      ]
     },
     {
       "id": "sdlc.VersionMode",
@@ -353,7 +387,17 @@
       "kind": "language"
     },
     {
+      "from": "packages.ContinuousIntegration",
+      "to": "product.GeometryWrittenOnce",
+      "kind": "serves"
+    },
+    {
       "from": "packages.Language",
+      "to": "product.GeometryWrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "packages.People",
       "to": "product.GeometryWrittenOnce",
       "kind": "serves"
     },

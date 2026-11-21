@@ -291,3 +291,16 @@ export const R0_20_0 = release({
   language: "shared",
   serves: [CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
 })
+
+/**
+ * Version 0.21.0
+ */
+export const R0_21_0 = release({
+  owner: "trame",
+  version: "0.21.0",
+  date: "2026-11-20",
+  what: "How a project judges harder than the language, never softer (C4): the port Hardening, the structure Raising and its laws, the strategies AsTheLanguageSays and EveryWarning chosen by a binding where a project's build evaluates",
+  fingerprint: "11af7c0453654031",
+  language: "shared",
+  serves: [CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
+})

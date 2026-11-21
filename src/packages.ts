@@ -1,5 +1,7 @@
 /** Trame · Packages */
 
+// The people of the repository, who own this project's nodes: loaded so that the graph declares them (C4).
+import "#team/people"
 import { pkg } from "../kinds/package"
 import { decision } from "../kinds/decision"
 import { fn } from "../kinds/function"
@@ -132,7 +134,7 @@ export const VersionOrder = fn({
  * repository, at the version it froze.
  */
 export const StandardLibrary = pkg({
-  owner: "trame", packageName: "std", version: "0.20.0", joins: "library", from: "path", at: "std/releases/0.20.0", serves: [SingleSource],
+  owner: "trame", packageName: "std", version: "0.21.0", joins: "library", from: "path", at: "std/releases/0.21.0", serves: [SingleSource],
 })
 
 /**
@@ -159,4 +161,13 @@ export const NpmLockfile = standard({
     packages: { value: "packages", meaning: "What was installed, by its place: the project's own under the empty key" },
     root: { value: "", meaning: "The key of the project itself among the packages installed" },
   },
+})
+
+/**
+ * The people of the repository
+ * Who works on Trame's repository, declared once as actors (C4): every owner of this project names one of them.
+ */
+export const People = pkg({
+  owner: "trame", packageName: "team", version: "0.1.0", joins: "library", from: "path", at: "libs/team/releases/0.1.0",
+  serves: [SingleSource],
 })

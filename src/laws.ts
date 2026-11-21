@@ -1,9 +1,9 @@
 /** Trame · Laws */
 
-import { Severity, Status } from "../trame/kernel"
+import { HoleCode, Severity, Status } from "../trame/kernel"
 import { goal } from "../kinds/goal"
 import { requirement } from "../kinds/requirement"
-import { Counts } from "#std/algebra"
+import { Counts, ValueTypes } from "#std/algebra"
 import { acceptance } from "../kinds/acceptance"
 
 // The laws of kinds and views. A kind says how a node of its kind is checked, settled and shown; a view, which document
@@ -150,6 +150,34 @@ export const BlockingHoleHasOwnerCriteria = acceptance({
     criterion("A blocking hole without any owner breaks the law", () => !BlockingHoleHasOwner({ severity: Severity.blocking }))
     criterion("The owner of the node is enough", () => BlockingHoleHasOwner({ severity: Severity.blocking }, "person-a"))
     criterion("A warning needs no owner", () => BlockingHoleHasOwner({ severity: Severity.warning }))
+  },
+})
+
+/** A hole a kind reports, by its code. */
+export interface CodedHole {
+  code?: unknown
+}
+
+/**
+ * A hole says what is wrong by its code
+ * Every hole a kind reports carries its code (C4), a text: a word of the language's HoleCode, or of the library whose kind
+ * raises it. A project raises a problem by its code, so a hole without one is a problem nobody could raise.
+ */
+export const HoleHasCode = requirement({
+  owner: "trame",
+  refines: [TrustedExtensions],
+  deps: { values: ValueTypes, counts: Counts },
+  body: ({ values, counts }) => (hole: CodedHole): boolean => values.isText(hole.code) && counts.any(hole.code),
+})
+
+/** Criteria of the code of a hole */
+export const HoleHasCodeCriteria = acceptance({
+  accepts: HoleHasCode,
+  owner: "trame",
+  criteria: (criterion) => {
+    criterion("A hole with its code keeps the law", () => HoleHasCode({ code: HoleCode.ownerMissing }))
+    criterion("A hole without a code breaks it", () => !HoleHasCode({}))
+    criterion("An empty code breaks it", () => !HoleHasCode({ code: "" }))
   },
 })
 

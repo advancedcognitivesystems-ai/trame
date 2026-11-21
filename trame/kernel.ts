@@ -230,7 +230,7 @@ export const KindName = {
   release: "release", rule: "rule", function: "function", stylesheet: "stylesheet", entry: "entry", catalog: "catalog",
   implementation: "implementation", package: "package", binding: "binding", environment: "environment", scenario: "scenario",
   delivery: "delivery", dataset: "dataset", role: "role", artifact: "artifact", check: "check", review: "review", shipment: "shipment",
-  obligation: "obligation", policy: "policy", quantity: "quantity", audience: "audience",
+  obligation: "obligation", policy: "policy", quantity: "quantity", audience: "audience", actor: "actor",
 } as const
 
 /** The views of the language, in the order documents list them within their group: named and placed like the kinds. */
@@ -342,6 +342,8 @@ export type PatchOf<T> = { [K in Exclude<keyof T, BrandKey>]?: PatchValue<T[K]> 
 
 export interface HoleSpec {
   severity: Severity
+  /** What is wrong, by its code (C4): a word of HoleCode, or of the library whose kind raises it. */
+  code: string
   what: string
   owner?: string
   effect?: string
@@ -350,9 +352,9 @@ export interface HoleSpec {
 }
 
 export const hole = {
-  blocking: (what: string, owner?: string, effect?: string): HoleSpec => ({ severity: Severity.blocking, what, owner, effect }),
-  error: (what: string, owner?: string, effect?: string): HoleSpec => ({ severity: Severity.error, what, owner, effect }),
-  warning: (what: string, owner?: string, effect?: string): HoleSpec => ({ severity: Severity.warning, what, owner, effect }),
+  blocking: (code: string, what: string, owner?: string, effect?: string): HoleSpec => ({ severity: Severity.blocking, code, what, owner, effect }),
+  error: (code: string, what: string, owner?: string, effect?: string): HoleSpec => ({ severity: Severity.error, code, what, owner, effect }),
+  warning: (code: string, what: string, owner?: string, effect?: string): HoleSpec => ({ severity: Severity.warning, code, what, owner, effect }),
   /** The same hole, put on another node. */
   on: (v: View, h: HoleSpec): HoleSpec => ({ ...h, on: v }),
 }
@@ -977,6 +979,10 @@ export interface KindInfo {
 /** A hole, an error, something to watch. */
 export interface Issue {
   severity: Severity
+  /** What is wrong, by its code (C4); an engine before g111 gives none. */
+  code?: string
+  /** The severity the language gave it, when the project's way of judging raised it (C4, since g112). */
+  raisedFrom?: Severity
   /** Where the problem comes from. */
   origin?: Origin
   what: string

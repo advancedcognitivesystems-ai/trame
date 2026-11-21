@@ -6,10 +6,10 @@
 
 ## Open issues
 
-| Severity | What | Where | Owner | Consequence |
-|---|---|---|---|---|
-| warning | Nothing identifies it yet (C7): whoever reaches its 2 entry points calls as one of it | [Drivers](#Drivers) | karim |  |
-| warning | Drivers ships, and nothing proves it (Who calls, identified) | [Drivers](#Drivers) | karim |  |
+| Severity | Code | What | Where | Owner | Consequence |
+|---|---|---|---|---|---|
+| warning | `audience-not-identified` | Nothing identifies it yet (C7): whoever reaches its 2 entry points calls as one of it | [Drivers](#Drivers) | karim |  |
+| warning | `shipment-gap` | Drivers ships, and nothing proves it (Who calls, identified) | [Drivers](#Drivers) | karim |  |
 
 ## Audience
 

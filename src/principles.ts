@@ -426,6 +426,25 @@ export const ShippedThroughTheGraph = adr({
 })
 
 /**
+ * Who acts is declared
+ * The people, the agents and the machines that act in a project are actors of its graph (kind actor, in the language):
+ * a person, a team of actors, an agent that acts for people, a machine. An owner, a role's people, the evidence given
+ * name one of them by its handle; a name nobody declares is an error.
+ */
+export const ActorsDeclared = adr({
+  owner: "trame",
+  context: "An owner, a role's people and the evidence given were texts nobody checked: a typo made a new person, a team (trame) was no one in particular, and nothing could say that Claude acts for ghalaax, or a runner for whoever started it (C4).",
+  consequences: "The language holds the kind actor (its handle, what it is, a team's members, its identities elsewhere). The compiler checks each owner of the project's nodes against the actors its graph declares, its own and its libraries' (owner-undeclared); a role checks its people (person-undeclared); an actor declared twice must say the same thing (actor-declared-twice). A project that declares none is told once (actors-undeclared). Trame's repository declares its people once, in the library team, which every project of it imports; trame init declares whoever starts a project. Evidence given on someone's behalf comes next.",
+  rejected: {
+    "Composing: a vocabulary of the people": "a word has no members, no identity elsewhere, and cannot say for whom it acts",
+    "Composing: the people of a role": "a role says who may sign a kind of evidence; who owns a node is not a role, and a team is not a list of signatures",
+    "Owners as edges to actors": "every node of every project would change its owner field at once; a text checked against the actors says the same",
+  },
+  serves: [ExecutableSpecification],
+  appliedBy: [Compiler, Init],
+})
+
+/**
  * The words are in catalogs
  * What a part of the product says to people, in a terminal or a document, is written in a message catalog, in the
  * decided language; code calls its messages by name.

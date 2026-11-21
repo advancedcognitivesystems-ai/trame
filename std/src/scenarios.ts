@@ -16,6 +16,8 @@ import { Strategy } from "./patterns"
 import { Commands, Effects } from "./effects"
 import { Counts } from "./algebra"
 import { RepositoryApi, RepositoryKept, RepositoryInMemory, RepositoryCompared } from "./repository"
+import { Hardening, AsTheLanguageSays, EveryWarning } from "./judgment"
+import { HoleCode, Severity } from "#trame/kernel"
 import type { RepositorySettings, RepositoryState } from "./repository"
 
 // What the library offers to scenarios is code like the rest: its realizations kept in memory are played here, against
@@ -39,6 +41,38 @@ export const InMemory = binding({
   follows: [Strategy],
   serves: [RealizedOnce],
   context: "A realization kept in memory is what a project's scenarios run in place of the device: it must keep its port's promise.",
+})
+
+/**
+ * Judged as the language says
+ * Where the library's build evaluates, it raises nothing: each problem as the language judges it.
+ */
+export const LanguageJudgment = binding({
+  owner: "trame",
+  chooses: [AsTheLanguageSays],
+  environments: [Test],
+  follows: [Strategy],
+  serves: [RealizedOnce],
+  context: "The library raises nothing the language does not: its warnings are points to watch, as in any project that says nothing.",
+})
+
+/**
+ * Strict
+ * Where a scenario plays the strict judgment: every warning an error.
+ */
+export const Strict = environment({ owner: "trame" })
+
+/**
+ * Judged strictly
+ * In Strict, every warning is an error.
+ */
+export const StrictJudgment = binding({
+  owner: "trame",
+  chooses: [EveryWarning],
+  environments: [Strict],
+  follows: [Strategy],
+  serves: [RealizedOnce],
+  context: "A project that leaves nothing to watch chooses it; the library plays it here, through its port, as such a project would.",
 })
 
 /**
@@ -66,6 +100,8 @@ export const ScenarioChecks = catalog({
     commandsMade: () => "A command is made for each effect, from its text, which it keeps as it is",
     repositoryLeft: () => "A repository left by hand is read back as it was left, and differs from the settings where it does",
     repositoryApplied: () => "Settings applied are kept, and the repository read back holds them all, its pages when asked",
+    judgedAsTheLanguage: () => "As the language says, a warning stays a warning and an error an error",
+    judgedStrictly: () => "Strictly, a warning becomes an error, and an error and a blocking problem stay as they are",
   }),
 })
 
@@ -126,6 +162,37 @@ export const RepositoryInMemoryKeeps = scenario({
     const [applied] = kept.applied()
     check(checks.repositoryApplied(), failed === undefined && after !== undefined && after.pages === settings.pages &&
       counts.isEmpty(compared(settings, after)) && applied?.repository === name && counts.single(kept.applied()))
+  },
+})
+
+/**
+ * Judged as the language says
+ * Through its port where the library's build evaluates, a warning stays a warning, an error an error.
+ */
+export const JudgedAsTheLanguage = scenario({
+  owner: "trame",
+  verifies: [AsTheLanguageSays],
+  env: Test,
+  deps: { judge: Hardening, checks: ScenarioChecks },
+  body: ({ judge, checks }) => async (check) => {
+    check(checks.judgedAsTheLanguage(), judge.severityOf({ code: HoleCode.ownerMissing, severity: Severity.warning }) === Severity.warning &&
+      judge.severityOf({ code: HoleCode.literalInBody, severity: Severity.error }) === Severity.error)
+  },
+})
+
+/**
+ * Judged strictly
+ * Through its port in Strict, a warning becomes an error, an error and a blocking problem stay as they are.
+ */
+export const JudgedStrictly = scenario({
+  owner: "trame",
+  verifies: [EveryWarning],
+  env: Strict,
+  deps: { judge: Hardening, checks: ScenarioChecks },
+  body: ({ judge, checks }) => async (check) => {
+    check(checks.judgedStrictly(), judge.severityOf({ code: HoleCode.ownerMissing, severity: Severity.warning }) === Severity.error &&
+      judge.severityOf({ code: HoleCode.literalInBody, severity: Severity.error }) === Severity.error &&
+      judge.severityOf({ code: HoleCode.valueUndecided, severity: Severity.blocking }) === Severity.blocking)
   },
 })
 

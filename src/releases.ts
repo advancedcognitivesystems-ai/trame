@@ -1634,3 +1634,65 @@ export const G110 = release({
   archive: "b86153ccec9980c7",
   assembledBy: G109,
 })
+
+/**
+ * Generation 111
+ */
+export const G111 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g111",
+  date: "2026-11-20",
+  what: "C4, the codes: every problem the language and the engine raise has its code (HoleCode, a vocabulary of the prelude), carried by the holes, the diagnostics and the issues, shown in the documents and the terminal; a law plays that every hole has one",
+  fingerprint: "1d80bb2f140d4091",
+  language: "shared",
+  archive: "7d8c76a685022809",
+  differences: "differences.diff",
+  assembledBy: G110,
+})
+
+/**
+ * Generation 112
+ */
+export const G112 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g112",
+  date: "2026-11-20",
+  what: "C4, the judgment: a project judges harder than the language, never softer; the engine asks the realization of std's Hardening a binding of the project chooses where its build evaluates (JudgedHarder), keeps the harder severity with the one the language gave, and says when a way would lower one, answers no severity or fails",
+  fingerprint: "46bcf9ff280e1d8a",
+  language: "shared",
+  archive: "3dbc458ad3bb8f3f",
+  assembledBy: G111,
+})
+
+/**
+ * Generation 113
+ */
+export const G113 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g113",
+  date: "2026-11-20",
+  what: "C4, the actors: the language holds the kind actor (a person, a team, an agent, a machine; its handle, a team's members, its identities); the compiler checks each owner of the project's nodes against the actors the graph declares, a role its people; trame init declares whoever starts a project",
+  fingerprint: "a60ba2b9a14b062d",
+  language: "shared",
+  archive: "b0ead947077d2a4b",
+  differences: "differences.diff",
+  assembledBy: G112,
+})
+
+/**
+ * Generation 114
+ */
+export const G114 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g114",
+  date: "2026-11-21",
+  what: "A project's own name leads to its own sources (in the engine and the manifest): a library it imports may name it, as team names the ci that writes its workflow, so ci imports team instead of declaring the same actors again",
+  fingerprint: "f9147dfc45d61df4",
+  language: "shared",
+  archive: "b0ead947077d2a4b",
+  assembledBy: G113,
+})

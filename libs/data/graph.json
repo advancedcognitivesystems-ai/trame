@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-19",
+  "generated": "2026-11-21",
   "nodes": [
     {
       "id": "documents.Conforms",
@@ -156,7 +156,7 @@
       "id": "packages.ContinuousIntegration",
       "kind": "package",
       "title": "The library of continuous integration",
-      "source": "src/packages.ts:23",
+      "source": "src/packages.ts:25",
       "fields": {
         "owner": "trame",
         "packageName": "ci",
@@ -171,13 +171,28 @@
       "id": "packages.Language",
       "kind": "package",
       "title": "Trame",
-      "source": "src/packages.ts:10",
+      "source": "src/packages.ts:12",
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "110",
+        "version": "114",
         "joins": "language",
-        "at": "../../generations/g110"
+        "at": "../../generations/g114"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "packages.People",
+      "kind": "package",
+      "title": "The people of the repository",
+      "source": "src/packages.ts:34",
+      "fields": {
+        "owner": "trame",
+        "packageName": "team",
+        "version": "0.1.0",
+        "joins": "library",
+        "from": "path",
+        "at": "../team/releases/0.1.0"
       },
       "diagnostics": []
     },
@@ -185,13 +200,13 @@
       "id": "packages.stdLibrary",
       "kind": "package",
       "title": "std",
-      "source": "src/packages.ts:16",
+      "source": "src/packages.ts:18",
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.20.0",
+        "version": "0.21.0",
         "joins": "library",
-        "at": "../../std/releases/0.20.0"
+        "at": "../../std/releases/0.21.0"
       },
       "diagnostics": []
     },
@@ -517,6 +532,21 @@
         "date": "2026-11-18",
         "what": "an entity says whose its records are (ownedBy: a person, a tenant), which the entry points that reach them answer for",
         "fingerprint": "d39bb7725d8ecba3",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "releases.R0_5_0",
+      "kind": "release",
+      "title": "Version 0.5.0",
+      "source": "src/releases.ts:77",
+      "fields": {
+        "owner": "trame",
+        "version": "0.5.0",
+        "date": "2026-11-20",
+        "what": "Each problem an entity raises has its code (C4): entity-reseeded, entity-key-unknown, entity-field-without-type, entity-owner-field-unknown, entity-migration-undecided; the language's holes now name their code first",
+        "fingerprint": "a3754897cae809d3",
         "language": "shared"
       },
       "diagnostics": []
@@ -950,6 +980,7 @@
           "obligations.MigratedCriteria",
           "packages.ContinuousIntegration",
           "packages.Language",
+          "packages.People",
           "packages.stdLibrary",
           "principles.DescribedOnce",
           "product.DataDescribedOnce",
@@ -1060,7 +1091,7 @@
       "kind": "artifact",
       "title": "The pull requests' workflow",
       "source": "src/sdlc.ts:86",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "../../.github/workflows/data-pull-request.yml",
@@ -1070,7 +1101,9 @@
         "path": "../../.github/workflows/data-pull-request.yml",
         "code": "c605982c"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+      ]
     },
     {
       "id": "sdlc.RequirementsServed",
@@ -1087,7 +1120,7 @@
       "kind": "shipment",
       "title": "The files that run it elsewhere",
       "source": "src/sdlc.ts:100",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "repository"
@@ -1100,7 +1133,9 @@
           "sdlc.PullRequestWorkflow"
         ]
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: To ship: The pull requests' workflow is unknown"
+      ]
     },
     {
       "id": "sdlc.TheLibrary",
@@ -1115,7 +1150,7 @@
       },
       "result": {
         "path": "src",
-        "code": "1911c1c6"
+        "code": "7db66331"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -2261,6 +2296,11 @@
       "kind": "serves"
     },
     {
+      "from": "packages.People",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
       "from": "packages.stdLibrary",
       "to": "product.DataDescribedOnce",
       "kind": "serves"
@@ -2582,6 +2622,11 @@
     },
     {
       "from": "releases.R0_4_0",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_5_0",
       "to": "product.DataDescribedOnce",
       "kind": "serves"
     },

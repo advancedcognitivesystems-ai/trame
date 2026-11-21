@@ -1,6 +1,6 @@
 import {
   defineKind, field, optional, edge, optionalEdge, hole, doc, keysOf, edgesOf, Status, KindName, EdgeName, LanguageEffect,
-  type AnyNode, type Node, type Provides, type HasDeps, type Provided, type ProvidedBy, type FileBody, type Signature, type Constant, type Values, type Declares, ChangeWay
+  type AnyNode, type Node, type Provides, type HasDeps, type Provided, type ProvidedBy, type FileBody, type Signature, type Constant, type Values, type Declares, ChangeWay, HoleCode
 } from "../trame/kernel"
 import { verifiedStatus } from "./scenario"
 import words from "./words"
@@ -42,12 +42,12 @@ const kind = defineKind({
     const { counts, texts, lists } = g.lib
     return [
       self.synchronous === true && self.effects.includes(LanguageEffect.asynchronous) &&
-        hole.error(say.functionMustStaySynchronousButDependsOn()),
+        hole.error(HoleCode.functionNotSynchronous, say.functionMustStaySynchronousButDependsOn()),
       // A realization does no more than the ports it implements promise.
       ...self.implements.map((port) => {
         const promised = new Set(port.effects)
         const extra = self.effects.filter((e) => !promised.has(e))
-        return counts.any(extra) && hole.error(say.functionDoesMoreThanPromises(port.title, texts.concat(lists.enumeration(extra))))
+        return counts.any(extra) && hole.error(HoleCode.realizationExceedsPort, say.functionDoesMoreThanPromises(port.title, texts.concat(lists.enumeration(extra))))
       }),
     ]
   },

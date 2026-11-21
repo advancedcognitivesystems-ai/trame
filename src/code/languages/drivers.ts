@@ -3,7 +3,7 @@
 // loader. A style sheet is only read and checked. A language without a driver cannot be checked. What a writer writes is read back before it is written: it must
 // follow the grammar, and the values written in it must come back.
 
-import { LiteralKind, Severity } from "../../../trame/kernel"
+import { HoleCode, LiteralKind, Severity } from "../../../trame/kernel"
 import type { ProvidedBy } from "../../../trame/kernel"
 import type { FileReading, ModuleLoader, Paths } from "../../architecture"
 import type { GnuPositions } from "#std/text"
@@ -94,7 +94,7 @@ const body = async (deps: Deps) => {
     language: graph.tag,
     extensions: graph.extensions,
     check(source, ctx) {
-      if (!reading.existsSync(source.file)) return [{ severity: Severity.error, what: messages.bodyNotFound(paths.relative(ctx.root, source.file)) }]
+      if (!reading.existsSync(source.file)) return [{ severity: Severity.error, code: HoleCode.bodyNotFound, what: messages.bodyNotFound(paths.relative(ctx.root, source.file)) }]
       return checks.check(reader.readSource(graph, source), { language: graph.name, ambient: ctx.ambient, entry: !source.inline })
     },
     read: (source) => reader.readSource(graph, source),
@@ -111,7 +111,7 @@ const body = async (deps: Deps) => {
     extensions: terraform.extensions,
     check(source, ctx) {
       const file = moduleFile(source.file)
-      if (!reading.existsSync(file)) return [{ severity: Severity.error, what: messages.moduleNotFound(paths.relative(ctx.root, source.file)) }]
+      if (!reading.existsSync(file)) return [{ severity: Severity.error, code: HoleCode.moduleNotFound, what: messages.moduleNotFound(paths.relative(ctx.root, source.file)) }]
       const read = reader.readSource(terraform, { ...source, file })
       return [...checks.check(read, { language: terraform.name, ambient: ctx.ambient, entry: false }), ...checks.parameters(read, ctx.deps)]
     },
@@ -125,7 +125,7 @@ const body = async (deps: Deps) => {
     language: sheets.tag,
     extensions: sheets.extensions,
     check(source, ctx) {
-      if (!reading.existsSync(source.file)) return [{ severity: Severity.error, what: messages.bodyNotFound(paths.relative(ctx.root, source.file)) }]
+      if (!reading.existsSync(source.file)) return [{ severity: Severity.error, code: HoleCode.bodyNotFound, what: messages.bodyNotFound(paths.relative(ctx.root, source.file)) }]
       return checks.check(reader.readSource(sheets, source), { language: sheets.name, ambient: ctx.ambient, entry: false })
     },
     read: (source) => reader.readSource(sheets, source),

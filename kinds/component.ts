@@ -1,6 +1,6 @@
 import {
   defineKind, field, edge, optionalEdge, hole, doc, keysOf, fieldsOf, KindName, EdgeName,
-  type AnyNode, type Graph, type Node, type HasDeps, type Provides, type View,
+  type AnyNode, type Graph, type Node, type HasDeps, type Provides, type View, HoleCode,
 } from "../trame/kernel"
 import { entryKind, type Trigger, type Handler } from "./entry-point"
 import words from "./words"
@@ -50,7 +50,7 @@ const kind = defineKind({
     // The same error in several environments is said once.
     const byError = new Map<string, Set<string>>()
     for (const env of envs) for (const e of g.plan(needed, env).errors) byError.set(e, (byError.get(e) ?? new Set()).add(env.title))
-    return [...byError].map(([e, where]) => hole.blocking(say.componentCannotBeWiredIn(texts.concat(lists.enumeration([...where])), e), self.owner))
+    return [...byError].map(([e, where]) => hole.blocking(HoleCode.componentUnwirable, say.componentCannotBeWiredIn(texts.concat(lists.enumeration([...where])), e), self.owner))
   },
 
   async start(self, entries, ctx) {

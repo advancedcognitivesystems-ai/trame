@@ -7,15 +7,19 @@
     },
     "data": {
       "at": ".trame/data",
-      "version": "0.4.0"
+      "version": "0.5.0"
     },
     "geometry": {
       "at": ".trame/geometry",
       "version": "0.2.0"
     },
+    "team": {
+      "at": ".trame/team",
+      "version": "0.1.0"
+    },
     "std": {
       "at": ".trame/std",
-      "version": "0.20.0"
+      "version": "0.21.0"
     }
   },
   "engine": ".trame/trame"

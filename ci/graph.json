@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-19",
+  "generated": "2026-11-21",
   "nodes": [
     {
       "id": "github.GitHubActions",
@@ -768,14 +768,29 @@
       "id": "packages.Language",
       "kind": "package",
       "title": "Trame",
-      "source": "src/packages.ts:11",
+      "source": "src/packages.ts:13",
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "110",
+        "version": "114",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g110"
+        "at": "../generations/g114"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "packages.People",
+      "kind": "package",
+      "title": "The people of the repository",
+      "source": "src/packages.ts:24",
+      "fields": {
+        "owner": "trame",
+        "packageName": "team",
+        "version": "0.1.0",
+        "joins": "library",
+        "from": "path",
+        "at": "../libs/team/releases/0.1.0"
       },
       "diagnostics": []
     },
@@ -909,7 +924,7 @@
       "kind": "shipment",
       "title": "The next version",
       "source": "src/sdlc.ts:26",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "version"
@@ -926,6 +941,7 @@
           "github.PinnedActions",
           "npm.Npm",
           "packages.Language",
+          "packages.People",
           "product.OneWriterPerPlace",
           "product.RunsElsewhere",
           "sdlc.NextVersion",
@@ -938,7 +954,9 @@
           "yaml.YamlDocument"
         ]
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: To ship: The library of writers is unknown"
+      ]
     },
     {
       "id": "sdlc.PullRequestsOnGitHub",
@@ -976,7 +994,7 @@
       "kind": "artifact",
       "title": "The pull requests' workflow",
       "source": "src/sdlc.ts:54",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "../.github/workflows/ci-pull-request.yml",
@@ -986,14 +1004,16 @@
         "path": "../.github/workflows/ci-pull-request.yml",
         "code": "b0ccd0f6"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+      ]
     },
     {
       "id": "sdlc.RunnersWritten",
       "kind": "shipment",
       "title": "The files that run it elsewhere",
       "source": "src/sdlc.ts:68",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "repository"
@@ -1007,14 +1027,16 @@
           "github.GitHubWorkflow"
         ]
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: To ship: The pull requests' workflow is unknown"
+      ]
     },
     {
       "id": "sdlc.TheLibrary",
       "kind": "artifact",
       "title": "The library of writers",
       "source": "src/sdlc.ts:19",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "src",
@@ -1022,9 +1044,11 @@
       },
       "result": {
         "path": "src",
-        "code": "e2070174"
+        "code": "29140c93"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+      ]
     },
     {
       "id": "shell.BashScripts",
@@ -1678,6 +1702,11 @@
     },
     {
       "from": "packages.Language",
+      "to": "product.RunsElsewhere",
+      "kind": "serves"
+    },
+    {
+      "from": "packages.People",
       "to": "product.RunsElsewhere",
       "kind": "serves"
     },

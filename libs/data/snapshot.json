@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-19",
+  "at": "2026-11-21",
   "nodes": [
     {
       "id": "documents.Conforms",
@@ -144,9 +144,22 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "110",
+        "version": "114",
         "joins": "language",
-        "at": "../../generations/g110"
+        "at": "../../generations/g114"
+      }
+    },
+    {
+      "id": "packages.People",
+      "kind": "package",
+      "title": "The people of the repository",
+      "fields": {
+        "owner": "trame",
+        "packageName": "team",
+        "version": "0.1.0",
+        "joins": "library",
+        "from": "path",
+        "at": "../team/releases/0.1.0"
       }
     },
     {
@@ -156,9 +169,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.20.0",
+        "version": "0.21.0",
         "joins": "library",
-        "at": "../../std/releases/0.20.0"
+        "at": "../../std/releases/0.21.0"
       }
     },
     {
@@ -448,6 +461,19 @@
         "date": "2026-11-18",
         "what": "an entity says whose its records are (ownedBy: a person, a tenant), which the entry points that reach them answer for",
         "fingerprint": "d39bb7725d8ecba3",
+        "language": "shared"
+      }
+    },
+    {
+      "id": "releases.R0_5_0",
+      "kind": "release",
+      "title": "Version 0.5.0",
+      "fields": {
+        "owner": "trame",
+        "version": "0.5.0",
+        "date": "2026-11-20",
+        "what": "Each problem an entity raises has its code (C4): entity-reseeded, entity-key-unknown, entity-field-without-type, entity-owner-field-unknown, entity-migration-undecided; the language's holes now name their code first",
+        "fingerprint": "a3754897cae809d3",
         "language": "shared"
       }
     },
@@ -779,7 +805,7 @@
       "id": "sdlc.PullRequestWorkflow",
       "kind": "artifact",
       "title": "The pull requests' workflow",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "../../.github/workflows/data-pull-request.yml",
@@ -798,7 +824,7 @@
       "id": "sdlc.RunnersWritten",
       "kind": "shipment",
       "title": "The files that run it elsewhere",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "repository"
@@ -1610,6 +1636,11 @@
       "kind": "serves"
     },
     {
+      "from": "packages.People",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
       "from": "packages.stdLibrary",
       "to": "product.DataDescribedOnce",
       "kind": "serves"
@@ -1901,6 +1932,11 @@
     },
     {
       "from": "releases.R0_4_0",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_5_0",
       "to": "product.DataDescribedOnce",
       "kind": "serves"
     },

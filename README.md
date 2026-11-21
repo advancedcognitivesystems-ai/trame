@@ -671,6 +671,20 @@ blocking hole, says nothing held or violated without evidence, gives the same an
 whatever their order and returns only the claimants; a view declares itself completely, answers on the graph and
 writes only the intermediate format. Since g43 each law is a requirement of the module `laws`, refining the goal "Kinds
 and views that can be trusted": a pure rule, with its acceptance criteria played on cases chosen by hand at every build.
+Since g111 every hole also says what is wrong by its code (`HoleHasCode`): the words of the prelude's `HoleCode`
+(`value-undecided`, `literal-in-body`, `check-stale`…), or of a library whose kind raises its own (data's `entity-…`).
+The documents show it beside each issue, the terminal too: it is the name by which a project raises a problem (C4).
+Since g112 a project judges harder than the language, never softer: a binding chooses, where its build evaluates, a
+realization of std's port `Hardening` (`AsTheLanguageSays`, `EveryWarning`, or its own built on `Raising`: the example
+raises a missing owner, a requirement without criteria and an ADR nothing applies to errors); the engine asks it for
+each of the project's problems and keeps the harder severity, said with the one the language gave. A way that would
+lower a problem is itself an error: what the language guarantees, no project hides.
+Since g113 who acts is declared too: the kind `actor` (a person, a team and its members, an agent, a machine, each by
+its handle and its identities elsewhere) is in the language, and an owner, or a role's person, that no actor of the
+graph declares is an error. Trame's repository declares its people once, in the library `team` (the team `trame`,
+ghalaax, Claude, the runner of GitHub Actions), which every project of the repository imports, ci included though team
+writes its workflow with ci: each imports the other at a frozen version, a project's own name leading to its own
+sources (g114); the example declares its own.
 The functions `Laws` and `Views` receive the rules as dependencies: they draw nodes at random, call the kind in a
 sandbox, catch what it throws, and ask the rule whether what they saw keeps the law (decision "The laws are
 requirements").
@@ -1308,6 +1322,11 @@ declarations with), the types of Node below 23 (they follow the Node.js that run
   proposal.
 - **Data**: a driver for PostgreSQL (the example's production database is described, provisioned by Terraform, not
   connected); a content update downloaded by the app, checked by the same rules.
+- **Who acts** (C4, in progress): every problem has its code (g111), a project raises what it chooses by a strategy
+  (g112, std 0.21.0: a port of std chosen by a binding, never lowering what the language judges), and the actors are
+  declared (g113: the kind actor; the library team declares the repository's people; an owner nobody declares is an
+  error); then evidence given on behalf of someone (Claude for ghalaax, a runner for whoever started it), the delegation
+  dated and limited to roles.
 - **Access**: the foundations are in place (C6, g107: each entry point says its audience, the identity owned data asks
   is checked in the graph). Then, after C4, a library of access (C7): identities (accounts, or a remote provider of
   which the graph has only the client), RBAC, ReBAC and ABAC as composable strategies, the scope each body receives

@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 19 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 21 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Standard library · Access
 
@@ -244,6 +244,54 @@ Standard · `Svg`
 - Address: https://www.w3.org/TR/SVG2/
 - Constants: { svg: { value: svg, meaning: A drawing, inline in the page (§ 5.1.2) }, group: { value: g, meaning: A group of shapes that share their painting (§ 5.2.1) }, rect: { value: rect, meaning: A rectangle (§ 10.2) }, path: { value: path, meaning: A path (§ 9.3) }, width: { value: width, meaning: The width of the drawing or of a rectangle }, height: { value: height, meaning: Its height }, viewBox: { value: viewBox, meaning: The coordinates the drawing is made in: x, y, width, height (§ 8.2) }, x: { value: x, meaning: The left of a rectangle }, y: { value: y, meaning: Its top }, rx: { value: rx, meaning: The radius of a rectangle's corners }, d: { value: d, meaning: The data of a path: its commands }, fill: { value: fill, meaning: What paints the inside of a shape (§ 13.2) }, stroke: { value: stroke, meaning: What paints its outline (§ 13.3) }, strokeWidth: { value: stroke-width, meaning: The width of the outline }, strokeLinecap: { value: stroke-linecap, meaning: The shape of the ends of an open line }, round: { value: round, meaning: Round ends }, none: { value: none, meaning: Paints nothing }, separator: { value:  , meaning: Separates the numbers of a list (§ 4.3: whitespace) }, text: { value: text, meaning: A line of text (§ 11.2) }, line: { value: line, meaning: A segment (§ 10.5) }, circle: { value: circle, meaning: A circle (§ 10.3) }, title: { value: title, meaning: What a shape is, said to whoever points at it (§ 5.9) }, defs: { value: defs, meaning: Definitions that other shapes refer to (§ 5.3) }, marker: { value: marker, meaning: A shape drawn at the end of a path: an arrowhead (§ 13.7) }, cx: { value: cx, meaning: The centre of a circle, across }, cy: { value: cy, meaning: Down }, r: { value: r, meaning: Its radius }, x1: { value: x1, meaning: The start of a segment, across }, y1: { value: y1, meaning: Down }, x2: { value: x2, meaning: Its end, across }, y2: { value: y2, meaning: Down }, transform: { value: transform, meaning: Moves a group (§ 8.5) }, translate: { value: translate, meaning: The move of a group: across, then down }, textAnchor: { value: text-anchor, meaning: Which point of a text its position gives (§ 11.10) }, middle: { value: middle, meaning: The middle of the text }, markerEnd: { value: marker-end, meaning: The marker drawn at the end of a path }, refX: { value: refX, meaning: The point of a marker placed on the end of the path, across }, refY: { value: refY, meaning: Down }, markerWidth: { value: markerWidth, meaning: The width a marker is drawn at }, markerHeight: { value: markerHeight, meaning: Its height }, orient: { value: orient, meaning: How a marker turns with the path }, autoStartReverse: { value: auto-start-reverse, meaning: Along the path, and the other way at its start }, strokeDasharray: { value: stroke-dasharray, meaning: The dashes of an outline }, opacity: { value: opacity, meaning: How opaque a shape is }, reference: { value: url(#, meaning: Opens a reference to an element of the page by its identifier (a marker) }, referenceEnd: { value: ), meaning: Closes it }, openArguments: { value: (, meaning: Opens the numbers of a transform }, closeArguments: { value: ), meaning: Closes them }, comma: { value: ,, meaning: Separates two numbers of a pair }, namespace: { value: http://www.w3.org/2000/svg, meaning: The namespace of SVG's elements: a script creates them in it (§ 1.3) } }
 - Serves: A published value is cited, not copied
+
+## Standard library · Judgment
+
+### Raising
+
+Algebraic structure · `Raising` · **held**
+
+- Owner: trame
+- Laws: { says: Each way raises a problem or leaves it, never lowers it, holds: (rule) }, { says: As the language says changes nothing, holds: (rule) }, { says: Every warning becomes an error; an error and a blocking problem stay as they are, holds: (rule) }, { says: Raising codes makes the warnings of those codes errors, and leaves the others, holds: (rule) }, { says: The harder of two severities is one of them, at least as serious as both, holds: (rule) }
+- Serves: Shared operations instead of literals
+
+### A project judges harder than the language, never softer
+
+Architecture decision · `HarderNeverSofter` · **held**
+
+- Decided by: trame
+- Context: The language judges every project alike; a project that wants no missing owner, or no warning at all, has no way to say so, and a way to lower a problem would let it hide what the language guarantees.
+- Consequences: A project chooses a realization of Hardening by a binding where its build evaluates: AsTheLanguageSays, EveryWarning, or one of its own built on Raising (the codes it lists in a decision of its own); the engine keeps the harder of the two severities, and a way that would lower one is an error of the project (hardening-lowers).
+- Rejected: A decision the engine reads, one way only, the codes listed; a project that wants every warning raised, or to raise by kind, would wait for the engine; A rule of std, Raised, a broken rule is one error for all, not each problem raised where it is, with its owner
+- Serves: Ports of the platform, realized once
+- Applied by: Raising, Hardening, As the language says, Every warning an error
+
+### Hardening
+
+Port · `Hardening`
+
+- Owner: trame
+- Declared effects: 
+
+### As the language says
+
+Function · `AsTheLanguageSays` · **held**
+
+- Owner: trame
+- Parameters: { raising: judgment.Raising }
+- Serves: Ports of the platform, realized once
+- Implements: Hardening
+- Depends on: Raising
+
+### Every warning an error
+
+Function · `EveryWarning` · **held**
+
+- Owner: trame
+- Parameters: { raising: judgment.Raising }
+- Serves: Ports of the platform, realized once
+- Implements: Hardening
+- Depends on: Raising
 
 ## Standard library · Measures
 
@@ -501,11 +549,23 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 110
+- Version: 114
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../generations/g110
+- Its path: ../generations/g114
 - Serves: Ports of the platform, realized once
+
+### The people of the repository
+
+Package · `People`
+
+- Owner: trame
+- Name: team
+- Version: 0.1.0
+- How it joins the graph: library
+- Where it comes from: path
+- Its path: ../libs/team/releases/0.1.0
+- Serves: Versions that hold
 
 ## Standard library · Design patterns
 
@@ -943,6 +1003,18 @@ Release · `R0_20_0`
 - Language: shared
 - Serves: A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again, Versions that hold
 
+### Version 0.21.0
+
+Release · `R0_21_0`
+
+- Released by: trame
+- Version: 0.21.0
+- Released on: 2026-11-20
+- What changes: How a project judges harder than the language, never softer (C4): the port Hardening, the structure Raising and its laws, the strategies AsTheLanguageSays and EveryWarning chosen by a binding where a project's build evaluates
+- Fingerprint: 11af7c0453654031
+- Language: shared
+- Serves: A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again, Versions that hold
+
 ### Version 0.3.0
 
 Release · `R0_3_0`
@@ -1228,6 +1300,34 @@ Technical choice · `InMemory` · **held**
 - Follows: Strategy
 - Serves: Ports of the platform, realized once
 
+### Judged as the language says
+
+Technical choice · `LanguageJudgment` · **held**
+
+- Decided by: trame
+- Context: The library raises nothing the language does not: its warnings are points to watch, as in any project that says nothing.
+- Chooses: As the language says
+- In: Test
+- Follows: Strategy
+- Serves: Ports of the platform, realized once
+
+### Judged strictly
+
+Technical choice · `StrictJudgment` · **held**
+
+- Decided by: trame
+- Context: A project that leaves nothing to watch chooses it; the library plays it here, through its port, as such a project would.
+- Chooses: Every warning an error
+- In: Strict
+- Follows: Strategy
+- Serves: Ports of the platform, realized once
+
+### Strict
+
+Environment · `Strict`
+
+- Owner: trame
+
 ### Test
 
 Environment · `Test`
@@ -1265,6 +1365,26 @@ Scenario · `DrawsKeepTheirPromise` · **held**
 - In: Test
 - Depends on: Seeded draws, What the library's scenarios are given, Counts, What the library's scenarios check
 
+### Judged as the language says
+
+Scenario · `JudgedAsTheLanguage` · **held**
+
+- Owner: trame
+- Parameters: { judge: judgment.Hardening, checks: scenarios.ScenarioChecks }
+- Verifies: As the language says
+- In: Test
+- Depends on: Hardening, What the library's scenarios check
+
+### Judged strictly
+
+Scenario · `JudgedStrictly` · **held**
+
+- Owner: trame
+- Parameters: { judge: judgment.Hardening, checks: scenarios.ScenarioChecks }
+- Verifies: Every warning an error
+- In: Strict
+- Depends on: Hardening, What the library's scenarios check
+
 ### A repository kept in memory
 
 Scenario · `RepositoryInMemoryKeeps` · **held**
@@ -1297,7 +1417,7 @@ Decision · `PullRequestsOnGitHub`
 
 ### The pull requests' workflow
 
-Artefact · `PullRequestWorkflow` · **held**
+Artefact · `PullRequestWorkflow` · **unknown**
 
 - Owner: trame
 - Path: ../.github/workflows/std-pull-request.yml
@@ -1324,7 +1444,7 @@ Shipment · `NextVersion` · **unknown**
 
 ### The files that run it elsewhere
 
-Shipment · `RunnersWritten` · **held**
+Shipment · `RunnersWritten` · **unknown**
 
 - Owner: trame
 - Target: repository

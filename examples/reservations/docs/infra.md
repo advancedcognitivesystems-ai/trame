@@ -10,7 +10,7 @@
 
 ### Backup retention
 
-`BackupRetention` · `src/infra.ts:69` · published
+`BackupRetention` · `src/infra.ts:70` · published
 
 In days.
 
@@ -24,7 +24,7 @@ In days.
 
 ### Status of a cancelled reservation
 
-`CancelledStatus` · `src/infra.ts:80` · published
+`CancelledStatus` · `src/infra.ts:81` · published
 
 As the reservations table stores it.
 
@@ -37,7 +37,7 @@ As the reservations table stores it.
 
 ### Production database address
 
-`DatabaseAddress` · `src/infra.ts:63` · published
+`DatabaseAddress` · `src/infra.ts:64` · published
 
 Where the service finds the database: the name of the database stands for each %s (as Terraform's format writes it), on the provider's internal network, on Postgres's port.
 
@@ -50,7 +50,7 @@ Where the service finds the database: the name of the database stands for each %
 
 ### Production database name
 
-`DatabaseName` · `src/infra.ts:51` · published
+`DatabaseName` · `src/infra.ts:52` · published
 
 - Value: reservations
 
@@ -61,7 +61,7 @@ Where the service finds the database: the name of the database stands for each %
 
 ### Production database size
 
-`DatabaseSize` · `src/infra.ts:56` · published
+`DatabaseSize` · `src/infra.ts:57` · published
 
 | Case | Value |
 |---|---|
@@ -75,7 +75,7 @@ Where the service finds the database: the name of the database stands for each %
 
 ### Local database file
 
-`LocalDatabasePath` · `src/infra.ts:46` · published
+`LocalDatabasePath` · `src/infra.ts:47` · published
 
 - Value: .data/reservations.db
 
@@ -86,7 +86,7 @@ Where the service finds the database: the name of the database stands for each %
 
 ### Payment provider address
 
-`ProviderUrl` · `src/infra.ts:74` · published
+`ProviderUrl` · `src/infra.ts:75` · published
 
 - Value: https://payments.example.com/v1
 
@@ -97,7 +97,7 @@ Where the service finds the database: the name of the database stands for each %
 
 ### End of a response
 
-`ResponseEnding` · `src/infra.ts:92` · published
+`ResponseEnding` · `src/infra.ts:93` · published
 
 A JSON response ends with a line feed: a terminal shows what follows on its own line.
 
@@ -110,7 +110,7 @@ A JSON response ends with a line feed: a terminal shows what follows on its own 
 
 ### References of the simulated provider
 
-`SimulatedReference` · `src/infra.ts:86` · published
+`SimulatedReference` · `src/infra.ts:87` · published
 
 What the simulated provider answers for a refund: this prefix, then the number of the call.
 
@@ -123,7 +123,7 @@ What the simulated provider answers for a refund: this prefix, then the number o
 
 ### Test instant
 
-`TestInstant` · `src/infra.ts:41` · published
+`TestInstant` · `src/infra.ts:42` · published
 
 The time the scenarios see.
 
@@ -138,7 +138,7 @@ The time the scenarios see.
 
 ### Cancellations as records
 
-`CancellationRecords` · `src/infra.ts:135` · status: **held** · published
+`CancellationRecords` · `src/infra.ts:136` · status: **held** · published
 
 The refund of a reservation is a record of its own; recording it cancels the reservation in the same transaction.
 
@@ -154,7 +154,7 @@ The refund of a reservation is a record of its own; recording it cancels the res
 
 ### Reservations as records
 
-`ReservationRecords` · `src/infra.ts:124` · status: **held** · published
+`ReservationRecords` · `src/infra.ts:125` · status: **held** · published
 
 A reservation is found by its identifier among the records of its entity.
 
@@ -170,7 +170,7 @@ A reservation is found by its identifier among the records of its entity.
 
 ### Simulated payment provider
 
-`SimulatedPayment` · `src/infra.ts:174` · status: **held** · published
+`SimulatedPayment` · `src/infra.ts:175` · status: **held** · published
 
 Keeps every call in memory. A key seen before returns the same reference, without a new call.
 
@@ -185,7 +185,7 @@ Keeps every call in memory. A key seen before returns the same reference, withou
 
 ### Stopped clock
 
-`StoppedClock` · `src/infra.ts:163` · status: **held** · published
+`StoppedClock` · `src/infra.ts:164` · status: **held** · published
 
 Always the test instant.
 
@@ -202,7 +202,7 @@ Always the test instant.
 
 ### Local SQLite database
 
-`FileDatabase` · `src/infra.ts:100` · status: **unknown**
+`FileDatabase` · `src/infra.ts:101` · status: **unknown**
 
 In a file on the developer's machine, created on the first start.
 
@@ -217,7 +217,7 @@ In a file on the developer's machine, created on the first start.
 
 ### Real payment provider
 
-`HttpPayment` · `src/infra.ts:198` · status: **unknown**
+`HttpPayment` · `src/infra.ts:199` · status: **unknown**
 
 Over HTTPS, with the idempotency key in a header.
 
@@ -233,7 +233,7 @@ Over HTTPS, with the idempotency key in a header.
 
 ### Node HTTP server
 
-`NodeServer` · `src/infra.ts:208` · status: **unknown**
+`NodeServer` · `src/infra.ts:209` · status: **unknown**
 
 - Owner: karim
 - Parameters: `port` ← [HTTP port of the API](architecture.md#HttpPort) · `http` ← [HTTP](../../../std/docs/web.md#Http) · `mediaTypes` ← [Media types](../../../std/docs/web.md#MediaTypes) · `uri` ← [URI](../../../std/docs/web.md#Uri) · `routes` ← [Paths of entry points](standards.md#RouteSyntax) · `ending` ← [End of a response](#ResponseEnding) · `messages` ← [Messages of the API](messages.md#ApiMessages)
@@ -246,7 +246,7 @@ Over HTTPS, with the idempotency key in a header.
 
 ### Production Postgres database
 
-`PostgresDatabase` · `src/infra.ts:111` · status: **unknown**
+`PostgresDatabase` · `src/infra.ts:112` · status: **unknown**
 
 Provisioned by Terraform.
 
@@ -263,7 +263,7 @@ Provisioned by Terraform.
 
 ### System clock
 
-`SystemClock` · `src/infra.ts:153` · status: **unknown**
+`SystemClock` · `src/infra.ts:154` · status: **unknown**
 
 - Owner: karim
 - Body: inline, in the declaration
@@ -277,7 +277,7 @@ Provisioned by Terraform.
 
 ### Nothing to start with in production
 
-`EmptyInProduction` · `src/infra.ts:286` · status: **unknown**
+`EmptyInProduction` · `src/infra.ts:287` · status: **unknown**
 
 In [Production](#Production):
 
@@ -296,7 +296,7 @@ Context: In production, the reservations are the drivers': a table starts empty.
 
 ### The first reservations outside production
 
-`FirstReservationsOutsideProduction` · `src/infra.ts:275` · status: **held**
+`FirstReservationsOutsideProduction` · `src/infra.ts:276` · status: **held**
 
 In [Local](#Local), [Test](#Test):
 
@@ -315,7 +315,7 @@ Context: A scenario and a developer need reservations to read and cancel, and th
 
 ### Node's HTTP server
 
-`HttpServerChoice` · `src/infra.ts:333` · status: **unknown**
+`HttpServerChoice` · `src/infra.ts:334` · status: **unknown**
 
 In [Local](#Local), [Production](#Production), [Test](#Test):
 
@@ -338,7 +338,7 @@ Context: The API is a handful of routes: Node's server is enough, and the scenar
 
 ### What the service keeps, as tables
 
-`KeptAsTables` · `src/infra.ts:262` · status: **held**
+`KeptAsTables` · `src/infra.ts:263` · status: **held**
 
 Each entity the service keeps is a table, made ready by a deployment, migrated from the version the previous one kept and read back checked, by the library of data, whichever database answers.
 
@@ -365,7 +365,7 @@ Consequences: No statement is written by hand: the dialect writes them from the 
 
 ### A SQLite file on the developer's machine
 
-`LocalDatabase` · `src/infra.ts:234` · status: **unknown**
+`LocalDatabase` · `src/infra.ts:235` · status: **unknown**
 
 The database and its dialect, chosen together.
 
@@ -391,7 +391,7 @@ Context: A developer runs the service without installing a database server; the 
 
 ### Postgres in production
 
-`ProductionDatabase` · `src/infra.ts:247` · status: **unknown**
+`ProductionDatabase` · `src/infra.ts:248` · status: **unknown**
 
 The database and its dialect, chosen together.
 
@@ -419,7 +419,7 @@ Consequences: Provisioned by Terraform with the graph's values; its statements c
 
 ### The provider's API in production
 
-`ProviderApi` · `src/infra.ts:322` · status: **unknown**
+`ProviderApi` · `src/infra.ts:323` · status: **unknown**
 
 In [Production](#Production):
 
@@ -438,7 +438,7 @@ Context: Refunds go through the payment provider, over HTTPS, with an idempotenc
 
 ### The system clock elsewhere
 
-`RealClock` · `src/infra.ts:356` · status: **unknown**
+`RealClock` · `src/infra.ts:357` · status: **unknown**
 
 In [Local](#Local), [Production](#Production):
 
@@ -457,7 +457,7 @@ Context: Outside the scenarios, the fee is computed at the real instant.
 
 ### Reservations and cancellations as repositories over the records
 
-`RecordRepositories` · `src/infra.ts:297` · status: **held**
+`RecordRepositories` · `src/infra.ts:298` · status: **held**
 
 In [Local](#Local), [Production](#Production), [Test](#Test):
 
@@ -483,7 +483,7 @@ Consequences: The repositories hold no driver and write no SQL: they name the en
 
 ### A stopped clock in the scenarios
 
-`ScenarioClock` · `src/infra.ts:345` · status: **held**
+`ScenarioClock` · `src/infra.ts:346` · status: **held**
 
 In [Test](#Test):
 
@@ -502,7 +502,7 @@ Context: The cancellation fee depends on the time left before the start: a scena
 
 ### A SQLite database in memory for the scenarios
 
-`ScenarioDatabase` · `src/infra.ts:221` · status: **held**
+`ScenarioDatabase` · `src/infra.ts:222` · status: **held**
 
 The database and its dialect, chosen together.
 
@@ -528,7 +528,7 @@ Context: Every scenario starts from the initial reservations and leaves nothing 
 
 ### A simulated payment provider outside production
 
-`SimulatedProvider` · `src/infra.ts:310` · status: **held**
+`SimulatedProvider` · `src/infra.ts:311` · status: **held**
 
 In [Local](#Local), [Test](#Test):
 
@@ -553,7 +553,7 @@ Context: Refunds must be tried without money moving, and a scenario reads the ca
 
 ### Local
 
-`Local` · `src/infra.ts:28`
+`Local` · `src/infra.ts:29`
 
 A developer's machine: a database in a file, a simulated payment provider.
 
@@ -567,7 +567,7 @@ A developer's machine: a database in a file, a simulated payment provider.
 
 ### Production
 
-`Production` · `src/infra.ts:33`
+`Production` · `src/infra.ts:34`
 
 - Owner: karim
 - Technical choices: [Nothing to start with in production](#EmptyInProduction), [Node's HTTP server](#HttpServerChoice), [What the service keeps, as tables](#KeptAsTables), [Postgres in production](#ProductionDatabase), [The provider's API in production](#ProviderApi), [The system clock elsewhere](#RealClock), [Reservations and cancellations as repositories over the records](#RecordRepositories)
@@ -577,10 +577,11 @@ A developer's machine: a database in a file, a simulated payment provider.
 
 ### Test
 
-`Test` · `src/infra.ts:22`
+`Test` · `src/infra.ts:23`
 
-Where the scenarios run: a database in memory, a fixed time, a simulated payment provider.
+Where the scenarios run: a database in memory, a fixed time, a simulated payment provider. The build evaluates there too: the criteria, and the way the service judges its graph.
 
 - Owner: karim
-- Technical choices: [The first reservations outside production](#FirstReservationsOutsideProduction), [Node's HTTP server](#HttpServerChoice), [What the service keeps, as tables](#KeptAsTables), [Reservations and cancellations as repositories over the records](#RecordRepositories), [A stopped clock in the scenarios](#ScenarioClock), [A SQLite database in memory for the scenarios](#ScenarioDatabase), [A simulated payment provider outside production](#SimulatedProvider)
-- Scenarios: [Every reservation is refunded according to the rule](scenarios.md#ComplianceScenario), [Read a reservation](scenarios.md#ReadScenario), [A read never writes](scenarios.md#ReadsNeverWrite), [Cancelling twice refunds only once](scenarios.md#RepeatedCancellationScenario), [The storage is prepared](scenarios.md#StoragePrepared)
+- The build evaluates here: true
+- Technical choices: [The first reservations outside production](#FirstReservationsOutsideProduction), [Node's HTTP server](#HttpServerChoice), [What the service keeps, as tables](#KeptAsTables), [Reservations and cancellations as repositories over the records](#RecordRepositories), [A stopped clock in the scenarios](#ScenarioClock), [A SQLite database in memory for the scenarios](#ScenarioDatabase), [A simulated payment provider outside production](#SimulatedProvider), [How the service is judged](judgment.md#JudgedOurWay)
+- Scenarios: [The service's problems judged](judgment.md#OurJudgmentApplied), [Every reservation is refunded according to the rule](scenarios.md#ComplianceScenario), [Read a reservation](scenarios.md#ReadScenario), [A read never writes](scenarios.md#ReadsNeverWrite), [Cancelling twice refunds only once](scenarios.md#RepeatedCancellationScenario), [The storage is prepared](scenarios.md#StoragePrepared)

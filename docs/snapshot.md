@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 19 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 21 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Trame · Appearance
 
@@ -410,7 +410,7 @@ Environment · `Test`
 
 ### The page is assembled
 
-Architecture decision · `ThePageIsAssembled` · **unknown**
+Architecture decision · `ThePageIsAssembled` · **held**
 
 - Decided by: trame
 - Context: The page's script built by hand what it shared with the engine and wrote its values (classes, identifiers, the explorer's geometry) as literals the catalogue could not see: a change in the graph did not reach it.
@@ -421,7 +421,7 @@ Architecture decision · `ThePageIsAssembled` · **unknown**
 
 ### Explorer of a graph
 
-Function · `ExplorerFigures` · **unknown**
+Function · `ExplorerFigures` · **held**
 
 - Owner: trame
 - Parameters: { html: std/html.Html, svg: std/html.Svg, aria: std/html.Aria, css: std/html.Css, page: page.ThePage, markup: markup.DocumentMarkup, figures: markup.FigureMarkup, explorer: markup.ExplorerMarkup, drawing: appearance.ExplorerDrawing, element: html.HtmlElement, start: html.HtmlStartTag, empty: html.SelfClosingTag, path: html.PathData, declaration: html.CssDeclaration, escape: html.EscapedText, common: rendering.Common, words: messages.PageWords, messages: messages.RenderingMessages, punctuation: documents.Punctuation, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts }
@@ -430,7 +430,7 @@ Function · `ExplorerFigures` · **unknown**
 
 ### Show the graph
 
-Entry point · `ShowGraph` · **unknown**
+Entry point · `ShowGraph` · **held**
 
 - Owner: trame
 - Trigger: { type: load }
@@ -441,7 +441,7 @@ Entry point · `ShowGraph` · **unknown**
 
 ### Amendments sent to trame dev
 
-Implementation · `BrowserAmendments` · **unknown**
+Implementation · `BrowserAmendments` · **held**
 
 - Owner: trame
 - Parameters: { page: page.ThePage, service: engine.DevService, http: std/web.Http, media: std/web.MediaTypes }
@@ -450,7 +450,7 @@ Implementation · `BrowserAmendments` · **unknown**
 
 ### The browser's gzip
 
-Implementation · `BrowserDecompression` · **unknown**
+Implementation · `BrowserDecompression` · **held**
 
 - Owner: trame
 - Parameters: { packing: page.PackedGraph, ecma: std/ecmascript.EcmaScript }
@@ -459,7 +459,7 @@ Implementation · `BrowserDecompression` · **unknown**
 
 ### The globals of the page, and trame dev
 
-Implementation · `BrowserFeed` · **unknown**
+Implementation · `BrowserFeed` · **held**
 
 - Owner: trame
 - Parameters: { page: page.ThePage, service: engine.DevService, values: std/algebra.ValueTypes }
@@ -468,7 +468,7 @@ Implementation · `BrowserFeed` · **unknown**
 
 ### Local storage
 
-Implementation · `BrowserMemory` · **unknown**
+Implementation · `BrowserMemory` · **held**
 
 - Owner: trame
 - Parameters: { page: page.ThePage }
@@ -477,7 +477,7 @@ Implementation · `BrowserMemory` · **unknown**
 
 ### The browser's window
 
-Implementation · `BrowserWindow` · **unknown**
+Implementation · `BrowserWindow` · **held**
 
 - Owner: trame
 - Parameters: { motion: std/web.MediaQueries5, feature: html.MediaFeature, counts: std/algebra.Counts }
@@ -486,7 +486,7 @@ Implementation · `BrowserWindow` · **unknown**
 
 ### The browser runs the page
 
-Technical choice · `TheBrowserRunsThePage` · **unknown**
+Technical choice · `TheBrowserRunsThePage` · **held**
 
 - Decided by: trame
 - Context: The page's script took what it needed from the browser itself, here and there: the graph could not say what the page asks of the browser, nor try it elsewhere.
@@ -1026,10 +1026,10 @@ Entry point · `Init` · **held**
 
 - Owner: trame
 - Trigger: { type: command, name: init }
-- Parameters: { exitStatus: std/system.ExitStatus, preparation: commands.Preparation, layout: conventions.Layout, project: engine.Project, prelude: architecture.Prelude, start: conventions.ProjectStart, pin: generations.EnginePin, reading: architecture.FileReading, writing: architecture.FileWriting, paths: architecture.Paths, encodings: std/system.NodeEncodings, file: std/text.TextFile, json: conventions.JsonFormatting, language: typescript.TypeScript, syntax: typescript.TypeScriptSyntax, title: typescript.ModuleTitle, doc: typescript.DocBlock, exported: typescript.ExportDeclaration, constant: typescript.ConstDeclaration, call: typescript.Call, object: typescript.ObjectLiteral, property: typescript.Property, text: typescript.StringLiteral, imports: typescript.NamedImport, terminal: architecture.Terminal, messages: messages.CommandMessages, currentProcess: architecture.Process, events: std/system.NodeEvents, line: conventions.TrameCommands, texts: std/algebra.Texts, references: commands.ReferencesModule, names: conventions.LanguageNames, specifiers: std/system.NodeModuleSpecifiers }
+- Parameters: { exitStatus: std/system.ExitStatus, preparation: commands.Preparation, layout: conventions.Layout, project: engine.Project, prelude: architecture.Prelude, start: conventions.ProjectStart, pin: generations.EnginePin, reading: architecture.FileReading, writing: architecture.FileWriting, paths: architecture.Paths, encodings: std/system.NodeEncodings, file: std/text.TextFile, json: conventions.JsonFormatting, language: typescript.TypeScript, syntax: typescript.TypeScriptSyntax, title: typescript.ModuleTitle, doc: typescript.DocBlock, exported: typescript.ExportDeclaration, constant: typescript.ConstDeclaration, call: typescript.Call, object: typescript.ObjectLiteral, property: typescript.Property, text: typescript.StringLiteral, imports: typescript.NamedImport, terminal: architecture.Terminal, messages: messages.CommandMessages, currentProcess: architecture.Process, events: std/system.NodeEvents, line: conventions.TrameCommands, texts: std/algebra.Texts, references: commands.ReferencesModule, names: conventions.LanguageNames, specifiers: std/system.NodeModuleSpecifiers, member: typescript.MemberAccess, list: typescript.InlineArray }
 - Serves: A single source of truth
 - Part of: Trame on the command line
-- Depends on: Preparation, Project layout, Project, Prelude, How a project starts, The engine a project runs, File reading, File writing, Paths, JSON formatting, TypeScript, The syntax of the programs Trame writes, Title of a module, Documentation comment, Export, Constant, Call, Object, Property, Text, Import of names, Terminal, Messages of the commands, Process, Trame's commands, A module of references, The language's names
+- Depends on: Preparation, Project layout, Project, Prelude, How a project starts, The engine a project runs, File reading, File writing, Paths, JSON formatting, TypeScript, The syntax of the programs Trame writes, Title of a module, Documentation comment, Export, Constant, Call, Object, Property, Text, Import of names, Terminal, Messages of the commands, Process, Trame's commands, A module of references, The language's names, Property access, List on one line
 
 ### Plan
 
@@ -1270,7 +1270,7 @@ Decision · `PreludeApi`
 Decision · `ProjectStart`
 
 - Decided by: trame
-- Value: { module: product, goal: Purpose, goalKind: kinds/goal, owner: owner, references: packages, packageKind: kinds/package, packageFacade: pkg, language: Language, library: Library, guides: AGENTS.md, .claude/skills/trame/SKILL.md, pointer: CLAUDE.md, pointerText: @AGENTS.md }
+- Value: { module: product, goal: Purpose, goalKind: kinds/goal, owner: owner, actor: Owner, actorKind: kinds/actor, kernel: kernel, actorSorts: ActorSort, references: packages, packageKind: kinds/package, packageFacade: pkg, language: Language, library: Library, guides: AGENTS.md, .claude/skills/trame/SKILL.md, pointer: CLAUDE.md, pointerText: @AGENTS.md }
 - Rejected: An empty project, nothing would say what the project is for, and the first build would have no goal to link anything to; A template project to copy, a second project to keep in step with the language; what init writes is in the graph
 
 ### Names of steps
@@ -1470,9 +1470,9 @@ Function · `CompilationApi` · **held**
 Function · `Compiler` · **held**
 
 - Owner: trame
-- Parameters: { encodings: std/system.NodeEncodings, specifiers: std/system.NodeModuleSpecifiers, values: std/algebra.ValueTypes, layout: conventions.Layout, severityOrder: (rule), cycles: engine.Cycles, references: engine.References, positions: engine.Positions, loader: architecture.ModuleLoader, reading: architecture.FileReading, paths: architecture.Paths, analysis: engine.StaticAnalysis, project: engine.Project, graph: engine.GraphApi, wiring: engine.Wiring, drivers: languages.Drivers, prelude: architecture.Prelude, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, messages: messages.CompilerMessages, fingerprints: engine.Fingerprints, signatures: architecture.Signatures, engines: engine.EngineFingerprint, runs: architecture.KeptRuns, platform: std/effects.PlatformEffects, names: conventions.LanguageNames, packages: std/tooling.PackageSources }
+- Parameters: { encodings: std/system.NodeEncodings, specifiers: std/system.NodeModuleSpecifiers, values: std/algebra.ValueTypes, layout: conventions.Layout, severityOrder: (rule), cycles: engine.Cycles, references: engine.References, positions: engine.Positions, loader: architecture.ModuleLoader, reading: architecture.FileReading, paths: architecture.Paths, analysis: engine.StaticAnalysis, project: engine.Project, graph: engine.GraphApi, wiring: engine.Wiring, drivers: languages.Drivers, prelude: architecture.Prelude, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, messages: messages.CompilerMessages, fingerprints: engine.Fingerprints, signatures: architecture.Signatures, engines: engine.EngineFingerprint, runs: architecture.KeptRuns, platform: std/effects.PlatformEffects, names: conventions.LanguageNames, packages: std/tooling.PackageSources, judged: engine.JudgedHarder }
 - Serves: A specification that runs
-- Depends on: Project layout, Sort problems by severity, Cycles, References, Positions, Module loader, File reading, Paths, Static reading, Project, Graph, Wiring, Drivers, Prelude, Messages of the compiler, Fingerprints, Signatures, The fingerprint of an engine, Runs kept, The language's names
+- Depends on: Project layout, Sort problems by severity, Cycles, References, Positions, Module loader, File reading, Paths, Static reading, Project, Graph, Wiring, Drivers, Prelude, Messages of the compiler, Fingerprints, Signatures, The fingerprint of an engine, Runs kept, The language's names, Judged harder
 
 ### Cycles
 
@@ -1544,14 +1544,23 @@ Function · `GraphApi` · **held**
 - Serves: A specification that runs
 - Depends on: Prelude, Trame references, Messages of the compiler, Lists, Dates, Punctuation of documents, Positions, References, Settings of the documents, Pseudo-random generator, Values drawn by the laws of a structure, Project layout, TypeScript, Order of versions, Values with their units, Visible text, Fingerprints
 
+### Judged harder
+
+Function · `JudgedHarder` · **held**
+
+- Owner: trame
+- Parameters: { severityOrder: (rule), messages: messages.CompilerMessages }
+- Serves: A specification that runs
+- Depends on: Sort problems by severity, Messages of the compiler
+
 ### Laws
 
 Function · `Laws` · **held**
 
 - Owner: trame
-- Parameters: { kept: architecture.KeptResults, drivers: languages.Drivers, preludeApi: conventions.PreludeApi, specifiers: std/system.NodeModuleSpecifiers, layout: conventions.Layout, samples: product.SampleCount, claimSets: product.ClaimSets, generator: engine.Generator, owners: product.SampledOwners, sampled: product.SampledValues, iso: std/measures.Iso8601, references: engine.References, reading: architecture.FileReading, paths: architecture.Paths, project: engine.Project, graph: engine.GraphApi, prelude: architecture.Prelude, names: conventions.LanguageNames, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, messages: messages.LawMessages, declaration: (rule), answers: (rule), owned: (rule), evidence: (rule), same: (rule), orderFree: (rule), closed: (rule) }
+- Parameters: { kept: architecture.KeptResults, drivers: languages.Drivers, preludeApi: conventions.PreludeApi, specifiers: std/system.NodeModuleSpecifiers, layout: conventions.Layout, samples: product.SampleCount, claimSets: product.ClaimSets, generator: engine.Generator, owners: product.SampledOwners, sampled: product.SampledValues, iso: std/measures.Iso8601, references: engine.References, reading: architecture.FileReading, paths: architecture.Paths, project: engine.Project, graph: engine.GraphApi, prelude: architecture.Prelude, names: conventions.LanguageNames, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, messages: messages.LawMessages, declaration: (rule), answers: (rule), owned: (rule), coded: (rule), evidence: (rule), same: (rule), orderFree: (rule), closed: (rule) }
 - Serves: A specification that runs
-- Depends on: Results kept, Drivers, The prelude's public API, Project layout, Nodes drawn per kind, Claim sets, Pseudo-random generator, Owners drawn at random, Values drawn by the laws, References, File reading, Paths, Project, Graph, Prelude, The language's names, Messages of the laws, Complete declaration, Answers without crashing, A blocking hole has an owner, Without evidence, the status is unknown, Same input, same answer, The resolution does not depend on the order, The resolution returns only what it is given
+- Depends on: Results kept, Drivers, The prelude's public API, Project layout, Nodes drawn per kind, Claim sets, Pseudo-random generator, Owners drawn at random, Values drawn by the laws, References, File reading, Paths, Project, Graph, Prelude, The language's names, Messages of the laws, Complete declaration, Answers without crashing, A blocking hole has an owner, A hole says what is wrong by its code, Without evidence, the status is unknown, Same input, same answer, The resolution does not depend on the order, The resolution returns only what it is given
 
 ### Lock
 
@@ -2140,6 +2149,14 @@ Requirement · `CompleteViewDeclaration` · **held**
 - Owner: trame
 - Refines: Kinds and views that can be trusted
 
+### A hole says what is wrong by its code
+
+Requirement · `HoleHasCode` · **held**
+
+- Owner: trame
+- Parameters: { values: std/algebra.ValueTypes, counts: std/algebra.Counts }
+- Refines: Kinds and views that can be trusted
+
 ### Produces only the intermediate format
 
 Requirement · `IntermediateFormatOnly` · **held**
@@ -2205,6 +2222,13 @@ Acceptance criteria · `CompleteViewDeclarationCriteria` · **held**
 
 - Owner: trame
 - Accepts: Complete declaration of a view
+
+### Criteria of the code of a hole
+
+Acceptance criteria · `HoleHasCodeCriteria` · **held**
+
+- Owner: trame
+- Accepts: A hole says what is wrong by its code
 
 ### Criteria of the intermediate format
 
@@ -3009,16 +3033,28 @@ Package · `NodeTypes` · **held**
 - Because: the declarations follow the Node.js that runs the engine, version 22: those of a later Node would let the code use what this one does not have
 - What it may do: 
 
+### The people of the repository
+
+Package · `People`
+
+- Owner: trame
+- Name: team
+- Version: 0.1.0
+- How it joins the graph: library
+- Where it comes from: path
+- Its path: libs/team/releases/0.1.0
+- Serves: A single source of truth
+
 ### The standard library
 
 Package · `StandardLibrary`
 
 - Owner: trame
 - Name: std
-- Version: 0.20.0
+- Version: 0.21.0
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: std/releases/0.20.0
+- Its path: std/releases/0.21.0
 - Serves: A single source of truth
 
 ### tsx
@@ -3939,6 +3975,17 @@ Technical choice · `TsxRuns` · **held**
 
 ## Trame · Principles
 
+### Who acts is declared
+
+Architecture decision · `ActorsDeclared` · **held**
+
+- Decided by: trame
+- Context: An owner, a role's people and the evidence given were texts nobody checked: a typo made a new person, a team (trame) was no one in particular, and nothing could say that Claude acts for ghalaax, or a runner for whoever started it (C4).
+- Consequences: The language holds the kind actor (its handle, what it is, a team's members, its identities elsewhere). The compiler checks each owner of the project's nodes against the actors its graph declares, its own and its libraries' (owner-undeclared); a role checks its people (person-undeclared); an actor declared twice must say the same thing (actor-declared-twice). A project that declares none is told once (actors-undeclared). Trame's repository declares its people once, in the library team, which every project of it imports; trame init declares whoever starts a project. Evidence given on someone's behalf comes next.
+- Rejected: Composing: a vocabulary of the people, a word has no members, no identity elsewhere, and cannot say for whom it acts; Composing: the people of a role, a role says who may sign a kind of evidence; who owns a node is not a role, and a team is not a list of signatures; Owners as edges to actors, every node of every project would change its owner field at once; a text checked against the actors says the same
+- Serves: A specification that runs
+- Applied by: Compiler, Start a project
+
 ### A change to a node is a claim
 
 Architecture decision · `ChangesAreClaims` · **held**
@@ -4146,7 +4193,7 @@ Architecture decision · `PreludeLayer` · **held**
 
 ### A version ships through the graph
 
-Architecture decision · `ShippedThroughTheGraph` · **unknown**
+Architecture decision · `ShippedThroughTheGraph` · **held**
 
 - Decided by: trame
 - Context: Two products ship differently (a page placed where it is served, an engine frozen into a generation) and their pipelines lived in scripts and in their authors' heads: nothing said what had been checked, by whom, on which version, nor why a version could go.
@@ -4512,6 +4559,64 @@ Release · `G110`
 - Language archived: b86153ccec9980c7
 - Releases: Trame on the command line
 - Assembled by: Generation 109
+
+### Generation 111
+
+Release · `G111`
+
+- Released by: trame
+- Version: g111
+- Released on: 2026-11-20
+- What changes: C4, the codes: every problem the language and the engine raise has its code (HoleCode, a vocabulary of the prelude), carried by the holes, the diagnostics and the issues, shown in the documents and the terminal; a law plays that every hole has one
+- Fingerprint: 1d80bb2f140d4091
+- Language: shared
+- Language archived: 7d8c76a685022809
+- Accepted differences: differences.diff
+- Releases: Trame on the command line
+- Assembled by: Generation 110
+
+### Generation 112
+
+Release · `G112`
+
+- Released by: trame
+- Version: g112
+- Released on: 2026-11-20
+- What changes: C4, the judgment: a project judges harder than the language, never softer; the engine asks the realization of std's Hardening a binding of the project chooses where its build evaluates (JudgedHarder), keeps the harder severity with the one the language gave, and says when a way would lower one, answers no severity or fails
+- Fingerprint: 46bcf9ff280e1d8a
+- Language: shared
+- Language archived: 3dbc458ad3bb8f3f
+- Releases: Trame on the command line
+- Assembled by: Generation 111
+
+### Generation 113
+
+Release · `G113`
+
+- Released by: trame
+- Version: g113
+- Released on: 2026-11-20
+- What changes: C4, the actors: the language holds the kind actor (a person, a team, an agent, a machine; its handle, a team's members, its identities); the compiler checks each owner of the project's nodes against the actors the graph declares, a role its people; trame init declares whoever starts a project
+- Fingerprint: a60ba2b9a14b062d
+- Language: shared
+- Language archived: b0ead947077d2a4b
+- Accepted differences: differences.diff
+- Releases: Trame on the command line
+- Assembled by: Generation 112
+
+### Generation 114
+
+Release · `G114`
+
+- Released by: trame
+- Version: g114
+- Released on: 2026-11-21
+- What changes: A project's own name leads to its own sources (in the engine and the manifest): a library it imports may name it, as team names the ci that writes its workflow, so ci imports team instead of declaring the same actors again
+- Fingerprint: f9147dfc45d61df4
+- Language: shared
+- Language archived: b0ead947077d2a4b
+- Releases: Trame on the command line
+- Assembled by: Generation 113
 
 ### Generation 12
 
@@ -6101,7 +6206,7 @@ Decision · `DocumentWordsData`
 Decision · `ExampleShape`
 
 - Decided by: trame
-- Value: { scenarios: 5 }
+- Value: { scenarios: 6 }
 
 ### Expected differences on the example
 
@@ -6109,6 +6214,13 @@ Decision · `ExpectedDifferences`
 
 - Decided by: trame
 - Value: {  }
+
+### What the scenario of the judgment answers
+
+Decision · `JudgingData`
+
+- Decided by: trame
+- Value: { noSeverity: fatal, failure: The way of judging broke }
 
 ### What the engine's reckoning is checked with
 
@@ -6157,7 +6269,7 @@ Scenario · `DocumentWords` · **held**
 - In: Test
 - Depends on: Dates, Lists, Values with their units, Visible text, Punctuation of documents, Language, Order of versions, How the documents write what they show, checked, Messages of the scenarios
 
-### The engine reckons as it says
+### EngineReckons
 
 Scenario · `EngineReckons` · **held**
 
@@ -6166,6 +6278,16 @@ Scenario · `EngineReckons` · **held**
 - Verifies: Cycles, Pseudo-random generator, Fingerprints, References, Positions
 - In: Test
 - Depends on: Cycles, Pseudo-random generator, Fingerprints, References, Positions, What the engine's reckoning is checked with, Messages of the scenarios
+
+### A project judges harder, never softer
+
+Scenario · `JudgingHarder` · **held**
+
+- Owner: trame
+- Parameters: { judged: engine.JudgedHarder, data: scenarios.JudgingData, messages: messages.ScenarioMessages }
+- Verifies: Judged harder
+- In: Test
+- Depends on: Judged harder, What the scenario of the judgment answers, Messages of the scenarios
 
 ### The laws of the kinds hold
 
@@ -6198,7 +6320,7 @@ Decision · `GraphPageScenarioData`
 Decision · `MainBranch`
 
 - Decided by: trame
-- Value: { branch: main, checks: trame, std, ci, data, reservations, poselia, upToDate: false, approvals: 0, method: merge, autoMerge: true, deletesMerged: true, pages: false }
+- Value: { branch: main, checks: trame, std, ci, data, team, reservations, poselia, upToDate: false, approvals: 0, method: merge, autoMerge: true, deletesMerged: true, pages: false }
 - Rejected: Squashed, a branch would merge as one commit, and the generations it advances are each a commit; An approval required, the person who opens a pull request with their own account cannot approve it; Up to date with main first, each pull request would merge main into itself again, and run its checks again, whenever another one merged; The check of geometry, geometry runs from the registry of a machine, which a runner of GitHub does not have yet; Pages now, the site that gathers Trame's graph and Poselia's preview is still to be decided
 
 ### How a pull request is checked on GitHub
@@ -6353,7 +6475,7 @@ Artefact · `PageProgram` · **held**
 
 ### The pull requests' workflow
 
-Artefact · `PullRequestWorkflow` · **held**
+Artefact · `PullRequestWorkflow` · **unknown**
 
 - Owner: trame
 - Path: .github/workflows/trame-pull-request.yml
@@ -6390,7 +6512,7 @@ Check · `CandidateRunsOnTheMachine` · **held**
 
 ### The graph page opens
 
-Check · `GraphPageOpens` · **unknown**
+Check · `GraphPageOpens` · **held**
 
 - Owner: trame
 - Checks: The graph page
@@ -6400,7 +6522,7 @@ Check · `GraphPageOpens` · **unknown**
 
 ### The repository is read from GitHub
 
-Check · `RepositoryRead` · **held**
+Check · `RepositoryRead` · **unknown**
 
 - Owner: trame
 - Run by: Read the repository's settings
@@ -6418,7 +6540,7 @@ Shipment · `IntoMain` · **unknown**
 
 ### The next generation
 
-Shipment · `NextGeneration` · **unknown**
+Shipment · `NextGeneration` · **held**
 
 - Owner: trame
 - Target: generation
@@ -6429,7 +6551,7 @@ Shipment · `NextGeneration` · **unknown**
 
 ### The repository as decided
 
-Shipment · `RepositorySet` · **held**
+Shipment · `RepositorySet` · **unknown**
 
 - Owner: trame
 - Target: github
@@ -6440,7 +6562,7 @@ Shipment · `RepositorySet` · **held**
 
 ### The files that run it elsewhere
 
-Shipment · `RunnersWritten` · **held**
+Shipment · `RunnersWritten` · **unknown**
 
 - Owner: trame
 - Target: repository
@@ -6950,7 +7072,7 @@ Syntax element · `TreeBranch` · **held**
 Decision · `TerminalColumns`
 
 - Decided by: trame
-- Value: { gap: 2, minimumGap: 1, widths: { rank: 9, severity: 15, source: 22, name: 14 } }
+- Value: { gap: 2, minimumGap: 1, widths: { rank: 9, severity: 15, code: 30, source: 22, name: 14 } }
 
 ### Terminal text
 

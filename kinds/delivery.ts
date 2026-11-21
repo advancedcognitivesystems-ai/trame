@@ -1,4 +1,4 @@
-import { defineKind, field, edge, optionalEdge, hole, doc, keysOf, KindName, EdgeName, DeliveryField, DeliveryTarget, type Node } from "../trame/kernel"
+import { defineKind, field, edge, optionalEdge, hole, doc, keysOf, KindName, EdgeName, DeliveryField, DeliveryTarget, type Node, HoleCode } from "../trame/kernel"
 import words from "./words"
 
 const say = words()
@@ -42,8 +42,8 @@ const kind = defineKind({
     const comp = sequences.head(g.from(self).out(E.delivers).nodes())
     const env = sequences.head(g.from(self).out(E.environment).nodes())
     return [
-      !Object.values(DeliveryTarget).includes(target as never) && hole.error(say.deliveryUnknownTarget(String(target), texts.concat(lists.conjunction(Object.values(DeliveryTarget))))),
-      comp && env && !g.from(comp).out(EdgeName.environments).nodes().some((v) => v.node === env.node) && hole.error(say.deliveryComponentNotIn(comp.title, env.title)),
+      !Object.values(DeliveryTarget).includes(target as never) && hole.error(HoleCode.deliveryUnknownTarget, say.deliveryUnknownTarget(String(target), texts.concat(lists.conjunction(Object.values(DeliveryTarget))))),
+      comp && env && !g.from(comp).out(EdgeName.environments).nodes().some((v) => v.node === env.node) && hole.error(HoleCode.deliveryComponentElsewhere, say.deliveryComponentNotIn(comp.title, env.title)),
     ]
   },
 

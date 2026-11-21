@@ -50,6 +50,8 @@ const body = () => {
     statusName: (status: KeyOf<typeof Status>) => statusNames[status],
     /** A severity, by its key in `Severity`. */
     severityName: (severity: KeyOf<typeof Severity>) => severityNames[severity],
+    /** A severity the project's way of judging raised, with the one the language gave (C4). */
+    raisedSeverity: (severity: string, from: string) => `${severity}, raised from ${from}`,
     /** The outcome of a check, by its key in `Outcome`. */
     outcomeName: (outcome: KeyOf<typeof Outcome>) => outcomeNames[outcome],
     /** Whether a node is in force, by its key in `Validity`. */
@@ -115,6 +117,8 @@ const body = () => {
     resultHeader: () => "Result",
     /** The header of the column of severities, in a table of issues. */
     severityHeader: () => "Severity",
+    /** The header of the column of codes, in a table of issues: what is wrong, by its code. */
+    codeHeader: () => "Code",
     /** The header of the column of problems, in a table of issues. */
     whatHeader: () => "What",
     /** The header of the column of places, in a table of issues. */

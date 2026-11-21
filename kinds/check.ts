@@ -1,6 +1,6 @@
 import {
   defineKind, field, optional, edge, optionalEdge, hole, doc, keysOf, Status, KindName, EdgeName, CheckField, CheckEdge, ArtifactEdge, EvidenceSource,
-  type Node, type View, type Graph,
+  type Node, type View, type Graph, HoleCode,
 } from "../trame/kernel"
 import { latestOf, builtNow } from "./artifact"
 import { peopleOf } from "./role"
@@ -106,20 +106,20 @@ const kind = defineKind({
     // Its program runs as its component assembled: the entry point, and what the component exposes it through.
     const wired = new Set([...ranBy(self, g), ...carried].map((v) => v.ref))
     const unwired = g.from(self).out(E.verifies).where((v) => !wired.has(v.ref)).nodes()
-      .map((v) => hole.error(say.checkVerifiesUnwired(v.title), self.owner))
+      .map((v) => hole.error(HoleCode.verifiesUnrun, say.checkVerifiesUnwired(v.title), self.owner))
     const j = judged(self, g)
     if (j.fresh && j.passed) return unwired
     const role = g.from(self).out(E.by).first()
     const owner = role?.title ?? self.owner
     // A check that failed is a verdict on a version of the artefacts, not a defect of the graph: it keeps every shipment
     // that proves it (its status is violated) and says so, but does not stop the build that will make the next version.
-    if (j.fresh) return [...unwired, hole.warning(say.checkFailed(j.last?.by ?? owner ?? texts.empty), owner)]
+    if (j.fresh) return [...unwired, hole.warning(HoleCode.checkFailed, say.checkFailed(j.last?.by ?? owner ?? texts.empty), owner)]
     const steps = self.field(F.steps)
     const listed = Array.isArray(steps) ? steps.filter(values.isText) : []
     return [
       ...unwired,
-      j.last !== undefined && hole.warning(say.checkStale(), owner),
-      j.last === undefined && hole.warning(g.from(self).out(E.runs).exists() || counts.isEmpty(listed) ? say.checkToRun() : say.checkToSign(texts.concat(lists.enumeration(listed).map(String))), owner),
+      j.last !== undefined && hole.warning(HoleCode.checkStale, say.checkStale(), owner),
+      j.last === undefined && hole.warning(HoleCode.checkAwaited, g.from(self).out(E.runs).exists() || counts.isEmpty(listed) ? say.checkToRun() : say.checkToSign(texts.concat(lists.enumeration(listed).map(String))), owner),
     ]
   },
 
