@@ -35,9 +35,10 @@ import { decision } from "#trame/kinds/decision"
 
 /**
  * The operators
- * Who runs the service, and checks by hand what only a machine shows.
+ * Who runs the service, and checks by hand what only a machine shows. While Karim is away in December, Léa signs his
+ * checks for him (C4): the evidence is his, she is named with it.
  */
-export const Operators = role({ owner: "karim", people: ["karim"] })
+export const Operators = role({ owner: "karim", people: ["karim"], delegations: [{ agent: "lea", for: "karim", until: "2026-12-31" }] })
 
 /**
  * The program for production

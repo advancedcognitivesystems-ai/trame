@@ -2,7 +2,7 @@
 
 *The releases of the components on 21 November 2026, newest first. A project runs the release its configuration pins.*
 
-> **114 releases of 1 component; 95 releases on a language of their own**
+> **115 releases of 1 component; 95 releases on a language of their own**
 
 ## Trame on the command line
 
@@ -10,6 +10,7 @@ Each release, newest first: what changed, the release that assembled it, and whe
 
 | Release | Released on | What changes | Assembled by | Language |
 |---|---|---|---|---|
+| [Generation 115](releases.md#G115) | 21 November 2026 | C4, on behalf of someone: a role says who may act for one of its people until a day (delegations); trame evidence and trame ship take --for, the evidence theirs and the agent named with it, sealed (through) | [Generation 114](releases.md#G114) | shared |
 | [Generation 114](releases.md#G114) | 21 November 2026 | A project's own name leads to its own sources (in the engine and the manifest): a library it imports may name it, as team names the ci that writes its workflow, so ci imports team instead of declaring the same actors again | [Generation 113](releases.md#G113) | shared |
 | [Generation 113](releases.md#G113) | 20 November 2026 | C4, the actors: the language holds the kind actor (a person, a team, an agent, a machine; its handle, a team's members, its identities); the compiler checks each owner of the project's nodes against the actors the graph declares, a role its people; trame init declares whoever starts a project | [Generation 112](releases.md#G112) | shared |
 | [Generation 112](releases.md#G112) | 20 November 2026 | C4, the judgment: a project judges harder than the language, never softer; the engine asks the realization of std's Hardening a binding of the project chooses where its build evaluates (JudgedHarder), keeps the harder severity with the one the language gave, and says when a way would lower one, answers no severity or fails | [Generation 111](releases.md#G111) | shared |

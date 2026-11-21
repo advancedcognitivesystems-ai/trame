@@ -189,6 +189,9 @@ export const HoleCode = {
   actorDeclaredTwice: "actor-declared-twice",
   actorSortUnknown: "actor-sort-unknown",
   teamWithoutMembers: "team-without-members",
+  delegationOutsideRole: "delegation-outside-role",
+  delegationUnbounded: "delegation-unbounded",
+  delegationExpired: "delegation-expired",
   // How a project judges (C4, since g112).
   hardeningLowers: "hardening-lowers",
   hardeningFailed: "hardening-failed",
@@ -365,7 +368,16 @@ export type DeliveryField = ValueOf<typeof DeliveryField>
  * parameters, what a gap weighs) and a policy (its obligations); and the trigger of an entry point, which trame ship
  * reads to run it.
  */
-export const RoleField = { people: "people", notAuthor: "notAuthor", signature: "signature" } as const
+export const RoleField = { people: "people", notAuthor: "notAuthor", signature: "signature", delegations: "delegations" } as const
+/**
+ * Who may act for whom in a role (C4, since g115): an agent (its handle) gives the role's evidence for one of its people,
+ * until a day; the evidence is that person's, the agent named with it.
+ */
+export interface Delegation {
+  readonly agent: string
+  readonly for: string
+  readonly until: string
+}
 export const ArtifactField = { path: "path", media: "media", version: "version" } as const
 export const ArtifactEdge = { producedBy: "producedBy", runs: "runs", settings: "settings", publishes: "publishes", carries: "carries" } as const
 export const CheckField = { steps: "steps" } as const

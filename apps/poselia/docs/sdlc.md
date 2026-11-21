@@ -457,7 +457,7 @@ In memory, a page built is copied where it is served; without a page built, noth
 
 ### People who try it on a phone
 
-`PhoneTesters` · `src/sdlc.ts:56`
+`PhoneTesters` · `src/sdlc.ts:56` · published
 
 Who checks, on a phone, what a browser without a screen cannot hear or feel.
 
@@ -470,7 +470,7 @@ Who checks, on a phone, what a browser without a screen cannot hear or feel.
 
 ### A teacher who practises
 
-`Teachers` · `src/sdlc.ts:63`
+`Teachers` · `src/sdlc.ts:63` · published
 
 Who reviews the poses and the sequences the app carries, in each language: someone who teaches yoga and practises it, never the person who wrote the rows.
 

@@ -391,7 +391,7 @@ The program of Trame's command line, assembled from the graph for a machine: wha
 
 - Path: `out/local/trame-cli.ts`
 
-Built 21 November 2026 by claude, fingerprint `bb14efbfc7ca6ed668f05c44ac445116f4f57565534490d0b1f721109a04998b`.
+Built 21 November 2026 by claude, fingerprint `a7abb8ba3e8e4a3ac93557f3dd28a529805274bd904f2462e00c278f21e859e1`.
 
 Shipped by [The next generation](#NextGeneration) 8 November 2026, fingerprint `7b37d575242fcf8f0998170f818ac1b266c2f3408a5dc31f62eedaf3cbf0f2f4`.
 
@@ -419,6 +419,8 @@ Shipped by [The next generation](#NextGeneration) 20 November 2026, fingerprint 
 
 Shipped by [The next generation](#NextGeneration) 21 November 2026, fingerprint `bb14efbfc7ca6ed668f05c44ac445116f4f57565534490d0b1f721109a04998b`.
 
+Shipped by [The next generation](#NextGeneration) 21 November 2026, fingerprint `a7abb8ba3e8e4a3ac93557f3dd28a529805274bd904f2462e00c278f21e859e1`.
+
 - Owner: trame
 - Produced by: [Trame on the command line](architecture.md#TrameCli)
 - Checked by: [The candidate plays the laws](#CandidateKeepsTheLaws), [The candidate runs on the machine](#CandidateRunsOnTheMachine)
@@ -435,7 +437,7 @@ The page trame export writes of Trame's graph, which a browser opens as it is: i
 - Path: `trame-page.html`
 - Media type: `text/html; charset=utf-8`
 
-Built 21 November 2026 by claude, fingerprint `3f2b232137d7a80a684cc9659566e06b29fa1f8a67fbafdeb99692d3ac24221d`.
+Built 21 November 2026 by claude, fingerprint `429fb5a575c65b5738e9de16fe941bb50359ae9908f18c4f7b67ce304c720041`.
 
 Shipped by [The next generation](#NextGeneration) 8 November 2026, fingerprint `99d138159c0e7fce465ffd74ec828b3cfa1bb501acf7d08ed97f495b21eca67a`.
 
@@ -463,6 +465,8 @@ Shipped by [The next generation](#NextGeneration) 20 November 2026, fingerprint 
 
 Shipped by [The next generation](#NextGeneration) 21 November 2026, fingerprint `3f2b232137d7a80a684cc9659566e06b29fa1f8a67fbafdeb99692d3ac24221d`.
 
+Shipped by [The next generation](#NextGeneration) 21 November 2026, fingerprint `429fb5a575c65b5738e9de16fe941bb50359ae9908f18c4f7b67ce304c720041`.
+
 - Owner: trame
 - Produced by: [Export the page](commands.md#Export)
 - Carries: [The page in a browser](architecture.md#PageApp)
@@ -480,7 +484,7 @@ The component that shows the graph page, assembled for the browser where the eng
 
 - Path: `out/browser/page-app.ts`
 
-Built 21 November 2026 by claude, fingerprint `425b57b95d79afe3e25cb0f2b7eec6e30369f647ccfdddf0ef3eab913fb4e21b`.
+Built 21 November 2026 by claude, fingerprint `b1e479623a81dc943beb1a861f7addda6dc7bcfb5d073163f459cf599998c4ff`.
 
 Shipped by [The next generation](#NextGeneration) 8 November 2026, fingerprint `6416e1b80c44d0c602d83fd12a79c6785cb84f3d295f9795ed017ce759e2af04`.
 
@@ -505,6 +509,8 @@ Shipped by [The next generation](#NextGeneration) 20 November 2026, fingerprint 
 Shipped by [The next generation](#NextGeneration) 20 November 2026, fingerprint `425b57b95d79afe3e25cb0f2b7eec6e30369f647ccfdddf0ef3eab913fb4e21b`.
 
 Shipped by [The next generation](#NextGeneration) 21 November 2026, fingerprint `425b57b95d79afe3e25cb0f2b7eec6e30369f647ccfdddf0ef3eab913fb4e21b`.
+
+Shipped by [The next generation](#NextGeneration) 21 November 2026, fingerprint `b1e479623a81dc943beb1a861f7addda6dc7bcfb5d073163f459cf599998c4ff`.
 
 - Owner: trame
 - Produced by: [The page in a browser](architecture.md#PageApp)
@@ -655,6 +661,7 @@ A pull request into main: it merges once it holds, as the repository's settings 
 | [A build planned](command-scenarios.md#BuildPlanned) | **held** | [The engine is verified](#EngineVerified), for [Plan](commands.md#Plan) |
 | [Declarations published](command-scenarios.md#DeclarationsPublished) | **held** | [The engine is verified](#EngineVerified), for [Publish](commands.md#Publish) |
 | [A published value changed](command-scenarios.md#PublishedValueChanged) | **held** | [The engine is verified](#EngineVerified), for [Publish](commands.md#Publish) |
+| [Evidence given for someone](command-scenarios.md#EvidenceForSomeone) | **held** | [The engine is verified](#EngineVerified), for [Record evidence](commands.md#RecordEvidence) |
 | [Shipments run, evidence given](command-scenarios.md#ShipmentsRun) | **held** | [The engine is verified](#EngineVerified), for [Record evidence](commands.md#RecordEvidence) |
 | [The registry filled](command-scenarios.md#RegistryFilled) | **held** | [The engine is verified](#EngineVerified), for [Fill the registry](commands.md#Registry) |
 | [A library released](command-scenarios.md#LibraryReleased) | **held** | [The engine is verified](#EngineVerified), for [Release a version](commands.md#Release) |
@@ -784,6 +791,7 @@ The engine as the graph describes it now, frozen into the next generation and pi
 | [A project started](command-scenarios.md#ProjectStarted) | **held** | [The engine is verified](#EngineVerified), for [A module of references](commands.md#ReferencesModule) |
 | [A build planned](command-scenarios.md#BuildPlanned) | **held** | [The engine is verified](#EngineVerified), for [Plan](commands.md#Plan) |
 | [Declarations published](command-scenarios.md#DeclarationsPublished) | **held** | [The engine is verified](#EngineVerified), for [Publish](commands.md#Publish) |
+| [Evidence given for someone](command-scenarios.md#EvidenceForSomeone) | **held** | [The engine is verified](#EngineVerified), for [Record evidence](commands.md#RecordEvidence) |
 | [A component run](command-scenarios.md#ComponentRun) | **held** | [The engine is verified](#EngineVerified), for [Run a component](commands.md#Run) |
 | [The snapshot, taken by its command](command-scenarios.md#SnapshotTaken) | **held** | [The engine is verified](#EngineVerified), for [Take the snapshot](commands.md#TakeSnapshot) |
 | [The laws, tested by their command](command-scenarios.md#LawsTested) | **held** | [The engine is verified](#EngineVerified), for [Test the laws](commands.md#TestKinds) |
@@ -805,7 +813,7 @@ The engine as the graph describes it now, frozen into the next generation and pi
 | [The resolution does not depend on the order](laws.md#OrderFree) | **held** | [The language serves what it says](#LanguageServed), for [Complete declaration](laws.md#CompleteDeclaration) |
 | [Without evidence, the status is unknown](laws.md#UnknownWithoutEvidence) | **held** | [The language serves what it says](#LanguageServed), for [Complete declaration](laws.md#CompleteDeclaration) |
 
-Shipped 21 November 2026 by claude; its dossier: `evidence/shipments/NextGeneration-2026-11-21-1fb0ef7f.json`.
+Shipped 21 November 2026 by claude; its dossier: `evidence/shipments/NextGeneration-2026-11-21-799c5e77.json`.
 
 - Owner: trame
 - Ships: [The candidate engine](#EngineCandidate), [The page's program](#PageProgram), [The graph page](#GraphPage)

@@ -622,6 +622,11 @@
     "sdlc.PageSelectors": {
       "constants": "6a09e667"
     },
+    "sdlc.PhoneTesters": {
+      "people": "b05317bb",
+      "notAuthor": "6a09e667",
+      "delegations": "6a09e667"
+    },
     "sdlc.PreviewOnGitHub": {
       "statement": "189d88c0",
       "value": "cb0fe4fc",
@@ -661,6 +666,11 @@
       "review": "6a09e667",
       "range": "6a09e667",
       "rejected": "0ed081d1"
+    },
+    "sdlc.Teachers": {
+      "people": "7167cad1",
+      "notAuthor": "19e43401",
+      "delegations": "6a09e667"
     },
     "settings.AdjustedBreath": {
       "statement": "9505baaa",

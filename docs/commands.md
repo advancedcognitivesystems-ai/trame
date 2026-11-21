@@ -400,8 +400,8 @@ Triggered by `command evidence`
 - Serves: [Ship only what holds](shipping.md#ShipOnlyWhatHolds)
 - Part of: [Trame on the command line](architecture.md#TrameCli)
 - For: [Anyone](../std/releases/0.21.0/docs/access.md#Anyone)
-- Verified by: [Shipments run, evidence given](command-scenarios.md#ShipmentsRun)
-- Used by: [Shipments run, evidence given](command-scenarios.md#ShipmentsRun)
+- Verified by: [Evidence given for someone](command-scenarios.md#EvidenceForSomeone), [Shipments run, evidence given](command-scenarios.md#ShipmentsRun)
+- Used by: [Evidence given for someone](command-scenarios.md#EvidenceForSomeone), [Shipments run, evidence given](command-scenarios.md#ShipmentsRun)
 - Applies: [A version ships through the graph](principles.md#ShippedThroughTheGraph)
 
 <a id="Registry"></a>

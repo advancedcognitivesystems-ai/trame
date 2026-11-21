@@ -498,6 +498,11 @@ export const ProjectSamples = decision<{
    */
   kept: { decided: unknown; undecided: unknown; changed: string; subject: string; by: string }
   handCheck: { check: string; tester: string; stranger: string }
+  /**
+   * A check by hand of the example, which an agent signs for one of the role's people (C4): a day within its delegation,
+   * once what it checks was built, and a day the delegation is over.
+   */
+  delegated: { check: string; agent: string; person: string; within: string; after: string }
   started: { title: string; owner: string }
   registry: { home: string; generation: string }
 }>({
@@ -516,6 +521,7 @@ export const ProjectSamples = decision<{
       by: "tester",
     },
     handCheck: { check: "OnAPhone", tester: "ghalaax", stranger: "someone-else" },
+    delegated: { check: "OnALaptop", agent: "lea", person: "karim", within: "2026-12-01", after: "2027-01-05" },
     started: { title: "Started in memory", owner: "ghalaax" },
     registry: { home: ".", generation: "g93" },
   },
@@ -922,6 +928,46 @@ export const ShipmentsRun = scenario({
       refused = terminalLog.lines().some((l) => l.startsWith(samples.handCheck.stranger))
     }
     check(messages.strangerRefused(samples.handCheck.stranger), refused)
+  },
+})
+
+/**
+ * Evidence given for someone
+ * In the example, Léa is not an operator: the check she signs alone is refused. A delegation of the role lets her act
+ * for Karim until the last day of December: the check she signs for him, on the first of December, is his, she is named
+ * with it, sealed with the rest. Once the delegation is over, the same is refused.
+ */
+export const EvidenceForSomeone = scenario({
+  owner: "trame",
+  verifies: [RecordEvidence],
+  env: Test,
+  deps: {
+    evidence: RecordEvidence, writeLog: WriteLog, currentProcess: Process, paths: Paths, layout: Layout, records: ShippingRecords,
+    samples: ProjectSamples, line: TrameCommands, exitStatus: ExitStatus, signatures: Signatures, counts: Counts, messages: ScenarioMessages,
+  },
+  body: (d) => async (check) => {
+    const { writeLog, paths, layout, records, line, messages, counts } = d
+    const { check: node, agent, person, within, after } = d.samples.delegated
+    const file = paths.join(d.currentProcess.cwd(), layout.evidence, records.evidence + layout.evidenceExtension)
+    const recorded = () => (JSON.parse(writeLog.written().get(file) ?? JSON.stringify([])) as { node: string; by?: string; through?: string[]; seal?: string }[])
+      .filter((e) => e.node.endsWith(node))
+    /** Whether the evidence is refused: the command stops, and nothing more is recorded on the check. */
+    const refused = async (args: string[]) => {
+      const before = recorded().length
+      try {
+        await d.evidence({ params: { command: line.evidence }, body: { args } })
+        return false
+      } catch {
+        return recorded().length === before
+      }
+    }
+    check(messages.agentAloneRefused(agent), await refused([node, line.passed, line.by, agent, line.at, within]))
+    const given = await d.evidence({ params: { command: line.evidence }, body: { args: [node, line.passed, line.by, agent, line.for, person, line.at, within] } })
+    const mine = recorded()
+    const [entry] = mine
+    check(messages.givenForSomeone(agent, person), given.status === d.exitStatus.success && counts.single(mine) && entry?.by === person &&
+      JSON.stringify(entry?.through) === JSON.stringify([agent]) && entry?.seal === d.signatures.seal({ ...entry }))
+    check(messages.delegationOverRefused(agent), await refused([node, line.passed, line.by, agent, line.for, person, line.at, after]))
   },
 })
 

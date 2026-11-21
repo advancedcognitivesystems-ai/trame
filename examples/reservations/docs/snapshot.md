@@ -821,6 +821,7 @@ Role · `Operators`
 
 - Owner: karim
 - People: karim
+- Delegations: { agent: lea, for: karim, until: 2026-12-31 }
 
 ### The program for a laptop
 
