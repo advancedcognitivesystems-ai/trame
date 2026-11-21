@@ -29,6 +29,11 @@ export interface ProjectDirs {
   libraries: Library[]
   /** What the project calls itself: what the titles of its modules start with. */
   title?: string
+  /**
+   * The name other projects import it by, which leads to its own sources in it too (since g114): the name of its
+   * directory, which trame release publishes it under; none when it is the language's or one of its libraries'.
+   */
+  name?: string
   /** The generation of the engine it pins, where it is. */
   engine?: string
 }
@@ -52,7 +57,7 @@ export interface Deps {
 const body = (deps: Deps) => {
   const { encodings } = deps
   const { existsSync, readFileSync } = deps.reading
-  const { join, resolve, relative, sep } = deps.paths
+  const { join, resolve, relative, sep, basename } = deps.paths
   const { specifiers, names } = deps
   const [extension] = deps.language.extensions
   /** The language's directories first, then the project's own, each once. */
@@ -100,11 +105,14 @@ const body = (deps: Deps) => {
     // The language's, the project's own, then those its libraries carry, each once.
     const joined = (dir: string, listed: string[] | undefined) =>
       [...new Set([...withLanguage(dir, listed, root), ...carried(root, dir), ...libraries.flatMap((lib) => carried(lib.root, dir))])]
+    const own = basename(resolve(root))
+    const name = own === names.name || libraries.some((lib) => lib.name === own) ? undefined : own
     return {
       kinds: joined(l.kinds, raw.kinds),
       views: joined(l.views, raw.views),
       libraries,
       title: raw.title,
+      ...(name === undefined ? {} : { name }),
       engine: deps.values.isText(pinned) ? resolve(root, pinned) : undefined,
     }
   }

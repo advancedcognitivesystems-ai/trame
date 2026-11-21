@@ -351,11 +351,15 @@ const body = (deps: Deps) => {
     // Where each library's name leads, for the TypeScript compiler: its sources as they are on disk.
     const { imports, separator, pattern } = deps.specifiers
     const paths = Object.fromEntries(libraries.map((lib) => [imports + lib.name + separator + pattern, [join(lib.root, sources, pattern)]]))
+    // The project's own name leads to its own sources (since g114): a library it imports may name it, as team names the
+    // ci that writes its workflow, and ci imports team.
+    const ownSources = dirs.name === undefined ? {} : { [dirs.name]: join(root, sources) }
+    if (dirs.name !== undefined) paths[imports + dirs.name + separator + pattern] = [join(root, sources, pattern)]
     // And the language's names (since g88), to its files where they are: through the link of the package, the compiler
     // would read the kinds and the kernel a second time, under another path, and two kernels' types never match.
     for (const [name, module] of Object.entries(deps.names.modules)) paths[imports + deps.names.name + separator + name] = [join(deps.prelude.root, module)]
     // Node.js is led the same way, for the files of the project and of its libraries (since g92).
-    loader.lead(Object.fromEntries(libraries.map((lib) => [lib.name, join(lib.root, sources)])), [root, ...libraries.map((lib) => lib.root)])
+    loader.lead({ ...Object.fromEntries(libraries.map((lib) => [lib.name, join(lib.root, sources)])), ...ownSources }, [root, ...libraries.map((lib) => lib.root)])
     const { infos: analysis, moduleTitle, rests, typeErrors, quantityErrors, uses: used, textAsCode, reaches: reachedBy, forgedCommands } = analyze(modules, extra, root, paths)
     // The nodes of the project and of its libraries: those their modules export. The registry of the kernel is shared
     // by the whole process (another project may be loaded into it): it is not read in full.

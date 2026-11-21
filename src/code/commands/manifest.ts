@@ -85,6 +85,11 @@ const body = (deps: Deps): Handler => async (req) => {
     const name = specifiers.imports + lib.name + specifiers.separator + specifiers.pattern
     imports[name] = specifiers.current + asSpecifier(join(base, layout.sources)) + specifiers.separator + specifiers.pattern + extension
   }
+  // The project's own name, to its own sources (since g114): what a library it imports may name it by.
+  if (dirs.name !== undefined) {
+    imports[specifiers.imports + dirs.name + specifiers.separator + specifiers.pattern] =
+      specifiers.current + asSpecifier(layout.sources) + specifiers.separator + specifiers.pattern + extension
+  }
   // The language: the generation the project pins, each module by its name; its home reaches it where it is.
   const { names } = deps
   const language = place(names.name, deps.project.isHome(o.root) ? o.root : dirs.engine ?? deps.prelude.root)

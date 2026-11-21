@@ -111,9 +111,10 @@ Every node has an owner and a documentation comment: its first line is its title
 is the handle of an actor the graph declares (C4, g113: kind `actor`, a person, a team, an agent, a machine); one
 nobody declares is an error (`owner-undeclared`), and so is a role's person (`person-undeclared`). Trame's repository
 declares its people once in `libs/team` (`trame`, the team of `ghalaax` and `claude`; `github-actions`, the runner),
-which each project imports (`import "#team/people"` in its packages module); `ci`, which writes team's workflow,
-declares the same actors itself; a project may declare its own (the example's `karim` and `lea`), the same actor
-declared twice saying the same thing. `trame init` declares whoever starts a project. A graph that declares no actor
+which each project imports (`import "#team/people"` in its packages module), `ci` too, though team writes its workflow
+with ci: each imports the other at a frozen version, and a project's own name leads to its own sources (g114); a
+project may declare its own actors (the example's `karim` and `lea`), the same actor declared twice saying the same
+thing. `trame init` declares whoever starts a project. A graph that declares no actor
 is told once (`actors-undeclared`).
 
 ## 4b. The SDLC is in the graph
@@ -295,7 +296,9 @@ installs a published engine's packages the first time it runs it. `libs/geometry
 A library is a Trame project another project imports (ADR "A library is a Trame project, imported by path"). The
 project names it in its `trame.json` (`"libraries": { "std": "../std" }`, or `{ "path": "../std", "version": "0.1.0" }`
 for a frozen version) and imports its nodes by name (`import { Counts } from "#std/algebra"`); `./trame.sh manifest`
-writes where the name leads into `package.json`. A path into a library is refused. `./trame.sh release 0.1.0 "what" --by <name>`,
+writes where the name leads into `package.json`. A path into a library is refused. A project's own name (its
+directory's, which `trame release` publishes it under) leads to its own sources, in the engine and the manifest (g114):
+a library it imports may name it (team's workflow is written by ci, and ci imports team). `./trame.sh release 0.1.0 "what" --by <name>`,
 run in a library, first ships the library's version through its own graph (since g101: the shipment that ships an
 artefact `version: true`, `NextVersion` in std, ci and geometry; its policy derives from all the library's code, std's proves its
 functions verified, its requirements served, its decisions applied, its rules held, its packages safe), freezes nothing

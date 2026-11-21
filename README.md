@@ -682,8 +682,9 @@ lower a problem is itself an error: what the language guarantees, no project hid
 Since g113 who acts is declared too: the kind `actor` (a person, a team and its members, an agent, a machine, each by
 its handle and its identities elsewhere) is in the language, and an owner, or a role's person, that no actor of the
 graph declares is an error. Trame's repository declares its people once, in the library `team` (the team `trame`,
-ghalaax, Claude, the runner of GitHub Actions), which every project of the repository imports; the example declares
-its own.
+ghalaax, Claude, the runner of GitHub Actions), which every project of the repository imports, ci included though team
+writes its workflow with ci: each imports the other at a frozen version, a project's own name leading to its own
+sources (g114); the example declares its own.
 The functions `Laws` and `Views` receive the rules as dependencies: they draw nodes at random, call the kind in a
 sandbox, catch what it throws, and ask the rule whether what they saw keeps the law (decision "The laws are
 requirements").
