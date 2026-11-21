@@ -381,6 +381,27 @@ Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Ge
 - Released by: trame
 - Releases: [Trame on the command line](architecture.md#TrameCli)
 - Assembled by: [Generation 113](#G113)
+- Assembled: [Generation 115](#G115)
+
+<a id="G115"></a>
+
+### Generation 115
+
+`G115` · `src/releases.ts:1703`
+
+C4, on behalf of someone: a role says who may act for one of its people until a day (delegations); trame evidence and trame ship take --for, the evidence theirs and the agent named with it, sealed (through)
+
+Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Generation 114](#G114).
+
+- Version: `g115`
+- Released on: 21 November 2026
+- Fingerprint: `b020b81cbbc519f2`
+- Language: the repository's, shared
+- Language archived: `90ba5b1d790e9acb`
+
+- Released by: trame
+- Releases: [Trame on the command line](architecture.md#TrameCli)
+- Assembled by: [Generation 114](#G114)
 
 <a id="G12"></a>
 

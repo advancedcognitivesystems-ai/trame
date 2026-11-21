@@ -51,7 +51,7 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "trame",
-        "version": "114",
+        "version": "115",
         "joins": "language",
         "from": "registry"
       },
@@ -201,7 +201,7 @@
       },
       "result": {
         "path": "src",
-        "code": "ebe89b2f"
+        "code": "3aef410a"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
