@@ -542,7 +542,7 @@ trame test-kinds plays the laws of every kind of the example's language on drawn
 
 | Criterion | Result |
 |---|---|
-| trame test-kinds says the laws of each of the 42 kinds and 19 views hold | passed |
+| trame test-kinds says the laws of each of the 42 kinds and 20 views hold | passed |
 
 <details><summary>The code it runs: 49 nodes</summary>
 
@@ -794,7 +794,7 @@ trame payload writes the example compiled at its date: its nodes, its documents,
 
 | Criterion | Result |
 |---|---|
-| The payload holds 125 nodes and 290 documents | passed |
+| The payload holds 125 nodes and 415 documents | passed |
 | Each document is rendered in Markdown, in text and in HTML | passed |
 | The figures of the HTML are drawn in SVG | passed |
 | Two payloads alike differ in nothing | passed |

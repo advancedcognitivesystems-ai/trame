@@ -2006,7 +2006,7 @@
       },
       "result": [
         {
-          "name": "trame test-kinds says the laws of each of the 42 kinds and 19 views hold",
+          "name": "trame test-kinds says the laws of each of the 42 kinds and 20 views hold",
           "status": "passed"
         }
       ],
@@ -2328,7 +2328,7 @@
       },
       "result": [
         {
-          "name": "The payload holds 125 nodes and 290 documents",
+          "name": "The payload holds 125 nodes and 415 documents",
           "status": "passed"
         },
         {
@@ -20178,7 +20178,7 @@
       },
       "result": {
         "path": "src",
-        "code": "846d7b5c"
+        "code": "25517cc3"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"

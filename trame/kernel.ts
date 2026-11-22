@@ -238,7 +238,7 @@ export const ViewName = {
   module: "module", index: "index", snapshot: "snapshot", adrs: "adrs", choices: "choices", versions: "versions", owners: "owners",
   schedule: "schedule", review: "review", literals: "literals", layers: "layers", timeline: "timeline", overlaps: "overlaps",
   summary: "summary", impact: "impact", why: "why", history: "history", assembly: "assembly", pipelines: "pipelines",
-  journal: "journal", callers: "callers",
+  journal: "journal", callers: "callers", explain: "explain",
 } as const
 
 /** The place of a word in a vocabulary, from 1: the order of a kind or a view that does not give its own. */
