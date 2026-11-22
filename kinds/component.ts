@@ -1,4 +1,5 @@
 import {
+  isCommandsExposure,
   defineKind, field, edge, optionalEdge, hole, doc, keysOf, fieldsOf, KindName, EdgeName,
   type AnyNode, type Graph, type Node, type HasDeps, type Provides, type View, HoleCode,
 } from "../trame/kernel"
@@ -45,6 +46,8 @@ const kind = defineKind({
    */
   holes: (self, g) => {
     const { counts, texts, lists } = g.lib
+    // A library's commands, offered (E3): assembled where a project's choice holds, which the choice checks.
+    if (!counts.any(self.environments) && self.dependencies.some((d) => isCommandsExposure(d.node))) return []
     const envs = counts.any(self.environments) ? self.environments : g.all(KindName.environment).nodes().filter((v) => v.library === self.library)
     const needed = [...self.dependencies.map((d) => d.node), ...entriesOf(self, g)]
     // The same error in several environments is said once.

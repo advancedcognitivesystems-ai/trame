@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 21 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 22 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Standard library · Access
 
@@ -128,6 +128,80 @@ Function · `SeededDraws` · **held**
 - Parameters: { mulberry: algorithms.Mulberry32, hash: algorithms.MultiplicativeHash, ecma: ecmascript.EcmaScript, counts: algebra.Counts }
 - Serves: Shared operations instead of literals
 - Depends on: Mulberry32, Multiplicative hashing, ECMAScript, Counts
+
+## Standard library · Commands
+
+### The language the library's commands speak in.
+
+Decision · `CommandLanguage`
+
+- Decided by: trame
+- Value: { tag: en-GB }
+
+### A library offers commands, a project chooses them
+
+Architecture decision · `CommandsOfALibrary` · **held**
+
+- Decided by: trame
+- Context: Opening a pull request, carrying a version across the projects, were done by hand or by a script of whoever worked: nothing in the graph said how, nor checked it.
+- Consequences: The library's component LibraryCommands holds the commands; a project chooses those it runs by a binding that follows Command, with a function of its own for each port of settings (its repository, its way of merging, its projects); trame <name> runs them as the project's own commands. A command reads no value of a project but through its settings.
+- Rejected: A command written by each project, the same pull request opened six ways, none of them checked; Settings named by the binding, a new concept in two kinds, and nothing checks that the decision has the type the command reads
+- Serves: Commands chosen, not written again
+- Applied by: The library's commands, Open a pull request, Propagate, Command
+
+### The library's commands
+
+Component · `LibraryCommands`
+
+- Owner: trame
+- Language: typescript
+- Startup: { exposure: tooling.ProgramCommands }
+- Depends on: Commands of a program
+
+### How a version is carried
+
+Port · `PropagationSettings`
+
+- Owner: trame
+- Declared effects: 
+
+### How pull requests are opened
+
+Port · `PullRequestSettings`
+
+- Owner: trame
+- Declared effects: 
+
+### Open a pull request
+
+Entry point · `OpenPullRequest` · **held**
+
+- Owner: trame
+- Trigger: { type: command, name: pull-request }
+- Parameters: { settings: commands.PullRequestSettings, branches: repository.Branches, pulls: repository.PullRequests, ways: ci/github.MergeWays, say: commands.CommandWords, exit: system.ExitStatus, counts: algebra.Counts, posix: system.Posix, texts: algebra.Texts }
+- Serves: Commands chosen, not written again
+- Part of: The library's commands
+- For: The operators
+- Depends on: How pull requests are opened, The branches, Pull requests, What the library's commands say, Exit status, Counts, POSIX signals and errors, Texts
+
+### Propagate
+
+Entry point · `Propagate` · **held**
+
+- Owner: trame
+- Trigger: { type: command, name: propagate }
+- Parameters: { settings: commands.PropagationSettings, files: tooling.Files, programs: tooling.ProgramRuns, say: commands.CommandWords, exit: system.ExitStatus, sequences: algebra.Sequences, posix: system.Posix, texts: algebra.Texts }
+- Serves: Commands chosen, not written again
+- Part of: The library's commands
+- For: The operators
+- Depends on: How a version is carried, Project files, Programs run, What the library's commands say, Exit status, Sequences, POSIX signals and errors, Texts
+
+### What the library's commands say
+
+Message catalog · `CommandWords`
+
+- Owner: trame
+- Written in: The language the library's commands speak in.
 
 ## Standard library · ECMAScript
 
@@ -597,6 +671,15 @@ Design pattern · `Bridge`
 - Requires of a choice: { layered: true }
 - Serves: Known designs, named
 
+### Command
+
+Design pattern · `Command`
+
+- Maintained by: trame
+- Source: Gamma et al., Design Patterns (1994), Command
+- Requires of a choice: { commands: true }
+- Serves: Known designs, named
+
 ### Repository
 
 Design pattern · `Repository`
@@ -784,6 +867,12 @@ Implementation · `BrowserWakeLock`
 - Depends on: Screen Wake Lock API
 
 ## Standard library · Product
+
+### Commands chosen, not written again
+
+Goal · `ChosenCommands`
+
+- Owner: trame
 
 ### A published value is cited, not copied
 
@@ -1101,6 +1190,36 @@ Release · `R0_9_0`
 
 ## Standard library · Repositories on GitHub
 
+### Git's command line
+
+Standard · `GitCommandLine`
+
+- Maintained by: trame
+- Source: Git manual: git-rev-parse (--abbrev-ref), git-push (--set-upstream), git-fetch, git-diff (--name-only, A...B: since the merge base)
+- Address: https://git-scm.com/docs/git-diff
+- Constants: { program: { value: git, meaning: Git's command line }, revParse: { value: rev-parse, meaning: Says what a name stands for }, abbreviated: { value: --abbrev-ref, meaning: The short name of a reference: the branch's }, head: { value: HEAD, meaning: What is checked out }, detached: { value: HEAD, meaning: What rev-parse --abbrev-ref says when no branch is checked out }, push: { value: push, meaning: Sends a branch to a remote }, upstream: { value: --set-upstream, meaning: The branch follows the one it was sent to }, remote: { value: origin, meaning: The remote the repository came from }, fetch: { value: fetch, meaning: Brings a branch of a remote }, fetched: { value: FETCH_HEAD, meaning: What was just fetched }, diff: { value: diff, meaning: Shows what differs }, names: { value: --name-only, meaning: Only the paths of the files that differ }, since: { value: ..., meaning: Between two names: what the second changes since it parted from the first } }
+- Serves: A published value is cited, not copied
+
+### GitHub's ways of asking a merge once it holds
+
+Standard · `GitHubAutoMerge`
+
+- Maintained by: trame
+- Source: GitHub CLI manual: gh pr merge (--auto, --merge, --squash, --rebase, --repo); the proxy of a Claude Code session, answering a call to GraphQL: PUT /repos/{owner}/{repo}/pulls/{n}/ccr/auto_merge
+- Address: https://cli.github.com/manual/gh_pr_merge
+- Constants: { pr: { value: pr, meaning: The commands of pull requests }, merge: { value: merge, meaning: Merges one, or asks it merged }, auto: { value: --auto, meaning: Once it holds: its checks passed }, byMerge: { value: --merge, meaning: By a merge commit }, bySquash: { value: --squash, meaning: Squashed into one commit }, byRebase: { value: --rebase, meaning: Its commits rebased }, repo: { value: --repo, meaning: The repository, owner/name }, route: { value: /ccr/auto_merge, meaning: After the pull request: the route of the proxy that asks GitHub to merge it once it holds }, method: { value: merge_method, meaning: How it is merged, in the body of that route } }
+- Serves: A published value is cited, not copied
+
+### GitHub's API for pull requests
+
+Standard · `GitHubPullRequestsApi`
+
+- Maintained by: trame
+- Source: GitHub REST API: Pulls (List pull requests: head, state; Create a pull request: title, head, base, body; number, html_url); GitHub CLI manual: gh api (--method, --input, a query)
+- Address: https://docs.github.com/en/rest/pulls/pulls
+- Constants: { pulls: { value: /pulls, meaning: After the repository: its pull requests }, query: { value: ?, meaning: Opens the parameters of a call }, and: { value: &, meaning: Between two parameters }, equals: { value: =, meaning: Between a parameter and its value }, head: { value: head, meaning: The branch a pull request brings, owner:branch when listed }, owner: { value: :, meaning: Between the owner and the branch, in head }, state: { value: state, meaning: Which pull requests are listed }, openState: { value: open, meaning: Those still open }, base: { value: base, meaning: The branch it goes into }, title: { value: title, meaning: Its title }, body: { value: body, meaning: What it says }, number: { value: number, meaning: Its number in the repository }, url: { value: html_url, meaning: Where a person opens it } }
+- Serves: A published value is cited, not copied
+
 ### GitHub's API for a repository
 
 Standard · `GitHubRepositoryApi`
@@ -1138,6 +1257,41 @@ Architecture decision · `RepositoryThroughItsApi` · **held**
 - Serves: Ports of the platform, realized once
 - Applied by: How GitHub merges a pull request, The parts of a repository's settings, A repository compared with its settings, A repository on GitHub, GitHub's command line, The repositories a scenario keeps, A repository kept in memory
 
+### The automatic merge
+
+Port · `AutoMerge`
+
+- Owner: trame
+- Declared effects: { ask: process, network, asynchronous }
+
+### The branches
+
+Port · `Branches`
+
+- Owner: trame
+- Declared effects: { current: process, asynchronous, push: process, network, asynchronous, changed: process, network, asynchronous }
+
+### The branches a scenario keeps
+
+Port · `BranchesKept`
+
+- Owner: trame
+- Declared effects: 
+
+### Pull requests
+
+Port · `PullRequests`
+
+- Owner: trame
+- Declared effects: { find: process, network, asynchronous, open: process, network, asynchronous, mergeOnceItHolds: process, network, asynchronous }
+
+### The pull requests a scenario keeps
+
+Port · `PullRequestsKept`
+
+- Owner: trame
+- Declared effects: 
+
 ### A repository on GitHub
 
 Port · `RepositoryApi`
@@ -1151,6 +1305,24 @@ Port · `RepositoryKept`
 
 - Owner: trame
 - Declared effects: 
+
+### Branches kept in memory
+
+Function · `BranchesInMemory` · **held**
+
+- Owner: trame
+- Serves: Ports of the platform, realized once
+- Implements: The branches, The branches a scenario keeps
+
+### Pull requests kept in memory
+
+Function · `PullRequestsInMemory` · **held**
+
+- Owner: trame
+- Parameters: { repos: repository.GitHubRepositoryApi, api: repository.GitHubPullRequestsApi, texts: algebra.Texts }
+- Serves: Ports of the platform, realized once
+- Implements: Pull requests, The pull requests a scenario keeps
+- Depends on: GitHub's API for a repository, GitHub's API for pull requests, Texts
 
 ### A repository compared with its settings
 
@@ -1168,6 +1340,42 @@ Function · `RepositoryInMemory` · **held**
 - Owner: trame
 - Serves: Ports of the platform, realized once
 - Implements: A repository on GitHub, The repositories a scenario keeps
+
+### The automatic merge, by GitHub's command line
+
+Implementation · `AutoMergeByGitHubCli`
+
+- Owner: trame
+- Parameters: { auto: repository.GitHubAutoMerge, repos: repository.GitHubRepositoryApi, methods: repository.MergeMethods, cli: system.NodeCli, events: system.NodeEvents, exit: system.ExitStatus }
+- Implements: The automatic merge
+- Depends on: GitHub's ways of asking a merge once it holds, GitHub's API for a repository, How GitHub merges a pull request, Node.js command line and child processes, Node.js events, Exit status
+
+### The automatic merge, in a session of Claude Code
+
+Implementation · `AutoMergeInAClaudeSession`
+
+- Owner: trame
+- Parameters: { auto: repository.GitHubAutoMerge, repos: repository.GitHubRepositoryApi, api: repository.GitHubPullRequestsApi, cli: system.NodeCli, events: system.NodeEvents, exit: system.ExitStatus, texts: algebra.Texts }
+- Implements: The automatic merge
+- Depends on: GitHub's ways of asking a merge once it holds, GitHub's API for a repository, GitHub's API for pull requests, Node.js command line and child processes, Node.js events, Exit status, Texts
+
+### Git's branches
+
+Implementation · `GitCliBranches`
+
+- Owner: trame
+- Parameters: { git: repository.GitCommandLine, cli: system.NodeCli, events: system.NodeEvents, exit: system.ExitStatus, texts: algebra.Texts, file: text.TextFile }
+- Implements: The branches
+- Depends on: Git's command line, Node.js command line and child processes, Node.js events, Exit status, Texts, Text file
+
+### GitHub's pull requests, by its command line
+
+Implementation · `GitHubCliPullRequests`
+
+- Owner: trame
+- Parameters: { repos: repository.GitHubRepositoryApi, api: repository.GitHubPullRequestsApi, cli: system.NodeCli, events: system.NodeEvents, exit: system.ExitStatus, texts: algebra.Texts, values: algebra.ValueTypes, merging: repository.AutoMerge }
+- Implements: Pull requests
+- Depends on: GitHub's API for a repository, GitHub's API for pull requests, Node.js command line and child processes, Node.js events, Exit status, Texts, Types of values, The automatic merge
 
 ### GitHub's command line
 
@@ -1273,7 +1481,7 @@ Acceptance criteria · `WordsOfCriteria` · **held**
 Decision · `ScenarioData`
 
 - Decided by: trame
-- Value: { seeds: 1, 2, text: a seed, draws: 200, bounds: { lo: 1, hi: 6 }, weighted: { item: light, weight: 1 }, { item: heavy, weight: 3 }, { item: never, weight: 0 }, never: never, preference: { name: voice, value: off, unset: pace }, sentence: { text: Breathe in, language: en }, turned: 0.5, 0.25, file: { path: dist/page.html, text: <p>a page</p>, copy: public/index.html }, page: { path: dist/page.html, selector: .poses li, count: 12, text: Mountain, error: The page broke, language: fr }, command: SELECT 1, repository: { name: owner/project, settings: { branch: main, checks: project, library, upToDate: false, approvals: 1, method: merge, autoMerge: true, deletesMerged: true, pages: true }, left: { methods: merge, squash, autoMerge: false, deletesMerged: true, protected: false, checks: library, upToDate: false }, differs: methods, autoMerge, protected, approvals, checks } }
+- Value: { seeds: 1, 2, text: a seed, draws: 200, bounds: { lo: 1, hi: 6 }, weighted: { item: light, weight: 1 }, { item: heavy, weight: 3 }, { item: never, weight: 0 }, never: never, preference: { name: voice, value: off, unset: pace }, sentence: { text: Breathe in, language: en }, turned: 0.5, 0.25, file: { path: dist/page.html, text: <p>a page</p>, copy: public/index.html }, page: { path: dist/page.html, selector: .poses li, count: 12, text: Mountain, error: The page broke, language: fr }, command: SELECT 1, repository: { name: owner/project, settings: { branch: main, checks: project, library, upToDate: false, approvals: 1, method: merge, autoMerge: true, deletesMerged: true, pages: true }, left: { methods: merge, squash, autoMerge: false, deletesMerged: true, protected: false, checks: library, upToDate: false }, differs: methods, autoMerge, protected, approvals, checks }, pullRequest: { way: { repository: owner/project, base: main, method: merge, merge: onceItHoldsUnlessDecided, lock: trame.lock, projects: { name: project, dir: . }, { name: app, dir: apps/app } }, branch: work, title: A change, free: src/product.ts, apps/app/src/app.ts, decided: apps/app/trame.lock, apps/app/src/app.ts, open: { number: 7, url: https://github.com/owner/project/pull/7 }, elsewhere: more-work }, propagation: { settings: { engine: { launcher: trame.sh, upgrade: upgrade, ship: ship, build: build, by: --by, today: TRAME_TODAY }, configuration: trame.json, projects: { name: project, dir: ., reads: example, runners: RunnersWritten }, { name: example, dir: examples/example, day: 2026-10-30, runners: RunnersWritten }, { name: app, dir: apps/app, runners: RunnersWritten }, { name: lib, dir: libs/lib } }, by: --by, person: ada, described: { ./trame.json: {"libraries":{"lib":"libs/lib"}}, examples/example/trame.json: {"libraries":{"lib":"../../libs/lib","app":"../../apps/app"}}, apps/app/trame.json: {"libraries":{"lib":{"path":"../../libs/lib","version":"0.1.0"}}}, libs/lib/trame.json: {"libraries":{}} }, order: lib, app, example, project, moves: { dir: apps/app, path: apps/app/trame.json, to: {"libraries":{"lib":{"path":"../../libs/lib","version":"0.2.0"}}} } } }
 
 ### The language of the library's scenarios
 
@@ -1281,6 +1489,26 @@ Decision · `ScenarioLanguage`
 
 - Decided by: trame
 - Value: { tag: en-GB }
+
+### How the scenarios' versions are carried
+
+Function · `ScenarioPropagation` · **held**
+
+- Owner: trame
+- Parameters: { data: scenarios.ScenarioData }
+- Serves: Ports of the platform, realized once
+- Implements: How a version is carried
+- Depends on: What the library's scenarios are given
+
+### How the scenarios' pull requests are opened
+
+Function · `ScenarioPullRequests` · **held**
+
+- Owner: trame
+- Parameters: { data: scenarios.ScenarioData }
+- Serves: Ports of the platform, realized once
+- Implements: How pull requests are opened
+- Depends on: What the library's scenarios are given
 
 ### What the library's scenarios check
 
@@ -1295,7 +1523,7 @@ Technical choice · `InMemory` · **held**
 
 - Decided by: trame
 - Context: A realization kept in memory is what a project's scenarios run in place of the device: it must keep its port's promise.
-- Chooses: Preferences kept in memory, A voice that writes down, The screen kept awake, in memory, Frames turned by hand, Files kept in memory, A browser kept in memory, A repository kept in memory
+- Chooses: Preferences kept in memory, A voice that writes down, The screen kept awake, in memory, Frames turned by hand, Files kept in memory, A browser kept in memory, A repository kept in memory, Branches kept in memory, Pull requests kept in memory, Programs run in memory
 - In: Test
 - Follows: Strategy
 - Serves: Ports of the platform, realized once
@@ -1307,6 +1535,17 @@ Technical choice · `LanguageJudgment` · **held**
 - Decided by: trame
 - Context: The library raises nothing the language does not: its warnings are points to watch, as in any project that says nothing.
 - Chooses: As the language says
+- In: Test
+- Follows: Strategy
+- Serves: Ports of the platform, realized once
+
+### The scenarios' settings
+
+Technical choice · `ScenarioSettings` · **held**
+
+- Decided by: trame
+- Context: A command of the library reads its settings through its ports: a scenario answers them with its own.
+- Chooses: How the scenarios' pull requests are opened, How the scenarios' versions are carried
 - In: Test
 - Follows: Strategy
 - Serves: Ports of the platform, realized once
@@ -1384,6 +1623,26 @@ Scenario · `JudgedStrictly` · **held**
 - Verifies: Every warning an error
 - In: Strict
 - Depends on: Hardening, What the library's scenarios check
+
+### A version carried across the projects
+
+Scenario · `PropagatedInOrder` · **held**
+
+- Owner: trame
+- Parameters: { propagate: commands.Propagate, files: tooling.Files, runs: tooling.ProgramRunsKept, data: scenarios.ScenarioData, say: commands.CommandWords, checks: scenarios.ScenarioChecks, counts: algebra.Counts, sequences: algebra.Sequences, exit: system.ExitStatus }
+- Verifies: Propagate, Programs run in memory, How the scenarios' versions are carried
+- In: Test
+- Depends on: Propagate, Project files, The programs a scenario keeps: the file it says a program writes is written when that program runs., What the library's scenarios are given, What the library's commands say, What the library's scenarios check, Counts, Sequences, Exit status
+
+### A pull request opened
+
+Scenario · `PullRequestOpened` · **held**
+
+- Owner: trame
+- Parameters: { open: commands.OpenPullRequest, branches: repository.BranchesKept, pulls: repository.PullRequestsKept, data: scenarios.ScenarioData, say: commands.CommandWords, checks: scenarios.ScenarioChecks, counts: algebra.Counts, exit: system.ExitStatus }
+- Verifies: Open a pull request, Branches kept in memory, Pull requests kept in memory, How the scenarios' pull requests are opened
+- In: Test
+- Depends on: Open a pull request, The branches a scenario keeps, The pull requests a scenario keeps, What the library's scenarios are given, What the library's commands say, What the library's scenarios check, Counts, Exit status
 
 ### A repository kept in memory
 
@@ -1613,9 +1872,9 @@ Standard · `NpmManifest`
 Standard · `Posix`
 
 - Maintained by: trame
-- Source: POSIX.1-2017, Base Definitions: <signal.h> (SIGINT, SIGTERM), <errno.h> (EPIPE), § 4.13 Pathname Resolution (dot)
+- Source: POSIX.1-2017, Base Definitions: <signal.h> (SIGINT, SIGTERM), <errno.h> (EPIPE), § 3.271 Pathname (slash), § 4.13 Pathname Resolution (dot)
 - Address: https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/signal.h.html
-- Constants: { currentDirectory: { value: ., meaning: The directory a path starts from: a command in it is run as ./name }, interrupt: { value: SIGINT, meaning: The interruption asked from the terminal (Ctrl-C) }, terminate: { value: SIGTERM, meaning: The polite request to end }, brokenPipe: { value: EPIPE, meaning: Writing to a pipe that nobody reads any more (the output piped into head, say) } }
+- Constants: { currentDirectory: { value: ., meaning: The directory a path starts from: a command in it is run as ./name }, slash: { value: /, meaning: Separates the components of a pathname: a directory and what it holds }, interrupt: { value: SIGINT, meaning: The interruption asked from the terminal (Ctrl-C) }, terminate: { value: SIGTERM, meaning: The polite request to end }, brokenPipe: { value: EPIPE, meaning: Writing to a pipe that nobody reads any more (the output piped into head, say) } }
 - Serves: A published value is cited, not copied
 
 ## Standard library · Text
@@ -1741,6 +2000,20 @@ Port · `ProgramCommands`
 - Owner: trame
 - Declared effects: terminal
 
+### Programs run
+
+Port · `ProgramRuns`
+
+- Owner: trame
+- Declared effects: { run: process, terminal, read, write, asynchronous }
+
+### The programs a scenario keeps: the file it says a program writes is written when that program runs.
+
+Port · `ProgramRunsKept`
+
+- Owner: trame
+- Declared effects: { failIn: , writeIn: write, runs:  }
+
 ### A browser kept in memory
 
 Function · `BrowserInMemory` · **held**
@@ -1759,6 +2032,16 @@ Function · `FilesInMemory` · **held**
 - Implements: Project files, Files written
 - Depends on: Seeded draws, Texts
 
+### Programs run in memory
+
+Function · `ProgramRunsInMemory` · **held**
+
+- Owner: trame
+- Parameters: { exit: system.ExitStatus, files: tooling.Files }
+- Serves: Ports of the platform, realized once
+- Implements: Programs run, The programs a scenario keeps: the file it says a program writes is written when that program runs.
+- Depends on: Exit status, Project files
+
 ### The machine's files
 
 Implementation · `MachineFiles`
@@ -1776,6 +2059,15 @@ Implementation · `NodeProgramCommands`
 - Parameters: { argv: system.NodeArguments, exit: system.ExitStatus, values: algebra.ValueTypes }
 - Implements: Commands of a program
 - Depends on: Node.js process arguments, Exit status, Types of values
+
+### Programs run by Node
+
+Implementation · `NodeProgramRuns`
+
+- Owner: trame
+- Parameters: { cli: system.NodeCli, events: system.NodeEvents, exit: system.ExitStatus, posix: system.Posix }
+- Implements: Programs run
+- Depends on: Node.js command line and child processes, Node.js events, Exit status, POSIX signals and errors
 
 ### Chromium, driven by Playwright
 

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-21",
+  "generated": "2026-11-22",
   "nodes": [
     {
       "id": "access.Anyone",
@@ -521,6 +521,142 @@
             "meaning": "The name Node gives to SHA-256"
           }
         }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "commands.CommandLanguage",
+      "kind": "decision",
+      "title": "The language the library's commands speak in.",
+      "source": "src/commands.ts:92",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "tag": "en-GB"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "commands.CommandsOfALibrary",
+      "kind": "adr",
+      "title": "A library offers commands, a project chooses them",
+      "source": "src/commands.ts:169",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "Opening a pull request, carrying a version across the projects, were done by hand or by a script of whoever worked: nothing in the graph said how, nor checked it.",
+        "consequences": "The library's component LibraryCommands holds the commands; a project chooses those it runs by a binding that follows Command, with a function of its own for each port of settings (its repository, its way of merging, its projects); trame <name> runs them as the project's own commands. A command reads no value of a project but through its settings.",
+        "rejected": {
+          "A command written by each project": "the same pull request opened six ways, none of them checked",
+          "Settings named by the binding": "a new concept in two kinds, and nothing checks that the decision has the type the command reads"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "commands.CommandWords",
+      "kind": "catalog",
+      "title": "What the library's commands say",
+      "source": "src/commands.ts:97",
+      "fields": {
+        "owner": "trame",
+        "messages": "(function)"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "commands.LibraryCommands",
+      "kind": "component",
+      "title": "The library's commands",
+      "source": "src/commands.ts:31",
+      "fields": {
+        "owner": "trame",
+        "language": "typescript",
+        "deps": {
+          "exposure": "tooling.ProgramCommands"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "commands.OpenPullRequest",
+      "kind": "entry",
+      "title": "Open a pull request",
+      "source": "src/commands.ts:136",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "trigger": {
+          "type": "command",
+          "name": "pull-request"
+        },
+        "deps": {
+          "settings": "commands.PullRequestSettings",
+          "branches": "repository.Branches",
+          "pulls": "repository.PullRequests",
+          "ways": "ci/github.MergeWays",
+          "say": "commands.CommandWords",
+          "exit": "system.ExitStatus",
+          "counts": "algebra.Counts",
+          "posix": "system.Posix",
+          "texts": "algebra.Texts"
+        },
+        "body": {
+          "file": "./code/commands/open-pull-request.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "commands.Propagate",
+      "kind": "entry",
+      "title": "Propagate",
+      "source": "src/commands.ts:155",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "trigger": {
+          "type": "command",
+          "name": "propagate"
+        },
+        "deps": {
+          "settings": "commands.PropagationSettings",
+          "files": "tooling.Files",
+          "programs": "tooling.ProgramRuns",
+          "say": "commands.CommandWords",
+          "exit": "system.ExitStatus",
+          "sequences": "algebra.Sequences",
+          "posix": "system.Posix",
+          "texts": "algebra.Texts"
+        },
+        "body": {
+          "file": "./code/commands/propagate.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "commands.PropagationSettings",
+      "kind": "port",
+      "title": "How a version is carried",
+      "source": "src/commands.ts:89",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": []
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "commands.PullRequestSettings",
+      "kind": "port",
+      "title": "How pull requests are opened",
+      "source": "src/commands.ts:57",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": []
       },
       "diagnostics": []
     },
@@ -2534,6 +2670,20 @@
       "diagnostics": []
     },
     {
+      "id": "patterns.Command",
+      "kind": "pattern",
+      "title": "Command",
+      "source": "src/patterns.ts:80",
+      "fields": {
+        "owner": "trame",
+        "source": "Gamma et al., Design Patterns (1994), Command",
+        "requires": {
+          "commands": true
+        }
+      },
+      "diagnostics": []
+    },
+    {
       "id": "patterns.Repository",
       "kind": "pattern",
       "title": "Repository",
@@ -2858,6 +3008,16 @@
       "fields": {
         "owner": "trame",
         "body": "(function)"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "product.ChosenCommands",
+      "kind": "goal",
+      "title": "Commands chosen, not written again",
+      "source": "src/product.ts:59",
+      "fields": {
+        "owner": "trame"
       },
       "diagnostics": []
     },
@@ -3267,10 +3427,283 @@
       "diagnostics": []
     },
     {
+      "id": "repository.AutoMerge",
+      "kind": "port",
+      "title": "The automatic merge",
+      "source": "src/repository.ts:437",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": {
+          "ask": [
+            "process",
+            "network",
+            "asynchronous"
+          ]
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "repository.AutoMergeByGitHubCli",
+      "kind": "implementation",
+      "title": "The automatic merge, by GitHub's command line",
+      "source": "src/repository.ts:478",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "auto": "repository.GitHubAutoMerge",
+          "repos": "repository.GitHubRepositoryApi",
+          "methods": "repository.MergeMethods",
+          "cli": "system.NodeCli",
+          "events": "system.NodeEvents",
+          "exit": "system.ExitStatus"
+        },
+        "body": {
+          "file": "./code/tooling/auto-merge-by-github-cli.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "repository.AutoMergeInAClaudeSession",
+      "kind": "implementation",
+      "title": "The automatic merge, in a session of Claude Code",
+      "source": "src/repository.ts:488",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "auto": "repository.GitHubAutoMerge",
+          "repos": "repository.GitHubRepositoryApi",
+          "api": "repository.GitHubPullRequestsApi",
+          "cli": "system.NodeCli",
+          "events": "system.NodeEvents",
+          "exit": "system.ExitStatus",
+          "texts": "algebra.Texts"
+        },
+        "body": {
+          "file": "./code/tooling/auto-merge-in-a-claude-session.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "repository.Branches",
+      "kind": "port",
+      "title": "The branches",
+      "source": "src/repository.ts:291",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": {
+          "current": [
+            "process",
+            "asynchronous"
+          ],
+          "push": [
+            "process",
+            "network",
+            "asynchronous"
+          ],
+          "changed": [
+            "process",
+            "network",
+            "asynchronous"
+          ]
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "repository.BranchesInMemory",
+      "kind": "function",
+      "title": "Branches kept in memory",
+      "source": "src/repository.ts:349",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "body": "(function)"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "repository.BranchesKept",
+      "kind": "port",
+      "title": "The branches a scenario keeps",
+      "source": "src/repository.ts:343",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": []
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "repository.GitCliBranches",
+      "kind": "implementation",
+      "title": "Git's branches",
+      "source": "src/repository.ts:328",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "git": "repository.GitCommandLine",
+          "cli": "system.NodeCli",
+          "events": "system.NodeEvents",
+          "exit": "system.ExitStatus",
+          "texts": "algebra.Texts",
+          "file": "text.TextFile"
+        },
+        "body": {
+          "file": "./code/tooling/git-cli-branches.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "repository.GitCommandLine",
+      "kind": "standard",
+      "title": "Git's command line",
+      "source": "src/repository.ts:301",
+      "fields": {
+        "owner": "trame",
+        "source": "Git manual: git-rev-parse (--abbrev-ref), git-push (--set-upstream), git-fetch, git-diff (--name-only, A...B: since the merge base)",
+        "url": "https://git-scm.com/docs/git-diff",
+        "constants": {
+          "program": {
+            "value": "git",
+            "meaning": "Git's command line"
+          },
+          "revParse": {
+            "value": "rev-parse",
+            "meaning": "Says what a name stands for"
+          },
+          "abbreviated": {
+            "value": "--abbrev-ref",
+            "meaning": "The short name of a reference: the branch's"
+          },
+          "head": {
+            "value": "HEAD",
+            "meaning": "What is checked out"
+          },
+          "detached": {
+            "value": "HEAD",
+            "meaning": "What rev-parse --abbrev-ref says when no branch is checked out"
+          },
+          "push": {
+            "value": "push",
+            "meaning": "Sends a branch to a remote"
+          },
+          "upstream": {
+            "value": "--set-upstream",
+            "meaning": "The branch follows the one it was sent to"
+          },
+          "remote": {
+            "value": "origin",
+            "meaning": "The remote the repository came from"
+          },
+          "fetch": {
+            "value": "fetch",
+            "meaning": "Brings a branch of a remote"
+          },
+          "fetched": {
+            "value": "FETCH_HEAD",
+            "meaning": "What was just fetched"
+          },
+          "diff": {
+            "value": "diff",
+            "meaning": "Shows what differs"
+          },
+          "names": {
+            "value": "--name-only",
+            "meaning": "Only the paths of the files that differ"
+          },
+          "since": {
+            "value": "...",
+            "meaning": "Between two names: what the second changes since it parted from the first"
+          }
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "repository.GitHubAutoMerge",
+      "kind": "standard",
+      "title": "GitHub's ways of asking a merge once it holds",
+      "source": "src/repository.ts:445",
+      "fields": {
+        "owner": "trame",
+        "source": "GitHub CLI manual: gh pr merge (--auto, --merge, --squash, --rebase, --repo); the proxy of a Claude Code session, answering a call to GraphQL: PUT /repos/{owner}/{repo}/pulls/{n}/ccr/auto_merge",
+        "url": "https://cli.github.com/manual/gh_pr_merge",
+        "constants": {
+          "pr": {
+            "value": "pr",
+            "meaning": "The commands of pull requests"
+          },
+          "merge": {
+            "value": "merge",
+            "meaning": "Merges one, or asks it merged"
+          },
+          "auto": {
+            "value": "--auto",
+            "meaning": "Once it holds: its checks passed"
+          },
+          "byMerge": {
+            "value": "--merge",
+            "meaning": "By a merge commit"
+          },
+          "bySquash": {
+            "value": "--squash",
+            "meaning": "Squashed into one commit"
+          },
+          "byRebase": {
+            "value": "--rebase",
+            "meaning": "Its commits rebased"
+          },
+          "repo": {
+            "value": "--repo",
+            "meaning": "The repository, owner/name"
+          },
+          "route": {
+            "value": "/ccr/auto_merge",
+            "meaning": "After the pull request: the route of the proxy that asks GitHub to merge it once it holds"
+          },
+          "method": {
+            "value": "merge_method",
+            "meaning": "How it is merged, in the body of that route"
+          }
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "repository.GitHubCliPullRequests",
+      "kind": "implementation",
+      "title": "GitHub's pull requests, by its command line",
+      "source": "src/repository.ts:468",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "repos": "repository.GitHubRepositoryApi",
+          "api": "repository.GitHubPullRequestsApi",
+          "cli": "system.NodeCli",
+          "events": "system.NodeEvents",
+          "exit": "system.ExitStatus",
+          "texts": "algebra.Texts",
+          "values": "algebra.ValueTypes",
+          "merging": "repository.AutoMerge"
+        },
+        "body": {
+          "file": "./code/tooling/github-cli-pull-requests.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
       "id": "repository.GitHubCliRepository",
       "kind": "implementation",
       "title": "GitHub's command line",
-      "source": "src/repository.ts:221",
+      "source": "src/repository.ts:222",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -3290,10 +3723,76 @@
       "diagnostics": []
     },
     {
+      "id": "repository.GitHubPullRequestsApi",
+      "kind": "standard",
+      "title": "GitHub's API for pull requests",
+      "source": "src/repository.ts:404",
+      "fields": {
+        "owner": "trame",
+        "source": "GitHub REST API: Pulls (List pull requests: head, state; Create a pull request: title, head, base, body; number, html_url); GitHub CLI manual: gh api (--method, --input, a query)",
+        "url": "https://docs.github.com/en/rest/pulls/pulls",
+        "constants": {
+          "pulls": {
+            "value": "/pulls",
+            "meaning": "After the repository: its pull requests"
+          },
+          "query": {
+            "value": "?",
+            "meaning": "Opens the parameters of a call"
+          },
+          "and": {
+            "value": "&",
+            "meaning": "Between two parameters"
+          },
+          "equals": {
+            "value": "=",
+            "meaning": "Between a parameter and its value"
+          },
+          "head": {
+            "value": "head",
+            "meaning": "The branch a pull request brings, owner:branch when listed"
+          },
+          "owner": {
+            "value": ":",
+            "meaning": "Between the owner and the branch, in head"
+          },
+          "state": {
+            "value": "state",
+            "meaning": "Which pull requests are listed"
+          },
+          "openState": {
+            "value": "open",
+            "meaning": "Those still open"
+          },
+          "base": {
+            "value": "base",
+            "meaning": "The branch it goes into"
+          },
+          "title": {
+            "value": "title",
+            "meaning": "Its title"
+          },
+          "body": {
+            "value": "body",
+            "meaning": "What it says"
+          },
+          "number": {
+            "value": "number",
+            "meaning": "Its number in the repository"
+          },
+          "url": {
+            "value": "html_url",
+            "meaning": "Where a person opens it"
+          }
+        }
+      },
+      "diagnostics": []
+    },
+    {
       "id": "repository.GitHubRepositoryApi",
       "kind": "standard",
       "title": "GitHub's API for a repository",
-      "source": "src/repository.ts:158",
+      "source": "src/repository.ts:159",
       "fields": {
         "owner": "trame",
         "source": "GitHub REST API: Repositories (Get, Update a repository), Rules (Get rules for a branch; Get, Create and Update a repository ruleset), Pages (Get, Create a GitHub Pages site, build_type workflow); GitHub CLI manual: gh api (--method, --input)",
@@ -3491,7 +3990,7 @@
       "id": "repository.MergeMethods",
       "kind": "vocabulary",
       "title": "How GitHub merges a pull request",
-      "source": "src/repository.ts:27",
+      "source": "src/repository.ts:28",
       "fields": {
         "owner": "trame",
         "words": {
@@ -3503,10 +4002,65 @@
       "diagnostics": []
     },
     {
+      "id": "repository.PullRequests",
+      "kind": "port",
+      "title": "Pull requests",
+      "source": "src/repository.ts:393",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": {
+          "find": [
+            "process",
+            "network",
+            "asynchronous"
+          ],
+          "open": [
+            "process",
+            "network",
+            "asynchronous"
+          ],
+          "mergeOnceItHolds": [
+            "process",
+            "network",
+            "asynchronous"
+          ]
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "repository.PullRequestsInMemory",
+      "kind": "function",
+      "title": "Pull requests kept in memory",
+      "source": "src/repository.ts:512",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "repos": "repository.GitHubRepositoryApi",
+          "api": "repository.GitHubPullRequestsApi",
+          "texts": "algebra.Texts"
+        },
+        "body": "(function)"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "repository.PullRequestsKept",
+      "kind": "port",
+      "title": "The pull requests a scenario keeps",
+      "source": "src/repository.ts:505",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": []
+      },
+      "diagnostics": []
+    },
+    {
       "id": "repository.RepositoryApi",
       "kind": "port",
       "title": "A repository on GitHub",
-      "source": "src/repository.ts:146",
+      "source": "src/repository.ts:147",
       "fields": {
         "owner": "trame",
         "declaredEffects": {
@@ -3528,7 +4082,7 @@
       "id": "repository.RepositoryCompared",
       "kind": "function",
       "title": "A repository compared with its settings",
-      "source": "src/repository.ts:108",
+      "source": "src/repository.ts:109",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3543,7 +4097,7 @@
       "id": "repository.RepositoryInMemory",
       "kind": "function",
       "title": "A repository kept in memory",
-      "source": "src/repository.ts:248",
+      "source": "src/repository.ts:249",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3555,7 +4109,7 @@
       "id": "repository.RepositoryKept",
       "kind": "port",
       "title": "The repositories a scenario keeps",
-      "source": "src/repository.ts:239",
+      "source": "src/repository.ts:240",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -3566,7 +4120,7 @@
       "id": "repository.RepositoryParts",
       "kind": "vocabulary",
       "title": "The parts of a repository's settings",
-      "source": "src/repository.ts:78",
+      "source": "src/repository.ts:79",
       "fields": {
         "owner": "trame",
         "words": {
@@ -3586,7 +4140,7 @@
       "id": "repository.RepositoryThroughItsApi",
       "kind": "adr",
       "title": "A repository is set by its project's graph",
-      "source": "src/repository.ts:276",
+      "source": "src/repository.ts:542",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3795,7 +4349,7 @@
       "id": "scenarios.CommandsMade",
       "kind": "scenario",
       "title": "Commands are made for each effect",
-      "source": "src/scenarios.ts:204",
+      "source": "src/scenarios.ts:363",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3819,7 +4373,7 @@
       "id": "scenarios.DeviceInMemory",
       "kind": "scenario",
       "title": "The device, in memory",
-      "source": "src/scenarios.ts:248",
+      "source": "src/scenarios.ts:407",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3861,7 +4415,7 @@
       "id": "scenarios.DrawsKeepTheirPromise",
       "kind": "scenario",
       "title": "Seeded draws keep their promise",
-      "source": "src/scenarios.ts:220",
+      "source": "src/scenarios.ts:379",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3897,7 +4451,7 @@
       "id": "scenarios.InMemory",
       "kind": "binding",
       "title": "In memory",
-      "source": "src/scenarios.ts:37",
+      "source": "src/scenarios.ts:43",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3909,7 +4463,7 @@
       "id": "scenarios.JudgedAsTheLanguage",
       "kind": "scenario",
       "title": "Judged as the language says",
-      "source": "src/scenarios.ts:172",
+      "source": "src/scenarios.ts:331",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3931,7 +4485,7 @@
       "id": "scenarios.JudgedStrictly",
       "kind": "scenario",
       "title": "Judged strictly",
-      "source": "src/scenarios.ts:187",
+      "source": "src/scenarios.ts:346",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3953,7 +4507,7 @@
       "id": "scenarios.LanguageJudgment",
       "kind": "binding",
       "title": "Judged as the language says",
-      "source": "src/scenarios.ts:50",
+      "source": "src/scenarios.ts:59",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3962,10 +4516,87 @@
       "diagnostics": []
     },
     {
+      "id": "scenarios.PropagatedInOrder",
+      "kind": "scenario",
+      "title": "A version carried across the projects",
+      "source": "src/scenarios.ts:269",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "propagate": "commands.Propagate",
+          "files": "tooling.Files",
+          "runs": "tooling.ProgramRunsKept",
+          "data": "scenarios.ScenarioData",
+          "say": "commands.CommandWords",
+          "checks": "scenarios.ScenarioChecks",
+          "counts": "algebra.Counts",
+          "sequences": "algebra.Sequences",
+          "exit": "system.ExitStatus"
+        },
+        "body": "(function)"
+      },
+      "result": [
+        {
+          "name": "Each project is carried after the libraries it imports and the projects it reads, built at its day when it has one",
+          "status": "passed"
+        },
+        {
+          "name": "Its files that run elsewhere are written again only where the upgrade moved a reference",
+          "status": "passed"
+        },
+        {
+          "name": "A step that fails stops the propagation there, saying where",
+          "status": "passed"
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "scenarios.PullRequestOpened",
+      "kind": "scenario",
+      "title": "A pull request opened",
+      "source": "src/scenarios.ts:231",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "open": "commands.OpenPullRequest",
+          "branches": "repository.BranchesKept",
+          "pulls": "repository.PullRequestsKept",
+          "data": "scenarios.ScenarioData",
+          "say": "commands.CommandWords",
+          "checks": "scenarios.ScenarioChecks",
+          "counts": "algebra.Counts",
+          "exit": "system.ExitStatus"
+        },
+        "body": "(function)"
+      },
+      "result": [
+        {
+          "name": "A branch that changes nothing people decided is pushed, its pull request opened into the base, and GitHub asked to merge it once it holds",
+          "status": "passed"
+        },
+        {
+          "name": "A branch that changes a project's lock gets its pull request, which a person merges: GitHub is not asked",
+          "status": "passed"
+        },
+        {
+          "name": "A branch whose pull request is open finds it, and opens no other",
+          "status": "passed"
+        },
+        {
+          "name": "On the base itself, nothing is pushed nor opened",
+          "status": "passed"
+        }
+      ],
+      "diagnostics": []
+    },
+    {
       "id": "scenarios.RepositoryInMemoryKeeps",
       "kind": "scenario",
       "title": "A repository kept in memory",
-      "source": "src/scenarios.ts:149",
+      "source": "src/scenarios.ts:308",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3995,7 +4626,7 @@
       "id": "scenarios.ScenarioChecks",
       "kind": "catalog",
       "title": "What the library's scenarios check",
-      "source": "src/scenarios.ts:86",
+      "source": "src/scenarios.ts:95",
       "fields": {
         "owner": "trame",
         "messages": "(function)"
@@ -4006,7 +4637,7 @@
       "id": "scenarios.ScenarioData",
       "kind": "decision",
       "title": "What the library's scenarios are given",
-      "source": "src/scenarios.ts:114",
+      "source": "src/scenarios.ts:130",
       "fields": {
         "owner": "trame",
         "value": {
@@ -4097,6 +4728,97 @@
               "approvals",
               "checks"
             ]
+          },
+          "pullRequest": {
+            "way": {
+              "repository": "owner/project",
+              "base": "main",
+              "method": "merge",
+              "merge": "onceItHoldsUnlessDecided",
+              "lock": "trame.lock",
+              "projects": [
+                {
+                  "name": "project",
+                  "dir": "."
+                },
+                {
+                  "name": "app",
+                  "dir": "apps/app"
+                }
+              ]
+            },
+            "branch": "work",
+            "title": "A change",
+            "free": [
+              "src/product.ts",
+              "apps/app/src/app.ts"
+            ],
+            "decided": [
+              "apps/app/trame.lock",
+              "apps/app/src/app.ts"
+            ],
+            "open": {
+              "number": 7,
+              "url": "https://github.com/owner/project/pull/7"
+            },
+            "elsewhere": "more-work"
+          },
+          "propagation": {
+            "settings": {
+              "engine": {
+                "launcher": "trame.sh",
+                "upgrade": "upgrade",
+                "ship": "ship",
+                "build": "build",
+                "by": "--by",
+                "today": "TRAME_TODAY"
+              },
+              "configuration": "trame.json",
+              "projects": [
+                {
+                  "name": "project",
+                  "dir": ".",
+                  "reads": [
+                    "example"
+                  ],
+                  "runners": "RunnersWritten"
+                },
+                {
+                  "name": "example",
+                  "dir": "examples/example",
+                  "day": "2026-10-30",
+                  "runners": "RunnersWritten"
+                },
+                {
+                  "name": "app",
+                  "dir": "apps/app",
+                  "runners": "RunnersWritten"
+                },
+                {
+                  "name": "lib",
+                  "dir": "libs/lib"
+                }
+              ]
+            },
+            "by": "--by",
+            "person": "ada",
+            "described": {
+              "./trame.json": "{\"libraries\":{\"lib\":\"libs/lib\"}}",
+              "examples/example/trame.json": "{\"libraries\":{\"lib\":\"../../libs/lib\",\"app\":\"../../apps/app\"}}",
+              "apps/app/trame.json": "{\"libraries\":{\"lib\":{\"path\":\"../../libs/lib\",\"version\":\"0.1.0\"}}}",
+              "libs/lib/trame.json": "{\"libraries\":{}}"
+            },
+            "order": [
+              "lib",
+              "app",
+              "example",
+              "project"
+            ],
+            "moves": {
+              "dir": "apps/app",
+              "path": "apps/app/trame.json",
+              "to": "{\"libraries\":{\"lib\":{\"path\":\"../../libs/lib\",\"version\":\"0.2.0\"}}}"
+            }
           }
         }
       },
@@ -4106,7 +4828,7 @@
       "id": "scenarios.ScenarioLanguage",
       "kind": "decision",
       "title": "The language of the library's scenarios",
-      "source": "src/scenarios.ts:81",
+      "source": "src/scenarios.ts:90",
       "fields": {
         "owner": "trame",
         "value": {
@@ -4116,10 +4838,52 @@
       "diagnostics": []
     },
     {
+      "id": "scenarios.ScenarioPropagation",
+      "kind": "function",
+      "title": "How the scenarios' versions are carried",
+      "source": "src/scenarios.ts:206",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "data": "scenarios.ScenarioData"
+        },
+        "body": "(function)"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "scenarios.ScenarioPullRequests",
+      "kind": "function",
+      "title": "How the scenarios' pull requests are opened",
+      "source": "src/scenarios.ts:196",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "data": "scenarios.ScenarioData"
+        },
+        "body": "(function)"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "scenarios.ScenarioSettings",
+      "kind": "binding",
+      "title": "The scenarios' settings",
+      "source": "src/scenarios.ts:216",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "A command of the library reads its settings through its ports: a scenario answers them with its own."
+      },
+      "diagnostics": []
+    },
+    {
       "id": "scenarios.Strict",
       "kind": "environment",
       "title": "Strict",
-      "source": "src/scenarios.ts:63",
+      "source": "src/scenarios.ts:72",
       "fields": {
         "owner": "trame"
       },
@@ -4129,7 +4893,7 @@
       "id": "scenarios.StrictJudgment",
       "kind": "binding",
       "title": "Judged strictly",
-      "source": "src/scenarios.ts:69",
+      "source": "src/scenarios.ts:78",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4141,7 +4905,7 @@
       "id": "scenarios.Test",
       "kind": "environment",
       "title": "Test",
-      "source": "src/scenarios.ts:31",
+      "source": "src/scenarios.ts:37",
       "fields": {
         "owner": "trame",
         "evaluates": true
@@ -4152,7 +4916,7 @@
       "id": "scenarios.ToolingInMemory",
       "kind": "scenario",
       "title": "The tooling, in memory",
-      "source": "src/scenarios.ts:282",
+      "source": "src/scenarios.ts:441",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4239,6 +5003,11 @@
       "result": {
         "derived": [
           {
+            "node": "commands.CommandsOfALibrary",
+            "via": "commands.LibraryCommands",
+            "obligation": "sdlc.DecisionsApplied"
+          },
+          {
             "node": "judgment.HarderNeverSofter",
             "via": "judgment.AsTheLanguageSays",
             "obligation": "sdlc.DecisionsApplied"
@@ -4271,6 +5040,16 @@
           {
             "node": "scenarios.DrawsKeepTheirPromise",
             "via": "algorithms.SeededDraws",
+            "obligation": "sdlc.FunctionsVerified"
+          },
+          {
+            "node": "scenarios.PullRequestOpened",
+            "via": "commands.OpenPullRequest",
+            "obligation": "sdlc.FunctionsVerified"
+          },
+          {
+            "node": "scenarios.PropagatedInOrder",
+            "via": "commands.Propagate",
             "obligation": "sdlc.FunctionsVerified"
           },
           {
@@ -4401,6 +5180,14 @@
           "algorithms.MultiplicativeHash",
           "algorithms.SeededDraws",
           "algorithms.Sha256",
+          "commands.CommandLanguage",
+          "commands.CommandsOfALibrary",
+          "commands.CommandWords",
+          "commands.LibraryCommands",
+          "commands.OpenPullRequest",
+          "commands.Propagate",
+          "commands.PropagationSettings",
+          "commands.PullRequestSettings",
           "ecmascript.EcmaScript",
           "ecmascript.EcmaScriptReservedWords",
           "ecmascript.EcmaScriptTypes",
@@ -4453,6 +5240,7 @@
           "patterns.AbstractFactory",
           "patterns.Adapter",
           "patterns.Bridge",
+          "patterns.Command",
           "patterns.Repository",
           "patterns.Strategy",
           "platform.AnimationFrames",
@@ -4476,15 +5264,30 @@
           "platform.StartsWithThePage",
           "platform.TimeTurned",
           "platform.WrittenSpeech",
+          "product.ChosenCommands",
           "product.CitedNotCopied",
           "product.KnownDesigns",
           "product.RealizedOnce",
           "product.SharedOperations",
           "product.SharedRules",
           "product.VersionsThatHold",
+          "repository.AutoMerge",
+          "repository.AutoMergeByGitHubCli",
+          "repository.AutoMergeInAClaudeSession",
+          "repository.Branches",
+          "repository.BranchesInMemory",
+          "repository.BranchesKept",
+          "repository.GitCliBranches",
+          "repository.GitCommandLine",
+          "repository.GitHubAutoMerge",
+          "repository.GitHubCliPullRequests",
           "repository.GitHubCliRepository",
+          "repository.GitHubPullRequestsApi",
           "repository.GitHubRepositoryApi",
           "repository.MergeMethods",
+          "repository.PullRequests",
+          "repository.PullRequestsInMemory",
+          "repository.PullRequestsKept",
           "repository.RepositoryApi",
           "repository.RepositoryCompared",
           "repository.RepositoryInMemory",
@@ -4509,10 +5312,15 @@
           "scenarios.JudgedAsTheLanguage",
           "scenarios.JudgedStrictly",
           "scenarios.LanguageJudgment",
+          "scenarios.PropagatedInOrder",
+          "scenarios.PullRequestOpened",
           "scenarios.RepositoryInMemoryKeeps",
           "scenarios.ScenarioChecks",
           "scenarios.ScenarioData",
           "scenarios.ScenarioLanguage",
+          "scenarios.ScenarioPropagation",
+          "scenarios.ScenarioPullRequests",
+          "scenarios.ScenarioSettings",
           "scenarios.Strict",
           "scenarios.StrictJudgment",
           "scenarios.Test",
@@ -4552,12 +5360,16 @@
           "tooling.HeadlessChromium",
           "tooling.MachineFiles",
           "tooling.NodeProgramCommands",
+          "tooling.NodeProgramRuns",
           "tooling.PackageOrigins",
           "tooling.PackageSources",
           "tooling.PlaywrightApi",
           "tooling.PlaywrightBrowser",
           "tooling.PlaywrightPackage",
           "tooling.ProgramCommands",
+          "tooling.ProgramRuns",
+          "tooling.ProgramRunsInMemory",
+          "tooling.ProgramRunsKept",
           "tooling.ToolingAsPorts",
           "web.CssomView",
           "web.Http",
@@ -4690,7 +5502,7 @@
       },
       "result": {
         "path": "src",
-        "code": "b4c1c914"
+        "code": "1ba38935"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -4732,7 +5544,7 @@
       "id": "system.NodeArguments",
       "kind": "standard",
       "title": "Node.js process arguments",
-      "source": "src/system.ts:45",
+      "source": "src/system.ts:46",
       "fields": {
         "owner": "trame",
         "source": "Node.js documentation, process.argv",
@@ -4754,7 +5566,7 @@
       "id": "system.NodeCli",
       "kind": "standard",
       "title": "Node.js command line and child processes",
-      "source": "src/system.ts:97",
+      "source": "src/system.ts:98",
       "fields": {
         "owner": "trame",
         "source": "Node.js documentation: Command-line API (--import, NODE_NO_WARNINGS), child_process (options.stdio)",
@@ -4788,7 +5600,7 @@
       "id": "system.NodeEncodings",
       "kind": "standard",
       "title": "Node.js character encodings",
-      "source": "src/system.ts:135",
+      "source": "src/system.ts:136",
       "fields": {
         "owner": "trame",
         "source": "Node.js documentation, Buffer: buffers and character encodings",
@@ -4810,7 +5622,7 @@
       "id": "system.NodeEvents",
       "kind": "standard",
       "title": "Node.js events",
-      "source": "src/system.ts:77",
+      "source": "src/system.ts:78",
       "fields": {
         "owner": "trame",
         "source": "Node.js documentation: stream.Readable ('data', 'close', 'error'), ChildProcess ('exit', 'close'), process ('unhandledRejection'), fs.watch ('change')",
@@ -4852,7 +5664,7 @@
       "id": "system.NodeModuleSpecifiers",
       "kind": "standard",
       "title": "Node.js module specifiers",
-      "source": "src/system.ts:116",
+      "source": "src/system.ts:117",
       "fields": {
         "owner": "trame",
         "source": "Node.js documentation, ECMAScript modules: Terminology (relative, bare and absolute specifiers); Packages: Subpath imports",
@@ -4890,7 +5702,7 @@
       "id": "system.NodeProcessApi",
       "kind": "standard",
       "title": "Node.js process and console",
-      "source": "src/system.ts:60",
+      "source": "src/system.ts:61",
       "fields": {
         "owner": "trame",
         "source": "Node.js documentation: process (process.exitCode), console (console.log)",
@@ -4920,7 +5732,7 @@
       "id": "system.NpmCli",
       "kind": "standard",
       "title": "npm's command line",
-      "source": "src/system.ts:150",
+      "source": "src/system.ts:151",
       "fields": {
         "owner": "trame",
         "source": "npm documentation: npm install, npm audit, npm outdated (--json)",
@@ -4962,7 +5774,7 @@
       "id": "system.NpmManifest",
       "kind": "standard",
       "title": "npm's manifest",
-      "source": "src/system.ts:171",
+      "source": "src/system.ts:172",
       "fields": {
         "owner": "trame",
         "source": "npm documentation: package.json (dependencies); Node.js documentation, Packages: \"imports\"",
@@ -4995,12 +5807,16 @@
       "source": "src/system.ts:28",
       "fields": {
         "owner": "trame",
-        "source": "POSIX.1-2017, Base Definitions: <signal.h> (SIGINT, SIGTERM), <errno.h> (EPIPE), § 4.13 Pathname Resolution (dot)",
+        "source": "POSIX.1-2017, Base Definitions: <signal.h> (SIGINT, SIGTERM), <errno.h> (EPIPE), § 3.271 Pathname (slash), § 4.13 Pathname Resolution (dot)",
         "url": "https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/signal.h.html",
         "constants": {
           "currentDirectory": {
             "value": ".",
             "meaning": "The directory a path starts from: a command in it is run as ./name"
+          },
+          "slash": {
+            "value": "/",
+            "meaning": "Separates the components of a pathname: a directory and what it holds"
           },
           "interrupt": {
             "value": "SIGINT",
@@ -5150,7 +5966,7 @@
       "id": "tooling.BrowserInMemory",
       "kind": "function",
       "title": "A browser kept in memory",
-      "source": "src/tooling.ts:209",
+      "source": "src/tooling.ts:285",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5165,7 +5981,7 @@
       "id": "tooling.BrowserScripted",
       "kind": "port",
       "title": "Browser script",
-      "source": "src/tooling.ts:202",
+      "source": "src/tooling.ts:278",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -5231,7 +6047,7 @@
       "id": "tooling.HeadlessBrowser",
       "kind": "port",
       "title": "Headless browser",
-      "source": "src/tooling.ts:131",
+      "source": "src/tooling.ts:207",
       "fields": {
         "owner": "trame",
         "declaredEffects": [
@@ -5248,7 +6064,7 @@
       "id": "tooling.HeadlessChromium",
       "kind": "decision",
       "title": "Chromium without a screen",
-      "source": "src/tooling.ts:163",
+      "source": "src/tooling.ts:239",
       "fields": {
         "owner": "trame",
         "value": {
@@ -5305,10 +6121,30 @@
       "diagnostics": []
     },
     {
+      "id": "tooling.NodeProgramRuns",
+      "kind": "implementation",
+      "title": "Programs run by Node",
+      "source": "src/tooling.ts:135",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "cli": "system.NodeCli",
+          "events": "system.NodeEvents",
+          "exit": "system.ExitStatus",
+          "posix": "system.Posix"
+        },
+        "body": {
+          "file": "./code/tooling/node-program-runs.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
       "id": "tooling.PackageOrigins",
       "kind": "vocabulary",
       "title": "Where a package comes from",
-      "source": "src/tooling.ts:289",
+      "source": "src/tooling.ts:365",
       "fields": {
         "owner": "trame",
         "words": {
@@ -5322,7 +6158,7 @@
       "id": "tooling.PackageSources",
       "kind": "port",
       "title": "Where a package comes from",
-      "source": "src/tooling.ts:279",
+      "source": "src/tooling.ts:355",
       "fields": {
         "owner": "trame",
         "declaredEffects": {
@@ -5347,7 +6183,7 @@
       "id": "tooling.PlaywrightApi",
       "kind": "standard",
       "title": "Playwright's API",
-      "source": "src/tooling.ts:148",
+      "source": "src/tooling.ts:224",
       "fields": {
         "owner": "trame",
         "source": "Playwright documentation, class Page, event \"pageerror\"",
@@ -5365,7 +6201,7 @@
       "id": "tooling.PlaywrightBrowser",
       "kind": "implementation",
       "title": "Chromium, driven by Playwright",
-      "source": "src/tooling.ts:177",
+      "source": "src/tooling.ts:253",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -5385,7 +6221,7 @@
       "id": "tooling.PlaywrightPackage",
       "kind": "package",
       "title": "Playwright",
-      "source": "src/tooling.ts:138",
+      "source": "src/tooling.ts:214",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5417,10 +6253,62 @@
       "diagnostics": []
     },
     {
+      "id": "tooling.ProgramRuns",
+      "kind": "port",
+      "title": "Programs run",
+      "source": "src/tooling.ts:128",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": {
+          "run": [
+            "process",
+            "terminal",
+            "read",
+            "write",
+            "asynchronous"
+          ]
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "tooling.ProgramRunsInMemory",
+      "kind": "function",
+      "title": "Programs run in memory",
+      "source": "src/tooling.ts:159",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "exit": "system.ExitStatus",
+          "files": "tooling.Files"
+        },
+        "body": "(function)"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "tooling.ProgramRunsKept",
+      "kind": "port",
+      "title": "The programs a scenario keeps: the file it says a program writes is written when that program runs.",
+      "source": "src/tooling.ts:152",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": {
+          "failIn": [],
+          "writeIn": [
+            "write"
+          ],
+          "runs": []
+        }
+      },
+      "diagnostics": []
+    },
+    {
       "id": "tooling.ToolingAsPorts",
       "kind": "adr",
       "title": "The SDLC's tooling is realized once",
-      "source": "src/tooling.ts:304",
+      "source": "src/tooling.ts:380",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5886,6 +6774,156 @@
       "kind": "serves"
     },
     {
+      "from": "commands.CommandsOfALibrary",
+      "to": "product.ChosenCommands",
+      "kind": "serves"
+    },
+    {
+      "from": "commands.CommandsOfALibrary",
+      "to": "commands.LibraryCommands",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "commands.CommandsOfALibrary",
+      "to": "commands.OpenPullRequest",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "commands.CommandsOfALibrary",
+      "to": "commands.Propagate",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "commands.CommandsOfALibrary",
+      "to": "patterns.Command",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "commands.CommandWords",
+      "to": "commands.CommandLanguage",
+      "kind": "language"
+    },
+    {
+      "from": "commands.LibraryCommands",
+      "to": "tooling.ProgramCommands",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.OpenPullRequest",
+      "to": "product.ChosenCommands",
+      "kind": "serves"
+    },
+    {
+      "from": "commands.OpenPullRequest",
+      "to": "commands.LibraryCommands",
+      "kind": "in"
+    },
+    {
+      "from": "commands.OpenPullRequest",
+      "to": "access.TheOperators",
+      "kind": "for"
+    },
+    {
+      "from": "commands.OpenPullRequest",
+      "to": "commands.PullRequestSettings",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.OpenPullRequest",
+      "to": "repository.Branches",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.OpenPullRequest",
+      "to": "repository.PullRequests",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.OpenPullRequest",
+      "to": "ci/github.MergeWays",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.OpenPullRequest",
+      "to": "commands.CommandWords",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.OpenPullRequest",
+      "to": "system.ExitStatus",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.OpenPullRequest",
+      "to": "algebra.Counts",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.OpenPullRequest",
+      "to": "system.Posix",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.OpenPullRequest",
+      "to": "algebra.Texts",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Propagate",
+      "to": "product.ChosenCommands",
+      "kind": "serves"
+    },
+    {
+      "from": "commands.Propagate",
+      "to": "commands.LibraryCommands",
+      "kind": "in"
+    },
+    {
+      "from": "commands.Propagate",
+      "to": "access.TheOperators",
+      "kind": "for"
+    },
+    {
+      "from": "commands.Propagate",
+      "to": "commands.PropagationSettings",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Propagate",
+      "to": "tooling.Files",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Propagate",
+      "to": "tooling.ProgramRuns",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Propagate",
+      "to": "commands.CommandWords",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Propagate",
+      "to": "system.ExitStatus",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Propagate",
+      "to": "algebra.Sequences",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Propagate",
+      "to": "system.Posix",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Propagate",
+      "to": "algebra.Texts",
+      "kind": "deps"
+    },
+    {
       "from": "ecmascript.EcmaScript",
       "to": "product.CitedNotCopied",
       "kind": "serves"
@@ -6197,6 +7235,11 @@
     },
     {
       "from": "patterns.Bridge",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "patterns.Command",
       "to": "product.KnownDesigns",
       "kind": "serves"
     },
@@ -6986,6 +8029,186 @@
       "kind": "serves"
     },
     {
+      "from": "repository.AutoMergeByGitHubCli",
+      "to": "repository.AutoMerge",
+      "kind": "implements"
+    },
+    {
+      "from": "repository.AutoMergeByGitHubCli",
+      "to": "repository.GitHubAutoMerge",
+      "kind": "deps"
+    },
+    {
+      "from": "repository.AutoMergeByGitHubCli",
+      "to": "repository.GitHubRepositoryApi",
+      "kind": "deps"
+    },
+    {
+      "from": "repository.AutoMergeByGitHubCli",
+      "to": "repository.MergeMethods",
+      "kind": "deps"
+    },
+    {
+      "from": "repository.AutoMergeByGitHubCli",
+      "to": "system.NodeCli",
+      "kind": "deps"
+    },
+    {
+      "from": "repository.AutoMergeByGitHubCli",
+      "to": "system.NodeEvents",
+      "kind": "deps"
+    },
+    {
+      "from": "repository.AutoMergeByGitHubCli",
+      "to": "system.ExitStatus",
+      "kind": "deps"
+    },
+    {
+      "from": "repository.AutoMergeInAClaudeSession",
+      "to": "repository.AutoMerge",
+      "kind": "implements"
+    },
+    {
+      "from": "repository.AutoMergeInAClaudeSession",
+      "to": "repository.GitHubAutoMerge",
+      "kind": "deps"
+    },
+    {
+      "from": "repository.AutoMergeInAClaudeSession",
+      "to": "repository.GitHubRepositoryApi",
+      "kind": "deps"
+    },
+    {
+      "from": "repository.AutoMergeInAClaudeSession",
+      "to": "repository.GitHubPullRequestsApi",
+      "kind": "deps"
+    },
+    {
+      "from": "repository.AutoMergeInAClaudeSession",
+      "to": "system.NodeCli",
+      "kind": "deps"
+    },
+    {
+      "from": "repository.AutoMergeInAClaudeSession",
+      "to": "system.NodeEvents",
+      "kind": "deps"
+    },
+    {
+      "from": "repository.AutoMergeInAClaudeSession",
+      "to": "system.ExitStatus",
+      "kind": "deps"
+    },
+    {
+      "from": "repository.AutoMergeInAClaudeSession",
+      "to": "algebra.Texts",
+      "kind": "deps"
+    },
+    {
+      "from": "repository.BranchesInMemory",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "repository.BranchesInMemory",
+      "to": "repository.Branches",
+      "kind": "implements"
+    },
+    {
+      "from": "repository.BranchesInMemory",
+      "to": "repository.BranchesKept",
+      "kind": "implements"
+    },
+    {
+      "from": "repository.GitCliBranches",
+      "to": "repository.Branches",
+      "kind": "implements"
+    },
+    {
+      "from": "repository.GitCliBranches",
+      "to": "repository.GitCommandLine",
+      "kind": "deps"
+    },
+    {
+      "from": "repository.GitCliBranches",
+      "to": "system.NodeCli",
+      "kind": "deps"
+    },
+    {
+      "from": "repository.GitCliBranches",
+      "to": "system.NodeEvents",
+      "kind": "deps"
+    },
+    {
+      "from": "repository.GitCliBranches",
+      "to": "system.ExitStatus",
+      "kind": "deps"
+    },
+    {
+      "from": "repository.GitCliBranches",
+      "to": "algebra.Texts",
+      "kind": "deps"
+    },
+    {
+      "from": "repository.GitCliBranches",
+      "to": "text.TextFile",
+      "kind": "deps"
+    },
+    {
+      "from": "repository.GitCommandLine",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "repository.GitHubAutoMerge",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "repository.GitHubCliPullRequests",
+      "to": "repository.PullRequests",
+      "kind": "implements"
+    },
+    {
+      "from": "repository.GitHubCliPullRequests",
+      "to": "repository.GitHubRepositoryApi",
+      "kind": "deps"
+    },
+    {
+      "from": "repository.GitHubCliPullRequests",
+      "to": "repository.GitHubPullRequestsApi",
+      "kind": "deps"
+    },
+    {
+      "from": "repository.GitHubCliPullRequests",
+      "to": "system.NodeCli",
+      "kind": "deps"
+    },
+    {
+      "from": "repository.GitHubCliPullRequests",
+      "to": "system.NodeEvents",
+      "kind": "deps"
+    },
+    {
+      "from": "repository.GitHubCliPullRequests",
+      "to": "system.ExitStatus",
+      "kind": "deps"
+    },
+    {
+      "from": "repository.GitHubCliPullRequests",
+      "to": "algebra.Texts",
+      "kind": "deps"
+    },
+    {
+      "from": "repository.GitHubCliPullRequests",
+      "to": "algebra.ValueTypes",
+      "kind": "deps"
+    },
+    {
+      "from": "repository.GitHubCliPullRequests",
+      "to": "repository.AutoMerge",
+      "kind": "deps"
+    },
+    {
       "from": "repository.GitHubCliRepository",
       "to": "repository.RepositoryApi",
       "kind": "implements"
@@ -7026,6 +8249,11 @@
       "kind": "deps"
     },
     {
+      "from": "repository.GitHubPullRequestsApi",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
       "from": "repository.GitHubRepositoryApi",
       "to": "product.CitedNotCopied",
       "kind": "serves"
@@ -7034,6 +8262,36 @@
       "from": "repository.MergeMethods",
       "to": "product.CitedNotCopied",
       "kind": "serves"
+    },
+    {
+      "from": "repository.PullRequestsInMemory",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "repository.PullRequestsInMemory",
+      "to": "repository.PullRequests",
+      "kind": "implements"
+    },
+    {
+      "from": "repository.PullRequestsInMemory",
+      "to": "repository.PullRequestsKept",
+      "kind": "implements"
+    },
+    {
+      "from": "repository.PullRequestsInMemory",
+      "to": "repository.GitHubRepositoryApi",
+      "kind": "deps"
+    },
+    {
+      "from": "repository.PullRequestsInMemory",
+      "to": "repository.GitHubPullRequestsApi",
+      "kind": "deps"
+    },
+    {
+      "from": "repository.PullRequestsInMemory",
+      "to": "algebra.Texts",
+      "kind": "deps"
     },
     {
       "from": "repository.RepositoryCompared",
@@ -7352,6 +8610,21 @@
     },
     {
       "from": "scenarios.InMemory",
+      "to": "repository.BranchesInMemory",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.InMemory",
+      "to": "repository.PullRequestsInMemory",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.InMemory",
+      "to": "tooling.ProgramRunsInMemory",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.InMemory",
       "to": "scenarios.Test",
       "kind": "environments"
     },
@@ -7426,6 +8699,136 @@
       "kind": "serves"
     },
     {
+      "from": "scenarios.PropagatedInOrder",
+      "to": "commands.Propagate",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.PropagatedInOrder",
+      "to": "tooling.ProgramRunsInMemory",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.PropagatedInOrder",
+      "to": "scenarios.ScenarioPropagation",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.PropagatedInOrder",
+      "to": "scenarios.Test",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.PropagatedInOrder",
+      "to": "commands.Propagate",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PropagatedInOrder",
+      "to": "tooling.Files",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PropagatedInOrder",
+      "to": "tooling.ProgramRunsKept",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PropagatedInOrder",
+      "to": "scenarios.ScenarioData",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PropagatedInOrder",
+      "to": "commands.CommandWords",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PropagatedInOrder",
+      "to": "scenarios.ScenarioChecks",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PropagatedInOrder",
+      "to": "algebra.Counts",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PropagatedInOrder",
+      "to": "algebra.Sequences",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PropagatedInOrder",
+      "to": "system.ExitStatus",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PullRequestOpened",
+      "to": "commands.OpenPullRequest",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.PullRequestOpened",
+      "to": "repository.BranchesInMemory",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.PullRequestOpened",
+      "to": "repository.PullRequestsInMemory",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.PullRequestOpened",
+      "to": "scenarios.ScenarioPullRequests",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.PullRequestOpened",
+      "to": "scenarios.Test",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.PullRequestOpened",
+      "to": "commands.OpenPullRequest",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PullRequestOpened",
+      "to": "repository.BranchesKept",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PullRequestOpened",
+      "to": "repository.PullRequestsKept",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PullRequestOpened",
+      "to": "scenarios.ScenarioData",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PullRequestOpened",
+      "to": "commands.CommandWords",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PullRequestOpened",
+      "to": "scenarios.ScenarioChecks",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PullRequestOpened",
+      "to": "algebra.Counts",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PullRequestOpened",
+      "to": "system.ExitStatus",
+      "kind": "deps"
+    },
+    {
       "from": "scenarios.RepositoryInMemoryKeeps",
       "to": "repository.RepositoryInMemory",
       "kind": "verifies"
@@ -7474,6 +8877,61 @@
       "from": "scenarios.ScenarioChecks",
       "to": "scenarios.ScenarioLanguage",
       "kind": "language"
+    },
+    {
+      "from": "scenarios.ScenarioPropagation",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "scenarios.ScenarioPropagation",
+      "to": "commands.PropagationSettings",
+      "kind": "implements"
+    },
+    {
+      "from": "scenarios.ScenarioPropagation",
+      "to": "scenarios.ScenarioData",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ScenarioPullRequests",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "scenarios.ScenarioPullRequests",
+      "to": "commands.PullRequestSettings",
+      "kind": "implements"
+    },
+    {
+      "from": "scenarios.ScenarioPullRequests",
+      "to": "scenarios.ScenarioData",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ScenarioSettings",
+      "to": "scenarios.ScenarioPullRequests",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.ScenarioSettings",
+      "to": "scenarios.ScenarioPropagation",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.ScenarioSettings",
+      "to": "scenarios.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "scenarios.ScenarioSettings",
+      "to": "patterns.Strategy",
+      "kind": "follows"
+    },
+    {
+      "from": "scenarios.ScenarioSettings",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
     },
     {
       "from": "scenarios.StrictJudgment",
@@ -7816,6 +9274,31 @@
       "kind": "deps"
     },
     {
+      "from": "tooling.NodeProgramRuns",
+      "to": "tooling.ProgramRuns",
+      "kind": "implements"
+    },
+    {
+      "from": "tooling.NodeProgramRuns",
+      "to": "system.NodeCli",
+      "kind": "deps"
+    },
+    {
+      "from": "tooling.NodeProgramRuns",
+      "to": "system.NodeEvents",
+      "kind": "deps"
+    },
+    {
+      "from": "tooling.NodeProgramRuns",
+      "to": "system.ExitStatus",
+      "kind": "deps"
+    },
+    {
+      "from": "tooling.NodeProgramRuns",
+      "to": "system.Posix",
+      "kind": "deps"
+    },
+    {
       "from": "tooling.PackageOrigins",
       "to": "product.RealizedOnce",
       "kind": "serves"
@@ -7853,6 +9336,31 @@
     {
       "from": "tooling.PlaywrightBrowser",
       "to": "measures.Time",
+      "kind": "deps"
+    },
+    {
+      "from": "tooling.ProgramRunsInMemory",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "tooling.ProgramRunsInMemory",
+      "to": "tooling.ProgramRuns",
+      "kind": "implements"
+    },
+    {
+      "from": "tooling.ProgramRunsInMemory",
+      "to": "tooling.ProgramRunsKept",
+      "kind": "implements"
+    },
+    {
+      "from": "tooling.ProgramRunsInMemory",
+      "to": "system.ExitStatus",
+      "kind": "deps"
+    },
+    {
+      "from": "tooling.ProgramRunsInMemory",
+      "to": "tooling.Files",
       "kind": "deps"
     },
     {

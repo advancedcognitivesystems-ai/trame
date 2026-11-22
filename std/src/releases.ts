@@ -4,7 +4,7 @@
 // release's own record is written after its sources are copied, so it is not in its own copy.
 
 import { release } from "#trame/kinds/release"
-import { CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold } from "./product"
+import { ChosenCommands, CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold } from "./product"
 
 /**
  * Version 0.1.0
@@ -303,4 +303,17 @@ export const R0_21_0 = release({
   fingerprint: "11af7c0453654031",
   language: "shared",
   serves: [CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
+})
+
+/**
+ * Version 0.22.0
+ */
+export const R0_22_0 = release({
+  owner: "trame",
+  version: "0.22.0",
+  date: "2026-11-22",
+  what: "Commands a project chooses (E3): the component LibraryCommands with pull-request and propagate, their settings ports; the ports Branches, PullRequests, AutoMerge and ProgramRuns, realized on a machine, in a session of Claude Code and in memory; the pattern Command; POSIX's slash",
+  fingerprint: "73116234162e1cca",
+  language: "shared",
+  serves: [ChosenCommands, CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
 })

@@ -19,6 +19,8 @@ export interface Shape {
   pure: boolean
   /** Each realization it chooses reaches another port: what it does goes through another abstraction. */
   layered: boolean
+  /** It chooses commands a library offers, which the project then runs (E3, since g117). */
+  commands: boolean
 }
 
 /** What a pattern requires of the choices that follow it: each property it states must be as it states. */
@@ -30,6 +32,7 @@ export const shapeSays: Record<keyof Shape, { yes: string; no: string }> = {
   platform: { yes: say.patternRealizationsThatTouchThePlatformImplementations(), no: say.patternRealizationsThatDoNotTouchThe() },
   pure: { yes: say.patternRealizationsThatAreFunctions(), no: say.patternRealizationsThatAreNotFunctions() },
   layered: { yes: say.patternRealizationsThatReachAnotherPort(), no: say.patternRealizationsThatReachNoOtherPort() },
+  commands: { yes: say.patternCommandsOfALibrary(), no: say.patternNoCommand() },
 }
 
 const shapeKeys = Object.keys(shapeSays) as (keyof Shape)[]
@@ -60,6 +63,7 @@ export function shapeOf(g: Graph, binding: View): Shape {
     platform: counts.any(chosen) && chosen.every((r) => r.kind === KindName.implementation),
     pure: counts.any(chosen) && chosen.every((r) => r.kind === KindName.function),
     layered: counts.any(chosen) && chosen.every(reachesPort),
+    commands: chosen.some((r) => r.kind === KindName.entry),
   }
 }
 

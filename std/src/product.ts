@@ -49,3 +49,11 @@ export const SharedRules = goal({ owner: "trame" })
  * goals held, its decisions applied, its rules held, its packages safe (C1).
  */
 export const VersionsThatHold = goal({ owner: "trame" })
+
+/**
+ * Commands chosen, not written again
+ * What a project does with its repository (open a pull request, carry a version across its projects) is a command a
+ * library offers and the project chooses, with its own decisions as settings, rather than a script each project writes
+ * (E3).
+ */
+export const ChosenCommands = goal({ owner: "trame" })

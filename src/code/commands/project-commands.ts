@@ -2,7 +2,7 @@
 // that std's ProgramCommands exposes. `trame <name>` runs one, its component assembled for its environment; a name the
 // engine or a view already answers would hide it, which is an error of the graph.
 
-import { CommandsPort, EdgeName, EntryField, HoleCode, KindName, Origin, Severity, TriggerType } from "../../../trame/kernel"
+import { EdgeName, EntryField, HoleCode, KindName, Origin, Severity, TriggerType, isCommandsExposure } from "../../../trame/kernel"
 import type { ProvidedBy, View } from "../../../trame/kernel"
 import type { Trigger } from "../../../kinds/entry-point"
 import type { Compiled, Diag } from "../engine/compiler"
@@ -34,7 +34,7 @@ const body = (deps: Deps) => {
   /** The commands of the project's own graph: a library's are run only when the project chooses them (P2). */
   function of(c: Compiled): ProjectCommand[] {
     const g = c.graph
-    const exposed = (component: View) => deps.wiring.depsOf(component.node).some(([, n]) => g.view(n).ref === CommandsPort.programs)
+    const exposed = (component: View) => deps.wiring.depsOf(component.node).some(([, n]) => isCommandsExposure(g.view(n)))
     return g.all(KindName.entry).nodes().flatMap((entry) => {
       if (entry.library !== undefined) return []
       const trigger = entry.field(EntryField.trigger) as Trigger | undefined

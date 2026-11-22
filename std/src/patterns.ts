@@ -70,3 +70,16 @@ export const Repository = pattern({
   requires: { pure: true, layered: true },
   serves: [KnownDesigns],
 })
+
+/**
+ * Command
+ * A request made an object, which a client runs without knowing how it is done. In the graph, the commands a library
+ * offers (entry points a command triggers, in its component of commands), which a project chooses to run as its own,
+ * with what answers the ports of their settings.
+ */
+export const Command = pattern({
+  owner: "trame",
+  source: "Gamma et al., Design Patterns (1994), Command",
+  requires: { commands: true },
+  serves: [KnownDesigns],
+})

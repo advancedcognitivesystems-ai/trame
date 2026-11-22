@@ -112,6 +112,8 @@ export const HoleCode = {
   bindingInNoEnvironment: "binding-in-no-environment",
   bindingChoosesNoPort: "binding-chooses-no-port",
   bindingChoosesTwice: "binding-chooses-twice",
+  bindingChoosesNoCommand: "binding-chooses-no-command",
+  bindingChoosesOwnCommand: "binding-chooses-own-command",
   bindingWithoutPattern: "binding-without-pattern",
   bindingPatternBroken: "binding-pattern-broken",
   realizationReachedDirectly: "realization-reached-directly",
@@ -210,7 +212,11 @@ export const JudgmentPort = { hardening: "std/judgment.Hardening" } as const
  * The exposure of a project's own commands (E3, since g116), by its reference: std's ProgramCommands. An entry point a
  * command triggers, in a component exposed by it, is a command of the project: `trame <name>` runs it.
  */
-export const CommandsPort = { programs: "std/tooling.ProgramCommands" } as const
+export const CommandsPort = { programs: "std/tooling.ProgramCommands", inItsLibrary: "tooling.ProgramCommands" } as const
+
+/** Is this port std's ProgramCommands: from a project that imports std, or in std's own graph (since g117)? */
+export const isCommandsExposure = (port: { readonly ref: string; readonly library?: string }): boolean =>
+  port.ref === CommandsPort.programs || (port.library === undefined && port.ref === CommandsPort.inItsLibrary)
 
 /** The result of one check (a criterion, a scenario step). */
 export const Outcome = { passed: "passed", failed: "failed", blocked: "blocked", error: "error" } as const
