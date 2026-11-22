@@ -168,6 +168,12 @@ export interface Process {
   env: Record<string, string | undefined>
   /** Relaunches this program (the engine itself) with other arguments, in another directory. */
   relaunch(args: string[], cwd: string): import("node:child_process").ChildProcess
+  /**
+   * Starts the engine the project pins now, through the launcher that started this one (since g118): once an upgrade
+   * moved the pin, the new engine reads the graph, its packages installed first. This same program when no launcher
+   * started it.
+   */
+  restart(args: string[], cwd: string): import("node:child_process").ChildProcess
   /** Runs a TypeScript program; its outputs are those of the terminal. */
   runTs(file: string, args: string[]): import("node:child_process").ChildProcess
   onSignal(signal: "SIGINT" | "SIGTERM", f: () => void): void
@@ -406,7 +412,7 @@ export const Process = port<Process>({
   owner: "trame",
   declaredEffects: {
     cwd: effects("read"), program: effects("read", "terminal"), env: effects("read"),
-    relaunch: effects("process", "read", "terminal"), runTs: effects("process", "read"), onSignal: effects("process"),
+    relaunch: effects("process", "read", "terminal"), restart: effects("process", "read", "terminal"), runTs: effects("process", "read"), onSignal: effects("process"),
   },
 })
 

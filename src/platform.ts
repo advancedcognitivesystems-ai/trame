@@ -211,7 +211,7 @@ export const DiskWriting = implementation({
  */
 export const NodeProcess = implementation({
   owner: "trame", implements: [Process],
-  deps: { argv: NodeArguments, node: NodeCli, runner: TypeScriptRunner },
+  deps: { argv: NodeArguments, node: NodeCli, runner: TypeScriptRunner, variables: TrameEnvironment },
   body: code.file("./code/platform/process.ts"),
 })
 

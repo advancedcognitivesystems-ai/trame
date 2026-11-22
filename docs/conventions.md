@@ -10,7 +10,7 @@
 
 ### Names of the documents
 
-`DocumentIds` · `src/conventions.ts:243`
+`DocumentIds` · `src/conventions.ts:245`
 
 How a document of a view is named: a view of the whole graph by its name; a view of a module by its name and the module ("layers.engine"), except the first view per module, named by the module alone; a view of a node by its name and the reference of the node ("impact:engine.Compiler"), which the page reads back to show it.
 
@@ -61,7 +61,7 @@ Source: Trame, the prelude (trame/internal.ts: frozen)
 
 ### Trame references
 
-`ReferenceSyntax` · `src/conventions.ts:214`
+`ReferenceSyntax` · `src/conventions.ts:216`
 
 How the language names a node and a field: "module.Identifier", "value.case". An empty path designates the whole node. A module of a library takes the library's name before its own: "std/algebra.Counts".
 
@@ -74,7 +74,7 @@ Source: Trame, the prelude (trame/kernel.ts: refOf, getPath)
 | `wholeNode` | `""` | The empty path: the whole node, not one of its fields (refines Texts.empty) |
 
 - Maintained by: trame
-- Refines: [Texts](../std/releases/0.22.3/docs/algebra.md#Texts)
+- Refines: [Texts](../std/releases/0.23.0/docs/algebra.md#Texts)
 - Used by: [Advance](commands.md#Advance), [Graph](engine.md#GraphApi), [References](engine.md#References), [Wiring](engine.md#Wiring), [Records of the releases](generations.md#ReleaseRecords), [Common rendering](rendering.md#Common), [TypeScript writer](typescript.md#TypeScriptWriter)
 
 <a id="TrameCommands"></a>
@@ -100,7 +100,8 @@ Source: Trame, its command line (the entry points of commands, in the module com
 | `view` | `view` | Shows a view |
 | `snapshot` | `snapshot` | Takes the snapshot of the graph |
 | `testKinds` | `test-kinds` | Tests the laws of the kinds and of the views |
-| `advance` | `advance` | The generation in place assembles the described engine and checks it |
+| `examples` | `examples` | The examples of the syntax elements not met, with what they write; written again with --accept (since g118) |
+| `promotion` | `promote` | The step the next generation's shipment deploys: the candidate builds, compares, and with --promote becomes the next generation (since g118; trame advance, Trame's own command, runs the whole) |
 | `audit` | `audit` | Asks the registry about the packages of the graph, and keeps its answers as evidence |
 | `manifest` | `manifest` | Writes the packages of the graph, at their versions, and where each library's name leads, into the project's manifest |
 | `release` | `release` | Freezes a version of the project, a library: its graph, its code and its documents |
@@ -145,13 +146,13 @@ Source: Trame, its command line (the entry points of commands, in the module com
 | `separator` | `" "` | Separates the words of a command, and the names of a list given as one parameter |
 
 - Maintained by: trame
-- Used by: [An advance, in memory](command-scenarios.md#AdvanceInMemory), [A build planned](command-scenarios.md#BuildPlanned), [The command line](command-scenarios.md#CommandLineChooses), [A component assembled](command-scenarios.md#ComponentAssembled), [A component run](command-scenarios.md#ComponentRun), [Declarations published](command-scenarios.md#DeclarationsPublished), [trame dev](command-scenarios.md#DevFollowsTheGraph), [The doctor](command-scenarios.md#DoctorAsks), [Evidence given for someone](command-scenarios.md#EvidenceForSomeone), [The laws, tested by their command](command-scenarios.md#LawsTested), [A command of a library the project chooses](command-scenarios.md#LibraryCommandRun), [A library released](command-scenarios.md#LibraryReleased), [The manifest written](command-scenarios.md#ManifestWritten), [The packages audited](command-scenarios.md#PackagesAudited), [The packages upgraded](command-scenarios.md#PackagesUpgraded), [The page delivered](command-scenarios.md#PageDelivered), [The page exported](command-scenarios.md#PageExported), [The page of the graph](command-scenarios.md#PageOfTheGraph), [The graph in the intermediate format](command-scenarios.md#PayloadOfTheGraph), [A command of the project](command-scenarios.md#ProjectCommandRun), [A project started](command-scenarios.md#ProjectStarted), [A published value changed](command-scenarios.md#PublishedValueChanged), [The registry filled](command-scenarios.md#RegistryFilled), [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [The snapshot, taken by its command](command-scenarios.md#SnapshotTaken), [Stages shipped in order](command-scenarios.md#StagesShipped), [A value amended](command-scenarios.md#ValueAmended), [A view in the terminal](command-scenarios.md#ViewsInTheTerminal), [Advance](commands.md#Advance), [A command of the project, or a view](commands.md#CommandOrView), [Start a project](commands.md#Init), [Preparation](commands.md#Preparation), [Record evidence](commands.md#RecordEvidence), [Release a version](commands.md#Release), [Render a view](commands.md#RenderView), [Ship](commands.md#Ship), [Upgrade](commands.md#Upgrade), [Write the manifest](commands.md#WriteManifest), [Assembly](engine.md#Assembly), [Date bundle](engine.md#DateBundle), [trame dev server](engine.md#DevServer), [Brand](page.md#Brand), [Example process](platform.md#ExampleProcess), [Command line](platform.md#NodeCommandLine), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore), [Trame's settings, as std's commands read them](sdlc.md#OurCommandsSettled), [How a version is carried across Trame's repository](sdlc.md#OurPropagation), [The plan of a run elsewhere](shipping.md#ShipmentRunPlan)
+- Used by: [An advance, in memory](command-scenarios.md#AdvanceInMemory), [A build planned](command-scenarios.md#BuildPlanned), [The command line](command-scenarios.md#CommandLineChooses), [A component assembled](command-scenarios.md#ComponentAssembled), [A component run](command-scenarios.md#ComponentRun), [Declarations published](command-scenarios.md#DeclarationsPublished), [trame dev](command-scenarios.md#DevFollowsTheGraph), [The doctor](command-scenarios.md#DoctorAsks), [Evidence given for someone](command-scenarios.md#EvidenceForSomeone), [The examples of a project, met](command-scenarios.md#ExamplesMet), [The laws, tested by their command](command-scenarios.md#LawsTested), [A command of a library the project chooses](command-scenarios.md#LibraryCommandRun), [A library released](command-scenarios.md#LibraryReleased), [The manifest written](command-scenarios.md#ManifestWritten), [The packages audited](command-scenarios.md#PackagesAudited), [The packages upgraded](command-scenarios.md#PackagesUpgraded), [The page delivered](command-scenarios.md#PageDelivered), [The page exported](command-scenarios.md#PageExported), [The page of the graph](command-scenarios.md#PageOfTheGraph), [The graph in the intermediate format](command-scenarios.md#PayloadOfTheGraph), [A command of the project](command-scenarios.md#ProjectCommandRun), [A project started](command-scenarios.md#ProjectStarted), [A published value changed](command-scenarios.md#PublishedValueChanged), [The registry filled](command-scenarios.md#RegistryFilled), [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [The snapshot, taken by its command](command-scenarios.md#SnapshotTaken), [Stages shipped in order](command-scenarios.md#StagesShipped), [A value amended](command-scenarios.md#ValueAmended), [A view in the terminal](command-scenarios.md#ViewsInTheTerminal), [Advance](commands.md#Advance), [A command of the project, or a view](commands.md#CommandOrView), [Examples](commands.md#Examples), [Start a project](commands.md#Init), [Preparation](commands.md#Preparation), [Record evidence](commands.md#RecordEvidence), [Release a version](commands.md#Release), [Render a view](commands.md#RenderView), [Ship](commands.md#Ship), [Upgrade](commands.md#Upgrade), [Write the manifest](commands.md#WriteManifest), [Assembly](engine.md#Assembly), [Date bundle](engine.md#DateBundle), [trame dev server](engine.md#DevServer), [Brand](page.md#Brand), [Example process](platform.md#ExampleProcess), [Command line](platform.md#NodeCommandLine), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore), [Trame's settings, as std's commands read them](sdlc.md#OurCommandsSettled), [How a version is carried across Trame's repository](sdlc.md#OurPropagation), [The plan of a run elsewhere](shipping.md#ShipmentRunPlan)
 
 <a id="TrameEnvironment"></a>
 
 ### Trame's environment
 
-`TrameEnvironment` · `src/conventions.ts:188`
+`TrameEnvironment` · `src/conventions.ts:189`
 
 The variables of the environment Trame reads.
 
@@ -160,9 +161,10 @@ Source: Trame, the variables of the environment it reads
 | Constant | Value | Meaning |
 |---|---|---|
 | `today` | `TRAME_TODAY` | The date the engine takes for today (ISO 8601) instead of the clock's: documents that do not change from one day to the next |
+| `launcher` | `TRAME_LAUNCHER` | The launcher that started the engine (trame.sh), which the engine starts again once an upgrade moved the pin (since g118) |
 
 - Maintained by: trame
-- Used by: [Advance](commands.md#Advance), [System clock](platform.md#SystemClock), [How a version is carried across Trame's repository](sdlc.md#OurPropagation), [TypeScript writer](typescript.md#TypeScriptWriter)
+- Used by: [Advance](commands.md#Advance), [Node process](platform.md#NodeProcess), [System clock](platform.md#SystemClock), [How a version is carried across Trame's repository](sdlc.md#OurPropagation), [TypeScript writer](typescript.md#TypeScriptWriter)
 
 ## Decisions
 
@@ -186,7 +188,7 @@ The name of the node it amends, then this word, then a number from the second on
 
 ### Default rank
 
-`DefaultRank` · `src/conventions.ts:207`
+`DefaultRank` · `src/conventions.ts:209`
 
 The place of a kind or a view that does not declare one, in documents and lists.
 
@@ -199,7 +201,7 @@ The place of a kind or a view that does not declare one, in documents and lists.
 
 ### Documentation comment
 
-`DocComment` · `src/conventions.ts:229`
+`DocComment` · `src/conventions.ts:231`
 
 What the comment before a declaration says: its first lines are the node's title, the following ones its description. The lines of each are joined into one text, by a space.
 
@@ -216,7 +218,7 @@ What the comment before a declaration says: its first lines are the node's title
 
 ### JSON formatting
 
-`JsonFormatting` · `src/conventions.ts:235`
+`JsonFormatting` · `src/conventions.ts:237`
 
 The JSON that Trame writes to be read (the lock, a view in JSON): indented.
 
@@ -338,7 +340,7 @@ What trame init writes: the module that holds the goal the project serves (its n
 
 ### Names of steps
 
-`StepNames` · `src/conventions.ts:201`
+`StepNames` · `src/conventions.ts:203`
 
 When two steps of a wiring plan would take the same name, or a step a name that is taken, the second takes its module as a prefix, with this joint.
 
@@ -353,7 +355,7 @@ When two steps of a wiring plan would take the same name, or a step a name that 
 
 ### Order of the view groups
 
-`ViewGroupOrder` · `src/conventions.ts:257`
+`ViewGroupOrder` · `src/conventions.ts:259`
 
 Where the views of each group come in the list of documents: the documents of the modules first, then the other documents, the figures, the summary, and last the views of a node.
 

@@ -55,7 +55,7 @@ trame audit asks the registry, for each package of the graph, its known vulnerab
 Two versions compared part by part, as numbers, from the major (a part one of them lacks counts as zero): a version is below another if it comes before it. The releases between two versions that break what uses the package are its majors, or its minors while its major is that of initial development. trame audit counts with it; the kind of a package checks with it that a package stays below the version it is held below.
 
 - Owner: trame
-- Parameters: `semver` ← [Semantic versioning](../std/releases/0.22.3/docs/measures.md#SemanticVersioning) · `counts` ← [Counts](../std/releases/0.22.3/docs/algebra.md#Counts)
+- Parameters: `semver` ← [Semantic versioning](../std/releases/0.23.0/docs/measures.md#SemanticVersioning) · `counts` ← [Counts](../std/releases/0.23.0/docs/algebra.md#Counts)
 - Body: inline, in the declaration
 - Serves: [A single source of truth](product.md#SingleSource)
 - Used by: [Audit the packages](commands.md#Audit), [Upgrade](commands.md#Upgrade), [Graph](engine.md#GraphApi), [The documents write in the decided language](scenarios.md#DocumentWords)
@@ -201,14 +201,14 @@ Who works on Trame's repository, declared once as actors (C4): every owner of th
 The structures, standards, patterns and ports Trame's graph and its engine build on, at the version Trame pins: std ships its versions apart, and Trame moves to a new one once it is released (E1). Reached by its path in this repository, at the version it froze.
 
 - Name: `std`
-- Version: `0.22.3`
+- Version: `0.23.0`
 - Installed: Not installed in the project: its lockfile lists no std
 - Vulnerabilities: No report yet: trame audit asks the registry
 - Latest version: No report yet: trame audit asks the registry
 - What it may do: not said: an implementation that imports it cannot promise anything
 - How it joins the graph: `library`
 - Where it comes from: `path`
-- Its path: `std/releases/0.22.3`
+- Its path: `std/releases/0.23.0`
 
 - Owner: trame
 - Serves: [A single source of truth](product.md#SingleSource)

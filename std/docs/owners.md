@@ -4,7 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 3 | 242 |
+| trame | 0 | 0 | 5 | 244 |
 
 <a id="trame"></a>
 
@@ -14,6 +14,8 @@
 |---|---|---|---|---|---|
 | warning | `rules-look-alike` | Computes the same kind of answer from the same kind of arguments as “A node reaches what it must” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [A node never reaches what it must not](rules.md#NeverReaches) | trame |  |
 | warning | `rules-look-alike` | Computes the same kind of answer from the same kind of arguments as “A node never reaches what it must not” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [A node reaches what it must](rules.md#Reaches) | trame |  |
+| warning | `shipment-awaits` | To ship: The standard library is unknown | [The next version](sdlc.md#NextVersion) | trame |  |
+| warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The standard library](sdlc.md#TheLibrary) | trame |  |
 | warning | `port-unrealized` | No realization, in any environment | [Where a package comes from](tooling.md#PackageSources) | trame |  |
 
 ### Owns
@@ -37,6 +39,7 @@
 | [A library offers commands, a project chooses them](commands.md#CommandsOfALibrary) | Architecture decision | **held** |
 | [What the library's commands say](commands.md#CommandWords) | Message catalog |  |
 | [The library's commands](commands.md#LibraryCommands) | Component |  |
+| [Merge a pull request](commands.md#MergePullRequest) | Entry point | **held** |
 | [Open a pull request](commands.md#OpenPullRequest) | Entry point | **held** |
 | [Propagate](commands.md#Propagate) | Entry point | **held** |
 | [How a version is carried](commands.md#PropagationSettings) | Port |  |
@@ -192,6 +195,7 @@
 | [Judged as the language says](scenarios.md#JudgedAsTheLanguage) | Scenario | **held** |
 | [Judged strictly](scenarios.md#JudgedStrictly) | Scenario | **held** |
 | [Judged as the language says](scenarios.md#LanguageJudgment) | Technical choice | **held** |
+| [A pull request merged once it holds](scenarios.md#MergedOnceItHolds) | Scenario | **held** |
 | [A version carried across the projects](scenarios.md#PropagatedInOrder) | Scenario | **held** |
 | [A pull request opened](scenarios.md#PullRequestOpened) | Scenario | **held** |
 | [A repository kept in memory](scenarios.md#RepositoryInMemoryKeeps) | Scenario | **held** |
@@ -209,14 +213,14 @@
 | [Its data reviewed](sdlc.md#DataReviewed) | Obligation |  |
 | [Its decisions applied](sdlc.md#DecisionsApplied) | Obligation |  |
 | [Its functions verified](sdlc.md#FunctionsVerified) | Obligation |  |
-| [The next version](sdlc.md#NextVersion) | Shipment | **held** |
+| [The next version](sdlc.md#NextVersion) | Shipment | **unknown** |
 | [Its packages safe](sdlc.md#PackagesSafe) | Obligation |  |
 | [How a pull request is checked on GitHub](sdlc.md#PullRequestsOnGitHub) | Decision |  |
 | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **held** |
 | [Its requirements held](sdlc.md#RequirementsServed) | Obligation |  |
 | [Its rules held](sdlc.md#RulesHeld) | Obligation |  |
 | [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **held** |
-| [The standard library](sdlc.md#TheLibrary) | Artefact | **held** |
+| [The standard library](sdlc.md#TheLibrary) | Artefact | **unknown** |
 | [How a version is made](sdlc.md#VersionMode) | Policy |  |
 | [Exit status](system.md#ExitStatus) | Standard |  |
 | [Node.js process arguments](system.md#NodeArguments) | Standard |  |

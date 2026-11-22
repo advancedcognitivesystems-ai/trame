@@ -282,6 +282,8 @@ export interface GitBranches {
   push(branch: string): Promise<boolean>
   /** The files the branch changes against another, as the repository has that one: paths from its root; nothing when unread. */
   changed(base: string): Promise<readonly string[] | undefined>
+  /** Checks a branch out as its remote has it, moving it forward only: whether it was. */
+  update(branch: string): Promise<boolean>
 }
 
 /**
@@ -290,7 +292,10 @@ export interface GitBranches {
  */
 export const Branches = port<GitBranches>({
   owner: "trame",
-  declaredEffects: { current: ["process", "asynchronous"], push: ["process", "network", "asynchronous"], changed: ["process", "network", "asynchronous"] },
+  declaredEffects: {
+    current: ["process", "asynchronous"], push: ["process", "network", "asynchronous"], changed: ["process", "network", "asynchronous"],
+    update: ["process", "network", "write", "asynchronous"],
+  },
 })
 
 /**
@@ -301,7 +306,7 @@ export const Branches = port<GitBranches>({
 export const GitCommandLine = standard({
   owner: "trame",
   serves: [CitedNotCopied],
-  source: "Git manual: git-rev-parse (--abbrev-ref), git-push (--set-upstream), git-fetch, git-diff (--name-only, A...B: since the merge base)",
+  source: "Git manual: git-rev-parse (--abbrev-ref), git-push (--set-upstream), git-fetch, git-diff (--name-only, A...B: since the merge base), git-checkout, git-merge (--ff-only)",
   url: "https://git-scm.com/docs/git-diff",
   constants: {
     program: { value: "git", meaning: "Git's command line" },
@@ -317,6 +322,9 @@ export const GitCommandLine = standard({
     diff: { value: "diff", meaning: "Shows what differs" },
     names: { value: "--name-only", meaning: "Only the paths of the files that differ" },
     since: { value: "...", meaning: "Between two names: what the second changes since it parted from the first" },
+    checkout: { value: "checkout", meaning: "Checks a branch out" },
+    merge: { value: "merge", meaning: "Joins another history into the branch checked out" },
+    forwardOnly: { value: "--ff-only", meaning: "Only by moving the branch forward: refused if it would need a merge commit" },
   },
 })
 
@@ -337,6 +345,8 @@ export interface BranchesScript {
   set(current: string | undefined, changed: readonly string[]): void
   /** The branches pushed, in their order. */
   pushed(): readonly string[]
+  /** The branch checked out now. */
+  checkedOut(): string | undefined
 }
 
 /** The branches a scenario keeps */
@@ -356,8 +366,10 @@ export const BranchesInMemory = fn({
       current: async () => current,
       push: async (branch: string) => (pushed.push(branch), true),
       changed: async () => changed,
+      update: async (branch: string) => ((current = branch), true),
       set: (branch: string | undefined, files: readonly string[]) => void ((current = branch), (changed = files)),
       pushed: () => pushed,
+      checkedOut: () => current,
     }
   },
 })
@@ -384,6 +396,30 @@ export interface PullRequestsOfARepository {
   open(repository: string, asked: PullRequestAsked): Promise<PullRequestOpen | undefined>
   /** Asks GitHub to merge it by this method once it holds: whether GitHub took it. */
   mergeOnceItHolds(repository: string, number: number, method: MergeMethod): Promise<boolean>
+  /** A pull request by its number: its branches, its last commit, whether it is still open; nothing when unread. */
+  read(repository: string, number: number): Promise<PullRequestRead | undefined>
+  /** The checks run on a commit: each by its name, and whether it passed, failed or still runs. */
+  checks(repository: string, commit: string): Promise<readonly CheckRun[] | undefined>
+  /** The files a pull request changes: paths from the repository's root. */
+  files(repository: string, number: number): Promise<readonly string[] | undefined>
+  /** Merges it now by this method: whether GitHub merged it. */
+  merge(repository: string, number: number, method: MergeMethod): Promise<boolean>
+}
+
+/** A pull request as GitHub has it. */
+export interface PullRequestRead extends PullRequestOpen {
+  readonly head: string
+  readonly base: string
+  /** Its last commit. */
+  readonly commit: string
+  readonly open: boolean
+}
+
+/** A check run on a commit, as GitHub says it went. */
+export interface CheckRun {
+  readonly name: string
+  /** Whether it ended, and how: passed, failed; nothing while it runs. */
+  readonly passed?: boolean
 }
 
 /**
@@ -394,6 +430,8 @@ export const PullRequests = port<PullRequestsOfARepository>({
   owner: "trame",
   declaredEffects: {
     find: ["process", "network", "asynchronous"], open: ["process", "network", "asynchronous"], mergeOnceItHolds: ["process", "network", "asynchronous"],
+    read: ["process", "network", "asynchronous"], checks: ["process", "network", "asynchronous"], files: ["process", "network", "asynchronous"],
+    merge: ["process", "network", "asynchronous"],
   },
 })
 
@@ -404,7 +442,7 @@ export const PullRequests = port<PullRequestsOfARepository>({
 export const GitHubPullRequestsApi = standard({
   owner: "trame",
   serves: [CitedNotCopied],
-  source: "GitHub REST API: Pulls (List pull requests: head, state; Create a pull request: title, head, base, body; number, html_url); GitHub CLI manual: gh api (--method, --input, a query)",
+  source: "GitHub REST API: Pulls (List pull requests: head, state; Create a pull request: title, head, base, body; number, html_url; Get a pull request: head.ref, head.sha, base.ref, state; List pull requests files: filename; Merge a pull request: merge_method), Checks (List check runs for a Git reference: check_runs, name, status, conclusion); GitHub CLI manual: gh api (--method, --input, a query)",
   url: "https://docs.github.com/en/rest/pulls/pulls",
   constants: {
     pulls: { value: "/pulls", meaning: "After the repository: its pull requests" },
@@ -420,6 +458,25 @@ export const GitHubPullRequestsApi = standard({
     body: { value: "body", meaning: "What it says" },
     number: { value: "number", meaning: "Its number in the repository" },
     url: { value: "html_url", meaning: "Where a person opens it" },
+    ref: { value: "ref", meaning: "The name of a branch, in head and base" },
+    sha: { value: "sha", meaning: "A commit, by its hash" },
+    files: { value: "/files", meaning: "After a pull request: the files it changes" },
+    filename: { value: "filename", meaning: "The path of a file it changes" },
+    merging: { value: "/merge", meaning: "After a pull request: merges it" },
+    method: { value: "merge_method", meaning: "How it is merged" },
+    commits: { value: "/commits", meaning: "After the repository: its commits" },
+    checkRuns: { value: "/check-runs", meaning: "After a commit: the checks run on it" },
+    runs: { value: "check_runs", meaning: "The checks listed" },
+    name: { value: "name", meaning: "A check's name" },
+    status: { value: "status", meaning: "Whether a check still runs" },
+    completed: { value: "completed", meaning: "A check that ended" },
+    conclusion: { value: "conclusion", meaning: "How a check ended" },
+    success: { value: "success", meaning: "A check that passed" },
+    skipped: { value: "skipped", meaning: "A check that did not need to run: it does not keep a merge" },
+    perPage: { value: "per_page", meaning: "How many are listed at once" },
+    page: { value: "page", meaning: "Which page of a list, from the first" },
+    first: { value: "1", meaning: "The first page" },
+    most: { value: "100", meaning: "The most a page lists" },
   },
 })
 
@@ -499,6 +556,12 @@ export interface PullRequestsScript {
   opened(): readonly { repository: string; asked: PullRequestAsked }[]
   /** Those GitHub was asked to merge once they hold, with the method. */
   merging(): readonly { repository: string; number: number; method: MergeMethod }[]
+  /** The checks run on the last commit of a branch (in memory, a branch's last commit is named as the branch). */
+  ran(branch: string, runs: readonly CheckRun[]): void
+  /** The files a branch's pull request changes. */
+  changes(branch: string, files: readonly string[]): void
+  /** Those merged, with the method. */
+  merged(): readonly { repository: string; number: number; method: MergeMethod }[]
 }
 
 /** The pull requests a scenario keeps */
@@ -507,29 +570,52 @@ export const PullRequestsKept = port<PullRequestsScript>({ owner: "trame", decla
 /**
  * Pull requests kept in memory
  * In a scenario, a pull request opened is numbered after those opened before it, its address the path of its call;
- * one open from a branch is found; a merge asked is kept.
+ * one open from a branch is found; a merge asked, or made, is kept. A branch's last commit is named as the branch, and
+ * the checks run on it are those the scenario says; a pull request changes the files its branch changes, as the
+ * scenario says them too.
  */
 export const PullRequestsInMemory = fn({
   owner: "trame", implements: [PullRequests, PullRequestsKept], serves: [RealizedOnce],
   deps: { repos: GitHubRepositoryApi, api: GitHubPullRequestsApi, texts: Texts },
   body: ({ repos, api, texts }) => {
     const open = new Map<string, PullRequestOpen>()
+    const known = new Map<number, PullRequestRead>()
     const opened: { repository: string; asked: PullRequestAsked }[] = []
     const merging: { repository: string; number: number; method: MergeMethod }[] = []
+    const merged: { repository: string; number: number; method: MergeMethod }[] = []
+    const runs = new Map<string, readonly CheckRun[]>()
+    const changes = new Map<string, readonly string[]>()
     const key = (repository: string, branch: string) => texts.concat([repository, api.owner, branch])
+    const keep = (repository: string, head: string, base: string, made: PullRequestOpen) => {
+      open.set(key(repository, head), made)
+      known.set(made.number, { ...made, head, base, commit: head, open: true })
+    }
     return {
       find: async (repository: string, branch: string) => open.get(key(repository, branch)),
       open: async (repository: string, asked: PullRequestAsked) => {
         opened.push({ repository, asked })
         const number = opened.length
         const made = { number, url: texts.concat([repos.repos, repository, api.pulls, repos.separator, String(number)]) }
-        open.set(key(repository, asked.head), made)
+        keep(repository, asked.head, asked.base, made)
         return made
       },
       mergeOnceItHolds: async (repository: string, number: number, method: MergeMethod) => (merging.push({ repository, number, method }), true),
-      openFrom: (repository: string, branch: string, made: PullRequestOpen) => void open.set(key(repository, branch), made),
+      read: async (_repository: string, number: number) => known.get(number),
+      checks: async (_repository: string, commit: string) => runs.get(commit) ?? [],
+      files: async (_repository: string, number: number) => changes.get(known.get(number)?.head ?? texts.empty) ?? [],
+      merge: async (repository: string, number: number, method: MergeMethod) => {
+        const read = known.get(number)
+        if (!read?.open) return false
+        merged.push({ repository, number, method })
+        known.set(number, { ...read, open: false })
+        return true
+      },
+      openFrom: (repository: string, branch: string, made: PullRequestOpen) => keep(repository, branch, texts.empty, made),
       opened: () => opened,
       merging: () => merging,
+      ran: (branch: string, checked: readonly CheckRun[]) => void runs.set(branch, checked),
+      changes: (branch: string, files: readonly string[]) => void changes.set(branch, files),
+      merged: () => merged,
     }
   },
 })

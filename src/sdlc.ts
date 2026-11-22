@@ -14,14 +14,17 @@ import { catalog } from "../kinds/catalog"
 import { decision } from "../kinds/decision"
 import { scenario } from "../kinds/scenario"
 import { entryPoint, command } from "../kinds/entry-point"
-import { ProgramCommands, HeadlessBrowser, NodeProgramCommands, PlaywrightBrowser, BrowserInMemory, BrowserScripted, NodeProgramRuns, MachineFiles } from "#std/tooling"
+import {
+  ProgramCommands, HeadlessBrowser, NodeProgramCommands, PlaywrightBrowser, BrowserInMemory, BrowserScripted, NodeProgramRuns, MachineFiles, ProgramRuns,
+  ProgramRunsInMemory, ProgramRunsKept, FilesInMemory,
+} from "#std/tooling"
 import { Adapter, Strategy, Command } from "#std/patterns"
-import { OpenPullRequest, Propagate, PullRequestSettings, PropagationSettings } from "#std/commands"
+import { OpenPullRequest, MergePullRequest, Propagate, PullRequestSettings, PropagationSettings } from "#std/commands"
 import { GitCliBranches, GitHubCliPullRequests, AutoMergeByGitHubCli, AutoMergeInAClaudeSession } from "#std/repository"
 import { Layout, TrameCommands, TrameEnvironment, ProjectStart } from "./conventions"
 import { TypeScript } from "./typescript"
-import { Posix } from "#std/system"
-import { Texts } from "#std/algebra"
+import { Posix, NodeEvents } from "#std/system"
+import { Texts, Sequences } from "#std/algebra"
 import { TestDay } from "./platform"
 import { Html, Css, Svg } from "#std/html"
 import { ExitStatus } from "#std/system"
@@ -35,7 +38,8 @@ import { AttributeSelector } from "./html"
 import { Language, ScenarioMessages } from "./messages"
 import { ShowGraph, ExplorerFigures, BrowserWindow, BrowserMemory, BrowserFeed, BrowserAmendments, BrowserDecompression } from "./browser"
 import { Verified, Served, Applied, Checked, Ruled, Safe, Identified } from "#std/obligations"
-import { TrameCli, Local, Session } from "./architecture"
+import { TrameCli, Local, Session, Process, ProcessLog } from "./architecture"
+import { ProgramNames } from "./typescript"
 import { TestKinds, Advance, Doctor } from "./commands"
 import { DiskReading, DiskWriting, DiskTrees, NodeProcess, NodePrograms, NodeTerminal, SystemClock, NpmReports, NpmInstall, NodeHttpServer, RunsOnDisk } from "./platform"
 import { ExecutableSpecification } from "./product"
@@ -173,7 +177,7 @@ export const SdlcOnTheMachine = binding({
  */
 export const SdlcInMemory = binding({
   owner: "trame",
-  chooses: [BrowserInMemory, RepositoryInMemory],
+  chooses: [BrowserInMemory, RepositoryInMemory, ProgramRunsInMemory, FilesInMemory],
   environments: [Test],
   follows: [Strategy],
   context: "A program of the SDLC is code like the engine's: its scenarios play it before it runs on a machine.",
@@ -231,6 +235,9 @@ export const SdlcWords = catalog({
   owner: "trame",
   language: Language,
   messages: () => ({
+    advanceUsage: (by: string, accept: string, promote: string) => `Say who advances: trame advance ${by} <name> [${accept}] [${promote} "what changes"]`,
+    advanceAssembling: (component: string) => `The generation in place assembles ${component}`,
+    advanceStopped: (component: string) => `The advance stopped: ${component} could not be assembled`,
     opens: () => "The graph page opens: its documents, a document shown, its nodes, the figure of the layers drawn, no error",
     noDocuments: () => "The navigation lists no document",
     noDocument: () => "No document is shown",
@@ -603,11 +610,11 @@ export const OurPropagation = fn({
 
 /**
  * The commands Trame takes from std
- * pull-request and propagate, on the machine and in a session of Claude Code, with Trame's settings.
+ * pull-request, merge and propagate, on the machine and in a session of Claude Code, with Trame's settings.
  */
 export const CommandsOfStd = binding({
   owner: "trame",
-  chooses: [OpenPullRequest, Propagate, OurPullRequests, OurPropagation],
+  chooses: [OpenPullRequest, MergePullRequest, Propagate, OurPullRequests, OurPropagation],
   environments: [Local, Session],
   follows: [Command],
   serves: [ExecutableSpecification],
@@ -687,4 +694,37 @@ export const OurCommandsSettled = scenario({
       carried.configuration === layout.configuration && carried.projects.length === projects.length &&
       dated.length === [scenarios].length && dated.every((p) => p.day === day && p.name === scenarios?.name))
   },
+})
+
+// A generation advanced in one command (E3, P2b) ------------------------------------------------------------------------
+
+/** What an advance assembles, for where, and the shipment the candidate then ships: named as the command line names them. */
+export interface GenerationAdvance {
+  readonly assembled: readonly string[]
+  readonly environment: string
+  readonly shipment: string
+}
+
+/**
+ * How a generation advances
+ * The generation in place assembles the engine's command line (the candidate) and Trame's SDLC (the programs of its
+ * checks), for the machine; then the candidate ships the next generation, judging what it builds as the generation it
+ * will be.
+ */
+export const HowAGenerationAdvances = decision<GenerationAdvance>({
+  owner: "trame",
+  value: { assembled: ["TrameCli", "TrameSdlc"], environment: "Local", shipment: "NextGeneration" },
+  rejected: {
+    "Each step typed by hand": "three commands and the candidate called by its path, in an order nothing checked (until g118)",
+    "Shipped by the generation in place": "what it built would be judged by the engine that is leaving: evidence of another engine than the one pinned once it is deployed",
+  },
+})
+
+/**
+ * Who advances, and what changes
+ * What the scenario of the advance types after its name.
+ */
+export const AdvanceSample = decision<{ person: string; what: string }>({
+  owner: "trame",
+  value: { person: "claude", what: "A change" },
 })

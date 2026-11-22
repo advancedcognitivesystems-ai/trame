@@ -499,6 +499,13 @@ export const CommandMessages = catalog({
     unknownCommandOrView: (command: string, commands: string[], own: string[], views: string[]) =>
       `Unknown command: ${command}. Commands: ${commands.join(", ")}${own.length ? `; of the project: ${own.join(", ")}` : ""}; or a view: ${views.join(", ")}`,
 
+    // The examples of the syntax elements (E3, since g118).
+    examplesMet: (count: number) => `${plural(count, { one: "syntax element", other: "syntax elements" })}: every example met`,
+    exampleUnmet: (element: string, n: number, expected: string, written: string) => `${element}, example ${n}: must write ${expected}, writes ${written}`,
+    examplesToAccept: (accept: string) => `If what the elements write now is wanted: trame examples ${accept}`,
+    exampleNotFound: (element: string, n: number) => `${element}, example ${n}: its output was not found in its declaration, written by nothing`,
+    examplesWritten: (count: number, files: string[]) => `${plural(count, { one: "output", other: "outputs" })} written again: ${files.join(", ")}. Build again`,
+
     // The commands of a project (E3, since g116).
     /** A command of the project that the engine answers first. */
     commandHiddenByEngine: (name: string) => `The engine has a command ${name}: this one would never run. Name it otherwise`,
@@ -859,8 +866,14 @@ export const ScenarioMessages = catalog({
     delegationOverRefused: (agent: string) => `Once the delegation is over, ${agent} is refused again`,
     projectCommandRun: (name: string) => `trame ${name} runs the example's command: its component assembled, its program started with the rest of the line`,
     helpListsTheProject: (name: string) => `trame help lists ${name}, with the component that runs it`,
+    advanceNeedsAName: () => "trame advance without a name assembles nothing and starts nothing",
+    advanceAssemblesThenShips: () => "trame advance assembles the candidate and Trame's SDLC, then starts the candidate on the next generation's shipment with the rest of the line",
     ourPullRequestsSettled: () => "Trame's pull requests go into main, merged as the repository merges, by GitHub once they hold unless they change a lock of the repository's projects",
     ourPropagationSettled: () => "A version is carried by trame.sh with Trame's words across each project of the repository, the example at the day of the scenarios and it alone",
+    outputWrittenAsText: () => "An example's output that is a text is written again as JSON, where its declaration has it, the rest as it was",
+    outputWrittenAsLines: () => "An output written as lines joined keeps that form: each line on its own, at the indentation of the others",
+    outputOfNoElement: () => "An element the declaration does not hold has no output written",
+    examplesAllMet: () => "trame examples, in the example: every example met, nothing written",
     libraryCommandRun: (name: string) => `trame ${name} runs the library's command the example chose: its component assembled with that command alone, its program started with the rest of the line`,
     helpListsTheLibrary: (name: string) => `trame help lists ${name}, with the library's component that runs it`,
     hiddenCommandRefused: (name: string) => `Were ${name} a command of the engine, the project's would never run: an error of the graph, nothing assembled`,

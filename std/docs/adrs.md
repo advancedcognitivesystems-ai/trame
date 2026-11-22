@@ -7,7 +7,7 @@
 | Decision | Status | Applied by |
 |---|---|---|
 | [An entry point says who may call it](access.md#SaysItsAudience) | **held** | [Who calls a shipment's programs is identified](obligations.md#Identified) |
-| [A library offers commands, a project chooses them](commands.md#CommandsOfALibrary) | **held** | [The library's commands](commands.md#LibraryCommands), [Open a pull request](commands.md#OpenPullRequest), [Propagate](commands.md#Propagate), [Command](patterns.md#Command) |
+| [A library offers commands, a project chooses them](commands.md#CommandsOfALibrary) | **held** | [The library's commands](commands.md#LibraryCommands), [Merge a pull request](commands.md#MergePullRequest), [Open a pull request](commands.md#OpenPullRequest), [Propagate](commands.md#Propagate), [Command](patterns.md#Command) |
 | [A project judges harder than the language, never softer](judgment.md#HarderNeverSofter) | **held** | [As the language says](judgment.md#AsTheLanguageSays), [Every warning an error](judgment.md#EveryWarning), [Hardening](judgment.md#Hardening), [Raising](judgment.md#Raising) |
 | [A component in a browser starts with its page](platform.md#StartsWithThePage) | unknown | [The browser loads the page](platform.md#BrowserLoading), [Loading of a page](platform.md#PageLoading) |
 | [The device's services, as ports](platform.md#DeviceAsPorts) | **held** | [Animation frames](platform.md#AnimationFrames), [The screen kept awake, in memory](platform.md#AwakeInMemory), [The browser's frames](platform.md#BrowserFrames), [The browser's languages](platform.md#BrowserLanguages), [The browser keeps the preferences](platform.md#BrowserPreferences), [The browser's voice](platform.md#BrowserSpeech), [The browser keeps the screen awake](platform.md#BrowserWakeLock), [Languages of the device](platform.md#DeviceLanguages), [Frames turned by hand](platform.md#FramesByHand), [Preferences kept in memory](platform.md#MemoryPreferences), [Preferences](platform.md#PreferencesStore), [Screen kept awake](platform.md#ScreenAwake), [Whether the screen is kept awake](platform.md#ScreenKeptAwake), [What was said](platform.md#SpeechHeard), [Speech](platform.md#SpeechVoice), [Time turned by hand](platform.md#TimeTurned), [A voice that writes down](platform.md#WrittenSpeech) |
@@ -44,7 +44,7 @@ Consequences: Every entry point names its audience (an error otherwise); an audi
 
 ### A library offers commands, a project chooses them
 
-`CommandsOfALibrary` · `src/commands.ts:174` · status: **held**
+`CommandsOfALibrary` · `src/commands.ts:203` · status: **held**
 
 The commands any project of a repository needs (open a pull request, carry a version across) are written once, in the library; a project runs one when a technical choice of its own chooses it, with its decisions as settings.
 
@@ -59,7 +59,7 @@ Consequences: The library's component LibraryCommands holds the commands; a proj
 
 - Decided by: trame
 - Serves: [Commands chosen, not written again](product.md#ChosenCommands)
-- Applied by: [The library's commands](commands.md#LibraryCommands), [Open a pull request](commands.md#OpenPullRequest), [Propagate](commands.md#Propagate), [Command](patterns.md#Command)
+- Applied by: [The library's commands](commands.md#LibraryCommands), [Open a pull request](commands.md#OpenPullRequest), [Merge a pull request](commands.md#MergePullRequest), [Propagate](commands.md#Propagate), [Command](patterns.md#Command)
 
 ## Standard library · Judgment
 
@@ -132,7 +132,7 @@ Consequences: Each service is a port with its effects; the browser's realization
 
 ### A repository is set by its project's graph
 
-`RepositoryThroughItsApi` · `src/repository.ts:542` · status: **held**
+`RepositoryThroughItsApi` · `src/repository.ts:628` · status: **held**
 
 The settings of a repository are a decision of the project's graph, applied through a port of the library and read back: realized once for a machine (GitHub's command line) and once in memory.
 

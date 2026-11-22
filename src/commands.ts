@@ -5,7 +5,7 @@ import { fn } from "../kinds/function"
 import { entryPoint, command } from "../kinds/entry-point"
 import { ExecutableSpecification, SingleSource, SeverityOrder, DevPort } from "./product"
 import { decision } from "../kinds/decision"
-import { TrameCli, Terminal, Process, Clock, FileReading, FileWriting, Paths, Hashing, Programs, FileTrees, PackageReports, PackageInstalls, Bundler, Timer, HttpServer, KeptRuns, AmendmentPlace, Prelude } from "./architecture"
+import { TrameCli, Terminal, Process, Clock, FileReading, FileWriting, Paths, Hashing, Programs, FileTrees, PackageReports, PackageInstalls, Bundler, Timer, HttpServer, KeptRuns, AmendmentPlace, Prelude, TypeScriptCompiler } from "./architecture"
 import { Compiler, CompilationApi, Laws, Views, Lock, MachineOutputs, PayloadBuilder, DateBundle, DevServer, Assembly, Fingerprint, References, Project, EngineFingerprint, Wiring } from "./engine"
 import { Page, PageBundle, PageDocument } from "./page"
 import { Html } from "#std/html"
@@ -104,7 +104,7 @@ export const Build = entryPoint({
  */
 export const Advance = entryPoint({
   owner: "trame", in: TrameCli, for: Anyone, serves: [ExecutableSpecification],
-  trigger: command(commandNames.advance),
+  trigger: command(commandNames.promotion),
   deps: {
     exitStatus: ExitStatus, preparation: Preparation, engines: EngineFingerprint, line: TrameCommands, layout: Layout, advancement: Advancement, accept: AcceptCandidate,
     example: ExampleRoot, day: TestDay, environment: TrameEnvironment, language: TypeScript,
@@ -499,6 +499,32 @@ export const CommandOrView = entryPoint({
     terminal: Terminal, counts: Counts, sequences: Sequences, messages: CommandMessages,
   },
   body: code.file<typeof import("./code/commands/command-or-view").default>("./code/commands/command-or-view.ts"),
+})
+
+/**
+ * Rewriting an example
+ * An example's output written again where its element's declaration has it: as JSON, or as the lines its array joins.
+ */
+export const ExampleRewriting = fn({
+  owner: "trame",
+  serves: [ExecutableSpecification],
+  deps: { ts: TypeScriptCompiler, file: TextFile, sequences: Sequences, texts: Texts, syntax: TypeScriptSyntax, values: ValueTypes },
+  body: code.file<typeof import("./code/commands/example-rewriting").default>("./code/commands/example-rewriting.ts"),
+})
+
+/**
+ * Examples
+ * trame examples [--accept]: the examples of the project's syntax elements not met, with what they write; written
+ * again in their declarations with --accept.
+ */
+export const Examples = entryPoint({
+  owner: "trame", in: TrameCli, for: Anyone, serves: [ExecutableSpecification],
+  trigger: command(commandNames.examples),
+  deps: {
+    exitStatus: ExitStatus, preparation: Preparation, rewriting: ExampleRewriting, reading: FileReading, writing: FileWriting, paths: Paths, terminal: Terminal,
+    line: TrameCommands, encodings: NodeEncodings, counts: Counts, messages: CommandMessages,
+  },
+  body: code.file<typeof import("./code/commands/examples").default>("./code/commands/examples.ts"),
 })
 
 /**

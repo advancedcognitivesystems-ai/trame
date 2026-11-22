@@ -103,7 +103,7 @@ const body = (deps: Deps): Handler => async (req) => {
   deps.terminal.write(deps.messages.librariesNamed(libraries.length, layout.manifest))
   // Node.js read the manifest when this process started: if the import map changed, a fresh process reads the graph.
   const relaunch = () => new Promise<number>((done) => {
-    const child = deps.currentProcess.relaunch([deps.line.manifest], o.root)
+    const child = deps.currentProcess.restart([deps.line.manifest], o.root)
     const chunks: string[] = []
     child.stdout!.setEncoding(deps.encodings.utf8)
     child.stdout!.on(deps.events.data, (d: string) => chunks.push(d))

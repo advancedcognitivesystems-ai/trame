@@ -56,7 +56,7 @@ The people who run the product's machines and its deployments: they reach every 
 
 - Owner: trame
 - Serves: [Rules applied, not written again](product.md#SharedRules)
-- May call: [Open a pull request](commands.md#OpenPullRequest), [Propagate](commands.md#Propagate)
+- May call: [Merge a pull request](commands.md#MergePullRequest), [Open a pull request](commands.md#OpenPullRequest), [Propagate](commands.md#Propagate)
 
 <a id="TheSystem"></a>
 

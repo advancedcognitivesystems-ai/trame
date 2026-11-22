@@ -31,4 +31,6 @@ if [ -f "$engine/package-lock.json" ] && [ ! -d "$engine/node_modules" ] && ! cm
 fi
 # The engine runs with its own tsx: a project outside this repository may have none.
 cli=$(cd "$engine" && node -p 'require.resolve("tsx/cli")')
-NODE_NO_WARNINGS=1 exec node "$cli" "$engine/out/local/trame-cli.ts" "$@"
+# The engine starts this launcher again once an upgrade moved the pin (TRAME_LAUNCHER, since g118): the new engine reads
+# the graph, its packages installed first.
+TRAME_LAUNCHER="$here/$(basename "$0")" NODE_NO_WARNINGS=1 exec node "$cli" "$engine/out/local/trame-cli.ts" "$@"

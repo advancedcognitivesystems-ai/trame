@@ -93,7 +93,7 @@ const body = (deps: Deps): Handler => async (req) => {
 
   // Then the manifest, in a fresh process: it reads the graph with the references as they are now.
   return new Promise((done) => {
-    const child = deps.currentProcess.relaunch([deps.line.manifest], o.root)
+    const child = deps.currentProcess.restart([deps.line.manifest], o.root)
     const chunks: string[] = []
     child.stdout?.setEncoding(deps.encodings.utf8)
     child.stdout?.on(deps.events.data, (d: string) => chunks.push(d))

@@ -133,7 +133,7 @@ const body = (deps: Deps): Handler => async (req) => {
   deps.terminal.write(messages.initWritten(title, relative(o.root, deps.prelude.engine)))
   // Then the manifest, by an engine that reads the configuration just written.
   const status = await new Promise<number>((done) => {
-    const child = deps.currentProcess.relaunch([deps.line.manifest], o.root)
+    const child = deps.currentProcess.restart([deps.line.manifest], o.root)
     const chunks: string[] = []
     child.stdout!.setEncoding(deps.encodings.utf8)
     child.stdout!.on(deps.events.data, (d: string) => chunks.push(d))

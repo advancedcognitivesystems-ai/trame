@@ -15,7 +15,7 @@
 What a project does with its repository (open a pull request, carry a version across its projects) is a command a library offers and the project chooses, with its own decisions as settings, rather than a script each project writes (E3).
 
 - Owner: trame
-- Served by: [A library offers commands, a project chooses them](commands.md#CommandsOfALibrary), [Open a pull request](commands.md#OpenPullRequest), [Propagate](commands.md#Propagate), [Version 0.22.0](releases.md#R0_22_0), [Version 0.22.1](releases.md#R0_22_1), [Version 0.22.2](releases.md#R0_22_2), [Version 0.22.3](releases.md#R0_22_3)
+- Served by: [A library offers commands, a project chooses them](commands.md#CommandsOfALibrary), [Merge a pull request](commands.md#MergePullRequest), [Open a pull request](commands.md#OpenPullRequest), [Propagate](commands.md#Propagate), [Version 0.22.0](releases.md#R0_22_0), [Version 0.22.1](releases.md#R0_22_1), [Version 0.22.2](releases.md#R0_22_2), [Version 0.22.3](releases.md#R0_22_3)
 
 <a id="CitedNotCopied"></a>
 
