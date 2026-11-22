@@ -356,3 +356,16 @@ export const R0_22_3 = release({
   language: "shared",
   serves: [ChosenCommands, CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
 })
+
+/**
+ * Version 0.23.0
+ */
+export const R0_23_0 = release({
+  owner: "trame",
+  version: "0.23.0",
+  date: "2026-11-22",
+  what: "trame merge: a pull request merged once its checks passed, by the method decided, saying whose decisions it changes, the base checked out after; pull requests read, their checks, their files page by page; a branch brought up to date",
+  fingerprint: "2c958c6df068995e",
+  language: "shared",
+  serves: [ChosenCommands, CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
+})

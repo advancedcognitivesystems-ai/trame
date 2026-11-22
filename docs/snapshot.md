@@ -282,7 +282,7 @@ Port · `Prelude`
 Port · `Process`
 
 - Owner: trame
-- Declared effects: { cwd: read, program: read, terminal, env: read, relaunch: process, read, terminal, runTs: process, read, onSignal: process }
+- Declared effects: { cwd: read, program: read, terminal, env: read, relaunch: process, read, terminal, restart: process, read, terminal, runTs: process, read, onSignal: process }
 
 ### Process log
 
@@ -554,6 +554,31 @@ Decision · `ProjectSamples`
 - Decided by: trame
 - Value: { release: { version: 99.0.0, what: A version released in memory, by a scenario, by: claude }, imported: { library: std, specifier: #std/*, module: src/algebra.ts }, delivery: PoseliaPage, shipments: { runners: RunnersWritten, preview: Preview, publicVersion: PublicVersion }, carried: Note, kept: { decided: { fields: { heading: { type: text }, written: { type: date }, tags: { type: list, of: { type: text } }, mood: { type: text } }, key: heading }, undecided: { fields: { title: { type: text }, written: { type: text }, tags: { type: list, of: { type: text } } }, key: title }, changed: written, subject: Somewhere, by: tester }, handCheck: { check: OnAPhone, tester: ghalaax, stranger: someone-else }, delegated: { check: OnALaptop, agent: lea, person: karim, within: 2026-12-01, after: 2027-01-05 }, command: { name: prepare-storage, argument: --dry-run, environment: Local, component: The service's SDLC }, libraryCommand: { name: pull-request, argument: A change, component: The library's commands }, started: { title: Started in memory, owner: ghalaax }, registry: { home: ., generation: g93 } }
 
+### Declarations rewritten
+
+Decision · `RewritingSamples`
+
+- Decided by: trame
+- Value: { name: Heading, declared: export const Heading = syntax({
+  examples: [{ input: ["a"], output: "# a" }, { input: ["b"], output: [
+    "x",
+    "y",
+  ].join("\n") }],
+}), text: ## a, asText: export const Heading = syntax({
+  examples: [{ input: ["a"], output: "## a" }, { input: ["b"], output: [
+    "x",
+    "y",
+  ].join("\n") }],
+}), lines: x
+z
+w, asLines: export const Heading = syntax({
+  examples: [{ input: ["a"], output: "# a" }, { input: ["b"], output: [
+    "x",
+    "z",
+    "w",
+  ].join("\n") }],
+}) }
+
 ### What a program run in a scenario answers
 
 Decision · `RunSamples`
@@ -681,6 +706,26 @@ Scenario · `EvidenceForSomeone` · **held**
 - Verifies: Record evidence
 - In: Test
 - Depends on: Record evidence, Write log, Process, Paths, Project layout, Where the SDLC's evidence is kept, What the scenarios ask of those projects, Trame's commands, Signatures, Messages of the scenarios
+
+### An example's output written again
+
+Scenario · `ExampleOutputRewritten` · **held**
+
+- Owner: trame
+- Parameters: { rewriting: commands.ExampleRewriting, samples: command-scenarios.RewritingSamples, counts: std/algebra.Counts, messages: messages.ScenarioMessages }
+- Verifies: Rewriting an example
+- In: Test
+- Depends on: Rewriting an example, Declarations rewritten, Messages of the scenarios
+
+### The examples of a project, met
+
+Scenario · `ExamplesMet` · **held**
+
+- Owner: trame
+- Parameters: { examples: commands.Examples, writeLog: architecture.WriteLog, line: conventions.TrameCommands, exitStatus: std/system.ExitStatus, messages: messages.ScenarioMessages }
+- Verifies: Examples
+- In: Test
+- Depends on: Examples, Write log, Trame's commands, Messages of the scenarios
 
 ### A library carries kinds
 
@@ -919,6 +964,15 @@ Function · `BuildComparison` · **held**
 - Serves: A specification that runs
 - Depends on: Messages of the commands, Messages of the outputs
 
+### Rewriting an example
+
+Function · `ExampleRewriting` · **held**
+
+- Owner: trame
+- Parameters: { ts: architecture.TypeScriptCompiler, file: std/text.TextFile, sequences: std/algebra.Sequences, texts: std/algebra.Texts, syntax: typescript.TypeScriptSyntax, values: std/algebra.ValueTypes }
+- Serves: A specification that runs
+- Depends on: TypeScript compiler, The syntax of the programs Trame writes
+
 ### Preparation
 
 Function · `Preparation` · **held**
@@ -960,7 +1014,7 @@ Function · `RenderView` · **held**
 Entry point · `Advance` · **held**
 
 - Owner: trame
-- Trigger: { type: command, name: advance }
+- Trigger: { type: command, name: promote }
 - Parameters: { exitStatus: std/system.ExitStatus, preparation: commands.Preparation, engines: engine.EngineFingerprint, line: conventions.TrameCommands, layout: conventions.Layout, advancement: generations.Advancement, accept: (rule), example: platform.ExampleRoot, day: platform.TestDay, environment: conventions.TrameEnvironment, language: typescript.TypeScript, programs: architecture.Programs, trees: architecture.FileTrees, reading: architecture.FileReading, writing: architecture.FileWriting, paths: architecture.Paths, hashing: architecture.Hashing, sha256: std/algorithms.Sha256, fingerprint: engine.Fingerprint, encodings: std/system.NodeEncodings, diff: std/text.UnifiedDiff, file: std/text.TextFile, terminal: architecture.Terminal, table: text.Columns, columns: text.TerminalText, laws: messages.CommandMessages, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, values: std/algebra.ValueTypes, messages: messages.AdvanceMessages, pin: generations.EnginePin, sharing: generations.LanguageSharing, releases: generations.Releases, records: generations.ReleaseRecords, json: conventions.JsonFormatting, specifiers: std/system.NodeModuleSpecifiers, references: conventions.ReferenceSyntax, clock: architecture.Clock, project: engine.Project, packages: std/tooling.PackageSources, names: conventions.LanguageNames }
 - Serves: A specification that runs
 - Part of: Trame on the command line
@@ -1064,6 +1118,17 @@ Entry point · `EmitPayload` · **held**
 - Serves: A specification that runs
 - Part of: Trame on the command line
 - Depends on: Preparation, Payload, Rendering of the files, Rendering in the terminal, Rendering in the page, Terminal
+
+### Examples
+
+Entry point · `Examples` · **held**
+
+- Owner: trame
+- Trigger: { type: command, name: examples }
+- Parameters: { exitStatus: std/system.ExitStatus, preparation: commands.Preparation, rewriting: commands.ExampleRewriting, reading: architecture.FileReading, writing: architecture.FileWriting, paths: architecture.Paths, terminal: architecture.Terminal, line: conventions.TrameCommands, encodings: std/system.NodeEncodings, counts: std/algebra.Counts, messages: messages.CommandMessages }
+- Serves: A specification that runs
+- Part of: Trame on the command line
+- Depends on: Preparation, Rewriting an example, File reading, File writing, Paths, Terminal, Trame's commands, Messages of the commands
 
 ### Export the page
 
@@ -1262,7 +1327,7 @@ Standard · `TrameCommands`
 
 - Maintained by: trame
 - Source: Trame, its command line (the entry points of commands, in the module commands)
-- Constants: { program: { value: trame, meaning: The name a person types }, assemble: { value: assemble, meaning: Assembles a component for an environment }, build: { value: build, meaning: Builds the documents of the graph }, dev: { value: dev, meaning: Follows the graph live in the page }, payload: { value: payload, meaning: Writes the graph compiled at a date, for the page }, export: { value: export, meaning: Writes the page, standalone }, publish: { value: publish, meaning: Freezes the published declarations in the lock }, run: { value: run, meaning: Assembles a component, then runs it }, view: { value: view, meaning: Shows a view }, snapshot: { value: snapshot, meaning: Takes the snapshot of the graph }, testKinds: { value: test-kinds, meaning: Tests the laws of the kinds and of the views }, advance: { value: advance, meaning: The generation in place assembles the described engine and checks it }, audit: { value: audit, meaning: Asks the registry about the packages of the graph, and keeps its answers as evidence }, manifest: { value: manifest, meaning: Writes the packages of the graph, at their versions, and where each library's name leads, into the project's manifest }, release: { value: release, meaning: Freezes a version of the project, a library: its graph, its code and its documents }, deliver: { value: deliver, meaning: Writes the deliveries of the project: a page a browser opens as it is }, ship: { value: ship, meaning: Builds a shipment's artefacts, runs its checks, refuses while an obligation does not hold, deploys it }, evidence: { value: evidence, meaning: Records a piece of evidence a person gives: a check made by hand, a review, a deployment }, doctor: { value: doctor, meaning: Asks the machine whether it runs Trame: files, trees, programs, a server, the time, the registry }, plan: { value: plan, meaning: Says what a build would change against the last one, and writes nothing }, amend: { value: amend, meaning: Changes a chosen value by an amendment, said first, then recorded where the project's amendments go }, registry: { value: registry, meaning: Publishes to the registry of this machine the generations and the releases frozen in the language's home }, upgrade: { value: upgrade, meaning: Moves each package of Trame the project references to the newest version its origin holds, then writes its manifest }, init: { value: init, meaning: Starts a project in the current directory: its configuration, its first module, the guide for agents, its manifest }, help: { value: help, meaning: Says what may be typed: the commands of the engine, those of the project, the views }, fallback: { value: *, meaning: The command that receives a word naming no other one: a view, or a command of the project }, optionPrefix: { value: -, meaning: Opens an option, not a command }, at: { value: --at, meaning: The date at which the graph is compiled }, format: { value: --format, meaning: The format a view is written in }, port: { value: --port, meaning: The port trame dev listens on }, fragment: { value: --fragment, meaning: Writes the page as a fragment, without its document }, env: { value: --env, meaning: The environment a component is assembled for }, all: { value: --all, meaning: Every date, not only the one asked }, history: { value: --history, meaning: With --all, the last days of the project's history too: a version released, evidence given }, accept: { value: --accept, meaning: The differences an advance shows are wanted }, promote: { value: --promote, meaning: The candidate becomes the next generation, with what changes }, migrate: { value: --migrate, meaning: With publish: the published declarations that changed form, not meaning, as the language moved, are published again, with why }, by: { value: --by, meaning: Who gives the evidence, or writes the amendment: the person it is attributed to }, for: { value: --for, meaning: For whom: the person of the role the evidence is theirs, given by an agent (--by) a delegation of the role lets act for them (C4) }, why: { value: --why, meaning: Why an amendment changes the value }, from: { value: --from, meaning: The day an amendment comes into force }, until: { value: --until, meaning: The last day an amendment is in force }, source: { value: --source, meaning: The source that changed a cited value, which the amendment names }, subject: { value: --subject, meaning: What was reviewed: the key of a row of data }, language: { value: --language, meaning: The language a row was reviewed in }, note: { value: --note, meaning: What the evidence says, in words }, url: { value: --url, meaning: Where to read more, or where an artefact was deployed }, dryRun: { value: --dry-run, meaning: Builds and checks, records the evidence, but does not deploy }, restore: { value: --restore, meaning: Given to the launcher: installs, in the pinned generation's folder, the packages it was frozen with }, passed: { value: passed, meaning: The evidence says yes: the check passed, the review approves, the deployment is done }, failed: { value: failed, meaning: The evidence says no: the check failed, the review asks for changes }, json: { value: json, meaning: A view written as JSON (the intermediate format) }, markdown: { value: md, meaning: A view written as Markdown }, separator: { value:  , meaning: Separates the words of a command, and the names of a list given as one parameter } }
+- Constants: { program: { value: trame, meaning: The name a person types }, assemble: { value: assemble, meaning: Assembles a component for an environment }, build: { value: build, meaning: Builds the documents of the graph }, dev: { value: dev, meaning: Follows the graph live in the page }, payload: { value: payload, meaning: Writes the graph compiled at a date, for the page }, export: { value: export, meaning: Writes the page, standalone }, publish: { value: publish, meaning: Freezes the published declarations in the lock }, run: { value: run, meaning: Assembles a component, then runs it }, view: { value: view, meaning: Shows a view }, snapshot: { value: snapshot, meaning: Takes the snapshot of the graph }, testKinds: { value: test-kinds, meaning: Tests the laws of the kinds and of the views }, examples: { value: examples, meaning: The examples of the syntax elements not met, with what they write; written again with --accept (since g118) }, promotion: { value: promote, meaning: The step the next generation's shipment deploys: the candidate builds, compares, and with --promote becomes the next generation (since g118; trame advance, Trame's own command, runs the whole) }, audit: { value: audit, meaning: Asks the registry about the packages of the graph, and keeps its answers as evidence }, manifest: { value: manifest, meaning: Writes the packages of the graph, at their versions, and where each library's name leads, into the project's manifest }, release: { value: release, meaning: Freezes a version of the project, a library: its graph, its code and its documents }, deliver: { value: deliver, meaning: Writes the deliveries of the project: a page a browser opens as it is }, ship: { value: ship, meaning: Builds a shipment's artefacts, runs its checks, refuses while an obligation does not hold, deploys it }, evidence: { value: evidence, meaning: Records a piece of evidence a person gives: a check made by hand, a review, a deployment }, doctor: { value: doctor, meaning: Asks the machine whether it runs Trame: files, trees, programs, a server, the time, the registry }, plan: { value: plan, meaning: Says what a build would change against the last one, and writes nothing }, amend: { value: amend, meaning: Changes a chosen value by an amendment, said first, then recorded where the project's amendments go }, registry: { value: registry, meaning: Publishes to the registry of this machine the generations and the releases frozen in the language's home }, upgrade: { value: upgrade, meaning: Moves each package of Trame the project references to the newest version its origin holds, then writes its manifest }, init: { value: init, meaning: Starts a project in the current directory: its configuration, its first module, the guide for agents, its manifest }, help: { value: help, meaning: Says what may be typed: the commands of the engine, those of the project, the views }, fallback: { value: *, meaning: The command that receives a word naming no other one: a view, or a command of the project }, optionPrefix: { value: -, meaning: Opens an option, not a command }, at: { value: --at, meaning: The date at which the graph is compiled }, format: { value: --format, meaning: The format a view is written in }, port: { value: --port, meaning: The port trame dev listens on }, fragment: { value: --fragment, meaning: Writes the page as a fragment, without its document }, env: { value: --env, meaning: The environment a component is assembled for }, all: { value: --all, meaning: Every date, not only the one asked }, history: { value: --history, meaning: With --all, the last days of the project's history too: a version released, evidence given }, accept: { value: --accept, meaning: The differences an advance shows are wanted }, promote: { value: --promote, meaning: The candidate becomes the next generation, with what changes }, migrate: { value: --migrate, meaning: With publish: the published declarations that changed form, not meaning, as the language moved, are published again, with why }, by: { value: --by, meaning: Who gives the evidence, or writes the amendment: the person it is attributed to }, for: { value: --for, meaning: For whom: the person of the role the evidence is theirs, given by an agent (--by) a delegation of the role lets act for them (C4) }, why: { value: --why, meaning: Why an amendment changes the value }, from: { value: --from, meaning: The day an amendment comes into force }, until: { value: --until, meaning: The last day an amendment is in force }, source: { value: --source, meaning: The source that changed a cited value, which the amendment names }, subject: { value: --subject, meaning: What was reviewed: the key of a row of data }, language: { value: --language, meaning: The language a row was reviewed in }, note: { value: --note, meaning: What the evidence says, in words }, url: { value: --url, meaning: Where to read more, or where an artefact was deployed }, dryRun: { value: --dry-run, meaning: Builds and checks, records the evidence, but does not deploy }, restore: { value: --restore, meaning: Given to the launcher: installs, in the pinned generation's folder, the packages it was frozen with }, passed: { value: passed, meaning: The evidence says yes: the check passed, the review approves, the deployment is done }, failed: { value: failed, meaning: The evidence says no: the check failed, the review asks for changes }, json: { value: json, meaning: A view written as JSON (the intermediate format) }, markdown: { value: md, meaning: A view written as Markdown }, separator: { value:  , meaning: Separates the words of a command, and the names of a list given as one parameter } }
 
 ### Trame's environment
 
@@ -1270,7 +1335,7 @@ Standard · `TrameEnvironment`
 
 - Maintained by: trame
 - Source: Trame, the variables of the environment it reads
-- Constants: { today: { value: TRAME_TODAY, meaning: The date the engine takes for today (ISO 8601) instead of the clock's: documents that do not change from one day to the next } }
+- Constants: { today: { value: TRAME_TODAY, meaning: The date the engine takes for today (ISO 8601) instead of the clock's: documents that do not change from one day to the next }, launcher: { value: TRAME_LAUNCHER, meaning: The launcher that started the engine (trame.sh), which the engine starts again once an upgrade moved the pin (since g118) } }
 
 ### How an amendment is named
 
@@ -3107,10 +3172,10 @@ Package · `StandardLibrary`
 
 - Owner: trame
 - Name: std
-- Version: 0.22.3
+- Version: 0.23.0
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: std/releases/0.22.3
+- Its path: std/releases/0.23.0
 - Serves: A single source of truth
 
 ### tsx
@@ -3724,9 +3789,9 @@ Implementation · `NodePaths` · **held**
 Implementation · `NodeProcess` · **held**
 
 - Owner: trame
-- Parameters: { argv: std/system.NodeArguments, node: std/system.NodeCli, runner: platform.TypeScriptRunner }
+- Parameters: { argv: std/system.NodeArguments, node: std/system.NodeCli, runner: platform.TypeScriptRunner, variables: conventions.TrameEnvironment }
 - Implements: Process
-- Depends on: Runner of TypeScript
+- Depends on: Runner of TypeScript, Trame's environment
 
 ### Node programs
 
@@ -4715,6 +4780,20 @@ Release · `G117`
 - Language archived: 1f89c7a53ffc47e7
 - Releases: Trame on the command line
 - Assembled by: Generation 116
+
+### Generation 118
+
+Release · `G118`
+
+- Released by: trame
+- Version: g118
+- Released on: 2026-11-22
+- What changes: E3, part 2b: trame examples [--accept]; the step the next generation deploys is named promote (trame advance becomes Trame's own command); after an upgrade moved the pin, the manifest runs on the engine the project pins now, through the launcher
+- Fingerprint: 182c7edba5fb4066
+- Language: shared
+- Language archived: 317984c94a100587
+- Releases: Trame on the command line
+- Assembled by: Generation 117
 
 ### Generation 12
 
@@ -6399,6 +6478,13 @@ Scenario · `KindLaws` · **held**
 
 ## Trame · SDLC
 
+### Who advances, and what changes
+
+Decision · `AdvanceSample`
+
+- Decided by: trame
+- Value: { person: claude, what: A change }
+
 ### How the graph page is opened
 
 Decision · `GraphPageOpening`
@@ -6412,6 +6498,14 @@ Decision · `GraphPageScenarioData`
 
 - Decided by: trame
 - Value: { error: The page broke }
+
+### How a generation advances
+
+Decision · `HowAGenerationAdvances`
+
+- Decided by: trame
+- Value: { assembled: TrameCli, TrameSdlc, environment: Local, shipment: NextGeneration }
+- Rejected: Each step typed by hand, three commands and the candidate called by its path, in an order nothing checked (until g118); Shipped by the generation in place, what it built would be judged by the engine that is leaving: evidence of another engine than the one pinned once it is deployed
 
 ### How the repository merges into main
 
@@ -6486,6 +6580,17 @@ Function · `OurPullRequests` · **held**
 - Parameters: { repository: sdlc.TheRepository, main: sdlc.MainBranch, workflow: sdlc.PullRequestsOnGitHub, layout: conventions.Layout, projects: sdlc.RepositoryProjects, ways: ci/github.MergeWays }
 - Serves: A specification that runs
 - Depends on: Trame's repository, How the repository merges into main, How a pull request is checked on GitHub, Project layout, The repository's projects
+
+### Advance
+
+Entry point · `AdvanceAGeneration` · **held**
+
+- Owner: trame
+- Trigger: { type: command, name: advance }
+- Parameters: { runs: std/tooling.ProgramRuns, currentProcess: architecture.Process, events: std/system.NodeEvents, exit: std/system.ExitStatus, layout: conventions.Layout, line: conventions.TrameCommands, advancing: sdlc.HowAGenerationAdvances, candidate: sdlc.EngineCandidate, typescript: typescript.TypeScript, names: typescript.ProgramNames, say: sdlc.SdlcWords, posix: std/system.Posix, texts: std/algebra.Texts, sequences: std/algebra.Sequences }
+- Serves: A specification that runs
+- Part of: Trame's SDLC
+- Depends on: Process, Project layout, Trame's commands, How a generation advances, The candidate engine, TypeScript, Names of a program, What the programs of Trame's SDLC say
 
 ### Set the repository's settings
 
@@ -6587,6 +6692,16 @@ Technical choice · `SdlcOnTheMachine` · **unknown**
 - Context: The graph page must be opened as a person opens it: the file exported, in a real browser; the repository is set and read by GitHub's command line, with the token of whoever runs it.
 - In: Local, A session of Claude Code
 
+### A generation advanced in one command
+
+Scenario · `AdvancedInOneCommand` · **held**
+
+- Owner: trame
+- Parameters: { advance: sdlc.AdvanceAGeneration, runs: std/tooling.ProgramRunsKept, processLog: architecture.ProcessLog, line: conventions.TrameCommands, advancing: sdlc.HowAGenerationAdvances, sample: sdlc.AdvanceSample, names: typescript.ProgramNames, exit: std/system.ExitStatus, texts: std/algebra.Texts, messages: messages.ScenarioMessages }
+- Verifies: Advance
+- In: Test
+- Depends on: Advance, Process log, Trame's commands, How a generation advances, Who advances, and what changes, Names of a program, Messages of the scenarios
+
 ### The graph page is opened as a person would
 
 Scenario · `OpeningTheGraphPage` · **held**
@@ -6653,7 +6768,7 @@ Artefact · `PageProgram` · **held**
 
 ### The pull requests' workflow
 
-Artefact · `PullRequestWorkflow` · **held**
+Artefact · `PullRequestWorkflow` · **unknown**
 
 - Owner: trame
 - Path: .github/workflows/trame-pull-request.yml
@@ -6740,7 +6855,7 @@ Shipment · `RepositorySet` · **unknown**
 
 ### The files that run it elsewhere
 
-Shipment · `RunnersWritten` · **held**
+Shipment · `RunnersWritten` · **unknown**
 
 - Owner: trame
 - Target: repository

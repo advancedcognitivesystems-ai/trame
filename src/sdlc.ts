@@ -14,14 +14,17 @@ import { catalog } from "../kinds/catalog"
 import { decision } from "../kinds/decision"
 import { scenario } from "../kinds/scenario"
 import { entryPoint, command } from "../kinds/entry-point"
-import { ProgramCommands, HeadlessBrowser, NodeProgramCommands, PlaywrightBrowser, BrowserInMemory, BrowserScripted, NodeProgramRuns, MachineFiles } from "#std/tooling"
+import {
+  ProgramCommands, HeadlessBrowser, NodeProgramCommands, PlaywrightBrowser, BrowserInMemory, BrowserScripted, NodeProgramRuns, MachineFiles, ProgramRuns,
+  ProgramRunsInMemory, ProgramRunsKept, FilesInMemory,
+} from "#std/tooling"
 import { Adapter, Strategy, Command } from "#std/patterns"
-import { OpenPullRequest, Propagate, PullRequestSettings, PropagationSettings } from "#std/commands"
+import { OpenPullRequest, MergePullRequest, Propagate, PullRequestSettings, PropagationSettings } from "#std/commands"
 import { GitCliBranches, GitHubCliPullRequests, AutoMergeByGitHubCli, AutoMergeInAClaudeSession } from "#std/repository"
 import { Layout, TrameCommands, TrameEnvironment, ProjectStart } from "./conventions"
 import { TypeScript } from "./typescript"
-import { Posix } from "#std/system"
-import { Texts } from "#std/algebra"
+import { Posix, NodeEvents } from "#std/system"
+import { Texts, Sequences } from "#std/algebra"
 import { TestDay } from "./platform"
 import { Html, Css, Svg } from "#std/html"
 import { ExitStatus } from "#std/system"
@@ -35,7 +38,8 @@ import { AttributeSelector } from "./html"
 import { Language, ScenarioMessages } from "./messages"
 import { ShowGraph, ExplorerFigures, BrowserWindow, BrowserMemory, BrowserFeed, BrowserAmendments, BrowserDecompression } from "./browser"
 import { Verified, Served, Applied, Checked, Ruled, Safe, Identified } from "#std/obligations"
-import { TrameCli, Local, Session } from "./architecture"
+import { TrameCli, Local, Session, Process, ProcessLog } from "./architecture"
+import { ProgramNames } from "./typescript"
 import { TestKinds, Advance, Doctor } from "./commands"
 import { DiskReading, DiskWriting, DiskTrees, NodeProcess, NodePrograms, NodeTerminal, SystemClock, NpmReports, NpmInstall, NodeHttpServer, RunsOnDisk } from "./platform"
 import { ExecutableSpecification } from "./product"
@@ -173,7 +177,7 @@ export const SdlcOnTheMachine = binding({
  */
 export const SdlcInMemory = binding({
   owner: "trame",
-  chooses: [BrowserInMemory, RepositoryInMemory],
+  chooses: [BrowserInMemory, RepositoryInMemory, ProgramRunsInMemory, FilesInMemory],
   environments: [Test],
   follows: [Strategy],
   context: "A program of the SDLC is code like the engine's: its scenarios play it before it runs on a machine.",
@@ -231,6 +235,9 @@ export const SdlcWords = catalog({
   owner: "trame",
   language: Language,
   messages: () => ({
+    advanceUsage: (by: string, accept: string, promote: string) => `Say who advances: trame advance ${by} <name> [${accept}] [${promote} "what changes"]`,
+    advanceAssembling: (component: string) => `The generation in place assembles ${component}`,
+    advanceStopped: (component: string) => `The advance stopped: ${component} could not be assembled`,
     opens: () => "The graph page opens: its documents, a document shown, its nodes, the figure of the layers drawn, no error",
     noDocuments: () => "The navigation lists no document",
     noDocument: () => "No document is shown",
@@ -603,11 +610,11 @@ export const OurPropagation = fn({
 
 /**
  * The commands Trame takes from std
- * pull-request and propagate, on the machine and in a session of Claude Code, with Trame's settings.
+ * pull-request, merge and propagate, on the machine and in a session of Claude Code, with Trame's settings.
  */
 export const CommandsOfStd = binding({
   owner: "trame",
-  chooses: [OpenPullRequest, Propagate, OurPullRequests, OurPropagation],
+  chooses: [OpenPullRequest, MergePullRequest, Propagate, OurPullRequests, OurPropagation],
   environments: [Local, Session],
   follows: [Command],
   serves: [ExecutableSpecification],
@@ -686,5 +693,84 @@ export const OurCommandsSettled = scenario({
     check(messages.ourPropagationSettled(), carried.engine.launcher === layout.launcher && carried.engine.upgrade === line.upgrade &&
       carried.configuration === layout.configuration && carried.projects.length === projects.length &&
       dated.length === [scenarios].length && dated.every((p) => p.day === day && p.name === scenarios?.name))
+  },
+})
+
+// A generation advanced in one command (E3, P2b) ------------------------------------------------------------------------
+
+/** What an advance assembles, for where, and the shipment the candidate then ships: named as the command line names them. */
+export interface GenerationAdvance {
+  readonly assembled: readonly string[]
+  readonly environment: string
+  readonly shipment: string
+}
+
+/**
+ * How a generation advances
+ * The generation in place assembles the engine's command line (the candidate) and Trame's SDLC (the programs of its
+ * checks), for the machine; then the candidate ships the next generation, judging what it builds as the generation it
+ * will be.
+ */
+export const HowAGenerationAdvances = decision<GenerationAdvance>({
+  owner: "trame",
+  value: { assembled: ["TrameCli", "TrameSdlc"], environment: "Local", shipment: "NextGeneration" },
+  rejected: {
+    "Each step typed by hand": "three commands and the candidate called by its path, in an order nothing checked (until g118)",
+    "Shipped by the generation in place": "what it built would be judged by the engine that is leaving: evidence of another engine than the one pinned once it is deployed",
+  },
+})
+
+/**
+ * Advance
+ * trame advance --by <name> [--accept] [--promote "what changes"]: the generation in place assembles the candidate and
+ * Trame's SDLC, then the candidate ships the next generation with the rest of the line (it builds, compares, checks,
+ * and with --promote freezes itself and moves the pins). It stops where an assembly fails.
+ */
+export const AdvanceAGeneration = entryPoint({
+  owner: "trame",
+  in: TrameSdlc, for: TheOperators,
+  serves: [ExecutableSpecification],
+  trigger: command("advance"),
+  deps: {
+    runs: ProgramRuns, currentProcess: Process, events: NodeEvents, exit: ExitStatus, layout: Layout, line: TrameCommands, advancing: HowAGenerationAdvances,
+    candidate: EngineCandidate, typescript: TypeScript, names: ProgramNames, say: SdlcWords, posix: Posix, texts: Texts, sequences: Sequences,
+  },
+  body: code.file("./code/sdlc/advance-a-generation.ts"),
+})
+
+/**
+ * Who advances, and what changes
+ * What the scenario of the advance types after its name.
+ */
+export const AdvanceSample = decision<{ person: string; what: string }>({
+  owner: "trame",
+  value: { person: "claude", what: "A change" },
+})
+
+/**
+ * A generation advanced in one command
+ * Without a name, nothing is assembled; with one, the generation in place assembles the candidate and Trame's SDLC for
+ * the machine, in that order, then the candidate is started on the next generation's shipment with the rest of the
+ * line, its launcher leading the names of the packages; its status is the command's.
+ */
+export const AdvancedInOneCommand = scenario({
+  owner: "trame",
+  verifies: [AdvanceAGeneration],
+  env: Test,
+  deps: {
+    advance: AdvanceAGeneration, runs: ProgramRunsKept, processLog: ProcessLog, line: TrameCommands, advancing: HowAGenerationAdvances, sample: AdvanceSample,
+    names: ProgramNames, exit: ExitStatus, texts: Texts, messages: ScenarioMessages,
+  },
+  body: ({ advance, runs, processLog, line, advancing, sample, names, exit, texts, messages }) => async (check) => {
+    const refused = await advance({ params: {}, body: { args: [] } })
+    check(messages.advanceNeedsAName(), refused.status === exit.failure && runs.runs().length === processLog.started().length)
+    processLog.answer(texts.empty, exit.success)
+    const rest = [line.by, sample.person, line.promote, sample.what]
+    const done = await advance({ params: {}, body: { args: rest } })
+    const assembled = runs.runs().map((r) => JSON.stringify(r.args))
+    const expected = advancing.assembled.map((c) => JSON.stringify([line.assemble, c, line.env, advancing.environment]))
+    const [started] = processLog.started()
+    check(messages.advanceAssemblesThenShips(), done.status === exit.success && JSON.stringify(assembled) === JSON.stringify(expected) &&
+      JSON.stringify(started?.args) === JSON.stringify([line.ship, advancing.shipment, ...rest]) && !!started?.program.includes(names.launcher))
   },
 })

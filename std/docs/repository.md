@@ -10,11 +10,11 @@
 
 ### Git's command line
 
-`GitCommandLine` · `src/repository.ts:301`
+`GitCommandLine` · `src/repository.ts:306`
 
 The commands that say which branch is checked out, push it and follow it, fetch another and list the files that differ since the two parted.
 
-Source: Git manual: git-rev-parse (--abbrev-ref), git-push (--set-upstream), git-fetch, git-diff (--name-only, A...B: since the merge base) · `https://git-scm.com/docs/git-diff`
+Source: Git manual: git-rev-parse (--abbrev-ref), git-push (--set-upstream), git-fetch, git-diff (--name-only, A...B: since the merge base), git-checkout, git-merge (--ff-only) · `https://git-scm.com/docs/git-diff`
 
 | Constant | Value | Meaning |
 |---|---|---|
@@ -31,6 +31,9 @@ Source: Git manual: git-rev-parse (--abbrev-ref), git-push (--set-upstream), git
 | `diff` | `diff` | Shows what differs |
 | `names` | `--name-only` | Only the paths of the files that differ |
 | `since` | `...` | Between two names: what the second changes since it parted from the first |
+| `checkout` | `checkout` | Checks a branch out |
+| `merge` | `merge` | Joins another history into the branch checked out |
+| `forwardOnly` | `--ff-only` | Only by moving the branch forward: refused if it would need a merge commit |
 
 - Maintained by: trame
 - Serves: [A published value is cited, not copied](product.md#CitedNotCopied)
@@ -40,7 +43,7 @@ Source: Git manual: git-rev-parse (--abbrev-ref), git-push (--set-upstream), git
 
 ### GitHub's ways of asking a merge once it holds
 
-`GitHubAutoMerge` · `src/repository.ts:445`
+`GitHubAutoMerge` · `src/repository.ts:502`
 
 GitHub's command line asks it by GraphQL (enablePullRequestAutoMerge); a session of Claude Code reaches GitHub through a proxy that refuses GraphQL and offers a route of its own, PUT on the pull request's ccr/auto_merge, as it says when GraphQL is called.
 
@@ -66,11 +69,11 @@ Source: GitHub CLI manual: gh pr merge (--auto, --merge, --squash, --rebase, --r
 
 ### GitHub's API for pull requests
 
-`GitHubPullRequestsApi` · `src/repository.ts:404`
+`GitHubPullRequestsApi` · `src/repository.ts:442`
 
 The calls that list the pull requests a branch has open, open one, and what GitHub answers of it.
 
-Source: GitHub REST API: Pulls (List pull requests: head, state; Create a pull request: title, head, base, body; number, html_url); GitHub CLI manual: gh api (--method, --input, a query) · `https://docs.github.com/en/rest/pulls/pulls`
+Source: GitHub REST API: Pulls (List pull requests: head, state; Create a pull request: title, head, base, body; number, html_url; Get a pull request: head.ref, head.sha, base.ref, state; List pull requests files: filename; Merge a pull request: merge_method), Checks (List check runs for a Git reference: check_runs, name, status, conclusion); GitHub CLI manual: gh api (--method, --input, a query) · `https://docs.github.com/en/rest/pulls/pulls`
 
 | Constant | Value | Meaning |
 |---|---|---|
@@ -87,6 +90,25 @@ Source: GitHub REST API: Pulls (List pull requests: head, state; Create a pull r
 | `body` | `body` | What it says |
 | `number` | `number` | Its number in the repository |
 | `url` | `html_url` | Where a person opens it |
+| `ref` | `ref` | The name of a branch, in head and base |
+| `sha` | `sha` | A commit, by its hash |
+| `files` | `/files` | After a pull request: the files it changes |
+| `filename` | `filename` | The path of a file it changes |
+| `merging` | `/merge` | After a pull request: merges it |
+| `method` | `merge_method` | How it is merged |
+| `commits` | `/commits` | After the repository: its commits |
+| `checkRuns` | `/check-runs` | After a commit: the checks run on it |
+| `runs` | `check_runs` | The checks listed |
+| `name` | `name` | A check's name |
+| `status` | `status` | Whether a check still runs |
+| `completed` | `completed` | A check that ended |
+| `conclusion` | `conclusion` | How a check ended |
+| `success` | `success` | A check that passed |
+| `skipped` | `skipped` | A check that did not need to run: it does not keep a merge |
+| `perPage` | `per_page` | How many are listed at once |
+| `page` | `page` | Which page of a list, from the first |
+| `first` | `1` | The first page |
+| `most` | `100` | The most a page lists |
 
 - Maintained by: trame
 - Serves: [A published value is cited, not copied](product.md#CitedNotCopied)
@@ -206,7 +228,7 @@ What a repository read back is compared on, each with what it says.
 
 ### A repository is set by its project's graph
 
-`RepositoryThroughItsApi` · `src/repository.ts:542` · status: **held**
+`RepositoryThroughItsApi` · `src/repository.ts:628` · status: **held**
 
 The settings of a repository are a decision of the project's graph, applied through a port of the library and read back: realized once for a machine (GitHub's command line) and once in memory.
 
@@ -229,7 +251,7 @@ Consequences: A project decides its settings (RepositorySettings) and applies th
 
 ### The automatic merge
 
-`AutoMerge` · `src/repository.ts:437`
+`AutoMerge` · `src/repository.ts:494`
 
 How GitHub is asked to merge a pull request once it holds: by its command line where GitHub's GraphQL is reached, by a route of the proxy in a session of Claude Code.
 
@@ -251,7 +273,7 @@ How GitHub is asked to merge a pull request once it holds: by its command line w
 
 ### The branches
 
-`Branches` · `src/repository.ts:291`
+`Branches` · `src/repository.ts:293`
 
 The branch a person works on in the repository: which it is, pushed, and what it changes against another.
 
@@ -260,6 +282,7 @@ The branch a person works on in the repository: which it is, pushed, and what it
 | `current` | process, asynchronous |
 | `push` | process, network, asynchronous |
 | `changed` | process, network, asynchronous |
+| `update` | process, network, write, asynchronous |
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
@@ -267,15 +290,15 @@ The branch a person works on in the repository: which it is, pushed, and what it
 | [Test](scenarios.md#Test) | [Branches kept in memory](#BranchesInMemory) | [In memory](scenarios.md#InMemory) |
 
 - Owner: trame
-- Effects: asynchronous, network, process
-- Used by: [Open a pull request](commands.md#OpenPullRequest)
+- Effects: asynchronous, network, process, write
+- Used by: [Merge a pull request](commands.md#MergePullRequest), [Open a pull request](commands.md#OpenPullRequest)
 - Implemented by: [Branches kept in memory](#BranchesInMemory), [Git's branches](#GitCliBranches)
 
 <a id="BranchesKept"></a>
 
 ### The branches a scenario keeps
 
-`BranchesKept` · `src/repository.ts:343`
+`BranchesKept` · `src/repository.ts:353`
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
@@ -284,13 +307,13 @@ The branch a person works on in the repository: which it is, pushed, and what it
 
 - Owner: trame
 - Implemented by: [Branches kept in memory](#BranchesInMemory)
-- Used by: [A pull request opened](scenarios.md#PullRequestOpened)
+- Used by: [A pull request merged once it holds](scenarios.md#MergedOnceItHolds), [A pull request opened](scenarios.md#PullRequestOpened)
 
 <a id="PullRequests"></a>
 
 ### Pull requests
 
-`PullRequests` · `src/repository.ts:393`
+`PullRequests` · `src/repository.ts:429`
 
 The pull requests of a repository on GitHub: the one a branch has open, one opened, merged once it holds.
 
@@ -299,6 +322,10 @@ The pull requests of a repository on GitHub: the one a branch has open, one open
 | `find` | process, network, asynchronous |
 | `open` | process, network, asynchronous |
 | `mergeOnceItHolds` | process, network, asynchronous |
+| `read` | process, network, asynchronous |
+| `checks` | process, network, asynchronous |
+| `files` | process, network, asynchronous |
+| `merge` | process, network, asynchronous |
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
@@ -307,14 +334,14 @@ The pull requests of a repository on GitHub: the one a branch has open, one open
 
 - Owner: trame
 - Effects: asynchronous, network, process
-- Used by: [Open a pull request](commands.md#OpenPullRequest)
+- Used by: [Merge a pull request](commands.md#MergePullRequest), [Open a pull request](commands.md#OpenPullRequest)
 - Implemented by: [GitHub's pull requests, by its command line](#GitHubCliPullRequests), [Pull requests kept in memory](#PullRequestsInMemory)
 
 <a id="PullRequestsKept"></a>
 
 ### The pull requests a scenario keeps
 
-`PullRequestsKept` · `src/repository.ts:505`
+`PullRequestsKept` · `src/repository.ts:568`
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
@@ -323,7 +350,7 @@ The pull requests of a repository on GitHub: the one a branch has open, one open
 
 - Owner: trame
 - Implemented by: [Pull requests kept in memory](#PullRequestsInMemory)
-- Used by: [A pull request opened](scenarios.md#PullRequestOpened)
+- Used by: [A pull request merged once it holds](scenarios.md#MergedOnceItHolds), [A pull request opened](scenarios.md#PullRequestOpened)
 
 <a id="RepositoryApi"></a>
 
@@ -373,7 +400,7 @@ What a scenario sets of a repository kept in memory, and the settings applied to
 
 ### Branches kept in memory
 
-`BranchesInMemory` · `src/repository.ts:349` · status: **held**
+`BranchesInMemory` · `src/repository.ts:359` · status: **held**
 
 In a scenario, the branch checked out and what it changes are as the scenario sets them; a push is kept.
 
@@ -382,15 +409,15 @@ In a scenario, the branch checked out and what it changes are as the scenario se
 - Serves: [Ports of the platform, realized once](product.md#RealizedOnce)
 - Implements: [The branches](#Branches), [The branches a scenario keeps](#BranchesKept)
 - Chosen by: [In memory](scenarios.md#InMemory)
-- Verified by: [A pull request opened](scenarios.md#PullRequestOpened)
+- Verified by: [A pull request merged once it holds](scenarios.md#MergedOnceItHolds), [A pull request opened](scenarios.md#PullRequestOpened)
 
 <a id="PullRequestsInMemory"></a>
 
 ### Pull requests kept in memory
 
-`PullRequestsInMemory` · `src/repository.ts:512` · status: **held**
+`PullRequestsInMemory` · `src/repository.ts:577` · status: **held**
 
-In a scenario, a pull request opened is numbered after those opened before it, its address the path of its call; one open from a branch is found; a merge asked is kept.
+In a scenario, a pull request opened is numbered after those opened before it, its address the path of its call; one open from a branch is found; a merge asked, or made, is kept. A branch's last commit is named as the branch, and the checks run on it are those the scenario says; a pull request changes the files its branch changes, as the scenario says them too.
 
 - Owner: trame
 - Parameters: `repos` ← [GitHub's API for a repository](#GitHubRepositoryApi) · `api` ← [GitHub's API for pull requests](#GitHubPullRequestsApi) · `texts` ← [Texts](algebra.md#Texts)
@@ -398,7 +425,7 @@ In a scenario, a pull request opened is numbered after those opened before it, i
 - Serves: [Ports of the platform, realized once](product.md#RealizedOnce)
 - Implements: [Pull requests](#PullRequests), [The pull requests a scenario keeps](#PullRequestsKept)
 - Chosen by: [In memory](scenarios.md#InMemory)
-- Verified by: [A pull request opened](scenarios.md#PullRequestOpened)
+- Verified by: [A pull request merged once it holds](scenarios.md#MergedOnceItHolds), [A pull request opened](scenarios.md#PullRequestOpened)
 
 <a id="RepositoryCompared"></a>
 
@@ -438,7 +465,7 @@ In a scenario, applying settings keeps them and makes the repository so: one met
 
 ### The automatic merge, by GitHub's command line
 
-`AutoMergeByGitHubCli` · `src/repository.ts:478`
+`AutoMergeByGitHubCli` · `src/repository.ts:535`
 
 gh pr merge --auto, by the method decided: GitHub's GraphQL, with the token of whoever runs it.
 
@@ -451,7 +478,7 @@ gh pr merge --auto, by the method decided: GitHub's GraphQL, with the token of w
 
 ### The automatic merge, in a session of Claude Code
 
-`AutoMergeInAClaudeSession` · `src/repository.ts:488`
+`AutoMergeInAClaudeSession` · `src/repository.ts:545`
 
 The route of the session's proxy, by gh api: PUT on the pull request's ccr/auto_merge, with the method decided.
 
@@ -464,7 +491,7 @@ The route of the session's proxy, by gh api: PUT on the pull request's ccr/auto_
 
 ### Git's branches
 
-`GitCliBranches` · `src/repository.ts:328`
+`GitCliBranches` · `src/repository.ts:336`
 
 Asks Git, in the directory the program runs in: the branch checked out, pushed to its remote, the files it changes since it parted from another as the remote has it.
 
@@ -477,7 +504,7 @@ Asks Git, in the directory the program runs in: the branch checked out, pushed t
 
 ### GitHub's pull requests, by its command line
 
-`GitHubCliPullRequests` · `src/repository.ts:468`
+`GitHubCliPullRequests` · `src/repository.ts:525`
 
 Lists the pull requests a branch has open and opens one by gh api (REST), with the token of whoever runs it; asks the merge once it holds through the automatic merge chosen where it runs.
 

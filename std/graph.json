@@ -541,7 +541,7 @@
       "id": "commands.CommandsOfALibrary",
       "kind": "adr",
       "title": "A library offers commands, a project chooses them",
-      "source": "src/commands.ts:174",
+      "source": "src/commands.ts:203",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -580,10 +580,40 @@
       "diagnostics": []
     },
     {
+      "id": "commands.MergePullRequest",
+      "kind": "entry",
+      "title": "Merge a pull request",
+      "source": "src/commands.ts:173",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "trigger": {
+          "type": "command",
+          "name": "merge"
+        },
+        "deps": {
+          "settings": "commands.PullRequestSettings",
+          "branches": "repository.Branches",
+          "pulls": "repository.PullRequests",
+          "say": "commands.CommandWords",
+          "exit": "system.ExitStatus",
+          "counts": "algebra.Counts",
+          "posix": "system.Posix",
+          "texts": "algebra.Texts",
+          "values": "algebra.ValueTypes"
+        },
+        "body": {
+          "file": "./code/commands/merge-pull-request.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
       "id": "commands.OpenPullRequest",
       "kind": "entry",
       "title": "Open a pull request",
-      "source": "src/commands.ts:141",
+      "source": "src/commands.ts:154",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -613,7 +643,7 @@
       "id": "commands.Propagate",
       "kind": "entry",
       "title": "Propagate",
-      "source": "src/commands.ts:160",
+      "source": "src/commands.ts:189",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2604,10 +2634,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "117",
+        "version": "118",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g117"
+        "at": "../generations/g118"
       },
       "diagnostics": []
     },
@@ -3382,6 +3412,21 @@
       "diagnostics": []
     },
     {
+      "id": "releases.R0_23_0",
+      "kind": "release",
+      "title": "Version 0.23.0",
+      "source": "src/releases.ts:363",
+      "fields": {
+        "owner": "trame",
+        "version": "0.23.0",
+        "date": "2026-11-22",
+        "what": "trame merge: a pull request merged once its checks passed, by the method decided, saying whose decisions it changes, the base checked out after; pull requests read, their checks, their files page by page; a branch brought up to date",
+        "fingerprint": "2c958c6df068995e",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "releases.R0_3_0",
       "kind": "release",
       "title": "Version 0.3.0",
@@ -3490,7 +3535,7 @@
       "id": "repository.AutoMerge",
       "kind": "port",
       "title": "The automatic merge",
-      "source": "src/repository.ts:437",
+      "source": "src/repository.ts:494",
       "fields": {
         "owner": "trame",
         "declaredEffects": {
@@ -3507,7 +3552,7 @@
       "id": "repository.AutoMergeByGitHubCli",
       "kind": "implementation",
       "title": "The automatic merge, by GitHub's command line",
-      "source": "src/repository.ts:478",
+      "source": "src/repository.ts:535",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -3529,7 +3574,7 @@
       "id": "repository.AutoMergeInAClaudeSession",
       "kind": "implementation",
       "title": "The automatic merge, in a session of Claude Code",
-      "source": "src/repository.ts:488",
+      "source": "src/repository.ts:545",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -3552,7 +3597,7 @@
       "id": "repository.Branches",
       "kind": "port",
       "title": "The branches",
-      "source": "src/repository.ts:291",
+      "source": "src/repository.ts:293",
       "fields": {
         "owner": "trame",
         "declaredEffects": {
@@ -3569,6 +3614,12 @@
             "process",
             "network",
             "asynchronous"
+          ],
+          "update": [
+            "process",
+            "network",
+            "write",
+            "asynchronous"
           ]
         }
       },
@@ -3578,7 +3629,7 @@
       "id": "repository.BranchesInMemory",
       "kind": "function",
       "title": "Branches kept in memory",
-      "source": "src/repository.ts:349",
+      "source": "src/repository.ts:359",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3590,7 +3641,7 @@
       "id": "repository.BranchesKept",
       "kind": "port",
       "title": "The branches a scenario keeps",
-      "source": "src/repository.ts:343",
+      "source": "src/repository.ts:353",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -3601,7 +3652,7 @@
       "id": "repository.GitCliBranches",
       "kind": "implementation",
       "title": "Git's branches",
-      "source": "src/repository.ts:328",
+      "source": "src/repository.ts:336",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -3623,10 +3674,10 @@
       "id": "repository.GitCommandLine",
       "kind": "standard",
       "title": "Git's command line",
-      "source": "src/repository.ts:301",
+      "source": "src/repository.ts:306",
       "fields": {
         "owner": "trame",
-        "source": "Git manual: git-rev-parse (--abbrev-ref), git-push (--set-upstream), git-fetch, git-diff (--name-only, A...B: since the merge base)",
+        "source": "Git manual: git-rev-parse (--abbrev-ref), git-push (--set-upstream), git-fetch, git-diff (--name-only, A...B: since the merge base), git-checkout, git-merge (--ff-only)",
         "url": "https://git-scm.com/docs/git-diff",
         "constants": {
           "program": {
@@ -3680,6 +3731,18 @@
           "since": {
             "value": "...",
             "meaning": "Between two names: what the second changes since it parted from the first"
+          },
+          "checkout": {
+            "value": "checkout",
+            "meaning": "Checks a branch out"
+          },
+          "merge": {
+            "value": "merge",
+            "meaning": "Joins another history into the branch checked out"
+          },
+          "forwardOnly": {
+            "value": "--ff-only",
+            "meaning": "Only by moving the branch forward: refused if it would need a merge commit"
           }
         }
       },
@@ -3689,7 +3752,7 @@
       "id": "repository.GitHubAutoMerge",
       "kind": "standard",
       "title": "GitHub's ways of asking a merge once it holds",
-      "source": "src/repository.ts:445",
+      "source": "src/repository.ts:502",
       "fields": {
         "owner": "trame",
         "source": "GitHub CLI manual: gh pr merge (--auto, --merge, --squash, --rebase, --repo); the proxy of a Claude Code session, answering a call to GraphQL: PUT /repos/{owner}/{repo}/pulls/{n}/ccr/auto_merge",
@@ -3739,7 +3802,7 @@
       "id": "repository.GitHubCliPullRequests",
       "kind": "implementation",
       "title": "GitHub's pull requests, by its command line",
-      "source": "src/repository.ts:468",
+      "source": "src/repository.ts:525",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -3786,10 +3849,10 @@
       "id": "repository.GitHubPullRequestsApi",
       "kind": "standard",
       "title": "GitHub's API for pull requests",
-      "source": "src/repository.ts:404",
+      "source": "src/repository.ts:442",
       "fields": {
         "owner": "trame",
-        "source": "GitHub REST API: Pulls (List pull requests: head, state; Create a pull request: title, head, base, body; number, html_url); GitHub CLI manual: gh api (--method, --input, a query)",
+        "source": "GitHub REST API: Pulls (List pull requests: head, state; Create a pull request: title, head, base, body; number, html_url; Get a pull request: head.ref, head.sha, base.ref, state; List pull requests files: filename; Merge a pull request: merge_method), Checks (List check runs for a Git reference: check_runs, name, status, conclusion); GitHub CLI manual: gh api (--method, --input, a query)",
         "url": "https://docs.github.com/en/rest/pulls/pulls",
         "constants": {
           "pulls": {
@@ -3843,6 +3906,82 @@
           "url": {
             "value": "html_url",
             "meaning": "Where a person opens it"
+          },
+          "ref": {
+            "value": "ref",
+            "meaning": "The name of a branch, in head and base"
+          },
+          "sha": {
+            "value": "sha",
+            "meaning": "A commit, by its hash"
+          },
+          "files": {
+            "value": "/files",
+            "meaning": "After a pull request: the files it changes"
+          },
+          "filename": {
+            "value": "filename",
+            "meaning": "The path of a file it changes"
+          },
+          "merging": {
+            "value": "/merge",
+            "meaning": "After a pull request: merges it"
+          },
+          "method": {
+            "value": "merge_method",
+            "meaning": "How it is merged"
+          },
+          "commits": {
+            "value": "/commits",
+            "meaning": "After the repository: its commits"
+          },
+          "checkRuns": {
+            "value": "/check-runs",
+            "meaning": "After a commit: the checks run on it"
+          },
+          "runs": {
+            "value": "check_runs",
+            "meaning": "The checks listed"
+          },
+          "name": {
+            "value": "name",
+            "meaning": "A check's name"
+          },
+          "status": {
+            "value": "status",
+            "meaning": "Whether a check still runs"
+          },
+          "completed": {
+            "value": "completed",
+            "meaning": "A check that ended"
+          },
+          "conclusion": {
+            "value": "conclusion",
+            "meaning": "How a check ended"
+          },
+          "success": {
+            "value": "success",
+            "meaning": "A check that passed"
+          },
+          "skipped": {
+            "value": "skipped",
+            "meaning": "A check that did not need to run: it does not keep a merge"
+          },
+          "perPage": {
+            "value": "per_page",
+            "meaning": "How many are listed at once"
+          },
+          "page": {
+            "value": "page",
+            "meaning": "Which page of a list, from the first"
+          },
+          "first": {
+            "value": "1",
+            "meaning": "The first page"
+          },
+          "most": {
+            "value": "100",
+            "meaning": "The most a page lists"
           }
         }
       },
@@ -4065,7 +4204,7 @@
       "id": "repository.PullRequests",
       "kind": "port",
       "title": "Pull requests",
-      "source": "src/repository.ts:393",
+      "source": "src/repository.ts:429",
       "fields": {
         "owner": "trame",
         "declaredEffects": {
@@ -4083,6 +4222,26 @@
             "process",
             "network",
             "asynchronous"
+          ],
+          "read": [
+            "process",
+            "network",
+            "asynchronous"
+          ],
+          "checks": [
+            "process",
+            "network",
+            "asynchronous"
+          ],
+          "files": [
+            "process",
+            "network",
+            "asynchronous"
+          ],
+          "merge": [
+            "process",
+            "network",
+            "asynchronous"
           ]
         }
       },
@@ -4092,7 +4251,7 @@
       "id": "repository.PullRequestsInMemory",
       "kind": "function",
       "title": "Pull requests kept in memory",
-      "source": "src/repository.ts:512",
+      "source": "src/repository.ts:577",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4109,7 +4268,7 @@
       "id": "repository.PullRequestsKept",
       "kind": "port",
       "title": "The pull requests a scenario keeps",
-      "source": "src/repository.ts:505",
+      "source": "src/repository.ts:568",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -4200,7 +4359,7 @@
       "id": "repository.RepositoryThroughItsApi",
       "kind": "adr",
       "title": "A repository is set by its project's graph",
-      "source": "src/repository.ts:542",
+      "source": "src/repository.ts:628",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4409,7 +4568,7 @@
       "id": "scenarios.CommandsMade",
       "kind": "scenario",
       "title": "Commands are made for each effect",
-      "source": "src/scenarios.ts:364",
+      "source": "src/scenarios.ts:408",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4433,7 +4592,7 @@
       "id": "scenarios.DeviceInMemory",
       "kind": "scenario",
       "title": "The device, in memory",
-      "source": "src/scenarios.ts:408",
+      "source": "src/scenarios.ts:452",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4475,7 +4634,7 @@
       "id": "scenarios.DrawsKeepTheirPromise",
       "kind": "scenario",
       "title": "Seeded draws keep their promise",
-      "source": "src/scenarios.ts:380",
+      "source": "src/scenarios.ts:424",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4523,7 +4682,7 @@
       "id": "scenarios.JudgedAsTheLanguage",
       "kind": "scenario",
       "title": "Judged as the language says",
-      "source": "src/scenarios.ts:332",
+      "source": "src/scenarios.ts:376",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4545,7 +4704,7 @@
       "id": "scenarios.JudgedStrictly",
       "kind": "scenario",
       "title": "Judged strictly",
-      "source": "src/scenarios.ts:347",
+      "source": "src/scenarios.ts:391",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4576,10 +4735,47 @@
       "diagnostics": []
     },
     {
+      "id": "scenarios.MergedOnceItHolds",
+      "kind": "scenario",
+      "title": "A pull request merged once it holds",
+      "source": "src/scenarios.ts:273",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "open": "commands.OpenPullRequest",
+          "merge": "commands.MergePullRequest",
+          "branches": "repository.BranchesKept",
+          "pulls": "repository.PullRequestsKept",
+          "data": "scenarios.ScenarioData",
+          "say": "commands.CommandWords",
+          "checks": "scenarios.ScenarioChecks",
+          "counts": "algebra.Counts",
+          "exit": "system.ExitStatus"
+        },
+        "body": "(function)"
+      },
+      "result": [
+        {
+          "name": "A pull request is not merged while no check ran on its last commit, nor while one failed or still runs",
+          "status": "passed"
+        },
+        {
+          "name": "Once its checks passed, it is merged by the method decided, saying whose decisions it changes, and the base is checked out as the repository has it",
+          "status": "passed"
+        },
+        {
+          "name": "A pull request merged is no longer open: merging it again is refused",
+          "status": "passed"
+        }
+      ],
+      "diagnostics": []
+    },
+    {
       "id": "scenarios.PropagatedInOrder",
       "kind": "scenario",
       "title": "A version carried across the projects",
-      "source": "src/scenarios.ts:270",
+      "source": "src/scenarios.ts:314",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4616,7 +4812,7 @@
       "id": "scenarios.PullRequestOpened",
       "kind": "scenario",
       "title": "A pull request opened",
-      "source": "src/scenarios.ts:232",
+      "source": "src/scenarios.ts:235",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4656,7 +4852,7 @@
       "id": "scenarios.RepositoryInMemoryKeeps",
       "kind": "scenario",
       "title": "A repository kept in memory",
-      "source": "src/scenarios.ts:309",
+      "source": "src/scenarios.ts:353",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4697,7 +4893,7 @@
       "id": "scenarios.ScenarioData",
       "kind": "decision",
       "title": "What the library's scenarios are given",
-      "source": "src/scenarios.ts:130",
+      "source": "src/scenarios.ts:133",
       "fields": {
         "owner": "trame",
         "value": {
@@ -4821,7 +5017,8 @@
               "number": 7,
               "url": "https://github.com/owner/project/pull/7"
             },
-            "elsewhere": "more-work"
+            "elsewhere": "more-work",
+            "check": "project"
           },
           "propagation": {
             "settings": {
@@ -4905,7 +5102,7 @@
       "id": "scenarios.ScenarioPropagation",
       "kind": "function",
       "title": "How the scenarios' versions are carried",
-      "source": "src/scenarios.ts:207",
+      "source": "src/scenarios.ts:210",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4920,7 +5117,7 @@
       "id": "scenarios.ScenarioPullRequests",
       "kind": "function",
       "title": "How the scenarios' pull requests are opened",
-      "source": "src/scenarios.ts:197",
+      "source": "src/scenarios.ts:200",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4935,7 +5132,7 @@
       "id": "scenarios.ScenarioSettings",
       "kind": "binding",
       "title": "The scenarios' settings",
-      "source": "src/scenarios.ts:217",
+      "source": "src/scenarios.ts:220",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4980,7 +5177,7 @@
       "id": "scenarios.ToolingInMemory",
       "kind": "scenario",
       "title": "The tooling, in memory",
-      "source": "src/scenarios.ts:442",
+      "source": "src/scenarios.ts:486",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5059,7 +5256,7 @@
       "kind": "shipment",
       "title": "The next version",
       "source": "src/sdlc.ts:87",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "version"
@@ -5104,6 +5301,11 @@
           {
             "node": "scenarios.DrawsKeepTheirPromise",
             "via": "algorithms.SeededDraws",
+            "obligation": "sdlc.FunctionsVerified"
+          },
+          {
+            "node": "scenarios.MergedOnceItHolds",
+            "via": "commands.MergePullRequest",
             "obligation": "sdlc.FunctionsVerified"
           },
           {
@@ -5248,6 +5450,7 @@
           "commands.CommandsOfALibrary",
           "commands.CommandWords",
           "commands.LibraryCommands",
+          "commands.MergePullRequest",
           "commands.OpenPullRequest",
           "commands.Propagate",
           "commands.PropagationSettings",
@@ -5376,6 +5579,7 @@
           "scenarios.JudgedAsTheLanguage",
           "scenarios.JudgedStrictly",
           "scenarios.LanguageJudgment",
+          "scenarios.MergedOnceItHolds",
           "scenarios.PropagatedInOrder",
           "scenarios.PullRequestOpened",
           "scenarios.RepositoryInMemoryKeeps",
@@ -5447,7 +5651,9 @@
           "web.WebSpeechApi"
         ]
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: To ship: The standard library is unknown"
+      ]
     },
     {
       "id": "sdlc.PackagesSafe",
@@ -5552,7 +5758,7 @@
       "kind": "artifact",
       "title": "The standard library",
       "source": "src/sdlc.ts:22",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "src",
@@ -5560,9 +5766,11 @@
       },
       "result": {
         "path": "src",
-        "code": "e69f9a9d"
+        "code": "7bbed5f4"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+      ]
     },
     {
       "id": "sdlc.VersionMode",
@@ -6846,6 +7054,11 @@
     },
     {
       "from": "commands.CommandsOfALibrary",
+      "to": "commands.MergePullRequest",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "commands.CommandsOfALibrary",
       "to": "commands.Propagate",
       "kind": "appliedBy"
     },
@@ -6862,6 +7075,66 @@
     {
       "from": "commands.LibraryCommands",
       "to": "tooling.ProgramCommands",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.MergePullRequest",
+      "to": "product.ChosenCommands",
+      "kind": "serves"
+    },
+    {
+      "from": "commands.MergePullRequest",
+      "to": "commands.LibraryCommands",
+      "kind": "in"
+    },
+    {
+      "from": "commands.MergePullRequest",
+      "to": "access.TheOperators",
+      "kind": "for"
+    },
+    {
+      "from": "commands.MergePullRequest",
+      "to": "commands.PullRequestSettings",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.MergePullRequest",
+      "to": "repository.Branches",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.MergePullRequest",
+      "to": "repository.PullRequests",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.MergePullRequest",
+      "to": "commands.CommandWords",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.MergePullRequest",
+      "to": "system.ExitStatus",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.MergePullRequest",
+      "to": "algebra.Counts",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.MergePullRequest",
+      "to": "system.Posix",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.MergePullRequest",
+      "to": "algebra.Texts",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.MergePullRequest",
+      "to": "algebra.ValueTypes",
       "kind": "deps"
     },
     {
@@ -8075,6 +8348,41 @@
       "kind": "serves"
     },
     {
+      "from": "releases.R0_23_0",
+      "to": "product.ChosenCommands",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_23_0",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_23_0",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_23_0",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_23_0",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_23_0",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_23_0",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
       "from": "releases.R0_3_0",
       "to": "product.CitedNotCopied",
       "kind": "serves"
@@ -8893,6 +9201,81 @@
       "from": "scenarios.LanguageJudgment",
       "to": "product.RealizedOnce",
       "kind": "serves"
+    },
+    {
+      "from": "scenarios.MergedOnceItHolds",
+      "to": "commands.MergePullRequest",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.MergedOnceItHolds",
+      "to": "commands.OpenPullRequest",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.MergedOnceItHolds",
+      "to": "repository.BranchesInMemory",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.MergedOnceItHolds",
+      "to": "repository.PullRequestsInMemory",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.MergedOnceItHolds",
+      "to": "scenarios.ScenarioPullRequests",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.MergedOnceItHolds",
+      "to": "scenarios.Test",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.MergedOnceItHolds",
+      "to": "commands.OpenPullRequest",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.MergedOnceItHolds",
+      "to": "commands.MergePullRequest",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.MergedOnceItHolds",
+      "to": "repository.BranchesKept",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.MergedOnceItHolds",
+      "to": "repository.PullRequestsKept",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.MergedOnceItHolds",
+      "to": "scenarios.ScenarioData",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.MergedOnceItHolds",
+      "to": "commands.CommandWords",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.MergedOnceItHolds",
+      "to": "scenarios.ScenarioChecks",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.MergedOnceItHolds",
+      "to": "algebra.Counts",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.MergedOnceItHolds",
+      "to": "system.ExitStatus",
+      "kind": "deps"
     },
     {
       "from": "scenarios.PropagatedInOrder",

@@ -110,7 +110,7 @@ export const AmendmentNaming = decision<{ suffix: string; first: number }>({ own
 /** The names of Trame's commands: the entry points take them, and bodies receive them through TrameCommands. */
 export const commandNames = {
   assemble: "assemble", build: "build", dev: "dev", payload: "payload", export: "export", publish: "publish", run: "run",
-  view: "view", snapshot: "snapshot", testKinds: "test-kinds", advance: "advance", audit: "audit", manifest: "manifest", release: "release", deliver: "deliver",
+  view: "view", snapshot: "snapshot", testKinds: "test-kinds", promotion: "promote", examples: "examples", audit: "audit", manifest: "manifest", release: "release", deliver: "deliver",
   ship: "ship", evidence: "evidence", doctor: "doctor", plan: "plan", amend: "amend", init: "init", registry: "registry", upgrade: "upgrade", help: "help", fallback: "*",
 } as const
 
@@ -135,7 +135,8 @@ export const TrameCommands = standard({
     view: { value: commandNames.view, meaning: "Shows a view" },
     snapshot: { value: commandNames.snapshot, meaning: "Takes the snapshot of the graph" },
     testKinds: { value: commandNames.testKinds, meaning: "Tests the laws of the kinds and of the views" },
-    advance: { value: commandNames.advance, meaning: "The generation in place assembles the described engine and checks it" },
+    examples: { value: commandNames.examples, meaning: "The examples of the syntax elements not met, with what they write; written again with --accept (since g118)" },
+    promotion: { value: commandNames.promotion, meaning: "The step the next generation's shipment deploys: the candidate builds, compares, and with --promote becomes the next generation (since g118; trame advance, Trame's own command, runs the whole)" },
     audit: { value: commandNames.audit, meaning: "Asks the registry about the packages of the graph, and keeps its answers as evidence" },
     manifest: { value: commandNames.manifest, meaning: "Writes the packages of the graph, at their versions, and where each library's name leads, into the project's manifest" },
     release: { value: commandNames.release, meaning: "Freezes a version of the project, a library: its graph, its code and its documents" },
@@ -190,6 +191,7 @@ export const TrameEnvironment = standard({
   source: "Trame, the variables of the environment it reads",
   constants: {
     today: { value: "TRAME_TODAY", meaning: "The date the engine takes for today (ISO 8601) instead of the clock's: documents that do not change from one day to the next" },
+    launcher: { value: "TRAME_LAUNCHER", meaning: "The launcher that started the engine (trame.sh), which the engine starts again once an upgrade moved the pin (since g118)" },
   },
 })
 

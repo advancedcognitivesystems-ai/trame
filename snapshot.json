@@ -863,6 +863,11 @@
             "read",
             "terminal"
           ],
+          "restart": [
+            "process",
+            "read",
+            "terminal"
+          ],
           "runTs": [
             "process",
             "read"
@@ -1627,6 +1632,39 @@
       }
     },
     {
+      "id": "command-scenarios.ExampleOutputRewritten",
+      "kind": "scenario",
+      "title": "An example's output written again",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "rewriting": "commands.ExampleRewriting",
+          "samples": "command-scenarios.RewritingSamples",
+          "counts": "std/algebra.Counts",
+          "messages": "messages.ScenarioMessages"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "command-scenarios.ExamplesMet",
+      "kind": "scenario",
+      "title": "The examples of a project, met",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "examples": "commands.Examples",
+          "writeLog": "architecture.WriteLog",
+          "line": "conventions.TrameCommands",
+          "exitStatus": "std/system.ExitStatus",
+          "messages": "messages.ScenarioMessages"
+        },
+        "body": "(function)"
+      }
+    },
+    {
       "id": "command-scenarios.KindsCarried",
       "kind": "scenario",
       "title": "A library carries kinds",
@@ -2098,6 +2136,22 @@
       }
     },
     {
+      "id": "command-scenarios.RewritingSamples",
+      "kind": "decision",
+      "title": "Declarations rewritten",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "name": "Heading",
+          "declared": "export const Heading = syntax({\n  examples: [{ input: [\"a\"], output: \"# a\" }, { input: [\"b\"], output: [\n    \"x\",\n    \"y\",\n  ].join(\"\\n\") }],\n})",
+          "text": "## a",
+          "asText": "export const Heading = syntax({\n  examples: [{ input: [\"a\"], output: \"## a\" }, { input: [\"b\"], output: [\n    \"x\",\n    \"y\",\n  ].join(\"\\n\") }],\n})",
+          "lines": "x\nz\nw",
+          "asLines": "export const Heading = syntax({\n  examples: [{ input: [\"a\"], output: \"# a\" }, { input: [\"b\"], output: [\n    \"x\",\n    \"z\",\n    \"w\",\n  ].join(\"\\n\") }],\n})"
+        }
+      }
+    },
+    {
       "id": "command-scenarios.RunSamples",
       "kind": "decision",
       "title": "What a program run in a scenario answers",
@@ -2292,7 +2346,7 @@
         "owner": "trame",
         "trigger": {
           "type": "command",
-          "name": "advance"
+          "name": "promote"
         },
         "deps": {
           "exitStatus": "std/system.ExitStatus",
@@ -2705,6 +2759,57 @@
         },
         "body": {
           "file": "./code/commands/payload.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
+      "id": "commands.ExampleRewriting",
+      "kind": "function",
+      "title": "Rewriting an example",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "ts": "architecture.TypeScriptCompiler",
+          "file": "std/text.TextFile",
+          "sequences": "std/algebra.Sequences",
+          "texts": "std/algebra.Texts",
+          "syntax": "typescript.TypeScriptSyntax",
+          "values": "std/algebra.ValueTypes"
+        },
+        "body": {
+          "file": "./code/commands/example-rewriting.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
+      "id": "commands.Examples",
+      "kind": "entry",
+      "title": "Examples",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "trigger": {
+          "type": "command",
+          "name": "examples"
+        },
+        "deps": {
+          "exitStatus": "std/system.ExitStatus",
+          "preparation": "commands.Preparation",
+          "rewriting": "commands.ExampleRewriting",
+          "reading": "architecture.FileReading",
+          "writing": "architecture.FileWriting",
+          "paths": "architecture.Paths",
+          "terminal": "architecture.Terminal",
+          "line": "conventions.TrameCommands",
+          "encodings": "std/system.NodeEncodings",
+          "counts": "std/algebra.Counts",
+          "messages": "messages.CommandMessages"
+        },
+        "body": {
+          "file": "./code/commands/examples.ts",
           "language": "typescript"
         }
       }
@@ -3656,9 +3761,13 @@
             "value": "test-kinds",
             "meaning": "Tests the laws of the kinds and of the views"
           },
-          "advance": {
-            "value": "advance",
-            "meaning": "The generation in place assembles the described engine and checks it"
+          "examples": {
+            "value": "examples",
+            "meaning": "The examples of the syntax elements not met, with what they write; written again with --accept (since g118)"
+          },
+          "promotion": {
+            "value": "promote",
+            "meaning": "The step the next generation's shipment deploys: the candidate builds, compares, and with --promote becomes the next generation (since g118; trame advance, Trame's own command, runs the whole)"
           },
           "audit": {
             "value": "audit",
@@ -3842,6 +3951,10 @@
           "today": {
             "value": "TRAME_TODAY",
             "meaning": "The date the engine takes for today (ISO 8601) instead of the clock's: documents that do not change from one day to the next"
+          },
+          "launcher": {
+            "value": "TRAME_LAUNCHER",
+            "meaning": "The launcher that started the engine (trame.sh), which the engine starts again once an upgrade moved the pin (since g118)"
           }
         }
       }
@@ -8428,10 +8541,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.22.3",
+        "version": "0.23.0",
         "joins": "library",
         "from": "path",
-        "at": "std/releases/0.22.3"
+        "at": "std/releases/0.23.0"
       }
     },
     {
@@ -10188,7 +10301,8 @@
         "deps": {
           "argv": "std/system.NodeArguments",
           "node": "std/system.NodeCli",
-          "runner": "platform.TypeScriptRunner"
+          "runner": "platform.TypeScriptRunner",
+          "variables": "conventions.TrameEnvironment"
         },
         "body": {
           "file": "./code/platform/process.ts",
@@ -11503,6 +11617,20 @@
         "fingerprint": "347b98a909d2510c",
         "language": "shared",
         "archive": "1f89c7a53ffc47e7"
+      }
+    },
+    {
+      "id": "releases.G118",
+      "kind": "release",
+      "title": "Generation 118",
+      "fields": {
+        "owner": "trame",
+        "version": "g118",
+        "date": "2026-11-22",
+        "what": "E3, part 2b: trame examples [--accept]; the step the next generation deploys is named promote (trame advance becomes Trame's own command); after an upgrade moved the pin, the manifest runs on the engine the project pins now, through the launcher",
+        "fingerprint": "182c7edba5fb4066",
+        "language": "shared",
+        "archive": "317984c94a100587"
       }
     },
     {
@@ -13685,6 +13813,73 @@
       }
     },
     {
+      "id": "sdlc.AdvanceAGeneration",
+      "kind": "entry",
+      "title": "Advance",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "trigger": {
+          "type": "command",
+          "name": "advance"
+        },
+        "deps": {
+          "runs": "std/tooling.ProgramRuns",
+          "currentProcess": "architecture.Process",
+          "events": "std/system.NodeEvents",
+          "exit": "std/system.ExitStatus",
+          "layout": "conventions.Layout",
+          "line": "conventions.TrameCommands",
+          "advancing": "sdlc.HowAGenerationAdvances",
+          "candidate": "sdlc.EngineCandidate",
+          "typescript": "typescript.TypeScript",
+          "names": "typescript.ProgramNames",
+          "say": "sdlc.SdlcWords",
+          "posix": "std/system.Posix",
+          "texts": "std/algebra.Texts",
+          "sequences": "std/algebra.Sequences"
+        },
+        "body": {
+          "file": "./code/sdlc/advance-a-generation.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
+      "id": "sdlc.AdvancedInOneCommand",
+      "kind": "scenario",
+      "title": "A generation advanced in one command",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "advance": "sdlc.AdvanceAGeneration",
+          "runs": "std/tooling.ProgramRunsKept",
+          "processLog": "architecture.ProcessLog",
+          "line": "conventions.TrameCommands",
+          "advancing": "sdlc.HowAGenerationAdvances",
+          "sample": "sdlc.AdvanceSample",
+          "names": "typescript.ProgramNames",
+          "exit": "std/system.ExitStatus",
+          "texts": "std/algebra.Texts",
+          "messages": "messages.ScenarioMessages"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "sdlc.AdvanceSample",
+      "kind": "decision",
+      "title": "Who advances, and what changes",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "person": "claude",
+          "what": "A change"
+        }
+      }
+    },
+    {
       "id": "sdlc.ApplyTheRepositorySettings",
       "kind": "entry",
       "title": "Set the repository's settings",
@@ -13896,6 +14091,26 @@
           "svg": "std/html.Svg"
         },
         "body": "(function)"
+      }
+    },
+    {
+      "id": "sdlc.HowAGenerationAdvances",
+      "kind": "decision",
+      "title": "How a generation advances",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "assembled": [
+            "TrameCli",
+            "TrameSdlc"
+          ],
+          "environment": "Local",
+          "shipment": "NextGeneration"
+        },
+        "rejected": {
+          "Each step typed by hand": "three commands and the candidate called by its path, in an order nothing checked (until g118)",
+          "Shipped by the generation in place": "what it built would be judged by the engine that is leaving: evidence of another engine than the one pinned once it is deployed"
+        }
       }
     },
     {
@@ -14145,7 +14360,7 @@
       "id": "sdlc.PullRequestWorkflow",
       "kind": "artifact",
       "title": "The pull requests' workflow",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": ".github/workflows/trame-pull-request.yml",
@@ -14292,7 +14507,7 @@
       "id": "sdlc.RunnersWritten",
       "kind": "shipment",
       "title": "The files that run it elsewhere",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "repository"
@@ -18109,6 +18324,61 @@
       "kind": "deps"
     },
     {
+      "from": "command-scenarios.ExampleOutputRewritten",
+      "to": "commands.ExampleRewriting",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.ExampleOutputRewritten",
+      "to": "architecture.Test",
+      "kind": "env"
+    },
+    {
+      "from": "command-scenarios.ExampleOutputRewritten",
+      "to": "commands.ExampleRewriting",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ExampleOutputRewritten",
+      "to": "command-scenarios.RewritingSamples",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ExampleOutputRewritten",
+      "to": "messages.ScenarioMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ExamplesMet",
+      "to": "commands.Examples",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.ExamplesMet",
+      "to": "architecture.Test",
+      "kind": "env"
+    },
+    {
+      "from": "command-scenarios.ExamplesMet",
+      "to": "commands.Examples",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ExamplesMet",
+      "to": "architecture.WriteLog",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ExamplesMet",
+      "to": "conventions.TrameCommands",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ExamplesMet",
+      "to": "messages.ScenarioMessages",
+      "kind": "deps"
+    },
+    {
       "from": "command-scenarios.KindsCarried",
       "to": "engine.Compiler",
       "kind": "verifies"
@@ -20326,6 +20596,71 @@
     {
       "from": "commands.EmitPayload",
       "to": "architecture.Terminal",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.ExampleRewriting",
+      "to": "product.ExecutableSpecification",
+      "kind": "serves"
+    },
+    {
+      "from": "commands.ExampleRewriting",
+      "to": "architecture.TypeScriptCompiler",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.ExampleRewriting",
+      "to": "typescript.TypeScriptSyntax",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Examples",
+      "to": "product.ExecutableSpecification",
+      "kind": "serves"
+    },
+    {
+      "from": "commands.Examples",
+      "to": "architecture.TrameCli",
+      "kind": "in"
+    },
+    {
+      "from": "commands.Examples",
+      "to": "commands.Preparation",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Examples",
+      "to": "commands.ExampleRewriting",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Examples",
+      "to": "architecture.FileReading",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Examples",
+      "to": "architecture.FileWriting",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Examples",
+      "to": "architecture.Paths",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Examples",
+      "to": "architecture.Terminal",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Examples",
+      "to": "conventions.TrameCommands",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Examples",
+      "to": "messages.CommandMessages",
       "kind": "deps"
     },
     {
@@ -25239,6 +25574,11 @@
       "kind": "deps"
     },
     {
+      "from": "platform.NodeProcess",
+      "to": "conventions.TrameEnvironment",
+      "kind": "deps"
+    },
+    {
       "from": "platform.NodePrograms",
       "to": "architecture.Programs",
       "kind": "implements"
@@ -26516,6 +26856,16 @@
     {
       "from": "releases.G117",
       "to": "releases.G116",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G118",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G118",
+      "to": "releases.G117",
       "kind": "assembledBy"
     },
     {
@@ -28695,6 +29045,101 @@
     },
     {
       "from": "scenarios.KindLaws",
+      "to": "messages.ScenarioMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.AdvanceAGeneration",
+      "to": "product.ExecutableSpecification",
+      "kind": "serves"
+    },
+    {
+      "from": "sdlc.AdvanceAGeneration",
+      "to": "sdlc.TrameSdlc",
+      "kind": "in"
+    },
+    {
+      "from": "sdlc.AdvanceAGeneration",
+      "to": "architecture.Process",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.AdvanceAGeneration",
+      "to": "conventions.Layout",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.AdvanceAGeneration",
+      "to": "conventions.TrameCommands",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.AdvanceAGeneration",
+      "to": "sdlc.HowAGenerationAdvances",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.AdvanceAGeneration",
+      "to": "sdlc.EngineCandidate",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.AdvanceAGeneration",
+      "to": "typescript.TypeScript",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.AdvanceAGeneration",
+      "to": "typescript.ProgramNames",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.AdvanceAGeneration",
+      "to": "sdlc.SdlcWords",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.AdvancedInOneCommand",
+      "to": "sdlc.AdvanceAGeneration",
+      "kind": "verifies"
+    },
+    {
+      "from": "sdlc.AdvancedInOneCommand",
+      "to": "architecture.Test",
+      "kind": "env"
+    },
+    {
+      "from": "sdlc.AdvancedInOneCommand",
+      "to": "sdlc.AdvanceAGeneration",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.AdvancedInOneCommand",
+      "to": "architecture.ProcessLog",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.AdvancedInOneCommand",
+      "to": "conventions.TrameCommands",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.AdvancedInOneCommand",
+      "to": "sdlc.HowAGenerationAdvances",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.AdvancedInOneCommand",
+      "to": "sdlc.AdvanceSample",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.AdvancedInOneCommand",
+      "to": "typescript.ProgramNames",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.AdvancedInOneCommand",
       "to": "messages.ScenarioMessages",
       "kind": "deps"
     },

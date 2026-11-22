@@ -15,7 +15,7 @@ import { ProgramCommands, Files, ProgramRuns } from "./tooling"
 import { Branches, PullRequests } from "./repository"
 import type { MergeMethod } from "./repository"
 import { ExitStatus, Posix } from "./system"
-import { Counts, Sequences, Texts } from "./algebra"
+import { Counts, Sequences, Texts, ValueTypes } from "./algebra"
 import { Command } from "./patterns"
 
 // The commands the library offers (E3, std 0.22.0). A project runs one when a technical choice of its own chooses it,
@@ -122,6 +122,19 @@ export const CommandWords = catalog({
         locks.length ? `It changes what people decided: ${locks.join(", ")}. A person merges it.` : "It changes nothing people decided.",
         "Opened by trame pull-request, from the graph.",
       ].filter(Boolean).join("\n\n"),
+    mergeUsage: () => "Merge the pull request of the branch checked out, or name it: trame merge [number]",
+    noPullRequest: (branch: string) => `No pull request is open from ${branch || "the branch checked out"}: name it by its number`,
+    pullRequestUnread: (number: number) => `Pull request #${number} could not be read`,
+    notOpen: (number: number) => `Pull request #${number} is no longer open`,
+    checksUnread: (number: number) => `The checks of pull request #${number} could not be read`,
+    noCheck: (number: number) => `No check ran on pull request #${number}: nothing proves it, it is not merged`,
+    checksFailed: (number: number, names: readonly string[]) => `Pull request #${number} is not merged: ${names.join(", ")} failed`,
+    checksRunning: (number: number, names: readonly string[]) => `Pull request #${number} is not merged yet: ${names.join(", ")} still running`,
+    mergingDecided: (locks: readonly string[]) => `It changes what people decided (${locks.join(", ")}): merged by the person who asks it`,
+    mergeRefusedNow: (number: number) => `GitHub refused to merge pull request #${number}`,
+    merged: (number: number, method: string) => `Pull request #${number} merged, by ${method}`,
+    baseUpdated: (base: string) => `${base} checked out, as the repository has it now`,
+    baseNotUpdated: (base: string) => `${base} could not be checked out as the repository has it: do it before going on`,
     propagateUsage: (by: string) => `Give the name of the person who propagates: trame propagate ${by} <name>`,
     upgrading: (name: string) => `${name}: its packages at their newest versions`,
     writingRunners: (name: string, shipment: string) => `${name}: its files that run elsewhere, written again (${shipment})`,
@@ -148,6 +161,22 @@ export const OpenPullRequest = entryPoint({
     posix: Posix, texts: Texts,
   },
   body: code.file("./code/commands/open-pull-request.ts"),
+})
+
+/**
+ * Merge a pull request
+ * trame merge [number]: the pull request of the branch checked out, or the one named by its number. Refused while no
+ * check ran on its last commit, or one failed or still runs; says whose decisions it changes (a project's lock); merges
+ * it now by the method decided; then, when its branch was the one checked out, checks the base out as the repository
+ * has it.
+ */
+export const MergePullRequest = entryPoint({
+  owner: "trame",
+  in: LibraryCommands, for: TheOperators,
+  serves: [ChosenCommands],
+  trigger: command("merge"),
+  deps: { settings: PullRequestSettings, branches: Branches, pulls: PullRequests, say: CommandWords, exit: ExitStatus, counts: Counts, posix: Posix, texts: Texts, values: ValueTypes },
+  body: code.file("./code/commands/merge-pull-request.ts"),
 })
 
 /**
@@ -180,5 +209,5 @@ export const CommandsOfALibrary = adr({
     "Settings named by the binding": "a new concept in two kinds, and nothing checks that the decision has the type the command reads",
   },
   serves: [ChosenCommands],
-  appliedBy: [LibraryCommands, OpenPullRequest, Propagate, Command],
+  appliedBy: [LibraryCommands, OpenPullRequest, MergePullRequest, Propagate, Command],
 })

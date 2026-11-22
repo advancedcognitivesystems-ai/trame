@@ -326,6 +326,22 @@ propagate writes a project's files that run elsewhere again when any file that r
 - Released by: trame
 - Serves: [Commands chosen, not written again](product.md#ChosenCommands), [A published value is cited, not copied](product.md#CitedNotCopied), [Known designs, named](product.md#KnownDesigns), [Ports of the platform, realized once](product.md#RealizedOnce), [Shared operations instead of literals](product.md#SharedOperations), [Rules applied, not written again](product.md#SharedRules), [Versions that hold](product.md#VersionsThatHold)
 
+<a id="R0_23_0"></a>
+
+### Version 0.23.0
+
+`R0_23_0` · `src/releases.ts:363`
+
+trame merge: a pull request merged once its checks passed, by the method decided, saying whose decisions it changes, the base checked out after; pull requests read, their checks, their files page by page; a branch brought up to date
+
+- Version: `0.23.0`
+- Released on: 22 November 2026
+- Fingerprint: `2c958c6df068995e`
+- Language: the repository's, shared
+
+- Released by: trame
+- Serves: [Commands chosen, not written again](product.md#ChosenCommands), [A published value is cited, not copied](product.md#CitedNotCopied), [Known designs, named](product.md#KnownDesigns), [Ports of the platform, realized once](product.md#RealizedOnce), [Shared operations instead of literals](product.md#SharedOperations), [Rules applied, not written again](product.md#SharedRules), [Versions that hold](product.md#VersionsThatHold)
+
 <a id="R0_3_0"></a>
 
 ### Version 0.3.0

@@ -14,7 +14,7 @@ import {
 import { Files, FilesKept, FilesInMemory, HeadlessBrowser, BrowserScripted, BrowserInMemory, ProgramRunsInMemory, ProgramRunsKept } from "./tooling"
 import { fn } from "#trame/kinds/function"
 import {
-  OpenPullRequest, Propagate, PullRequestSettings, PropagationSettings, CommandWords, type PullRequestWay, type Propagation,
+  OpenPullRequest, MergePullRequest, Propagate, PullRequestSettings, PropagationSettings, CommandWords, type PullRequestWay, type Propagation,
 } from "./commands"
 import { BranchesInMemory, BranchesKept, PullRequestsInMemory, PullRequestsKept, type PullRequestOpen } from "./repository"
 import { Strategy } from "./patterns"
@@ -115,6 +115,9 @@ export const ScenarioChecks = catalog({
     pullRequestDecided: () => "A branch that changes a project's lock gets its pull request, which a person merges: GitHub is not asked",
     pullRequestFound: () => "A branch whose pull request is open finds it, and opens no other",
     pullRequestOnTheBase: () => "On the base itself, nothing is pushed nor opened",
+    mergeWaitsForChecks: () => "A pull request is not merged while no check ran on its last commit, nor while one failed or still runs",
+    mergedOnceItHolds: () => "Once its checks passed, it is merged by the method decided, saying whose decisions it changes, and the base is checked out as the repository has it",
+    mergedOnce: () => "A pull request merged is no longer open: merging it again is refused",
     propagatedInOrder: () => "Each project is carried after the libraries it imports and the projects it reads, built at its day when it has one",
     runnersWhenMoved: () => "Its files that run elsewhere are written again only where the upgrade moved a reference",
     propagationStops: () => "A step that fails stops the propagation there, saying where",
@@ -137,7 +140,7 @@ export const ScenarioData = decision<{
   page: { path: string; selector: string; count: number; text: string; error: string; language: string }
   command: string
   repository: { name: string; settings: RepositorySettings; left: RepositoryState; differs: string[] }
-  pullRequest: { way: PullRequestWay; branch: string; title: string; free: string[]; decided: string[]; open: PullRequestOpen; elsewhere: string }
+  pullRequest: { way: PullRequestWay; branch: string; title: string; free: string[]; decided: string[]; open: PullRequestOpen; elsewhere: string; check: string }
   propagation: { settings: Propagation; by: string; person: string; described: Record<string, string>; order: string[]; moves: { dir: string; path: string; to: string } }
 }>({
   owner: "trame",
@@ -163,7 +166,7 @@ export const ScenarioData = decision<{
       },
       branch: "work", title: "A change",
       free: ["src/product.ts", "apps/app/src/app.ts"], decided: ["apps/app/trame.lock", "apps/app/src/app.ts"],
-      open: { number: 7, url: "https://github.com/owner/project/pull/7" }, elsewhere: "more-work",
+      open: { number: 7, url: "https://github.com/owner/project/pull/7" }, elsewhere: "more-work", check: "project",
     },
     propagation: {
       settings: {
@@ -258,6 +261,47 @@ export const PullRequestOpened = scenario({
     branches.set(way.base, free)
     const none = await open(asked)
     check(checks.pullRequestOnTheBase(), none.status === exit.failure && said(none).includes(say.onTheBase(way.base)))
+  },
+})
+
+/**
+ * A pull request merged once it holds
+ * The pull request of the branch checked out waits while no check ran, one runs or one failed; once its checks passed
+ * it is merged by the method decided, saying that it changes a project's lock, and the base is checked out; merged, it
+ * is not merged again.
+ */
+export const MergedOnceItHolds = scenario({
+  owner: "trame",
+  verifies: [MergePullRequest, OpenPullRequest, BranchesInMemory, PullRequestsInMemory, ScenarioPullRequests],
+  env: Test,
+  deps: {
+    open: OpenPullRequest, merge: MergePullRequest, branches: BranchesKept, pulls: PullRequestsKept, data: ScenarioData, say: CommandWords,
+    checks: ScenarioChecks, counts: Counts, exit: ExitStatus,
+  },
+  body: ({ open, merge, branches, pulls, data, say, checks, counts, exit }) => async (check) => {
+    const { way, branch, title, decided, check: name } = data.pullRequest
+    const said = (answered: { body?: unknown }) => (answered.body ?? []) as readonly string[]
+    branches.set(branch, decided)
+    pulls.changes(branch, decided)
+    await open({ params: { command: title }, body: { args: [title] } })
+    const [opened] = pulls.opened()
+    const number = pulls.opened().length
+    const asked = { params: { command: name }, body: { args: [] } }
+    const none = await merge(asked)
+    pulls.ran(branch, [{ name }])
+    const running = await merge(asked)
+    pulls.ran(branch, [{ name, passed: false }])
+    const failed = await merge(asked)
+    check(checks.mergeWaitsForChecks(), [none, running, failed].every((r) => r.status === exit.failure) && counts.isEmpty(pulls.merged()) &&
+      said(none).includes(say.noCheck(number)) && said(running).includes(say.checksRunning(number, [name])) && said(failed).includes(say.checksFailed(number, [name])))
+    pulls.ran(branch, [{ name, passed: true }])
+    const merged = await merge(asked)
+    const locks = decided.filter((path) => path.endsWith(way.lock))
+    check(checks.mergedOnceItHolds(), merged.status === exit.success && opened?.asked.head === branch && counts.single(pulls.merged()) &&
+      JSON.stringify(said(merged)) === JSON.stringify([say.mergingDecided(locks), say.merged(number, way.method), say.baseUpdated(way.base)]) &&
+      branches.checkedOut() === way.base)
+    const again = await merge({ params: { command: name }, body: { args: [String(number)] } })
+    check(checks.mergedOnce(), again.status === exit.failure && said(again).includes(say.notOpen(number)) && counts.single(pulls.merged()))
   },
 })
 

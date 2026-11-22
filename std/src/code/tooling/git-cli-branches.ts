@@ -27,6 +27,10 @@ const body: BodyOf<typeof GitCliBranches> = ({ git, cli, events, exit, texts, fi
       const listed = await run([git.diff, git.names, texts.concat([git.fetched, git.since, git.head])])
       return listed === undefined ? undefined : lines(listed)
     },
+    update: async (branch: string) =>
+      (await run([git.fetch, git.remote, branch])) !== undefined &&
+      (await run([git.checkout, branch])) !== undefined &&
+      (await run([git.merge, git.forwardOnly, git.fetched])) !== undefined,
   }
 }
 

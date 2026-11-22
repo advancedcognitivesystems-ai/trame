@@ -23,7 +23,7 @@ Source: POSIX.1-2017, exit(); ISO C, EXIT_SUCCESS and EXIT_FAILURE · `https://p
 
 - Maintained by: trame
 - Serves: [A published value is cited, not copied](product.md#CitedNotCopied)
-- Used by: [Open a pull request](commands.md#OpenPullRequest), [Propagate](commands.md#Propagate), [The automatic merge, by GitHub's command line](repository.md#AutoMergeByGitHubCli), [The automatic merge, in a session of Claude Code](repository.md#AutoMergeInAClaudeSession), [Git's branches](repository.md#GitCliBranches), [GitHub's pull requests, by its command line](repository.md#GitHubCliPullRequests), [GitHub's command line](repository.md#GitHubCliRepository), [A version carried across the projects](scenarios.md#PropagatedInOrder), [A pull request opened](scenarios.md#PullRequestOpened), [Node's command line](tooling.md#NodeProgramCommands), [Programs run by Node](tooling.md#NodeProgramRuns), [Programs run in memory](tooling.md#ProgramRunsInMemory)
+- Used by: [Merge a pull request](commands.md#MergePullRequest), [Open a pull request](commands.md#OpenPullRequest), [Propagate](commands.md#Propagate), [The automatic merge, by GitHub's command line](repository.md#AutoMergeByGitHubCli), [The automatic merge, in a session of Claude Code](repository.md#AutoMergeInAClaudeSession), [Git's branches](repository.md#GitCliBranches), [GitHub's pull requests, by its command line](repository.md#GitHubCliPullRequests), [GitHub's command line](repository.md#GitHubCliRepository), [A pull request merged once it holds](scenarios.md#MergedOnceItHolds), [A version carried across the projects](scenarios.md#PropagatedInOrder), [A pull request opened](scenarios.md#PullRequestOpened), [Node's command line](tooling.md#NodeProgramCommands), [Programs run by Node](tooling.md#NodeProgramRuns), [Programs run in memory](tooling.md#ProgramRunsInMemory)
 
 <a id="NodeArguments"></a>
 
@@ -214,4 +214,4 @@ Source: POSIX.1-2017, Base Definitions: <signal.h> (SIGINT, SIGTERM), <errno.h> 
 
 - Maintained by: trame
 - Serves: [A published value is cited, not copied](product.md#CitedNotCopied)
-- Used by: [Open a pull request](commands.md#OpenPullRequest), [Propagate](commands.md#Propagate), [Programs run by Node](tooling.md#NodeProgramRuns)
+- Used by: [Merge a pull request](commands.md#MergePullRequest), [Open a pull request](commands.md#OpenPullRequest), [Propagate](commands.md#Propagate), [Programs run by Node](tooling.md#NodeProgramRuns)

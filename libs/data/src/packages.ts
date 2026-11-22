@@ -9,13 +9,13 @@ import { DataDescribedOnce } from "./product"
  * Trame
  * The language the project is written in, at the generation that started it: its owner moves it by an amendment.
  */
-export const Language = pkg({ owner: "trame", packageName: "trame", version: "117", joins: "language", at: "../../generations/g117", serves: [DataDescribedOnce] })
+export const Language = pkg({ owner: "trame", packageName: "trame", version: "118", joins: "language", at: "../../generations/g118", serves: [DataDescribedOnce] })
 
 /**
  * std
  * A library the project builds on, at the version the language's home uses.
  */
-export const stdLibrary = pkg({ owner: "trame", packageName: "std", version: "0.22.3", joins: "library", at: "../../std/releases/0.22.3", serves: [DataDescribedOnce] })
+export const stdLibrary = pkg({ owner: "trame", packageName: "std", version: "0.23.0", joins: "library", at: "../../std/releases/0.23.0", serves: [DataDescribedOnce] })
 
 /**
  * The library of continuous integration

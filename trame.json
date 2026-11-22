@@ -13,9 +13,9 @@
       "version": "0.1.0"
     },
     "std": {
-      "at": "std/releases/0.22.3",
-      "version": "0.22.3"
+      "at": "std/releases/0.23.0",
+      "version": "0.23.0"
     }
   },
-  "engine": "generations/g117"
+  "engine": "generations/g118"
 }

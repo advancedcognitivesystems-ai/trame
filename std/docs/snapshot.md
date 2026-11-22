@@ -147,7 +147,7 @@ Architecture decision · `CommandsOfALibrary` · **held**
 - Consequences: The library's component LibraryCommands holds the commands; a project chooses those it runs by a binding that follows Command, with a function of its own for each port of settings (its repository, its way of merging, its projects); trame <name> runs them as the project's own commands. A command reads no value of a project but through its settings.
 - Rejected: A command written by each project, the same pull request opened six ways, none of them checked; Settings named by the binding, a new concept in two kinds, and nothing checks that the decision has the type the command reads
 - Serves: Commands chosen, not written again
-- Applied by: The library's commands, Open a pull request, Propagate, Command
+- Applied by: The library's commands, Open a pull request, Merge a pull request, Propagate, Command
 
 ### The library's commands
 
@@ -171,6 +171,18 @@ Port · `PullRequestSettings`
 
 - Owner: trame
 - Declared effects: 
+
+### Merge a pull request
+
+Entry point · `MergePullRequest` · **held**
+
+- Owner: trame
+- Trigger: { type: command, name: merge }
+- Parameters: { settings: commands.PullRequestSettings, branches: repository.Branches, pulls: repository.PullRequests, say: commands.CommandWords, exit: system.ExitStatus, counts: algebra.Counts, posix: system.Posix, texts: algebra.Texts, values: algebra.ValueTypes }
+- Serves: Commands chosen, not written again
+- Part of: The library's commands
+- For: The operators
+- Depends on: How pull requests are opened, The branches, Pull requests, What the library's commands say, Exit status, Counts, POSIX signals and errors, Texts, Types of values
 
 ### Open a pull request
 
@@ -623,10 +635,10 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 117
+- Version: 118
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../generations/g117
+- Its path: ../generations/g118
 - Serves: Ports of the platform, realized once
 
 ### The people of the repository
@@ -1152,6 +1164,18 @@ Release · `R0_22_3`
 - Language: shared
 - Serves: Commands chosen, not written again, A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again, Versions that hold
 
+### Version 0.23.0
+
+Release · `R0_23_0`
+
+- Released by: trame
+- Version: 0.23.0
+- Released on: 2026-11-22
+- What changes: trame merge: a pull request merged once its checks passed, by the method decided, saying whose decisions it changes, the base checked out after; pull requests read, their checks, their files page by page; a branch brought up to date
+- Fingerprint: 2c958c6df068995e
+- Language: shared
+- Serves: Commands chosen, not written again, A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again, Versions that hold
+
 ### Version 0.3.0
 
 Release · `R0_3_0`
@@ -1243,9 +1267,9 @@ Release · `R0_9_0`
 Standard · `GitCommandLine`
 
 - Maintained by: trame
-- Source: Git manual: git-rev-parse (--abbrev-ref), git-push (--set-upstream), git-fetch, git-diff (--name-only, A...B: since the merge base)
+- Source: Git manual: git-rev-parse (--abbrev-ref), git-push (--set-upstream), git-fetch, git-diff (--name-only, A...B: since the merge base), git-checkout, git-merge (--ff-only)
 - Address: https://git-scm.com/docs/git-diff
-- Constants: { program: { value: git, meaning: Git's command line }, revParse: { value: rev-parse, meaning: Says what a name stands for }, abbreviated: { value: --abbrev-ref, meaning: The short name of a reference: the branch's }, head: { value: HEAD, meaning: What is checked out }, detached: { value: HEAD, meaning: What rev-parse --abbrev-ref says when no branch is checked out }, push: { value: push, meaning: Sends a branch to a remote }, upstream: { value: --set-upstream, meaning: The branch follows the one it was sent to }, remote: { value: origin, meaning: The remote the repository came from }, fetch: { value: fetch, meaning: Brings a branch of a remote }, fetched: { value: FETCH_HEAD, meaning: What was just fetched }, diff: { value: diff, meaning: Shows what differs }, names: { value: --name-only, meaning: Only the paths of the files that differ }, since: { value: ..., meaning: Between two names: what the second changes since it parted from the first } }
+- Constants: { program: { value: git, meaning: Git's command line }, revParse: { value: rev-parse, meaning: Says what a name stands for }, abbreviated: { value: --abbrev-ref, meaning: The short name of a reference: the branch's }, head: { value: HEAD, meaning: What is checked out }, detached: { value: HEAD, meaning: What rev-parse --abbrev-ref says when no branch is checked out }, push: { value: push, meaning: Sends a branch to a remote }, upstream: { value: --set-upstream, meaning: The branch follows the one it was sent to }, remote: { value: origin, meaning: The remote the repository came from }, fetch: { value: fetch, meaning: Brings a branch of a remote }, fetched: { value: FETCH_HEAD, meaning: What was just fetched }, diff: { value: diff, meaning: Shows what differs }, names: { value: --name-only, meaning: Only the paths of the files that differ }, since: { value: ..., meaning: Between two names: what the second changes since it parted from the first }, checkout: { value: checkout, meaning: Checks a branch out }, merge: { value: merge, meaning: Joins another history into the branch checked out }, forwardOnly: { value: --ff-only, meaning: Only by moving the branch forward: refused if it would need a merge commit } }
 - Serves: A published value is cited, not copied
 
 ### GitHub's ways of asking a merge once it holds
@@ -1263,9 +1287,9 @@ Standard · `GitHubAutoMerge`
 Standard · `GitHubPullRequestsApi`
 
 - Maintained by: trame
-- Source: GitHub REST API: Pulls (List pull requests: head, state; Create a pull request: title, head, base, body; number, html_url); GitHub CLI manual: gh api (--method, --input, a query)
+- Source: GitHub REST API: Pulls (List pull requests: head, state; Create a pull request: title, head, base, body; number, html_url; Get a pull request: head.ref, head.sha, base.ref, state; List pull requests files: filename; Merge a pull request: merge_method), Checks (List check runs for a Git reference: check_runs, name, status, conclusion); GitHub CLI manual: gh api (--method, --input, a query)
 - Address: https://docs.github.com/en/rest/pulls/pulls
-- Constants: { pulls: { value: /pulls, meaning: After the repository: its pull requests }, query: { value: ?, meaning: Opens the parameters of a call }, and: { value: &, meaning: Between two parameters }, equals: { value: =, meaning: Between a parameter and its value }, head: { value: head, meaning: The branch a pull request brings, owner:branch when listed }, owner: { value: :, meaning: Between the owner and the branch, in head }, state: { value: state, meaning: Which pull requests are listed }, openState: { value: open, meaning: Those still open }, base: { value: base, meaning: The branch it goes into }, title: { value: title, meaning: Its title }, body: { value: body, meaning: What it says }, number: { value: number, meaning: Its number in the repository }, url: { value: html_url, meaning: Where a person opens it } }
+- Constants: { pulls: { value: /pulls, meaning: After the repository: its pull requests }, query: { value: ?, meaning: Opens the parameters of a call }, and: { value: &, meaning: Between two parameters }, equals: { value: =, meaning: Between a parameter and its value }, head: { value: head, meaning: The branch a pull request brings, owner:branch when listed }, owner: { value: :, meaning: Between the owner and the branch, in head }, state: { value: state, meaning: Which pull requests are listed }, openState: { value: open, meaning: Those still open }, base: { value: base, meaning: The branch it goes into }, title: { value: title, meaning: Its title }, body: { value: body, meaning: What it says }, number: { value: number, meaning: Its number in the repository }, url: { value: html_url, meaning: Where a person opens it }, ref: { value: ref, meaning: The name of a branch, in head and base }, sha: { value: sha, meaning: A commit, by its hash }, files: { value: /files, meaning: After a pull request: the files it changes }, filename: { value: filename, meaning: The path of a file it changes }, merging: { value: /merge, meaning: After a pull request: merges it }, method: { value: merge_method, meaning: How it is merged }, commits: { value: /commits, meaning: After the repository: its commits }, checkRuns: { value: /check-runs, meaning: After a commit: the checks run on it }, runs: { value: check_runs, meaning: The checks listed }, name: { value: name, meaning: A check's name }, status: { value: status, meaning: Whether a check still runs }, completed: { value: completed, meaning: A check that ended }, conclusion: { value: conclusion, meaning: How a check ended }, success: { value: success, meaning: A check that passed }, skipped: { value: skipped, meaning: A check that did not need to run: it does not keep a merge }, perPage: { value: per_page, meaning: How many are listed at once }, page: { value: page, meaning: Which page of a list, from the first }, first: { value: 1, meaning: The first page }, most: { value: 100, meaning: The most a page lists } }
 - Serves: A published value is cited, not copied
 
 ### GitHub's API for a repository
@@ -1317,7 +1341,7 @@ Port · `AutoMerge`
 Port · `Branches`
 
 - Owner: trame
-- Declared effects: { current: process, asynchronous, push: process, network, asynchronous, changed: process, network, asynchronous }
+- Declared effects: { current: process, asynchronous, push: process, network, asynchronous, changed: process, network, asynchronous, update: process, network, write, asynchronous }
 
 ### The branches a scenario keeps
 
@@ -1331,7 +1355,7 @@ Port · `BranchesKept`
 Port · `PullRequests`
 
 - Owner: trame
-- Declared effects: { find: process, network, asynchronous, open: process, network, asynchronous, mergeOnceItHolds: process, network, asynchronous }
+- Declared effects: { find: process, network, asynchronous, open: process, network, asynchronous, mergeOnceItHolds: process, network, asynchronous, read: process, network, asynchronous, checks: process, network, asynchronous, files: process, network, asynchronous, merge: process, network, asynchronous }
 
 ### The pull requests a scenario keeps
 
@@ -1529,7 +1553,7 @@ Acceptance criteria · `WordsOfCriteria` · **held**
 Decision · `ScenarioData`
 
 - Decided by: trame
-- Value: { seeds: 1, 2, text: a seed, draws: 200, bounds: { lo: 1, hi: 6 }, weighted: { item: light, weight: 1 }, { item: heavy, weight: 3 }, { item: never, weight: 0 }, never: never, preference: { name: voice, value: off, unset: pace }, sentence: { text: Breathe in, language: en }, turned: 0.5, 0.25, file: { path: dist/page.html, text: <p>a page</p>, copy: public/index.html }, page: { path: dist/page.html, selector: .poses li, count: 12, text: Mountain, error: The page broke, language: fr }, command: SELECT 1, repository: { name: owner/project, settings: { branch: main, checks: project, library, upToDate: false, approvals: 1, method: merge, autoMerge: true, deletesMerged: true, pages: true }, left: { methods: merge, squash, autoMerge: false, deletesMerged: true, protected: false, checks: library, upToDate: false }, differs: methods, autoMerge, protected, approvals, checks }, pullRequest: { way: { repository: owner/project, base: main, method: merge, merge: onceItHoldsUnlessDecided, lock: trame.lock, projects: { name: project, dir: . }, { name: app, dir: apps/app } }, branch: work, title: A change, free: src/product.ts, apps/app/src/app.ts, decided: apps/app/trame.lock, apps/app/src/app.ts, open: { number: 7, url: https://github.com/owner/project/pull/7 }, elsewhere: more-work }, propagation: { settings: { engine: { launcher: trame.sh, upgrade: upgrade, ship: ship, build: build, by: --by, today: TRAME_TODAY }, configuration: trame.json, references: trame.json, src/packages.ts, projects: { name: project, dir: ., reads: example, runners: RunnersWritten }, { name: example, dir: examples/example, day: 2026-10-30, runners: RunnersWritten }, { name: app, dir: apps/app, runners: RunnersWritten }, { name: lib, dir: libs/lib } }, by: --by, person: ada, described: { ./trame.json: {"libraries":{"lib":"libs/lib"}}, examples/example/trame.json: {"libraries":{"lib":"../../libs/lib","app":"../../apps/app"}}, apps/app/trame.json: {"libraries":{"lib":{"path":"../../libs/lib","version":"0.1.0"}}}, libs/lib/trame.json: {"libraries":{"app":{"path":"../../apps/app","version":"0.1.0"}}} }, order: app, lib, example, project, moves: { dir: apps/app, path: apps/app/trame.json, to: {"libraries":{"lib":{"path":"../../libs/lib","version":"0.2.0"}}} } } }
+- Value: { seeds: 1, 2, text: a seed, draws: 200, bounds: { lo: 1, hi: 6 }, weighted: { item: light, weight: 1 }, { item: heavy, weight: 3 }, { item: never, weight: 0 }, never: never, preference: { name: voice, value: off, unset: pace }, sentence: { text: Breathe in, language: en }, turned: 0.5, 0.25, file: { path: dist/page.html, text: <p>a page</p>, copy: public/index.html }, page: { path: dist/page.html, selector: .poses li, count: 12, text: Mountain, error: The page broke, language: fr }, command: SELECT 1, repository: { name: owner/project, settings: { branch: main, checks: project, library, upToDate: false, approvals: 1, method: merge, autoMerge: true, deletesMerged: true, pages: true }, left: { methods: merge, squash, autoMerge: false, deletesMerged: true, protected: false, checks: library, upToDate: false }, differs: methods, autoMerge, protected, approvals, checks }, pullRequest: { way: { repository: owner/project, base: main, method: merge, merge: onceItHoldsUnlessDecided, lock: trame.lock, projects: { name: project, dir: . }, { name: app, dir: apps/app } }, branch: work, title: A change, free: src/product.ts, apps/app/src/app.ts, decided: apps/app/trame.lock, apps/app/src/app.ts, open: { number: 7, url: https://github.com/owner/project/pull/7 }, elsewhere: more-work, check: project }, propagation: { settings: { engine: { launcher: trame.sh, upgrade: upgrade, ship: ship, build: build, by: --by, today: TRAME_TODAY }, configuration: trame.json, references: trame.json, src/packages.ts, projects: { name: project, dir: ., reads: example, runners: RunnersWritten }, { name: example, dir: examples/example, day: 2026-10-30, runners: RunnersWritten }, { name: app, dir: apps/app, runners: RunnersWritten }, { name: lib, dir: libs/lib } }, by: --by, person: ada, described: { ./trame.json: {"libraries":{"lib":"libs/lib"}}, examples/example/trame.json: {"libraries":{"lib":"../../libs/lib","app":"../../apps/app"}}, apps/app/trame.json: {"libraries":{"lib":{"path":"../../libs/lib","version":"0.1.0"}}}, libs/lib/trame.json: {"libraries":{"app":{"path":"../../apps/app","version":"0.1.0"}}} }, order: app, lib, example, project, moves: { dir: apps/app, path: apps/app/trame.json, to: {"libraries":{"lib":{"path":"../../libs/lib","version":"0.2.0"}}} } } }
 
 ### The language of the library's scenarios
 
@@ -1672,6 +1696,16 @@ Scenario · `JudgedStrictly` · **held**
 - In: Strict
 - Depends on: Hardening, What the library's scenarios check
 
+### A pull request merged once it holds
+
+Scenario · `MergedOnceItHolds` · **held**
+
+- Owner: trame
+- Parameters: { open: commands.OpenPullRequest, merge: commands.MergePullRequest, branches: repository.BranchesKept, pulls: repository.PullRequestsKept, data: scenarios.ScenarioData, say: commands.CommandWords, checks: scenarios.ScenarioChecks, counts: algebra.Counts, exit: system.ExitStatus }
+- Verifies: Merge a pull request, Open a pull request, Branches kept in memory, Pull requests kept in memory, How the scenarios' pull requests are opened
+- In: Test
+- Depends on: Open a pull request, Merge a pull request, The branches a scenario keeps, The pull requests a scenario keeps, What the library's scenarios are given, What the library's commands say, What the library's scenarios check, Counts, Exit status
+
 ### A version carried across the projects
 
 Scenario · `PropagatedInOrder` · **held**
@@ -1734,7 +1768,7 @@ Artefact · `PullRequestWorkflow` · **held**
 
 ### The standard library
 
-Artefact · `TheLibrary` · **held**
+Artefact · `TheLibrary` · **unknown**
 
 - Owner: trame
 - Path: src
@@ -1742,7 +1776,7 @@ Artefact · `TheLibrary` · **held**
 
 ### The next version
 
-Shipment · `NextVersion` · **held**
+Shipment · `NextVersion` · **unknown**
 
 - Owner: trame
 - Target: version

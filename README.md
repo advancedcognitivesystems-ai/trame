@@ -12,7 +12,7 @@ capability therefore exists only if it is written in the graph, and serves only 
 ```bash
 npm install
 ./trame.sh build                                   # the generation trame.json pins builds Trame's documents (docs/)
-./advance.sh                                       # it assembles the described engine and checks it (≈ 7 min); --promote "…" freezes it
+./trame.sh advance --by <name>                     # it assembles the described engine and checks it (≈ 20 min); --promote "…" freezes it
 ./trame.sh export trame-by-trame.html              # the page of Trame's graph, every date included
 ./trame.sh manifest && npm install                 # writes package.json from the graph's packages, the language's and libraries' names, then installs them
 mkdir garden && cd garden && ../trame.sh init "Garden" --by me   # starts a project: trame.json, src/product.ts, AGENTS.md and the skill, package.json
@@ -61,7 +61,7 @@ compressed and its own program.
 | `generations/` | The frozen generations: `gN/out/local/trame-cli.ts` (the engine), `gN/out/browser/page-app.ts` (its page, since g44), the copy of the graph it was assembled from, its `package.json` and lockfile; `languages/` keeps each language once, by fingerprint (`generations/README.md`) |
 | `out/local/`, `out/browser/` | The candidate: the engine and its page, assembled from the current graph |
 | `trame.json` | The project's configuration, and the generation it runs (`"engine"`) |
-| `trame.sh`, `advance.sh` | Run the pinned generation; run its `trame advance` |
+| `trame.sh` | Runs the pinned generation (`./trame.sh advance` is Trame's own command, since g118) |
 | `examples/reservations/` | The reservations demo, on which the described engine is tested; it pins its engine too |
 | `std/` | The standard library: a Trame project of its own, which Trame and the example import (`std/README.md`); its frozen versions under `std/releases/` |
 | `ci/` | The library of writers that run a shipment elsewhere (a workflow of GitHub Actions, a Bash script) from the plan the engine computes (`ci/README.md`) |
@@ -75,7 +75,7 @@ list of generations is a module of the graph (`src/releases.ts`, kind `release`)
 first, with what each one changed and which one assembled it.
 
 **A project pins its engine.** `trame.json` names the generation a project runs (`"engine": "generations/g53"`, the
-decision `generations.EnginePin`); `trame.sh` runs it, and `advance.sh` and the npm scripts go through it. The example
+decision `generations.EnginePin`); `trame.sh` runs it, and the npm scripts go through it. The example
 pins its engine the same way. A generation keeps the `package.json` and the lockfile it was frozen with
 (`trame.sh --restore` installs them in its folder), so it can run again on the packages it was tried with.
 
@@ -118,7 +118,7 @@ character, on the example as on Trame's graph.
 **A wanted difference on the example** makes the `BuildLikeBefore` scenario fail, and a graph in error is not
 assembled: that is intended. To let it through, it is declared in the graph: the `ExpectedDifferences` decision
 (module `scenarios`) lists the files of the example that are expected to change, with the reason. The scenario lets
-those through, and only them; `advance.sh --accept` shows the content of the differences and keeps them with the
+those through, and only them; `trame advance --accept` shows the content of the differences and keeps them with the
 generation. Once the generation is in place, the list is emptied.
 
 ## Moving to English
@@ -1244,7 +1244,8 @@ declarations with), the types of Node below 23 (they follow the Node.js that run
 - **Kinds and views** are files, not nodes. Describing a kind by a node would take one more level (a kind of kinds).
   Their words are in catalogs, their laws are requirements, their values come from the graph through `g.lib`, and a
   literal written in one is an error, as in a body.
-- **The launchers** (`trame.sh`, `advance.sh`) run before any engine: they read the pin and start it.
+- **The launcher** (`trame.sh`) runs before any engine: it reads the pin and starts it (and, since g118, the engine
+  starts it again once an upgrade moved the pin).
 
 ## What the exercise found
 

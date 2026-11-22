@@ -12,7 +12,7 @@ import { PayloadBuilder, Differences, Assembly, Project, Compiler, Lock, Referen
 import {
   ShowView, CommandOrView, RenderView, EmitPayload, Assemble, Assembler, TestKinds, TakeSnapshot, Publish, Audit, Release, WriteManifest, Export, Run, Dev,
   Deliver, Ship, RecordEvidence, Doctor, DoctorProbe, Advance, Build, Plan, Amend, Amending, BuildComparison, Init, ReferencesModule, Registry, Upgrade,
-  ProjectCommands, Help,
+  ProjectCommands, Help, Examples, ExampleRewriting,
 } from "./commands"
 import { SyntaxReader, BodyChecks } from "./syntax"
 import { TypeScript, TypeScriptWriter, StringLiteral } from "./typescript"
@@ -1013,6 +1013,90 @@ export const ProjectCommandRun = scenario({
   },
 })
 
+/** A declaration of a syntax element, and what writing an example's output again makes of it. */
+export interface RewritingSample {
+  name: string
+  declared: string
+  /** The first example's output written as a text. */
+  text: string
+  asText: string
+  /** The second example's output, lines joined. */
+  lines: string
+  asLines: string
+}
+
+/**
+ * Declarations rewritten
+ * An element with two examples, a text and lines joined; their outputs written again.
+ */
+export const RewritingSamples = decision<RewritingSample>({
+  owner: "trame",
+  value: {
+    name: "Heading",
+    declared: [
+      "export const Heading = syntax({",
+      "  examples: [{ input: [\"a\"], output: \"# a\" }, { input: [\"b\"], output: [",
+      "    \"x\",",
+      "    \"y\",",
+      "  ].join(\"\\n\") }],",
+      "})",
+    ].join("\n"),
+    text: "## a",
+    asText: [
+      "export const Heading = syntax({",
+      "  examples: [{ input: [\"a\"], output: \"## a\" }, { input: [\"b\"], output: [",
+      "    \"x\",",
+      "    \"y\",",
+      "  ].join(\"\\n\") }],",
+      "})",
+    ].join("\n"),
+    lines: "x\nz\nw",
+    asLines: [
+      "export const Heading = syntax({",
+      "  examples: [{ input: [\"a\"], output: \"# a\" }, { input: [\"b\"], output: [",
+      "    \"x\",",
+      "    \"z\",",
+      "    \"w\",",
+      "  ].join(\"\\n\") }],",
+      "})",
+    ].join("\n"),
+  },
+})
+
+/**
+ * An example's output written again
+ * In its element's declaration, where it is: a text as JSON; lines joined in the form they had, each on its line at
+ * the indentation of the others; the rest of the declaration as it was. An element not declared there: nothing.
+ */
+export const ExampleOutputRewritten = scenario({
+  owner: "trame",
+  verifies: [ExampleRewriting],
+  env: Test,
+  deps: { rewriting: ExampleRewriting, samples: RewritingSamples, counts: Counts, messages: ScenarioMessages },
+  body: ({ rewriting, samples, counts, messages }) => async (check) => {
+    const { name, declared, text, asText, lines, asLines } = samples
+    check(messages.outputWrittenAsText(), rewriting.rewrite(declared, name, counts.zero, text) === asText)
+    check(messages.outputWrittenAsLines(), rewriting.rewrite(declared, name, counts.one, lines) === asLines)
+    check(messages.outputOfNoElement(), rewriting.rewrite(declared, text, counts.zero, text) === undefined)
+  },
+})
+
+/**
+ * The examples of a project, met
+ * trame examples, in the example: every example of its syntax elements is met, nothing is written.
+ */
+export const ExamplesMet = scenario({
+  owner: "trame",
+  verifies: [Examples],
+  env: Test,
+  deps: { examples: Examples, writeLog: WriteLog, line: TrameCommands, exitStatus: ExitStatus, messages: ScenarioMessages },
+  body: (d) => async (check) => {
+    const before = d.writeLog.written().size
+    const ran = await d.examples({ params: { command: d.line.examples, commands: d.line.build }, body: { args: [] } })
+    check(d.messages.examplesAllMet(), ran.status === d.exitStatus.success && d.writeLog.written().size === before)
+  },
+})
+
 /**
  * A command of a library the project chooses
  * trame pull-request, in the example (E3, since g117): the example's graph does not declare it, a technical choice of
@@ -1203,7 +1287,7 @@ export const AdvanceInMemory = scenario({
     processLog.enter(texts.empty)
     const root = currentProcess.cwd()
     processLog.answer(data.output, exitStatus.failure)
-    const stopped = await advance({ params: { command: line.advance }, body: { args: [] } })
+    const stopped = await advance({ params: { command: line.promotion }, body: { args: [] } })
     check(messages.failedBuildStops(), stopped.status === exitStatus.failure && processLog.started().length === counts.one)
     Array.from({ length: data.runs }, () => processLog.answer(data.output, exitStatus.success))
     // What the build of Trame's graph writes, the engines answering here write nothing: graph.json is as the last build
@@ -1211,7 +1295,7 @@ export const AdvanceInMemory = scenario({
     const graphFile = paths.join(root, layout.graph)
     const graph = JSON.parse(String(reading.readFileSync(graphFile, encodings.utf8))) as { nodes: { kind: string; status?: string }[] }
     writing.writeFileSync(graphFile, JSON.stringify({ ...graph, nodes: graph.nodes.map((n) => (n.kind === KindName.scenario ? { ...n, status: Status.held } : n)) }))
-    const r = await advance({ params: { command: line.advance }, body: { args: [line.promote, data.what] } })
+    const r = await advance({ params: { command: line.promotion }, body: { args: [line.promote, data.what] } })
     const [inPlace] = processLog.started().slice(counts.one)
     check(messages.inPlaceBuildsFirst(), inPlace?.program.startsWith(paths.join(root, layout.generations)) === true)
     const origins = [...writeLog.written().keys()].filter((p) => p.startsWith(paths.join(root, layout.generations)) && p.endsWith(layout.origin))

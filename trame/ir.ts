@@ -214,6 +214,12 @@ export const JudgmentPort = { hardening: "std/judgment.Hardening" } as const
  */
 export const CommandsPort = { programs: "std/tooling.ProgramCommands", inItsLibrary: "tooling.ProgramCommands" } as const
 
+/**
+ * The fields of a syntax element's examples, as declarations write them (since g118): trame examples --accept writes
+ * an output again where the declaration has it.
+ */
+export const SyntaxField = { examples: "examples", output: "output" } as const
+
 /** Is this port std's ProgramCommands: from a project that imports std, or in std's own graph (since g117)? */
 export const isCommandsExposure = (port: { readonly ref: string; readonly library?: string }): boolean =>
   port.ref === CommandsPort.programs || (port.library === undefined && port.ref === CommandsPort.inItsLibrary)

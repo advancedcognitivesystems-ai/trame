@@ -37,9 +37,12 @@ Run from the project's directory, through the pinned generation:
 ./trame.sh test-kinds                  # the laws of the kinds and views
 ./trame.sh view <view> [node|module]   # one view in the terminal: impact, why, history, assembly take a node
 ./trame.sh help                        # what may be typed here: the engine's commands, the project's, the views (g116)
+./trame.sh explain <node>              # everything the graph says of a node: what it is, why, what was decided, what holds it, what depends on it
 ./trame.sh <command> [args] [--env <e>] # a command of the project (E3, g116): its component assembled, its program run (Trame: open-graph-page)
 ./trame.sh pull-request "Title" ["What it changes"] --env Local|Session   # std's command Trame takes (g117): pushes, opens, merges once it holds unless a lock changed
+./trame.sh merge [number] --env Local|Session   # std's command Trame takes (std 0.23.0): merges a pull request once its checks passed, then checks the base out
 ./trame.sh propagate --by <name> --env Local|Session   # std's command Trame takes (g117): each project of the repository upgraded, its workflow written again, built
+./trame.sh examples [--accept]         # the examples of the syntax elements not met; written again in their declarations with --accept (g118)
 ./trame.sh dev                         # the page, recompiled at each change
 ./trame.sh export page.html            # the page, standalone: the dates the graph changes at, and the last days of its history
 ./trame.sh assemble <component> --env <environment>
@@ -54,7 +57,7 @@ Run from the project's directory, through the pinned generation:
 ./trame.sh evidence <node> passed|failed --by <name> [--for <name>] [--subject <row>] [--language <tag>] [--note "…"] [--url <where>]
 ./trame.sh amend <node> <path> <value> --why "…" --by <name> [--from <date>] [--until <date>] [--source "…"] [--dry-run] [--accept]
                                        # changes a chosen value by an amendment, said first (g85); in trame dev, from the page (g86)
-./advance.sh [--accept] [--promote "what changes"]   # the next generation (see section 7)
+./trame.sh advance --by <name> [--accept] [--promote "what changes"]   # in Trame: the next generation, in one command (section 7)
 npx tsc --noEmit -p .                  # types, before any build
 ```
 
@@ -189,8 +192,10 @@ token: `./trame.sh ship RepositorySet --by <name>`; `--dry-run` only reads it an
 then `./trame.sh pull-request "Title" ["What it changes"] --env Local` (`--env Session` in a session of Claude Code,
 whose proxy refuses GitHub's GraphQL): std's command, which Trame takes (g117), pushes the branch, opens its pull request
 into main (or finds the one open), says which projects it changes, and asks GitHub to merge it once it holds unless it
-changes a lock of the repository's projects (decision `RepositoryProjects`); then its owner reads the review (`gh pr
-view <n> --comments`) and merges it. Never call `gh` to open or merge a pull request by hand.
+changes a lock of the repository's projects (decision `RepositoryProjects`); otherwise its owner reads the review (`gh
+pr view <n> --comments`), then merges it with `./trame.sh merge [<n>] --env Local|Session` (std's command): refused
+while a check has not passed, it says whose decisions the pull request changes, merges it by the method decided, then
+checks main out as the repository has it. Never call `gh` to open or merge a pull request by hand.
 
 A file that runs a shipment elsewhere (a workflow of GitHub Actions, a Bash script) is an `artifact` produced by a writer
 of the library `ci` (`GitHubWorkflow`, `ShellScript`), naming the shipment it `runs`, its `settings` (a decision) and
@@ -428,9 +433,12 @@ Kinds, views and the prelude are shared live by the generations that share the l
 each generation. So the order matters:
 
 1. **What the language needs from the engine comes first**: change the engine's graph (`src/`, its bodies) and the
-   kernel's types, leave the kinds as they are, and advance: `./advance.sh` builds Trame's libraries, the example and
-   Trame with the generation in place and with the candidate, checks they are identical, reassembles to a fixed point, plays the laws, and replays
-   older generations. `./advance.sh --promote "what changes"` freezes it and moves the pins of Trame and the example.
+   kernel's types, leave the kinds as they are, and advance: `./trame.sh advance --by <name> [--accept]` (Trame's own
+   command, g118: the generation in place assembles the candidate and Trame's SDLC, then the candidate ships
+   `NextGeneration`, whose step `promote` builds Trame's libraries, the example and Trame with the generation in place
+   and with the candidate, checks they are identical, reassembles to a fixed point, plays the laws, and replays older
+   generations). `--promote "what changes"` freezes it and moves the pins of Trame and the example; then `./trame.sh
+   propagate --by <name>` moves every other project to it.
 2. **Then** move the kinds and views onto what the new generation gives.
 3. **A prelude export is removed** only when the generation in place no longer uses it; the next advance gives the
    older generations that break their archived language.
@@ -619,6 +627,12 @@ elements), a port answered differently in several environments is answered as in
   advance. A catalog's message gives a text or pieces of one, never an object: one message per word.
 - `out/local/trame-cli.ts` reads the bodies as they are but wires them as they were assembled: after giving an entry
   point a new dependency, `./trame.sh assemble TrameCli --env Local` before running a command through it.
+- A project's command named like a command the generation in place still has (Trame's `advance`, while the engine's
+  step was renamed `promote` in g118) is an error for that generation, which then refuses to assemble the candidate:
+  set the project's command aside until the new generation is promoted, then put it back.
+- Before g118, an upgrade that moved a project to a generation of the registry (geometry) failed once: the manifest
+  was run again by the engine that was leaving. The engine now starts again through the launcher that started it
+  (`TRAME_LAUNCHER`), which installs the new generation first.
 
 ## 10. Reading further
 

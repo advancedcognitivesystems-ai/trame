@@ -25,7 +25,7 @@
 
 ### A library offers commands, a project chooses them
 
-`CommandsOfALibrary` · `src/commands.ts:174` · status: **held**
+`CommandsOfALibrary` · `src/commands.ts:203` · status: **held**
 
 The commands any project of a repository needs (open a pull request, carry a version across) are written once, in the library; a project runs one when a technical choice of its own chooses it, with its decisions as settings.
 
@@ -40,7 +40,7 @@ Consequences: The library's component LibraryCommands holds the commands; a proj
 
 - Decided by: trame
 - Serves: [Commands chosen, not written again](product.md#ChosenCommands)
-- Applied by: [The library's commands](#LibraryCommands), [Open a pull request](#OpenPullRequest), [Propagate](#Propagate), [Command](patterns.md#Command)
+- Applied by: [The library's commands](#LibraryCommands), [Open a pull request](#OpenPullRequest), [Merge a pull request](#MergePullRequest), [Propagate](#Propagate), [Command](patterns.md#Command)
 
 ## Component
 
@@ -52,14 +52,14 @@ Consequences: The library's component LibraryCommands holds the commands; a proj
 
 The component whose entry points are the commands the library offers: a program's command line, whose first argument names the command. It names no environment: a project assembles it where its choice holds.
 
-2 entry points: [Open a pull request](#OpenPullRequest), [Propagate](#Propagate)
+3 entry points: [Merge a pull request](#MergePullRequest), [Open a pull request](#OpenPullRequest), [Propagate](#Propagate)
 
 - Owner: trame
 - Language: typescript
 - Startup: `exposure` ← [Commands of a program](tooling.md#ProgramCommands)
 - Effects: terminal
 - Applies: [A library offers commands, a project chooses them](#CommandsOfALibrary)
-- Exposes: [Open a pull request](#OpenPullRequest), [Propagate](#Propagate)
+- Exposes: [Merge a pull request](#MergePullRequest), [Open a pull request](#OpenPullRequest), [Propagate](#Propagate)
 
 ## Ports
 
@@ -94,16 +94,37 @@ The settings of the command pull-request: a project answers it with its own deci
 | [Test](scenarios.md#Test) | [How the scenarios' pull requests are opened](scenarios.md#ScenarioPullRequests) | [The scenarios' settings](scenarios.md#ScenarioSettings) |
 
 - Owner: trame
-- Used by: [Open a pull request](#OpenPullRequest)
+- Used by: [Merge a pull request](#MergePullRequest), [Open a pull request](#OpenPullRequest)
 - Implemented by: [How the scenarios' pull requests are opened](scenarios.md#ScenarioPullRequests)
 
 ## Entry points
+
+<a id="MergePullRequest"></a>
+
+### Merge a pull request
+
+`MergePullRequest` · `src/commands.ts:173` · status: **held**
+
+trame merge [number]: the pull request of the branch checked out, or the one named by its number. Refused while no check ran on its last commit, or one failed or still runs; says whose decisions it changes (a project's lock); merges it now by the method decided; then, when its branch was the one checked out, checks the base out as the repository has it.
+
+Triggered by `command merge`
+
+- Owner: trame
+- Parameters: `settings` ← [How pull requests are opened](#PullRequestSettings) · `branches` ← [The branches](repository.md#Branches) · `pulls` ← [Pull requests](repository.md#PullRequests) · `say` ← [What the library's commands say](#CommandWords) · `exit` ← [Exit status](system.md#ExitStatus) · `counts` ← [Counts](algebra.md#Counts) · `posix` ← [POSIX signals and errors](system.md#Posix) · `texts` ← [Texts](algebra.md#Texts) · `values` ← [Types of values](algebra.md#ValueTypes)
+- Body: `./code/commands/merge-pull-request.ts` (typescript)
+- Effects: asynchronous, network, process, write
+- Serves: [Commands chosen, not written again](product.md#ChosenCommands)
+- Part of: [The library's commands](#LibraryCommands)
+- For: [The operators](access.md#TheOperators)
+- Applies: [A library offers commands, a project chooses them](#CommandsOfALibrary)
+- Verified by: [A pull request merged once it holds](scenarios.md#MergedOnceItHolds)
+- Used by: [A pull request merged once it holds](scenarios.md#MergedOnceItHolds)
 
 <a id="OpenPullRequest"></a>
 
 ### Open a pull request
 
-`OpenPullRequest` · `src/commands.ts:141` · status: **held**
+`OpenPullRequest` · `src/commands.ts:154` · status: **held**
 
 trame pull-request "Title" ["What it changes"]: pushes the branch checked out, opens its pull request into the base (or finds the one open), saying which projects it changes and whether it changes what people decided (a project's lock); then asks GitHub to merge it once it holds, unless it changes what people decided and the project's way says a person merges it then. Refused on the base itself.
 
@@ -117,14 +138,14 @@ Triggered by `command pull-request`
 - Part of: [The library's commands](#LibraryCommands)
 - For: [The operators](access.md#TheOperators)
 - Applies: [A library offers commands, a project chooses them](#CommandsOfALibrary)
-- Verified by: [A pull request opened](scenarios.md#PullRequestOpened)
-- Used by: [A pull request opened](scenarios.md#PullRequestOpened)
+- Verified by: [A pull request merged once it holds](scenarios.md#MergedOnceItHolds), [A pull request opened](scenarios.md#PullRequestOpened)
+- Used by: [A pull request merged once it holds](scenarios.md#MergedOnceItHolds), [A pull request opened](scenarios.md#PullRequestOpened)
 
 <a id="Propagate"></a>
 
 ### Propagate
 
-`Propagate` · `src/commands.ts:160` · status: **held**
+`Propagate` · `src/commands.ts:189` · status: **held**
 
 trame propagate --by <name>: carries the versions published across the projects of the repository, each after the libraries it imports and the projects it reads (two that import each other: the one decided first): its packages at their newest versions, its files that run elsewhere written again when a reference moved, its documents built again (at its day, when it has one). It stops at the first step that fails, saying where.
 
@@ -172,6 +193,19 @@ Triggered by `command propagate`
         locks.length ? `It changes what people decided: ${locks.join(", ")}. A person merges it.` : "It changes nothing people decided.",
         "Opened by trame pull-request, from the graph.",
       ].filter(Boolean).join("\n\n"),
+    mergeUsage: () => "Merge the pull request of the branch checked out, or name it: trame merge [number]",
+    noPullRequest: (branch: string) => `No pull request is open from ${branch || "the branch checked out"}: name it by its number`,
+    pullRequestUnread: (number: number) => `Pull request #${number} could not be read`,
+    notOpen: (number: number) => `Pull request #${number} is no longer open`,
+    checksUnread: (number: number) => `The checks of pull request #${number} could not be read`,
+    noCheck: (number: number) => `No check ran on pull request #${number}: nothing proves it, it is not merged`,
+    checksFailed: (number: number, names: readonly string[]) => `Pull request #${number} is not merged: ${names.join(", ")} failed`,
+    checksRunning: (number: number, names: readonly string[]) => `Pull request #${number} is not merged yet: ${names.join(", ")} still running`,
+    mergingDecided: (locks: readonly string[]) => `It changes what people decided (${locks.join(", ")}): merged by the person who asks it`,
+    mergeRefusedNow: (number: number) => `GitHub refused to merge pull request #${number}`,
+    merged: (number: number, method: string) => `Pull request #${number} merged, by ${method}`,
+    baseUpdated: (base: string) => `${base} checked out, as the repository has it now`,
+    baseNotUpdated: (base: string) => `${base} could not be checked out as the repository has it: do it before going on`,
     propagateUsage: (by: string) => `Give the name of the person who propagates: trame propagate ${by} <name>`,
     upgrading: (name: string) => `${name}: its packages at their newest versions`,
     writingRunners: (name: string, shipment: string) => `${name}: its files that run elsewhere, written again (${shipment})`,
@@ -185,4 +219,4 @@ Triggered by `command propagate`
 
 - Owner: trame
 - Written in: [The language the library's commands speak in.](#CommandLanguage)
-- Used by: [Open a pull request](#OpenPullRequest), [Propagate](#Propagate), [A version carried across the projects](scenarios.md#PropagatedInOrder), [A pull request opened](scenarios.md#PullRequestOpened)
+- Used by: [Merge a pull request](#MergePullRequest), [Open a pull request](#OpenPullRequest), [Propagate](#Propagate), [A pull request merged once it holds](scenarios.md#MergedOnceItHolds), [A version carried across the projects](scenarios.md#PropagatedInOrder), [A pull request opened](scenarios.md#PullRequestOpened)

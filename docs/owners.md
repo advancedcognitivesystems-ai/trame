@@ -5,7 +5,7 @@
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
 | Trame's maintainers | 0 | 0 | 1 | 0 |
-| trame | 0 | 0 | 3 | 733 |
+| trame | 0 | 0 | 5 | 743 |
 
 <a id="Trame's maintainers"></a>
 
@@ -24,7 +24,9 @@
 | Severity | Code | What | Where | Owner | Consequence |
 |---|---|---|---|---|---|
 | warning | `shipment-awaits` | To ship: The engine is unknown | [Into the main branch](sdlc.md#IntoMain) | trame |  |
+| warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | trame |  |
 | warning | `shipment-awaits` | To ship: The repository is read from GitHub is unknown | [The repository as decided](sdlc.md#RepositorySet) | trame |  |
+| warning | `shipment-awaits` | To ship: The pull requests' workflow is unknown | [The files that run it elsewhere](sdlc.md#RunnersWritten) | trame |  |
 | warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The engine](sdlc.md#TheEngine) | trame |  |
 
 ### Owns
@@ -113,6 +115,8 @@
 | [What trame dev is shown in a scenario](command-scenarios.md#DevSamples) | Decision |  |
 | [The doctor](command-scenarios.md#DoctorAsks) | Scenario | **held** |
 | [Evidence given for someone](command-scenarios.md#EvidenceForSomeone) | Scenario | **held** |
+| [An example's output written again](command-scenarios.md#ExampleOutputRewritten) | Scenario | **held** |
+| [The examples of a project, met](command-scenarios.md#ExamplesMet) | Scenario | **held** |
 | [A library carries kinds](command-scenarios.md#KindsCarried) | Scenario | **held** |
 | [The laws, tested by their command](command-scenarios.md#LawsTested) | Scenario | **held** |
 | [A command of a library the project chooses](command-scenarios.md#LibraryCommandRun) | Scenario | **held** |
@@ -130,6 +134,7 @@
 | [A project started](command-scenarios.md#ProjectStarted) | Scenario | **held** |
 | [A published value changed](command-scenarios.md#PublishedValueChanged) | Scenario | **held** |
 | [The registry filled](command-scenarios.md#RegistryFilled) | Scenario | **held** |
+| [Declarations rewritten](command-scenarios.md#RewritingSamples) | Decision |  |
 | [What a program run in a scenario answers](command-scenarios.md#RunSamples) | Decision |  |
 | [The projects of the repository the scenarios enter](command-scenarios.md#ScenarioProjects) | Decision |  |
 | [Shipments run, evidence given](command-scenarios.md#ShipmentsRun) | Scenario | **held** |
@@ -153,6 +158,8 @@
 | [Ask the machine](commands.md#Doctor) | Entry point | **held** |
 | [What the doctor writes, runs and waits for](commands.md#DoctorProbe) | Decision |  |
 | [Payload](commands.md#EmitPayload) | Entry point | **held** |
+| [Rewriting an example](commands.md#ExampleRewriting) | Function | **held** |
+| [Examples](commands.md#Examples) | Entry point | **held** |
 | [Export the page](commands.md#Export) | Entry point | **held** |
 | [Help](commands.md#Help) | Entry point | **held** |
 | [Start a project](commands.md#Init) | Entry point | **held** |
@@ -511,6 +518,7 @@
 | [Generation 115](releases.md#G115) | Release |  |
 | [Generation 116](releases.md#G116) | Release |  |
 | [Generation 117](releases.md#G117) | Release |  |
+| [Generation 118](releases.md#G118) | Release |  |
 | [Generation 12](releases.md#G12) | Release |  |
 | [Generation 13](releases.md#G13) | Release |  |
 | [Generation 14](releases.md#G14) | Release |  |
@@ -645,6 +653,9 @@
 | [A project judges harder, never softer](scenarios.md#JudgingHarder) | Scenario | **held** |
 | [The laws of the kinds hold](scenarios.md#KindLaws) | Scenario | **held** |
 | [What the engine's reckoning is checked with](scenarios.md#ReckoningData) | Decision |  |
+| [Advance](sdlc.md#AdvanceAGeneration) | Entry point | **held** |
+| [A generation advanced in one command](sdlc.md#AdvancedInOneCommand) | Scenario | **held** |
+| [Who advances, and what changes](sdlc.md#AdvanceSample) | Decision |  |
 | [Set the repository's settings](sdlc.md#ApplyTheRepositorySettings) | Entry point | **held** |
 | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) | Obligation |  |
 | [The rules of the architecture hold](sdlc.md#ArchitectureRuled) | Obligation |  |
@@ -664,6 +675,7 @@
 | [The graph page opens](sdlc.md#GraphPageOpens) | Check | **held** |
 | [What the scenario of the graph page shows](sdlc.md#GraphPageScenarioData) | Decision |  |
 | [What the graph page is asked](sdlc.md#GraphPageSelectors) | Function | **held** |
+| [How a generation advances](sdlc.md#HowAGenerationAdvances) | Decision |  |
 | [Into the main branch](sdlc.md#IntoMain) | Shipment | **unknown** |
 | [The language serves what it says](sdlc.md#LanguageServed) | Obligation |  |
 | [How the repository merges into main](sdlc.md#MainBranch) | Decision |  |
@@ -678,14 +690,14 @@
 | [Trame's settings in the scenarios](sdlc.md#OurSettingsInTheScenarios) | Technical choice | **held** |
 | [The page's program](sdlc.md#PageProgram) | Artefact | **held** |
 | [How a pull request is checked on GitHub](sdlc.md#PullRequestsOnGitHub) | Decision |  |
-| [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **held** |
+| [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **unknown** |
 | [Read the repository's settings](sdlc.md#ReadTheRepositorySettings) | Entry point | **held** |
 | [The repository's projects](sdlc.md#RepositoryProjects) | Decision |  |
 | [The repository is read from GitHub](sdlc.md#RepositoryRead) | Check | **unknown** |
 | [The repository left by hand, in the scenario](sdlc.md#RepositoryScenarioData) | Decision |  |
 | [The repository as decided](sdlc.md#RepositorySet) | Shipment | **unknown** |
 | [The repository's work on a machine](sdlc.md#RepositoryWorkOnAMachine) | Technical choice | **unknown** |
-| [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **held** |
+| [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **unknown** |
 | [The SDLC in memory](sdlc.md#SdlcInMemory) | Technical choice | **held** |
 | [The SDLC on the machine](sdlc.md#SdlcOnTheMachine) | Technical choice | **unknown** |
 | [What the programs of Trame's SDLC say](sdlc.md#SdlcWords) | Message catalog |  |

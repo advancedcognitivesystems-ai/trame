@@ -50,6 +50,7 @@ const body: BodyOf<typeof ExampleProcess> = ({ root, paths, line, events, messag
     program: () => paths.resolve(current, line.program),
     env: {},
     relaunch: (args, cwd) => child(line.program, args, cwd),
+    restart: (args, cwd) => child(line.program, args, cwd),
     runTs: (file, args) => child(file, args, paths.resolve(current)),
     onSignal: () => undefined,
     run: async (program, args, cwd) => {
