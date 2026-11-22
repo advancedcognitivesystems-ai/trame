@@ -635,10 +635,10 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 117
+- Version: 118
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../generations/g117
+- Its path: ../generations/g118
 - Serves: Ports of the platform, realized once
 
 ### The people of the repository
@@ -1161,6 +1161,18 @@ Release · `R0_22_3`
 - Released on: 2026-11-22
 - What changes: propagate writes a project's files that run elsewhere again when any file that records its references moved (the settings name them)
 - Fingerprint: 60be38b8e207181c
+- Language: shared
+- Serves: Commands chosen, not written again, A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again, Versions that hold
+
+### Version 0.23.0
+
+Release · `R0_23_0`
+
+- Released by: trame
+- Version: 0.23.0
+- Released on: 2026-11-22
+- What changes: trame merge: a pull request merged once its checks passed, by the method decided, saying whose decisions it changes, the base checked out after; pull requests read, their checks, their files page by page; a branch brought up to date
+- Fingerprint: 2c958c6df068995e
 - Language: shared
 - Serves: Commands chosen, not written again, A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again, Versions that hold
 

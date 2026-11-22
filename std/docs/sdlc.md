@@ -71,7 +71,7 @@ The library as its people write it: what a version freezes, and what projects im
 
 - Path: `src`
 
-Built 22 November 2026 by claude, fingerprint `d397c8571d71d7cdf4cd6b8cc920e9ad1e5cecd96ffeff1614954cf7d05e8a99`.
+Built 22 November 2026 by claude, fingerprint `841f11742d02196b8ead9a1bd88fd0440ad04ba26f13e2ddb96c2a09f31e85a6`.
 
 Shipped by [The next version](#NextVersion) 10 November 2026, fingerprint `899a945c8e6cedd8f5b631d42814486280ce02f0b93c4e2b7dac85775c2c8c9d`.
 
@@ -98,6 +98,8 @@ Shipped by [The next version](#NextVersion) 22 November 2026, fingerprint `52678
 Shipped by [The next version](#NextVersion) 22 November 2026, fingerprint `34bd43085bc18e2005860b86cd8e36c13e183d0abcfa6d82ff4f2e5026d76747`.
 
 Shipped by [The next version](#NextVersion) 22 November 2026, fingerprint `d397c8571d71d7cdf4cd6b8cc920e9ad1e5cecd96ffeff1614954cf7d05e8a99`.
+
+Shipped by [The next version](#NextVersion) 22 November 2026, fingerprint `841f11742d02196b8ead9a1bd88fd0440ad04ba26f13e2ddb96c2a09f31e85a6`.
 
 - Owner: trame
 - A version of the project: true
@@ -151,7 +153,7 @@ A version of the standard library, for the projects that import it: shipped by t
 | [Effects a node may not have](rules.md#WithoutEffects) | **held** | [Its requirements held](#RequirementsServed), for [Anyone](access.md#Anyone) |
 | [Words of a vocabulary](rules.md#WordsOf) | **held** | [Its requirements held](#RequirementsServed), for [Anyone](access.md#Anyone) |
 
-Shipped 22 November 2026 by claude; its dossier: `evidence/shipments/NextVersion-2026-11-22-8106a44d.json`.
+Shipped 22 November 2026 by claude; its dossier: `evidence/shipments/NextVersion-2026-11-22-ea895e4e.json`.
 
 - Owner: trame
 - Ships: [The standard library](#TheLibrary)
@@ -172,7 +174,7 @@ The workflow that checks each pull request, written by trame ship from the graph
 |---|---|---|
 | [The pull requests' workflow](#PullRequestWorkflow) | **held** | shipped |
 
-Shipped 22 November 2026 by claude; its dossier: `evidence/shipments/RunnersWritten-2026-11-22-9b8c116a.json`.
+Shipped 22 November 2026 by claude; its dossier: `evidence/shipments/RunnersWritten-2026-11-22-5f602b81.json`.
 
 - Owner: trame
 - Ships: [The pull requests' workflow](#PullRequestWorkflow)

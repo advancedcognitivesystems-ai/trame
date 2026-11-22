@@ -2,7 +2,7 @@
 
 *What happened to the project, day by day, the latest first, up to the date of the graph (22 November 2026): the versions released, and the evidence given, each with the node it is about and who gave it.*
 
-> **14 days · 0 versions released · 174 pieces of evidence**
+> **14 days · 0 versions released · 175 pieces of evidence**
 
 ## 22 November 2026
 
@@ -14,6 +14,7 @@
 | Shipped | [The preview's workflow](sdlc.md#PreviewWorkflow) | claude |
 | Built | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
 | Shipped | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
+| Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
 | Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
 
 ## 19 November 2026

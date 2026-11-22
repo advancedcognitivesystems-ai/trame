@@ -34,8 +34,8 @@ flowchart TB
   subgraph sdlc["Continuous integration · SDLC"]
     n17["The next version<br/><small>Shipment</small>"]:::unknown
     n18["How a pull request is checked on GitHub<br/><small>Decision</small>"]:::neutral
-    n19["The pull requests' workflow<br/><small>Artefact</small>"]:::unknown
-    n20["The files that run it elsewhere<br/><small>Shipment</small>"]:::unknown
+    n19["The pull requests' workflow<br/><small>Artefact</small>"]:::held
+    n20["The files that run it elsewhere<br/><small>Shipment</small>"]:::held
     n21["The library of writers<br/><small>Artefact</small>"]:::unknown
   end
   subgraph shell["Continuous integration · Shell"]

@@ -2634,10 +2634,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "117",
+        "version": "118",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g117"
+        "at": "../generations/g118"
       },
       "diagnostics": []
     },
@@ -3407,6 +3407,21 @@
         "date": "2026-11-22",
         "what": "propagate writes a project's files that run elsewhere again when any file that records its references moved (the settings name them)",
         "fingerprint": "60be38b8e207181c",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "releases.R0_23_0",
+      "kind": "release",
+      "title": "Version 0.23.0",
+      "source": "src/releases.ts:363",
+      "fields": {
+        "owner": "trame",
+        "version": "0.23.0",
+        "date": "2026-11-22",
+        "what": "trame merge: a pull request merged once its checks passed, by the method decided, saying whose decisions it changes, the base checked out after; pull requests read, their checks, their files page by page; a branch brought up to date",
+        "fingerprint": "2c958c6df068995e",
         "language": "shared"
       },
       "diagnostics": []
@@ -5751,7 +5766,7 @@
       },
       "result": {
         "path": "src",
-        "code": "b5784782"
+        "code": "7bbed5f4"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -8329,6 +8344,41 @@
     },
     {
       "from": "releases.R0_22_3",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_23_0",
+      "to": "product.ChosenCommands",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_23_0",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_23_0",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_23_0",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_23_0",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_23_0",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_23_0",
       "to": "product.VersionsThatHold",
       "kind": "serves"
     },

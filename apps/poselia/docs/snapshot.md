@@ -855,10 +855,10 @@ Package · `Language`
 
 - Owner: ghalaax
 - Name: trame
-- Version: 117
+- Version: 118
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../../generations/g117
+- Its path: ../../generations/g118
 - Serves: Practise yoga on one's own, guided
 
 ### The people of the repository
@@ -879,10 +879,10 @@ Package · `StandardLibrary`
 
 - Owner: ghalaax
 - Name: std
-- Version: 0.22.3
+- Version: 0.23.0
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: ../../std/releases/0.22.3
+- Its path: ../../std/releases/0.23.0
 - Serves: Practise yoga on one's own, guided
 
 ## Poselia · Practice
