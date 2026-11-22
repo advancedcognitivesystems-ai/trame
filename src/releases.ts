@@ -1741,3 +1741,18 @@ export const G117 = release({
   archive: "1f89c7a53ffc47e7",
   assembledBy: G116,
 })
+
+/**
+ * Generation 118
+ */
+export const G118 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g118",
+  date: "2026-11-22",
+  what: "E3, part 2b: trame examples [--accept]; the step the next generation deploys is named promote (trame advance becomes Trame's own command); after an upgrade moved the pin, the manifest runs on the engine the project pins now, through the launcher",
+  fingerprint: "182c7edba5fb4066",
+  language: "shared",
+  archive: "317984c94a100587",
+  assembledBy: G117,
+})

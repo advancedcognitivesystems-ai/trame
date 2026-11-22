@@ -444,6 +444,27 @@ Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Ge
 - Released by: trame
 - Releases: [Trame on the command line](architecture.md#TrameCli)
 - Assembled by: [Generation 116](#G116)
+- Assembled: [Generation 118](#G118)
+
+<a id="G118"></a>
+
+### Generation 118
+
+`G118` · `src/releases.ts:1748`
+
+E3, part 2b: trame examples [--accept]; the step the next generation deploys is named promote (trame advance becomes Trame's own command); after an upgrade moved the pin, the manifest runs on the engine the project pins now, through the launcher
+
+Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Generation 117](#G117).
+
+- Version: `g118`
+- Released on: 22 November 2026
+- Fingerprint: `182c7edba5fb4066`
+- Language: the repository's, shared
+- Language archived: `317984c94a100587`
+
+- Released by: trame
+- Releases: [Trame on the command line](architecture.md#TrameCli)
+- Assembled by: [Generation 117](#G117)
 
 <a id="G12"></a>
 

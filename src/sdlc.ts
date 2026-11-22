@@ -721,10 +721,56 @@ export const HowAGenerationAdvances = decision<GenerationAdvance>({
 })
 
 /**
+ * Advance
+ * trame advance --by <name> [--accept] [--promote "what changes"]: the generation in place assembles the candidate and
+ * Trame's SDLC, then the candidate ships the next generation with the rest of the line (it builds, compares, checks,
+ * and with --promote freezes itself and moves the pins). It stops where an assembly fails.
+ */
+export const AdvanceAGeneration = entryPoint({
+  owner: "trame",
+  in: TrameSdlc, for: TheOperators,
+  serves: [ExecutableSpecification],
+  trigger: command("advance"),
+  deps: {
+    runs: ProgramRuns, currentProcess: Process, events: NodeEvents, exit: ExitStatus, layout: Layout, line: TrameCommands, advancing: HowAGenerationAdvances,
+    candidate: EngineCandidate, typescript: TypeScript, names: ProgramNames, say: SdlcWords, posix: Posix, texts: Texts, sequences: Sequences,
+  },
+  body: code.file("./code/sdlc/advance-a-generation.ts"),
+})
+
+/**
  * Who advances, and what changes
  * What the scenario of the advance types after its name.
  */
 export const AdvanceSample = decision<{ person: string; what: string }>({
   owner: "trame",
   value: { person: "claude", what: "A change" },
+})
+
+/**
+ * A generation advanced in one command
+ * Without a name, nothing is assembled; with one, the generation in place assembles the candidate and Trame's SDLC for
+ * the machine, in that order, then the candidate is started on the next generation's shipment with the rest of the
+ * line, its launcher leading the names of the packages; its status is the command's.
+ */
+export const AdvancedInOneCommand = scenario({
+  owner: "trame",
+  verifies: [AdvanceAGeneration],
+  env: Test,
+  deps: {
+    advance: AdvanceAGeneration, runs: ProgramRunsKept, processLog: ProcessLog, line: TrameCommands, advancing: HowAGenerationAdvances, sample: AdvanceSample,
+    names: ProgramNames, exit: ExitStatus, texts: Texts, messages: ScenarioMessages,
+  },
+  body: ({ advance, runs, processLog, line, advancing, sample, names, exit, texts, messages }) => async (check) => {
+    const refused = await advance({ params: {}, body: { args: [] } })
+    check(messages.advanceNeedsAName(), refused.status === exit.failure && runs.runs().length === processLog.started().length)
+    processLog.answer(texts.empty, exit.success)
+    const rest = [line.by, sample.person, line.promote, sample.what]
+    const done = await advance({ params: {}, body: { args: rest } })
+    const assembled = runs.runs().map((r) => JSON.stringify(r.args))
+    const expected = advancing.assembled.map((c) => JSON.stringify([line.assemble, c, line.env, advancing.environment]))
+    const [started] = processLog.started()
+    check(messages.advanceAssemblesThenShips(), done.status === exit.success && JSON.stringify(assembled) === JSON.stringify(expected) &&
+      JSON.stringify(started?.args) === JSON.stringify([line.ship, advancing.shipment, ...rest]) && !!started?.program.includes(names.launcher))
+  },
 })

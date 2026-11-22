@@ -48,9 +48,13 @@ The repository's `AGENTS.md` is the full guide; read it first, then keep to this
   open the pull request; each project's workflow (written by `trame ship RunnersWritten`) runs its `IntoMain` (or a
   library's `NextVersion`) and writes the review in the pull request. `./trame.sh pull-request "Title" --env Local`
   (`--env Session` in a session of Claude Code) pushes the branch, opens the pull request and asks GitHub to merge it
-  once it holds unless it changes a `trame.lock`; one that does waits for its owner (AGENTS.md, section 4b). After a
-  release, `./trame.sh propagate --by <name> --env Local` carries it across the repository's projects. Both are std's
-  commands Trame chooses by a binding (g117): never call `gh` to open or merge a pull request by hand. The
+  once it holds unless it changes a `trame.lock`; one that does waits for its owner, who merges it with `./trame.sh
+  merge [<n>] --env Local` once its checks passed (AGENTS.md, section 4b). After a release, `./trame.sh propagate --by
+  <name> --env Local` carries it across the repository's projects. All three are std's commands Trame chooses by a
+  binding (g117, std 0.23.0): never call `gh` to open or merge a pull request by hand. In Trame, `./trame.sh advance --by
+  <name> [--accept] [--promote "…"]` makes the next generation in one command (g118). `./trame.sh explain <node>` says
+  everything the graph says of a node; `./trame.sh examples --accept` writes again the outputs of syntax examples a
+  writer's change moved. The
   repository's settings are a decision of Trame's graph (`MainBranch`), which an administrator applies with
   `./trame.sh ship RepositorySet --by <name>` (it reads them back; `--dry-run` only says what differs).
 - A value holds at every date (g106): only an amendment has an end; one that ends over a value nobody decided is an

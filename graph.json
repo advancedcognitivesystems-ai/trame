@@ -1195,7 +1195,7 @@
       "kind": "implementation",
       "title": "Amendments sent to trame dev",
       "source": "src/browser.ts:110",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1216,7 +1216,7 @@
       "kind": "implementation",
       "title": "The browser's gzip",
       "source": "src/browser.ts:120",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1235,7 +1235,7 @@
       "kind": "implementation",
       "title": "The globals of the page, and trame dev",
       "source": "src/browser.ts:100",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1255,7 +1255,7 @@
       "kind": "implementation",
       "title": "Local storage",
       "source": "src/browser.ts:89",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1273,7 +1273,7 @@
       "kind": "implementation",
       "title": "The browser's window",
       "source": "src/browser.ts:79",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1293,7 +1293,7 @@
       "kind": "function",
       "title": "Explorer of a graph",
       "source": "src/browser.ts:41",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1332,7 +1332,7 @@
       "kind": "entry",
       "title": "Show the graph",
       "source": "src/browser.ts:57",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "trigger": {
@@ -1387,7 +1387,7 @@
       "kind": "binding",
       "title": "The browser runs the page",
       "source": "src/browser.ts:131",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "The page's script took what it needed from the browser itself, here and there: the graph could not say what the page asks of the browser, nor try it elsewhere.",
@@ -1404,7 +1404,7 @@
       "kind": "adr",
       "title": "The page is assembled",
       "source": "src/browser.ts:150",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "The page's script built by hand what it shared with the engine and wrote its values (classes, identifiers, the explorer's geometry) as literals the catalogue could not see: a change in the graph did not reach it.",
@@ -1457,7 +1457,7 @@
           "status": "passed"
         },
         {
-          "name": "The candidate is accepted (  ✓ trame runs g118 |   ✓ reservations runs g118 | Advance succeeded.)",
+          "name": "The candidate is accepted (  ✓ trame runs g119 |   ✓ reservations runs g119 | Advance succeeded.)",
           "status": "passed"
         },
         {
@@ -13088,7 +13088,7 @@
       "kind": "implementation",
       "title": "System files, for reading",
       "source": "src/platform.ts:78",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "body": {
@@ -13103,7 +13103,7 @@
       "kind": "implementation",
       "title": "Trees on disk",
       "source": "src/platform.ts:232",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -13123,7 +13123,7 @@
       "kind": "implementation",
       "title": "System files, for writing",
       "source": "src/platform.ts:204",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "body": {
@@ -13510,7 +13510,7 @@
       "kind": "implementation",
       "title": "Node HTTP server",
       "source": "src/platform.ts:173",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "body": {
@@ -13525,7 +13525,7 @@
       "kind": "binding",
       "title": "On a machine, Node.js reads, writes and runs",
       "source": "src/platform.ts:428",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "What changes the world (files written, processes, the terminal, the clock) is real only on a machine; the scenarios keep it in memory.",
@@ -13572,7 +13572,7 @@
       "kind": "implementation",
       "title": "Node process",
       "source": "src/platform.ts:212",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -13593,7 +13593,7 @@
       "kind": "implementation",
       "title": "Node programs",
       "source": "src/platform.ts:222",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -13613,7 +13613,7 @@
       "kind": "implementation",
       "title": "Node terminal",
       "source": "src/platform.ts:241",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -13681,7 +13681,7 @@
       "kind": "implementation",
       "title": "npm installs",
       "source": "src/platform.ts:146",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -13702,7 +13702,7 @@
       "kind": "implementation",
       "title": "npm's reports",
       "source": "src/platform.ts:156",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -13860,7 +13860,7 @@
       "kind": "binding",
       "title": "On a machine, runs are kept on disk",
       "source": "src/platform.ts:495",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "The commands of a shipment and of an advance run as separate processes, each compiling the same graph: what one played, the next can find only on disk.",
@@ -13876,7 +13876,7 @@
       "kind": "implementation",
       "title": "Runs kept on disk",
       "source": "src/platform.ts:403",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -13918,7 +13918,7 @@
       "kind": "implementation",
       "title": "System clock",
       "source": "src/platform.ts:250",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -14388,7 +14388,7 @@
       "kind": "adr",
       "title": "A version ships through the graph",
       "source": "src/principles.ts:415",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "Two products ship differently (a page placed where it is served, an engine frozen into a generation) and their pipelines lived in scripts and in their authors' heads: nothing said what had been checked, by whom, on which version, nor why a version could go.",
@@ -14406,7 +14406,7 @@
       "kind": "adr",
       "title": "A technology is chosen in one node",
       "source": "src/principles.ts:233",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "Each implementation said which environments it served: the choice of a technology was spread over its realizations, nothing said why, and a test double or a repository over a database port had to be declared as if it touched the platform.",
@@ -15082,6 +15082,22 @@
         "fingerprint": "347b98a909d2510c",
         "language": "shared",
         "archive": "1f89c7a53ffc47e7"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "releases.G118",
+      "kind": "release",
+      "title": "Generation 118",
+      "source": "src/releases.ts:1748",
+      "fields": {
+        "owner": "trame",
+        "version": "g118",
+        "date": "2026-11-22",
+        "what": "E3, part 2b: trame examples [--accept]; the step the next generation deploys is named promote (trame advance becomes Trame's own command); after an upgrade moved the pin, the manifest runs on the engine the project pins now, through the launcher",
+        "fingerprint": "182c7edba5fb4066",
+        "language": "shared",
+        "archive": "317984c94a100587"
       },
       "diagnostics": []
     },
@@ -17679,10 +17695,79 @@
       "diagnostics": []
     },
     {
+      "id": "sdlc.AdvanceAGeneration",
+      "kind": "entry",
+      "title": "Advance",
+      "source": "src/sdlc.ts:729",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "trigger": {
+          "type": "command",
+          "name": "advance"
+        },
+        "deps": {
+          "runs": "std/tooling.ProgramRuns",
+          "currentProcess": "architecture.Process",
+          "events": "std/system.NodeEvents",
+          "exit": "std/system.ExitStatus",
+          "layout": "conventions.Layout",
+          "line": "conventions.TrameCommands",
+          "advancing": "sdlc.HowAGenerationAdvances",
+          "candidate": "sdlc.EngineCandidate",
+          "typescript": "typescript.TypeScript",
+          "names": "typescript.ProgramNames",
+          "say": "sdlc.SdlcWords",
+          "posix": "std/system.Posix",
+          "texts": "std/algebra.Texts",
+          "sequences": "std/algebra.Sequences"
+        },
+        "body": {
+          "file": "./code/sdlc/advance-a-generation.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.AdvancedInOneCommand",
+      "kind": "scenario",
+      "title": "A generation advanced in one command",
+      "source": "src/sdlc.ts:756",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "advance": "sdlc.AdvanceAGeneration",
+          "runs": "std/tooling.ProgramRunsKept",
+          "processLog": "architecture.ProcessLog",
+          "line": "conventions.TrameCommands",
+          "advancing": "sdlc.HowAGenerationAdvances",
+          "sample": "sdlc.AdvanceSample",
+          "names": "typescript.ProgramNames",
+          "exit": "std/system.ExitStatus",
+          "texts": "std/algebra.Texts",
+          "messages": "messages.ScenarioMessages"
+        },
+        "body": "(function)"
+      },
+      "result": [
+        {
+          "name": "trame advance without a name assembles nothing and starts nothing",
+          "status": "passed"
+        },
+        {
+          "name": "trame advance assembles the candidate and Trame's SDLC, then starts the candidate on the next generation's shipment with the rest of the line",
+          "status": "passed"
+        }
+      ],
+      "diagnostics": []
+    },
+    {
       "id": "sdlc.AdvanceSample",
       "kind": "decision",
       "title": "Who advances, and what changes",
-      "source": "src/sdlc.ts:727",
+      "source": "src/sdlc.ts:745",
       "fields": {
         "owner": "trame",
         "value": {
@@ -17690,9 +17775,7 @@
           "what": "A change"
         }
       },
-      "diagnostics": [
-        "warning: Connected to no root (architecture rule, goal)"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.ApplyTheRepositorySettings",
@@ -17784,32 +17867,28 @@
       "kind": "check",
       "title": "The candidate plays the laws",
       "source": "src/sdlc.ts:76",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame"
       },
       "result": {
         "code": "3402443f"
       },
-      "diagnostics": [
-        "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.CandidateRunsOnTheMachine",
       "kind": "check",
       "title": "The candidate runs on the machine",
       "source": "src/sdlc.ts:144",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame"
       },
       "result": {
         "code": "80ebf275"
       },
-      "diagnostics": [
-        "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.CommandsOfStd",
@@ -17842,7 +17921,7 @@
       "kind": "artifact",
       "title": "The candidate engine",
       "source": "src/sdlc.ts:70",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "out/local/trame-cli.ts"
@@ -17851,9 +17930,7 @@
         "path": "out/local/trame-cli.ts",
         "code": "1d8015a5"
       },
-      "diagnostics": [
-        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.EnginePackagesSafe",
@@ -17897,7 +17974,7 @@
       "kind": "artifact",
       "title": "The graph page",
       "source": "src/sdlc.ts:198",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "trame-page.html",
@@ -17907,9 +17984,7 @@
         "path": "trame-page.html",
         "code": "437c8f91"
       },
-      "diagnostics": [
-        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.GraphPageOpening",
@@ -17929,16 +18004,14 @@
       "kind": "check",
       "title": "The graph page opens",
       "source": "src/sdlc.ts:282",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame"
       },
       "result": {
         "code": "0a48139f"
       },
-      "diagnostics": [
-        "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.GraphPageScenarioData",
@@ -17993,9 +18066,7 @@
           "Shipped by the generation in place": "what it built would be judged by the engine that is leaving: evidence of another engine than the one pinned once it is deployed"
         }
       },
-      "diagnostics": [
-        "warning: Connected to no root (architecture rule, goal)"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.IntoMain",
@@ -18227,6 +18298,11 @@
           {
             "node": "command-scenarios.BodiesReadAndChecked",
             "via": "platform.WebTreeSitter",
+            "obligation": "sdlc.EngineVerified"
+          },
+          {
+            "node": "sdlc.AdvancedInOneCommand",
+            "via": "sdlc.AdvanceAGeneration",
             "obligation": "sdlc.EngineVerified"
           },
           {
@@ -18751,6 +18827,8 @@
           "scenarios.JudgingHarder",
           "scenarios.KindLaws",
           "scenarios.ReckoningData",
+          "sdlc.AdvanceAGeneration",
+          "sdlc.AdvancedInOneCommand",
           "sdlc.AdvanceSample",
           "sdlc.ApplyTheRepositorySettings",
           "sdlc.ArchitectureApplied",
@@ -18874,9 +18952,7 @@
         ]
       },
       "diagnostics": [
-        "warning: To ship: The engine is unknown",
-        "warning: To ship: The graph page opens is unknown",
-        "warning: To ship: The candidate runs on the machine is unknown"
+        "warning: To ship: The engine is unknown"
       ]
     },
     {
@@ -18953,7 +19029,7 @@
       "kind": "shipment",
       "title": "The next generation",
       "source": "src/sdlc.ts:328",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "generation"
@@ -19416,6 +19492,11 @@
             "obligation": "sdlc.EngineVerified"
           },
           {
+            "node": "sdlc.AdvancedInOneCommand",
+            "via": "sdlc.AdvanceAGeneration",
+            "obligation": "sdlc.EngineVerified"
+          },
+          {
             "node": "sdlc.SettingTheRepository",
             "via": "sdlc.ApplyTheRepositorySettings",
             "obligation": "sdlc.EngineVerified"
@@ -19845,9 +19926,11 @@
           "sdlc.GraphPage",
           "sdlc.OpenTheGraphPage",
           "sdlc.TrameSdlc",
+          "sdlc.HowAGenerationAdvances",
+          "sdlc.SdlcWords",
+          "sdlc.AdvanceAGeneration",
           "sdlc.TheRepository",
           "sdlc.MainBranch",
-          "sdlc.SdlcWords",
           "sdlc.ApplyTheRepositorySettings",
           "sdlc.GraphPageSelectors",
           "sdlc.GraphPageOpening",
@@ -19864,14 +19947,7 @@
           "browser.ShowGraph"
         ]
       },
-      "diagnostics": [
-        "warning: To ship: The candidate engine is unknown",
-        "warning: To ship: The graph page is unknown",
-        "warning: To ship: The page is assembled is unknown",
-        "warning: To ship: The candidate plays the laws is unknown",
-        "warning: To ship: The candidate runs on the machine is unknown",
-        "warning: To ship: The graph page opens is unknown"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.OpeningTheGraphPage",
@@ -20080,7 +20156,7 @@
       "kind": "artifact",
       "title": "The pull requests' workflow",
       "source": "src/sdlc.ts:382",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": ".github/workflows/trame-pull-request.yml",
@@ -20090,7 +20166,9 @@
         "path": ".github/workflows/trame-pull-request.yml",
         "code": "8c8fa295"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+      ]
     },
     {
       "id": "sdlc.ReadTheRepositorySettings",
@@ -20254,6 +20332,16 @@
             "obligation": "sdlc.EngineVerified"
           },
           {
+            "node": "sdlc.CandidateRunsOnTheMachine",
+            "via": "platform.NodeProcess",
+            "obligation": "sdlc.EngineVerified"
+          },
+          {
+            "node": "sdlc.AdvancedInOneCommand",
+            "via": "sdlc.AdvanceAGeneration",
+            "obligation": "sdlc.EngineVerified"
+          },
+          {
             "node": "sdlc.OpeningTheGraphPage",
             "via": "sdlc.GraphPageSelectors",
             "obligation": "sdlc.EngineVerified"
@@ -20264,9 +20352,19 @@
         "reached": [
           "sdlc.ApplyTheRepositorySettings",
           "sdlc.TrameSdlc",
+          "platform.TypeScriptRunner",
+          "conventions.TrameEnvironment",
+          "platform.NodeProcess",
+          "conventions.Layout",
+          "conventions.TrameCommands",
+          "sdlc.HowAGenerationAdvances",
+          "sdlc.EngineCandidate",
+          "typescript.TypeScript",
+          "typescript.ProgramNames",
+          "sdlc.SdlcWords",
+          "sdlc.AdvanceAGeneration",
           "sdlc.TheRepository",
           "sdlc.MainBranch",
-          "sdlc.SdlcWords",
           "sdlc.GraphPage",
           "messages.Language",
           "page.PageRegions",
@@ -20299,7 +20397,7 @@
       "kind": "shipment",
       "title": "The files that run it elsewhere",
       "source": "src/sdlc.ts:522",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "repository"
@@ -20312,7 +20410,9 @@
           "sdlc.PullRequestWorkflow"
         ]
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: To ship: The pull requests' workflow is unknown"
+      ]
     },
     {
       "id": "sdlc.SdlcInMemory",
@@ -20410,7 +20510,7 @@
       },
       "result": {
         "path": "src",
-        "code": "59fc29ee"
+        "code": "398ff158"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -36551,6 +36651,16 @@
       "kind": "assembledBy"
     },
     {
+      "from": "releases.G118",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G118",
+      "to": "releases.G117",
+      "kind": "assembledBy"
+    },
+    {
       "from": "releases.G12",
       "to": "architecture.TrameCli",
       "kind": "component"
@@ -38962,6 +39072,151 @@
     },
     {
       "from": "scenarios.KindLaws",
+      "to": "messages.ScenarioMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.AdvanceAGeneration",
+      "to": "product.ExecutableSpecification",
+      "kind": "serves"
+    },
+    {
+      "from": "sdlc.AdvanceAGeneration",
+      "to": "sdlc.TrameSdlc",
+      "kind": "in"
+    },
+    {
+      "from": "sdlc.AdvanceAGeneration",
+      "to": "std/access.TheOperators",
+      "kind": "for"
+    },
+    {
+      "from": "sdlc.AdvanceAGeneration",
+      "to": "std/tooling.ProgramRuns",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.AdvanceAGeneration",
+      "to": "architecture.Process",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.AdvanceAGeneration",
+      "to": "std/system.NodeEvents",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.AdvanceAGeneration",
+      "to": "std/system.ExitStatus",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.AdvanceAGeneration",
+      "to": "conventions.Layout",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.AdvanceAGeneration",
+      "to": "conventions.TrameCommands",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.AdvanceAGeneration",
+      "to": "sdlc.HowAGenerationAdvances",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.AdvanceAGeneration",
+      "to": "sdlc.EngineCandidate",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.AdvanceAGeneration",
+      "to": "typescript.TypeScript",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.AdvanceAGeneration",
+      "to": "typescript.ProgramNames",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.AdvanceAGeneration",
+      "to": "sdlc.SdlcWords",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.AdvanceAGeneration",
+      "to": "std/system.Posix",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.AdvanceAGeneration",
+      "to": "std/algebra.Texts",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.AdvanceAGeneration",
+      "to": "std/algebra.Sequences",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.AdvancedInOneCommand",
+      "to": "sdlc.AdvanceAGeneration",
+      "kind": "verifies"
+    },
+    {
+      "from": "sdlc.AdvancedInOneCommand",
+      "to": "architecture.Test",
+      "kind": "env"
+    },
+    {
+      "from": "sdlc.AdvancedInOneCommand",
+      "to": "sdlc.AdvanceAGeneration",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.AdvancedInOneCommand",
+      "to": "std/tooling.ProgramRunsKept",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.AdvancedInOneCommand",
+      "to": "architecture.ProcessLog",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.AdvancedInOneCommand",
+      "to": "conventions.TrameCommands",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.AdvancedInOneCommand",
+      "to": "sdlc.HowAGenerationAdvances",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.AdvancedInOneCommand",
+      "to": "sdlc.AdvanceSample",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.AdvancedInOneCommand",
+      "to": "typescript.ProgramNames",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.AdvancedInOneCommand",
+      "to": "std/system.ExitStatus",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.AdvancedInOneCommand",
+      "to": "std/algebra.Texts",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.AdvancedInOneCommand",
       "to": "messages.ScenarioMessages",
       "kind": "deps"
     },

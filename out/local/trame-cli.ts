@@ -25,9 +25,9 @@ import { CodeLines, Columns, ItemLine, PaddedCell, PathStep, TerminalLines, Tree
 import { ArrayLiteral, AsExpression, Assignment, AsyncBlockFunction, Await, Call, ConstDeclaration, DefaultImport, DocBlock, ExportDeclaration, IfStatement, InlineArray, LineComment, MemberAccess, ModuleTitle, NamedImport, ObjectBlock, ObjectLiteral, ObjectType, OptionalAccess, OptionalPropertySignature, Parenthesized, Property, StrictInequality, StringLiteral, UnionType } from "../../src/typescript.ts"
 import body_nodeTerminal from "../../src/code/platform/terminal.ts"
 import body_nodeCommandLine from "../../src/code/platform/command-line.ts"
-import body_valueTypes from "../../std/releases/0.22.1/src/code/algebra/values.ts"
+import body_valueTypes from "../../std/releases/0.23.0/src/code/algebra/values.ts"
 import body_cycles from "../../src/code/engine/cycles.ts"
-import body_counts from "../../std/releases/0.22.1/src/code/algebra/counts.ts"
+import body_counts from "../../std/releases/0.23.0/src/code/algebra/counts.ts"
 import body_tramePrelude from "../../src/code/platform/prelude.ts"
 import body_tsxLoader from "../../src/code/platform/tsx-loader.ts"
 import body_diskReading from "../../src/code/platform/disk-reading.ts"
@@ -36,8 +36,8 @@ import body_realTypeScript from "../../src/code/platform/typescript.ts"
 import body_resultsInTheProcess from "../../src/code/platform/kept-results.ts"
 import body_project from "../../src/code/engine/project.ts"
 import body_nodeHashing from "../../src/code/platform/hashing.ts"
-import body_sequences from "../../std/releases/0.22.1/src/code/algebra/sequences.ts"
-import body_texts from "../../std/releases/0.22.1/src/code/algebra/texts.ts"
+import body_sequences from "../../std/releases/0.23.0/src/code/algebra/sequences.ts"
+import body_texts from "../../std/releases/0.23.0/src/code/algebra/texts.ts"
 import body_engineFingerprint from "../../src/code/engine/engine-fingerprint.ts"
 import body_runsOnDisk from "../../src/code/platform/runs-on-disk.ts"
 import body_staticAnalysis from "../../src/code/engine/static-analysis.ts"
@@ -113,6 +113,8 @@ import body_npmInstall from "../../src/code/platform/npm-install.ts"
 import body_doctor from "../../src/code/commands/doctor.ts"
 import body_payloadBuilder from "../../src/code/engine/payload.ts"
 import body_emitPayload from "../../src/code/commands/payload.ts"
+import body_exampleRewriting from "../../src/code/commands/example-rewriting.ts"
+import body_examples from "../../src/code/commands/examples.ts"
 import body_export from "../../src/code/commands/export.ts"
 import body_help from "../../src/code/commands/help.ts"
 import body_referencesModule from "../../src/code/commands/references.ts"
@@ -145,7 +147,7 @@ const platformMessages = await frozen.body(PlatformMessages)({})
 // "Node terminal" · implementation, for "Terminal"
 const nodeTerminal = await body_nodeTerminal({ argv: nodeArguments, exitStatus, events: nodeEvents, posix, messages: platformMessages })
 // "Trame's commands" · standard
-const trameCommands = {"program":"trame","assemble":"assemble","build":"build","dev":"dev","payload":"payload","export":"export","publish":"publish","run":"run","view":"view","snapshot":"snapshot","testKinds":"test-kinds","advance":"advance","audit":"audit","manifest":"manifest","release":"release","deliver":"deliver","ship":"ship","evidence":"evidence","doctor":"doctor","plan":"plan","amend":"amend","registry":"registry","upgrade":"upgrade","init":"init","help":"help","fallback":"*","optionPrefix":"-","at":"--at","format":"--format","port":"--port","fragment":"--fragment","env":"--env","all":"--all","history":"--history","accept":"--accept","promote":"--promote","migrate":"--migrate","by":"--by","for":"--for","why":"--why","from":"--from","until":"--until","source":"--source","subject":"--subject","language":"--language","note":"--note","url":"--url","dryRun":"--dry-run","restore":"--restore","passed":"passed","failed":"failed","json":"json","markdown":"md","separator":" "}
+const trameCommands = {"program":"trame","assemble":"assemble","build":"build","dev":"dev","payload":"payload","export":"export","publish":"publish","run":"run","view":"view","snapshot":"snapshot","testKinds":"test-kinds","examples":"examples","promotion":"promote","audit":"audit","manifest":"manifest","release":"release","deliver":"deliver","ship":"ship","evidence":"evidence","doctor":"doctor","plan":"plan","amend":"amend","registry":"registry","upgrade":"upgrade","init":"init","help":"help","fallback":"*","optionPrefix":"-","at":"--at","format":"--format","port":"--port","fragment":"--fragment","env":"--env","all":"--all","history":"--history","accept":"--accept","promote":"--promote","migrate":"--migrate","by":"--by","for":"--for","why":"--why","from":"--from","until":"--until","source":"--source","subject":"--subject","language":"--language","note":"--note","url":"--url","dryRun":"--dry-run","restore":"--restore","passed":"passed","failed":"failed","json":"json","markdown":"md","separator":" "}
 // "Command line" · implementation, for "Command line"
 const nodeCommandLine = await body_nodeCommandLine({ terminal: frozen.limited(nodeTerminal, ["args","error"]), exitStatus, line: trameCommands, messages: platformMessages })
 // "Node.js character encodings" · standard
@@ -351,7 +353,7 @@ const inlineArray = await frozen.body(InlineArray)({ open: "[", close: "]", stan
 // "Async function of a block" · syntax element
 const asyncBlockFunction = await frozen.body(AsyncBlockFunction)({ asyncKeyword: "async", arrow: "=>", returnKeyword: "return", standard: typeScriptSyntax })
 // "Trame's environment" · standard
-const trameEnvironment = {"today":"TRAME_TODAY"}
+const trameEnvironment = {"today":"TRAME_TODAY","launcher":"TRAME_LAUNCHER"}
 // "ECMAScript reserved words" · vocabulary
 const ecmaScriptReservedWords = ["await","break","case","catch","class","const","continue","debugger","default","delete","do","else","enum","export","extends","false","finally","for","function","if","import","in","instanceof","new","null","return","super","switch","this","throw","true","try","typeof","var","void","while","with","yield","implements","interface","let","package","private","protected","public","static","arguments","eval"]
 // "TypeScript writer" · function
@@ -475,7 +477,7 @@ const common = await body_common({ values: valueTypes, syntax: referenceSyntax, 
 // "Runner of TypeScript" · decision
 const typeScriptRunner = "tsx"
 // "Node process" · implementation, for "Process"
-const nodeProcess = await body_nodeProcess({ argv: nodeArguments, node: nodeCli, runner: typeScriptRunner })
+const nodeProcess = await body_nodeProcess({ argv: nodeArguments, node: nodeCli, runner: typeScriptRunner, variables: trameEnvironment })
 // "System clock" · implementation, for "Clock"
 const systemClock = await body_systemClock({ iso: iso8601, environment: trameEnvironment, sequences })
 // "Port of trame dev" · decision
@@ -836,6 +838,10 @@ const pageHistory = {"days":7}
 const payloadBuilder = await body_payloadBuilder({ layout, candidateDates, history: pageHistory, iso: iso8601, clock: frozen.limited(systemClock, ["now"]), machine: machineOutputs, views, language, texts, values: valueTypes, counts, sequences })
 // "Payload" · entry point
 const emitPayload = await body_emitPayload({ exitStatus, preparation, payload: payloadBuilder, files: fileRendering, screen: terminalRendering, pageRendering, terminal: frozen.limited(nodeTerminal, ["args","write","writeRaw","error","exit"]) })
+// "Rewriting an example" · function
+const exampleRewriting = await body_exampleRewriting({ ts: frozen.limited(realTypeScript, ["ScriptTarget","createSourceFile","forEachChild","isArrayLiteralExpression","isCallExpression","isIdentifier","isObjectLiteralExpression","isPropertyAccessExpression","isPropertyAssignment","isStringLiteral","isVariableDeclaration"]), file: textFile, sequences, texts, syntax: typeScriptSyntax, values: valueTypes })
+// "Examples" · entry point
+const examples = await body_examples({ exitStatus, preparation, rewriting: exampleRewriting, reading: frozen.limited(diskReading, ["readFileSync"]), writing: frozen.limited(diskWriting, ["writeFileSync"]), paths: frozen.limited(nodePaths, ["relative","resolve"]), terminal: frozen.limited(nodeTerminal, ["error","write"]), line: trameCommands, encodings: nodeEncodings, counts, messages: commandMessages })
 // "Export the page" · entry point
 const commands_export = await body_export({ exitStatus, layout, preparation, bundle: dateBundle, page, project, writing: frozen.limited(diskWriting, ["writeFileSync"]), paths: frozen.limited(nodePaths, ["resolve"]), terminal: frozen.limited(nodeTerminal, ["write"]), messages: commandMessages })
 // "Help" · entry point
@@ -845,7 +851,7 @@ const projectStart = {"module":"product","goal":"Purpose","goalKind":"kinds/goal
 // "A module of references" · function
 const referencesModule = await body_referencesModule({ syntax: typeScriptSyntax, title: moduleTitle, doc: docBlock, exported: exportDeclaration, constant: constDeclaration, call, object: objectLiteral, property, text: stringLiteral, list: inlineArray, imports: namedImport, texts })
 // "Start a project" · entry point
-const init = await body_init({ exitStatus, preparation, layout, project, prelude: frozen.limited(tramePrelude, ["engine","root"]), start: projectStart, pin: enginePin, reading: frozen.limited(diskReading, ["existsSync","readFileSync"]), writing: frozen.limited(diskWriting, ["mkdirSync","writeFileSync"]), paths: frozen.limited(nodePaths, ["basename","dirname","join","relative"]), encodings: nodeEncodings, file: textFile, json: jsonFormatting, language: typeScript, syntax: typeScriptSyntax, title: moduleTitle, doc: docBlock, exported: exportDeclaration, constant: constDeclaration, call, object: objectLiteral, property, text: stringLiteral, imports: namedImport, terminal: frozen.limited(nodeTerminal, ["write","writeRaw"]), messages: commandMessages, currentProcess: frozen.limited(nodeProcess, ["relaunch"]), events: nodeEvents, line: trameCommands, texts, references: referencesModule, names: languageNames, specifiers: nodeModuleSpecifiers, member: memberAccess, list: inlineArray })
+const init = await body_init({ exitStatus, preparation, layout, project, prelude: frozen.limited(tramePrelude, ["engine","root"]), start: projectStart, pin: enginePin, reading: frozen.limited(diskReading, ["existsSync","readFileSync"]), writing: frozen.limited(diskWriting, ["mkdirSync","writeFileSync"]), paths: frozen.limited(nodePaths, ["basename","dirname","join","relative"]), encodings: nodeEncodings, file: textFile, json: jsonFormatting, language: typeScript, syntax: typeScriptSyntax, title: moduleTitle, doc: docBlock, exported: exportDeclaration, constant: constDeclaration, call, object: objectLiteral, property, text: stringLiteral, imports: namedImport, terminal: frozen.limited(nodeTerminal, ["write","writeRaw"]), messages: commandMessages, currentProcess: frozen.limited(nodeProcess, ["restart"]), events: nodeEvents, line: trameCommands, texts, references: referencesModule, names: languageNames, specifiers: nodeModuleSpecifiers, member: memberAccess, list: inlineArray })
 // "Plan" · entry point
 const plan = await body_plan({ exitStatus, layout, text: terminalText, preparation, machine: machineOutputs, comparison: buildComparison, reading: frozen.limited(diskReading, ["existsSync","readFileSync"]), paths: frozen.limited(nodePaths, ["join"]), encodings: nodeEncodings, terminal: frozen.limited(nodeTerminal, ["write"]), messages: commandMessages })
 // "Publish" · entry point
@@ -881,14 +887,14 @@ const takeSnapshot = await body_takeSnapshot({ exitStatus, layout, preparation, 
 // "Test the laws" · entry point
 const testKinds = await body_testKinds({ exitStatus, preparation, compiler, views, laws, terminal: frozen.limited(nodeTerminal, ["write"]), layout: terminalText, columns: terminalColumns, cell: paddedCell, messages: commandMessages })
 // "Upgrade" · entry point
-const upgrade = await body_upgrade({ exitStatus, preparation, reading: frozen.limited(diskReading, ["readFileSync"]), writing: frozen.limited(diskWriting, ["writeFileSync"]), paths: frozen.limited(nodePaths, ["basename","dirname","join"]), versions: versionOrder, text: stringLiteral, file: textFile, encodings: nodeEncodings, events: nodeEvents, currentProcess: frozen.limited(nodeProcess, ["relaunch"]), line: trameCommands, values: valueTypes, sequences, counts, texts, terminal: frozen.limited(nodeTerminal, ["write","writeRaw"]), messages: commandMessages })
+const upgrade = await body_upgrade({ exitStatus, preparation, reading: frozen.limited(diskReading, ["readFileSync"]), writing: frozen.limited(diskWriting, ["writeFileSync"]), paths: frozen.limited(nodePaths, ["basename","dirname","join"]), versions: versionOrder, text: stringLiteral, file: textFile, encodings: nodeEncodings, events: nodeEvents, currentProcess: frozen.limited(nodeProcess, ["restart"]), line: trameCommands, values: valueTypes, sequences, counts, texts, terminal: frozen.limited(nodeTerminal, ["write","writeRaw"]), messages: commandMessages })
 // "npm's lockfile" · standard
 const npmLockfile = {"packages":"packages","root":""}
 // "Write the manifest" · entry point
-const writeManifest = await body_writeManifest({ exitStatus, preparation, npm: npmManifest, layout, project, specifiers: nodeModuleSpecifiers, reading: frozen.limited(diskReading, ["existsSync","readFileSync"]), writing: frozen.limited(diskWriting, ["writeFileSync"]), packages: frozen.limited(packagesByOrigin, ["place"]), names: languageNames, prelude: frozen.limited(tramePrelude, ["root"]), pin: enginePin, values: valueTypes, counts, paths: frozen.limited(nodePaths, ["join","resolve","sep"]), encodings: nodeEncodings, installs: frozen.limited(npmInstall, ["install"]), lock: npmLockfile, file: textFile, json: jsonFormatting, language: typeScript, terminal: frozen.limited(nodeTerminal, ["write","writeRaw"]), messages: commandMessages, currentProcess: frozen.limited(nodeProcess, ["relaunch"]), events: nodeEvents, line: trameCommands, texts })
+const writeManifest = await body_writeManifest({ exitStatus, preparation, npm: npmManifest, layout, project, specifiers: nodeModuleSpecifiers, reading: frozen.limited(diskReading, ["existsSync","readFileSync"]), writing: frozen.limited(diskWriting, ["writeFileSync"]), packages: frozen.limited(packagesByOrigin, ["place"]), names: languageNames, prelude: frozen.limited(tramePrelude, ["root"]), pin: enginePin, values: valueTypes, counts, paths: frozen.limited(nodePaths, ["join","resolve","sep"]), encodings: nodeEncodings, installs: frozen.limited(npmInstall, ["install"]), lock: npmLockfile, file: textFile, json: jsonFormatting, language: typeScript, terminal: frozen.limited(nodeTerminal, ["write","writeRaw"]), messages: commandMessages, currentProcess: frozen.limited(nodeProcess, ["restart"]), events: nodeEvents, line: trameCommands, texts })
 
 const started = (await frozen.start(TrameCli, { exposure: nodeCommandLine }, [
-  { title: "Advance", fields: {"trigger":{"type":"command","name":"advance"}}, value: advance },
+  { title: "Advance", fields: {"trigger":{"type":"command","name":"promote"}}, value: advance },
   { title: "Amend", fields: {"trigger":{"type":"command","name":"amend"}}, value: amend },
   { title: "Assemble a component", fields: {"trigger":{"type":"command","name":"assemble"}}, value: assemble },
   { title: "Audit the packages", fields: {"trigger":{"type":"command","name":"audit"}}, value: audit },
@@ -898,6 +904,7 @@ const started = (await frozen.start(TrameCli, { exposure: nodeCommandLine }, [
   { title: "Start trame dev", fields: {"trigger":{"type":"command","name":"dev"}}, value: dev },
   { title: "Ask the machine", fields: {"trigger":{"type":"command","name":"doctor"}}, value: doctor },
   { title: "Payload", fields: {"trigger":{"type":"command","name":"payload"}}, value: emitPayload },
+  { title: "Examples", fields: {"trigger":{"type":"command","name":"examples"}}, value: examples },
   { title: "Export the page", fields: {"trigger":{"type":"command","name":"export"}}, value: commands_export },
   { title: "Help", fields: {"trigger":{"type":"command","name":"help"}}, value: help },
   { title: "Start a project", fields: {"trigger":{"type":"command","name":"init"}}, value: init },

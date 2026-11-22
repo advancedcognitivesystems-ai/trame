@@ -935,7 +935,7 @@ Escape sequences open with `\`; named: `\0` "\u0000", `\n` "\n", `\t` "\t", `\r`
 - Read by: [Syntax reader](syntax.md#SyntaxReader)
 - Watches the globals: [Globals that reach outside](#WorldGlobals)
 - Uses: [Grammar of TypeScript](packages.md#TypeScriptGrammar)
-- Used by: [A body is read and checked](command-scenarios.md#BodiesReadAndChecked), [The manifest written](command-scenarios.md#ManifestWritten), [A project started](command-scenarios.md#ProjectStarted), [The registry filled](command-scenarios.md#RegistryFilled), [Advance](commands.md#Advance), [Start a project](commands.md#Init), [Release a version](commands.md#Release), [Write the manifest](commands.md#WriteManifest), [Assembly](engine.md#Assembly), [The fingerprint of an engine](engine.md#EngineFingerprint), [Graph](engine.md#GraphApi), [Project](engine.md#Project), [Drivers](languages.md#Drivers), [Page resources](platform.md#PageResources), [tsx loader](platform.md#TsxLoader), [How a version is carried across Trame's repository](sdlc.md#OurPropagation), [TypeScript writer](#TypeScriptWriter)
+- Used by: [A body is read and checked](command-scenarios.md#BodiesReadAndChecked), [The manifest written](command-scenarios.md#ManifestWritten), [A project started](command-scenarios.md#ProjectStarted), [The registry filled](command-scenarios.md#RegistryFilled), [Advance](commands.md#Advance), [Start a project](commands.md#Init), [Release a version](commands.md#Release), [Write the manifest](commands.md#WriteManifest), [Assembly](engine.md#Assembly), [The fingerprint of an engine](engine.md#EngineFingerprint), [Graph](engine.md#GraphApi), [Project](engine.md#Project), [Drivers](languages.md#Drivers), [Page resources](platform.md#PageResources), [tsx loader](platform.md#TsxLoader), [Advance](sdlc.md#AdvanceAGeneration), [How a version is carried across Trame's repository](sdlc.md#OurPropagation), [TypeScript writer](#TypeScriptWriter)
 - Reads the elements: [JSON in a script](html.md#JsonInScript), [List on several lines](#ArrayLiteral), [Type assertion](#AsExpression), [Assignment](#Assignment), [Async function of a block](#AsyncBlockFunction), [Waiting](#Await), [Call](#Call), [Constant](#ConstDeclaration), [Default import](#DefaultImport), [Documentation comment](#DocBlock), [Export](#ExportDeclaration), [Condition](#IfStatement), [List on one line](#InlineArray), [Comment](#LineComment), [Property access](#MemberAccess), [Title of a module](#ModuleTitle), [Import of names](#NamedImport), [Object on several lines](#ObjectBlock), [Object](#ObjectLiteral), [Object type](#ObjectType), [Optional property access](#OptionalAccess), [Optional property of a type](#OptionalPropertySignature), [Group](#Parenthesized), [Property](#Property), [Strict inequality](#StrictInequality), [Text](#StringLiteral), [Union type](#UnionType)
 - Applies: [The graph is written in TypeScript](principles.md#GraphInTypeScript)
 
@@ -959,7 +959,7 @@ How the TypeScript writer names what a program declares: the result of the start
 
 - Decided by: trame
 - Rejected: The leading written in the program itself, a program's imports are resolved before any line of it runs, and the same program is bundled for a browser, which has no module hooks
-- Used by: [TypeScript writer](#TypeScriptWriter)
+- Used by: [Advance](sdlc.md#AdvanceAGeneration), [A generation advanced in one command](sdlc.md#AdvancedInOneCommand), [TypeScript writer](#TypeScriptWriter)
 
 ## Function
 

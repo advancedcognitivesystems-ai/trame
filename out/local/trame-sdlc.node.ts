@@ -3,5 +3,5 @@
 
 import { lead } from "../../trame/leading"
 
-lead({"language":{"#trame/kernel":"../../trame/kernel.ts","#trame/kinds/*":"../../kinds/*.ts"},"libraries":{"ci":"../../ci/releases/0.8.0/src","std":"../../std/releases/0.22.3/src","team":"../../libs/team/releases/0.1.0/src"},"within":["../..","../../ci/releases/0.8.0","../../std/releases/0.22.3","../../libs/team/releases/0.1.0"],"names":{"imports":"#","separator":"/","pattern":"*","extension":".ts"}}, import.meta.url)
+lead({"language":{"#trame/kernel":"../../trame/kernel.ts","#trame/kinds/*":"../../kinds/*.ts"},"libraries":{"ci":"../../ci/releases/0.8.0/src","std":"../../std/releases/0.23.0/src","team":"../../libs/team/releases/0.1.0/src"},"within":["../..","../../ci/releases/0.8.0","../../std/releases/0.23.0","../../libs/team/releases/0.1.0"],"names":{"imports":"#","separator":"/","pattern":"*","extension":".ts"}}, import.meta.url)
 await import("./trame-sdlc.ts")
