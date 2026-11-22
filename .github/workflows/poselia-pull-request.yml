@@ -37,7 +37,7 @@ jobs:
           LOCK: trame.lock
           MARKER: "<!-- The review of apps/poselia -->"
       - run: |
-          git diff --quiet FETCH_HEAD -- ":(glob)**/$LOCK" || gh pr merge "$NUMBER" --disable-auto || true
+          git diff --quiet FETCH_HEAD -- "$LOCK" || gh pr merge "$NUMBER" --disable-auto || true
         working-directory: apps/poselia
         env:
           GH_TOKEN: "${{ github.token }}"

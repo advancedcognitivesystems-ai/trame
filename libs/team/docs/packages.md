@@ -15,14 +15,14 @@
 The writers of the files that run a shipment elsewhere (GitHub Actions), at the version the project uses, by its path in Trame's repository: the workflow that checks each pull request is written from the graph.
 
 - Name: `ci`
-- Version: `0.7.0`
+- Version: `0.8.0`
 - Installed: Not installed in the project: its lockfile lists no ci
 - Vulnerabilities: No report yet: trame audit asks the registry
 - Latest version: No report yet: trame audit asks the registry
 - What it may do: not said: an implementation that imports it cannot promise anything
 - How it joins the graph: `library`
 - Where it comes from: `path`
-- Its path: `../../ci/releases/0.7.0`
+- Its path: `../../ci/releases/0.8.0`
 
 - Owner: trame
 - Serves: [Who acts is declared once](product.md#DeclaredOnce)
@@ -36,14 +36,14 @@ The writers of the files that run a shipment elsewhere (GitHub Actions), at the 
 The language the people are declared in, at the generation the library pins: reached by its path in Trame's repository.
 
 - Name: `trame`
-- Version: `116`
+- Version: `117`
 - Installed: Not installed in the project: its lockfile lists no trame
 - Vulnerabilities: No report yet: trame audit asks the registry
 - Latest version: No report yet: trame audit asks the registry
 - What it may do: not said: an implementation that imports it cannot promise anything
 - How it joins the graph: `language`
 - Where it comes from: `path`
-- Its path: `../../generations/g116`
+- Its path: `../../generations/g117`
 
 - Owner: trame
 - Serves: [Who acts is declared once](product.md#DeclaredOnce)

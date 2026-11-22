@@ -4,7 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| ghalaax | 0 | 0 | 3 | 18 |
+| ghalaax | 0 | 0 | 2 | 18 |
 
 <a id="ghalaax"></a>
 
@@ -12,7 +12,6 @@
 
 | Severity | Code | What | Where | Owner | Consequence |
 |---|---|---|---|---|---|
-| warning | `package-newer` | std 0.22.1 is out, the reference names 0.21.0: trame upgrade std moves it | [The standard library](packages.md#StandardLibrary) | ghalaax |  |
 | warning | `shipment-awaits` | To ship: The library of geometry is unknown | [The next version](sdlc.md#NextVersion) | ghalaax |  |
 | warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The library of geometry](sdlc.md#TheLibrary) | ghalaax |  |
 

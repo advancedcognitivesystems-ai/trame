@@ -78,6 +78,11 @@ export interface Propagation {
   }
   /** The file a project is described in, which names its libraries. */
   readonly configuration: string
+  /**
+   * The files that record the versions a project references, from its directory: what an upgrade moves (its
+   * configuration, its module of packages); its files that run elsewhere are written again when one of them moved.
+   */
+  readonly references: readonly string[]
   /** The repository's projects. */
   readonly projects: readonly ProjectToPropagate[]
 }

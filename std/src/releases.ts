@@ -330,3 +330,29 @@ export const R0_22_1 = release({
   language: "shared",
   serves: [ChosenCommands, CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
 })
+
+/**
+ * Version 0.22.2
+ */
+export const R0_22_2 = release({
+  owner: "trame",
+  version: "0.22.2",
+  date: "2026-11-22",
+  what: "propagate runs the launcher by its path from the repository's root",
+  fingerprint: "d3c890b34b2183ab",
+  language: "shared",
+  serves: [ChosenCommands, CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
+})
+
+/**
+ * Version 0.22.3
+ */
+export const R0_22_3 = release({
+  owner: "trame",
+  version: "0.22.3",
+  date: "2026-11-22",
+  what: "propagate writes a project's files that run elsewhere again when any file that records its references moved (the settings name them)",
+  fingerprint: "60be38b8e207181c",
+  language: "shared",
+  serves: [ChosenCommands, CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
+})

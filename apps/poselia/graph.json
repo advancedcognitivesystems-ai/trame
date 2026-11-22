@@ -4371,10 +4371,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "ci",
-        "version": "0.7.0",
+        "version": "0.8.0",
         "joins": "library",
         "from": "path",
-        "at": "../../ci/releases/0.7.0"
+        "at": "../../ci/releases/0.8.0"
       },
       "diagnostics": []
     },
@@ -4416,10 +4416,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "trame",
-        "version": "116",
+        "version": "117",
         "joins": "language",
         "from": "path",
-        "at": "../../generations/g116"
+        "at": "../../generations/g117"
       },
       "diagnostics": []
     },
@@ -4446,14 +4446,12 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "std",
-        "version": "0.21.0",
+        "version": "0.22.3",
         "joins": "library",
         "from": "path",
-        "at": "../../std/releases/0.21.0"
+        "at": "../../std/releases/0.22.3"
       },
-      "diagnostics": [
-        "warning: std 0.22.1 is out, the reference names 0.21.0: trame upgrade std moves it"
-      ]
+      "diagnostics": []
     },
     {
       "id": "practice.BreathEasing",
@@ -6493,7 +6491,7 @@
       "kind": "artifact",
       "title": "The preview's script",
       "source": "src/sdlc.ts:407",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "path": "scripts/ship-preview.sh",
@@ -6503,16 +6501,14 @@
         "path": "scripts/ship-preview.sh",
         "code": "3ecbf9b8"
       },
-      "diagnostics": [
-        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.PreviewWorkflow",
       "kind": "artifact",
       "title": "The preview's workflow",
       "source": "src/sdlc.ts:392",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "path": "../../.github/workflows/poselia-preview.yml",
@@ -6520,11 +6516,9 @@
       },
       "result": {
         "path": "../../.github/workflows/poselia-preview.yml",
-        "code": "87961637"
+        "code": "a56881d4"
       },
-      "diagnostics": [
-        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.ProductServed",
@@ -7010,7 +7004,7 @@
       "kind": "artifact",
       "title": "The pull requests' workflow",
       "source": "src/sdlc.ts:464",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "path": "../../.github/workflows/poselia-pull-request.yml",
@@ -7018,11 +7012,9 @@
       },
       "result": {
         "path": "../../.github/workflows/poselia-pull-request.yml",
-        "code": "494580a5"
+        "code": "5e5bc1c6"
       },
-      "diagnostics": [
-        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.RulesHeld",
@@ -7039,7 +7031,7 @@
       "kind": "shipment",
       "title": "The files that run it elsewhere",
       "source": "src/sdlc.ts:479",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "target": "repository"
@@ -7054,11 +7046,7 @@
           "sdlc.PullRequestWorkflow"
         ]
       },
-      "diagnostics": [
-        "warning: To ship: The preview's script is unknown",
-        "warning: To ship: The preview's workflow is unknown",
-        "warning: To ship: The pull requests' workflow is unknown"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.SdlcChecks",
@@ -7168,7 +7156,7 @@
       },
       "result": {
         "path": "src",
-        "code": "f3aadd53"
+        "code": "2a7a211a"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"

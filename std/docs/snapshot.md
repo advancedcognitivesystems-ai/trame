@@ -611,10 +611,10 @@ Package · `ContinuousIntegration`
 
 - Owner: trame
 - Name: ci
-- Version: 0.7.0
+- Version: 0.8.0
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: ../ci/releases/0.7.0
+- Its path: ../ci/releases/0.8.0
 - Serves: Versions that hold
 
 ### Trame
@@ -623,10 +623,10 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 116
+- Version: 117
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../generations/g116
+- Its path: ../generations/g117
 - Serves: Ports of the platform, realized once
 
 ### The people of the repository
@@ -1116,6 +1116,42 @@ Release · `R0_22_0`
 - Language: shared
 - Serves: Commands chosen, not written again, A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again, Versions that hold
 
+### Version 0.22.1
+
+Release · `R0_22_1`
+
+- Released by: trame
+- Version: 0.22.1
+- Released on: 2026-11-22
+- What changes: propagate: two projects that import each other, the one that waits for the fewest first, the first decided among them
+- Fingerprint: 5021d2d8af163b91
+- Language: shared
+- Serves: Commands chosen, not written again, A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again, Versions that hold
+
+### Version 0.22.2
+
+Release · `R0_22_2`
+
+- Released by: trame
+- Version: 0.22.2
+- Released on: 2026-11-22
+- What changes: propagate runs the launcher by its path from the repository's root
+- Fingerprint: d3c890b34b2183ab
+- Language: shared
+- Serves: Commands chosen, not written again, A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again, Versions that hold
+
+### Version 0.22.3
+
+Release · `R0_22_3`
+
+- Released by: trame
+- Version: 0.22.3
+- Released on: 2026-11-22
+- What changes: propagate writes a project's files that run elsewhere again when any file that records its references moved (the settings name them)
+- Fingerprint: 60be38b8e207181c
+- Language: shared
+- Serves: Commands chosen, not written again, A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again, Versions that hold
+
 ### Version 0.3.0
 
 Release · `R0_3_0`
@@ -1493,7 +1529,7 @@ Acceptance criteria · `WordsOfCriteria` · **held**
 Decision · `ScenarioData`
 
 - Decided by: trame
-- Value: { seeds: 1, 2, text: a seed, draws: 200, bounds: { lo: 1, hi: 6 }, weighted: { item: light, weight: 1 }, { item: heavy, weight: 3 }, { item: never, weight: 0 }, never: never, preference: { name: voice, value: off, unset: pace }, sentence: { text: Breathe in, language: en }, turned: 0.5, 0.25, file: { path: dist/page.html, text: <p>a page</p>, copy: public/index.html }, page: { path: dist/page.html, selector: .poses li, count: 12, text: Mountain, error: The page broke, language: fr }, command: SELECT 1, repository: { name: owner/project, settings: { branch: main, checks: project, library, upToDate: false, approvals: 1, method: merge, autoMerge: true, deletesMerged: true, pages: true }, left: { methods: merge, squash, autoMerge: false, deletesMerged: true, protected: false, checks: library, upToDate: false }, differs: methods, autoMerge, protected, approvals, checks }, pullRequest: { way: { repository: owner/project, base: main, method: merge, merge: onceItHoldsUnlessDecided, lock: trame.lock, projects: { name: project, dir: . }, { name: app, dir: apps/app } }, branch: work, title: A change, free: src/product.ts, apps/app/src/app.ts, decided: apps/app/trame.lock, apps/app/src/app.ts, open: { number: 7, url: https://github.com/owner/project/pull/7 }, elsewhere: more-work }, propagation: { settings: { engine: { launcher: trame.sh, upgrade: upgrade, ship: ship, build: build, by: --by, today: TRAME_TODAY }, configuration: trame.json, projects: { name: project, dir: ., reads: example, runners: RunnersWritten }, { name: example, dir: examples/example, day: 2026-10-30, runners: RunnersWritten }, { name: app, dir: apps/app, runners: RunnersWritten }, { name: lib, dir: libs/lib } }, by: --by, person: ada, described: { ./trame.json: {"libraries":{"lib":"libs/lib"}}, examples/example/trame.json: {"libraries":{"lib":"../../libs/lib","app":"../../apps/app"}}, apps/app/trame.json: {"libraries":{"lib":{"path":"../../libs/lib","version":"0.1.0"}}}, libs/lib/trame.json: {"libraries":{"app":{"path":"../../apps/app","version":"0.1.0"}}} }, order: app, lib, example, project, moves: { dir: apps/app, path: apps/app/trame.json, to: {"libraries":{"lib":{"path":"../../libs/lib","version":"0.2.0"}}} } } }
+- Value: { seeds: 1, 2, text: a seed, draws: 200, bounds: { lo: 1, hi: 6 }, weighted: { item: light, weight: 1 }, { item: heavy, weight: 3 }, { item: never, weight: 0 }, never: never, preference: { name: voice, value: off, unset: pace }, sentence: { text: Breathe in, language: en }, turned: 0.5, 0.25, file: { path: dist/page.html, text: <p>a page</p>, copy: public/index.html }, page: { path: dist/page.html, selector: .poses li, count: 12, text: Mountain, error: The page broke, language: fr }, command: SELECT 1, repository: { name: owner/project, settings: { branch: main, checks: project, library, upToDate: false, approvals: 1, method: merge, autoMerge: true, deletesMerged: true, pages: true }, left: { methods: merge, squash, autoMerge: false, deletesMerged: true, protected: false, checks: library, upToDate: false }, differs: methods, autoMerge, protected, approvals, checks }, pullRequest: { way: { repository: owner/project, base: main, method: merge, merge: onceItHoldsUnlessDecided, lock: trame.lock, projects: { name: project, dir: . }, { name: app, dir: apps/app } }, branch: work, title: A change, free: src/product.ts, apps/app/src/app.ts, decided: apps/app/trame.lock, apps/app/src/app.ts, open: { number: 7, url: https://github.com/owner/project/pull/7 }, elsewhere: more-work }, propagation: { settings: { engine: { launcher: trame.sh, upgrade: upgrade, ship: ship, build: build, by: --by, today: TRAME_TODAY }, configuration: trame.json, references: trame.json, src/packages.ts, projects: { name: project, dir: ., reads: example, runners: RunnersWritten }, { name: example, dir: examples/example, day: 2026-10-30, runners: RunnersWritten }, { name: app, dir: apps/app, runners: RunnersWritten }, { name: lib, dir: libs/lib } }, by: --by, person: ada, described: { ./trame.json: {"libraries":{"lib":"libs/lib"}}, examples/example/trame.json: {"libraries":{"lib":"../../libs/lib","app":"../../apps/app"}}, apps/app/trame.json: {"libraries":{"lib":{"path":"../../libs/lib","version":"0.1.0"}}}, libs/lib/trame.json: {"libraries":{"app":{"path":"../../apps/app","version":"0.1.0"}}} }, order: app, lib, example, project, moves: { dir: apps/app, path: apps/app/trame.json, to: {"libraries":{"lib":{"path":"../../libs/lib","version":"0.2.0"}}} } } }
 
 ### The language of the library's scenarios
 
@@ -1688,7 +1724,7 @@ Decision · `PullRequestsOnGitHub`
 
 ### The pull requests' workflow
 
-Artefact · `PullRequestWorkflow` · **unknown**
+Artefact · `PullRequestWorkflow` · **held**
 
 - Owner: trame
 - Path: ../.github/workflows/std-pull-request.yml
@@ -1698,7 +1734,7 @@ Artefact · `PullRequestWorkflow` · **unknown**
 
 ### The standard library
 
-Artefact · `TheLibrary` · **unknown**
+Artefact · `TheLibrary` · **held**
 
 - Owner: trame
 - Path: src
@@ -1706,7 +1742,7 @@ Artefact · `TheLibrary` · **unknown**
 
 ### The next version
 
-Shipment · `NextVersion` · **unknown**
+Shipment · `NextVersion` · **held**
 
 - Owner: trame
 - Target: version
@@ -1715,7 +1751,7 @@ Shipment · `NextVersion` · **unknown**
 
 ### The files that run it elsewhere
 
-Shipment · `RunnersWritten` · **unknown**
+Shipment · `RunnersWritten` · **held**
 
 - Owner: trame
 - Target: repository

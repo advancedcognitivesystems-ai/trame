@@ -44,7 +44,7 @@ Consequences: Every entry point names its audience (an error otherwise); an audi
 
 ### A library offers commands, a project chooses them
 
-`CommandsOfALibrary` · `src/commands.ts:169` · status: **held**
+`CommandsOfALibrary` · `src/commands.ts:174` · status: **held**
 
 The commands any project of a repository needs (open a pull request, carry a version across) are written once, in the library; a project runs one when a technical choice of its own chooses it, with its decisions as settings.
 

@@ -169,6 +169,7 @@ export const ScenarioData = decision<{
       settings: {
         engine: { launcher: "trame.sh", upgrade: "upgrade", ship: "ship", build: "build", by: "--by", today: "TRAME_TODAY" },
         configuration: "trame.json",
+        references: ["trame.json", "src/packages.ts"],
         projects: [
           { name: "project", dir: ".", reads: ["example"], runners: "RunnersWritten" },
           { name: "example", dir: "examples/example", day: "2026-10-30", runners: "RunnersWritten" },

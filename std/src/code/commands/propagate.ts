@@ -1,7 +1,8 @@
 // trame propagate --by <name>: the versions published carried across the projects of the repository, each after the
-// libraries it imports and the projects it reads (two that import each other, in the order decided): its packages at
-// their newest versions; its files that run elsewhere written again when that moved a reference; its documents built
-// again, at its day when it has one. It stops at the first step that fails.
+// libraries it imports and the projects it reads (two that import each other: the one that waits for the fewest): its
+// packages at their newest versions; its files that run elsewhere written again when that moved a reference (one of the
+// files that record them changed); its documents built again, at its day when it has one. It stops at the first step
+// that fails.
 
 import type { BodyOf } from "#trame/kernel"
 import type { Propagate, ProjectToPropagate } from "../../commands"
@@ -35,14 +36,20 @@ const body: BodyOf<typeof Propagate> = ({ settings, files, programs, say, exit, 
     }
   }
 
+  // The launcher, as a path from the repository's root: a name alone would be looked for where the system keeps programs.
+  const launcher = texts.concat([posix.currentDirectory, posix.slash, engine.launcher])
   const run = (p: ProjectToPropagate, said: string, args: readonly string[], variables?: Record<string, string>) =>
-    programs.run({ program: engine.launcher, args, dir: p.dir, said, ...(variables ? { variables } : {}) })
+    programs.run({ program: launcher, args, dir: p.dir, said, ...(variables ? { variables } : {}) })
+  const references = (p: ProjectToPropagate) => settings.references.map((file) => {
+    const path = texts.concat([p.dir, posix.slash, file])
+    return files.exists(path) ? files.read(path) : texts.empty
+  })
   for (const p of ordered) {
-    const before = read(p)
+    const before = JSON.stringify(references(p))
     const upgrading = say.upgrading(p.name)
     if ((await run(p, upgrading, [engine.upgrade])) !== exit.success) return { status: exit.failure, body: [say.propagationStopped(p.name, upgrading)] }
     // Its files that run elsewhere, only when a reference moved: what writes them, or what they run, changed.
-    if (p.runners && read(p) !== before) {
+    if (p.runners && JSON.stringify(references(p)) !== before) {
       const writing = say.writingRunners(p.name, p.runners)
       if ((await run(p, writing, [engine.ship, p.runners, engine.by, person])) !== exit.success) return { status: exit.failure, body: [say.propagationStopped(p.name, writing)] }
     }

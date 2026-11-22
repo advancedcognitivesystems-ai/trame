@@ -2190,10 +2190,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "ci",
-        "version": "0.7.0",
+        "version": "0.8.0",
         "joins": "library",
         "from": "path",
-        "at": "../ci/releases/0.7.0"
+        "at": "../ci/releases/0.8.0"
       }
     },
     {
@@ -2203,10 +2203,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "116",
+        "version": "117",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g116"
+        "at": "../generations/g117"
       }
     },
     {
@@ -2827,6 +2827,45 @@
         "date": "2026-11-22",
         "what": "Commands a project chooses (E3): the component LibraryCommands with pull-request and propagate, their settings ports; the ports Branches, PullRequests, AutoMerge and ProgramRuns, realized on a machine, in a session of Claude Code and in memory; the pattern Command; POSIX's slash",
         "fingerprint": "73116234162e1cca",
+        "language": "shared"
+      }
+    },
+    {
+      "id": "releases.R0_22_1",
+      "kind": "release",
+      "title": "Version 0.22.1",
+      "fields": {
+        "owner": "trame",
+        "version": "0.22.1",
+        "date": "2026-11-22",
+        "what": "propagate: two projects that import each other, the one that waits for the fewest first, the first decided among them",
+        "fingerprint": "5021d2d8af163b91",
+        "language": "shared"
+      }
+    },
+    {
+      "id": "releases.R0_22_2",
+      "kind": "release",
+      "title": "Version 0.22.2",
+      "fields": {
+        "owner": "trame",
+        "version": "0.22.2",
+        "date": "2026-11-22",
+        "what": "propagate runs the launcher by its path from the repository's root",
+        "fingerprint": "d3c890b34b2183ab",
+        "language": "shared"
+      }
+    },
+    {
+      "id": "releases.R0_22_3",
+      "kind": "release",
+      "title": "Version 0.22.3",
+      "fields": {
+        "owner": "trame",
+        "version": "0.22.3",
+        "date": "2026-11-22",
+        "what": "propagate writes a project's files that run elsewhere again when any file that records its references moved (the settings name them)",
+        "fingerprint": "60be38b8e207181c",
         "language": "shared"
       }
     },
@@ -4036,6 +4075,10 @@
                 "today": "TRAME_TODAY"
               },
               "configuration": "trame.json",
+              "references": [
+                "trame.json",
+                "src/packages.ts"
+              ],
               "projects": [
                 {
                   "name": "project",
@@ -4221,7 +4264,7 @@
       "id": "sdlc.NextVersion",
       "kind": "shipment",
       "title": "The next version",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "version"
@@ -4268,7 +4311,7 @@
       "id": "sdlc.PullRequestWorkflow",
       "kind": "artifact",
       "title": "The pull requests' workflow",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "../.github/workflows/std-pull-request.yml",
@@ -4295,7 +4338,7 @@
       "id": "sdlc.RunnersWritten",
       "kind": "shipment",
       "title": "The files that run it elsewhere",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "repository"
@@ -4305,7 +4348,7 @@
       "id": "sdlc.TheLibrary",
       "kind": "artifact",
       "title": "The standard library",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "src",
@@ -6617,6 +6660,111 @@
     },
     {
       "from": "releases.R0_22_0",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_1",
+      "to": "product.ChosenCommands",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_1",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_1",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_1",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_1",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_1",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_1",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_2",
+      "to": "product.ChosenCommands",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_2",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_2",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_2",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_2",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_2",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_2",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_3",
+      "to": "product.ChosenCommands",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_3",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_3",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_3",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_3",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_3",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_3",
       "to": "product.VersionsThatHold",
       "kind": "serves"
     },

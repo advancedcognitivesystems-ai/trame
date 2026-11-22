@@ -30,7 +30,7 @@ Two seeds and a text; how many numbers to draw, between which bounds; items and 
 | command | SELECT 1 |
 | repository | { name: owner/project, settings: { branch: main, checks: project, library, upToDate: false, approvals: 1, method: merge, autoMerge: true, deletesMerged: true, pages: true }, left: { methods: merge, squash, autoMerge: false, deletesMerged: true, protected: false, checks: library, upToDate: false }, differs: methods, autoMerge, protected, approvals, checks } |
 | pullRequest | { way: { repository: owner/project, base: main, method: merge, merge: onceItHoldsUnlessDecided, lock: trame.lock, projects: { name: project, dir: . }, { name: app, dir: apps/app } }, branch: work, title: A change, free: src/product.ts, apps/app/src/app.ts, decided: apps/app/trame.lock, apps/app/src/app.ts, open: { number: 7, url: https://github.com/owner/project/pull/7 }, elsewhere: more-work } |
-| propagation | { settings: { engine: { launcher: trame.sh, upgrade: upgrade, ship: ship, build: build, by: --by, today: TRAME_TODAY }, configuration: trame.json, projects: { name: project, dir: ., reads: example, runners: RunnersWritten }, { name: example, dir: examples/example, day: 2026-10-30, runners: RunnersWritten }, { name: app, dir: apps/app, runners: RunnersWritten }, { name: lib, dir: libs/lib } }, by: --by, person: ada, described: { ./trame.json: {"libraries":{"lib":"libs/lib"}}, examples/example/trame.json: {"libraries":{"lib":"../../libs/lib","app":"../../apps/app"}}, apps/app/trame.json: {"libraries":{"lib":{"path":"../../libs/lib","version":"0.1.0"}}}, libs/lib/trame.json: {"libraries":{"app":{"path":"../../apps/app","version":"0.1.0"}}} }, order: app, lib, example, project, moves: { dir: apps/app, path: apps/app/trame.json, to: {"libraries":{"lib":{"path":"../../libs/lib","version":"0.2.0"}}} } } |
+| propagation | { settings: { engine: { launcher: trame.sh, upgrade: upgrade, ship: ship, build: build, by: --by, today: TRAME_TODAY }, configuration: trame.json, references: trame.json, src/packages.ts, projects: { name: project, dir: ., reads: example, runners: RunnersWritten }, { name: example, dir: examples/example, day: 2026-10-30, runners: RunnersWritten }, { name: app, dir: apps/app, runners: RunnersWritten }, { name: lib, dir: libs/lib } }, by: --by, person: ada, described: { ./trame.json: {"libraries":{"lib":"libs/lib"}}, examples/example/trame.json: {"libraries":{"lib":"../../libs/lib","app":"../../apps/app"}}, apps/app/trame.json: {"libraries":{"lib":{"path":"../../libs/lib","version":"0.1.0"}}}, libs/lib/trame.json: {"libraries":{"app":{"path":"../../apps/app","version":"0.1.0"}}} }, order: app, lib, example, project, moves: { dir: apps/app, path: apps/app/trame.json, to: {"libraries":{"lib":{"path":"../../libs/lib","version":"0.2.0"}}} } } |
 
 - Decided by: trame
 - Used by: [Commands are made for each effect](#CommandsMade), [The device, in memory](#DeviceInMemory), [Seeded draws keep their promise](#DrawsKeepTheirPromise), [A version carried across the projects](#PropagatedInOrder), [A pull request opened](#PullRequestOpened), [A repository kept in memory](#RepositoryInMemoryKeeps), [How the scenarios' versions are carried](#ScenarioPropagation), [How the scenarios' pull requests are opened](#ScenarioPullRequests), [The tooling, in memory](#ToolingInMemory)
@@ -54,7 +54,7 @@ Two seeds and a text; how many numbers to draw, between which bounds; items and 
 
 ### How the scenarios' versions are carried
 
-`ScenarioPropagation` · `src/scenarios.ts:206` · status: **held**
+`ScenarioPropagation` · `src/scenarios.ts:207` · status: **held**
 
 The settings of propagate in the library's scenarios: four projects, one read by the root, one built at its day.
 
@@ -70,7 +70,7 @@ The settings of propagate in the library's scenarios: four projects, one read by
 
 ### How the scenarios' pull requests are opened
 
-`ScenarioPullRequests` · `src/scenarios.ts:196` · status: **held**
+`ScenarioPullRequests` · `src/scenarios.ts:197` · status: **held**
 
 The settings of pull-request in the library's scenarios: a repository, its base and its two projects.
 
@@ -184,7 +184,7 @@ Context: The library raises nothing the language does not: its warnings are poin
 
 ### The scenarios' settings
 
-`ScenarioSettings` · `src/scenarios.ts:216` · status: **held**
+`ScenarioSettings` · `src/scenarios.ts:217` · status: **held**
 
 Where the library's scenarios run, its commands read the settings the scenarios give.
 
@@ -258,7 +258,7 @@ Where the library's scenarios run: its realizations kept in memory.
 
 ### Commands are made for each effect
 
-`CommandsMade` · `src/scenarios.ts:363` · status: **held**
+`CommandsMade` · `src/scenarios.ts:364` · status: **held**
 
 The command maker gives, for each word of effects, a command of that intent from its text, and the text it was given is the command: nothing added, nothing lost.
 
@@ -284,7 +284,7 @@ The command maker gives, for each word of effects, a command of that intent from
 
 ### The device, in memory
 
-`DeviceInMemory` · `src/scenarios.ts:407` · status: **held**
+`DeviceInMemory` · `src/scenarios.ts:408` · status: **held**
 
 The preferences kept read back what was set; the voice is heard saying what it says, in its language; the screen kept awake is released; time turned by hand calls each frame started, with the seconds since its start, until it stops.
 
@@ -314,7 +314,7 @@ The preferences kept read back what was set; the voice is heard saying what it s
 
 ### Seeded draws keep their promise
 
-`DrawsKeepTheirPromise` · `src/scenarios.ts:379` · status: **held**
+`DrawsKeepTheirPromise` · `src/scenarios.ts:380` · status: **held**
 
 The same seed draws the same numbers, another seed others; integers drawn stay within their bounds and reach both; an element is drawn by its weight, and one that weighs nothing never is.
 
@@ -343,7 +343,7 @@ The same seed draws the same numbers, another seed others; integers drawn stay w
 
 ### Judged as the language says
 
-`JudgedAsTheLanguage` · `src/scenarios.ts:331` · status: **held**
+`JudgedAsTheLanguage` · `src/scenarios.ts:332` · status: **held**
 
 Through its port where the library's build evaluates, a warning stays a warning, an error an error.
 
@@ -369,7 +369,7 @@ Through its port where the library's build evaluates, a warning stays a warning,
 
 ### Judged strictly
 
-`JudgedStrictly` · `src/scenarios.ts:346` · status: **held**
+`JudgedStrictly` · `src/scenarios.ts:347` · status: **held**
 
 Through its port in Strict, a warning becomes an error, an error and a blocking problem stay as they are.
 
@@ -395,7 +395,7 @@ Through its port in Strict, a warning becomes an error, an error and a blocking 
 
 ### A version carried across the projects
 
-`PropagatedInOrder` · `src/scenarios.ts:269` · status: **held**
+`PropagatedInOrder` · `src/scenarios.ts:270` · status: **held**
 
 Each project is carried after the libraries it imports and the projects it reads, built at its day when it has one; its files that run elsewhere are written again where the upgrade moved a reference, and only there; a step that fails stops it there.
 
@@ -424,7 +424,7 @@ Each project is carried after the libraries it imports and the projects it reads
 
 ### A pull request opened
 
-`PullRequestOpened` · `src/scenarios.ts:231` · status: **held**
+`PullRequestOpened` · `src/scenarios.ts:232` · status: **held**
 
 A branch that changes nothing people decided is pushed, its pull request opened and GitHub asked to merge it once it holds; one that changes a project's lock is opened, and left to a person; one whose pull request is open finds it; on the base itself, nothing happens.
 
@@ -454,7 +454,7 @@ A branch that changes nothing people decided is pushed, its pull request opened 
 
 ### A repository kept in memory
 
-`RepositoryInMemoryKeeps` · `src/scenarios.ts:308` · status: **held**
+`RepositoryInMemoryKeeps` · `src/scenarios.ts:309` · status: **held**
 
 A repository left by hand is read back as it was, and compared with the settings: what differs is said, part by part. The settings applied are kept for the scenario, and the repository read back holds them all, its pages when asked.
 
@@ -482,7 +482,7 @@ A repository left by hand is read back as it was, and compared with the settings
 
 ### The tooling, in memory
 
-`ToolingInMemory` · `src/scenarios.ts:441` · status: **held**
+`ToolingInMemory` · `src/scenarios.ts:442` · status: **held**
 
 A file written exists, is read back, copied and fingerprinted alike, and kept for the scenario; a page scripted shows what it was given, and the clicks on it are kept.
 

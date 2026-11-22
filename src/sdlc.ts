@@ -18,7 +18,10 @@ import { ProgramCommands, HeadlessBrowser, NodeProgramCommands, PlaywrightBrowse
 import { Adapter, Strategy, Command } from "#std/patterns"
 import { OpenPullRequest, Propagate, PullRequestSettings, PropagationSettings } from "#std/commands"
 import { GitCliBranches, GitHubCliPullRequests, AutoMergeByGitHubCli, AutoMergeInAClaudeSession } from "#std/repository"
-import { Layout, TrameCommands, TrameEnvironment } from "./conventions"
+import { Layout, TrameCommands, TrameEnvironment, ProjectStart } from "./conventions"
+import { TypeScript } from "./typescript"
+import { Posix } from "#std/system"
+import { Texts } from "#std/algebra"
 import { TestDay } from "./platform"
 import { Html, Css, Svg } from "#std/html"
 import { ExitStatus } from "#std/system"
@@ -581,12 +584,21 @@ export const OurPullRequests = fn({
  */
 export const OurPropagation = fn({
   owner: "trame", implements: [PropagationSettings], serves: [ExecutableSpecification],
-  deps: { layout: Layout, line: TrameCommands, variables: TrameEnvironment, day: TestDay, projects: RepositoryProjects },
-  body: ({ layout, line, variables, day, projects }) => ({
-    engine: { launcher: layout.launcher, upgrade: line.upgrade, ship: line.ship, build: line.build, by: line.by, today: variables.today },
-    configuration: layout.configuration,
-    projects: projects.map(({ scenarios, ...p }) => (scenarios ? { ...p, day } : p)),
-  }),
+  deps: {
+    layout: Layout, start: ProjectStart, typescript: TypeScript, posix: Posix, texts: Texts, line: TrameCommands, variables: TrameEnvironment, day: TestDay,
+    projects: RepositoryProjects,
+  },
+  body: ({ layout, start, typescript, posix, texts, line, variables, day, projects }) => {
+    // What an upgrade moves: the configuration, and the module of packages trame init writes (since g91).
+    const [extension] = typescript.extensions
+    const packages = extension === undefined ? [] : [texts.concat([layout.sources, posix.slash, start.references, extension])]
+    return {
+      engine: { launcher: layout.launcher, upgrade: line.upgrade, ship: line.ship, build: line.build, by: line.by, today: variables.today },
+      configuration: layout.configuration,
+      references: [layout.configuration, ...packages],
+      projects: projects.map(({ scenarios, ...p }) => (scenarios ? { ...p, day } : p)),
+    }
+  },
 })
 
 /**

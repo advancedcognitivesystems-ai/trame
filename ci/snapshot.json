@@ -200,8 +200,8 @@
             "meaning": "Keeps GitHub from merging it: a person merges it (gh pr merge --disable-auto)"
           },
           "keepWhenDecided": {
-            "value": "git diff --quiet FETCH_HEAD -- \":(glob)**/$LOCK\" || gh pr merge \"$NUMBER\" --disable-auto || true",
-            "meaning": "Keeps GitHub from merging it when a lock of the repository changed: what people decided (git-diff --quiet; a pathspec with the glob magic)"
+            "value": "git diff --quiet FETCH_HEAD -- \"$LOCK\" || gh pr merge \"$NUMBER\" --disable-auto || true",
+            "meaning": "Keeps GitHub from merging it when the project's lock changed: what its people decided (git-diff --quiet; a path from the project's directory, where the step runs: each project watches its own, and a copy of a lock kept elsewhere is none)"
           },
           "tokenVariable": {
             "value": "GH_TOKEN",
@@ -491,7 +491,7 @@
                 }
               }
             ],
-            "output": "# Written by trame ship from the graph, for the shipment \"Into the main branch\" of apps/poselia\n# From the artefact sdlc.TheFile and its settings sdlc.TheSettings declared in apps/poselia/src/sdlc.ts\n# Do not edit: change those nodes, then ship.\nname: \"poselia · Into the main branch\"\non:\n  pull_request:\n    branches:\n      - main\npermissions:\n  contents: read\n  pull-requests: write\njobs:\n  poselia:\n    runs-on: ubuntu-24.04\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 22\n      - run: npm ci\n        working-directory: \".\"\n      - run: npm ci\n        working-directory: apps/poselia\n      - run: npm ci\n        working-directory: libs/geometry\n      - run: \"git fetch --depth=1 origin \\\"$GITHUB_BASE_REF\\\"\"\n        working-directory: apps/poselia\n      - run: |\n          git show \"FETCH_HEAD:./$LOCK\" > \"$LOCK\" || rm -f \"$LOCK\"\n          ../../trame.sh view review --format md > \"$RUNNER_TEMP/review.md\"\n          git checkout -- \"$LOCK\" || rm -f \"$LOCK\"\n          printf '%s\\n\\n' \"$MARKER\" | cat - \"$RUNNER_TEMP/review.md\" > \"$RUNNER_TEMP/comment.md\"\n          id=\"$(gh api \"repos/$GITHUB_REPOSITORY/issues/$NUMBER/comments\" --paginate --jq '[.[] | select(.body | startswith(env.MARKER))][0].id // empty')\"\n          if [ -n \"$id\" ]; then gh api --method PATCH \"repos/$GITHUB_REPOSITORY/issues/comments/$id\" -F \"body=@$RUNNER_TEMP/comment.md\" > /dev/null; else gh pr comment \"$NUMBER\" --body-file \"$RUNNER_TEMP/comment.md\"; fi\n        working-directory: apps/poselia\n        env:\n          GH_TOKEN: \"${{ github.token }}\"\n          NUMBER: \"${{ github.event.pull_request.number }}\"\n          LOCK: trame.lock\n          MARKER: \"<!-- The review of apps/poselia -->\"\n      - run: |\n          git diff --quiet FETCH_HEAD -- \":(glob)**/$LOCK\" || gh pr merge \"$NUMBER\" --disable-auto || true\n        working-directory: apps/poselia\n        env:\n          GH_TOKEN: \"${{ github.token }}\"\n          NUMBER: \"${{ github.event.pull_request.number }}\"\n          LOCK: trame.lock\n          MARKER: \"<!-- The review of apps/poselia -->\"\n      - run: \"../../trame.sh ship IntoMain --by \\\"${{ github.actor }}\\\"\"\n        working-directory: apps/poselia\n"
+            "output": "# Written by trame ship from the graph, for the shipment \"Into the main branch\" of apps/poselia\n# From the artefact sdlc.TheFile and its settings sdlc.TheSettings declared in apps/poselia/src/sdlc.ts\n# Do not edit: change those nodes, then ship.\nname: \"poselia · Into the main branch\"\non:\n  pull_request:\n    branches:\n      - main\npermissions:\n  contents: read\n  pull-requests: write\njobs:\n  poselia:\n    runs-on: ubuntu-24.04\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 22\n      - run: npm ci\n        working-directory: \".\"\n      - run: npm ci\n        working-directory: apps/poselia\n      - run: npm ci\n        working-directory: libs/geometry\n      - run: \"git fetch --depth=1 origin \\\"$GITHUB_BASE_REF\\\"\"\n        working-directory: apps/poselia\n      - run: |\n          git show \"FETCH_HEAD:./$LOCK\" > \"$LOCK\" || rm -f \"$LOCK\"\n          ../../trame.sh view review --format md > \"$RUNNER_TEMP/review.md\"\n          git checkout -- \"$LOCK\" || rm -f \"$LOCK\"\n          printf '%s\\n\\n' \"$MARKER\" | cat - \"$RUNNER_TEMP/review.md\" > \"$RUNNER_TEMP/comment.md\"\n          id=\"$(gh api \"repos/$GITHUB_REPOSITORY/issues/$NUMBER/comments\" --paginate --jq '[.[] | select(.body | startswith(env.MARKER))][0].id // empty')\"\n          if [ -n \"$id\" ]; then gh api --method PATCH \"repos/$GITHUB_REPOSITORY/issues/comments/$id\" -F \"body=@$RUNNER_TEMP/comment.md\" > /dev/null; else gh pr comment \"$NUMBER\" --body-file \"$RUNNER_TEMP/comment.md\"; fi\n        working-directory: apps/poselia\n        env:\n          GH_TOKEN: \"${{ github.token }}\"\n          NUMBER: \"${{ github.event.pull_request.number }}\"\n          LOCK: trame.lock\n          MARKER: \"<!-- The review of apps/poselia -->\"\n      - run: |\n          git diff --quiet FETCH_HEAD -- \"$LOCK\" || gh pr merge \"$NUMBER\" --disable-auto || true\n        working-directory: apps/poselia\n        env:\n          GH_TOKEN: \"${{ github.token }}\"\n          NUMBER: \"${{ github.event.pull_request.number }}\"\n          LOCK: trame.lock\n          MARKER: \"<!-- The review of apps/poselia -->\"\n      - run: \"../../trame.sh ship IntoMain --by \\\"${{ github.actor }}\\\"\"\n        working-directory: apps/poselia\n"
           }
         ]
       }
@@ -549,10 +549,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "116",
+        "version": "117",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g116"
+        "at": "../generations/g117"
       }
     },
     {
@@ -672,6 +672,19 @@
         "date": "2026-11-19",
         "what": "A file written names the nodes it comes from at its top (the artefact, the decision of its settings, the file that declares them), and a workflow's name says its job; the repository's settings leave ci for std (0.20.0), where a program of the project's SDLC applies and reads them back, and the writer of a script that set them is gone",
         "fingerprint": "b1a205a7d08e6a57",
+        "language": "shared"
+      }
+    },
+    {
+      "id": "releases.R0_8_0",
+      "kind": "release",
+      "title": "Version 0.8.0",
+      "fields": {
+        "owner": "trame",
+        "version": "0.8.0",
+        "date": "2026-11-22",
+        "what": "The pull requests' workflow watches its own project's lock, by its path from the project's directory: a copy of a lock kept elsewhere (a generation's archive) no longer keeps GitHub from merging",
+        "fingerprint": "5dcdeda40d367c24",
         "language": "shared"
       }
     },
@@ -1259,6 +1272,16 @@
     },
     {
       "from": "releases.R0_7_0",
+      "to": "product.RunsElsewhere",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_8_0",
+      "to": "product.OneWriterPerPlace",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_8_0",
       "to": "product.RunsElsewhere",
       "kind": "serves"
     },

@@ -119,7 +119,7 @@ Context: A project that leaves nothing to watch chooses it; the library plays it
 
 ### The scenarios' settings
 
-`ScenarioSettings` · `src/scenarios.ts:216` · status: **held**
+`ScenarioSettings` · `src/scenarios.ts:217` · status: **held**
 
 Where the library's scenarios run, its commands read the settings the scenarios give.
 

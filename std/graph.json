@@ -528,7 +528,7 @@
       "id": "commands.CommandLanguage",
       "kind": "decision",
       "title": "The language the library's commands speak in.",
-      "source": "src/commands.ts:92",
+      "source": "src/commands.ts:97",
       "fields": {
         "owner": "trame",
         "value": {
@@ -541,7 +541,7 @@
       "id": "commands.CommandsOfALibrary",
       "kind": "adr",
       "title": "A library offers commands, a project chooses them",
-      "source": "src/commands.ts:169",
+      "source": "src/commands.ts:174",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -558,7 +558,7 @@
       "id": "commands.CommandWords",
       "kind": "catalog",
       "title": "What the library's commands say",
-      "source": "src/commands.ts:97",
+      "source": "src/commands.ts:102",
       "fields": {
         "owner": "trame",
         "messages": "(function)"
@@ -583,7 +583,7 @@
       "id": "commands.OpenPullRequest",
       "kind": "entry",
       "title": "Open a pull request",
-      "source": "src/commands.ts:136",
+      "source": "src/commands.ts:141",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -613,7 +613,7 @@
       "id": "commands.Propagate",
       "kind": "entry",
       "title": "Propagate",
-      "source": "src/commands.ts:155",
+      "source": "src/commands.ts:160",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -642,7 +642,7 @@
       "id": "commands.PropagationSettings",
       "kind": "port",
       "title": "How a version is carried",
-      "source": "src/commands.ts:89",
+      "source": "src/commands.ts:94",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -2589,10 +2589,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "ci",
-        "version": "0.7.0",
+        "version": "0.8.0",
         "joins": "library",
         "from": "path",
-        "at": "../ci/releases/0.7.0"
+        "at": "../ci/releases/0.8.0"
       },
       "diagnostics": []
     },
@@ -2604,10 +2604,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "116",
+        "version": "117",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g116"
+        "at": "../generations/g117"
       },
       "diagnostics": []
     },
@@ -3332,6 +3332,51 @@
         "date": "2026-11-22",
         "what": "Commands a project chooses (E3): the component LibraryCommands with pull-request and propagate, their settings ports; the ports Branches, PullRequests, AutoMerge and ProgramRuns, realized on a machine, in a session of Claude Code and in memory; the pattern Command; POSIX's slash",
         "fingerprint": "73116234162e1cca",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "releases.R0_22_1",
+      "kind": "release",
+      "title": "Version 0.22.1",
+      "source": "src/releases.ts:324",
+      "fields": {
+        "owner": "trame",
+        "version": "0.22.1",
+        "date": "2026-11-22",
+        "what": "propagate: two projects that import each other, the one that waits for the fewest first, the first decided among them",
+        "fingerprint": "5021d2d8af163b91",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "releases.R0_22_2",
+      "kind": "release",
+      "title": "Version 0.22.2",
+      "source": "src/releases.ts:337",
+      "fields": {
+        "owner": "trame",
+        "version": "0.22.2",
+        "date": "2026-11-22",
+        "what": "propagate runs the launcher by its path from the repository's root",
+        "fingerprint": "d3c890b34b2183ab",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "releases.R0_22_3",
+      "kind": "release",
+      "title": "Version 0.22.3",
+      "source": "src/releases.ts:350",
+      "fields": {
+        "owner": "trame",
+        "version": "0.22.3",
+        "date": "2026-11-22",
+        "what": "propagate writes a project's files that run elsewhere again when any file that records its references moved (the settings name them)",
+        "fingerprint": "60be38b8e207181c",
         "language": "shared"
       },
       "diagnostics": []
@@ -4364,7 +4409,7 @@
       "id": "scenarios.CommandsMade",
       "kind": "scenario",
       "title": "Commands are made for each effect",
-      "source": "src/scenarios.ts:363",
+      "source": "src/scenarios.ts:364",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4388,7 +4433,7 @@
       "id": "scenarios.DeviceInMemory",
       "kind": "scenario",
       "title": "The device, in memory",
-      "source": "src/scenarios.ts:407",
+      "source": "src/scenarios.ts:408",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4430,7 +4475,7 @@
       "id": "scenarios.DrawsKeepTheirPromise",
       "kind": "scenario",
       "title": "Seeded draws keep their promise",
-      "source": "src/scenarios.ts:379",
+      "source": "src/scenarios.ts:380",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4478,7 +4523,7 @@
       "id": "scenarios.JudgedAsTheLanguage",
       "kind": "scenario",
       "title": "Judged as the language says",
-      "source": "src/scenarios.ts:331",
+      "source": "src/scenarios.ts:332",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4500,7 +4545,7 @@
       "id": "scenarios.JudgedStrictly",
       "kind": "scenario",
       "title": "Judged strictly",
-      "source": "src/scenarios.ts:346",
+      "source": "src/scenarios.ts:347",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4534,7 +4579,7 @@
       "id": "scenarios.PropagatedInOrder",
       "kind": "scenario",
       "title": "A version carried across the projects",
-      "source": "src/scenarios.ts:269",
+      "source": "src/scenarios.ts:270",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4571,7 +4616,7 @@
       "id": "scenarios.PullRequestOpened",
       "kind": "scenario",
       "title": "A pull request opened",
-      "source": "src/scenarios.ts:231",
+      "source": "src/scenarios.ts:232",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4611,7 +4656,7 @@
       "id": "scenarios.RepositoryInMemoryKeeps",
       "kind": "scenario",
       "title": "A repository kept in memory",
-      "source": "src/scenarios.ts:308",
+      "source": "src/scenarios.ts:309",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4789,6 +4834,10 @@
                 "today": "TRAME_TODAY"
               },
               "configuration": "trame.json",
+              "references": [
+                "trame.json",
+                "src/packages.ts"
+              ],
               "projects": [
                 {
                   "name": "project",
@@ -4856,7 +4905,7 @@
       "id": "scenarios.ScenarioPropagation",
       "kind": "function",
       "title": "How the scenarios' versions are carried",
-      "source": "src/scenarios.ts:206",
+      "source": "src/scenarios.ts:207",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4871,7 +4920,7 @@
       "id": "scenarios.ScenarioPullRequests",
       "kind": "function",
       "title": "How the scenarios' pull requests are opened",
-      "source": "src/scenarios.ts:196",
+      "source": "src/scenarios.ts:197",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4886,7 +4935,7 @@
       "id": "scenarios.ScenarioSettings",
       "kind": "binding",
       "title": "The scenarios' settings",
-      "source": "src/scenarios.ts:216",
+      "source": "src/scenarios.ts:217",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4931,7 +4980,7 @@
       "id": "scenarios.ToolingInMemory",
       "kind": "scenario",
       "title": "The tooling, in memory",
-      "source": "src/scenarios.ts:441",
+      "source": "src/scenarios.ts:442",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5010,7 +5059,7 @@
       "kind": "shipment",
       "title": "The next version",
       "source": "src/sdlc.ts:87",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "version"
@@ -5398,9 +5447,7 @@
           "web.WebSpeechApi"
         ]
       },
-      "diagnostics": [
-        "warning: To ship: The standard library is unknown"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.PackagesSafe",
@@ -5448,7 +5495,7 @@
       "kind": "artifact",
       "title": "The pull requests' workflow",
       "source": "src/sdlc.ts:113",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "../.github/workflows/std-pull-request.yml",
@@ -5456,11 +5503,9 @@
       },
       "result": {
         "path": "../.github/workflows/std-pull-request.yml",
-        "code": "d1296f00"
+        "code": "d7aac953"
       },
-      "diagnostics": [
-        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.RequirementsServed",
@@ -5487,7 +5532,7 @@
       "kind": "shipment",
       "title": "The files that run it elsewhere",
       "source": "src/sdlc.ts:127",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "repository"
@@ -5500,16 +5545,14 @@
           "sdlc.PullRequestWorkflow"
         ]
       },
-      "diagnostics": [
-        "warning: To ship: The pull requests' workflow is unknown"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.TheLibrary",
       "kind": "artifact",
       "title": "The standard library",
       "source": "src/sdlc.ts:22",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "src",
@@ -5517,11 +5560,9 @@
       },
       "result": {
         "path": "src",
-        "code": "12073341"
+        "code": "e69f9a9d"
       },
-      "diagnostics": [
-        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.VersionMode",
@@ -7925,6 +7966,111 @@
     },
     {
       "from": "releases.R0_22_0",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_1",
+      "to": "product.ChosenCommands",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_1",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_1",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_1",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_1",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_1",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_1",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_2",
+      "to": "product.ChosenCommands",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_2",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_2",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_2",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_2",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_2",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_2",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_3",
+      "to": "product.ChosenCommands",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_3",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_3",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_3",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_3",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_3",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_3",
       "to": "product.VersionsThatHold",
       "kind": "serves"
     },

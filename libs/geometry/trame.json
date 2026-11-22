@@ -3,7 +3,7 @@
   "libraries": {
     "ci": {
       "at": ".trame/ci",
-      "version": "0.7.0"
+      "version": "0.8.0"
     },
     "team": {
       "at": ".trame/team",
@@ -11,7 +11,7 @@
     },
     "std": {
       "at": ".trame/std",
-      "version": "0.21.0"
+      "version": "0.22.3"
     }
   },
   "engine": ".trame/trame"

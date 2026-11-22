@@ -37,7 +37,7 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "ci",
-        "version": "0.7.0",
+        "version": "0.8.0",
         "joins": "library",
         "from": "registry"
       },
@@ -51,7 +51,7 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "trame",
-        "version": "116",
+        "version": "117",
         "joins": "language",
         "from": "registry"
       },
@@ -79,13 +79,11 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "std",
-        "version": "0.21.0",
+        "version": "0.22.3",
         "joins": "library",
         "from": "registry"
       },
-      "diagnostics": [
-        "warning: std 0.22.1 is out, the reference names 0.21.0: trame upgrade std moves it"
-      ]
+      "diagnostics": []
     },
     {
       "id": "product.GeometryWrittenOnce",
@@ -203,7 +201,7 @@
       },
       "result": {
         "path": "src",
-        "code": "ccc12b01"
+        "code": "9f23800e"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"

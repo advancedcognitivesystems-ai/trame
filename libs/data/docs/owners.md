@@ -4,7 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 5 | 77 |
+| trame | 0 | 0 | 2 | 77 |
 
 <a id="trame"></a>
 
@@ -12,10 +12,7 @@
 
 | Severity | Code | What | Where | Owner | Consequence |
 |---|---|---|---|---|---|
-| warning | `package-newer` | std 0.22.1 is out, the reference names 0.21.0: trame upgrade std moves it | [std](packages.md#stdLibrary) | trame |  |
 | warning | `shipment-awaits` | To ship: The library of data is unknown | [The next version](sdlc.md#NextVersion) | trame |  |
-| warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | trame |  |
-| warning | `shipment-awaits` | To ship: The pull requests' workflow is unknown | [The files that run it elsewhere](sdlc.md#RunnersWritten) | trame |  |
 | warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The library of data](sdlc.md#TheLibrary) | trame |  |
 
 ### Owns
@@ -72,9 +69,9 @@
 | [The next version](sdlc.md#NextVersion) | Shipment | **unknown** |
 | [Its packages safe](sdlc.md#PackagesSafe) | Obligation |  |
 | [How a pull request is checked on GitHub](sdlc.md#PullRequestsOnGitHub) | Decision |  |
-| [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **unknown** |
+| [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **held** |
 | [Its requirements held](sdlc.md#RequirementsServed) | Obligation |  |
-| [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **unknown** |
+| [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **held** |
 | [The library of data](sdlc.md#TheLibrary) | Artefact | **unknown** |
 | [How a version is made](sdlc.md#VersionMode) | Policy |  |
 | [A book](shelves.md#Book) | Entity | **held** |

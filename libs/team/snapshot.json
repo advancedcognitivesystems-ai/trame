@@ -8,10 +8,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "ci",
-        "version": "0.7.0",
+        "version": "0.8.0",
         "joins": "library",
         "from": "path",
-        "at": "../../ci/releases/0.7.0"
+        "at": "../../ci/releases/0.8.0"
       }
     },
     {
@@ -21,10 +21,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "116",
+        "version": "117",
         "joins": "language",
         "from": "path",
-        "at": "../../generations/g116"
+        "at": "../../generations/g117"
       }
     },
     {
@@ -137,7 +137,7 @@
       "id": "sdlc.PullRequestWorkflow",
       "kind": "artifact",
       "title": "The pull requests' workflow",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "../../.github/workflows/team-pull-request.yml",
@@ -148,7 +148,7 @@
       "id": "sdlc.RunnersWritten",
       "kind": "shipment",
       "title": "The files that run it elsewhere",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "repository"

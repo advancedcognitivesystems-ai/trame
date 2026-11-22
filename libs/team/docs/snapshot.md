@@ -10,10 +10,10 @@ Package · `ContinuousIntegration`
 
 - Owner: trame
 - Name: ci
-- Version: 0.7.0
+- Version: 0.8.0
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: ../../ci/releases/0.7.0
+- Its path: ../../ci/releases/0.8.0
 - Serves: Who acts is declared once
 
 ### Trame
@@ -22,10 +22,10 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 116
+- Version: 117
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../../generations/g116
+- Its path: ../../generations/g117
 - Serves: Who acts is declared once
 
 ## Team · People
@@ -103,7 +103,7 @@ Decision · `PullRequestsOnGitHub`
 
 ### The pull requests' workflow
 
-Artefact · `PullRequestWorkflow` · **unknown**
+Artefact · `PullRequestWorkflow` · **held**
 
 - Owner: trame
 - Path: ../../.github/workflows/team-pull-request.yml
@@ -129,7 +129,7 @@ Shipment · `NextVersion` · **unknown**
 
 ### The files that run it elsewhere
 
-Shipment · `RunnersWritten` · **unknown**
+Shipment · `RunnersWritten` · **held**
 
 - Owner: trame
 - Target: repository

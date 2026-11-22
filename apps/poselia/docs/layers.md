@@ -209,17 +209,17 @@ flowchart TB
     n175["A preview<br/><small>Shipment</small>"]:::unknown
     n176["The way of a preview<br/><small>Policy</small>"]:::neutral
     n177["When the preview runs on GitHub, and what it keeps there<br/><small>Decision</small>"]:::neutral
-    n178["The preview's script<br/><small>Artefact</small>"]:::unknown
-    n179["The preview's workflow<br/><small>Artefact</small>"]:::unknown
+    n178["The preview's script<br/><small>Artefact</small>"]:::held
+    n179["The preview's workflow<br/><small>Artefact</small>"]:::held
     n180["The product holds<br/><small>Obligation</small>"]:::neutral
     n181["The page is checked by programs<br/><small>Obligation</small>"]:::neutral
     n182["The way of a public version<br/><small>Policy</small>"]:::neutral
     n183["A public version<br/><small>Shipment</small>"]:::unknown
     n184["What people decided, published<br/><small>Obligation</small>"]:::neutral
     n185["How a pull request is checked on GitHub<br/><small>Decision</small>"]:::neutral
-    n186["The pull requests' workflow<br/><small>Artefact</small>"]:::unknown
+    n186["The pull requests' workflow<br/><small>Artefact</small>"]:::held
     n187["The rules of the app hold<br/><small>Obligation</small>"]:::neutral
-    n188["The files that run it elsewhere<br/><small>Shipment</small>"]:::unknown
+    n188["The files that run it elsewhere<br/><small>Shipment</small>"]:::held
     n189["What the scenarios of the SDLC check<br/><small>Message catalog</small>"]:::neutral
     n190["The SDLC in memory<br/><small>Technical choice</small>"]:::held
     n191["The SDLC is in the graph<br/><small>Architecture decision</small>"]:::unknown

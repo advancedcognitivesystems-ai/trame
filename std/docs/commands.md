@@ -10,7 +10,7 @@
 
 ### The language the library's commands speak in.
 
-`CommandLanguage` · `src/commands.ts:92`
+`CommandLanguage` · `src/commands.ts:97`
 
 | Case | Value |
 |---|---|
@@ -25,7 +25,7 @@
 
 ### A library offers commands, a project chooses them
 
-`CommandsOfALibrary` · `src/commands.ts:169` · status: **held**
+`CommandsOfALibrary` · `src/commands.ts:174` · status: **held**
 
 The commands any project of a repository needs (open a pull request, carry a version across) are written once, in the library; a project runs one when a technical choice of its own chooses it, with its decisions as settings.
 
@@ -67,7 +67,7 @@ The component whose entry points are the commands the library offers: a program'
 
 ### How a version is carried
 
-`PropagationSettings` · `src/commands.ts:89`
+`PropagationSettings` · `src/commands.ts:94`
 
 The settings of the command propagate: the project at the repository's root answers it with its own decisions.
 
@@ -103,7 +103,7 @@ The settings of the command pull-request: a project answers it with its own deci
 
 ### Open a pull request
 
-`OpenPullRequest` · `src/commands.ts:136` · status: **held**
+`OpenPullRequest` · `src/commands.ts:141` · status: **held**
 
 trame pull-request "Title" ["What it changes"]: pushes the branch checked out, opens its pull request into the base (or finds the one open), saying which projects it changes and whether it changes what people decided (a project's lock); then asks GitHub to merge it once it holds, unless it changes what people decided and the project's way says a person merges it then. Refused on the base itself.
 
@@ -124,7 +124,7 @@ Triggered by `command pull-request`
 
 ### Propagate
 
-`Propagate` · `src/commands.ts:155` · status: **held**
+`Propagate` · `src/commands.ts:160` · status: **held**
 
 trame propagate --by <name>: carries the versions published across the projects of the repository, each after the libraries it imports and the projects it reads (two that import each other: the one decided first): its packages at their newest versions, its files that run elsewhere written again when a reference moved, its documents built again (at its day, when it has one). It stops at the first step that fails, saying where.
 
@@ -147,7 +147,7 @@ Triggered by `command propagate`
 
 ### What the library's commands say
 
-`CommandWords` · `src/commands.ts:97`
+`CommandWords` · `src/commands.ts:102`
 
 <details><summary>The messages, in code</summary>
 

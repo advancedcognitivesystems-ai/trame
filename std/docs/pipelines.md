@@ -6,7 +6,7 @@
 
 ## The next version
 
-> **The next version does not ship yet: 32 of 33 obligations hold.**
+> **The next version ships: every obligation holds.**
 
 For the target version.
 
@@ -14,7 +14,7 @@ Run elsewhere by [The pull requests' workflow](sdlc.md#PullRequestWorkflow), wri
 
 ```mermaid
 flowchart TB
-  n0["The standard library<br/><small>Artefact</small>"]:::unknown
+  n0["The standard library<br/><small>Artefact</small>"]:::held
   n1["A library offers commands, a project chooses them<br/><small>Architecture decision</small>"]:::held
   n2["A project judges harder than the language, never softer<br/><small>Architecture decision</small>"]:::held
   n3["An entry point says who may call it<br/><small>Architecture decision</small>"]:::held
@@ -46,7 +46,7 @@ flowchart TB
   n29["A node reaches what it must<br/><small>Requirement</small>"]:::held
   n30["Effects a node may not have<br/><small>Requirement</small>"]:::held
   n31["Words of a vocabulary<br/><small>Requirement</small>"]:::held
-  n32["The next version<br/><small>Shipment</small>"]:::unknown
+  n32["The next version<br/><small>Shipment</small>"]:::held
   n3 -->|Applied by| n19
   n32 -->|Ships| n0
   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
@@ -60,9 +60,9 @@ flowchart TB
 
 |  | Stage | Step | Run by | Why | Status | Latest evidence |
 |---|---|---|---|---|---|---|
-| 1 | produce | [The standard library](sdlc.md#TheLibrary) · `src` | — | — | **unknown** | 22 November 2026 by claude  |
+| 1 | produce | [The standard library](sdlc.md#TheLibrary) · `src` | — | — | **held** | 22 November 2026 by claude  |
 | 2 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
-| 3 | prove | [The standard library](sdlc.md#TheLibrary) | — | the shipment | **unknown** | 22 November 2026 by claude  |
+| 3 | prove | [The standard library](sdlc.md#TheLibrary) | — | the shipment | **held** | 22 November 2026 by claude  |
 | 4 | prove | [A library offers commands, a project chooses them](commands.md#CommandsOfALibrary) | — | [Its decisions applied](sdlc.md#DecisionsApplied) via [The library's commands](commands.md#LibraryCommands) | **held** |  |
 | 5 | prove | [A project judges harder than the language, never softer](judgment.md#HarderNeverSofter) | — | [Its decisions applied](sdlc.md#DecisionsApplied) via [As the language says](judgment.md#AsTheLanguageSays) | **held** |  |
 | 6 | prove | [An entry point says who may call it](access.md#SaysItsAudience) | — | [Its decisions applied](sdlc.md#DecisionsApplied) via [Who calls a shipment's programs is identified](obligations.md#Identified) | **held** |  |
@@ -94,7 +94,7 @@ flowchart TB
 | 32 | prove | [A node reaches what it must](rules.md#Reaches) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
 | 33 | prove | [Effects a node may not have](rules.md#WithoutEffects) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
 | 34 | prove | [Words of a vocabulary](rules.md#WordsOf) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
-| 35 | record | [The next version](sdlc.md#NextVersion) | — | — | **unknown** | 22 November 2026 by claude `evidence/shipments/NextVersion-2026-11-22-d606dc96.json` |
+| 35 | record | [The next version](sdlc.md#NextVersion) | — | — | **held** | 22 November 2026 by claude `evidence/shipments/NextVersion-2026-11-22-8106a44d.json` |
 
 `trame ship NextVersion --by <name>`
 
@@ -102,15 +102,15 @@ flowchart TB
 
 ## The files that run it elsewhere
 
-> **The files that run it elsewhere does not ship yet: 1 of 2 obligations holds.**
+> **The files that run it elsewhere ships: every obligation holds.**
 
 For the target repository.
 
 ```mermaid
 flowchart TB
-  n0["The pull requests' workflow<br/><small>Artefact</small>"]:::unknown
+  n0["The pull requests' workflow<br/><small>Artefact</small>"]:::held
   n1["A workflow of GitHub Actions<br/><small>Syntax element</small>"]:::held
-  n2["The files that run it elsewhere<br/><small>Shipment</small>"]:::unknown
+  n2["The files that run it elsewhere<br/><small>Shipment</small>"]:::held
   n0 -->|Produced by| n1
   n2 -->|Ships| n0
   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
@@ -124,9 +124,9 @@ flowchart TB
 
 |  | Stage | Step | Run by | Why | Status | Latest evidence |
 |---|---|---|---|---|---|---|
-| 1 | produce | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) · `../.github/workflows/std-pull-request.yml` | [A workflow of GitHub Actions](../.trame/ci/docs/github.md#GitHubWorkflow) | — | **unknown** | 19 November 2026 by claude  |
+| 1 | produce | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) · `../.github/workflows/std-pull-request.yml` | [A workflow of GitHub Actions](../.trame/ci/docs/github.md#GitHubWorkflow) | — | **held** | 22 November 2026 by claude  |
 | 2 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
-| 3 | prove | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | — | the shipment | **unknown** | 19 November 2026 by claude  |
-| 4 | record | [The files that run it elsewhere](sdlc.md#RunnersWritten) | — | — | **unknown** | 19 November 2026 by claude `evidence/shipments/RunnersWritten-2026-11-19-c61530ad.json` |
+| 3 | prove | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | — | the shipment | **held** | 22 November 2026 by claude  |
+| 4 | record | [The files that run it elsewhere](sdlc.md#RunnersWritten) | — | — | **held** | 22 November 2026 by claude `evidence/shipments/RunnersWritten-2026-11-22-9b8c116a.json` |
 
 `trame ship RunnersWritten --by <name>`

@@ -278,6 +278,54 @@ Commands a project chooses (E3): the component LibraryCommands with pull-request
 - Released by: trame
 - Serves: [Commands chosen, not written again](product.md#ChosenCommands), [A published value is cited, not copied](product.md#CitedNotCopied), [Known designs, named](product.md#KnownDesigns), [Ports of the platform, realized once](product.md#RealizedOnce), [Shared operations instead of literals](product.md#SharedOperations), [Rules applied, not written again](product.md#SharedRules), [Versions that hold](product.md#VersionsThatHold)
 
+<a id="R0_22_1"></a>
+
+### Version 0.22.1
+
+`R0_22_1` · `src/releases.ts:324`
+
+propagate: two projects that import each other, the one that waits for the fewest first, the first decided among them
+
+- Version: `0.22.1`
+- Released on: 22 November 2026
+- Fingerprint: `5021d2d8af163b91`
+- Language: the repository's, shared
+
+- Released by: trame
+- Serves: [Commands chosen, not written again](product.md#ChosenCommands), [A published value is cited, not copied](product.md#CitedNotCopied), [Known designs, named](product.md#KnownDesigns), [Ports of the platform, realized once](product.md#RealizedOnce), [Shared operations instead of literals](product.md#SharedOperations), [Rules applied, not written again](product.md#SharedRules), [Versions that hold](product.md#VersionsThatHold)
+
+<a id="R0_22_2"></a>
+
+### Version 0.22.2
+
+`R0_22_2` · `src/releases.ts:337`
+
+propagate runs the launcher by its path from the repository's root
+
+- Version: `0.22.2`
+- Released on: 22 November 2026
+- Fingerprint: `d3c890b34b2183ab`
+- Language: the repository's, shared
+
+- Released by: trame
+- Serves: [Commands chosen, not written again](product.md#ChosenCommands), [A published value is cited, not copied](product.md#CitedNotCopied), [Known designs, named](product.md#KnownDesigns), [Ports of the platform, realized once](product.md#RealizedOnce), [Shared operations instead of literals](product.md#SharedOperations), [Rules applied, not written again](product.md#SharedRules), [Versions that hold](product.md#VersionsThatHold)
+
+<a id="R0_22_3"></a>
+
+### Version 0.22.3
+
+`R0_22_3` · `src/releases.ts:350`
+
+propagate writes a project's files that run elsewhere again when any file that records its references moved (the settings name them)
+
+- Version: `0.22.3`
+- Released on: 22 November 2026
+- Fingerprint: `60be38b8e207181c`
+- Language: the repository's, shared
+
+- Released by: trame
+- Serves: [Commands chosen, not written again](product.md#ChosenCommands), [A published value is cited, not copied](product.md#CitedNotCopied), [Known designs, named](product.md#KnownDesigns), [Ports of the platform, realized once](product.md#RealizedOnce), [Shared operations instead of literals](product.md#SharedOperations), [Rules applied, not written again](product.md#SharedRules), [Versions that hold](product.md#VersionsThatHold)
+
 <a id="R0_3_0"></a>
 
 ### Version 0.3.0

@@ -4,7 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 4 | 25 |
+| trame | 0 | 0 | 4 | 26 |
 
 <a id="trame"></a>
 
@@ -37,6 +37,7 @@
 | [Version 0.5.0](releases.md#R0_5_0) | Release |  |
 | [Version 0.6.0](releases.md#R0_6_0) | Release |  |
 | [Version 0.7.0](releases.md#R0_7_0) | Release |  |
+| [Version 0.8.0](releases.md#R0_8_0) | Release |  |
 | [The next version](sdlc.md#NextVersion) | Shipment | **unknown** |
 | [How a pull request is checked on GitHub](sdlc.md#PullRequestsOnGitHub) | Decision |  |
 | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **unknown** |

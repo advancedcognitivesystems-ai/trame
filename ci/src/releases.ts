@@ -96,3 +96,16 @@ export const R0_7_0 = release({
   language: "shared",
   serves: [OneWriterPerPlace, RunsElsewhere],
 })
+
+/**
+ * Version 0.8.0
+ */
+export const R0_8_0 = release({
+  owner: "trame",
+  version: "0.8.0",
+  date: "2026-11-22",
+  what: "The pull requests' workflow watches its own project's lock, by its path from the project's directory: a copy of a lock kept elsewhere (a generation's archive) no longer keeps GitHub from merging",
+  fingerprint: "5dcdeda40d367c24",
+  language: "shared",
+  serves: [OneWriterPerPlace, RunsElsewhere],
+})
