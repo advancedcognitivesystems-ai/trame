@@ -24,11 +24,15 @@ const body: BodyOf<typeof Propagate> = ({ settings, files, programs, say, exit, 
   const needs = new Map(projects.map((p) => [p.name, [...librariesOf(p), ...(p.reads ?? [])].filter((n) => named.has(n) && n !== p.name)]))
   const ordered: ProjectToPropagate[] = []
   const done = new Set<string>()
+  const waiting = (p: ProjectToPropagate) => (needs.get(p.name) ?? []).filter((n) => !done.has(n)).length
   for (const _ of projects) {
-    const left = projects.filter((p) => !done.has(p.name))
-    // Ready when all it needs is done; when none is (two that import each other), the first decided.
-    const [next] = [...left.filter((p) => (needs.get(p.name) ?? []).every((n) => done.has(n))), ...left]
-    if (next) ordered.push(next), done.add(next.name)
+    // Ready when all it needs is done; when none is (two that import each other), the one that waits for the fewest,
+    // the first decided among them.
+    const [next] = projects.filter((p) => !done.has(p.name)).sort((a, b) => waiting(a) - waiting(b))
+    if (next) {
+      ordered.push(next)
+      done.add(next.name)
+    }
   }
 
   const run = (p: ProjectToPropagate, said: string, args: readonly string[], variables?: Record<string, string>) =>

@@ -148,7 +148,7 @@ export const OpenPullRequest = entryPoint({
 /**
  * Propagate
  * trame propagate --by <name>: carries the versions published across the projects of the repository, each after the
- * libraries it imports and the projects it reads (two that import each other, in the order decided): its packages at
+ * libraries it imports and the projects it reads (two that import each other: the one decided first): its packages at
  * their newest versions, its files that run elsewhere written again when a reference moved, its documents built again
  * (at its day, when it has one). It stops at the first step that fails, saying where.
  */

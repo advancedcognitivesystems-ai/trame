@@ -33,8 +33,8 @@ const body = (deps: Deps) => {
    * at each of those days, and a day that changes nothing in the program is left out; then compiled again at the day of
    * the assembly, which the command goes on with.
    */
-  async function prepared(o: Options, { c, comp }: Ctx, componentRef: string, envRef: string): Promise<{ assembly?: Assembly; errors: string[] }> {
-    const first = prepareAssembly(c, o.root, componentRef, envRef)
+  async function prepared(o: Options, { c, comp }: Ctx, componentRef: string, envRef: string, only?: readonly string[]): Promise<{ assembly?: Assembly; errors: string[] }> {
+    const first = prepareAssembly(c, o.root, componentRef, envRef, only)
     const a = first.assembly
     if (!a) return first
     const days = [...new Set(comp.dates().flatMap((d) => {
@@ -47,7 +47,7 @@ const body = (deps: Deps) => {
       let previous = a
       for (const day of days) {
         const then = await at(o, day)
-        const { assembly: x, errors } = prepareAssembly(then.c, o.root, componentRef, envRef)
+        const { assembly: x, errors } = prepareAssembly(then.c, o.root, componentRef, envRef, only)
         if (!x) return { errors: errors.map((e) => messages.onDay(day, e)) }
         const same = x.plan.steps.length === previous.plan.steps.length &&
           x.plan.steps.every((s, i) => stepSignature(x, s) === stepSignature(previous, previous.plan.steps[i]))
@@ -65,13 +65,13 @@ const body = (deps: Deps) => {
    * A component assembled for an environment from the graph as compiled, refused while the graph has an error: the
    * command assemble, and a command of the project, which trame runs from its program (since g116).
    */
-  async function assembled(o: Options, ctx: Ctx, componentRef: string, envRef: string): Promise<{ files: Emitted[]; steps: number }> {
+  async function assembled(o: Options, ctx: Ctx, componentRef: string, envRef: string, only?: readonly string[]): Promise<{ files: Emitted[]; steps: number }> {
     const { c } = ctx
     const errors = c.diags.filter((d) => d.severity === Severity.error)
     if (errors.length) {
       refuse(o, [messages.assemblyRefusedForErrors(errors.length), ...errors.map((d) => concat([indent, d.node ? c.graph.view(d.node).ref : optional(d.module), parts, d.what]))])
     }
-    const { assembly: a, errors: refused } = await prepared(o, ctx, componentRef, envRef)
+    const { assembly: a, errors: refused } = await prepared(o, ctx, componentRef, envRef, only)
     if (!a) return refuse(o, [messages.assemblyRefused(), ...refused.map((e) => indent + e)])
     const { files, errors: emitErrors } = emitAssembly(a)
     if (emitErrors.length) refuse(o, emitErrors)

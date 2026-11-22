@@ -3322,6 +3322,21 @@
       "diagnostics": []
     },
     {
+      "id": "releases.R0_22_0",
+      "kind": "release",
+      "title": "Version 0.22.0",
+      "source": "src/releases.ts:311",
+      "fields": {
+        "owner": "trame",
+        "version": "0.22.0",
+        "date": "2026-11-22",
+        "what": "Commands a project chooses (E3): the component LibraryCommands with pull-request and propagate, their settings ports; the ports Branches, PullRequests, AutoMerge and ProgramRuns, realized on a machine, in a session of Claude Code and in memory; the pattern Command; POSIX's slash",
+        "fingerprint": "73116234162e1cca",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "releases.R0_3_0",
       "kind": "release",
       "title": "Version 0.3.0",
@@ -4806,11 +4821,11 @@
               "./trame.json": "{\"libraries\":{\"lib\":\"libs/lib\"}}",
               "examples/example/trame.json": "{\"libraries\":{\"lib\":\"../../libs/lib\",\"app\":\"../../apps/app\"}}",
               "apps/app/trame.json": "{\"libraries\":{\"lib\":{\"path\":\"../../libs/lib\",\"version\":\"0.1.0\"}}}",
-              "libs/lib/trame.json": "{\"libraries\":{}}"
+              "libs/lib/trame.json": "{\"libraries\":{\"app\":{\"path\":\"../../apps/app\",\"version\":\"0.1.0\"}}}"
             },
             "order": [
-              "lib",
               "app",
+              "lib",
               "example",
               "project"
             ],
@@ -5502,7 +5517,7 @@
       },
       "result": {
         "path": "src",
-        "code": "1ba38935"
+        "code": "12073341"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -7875,6 +7890,41 @@
     },
     {
       "from": "releases.R0_21_0",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_0",
+      "to": "product.ChosenCommands",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_0",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_0",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_0",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_0",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_0",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_22_0",
       "to": "product.VersionsThatHold",
       "kind": "serves"
     },

@@ -14,6 +14,10 @@ import { Verified, Served, Applied, Checked, Ruled, Safe, Identified, Published 
 import { Migrated } from "#data/obligations"
 import { Records, PostgresTables, StartEmpty } from "#data/records"
 import { ProgramCommands, NodeProgramCommands } from "#std/tooling"
+import { OpenPullRequest, PullRequestSettings } from "#std/commands"
+import { GitCliBranches, GitHubCliPullRequests, AutoMergeByGitHubCli, type MergeMethod } from "#std/repository"
+import { Command } from "#std/patterns"
+import { fn } from "#trame/kinds/function"
 import { ExitStatus } from "#std/system"
 import { TheOperators } from "#std/access"
 import { Adapter } from "#std/patterns"
@@ -22,7 +26,7 @@ import { ReservationsApi } from "./architecture"
 import { KeptReservation, KeptRefund } from "./data"
 import { ApiMessages } from "./messages"
 import { Production, Local, PostgresDatabase, HttpPayment, SystemClock, NodeServer, FileDatabase } from "./infra"
-import { GitHubWorkflow, type WorkflowSettings } from "#ci/github"
+import { GitHubWorkflow, MergeWays, type WorkflowSettings, type MergeWay } from "#ci/github"
 import { decision } from "#trame/kinds/decision"
 
 // How a version of the reservations service reaches people. The scenarios run it in memory; what only a machine shows
@@ -273,4 +277,55 @@ export const RunnersWritten = shipment({
   owner: "karim",
   target: "repository",
   ships: [PullRequestWorkflow],
+})
+
+/** How the service's pull requests are opened and merged, as its team decides. */
+export interface PullRequestDecision {
+  /** Its repository on GitHub, owner/name, and the branch pull requests go into. */
+  repository: string
+  base: string
+  /** How a pull request is merged. */
+  method: MergeMethod
+  /** The file the service freezes what people decide in. */
+  lock: string
+  /** The service, the only project of its repository, at its root. */
+  project: { name: string; dir: string }
+}
+
+/**
+ * How we merge
+ * The service's repository, its main branch, merged by a merge commit; what people decide frozen in trame.lock, as
+ * Trame publishes it.
+ */
+export const HowWeMerge = decision<PullRequestDecision>({
+  owner: "karim",
+  value: { repository: "karim/reservations", base: "main", method: "merge", lock: "trame.lock", project: { name: "reservations", dir: "." } },
+  rejected: { "Squashed": "a pull request that publishes keeps its publication apart from the code it publishes" },
+})
+
+/**
+ * Our pull requests
+ * As decided, and merged by GitHub once they hold as the pull requests' workflow says: unless they change what people
+ * decided; a person merges them when it says nothing.
+ */
+export const OurPullRequests = fn({
+  owner: "karim", implements: [PullRequestSettings], serves: [CancelWithoutStress],
+  deps: { merging: HowWeMerge, workflow: PullRequestsOnGitHub, ways: MergeWays },
+  body: ({ merging: { project, ...merging }, workflow, ways }) => {
+    const [byHand] = ways as readonly [MergeWay]
+    return { ...merging, merge: workflow.pullRequest?.merge ?? byHand, projects: [project] }
+  },
+})
+
+/**
+ * Pull requests opened by the library
+ * The service takes std's pull-request, on the machine, with its own settings; Git's and GitHub's command lines answer
+ * it there.
+ */
+export const PullRequestsOpened = binding({
+  owner: "karim",
+  chooses: [OpenPullRequest, OurPullRequests, GitCliBranches, GitHubCliPullRequests, AutoMergeByGitHubCli],
+  environments: [Local],
+  follows: [Command],
+  context: "Opening a pull request is the same for every project of a repository on GitHub: the library writes it once, the service says how it merges.",
 })

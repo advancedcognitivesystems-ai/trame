@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-21",
+  "at": "2026-11-22",
   "nodes": [
     {
       "id": "appearance.ExplorerDrawing",
@@ -953,6 +953,14 @@
       }
     },
     {
+      "id": "architecture.Session",
+      "kind": "environment",
+      "title": "A session of Claude Code",
+      "fields": {
+        "owner": "trame"
+      }
+    },
+    {
       "id": "architecture.Signatures",
       "kind": "port",
       "fields": {
@@ -1062,7 +1070,7 @@
       "id": "browser.BrowserAmendments",
       "kind": "implementation",
       "title": "Amendments sent to trame dev",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1081,7 +1089,7 @@
       "id": "browser.BrowserDecompression",
       "kind": "implementation",
       "title": "The browser's gzip",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1098,7 +1106,7 @@
       "id": "browser.BrowserFeed",
       "kind": "implementation",
       "title": "The globals of the page, and trame dev",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1116,7 +1124,7 @@
       "id": "browser.BrowserMemory",
       "kind": "implementation",
       "title": "Local storage",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1132,7 +1140,7 @@
       "id": "browser.BrowserWindow",
       "kind": "implementation",
       "title": "The browser's window",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1150,7 +1158,7 @@
       "id": "browser.ExplorerFigures",
       "kind": "function",
       "title": "Explorer of a graph",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1187,7 +1195,7 @@
       "id": "browser.ShowGraph",
       "kind": "entry",
       "title": "Show the graph",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "trigger": {
@@ -1240,7 +1248,7 @@
       "id": "browser.TheBrowserRunsThePage",
       "kind": "binding",
       "title": "The browser runs the page",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "The page's script took what it needed from the browser itself, here and there: the graph could not say what the page asks of the browser, nor try it elsewhere.",
@@ -1255,7 +1263,7 @@
       "id": "browser.ThePageIsAssembled",
       "kind": "adr",
       "title": "The page is assembled",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "The page's script built by hand what it shared with the engine and wrote its values (classes, identifiers, the explorer's geometry) as literals the catalogue could not see: a change in the graph did not reach it.",
@@ -1662,6 +1670,27 @@
       }
     },
     {
+      "id": "command-scenarios.LibraryCommandRun",
+      "kind": "scenario",
+      "title": "A command of a library the project chooses",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "byName": "commands.CommandOrView",
+          "help": "commands.Help",
+          "processLog": "architecture.ProcessLog",
+          "terminalLog": "architecture.TerminalLog",
+          "line": "conventions.TrameCommands",
+          "exitStatus": "std/system.ExitStatus",
+          "samples": "command-scenarios.ProjectSamples",
+          "texts": "std/algebra.Texts",
+          "messages": "messages.ScenarioMessages"
+        },
+        "body": "(function)"
+      }
+    },
+    {
       "id": "command-scenarios.LibraryReleased",
       "kind": "scenario",
       "title": "A library released",
@@ -1975,6 +2004,11 @@
             "argument": "--dry-run",
             "environment": "Local",
             "component": "The service's SDLC"
+          },
+          "libraryCommand": {
+            "name": "pull-request",
+            "argument": "A change",
+            "component": "The library's commands"
           },
           "started": {
             "title": "Started in memory",
@@ -8394,10 +8428,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.21.0",
+        "version": "0.22.1",
         "joins": "library",
         "from": "path",
-        "at": "std/releases/0.21.0"
+        "at": "std/releases/0.22.1"
       }
     },
     {
@@ -13679,6 +13713,26 @@
       }
     },
     {
+      "id": "sdlc.AutoMergeInASession",
+      "kind": "binding",
+      "title": "GitHub merges once it holds, asked in a session",
+      "status": "unknown",
+      "fields": {
+        "owner": "trame",
+        "context": "A session's proxy refuses GitHub's GraphQL, and offers PUT on the pull request's ccr/auto_merge instead."
+      }
+    },
+    {
+      "id": "sdlc.AutoMergeOnTheMachine",
+      "kind": "binding",
+      "title": "GitHub merges once it holds, asked by its command line",
+      "status": "unknown",
+      "fields": {
+        "owner": "trame",
+        "context": "GitHub asks the automatic merge by GraphQL, which GitHub's command line calls with the token of the person."
+      }
+    },
+    {
       "id": "sdlc.CandidateChecked",
       "kind": "obligation",
       "title": "The candidate is checked by programs",
@@ -13705,6 +13759,19 @@
       "status": "unknown",
       "fields": {
         "owner": "trame"
+      }
+    },
+    {
+      "id": "sdlc.CommandsOfStd",
+      "kind": "binding",
+      "title": "The commands Trame takes from std",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "Opening a pull request and carrying a version across the repository were done by hand, with gh and a loop of trame.sh, differently each time.",
+        "rejected": {
+          "Commands of Trame's own": "any project of a repository opens pull requests: std writes them once, Trame chooses them"
+        }
       }
     },
     {
@@ -13761,7 +13828,7 @@
       "id": "sdlc.GraphPage",
       "kind": "artifact",
       "title": "The graph page",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "trame-page.html",
@@ -13783,7 +13850,7 @@
       "id": "sdlc.GraphPageOpens",
       "kind": "check",
       "title": "The graph page opens",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame"
       }
@@ -13947,6 +14014,73 @@
       }
     },
     {
+      "id": "sdlc.OurCommandsSettled",
+      "kind": "scenario",
+      "title": "Trame's settings, as std's commands read them",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "pulls": "std/commands.PullRequestSettings",
+          "carried": "std/commands.PropagationSettings",
+          "repository": "sdlc.TheRepository",
+          "main": "sdlc.MainBranch",
+          "projects": "sdlc.RepositoryProjects",
+          "layout": "conventions.Layout",
+          "line": "conventions.TrameCommands",
+          "day": "platform.TestDay",
+          "workflow": "sdlc.PullRequestsOnGitHub",
+          "messages": "messages.ScenarioMessages"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "sdlc.OurPropagation",
+      "kind": "function",
+      "title": "How a version is carried across Trame's repository",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "layout": "conventions.Layout",
+          "line": "conventions.TrameCommands",
+          "variables": "conventions.TrameEnvironment",
+          "day": "platform.TestDay",
+          "projects": "sdlc.RepositoryProjects"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "sdlc.OurPullRequests",
+      "kind": "function",
+      "title": "How Trame's pull requests are opened",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "repository": "sdlc.TheRepository",
+          "main": "sdlc.MainBranch",
+          "workflow": "sdlc.PullRequestsOnGitHub",
+          "layout": "conventions.Layout",
+          "projects": "sdlc.RepositoryProjects",
+          "ways": "ci/github.MergeWays"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "sdlc.OurSettingsInTheScenarios",
+      "kind": "binding",
+      "title": "Trame's settings in the scenarios",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "What the settings give is played before a command of std reads them on the machine."
+      }
+    },
+    {
       "id": "sdlc.PageProgram",
       "kind": "artifact",
       "title": "The page's program",
@@ -14027,6 +14161,63 @@
       }
     },
     {
+      "id": "sdlc.RepositoryProjects",
+      "kind": "decision",
+      "title": "The repository's projects",
+      "fields": {
+        "owner": "trame",
+        "value": [
+          {
+            "name": "trame",
+            "dir": ".",
+            "runners": "RunnersWritten",
+            "reads": [
+              "reservations"
+            ]
+          },
+          {
+            "name": "std",
+            "dir": "std",
+            "runners": "RunnersWritten"
+          },
+          {
+            "name": "ci",
+            "dir": "ci",
+            "runners": "RunnersWritten"
+          },
+          {
+            "name": "team",
+            "dir": "libs/team",
+            "runners": "RunnersWritten"
+          },
+          {
+            "name": "data",
+            "dir": "libs/data",
+            "runners": "RunnersWritten"
+          },
+          {
+            "name": "geometry",
+            "dir": "libs/geometry"
+          },
+          {
+            "name": "reservations",
+            "dir": "examples/reservations",
+            "runners": "RunnersWritten",
+            "scenarios": true
+          },
+          {
+            "name": "poselia",
+            "dir": "apps/poselia",
+            "runners": "RunnersWritten"
+          }
+        ],
+        "rejected": {
+          "Found on the disk, by their trame.json": "a generation keeps a copy of the example, which is not a project of the repository",
+          "In the order they are carried": "the order follows from the libraries each one imports; what one reads besides is said"
+        }
+      }
+    },
+    {
       "id": "sdlc.RepositoryRead",
       "kind": "check",
       "title": "The repository is read from GitHub",
@@ -14067,6 +14258,16 @@
       "fields": {
         "owner": "trame",
         "target": "github"
+      }
+    },
+    {
+      "id": "sdlc.RepositoryWorkOnAMachine",
+      "kind": "binding",
+      "title": "The repository's work on a machine",
+      "status": "unknown",
+      "fields": {
+        "owner": "trame",
+        "context": "A pull request is opened, and a version carried, from the repository checked out, with the rights of whoever runs it."
       }
     },
     {
@@ -17996,6 +18197,61 @@
     },
     {
       "from": "command-scenarios.LawsTested",
+      "to": "messages.ScenarioMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.LibraryCommandRun",
+      "to": "commands.CommandOrView",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.LibraryCommandRun",
+      "to": "commands.ProjectCommands",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.LibraryCommandRun",
+      "to": "commands.Help",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.LibraryCommandRun",
+      "to": "architecture.Test",
+      "kind": "env"
+    },
+    {
+      "from": "command-scenarios.LibraryCommandRun",
+      "to": "commands.CommandOrView",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.LibraryCommandRun",
+      "to": "commands.Help",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.LibraryCommandRun",
+      "to": "architecture.ProcessLog",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.LibraryCommandRun",
+      "to": "architecture.TerminalLog",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.LibraryCommandRun",
+      "to": "conventions.TrameCommands",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.LibraryCommandRun",
+      "to": "command-scenarios.ProjectSamples",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.LibraryCommandRun",
       "to": "messages.ScenarioMessages",
       "kind": "deps"
     },
@@ -28450,6 +28706,16 @@
       "kind": "serves"
     },
     {
+      "from": "sdlc.AutoMergeInASession",
+      "to": "architecture.Session",
+      "kind": "environments"
+    },
+    {
+      "from": "sdlc.AutoMergeOnTheMachine",
+      "to": "architecture.Local",
+      "kind": "environments"
+    },
+    {
       "from": "sdlc.CandidateChecked",
       "to": "product.ExecutableSpecification",
       "kind": "serves"
@@ -28538,6 +28804,31 @@
       "from": "sdlc.CandidateRunsOnTheMachine",
       "to": "platform.RunsOnDisk",
       "kind": "verifies"
+    },
+    {
+      "from": "sdlc.CommandsOfStd",
+      "to": "sdlc.OurPullRequests",
+      "kind": "chooses"
+    },
+    {
+      "from": "sdlc.CommandsOfStd",
+      "to": "sdlc.OurPropagation",
+      "kind": "chooses"
+    },
+    {
+      "from": "sdlc.CommandsOfStd",
+      "to": "architecture.Local",
+      "kind": "environments"
+    },
+    {
+      "from": "sdlc.CommandsOfStd",
+      "to": "architecture.Session",
+      "kind": "environments"
+    },
+    {
+      "from": "sdlc.CommandsOfStd",
+      "to": "product.ExecutableSpecification",
+      "kind": "serves"
     },
     {
       "from": "sdlc.EngineCallersIdentified",
@@ -28815,6 +29106,136 @@
       "kind": "deps"
     },
     {
+      "from": "sdlc.OurCommandsSettled",
+      "to": "sdlc.OurPullRequests",
+      "kind": "verifies"
+    },
+    {
+      "from": "sdlc.OurCommandsSettled",
+      "to": "sdlc.OurPropagation",
+      "kind": "verifies"
+    },
+    {
+      "from": "sdlc.OurCommandsSettled",
+      "to": "architecture.Test",
+      "kind": "env"
+    },
+    {
+      "from": "sdlc.OurCommandsSettled",
+      "to": "sdlc.TheRepository",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.OurCommandsSettled",
+      "to": "sdlc.MainBranch",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.OurCommandsSettled",
+      "to": "sdlc.RepositoryProjects",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.OurCommandsSettled",
+      "to": "conventions.Layout",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.OurCommandsSettled",
+      "to": "conventions.TrameCommands",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.OurCommandsSettled",
+      "to": "platform.TestDay",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.OurCommandsSettled",
+      "to": "sdlc.PullRequestsOnGitHub",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.OurCommandsSettled",
+      "to": "messages.ScenarioMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.OurPropagation",
+      "to": "product.ExecutableSpecification",
+      "kind": "serves"
+    },
+    {
+      "from": "sdlc.OurPropagation",
+      "to": "conventions.Layout",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.OurPropagation",
+      "to": "conventions.TrameCommands",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.OurPropagation",
+      "to": "conventions.TrameEnvironment",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.OurPropagation",
+      "to": "platform.TestDay",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.OurPropagation",
+      "to": "sdlc.RepositoryProjects",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.OurPullRequests",
+      "to": "product.ExecutableSpecification",
+      "kind": "serves"
+    },
+    {
+      "from": "sdlc.OurPullRequests",
+      "to": "sdlc.TheRepository",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.OurPullRequests",
+      "to": "sdlc.MainBranch",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.OurPullRequests",
+      "to": "sdlc.PullRequestsOnGitHub",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.OurPullRequests",
+      "to": "conventions.Layout",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.OurPullRequests",
+      "to": "sdlc.RepositoryProjects",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.OurSettingsInTheScenarios",
+      "to": "sdlc.OurPullRequests",
+      "kind": "chooses"
+    },
+    {
+      "from": "sdlc.OurSettingsInTheScenarios",
+      "to": "sdlc.OurPropagation",
+      "kind": "chooses"
+    },
+    {
+      "from": "sdlc.OurSettingsInTheScenarios",
+      "to": "architecture.Test",
+      "kind": "environments"
+    },
+    {
       "from": "sdlc.PageProgram",
       "to": "architecture.PageApp",
       "kind": "producedBy"
@@ -28890,6 +29311,16 @@
       "kind": "policy"
     },
     {
+      "from": "sdlc.RepositoryWorkOnAMachine",
+      "to": "architecture.Local",
+      "kind": "environments"
+    },
+    {
+      "from": "sdlc.RepositoryWorkOnAMachine",
+      "to": "architecture.Session",
+      "kind": "environments"
+    },
+    {
       "from": "sdlc.RunnersWritten",
       "to": "sdlc.PullRequestWorkflow",
       "kind": "ships"
@@ -28902,6 +29333,11 @@
     {
       "from": "sdlc.SdlcOnTheMachine",
       "to": "architecture.Local",
+      "kind": "environments"
+    },
+    {
+      "from": "sdlc.SdlcOnTheMachine",
+      "to": "architecture.Session",
       "kind": "environments"
     },
     {

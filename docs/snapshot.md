@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 21 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 22 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Trame · Appearance
 
@@ -399,6 +399,12 @@ Environment · `Local`
 
 - Owner: trame
 
+### A session of Claude Code
+
+Environment · `Session`
+
+- Owner: trame
+
 ### Test
 
 Environment · `Test`
@@ -410,7 +416,7 @@ Environment · `Test`
 
 ### The page is assembled
 
-Architecture decision · `ThePageIsAssembled` · **held**
+Architecture decision · `ThePageIsAssembled` · **unknown**
 
 - Decided by: trame
 - Context: The page's script built by hand what it shared with the engine and wrote its values (classes, identifiers, the explorer's geometry) as literals the catalogue could not see: a change in the graph did not reach it.
@@ -421,7 +427,7 @@ Architecture decision · `ThePageIsAssembled` · **held**
 
 ### Explorer of a graph
 
-Function · `ExplorerFigures` · **held**
+Function · `ExplorerFigures` · **unknown**
 
 - Owner: trame
 - Parameters: { html: std/html.Html, svg: std/html.Svg, aria: std/html.Aria, css: std/html.Css, page: page.ThePage, markup: markup.DocumentMarkup, figures: markup.FigureMarkup, explorer: markup.ExplorerMarkup, drawing: appearance.ExplorerDrawing, element: html.HtmlElement, start: html.HtmlStartTag, empty: html.SelfClosingTag, path: html.PathData, declaration: html.CssDeclaration, escape: html.EscapedText, common: rendering.Common, words: messages.PageWords, messages: messages.RenderingMessages, punctuation: documents.Punctuation, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts }
@@ -430,7 +436,7 @@ Function · `ExplorerFigures` · **held**
 
 ### Show the graph
 
-Entry point · `ShowGraph` · **held**
+Entry point · `ShowGraph` · **unknown**
 
 - Owner: trame
 - Trigger: { type: load }
@@ -441,7 +447,7 @@ Entry point · `ShowGraph` · **held**
 
 ### Amendments sent to trame dev
 
-Implementation · `BrowserAmendments` · **held**
+Implementation · `BrowserAmendments` · **unknown**
 
 - Owner: trame
 - Parameters: { page: page.ThePage, service: engine.DevService, http: std/web.Http, media: std/web.MediaTypes }
@@ -450,7 +456,7 @@ Implementation · `BrowserAmendments` · **held**
 
 ### The browser's gzip
 
-Implementation · `BrowserDecompression` · **held**
+Implementation · `BrowserDecompression` · **unknown**
 
 - Owner: trame
 - Parameters: { packing: page.PackedGraph, ecma: std/ecmascript.EcmaScript }
@@ -459,7 +465,7 @@ Implementation · `BrowserDecompression` · **held**
 
 ### The globals of the page, and trame dev
 
-Implementation · `BrowserFeed` · **held**
+Implementation · `BrowserFeed` · **unknown**
 
 - Owner: trame
 - Parameters: { page: page.ThePage, service: engine.DevService, values: std/algebra.ValueTypes }
@@ -468,7 +474,7 @@ Implementation · `BrowserFeed` · **held**
 
 ### Local storage
 
-Implementation · `BrowserMemory` · **held**
+Implementation · `BrowserMemory` · **unknown**
 
 - Owner: trame
 - Parameters: { page: page.ThePage }
@@ -477,7 +483,7 @@ Implementation · `BrowserMemory` · **held**
 
 ### The browser's window
 
-Implementation · `BrowserWindow` · **held**
+Implementation · `BrowserWindow` · **unknown**
 
 - Owner: trame
 - Parameters: { motion: std/web.MediaQueries5, feature: html.MediaFeature, counts: std/algebra.Counts }
@@ -486,7 +492,7 @@ Implementation · `BrowserWindow` · **held**
 
 ### The browser runs the page
 
-Technical choice · `TheBrowserRunsThePage` · **held**
+Technical choice · `TheBrowserRunsThePage` · **unknown**
 
 - Decided by: trame
 - Context: The page's script took what it needed from the browser itself, here and there: the graph could not say what the page asks of the browser, nor try it elsewhere.
@@ -546,7 +552,7 @@ Decision · `PlanSamples`
 Decision · `ProjectSamples`
 
 - Decided by: trame
-- Value: { release: { version: 99.0.0, what: A version released in memory, by a scenario, by: claude }, imported: { library: std, specifier: #std/*, module: src/algebra.ts }, delivery: PoseliaPage, shipments: { runners: RunnersWritten, preview: Preview, publicVersion: PublicVersion }, carried: Note, kept: { decided: { fields: { heading: { type: text }, written: { type: date }, tags: { type: list, of: { type: text } }, mood: { type: text } }, key: heading }, undecided: { fields: { title: { type: text }, written: { type: text }, tags: { type: list, of: { type: text } } }, key: title }, changed: written, subject: Somewhere, by: tester }, handCheck: { check: OnAPhone, tester: ghalaax, stranger: someone-else }, delegated: { check: OnALaptop, agent: lea, person: karim, within: 2026-12-01, after: 2027-01-05 }, command: { name: prepare-storage, argument: --dry-run, environment: Local, component: The service's SDLC }, started: { title: Started in memory, owner: ghalaax }, registry: { home: ., generation: g93 } }
+- Value: { release: { version: 99.0.0, what: A version released in memory, by a scenario, by: claude }, imported: { library: std, specifier: #std/*, module: src/algebra.ts }, delivery: PoseliaPage, shipments: { runners: RunnersWritten, preview: Preview, publicVersion: PublicVersion }, carried: Note, kept: { decided: { fields: { heading: { type: text }, written: { type: date }, tags: { type: list, of: { type: text } }, mood: { type: text } }, key: heading }, undecided: { fields: { title: { type: text }, written: { type: text }, tags: { type: list, of: { type: text } } }, key: title }, changed: written, subject: Somewhere, by: tester }, handCheck: { check: OnAPhone, tester: ghalaax, stranger: someone-else }, delegated: { check: OnALaptop, agent: lea, person: karim, within: 2026-12-01, after: 2027-01-05 }, command: { name: prepare-storage, argument: --dry-run, environment: Local, component: The service's SDLC }, libraryCommand: { name: pull-request, argument: A change, component: The library's commands }, started: { title: Started in memory, owner: ghalaax }, registry: { home: ., generation: g93 } }
 
 ### What a program run in a scenario answers
 
@@ -695,6 +701,16 @@ Scenario · `LawsTested` · **held**
 - Verifies: Test the laws
 - In: Test
 - Depends on: Test the laws, Compiler, Views, Process, Terminal log, Trame's commands, Messages of the commands, Messages of the scenarios
+
+### A command of a library the project chooses
+
+Scenario · `LibraryCommandRun` · **held**
+
+- Owner: trame
+- Parameters: { byName: commands.CommandOrView, help: commands.Help, processLog: architecture.ProcessLog, terminalLog: architecture.TerminalLog, line: conventions.TrameCommands, exitStatus: std/system.ExitStatus, samples: command-scenarios.ProjectSamples, texts: std/algebra.Texts, messages: messages.ScenarioMessages }
+- Verifies: A command of the project, or a view, The project's commands, Help
+- In: Test
+- Depends on: A command of the project, or a view, Help, Process log, Terminal log, Trame's commands, What the scenarios ask of those projects, Messages of the scenarios
 
 ### A library released
 
@@ -3091,10 +3107,10 @@ Package · `StandardLibrary`
 
 - Owner: trame
 - Name: std
-- Version: 0.21.0
+- Version: 0.22.1
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: std/releases/0.21.0
+- Its path: std/releases/0.22.1
 - Serves: A single source of truth
 
 ### tsx
@@ -6399,6 +6415,14 @@ Decision · `PullRequestsOnGitHub`
 - Value: { on: { pullRequests: main }, job: trame, alsoInstalls: apps/poselia, runsOn: ubuntu-24.04, node: 22, artefacts: { days: 30 }, pullRequest: { review: false, merge: onceItHoldsUnlessDecided } }
 - Rejected: Only when a pull request touches the project, GitHub keeps a pull request waiting for a check it requires and that never ran; Merged by GitHub whatever it changes, what people decided would reach main without a person; The review of the branch, Trame publishes nothing yet: its graph is published once the plan is done
 
+### The repository's projects
+
+Decision · `RepositoryProjects`
+
+- Decided by: trame
+- Value: { name: trame, dir: ., runners: RunnersWritten, reads: reservations }, { name: std, dir: std, runners: RunnersWritten }, { name: ci, dir: ci, runners: RunnersWritten }, { name: team, dir: libs/team, runners: RunnersWritten }, { name: data, dir: libs/data, runners: RunnersWritten }, { name: geometry, dir: libs/geometry }, { name: reservations, dir: examples/reservations, runners: RunnersWritten, scenarios: true }, { name: poselia, dir: apps/poselia, runners: RunnersWritten }
+- Rejected: Found on the disk, by their trame.json, a generation keeps a copy of the example, which is not a project of the repository; In the order they are carried, the order follows from the libraries each one imports; what one reads besides is said
+
 ### The repository left by hand, in the scenario
 
 Decision · `RepositoryScenarioData`
@@ -6430,6 +6454,24 @@ Function · `GraphPageSelectors` · **held**
 - Parameters: { regions: page.PageRegions, markup: markup.DocumentMarkup, attribute: html.AttributeSelector, html: std/html.Html, css: std/html.Css, svg: std/html.Svg }
 - Serves: A specification that runs
 - Depends on: Regions of the page, Documents in the page, Attribute selector
+
+### How a version is carried across Trame's repository
+
+Function · `OurPropagation` · **held**
+
+- Owner: trame
+- Parameters: { layout: conventions.Layout, line: conventions.TrameCommands, variables: conventions.TrameEnvironment, day: platform.TestDay, projects: sdlc.RepositoryProjects }
+- Serves: A specification that runs
+- Depends on: Project layout, Trame's commands, Trame's environment, Day of the scenarios, The repository's projects
+
+### How Trame's pull requests are opened
+
+Function · `OurPullRequests` · **held**
+
+- Owner: trame
+- Parameters: { repository: sdlc.TheRepository, main: sdlc.MainBranch, workflow: sdlc.PullRequestsOnGitHub, layout: conventions.Layout, projects: sdlc.RepositoryProjects, ways: ci/github.MergeWays }
+- Serves: A specification that runs
+- Depends on: Trame's repository, How the repository merges into main, How a pull request is checked on GitHub, Project layout, The repository's projects
 
 ### Set the repository's settings
 
@@ -6471,6 +6513,50 @@ Message catalog · `SdlcWords`
 - Owner: trame
 - Written in: Language
 
+### GitHub merges once it holds, asked in a session
+
+Technical choice · `AutoMergeInASession` · **unknown**
+
+- Decided by: trame
+- Context: A session's proxy refuses GitHub's GraphQL, and offers PUT on the pull request's ccr/auto_merge instead.
+- In: A session of Claude Code
+
+### GitHub merges once it holds, asked by its command line
+
+Technical choice · `AutoMergeOnTheMachine` · **unknown**
+
+- Decided by: trame
+- Context: GitHub asks the automatic merge by GraphQL, which GitHub's command line calls with the token of the person.
+- In: Local
+
+### The commands Trame takes from std
+
+Technical choice · `CommandsOfStd` · **held**
+
+- Decided by: trame
+- Context: Opening a pull request and carrying a version across the repository were done by hand, with gh and a loop of trame.sh, differently each time.
+- Rejected: Commands of Trame's own, any project of a repository opens pull requests: std writes them once, Trame chooses them
+- Chooses: How Trame's pull requests are opened, How a version is carried across Trame's repository
+- In: Local, A session of Claude Code
+- Serves: A specification that runs
+
+### Trame's settings in the scenarios
+
+Technical choice · `OurSettingsInTheScenarios` · **held**
+
+- Decided by: trame
+- Context: What the settings give is played before a command of std reads them on the machine.
+- Chooses: How Trame's pull requests are opened, How a version is carried across Trame's repository
+- In: Test
+
+### The repository's work on a machine
+
+Technical choice · `RepositoryWorkOnAMachine` · **unknown**
+
+- Decided by: trame
+- Context: A pull request is opened, and a version carried, from the repository checked out, with the rights of whoever runs it.
+- In: Local, A session of Claude Code
+
 ### The SDLC in memory
 
 Technical choice · `SdlcInMemory` · **held**
@@ -6485,7 +6571,7 @@ Technical choice · `SdlcOnTheMachine` · **unknown**
 
 - Decided by: trame
 - Context: The graph page must be opened as a person opens it: the file exported, in a real browser; the repository is set and read by GitHub's command line, with the token of whoever runs it.
-- In: Local
+- In: Local, A session of Claude Code
 
 ### The graph page is opened as a person would
 
@@ -6496,6 +6582,16 @@ Scenario · `OpeningTheGraphPage` · **held**
 - Verifies: Open the graph page, What the graph page is asked
 - In: Test
 - Depends on: Open the graph page, The graph page, What the graph page is asked, What the programs of Trame's SDLC say, What the scenario of the graph page shows, Messages of the scenarios
+
+### Trame's settings, as std's commands read them
+
+Scenario · `OurCommandsSettled` · **held**
+
+- Owner: trame
+- Parameters: { pulls: std/commands.PullRequestSettings, carried: std/commands.PropagationSettings, repository: sdlc.TheRepository, main: sdlc.MainBranch, projects: sdlc.RepositoryProjects, layout: conventions.Layout, line: conventions.TrameCommands, day: platform.TestDay, workflow: sdlc.PullRequestsOnGitHub, messages: messages.ScenarioMessages }
+- Verifies: How Trame's pull requests are opened, How a version is carried across Trame's repository
+- In: Test
+- Depends on: Trame's repository, How the repository merges into main, The repository's projects, Project layout, Trame's commands, Day of the scenarios, How a pull request is checked on GitHub, Messages of the scenarios
 
 ### The repository is set as the graph decides
 
@@ -6524,7 +6620,7 @@ Artefact · `EngineCandidate` · **unknown**
 
 ### The graph page
 
-Artefact · `GraphPage` · **held**
+Artefact · `GraphPage` · **unknown**
 
 - Owner: trame
 - Path: trame-page.html
@@ -6580,7 +6676,7 @@ Check · `CandidateRunsOnTheMachine` · **unknown**
 
 ### The graph page opens
 
-Check · `GraphPageOpens` · **held**
+Check · `GraphPageOpens` · **unknown**
 
 - Owner: trame
 - Checks: The graph page

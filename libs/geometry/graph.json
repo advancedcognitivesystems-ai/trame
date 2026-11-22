@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-21",
+  "generated": "2026-11-22",
   "nodes": [
     {
       "id": "angles.Angle",
@@ -83,7 +83,9 @@
         "joins": "library",
         "from": "registry"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: std 0.22.1 is out, the reference names 0.21.0: trame upgrade std moves it"
+      ]
     },
     {
       "id": "product.GeometryWrittenOnce",

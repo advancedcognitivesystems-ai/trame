@@ -14,8 +14,12 @@ import { catalog } from "../kinds/catalog"
 import { decision } from "../kinds/decision"
 import { scenario } from "../kinds/scenario"
 import { entryPoint, command } from "../kinds/entry-point"
-import { ProgramCommands, HeadlessBrowser, NodeProgramCommands, PlaywrightBrowser, BrowserInMemory, BrowserScripted } from "#std/tooling"
-import { Adapter, Strategy } from "#std/patterns"
+import { ProgramCommands, HeadlessBrowser, NodeProgramCommands, PlaywrightBrowser, BrowserInMemory, BrowserScripted, NodeProgramRuns, MachineFiles } from "#std/tooling"
+import { Adapter, Strategy, Command } from "#std/patterns"
+import { OpenPullRequest, Propagate, PullRequestSettings, PropagationSettings } from "#std/commands"
+import { GitCliBranches, GitHubCliPullRequests, AutoMergeByGitHubCli, AutoMergeInAClaudeSession } from "#std/repository"
+import { Layout, TrameCommands, TrameEnvironment } from "./conventions"
+import { TestDay } from "./platform"
 import { Html, Css, Svg } from "#std/html"
 import { ExitStatus } from "#std/system"
 import { BrowserLoading } from "#std/platform"
@@ -28,12 +32,12 @@ import { AttributeSelector } from "./html"
 import { Language, ScenarioMessages } from "./messages"
 import { ShowGraph, ExplorerFigures, BrowserWindow, BrowserMemory, BrowserFeed, BrowserAmendments, BrowserDecompression } from "./browser"
 import { Verified, Served, Applied, Checked, Ruled, Safe, Identified } from "#std/obligations"
-import { TrameCli, Local } from "./architecture"
+import { TrameCli, Local, Session } from "./architecture"
 import { TestKinds, Advance, Doctor } from "./commands"
 import { DiskReading, DiskWriting, DiskTrees, NodeProcess, NodePrograms, NodeTerminal, SystemClock, NpmReports, NpmInstall, NodeHttpServer, RunsOnDisk } from "./platform"
 import { ExecutableSpecification } from "./product"
 import { TheOperators } from "#std/access"
-import { GitHubWorkflow, type WorkflowSettings } from "#ci/github"
+import { GitHubWorkflow, MergeWays, type WorkflowSettings, type MergeWay } from "#ci/github"
 import { RepositoryApi, RepositoryKept, RepositoryCompared, GitHubCliRepository, RepositoryInMemory } from "#std/repository"
 import type { RepositorySettings, RepositoryState } from "#std/repository"
 
@@ -155,7 +159,7 @@ export const TrameSdlc = component({
 export const SdlcOnTheMachine = binding({
   owner: "trame",
   chooses: [NodeProgramCommands, PlaywrightBrowser, GitHubCliRepository],
-  environments: [Local],
+  environments: [Local, Session],
   follows: [Adapter],
   context: "The graph page must be opened as a person opens it: the file exported, in a real browser; the repository is set and read by GitHub's command line, with the token of whoever runs it.",
 })
@@ -509,4 +513,166 @@ export const RunnersWritten = shipment({
   owner: "trame",
   target: "repository",
   ships: [PullRequestWorkflow],
+})
+
+// The commands Trame takes from std (E3, P2a) ---------------------------------------------------------------------------
+
+/** A project of Trame's repository, as Trame decides it. */
+export interface RepositoryProject {
+  /** Its name, by which the others import it as a library. */
+  readonly name: string
+  /** Its directory from the repository's root. */
+  readonly dir: string
+  /** The shipment that writes its files that run elsewhere. */
+  readonly runners?: string
+  /** It builds at the day of Trame's scenarios, which compare their documents with it. */
+  readonly scenarios?: boolean
+  /** The projects it reads besides its libraries. */
+  readonly reads?: readonly string[]
+}
+
+/**
+ * The repository's projects
+ * The projects Trame's repository holds, by their name and directory: what a pull request may change, what a version
+ * is carried across. Each writes the workflow that checks its pull requests by its shipment RunnersWritten, but
+ * geometry, which GitHub's runners cannot build; the example builds at the day of Trame's scenarios, and Trame, which
+ * reads its documents, after it.
+ */
+export const RepositoryProjects = decision<readonly RepositoryProject[]>({
+  owner: "trame",
+  value: [
+    { name: "trame", dir: ".", runners: "RunnersWritten", reads: ["reservations"] },
+    { name: "std", dir: "std", runners: "RunnersWritten" },
+    { name: "ci", dir: "ci", runners: "RunnersWritten" },
+    { name: "team", dir: "libs/team", runners: "RunnersWritten" },
+    { name: "data", dir: "libs/data", runners: "RunnersWritten" },
+    { name: "geometry", dir: "libs/geometry" },
+    { name: "reservations", dir: "examples/reservations", runners: "RunnersWritten", scenarios: true },
+    { name: "poselia", dir: "apps/poselia", runners: "RunnersWritten" },
+  ],
+  rejected: {
+    "Found on the disk, by their trame.json": "a generation keeps a copy of the example, which is not a project of the repository",
+    "In the order they are carried": "the order follows from the libraries each one imports; what one reads besides is said",
+  },
+})
+
+/**
+ * How Trame's pull requests are opened
+ * Into main, merged as the repository merges them, by GitHub once they hold unless they change what people decided (as
+ * the pull requests' workflow says): a lock of one of the repository's projects.
+ */
+export const OurPullRequests = fn({
+  owner: "trame", implements: [PullRequestSettings], serves: [ExecutableSpecification],
+  deps: { repository: TheRepository, main: MainBranch, workflow: PullRequestsOnGitHub, layout: Layout, projects: RepositoryProjects, ways: MergeWays },
+  body: ({ repository, main, workflow, layout, projects, ways }) => {
+    // Without a way said for pull requests, a person merges them.
+    const [byHand] = ways as readonly [MergeWay]
+    return {
+      repository: repository.name, base: main.branch, method: main.method, merge: workflow.pullRequest?.merge ?? byHand,
+      lock: layout.lock, projects: projects.map(({ name, dir }) => ({ name, dir })),
+    }
+  },
+})
+
+/**
+ * How a version is carried across Trame's repository
+ * By trame.sh at its root, with the words of Trame's command line, across the repository's projects; the example at
+ * the day of the scenarios.
+ */
+export const OurPropagation = fn({
+  owner: "trame", implements: [PropagationSettings], serves: [ExecutableSpecification],
+  deps: { layout: Layout, line: TrameCommands, variables: TrameEnvironment, day: TestDay, projects: RepositoryProjects },
+  body: ({ layout, line, variables, day, projects }) => ({
+    engine: { launcher: layout.launcher, upgrade: line.upgrade, ship: line.ship, build: line.build, by: line.by, today: variables.today },
+    configuration: layout.configuration,
+    projects: projects.map(({ scenarios, ...p }) => (scenarios ? { ...p, day } : p)),
+  }),
+})
+
+/**
+ * The commands Trame takes from std
+ * pull-request and propagate, on the machine and in a session of Claude Code, with Trame's settings.
+ */
+export const CommandsOfStd = binding({
+  owner: "trame",
+  chooses: [OpenPullRequest, Propagate, OurPullRequests, OurPropagation],
+  environments: [Local, Session],
+  follows: [Command],
+  serves: [ExecutableSpecification],
+  context: "Opening a pull request and carrying a version across the repository were done by hand, with gh and a loop of trame.sh, differently each time.",
+  rejected: { "Commands of Trame's own": "any project of a repository opens pull requests: std writes them once, Trame chooses them" },
+})
+
+/**
+ * The repository's work on a machine
+ * Git's command line for the branches, GitHub's for the pull requests, Node to run trame.sh in each project, and the
+ * machine's files; on the machine and in a session.
+ */
+export const RepositoryWorkOnAMachine = binding({
+  owner: "trame",
+  chooses: [GitCliBranches, GitHubCliPullRequests, NodeProgramRuns, MachineFiles],
+  environments: [Local, Session],
+  follows: [Adapter],
+  context: "A pull request is opened, and a version carried, from the repository checked out, with the rights of whoever runs it.",
+})
+
+/**
+ * GitHub merges once it holds, asked by its command line
+ * On a person's machine, gh pr merge --auto: GitHub's GraphQL.
+ */
+export const AutoMergeOnTheMachine = binding({
+  owner: "trame",
+  chooses: [AutoMergeByGitHubCli],
+  environments: [Local],
+  follows: [Adapter],
+  context: "GitHub asks the automatic merge by GraphQL, which GitHub's command line calls with the token of the person.",
+})
+
+/**
+ * GitHub merges once it holds, asked in a session
+ * In a session of Claude Code, the route of its proxy: GraphQL is refused there.
+ */
+export const AutoMergeInASession = binding({
+  owner: "trame",
+  chooses: [AutoMergeInAClaudeSession],
+  environments: [Session],
+  follows: [Adapter],
+  context: "A session's proxy refuses GitHub's GraphQL, and offers PUT on the pull request's ccr/auto_merge instead.",
+})
+
+/**
+ * Trame's settings in the scenarios
+ * In the scenarios, std's commands read Trame's settings as on the machine.
+ */
+export const OurSettingsInTheScenarios = binding({
+  owner: "trame",
+  chooses: [OurPullRequests, OurPropagation],
+  environments: [Test],
+  follows: [Strategy],
+  context: "What the settings give is played before a command of std reads them on the machine.",
+})
+
+/**
+ * Trame's settings, as std's commands read them
+ * A pull request goes into main, merged as the repository merges, by GitHub once it holds unless it changes a lock of
+ * one of the repository's projects; a version is carried by trame.sh with Trame's words, across each project, the
+ * example at the day of the scenarios and it alone.
+ */
+export const OurCommandsSettled = scenario({
+  owner: "trame",
+  verifies: [OurPullRequests, OurPropagation],
+  env: Test,
+  deps: {
+    pulls: PullRequestSettings, carried: PropagationSettings, repository: TheRepository, main: MainBranch, projects: RepositoryProjects, layout: Layout,
+    line: TrameCommands, day: TestDay, workflow: PullRequestsOnGitHub, messages: ScenarioMessages,
+  },
+  body: ({ pulls, carried, repository, main, projects, layout, line, day, workflow, messages }) => async (check) => {
+    check(messages.ourPullRequestsSettled(), pulls.repository === repository.name && pulls.base === main.branch && pulls.method === main.method &&
+      pulls.merge === workflow.pullRequest?.merge && pulls.lock === layout.lock && pulls.projects.length === projects.length)
+    const dated = carried.projects.filter((p) => p.day !== undefined)
+    const [scenarios] = projects.filter((p) => p.scenarios)
+    check(messages.ourPropagationSettled(), carried.engine.launcher === layout.launcher && carried.engine.upgrade === line.upgrade &&
+      carried.configuration === layout.configuration && carried.projects.length === projects.length &&
+      dated.length === [scenarios].length && dated.every((p) => p.day === day && p.name === scenarios?.name))
+  },
 })

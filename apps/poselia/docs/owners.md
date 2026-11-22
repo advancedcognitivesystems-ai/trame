@@ -1,12 +1,12 @@
 # Owners
 
-*What each person must decide, settle or watch on 21 November 2026, and what they own.*
+*What each person must decide, settle or watch on 22 November 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
 | A teacher who practises | 0 | 0 | 4 | 0 |
 | People who try it on a phone | 0 | 0 | 1 | 0 |
-| ghalaax | 0 | 0 | 20 | 224 |
+| ghalaax | 0 | 0 | 21 | 224 |
 
 <a id="A teacher who practises"></a>
 
@@ -48,6 +48,7 @@
 
 | Severity | Code | What | Where | Owner | Consequence |
 |---|---|---|---|---|---|
+| warning | `package-newer` | std 0.22.1 is out, the reference names 0.21.0: trame upgrade std moves it | [The standard library](packages.md#StandardLibrary) | ghalaax |  |
 | warning | `shipment-awaits` | To ship: Poselia is unknown | [Into the main branch](sdlc.md#IntoMain) | ghalaax |  |
 | warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [Poselia's page](sdlc.md#PageFile) | ghalaax |  |
 | warning | `check-stale` | Checked on another build of its artefacts, by another version of its program or another engine: to check again | [The page opens](sdlc.md#PageOpens) | ghalaax |  |

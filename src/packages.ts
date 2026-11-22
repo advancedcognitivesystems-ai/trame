@@ -134,7 +134,7 @@ export const VersionOrder = fn({
  * repository, at the version it froze.
  */
 export const StandardLibrary = pkg({
-  owner: "trame", packageName: "std", version: "0.21.0", joins: "library", from: "path", at: "std/releases/0.21.0", serves: [SingleSource],
+  owner: "trame", packageName: "std", version: "0.22.1", joins: "library", from: "path", at: "std/releases/0.22.1", serves: [SingleSource],
 })
 
 /**

@@ -2,7 +2,7 @@
 
 *What answers each port in each environment on 30 October 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
 
-> **14 technical choices for 12 ports, in 3 environments**
+> **15 technical choices for 16 ports, in 3 environments**
 
 | Port | Test | Local | Production |
 |---|---|---|---|
@@ -16,15 +16,20 @@
 | [A dialect of SQL, for tables](../../../libs/data/docs/records.md#TableDialect) | [SQLite's tables](../../../libs/data/docs/records.md#SqliteTables) | [SQLite's tables](../../../libs/data/docs/records.md#SqliteTables) | [PostgreSQL's tables](../../../libs/data/docs/records.md#PostgresTables) |
 | [What a new table starts with](../../../libs/data/docs/records.md#InitialRecords) | [The records its entity starts with](../../../libs/data/docs/records.md#SeedOfTheEntity) | [The records its entity starts with](../../../libs/data/docs/records.md#SeedOfTheEntity) | [No records to start with](../../../libs/data/docs/records.md#StartEmpty) |
 | [Records](../../../libs/data/docs/records.md#Records) | [Records in SQL](../../../libs/data/docs/records.md#RecordsInSql) | [Records in SQL](../../../libs/data/docs/records.md#RecordsInSql) | [Records in SQL](../../../libs/data/docs/records.md#RecordsInSql) |
+| [How pull requests are opened](../../../std/docs/commands.md#PullRequestSettings) | — | [Our pull requests](sdlc.md#OurPullRequests) | — |
 | [Hardening](../../../std/docs/judgment.md#Hardening) | [Judged our way](judgment.md#OurJudgment) | — | — |
+| [The branches](../../../std/docs/repository.md#Branches) | — | [Git's branches](../../../std/docs/repository.md#GitCliBranches) | — |
+| [Pull requests](../../../std/docs/repository.md#PullRequests) | — | [GitHub's pull requests, by its command line](../../../std/docs/repository.md#GitHubCliPullRequests) | — |
+| [The automatic merge](../../../std/docs/repository.md#AutoMerge) | — | [The automatic merge, by GitHub's command line](../../../std/docs/repository.md#AutoMergeByGitHubCli) | — |
 | [Commands of a program](../../../std/docs/tooling.md#ProgramCommands) | — | [Node's command line](../../../std/docs/tooling.md#NodeProgramCommands) | — |
 
 | Pattern | Status | Followed by |
 |---|---|---|
-| [Strategy](../../../std/docs/patterns.md#Strategy) | **held** | [What the service keeps, as tables](infra.md#KeptAsTables), [The first reservations outside production](infra.md#FirstReservationsOutsideProduction), [Nothing to start with in production](infra.md#EmptyInProduction), [A simulated payment provider outside production](infra.md#SimulatedProvider), [A stopped clock in the scenarios](infra.md#ScenarioClock), [How the service is judged](judgment.md#JudgedOurWay), [Documents, in memory](../../../libs/data/docs/scenarios.md#InMemory), [Tables seeded, in memory](../../../libs/data/docs/scenarios.md#SeededForScenarios), [PostgreSQL's dialect, read](../../../libs/data/docs/scenarios.md#PostgresForScenarios), [In memory](../../../std/docs/scenarios.md#InMemory), [Judged as the language says](../../../std/docs/scenarios.md#LanguageJudgment), [Judged strictly](../../../std/docs/scenarios.md#StrictJudgment) |
+| [Strategy](../../../std/docs/patterns.md#Strategy) | **held** | [What the service keeps, as tables](infra.md#KeptAsTables), [The first reservations outside production](infra.md#FirstReservationsOutsideProduction), [Nothing to start with in production](infra.md#EmptyInProduction), [A simulated payment provider outside production](infra.md#SimulatedProvider), [A stopped clock in the scenarios](infra.md#ScenarioClock), [How the service is judged](judgment.md#JudgedOurWay), [Documents, in memory](../../../libs/data/docs/scenarios.md#InMemory), [Tables seeded, in memory](../../../libs/data/docs/scenarios.md#SeededForScenarios), [PostgreSQL's dialect, read](../../../libs/data/docs/scenarios.md#PostgresForScenarios), [In memory](../../../std/docs/scenarios.md#InMemory), [Judged as the language says](../../../std/docs/scenarios.md#LanguageJudgment), [Judged strictly](../../../std/docs/scenarios.md#StrictJudgment), [The scenarios' settings](../../../std/docs/scenarios.md#ScenarioSettings) |
 | [Adapter](../../../std/docs/patterns.md#Adapter) | **held** | [The provider's API in production](infra.md#ProviderApi), [Node's HTTP server](infra.md#HttpServerChoice), [The system clock elsewhere](infra.md#RealClock), [Commands on this machine](sdlc.md#CommandsOnThisMachine), [SQLite, in memory](../../../libs/data/docs/scenarios.md#SqliteForScenarios) |
 | [Abstract Factory](../../../std/docs/patterns.md#AbstractFactory) | **held** | [A SQLite database in memory for the scenarios](infra.md#ScenarioDatabase), [A SQLite file on the developer's machine](infra.md#LocalDatabase), [Postgres in production](infra.md#ProductionDatabase) |
 | [Repository](../../../std/docs/patterns.md#Repository) | **held** | [Reservations and cancellations as repositories over the records](infra.md#RecordRepositories) |
+| [Command](../../../std/docs/patterns.md#Command) | **held** | [Pull requests opened by the library](sdlc.md#PullRequestsOpened) |
 
 ## Reservations · Infrastructure
 
@@ -331,7 +336,7 @@ Context: The build of the service evaluates in Test: its way of judging applies 
 
 ### Commands on this machine
 
-`CommandsOnThisMachine` · `src/sdlc.ts:70` · status: **unknown**
+`CommandsOnThisMachine` · `src/sdlc.ts:74` · status: **unknown**
 
 The programs of the SDLC read their commands from Node's command line, as the standard library realizes it.
 
@@ -347,3 +352,28 @@ Context: trame ship runs the programs that deploy as a person would run them, wi
 - Chooses: [Node's command line](../../../std/docs/tooling.md#NodeProgramCommands)
 - In: [Local](infra.md#Local)
 - Follows: [Adapter](../../../std/docs/patterns.md#Adapter)
+
+<a id="PullRequestsOpened"></a>
+
+### Pull requests opened by the library
+
+`PullRequestsOpened` · `src/sdlc.ts:325` · status: **unknown**
+
+The service takes std's pull-request, on the machine, with its own settings; Git's and GitHub's command lines answer it there.
+
+In [Local](infra.md#Local):
+
+| Port | Answered by | Which is |
+|---|---|---|
+| [How pull requests are opened](../../../std/docs/commands.md#PullRequestSettings) | [Our pull requests](sdlc.md#OurPullRequests) | a function |
+| the command pull-request | [Open a pull request](../../../std/docs/commands.md#OpenPullRequest) | a command of a library |
+| [The automatic merge](../../../std/docs/repository.md#AutoMerge) | [The automatic merge, by GitHub's command line](../../../std/docs/repository.md#AutoMergeByGitHubCli) | an implementation |
+| [The branches](../../../std/docs/repository.md#Branches) | [Git's branches](../../../std/docs/repository.md#GitCliBranches) | an implementation |
+| [Pull requests](../../../std/docs/repository.md#PullRequests) | [GitHub's pull requests, by its command line](../../../std/docs/repository.md#GitHubCliPullRequests) | an implementation |
+
+Context: Opening a pull request is the same for every project of a repository on GitHub: the library writes it once, the service says how it merges.
+
+- Decided by: karim
+- Chooses: [Open a pull request](../../../std/docs/commands.md#OpenPullRequest), [Our pull requests](sdlc.md#OurPullRequests), [Git's branches](../../../std/docs/repository.md#GitCliBranches), [GitHub's pull requests, by its command line](../../../std/docs/repository.md#GitHubCliPullRequests), [The automatic merge, by GitHub's command line](../../../std/docs/repository.md#AutoMergeByGitHubCli)
+- In: [Local](infra.md#Local)
+- Follows: [Command](../../../std/docs/patterns.md#Command)

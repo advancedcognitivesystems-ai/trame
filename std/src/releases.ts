@@ -317,3 +317,16 @@ export const R0_22_0 = release({
   language: "shared",
   serves: [ChosenCommands, CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
 })
+
+/**
+ * Version 0.22.1
+ */
+export const R0_22_1 = release({
+  owner: "trame",
+  version: "0.22.1",
+  date: "2026-11-22",
+  what: "propagate: two projects that import each other, the one that waits for the fewest first, the first decided among them",
+  fingerprint: "5021d2d8af163b91",
+  language: "shared",
+  serves: [ChosenCommands, CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
+})

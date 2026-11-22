@@ -1,10 +1,10 @@
 # Owners
 
-*What each person must decide, settle or watch on 21 November 2026, and what they own.*
+*What each person must decide, settle or watch on 22 November 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 4 | 77 |
+| trame | 0 | 0 | 5 | 77 |
 
 <a id="trame"></a>
 
@@ -12,6 +12,7 @@
 
 | Severity | Code | What | Where | Owner | Consequence |
 |---|---|---|---|---|---|
+| warning | `package-newer` | std 0.22.1 is out, the reference names 0.21.0: trame upgrade std moves it | [std](packages.md#stdLibrary) | trame |  |
 | warning | `shipment-awaits` | To ship: The library of data is unknown | [The next version](sdlc.md#NextVersion) | trame |  |
 | warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | trame |  |
 | warning | `shipment-awaits` | To ship: The pull requests' workflow is unknown | [The files that run it elsewhere](sdlc.md#RunnersWritten) | trame |  |

@@ -4,7 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 7 | 238 |
+| trame | 0 | 0 | 7 | 239 |
 
 <a id="trame"></a>
 
@@ -144,6 +144,7 @@
 | [Version 0.2.0](releases.md#R0_2_0) | Release |  |
 | [Version 0.20.0](releases.md#R0_20_0) | Release |  |
 | [Version 0.21.0](releases.md#R0_21_0) | Release |  |
+| [Version 0.22.0](releases.md#R0_22_0) | Release |  |
 | [Version 0.3.0](releases.md#R0_3_0) | Release |  |
 | [Version 0.4.0](releases.md#R0_4_0) | Release |  |
 | [Version 0.5.0](releases.md#R0_5_0) | Release |  |
