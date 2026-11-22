@@ -46,8 +46,11 @@ The repository's `AGENTS.md` is the full guide; read it first, then keep to this
   node that repeals it; `--migrate "why"` republishes a form, never a value.
 - A change reaches main by a pull request (D1, g109): work on a branch, `trame publish` what people decided in it,
   open the pull request; each project's workflow (written by `trame ship RunnersWritten`) runs its `IntoMain` (or a
-  library's `NextVersion`) and writes the review in the pull request. `gh pr merge <n> --merge --auto` merges a pull
-  request that changes no `trame.lock` once it holds; one that does waits for its owner (AGENTS.md, section 4b). The
+  library's `NextVersion`) and writes the review in the pull request. `./trame.sh pull-request "Title" --env Local`
+  (`--env Session` in a session of Claude Code) pushes the branch, opens the pull request and asks GitHub to merge it
+  once it holds unless it changes a `trame.lock`; one that does waits for its owner (AGENTS.md, section 4b). After a
+  release, `./trame.sh propagate --by <name> --env Local` carries it across the repository's projects. Both are std's
+  commands Trame chooses by a binding (g117): never call `gh` to open or merge a pull request by hand. The
   repository's settings are a decision of Trame's graph (`MainBranch`), which an administrator applies with
   `./trame.sh ship RepositorySet --by <name>` (it reads them back; `--dry-run` only says what differs).
 - A value holds at every date (g106): only an amendment has an end; one that ends over a value nobody decided is an

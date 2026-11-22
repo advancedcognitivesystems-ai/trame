@@ -580,7 +580,10 @@ The programs of the SDLC are code like the product's: a component of the project
 `#std/tooling` (`ProgramCommands`, `Files`, `HeadlessBrowser`), realized on a machine by Node's command line, the disk and
 Playwright, and in memory for the scenarios that test them. They are the project's commands (E3): `trame <command>` finds
 the entry point in the project's graph, assembles its component for its environment and runs it; a project's command
-never takes the name of the engine's, nor of a view, and `trame help` lists them all. Governance is rules too: a `rule` applies a requirement of
+never takes the name of the engine's, nor of a view, and `trame help` lists them all. A library offers commands as it
+offers realizations: std writes `pull-request` and `propagate` once, and a project runs them when a binding of its own
+chooses them, with its decisions as their settings (Trame: its repository, its main branch, the projects of the
+repository). Governance is rules too: a `rule` applies a requirement of
 `#std/rules` (`Reaches`, `NeverReaches`, `Linked`, `WithoutEffects`, `WordsOf`) with its parameters, and says why
 through what it serves or the ADR that applies it, instead of hiding a function.
 
