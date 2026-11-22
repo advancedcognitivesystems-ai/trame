@@ -25,9 +25,9 @@ import { CodeLines, Columns, ItemLine, PaddedCell, PathStep, TerminalLines, Tree
 import { ArrayLiteral, AsExpression, Assignment, AsyncBlockFunction, Await, Call, ConstDeclaration, DefaultImport, DocBlock, ExportDeclaration, IfStatement, InlineArray, LineComment, MemberAccess, ModuleTitle, NamedImport, ObjectBlock, ObjectLiteral, ObjectType, OptionalAccess, OptionalPropertySignature, Parenthesized, Property, StrictInequality, StringLiteral, UnionType } from "../../src/typescript.ts"
 import body_nodeTerminal from "../../src/code/platform/terminal.ts"
 import body_nodeCommandLine from "../../src/code/platform/command-line.ts"
-import body_valueTypes from "../../std/releases/0.21.0/src/code/algebra/values.ts"
+import body_valueTypes from "../../std/releases/0.22.1/src/code/algebra/values.ts"
 import body_cycles from "../../src/code/engine/cycles.ts"
-import body_counts from "../../std/releases/0.21.0/src/code/algebra/counts.ts"
+import body_counts from "../../std/releases/0.22.1/src/code/algebra/counts.ts"
 import body_tramePrelude from "../../src/code/platform/prelude.ts"
 import body_tsxLoader from "../../src/code/platform/tsx-loader.ts"
 import body_diskReading from "../../src/code/platform/disk-reading.ts"
@@ -36,8 +36,8 @@ import body_realTypeScript from "../../src/code/platform/typescript.ts"
 import body_resultsInTheProcess from "../../src/code/platform/kept-results.ts"
 import body_project from "../../src/code/engine/project.ts"
 import body_nodeHashing from "../../src/code/platform/hashing.ts"
-import body_sequences from "../../std/releases/0.21.0/src/code/algebra/sequences.ts"
-import body_texts from "../../std/releases/0.21.0/src/code/algebra/texts.ts"
+import body_sequences from "../../std/releases/0.22.1/src/code/algebra/sequences.ts"
+import body_texts from "../../std/releases/0.22.1/src/code/algebra/texts.ts"
 import body_engineFingerprint from "../../src/code/engine/engine-fingerprint.ts"
 import body_runsOnDisk from "../../src/code/platform/runs-on-disk.ts"
 import body_staticAnalysis from "../../src/code/engine/static-analysis.ts"
@@ -139,7 +139,7 @@ const exitStatus = {"success":0,"failure":1}
 // "Node.js events" · standard
 const nodeEvents = {"data":"data","close":"close","end":"end","exit":"exit","change":"change","error":"error","unhandledRejection":"unhandledRejection"}
 // "POSIX signals and errors" · standard
-const posix = {"currentDirectory":".","interrupt":"SIGINT","terminate":"SIGTERM","brokenPipe":"EPIPE"}
+const posix = {"currentDirectory":".","slash":"/","interrupt":"SIGINT","terminate":"SIGTERM","brokenPipe":"EPIPE"}
 // "Messages of the platform" · message catalog
 const platformMessages = await frozen.body(PlatformMessages)({})
 // "Node terminal" · implementation, for "Terminal"
@@ -839,7 +839,7 @@ const emitPayload = await body_emitPayload({ exitStatus, preparation, payload: p
 // "Export the page" · entry point
 const commands_export = await body_export({ exitStatus, layout, preparation, bundle: dateBundle, page, project, writing: frozen.limited(diskWriting, ["writeFileSync"]), paths: frozen.limited(nodePaths, ["resolve"]), terminal: frozen.limited(nodeTerminal, ["write"]), messages: commandMessages })
 // "Help" · entry point
-const help = await body_help({ exitStatus, preparation, projectCommands, views, terminal: frozen.limited(nodeTerminal, ["write"]), cell: paddedCell, messages: commandMessages })
+const help = await body_help({ exitStatus, preparation, projectCommands, views, terminal: frozen.limited(nodeTerminal, ["write"]), cell: paddedCell, columns: terminalColumns, messages: commandMessages })
 // "How a project starts" · decision
 const projectStart = {"module":"product","goal":"Purpose","goalKind":"kinds/goal","owner":"owner","actor":"Owner","actorKind":"kinds/actor","kernel":"kernel","actorSorts":"ActorSort","references":"packages","packageKind":"kinds/package","packageFacade":"pkg","language":"Language","library":"Library","guides":["AGENTS.md",".claude/skills/trame/SKILL.md"],"pointer":"CLAUDE.md","pointerText":"@AGENTS.md"}
 // "A module of references" · function

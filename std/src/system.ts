@@ -28,10 +28,11 @@ export const ExitStatus = standard({
 export const Posix = standard({
   owner: "trame",
   serves: [CitedNotCopied],
-  source: "POSIX.1-2017, Base Definitions: <signal.h> (SIGINT, SIGTERM), <errno.h> (EPIPE), § 4.13 Pathname Resolution (dot)",
+  source: "POSIX.1-2017, Base Definitions: <signal.h> (SIGINT, SIGTERM), <errno.h> (EPIPE), § 3.271 Pathname (slash), § 4.13 Pathname Resolution (dot)",
   url: "https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/signal.h.html",
   constants: {
     currentDirectory: { value: ".", meaning: "The directory a path starts from: a command in it is run as ./name" },
+    slash: { value: "/", meaning: "Separates the components of a pathname: a directory and what it holds" },
     interrupt: { value: "SIGINT", meaning: "The interruption asked from the terminal (Ctrl-C)" },
     terminate: { value: "SIGTERM", meaning: "The polite request to end" },
     brokenPipe: { value: "EPIPE", meaning: "Writing to a pipe that nobody reads any more (the output piped into head, say)" },

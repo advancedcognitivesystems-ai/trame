@@ -1,0 +1,99 @@
+{
+  "shipment": "sdlc.RunnersWritten",
+  "title": "The files that run it elsewhere",
+  "target": "repository",
+  "at": "2026-11-22",
+  "by": "claude",
+  "signature": "attribution",
+  "artifacts": [
+    {
+      "node": "sdlc.PullRequestWorkflow",
+      "path": "../.github/workflows/ci-pull-request.yml",
+      "fingerprint": "422ec127391a5a1194ce1f68e39fc314274ef68118e84f1c3c4f4241d7e2ac62"
+    }
+  ],
+  "foundations": {
+    "problems": 0
+  },
+  "obligations": [
+    {
+      "node": "sdlc.PullRequestWorkflow",
+      "kind": "artifact",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-19",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "3e3ac63528412d53e6060a55f43590868dd88723beb6638063ef809b7d9bab55",
+          "code": "1eda79a1",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "987e2ef986dc7b6b",
+          "seal": "4557937ed5d610d801a9d44b0f6a973a42879df0f372d76c77c673d20221ec8d"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-19",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "3e3ac63528412d53e6060a55f43590868dd88723beb6638063ef809b7d9bab55",
+          "code": "3e6f808d",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "987e2ef986dc7b6b",
+          "seal": "1cbcaf9ddf55b51187f8e61c7812197ec8cec3c62f26f245c08a1aac460bc10c"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-19",
+          "source": "shipped",
+          "value": 1,
+          "fingerprint": "3e3ac63528412d53e6060a55f43590868dd88723beb6638063ef809b7d9bab55",
+          "subject": "sdlc.RunnersWritten",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "5ac3bda706ee1ad0f72cac110edffaf69c3da6e35e0e3414700ec4f5dacb1ee3"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-19",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "e5d28a9886b3e76685ac7cd592d4588bbe41b042648fb44e9ee373ee82115f00",
+          "code": "b0ccd0f6",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "840e576a3cb8b6d4",
+          "seal": "baff834184234b15817f5749870bb5911331057a3016898bf57c79597279967d"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-19",
+          "source": "shipped",
+          "value": 1,
+          "fingerprint": "e5d28a9886b3e76685ac7cd592d4588bbe41b042648fb44e9ee373ee82115f00",
+          "subject": "sdlc.RunnersWritten",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "205a46b238498f81936e5e8b4a7339bf74b1af23116b27a002a414928a2f8b73"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-22",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "422ec127391a5a1194ce1f68e39fc314274ef68118e84f1c3c4f4241d7e2ac62",
+          "code": "9606f6f1",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "8f0dcf4f99d6d7df",
+          "seal": "aca23d671c3b9eeb8ea9b6696e8888dd70497946ef99d554730f2a0d1136d72e"
+        }
+      ]
+    }
+  ],
+  "deployed": []
+}

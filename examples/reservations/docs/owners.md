@@ -5,7 +5,7 @@
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
 | The operators | 0 | 0 | 2 | 0 |
-| karim | 1 | 0 | 17 | 109 |
+| karim | 1 | 0 | 17 | 112 |
 | lea | 0 | 0 | 1 | 13 |
 
 <a id="The operators"></a>
@@ -140,6 +140,7 @@
 | [The decisions hold](sdlc.md#DecisionsApplied) | Obligation |  |
 | [Every check is signed](sdlc.md#EveryCheck) | Obligation |  |
 | [The requirements of the goal hold](sdlc.md#GoalServed) | Obligation |  |
+| [How we merge](sdlc.md#HowWeMerge) | Decision |  |
 | [Into the main branch](sdlc.md#IntoMain) | Shipment | **unknown** |
 | [What the service keeps, migrated](sdlc.md#KeptMigrates) | Obligation |  |
 | [The program for a laptop](sdlc.md#LocalProgram) | Artefact | **unknown** |
@@ -149,11 +150,13 @@
 | [On staging](sdlc.md#OnStaging) | Check | **unknown** |
 | [On this machine](sdlc.md#OnThisMachine) | Shipment | **unknown** |
 | [The operators](sdlc.md#Operators) | Role |  |
+| [Our pull requests](sdlc.md#OurPullRequests) | Function | **unknown** |
 | [The packages are safe](sdlc.md#PackagesSafe) | Obligation |  |
 | [Prepare the storage](sdlc.md#PrepareStorage) | Entry point | **held** |
 | [The program for production](sdlc.md#ProductionProgram) | Artefact | **unknown** |
 | [What people decided, published](sdlc.md#PublishedBeforeMerging) | Obligation |  |
 | [How a pull request is checked on GitHub](sdlc.md#PullRequestsOnGitHub) | Decision |  |
+| [Pull requests opened by the library](sdlc.md#PullRequestsOpened) | Technical choice | **unknown** |
 | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **unknown** |
 | [A release](sdlc.md#Release) | Shipment | **unknown** |
 | [The way of a release](sdlc.md#ReleaseMode) | Policy |  |

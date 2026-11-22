@@ -779,6 +779,14 @@ Scenario · `StoragePrepared` · **held**
 
 ## Reservations · SDLC
 
+### How we merge
+
+Decision · `HowWeMerge`
+
+- Decided by: karim
+- Value: { repository: karim/reservations, base: main, method: merge, lock: trame.lock, project: { name: reservations, dir: . } }
+- Rejected: Squashed, a pull request that publishes keeps its publication apart from the code it publishes
+
 ### How a pull request is checked on GitHub
 
 Decision · `PullRequestsOnGitHub`
@@ -795,6 +803,15 @@ Component · `ReservationsSdlc`
 - Language: typescript
 - Startup: { exposure: std/tooling.ProgramCommands }
 - Deployed in: Local
+
+### Our pull requests
+
+Function · `OurPullRequests` · **unknown**
+
+- Owner: karim
+- Parameters: { merging: sdlc.HowWeMerge, workflow: sdlc.PullRequestsOnGitHub, ways: ci/github.MergeWays }
+- Serves: Cancel without stress
+- Depends on: How we merge, How a pull request is checked on GitHub
 
 ### Prepare the storage
 
@@ -813,6 +830,15 @@ Technical choice · `CommandsOnThisMachine` · **unknown**
 
 - Decided by: karim
 - Context: trame ship runs the programs that deploy as a person would run them, with Node.
+- In: Local
+
+### Pull requests opened by the library
+
+Technical choice · `PullRequestsOpened` · **unknown**
+
+- Decided by: karim
+- Context: Opening a pull request is the same for every project of a repository on GitHub: the library writes it once, the service says how it merges.
+- Chooses: Our pull requests
 - In: Local
 
 ### The operators

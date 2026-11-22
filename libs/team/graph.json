@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-21",
+  "generated": "2026-11-22",
   "nodes": [
     {
       "id": "packages.ContinuousIntegration",
@@ -9,10 +9,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "ci",
-        "version": "0.7.0",
+        "version": "0.8.0",
         "joins": "library",
         "from": "path",
-        "at": "../../ci/releases/0.7.0"
+        "at": "../../ci/releases/0.8.0"
       },
       "diagnostics": []
     },
@@ -24,10 +24,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "116",
+        "version": "117",
         "joins": "language",
         "from": "path",
-        "at": "../../generations/g116"
+        "at": "../../generations/g117"
       },
       "diagnostics": []
     },
@@ -179,7 +179,7 @@
       "kind": "artifact",
       "title": "The pull requests' workflow",
       "source": "src/sdlc.ts:48",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "../../.github/workflows/team-pull-request.yml",
@@ -187,18 +187,16 @@
       },
       "result": {
         "path": "../../.github/workflows/team-pull-request.yml",
-        "code": "5e5ac4e0"
+        "code": "b6982053"
       },
-      "diagnostics": [
-        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.RunnersWritten",
       "kind": "shipment",
       "title": "The files that run it elsewhere",
       "source": "src/sdlc.ts:62",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "repository"
@@ -211,9 +209,7 @@
           "sdlc.PullRequestWorkflow"
         ]
       },
-      "diagnostics": [
-        "warning: To ship: The pull requests' workflow is unknown"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.TheLibrary",
@@ -228,7 +224,7 @@
       },
       "result": {
         "path": "src",
-        "code": "bbeac8ab"
+        "code": "f171c9d3"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"

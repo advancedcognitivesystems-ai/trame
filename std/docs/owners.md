@@ -1,10 +1,10 @@
 # Owners
 
-*What each person must decide, settle or watch on 21 November 2026, and what they own.*
+*What each person must decide, settle or watch on 22 November 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 7 | 205 |
+| trame | 0 | 0 | 3 | 242 |
 
 <a id="trame"></a>
 
@@ -14,10 +14,6 @@
 |---|---|---|---|---|---|
 | warning | `rules-look-alike` | Computes the same kind of answer from the same kind of arguments as “A node reaches what it must” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [A node never reaches what it must not](rules.md#NeverReaches) | trame |  |
 | warning | `rules-look-alike` | Computes the same kind of answer from the same kind of arguments as “A node never reaches what it must not” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [A node reaches what it must](rules.md#Reaches) | trame |  |
-| warning | `shipment-awaits` | To ship: The standard library is unknown | [The next version](sdlc.md#NextVersion) | trame |  |
-| warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | trame |  |
-| warning | `shipment-awaits` | To ship: The pull requests' workflow is unknown | [The files that run it elsewhere](sdlc.md#RunnersWritten) | trame |  |
-| warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The standard library](sdlc.md#TheLibrary) | trame |  |
 | warning | `port-unrealized` | No realization, in any environment | [Where a package comes from](tooling.md#PackageSources) | trame |  |
 
 ### Owns
@@ -37,6 +33,14 @@
 | [Multiplicative hashing](algorithms.md#MultiplicativeHash) | Standard |  |
 | [Seeded draws](algorithms.md#SeededDraws) | Function | **held** |
 | [SHA-256](algorithms.md#Sha256) | Standard |  |
+| [The language the library's commands speak in.](commands.md#CommandLanguage) | Decision |  |
+| [A library offers commands, a project chooses them](commands.md#CommandsOfALibrary) | Architecture decision | **held** |
+| [What the library's commands say](commands.md#CommandWords) | Message catalog |  |
+| [The library's commands](commands.md#LibraryCommands) | Component |  |
+| [Open a pull request](commands.md#OpenPullRequest) | Entry point | **held** |
+| [Propagate](commands.md#Propagate) | Entry point | **held** |
+| [How a version is carried](commands.md#PropagationSettings) | Port |  |
+| [How pull requests are opened](commands.md#PullRequestSettings) | Port |  |
 | [ECMAScript](ecmascript.md#EcmaScript) | Standard |  |
 | [ECMAScript reserved words](ecmascript.md#EcmaScriptReservedWords) | Vocabulary |  |
 | [ECMAScript types](ecmascript.md#EcmaScriptTypes) | Standard |  |
@@ -89,6 +93,7 @@
 | [Abstract Factory](patterns.md#AbstractFactory) | Design pattern |  |
 | [Adapter](patterns.md#Adapter) | Design pattern |  |
 | [Bridge](patterns.md#Bridge) | Design pattern |  |
+| [Command](patterns.md#Command) | Design pattern |  |
 | [Repository](patterns.md#Repository) | Design pattern |  |
 | [Strategy](patterns.md#Strategy) | Design pattern | **held** |
 | [Animation frames](platform.md#AnimationFrames) | Port |  |
@@ -112,6 +117,7 @@
 | [A component in a browser starts with its page](platform.md#StartsWithThePage) | Architecture decision |  |
 | [Time turned by hand](platform.md#TimeTurned) | Port |  |
 | [A voice that writes down](platform.md#WrittenSpeech) | Function | **held** |
+| [Commands chosen, not written again](product.md#ChosenCommands) | Goal |  |
 | [A published value is cited, not copied](product.md#CitedNotCopied) | Goal |  |
 | [Known designs, named](product.md#KnownDesigns) | Goal |  |
 | [Ports of the platform, realized once](product.md#RealizedOnce) | Goal |  |
@@ -134,6 +140,10 @@
 | [Version 0.2.0](releases.md#R0_2_0) | Release |  |
 | [Version 0.20.0](releases.md#R0_20_0) | Release |  |
 | [Version 0.21.0](releases.md#R0_21_0) | Release |  |
+| [Version 0.22.0](releases.md#R0_22_0) | Release |  |
+| [Version 0.22.1](releases.md#R0_22_1) | Release |  |
+| [Version 0.22.2](releases.md#R0_22_2) | Release |  |
+| [Version 0.22.3](releases.md#R0_22_3) | Release |  |
 | [Version 0.3.0](releases.md#R0_3_0) | Release |  |
 | [Version 0.4.0](releases.md#R0_4_0) | Release |  |
 | [Version 0.5.0](releases.md#R0_5_0) | Release |  |
@@ -141,9 +151,23 @@
 | [Version 0.7.0](releases.md#R0_7_0) | Release |  |
 | [Version 0.8.0](releases.md#R0_8_0) | Release |  |
 | [Version 0.9.0](releases.md#R0_9_0) | Release |  |
+| [The automatic merge](repository.md#AutoMerge) | Port |  |
+| [The automatic merge, by GitHub's command line](repository.md#AutoMergeByGitHubCli) | Implementation |  |
+| [The automatic merge, in a session of Claude Code](repository.md#AutoMergeInAClaudeSession) | Implementation |  |
+| [The branches](repository.md#Branches) | Port |  |
+| [Branches kept in memory](repository.md#BranchesInMemory) | Function | **held** |
+| [The branches a scenario keeps](repository.md#BranchesKept) | Port |  |
+| [Git's branches](repository.md#GitCliBranches) | Implementation |  |
+| [Git's command line](repository.md#GitCommandLine) | Standard |  |
+| [GitHub's ways of asking a merge once it holds](repository.md#GitHubAutoMerge) | Standard |  |
+| [GitHub's pull requests, by its command line](repository.md#GitHubCliPullRequests) | Implementation |  |
 | [GitHub's command line](repository.md#GitHubCliRepository) | Implementation |  |
+| [GitHub's API for pull requests](repository.md#GitHubPullRequestsApi) | Standard |  |
 | [GitHub's API for a repository](repository.md#GitHubRepositoryApi) | Standard |  |
 | [How GitHub merges a pull request](repository.md#MergeMethods) | Vocabulary |  |
+| [Pull requests](repository.md#PullRequests) | Port |  |
+| [Pull requests kept in memory](repository.md#PullRequestsInMemory) | Function | **held** |
+| [The pull requests a scenario keeps](repository.md#PullRequestsKept) | Port |  |
 | [A repository on GitHub](repository.md#RepositoryApi) | Port |  |
 | [A repository compared with its settings](repository.md#RepositoryCompared) | Function | **held** |
 | [A repository kept in memory](repository.md#RepositoryInMemory) | Function | **held** |
@@ -168,10 +192,15 @@
 | [Judged as the language says](scenarios.md#JudgedAsTheLanguage) | Scenario | **held** |
 | [Judged strictly](scenarios.md#JudgedStrictly) | Scenario | **held** |
 | [Judged as the language says](scenarios.md#LanguageJudgment) | Technical choice | **held** |
+| [A version carried across the projects](scenarios.md#PropagatedInOrder) | Scenario | **held** |
+| [A pull request opened](scenarios.md#PullRequestOpened) | Scenario | **held** |
 | [A repository kept in memory](scenarios.md#RepositoryInMemoryKeeps) | Scenario | **held** |
 | [What the library's scenarios check](scenarios.md#ScenarioChecks) | Message catalog |  |
 | [What the library's scenarios are given](scenarios.md#ScenarioData) | Decision |  |
 | [The language of the library's scenarios](scenarios.md#ScenarioLanguage) | Decision |  |
+| [How the scenarios' versions are carried](scenarios.md#ScenarioPropagation) | Function | **held** |
+| [How the scenarios' pull requests are opened](scenarios.md#ScenarioPullRequests) | Function | **held** |
+| [The scenarios' settings](scenarios.md#ScenarioSettings) | Technical choice | **held** |
 | [Strict](scenarios.md#Strict) | Environment |  |
 | [Judged strictly](scenarios.md#StrictJudgment) | Technical choice | **held** |
 | [Test](scenarios.md#Test) | Environment |  |
@@ -180,14 +209,14 @@
 | [Its data reviewed](sdlc.md#DataReviewed) | Obligation |  |
 | [Its decisions applied](sdlc.md#DecisionsApplied) | Obligation |  |
 | [Its functions verified](sdlc.md#FunctionsVerified) | Obligation |  |
-| [The next version](sdlc.md#NextVersion) | Shipment | **unknown** |
+| [The next version](sdlc.md#NextVersion) | Shipment | **held** |
 | [Its packages safe](sdlc.md#PackagesSafe) | Obligation |  |
 | [How a pull request is checked on GitHub](sdlc.md#PullRequestsOnGitHub) | Decision |  |
-| [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **unknown** |
+| [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **held** |
 | [Its requirements held](sdlc.md#RequirementsServed) | Obligation |  |
 | [Its rules held](sdlc.md#RulesHeld) | Obligation |  |
-| [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **unknown** |
-| [The standard library](sdlc.md#TheLibrary) | Artefact | **unknown** |
+| [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **held** |
+| [The standard library](sdlc.md#TheLibrary) | Artefact | **held** |
 | [How a version is made](sdlc.md#VersionMode) | Policy |  |
 | [Exit status](system.md#ExitStatus) | Standard |  |
 | [Node.js process arguments](system.md#NodeArguments) | Standard |  |
@@ -212,12 +241,16 @@
 | [Chromium without a screen](tooling.md#HeadlessChromium) | Decision |  |
 | [The machine's files](tooling.md#MachineFiles) | Implementation |  |
 | [Node's command line](tooling.md#NodeProgramCommands) | Implementation |  |
+| [Programs run by Node](tooling.md#NodeProgramRuns) | Implementation |  |
 | [Where a package comes from](tooling.md#PackageOrigins) | Vocabulary |  |
 | [Where a package comes from](tooling.md#PackageSources) | Port |  |
 | [Playwright's API](tooling.md#PlaywrightApi) | Standard |  |
 | [Chromium, driven by Playwright](tooling.md#PlaywrightBrowser) | Implementation |  |
 | [Playwright](tooling.md#PlaywrightPackage) | Package | **held** |
 | [Commands of a program](tooling.md#ProgramCommands) | Port |  |
+| [Programs run](tooling.md#ProgramRuns) | Port |  |
+| [Programs run in memory](tooling.md#ProgramRunsInMemory) | Function | **held** |
+| [The programs a scenario keeps: the file it says a program writes is written when that program runs.](tooling.md#ProgramRunsKept) | Port |  |
 | [The SDLC's tooling is realized once](tooling.md#ToolingAsPorts) | Architecture decision | **held** |
 | [CSSOM View](web.md#CssomView) | Standard |  |
 | [HTTP](web.md#Http) | Standard |  |

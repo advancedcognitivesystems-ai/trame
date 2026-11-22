@@ -1,6 +1,6 @@
 # Technical choices
 
-*What answers each port in each environment on 21 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
+*What answers each port in each environment on 22 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
 
 > **4 technical choices for 6 ports, in 3 environments**
 
@@ -15,7 +15,7 @@
 
 | Pattern | Status | Followed by |
 |---|---|---|
-| [Strategy](../.trame/std/docs/patterns.md#Strategy) | **held** | [Documents, in memory](scenarios.md#InMemory), [Tables seeded, in memory](scenarios.md#SeededForScenarios), [PostgreSQL's dialect, read](scenarios.md#PostgresForScenarios), [In memory](../.trame/std/docs/scenarios.md#InMemory), [Judged as the language says](../.trame/std/docs/scenarios.md#LanguageJudgment), [Judged strictly](../.trame/std/docs/scenarios.md#StrictJudgment) |
+| [Strategy](../.trame/std/docs/patterns.md#Strategy) | **held** | [Documents, in memory](scenarios.md#InMemory), [Tables seeded, in memory](scenarios.md#SeededForScenarios), [PostgreSQL's dialect, read](scenarios.md#PostgresForScenarios), [In memory](../.trame/std/docs/scenarios.md#InMemory), [Judged as the language says](../.trame/std/docs/scenarios.md#LanguageJudgment), [Judged strictly](../.trame/std/docs/scenarios.md#StrictJudgment), [The scenarios' settings](../.trame/std/docs/scenarios.md#ScenarioSettings) |
 | [Adapter](../.trame/std/docs/patterns.md#Adapter) | **held** | [SQLite, in memory](scenarios.md#SqliteForScenarios) |
 
 ## Data · Scenarios

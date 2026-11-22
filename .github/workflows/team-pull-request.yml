@@ -22,7 +22,7 @@ jobs:
       - run: "git fetch --depth=1 origin \"$GITHUB_BASE_REF\""
         working-directory: libs/team
       - run: |
-          git diff --quiet FETCH_HEAD -- ":(glob)**/$LOCK" || gh pr merge "$NUMBER" --disable-auto || true
+          git diff --quiet FETCH_HEAD -- "$LOCK" || gh pr merge "$NUMBER" --disable-auto || true
         working-directory: libs/team
         env:
           GH_TOKEN: "${{ github.token }}"

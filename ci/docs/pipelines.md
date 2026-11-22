@@ -1,6 +1,6 @@
 # Pipelines
 
-*What trame ship runs for each shipment on 21 November 2026, in order, as the engine computes it: its artefacts produced, the checks a program makes, the obligations to prove, the programs that deploy it, the dossier.*
+*What trame ship runs for each shipment on 22 November 2026, in order, as the engine computes it: its artefacts produced, the checks a program makes, the obligations to prove, the programs that deploy it, the dossier.*
 
 <a id="NextVersion"></a>
 
@@ -35,13 +35,13 @@ flowchart TB
 
 |  | Stage | Step | Run by | Why | Status | Latest evidence |
 |---|---|---|---|---|---|---|
-| 1 | produce | [The library of writers](sdlc.md#TheLibrary) · `src` | — | — | **unknown** | 19 November 2026 by claude  |
+| 1 | produce | [The library of writers](sdlc.md#TheLibrary) · `src` | — | — | **unknown** | 22 November 2026 by claude  |
 | 2 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
-| 3 | prove | [The library of writers](sdlc.md#TheLibrary) | — | the shipment | **unknown** | 19 November 2026 by claude  |
+| 3 | prove | [The library of writers](sdlc.md#TheLibrary) | — | the shipment | **unknown** | 22 November 2026 by claude  |
 | 4 | prove | [A workflow of GitHub Actions](github.md#GitHubWorkflow) | — | the shipment | **held** |  |
 | 5 | prove | [A script of Bash](shell.md#ShellScript) | — | the shipment | **held** |  |
 | 6 | prove | [A YAML document](yaml.md#YamlDocument) | — | the shipment | **held** |  |
-| 7 | record | [The next version](sdlc.md#NextVersion) | — | — | **unknown** | 19 November 2026 by claude `evidence/shipments/NextVersion-2026-11-19-550f3b5e.json` |
+| 7 | record | [The next version](sdlc.md#NextVersion) | — | — | **unknown** | 22 November 2026 by claude `evidence/shipments/NextVersion-2026-11-22-85f75118.json` |
 
 `trame ship NextVersion --by <name>`
 

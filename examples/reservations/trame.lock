@@ -278,10 +278,20 @@
       "range": "6a09e667",
       "rejected": "6a09e667"
     },
+    "sdlc.HowWeMerge": {
+      "statement": "af9f0cf9",
+      "value": "aa6c54ab",
+      "review": "6a09e667",
+      "range": "6a09e667",
+      "rejected": "1c19d0a8"
+    },
     "sdlc.Operators": {
       "people": "6be38b0d",
       "notAuthor": "6a09e667",
       "delegations": "d9e202e6"
+    },
+    "sdlc.OurPullRequests": {
+      "constants": "6a09e667"
     },
     "sdlc.PullRequestsOnGitHub": {
       "statement": "c2213f33",

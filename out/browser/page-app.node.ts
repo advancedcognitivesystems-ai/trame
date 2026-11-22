@@ -3,5 +3,5 @@
 
 import { lead } from "../../trame/leading"
 
-lead({"language":{"#trame/kernel":"../../trame/kernel.ts","#trame/kinds/*":"../../kinds/*.ts"},"libraries":{"ci":"../../ci/releases/0.7.0/src","std":"../../std/releases/0.21.0/src","team":"../../libs/team/releases/0.1.0/src"},"within":["../..","../../ci/releases/0.7.0","../../std/releases/0.21.0","../../libs/team/releases/0.1.0"],"names":{"imports":"#","separator":"/","pattern":"*","extension":".ts"}}, import.meta.url)
+lead({"language":{"#trame/kernel":"../../trame/kernel.ts","#trame/kinds/*":"../../kinds/*.ts"},"libraries":{"ci":"../../ci/releases/0.7.0/src","std":"../../std/releases/0.22.1/src","team":"../../libs/team/releases/0.1.0/src"},"within":["../..","../../ci/releases/0.7.0","../../std/releases/0.22.1","../../libs/team/releases/0.1.0"],"names":{"imports":"#","separator":"/","pattern":"*","extension":".ts"}}, import.meta.url)
 await import("./page-app.ts")

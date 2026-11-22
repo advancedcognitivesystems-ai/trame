@@ -530,6 +530,13 @@ export const Decompression = port<Decompression>({ owner: "trame", declaredEffec
 export const Local = environment({ owner: "trame" })
 
 /**
+ * A session of Claude Code
+ * A machine in Anthropic's cloud where Claude works on Trame's repository: real files and terminal, like Local, but GitHub
+ * is reached through a proxy that refuses its GraphQL and offers routes of its own (E3).
+ */
+export const Session = environment({ owner: "trame" })
+
+/**
  * Test
  * The scenarios: the engine reads the real files of the example (or of the project a scenario enters), but what it
  * writes is kept in memory over them, what it prints too, and the programs it starts answer what the scenario says.

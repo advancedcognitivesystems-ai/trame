@@ -2,7 +2,7 @@
 // that std's ProgramCommands exposes. `trame <name>` runs one, its component assembled for its environment; a name the
 // engine or a view already answers would hide it, which is an error of the graph.
 
-import { CommandsPort, EdgeName, EntryField, HoleCode, KindName, Origin, Severity, TriggerType } from "../../../trame/kernel"
+import { BindingEdge, EdgeName, EntryField, HoleCode, KindName, Origin, Severity, TriggerType, isCommandsExposure } from "../../../trame/kernel"
 import type { ProvidedBy, View } from "../../../trame/kernel"
 import type { Trigger } from "../../../kinds/entry-point"
 import type { Compiled, Diag } from "../engine/compiler"
@@ -26,22 +26,53 @@ export interface ProjectCommand {
   component: View
   /** The environments the component is assembled for. */
   environments: View[]
+  /**
+   * A library's command a project chose (since g117): in each environment of its choices, by id, the commands of its
+   * component chosen there, which alone are assembled with it. Nothing for the project's own.
+   */
+  chosen?: ReadonlyMap<string, readonly string[]>
 }
 
 const body = (deps: Deps) => {
   const { messages } = deps
 
-  /** The commands of the project's own graph: a library's are run only when the project chooses them (P2). */
+  /**
+   * The commands of the project: those of its own graph, and a library's that a technical choice of its own takes, in
+   * the environments of the choices that take it (since g117).
+   */
   function of(c: Compiled): ProjectCommand[] {
     const g = c.graph
-    const exposed = (component: View) => deps.wiring.depsOf(component.node).some(([, n]) => g.view(n).ref === CommandsPort.programs)
-    return g.all(KindName.entry).nodes().flatMap((entry) => {
-      if (entry.library !== undefined) return []
+    const exposed = (component: View) => deps.wiring.depsOf(component.node).some(([, n]) => isCommandsExposure(g.view(n)))
+    const commandOf = (entry: View) => {
       const trigger = entry.field(EntryField.trigger) as Trigger | undefined
-      if (trigger?.type !== TriggerType.command) return []
+      return trigger?.type === TriggerType.command ? trigger.name : undefined
+    }
+    const own = g.all(KindName.entry).nodes().flatMap((entry) => {
+      const name = commandOf(entry)
+      if (entry.library !== undefined || name === undefined) return []
       const components = g.from(entry).out(EdgeName.partOf).nodes().filter(exposed)
-      return components.map((component) => ({ name: trigger.name, entry, component, environments: g.from(component).out(EdgeName.environments).nodes() }))
+      return components.map((component) => ({ name, entry, component, environments: g.from(component).out(EdgeName.environments).nodes() }))
     })
+    // A library's commands, each with the environments of the project's choices that take it.
+    const choices = g.all(KindName.binding).nodes().filter((b) => b.library === undefined && b.active)
+    const taken = choices.flatMap((b) => g.from(b).out(BindingEdge.chooses).nodes()
+      .filter((e) => e.kind === KindName.entry && e.library !== undefined)
+      .map((entry) => ({ entry, environments: g.from(b).out(EdgeName.environments).nodes() })))
+    const library = [...new Set(taken.map((t) => t.entry.ref))].flatMap((ref) => {
+      const ofIt = taken.filter((t) => t.entry.ref === ref)
+      const [first] = ofIt
+      const name = first && commandOf(first.entry)
+      if (!first || name === undefined) return []
+      const environments = [...new Map(ofIt.flatMap((t) => t.environments).map((e) => [e.ref, e])).values()]
+      return g.from(first.entry).out(EdgeName.partOf).nodes().filter(exposed).map((component) => {
+        const sameComponent = (t: { entry: View }) => g.from(t.entry).out(EdgeName.partOf).nodes().some((p) => p.node === component.node)
+        const chosen = new Map(environments.map((env) => [env.id, [...new Set(taken
+          .filter((t) => sameComponent(t) && t.environments.some((e) => e.ref === env.ref))
+          .map((t) => t.entry.ref))]]))
+        return { name, entry: first.entry, component, environments, chosen }
+      })
+    })
+    return [...own, ...library]
   }
 
   /**

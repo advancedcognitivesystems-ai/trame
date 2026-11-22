@@ -11,10 +11,16 @@ import {
   PreferencesStore, MemoryPreferences, SpeechVoice, SpeechHeard, WrittenSpeech, ScreenAwake, ScreenKeptAwake, AwakeInMemory, AnimationFrames, TimeTurned,
   FramesByHand,
 } from "./platform"
-import { Files, FilesKept, FilesInMemory, HeadlessBrowser, BrowserScripted, BrowserInMemory } from "./tooling"
+import { Files, FilesKept, FilesInMemory, HeadlessBrowser, BrowserScripted, BrowserInMemory, ProgramRunsInMemory, ProgramRunsKept } from "./tooling"
+import { fn } from "#trame/kinds/function"
+import {
+  OpenPullRequest, Propagate, PullRequestSettings, PropagationSettings, CommandWords, type PullRequestWay, type Propagation,
+} from "./commands"
+import { BranchesInMemory, BranchesKept, PullRequestsInMemory, PullRequestsKept, type PullRequestOpen } from "./repository"
 import { Strategy } from "./patterns"
 import { Commands, Effects } from "./effects"
-import { Counts } from "./algebra"
+import { Counts, Sequences } from "./algebra"
+import { ExitStatus } from "./system"
 import { RepositoryApi, RepositoryKept, RepositoryInMemory, RepositoryCompared } from "./repository"
 import { Hardening, AsTheLanguageSays, EveryWarning } from "./judgment"
 import { HoleCode, Severity } from "#trame/kernel"
@@ -36,7 +42,10 @@ export const Test = environment({ owner: "trame", evaluates: true })
  */
 export const InMemory = binding({
   owner: "trame",
-  chooses: [MemoryPreferences, WrittenSpeech, AwakeInMemory, FramesByHand, FilesInMemory, BrowserInMemory, RepositoryInMemory],
+  chooses: [
+    MemoryPreferences, WrittenSpeech, AwakeInMemory, FramesByHand, FilesInMemory, BrowserInMemory, RepositoryInMemory, BranchesInMemory, PullRequestsInMemory,
+    ProgramRunsInMemory,
+  ],
   environments: [Test],
   follows: [Strategy],
   serves: [RealizedOnce],
@@ -102,6 +111,13 @@ export const ScenarioChecks = catalog({
     repositoryApplied: () => "Settings applied are kept, and the repository read back holds them all, its pages when asked",
     judgedAsTheLanguage: () => "As the language says, a warning stays a warning and an error an error",
     judgedStrictly: () => "Strictly, a warning becomes an error, and an error and a blocking problem stay as they are",
+    pullRequestMerging: () => "A branch that changes nothing people decided is pushed, its pull request opened into the base, and GitHub asked to merge it once it holds",
+    pullRequestDecided: () => "A branch that changes a project's lock gets its pull request, which a person merges: GitHub is not asked",
+    pullRequestFound: () => "A branch whose pull request is open finds it, and opens no other",
+    pullRequestOnTheBase: () => "On the base itself, nothing is pushed nor opened",
+    propagatedInOrder: () => "Each project is carried after the libraries it imports and the projects it reads, built at its day when it has one",
+    runnersWhenMoved: () => "Its files that run elsewhere are written again only where the upgrade moved a reference",
+    propagationStops: () => "A step that fails stops the propagation there, saying where",
   }),
 })
 
@@ -121,6 +137,8 @@ export const ScenarioData = decision<{
   page: { path: string; selector: string; count: number; text: string; error: string; language: string }
   command: string
   repository: { name: string; settings: RepositorySettings; left: RepositoryState; differs: string[] }
+  pullRequest: { way: PullRequestWay; branch: string; title: string; free: string[]; decided: string[]; open: PullRequestOpen; elsewhere: string }
+  propagation: { settings: Propagation; by: string; person: string; described: Record<string, string>; order: string[]; moves: { dir: string; path: string; to: string } }
 }>({
   owner: "trame",
   value: {
@@ -138,6 +156,148 @@ export const ScenarioData = decision<{
       left: { methods: ["merge", "squash"], autoMerge: false, deletesMerged: true, protected: false, checks: ["library"], upToDate: false },
       differs: ["methods", "autoMerge", "protected", "approvals", "checks"],
     },
+    pullRequest: {
+      way: {
+        repository: "owner/project", base: "main", method: "merge", merge: "onceItHoldsUnlessDecided", lock: "trame.lock",
+        projects: [{ name: "project", dir: "." }, { name: "app", dir: "apps/app" }],
+      },
+      branch: "work", title: "A change",
+      free: ["src/product.ts", "apps/app/src/app.ts"], decided: ["apps/app/trame.lock", "apps/app/src/app.ts"],
+      open: { number: 7, url: "https://github.com/owner/project/pull/7" }, elsewhere: "more-work",
+    },
+    propagation: {
+      settings: {
+        engine: { launcher: "trame.sh", upgrade: "upgrade", ship: "ship", build: "build", by: "--by", today: "TRAME_TODAY" },
+        configuration: "trame.json",
+        references: ["trame.json", "src/packages.ts"],
+        projects: [
+          { name: "project", dir: ".", reads: ["example"], runners: "RunnersWritten" },
+          { name: "example", dir: "examples/example", day: "2026-10-30", runners: "RunnersWritten" },
+          { name: "app", dir: "apps/app", runners: "RunnersWritten" },
+          { name: "lib", dir: "libs/lib" },
+        ],
+      },
+      by: "--by", person: "ada",
+      described: {
+        "./trame.json": "{\"libraries\":{\"lib\":\"libs/lib\"}}",
+        "examples/example/trame.json": "{\"libraries\":{\"lib\":\"../../libs/lib\",\"app\":\"../../apps/app\"}}",
+        "apps/app/trame.json": "{\"libraries\":{\"lib\":{\"path\":\"../../libs/lib\",\"version\":\"0.1.0\"}}}",
+        "libs/lib/trame.json": "{\"libraries\":{\"app\":{\"path\":\"../../apps/app\",\"version\":\"0.1.0\"}}}",
+      },
+      order: ["app", "lib", "example", "project"],
+      moves: { dir: "apps/app", path: "apps/app/trame.json", to: "{\"libraries\":{\"lib\":{\"path\":\"../../libs/lib\",\"version\":\"0.2.0\"}}}" },
+    },
+  },
+})
+
+/**
+ * How the scenarios' pull requests are opened
+ * The settings of pull-request in the library's scenarios: a repository, its base and its two projects.
+ */
+export const ScenarioPullRequests = fn({
+  owner: "trame", implements: [PullRequestSettings], serves: [RealizedOnce],
+  deps: { data: ScenarioData },
+  body: ({ data }) => data.pullRequest.way,
+})
+
+/**
+ * How the scenarios' versions are carried
+ * The settings of propagate in the library's scenarios: four projects, one read by the root, one built at its day.
+ */
+export const ScenarioPropagation = fn({
+  owner: "trame", implements: [PropagationSettings], serves: [RealizedOnce],
+  deps: { data: ScenarioData },
+  body: ({ data }) => data.propagation.settings,
+})
+
+/**
+ * The scenarios' settings
+ * Where the library's scenarios run, its commands read the settings the scenarios give.
+ */
+export const ScenarioSettings = binding({
+  owner: "trame",
+  chooses: [ScenarioPullRequests, ScenarioPropagation],
+  environments: [Test],
+  follows: [Strategy],
+  serves: [RealizedOnce],
+  context: "A command of the library reads its settings through its ports: a scenario answers them with its own.",
+})
+
+/**
+ * A pull request opened
+ * A branch that changes nothing people decided is pushed, its pull request opened and GitHub asked to merge it once it
+ * holds; one that changes a project's lock is opened, and left to a person; one whose pull request is open finds it; on
+ * the base itself, nothing happens.
+ */
+export const PullRequestOpened = scenario({
+  owner: "trame",
+  verifies: [OpenPullRequest, BranchesInMemory, PullRequestsInMemory, ScenarioPullRequests],
+  env: Test,
+  deps: {
+    open: OpenPullRequest, branches: BranchesKept, pulls: PullRequestsKept, data: ScenarioData, say: CommandWords, checks: ScenarioChecks, counts: Counts,
+    exit: ExitStatus,
+  },
+  body: ({ open, branches, pulls, data, say, checks, counts, exit }) => async (check) => {
+    const { way, branch, title, free, decided, open: existing, elsewhere } = data.pullRequest
+    const asked = { params: { command: title }, body: { args: [title] } }
+    const said = (answered: { body?: unknown }) => (answered.body ?? []) as readonly string[]
+    branches.set(branch, free)
+    const merging = await open(asked)
+    const [first] = pulls.opened()
+    check(checks.pullRequestMerging(), merging.status === exit.success && first?.asked.head === branch && first.asked.base === way.base &&
+      counts.single(pulls.merging()) && branches.pushed().includes(branch) && said(merging).includes(say.mergesOnceItHolds(way.method)))
+    branches.set(elsewhere, decided)
+    const left = await open(asked)
+    const [, second] = pulls.opened()
+    const locks = decided.filter((path) => path.endsWith(way.lock))
+    check(checks.pullRequestDecided(), left.status === exit.success && second?.asked.head === elsewhere && counts.single(pulls.merging()) &&
+      said(left).includes(say.decided(locks)))
+    pulls.openFrom(way.repository, elsewhere, existing)
+    const found = await open(asked)
+    check(checks.pullRequestFound(), said(found).includes(say.alreadyOpen(existing.number, existing.url)) && pulls.opened().length === [first, second].length)
+    branches.set(way.base, free)
+    const none = await open(asked)
+    check(checks.pullRequestOnTheBase(), none.status === exit.failure && said(none).includes(say.onTheBase(way.base)))
+  },
+})
+
+/**
+ * A version carried across the projects
+ * Each project is carried after the libraries it imports and the projects it reads, built at its day when it has one;
+ * its files that run elsewhere are written again where the upgrade moved a reference, and only there; a step that fails
+ * stops it there.
+ */
+export const PropagatedInOrder = scenario({
+  owner: "trame",
+  verifies: [Propagate, ProgramRunsInMemory, ScenarioPropagation],
+  env: Test,
+  deps: {
+    propagate: Propagate, files: Files, runs: ProgramRunsKept, data: ScenarioData, say: CommandWords, checks: ScenarioChecks, counts: Counts,
+    sequences: Sequences, exit: ExitStatus,
+  },
+  body: ({ propagate, files, runs, data, say, checks, counts, sequences, exit }) => async (check) => {
+    const { settings, by, person, described, order, moves } = data.propagation
+    const { engine, projects } = settings
+    for (const [path, text] of Object.entries(described)) files.write(path, text)
+    runs.writeIn(moves.dir, moves.path, moves.to)
+    const asked = { params: { command: by }, body: { args: [by, person] } }
+    const done = await propagate(asked)
+    const ran = runs.runs()
+    const nameOf = (dir: string) => projects.find((p) => p.dir === dir)?.name
+    const carried = [...new Set(ran.map((r) => nameOf(r.dir)))]
+    const [dated] = projects.filter((p) => p.day !== undefined)
+    const built = ran.filter((r) => r.args.includes(engine.build))
+    check(checks.propagatedInOrder(), done.status === exit.success && JSON.stringify(carried) === JSON.stringify(order) &&
+      built.some((r) => r.dir === dated?.dir && r.variables?.[engine.today] === dated.day))
+    const shipped = ran.filter((r) => r.args.includes(engine.ship))
+    check(checks.runnersWhenMoved(), counts.single(shipped) && shipped.every((r) => r.dir === moves.dir && r.args.includes(person)))
+    const before = ran.length
+    runs.failIn(moves.dir)
+    const stopped = await propagate(asked)
+    const last = sequences.last(runs.runs().slice(before))
+    const moved = nameOf(moves.dir) ?? moves.dir
+    check(checks.propagationStops(), stopped.status === exit.failure && last?.dir === moves.dir &&
+      JSON.stringify(stopped.body) === JSON.stringify([say.propagationStopped(moved, say.upgrading(moved))]))
   },
 })
 

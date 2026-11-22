@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 21 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 22 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Poselia · The app in a browser
 
@@ -819,10 +819,10 @@ Package · `ContinuousIntegration`
 
 - Owner: ghalaax
 - Name: ci
-- Version: 0.7.0
+- Version: 0.8.0
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: ../../ci/releases/0.7.0
+- Its path: ../../ci/releases/0.8.0
 - Serves: Practise yoga on one's own, guided
 
 ### Data
@@ -855,10 +855,10 @@ Package · `Language`
 
 - Owner: ghalaax
 - Name: trame
-- Version: 116
+- Version: 117
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../../generations/g116
+- Its path: ../../generations/g117
 - Serves: Practise yoga on one's own, guided
 
 ### The people of the repository
@@ -879,10 +879,10 @@ Package · `StandardLibrary`
 
 - Owner: ghalaax
 - Name: std
-- Version: 0.21.0
+- Version: 0.22.3
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: ../../std/releases/0.21.0
+- Its path: ../../std/releases/0.22.3
 - Serves: Practise yoga on one's own, guided
 
 ## Poselia · Practice
@@ -1459,7 +1459,7 @@ Artefact · `PageFile` · **unknown**
 
 ### The preview's script
 
-Artefact · `PreviewScript` · **unknown**
+Artefact · `PreviewScript` · **held**
 
 - Owner: ghalaax
 - Path: scripts/ship-preview.sh
@@ -1468,7 +1468,7 @@ Artefact · `PreviewScript` · **unknown**
 
 ### The preview's workflow
 
-Artefact · `PreviewWorkflow` · **unknown**
+Artefact · `PreviewWorkflow` · **held**
 
 - Owner: ghalaax
 - Path: ../../.github/workflows/poselia-preview.yml
@@ -1479,7 +1479,7 @@ Artefact · `PreviewWorkflow` · **unknown**
 
 ### The pull requests' workflow
 
-Artefact · `PullRequestWorkflow` · **unknown**
+Artefact · `PullRequestWorkflow` · **held**
 
 - Owner: ghalaax
 - Path: ../../.github/workflows/poselia-pull-request.yml
@@ -1555,7 +1555,7 @@ Shipment · `PublicVersion` · **unknown**
 
 ### The files that run it elsewhere
 
-Shipment · `RunnersWritten` · **unknown**
+Shipment · `RunnersWritten` · **held**
 
 - Owner: ghalaax
 - Target: repository

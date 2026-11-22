@@ -509,6 +509,8 @@ export const ProjectSamples = decision<{
    * reads, and the title of the component that runs it.
    */
   command: { name: string; argument: string; environment: string; component: string }
+  /** A command of a library the example chooses (E3, since g117): the word typed, a word after it, its component's title. */
+  libraryCommand: { name: string; argument: string; component: string }
   started: { title: string; owner: string }
   registry: { home: string; generation: string }
 }>({
@@ -529,6 +531,7 @@ export const ProjectSamples = decision<{
     handCheck: { check: "OnAPhone", tester: "ghalaax", stranger: "someone-else" },
     delegated: { check: "OnALaptop", agent: "lea", person: "karim", within: "2026-12-01", after: "2027-01-05" },
     command: { name: "prepare-storage", argument: "--dry-run", environment: "Local", component: "The service's SDLC" },
+    libraryCommand: { name: "pull-request", argument: "A change", component: "The library's commands" },
     started: { title: "Started in memory", owner: "ghalaax" },
     registry: { home: ".", generation: "g93" },
   },
@@ -1007,6 +1010,35 @@ export const ProjectCommandRun = scenario({
     from = d.terminalLog.lines().length
     const refused = await d.byName({ params: { command: name, commands: name }, body: { args: [] } }).then(() => false, () => true)
     check(messages.hiddenCommandRefused(name), refused && printed(from).includes(d.said.commandHiddenByEngine(name)))
+  },
+})
+
+/**
+ * A command of a library the project chooses
+ * trame pull-request, in the example (E3, since g117): the example's graph does not declare it, a technical choice of
+ * the example takes std's; its component, std's, is assembled for the environment of the choice with only the commands
+ * the example chose (std's propagate, which nothing there could wire, is left out), then run with the rest of the line.
+ * trame help lists it with std's component.
+ */
+export const LibraryCommandRun = scenario({
+  owner: "trame",
+  verifies: [CommandOrView, ProjectCommands, Help],
+  env: Test,
+  deps: {
+    byName: CommandOrView, help: Help, processLog: ProcessLog, terminalLog: TerminalLog, line: TrameCommands, exitStatus: ExitStatus,
+    samples: ProjectSamples, texts: Texts, messages: ScenarioMessages,
+  },
+  body: (d) => async (check) => {
+    const { line, exitStatus, texts, messages } = d
+    const { name, argument, component } = d.samples.libraryCommand
+    d.processLog.answer(texts.empty, exitStatus.success)
+    const ran = await d.byName({ params: { command: name, commands: line.build }, body: { args: [argument] } })
+    const started = d.processLog.started().find((s) => s.args.includes(name))
+    check(messages.libraryCommandRun(name), ran.status === exitStatus.success && JSON.stringify(started?.args) === JSON.stringify([name, argument]))
+    const from = d.terminalLog.lines().length
+    await d.help({ params: { command: line.help, commands: line.build }, body: { args: [] } })
+    const printed = texts.concat(d.terminalLog.lines().slice(from))
+    check(messages.helpListsTheLibrary(name), printed.includes(name) && printed.includes(component))
   },
 })
 

@@ -5,17 +5,17 @@
   ],
   "libraries": {
     "ci": {
-      "at": "ci/releases/0.7.0",
-      "version": "0.7.0"
+      "at": "ci/releases/0.8.0",
+      "version": "0.8.0"
     },
     "team": {
       "at": "libs/team/releases/0.1.0",
       "version": "0.1.0"
     },
     "std": {
-      "at": "std/releases/0.21.0",
-      "version": "0.21.0"
+      "at": "std/releases/0.22.3",
+      "version": "0.22.3"
     }
   },
-  "engine": "generations/g116"
+  "engine": "generations/g117"
 }

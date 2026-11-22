@@ -10,6 +10,7 @@ import { fn } from "#trame/kinds/function"
 import { adr } from "#trame/kinds/adr"
 import { NodeCli, NodeEvents, ExitStatus } from "./system"
 import { Texts, ValueTypes } from "./algebra"
+import { TextFile } from "./text"
 import { RealizedOnce, CitedNotCopied } from "./product"
 
 // The settings of a repository on GitHub, as a project's graph decides them: its main branch receives nothing but pull
@@ -264,6 +265,271 @@ export const RepositoryInMemory = fn({
       },
       set: (repository: string, state: RepositoryState) => void states.set(repository, state),
       applied: () => applied,
+    }
+  },
+})
+
+// Branches and pull requests (E3, std 0.22.0): what a command of the library asks of the repository a project lives in
+// (the branch checked out, pushed, what it changes against another) and of GitHub (a pull request opened, merged once it
+// holds). How GitHub is asked to merge once it holds is a choice of its own: its command line asks GitHub's GraphQL,
+// which a session of Claude Code cannot reach; it asks a route of its proxy instead.
+
+/** What a command asks of the branches of the repository it runs in. */
+export interface GitBranches {
+  /** The branch checked out; nothing when none is (a detached head). */
+  current(): Promise<string | undefined>
+  /** Pushes the branch where it came from, and follows it there: whether it was pushed. */
+  push(branch: string): Promise<boolean>
+  /** The files the branch changes against another, as the repository has that one: paths from its root; nothing when unread. */
+  changed(base: string): Promise<readonly string[] | undefined>
+}
+
+/**
+ * The branches
+ * The branch a person works on in the repository: which it is, pushed, and what it changes against another.
+ */
+export const Branches = port<GitBranches>({
+  owner: "trame",
+  declaredEffects: { current: ["process", "asynchronous"], push: ["process", "network", "asynchronous"], changed: ["process", "network", "asynchronous"] },
+})
+
+/**
+ * Git's command line
+ * The commands that say which branch is checked out, push it and follow it, fetch another and list the files that
+ * differ since the two parted.
+ */
+export const GitCommandLine = standard({
+  owner: "trame",
+  serves: [CitedNotCopied],
+  source: "Git manual: git-rev-parse (--abbrev-ref), git-push (--set-upstream), git-fetch, git-diff (--name-only, A...B: since the merge base)",
+  url: "https://git-scm.com/docs/git-diff",
+  constants: {
+    program: { value: "git", meaning: "Git's command line" },
+    revParse: { value: "rev-parse", meaning: "Says what a name stands for" },
+    abbreviated: { value: "--abbrev-ref", meaning: "The short name of a reference: the branch's" },
+    head: { value: "HEAD", meaning: "What is checked out" },
+    detached: { value: "HEAD", meaning: "What rev-parse --abbrev-ref says when no branch is checked out" },
+    push: { value: "push", meaning: "Sends a branch to a remote" },
+    upstream: { value: "--set-upstream", meaning: "The branch follows the one it was sent to" },
+    remote: { value: "origin", meaning: "The remote the repository came from" },
+    fetch: { value: "fetch", meaning: "Brings a branch of a remote" },
+    fetched: { value: "FETCH_HEAD", meaning: "What was just fetched" },
+    diff: { value: "diff", meaning: "Shows what differs" },
+    names: { value: "--name-only", meaning: "Only the paths of the files that differ" },
+    since: { value: "...", meaning: "Between two names: what the second changes since it parted from the first" },
+  },
+})
+
+/**
+ * Git's branches
+ * Asks Git, in the directory the program runs in: the branch checked out, pushed to its remote, the files it changes
+ * since it parted from another as the remote has it.
+ */
+export const GitCliBranches = implementation({
+  owner: "trame", implements: [Branches],
+  deps: { git: GitCommandLine, cli: NodeCli, events: NodeEvents, exit: ExitStatus, texts: Texts, file: TextFile },
+  body: code.file("./code/tooling/git-cli-branches.ts"),
+})
+
+/** What a scenario does with the branches kept in memory: sets them, reads what was pushed. */
+export interface BranchesScript {
+  /** The branch checked out, and the files it changes against any other. */
+  set(current: string | undefined, changed: readonly string[]): void
+  /** The branches pushed, in their order. */
+  pushed(): readonly string[]
+}
+
+/** The branches a scenario keeps */
+export const BranchesKept = port<BranchesScript>({ owner: "trame", declaredEffects: [] })
+
+/**
+ * Branches kept in memory
+ * In a scenario, the branch checked out and what it changes are as the scenario sets them; a push is kept.
+ */
+export const BranchesInMemory = fn({
+  owner: "trame", implements: [Branches, BranchesKept], serves: [RealizedOnce],
+  body: () => {
+    let current: string | undefined
+    let changed: readonly string[] = []
+    const pushed: string[] = []
+    return {
+      current: async () => current,
+      push: async (branch: string) => (pushed.push(branch), true),
+      changed: async () => changed,
+      set: (branch: string | undefined, files: readonly string[]) => void ((current = branch), (changed = files)),
+      pushed: () => pushed,
+    }
+  },
+})
+
+/** A pull request, by its number and the address a person opens it at. */
+export interface PullRequestOpen {
+  readonly number: number
+  readonly url: string
+}
+
+/** What a pull request asks: to bring its branch into another. */
+export interface PullRequestAsked {
+  readonly title: string
+  readonly body: string
+  readonly head: string
+  readonly base: string
+}
+
+/** What a command asks of the pull requests of a repository on GitHub. */
+export interface PullRequestsOfARepository {
+  /** The pull request open from this branch; nothing when none is. */
+  find(repository: string, branch: string): Promise<PullRequestOpen | undefined>
+  /** Opens a pull request: it, or nothing when GitHub refused. */
+  open(repository: string, asked: PullRequestAsked): Promise<PullRequestOpen | undefined>
+  /** Asks GitHub to merge it by this method once it holds: whether GitHub took it. */
+  mergeOnceItHolds(repository: string, number: number, method: MergeMethod): Promise<boolean>
+}
+
+/**
+ * Pull requests
+ * The pull requests of a repository on GitHub: the one a branch has open, one opened, merged once it holds.
+ */
+export const PullRequests = port<PullRequestsOfARepository>({
+  owner: "trame",
+  declaredEffects: {
+    find: ["process", "network", "asynchronous"], open: ["process", "network", "asynchronous"], mergeOnceItHolds: ["process", "network", "asynchronous"],
+  },
+})
+
+/**
+ * GitHub's API for pull requests
+ * The calls that list the pull requests a branch has open, open one, and what GitHub answers of it.
+ */
+export const GitHubPullRequestsApi = standard({
+  owner: "trame",
+  serves: [CitedNotCopied],
+  source: "GitHub REST API: Pulls (List pull requests: head, state; Create a pull request: title, head, base, body; number, html_url); GitHub CLI manual: gh api (--method, --input, a query)",
+  url: "https://docs.github.com/en/rest/pulls/pulls",
+  constants: {
+    pulls: { value: "/pulls", meaning: "After the repository: its pull requests" },
+    query: { value: "?", meaning: "Opens the parameters of a call" },
+    and: { value: "&", meaning: "Between two parameters" },
+    equals: { value: "=", meaning: "Between a parameter and its value" },
+    head: { value: "head", meaning: "The branch a pull request brings, owner:branch when listed" },
+    owner: { value: ":", meaning: "Between the owner and the branch, in head" },
+    state: { value: "state", meaning: "Which pull requests are listed" },
+    openState: { value: "open", meaning: "Those still open" },
+    base: { value: "base", meaning: "The branch it goes into" },
+    title: { value: "title", meaning: "Its title" },
+    body: { value: "body", meaning: "What it says" },
+    number: { value: "number", meaning: "Its number in the repository" },
+    url: { value: "html_url", meaning: "Where a person opens it" },
+  },
+})
+
+/** What asks GitHub to merge a pull request once it holds. */
+export interface MergeAsker {
+  /** Asks it, by this method: whether GitHub took it. */
+  ask(repository: string, number: number, method: MergeMethod): Promise<boolean>
+}
+
+/**
+ * The automatic merge
+ * How GitHub is asked to merge a pull request once it holds: by its command line where GitHub's GraphQL is reached, by
+ * a route of the proxy in a session of Claude Code.
+ */
+export const AutoMerge = port<MergeAsker>({ owner: "trame", declaredEffects: { ask: ["process", "network", "asynchronous"] } })
+
+/**
+ * GitHub's ways of asking a merge once it holds
+ * GitHub's command line asks it by GraphQL (enablePullRequestAutoMerge); a session of Claude Code reaches GitHub through
+ * a proxy that refuses GraphQL and offers a route of its own, PUT on the pull request's ccr/auto_merge, as it says when
+ * GraphQL is called.
+ */
+export const GitHubAutoMerge = standard({
+  owner: "trame",
+  serves: [CitedNotCopied],
+  source: "GitHub CLI manual: gh pr merge (--auto, --merge, --squash, --rebase, --repo); the proxy of a Claude Code session, answering a call to GraphQL: PUT /repos/{owner}/{repo}/pulls/{n}/ccr/auto_merge",
+  url: "https://cli.github.com/manual/gh_pr_merge",
+  constants: {
+    pr: { value: "pr", meaning: "The commands of pull requests" },
+    merge: { value: "merge", meaning: "Merges one, or asks it merged" },
+    auto: { value: "--auto", meaning: "Once it holds: its checks passed" },
+    byMerge: { value: "--merge", meaning: "By a merge commit" },
+    bySquash: { value: "--squash", meaning: "Squashed into one commit" },
+    byRebase: { value: "--rebase", meaning: "Its commits rebased" },
+    repo: { value: "--repo", meaning: "The repository, owner/name" },
+    route: { value: "/ccr/auto_merge", meaning: "After the pull request: the route of the proxy that asks GitHub to merge it once it holds" },
+    method: { value: "merge_method", meaning: "How it is merged, in the body of that route" },
+  },
+})
+
+/**
+ * GitHub's pull requests, by its command line
+ * Lists the pull requests a branch has open and opens one by gh api (REST), with the token of whoever runs it; asks the
+ * merge once it holds through the automatic merge chosen where it runs.
+ */
+export const GitHubCliPullRequests = implementation({
+  owner: "trame", implements: [PullRequests],
+  deps: { repos: GitHubRepositoryApi, api: GitHubPullRequestsApi, cli: NodeCli, events: NodeEvents, exit: ExitStatus, texts: Texts, values: ValueTypes, merging: AutoMerge },
+  body: code.file("./code/tooling/github-cli-pull-requests.ts"),
+})
+
+/**
+ * The automatic merge, by GitHub's command line
+ * gh pr merge --auto, by the method decided: GitHub's GraphQL, with the token of whoever runs it.
+ */
+export const AutoMergeByGitHubCli = implementation({
+  owner: "trame", implements: [AutoMerge],
+  deps: { auto: GitHubAutoMerge, repos: GitHubRepositoryApi, methods: MergeMethods, cli: NodeCli, events: NodeEvents, exit: ExitStatus },
+  body: code.file("./code/tooling/auto-merge-by-github-cli.ts"),
+})
+
+/**
+ * The automatic merge, in a session of Claude Code
+ * The route of the session's proxy, by gh api: PUT on the pull request's ccr/auto_merge, with the method decided.
+ */
+export const AutoMergeInAClaudeSession = implementation({
+  owner: "trame", implements: [AutoMerge],
+  deps: { auto: GitHubAutoMerge, repos: GitHubRepositoryApi, api: GitHubPullRequestsApi, cli: NodeCli, events: NodeEvents, exit: ExitStatus, texts: Texts },
+  body: code.file("./code/tooling/auto-merge-in-a-claude-session.ts"),
+})
+
+/** What a scenario reads of the pull requests kept in memory, and the one it says a branch has open. */
+export interface PullRequestsScript {
+  /** A pull request already open from a branch. */
+  openFrom(repository: string, branch: string, open: PullRequestOpen): void
+  /** Those opened, in their order. */
+  opened(): readonly { repository: string; asked: PullRequestAsked }[]
+  /** Those GitHub was asked to merge once they hold, with the method. */
+  merging(): readonly { repository: string; number: number; method: MergeMethod }[]
+}
+
+/** The pull requests a scenario keeps */
+export const PullRequestsKept = port<PullRequestsScript>({ owner: "trame", declaredEffects: [] })
+
+/**
+ * Pull requests kept in memory
+ * In a scenario, a pull request opened is numbered after those opened before it, its address the path of its call;
+ * one open from a branch is found; a merge asked is kept.
+ */
+export const PullRequestsInMemory = fn({
+  owner: "trame", implements: [PullRequests, PullRequestsKept], serves: [RealizedOnce],
+  deps: { repos: GitHubRepositoryApi, api: GitHubPullRequestsApi, texts: Texts },
+  body: ({ repos, api, texts }) => {
+    const open = new Map<string, PullRequestOpen>()
+    const opened: { repository: string; asked: PullRequestAsked }[] = []
+    const merging: { repository: string; number: number; method: MergeMethod }[] = []
+    const key = (repository: string, branch: string) => texts.concat([repository, api.owner, branch])
+    return {
+      find: async (repository: string, branch: string) => open.get(key(repository, branch)),
+      open: async (repository: string, asked: PullRequestAsked) => {
+        opened.push({ repository, asked })
+        const number = opened.length
+        const made = { number, url: texts.concat([repos.repos, repository, api.pulls, repos.separator, String(number)]) }
+        open.set(key(repository, asked.head), made)
+        return made
+      },
+      mergeOnceItHolds: async (repository: string, number: number, method: MergeMethod) => (merging.push({ repository, number, method }), true),
+      openFrom: (repository: string, branch: string, made: PullRequestOpen) => void open.set(key(repository, branch), made),
+      opened: () => opened,
+      merging: () => merging,
     }
   },
 })

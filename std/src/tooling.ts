@@ -11,7 +11,7 @@ import { vocabulary } from "#trame/kinds/vocabulary"
 import { adr } from "#trame/kinds/adr"
 import { Counts, Texts, ValueTypes } from "./algebra"
 import { Sha256, SeededDraws } from "./algorithms"
-import { NodeEncodings, NodeArguments, ExitStatus } from "./system"
+import { NodeEncodings, NodeArguments, ExitStatus, NodeCli, NodeEvents, Posix } from "./system"
 import type { Exposure } from "#trame/kinds/component"
 import { RealizedOnce, CitedNotCopied } from "./product"
 import { Time } from "./measures"
@@ -97,6 +97,82 @@ export const FilesInMemory = fn({
       copy: (from: string, to: string) => void files.set(to, files.get(from) ?? texts.empty),
       fingerprint: (path: string) => String(draws.seedOf(files.get(path) ?? texts.empty)),
       written: () => new Map(files),
+    }
+  },
+})
+
+/** A program a command runs (E3, std 0.22.0): which, with what, where, and what is said before. */
+export interface ProgramRun {
+  /** Its path from where the command runs (the repository's root), or a name the system finds. */
+  readonly program: string
+  readonly args: readonly string[]
+  /** The directory it runs in, from where the command runs. */
+  readonly dir: string
+  /** Variables of its environment, besides those it has. */
+  readonly variables?: Readonly<Record<string, string>>
+  /** What is said on the terminal before it runs: which project, which step. */
+  readonly said: string
+}
+
+/** What a command asks of the programs it runs. */
+export interface ProgramsRun {
+  /** Runs a program, its output on the terminal as it comes: its status. */
+  run(run: ProgramRun): Promise<number>
+}
+
+/**
+ * Programs run
+ * The programs a command of the library runs for a project, one after the other: trame itself, in each project of the
+ * repository, say.
+ */
+export const ProgramRuns = port<ProgramsRun>({ owner: "trame", declaredEffects: { run: ["process", "terminal", "read", "write", "asynchronous"] } })
+
+/**
+ * Programs run by Node
+ * Starts the program in its directory (a path found from where the command runs), with its variables added to those of
+ * the command, on the same terminal; says first what it runs. A program that cannot start fails.
+ */
+export const NodeProgramRuns = implementation({
+  owner: "trame", implements: [ProgramRuns],
+  deps: { cli: NodeCli, events: NodeEvents, exit: ExitStatus, posix: Posix },
+  body: code.file("./code/tooling/node-program-runs.ts"),
+})
+
+/** What a scenario does with the programs run in memory: makes one fail, or write a file, reads those run. */
+export interface ProgramRunsScript {
+  /** The programs run in this directory fail from now on. */
+  failIn(dir: string): void
+  /** The next program run in this directory writes this file: an upgrade that moves a reference, say. */
+  writeIn(dir: string, path: string, content: string): void
+  /** The programs run, in their order. */
+  runs(): readonly ProgramRun[]
+}
+
+/** The programs a scenario keeps: the file it says a program writes is written when that program runs. */
+export const ProgramRunsKept = port<ProgramRunsScript>({ owner: "trame", declaredEffects: { failIn: [], writeIn: ["write"], runs: [] } })
+
+/**
+ * Programs run in memory
+ * In a scenario, a program run is kept, writes the file the scenario said it would, and succeeds unless the scenario
+ * made those of its directory fail.
+ */
+export const ProgramRunsInMemory = fn({
+  owner: "trame", implements: [ProgramRuns, ProgramRunsKept], serves: [RealizedOnce],
+  deps: { exit: ExitStatus, files: Files },
+  body: ({ exit, files }) => {
+    const runs: ProgramRun[] = []
+    const failing = new Set<string>()
+    const writes = new Map<string, { path: string; content: string }>()
+    return {
+      run: async (run: ProgramRun) => {
+        runs.push(run)
+        const written = writes.get(run.dir)
+        if (written) files.write(written.path, written.content), writes.delete(run.dir)
+        return failing.has(run.dir) ? exit.failure : exit.success
+      },
+      failIn: (dir: string) => void failing.add(dir),
+      writeIn: (dir: string, path: string, content: string) => void writes.set(dir, { path, content }),
+      runs: () => runs,
     }
   },
 })

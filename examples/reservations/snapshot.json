@@ -1336,6 +1336,27 @@
       }
     },
     {
+      "id": "sdlc.HowWeMerge",
+      "kind": "decision",
+      "title": "How we merge",
+      "fields": {
+        "owner": "karim",
+        "value": {
+          "repository": "karim/reservations",
+          "base": "main",
+          "method": "merge",
+          "lock": "trame.lock",
+          "project": {
+            "name": "reservations",
+            "dir": "."
+          }
+        },
+        "rejected": {
+          "Squashed": "a pull request that publishes keeps its publication apart from the code it publishes"
+        }
+      }
+    },
+    {
       "id": "sdlc.IntoMain",
       "kind": "shipment",
       "title": "Into the main branch",
@@ -1435,6 +1456,21 @@
       }
     },
     {
+      "id": "sdlc.OurPullRequests",
+      "kind": "function",
+      "title": "Our pull requests",
+      "status": "unknown",
+      "fields": {
+        "owner": "karim",
+        "deps": {
+          "merging": "sdlc.HowWeMerge",
+          "workflow": "sdlc.PullRequestsOnGitHub",
+          "ways": "ci/github.MergeWays"
+        },
+        "body": "(function)"
+      }
+    },
+    {
       "id": "sdlc.PackagesSafe",
       "kind": "obligation",
       "title": "The packages are safe",
@@ -1509,6 +1545,16 @@
           "Only when a pull request touches the project": "GitHub keeps a pull request waiting for a check it requires and that never ran",
           "Merged by GitHub whatever it changes": "what people decided would reach main without a person"
         }
+      }
+    },
+    {
+      "id": "sdlc.PullRequestsOpened",
+      "kind": "binding",
+      "title": "Pull requests opened by the library",
+      "status": "unknown",
+      "fields": {
+        "owner": "karim",
+        "context": "Opening a pull request is the same for every project of a repository on GitHub: the library writes it once, the service says how it merges."
       }
     },
     {
@@ -2562,6 +2608,21 @@
       "kind": "policy"
     },
     {
+      "from": "sdlc.OurPullRequests",
+      "to": "cancellation.CancelWithoutStress",
+      "kind": "serves"
+    },
+    {
+      "from": "sdlc.OurPullRequests",
+      "to": "sdlc.HowWeMerge",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.OurPullRequests",
+      "to": "sdlc.PullRequestsOnGitHub",
+      "kind": "deps"
+    },
+    {
       "from": "sdlc.PackagesSafe",
       "to": "cancellation.CancelWithoutStress",
       "kind": "serves"
@@ -2600,6 +2661,16 @@
       "from": "sdlc.PublishedBeforeMerging",
       "to": "cancellation.CancelWithoutStress",
       "kind": "serves"
+    },
+    {
+      "from": "sdlc.PullRequestsOpened",
+      "to": "sdlc.OurPullRequests",
+      "kind": "chooses"
+    },
+    {
+      "from": "sdlc.PullRequestsOpened",
+      "to": "infra.Local",
+      "kind": "environments"
     },
     {
       "from": "sdlc.PullRequestWorkflow",

@@ -57,13 +57,16 @@ const body = (deps: Deps): Handler => async (req) => {
     deps.terminal.error(messages.unknownCommandOrView(o.command, [...o.commands].sort(), [...new Set(own.map((x) => x.name))].sort(), views))
     return { status: exitStatus.failure, body: undefined }
   }
-  const { name, component, environments } = found
+  const { name, component, environments, chosen } = found
   const [only, ...others] = environments
   if (!only) return preparation.refuse(o, [messages.commandWithoutEnvironment(name, component.title)])
-  if (o.envName === undefined && deps.counts.any(others)) {
+  const named = o.envName === undefined ? undefined : environments.find((e) => e.id === o.envName || e.ref === o.envName)
+  if ((o.envName === undefined && deps.counts.any(others)) || (o.envName !== undefined && !named)) {
     return preparation.refuse(o, [messages.commandEnvironment(name, component.title, environments.map((e) => e.id))])
   }
-  const { files } = await deps.assembler.assembled(o, ctx, component.id, o.envName ?? only.id)
+  const env = named ?? only
+  // A library's command: assembled with the commands of its component the project chose there, and only those.
+  const { files } = await deps.assembler.assembled(o, ctx, component.ref, env.ref, chosen?.get(env.id))
   for (const f of files) {
     deps.writing.mkdirSync(deps.paths.dirname(f.path), { recursive: true })
     deps.writing.writeFileSync(f.path, f.content)

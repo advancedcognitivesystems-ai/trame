@@ -134,7 +134,7 @@ export const VersionOrder = fn({
  * repository, at the version it froze.
  */
 export const StandardLibrary = pkg({
-  owner: "trame", packageName: "std", version: "0.21.0", joins: "library", from: "path", at: "std/releases/0.21.0", serves: [SingleSource],
+  owner: "trame", packageName: "std", version: "0.22.3", joins: "library", from: "path", at: "std/releases/0.22.3", serves: [SingleSource],
 })
 
 /**
@@ -144,7 +144,7 @@ export const StandardLibrary = pkg({
  * Trame's graph (D1).
  */
 export const ContinuousIntegration = pkg({
-  owner: "trame", packageName: "ci", version: "0.7.0", joins: "library", from: "path", at: "ci/releases/0.7.0", serves: [SingleSource],
+  owner: "trame", packageName: "ci", version: "0.8.0", joins: "library", from: "path", at: "ci/releases/0.8.0", serves: [SingleSource],
 })
 
 /**

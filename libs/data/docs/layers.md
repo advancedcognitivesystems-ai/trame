@@ -1,6 +1,6 @@
 # Layers
 
-*The graph in force on 21 November 2026, ordered by distance to the goals.*
+*The graph in force on 22 November 2026, ordered by distance to the goals.*
 
 ```mermaid
 flowchart TB
@@ -71,9 +71,9 @@ flowchart TB
     n47["The next version<br/><small>Shipment</small>"]:::unknown
     n48["Its packages safe<br/><small>Obligation</small>"]:::neutral
     n49["How a pull request is checked on GitHub<br/><small>Decision</small>"]:::neutral
-    n50["The pull requests' workflow<br/><small>Artefact</small>"]:::unknown
+    n50["The pull requests' workflow<br/><small>Artefact</small>"]:::held
     n51["Its requirements held<br/><small>Obligation</small>"]:::neutral
-    n52["The files that run it elsewhere<br/><small>Shipment</small>"]:::unknown
+    n52["The files that run it elsewhere<br/><small>Shipment</small>"]:::held
     n53["The library of data<br/><small>Artefact</small>"]:::unknown
     n54["How a version is made<br/><small>Policy</small>"]:::neutral
   end

@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-21",
+  "at": "2026-11-22",
   "nodes": [
     {
       "id": "appearance.ExplorerDrawing",
@@ -953,6 +953,14 @@
       }
     },
     {
+      "id": "architecture.Session",
+      "kind": "environment",
+      "title": "A session of Claude Code",
+      "fields": {
+        "owner": "trame"
+      }
+    },
+    {
       "id": "architecture.Signatures",
       "kind": "port",
       "fields": {
@@ -1662,6 +1670,27 @@
       }
     },
     {
+      "id": "command-scenarios.LibraryCommandRun",
+      "kind": "scenario",
+      "title": "A command of a library the project chooses",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "byName": "commands.CommandOrView",
+          "help": "commands.Help",
+          "processLog": "architecture.ProcessLog",
+          "terminalLog": "architecture.TerminalLog",
+          "line": "conventions.TrameCommands",
+          "exitStatus": "std/system.ExitStatus",
+          "samples": "command-scenarios.ProjectSamples",
+          "texts": "std/algebra.Texts",
+          "messages": "messages.ScenarioMessages"
+        },
+        "body": "(function)"
+      }
+    },
+    {
       "id": "command-scenarios.LibraryReleased",
       "kind": "scenario",
       "title": "A library released",
@@ -1975,6 +2004,11 @@
             "argument": "--dry-run",
             "environment": "Local",
             "component": "The service's SDLC"
+          },
+          "libraryCommand": {
+            "name": "pull-request",
+            "argument": "A change",
+            "component": "The library's commands"
           },
           "started": {
             "title": "Started in memory",
@@ -8257,10 +8291,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "ci",
-        "version": "0.7.0",
+        "version": "0.8.0",
         "joins": "library",
         "from": "path",
-        "at": "ci/releases/0.7.0"
+        "at": "ci/releases/0.8.0"
       }
     },
     {
@@ -8394,10 +8428,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.21.0",
+        "version": "0.22.3",
         "joins": "library",
         "from": "path",
-        "at": "std/releases/0.21.0"
+        "at": "std/releases/0.22.3"
       }
     },
     {
@@ -9718,7 +9752,7 @@
       "id": "platform.DiskReading",
       "kind": "implementation",
       "title": "System files, for reading",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "body": {
@@ -9731,7 +9765,7 @@
       "id": "platform.DiskTrees",
       "kind": "implementation",
       "title": "Trees on disk",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -9749,7 +9783,7 @@
       "id": "platform.DiskWriting",
       "kind": "implementation",
       "title": "System files, for writing",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "body": {
@@ -10094,7 +10128,7 @@
       "id": "platform.NodeHttpServer",
       "kind": "implementation",
       "title": "Node HTTP server",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "body": {
@@ -10107,7 +10141,7 @@
       "id": "platform.NodeMachine",
       "kind": "binding",
       "title": "On a machine, Node.js reads, writes and runs",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "What changes the world (files written, processes, the terminal, the clock) is real only on a machine; the scenarios keep it in memory.",
@@ -10148,7 +10182,7 @@
       "id": "platform.NodeProcess",
       "kind": "implementation",
       "title": "Node process",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -10166,7 +10200,7 @@
       "id": "platform.NodePrograms",
       "kind": "implementation",
       "title": "Node programs",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -10184,7 +10218,7 @@
       "id": "platform.NodeTerminal",
       "kind": "implementation",
       "title": "Node terminal",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -10244,7 +10278,7 @@
       "id": "platform.NpmInstall",
       "kind": "implementation",
       "title": "npm installs",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -10263,7 +10297,7 @@
       "id": "platform.NpmReports",
       "kind": "implementation",
       "title": "npm's reports",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -10403,7 +10437,7 @@
       "id": "platform.RunsKeptOnDisk",
       "kind": "binding",
       "title": "On a machine, runs are kept on disk",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "The commands of a shipment and of an advance run as separate processes, each compiling the same graph: what one played, the next can find only on disk.",
@@ -10417,7 +10451,7 @@
       "id": "platform.RunsOnDisk",
       "kind": "implementation",
       "title": "Runs kept on disk",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -10455,7 +10489,7 @@
       "id": "platform.SystemClock",
       "kind": "implementation",
       "title": "System clock",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -10867,7 +10901,7 @@
       "id": "principles.ShippedThroughTheGraph",
       "kind": "adr",
       "title": "A version ships through the graph",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "Two products ship differently (a page placed where it is served, an engine frozen into a generation) and their pipelines lived in scripts and in their authors' heads: nothing said what had been checked, by whom, on which version, nor why a version could go.",
@@ -10883,7 +10917,7 @@
       "id": "principles.TechnologyInOneNode",
       "kind": "adr",
       "title": "A technology is chosen in one node",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "Each implementation said which environments it served: the choice of a technology was spread over its realizations, nothing said why, and a test double or a repository over a database port had to be declared as if it touched the platform.",
@@ -11455,6 +11489,20 @@
         "fingerprint": "74156ba66627e032",
         "language": "shared",
         "archive": "448ee554dabc9b98"
+      }
+    },
+    {
+      "id": "releases.G117",
+      "kind": "release",
+      "title": "Generation 117",
+      "fields": {
+        "owner": "trame",
+        "version": "g117",
+        "date": "2026-11-22",
+        "what": "E3, part 2a: a project runs the commands of a library it chooses by a binding (its component assembled for the choice's environment with only those commands); std's pull-request and propagate, taken by Trame and the example",
+        "fingerprint": "347b98a909d2510c",
+        "language": "shared",
+        "archive": "1f89c7a53ffc47e7"
       }
     },
     {
@@ -13679,6 +13727,26 @@
       }
     },
     {
+      "id": "sdlc.AutoMergeInASession",
+      "kind": "binding",
+      "title": "GitHub merges once it holds, asked in a session",
+      "status": "unknown",
+      "fields": {
+        "owner": "trame",
+        "context": "A session's proxy refuses GitHub's GraphQL, and offers PUT on the pull request's ccr/auto_merge instead."
+      }
+    },
+    {
+      "id": "sdlc.AutoMergeOnTheMachine",
+      "kind": "binding",
+      "title": "GitHub merges once it holds, asked by its command line",
+      "status": "unknown",
+      "fields": {
+        "owner": "trame",
+        "context": "GitHub asks the automatic merge by GraphQL, which GitHub's command line calls with the token of the person."
+      }
+    },
+    {
       "id": "sdlc.CandidateChecked",
       "kind": "obligation",
       "title": "The candidate is checked by programs",
@@ -13693,7 +13761,7 @@
       "id": "sdlc.CandidateKeepsTheLaws",
       "kind": "check",
       "title": "The candidate plays the laws",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame"
       }
@@ -13702,9 +13770,22 @@
       "id": "sdlc.CandidateRunsOnTheMachine",
       "kind": "check",
       "title": "The candidate runs on the machine",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame"
+      }
+    },
+    {
+      "id": "sdlc.CommandsOfStd",
+      "kind": "binding",
+      "title": "The commands Trame takes from std",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "Opening a pull request and carrying a version across the repository were done by hand, with gh and a loop of trame.sh, differently each time.",
+        "rejected": {
+          "Commands of Trame's own": "any project of a repository opens pull requests: std writes them once, Trame chooses them"
+        }
       }
     },
     {
@@ -13720,7 +13801,7 @@
       "id": "sdlc.EngineCandidate",
       "kind": "artifact",
       "title": "The candidate engine",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "out/local/trame-cli.ts"
@@ -13892,7 +13973,7 @@
       "id": "sdlc.NextGeneration",
       "kind": "shipment",
       "title": "The next generation",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "generation"
@@ -13947,6 +14028,77 @@
       }
     },
     {
+      "id": "sdlc.OurCommandsSettled",
+      "kind": "scenario",
+      "title": "Trame's settings, as std's commands read them",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "pulls": "std/commands.PullRequestSettings",
+          "carried": "std/commands.PropagationSettings",
+          "repository": "sdlc.TheRepository",
+          "main": "sdlc.MainBranch",
+          "projects": "sdlc.RepositoryProjects",
+          "layout": "conventions.Layout",
+          "line": "conventions.TrameCommands",
+          "day": "platform.TestDay",
+          "workflow": "sdlc.PullRequestsOnGitHub",
+          "messages": "messages.ScenarioMessages"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "sdlc.OurPropagation",
+      "kind": "function",
+      "title": "How a version is carried across Trame's repository",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "layout": "conventions.Layout",
+          "start": "conventions.ProjectStart",
+          "typescript": "typescript.TypeScript",
+          "posix": "std/system.Posix",
+          "texts": "std/algebra.Texts",
+          "line": "conventions.TrameCommands",
+          "variables": "conventions.TrameEnvironment",
+          "day": "platform.TestDay",
+          "projects": "sdlc.RepositoryProjects"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "sdlc.OurPullRequests",
+      "kind": "function",
+      "title": "How Trame's pull requests are opened",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "repository": "sdlc.TheRepository",
+          "main": "sdlc.MainBranch",
+          "workflow": "sdlc.PullRequestsOnGitHub",
+          "layout": "conventions.Layout",
+          "projects": "sdlc.RepositoryProjects",
+          "ways": "ci/github.MergeWays"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "sdlc.OurSettingsInTheScenarios",
+      "kind": "binding",
+      "title": "Trame's settings in the scenarios",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "What the settings give is played before a command of std reads them on the machine."
+      }
+    },
+    {
       "id": "sdlc.PageProgram",
       "kind": "artifact",
       "title": "The page's program",
@@ -13993,7 +14145,7 @@
       "id": "sdlc.PullRequestWorkflow",
       "kind": "artifact",
       "title": "The pull requests' workflow",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": ".github/workflows/trame-pull-request.yml",
@@ -14023,6 +14175,63 @@
         "body": {
           "file": "./code/sdlc/read-the-repository-settings.ts",
           "language": "typescript"
+        }
+      }
+    },
+    {
+      "id": "sdlc.RepositoryProjects",
+      "kind": "decision",
+      "title": "The repository's projects",
+      "fields": {
+        "owner": "trame",
+        "value": [
+          {
+            "name": "trame",
+            "dir": ".",
+            "runners": "RunnersWritten",
+            "reads": [
+              "reservations"
+            ]
+          },
+          {
+            "name": "std",
+            "dir": "std",
+            "runners": "RunnersWritten"
+          },
+          {
+            "name": "ci",
+            "dir": "ci",
+            "runners": "RunnersWritten"
+          },
+          {
+            "name": "team",
+            "dir": "libs/team",
+            "runners": "RunnersWritten"
+          },
+          {
+            "name": "data",
+            "dir": "libs/data",
+            "runners": "RunnersWritten"
+          },
+          {
+            "name": "geometry",
+            "dir": "libs/geometry"
+          },
+          {
+            "name": "reservations",
+            "dir": "examples/reservations",
+            "runners": "RunnersWritten",
+            "scenarios": true
+          },
+          {
+            "name": "poselia",
+            "dir": "apps/poselia",
+            "runners": "RunnersWritten"
+          }
+        ],
+        "rejected": {
+          "Found on the disk, by their trame.json": "a generation keeps a copy of the example, which is not a project of the repository",
+          "In the order they are carried": "the order follows from the libraries each one imports; what one reads besides is said"
         }
       }
     },
@@ -14070,10 +14279,20 @@
       }
     },
     {
+      "id": "sdlc.RepositoryWorkOnAMachine",
+      "kind": "binding",
+      "title": "The repository's work on a machine",
+      "status": "unknown",
+      "fields": {
+        "owner": "trame",
+        "context": "A pull request is opened, and a version carried, from the repository checked out, with the rights of whoever runs it."
+      }
+    },
+    {
       "id": "sdlc.RunnersWritten",
       "kind": "shipment",
       "title": "The files that run it elsewhere",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "repository"
@@ -17996,6 +18215,61 @@
     },
     {
       "from": "command-scenarios.LawsTested",
+      "to": "messages.ScenarioMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.LibraryCommandRun",
+      "to": "commands.CommandOrView",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.LibraryCommandRun",
+      "to": "commands.ProjectCommands",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.LibraryCommandRun",
+      "to": "commands.Help",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.LibraryCommandRun",
+      "to": "architecture.Test",
+      "kind": "env"
+    },
+    {
+      "from": "command-scenarios.LibraryCommandRun",
+      "to": "commands.CommandOrView",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.LibraryCommandRun",
+      "to": "commands.Help",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.LibraryCommandRun",
+      "to": "architecture.ProcessLog",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.LibraryCommandRun",
+      "to": "architecture.TerminalLog",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.LibraryCommandRun",
+      "to": "conventions.TrameCommands",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.LibraryCommandRun",
+      "to": "command-scenarios.ProjectSamples",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.LibraryCommandRun",
       "to": "messages.ScenarioMessages",
       "kind": "deps"
     },
@@ -26235,6 +26509,16 @@
       "kind": "assembledBy"
     },
     {
+      "from": "releases.G117",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G117",
+      "to": "releases.G116",
+      "kind": "assembledBy"
+    },
+    {
       "from": "releases.G12",
       "to": "architecture.TrameCli",
       "kind": "component"
@@ -28450,6 +28734,16 @@
       "kind": "serves"
     },
     {
+      "from": "sdlc.AutoMergeInASession",
+      "to": "architecture.Session",
+      "kind": "environments"
+    },
+    {
+      "from": "sdlc.AutoMergeOnTheMachine",
+      "to": "architecture.Local",
+      "kind": "environments"
+    },
+    {
       "from": "sdlc.CandidateChecked",
       "to": "product.ExecutableSpecification",
       "kind": "serves"
@@ -28538,6 +28832,31 @@
       "from": "sdlc.CandidateRunsOnTheMachine",
       "to": "platform.RunsOnDisk",
       "kind": "verifies"
+    },
+    {
+      "from": "sdlc.CommandsOfStd",
+      "to": "sdlc.OurPullRequests",
+      "kind": "chooses"
+    },
+    {
+      "from": "sdlc.CommandsOfStd",
+      "to": "sdlc.OurPropagation",
+      "kind": "chooses"
+    },
+    {
+      "from": "sdlc.CommandsOfStd",
+      "to": "architecture.Local",
+      "kind": "environments"
+    },
+    {
+      "from": "sdlc.CommandsOfStd",
+      "to": "architecture.Session",
+      "kind": "environments"
+    },
+    {
+      "from": "sdlc.CommandsOfStd",
+      "to": "product.ExecutableSpecification",
+      "kind": "serves"
     },
     {
       "from": "sdlc.EngineCallersIdentified",
@@ -28815,6 +29134,146 @@
       "kind": "deps"
     },
     {
+      "from": "sdlc.OurCommandsSettled",
+      "to": "sdlc.OurPullRequests",
+      "kind": "verifies"
+    },
+    {
+      "from": "sdlc.OurCommandsSettled",
+      "to": "sdlc.OurPropagation",
+      "kind": "verifies"
+    },
+    {
+      "from": "sdlc.OurCommandsSettled",
+      "to": "architecture.Test",
+      "kind": "env"
+    },
+    {
+      "from": "sdlc.OurCommandsSettled",
+      "to": "sdlc.TheRepository",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.OurCommandsSettled",
+      "to": "sdlc.MainBranch",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.OurCommandsSettled",
+      "to": "sdlc.RepositoryProjects",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.OurCommandsSettled",
+      "to": "conventions.Layout",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.OurCommandsSettled",
+      "to": "conventions.TrameCommands",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.OurCommandsSettled",
+      "to": "platform.TestDay",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.OurCommandsSettled",
+      "to": "sdlc.PullRequestsOnGitHub",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.OurCommandsSettled",
+      "to": "messages.ScenarioMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.OurPropagation",
+      "to": "product.ExecutableSpecification",
+      "kind": "serves"
+    },
+    {
+      "from": "sdlc.OurPropagation",
+      "to": "conventions.Layout",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.OurPropagation",
+      "to": "conventions.ProjectStart",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.OurPropagation",
+      "to": "typescript.TypeScript",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.OurPropagation",
+      "to": "conventions.TrameCommands",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.OurPropagation",
+      "to": "conventions.TrameEnvironment",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.OurPropagation",
+      "to": "platform.TestDay",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.OurPropagation",
+      "to": "sdlc.RepositoryProjects",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.OurPullRequests",
+      "to": "product.ExecutableSpecification",
+      "kind": "serves"
+    },
+    {
+      "from": "sdlc.OurPullRequests",
+      "to": "sdlc.TheRepository",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.OurPullRequests",
+      "to": "sdlc.MainBranch",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.OurPullRequests",
+      "to": "sdlc.PullRequestsOnGitHub",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.OurPullRequests",
+      "to": "conventions.Layout",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.OurPullRequests",
+      "to": "sdlc.RepositoryProjects",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.OurSettingsInTheScenarios",
+      "to": "sdlc.OurPullRequests",
+      "kind": "chooses"
+    },
+    {
+      "from": "sdlc.OurSettingsInTheScenarios",
+      "to": "sdlc.OurPropagation",
+      "kind": "chooses"
+    },
+    {
+      "from": "sdlc.OurSettingsInTheScenarios",
+      "to": "architecture.Test",
+      "kind": "environments"
+    },
+    {
       "from": "sdlc.PageProgram",
       "to": "architecture.PageApp",
       "kind": "producedBy"
@@ -28890,6 +29349,16 @@
       "kind": "policy"
     },
     {
+      "from": "sdlc.RepositoryWorkOnAMachine",
+      "to": "architecture.Local",
+      "kind": "environments"
+    },
+    {
+      "from": "sdlc.RepositoryWorkOnAMachine",
+      "to": "architecture.Session",
+      "kind": "environments"
+    },
+    {
       "from": "sdlc.RunnersWritten",
       "to": "sdlc.PullRequestWorkflow",
       "kind": "ships"
@@ -28902,6 +29371,11 @@
     {
       "from": "sdlc.SdlcOnTheMachine",
       "to": "architecture.Local",
+      "kind": "environments"
+    },
+    {
+      "from": "sdlc.SdlcOnTheMachine",
+      "to": "architecture.Session",
       "kind": "environments"
     },
     {

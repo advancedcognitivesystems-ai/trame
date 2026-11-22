@@ -134,8 +134,10 @@ const body = (deps: Deps) => {
     return (proto === Object.prototype || proto === null) && Object.values(v).every(isJsonData)
   }
 
+  /** A node by its reference or its name: the project's, or a library's by its reference in the graph (since g117). */
   function findNode(c: Compiled, ref: string, kind?: string): AnyNode | undefined {
-    return c.nodes.find((n) => (refOf(n) === ref || meta(n).id === ref) && (!kind || meta(n).def.name === kind))
+    return c.nodes.find((n) => (refOf(n) === ref || meta(n).id === ref) && (!kind || meta(n).def.name === kind)) ??
+      (kind ? c.graph.all(kind).nodes().find((v) => v.ref === ref)?.node : undefined)
   }
 
   /**
@@ -158,7 +160,11 @@ const body = (deps: Deps) => {
     return (meta(n).def.claims?.(g.self(n) as never, g) ?? []).some((claim) => run.has(claim.target.node))
   }
 
-  function prepareAssembly(c: Compiled, root: string, componentRef: string, envRef: string): { assembly?: Assembly; errors: string[] } {
+  /**
+   * A component prepared for an environment: each of its entry points, or only those named (since g117, a library's
+   * commands a project chose there).
+   */
+  function prepareAssembly(c: Compiled, root: string, componentRef: string, envRef: string, only?: readonly string[]): { assembly?: Assembly; errors: string[] } {
     const component = findNode(c, componentRef, KindName.component)
     const env = findNode(c, envRef, KindName.environment)
     if (!component) return { errors: [messages.unknownComponent(componentRef)] }
@@ -175,7 +181,7 @@ const body = (deps: Deps) => {
       within: [root, ...c.libraries.map((lib) => lib.root)],
       names: { imports, separator, pattern, extension },
     }
-    const entries = g.from(component).in(EdgeName.partOf).where((v) => v.kind === KindName.entry).nodes().map((v) => v.node)
+    const entries = g.from(component).in(EdgeName.partOf).where((v) => v.kind === KindName.entry && (only === undefined || only.includes(v.ref))).nodes().map((v) => v.node)
     const needed = [...depsOf(component).map(([, n]) => n), ...entries]
     const p = plan(host, needed, env)
     if (p.errors.length) return { errors: p.errors }

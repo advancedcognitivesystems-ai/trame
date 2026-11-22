@@ -23,13 +23,33 @@
 | warning | `shipment-awaits` | To ship: The pull requests' workflow is unknown | [The files that run it elsewhere](#RunnersWritten) | karim |  |
 | warning | `artifact-not-built` | Not built yet: trame ship builds it | [The service](#TheService) | karim |  |
 
-## Decision
+## Decisions
+
+<a id="HowWeMerge"></a>
+
+### How we merge
+
+`HowWeMerge` · `src/sdlc.ts:300` · published
+
+The service's repository, its main branch, merged by a merge commit; what people decide frozen in trame.lock, as Trame publishes it.
+
+| Case | Value |
+|---|---|
+| repository | karim/reservations |
+| base | main |
+| method | merge |
+| lock | trame.lock |
+| project | { name: reservations, dir: . } |
+
+- Decided by: karim
+- Rejected: Squashed, a pull request that publishes keeps its publication apart from the code it publishes
+- Used by: [Our pull requests](#OurPullRequests)
 
 <a id="PullRequestsOnGitHub"></a>
 
 ### How a pull request is checked on GitHub
 
-`PullRequestsOnGitHub` · `src/sdlc.ts:240` · published
+`PullRequestsOnGitHub` · `src/sdlc.ts:244` · published
 
 At each pull request into main, on GitHub's Ubuntu 24.04 machine with Node.js 22: its job, named reservations, is a check the repository requires; it writes in it the review of the branch (what its declarations not yet published add to those published), and keeps GitHub from merging a pull request that changes what people decided (a trame.lock of the repository), which a person then merges (D1).
 
@@ -44,6 +64,7 @@ At each pull request into main, on GitHub's Ubuntu 24.04 machine with Node.js 22
 
 - Decided by: karim
 - Rejected: Only when a pull request touches the project, GitHub keeps a pull request waiting for a check it requires and that never ran; Merged by GitHub whatever it changes, what people decided would reach main without a person
+- Used by: [Our pull requests](#OurPullRequests)
 - Sets the writer of: [The pull requests' workflow](#PullRequestWorkflow)
 
 ## Component
@@ -52,7 +73,7 @@ At each pull request into main, on GitHub's Ubuntu 24.04 machine with Node.js 22
 
 ### The service's SDLC
 
-`ReservationsSdlc` · `src/sdlc.ts:59`
+`ReservationsSdlc` · `src/sdlc.ts:63`
 
 The programs that deploy the service, run by trame ship (or by a person): the first word names the command.
 
@@ -65,13 +86,30 @@ The programs that deploy the service, run by trame ship (or by a person): the fi
 - Deployed in: [Local](infra.md#Local)
 - Exposes: [Prepare the storage](#PrepareStorage)
 
+## Function
+
+<a id="OurPullRequests"></a>
+
+### Our pull requests
+
+`OurPullRequests` · `src/sdlc.ts:311` · status: **unknown** · published
+
+As decided, and merged by GitHub once they hold as the pull requests' workflow says: unless they change what people decided; a person merges them when it says nothing.
+
+- Owner: karim
+- Parameters: `merging` ← [How we merge](#HowWeMerge) · `workflow` ← [How a pull request is checked on GitHub](#PullRequestsOnGitHub) · `ways` ← [How a pull request is merged](../../../ci/releases/0.7.0/docs/github.md#MergeWays)
+- Body: inline, in the declaration
+- Serves: [Cancel without stress](cancellation.md#CancelWithoutStress)
+- Implements: [How pull requests are opened](../../../std/docs/commands.md#PullRequestSettings)
+- Chosen by: [Pull requests opened by the library](#PullRequestsOpened)
+
 ## Entry point
 
 <a id="PrepareStorage"></a>
 
 ### Prepare the storage
 
-`PrepareStorage` · `src/sdlc.ts:83` · status: **held**
+`PrepareStorage` · `src/sdlc.ts:87` · status: **held**
 
 Makes the table of each entity the service keeps ready, before the service starts: created with what it starts with, or migrated from the version the previous deployment kept.
 
@@ -88,13 +126,13 @@ Triggered by `command prepare-storage`
 - Used by: [The storage is prepared](scenarios.md#StoragePrepared)
 - Deploys: [On this machine](#OnThisMachine)
 
-## Technical choice
+## Technical choices
 
 <a id="CommandsOnThisMachine"></a>
 
 ### Commands on this machine
 
-`CommandsOnThisMachine` · `src/sdlc.ts:70` · status: **unknown**
+`CommandsOnThisMachine` · `src/sdlc.ts:74` · status: **unknown**
 
 The programs of the SDLC read their commands from Node's command line, as the standard library realizes it.
 
@@ -111,13 +149,38 @@ Context: trame ship runs the programs that deploy as a person would run them, wi
 - In: [Local](infra.md#Local)
 - Follows: [Adapter](../../../std/docs/patterns.md#Adapter)
 
+<a id="PullRequestsOpened"></a>
+
+### Pull requests opened by the library
+
+`PullRequestsOpened` · `src/sdlc.ts:325` · status: **unknown**
+
+The service takes std's pull-request, on the machine, with its own settings; Git's and GitHub's command lines answer it there.
+
+In [Local](infra.md#Local):
+
+| Port | Answered by | Which is |
+|---|---|---|
+| [How pull requests are opened](../../../std/docs/commands.md#PullRequestSettings) | [Our pull requests](#OurPullRequests) | a function |
+| the command pull-request | [Open a pull request](../../../std/docs/commands.md#OpenPullRequest) | a command of a library |
+| [The automatic merge](../../../std/docs/repository.md#AutoMerge) | [The automatic merge, by GitHub's command line](../../../std/docs/repository.md#AutoMergeByGitHubCli) | an implementation |
+| [The branches](../../../std/docs/repository.md#Branches) | [Git's branches](../../../std/docs/repository.md#GitCliBranches) | an implementation |
+| [Pull requests](../../../std/docs/repository.md#PullRequests) | [GitHub's pull requests, by its command line](../../../std/docs/repository.md#GitHubCliPullRequests) | an implementation |
+
+Context: Opening a pull request is the same for every project of a repository on GitHub: the library writes it once, the service says how it merges.
+
+- Decided by: karim
+- Chooses: [Open a pull request](../../../std/docs/commands.md#OpenPullRequest), [Our pull requests](#OurPullRequests), [Git's branches](../../../std/docs/repository.md#GitCliBranches), [GitHub's pull requests, by its command line](../../../std/docs/repository.md#GitHubCliPullRequests), [The automatic merge, by GitHub's command line](../../../std/docs/repository.md#AutoMergeByGitHubCli)
+- In: [Local](infra.md#Local)
+- Follows: [Command](../../../std/docs/patterns.md#Command)
+
 ## Role
 
 <a id="Operators"></a>
 
 ### The operators
 
-`Operators` · `src/sdlc.ts:41` · published
+`Operators` · `src/sdlc.ts:45` · published
 
 Who runs the service, and checks by hand what only a machine shows. While Karim is away in December, Léa signs his checks for him (C4): the evidence is his, she is named with it.
 
@@ -136,7 +199,7 @@ Who runs the service, and checks by hand what only a machine shows. While Karim 
 
 ### The program for a laptop
 
-`LocalProgram` · `src/sdlc.ts:53` · status: **unknown**
+`LocalProgram` · `src/sdlc.ts:57` · status: **unknown**
 
 The service assembled for a developer's machine, its database in a file.
 
@@ -152,7 +215,7 @@ The service assembled for a developer's machine, its database in a file.
 
 ### The program for production
 
-`ProductionProgram` · `src/sdlc.ts:47` · status: **unknown**
+`ProductionProgram` · `src/sdlc.ts:51` · status: **unknown**
 
 The service assembled for production: what a release ships.
 
@@ -167,7 +230,7 @@ The service assembled for production: what a release ships.
 
 ### The pull requests' workflow
 
-`PullRequestWorkflow` · `src/sdlc.ts:258` · status: **unknown**
+`PullRequestWorkflow` · `src/sdlc.ts:262` · status: **unknown**
 
 The workflow that checks a pull request on GitHub, written from the pipeline of the shipment it runs: it prepares the machine as the plan says, writes the review of the branch in the pull request, keeps GitHub from merging what people decided, then runs trame ship.
 
@@ -184,7 +247,7 @@ The workflow that checks a pull request on GitHub, written from the pipeline of 
 
 ### The service
 
-`TheService` · `src/sdlc.ts:212` · status: **unknown**
+`TheService` · `src/sdlc.ts:216` · status: **unknown**
 
 The service as its people write it: what a pull request brings into the main branch, all its code.
 
@@ -200,7 +263,7 @@ The service as its people write it: what a pull request brings into the main bra
 
 ### On a laptop
 
-`OnALaptop` · `src/sdlc.ts:118` · status: **unknown**
+`OnALaptop` · `src/sdlc.ts:122` · status: **unknown**
 
 The program for a laptop, run with its database in a file.
 
@@ -215,7 +278,7 @@ The program for a laptop, run with its database in a file.
 
 ### On staging
 
-`OnStaging` · `src/sdlc.ts:102` · status: **unknown**
+`OnStaging` · `src/sdlc.ts:106` · status: **unknown**
 
 The program for production, run on the staging machine with its database and the provider's sandbox: what no scenario in memory can show.
 
@@ -234,7 +297,7 @@ The program for production, run on the staging machine with its database and the
 
 ### Into the main branch
 
-`IntoMain` · `src/sdlc.ts:232` · status: **unknown**
+`IntoMain` · `src/sdlc.ts:236` · status: **unknown**
 
 A pull request into main: it merges once it holds, as the repository's settings say (D1).
 
@@ -255,7 +318,7 @@ Not shipped yet.
 
 ### On this machine
 
-`OnThisMachine` · `src/sdlc.ts:199` · status: **unknown**
+`OnThisMachine` · `src/sdlc.ts:203` · status: **unknown**
 
 The service on a developer's machine, the way of this machine: the program for a laptop built, and its database made ready, migrated from what the previous deployment kept.
 
@@ -290,7 +353,7 @@ Not shipped yet.
 
 ### A release
 
-`Release` · `src/sdlc.ts:192` · status: **unknown**
+`Release` · `src/sdlc.ts:196` · status: **unknown**
 
 The service for its users, the way of a release: the program for production, and the one developers run.
 
@@ -332,7 +395,7 @@ Not shipped yet.
 
 ### The files that run it elsewhere
 
-`RunnersWritten` · `src/sdlc.ts:272` · status: **unknown**
+`RunnersWritten` · `src/sdlc.ts:276` · status: **unknown**
 
 The workflow that checks each pull request, written by trame ship from the graph and kept in the repository where GitHub finds it; shipped again when the pipeline it runs changes.
 
@@ -353,7 +416,7 @@ Not shipped yet.
 
 ### Who calls, identified
 
-`CallersIdentified` · `src/sdlc.ts:172`
+`CallersIdentified` · `src/sdlc.ts:176`
 
 Each audience the service's entry points are for that carries an identity (drivers) is identified where a release runs it: otherwise whoever reaches the service would call as any driver. A gap is said, not yet refused: nothing can identify anyone before C7.
 
@@ -368,7 +431,7 @@ A gap it finds is a warning.
 
 ### The code is verified
 
-`CodeVerified` · `src/sdlc.ts:130`
+`CodeVerified` · `src/sdlc.ts:134`
 
 Every scenario that verifies code the program reaches; an entry point or a function nothing verifies is said.
 
@@ -391,7 +454,7 @@ A gap it finds is a warning.
 
 ### The decisions hold
 
-`DecisionsApplied` · `src/sdlc.ts:142`
+`DecisionsApplied` · `src/sdlc.ts:146`
 
 - Owner: karim
 - Applies the family: [The decisions a shipment applies hold](../../../std/docs/obligations.md#Applied)
@@ -402,7 +465,7 @@ A gap it finds is a warning.
 
 ### Every check is signed
 
-`EveryCheck` · `src/sdlc.ts:147`
+`EveryCheck` · `src/sdlc.ts:151`
 
 <details><summary>Its parameters</summary>
 
@@ -421,7 +484,7 @@ A gap it finds is a warning.
 
 ### The requirements of the goal hold
 
-`GoalServed` · `src/sdlc.ts:137`
+`GoalServed` · `src/sdlc.ts:141`
 
 - Owner: karim
 - Applies the family: [The product a shipment serves holds](../../../std/docs/obligations.md#Served)
@@ -432,7 +495,7 @@ A gap it finds is a warning.
 
 ### What the service keeps, migrated
 
-`KeptMigrates` · `src/sdlc.ts:164`
+`KeptMigrates` · `src/sdlc.ts:168`
 
 The reservations and the refunds migrate from every version a deployment kept: a step their owner has not decided keeps the shipment, since what drivers reserved and were refunded would be lost.
 
@@ -447,7 +510,7 @@ A gap it finds is an error of the graph.
 
 ### The packages are safe
 
-`PackagesSafe` · `src/sdlc.ts:157`
+`PackagesSafe` · `src/sdlc.ts:161`
 
 - Owner: karim
 - Applies the family: [The packages a shipment uses are safe](../../../std/docs/obligations.md#Safe)
@@ -458,7 +521,7 @@ A gap it finds is an error of the graph.
 
 ### What people decided, published
 
-`PublishedBeforeMerging` · `src/sdlc.ts:219`
+`PublishedBeforeMerging` · `src/sdlc.ts:223`
 
 Each part of a declaration people decide (a value, a statement) is published in trame.lock before it merges: what the pull request changes of it is then its review.
 
@@ -473,7 +536,7 @@ A gap it finds is an error of the graph.
 
 ### The rules hold
 
-`RulesHeld` · `src/sdlc.ts:152`
+`RulesHeld` · `src/sdlc.ts:156`
 
 - Owner: karim
 - Applies the family: [The project's rules hold](../../../std/docs/obligations.md#Ruled)
@@ -486,7 +549,7 @@ A gap it finds is an error of the graph.
 
 ### The way of this machine
 
-`MachineMode` · `src/sdlc.ts:186`
+`MachineMode` · `src/sdlc.ts:190`
 
 For a developer: the code verified (a gap said), the rules held, what the service keeps migrated.
 
@@ -500,7 +563,7 @@ And, as every policy, the foundations: no literal in a body, and a sound graph (
 
 ### How a change merges
 
-`MergeMode` · `src/sdlc.ts:226`
+`MergeMode` · `src/sdlc.ts:230`
 
 The way the service takes a change into its main branch: what people decided is published; and the foundations, as always.
 
@@ -514,7 +577,7 @@ And, as every policy, the foundations: no literal in a body, and a sound graph (
 
 ### The way of a release
 
-`ReleaseMode` · `src/sdlc.ts:177`
+`ReleaseMode` · `src/sdlc.ts:181`
 
 And, as every policy, the foundations: no literal in a body, and a sound graph (nothing undecided, no error of the graph).
 

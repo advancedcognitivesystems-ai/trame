@@ -4,7 +4,7 @@
 // release's own record is written after its sources are copied, so it is not in its own copy.
 
 import { release } from "#trame/kinds/release"
-import { CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold } from "./product"
+import { ChosenCommands, CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold } from "./product"
 
 /**
  * Version 0.1.0
@@ -303,4 +303,56 @@ export const R0_21_0 = release({
   fingerprint: "11af7c0453654031",
   language: "shared",
   serves: [CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
+})
+
+/**
+ * Version 0.22.0
+ */
+export const R0_22_0 = release({
+  owner: "trame",
+  version: "0.22.0",
+  date: "2026-11-22",
+  what: "Commands a project chooses (E3): the component LibraryCommands with pull-request and propagate, their settings ports; the ports Branches, PullRequests, AutoMerge and ProgramRuns, realized on a machine, in a session of Claude Code and in memory; the pattern Command; POSIX's slash",
+  fingerprint: "73116234162e1cca",
+  language: "shared",
+  serves: [ChosenCommands, CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
+})
+
+/**
+ * Version 0.22.1
+ */
+export const R0_22_1 = release({
+  owner: "trame",
+  version: "0.22.1",
+  date: "2026-11-22",
+  what: "propagate: two projects that import each other, the one that waits for the fewest first, the first decided among them",
+  fingerprint: "5021d2d8af163b91",
+  language: "shared",
+  serves: [ChosenCommands, CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
+})
+
+/**
+ * Version 0.22.2
+ */
+export const R0_22_2 = release({
+  owner: "trame",
+  version: "0.22.2",
+  date: "2026-11-22",
+  what: "propagate runs the launcher by its path from the repository's root",
+  fingerprint: "d3c890b34b2183ab",
+  language: "shared",
+  serves: [ChosenCommands, CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
+})
+
+/**
+ * Version 0.22.3
+ */
+export const R0_22_3 = release({
+  owner: "trame",
+  version: "0.22.3",
+  date: "2026-11-22",
+  what: "propagate writes a project's files that run elsewhere again when any file that records its references moved (the settings name them)",
+  fingerprint: "60be38b8e207181c",
+  language: "shared",
+  serves: [ChosenCommands, CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
 })

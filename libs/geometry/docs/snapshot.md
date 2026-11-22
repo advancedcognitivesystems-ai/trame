@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 21 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 22 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Geometry · Angles
 
@@ -29,7 +29,7 @@ Package · `ContinuousIntegration`
 
 - Owner: ghalaax
 - Name: ci
-- Version: 0.7.0
+- Version: 0.8.0
 - How it joins the graph: library
 - Where it comes from: registry
 - Serves: Geometry written once
@@ -40,7 +40,7 @@ Package · `Language`
 
 - Owner: ghalaax
 - Name: trame
-- Version: 116
+- Version: 117
 - How it joins the graph: language
 - Where it comes from: registry
 - Serves: Geometry written once
@@ -62,7 +62,7 @@ Package · `StandardLibrary`
 
 - Owner: ghalaax
 - Name: std
-- Version: 0.21.0
+- Version: 0.22.3
 - How it joins the graph: library
 - Where it comes from: registry
 - Serves: Geometry written once

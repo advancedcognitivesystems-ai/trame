@@ -38,6 +38,8 @@ Run from the project's directory, through the pinned generation:
 ./trame.sh view <view> [node|module]   # one view in the terminal: impact, why, history, assembly take a node
 ./trame.sh help                        # what may be typed here: the engine's commands, the project's, the views (g116)
 ./trame.sh <command> [args] [--env <e>] # a command of the project (E3, g116): its component assembled, its program run (Trame: open-graph-page)
+./trame.sh pull-request "Title" ["What it changes"] --env Local|Session   # std's command Trame takes (g117): pushes, opens, merges once it holds unless a lock changed
+./trame.sh propagate --by <name> --env Local|Session   # std's command Trame takes (g117): each project of the repository upgraded, its workflow written again, built
 ./trame.sh dev                         # the page, recompiled at each change
 ./trame.sh export page.html            # the page, standalone: the dates the graph changes at, and the last days of its history
 ./trame.sh assemble <component> --env <environment>
@@ -184,8 +186,11 @@ pages), applied by a shipment of Trame (`RepositorySet`): the check `RepositoryR
 port `RepositoryApi` (GitHub's command line on the machine), then the program `apply-repository-settings` sets it and
 reads it back, failing on each part that still differs. An administrator of the repository ships it, with their own
 token: `./trame.sh ship RepositorySet --by <name>`; `--dry-run` only reads it and says what differs. Work on a branch,
-open the pull request (`gh api repos/{owner}/{repo}/pulls --method POST`), then: `gh pr merge <n> --merge --auto` when
-it changes nothing people decided, otherwise its owner reads the review (`gh pr view <n> --comments`) and merges it.
+then `./trame.sh pull-request "Title" ["What it changes"] --env Local` (`--env Session` in a session of Claude Code,
+whose proxy refuses GitHub's GraphQL): std's command, which Trame takes (g117), pushes the branch, opens its pull request
+into main (or finds the one open), says which projects it changes, and asks GitHub to merge it once it holds unless it
+changes a lock of the repository's projects (decision `RepositoryProjects`); then its owner reads the review (`gh pr
+view <n> --comments`) and merges it. Never call `gh` to open or merge a pull request by hand.
 
 A file that runs a shipment elsewhere (a workflow of GitHub Actions, a Bash script) is an `artifact` produced by a writer
 of the library `ci` (`GitHubWorkflow`, `ShellScript`), naming the shipment it `runs`, its `settings` (a decision) and
@@ -201,9 +206,13 @@ project's commands (E3, g116): `./trame.sh <command>` runs one, its component as
 when it has several), then its program run with the rest of the line, as `trame ship` runs a check; `./trame.sh help`
 lists them. A command of the project named like a command of the engine, a view or another of its commands would never
 run: an error of the graph (`command-hidden`). Never run an assembled program by its path (`npx tsx out/local/…`): type
-its command. Governance is rules: a `rule` applies a requirement of `#std/rules` (`Reaches`, `NeverReaches`, `Linked`,
-`WithoutEffects`, `WordsOf`) with its `params` (a direction is a word of the vocabulary `Directions`: `way: "in"`), and
-`serves` a goal or is applied by an ADR that says why. A broken rule is an error, unless the rule says `severity: "warning"` while the project gets there.
+its command. A library may offer commands too (std's `LibraryCommands`: `pull-request`, `propagate`; E3, g117): a
+project runs one when a binding of its own chooses it (`follows: [Command]`), with a function of its own for each port
+of its settings (std's `PullRequestSettings`, `PropagationSettings`: the project's decisions, never a value of the
+library), and the realizations of its ports in the binding's environments; `trame <name>` assembles the library's
+component with the commands chosen there and nothing else. Governance is rules: a `rule` applies a requirement of
+`#std/rules` (`Reaches`, `NeverReaches`, `Linked`, `WithoutEffects`, `WordsOf`) with its `params` (a direction is a word
+of the vocabulary `Directions`: `way: "in"`), and `serves` a goal or is applied by an ADR that says why. A broken rule is an error, unless the rule says `severity: "warning"` while the project gets there.
 
 ## 5. The rules the build enforces
 
@@ -314,7 +323,10 @@ run in a library, first ships the library's version through its own graph (since
 artefact `version: true`, `NextVersion` in std, ci and geometry; its policy derives from all the library's code, std's proves its
 functions verified, its requirements served, its decisions applied, its rules held, its packages safe), freezes nothing
 while it does not hold, then freezes the version under `releases/0.1.0/` with its documents. The record of a release is
-not part of the version it records (g102): once released, the version as it is still holds. In the project's graph its modules take the library's name
+not part of the version it records (g102): once released, the version as it is still holds. Then, at the repository's
+root, `./trame.sh propagate --by <name> --env Local` carries it across the projects the decision `RepositoryProjects`
+names (std's command, g117): each after the libraries it imports and what it reads, upgraded, its workflow written again
+where a reference moved, its documents built (the example at `TestDay`); it stops at the first step that fails. In the project's graph its modules take the library's name
 (`std/algebra.Counts`): the project's nodes depend on them, the kinds read them, but the project's documents only link
 to the library's, its issues are counted apart (the index, the build summary) and its lock leaves them out. A library
 builds its own documents (`cd std && ../trame.sh build`).
