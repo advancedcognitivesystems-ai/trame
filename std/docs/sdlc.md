@@ -47,13 +47,15 @@ The workflow that checks a pull request on GitHub, written from the pipeline of 
 - Path: `../.github/workflows/std-pull-request.yml`
 - Media type: `application/yaml`
 
-Built 22 November 2026 by claude, fingerprint `affe3599c3badf486efd761950bf042e61ac0ad85dab9eefe82a14618e878845`.
+Built 24 November 2026 by claude, fingerprint `affe3599c3badf486efd761950bf042e61ac0ad85dab9eefe82a14618e878845`.
 
 Shipped by [The files that run it elsewhere](#RunnersWritten) 19 November 2026, fingerprint `822da0f07b6f23d43a3f7567285ff69d3934c9fe04db4e84df4ed9e9d8459667`.
 
 Shipped by [The files that run it elsewhere](#RunnersWritten) 19 November 2026, fingerprint `7669696240d0f40a2b0fae4d5761a6562c306aee3c1ff2643312942d38a31b14`.
 
 Shipped by [The files that run it elsewhere](#RunnersWritten) 22 November 2026, fingerprint `affe3599c3badf486efd761950bf042e61ac0ad85dab9eefe82a14618e878845`.
+
+Shipped by [The files that run it elsewhere](#RunnersWritten) 24 November 2026, fingerprint `affe3599c3badf486efd761950bf042e61ac0ad85dab9eefe82a14618e878845`.
 
 - Owner: trame
 - Produced by: [A workflow of GitHub Actions](../.trame/ci/docs/github.md#GitHubWorkflow)
@@ -174,7 +176,7 @@ The workflow that checks each pull request, written by trame ship from the graph
 |---|---|---|
 | [The pull requests' workflow](#PullRequestWorkflow) | **held** | shipped |
 
-Shipped 22 November 2026 by claude; its dossier: `evidence/shipments/RunnersWritten-2026-11-22-5f602b81.json`.
+Shipped 24 November 2026 by claude; its dossier: `evidence/shipments/RunnersWritten-2026-11-24-1965ecc0.json`.
 
 - Owner: trame
 - Ships: [The pull requests' workflow](#PullRequestWorkflow)

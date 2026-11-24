@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-22",
+  "at": "2026-11-24",
   "nodes": [
     {
       "id": "app.BrowserScreen",
@@ -3741,10 +3741,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "trame",
-        "version": "118",
+        "version": "119",
         "joins": "language",
         "from": "path",
-        "at": "../../generations/g118"
+        "at": "../../generations/g119"
       }
     },
     {

@@ -1,8 +1,8 @@
 # Versions
 
-*The releases of the components on 30 October 2026, newest first. A project runs the release its configuration pins.*
+*The releases of the components on 24 November 2026, newest first. A project runs the release its configuration pins.*
 
-> **118 releases of 1 component; 95 releases on a language of their own**
+> **119 releases of 1 component; 95 releases on a language of their own**
 
 ## Trame on the command line
 
@@ -10,6 +10,7 @@ Each release, newest first: what changed, the release that assembled it, and whe
 
 | Release | Released on | What changes | Assembled by | Language |
 |---|---|---|---|---|
+| [Generation 119](releases.md#G119) | 24 November 2026 | Commands run in the engine: a program whose exposure is std's CommandsInTheEngine is imported in the engine's process with the engine's modules; a command of the project replaces the engine's of the same name, only init, doctor, help and manifest are kept (E3, part 3) | [Generation 118](releases.md#G118) | shared |
 | [Generation 118](releases.md#G118) | 22 November 2026 | E3, part 2b: trame examples [--accept]; the step the next generation deploys is named promote (trame advance becomes Trame's own command); after an upgrade moved the pin, the manifest runs on the engine the project pins now, through the launcher | [Generation 117](releases.md#G117) | shared |
 | [Generation 117](releases.md#G117) | 22 November 2026 | E3, part 2a: a project runs the commands of a library it chooses by a binding (its component assembled for the choice's environment with only those commands); std's pull-request and propagate, taken by Trame and the example | [Generation 116](releases.md#G116) | shared |
 | [Generation 116](releases.md#G116) | 21 November 2026 | E3, part 1: trame <name> runs a command of the project (an entry point of a component std's ProgramCommands exposes, assembled for its environment); a name the engine or a view already answers is an error (command-hidden); trame help | [Generation 115](releases.md#G115) | shared |
