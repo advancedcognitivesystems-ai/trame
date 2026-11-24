@@ -2009,5 +2009,16 @@
     "by": "claude",
     "signature": "attribution",
     "seal": "969ea550e2145bca822d119ab602aa6197fabdac8c99535eebaffda32358a579"
+  },
+  {
+    "node": "sdlc.RunnersWritten",
+    "at": "2026-11-24",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "53767615",
+    "url": "evidence/shipments/RunnersWritten-2026-11-24-53767615.json",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "87f836e6c96da93b8f544d7ed3e63aa36fb1d98d6d3bbd259e4f3b8f8bd92744"
   }
 ]

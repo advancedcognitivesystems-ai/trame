@@ -122,9 +122,9 @@ Package · `stdLibrary`
 
 - Owner: trame
 - Name: std
-- Version: 0.23.0
+- Version: 0.24.0
 - How it joins the graph: library
-- Its path: ../../std/releases/0.23.0
+- Its path: ../../std/releases/0.24.0
 - Serves: Data described once
 
 ## Data · Principles

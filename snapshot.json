@@ -8603,10 +8603,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.23.0",
+        "version": "0.24.0",
         "joins": "library",
         "from": "path",
-        "at": "std/releases/0.23.0"
+        "at": "std/releases/0.24.0"
       }
     },
     {
@@ -14439,7 +14439,7 @@
       "id": "sdlc.PullRequestWorkflow",
       "kind": "artifact",
       "title": "The pull requests' workflow",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": ".github/workflows/trame-pull-request.yml",
@@ -14586,7 +14586,7 @@
       "id": "sdlc.RunnersWritten",
       "kind": "shipment",
       "title": "The files that run it elsewhere",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "repository"

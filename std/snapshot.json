@@ -2911,6 +2911,19 @@
       }
     },
     {
+      "id": "releases.R0_24_0",
+      "kind": "release",
+      "title": "Version 0.24.0",
+      "fields": {
+        "owner": "trame",
+        "version": "0.24.0",
+        "date": "2026-11-24",
+        "what": "Commands run in the engine: CommandsInTheEngine offers a program's commands to the engine that imports it (E3, part 3)",
+        "fingerprint": "f9e692913a6f8704",
+        "language": "shared"
+      }
+    },
+    {
       "id": "releases.R0_3_0",
       "kind": "release",
       "title": "Version 0.3.0",
@@ -4441,7 +4454,7 @@
       "id": "sdlc.NextVersion",
       "kind": "shipment",
       "title": "The next version",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "version"
@@ -4525,7 +4538,7 @@
       "id": "sdlc.TheLibrary",
       "kind": "artifact",
       "title": "The standard library",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "src",
@@ -7057,6 +7070,41 @@
     },
     {
       "from": "releases.R0_23_0",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_24_0",
+      "to": "product.ChosenCommands",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_24_0",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_24_0",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_24_0",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_24_0",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_24_0",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_24_0",
       "to": "product.VersionsThatHold",
       "kind": "serves"
     },

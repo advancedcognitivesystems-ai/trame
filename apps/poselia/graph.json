@@ -4446,10 +4446,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "std",
-        "version": "0.23.0",
+        "version": "0.24.0",
         "joins": "library",
         "from": "path",
-        "at": "../../std/releases/0.23.0"
+        "at": "../../std/releases/0.24.0"
       },
       "diagnostics": []
     },
@@ -7156,7 +7156,7 @@
       },
       "result": {
         "path": "src",
-        "code": "1e715433"
+        "code": "ac22ab4f"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"

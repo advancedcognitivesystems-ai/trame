@@ -62,7 +62,7 @@ Package · `StandardLibrary`
 
 - Owner: ghalaax
 - Name: std
-- Version: 0.23.0
+- Version: 0.24.0
 - How it joins the graph: library
 - Where it comes from: registry
 - Serves: Geometry written once
