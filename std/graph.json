@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-22",
+  "generated": "2026-11-24",
   "nodes": [
     {
       "id": "access.Anyone",
@@ -5621,6 +5621,7 @@
           "text.UnifiedDiff",
           "tooling.BrowserInMemory",
           "tooling.BrowserScripted",
+          "tooling.CommandsInTheEngine",
           "tooling.Files",
           "tooling.FilesInMemory",
           "tooling.FilesKept",
@@ -5766,7 +5767,7 @@
       },
       "result": {
         "path": "src",
-        "code": "7bbed5f4"
+        "code": "1a24c03a"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -6230,7 +6231,7 @@
       "id": "tooling.BrowserInMemory",
       "kind": "function",
       "title": "A browser kept in memory",
-      "source": "src/tooling.ts:285",
+      "source": "src/tooling.ts:298",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -6245,7 +6246,7 @@
       "id": "tooling.BrowserScripted",
       "kind": "port",
       "title": "Browser script",
-      "source": "src/tooling.ts:278",
+      "source": "src/tooling.ts:291",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -6253,10 +6254,27 @@
       "diagnostics": []
     },
     {
+      "id": "tooling.CommandsInTheEngine",
+      "kind": "implementation",
+      "title": "Commands run in the engine",
+      "source": "src/tooling.ts:50",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "exit": "system.ExitStatus"
+        },
+        "body": {
+          "file": "./code/tooling/engine-commands.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
       "id": "tooling.Files",
       "kind": "port",
       "title": "Project files",
-      "source": "src/tooling.ts:57",
+      "source": "src/tooling.ts:70",
       "fields": {
         "owner": "trame",
         "declaredEffects": {
@@ -6284,7 +6302,7 @@
       "id": "tooling.FilesInMemory",
       "kind": "function",
       "title": "Files kept in memory",
-      "source": "src/tooling.ts:88",
+      "source": "src/tooling.ts:101",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -6300,7 +6318,7 @@
       "id": "tooling.FilesKept",
       "kind": "port",
       "title": "Files written",
-      "source": "src/tooling.ts:71",
+      "source": "src/tooling.ts:84",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -6311,7 +6329,7 @@
       "id": "tooling.HeadlessBrowser",
       "kind": "port",
       "title": "Headless browser",
-      "source": "src/tooling.ts:207",
+      "source": "src/tooling.ts:220",
       "fields": {
         "owner": "trame",
         "declaredEffects": [
@@ -6328,7 +6346,7 @@
       "id": "tooling.HeadlessChromium",
       "kind": "decision",
       "title": "Chromium without a screen",
-      "source": "src/tooling.ts:239",
+      "source": "src/tooling.ts:252",
       "fields": {
         "owner": "trame",
         "value": {
@@ -6351,7 +6369,7 @@
       "id": "tooling.MachineFiles",
       "kind": "implementation",
       "title": "The machine's files",
-      "source": "src/tooling.ts:78",
+      "source": "src/tooling.ts:91",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -6388,7 +6406,7 @@
       "id": "tooling.NodeProgramRuns",
       "kind": "implementation",
       "title": "Programs run by Node",
-      "source": "src/tooling.ts:135",
+      "source": "src/tooling.ts:148",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -6408,7 +6426,7 @@
       "id": "tooling.PackageOrigins",
       "kind": "vocabulary",
       "title": "Where a package comes from",
-      "source": "src/tooling.ts:365",
+      "source": "src/tooling.ts:378",
       "fields": {
         "owner": "trame",
         "words": {
@@ -6422,7 +6440,7 @@
       "id": "tooling.PackageSources",
       "kind": "port",
       "title": "Where a package comes from",
-      "source": "src/tooling.ts:355",
+      "source": "src/tooling.ts:368",
       "fields": {
         "owner": "trame",
         "declaredEffects": {
@@ -6447,7 +6465,7 @@
       "id": "tooling.PlaywrightApi",
       "kind": "standard",
       "title": "Playwright's API",
-      "source": "src/tooling.ts:224",
+      "source": "src/tooling.ts:237",
       "fields": {
         "owner": "trame",
         "source": "Playwright documentation, class Page, event \"pageerror\"",
@@ -6465,7 +6483,7 @@
       "id": "tooling.PlaywrightBrowser",
       "kind": "implementation",
       "title": "Chromium, driven by Playwright",
-      "source": "src/tooling.ts:253",
+      "source": "src/tooling.ts:266",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -6485,7 +6503,7 @@
       "id": "tooling.PlaywrightPackage",
       "kind": "package",
       "title": "Playwright",
-      "source": "src/tooling.ts:214",
+      "source": "src/tooling.ts:227",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -6520,7 +6538,7 @@
       "id": "tooling.ProgramRuns",
       "kind": "port",
       "title": "Programs run",
-      "source": "src/tooling.ts:128",
+      "source": "src/tooling.ts:141",
       "fields": {
         "owner": "trame",
         "declaredEffects": {
@@ -6539,7 +6557,7 @@
       "id": "tooling.ProgramRunsInMemory",
       "kind": "function",
       "title": "Programs run in memory",
-      "source": "src/tooling.ts:159",
+      "source": "src/tooling.ts:172",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -6555,7 +6573,7 @@
       "id": "tooling.ProgramRunsKept",
       "kind": "port",
       "title": "The programs a scenario keeps: the file it says a program writes is written when that program runs.",
-      "source": "src/tooling.ts:152",
+      "source": "src/tooling.ts:165",
       "fields": {
         "owner": "trame",
         "declaredEffects": {
@@ -6572,7 +6590,7 @@
       "id": "tooling.ToolingAsPorts",
       "kind": "adr",
       "title": "The SDLC's tooling is realized once",
-      "source": "src/tooling.ts:380",
+      "source": "src/tooling.ts:393",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -9798,6 +9816,16 @@
       "kind": "deps"
     },
     {
+      "from": "tooling.CommandsInTheEngine",
+      "to": "tooling.ProgramCommands",
+      "kind": "implements"
+    },
+    {
+      "from": "tooling.CommandsInTheEngine",
+      "to": "system.ExitStatus",
+      "kind": "deps"
+    },
+    {
       "from": "tooling.FilesInMemory",
       "to": "tooling.Files",
       "kind": "implements"
@@ -9955,6 +9983,11 @@
     {
       "from": "tooling.ToolingAsPorts",
       "to": "tooling.NodeProgramCommands",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "tooling.ToolingAsPorts",
+      "to": "tooling.CommandsInTheEngine",
       "kind": "appliedBy"
     },
     {

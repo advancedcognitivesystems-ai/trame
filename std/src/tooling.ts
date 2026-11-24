@@ -40,6 +40,19 @@ export const NodeProgramCommands = implementation({
   body: code.file("./code/tooling/node-commands.ts"),
 })
 
+/**
+ * Commands run in the engine
+ * The program's commands are offered to the engine that imports it, in its own process (E3, since g119): trame <name>
+ * runs the one named there, and trame ship the checks and deployments it runs, with the engine's modules at hand
+ * (compilation, views, laws, lock, assembly, evidence) rather than a second engine. Run alone, by its path, the program
+ * runs nothing and fails: its commands are typed through trame.
+ */
+export const CommandsInTheEngine = implementation({
+  owner: "trame", implements: [ProgramCommands],
+  deps: { exit: ExitStatus },
+  body: code.file("./code/tooling/engine-commands.ts"),
+})
+
 /** The files of a project, by their path from its root. */
 export interface ProjectFiles {
   exists(path: string): boolean
@@ -382,5 +395,5 @@ export const ToolingAsPorts = adr({
   context: "The code that builds, checks and deploys a product is code like the product's: written once, tested before it runs.",
   consequences: "A check opens the delivered page through HeadlessBrowser, a deployment copies through Files, a project reaches the packages it uses through PackageSources wherever they come from; scenarios play them with the realizations kept in memory.",
   serves: [RealizedOnce],
-  appliedBy: [ProgramCommands, NodeProgramCommands, Files, FilesKept, MachineFiles, FilesInMemory, HeadlessBrowser, PlaywrightBrowser, BrowserScripted, BrowserInMemory, PackageSources],
+  appliedBy: [ProgramCommands, NodeProgramCommands, CommandsInTheEngine, Files, FilesKept, MachineFiles, FilesInMemory, HeadlessBrowser, PlaywrightBrowser, BrowserScripted, BrowserInMemory, PackageSources],
 })

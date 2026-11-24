@@ -829,7 +829,7 @@ Entry point · `PrepareStorage` · **held**
 Technical choice · `CommandsOnThisMachine` · **unknown**
 
 - Decided by: karim
-- Context: trame ship runs the programs that deploy as a person would run them, with Node.
+- Context: trame ship runs the programs that deploy, and a person their commands, through the engine that reads the graph: one compilation, the same command line.
 - In: Local
 
 ### Pull requests opened by the library

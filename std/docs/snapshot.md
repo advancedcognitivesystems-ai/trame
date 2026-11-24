@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 22 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 24 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Standard library · Access
 
@@ -2038,7 +2038,7 @@ Architecture decision · `ToolingAsPorts` · **held**
 - Context: The code that builds, checks and deploys a product is code like the product's: written once, tested before it runs.
 - Consequences: A check opens the delivered page through HeadlessBrowser, a deployment copies through Files, a project reaches the packages it uses through PackageSources wherever they come from; scenarios play them with the realizations kept in memory.
 - Serves: Ports of the platform, realized once
-- Applied by: Commands of a program, Node's command line, Project files, Files written, The machine's files, Files kept in memory, Headless browser, Chromium, driven by Playwright, Browser script, A browser kept in memory, Where a package comes from
+- Applied by: Commands of a program, Node's command line, Commands run in the engine, Project files, Files written, The machine's files, Files kept in memory, Headless browser, Chromium, driven by Playwright, Browser script, A browser kept in memory, Where a package comes from
 
 ### Browser script
 
@@ -2123,6 +2123,15 @@ Function · `ProgramRunsInMemory` · **held**
 - Serves: Ports of the platform, realized once
 - Implements: Programs run, The programs a scenario keeps: the file it says a program writes is written when that program runs.
 - Depends on: Exit status, Project files
+
+### Commands run in the engine
+
+Implementation · `CommandsInTheEngine`
+
+- Owner: trame
+- Parameters: { exit: system.ExitStatus }
+- Implements: Commands of a program
+- Depends on: Exit status
 
 ### The machine's files
 

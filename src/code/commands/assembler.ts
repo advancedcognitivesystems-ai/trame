@@ -65,7 +65,7 @@ const body = (deps: Deps) => {
    * A component assembled for an environment from the graph as compiled, refused while the graph has an error: the
    * command assemble, and a command of the project, which trame runs from its program (since g116).
    */
-  async function assembled(o: Options, ctx: Ctx, componentRef: string, envRef: string, only?: readonly string[]): Promise<{ files: Emitted[]; steps: number }> {
+  async function assembled(o: Options, ctx: Ctx, componentRef: string, envRef: string, only?: readonly string[]): Promise<{ files: Emitted[]; steps: number; assembly: Assembly }> {
     const { c } = ctx
     const errors = c.diags.filter((d) => d.severity === Severity.error)
     if (errors.length) {
@@ -75,11 +75,11 @@ const body = (deps: Deps) => {
     if (!a) return refuse(o, [messages.assemblyRefused(), ...refused.map((e) => indent + e)])
     const { files, errors: emitErrors } = emitAssembly(a)
     if (emitErrors.length) refuse(o, emitErrors)
-    return { files, steps: a.plan.steps.length }
+    return { files, steps: a.plan.steps.length, assembly: a }
   }
 
   /** Always frozen: the program carries the values of the graph, it does not compile the graph when it starts. */
-  async function assemble(o: Options): Promise<{ files: Emitted[]; steps: number }> {
+  async function assemble(o: Options): Promise<{ files: Emitted[]; steps: number; assembly: Assembly }> {
     const ctx = await prepare(o)
     const [name] = o.args
     if (!name || !o.envName) refuse(o, [messages.assembleUsage(o.command)])

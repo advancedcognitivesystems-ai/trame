@@ -183,6 +183,23 @@ export const TrameCommands = standard({
 })
 
 /**
+ * The commands the engine keeps
+ * The commands that run before a graph exists or can be read, which the engine answers itself whatever the project
+ * says (E3, since g119): starting or repairing a project, asking the machine, saying what may be typed, writing the
+ * manifest that lets a graph load. Every other command is the project's to compose: one it has, chosen from a library
+ * or its own, replaces the engine's of the same name; a command named like one of these never runs.
+ */
+export const KeptCommands = decision<readonly string[]>({
+  owner: "trame",
+  value: [commandNames.init, commandNames.doctor, commandNames.help, commandNames.manifest],
+  rejected: {
+    "Check, a command that compiles and judges, writing nothing": "plan does it, a command like the others",
+    "Every command kept until a library offers it": "a project could not replace a command of the engine, and the passage to commands the projects compose would need a second form of the rule",
+    "No command kept": "a project whose graph does not load, or that does not exist yet, could not be repaired, asked about or started",
+  },
+})
+
+/**
  * Trame's environment
  * The variables of the environment Trame reads.
  */

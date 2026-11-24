@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-22",
+  "at": "2026-11-24",
   "nodes": [
     {
       "id": "access.Anyone",
@@ -4979,6 +4979,21 @@
       }
     },
     {
+      "id": "tooling.CommandsInTheEngine",
+      "kind": "implementation",
+      "title": "Commands run in the engine",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "exit": "system.ExitStatus"
+        },
+        "body": {
+          "file": "./code/tooling/engine-commands.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
       "id": "tooling.Files",
       "kind": "port",
       "title": "Project files",
@@ -8456,6 +8471,16 @@
       "kind": "deps"
     },
     {
+      "from": "tooling.CommandsInTheEngine",
+      "to": "tooling.ProgramCommands",
+      "kind": "implements"
+    },
+    {
+      "from": "tooling.CommandsInTheEngine",
+      "to": "system.ExitStatus",
+      "kind": "deps"
+    },
+    {
       "from": "tooling.FilesInMemory",
       "to": "tooling.Files",
       "kind": "implements"
@@ -8613,6 +8638,11 @@
     {
       "from": "tooling.ToolingAsPorts",
       "to": "tooling.NodeProgramCommands",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "tooling.ToolingAsPorts",
+      "to": "tooling.CommandsInTheEngine",
       "kind": "appliedBy"
     },
     {

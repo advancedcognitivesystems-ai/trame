@@ -1,6 +1,6 @@
 # Layers
 
-*The graph in force on 22 November 2026, ordered by distance to the goals.*
+*The graph in force on 24 November 2026, ordered by distance to the goals.*
 
 ```mermaid
 flowchart TB
@@ -264,36 +264,37 @@ flowchart TB
   subgraph tooling["Standard library · Tooling"]
     n215["A browser kept in memory<br/><small>Function</small>"]:::held
     n216["Browser script<br/><small>Port</small>"]:::neutral
-    n217["Project files<br/><small>Port</small>"]:::neutral
-    n218["Files kept in memory<br/><small>Function</small>"]:::held
-    n219["Files written<br/><small>Port</small>"]:::neutral
-    n220["Headless browser<br/><small>Port</small>"]:::neutral
-    n221["Chromium without a screen<br/><small>Decision</small>"]:::neutral
-    n222["The machine's files<br/><small>Implementation</small>"]:::neutral
-    n223["Node's command line<br/><small>Implementation</small>"]:::neutral
-    n224["Programs run by Node<br/><small>Implementation</small>"]:::neutral
-    n225["Where a package comes from<br/><small>Vocabulary</small>"]:::neutral
-    n226["Where a package comes from<br/><small>Port</small>"]:::neutral
-    n227["Playwright's API<br/><small>Standard</small>"]:::neutral
-    n228["Chromium, driven by Playwright<br/><small>Implementation</small>"]:::neutral
-    n229["Playwright<br/><small>Package</small>"]:::held
-    n230["Commands of a program<br/><small>Port</small>"]:::neutral
-    n231["Programs run<br/><small>Port</small>"]:::neutral
-    n232["Programs run in memory<br/><small>Function</small>"]:::held
-    n233["The programs a scenario keeps: the file it says a program writes is written when that program runs.<br/><small>Port</small>"]:::neutral
-    n234["The SDLC's tooling is realized once<br/><small>Architecture decision</small>"]:::held
+    n217["Commands run in the engine<br/><small>Implementation</small>"]:::neutral
+    n218["Project files<br/><small>Port</small>"]:::neutral
+    n219["Files kept in memory<br/><small>Function</small>"]:::held
+    n220["Files written<br/><small>Port</small>"]:::neutral
+    n221["Headless browser<br/><small>Port</small>"]:::neutral
+    n222["Chromium without a screen<br/><small>Decision</small>"]:::neutral
+    n223["The machine's files<br/><small>Implementation</small>"]:::neutral
+    n224["Node's command line<br/><small>Implementation</small>"]:::neutral
+    n225["Programs run by Node<br/><small>Implementation</small>"]:::neutral
+    n226["Where a package comes from<br/><small>Vocabulary</small>"]:::neutral
+    n227["Where a package comes from<br/><small>Port</small>"]:::neutral
+    n228["Playwright's API<br/><small>Standard</small>"]:::neutral
+    n229["Chromium, driven by Playwright<br/><small>Implementation</small>"]:::neutral
+    n230["Playwright<br/><small>Package</small>"]:::held
+    n231["Commands of a program<br/><small>Port</small>"]:::neutral
+    n232["Programs run<br/><small>Port</small>"]:::neutral
+    n233["Programs run in memory<br/><small>Function</small>"]:::held
+    n234["The programs a scenario keeps: the file it says a program writes is written when that program runs.<br/><small>Port</small>"]:::neutral
+    n235["The SDLC's tooling is realized once<br/><small>Architecture decision</small>"]:::held
   end
   subgraph web["Standard library · Web"]
-    n235["CSSOM View<br/><small>Standard</small>"]:::neutral
-    n236["HTTP<br/><small>Standard</small>"]:::neutral
-    n237["Media Queries Level 5<br/><small>Standard</small>"]:::neutral
-    n238["Media types<br/><small>Standard</small>"]:::neutral
-    n239["Screen Wake Lock API<br/><small>Standard</small>"]:::neutral
-    n240["Server-sent events<br/><small>Standard</small>"]:::neutral
-    n241["UI events<br/><small>Standard</small>"]:::neutral
-    n242["URI<br/><small>Standard</small>"]:::neutral
-    n243["Web Audio API<br/><small>Standard</small>"]:::neutral
-    n244["Web Speech API<br/><small>Standard</small>"]:::neutral
+    n236["CSSOM View<br/><small>Standard</small>"]:::neutral
+    n237["HTTP<br/><small>Standard</small>"]:::neutral
+    n238["Media Queries Level 5<br/><small>Standard</small>"]:::neutral
+    n239["Media types<br/><small>Standard</small>"]:::neutral
+    n240["Screen Wake Lock API<br/><small>Standard</small>"]:::neutral
+    n241["Server-sent events<br/><small>Standard</small>"]:::neutral
+    n242["UI events<br/><small>Standard</small>"]:::neutral
+    n243["URI<br/><small>Standard</small>"]:::neutral
+    n244["Web Audio API<br/><small>Standard</small>"]:::neutral
+    n245["Web Speech API<br/><small>Standard</small>"]:::neutral
   end
   n0 -->|Serves| n103
   n1 -->|Serves| n103
@@ -324,7 +325,7 @@ flowchart TB
   n14 -->|Applied by| n19
   n14 -->|Applied by| n74
   n15 -->|Written in| n13
-  n16 -->|Depends on| n230
+  n16 -->|Depends on| n231
   n17 -->|Serves| n98
   n17 -->|Part of| n16
   n17 -->|For| n2
@@ -352,8 +353,8 @@ flowchart TB
   n19 -->|Part of| n16
   n19 -->|For| n2
   n19 -->|Depends on| n20
-  n19 -->|Depends on| n217
-  n19 -->|Depends on| n231
+  n19 -->|Depends on| n218
+  n19 -->|Depends on| n232
   n19 -->|Depends on| n15
   n19 -->|Depends on| n201
   n19 -->|Depends on| n5
@@ -431,13 +432,13 @@ flowchart TB
   n79 -->|Depends on| n44
   n80 -->|Implements| n86
   n81 -->|Implements| n89
-  n81 -->|Depends on| n241
+  n81 -->|Depends on| n242
   n82 -->|Implements| n90
   n83 -->|Implements| n94
   n83 -->|Depends on| n40
-  n83 -->|Depends on| n244
+  n83 -->|Depends on| n245
   n84 -->|Implements| n91
-  n84 -->|Depends on| n239
+  n84 -->|Depends on| n240
   n85 -->|Serves| n101
   n85 -->|Applied by| n90
   n85 -->|Applied by| n82
@@ -728,12 +729,12 @@ flowchart TB
   n170 -->|Chooses| n97
   n170 -->|Chooses| n78
   n170 -->|Chooses| n87
-  n170 -->|Chooses| n218
+  n170 -->|Chooses| n219
   n170 -->|Chooses| n215
   n170 -->|Chooses| n152
   n170 -->|Chooses| n137
   n170 -->|Chooses| n148
-  n170 -->|Chooses| n232
+  n170 -->|Chooses| n233
   n170 -->|In| n186
   n170 -->|Follows| n76
   n170 -->|Serves| n101
@@ -765,12 +766,12 @@ flowchart TB
   n174 -->|Depends on| n4
   n174 -->|Depends on| n201
   n175 -->|Verifies| n19
-  n175 -->|Verifies| n232
+  n175 -->|Verifies| n233
   n175 -->|Verifies| n181
   n175 -->|In| n186
   n175 -->|Depends on| n19
-  n175 -->|Depends on| n217
-  n175 -->|Depends on| n233
+  n175 -->|Depends on| n218
+  n175 -->|Depends on| n234
   n175 -->|Depends on| n179
   n175 -->|Depends on| n15
   n175 -->|Depends on| n178
@@ -815,12 +816,12 @@ flowchart TB
   n185 -->|In| n184
   n185 -->|Follows| n76
   n185 -->|Serves| n101
-  n187 -->|Verifies| n218
+  n187 -->|Verifies| n219
   n187 -->|Verifies| n215
   n187 -->|In| n186
-  n187 -->|Depends on| n217
-  n187 -->|Depends on| n219
+  n187 -->|Depends on| n218
   n187 -->|Depends on| n220
+  n187 -->|Depends on| n221
   n187 -->|Depends on| n216
   n187 -->|Depends on| n179
   n187 -->|Depends on| n178
@@ -864,51 +865,53 @@ flowchart TB
   n212 -->|Serves| n99
   n213 -->|Serves| n99
   n214 -->|Serves| n99
-  n215 -->|Implements| n220
+  n215 -->|Implements| n221
   n215 -->|Implements| n216
   n215 -->|Depends on| n4
-  n218 -->|Implements| n217
-  n218 -->|Implements| n219
-  n218 -->|Depends on| n11
-  n218 -->|Depends on| n6
-  n222 -->|Implements| n217
-  n222 -->|Depends on| n12
-  n222 -->|Depends on| n204
-  n223 -->|Implements| n230
-  n223 -->|Depends on| n202
-  n223 -->|Depends on| n201
-  n223 -->|Depends on| n7
+  n217 -->|Implements| n231
+  n217 -->|Depends on| n201
+  n219 -->|Implements| n218
+  n219 -->|Implements| n220
+  n219 -->|Depends on| n11
+  n219 -->|Depends on| n6
+  n223 -->|Implements| n218
+  n223 -->|Depends on| n12
+  n223 -->|Depends on| n204
   n224 -->|Implements| n231
-  n224 -->|Depends on| n203
-  n224 -->|Depends on| n205
+  n224 -->|Depends on| n202
   n224 -->|Depends on| n201
-  n224 -->|Depends on| n210
-  n225 -->|Serves| n101
-  n227 -->|Serves| n99
-  n228 -->|Implements| n220
-  n228 -->|Uses| n229
-  n228 -->|Depends on| n221
-  n228 -->|Depends on| n227
-  n228 -->|Depends on| n4
-  n228 -->|Depends on| n44
-  n232 -->|Serves| n101
-  n232 -->|Implements| n231
-  n232 -->|Implements| n233
-  n232 -->|Depends on| n201
-  n232 -->|Depends on| n217
-  n234 -->|Serves| n101
-  n234 -->|Applied by| n230
-  n234 -->|Applied by| n223
-  n234 -->|Applied by| n217
-  n234 -->|Applied by| n219
-  n234 -->|Applied by| n222
-  n234 -->|Applied by| n218
-  n234 -->|Applied by| n220
-  n234 -->|Applied by| n228
-  n234 -->|Applied by| n216
-  n234 -->|Applied by| n215
-  n234 -->|Applied by| n226
-  n235 -->|Serves| n99
+  n224 -->|Depends on| n7
+  n225 -->|Implements| n232
+  n225 -->|Depends on| n203
+  n225 -->|Depends on| n205
+  n225 -->|Depends on| n201
+  n225 -->|Depends on| n210
+  n226 -->|Serves| n101
+  n228 -->|Serves| n99
+  n229 -->|Implements| n221
+  n229 -->|Uses| n230
+  n229 -->|Depends on| n222
+  n229 -->|Depends on| n228
+  n229 -->|Depends on| n4
+  n229 -->|Depends on| n44
+  n233 -->|Serves| n101
+  n233 -->|Implements| n232
+  n233 -->|Implements| n234
+  n233 -->|Depends on| n201
+  n233 -->|Depends on| n218
+  n235 -->|Serves| n101
+  n235 -->|Applied by| n231
+  n235 -->|Applied by| n224
+  n235 -->|Applied by| n217
+  n235 -->|Applied by| n218
+  n235 -->|Applied by| n220
+  n235 -->|Applied by| n223
+  n235 -->|Applied by| n219
+  n235 -->|Applied by| n221
+  n235 -->|Applied by| n229
+  n235 -->|Applied by| n216
+  n235 -->|Applied by| n215
+  n235 -->|Applied by| n227
   n236 -->|Serves| n99
   n237 -->|Serves| n99
   n238 -->|Serves| n99
@@ -918,6 +921,7 @@ flowchart TB
   n242 -->|Serves| n99
   n243 -->|Serves| n99
   n244 -->|Serves| n99
+  n245 -->|Serves| n99
   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
   classDef blocked fill:#fbf0d9,stroke:#9a6200,color:#17202a
   classDef violated fill:#f9e3e1,stroke:#ad2a22,color:#17202a

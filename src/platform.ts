@@ -23,7 +23,7 @@ import { UnifiedDiff, TextFile } from "#std/text"
 import { Punctuation } from "./documents"
 import { PlatformMessages } from "./messages"
 import { Counts, Sequences, Texts, ValueTypes } from "#std/algebra"
-import { TrameCommands, TrameEnvironment, Layout, LanguageNames } from "./conventions"
+import { TrameCommands, TrameEnvironment, Layout, LanguageNames, KeptCommands } from "./conventions"
 import { Advancement } from "./generations"
 import { TypeScript } from "./typescript"
 import { Adapter, AbstractFactory, Strategy } from "#std/patterns"
@@ -211,7 +211,7 @@ export const DiskWriting = implementation({
  */
 export const NodeProcess = implementation({
   owner: "trame", implements: [Process],
-  deps: { argv: NodeArguments, node: NodeCli, runner: TypeScriptRunner, variables: TrameEnvironment },
+  deps: { argv: NodeArguments, node: NodeCli, runner: TypeScriptRunner, variables: TrameEnvironment, exit: ExitStatus, values: ValueTypes },
   body: code.file("./code/platform/process.ts"),
 })
 
@@ -255,11 +255,12 @@ export const SystemClock = implementation({
 
 /**
  * Command line
- * The first argument chooses the command; the following ones are passed to it as they are.
+ * The first argument chooses the command; the following ones are passed to it as they are. A command the engine does
+ * not keep is the project's first (since g119): the "*" command answers it, or answers no status, and the engine's runs.
  */
 export const NodeCommandLine = implementation({
   owner: "trame", implements: [CommandLine],
-  deps: { terminal: Terminal, exitStatus: ExitStatus, line: TrameCommands, messages: PlatformMessages },
+  deps: { terminal: Terminal, exitStatus: ExitStatus, line: TrameCommands, kept: KeptCommands, messages: PlatformMessages },
   body: code.file("./code/platform/command-line.ts"),
 })
 

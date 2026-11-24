@@ -1,10 +1,10 @@
 # Owners
 
-*What each person must decide, settle or watch on 22 November 2026, and what they own.*
+*What each person must decide, settle or watch on 24 November 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 5 | 245 |
+| trame | 0 | 0 | 5 | 246 |
 
 <a id="trame"></a>
 
@@ -239,6 +239,7 @@
 | [Unified differences](text.md#UnifiedDiff) | Standard |  |
 | [A browser kept in memory](tooling.md#BrowserInMemory) | Function | **held** |
 | [Browser script](tooling.md#BrowserScripted) | Port |  |
+| [Commands run in the engine](tooling.md#CommandsInTheEngine) | Implementation |  |
 | [Project files](tooling.md#Files) | Port |  |
 | [Files kept in memory](tooling.md#FilesInMemory) | Function | **held** |
 | [Files written](tooling.md#FilesKept) | Port |  |

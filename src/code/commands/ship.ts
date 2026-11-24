@@ -23,6 +23,8 @@ import type { Api as AssemblerApi } from "./assembler"
 import type { Api as SdlcApi, Entry } from "./sdlc-evidence"
 import type { Api as EnginesApi } from "../engine/engine-fingerprint"
 import type { Api as RunPlanApi } from "./run-plan"
+import type { Api as ProjectCommandsApi } from "./project-commands"
+import type { EngineModules } from "../../commands"
 
 export interface Deps {
   /** The status the command returns to the system (POSIX). */
@@ -44,6 +46,9 @@ export interface Deps {
   /** The rule of the requirement "Ship only what holds". */
   holds: (obligations: readonly Status[]) => boolean
   currentProcess: Process
+  /** Whether a program runs in the engine (since g119), and the engine's modules it then receives. */
+  projectCommands: ProjectCommandsApi
+  engine: ProvidedBy<typeof EngineModules>
   events: ProvidedBy<typeof NodeEvents>
   reading: FileReading
   writing: FileWriting
@@ -102,8 +107,8 @@ const body = (deps: Deps): Handler => async (req) => {
    * A program: its component assembled (once) for the shipment's environment, or for the one an artefact names (the
    * page's program, for the browser); a program of the SDLC is then run with its command.
    */
-  const programs = new Map<string, string>()
-  const program = async (component: View, where: View | undefined = environment): Promise<string> => {
+  const programs = new Map<string, { launcher: string; program: string; inTheEngine: boolean }>()
+  const assembledProgram = async (component: View, where: View | undefined = environment) => {
     const known = programs.get(JSON.stringify([component.ref, where?.ref]))
     if (known !== undefined) return known
     if (!where) return refuse(o, [messages.shipmentWithoutEnvironment(found.title)])
@@ -112,12 +117,18 @@ const body = (deps: Deps): Handler => async (req) => {
     const { files, errors: emitErrors } = deps.assembly.emitAssembly(assembly)
     if (emitErrors.length) return refuse(o, emitErrors)
     for (const f of files) save(f.path, f.content)
-    // What Node.js runs: the program's launcher, which leads the names of packages first (since g99).
+    // What Node.js runs: the program's launcher, which leads the names of packages first (since g99); in the engine's
+    // process (since g119), the program itself.
     const [first] = files
-    const runs = files.find((f) => f.launches) ?? first
-    programs.set(JSON.stringify([component.ref, where.ref]), runs.path)
-    return runs.path
+    const made = {
+      launcher: (files.find((f) => f.launches) ?? first).path,
+      program: (files.find((f) => !f.launches) ?? first).path,
+      inTheEngine: deps.projectCommands.inTheEngine(c, assembly),
+    }
+    programs.set(JSON.stringify([component.ref, where.ref]), made)
+    return made
   }
+  const program = async (component: View, where: View | undefined = environment): Promise<string> => (await assembledProgram(component, where)).launcher
   /** A program bundled with what it imports, as the decision "The fingerprint of a program" says. */
   const bundled = async (program: string): Promise<string> => {
     const { source, ...options } = deps.programBundle
@@ -130,7 +141,11 @@ const body = (deps: Deps): Handler => async (req) => {
     const component = head(out(entry, EdgeName.partOf))
     if (!component) return exitStatus.failure
     const trigger = entry.field(EntryField.trigger) as Trigger | undefined
-    const child = deps.currentProcess.runTs(await program(component), [...(trigger?.type === TriggerType.command ? [trigger.name] : []), ...forwarded])
+    const args = [...(trigger?.type === TriggerType.command ? [trigger.name] : []), ...forwarded]
+    const made = await assembledProgram(component)
+    // A program whose commands run in the engine (since g119): imported here, with the engine's modules.
+    if (made.inTheEngine) return deps.currentProcess.runHere(made.program, args, { ...deps.engine, prepared: { c, comp } })
+    const child = deps.currentProcess.runTs(made.launcher, args)
     return new Promise<number>((end) => child.on(deps.events.exit, (code: number | null) => end(code ?? exitStatus.failure)))
   }
 
