@@ -492,7 +492,7 @@ flowchart TB
     n442["The traversal API is the only way to read the graph<br/><small>Architecture decision</small>"]:::held
     n443["A package is used by its name<br/><small>Architecture decision</small>"]:::held
     n444["The prelude: the runtime of the language<br/><small>Architecture decision</small>"]:::held
-    n445["A version ships through the graph<br/><small>Architecture decision</small>"]:::held
+    n445["A version ships through the graph<br/><small>Architecture decision</small>"]:::unknown
     n446["A technology is chosen in one node<br/><small>Architecture decision</small>"]:::held
     n447["Trame builds Trame<br/><small>Architecture decision</small>"]:::held
     n448["An undecided value blocks; it does not crash<br/><small>Architecture decision</small>"]:::held
@@ -689,7 +689,7 @@ flowchart TB
     n629["GitHub merges once it holds, asked in a session<br/><small>Technical choice</small>"]:::unknown
     n630["GitHub merges once it holds, asked by its command line<br/><small>Technical choice</small>"]:::unknown
     n631["The candidate is checked by programs<br/><small>Obligation</small>"]:::neutral
-    n632["The candidate plays the laws<br/><small>Check</small>"]:::held
+    n632["The candidate plays the laws<br/><small>Check</small>"]:::unknown
     n633["The candidate runs on the machine<br/><small>Check</small>"]:::held
     n634["The commands Trame takes from std<br/><small>Technical choice</small>"]:::held
     n635["Its callers identified<br/><small>Obligation</small>"]:::neutral
@@ -703,12 +703,12 @@ flowchart TB
     n643["What the scenario of the graph page shows<br/><small>Decision</small>"]:::neutral
     n644["What the graph page is asked<br/><small>Function</small>"]:::held
     n645["How a generation advances<br/><small>Decision</small>"]:::neutral
-    n646["Into the main branch<br/><small>Shipment</small>"]:::unknown
+    n646["Into the main branch<br/><small>Shipment</small>"]:::held
     n647["The language serves what it says<br/><small>Obligation</small>"]:::neutral
     n648["How the repository merges into main<br/><small>Decision</small>"]:::neutral
     n649["Trame's maintainers<br/><small>Role</small>"]:::neutral
     n650["How a change merges<br/><small>Policy</small>"]:::neutral
-    n651["The next generation<br/><small>Shipment</small>"]:::held
+    n651["The next generation<br/><small>Shipment</small>"]:::unknown
     n652["The graph page is opened as a person would<br/><small>Scenario</small>"]:::held
     n653["Open the graph page<br/><small>Entry point</small>"]:::held
     n654["Trame's settings, as std's commands read them<br/><small>Scenario</small>"]:::held
@@ -730,7 +730,7 @@ flowchart TB
     n670["What the programs of Trame's SDLC say<br/><small>Message catalog</small>"]:::neutral
     n671["How the repository is set<br/><small>Policy</small>"]:::neutral
     n672["The repository is set as the graph decides<br/><small>Scenario</small>"]:::held
-    n673["The engine<br/><small>Artefact</small>"]:::unknown
+    n673["The engine<br/><small>Artefact</small>"]:::held
     n674["Trame's repository<br/><small>Decision</small>"]:::neutral
     n675["Trame's SDLC<br/><small>Component</small>"]:::neutral
   end

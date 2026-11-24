@@ -55,7 +55,7 @@
 | [The branches](../std/releases/0.24.0/docs/repository.md#Branches) | [Git's branches](../std/releases/0.24.0/docs/repository.md#GitCliBranches) | [Git's branches](../std/releases/0.24.0/docs/repository.md#GitCliBranches) | — | — |
 | [Pull requests](../std/releases/0.24.0/docs/repository.md#PullRequests) | [GitHub's pull requests, by its command line](../std/releases/0.24.0/docs/repository.md#GitHubCliPullRequests) | [GitHub's pull requests, by its command line](../std/releases/0.24.0/docs/repository.md#GitHubCliPullRequests) | — | — |
 | [The automatic merge](../std/releases/0.24.0/docs/repository.md#AutoMerge) | [The automatic merge, by GitHub's command line](../std/releases/0.24.0/docs/repository.md#AutoMergeByGitHubCli) | [The automatic merge, in a session of Claude Code](../std/releases/0.24.0/docs/repository.md#AutoMergeInAClaudeSession) | — | — |
-| [Commands of a program](../std/releases/0.24.0/docs/tooling.md#ProgramCommands) | [Node's command line](../std/releases/0.24.0/docs/tooling.md#NodeProgramCommands) | [Node's command line](../std/releases/0.24.0/docs/tooling.md#NodeProgramCommands) | — | — |
+| [Commands of a program](../std/releases/0.24.0/docs/tooling.md#ProgramCommands) | [Commands run in the engine](../std/releases/0.24.0/docs/tooling.md#CommandsInTheEngine) | [Commands run in the engine](../std/releases/0.24.0/docs/tooling.md#CommandsInTheEngine) | — | — |
 | [Project files](../std/releases/0.24.0/docs/tooling.md#Files) | [The machine's files](../std/releases/0.24.0/docs/tooling.md#MachineFiles) | [The machine's files](../std/releases/0.24.0/docs/tooling.md#MachineFiles) | [Files kept in memory](../std/releases/0.24.0/docs/tooling.md#FilesInMemory) | — |
 | [Files written](../std/releases/0.24.0/docs/tooling.md#FilesKept) | — | — | [Files kept in memory](../std/releases/0.24.0/docs/tooling.md#FilesInMemory) | — |
 | [Programs run](../std/releases/0.24.0/docs/tooling.md#ProgramRuns) | [Programs run by Node](../std/releases/0.24.0/docs/tooling.md#NodeProgramRuns) | [Programs run by Node](../std/releases/0.24.0/docs/tooling.md#NodeProgramRuns) | [Programs run in memory](../std/releases/0.24.0/docs/tooling.md#ProgramRunsInMemory) | — |
@@ -706,22 +706,22 @@ Consequences: Graphs, legends and timelines are written by the engine, with the 
 
 ### The SDLC on the machine
 
-`SdlcOnTheMachine` · `src/sdlc.ts:166` · status: **unknown**
+`SdlcOnTheMachine` · `src/sdlc.ts:167` · status: **unknown**
 
-On the machine, the programs of the SDLC read their command from Node's command line, open pages in Chromium driven by Playwright, and set the repository on GitHub by its command line, as the standard library realizes them.
+On the machine, the programs of the SDLC offer their commands to the engine that runs them, in its own process (since g119), open pages in Chromium driven by Playwright, and set the repository on GitHub by its command line, as the standard library realizes them.
 
 In [Local](architecture.md#Local), [A session of Claude Code](architecture.md#Session):
 
 | Port | Answered by | Which is |
 |---|---|---|
 | [A repository on GitHub](../std/releases/0.24.0/docs/repository.md#RepositoryApi) | [GitHub's command line](../std/releases/0.24.0/docs/repository.md#GitHubCliRepository) | an implementation |
-| [Commands of a program](../std/releases/0.24.0/docs/tooling.md#ProgramCommands) | [Node's command line](../std/releases/0.24.0/docs/tooling.md#NodeProgramCommands) | an implementation |
+| [Commands of a program](../std/releases/0.24.0/docs/tooling.md#ProgramCommands) | [Commands run in the engine](../std/releases/0.24.0/docs/tooling.md#CommandsInTheEngine) | an implementation |
 | [Headless browser](../std/releases/0.24.0/docs/tooling.md#HeadlessBrowser) | [Chromium, driven by Playwright](../std/releases/0.24.0/docs/tooling.md#PlaywrightBrowser) | an implementation |
 
 Context: The graph page must be opened as a person opens it: the file exported, in a real browser; the repository is set and read by GitHub's command line, with the token of whoever runs it.
 
 - Decided by: trame
-- Chooses: [Node's command line](../std/releases/0.24.0/docs/tooling.md#NodeProgramCommands), [Chromium, driven by Playwright](../std/releases/0.24.0/docs/tooling.md#PlaywrightBrowser), [GitHub's command line](../std/releases/0.24.0/docs/repository.md#GitHubCliRepository)
+- Chooses: [Commands run in the engine](../std/releases/0.24.0/docs/tooling.md#CommandsInTheEngine), [Chromium, driven by Playwright](../std/releases/0.24.0/docs/tooling.md#PlaywrightBrowser), [GitHub's command line](../std/releases/0.24.0/docs/repository.md#GitHubCliRepository)
 - In: [Local](architecture.md#Local), [A session of Claude Code](architecture.md#Session)
 - Follows: [Adapter](../std/releases/0.24.0/docs/patterns.md#Adapter)
 
@@ -729,7 +729,7 @@ Context: The graph page must be opened as a person opens it: the file exported, 
 
 ### The SDLC in memory
 
-`SdlcInMemory` · `src/sdlc.ts:178` · status: **held**
+`SdlcInMemory` · `src/sdlc.ts:179` · status: **held**
 
 In the scenarios, the browser shows the page a scenario writes, and the repository is kept in memory.
 
@@ -753,7 +753,7 @@ Context: A program of the SDLC is code like the engine's: its scenarios play it 
 
 ### The commands Trame takes from std
 
-`CommandsOfStd` · `src/sdlc.ts:615` · status: **held**
+`CommandsOfStd` · `src/sdlc.ts:616` · status: **held**
 
 pull-request, merge and propagate, on the machine and in a session of Claude Code, with Trame's settings.
 
@@ -783,7 +783,7 @@ Context: Opening a pull request and carrying a version across the repository wer
 
 ### The repository's work on a machine
 
-`RepositoryWorkOnAMachine` · `src/sdlc.ts:630` · status: **unknown**
+`RepositoryWorkOnAMachine` · `src/sdlc.ts:631` · status: **unknown**
 
 Git's command line for the branches, GitHub's for the pull requests, Node to run trame.sh in each project, and the machine's files; on the machine and in a session.
 
@@ -807,7 +807,7 @@ Context: A pull request is opened, and a version carried, from the repository ch
 
 ### GitHub merges once it holds, asked by its command line
 
-`AutoMergeOnTheMachine` · `src/sdlc.ts:642` · status: **unknown**
+`AutoMergeOnTheMachine` · `src/sdlc.ts:643` · status: **unknown**
 
 On a person's machine, gh pr merge --auto: GitHub's GraphQL.
 
@@ -828,7 +828,7 @@ Context: GitHub asks the automatic merge by GraphQL, which GitHub's command line
 
 ### GitHub merges once it holds, asked in a session
 
-`AutoMergeInASession` · `src/sdlc.ts:654` · status: **unknown**
+`AutoMergeInASession` · `src/sdlc.ts:655` · status: **unknown**
 
 In a session of Claude Code, the route of its proxy: GraphQL is refused there.
 
@@ -849,7 +849,7 @@ Context: A session's proxy refuses GitHub's GraphQL, and offers PUT on the pull 
 
 ### Trame's settings in the scenarios
 
-`OurSettingsInTheScenarios` · `src/sdlc.ts:666` · status: **held**
+`OurSettingsInTheScenarios` · `src/sdlc.ts:667` · status: **held**
 
 In the scenarios, std's commands read Trame's settings as on the machine.
 

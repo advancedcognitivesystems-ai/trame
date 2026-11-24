@@ -15,7 +15,7 @@ import { decision } from "../kinds/decision"
 import { scenario } from "../kinds/scenario"
 import { entryPoint, command } from "../kinds/entry-point"
 import {
-  ProgramCommands, HeadlessBrowser, NodeProgramCommands, PlaywrightBrowser, BrowserInMemory, BrowserScripted, NodeProgramRuns, MachineFiles, ProgramRuns,
+  ProgramCommands, HeadlessBrowser, CommandsInTheEngine, PlaywrightBrowser, BrowserInMemory, BrowserScripted, NodeProgramRuns, MachineFiles, ProgramRuns,
   ProgramRunsInMemory, ProgramRunsKept, FilesInMemory,
 } from "#std/tooling"
 import { Adapter, Strategy, Command } from "#std/patterns"
@@ -160,12 +160,13 @@ export const TrameSdlc = component({
 
 /**
  * The SDLC on the machine
- * On the machine, the programs of the SDLC read their command from Node's command line, open pages in Chromium driven
- * by Playwright, and set the repository on GitHub by its command line, as the standard library realizes them.
+ * On the machine, the programs of the SDLC offer their commands to the engine that runs them, in its own process (since
+ * g119), open pages in Chromium driven by Playwright, and set the repository on GitHub by its command line, as the
+ * standard library realizes them.
  */
 export const SdlcOnTheMachine = binding({
   owner: "trame",
-  chooses: [NodeProgramCommands, PlaywrightBrowser, GitHubCliRepository],
+  chooses: [CommandsInTheEngine, PlaywrightBrowser, GitHubCliRepository],
   environments: [Local, Session],
   follows: [Adapter],
   context: "The graph page must be opened as a person opens it: the file exported, in a real browser; the repository is set and read by GitHub's command line, with the token of whoever runs it.",
@@ -281,7 +282,7 @@ export const OpenTheGraphPage = entryPoint({
  */
 export const GraphPageOpens = check({
   owner: "trame", on: [GraphPage], runs: OpenTheGraphPage, by: Maintainers,
-  verifies: [ShowGraph, ExplorerFigures, BrowserLoading, BrowserWindow, BrowserMemory, BrowserFeed, BrowserAmendments, BrowserDecompression, NodeProgramCommands, PlaywrightBrowser],
+  verifies: [ShowGraph, ExplorerFigures, BrowserLoading, BrowserWindow, BrowserMemory, BrowserFeed, BrowserAmendments, BrowserDecompression, CommandsInTheEngine, PlaywrightBrowser],
 })
 
 /**

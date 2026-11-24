@@ -6,32 +6,26 @@
 import { frozen } from "../../trame/internal"
 import { AttributeSelector } from "../../src/html.ts"
 import { GraphPageSelectors, SdlcWords, TrameSdlc } from "../../src/sdlc.ts"
-import { Time } from "../../std/releases/0.23.0/src/measures.ts"
-import { RepositoryCompared } from "../../std/releases/0.23.0/src/repository.ts"
-import body_valueTypes from "../../std/releases/0.23.0/src/code/algebra/values.ts"
-import body_nodeProgramCommands from "../../std/releases/0.23.0/src/code/tooling/node-commands.ts"
-import body_nodeProgramRuns from "../../std/releases/0.23.0/src/code/tooling/node-program-runs.ts"
+import { Time } from "../../std/releases/0.24.0/src/measures.ts"
+import { RepositoryCompared } from "../../std/releases/0.24.0/src/repository.ts"
+import body_commandsInTheEngine from "../../std/releases/0.24.0/src/code/tooling/engine-commands.ts"
+import body_nodeProgramRuns from "../../std/releases/0.24.0/src/code/tooling/node-program-runs.ts"
+import body_valueTypes from "../../std/releases/0.24.0/src/code/algebra/values.ts"
 import body_nodeProcess from "../../src/code/platform/process.ts"
-import body_counts from "../../std/releases/0.23.0/src/code/algebra/counts.ts"
-import body_sequences from "../../std/releases/0.23.0/src/code/algebra/sequences.ts"
-import body_texts from "../../std/releases/0.23.0/src/code/algebra/texts.ts"
+import body_counts from "../../std/releases/0.24.0/src/code/algebra/counts.ts"
+import body_sequences from "../../std/releases/0.24.0/src/code/algebra/sequences.ts"
+import body_texts from "../../std/releases/0.24.0/src/code/algebra/texts.ts"
 import body_advanceAGeneration from "../../src/code/sdlc/advance-a-generation.ts"
-import body_gitHubCliRepository from "../../std/releases/0.23.0/src/code/tooling/github-cli-repository.ts"
+import body_gitHubCliRepository from "../../std/releases/0.24.0/src/code/tooling/github-cli-repository.ts"
 import body_applyTheRepositorySettings from "../../src/code/sdlc/apply-the-repository-settings.ts"
-import body_playwrightBrowser from "../../std/releases/0.23.0/src/code/tooling/playwright-browser.ts"
+import body_playwrightBrowser from "../../std/releases/0.24.0/src/code/tooling/playwright-browser.ts"
 import body_openTheGraphPage from "../../src/code/sdlc/open-the-graph-page.ts"
 import body_readTheRepositorySettings from "../../src/code/sdlc/read-the-repository-settings.ts"
 
-// "Node.js process arguments" · standard
-const nodeArguments = {"script":1,"firstArgument":2}
 // "Exit status" · standard
 const exitStatus = {"success":0,"failure":1}
-// "ECMAScript types" · standard
-const ecmaScriptTypes = {"undefined":"undefined","object":"object","boolean":"boolean","number":"number","string":"string","symbol":"symbol","bigint":"bigint","function":"function"}
-// "Types of values" · algebraic structure
-const valueTypes = await body_valueTypes({ types: ecmaScriptTypes })
-// "Node's command line" · implementation, for "Commands of a program"
-const nodeProgramCommands = await body_nodeProgramCommands({ argv: nodeArguments, exit: exitStatus, values: valueTypes })
+// "Commands run in the engine" · implementation, for "Commands of a program"
+const commandsInTheEngine = await body_commandsInTheEngine({ exit: exitStatus })
 // "Node.js command line and child processes" · standard
 const nodeCli = {"importFirst":"--import","enabled":"1","inherit":"inherit","ignore":"ignore","pipe":"pipe"}
 // "Node.js events" · standard
@@ -40,10 +34,16 @@ const nodeEvents = {"data":"data","close":"close","end":"end","exit":"exit","cha
 const posix = {"currentDirectory":".","slash":"/","interrupt":"SIGINT","terminate":"SIGTERM","brokenPipe":"EPIPE"}
 // "Programs run by Node" · implementation, for "Programs run"
 const nodeProgramRuns = await body_nodeProgramRuns({ cli: nodeCli, events: nodeEvents, exit: exitStatus, posix })
+// "Node.js process arguments" · standard
+const nodeArguments = {"script":1,"firstArgument":2}
 // "Runner of TypeScript" · decision
 const typeScriptRunner = "tsx"
 // "Trame's environment" · standard
 const trameEnvironment = {"today":"TRAME_TODAY","launcher":"TRAME_LAUNCHER"}
+// "ECMAScript types" · standard
+const ecmaScriptTypes = {"undefined":"undefined","object":"object","boolean":"boolean","number":"number","string":"string","symbol":"symbol","bigint":"bigint","function":"function"}
+// "Types of values" · algebraic structure
+const valueTypes = await body_valueTypes({ types: ecmaScriptTypes })
 // "Node process" · implementation, for "Process"
 const nodeProcess = await body_nodeProcess({ argv: nodeArguments, node: nodeCli, runner: typeScriptRunner, variables: trameEnvironment, exit: exitStatus, values: valueTypes })
 // "Project layout" · decision
@@ -119,7 +119,7 @@ const openTheGraphPage = await body_openTheGraphPage({ browser: frozen.limited(p
 // "Read the repository's settings" · entry point
 const readTheRepositorySettings = await body_readTheRepositorySettings({ repository: frozen.limited(gitHubCliRepository, ["read"]), name: theRepository, settings: mainBranch, compared: repositoryCompared, say: sdlcWords, exit: exitStatus, counts })
 
-const started = (await frozen.start(TrameSdlc, { exposure: nodeProgramCommands }, [
+const started = (await frozen.start(TrameSdlc, { exposure: commandsInTheEngine }, [
   { title: "Advance", fields: {"trigger":{"type":"command","name":"advance"}}, value: advanceAGeneration },
   { title: "Set the repository's settings", fields: {"trigger":{"type":"command","name":"apply-repository-settings"}}, value: applyTheRepositorySettings },
   { title: "Open the graph page", fields: {"trigger":{"type":"command","name":"open-graph-page"}}, value: openTheGraphPage },
