@@ -224,6 +224,16 @@ export const SyntaxField = { examples: "examples", output: "output" } as const
 export const isCommandsExposure = (port: { readonly ref: string; readonly library?: string }): boolean =>
   port.ref === CommandsPort.programs || (port.library === undefined && port.ref === CommandsPort.inItsLibrary)
 
+/**
+ * The realization of std's ProgramCommands whose program runs in the engine that dispatches it (E3, since g119): its
+ * commands are offered to the engine, which imports the program in its own process and gives it its modules.
+ */
+export const EngineCommands = { programs: "std/tooling.CommandsInTheEngine", inItsLibrary: "tooling.CommandsInTheEngine" } as const
+
+/** Is this node std's CommandsInTheEngine: from a project that imports std, or in std's own graph? */
+export const runsInTheEngine = (realization: { readonly ref: string; readonly library?: string }): boolean =>
+  realization.ref === EngineCommands.programs || (realization.library === undefined && realization.ref === EngineCommands.inItsLibrary)
+
 /** The result of one check (a criterion, a scenario step). */
 export const Outcome = { passed: "passed", failed: "failed", blocked: "blocked", error: "error" } as const
 export type Outcome = ValueOf<typeof Outcome>

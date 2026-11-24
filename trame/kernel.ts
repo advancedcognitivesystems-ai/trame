@@ -20,6 +20,7 @@ export { Hole, patchLeaves, getPath, isFileBody, isNode }
 export type { FileBody }
 export * from "./format"
 export * from "./ir"
+export * from "./engine"
 
 // Commands -------------------------------------------------------------------
 

@@ -1,6 +1,6 @@
 # Pipelines
 
-*What trame ship runs for each shipment on 22 November 2026, in order, as the engine computes it: its artefacts produced, the checks a program makes, the obligations to prove, the programs that deploy it, the dossier.*
+*What trame ship runs for each shipment on 24 November 2026, in order, as the engine computes it: its artefacts produced, the checks a program makes, the obligations to prove, the programs that deploy it, the dossier.*
 
 <a id="IntoMain"></a>
 
@@ -346,13 +346,13 @@ flowchart TB
 
 |  | Stage | Step | Run by | Why | Status | Latest evidence |
 |---|---|---|---|---|---|---|
-| 1 | produce | [The preview's script](sdlc.md#PreviewScript) · `scripts/ship-preview.sh` | [A script of Bash](../.trame/ci/docs/shell.md#ShellScript) | — | **held** | 22 November 2026 by claude  |
-| 2 | produce | [The preview's workflow](sdlc.md#PreviewWorkflow) · `../../.github/workflows/poselia-preview.yml` | [A workflow of GitHub Actions](../.trame/ci/docs/github.md#GitHubWorkflow) | — | **held** | 22 November 2026 by claude  |
-| 3 | produce | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) · `../../.github/workflows/poselia-pull-request.yml` | [A workflow of GitHub Actions](../.trame/ci/docs/github.md#GitHubWorkflow) | — | **held** | 22 November 2026 by claude  |
+| 1 | produce | [The preview's script](sdlc.md#PreviewScript) · `scripts/ship-preview.sh` | [A script of Bash](../.trame/ci/docs/shell.md#ShellScript) | — | **held** | 24 November 2026 by claude  |
+| 2 | produce | [The preview's workflow](sdlc.md#PreviewWorkflow) · `../../.github/workflows/poselia-preview.yml` | [A workflow of GitHub Actions](../.trame/ci/docs/github.md#GitHubWorkflow) | — | **held** | 24 November 2026 by claude  |
+| 3 | produce | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) · `../../.github/workflows/poselia-pull-request.yml` | [A workflow of GitHub Actions](../.trame/ci/docs/github.md#GitHubWorkflow) | — | **held** | 24 November 2026 by claude  |
 | 4 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
-| 5 | prove | [The preview's script](sdlc.md#PreviewScript) | — | the shipment | **held** | 22 November 2026 by claude  |
-| 6 | prove | [The preview's workflow](sdlc.md#PreviewWorkflow) | — | the shipment | **held** | 22 November 2026 by claude  |
-| 7 | prove | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | — | the shipment | **held** | 22 November 2026 by claude  |
-| 8 | record | [The files that run it elsewhere](sdlc.md#RunnersWritten) | — | — | **held** | 22 November 2026 by claude `evidence/shipments/RunnersWritten-2026-11-22-db86b0f8.json` |
+| 5 | prove | [The preview's script](sdlc.md#PreviewScript) | — | the shipment | **held** | 24 November 2026 by claude  |
+| 6 | prove | [The preview's workflow](sdlc.md#PreviewWorkflow) | — | the shipment | **held** | 24 November 2026 by claude  |
+| 7 | prove | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | — | the shipment | **held** | 24 November 2026 by claude  |
+| 8 | record | [The files that run it elsewhere](sdlc.md#RunnersWritten) | — | — | **held** | 24 November 2026 by claude `evidence/shipments/RunnersWritten-2026-11-24-53767615.json` |
 
 `trame ship RunnersWritten --by <name>`

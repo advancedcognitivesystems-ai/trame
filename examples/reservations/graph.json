@@ -1729,7 +1729,7 @@
       "id": "sdlc.CallersIdentified",
       "kind": "obligation",
       "title": "Who calls, identified",
-      "source": "src/sdlc.ts:176",
+      "source": "src/sdlc.ts:177",
       "fields": {
         "owner": "karim",
         "gaps": "warning"
@@ -1740,7 +1740,7 @@
       "id": "sdlc.CodeVerified",
       "kind": "obligation",
       "title": "The code is verified",
-      "source": "src/sdlc.ts:134",
+      "source": "src/sdlc.ts:135",
       "fields": {
         "owner": "karim",
         "params": {
@@ -1757,11 +1757,11 @@
       "id": "sdlc.CommandsOnThisMachine",
       "kind": "binding",
       "title": "Commands on this machine",
-      "source": "src/sdlc.ts:74",
+      "source": "src/sdlc.ts:75",
       "status": "unknown",
       "fields": {
         "owner": "karim",
-        "context": "trame ship runs the programs that deploy as a person would run them, with Node."
+        "context": "trame ship runs the programs that deploy, and a person their commands, through the engine that reads the graph: one compilation, the same command line."
       },
       "diagnostics": []
     },
@@ -1769,7 +1769,7 @@
       "id": "sdlc.DecisionsApplied",
       "kind": "obligation",
       "title": "The decisions hold",
-      "source": "src/sdlc.ts:146",
+      "source": "src/sdlc.ts:147",
       "fields": {
         "owner": "karim"
       },
@@ -1779,7 +1779,7 @@
       "id": "sdlc.EveryCheck",
       "kind": "obligation",
       "title": "Every check is signed",
-      "source": "src/sdlc.ts:151",
+      "source": "src/sdlc.ts:152",
       "fields": {
         "owner": "karim",
         "params": {
@@ -1792,7 +1792,7 @@
       "id": "sdlc.GoalServed",
       "kind": "obligation",
       "title": "The requirements of the goal hold",
-      "source": "src/sdlc.ts:141",
+      "source": "src/sdlc.ts:142",
       "fields": {
         "owner": "karim"
       },
@@ -1802,7 +1802,7 @@
       "id": "sdlc.HowWeMerge",
       "kind": "decision",
       "title": "How we merge",
-      "source": "src/sdlc.ts:300",
+      "source": "src/sdlc.ts:301",
       "fields": {
         "owner": "karim",
         "value": {
@@ -1825,7 +1825,7 @@
       "id": "sdlc.IntoMain",
       "kind": "shipment",
       "title": "Into the main branch",
-      "source": "src/sdlc.ts:236",
+      "source": "src/sdlc.ts:237",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -1971,7 +1971,7 @@
       "id": "sdlc.KeptMigrates",
       "kind": "obligation",
       "title": "What the service keeps, migrated",
-      "source": "src/sdlc.ts:168",
+      "source": "src/sdlc.ts:169",
       "fields": {
         "owner": "karim",
         "gaps": "error"
@@ -2000,7 +2000,7 @@
       "id": "sdlc.MachineMode",
       "kind": "policy",
       "title": "The way of this machine",
-      "source": "src/sdlc.ts:190",
+      "source": "src/sdlc.ts:191",
       "fields": {
         "owner": "karim"
       },
@@ -2010,7 +2010,7 @@
       "id": "sdlc.MergeMode",
       "kind": "policy",
       "title": "How a change merges",
-      "source": "src/sdlc.ts:230",
+      "source": "src/sdlc.ts:231",
       "fields": {
         "owner": "karim"
       },
@@ -2020,7 +2020,7 @@
       "id": "sdlc.OnALaptop",
       "kind": "check",
       "title": "On a laptop",
-      "source": "src/sdlc.ts:122",
+      "source": "src/sdlc.ts:123",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -2036,7 +2036,7 @@
       "id": "sdlc.OnStaging",
       "kind": "check",
       "title": "On staging",
-      "source": "src/sdlc.ts:106",
+      "source": "src/sdlc.ts:107",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -2054,7 +2054,7 @@
       "id": "sdlc.OnThisMachine",
       "kind": "shipment",
       "title": "On this machine",
-      "source": "src/sdlc.ts:203",
+      "source": "src/sdlc.ts:204",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -2193,9 +2193,8 @@
           "data.ReservationStatuses",
           "sdlc.PrepareStorage",
           "sdlc.ReservationsSdlc",
-          "std/system.NodeArguments",
           "std/system.ExitStatus",
-          "std/tooling.NodeProgramCommands"
+          "std/tooling.CommandsInTheEngine"
         ]
       },
       "diagnostics": [
@@ -2226,7 +2225,7 @@
       "id": "sdlc.OurPullRequests",
       "kind": "function",
       "title": "Our pull requests",
-      "source": "src/sdlc.ts:311",
+      "source": "src/sdlc.ts:312",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -2243,7 +2242,7 @@
       "id": "sdlc.PackagesSafe",
       "kind": "obligation",
       "title": "The packages are safe",
-      "source": "src/sdlc.ts:161",
+      "source": "src/sdlc.ts:162",
       "fields": {
         "owner": "karim"
       },
@@ -2253,7 +2252,7 @@
       "id": "sdlc.PrepareStorage",
       "kind": "entry",
       "title": "Prepare the storage",
-      "source": "src/sdlc.ts:87",
+      "source": "src/sdlc.ts:88",
       "status": "held",
       "fields": {
         "owner": "karim",
@@ -2294,7 +2293,7 @@
       "id": "sdlc.PublishedBeforeMerging",
       "kind": "obligation",
       "title": "What people decided, published",
-      "source": "src/sdlc.ts:223",
+      "source": "src/sdlc.ts:224",
       "fields": {
         "owner": "karim",
         "gaps": "error"
@@ -2305,7 +2304,7 @@
       "id": "sdlc.PullRequestsOnGitHub",
       "kind": "decision",
       "title": "How a pull request is checked on GitHub",
-      "source": "src/sdlc.ts:244",
+      "source": "src/sdlc.ts:245",
       "fields": {
         "owner": "karim",
         "value": {
@@ -2336,7 +2335,7 @@
       "id": "sdlc.PullRequestsOpened",
       "kind": "binding",
       "title": "Pull requests opened by the library",
-      "source": "src/sdlc.ts:325",
+      "source": "src/sdlc.ts:326",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -2348,7 +2347,7 @@
       "id": "sdlc.PullRequestWorkflow",
       "kind": "artifact",
       "title": "The pull requests' workflow",
-      "source": "src/sdlc.ts:262",
+      "source": "src/sdlc.ts:263",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -2367,7 +2366,7 @@
       "id": "sdlc.Release",
       "kind": "shipment",
       "title": "A release",
-      "source": "src/sdlc.ts:196",
+      "source": "src/sdlc.ts:197",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -2559,7 +2558,7 @@
       "id": "sdlc.ReleaseMode",
       "kind": "policy",
       "title": "The way of a release",
-      "source": "src/sdlc.ts:181",
+      "source": "src/sdlc.ts:182",
       "fields": {
         "owner": "karim"
       },
@@ -2583,7 +2582,7 @@
       "id": "sdlc.RulesHeld",
       "kind": "obligation",
       "title": "The rules hold",
-      "source": "src/sdlc.ts:156",
+      "source": "src/sdlc.ts:157",
       "fields": {
         "owner": "karim"
       },
@@ -2593,7 +2592,7 @@
       "id": "sdlc.RunnersWritten",
       "kind": "shipment",
       "title": "The files that run it elsewhere",
-      "source": "src/sdlc.ts:276",
+      "source": "src/sdlc.ts:277",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -2615,7 +2614,7 @@
       "id": "sdlc.TheService",
       "kind": "artifact",
       "title": "The service",
-      "source": "src/sdlc.ts:216",
+      "source": "src/sdlc.ts:217",
       "status": "unknown",
       "fields": {
         "owner": "karim",
@@ -2624,7 +2623,7 @@
       },
       "result": {
         "path": "src",
-        "code": "8b8b01c2"
+        "code": "89fa5a2b"
       },
       "diagnostics": [
         "warning: Not built yet: trame ship builds it"
@@ -3833,7 +3832,7 @@
     },
     {
       "from": "sdlc.CommandsOnThisMachine",
-      "to": "std/tooling.NodeProgramCommands",
+      "to": "std/tooling.CommandsInTheEngine",
       "kind": "chooses"
     },
     {

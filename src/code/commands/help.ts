@@ -1,5 +1,6 @@
 // trame help: what may be typed here. The commands of the engine, as its command line names them; those of the project
-// (E3, since g116), each with the entry point it runs and its component; the views, which a word alone shows too.
+// (E3, since g116), each with the entry point it runs and its component, and the engine's they replace (since g119);
+// the views, which a word alone shows too.
 
 import type { ProvidedBy } from "../../../trame/kernel"
 import type { Handler } from "../../../kinds/entry-point"
@@ -33,6 +34,8 @@ const body = (deps: Deps): Handler => async (req) => {
   // The longest name and its gap: every title starts in the same column.
   const width = Math.max(...own.map((x) => x.name.length)) + deps.columns.minimumGap
   for (const { name, entry, component } of own) terminal.write(messages.helpProjectCommand(deps.cell(name, width), entry.title, component.title))
+  const replaced = own.map((x) => x.name).filter((name) => o.commands.includes(name))
+  if (replaced.length) terminal.write(messages.helpReplaced(replaced))
   terminal.write(messages.helpViews(deps.views.sortedViews().map((v) => v.name)))
   return { status: deps.exitStatus.success, body: undefined }
 }

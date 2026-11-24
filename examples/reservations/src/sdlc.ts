@@ -13,7 +13,7 @@ import { shipment } from "#trame/kinds/shipment"
 import { Verified, Served, Applied, Checked, Ruled, Safe, Identified, Published } from "#std/obligations"
 import { Migrated } from "#data/obligations"
 import { Records, PostgresTables, StartEmpty } from "#data/records"
-import { ProgramCommands, NodeProgramCommands } from "#std/tooling"
+import { ProgramCommands, CommandsInTheEngine } from "#std/tooling"
 import { OpenPullRequest, PullRequestSettings } from "#std/commands"
 import { GitCliBranches, GitHubCliPullRequests, AutoMergeByGitHubCli, type MergeMethod } from "#std/repository"
 import { Command } from "#std/patterns"
@@ -69,14 +69,15 @@ export const ReservationsSdlc = component({
 
 /**
  * Commands on this machine
- * The programs of the SDLC read their commands from Node's command line, as the standard library realizes it.
+ * The programs of the SDLC offer their commands to the engine that runs them, in its own process, as the standard
+ * library realizes it: trame ship runs the ones that deploy, a person types one through trame.
  */
 export const CommandsOnThisMachine = binding({
   owner: "karim",
-  chooses: [NodeProgramCommands],
+  chooses: [CommandsInTheEngine],
   environments: [Local],
   follows: [Adapter],
-  context: "trame ship runs the programs that deploy as a person would run them, with Node.",
+  context: "trame ship runs the programs that deploy, and a person their commands, through the engine that reads the graph: one compilation, the same command line.",
 })
 
 /**

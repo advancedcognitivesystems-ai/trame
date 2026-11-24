@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-22",
+  "at": "2026-11-24",
   "nodes": [
     {
       "id": "appearance.ExplorerDrawing",
@@ -871,6 +871,11 @@
           "runTs": [
             "process",
             "read"
+          ],
+          "runHere": [
+            "execution",
+            "read",
+            "terminal"
           ],
           "onSignal": [
             "process"
@@ -1947,6 +1952,8 @@
         "deps": {
           "byName": "commands.CommandOrView",
           "help": "commands.Help",
+          "commands": "commands.ProjectCommands",
+          "preparation": "commands.Preparation",
           "processLog": "architecture.ProcessLog",
           "terminalLog": "architecture.TerminalLog",
           "line": "conventions.TrameCommands",
@@ -2603,6 +2610,7 @@
           "views": "engine.Views",
           "assembler": "commands.Assembler",
           "projectCommands": "commands.ProjectCommands",
+          "engine": "commands.EngineModules",
           "writing": "architecture.FileWriting",
           "paths": "architecture.Paths",
           "currentProcess": "architecture.Process",
@@ -2761,6 +2769,38 @@
           "file": "./code/commands/payload.ts",
           "language": "typescript"
         }
+      }
+    },
+    {
+      "id": "commands.EngineModules",
+      "kind": "function",
+      "title": "The engine's modules",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "compiler": "engine.Compiler",
+          "compilation": "engine.CompilationApi",
+          "laws": "engine.Laws",
+          "views": "engine.Views",
+          "lock": "engine.Lock",
+          "machine": "engine.MachineOutputs",
+          "payload": "engine.PayloadBuilder",
+          "dates": "engine.DateBundle",
+          "differences": "engine.Differences",
+          "dev": "engine.DevServer",
+          "assembly": "engine.Assembly",
+          "project": "engine.Project",
+          "identity": "engine.EngineFingerprint",
+          "wiring": "engine.Wiring",
+          "pipeline": "engine.ShipmentPipeline",
+          "judged": "engine.JudgedHarder",
+          "references": "engine.References",
+          "fingerprints": "engine.Fingerprints",
+          "evidence": "shipping.SdlcEvidence",
+          "drivers": "languages.Drivers"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -2984,7 +3024,8 @@
           "projectLayout": "conventions.Layout",
           "uri": "std/web.Uri",
           "references": "engine.References",
-          "projectCommands": "commands.ProjectCommands"
+          "projectCommands": "commands.ProjectCommands",
+          "kept": "conventions.KeptCommands"
         },
         "body": {
           "file": "./code/commands/preparation.ts",
@@ -3249,6 +3290,8 @@
           "led": "delivery.NamesLed",
           "programBundle": "shipping.ProgramBundle",
           "currentProcess": "architecture.Process",
+          "projectCommands": "commands.ProjectCommands",
+          "engine": "commands.EngineModules",
           "events": "std/system.NodeEvents",
           "reading": "architecture.FileReading",
           "writing": "architecture.FileWriting",
@@ -3564,6 +3607,25 @@
         "owner": "trame",
         "value": {
           "indentation": 2
+        }
+      }
+    },
+    {
+      "id": "conventions.KeptCommands",
+      "kind": "decision",
+      "title": "The commands the engine keeps",
+      "fields": {
+        "owner": "trame",
+        "value": [
+          "init",
+          "doctor",
+          "help",
+          "manifest"
+        ],
+        "rejected": {
+          "Check, a command that compiles and judges, writing nothing": "plan does it, a command like the others",
+          "Every command kept until a library offers it": "a project could not replace a command of the engine, and the passage to commands the projects compose would need a second form of the rule",
+          "No command kept": "a project whose graph does not load, or that does not exist yet, could not be repaired, asked about or started"
         }
       }
     },
@@ -8541,10 +8603,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.23.0",
+        "version": "0.24.0",
         "joins": "library",
         "from": "path",
-        "at": "std/releases/0.23.0"
+        "at": "std/releases/0.24.0"
       }
     },
     {
@@ -10200,6 +10262,7 @@
           "terminal": "architecture.Terminal",
           "exitStatus": "std/system.ExitStatus",
           "line": "conventions.TrameCommands",
+          "kept": "conventions.KeptCommands",
           "messages": "messages.PlatformMessages"
         },
         "body": {
@@ -10302,7 +10365,9 @@
           "argv": "std/system.NodeArguments",
           "node": "std/system.NodeCli",
           "runner": "platform.TypeScriptRunner",
-          "variables": "conventions.TrameEnvironment"
+          "variables": "conventions.TrameEnvironment",
+          "exit": "std/system.ExitStatus",
+          "values": "std/algebra.ValueTypes"
         },
         "body": {
           "file": "./code/platform/process.ts",
@@ -11015,7 +11080,7 @@
       "id": "principles.ShippedThroughTheGraph",
       "kind": "adr",
       "title": "A version ships through the graph",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "Two products ship differently (a page placed where it is served, an engine frozen into a generation) and their pipelines lived in scripts and in their authors' heads: nothing said what had been checked, by whom, on which version, nor why a version could go.",
@@ -11631,6 +11696,20 @@
         "fingerprint": "182c7edba5fb4066",
         "language": "shared",
         "archive": "317984c94a100587"
+      }
+    },
+    {
+      "id": "releases.G119",
+      "kind": "release",
+      "title": "Generation 119",
+      "fields": {
+        "owner": "trame",
+        "version": "g119",
+        "date": "2026-11-24",
+        "what": "Commands run in the engine: a program whose exposure is std's CommandsInTheEngine is imported in the engine's process with the engine's modules; a command of the project replaces the engine's of the same name, only init, doctor, help and manifest are kept (E3, part 3)",
+        "fingerprint": "9a33b5635b7ae610",
+        "language": "shared",
+        "archive": "d93ba19ab02eaa48"
       }
     },
     {
@@ -13956,7 +14035,7 @@
       "id": "sdlc.CandidateKeepsTheLaws",
       "kind": "check",
       "title": "The candidate plays the laws",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame"
       }
@@ -14117,7 +14196,7 @@
       "id": "sdlc.IntoMain",
       "kind": "shipment",
       "title": "Into the main branch",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "main"
@@ -14188,7 +14267,7 @@
       "id": "sdlc.NextGeneration",
       "kind": "shipment",
       "title": "The next generation",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "generation"
@@ -14360,7 +14439,7 @@
       "id": "sdlc.PullRequestWorkflow",
       "kind": "artifact",
       "title": "The pull requests' workflow",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": ".github/workflows/trame-pull-request.yml",
@@ -14507,7 +14586,7 @@
       "id": "sdlc.RunnersWritten",
       "kind": "shipment",
       "title": "The files that run it elsewhere",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "repository"
@@ -14576,7 +14655,7 @@
       "id": "sdlc.TheEngine",
       "kind": "artifact",
       "title": "The engine",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "src",
@@ -19130,6 +19209,11 @@
     },
     {
       "from": "command-scenarios.ProjectCommandRun",
+      "to": "commands.EngineModules",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.ProjectCommandRun",
       "to": "architecture.Test",
       "kind": "env"
     },
@@ -19141,6 +19225,16 @@
     {
       "from": "command-scenarios.ProjectCommandRun",
       "to": "commands.Help",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ProjectCommandRun",
+      "to": "commands.ProjectCommands",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ProjectCommandRun",
+      "to": "commands.Preparation",
       "kind": "deps"
     },
     {
@@ -20330,6 +20424,11 @@
     },
     {
       "from": "commands.CommandOrView",
+      "to": "commands.EngineModules",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.CommandOrView",
       "to": "architecture.FileWriting",
       "kind": "deps"
     },
@@ -20596,6 +20695,111 @@
     {
       "from": "commands.EmitPayload",
       "to": "architecture.Terminal",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.EngineModules",
+      "to": "product.ExecutableSpecification",
+      "kind": "serves"
+    },
+    {
+      "from": "commands.EngineModules",
+      "to": "engine.Compiler",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.EngineModules",
+      "to": "engine.CompilationApi",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.EngineModules",
+      "to": "engine.Laws",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.EngineModules",
+      "to": "engine.Views",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.EngineModules",
+      "to": "engine.Lock",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.EngineModules",
+      "to": "engine.MachineOutputs",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.EngineModules",
+      "to": "engine.PayloadBuilder",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.EngineModules",
+      "to": "engine.DateBundle",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.EngineModules",
+      "to": "engine.Differences",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.EngineModules",
+      "to": "engine.DevServer",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.EngineModules",
+      "to": "engine.Assembly",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.EngineModules",
+      "to": "engine.Project",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.EngineModules",
+      "to": "engine.EngineFingerprint",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.EngineModules",
+      "to": "engine.Wiring",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.EngineModules",
+      "to": "engine.ShipmentPipeline",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.EngineModules",
+      "to": "engine.JudgedHarder",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.EngineModules",
+      "to": "engine.References",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.EngineModules",
+      "to": "engine.Fingerprints",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.EngineModules",
+      "to": "shipping.SdlcEvidence",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.EngineModules",
+      "to": "languages.Drivers",
       "kind": "deps"
     },
     {
@@ -21071,6 +21275,11 @@
     {
       "from": "commands.Preparation",
       "to": "commands.ProjectCommands",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Preparation",
+      "to": "conventions.KeptCommands",
       "kind": "deps"
     },
     {
@@ -21561,6 +21770,16 @@
     {
       "from": "commands.Ship",
       "to": "architecture.Process",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Ship",
+      "to": "commands.ProjectCommands",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Ship",
+      "to": "commands.EngineModules",
       "kind": "deps"
     },
     {
@@ -25430,6 +25649,11 @@
     },
     {
       "from": "platform.NodeCommandLine",
+      "to": "conventions.KeptCommands",
+      "kind": "deps"
+    },
+    {
+      "from": "platform.NodeCommandLine",
       "to": "messages.PlatformMessages",
       "kind": "deps"
     },
@@ -26866,6 +27090,16 @@
     {
       "from": "releases.G118",
       "to": "releases.G117",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G119",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G119",
+      "to": "releases.G118",
       "kind": "assembledBy"
     },
     {

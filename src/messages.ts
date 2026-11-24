@@ -507,8 +507,8 @@ export const CommandMessages = catalog({
     examplesWritten: (count: number, files: string[]) => `${plural(count, { one: "output", other: "outputs" })} written again: ${files.join(", ")}. Build again`,
 
     // The commands of a project (E3, since g116).
-    /** A command of the project that the engine answers first. */
-    commandHiddenByEngine: (name: string) => `The engine has a command ${name}: this one would never run. Name it otherwise`,
+    /** A command of the project named like one the engine keeps, which the engine answers first (since g119). */
+    commandHiddenByEngine: (name: string) => `The engine keeps the command ${name}: this one would never run. Name it otherwise`,
     /** A command of the project that a view answers first. */
     commandHiddenByView: (name: string) => `A view is named ${name}: this command would never run. Name it otherwise`,
     /** Two commands of the project with the same name. */
@@ -516,12 +516,17 @@ export const CommandMessages = catalog({
     /** A component of commands assembled for several environments, none named. */
     commandEnvironment: (name: string, component: string, environments: string[]) =>
       `${name} runs in ${component}, which is assembled for ${environments.join(", ")}: say which with --env`,
+    /** A component of commands not assembled for the environment named with --env (since g119). */
+    commandNotAssembledFor: (name: string, component: string, asked: string, environments: string[]) =>
+      `${name} runs in ${component}, which is assembled for ${environments.join(", ")}, not for ${asked}`,
     /** A component of commands assembled for no environment. */
     commandWithoutEnvironment: (name: string, component: string) => `${name} runs in ${component}, which names no environment to be assembled for`,
     /** trame help: the commands of the engine, then those of the project, then the views. */
     helpEngine: (commands: string[]) => `Commands of the engine: ${commands.join(", ")}`,
     helpProject: (count: number) => (count ? `Commands of the project (${plural(count, { one: "command", other: "commands" })}):` : "Commands of the project: none"),
     helpProjectCommand: (name: string, title: string, component: string) => `  ${name} ${title} (${component})`,
+    /** The commands of the engine the project's replace (since g119): the project's run. */
+    helpReplaced: (names: string[]) => `Replaced by the project's: ${names.join(", ")}`,
     helpViews: (views: string[]) => `Views (trame <view> [node]): ${views.join(", ")}`,
 
     // trame assemble
@@ -864,7 +869,7 @@ export const ScenarioMessages = catalog({
     agentAloneRefused: (agent: string) => `${agent}, of no role that signs it, is refused alone`,
     givenForSomeone: (agent: string, person: string) => `Given by ${agent} for ${person} under a delegation of the role: ${person}'s, ${agent} named with it, sealed with the rest`,
     delegationOverRefused: (agent: string) => `Once the delegation is over, ${agent} is refused again`,
-    projectCommandRun: (name: string) => `trame ${name} runs the example's command: its component assembled, its program started with the rest of the line`,
+    projectCommandRun: (name: string) => `trame ${name} runs the example's command: its component assembled, its program run in the engine's process with the rest of the line`,
     helpListsTheProject: (name: string) => `trame help lists ${name}, with the component that runs it`,
     advanceNeedsAName: () => "trame advance without a name assembles nothing and starts nothing",
     advanceAssemblesThenShips: () => "trame advance assembles the candidate and Trame's SDLC, then starts the candidate on the next generation's shipment with the rest of the line",
@@ -874,9 +879,13 @@ export const ScenarioMessages = catalog({
     outputWrittenAsLines: () => "An output written as lines joined keeps that form: each line on its own, at the indentation of the others",
     outputOfNoElement: () => "An element the declaration does not hold has no output written",
     examplesAllMet: () => "trame examples, in the example: every example met, nothing written",
-    libraryCommandRun: (name: string) => `trame ${name} runs the library's command the example chose: its component assembled with that command alone, its program started with the rest of the line`,
+    libraryCommandRun: (name: string) => `trame ${name} runs the library's command the example chose: its component assembled with that command alone, its program run in the engine's process with the rest of the line`,
     helpListsTheLibrary: (name: string) => `trame help lists ${name}, with the library's component that runs it`,
-    hiddenCommandRefused: (name: string) => `Were ${name} a command of the engine, the project's would never run: an error of the graph, nothing assembled`,
+    hiddenCommandRefused: (name: string) => `Were ${name} a command the engine keeps, the project's would never run: an error of the graph`,
+    /** A command of the engine the project replaces (since g119). */
+    engineCommandReplaced: (name: string) => `Were ${name} also a command of the engine, the project's would run instead, the engine's not`,
+    /** A command of the engine the project has none of (since g119). */
+    engineCommandKept: (name: string) => `trame ${name}, which the example does not replace: the dispatch answers no status, nothing runs, and the engine's answers`,
     startedModule: () => "The first module declares the goal and whoever started the project, an actor who owns it, and names the language by its name",
     registryPublished: () => "trame registry publishes a generation it names, its language copied: the kernel is a file there",
     startedReferences: () => "Its references are package nodes of its graph: the language, at the generation that started it, and its libraries",

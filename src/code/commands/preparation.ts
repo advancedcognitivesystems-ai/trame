@@ -46,6 +46,8 @@ export interface Deps {
   references: ProvidedBy<typeof References>
   /** The commands of the project's graph, and those of them that never run (E3, since g116). */
   projectCommands: ProjectCommandsApi
+  /** The commands the engine keeps, whatever the project says (since g119): a command of the project never takes their names. */
+  kept: readonly string[]
 }
 
 export interface Options {
@@ -175,9 +177,18 @@ const body = (deps: Deps) => {
   }
 
   let loaded: Loaded | undefined
+  /**
+   * The project as the dispatch prepared it, by its root and its date (since g119): the dispatch prepares it to find the
+   * project's commands; when it has none, the engine's command it gives way to takes it, once, rather than compile again.
+   */
+  let handed: { key: string; ctx: Ctx } | undefined
+  const keyOf = (o: Options) => JSON.stringify([o.root, o.today])
 
   /** Imports, laws of kinds and views, TypeScript, compilation, trame.lock. */
   async function prepare(o: Options): Promise<Ctx> {
+    const given = handed
+    handed = undefined
+    if (given?.key === keyOf(o)) return given.ctx
     await loadKinds(o.root)
     await loadViews(o.root)
     const imports = checkImports(o.root)
@@ -202,12 +213,34 @@ const body = (deps: Deps) => {
     return await at(o, o.today)
   }
 
+  /**
+   * The project prepared as prepare does, or nothing, said nowhere, when it cannot be (since g119): the dispatch asks it
+   * before a command of the engine, which then says itself what is wrong (test-kinds, the laws that fail).
+   */
+  async function attempt(o: Options): Promise<Ctx | undefined> {
+    try {
+      await loadKinds(o.root)
+      await loadViews(o.root)
+      if (checkImports(o.root).length || checkKinds(o.today).some((r) => r.failures.length) || checkViewDecls().length) return undefined
+      loaded = await load(o.root)
+      if ([loaded.typeErrors, loaded.quantityErrors ?? [], loaded.textAsCode ?? [], loaded.forgedCommands ?? []].some((e) => e.length)) return undefined
+      return await at(o, o.today)
+    } catch {
+      return undefined
+    }
+  }
+
+  /** Hands the project as prepared to the command that runs next, for the same root and date (since g119). */
+  function handOver(o: Options, ctx: Ctx): void {
+    handed = { key: keyOf(o), ctx }
+  }
+
   /** Compiles the already loaded graph at a date, with trame.lock. */
   async function at(o: Options, date: string): Promise<Ctx> {
     // A day before today: what was proven then is judged as it was given, the code and the engine of that day unknown.
     const c = await compileAt(loaded!, date, { asGiven: date < deps.clock.today() })
     const lockIssues = checkLock(c, o.root)
-    const hidden = deps.projectCommands.hidden(c, o.commands, deps.views.sortedViews().map((v) => v.name))
+    const hidden = deps.projectCommands.hidden(c, deps.kept, deps.views.sortedViews().map((v) => v.name))
     c.diags.push(...lockIssues, ...hidden)
     c.diags.sort((a, b) => deps.severityOrder(a.severity) - deps.severityOrder(b.severity))
     const published = publishedOf(c, o.root)
@@ -261,7 +294,7 @@ const body = (deps: Deps) => {
     return { locate: located, files: new Map(docs.map((d) => [d.id, d.file])) }
   }
 
-  return { options, printLaws, refuse, prepare, at, alsoWith, reread, views, renderingContext }
+  return { options, printLaws, refuse, prepare, attempt, handOver, at, alsoWith, reread, views, renderingContext }
 }
 
 export type Api = ReturnType<typeof body>

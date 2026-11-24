@@ -369,3 +369,16 @@ export const R0_23_0 = release({
   language: "shared",
   serves: [ChosenCommands, CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
 })
+
+/**
+ * Version 0.24.0
+ */
+export const R0_24_0 = release({
+  owner: "trame",
+  version: "0.24.0",
+  date: "2026-11-24",
+  what: "Commands run in the engine: CommandsInTheEngine offers a program's commands to the engine that imports it (E3, part 3)",
+  fingerprint: "f9e692913a6f8704",
+  language: "shared",
+  serves: [ChosenCommands, CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
+})

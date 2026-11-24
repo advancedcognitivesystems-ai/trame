@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-22",
+  "generated": "2026-11-24",
   "nodes": [
     {
       "id": "documents.Conforms",
@@ -175,9 +175,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "118",
+        "version": "119",
         "joins": "language",
-        "at": "../../generations/g118"
+        "at": "../../generations/g119"
       },
       "diagnostics": []
     },
@@ -204,9 +204,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.23.0",
+        "version": "0.24.0",
         "joins": "library",
-        "at": "../../std/releases/0.23.0"
+        "at": "../../std/releases/0.24.0"
       },
       "diagnostics": []
     },
@@ -1146,7 +1146,7 @@
       },
       "result": {
         "path": "src",
-        "code": "285e533d"
+        "code": "c7fda80b"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"

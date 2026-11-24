@@ -1305,7 +1305,7 @@
       "status": "unknown",
       "fields": {
         "owner": "karim",
-        "context": "trame ship runs the programs that deploy as a person would run them, with Node."
+        "context": "trame ship runs the programs that deploy, and a person their commands, through the engine that reads the graph: one compilation, the same command line."
       }
     },
     {

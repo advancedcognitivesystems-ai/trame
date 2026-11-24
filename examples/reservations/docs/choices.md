@@ -21,7 +21,7 @@
 | [The branches](../../../std/docs/repository.md#Branches) | — | [Git's branches](../../../std/docs/repository.md#GitCliBranches) | — |
 | [Pull requests](../../../std/docs/repository.md#PullRequests) | — | [GitHub's pull requests, by its command line](../../../std/docs/repository.md#GitHubCliPullRequests) | — |
 | [The automatic merge](../../../std/docs/repository.md#AutoMerge) | — | [The automatic merge, by GitHub's command line](../../../std/docs/repository.md#AutoMergeByGitHubCli) | — |
-| [Commands of a program](../../../std/docs/tooling.md#ProgramCommands) | — | [Node's command line](../../../std/docs/tooling.md#NodeProgramCommands) | — |
+| [Commands of a program](../../../std/docs/tooling.md#ProgramCommands) | — | [Commands run in the engine](../../../std/docs/tooling.md#CommandsInTheEngine) | — |
 
 | Pattern | Status | Followed by |
 |---|---|---|
@@ -336,20 +336,20 @@ Context: The build of the service evaluates in Test: its way of judging applies 
 
 ### Commands on this machine
 
-`CommandsOnThisMachine` · `src/sdlc.ts:74` · status: **unknown**
+`CommandsOnThisMachine` · `src/sdlc.ts:75` · status: **unknown**
 
-The programs of the SDLC read their commands from Node's command line, as the standard library realizes it.
+The programs of the SDLC offer their commands to the engine that runs them, in its own process, as the standard library realizes it: trame ship runs the ones that deploy, a person types one through trame.
 
 In [Local](infra.md#Local):
 
 | Port | Answered by | Which is |
 |---|---|---|
-| [Commands of a program](../../../std/docs/tooling.md#ProgramCommands) | [Node's command line](../../../std/docs/tooling.md#NodeProgramCommands) | an implementation |
+| [Commands of a program](../../../std/docs/tooling.md#ProgramCommands) | [Commands run in the engine](../../../std/docs/tooling.md#CommandsInTheEngine) | an implementation |
 
-Context: trame ship runs the programs that deploy as a person would run them, with Node.
+Context: trame ship runs the programs that deploy, and a person their commands, through the engine that reads the graph: one compilation, the same command line.
 
 - Decided by: karim
-- Chooses: [Node's command line](../../../std/docs/tooling.md#NodeProgramCommands)
+- Chooses: [Commands run in the engine](../../../std/docs/tooling.md#CommandsInTheEngine)
 - In: [Local](infra.md#Local)
 - Follows: [Adapter](../../../std/docs/patterns.md#Adapter)
 
@@ -357,7 +357,7 @@ Context: trame ship runs the programs that deploy as a person would run them, wi
 
 ### Pull requests opened by the library
 
-`PullRequestsOpened` · `src/sdlc.ts:325` · status: **unknown**
+`PullRequestsOpened` · `src/sdlc.ts:326` · status: **unknown**
 
 The service takes std's pull-request, on the machine, with its own settings; Git's and GitHub's command lines answer it there.
 

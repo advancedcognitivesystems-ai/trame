@@ -1,6 +1,7 @@
 // The process of the scenarios: its current directory is the example's, or the project of the repository a scenario
 // enters; a program it starts (the engine relaunched, a program run, another engine) runs nothing: it prints what the
-// scenario said it answers, then exits with that status. What was started is kept.
+// scenario said it answers, then exits with that status. A program of commands run in the engine's process (since
+// g119) is not imported either: it answers the status the scenario said. What was started is kept.
 
 import type { BodyOf } from "../../../trame/kernel"
 import type { ExampleProcess } from "../../platform"
@@ -52,6 +53,7 @@ const body: BodyOf<typeof ExampleProcess> = ({ root, paths, line, events, messag
     relaunch: (args, cwd) => child(line.program, args, cwd),
     restart: (args, cwd) => child(line.program, args, cwd),
     runTs: (file, args) => child(file, args, paths.resolve(current)),
+    runHere: async (program, args) => next(program, args, paths.resolve(current)).status,
     onSignal: () => undefined,
     run: async (program, args, cwd) => {
       const { output, status } = next(program, args, cwd)

@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 22 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 24 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Trame · Appearance
 
@@ -282,7 +282,7 @@ Port · `Prelude`
 Port · `Process`
 
 - Owner: trame
-- Declared effects: { cwd: read, program: read, terminal, env: read, relaunch: process, read, terminal, restart: process, read, terminal, runTs: process, read, onSignal: process }
+- Declared effects: { cwd: read, program: read, terminal, env: read, relaunch: process, read, terminal, restart: process, read, terminal, runTs: process, read, runHere: execution, read, terminal, onSignal: process }
 
 ### Process log
 
@@ -842,10 +842,10 @@ Scenario · `PayloadOfTheGraph` · **held**
 Scenario · `ProjectCommandRun` · **held**
 
 - Owner: trame
-- Parameters: { byName: commands.CommandOrView, help: commands.Help, processLog: architecture.ProcessLog, terminalLog: architecture.TerminalLog, line: conventions.TrameCommands, exitStatus: std/system.ExitStatus, samples: command-scenarios.ProjectSamples, texts: std/algebra.Texts, said: messages.CommandMessages, messages: messages.ScenarioMessages }
-- Verifies: A command of the project, or a view, The project's commands, Help
+- Parameters: { byName: commands.CommandOrView, help: commands.Help, commands: commands.ProjectCommands, preparation: commands.Preparation, processLog: architecture.ProcessLog, terminalLog: architecture.TerminalLog, line: conventions.TrameCommands, exitStatus: std/system.ExitStatus, samples: command-scenarios.ProjectSamples, texts: std/algebra.Texts, said: messages.CommandMessages, messages: messages.ScenarioMessages }
+- Verifies: A command of the project, or a view, The project's commands, Help, The engine's modules
 - In: Test
-- Depends on: A command of the project, or a view, Help, Process log, Terminal log, Trame's commands, What the scenarios ask of those projects, Messages of the commands, Messages of the scenarios
+- Depends on: A command of the project, or a view, Help, The project's commands, Preparation, Process log, Terminal log, Trame's commands, What the scenarios ask of those projects, Messages of the commands, Messages of the scenarios
 
 ### A project started
 
@@ -964,6 +964,15 @@ Function · `BuildComparison` · **held**
 - Serves: A specification that runs
 - Depends on: Messages of the commands, Messages of the outputs
 
+### The engine's modules
+
+Function · `EngineModules` · **held**
+
+- Owner: trame
+- Parameters: { compiler: engine.Compiler, compilation: engine.CompilationApi, laws: engine.Laws, views: engine.Views, lock: engine.Lock, machine: engine.MachineOutputs, payload: engine.PayloadBuilder, dates: engine.DateBundle, differences: engine.Differences, dev: engine.DevServer, assembly: engine.Assembly, project: engine.Project, identity: engine.EngineFingerprint, wiring: engine.Wiring, pipeline: engine.ShipmentPipeline, judged: engine.JudgedHarder, references: engine.References, fingerprints: engine.Fingerprints, evidence: shipping.SdlcEvidence, drivers: languages.Drivers }
+- Serves: A specification that runs
+- Depends on: Compiler, Compilation API, Laws, Views, Lock, Machine outputs, Payload, Date bundle, Differences, trame dev server, Assembly, Project, The fingerprint of an engine, Wiring, A shipment's pipeline, Judged harder, References, Fingerprints, Evidence of the SDLC, Drivers
+
 ### Rewriting an example
 
 Function · `ExampleRewriting` · **held**
@@ -978,9 +987,9 @@ Function · `ExampleRewriting` · **held**
 Function · `Preparation` · **held**
 
 - Owner: trame
-- Parameters: { line: conventions.TrameCommands, compiler: engine.Compiler, compilationApi: engine.CompilationApi, laws: engine.Laws, views: engine.Views, lock: engine.Lock, common: rendering.Common, terminal: architecture.Terminal, currentProcess: architecture.Process, clock: architecture.Clock, severityOrder: (rule), devPort: product.DevPort, exitStatus: std/system.ExitStatus, layout: text.TerminalText, columns: text.TerminalColumns, cell: text.PaddedCell, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, messages: messages.CommandMessages, projectLayout: conventions.Layout, uri: std/web.Uri, references: engine.References, projectCommands: commands.ProjectCommands }
+- Parameters: { line: conventions.TrameCommands, compiler: engine.Compiler, compilationApi: engine.CompilationApi, laws: engine.Laws, views: engine.Views, lock: engine.Lock, common: rendering.Common, terminal: architecture.Terminal, currentProcess: architecture.Process, clock: architecture.Clock, severityOrder: (rule), devPort: product.DevPort, exitStatus: std/system.ExitStatus, layout: text.TerminalText, columns: text.TerminalColumns, cell: text.PaddedCell, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, messages: messages.CommandMessages, projectLayout: conventions.Layout, uri: std/web.Uri, references: engine.References, projectCommands: commands.ProjectCommands, kept: conventions.KeptCommands }
 - Serves: A specification that runs
-- Depends on: Trame's commands, Compiler, Compilation API, Laws, Views, Lock, Common rendering, Terminal, Process, Clock, Sort problems by severity, Port of trame dev, Terminal text, Columns in the terminal, Padded cell, Messages of the commands, Project layout, References, The project's commands
+- Depends on: Trame's commands, Compiler, Compilation API, Laws, Views, Lock, Common rendering, Terminal, Process, Clock, Sort problems by severity, Port of trame dev, Terminal text, Columns in the terminal, Padded cell, Messages of the commands, Project layout, References, The project's commands, The commands the engine keeps
 
 ### The project's commands
 
@@ -1070,10 +1079,10 @@ Entry point · `CommandOrView` · **held**
 
 - Owner: trame
 - Trigger: { type: command, name: * }
-- Parameters: { line: conventions.TrameCommands, exitStatus: std/system.ExitStatus, preparation: commands.Preparation, renderView: commands.RenderView, compiler: engine.Compiler, views: engine.Views, assembler: commands.Assembler, projectCommands: commands.ProjectCommands, writing: architecture.FileWriting, paths: architecture.Paths, currentProcess: architecture.Process, posix: std/system.Posix, events: std/system.NodeEvents, terminal: architecture.Terminal, counts: std/algebra.Counts, sequences: std/algebra.Sequences, messages: messages.CommandMessages }
+- Parameters: { line: conventions.TrameCommands, exitStatus: std/system.ExitStatus, preparation: commands.Preparation, renderView: commands.RenderView, compiler: engine.Compiler, views: engine.Views, assembler: commands.Assembler, projectCommands: commands.ProjectCommands, engine: commands.EngineModules, writing: architecture.FileWriting, paths: architecture.Paths, currentProcess: architecture.Process, posix: std/system.Posix, events: std/system.NodeEvents, terminal: architecture.Terminal, counts: std/algebra.Counts, sequences: std/algebra.Sequences, messages: messages.CommandMessages }
 - Serves: A specification that runs
 - Part of: Trame on the command line
-- Depends on: Trame's commands, Preparation, Render a view, Compiler, Views, Assembler, The project's commands, File writing, Paths, Process, Terminal, Messages of the commands
+- Depends on: Trame's commands, Preparation, Render a view, Compiler, Views, Assembler, The project's commands, The engine's modules, File writing, Paths, Process, Terminal, Messages of the commands
 
 ### Deliver
 
@@ -1235,10 +1244,10 @@ Entry point · `Ship` · **held**
 
 - Owner: trame
 - Trigger: { type: command, name: ship }
-- Parameters: { exitStatus: std/system.ExitStatus, line: conventions.TrameCommands, preparation: commands.Preparation, deliver: commands.Deliver, assembly: engine.Assembly, assembler: commands.Assembler, sdlc: shipping.SdlcEvidence, runPlan: shipping.ShipmentRunPlan, holds: (rule), bundler: architecture.Bundler, led: delivery.NamesLed, programBundle: shipping.ProgramBundle, currentProcess: architecture.Process, events: std/system.NodeEvents, reading: architecture.FileReading, writing: architecture.FileWriting, paths: architecture.Paths, encodings: std/system.NodeEncodings, terminal: architecture.Terminal, sequences: std/algebra.Sequences, counts: std/algebra.Counts, values: std/algebra.ValueTypes, engines: engine.EngineFingerprint, messages: messages.CommandMessages }
+- Parameters: { exitStatus: std/system.ExitStatus, line: conventions.TrameCommands, preparation: commands.Preparation, deliver: commands.Deliver, assembly: engine.Assembly, assembler: commands.Assembler, sdlc: shipping.SdlcEvidence, runPlan: shipping.ShipmentRunPlan, holds: (rule), bundler: architecture.Bundler, led: delivery.NamesLed, programBundle: shipping.ProgramBundle, currentProcess: architecture.Process, projectCommands: commands.ProjectCommands, engine: commands.EngineModules, events: std/system.NodeEvents, reading: architecture.FileReading, writing: architecture.FileWriting, paths: architecture.Paths, encodings: std/system.NodeEncodings, terminal: architecture.Terminal, sequences: std/algebra.Sequences, counts: std/algebra.Counts, values: std/algebra.ValueTypes, engines: engine.EngineFingerprint, messages: messages.CommandMessages }
 - Serves: Ship only what holds
 - Part of: Trame on the command line
-- Depends on: Trame's commands, Preparation, Deliver, Assembly, Assembler, Evidence of the SDLC, The plan of a run elsewhere, Ship only what holds, Bundler, The names a bundle is led by, The fingerprint of a program, Process, File reading, File writing, Paths, Terminal, The fingerprint of an engine, Messages of the commands
+- Depends on: Trame's commands, Preparation, Deliver, Assembly, Assembler, Evidence of the SDLC, The plan of a run elsewhere, Ship only what holds, Bundler, The names a bundle is led by, The fingerprint of a program, Process, The project's commands, The engine's modules, File reading, File writing, Paths, Terminal, The fingerprint of an engine, Messages of the commands
 
 ### Show a view
 
@@ -1364,6 +1373,14 @@ Decision · `JsonFormatting`
 
 - Decided by: trame
 - Value: { indentation: 2 }
+
+### The commands the engine keeps
+
+Decision · `KeptCommands`
+
+- Decided by: trame
+- Value: init, doctor, help, manifest
+- Rejected: Check, a command that compiles and judges, writing nothing, plan does it, a command like the others; Every command kept until a library offers it, a project could not replace a command of the engine, and the passage to commands the projects compose would need a second form of the rule; No command kept, a project whose graph does not load, or that does not exist yet, could not be repaired, asked about or started
 
 ### The language's names
 
@@ -3172,10 +3189,10 @@ Package · `StandardLibrary`
 
 - Owner: trame
 - Name: std
-- Version: 0.23.0
+- Version: 0.24.0
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: std/releases/0.23.0
+- Its path: std/releases/0.24.0
 - Serves: A single source of truth
 
 ### tsx
@@ -3750,9 +3767,9 @@ Implementation · `MemoryFiles` · **held**
 Implementation · `NodeCommandLine` · **held**
 
 - Owner: trame
-- Parameters: { terminal: architecture.Terminal, exitStatus: std/system.ExitStatus, line: conventions.TrameCommands, messages: messages.PlatformMessages }
+- Parameters: { terminal: architecture.Terminal, exitStatus: std/system.ExitStatus, line: conventions.TrameCommands, kept: conventions.KeptCommands, messages: messages.PlatformMessages }
 - Implements: Command line
-- Depends on: Terminal, Trame's commands, Messages of the platform
+- Depends on: Terminal, Trame's commands, The commands the engine keeps, Messages of the platform
 
 ### gzip, with Node's zlib
 
@@ -3789,7 +3806,7 @@ Implementation · `NodePaths` · **held**
 Implementation · `NodeProcess` · **held**
 
 - Owner: trame
-- Parameters: { argv: std/system.NodeArguments, node: std/system.NodeCli, runner: platform.TypeScriptRunner, variables: conventions.TrameEnvironment }
+- Parameters: { argv: std/system.NodeArguments, node: std/system.NodeCli, runner: platform.TypeScriptRunner, variables: conventions.TrameEnvironment, exit: std/system.ExitStatus, values: std/algebra.ValueTypes }
 - Implements: Process
 - Depends on: Runner of TypeScript, Trame's environment
 
@@ -4314,7 +4331,7 @@ Architecture decision · `PreludeLayer` · **held**
 
 ### A version ships through the graph
 
-Architecture decision · `ShippedThroughTheGraph` · **held**
+Architecture decision · `ShippedThroughTheGraph` · **unknown**
 
 - Decided by: trame
 - Context: Two products ship differently (a page placed where it is served, an engine frozen into a generation) and their pipelines lived in scripts and in their authors' heads: nothing said what had been checked, by whom, on which version, nor why a version could go.
@@ -4794,6 +4811,20 @@ Release · `G118`
 - Language archived: 317984c94a100587
 - Releases: Trame on the command line
 - Assembled by: Generation 117
+
+### Generation 119
+
+Release · `G119`
+
+- Released by: trame
+- Version: g119
+- Released on: 2026-11-24
+- What changes: Commands run in the engine: a program whose exposure is std's CommandsInTheEngine is imported in the engine's process with the engine's modules; a command of the project replaces the engine's of the same name, only init, doctor, help and manifest are kept (E3, part 3)
+- Fingerprint: 9a33b5635b7ae610
+- Language: shared
+- Language archived: d93ba19ab02eaa48
+- Releases: Trame on the command line
+- Assembled by: Generation 118
 
 ### Generation 12
 
@@ -6768,7 +6799,7 @@ Artefact · `PageProgram` · **held**
 
 ### The pull requests' workflow
 
-Artefact · `PullRequestWorkflow` · **unknown**
+Artefact · `PullRequestWorkflow` · **held**
 
 - Owner: trame
 - Path: .github/workflows/trame-pull-request.yml
@@ -6778,7 +6809,7 @@ Artefact · `PullRequestWorkflow` · **unknown**
 
 ### The engine
 
-Artefact · `TheEngine` · **unknown**
+Artefact · `TheEngine` · **held**
 
 - Owner: trame
 - Path: src
@@ -6786,7 +6817,7 @@ Artefact · `TheEngine` · **unknown**
 
 ### The candidate plays the laws
 
-Check · `CandidateKeepsTheLaws` · **held**
+Check · `CandidateKeepsTheLaws` · **unknown**
 
 - Owner: trame
 - Checks: The candidate engine
@@ -6823,7 +6854,7 @@ Check · `RepositoryRead` · **unknown**
 
 ### Into the main branch
 
-Shipment · `IntoMain` · **unknown**
+Shipment · `IntoMain` · **held**
 
 - Owner: trame
 - Target: main
@@ -6833,7 +6864,7 @@ Shipment · `IntoMain` · **unknown**
 
 ### The next generation
 
-Shipment · `NextGeneration` · **held**
+Shipment · `NextGeneration` · **unknown**
 
 - Owner: trame
 - Target: generation
@@ -6855,7 +6886,7 @@ Shipment · `RepositorySet` · **unknown**
 
 ### The files that run it elsewhere
 
-Shipment · `RunnersWritten` · **unknown**
+Shipment · `RunnersWritten` · **held**
 
 - Owner: trame
 - Target: repository

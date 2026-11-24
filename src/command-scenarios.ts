@@ -12,7 +12,7 @@ import { PayloadBuilder, Differences, Assembly, Project, Compiler, Lock, Referen
 import {
   ShowView, CommandOrView, RenderView, EmitPayload, Assemble, Assembler, TestKinds, TakeSnapshot, Publish, Audit, Release, WriteManifest, Export, Run, Dev,
   Deliver, Ship, RecordEvidence, Doctor, DoctorProbe, Advance, Build, Plan, Amend, Amending, BuildComparison, Init, ReferencesModule, Registry, Upgrade,
-  ProjectCommands, Help, Examples, ExampleRewriting,
+  ProjectCommands, Help, Examples, ExampleRewriting, Preparation, EngineModules,
 } from "./commands"
 import { SyntaxReader, BodyChecks } from "./syntax"
 import { TypeScript, TypeScriptWriter, StringLiteral } from "./typescript"
@@ -990,11 +990,11 @@ export const EvidenceForSomeone = scenario({
  */
 export const ProjectCommandRun = scenario({
   owner: "trame",
-  verifies: [CommandOrView, ProjectCommands, Help],
+  verifies: [CommandOrView, ProjectCommands, Help, EngineModules],
   env: Test,
   deps: {
-    byName: CommandOrView, help: Help, processLog: ProcessLog, terminalLog: TerminalLog, line: TrameCommands, exitStatus: ExitStatus,
-    samples: ProjectSamples, texts: Texts, said: CommandMessages, messages: ScenarioMessages,
+    byName: CommandOrView, help: Help, commands: ProjectCommands, preparation: Preparation, processLog: ProcessLog, terminalLog: TerminalLog,
+    line: TrameCommands, exitStatus: ExitStatus, samples: ProjectSamples, texts: Texts, said: CommandMessages, messages: ScenarioMessages,
   },
   body: (d) => async (check) => {
     const { line, exitStatus, texts, messages } = d
@@ -1004,12 +1004,20 @@ export const ProjectCommandRun = scenario({
     const ran = await d.byName({ params: { command: name, commands: line.build }, body: { args: [argument, line.env, environment] } })
     const started = d.processLog.started().find((s) => s.args.includes(name))
     check(messages.projectCommandRun(name), ran.status === exitStatus.success && JSON.stringify(started?.args) === JSON.stringify([name, argument]))
-    let from = d.terminalLog.lines().length
+    const from = d.terminalLog.lines().length
     await d.help({ params: { command: line.help, commands: line.build }, body: { args: [] } })
     check(messages.helpListsTheProject(name), printed(from).includes(name) && printed(from).includes(component))
-    from = d.terminalLog.lines().length
-    const refused = await d.byName({ params: { command: name, commands: name }, body: { args: [] } }).then(() => false, () => true)
-    check(messages.hiddenCommandRefused(name), refused && printed(from).includes(d.said.commandHiddenByEngine(name)))
+    // A command of the engine (since g119): the project's of that name runs instead; one it has none of is the engine's.
+    const before = d.processLog.started().length
+    d.processLog.answer(texts.empty, exitStatus.success)
+    const replaced = await d.byName({ params: { command: name, commands: name, builtIn: name }, body: { args: [argument, line.env, environment] } })
+    check(messages.engineCommandReplaced(name), replaced.status === exitStatus.success && d.processLog.started().length > before)
+    const after = d.processLog.started().length
+    const kept = await d.byName({ params: { command: line.audit, commands: line.audit, builtIn: line.audit }, body: { args: [] } })
+    check(messages.engineCommandKept(line.audit), kept.status === undefined && d.processLog.started().length === after)
+    // Named like a command the engine keeps, it would never run: an error of the graph.
+    const { c } = await d.preparation.prepare(d.preparation.options(name, [], line.build))
+    check(messages.hiddenCommandRefused(name), d.commands.hidden(c, [name], []).some((x) => x.what === d.said.commandHiddenByEngine(name)))
   },
 })
 

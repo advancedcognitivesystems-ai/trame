@@ -176,6 +176,12 @@ export interface Process {
   restart(args: string[], cwd: string): import("node:child_process").ChildProcess
   /** Runs a TypeScript program; its outputs are those of the terminal. */
   runTs(file: string, args: string[]): import("node:child_process").ChildProcess
+  /**
+   * Runs a command of a program in this process (E3, since g119): the program, imported once, offers its commands to
+   * the engine, which gives it its modules; the first argument names the command, which receives the others. What it
+   * answers in lines of text is written out; the status it answers comes back.
+   */
+  runHere(program: string, args: readonly string[], modules: unknown): Promise<number>
   onSignal(signal: "SIGINT" | "SIGTERM", f: () => void): void
 }
 export interface Terminal {
@@ -412,7 +418,8 @@ export const Process = port<Process>({
   owner: "trame",
   declaredEffects: {
     cwd: effects("read"), program: effects("read", "terminal"), env: effects("read"),
-    relaunch: effects("process", "read", "terminal"), restart: effects("process", "read", "terminal"), runTs: effects("process", "read"), onSignal: effects("process"),
+    relaunch: effects("process", "read", "terminal"), restart: effects("process", "read", "terminal"), runTs: effects("process", "read"),
+    runHere: effects("execution", "read", "terminal"), onSignal: effects("process"),
   },
 })
 

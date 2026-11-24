@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-22",
+  "at": "2026-11-24",
   "nodes": [
     {
       "id": "access.Anyone",
@@ -2231,10 +2231,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "118",
+        "version": "119",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g118"
+        "at": "../generations/g119"
       }
     },
     {
@@ -2907,6 +2907,19 @@
         "date": "2026-11-22",
         "what": "trame merge: a pull request merged once its checks passed, by the method decided, saying whose decisions it changes, the base checked out after; pull requests read, their checks, their files page by page; a branch brought up to date",
         "fingerprint": "2c958c6df068995e",
+        "language": "shared"
+      }
+    },
+    {
+      "id": "releases.R0_24_0",
+      "kind": "release",
+      "title": "Version 0.24.0",
+      "fields": {
+        "owner": "trame",
+        "version": "0.24.0",
+        "date": "2026-11-24",
+        "what": "Commands run in the engine: CommandsInTheEngine offers a program's commands to the engine that imports it (E3, part 3)",
+        "fingerprint": "f9e692913a6f8704",
         "language": "shared"
       }
     },
@@ -4441,7 +4454,7 @@
       "id": "sdlc.NextVersion",
       "kind": "shipment",
       "title": "The next version",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "version"
@@ -4525,7 +4538,7 @@
       "id": "sdlc.TheLibrary",
       "kind": "artifact",
       "title": "The standard library",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "src",
@@ -4976,6 +4989,21 @@
       "fields": {
         "owner": "trame",
         "declaredEffects": []
+      }
+    },
+    {
+      "id": "tooling.CommandsInTheEngine",
+      "kind": "implementation",
+      "title": "Commands run in the engine",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "exit": "system.ExitStatus"
+        },
+        "body": {
+          "file": "./code/tooling/engine-commands.ts",
+          "language": "typescript"
+        }
       }
     },
     {
@@ -7046,6 +7074,41 @@
       "kind": "serves"
     },
     {
+      "from": "releases.R0_24_0",
+      "to": "product.ChosenCommands",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_24_0",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_24_0",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_24_0",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_24_0",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_24_0",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_24_0",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
       "from": "releases.R0_3_0",
       "to": "product.CitedNotCopied",
       "kind": "serves"
@@ -8456,6 +8519,16 @@
       "kind": "deps"
     },
     {
+      "from": "tooling.CommandsInTheEngine",
+      "to": "tooling.ProgramCommands",
+      "kind": "implements"
+    },
+    {
+      "from": "tooling.CommandsInTheEngine",
+      "to": "system.ExitStatus",
+      "kind": "deps"
+    },
+    {
       "from": "tooling.FilesInMemory",
       "to": "tooling.Files",
       "kind": "implements"
@@ -8613,6 +8686,11 @@
     {
       "from": "tooling.ToolingAsPorts",
       "to": "tooling.NodeProgramCommands",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "tooling.ToolingAsPorts",
+      "to": "tooling.CommandsInTheEngine",
       "kind": "appliedBy"
     },
     {

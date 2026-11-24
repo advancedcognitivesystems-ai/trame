@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 22 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 24 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Poselia · The app in a browser
 
@@ -855,10 +855,10 @@ Package · `Language`
 
 - Owner: ghalaax
 - Name: trame
-- Version: 118
+- Version: 119
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../../generations/g118
+- Its path: ../../generations/g119
 - Serves: Practise yoga on one's own, guided
 
 ### The people of the repository
@@ -879,10 +879,10 @@ Package · `StandardLibrary`
 
 - Owner: ghalaax
 - Name: std
-- Version: 0.23.0
+- Version: 0.24.0
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: ../../std/releases/0.23.0
+- Its path: ../../std/releases/0.24.0
 - Serves: Practise yoga on one's own, guided
 
 ## Poselia · Practice
