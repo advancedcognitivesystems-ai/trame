@@ -38,7 +38,7 @@ Run from the project's directory, through the pinned generation:
 ./trame.sh view <view> [node|module]   # one view in the terminal: impact, why, history, assembly take a node
 ./trame.sh help                        # what may be typed here: the engine's commands, the project's, the views (g116)
 ./trame.sh explain <node>              # everything the graph says of a node: what it is, why, what was decided, what holds it, what depends on it
-./trame.sh <command> [args] [--env <e>] # a command of the project (E3, g116): its component assembled, its program run (Trame: open-graph-page)
+./trame.sh <command> [args] [--env <e>] # a command of the project (E3, g116): its component assembled, its program run, in the engine's process when it is std's CommandsInTheEngine (g119); named like a command of the engine, it replaces it
 ./trame.sh pull-request "Title" ["What it changes"] --env Local|Session   # std's command Trame takes (g117): pushes, opens, merges once it holds unless a lock changed
 ./trame.sh merge [number] --env Local|Session   # std's command Trame takes (std 0.23.0): merges a pull request once its checks passed, then checks the base out
 ./trame.sh propagate --by <name> --env Local|Session   # std's command Trame takes (g117): each project of the repository upgraded, its workflow written again, built
@@ -205,12 +205,18 @@ writer never decides it. Never write such a file by hand; a new place to run is 
 
 The programs of the SDLC are a component of the project (its exposure `ProgramCommands` from `#std/tooling`, the first
 argument naming the command), whose entry points use the ports `Files`, `HeadlessBrowser` and `RepositoryApi`; a binding
-chooses their machine realizations (`NodeProgramCommands`, `MachineFiles`, `PlaywrightBrowser`, `GitHubCliRepository`)
+chooses their machine realizations (`CommandsInTheEngine`, `MachineFiles`, `PlaywrightBrowser`, `GitHubCliRepository`)
 for the shipment's environment, and another their memory realizations for the scenarios that test them. They are the
 project's commands (E3, g116): `./trame.sh <command>` runs one, its component assembled for its environment (`--env`
 when it has several), then its program run with the rest of the line, as `trame ship` runs a check; `./trame.sh help`
-lists them. A command of the project named like a command of the engine, a view or another of its commands would never
-run: an error of the graph (`command-hidden`). Never run an assembled program by its path (`npx tsx out/local/…`): type
+lists them. Since g119 a program whose exposure is std's `CommandsInTheEngine` runs in the engine's process: the
+engine imports it once, it offers its commands, and it reaches the engine's modules (the compilation, the views, the
+laws, the lock, the assembly, the evidence, the engine's identity: `EngineModules`) through the prelude's
+`runningEngine()`; `trame ship` runs the checks and deployments of such a program the same way. `NodeProgramCommands`
+still runs a program as its own, reading Node's command line. A command of the project named like a command the engine
+keeps (`init`, `doctor`, `help`, `manifest`: the decision `KeptCommands`), a view or another of its commands would
+never run: an error of the graph (`command-hidden`). Named like any other command of the engine, it replaces it for
+that project (g119): the engine asks the project first, and runs its own only when the project has none of that name. Never run an assembled program by its path (`npx tsx out/local/…`): type
 its command. A library may offer commands too (std's `LibraryCommands`: `pull-request`, `propagate`; E3, g117): a
 project runs one when a binding of its own chooses it (`follows: [Command]`), with a function of its own for each port
 of its settings (std's `PullRequestSettings`, `PropagationSettings`: the project's decisions, never a value of the
@@ -629,7 +635,10 @@ elements), a port answered differently in several environments is answered as in
   point a new dependency, `./trame.sh assemble TrameCli --env Local` before running a command through it.
 - A project's command named like a command the generation in place still has (Trame's `advance`, while the engine's
   step was renamed `promote` in g118) is an error for that generation, which then refuses to assemble the candidate:
-  set the project's command aside until the new generation is promoted, then put it back.
+  set the project's command aside until the new generation is promoted, then put it back. Since g119 this holds only
+  for the commands the engine keeps; any other is replaced by the project's.
+- A program of `CommandsInTheEngine` runs only in an engine: run by its path, it finds none and fails. It is imported
+  once per process, so its commands are offered once: what its bodies keep lives as long as the engine's process.
 - Before g118, an upgrade that moved a project to a generation of the registry (geometry) failed once: the manifest
   was run again by the engine that was leaving. The engine now starts again through the launcher that started it
   (`TRAME_LAUNCHER`), which installs the new generation first.

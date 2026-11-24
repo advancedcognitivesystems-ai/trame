@@ -176,8 +176,9 @@ How a version becomes available is declared in the graph, with the kinds `role`,
 - The SDLC's programs are a component whose exposure is `ProgramCommands` (`#std/tooling`), using the ports `Files` and
   `HeadlessBrowser`; one binding chooses their machine realizations, another their memory ones, and scenarios test them
   in memory before they run for real. They are the project's commands (E3, g116): `./trame.sh <command>` assembles and
-  runs one, `./trame.sh help` lists them; never run an assembled program by its path. A name the engine or a view
-  already has is an error (`command-hidden`).
+  runs one, `./trame.sh help` lists them; never run an assembled program by its path. With std's `CommandsInTheEngine`
+  (g119) the program runs in the engine's process and reaches its modules. A command named like one of the engine's
+  replaces it; a name the engine keeps (`init`, `doctor`, `help`, `manifest`) or a view has is an error (`command-hidden`).
 - A file that runs a shipment elsewhere (a GitHub workflow, a Bash script) is an `artifact` produced by a writer of `ci`
   (`GitHubWorkflow`, `ShellScript`), naming the shipment it `runs`, its `settings` and what it `publishes`: the graph
   decides what is published and kept, never the writer.

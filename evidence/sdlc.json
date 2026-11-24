@@ -5902,5 +5902,131 @@
     "by": "claude",
     "signature": "attribution",
     "seal": "52ee699aa96e92075f4bacc3c8d3dd26b4d97922c53dc3cbeeb1245b3edb6e32"
+  },
+  {
+    "node": "commands.Advance",
+    "at": "2026-11-24",
+    "source": "deployed",
+    "value": 1,
+    "fingerprint": "49d812d0",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "5354f6268977a34c1cae9f8e4dc68d38709cb3ca3a3da61b8e9c36545ede10d6"
+  },
+  {
+    "node": "sdlc.CandidateKeepsTheLaws",
+    "at": "2026-11-24",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "f1d31169",
+    "code": "00ca0d1d",
+    "engine": "ee2fb46b0367efa1",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "687b17e6e2e3b2d643c62bfb84c425a4074919ca5d1c7e1a8c5941cc2c9e7a08"
+  },
+  {
+    "node": "sdlc.CandidateRunsOnTheMachine",
+    "at": "2026-11-24",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "f1d31169",
+    "code": "37227707",
+    "engine": "ee2fb46b0367efa1",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "436697e364ef504a3e09a2d2eedced84ecf1137debe3f46da0ae860a1be66fa3"
+  },
+  {
+    "node": "sdlc.EngineCandidate",
+    "at": "2026-11-24",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "430925f47232ee20db64a82ead281acdb4d078644a40592c9bac744d0955dc88",
+    "code": "e4eb54db",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "ee2fb46b0367efa1",
+    "seal": "4bd0b2d1403ba5cce5c0f424ff0b6825941d1053fee4f7807017354c99d66350"
+  },
+  {
+    "node": "sdlc.EngineCandidate",
+    "at": "2026-11-24",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "430925f47232ee20db64a82ead281acdb4d078644a40592c9bac744d0955dc88",
+    "subject": "sdlc.NextGeneration",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "264317be165ce25ee182a05ea75da2eaeb2dd9f3135027c3475f1b442296323a"
+  },
+  {
+    "node": "sdlc.GraphPage",
+    "at": "2026-11-24",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "8f9c8f7d49dfcaa4a0252f5e4e5b0dfa72a31242ba82b6d1ad5ff23957962c56",
+    "code": "f3d28bd6",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "ee2fb46b0367efa1",
+    "seal": "c372eca9bea09fd864b18eb9f1d77275eb60602b1630ef22481281b4cff29c03"
+  },
+  {
+    "node": "sdlc.GraphPage",
+    "at": "2026-11-24",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "8f9c8f7d49dfcaa4a0252f5e4e5b0dfa72a31242ba82b6d1ad5ff23957962c56",
+    "subject": "sdlc.NextGeneration",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "1306cc99b6e7141f1a2327d3c25b1acbb127948854ccc74d7ed90e84d4e9e1b2"
+  },
+  {
+    "node": "sdlc.GraphPageOpens",
+    "at": "2026-11-24",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "b8fee85a",
+    "code": "0a48139f",
+    "engine": "ee2fb46b0367efa1",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "1c072a274ecf0c3acfab30b4e96d67025d652b0f4c9592902e13f8fb6ec01525"
+  },
+  {
+    "node": "sdlc.NextGeneration",
+    "at": "2026-11-24",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "5d13f5d6",
+    "url": "evidence/shipments/NextGeneration-2026-11-24-5d13f5d6.json",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "1083d30ba8a59886a9e818389760b2957926e6ba3776bc7b6803146d0f57f8a6"
+  },
+  {
+    "node": "sdlc.PageProgram",
+    "at": "2026-11-24",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "ea62ccef63dc144cbae1af62167c5893b9b5c7e0194c6644a8fc0bd46f72df9c",
+    "code": "d01a4a12",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "ee2fb46b0367efa1",
+    "seal": "43b5215eee1b913634290bd1a8d33c9e673da78466d20526cb752680bafbaa2c"
+  },
+  {
+    "node": "sdlc.PageProgram",
+    "at": "2026-11-24",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "ea62ccef63dc144cbae1af62167c5893b9b5c7e0194c6644a8fc0bd46f72df9c",
+    "subject": "sdlc.NextGeneration",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "86515fb8b71560764c0a3798c71df748d67da5f1d6db6091108e90a65fa965a6"
   }
 ]

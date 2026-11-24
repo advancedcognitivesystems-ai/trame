@@ -1756,3 +1756,18 @@ export const G118 = release({
   archive: "317984c94a100587",
   assembledBy: G117,
 })
+
+/**
+ * Generation 119
+ */
+export const G119 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g119",
+  date: "2026-11-24",
+  what: "Commands run in the engine: a program whose exposure is std's CommandsInTheEngine is imported in the engine's process with the engine's modules; a command of the project replaces the engine's of the same name, only init, doctor, help and manifest are kept (E3, part 3)",
+  fingerprint: "9a33b5635b7ae610",
+  language: "shared",
+  archive: "d93ba19ab02eaa48",
+  assembledBy: G118,
+})
