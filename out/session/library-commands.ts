@@ -5,31 +5,25 @@
 
 import { frozen } from "../../trame/internal"
 import { OurPropagation, OurPullRequests } from "../../src/sdlc.ts"
-import { CommandWords, LibraryCommands } from "../../std/releases/0.23.0/src/commands.ts"
-import body_valueTypes from "../../std/releases/0.23.0/src/code/algebra/values.ts"
-import body_nodeProgramCommands from "../../std/releases/0.23.0/src/code/tooling/node-commands.ts"
-import body_counts from "../../std/releases/0.23.0/src/code/algebra/counts.ts"
-import body_sequences from "../../std/releases/0.23.0/src/code/algebra/sequences.ts"
-import body_texts from "../../std/releases/0.23.0/src/code/algebra/texts.ts"
-import body_gitCliBranches from "../../std/releases/0.23.0/src/code/tooling/git-cli-branches.ts"
-import body_autoMergeInAClaudeSession from "../../std/releases/0.23.0/src/code/tooling/auto-merge-in-a-claude-session.ts"
-import body_gitHubCliPullRequests from "../../std/releases/0.23.0/src/code/tooling/github-cli-pull-requests.ts"
-import body_mergePullRequest from "../../std/releases/0.23.0/src/code/commands/merge-pull-request.ts"
-import body_openPullRequest from "../../std/releases/0.23.0/src/code/commands/open-pull-request.ts"
-import body_machineFiles from "../../std/releases/0.23.0/src/code/tooling/machine-files.ts"
-import body_nodeProgramRuns from "../../std/releases/0.23.0/src/code/tooling/node-program-runs.ts"
-import body_propagate from "../../std/releases/0.23.0/src/code/commands/propagate.ts"
+import { CommandWords, LibraryCommands } from "../../std/releases/0.24.0/src/commands.ts"
+import body_commandsInTheEngine from "../../std/releases/0.24.0/src/code/tooling/engine-commands.ts"
+import body_counts from "../../std/releases/0.24.0/src/code/algebra/counts.ts"
+import body_sequences from "../../std/releases/0.24.0/src/code/algebra/sequences.ts"
+import body_texts from "../../std/releases/0.24.0/src/code/algebra/texts.ts"
+import body_gitCliBranches from "../../std/releases/0.24.0/src/code/tooling/git-cli-branches.ts"
+import body_valueTypes from "../../std/releases/0.24.0/src/code/algebra/values.ts"
+import body_autoMergeInAClaudeSession from "../../std/releases/0.24.0/src/code/tooling/auto-merge-in-a-claude-session.ts"
+import body_gitHubCliPullRequests from "../../std/releases/0.24.0/src/code/tooling/github-cli-pull-requests.ts"
+import body_mergePullRequest from "../../std/releases/0.24.0/src/code/commands/merge-pull-request.ts"
+import body_openPullRequest from "../../std/releases/0.24.0/src/code/commands/open-pull-request.ts"
+import body_machineFiles from "../../std/releases/0.24.0/src/code/tooling/machine-files.ts"
+import body_nodeProgramRuns from "../../std/releases/0.24.0/src/code/tooling/node-program-runs.ts"
+import body_propagate from "../../std/releases/0.24.0/src/code/commands/propagate.ts"
 
-// "Node.js process arguments" · standard
-const nodeArguments = {"script":1,"firstArgument":2}
 // "Exit status" · standard
 const exitStatus = {"success":0,"failure":1}
-// "ECMAScript types" · standard
-const ecmaScriptTypes = {"undefined":"undefined","object":"object","boolean":"boolean","number":"number","string":"string","symbol":"symbol","bigint":"bigint","function":"function"}
-// "Types of values" · algebraic structure
-const valueTypes = await body_valueTypes({ types: ecmaScriptTypes })
-// "Node's command line" · implementation, for "Commands of a program"
-const nodeProgramCommands = await body_nodeProgramCommands({ argv: nodeArguments, exit: exitStatus, values: valueTypes })
+// "Commands run in the engine" · implementation, for "Commands of a program"
+const commandsInTheEngine = await body_commandsInTheEngine({ exit: exitStatus })
 // "Trame's repository" · decision
 const theRepository = {"name":"advancedcognitivesystems-ai/trame"}
 // "How the repository merges into main" · decision
@@ -66,6 +60,10 @@ const gitCliBranches = await body_gitCliBranches({ git: gitCommandLine, cli: nod
 const gitHubRepositoryApi = {"program":"gh","api":"api","method":"--method","patch":"PATCH","post":"POST","put":"PUT","input":"--input","standardInput":"-","repos":"repos/","rulesets":"/rulesets","branchRules":"/rules/branches/","pages":"/pages","separator":"/","allowMerge":"allow_merge_commit","allowSquash":"allow_squash_merge","allowRebase":"allow_rebase_merge","allowAutoMerge":"allow_auto_merge","deleteBranch":"delete_branch_on_merge","name":"name","target":"target","branchTarget":"branch","enforcement":"enforcement","active":"active","conditions":"conditions","refName":"ref_name","include":"include","exclude":"exclude","heads":"refs/heads/","rules":"rules","type":"type","parameters":"parameters","deletion":"deletion","nonFastForward":"non_fast_forward","pullRequest":"pull_request","approvals":"required_approving_review_count","dismissStale":"dismiss_stale_reviews_on_push","codeOwners":"require_code_owner_review","lastPush":"require_last_push_approval","threads":"required_review_thread_resolution","methods":"allowed_merge_methods","statusChecks":"required_status_checks","strict":"strict_required_status_checks_policy","context":"context","buildType":"build_type","workflow":"workflow","id":"id"}
 // "GitHub's API for pull requests" · standard
 const gitHubPullRequestsApi = {"pulls":"/pulls","query":"?","and":"&","equals":"=","head":"head","owner":":","state":"state","openState":"open","base":"base","title":"title","body":"body","number":"number","url":"html_url","ref":"ref","sha":"sha","files":"/files","filename":"filename","merging":"/merge","method":"merge_method","commits":"/commits","checkRuns":"/check-runs","runs":"check_runs","name":"name","status":"status","completed":"completed","conclusion":"conclusion","success":"success","skipped":"skipped","perPage":"per_page","page":"page","first":"1","most":"100"}
+// "ECMAScript types" · standard
+const ecmaScriptTypes = {"undefined":"undefined","object":"object","boolean":"boolean","number":"number","string":"string","symbol":"symbol","bigint":"bigint","function":"function"}
+// "Types of values" · algebraic structure
+const valueTypes = await body_valueTypes({ types: ecmaScriptTypes })
 // "GitHub's ways of asking a merge once it holds" · standard
 const gitHubAutoMerge = {"pr":"pr","merge":"merge","auto":"--auto","byMerge":"--merge","bySquash":"--squash","byRebase":"--rebase","repo":"--repo","route":"/ccr/auto_merge","method":"merge_method"}
 // "The automatic merge, in a session of Claude Code" · implementation, for "The automatic merge"
@@ -103,7 +101,7 @@ const nodeProgramRuns = await body_nodeProgramRuns({ cli: nodeCli, events: nodeE
 // "Propagate" · entry point
 const propagate = await body_propagate({ settings: frozen.limited(ourPropagation, ["configuration","engine","projects","references"]), files: frozen.limited(machineFiles, ["exists","read"]), programs: frozen.limited(nodeProgramRuns, ["run"]), say: commandWords, exit: exitStatus, sequences, posix, texts })
 
-const started = (await frozen.start(LibraryCommands, { exposure: nodeProgramCommands }, [
+const started = (await frozen.start(LibraryCommands, { exposure: commandsInTheEngine }, [
   { title: "Merge a pull request", fields: {"trigger":{"type":"command","name":"merge"}}, value: mergePullRequest },
   { title: "Open a pull request", fields: {"trigger":{"type":"command","name":"pull-request"}}, value: openPullRequest },
   { title: "Propagate", fields: {"trigger":{"type":"command","name":"propagate"}}, value: propagate },
