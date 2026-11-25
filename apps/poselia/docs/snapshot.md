@@ -879,10 +879,10 @@ Package · `StandardLibrary`
 
 - Owner: ghalaax
 - Name: std
-- Version: 0.26.0
+- Version: 0.27.0
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: ../../std/releases/0.26.0
+- Its path: ../../std/releases/0.27.0
 - Serves: Practise yoga on one's own, guided
 
 ## Poselia · Practice

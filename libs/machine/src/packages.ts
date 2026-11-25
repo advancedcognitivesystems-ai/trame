@@ -16,7 +16,7 @@ export const Language = pkg({ owner: "trame", packageName: "trame", version: "12
  * The library the questions are written with: its extension point MachineNeeds, which they realize, and what it says
  * of the platform and of Git.
  */
-export const StandardLibrary = pkg({ owner: "trame", packageName: "std", version: "0.26.0", joins: "library", at: "../../std/releases/0.26.0", serves: [AskedOnce] })
+export const StandardLibrary = pkg({ owner: "trame", packageName: "std", version: "0.27.0", joins: "library", at: "../../std/releases/0.27.0", serves: [AskedOnce] })
 
 /**
  * The library of continuous integration

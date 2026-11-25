@@ -192,9 +192,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.26.0",
+        "version": "0.27.0",
         "joins": "library",
-        "at": "../../std/releases/0.26.0"
+        "at": "../../std/releases/0.27.0"
       },
       "diagnostics": []
     },
@@ -205,6 +205,21 @@
       "source": "src/product.ts:15",
       "fields": {
         "owner": "trame"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "releases.R0_1_0",
+      "kind": "release",
+      "title": "Version 0.1.0",
+      "source": "src/releases.ts:12",
+      "fields": {
+        "owner": "trame",
+        "version": "0.1.0",
+        "date": "2026-11-25",
+        "what": "The questions of the machine (E3): the system among those the project runs on, Node recent enough, Git installed, each reading what the project requires through WhatTheMachineRuns",
+        "fingerprint": "050324449fb6a4b7",
+        "language": "shared"
       },
       "diagnostics": []
     },
@@ -294,7 +309,7 @@
       "kind": "artifact",
       "title": "The pull requests' workflow",
       "source": "src/sdlc.ts:64",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "../../.github/workflows/machine-pull-request.yml",
@@ -304,16 +319,14 @@
         "path": "../../.github/workflows/machine-pull-request.yml",
         "code": "4a5f2cbf"
       },
-      "diagnostics": [
-        "warning: Not built yet: trame ship builds it"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.RunnersWritten",
       "kind": "shipment",
       "title": "The files that run it elsewhere",
       "source": "src/sdlc.ts:78",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "repository"
@@ -326,9 +339,7 @@
           "sdlc.PullRequestWorkflow"
         ]
       },
-      "diagnostics": [
-        "warning: To ship: The pull requests' workflow is unknown"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.TheLibrary",
@@ -343,10 +354,10 @@
       },
       "result": {
         "path": "src",
-        "code": "4d8085c4"
+        "code": "7db2d498"
       },
       "diagnostics": [
-        "warning: Not built yet: trame ship builds it"
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
       ]
     },
     {
@@ -453,6 +464,11 @@
     },
     {
       "from": "packages.StandardLibrary",
+      "to": "product.AskedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_1_0",
       "to": "product.AskedOnce",
       "kind": "serves"
     },

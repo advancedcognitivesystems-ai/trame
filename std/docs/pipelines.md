@@ -6,7 +6,7 @@
 
 ## The next version
 
-> **The next version does not ship yet: 33 of 34 obligations hold.**
+> **The next version ships: every obligation holds.**
 
 For the target version.
 
@@ -14,7 +14,7 @@ Run elsewhere by [The pull requests' workflow](sdlc.md#PullRequestWorkflow), wri
 
 ```mermaid
 flowchart TB
-  n0["The standard library<br/><small>Artefact</small>"]:::unknown
+  n0["The standard library<br/><small>Artefact</small>"]:::held
   n1["A library offers commands, a project chooses them<br/><small>Architecture decision</small>"]:::held
   n2["A project judges harder than the language, never softer<br/><small>Architecture decision</small>"]:::held
   n3["An entry point says who may call it<br/><small>Architecture decision</small>"]:::held
@@ -47,7 +47,7 @@ flowchart TB
   n30["A node reaches what it must<br/><small>Requirement</small>"]:::held
   n31["Effects a node may not have<br/><small>Requirement</small>"]:::held
   n32["Words of a vocabulary<br/><small>Requirement</small>"]:::held
-  n33["The next version<br/><small>Shipment</small>"]:::unknown
+  n33["The next version<br/><small>Shipment</small>"]:::held
   n3 -->|Applied by| n20
   n33 -->|Ships| n0
   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
@@ -61,9 +61,9 @@ flowchart TB
 
 |  | Stage | Step | Run by | Why | Status | Latest evidence |
 |---|---|---|---|---|---|---|
-| 1 | produce | [The standard library](sdlc.md#TheLibrary) · `src` | — | — | **unknown** | 25 November 2026 by claude  |
+| 1 | produce | [The standard library](sdlc.md#TheLibrary) · `src` | — | — | **held** | 25 November 2026 by claude  |
 | 2 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
-| 3 | prove | [The standard library](sdlc.md#TheLibrary) | — | the shipment | **unknown** | 25 November 2026 by claude  |
+| 3 | prove | [The standard library](sdlc.md#TheLibrary) | — | the shipment | **held** | 25 November 2026 by claude  |
 | 4 | prove | [A library offers commands, a project chooses them](commands.md#CommandsOfALibrary) | — | [Its decisions applied](sdlc.md#DecisionsApplied) via [The library's commands](commands.md#LibraryCommands) | **held** |  |
 | 5 | prove | [A project judges harder than the language, never softer](judgment.md#HarderNeverSofter) | — | [Its decisions applied](sdlc.md#DecisionsApplied) via [As the language says](judgment.md#AsTheLanguageSays) | **held** |  |
 | 6 | prove | [An entry point says who may call it](access.md#SaysItsAudience) | — | [Its decisions applied](sdlc.md#DecisionsApplied) via [Who calls a shipment's programs is identified](obligations.md#Identified) | **held** |  |
@@ -96,7 +96,7 @@ flowchart TB
 | 33 | prove | [A node reaches what it must](rules.md#Reaches) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
 | 34 | prove | [Effects a node may not have](rules.md#WithoutEffects) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
 | 35 | prove | [Words of a vocabulary](rules.md#WordsOf) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
-| 36 | record | [The next version](sdlc.md#NextVersion) | — | — | **unknown** | 25 November 2026 by claude `evidence/shipments/NextVersion-2026-11-25-b4f4dffc.json` |
+| 36 | record | [The next version](sdlc.md#NextVersion) | — | — | **held** | 25 November 2026 by claude `evidence/shipments/NextVersion-2026-11-25-c3db04f4.json` |
 
 `trame ship NextVersion --by <name>`
 

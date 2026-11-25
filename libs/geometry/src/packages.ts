@@ -20,7 +20,7 @@ export const Language = pkg({
  * from the registry of this machine.
  */
 export const StandardLibrary = pkg({
-  owner: "ghalaax", packageName: "std", version: "0.26.0", joins: "library", from: "registry",
+  owner: "ghalaax", packageName: "std", version: "0.27.0", joins: "library", from: "registry",
   serves: [GeometryWrittenOnce],
 })
 

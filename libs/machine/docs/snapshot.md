@@ -102,9 +102,9 @@ Package · `StandardLibrary`
 
 - Owner: trame
 - Name: std
-- Version: 0.26.0
+- Version: 0.27.0
 - How it joins the graph: library
-- Its path: ../../std/releases/0.26.0
+- Its path: ../../std/releases/0.27.0
 - Serves: The machine is asked once
 
 ## Machine · Product
@@ -114,6 +114,20 @@ Package · `StandardLibrary`
 Goal · `AskedOnce`
 
 - Owner: trame
+
+## Machine · Releases
+
+### Version 0.1.0
+
+Release · `R0_1_0`
+
+- Released by: trame
+- Version: 0.1.0
+- Released on: 2026-11-25
+- What changes: The questions of the machine (E3): the system among those the project runs on, Node recent enough, Git installed, each reading what the project requires through WhatTheMachineRuns
+- Fingerprint: 050324449fb6a4b7
+- Language: shared
+- Serves: The machine is asked once
 
 ## Machine · SDLC
 
@@ -127,7 +141,7 @@ Decision · `PullRequestsOnGitHub`
 
 ### The pull requests' workflow
 
-Artefact · `PullRequestWorkflow` · **unknown**
+Artefact · `PullRequestWorkflow` · **held**
 
 - Owner: trame
 - Path: ../../.github/workflows/machine-pull-request.yml
@@ -154,7 +168,7 @@ Shipment · `NextVersion` · **unknown**
 
 ### The files that run it elsewhere
 
-Shipment · `RunnersWritten` · **unknown**
+Shipment · `RunnersWritten` · **held**
 
 - Owner: trame
 - Target: repository

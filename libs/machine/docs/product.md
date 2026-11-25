@@ -15,5 +15,5 @@
 What a project needs of the machine it runs on, and that no provider of the graph brings (the system, Node's version, Git), is asked by questions written once, which read what each project requires from its own decisions: trame doctor asks them, and a check proves them.
 
 - Owner: trame
-- Served by: [Node's platforms](machine.md#NodePlatforms), [The library of continuous integration](packages.md#ContinuousIntegration), [Trame](packages.md#Language), [The people of the repository](packages.md#People), [std](packages.md#StandardLibrary)
+- Served by: [Node's platforms](machine.md#NodePlatforms), [The library of continuous integration](packages.md#ContinuousIntegration), [Trame](packages.md#Language), [The people of the repository](packages.md#People), [std](packages.md#StandardLibrary), [Version 0.1.0](releases.md#R0_1_0)
 - Kept by the rule: [Its packages safe](sdlc.md#PackagesSafe)

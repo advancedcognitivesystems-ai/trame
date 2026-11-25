@@ -1215,6 +1215,18 @@ Release · `R0_26_0`
 - Language: shared
 - Serves: Commands chosen, not written again, A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again, Versions that hold
 
+### Version 0.27.0
+
+Release · `R0_27_0`
+
+- Released by: trame
+- Version: 0.27.0
+- Released on: 2026-11-25
+- What changes: The family Verified counts a check a command the engine keeps runs (g122)
+- Fingerprint: 8feb27eab07a9b7d
+- Language: shared
+- Serves: Commands chosen, not written again, A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again, Versions that hold
+
 ### Version 0.3.0
 
 Release · `R0_3_0`
@@ -1807,7 +1819,7 @@ Artefact · `PullRequestWorkflow` · **held**
 
 ### The standard library
 
-Artefact · `TheLibrary` · **unknown**
+Artefact · `TheLibrary` · **held**
 
 - Owner: trame
 - Path: src
@@ -1815,7 +1827,7 @@ Artefact · `TheLibrary` · **unknown**
 
 ### The next version
 
-Shipment · `NextVersion` · **unknown**
+Shipment · `NextVersion` · **held**
 
 - Owner: trame
 - Target: version

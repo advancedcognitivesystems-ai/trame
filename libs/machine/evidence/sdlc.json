@@ -45,6 +45,17 @@
     "seal": "2bc7a0c201a3a569664f101d124d2a6613da893a13ecd51e28b640e71d5afbf1"
   },
   {
+    "node": "sdlc.RunnersWritten",
+    "at": "2026-11-25",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "2aeb6003",
+    "url": "evidence/shipments/RunnersWritten-2026-11-25-2aeb6003.json",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "925c4c8824d557cca4a5c866b08108cf81afbc514f64330b0c5004551b840ba1"
+  },
+  {
     "node": "sdlc.TheLibrary",
     "at": "2026-11-25",
     "source": "built",

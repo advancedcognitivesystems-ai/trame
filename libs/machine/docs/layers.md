@@ -22,14 +22,17 @@ flowchart TB
   subgraph product["Machine · Product"]
     n11["The machine is asked once<br/><small>Goal</small>"]:::neutral
   end
+  subgraph releases["Machine · Releases"]
+    n12["Version 0.1.0<br/><small>Release</small>"]:::neutral
+  end
   subgraph sdlc["Machine · SDLC"]
-    n12["The next version<br/><small>Shipment</small>"]:::unknown
-    n13["Its packages safe<br/><small>Obligation</small>"]:::neutral
-    n14["How a pull request is checked on GitHub<br/><small>Decision</small>"]:::neutral
-    n15["The pull requests' workflow<br/><small>Artefact</small>"]:::unknown
-    n16["The files that run it elsewhere<br/><small>Shipment</small>"]:::unknown
-    n17["The questions of the machine<br/><small>Artefact</small>"]:::unknown
-    n18["How a version is made<br/><small>Policy</small>"]:::neutral
+    n13["The next version<br/><small>Shipment</small>"]:::unknown
+    n14["Its packages safe<br/><small>Obligation</small>"]:::neutral
+    n15["How a pull request is checked on GitHub<br/><small>Decision</small>"]:::neutral
+    n16["The pull requests' workflow<br/><small>Artefact</small>"]:::held
+    n17["The files that run it elsewhere<br/><small>Shipment</small>"]:::held
+    n18["The questions of the machine<br/><small>Artefact</small>"]:::unknown
+    n19["How a version is made<br/><small>Policy</small>"]:::neutral
   end
   n0 -->|Depends on| n2
   n2 -->|Written in| n1
@@ -42,13 +45,14 @@ flowchart TB
   n8 -->|Serves| n11
   n9 -->|Serves| n11
   n10 -->|Serves| n11
-  n12 -->|Ships| n17
-  n12 -->|Follows the policy| n18
-  n13 -->|Serves| n11
-  n15 -->|Runs elsewhere| n12
-  n15 -->|Its writer's settings| n14
-  n16 -->|Ships| n15
-  n18 -->|Its obligations| n13
+  n12 -->|Serves| n11
+  n13 -->|Ships| n18
+  n13 -->|Follows the policy| n19
+  n14 -->|Serves| n11
+  n16 -->|Runs elsewhere| n13
+  n16 -->|Its writer's settings| n15
+  n17 -->|Ships| n16
+  n19 -->|Its obligations| n14
   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
   classDef blocked fill:#fbf0d9,stroke:#9a6200,color:#17202a
   classDef violated fill:#f9e3e1,stroke:#ad2a22,color:#17202a

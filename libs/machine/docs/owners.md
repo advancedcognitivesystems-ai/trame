@@ -4,7 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 5 | 19 |
+| trame | 0 | 0 | 3 | 20 |
 
 <a id="trame"></a>
 
@@ -14,9 +14,7 @@
 |---|---|---|---|---|---|
 | warning | `port-unrealized` | No realization, in any environment | [What the machine runs](machine.md#WhatTheMachineRuns) | trame |  |
 | warning | `shipment-awaits` | To ship: The questions of the machine is unknown | [The next version](sdlc.md#NextVersion) | trame |  |
-| warning | `artifact-not-built` | Not built yet: trame ship builds it | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | trame |  |
-| warning | `shipment-awaits` | To ship: The pull requests' workflow is unknown | [The files that run it elsewhere](sdlc.md#RunnersWritten) | trame |  |
-| warning | `artifact-not-built` | Not built yet: trame ship builds it | [The questions of the machine](sdlc.md#TheLibrary) | trame |  |
+| warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The questions of the machine](sdlc.md#TheLibrary) | trame |  |
 
 ### Owns
 
@@ -34,10 +32,11 @@
 | [The people of the repository](packages.md#People) | Package |  |
 | [std](packages.md#StandardLibrary) | Package |  |
 | [The machine is asked once](product.md#AskedOnce) | Goal |  |
+| [Version 0.1.0](releases.md#R0_1_0) | Release |  |
 | [The next version](sdlc.md#NextVersion) | Shipment | **unknown** |
 | [Its packages safe](sdlc.md#PackagesSafe) | Obligation |  |
 | [How a pull request is checked on GitHub](sdlc.md#PullRequestsOnGitHub) | Decision |  |
-| [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **unknown** |
-| [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **unknown** |
+| [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **held** |
+| [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **held** |
 | [The questions of the machine](sdlc.md#TheLibrary) | Artefact | **unknown** |
 | [How a version is made](sdlc.md#VersionMode) | Policy |  |
