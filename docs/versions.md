@@ -1,8 +1,8 @@
 # Versions
 
-*The releases of the components on 30 October 2026, newest first. A project runs the release its configuration pins.*
+*The releases of the components on 25 November 2026, newest first. A project runs the release its configuration pins.*
 
-> **120 releases of 1 component; 95 releases on a language of their own**
+> **121 releases of 1 component; 95 releases on a language of their own**
 
 ## Trame on the command line
 
@@ -10,6 +10,7 @@ Each release, newest first: what changed, the release that assembled it, and whe
 
 | Release | Released on | What changes | Assembled by | Language |
 |---|---|---|---|---|
+| [Generation 121](releases.md#G121) | 25 November 2026 | The language types a realization of an extension point by its one contract (Realizes, RealizedBy): published with the generation, for the projects run from the registry (E3, part 3) | [Generation 120](releases.md#G120) | shared |
 | [Generation 120](releases.md#G120) | 25 November 2026 | Extension points: a port every realization of one choice answers, in order; trame doctor asks the project's add-ons, trame init repairs a project already there and calls its add-ons (E3, part 3) | [Generation 119](releases.md#G119) | shared |
 | [Generation 119](releases.md#G119) | 24 November 2026 | Commands run in the engine: a program whose exposure is std's CommandsInTheEngine is imported in the engine's process with the engine's modules; a command of the project replaces the engine's of the same name, only init, doctor, help and manifest are kept (E3, part 3) | [Generation 118](releases.md#G118) | shared |
 | [Generation 118](releases.md#G118) | 22 November 2026 | E3, part 2b: trame examples [--accept]; the step the next generation deploys is named promote (trame advance becomes Trame's own command); after an upgrade moved the pin, the manifest runs on the engine the project pins now, through the launcher | [Generation 117](releases.md#G117) | shared |

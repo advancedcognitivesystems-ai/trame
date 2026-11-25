@@ -13,8 +13,8 @@
       "version": "0.1.0"
     },
     "std": {
-      "at": "std/releases/0.24.0",
-      "version": "0.24.0"
+      "at": "std/releases/0.25.0",
+      "version": "0.25.0"
     }
   },
   "engine": "generations/g121"
