@@ -1,0 +1,18 @@
+{
+  "title": "Machine",
+  "libraries": {
+    "ci": {
+      "at": ".trame/ci",
+      "version": "0.8.0"
+    },
+    "team": {
+      "at": ".trame/team",
+      "version": "0.1.0"
+    },
+    "std": {
+      "at": ".trame/std",
+      "version": "0.26.0"
+    }
+  },
+  "engine": ".trame/trame"
+}

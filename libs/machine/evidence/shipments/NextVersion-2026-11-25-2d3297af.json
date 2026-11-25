@@ -1,0 +1,41 @@
+{
+  "shipment": "sdlc.NextVersion",
+  "title": "The next version",
+  "target": "version",
+  "at": "2026-11-25",
+  "by": "claude",
+  "signature": "attribution",
+  "artifacts": [
+    {
+      "node": "sdlc.TheLibrary",
+      "path": "src",
+      "fingerprint": "00ecf887704038d2d3b4aca9c052c77e6856112c2603253dbddc75909c6b5840"
+    }
+  ],
+  "foundations": {
+    "problems": 0
+  },
+  "obligations": [
+    {
+      "node": "sdlc.TheLibrary",
+      "kind": "artifact",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-25",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "00ecf887704038d2d3b4aca9c052c77e6856112c2603253dbddc75909c6b5840",
+          "code": "4d8085c4",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "204500887a4c33c3",
+          "seal": "cfa76f4b4b223577bdd3d3142390282d5a8ce7729331c08fa40f8ca3303782f4"
+        }
+      ]
+    }
+  ],
+  "deployed": []
+}
