@@ -8,7 +8,7 @@ import { DeclaredOnce } from "./product"
  * The language the people are declared in, at the generation the library pins: reached by its path in Trame's
  * repository.
  */
-export const Language = pkg({ owner: "trame", packageName: "trame", version: "119", joins: "language", from: "path", at: "../../generations/g119", serves: [DeclaredOnce] })
+export const Language = pkg({ owner: "trame", packageName: "trame", version: "121", joins: "language", from: "path", at: "../../generations/g121", serves: [DeclaredOnce] })
 
 /**
  * The library of continuous integration

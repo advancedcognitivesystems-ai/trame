@@ -32,7 +32,7 @@ export default defineView({
       const order = p.steps.map((s, i): Inline[][] => [
         [String(counts.next(i))],
         [doc.ref(s.node)],
-        [s.how === WireMode.value ? say.assemblyItsValueReadAtStartup() : say.assemblyItsBody()],
+        [s.how === WireMode.value ? say.assemblyItsValueReadAtStartup() : s.how === WireMode.gathered ? say.assemblyItsRealizations() : say.assemblyItsBody()],
         counts.any(s.deps) ? s.deps.flatMap((d, j) => [...(j ? [punctuation.parts] : []), doc.ident(d.param), punctuation.givenBy, doc.ref(d.node)]) : [punctuation.absent],
       ])
 

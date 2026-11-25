@@ -1771,3 +1771,33 @@ export const G119 = release({
   archive: "d93ba19ab02eaa48",
   assembledBy: G118,
 })
+
+/**
+ * Generation 120
+ */
+export const G120 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g120",
+  date: "2026-11-25",
+  what: "Extension points: a port every realization of one choice answers, in order; trame doctor asks the project's add-ons, trame init repairs a project already there and calls its add-ons (E3, part 3)",
+  fingerprint: "5c1c57f2bb2e666a",
+  language: "shared",
+  archive: "0b29fd7d79d778bf",
+  assembledBy: G119,
+})
+
+/**
+ * Generation 121
+ */
+export const G121 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g121",
+  date: "2026-11-25",
+  what: "The language types a realization of an extension point by its one contract (Realizes, RealizedBy): published with the generation, for the projects run from the registry (E3, part 3)",
+  fingerprint: "ff10868da2067157",
+  language: "shared",
+  archive: "896211f06bdb0fd1",
+  assembledBy: G120,
+})

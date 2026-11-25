@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 24 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 25 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Trame · Appearance
 
@@ -847,6 +847,16 @@ Scenario · `ProjectCommandRun` · **held**
 - In: Test
 - Depends on: A command of the project, or a view, Help, The project's commands, Preparation, Process log, Terminal log, Trame's commands, What the scenarios ask of those projects, Messages of the commands, Messages of the scenarios
 
+### A project repaired
+
+Scenario · `ProjectRepaired` · **held**
+
+- Owner: trame
+- Parameters: { init: commands.Init, processLog: architecture.ProcessLog, writeLog: architecture.WriteLog, currentProcess: architecture.Process, paths: architecture.Paths, start: conventions.ProjectStart, samples: command-scenarios.ProjectSamples, line: conventions.TrameCommands, exitStatus: std/system.ExitStatus, texts: std/algebra.Texts, messages: messages.ScenarioMessages }
+- Verifies: Start a project, The add-ons of a command the engine keeps
+- In: Test
+- Depends on: Start a project, Process log, Write log, Process, Paths, How a project starts, What the scenarios ask of those projects, Trame's commands, Messages of the scenarios
+
 ### A project started
 
 Scenario · `ProjectStarted` · **held**
@@ -936,6 +946,15 @@ Decision · `DoctorProbe`
 - Decided by: trame
 - Value: { file: probe.txt, text: trame doctor, program: probe.ts, source: console.log("trame doctor")
 , pause: 10 }
+
+### The add-ons of a command the engine keeps
+
+Function · `AddOns` · **held**
+
+- Owner: trame
+- Parameters: { wiring: engine.Wiring, counts: std/algebra.Counts, messages: messages.CommandMessages }
+- Serves: A specification that runs
+- Depends on: Wiring, Messages of the commands
 
 ### An amendment prepared
 
@@ -1112,10 +1131,10 @@ Entry point · `Doctor` · **held**
 
 - Owner: trame
 - Trigger: { type: command, name: doctor }
-- Parameters: { exitStatus: std/system.ExitStatus, preparation: commands.Preparation, probe: commands.DoctorProbe, iso: std/measures.Iso8601, reading: architecture.FileReading, writing: architecture.FileWriting, trees: architecture.FileTrees, programs: architecture.Programs, runs: architecture.KeptRuns, httpServer: architecture.HttpServer, timer: architecture.Timer, reports: architecture.PackageReports, installs: architecture.PackageInstalls, layout: conventions.Layout, clock: architecture.Clock, paths: architecture.Paths, terminal: architecture.Terminal, encodings: std/system.NodeEncodings, counts: std/algebra.Counts, texts: std/algebra.Texts, messages: messages.CommandMessages }
+- Parameters: { exitStatus: std/system.ExitStatus, preparation: commands.Preparation, probe: commands.DoctorProbe, iso: std/measures.Iso8601, reading: architecture.FileReading, writing: architecture.FileWriting, trees: architecture.FileTrees, programs: architecture.Programs, runs: architecture.KeptRuns, httpServer: architecture.HttpServer, timer: architecture.Timer, reports: architecture.PackageReports, installs: architecture.PackageInstalls, layout: conventions.Layout, clock: architecture.Clock, paths: architecture.Paths, terminal: architecture.Terminal, encodings: std/system.NodeEncodings, counts: std/algebra.Counts, texts: std/algebra.Texts, messages: messages.CommandMessages, addOns: commands.AddOns }
 - Serves: A specification that runs
 - Part of: Trame on the command line
-- Depends on: Preparation, What the doctor writes, runs and waits for, File reading, File writing, File trees, Programs, Runs kept, HTTP server, Timer, Reports on packages, Packages installed, Project layout, Clock, Paths, Terminal, Messages of the commands
+- Depends on: Preparation, What the doctor writes, runs and waits for, File reading, File writing, File trees, Programs, Runs kept, HTTP server, Timer, Reports on packages, Packages installed, Project layout, Clock, Paths, Terminal, Messages of the commands, The add-ons of a command the engine keeps
 
 ### Payload
 
@@ -1167,10 +1186,10 @@ Entry point · `Init` · **held**
 
 - Owner: trame
 - Trigger: { type: command, name: init }
-- Parameters: { exitStatus: std/system.ExitStatus, preparation: commands.Preparation, layout: conventions.Layout, project: engine.Project, prelude: architecture.Prelude, start: conventions.ProjectStart, pin: generations.EnginePin, reading: architecture.FileReading, writing: architecture.FileWriting, paths: architecture.Paths, encodings: std/system.NodeEncodings, file: std/text.TextFile, json: conventions.JsonFormatting, language: typescript.TypeScript, syntax: typescript.TypeScriptSyntax, title: typescript.ModuleTitle, doc: typescript.DocBlock, exported: typescript.ExportDeclaration, constant: typescript.ConstDeclaration, call: typescript.Call, object: typescript.ObjectLiteral, property: typescript.Property, text: typescript.StringLiteral, imports: typescript.NamedImport, terminal: architecture.Terminal, messages: messages.CommandMessages, currentProcess: architecture.Process, events: std/system.NodeEvents, line: conventions.TrameCommands, texts: std/algebra.Texts, references: commands.ReferencesModule, names: conventions.LanguageNames, specifiers: std/system.NodeModuleSpecifiers, member: typescript.MemberAccess, list: typescript.InlineArray }
+- Parameters: { exitStatus: std/system.ExitStatus, preparation: commands.Preparation, layout: conventions.Layout, project: engine.Project, prelude: architecture.Prelude, start: conventions.ProjectStart, pin: generations.EnginePin, reading: architecture.FileReading, writing: architecture.FileWriting, paths: architecture.Paths, encodings: std/system.NodeEncodings, file: std/text.TextFile, json: conventions.JsonFormatting, language: typescript.TypeScript, syntax: typescript.TypeScriptSyntax, title: typescript.ModuleTitle, doc: typescript.DocBlock, exported: typescript.ExportDeclaration, constant: typescript.ConstDeclaration, call: typescript.Call, object: typescript.ObjectLiteral, property: typescript.Property, text: typescript.StringLiteral, imports: typescript.NamedImport, terminal: architecture.Terminal, messages: messages.CommandMessages, currentProcess: architecture.Process, events: std/system.NodeEvents, line: conventions.TrameCommands, texts: std/algebra.Texts, references: commands.ReferencesModule, names: conventions.LanguageNames, specifiers: std/system.NodeModuleSpecifiers, member: typescript.MemberAccess, list: typescript.InlineArray, addOns: commands.AddOns, projectCommands: commands.ProjectCommands, values: std/algebra.ValueTypes, counts: std/algebra.Counts }
 - Serves: A single source of truth
 - Part of: Trame on the command line
-- Depends on: Preparation, Project layout, Project, Prelude, How a project starts, The engine a project runs, File reading, File writing, Paths, JSON formatting, TypeScript, The syntax of the programs Trame writes, Title of a module, Documentation comment, Export, Constant, Call, Object, Property, Text, Import of names, Terminal, Messages of the commands, Process, Trame's commands, A module of references, The language's names, Property access, List on one line
+- Depends on: Preparation, Project layout, Project, Prelude, How a project starts, The engine a project runs, File reading, File writing, Paths, JSON formatting, TypeScript, The syntax of the programs Trame writes, Title of a module, Documentation comment, Export, Constant, Call, Object, Property, Text, Import of names, Terminal, Messages of the commands, Process, Trame's commands, A module of references, The language's names, Property access, List on one line, The add-ons of a command the engine keeps, The project's commands
 
 ### Plan
 
@@ -3189,10 +3208,10 @@ Package · `StandardLibrary`
 
 - Owner: trame
 - Name: std
-- Version: 0.24.0
+- Version: 0.25.0
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: std/releases/0.24.0
+- Its path: std/releases/0.25.0
 - Serves: A single source of truth
 
 ### tsx
@@ -4839,6 +4858,34 @@ Release · `G12`
 - Releases: Trame on the command line
 - Assembled by: Generation 11
 
+### Generation 120
+
+Release · `G120`
+
+- Released by: trame
+- Version: g120
+- Released on: 2026-11-25
+- What changes: Extension points: a port every realization of one choice answers, in order; trame doctor asks the project's add-ons, trame init repairs a project already there and calls its add-ons (E3, part 3)
+- Fingerprint: 5c1c57f2bb2e666a
+- Language: shared
+- Language archived: 0b29fd7d79d778bf
+- Releases: Trame on the command line
+- Assembled by: Generation 119
+
+### Generation 121
+
+Release · `G121`
+
+- Released by: trame
+- Version: g121
+- Released on: 2026-11-25
+- What changes: The language types a realization of an extension point by its one contract (Realizes, RealizedBy): published with the generation, for the projects run from the registry (E3, part 3)
+- Fingerprint: ff10868da2067157
+- Language: shared
+- Language archived: 896211f06bdb0fd1
+- Releases: Trame on the command line
+- Assembled by: Generation 120
+
 ### Generation 13
 
 Release · `G13`
@@ -6423,6 +6470,13 @@ Decision · `ExpectedDifferences`
 - Decided by: trame
 - Value: {  }
 
+### The names the sample add-ons give, and the order a choice gives them in: the second first.
+
+Decision · `ExtensionSamples`
+
+- Decided by: trame
+- Value: { first: first, second: second }
+
 ### What the scenario of the judgment answers
 
 Decision · `JudgingData`
@@ -6436,6 +6490,51 @@ Decision · `ReckoningData`
 
 - Decided by: trame
 - Value: { relation: { a: b, b: c, c: a, d: a }, cycleStarts: a, seeds: kind laws, view laws, draws: 20, bounds: { lo: 1, hi: 6 }, reference: { ref: engine.Compiler, module: engine, identifier: Compiler }, library: { module: std/algebra, name: std, own: algebra }, fingerprinted: { value: { a: 1, b: 2 }, reordered: { b: 2, a: 1 }, changed: { a: 1, b: 3 } }, without: { value: { name: Mountain, marks: { title: Feet, label: 1, 2 }, { title: Crown, label: 3, 4 }, shape: { at: 0, 0, rests: feet } }, paths: marks.label, shape.at, left: { name: Mountain, marks: { title: Feet }, { title: Crown }, shape: { rests: feet } } }, place: { file: src/engine.ts, tsLine: 9, line: 10, written: src/engine.ts:10 } }
+
+### A sample extension point
+
+Port · `SampleAddOns`
+
+- Owner: trame
+- Declared effects: { name:  }
+- Extension point: true
+
+### The first sample add-on
+
+Function · `FirstSampleAddOn` · **held**
+
+- Owner: trame
+- Parameters: { samples: scenarios.ExtensionSamples }
+- Implements: A sample extension point
+- Depends on: The names the sample add-ons give, and the order a choice gives them in: the second first.
+
+### The second sample add-on
+
+Function · `SecondSampleAddOn` · **held**
+
+- Owner: trame
+- Parameters: { samples: scenarios.ExtensionSamples }
+- Implements: A sample extension point
+- Depends on: The names the sample add-ons give, and the order a choice gives them in: the second first.
+
+### The sample add-ons, second first
+
+Technical choice · `SampleAddOnsInOrder` · **held**
+
+- Decided by: trame
+- Context: An extension point is answered by every realization one choice makes, in its order: the scenario must see that order, not the order of the declarations.
+- Chooses: The second sample add-on, The first sample add-on
+- In: Test
+
+### Add-ons, in the order chosen
+
+Scenario · `AddOnsInOrder` · **held**
+
+- Owner: trame
+- Parameters: { addOns: scenarios.SampleAddOns, samples: scenarios.ExtensionSamples, messages: messages.ScenarioMessages }
+- Verifies: The first sample add-on, The second sample add-on
+- In: Test
+- Depends on: A sample extension point, The names the sample add-ons give, and the order a choice gives them in: the second first., Messages of the scenarios
 
 ### A body amended runs amended
 
@@ -6721,6 +6820,14 @@ Technical choice · `SdlcOnTheMachine` · **unknown**
 
 - Decided by: trame
 - Context: The graph page must be opened as a person opens it: the file exported, in a real browser; the repository is set and read by GitHub's command line, with the token of whoever runs it.
+- In: Local, A session of Claude Code
+
+### What the machine must also have
+
+Technical choice · `WhatTheMachineMustHave` · **unknown**
+
+- Decided by: trame
+- Context: On 17 November a machine whose browsers had moved refused the check of the page, and trame doctor said nothing of it.
 - In: Local, A session of Claude Code
 
 ### A generation advanced in one command

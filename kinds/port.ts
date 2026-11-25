@@ -1,4 +1,4 @@
-import { defineKind, field, hole, doc, keysOf, KindName, EdgeName, type Graph, type Node, type Provides, type View, HoleCode } from "../trame/kernel"
+import { defineKind, field, hole, doc, keysOf, isNode, KindName, EdgeName, BindingEdge, PortField, type Graph, type Node, type Provides, type Realizes, type View, HoleCode } from "../trame/kernel"
 import { choicesOf, holdsIn } from "./binding"
 import { environmentFields } from "./environment"
 import words from "./words"
@@ -13,6 +13,11 @@ const fields = {
    * computed from the dependencies.)
    */
   declaredEffects: field.value<readonly string[] | Readonly<Record<string, readonly string[]>>>(say.portDeclaredEffects()),
+  /**
+   * An extension point (since g120): every realization chosen in an environment answers it, in the order of the one
+   * choice that makes them there; what depends on it receives the list of what they give, none when nothing is chosen.
+   */
+  [PortField.extension]: field.value<boolean>(say.portExtension()),
 }
 const F = keysOf(fields)
 
@@ -21,6 +26,7 @@ const F = keysOf(fields)
  * a technical choice is made. It declares a contract and effects. In each environment, exactly one realization answers
  * it: an implementation if it touches the platform, a function otherwise, chosen by a technical choice (a binding).
  * In a graph that has no choice for it, the implementation that names the environment answers it (as before bindings).
+ * An extension point (since g120) is answered by every realization chosen, in the order one choice gives them.
  */
 const kind = defineKind({
   name: KindName.port,
@@ -29,11 +35,13 @@ const kind = defineKind({
   fields,
   edges: {},
 
-  effects: (self, uses) => promised(self.declaredEffects, uses),
+  // What is used of an extension point's list says nothing of what is used of each add-on: all its effects (since g120).
+  effects: (self, uses) => promised(self.declaredEffects, isExtension(self) ? undefined : uses),
 
-  /** When wiring: the realization chosen for this environment. */
+  /** When wiring: the realization chosen for this environment; for an extension point, each one, in order. */
   delegate(self, ctx) {
     const { counts, texts, lists } = ctx.g.lib
+    if (isExtension(self)) return answering(ctx.g, self, ctx.env)
     const all = answering(ctx.g, self, ctx.env)
     // Without an environment, when several answer: the one of the environment where the build evaluates, if the project
     // says so (a library's environments are its own).
@@ -48,6 +56,13 @@ const kind = defineKind({
   // An environment without a realization is a hole only if something needs it there: the assembly says so.
   holes: (self, g) => {
     const { counts, texts, lists } = g.lib
+    // An extension point may have no add-on: nothing answers it then. Its order is one choice's in each environment.
+    if (isExtension(self)) {
+      return g.all(KindName.environment).nodes().map((env) => {
+        const making = extendingIn(g, self, env)
+        return counts.several(making) && hole.error(HoleCode.extensionOrderAmbiguous, say.portExtensionOrderAmbiguous(env.title, texts.concat(lists.enumeration(making.map((b) => b.title)))), self.owner)
+      })
+    }
     return [
       !g.from(self).in(EdgeName.implements).exists() && hole.warning(HoleCode.portUnrealized, say.portNoRealizationInAnyEnvironment(), self.owner),
       ...g.all(KindName.environment).nodes().map((env) => {
@@ -62,6 +77,7 @@ const kind = defineKind({
     const refs = (vs: View[], none: string) => (counts.any(vs) ? lists.enumeration(vs.map(doc.ref)) : [none])
     const byMethod = methodsOf(self.field(F.declaredEffects))
     return [
+      ...(isExtension(self) ? [doc.para(say.portExtensionSays())] : []),
       ...(byMethod
         ? [doc.table([say.portMethod(), say.portItsEffects()], byMethod.map(([m, e]) => [[doc.ident(m)], counts.any(e) ? lists.enumeration(e) : [say.portNone()]]))]
         : []),
@@ -90,14 +106,42 @@ function promised(declared: unknown, uses?: readonly string[]): string[] {
 /** The realizations of a port in force. */
 const realizations = (g: Graph, port: View): View[] => g.from(port).in(EdgeName.implements).where((v) => v.active).nodes()
 
+/** Is this port an extension point (since g120)? */
+const isExtension = (port: View): boolean => port.field(PortField.extension) === true
+
+/** The choices that make realizations of an extension point in an environment: one gives their order. */
+function extendingIn(g: Graph, port: View, env: View | undefined): View[] {
+  const mine = new Set(realizations(g, port).map((r) => r.ref))
+  const choices = realizations(g, port).flatMap((r) => choicesOf(g, r)).filter((b) => holdsIn(g, b, env))
+  return [...new Map(choices.filter((b) => g.from(b).out(BindingEdge.chooses).nodes().some((r) => mine.has(r.ref))).map((b) => [b.ref, b])).values()]
+}
+
 /**
  * What answers a port in an environment (everything chosen for it, without an environment): the realizations a choice
  * makes there; in a graph where no choice makes any of its realizations, the implementations that name the environment.
+ * An extension point's, in the order of the choices that make them (one, when the graph is sound).
  */
 function answering(g: Graph, port: View, env: View | undefined): View[] {
   const all = realizations(g, port)
+  if (isExtension(port) && all.some((r) => g.lib.counts.any(choicesOf(g, r)))) {
+    const mine = new Map(all.map((r) => [r.ref, r]))
+    // In the order the choice writes them, which its edges, sorted, do not keep.
+    const written = (b: View): View[] => {
+      const chosen = b.field(BindingEdge.chooses)
+      return Array.isArray(chosen) ? chosen.flatMap((n) => (isNode(n) ? [g.view(n)] : [])) : []
+    }
+    return extendingIn(g, port, env).flatMap((b) => written(b).flatMap((r) => mine.get(r.ref) ?? []))
+  }
   if (all.some((r) => g.lib.counts.any(choicesOf(g, r)))) return all.filter((r) => choicesOf(g, r).some((b) => holdsIn(g, b, env)))
   return all.filter((v) => !env || g.from(v).out(EdgeName.environments).nodes().some((e) => e.node === env.node))
+}
+
+/**
+ * Declares an extension point (since g120), with the type of each realization's contract: what depends on it receives
+ * the list of them, in the order of the choice that makes them. `extensionPoint<MachineNeed>({ … })`.
+ */
+export function extensionPoint<C>(input: { owner: string; declaredEffects: readonly string[] | { readonly [M in keyof C & string]: readonly string[] } }): Node<typeof KindName.port> & Provides<readonly C[]> & Realizes<C> {
+  return kind({ ...input, [PortField.extension]: true } as never) as never
 }
 
 /** Declares a port, with the type of its contract: `port<ReservationReading>({ … })`. */

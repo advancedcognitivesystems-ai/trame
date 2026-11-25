@@ -27,6 +27,7 @@ const body = () => ({
   assemblyCannotBeAssembledIn: (p0: unknown) => `Cannot be assembled in "${p0}"`,
   assemblyItsValueReadAtStartup: () => "its value (read at startup)",
   assemblyItsBody: () => "its body",
+  assemblyItsRealizations: () => "what its realizations give, in the order chosen",
   assemblyDependsOn: () => "Depends on",
   assemblyImplements: () => "Implements",
   assemblyImplementedBy: () => "Implemented by",

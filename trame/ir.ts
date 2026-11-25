@@ -108,6 +108,8 @@ export const HoleCode = {
   adrUnprovable: "adr-unprovable",
   portUnrealized: "port-unrealized",
   portRealizedTwice: "port-realized-twice",
+  /** An extension point whose realizations two choices make in the same environment: their order is ambiguous (since g120). */
+  extensionOrderAmbiguous: "extension-order-ambiguous",
   bindingChoosesNothing: "binding-chooses-nothing",
   bindingInNoEnvironment: "binding-in-no-environment",
   bindingChoosesNoPort: "binding-chooses-no-port",
@@ -230,6 +232,20 @@ export const isCommandsExposure = (port: { readonly ref: string; readonly librar
  */
 export const EngineCommands = { programs: "std/tooling.CommandsInTheEngine", inItsLibrary: "tooling.CommandsInTheEngine" } as const
 
+/**
+ * The extension points of the commands the engine keeps (since g120), by their reference: std's, whose realizations a
+ * project's choice makes. trame doctor asks the machine what the project's add-ons ask; trame init calls those that
+ * repair a project.
+ */
+export const KeptCommandPoints = {
+  machine: { programs: "std/tooling.MachineNeeds", inItsLibrary: "tooling.MachineNeeds" },
+  repairs: { programs: "std/tooling.ProjectRepairs", inItsLibrary: "tooling.ProjectRepairs" },
+} as const
+
+/** Is this node the extension point given (std's), from a project that imports std, or in std's own graph? */
+export const isPoint = (point: { readonly programs: string; readonly inItsLibrary: string }, node: { readonly ref: string; readonly library?: string }): boolean =>
+  node.ref === point.programs || (node.library === undefined && node.ref === point.inItsLibrary)
+
 /** Is this node std's CommandsInTheEngine: from a project that imports std, or in std's own graph? */
 export const runsInTheEngine = (realization: { readonly ref: string; readonly library?: string }): boolean =>
   realization.ref === EngineCommands.programs || (realization.library === undefined && realization.ref === EngineCommands.inItsLibrary)
@@ -315,8 +331,11 @@ export type ClaimSide = ValueOf<typeof ClaimSide>
 export const LiteralKind = { text: "text", number: "number", template: "template", regex: "regex", key: "key" } as const
 export type LiteralKind = ValueOf<typeof LiteralKind>
 
-/** How a node gives what it gives when wired: its body called with its dependencies, or the value its kind provides. */
-export const WireMode = { body: "body", value: "value" } as const
+/**
+ * How a node gives what it gives when wired: its body called with its dependencies, the value its kind provides, or
+ * (an extension point, since g120) the list of what its realizations give, in the order they were chosen.
+ */
+export const WireMode = { body: "body", value: "value", gathered: "gathered" } as const
 export type WireMode = ValueOf<typeof WireMode>
 
 /**
@@ -421,6 +440,8 @@ export const ShipmentEdge = { ships: "ships", requires: "requires", deploys: "de
 export const ObligationField = { params: "params", gaps: "gaps" } as const
 export const PolicyEdge = { obligations: "obligations" } as const
 export const EntryField = { trigger: "trigger" } as const
+/** A port that is an extension point (since g120): every realization chosen answers it, in order; the engine reads it. */
+export const PortField = { extension: "extension" } as const
 
 /**
  * Who may call an entry point (C6): the edge by which an entry point names its audience, and what an audience says (the

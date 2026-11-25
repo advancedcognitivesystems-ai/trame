@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-24",
+  "at": "2026-11-25",
   "nodes": [
     {
       "id": "access.Anyone",
@@ -371,17 +371,6 @@
             "value": "sha256",
             "meaning": "The name Node gives to SHA-256"
           }
-        }
-      }
-    },
-    {
-      "id": "commands.CommandLanguage",
-      "kind": "decision",
-      "title": "The language the library's commands speak in.",
-      "fields": {
-        "owner": "trame",
-        "value": {
-          "tag": "en-GB"
         }
       }
     },
@@ -2231,10 +2220,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "119",
+        "version": "121",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g119"
+        "at": "../generations/g121"
       }
     },
     {
@@ -2296,6 +2285,19 @@
         "source": "Gamma et al., Design Patterns (1994), Command",
         "requires": {
           "commands": true
+        }
+      }
+    },
+    {
+      "id": "patterns.Plugin",
+      "kind": "pattern",
+      "title": "Plugin",
+      "fields": {
+        "owner": "trame",
+        "source": "M. Fowler, Patterns of Enterprise Application Architecture (2002), Plugin (D. Rice, M. Foemmel)",
+        "url": "https://martinfowler.com/eaaCatalog/plugin.html",
+        "requires": {
+          "extends": true
         }
       }
     },
@@ -2920,6 +2922,19 @@
         "date": "2026-11-24",
         "what": "Commands run in the engine: CommandsInTheEngine offers a program's commands to the engine that imports it (E3, part 3)",
         "fingerprint": "f9e692913a6f8704",
+        "language": "shared"
+      }
+    },
+    {
+      "id": "releases.R0_25_0",
+      "kind": "release",
+      "title": "Version 0.25.0",
+      "fields": {
+        "owner": "trame",
+        "version": "0.25.0",
+        "date": "2026-11-25",
+        "what": "Extension points: trame doctor's MachineNeeds (Playwright's browser installed) and trame init's ProjectRepairs; the pattern Plugin (E3, part 3)",
+        "fingerprint": "5e7440b5d55f71e9",
         "language": "shared"
       }
     },
@@ -4454,7 +4469,7 @@
       "id": "sdlc.NextVersion",
       "kind": "shipment",
       "title": "The next version",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "version"
@@ -4538,7 +4553,7 @@
       "id": "sdlc.TheLibrary",
       "kind": "artifact",
       "title": "The standard library",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "src",
@@ -4992,6 +5007,17 @@
       }
     },
     {
+      "id": "tooling.CommandLanguage",
+      "kind": "decision",
+      "title": "The language the library's commands and tools speak in.",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "tag": "en-GB"
+        }
+      }
+    },
+    {
       "id": "tooling.CommandsInTheEngine",
       "kind": "implementation",
       "title": "Commands run in the engine",
@@ -5108,6 +5134,25 @@
       }
     },
     {
+      "id": "tooling.MachineNeeds",
+      "kind": "port",
+      "title": "What the machine must also have",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": {
+          "ask": [
+            "read",
+            "process",
+            "network",
+            "display",
+            "time",
+            "asynchronous"
+          ]
+        },
+        "extension": true
+      }
+    },
+    {
       "id": "tooling.NodeProgramCommands",
       "kind": "implementation",
       "title": "Node's command line",
@@ -5210,6 +5255,21 @@
       }
     },
     {
+      "id": "tooling.PlaywrightBrowserInstalled",
+      "kind": "implementation",
+      "title": "Playwright's browser, installed",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "words": "tooling.ToolWords"
+        },
+        "body": {
+          "file": "./code/tooling/playwright-browser-installed.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
       "id": "tooling.PlaywrightPackage",
       "kind": "package",
       "title": "Playwright",
@@ -5287,6 +5347,21 @@
       }
     },
     {
+      "id": "tooling.ProjectRepairs",
+      "kind": "port",
+      "title": "What repairs a project",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": {
+          "repair": [
+            "read",
+            "write"
+          ]
+        },
+        "extension": true
+      }
+    },
+    {
       "id": "tooling.ToolingAsPorts",
       "kind": "adr",
       "title": "The SDLC's tooling is realized once",
@@ -5295,6 +5370,15 @@
         "owner": "trame",
         "context": "The code that builds, checks and deploys a product is code like the product's: written once, tested before it runs.",
         "consequences": "A check opens the delivered page through HeadlessBrowser, a deployment copies through Files, a project reaches the packages it uses through PackageSources wherever they come from; scenarios play them with the realizations kept in memory."
+      }
+    },
+    {
+      "id": "tooling.ToolWords",
+      "kind": "catalog",
+      "title": "What the library's tools say",
+      "fields": {
+        "owner": "trame",
+        "messages": "(function)"
       }
     },
     {
@@ -5765,7 +5849,7 @@
     },
     {
       "from": "commands.CommandWords",
-      "to": "commands.CommandLanguage",
+      "to": "tooling.CommandLanguage",
       "kind": "language"
     },
     {
@@ -6260,6 +6344,11 @@
     },
     {
       "from": "patterns.Command",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "patterns.Plugin",
       "to": "product.KnownDesigns",
       "kind": "serves"
     },
@@ -7105,6 +7194,41 @@
     },
     {
       "from": "releases.R0_24_0",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_25_0",
+      "to": "product.ChosenCommands",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_25_0",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_25_0",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_25_0",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_25_0",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_25_0",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_25_0",
       "to": "product.VersionsThatHold",
       "kind": "serves"
     },
@@ -8649,6 +8773,21 @@
       "kind": "deps"
     },
     {
+      "from": "tooling.PlaywrightBrowserInstalled",
+      "to": "tooling.MachineNeeds",
+      "kind": "implements"
+    },
+    {
+      "from": "tooling.PlaywrightBrowserInstalled",
+      "to": "tooling.PlaywrightPackage",
+      "kind": "packages"
+    },
+    {
+      "from": "tooling.PlaywrightBrowserInstalled",
+      "to": "tooling.ToolWords",
+      "kind": "deps"
+    },
+    {
       "from": "tooling.ProgramRunsInMemory",
       "to": "product.RealizedOnce",
       "kind": "serves"
@@ -8695,6 +8834,21 @@
     },
     {
       "from": "tooling.ToolingAsPorts",
+      "to": "tooling.MachineNeeds",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "tooling.ToolingAsPorts",
+      "to": "tooling.PlaywrightBrowserInstalled",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "tooling.ToolingAsPorts",
+      "to": "tooling.ProjectRepairs",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "tooling.ToolingAsPorts",
       "to": "tooling.Files",
       "kind": "appliedBy"
     },
@@ -8737,6 +8891,11 @@
       "from": "tooling.ToolingAsPorts",
       "to": "tooling.PackageSources",
       "kind": "appliedBy"
+    },
+    {
+      "from": "tooling.ToolWords",
+      "to": "tooling.CommandLanguage",
+      "kind": "language"
     },
     {
       "from": "web.CssomView",

@@ -296,6 +296,8 @@ const body = () => ({
   patternRealizationsThatReachNoOtherPort: () => "realizations that reach no other port",
   patternCommandsOfALibrary: () => "commands a library offers, run in the project",
   patternNoCommand: () => "no command",
+  patternExtendsAPoint: () => "several realizations of an extension point, which all answer in order",
+  patternExtendsNoPoint: () => "no extension point",
   patternDesignPattern: () => "Design pattern",
   patternDesignPatterns: () => "Design patterns",
   patternRequiresOfAChoice: () => "Requires of a choice",
@@ -321,6 +323,9 @@ const body = () => ({
   portSeveralRealizationsFor: (p0: unknown, p1: unknown) => `Several realizations for "${p0}": ${p1}`,
   portSeveralRealizationsOf: (p0: unknown, p1: unknown, p2: unknown) => `Several realizations of "${p0}"${p1}: ${p2}`,
   portNone: () => "none",
+  portExtension: () => "Extension point",
+  portExtensionSays: () => "An extension point: every realization chosen in an environment answers it, in the order of the choice.",
+  portExtensionOrderAmbiguous: (env: unknown, choices: unknown) => `In "${env}", several choices extend it (${choices}): the order of its realizations is ambiguous; one choice says it`,
 
   // release ----------------------------------------------------------------------------------------------------
 

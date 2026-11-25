@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-24",
+  "at": "2026-11-25",
   "nodes": [
     {
       "id": "appearance.ExplorerDrawing",
@@ -1967,6 +1967,29 @@
       }
     },
     {
+      "id": "command-scenarios.ProjectRepaired",
+      "kind": "scenario",
+      "title": "A project repaired",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "init": "commands.Init",
+          "processLog": "architecture.ProcessLog",
+          "writeLog": "architecture.WriteLog",
+          "currentProcess": "architecture.Process",
+          "paths": "architecture.Paths",
+          "start": "conventions.ProjectStart",
+          "samples": "command-scenarios.ProjectSamples",
+          "line": "conventions.TrameCommands",
+          "exitStatus": "std/system.ExitStatus",
+          "texts": "std/algebra.Texts",
+          "messages": "messages.ScenarioMessages"
+        },
+        "body": "(function)"
+      }
+    },
+    {
       "id": "command-scenarios.ProjectSamples",
       "kind": "decision",
       "title": "What the scenarios ask of those projects",
@@ -2342,6 +2365,24 @@
           "messages": "messages.ScenarioMessages"
         },
         "body": "(function)"
+      }
+    },
+    {
+      "id": "commands.AddOns",
+      "kind": "function",
+      "title": "The add-ons of a command the engine keeps",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "wiring": "engine.Wiring",
+          "counts": "std/algebra.Counts",
+          "messages": "messages.CommandMessages"
+        },
+        "body": {
+          "file": "./code/commands/add-ons.ts",
+          "language": "typescript"
+        }
       }
     },
     {
@@ -2722,7 +2763,8 @@
           "encodings": "std/system.NodeEncodings",
           "counts": "std/algebra.Counts",
           "texts": "std/algebra.Texts",
-          "messages": "messages.CommandMessages"
+          "messages": "messages.CommandMessages",
+          "addOns": "commands.AddOns"
         },
         "body": {
           "file": "./code/commands/doctor.ts",
@@ -2956,7 +2998,11 @@
           "names": "conventions.LanguageNames",
           "specifiers": "std/system.NodeModuleSpecifiers",
           "member": "typescript.MemberAccess",
-          "list": "typescript.InlineArray"
+          "list": "typescript.InlineArray",
+          "addOns": "commands.AddOns",
+          "projectCommands": "commands.ProjectCommands",
+          "values": "std/algebra.ValueTypes",
+          "counts": "std/algebra.Counts"
         },
         "body": {
           "file": "./code/commands/init.ts",
@@ -8603,10 +8649,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.24.0",
+        "version": "0.25.0",
         "joins": "library",
         "from": "path",
-        "at": "std/releases/0.24.0"
+        "at": "std/releases/0.25.0"
       }
     },
     {
@@ -11726,6 +11772,34 @@
       }
     },
     {
+      "id": "releases.G120",
+      "kind": "release",
+      "title": "Generation 120",
+      "fields": {
+        "owner": "trame",
+        "version": "g120",
+        "date": "2026-11-25",
+        "what": "Extension points: a port every realization of one choice answers, in order; trame doctor asks the project's add-ons, trame init repairs a project already there and calls its add-ons (E3, part 3)",
+        "fingerprint": "5c1c57f2bb2e666a",
+        "language": "shared",
+        "archive": "0b29fd7d79d778bf"
+      }
+    },
+    {
+      "id": "releases.G121",
+      "kind": "release",
+      "title": "Generation 121",
+      "fields": {
+        "owner": "trame",
+        "version": "g121",
+        "date": "2026-11-25",
+        "what": "The language types a realization of an extension point by its one contract (Realizes, RealizedBy): published with the generation, for the projects run from the registry (E3, part 3)",
+        "fingerprint": "ff10868da2067157",
+        "language": "shared",
+        "archive": "896211f06bdb0fd1"
+      }
+    },
+    {
       "id": "releases.G13",
       "kind": "release",
       "title": "Generation 13",
@@ -13497,6 +13571,21 @@
       }
     },
     {
+      "id": "scenarios.AddOnsInOrder",
+      "kind": "scenario",
+      "title": "Add-ons, in the order chosen",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "addOns": "scenarios.SampleAddOns",
+          "samples": "scenarios.ExtensionSamples",
+          "messages": "messages.ScenarioMessages"
+        },
+        "body": "(function)"
+      }
+    },
+    {
       "id": "scenarios.AmendedBodiesRun",
       "kind": "scenario",
       "title": "A body amended runs amended",
@@ -13731,6 +13820,31 @@
       }
     },
     {
+      "id": "scenarios.ExtensionSamples",
+      "kind": "decision",
+      "title": "The names the sample add-ons give, and the order a choice gives them in: the second first.",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "first": "first",
+          "second": "second"
+        }
+      }
+    },
+    {
+      "id": "scenarios.FirstSampleAddOn",
+      "kind": "function",
+      "title": "The first sample add-on",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "samples": "scenarios.ExtensionSamples"
+        },
+        "body": "(function)"
+      }
+    },
+    {
       "id": "scenarios.JudgingData",
       "kind": "decision",
       "title": "What the scenario of the judgment answers",
@@ -13889,6 +14003,41 @@
             "written": "src/engine.ts:10"
           }
         }
+      }
+    },
+    {
+      "id": "scenarios.SampleAddOns",
+      "kind": "port",
+      "title": "A sample extension point",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": {
+          "name": []
+        },
+        "extension": true
+      }
+    },
+    {
+      "id": "scenarios.SampleAddOnsInOrder",
+      "kind": "binding",
+      "title": "The sample add-ons, second first",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "An extension point is answered by every realization one choice makes, in its order: the scenario must see that order, not the order of the declarations."
+      }
+    },
+    {
+      "id": "scenarios.SecondSampleAddOn",
+      "kind": "function",
+      "title": "The second sample add-on",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "samples": "scenarios.ExtensionSamples"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -14683,6 +14832,16 @@
         "deps": {
           "exposure": "std/tooling.ProgramCommands"
         }
+      }
+    },
+    {
+      "id": "sdlc.WhatTheMachineMustHave",
+      "kind": "binding",
+      "title": "What the machine must also have",
+      "status": "unknown",
+      "fields": {
+        "owner": "trame",
+        "context": "On 17 November a machine whose browsers had moved refused the check of the page, and trame doctor said nothing of it."
       }
     },
     {
@@ -19268,6 +19427,66 @@
       "kind": "deps"
     },
     {
+      "from": "command-scenarios.ProjectRepaired",
+      "to": "commands.Init",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.ProjectRepaired",
+      "to": "commands.AddOns",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.ProjectRepaired",
+      "to": "architecture.Test",
+      "kind": "env"
+    },
+    {
+      "from": "command-scenarios.ProjectRepaired",
+      "to": "commands.Init",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ProjectRepaired",
+      "to": "architecture.ProcessLog",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ProjectRepaired",
+      "to": "architecture.WriteLog",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ProjectRepaired",
+      "to": "architecture.Process",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ProjectRepaired",
+      "to": "architecture.Paths",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ProjectRepaired",
+      "to": "conventions.ProjectStart",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ProjectRepaired",
+      "to": "command-scenarios.ProjectSamples",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ProjectRepaired",
+      "to": "conventions.TrameCommands",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ProjectRepaired",
+      "to": "messages.ScenarioMessages",
+      "kind": "deps"
+    },
+    {
       "from": "command-scenarios.ProjectStarted",
       "to": "commands.Init",
       "kind": "verifies"
@@ -19895,6 +20114,21 @@
     {
       "from": "command-scenarios.ViewsInTheTerminal",
       "to": "messages.ScenarioMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.AddOns",
+      "to": "product.ExecutableSpecification",
+      "kind": "serves"
+    },
+    {
+      "from": "commands.AddOns",
+      "to": "engine.Wiring",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.AddOns",
+      "to": "messages.CommandMessages",
       "kind": "deps"
     },
     {
@@ -20658,6 +20892,11 @@
       "kind": "deps"
     },
     {
+      "from": "commands.Doctor",
+      "to": "commands.AddOns",
+      "kind": "deps"
+    },
+    {
       "from": "commands.EmitPayload",
       "to": "product.ExecutableSpecification",
       "kind": "serves"
@@ -21120,6 +21359,16 @@
     {
       "from": "commands.Init",
       "to": "typescript.InlineArray",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Init",
+      "to": "commands.AddOns",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Init",
+      "to": "commands.ProjectCommands",
       "kind": "deps"
     },
     {
@@ -27113,6 +27362,26 @@
       "kind": "assembledBy"
     },
     {
+      "from": "releases.G120",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G120",
+      "to": "releases.G119",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G121",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G121",
+      "to": "releases.G120",
+      "kind": "assembledBy"
+    },
+    {
       "from": "releases.G13",
       "to": "architecture.TrameCli",
       "kind": "component"
@@ -28808,6 +29077,36 @@
       "kind": "deps"
     },
     {
+      "from": "scenarios.AddOnsInOrder",
+      "to": "scenarios.FirstSampleAddOn",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.AddOnsInOrder",
+      "to": "scenarios.SecondSampleAddOn",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.AddOnsInOrder",
+      "to": "architecture.Test",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.AddOnsInOrder",
+      "to": "scenarios.SampleAddOns",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.AddOnsInOrder",
+      "to": "scenarios.ExtensionSamples",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.AddOnsInOrder",
+      "to": "messages.ScenarioMessages",
+      "kind": "deps"
+    },
+    {
       "from": "scenarios.AmendedBodiesRun",
       "to": "engine.Compiler",
       "kind": "verifies"
@@ -29223,6 +29522,16 @@
       "kind": "deps"
     },
     {
+      "from": "scenarios.FirstSampleAddOn",
+      "to": "scenarios.SampleAddOns",
+      "kind": "implements"
+    },
+    {
+      "from": "scenarios.FirstSampleAddOn",
+      "to": "scenarios.ExtensionSamples",
+      "kind": "deps"
+    },
+    {
       "from": "scenarios.JudgingHarder",
       "to": "engine.JudgedHarder",
       "kind": "verifies"
@@ -29280,6 +29589,31 @@
     {
       "from": "scenarios.KindLaws",
       "to": "messages.ScenarioMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.SampleAddOnsInOrder",
+      "to": "scenarios.SecondSampleAddOn",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.SampleAddOnsInOrder",
+      "to": "scenarios.FirstSampleAddOn",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.SampleAddOnsInOrder",
+      "to": "architecture.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "scenarios.SecondSampleAddOn",
+      "to": "scenarios.SampleAddOns",
+      "kind": "implements"
+    },
+    {
+      "from": "scenarios.SecondSampleAddOn",
+      "to": "scenarios.ExtensionSamples",
       "kind": "deps"
     },
     {
@@ -30130,6 +30464,16 @@
     {
       "from": "sdlc.TrameSdlc",
       "to": "architecture.Local",
+      "kind": "environments"
+    },
+    {
+      "from": "sdlc.WhatTheMachineMustHave",
+      "to": "architecture.Local",
+      "kind": "environments"
+    },
+    {
+      "from": "sdlc.WhatTheMachineMustHave",
+      "to": "architecture.Session",
       "kind": "environments"
     },
     {

@@ -1,10 +1,10 @@
 # Owners
 
-*What each person must decide, settle or watch on 24 November 2026, and what they own.*
+*What each person must decide, settle or watch on 25 November 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 3 | 247 |
+| trame | 0 | 0 | 5 | 253 |
 
 <a id="trame"></a>
 
@@ -14,6 +14,8 @@
 |---|---|---|---|---|---|
 | warning | `rules-look-alike` | Computes the same kind of answer from the same kind of arguments as “A node reaches what it must” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [A node never reaches what it must not](rules.md#NeverReaches) | trame |  |
 | warning | `rules-look-alike` | Computes the same kind of answer from the same kind of arguments as “A node never reaches what it must not” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [A node reaches what it must](rules.md#Reaches) | trame |  |
+| warning | `shipment-awaits` | To ship: The standard library is unknown | [The next version](sdlc.md#NextVersion) | trame |  |
+| warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The standard library](sdlc.md#TheLibrary) | trame |  |
 | warning | `port-unrealized` | No realization, in any environment | [Where a package comes from](tooling.md#PackageSources) | trame |  |
 
 ### Owns
@@ -33,7 +35,6 @@
 | [Multiplicative hashing](algorithms.md#MultiplicativeHash) | Standard |  |
 | [Seeded draws](algorithms.md#SeededDraws) | Function | **held** |
 | [SHA-256](algorithms.md#Sha256) | Standard |  |
-| [The language the library's commands speak in.](commands.md#CommandLanguage) | Decision |  |
 | [A library offers commands, a project chooses them](commands.md#CommandsOfALibrary) | Architecture decision | **held** |
 | [What the library's commands say](commands.md#CommandWords) | Message catalog |  |
 | [The library's commands](commands.md#LibraryCommands) | Component |  |
@@ -95,6 +96,7 @@
 | [Adapter](patterns.md#Adapter) | Design pattern |  |
 | [Bridge](patterns.md#Bridge) | Design pattern |  |
 | [Command](patterns.md#Command) | Design pattern |  |
+| [Plugin](patterns.md#Plugin) | Design pattern |  |
 | [Repository](patterns.md#Repository) | Design pattern |  |
 | [Strategy](patterns.md#Strategy) | Design pattern | **held** |
 | [Animation frames](platform.md#AnimationFrames) | Port |  |
@@ -147,6 +149,7 @@
 | [Version 0.22.3](releases.md#R0_22_3) | Release |  |
 | [Version 0.23.0](releases.md#R0_23_0) | Release |  |
 | [Version 0.24.0](releases.md#R0_24_0) | Release |  |
+| [Version 0.25.0](releases.md#R0_25_0) | Release |  |
 | [Version 0.3.0](releases.md#R0_3_0) | Release |  |
 | [Version 0.4.0](releases.md#R0_4_0) | Release |  |
 | [Version 0.5.0](releases.md#R0_5_0) | Release |  |
@@ -213,14 +216,14 @@
 | [Its data reviewed](sdlc.md#DataReviewed) | Obligation |  |
 | [Its decisions applied](sdlc.md#DecisionsApplied) | Obligation |  |
 | [Its functions verified](sdlc.md#FunctionsVerified) | Obligation |  |
-| [The next version](sdlc.md#NextVersion) | Shipment | **held** |
+| [The next version](sdlc.md#NextVersion) | Shipment | **unknown** |
 | [Its packages safe](sdlc.md#PackagesSafe) | Obligation |  |
 | [How a pull request is checked on GitHub](sdlc.md#PullRequestsOnGitHub) | Decision |  |
 | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **held** |
 | [Its requirements held](sdlc.md#RequirementsServed) | Obligation |  |
 | [Its rules held](sdlc.md#RulesHeld) | Obligation |  |
 | [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **held** |
-| [The standard library](sdlc.md#TheLibrary) | Artefact | **held** |
+| [The standard library](sdlc.md#TheLibrary) | Artefact | **unknown** |
 | [How a version is made](sdlc.md#VersionMode) | Policy |  |
 | [Exit status](system.md#ExitStatus) | Standard |  |
 | [Node.js process arguments](system.md#NodeArguments) | Standard |  |
@@ -238,6 +241,7 @@
 | [Unified differences](text.md#UnifiedDiff) | Standard |  |
 | [A browser kept in memory](tooling.md#BrowserInMemory) | Function | **held** |
 | [Browser script](tooling.md#BrowserScripted) | Port |  |
+| [The language the library's commands and tools speak in.](tooling.md#CommandLanguage) | Decision |  |
 | [Commands run in the engine](tooling.md#CommandsInTheEngine) | Implementation |  |
 | [Project files](tooling.md#Files) | Port |  |
 | [Files kept in memory](tooling.md#FilesInMemory) | Function | **held** |
@@ -245,18 +249,22 @@
 | [Headless browser](tooling.md#HeadlessBrowser) | Port |  |
 | [Chromium without a screen](tooling.md#HeadlessChromium) | Decision |  |
 | [The machine's files](tooling.md#MachineFiles) | Implementation |  |
+| [What the machine must also have](tooling.md#MachineNeeds) | Port |  |
 | [Node's command line](tooling.md#NodeProgramCommands) | Implementation |  |
 | [Programs run by Node](tooling.md#NodeProgramRuns) | Implementation |  |
 | [Where a package comes from](tooling.md#PackageOrigins) | Vocabulary |  |
 | [Where a package comes from](tooling.md#PackageSources) | Port |  |
 | [Playwright's API](tooling.md#PlaywrightApi) | Standard |  |
 | [Chromium, driven by Playwright](tooling.md#PlaywrightBrowser) | Implementation |  |
+| [Playwright's browser, installed](tooling.md#PlaywrightBrowserInstalled) | Implementation |  |
 | [Playwright](tooling.md#PlaywrightPackage) | Package | **held** |
 | [Commands of a program](tooling.md#ProgramCommands) | Port |  |
 | [Programs run](tooling.md#ProgramRuns) | Port |  |
 | [Programs run in memory](tooling.md#ProgramRunsInMemory) | Function | **held** |
 | [The programs a scenario keeps: the file it says a program writes is written when that program runs.](tooling.md#ProgramRunsKept) | Port |  |
+| [What repairs a project](tooling.md#ProjectRepairs) | Port |  |
 | [The SDLC's tooling is realized once](tooling.md#ToolingAsPorts) | Architecture decision | **held** |
+| [What the library's tools say](tooling.md#ToolWords) | Message catalog |  |
 | [CSSOM View](web.md#CssomView) | Standard |  |
 | [HTTP](web.md#Http) | Standard |  |
 | [Media Queries Level 5](web.md#MediaQueries5) | Standard |  |

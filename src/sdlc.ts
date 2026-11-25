@@ -16,9 +16,9 @@ import { scenario } from "../kinds/scenario"
 import { entryPoint, command } from "../kinds/entry-point"
 import {
   ProgramCommands, HeadlessBrowser, CommandsInTheEngine, PlaywrightBrowser, BrowserInMemory, BrowserScripted, NodeProgramRuns, MachineFiles, ProgramRuns,
-  ProgramRunsInMemory, ProgramRunsKept, FilesInMemory,
+  ProgramRunsInMemory, ProgramRunsKept, FilesInMemory, PlaywrightBrowserInstalled,
 } from "#std/tooling"
-import { Adapter, Strategy, Command } from "#std/patterns"
+import { Adapter, Strategy, Command, Plugin } from "#std/patterns"
 import { OpenPullRequest, MergePullRequest, Propagate, PullRequestSettings, PropagationSettings } from "#std/commands"
 import { GitCliBranches, GitHubCliPullRequests, AutoMergeByGitHubCli, AutoMergeInAClaudeSession } from "#std/repository"
 import { Layout, TrameCommands, TrameEnvironment, ProjectStart } from "./conventions"
@@ -138,8 +138,9 @@ export const GenerationMode = policy({
 /**
  * The candidate runs on the machine
  * The candidate engine asks the machine it was assembled for whether it runs Trame (trame doctor): it reads and writes
- * files, copies and compares trees, runs programs, serves HTTP, keeps the time, asks the registry. What its run proves
- * is what no scenario in memory can run: the realizations of the machine.
+ * files, copies and compares trees, runs programs, serves HTTP, keeps the time, asks the registry, and what Trame's
+ * add-ons ask (since g120: the browser Playwright drives, installed). What its run proves is what no scenario in memory
+ * can run: the realizations of the machine.
  */
 export const CandidateRunsOnTheMachine = check({
   owner: "trame", on: [EngineCandidate], runs: Doctor, by: Maintainers,
@@ -170,6 +171,20 @@ export const SdlcOnTheMachine = binding({
   environments: [Local, Session],
   follows: [Adapter],
   context: "The graph page must be opened as a person opens it: the file exported, in a real browser; the repository is set and read by GitHub's command line, with the token of whoever runs it.",
+})
+
+/**
+ * What the machine must also have
+ * trame doctor asks, besides what the engine asks, that the browser the version of Playwright Trame uses drives is
+ * installed (std's add-on, since g120): the page's check runs in it, and a machine whose browsers moved would refuse it
+ * where the engine's own questions see nothing.
+ */
+export const WhatTheMachineMustHave = binding({
+  owner: "trame",
+  chooses: [PlaywrightBrowserInstalled],
+  environments: [Local, Session],
+  follows: [Plugin],
+  context: "On 17 November a machine whose browsers had moved refused the check of the page, and trame doctor said nothing of it.",
 })
 
 /**

@@ -1,6 +1,6 @@
 import {
   defineKind, field, optional, edge, optionalEdge, hole, doc, keysOf, edgesOf, Status, KindName, EdgeName, LanguageEffect,
-  type AnyNode, type Node, type Provides, type HasDeps, type Provided, type ProvidedBy, type FileBody, type Signature, type Constant, type Values, type Declares, ChangeWay, HoleCode
+  type AnyNode, type Node, type Provides, type HasDeps, type Provided, type ProvidedBy, type RealizedBy, type FileBody, type Signature, type Constant, type Values, type Declares, ChangeWay, HoleCode
 } from "../trame/kernel"
 import { verifiedStatus } from "./scenario"
 import words from "./words"
@@ -72,7 +72,7 @@ interface FunctionInput<D extends Deps, C extends Record<string, Constant>, F> {
 
 type UnionToIntersection<U> = (U extends unknown ? (x: U) => void : never) extends (x: infer I) => void ? I : never
 /** The contract of a realization: all those of the ports it implements. */
-type ContractOf<P> = UnionToIntersection<ProvidedBy<P>>
+type ContractOf<P> = UnionToIntersection<RealizedBy<P>>
 
 interface RealizationInput<P extends Node<"port">, D extends Deps, C extends Record<string, Constant>> extends Omit<FunctionInput<D, C, ContractOf<P>>, "body" | "signature"> {
   /** The ports it answers, when a technical choice chooses it. */

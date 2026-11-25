@@ -46,6 +46,18 @@ export const ProjectCommands = fn({
 })
 
 /**
+ * The add-ons of a command the engine keeps
+ * The realizations of one of its extension points (std's) that a choice of the project makes, wired in the project's
+ * graph in the engine's process, in the order chosen (since g120); each run whatever the others did, what failed said.
+ */
+export const AddOns = fn({
+  owner: "trame",
+  serves: [ExecutableSpecification],
+  deps: { wiring: Wiring, counts: Counts, messages: CommandMessages },
+  body: code.file<typeof import("./code/commands/add-ons").default>("./code/commands/add-ons.ts"),
+})
+
+/**
  * The engine's modules
  * What the engine gives a program of commands it runs in its own process (E3, since g119): its modules as they run
  * here, the same a command of the engine uses (the compilation and its API, the laws, the views, the lock, the outputs
@@ -331,7 +343,7 @@ export const Doctor = entryPoint({
   deps: {
     exitStatus: ExitStatus, preparation: Preparation, probe: DoctorProbe, iso: Iso8601, reading: FileReading, writing: FileWriting, trees: FileTrees,
     programs: Programs, runs: KeptRuns, httpServer: HttpServer, timer: Timer, reports: PackageReports, installs: PackageInstalls, layout: Layout, clock: Clock, paths: Paths, terminal: Terminal,
-    encodings: NodeEncodings, counts: Counts, texts: Texts, messages: CommandMessages,
+    encodings: NodeEncodings, counts: Counts, texts: Texts, messages: CommandMessages, addOns: AddOns,
   },
   body: code.file<typeof import("./code/commands/doctor").default>("./code/commands/doctor.ts"),
 })
@@ -458,7 +470,7 @@ export const Init = entryPoint({
     syntax: TypeScriptSyntax, title: ModuleTitle, doc: DocBlock, exported: ExportDeclaration, constant: ConstDeclaration, call: Call, object: ObjectLiteral,
     property: Property, text: StringLiteral, imports: NamedImport, terminal: Terminal, messages: CommandMessages, currentProcess: Process,
     events: NodeEvents, line: TrameCommands, texts: Texts, references: ReferencesModule, names: LanguageNames, specifiers: NodeModuleSpecifiers,
-    member: MemberAccess, list: InlineArray,
+    member: MemberAccess, list: InlineArray, addOns: AddOns, projectCommands: ProjectCommands, values: ValueTypes, counts: Counts,
   },
   body: code.file<typeof import("./code/commands/init").default>("./code/commands/init.ts"),
 })

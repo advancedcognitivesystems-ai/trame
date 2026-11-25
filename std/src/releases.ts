@@ -382,3 +382,16 @@ export const R0_24_0 = release({
   language: "shared",
   serves: [ChosenCommands, CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
 })
+
+/**
+ * Version 0.25.0
+ */
+export const R0_25_0 = release({
+  owner: "trame",
+  version: "0.25.0",
+  date: "2026-11-25",
+  what: "Extension points: trame doctor's MachineNeeds (Playwright's browser installed) and trame init's ProjectRepairs; the pattern Plugin (E3, part 3)",
+  fingerprint: "5e7440b5d55f71e9",
+  language: "shared",
+  serves: [ChosenCommands, CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
+})

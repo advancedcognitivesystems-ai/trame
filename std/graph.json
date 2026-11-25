@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-24",
+  "generated": "2026-11-25",
   "nodes": [
     {
       "id": "access.Anyone",
@@ -525,23 +525,10 @@
       "diagnostics": []
     },
     {
-      "id": "commands.CommandLanguage",
-      "kind": "decision",
-      "title": "The language the library's commands speak in.",
-      "source": "src/commands.ts:97",
-      "fields": {
-        "owner": "trame",
-        "value": {
-          "tag": "en-GB"
-        }
-      },
-      "diagnostics": []
-    },
-    {
       "id": "commands.CommandsOfALibrary",
       "kind": "adr",
       "title": "A library offers commands, a project chooses them",
-      "source": "src/commands.ts:203",
+      "source": "src/commands.ts:200",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -558,7 +545,7 @@
       "id": "commands.CommandWords",
       "kind": "catalog",
       "title": "What the library's commands say",
-      "source": "src/commands.ts:102",
+      "source": "src/commands.ts:99",
       "fields": {
         "owner": "trame",
         "messages": "(function)"
@@ -583,7 +570,7 @@
       "id": "commands.MergePullRequest",
       "kind": "entry",
       "title": "Merge a pull request",
-      "source": "src/commands.ts:173",
+      "source": "src/commands.ts:170",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -613,7 +600,7 @@
       "id": "commands.OpenPullRequest",
       "kind": "entry",
       "title": "Open a pull request",
-      "source": "src/commands.ts:154",
+      "source": "src/commands.ts:151",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -643,7 +630,7 @@
       "id": "commands.Propagate",
       "kind": "entry",
       "title": "Propagate",
-      "source": "src/commands.ts:189",
+      "source": "src/commands.ts:186",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2634,10 +2621,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "119",
+        "version": "121",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g119"
+        "at": "../generations/g121"
       },
       "diagnostics": []
     },
@@ -2709,6 +2696,21 @@
         "source": "Gamma et al., Design Patterns (1994), Command",
         "requires": {
           "commands": true
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "patterns.Plugin",
+      "kind": "pattern",
+      "title": "Plugin",
+      "source": "src/patterns.ts:93",
+      "fields": {
+        "owner": "trame",
+        "source": "M. Fowler, Patterns of Enterprise Application Architecture (2002), Plugin (D. Rice, M. Foemmel)",
+        "url": "https://martinfowler.com/eaaCatalog/plugin.html",
+        "requires": {
+          "extends": true
         }
       },
       "diagnostics": []
@@ -3437,6 +3439,21 @@
         "date": "2026-11-24",
         "what": "Commands run in the engine: CommandsInTheEngine offers a program's commands to the engine that imports it (E3, part 3)",
         "fingerprint": "f9e692913a6f8704",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "releases.R0_25_0",
+      "kind": "release",
+      "title": "Version 0.25.0",
+      "source": "src/releases.ts:389",
+      "fields": {
+        "owner": "trame",
+        "version": "0.25.0",
+        "date": "2026-11-25",
+        "what": "Extension points: trame doctor's MachineNeeds (Playwright's browser installed) and trame init's ProjectRepairs; the pattern Plugin (E3, part 3)",
+        "fingerprint": "5e7440b5d55f71e9",
         "language": "shared"
       },
       "diagnostics": []
@@ -5271,7 +5288,7 @@
       "kind": "shipment",
       "title": "The next version",
       "source": "src/sdlc.ts:87",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "version"
@@ -5461,7 +5478,6 @@
           "algorithms.MultiplicativeHash",
           "algorithms.SeededDraws",
           "algorithms.Sha256",
-          "commands.CommandLanguage",
           "commands.CommandsOfALibrary",
           "commands.CommandWords",
           "commands.LibraryCommands",
@@ -5523,6 +5539,7 @@
           "patterns.Adapter",
           "patterns.Bridge",
           "patterns.Command",
+          "patterns.Plugin",
           "patterns.Repository",
           "patterns.Strategy",
           "platform.AnimationFrames",
@@ -5636,6 +5653,7 @@
           "text.UnifiedDiff",
           "tooling.BrowserInMemory",
           "tooling.BrowserScripted",
+          "tooling.CommandLanguage",
           "tooling.CommandsInTheEngine",
           "tooling.Files",
           "tooling.FilesInMemory",
@@ -5643,18 +5661,22 @@
           "tooling.HeadlessBrowser",
           "tooling.HeadlessChromium",
           "tooling.MachineFiles",
+          "tooling.MachineNeeds",
           "tooling.NodeProgramCommands",
           "tooling.NodeProgramRuns",
           "tooling.PackageOrigins",
           "tooling.PackageSources",
           "tooling.PlaywrightApi",
           "tooling.PlaywrightBrowser",
+          "tooling.PlaywrightBrowserInstalled",
           "tooling.PlaywrightPackage",
           "tooling.ProgramCommands",
           "tooling.ProgramRuns",
           "tooling.ProgramRunsInMemory",
           "tooling.ProgramRunsKept",
+          "tooling.ProjectRepairs",
           "tooling.ToolingAsPorts",
+          "tooling.ToolWords",
           "web.CssomView",
           "web.Http",
           "web.MediaQueries5",
@@ -5667,7 +5689,9 @@
           "web.WebSpeechApi"
         ]
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: To ship: The standard library is unknown"
+      ]
     },
     {
       "id": "sdlc.PackagesSafe",
@@ -5772,7 +5796,7 @@
       "kind": "artifact",
       "title": "The standard library",
       "source": "src/sdlc.ts:22",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "src",
@@ -5780,9 +5804,11 @@
       },
       "result": {
         "path": "src",
-        "code": "2bfd1fe4"
+        "code": "48221985"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+      ]
     },
     {
       "id": "sdlc.VersionMode",
@@ -6242,7 +6268,7 @@
       "id": "tooling.BrowserInMemory",
       "kind": "function",
       "title": "A browser kept in memory",
-      "source": "src/tooling.ts:298",
+      "source": "src/tooling.ts:344",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -6257,7 +6283,7 @@
       "id": "tooling.BrowserScripted",
       "kind": "port",
       "title": "Browser script",
-      "source": "src/tooling.ts:291",
+      "source": "src/tooling.ts:337",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -6265,10 +6291,23 @@
       "diagnostics": []
     },
     {
+      "id": "tooling.CommandLanguage",
+      "kind": "decision",
+      "title": "The language the library's commands and tools speak in.",
+      "source": "src/tooling.ts:34",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "tag": "en-GB"
+        }
+      },
+      "diagnostics": []
+    },
+    {
       "id": "tooling.CommandsInTheEngine",
       "kind": "implementation",
       "title": "Commands run in the engine",
-      "source": "src/tooling.ts:50",
+      "source": "src/tooling.ts:71",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -6285,7 +6324,7 @@
       "id": "tooling.Files",
       "kind": "port",
       "title": "Project files",
-      "source": "src/tooling.ts:70",
+      "source": "src/tooling.ts:91",
       "fields": {
         "owner": "trame",
         "declaredEffects": {
@@ -6313,7 +6352,7 @@
       "id": "tooling.FilesInMemory",
       "kind": "function",
       "title": "Files kept in memory",
-      "source": "src/tooling.ts:101",
+      "source": "src/tooling.ts:122",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -6329,7 +6368,7 @@
       "id": "tooling.FilesKept",
       "kind": "port",
       "title": "Files written",
-      "source": "src/tooling.ts:84",
+      "source": "src/tooling.ts:105",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -6340,7 +6379,7 @@
       "id": "tooling.HeadlessBrowser",
       "kind": "port",
       "title": "Headless browser",
-      "source": "src/tooling.ts:220",
+      "source": "src/tooling.ts:241",
       "fields": {
         "owner": "trame",
         "declaredEffects": [
@@ -6357,7 +6396,7 @@
       "id": "tooling.HeadlessChromium",
       "kind": "decision",
       "title": "Chromium without a screen",
-      "source": "src/tooling.ts:252",
+      "source": "src/tooling.ts:273",
       "fields": {
         "owner": "trame",
         "value": {
@@ -6380,7 +6419,7 @@
       "id": "tooling.MachineFiles",
       "kind": "implementation",
       "title": "The machine's files",
-      "source": "src/tooling.ts:91",
+      "source": "src/tooling.ts:112",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -6395,10 +6434,31 @@
       "diagnostics": []
     },
     {
+      "id": "tooling.MachineNeeds",
+      "kind": "port",
+      "title": "What the machine must also have",
+      "source": "src/tooling.ts:42",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": {
+          "ask": [
+            "read",
+            "process",
+            "network",
+            "display",
+            "time",
+            "asynchronous"
+          ]
+        },
+        "extension": true
+      },
+      "diagnostics": []
+    },
+    {
       "id": "tooling.NodeProgramCommands",
       "kind": "implementation",
       "title": "Node's command line",
-      "source": "src/tooling.ts:37",
+      "source": "src/tooling.ts:58",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -6417,7 +6477,7 @@
       "id": "tooling.NodeProgramRuns",
       "kind": "implementation",
       "title": "Programs run by Node",
-      "source": "src/tooling.ts:148",
+      "source": "src/tooling.ts:169",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -6437,7 +6497,7 @@
       "id": "tooling.PackageOrigins",
       "kind": "vocabulary",
       "title": "Where a package comes from",
-      "source": "src/tooling.ts:378",
+      "source": "src/tooling.ts:424",
       "fields": {
         "owner": "trame",
         "words": {
@@ -6451,7 +6511,7 @@
       "id": "tooling.PackageSources",
       "kind": "port",
       "title": "Where a package comes from",
-      "source": "src/tooling.ts:368",
+      "source": "src/tooling.ts:414",
       "fields": {
         "owner": "trame",
         "declaredEffects": {
@@ -6476,7 +6536,7 @@
       "id": "tooling.PlaywrightApi",
       "kind": "standard",
       "title": "Playwright's API",
-      "source": "src/tooling.ts:237",
+      "source": "src/tooling.ts:258",
       "fields": {
         "owner": "trame",
         "source": "Playwright documentation, class Page, event \"pageerror\"",
@@ -6494,7 +6554,7 @@
       "id": "tooling.PlaywrightBrowser",
       "kind": "implementation",
       "title": "Chromium, driven by Playwright",
-      "source": "src/tooling.ts:266",
+      "source": "src/tooling.ts:287",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -6511,10 +6571,27 @@
       "diagnostics": []
     },
     {
+      "id": "tooling.PlaywrightBrowserInstalled",
+      "kind": "implementation",
+      "title": "Playwright's browser, installed",
+      "source": "src/tooling.ts:312",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "words": "tooling.ToolWords"
+        },
+        "body": {
+          "file": "./code/tooling/playwright-browser-installed.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
       "id": "tooling.PlaywrightPackage",
       "kind": "package",
       "title": "Playwright",
-      "source": "src/tooling.ts:227",
+      "source": "src/tooling.ts:248",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -6536,7 +6613,7 @@
       "id": "tooling.ProgramCommands",
       "kind": "port",
       "title": "Commands of a program",
-      "source": "src/tooling.ts:29",
+      "source": "src/tooling.ts:31",
       "fields": {
         "owner": "trame",
         "declaredEffects": [
@@ -6549,7 +6626,7 @@
       "id": "tooling.ProgramRuns",
       "kind": "port",
       "title": "Programs run",
-      "source": "src/tooling.ts:141",
+      "source": "src/tooling.ts:162",
       "fields": {
         "owner": "trame",
         "declaredEffects": {
@@ -6568,7 +6645,7 @@
       "id": "tooling.ProgramRunsInMemory",
       "kind": "function",
       "title": "Programs run in memory",
-      "source": "src/tooling.ts:172",
+      "source": "src/tooling.ts:193",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -6584,7 +6661,7 @@
       "id": "tooling.ProgramRunsKept",
       "kind": "port",
       "title": "The programs a scenario keeps: the file it says a program writes is written when that program runs.",
-      "source": "src/tooling.ts:165",
+      "source": "src/tooling.ts:186",
       "fields": {
         "owner": "trame",
         "declaredEffects": {
@@ -6598,15 +6675,43 @@
       "diagnostics": []
     },
     {
+      "id": "tooling.ProjectRepairs",
+      "kind": "port",
+      "title": "What repairs a project",
+      "source": "src/tooling.ts:50",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": {
+          "repair": [
+            "read",
+            "write"
+          ]
+        },
+        "extension": true
+      },
+      "diagnostics": []
+    },
+    {
       "id": "tooling.ToolingAsPorts",
       "kind": "adr",
       "title": "The SDLC's tooling is realized once",
-      "source": "src/tooling.ts:393",
+      "source": "src/tooling.ts:439",
       "status": "held",
       "fields": {
         "owner": "trame",
         "context": "The code that builds, checks and deploys a product is code like the product's: written once, tested before it runs.",
         "consequences": "A check opens the delivered page through HeadlessBrowser, a deployment copies through Files, a project reaches the packages it uses through PackageSources wherever they come from; scenarios play them with the realizations kept in memory."
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "tooling.ToolWords",
+      "kind": "catalog",
+      "title": "What the library's tools say",
+      "source": "src/tooling.ts:297",
+      "fields": {
+        "owner": "trame",
+        "messages": "(function)"
       },
       "diagnostics": []
     },
@@ -7098,7 +7203,7 @@
     },
     {
       "from": "commands.CommandWords",
-      "to": "commands.CommandLanguage",
+      "to": "tooling.CommandLanguage",
       "kind": "language"
     },
     {
@@ -7598,6 +7703,11 @@
     },
     {
       "from": "patterns.Command",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "patterns.Plugin",
       "to": "product.KnownDesigns",
       "kind": "serves"
     },
@@ -8443,6 +8553,41 @@
     },
     {
       "from": "releases.R0_24_0",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_25_0",
+      "to": "product.ChosenCommands",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_25_0",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_25_0",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_25_0",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_25_0",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_25_0",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_25_0",
       "to": "product.VersionsThatHold",
       "kind": "serves"
     },
@@ -9992,6 +10137,21 @@
       "kind": "deps"
     },
     {
+      "from": "tooling.PlaywrightBrowserInstalled",
+      "to": "tooling.MachineNeeds",
+      "kind": "implements"
+    },
+    {
+      "from": "tooling.PlaywrightBrowserInstalled",
+      "to": "tooling.PlaywrightPackage",
+      "kind": "packages"
+    },
+    {
+      "from": "tooling.PlaywrightBrowserInstalled",
+      "to": "tooling.ToolWords",
+      "kind": "deps"
+    },
+    {
       "from": "tooling.ProgramRunsInMemory",
       "to": "product.RealizedOnce",
       "kind": "serves"
@@ -10038,6 +10198,21 @@
     },
     {
       "from": "tooling.ToolingAsPorts",
+      "to": "tooling.MachineNeeds",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "tooling.ToolingAsPorts",
+      "to": "tooling.PlaywrightBrowserInstalled",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "tooling.ToolingAsPorts",
+      "to": "tooling.ProjectRepairs",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "tooling.ToolingAsPorts",
       "to": "tooling.Files",
       "kind": "appliedBy"
     },
@@ -10080,6 +10255,11 @@
       "from": "tooling.ToolingAsPorts",
       "to": "tooling.PackageSources",
       "kind": "appliedBy"
+    },
+    {
+      "from": "tooling.ToolWords",
+      "to": "tooling.CommandLanguage",
+      "kind": "language"
     },
     {
       "from": "web.CssomView",

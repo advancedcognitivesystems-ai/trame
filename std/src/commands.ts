@@ -11,7 +11,7 @@ import { MergeWays } from "#ci/github"
 import type { MergeWay } from "#ci/github"
 import { ChosenCommands } from "./product"
 import { TheOperators } from "./access"
-import { ProgramCommands, Files, ProgramRuns } from "./tooling"
+import { ProgramCommands, Files, ProgramRuns, CommandLanguage } from "./tooling"
 import { Branches, PullRequests } from "./repository"
 import type { MergeMethod } from "./repository"
 import { ExitStatus, Posix } from "./system"
@@ -92,9 +92,6 @@ export interface Propagation {
  * The settings of the command propagate: the project at the repository's root answers it with its own decisions.
  */
 export const PropagationSettings = port<Propagation>({ owner: "trame", declaredEffects: [] })
-
-/** The language the library's commands speak in. */
-export const CommandLanguage = decision<{ tag: string }>({ owner: "trame", value: { tag: "en-GB" } })
 
 /**
  * What the library's commands say

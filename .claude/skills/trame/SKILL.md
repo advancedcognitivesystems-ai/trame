@@ -179,6 +179,9 @@ How a version becomes available is declared in the graph, with the kinds `role`,
   runs one, `./trame.sh help` lists them; never run an assembled program by its path. With std's `CommandsInTheEngine`
   (g119) the program runs in the engine's process and reaches its modules. A command named like one of the engine's
   replaces it; a name the engine keeps (`init`, `doctor`, `help`, `manifest`) or a view has is an error (`command-hidden`).
+- An extension point (`extensionPoint<C>`, g120) is answered by every realization one choice makes, in its order
+  (pattern `Plugin`): `trame doctor` asks the add-ons of std's `MachineNeeds`, `trame init` calls those of
+  `ProjectRepairs`. `trame init` in a project repairs it: only what lacks, never over a file, nothing the second time.
 - A file that runs a shipment elsewhere (a GitHub workflow, a Bash script) is an `artifact` produced by a writer of `ci`
   (`GitHubWorkflow`, `ShellScript`), naming the shipment it `runs`, its `settings` and what it `publishes`: the graph
   decides what is published and kept, never the writer.

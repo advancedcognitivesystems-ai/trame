@@ -175,11 +175,19 @@ export const code = {
 
 declare const PROVIDES: unique symbol
 declare const DEPS: unique symbol
+declare const REALIZES: unique symbol
 /** Type brand: what this node gives when another one receives it as a parameter. */
 export type Provides<T> = { readonly [PROVIDES]?: T }
 /** Type brand: the declared dependencies of a code node. */
 export type HasDeps<D> = { readonly [DEPS]?: D }
 export type ProvidedBy<N> = N extends { readonly [PROVIDES]?: infer T } ? T : unknown
+/**
+ * Type brand of an extension point (since g120): the contract each of its realizations gives, while what depends on it
+ * receives the list of them.
+ */
+export type Realizes<T> = { readonly [REALIZES]?: T }
+/** What a realization of this port gives: its contract, one realization's for an extension point. */
+export type RealizedBy<N> = N extends { readonly [REALIZES]?: infer T } ? (unknown extends T ? ProvidedBy<N> : T) : ProvidedBy<N>
 /** The parameters of a body: each dependency replaced by what it gives. */
 export type Provided<D> = { [K in keyof D]: ProvidedBy<D[K]> }
 /** The type of a body written in a file, deduced from the node that declares it. */
@@ -943,8 +951,11 @@ export interface KindDef<N extends string, F extends Fields, E extends Edges> {
    * (the methods of a port), when the engine can tell (since g82); without it, all of them.
    */
   effects?(self: SelfOf<F, E>, uses?: readonly string[]): readonly string[]
-  /** When wiring: the node that replaces it in this environment (a port delegates to its implementation). */
-  delegate?(self: SelfOf<F, E>, ctx: WireContext): View | undefined
+  /**
+   * When wiring: the node that replaces it in this environment (a port delegates to its implementation); for an
+   * extension point (since g120), every realization chosen there, in order, whose values it gives as a list.
+   */
+  delegate?(self: SelfOf<F, E>, ctx: WireContext): View | readonly View[] | undefined
   /** When wiring: what this node gives (a decision gives its value, a rule its function). By default: its body called with its dependencies. */
   provide?(self: SelfOf<F, E>, ctx: WireContext): unknown
   /** When an assembled component starts: what it does with its entry points. */
