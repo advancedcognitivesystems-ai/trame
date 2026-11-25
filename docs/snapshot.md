@@ -6470,6 +6470,13 @@ Decision · `ExpectedDifferences`
 - Decided by: trame
 - Value: {  }
 
+### The names the sample add-ons give, and the order a choice gives them in: the second first.
+
+Decision · `ExtensionSamples`
+
+- Decided by: trame
+- Value: { first: first, second: second }
+
 ### What the scenario of the judgment answers
 
 Decision · `JudgingData`
@@ -6483,6 +6490,51 @@ Decision · `ReckoningData`
 
 - Decided by: trame
 - Value: { relation: { a: b, b: c, c: a, d: a }, cycleStarts: a, seeds: kind laws, view laws, draws: 20, bounds: { lo: 1, hi: 6 }, reference: { ref: engine.Compiler, module: engine, identifier: Compiler }, library: { module: std/algebra, name: std, own: algebra }, fingerprinted: { value: { a: 1, b: 2 }, reordered: { b: 2, a: 1 }, changed: { a: 1, b: 3 } }, without: { value: { name: Mountain, marks: { title: Feet, label: 1, 2 }, { title: Crown, label: 3, 4 }, shape: { at: 0, 0, rests: feet } }, paths: marks.label, shape.at, left: { name: Mountain, marks: { title: Feet }, { title: Crown }, shape: { rests: feet } } }, place: { file: src/engine.ts, tsLine: 9, line: 10, written: src/engine.ts:10 } }
+
+### A sample extension point
+
+Port · `SampleAddOns`
+
+- Owner: trame
+- Declared effects: { name:  }
+- Extension point: true
+
+### The first sample add-on
+
+Function · `FirstSampleAddOn` · **held**
+
+- Owner: trame
+- Parameters: { samples: scenarios.ExtensionSamples }
+- Implements: A sample extension point
+- Depends on: The names the sample add-ons give, and the order a choice gives them in: the second first.
+
+### The second sample add-on
+
+Function · `SecondSampleAddOn` · **held**
+
+- Owner: trame
+- Parameters: { samples: scenarios.ExtensionSamples }
+- Implements: A sample extension point
+- Depends on: The names the sample add-ons give, and the order a choice gives them in: the second first.
+
+### The sample add-ons, second first
+
+Technical choice · `SampleAddOnsInOrder` · **held**
+
+- Decided by: trame
+- Context: An extension point is answered by every realization one choice makes, in its order: the scenario must see that order, not the order of the declarations.
+- Chooses: The second sample add-on, The first sample add-on
+- In: Test
+
+### Add-ons, in the order chosen
+
+Scenario · `AddOnsInOrder` · **held**
+
+- Owner: trame
+- Parameters: { addOns: scenarios.SampleAddOns, samples: scenarios.ExtensionSamples, messages: messages.ScenarioMessages }
+- Verifies: The first sample add-on, The second sample add-on
+- In: Test
+- Depends on: A sample extension point, The names the sample add-ons give, and the order a choice gives them in: the second first., Messages of the scenarios
 
 ### A body amended runs amended
 
@@ -6768,6 +6820,14 @@ Technical choice · `SdlcOnTheMachine` · **unknown**
 
 - Decided by: trame
 - Context: The graph page must be opened as a person opens it: the file exported, in a real browser; the repository is set and read by GitHub's command line, with the token of whoever runs it.
+- In: Local, A session of Claude Code
+
+### What the machine must also have
+
+Technical choice · `WhatTheMachineMustHave` · **unknown**
+
+- Decided by: trame
+- Context: On 17 November a machine whose browsers had moved refused the check of the page, and trame doctor said nothing of it.
 - In: Local, A session of Claude Code
 
 ### A generation advanced in one command

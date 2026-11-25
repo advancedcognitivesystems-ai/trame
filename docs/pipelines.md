@@ -6,7 +6,7 @@
 
 ## Into the main branch
 
-> **Into the main branch does not ship yet: 50 of 51 obligations hold.**
+> **Into the main branch does not ship yet: 51 of 52 obligations hold.**
 
 For the target main; its programs are assembled for [Local](architecture.md#Local).
 
@@ -66,11 +66,12 @@ flowchart TB
   n49["The page of the graph<br/><small>Scenario</small>"]:::held
   n50["The command line<br/><small>Scenario</small>"]:::held
   n51["A body is read and checked<br/><small>Scenario</small>"]:::held
-  n52["A generation advanced in one command<br/><small>Scenario</small>"]:::held
-  n53["The repository is set as the graph decides<br/><small>Scenario</small>"]:::held
-  n54["The graph page is opened as a person would<br/><small>Scenario</small>"]:::held
-  n55["Trame's settings, as std's commands read them<br/><small>Scenario</small>"]:::held
-  n56["Into the main branch<br/><small>Shipment</small>"]:::unknown
+  n52["Add-ons, in the order chosen<br/><small>Scenario</small>"]:::held
+  n53["A generation advanced in one command<br/><small>Scenario</small>"]:::held
+  n54["The repository is set as the graph decides<br/><small>Scenario</small>"]:::held
+  n55["The graph page is opened as a person would<br/><small>Scenario</small>"]:::held
+  n56["Trame's settings, as std's commands read them<br/><small>Scenario</small>"]:::held
+  n57["Into the main branch<br/><small>Shipment</small>"]:::unknown
   n23 -->|Verifies| n8
   n23 -->|Depends on| n8
   n27 -->|Verifies| n4
@@ -83,10 +84,10 @@ flowchart TB
   n3 -->|Produced by| n4
   n5 -->|Checks| n3
   n5 -->|Run by| n6
-  n56 -->|Ships| n2
-  n54 -->|Verifies| n6
-  n54 -->|Depends on| n6
-  n54 -->|Depends on| n3
+  n57 -->|Ships| n2
+  n55 -->|Verifies| n6
+  n55 -->|Depends on| n6
+  n55 -->|Depends on| n3
   n6 -->|Depends on| n3
   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
   classDef blocked fill:#fbf0d9,stroke:#9a6200,color:#17202a
@@ -151,11 +152,12 @@ flowchart TB
 | 50 | prove | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | [Ask the machine](commands.md#Doctor), signed by [Trame's maintainers](sdlc.md#Maintainers) | [The engine is verified](sdlc.md#EngineVerified) via [System files, for reading](platform.md#DiskReading) | **held** | passed, 25 November 2026 by claude  |
 | 51 | prove | [The command line](command-scenarios.md#CommandLineChooses) | — | [The engine is verified](sdlc.md#EngineVerified) via [Terminal in memory](platform.md#MemoryTerminal) | **held** |  |
 | 52 | prove | [A body is read and checked](command-scenarios.md#BodiesReadAndChecked) | — | [The engine is verified](sdlc.md#EngineVerified) via [tree-sitter in WebAssembly](platform.md#WebTreeSitter) | **held** |  |
-| 53 | prove | [A generation advanced in one command](sdlc.md#AdvancedInOneCommand) | — | [The engine is verified](sdlc.md#EngineVerified) via [Advance](sdlc.md#AdvanceAGeneration) | **held** |  |
-| 54 | prove | [The repository is set as the graph decides](sdlc.md#SettingTheRepository) | — | [The engine is verified](sdlc.md#EngineVerified) via [Set the repository's settings](sdlc.md#ApplyTheRepositorySettings) | **held** |  |
-| 55 | prove | [The graph page is opened as a person would](sdlc.md#OpeningTheGraphPage) | — | [The engine is verified](sdlc.md#EngineVerified) via [What the graph page is asked](sdlc.md#GraphPageSelectors) | **held** |  |
-| 56 | prove | [Trame's settings, as std's commands read them](sdlc.md#OurCommandsSettled) | — | [The engine is verified](sdlc.md#EngineVerified) via [How a version is carried across Trame's repository](sdlc.md#OurPropagation) | **held** |  |
-| 57 | record | [Into the main branch](sdlc.md#IntoMain) | — | — | **unknown** | 19 November 2026 by claude `evidence/shipments/IntoMain-2026-11-19-6a9aa3c4.json` |
+| 53 | prove | [Add-ons, in the order chosen](scenarios.md#AddOnsInOrder) | — | [The engine is verified](sdlc.md#EngineVerified) via [The first sample add-on](scenarios.md#FirstSampleAddOn) | **held** |  |
+| 54 | prove | [A generation advanced in one command](sdlc.md#AdvancedInOneCommand) | — | [The engine is verified](sdlc.md#EngineVerified) via [Advance](sdlc.md#AdvanceAGeneration) | **held** |  |
+| 55 | prove | [The repository is set as the graph decides](sdlc.md#SettingTheRepository) | — | [The engine is verified](sdlc.md#EngineVerified) via [Set the repository's settings](sdlc.md#ApplyTheRepositorySettings) | **held** |  |
+| 56 | prove | [The graph page is opened as a person would](sdlc.md#OpeningTheGraphPage) | — | [The engine is verified](sdlc.md#EngineVerified) via [What the graph page is asked](sdlc.md#GraphPageSelectors) | **held** |  |
+| 57 | prove | [Trame's settings, as std's commands read them](sdlc.md#OurCommandsSettled) | — | [The engine is verified](sdlc.md#EngineVerified) via [How a version is carried across Trame's repository](sdlc.md#OurPropagation) | **held** |  |
+| 58 | record | [Into the main branch](sdlc.md#IntoMain) | — | — | **unknown** | 19 November 2026 by claude `evidence/shipments/IntoMain-2026-11-19-6a9aa3c4.json` |
 
 `trame ship IntoMain --by <name>`
 

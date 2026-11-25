@@ -2,7 +2,7 @@
 
 *What answers each port in each environment on 25 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
 
-> **29 technical choices for 57 ports, in 4 environments**
+> **31 technical choices for 59 ports, in 4 environments**
 
 | Port | Local | A session of Claude Code | Test | Browser |
 |---|---|---|---|---|
@@ -47,6 +47,7 @@
 | [Figures of the documents written as files](rendering.md#FileFigures) | [Mermaid diagrams](rendering.md#MermaidDiagrams) | — | [Mermaid diagrams](rendering.md#MermaidDiagrams) | — |
 | [Figures of the terminal](rendering.md#TerminalFigures) | [Figures as text](rendering.md#TextFigures) | — | [Figures as text](rendering.md#TextFigures) | — |
 | [Figures of the page](rendering.md#PageFigures) | [Figures in SVG](rendering.md#SvgFigures) | — | [Figures in SVG](rendering.md#SvgFigures) | — |
+| [A sample extension point](scenarios.md#SampleAddOns) | — | — | [The first sample add-on](scenarios.md#FirstSampleAddOn), [The second sample add-on](scenarios.md#SecondSampleAddOn) | — |
 | [How pull requests are opened](../std/releases/0.25.0/docs/commands.md#PullRequestSettings) | [How Trame's pull requests are opened](sdlc.md#OurPullRequests) | [How Trame's pull requests are opened](sdlc.md#OurPullRequests) | [How Trame's pull requests are opened](sdlc.md#OurPullRequests) | — |
 | [How a version is carried](../std/releases/0.25.0/docs/commands.md#PropagationSettings) | [How a version is carried across Trame's repository](sdlc.md#OurPropagation) | [How a version is carried across Trame's repository](sdlc.md#OurPropagation) | [How a version is carried across Trame's repository](sdlc.md#OurPropagation) | — |
 | [Loading of a page](../std/releases/0.25.0/docs/platform.md#PageLoading) | — | — | — | [The browser loads the page](../std/releases/0.25.0/docs/platform.md#BrowserLoading) |
@@ -56,6 +57,7 @@
 | [Pull requests](../std/releases/0.25.0/docs/repository.md#PullRequests) | [GitHub's pull requests, by its command line](../std/releases/0.25.0/docs/repository.md#GitHubCliPullRequests) | [GitHub's pull requests, by its command line](../std/releases/0.25.0/docs/repository.md#GitHubCliPullRequests) | — | — |
 | [The automatic merge](../std/releases/0.25.0/docs/repository.md#AutoMerge) | [The automatic merge, by GitHub's command line](../std/releases/0.25.0/docs/repository.md#AutoMergeByGitHubCli) | [The automatic merge, in a session of Claude Code](../std/releases/0.25.0/docs/repository.md#AutoMergeInAClaudeSession) | — | — |
 | [Commands of a program](../std/releases/0.25.0/docs/tooling.md#ProgramCommands) | [Commands run in the engine](../std/releases/0.25.0/docs/tooling.md#CommandsInTheEngine) | [Commands run in the engine](../std/releases/0.25.0/docs/tooling.md#CommandsInTheEngine) | — | — |
+| [What the machine must also have](../std/releases/0.25.0/docs/tooling.md#MachineNeeds) | [Playwright's browser, installed](../std/releases/0.25.0/docs/tooling.md#PlaywrightBrowserInstalled) | [Playwright's browser, installed](../std/releases/0.25.0/docs/tooling.md#PlaywrightBrowserInstalled) | — | — |
 | [Project files](../std/releases/0.25.0/docs/tooling.md#Files) | [The machine's files](../std/releases/0.25.0/docs/tooling.md#MachineFiles) | [The machine's files](../std/releases/0.25.0/docs/tooling.md#MachineFiles) | [Files kept in memory](../std/releases/0.25.0/docs/tooling.md#FilesInMemory) | — |
 | [Files written](../std/releases/0.25.0/docs/tooling.md#FilesKept) | — | — | [Files kept in memory](../std/releases/0.25.0/docs/tooling.md#FilesInMemory) | — |
 | [Programs run](../std/releases/0.25.0/docs/tooling.md#ProgramRuns) | [Programs run by Node](../std/releases/0.25.0/docs/tooling.md#NodeProgramRuns) | [Programs run by Node](../std/releases/0.25.0/docs/tooling.md#NodeProgramRuns) | [Programs run in memory](../std/releases/0.25.0/docs/tooling.md#ProgramRunsInMemory) | — |
@@ -71,6 +73,7 @@
 | [Bridge](../std/releases/0.25.0/docs/patterns.md#Bridge) | **held** | [Documents in Markdown](rendering.md#DocumentsInMarkdown), [The terminal in plain text](rendering.md#TerminalInText), [The page in HTML](rendering.md#PageInHtml) |
 | [Abstract Factory](../std/releases/0.25.0/docs/patterns.md#AbstractFactory) | **held** | [NodePlatform](platform.md#NodePlatform), [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine), [Scenarios run in memory](platform.md#InMemoryScenarios) |
 | [Command](../std/releases/0.25.0/docs/patterns.md#Command) | **held** | [The commands Trame takes from std](sdlc.md#CommandsOfStd) |
+| [Plugin](../std/releases/0.25.0/docs/patterns.md#Plugin) | **held** | [The sample add-ons, second first](scenarios.md#SampleAddOnsInOrder), [What the machine must also have](sdlc.md#WhatTheMachineMustHave) |
 
 ## Trame · The page in a browser
 
@@ -700,13 +703,37 @@ Consequences: Graphs, legends and timelines are written by the engine, with the 
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
 - Applies: [A technology is chosen in one node](principles.md#TechnologyInOneNode), [One renderer, its syntax a choice](rendering.md#OneRendererManySyntaxes)
 
+## Trame · Scenarios
+
+<a id="SampleAddOnsInOrder"></a>
+
+### The sample add-ons, second first
+
+`SampleAddOnsInOrder` · `src/scenarios.ts:401` · status: **held**
+
+In the scenarios, the sample extension point is answered by both add-ons, in the order this choice gives them.
+
+In [Test](architecture.md#Test):
+
+| Port | Answered by | Which is |
+|---|---|---|
+| [A sample extension point](scenarios.md#SampleAddOns) | [The first sample add-on](scenarios.md#FirstSampleAddOn) | a function |
+| [A sample extension point](scenarios.md#SampleAddOns) | [The second sample add-on](scenarios.md#SecondSampleAddOn) | a function |
+
+Context: An extension point is answered by every realization one choice makes, in its order: the scenario must see that order, not the order of the declarations.
+
+- Decided by: trame
+- Chooses: [The second sample add-on](scenarios.md#SecondSampleAddOn), [The first sample add-on](scenarios.md#FirstSampleAddOn)
+- In: [Test](architecture.md#Test)
+- Follows: [Plugin](../std/releases/0.25.0/docs/patterns.md#Plugin)
+
 ## Trame · SDLC
 
 <a id="SdlcOnTheMachine"></a>
 
 ### The SDLC on the machine
 
-`SdlcOnTheMachine` · `src/sdlc.ts:167` · status: **unknown**
+`SdlcOnTheMachine` · `src/sdlc.ts:168` · status: **unknown**
 
 On the machine, the programs of the SDLC offer their commands to the engine that runs them, in its own process (since g119), open pages in Chromium driven by Playwright, and set the repository on GitHub by its command line, as the standard library realizes them.
 
@@ -725,11 +752,32 @@ Context: The graph page must be opened as a person opens it: the file exported, 
 - In: [Local](architecture.md#Local), [A session of Claude Code](architecture.md#Session)
 - Follows: [Adapter](../std/releases/0.25.0/docs/patterns.md#Adapter)
 
+<a id="WhatTheMachineMustHave"></a>
+
+### What the machine must also have
+
+`WhatTheMachineMustHave` · `src/sdlc.ts:182` · status: **unknown**
+
+trame doctor asks, besides what the engine asks, that the browser the version of Playwright Trame uses drives is installed (std's add-on, since g120): the page's check runs in it, and a machine whose browsers moved would refuse it where the engine's own questions see nothing.
+
+In [Local](architecture.md#Local), [A session of Claude Code](architecture.md#Session):
+
+| Port | Answered by | Which is |
+|---|---|---|
+| [What the machine must also have](../std/releases/0.25.0/docs/tooling.md#MachineNeeds) | [Playwright's browser, installed](../std/releases/0.25.0/docs/tooling.md#PlaywrightBrowserInstalled) | an implementation |
+
+Context: On 17 November a machine whose browsers had moved refused the check of the page, and trame doctor said nothing of it.
+
+- Decided by: trame
+- Chooses: [Playwright's browser, installed](../std/releases/0.25.0/docs/tooling.md#PlaywrightBrowserInstalled)
+- In: [Local](architecture.md#Local), [A session of Claude Code](architecture.md#Session)
+- Follows: [Plugin](../std/releases/0.25.0/docs/patterns.md#Plugin)
+
 <a id="SdlcInMemory"></a>
 
 ### The SDLC in memory
 
-`SdlcInMemory` · `src/sdlc.ts:179` · status: **held**
+`SdlcInMemory` · `src/sdlc.ts:194` · status: **held**
 
 In the scenarios, the browser shows the page a scenario writes, and the repository is kept in memory.
 
@@ -753,7 +801,7 @@ Context: A program of the SDLC is code like the engine's: its scenarios play it 
 
 ### The commands Trame takes from std
 
-`CommandsOfStd` · `src/sdlc.ts:616` · status: **held**
+`CommandsOfStd` · `src/sdlc.ts:631` · status: **held**
 
 pull-request, merge and propagate, on the machine and in a session of Claude Code, with Trame's settings.
 
@@ -783,7 +831,7 @@ Context: Opening a pull request and carrying a version across the repository wer
 
 ### The repository's work on a machine
 
-`RepositoryWorkOnAMachine` · `src/sdlc.ts:631` · status: **unknown**
+`RepositoryWorkOnAMachine` · `src/sdlc.ts:646` · status: **unknown**
 
 Git's command line for the branches, GitHub's for the pull requests, Node to run trame.sh in each project, and the machine's files; on the machine and in a session.
 
@@ -807,7 +855,7 @@ Context: A pull request is opened, and a version carried, from the repository ch
 
 ### GitHub merges once it holds, asked by its command line
 
-`AutoMergeOnTheMachine` · `src/sdlc.ts:643` · status: **unknown**
+`AutoMergeOnTheMachine` · `src/sdlc.ts:658` · status: **unknown**
 
 On a person's machine, gh pr merge --auto: GitHub's GraphQL.
 
@@ -828,7 +876,7 @@ Context: GitHub asks the automatic merge by GraphQL, which GitHub's command line
 
 ### GitHub merges once it holds, asked in a session
 
-`AutoMergeInASession` · `src/sdlc.ts:655` · status: **unknown**
+`AutoMergeInASession` · `src/sdlc.ts:670` · status: **unknown**
 
 In a session of Claude Code, the route of its proxy: GraphQL is refused there.
 
@@ -849,7 +897,7 @@ Context: A session's proxy refuses GitHub's GraphQL, and offers PUT on the pull 
 
 ### Trame's settings in the scenarios
 
-`OurSettingsInTheScenarios` · `src/sdlc.ts:667` · status: **held**
+`OurSettingsInTheScenarios` · `src/sdlc.ts:682` · status: **held**
 
 In the scenarios, std's commands read Trame's settings as on the machine.
 

@@ -5,7 +5,7 @@
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
 | Trame's maintainers | 0 | 0 | 1 | 0 |
-| trame | 0 | 0 | 3 | 750 |
+| trame | 0 | 0 | 3 | 757 |
 
 <a id="Trame's maintainers"></a>
 
@@ -645,6 +645,7 @@
 | [Rendering in the terminal](rendering.md#TerminalRendering) | Function | **held** |
 | [Syntax of the terminal](rendering.md#TerminalSyntax) | Port |  |
 | [Figures as text](rendering.md#TextFigures) | Function | **held** |
+| [Add-ons, in the order chosen](scenarios.md#AddOnsInOrder) | Scenario | **held** |
 | [A body amended runs amended](scenarios.md#AmendedBodiesRun) | Scenario | **held** |
 | [A day an amendment of a body is in force](scenarios.md#AmendedDay) | Decision |  |
 | [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore) | Scenario | **held** |
@@ -654,10 +655,15 @@
 | [EngineReckons](scenarios.md#EngineReckons) | Scenario | **held** |
 | [Shape of the example](scenarios.md#ExampleShape) | Decision |  |
 | [Expected differences on the example](scenarios.md#ExpectedDifferences) | Decision |  |
+| [The names the sample add-ons give, and the order a choice gives them in: the second first.](scenarios.md#ExtensionSamples) | Decision |  |
+| [The first sample add-on](scenarios.md#FirstSampleAddOn) | Function | **held** |
 | [What the scenario of the judgment answers](scenarios.md#JudgingData) | Decision |  |
 | [A project judges harder, never softer](scenarios.md#JudgingHarder) | Scenario | **held** |
 | [The laws of the kinds hold](scenarios.md#KindLaws) | Scenario | **held** |
 | [What the engine's reckoning is checked with](scenarios.md#ReckoningData) | Decision |  |
+| [A sample extension point](scenarios.md#SampleAddOns) | Port |  |
+| [The sample add-ons, second first](scenarios.md#SampleAddOnsInOrder) | Technical choice | **held** |
+| [The second sample add-on](scenarios.md#SecondSampleAddOn) | Function | **held** |
 | [Advance](sdlc.md#AdvanceAGeneration) | Entry point | **held** |
 | [A generation advanced in one command](sdlc.md#AdvancedInOneCommand) | Scenario | **held** |
 | [Who advances, and what changes](sdlc.md#AdvanceSample) | Decision |  |
@@ -711,6 +717,7 @@
 | [The engine](sdlc.md#TheEngine) | Artefact | **unknown** |
 | [Trame's repository](sdlc.md#TheRepository) | Decision |  |
 | [Trame's SDLC](sdlc.md#TrameSdlc) | Component |  |
+| [What the machine must also have](sdlc.md#WhatTheMachineMustHave) | Technical choice | **unknown** |
 | [Attribution](shipping.md#Attribution) | Function | **held** |
 | [The fingerprint of a program](shipping.md#ProgramBundle) | Decision |  |
 | [Evidence of the SDLC](shipping.md#SdlcEvidence) | Function | **held** |

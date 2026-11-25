@@ -49,7 +49,7 @@ Run from the project's directory, through the pinned generation:
 ./trame.sh audit                       # the registry's reports on the packages, kept as evidence
 ./trame.sh manifest                    # the packages of the graph and the import map of the language and its libraries, written into package.json; installs them when the lockfile disagrees (g100)
 ./trame.sh upgrade [package…]          # each package of Trame the project references to the newest version its origin holds, then the manifest (g100)
-../trame.sh init "Title" --by <owner>  # in an empty directory: starts a project (trame.json, src/product.ts, the guide, the skill, package.json)
+../trame.sh init "Title" --by <owner>  # in an empty directory: starts a project (trame.json, src/product.ts, the guide, the skill, package.json); in a project, repairs what it lacks, never over a file (g120)
 ./trame.sh release <version> "what" --by <name>   # in a library: ships its version, then freezes it, with its documents (g101)
 ./trame.sh publish [--migrate "why"]   # freezes, part by part, what people decided in trame.lock (--migrate: a form changed, never a value; g108)
 ./trame.sh deliver [delivery]          # writes the deliveries: a page a browser opens as it is
@@ -285,6 +285,13 @@ of the vocabulary `Directions`: `way: "in"`), and `serves` a goal or is applied 
 - **No code made of a text** (since g82): `eval`, `Function`, a value's `constructor` refuse the build, anywhere.
 - **A technology is chosen in one node**: a binding, which follows a pattern (Strategy, Adapter, Bridge, Abstract
   Factory, Repository) and is checked against its shape. Code that uses a port never names what answers it.
+- **An extension point takes add-ons** (since g120): a port declared with `extensionPoint<C>({ … })` is answered by every
+  realization one choice makes in an environment, in the order that choice writes them (pattern `Plugin`); what depends
+  on it receives the list (`readonly C[]`), none when nothing is chosen, each add-on whole, with every effect its
+  contract declares; two choices that extend the same point in one environment are an error
+  (`extension-order-ambiguous`). The commands the engine keeps take add-ons this way: `trame doctor` asks what the
+  realizations of std's `MachineNeeds` ask (Trame: `PlaywrightBrowserInstalled`), `trame init` calls those of
+  `ProjectRepairs`; each runs whatever the others did, and the command ends in failure saying which failed.
 - **A choice is a concept.** When there are several ways to do something, and someone could choose another, name the
   concept: a port, its strategies (its realizations) and a binding that says which one applies where, as Trame does for
   technologies. A choice of value stays a decision, with the options it rejected. What nobody would change is just code:
@@ -639,6 +646,10 @@ elements), a port answered differently in several environments is answered as in
   for the commands the engine keeps; any other is replaced by the project's.
 - A program of `CommandsInTheEngine` runs only in an engine: run by its path, it finds none and fails. It is imported
   once per process, so its commands are offered once: what its bodies keep lives as long as the engine's process.
+- A library's version that uses a type the kernel just gained (std 0.25.0's extension points, `RealizedBy`) reaches a
+  project run from the registry (geometry) only once a generation that carries it is published: advance first (g121),
+  then release the library. An upgrade that moves the generation and the library at once compiles with the language
+  it had: move the language's reference by hand (`src/packages.ts`, the link `.trame/trame`), then `trame manifest`.
 - Before g118, an upgrade that moved a project to a generation of the registry (geometry) failed once: the manifest
   was run again by the engine that was leaving. The engine now starts again through the launcher that started it
   (`TRAME_LAUNCHER`), which installs the new generation first.

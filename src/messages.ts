@@ -904,6 +904,7 @@ export const ScenarioMessages = catalog({
     startedReferences: () => "Its references are package nodes of its graph: the language, at the generation that started it, and its libraries",
     startedGuide: () => "The guide for agents comes with it, and the file that points to it",
     startedManifest: () => "Then a fresh engine writes the manifest",
+    addOnsInOrder: () => "The sample extension point gives what both add-ons give, the second first, as the choice orders them",
     startedAgainWritesNothing: () => "Run again, trame init finds everything it writes and writes nothing",
     repairedGuides: () => "In the example, which has its configuration and its goals, trame init writes only what it lacks: the guide for agents, the skill, the file that points to them",
     repairedTwiceWritesNothing: () => "Run a second time there, it writes nothing",

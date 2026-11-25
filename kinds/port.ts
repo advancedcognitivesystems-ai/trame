@@ -1,4 +1,4 @@
-import { defineKind, field, hole, doc, keysOf, KindName, EdgeName, BindingEdge, PortField, type Graph, type Node, type Provides, type Realizes, type View, HoleCode } from "../trame/kernel"
+import { defineKind, field, hole, doc, keysOf, isNode, KindName, EdgeName, BindingEdge, PortField, type Graph, type Node, type Provides, type Realizes, type View, HoleCode } from "../trame/kernel"
 import { choicesOf, holdsIn } from "./binding"
 import { environmentFields } from "./environment"
 import words from "./words"
@@ -35,7 +35,8 @@ const kind = defineKind({
   fields,
   edges: {},
 
-  effects: (self, uses) => promised(self.declaredEffects, uses),
+  // What is used of an extension point's list says nothing of what is used of each add-on: all its effects (since g120).
+  effects: (self, uses) => promised(self.declaredEffects, isExtension(self) ? undefined : uses),
 
   /** When wiring: the realization chosen for this environment; for an extension point, each one, in order. */
   delegate(self, ctx) {
@@ -123,8 +124,13 @@ function extendingIn(g: Graph, port: View, env: View | undefined): View[] {
 function answering(g: Graph, port: View, env: View | undefined): View[] {
   const all = realizations(g, port)
   if (isExtension(port) && all.some((r) => g.lib.counts.any(choicesOf(g, r)))) {
-    const mine = new Set(all.map((r) => r.ref))
-    return extendingIn(g, port, env).flatMap((b) => g.from(b).out(BindingEdge.chooses).where((r) => r.active && mine.has(r.ref)).nodes())
+    const mine = new Map(all.map((r) => [r.ref, r]))
+    // In the order the choice writes them, which its edges, sorted, do not keep.
+    const written = (b: View): View[] => {
+      const chosen = b.field(BindingEdge.chooses)
+      return Array.isArray(chosen) ? chosen.flatMap((n) => (isNode(n) ? [g.view(n)] : [])) : []
+    }
+    return extendingIn(g, port, env).flatMap((b) => written(b).flatMap((r) => mine.get(r.ref) ?? []))
   }
   if (all.some((r) => g.lib.counts.any(choicesOf(g, r)))) return all.filter((r) => choicesOf(g, r).some((b) => holdsIn(g, b, env)))
   return all.filter((v) => !env || g.from(v).out(EdgeName.environments).nodes().some((e) => e.node === env.node))

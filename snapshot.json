@@ -13571,6 +13571,21 @@
       }
     },
     {
+      "id": "scenarios.AddOnsInOrder",
+      "kind": "scenario",
+      "title": "Add-ons, in the order chosen",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "addOns": "scenarios.SampleAddOns",
+          "samples": "scenarios.ExtensionSamples",
+          "messages": "messages.ScenarioMessages"
+        },
+        "body": "(function)"
+      }
+    },
+    {
       "id": "scenarios.AmendedBodiesRun",
       "kind": "scenario",
       "title": "A body amended runs amended",
@@ -13805,6 +13820,31 @@
       }
     },
     {
+      "id": "scenarios.ExtensionSamples",
+      "kind": "decision",
+      "title": "The names the sample add-ons give, and the order a choice gives them in: the second first.",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "first": "first",
+          "second": "second"
+        }
+      }
+    },
+    {
+      "id": "scenarios.FirstSampleAddOn",
+      "kind": "function",
+      "title": "The first sample add-on",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "samples": "scenarios.ExtensionSamples"
+        },
+        "body": "(function)"
+      }
+    },
+    {
       "id": "scenarios.JudgingData",
       "kind": "decision",
       "title": "What the scenario of the judgment answers",
@@ -13963,6 +14003,41 @@
             "written": "src/engine.ts:10"
           }
         }
+      }
+    },
+    {
+      "id": "scenarios.SampleAddOns",
+      "kind": "port",
+      "title": "A sample extension point",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": {
+          "name": []
+        },
+        "extension": true
+      }
+    },
+    {
+      "id": "scenarios.SampleAddOnsInOrder",
+      "kind": "binding",
+      "title": "The sample add-ons, second first",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "An extension point is answered by every realization one choice makes, in its order: the scenario must see that order, not the order of the declarations."
+      }
+    },
+    {
+      "id": "scenarios.SecondSampleAddOn",
+      "kind": "function",
+      "title": "The second sample add-on",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "samples": "scenarios.ExtensionSamples"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -14757,6 +14832,16 @@
         "deps": {
           "exposure": "std/tooling.ProgramCommands"
         }
+      }
+    },
+    {
+      "id": "sdlc.WhatTheMachineMustHave",
+      "kind": "binding",
+      "title": "What the machine must also have",
+      "status": "unknown",
+      "fields": {
+        "owner": "trame",
+        "context": "On 17 November a machine whose browsers had moved refused the check of the page, and trame doctor said nothing of it."
       }
     },
     {
@@ -28992,6 +29077,36 @@
       "kind": "deps"
     },
     {
+      "from": "scenarios.AddOnsInOrder",
+      "to": "scenarios.FirstSampleAddOn",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.AddOnsInOrder",
+      "to": "scenarios.SecondSampleAddOn",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.AddOnsInOrder",
+      "to": "architecture.Test",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.AddOnsInOrder",
+      "to": "scenarios.SampleAddOns",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.AddOnsInOrder",
+      "to": "scenarios.ExtensionSamples",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.AddOnsInOrder",
+      "to": "messages.ScenarioMessages",
+      "kind": "deps"
+    },
+    {
       "from": "scenarios.AmendedBodiesRun",
       "to": "engine.Compiler",
       "kind": "verifies"
@@ -29407,6 +29522,16 @@
       "kind": "deps"
     },
     {
+      "from": "scenarios.FirstSampleAddOn",
+      "to": "scenarios.SampleAddOns",
+      "kind": "implements"
+    },
+    {
+      "from": "scenarios.FirstSampleAddOn",
+      "to": "scenarios.ExtensionSamples",
+      "kind": "deps"
+    },
+    {
       "from": "scenarios.JudgingHarder",
       "to": "engine.JudgedHarder",
       "kind": "verifies"
@@ -29464,6 +29589,31 @@
     {
       "from": "scenarios.KindLaws",
       "to": "messages.ScenarioMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.SampleAddOnsInOrder",
+      "to": "scenarios.SecondSampleAddOn",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.SampleAddOnsInOrder",
+      "to": "scenarios.FirstSampleAddOn",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.SampleAddOnsInOrder",
+      "to": "architecture.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "scenarios.SecondSampleAddOn",
+      "to": "scenarios.SampleAddOns",
+      "kind": "implements"
+    },
+    {
+      "from": "scenarios.SecondSampleAddOn",
+      "to": "scenarios.ExtensionSamples",
       "kind": "deps"
     },
     {
@@ -30314,6 +30464,16 @@
     {
       "from": "sdlc.TrameSdlc",
       "to": "architecture.Local",
+      "kind": "environments"
+    },
+    {
+      "from": "sdlc.WhatTheMachineMustHave",
+      "to": "architecture.Local",
+      "kind": "environments"
+    },
+    {
+      "from": "sdlc.WhatTheMachineMustHave",
+      "to": "architecture.Session",
       "kind": "environments"
     },
     {

@@ -4,6 +4,10 @@ import { HoleCode, KindName, Severity, Status } from "../trame/kernel"
 import { UnitSymbols } from "#std/measures"
 import { scenario } from "../kinds/scenario"
 import { decision } from "../kinds/decision"
+import { fn } from "../kinds/function"
+import { binding } from "../kinds/binding"
+import { extensionPoint } from "../kinds/port"
+import { Plugin } from "#std/patterns"
 import { Process, Clock, FileReading, Paths, WriteLog, TerminalLog, Test } from "./architecture"
 import {
   Compiler, Laws, Project, StaticAnalysis, Wiring, GraphApi, CompilationApi, Views, MachineOutputs, Lock, Cycles, Generator, Fingerprints,
@@ -359,5 +363,60 @@ export const DocumentWords = scenario({
     check(messages.marksOfTheLanguage(language.tag), punctuation.parts === language.punctuation.parts && punctuation.items === language.punctuation.items)
     check(messages.versionsOrdered(data.versions.older, data.versions.newer), versions.below(data.versions.older, data.versions.newer))
     check(messages.breakingReleasesCounted(), data.versions.behind.every((b) => versions.breaking(b.current, b.latest) === b.breaking))
+  },
+})
+
+/** What each add-on of the sample extension point says it is (since g120). */
+export interface SampleAddOn {
+  name(): string
+}
+
+/** The names the sample add-ons give, and the order a choice gives them in: the second first. */
+export const ExtensionSamples = decision<{ first: string; second: string }>({ owner: "trame", value: { first: "first", second: "second" } })
+
+/**
+ * A sample extension point
+ * What the scenario of extension points wires: every add-on one choice makes in the scenarios' environment, in order.
+ */
+export const SampleAddOns = extensionPoint<SampleAddOn>({ owner: "trame", declaredEffects: { name: [] } })
+
+/** The first sample add-on */
+export const FirstSampleAddOn = fn({
+  owner: "trame", implements: [SampleAddOns],
+  deps: { samples: ExtensionSamples },
+  body: ({ samples }) => ({ name: () => samples.first }),
+})
+
+/** The second sample add-on */
+export const SecondSampleAddOn = fn({
+  owner: "trame", implements: [SampleAddOns],
+  deps: { samples: ExtensionSamples },
+  body: ({ samples }) => ({ name: () => samples.second }),
+})
+
+/**
+ * The sample add-ons, second first
+ * In the scenarios, the sample extension point is answered by both add-ons, in the order this choice gives them.
+ */
+export const SampleAddOnsInOrder = binding({
+  owner: "trame",
+  chooses: [SecondSampleAddOn, FirstSampleAddOn],
+  environments: [Test],
+  follows: [Plugin],
+  context: "An extension point is answered by every realization one choice makes, in its order: the scenario must see that order, not the order of the declarations.",
+})
+
+/**
+ * Add-ons, in the order chosen
+ * Wired in the scenarios' environment, the sample extension point gives what each add-on the choice makes gives, in the
+ * order of the choice (the second first), each whole.
+ */
+export const AddOnsInOrder = scenario({
+  owner: "trame",
+  verifies: [FirstSampleAddOn, SecondSampleAddOn],
+  env: Test,
+  deps: { addOns: SampleAddOns, samples: ExtensionSamples, messages: ScenarioMessages },
+  body: ({ addOns, samples, messages }) => async (check) => {
+    check(messages.addOnsInOrder(), JSON.stringify(addOns.map((a) => a.name())) === JSON.stringify([samples.second, samples.first]))
   },
 })

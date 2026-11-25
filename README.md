@@ -583,7 +583,11 @@ the entry point in the project's graph, assembles its component for its environm
 exposure is std's `CommandsInTheEngine`, in the engine's own process, where it reaches the engine's modules as freely as
 the engine's commands do (one compilation, the same command line). A project's command replaces the engine's of the
 same name; it never takes the name of one the engine keeps (`init`, `doctor`, `help`, `manifest`), nor of a view, and
-`trame help` lists them all, with the engine's they replace. A library offers commands as it
+`trame help` lists them all, with the engine's they replace. A command the engine keeps takes add-ons (since g120): an
+extension point is a port every realization of one choice answers, in its order, so `trame doctor` also asks what a
+project's add-ons ask of the machine (Trame's: that the browser Playwright drives is installed), and `trame init`, run
+in a project already there, repairs it: it writes only what lacks, never over a file, calls the add-ons that repair
+it, and run twice writes nothing. A library offers commands as it
 offers realizations: std writes `pull-request` and `propagate` once, and a project runs them when a binding of its own
 chooses them, with its decisions as their settings (Trame: its repository, its main branch, the projects of the
 repository). Governance is rules too: a `rule` applies a requirement of
