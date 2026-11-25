@@ -10,7 +10,7 @@
 
 ### The decisions a shipment applies hold
 
-`Applied` · `src/obligations.ts:84` · status: **held**
+`Applied` · `src/obligations.ts:86` · status: **held**
 
 Each ADR that a node the shipment reaches applies is to prove.
 
@@ -41,7 +41,7 @@ Each ADR that a node the shipment reaches applies is to prove.
 
 ### The artefacts a shipment ships are checked
 
-`Checked` · `src/obligations.ts:130` · status: **held**
+`Checked` · `src/obligations.ts:132` · status: **held**
 
 Each check of an artefact the shipment ships is to prove: those a program runs, or all of them.
 
@@ -79,7 +79,7 @@ Each check of an artefact the shipment ships is to prove: those a program runs, 
 
 ### Who calls a shipment's programs is identified
 
-`Identified` · `src/obligations.ts:175` · status: **held**
+`Identified` · `src/obligations.ts:177` · status: **held**
 
 Each entry point the shipment reaches names its audience; an audience whose callers carry an identity (a person, a tenant) is identified where the shipment runs it, or the program lets whoever reaches the entry point call as one of it. Until identification comes (C7), nothing identifies one: each such audience reached is a gap.
 
@@ -118,7 +118,7 @@ Each entry point the shipment reaches names its audience; an audience whose call
 
 ### The artefacts a shipment ships were shipped first by those that precede it
 
-`Preceded` · `src/obligations.ts:212` · status: **held**
+`Preceded` · `src/obligations.ts:214` · status: **held**
 
 Each shipment named that ships an artefact this one ships is to prove: it must have shipped that artefact first, the same file, before this one may take it (a public version after its preview, a release after staging). A shipment may wait for several; each artefact waits for every one of them that ships it. An artefact none of them ships is a gap: it would go further without having been anywhere before.
 
@@ -153,7 +153,7 @@ Each shipment named that ships an artefact this one ships is to prove: it must h
 
 ### What people decided is published
 
-`Published` · `src/obligations.ts:196` · status: **held**
+`Published` · `src/obligations.ts:198` · status: **held**
 
 Each part of a declaration the shipment reaches that a publication freezes (what its kind says people decide: a value chosen or cited, a statement) is in trame.lock as it is (D1). A declaration with a part not published yet is a gap: trame publish freezes it, in the pull request that brings it. A part changed after it was published is an error of the graph already: an amendment changes a value, a new node that repeals it a statement.
 
@@ -186,7 +186,7 @@ Each part of a declaration the shipment reaches that a publication freezes (what
 
 ### The data a shipment carries is reviewed
 
-`Reviewed` · `src/obligations.ts:97` · status: **held**
+`Reviewed` · `src/obligations.ts:99` · status: **held**
 
 Each review of a dataset the shipment reaches is to prove. A reached dataset that no review reviews is a gap.
 
@@ -222,7 +222,7 @@ Each review of a dataset the shipment reaches is to prove. A reached dataset tha
 
 ### The project's rules hold
 
-`Ruled` · `src/obligations.ts:147` · status: **held**
+`Ruled` · `src/obligations.ts:149` · status: **held**
 
 Each rule of the project is to prove: none broken.
 
@@ -253,7 +253,7 @@ Each rule of the project is to prove: none broken.
 
 ### The packages a shipment uses are safe
 
-`Safe` · `src/obligations.ts:160` · status: **held**
+`Safe` · `src/obligations.ts:162` · status: **held**
 
 Each package a node the shipment reaches uses is to prove: installed at its version, without a known vulnerability.
 
@@ -284,7 +284,7 @@ Each package a node the shipment reaches uses is to prove: installed at its vers
 
 ### The product a shipment serves holds
 
-`Served` · `src/obligations.ts:48` · status: **held**
+`Served` · `src/obligations.ts:50` · status: **held**
 
 From what the shipment reaches, what it serves; from the requirements served, up through what they refine, to the goals. Every requirement that refines those goals or those requirements, at any depth, is to prove.
 
@@ -339,9 +339,9 @@ From what the shipment reaches, what it serves; from the requirements served, up
 
 ### The code a shipment ships is verified
 
-`Verified` · `src/obligations.ts:33` · status: **held**
+`Verified` · `src/obligations.ts:35` · status: **held**
 
-Each scenario that verifies a node the shipment reaches, and each check whose program verifies one on a machine, is to prove. A reached node of the kinds named (entry points, functions…) that none of them verifies is a gap: a check made by hand is the family Checked's business, and proves nothing a machine can run.
+Each scenario that verifies a node the shipment reaches, and each check whose program verifies one on a machine (its own, or a command the engine keeps, since g122), is to prove. A reached node of the kinds named (entry points, functions…) that none of them verifies is a gap: a check made by hand is the family Checked's business, and proves nothing a machine can run.
 
 <details><summary>The rule, in the code</summary>
 
@@ -377,7 +377,7 @@ Each scenario that verifies a node the shipment reaches, and each check whose pr
 
 ### Ways of checking
 
-`CheckWays` · `src/obligations.ts:114`
+`CheckWays` · `src/obligations.ts:116`
 
 Which checks of the shipped artefacts a policy asks: those a program runs, or all of them, by hand too.
 

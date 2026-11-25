@@ -271,7 +271,7 @@ Vocabulary · `Effects`
 Decision · `PlatformEffects`
 
 - Decided by: trame
-- Value: { modules: { node:path: , node:url: , node:util: , node:events: , node:buffer: , node:zlib: , node:fs: { existsSync: read, readFileSync: read, readdirSync: read, statSync: read, lstatSync: read, realpathSync: read, readlinkSync: read, accessSync: read, watch: read, time, writeFileSync: write, appendFileSync: write, mkdirSync: write, mkdtempSync: write, rmSync: write, unlinkSync: write, renameSync: write, symlinkSync: write, copyFileSync: read, write, cpSync: read, write }, node:fs/promises: read, write, asynchronous, node:os: { tmpdir: read, homedir: read, platform: , EOL:  }, node:crypto: { createHash: , randomUUID: random, randomBytes: random }, node:child_process: process, node:http: network, asynchronous, node:https: network, asynchronous, node:net: network, asynchronous, node:sqlite: read, write, node:module: { createRequire: execution, registerHooks: execution }, node:readline: terminal, asynchronous, node:timers: time, node:timers/promises: time, asynchronous }, hosts: { process: { argv: terminal, stdout: terminal, stderr: terminal, stdin: terminal, env: read, cwd: read, execPath: read, execArgv: read, pid: read, platform: , on: process, emit: process, exit: process, kill: process, exitCode: process, nextTick: asynchronous, hrtime: time }, Buffer: , Response: , DecompressionStream: , CompressionStream: , CSS: { escape:  }, matchMedia: display, scrollTo: display, console: terminal, fetch: network, asynchronous, XMLHttpRequest: network, asynchronous, WebSocket: network, asynchronous, EventSource: network, asynchronous, setTimeout: time, clearTimeout: time, setInterval: time, clearInterval: time, setImmediate: time, queueMicrotask: asynchronous, performance: time, crypto: { randomUUID: random, getRandomValues: random, subtle: asynchronous }, localStorage: read, write, sessionStorage: read, write, indexedDB: read, write, asynchronous, document: display, window: display, getComputedStyle: display, scrollX: display, scrollY: display, innerWidth: display, innerHeight: display, devicePixelRatio: display, ResizeObserver: display, IntersectionObserver: display, location: read, history: display, navigator: { languages: read, language: read, wakeLock: display, asynchronous, userAgent: read }, requestAnimationFrame: time, display, cancelAnimationFrame: time, display, speechSynthesis: display, SpeechSynthesisUtterance: , AudioContext: display, Audio: display, URL: , URLSearchParams: , TextEncoder: , TextDecoder: , structuredClone: , AbortController: , Blob: , atob: , btoa:  }, ecmaScript: { Math: { random: random }, Date: { now: time } }, constructed: { Date: time }, globalObjects: globalThis, self }
+- Value: { modules: { node:path: , node:url: , node:util: , node:events: , node:buffer: , node:zlib: , node:fs: { existsSync: read, readFileSync: read, readdirSync: read, statSync: read, lstatSync: read, realpathSync: read, readlinkSync: read, accessSync: read, watch: read, time, writeFileSync: write, appendFileSync: write, mkdirSync: write, mkdtempSync: write, rmSync: write, unlinkSync: write, renameSync: write, symlinkSync: write, copyFileSync: read, write, cpSync: read, write }, node:fs/promises: read, write, asynchronous, node:os: { tmpdir: read, homedir: read, platform: , EOL:  }, node:crypto: { createHash: , randomUUID: random, randomBytes: random }, node:child_process: process, node:http: network, asynchronous, node:https: network, asynchronous, node:net: network, asynchronous, node:sqlite: read, write, node:module: { createRequire: execution, registerHooks: execution }, node:readline: terminal, asynchronous, node:timers: time, node:timers/promises: time, asynchronous }, hosts: { process: { argv: terminal, stdout: terminal, stderr: terminal, stdin: terminal, env: read, cwd: read, execPath: read, execArgv: read, pid: read, platform: , versions: , on: process, emit: process, exit: process, kill: process, exitCode: process, nextTick: asynchronous, hrtime: time }, Buffer: , Response: , DecompressionStream: , CompressionStream: , CSS: { escape:  }, matchMedia: display, scrollTo: display, console: terminal, fetch: network, asynchronous, XMLHttpRequest: network, asynchronous, WebSocket: network, asynchronous, EventSource: network, asynchronous, setTimeout: time, clearTimeout: time, setInterval: time, clearInterval: time, setImmediate: time, queueMicrotask: asynchronous, performance: time, crypto: { randomUUID: random, getRandomValues: random, subtle: asynchronous }, localStorage: read, write, sessionStorage: read, write, indexedDB: read, write, asynchronous, document: display, window: display, getComputedStyle: display, scrollX: display, scrollY: display, innerWidth: display, innerHeight: display, devicePixelRatio: display, ResizeObserver: display, IntersectionObserver: display, location: read, history: display, navigator: { languages: read, language: read, wakeLock: display, asynchronous, userAgent: read }, requestAnimationFrame: time, display, cancelAnimationFrame: time, display, speechSynthesis: display, SpeechSynthesisUtterance: , AudioContext: display, Audio: display, URL: , URLSearchParams: , TextEncoder: , TextDecoder: , structuredClone: , AbortController: , Blob: , atob: , btoa:  }, ecmaScript: { Math: { random: random }, Date: { now: time } }, constructed: { Date: time }, globalObjects: globalThis, self }
 
 ### Commands
 
@@ -628,10 +628,10 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 122
+- Version: 123
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../generations/g122
+- Its path: ../generations/g123
 - Serves: Ports of the platform, realized once
 
 ### The people of the repository
@@ -1203,6 +1203,30 @@ Release · `R0_25_0`
 - Language: shared
 - Serves: Commands chosen, not written again, A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again, Versions that hold
 
+### Version 0.26.0
+
+Release · `R0_26_0`
+
+- Released by: trame
+- Version: 0.26.0
+- Released on: 2026-11-25
+- What changes: What the machine is asked: Node's versions described among the platform's effects, Git's version option (for libs/machine)
+- Fingerprint: d45c7747ee5e5151
+- Language: shared
+- Serves: Commands chosen, not written again, A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again, Versions that hold
+
+### Version 0.27.0
+
+Release · `R0_27_0`
+
+- Released by: trame
+- Version: 0.27.0
+- Released on: 2026-11-25
+- What changes: The family Verified counts a check a command the engine keeps runs (g122)
+- Fingerprint: 8feb27eab07a9b7d
+- Language: shared
+- Serves: Commands chosen, not written again, A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again, Versions that hold
+
 ### Version 0.3.0
 
 Release · `R0_3_0`
@@ -1294,9 +1318,9 @@ Release · `R0_9_0`
 Standard · `GitCommandLine`
 
 - Maintained by: trame
-- Source: Git manual: git-rev-parse (--abbrev-ref), git-push (--set-upstream), git-fetch, git-diff (--name-only, A...B: since the merge base), git-checkout, git-merge (--ff-only)
+- Source: Git manual: git (--version), git-rev-parse (--abbrev-ref), git-push (--set-upstream), git-fetch, git-diff (--name-only, A...B: since the merge base), git-checkout, git-merge (--ff-only)
 - Address: https://git-scm.com/docs/git-diff
-- Constants: { program: { value: git, meaning: Git's command line }, revParse: { value: rev-parse, meaning: Says what a name stands for }, abbreviated: { value: --abbrev-ref, meaning: The short name of a reference: the branch's }, head: { value: HEAD, meaning: What is checked out }, detached: { value: HEAD, meaning: What rev-parse --abbrev-ref says when no branch is checked out }, push: { value: push, meaning: Sends a branch to a remote }, upstream: { value: --set-upstream, meaning: The branch follows the one it was sent to }, remote: { value: origin, meaning: The remote the repository came from }, fetch: { value: fetch, meaning: Brings a branch of a remote }, fetched: { value: FETCH_HEAD, meaning: What was just fetched }, diff: { value: diff, meaning: Shows what differs }, names: { value: --name-only, meaning: Only the paths of the files that differ }, since: { value: ..., meaning: Between two names: what the second changes since it parted from the first }, checkout: { value: checkout, meaning: Checks a branch out }, merge: { value: merge, meaning: Joins another history into the branch checked out }, forwardOnly: { value: --ff-only, meaning: Only by moving the branch forward: refused if it would need a merge commit } }
+- Constants: { program: { value: git, meaning: Git's command line }, version: { value: --version, meaning: Says which Git this is: it answers when Git is installed }, revParse: { value: rev-parse, meaning: Says what a name stands for }, abbreviated: { value: --abbrev-ref, meaning: The short name of a reference: the branch's }, head: { value: HEAD, meaning: What is checked out }, detached: { value: HEAD, meaning: What rev-parse --abbrev-ref says when no branch is checked out }, push: { value: push, meaning: Sends a branch to a remote }, upstream: { value: --set-upstream, meaning: The branch follows the one it was sent to }, remote: { value: origin, meaning: The remote the repository came from }, fetch: { value: fetch, meaning: Brings a branch of a remote }, fetched: { value: FETCH_HEAD, meaning: What was just fetched }, diff: { value: diff, meaning: Shows what differs }, names: { value: --name-only, meaning: Only the paths of the files that differ }, since: { value: ..., meaning: Between two names: what the second changes since it parted from the first }, checkout: { value: checkout, meaning: Checks a branch out }, merge: { value: merge, meaning: Joins another history into the branch checked out }, forwardOnly: { value: --ff-only, meaning: Only by moving the branch forward: refused if it would need a merge commit } }
 - Serves: A published value is cited, not copied
 
 ### GitHub's ways of asking a merge once it holds
@@ -1795,7 +1819,7 @@ Artefact · `PullRequestWorkflow` · **held**
 
 ### The standard library
 
-Artefact · `TheLibrary` · **unknown**
+Artefact · `TheLibrary` · **held**
 
 - Owner: trame
 - Path: src
@@ -1803,7 +1827,7 @@ Artefact · `TheLibrary` · **unknown**
 
 ### The next version
 
-Shipment · `NextVersion` · **unknown**
+Shipment · `NextVersion` · **held**
 
 - Owner: trame
 - Target: version

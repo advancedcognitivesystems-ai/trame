@@ -3287,6 +3287,18 @@ Package · `HtmlGrammar` · **held**
 - In the registry: https://www.npmjs.com/package/tree-sitter-html
 - What it may do: 
 
+### The questions of the machine
+
+Package · `Machine`
+
+- Owner: trame
+- Name: machine
+- Version: 0.1.0
+- How it joins the graph: library
+- Where it comes from: path
+- Its path: libs/machine/releases/0.1.0
+- Serves: A single source of truth
+
 ### Types of Node.js
 
 Package · `NodeTypes` · **held**
@@ -3317,10 +3329,10 @@ Package · `StandardLibrary`
 
 - Owner: trame
 - Name: std
-- Version: 0.25.0
+- Version: 0.27.0
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: std/releases/0.25.0
+- Its path: std/releases/0.27.0
 - Serves: A single source of truth
 
 ### tsx
@@ -4459,7 +4471,7 @@ Architecture decision · `PreludeLayer` · **held**
 
 ### A version ships through the graph
 
-Architecture decision · `ShippedThroughTheGraph` · **held**
+Architecture decision · `ShippedThroughTheGraph` · **unknown**
 
 - Decided by: trame
 - Context: Two products ship differently (a page placed where it is served, an engine frozen into a generation) and their pipelines lived in scripts and in their authors' heads: nothing said what had been checked, by whom, on which version, nor why a version could go.
@@ -5009,6 +5021,20 @@ Release · `G122`
 - Accepted differences: differences.diff
 - Releases: Trame on the command line
 - Assembled by: Generation 121
+
+### Generation 123
+
+Release · `G123`
+
+- Released by: trame
+- Version: g123
+- Released on: 2026-11-25
+- What changes: The engine reads std 0.26.0's table of the platform: Node's versions described, for the questions of the machine (E3, part 3)
+- Fingerprint: 49458fb9c60cfe88
+- Language: shared
+- Language archived: 0118572b49b3ed10
+- Releases: Trame on the command line
+- Assembled by: Generation 122
 
 ### Generation 13
 
@@ -6766,8 +6792,16 @@ Decision · `HowAGenerationAdvances`
 Decision · `MainBranch`
 
 - Decided by: trame
-- Value: { branch: main, checks: trame, std, ci, data, team, reservations, poselia, upToDate: false, approvals: 0, method: merge, autoMerge: true, deletesMerged: true, pages: false }
+- Value: { branch: main, checks: trame, std, ci, data, team, machine, reservations, poselia, upToDate: false, approvals: 0, method: merge, autoMerge: true, deletesMerged: true, pages: false }
 - Rejected: Squashed, a branch would merge as one commit, and the generations it advances are each a commit; An approval required, the person who opens a pull request with their own account cannot approve it; Up to date with main first, each pull request would merge main into itself again, and run its checks again, whenever another one merged; The check of geometry, geometry runs from the registry of a machine, which a runner of GitHub does not have yet; Pages now, the site that gathers Trame's graph and Poselia's preview is still to be decided
+
+### The machines Trame runs on
+
+Decision · `OurMachines`
+
+- Decided by: trame
+- Value: { systems: linux, darwin, node: 22 }
+- Rejected: Windows too, trame.sh is a POSIX shell script, and the links under .trame are symbolic ones; Node 20, the engine's loader registers its hooks with module.registerHooks, which Node 22 brings
 
 ### How a pull request is checked on GitHub
 
@@ -6782,7 +6816,7 @@ Decision · `PullRequestsOnGitHub`
 Decision · `RepositoryProjects`
 
 - Decided by: trame
-- Value: { name: trame, dir: ., runners: RunnersWritten, reads: reservations }, { name: std, dir: std, runners: RunnersWritten }, { name: ci, dir: ci, runners: RunnersWritten }, { name: team, dir: libs/team, runners: RunnersWritten }, { name: data, dir: libs/data, runners: RunnersWritten }, { name: geometry, dir: libs/geometry }, { name: reservations, dir: examples/reservations, runners: RunnersWritten, scenarios: true }, { name: poselia, dir: apps/poselia, runners: RunnersWritten }
+- Value: { name: trame, dir: ., runners: RunnersWritten, reads: reservations }, { name: std, dir: std, runners: RunnersWritten }, { name: ci, dir: ci, runners: RunnersWritten }, { name: team, dir: libs/team, runners: RunnersWritten }, { name: data, dir: libs/data, runners: RunnersWritten }, { name: machine, dir: libs/machine, runners: RunnersWritten }, { name: geometry, dir: libs/geometry }, { name: reservations, dir: examples/reservations, runners: RunnersWritten, scenarios: true }, { name: poselia, dir: apps/poselia, runners: RunnersWritten }
 - Rejected: Found on the disk, by their trame.json, a generation keeps a copy of the example, which is not a project of the repository; In the order they are carried, the order follows from the libraries each one imports; what one reads besides is said
 
 ### The repository left by hand, in the scenario
@@ -6816,6 +6850,14 @@ Function · `GraphPageSelectors` · **held**
 - Parameters: { regions: page.PageRegions, markup: markup.DocumentMarkup, attribute: html.AttributeSelector, html: std/html.Html, css: std/html.Css, svg: std/html.Svg }
 - Serves: A specification that runs
 - Depends on: Regions of the page, Documents in the page, Attribute selector
+
+### What the machine runs, for Trame
+
+Function · `OurMachineSettings` · **held**
+
+- Owner: trame
+- Parameters: { machines: sdlc.OurMachines }
+- Depends on: The machines Trame runs on
 
 ### How a version is carried across Trame's repository
 
@@ -6951,7 +6993,8 @@ Technical choice · `SdlcOnTheMachine` · **unknown**
 Technical choice · `WhatTheMachineMustHave` · **held**
 
 - Decided by: trame
-- Context: On 17 November a machine whose browsers had moved refused the check of the page, and trame doctor said nothing of it.
+- Context: On 17 November a machine whose browsers had moved refused the check of the page, and trame doctor said nothing of it; the pull requests and the propagation need Git, and the engine's loader Node 22.
+- Chooses: What the machine runs, for Trame
 - In: Local, A session of Claude Code
 
 ### A generation advanced in one command
@@ -7048,7 +7091,7 @@ Artefact · `TheEngine` · **held**
 
 ### The candidate plays the laws
 
-Check · `CandidateKeepsTheLaws` · **held**
+Check · `CandidateKeepsTheLaws` · **unknown**
 
 - Owner: trame
 - Checks: The candidate engine
@@ -7082,6 +7125,7 @@ Check · `MachineAsked` · **held**
 - Owner: trame
 - Run by the engine's command: doctor
 - Signed by: Trame's maintainers
+- Verifies: What the machine runs, for Trame
 
 ### The repository is read from GitHub
 
@@ -7104,7 +7148,7 @@ Shipment · `IntoMain` · **held**
 
 ### The next generation
 
-Shipment · `NextGeneration` · **held**
+Shipment · `NextGeneration` · **unknown**
 
 - Owner: trame
 - Target: generation

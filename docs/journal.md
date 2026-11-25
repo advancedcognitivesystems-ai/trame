@@ -2,7 +2,7 @@
 
 *What happened to the project, day by day, the latest first, up to the date of the graph (25 November 2026): the versions released, and the evidence given, each with the node it is about and who gave it.*
 
-> **30 days · 122 versions released · 611 pieces of evidence**
+> **30 days · 123 versions released · 630 pieces of evidence**
 
 ## 25 November 2026
 
@@ -11,11 +11,16 @@
 | Released as g120 | [Generation 120](releases.md#G120) | trame |
 | Released as g121 | [Generation 121](releases.md#G121) | trame |
 | Released as g122 | [Generation 122](releases.md#G122) | trame |
+| Released as g123 | [Generation 123](releases.md#G123) | trame |
+| Deployed | [Advance](commands.md#Advance) | claude |
 | Deployed | [Advance](commands.md#Advance) | claude |
 | Deployed | [Advance](commands.md#Advance) | claude |
 | Deployed | [Advance](commands.md#Advance) | claude |
 | Check passed | [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws) | claude |
 | Check passed | [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws) | claude |
+| Check passed | [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws) | claude |
+| Check passed | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | claude |
+| Check passed | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | claude |
 | Check passed | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | claude |
 | Check passed | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | claude |
 | Check passed | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | claude |
@@ -24,6 +29,9 @@
 | Built | [The candidate engine](sdlc.md#EngineCandidate) | claude |
 | Shipped | [The candidate engine](sdlc.md#EngineCandidate) | claude |
 | Built | [The candidate engine](sdlc.md#EngineCandidate) | claude |
+| Built | [The candidate engine](sdlc.md#EngineCandidate) | claude |
+| Shipped | [The candidate engine](sdlc.md#EngineCandidate) | claude |
+| Built | [The candidate engine](sdlc.md#EngineCandidate) | claude |
 | Built | [The graph page](sdlc.md#GraphPage) | claude |
 | Shipped | [The graph page](sdlc.md#GraphPage) | claude |
 | Built | [The graph page](sdlc.md#GraphPage) | claude |
@@ -32,22 +40,34 @@
 | Built | [The graph page](sdlc.md#GraphPage) | claude |
 | Shipped | [The graph page](sdlc.md#GraphPage) | claude |
 | Built | [The graph page](sdlc.md#GraphPage) | claude |
+| Built | [The graph page](sdlc.md#GraphPage) | claude |
+| Shipped | [The graph page](sdlc.md#GraphPage) | claude |
+| Built | [The graph page](sdlc.md#GraphPage) | claude |
+| Check passed | [The graph page opens](sdlc.md#GraphPageOpens) | claude |
+| Check passed | [The graph page opens](sdlc.md#GraphPageOpens) | claude |
 | Check passed | [The graph page opens](sdlc.md#GraphPageOpens) | claude |
 | Check passed | [The graph page opens](sdlc.md#GraphPageOpens) | claude |
 | Check passed | [The graph page opens](sdlc.md#GraphPageOpens) | claude |
 | Check passed | [The graph page opens](sdlc.md#GraphPageOpens) | claude |
 | Check passed | [The graph page opens](sdlc.md#GraphPageOpens) | claude |
 | Check passed | [The machine has what Trame needs](sdlc.md#MachineAsked) | claude |
+| Check passed | [The machine has what Trame needs](sdlc.md#MachineAsked) | claude |
 | Shipped | [The next generation](sdlc.md#NextGeneration) | claude |
 | Shipped | [The next generation](sdlc.md#NextGeneration) | claude |
 | Shipped | [The next generation](sdlc.md#NextGeneration) | claude |
+| Shipped | [The next generation](sdlc.md#NextGeneration) | claude |
+| Built | [The page's program](sdlc.md#PageProgram) | claude |
+| Shipped | [The page's program](sdlc.md#PageProgram) | claude |
 | Built | [The page's program](sdlc.md#PageProgram) | claude |
 | Shipped | [The page's program](sdlc.md#PageProgram) | claude |
 | Built | [The page's program](sdlc.md#PageProgram) | claude |
 | Shipped | [The page's program](sdlc.md#PageProgram) | claude |
 | Built | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
+| Built | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
 | Shipped | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
 | Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
+| Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
+| Built | [The engine](sdlc.md#TheEngine) | claude |
 | Built | [The engine](sdlc.md#TheEngine) | claude |
 | Built | [The engine](sdlc.md#TheEngine) | claude |
 

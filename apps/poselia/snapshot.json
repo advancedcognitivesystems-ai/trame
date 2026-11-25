@@ -3741,10 +3741,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "trame",
-        "version": "122",
+        "version": "123",
         "joins": "language",
         "from": "path",
-        "at": "../../generations/g122"
+        "at": "../../generations/g123"
       }
     },
     {
@@ -3767,10 +3767,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "std",
-        "version": "0.25.0",
+        "version": "0.27.0",
         "joins": "library",
         "from": "path",
-        "at": "../../std/releases/0.25.0"
+        "at": "../../std/releases/0.27.0"
       }
     },
     {

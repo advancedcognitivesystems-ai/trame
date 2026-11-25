@@ -132,7 +132,7 @@ Consequences: Each service is a port with its effects; the browser's realization
 
 ### A repository is set by its project's graph
 
-`RepositoryThroughItsApi` · `src/repository.ts:628` · status: **held**
+`RepositoryThroughItsApi` · `src/repository.ts:629` · status: **held**
 
 The settings of a repository are a decision of the project's graph, applied through a port of the library and read back: realized once for a machine (GitHub's command line) and once in memory.
 

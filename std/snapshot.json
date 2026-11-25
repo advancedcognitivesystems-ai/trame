@@ -880,6 +880,7 @@
                 "read"
               ],
               "platform": [],
+              "versions": [],
               "on": [
                 "process"
               ],
@@ -2220,10 +2221,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "122",
+        "version": "123",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g122"
+        "at": "../generations/g123"
       }
     },
     {
@@ -2939,6 +2940,32 @@
       }
     },
     {
+      "id": "releases.R0_26_0",
+      "kind": "release",
+      "title": "Version 0.26.0",
+      "fields": {
+        "owner": "trame",
+        "version": "0.26.0",
+        "date": "2026-11-25",
+        "what": "What the machine is asked: Node's versions described among the platform's effects, Git's version option (for libs/machine)",
+        "fingerprint": "d45c7747ee5e5151",
+        "language": "shared"
+      }
+    },
+    {
+      "id": "releases.R0_27_0",
+      "kind": "release",
+      "title": "Version 0.27.0",
+      "fields": {
+        "owner": "trame",
+        "version": "0.27.0",
+        "date": "2026-11-25",
+        "what": "The family Verified counts a check a command the engine keeps runs (g122)",
+        "fingerprint": "8feb27eab07a9b7d",
+        "language": "shared"
+      }
+    },
+    {
       "id": "releases.R0_3_0",
       "kind": "release",
       "title": "Version 0.3.0",
@@ -3160,12 +3187,16 @@
       "title": "Git's command line",
       "fields": {
         "owner": "trame",
-        "source": "Git manual: git-rev-parse (--abbrev-ref), git-push (--set-upstream), git-fetch, git-diff (--name-only, A...B: since the merge base), git-checkout, git-merge (--ff-only)",
+        "source": "Git manual: git (--version), git-rev-parse (--abbrev-ref), git-push (--set-upstream), git-fetch, git-diff (--name-only, A...B: since the merge base), git-checkout, git-merge (--ff-only)",
         "url": "https://git-scm.com/docs/git-diff",
         "constants": {
           "program": {
             "value": "git",
             "meaning": "Git's command line"
+          },
+          "version": {
+            "value": "--version",
+            "meaning": "Says which Git this is: it answers when Git is installed"
           },
           "revParse": {
             "value": "rev-parse",
@@ -4469,7 +4500,7 @@
       "id": "sdlc.NextVersion",
       "kind": "shipment",
       "title": "The next version",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "version"
@@ -4553,7 +4584,7 @@
       "id": "sdlc.TheLibrary",
       "kind": "artifact",
       "title": "The standard library",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "src",
@@ -7229,6 +7260,76 @@
     },
     {
       "from": "releases.R0_25_0",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_26_0",
+      "to": "product.ChosenCommands",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_26_0",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_26_0",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_26_0",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_26_0",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_26_0",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_26_0",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_27_0",
+      "to": "product.ChosenCommands",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_27_0",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_27_0",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_27_0",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_27_0",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_27_0",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_27_0",
       "to": "product.VersionsThatHold",
       "kind": "serves"
     },

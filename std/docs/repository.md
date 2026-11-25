@@ -14,11 +14,12 @@
 
 The commands that say which branch is checked out, push it and follow it, fetch another and list the files that differ since the two parted.
 
-Source: Git manual: git-rev-parse (--abbrev-ref), git-push (--set-upstream), git-fetch, git-diff (--name-only, A...B: since the merge base), git-checkout, git-merge (--ff-only) · `https://git-scm.com/docs/git-diff`
+Source: Git manual: git (--version), git-rev-parse (--abbrev-ref), git-push (--set-upstream), git-fetch, git-diff (--name-only, A...B: since the merge base), git-checkout, git-merge (--ff-only) · `https://git-scm.com/docs/git-diff`
 
 | Constant | Value | Meaning |
 |---|---|---|
 | `program` | `git` | Git's command line |
+| `version` | `--version` | Says which Git this is: it answers when Git is installed |
 | `revParse` | `rev-parse` | Says what a name stands for |
 | `abbreviated` | `--abbrev-ref` | The short name of a reference: the branch's |
 | `head` | `HEAD` | What is checked out |
@@ -43,7 +44,7 @@ Source: Git manual: git-rev-parse (--abbrev-ref), git-push (--set-upstream), git
 
 ### GitHub's ways of asking a merge once it holds
 
-`GitHubAutoMerge` · `src/repository.ts:502`
+`GitHubAutoMerge` · `src/repository.ts:503`
 
 GitHub's command line asks it by GraphQL (enablePullRequestAutoMerge); a session of Claude Code reaches GitHub through a proxy that refuses GraphQL and offers a route of its own, PUT on the pull request's ccr/auto_merge, as it says when GraphQL is called.
 
@@ -69,7 +70,7 @@ Source: GitHub CLI manual: gh pr merge (--auto, --merge, --squash, --rebase, --r
 
 ### GitHub's API for pull requests
 
-`GitHubPullRequestsApi` · `src/repository.ts:442`
+`GitHubPullRequestsApi` · `src/repository.ts:443`
 
 The calls that list the pull requests a branch has open, open one, and what GitHub answers of it.
 
@@ -228,7 +229,7 @@ What a repository read back is compared on, each with what it says.
 
 ### A repository is set by its project's graph
 
-`RepositoryThroughItsApi` · `src/repository.ts:628` · status: **held**
+`RepositoryThroughItsApi` · `src/repository.ts:629` · status: **held**
 
 The settings of a repository are a decision of the project's graph, applied through a port of the library and read back: realized once for a machine (GitHub's command line) and once in memory.
 
@@ -251,7 +252,7 @@ Consequences: A project decides its settings (RepositorySettings) and applies th
 
 ### The automatic merge
 
-`AutoMerge` · `src/repository.ts:494`
+`AutoMerge` · `src/repository.ts:495`
 
 How GitHub is asked to merge a pull request once it holds: by its command line where GitHub's GraphQL is reached, by a route of the proxy in a session of Claude Code.
 
@@ -298,7 +299,7 @@ The branch a person works on in the repository: which it is, pushed, and what it
 
 ### The branches a scenario keeps
 
-`BranchesKept` · `src/repository.ts:353`
+`BranchesKept` · `src/repository.ts:354`
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
@@ -313,7 +314,7 @@ The branch a person works on in the repository: which it is, pushed, and what it
 
 ### Pull requests
 
-`PullRequests` · `src/repository.ts:429`
+`PullRequests` · `src/repository.ts:430`
 
 The pull requests of a repository on GitHub: the one a branch has open, one opened, merged once it holds.
 
@@ -341,7 +342,7 @@ The pull requests of a repository on GitHub: the one a branch has open, one open
 
 ### The pull requests a scenario keeps
 
-`PullRequestsKept` · `src/repository.ts:568`
+`PullRequestsKept` · `src/repository.ts:569`
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
@@ -400,7 +401,7 @@ What a scenario sets of a repository kept in memory, and the settings applied to
 
 ### Branches kept in memory
 
-`BranchesInMemory` · `src/repository.ts:359` · status: **held**
+`BranchesInMemory` · `src/repository.ts:360` · status: **held**
 
 In a scenario, the branch checked out and what it changes are as the scenario sets them; a push is kept.
 
@@ -415,7 +416,7 @@ In a scenario, the branch checked out and what it changes are as the scenario se
 
 ### Pull requests kept in memory
 
-`PullRequestsInMemory` · `src/repository.ts:577` · status: **held**
+`PullRequestsInMemory` · `src/repository.ts:578` · status: **held**
 
 In a scenario, a pull request opened is numbered after those opened before it, its address the path of its call; one open from a branch is found; a merge asked, or made, is kept. A branch's last commit is named as the branch, and the checks run on it are those the scenario says; a pull request changes the files its branch changes, as the scenario says them too.
 
@@ -465,7 +466,7 @@ In a scenario, applying settings keeps them and makes the repository so: one met
 
 ### The automatic merge, by GitHub's command line
 
-`AutoMergeByGitHubCli` · `src/repository.ts:535`
+`AutoMergeByGitHubCli` · `src/repository.ts:536`
 
 gh pr merge --auto, by the method decided: GitHub's GraphQL, with the token of whoever runs it.
 
@@ -478,7 +479,7 @@ gh pr merge --auto, by the method decided: GitHub's GraphQL, with the token of w
 
 ### The automatic merge, in a session of Claude Code
 
-`AutoMergeInAClaudeSession` · `src/repository.ts:545`
+`AutoMergeInAClaudeSession` · `src/repository.ts:546`
 
 The route of the session's proxy, by gh api: PUT on the pull request's ccr/auto_merge, with the method decided.
 
@@ -491,7 +492,7 @@ The route of the session's proxy, by gh api: PUT on the pull request's ccr/auto_
 
 ### Git's branches
 
-`GitCliBranches` · `src/repository.ts:336`
+`GitCliBranches` · `src/repository.ts:337`
 
 Asks Git, in the directory the program runs in: the branch checked out, pushed to its remote, the files it changes since it parted from another as the remote has it.
 
@@ -504,7 +505,7 @@ Asks Git, in the directory the program runs in: the branch checked out, pushed t
 
 ### GitHub's pull requests, by its command line
 
-`GitHubCliPullRequests` · `src/repository.ts:525`
+`GitHubCliPullRequests` · `src/repository.ts:526`
 
 Lists the pull requests a branch has open and opens one by gh api (REST), with the token of whoever runs it; asks the merge once it holds through the automatic merge chosen where it runs.
 

@@ -88,7 +88,7 @@ export const PlatformEffects = decision<PlatformReach>({
     hosts: {
       process: {
         argv: ["terminal"], stdout: ["terminal"], stderr: ["terminal"], stdin: ["terminal"],
-        env: ["read"], cwd: ["read"], execPath: ["read"], execArgv: ["read"], pid: ["read"], platform: [],
+        env: ["read"], cwd: ["read"], execPath: ["read"], execArgv: ["read"], pid: ["read"], platform: [], versions: [],
         on: ["process"], emit: ["process"], exit: ["process"], kill: ["process"], exitCode: ["process"],
         nextTick: ["asynchronous"], hrtime: ["time"],
       },

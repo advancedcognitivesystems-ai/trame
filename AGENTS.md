@@ -15,7 +15,7 @@ what the graph guarantees. The README explains why; this file says how.
 | `kinds/`, `views/`, `engine-views/` | The language: what a node can be, which questions are asked of the graph; their words in `words.ts` | you, reviewed |
 | `trame.json` | The project: its libraries (`"libraries"`), the generation it pins (`"engine"`), the kinds and views it carries besides the language's | you |
 | `package.json` | The project as a package: the import map of the language (`#trame/*`) and of its libraries (`#std/*`), the packages of the graph | `trame manifest` |
-| `libs/` | Libraries of a domain (`libs/geometry`: vectors, angles; `libs/data`: the data a product keeps, and its kind `entity`; `libs/team`: the repository's people), each a project of its own | you |
+| `libs/` | Libraries of a domain (`libs/geometry`: vectors, angles; `libs/data`: the data a product keeps, and its kind `entity`; `libs/team`: the repository's people; `libs/machine`: the questions a project asks of its machine), each a project of its own | you |
 | `std/` | The standard library: a Trame project of its own (structures, standards, patterns) that Trame and the example import | you |
 | `ci/` | The library of writers that run a shipment elsewhere (GitHub Actions, Bash), from the plan the engine computes | you |
 | `docs/`, `graph.json`, `snapshot.json` | What a build writes: documents for people, the graph and its snapshot for tools and agents | the build only |
@@ -296,7 +296,9 @@ of the vocabulary `Directions`: `way: "in"`), and `serves` a goal or is applied 
   command. The engine's own questions are add-ons too, of its extension point `EngineNeeds`, chosen in Trame's graph
   (`EngineQuestions`) and assembled into it: asked always, even where no graph loads. A provider's add-on lives with
   its adapter and its package (Playwright's with std's `PlaywrightBrowser`); a question a command needs moves with the
-  command.
+  command; a question of the machine that belongs to no provider is in `libs/machine` (`SystemSupported`,
+  `NodeRecentEnough`, `GitInstalled`), reading what the project requires through its port `WhatTheMachineRuns`, which
+  the project realizes with its decision (Trame: `OurMachines`).
 - **A choice is a concept.** When there are several ways to do something, and someone could choose another, name the
   concept: a port, its strategies (its realizations) and a binding that says which one applies where, as Trame does for
   technologies. A choice of value stays a decision, with the options it rejected. What nobody would change is just code:
@@ -655,6 +657,10 @@ elements), a port answered differently in several environments is answered as in
   project run from the registry (geometry) only once a generation that carries it is published: advance first (g121),
   then release the library. An upgrade that moves the generation and the library at once compiles with the language
   it had: move the language's reference by hand (`src/packages.ts`, the link `.trame/trame`), then `trame manifest`.
+- What the engine allows a body to reach is std's table of the platform as the engine was frozen with it (g123 read
+  std 0.26.0's, which describes `process.versions`): a library that needs a line added waits for a generation.
+- An error of Trame's graph refuses the assembly of the library's commands it chooses, `propagate` included: move
+  Trame's own reference first (`./trame.sh upgrade std`), then propagate.
 - Before g118, an upgrade that moved a project to a generation of the registry (geometry) failed once: the manifest
   was run again by the engine that was leaving. The engine now starts again through the launcher that started it
   (`TRAME_LAUNCHER`), which installs the new generation first.

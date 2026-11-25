@@ -8,14 +8,18 @@
       "at": "ci/releases/0.8.0",
       "version": "0.8.0"
     },
+    "machine": {
+      "at": "libs/machine/releases/0.1.0",
+      "version": "0.1.0"
+    },
     "team": {
       "at": "libs/team/releases/0.1.0",
       "version": "0.1.0"
     },
     "std": {
-      "at": "std/releases/0.25.0",
-      "version": "0.25.0"
+      "at": "std/releases/0.27.0",
+      "version": "0.27.0"
     }
   },
-  "engine": "generations/g122"
+  "engine": "generations/g123"
 }

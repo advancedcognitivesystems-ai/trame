@@ -1,0 +1,523 @@
+{
+  "generated": "2026-11-25",
+  "nodes": [
+    {
+      "id": "machine.GitInstalled",
+      "kind": "implementation",
+      "title": "Git, installed",
+      "source": "src/machine.ts:97",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "git": "std/repository.GitCommandLine",
+          "cli": "std/system.NodeCli",
+          "events": "std/system.NodeEvents",
+          "exit": "std/system.ExitStatus",
+          "words": "machine.MachineWords"
+        },
+        "body": {
+          "file": "./code/git-installed.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "machine.MachineLanguage",
+      "kind": "decision",
+      "title": "The language the questions speak in.",
+      "source": "src/machine.ts:55",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "tag": "en-GB"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "machine.MachineWords",
+      "kind": "catalog",
+      "title": "What the questions say",
+      "source": "src/machine.ts:60",
+      "fields": {
+        "owner": "trame",
+        "messages": "(function)"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "machine.NodePlatforms",
+      "kind": "standard",
+      "title": "Node's platforms",
+      "source": "src/machine.ts:25",
+      "fields": {
+        "owner": "trame",
+        "source": "Node.js documentation: os.platform()",
+        "url": "https://nodejs.org/api/os.html#osplatform",
+        "constants": {
+          "aix": {
+            "value": "aix",
+            "meaning": "IBM AIX"
+          },
+          "darwin": {
+            "value": "darwin",
+            "meaning": "macOS"
+          },
+          "freebsd": {
+            "value": "freebsd",
+            "meaning": "FreeBSD"
+          },
+          "linux": {
+            "value": "linux",
+            "meaning": "Linux"
+          },
+          "openbsd": {
+            "value": "openbsd",
+            "meaning": "OpenBSD"
+          },
+          "sunos": {
+            "value": "sunos",
+            "meaning": "Solaris"
+          },
+          "win32": {
+            "value": "win32",
+            "meaning": "Windows"
+          }
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "machine.NodeRecentEnough",
+      "kind": "implementation",
+      "title": "Node, recent enough",
+      "source": "src/machine.ts:87",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "settings": "machine.WhatTheMachineRuns",
+          "versioning": "std/measures.SemanticVersioning",
+          "words": "machine.MachineWords"
+        },
+        "body": {
+          "file": "./code/node-recent-enough.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "machine.SystemSupported",
+      "kind": "implementation",
+      "title": "The system, one the project runs on",
+      "source": "src/machine.ts:77",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "settings": "machine.WhatTheMachineRuns",
+          "words": "machine.MachineWords"
+        },
+        "body": {
+          "file": "./code/system-supported.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "machine.WhatTheMachineRuns",
+      "kind": "port",
+      "title": "What the machine runs",
+      "source": "src/machine.ts:52",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": {
+          "required": []
+        }
+      },
+      "diagnostics": [
+        "warning: No realization, in any environment"
+      ]
+    },
+    {
+      "id": "packages.ContinuousIntegration",
+      "kind": "package",
+      "title": "The library of continuous integration",
+      "source": "src/packages.ts:26",
+      "fields": {
+        "owner": "trame",
+        "packageName": "ci",
+        "version": "0.8.0",
+        "joins": "library",
+        "from": "path",
+        "at": "../../ci/releases/0.8.0"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "packages.Language",
+      "kind": "package",
+      "title": "Trame",
+      "source": "src/packages.ts:12",
+      "fields": {
+        "owner": "trame",
+        "packageName": "trame",
+        "version": "123",
+        "joins": "language",
+        "at": "../../generations/g123"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "packages.People",
+      "kind": "package",
+      "title": "The people of the repository",
+      "source": "src/packages.ts:35",
+      "fields": {
+        "owner": "trame",
+        "packageName": "team",
+        "version": "0.1.0",
+        "joins": "library",
+        "from": "path",
+        "at": "../team/releases/0.1.0"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "packages.StandardLibrary",
+      "kind": "package",
+      "title": "std",
+      "source": "src/packages.ts:19",
+      "fields": {
+        "owner": "trame",
+        "packageName": "std",
+        "version": "0.27.0",
+        "joins": "library",
+        "at": "../../std/releases/0.27.0"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "product.AskedOnce",
+      "kind": "goal",
+      "title": "The machine is asked once",
+      "source": "src/product.ts:15",
+      "fields": {
+        "owner": "trame"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "releases.R0_1_0",
+      "kind": "release",
+      "title": "Version 0.1.0",
+      "source": "src/releases.ts:12",
+      "fields": {
+        "owner": "trame",
+        "version": "0.1.0",
+        "date": "2026-11-25",
+        "what": "The questions of the machine (E3): the system among those the project runs on, Node recent enough, Git installed, each reading what the project requires through WhatTheMachineRuns",
+        "fingerprint": "050324449fb6a4b7",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.NextVersion",
+      "kind": "shipment",
+      "title": "The next version",
+      "source": "src/sdlc.ts:39",
+      "status": "unknown",
+      "fields": {
+        "owner": "trame",
+        "target": "version"
+      },
+      "result": {
+        "derived": [],
+        "gaps": [],
+        "preceded": [],
+        "reached": [
+          "sdlc.TheLibrary",
+          "machine.GitInstalled",
+          "machine.MachineLanguage",
+          "machine.MachineWords",
+          "machine.NodePlatforms",
+          "machine.NodeRecentEnough",
+          "machine.SystemSupported",
+          "machine.WhatTheMachineRuns",
+          "packages.ContinuousIntegration",
+          "packages.Language",
+          "packages.People",
+          "packages.StandardLibrary",
+          "product.AskedOnce",
+          "sdlc.NextVersion",
+          "sdlc.PackagesSafe",
+          "sdlc.PullRequestsOnGitHub",
+          "sdlc.PullRequestWorkflow",
+          "sdlc.RunnersWritten",
+          "sdlc.VersionMode"
+        ]
+      },
+      "diagnostics": [
+        "warning: To ship: The questions of the machine is unknown"
+      ]
+    },
+    {
+      "id": "sdlc.PackagesSafe",
+      "kind": "obligation",
+      "title": "Its packages safe",
+      "source": "src/sdlc.ts:26",
+      "fields": {
+        "owner": "trame"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.PullRequestsOnGitHub",
+      "kind": "decision",
+      "title": "How a pull request is checked on GitHub",
+      "source": "src/sdlc.ts:47",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "on": {
+            "pullRequests": [
+              "main"
+            ]
+          },
+          "job": "machine",
+          "runsOn": "ubuntu-24.04",
+          "node": 22,
+          "artefacts": {
+            "days": 30
+          },
+          "pullRequest": {
+            "review": false,
+            "merge": "onceItHoldsUnlessDecided"
+          }
+        },
+        "rejected": {
+          "Only when a pull request touches the project": "GitHub keeps a pull request waiting for a check it requires and that never ran",
+          "Merged by GitHub whatever it changes": "what people decided would reach main without a person"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.PullRequestWorkflow",
+      "kind": "artifact",
+      "title": "The pull requests' workflow",
+      "source": "src/sdlc.ts:64",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "path": "../../.github/workflows/machine-pull-request.yml",
+        "media": "application/yaml"
+      },
+      "result": {
+        "path": "../../.github/workflows/machine-pull-request.yml",
+        "code": "4a5f2cbf"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.RunnersWritten",
+      "kind": "shipment",
+      "title": "The files that run it elsewhere",
+      "source": "src/sdlc.ts:78",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "target": "repository"
+      },
+      "result": {
+        "derived": [],
+        "gaps": [],
+        "preceded": [],
+        "reached": [
+          "sdlc.PullRequestWorkflow"
+        ]
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.TheLibrary",
+      "kind": "artifact",
+      "title": "The questions of the machine",
+      "source": "src/sdlc.ts:20",
+      "status": "unknown",
+      "fields": {
+        "owner": "trame",
+        "path": "src",
+        "version": true
+      },
+      "result": {
+        "path": "src",
+        "code": "7db2d498"
+      },
+      "diagnostics": [
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+      ]
+    },
+    {
+      "id": "sdlc.VersionMode",
+      "kind": "policy",
+      "title": "How a version is made",
+      "source": "src/sdlc.ts:32",
+      "fields": {
+        "owner": "trame"
+      },
+      "diagnostics": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "machine.GitInstalled",
+      "to": "std/tooling.MachineNeeds",
+      "kind": "implements"
+    },
+    {
+      "from": "machine.GitInstalled",
+      "to": "std/repository.GitCommandLine",
+      "kind": "deps"
+    },
+    {
+      "from": "machine.GitInstalled",
+      "to": "std/system.NodeCli",
+      "kind": "deps"
+    },
+    {
+      "from": "machine.GitInstalled",
+      "to": "std/system.NodeEvents",
+      "kind": "deps"
+    },
+    {
+      "from": "machine.GitInstalled",
+      "to": "std/system.ExitStatus",
+      "kind": "deps"
+    },
+    {
+      "from": "machine.GitInstalled",
+      "to": "machine.MachineWords",
+      "kind": "deps"
+    },
+    {
+      "from": "machine.MachineWords",
+      "to": "machine.MachineLanguage",
+      "kind": "language"
+    },
+    {
+      "from": "machine.NodePlatforms",
+      "to": "product.AskedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "machine.NodeRecentEnough",
+      "to": "std/tooling.MachineNeeds",
+      "kind": "implements"
+    },
+    {
+      "from": "machine.NodeRecentEnough",
+      "to": "machine.WhatTheMachineRuns",
+      "kind": "deps"
+    },
+    {
+      "from": "machine.NodeRecentEnough",
+      "to": "std/measures.SemanticVersioning",
+      "kind": "deps"
+    },
+    {
+      "from": "machine.NodeRecentEnough",
+      "to": "machine.MachineWords",
+      "kind": "deps"
+    },
+    {
+      "from": "machine.SystemSupported",
+      "to": "std/tooling.MachineNeeds",
+      "kind": "implements"
+    },
+    {
+      "from": "machine.SystemSupported",
+      "to": "machine.WhatTheMachineRuns",
+      "kind": "deps"
+    },
+    {
+      "from": "machine.SystemSupported",
+      "to": "machine.MachineWords",
+      "kind": "deps"
+    },
+    {
+      "from": "packages.ContinuousIntegration",
+      "to": "product.AskedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "packages.Language",
+      "to": "product.AskedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "packages.People",
+      "to": "product.AskedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "packages.StandardLibrary",
+      "to": "product.AskedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_1_0",
+      "to": "product.AskedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "sdlc.NextVersion",
+      "to": "sdlc.TheLibrary",
+      "kind": "ships"
+    },
+    {
+      "from": "sdlc.NextVersion",
+      "to": "sdlc.VersionMode",
+      "kind": "policy"
+    },
+    {
+      "from": "sdlc.PackagesSafe",
+      "to": "std/obligations.Safe",
+      "kind": "applies"
+    },
+    {
+      "from": "sdlc.PackagesSafe",
+      "to": "product.AskedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "sdlc.PullRequestWorkflow",
+      "to": "ci/github.GitHubWorkflow",
+      "kind": "producedBy"
+    },
+    {
+      "from": "sdlc.PullRequestWorkflow",
+      "to": "sdlc.NextVersion",
+      "kind": "runs"
+    },
+    {
+      "from": "sdlc.PullRequestWorkflow",
+      "to": "sdlc.PullRequestsOnGitHub",
+      "kind": "settings"
+    },
+    {
+      "from": "sdlc.RunnersWritten",
+      "to": "sdlc.PullRequestWorkflow",
+      "kind": "ships"
+    },
+    {
+      "from": "sdlc.VersionMode",
+      "to": "sdlc.PackagesSafe",
+      "kind": "obligations"
+    }
+  ],
+  "resolutions": [],
+  "diagnostics": []
+}

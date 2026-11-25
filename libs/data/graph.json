@@ -175,9 +175,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "122",
+        "version": "123",
         "joins": "language",
-        "at": "../../generations/g122"
+        "at": "../../generations/g123"
       },
       "diagnostics": []
     },
@@ -204,9 +204,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.25.0",
+        "version": "0.27.0",
         "joins": "library",
-        "at": "../../std/releases/0.25.0"
+        "at": "../../std/releases/0.27.0"
       },
       "diagnostics": []
     },
@@ -1146,7 +1146,7 @@
       },
       "result": {
         "path": "src",
-        "code": "a95132df"
+        "code": "c635f0a6"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"

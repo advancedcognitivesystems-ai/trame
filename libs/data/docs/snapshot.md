@@ -99,9 +99,9 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 122
+- Version: 123
 - How it joins the graph: language
-- Its path: ../../generations/g122
+- Its path: ../../generations/g123
 - Serves: Data described once
 
 ### The people of the repository
@@ -122,9 +122,9 @@ Package · `stdLibrary`
 
 - Owner: trame
 - Name: std
-- Version: 0.25.0
+- Version: 0.27.0
 - How it joins the graph: library
-- Its path: ../../std/releases/0.25.0
+- Its path: ../../std/releases/0.27.0
 - Serves: Data described once
 
 ## Data · Principles

@@ -306,10 +306,11 @@ export const Branches = port<GitBranches>({
 export const GitCommandLine = standard({
   owner: "trame",
   serves: [CitedNotCopied],
-  source: "Git manual: git-rev-parse (--abbrev-ref), git-push (--set-upstream), git-fetch, git-diff (--name-only, A...B: since the merge base), git-checkout, git-merge (--ff-only)",
+  source: "Git manual: git (--version), git-rev-parse (--abbrev-ref), git-push (--set-upstream), git-fetch, git-diff (--name-only, A...B: since the merge base), git-checkout, git-merge (--ff-only)",
   url: "https://git-scm.com/docs/git-diff",
   constants: {
     program: { value: "git", meaning: "Git's command line" },
+    version: { value: "--version", meaning: "Says which Git this is: it answers when Git is installed" },
     revParse: { value: "rev-parse", meaning: "Says what a name stands for" },
     abbreviated: { value: "--abbrev-ref", meaning: "The short name of a reference: the branch's" },
     head: { value: "HEAD", meaning: "What is checked out" },

@@ -395,3 +395,29 @@ export const R0_25_0 = release({
   language: "shared",
   serves: [ChosenCommands, CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
 })
+
+/**
+ * Version 0.26.0
+ */
+export const R0_26_0 = release({
+  owner: "trame",
+  version: "0.26.0",
+  date: "2026-11-25",
+  what: "What the machine is asked: Node's versions described among the platform's effects, Git's version option (for libs/machine)",
+  fingerprint: "d45c7747ee5e5151",
+  language: "shared",
+  serves: [ChosenCommands, CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
+})
+
+/**
+ * Version 0.27.0
+ */
+export const R0_27_0 = release({
+  owner: "trame",
+  version: "0.27.0",
+  date: "2026-11-25",
+  what: "The family Verified counts a check a command the engine keeps runs (g122)",
+  fingerprint: "8feb27eab07a9b7d",
+  language: "shared",
+  serves: [ChosenCommands, CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
+})

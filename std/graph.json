@@ -1061,6 +1061,7 @@
                 "read"
               ],
               "platform": [],
+              "versions": [],
               "on": [
                 "process"
               ],
@@ -2217,7 +2218,7 @@
       "id": "obligations.Applied",
       "kind": "requirement",
       "title": "The decisions a shipment applies hold",
-      "source": "src/obligations.ts:84",
+      "source": "src/obligations.ts:86",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2229,7 +2230,7 @@
       "id": "obligations.AppliedCriteria",
       "kind": "acceptance",
       "title": "Criteria of the decisions applied",
-      "source": "src/obligations.ts:345",
+      "source": "src/obligations.ts:347",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2247,7 +2248,7 @@
       "id": "obligations.Checked",
       "kind": "requirement",
       "title": "The artefacts a shipment ships are checked",
-      "source": "src/obligations.ts:130",
+      "source": "src/obligations.ts:132",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2268,7 +2269,7 @@
       "id": "obligations.CheckedCriteria",
       "kind": "acceptance",
       "title": "Criteria of the artefacts checked",
-      "source": "src/obligations.ts:364",
+      "source": "src/obligations.ts:366",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2290,7 +2291,7 @@
       "id": "obligations.CheckWays",
       "kind": "vocabulary",
       "title": "Ways of checking",
-      "source": "src/obligations.ts:114",
+      "source": "src/obligations.ts:116",
       "fields": {
         "owner": "trame",
         "words": {
@@ -2304,7 +2305,7 @@
       "id": "obligations.Identified",
       "kind": "requirement",
       "title": "Who calls a shipment's programs is identified",
-      "source": "src/obligations.ts:175",
+      "source": "src/obligations.ts:177",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2316,7 +2317,7 @@
       "id": "obligations.IdentifiedCriteria",
       "kind": "acceptance",
       "title": "Criteria of who calls",
-      "source": "src/obligations.ts:260",
+      "source": "src/obligations.ts:262",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2342,7 +2343,7 @@
       "id": "obligations.Preceded",
       "kind": "requirement",
       "title": "The artefacts a shipment ships were shipped first by those that precede it",
-      "source": "src/obligations.ts:212",
+      "source": "src/obligations.ts:214",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2354,7 +2355,7 @@
       "id": "obligations.PrecededCriteria",
       "kind": "acceptance",
       "title": "Criteria of the stages",
-      "source": "src/obligations.ts:296",
+      "source": "src/obligations.ts:298",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2380,7 +2381,7 @@
       "id": "obligations.Published",
       "kind": "requirement",
       "title": "What people decided is published",
-      "source": "src/obligations.ts:196",
+      "source": "src/obligations.ts:198",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2392,7 +2393,7 @@
       "id": "obligations.PublishedCriteria",
       "kind": "acceptance",
       "title": "Criteria of what is published",
-      "source": "src/obligations.ts:282",
+      "source": "src/obligations.ts:284",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2422,7 +2423,7 @@
       "id": "obligations.Reviewed",
       "kind": "requirement",
       "title": "The data a shipment carries is reviewed",
-      "source": "src/obligations.ts:97",
+      "source": "src/obligations.ts:99",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2437,7 +2438,7 @@
       "id": "obligations.ReviewedCriteria",
       "kind": "acceptance",
       "title": "Criteria of the data reviewed",
-      "source": "src/obligations.ts:354",
+      "source": "src/obligations.ts:356",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2459,7 +2460,7 @@
       "id": "obligations.Ruled",
       "kind": "requirement",
       "title": "The project's rules hold",
-      "source": "src/obligations.ts:147",
+      "source": "src/obligations.ts:149",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2471,7 +2472,7 @@
       "id": "obligations.RuledCriteria",
       "kind": "acceptance",
       "title": "Criteria of the rules held",
-      "source": "src/obligations.ts:374",
+      "source": "src/obligations.ts:376",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2489,7 +2490,7 @@
       "id": "obligations.Safe",
       "kind": "requirement",
       "title": "The packages a shipment uses are safe",
-      "source": "src/obligations.ts:160",
+      "source": "src/obligations.ts:162",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2501,7 +2502,7 @@
       "id": "obligations.SafeCriteria",
       "kind": "acceptance",
       "title": "Criteria of the packages safe",
-      "source": "src/obligations.ts:383",
+      "source": "src/obligations.ts:385",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2519,7 +2520,7 @@
       "id": "obligations.Served",
       "kind": "requirement",
       "title": "The product a shipment serves holds",
-      "source": "src/obligations.ts:48",
+      "source": "src/obligations.ts:50",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2531,7 +2532,7 @@
       "id": "obligations.ServedCriteria",
       "kind": "acceptance",
       "title": "Criteria of the product served",
-      "source": "src/obligations.ts:335",
+      "source": "src/obligations.ts:337",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2553,7 +2554,7 @@
       "id": "obligations.Verified",
       "kind": "requirement",
       "title": "The code a shipment ships is verified",
-      "source": "src/obligations.ts:33",
+      "source": "src/obligations.ts:35",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2568,7 +2569,7 @@
       "id": "obligations.VerifiedCriteria",
       "kind": "acceptance",
       "title": "Criteria of the code verified",
-      "source": "src/obligations.ts:310",
+      "source": "src/obligations.ts:312",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2621,10 +2622,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "122",
+        "version": "123",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g122"
+        "at": "../generations/g123"
       },
       "diagnostics": []
     },
@@ -3459,6 +3460,36 @@
       "diagnostics": []
     },
     {
+      "id": "releases.R0_26_0",
+      "kind": "release",
+      "title": "Version 0.26.0",
+      "source": "src/releases.ts:402",
+      "fields": {
+        "owner": "trame",
+        "version": "0.26.0",
+        "date": "2026-11-25",
+        "what": "What the machine is asked: Node's versions described among the platform's effects, Git's version option (for libs/machine)",
+        "fingerprint": "d45c7747ee5e5151",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "releases.R0_27_0",
+      "kind": "release",
+      "title": "Version 0.27.0",
+      "source": "src/releases.ts:415",
+      "fields": {
+        "owner": "trame",
+        "version": "0.27.0",
+        "date": "2026-11-25",
+        "what": "The family Verified counts a check a command the engine keeps runs (g122)",
+        "fingerprint": "8feb27eab07a9b7d",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "releases.R0_3_0",
       "kind": "release",
       "title": "Version 0.3.0",
@@ -3567,7 +3598,7 @@
       "id": "repository.AutoMerge",
       "kind": "port",
       "title": "The automatic merge",
-      "source": "src/repository.ts:494",
+      "source": "src/repository.ts:495",
       "fields": {
         "owner": "trame",
         "declaredEffects": {
@@ -3584,7 +3615,7 @@
       "id": "repository.AutoMergeByGitHubCli",
       "kind": "implementation",
       "title": "The automatic merge, by GitHub's command line",
-      "source": "src/repository.ts:535",
+      "source": "src/repository.ts:536",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -3606,7 +3637,7 @@
       "id": "repository.AutoMergeInAClaudeSession",
       "kind": "implementation",
       "title": "The automatic merge, in a session of Claude Code",
-      "source": "src/repository.ts:545",
+      "source": "src/repository.ts:546",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -3661,7 +3692,7 @@
       "id": "repository.BranchesInMemory",
       "kind": "function",
       "title": "Branches kept in memory",
-      "source": "src/repository.ts:359",
+      "source": "src/repository.ts:360",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3673,7 +3704,7 @@
       "id": "repository.BranchesKept",
       "kind": "port",
       "title": "The branches a scenario keeps",
-      "source": "src/repository.ts:353",
+      "source": "src/repository.ts:354",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -3684,7 +3715,7 @@
       "id": "repository.GitCliBranches",
       "kind": "implementation",
       "title": "Git's branches",
-      "source": "src/repository.ts:336",
+      "source": "src/repository.ts:337",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -3709,12 +3740,16 @@
       "source": "src/repository.ts:306",
       "fields": {
         "owner": "trame",
-        "source": "Git manual: git-rev-parse (--abbrev-ref), git-push (--set-upstream), git-fetch, git-diff (--name-only, A...B: since the merge base), git-checkout, git-merge (--ff-only)",
+        "source": "Git manual: git (--version), git-rev-parse (--abbrev-ref), git-push (--set-upstream), git-fetch, git-diff (--name-only, A...B: since the merge base), git-checkout, git-merge (--ff-only)",
         "url": "https://git-scm.com/docs/git-diff",
         "constants": {
           "program": {
             "value": "git",
             "meaning": "Git's command line"
+          },
+          "version": {
+            "value": "--version",
+            "meaning": "Says which Git this is: it answers when Git is installed"
           },
           "revParse": {
             "value": "rev-parse",
@@ -3784,7 +3819,7 @@
       "id": "repository.GitHubAutoMerge",
       "kind": "standard",
       "title": "GitHub's ways of asking a merge once it holds",
-      "source": "src/repository.ts:502",
+      "source": "src/repository.ts:503",
       "fields": {
         "owner": "trame",
         "source": "GitHub CLI manual: gh pr merge (--auto, --merge, --squash, --rebase, --repo); the proxy of a Claude Code session, answering a call to GraphQL: PUT /repos/{owner}/{repo}/pulls/{n}/ccr/auto_merge",
@@ -3834,7 +3869,7 @@
       "id": "repository.GitHubCliPullRequests",
       "kind": "implementation",
       "title": "GitHub's pull requests, by its command line",
-      "source": "src/repository.ts:525",
+      "source": "src/repository.ts:526",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -3881,7 +3916,7 @@
       "id": "repository.GitHubPullRequestsApi",
       "kind": "standard",
       "title": "GitHub's API for pull requests",
-      "source": "src/repository.ts:442",
+      "source": "src/repository.ts:443",
       "fields": {
         "owner": "trame",
         "source": "GitHub REST API: Pulls (List pull requests: head, state; Create a pull request: title, head, base, body; number, html_url; Get a pull request: head.ref, head.sha, base.ref, state; List pull requests files: filename; Merge a pull request: merge_method), Checks (List check runs for a Git reference: check_runs, name, status, conclusion); GitHub CLI manual: gh api (--method, --input, a query)",
@@ -4236,7 +4271,7 @@
       "id": "repository.PullRequests",
       "kind": "port",
       "title": "Pull requests",
-      "source": "src/repository.ts:429",
+      "source": "src/repository.ts:430",
       "fields": {
         "owner": "trame",
         "declaredEffects": {
@@ -4283,7 +4318,7 @@
       "id": "repository.PullRequestsInMemory",
       "kind": "function",
       "title": "Pull requests kept in memory",
-      "source": "src/repository.ts:577",
+      "source": "src/repository.ts:578",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4300,7 +4335,7 @@
       "id": "repository.PullRequestsKept",
       "kind": "port",
       "title": "The pull requests a scenario keeps",
-      "source": "src/repository.ts:568",
+      "source": "src/repository.ts:569",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -4391,7 +4426,7 @@
       "id": "repository.RepositoryThroughItsApi",
       "kind": "adr",
       "title": "A repository is set by its project's graph",
-      "source": "src/repository.ts:628",
+      "source": "src/repository.ts:629",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5288,7 +5323,7 @@
       "kind": "shipment",
       "title": "The next version",
       "source": "src/sdlc.ts:87",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "version"
@@ -5689,9 +5724,7 @@
           "web.WebSpeechApi"
         ]
       },
-      "diagnostics": [
-        "warning: To ship: The standard library is unknown"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.PackagesSafe",
@@ -5796,7 +5829,7 @@
       "kind": "artifact",
       "title": "The standard library",
       "source": "src/sdlc.ts:22",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "src",
@@ -5804,11 +5837,9 @@
       },
       "result": {
         "path": "src",
-        "code": "b03221bd"
+        "code": "f8ce65e4"
       },
-      "diagnostics": [
-        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.VersionMode",
@@ -8588,6 +8619,76 @@
     },
     {
       "from": "releases.R0_25_0",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_26_0",
+      "to": "product.ChosenCommands",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_26_0",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_26_0",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_26_0",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_26_0",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_26_0",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_26_0",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_27_0",
+      "to": "product.ChosenCommands",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_27_0",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_27_0",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_27_0",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_27_0",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_27_0",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_27_0",
       "to": "product.VersionsThatHold",
       "kind": "serves"
     },

@@ -374,6 +374,38 @@ Extension points: trame doctor's MachineNeeds (Playwright's browser installed) a
 - Released by: trame
 - Serves: [Commands chosen, not written again](product.md#ChosenCommands), [A published value is cited, not copied](product.md#CitedNotCopied), [Known designs, named](product.md#KnownDesigns), [Ports of the platform, realized once](product.md#RealizedOnce), [Shared operations instead of literals](product.md#SharedOperations), [Rules applied, not written again](product.md#SharedRules), [Versions that hold](product.md#VersionsThatHold)
 
+<a id="R0_26_0"></a>
+
+### Version 0.26.0
+
+`R0_26_0` · `src/releases.ts:402`
+
+What the machine is asked: Node's versions described among the platform's effects, Git's version option (for libs/machine)
+
+- Version: `0.26.0`
+- Released on: 25 November 2026
+- Fingerprint: `d45c7747ee5e5151`
+- Language: the repository's, shared
+
+- Released by: trame
+- Serves: [Commands chosen, not written again](product.md#ChosenCommands), [A published value is cited, not copied](product.md#CitedNotCopied), [Known designs, named](product.md#KnownDesigns), [Ports of the platform, realized once](product.md#RealizedOnce), [Shared operations instead of literals](product.md#SharedOperations), [Rules applied, not written again](product.md#SharedRules), [Versions that hold](product.md#VersionsThatHold)
+
+<a id="R0_27_0"></a>
+
+### Version 0.27.0
+
+`R0_27_0` · `src/releases.ts:415`
+
+The family Verified counts a check a command the engine keeps runs (g122)
+
+- Version: `0.27.0`
+- Released on: 25 November 2026
+- Fingerprint: `8feb27eab07a9b7d`
+- Language: the repository's, shared
+
+- Released by: trame
+- Serves: [Commands chosen, not written again](product.md#ChosenCommands), [A published value is cited, not copied](product.md#CitedNotCopied), [Known designs, named](product.md#KnownDesigns), [Ports of the platform, realized once](product.md#RealizedOnce), [Shared operations instead of literals](product.md#SharedOperations), [Rules applied, not written again](product.md#SharedRules), [Versions that hold](product.md#VersionsThatHold)
+
 <a id="R0_3_0"></a>
 
 ### Version 0.3.0

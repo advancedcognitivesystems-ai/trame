@@ -4416,10 +4416,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "trame",
-        "version": "122",
+        "version": "123",
         "joins": "language",
         "from": "path",
-        "at": "../../generations/g122"
+        "at": "../../generations/g123"
       },
       "diagnostics": []
     },
@@ -4446,10 +4446,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "std",
-        "version": "0.25.0",
+        "version": "0.27.0",
         "joins": "library",
         "from": "path",
-        "at": "../../std/releases/0.25.0"
+        "at": "../../std/releases/0.27.0"
       },
       "diagnostics": []
     },
@@ -7156,7 +7156,7 @@
       },
       "result": {
         "path": "src",
-        "code": "2ef182a5"
+        "code": "6d4e9435"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"

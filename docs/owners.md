@@ -4,8 +4,8 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| Trame's maintainers | 0 | 0 | 1 | 0 |
-| trame | 0 | 0 | 3 | 771 |
+| Trame's maintainers | 0 | 0 | 2 | 0 |
+| trame | 0 | 0 | 4 | 775 |
 
 <a id="Trame's maintainers"></a>
 
@@ -15,6 +15,7 @@
 
 | Severity | Code | What | Where | Owner | Consequence |
 |---|---|---|---|---|---|
+| warning | `check-stale` | Checked on another build of its artefacts, by another version of its program or another engine: to check again | [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws) | Trame's maintainers |  |
 | warning | `check-stale` | Checked on another build of its artefacts, by another version of its program or another engine: to check again | [The repository is read from GitHub](sdlc.md#RepositoryRead) | Trame's maintainers |  |
 
 <a id="trame"></a>
@@ -23,6 +24,7 @@
 
 | Severity | Code | What | Where | Owner | Consequence |
 |---|---|---|---|---|---|
+| warning | `shipment-awaits` | To ship: The candidate plays the laws is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
 | warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | trame |  |
 | warning | `shipment-awaits` | To ship: The repository is read from GitHub is unknown | [The repository as decided](sdlc.md#RepositorySet) | trame |  |
 | warning | `shipment-awaits` | To ship: The pull requests' workflow is unknown | [The files that run it elsewhere](sdlc.md#RunnersWritten) | trame |  |
@@ -373,6 +375,7 @@
 | [esbuild](packages.md#EsbuildPackage) | Package | **held** |
 | [Grammar of HCL](packages.md#HclGrammar) | Package | **held** |
 | [Grammar of HTML](packages.md#HtmlGrammar) | Package | **held** |
+| [The questions of the machine](packages.md#Machine) | Package |  |
 | [Types of Node.js](packages.md#NodeTypes) | Package | **held** |
 | [npm's lockfile](packages.md#NpmLockfile) | Standard |  |
 | [Audit of the packages](packages.md#PackageAudit) | Decision |  |
@@ -490,7 +493,7 @@
 | [The traversal API is the only way to read the graph](principles.md#OneWayToRead) | Architecture decision | **held** |
 | [A package is used by its name](principles.md#PackagesByName) | Architecture decision | **held** |
 | [The prelude: the runtime of the language](principles.md#PreludeLayer) | Architecture decision | **held** |
-| [A version ships through the graph](principles.md#ShippedThroughTheGraph) | Architecture decision | **held** |
+| [A version ships through the graph](principles.md#ShippedThroughTheGraph) | Architecture decision | **unknown** |
 | [A technology is chosen in one node](principles.md#TechnologyInOneNode) | Architecture decision | **held** |
 | [Trame builds Trame](principles.md#TrameBuildsTrame) | Architecture decision | **held** |
 | [An undecided value blocks; it does not crash](principles.md#UndecidedBlocks) | Architecture decision | **held** |
@@ -538,6 +541,7 @@
 | [Generation 120](releases.md#G120) | Release |  |
 | [Generation 121](releases.md#G121) | Release |  |
 | [Generation 122](releases.md#G122) | Release |  |
+| [Generation 123](releases.md#G123) | Release |  |
 | [Generation 13](releases.md#G13) | Release |  |
 | [Generation 14](releases.md#G14) | Release |  |
 | [Generation 15](releases.md#G15) | Release |  |
@@ -686,7 +690,7 @@
 | [GitHub merges once it holds, asked in a session](sdlc.md#AutoMergeInASession) | Technical choice | **unknown** |
 | [GitHub merges once it holds, asked by its command line](sdlc.md#AutoMergeOnTheMachine) | Technical choice | **unknown** |
 | [The candidate is checked by programs](sdlc.md#CandidateChecked) | Obligation |  |
-| [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws) | Check | **held** |
+| [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws) | Check | **unknown** |
 | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | Check | **held** |
 | [The commands Trame takes from std](sdlc.md#CommandsOfStd) | Technical choice | **held** |
 | [Its callers identified](sdlc.md#EngineCallersIdentified) | Obligation |  |
@@ -706,10 +710,12 @@
 | [How the repository merges into main](sdlc.md#MainBranch) | Decision |  |
 | [Trame's maintainers](sdlc.md#Maintainers) | Role |  |
 | [How a change merges](sdlc.md#MergeMode) | Policy |  |
-| [The next generation](sdlc.md#NextGeneration) | Shipment | **held** |
+| [The next generation](sdlc.md#NextGeneration) | Shipment | **unknown** |
 | [The graph page is opened as a person would](sdlc.md#OpeningTheGraphPage) | Scenario | **held** |
 | [Open the graph page](sdlc.md#OpenTheGraphPage) | Entry point | **held** |
 | [Trame's settings, as std's commands read them](sdlc.md#OurCommandsSettled) | Scenario | **held** |
+| [The machines Trame runs on](sdlc.md#OurMachines) | Decision |  |
+| [What the machine runs, for Trame](sdlc.md#OurMachineSettings) | Function | **held** |
 | [How a version is carried across Trame's repository](sdlc.md#OurPropagation) | Function | **held** |
 | [How Trame's pull requests are opened](sdlc.md#OurPullRequests) | Function | **held** |
 | [Trame's settings in the scenarios](sdlc.md#OurSettingsInTheScenarios) | Technical choice | **held** |

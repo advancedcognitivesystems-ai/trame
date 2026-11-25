@@ -24,10 +24,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "122",
+        "version": "123",
         "joins": "language",
         "from": "path",
-        "at": "../../generations/g122"
+        "at": "../../generations/g123"
       },
       "diagnostics": []
     },
@@ -224,7 +224,7 @@
       },
       "result": {
         "path": "src",
-        "code": "1beef41b"
+        "code": "ce6356f9"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"

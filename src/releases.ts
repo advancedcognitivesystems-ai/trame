@@ -1817,3 +1817,18 @@ export const G122 = release({
   differences: "differences.diff",
   assembledBy: G121,
 })
+
+/**
+ * Generation 123
+ */
+export const G123 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g123",
+  date: "2026-11-25",
+  what: "The engine reads std 0.26.0's table of the platform: Node's versions described, for the questions of the machine (E3, part 3)",
+  fingerprint: "49458fb9c60cfe88",
+  language: "shared",
+  archive: "0118572b49b3ed10",
+  assembledBy: G122,
+})
