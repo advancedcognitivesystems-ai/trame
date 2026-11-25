@@ -54,7 +54,7 @@ The libraries the project imports: their nodes take part in the graph, their doc
 
 | Severity | Code | What | Where | Owner | Consequence |
 |---|---|---|---|---|---|
-| warning | `shipment-awaits` | To ship: The engine is unknown | [Into the main branch](sdlc.md#IntoMain) | trame |  |
+| warning | `check-stale` | Checked on another build of its artefacts, by another version of its program or another engine: to check again | [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws) | Trame's maintainers |  |
+| warning | `shipment-awaits` | To ship: The candidate plays the laws is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
 | warning | `check-stale` | Checked on another build of its artefacts, by another version of its program or another engine: to check again | [The repository is read from GitHub](sdlc.md#RepositoryRead) | Trame's maintainers |  |
 | warning | `shipment-awaits` | To ship: The repository is read from GitHub is unknown | [The repository as decided](sdlc.md#RepositorySet) | trame |  |
-| warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The engine](sdlc.md#TheEngine) | trame |  |

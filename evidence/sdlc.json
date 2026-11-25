@@ -6168,6 +6168,18 @@
     "seal": "38b6f5b98dc782630021f6f9516764d503930e43cf0f1ecbf3602f185f7f347d"
   },
   {
+    "node": "sdlc.CandidateRunsOnTheMachine",
+    "at": "2026-11-25",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "95fffe5f",
+    "code": "f255e810",
+    "engine": "f5874c0cc2ec8be2",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "d69c3179f55dffe981c587eed829829bc26181b32cd4faf45632710b1081aae8"
+  },
+  {
     "node": "sdlc.EngineCandidate",
     "at": "2026-11-25",
     "source": "built",
@@ -6189,6 +6201,18 @@
     "by": "claude",
     "signature": "attribution",
     "seal": "4a4af5eab548565753caab35455491d8bf0786483855575d7f3556e691303a19"
+  },
+  {
+    "node": "sdlc.EngineCandidate",
+    "at": "2026-11-25",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "e2cb817ddfa9eb48c1df56fd69f355a67a7c2b262c442002a898c0fcc82f5268",
+    "code": "e40674b7",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "f5874c0cc2ec8be2",
+    "seal": "0cf6159ad60fa58d431be835a3794f3fbd306ed8df3c3803204ae9218451a1b0"
   },
   {
     "node": "sdlc.GraphPage",
@@ -6237,6 +6261,18 @@
     "seal": "f7021c0eff65e132f9d2b6957c8f59cbf46de5fc37e9a07c3dea98ebc3ba85e4"
   },
   {
+    "node": "sdlc.GraphPage",
+    "at": "2026-11-25",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "a11a9fbbf008dff60fe338224a541c2db16940b74d740bf08c55117a6995f6db",
+    "code": "5a4d43bd",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "f5874c0cc2ec8be2",
+    "seal": "590cadcd755ace41b48600510a1cd047350cd28d11e119fccbd7fb7f88c4c310"
+  },
+  {
     "node": "sdlc.GraphPageOpens",
     "at": "2026-11-25",
     "source": "check",
@@ -6259,6 +6295,18 @@
     "by": "claude",
     "signature": "attribution",
     "seal": "826aa358c479e444b272f18df18c9c79f53e9b878d712dfa9f89651aef287b47"
+  },
+  {
+    "node": "sdlc.GraphPageOpens",
+    "at": "2026-11-25",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "dd8e819b",
+    "code": "c571d09a",
+    "engine": "f5874c0cc2ec8be2",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "d179704b9b07f15049f720b5f41fee820037a6af56eb5da1eef6e64f27ba94b1"
   },
   {
     "node": "sdlc.NextGeneration",
@@ -6338,5 +6386,17 @@
     "by": "claude",
     "signature": "attribution",
     "seal": "6e42f9b49dd7af6e35e04ffea1eed5cf71b2d087351f7e4a8bc1708334241b50"
+  },
+  {
+    "node": "sdlc.TheEngine",
+    "at": "2026-11-25",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "9e319774981e0e7c9768c6b292215fb710d85a51d6d0033a7b057c0c098ad995",
+    "code": "8ffcf4c8",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "f5874c0cc2ec8be2",
+    "seal": "1333b79c2e131f8e3cc7cd1c3440e222b65f1efb79421529be3e05a1c643f384"
   }
 ]

@@ -14529,7 +14529,7 @@
       "kind": "adr",
       "title": "A version ships through the graph",
       "source": "src/principles.ts:415",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "Two products ship differently (a page placed where it is served, an engine frozen into a generation) and their pipelines lived in scripts and in their authors' heads: nothing said what had been checked, by whom, on which version, nor why a version could go.",
@@ -18149,14 +18149,16 @@
       "kind": "check",
       "title": "The candidate plays the laws",
       "source": "src/sdlc.ts:76",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame"
       },
       "result": {
         "code": "fb9885c6"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
+      ]
     },
     {
       "id": "sdlc.CandidateRunsOnTheMachine",
@@ -18355,7 +18357,7 @@
       "kind": "shipment",
       "title": "Into the main branch",
       "source": "src/sdlc.ts:371",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "main"
@@ -19254,9 +19256,7 @@
           "typescript.WorldGlobals"
         ]
       },
-      "diagnostics": [
-        "warning: To ship: The engine is unknown"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.LanguageServed",
@@ -19332,7 +19332,7 @@
       "kind": "shipment",
       "title": "The next generation",
       "source": "src/sdlc.ts:344",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "generation"
@@ -20258,7 +20258,9 @@
           "browser.ShowGraph"
         ]
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: To ship: The candidate plays the laws is unknown"
+      ]
     },
     {
       "id": "sdlc.OpeningTheGraphPage",
@@ -20809,7 +20811,7 @@
       "kind": "artifact",
       "title": "The engine",
       "source": "src/sdlc.ts:357",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "src",
@@ -20819,9 +20821,7 @@
         "path": "src",
         "code": "8ffcf4c8"
       },
-      "diagnostics": [
-        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.TheRepository",

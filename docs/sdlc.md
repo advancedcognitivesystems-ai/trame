@@ -8,10 +8,10 @@
 
 | Severity | Code | What | Where | Owner | Consequence |
 |---|---|---|---|---|---|
-| warning | `shipment-awaits` | To ship: The engine is unknown | [Into the main branch](#IntoMain) | trame |  |
+| warning | `check-stale` | Checked on another build of its artefacts, by another version of its program or another engine: to check again | [The candidate plays the laws](#CandidateKeepsTheLaws) | Trame's maintainers |  |
+| warning | `shipment-awaits` | To ship: The candidate plays the laws is unknown | [The next generation](#NextGeneration) | trame |  |
 | warning | `check-stale` | Checked on another build of its artefacts, by another version of its program or another engine: to check again | [The repository is read from GitHub](#RepositoryRead) | Trame's maintainers |  |
 | warning | `shipment-awaits` | To ship: The repository is read from GitHub is unknown | [The repository as decided](#RepositorySet) | trame |  |
-| warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The engine](#TheEngine) | trame |  |
 
 ## Decisions
 
@@ -698,7 +698,7 @@ The program of Trame's command line, assembled from the graph for a machine: wha
 
 - Path: `out/local/trame-cli.ts`
 
-Built 25 November 2026 by claude, fingerprint `6194e75081a20274e6dd14cae2dc89c9a56feb936913de53c3de712b0591bfd3`.
+Built 25 November 2026 by claude, fingerprint `e2cb817ddfa9eb48c1df56fd69f355a67a7c2b262c442002a898c0fcc82f5268`.
 
 Shipped by [The next generation](#NextGeneration) 8 November 2026, fingerprint `7b37d575242fcf8f0998170f818ac1b266c2f3408a5dc31f62eedaf3cbf0f2f4`.
 
@@ -755,7 +755,7 @@ The page trame export writes of Trame's graph, which a browser opens as it is: i
 - Path: `trame-page.html`
 - Media type: `text/html; charset=utf-8`
 
-Built 25 November 2026 by claude, fingerprint `d4e3f6382b06f7f0d6d39744fe20d59f7575910033726728abb8e7f389538e41`.
+Built 25 November 2026 by claude, fingerprint `a11a9fbbf008dff60fe338224a541c2db16940b74d740bf08c55117a6995f6db`.
 
 Shipped by [The next generation](#NextGeneration) 8 November 2026, fingerprint `99d138159c0e7fce465ffd74ec828b3cfa1bb501acf7d08ed97f495b21eca67a`.
 
@@ -894,13 +894,13 @@ Shipped by [The files that run it elsewhere](#RunnersWritten) 25 November 2026, 
 
 ### The engine
 
-`TheEngine` · `src/sdlc.ts:357` · status: **unknown**
+`TheEngine` · `src/sdlc.ts:357` · status: **held**
 
 Trame as its people write it: what a pull request brings into the main branch, all its code.
 
 - Path: `src`
 
-Built 24 November 2026 by claude, fingerprint `c6d7afb074b3b065479b80d0b6251ded3e750d2b04eb945b85ae3b9c0e49de91`.
+Built 25 November 2026 by claude, fingerprint `9e319774981e0e7c9768c6b292215fb710d85a51d6d0033a7b057c0c098ad995`.
 
 Shipped by [Into the main branch](#IntoMain) 19 November 2026, fingerprint `70056b0e0c3584fdb3e15ff38356564d76375a389952ff9247a05e00dede53af`.
 
@@ -914,7 +914,7 @@ Shipped by [Into the main branch](#IntoMain) 19 November 2026, fingerprint `7005
 
 ### The candidate plays the laws
 
-`CandidateKeepsTheLaws` · `src/sdlc.ts:76` · status: **held**
+`CandidateKeepsTheLaws` · `src/sdlc.ts:76` · status: **unknown**
 
 The candidate engine plays the laws of every kind and view on drawn values: one broken law, and it is not shipped.
 
@@ -980,7 +980,7 @@ Passed 20 November 2026 by claude.
 
 ### Into the main branch
 
-`IntoMain` · `src/sdlc.ts:371` · status: **unknown**
+`IntoMain` · `src/sdlc.ts:371` · status: **held**
 
 A pull request into main: it merges once it holds, as the repository's settings say (D1). The programs of the SDLC it reaches are those of this machine.
 
@@ -988,7 +988,7 @@ A pull request into main: it merges once it holds, as the repository's settings 
 
 | Obligation | Status | Why |
 |---|---|---|
-| [The engine](#TheEngine) | **unknown** | shipped |
+| [The engine](#TheEngine) | **held** | shipped |
 | [Effects come from the vocabulary](architecture.md#KnownEffects) | **held** | [The rules of the architecture hold](#ArchitectureRuled) |
 | [Only commands write](architecture.md#OnlyCommandsWrite) | **held** | [The rules of the architecture hold](#ArchitectureRuled) |
 | [Rendering does not read the graph](architecture.md#RenderingWithoutGraph) | **held** | [The rules of the architecture hold](#ArchitectureRuled) |
@@ -1052,7 +1052,7 @@ Shipped 19 November 2026 by claude; its dossier: `evidence/shipments/IntoMain-20
 
 ### The next generation
 
-`NextGeneration` · `src/sdlc.ts:344` · status: **held**
+`NextGeneration` · `src/sdlc.ts:344` · status: **unknown**
 
 The engine as the graph describes it now, frozen into the next generation and pinned by Trame and the example, the way a generation is made: what it must prove is derived from what the candidate reaches (the laws it plays, the scenarios of its code, the requirements of the goals it serves, the rules, the packages), nothing listed by hand. The advance deploys it, and refuses a candidate the requirement "Accept a candidate" does not accept.
 
@@ -1102,7 +1102,7 @@ The engine as the graph describes it now, frozen into the next generation and pi
 | [Effects come from the vocabulary](architecture.md#KnownEffects) | **held** | [The rules of the architecture hold](#ArchitectureRuled) |
 | [Only commands write](architecture.md#OnlyCommandsWrite) | **held** | [The rules of the architecture hold](#ArchitectureRuled) |
 | [Rendering does not read the graph](architecture.md#RenderingWithoutGraph) | **held** | [The rules of the architecture hold](#ArchitectureRuled) |
-| [The candidate plays the laws](#CandidateKeepsTheLaws) | **held** | [The candidate is checked by programs](#CandidateChecked), for [The candidate engine](#EngineCandidate) |
+| [The candidate plays the laws](#CandidateKeepsTheLaws) | **unknown** | [The candidate is checked by programs](#CandidateChecked), for [The candidate engine](#EngineCandidate) |
 | [The candidate runs on the machine](#CandidateRunsOnTheMachine) | **held** | [The candidate is checked by programs](#CandidateChecked), for [The candidate engine](#EngineCandidate) |
 | [The graph page opens](#GraphPageOpens) | **held** | [The candidate is checked by programs](#CandidateChecked), for [The graph page](#GraphPage) |
 | [Grammar of TypeScript](packages.md#TypeScriptGrammar) | **held** | [The packages are safe](#EnginePackagesSafe), for [TypeScript](typescript.md#TypeScript) |
