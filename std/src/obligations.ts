@@ -3,7 +3,7 @@
 import { requirement } from "#trame/kinds/requirement"
 import { acceptance } from "#trame/kinds/acceptance"
 import { vocabulary, type WordOf } from "#trame/kinds/vocabulary"
-import { KindName, EdgeName, CheckEdge, ReviewEdge, ShipmentEdge, EntryEdge, AudienceField, PublicationState } from "#trame/kernel"
+import { KindName, EdgeName, CheckEdge, CheckField, ReviewEdge, ShipmentEdge, EntryEdge, AudienceField, PublicationState } from "#trame/kernel"
 import type { GraphSketch, SketchNode, ObligationReach, ObligationFinding } from "#trame/kernel"
 import { SharedRules } from "./product"
 import { Counts } from "./algebra"
@@ -20,14 +20,16 @@ const edgesTo = (sketch: GraphSketch, to: string, name: string) => sketch.edges.
 const kindOf = (sketch: GraphSketch, ref: string) => sketch.nodes.find((n) => n.ref === ref)?.kind
 /** What a machine verifies a node with: the scenarios, and the checks a program runs (one made by hand is not). */
 const verifiedBy = (sketch: GraphSketch, ref: string) => edgesTo(sketch, ref, EdgeName.verifies).filter((s) =>
-  kindOf(sketch, s) === KindName.scenario || (kindOf(sketch, s) === KindName.check && edgesFrom(sketch, s, CheckEdge.runs).length > 0))
+  kindOf(sketch, s) === KindName.scenario || (kindOf(sketch, s) === KindName.check && (edgesFrom(sketch, s, CheckEdge.runs).length > 0 || runByTheEngine(sketch, s))))
+/** A check a command the engine keeps runs (since g122): a program runs it on a machine too. */
+const runByTheEngine = (sketch: GraphSketch, ref: string) => typeof sketch.nodes.find((n) => n.ref === ref)?.field(CheckField.command) === typeof CheckField.command
 /** The nodes to prove, once each: the first reached node that brought one in stays its reason. */
 const once = (obliged: { node: string; via: string }[]) => obliged.filter((o, i) => obliged.findIndex((x) => x.node === o.node) === i)
 
 /**
  * The code a shipment ships is verified
- * Each scenario that verifies a node the shipment reaches, and each check whose program verifies one on a machine, is to
- * prove. A reached node of the kinds named (entry points, functions…) that none of them verifies is a gap: a check made
+ * Each scenario that verifies a node the shipment reaches, and each check whose program verifies one on a machine (its
+ * own, or a command the engine keeps, since g122), is to prove. A reached node of the kinds named (entry points, functions…) that none of them verifies is a gap: a check made
  * by hand is the family Checked's business, and proves nothing a machine can run.
  */
 export const Verified = requirement({

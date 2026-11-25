@@ -2218,7 +2218,7 @@
       "id": "obligations.Applied",
       "kind": "requirement",
       "title": "The decisions a shipment applies hold",
-      "source": "src/obligations.ts:84",
+      "source": "src/obligations.ts:86",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2230,7 +2230,7 @@
       "id": "obligations.AppliedCriteria",
       "kind": "acceptance",
       "title": "Criteria of the decisions applied",
-      "source": "src/obligations.ts:345",
+      "source": "src/obligations.ts:347",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2248,7 +2248,7 @@
       "id": "obligations.Checked",
       "kind": "requirement",
       "title": "The artefacts a shipment ships are checked",
-      "source": "src/obligations.ts:130",
+      "source": "src/obligations.ts:132",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2269,7 +2269,7 @@
       "id": "obligations.CheckedCriteria",
       "kind": "acceptance",
       "title": "Criteria of the artefacts checked",
-      "source": "src/obligations.ts:364",
+      "source": "src/obligations.ts:366",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2291,7 +2291,7 @@
       "id": "obligations.CheckWays",
       "kind": "vocabulary",
       "title": "Ways of checking",
-      "source": "src/obligations.ts:114",
+      "source": "src/obligations.ts:116",
       "fields": {
         "owner": "trame",
         "words": {
@@ -2305,7 +2305,7 @@
       "id": "obligations.Identified",
       "kind": "requirement",
       "title": "Who calls a shipment's programs is identified",
-      "source": "src/obligations.ts:175",
+      "source": "src/obligations.ts:177",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2317,7 +2317,7 @@
       "id": "obligations.IdentifiedCriteria",
       "kind": "acceptance",
       "title": "Criteria of who calls",
-      "source": "src/obligations.ts:260",
+      "source": "src/obligations.ts:262",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2343,7 +2343,7 @@
       "id": "obligations.Preceded",
       "kind": "requirement",
       "title": "The artefacts a shipment ships were shipped first by those that precede it",
-      "source": "src/obligations.ts:212",
+      "source": "src/obligations.ts:214",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2355,7 +2355,7 @@
       "id": "obligations.PrecededCriteria",
       "kind": "acceptance",
       "title": "Criteria of the stages",
-      "source": "src/obligations.ts:296",
+      "source": "src/obligations.ts:298",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2381,7 +2381,7 @@
       "id": "obligations.Published",
       "kind": "requirement",
       "title": "What people decided is published",
-      "source": "src/obligations.ts:196",
+      "source": "src/obligations.ts:198",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2393,7 +2393,7 @@
       "id": "obligations.PublishedCriteria",
       "kind": "acceptance",
       "title": "Criteria of what is published",
-      "source": "src/obligations.ts:282",
+      "source": "src/obligations.ts:284",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2423,7 +2423,7 @@
       "id": "obligations.Reviewed",
       "kind": "requirement",
       "title": "The data a shipment carries is reviewed",
-      "source": "src/obligations.ts:97",
+      "source": "src/obligations.ts:99",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2438,7 +2438,7 @@
       "id": "obligations.ReviewedCriteria",
       "kind": "acceptance",
       "title": "Criteria of the data reviewed",
-      "source": "src/obligations.ts:354",
+      "source": "src/obligations.ts:356",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2460,7 +2460,7 @@
       "id": "obligations.Ruled",
       "kind": "requirement",
       "title": "The project's rules hold",
-      "source": "src/obligations.ts:147",
+      "source": "src/obligations.ts:149",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2472,7 +2472,7 @@
       "id": "obligations.RuledCriteria",
       "kind": "acceptance",
       "title": "Criteria of the rules held",
-      "source": "src/obligations.ts:374",
+      "source": "src/obligations.ts:376",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2490,7 +2490,7 @@
       "id": "obligations.Safe",
       "kind": "requirement",
       "title": "The packages a shipment uses are safe",
-      "source": "src/obligations.ts:160",
+      "source": "src/obligations.ts:162",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2502,7 +2502,7 @@
       "id": "obligations.SafeCriteria",
       "kind": "acceptance",
       "title": "Criteria of the packages safe",
-      "source": "src/obligations.ts:383",
+      "source": "src/obligations.ts:385",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2520,7 +2520,7 @@
       "id": "obligations.Served",
       "kind": "requirement",
       "title": "The product a shipment serves holds",
-      "source": "src/obligations.ts:48",
+      "source": "src/obligations.ts:50",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2532,7 +2532,7 @@
       "id": "obligations.ServedCriteria",
       "kind": "acceptance",
       "title": "Criteria of the product served",
-      "source": "src/obligations.ts:335",
+      "source": "src/obligations.ts:337",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2554,7 +2554,7 @@
       "id": "obligations.Verified",
       "kind": "requirement",
       "title": "The code a shipment ships is verified",
-      "source": "src/obligations.ts:33",
+      "source": "src/obligations.ts:35",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2569,7 +2569,7 @@
       "id": "obligations.VerifiedCriteria",
       "kind": "acceptance",
       "title": "Criteria of the code verified",
-      "source": "src/obligations.ts:310",
+      "source": "src/obligations.ts:312",
       "status": "held",
       "fields": {
         "owner": "trame",
