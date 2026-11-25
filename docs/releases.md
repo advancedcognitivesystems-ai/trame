@@ -548,6 +548,28 @@ Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Ge
 - Released by: trame
 - Releases: [Trame on the command line](architecture.md#TrameCli)
 - Assembled by: [Generation 120](#G120)
+- Assembled: [Generation 122](#G122)
+
+<a id="G122"></a>
+
+### Generation 122
+
+`G122` · `src/releases.ts:1808`
+
+A check runs a command the engine keeps and verifies the project's add-ons to it; trame doctor's questions are add-ons of the engine's own extension point (E3, part 3)
+
+Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Generation 121](#G121).
+
+- Version: `g122`
+- Released on: 25 November 2026
+- Fingerprint: `d5cd96fe091a0108`
+- Language: the repository's, shared
+- Language archived: `0118572b49b3ed10`
+- Accepted differences: `differences.diff`
+
+- Released by: trame
+- Releases: [Trame on the command line](architecture.md#TrameCli)
+- Assembled by: [Generation 121](#G121)
 
 <a id="G13"></a>
 

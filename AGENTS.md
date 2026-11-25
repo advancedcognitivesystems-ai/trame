@@ -132,7 +132,7 @@ A project declares how a version of it ships (ADR "A version ships through the g
 |---|---|---|
 | `role` | who holds it (`people`), whether they may review their own work (`notAuthor`), how evidence is signed, who may act for one of its people until a day (`delegations: [{ agent, for, until }]`, C4, g115) | — |
 | `artifact` | what is produced (`path`, or where its delivery writes it), its media type, what produces it (`producedBy`: a delivery, an entry point, a component, a release), or a version of the project itself (`version: true`, its sources: all its code, which the shipment that ships it reaches whole, g101), the programs it `carries` when its producer does not say (a page exported carries its component, for the browser), the `environment` a component it is is assembled for when not its shipment's (the page's program, for the browser); wired, it gives `{ path, media }`, so a program names the artefact, never its path | `built`: the SHA-256 of the file (of its files, for a directory), with the code it was made from (g70) and the engine that made it (g72): it holds while that code is the code as it is and the project pins that engine |
-| `check` | what a scenario in memory cannot check: run by a program of the SDLC (`runs`) or made by hand (`steps`), signed by a role (`by`), on artefacts (`on`); the code it proves (`verifies`): what its program runs on a machine, or what its artefacts carry | `check`: passed or failed, for the artefacts as last built from the code as it is, by its program as it is (g70) |
+| `check` | what a scenario in memory cannot check: run by a program of the SDLC (`runs`), by a command the engine keeps (`command: EngineCommand.doctor`, g122: it proves the project's add-ons to that command) or made by hand (`steps`), signed by a role (`by`), on artefacts (`on`); the code it proves (`verifies`): what its program runs on a machine, or what its artefacts carry | `check`: passed or failed, for the artefacts as last built from the code as it is, by its program as it is (g70) |
 | `review` | what must be reviewed (`of`: the rows of a dataset in each language, or a node as written), by which role, by how many of its people (`approvals`, one) | `review` on the subject: each row and language, tied to the fingerprint of what was seen; each person's latest counts, a change asked holds it back |
 | `shipment` | a target, what it `ships`, the `policy` it follows, what it also `requires` that derivation cannot see, the entry points that `deploys` it, the `environment` its programs are assembled for | `shipped`, with the dossier |
 | `obligation` | one family of `#std/obligations` it `applies` (Verified, Served, Applied, Reviewed, Checked, Ruled, Safe, Preceded, Identified, Published; `#data/obligations`: Migrated), its `params` (typed by the family's rule; a node of the graph where it reads one: `by: [Preview]`), what a gap weighs (`gaps`: `Severity.error` keeps the shipment, `Severity.warning` says it), why (`serves`) | — |
@@ -291,7 +291,12 @@ of the vocabulary `Directions`: `way: "in"`), and `serves` a goal or is applied 
   contract declares; two choices that extend the same point in one environment are an error
   (`extension-order-ambiguous`). The commands the engine keeps take add-ons this way: `trame doctor` asks what the
   realizations of std's `MachineNeeds` ask (Trame: `PlaywrightBrowserInstalled`), `trame init` calls those of
-  `ProjectRepairs`; each runs whatever the others did, and the command ends in failure saying which failed.
+  `ProjectRepairs`; each runs whatever the others did, and the command ends in failure saying which failed. A check
+  that names the command (`command: EngineCommand.doctor`, g122) proves the project's add-ons: `trame ship` runs the
+  command. The engine's own questions are add-ons too, of its extension point `EngineNeeds`, chosen in Trame's graph
+  (`EngineQuestions`) and assembled into it: asked always, even where no graph loads. A provider's add-on lives with
+  its adapter and its package (Playwright's with std's `PlaywrightBrowser`); a question a command needs moves with the
+  command.
 - **A choice is a concept.** When there are several ways to do something, and someone could choose another, name the
   concept: a port, its strategies (its realizations) and a binding that says which one applies where, as Trame does for
   technologies. A choice of value stays a decision, with the options it rejected. What nobody would change is just code:

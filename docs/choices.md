@@ -2,7 +2,7 @@
 
 *What answers each port in each environment on 25 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
 
-> **31 technical choices for 59 ports, in 4 environments**
+> **32 technical choices for 60 ports, in 4 environments**
 
 | Port | Local | A session of Claude Code | Test | Browser |
 |---|---|---|---|---|
@@ -41,6 +41,7 @@
 | [Terminal log](architecture.md#TerminalLog) | — | — | [Terminal in memory](platform.md#MemoryTerminal) | — |
 | [Process log](architecture.md#ProcessLog) | — | — | [Example process](platform.md#ExampleProcess) | — |
 | [Server log](architecture.md#ServerLog) | — | — | [A server in memory](platform.md#MemoryHttpServer) | — |
+| [What the engine needs of the machine](doctor.md#EngineNeeds) | [The clock gives the day](doctor.md#ClockAnswers), [A file written is read back](doctor.md#FilesAnswer), [The installer installs what a manifest names and writes its lockfile](doctor.md#InstallerAnswers), [A program runs with the engine's loader, and prints what it says](doctor.md#ProgramsAnswer), [The registry answers about the packages](doctor.md#RegistryAnswers), [A run is kept, and given back until a file it read changes](doctor.md#RunsAnswer), [A server listens on a port the system gives](doctor.md#ServerAnswers), [The time passes](doctor.md#TimerAnswers), [A directory copied is the same as the original](doctor.md#TreesAnswer) | — | [The clock gives the day](doctor.md#ClockAnswers), [A file written is read back](doctor.md#FilesAnswer), [The installer installs what a manifest names and writes its lockfile](doctor.md#InstallerAnswers), [A program runs with the engine's loader, and prints what it says](doctor.md#ProgramsAnswer), [The registry answers about the packages](doctor.md#RegistryAnswers), [A run is kept, and given back until a file it read changes](doctor.md#RunsAnswer), [A server listens on a port the system gives](doctor.md#ServerAnswers), [The time passes](doctor.md#TimerAnswers), [A directory copied is the same as the original](doctor.md#TreesAnswer) | — |
 | [Syntax of the documents written as files](rendering.md#FileSyntax) | [Markdown writer](rendering.md#MarkdownSyntax) | — | [Markdown writer](rendering.md#MarkdownSyntax) | — |
 | [Syntax of the terminal](rendering.md#TerminalSyntax) | [Plain text writer](rendering.md#PlainTextSyntax) | — | [Plain text writer](rendering.md#PlainTextSyntax) | — |
 | [Syntax of the page](rendering.md#PageSyntax) | [HTML writer](rendering.md#HtmlSyntax) | — | [HTML writer](rendering.md#HtmlSyntax) | — |
@@ -73,7 +74,7 @@
 | [Bridge](../std/releases/0.25.0/docs/patterns.md#Bridge) | **held** | [Documents in Markdown](rendering.md#DocumentsInMarkdown), [The terminal in plain text](rendering.md#TerminalInText), [The page in HTML](rendering.md#PageInHtml) |
 | [Abstract Factory](../std/releases/0.25.0/docs/patterns.md#AbstractFactory) | **held** | [NodePlatform](platform.md#NodePlatform), [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine), [Scenarios run in memory](platform.md#InMemoryScenarios) |
 | [Command](../std/releases/0.25.0/docs/patterns.md#Command) | **held** | [The commands Trame takes from std](sdlc.md#CommandsOfStd) |
-| [Plugin](../std/releases/0.25.0/docs/patterns.md#Plugin) | **held** | [The sample add-ons, second first](scenarios.md#SampleAddOnsInOrder), [What the machine must also have](sdlc.md#WhatTheMachineMustHave) |
+| [Plugin](../std/releases/0.25.0/docs/patterns.md#Plugin) | **held** | [What the engine asks the machine](doctor.md#EngineQuestions), [The sample add-ons, second first](scenarios.md#SampleAddOnsInOrder), [What the machine must also have](sdlc.md#WhatTheMachineMustHave) |
 
 ## Trame · The page in a browser
 
@@ -111,6 +112,37 @@ Consequences: The browser's globals appear only in these implementations; the en
 - Follows: [Adapter](../std/releases/0.25.0/docs/patterns.md#Adapter)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
 - Applies: [The page is assembled](browser.md#ThePageIsAssembled)
+
+## Trame · Doctor
+
+<a id="EngineQuestions"></a>
+
+### What the engine asks the machine
+
+`EngineQuestions` · `src/doctor.ts:200` · status: **held**
+
+The questions trame doctor asks for the engine, in this order, on a machine and in the scenarios (where the machine is the one kept in memory). The server and the registry leave with the commands that need them (dev; audit, upgrade).
+
+In [Local](architecture.md#Local), [Test](architecture.md#Test):
+
+| Port | Answered by | Which is |
+|---|---|---|
+| [What the engine needs of the machine](doctor.md#EngineNeeds) | [The clock gives the day](doctor.md#ClockAnswers) | an implementation |
+| [What the engine needs of the machine](doctor.md#EngineNeeds) | [A file written is read back](doctor.md#FilesAnswer) | an implementation |
+| [What the engine needs of the machine](doctor.md#EngineNeeds) | [The installer installs what a manifest names and writes its lockfile](doctor.md#InstallerAnswers) | an implementation |
+| [What the engine needs of the machine](doctor.md#EngineNeeds) | [A program runs with the engine's loader, and prints what it says](doctor.md#ProgramsAnswer) | an implementation |
+| [What the engine needs of the machine](doctor.md#EngineNeeds) | [The registry answers about the packages](doctor.md#RegistryAnswers) | an implementation |
+| [What the engine needs of the machine](doctor.md#EngineNeeds) | [A run is kept, and given back until a file it read changes](doctor.md#RunsAnswer) | an implementation |
+| [What the engine needs of the machine](doctor.md#EngineNeeds) | [A server listens on a port the system gives](doctor.md#ServerAnswers) | an implementation |
+| [What the engine needs of the machine](doctor.md#EngineNeeds) | [The time passes](doctor.md#TimerAnswers) | an implementation |
+| [What the engine needs of the machine](doctor.md#EngineNeeds) | [A directory copied is the same as the original](doctor.md#TreesAnswer) | an implementation |
+
+Context: trame doctor answers in an empty directory and in a project whose graph does not load: what the engine needs to run is asked whatever the project says, as add-ons of its own, chosen here.
+
+- Decided by: trame
+- Chooses: [The clock gives the day](doctor.md#ClockAnswers), [A file written is read back](doctor.md#FilesAnswer), [A directory copied is the same as the original](doctor.md#TreesAnswer), [A program runs with the engine's loader, and prints what it says](doctor.md#ProgramsAnswer), [A run is kept, and given back until a file it read changes](doctor.md#RunsAnswer), [A server listens on a port the system gives](doctor.md#ServerAnswers), [The time passes](doctor.md#TimerAnswers), [The registry answers about the packages](doctor.md#RegistryAnswers), [The installer installs what a manifest names and writes its lockfile](doctor.md#InstallerAnswers)
+- In: [Local](architecture.md#Local), [Test](architecture.md#Test)
+- Follows: [Plugin](../std/releases/0.25.0/docs/patterns.md#Plugin)
 
 ## Trame · Platform
 
@@ -756,7 +788,7 @@ Context: The graph page must be opened as a person opens it: the file exported, 
 
 ### What the machine must also have
 
-`WhatTheMachineMustHave` · `src/sdlc.ts:182` · status: **unknown**
+`WhatTheMachineMustHave` · `src/sdlc.ts:182` · status: **held**
 
 trame doctor asks, besides what the engine asks, that the browser the version of Playwright Trame uses drives is installed (std's add-on, since g120): the page's check runs in it, and a machine whose browsers moved would refuse it where the engine's own questions see nothing.
 
@@ -777,7 +809,7 @@ Context: On 17 November a machine whose browsers had moved refused the check of 
 
 ### The SDLC in memory
 
-`SdlcInMemory` · `src/sdlc.ts:194` · status: **held**
+`SdlcInMemory` · `src/sdlc.ts:202` · status: **held**
 
 In the scenarios, the browser shows the page a scenario writes, and the repository is kept in memory.
 
@@ -801,7 +833,7 @@ Context: A program of the SDLC is code like the engine's: its scenarios play it 
 
 ### The commands Trame takes from std
 
-`CommandsOfStd` · `src/sdlc.ts:631` · status: **held**
+`CommandsOfStd` · `src/sdlc.ts:639` · status: **held**
 
 pull-request, merge and propagate, on the machine and in a session of Claude Code, with Trame's settings.
 
@@ -831,7 +863,7 @@ Context: Opening a pull request and carrying a version across the repository wer
 
 ### The repository's work on a machine
 
-`RepositoryWorkOnAMachine` · `src/sdlc.ts:646` · status: **unknown**
+`RepositoryWorkOnAMachine` · `src/sdlc.ts:654` · status: **unknown**
 
 Git's command line for the branches, GitHub's for the pull requests, Node to run trame.sh in each project, and the machine's files; on the machine and in a session.
 
@@ -855,7 +887,7 @@ Context: A pull request is opened, and a version carried, from the repository ch
 
 ### GitHub merges once it holds, asked by its command line
 
-`AutoMergeOnTheMachine` · `src/sdlc.ts:658` · status: **unknown**
+`AutoMergeOnTheMachine` · `src/sdlc.ts:666` · status: **unknown**
 
 On a person's machine, gh pr merge --auto: GitHub's GraphQL.
 
@@ -876,7 +908,7 @@ Context: GitHub asks the automatic merge by GraphQL, which GitHub's command line
 
 ### GitHub merges once it holds, asked in a session
 
-`AutoMergeInASession` · `src/sdlc.ts:670` · status: **unknown**
+`AutoMergeInASession` · `src/sdlc.ts:678` · status: **unknown**
 
 In a session of Claude Code, the route of its proxy: GraphQL is refused there.
 
@@ -897,7 +929,7 @@ Context: A session's proxy refuses GitHub's GraphQL, and offers PUT on the pull 
 
 ### Trame's settings in the scenarios
 
-`OurSettingsInTheScenarios` · `src/sdlc.ts:682` · status: **held**
+`OurSettingsInTheScenarios` · `src/sdlc.ts:690` · status: **held**
 
 In the scenarios, std's commands read Trame's settings as on the machine.
 

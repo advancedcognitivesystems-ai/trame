@@ -674,6 +674,8 @@ export const CommandMessages = catalog({
     doctorAnswers: (what: string) => `  ok      ${what}`,
     doctorFails: (what: string) => `  failed  ${what}`,
     doctorBroke: (what: string, why: string) => `  failed  ${what}: ${why}`,
+    /** A question that broke, with what went wrong (since g122). */
+    doctorWhy: (what: string, why: string) => `${what}: ${why}`,
     doctorClock: () => "the clock gives the day",
     doctorFiles: () => "a file written is read back",
     doctorTrees: () => "a directory copied is the same as the original",

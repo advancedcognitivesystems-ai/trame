@@ -1600,7 +1600,7 @@
           "doctor": "commands.Doctor",
           "processLog": "architecture.ProcessLog",
           "terminalLog": "architecture.TerminalLog",
-          "probe": "commands.DoctorProbe",
+          "probe": "doctor.DoctorProbe",
           "line": "conventions.TrameCommands",
           "exitStatus": "std/system.ExitStatus",
           "commands": "messages.CommandMessages",
@@ -2745,45 +2745,14 @@
         "deps": {
           "exitStatus": "std/system.ExitStatus",
           "preparation": "commands.Preparation",
-          "probe": "commands.DoctorProbe",
-          "iso": "std/measures.Iso8601",
-          "reading": "architecture.FileReading",
-          "writing": "architecture.FileWriting",
-          "trees": "architecture.FileTrees",
-          "programs": "architecture.Programs",
-          "runs": "architecture.KeptRuns",
-          "httpServer": "architecture.HttpServer",
-          "timer": "architecture.Timer",
-          "reports": "architecture.PackageReports",
-          "installs": "architecture.PackageInstalls",
-          "layout": "conventions.Layout",
-          "clock": "architecture.Clock",
-          "paths": "architecture.Paths",
+          "engine": "doctor.EngineNeeds",
           "terminal": "architecture.Terminal",
-          "encodings": "std/system.NodeEncodings",
-          "counts": "std/algebra.Counts",
-          "texts": "std/algebra.Texts",
           "messages": "messages.CommandMessages",
           "addOns": "commands.AddOns"
         },
         "body": {
           "file": "./code/commands/doctor.ts",
           "language": "typescript"
-        }
-      }
-    },
-    {
-      "id": "commands.DoctorProbe",
-      "kind": "decision",
-      "title": "What the doctor writes, runs and waits for",
-      "fields": {
-        "owner": "trame",
-        "value": {
-          "file": "probe.txt",
-          "text": "trame doctor",
-          "program": "probe.ts",
-          "source": "console.log(\"trame doctor\")\n",
-          "pause": 10
         }
       }
     },
@@ -4161,6 +4130,230 @@
           "file": "./code/delivery/names-led.ts",
           "language": "typescript"
         }
+      }
+    },
+    {
+      "id": "doctor.Asking",
+      "kind": "function",
+      "title": "Asking",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "messages": "messages.CommandMessages"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "doctor.ClockAnswers",
+      "kind": "implementation",
+      "title": "The clock gives the day",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "clock": "architecture.Clock",
+          "iso": "std/measures.Iso8601",
+          "asking": "doctor.Asking",
+          "messages": "messages.CommandMessages"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "doctor.DoctorProbe",
+      "kind": "decision",
+      "title": "What the doctor writes, runs and waits for",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "file": "probe.txt",
+          "text": "trame doctor",
+          "program": "probe.ts",
+          "source": "console.log(\"trame doctor\")\n",
+          "pause": 10
+        }
+      }
+    },
+    {
+      "id": "doctor.EngineNeeds",
+      "kind": "port",
+      "title": "What the engine needs of the machine",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": {
+          "ask": [
+            "read",
+            "write",
+            "process",
+            "execution",
+            "network",
+            "time",
+            "keeps",
+            "asynchronous"
+          ]
+        },
+        "extension": true
+      }
+    },
+    {
+      "id": "doctor.EngineQuestions",
+      "kind": "binding",
+      "title": "What the engine asks the machine",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "trame doctor answers in an empty directory and in a project whose graph does not load: what the engine needs to run is asked whatever the project says, as add-ons of its own, chosen here."
+      }
+    },
+    {
+      "id": "doctor.FilesAnswer",
+      "kind": "implementation",
+      "title": "A file written is read back",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "trees": "architecture.FileTrees",
+          "reading": "architecture.FileReading",
+          "writing": "architecture.FileWriting",
+          "paths": "architecture.Paths",
+          "probe": "doctor.DoctorProbe",
+          "encodings": "std/system.NodeEncodings",
+          "asking": "doctor.Asking",
+          "messages": "messages.CommandMessages"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "doctor.InstallerAnswers",
+      "kind": "implementation",
+      "title": "The installer installs what a manifest names and writes its lockfile",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "trees": "architecture.FileTrees",
+          "reading": "architecture.FileReading",
+          "writing": "architecture.FileWriting",
+          "installs": "architecture.PackageInstalls",
+          "layout": "conventions.Layout",
+          "paths": "architecture.Paths",
+          "exitStatus": "std/system.ExitStatus",
+          "asking": "doctor.Asking",
+          "messages": "messages.CommandMessages"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "doctor.ProgramsAnswer",
+      "kind": "implementation",
+      "title": "A program runs with the engine's loader, and prints what it says",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "trees": "architecture.FileTrees",
+          "writing": "architecture.FileWriting",
+          "programs": "architecture.Programs",
+          "paths": "architecture.Paths",
+          "probe": "doctor.DoctorProbe",
+          "exitStatus": "std/system.ExitStatus",
+          "asking": "doctor.Asking",
+          "messages": "messages.CommandMessages"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "doctor.RegistryAnswers",
+      "kind": "implementation",
+      "title": "The registry answers about the packages",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "reports": "architecture.PackageReports",
+          "currentProcess": "architecture.Process",
+          "asking": "doctor.Asking",
+          "messages": "messages.CommandMessages"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "doctor.RunsAnswer",
+      "kind": "implementation",
+      "title": "A run is kept, and given back until a file it read changes",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "trees": "architecture.FileTrees",
+          "writing": "architecture.FileWriting",
+          "runs": "architecture.KeptRuns",
+          "paths": "architecture.Paths",
+          "probe": "doctor.DoctorProbe",
+          "asking": "doctor.Asking",
+          "messages": "messages.CommandMessages"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "doctor.ServerAnswers",
+      "kind": "implementation",
+      "title": "A server listens on a port the system gives",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "httpServer": "architecture.HttpServer",
+          "counts": "std/algebra.Counts",
+          "asking": "doctor.Asking",
+          "messages": "messages.CommandMessages"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "doctor.TimerAnswers",
+      "kind": "implementation",
+      "title": "The time passes",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "clock": "architecture.Clock",
+          "timer": "architecture.Timer",
+          "probe": "doctor.DoctorProbe",
+          "asking": "doctor.Asking",
+          "messages": "messages.CommandMessages"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "doctor.TreesAnswer",
+      "kind": "implementation",
+      "title": "A directory copied is the same as the original",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "trees": "architecture.FileTrees",
+          "writing": "architecture.FileWriting",
+          "currentProcess": "architecture.Process",
+          "paths": "architecture.Paths",
+          "probe": "doctor.DoctorProbe",
+          "texts": "std/algebra.Texts",
+          "asking": "doctor.Asking",
+          "messages": "messages.CommandMessages"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -11126,7 +11319,7 @@
       "id": "principles.ShippedThroughTheGraph",
       "kind": "adr",
       "title": "A version ships through the graph",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "Two products ship differently (a page placed where it is served, an engine frozen into a generation) and their pipelines lived in scripts and in their authors' heads: nothing said what had been checked, by whom, on which version, nor why a version could go.",
@@ -11797,6 +11990,21 @@
         "fingerprint": "ff10868da2067157",
         "language": "shared",
         "archive": "896211f06bdb0fd1"
+      }
+    },
+    {
+      "id": "releases.G122",
+      "kind": "release",
+      "title": "Generation 122",
+      "fields": {
+        "owner": "trame",
+        "version": "g122",
+        "date": "2026-11-25",
+        "what": "A check runs a command the engine keeps and verifies the project's add-ons to it; trame doctor's questions are add-ons of the engine's own extension point (E3, part 3)",
+        "fingerprint": "d5cd96fe091a0108",
+        "language": "shared",
+        "archive": "0118572b49b3ed10",
+        "differences": "differences.diff"
       }
     },
     {
@@ -14184,7 +14392,7 @@
       "id": "sdlc.CandidateKeepsTheLaws",
       "kind": "check",
       "title": "The candidate plays the laws",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame"
       }
@@ -14360,6 +14568,16 @@
       }
     },
     {
+      "id": "sdlc.MachineAsked",
+      "kind": "check",
+      "title": "The machine has what Trame needs",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "command": "doctor"
+      }
+    },
+    {
       "id": "sdlc.MainBranch",
       "kind": "decision",
       "title": "How the repository merges into main",
@@ -14416,7 +14634,7 @@
       "id": "sdlc.NextGeneration",
       "kind": "shipment",
       "title": "The next generation",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "generation"
@@ -14588,7 +14806,7 @@
       "id": "sdlc.PullRequestWorkflow",
       "kind": "artifact",
       "title": "The pull requests' workflow",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": ".github/workflows/trame-pull-request.yml",
@@ -14735,7 +14953,7 @@
       "id": "sdlc.RunnersWritten",
       "kind": "shipment",
       "title": "The files that run it elsewhere",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "repository"
@@ -14838,7 +15056,7 @@
       "id": "sdlc.WhatTheMachineMustHave",
       "kind": "binding",
       "title": "What the machine must also have",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "On 17 November a machine whose browsers had moved refused the check of the page, and trame doctor said nothing of it."
@@ -18463,6 +18681,56 @@
     },
     {
       "from": "command-scenarios.DoctorAsks",
+      "to": "doctor.Asking",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.DoctorAsks",
+      "to": "doctor.ClockAnswers",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.DoctorAsks",
+      "to": "doctor.FilesAnswer",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.DoctorAsks",
+      "to": "doctor.TreesAnswer",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.DoctorAsks",
+      "to": "doctor.ProgramsAnswer",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.DoctorAsks",
+      "to": "doctor.RunsAnswer",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.DoctorAsks",
+      "to": "doctor.ServerAnswers",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.DoctorAsks",
+      "to": "doctor.TimerAnswers",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.DoctorAsks",
+      "to": "doctor.RegistryAnswers",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.DoctorAsks",
+      "to": "doctor.InstallerAnswers",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.DoctorAsks",
       "to": "architecture.Test",
       "kind": "env"
     },
@@ -18483,7 +18751,7 @@
     },
     {
       "from": "command-scenarios.DoctorAsks",
-      "to": "commands.DoctorProbe",
+      "to": "doctor.DoctorProbe",
       "kind": "deps"
     },
     {
@@ -20818,67 +21086,7 @@
     },
     {
       "from": "commands.Doctor",
-      "to": "commands.DoctorProbe",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Doctor",
-      "to": "architecture.FileReading",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Doctor",
-      "to": "architecture.FileWriting",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Doctor",
-      "to": "architecture.FileTrees",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Doctor",
-      "to": "architecture.Programs",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Doctor",
-      "to": "architecture.KeptRuns",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Doctor",
-      "to": "architecture.HttpServer",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Doctor",
-      "to": "architecture.Timer",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Doctor",
-      "to": "architecture.PackageReports",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Doctor",
-      "to": "architecture.PackageInstalls",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Doctor",
-      "to": "conventions.Layout",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Doctor",
-      "to": "architecture.Clock",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Doctor",
-      "to": "architecture.Paths",
+      "to": "doctor.EngineNeeds",
       "kind": "deps"
     },
     {
@@ -22369,6 +22577,371 @@
     {
       "from": "delivery.NamesLed",
       "to": "delivery.BundlerLeading",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.Asking",
+      "to": "product.ExecutableSpecification",
+      "kind": "serves"
+    },
+    {
+      "from": "doctor.Asking",
+      "to": "messages.CommandMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.ClockAnswers",
+      "to": "doctor.EngineNeeds",
+      "kind": "implements"
+    },
+    {
+      "from": "doctor.ClockAnswers",
+      "to": "architecture.Clock",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.ClockAnswers",
+      "to": "doctor.Asking",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.ClockAnswers",
+      "to": "messages.CommandMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.EngineQuestions",
+      "to": "doctor.ClockAnswers",
+      "kind": "chooses"
+    },
+    {
+      "from": "doctor.EngineQuestions",
+      "to": "doctor.FilesAnswer",
+      "kind": "chooses"
+    },
+    {
+      "from": "doctor.EngineQuestions",
+      "to": "doctor.TreesAnswer",
+      "kind": "chooses"
+    },
+    {
+      "from": "doctor.EngineQuestions",
+      "to": "doctor.ProgramsAnswer",
+      "kind": "chooses"
+    },
+    {
+      "from": "doctor.EngineQuestions",
+      "to": "doctor.RunsAnswer",
+      "kind": "chooses"
+    },
+    {
+      "from": "doctor.EngineQuestions",
+      "to": "doctor.ServerAnswers",
+      "kind": "chooses"
+    },
+    {
+      "from": "doctor.EngineQuestions",
+      "to": "doctor.TimerAnswers",
+      "kind": "chooses"
+    },
+    {
+      "from": "doctor.EngineQuestions",
+      "to": "doctor.RegistryAnswers",
+      "kind": "chooses"
+    },
+    {
+      "from": "doctor.EngineQuestions",
+      "to": "doctor.InstallerAnswers",
+      "kind": "chooses"
+    },
+    {
+      "from": "doctor.EngineQuestions",
+      "to": "architecture.Local",
+      "kind": "environments"
+    },
+    {
+      "from": "doctor.EngineQuestions",
+      "to": "architecture.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "doctor.FilesAnswer",
+      "to": "doctor.EngineNeeds",
+      "kind": "implements"
+    },
+    {
+      "from": "doctor.FilesAnswer",
+      "to": "architecture.FileTrees",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.FilesAnswer",
+      "to": "architecture.FileReading",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.FilesAnswer",
+      "to": "architecture.FileWriting",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.FilesAnswer",
+      "to": "architecture.Paths",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.FilesAnswer",
+      "to": "doctor.DoctorProbe",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.FilesAnswer",
+      "to": "doctor.Asking",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.FilesAnswer",
+      "to": "messages.CommandMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.InstallerAnswers",
+      "to": "doctor.EngineNeeds",
+      "kind": "implements"
+    },
+    {
+      "from": "doctor.InstallerAnswers",
+      "to": "architecture.FileTrees",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.InstallerAnswers",
+      "to": "architecture.FileReading",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.InstallerAnswers",
+      "to": "architecture.FileWriting",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.InstallerAnswers",
+      "to": "architecture.PackageInstalls",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.InstallerAnswers",
+      "to": "conventions.Layout",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.InstallerAnswers",
+      "to": "architecture.Paths",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.InstallerAnswers",
+      "to": "doctor.Asking",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.InstallerAnswers",
+      "to": "messages.CommandMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.ProgramsAnswer",
+      "to": "doctor.EngineNeeds",
+      "kind": "implements"
+    },
+    {
+      "from": "doctor.ProgramsAnswer",
+      "to": "architecture.FileTrees",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.ProgramsAnswer",
+      "to": "architecture.FileWriting",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.ProgramsAnswer",
+      "to": "architecture.Programs",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.ProgramsAnswer",
+      "to": "architecture.Paths",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.ProgramsAnswer",
+      "to": "doctor.DoctorProbe",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.ProgramsAnswer",
+      "to": "doctor.Asking",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.ProgramsAnswer",
+      "to": "messages.CommandMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.RegistryAnswers",
+      "to": "doctor.EngineNeeds",
+      "kind": "implements"
+    },
+    {
+      "from": "doctor.RegistryAnswers",
+      "to": "architecture.PackageReports",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.RegistryAnswers",
+      "to": "architecture.Process",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.RegistryAnswers",
+      "to": "doctor.Asking",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.RegistryAnswers",
+      "to": "messages.CommandMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.RunsAnswer",
+      "to": "doctor.EngineNeeds",
+      "kind": "implements"
+    },
+    {
+      "from": "doctor.RunsAnswer",
+      "to": "architecture.FileTrees",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.RunsAnswer",
+      "to": "architecture.FileWriting",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.RunsAnswer",
+      "to": "architecture.KeptRuns",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.RunsAnswer",
+      "to": "architecture.Paths",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.RunsAnswer",
+      "to": "doctor.DoctorProbe",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.RunsAnswer",
+      "to": "doctor.Asking",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.RunsAnswer",
+      "to": "messages.CommandMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.ServerAnswers",
+      "to": "doctor.EngineNeeds",
+      "kind": "implements"
+    },
+    {
+      "from": "doctor.ServerAnswers",
+      "to": "architecture.HttpServer",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.ServerAnswers",
+      "to": "doctor.Asking",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.ServerAnswers",
+      "to": "messages.CommandMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.TimerAnswers",
+      "to": "doctor.EngineNeeds",
+      "kind": "implements"
+    },
+    {
+      "from": "doctor.TimerAnswers",
+      "to": "architecture.Clock",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.TimerAnswers",
+      "to": "architecture.Timer",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.TimerAnswers",
+      "to": "doctor.DoctorProbe",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.TimerAnswers",
+      "to": "doctor.Asking",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.TimerAnswers",
+      "to": "messages.CommandMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.TreesAnswer",
+      "to": "doctor.EngineNeeds",
+      "kind": "implements"
+    },
+    {
+      "from": "doctor.TreesAnswer",
+      "to": "architecture.FileTrees",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.TreesAnswer",
+      "to": "architecture.FileWriting",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.TreesAnswer",
+      "to": "architecture.Process",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.TreesAnswer",
+      "to": "architecture.Paths",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.TreesAnswer",
+      "to": "doctor.DoctorProbe",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.TreesAnswer",
+      "to": "doctor.Asking",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.TreesAnswer",
+      "to": "messages.CommandMessages",
       "kind": "deps"
     },
     {
@@ -27382,6 +27955,16 @@
       "kind": "assembledBy"
     },
     {
+      "from": "releases.G122",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G122",
+      "to": "releases.G121",
+      "kind": "assembledBy"
+    },
+    {
       "from": "releases.G13",
       "to": "architecture.TrameCli",
       "kind": "component"
@@ -30013,6 +30596,11 @@
     },
     {
       "from": "sdlc.IntoMain",
+      "to": "sdlc.MachineAsked",
+      "kind": "requires"
+    },
+    {
+      "from": "sdlc.IntoMain",
       "to": "architecture.Local",
       "kind": "environment"
     },
@@ -30025,6 +30613,11 @@
       "from": "sdlc.LanguageServed",
       "to": "product.ExecutableSpecification",
       "kind": "serves"
+    },
+    {
+      "from": "sdlc.MachineAsked",
+      "to": "sdlc.Maintainers",
+      "kind": "by"
     },
     {
       "from": "sdlc.MergeMode",

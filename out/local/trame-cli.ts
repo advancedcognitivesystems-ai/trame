@@ -7,6 +7,7 @@ import { frozen } from "../../trame/internal"
 import { TrameCli } from "../../src/architecture.ts"
 import { EngineModules } from "../../src/commands.ts"
 import { DeliveredStyle } from "../../src/delivery.ts"
+import { Asking, ClockAnswers, FilesAnswer, InstallerAnswers, ProgramsAnswer, RegistryAnswers, RunsAnswer, ServerAnswers, TimerAnswers, TreesAnswer } from "../../src/doctor.ts"
 import { Punctuation, Units, VisibleText } from "../../src/documents.ts"
 import { Positions, References } from "../../src/engine.ts"
 import { AcceptCandidate } from "../../src/generations.ts"
@@ -840,14 +841,36 @@ const deliveredStyle = await frozen.body(DeliveredStyle)({ root: ":root", standa
 const deliver = await body_deliver({ exitStatus, preparation, assembly, assembler, bundler: frozen.limited(esbuild, ["build"]), led: namesLed, bundle: pageBundle, document: pageDocument, html, script: scriptElement, style: deliveredStyle, reading: frozen.limited(diskReading, ["readFileSync"]), writing: frozen.limited(diskWriting, ["mkdirSync","writeFileSync"]), paths: frozen.limited(nodePaths, ["dirname","join","relative"]), encodings: nodeEncodings, terminal: frozen.limited(nodeTerminal, ["write"]), sequences, texts, values: valueTypes, messages: commandMessages })
 // "Start trame dev" · entry point
 const dev = await body_dev({ preparation, devServer, amending, place: frozen.limited(inPlaceSources, ["record"]), paths: frozen.limited(nodePaths, ["relative"]) })
+// "Asking" · function
+const asking = await frozen.body(Asking)({ messages: commandMessages })
+// "The clock gives the day" · implementation, for "What the engine needs of the machine"
+const clockAnswers = await frozen.body(ClockAnswers)({ clock: frozen.limited(systemClock, ["today"]), iso: iso8601, asking, messages: commandMessages })
 // "What the doctor writes, runs and waits for" · decision
 const doctorProbe = {"file":"probe.txt","text":"trame doctor","program":"probe.ts","source":"console.log(\"trame doctor\")\n","pause":10}
+// "A file written is read back" · implementation, for "What the engine needs of the machine"
+const filesAnswer = await frozen.body(FilesAnswer)({ trees: frozen.limited(diskTrees, ["remove","temporary"]), reading: frozen.limited(diskReading, ["readFileSync"]), writing: frozen.limited(diskWriting, ["writeFileSync"]), paths: frozen.limited(nodePaths, ["join"]), probe: doctorProbe, encodings: nodeEncodings, asking, messages: commandMessages })
+// "A directory copied is the same as the original" · implementation, for "What the engine needs of the machine"
+const treesAnswer = await frozen.body(TreesAnswer)({ trees: frozen.limited(diskTrees, ["copy","differences","files","remove","temporary"]), writing: frozen.limited(diskWriting, ["writeFileSync"]), currentProcess: frozen.limited(nodeProcess, ["cwd"]), paths: frozen.limited(nodePaths, ["join"]), probe: doctorProbe, texts, asking, messages: commandMessages })
+// "A program runs with the engine's loader, and prints what it says" · implementation, for "What the engine needs of the machine"
+const programsAnswer = await frozen.body(ProgramsAnswer)({ trees: frozen.limited(diskTrees, ["remove","temporary"]), writing: frozen.limited(diskWriting, ["writeFileSync"]), programs: frozen.limited(nodePrograms, ["run"]), paths: frozen.limited(nodePaths, ["join"]), probe: doctorProbe, exitStatus, asking, messages: commandMessages })
+// "A run is kept, and given back until a file it read changes" · implementation, for "What the engine needs of the machine"
+const runsAnswer = await frozen.body(RunsAnswer)({ trees: frozen.limited(diskTrees, ["remove","temporary"]), writing: frozen.limited(diskWriting, ["writeFileSync"]), runs: frozen.limited(projectRuns, ["open"]), paths: frozen.limited(nodePaths, ["join"]), probe: doctorProbe, asking, messages: commandMessages })
+// "A server listens on a port the system gives" · implementation, for "What the engine needs of the machine"
+const serverAnswers = await frozen.body(ServerAnswers)({ httpServer: frozen.limited(nodeHttpServer, ["createServer"]), counts, asking, messages: commandMessages })
+// "The time passes" · implementation, for "What the engine needs of the machine"
+const timerAnswers = await frozen.body(TimerAnswers)({ clock: frozen.limited(systemClock, ["now"]), timer: frozen.limited(nodeTimer, ["setTimeout"]), probe: doctorProbe, asking, messages: commandMessages })
+// "The registry answers about the packages" · implementation, for "What the engine needs of the machine"
+const registryAnswers = await frozen.body(RegistryAnswers)({ reports: frozen.limited(npmReports, ["audit"]), currentProcess: frozen.limited(nodeProcess, ["cwd"]), asking, messages: commandMessages })
 // "npm installs" · implementation, for "Packages installed"
 const npmInstall = await body_npmInstall({ npm: npmCli, node: nodeCli, events: nodeEvents, exitStatus })
+// "The installer installs what a manifest names and writes its lockfile" · implementation, for "What the engine needs of the machine"
+const installerAnswers = await frozen.body(InstallerAnswers)({ trees: frozen.limited(diskTrees, ["remove","temporary"]), reading: frozen.limited(diskReading, ["existsSync"]), writing: frozen.limited(diskWriting, ["writeFileSync"]), installs: frozen.limited(npmInstall, ["install"]), layout, paths: frozen.limited(nodePaths, ["join"]), exitStatus, asking, messages: commandMessages })
+// "What the engine needs of the machine" · port
+const engineNeeds = [clockAnswers, filesAnswer, treesAnswer, programsAnswer, runsAnswer, serverAnswers, timerAnswers, registryAnswers, installerAnswers]
 // "The add-ons of a command the engine keeps" · function
 const addOns = await body_addOns({ wiring, counts, messages: commandMessages })
 // "Ask the machine" · entry point
-const doctor = await body_doctor({ exitStatus, preparation, probe: doctorProbe, iso: iso8601, reading: frozen.limited(diskReading, ["existsSync","readFileSync"]), writing: frozen.limited(diskWriting, ["writeFileSync"]), trees: frozen.limited(diskTrees, ["copy","differences","files","remove","temporary"]), programs: frozen.limited(nodePrograms, ["run"]), runs: frozen.limited(projectRuns, ["open"]), httpServer: frozen.limited(nodeHttpServer, ["createServer"]), timer: frozen.limited(nodeTimer, ["setTimeout"]), reports: frozen.limited(npmReports, ["audit"]), installs: frozen.limited(npmInstall, ["install"]), layout, clock: frozen.limited(systemClock, ["now","today"]), paths: frozen.limited(nodePaths, ["join"]), terminal: frozen.limited(nodeTerminal, ["write"]), encodings: nodeEncodings, counts, texts, messages: commandMessages, addOns })
+const doctor = await body_doctor({ exitStatus, preparation, engine: frozen.limited(engineNeeds, ["ask"]), terminal: frozen.limited(nodeTerminal, ["write"]), messages: commandMessages, addOns })
 // "Payload" · entry point
 const emitPayload = await body_emitPayload({ exitStatus, preparation, payload: payloadBuilder, files: fileRendering, screen: terminalRendering, pageRendering, terminal: frozen.limited(nodeTerminal, ["args","write","writeRaw","error","exit"]) })
 // "Rewriting an example" · function
@@ -883,7 +906,7 @@ const shipOnlyWhatHolds = await frozen.body(ShipOnlyWhatHolds)({ counts })
 // "The fingerprint of a program" · decision
 const programBundle = {"platform":"node","format":"esm","packages":"external","source":"ts"}
 // "Ship" · entry point
-const ship = await body_ship({ exitStatus, line: trameCommands, preparation, deliver, assembly, assembler, sdlc: sdlcEvidence, runPlan: shipmentRunPlan, holds: shipOnlyWhatHolds, bundler: frozen.limited(esbuild, ["build"]), led: namesLed, programBundle, currentProcess: frozen.limited(nodeProcess, ["program","runHere","runTs"]), projectCommands, engine: engineModules, events: nodeEvents, reading: frozen.limited(diskReading, ["readFileSync"]), writing: frozen.limited(diskWriting, ["mkdirSync","writeFileSync"]), paths: frozen.limited(nodePaths, ["basename","dirname","join","relative"]), encodings: nodeEncodings, terminal: frozen.limited(nodeTerminal, ["write"]), sequences, counts, values: valueTypes, engines: engineFingerprint, messages: commandMessages })
+const ship = await body_ship({ exitStatus, line: trameCommands, preparation, deliver, assembly, assembler, sdlc: sdlcEvidence, runPlan: shipmentRunPlan, holds: shipOnlyWhatHolds, bundler: frozen.limited(esbuild, ["build"]), led: namesLed, programBundle, currentProcess: frozen.limited(nodeProcess, ["program","relaunch","runHere","runTs"]), projectCommands, engine: engineModules, events: nodeEvents, reading: frozen.limited(diskReading, ["readFileSync"]), writing: frozen.limited(diskWriting, ["mkdirSync","writeFileSync"]), paths: frozen.limited(nodePaths, ["basename","dirname","join","relative"]), encodings: nodeEncodings, terminal: frozen.limited(nodeTerminal, ["write","writeRaw"]), sequences, counts, values: valueTypes, engines: engineFingerprint, messages: commandMessages })
 // "Release a version" · entry point
 const release = await body_release({ packages: frozen.limited(packagesByOrigin, ["publish"]), exitStatus, preparation, layout, project, machine: machineOutputs, files: fileRendering, settled: releaseIsSettled, names: libraryReleaseNames, releases, records: releaseRecords, versions: semanticVersioning, specifiers: nodeModuleSpecifiers, reading: frozen.limited(diskReading, ["existsSync","readFileSync"]), writing: frozen.limited(diskWriting, ["mkdirSync","writeFileSync"]), trees: frozen.limited(diskTrees, ["copy","files"]), paths: frozen.limited(nodePaths, ["basename","dirname","join","relative","resolve","sep"]), hashing: frozen.limited(nodeHashing, ["createHash"]), sha256, fingerprint, encodings: nodeEncodings, language: typeScript, clock: frozen.limited(systemClock, ["today"]), terminal: frozen.limited(nodeTerminal, ["write"]), messages: commandMessages, advance: advanceMessages, sequences, counts, drivers, text: stringLiteral, ship, line: trameCommands })
 // "Run a component" · entry point

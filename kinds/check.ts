@@ -1,6 +1,6 @@
 import {
   defineKind, field, optional, edge, optionalEdge, hole, doc, keysOf, Status, KindName, EdgeName, CheckField, CheckEdge, ArtifactEdge, EvidenceSource,
-  type Node, type View, type Graph, HoleCode,
+  EngineCommand, EngineCommandPoint, isPoint, type Node, type View, type Graph, HoleCode,
 } from "../trame/kernel"
 import { latestOf, builtNow } from "./artifact"
 import { peopleOf } from "./role"
@@ -12,6 +12,11 @@ const say = words()
 const fields = {
   owner: field.owner(),
   [CheckField.steps]: optional(field.value<string[]>(say.checkSteps())),
+  /**
+   * A command the engine keeps that runs it (since g122): it verifies the add-ons the project's choice makes for the
+   * command's extension point, which trame ship runs with the command, in its process.
+   */
+  [CheckField.command]: optional(field.value<string>(say.checkCommand())),
 }
 const F = keysOf(fields)
 const edges = {
@@ -36,11 +41,27 @@ export const checkedFingerprint = (self: View, g: Graph): string | undefined => 
 /** What a check computes once: the code of the program it runs, if it runs one. */
 interface Ran { code?: string }
 
+/** The command the engine keeps that runs it, when it names one the engine has (since g122). */
+const commandOf = (self: View): EngineCommand | undefined => {
+  const named = self.field(F.command)
+  return Object.values(EngineCommand).find((c) => c === named)
+}
+
+/** Does a program run it: its own (an entry point), or a command the engine keeps? */
+const programmed = (self: View, g: Graph): boolean => g.from(self).out(E.runs).exists() || commandOf(self) !== undefined
+
 /**
  * What its program runs: the entry point and what its component exposes it through, wired in every environment it can
- * be assembled for.
+ * be assembled for; or, run by a command the engine keeps, the add-ons the project's choices make for its extension
+ * point, in each environment.
  */
 const ranBy = (self: View, g: Graph): View[] => {
+  const command = commandOf(self)
+  if (command !== undefined) {
+    const point = g.all(KindName.port).nodes().find((p) => isPoint(EngineCommandPoint[command], p))
+    if (!point) return []
+    return g.all(KindName.environment).nodes().filter((e) => e.library === undefined).flatMap((env) => wiredBy(g, [point], env).filter((v) => v.ref !== point.ref))
+  }
   const program = g.from(self).out(E.runs).first()
   if (!program) return []
   const exposed = g.from(program).out(EdgeName.partOf).nodes().flatMap((c) => c.dependencies.map((d) => d.node))
@@ -59,7 +80,7 @@ const judged = (self: View, g: Graph) => {
   const asGiven = g.asGiven?.() === true
   const code = asGiven ? undefined : self.result<Ran>()?.code
   // A program's verdict holds for the engine that ran it, while the project pins it; a person's, whatever the engine.
-  const engine = g.from(self).out(E.runs).exists() && !asGiven ? g.engine?.() : undefined
+  const engine = programmed(self, g) && !asGiven ? g.engine?.() : undefined
   const fresh = last !== undefined && last.fingerprint !== undefined && last.fingerprint === checkedFingerprint(self, g) &&
     (code === undefined || last.code === code) && (engine === undefined || last.engine === engine)
   return { last, fresh: fresh && signer, passed: last?.value === g.lib.counts.one }
@@ -79,7 +100,7 @@ const kind = defineKind({
   edges,
 
   // The code of its program, computed once: trame ship records it with what the program found.
-  evaluate: (self, g): Ran | undefined => (g.from(self).out(E.runs).exists() ? { code: g.code?.(ranBy(self, g)) } : undefined),
+  evaluate: (self, g): Ran | undefined => (programmed(self, g) ? { code: g.code?.(ranBy(self, g)) } : undefined),
 
   status(self, g) {
     const j = judged(self, g)
@@ -105,8 +126,12 @@ const kind = defineKind({
     })
     // Its program runs as its component assembled: the entry point, and what the component exposes it through.
     const wired = new Set([...ranBy(self, g), ...carried].map((v) => v.ref))
-    const unwired = g.from(self).out(E.verifies).where((v) => !wired.has(v.ref)).nodes()
-      .map((v) => hole.error(HoleCode.verifiesUnrun, say.checkVerifiesUnwired(v.title), self.owner))
+    const unwired = [
+      ...g.from(self).out(E.verifies).where((v) => !wired.has(v.ref)).nodes().map((v) => hole.error(HoleCode.verifiesUnrun, say.checkVerifiesUnwired(v.title), self.owner)),
+      // A command the engine does not keep, or keeps without letting a check run it.
+      values.isText(self.field(F.command)) && commandOf(self) === undefined &&
+        hole.error(HoleCode.checkCommandUnknown, say.checkCommandUnknown(String(self.field(F.command)), texts.concat(lists.enumeration(Object.values(EngineCommand)))), self.owner),
+    ]
     const j = judged(self, g)
     if (j.fresh && j.passed) return unwired
     const role = g.from(self).out(E.by).first()
@@ -119,7 +144,7 @@ const kind = defineKind({
     return [
       ...unwired,
       j.last !== undefined && hole.warning(HoleCode.checkStale, say.checkStale(), owner),
-      j.last === undefined && hole.warning(HoleCode.checkAwaited, g.from(self).out(E.runs).exists() || counts.isEmpty(listed) ? say.checkToRun() : say.checkToSign(texts.concat(lists.enumeration(listed).map(String))), owner),
+      j.last === undefined && hole.warning(HoleCode.checkAwaited, programmed(self, g) || counts.isEmpty(listed) ? say.checkToRun() : say.checkToSign(texts.concat(lists.enumeration(listed).map(String))), owner),
     ]
   },
 
@@ -127,7 +152,9 @@ const kind = defineKind({
     const { values, texts } = g.lib
     const steps = self.field(F.steps)
     const last = latestOf(self, EvidenceSource.check)
+    const command = commandOf(self)
     return [
+      ...(command !== undefined ? [doc.para(...say.checkRunByCommand(command))] : []),
       ...(Array.isArray(steps) ? [doc.list(steps.filter(values.isText).map((s) => [s]))] : []),
       ...(last ? [doc.para(...say.checkLast(last.value === g.lib.counts.one ? say.checkPassed() : say.checkFailedShort(), doc.date(last.at), last.by ?? texts.empty))] : []),
     ]
@@ -140,6 +167,8 @@ interface CheckInput {
   on: readonly Node<typeof KindName.artifact>[]
   /** The program of the SDLC that runs it, if a machine can. */
   runs?: Node<typeof KindName.entry>
+  /** A command the engine keeps that runs it (since g122): it verifies the project's add-ons to that command. */
+  command?: EngineCommand
   /** By hand: what to do, and the role that signs it. */
   steps?: readonly string[]
   by?: Node<typeof KindName.role>
@@ -147,7 +176,10 @@ interface CheckInput {
   verifies?: readonly Node<"entry" | "function" | "implementation">[]
 }
 
-/** `check({ owner, on: [Page], runs: CheckPage })` or `check({ owner, on: [Page], steps: ["…"], by: Testers })` */
+/**
+ * `check({ owner, on: [Page], runs: CheckPage })`, `check({ owner, on: [], command: EngineCommand.doctor, verifies: [Need] })`
+ * or `check({ owner, on: [Page], steps: ["…"], by: Testers })`
+ */
 export function check(input: CheckInput): Node<typeof KindName.check> {
   return kind(input as never) as never
 }

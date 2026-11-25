@@ -202,10 +202,22 @@ const body = (deps: Deps): Handler => async (req) => {
   const madeBy = engine === undefined ? {} : { engine }
   for (const entry of recorded) Object.assign(entry, madeBy)
 
+  /**
+   * A command the engine keeps, which runs a check (since g122): this same engine started again with it, in the
+   * shipment's environment, its lines written out as they come; its status is the check's.
+   */
+  const runCommand = async (command: string): Promise<number> => {
+    const args = [command, ...(command === line.init && o.by !== undefined ? [line.by, o.by] : []), ...(environment ? [line.env, environment.id] : [])]
+    const child = deps.currentProcess.relaunch(args, o.root)
+    child.stdout?.setEncoding(deps.encodings.utf8)
+    child.stdout?.on(deps.events.data, (d: string) => terminal.writeRaw(d))
+    return new Promise<number>((end) => child.on(deps.events.exit, (code: number | null) => end(code ?? exitStatus.failure)))
+  }
+
   // The checks a program makes, on the artefacts as they were just built.
   for (const step of stepsOf(pipeline, PipelineStage.check)) {
     const fingerprint = sdlc.checked((step.on ?? []).map((a) => built.get(a.ref)))
-    const passed = (await run(step.runs!)) === exitStatus.success
+    const passed = (step.command !== undefined ? await runCommand(step.command) : await run(step.runs!)) === exitStatus.success
     recorded.push({ node: step.node.ref, at: o.today, source: EvidenceSource.check, value: passed ? one : zero, fingerprint, ...codeOf(step.node), ...madeBy, ...signed })
     terminal.write(messages.checkRan(step.node.title, passed))
   }

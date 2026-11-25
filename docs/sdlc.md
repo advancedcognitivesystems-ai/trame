@@ -8,10 +8,10 @@
 
 | Severity | Code | What | Where | Owner | Consequence |
 |---|---|---|---|---|---|
-| warning | `check-stale` | Checked on another build of its artefacts, by another version of its program or another engine: to check again | [The candidate plays the laws](#CandidateKeepsTheLaws) | Trame's maintainers |  |
-| warning | `shipment-awaits` | To ship: The candidate plays the laws is unknown | [The next generation](#NextGeneration) | trame |  |
+| warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The pull requests' workflow](#PullRequestWorkflow) | trame |  |
 | warning | `check-stale` | Checked on another build of its artefacts, by another version of its program or another engine: to check again | [The repository is read from GitHub](#RepositoryRead) | Trame's maintainers |  |
 | warning | `shipment-awaits` | To ship: The repository is read from GitHub is unknown | [The repository as decided](#RepositorySet) | trame |  |
+| warning | `shipment-awaits` | To ship: The pull requests' workflow is unknown | [The files that run it elsewhere](#RunnersWritten) | trame |  |
 
 ## Decisions
 
@@ -19,7 +19,7 @@
 
 ### Who advances, and what changes
 
-`AdvanceSample` · `src/sdlc.ts:761`
+`AdvanceSample` · `src/sdlc.ts:769`
 
 What the scenario of the advance types after its name.
 
@@ -35,7 +35,7 @@ What the scenario of the advance types after its name.
 
 ### How the graph page is opened
 
-`GraphPageOpening` · `src/sdlc.ts:220`
+`GraphPageOpening` · `src/sdlc.ts:228`
 
 How long the page settles once opened, and once a document is chosen, in seconds.
 
@@ -50,7 +50,7 @@ How long the page settles once opened, and once a document is chosen, in seconds
 
 ### What the scenario of the graph page shows
 
-`GraphPageScenarioData` · `src/sdlc.ts:307`
+`GraphPageScenarioData` · `src/sdlc.ts:315`
 
 The error a page raises in it.
 
@@ -65,7 +65,7 @@ The error a page raises in it.
 
 ### How a generation advances
 
-`HowAGenerationAdvances` · `src/sdlc.ts:730`
+`HowAGenerationAdvances` · `src/sdlc.ts:738`
 
 The generation in place assembles the engine's command line (the candidate) and Trame's SDLC (the programs of its checks), for the machine; then the candidate ships the next generation, judging what it builds as the generation it will be.
 
@@ -83,7 +83,7 @@ The generation in place assembles the engine's command line (the candidate) and 
 
 ### How the repository merges into main
 
-`MainBranch` · `src/sdlc.ts:415`
+`MainBranch` · `src/sdlc.ts:423`
 
 The main branch of the repository receives nothing but pull requests, and is never deleted nor rewritten; a pull request passes the check of each project the repository holds (its job), need not be up to date with main, and merges as a merge commit, which keeps each commit of the branch (a generation is a commit); GitHub may merge it once it holds, when someone asks it to, and deletes its branch then. No approval is required: the workflows keep from merging itself what people decided, which a person merges.
 
@@ -106,7 +106,7 @@ The main branch of the repository receives nothing but pull requests, and is nev
 
 ### How a pull request is checked on GitHub
 
-`PullRequestsOnGitHub` · `src/sdlc.ts:380`
+`PullRequestsOnGitHub` · `src/sdlc.ts:388`
 
 At each pull request into main, on GitHub's Ubuntu 24.04 machine with Node.js 22: its job, named trame, is a check the repository requires; it keeps GitHub from merging a pull request that changes what people decided (a trame.lock of the repository), which a person then merges (D1). It installs Poselia's packages too: the scenarios enter Poselia (ScenarioProjects), whose code uses three.js.
 
@@ -129,7 +129,7 @@ At each pull request into main, on GitHub's Ubuntu 24.04 machine with Node.js 22
 
 ### The repository's projects
 
-`RepositoryProjects` · `src/sdlc.ts:567`
+`RepositoryProjects` · `src/sdlc.ts:575`
 
 The projects Trame's repository holds, by their name and directory: what a pull request may change, what a version is carried across. Each writes the workflow that checks its pull requests by its shipment RunnersWritten, but geometry, which GitHub's runners cannot build; the example builds at the day of Trame's scenarios, and Trame, which reads its documents, after it.
 
@@ -152,7 +152,7 @@ The projects Trame's repository holds, by their name and directory: what a pull 
 
 ### The repository left by hand, in the scenario
 
-`RepositoryScenarioData` · `src/sdlc.ts:478`
+`RepositoryScenarioData` · `src/sdlc.ts:486`
 
 The state of the repository as someone left it: every method offered, nothing protected, one check required.
 
@@ -167,7 +167,7 @@ The state of the repository as someone left it: every method offered, nothing pr
 
 ### Trame's repository
 
-`TheRepository` · `src/sdlc.ts:434`
+`TheRepository` · `src/sdlc.ts:442`
 
 Where Trame lives on GitHub, by its owner and name: what its settings are applied to.
 
@@ -203,7 +203,7 @@ The programs that check what a generation ships and that the engine does not run
 
 ### What the graph page is asked
 
-`GraphPageSelectors` · `src/sdlc.ts:228` · status: **held**
+`GraphPageSelectors` · `src/sdlc.ts:236` · status: **held**
 
 The selectors of what a person sees, from the regions the page declares: the documents of its navigation, the links of the document shown, the nodes of its picker, the entry of the figure of the layers, the picker of documents (what a phone shows in place of the navigation) and the figure's document, and a figure drawn.
 
@@ -218,7 +218,7 @@ The selectors of what a person sees, from the regions the page declares: the doc
 
 ### How a version is carried across Trame's repository
 
-`OurPropagation` · `src/sdlc.ts:608` · status: **held**
+`OurPropagation` · `src/sdlc.ts:616` · status: **held**
 
 By trame.sh at its root, with the words of Trame's command line, across the repository's projects; the example at the day of the scenarios.
 
@@ -234,7 +234,7 @@ By trame.sh at its root, with the words of Trame's command line, across the repo
 
 ### How Trame's pull requests are opened
 
-`OurPullRequests` · `src/sdlc.ts:590` · status: **held**
+`OurPullRequests` · `src/sdlc.ts:598` · status: **held**
 
 Into main, merged as the repository merges them, by GitHub once they hold unless they change what people decided (as the pull requests' workflow says): a lock of one of the repository's projects.
 
@@ -252,7 +252,7 @@ Into main, merged as the repository merges them, by GitHub once they hold unless
 
 ### Advance
 
-`AdvanceAGeneration` · `src/sdlc.ts:745` · status: **held**
+`AdvanceAGeneration` · `src/sdlc.ts:753` · status: **held**
 
 trame advance --by <name> [--accept] [--promote "what changes"]: the generation in place assembles the candidate and Trame's SDLC, then the candidate ships the next generation with the rest of the line (it builds, compares, checks, and with --promote freezes itself and moves the pins). It stops where an assembly fails.
 
@@ -272,7 +272,7 @@ Triggered by `command advance`
 
 ### Set the repository's settings
 
-`ApplyTheRepositorySettings` · `src/sdlc.ts:457` · status: **held**
+`ApplyTheRepositorySettings` · `src/sdlc.ts:465` · status: **held**
 
 Sets Trame's repository on GitHub as the graph decides, with the rights of whoever runs it (an administrator of the repository), then reads it back: it succeeds when the repository holds every part of the settings, and fails saying the call GitHub did not take, or each part that still differs.
 
@@ -293,7 +293,7 @@ Triggered by `command apply-repository-settings`
 
 ### Open the graph page
 
-`OpenTheGraphPage` · `src/sdlc.ts:281` · status: **held**
+`OpenTheGraphPage` · `src/sdlc.ts:289` · status: **held**
 
 Opens the graph page in Chromium without a screen, a phone's width: the navigation lists the documents, a document is shown, the picker lists the nodes, the figure of the layers is drawn once its document is chosen (in the picker of documents, what a phone shows in place of the navigation), and the page raises no error. What is missing is said; it fails when anything is.
 
@@ -314,7 +314,7 @@ Triggered by `command open-graph-page`
 
 ### Read the repository's settings
 
-`ReadTheRepositorySettings` · `src/sdlc.ts:442` · status: **held**
+`ReadTheRepositorySettings` · `src/sdlc.ts:450` · status: **held**
 
 Reads Trame's repository on GitHub as it is and compares it with the settings the graph decides: it says whether it holds them, and each part it does not, with what was decided and what was found. It fails only when the repository cannot be read; what differs, the shipment that sets the repository sets.
 
@@ -337,7 +337,7 @@ Triggered by `command read-repository-settings`
 
 ### What the programs of Trame's SDLC say
 
-`SdlcWords` · `src/sdlc.ts:250`
+`SdlcWords` · `src/sdlc.ts:258`
 
 <details><summary>The messages, in code</summary>
 
@@ -375,7 +375,7 @@ Triggered by `command read-repository-settings`
 
 ### GitHub merges once it holds, asked in a session
 
-`AutoMergeInASession` · `src/sdlc.ts:670` · status: **unknown**
+`AutoMergeInASession` · `src/sdlc.ts:678` · status: **unknown**
 
 In a session of Claude Code, the route of its proxy: GraphQL is refused there.
 
@@ -396,7 +396,7 @@ Context: A session's proxy refuses GitHub's GraphQL, and offers PUT on the pull 
 
 ### GitHub merges once it holds, asked by its command line
 
-`AutoMergeOnTheMachine` · `src/sdlc.ts:658` · status: **unknown**
+`AutoMergeOnTheMachine` · `src/sdlc.ts:666` · status: **unknown**
 
 On a person's machine, gh pr merge --auto: GitHub's GraphQL.
 
@@ -417,7 +417,7 @@ Context: GitHub asks the automatic merge by GraphQL, which GitHub's command line
 
 ### The commands Trame takes from std
 
-`CommandsOfStd` · `src/sdlc.ts:631` · status: **held**
+`CommandsOfStd` · `src/sdlc.ts:639` · status: **held**
 
 pull-request, merge and propagate, on the machine and in a session of Claude Code, with Trame's settings.
 
@@ -447,7 +447,7 @@ Context: Opening a pull request and carrying a version across the repository wer
 
 ### Trame's settings in the scenarios
 
-`OurSettingsInTheScenarios` · `src/sdlc.ts:682` · status: **held**
+`OurSettingsInTheScenarios` · `src/sdlc.ts:690` · status: **held**
 
 In the scenarios, std's commands read Trame's settings as on the machine.
 
@@ -469,7 +469,7 @@ Context: What the settings give is played before a command of std reads them on 
 
 ### The repository's work on a machine
 
-`RepositoryWorkOnAMachine` · `src/sdlc.ts:646` · status: **unknown**
+`RepositoryWorkOnAMachine` · `src/sdlc.ts:654` · status: **unknown**
 
 Git's command line for the branches, GitHub's for the pull requests, Node to run trame.sh in each project, and the machine's files; on the machine and in a session.
 
@@ -493,7 +493,7 @@ Context: A pull request is opened, and a version carried, from the repository ch
 
 ### The SDLC in memory
 
-`SdlcInMemory` · `src/sdlc.ts:194` · status: **held**
+`SdlcInMemory` · `src/sdlc.ts:202` · status: **held**
 
 In the scenarios, the browser shows the page a scenario writes, and the repository is kept in memory.
 
@@ -540,7 +540,7 @@ Context: The graph page must be opened as a person opens it: the file exported, 
 
 ### What the machine must also have
 
-`WhatTheMachineMustHave` · `src/sdlc.ts:182` · status: **unknown**
+`WhatTheMachineMustHave` · `src/sdlc.ts:182` · status: **held**
 
 trame doctor asks, besides what the engine asks, that the browser the version of Playwright Trame uses drives is installed (std's add-on, since g120): the page's check runs in it, and a machine whose browsers moved would refuse it where the engine's own questions see nothing.
 
@@ -563,7 +563,7 @@ Context: On 17 November a machine whose browsers had moved refused the check of 
 
 ### A generation advanced in one command
 
-`AdvancedInOneCommand` · `src/sdlc.ts:772` · status: **held**
+`AdvancedInOneCommand` · `src/sdlc.ts:780` · status: **held**
 
 Without a name, nothing is assembled; with one, the generation in place assembles the candidate and Trame's SDLC for the machine, in that order, then the candidate is started on the next generation's shipment with the rest of the line, its launcher leading the names of the packages; its status is the command's.
 
@@ -591,7 +591,7 @@ Without a name, nothing is assembled; with one, the generation in place assemble
 
 ### The graph page is opened as a person would
 
-`OpeningTheGraphPage` · `src/sdlc.ts:314` · status: **held**
+`OpeningTheGraphPage` · `src/sdlc.ts:322` · status: **held**
 
 In memory, the browser shows a page with its documents, a document, its nodes and the figure of the layers: the program passes and says so; the same page raising an error, its figure not drawn, fails and says why.
 
@@ -619,7 +619,7 @@ In memory, the browser shows a page with its documents, a document, its nodes an
 
 ### Trame's settings, as std's commands read them
 
-`OurCommandsSettled` · `src/sdlc.ts:696` · status: **held**
+`OurCommandsSettled` · `src/sdlc.ts:704` · status: **held**
 
 A pull request goes into main, merged as the repository merges, by GitHub once it holds unless it changes a lock of one of the repository's projects; a version is carried by trame.sh with Trame's words, across each project, the example at the day of the scenarios and it alone.
 
@@ -646,7 +646,7 @@ A pull request goes into main, merged as the repository merges, by GitHub once i
 
 ### The repository is set as the graph decides
 
-`SettingTheRepository` · `src/sdlc.ts:488` · status: **held**
+`SettingTheRepository` · `src/sdlc.ts:496` · status: **held**
 
 In memory, a repository left by hand is read: it does not hold the settings, and each part that differs is said; setting it applies the settings once, and it holds them, read back; read again, it says so.
 
@@ -684,7 +684,7 @@ Who changes Trame's engine and language, and ships its generations.
 - People: ghalaax and claude
 
 - Owner: trame
-- Signs: [The candidate plays the laws](#CandidateKeepsTheLaws), [The candidate runs on the machine](#CandidateRunsOnTheMachine), [The graph page opens](#GraphPageOpens), [The repository is read from GitHub](#RepositoryRead)
+- Signs: [The candidate plays the laws](#CandidateKeepsTheLaws), [The candidate runs on the machine](#CandidateRunsOnTheMachine), [The graph page opens](#GraphPageOpens), [The machine has what Trame needs](#MachineAsked), [The repository is read from GitHub](#RepositoryRead)
 
 ## Artefacts
 
@@ -698,7 +698,7 @@ The program of Trame's command line, assembled from the graph for a machine: wha
 
 - Path: `out/local/trame-cli.ts`
 
-Built 25 November 2026 by claude, fingerprint `e2cb817ddfa9eb48c1df56fd69f355a67a7c2b262c442002a898c0fcc82f5268`.
+Built 25 November 2026 by claude, fingerprint `d1427359b0a8996c0481f6938b3228edfaa936619edee4c357e3dc117b9565b0`.
 
 Shipped by [The next generation](#NextGeneration) 8 November 2026, fingerprint `7b37d575242fcf8f0998170f818ac1b266c2f3408a5dc31f62eedaf3cbf0f2f4`.
 
@@ -738,6 +738,8 @@ Shipped by [The next generation](#NextGeneration) 24 November 2026, fingerprint 
 
 Shipped by [The next generation](#NextGeneration) 25 November 2026, fingerprint `6194e75081a20274e6dd14cae2dc89c9a56feb936913de53c3de712b0591bfd3`.
 
+Shipped by [The next generation](#NextGeneration) 25 November 2026, fingerprint `d1427359b0a8996c0481f6938b3228edfaa936619edee4c357e3dc117b9565b0`.
+
 - Owner: trame
 - Produced by: [Trame on the command line](architecture.md#TrameCli)
 - Used by: [Advance](#AdvanceAGeneration)
@@ -748,14 +750,14 @@ Shipped by [The next generation](#NextGeneration) 25 November 2026, fingerprint 
 
 ### The graph page
 
-`GraphPage` · `src/sdlc.ts:214` · status: **held**
+`GraphPage` · `src/sdlc.ts:222` · status: **held**
 
 The page trame export writes of Trame's graph, which a browser opens as it is: it carries the program of the page, assembled for the browser. A generation ships it with its engine.
 
 - Path: `trame-page.html`
 - Media type: `text/html; charset=utf-8`
 
-Built 25 November 2026 by claude, fingerprint `a11a9fbbf008dff60fe338224a541c2db16940b74d740bf08c55117a6995f6db`.
+Built 25 November 2026 by claude, fingerprint `1f650b511c9ae542c1ef53efa1cd17d12c40831351d41e251b54a625d6d59be7`.
 
 Shipped by [The next generation](#NextGeneration) 8 November 2026, fingerprint `99d138159c0e7fce465ffd74ec828b3cfa1bb501acf7d08ed97f495b21eca67a`.
 
@@ -797,6 +799,8 @@ Shipped by [The next generation](#NextGeneration) 25 November 2026, fingerprint 
 
 Shipped by [The next generation](#NextGeneration) 25 November 2026, fingerprint `d4e3f6382b06f7f0d6d39744fe20d59f7575910033726728abb8e7f389538e41`.
 
+Shipped by [The next generation](#NextGeneration) 25 November 2026, fingerprint `4bd2b41288a94f90a5cf7e5836a9d75875ee0cc00e9316be13de5af84f9c1132`.
+
 - Owner: trame
 - Produced by: [Export the page](commands.md#Export)
 - Carries: [The page in a browser](architecture.md#PageApp)
@@ -808,13 +812,13 @@ Shipped by [The next generation](#NextGeneration) 25 November 2026, fingerprint 
 
 ### The page's program
 
-`PageProgram` · `src/sdlc.ts:207` · status: **held**
+`PageProgram` · `src/sdlc.ts:215` · status: **held**
 
 The component that shows the graph page, assembled for the browser where the engine finds it: built before the page, so that the page shipped carries the program of the engine shipped, not the one the last advance assembled.
 
 - Path: `out/browser/page-app.ts`
 
-Built 25 November 2026 by claude, fingerprint `8ee165f5836ec92322a9b4366cc77ff5d895c05efb8da20da8a2647bae6999c4`.
+Built 25 November 2026 by claude, fingerprint `6705b740c24322d88018a276094ac10dfbdd69d21e8d7e275bd0f09bd6669e9f`.
 
 Shipped by [The next generation](#NextGeneration) 8 November 2026, fingerprint `6416e1b80c44d0c602d83fd12a79c6785cb84f3d295f9795ed017ce759e2af04`.
 
@@ -852,6 +856,8 @@ Shipped by [The next generation](#NextGeneration) 24 November 2026, fingerprint 
 
 Shipped by [The next generation](#NextGeneration) 25 November 2026, fingerprint `8ee165f5836ec92322a9b4366cc77ff5d895c05efb8da20da8a2647bae6999c4`.
 
+Shipped by [The next generation](#NextGeneration) 25 November 2026, fingerprint `6705b740c24322d88018a276094ac10dfbdd69d21e8d7e275bd0f09bd6669e9f`.
+
 - Owner: trame
 - Produced by: [The page in a browser](architecture.md#PageApp)
 - Assembled for: [Browser](architecture.md#Browser)
@@ -861,7 +867,7 @@ Shipped by [The next generation](#NextGeneration) 25 November 2026, fingerprint 
 
 ### The pull requests' workflow
 
-`PullRequestWorkflow` · `src/sdlc.ts:398` · status: **held**
+`PullRequestWorkflow` · `src/sdlc.ts:406` · status: **unknown**
 
 The workflow that checks a pull request on GitHub, written from the pipeline of the shipment into main: it prepares the machine as the plan says, keeps GitHub from merging what people decided, then runs trame ship.
 
@@ -894,13 +900,13 @@ Shipped by [The files that run it elsewhere](#RunnersWritten) 25 November 2026, 
 
 ### The engine
 
-`TheEngine` · `src/sdlc.ts:357` · status: **held**
+`TheEngine` · `src/sdlc.ts:365` · status: **held**
 
 Trame as its people write it: what a pull request brings into the main branch, all its code.
 
 - Path: `src`
 
-Built 25 November 2026 by claude, fingerprint `9e319774981e0e7c9768c6b292215fb710d85a51d6d0033a7b057c0c098ad995`.
+Built 25 November 2026 by claude, fingerprint `a6d59dd6b3ec53e38908d14a6345e19d0c2e3bde5b9f86545618634afca3df00`.
 
 Shipped by [Into the main branch](#IntoMain) 19 November 2026, fingerprint `70056b0e0c3584fdb3e15ff38356564d76375a389952ff9247a05e00dede53af`.
 
@@ -914,7 +920,7 @@ Shipped by [Into the main branch](#IntoMain) 19 November 2026, fingerprint `7005
 
 ### The candidate plays the laws
 
-`CandidateKeepsTheLaws` · `src/sdlc.ts:76` · status: **unknown**
+`CandidateKeepsTheLaws` · `src/sdlc.ts:76` · status: **held**
 
 The candidate engine plays the laws of every kind and view on drawn values: one broken law, and it is not shipped.
 
@@ -946,7 +952,7 @@ Passed 25 November 2026 by claude.
 
 ### The graph page opens
 
-`GraphPageOpens` · `src/sdlc.ts:298` · status: **held**
+`GraphPageOpens` · `src/sdlc.ts:306` · status: **held**
 
 The graph page exported, opened in a browser without a screen by a program of the SDLC: the program of the page runs there, with what realizes it in a browser.
 
@@ -958,11 +964,29 @@ Passed 25 November 2026 by claude.
 - Signed by: [Trame's maintainers](#Maintainers)
 - Verifies: [Show the graph](browser.md#ShowGraph), [Explorer of a graph](browser.md#ExplorerFigures), [The browser loads the page](../std/releases/0.25.0/docs/platform.md#BrowserLoading), [The browser's window](browser.md#BrowserWindow), [Local storage](browser.md#BrowserMemory), [The globals of the page, and trame dev](browser.md#BrowserFeed), [Amendments sent to trame dev](browser.md#BrowserAmendments), [The browser's gzip](browser.md#BrowserDecompression), [Commands run in the engine](../std/releases/0.25.0/docs/tooling.md#CommandsInTheEngine), [Chromium, driven by Playwright](../std/releases/0.25.0/docs/tooling.md#PlaywrightBrowser)
 
+<a id="MachineAsked"></a>
+
+### The machine has what Trame needs
+
+`MachineAsked` · `src/sdlc.ts:196` · status: **held**
+
+trame doctor, run by the engine that ships (since g122), asks what Trame chooses to ask besides the engine's own questions: that the browser Playwright drives is installed. It proves the add-on, which no program of Trame's own wires: the engine takes it from the graph when it asks.
+
+Run by trame doctor, which asks the add-ons the project chooses for it.
+
+Passed 25 November 2026 by claude.
+
+- Owner: trame
+- Run by the engine's command: doctor
+- Signed by: [Trame's maintainers](#Maintainers)
+- Verifies: [Playwright's browser, installed](../std/releases/0.25.0/docs/tooling.md#PlaywrightBrowserInstalled)
+- Required by: [Into the main branch](#IntoMain)
+
 <a id="RepositoryRead"></a>
 
 ### The repository is read from GitHub
 
-`RepositoryRead` · `src/sdlc.ts:472` · status: **unknown**
+`RepositoryRead` · `src/sdlc.ts:480` · status: **unknown**
 
 A program of the SDLC reads Trame's repository through GitHub's command line, with the token of whoever ships: what its run proves is the realization of the machine, which no scenario in memory runs. It passes whether or not the repository holds the settings, which it says.
 
@@ -980,7 +1004,7 @@ Passed 20 November 2026 by claude.
 
 ### Into the main branch
 
-`IntoMain` · `src/sdlc.ts:371` · status: **held**
+`IntoMain` · `src/sdlc.ts:379` · status: **held**
 
 A pull request into main: it merges once it holds, as the repository's settings say (D1). The programs of the SDLC it reaches are those of this machine.
 
@@ -989,6 +1013,7 @@ A pull request into main: it merges once it holds, as the repository's settings 
 | Obligation | Status | Why |
 |---|---|---|
 | [The engine](#TheEngine) | **held** | shipped |
+| [The machine has what Trame needs](#MachineAsked) | **held** | required |
 | [Effects come from the vocabulary](architecture.md#KnownEffects) | **held** | [The rules of the architecture hold](#ArchitectureRuled) |
 | [Only commands write](architecture.md#OnlyCommandsWrite) | **held** | [The rules of the architecture hold](#ArchitectureRuled) |
 | [Rendering does not read the graph](architecture.md#RenderingWithoutGraph) | **held** | [The rules of the architecture hold](#ArchitectureRuled) |
@@ -1044,6 +1069,7 @@ Shipped 19 November 2026 by claude; its dossier: `evidence/shipments/IntoMain-20
 
 - Owner: trame
 - Ships: [The engine](#TheEngine)
+- Requires: [The machine has what Trame needs](#MachineAsked)
 - Programs assembled for: [Local](architecture.md#Local)
 - Follows the policy: [How a change merges](#MergeMode)
 - Run elsewhere by: [The pull requests' workflow](#PullRequestWorkflow)
@@ -1052,7 +1078,7 @@ Shipped 19 November 2026 by claude; its dossier: `evidence/shipments/IntoMain-20
 
 ### The next generation
 
-`NextGeneration` · `src/sdlc.ts:344` · status: **unknown**
+`NextGeneration` · `src/sdlc.ts:352` · status: **held**
 
 The engine as the graph describes it now, frozen into the next generation and pinned by Trame and the example, the way a generation is made: what it must prove is derived from what the candidate reaches (the laws it plays, the scenarios of its code, the requirements of the goals it serves, the rules, the packages), nothing listed by hand. The advance deploys it, and refuses a candidate the requirement "Accept a candidate" does not accept.
 
@@ -1102,7 +1128,7 @@ The engine as the graph describes it now, frozen into the next generation and pi
 | [Effects come from the vocabulary](architecture.md#KnownEffects) | **held** | [The rules of the architecture hold](#ArchitectureRuled) |
 | [Only commands write](architecture.md#OnlyCommandsWrite) | **held** | [The rules of the architecture hold](#ArchitectureRuled) |
 | [Rendering does not read the graph](architecture.md#RenderingWithoutGraph) | **held** | [The rules of the architecture hold](#ArchitectureRuled) |
-| [The candidate plays the laws](#CandidateKeepsTheLaws) | **unknown** | [The candidate is checked by programs](#CandidateChecked), for [The candidate engine](#EngineCandidate) |
+| [The candidate plays the laws](#CandidateKeepsTheLaws) | **held** | [The candidate is checked by programs](#CandidateChecked), for [The candidate engine](#EngineCandidate) |
 | [The candidate runs on the machine](#CandidateRunsOnTheMachine) | **held** | [The candidate is checked by programs](#CandidateChecked), for [The candidate engine](#EngineCandidate) |
 | [The graph page opens](#GraphPageOpens) | **held** | [The candidate is checked by programs](#CandidateChecked), for [The graph page](#GraphPage) |
 | [Grammar of TypeScript](packages.md#TypeScriptGrammar) | **held** | [The packages are safe](#EnginePackagesSafe), for [TypeScript](typescript.md#TypeScript) |
@@ -1173,7 +1199,7 @@ The engine as the graph describes it now, frozen into the next generation and pi
 | [The resolution does not depend on the order](laws.md#OrderFree) | **held** | [The language serves what it says](#LanguageServed), for [Complete declaration](laws.md#CompleteDeclaration) |
 | [Without evidence, the status is unknown](laws.md#UnknownWithoutEvidence) | **held** | [The language serves what it says](#LanguageServed), for [Complete declaration](laws.md#CompleteDeclaration) |
 
-Shipped 25 November 2026 by claude; its dossier: `evidence/shipments/NextGeneration-2026-11-25-2d3b8e75.json`.
+Shipped 25 November 2026 by claude; its dossier: `evidence/shipments/NextGeneration-2026-11-25-4ca414df.json`.
 
 - Owner: trame
 - Ships: [The candidate engine](#EngineCandidate), [The page's program](#PageProgram), [The graph page](#GraphPage)
@@ -1186,7 +1212,7 @@ Shipped 25 November 2026 by claude; its dossier: `evidence/shipments/NextGenerat
 
 ### The repository as decided
 
-`RepositorySet` · `src/sdlc.ts:523` · status: **unknown**
+`RepositorySet` · `src/sdlc.ts:531` · status: **unknown**
 
 Trame's repository on GitHub set as the graph decides (MainBranch): the repository read from GitHub first, then set by a program of the SDLC and read back. An administrator of the repository ships it, with their own token: ./trame.sh ship RepositorySet --by <name>.
 
@@ -1215,7 +1241,7 @@ Not shipped yet.
 
 ### The files that run it elsewhere
 
-`RunnersWritten` · `src/sdlc.ts:538` · status: **held**
+`RunnersWritten` · `src/sdlc.ts:546` · status: **unknown**
 
 The workflow that checks each pull request, written by trame ship from the graph and kept in the repository where GitHub finds it.
 
@@ -1223,7 +1249,7 @@ The workflow that checks each pull request, written by trame ship from the graph
 
 | Obligation | Status | Why |
 |---|---|---|
-| [The pull requests' workflow](#PullRequestWorkflow) | **held** | shipped |
+| [The pull requests' workflow](#PullRequestWorkflow) | **unknown** | shipped |
 
 Shipped 25 November 2026 by claude; its dossier: `evidence/shipments/RunnersWritten-2026-11-25-47c62524.json`.
 
@@ -1363,7 +1389,7 @@ And, as every policy, the foundations: no literal in a body, and a sound graph (
 
 ### How a change merges
 
-`MergeMode` · `src/sdlc.ts:364`
+`MergeMode` · `src/sdlc.ts:372`
 
 The way Trame takes a change into its main branch: the code it brings verified (a gap is an error), the rules held; and the foundations, as always. What the candidate of a generation proves besides is the advance's business.
 
@@ -1377,7 +1403,7 @@ And, as every policy, the foundations: no literal in a body, and a sound graph (
 
 ### How the repository is set
 
-`SettingsMode` · `src/sdlc.ts:515`
+`SettingsMode` · `src/sdlc.ts:523`
 
 The way Trame sets its repository: the program that sets it verified (a gap is an error), the rules held, its callers identified; and the foundations, as always.
 

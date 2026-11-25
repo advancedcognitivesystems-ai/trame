@@ -10,7 +10,7 @@
 
 ### What the engines an advance starts answer in a scenario
 
-`AdvanceSamples` · `src/command-scenarios.ts:1303`
+`AdvanceSamples` · `src/command-scenarios.ts:1304`
 
 What each prints (a build, an assembly, the laws), how many may be started at most, what the promotion says.
 
@@ -28,7 +28,7 @@ What each prints (a build, an assembly, the laws), how many may be started at mo
 
 ### What an amendment is checked with
 
-`AmendmentSamples` · `src/command-scenarios.ts:371`
+`AmendmentSamples` · `src/command-scenarios.ts:372`
 
 In the example: a late fee lowered, which a criterion of the refund refuses; a free period moved a minute on a fast charger, which its owner writes; a rule's body, which changes in the code only.
 
@@ -47,7 +47,7 @@ In the example: a late fee lowered, which a criterion of the refund refuses; a f
 
 ### What the example is assembled for
 
-`AssemblySamples` · `src/command-scenarios.ts:212`
+`AssemblySamples` · `src/command-scenarios.ts:213`
 
 Its component, an environment where it runs on a machine, and one that provisions its infrastructure.
 
@@ -69,7 +69,7 @@ Its component, an environment where it runs on a machine, and one that provision
 
 ### Bodies the reader is given
 
-`BodySamples` · `src/command-scenarios.ts:49`
+`BodySamples` · `src/command-scenarios.ts:50`
 
 A body with a literal, and what the reader finds in it; a body that imports a module of the project; one that reaches the network through a global; a file body that exports nothing; a text that is not TypeScript.
 
@@ -88,7 +88,7 @@ A body with a literal, and what the reader finds in it; a body that imports a mo
 
 ### What trame dev is shown in a scenario
 
-`DevSamples` · `src/command-scenarios.ts:803`
+`DevSamples` · `src/command-scenarios.ts:804`
 
 The file written under the project and its text; how many pauses of the debounce the scenario waits; how many times the engine is relaunched (at the start, then after the change).
 
@@ -106,7 +106,7 @@ The file written under the project and its text; how many pauses of the debounce
 
 ### What a plan is checked with
 
-`PlanSamples` · `src/command-scenarios.ts:306`
+`PlanSamples` · `src/command-scenarios.ts:307`
 
 A node no build wrote, and an issue no build raised: what the scenario adds by hand to graph.json.
 
@@ -122,7 +122,7 @@ A node no build wrote, and an issue no build raised: what the scenario adds by h
 
 ### What the scenarios ask of those projects
 
-`ProjectSamples` · `src/command-scenarios.ts:489`
+`ProjectSamples` · `src/command-scenarios.ts:490`
 
 A version to release and what it changes; a library the application imports, and the name it imports it by; the delivery of its page; its shipments (the files that run it elsewhere, a preview); a check by hand, someone of its role and someone who is not.
 
@@ -148,7 +148,7 @@ A version to release and what it changes; a library the application imports, and
 
 ### Declarations rewritten
 
-`RewritingSamples` · `src/command-scenarios.ts:1072`
+`RewritingSamples` · `src/command-scenarios.ts:1073`
 
 An element with two examples, a text and lines joined; their outputs written again.
 
@@ -168,7 +168,7 @@ An element with two examples, a text and lines joined; their outputs written aga
 
 ### What a program run in a scenario answers
 
-`RunSamples` · `src/command-scenarios.ts:776`
+`RunSamples` · `src/command-scenarios.ts:777`
 
 | Case | Value |
 |---|---|
@@ -182,7 +182,7 @@ An element with two examples, a text and lines joined; their outputs written aga
 
 ### The projects of the repository the scenarios enter
 
-`ScenarioProjects` · `src/command-scenarios.ts:478`
+`ScenarioProjects` · `src/command-scenarios.ts:479`
 
 A library, which ships and releases versions (the library of writers: the engine of the scenarios has the standard library's modules loaded already, so its graph would be read empty there); an application, which imports libraries outside its package and ships.
 
@@ -200,7 +200,7 @@ A library, which ships and releases versions (the library of writers: the engine
 
 ### What an SVG figure opens with
 
-`SvgSample` · `src/command-scenarios.ts:150`
+`SvgSample` · `src/command-scenarios.ts:151`
 
 | Case | Value |
 |---|---|
@@ -213,7 +213,7 @@ A library, which ships and releases versions (the library of writers: the engine
 
 ### Views asked of the example
 
-`ViewSamples` · `src/command-scenarios.ts:103`
+`ViewSamples` · `src/command-scenarios.ts:104`
 
 A view of the whole project and what it shows; a view of one module, with a figure, and a node the figure draws; a word that names neither a command nor a view.
 
@@ -232,7 +232,7 @@ A view of the whole project and what it shows; a view of one module, with a figu
 
 ### An advance, in memory
 
-`AdvanceInMemory` · `src/command-scenarios.ts:1317` · status: **held**
+`AdvanceInMemory` · `src/command-scenarios.ts:1318` · status: **held**
 
 trame advance, in Trame's repository: the generation in place builds the libraries, the example and Trame, and assembles the candidate; the candidate builds them as it did, reassembles itself to a fixed point, plays the laws; the older generations run. Here each engine it starts answers what the scenario says, and what it compares is what the disk holds: a build that fails stops it; otherwise the candidate is accepted and, with --promote, frozen as the next generation (its program, its graph, its origin, the fingerprint of its engine for the machines), the pins moved, all in memory.
 
@@ -242,7 +242,7 @@ trame advance, in Trame's repository: the generation in place builds the librari
 |---|---|
 | trame advance stops at the first build that fails | passed |
 | The generation in place builds first | passed |
-| The candidate is accepted (  ✓ trame runs g122 \|   ✓ reservations runs g122 \| Advance succeeded.) | passed |
+| The candidate is accepted (  ✓ trame runs g123 \|   ✓ reservations runs g123 \| Advance succeeded.) | passed |
 | With --promote, it is frozen as the next generation, its origin written, the pin moved | passed |
 | The generation frozen records the fingerprint of its engine, by which evidence names it | passed |
 
@@ -263,7 +263,7 @@ trame advance, in Trame's repository: the generation in place builds the librari
 
 ### A body is read and checked
 
-`BodiesReadAndChecked` · `src/command-scenarios.ts:72` · status: **held**
+`BodiesReadAndChecked` · `src/command-scenarios.ts:73` · status: **held**
 
 The reader finds the literals of a body with their roles, through tree-sitter; the checks refuse a body that imports a module of the project (a hidden dependency), one that reaches the platform through a global unless its kind may, a file body that exports nothing, and a text that does not follow the grammar.
 
@@ -294,7 +294,7 @@ The reader finds the literals of a body with their roles, through tree-sitter; t
 
 ### A build planned
 
-`BuildPlanned` · `src/command-scenarios.ts:318` · status: **held**
+`BuildPlanned` · `src/command-scenarios.ts:319` · status: **held**
 
 trame plan writes nothing. Right after a build, nothing changes. Against the graph.json of that build changed by hand in memory (a node the shipment ships taken out, a status changed, a node invented, an issue added), the plan says the node is added, the status changes back, the invented node is removed, the issue is resolved, and the shipment is touched.
 
@@ -323,7 +323,7 @@ trame plan writes nothing. Right after a build, nothing changes. Against the gra
 
 ### The command line
 
-`CommandLineChooses` · `src/command-scenarios.ts:857` · status: **held**
+`CommandLineChooses` · `src/command-scenarios.ts:858` · status: **held**
 
 The first word typed chooses the command: none, or an option, is the build; a word that names no command goes to the command that takes any word, with the names of the others; without such a command, it is refused.
 
@@ -352,7 +352,7 @@ The first word typed chooses the command: none, or an option, is the build; a wo
 
 ### A component assembled
 
-`ComponentAssembled` · `src/command-scenarios.ts:230` · status: **held**
+`ComponentAssembled` · `src/command-scenarios.ts:231` · status: **held**
 
 trame assemble writes the example's component for an environment: a program in TypeScript, frozen, read back before it is written, and its launcher, which leads the names of packages before it runs the program (since g99); for the environment that provisions it, its infrastructure in Terraform too. Without an environment, it is refused. Its graph changes after the day of the scenarios (the launch of the ultra chargers starts, then ends): the program holds a period for each, and the cancellation, which the launch changes, answers by the day (since g106).
 
@@ -382,7 +382,7 @@ trame assemble writes the example's component for an environment: a program in T
 
 ### A component run
 
-`ComponentRun` · `src/command-scenarios.ts:782` · status: **held**
+`ComponentRun` · `src/command-scenarios.ts:783` · status: **held**
 
 trame run assembles the example's component, runs the program it wrote, and exits with the program's status.
 
@@ -410,7 +410,7 @@ trame run assembles the example's component, runs the program it wrote, and exit
 
 ### Declarations published
 
-`DeclarationsPublished` · `src/command-scenarios.ts:424` · status: **held**
+`DeclarationsPublished` · `src/command-scenarios.ts:425` · status: **held**
 
 trame publish freezes the example's declarations not yet published in trame.lock, with their fingerprints; published again, nothing is new.
 
@@ -438,7 +438,7 @@ trame publish freezes the example's declarations not yet published in trame.lock
 
 ### trame dev
 
-`DevFollowsTheGraph` · `src/command-scenarios.ts:814` · status: **held**
+`DevFollowsTheGraph` · `src/command-scenarios.ts:815` · status: **held**
 
 trame dev serves the page of the example and its graph, compiled at each date in a fresh process of the engine, and opens a stream of events; a file written under the project is seen, and after a pause the graph is compiled again and announced on the stream.
 
@@ -468,7 +468,7 @@ trame dev serves the page of the example and its graph, compiled at each date in
 
 ### The doctor
 
-`DoctorAsks` · `src/command-scenarios.ts:1276` · status: **held**
+`DoctorAsks` · `src/command-scenarios.ts:1277` · status: **held**
 
 trame doctor asks the machine (here, the one of the scenarios: files in memory, a server in memory, a program that answers what the scenario says) whether it runs Trame, and answers each question on a line; a program that does not print what it was given fails the doctor.
 
@@ -479,24 +479,24 @@ trame doctor asks the machine (here, the one of the scenarios: files in memory, 
 | trame doctor asks 9 questions of the machine, and each is answered | passed |
 | A program that does not print what it was given fails the doctor, which says so | passed |
 
-<details><summary>The code it runs: 54 nodes</summary>
+<details><summary>The code it runs: 64 nodes</summary>
 
-[Cycles](engine.md#Cycles), [References](engine.md#References), [Positions](engine.md#Positions), [Trame's prelude](platform.md#TramePrelude), [tsx loader](platform.md#TsxLoader), [Node paths](platform.md#NodePaths), [Files in memory, over the disk](platform.md#MemoryFiles), [TypeScript compiler](platform.md#RealTypeScript), [Results kept in the process](platform.md#ResultsInTheProcess), [Runs kept in the process](platform.md#RunsInTheProcess), [SHA-256 hashes](platform.md#NodeHashing), [Lists](messages.md#Lists), [Static reading](engine.md#StaticAnalysis), [Project](engine.md#Project), [Dates](messages.md#Dates), [Punctuation of documents](documents.md#Punctuation), [Pseudo-random generator](engine.md#Generator), [Order of versions](packages.md#VersionOrder), [Values with their units](documents.md#Units), [Visible text](documents.md#VisibleText), [Fingerprints](engine.md#Fingerprints), [Graph](engine.md#GraphApi), [tree-sitter in WebAssembly](platform.md#WebTreeSitter), [Syntax reader](syntax.md#SyntaxReader), [Checks of a body](syntax.md#BodyChecks), [TypeScript writer](typescript.md#TypeScriptWriter), [Terraform writer](terraform.md#TerraformWriter), [Drivers](languages.md#Drivers), [Wiring](engine.md#Wiring), [Attribution](shipping.md#Attribution), [The fingerprint of an engine](engine.md#EngineFingerprint), [The runs of a project](engine.md#ProjectRuns), [Packages by their local path](platform.md#LocalPaths), [Packages from the local registry](platform.md#LocalRegistry), [Packages by their origin](platform.md#PackagesByOrigin), [Judged harder](engine.md#JudgedHarder), [Compiler](engine.md#Compiler), [A shipment's pipeline](engine.md#ShipmentPipeline), [Compilation API](engine.md#CompilationApi), [Laws](engine.md#Laws), [Views](engine.md#Views), [Lock](engine.md#Lock), [Common rendering](rendering.md#Common), [Terminal in memory](platform.md#MemoryTerminal), [Example process](platform.md#ExampleProcess), [Stopped clock](platform.md#StoppedClock), [The project's commands](commands.md#ProjectCommands), [Preparation](commands.md#Preparation), [A server in memory](platform.md#MemoryHttpServer), [Node timer](platform.md#NodeTimer), [No registry in test](platform.md#NoReportsInTest), [No installer in test](platform.md#NoInstallsInTest), [The add-ons of a command the engine keeps](commands.md#AddOns), [Ask the machine](commands.md#Doctor)
+[Cycles](engine.md#Cycles), [References](engine.md#References), [Positions](engine.md#Positions), [Trame's prelude](platform.md#TramePrelude), [tsx loader](platform.md#TsxLoader), [Node paths](platform.md#NodePaths), [Files in memory, over the disk](platform.md#MemoryFiles), [TypeScript compiler](platform.md#RealTypeScript), [Results kept in the process](platform.md#ResultsInTheProcess), [Runs kept in the process](platform.md#RunsInTheProcess), [SHA-256 hashes](platform.md#NodeHashing), [Lists](messages.md#Lists), [Static reading](engine.md#StaticAnalysis), [Project](engine.md#Project), [Dates](messages.md#Dates), [Punctuation of documents](documents.md#Punctuation), [Pseudo-random generator](engine.md#Generator), [Order of versions](packages.md#VersionOrder), [Values with their units](documents.md#Units), [Visible text](documents.md#VisibleText), [Fingerprints](engine.md#Fingerprints), [Graph](engine.md#GraphApi), [tree-sitter in WebAssembly](platform.md#WebTreeSitter), [Syntax reader](syntax.md#SyntaxReader), [Checks of a body](syntax.md#BodyChecks), [TypeScript writer](typescript.md#TypeScriptWriter), [Terraform writer](terraform.md#TerraformWriter), [Drivers](languages.md#Drivers), [Wiring](engine.md#Wiring), [Attribution](shipping.md#Attribution), [The fingerprint of an engine](engine.md#EngineFingerprint), [The runs of a project](engine.md#ProjectRuns), [Packages by their local path](platform.md#LocalPaths), [Packages from the local registry](platform.md#LocalRegistry), [Packages by their origin](platform.md#PackagesByOrigin), [Judged harder](engine.md#JudgedHarder), [Compiler](engine.md#Compiler), [A shipment's pipeline](engine.md#ShipmentPipeline), [Compilation API](engine.md#CompilationApi), [Laws](engine.md#Laws), [Views](engine.md#Views), [Lock](engine.md#Lock), [Common rendering](rendering.md#Common), [Terminal in memory](platform.md#MemoryTerminal), [Example process](platform.md#ExampleProcess), [Stopped clock](platform.md#StoppedClock), [The project's commands](commands.md#ProjectCommands), [Preparation](commands.md#Preparation), [Asking](doctor.md#Asking), [The clock gives the day](doctor.md#ClockAnswers), [A file written is read back](doctor.md#FilesAnswer), [A directory copied is the same as the original](doctor.md#TreesAnswer), [A program runs with the engine's loader, and prints what it says](doctor.md#ProgramsAnswer), [A run is kept, and given back until a file it read changes](doctor.md#RunsAnswer), [A server in memory](platform.md#MemoryHttpServer), [A server listens on a port the system gives](doctor.md#ServerAnswers), [Node timer](platform.md#NodeTimer), [The time passes](doctor.md#TimerAnswers), [No registry in test](platform.md#NoReportsInTest), [The registry answers about the packages](doctor.md#RegistryAnswers), [No installer in test](platform.md#NoInstallsInTest), [The installer installs what a manifest names and writes its lockfile](doctor.md#InstallerAnswers), [The add-ons of a command the engine keeps](commands.md#AddOns), [Ask the machine](commands.md#Doctor)
 
 </details>
 
 - Owner: trame
-- Parameters: `doctor` ← [Ask the machine](commands.md#Doctor) · `processLog` ← [Process log](architecture.md#ProcessLog) · `terminalLog` ← [Terminal log](architecture.md#TerminalLog) · `probe` ← [What the doctor writes, runs and waits for](commands.md#DoctorProbe) · `line` ← [Trame's commands](conventions.md#TrameCommands) · `exitStatus` ← [Exit status](../std/releases/0.25.0/docs/system.md#ExitStatus) · `commands` ← [Messages of the commands](messages.md#CommandMessages) · `file` ← [Text file](../std/releases/0.25.0/docs/text.md#TextFile) · `texts` ← [Texts](../std/releases/0.25.0/docs/algebra.md#Texts) · `counts` ← [Counts](../std/releases/0.25.0/docs/algebra.md#Counts) · `messages` ← [Messages of the scenarios](messages.md#ScenarioMessages)
+- Parameters: `doctor` ← [Ask the machine](commands.md#Doctor) · `processLog` ← [Process log](architecture.md#ProcessLog) · `terminalLog` ← [Terminal log](architecture.md#TerminalLog) · `probe` ← [What the doctor writes, runs and waits for](doctor.md#DoctorProbe) · `line` ← [Trame's commands](conventions.md#TrameCommands) · `exitStatus` ← [Exit status](../std/releases/0.25.0/docs/system.md#ExitStatus) · `commands` ← [Messages of the commands](messages.md#CommandMessages) · `file` ← [Text file](../std/releases/0.25.0/docs/text.md#TextFile) · `texts` ← [Texts](../std/releases/0.25.0/docs/algebra.md#Texts) · `counts` ← [Counts](../std/releases/0.25.0/docs/algebra.md#Counts) · `messages` ← [Messages of the scenarios](messages.md#ScenarioMessages)
 - Body: inline, in the declaration
-- Effects: execution, keeps, network, process, read, terminal, time, write
-- Verifies: [Ask the machine](commands.md#Doctor), [The runs of a project](engine.md#ProjectRuns), [Runs kept in the process](platform.md#RunsInTheProcess)
+- Effects: asynchronous, execution, keeps, network, process, read, terminal, time, write
+- Verifies: [Ask the machine](commands.md#Doctor), [The runs of a project](engine.md#ProjectRuns), [Runs kept in the process](platform.md#RunsInTheProcess), [Asking](doctor.md#Asking), [The clock gives the day](doctor.md#ClockAnswers), [A file written is read back](doctor.md#FilesAnswer), [A directory copied is the same as the original](doctor.md#TreesAnswer), [A program runs with the engine's loader, and prints what it says](doctor.md#ProgramsAnswer), [A run is kept, and given back until a file it read changes](doctor.md#RunsAnswer), [A server listens on a port the system gives](doctor.md#ServerAnswers), [The time passes](doctor.md#TimerAnswers), [The registry answers about the packages](doctor.md#RegistryAnswers), [The installer installs what a manifest names and writes its lockfile](doctor.md#InstallerAnswers)
 - In: [Test](architecture.md#Test)
 
 <a id="EvidenceForSomeone"></a>
 
 ### Evidence given for someone
 
-`EvidenceForSomeone` · `src/command-scenarios.ts:982` · status: **held**
+`EvidenceForSomeone` · `src/command-scenarios.ts:983` · status: **held**
 
 In the example, Léa is not an operator: the check she signs alone is refused. A delegation of the role lets her act for Karim until the last day of December: the check she signs for him, on the first of December, is his, she is named with it, sealed with the rest. Once the delegation is over, the same is refused.
 
@@ -525,7 +525,7 @@ In the example, Léa is not an operator: the check she signs alone is refused. A
 
 ### An example's output written again
 
-`ExampleOutputRewritten` · `src/command-scenarios.ts:1111` · status: **held**
+`ExampleOutputRewritten` · `src/command-scenarios.ts:1112` · status: **held**
 
 In its element's declaration, where it is: a text as JSON; lines joined in the form they had, each on its line at the indentation of the others; the rest of the declaration as it was. An element not declared there: nothing.
 
@@ -554,7 +554,7 @@ In its element's declaration, where it is: a text as JSON; lines joined in the f
 
 ### The examples of a project, met
 
-`ExamplesMet` · `src/command-scenarios.ts:1128` · status: **held**
+`ExamplesMet` · `src/command-scenarios.ts:1129` · status: **held**
 
 trame examples, in the example: every example of its syntax elements is met, nothing is written.
 
@@ -581,7 +581,7 @@ trame examples, in the example: every example of its syntax elements is met, not
 
 ### A library carries kinds
 
-`KindsCarried` · `src/command-scenarios.ts:1177` · status: **held**
+`KindsCarried` · `src/command-scenarios.ts:1178` · status: **held**
 
 A project that imports a library carrying kinds in its sources (the library of data: its entities) writes nodes of those kinds: the compiler loads them into the project's language, TypeScript accepts the project as it is written, and a node of such a kind is read and holds no error. Then what deployments kept of the entity: a description its changes migrate from (a rename, a field dropped) holds; one they do not (a field stored otherwise) blocks, on the field it is about.
 
@@ -610,7 +610,7 @@ A project that imports a library carrying kinds in its sources (the library of d
 
 ### The laws, tested by their command
 
-`LawsTested` · `src/command-scenarios.ts:265` · status: **held**
+`LawsTested` · `src/command-scenarios.ts:266` · status: **held**
 
 trame test-kinds plays the laws of every kind of the example's language on drawn values, and says each one holds.
 
@@ -637,7 +637,7 @@ trame test-kinds plays the laws of every kind of the example's language on drawn
 
 ### A command of a library the project chooses
 
-`LibraryCommandRun` · `src/command-scenarios.ts:1147` · status: **held**
+`LibraryCommandRun` · `src/command-scenarios.ts:1148` · status: **held**
 
 trame pull-request, in the example (E3, since g117): the example's graph does not declare it, a technical choice of the example takes std's; its component, std's, is assembled for the environment of the choice with only the commands the example chose (std's propagate, which nothing there could wire, is left out), then run with the rest of the line. trame help lists it with std's component.
 
@@ -665,7 +665,7 @@ trame pull-request, in the example (E3, since g117): the example's graph does no
 
 ### A library released
 
-`LibraryReleased` · `src/command-scenarios.ts:659` · status: **held**
+`LibraryReleased` · `src/command-scenarios.ts:660` · status: **held**
 
 trame release, in the library, freezes a version: its graph, its code and its documents under releases/, its record written in its module of releases; refused in the example, where a value is still to decide. The library ships its versions through its graph (C1): the version is shipped first, attributed to who releases, and its dossier written.
 
@@ -695,7 +695,7 @@ trame release, in the library, freezes a version: its graph, its code and its do
 
 ### The manifest written
 
-`ManifestWritten` · `src/command-scenarios.ts:695` · status: **held**
+`ManifestWritten` · `src/command-scenarios.ts:696` · status: **held**
 
 trame manifest, in the application, writes the packages of its graph into package.json, and the import map of the libraries it imports from outside its package: each name leads to a link, and the link to the version it pins. The language's names lead to the generation it pins (since g87); the import map changed, a fresh engine reads the graph.
 
@@ -724,7 +724,7 @@ trame manifest, in the application, writes the packages of its graph into packag
 
 ### The packages audited
 
-`PackagesAudited` · `src/command-scenarios.ts:635` · status: **held**
+`PackagesAudited` · `src/command-scenarios.ts:636` · status: **held**
 
 trame audit, in the application, asks the registry about each package of its graph (in memory, the registry knows of no advisory and no later version) and keeps its answers as evidence: two pieces for each package, none vulnerable.
 
@@ -751,7 +751,7 @@ trame audit, in the application, asks the registry about each package of its gra
 
 ### The packages upgraded
 
-`PackagesUpgraded` · `src/command-scenarios.ts:727` · status: **held**
+`PackagesUpgraded` · `src/command-scenarios.ts:728` · status: **held**
 
 trame upgrade, in the application, asks the origin of each package of Trame it references which versions it holds: a reference behind the newest is written again with it, in its module, and the manifest runs in a fresh engine; a project whose references are all at their newest is told so, and nothing is written (C1, since g100).
 
@@ -778,7 +778,7 @@ trame upgrade, in the application, asks the origin of each package of Trame it r
 
 ### The page delivered
 
-`PageDelivered` · `src/command-scenarios.ts:897` · status: **held**
+`PageDelivered` · `src/command-scenarios.ts:898` · status: **held**
 
 trame deliver, in the application, writes its page: the component assembled for the browser, its program bundled into one script, its style sheets, in one document a browser opens as it is. The libraries it reads at a version published once (geometry, which names std 0.12.0) are bundled with the language and the std of the application, as they run.
 
@@ -805,7 +805,7 @@ trame deliver, in the application, writes its page: the component assembled for 
 
 ### The page exported
 
-`PageExported` · `src/command-scenarios.ts:752` · status: **held**
+`PageExported` · `src/command-scenarios.ts:753` · status: **held**
 
 trame export compiles the example at each date where it may change, in a fresh process of the engine (here, one that answers what the payload command printed), and writes the page that carries them all.
 
@@ -833,7 +833,7 @@ trame export compiles the example at each date where it may change, in a fresh p
 
 ### The page of the graph
 
-`PageOfTheGraph` · `src/command-scenarios.ts:186` · status: **held**
+`PageOfTheGraph` · `src/command-scenarios.ts:187` · status: **held**
 
 The page is made of the example's payload: its program bundled by esbuild, its style read back in CSS, the page read back in HTML, the graph it carries packed in it, its title the project's.
 
@@ -862,7 +862,7 @@ The page is made of the example's payload: its program bundled by esbuild, its s
 
 ### The graph in the intermediate format
 
-`PayloadOfTheGraph` · `src/command-scenarios.ts:158` · status: **held**
+`PayloadOfTheGraph` · `src/command-scenarios.ts:159` · status: **held**
 
 trame payload writes the example compiled at its date: its nodes, its documents, each rendered in Markdown, in text and in HTML (its figures in SVG), the dates where it may change. Two payloads alike differ in nothing; a node removed, a status changed, the difference says so.
 
@@ -893,7 +893,7 @@ trame payload writes the example compiled at its date: its nodes, its documents,
 
 ### A command of the project
 
-`ProjectCommandRun` · `src/command-scenarios.ts:1023` · status: **held**
+`ProjectCommandRun` · `src/command-scenarios.ts:1024` · status: **held**
 
 trame prepare-storage, in the example (E3): neither the engine nor a view answers that word, the example's graph says it is an entry point of its SDLC; its component is assembled for its environment, then run with the rest of the line, the environment left out, and its status is the command's. trame help lists it with its component. Had the engine a command of that name, the project's would never run: an error of the graph, which refuses to assemble it.
 
@@ -924,7 +924,7 @@ trame prepare-storage, in the example (E3): neither the engine nor a view answer
 
 ### A project repaired
 
-`ProjectRepaired` · `src/command-scenarios.ts:608` · status: **held**
+`ProjectRepaired` · `src/command-scenarios.ts:609` · status: **held**
 
 In the example, which has its configuration and its goals, trame init writes only what it lacks (the guide for agents, the skill, the file that points to them), then has the manifest written; run a second time, it writes nothing.
 
@@ -952,7 +952,7 @@ In the example, which has its configuration and its goals, trame init writes onl
 
 ### A project started
 
-`ProjectStarted` · `src/command-scenarios.ts:568` · status: **held**
+`ProjectStarted` · `src/command-scenarios.ts:569` · status: **held**
 
 trame init, in a directory where no project is, writes the configuration (the generation that runs, std as the language's home uses it), the first module (the goal, owned by whoever started the project, the language named by its name), the guide for agents; then a fresh engine writes the manifest.
 
@@ -984,7 +984,7 @@ trame init, in a directory where no project is, writes the configuration (the ge
 
 ### A published value changed
 
-`PublishedValueChanged` · `src/command-scenarios.ts:448` · status: **held**
+`PublishedValueChanged` · `src/command-scenarios.ts:449` · status: **held**
 
 The example's late fee, as if its value had been written otherwise after it was published: trame publish refuses it and says to amend it; with a migration too, which publishes again a form, never a value (D1, since g108).
 
@@ -1012,7 +1012,7 @@ The example's late fee, as if its value had been written otherwise after it was 
 
 ### The registry filled
 
-`RegistryFilled` · `src/command-scenarios.ts:545` · status: **held**
+`RegistryFilled` · `src/command-scenarios.ts:546` · status: **held**
 
 trame registry, in Trame's repository, publishes a generation it names to the registry of this machine (in memory), with its language copied: the kernel is there, a file and not a link.
 
@@ -1039,7 +1039,7 @@ trame registry, in Trame's repository, publishes a generation it names to the re
 
 ### Shipments run, evidence given
 
-`ShipmentsRun` · `src/command-scenarios.ts:923` · status: **held**
+`ShipmentsRun` · `src/command-scenarios.ts:924` · status: **held**
 
 In the application, its evidence of the SDLC set aside (the scenario's day is before it): trame ship writes the files that run its preview elsewhere (each by its writer, from the plan the engine computes), records that they were built and from which code, each record sealed, compiles again with that evidence, ships, and writes the dossier; a record changed by hand afterwards is not counted, an error; the preview, in a dry run, is delivered, its check run by its program (which answers it passed), and would ship, with nothing deployed and no dossier. trame evidence records a check made by hand by someone of its role, attributed to them; someone who is not of it is refused.
 
@@ -1072,7 +1072,7 @@ In the application, its evidence of the SDLC set aside (the scenario's day is be
 
 ### The snapshot, taken by its command
 
-`SnapshotTaken` · `src/command-scenarios.ts:286` · status: **held**
+`SnapshotTaken` · `src/command-scenarios.ts:287` · status: **held**
 
 trame snapshot writes the example's snapshot.json as the build of the engine in place wrote it.
 
@@ -1099,7 +1099,7 @@ trame snapshot writes the example's snapshot.json as the build of the engine in 
 
 ### Stages shipped in order
 
-`StagesShipped` · `src/command-scenarios.ts:1227` · status: **held**
+`StagesShipped` · `src/command-scenarios.ts:1228` · status: **held**
 
 In the application, its evidence of the SDLC set aside: its public version waits for its preview to ship the page first; once the preview shipped it (deployed: its programs answer they checked and placed it), the public version takes the page as the preview shipped it, promoted rather than built again; a page changed since is refused, until the preview ships it again.
 
@@ -1128,7 +1128,7 @@ In the application, its evidence of the SDLC set aside: its public version waits
 
 ### A value amended
 
-`ValueAmended` · `src/command-scenarios.ts:395` · status: **held**
+`ValueAmended` · `src/command-scenarios.ts:396` · status: **held**
 
 trame amend first says what an amendment would change: lowering the example's late fee makes a criterion of the refund fail, so nothing is recorded; a rule's body changes in the code only. Moving the free period of a fast charger by a minute raises no error: with --dry-run nothing is written, then the amendment is recorded at the end of the module of the period, with the import of amendments.
 
@@ -1158,7 +1158,7 @@ trame amend first says what an amendment would change: lowering the example's la
 
 ### A view in the terminal
 
-`ViewsInTheTerminal` · `src/command-scenarios.ts:118` · status: **held**
+`ViewsInTheTerminal` · `src/command-scenarios.ts:119` · status: **held**
 
 trame view writes a view of the example in plain text, its figures drawn as text; the same view asked by its name alone is written alike; asked in JSON, it is the intermediate format; a word that names no command and no view is refused, with the views there are.
 

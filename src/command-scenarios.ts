@@ -11,9 +11,10 @@ import {
 import { PayloadBuilder, Differences, Assembly, Project, Compiler, Lock, References, DateBundle, DevServer, DevService, ShipmentPipeline, Views, EngineFingerprint, ProjectRuns } from "./engine"
 import {
   ShowView, CommandOrView, RenderView, EmitPayload, Assemble, Assembler, TestKinds, TakeSnapshot, Publish, Audit, Release, WriteManifest, Export, Run, Dev,
-  Deliver, Ship, RecordEvidence, Doctor, DoctorProbe, Advance, Build, Plan, Amend, Amending, BuildComparison, Init, ReferencesModule, Registry, Upgrade,
+  Deliver, Ship, RecordEvidence, Doctor, Advance, Build, Plan, Amend, Amending, BuildComparison, Init, ReferencesModule, Registry, Upgrade,
   ProjectCommands, Help, Examples, ExampleRewriting, Preparation, EngineModules, AddOns,
 } from "./commands"
+import { DoctorProbe, Asking, ClockAnswers, FilesAnswer, TreesAnswer, ProgramsAnswer, RunsAnswer, ServerAnswers, TimerAnswers, RegistryAnswers, InstallerAnswers } from "./doctor"
 import { SyntaxReader, BodyChecks } from "./syntax"
 import { TypeScript, TypeScriptWriter, StringLiteral } from "./typescript"
 import { TerraformWriter } from "./terraform"
@@ -1275,7 +1276,7 @@ export const StagesShipped = scenario({
  */
 export const DoctorAsks = scenario({
   owner: "trame",
-  verifies: [Doctor, ProjectRuns, RunsInTheProcess],
+  verifies: [Doctor, ProjectRuns, RunsInTheProcess, Asking, ClockAnswers, FilesAnswer, TreesAnswer, ProgramsAnswer, RunsAnswer, ServerAnswers, TimerAnswers, RegistryAnswers, InstallerAnswers],
   env: Test,
   deps: {
     doctor: Doctor, processLog: ProcessLog, terminalLog: TerminalLog, probe: DoctorProbe, line: TrameCommands, exitStatus: ExitStatus,

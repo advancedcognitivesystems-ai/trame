@@ -110,6 +110,8 @@ export const HoleCode = {
   portRealizedTwice: "port-realized-twice",
   /** An extension point whose realizations two choices make in the same environment: their order is ambiguous (since g120). */
   extensionOrderAmbiguous: "extension-order-ambiguous",
+  /** A check run by a command the engine does not keep, or keeps without letting a check run it (since g122). */
+  checkCommandUnknown: "check-command-unknown",
   bindingChoosesNothing: "binding-chooses-nothing",
   bindingInNoEnvironment: "binding-in-no-environment",
   bindingChoosesNoPort: "binding-chooses-no-port",
@@ -241,6 +243,17 @@ export const KeptCommandPoints = {
   machine: { programs: "std/tooling.MachineNeeds", inItsLibrary: "tooling.MachineNeeds" },
   repairs: { programs: "std/tooling.ProjectRepairs", inItsLibrary: "tooling.ProjectRepairs" },
 } as const
+
+/**
+ * The commands the engine keeps that a check may run (since g122), each with the extension point it takes add-ons for:
+ * such a check verifies the add-ons the project's choice makes there, and trame ship runs the command in its process.
+ */
+export const EngineCommand = { doctor: "doctor", init: "init" } as const
+export type EngineCommand = ValueOf<typeof EngineCommand>
+export const EngineCommandPoint: Readonly<Record<EngineCommand, { readonly programs: string; readonly inItsLibrary: string }>> = {
+  doctor: KeptCommandPoints.machine,
+  init: KeptCommandPoints.repairs,
+}
 
 /** Is this node the extension point given (std's), from a project that imports std, or in std's own graph? */
 export const isPoint = (point: { readonly programs: string; readonly inItsLibrary: string }, node: { readonly ref: string; readonly library?: string }): boolean =>
@@ -428,7 +441,7 @@ export interface Delegation {
 }
 export const ArtifactField = { path: "path", media: "media", version: "version" } as const
 export const ArtifactEdge = { producedBy: "producedBy", runs: "runs", settings: "settings", publishes: "publishes", carries: "carries" } as const
-export const CheckField = { steps: "steps" } as const
+export const CheckField = { steps: "steps", command: "command" } as const
 export const CheckEdge = { on: "on", runs: "runs", by: "by" } as const
 export const ReviewField = { approvals: "approvals" } as const
 export const ReviewEdge = { of: "of", by: "by" } as const

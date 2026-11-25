@@ -412,7 +412,7 @@ Consequences: The graph describes the prelude as a port; a body imports only its
 
 ### A version ships through the graph
 
-`ShippedThroughTheGraph` · `src/principles.ts:415` · status: **unknown**
+`ShippedThroughTheGraph` · `src/principles.ts:415` · status: **held**
 
 What makes a version available is declared in the project's graph: the artefacts it produces and what produces them (kind artifact), the checks a scenario in memory cannot make, run by a program of the SDLC or made by hand and signed by a role (kind check), the reviews and the role that gives them (kinds review and role), and the shipment that requires them and the programs that deploy it (kind shipment). trame ship and trame evidence record what was found, attributed to a person and tied to the fingerprint of what was seen; the next build reads it.
 

@@ -2,7 +2,7 @@
 
 *The choices that shape the product without being values, in force on 25 November 2026: why each was taken, what was rejected, and the nodes that apply it.*
 
-> **38 architecture decisions, 37 held by the nodes that apply them**
+> **38 architecture decisions, 38 held by the nodes that apply them**
 
 | Decision | Status | Applied by |
 |---|---|---|
@@ -37,7 +37,7 @@
 | [A package is used by its name](principles.md#PackagesByName) | **held** | [Advance](commands.md#Advance), [Start a project](commands.md#Init), [Write the manifest](commands.md#WriteManifest), [Laws](engine.md#Laws), [Project](engine.md#Project), [Packages by their origin](platform.md#PackagesByOrigin) |
 | [A product is delivered by a node of the graph](principles.md#DeliveredByTheGraph) | **held** | [Deliver](commands.md#Deliver), [Style of a delivered page](delivery.md#DeliveredStyle) |
 | [The data a product carries is a dataset](principles.md#DataAsDatasets) | **held** | [Fingerprints](engine.md#Fingerprints), [Graph](engine.md#GraphApi) |
-| [A version ships through the graph](principles.md#ShippedThroughTheGraph) | **unknown** | [Record evidence](commands.md#RecordEvidence), [Ship](commands.md#Ship), [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws), [The next generation](sdlc.md#NextGeneration), [Evidence of the SDLC](shipping.md#SdlcEvidence), [Ship only what holds](shipping.md#ShipOnlyWhatHolds), [Where the SDLC's evidence is kept](shipping.md#ShippingRecords) |
+| [A version ships through the graph](principles.md#ShippedThroughTheGraph) | **held** | [Record evidence](commands.md#RecordEvidence), [Ship](commands.md#Ship), [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws), [The next generation](sdlc.md#NextGeneration), [Evidence of the SDLC](shipping.md#SdlcEvidence), [Ship only what holds](shipping.md#ShipOnlyWhatHolds), [Where the SDLC's evidence is kept](shipping.md#ShippingRecords) |
 | [Who acts is declared](principles.md#ActorsDeclared) | **held** | [Start a project](commands.md#Init), [Compiler](engine.md#Compiler) |
 | [The words are in catalogs](principles.md#WordsInCatalogs) | **held** | [Messages of an advance](messages.md#AdvanceMessages), [Messages of the commands](messages.md#CommandMessages), [Messages of the compiler](messages.md#CompilerMessages), [Messages of trame dev](messages.md#DevMessages), [Messages of the drivers](messages.md#DriverMessages), [Messages of the laws](messages.md#LawMessages), [Messages of the outputs](messages.md#OutputMessages), [Messages of the platform](messages.md#PlatformMessages), [Messages of the renderers](messages.md#RenderingMessages), [Messages of the scenarios](messages.md#ScenarioMessages), [Messages of the views](messages.md#ViewMessages), [Checks of a body](syntax.md#BodyChecks), [Syntax reader](syntax.md#SyntaxReader) |
 | [Kinds and views say what; renderers say how](rendering.md#MeaningThenLook) | **held** | [Rendering does not read the graph](architecture.md#RenderingWithoutGraph), [Common rendering](rendering.md#Common), [Rendering of the files](rendering.md#FileRendering), [Rendering in the page](rendering.md#PageRendering), [Rendering in the terminal](rendering.md#TerminalRendering) |
@@ -163,7 +163,7 @@ Consequences: Each language has its module (how Trame reads it, what Trame write
 
 ### A catalog counts in its language
 
-`CountsInTheLanguage` · `src/messages.ts:1036` · status: **held**
+`CountsInTheLanguage` · `src/messages.ts:1038` · status: **held**
 
 A count and its noun follow the plural rules of the language the catalog is written in, with the forms the catalog writes for each category; nothing below the catalogs presumes a language.
 
@@ -684,7 +684,7 @@ Consequences: A dataset (kind dataset) holds its rows as a typed value, so the T
 
 ### A version ships through the graph
 
-`ShippedThroughTheGraph` · `src/principles.ts:415` · status: **unknown**
+`ShippedThroughTheGraph` · `src/principles.ts:415` · status: **held**
 
 What makes a version available is declared in the project's graph: the artefacts it produces and what produces them (kind artifact), the checks a scenario in memory cannot make, run by a program of the SDLC or made by hand and signed by a role (kind check), the reviews and the role that gives them (kinds review and role), and the shipment that requires them and the programs that deploy it (kind shipment). trame ship and trame evidence record what was found, attributed to a person and tied to the fingerprint of what was seen; the next build reads it.
 

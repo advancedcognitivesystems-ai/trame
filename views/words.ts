@@ -333,6 +333,7 @@ const body = () => ({
   pipelinesThrough: (by: string, agents: string) => `${by}, through ${agents}`,
   pipelinesItself: () => "itself",
   pipelinesByHand: () => "by hand",
+  pipelinesTheEngine: (command: string) => `trame ${command}`,
   pipelinesPromoted: () => "promoted, as shipped first by ",
   pipelinesSignedBy: () => ", signed by ",
   pipelinesReviewedBy: () => "reviewed by ",
