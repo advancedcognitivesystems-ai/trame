@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 24 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 25 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Standard library · Access
 
@@ -635,10 +635,10 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 119
+- Version: 120
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../generations/g119
+- Its path: ../generations/g120
 - Serves: Ports of the platform, realized once
 
 ### The people of the repository
@@ -1780,7 +1780,7 @@ Artefact · `PullRequestWorkflow` · **held**
 
 ### The standard library
 
-Artefact · `TheLibrary` · **held**
+Artefact · `TheLibrary` · **unknown**
 
 - Owner: trame
 - Path: src
@@ -1788,7 +1788,7 @@ Artefact · `TheLibrary` · **held**
 
 ### The next version
 
-Shipment · `NextVersion` · **held**
+Shipment · `NextVersion` · **unknown**
 
 - Owner: trame
 - Target: version

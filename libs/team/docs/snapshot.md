@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 24 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 25 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Team · Packages
 
@@ -22,10 +22,10 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 119
+- Version: 120
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../../generations/g119
+- Its path: ../../generations/g120
 - Serves: Who acts is declared once
 
 ## Team · People

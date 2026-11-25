@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-24",
+  "at": "2026-11-25",
   "nodes": [
     {
       "id": "angles.Angle",
@@ -44,7 +44,7 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "trame",
-        "version": "119",
+        "version": "120",
         "joins": "language",
         "from": "registry"
       }
