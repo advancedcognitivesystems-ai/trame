@@ -880,6 +880,7 @@
                 "read"
               ],
               "platform": [],
+              "versions": [],
               "on": [
                 "process"
               ],
@@ -3160,12 +3161,16 @@
       "title": "Git's command line",
       "fields": {
         "owner": "trame",
-        "source": "Git manual: git-rev-parse (--abbrev-ref), git-push (--set-upstream), git-fetch, git-diff (--name-only, A...B: since the merge base), git-checkout, git-merge (--ff-only)",
+        "source": "Git manual: git (--version), git-rev-parse (--abbrev-ref), git-push (--set-upstream), git-fetch, git-diff (--name-only, A...B: since the merge base), git-checkout, git-merge (--ff-only)",
         "url": "https://git-scm.com/docs/git-diff",
         "constants": {
           "program": {
             "value": "git",
             "meaning": "Git's command line"
+          },
+          "version": {
+            "value": "--version",
+            "meaning": "Says which Git this is: it answers when Git is installed"
           },
           "revParse": {
             "value": "rev-parse",
