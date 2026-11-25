@@ -151,18 +151,33 @@ const body = (deps: Deps) => {
           return undefined
         }
         if (def.delegate) {
-          let d: View | undefined
+          let d: View | readonly View[] | undefined
           try {
             d = def.delegate(g.self(n) as never, ctx)
           } catch (e) {
             p.errors.push((e as Error).message)
             return undefined
           }
+          // An extension point (since g120): every realization chosen, in order, gathered into a list it gives.
+          if (Array.isArray(d)) {
+            const gathered: Step["deps"] = []
+            for (const r of d as readonly View[]) {
+              const name = visit(r.node, [])
+              if (name === undefined) return undefined
+              const step = p.steps.find((s) => s.name === name)
+              if (step && !step.via.includes(n)) step.via.push(n)
+              gathered.push({ param: String(gathered.length), name })
+            }
+            const name = varName(n, taken)
+            p.steps.push({ name, node: n, how: WireMode.gathered, deps: gathered, constants: {}, via })
+            p.names.set(n, name)
+            return name
+          }
           if (!d) {
             p.errors.push(messages.noImplementation(title(n), env ? title(env) : undefined))
             return undefined
           }
-          const name = visit(d.node, [])
+          const name = visit((d as View).node, [])
           if (name) {
             p.names.set(n, name)
             const step = p.steps.find((s) => s.name === name)
@@ -233,6 +248,9 @@ const body = (deps: Deps) => {
       let value: unknown
       if (step.how === WireMode.value) {
         value = await def.provide!(g.self(step.node) as never, context(this.host, this.env, this))
+      } else if (step.how === WireMode.gathered) {
+        const byName = new Map(this.plan.steps.map((s) => [s.name, s.node]))
+        value = step.deps.map((d) => this.values.get(byName.get(d.name)!))
       } else {
         const fn = await loadBody(this.host, step.node)
         const byName = new Map(this.plan.steps.map((s) => [s.name, s.node]))

@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-24",
+  "at": "2026-11-25",
   "nodes": [
     {
       "id": "appearance.ExplorerDrawing",
@@ -1080,7 +1080,7 @@
       "id": "browser.BrowserAmendments",
       "kind": "implementation",
       "title": "Amendments sent to trame dev",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1099,7 +1099,7 @@
       "id": "browser.BrowserDecompression",
       "kind": "implementation",
       "title": "The browser's gzip",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1116,7 +1116,7 @@
       "id": "browser.BrowserFeed",
       "kind": "implementation",
       "title": "The globals of the page, and trame dev",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1134,7 +1134,7 @@
       "id": "browser.BrowserMemory",
       "kind": "implementation",
       "title": "Local storage",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1150,7 +1150,7 @@
       "id": "browser.BrowserWindow",
       "kind": "implementation",
       "title": "The browser's window",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1168,7 +1168,7 @@
       "id": "browser.ExplorerFigures",
       "kind": "function",
       "title": "Explorer of a graph",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1205,7 +1205,7 @@
       "id": "browser.ShowGraph",
       "kind": "entry",
       "title": "Show the graph",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "trigger": {
@@ -1258,7 +1258,7 @@
       "id": "browser.TheBrowserRunsThePage",
       "kind": "binding",
       "title": "The browser runs the page",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "The page's script took what it needed from the browser itself, here and there: the graph could not say what the page asks of the browser, nor try it elsewhere.",
@@ -1273,7 +1273,7 @@
       "id": "browser.ThePageIsAssembled",
       "kind": "adr",
       "title": "The page is assembled",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "The page's script built by hand what it shared with the engine and wrote its values (classes, identifiers, the explorer's geometry) as literals the catalogue could not see: a change in the graph did not reach it.",
@@ -1967,6 +1967,29 @@
       }
     },
     {
+      "id": "command-scenarios.ProjectRepaired",
+      "kind": "scenario",
+      "title": "A project repaired",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "init": "commands.Init",
+          "processLog": "architecture.ProcessLog",
+          "writeLog": "architecture.WriteLog",
+          "currentProcess": "architecture.Process",
+          "paths": "architecture.Paths",
+          "start": "conventions.ProjectStart",
+          "samples": "command-scenarios.ProjectSamples",
+          "line": "conventions.TrameCommands",
+          "exitStatus": "std/system.ExitStatus",
+          "texts": "std/algebra.Texts",
+          "messages": "messages.ScenarioMessages"
+        },
+        "body": "(function)"
+      }
+    },
+    {
       "id": "command-scenarios.ProjectSamples",
       "kind": "decision",
       "title": "What the scenarios ask of those projects",
@@ -2342,6 +2365,24 @@
           "messages": "messages.ScenarioMessages"
         },
         "body": "(function)"
+      }
+    },
+    {
+      "id": "commands.AddOns",
+      "kind": "function",
+      "title": "The add-ons of a command the engine keeps",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "wiring": "engine.Wiring",
+          "counts": "std/algebra.Counts",
+          "messages": "messages.CommandMessages"
+        },
+        "body": {
+          "file": "./code/commands/add-ons.ts",
+          "language": "typescript"
+        }
       }
     },
     {
@@ -2722,7 +2763,8 @@
           "encodings": "std/system.NodeEncodings",
           "counts": "std/algebra.Counts",
           "texts": "std/algebra.Texts",
-          "messages": "messages.CommandMessages"
+          "messages": "messages.CommandMessages",
+          "addOns": "commands.AddOns"
         },
         "body": {
           "file": "./code/commands/doctor.ts",
@@ -2956,7 +2998,11 @@
           "names": "conventions.LanguageNames",
           "specifiers": "std/system.NodeModuleSpecifiers",
           "member": "typescript.MemberAccess",
-          "list": "typescript.InlineArray"
+          "list": "typescript.InlineArray",
+          "addOns": "commands.AddOns",
+          "projectCommands": "commands.ProjectCommands",
+          "values": "std/algebra.ValueTypes",
+          "counts": "std/algebra.Counts"
         },
         "body": {
           "file": "./code/commands/init.ts",
@@ -9927,7 +9973,7 @@
       "id": "platform.DiskReading",
       "kind": "implementation",
       "title": "System files, for reading",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "body": {
@@ -9940,7 +9986,7 @@
       "id": "platform.DiskTrees",
       "kind": "implementation",
       "title": "Trees on disk",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -9958,7 +10004,7 @@
       "id": "platform.DiskWriting",
       "kind": "implementation",
       "title": "System files, for writing",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "body": {
@@ -10304,7 +10350,7 @@
       "id": "platform.NodeHttpServer",
       "kind": "implementation",
       "title": "Node HTTP server",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "body": {
@@ -10317,7 +10363,7 @@
       "id": "platform.NodeMachine",
       "kind": "binding",
       "title": "On a machine, Node.js reads, writes and runs",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "What changes the world (files written, processes, the terminal, the clock) is real only on a machine; the scenarios keep it in memory.",
@@ -10358,7 +10404,7 @@
       "id": "platform.NodeProcess",
       "kind": "implementation",
       "title": "Node process",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -10379,7 +10425,7 @@
       "id": "platform.NodePrograms",
       "kind": "implementation",
       "title": "Node programs",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -10397,7 +10443,7 @@
       "id": "platform.NodeTerminal",
       "kind": "implementation",
       "title": "Node terminal",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -10457,7 +10503,7 @@
       "id": "platform.NpmInstall",
       "kind": "implementation",
       "title": "npm installs",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -10476,7 +10522,7 @@
       "id": "platform.NpmReports",
       "kind": "implementation",
       "title": "npm's reports",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -10616,7 +10662,7 @@
       "id": "platform.RunsKeptOnDisk",
       "kind": "binding",
       "title": "On a machine, runs are kept on disk",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "The commands of a shipment and of an advance run as separate processes, each compiling the same graph: what one played, the next can find only on disk.",
@@ -10630,7 +10676,7 @@
       "id": "platform.RunsOnDisk",
       "kind": "implementation",
       "title": "Runs kept on disk",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -10668,7 +10714,7 @@
       "id": "platform.SystemClock",
       "kind": "implementation",
       "title": "System clock",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -11096,7 +11142,7 @@
       "id": "principles.TechnologyInOneNode",
       "kind": "adr",
       "title": "A technology is chosen in one node",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "Each implementation said which environments it served: the choice of a technology was spread over its realizations, nothing said why, and a test double or a repository over a database port had to be declared as if it touched the platform.",
@@ -14044,7 +14090,7 @@
       "id": "sdlc.CandidateRunsOnTheMachine",
       "kind": "check",
       "title": "The candidate runs on the machine",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame"
       }
@@ -14075,7 +14121,7 @@
       "id": "sdlc.EngineCandidate",
       "kind": "artifact",
       "title": "The candidate engine",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "out/local/trame-cli.ts"
@@ -14116,7 +14162,7 @@
       "id": "sdlc.GraphPage",
       "kind": "artifact",
       "title": "The graph page",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "trame-page.html",
@@ -14138,7 +14184,7 @@
       "id": "sdlc.GraphPageOpens",
       "kind": "check",
       "title": "The graph page opens",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame"
       }
@@ -14196,7 +14242,7 @@
       "id": "sdlc.IntoMain",
       "kind": "shipment",
       "title": "Into the main branch",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "main"
@@ -14655,7 +14701,7 @@
       "id": "sdlc.TheEngine",
       "kind": "artifact",
       "title": "The engine",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "src",
@@ -19268,6 +19314,66 @@
       "kind": "deps"
     },
     {
+      "from": "command-scenarios.ProjectRepaired",
+      "to": "commands.Init",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.ProjectRepaired",
+      "to": "commands.AddOns",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.ProjectRepaired",
+      "to": "architecture.Test",
+      "kind": "env"
+    },
+    {
+      "from": "command-scenarios.ProjectRepaired",
+      "to": "commands.Init",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ProjectRepaired",
+      "to": "architecture.ProcessLog",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ProjectRepaired",
+      "to": "architecture.WriteLog",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ProjectRepaired",
+      "to": "architecture.Process",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ProjectRepaired",
+      "to": "architecture.Paths",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ProjectRepaired",
+      "to": "conventions.ProjectStart",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ProjectRepaired",
+      "to": "command-scenarios.ProjectSamples",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ProjectRepaired",
+      "to": "conventions.TrameCommands",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ProjectRepaired",
+      "to": "messages.ScenarioMessages",
+      "kind": "deps"
+    },
+    {
       "from": "command-scenarios.ProjectStarted",
       "to": "commands.Init",
       "kind": "verifies"
@@ -19895,6 +20001,21 @@
     {
       "from": "command-scenarios.ViewsInTheTerminal",
       "to": "messages.ScenarioMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.AddOns",
+      "to": "product.ExecutableSpecification",
+      "kind": "serves"
+    },
+    {
+      "from": "commands.AddOns",
+      "to": "engine.Wiring",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.AddOns",
+      "to": "messages.CommandMessages",
       "kind": "deps"
     },
     {
@@ -20658,6 +20779,11 @@
       "kind": "deps"
     },
     {
+      "from": "commands.Doctor",
+      "to": "commands.AddOns",
+      "kind": "deps"
+    },
+    {
       "from": "commands.EmitPayload",
       "to": "product.ExecutableSpecification",
       "kind": "serves"
@@ -21120,6 +21246,16 @@
     {
       "from": "commands.Init",
       "to": "typescript.InlineArray",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Init",
+      "to": "commands.AddOns",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Init",
+      "to": "commands.ProjectCommands",
       "kind": "deps"
     },
     {

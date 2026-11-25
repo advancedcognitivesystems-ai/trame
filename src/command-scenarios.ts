@@ -12,7 +12,7 @@ import { PayloadBuilder, Differences, Assembly, Project, Compiler, Lock, Referen
 import {
   ShowView, CommandOrView, RenderView, EmitPayload, Assemble, Assembler, TestKinds, TakeSnapshot, Publish, Audit, Release, WriteManifest, Export, Run, Dev,
   Deliver, Ship, RecordEvidence, Doctor, DoctorProbe, Advance, Build, Plan, Amend, Amending, BuildComparison, Init, ReferencesModule, Registry, Upgrade,
-  ProjectCommands, Help, Examples, ExampleRewriting, Preparation, EngineModules,
+  ProjectCommands, Help, Examples, ExampleRewriting, Preparation, EngineModules, AddOns,
 } from "./commands"
 import { SyntaxReader, BodyChecks } from "./syntax"
 import { TypeScript, TypeScriptWriter, StringLiteral } from "./typescript"
@@ -592,7 +592,39 @@ export const ProjectStarted = scenario({
       const [guide] = start.guides
       check(messages.startedGuide(), written.has(paths.join(home, guide)) && written.has(paths.join(home, start.pointer)))
       check(messages.startedManifest(), processLog.started().some((s) => s.args.includes(line.manifest)))
+      // Run again (since g120): everything is found, nothing written.
+      const before = JSON.stringify([...writeLog.written()])
+      processLog.answer(texts.empty, exitStatus.success)
+      const again = await init({ params: { command: line.init }, body: { args: [line.by, samples.started.owner] } })
+      check(messages.startedAgainWritesNothing(), again.status === exitStatus.success && JSON.stringify([...writeLog.written()]) === before)
     },
+})
+
+/**
+ * A project repaired
+ * In the example, which has its configuration and its goals, trame init writes only what it lacks (the guide for
+ * agents, the skill, the file that points to them), then has the manifest written; run a second time, it writes nothing.
+ */
+export const ProjectRepaired = scenario({
+  owner: "trame",
+  verifies: [Init, AddOns],
+  env: Test,
+  deps: {
+    init: Init, processLog: ProcessLog, writeLog: WriteLog, currentProcess: Process, paths: Paths, start: ProjectStart, samples: ProjectSamples,
+    line: TrameCommands, exitStatus: ExitStatus, texts: Texts, messages: ScenarioMessages,
+  },
+  body: ({ init, processLog, writeLog, currentProcess, paths, start, samples, line, exitStatus, texts, messages }) => async (check) => {
+    const home = currentProcess.cwd()
+    processLog.answer(texts.empty, exitStatus.success)
+    const r = await init({ params: { command: line.init }, body: { args: [line.by, samples.handCheck.tester] } })
+    const written = [...writeLog.written().keys()].map((p) => paths.relative(home, p)).sort()
+    const lacked = [...start.guides, start.pointer].sort()
+    check(messages.repairedGuides(), r.status === exitStatus.success && JSON.stringify(written) === JSON.stringify(lacked))
+    const before = JSON.stringify([...writeLog.written()])
+    processLog.answer(texts.empty, exitStatus.success)
+    const again = await init({ params: { command: line.init }, body: { args: [line.by, samples.handCheck.tester] } })
+    check(messages.repairedTwiceWritesNothing(), again.status === exitStatus.success && JSON.stringify([...writeLog.written()]) === before)
+  },
 })
 
 /**

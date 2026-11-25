@@ -122,6 +122,11 @@ const body = (deps: Deps) => {
         out.push(constant(ident(step.name), f.json ?? frozenCall(frozen.value, [declare(step.node)])))
         return
       }
+      // An extension point (since g120): what its realizations give, in the order they were chosen.
+      if (step.how === WireMode.gathered) {
+        out.push(constant(ident(step.name), inline(step.deps.map((d) => ident(d.name)))))
+        return
+      }
       const constants = Object.entries(step.constants ?? {})
       written.push(...constants.map(([, v]) => v))
       for (const d of step.deps) if (d.members) written.push(d.members)

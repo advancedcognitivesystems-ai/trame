@@ -1,4 +1,4 @@
-import { defineKind, field, edge, optionalEdge, doc, isHole, keysOf, Stage, Status, KindName, EdgeName, type Graph, type Inline, type Lib, type Node, type View } from "../trame/kernel"
+import { defineKind, field, edge, optionalEdge, doc, isHole, keysOf, Stage, Status, KindName, EdgeName, PortField, type Graph, type Inline, type Lib, type Node, type View } from "../trame/kernel"
 import { sourceFields, sourceOf, sourceShown } from "./standard"
 // A cycle with the kind of technical choices, whose names are read only when a function runs.
 import { bindingEdges } from "./binding"
@@ -21,6 +21,8 @@ export interface Shape {
   layered: boolean
   /** It chooses commands a library offers, which the project then runs (E3, since g117). */
   commands: boolean
+  /** It chooses realizations of an extension point, which all answer it in the order chosen (since g120). */
+  extends: boolean
 }
 
 /** What a pattern requires of the choices that follow it: each property it states must be as it states. */
@@ -33,6 +35,7 @@ export const shapeSays: Record<keyof Shape, { yes: string; no: string }> = {
   pure: { yes: say.patternRealizationsThatAreFunctions(), no: say.patternRealizationsThatAreNotFunctions() },
   layered: { yes: say.patternRealizationsThatReachAnotherPort(), no: say.patternRealizationsThatReachNoOtherPort() },
   commands: { yes: say.patternCommandsOfALibrary(), no: say.patternNoCommand() },
+  extends: { yes: say.patternExtendsAPoint(), no: say.patternExtendsNoPoint() },
 }
 
 const shapeKeys = Object.keys(shapeSays) as (keyof Shape)[]
@@ -64,6 +67,7 @@ export function shapeOf(g: Graph, binding: View): Shape {
     pure: counts.any(chosen) && chosen.every((r) => r.kind === KindName.function),
     layered: counts.any(chosen) && chosen.every(reachesPort),
     commands: chosen.some((r) => r.kind === KindName.entry),
+    extends: chosen.some((r) => portsOf(g, r).some((p) => p.field(PortField.extension) === true)),
   }
 }
 

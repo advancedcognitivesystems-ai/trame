@@ -943,8 +943,11 @@ export interface KindDef<N extends string, F extends Fields, E extends Edges> {
    * (the methods of a port), when the engine can tell (since g82); without it, all of them.
    */
   effects?(self: SelfOf<F, E>, uses?: readonly string[]): readonly string[]
-  /** When wiring: the node that replaces it in this environment (a port delegates to its implementation). */
-  delegate?(self: SelfOf<F, E>, ctx: WireContext): View | undefined
+  /**
+   * When wiring: the node that replaces it in this environment (a port delegates to its implementation); for an
+   * extension point (since g120), every realization chosen there, in order, whose values it gives as a list.
+   */
+  delegate?(self: SelfOf<F, E>, ctx: WireContext): View | readonly View[] | undefined
   /** When wiring: what this node gives (a decision gives its value, a rule its function). By default: its body called with its dependencies. */
   provide?(self: SelfOf<F, E>, ctx: WireContext): unknown
   /** When an assembled component starts: what it does with its entry points. */

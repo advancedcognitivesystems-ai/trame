@@ -1,13 +1,16 @@
 // trame doctor: does this machine run Trame? It says the day, writes a file and reads it back, copies a directory and
 // compares the copy, runs a program with the engine's loader, keeps a run until a file changes, serves HTTP on a port the system gives, waits, and asks
-// the registry about the project's packages: one line for each, and the status of the whole. Run on a machine by a
-// check of Trame's shipment, it is what proves the realizations no scenario in memory can run.
+// the registry about the project's packages: one line for each, and the status of the whole. Then, in a project whose
+// graph can be read, what its add-ons ask (since g120: the realizations of std's MachineNeeds its choice makes), each
+// whatever the others answered. Run on a machine by a check of Trame's shipment, it is what proves the realizations no
+// scenario in memory can run.
 
-import type { ProvidedBy } from "../../../trame/kernel"
+import { KeptCommandPoints, type MachineNeed, type ProvidedBy } from "../../../trame/kernel"
 import type { Handler } from "../../../kinds/entry-point"
 import type { Clock, FileReading, FileTrees, FileWriting, HttpServer, KeptRuns, PackageReports, Paths, Programs, Terminal, Timer, PackageInstalls, Layout } from "../../architecture"
 import type { CommandMessages } from "../../messages"
 import type { Api as PreparationApi } from "./preparation"
+import type { Api as AddOnsApi } from "./add-ons"
 import type { Counts, Texts } from "#std/algebra"
 import type { NodeEncodings } from "#std/system"
 
@@ -38,6 +41,8 @@ export interface Deps {
   counts: ProvidedBy<typeof Counts>
   texts: ProvidedBy<typeof Texts>
   messages: ProvidedBy<typeof CommandMessages>
+  /** What the project asks of the machine besides (since g120). */
+  addOns: AddOnsApi
 }
 
 const body = (deps: Deps): Handler => async (req) => {
@@ -102,6 +107,22 @@ const body = (deps: Deps): Handler => async (req) => {
   })
   trees.remove(dir)
   trees.remove(copy)
+  // What the project asks of the machine besides, when its graph can be read (since g120).
+  const ctx = await deps.preparation.attempt(o)
+  if (ctx) {
+    const { addOns, refused } = await deps.addOns.wired<MachineNeed>(ctx.c, o.root, KeptCommandPoints.machine, o.envName)
+    if (refused) {
+      terminal.write(refused)
+      results.push(false)
+    }
+    const failed = await deps.addOns.each(addOns, async (need) => {
+      const { holds, says } = await need.ask()
+      terminal.write(holds ? messages.doctorAnswers(says) : messages.doctorFails(says))
+      return holds
+    })
+    results.push(...addOns.map((a) => !failed.some((f) => f.title === a.title)))
+    for (const f of failed) terminal.write(messages.addOnFailed(f.title, f.why))
+  }
   const answered = results.filter((r) => r)
   terminal.write(messages.doctorSummary(answered.length, results.length))
   return { status: answered.length === results.length ? exitStatus.success : exitStatus.failure, body: undefined }

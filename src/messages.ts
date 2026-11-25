@@ -529,6 +529,15 @@ export const CommandMessages = catalog({
     helpReplaced: (names: string[]) => `Replaced by the project's: ${names.join(", ")}`,
     helpViews: (views: string[]) => `Views (trame <view> [node]): ${views.join(", ")}`,
 
+    // The add-ons of a command the engine keeps (since g120).
+    /** Several environments make different add-ons, and none was named. */
+    addOnsEnvironment: (point: string, environments: string[]) =>
+      `The project extends ${point} differently in ${environments.join(", ")}: say which with --env`,
+    /** An add-on that answered it does not hold. */
+    addOnDidNotHold: () => "it does not hold",
+    /** An add-on that failed, said at the end. */
+    addOnFailed: (title: string, why: string) => `  failed  ${title}: ${why}`,
+
     // trame assemble
     assembleUsage: (command: string) => `Usage: trame ${command} <component> --env <environment>`,
     /** Followed by the errors, one per line. */
@@ -598,6 +607,10 @@ export const CommandMessages = catalog({
     amendNoSuchNode: (ref: string) => `No node of the project is named ${ref}, or several are: give its reference, module.Name`,
     initNeedsTitle: () => `trame init "<title>" --by <owner>: the project's title, and who owns it`,
     initExists: (file: string) => `A project is already here: its ${file} is written`,
+    /** trame init in a project (since g120): what it found, what it wrote, nothing when nothing lacked. */
+    initRepaired: (title: string, found: string[], wrote: string[]) =>
+      `${title} repaired · found: ${found.join(", ") || "nothing"} · written: ${wrote.join(", ")} · the manifest next`,
+    initNothingLacked: (title: string, found: string[]) => `${title} lacks nothing · found: ${found.join(", ")} · the manifest next`,
     initModuleTitle: (title: string) => `${title} · Product`,
     initReferencesTitle: (title: string) => `${title} · Packages`,
     registryFilled: (versions: number) => `${plural(versions, { one: "version", other: "versions" })} in the registry of this machine`,
@@ -891,6 +904,9 @@ export const ScenarioMessages = catalog({
     startedReferences: () => "Its references are package nodes of its graph: the language, at the generation that started it, and its libraries",
     startedGuide: () => "The guide for agents comes with it, and the file that points to it",
     startedManifest: () => "Then a fresh engine writes the manifest",
+    startedAgainWritesNothing: () => "Run again, trame init finds everything it writes and writes nothing",
+    repairedGuides: () => "In the example, which has its configuration and its goals, trame init writes only what it lacks: the guide for agents, the skill, the file that points to them",
+    repairedTwiceWritesNothing: () => "Run a second time there, it writes nothing",
     languageNamed: (specifier: string) => `The language is named too: ${specifier} leads to the generation the application pins`,
     datesCompiledApart: () => "The dates are compiled in a fresh process of the engine",
     pageWritten: (file: string) => `trame export writes ${file}, titled after the project`,

@@ -1,5 +1,5 @@
 import {
-  defineKind, field, optionalEdge, edge, hole, doc, keysOf, Status, KindName, EdgeName, BindingEdge, EntryField, TriggerType, HoleCode, isCommandsExposure,
+  defineKind, field, optionalEdge, edge, hole, doc, keysOf, Status, KindName, EdgeName, BindingEdge, EntryField, TriggerType, HoleCode, PortField, isCommandsExposure,
   type Block, type Graph, type Inline, type Node, type View,
 } from "../trame/kernel"
 import { chosenBy, portsOf, requiresOf, requiresSaid, shapeOf, unmet } from "./pattern"
@@ -87,6 +87,8 @@ const kind = defineKind({
       if (counts.isEmpty(ports)) out.push(hole.error(HoleCode.bindingChoosesNoPort, say.bindingImplementsNoPortThereIsNothing(r.title), self.owner))
       for (const p of ports) {
         const other = seen.get(p.ref)
+        // An extension point is answered by every realization chosen, in the order chosen (since g120).
+        if (other && p.field(PortField.extension) === true) continue
         if (other) out.push(hole.error(HoleCode.bindingChoosesTwice, say.bindingChoosesAndForTheSamePort(other.title, r.title, p.title), self.owner))
         else seen.set(p.ref, r)
       }

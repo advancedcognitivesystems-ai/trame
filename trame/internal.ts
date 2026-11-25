@@ -238,6 +238,8 @@ const frozenContext = (deps: Record<string, unknown> = {}) => ({
  * what the graph says the consumer uses.
  */
 export const limited = (value: unknown, members: readonly string[]): unknown => {
+  // The realizations of an extension point (since g120): each one limited.
+  if (Array.isArray(value)) return value.map((v) => limited(v, members))
   if (value === null || (typeof value !== "object" && typeof value !== "function")) return value
   const allowed = new Set(members)
   const target = value as Record<string | symbol, unknown>

@@ -31,3 +31,27 @@ export async function withEngine<T>(engine: RunningEngine, f: () => Promise<T>):
     running = before
   }
 }
+
+// The extension points of the commands the engine keeps (since g120) -----------------------------------------------
+//
+// A project, or a library it imports, extends a command the engine keeps by choosing realizations of these contracts:
+// std declares each as an extension point, and the engine calls every add-on the project's choice makes, in its order;
+// one that fails does not stop the others, and the command ends in failure, saying which.
+
+/** What a project asks of the machine besides what trame doctor asks: whether it holds, said in one line. */
+export interface MachineNeed {
+  ask(): Promise<{ holds: boolean; says: string }>
+}
+
+/** A project as trame init repairs it: where it is, its title, who runs init, the commands it already has. */
+export interface RepairedProject {
+  root: string
+  title: string
+  owner: string
+  commands: readonly string[]
+}
+
+/** What trame init writes into a project that lacks it: the files it wrote, from the project's root; none if nothing lacked. */
+export interface ProjectRepair {
+  repair(project: RepairedProject): Promise<readonly string[]>
+}
