@@ -2,3 +2,6 @@ node_modules/
 **/.trame/runs/
 **/.data/
 examples/reservations/out/
+out/session/
+out/local/trame-sdlc.ts
+out/local/trame-sdlc.node.ts
