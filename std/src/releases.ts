@@ -408,3 +408,16 @@ export const R0_26_0 = release({
   language: "shared",
   serves: [ChosenCommands, CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
 })
+
+/**
+ * Version 0.27.0
+ */
+export const R0_27_0 = release({
+  owner: "trame",
+  version: "0.27.0",
+  date: "2026-11-25",
+  what: "The family Verified counts a check a command the engine keeps runs (g122)",
+  fingerprint: "8feb27eab07a9b7d",
+  language: "shared",
+  serves: [ChosenCommands, CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
+})
