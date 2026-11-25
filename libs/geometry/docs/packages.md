@@ -75,7 +75,7 @@ Who works on Trame's repository, declared once as actors (C4): every owner of th
 The quantities and the units it builds on (Ratio, the symbols of units), at the version it was released against: from the registry of this machine.
 
 - Name: `std`
-- Version: `0.25.0`
+- Version: `0.26.0`
 - Installed: Not installed in the project: its lockfile lists no std
 - Vulnerabilities: No report yet: trame audit asks the registry
 - Latest version: No report yet: trame audit asks the registry

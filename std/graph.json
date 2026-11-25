@@ -3460,6 +3460,21 @@
       "diagnostics": []
     },
     {
+      "id": "releases.R0_26_0",
+      "kind": "release",
+      "title": "Version 0.26.0",
+      "source": "src/releases.ts:402",
+      "fields": {
+        "owner": "trame",
+        "version": "0.26.0",
+        "date": "2026-11-25",
+        "what": "What the machine is asked: Node's versions described among the platform's effects, Git's version option (for libs/machine)",
+        "fingerprint": "d45c7747ee5e5151",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "releases.R0_3_0",
       "kind": "release",
       "title": "Version 0.3.0",
@@ -5293,7 +5308,7 @@
       "kind": "shipment",
       "title": "The next version",
       "source": "src/sdlc.ts:87",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "version"
@@ -5694,9 +5709,7 @@
           "web.WebSpeechApi"
         ]
       },
-      "diagnostics": [
-        "warning: To ship: The standard library is unknown"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.PackagesSafe",
@@ -5801,7 +5814,7 @@
       "kind": "artifact",
       "title": "The standard library",
       "source": "src/sdlc.ts:22",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "src",
@@ -5811,9 +5824,7 @@
         "path": "src",
         "code": "12894d00"
       },
-      "diagnostics": [
-        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.VersionMode",
@@ -8593,6 +8604,41 @@
     },
     {
       "from": "releases.R0_25_0",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_26_0",
+      "to": "product.ChosenCommands",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_26_0",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_26_0",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_26_0",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_26_0",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_26_0",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_26_0",
       "to": "product.VersionsThatHold",
       "kind": "serves"
     },
