@@ -9,7 +9,7 @@ import { DataDescribedOnce } from "./product"
  * Trame
  * The language the project is written in, at the generation that started it: its owner moves it by an amendment.
  */
-export const Language = pkg({ owner: "trame", packageName: "trame", version: "122", joins: "language", at: "../../generations/g122", serves: [DataDescribedOnce] })
+export const Language = pkg({ owner: "trame", packageName: "trame", version: "123", joins: "language", at: "../../generations/g123", serves: [DataDescribedOnce] })
 
 /**
  * std

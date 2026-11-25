@@ -1,8 +1,8 @@
 # Versions
 
-*The releases of the components on 30 October 2026, newest first. A project runs the release its configuration pins.*
+*The releases of the components on 25 November 2026, newest first. A project runs the release its configuration pins.*
 
-> **122 releases of 1 component; 95 releases on a language of their own**
+> **123 releases of 1 component; 95 releases on a language of their own**
 
 ## Trame on the command line
 
@@ -10,6 +10,7 @@ Each release, newest first: what changed, the release that assembled it, and whe
 
 | Release | Released on | What changes | Assembled by | Language |
 |---|---|---|---|---|
+| [Generation 123](releases.md#G123) | 25 November 2026 | The engine reads std 0.26.0's table of the platform: Node's versions described, for the questions of the machine (E3, part 3) | [Generation 122](releases.md#G122) | shared |
 | [Generation 122](releases.md#G122) | 25 November 2026 | A check runs a command the engine keeps and verifies the project's add-ons to it; trame doctor's questions are add-ons of the engine's own extension point (E3, part 3) | [Generation 121](releases.md#G121) | shared |
 | [Generation 121](releases.md#G121) | 25 November 2026 | The language types a realization of an extension point by its one contract (Realizes, RealizedBy): published with the generation, for the projects run from the registry (E3, part 3) | [Generation 120](releases.md#G120) | shared |
 | [Generation 120](releases.md#G120) | 25 November 2026 | Extension points: a port every realization of one choice answers, in order; trame doctor asks the project's add-ons, trame init repairs a project already there and calls its add-ons (E3, part 3) | [Generation 119](releases.md#G119) | shared |

@@ -855,10 +855,10 @@ Package · `Language`
 
 - Owner: ghalaax
 - Name: trame
-- Version: 122
+- Version: 123
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../../generations/g122
+- Its path: ../../generations/g123
 - Serves: Practise yoga on one's own, guided
 
 ### The people of the repository

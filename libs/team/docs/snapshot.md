@@ -22,10 +22,10 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 122
+- Version: 123
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../../generations/g122
+- Its path: ../../generations/g123
 - Serves: Who acts is declared once
 
 ## Team · People
