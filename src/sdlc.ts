@@ -19,6 +19,7 @@ import {
   ProgramRunsInMemory, ProgramRunsKept, FilesInMemory, PlaywrightBrowserInstalled,
 } from "#std/tooling"
 import { Adapter, Strategy, Command, Plugin } from "#std/patterns"
+import { SystemSupported, NodeRecentEnough, GitInstalled, WhatTheMachineRuns, type MachineRequired } from "#machine/machine"
 import { OpenPullRequest, MergePullRequest, Propagate, PullRequestSettings, PropagationSettings } from "#std/commands"
 import { GitCliBranches, GitHubCliPullRequests, AutoMergeByGitHubCli, AutoMergeInAClaudeSession } from "#std/repository"
 import { Layout, TrameCommands, TrameEnvironment, ProjectStart } from "./conventions"
@@ -174,26 +175,53 @@ export const SdlcOnTheMachine = binding({
 })
 
 /**
+ * The machines Trame runs on
+ * The systems Trame runs on, as Node names them, and the least major of Node it needs: what the questions of the
+ * machine read. Linux and macOS, where its people and GitHub's runners work; Node 22, which the runners install.
+ */
+export const OurMachines = decision<MachineRequired>({
+  owner: "trame",
+  value: { systems: ["linux", "darwin"], node: 22 },
+  rejected: {
+    "Windows too": "trame.sh is a POSIX shell script, and the links under .trame are symbolic ones",
+    "Node 20": "the engine's loader registers its hooks with module.registerHooks, which Node 22 brings",
+  },
+})
+
+/**
+ * What the machine runs, for Trame
+ * The settings of the questions of the machine: Trame's decision about its machines.
+ */
+export const OurMachineSettings = fn({
+  owner: "trame", implements: [WhatTheMachineRuns],
+  deps: { machines: OurMachines },
+  body: ({ machines }) => ({ required: () => machines }),
+})
+
+/**
  * What the machine must also have
- * trame doctor asks, besides what the engine asks, that the browser the version of Playwright Trame uses drives is
- * installed (std's add-on, since g120): the page's check runs in it, and a machine whose browsers moved would refuse it
- * where the engine's own questions see nothing.
+ * trame doctor asks, besides what the engine asks, what Trame needs of its machine (since g120): the browser the version
+ * of Playwright Trame uses drives, installed (std's add-on, with its adapter); a system Trame runs on, Node recent
+ * enough and Git installed (libs/machine), as Trame's decision about its machines says.
  */
 export const WhatTheMachineMustHave = binding({
   owner: "trame",
-  chooses: [PlaywrightBrowserInstalled],
+  chooses: [PlaywrightBrowserInstalled, SystemSupported, NodeRecentEnough, GitInstalled, OurMachineSettings],
   environments: [Local, Session],
   follows: [Plugin],
-  context: "On 17 November a machine whose browsers had moved refused the check of the page, and trame doctor said nothing of it.",
+  context: "On 17 November a machine whose browsers had moved refused the check of the page, and trame doctor said nothing of it; the pull requests and the propagation need Git, and the engine's loader Node 22.",
 })
 
 /**
  * The machine has what Trame needs
  * trame doctor, run by the engine that ships (since g122), asks what Trame chooses to ask besides the engine's own
- * questions: that the browser Playwright drives is installed. It proves the add-on, which no program of Trame's own
- * wires: the engine takes it from the graph when it asks.
+ * questions: the browser Playwright drives, the system, Node, Git. It proves the add-ons, which no program of Trame's
+ * own wires: the engine takes them from the graph when it asks.
  */
-export const MachineAsked = check({ owner: "trame", on: [], command: EngineCommand.doctor, by: Maintainers, verifies: [PlaywrightBrowserInstalled] })
+export const MachineAsked = check({
+  owner: "trame", on: [], command: EngineCommand.doctor, by: Maintainers,
+  verifies: [PlaywrightBrowserInstalled, SystemSupported, NodeRecentEnough, GitInstalled, OurMachineSettings],
+})
 
 /**
  * The SDLC in memory
@@ -423,7 +451,7 @@ export const PullRequestWorkflow = artifact({
 export const MainBranch = decision<RepositorySettings>({
   owner: "trame",
   value: {
-    branch: "main", checks: ["trame", "std", "ci", "data", "team", "reservations", "poselia"], upToDate: false, approvals: 0,
+    branch: "main", checks: ["trame", "std", "ci", "data", "team", "machine", "reservations", "poselia"], upToDate: false, approvals: 0,
     method: "merge", autoMerge: true, deletesMerged: true, pages: false,
   },
   rejected: {
@@ -580,6 +608,7 @@ export const RepositoryProjects = decision<readonly RepositoryProject[]>({
     { name: "ci", dir: "ci", runners: "RunnersWritten" },
     { name: "team", dir: "libs/team", runners: "RunnersWritten" },
     { name: "data", dir: "libs/data", runners: "RunnersWritten" },
+    { name: "machine", dir: "libs/machine", runners: "RunnersWritten" },
     { name: "geometry", dir: "libs/geometry" },
     { name: "reservations", dir: "examples/reservations", runners: "RunnersWritten", scenarios: true },
     { name: "poselia", dir: "apps/poselia", runners: "RunnersWritten" },

@@ -8768,6 +8768,19 @@
       }
     },
     {
+      "id": "packages.Machine",
+      "kind": "package",
+      "title": "The questions of the machine",
+      "fields": {
+        "owner": "trame",
+        "packageName": "machine",
+        "version": "0.1.0",
+        "joins": "library",
+        "from": "path",
+        "at": "libs/machine/releases/0.1.0"
+      }
+    },
+    {
       "id": "packages.NodeTypes",
       "kind": "package",
       "title": "Types of Node.js",
@@ -8842,10 +8855,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.26.0",
+        "version": "0.27.0",
         "joins": "library",
         "from": "path",
-        "at": "std/releases/0.26.0"
+        "at": "std/releases/0.27.0"
       }
     },
     {
@@ -14605,6 +14618,7 @@
             "ci",
             "data",
             "team",
+            "machine",
             "reservations",
             "poselia"
           ],
@@ -14720,6 +14734,38 @@
           "day": "platform.TestDay",
           "workflow": "sdlc.PullRequestsOnGitHub",
           "messages": "messages.ScenarioMessages"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "sdlc.OurMachines",
+      "kind": "decision",
+      "title": "The machines Trame runs on",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "systems": [
+            "linux",
+            "darwin"
+          ],
+          "node": 22
+        },
+        "rejected": {
+          "Windows too": "trame.sh is a POSIX shell script, and the links under .trame are symbolic ones",
+          "Node 20": "the engine's loader registers its hooks with module.registerHooks, which Node 22 brings"
+        }
+      }
+    },
+    {
+      "id": "sdlc.OurMachineSettings",
+      "kind": "function",
+      "title": "What the machine runs, for Trame",
+      "status": "unknown",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "machines": "sdlc.OurMachines"
         },
         "body": "(function)"
       }
@@ -14886,6 +14932,11 @@
           {
             "name": "data",
             "dir": "libs/data",
+            "runners": "RunnersWritten"
+          },
+          {
+            "name": "machine",
+            "dir": "libs/machine",
             "runners": "RunnersWritten"
           },
           {
@@ -15073,7 +15124,7 @@
       "status": "unknown",
       "fields": {
         "owner": "trame",
-        "context": "On 17 November a machine whose browsers had moved refused the check of the page, and trame doctor said nothing of it."
+        "context": "On 17 November a machine whose browsers had moved refused the check of the page, and trame doctor said nothing of it; the pull requests and the propagation need Git, and the engine's loader Node 22."
       }
     },
     {
@@ -25174,6 +25225,11 @@
       "kind": "serves"
     },
     {
+      "from": "packages.Machine",
+      "to": "product.SingleSource",
+      "kind": "serves"
+    },
+    {
       "from": "packages.NpmLockfile",
       "to": "product.SingleSource",
       "kind": "serves"
@@ -30644,6 +30700,11 @@
       "kind": "by"
     },
     {
+      "from": "sdlc.MachineAsked",
+      "to": "sdlc.OurMachineSettings",
+      "kind": "verifies"
+    },
+    {
       "from": "sdlc.MergeMode",
       "to": "sdlc.EngineVerified",
       "kind": "obligations"
@@ -30816,6 +30877,11 @@
     {
       "from": "sdlc.OurCommandsSettled",
       "to": "messages.ScenarioMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.OurMachineSettings",
+      "to": "sdlc.OurMachines",
       "kind": "deps"
     },
     {
@@ -31082,6 +31148,11 @@
       "from": "sdlc.TrameSdlc",
       "to": "architecture.Local",
       "kind": "environments"
+    },
+    {
+      "from": "sdlc.WhatTheMachineMustHave",
+      "to": "sdlc.OurMachineSettings",
+      "kind": "chooses"
     },
     {
       "from": "sdlc.WhatTheMachineMustHave",

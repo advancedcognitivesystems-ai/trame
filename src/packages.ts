@@ -134,7 +134,7 @@ export const VersionOrder = fn({
  * repository, at the version it froze.
  */
 export const StandardLibrary = pkg({
-  owner: "trame", packageName: "std", version: "0.26.0", joins: "library", from: "path", at: "std/releases/0.26.0", serves: [SingleSource],
+  owner: "trame", packageName: "std", version: "0.27.0", joins: "library", from: "path", at: "std/releases/0.27.0", serves: [SingleSource],
 })
 
 /**
@@ -169,5 +169,15 @@ export const NpmLockfile = standard({
  */
 export const People = pkg({
   owner: "trame", packageName: "team", version: "0.1.0", joins: "library", from: "path", at: "libs/team/releases/0.1.0",
+  serves: [SingleSource],
+})
+
+/**
+ * The questions of the machine
+ * What Trame asks of the machine it runs on besides the engine's own questions (the system, Node's version, Git), at
+ * the version it uses, by its path in the repository.
+ */
+export const Machine = pkg({
+  owner: "trame", packageName: "machine", version: "0.1.0", joins: "library", from: "path", at: "libs/machine/releases/0.1.0",
   serves: [SingleSource],
 })

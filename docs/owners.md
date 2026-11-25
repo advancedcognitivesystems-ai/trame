@@ -5,7 +5,7 @@
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
 | Trame's maintainers | 0 | 0 | 2 | 0 |
-| trame | 0 | 0 | 6 | 772 |
+| trame | 0 | 0 | 6 | 775 |
 
 <a id="Trame's maintainers"></a>
 
@@ -377,6 +377,7 @@
 | [esbuild](packages.md#EsbuildPackage) | Package | **held** |
 | [Grammar of HCL](packages.md#HclGrammar) | Package | **held** |
 | [Grammar of HTML](packages.md#HtmlGrammar) | Package | **held** |
+| [The questions of the machine](packages.md#Machine) | Package |  |
 | [Types of Node.js](packages.md#NodeTypes) | Package | **held** |
 | [npm's lockfile](packages.md#NpmLockfile) | Standard |  |
 | [Audit of the packages](packages.md#PackageAudit) | Decision |  |
@@ -715,6 +716,8 @@
 | [The graph page is opened as a person would](sdlc.md#OpeningTheGraphPage) | Scenario | **held** |
 | [Open the graph page](sdlc.md#OpenTheGraphPage) | Entry point | **held** |
 | [Trame's settings, as std's commands read them](sdlc.md#OurCommandsSettled) | Scenario | **held** |
+| [The machines Trame runs on](sdlc.md#OurMachines) | Decision |  |
+| [What the machine runs, for Trame](sdlc.md#OurMachineSettings) | Function | **unknown** |
 | [How a version is carried across Trame's repository](sdlc.md#OurPropagation) | Function | **held** |
 | [How Trame's pull requests are opened](sdlc.md#OurPullRequests) | Function | **held** |
 | [Trame's settings in the scenarios](sdlc.md#OurSettingsInTheScenarios) | Technical choice | **held** |
