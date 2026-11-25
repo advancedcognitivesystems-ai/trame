@@ -6,7 +6,7 @@
 
 ## Into the main branch
 
-> **Into the main branch does not ship yet: 51 of 53 obligations hold.**
+> **Into the main branch ships: every obligation holds.**
 
 For the target main; its programs are assembled for [Local](architecture.md#Local).
 
@@ -16,10 +16,10 @@ Run elsewhere by [The pull requests' workflow](sdlc.md#PullRequestWorkflow), wri
 flowchart TB
   n0["The candidate engine<br/><small>Artefact</small>"]:::held
   n1["Trame on the command line<br/><small>Component</small>"]:::neutral
-  n2["The engine<br/><small>Artefact</small>"]:::unknown
+  n2["The engine<br/><small>Artefact</small>"]:::held
   n3["The graph page<br/><small>Artefact</small>"]:::held
   n4["Export the page<br/><small>Entry point</small>"]:::held
-  n5["The machine has what Trame needs<br/><small>Check</small>"]:::unknown
+  n5["The machine has what Trame needs<br/><small>Check</small>"]:::held
   n6["The graph page opens<br/><small>Check</small>"]:::held
   n7["Open the graph page<br/><small>Entry point</small>"]:::held
   n8["The candidate runs on the machine<br/><small>Check</small>"]:::held
@@ -72,7 +72,7 @@ flowchart TB
   n55["The repository is set as the graph decides<br/><small>Scenario</small>"]:::held
   n56["The graph page is opened as a person would<br/><small>Scenario</small>"]:::held
   n57["Trame's settings, as std's commands read them<br/><small>Scenario</small>"]:::held
-  n58["Into the main branch<br/><small>Shipment</small>"]:::unknown
+  n58["Into the main branch<br/><small>Shipment</small>"]:::held
   n24 -->|Verifies| n9
   n24 -->|Depends on| n9
   n28 -->|Verifies| n4
@@ -103,14 +103,14 @@ flowchart TB
 |  | Stage | Step | Run by | Why | Status | Latest evidence |
 |---|---|---|---|---|---|---|
 | 1 | produce | [The candidate engine](sdlc.md#EngineCandidate) · `out/local/trame-cli.ts` | [Trame on the command line](architecture.md#TrameCli) | — | **held** | 25 November 2026 by claude  |
-| 2 | produce | [The engine](sdlc.md#TheEngine) · `src` | — | — | **unknown** | 25 November 2026 by claude  |
+| 2 | produce | [The engine](sdlc.md#TheEngine) · `src` | — | — | **held** | 25 November 2026 by claude  |
 | 3 | produce | [The graph page](sdlc.md#GraphPage) · `trame-page.html` | [Export the page](commands.md#Export) | — | **held** | 25 November 2026 by claude  |
-| 4 | check | [The machine has what Trame needs](sdlc.md#MachineAsked) | `trame doctor`, signed by [Trame's maintainers](sdlc.md#Maintainers) | — | **unknown** |  |
+| 4 | check | [The machine has what Trame needs](sdlc.md#MachineAsked) | `trame doctor`, signed by [Trame's maintainers](sdlc.md#Maintainers) | — | **held** | passed, 25 November 2026 by claude  |
 | 5 | check | [The graph page opens](sdlc.md#GraphPageOpens) | [Open the graph page](sdlc.md#OpenTheGraphPage), signed by [Trame's maintainers](sdlc.md#Maintainers) | — | **held** | passed, 25 November 2026 by claude  |
 | 6 | check | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | [Ask the machine](commands.md#Doctor), signed by [Trame's maintainers](sdlc.md#Maintainers) | — | **held** | passed, 25 November 2026 by claude  |
 | 7 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
-| 8 | prove | [The engine](sdlc.md#TheEngine) | — | the shipment | **unknown** | 25 November 2026 by claude  |
-| 9 | prove | [The machine has what Trame needs](sdlc.md#MachineAsked) | by hand, signed by [Trame's maintainers](sdlc.md#Maintainers) | the shipment | **unknown** |  |
+| 8 | prove | [The engine](sdlc.md#TheEngine) | — | the shipment | **held** | 25 November 2026 by claude  |
+| 9 | prove | [The machine has what Trame needs](sdlc.md#MachineAsked) | by hand, signed by [Trame's maintainers](sdlc.md#Maintainers) | the shipment | **held** | passed, 25 November 2026 by claude  |
 | 10 | prove | [Effects come from the vocabulary](architecture.md#KnownEffects) | — | [The rules of the architecture hold](sdlc.md#ArchitectureRuled) | **held** |  |
 | 11 | prove | [Only commands write](architecture.md#OnlyCommandsWrite) | — | [The rules of the architecture hold](sdlc.md#ArchitectureRuled) | **held** |  |
 | 12 | prove | [Rendering does not read the graph](architecture.md#RenderingWithoutGraph) | — | [The rules of the architecture hold](sdlc.md#ArchitectureRuled) | **held** |  |
@@ -161,7 +161,7 @@ flowchart TB
 | 57 | prove | [The repository is set as the graph decides](sdlc.md#SettingTheRepository) | — | [The engine is verified](sdlc.md#EngineVerified) via [Set the repository's settings](sdlc.md#ApplyTheRepositorySettings) | **held** |  |
 | 58 | prove | [The graph page is opened as a person would](sdlc.md#OpeningTheGraphPage) | — | [The engine is verified](sdlc.md#EngineVerified) via [What the graph page is asked](sdlc.md#GraphPageSelectors) | **held** |  |
 | 59 | prove | [Trame's settings, as std's commands read them](sdlc.md#OurCommandsSettled) | — | [The engine is verified](sdlc.md#EngineVerified) via [How a version is carried across Trame's repository](sdlc.md#OurPropagation) | **held** |  |
-| 60 | record | [Into the main branch](sdlc.md#IntoMain) | — | — | **unknown** | 19 November 2026 by claude `evidence/shipments/IntoMain-2026-11-19-6a9aa3c4.json` |
+| 60 | record | [Into the main branch](sdlc.md#IntoMain) | — | — | **held** | 19 November 2026 by claude `evidence/shipments/IntoMain-2026-11-19-6a9aa3c4.json` |
 
 `trame ship IntoMain --by <name>`
 

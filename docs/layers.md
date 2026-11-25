@@ -728,9 +728,9 @@ flowchart TB
     n666["What the scenario of the graph page shows<br/><small>Decision</small>"]:::neutral
     n667["What the graph page is asked<br/><small>Function</small>"]:::held
     n668["How a generation advances<br/><small>Decision</small>"]:::neutral
-    n669["Into the main branch<br/><small>Shipment</small>"]:::unknown
+    n669["Into the main branch<br/><small>Shipment</small>"]:::held
     n670["The language serves what it says<br/><small>Obligation</small>"]:::neutral
-    n671["The machine has what Trame needs<br/><small>Check</small>"]:::unknown
+    n671["The machine has what Trame needs<br/><small>Check</small>"]:::held
     n672["How the repository merges into main<br/><small>Decision</small>"]:::neutral
     n673["Trame's maintainers<br/><small>Role</small>"]:::neutral
     n674["How a change merges<br/><small>Policy</small>"]:::neutral
@@ -756,10 +756,10 @@ flowchart TB
     n694["What the programs of Trame's SDLC say<br/><small>Message catalog</small>"]:::neutral
     n695["How the repository is set<br/><small>Policy</small>"]:::neutral
     n696["The repository is set as the graph decides<br/><small>Scenario</small>"]:::held
-    n697["The engine<br/><small>Artefact</small>"]:::unknown
+    n697["The engine<br/><small>Artefact</small>"]:::held
     n698["Trame's repository<br/><small>Decision</small>"]:::neutral
     n699["Trame's SDLC<br/><small>Component</small>"]:::neutral
-    n700["What the machine must also have<br/><small>Technical choice</small>"]:::unknown
+    n700["What the machine must also have<br/><small>Technical choice</small>"]:::held
   end
   subgraph shipping["Trame · Shipping"]
     n701["Attribution<br/><small>Function</small>"]:::held

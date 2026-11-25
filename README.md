@@ -587,7 +587,9 @@ same name; it never takes the name of one the engine keeps (`init`, `doctor`, `h
 extension point is a port every realization of one choice answers, in its order, so `trame doctor` also asks what a
 project's add-ons ask of the machine (Trame's: that the browser Playwright drives is installed), and `trame init`, run
 in a project already there, repairs it: it writes only what lacks, never over a file, calls the add-ons that repair
-it, and run twice writes nothing. A library offers commands as it
+it, and run twice writes nothing. The engine's own questions are add-ons as well, of its own extension point, asked
+even where no graph loads; and a check may name a command the engine keeps (since g122), which then proves the
+project's add-ons to it: Trame's merge into main requires that the machine has the browser Playwright drives. A library offers commands as it
 offers realizations: std writes `pull-request` and `propagate` once, and a project runs them when a binding of its own
 chooses them, with its decisions as their settings (Trame: its repository, its main branch, the projects of the
 repository). Governance is rules too: a `rule` applies a requirement of

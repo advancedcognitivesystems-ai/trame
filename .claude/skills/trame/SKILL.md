@@ -182,6 +182,7 @@ How a version becomes available is declared in the graph, with the kinds `role`,
 - An extension point (`extensionPoint<C>`, g120) is answered by every realization one choice makes, in its order
   (pattern `Plugin`): `trame doctor` asks the add-ons of std's `MachineNeeds`, `trame init` calls those of
   `ProjectRepairs`. `trame init` in a project repairs it: only what lacks, never over a file, nothing the second time.
+  A check with `command: EngineCommand.doctor` (g122) proves the project's add-ons to doctor; `trame ship` runs it.
 - A file that runs a shipment elsewhere (a GitHub workflow, a Bash script) is an `artifact` produced by a writer of `ci`
   (`GitHubWorkflow`, `ShellScript`), naming the shipment it `runs`, its `settings` and what it `publishes`: the graph
   decides what is published and kept, never the writer.

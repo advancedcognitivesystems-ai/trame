@@ -2,7 +2,7 @@
 
 *What happened to the project, day by day, the latest first, up to the date of the graph (25 November 2026): the versions released, and the evidence given, each with the node it is about and who gave it.*
 
-> **30 days · 122 versions released · 607 pieces of evidence**
+> **30 days · 122 versions released · 611 pieces of evidence**
 
 ## 25 November 2026
 
@@ -22,8 +22,8 @@
 | Built | [The candidate engine](sdlc.md#EngineCandidate) | claude |
 | Shipped | [The candidate engine](sdlc.md#EngineCandidate) | claude |
 | Built | [The candidate engine](sdlc.md#EngineCandidate) | claude |
-| Built | [The candidate engine](sdlc.md#EngineCandidate) | claude |
 | Shipped | [The candidate engine](sdlc.md#EngineCandidate) | claude |
+| Built | [The candidate engine](sdlc.md#EngineCandidate) | claude |
 | Built | [The graph page](sdlc.md#GraphPage) | claude |
 | Shipped | [The graph page](sdlc.md#GraphPage) | claude |
 | Built | [The graph page](sdlc.md#GraphPage) | claude |
@@ -31,10 +31,13 @@
 | Built | [The graph page](sdlc.md#GraphPage) | claude |
 | Built | [The graph page](sdlc.md#GraphPage) | claude |
 | Shipped | [The graph page](sdlc.md#GraphPage) | claude |
+| Built | [The graph page](sdlc.md#GraphPage) | claude |
 | Check passed | [The graph page opens](sdlc.md#GraphPageOpens) | claude |
 | Check passed | [The graph page opens](sdlc.md#GraphPageOpens) | claude |
 | Check passed | [The graph page opens](sdlc.md#GraphPageOpens) | claude |
 | Check passed | [The graph page opens](sdlc.md#GraphPageOpens) | claude |
+| Check passed | [The graph page opens](sdlc.md#GraphPageOpens) | claude |
+| Check passed | [The machine has what Trame needs](sdlc.md#MachineAsked) | claude |
 | Shipped | [The next generation](sdlc.md#NextGeneration) | claude |
 | Shipped | [The next generation](sdlc.md#NextGeneration) | claude |
 | Shipped | [The next generation](sdlc.md#NextGeneration) | claude |
@@ -45,6 +48,7 @@
 | Built | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
 | Shipped | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
 | Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
+| Built | [The engine](sdlc.md#TheEngine) | claude |
 | Built | [The engine](sdlc.md#TheEngine) | claude |
 
 ## 24 November 2026

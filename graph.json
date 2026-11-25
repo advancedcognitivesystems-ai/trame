@@ -18589,7 +18589,7 @@
       "kind": "shipment",
       "title": "Into the main branch",
       "source": "src/sdlc.ts:379",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "main"
@@ -19501,10 +19501,7 @@
           "typescript.WorldGlobals"
         ]
       },
-      "diagnostics": [
-        "warning: To ship: The engine is unknown",
-        "warning: To ship: The machine has what Trame needs is unknown"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.LanguageServed",
@@ -19521,7 +19518,7 @@
       "kind": "check",
       "title": "The machine has what Trame needs",
       "source": "src/sdlc.ts:196",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "command": "doctor"
@@ -19529,9 +19526,7 @@
       "result": {
         "code": "e1fe3558"
       },
-      "diagnostics": [
-        "warning: To run: trame ship runs it on the artefacts it checks"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.MainBranch",
@@ -21089,7 +21084,7 @@
       "kind": "artifact",
       "title": "The engine",
       "source": "src/sdlc.ts:365",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "src",
@@ -21099,9 +21094,7 @@
         "path": "src",
         "code": "96b858c2"
       },
-      "diagnostics": [
-        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.TheRepository",
@@ -21135,7 +21128,7 @@
       "kind": "binding",
       "title": "What the machine must also have",
       "source": "src/sdlc.ts:182",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "On 17 November a machine whose browsers had moved refused the check of the page, and trame doctor said nothing of it."

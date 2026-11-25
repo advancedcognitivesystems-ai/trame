@@ -6948,7 +6948,7 @@ Technical choice · `SdlcOnTheMachine` · **unknown**
 
 ### What the machine must also have
 
-Technical choice · `WhatTheMachineMustHave` · **unknown**
+Technical choice · `WhatTheMachineMustHave` · **held**
 
 - Decided by: trame
 - Context: On 17 November a machine whose browsers had moved refused the check of the page, and trame doctor said nothing of it.
@@ -7040,7 +7040,7 @@ Artefact · `PullRequestWorkflow` · **unknown**
 
 ### The engine
 
-Artefact · `TheEngine` · **unknown**
+Artefact · `TheEngine` · **held**
 
 - Owner: trame
 - Path: src
@@ -7077,7 +7077,7 @@ Check · `GraphPageOpens` · **held**
 
 ### The machine has what Trame needs
 
-Check · `MachineAsked` · **unknown**
+Check · `MachineAsked` · **held**
 
 - Owner: trame
 - Run by the engine's command: doctor
@@ -7093,7 +7093,7 @@ Check · `RepositoryRead` · **unknown**
 
 ### Into the main branch
 
-Shipment · `IntoMain` · **unknown**
+Shipment · `IntoMain` · **held**
 
 - Owner: trame
 - Target: main
