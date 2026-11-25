@@ -16,7 +16,7 @@
 
 ### Playwright's API
 
-`PlaywrightApi` · `src/tooling.ts:237`
+`PlaywrightApi` · `src/tooling.ts:258`
 
 The names Playwright gives to what a page tells: the event of an error the page raised.
 
@@ -36,7 +36,7 @@ Source: Playwright documentation, class Page, event "pageerror" · `https://play
 
 ### Where a package comes from
 
-`PackageOrigins` · `src/tooling.ts:378`
+`PackageOrigins` · `src/tooling.ts:424`
 
 The origins a reference to a package names: by its path (a directory on the machine, the package as it is or a version it froze), from a registry (a version published). npm will be one more.
 
@@ -48,13 +48,26 @@ The origins a reference to a package names: by its path (a directory on the mach
 - Owner: trame
 - Serves: [Ports of the platform, realized once](product.md#RealizedOnce)
 
-## Decision
+## Decisions
+
+<a id="CommandLanguage"></a>
+
+### The language the library's commands and tools speak in.
+
+`CommandLanguage` · `src/tooling.ts:34`
+
+| Case | Value |
+|---|---|
+| tag | en-GB |
+
+- Decided by: trame
+- Language of: [What the library's commands say](commands.md#CommandWords), [What the library's tools say](#ToolWords)
 
 <a id="HeadlessChromium"></a>
 
 ### Chromium without a screen
 
-`HeadlessChromium` · `src/tooling.ts:252`
+`HeadlessChromium` · `src/tooling.ts:273`
 
 How Chromium starts without a screen: WebGL drawn by software (ANGLE on SwiftShader), so that a page drawing in three dimensions runs on a machine without a graphics card; the window's size, in pixels.
 
@@ -74,7 +87,7 @@ How Chromium starts without a screen: WebGL drawn by software (ANGLE on SwiftSha
 
 ### The SDLC's tooling is realized once
 
-`ToolingAsPorts` · `src/tooling.ts:393` · status: **held**
+`ToolingAsPorts` · `src/tooling.ts:439` · status: **held**
 
 The files of a project and a headless browser are ports of the library, each realized for a machine and in memory: every project's checks and deployments use them, and play them in scenarios, rather than calling the machine itself.
 
@@ -84,7 +97,7 @@ Consequences: A check opens the delivered page through HeadlessBrowser, a deploy
 
 - Decided by: trame
 - Serves: [Ports of the platform, realized once](product.md#RealizedOnce)
-- Applied by: [Commands of a program](#ProgramCommands), [Node's command line](#NodeProgramCommands), [Commands run in the engine](#CommandsInTheEngine), [Project files](#Files), [Files written](#FilesKept), [The machine's files](#MachineFiles), [Files kept in memory](#FilesInMemory), [Headless browser](#HeadlessBrowser), [Chromium, driven by Playwright](#PlaywrightBrowser), [Browser script](#BrowserScripted), [A browser kept in memory](#BrowserInMemory), [Where a package comes from](#PackageSources)
+- Applied by: [Commands of a program](#ProgramCommands), [Node's command line](#NodeProgramCommands), [Commands run in the engine](#CommandsInTheEngine), [What the machine must also have](#MachineNeeds), [Playwright's browser, installed](#PlaywrightBrowserInstalled), [What repairs a project](#ProjectRepairs), [Project files](#Files), [Files written](#FilesKept), [The machine's files](#MachineFiles), [Files kept in memory](#FilesInMemory), [Headless browser](#HeadlessBrowser), [Chromium, driven by Playwright](#PlaywrightBrowser), [Browser script](#BrowserScripted), [A browser kept in memory](#BrowserInMemory), [Where a package comes from](#PackageSources)
 
 ## Ports
 
@@ -92,7 +105,7 @@ Consequences: A check opens the delivered page through HeadlessBrowser, a deploy
 
 ### Browser script
 
-`BrowserScripted` · `src/tooling.ts:291`
+`BrowserScripted` · `src/tooling.ts:337`
 
 The pages the browser kept in memory shows, as a scenario writes them, and what was clicked on them.
 
@@ -110,7 +123,7 @@ The pages the browser kept in memory shows, as a scenario writes them, and what 
 
 ### Project files
 
-`Files` · `src/tooling.ts:70`
+`Files` · `src/tooling.ts:91`
 
 Reads, writes and copies the files of the project, and gives a file's fingerprint.
 
@@ -137,7 +150,7 @@ Reads, writes and copies the files of the project, and gives a file's fingerprin
 
 ### Files written
 
-`FilesKept` · `src/tooling.ts:84`
+`FilesKept` · `src/tooling.ts:105`
 
 The files a check or a deployment wrote, for a scenario to read: realized together with the files kept in memory.
 
@@ -155,7 +168,7 @@ The files a check or a deployment wrote, for a scenario to read: realized togeth
 
 ### Headless browser
 
-`HeadlessBrowser` · `src/tooling.ts:220`
+`HeadlessBrowser` · `src/tooling.ts:241`
 
 Opens a page the project delivered, without a screen, and answers what it shows.
 
@@ -170,11 +183,36 @@ Opens a page the project delivered, without a screen, and answers what it shows.
 - Implemented by: [A browser kept in memory](#BrowserInMemory), [Chromium, driven by Playwright](#PlaywrightBrowser)
 - Applies: [The SDLC's tooling is realized once](#ToolingAsPorts)
 
+<a id="MachineNeeds"></a>
+
+### What the machine must also have
+
+`MachineNeeds` · `src/tooling.ts:42`
+
+The extension point of trame doctor (since g120): what a project asks of the machine besides what the engine asks, each add-on its choice makes answering whether it holds, in one line. A browser the version of a package drives, a program a check runs: what only this project needs.
+
+An extension point: every realization chosen in an environment answers it, in the order of the choice.
+
+| Method | What it may do |
+|---|---|
+| `ask` | read, process, network, display, time, asynchronous |
+
+| Environment | Answered by | Chosen by |
+|---|---|---|
+| [Strict](scenarios.md#Strict) | none | — |
+| [Test](scenarios.md#Test) | none | — |
+
+- Owner: trame
+- Extension point: true
+- Effects: asynchronous, display, network, process, read, time
+- Implemented by: [Playwright's browser, installed](#PlaywrightBrowserInstalled)
+- Applies: [The SDLC's tooling is realized once](#ToolingAsPorts)
+
 <a id="PackageSources"></a>
 
 ### Where a package comes from
 
-`PackageSources` · `src/tooling.ts:368`
+`PackageSources` · `src/tooling.ts:414`
 
 A project uses packages (the language of the generation it pins, its libraries) by their name only, each at its version; where the package's files come from is a choice with its strategies: a local path (a directory on the machine, reached through a link under the project), a registry (a package fetched at its version). The project's import map leads to where the strategy placed the package; moving a package elsewhere changes only its source.
 
@@ -197,7 +235,7 @@ A project uses packages (the language of the generation it pins, its libraries) 
 
 ### Commands of a program
 
-`ProgramCommands` · `src/tooling.ts:29`
+`ProgramCommands` · `src/tooling.ts:31`
 
 A program of the SDLC (a check, a deployment), run by a person or by trame ship: its first argument names the command that runs.
 
@@ -216,7 +254,7 @@ A program of the SDLC (a check, a deployment), run by a person or by trame ship:
 
 ### Programs run
 
-`ProgramRuns` · `src/tooling.ts:141`
+`ProgramRuns` · `src/tooling.ts:162`
 
 The programs a command of the library runs for a project, one after the other: trame itself, in each project of the repository, say.
 
@@ -238,7 +276,7 @@ The programs a command of the library runs for a project, one after the other: t
 
 ### The programs a scenario keeps: the file it says a program writes is written when that program runs.
 
-`ProgramRunsKept` · `src/tooling.ts:165`
+`ProgramRunsKept` · `src/tooling.ts:186`
 
 | Method | What it may do |
 |---|---|
@@ -256,13 +294,37 @@ The programs a command of the library runs for a project, one after the other: t
 - Used by: [A version carried across the projects](scenarios.md#PropagatedInOrder)
 - Implemented by: [Programs run in memory](#ProgramRunsInMemory)
 
+<a id="ProjectRepairs"></a>
+
+### What repairs a project
+
+`ProjectRepairs` · `src/tooling.ts:50`
+
+The extension point of trame init (since g120): what a project, or a library it takes them from, writes into a project that lacks it, each add-on its choice makes saying the files it wrote, none when nothing lacked. Run in an empty directory as in a project already there, never over a file.
+
+An extension point: every realization chosen in an environment answers it, in the order of the choice.
+
+| Method | What it may do |
+|---|---|
+| `repair` | read, write |
+
+| Environment | Answered by | Chosen by |
+|---|---|---|
+| [Strict](scenarios.md#Strict) | none | — |
+| [Test](scenarios.md#Test) | none | — |
+
+- Owner: trame
+- Extension point: true
+- Effects: read, write
+- Applies: [The SDLC's tooling is realized once](#ToolingAsPorts)
+
 ## Functions
 
 <a id="BrowserInMemory"></a>
 
 ### A browser kept in memory
 
-`BrowserInMemory` · `src/tooling.ts:298` · status: **held**
+`BrowserInMemory` · `src/tooling.ts:344` · status: **held**
 
 In a scenario, a page opened shows what the scenario wrote for its file (nothing found, no error, when it wrote nothing); clicks are recorded; waiting takes no time.
 
@@ -278,7 +340,7 @@ In a scenario, a page opened shows what the scenario wrote for its file (nothing
 
 ### Files kept in memory
 
-`FilesInMemory` · `src/tooling.ts:101` · status: **held**
+`FilesInMemory` · `src/tooling.ts:122` · status: **held**
 
 In a scenario, the project's files are kept in memory, empty at first; a fingerprint is the hash of the text.
 
@@ -294,7 +356,7 @@ In a scenario, the project's files are kept in memory, empty at first; a fingerp
 
 ### Programs run in memory
 
-`ProgramRunsInMemory` · `src/tooling.ts:172` · status: **held**
+`ProgramRunsInMemory` · `src/tooling.ts:193` · status: **held**
 
 In a scenario, a program run is kept, writes the file the scenario said it would, and succeeds unless the scenario made those of its directory fail.
 
@@ -307,13 +369,36 @@ In a scenario, a program run is kept, writes the file the scenario said it would
 - Chosen by: [In memory](scenarios.md#InMemory)
 - Verified by: [A version carried across the projects](scenarios.md#PropagatedInOrder)
 
+## Message catalog
+
+<a id="ToolWords"></a>
+
+### What the library's tools say
+
+`ToolWords` · `src/tooling.ts:297`
+
+<details><summary>The messages, in code</summary>
+
+```typescript
+() => ({
+    browserInstalled: (path: string) => `the browser Playwright drives is installed: ${path}`,
+    browserMissing: (path: string) => `the browser Playwright drives is missing (${path}): move std's PlaywrightPackage to the version whose browser the machine has`,
+  })
+```
+
+</details>
+
+- Owner: trame
+- Written in: [The language the library's commands and tools speak in.](#CommandLanguage)
+- Used by: [Playwright's browser, installed](#PlaywrightBrowserInstalled)
+
 ## Implementations
 
 <a id="CommandsInTheEngine"></a>
 
 ### Commands run in the engine
 
-`CommandsInTheEngine` · `src/tooling.ts:50`
+`CommandsInTheEngine` · `src/tooling.ts:71`
 
 The program's commands are offered to the engine that imports it, in its own process (E3, since g119): trame <name> runs the one named there, and trame ship the checks and deployments it runs, with the engine's modules at hand (compilation, views, laws, lock, assembly, evidence) rather than a second engine. Run alone, by its path, the program runs nothing and fails: its commands are typed through trame.
 
@@ -327,7 +412,7 @@ The program's commands are offered to the engine that imports it, in its own pro
 
 ### The machine's files
 
-`MachineFiles` · `src/tooling.ts:91`
+`MachineFiles` · `src/tooling.ts:112`
 
 The files of the project on the machine, from the directory the program runs in; a fingerprint is the SHA-256 digest of the file, in hexadecimal.
 
@@ -341,7 +426,7 @@ The files of the project on the machine, from the directory the program runs in;
 
 ### Node's command line
 
-`NodeProgramCommands` · `src/tooling.ts:37`
+`NodeProgramCommands` · `src/tooling.ts:58`
 
 The first argument given to the program chooses the entry point whose command it names, which receives the others; what it answers, when it is lines of text, is written on the standard output; the program ends with the status the entry point answers, or fails when no command has that name.
 
@@ -355,7 +440,7 @@ The first argument given to the program chooses the entry point whose command it
 
 ### Programs run by Node
 
-`NodeProgramRuns` · `src/tooling.ts:148`
+`NodeProgramRuns` · `src/tooling.ts:169`
 
 Starts the program in its directory (a path found from where the command runs), with its variables added to those of the command, on the same terminal; says first what it runs. A program that cannot start fails.
 
@@ -368,7 +453,7 @@ Starts the program in its directory (a path found from where the command runs), 
 
 ### Chromium, driven by Playwright
 
-`PlaywrightBrowser` · `src/tooling.ts:266`
+`PlaywrightBrowser` · `src/tooling.ts:287`
 
 The headless browser of a machine: Chromium started by Playwright as decided, a page opened from the file's address, its errors kept as they come.
 
@@ -379,13 +464,28 @@ The headless browser of a machine: Chromium started by Playwright as decided, a 
 - Uses: [Playwright](#PlaywrightPackage)
 - Applies: [The SDLC's tooling is realized once](#ToolingAsPorts)
 
+<a id="PlaywrightBrowserInstalled"></a>
+
+### Playwright's browser, installed
+
+`PlaywrightBrowserInstalled` · `src/tooling.ts:312`
+
+An add-on of trame doctor (since g120): the Chromium the version of Playwright the project uses drives is where Playwright looks for it. A machine whose browsers moved refuses a check run by another version, which the engine's own questions do not see.
+
+- Owner: trame
+- Parameters: `words` ← [What the library's tools say](#ToolWords)
+- Body: `./code/tooling/playwright-browser-installed.ts` (typescript)
+- Implements: [What the machine must also have](#MachineNeeds)
+- Uses: [Playwright](#PlaywrightPackage)
+- Applies: [The SDLC's tooling is realized once](#ToolingAsPorts)
+
 ## Package
 
 <a id="PlaywrightPackage"></a>
 
 ### Playwright
 
-`PlaywrightPackage` · `src/tooling.ts:227` · status: **held**
+`PlaywrightPackage` · `src/tooling.ts:248` · status: **held**
 
 Drives Chromium without a screen: the version whose browser the machine has. Once installed, it installs the Chromium it drives, with what the system needs to run it: a machine that runs a check of the page does it first.
 
@@ -398,4 +498,4 @@ Drives Chromium without a screen: the version whose browser the machine has. Onc
 - What it may do: process, display, network, time, asynchronous
 
 - Owner: trame
-- Used by: [Chromium, driven by Playwright](#PlaywrightBrowser)
+- Used by: [Chromium, driven by Playwright](#PlaywrightBrowser), [Playwright's browser, installed](#PlaywrightBrowserInstalled)

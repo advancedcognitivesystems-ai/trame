@@ -131,13 +131,6 @@ Function · `SeededDraws` · **held**
 
 ## Standard library · Commands
 
-### The language the library's commands speak in.
-
-Decision · `CommandLanguage`
-
-- Decided by: trame
-- Value: { tag: en-GB }
-
 ### A library offers commands, a project chooses them
 
 Architecture decision · `CommandsOfALibrary` · **held**
@@ -213,7 +206,7 @@ Entry point · `Propagate` · **held**
 Message catalog · `CommandWords`
 
 - Owner: trame
-- Written in: The language the library's commands speak in.
+- Written in: The language the library's commands and tools speak in.
 
 ## Standard library · ECMAScript
 
@@ -690,6 +683,16 @@ Design pattern · `Command`
 - Maintained by: trame
 - Source: Gamma et al., Design Patterns (1994), Command
 - Requires of a choice: { commands: true }
+- Serves: Known designs, named
+
+### Plugin
+
+Design pattern · `Plugin`
+
+- Maintained by: trame
+- Source: M. Fowler, Patterns of Enterprise Application Architecture (2002), Plugin (D. Rice, M. Foemmel)
+- Address: https://martinfowler.com/eaaCatalog/plugin.html
+- Requires of a choice: { extends: true }
 - Serves: Known designs, named
 
 ### Repository
@@ -2034,6 +2037,13 @@ Vocabulary · `PackageOrigins`
 - Words: { path: Reached where it is on the machine, by its path, registry: Installed at its version from a registry where it was published }
 - Serves: Ports of the platform, realized once
 
+### The language the library's commands and tools speak in.
+
+Decision · `CommandLanguage`
+
+- Decided by: trame
+- Value: { tag: en-GB }
+
 ### Chromium without a screen
 
 Decision · `HeadlessChromium`
@@ -2050,7 +2060,7 @@ Architecture decision · `ToolingAsPorts` · **held**
 - Context: The code that builds, checks and deploys a product is code like the product's: written once, tested before it runs.
 - Consequences: A check opens the delivered page through HeadlessBrowser, a deployment copies through Files, a project reaches the packages it uses through PackageSources wherever they come from; scenarios play them with the realizations kept in memory.
 - Serves: Ports of the platform, realized once
-- Applied by: Commands of a program, Node's command line, Commands run in the engine, Project files, Files written, The machine's files, Files kept in memory, Headless browser, Chromium, driven by Playwright, Browser script, A browser kept in memory, Where a package comes from
+- Applied by: Commands of a program, Node's command line, Commands run in the engine, What the machine must also have, Playwright's browser, installed, What repairs a project, Project files, Files written, The machine's files, Files kept in memory, Headless browser, Chromium, driven by Playwright, Browser script, A browser kept in memory, Where a package comes from
 
 ### Browser script
 
@@ -2080,6 +2090,14 @@ Port · `HeadlessBrowser`
 - Owner: trame
 - Declared effects: process, display, time, network, asynchronous
 
+### What the machine must also have
+
+Port · `MachineNeeds`
+
+- Owner: trame
+- Declared effects: { ask: read, process, network, display, time, asynchronous }
+- Extension point: true
+
 ### Where a package comes from
 
 Port · `PackageSources`
@@ -2108,6 +2126,14 @@ Port · `ProgramRunsKept`
 - Owner: trame
 - Declared effects: { failIn: , writeIn: write, runs:  }
 
+### What repairs a project
+
+Port · `ProjectRepairs`
+
+- Owner: trame
+- Declared effects: { repair: read, write }
+- Extension point: true
+
 ### A browser kept in memory
 
 Function · `BrowserInMemory` · **held**
@@ -2135,6 +2161,13 @@ Function · `ProgramRunsInMemory` · **held**
 - Serves: Ports of the platform, realized once
 - Implements: Programs run, The programs a scenario keeps: the file it says a program writes is written when that program runs.
 - Depends on: Exit status, Project files
+
+### What the library's tools say
+
+Message catalog · `ToolWords`
+
+- Owner: trame
+- Written in: The language the library's commands and tools speak in.
 
 ### Commands run in the engine
 
@@ -2181,6 +2214,16 @@ Implementation · `PlaywrightBrowser`
 - Implements: Headless browser
 - Uses: Playwright
 - Depends on: Chromium without a screen, Playwright's API, Counts, Time
+
+### Playwright's browser, installed
+
+Implementation · `PlaywrightBrowserInstalled`
+
+- Owner: trame
+- Parameters: { words: tooling.ToolWords }
+- Implements: What the machine must also have
+- Uses: Playwright
+- Depends on: What the library's tools say
 
 ### Playwright
 

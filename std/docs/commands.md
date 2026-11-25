@@ -4,28 +4,13 @@
 
 > **Nothing to report**
 
-## Decision
-
-<a id="CommandLanguage"></a>
-
-### The language the library's commands speak in.
-
-`CommandLanguage` · `src/commands.ts:97`
-
-| Case | Value |
-|---|---|
-| tag | en-GB |
-
-- Decided by: trame
-- Language of: [What the library's commands say](#CommandWords)
-
 ## Architecture decision
 
 <a id="CommandsOfALibrary"></a>
 
 ### A library offers commands, a project chooses them
 
-`CommandsOfALibrary` · `src/commands.ts:203` · status: **held**
+`CommandsOfALibrary` · `src/commands.ts:200` · status: **held**
 
 The commands any project of a repository needs (open a pull request, carry a version across) are written once, in the library; a project runs one when a technical choice of its own chooses it, with its decisions as settings.
 
@@ -103,7 +88,7 @@ The settings of the command pull-request: a project answers it with its own deci
 
 ### Merge a pull request
 
-`MergePullRequest` · `src/commands.ts:173` · status: **held**
+`MergePullRequest` · `src/commands.ts:170` · status: **held**
 
 trame merge [number]: the pull request of the branch checked out, or the one named by its number. Refused while no check ran on its last commit, or one failed or still runs; says whose decisions it changes (a project's lock); merges it now by the method decided; then, when its branch was the one checked out, checks the base out as the repository has it.
 
@@ -124,7 +109,7 @@ Triggered by `command merge`
 
 ### Open a pull request
 
-`OpenPullRequest` · `src/commands.ts:154` · status: **held**
+`OpenPullRequest` · `src/commands.ts:151` · status: **held**
 
 trame pull-request "Title" ["What it changes"]: pushes the branch checked out, opens its pull request into the base (or finds the one open), saying which projects it changes and whether it changes what people decided (a project's lock); then asks GitHub to merge it once it holds, unless it changes what people decided and the project's way says a person merges it then. Refused on the base itself.
 
@@ -145,7 +130,7 @@ Triggered by `command pull-request`
 
 ### Propagate
 
-`Propagate` · `src/commands.ts:189` · status: **held**
+`Propagate` · `src/commands.ts:186` · status: **held**
 
 trame propagate --by <name>: carries the versions published across the projects of the repository, each after the libraries it imports and the projects it reads (two that import each other: the one decided first): its packages at their newest versions, its files that run elsewhere written again when a reference moved, its documents built again (at its day, when it has one). It stops at the first step that fails, saying where.
 
@@ -168,7 +153,7 @@ Triggered by `command propagate`
 
 ### What the library's commands say
 
-`CommandWords` · `src/commands.ts:102`
+`CommandWords` · `src/commands.ts:99`
 
 <details><summary>The messages, in code</summary>
 
@@ -218,5 +203,5 @@ Triggered by `command propagate`
 </details>
 
 - Owner: trame
-- Written in: [The language the library's commands speak in.](#CommandLanguage)
+- Written in: [The language the library's commands and tools speak in.](tooling.md#CommandLanguage)
 - Used by: [Merge a pull request](#MergePullRequest), [Open a pull request](#OpenPullRequest), [Propagate](#Propagate), [A pull request merged once it holds](scenarios.md#MergedOnceItHolds), [A version carried across the projects](scenarios.md#PropagatedInOrder), [A pull request opened](scenarios.md#PullRequestOpened)

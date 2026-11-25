@@ -1,6 +1,6 @@
 import {
   defineKind, field, optional, edge, optionalEdge, hole, keysOf, edgesOf, Stage, Status, KindName, EdgeName, CoveredEffects,
-  type AnyNode, type Node, type Provides, type HasDeps, type Provided, type ProvidedBy, type FileBody, type Signature, type View, type Reach, HoleCode,
+  type AnyNode, type Node, type Provides, type HasDeps, type Provided, type ProvidedBy, type RealizedBy, type FileBody, type Signature, type View, type Reach, HoleCode,
 } from "../trame/kernel"
 import { bindingKind } from "./binding"
 import { verifiedStatus } from "./scenario"
@@ -76,7 +76,7 @@ const kind = defineKind({
 type Deps = Record<string, AnyNode>
 type UnionToIntersection<U> = (U extends unknown ? (x: U) => void : never) extends (x: infer I) => void ? I : never
 /** The contract of an implementation: all those of the ports it implements. */
-export type ContractOf<P> = UnionToIntersection<ProvidedBy<P>>
+export type ContractOf<P> = UnionToIntersection<RealizedBy<P>>
 
 interface ImplementationInput<P extends Node<"port">, D extends Deps> {
   owner: string

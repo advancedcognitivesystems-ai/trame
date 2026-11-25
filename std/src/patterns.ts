@@ -83,3 +83,17 @@ export const Command = pattern({
   requires: { commands: true },
   serves: [KnownDesigns],
 })
+
+/**
+ * Plugin
+ * Links classes during configuration rather than compilation: what answers is chosen where the program runs. In the
+ * graph (since g120), the realizations of an extension point a choice makes, which all answer it in the order chosen:
+ * the add-ons of a command the engine keeps, what a project adds to a library's command.
+ */
+export const Plugin = pattern({
+  owner: "trame",
+  source: "M. Fowler, Patterns of Enterprise Application Architecture (2002), Plugin (D. Rice, M. Foemmel)",
+  url: "https://martinfowler.com/eaaCatalog/plugin.html",
+  requires: { extends: true },
+  serves: [KnownDesigns],
+})

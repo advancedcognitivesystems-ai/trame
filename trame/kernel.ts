@@ -175,11 +175,19 @@ export const code = {
 
 declare const PROVIDES: unique symbol
 declare const DEPS: unique symbol
+declare const REALIZES: unique symbol
 /** Type brand: what this node gives when another one receives it as a parameter. */
 export type Provides<T> = { readonly [PROVIDES]?: T }
 /** Type brand: the declared dependencies of a code node. */
 export type HasDeps<D> = { readonly [DEPS]?: D }
 export type ProvidedBy<N> = N extends { readonly [PROVIDES]?: infer T } ? T : unknown
+/**
+ * Type brand of an extension point (since g120): the contract each of its realizations gives, while what depends on it
+ * receives the list of them.
+ */
+export type Realizes<T> = { readonly [REALIZES]?: T }
+/** What a realization of this port gives: its contract, one realization's for an extension point. */
+export type RealizedBy<N> = N extends { readonly [REALIZES]?: infer T } ? (unknown extends T ? ProvidedBy<N> : T) : ProvidedBy<N>
 /** The parameters of a body: each dependency replaced by what it gives. */
 export type Provided<D> = { [K in keyof D]: ProvidedBy<D[K]> }
 /** The type of a body written in a file, deduced from the node that declares it. */

@@ -4,7 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 5 | 247 |
+| trame | 0 | 0 | 5 | 252 |
 
 <a id="trame"></a>
 
@@ -35,7 +35,6 @@
 | [Multiplicative hashing](algorithms.md#MultiplicativeHash) | Standard |  |
 | [Seeded draws](algorithms.md#SeededDraws) | Function | **held** |
 | [SHA-256](algorithms.md#Sha256) | Standard |  |
-| [The language the library's commands speak in.](commands.md#CommandLanguage) | Decision |  |
 | [A library offers commands, a project chooses them](commands.md#CommandsOfALibrary) | Architecture decision | **held** |
 | [What the library's commands say](commands.md#CommandWords) | Message catalog |  |
 | [The library's commands](commands.md#LibraryCommands) | Component |  |
@@ -97,6 +96,7 @@
 | [Adapter](patterns.md#Adapter) | Design pattern |  |
 | [Bridge](patterns.md#Bridge) | Design pattern |  |
 | [Command](patterns.md#Command) | Design pattern |  |
+| [Plugin](patterns.md#Plugin) | Design pattern |  |
 | [Repository](patterns.md#Repository) | Design pattern |  |
 | [Strategy](patterns.md#Strategy) | Design pattern | **held** |
 | [Animation frames](platform.md#AnimationFrames) | Port |  |
@@ -240,6 +240,7 @@
 | [Unified differences](text.md#UnifiedDiff) | Standard |  |
 | [A browser kept in memory](tooling.md#BrowserInMemory) | Function | **held** |
 | [Browser script](tooling.md#BrowserScripted) | Port |  |
+| [The language the library's commands and tools speak in.](tooling.md#CommandLanguage) | Decision |  |
 | [Commands run in the engine](tooling.md#CommandsInTheEngine) | Implementation |  |
 | [Project files](tooling.md#Files) | Port |  |
 | [Files kept in memory](tooling.md#FilesInMemory) | Function | **held** |
@@ -247,18 +248,22 @@
 | [Headless browser](tooling.md#HeadlessBrowser) | Port |  |
 | [Chromium without a screen](tooling.md#HeadlessChromium) | Decision |  |
 | [The machine's files](tooling.md#MachineFiles) | Implementation |  |
+| [What the machine must also have](tooling.md#MachineNeeds) | Port |  |
 | [Node's command line](tooling.md#NodeProgramCommands) | Implementation |  |
 | [Programs run by Node](tooling.md#NodeProgramRuns) | Implementation |  |
 | [Where a package comes from](tooling.md#PackageOrigins) | Vocabulary |  |
 | [Where a package comes from](tooling.md#PackageSources) | Port |  |
 | [Playwright's API](tooling.md#PlaywrightApi) | Standard |  |
 | [Chromium, driven by Playwright](tooling.md#PlaywrightBrowser) | Implementation |  |
+| [Playwright's browser, installed](tooling.md#PlaywrightBrowserInstalled) | Implementation |  |
 | [Playwright](tooling.md#PlaywrightPackage) | Package | **held** |
 | [Commands of a program](tooling.md#ProgramCommands) | Port |  |
 | [Programs run](tooling.md#ProgramRuns) | Port |  |
 | [Programs run in memory](tooling.md#ProgramRunsInMemory) | Function | **held** |
 | [The programs a scenario keeps: the file it says a program writes is written when that program runs.](tooling.md#ProgramRunsKept) | Port |  |
+| [What repairs a project](tooling.md#ProjectRepairs) | Port |  |
 | [The SDLC's tooling is realized once](tooling.md#ToolingAsPorts) | Architecture decision | **held** |
+| [What the library's tools say](tooling.md#ToolWords) | Message catalog |  |
 | [CSSOM View](web.md#CssomView) | Standard |  |
 | [HTTP](web.md#Http) | Standard |  |
 | [Media Queries Level 5](web.md#MediaQueries5) | Standard |  |

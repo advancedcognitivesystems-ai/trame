@@ -37,6 +37,7 @@
 | [Abstract Factory](patterns.md#AbstractFactory) | unknown | — |
 | [Repository](patterns.md#Repository) | unknown | — |
 | [Command](patterns.md#Command) | unknown | — |
+| [Plugin](patterns.md#Plugin) | unknown | — |
 
 ## Standard library · Scenarios
 

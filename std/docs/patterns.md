@@ -75,6 +75,23 @@ No choice follows it yet.
 - Serves: [Known designs, named](product.md#KnownDesigns)
 - Applies: [A library offers commands, a project chooses them](commands.md#CommandsOfALibrary)
 
+<a id="Plugin"></a>
+
+### Plugin
+
+`Plugin` · `src/patterns.ts:93`
+
+Links classes during configuration rather than compilation: what answers is chosen where the program runs. In the graph (since g120), the realizations of an extension point a choice makes, which all answer it in the order chosen: the add-ons of a command the engine keeps, what a project adds to a library's command.
+
+Source: M. Fowler, Patterns of Enterprise Application Architecture (2002), Plugin (D. Rice, M. Foemmel) · `https://martinfowler.com/eaaCatalog/plugin.html`
+
+A choice that follows it has several realizations of an extension point, which all answer in order.
+
+No choice follows it yet.
+
+- Maintained by: trame
+- Serves: [Known designs, named](product.md#KnownDesigns)
+
 <a id="Repository"></a>
 
 ### Repository

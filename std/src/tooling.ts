@@ -2,7 +2,9 @@
 
 import { code } from "#trame/kernel"
 import { standard } from "#trame/kinds/standard"
-import { port } from "#trame/kinds/port"
+import { port, extensionPoint } from "#trame/kinds/port"
+import { catalog } from "#trame/kinds/catalog"
+import type { MachineNeed, ProjectRepair } from "#trame/kernel"
 import { implementation } from "#trame/kinds/implementation"
 import { fn } from "#trame/kinds/function"
 import { decision } from "#trame/kinds/decision"
@@ -27,6 +29,25 @@ import { Time } from "./measures"
  * command that runs.
  */
 export const ProgramCommands = port<Exposure>({ owner: "trame", declaredEffects: ["terminal"] })
+
+/** The language the library's commands and tools speak in. */
+export const CommandLanguage = decision<{ tag: string }>({ owner: "trame", value: { tag: "en-GB" } })
+
+/**
+ * What the machine must also have
+ * The extension point of trame doctor (since g120): what a project asks of the machine besides what the engine asks,
+ * each add-on its choice makes answering whether it holds, in one line. A browser the version of a package drives, a
+ * program a check runs: what only this project needs.
+ */
+export const MachineNeeds = extensionPoint<MachineNeed>({ owner: "trame", declaredEffects: { ask: ["read", "process", "network", "display", "time", "asynchronous"] } })
+
+/**
+ * What repairs a project
+ * The extension point of trame init (since g120): what a project, or a library it takes them from, writes into a
+ * project that lacks it, each add-on its choice makes saying the files it wrote, none when nothing lacked. Run in an
+ * empty directory as in a project already there, never over a file.
+ */
+export const ProjectRepairs = extensionPoint<ProjectRepair>({ owner: "trame", declaredEffects: { repair: ["read", "write"] } })
 
 /**
  * Node's command line
@@ -270,6 +291,31 @@ export const PlaywrightBrowser = implementation({
   body: code.file("./code/tooling/playwright-browser.ts"),
 })
 
+/**
+ * What the library's tools say
+ */
+export const ToolWords = catalog({
+  owner: "trame",
+  language: CommandLanguage,
+  messages: () => ({
+    browserInstalled: (path: string) => `the browser Playwright drives is installed: ${path}`,
+    browserMissing: (path: string) => `the browser Playwright drives is missing (${path}): move std's PlaywrightPackage to the version whose browser the machine has`,
+  }),
+})
+
+/**
+ * Playwright's browser, installed
+ * An add-on of trame doctor (since g120): the Chromium the version of Playwright the project uses drives is where
+ * Playwright looks for it. A machine whose browsers moved refuses a check run by another version, which the engine's
+ * own questions do not see.
+ */
+export const PlaywrightBrowserInstalled = implementation({
+  owner: "trame", implements: [MachineNeeds],
+  packages: [PlaywrightPackage],
+  deps: { words: ToolWords },
+  body: code.file("./code/tooling/playwright-browser-installed.ts"),
+})
+
 /** A page as a scenario writes it: what each selector finds (how many, the first one's text), the errors it raises. */
 export interface ScriptedPage {
   elements: Record<string, { count: number; text?: string }>
@@ -395,5 +441,5 @@ export const ToolingAsPorts = adr({
   context: "The code that builds, checks and deploys a product is code like the product's: written once, tested before it runs.",
   consequences: "A check opens the delivered page through HeadlessBrowser, a deployment copies through Files, a project reaches the packages it uses through PackageSources wherever they come from; scenarios play them with the realizations kept in memory.",
   serves: [RealizedOnce],
-  appliedBy: [ProgramCommands, NodeProgramCommands, CommandsInTheEngine, Files, FilesKept, MachineFiles, FilesInMemory, HeadlessBrowser, PlaywrightBrowser, BrowserScripted, BrowserInMemory, PackageSources],
+  appliedBy: [ProgramCommands, NodeProgramCommands, CommandsInTheEngine, MachineNeeds, PlaywrightBrowserInstalled, ProjectRepairs, Files, FilesKept, MachineFiles, FilesInMemory, HeadlessBrowser, PlaywrightBrowser, BrowserScripted, BrowserInMemory, PackageSources],
 })

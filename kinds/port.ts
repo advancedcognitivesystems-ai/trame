@@ -1,4 +1,4 @@
-import { defineKind, field, hole, doc, keysOf, KindName, EdgeName, BindingEdge, PortField, type Graph, type Node, type Provides, type View, HoleCode } from "../trame/kernel"
+import { defineKind, field, hole, doc, keysOf, KindName, EdgeName, BindingEdge, PortField, type Graph, type Node, type Provides, type Realizes, type View, HoleCode } from "../trame/kernel"
 import { choicesOf, holdsIn } from "./binding"
 import { environmentFields } from "./environment"
 import words from "./words"
@@ -134,7 +134,7 @@ function answering(g: Graph, port: View, env: View | undefined): View[] {
  * Declares an extension point (since g120), with the type of each realization's contract: what depends on it receives
  * the list of them, in the order of the choice that makes them. `extensionPoint<MachineNeed>({ … })`.
  */
-export function extensionPoint<C>(input: { owner: string; declaredEffects: readonly string[] | { readonly [M in keyof C & string]: readonly string[] } }): Node<typeof KindName.port> & Provides<readonly C[]> {
+export function extensionPoint<C>(input: { owner: string; declaredEffects: readonly string[] | { readonly [M in keyof C & string]: readonly string[] } }): Node<typeof KindName.port> & Provides<readonly C[]> & Realizes<C> {
   return kind({ ...input, [PortField.extension]: true } as never) as never
 }
 
