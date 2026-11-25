@@ -14761,7 +14761,7 @@
       "kind": "adr",
       "title": "A version ships through the graph",
       "source": "src/principles.ts:415",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "Two products ship differently (a page placed where it is served, an engine frozen into a generation) and their pipelines lived in scripts and in their authors' heads: nothing said what had been checked, by whom, on which version, nor why a version could go.",
@@ -18414,14 +18414,16 @@
       "kind": "check",
       "title": "The candidate plays the laws",
       "source": "src/sdlc.ts:77",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame"
       },
       "result": {
         "code": "02ed9562"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
+      ]
     },
     {
       "id": "sdlc.CandidateRunsOnTheMachine",
@@ -18620,7 +18622,7 @@
       "kind": "shipment",
       "title": "Into the main branch",
       "source": "src/sdlc.ts:407",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "main"
@@ -19540,10 +19542,7 @@
           "typescript.WorldGlobals"
         ]
       },
-      "diagnostics": [
-        "warning: To ship: The engine is unknown",
-        "warning: To ship: The machine has what Trame needs is unknown"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.LanguageServed",
@@ -19560,7 +19559,7 @@
       "kind": "check",
       "title": "The machine has what Trame needs",
       "source": "src/sdlc.ts:221",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "command": "doctor"
@@ -19568,9 +19567,7 @@
       "result": {
         "code": "1b5a8d9f"
       },
-      "diagnostics": [
-        "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.MainBranch",
@@ -19637,7 +19634,7 @@
       "kind": "shipment",
       "title": "The next generation",
       "source": "src/sdlc.ts:380",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "generation"
@@ -20574,7 +20571,9 @@
           "browser.ShowGraph"
         ]
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: To ship: The candidate plays the laws is unknown"
+      ]
     },
     {
       "id": "sdlc.OpeningTheGraphPage",
@@ -20698,7 +20697,7 @@
       "kind": "function",
       "title": "What the machine runs, for Trame",
       "source": "src/sdlc.ts:195",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -21170,7 +21169,7 @@
       "kind": "artifact",
       "title": "The engine",
       "source": "src/sdlc.ts:393",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "src",
@@ -21180,9 +21179,7 @@
         "path": "src",
         "code": "4916d364"
       },
-      "diagnostics": [
-        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.TheRepository",
@@ -21216,7 +21213,7 @@
       "kind": "binding",
       "title": "What the machine must also have",
       "source": "src/sdlc.ts:207",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "On 17 November a machine whose browsers had moved refused the check of the page, and trame doctor said nothing of it; the pull requests and the propagation need Git, and the engine's loader Node 22."

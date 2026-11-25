@@ -509,7 +509,7 @@ flowchart TB
     n457["The traversal API is the only way to read the graph<br/><small>Architecture decision</small>"]:::held
     n458["A package is used by its name<br/><small>Architecture decision</small>"]:::held
     n459["The prelude: the runtime of the language<br/><small>Architecture decision</small>"]:::held
-    n460["A version ships through the graph<br/><small>Architecture decision</small>"]:::held
+    n460["A version ships through the graph<br/><small>Architecture decision</small>"]:::unknown
     n461["A technology is chosen in one node<br/><small>Architecture decision</small>"]:::held
     n462["Trame builds Trame<br/><small>Architecture decision</small>"]:::held
     n463["An undecided value blocks; it does not crash<br/><small>Architecture decision</small>"]:::held
@@ -716,7 +716,7 @@ flowchart TB
     n654["GitHub merges once it holds, asked in a session<br/><small>Technical choice</small>"]:::unknown
     n655["GitHub merges once it holds, asked by its command line<br/><small>Technical choice</small>"]:::unknown
     n656["The candidate is checked by programs<br/><small>Obligation</small>"]:::neutral
-    n657["The candidate plays the laws<br/><small>Check</small>"]:::held
+    n657["The candidate plays the laws<br/><small>Check</small>"]:::unknown
     n658["The candidate runs on the machine<br/><small>Check</small>"]:::held
     n659["The commands Trame takes from std<br/><small>Technical choice</small>"]:::held
     n660["Its callers identified<br/><small>Obligation</small>"]:::neutral
@@ -730,18 +730,18 @@ flowchart TB
     n668["What the scenario of the graph page shows<br/><small>Decision</small>"]:::neutral
     n669["What the graph page is asked<br/><small>Function</small>"]:::held
     n670["How a generation advances<br/><small>Decision</small>"]:::neutral
-    n671["Into the main branch<br/><small>Shipment</small>"]:::unknown
+    n671["Into the main branch<br/><small>Shipment</small>"]:::held
     n672["The language serves what it says<br/><small>Obligation</small>"]:::neutral
-    n673["The machine has what Trame needs<br/><small>Check</small>"]:::unknown
+    n673["The machine has what Trame needs<br/><small>Check</small>"]:::held
     n674["How the repository merges into main<br/><small>Decision</small>"]:::neutral
     n675["Trame's maintainers<br/><small>Role</small>"]:::neutral
     n676["How a change merges<br/><small>Policy</small>"]:::neutral
-    n677["The next generation<br/><small>Shipment</small>"]:::held
+    n677["The next generation<br/><small>Shipment</small>"]:::unknown
     n678["The graph page is opened as a person would<br/><small>Scenario</small>"]:::held
     n679["Open the graph page<br/><small>Entry point</small>"]:::held
     n680["Trame's settings, as std's commands read them<br/><small>Scenario</small>"]:::held
     n681["The machines Trame runs on<br/><small>Decision</small>"]:::neutral
-    n682["What the machine runs, for Trame<br/><small>Function</small>"]:::unknown
+    n682["What the machine runs, for Trame<br/><small>Function</small>"]:::held
     n683["How a version is carried across Trame's repository<br/><small>Function</small>"]:::held
     n684["How Trame's pull requests are opened<br/><small>Function</small>"]:::held
     n685["Trame's settings in the scenarios<br/><small>Technical choice</small>"]:::held
@@ -760,10 +760,10 @@ flowchart TB
     n698["What the programs of Trame's SDLC say<br/><small>Message catalog</small>"]:::neutral
     n699["How the repository is set<br/><small>Policy</small>"]:::neutral
     n700["The repository is set as the graph decides<br/><small>Scenario</small>"]:::held
-    n701["The engine<br/><small>Artefact</small>"]:::unknown
+    n701["The engine<br/><small>Artefact</small>"]:::held
     n702["Trame's repository<br/><small>Decision</small>"]:::neutral
     n703["Trame's SDLC<br/><small>Component</small>"]:::neutral
-    n704["What the machine must also have<br/><small>Technical choice</small>"]:::unknown
+    n704["What the machine must also have<br/><small>Technical choice</small>"]:::held
   end
   subgraph shipping["Trame · Shipping"]
     n705["Attribution<br/><small>Function</small>"]:::held

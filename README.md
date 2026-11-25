@@ -589,7 +589,9 @@ project's add-ons ask of the machine (Trame's: that the browser Playwright drive
 in a project already there, repairs it: it writes only what lacks, never over a file, calls the add-ons that repair
 it, and run twice writes nothing. The engine's own questions are add-ons as well, of its own extension point, asked
 even where no graph loads; and a check may name a command the engine keeps (since g122), which then proves the
-project's add-ons to it: Trame's merge into main requires that the machine has the browser Playwright drives. A library offers commands as it
+project's add-ons to it: Trame's merge into main requires that the machine has the browser Playwright drives, runs a
+system Trame runs on, Node 22 or later, and Git. The questions that belong to no provider are a library of their own,
+`libs/machine`, which reads what each project requires from its decisions. A library offers commands as it
 offers realizations: std writes `pull-request` and `propagate` once, and a project runs them when a binding of its own
 chooses them, with its decisions as their settings (Trame: its repository, its main branch, the projects of the
 repository). Governance is rules too: a `rule` applies a requirement of

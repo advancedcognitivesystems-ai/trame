@@ -4471,7 +4471,7 @@ Architecture decision · `PreludeLayer` · **held**
 
 ### A version ships through the graph
 
-Architecture decision · `ShippedThroughTheGraph` · **held**
+Architecture decision · `ShippedThroughTheGraph` · **unknown**
 
 - Decided by: trame
 - Context: Two products ship differently (a page placed where it is served, an engine frozen into a generation) and their pipelines lived in scripts and in their authors' heads: nothing said what had been checked, by whom, on which version, nor why a version could go.
@@ -6853,7 +6853,7 @@ Function · `GraphPageSelectors` · **held**
 
 ### What the machine runs, for Trame
 
-Function · `OurMachineSettings` · **unknown**
+Function · `OurMachineSettings` · **held**
 
 - Owner: trame
 - Parameters: { machines: sdlc.OurMachines }
@@ -6990,7 +6990,7 @@ Technical choice · `SdlcOnTheMachine` · **unknown**
 
 ### What the machine must also have
 
-Technical choice · `WhatTheMachineMustHave` · **unknown**
+Technical choice · `WhatTheMachineMustHave` · **held**
 
 - Decided by: trame
 - Context: On 17 November a machine whose browsers had moved refused the check of the page, and trame doctor said nothing of it; the pull requests and the propagation need Git, and the engine's loader Node 22.
@@ -7083,7 +7083,7 @@ Artefact · `PullRequestWorkflow` · **unknown**
 
 ### The engine
 
-Artefact · `TheEngine` · **unknown**
+Artefact · `TheEngine` · **held**
 
 - Owner: trame
 - Path: src
@@ -7091,7 +7091,7 @@ Artefact · `TheEngine` · **unknown**
 
 ### The candidate plays the laws
 
-Check · `CandidateKeepsTheLaws` · **held**
+Check · `CandidateKeepsTheLaws` · **unknown**
 
 - Owner: trame
 - Checks: The candidate engine
@@ -7120,7 +7120,7 @@ Check · `GraphPageOpens` · **held**
 
 ### The machine has what Trame needs
 
-Check · `MachineAsked` · **unknown**
+Check · `MachineAsked` · **held**
 
 - Owner: trame
 - Run by the engine's command: doctor
@@ -7137,7 +7137,7 @@ Check · `RepositoryRead` · **unknown**
 
 ### Into the main branch
 
-Shipment · `IntoMain` · **unknown**
+Shipment · `IntoMain` · **held**
 
 - Owner: trame
 - Target: main
@@ -7148,7 +7148,7 @@ Shipment · `IntoMain` · **unknown**
 
 ### The next generation
 
-Shipment · `NextGeneration` · **held**
+Shipment · `NextGeneration` · **unknown**
 
 - Owner: trame
 - Target: generation

@@ -789,7 +789,7 @@ Context: The graph page must be opened as a person opens it: the file exported, 
 
 ### What the machine must also have
 
-`WhatTheMachineMustHave` · `src/sdlc.ts:207` · status: **unknown**
+`WhatTheMachineMustHave` · `src/sdlc.ts:207` · status: **held**
 
 trame doctor asks, besides what the engine asks, what Trame needs of its machine (since g120): the browser the version of Playwright Trame uses drives, installed (std's add-on, with its adapter); a system Trame runs on, Node recent enough and Git installed (libs/machine), as Trame's decision about its machines says.
 
