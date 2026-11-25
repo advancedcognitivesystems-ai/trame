@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-25",
+  "at": "2026-10-30",
   "nodes": [
     {
       "id": "appearance.ExplorerDrawing",
@@ -14571,7 +14571,7 @@
       "id": "sdlc.MachineAsked",
       "kind": "check",
       "title": "The machine has what Trame needs",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "command": "doctor"
@@ -14763,7 +14763,7 @@
       "id": "sdlc.PageProgram",
       "kind": "artifact",
       "title": "The page's program",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "out/browser/page-app.ts"
@@ -14806,7 +14806,7 @@
       "id": "sdlc.PullRequestWorkflow",
       "kind": "artifact",
       "title": "The pull requests' workflow",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": ".github/workflows/trame-pull-request.yml",
@@ -14953,7 +14953,7 @@
       "id": "sdlc.RunnersWritten",
       "kind": "shipment",
       "title": "The files that run it elsewhere",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "repository"
@@ -15056,7 +15056,7 @@
       "id": "sdlc.WhatTheMachineMustHave",
       "kind": "binding",
       "title": "What the machine must also have",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "On 17 November a machine whose browsers had moved refused the check of the page, and trame doctor said nothing of it."

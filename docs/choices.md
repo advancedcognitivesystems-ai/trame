@@ -1,6 +1,6 @@
 # Technical choices
 
-*What answers each port in each environment on 25 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
+*What answers each port in each environment on 30 October 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
 
 > **32 technical choices for 60 ports, in 4 environments**
 
@@ -788,7 +788,7 @@ Context: The graph page must be opened as a person opens it: the file exported, 
 
 ### What the machine must also have
 
-`WhatTheMachineMustHave` · `src/sdlc.ts:182` · status: **held**
+`WhatTheMachineMustHave` · `src/sdlc.ts:182` · status: **unknown**
 
 trame doctor asks, besides what the engine asks, that the browser the version of Playwright Trame uses drives is installed (std's add-on, since g120): the page's check runs in it, and a machine whose browsers moved would refuse it where the engine's own questions see nothing.
 

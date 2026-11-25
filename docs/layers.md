@@ -1,6 +1,6 @@
 # Layers
 
-*The graph in force on 25 November 2026, ordered by distance to the goals.*
+*The graph in force on 30 October 2026, ordered by distance to the goals.*
 
 ```mermaid
 flowchart TB
@@ -730,7 +730,7 @@ flowchart TB
     n668["How a generation advances<br/><small>Decision</small>"]:::neutral
     n669["Into the main branch<br/><small>Shipment</small>"]:::unknown
     n670["The language serves what it says<br/><small>Obligation</small>"]:::neutral
-    n671["The machine has what Trame needs<br/><small>Check</small>"]:::held
+    n671["The machine has what Trame needs<br/><small>Check</small>"]:::unknown
     n672["How the repository merges into main<br/><small>Decision</small>"]:::neutral
     n673["Trame's maintainers<br/><small>Role</small>"]:::neutral
     n674["How a change merges<br/><small>Policy</small>"]:::neutral
@@ -741,16 +741,16 @@ flowchart TB
     n679["How a version is carried across Trame's repository<br/><small>Function</small>"]:::held
     n680["How Trame's pull requests are opened<br/><small>Function</small>"]:::held
     n681["Trame's settings in the scenarios<br/><small>Technical choice</small>"]:::held
-    n682["The page's program<br/><small>Artefact</small>"]:::held
+    n682["The page's program<br/><small>Artefact</small>"]:::unknown
     n683["How a pull request is checked on GitHub<br/><small>Decision</small>"]:::neutral
-    n684["The pull requests' workflow<br/><small>Artefact</small>"]:::held
+    n684["The pull requests' workflow<br/><small>Artefact</small>"]:::unknown
     n685["Read the repository's settings<br/><small>Entry point</small>"]:::held
     n686["The repository's projects<br/><small>Decision</small>"]:::neutral
     n687["The repository is read from GitHub<br/><small>Check</small>"]:::unknown
     n688["The repository left by hand, in the scenario<br/><small>Decision</small>"]:::neutral
     n689["The repository as decided<br/><small>Shipment</small>"]:::unknown
     n690["The repository's work on a machine<br/><small>Technical choice</small>"]:::unknown
-    n691["The files that run it elsewhere<br/><small>Shipment</small>"]:::held
+    n691["The files that run it elsewhere<br/><small>Shipment</small>"]:::unknown
     n692["The SDLC in memory<br/><small>Technical choice</small>"]:::held
     n693["The SDLC on the machine<br/><small>Technical choice</small>"]:::unknown
     n694["What the programs of Trame's SDLC say<br/><small>Message catalog</small>"]:::neutral
@@ -759,7 +759,7 @@ flowchart TB
     n697["The engine<br/><small>Artefact</small>"]:::unknown
     n698["Trame's repository<br/><small>Decision</small>"]:::neutral
     n699["Trame's SDLC<br/><small>Component</small>"]:::neutral
-    n700["What the machine must also have<br/><small>Technical choice</small>"]:::held
+    n700["What the machine must also have<br/><small>Technical choice</small>"]:::unknown
   end
   subgraph shipping["Trame · Shipping"]
     n701["Attribution<br/><small>Function</small>"]:::held
