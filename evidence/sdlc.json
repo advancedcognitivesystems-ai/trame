@@ -6134,16 +6134,26 @@
     "seal": "1d55d2b77e26f0ef3ea70246589d480a046f5f6a2c767b3839a7aa3931d1deeb"
   },
   {
+    "node": "commands.Advance",
+    "at": "2026-11-25",
+    "source": "deployed",
+    "value": 1,
+    "fingerprint": "23465382",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "8dde6cb72fb37a4c1d11df3897c7a13553376e58b0ced86c109e2011f73c0681"
+  },
+  {
     "node": "sdlc.CandidateKeepsTheLaws",
     "at": "2026-11-25",
     "source": "check",
     "value": 1,
     "fingerprint": "a7aaa482",
     "code": "fb9885c6",
-    "engine": "f2401b4f49d12cda",
+    "engine": "f5874c0cc2ec8be2",
     "by": "claude",
     "signature": "attribution",
-    "seal": "7e9ff9690b008a1d6634759fab6f063058a0b783c23bb8b81b8f13c94cc6816a"
+    "seal": "7aee1e27fa38f859e027579995876b04eb9f75b78c7e2f434da9ff24a2e52f17"
   },
   {
     "node": "sdlc.CandidateRunsOnTheMachine",
@@ -6152,10 +6162,10 @@
     "value": 1,
     "fingerprint": "a7aaa482",
     "code": "f255e810",
-    "engine": "f2401b4f49d12cda",
+    "engine": "f5874c0cc2ec8be2",
     "by": "claude",
     "signature": "attribution",
-    "seal": "12925b767b5c89b959a83b2da738de66ceac8676a558c58d8cf34c8c3d41947a"
+    "seal": "38b6f5b98dc782630021f6f9516764d503930e43cf0f1ecbf3602f185f7f347d"
   },
   {
     "node": "sdlc.EngineCandidate",
@@ -6166,8 +6176,8 @@
     "code": "e40674b7",
     "by": "claude",
     "signature": "attribution",
-    "engine": "f2401b4f49d12cda",
-    "seal": "cb5fea53ba1148f7bc74564ecda720f36d35c8407c6468e95f20b109d12ddb0c"
+    "engine": "f5874c0cc2ec8be2",
+    "seal": "e041b9ec1b7ca06150b599660123d8819655b4655f5a26c8797b2c39f131f2b1"
   },
   {
     "node": "sdlc.EngineCandidate",
@@ -6204,6 +6214,29 @@
     "seal": "47a9c4902f16101433c03fb1c68bc66382bd87800e5ad31bba05aad0965b21ab"
   },
   {
+    "node": "sdlc.GraphPage",
+    "at": "2026-11-25",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "d4e3f6382b06f7f0d6d39744fe20d59f7575910033726728abb8e7f389538e41",
+    "code": "5a4d43bd",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "f5874c0cc2ec8be2",
+    "seal": "c7a1de1bdc3040072d777c401378e936ac7843557245a6c8dfa7c331a1346cb4"
+  },
+  {
+    "node": "sdlc.GraphPage",
+    "at": "2026-11-25",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "d4e3f6382b06f7f0d6d39744fe20d59f7575910033726728abb8e7f389538e41",
+    "subject": "sdlc.NextGeneration",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "f7021c0eff65e132f9d2b6957c8f59cbf46de5fc37e9a07c3dea98ebc3ba85e4"
+  },
+  {
     "node": "sdlc.GraphPageOpens",
     "at": "2026-11-25",
     "source": "check",
@@ -6214,6 +6247,18 @@
     "by": "claude",
     "signature": "attribution",
     "seal": "97863a1682985a8e980f4291914d48f656b088320269151c429b695797bf170d"
+  },
+  {
+    "node": "sdlc.GraphPageOpens",
+    "at": "2026-11-25",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "ba7cc6ce",
+    "code": "c571d09a",
+    "engine": "f5874c0cc2ec8be2",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "826aa358c479e444b272f18df18c9c79f53e9b878d712dfa9f89651aef287b47"
   },
   {
     "node": "sdlc.NextGeneration",
@@ -6227,6 +6272,17 @@
     "seal": "2c97b941db94b3b6ea8425310617334b005970648b823ea583cbf8564132e4b6"
   },
   {
+    "node": "sdlc.NextGeneration",
+    "at": "2026-11-25",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "2d3b8e75",
+    "url": "evidence/shipments/NextGeneration-2026-11-25-2d3b8e75.json",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "18c187648b90f924a6b81bd57ed3863503b43a63741c73ebb4d573d1847f1a1f"
+  },
+  {
     "node": "sdlc.PageProgram",
     "at": "2026-11-25",
     "source": "built",
@@ -6235,8 +6291,8 @@
     "code": "d01a4a12",
     "by": "claude",
     "signature": "attribution",
-    "engine": "f2401b4f49d12cda",
-    "seal": "0ce6cbf3976df1607394217d2886df79bbac8fba9db9748ba2ec6672f7b5e751"
+    "engine": "f5874c0cc2ec8be2",
+    "seal": "686ff14a7b1e42f0b202d02f5c1ff69a1f6818b2b8df1ba4096e8e6a5fb9461b"
   },
   {
     "node": "sdlc.PageProgram",

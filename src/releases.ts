@@ -1786,3 +1786,18 @@ export const G120 = release({
   archive: "0b29fd7d79d778bf",
   assembledBy: G119,
 })
+
+/**
+ * Generation 121
+ */
+export const G121 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g121",
+  date: "2026-11-25",
+  what: "The language types a realization of an extension point by its one contract (Realizes, RealizedBy): published with the generation, for the projects run from the registry (E3, part 3)",
+  fingerprint: "ff10868da2067157",
+  language: "shared",
+  archive: "896211f06bdb0fd1",
+  assembledBy: G120,
+})
