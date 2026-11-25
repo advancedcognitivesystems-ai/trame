@@ -600,5 +600,16 @@
     "by": "claude",
     "signature": "attribution",
     "seal": "9c8ed1ae5da33781374d8dcd8ce4a702edfb517e13181e35bd9c0c4307082589"
+  },
+  {
+    "node": "sdlc.RunnersWritten",
+    "at": "2026-11-25",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "a77fe833",
+    "url": "evidence/shipments/RunnersWritten-2026-11-25-a77fe833.json",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "007f0e0149640cb89f8b04679161e49209c2ea1e43879314486a622305e59523"
   }
 ]

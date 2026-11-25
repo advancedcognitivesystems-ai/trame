@@ -358,6 +358,22 @@ Commands run in the engine: CommandsInTheEngine offers a program's commands to t
 - Released by: trame
 - Serves: [Commands chosen, not written again](product.md#ChosenCommands), [A published value is cited, not copied](product.md#CitedNotCopied), [Known designs, named](product.md#KnownDesigns), [Ports of the platform, realized once](product.md#RealizedOnce), [Shared operations instead of literals](product.md#SharedOperations), [Rules applied, not written again](product.md#SharedRules), [Versions that hold](product.md#VersionsThatHold)
 
+<a id="R0_25_0"></a>
+
+### Version 0.25.0
+
+`R0_25_0` · `src/releases.ts:389`
+
+Extension points: trame doctor's MachineNeeds (Playwright's browser installed) and trame init's ProjectRepairs; the pattern Plugin (E3, part 3)
+
+- Version: `0.25.0`
+- Released on: 25 November 2026
+- Fingerprint: `5e7440b5d55f71e9`
+- Language: the repository's, shared
+
+- Released by: trame
+- Serves: [Commands chosen, not written again](product.md#ChosenCommands), [A published value is cited, not copied](product.md#CitedNotCopied), [Known designs, named](product.md#KnownDesigns), [Ports of the platform, realized once](product.md#RealizedOnce), [Shared operations instead of literals](product.md#SharedOperations), [Rules applied, not written again](product.md#SharedRules), [Versions that hold](product.md#VersionsThatHold)
+
 <a id="R0_3_0"></a>
 
 ### Version 0.3.0

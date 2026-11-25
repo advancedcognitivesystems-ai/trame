@@ -3444,6 +3444,21 @@
       "diagnostics": []
     },
     {
+      "id": "releases.R0_25_0",
+      "kind": "release",
+      "title": "Version 0.25.0",
+      "source": "src/releases.ts:389",
+      "fields": {
+        "owner": "trame",
+        "version": "0.25.0",
+        "date": "2026-11-25",
+        "what": "Extension points: trame doctor's MachineNeeds (Playwright's browser installed) and trame init's ProjectRepairs; the pattern Plugin (E3, part 3)",
+        "fingerprint": "5e7440b5d55f71e9",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "releases.R0_3_0",
       "kind": "release",
       "title": "Version 0.3.0",
@@ -5273,7 +5288,7 @@
       "kind": "shipment",
       "title": "The next version",
       "source": "src/sdlc.ts:87",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "version"
@@ -5674,9 +5689,7 @@
           "web.WebSpeechApi"
         ]
       },
-      "diagnostics": [
-        "warning: To ship: The standard library is unknown"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.PackagesSafe",
@@ -5781,7 +5794,7 @@
       "kind": "artifact",
       "title": "The standard library",
       "source": "src/sdlc.ts:22",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "src",
@@ -5791,9 +5804,7 @@
         "path": "src",
         "code": "c58a4816"
       },
-      "diagnostics": [
-        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.VersionMode",
@@ -8538,6 +8549,41 @@
     },
     {
       "from": "releases.R0_24_0",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_25_0",
+      "to": "product.ChosenCommands",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_25_0",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_25_0",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_25_0",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_25_0",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_25_0",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_25_0",
       "to": "product.VersionsThatHold",
       "kind": "serves"
     },
