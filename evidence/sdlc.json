@@ -6122,5 +6122,131 @@
     "signature": "attribution",
     "engine": "ee2fb46b0367efa1",
     "seal": "77f900b24517436b3b5a0ee09c45816d0734a8e40fd19809b735e92ad89058db"
+  },
+  {
+    "node": "commands.Advance",
+    "at": "2026-11-25",
+    "source": "deployed",
+    "value": 1,
+    "fingerprint": "83b10527",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "1d55d2b77e26f0ef3ea70246589d480a046f5f6a2c767b3839a7aa3931d1deeb"
+  },
+  {
+    "node": "sdlc.CandidateKeepsTheLaws",
+    "at": "2026-11-25",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "a7aaa482",
+    "code": "fb9885c6",
+    "engine": "f2401b4f49d12cda",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "7e9ff9690b008a1d6634759fab6f063058a0b783c23bb8b81b8f13c94cc6816a"
+  },
+  {
+    "node": "sdlc.CandidateRunsOnTheMachine",
+    "at": "2026-11-25",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "a7aaa482",
+    "code": "f255e810",
+    "engine": "f2401b4f49d12cda",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "12925b767b5c89b959a83b2da738de66ceac8676a558c58d8cf34c8c3d41947a"
+  },
+  {
+    "node": "sdlc.EngineCandidate",
+    "at": "2026-11-25",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "6194e75081a20274e6dd14cae2dc89c9a56feb936913de53c3de712b0591bfd3",
+    "code": "e40674b7",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "f2401b4f49d12cda",
+    "seal": "cb5fea53ba1148f7bc74564ecda720f36d35c8407c6468e95f20b109d12ddb0c"
+  },
+  {
+    "node": "sdlc.EngineCandidate",
+    "at": "2026-11-25",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "6194e75081a20274e6dd14cae2dc89c9a56feb936913de53c3de712b0591bfd3",
+    "subject": "sdlc.NextGeneration",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "4a4af5eab548565753caab35455491d8bf0786483855575d7f3556e691303a19"
+  },
+  {
+    "node": "sdlc.GraphPage",
+    "at": "2026-11-25",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "087e70f7789dd1c18b0c810f88fbfe4dce41b824489f001528ee031ba1499d99",
+    "code": "5a4d43bd",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "f2401b4f49d12cda",
+    "seal": "d96c9df7b7e4630a906c1a055f5452abb1fba9141085d229d2c1939863af2d76"
+  },
+  {
+    "node": "sdlc.GraphPage",
+    "at": "2026-11-25",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "087e70f7789dd1c18b0c810f88fbfe4dce41b824489f001528ee031ba1499d99",
+    "subject": "sdlc.NextGeneration",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "47a9c4902f16101433c03fb1c68bc66382bd87800e5ad31bba05aad0965b21ab"
+  },
+  {
+    "node": "sdlc.GraphPageOpens",
+    "at": "2026-11-25",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "06edc6eb",
+    "code": "c571d09a",
+    "engine": "f2401b4f49d12cda",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "97863a1682985a8e980f4291914d48f656b088320269151c429b695797bf170d"
+  },
+  {
+    "node": "sdlc.NextGeneration",
+    "at": "2026-11-25",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "d965d6d7",
+    "url": "evidence/shipments/NextGeneration-2026-11-25-d965d6d7.json",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "2c97b941db94b3b6ea8425310617334b005970648b823ea583cbf8564132e4b6"
+  },
+  {
+    "node": "sdlc.PageProgram",
+    "at": "2026-11-25",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "8ee165f5836ec92322a9b4366cc77ff5d895c05efb8da20da8a2647bae6999c4",
+    "code": "d01a4a12",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "f2401b4f49d12cda",
+    "seal": "0ce6cbf3976df1607394217d2886df79bbac8fba9db9748ba2ec6672f7b5e751"
+  },
+  {
+    "node": "sdlc.PageProgram",
+    "at": "2026-11-25",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "8ee165f5836ec92322a9b4366cc77ff5d895c05efb8da20da8a2647bae6999c4",
+    "subject": "sdlc.NextGeneration",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "be08fb889ed54099a24c37eed3c94eb4913f50c9598b161acddb650db953a399"
   }
 ]

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-25",
+  "generated": "2026-10-30",
   "nodes": [
     {
       "id": "appearance.ExplorerDrawing",
@@ -20136,6 +20136,7 @@
       "diagnostics": [
         "warning: To ship: The candidate engine is unknown",
         "warning: To ship: The graph page is unknown",
+        "warning: To ship: The page's program is unknown",
         "warning: To ship: The page is assembled is unknown",
         "warning: To ship: The candidate plays the laws is unknown",
         "warning: To ship: The candidate runs on the machine is unknown",
@@ -20298,7 +20299,7 @@
       "kind": "artifact",
       "title": "The page's program",
       "source": "src/sdlc.ts:192",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "out/browser/page-app.ts"
@@ -20307,7 +20308,9 @@
         "path": "out/browser/page-app.ts",
         "code": "d01a4a12"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+      ]
     },
     {
       "id": "sdlc.PullRequestsOnGitHub",
@@ -20349,7 +20352,7 @@
       "kind": "artifact",
       "title": "The pull requests' workflow",
       "source": "src/sdlc.ts:383",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": ".github/workflows/trame-pull-request.yml",
@@ -20359,7 +20362,9 @@
         "path": ".github/workflows/trame-pull-request.yml",
         "code": "8c8fa295"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Not built yet: trame ship builds it"
+      ]
     },
     {
       "id": "sdlc.ReadTheRepositorySettings",
@@ -20461,7 +20466,7 @@
         "code": "381fb2c0"
       },
       "diagnostics": [
-        "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
+        "warning: To run: trame ship runs it on the artefacts it checks"
       ]
     },
     {
@@ -20589,7 +20594,7 @@
       "kind": "shipment",
       "title": "The files that run it elsewhere",
       "source": "src/sdlc.ts:523",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "repository"
@@ -20602,7 +20607,9 @@
           "sdlc.PullRequestWorkflow"
         ]
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: To ship: The pull requests' workflow is unknown"
+      ]
     },
     {
       "id": "sdlc.SdlcInMemory",
@@ -20703,7 +20710,7 @@
         "code": "6e31663f"
       },
       "diagnostics": [
-        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+        "warning: Not built yet: trame ship builds it"
       ]
     },
     {

@@ -1,6 +1,6 @@
 # Layers
 
-*The graph in force on 25 November 2026, ordered by distance to the goals.*
+*The graph in force on 30 October 2026, ordered by distance to the goals.*
 
 ```mermaid
 flowchart TB
@@ -717,16 +717,16 @@ flowchart TB
     n657["How a version is carried across Trame's repository<br/><small>Function</small>"]:::held
     n658["How Trame's pull requests are opened<br/><small>Function</small>"]:::held
     n659["Trame's settings in the scenarios<br/><small>Technical choice</small>"]:::held
-    n660["The page's program<br/><small>Artefact</small>"]:::held
+    n660["The page's program<br/><small>Artefact</small>"]:::unknown
     n661["How a pull request is checked on GitHub<br/><small>Decision</small>"]:::neutral
-    n662["The pull requests' workflow<br/><small>Artefact</small>"]:::held
+    n662["The pull requests' workflow<br/><small>Artefact</small>"]:::unknown
     n663["Read the repository's settings<br/><small>Entry point</small>"]:::held
     n664["The repository's projects<br/><small>Decision</small>"]:::neutral
     n665["The repository is read from GitHub<br/><small>Check</small>"]:::unknown
     n666["The repository left by hand, in the scenario<br/><small>Decision</small>"]:::neutral
     n667["The repository as decided<br/><small>Shipment</small>"]:::unknown
     n668["The repository's work on a machine<br/><small>Technical choice</small>"]:::unknown
-    n669["The files that run it elsewhere<br/><small>Shipment</small>"]:::held
+    n669["The files that run it elsewhere<br/><small>Shipment</small>"]:::unknown
     n670["The SDLC in memory<br/><small>Technical choice</small>"]:::held
     n671["The SDLC on the machine<br/><small>Technical choice</small>"]:::unknown
     n672["What the programs of Trame's SDLC say<br/><small>Message catalog</small>"]:::neutral

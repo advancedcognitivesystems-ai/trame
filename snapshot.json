@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-25",
+  "at": "2026-10-30",
   "nodes": [
     {
       "id": "appearance.ExplorerDrawing",
@@ -14442,7 +14442,7 @@
       "id": "sdlc.PageProgram",
       "kind": "artifact",
       "title": "The page's program",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "out/browser/page-app.ts"
@@ -14485,7 +14485,7 @@
       "id": "sdlc.PullRequestWorkflow",
       "kind": "artifact",
       "title": "The pull requests' workflow",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": ".github/workflows/trame-pull-request.yml",
@@ -14632,7 +14632,7 @@
       "id": "sdlc.RunnersWritten",
       "kind": "shipment",
       "title": "The files that run it elsewhere",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "repository"
