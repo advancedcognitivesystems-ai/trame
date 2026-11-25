@@ -142,7 +142,7 @@ The workflow that checks each pull request, written by trame ship from the graph
 |---|---|---|
 | [The pull requests' workflow](#PullRequestWorkflow) | **held** | shipped |
 
-Shipped 25 November 2026 by claude; its dossier: `evidence/shipments/RunnersWritten-2026-11-25-a77fe833.json`.
+Shipped 25 November 2026 by claude; its dossier: `evidence/shipments/RunnersWritten-2026-11-25-0f83784f.json`.
 
 - Owner: trame
 - Ships: [The pull requests' workflow](#PullRequestWorkflow)

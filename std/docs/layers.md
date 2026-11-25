@@ -235,14 +235,14 @@ flowchart TB
     n191["Its data reviewed<br/><small>Obligation</small>"]:::neutral
     n192["Its decisions applied<br/><small>Obligation</small>"]:::neutral
     n193["Its functions verified<br/><small>Obligation</small>"]:::neutral
-    n194["The next version<br/><small>Shipment</small>"]:::held
+    n194["The next version<br/><small>Shipment</small>"]:::unknown
     n195["Its packages safe<br/><small>Obligation</small>"]:::neutral
     n196["How a pull request is checked on GitHub<br/><small>Decision</small>"]:::neutral
     n197["The pull requests' workflow<br/><small>Artefact</small>"]:::held
     n198["Its requirements held<br/><small>Obligation</small>"]:::neutral
     n199["Its rules held<br/><small>Obligation</small>"]:::neutral
     n200["The files that run it elsewhere<br/><small>Shipment</small>"]:::held
-    n201["The standard library<br/><small>Artefact</small>"]:::held
+    n201["The standard library<br/><small>Artefact</small>"]:::unknown
     n202["How a version is made<br/><small>Policy</small>"]:::neutral
   end
   subgraph system["Standard library · System"]

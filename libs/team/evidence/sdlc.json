@@ -155,8 +155,8 @@
     "code": "b6982053",
     "by": "claude",
     "signature": "attribution",
-    "engine": "f2401b4f49d12cda",
-    "seal": "cfd8be15c4aa222f32669242aa81ac1fa512a337284c4ea786b742443cead7ad"
+    "engine": "f5874c0cc2ec8be2",
+    "seal": "3d91a3ea79ba56d196a1a7e19602c5218e6e877285abff84b640f37413b02370"
   },
   {
     "node": "sdlc.PullRequestWorkflow",
@@ -179,5 +179,16 @@
     "by": "claude",
     "signature": "attribution",
     "seal": "bf5d0637d7a4c9df23cd1caf9dd5d80be0d52aea321450fe182372a6eacee870"
+  },
+  {
+    "node": "sdlc.RunnersWritten",
+    "at": "2026-11-25",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "2d4dd41c",
+    "url": "evidence/shipments/RunnersWritten-2026-11-25-2d4dd41c.json",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "f57ee57a4daeb8068cf919f8b3a6ad3de6c8cb128f4ec23174524e4c3f53e8d1"
   }
 ]

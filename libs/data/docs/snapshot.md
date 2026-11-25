@@ -99,9 +99,9 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 120
+- Version: 121
 - How it joins the graph: language
-- Its path: ../../generations/g120
+- Its path: ../../generations/g121
 - Serves: Data described once
 
 ### The people of the repository

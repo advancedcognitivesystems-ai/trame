@@ -40,7 +40,7 @@ Package · `Language`
 
 - Owner: ghalaax
 - Name: trame
-- Version: 120
+- Version: 121
 - How it joins the graph: language
 - Where it comes from: registry
 - Serves: Geometry written once
@@ -62,7 +62,7 @@ Package · `StandardLibrary`
 
 - Owner: ghalaax
 - Name: std
-- Version: 0.24.0
+- Version: 0.25.0
 - How it joins the graph: library
 - Where it comes from: registry
 - Serves: Geometry written once
