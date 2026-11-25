@@ -1,0 +1,41 @@
+{
+  "shipment": "sdlc.RunnersWritten",
+  "title": "The files that run it elsewhere",
+  "target": "repository",
+  "at": "2026-11-19",
+  "by": "claude",
+  "signature": "attribution",
+  "artifacts": [
+    {
+      "node": "sdlc.PullRequestWorkflow",
+      "path": "../../.github/workflows/reservations-pull-request.yml",
+      "fingerprint": "169f440e75c1b9d7477914499a0f58ab668fadef40e8561721011d5457b541e8"
+    }
+  ],
+  "foundations": {
+    "problems": 0
+  },
+  "obligations": [
+    {
+      "node": "sdlc.PullRequestWorkflow",
+      "kind": "artifact",
+      "status": "held",
+      "owner": "karim",
+      "evidence": [
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-19",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "169f440e75c1b9d7477914499a0f58ab668fadef40e8561721011d5457b541e8",
+          "code": "589afa4b",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "987e2ef986dc7b6b",
+          "seal": "6c4525f8d24b9c2c23c16176dc6f24d143c38098433c66d4d1b5b7c377391ca2"
+        }
+      ]
+    }
+  ],
+  "deployed": []
+}

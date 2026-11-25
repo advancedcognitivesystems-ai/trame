@@ -1801,3 +1801,19 @@ export const G121 = release({
   archive: "896211f06bdb0fd1",
   assembledBy: G120,
 })
+
+/**
+ * Generation 122
+ */
+export const G122 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g122",
+  date: "2026-11-25",
+  what: "A check runs a command the engine keeps and verifies the project's add-ons to it; trame doctor's questions are add-ons of the engine's own extension point (E3, part 3)",
+  fingerprint: "d5cd96fe091a0108",
+  language: "shared",
+  archive: "0118572b49b3ed10",
+  differences: "differences.diff",
+  assembledBy: G121,
+})
