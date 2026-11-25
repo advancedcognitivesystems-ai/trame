@@ -31,7 +31,7 @@ The language Trame speaks to people: British English. Its messages are written i
 
 ### A catalog counts in its language
 
-`CountsInTheLanguage` · `src/messages.ts:1036` · status: **held**
+`CountsInTheLanguage` · `src/messages.ts:1038` · status: **held**
 
 A count and its noun follow the plural rules of the language the catalog is written in, with the forms the catalog writes for each category; nothing below the catalogs presumes a language.
 
@@ -87,7 +87,7 @@ Joins the items of a list as people write it in the decided language: "A, B and 
 
 ### Messages of an advance
 
-`AdvanceMessages` · `src/messages.ts:947`
+`AdvanceMessages` · `src/messages.ts:949`
 
 What trame advance says as it goes, and what a generation says of itself.
 
@@ -412,6 +412,8 @@ What the commands print: summaries, usage, refusals.
     doctorAnswers: (what: string) => `  ok      ${what}`,
     doctorFails: (what: string) => `  failed  ${what}`,
     doctorBroke: (what: string, why: string) => `  failed  ${what}: ${why}`,
+    /** A question that broke, with what went wrong (since g122). */
+    doctorWhy: (what: string, why: string) => `${what}: ${why}`,
     doctorClock: () => "the clock gives the day",
     doctorFiles: () => "a file written is read back",
     doctorTrees: () => "a directory copied is the same as the original",
@@ -432,7 +434,7 @@ What the commands print: summaries, usage, refusals.
 - Owner: trame
 - Parameters: `language` ← [Language](#Language)
 - Written in: [Language](#Language)
-- Used by: [A build planned](command-scenarios.md#BuildPlanned), [A component assembled](command-scenarios.md#ComponentAssembled), [Declarations published](command-scenarios.md#DeclarationsPublished), [The doctor](command-scenarios.md#DoctorAsks), [The laws, tested by their command](command-scenarios.md#LawsTested), [A command of the project](command-scenarios.md#ProjectCommandRun), [Stages shipped in order](command-scenarios.md#StagesShipped), [The add-ons of a command the engine keeps](commands.md#AddOns), [Advance](commands.md#Advance), [Amend](commands.md#Amend), [An amendment prepared](commands.md#Amending), [Assemble a component](commands.md#Assemble), [Assembler](commands.md#Assembler), [Audit the packages](commands.md#Audit), [Build](commands.md#Build), [Two builds compared](commands.md#BuildComparison), [A command of the project, or a view](commands.md#CommandOrView), [Deliver](commands.md#Deliver), [Ask the machine](commands.md#Doctor), [Examples](commands.md#Examples), [Export the page](commands.md#Export), [Help](commands.md#Help), [Start a project](commands.md#Init), [Plan](commands.md#Plan), [Preparation](commands.md#Preparation), [The project's commands](commands.md#ProjectCommands), [Publish](commands.md#Publish), [Record evidence](commands.md#RecordEvidence), [Fill the registry](commands.md#Registry), [Release a version](commands.md#Release), [Render a view](commands.md#RenderView), [Ship](commands.md#Ship), [Take the snapshot](commands.md#TakeSnapshot), [Test the laws](commands.md#TestKinds), [Upgrade](commands.md#Upgrade), [Write the manifest](commands.md#WriteManifest), [A shipment's pipeline](engine.md#ShipmentPipeline), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore)
+- Used by: [A build planned](command-scenarios.md#BuildPlanned), [A component assembled](command-scenarios.md#ComponentAssembled), [Declarations published](command-scenarios.md#DeclarationsPublished), [The doctor](command-scenarios.md#DoctorAsks), [The laws, tested by their command](command-scenarios.md#LawsTested), [A command of the project](command-scenarios.md#ProjectCommandRun), [Stages shipped in order](command-scenarios.md#StagesShipped), [The add-ons of a command the engine keeps](commands.md#AddOns), [Advance](commands.md#Advance), [Amend](commands.md#Amend), [An amendment prepared](commands.md#Amending), [Assemble a component](commands.md#Assemble), [Assembler](commands.md#Assembler), [Audit the packages](commands.md#Audit), [Build](commands.md#Build), [Two builds compared](commands.md#BuildComparison), [A command of the project, or a view](commands.md#CommandOrView), [Deliver](commands.md#Deliver), [Ask the machine](commands.md#Doctor), [Examples](commands.md#Examples), [Export the page](commands.md#Export), [Help](commands.md#Help), [Start a project](commands.md#Init), [Plan](commands.md#Plan), [Preparation](commands.md#Preparation), [The project's commands](commands.md#ProjectCommands), [Publish](commands.md#Publish), [Record evidence](commands.md#RecordEvidence), [Fill the registry](commands.md#Registry), [Release a version](commands.md#Release), [Render a view](commands.md#RenderView), [Ship](commands.md#Ship), [Take the snapshot](commands.md#TakeSnapshot), [Test the laws](commands.md#TestKinds), [Upgrade](commands.md#Upgrade), [Write the manifest](commands.md#WriteManifest), [Asking](doctor.md#Asking), [The clock gives the day](doctor.md#ClockAnswers), [A file written is read back](doctor.md#FilesAnswer), [The installer installs what a manifest names and writes its lockfile](doctor.md#InstallerAnswers), [A program runs with the engine's loader, and prints what it says](doctor.md#ProgramsAnswer), [The registry answers about the packages](doctor.md#RegistryAnswers), [A run is kept, and given back until a file it read changes](doctor.md#RunsAnswer), [A server listens on a port the system gives](doctor.md#ServerAnswers), [The time passes](doctor.md#TimerAnswers), [A directory copied is the same as the original](doctor.md#TreesAnswer), [A shipment's pipeline](engine.md#ShipmentPipeline), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore)
 - Applies: [A catalog counts in its language](#CountsInTheLanguage), [The words are in catalogs](principles.md#WordsInCatalogs)
 
 <a id="CompilerMessages"></a>
@@ -680,7 +682,7 @@ What the drivers say about a body: hidden dependencies, access to the platform, 
 
 ### Words of Trame's views
 
-`EngineViewWords` · `src/messages.ts:718`
+`EngineViewWords` · `src/messages.ts:720`
 
 What the views of Trame's own graph say: the catalogue of literals, the versions of the engine.
 
@@ -693,7 +695,7 @@ The messages are written in `../engine-views/words.ts`.
 
 ### Words of the kinds
 
-`KindWords` · `src/messages.ts:698`
+`KindWords` · `src/messages.ts:700`
 
 What the kinds say: their labels, the labels of their fields and edges, what their holes say, what they render. The kinds are files of the language, outside the graph: their words are a catalog all the same, which they call; a kind writes no text of its own.
 
@@ -833,7 +835,7 @@ What the machine outputs, the lock, the payload, the date bundle, the difference
 
 ### Words of the page
 
-`PageWords` · `src/messages.ts:729`
+`PageWords` · `src/messages.ts:731`
 
 What the page says around the documents the engine wrote: the state of the compilation, the dates, the navigation, the banner, the figures, the explorer.
 
@@ -849,7 +851,7 @@ The messages are written in `./code/page/words.ts`.
 
 ### Messages of the platform
 
-`PlatformMessages` · `src/messages.ts:751`
+`PlatformMessages` · `src/messages.ts:753`
 
 What the implementations of the ports say (the command line, the terminal, the processes).
 
@@ -889,7 +891,7 @@ What the implementations of the ports say (the command line, the terminal, the p
 
 ### Messages of the renderers
 
-`RenderingMessages` · `src/messages.ts:741`
+`RenderingMessages` · `src/messages.ts:743`
 
 The words that the renderers add to the intermediate format: labels, notes, the names of statuses and outcomes. Written in a file: the page, which runs in the browser where nothing is wired, reads it too.
 
@@ -904,7 +906,7 @@ The messages are written in `./code/rendering/messages.ts`.
 
 ### Messages of the scenarios
 
-`ScenarioMessages` · `src/messages.ts:780`
+`ScenarioMessages` · `src/messages.ts:782`
 
 The names of the checks that the engine's scenarios make.
 
@@ -1144,7 +1146,7 @@ What the loading of views and the compilation API say.
 
 ### Words of the views
 
-`ViewWords` · `src/messages.ts:708`
+`ViewWords` · `src/messages.ts:710`
 
 What the views say: their titles, their introductions, their headings, what they say of the graph.
 

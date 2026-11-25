@@ -46,7 +46,7 @@ export default defineView({
         const program = s.runs ?? c.from(s.node).out(CheckEdge.runs).first()
         const signer = c.from(s.node).out(CheckEdge.by).first()
         return [
-          ...(program ? [doc.ref(program)] : [say.pipelinesByHand()]),
+          ...(program ? [doc.ref(program)] : s.command !== undefined ? [doc.ident(say.pipelinesTheEngine(s.command))] : [say.pipelinesByHand()]),
           ...(signer ? [say.pipelinesSignedBy(), doc.ref(signer)] : []),
         ]
       }

@@ -30,6 +30,7 @@ import { Drivers } from "./languages"
 import { Advancement, AcceptCandidate, EnginePin, LanguageSharing, Releases, ReleaseRecords } from "./generations"
 import { Punctuation } from "./documents"
 import { ShipOnlyWhatHolds, SdlcEvidence, ShipmentRunPlan, ProgramBundle } from "./shipping"
+import { EngineNeeds } from "./doctor"
 import { Anyone } from "#std/access"
 
 /**
@@ -320,16 +321,6 @@ export const Export = entryPoint({
 
 
 /**
- * What the doctor writes, runs and waits for
- * A file and its text; a program that prints that text, run with the engine's loader; how long it waits, in
- * milliseconds.
- */
-export const DoctorProbe = decision<{ file: string; text: string; program: string; source: string; pause: number }>({
-  owner: "trame",
-  value: { file: "probe.txt", text: "trame doctor", program: "probe.ts", source: "console.log(\"trame doctor\")\n", pause: 10 },
-})
-
-/**
  * Ask the machine
  * trame doctor: does this machine run Trame? It says the day, writes a file and reads it back, copies a directory and
  * compares the copy, runs a program with the engine's loader, keeps a run until a file changes, serves HTTP on a port
@@ -341,9 +332,7 @@ export const Doctor = entryPoint({
   owner: "trame", in: TrameCli, for: Anyone, serves: [ExecutableSpecification],
   trigger: command(commandNames.doctor),
   deps: {
-    exitStatus: ExitStatus, preparation: Preparation, probe: DoctorProbe, iso: Iso8601, reading: FileReading, writing: FileWriting, trees: FileTrees,
-    programs: Programs, runs: KeptRuns, httpServer: HttpServer, timer: Timer, reports: PackageReports, installs: PackageInstalls, layout: Layout, clock: Clock, paths: Paths, terminal: Terminal,
-    encodings: NodeEncodings, counts: Counts, texts: Texts, messages: CommandMessages, addOns: AddOns,
+    exitStatus: ExitStatus, preparation: Preparation, engine: EngineNeeds, terminal: Terminal, messages: CommandMessages, addOns: AddOns,
   },
   body: code.file<typeof import("./code/commands/doctor").default>("./code/commands/doctor.ts"),
 })

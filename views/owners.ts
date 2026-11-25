@@ -1,4 +1,4 @@
-import { defineView, doc, DateRole, Severity, ViewGroup, ViewName, KindName, RoleField, ReviewEdge, CheckEdge, type Block, type Inline, type View } from "../trame/kernel"
+import { defineView, doc, DateRole, Severity, ViewGroup, ViewName, KindName, RoleField, ReviewEdge, CheckEdge, CheckField, type Block, type Inline, type View } from "../trame/kernel"
 import words from "./words"
 
 const say = words()
@@ -40,7 +40,7 @@ export default defineView({
       const who = c.lib.sequences.head(holders) ?? say.ownersAPerson()
       const awaiting = [...new Map(mine.flatMap((i) => (i.node ? [[i.node.ref, i.node] as const] : []))).values()]
       const how = awaiting.flatMap((v): Inline[][] =>
-        v.kind === KindName.check && !c.from(v).out(CheckEdge.runs).exists() ? [[doc.ref(v), c.lib.punctuation.introduces, doc.ident(say.ownersCheckCommand(v.id, who))]]
+        v.kind === KindName.check && !c.from(v).out(CheckEdge.runs).exists() && !c.lib.values.isText(v.field(CheckField.command)) ? [[doc.ref(v), c.lib.punctuation.introduces, doc.ident(say.ownersCheckCommand(v.id, who))]]
           : v.kind === KindName.review ? c.from(v).out(ReviewEdge.of).nodes().map((subject) =>
             [doc.ref(subject), c.lib.punctuation.introduces, doc.ident(subject.kind === KindName.dataset ? say.ownersRowCommand(subject.id, who) : say.ownersCheckCommand(subject.id, who))])
             : [])

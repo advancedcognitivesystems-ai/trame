@@ -6,7 +6,7 @@ import { role } from "../kinds/role"
 import { shipment } from "../kinds/shipment"
 import { obligation } from "../kinds/obligation"
 import { policy } from "../kinds/policy"
-import { code, KindName, Severity, ViewName } from "../trame/kernel"
+import { code, EngineCommand, KindName, Severity, ViewName } from "../trame/kernel"
 import { component } from "../kinds/component"
 import { binding } from "../kinds/binding"
 import { fn } from "../kinds/function"
@@ -186,6 +186,14 @@ export const WhatTheMachineMustHave = binding({
   follows: [Plugin],
   context: "On 17 November a machine whose browsers had moved refused the check of the page, and trame doctor said nothing of it.",
 })
+
+/**
+ * The machine has what Trame needs
+ * trame doctor, run by the engine that ships (since g122), asks what Trame chooses to ask besides the engine's own
+ * questions: that the browser Playwright drives is installed. It proves the add-on, which no program of Trame's own
+ * wires: the engine takes it from the graph when it asks.
+ */
+export const MachineAsked = check({ owner: "trame", on: [], command: EngineCommand.doctor, by: Maintainers, verifies: [PlaywrightBrowserInstalled] })
 
 /**
  * The SDLC in memory
@@ -368,7 +376,7 @@ export const MergeMode = policy({ owner: "trame", obligations: [EngineVerified, 
  * A pull request into main: it merges once it holds, as the repository's settings say (D1). The programs of the SDLC
  * it reaches are those of this machine.
  */
-export const IntoMain = shipment({ owner: "trame", target: "main", ships: [TheEngine], policy: MergeMode, environment: Local })
+export const IntoMain = shipment({ owner: "trame", target: "main", ships: [TheEngine], requires: [MachineAsked], policy: MergeMode, environment: Local })
 
 /**
  * How a pull request is checked on GitHub

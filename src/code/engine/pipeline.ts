@@ -7,7 +7,7 @@
 // artefact a shipment that precedes this one shipped first is not produced again but promoted, the same file; that
 // shipment is to prove as the shipment's kind judges it: shipped first, as the artefacts are now (C2, since g103).
 
-import { KindName, ArtifactEdge, ArtifactField, CheckEdge, ShipmentEdge, PipelineStage } from "../../../trame/kernel"
+import { KindName, ArtifactEdge, ArtifactField, CheckEdge, CheckField, ShipmentEdge, PipelineStage } from "../../../trame/kernel"
 import type { DerivedObligation, Graph, Pipeline, PipelineStep, Preceding, ProvidedBy, View } from "../../../trame/kernel"
 import type { CommandMessages } from "../../messages"
 import type { Sequences, ValueTypes } from "#std/algebra"
@@ -58,7 +58,10 @@ const body = ({ sequences: { head }, values, messages }: Deps) => {
     })
     const check = checks.flatMap((k): PipelineStep[] => {
       const runs = head(out(k, CheckEdge.runs))
-      return runs ? [{ stage: PipelineStage.check, node: k, runs, on: out(k, CheckEdge.on) }] : []
+      // Or a command the engine keeps (since g122), which trame ship runs in its process.
+      const command = k.field(CheckField.command)
+      if (runs) return [{ stage: PipelineStage.check, node: k, runs, on: out(k, CheckEdge.on) }]
+      return values.isText(command) ? [{ stage: PipelineStage.check, node: k, command, on: out(k, CheckEdge.on) }] : []
     })
     // The foundations first (no literal, a sound graph: what every shipment proves), then what it ships, what it requires,
     // what its policy derives.

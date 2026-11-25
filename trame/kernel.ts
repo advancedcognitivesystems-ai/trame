@@ -1081,6 +1081,8 @@ export interface PipelineStep {
   readonly stage: PipelineStage
   readonly node: View
   readonly runs?: View
+  /** A check a command the engine keeps runs (since g122): the command, which trame ship runs in its process. */
+  readonly command?: string
   readonly on?: readonly View[]
   readonly path?: string
   /**

@@ -434,7 +434,7 @@ Consequences: A shipment holds when each obligation holds; trame ship builds its
 
 ### A technology is chosen in one node
 
-`TechnologyInOneNode` · `src/principles.ts:233` · status: **held**
+`TechnologyInOneNode` · `src/principles.ts:233` · status: **unknown**
 
 What answers a port in an environment is said by a technical choice (a binding), never by the realization itself nor by the code that uses the port. A realization that touches nothing is a function; one that touches the platform is an implementation. The choice names the patterns it follows, and its shape is checked against them.
 

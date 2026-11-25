@@ -1080,7 +1080,7 @@
       "id": "browser.BrowserAmendments",
       "kind": "implementation",
       "title": "Amendments sent to trame dev",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1099,7 +1099,7 @@
       "id": "browser.BrowserDecompression",
       "kind": "implementation",
       "title": "The browser's gzip",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1116,7 +1116,7 @@
       "id": "browser.BrowserFeed",
       "kind": "implementation",
       "title": "The globals of the page, and trame dev",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1134,7 +1134,7 @@
       "id": "browser.BrowserMemory",
       "kind": "implementation",
       "title": "Local storage",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1150,7 +1150,7 @@
       "id": "browser.BrowserWindow",
       "kind": "implementation",
       "title": "The browser's window",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1168,7 +1168,7 @@
       "id": "browser.ExplorerFigures",
       "kind": "function",
       "title": "Explorer of a graph",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1205,7 +1205,7 @@
       "id": "browser.ShowGraph",
       "kind": "entry",
       "title": "Show the graph",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "trigger": {
@@ -1258,7 +1258,7 @@
       "id": "browser.TheBrowserRunsThePage",
       "kind": "binding",
       "title": "The browser runs the page",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "The page's script took what it needed from the browser itself, here and there: the graph could not say what the page asks of the browser, nor try it elsewhere.",
@@ -1273,7 +1273,7 @@
       "id": "browser.ThePageIsAssembled",
       "kind": "adr",
       "title": "The page is assembled",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "The page's script built by hand what it shared with the engine and wrote its values (classes, identifiers, the explorer's geometry) as literals the catalogue could not see: a change in the graph did not reach it.",
@@ -1600,7 +1600,7 @@
           "doctor": "commands.Doctor",
           "processLog": "architecture.ProcessLog",
           "terminalLog": "architecture.TerminalLog",
-          "probe": "commands.DoctorProbe",
+          "probe": "doctor.DoctorProbe",
           "line": "conventions.TrameCommands",
           "exitStatus": "std/system.ExitStatus",
           "commands": "messages.CommandMessages",
@@ -2745,45 +2745,14 @@
         "deps": {
           "exitStatus": "std/system.ExitStatus",
           "preparation": "commands.Preparation",
-          "probe": "commands.DoctorProbe",
-          "iso": "std/measures.Iso8601",
-          "reading": "architecture.FileReading",
-          "writing": "architecture.FileWriting",
-          "trees": "architecture.FileTrees",
-          "programs": "architecture.Programs",
-          "runs": "architecture.KeptRuns",
-          "httpServer": "architecture.HttpServer",
-          "timer": "architecture.Timer",
-          "reports": "architecture.PackageReports",
-          "installs": "architecture.PackageInstalls",
-          "layout": "conventions.Layout",
-          "clock": "architecture.Clock",
-          "paths": "architecture.Paths",
+          "engine": "doctor.EngineNeeds",
           "terminal": "architecture.Terminal",
-          "encodings": "std/system.NodeEncodings",
-          "counts": "std/algebra.Counts",
-          "texts": "std/algebra.Texts",
           "messages": "messages.CommandMessages",
           "addOns": "commands.AddOns"
         },
         "body": {
           "file": "./code/commands/doctor.ts",
           "language": "typescript"
-        }
-      }
-    },
-    {
-      "id": "commands.DoctorProbe",
-      "kind": "decision",
-      "title": "What the doctor writes, runs and waits for",
-      "fields": {
-        "owner": "trame",
-        "value": {
-          "file": "probe.txt",
-          "text": "trame doctor",
-          "program": "probe.ts",
-          "source": "console.log(\"trame doctor\")\n",
-          "pause": 10
         }
       }
     },
@@ -4161,6 +4130,230 @@
           "file": "./code/delivery/names-led.ts",
           "language": "typescript"
         }
+      }
+    },
+    {
+      "id": "doctor.Asking",
+      "kind": "function",
+      "title": "Asking",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "messages": "messages.CommandMessages"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "doctor.ClockAnswers",
+      "kind": "implementation",
+      "title": "The clock gives the day",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "clock": "architecture.Clock",
+          "iso": "std/measures.Iso8601",
+          "asking": "doctor.Asking",
+          "messages": "messages.CommandMessages"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "doctor.DoctorProbe",
+      "kind": "decision",
+      "title": "What the doctor writes, runs and waits for",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "file": "probe.txt",
+          "text": "trame doctor",
+          "program": "probe.ts",
+          "source": "console.log(\"trame doctor\")\n",
+          "pause": 10
+        }
+      }
+    },
+    {
+      "id": "doctor.EngineNeeds",
+      "kind": "port",
+      "title": "What the engine needs of the machine",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": {
+          "ask": [
+            "read",
+            "write",
+            "process",
+            "execution",
+            "network",
+            "time",
+            "keeps",
+            "asynchronous"
+          ]
+        },
+        "extension": true
+      }
+    },
+    {
+      "id": "doctor.EngineQuestions",
+      "kind": "binding",
+      "title": "What the engine asks the machine",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "trame doctor answers in an empty directory and in a project whose graph does not load: what the engine needs to run is asked whatever the project says, as add-ons of its own, chosen here."
+      }
+    },
+    {
+      "id": "doctor.FilesAnswer",
+      "kind": "implementation",
+      "title": "A file written is read back",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "trees": "architecture.FileTrees",
+          "reading": "architecture.FileReading",
+          "writing": "architecture.FileWriting",
+          "paths": "architecture.Paths",
+          "probe": "doctor.DoctorProbe",
+          "encodings": "std/system.NodeEncodings",
+          "asking": "doctor.Asking",
+          "messages": "messages.CommandMessages"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "doctor.InstallerAnswers",
+      "kind": "implementation",
+      "title": "The installer installs what a manifest names and writes its lockfile",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "trees": "architecture.FileTrees",
+          "reading": "architecture.FileReading",
+          "writing": "architecture.FileWriting",
+          "installs": "architecture.PackageInstalls",
+          "layout": "conventions.Layout",
+          "paths": "architecture.Paths",
+          "exitStatus": "std/system.ExitStatus",
+          "asking": "doctor.Asking",
+          "messages": "messages.CommandMessages"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "doctor.ProgramsAnswer",
+      "kind": "implementation",
+      "title": "A program runs with the engine's loader, and prints what it says",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "trees": "architecture.FileTrees",
+          "writing": "architecture.FileWriting",
+          "programs": "architecture.Programs",
+          "paths": "architecture.Paths",
+          "probe": "doctor.DoctorProbe",
+          "exitStatus": "std/system.ExitStatus",
+          "asking": "doctor.Asking",
+          "messages": "messages.CommandMessages"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "doctor.RegistryAnswers",
+      "kind": "implementation",
+      "title": "The registry answers about the packages",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "reports": "architecture.PackageReports",
+          "currentProcess": "architecture.Process",
+          "asking": "doctor.Asking",
+          "messages": "messages.CommandMessages"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "doctor.RunsAnswer",
+      "kind": "implementation",
+      "title": "A run is kept, and given back until a file it read changes",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "trees": "architecture.FileTrees",
+          "writing": "architecture.FileWriting",
+          "runs": "architecture.KeptRuns",
+          "paths": "architecture.Paths",
+          "probe": "doctor.DoctorProbe",
+          "asking": "doctor.Asking",
+          "messages": "messages.CommandMessages"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "doctor.ServerAnswers",
+      "kind": "implementation",
+      "title": "A server listens on a port the system gives",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "httpServer": "architecture.HttpServer",
+          "counts": "std/algebra.Counts",
+          "asking": "doctor.Asking",
+          "messages": "messages.CommandMessages"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "doctor.TimerAnswers",
+      "kind": "implementation",
+      "title": "The time passes",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "clock": "architecture.Clock",
+          "timer": "architecture.Timer",
+          "probe": "doctor.DoctorProbe",
+          "asking": "doctor.Asking",
+          "messages": "messages.CommandMessages"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "doctor.TreesAnswer",
+      "kind": "implementation",
+      "title": "A directory copied is the same as the original",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "trees": "architecture.FileTrees",
+          "writing": "architecture.FileWriting",
+          "currentProcess": "architecture.Process",
+          "paths": "architecture.Paths",
+          "probe": "doctor.DoctorProbe",
+          "texts": "std/algebra.Texts",
+          "asking": "doctor.Asking",
+          "messages": "messages.CommandMessages"
+        },
+        "body": "(function)"
       }
     },
     {
@@ -9973,7 +10166,7 @@
       "id": "platform.DiskReading",
       "kind": "implementation",
       "title": "System files, for reading",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "body": {
@@ -9986,7 +10179,7 @@
       "id": "platform.DiskTrees",
       "kind": "implementation",
       "title": "Trees on disk",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -10004,7 +10197,7 @@
       "id": "platform.DiskWriting",
       "kind": "implementation",
       "title": "System files, for writing",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "body": {
@@ -10350,7 +10543,7 @@
       "id": "platform.NodeHttpServer",
       "kind": "implementation",
       "title": "Node HTTP server",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "body": {
@@ -10363,7 +10556,7 @@
       "id": "platform.NodeMachine",
       "kind": "binding",
       "title": "On a machine, Node.js reads, writes and runs",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "What changes the world (files written, processes, the terminal, the clock) is real only on a machine; the scenarios keep it in memory.",
@@ -10404,7 +10597,7 @@
       "id": "platform.NodeProcess",
       "kind": "implementation",
       "title": "Node process",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -10425,7 +10618,7 @@
       "id": "platform.NodePrograms",
       "kind": "implementation",
       "title": "Node programs",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -10443,7 +10636,7 @@
       "id": "platform.NodeTerminal",
       "kind": "implementation",
       "title": "Node terminal",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -10503,7 +10696,7 @@
       "id": "platform.NpmInstall",
       "kind": "implementation",
       "title": "npm installs",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -10522,7 +10715,7 @@
       "id": "platform.NpmReports",
       "kind": "implementation",
       "title": "npm's reports",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -10662,7 +10855,7 @@
       "id": "platform.RunsKeptOnDisk",
       "kind": "binding",
       "title": "On a machine, runs are kept on disk",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "The commands of a shipment and of an advance run as separate processes, each compiling the same graph: what one played, the next can find only on disk.",
@@ -10676,7 +10869,7 @@
       "id": "platform.RunsOnDisk",
       "kind": "implementation",
       "title": "Runs kept on disk",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -10714,7 +10907,7 @@
       "id": "platform.SystemClock",
       "kind": "implementation",
       "title": "System clock",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -11142,7 +11335,7 @@
       "id": "principles.TechnologyInOneNode",
       "kind": "adr",
       "title": "A technology is chosen in one node",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "Each implementation said which environments it served: the choice of a technology was spread over its realizations, nothing said why, and a test double or a repository over a database port had to be declared as if it touched the platform.",
@@ -14193,7 +14386,7 @@
       "id": "sdlc.CandidateRunsOnTheMachine",
       "kind": "check",
       "title": "The candidate runs on the machine",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame"
       }
@@ -14224,7 +14417,7 @@
       "id": "sdlc.EngineCandidate",
       "kind": "artifact",
       "title": "The candidate engine",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "out/local/trame-cli.ts"
@@ -14265,7 +14458,7 @@
       "id": "sdlc.GraphPage",
       "kind": "artifact",
       "title": "The graph page",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "trame-page.html",
@@ -14287,7 +14480,7 @@
       "id": "sdlc.GraphPageOpens",
       "kind": "check",
       "title": "The graph page opens",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame"
       }
@@ -14345,7 +14538,7 @@
       "id": "sdlc.IntoMain",
       "kind": "shipment",
       "title": "Into the main branch",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "main"
@@ -14357,6 +14550,16 @@
       "title": "The language serves what it says",
       "fields": {
         "owner": "trame"
+      }
+    },
+    {
+      "id": "sdlc.MachineAsked",
+      "kind": "check",
+      "title": "The machine has what Trame needs",
+      "status": "unknown",
+      "fields": {
+        "owner": "trame",
+        "command": "doctor"
       }
     },
     {
@@ -14588,7 +14791,7 @@
       "id": "sdlc.PullRequestWorkflow",
       "kind": "artifact",
       "title": "The pull requests' workflow",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": ".github/workflows/trame-pull-request.yml",
@@ -14735,7 +14938,7 @@
       "id": "sdlc.RunnersWritten",
       "kind": "shipment",
       "title": "The files that run it elsewhere",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "repository"
@@ -14804,7 +15007,7 @@
       "id": "sdlc.TheEngine",
       "kind": "artifact",
       "title": "The engine",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "src",
@@ -18463,6 +18666,56 @@
     },
     {
       "from": "command-scenarios.DoctorAsks",
+      "to": "doctor.Asking",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.DoctorAsks",
+      "to": "doctor.ClockAnswers",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.DoctorAsks",
+      "to": "doctor.FilesAnswer",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.DoctorAsks",
+      "to": "doctor.TreesAnswer",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.DoctorAsks",
+      "to": "doctor.ProgramsAnswer",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.DoctorAsks",
+      "to": "doctor.RunsAnswer",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.DoctorAsks",
+      "to": "doctor.ServerAnswers",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.DoctorAsks",
+      "to": "doctor.TimerAnswers",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.DoctorAsks",
+      "to": "doctor.RegistryAnswers",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.DoctorAsks",
+      "to": "doctor.InstallerAnswers",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.DoctorAsks",
       "to": "architecture.Test",
       "kind": "env"
     },
@@ -18483,7 +18736,7 @@
     },
     {
       "from": "command-scenarios.DoctorAsks",
-      "to": "commands.DoctorProbe",
+      "to": "doctor.DoctorProbe",
       "kind": "deps"
     },
     {
@@ -20818,67 +21071,7 @@
     },
     {
       "from": "commands.Doctor",
-      "to": "commands.DoctorProbe",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Doctor",
-      "to": "architecture.FileReading",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Doctor",
-      "to": "architecture.FileWriting",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Doctor",
-      "to": "architecture.FileTrees",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Doctor",
-      "to": "architecture.Programs",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Doctor",
-      "to": "architecture.KeptRuns",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Doctor",
-      "to": "architecture.HttpServer",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Doctor",
-      "to": "architecture.Timer",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Doctor",
-      "to": "architecture.PackageReports",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Doctor",
-      "to": "architecture.PackageInstalls",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Doctor",
-      "to": "conventions.Layout",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Doctor",
-      "to": "architecture.Clock",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Doctor",
-      "to": "architecture.Paths",
+      "to": "doctor.EngineNeeds",
       "kind": "deps"
     },
     {
@@ -22369,6 +22562,371 @@
     {
       "from": "delivery.NamesLed",
       "to": "delivery.BundlerLeading",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.Asking",
+      "to": "product.ExecutableSpecification",
+      "kind": "serves"
+    },
+    {
+      "from": "doctor.Asking",
+      "to": "messages.CommandMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.ClockAnswers",
+      "to": "doctor.EngineNeeds",
+      "kind": "implements"
+    },
+    {
+      "from": "doctor.ClockAnswers",
+      "to": "architecture.Clock",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.ClockAnswers",
+      "to": "doctor.Asking",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.ClockAnswers",
+      "to": "messages.CommandMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.EngineQuestions",
+      "to": "doctor.ClockAnswers",
+      "kind": "chooses"
+    },
+    {
+      "from": "doctor.EngineQuestions",
+      "to": "doctor.FilesAnswer",
+      "kind": "chooses"
+    },
+    {
+      "from": "doctor.EngineQuestions",
+      "to": "doctor.TreesAnswer",
+      "kind": "chooses"
+    },
+    {
+      "from": "doctor.EngineQuestions",
+      "to": "doctor.ProgramsAnswer",
+      "kind": "chooses"
+    },
+    {
+      "from": "doctor.EngineQuestions",
+      "to": "doctor.RunsAnswer",
+      "kind": "chooses"
+    },
+    {
+      "from": "doctor.EngineQuestions",
+      "to": "doctor.ServerAnswers",
+      "kind": "chooses"
+    },
+    {
+      "from": "doctor.EngineQuestions",
+      "to": "doctor.TimerAnswers",
+      "kind": "chooses"
+    },
+    {
+      "from": "doctor.EngineQuestions",
+      "to": "doctor.RegistryAnswers",
+      "kind": "chooses"
+    },
+    {
+      "from": "doctor.EngineQuestions",
+      "to": "doctor.InstallerAnswers",
+      "kind": "chooses"
+    },
+    {
+      "from": "doctor.EngineQuestions",
+      "to": "architecture.Local",
+      "kind": "environments"
+    },
+    {
+      "from": "doctor.EngineQuestions",
+      "to": "architecture.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "doctor.FilesAnswer",
+      "to": "doctor.EngineNeeds",
+      "kind": "implements"
+    },
+    {
+      "from": "doctor.FilesAnswer",
+      "to": "architecture.FileTrees",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.FilesAnswer",
+      "to": "architecture.FileReading",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.FilesAnswer",
+      "to": "architecture.FileWriting",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.FilesAnswer",
+      "to": "architecture.Paths",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.FilesAnswer",
+      "to": "doctor.DoctorProbe",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.FilesAnswer",
+      "to": "doctor.Asking",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.FilesAnswer",
+      "to": "messages.CommandMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.InstallerAnswers",
+      "to": "doctor.EngineNeeds",
+      "kind": "implements"
+    },
+    {
+      "from": "doctor.InstallerAnswers",
+      "to": "architecture.FileTrees",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.InstallerAnswers",
+      "to": "architecture.FileReading",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.InstallerAnswers",
+      "to": "architecture.FileWriting",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.InstallerAnswers",
+      "to": "architecture.PackageInstalls",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.InstallerAnswers",
+      "to": "conventions.Layout",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.InstallerAnswers",
+      "to": "architecture.Paths",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.InstallerAnswers",
+      "to": "doctor.Asking",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.InstallerAnswers",
+      "to": "messages.CommandMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.ProgramsAnswer",
+      "to": "doctor.EngineNeeds",
+      "kind": "implements"
+    },
+    {
+      "from": "doctor.ProgramsAnswer",
+      "to": "architecture.FileTrees",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.ProgramsAnswer",
+      "to": "architecture.FileWriting",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.ProgramsAnswer",
+      "to": "architecture.Programs",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.ProgramsAnswer",
+      "to": "architecture.Paths",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.ProgramsAnswer",
+      "to": "doctor.DoctorProbe",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.ProgramsAnswer",
+      "to": "doctor.Asking",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.ProgramsAnswer",
+      "to": "messages.CommandMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.RegistryAnswers",
+      "to": "doctor.EngineNeeds",
+      "kind": "implements"
+    },
+    {
+      "from": "doctor.RegistryAnswers",
+      "to": "architecture.PackageReports",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.RegistryAnswers",
+      "to": "architecture.Process",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.RegistryAnswers",
+      "to": "doctor.Asking",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.RegistryAnswers",
+      "to": "messages.CommandMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.RunsAnswer",
+      "to": "doctor.EngineNeeds",
+      "kind": "implements"
+    },
+    {
+      "from": "doctor.RunsAnswer",
+      "to": "architecture.FileTrees",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.RunsAnswer",
+      "to": "architecture.FileWriting",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.RunsAnswer",
+      "to": "architecture.KeptRuns",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.RunsAnswer",
+      "to": "architecture.Paths",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.RunsAnswer",
+      "to": "doctor.DoctorProbe",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.RunsAnswer",
+      "to": "doctor.Asking",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.RunsAnswer",
+      "to": "messages.CommandMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.ServerAnswers",
+      "to": "doctor.EngineNeeds",
+      "kind": "implements"
+    },
+    {
+      "from": "doctor.ServerAnswers",
+      "to": "architecture.HttpServer",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.ServerAnswers",
+      "to": "doctor.Asking",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.ServerAnswers",
+      "to": "messages.CommandMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.TimerAnswers",
+      "to": "doctor.EngineNeeds",
+      "kind": "implements"
+    },
+    {
+      "from": "doctor.TimerAnswers",
+      "to": "architecture.Clock",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.TimerAnswers",
+      "to": "architecture.Timer",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.TimerAnswers",
+      "to": "doctor.DoctorProbe",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.TimerAnswers",
+      "to": "doctor.Asking",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.TimerAnswers",
+      "to": "messages.CommandMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.TreesAnswer",
+      "to": "doctor.EngineNeeds",
+      "kind": "implements"
+    },
+    {
+      "from": "doctor.TreesAnswer",
+      "to": "architecture.FileTrees",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.TreesAnswer",
+      "to": "architecture.FileWriting",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.TreesAnswer",
+      "to": "architecture.Process",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.TreesAnswer",
+      "to": "architecture.Paths",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.TreesAnswer",
+      "to": "doctor.DoctorProbe",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.TreesAnswer",
+      "to": "doctor.Asking",
+      "kind": "deps"
+    },
+    {
+      "from": "doctor.TreesAnswer",
+      "to": "messages.CommandMessages",
       "kind": "deps"
     },
     {
@@ -30013,6 +30571,11 @@
     },
     {
       "from": "sdlc.IntoMain",
+      "to": "sdlc.MachineAsked",
+      "kind": "requires"
+    },
+    {
+      "from": "sdlc.IntoMain",
       "to": "architecture.Local",
       "kind": "environment"
     },
@@ -30025,6 +30588,11 @@
       "from": "sdlc.LanguageServed",
       "to": "product.ExecutableSpecification",
       "kind": "serves"
+    },
+    {
+      "from": "sdlc.MachineAsked",
+      "to": "sdlc.Maintainers",
+      "kind": "by"
     },
     {
       "from": "sdlc.MergeMode",

@@ -416,7 +416,7 @@ Environment · `Test`
 
 ### The page is assembled
 
-Architecture decision · `ThePageIsAssembled` · **held**
+Architecture decision · `ThePageIsAssembled` · **unknown**
 
 - Decided by: trame
 - Context: The page's script built by hand what it shared with the engine and wrote its values (classes, identifiers, the explorer's geometry) as literals the catalogue could not see: a change in the graph did not reach it.
@@ -427,7 +427,7 @@ Architecture decision · `ThePageIsAssembled` · **held**
 
 ### Explorer of a graph
 
-Function · `ExplorerFigures` · **held**
+Function · `ExplorerFigures` · **unknown**
 
 - Owner: trame
 - Parameters: { html: std/html.Html, svg: std/html.Svg, aria: std/html.Aria, css: std/html.Css, page: page.ThePage, markup: markup.DocumentMarkup, figures: markup.FigureMarkup, explorer: markup.ExplorerMarkup, drawing: appearance.ExplorerDrawing, element: html.HtmlElement, start: html.HtmlStartTag, empty: html.SelfClosingTag, path: html.PathData, declaration: html.CssDeclaration, escape: html.EscapedText, common: rendering.Common, words: messages.PageWords, messages: messages.RenderingMessages, punctuation: documents.Punctuation, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts }
@@ -436,7 +436,7 @@ Function · `ExplorerFigures` · **held**
 
 ### Show the graph
 
-Entry point · `ShowGraph` · **held**
+Entry point · `ShowGraph` · **unknown**
 
 - Owner: trame
 - Trigger: { type: load }
@@ -447,7 +447,7 @@ Entry point · `ShowGraph` · **held**
 
 ### Amendments sent to trame dev
 
-Implementation · `BrowserAmendments` · **held**
+Implementation · `BrowserAmendments` · **unknown**
 
 - Owner: trame
 - Parameters: { page: page.ThePage, service: engine.DevService, http: std/web.Http, media: std/web.MediaTypes }
@@ -456,7 +456,7 @@ Implementation · `BrowserAmendments` · **held**
 
 ### The browser's gzip
 
-Implementation · `BrowserDecompression` · **held**
+Implementation · `BrowserDecompression` · **unknown**
 
 - Owner: trame
 - Parameters: { packing: page.PackedGraph, ecma: std/ecmascript.EcmaScript }
@@ -465,7 +465,7 @@ Implementation · `BrowserDecompression` · **held**
 
 ### The globals of the page, and trame dev
 
-Implementation · `BrowserFeed` · **held**
+Implementation · `BrowserFeed` · **unknown**
 
 - Owner: trame
 - Parameters: { page: page.ThePage, service: engine.DevService, values: std/algebra.ValueTypes }
@@ -474,7 +474,7 @@ Implementation · `BrowserFeed` · **held**
 
 ### Local storage
 
-Implementation · `BrowserMemory` · **held**
+Implementation · `BrowserMemory` · **unknown**
 
 - Owner: trame
 - Parameters: { page: page.ThePage }
@@ -483,7 +483,7 @@ Implementation · `BrowserMemory` · **held**
 
 ### The browser's window
 
-Implementation · `BrowserWindow` · **held**
+Implementation · `BrowserWindow` · **unknown**
 
 - Owner: trame
 - Parameters: { motion: std/web.MediaQueries5, feature: html.MediaFeature, counts: std/algebra.Counts }
@@ -492,7 +492,7 @@ Implementation · `BrowserWindow` · **held**
 
 ### The browser runs the page
 
-Technical choice · `TheBrowserRunsThePage` · **held**
+Technical choice · `TheBrowserRunsThePage` · **unknown**
 
 - Decided by: trame
 - Context: The page's script took what it needed from the browser itself, here and there: the graph could not say what the page asks of the browser, nor try it elsewhere.
@@ -692,8 +692,8 @@ Scenario · `DevFollowsTheGraph` · **held**
 Scenario · `DoctorAsks` · **held**
 
 - Owner: trame
-- Parameters: { doctor: commands.Doctor, processLog: architecture.ProcessLog, terminalLog: architecture.TerminalLog, probe: commands.DoctorProbe, line: conventions.TrameCommands, exitStatus: std/system.ExitStatus, commands: messages.CommandMessages, file: std/text.TextFile, texts: std/algebra.Texts, counts: std/algebra.Counts, messages: messages.ScenarioMessages }
-- Verifies: Ask the machine, The runs of a project, Runs kept in the process
+- Parameters: { doctor: commands.Doctor, processLog: architecture.ProcessLog, terminalLog: architecture.TerminalLog, probe: doctor.DoctorProbe, line: conventions.TrameCommands, exitStatus: std/system.ExitStatus, commands: messages.CommandMessages, file: std/text.TextFile, texts: std/algebra.Texts, counts: std/algebra.Counts, messages: messages.ScenarioMessages }
+- Verifies: Ask the machine, The runs of a project, Runs kept in the process, Asking, The clock gives the day, A file written is read back, A directory copied is the same as the original, A program runs with the engine's loader, and prints what it says, A run is kept, and given back until a file it read changes, A server listens on a port the system gives, The time passes, The registry answers about the packages, The installer installs what a manifest names and writes its lockfile
 - In: Test
 - Depends on: Ask the machine, Process log, Terminal log, What the doctor writes, runs and waits for, Trame's commands, Messages of the commands, Messages of the scenarios
 
@@ -939,14 +939,6 @@ Scenario · `ViewsInTheTerminal` · **held**
 
 ## Trame · Commands
 
-### What the doctor writes, runs and waits for
-
-Decision · `DoctorProbe`
-
-- Decided by: trame
-- Value: { file: probe.txt, text: trame doctor, program: probe.ts, source: console.log("trame doctor")
-, pause: 10 }
-
 ### The add-ons of a command the engine keeps
 
 Function · `AddOns` · **held**
@@ -1131,10 +1123,10 @@ Entry point · `Doctor` · **held**
 
 - Owner: trame
 - Trigger: { type: command, name: doctor }
-- Parameters: { exitStatus: std/system.ExitStatus, preparation: commands.Preparation, probe: commands.DoctorProbe, iso: std/measures.Iso8601, reading: architecture.FileReading, writing: architecture.FileWriting, trees: architecture.FileTrees, programs: architecture.Programs, runs: architecture.KeptRuns, httpServer: architecture.HttpServer, timer: architecture.Timer, reports: architecture.PackageReports, installs: architecture.PackageInstalls, layout: conventions.Layout, clock: architecture.Clock, paths: architecture.Paths, terminal: architecture.Terminal, encodings: std/system.NodeEncodings, counts: std/algebra.Counts, texts: std/algebra.Texts, messages: messages.CommandMessages, addOns: commands.AddOns }
+- Parameters: { exitStatus: std/system.ExitStatus, preparation: commands.Preparation, engine: doctor.EngineNeeds, terminal: architecture.Terminal, messages: messages.CommandMessages, addOns: commands.AddOns }
 - Serves: A specification that runs
 - Part of: Trame on the command line
-- Depends on: Preparation, What the doctor writes, runs and waits for, File reading, File writing, File trees, Programs, Runs kept, HTTP server, Timer, Reports on packages, Packages installed, Project layout, Clock, Paths, Terminal, Messages of the commands, The add-ons of a command the engine keeps
+- Depends on: Preparation, What the engine needs of the machine, Terminal, Messages of the commands, The add-ons of a command the engine keeps
 
 ### Payload
 
@@ -1475,6 +1467,123 @@ Function · `NamesLed` · **held**
 - Parameters: { loader: architecture.ModuleLoader, leading: delivery.BundlerLeading }
 - Serves: A specification that runs
 - Depends on: Module loader, How a bundle is led
+
+## Trame · Doctor
+
+### What the doctor writes, runs and waits for
+
+Decision · `DoctorProbe`
+
+- Decided by: trame
+- Value: { file: probe.txt, text: trame doctor, program: probe.ts, source: console.log("trame doctor")
+, pause: 10 }
+
+### What the engine needs of the machine
+
+Port · `EngineNeeds`
+
+- Owner: trame
+- Declared effects: { ask: read, write, process, execution, network, time, keeps, asynchronous }
+- Extension point: true
+
+### Asking
+
+Function · `Asking` · **held**
+
+- Owner: trame
+- Parameters: { messages: messages.CommandMessages }
+- Serves: A specification that runs
+- Depends on: Messages of the commands
+
+### The clock gives the day
+
+Implementation · `ClockAnswers` · **held**
+
+- Owner: trame
+- Parameters: { clock: architecture.Clock, iso: std/measures.Iso8601, asking: doctor.Asking, messages: messages.CommandMessages }
+- Implements: What the engine needs of the machine
+- Depends on: Clock, Asking, Messages of the commands
+
+### A file written is read back
+
+Implementation · `FilesAnswer` · **held**
+
+- Owner: trame
+- Parameters: { trees: architecture.FileTrees, reading: architecture.FileReading, writing: architecture.FileWriting, paths: architecture.Paths, probe: doctor.DoctorProbe, encodings: std/system.NodeEncodings, asking: doctor.Asking, messages: messages.CommandMessages }
+- Implements: What the engine needs of the machine
+- Depends on: File trees, File reading, File writing, Paths, What the doctor writes, runs and waits for, Asking, Messages of the commands
+
+### The installer installs what a manifest names and writes its lockfile
+
+Implementation · `InstallerAnswers` · **held**
+
+- Owner: trame
+- Parameters: { trees: architecture.FileTrees, reading: architecture.FileReading, writing: architecture.FileWriting, installs: architecture.PackageInstalls, layout: conventions.Layout, paths: architecture.Paths, exitStatus: std/system.ExitStatus, asking: doctor.Asking, messages: messages.CommandMessages }
+- Implements: What the engine needs of the machine
+- Depends on: File trees, File reading, File writing, Packages installed, Project layout, Paths, Asking, Messages of the commands
+
+### A program runs with the engine's loader, and prints what it says
+
+Implementation · `ProgramsAnswer` · **held**
+
+- Owner: trame
+- Parameters: { trees: architecture.FileTrees, writing: architecture.FileWriting, programs: architecture.Programs, paths: architecture.Paths, probe: doctor.DoctorProbe, exitStatus: std/system.ExitStatus, asking: doctor.Asking, messages: messages.CommandMessages }
+- Implements: What the engine needs of the machine
+- Depends on: File trees, File writing, Programs, Paths, What the doctor writes, runs and waits for, Asking, Messages of the commands
+
+### The registry answers about the packages
+
+Implementation · `RegistryAnswers` · **held**
+
+- Owner: trame
+- Parameters: { reports: architecture.PackageReports, currentProcess: architecture.Process, asking: doctor.Asking, messages: messages.CommandMessages }
+- Implements: What the engine needs of the machine
+- Depends on: Reports on packages, Process, Asking, Messages of the commands
+
+### A run is kept, and given back until a file it read changes
+
+Implementation · `RunsAnswer` · **held**
+
+- Owner: trame
+- Parameters: { trees: architecture.FileTrees, writing: architecture.FileWriting, runs: architecture.KeptRuns, paths: architecture.Paths, probe: doctor.DoctorProbe, asking: doctor.Asking, messages: messages.CommandMessages }
+- Implements: What the engine needs of the machine
+- Depends on: File trees, File writing, Runs kept, Paths, What the doctor writes, runs and waits for, Asking, Messages of the commands
+
+### A server listens on a port the system gives
+
+Implementation · `ServerAnswers` · **held**
+
+- Owner: trame
+- Parameters: { httpServer: architecture.HttpServer, counts: std/algebra.Counts, asking: doctor.Asking, messages: messages.CommandMessages }
+- Implements: What the engine needs of the machine
+- Depends on: HTTP server, Asking, Messages of the commands
+
+### The time passes
+
+Implementation · `TimerAnswers` · **held**
+
+- Owner: trame
+- Parameters: { clock: architecture.Clock, timer: architecture.Timer, probe: doctor.DoctorProbe, asking: doctor.Asking, messages: messages.CommandMessages }
+- Implements: What the engine needs of the machine
+- Depends on: Clock, Timer, What the doctor writes, runs and waits for, Asking, Messages of the commands
+
+### A directory copied is the same as the original
+
+Implementation · `TreesAnswer` · **held**
+
+- Owner: trame
+- Parameters: { trees: architecture.FileTrees, writing: architecture.FileWriting, currentProcess: architecture.Process, paths: architecture.Paths, probe: doctor.DoctorProbe, texts: std/algebra.Texts, asking: doctor.Asking, messages: messages.CommandMessages }
+- Implements: What the engine needs of the machine
+- Depends on: File trees, File writing, Process, Paths, What the doctor writes, runs and waits for, Asking, Messages of the commands
+
+### What the engine asks the machine
+
+Technical choice · `EngineQuestions` · **held**
+
+- Decided by: trame
+- Context: trame doctor answers in an empty directory and in a project whose graph does not load: what the engine needs to run is asked whatever the project says, as add-ons of its own, chosen here.
+- Chooses: The clock gives the day, A file written is read back, A directory copied is the same as the original, A program runs with the engine's loader, and prints what it says, A run is kept, and given back until a file it read changes, A server listens on a port the system gives, The time passes, The registry answers about the packages, The installer installs what a manifest names and writes its lockfile
+- In: Local, Test
 
 ## Trame · Documents
 
@@ -3719,14 +3828,14 @@ Function · `StoppedClock` · **held**
 
 ### System files, for reading
 
-Implementation · `DiskReading` · **held**
+Implementation · `DiskReading` · **unknown**
 
 - Owner: trame
 - Implements: File reading
 
 ### Trees on disk
 
-Implementation · `DiskTrees` · **held**
+Implementation · `DiskTrees` · **unknown**
 
 - Owner: trame
 - Parameters: { diff: std/text.UnifiedDiff, node: std/system.NodeCli, events: std/system.NodeEvents }
@@ -3734,7 +3843,7 @@ Implementation · `DiskTrees` · **held**
 
 ### System files, for writing
 
-Implementation · `DiskWriting` · **held**
+Implementation · `DiskWriting` · **unknown**
 
 - Owner: trame
 - Implements: File writing
@@ -3808,7 +3917,7 @@ Implementation · `NodeHashing` · **held**
 
 ### Node HTTP server
 
-Implementation · `NodeHttpServer` · **held**
+Implementation · `NodeHttpServer` · **unknown**
 
 - Owner: trame
 - Implements: HTTP server
@@ -3822,7 +3931,7 @@ Implementation · `NodePaths` · **held**
 
 ### Node process
 
-Implementation · `NodeProcess` · **held**
+Implementation · `NodeProcess` · **unknown**
 
 - Owner: trame
 - Parameters: { argv: std/system.NodeArguments, node: std/system.NodeCli, runner: platform.TypeScriptRunner, variables: conventions.TrameEnvironment, exit: std/system.ExitStatus, values: std/algebra.ValueTypes }
@@ -3831,7 +3940,7 @@ Implementation · `NodeProcess` · **held**
 
 ### Node programs
 
-Implementation · `NodePrograms` · **held**
+Implementation · `NodePrograms` · **unknown**
 
 - Owner: trame
 - Parameters: { node: std/system.NodeCli, runner: platform.TypeScriptRunner, events: std/system.NodeEvents }
@@ -3840,7 +3949,7 @@ Implementation · `NodePrograms` · **held**
 
 ### Node terminal
 
-Implementation · `NodeTerminal` · **held**
+Implementation · `NodeTerminal` · **unknown**
 
 - Owner: trame
 - Parameters: { argv: std/system.NodeArguments, exitStatus: std/system.ExitStatus, events: std/system.NodeEvents, posix: std/system.Posix, messages: messages.PlatformMessages }
@@ -3865,7 +3974,7 @@ Implementation · `NoInstallsInTest` · **held**
 
 ### npm installs
 
-Implementation · `NpmInstall` · **held**
+Implementation · `NpmInstall` · **unknown**
 
 - Owner: trame
 - Parameters: { npm: std/system.NpmCli, node: std/system.NodeCli, events: std/system.NodeEvents, exitStatus: std/system.ExitStatus }
@@ -3873,7 +3982,7 @@ Implementation · `NpmInstall` · **held**
 
 ### npm's reports
 
-Implementation · `NpmReports` · **held**
+Implementation · `NpmReports` · **unknown**
 
 - Owner: trame
 - Parameters: { npm: std/system.NpmCli, values: std/algebra.ValueTypes, counts: std/algebra.Counts, punctuation: documents.Punctuation }
@@ -3921,7 +4030,7 @@ Implementation · `RunsInTheProcess` · **held**
 
 ### Runs kept on disk
 
-Implementation · `RunsOnDisk` · **held**
+Implementation · `RunsOnDisk` · **unknown**
 
 - Owner: trame
 - Parameters: { layout: conventions.Layout, files: platform.EngineFiles, engines: engine.EngineFingerprint, scope: engine.KeptRunsScope, encodings: std/system.NodeEncodings }
@@ -3930,7 +4039,7 @@ Implementation · `RunsOnDisk` · **held**
 
 ### System clock
 
-Implementation · `SystemClock` · **held**
+Implementation · `SystemClock` · **unknown**
 
 - Owner: trame
 - Parameters: { iso: std/measures.Iso8601, environment: conventions.TrameEnvironment, sequences: std/algebra.Sequences }
@@ -4037,7 +4146,7 @@ Technical choice · `InMemoryScenarios` · **held**
 
 ### On a machine, Node.js reads, writes and runs
 
-Technical choice · `NodeMachine` · **held**
+Technical choice · `NodeMachine` · **unknown**
 
 - Decided by: trame
 - Context: What changes the world (files written, processes, the terminal, the clock) is real only on a machine; the scenarios keep it in memory.
@@ -4097,7 +4206,7 @@ Technical choice · `RunsKeptInTheProcess` · **held**
 
 ### On a machine, runs are kept on disk
 
-Technical choice · `RunsKeptOnDisk` · **held**
+Technical choice · `RunsKeptOnDisk` · **unknown**
 
 - Decided by: trame
 - Context: The commands of a shipment and of an advance run as separate processes, each compiling the same graph: what one played, the next can find only on disk.
@@ -4361,7 +4470,7 @@ Architecture decision · `ShippedThroughTheGraph` · **unknown**
 
 ### A technology is chosen in one node
 
-Architecture decision · `TechnologyInOneNode` · **held**
+Architecture decision · `TechnologyInOneNode` · **unknown**
 
 - Decided by: trame
 - Context: Each implementation said which environments it served: the choice of a technology was spread over its realizations, nothing said why, and a test double or a repository over a database port had to be declared as if it touched the platform.
@@ -6879,7 +6988,7 @@ Role · `Maintainers`
 
 ### The candidate engine
 
-Artefact · `EngineCandidate` · **held**
+Artefact · `EngineCandidate` · **unknown**
 
 - Owner: trame
 - Path: out/local/trame-cli.ts
@@ -6887,7 +6996,7 @@ Artefact · `EngineCandidate` · **held**
 
 ### The graph page
 
-Artefact · `GraphPage` · **held**
+Artefact · `GraphPage` · **unknown**
 
 - Owner: trame
 - Path: trame-page.html
@@ -6906,7 +7015,7 @@ Artefact · `PageProgram` · **held**
 
 ### The pull requests' workflow
 
-Artefact · `PullRequestWorkflow` · **held**
+Artefact · `PullRequestWorkflow` · **unknown**
 
 - Owner: trame
 - Path: .github/workflows/trame-pull-request.yml
@@ -6916,7 +7025,7 @@ Artefact · `PullRequestWorkflow` · **held**
 
 ### The engine
 
-Artefact · `TheEngine` · **held**
+Artefact · `TheEngine` · **unknown**
 
 - Owner: trame
 - Path: src
@@ -6933,7 +7042,7 @@ Check · `CandidateKeepsTheLaws` · **unknown**
 
 ### The candidate runs on the machine
 
-Check · `CandidateRunsOnTheMachine` · **held**
+Check · `CandidateRunsOnTheMachine` · **unknown**
 
 - Owner: trame
 - Checks: The candidate engine
@@ -6943,13 +7052,21 @@ Check · `CandidateRunsOnTheMachine` · **held**
 
 ### The graph page opens
 
-Check · `GraphPageOpens` · **held**
+Check · `GraphPageOpens` · **unknown**
 
 - Owner: trame
 - Checks: The graph page
 - Run by: Open the graph page
 - Signed by: Trame's maintainers
 - Verifies: Show the graph, Explorer of a graph, The browser's window, Local storage, The globals of the page, and trame dev, Amendments sent to trame dev, The browser's gzip
+
+### The machine has what Trame needs
+
+Check · `MachineAsked` · **unknown**
+
+- Owner: trame
+- Run by the engine's command: doctor
+- Signed by: Trame's maintainers
 
 ### The repository is read from GitHub
 
@@ -6961,11 +7078,12 @@ Check · `RepositoryRead` · **unknown**
 
 ### Into the main branch
 
-Shipment · `IntoMain` · **held**
+Shipment · `IntoMain` · **unknown**
 
 - Owner: trame
 - Target: main
 - Ships: The engine
+- Requires: The machine has what Trame needs
 - Programs assembled for: Local
 - Follows the policy: How a change merges
 
@@ -6993,7 +7111,7 @@ Shipment · `RepositorySet` · **unknown**
 
 ### The files that run it elsewhere
 
-Shipment · `RunnersWritten` · **held**
+Shipment · `RunnersWritten` · **unknown**
 
 - Owner: trame
 - Target: repository
