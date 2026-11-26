@@ -8728,6 +8728,19 @@
       }
     },
     {
+      "id": "packages.GenericCommands",
+      "kind": "package",
+      "title": "The commands every project runs",
+      "fields": {
+        "owner": "trame",
+        "packageName": "commands",
+        "version": "0.1.1",
+        "joins": "library",
+        "from": "path",
+        "at": "libs/commands/releases/0.1.1"
+      }
+    },
+    {
       "id": "packages.HclGrammar",
       "kind": "package",
       "title": "Grammar of HCL",
@@ -12049,6 +12062,20 @@
       }
     },
     {
+      "id": "releases.G126",
+      "kind": "release",
+      "title": "Generation 126",
+      "fields": {
+        "owner": "trame",
+        "version": "g126",
+        "date": "2026-11-26",
+        "what": "a project that lies in the sources of another keeps its runs beside that other: nothing is written into sources",
+        "fingerprint": "df7157abba49e884",
+        "language": "shared",
+        "archive": "83cab083efe384d2"
+      }
+    },
+    {
       "id": "releases.G13",
       "kind": "release",
       "title": "Generation 13",
@@ -14461,6 +14488,20 @@
       }
     },
     {
+      "id": "sdlc.CommandsWrittenOnce",
+      "kind": "binding",
+      "title": "The commands Trame takes from libs/commands",
+      "status": "unknown",
+      "fields": {
+        "owner": "trame",
+        "context": "The engine's commands reached its modules directly: a project could neither choose them nor specialize them, and a command of its own could not compute what they computed.",
+        "consequences": "trame plan runs on a machine and in a session alike, chosen for Local only: the dispatch asks for no environment. The engine's plan stays until the generation that removes the commands every project then runs from the library.",
+        "rejected": {
+          "The engine's own commands, kept": "they would stay out of reach of every project's choice, and the engine the only one to reach its modules"
+        }
+      }
+    },
+    {
       "id": "sdlc.EngineCallersIdentified",
       "kind": "obligation",
       "title": "Its callers identified",
@@ -14842,6 +14883,15 @@
       "fields": {
         "owner": "trame",
         "path": "out/browser/page-app.ts"
+      }
+    },
+    {
+      "id": "sdlc.PlanRunsInTheEngine",
+      "kind": "check",
+      "title": "trame plan runs in the engine",
+      "status": "unknown",
+      "fields": {
+        "owner": "trame"
       }
     },
     {
@@ -25170,6 +25220,11 @@
       "kind": "serves"
     },
     {
+      "from": "packages.GenericCommands",
+      "to": "product.SingleSource",
+      "kind": "serves"
+    },
+    {
       "from": "packages.Machine",
       "to": "product.SingleSource",
       "kind": "serves"
@@ -28010,6 +28065,16 @@
       "kind": "assembledBy"
     },
     {
+      "from": "releases.G126",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G126",
+      "to": "releases.G125",
+      "kind": "assembledBy"
+    },
+    {
       "from": "releases.G13",
       "to": "architecture.TrameCli",
       "kind": "component"
@@ -30500,6 +30565,16 @@
       "kind": "serves"
     },
     {
+      "from": "sdlc.CommandsWrittenOnce",
+      "to": "architecture.Local",
+      "kind": "environments"
+    },
+    {
+      "from": "sdlc.CommandsWrittenOnce",
+      "to": "product.ExecutableSpecification",
+      "kind": "serves"
+    },
+    {
       "from": "sdlc.EngineCallersIdentified",
       "to": "product.ExecutableSpecification",
       "kind": "serves"
@@ -30642,6 +30717,11 @@
     {
       "from": "sdlc.IntoMain",
       "to": "sdlc.MachineAsked",
+      "kind": "requires"
+    },
+    {
+      "from": "sdlc.IntoMain",
+      "to": "sdlc.PlanRunsInTheEngine",
       "kind": "requires"
     },
     {
@@ -30943,6 +31023,11 @@
       "from": "sdlc.PageProgram",
       "to": "architecture.Browser",
       "kind": "environment"
+    },
+    {
+      "from": "sdlc.PlanRunsInTheEngine",
+      "to": "sdlc.Maintainers",
+      "kind": "by"
     },
     {
       "from": "sdlc.PullRequestWorkflow",

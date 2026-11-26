@@ -633,6 +633,27 @@ Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Ge
 - Released by: trame
 - Releases: [Trame on the command line](architecture.md#TrameCli)
 - Assembled by: [Generation 124](#G124)
+- Assembled: [Generation 126](#G126)
+
+<a id="G126"></a>
+
+### Generation 126
+
+`G126` · `src/releases.ts:1869`
+
+a project that lies in the sources of another keeps its runs beside that other: nothing is written into sources
+
+Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Generation 125](#G125).
+
+- Version: `g126`
+- Released on: 26 November 2026
+- Fingerprint: `df7157abba49e884`
+- Language: the repository's, shared
+- Language archived: `83cab083efe384d2`
+
+- Released by: trame
+- Releases: [Trame on the command line](architecture.md#TrameCli)
+- Assembled by: [Generation 125](#G125)
 
 <a id="G13"></a>
 

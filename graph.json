@@ -1462,7 +1462,7 @@
           "status": "passed"
         },
         {
-          "name": "The candidate is accepted (  ✓ trame runs g126 |   ✓ reservations runs g126 | Advance succeeded.)",
+          "name": "The candidate is accepted (  ✓ trame runs g127 |   ✓ reservations runs g127 | Advance succeeded.)",
           "status": "passed"
         },
         {
@@ -11370,6 +11370,21 @@
       "diagnostics": []
     },
     {
+      "id": "packages.GenericCommands",
+      "kind": "package",
+      "title": "The commands every project runs",
+      "source": "src/packages.ts:190",
+      "fields": {
+        "owner": "trame",
+        "packageName": "commands",
+        "version": "0.1.1",
+        "joins": "library",
+        "from": "path",
+        "at": "libs/commands/releases/0.1.1"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "packages.HclGrammar",
       "kind": "package",
       "title": "Grammar of HCL",
@@ -15603,6 +15618,22 @@
       "diagnostics": []
     },
     {
+      "id": "releases.G126",
+      "kind": "release",
+      "title": "Generation 126",
+      "source": "src/releases.ts:1869",
+      "fields": {
+        "owner": "trame",
+        "version": "g126",
+        "date": "2026-11-26",
+        "what": "a project that lies in the sources of another keeps its runs beside that other: nothing is written into sources",
+        "fingerprint": "df7157abba49e884",
+        "language": "shared",
+        "archive": "83cab083efe384d2"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "releases.G13",
       "kind": "release",
       "title": "Generation 13",
@@ -18277,7 +18308,7 @@
       "id": "sdlc.AdvanceAGeneration",
       "kind": "entry",
       "title": "Advance",
-      "source": "src/sdlc.ts:783",
+      "source": "src/sdlc.ts:812",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -18312,7 +18343,7 @@
       "id": "sdlc.AdvancedInOneCommand",
       "kind": "scenario",
       "title": "A generation advanced in one command",
-      "source": "src/sdlc.ts:810",
+      "source": "src/sdlc.ts:839",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -18346,7 +18377,7 @@
       "id": "sdlc.AdvanceSample",
       "kind": "decision",
       "title": "Who advances, and what changes",
-      "source": "src/sdlc.ts:799",
+      "source": "src/sdlc.ts:828",
       "fields": {
         "owner": "trame",
         "value": {
@@ -18360,7 +18391,7 @@
       "id": "sdlc.ApplyTheRepositorySettings",
       "kind": "entry",
       "title": "Set the repository's settings",
-      "source": "src/sdlc.ts:493",
+      "source": "src/sdlc.ts:505",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -18388,7 +18419,7 @@
       "id": "sdlc.ArchitectureApplied",
       "kind": "obligation",
       "title": "The decisions of the architecture hold",
-      "source": "src/sdlc.ts:101",
+      "source": "src/sdlc.ts:103",
       "fields": {
         "owner": "trame"
       },
@@ -18398,7 +18429,7 @@
       "id": "sdlc.ArchitectureRuled",
       "kind": "obligation",
       "title": "The rules of the architecture hold",
-      "source": "src/sdlc.ts:113",
+      "source": "src/sdlc.ts:115",
       "fields": {
         "owner": "trame"
       },
@@ -18408,7 +18439,7 @@
       "id": "sdlc.AutoMergeInASession",
       "kind": "binding",
       "title": "GitHub merges once it holds, asked in a session",
-      "source": "src/sdlc.ts:708",
+      "source": "src/sdlc.ts:737",
       "status": "unknown",
       "fields": {
         "owner": "trame",
@@ -18420,7 +18451,7 @@
       "id": "sdlc.AutoMergeOnTheMachine",
       "kind": "binding",
       "title": "GitHub merges once it holds, asked by its command line",
-      "source": "src/sdlc.ts:696",
+      "source": "src/sdlc.ts:725",
       "status": "unknown",
       "fields": {
         "owner": "trame",
@@ -18432,7 +18463,7 @@
       "id": "sdlc.CandidateChecked",
       "kind": "obligation",
       "title": "The candidate is checked by programs",
-      "source": "src/sdlc.ts:107",
+      "source": "src/sdlc.ts:109",
       "fields": {
         "owner": "trame",
         "params": {
@@ -18445,7 +18476,7 @@
       "id": "sdlc.CandidateKeepsTheLaws",
       "kind": "check",
       "title": "The candidate plays the laws",
-      "source": "src/sdlc.ts:77",
+      "source": "src/sdlc.ts:79",
       "status": "unknown",
       "fields": {
         "owner": "trame"
@@ -18461,7 +18492,7 @@
       "id": "sdlc.CandidateRunsOnTheMachine",
       "kind": "check",
       "title": "The candidate runs on the machine",
-      "source": "src/sdlc.ts:146",
+      "source": "src/sdlc.ts:148",
       "status": "unknown",
       "fields": {
         "owner": "trame"
@@ -18477,7 +18508,7 @@
       "id": "sdlc.CommandsOfStd",
       "kind": "binding",
       "title": "The commands Trame takes from std",
-      "source": "src/sdlc.ts:669",
+      "source": "src/sdlc.ts:681",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -18489,10 +18520,26 @@
       "diagnostics": []
     },
     {
+      "id": "sdlc.CommandsWrittenOnce",
+      "kind": "binding",
+      "title": "The commands Trame takes from libs/commands",
+      "source": "src/sdlc.ts:697",
+      "status": "unknown",
+      "fields": {
+        "owner": "trame",
+        "context": "The engine's commands reached its modules directly: a project could neither choose them nor specialize them, and a command of its own could not compute what they computed.",
+        "consequences": "trame plan runs on a machine and in a session alike, chosen for Local only: the dispatch asks for no environment. The engine's plan stays until the generation that removes the commands every project then runs from the library.",
+        "rejected": {
+          "The engine's own commands, kept": "they would stay out of reach of every project's choice, and the engine the only one to reach its modules"
+        }
+      },
+      "diagnostics": []
+    },
+    {
       "id": "sdlc.EngineCallersIdentified",
       "kind": "obligation",
       "title": "Its callers identified",
-      "source": "src/sdlc.ts:126",
+      "source": "src/sdlc.ts:128",
       "fields": {
         "owner": "trame",
         "gaps": "error"
@@ -18503,7 +18550,7 @@
       "id": "sdlc.EngineCandidate",
       "kind": "artifact",
       "title": "The candidate engine",
-      "source": "src/sdlc.ts:71",
+      "source": "src/sdlc.ts:73",
       "status": "unknown",
       "fields": {
         "owner": "trame",
@@ -18511,7 +18558,7 @@
       },
       "result": {
         "path": "out/local/trame-cli.ts",
-        "code": "5326ac9d"
+        "code": "42c9f4f7"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -18521,7 +18568,7 @@
       "id": "sdlc.EnginePackagesSafe",
       "kind": "obligation",
       "title": "The packages are safe",
-      "source": "src/sdlc.ts:119",
+      "source": "src/sdlc.ts:121",
       "fields": {
         "owner": "trame"
       },
@@ -18531,7 +18578,7 @@
       "id": "sdlc.EngineVerified",
       "kind": "obligation",
       "title": "The engine is verified",
-      "source": "src/sdlc.ts:85",
+      "source": "src/sdlc.ts:87",
       "fields": {
         "owner": "trame",
         "params": {
@@ -18548,7 +18595,7 @@
       "id": "sdlc.GenerationMode",
       "kind": "policy",
       "title": "How a generation is made",
-      "source": "src/sdlc.ts:134",
+      "source": "src/sdlc.ts:136",
       "fields": {
         "owner": "trame"
       },
@@ -18558,7 +18605,7 @@
       "id": "sdlc.GraphPage",
       "kind": "artifact",
       "title": "The graph page",
-      "source": "src/sdlc.ts:250",
+      "source": "src/sdlc.ts:262",
       "status": "unknown",
       "fields": {
         "owner": "trame",
@@ -18577,7 +18624,7 @@
       "id": "sdlc.GraphPageOpening",
       "kind": "decision",
       "title": "How the graph page is opened",
-      "source": "src/sdlc.ts:256",
+      "source": "src/sdlc.ts:268",
       "fields": {
         "owner": "trame",
         "value": {
@@ -18590,7 +18637,7 @@
       "id": "sdlc.GraphPageOpens",
       "kind": "check",
       "title": "The graph page opens",
-      "source": "src/sdlc.ts:334",
+      "source": "src/sdlc.ts:346",
       "status": "unknown",
       "fields": {
         "owner": "trame"
@@ -18606,7 +18653,7 @@
       "id": "sdlc.GraphPageScenarioData",
       "kind": "decision",
       "title": "What the scenario of the graph page shows",
-      "source": "src/sdlc.ts:343",
+      "source": "src/sdlc.ts:355",
       "fields": {
         "owner": "trame",
         "value": {
@@ -18619,7 +18666,7 @@
       "id": "sdlc.GraphPageSelectors",
       "kind": "function",
       "title": "What the graph page is asked",
-      "source": "src/sdlc.ts:264",
+      "source": "src/sdlc.ts:276",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -18639,7 +18686,7 @@
       "id": "sdlc.HowAGenerationAdvances",
       "kind": "decision",
       "title": "How a generation advances",
-      "source": "src/sdlc.ts:768",
+      "source": "src/sdlc.ts:797",
       "fields": {
         "owner": "trame",
         "value": {
@@ -18661,7 +18708,7 @@
       "id": "sdlc.IntoMain",
       "kind": "shipment",
       "title": "Into the main branch",
-      "source": "src/sdlc.ts:407",
+      "source": "src/sdlc.ts:419",
       "status": "unknown",
       "fields": {
         "owner": "trame",
@@ -19274,6 +19321,7 @@
           "packages.ContinuousIntegration",
           "packages.CssGrammar",
           "packages.EsbuildPackage",
+          "packages.GenericCommands",
           "packages.HclGrammar",
           "packages.HtmlGrammar",
           "packages.Machine",
@@ -19471,6 +19519,7 @@
           "sdlc.CandidateKeepsTheLaws",
           "sdlc.CandidateRunsOnTheMachine",
           "sdlc.CommandsOfStd",
+          "sdlc.CommandsWrittenOnce",
           "sdlc.EngineCallersIdentified",
           "sdlc.EngineCandidate",
           "sdlc.EnginePackagesSafe",
@@ -19498,6 +19547,7 @@
           "sdlc.OurPullRequests",
           "sdlc.OurSettingsInTheScenarios",
           "sdlc.PageProgram",
+          "sdlc.PlanRunsInTheEngine",
           "sdlc.PullRequestsOnGitHub",
           "sdlc.PullRequestWorkflow",
           "sdlc.ReadTheRepositorySettings",
@@ -19590,6 +19640,7 @@
       "diagnostics": [
         "warning: To ship: The engine is unknown",
         "warning: To ship: The machine has what Trame needs is unknown",
+        "warning: To ship: trame plan runs in the engine is unknown",
         "warning: To ship: The graph page opens is unknown",
         "warning: To ship: The candidate runs on the machine is unknown"
       ]
@@ -19598,7 +19649,7 @@
       "id": "sdlc.LanguageServed",
       "kind": "obligation",
       "title": "The language serves what it says",
-      "source": "src/sdlc.ts:94",
+      "source": "src/sdlc.ts:96",
       "fields": {
         "owner": "trame"
       },
@@ -19608,7 +19659,7 @@
       "id": "sdlc.MachineAsked",
       "kind": "check",
       "title": "The machine has what Trame needs",
-      "source": "src/sdlc.ts:221",
+      "source": "src/sdlc.ts:223",
       "status": "unknown",
       "fields": {
         "owner": "trame",
@@ -19625,7 +19676,7 @@
       "id": "sdlc.MainBranch",
       "kind": "decision",
       "title": "How the repository merges into main",
-      "source": "src/sdlc.ts:451",
+      "source": "src/sdlc.ts:463",
       "fields": {
         "owner": "trame",
         "value": {
@@ -19662,7 +19713,7 @@
       "id": "sdlc.Maintainers",
       "kind": "role",
       "title": "Trame's maintainers",
-      "source": "src/sdlc.ts:65",
+      "source": "src/sdlc.ts:67",
       "fields": {
         "owner": "trame",
         "people": [
@@ -19676,7 +19727,7 @@
       "id": "sdlc.MergeMode",
       "kind": "policy",
       "title": "How a change merges",
-      "source": "src/sdlc.ts:400",
+      "source": "src/sdlc.ts:412",
       "fields": {
         "owner": "trame"
       },
@@ -19686,7 +19737,7 @@
       "id": "sdlc.NextGeneration",
       "kind": "shipment",
       "title": "The next generation",
-      "source": "src/sdlc.ts:380",
+      "source": "src/sdlc.ts:392",
       "status": "unknown",
       "fields": {
         "owner": "trame",
@@ -20642,7 +20693,7 @@
       "id": "sdlc.OpeningTheGraphPage",
       "kind": "scenario",
       "title": "The graph page is opened as a person would",
-      "source": "src/sdlc.ts:350",
+      "source": "src/sdlc.ts:362",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -20675,7 +20726,7 @@
       "id": "sdlc.OpenTheGraphPage",
       "kind": "entry",
       "title": "Open the graph page",
-      "source": "src/sdlc.ts:317",
+      "source": "src/sdlc.ts:329",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -20704,7 +20755,7 @@
       "id": "sdlc.OurCommandsSettled",
       "kind": "scenario",
       "title": "Trame's settings, as std's commands read them",
-      "source": "src/sdlc.ts:734",
+      "source": "src/sdlc.ts:763",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -20738,7 +20789,7 @@
       "id": "sdlc.OurMachines",
       "kind": "decision",
       "title": "The machines Trame runs on",
-      "source": "src/sdlc.ts:182",
+      "source": "src/sdlc.ts:184",
       "fields": {
         "owner": "trame",
         "value": {
@@ -20759,7 +20810,7 @@
       "id": "sdlc.OurMachineSettings",
       "kind": "function",
       "title": "What the machine runs, for Trame",
-      "source": "src/sdlc.ts:195",
+      "source": "src/sdlc.ts:197",
       "status": "unknown",
       "fields": {
         "owner": "trame",
@@ -20774,7 +20825,7 @@
       "id": "sdlc.OurPropagation",
       "kind": "function",
       "title": "How a version is carried across Trame's repository",
-      "source": "src/sdlc.ts:646",
+      "source": "src/sdlc.ts:658",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -20797,7 +20848,7 @@
       "id": "sdlc.OurPullRequests",
       "kind": "function",
       "title": "How Trame's pull requests are opened",
-      "source": "src/sdlc.ts:628",
+      "source": "src/sdlc.ts:640",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -20817,7 +20868,7 @@
       "id": "sdlc.OurSettingsInTheScenarios",
       "kind": "binding",
       "title": "Trame's settings in the scenarios",
-      "source": "src/sdlc.ts:720",
+      "source": "src/sdlc.ts:749",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -20829,7 +20880,7 @@
       "id": "sdlc.PageProgram",
       "kind": "artifact",
       "title": "The page's program",
-      "source": "src/sdlc.ts:243",
+      "source": "src/sdlc.ts:255",
       "status": "unknown",
       "fields": {
         "owner": "trame",
@@ -20844,10 +20895,26 @@
       ]
     },
     {
+      "id": "sdlc.PlanRunsInTheEngine",
+      "kind": "check",
+      "title": "trame plan runs in the engine",
+      "source": "src/sdlc.ts:233",
+      "status": "unknown",
+      "fields": {
+        "owner": "trame"
+      },
+      "result": {
+        "code": "352d79ea"
+      },
+      "diagnostics": [
+        "warning: To run: trame ship runs it on the artefacts it checks"
+      ]
+    },
+    {
       "id": "sdlc.PullRequestsOnGitHub",
       "kind": "decision",
       "title": "How a pull request is checked on GitHub",
-      "source": "src/sdlc.ts:416",
+      "source": "src/sdlc.ts:428",
       "fields": {
         "owner": "trame",
         "value": {
@@ -20882,7 +20949,7 @@
       "id": "sdlc.PullRequestWorkflow",
       "kind": "artifact",
       "title": "The pull requests' workflow",
-      "source": "src/sdlc.ts:434",
+      "source": "src/sdlc.ts:446",
       "status": "unknown",
       "fields": {
         "owner": "trame",
@@ -20891,7 +20958,7 @@
       },
       "result": {
         "path": ".github/workflows/trame-pull-request.yml",
-        "code": "7d46d845"
+        "code": "b395be3d"
       },
       "diagnostics": [
         "warning: Not built yet: trame ship builds it"
@@ -20901,7 +20968,7 @@
       "id": "sdlc.ReadTheRepositorySettings",
       "kind": "entry",
       "title": "Read the repository's settings",
-      "source": "src/sdlc.ts:478",
+      "source": "src/sdlc.ts:490",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -20929,7 +20996,7 @@
       "id": "sdlc.RepositoryProjects",
       "kind": "decision",
       "title": "The repository's projects",
-      "source": "src/sdlc.ts:603",
+      "source": "src/sdlc.ts:615",
       "fields": {
         "owner": "trame",
         "value": [
@@ -20998,7 +21065,7 @@
       "id": "sdlc.RepositoryRead",
       "kind": "check",
       "title": "The repository is read from GitHub",
-      "source": "src/sdlc.ts:508",
+      "source": "src/sdlc.ts:520",
       "status": "unknown",
       "fields": {
         "owner": "trame"
@@ -21014,7 +21081,7 @@
       "id": "sdlc.RepositoryScenarioData",
       "kind": "decision",
       "title": "The repository left by hand, in the scenario",
-      "source": "src/sdlc.ts:514",
+      "source": "src/sdlc.ts:526",
       "fields": {
         "owner": "trame",
         "value": {
@@ -21040,7 +21107,7 @@
       "id": "sdlc.RepositorySet",
       "kind": "shipment",
       "title": "The repository as decided",
-      "source": "src/sdlc.ts:559",
+      "source": "src/sdlc.ts:571",
       "status": "unknown",
       "fields": {
         "owner": "trame",
@@ -21122,7 +21189,7 @@
       "id": "sdlc.RepositoryWorkOnAMachine",
       "kind": "binding",
       "title": "The repository's work on a machine",
-      "source": "src/sdlc.ts:684",
+      "source": "src/sdlc.ts:713",
       "status": "unknown",
       "fields": {
         "owner": "trame",
@@ -21134,7 +21201,7 @@
       "id": "sdlc.RunnersWritten",
       "kind": "shipment",
       "title": "The files that run it elsewhere",
-      "source": "src/sdlc.ts:574",
+      "source": "src/sdlc.ts:586",
       "status": "unknown",
       "fields": {
         "owner": "trame",
@@ -21156,7 +21223,7 @@
       "id": "sdlc.SdlcInMemory",
       "kind": "binding",
       "title": "The SDLC in memory",
-      "source": "src/sdlc.ts:230",
+      "source": "src/sdlc.ts:242",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -21168,7 +21235,7 @@
       "id": "sdlc.SdlcOnTheMachine",
       "kind": "binding",
       "title": "The SDLC on the machine",
-      "source": "src/sdlc.ts:169",
+      "source": "src/sdlc.ts:171",
       "status": "unknown",
       "fields": {
         "owner": "trame",
@@ -21180,7 +21247,7 @@
       "id": "sdlc.SdlcWords",
       "kind": "catalog",
       "title": "What the programs of Trame's SDLC say",
-      "source": "src/sdlc.ts:286",
+      "source": "src/sdlc.ts:298",
       "fields": {
         "owner": "trame",
         "messages": "(function)"
@@ -21191,7 +21258,7 @@
       "id": "sdlc.SettingsMode",
       "kind": "policy",
       "title": "How the repository is set",
-      "source": "src/sdlc.ts:551",
+      "source": "src/sdlc.ts:563",
       "fields": {
         "owner": "trame"
       },
@@ -21201,7 +21268,7 @@
       "id": "sdlc.SettingTheRepository",
       "kind": "scenario",
       "title": "The repository is set as the graph decides",
-      "source": "src/sdlc.ts:524",
+      "source": "src/sdlc.ts:536",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -21239,7 +21306,7 @@
       "id": "sdlc.TheEngine",
       "kind": "artifact",
       "title": "The engine",
-      "source": "src/sdlc.ts:393",
+      "source": "src/sdlc.ts:405",
       "status": "unknown",
       "fields": {
         "owner": "trame",
@@ -21248,7 +21315,7 @@
       },
       "result": {
         "path": "src",
-        "code": "78c9d2c4"
+        "code": "a7689308"
       },
       "diagnostics": [
         "warning: Not built yet: trame ship builds it"
@@ -21258,7 +21325,7 @@
       "id": "sdlc.TheRepository",
       "kind": "decision",
       "title": "Trame's repository",
-      "source": "src/sdlc.ts:470",
+      "source": "src/sdlc.ts:482",
       "fields": {
         "owner": "trame",
         "value": {
@@ -21271,7 +21338,7 @@
       "id": "sdlc.TrameSdlc",
       "kind": "component",
       "title": "Trame's SDLC",
-      "source": "src/sdlc.ts:156",
+      "source": "src/sdlc.ts:158",
       "fields": {
         "owner": "trame",
         "language": "typescript",
@@ -21285,7 +21352,7 @@
       "id": "sdlc.WhatTheMachineMustHave",
       "kind": "binding",
       "title": "What the machine must also have",
-      "source": "src/sdlc.ts:207",
+      "source": "src/sdlc.ts:209",
       "status": "unknown",
       "fields": {
         "owner": "trame",
@@ -34626,6 +34693,11 @@
       "kind": "serves"
     },
     {
+      "from": "packages.GenericCommands",
+      "to": "product.SingleSource",
+      "kind": "serves"
+    },
+    {
       "from": "packages.Machine",
       "to": "product.SingleSource",
       "kind": "serves"
@@ -38066,6 +38138,16 @@
       "kind": "assembledBy"
     },
     {
+      "from": "releases.G126",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G126",
+      "to": "releases.G125",
+      "kind": "assembledBy"
+    },
+    {
       "from": "releases.G13",
       "to": "architecture.TrameCli",
       "kind": "component"
@@ -40926,6 +41008,31 @@
       "kind": "serves"
     },
     {
+      "from": "sdlc.CommandsWrittenOnce",
+      "to": "commands/commands.Plan",
+      "kind": "chooses"
+    },
+    {
+      "from": "sdlc.CommandsWrittenOnce",
+      "to": "std/engine.ProjectInTheEngine",
+      "kind": "chooses"
+    },
+    {
+      "from": "sdlc.CommandsWrittenOnce",
+      "to": "architecture.Local",
+      "kind": "environments"
+    },
+    {
+      "from": "sdlc.CommandsWrittenOnce",
+      "to": "std/patterns.Command",
+      "kind": "follows"
+    },
+    {
+      "from": "sdlc.CommandsWrittenOnce",
+      "to": "product.ExecutableSpecification",
+      "kind": "serves"
+    },
+    {
       "from": "sdlc.EngineCallersIdentified",
       "to": "std/obligations.Identified",
       "kind": "applies"
@@ -41113,6 +41220,11 @@
     {
       "from": "sdlc.IntoMain",
       "to": "sdlc.MachineAsked",
+      "kind": "requires"
+    },
+    {
+      "from": "sdlc.IntoMain",
+      "to": "sdlc.PlanRunsInTheEngine",
       "kind": "requires"
     },
     {
@@ -41524,6 +41636,21 @@
       "from": "sdlc.PageProgram",
       "to": "architecture.Browser",
       "kind": "environment"
+    },
+    {
+      "from": "sdlc.PlanRunsInTheEngine",
+      "to": "commands/commands.Plan",
+      "kind": "runs"
+    },
+    {
+      "from": "sdlc.PlanRunsInTheEngine",
+      "to": "sdlc.Maintainers",
+      "kind": "by"
+    },
+    {
+      "from": "sdlc.PlanRunsInTheEngine",
+      "to": "std/engine.ProjectInTheEngine",
+      "kind": "verifies"
     },
     {
       "from": "sdlc.PullRequestWorkflow",

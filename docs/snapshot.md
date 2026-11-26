@@ -3268,6 +3268,18 @@ Package · `EsbuildPackage` · **held**
 - In the registry: https://www.npmjs.com/package/esbuild
 - What it may do: read, write, process
 
+### The commands every project runs
+
+Package · `GenericCommands`
+
+- Owner: trame
+- Name: commands
+- Version: 0.1.1
+- How it joins the graph: library
+- Where it comes from: path
+- Its path: libs/commands/releases/0.1.1
+- Serves: A single source of truth
+
 ### Grammar of HCL
 
 Package · `HclGrammar` · **held**
@@ -5064,6 +5076,20 @@ Release · `G125`
 - Language archived: 83cab083efe384d2
 - Releases: Trame on the command line
 - Assembled by: Generation 124
+
+### Generation 126
+
+Release · `G126`
+
+- Released by: trame
+- Version: g126
+- Released on: 2026-11-26
+- What changes: a project that lies in the sources of another keeps its runs beside that other: nothing is written into sources
+- Fingerprint: df7157abba49e884
+- Language: shared
+- Language archived: 83cab083efe384d2
+- Releases: Trame on the command line
+- Assembled by: Generation 125
 
 ### Generation 13
 
@@ -6984,6 +7010,17 @@ Technical choice · `CommandsOfStd` · **held**
 - In: Local, A session of Claude Code
 - Serves: A specification that runs
 
+### The commands Trame takes from libs/commands
+
+Technical choice · `CommandsWrittenOnce` · **unknown**
+
+- Decided by: trame
+- Context: The engine's commands reached its modules directly: a project could neither choose them nor specialize them, and a command of its own could not compute what they computed.
+- Consequences: trame plan runs on a machine and in a session alike, chosen for Local only: the dispatch asks for no environment. The engine's plan stays until the generation that removes the commands every project then runs from the library.
+- Rejected: The engine's own commands, kept, they would stay out of reach of every project's choice, and the engine the only one to reach its modules
+- In: Local
+- Serves: A specification that runs
+
 ### Trame's settings in the scenarios
 
 Technical choice · `OurSettingsInTheScenarios` · **held**
@@ -7156,6 +7193,13 @@ Check · `MachineAsked` · **unknown**
 - Signed by: Trame's maintainers
 - Verifies: What the machine runs, for Trame
 
+### trame plan runs in the engine
+
+Check · `PlanRunsInTheEngine` · **unknown**
+
+- Owner: trame
+- Signed by: Trame's maintainers
+
 ### The repository is read from GitHub
 
 Check · `RepositoryRead` · **unknown**
@@ -7171,7 +7215,7 @@ Shipment · `IntoMain` · **unknown**
 - Owner: trame
 - Target: main
 - Ships: The engine
-- Requires: The machine has what Trame needs
+- Requires: The machine has what Trame needs, trame plan runs in the engine
 - Programs assembled for: Local
 - Follows the policy: How a change merges
 
