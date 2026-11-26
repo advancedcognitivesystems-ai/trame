@@ -5,3 +5,5 @@ examples/reservations/out/
 out/session/
 out/local/trame-sdlc.ts
 out/local/trame-sdlc.node.ts
+out/local/commands.ts
+out/local/commands.node.ts

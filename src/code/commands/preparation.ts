@@ -3,7 +3,7 @@
 
 import { withEngine } from "../../../trame/kernel"
 import type { AnyNode, Compilation, CompiledProject, Document, EngineApi, ProvidedBy, Severity, View } from "../../../trame/kernel"
-import type { Clock, Layout, Paths, Process, Terminal } from "../../architecture"
+import type { Clock, FileReading, Layout, Paths, Process, Terminal } from "../../architecture"
 import type { CommandMessages } from "../../messages"
 import type { Api as CompilerApi, Compiled, Loaded } from "../engine/compiler"
 import type { Api as CompilationApi } from "../engine/compilation-api"
@@ -12,6 +12,7 @@ import type { Api as ViewsApi, ViewFailure } from "../engine/views"
 import type { Api as LockApi } from "../engine/lock"
 import type { Api as CommonApi } from "../rendering/common"
 import type { Counts, Sequences, Texts } from "#std/algebra"
+import type { NodeModuleSpecifiers } from "#std/system"
 import type { TrameCommands } from "../../conventions"
 import type { Uri } from "#std/web"
 import type { References } from "../../engine"
@@ -51,6 +52,10 @@ export interface Deps {
   /** The graph as a build writes it, for tools and agents: what the engine's API gives of a project (since g124). */
   machine: MachineApi
   paths: Paths
+  /** Whether a directory the API is asked to compile holds a project (since g125). */
+  reading: FileReading
+  /** How a project the API is asked to compile is named by a package and a path in it (since g125). */
+  specifiers: ProvidedBy<typeof NodeModuleSpecifiers>
   /** The commands the engine keeps, whatever the project says (since g119): a command of the project never takes their names. */
   kept: readonly string[]
 }
@@ -254,9 +259,9 @@ const body = (deps: Deps) => {
   }
 
   /** A graph read, compiled at a date, with trame.lock; the engine running while it is (the scenarios it plays reach it). */
-  async function compiledAt(read: Loaded, date: string): Promise<Ctx> {
+  async function compiledAt(read: Loaded, date: string, opts: { keep?: boolean } = {}): Promise<Ctx> {
     // A day before today: what was proven then is judged as it was given, the code and the engine of that day unknown.
-    const c = await running(() => compileAt(read, date, { asGiven: date < deps.clock.today() }))
+    const c = await running(read, () => compileAt(read, date, { asGiven: date < deps.clock.today(), ...opts }))
     const lockIssues = checkLock(c, read.root)
     const hidden = deps.projectCommands.hidden(c, deps.kept, deps.views.sortedViews().map((v) => v.name))
     c.diags.push(...lockIssues, ...hidden)
@@ -274,32 +279,56 @@ const body = (deps: Deps) => {
     root, today: c.today, graph: comp, written: () => deps.machine.graphJson(c), snapshot: () => deps.machine.snapshotJson(c),
   })
 
-  /** Another project compiled at a date, the project already read left as it was; refused with what refuses it. */
-  async function elsewhere(root: string, today: string): Promise<CompiledProject> {
-    const at = deps.paths.resolve(deps.currentProcess.cwd(), root)
-    const { refused, read } = await refusals(at, today)
-    if (!read) throw new Error(messages.projectRefusedHere(at, refused))
-    return project(at, await compiledAt(read, today))
+  /**
+   * Where a project the API is asked to compile is (since g125): a directory from where the engine runs, or, named by a
+   * package and a path in it (#commands/samples/small), in the sources of the package the project being compiled leads
+   * that name to: its own (its directory's name), or one of its libraries, as it imports it. A library's scenario then
+   * finds what its version carries, wherever the project that plays it imports it.
+   */
+  function located(root: string, compiling: Loaded | undefined): string {
+    const { imports, separator } = deps.specifiers
+    if (!root.startsWith(imports)) return deps.paths.resolve(deps.currentProcess.cwd(), root)
+    const [name, ...inside] = root.slice(imports.length).split(separator)
+    const led = compiling === undefined ? undefined
+      : deps.paths.basename(compiling.root) === name ? compiling.root : compiling.libraries.find((lib) => lib.name === name)?.root
+    if (led === undefined) throw new Error(messages.projectRefusedHere(root, [messages.packageNotLed(name)]))
+    return deps.paths.join(led, deps.projectLayout.sources, ...inside)
   }
 
-  /** The engine's API: the project as the dispatch prepared it for the command, when there is one. */
-  function api(prepared?: { o: Options; ctx: Ctx }): EngineApi {
+  /**
+   * Another project compiled at a date, the project already read left as it was, nothing kept beside it; refused with
+   * what refuses it, a directory without a configuration first.
+   */
+  async function elsewhere(root: string, today: string, compiling: Loaded | undefined): Promise<CompiledProject> {
+    const at = located(root, compiling)
+    const configuration = deps.projectLayout.configuration
+    if (!deps.reading.existsSync(deps.paths.join(at, configuration))) throw new Error(messages.projectRefusedHere(at, [messages.notAProject(configuration)]))
+    const { refused, read } = await refusals(at, today)
+    if (!read) throw new Error(messages.projectRefusedHere(at, refused))
+    return project(at, await compiledAt(read, today, { keep: false }))
+  }
+
+  /**
+   * The engine's API: the project as the dispatch prepared it for the command, when there is one; the project being
+   * compiled, by whose packages a project to compile may be named.
+   */
+  function api(prepared?: { o: Options; ctx: Ctx }, compiling: Loaded | undefined = loaded): EngineApi {
     return {
       layout: deps.projectLayout,
       prepared: () => (prepared === undefined ? undefined : project(prepared.o.root, prepared.ctx)),
-      compile: elsewhere,
+      compile: (root, today) => elsewhere(root, today, compiling),
     }
   }
 
-  /** Runs `f` with this engine running: what it compiles reaches the API, the project it prepares not given. */
-  const running = <T>(f: () => Promise<T>) => withEngine({ offer: () => undefined, api: api() }, f)
+  /** Runs `f` with this engine running, while it compiles a project: what it compiles reaches the API, no project prepared. */
+  const running = <T>(compiling: Loaded, f: () => Promise<T>) => withEngine({ offer: () => undefined, api: api(undefined, compiling) }, f)
 
   /**
    * The loaded graph compiled at a date with nodes besides its own (an amendment not yet recorded, since g85): what the
    * graph would be, written nowhere. The graph as loaded is left as it was.
    */
   async function alsoWith(o: Options, extra: readonly AnyNode[], date: string): Promise<Ctx> {
-    const c = await running(() => compileAt({ ...loaded!, nodes: [...loaded!.nodes, ...extra] }, date))
+    const c = await running(loaded!, () => compileAt({ ...loaded!, nodes: [...loaded!.nodes, ...extra] }, date))
     c.diags.sort((a, b) => deps.severityOrder(a.severity) - deps.severityOrder(b.severity))
     return { c, comp: makeCompilation(c, { published: c.published ?? new Set(), lockIssues: [], views: deps.views.sortedViews() }) }
   }

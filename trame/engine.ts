@@ -50,8 +50,10 @@ export interface EngineApi {
   /** The project the command runs for, compiled at the day its line says, as the dispatch prepared it; none outside a command. */
   prepared(): CompiledProject | undefined
   /**
-   * A project compiled at a date (its root, from where the engine runs), checked as the dispatch checks one; refused
-   * with what refuses it.
+   * A project compiled at a date, checked as the dispatch checks one, nothing kept beside it; refused with what refuses
+   * it (a directory without a configuration first). Its root is a directory from where the engine runs or, written as a
+   * package's name and a path in it (#commands/samples/small, since g125), in the sources of the package the project
+   * being compiled, or prepared, leads that name to: a library's scenario finds what its version carries.
    */
   compile(root: string, today: string): Promise<CompiledProject>
 }

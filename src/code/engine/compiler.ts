@@ -632,9 +632,11 @@ const body = (deps: Deps) => {
    * Compiles the loaded graph at a date. Always starts again from the declarations: what a previous compilation
    * applied (claims, contests, repeals) is undone first.
    * Only one compilation lives at a time: its views read the nodes as it left them.
-   * `evaluate: false`: without running the criteria or the scenarios (when only the values count).
+   * `evaluate: false`: without running the criteria or the scenarios (when only the values count). `keep: false`: what
+   * its scenarios find is kept for this compilation only, nothing written beside the project (a project a library's
+   * scenario compiles through the engine's API, which may sit in a frozen version, since g125).
    */
-  async function compileAt(l: Loaded, today: string, opts: { evaluate?: boolean; asGiven?: boolean } = {}): Promise<Compiled> {
+  async function compileAt(l: Loaded, today: string, opts: { evaluate?: boolean; asGiven?: boolean; keep?: boolean } = {}): Promise<Compiled> {
     const { modules, moduleTitle, nodes, infos, typeErrors, quantityErrors } = l
     for (const n of nodes) {
       const m = meta(n)
@@ -942,7 +944,10 @@ const body = (deps: Deps) => {
       ...[...l.rests.keys()].map((file) => join(l.root, file)),
     ])
     const preludes = read.kinds.map((k) => join(dirname(k), prelude))
-    const kept = deps.runs.open(l.root, [l.root, ...l.libraries.map((lib) => lib.root), ...read.kinds, ...read.views, ...preludes], left, l.rests)
+    const forgotten = new Map<string, unknown>()
+    const kept = opts.keep === false
+      ? { get: (key: string) => forgotten.get(key), set: (key: string, value: unknown) => void forgotten.set(key, value) }
+      : deps.runs.open(l.root, [l.root, ...l.libraries.map((lib) => lib.root), ...read.kinds, ...read.views, ...preludes], left, l.rests)
     // Evidence counts from the day it was given: the graph compiled at an earlier date has not seen it yet.
     const given = new Map([...l.evidence].map(([ref, records]) => [ref, records.filter((e) => e.at <= today || e.at.startsWith(today))]))
     // The quantities of the graph, filled once their catalogs are wired (below): kinds write a value in its units.
