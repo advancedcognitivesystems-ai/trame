@@ -305,9 +305,15 @@ const body = (deps: Deps) => {
     const at = located(root, compiling)
     const configuration = deps.projectLayout.configuration
     if (!deps.reading.existsSync(deps.paths.join(at, configuration))) throw new Error(messages.projectRefusedHere(at, [messages.notAProject(configuration)]))
-    const { refused, read } = await refusals(at, today)
-    if (!read) throw new Error(messages.projectRefusedHere(at, refused))
-    return project(at, await compiledAt(read, today, { keep: false }))
+    try {
+      const { refused, read } = await refusals(at, today)
+      if (!read) throw new Error(messages.projectRefusedHere(at, refused))
+      return project(at, await compiledAt(read, today, { keep: false }))
+    } finally {
+      // The views loaded are a project's (its own beside the language's): the project being compiled gets its own back,
+      // or its documents would be the other's (a cold build of Trame lost its literals and its versions, g129).
+      if (compiling) await loadViews(compiling.root)
+    }
   }
 
   /**
