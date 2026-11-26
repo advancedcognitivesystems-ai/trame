@@ -31,7 +31,7 @@ The language Trame speaks to people: British English. Its messages are written i
 
 ### A catalog counts in its language
 
-`CountsInTheLanguage` · `src/messages.ts:1042` · status: **held**
+`CountsInTheLanguage` · `src/messages.ts:1047` · status: **held**
 
 A count and its noun follow the plural rules of the language the catalog is written in, with the forms the catalog writes for each category; nothing below the catalogs presumes a language.
 
@@ -87,7 +87,7 @@ Joins the items of a list as people write it in the decided language: "A, B and 
 
 ### Messages of an advance
 
-`AdvanceMessages` · `src/messages.ts:953`
+`AdvanceMessages` · `src/messages.ts:958`
 
 What trame advance says as it goes, and what a generation says of itself.
 
@@ -222,6 +222,10 @@ What the commands print: summaries, usage, refusals.
     forgedCommandsRefuse: () => "Commands made by a cast refuse the graph: what a command may do is what made it says",
     /** A project a command asked the engine to compile, refused (since g124): where, and what refuses it. */
     projectRefusedHere: (root: string, why: readonly string[]) => `the project at ${root} cannot be compiled: ${why.join("; ")}`,
+    /** A directory without the configuration of a project (since g125). */
+    notAProject: (file: string) => `it has no ${file}: it is no project`,
+    /** A package name the project being compiled does not lead anywhere (since g125). */
+    packageNotLed: (name: string) => `the project being compiled leads no package named ${name}`,
 
     // trame test-kinds
     importsChecked: (refused: number) => `imports · ${refused ? `${refused} refused` : "only the public API is used"}`,
@@ -684,7 +688,7 @@ What the drivers say about a body: hidden dependencies, access to the platform, 
 
 ### Words of Trame's views
 
-`EngineViewWords` · `src/messages.ts:722`
+`EngineViewWords` · `src/messages.ts:726`
 
 What the views of Trame's own graph say: the catalogue of literals, the versions of the engine.
 
@@ -697,7 +701,7 @@ The messages are written in `../engine-views/words.ts`.
 
 ### Words of the kinds
 
-`KindWords` · `src/messages.ts:702`
+`KindWords` · `src/messages.ts:706`
 
 What the kinds say: their labels, the labels of their fields and edges, what their holes say, what they render. The kinds are files of the language, outside the graph: their words are a catalog all the same, which they call; a kind writes no text of its own.
 
@@ -837,7 +841,7 @@ What the machine outputs, the lock, the payload, the date bundle, the difference
 
 ### Words of the page
 
-`PageWords` · `src/messages.ts:733`
+`PageWords` · `src/messages.ts:737`
 
 What the page says around the documents the engine wrote: the state of the compilation, the dates, the navigation, the banner, the figures, the explorer.
 
@@ -853,7 +857,7 @@ The messages are written in `./code/page/words.ts`.
 
 ### Messages of the platform
 
-`PlatformMessages` · `src/messages.ts:755`
+`PlatformMessages` · `src/messages.ts:759`
 
 What the implementations of the ports say (the command line, the terminal, the processes).
 
@@ -893,7 +897,7 @@ What the implementations of the ports say (the command line, the terminal, the p
 
 ### Messages of the renderers
 
-`RenderingMessages` · `src/messages.ts:745`
+`RenderingMessages` · `src/messages.ts:749`
 
 The words that the renderers add to the intermediate format: labels, notes, the names of statuses and outcomes. Written in a file: the page, which runs in the browser where nothing is wired, reads it too.
 
@@ -908,7 +912,7 @@ The messages are written in `./code/rendering/messages.ts`.
 
 ### Messages of the scenarios
 
-`ScenarioMessages` · `src/messages.ts:784`
+`ScenarioMessages` · `src/messages.ts:788`
 
 The names of the checks that the engine's scenarios make.
 
@@ -1018,6 +1022,7 @@ The names of the checks that the engine's scenarios make.
     delegationOverRefused: (agent: string) => `Once the delegation is over, ${agent} is refused again`,
     projectCommandRun: (name: string) => `trame ${name} runs the example's command: its component assembled, its program run in the engine's process with the rest of the line`,
     apiGivesThePrepared: () => "The engine's API gives the project as the dispatch prepared it: its root, its day, what a view receives, graph.json and the snapshot",
+    apiRefusesWhatIsNoProject: (dir: string) => `Asked to compile ${dir}, which has no configuration, the API refuses: it is no project`,
     apiCompilesAProject: () => "Asked to compile the project at its day, the API gives the same graph, and no project prepared when the dispatch gave none",
     helpListsTheProject: (name: string) => `trame help lists ${name}, with the component that runs it`,
     advanceNeedsAName: () => "trame advance without a name assembles nothing and starts nothing",
@@ -1150,7 +1155,7 @@ What the loading of views and the compilation API say.
 
 ### Words of the views
 
-`ViewWords` · `src/messages.ts:712`
+`ViewWords` · `src/messages.ts:716`
 
 What the views say: their titles, their introductions, their headings, what they say of the graph.
 

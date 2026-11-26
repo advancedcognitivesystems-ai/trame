@@ -591,6 +591,27 @@ Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Ge
 - Released by: trame
 - Releases: [Trame on the command line](architecture.md#TrameCli)
 - Assembled by: [Generation 122](#G122)
+- Assembled: [Generation 124](#G124)
+
+<a id="G124"></a>
+
+### Generation 124
+
+`G124` · `src/releases.ts:1839`
+
+the engine gives its API: the project as the dispatch prepared it, another compiled at a date; it runs while it compiles and while a command runs
+
+Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Generation 123](#G123).
+
+- Version: `g124`
+- Released on: 26 November 2026
+- Fingerprint: `0112be07f77af87b`
+- Language: the repository's, shared
+- Language archived: `7bde1a1bb4e93030`
+
+- Released by: trame
+- Releases: [Trame on the command line](architecture.md#TrameCli)
+- Assembled by: [Generation 123](#G123)
 
 <a id="G13"></a>
 

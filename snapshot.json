@@ -1622,6 +1622,7 @@
         "deps": {
           "preparation": "commands.Preparation",
           "line": "conventions.TrameCommands",
+          "layout": "conventions.Layout",
           "messages": "messages.ScenarioMessages"
         },
         "body": "(function)"
@@ -3024,7 +3025,9 @@
           "projectCommands": "commands.ProjectCommands",
           "kept": "conventions.KeptCommands",
           "machine": "engine.MachineOutputs",
-          "paths": "architecture.Paths"
+          "paths": "architecture.Paths",
+          "reading": "architecture.FileReading",
+          "specifiers": "std/system.NodeModuleSpecifiers"
         },
         "body": {
           "file": "./code/commands/preparation.ts",
@@ -8838,10 +8841,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.27.0",
+        "version": "0.28.0",
         "joins": "library",
         "from": "path",
-        "at": "std/releases/0.27.0"
+        "at": "std/releases/0.28.0"
       }
     },
     {
@@ -12018,6 +12021,20 @@
       }
     },
     {
+      "id": "releases.G124",
+      "kind": "release",
+      "title": "Generation 124",
+      "fields": {
+        "owner": "trame",
+        "version": "g124",
+        "date": "2026-11-26",
+        "what": "the engine gives its API: the project as the dispatch prepared it, another compiled at a date; it runs while it compiles and while a command runs",
+        "fingerprint": "0112be07f77af87b",
+        "language": "shared",
+        "archive": "7bde1a1bb4e93030"
+      }
+    },
+    {
       "id": "releases.G13",
       "kind": "release",
       "title": "Generation 13",
@@ -14602,6 +14619,7 @@
             "data",
             "team",
             "machine",
+            "commands",
             "reservations",
             "poselia"
           ],
@@ -14920,6 +14938,11 @@
           {
             "name": "machine",
             "dir": "libs/machine",
+            "runners": "RunnersWritten"
+          },
+          {
+            "name": "commands",
+            "dir": "libs/commands",
             "runners": "RunnersWritten"
           },
           {
@@ -18839,6 +18862,11 @@
     },
     {
       "from": "command-scenarios.EngineApiGiven",
+      "to": "conventions.Layout",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.EngineApiGiven",
       "to": "messages.ScenarioMessages",
       "kind": "deps"
     },
@@ -21705,6 +21733,11 @@
     {
       "from": "commands.Preparation",
       "to": "architecture.Paths",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Preparation",
+      "to": "architecture.FileReading",
       "kind": "deps"
     },
     {
@@ -27940,6 +27973,16 @@
     {
       "from": "releases.G123",
       "to": "releases.G122",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G124",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G124",
+      "to": "releases.G123",
       "kind": "assembledBy"
     },
     {

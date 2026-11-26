@@ -702,10 +702,10 @@ Scenario · `DoctorAsks` · **held**
 Scenario · `EngineApiGiven` · **held**
 
 - Owner: trame
-- Parameters: { preparation: commands.Preparation, line: conventions.TrameCommands, messages: messages.ScenarioMessages }
+- Parameters: { preparation: commands.Preparation, line: conventions.TrameCommands, layout: conventions.Layout, messages: messages.ScenarioMessages }
 - Verifies: Preparation
 - In: Test
-- Depends on: Preparation, Trame's commands, Messages of the scenarios
+- Depends on: Preparation, Trame's commands, Project layout, Messages of the scenarios
 
 ### Evidence given for someone
 
@@ -999,9 +999,9 @@ Function · `ExampleRewriting` · **held**
 Function · `Preparation` · **held**
 
 - Owner: trame
-- Parameters: { line: conventions.TrameCommands, compiler: engine.Compiler, compilationApi: engine.CompilationApi, laws: engine.Laws, views: engine.Views, lock: engine.Lock, common: rendering.Common, terminal: architecture.Terminal, currentProcess: architecture.Process, clock: architecture.Clock, severityOrder: (rule), devPort: product.DevPort, exitStatus: std/system.ExitStatus, layout: text.TerminalText, columns: text.TerminalColumns, cell: text.PaddedCell, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, messages: messages.CommandMessages, projectLayout: conventions.Layout, uri: std/web.Uri, references: engine.References, projectCommands: commands.ProjectCommands, kept: conventions.KeptCommands, machine: engine.MachineOutputs, paths: architecture.Paths }
+- Parameters: { line: conventions.TrameCommands, compiler: engine.Compiler, compilationApi: engine.CompilationApi, laws: engine.Laws, views: engine.Views, lock: engine.Lock, common: rendering.Common, terminal: architecture.Terminal, currentProcess: architecture.Process, clock: architecture.Clock, severityOrder: (rule), devPort: product.DevPort, exitStatus: std/system.ExitStatus, layout: text.TerminalText, columns: text.TerminalColumns, cell: text.PaddedCell, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, messages: messages.CommandMessages, projectLayout: conventions.Layout, uri: std/web.Uri, references: engine.References, projectCommands: commands.ProjectCommands, kept: conventions.KeptCommands, machine: engine.MachineOutputs, paths: architecture.Paths, reading: architecture.FileReading, specifiers: std/system.NodeModuleSpecifiers }
 - Serves: A specification that runs
-- Depends on: Trame's commands, Compiler, Compilation API, Laws, Views, Lock, Common rendering, Terminal, Process, Clock, Sort problems by severity, Port of trame dev, Terminal text, Columns in the terminal, Padded cell, Messages of the commands, Project layout, References, The project's commands, The commands the engine keeps, Machine outputs, Paths
+- Depends on: Trame's commands, Compiler, Compilation API, Laws, Views, Lock, Common rendering, Terminal, Process, Clock, Sort problems by severity, Port of trame dev, Terminal text, Columns in the terminal, Padded cell, Messages of the commands, Project layout, References, The project's commands, The commands the engine keeps, Machine outputs, Paths, File reading
 
 ### The project's commands
 
@@ -3330,10 +3330,10 @@ Package · `StandardLibrary`
 
 - Owner: trame
 - Name: std
-- Version: 0.27.0
+- Version: 0.28.0
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: std/releases/0.27.0
+- Its path: std/releases/0.28.0
 - Serves: A single source of truth
 
 ### tsx
@@ -5036,6 +5036,20 @@ Release · `G123`
 - Language archived: 0118572b49b3ed10
 - Releases: Trame on the command line
 - Assembled by: Generation 122
+
+### Generation 124
+
+Release · `G124`
+
+- Released by: trame
+- Version: g124
+- Released on: 2026-11-26
+- What changes: the engine gives its API: the project as the dispatch prepared it, another compiled at a date; it runs while it compiles and while a command runs
+- Fingerprint: 0112be07f77af87b
+- Language: shared
+- Language archived: 7bde1a1bb4e93030
+- Releases: Trame on the command line
+- Assembled by: Generation 123
 
 ### Generation 13
 
@@ -6793,7 +6807,7 @@ Decision · `HowAGenerationAdvances`
 Decision · `MainBranch`
 
 - Decided by: trame
-- Value: { branch: main, checks: trame, std, ci, data, team, machine, reservations, poselia, upToDate: false, approvals: 0, method: merge, autoMerge: true, deletesMerged: true, pages: false }
+- Value: { branch: main, checks: trame, std, ci, data, team, machine, commands, reservations, poselia, upToDate: false, approvals: 0, method: merge, autoMerge: true, deletesMerged: true, pages: false }
 - Rejected: Squashed, a branch would merge as one commit, and the generations it advances are each a commit; An approval required, the person who opens a pull request with their own account cannot approve it; Up to date with main first, each pull request would merge main into itself again, and run its checks again, whenever another one merged; The check of geometry, geometry runs from the registry of a machine, which a runner of GitHub does not have yet; Pages now, the site that gathers Trame's graph and Poselia's preview is still to be decided
 
 ### The machines Trame runs on
@@ -6817,7 +6831,7 @@ Decision · `PullRequestsOnGitHub`
 Decision · `RepositoryProjects`
 
 - Decided by: trame
-- Value: { name: trame, dir: ., runners: RunnersWritten, reads: reservations }, { name: std, dir: std, runners: RunnersWritten }, { name: ci, dir: ci, runners: RunnersWritten }, { name: team, dir: libs/team, runners: RunnersWritten }, { name: data, dir: libs/data, runners: RunnersWritten }, { name: machine, dir: libs/machine, runners: RunnersWritten }, { name: geometry, dir: libs/geometry }, { name: reservations, dir: examples/reservations, runners: RunnersWritten, scenarios: true }, { name: poselia, dir: apps/poselia, runners: RunnersWritten }
+- Value: { name: trame, dir: ., runners: RunnersWritten, reads: reservations }, { name: std, dir: std, runners: RunnersWritten }, { name: ci, dir: ci, runners: RunnersWritten }, { name: team, dir: libs/team, runners: RunnersWritten }, { name: data, dir: libs/data, runners: RunnersWritten }, { name: machine, dir: libs/machine, runners: RunnersWritten }, { name: commands, dir: libs/commands, runners: RunnersWritten }, { name: geometry, dir: libs/geometry }, { name: reservations, dir: examples/reservations, runners: RunnersWritten, scenarios: true }, { name: poselia, dir: apps/poselia, runners: RunnersWritten }
 - Rejected: Found on the disk, by their trame.json, a generation keeps a copy of the example, which is not a project of the repository; In the order they are carried, the order follows from the libraries each one imports; what one reads besides is said
 
 ### The repository left by hand, in the scenario
