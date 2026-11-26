@@ -27,7 +27,7 @@ No choice follows it yet.
 
 ### Adapter
 
-`Adapter` · `src/patterns.ts:29`
+`Adapter` · `src/patterns.ts:29` · status: **held**
 
 A technology made to answer an interface that the product defines, so that the product depends on its own port and only the adapter on the technology: ports and adapters. In the graph, the adapters are implementations, the only nodes that may touch the platform.
 
@@ -35,10 +35,13 @@ Source: A. Cockburn, Hexagonal architecture (ports and adapters), 2005; Gamma et
 
 A choice that follows it has realizations that touch the platform (implementations).
 
-No choice follows it yet.
+| Followed by | Shape |
+|---|---|
+| [Read by the engine that builds](scenarios.md#ReadInTheEngine) | has the shape |
 
 - Maintained by: trame
 - Serves: [Known designs, named](product.md#KnownDesigns)
+- Followed by: [Read by the engine that builds](scenarios.md#ReadInTheEngine)
 
 <a id="Bridge"></a>
 

@@ -66,6 +66,7 @@ Source: W3C, CSS Syntax Module Level 3 (§ 5 rules and declarations, § 4 tokens
 
 - Maintained by: trame
 - Serves: [A published value is cited, not copied](product.md#CitedNotCopied)
+- Defines the language: [CSS style sheets](languages.md#CssStyleSheets)
 
 <a id="Html"></a>
 
@@ -153,6 +154,7 @@ Source: WHATWG HTML: § 13.1 Writing HTML documents (the DOCTYPE, elements, star
 
 - Maintained by: trame
 - Serves: [A published value is cited, not copied](product.md#CitedNotCopied)
+- Defines the language: [HTML markup](languages.md#HtmlMarkup)
 
 <a id="Svg"></a>
 

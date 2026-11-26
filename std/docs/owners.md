@@ -4,7 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 6 | 262 |
+| trame | 0 | 0 | 8 | 269 |
 
 <a id="trame"></a>
 
@@ -16,6 +16,8 @@
 | warning | `rules-look-alike` | Computes the same kind of answer from the same kind of arguments as “A node reaches what it must” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [A node never reaches what it must not](rules.md#NeverReaches) | trame |  |
 | warning | `rules-look-alike` | Computes the same kind of answer from the same kind of arguments as “A node never reaches what it must not” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [A node reaches what it must](rules.md#Reaches) | trame |  |
 | warning | `shipment-awaits` | To ship: The standard library is unknown | [The next version](sdlc.md#NextVersion) | trame |  |
+| warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | trame |  |
+| warning | `shipment-awaits` | To ship: The pull requests' workflow is unknown | [The files that run it elsewhere](sdlc.md#RunnersWritten) | trame |  |
 | warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The standard library](sdlc.md#TheLibrary) | trame |  |
 | warning | `port-unrealized` | No realization, in any environment | [Where a package comes from](tooling.md#PackageSources) | trame |  |
 
@@ -52,11 +54,13 @@
 | [Commands](effects.md#Commands) | Function | **held** |
 | [Effects](effects.md#Effects) | Vocabulary |  |
 | [What the platform may do](effects.md#PlatformEffects) | Decision |  |
-| [The engine is a provider](engine.md#EngineAsAProvider) | Architecture decision |  |
+| [The engine is a provider](engine.md#EngineAsAProvider) | Architecture decision | **held** |
 | [What the engine's adapters say](engine.md#EngineWords) | Message catalog |  |
+| [Reading a language](engine.md#LanguageReading) | Port |  |
 | [A project compiled by the engine that plays the scenario](engine.md#ProjectCompiledHere) | Implementation |  |
 | [The project the engine prepared](engine.md#ProjectInTheEngine) | Implementation |  |
 | [The project of a scenario](engine.md#ProjectOfTheScenario) | Port |  |
+| [Read by the engine](engine.md#ReadByTheEngine) | Implementation | **held** |
 | [The project at hand](engine.md#TheProject) | Port |  |
 | [WAI-ARIA](html.md#Aria) | Standard |  |
 | [CSS](html.md#Css) | Standard |  |
@@ -67,6 +71,9 @@
 | [Hardening](judgment.md#Hardening) | Port |  |
 | [A project judges harder than the language, never softer](judgment.md#HarderNeverSofter) | Architecture decision | **held** |
 | [Raising](judgment.md#Raising) | Algebraic structure | **held** |
+| [CSS style sheets](languages.md#CssStyleSheets) | Language | **held** |
+| [HTML markup](languages.md#HtmlMarkup) | Language | **held** |
+| [tree-sitter queries](languages.md#TreeSitterQueries) | Standard |  |
 | [ISO 8601 dates](measures.md#Iso8601) | Standard |  |
 | [Language tags](measures.md#LanguageTags) | Standard |  |
 | [Ratio](measures.md#Ratio) | Quantity |  |
@@ -100,7 +107,7 @@
 | [Trame](packages.md#Language) | Package |  |
 | [The people of the repository](packages.md#People) | Package |  |
 | [Abstract Factory](patterns.md#AbstractFactory) | Design pattern |  |
-| [Adapter](patterns.md#Adapter) | Design pattern |  |
+| [Adapter](patterns.md#Adapter) | Design pattern | **held** |
 | [Bridge](patterns.md#Bridge) | Design pattern |  |
 | [Command](patterns.md#Command) | Design pattern |  |
 | [Plugin](patterns.md#Plugin) | Design pattern |  |
@@ -208,9 +215,11 @@
 | [Judged as the language says](scenarios.md#JudgedAsTheLanguage) | Scenario | **held** |
 | [Judged strictly](scenarios.md#JudgedStrictly) | Scenario | **held** |
 | [Judged as the language says](scenarios.md#LanguageJudgment) | Technical choice | **held** |
+| [The languages read by the engine](scenarios.md#LanguagesRead) | Scenario | **held** |
 | [A pull request merged once it holds](scenarios.md#MergedOnceItHolds) | Scenario | **held** |
 | [A version carried across the projects](scenarios.md#PropagatedInOrder) | Scenario | **held** |
 | [A pull request opened](scenarios.md#PullRequestOpened) | Scenario | **held** |
+| [Read by the engine that builds](scenarios.md#ReadInTheEngine) | Technical choice | **held** |
 | [A repository kept in memory](scenarios.md#RepositoryInMemoryKeeps) | Scenario | **held** |
 | [What the library's scenarios check](scenarios.md#ScenarioChecks) | Message catalog |  |
 | [What the library's scenarios are given](scenarios.md#ScenarioData) | Decision |  |
@@ -229,10 +238,10 @@
 | [The next version](sdlc.md#NextVersion) | Shipment | **unknown** |
 | [Its packages safe](sdlc.md#PackagesSafe) | Obligation |  |
 | [How a pull request is checked on GitHub](sdlc.md#PullRequestsOnGitHub) | Decision |  |
-| [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **held** |
+| [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **unknown** |
 | [Its requirements held](sdlc.md#RequirementsServed) | Obligation |  |
 | [Its rules held](sdlc.md#RulesHeld) | Obligation |  |
-| [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **held** |
+| [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **unknown** |
 | [The standard library](sdlc.md#TheLibrary) | Artefact | **unknown** |
 | [How a version is made](sdlc.md#VersionMode) | Policy |  |
 | [Exit status](system.md#ExitStatus) | Standard |  |

@@ -271,7 +271,8 @@ interface LanguageInput<C extends Record<string, Constant>> {
   /** The standard its queries are written in (tree-sitter's queries). */
   queryLanguage: Node<"standard">
   /** The reader that reads it, and plays its examples. */
-  reader: Node<"function">
+  /** A function of the project, or std's port LanguageReading (since g128), which the engine realizes. */
+  reader: Node<"function"> | Node<"port">
   /** The globals through which a body would reach outside: each one must be watched by a query. */
   globals?: Node<"vocabulary">
   grammar: Grammar
