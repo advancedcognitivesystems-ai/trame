@@ -6793,5 +6793,131 @@
     "signature": "attribution",
     "engine": "204500887a4c33c3",
     "seal": "9c70013b0edea49bb36a2b732afd6c69904f5d7bfaca16df7ccce8453481de4a"
+  },
+  {
+    "node": "commands.Advance",
+    "at": "2026-11-26",
+    "source": "deployed",
+    "value": 1,
+    "fingerprint": "d905cfb1",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "fe6e2f2047f2d7f10577b0d1381ee0abf87ea2270a7a6a08bcb5d3a102ac70cc"
+  },
+  {
+    "node": "sdlc.CandidateKeepsTheLaws",
+    "at": "2026-11-26",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "14b0f181",
+    "code": "de7894cb",
+    "engine": "aeca17a58384a824",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "0f2d9688eaf1e4dc31d96cec424cc64a087db7157a58cb6f3a7a2775ed324073"
+  },
+  {
+    "node": "sdlc.CandidateRunsOnTheMachine",
+    "at": "2026-11-26",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "14b0f181",
+    "code": "78cab228",
+    "engine": "aeca17a58384a824",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "d304be39e8cdb5a4f1cfaa7ddda177634edaef3441f4bf284da777113c002546"
+  },
+  {
+    "node": "sdlc.EngineCandidate",
+    "at": "2026-11-26",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "6881b5472ae17ddadefff3b2a1b0aa8d29e9dd6f560c4a876136672d0a9a6e28",
+    "code": "2f728a19",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "aeca17a58384a824",
+    "seal": "606c75a48f047b301dd67f1f793fca1af4e15ff20897e0f58ba740d1181d8ab2"
+  },
+  {
+    "node": "sdlc.EngineCandidate",
+    "at": "2026-11-26",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "6881b5472ae17ddadefff3b2a1b0aa8d29e9dd6f560c4a876136672d0a9a6e28",
+    "subject": "sdlc.NextGeneration",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "9c83332c4627a0df3a1b941016a1844cd3898098f8d09e5169e8fa4b457933ff"
+  },
+  {
+    "node": "sdlc.GraphPage",
+    "at": "2026-11-26",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "a4b89d85447c87532afb04ce1bd50b6790b87a5c828e4b3f7d05ef848cdc2168",
+    "code": "af7216b0",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "aeca17a58384a824",
+    "seal": "a32a77b533326d5662fd257d765c46ddd309b76d4c60f1459223aaec145c00e3"
+  },
+  {
+    "node": "sdlc.GraphPage",
+    "at": "2026-11-26",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "a4b89d85447c87532afb04ce1bd50b6790b87a5c828e4b3f7d05ef848cdc2168",
+    "subject": "sdlc.NextGeneration",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "70f56d9e1045c1f370ff227efe1e639ecb5571e0e4d4bf5f905ce22580b92678"
+  },
+  {
+    "node": "sdlc.GraphPageOpens",
+    "at": "2026-11-26",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "40a172c8",
+    "code": "c571d09a",
+    "engine": "aeca17a58384a824",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "ddc069d19e9fc8ff1e9472651d7343355b1dc48b40651f6e02b657c5457d4dff"
+  },
+  {
+    "node": "sdlc.NextGeneration",
+    "at": "2026-11-26",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "ff506f81",
+    "url": "evidence/shipments/NextGeneration-2026-11-26-ff506f81.json",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "4ed83a63381481db80afb9e5874a30d2fd99b55f592d5da278cdd712e724838a"
+  },
+  {
+    "node": "sdlc.PageProgram",
+    "at": "2026-11-26",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "8faa6d069b714cde464ce2addba3143d0fcc926f3d68203ec53d80e15451a321",
+    "code": "d01a4a12",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "aeca17a58384a824",
+    "seal": "92d84aa8114958f7f96425dcdd8ba20a5b16b5bb602a5cafbe7fc91d85b43de7"
+  },
+  {
+    "node": "sdlc.PageProgram",
+    "at": "2026-11-26",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "8faa6d069b714cde464ce2addba3143d0fcc926f3d68203ec53d80e15451a321",
+    "subject": "sdlc.NextGeneration",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "ada804e5c2a5aa2cac8bc7d5ef48ed3a39ec2953b8bc425e689926ee600bb887"
   }
 ]

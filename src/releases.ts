@@ -1832,3 +1832,18 @@ export const G123 = release({
   archive: "0118572b49b3ed10",
   assembledBy: G122,
 })
+
+/**
+ * Generation 124
+ */
+export const G124 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g124",
+  date: "2026-11-26",
+  what: "the engine gives its API: the project as the dispatch prepared it, another compiled at a date; it runs while it compiles and while a command runs",
+  fingerprint: "0112be07f77af87b",
+  language: "shared",
+  archive: "7bde1a1bb4e93030",
+  assembledBy: G123,
+})

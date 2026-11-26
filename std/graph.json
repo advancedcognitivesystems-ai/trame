@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-25",
+  "generated": "2026-11-26",
   "nodes": [
     {
       "id": "access.Anyone",
@@ -1266,6 +1266,95 @@
       "diagnostics": [
         "warning: Connected to no root (architecture rule, goal)"
       ]
+    },
+    {
+      "id": "engine.EngineAsAProvider",
+      "kind": "adr",
+      "title": "The engine is a provider",
+      "source": "src/engine.ts:87",
+      "fields": {
+        "owner": "trame",
+        "context": "The engine's commands reached its modules directly; a command of a library or a project could not, and a command moved out of the engine would have lost what it computed with.",
+        "consequences": "Every command reaches the engine the same way, through ports versioned with the library; the API they read is the language's, given by the engine, and it grows with a generation when a command needs more. A library's scenario compiles a project of its own through the engine that plays it.",
+        "rejected": {
+          "A library of contracts": "a third place for types the language already defines (what a view receives) and the ports std already holds",
+          "The engine's modules, given as they are": "what a command reads would change with each generation, unseen by the types"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "engine.EngineWords",
+      "kind": "catalog",
+      "title": "What the engine's adapters say",
+      "source": "src/engine.ts:49",
+      "fields": {
+        "owner": "trame",
+        "messages": "(function)"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "engine.ProjectCompiledHere",
+      "kind": "implementation",
+      "title": "A project compiled by the engine that plays the scenario",
+      "source": "src/engine.ts:75",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "chosen": "engine.ProjectOfTheScenario",
+          "say": "engine.EngineWords"
+        },
+        "body": {
+          "file": "./code/engine/project-compiled-here.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "engine.ProjectInTheEngine",
+      "kind": "implementation",
+      "title": "The project the engine prepared",
+      "source": "src/engine.ts:63",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "say": "engine.EngineWords"
+        },
+        "body": {
+          "file": "./code/engine/project-in-the-engine.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "engine.ProjectOfTheScenario",
+      "kind": "port",
+      "title": "The project of a scenario",
+      "source": "src/engine.ts:44",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": []
+      },
+      "diagnostics": [
+        "warning: No realization, in any environment"
+      ]
+    },
+    {
+      "id": "engine.TheProject",
+      "kind": "port",
+      "title": "The project at hand",
+      "source": "src/engine.ts:31",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": [
+          "read",
+          "asynchronous"
+        ]
+      },
+      "diagnostics": []
     },
     {
       "id": "html.Aria",
@@ -5323,7 +5412,7 @@
       "kind": "shipment",
       "title": "The next version",
       "source": "src/sdlc.ts:87",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "version"
@@ -5333,6 +5422,11 @@
           {
             "node": "commands.CommandsOfALibrary",
             "via": "commands.LibraryCommands",
+            "obligation": "sdlc.DecisionsApplied"
+          },
+          {
+            "node": "engine.EngineAsAProvider",
+            "via": "engine.ProjectCompiledHere",
             "obligation": "sdlc.DecisionsApplied"
           },
           {
@@ -5529,6 +5623,12 @@
           "effects.Commands",
           "effects.Effects",
           "effects.PlatformEffects",
+          "engine.EngineAsAProvider",
+          "engine.EngineWords",
+          "engine.ProjectCompiledHere",
+          "engine.ProjectInTheEngine",
+          "engine.ProjectOfTheScenario",
+          "engine.TheProject",
           "html.Aria",
           "html.Css",
           "html.Html",
@@ -5724,7 +5824,9 @@
           "web.WebSpeechApi"
         ]
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: To ship: The standard library is unknown"
+      ]
     },
     {
       "id": "sdlc.PackagesSafe",
@@ -5829,7 +5931,7 @@
       "kind": "artifact",
       "title": "The standard library",
       "source": "src/sdlc.ts:22",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "src",
@@ -5837,9 +5939,11 @@
       },
       "result": {
         "path": "src",
-        "code": "f8ce65e4"
+        "code": "1c25fcb6"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+      ]
     },
     {
       "id": "sdlc.VersionMode",
@@ -7456,6 +7560,61 @@
       "from": "effects.Effects",
       "to": "product.RealizedOnce",
       "kind": "serves"
+    },
+    {
+      "from": "engine.EngineAsAProvider",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "engine.EngineAsAProvider",
+      "to": "engine.TheProject",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "engine.EngineAsAProvider",
+      "to": "engine.ProjectOfTheScenario",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "engine.EngineAsAProvider",
+      "to": "engine.ProjectInTheEngine",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "engine.EngineAsAProvider",
+      "to": "engine.ProjectCompiledHere",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "engine.EngineWords",
+      "to": "tooling.CommandLanguage",
+      "kind": "language"
+    },
+    {
+      "from": "engine.ProjectCompiledHere",
+      "to": "engine.TheProject",
+      "kind": "implements"
+    },
+    {
+      "from": "engine.ProjectCompiledHere",
+      "to": "engine.ProjectOfTheScenario",
+      "kind": "deps"
+    },
+    {
+      "from": "engine.ProjectCompiledHere",
+      "to": "engine.EngineWords",
+      "kind": "deps"
+    },
+    {
+      "from": "engine.ProjectInTheEngine",
+      "to": "engine.TheProject",
+      "kind": "implements"
+    },
+    {
+      "from": "engine.ProjectInTheEngine",
+      "to": "engine.EngineWords",
+      "kind": "deps"
     },
     {
       "from": "html.Aria",
