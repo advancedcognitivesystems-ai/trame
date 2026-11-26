@@ -11,7 +11,7 @@ import { RealizedOnce, VersionsThatHold } from "./product"
  * owner moves it when a version of the library needs a newer language.
  */
 export const Language = pkg({
-  owner: "trame", packageName: "trame", version: "123", joins: "language", from: "path", at: "../generations/g123",
+  owner: "trame", packageName: "trame", version: "124", joins: "language", from: "path", at: "../generations/g124",
   serves: [RealizedOnce],
 })
 
