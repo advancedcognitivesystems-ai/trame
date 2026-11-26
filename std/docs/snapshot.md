@@ -775,10 +775,10 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 128
+- Version: 129
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../generations/g128
+- Its path: ../generations/g129
 - Serves: Ports of the platform, realized once
 
 ### The people of the repository
@@ -1386,6 +1386,18 @@ Release · `R0_28_0`
 - Language: shared
 - Serves: Commands chosen, not written again, A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again, Versions that hold
 
+### Version 0.29.0
+
+Release · `R0_29_0`
+
+- Released by: trame
+- Version: 0.29.0
+- Released on: 2026-11-26
+- What changes: the languages the engine reads for every project (HTML, CSS), read through the port LanguageReading, which the engine realizes
+- Fingerprint: 2229329d5c9f983b
+- Language: shared
+- Serves: Commands chosen, not written again, A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again, Versions that hold
+
 ### Version 0.3.0
 
 Release · `R0_3_0`
@@ -1989,7 +2001,7 @@ Decision · `PullRequestsOnGitHub`
 
 ### The pull requests' workflow
 
-Artefact · `PullRequestWorkflow` · **unknown**
+Artefact · `PullRequestWorkflow` · **held**
 
 - Owner: trame
 - Path: ../.github/workflows/std-pull-request.yml
@@ -2016,7 +2028,7 @@ Shipment · `NextVersion` · **unknown**
 
 ### The files that run it elsewhere
 
-Shipment · `RunnersWritten` · **unknown**
+Shipment · `RunnersWritten` · **held**
 
 - Owner: trame
 - Target: repository

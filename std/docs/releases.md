@@ -422,6 +422,22 @@ the engine as a provider: the port TheProject, realized in the engine and, in a 
 - Released by: trame
 - Serves: [Commands chosen, not written again](product.md#ChosenCommands), [A published value is cited, not copied](product.md#CitedNotCopied), [Known designs, named](product.md#KnownDesigns), [Ports of the platform, realized once](product.md#RealizedOnce), [Shared operations instead of literals](product.md#SharedOperations), [Rules applied, not written again](product.md#SharedRules), [Versions that hold](product.md#VersionsThatHold)
 
+<a id="R0_29_0"></a>
+
+### Version 0.29.0
+
+`R0_29_0` · `src/releases.ts:441`
+
+the languages the engine reads for every project (HTML, CSS), read through the port LanguageReading, which the engine realizes
+
+- Version: `0.29.0`
+- Released on: 26 November 2026
+- Fingerprint: `2229329d5c9f983b`
+- Language: the repository's, shared
+
+- Released by: trame
+- Serves: [Commands chosen, not written again](product.md#ChosenCommands), [A published value is cited, not copied](product.md#CitedNotCopied), [Known designs, named](product.md#KnownDesigns), [Ports of the platform, realized once](product.md#RealizedOnce), [Shared operations instead of literals](product.md#SharedOperations), [Rules applied, not written again](product.md#SharedRules), [Versions that hold](product.md#VersionsThatHold)
+
 <a id="R0_3_0"></a>
 
 ### Version 0.3.0

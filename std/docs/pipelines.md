@@ -100,7 +100,7 @@ flowchart TB
 | 35 | prove | [A node reaches what it must](rules.md#Reaches) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
 | 36 | prove | [Effects a node may not have](rules.md#WithoutEffects) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
 | 37 | prove | [Words of a vocabulary](rules.md#WordsOf) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
-| 38 | record | [The next version](sdlc.md#NextVersion) | — | — | **unknown** | 26 November 2026 by claude `evidence/shipments/NextVersion-2026-11-26-ea438de4.json` |
+| 38 | record | [The next version](sdlc.md#NextVersion) | — | — | **unknown** | 26 November 2026 by claude `evidence/shipments/NextVersion-2026-11-26-cecf1a86.json` |
 
 `trame ship NextVersion --by <name>`
 
@@ -108,15 +108,15 @@ flowchart TB
 
 ## The files that run it elsewhere
 
-> **The files that run it elsewhere does not ship yet: 1 of 2 obligations holds.**
+> **The files that run it elsewhere ships: every obligation holds.**
 
 For the target repository.
 
 ```mermaid
 flowchart TB
-  n0["The pull requests' workflow<br/><small>Artefact</small>"]:::unknown
+  n0["The pull requests' workflow<br/><small>Artefact</small>"]:::held
   n1["A workflow of GitHub Actions<br/><small>Syntax element</small>"]:::held
-  n2["The files that run it elsewhere<br/><small>Shipment</small>"]:::unknown
+  n2["The files that run it elsewhere<br/><small>Shipment</small>"]:::held
   n0 -->|Produced by| n1
   n2 -->|Ships| n0
   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
@@ -130,9 +130,9 @@ flowchart TB
 
 |  | Stage | Step | Run by | Why | Status | Latest evidence |
 |---|---|---|---|---|---|---|
-| 1 | produce | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) · `../.github/workflows/std-pull-request.yml` | [A workflow of GitHub Actions](../.trame/ci/docs/github.md#GitHubWorkflow) | — | **unknown** | 26 November 2026 by claude  |
+| 1 | produce | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) · `../.github/workflows/std-pull-request.yml` | [A workflow of GitHub Actions](../.trame/ci/docs/github.md#GitHubWorkflow) | — | **held** | 26 November 2026 by claude  |
 | 2 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
-| 3 | prove | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | — | the shipment | **unknown** | 26 November 2026 by claude  |
-| 4 | record | [The files that run it elsewhere](sdlc.md#RunnersWritten) | — | — | **unknown** | 26 November 2026 by claude `evidence/shipments/RunnersWritten-2026-11-26-f86a865e.json` |
+| 3 | prove | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | — | the shipment | **held** | 26 November 2026 by claude  |
+| 4 | record | [The files that run it elsewhere](sdlc.md#RunnersWritten) | — | — | **held** | 26 November 2026 by claude `evidence/shipments/RunnersWritten-2026-11-26-2d8cd7af.json` |
 
 `trame ship RunnersWritten --by <name>`

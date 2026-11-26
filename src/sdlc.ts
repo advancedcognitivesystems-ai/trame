@@ -463,7 +463,7 @@ export const PullRequestWorkflow = artifact({
 export const MainBranch = decision<RepositorySettings>({
   owner: "trame",
   value: {
-    branch: "main", checks: ["trame", "std", "ci", "data", "team", "machine", "commands", "reservations", "poselia"], upToDate: false, approvals: 0,
+    branch: "main", checks: ["trame", "std", "ci", "data", "team", "machine", "commands", "documents", "reservations", "poselia"], upToDate: false, approvals: 0,
     method: "merge", autoMerge: true, deletesMerged: true, pages: false,
   },
   rejected: {
@@ -622,6 +622,7 @@ export const RepositoryProjects = decision<readonly RepositoryProject[]>({
     { name: "data", dir: "libs/data", runners: "RunnersWritten" },
     { name: "machine", dir: "libs/machine", runners: "RunnersWritten" },
     { name: "commands", dir: "libs/commands", runners: "RunnersWritten" },
+    { name: "documents", dir: "libs/documents", runners: "RunnersWritten" },
     { name: "geometry", dir: "libs/geometry" },
     { name: "reservations", dir: "examples/reservations", runners: "RunnersWritten", scenarios: true },
     { name: "poselia", dir: "apps/poselia", runners: "RunnersWritten" },

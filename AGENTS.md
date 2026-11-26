@@ -331,8 +331,9 @@ November): the common renderer and its syntaxes, the figures, Markdown and Merma
   do not make a concept of it. Where amendments of the graph go, how a package is fetched, how evidence is signed: each
   is a port with its strategies, the first one in place, the others to come.
 - **Words are in catalogs**, in the language they are written in; a count uses `plurals(language)` with each form
-  written; lists use `Lists`; dates use `Dates` (`#documents/language`, since g129). A product in several languages has one catalog per language, each
-  translating the first (`translates`), and chooses the catalog of the language it speaks when it runs.
+  written; lists use `Lists`; dates use `Dates` (`#documents/language`, since g129). A product in several languages has
+  one catalog per language, each translating the first (`translates`), and chooses the catalog of the language it
+  speaks when it runs.
 
 ## 5b. Packages and libraries
 

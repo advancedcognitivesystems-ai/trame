@@ -14,7 +14,7 @@
 | Pattern | Status | Followed by |
 |---|---|---|
 | [Strategy](../.trame/std/docs/patterns.md#Strategy) | **held** | [Played on a small project](scenarios.md#PlayedOnASmallProject), [In memory](../.trame/std/docs/scenarios.md#InMemory), [Judged as the language says](../.trame/std/docs/scenarios.md#LanguageJudgment), [Judged strictly](../.trame/std/docs/scenarios.md#StrictJudgment), [The scenarios' settings](../.trame/std/docs/scenarios.md#ScenarioSettings) |
-| [Adapter](../.trame/std/docs/patterns.md#Adapter) | **held** | [Compiled by the engine that plays them](scenarios.md#CompiledByTheEngine) |
+| [Adapter](../.trame/std/docs/patterns.md#Adapter) | **held** | [Compiled by the engine that plays them](scenarios.md#CompiledByTheEngine), [Read by the engine that builds](../.trame/std/docs/scenarios.md#ReadInTheEngine) |
 
 ## Commands · Scenarios
 

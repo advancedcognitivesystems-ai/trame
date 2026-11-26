@@ -2639,10 +2639,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "128",
+        "version": "129",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g128"
+        "at": "../generations/g129"
       }
     },
     {
@@ -3394,6 +3394,19 @@
         "date": "2026-11-26",
         "what": "the engine as a provider: the port TheProject, realized in the engine and, in a scenario, by the engine that plays it",
         "fingerprint": "6ec9817f19e1eb38",
+        "language": "shared"
+      }
+    },
+    {
+      "id": "releases.R0_29_0",
+      "kind": "release",
+      "title": "Version 0.29.0",
+      "fields": {
+        "owner": "trame",
+        "version": "0.29.0",
+        "date": "2026-11-26",
+        "what": "the languages the engine reads for every project (HTML, CSS), read through the port LanguageReading, which the engine realizes",
+        "fingerprint": "2229329d5c9f983b",
         "language": "shared"
       }
     },
@@ -5006,7 +5019,7 @@
       "id": "sdlc.PullRequestWorkflow",
       "kind": "artifact",
       "title": "The pull requests' workflow",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "../.github/workflows/std-pull-request.yml",
@@ -5033,7 +5046,7 @@
       "id": "sdlc.RunnersWritten",
       "kind": "shipment",
       "title": "The files that run it elsewhere",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "repository"
@@ -7929,6 +7942,41 @@
     },
     {
       "from": "releases.R0_28_0",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_29_0",
+      "to": "product.ChosenCommands",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_29_0",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_29_0",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_29_0",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_29_0",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_29_0",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_29_0",
       "to": "product.VersionsThatHold",
       "kind": "serves"
     },
