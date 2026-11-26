@@ -15,7 +15,7 @@ what the graph guarantees. The README explains why; this file says how.
 | `kinds/`, `views/`, `engine-views/` | The language: what a node can be, which questions are asked of the graph; their words in `words.ts` | you, reviewed |
 | `trame.json` | The project: its libraries (`"libraries"`), the generation it pins (`"engine"`), the kinds and views it carries besides the language's | you |
 | `package.json` | The project as a package: the import map of the language (`#trame/*`) and of its libraries (`#std/*`), the packages of the graph | `trame manifest` |
-| `libs/` | Libraries of a domain (`libs/geometry`: vectors, angles; `libs/data`: the data a product keeps, and its kind `entity`; `libs/team`: the repository's people; `libs/machine`: the questions a project asks of its machine; `libs/commands`: the commands every project runs, on std's ports of the engine), each a project of its own | you |
+| `libs/` | Libraries of a domain (`libs/geometry`: vectors, angles; `libs/data`: the data a product keeps, and its kind `entity`; `libs/team`: the repository's people; `libs/machine`: the questions a project asks of its machine; `libs/commands`: the commands every project runs, on std's ports of the engine; `libs/documents`: what renders a graph's documents, in the language the views speak), each a project of its own | you |
 | `std/` | The standard library: a Trame project of its own (structures, standards, patterns) that Trame and the example import | you |
 | `ci/` | The library of writers that run a shipment elsewhere (GitHub Actions, Bash), from the plan the engine computes | you |
 | `docs/`, `graph.json`, `snapshot.json` | What a build writes: documents for people, the graph and its snapshot for tools and agents | the build only |
@@ -240,6 +240,17 @@ machine (`follows: [Command]`, with `ProjectInTheEngine`), and its `trame plan` 
 process. A check may run such a command (`runs: Plan`, g127: `trame ship` assembles the library's component with the
 commands chosen there): Trame's `PlanRunsInTheEngine` proves `ProjectInTheEngine` in each merge into main.
 
+Reading a language is a primitive of the engine too (g128–g129, std 0.29.0): a `language` node's reader may be std's
+port `LanguageReading`, which `ReadByTheEngine` realizes with the engine's reader (`EngineApi.reader`). The languages the
+engine reads for every project are std's (`#std/languages`: `HtmlMarkup`, `CssStyleSheets`, and `TreeSitterQueries`,
+the standard their queries are written in): a syntax element of any library names them, and what it writes is read back
+where the project's build evaluates, once a binding of the project chooses `ReadByTheEngine` there (Trame's
+`StdLanguagesRead`, std's `ReadInTheEngine`). The language the documents are written in is the engine's, which the views
+speak: `libs/documents` declares it as a port, `DocumentLanguage` (its tag and its marks), with `Dates`, `Lists`,
+`Punctuation` and `Units` over it; Trame realizes it with its `Language` (`OurDocumentLanguage`, in every environment),
+and the engine's `g.lib`, the renderers and the page read the library's nodes. The renderers move there next (decided 26
+November): the common renderer and its syntaxes, the figures, Markdown and Mermaid, then the page.
+
 ## 5. The rules the build enforces
 
 - **Everything is in the graph.** A value, a name, a choice that a person could change lives in a node, with its meaning.
@@ -320,7 +331,7 @@ commands chosen there): Trame's `PlanRunsInTheEngine` proves `ProjectInTheEngine
   do not make a concept of it. Where amendments of the graph go, how a package is fetched, how evidence is signed: each
   is a port with its strategies, the first one in place, the others to come.
 - **Words are in catalogs**, in the language they are written in; a count uses `plurals(language)` with each form
-  written; lists use `Lists`; dates use `Dates`. A product in several languages has one catalog per language, each
+  written; lists use `Lists`; dates use `Dates` (`#documents/language`, since g129). A product in several languages has one catalog per language, each
   translating the first (`translates`), and chooses the catalog of the language it speaks when it runs.
 
 ## 5b. Packages and libraries
@@ -688,6 +699,17 @@ elements), a port answered differently in several environments is answered as in
   commands every project runs in one (Local), as Trame does.
 - Before g127, `trame ship` assembled a check's program by the component's own name: a library's component was
   "unknown". It is now assembled by its reference, with the commands the project chose of it.
+- A kind's constructor may type its input apart from its edges (the `language` kind's `LanguageInput`): an edge that
+  takes one more kind of target takes it in the input's type too, or TypeScript refuses the node that uses it.
+- The example imports std as it is: a change of `std/src` reaches Trame's scenarios, which compile the example, during a
+  build or an advance, read with the language of the generation in place. Set std's changes aside while Trame advances
+  (`git stash push -- std`), and bring them back after.
+- A node a program assembled for elsewhere imports (the page's `Dates`) moved to a library leaves that program importing
+  it where it was: the scenarios that bundle it fail, and the errors refuse the assembly that would write it again.
+  Re-export the node from where it was for one assembly, then remove the re-export.
+- Before g129, a project compiled through the engine's API (a library's scenario compiling its small project) left the
+  engine with that project's views: a cold build of Trame lost the documents of its own views (literals, versions). The
+  API gives the views back.
 
 ## 10. Reading further
 
