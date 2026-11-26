@@ -19,7 +19,8 @@ import {
   Mermaid, Flowchart, MermaidNode, Subgraph, MermaidLink, ClassDefinition, NodeStyle,
   Gantt, GanttSection, GanttTask, Milestone,
 } from "./mermaid"
-import { TextRendering, MermaidFigures, Punctuation, Units } from "./documents"
+import { TextRendering, MermaidFigures } from "./documents"
+import { Punctuation, Units } from "#documents/language"
 import { TerminalText, TerminalColumns, PaddedCell, Columns, ItemLine, CodeLines, TerminalLines, TreeBranch, PathStep } from "./text"
 import { Html, Svg, Aria, Css } from "#std/html"
 import { HtmlElement, HtmlHeading, EscapedText, SelfClosingTag, PathData, CssDeclaration } from "./html"
@@ -27,7 +28,8 @@ import { ThePage } from "./page"
 import { DocumentMarkup, FigureMarkup } from "./markup"
 import { ReferenceSyntax } from "./conventions"
 import { Counts, Sequences, Texts, ValueTypes } from "#std/algebra"
-import { Dates, Lists, RenderingMessages, PageWords } from "./messages"
+import { RenderingMessages, PageWords } from "./messages"
+import { Dates, Lists } from "#documents/language"
 import { Iso8601 } from "#std/measures"
 
 // A document is rendered by one renderer, whatever its format: it walks the blocks of the intermediate format, says

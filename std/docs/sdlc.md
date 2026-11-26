@@ -77,7 +77,7 @@ The library as its people write it: what a version freezes, and what projects im
 
 - Path: `src`
 
-Built 26 November 2026 by claude, fingerprint `cc8e6c69421542159c171a2535f305ef1240420fa3563a4f4e926d8f2b9b3384`.
+Built 26 November 2026 by claude, fingerprint `edc01c19fa5dd1e64a1a2b3044f5768455dd2fa76cb57f0dbdbe3ac470474c7b`.
 
 Shipped by [The next version](#NextVersion) 10 November 2026, fingerprint `899a945c8e6cedd8f5b631d42814486280ce02f0b93c4e2b7dac85775c2c8c9d`.
 
@@ -117,6 +117,8 @@ Shipped by [The next version](#NextVersion) 25 November 2026, fingerprint `a6dac
 
 Shipped by [The next version](#NextVersion) 26 November 2026, fingerprint `cc8e6c69421542159c171a2535f305ef1240420fa3563a4f4e926d8f2b9b3384`.
 
+Shipped by [The next version](#NextVersion) 26 November 2026, fingerprint `edc01c19fa5dd1e64a1a2b3044f5768455dd2fa76cb57f0dbdbe3ac470474c7b`.
+
 - Owner: trame
 - A version of the project: true
 - Shipped by: [The next version](#NextVersion)
@@ -137,6 +139,7 @@ A version of the standard library, for the projects that import it: shipped by t
 |---|---|---|
 | [The standard library](#TheLibrary) | **unknown** | shipped |
 | [A library offers commands, a project chooses them](commands.md#CommandsOfALibrary) | **held** | [Its decisions applied](#DecisionsApplied), for [The library's commands](commands.md#LibraryCommands) |
+| [The engine is a provider](engine.md#EngineAsAProvider) | **held** | [Its decisions applied](#DecisionsApplied), for [Reading a language](engine.md#LanguageReading) |
 | [A project judges harder than the language, never softer](judgment.md#HarderNeverSofter) | **held** | [Its decisions applied](#DecisionsApplied), for [As the language says](judgment.md#AsTheLanguageSays) |
 | [An entry point says who may call it](access.md#SaysItsAudience) | **held** | [Its decisions applied](#DecisionsApplied), for [Who calls a shipment's programs is identified](obligations.md#Identified) |
 | [The device's services, as ports](platform.md#DeviceAsPorts) | **held** | [Its decisions applied](#DecisionsApplied), for [Animation frames](platform.md#AnimationFrames) |
@@ -147,6 +150,7 @@ A version of the standard library, for the projects that import it: shipped by t
 | [A pull request opened](scenarios.md#PullRequestOpened) | **held** | [Its functions verified](#FunctionsVerified), for [Open a pull request](commands.md#OpenPullRequest) |
 | [A version carried across the projects](scenarios.md#PropagatedInOrder) | **held** | [Its functions verified](#FunctionsVerified), for [Propagate](commands.md#Propagate) |
 | [Commands are made for each effect](scenarios.md#CommandsMade) | **held** | [Its functions verified](#FunctionsVerified), for [Commands](effects.md#Commands) |
+| [The languages read by the engine](scenarios.md#LanguagesRead) | **held** | [Its functions verified](#FunctionsVerified), for [Read by the engine](engine.md#ReadByTheEngine) |
 | [Judged as the language says](scenarios.md#JudgedAsTheLanguage) | **held** | [Its functions verified](#FunctionsVerified), for [As the language says](judgment.md#AsTheLanguageSays) |
 | [Judged strictly](scenarios.md#JudgedStrictly) | **held** | [Its functions verified](#FunctionsVerified), for [Every warning an error](judgment.md#EveryWarning) |
 | [The device, in memory](scenarios.md#DeviceInMemory) | **held** | [Its functions verified](#FunctionsVerified), for [The screen kept awake, in memory](platform.md#AwakeInMemory) |
@@ -169,7 +173,7 @@ A version of the standard library, for the projects that import it: shipped by t
 | [Effects a node may not have](rules.md#WithoutEffects) | **held** | [Its requirements held](#RequirementsServed), for [Anyone](access.md#Anyone) |
 | [Words of a vocabulary](rules.md#WordsOf) | **held** | [Its requirements held](#RequirementsServed), for [Anyone](access.md#Anyone) |
 
-Shipped 26 November 2026 by claude; its dossier: `evidence/shipments/NextVersion-2026-11-26-ea438de4.json`.
+Shipped 26 November 2026 by claude; its dossier: `evidence/shipments/NextVersion-2026-11-26-cecf1a86.json`.
 
 - Owner: trame
 - Ships: [The standard library](#TheLibrary)
@@ -190,7 +194,7 @@ The workflow that checks each pull request, written by trame ship from the graph
 |---|---|---|
 | [The pull requests' workflow](#PullRequestWorkflow) | **held** | shipped |
 
-Shipped 26 November 2026 by claude; its dossier: `evidence/shipments/RunnersWritten-2026-11-26-f86a865e.json`.
+Shipped 26 November 2026 by claude; its dossier: `evidence/shipments/RunnersWritten-2026-11-26-2d8cd7af.json`.
 
 - Owner: trame
 - Ships: [The pull requests' workflow](#PullRequestWorkflow)

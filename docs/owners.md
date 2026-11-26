@@ -5,7 +5,7 @@
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
 | Trame's maintainers | 0 | 0 | 1 | 0 |
-| trame | 0 | 0 | 3 | 782 |
+| trame | 0 | 0 | 1 | 780 |
 
 <a id="Trame's maintainers"></a>
 
@@ -23,9 +23,7 @@
 
 | Severity | Code | What | Where | Owner | Consequence |
 |---|---|---|---|---|---|
-| warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | trame |  |
 | warning | `shipment-awaits` | To ship: The repository is read from GitHub is unknown | [The repository as decided](sdlc.md#RepositorySet) | trame |  |
-| warning | `shipment-awaits` | To ship: The pull requests' workflow is unknown | [The files that run it elsewhere](sdlc.md#RunnersWritten) | trame |  |
 
 ### Owns
 
@@ -211,13 +209,12 @@
 | [A server listens on a port the system gives](doctor.md#ServerAnswers) | Implementation | **held** |
 | [The time passes](doctor.md#TimerAnswers) | Implementation | **held** |
 | [A directory copied is the same as the original](doctor.md#TreesAnswer) | Implementation | **held** |
+| [Documents written in Trame's language](documents.md#DocumentsInOurLanguage) | Technical choice | **held** |
 | [Settings of the documents](documents.md#LanguageSettings) | Decision |  |
 | [How Mermaid figures are drawn](documents.md#MermaidFigures) | Decision |  |
-| [How a number is written](documents.md#NumberDisplay) | Decision |  |
-| [Punctuation of documents](documents.md#Punctuation) | Function | **held** |
+| [The documents in Trame's language](documents.md#OurDocumentLanguage) | Function | **held** |
 | [The punctuation is the language's](documents.md#PunctuationOfTheLanguage) | Architecture decision | **held** |
 | [Heading levels of Markdown documents](documents.md#TextRendering) | Decision |  |
-| [Values with their units](documents.md#Units) | Function | **held** |
 | [Visible text](documents.md#VisibleText) | Function | **held** |
 | [Assembly](engine.md#Assembly) | Function | **held** |
 | [Compilation API](engine.md#CompilationApi) | Function | **held** |
@@ -262,7 +259,6 @@
 | [Class selector](html.md#ClassSelector) | Syntax element | **held** |
 | [Declaration](html.md#CssDeclaration) | Syntax element | **held** |
 | [Rule](html.md#CssRule) | Syntax element | **held** |
-| [CSS style sheets](html.md#CssStyleSheets) | Language | **held** |
 | [Variable](html.md#CssVariable) | Syntax element | **held** |
 | [Custom property](html.md#CustomProperty) | Syntax element | **held** |
 | [DOCTYPE](html.md#Doctype) | Syntax element | **held** |
@@ -272,7 +268,6 @@
 | [HTML element](html.md#HtmlElement) | Syntax element | **held** |
 | [End tag](html.md#HtmlEndTag) | Syntax element | **held** |
 | [Heading of a rank](html.md#HtmlHeading) | Syntax element | **held** |
-| [HTML markup](html.md#HtmlMarkup) | Language | **held** |
 | [Start tag](html.md#HtmlStartTag) | Syntax element | **held** |
 | [JSON in a script](html.md#JsonInScript) | Syntax element | **held** |
 | [Media feature](html.md#MediaFeature) | Syntax element | **held** |
@@ -353,14 +348,12 @@
 | [Messages of the commands](messages.md#CommandMessages) | Message catalog |  |
 | [Messages of the compiler](messages.md#CompilerMessages) | Message catalog |  |
 | [A catalog counts in its language](messages.md#CountsInTheLanguage) | Architecture decision | **held** |
-| [Dates](messages.md#Dates) | Function | **held** |
 | [Messages of trame dev](messages.md#DevMessages) | Message catalog |  |
 | [Messages of the drivers](messages.md#DriverMessages) | Message catalog |  |
 | [Words of Trame's views](messages.md#EngineViewWords) | Message catalog |  |
 | [Words of the kinds](messages.md#KindWords) | Message catalog |  |
 | [Language](messages.md#Language) | Decision |  |
 | [Messages of the laws](messages.md#LawMessages) | Message catalog |  |
-| [Lists](messages.md#Lists) | Function | **held** |
 | [Messages of the outputs](messages.md#OutputMessages) | Message catalog |  |
 | [Words of the page](messages.md#PageWords) | Message catalog |  |
 | [Messages of the platform](messages.md#PlatformMessages) | Message catalog |  |
@@ -370,6 +363,7 @@
 | [Words of the views](messages.md#ViewWords) | Message catalog |  |
 | [The library of continuous integration](packages.md#ContinuousIntegration) | Package |  |
 | [Grammar of CSS](packages.md#CssGrammar) | Package | **held** |
+| [The renderers of documents](packages.md#DocumentRenderers) | Package |  |
 | [esbuild](packages.md#EsbuildPackage) | Package | **held** |
 | [The commands every project runs](packages.md#GenericCommands) | Package |  |
 | [Grammar of HCL](packages.md#HclGrammar) | Package | **held** |
@@ -545,6 +539,8 @@
 | [Generation 125](releases.md#G125) | Release |  |
 | [Generation 126](releases.md#G126) | Release |  |
 | [Generation 127](releases.md#G127) | Release |  |
+| [Generation 128](releases.md#G128) | Release |  |
+| [Generation 129](releases.md#G129) | Release |  |
 | [Generation 13](releases.md#G13) | Release |  |
 | [Generation 14](releases.md#G14) | Release |  |
 | [Generation 15](releases.md#G15) | Release |  |
@@ -726,14 +722,14 @@
 | [The page's program](sdlc.md#PageProgram) | Artefact | **held** |
 | [trame plan runs in the engine](sdlc.md#PlanRunsInTheEngine) | Check | **held** |
 | [How a pull request is checked on GitHub](sdlc.md#PullRequestsOnGitHub) | Decision |  |
-| [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **unknown** |
+| [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **held** |
 | [Read the repository's settings](sdlc.md#ReadTheRepositorySettings) | Entry point | **held** |
 | [The repository's projects](sdlc.md#RepositoryProjects) | Decision |  |
 | [The repository is read from GitHub](sdlc.md#RepositoryRead) | Check | **unknown** |
 | [The repository left by hand, in the scenario](sdlc.md#RepositoryScenarioData) | Decision |  |
 | [The repository as decided](sdlc.md#RepositorySet) | Shipment | **unknown** |
 | [The repository's work on a machine](sdlc.md#RepositoryWorkOnAMachine) | Technical choice | **unknown** |
-| [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **unknown** |
+| [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **held** |
 | [The SDLC in memory](sdlc.md#SdlcInMemory) | Technical choice | **held** |
 | [The SDLC on the machine](sdlc.md#SdlcOnTheMachine) | Technical choice | **unknown** |
 | [What the programs of Trame's SDLC say](sdlc.md#SdlcWords) | Message catalog |  |
@@ -752,7 +748,6 @@
 | [Criteria of shipping only what holds](shipping.md#ShipOnlyWhatHoldsCriteria) | Acceptance criteria | **held** |
 | [Where the SDLC's evidence is kept](shipping.md#ShippingRecords) | Decision |  |
 | [tree-sitter API](standards.md#TreeSitterApi) | Standard |  |
-| [tree-sitter queries](standards.md#TreeSitterQueries) | Standard |  |
 | [TypeScript compiler API](standards.md#TypeScriptApi) | Standard |  |
 | [Checks of a body](syntax.md#BodyChecks) | Function | **held** |
 | [Captures](syntax.md#Captures) | Standard |  |
@@ -761,6 +756,7 @@
 | [Roles of a literal](syntax.md#LiteralRoles) | Message catalog |  |
 | [tree-sitter says what it keeps aside](syntax.md#PredicatesAsTreeSitterReadsThem) | Architecture decision | **held** |
 | [Every language is read alike, with tree-sitter](syntax.md#ReadLanguagesAlike) | Architecture decision | **held** |
+| [std's languages, read by the engine](syntax.md#StdLanguagesRead) | Technical choice | **held** |
 | [Syntax reader](syntax.md#SyntaxReader) | Function | **held** |
 | [Attribute](terraform.md#HclAttribute) | Syntax element | **held** |
 | [Comment](terraform.md#HclComment) | Syntax element | **held** |

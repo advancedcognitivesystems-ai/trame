@@ -4,7 +4,8 @@
 
 import type { ProvidedBy } from "../../../trame/kernel"
 import type { Layout, Paths, Prelude } from "../../architecture"
-import type { Dates, DriverMessages } from "../../messages"
+import type { DriverMessages } from "../../messages"
+import type { Dates } from "#documents/language"
 import type { Counts, Sequences, Texts } from "#std/algebra"
 import type { NodeModuleSpecifiers } from "#std/system"
 import type { HclSyntax, TerraformModules, HclComment, HclString, HclValue, HclAttribute, ModuleBlock } from "../../terraform"

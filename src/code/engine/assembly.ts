@@ -14,7 +14,7 @@ import type { CompilerMessages } from "../../messages"
 import type { Texts, ValueTypes } from "#std/algebra"
 import type { TrameCommands, LanguageNames } from "../../conventions"
 import type { NodeModuleSpecifiers } from "#std/system"
-import type { LanguageDescription } from "../../../kinds/language"
+import type { LanguageDescription } from "../../../trame/kernel"
 
 
 export interface Provision {

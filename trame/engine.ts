@@ -29,6 +29,75 @@ export interface ProjectLayout {
   readonly lockfile: string
 }
 
+// Reading a language (since g128) -------------------------------------------------------------------------------------
+//
+// The engine reads the languages bodies are written in with tree-sitter: a language node declares its grammar, its
+// queries and examples, the reader reads. Reading is a primitive of the engine, as compiling is: a library's language
+// (std's HTML and CSS) is read by the engine that compiles it, through std's port LanguageReading.
+
+/**
+ * A tree-sitter grammar: the module that resolves to its WebAssembly file. The package and its version are those of the
+ * language's packages; a language written before packages were nodes names them here.
+ */
+export interface Grammar {
+  module: string
+  package?: string
+  version?: string
+}
+
+/**
+ * How the escape sequences of a text decode. A sequence opens with the mark; what follows it is either named in `single`
+ * (n, t, a line terminator…, the longest that fits), or numeric (a prefix, then digits of a radix: a given number of
+ * them, or up to a closing mark, or as many as there are up to a most; a character of `trailing` that follows them
+ * belongs to the sequence), or neither: the mark then escapes the character that follows it (\q is q), unless
+ * `keepUnknown` says that it stands for itself (HTML: an ampersand that opens no known reference is an ampersand).
+ * Some languages also write a text with other sequences (HCL: $${ for ${): `literal`.
+ */
+export interface Escapes {
+  mark: string
+  single: Record<string, string>
+  numeric: { prefix: string; radix: number; digits?: number; close?: string; most?: number; trailing?: string[] }[]
+  literal?: Record<string, string>
+  keepUnknown?: boolean
+}
+
+/** What a language gives to those who receive it: its description, as data. */
+export interface LanguageDescription {
+  name: string
+  /** The name bodies give to the language: the language of a file body (code.file), of a component's program. */
+  tag: string
+  grammar: Grammar
+  extensions: string[]
+  /** The queries, by concern (values, names, imports…). */
+  queries: Record<string, string>
+  escapes: Escapes
+}
+
+/** What a reader gives back for an example, so that the kind can compare. */
+export interface ExampleReading {
+  literals: string[]
+  roles: string[]
+  values: (string | number)[]
+  imports: { module: string; typeOnly: boolean }[]
+  globals: string[]
+  entry: boolean
+  parameters: string[]
+  outputs: string[]
+  errors: number
+}
+
+/**
+ * The reader a language is read by (since g128, the engine's, which it gives through its API): it loads the language's
+ * grammar, reads an example of it, and says which predicates of its queries tree-sitter keeps aside.
+ */
+export interface LanguageReader {
+  load(language: LanguageDescription): Promise<void>
+  example(language: LanguageDescription, code: string): ExampleReading
+  /** The predicates each query uses that tree-sitter keeps aside, as tree-sitter parsed the query: [query, operator]. */
+  aside(language: LanguageDescription): [string, string][]
+}
+
+
 /** A project compiled at a date. */
 export interface CompiledProject {
   /** Its root, as the engine found it. */
@@ -56,6 +125,8 @@ export interface EngineApi {
    * being compiled, or prepared, leads that name to: a library's scenario finds what its version carries.
    */
   compile(root: string, today: string): Promise<CompiledProject>
+  /** The engine's reader of languages (since g128): what it reads a body with, given a language's description. */
+  readonly reader: LanguageReader
 }
 
 /** The engine that runs a program: where its commands go, and its API. */

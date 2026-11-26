@@ -1320,7 +1320,7 @@
           "common": "rendering.Common",
           "words": "messages.PageWords",
           "messages": "messages.RenderingMessages",
-          "punctuation": "documents.Punctuation",
+          "punctuation": "documents/language.Punctuation",
           "counts": "std/algebra.Counts",
           "sequences": "std/algebra.Sequences",
           "texts": "std/algebra.Texts"
@@ -1361,7 +1361,7 @@
           "drawing": "appearance.ExplorerDrawing",
           "ids": "conventions.DocumentIds",
           "slots": "rendering.SentenceSlots",
-          "punctuation": "documents.Punctuation",
+          "punctuation": "documents/language.Punctuation",
           "language": "messages.Language",
           "html": "std/html.Html",
           "aria": "std/html.Aria",
@@ -1425,7 +1425,7 @@
       "id": "command-scenarios.AdvanceInMemory",
       "kind": "scenario",
       "title": "An advance, in memory",
-      "source": "src/command-scenarios.ts:1345",
+      "source": "src/command-scenarios.ts:1349",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1462,7 +1462,7 @@
           "status": "passed"
         },
         {
-          "name": "The candidate is accepted (  ✓ trame runs g128 |   ✓ reservations runs g128 | Advance succeeded.)",
+          "name": "The candidate is accepted (  ✓ trame runs g130 |   ✓ reservations runs g130 | Advance succeeded.)",
           "status": "passed"
         },
         {
@@ -1480,7 +1480,7 @@
       "id": "command-scenarios.AdvanceSamples",
       "kind": "decision",
       "title": "What the engines an advance starts answer in a scenario",
-      "source": "src/command-scenarios.ts:1331",
+      "source": "src/command-scenarios.ts:1335",
       "fields": {
         "owner": "trame",
         "value": {
@@ -1884,7 +1884,7 @@
       "id": "command-scenarios.DoctorAsks",
       "kind": "scenario",
       "title": "The doctor",
-      "source": "src/command-scenarios.ts:1304",
+      "source": "src/command-scenarios.ts:1308",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1927,6 +1927,7 @@
           "preparation": "commands.Preparation",
           "line": "conventions.TrameCommands",
           "layout": "conventions.Layout",
+          "typescript": "typescript.TypeScript",
           "messages": "messages.ScenarioMessages"
         },
         "body": "(function)"
@@ -1938,6 +1939,10 @@
         },
         {
           "name": "Asked to compile the project at its day, the API gives the same graph, and no project prepared when the dispatch gave none",
+          "status": "passed"
+        },
+        {
+          "name": "The API gives the engine's reader of languages: it loads TypeScript and reads its queries",
           "status": "passed"
         },
         {
@@ -1991,7 +1996,7 @@
       "id": "command-scenarios.ExampleOutputRewritten",
       "kind": "scenario",
       "title": "An example's output written again",
-      "source": "src/command-scenarios.ts:1139",
+      "source": "src/command-scenarios.ts:1143",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2023,7 +2028,7 @@
       "id": "command-scenarios.ExamplesMet",
       "kind": "scenario",
       "title": "The examples of a project, met",
-      "source": "src/command-scenarios.ts:1156",
+      "source": "src/command-scenarios.ts:1160",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2048,7 +2053,7 @@
       "id": "command-scenarios.KindsCarried",
       "kind": "scenario",
       "title": "A library carries kinds",
-      "source": "src/command-scenarios.ts:1205",
+      "source": "src/command-scenarios.ts:1209",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2115,7 +2120,7 @@
       "id": "command-scenarios.LibraryCommandRun",
       "kind": "scenario",
       "title": "A command of a library the project chooses",
-      "source": "src/command-scenarios.ts:1175",
+      "source": "src/command-scenarios.ts:1179",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2780,7 +2785,7 @@
       "id": "command-scenarios.RewritingSamples",
       "kind": "decision",
       "title": "Declarations rewritten",
-      "source": "src/command-scenarios.ts:1100",
+      "source": "src/command-scenarios.ts:1104",
       "fields": {
         "owner": "trame",
         "value": {
@@ -2924,7 +2929,7 @@
       "id": "command-scenarios.StagesShipped",
       "kind": "scenario",
       "title": "Stages shipped in order",
-      "source": "src/command-scenarios.ts:1255",
+      "source": "src/command-scenarios.ts:1259",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3092,7 +3097,7 @@
       "id": "commands.AddOns",
       "kind": "function",
       "title": "The add-ons of a command the engine keeps",
-      "source": "src/commands.ts:54",
+      "source": "src/commands.ts:55",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3112,7 +3117,7 @@
       "id": "commands.Advance",
       "kind": "entry",
       "title": "Advance",
-      "source": "src/commands.ts:121",
+      "source": "src/commands.ts:123",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3175,7 +3180,7 @@
       "id": "commands.Amend",
       "kind": "entry",
       "title": "Amend",
-      "source": "src/commands.ts:377",
+      "source": "src/commands.ts:379",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3204,7 +3209,7 @@
       "id": "commands.Amending",
       "kind": "function",
       "title": "An amendment prepared",
-      "source": "src/commands.ts:360",
+      "source": "src/commands.ts:362",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3234,7 +3239,7 @@
       "id": "commands.Assemble",
       "kind": "entry",
       "title": "Assemble a component",
-      "source": "src/commands.ts:464",
+      "source": "src/commands.ts:466",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3262,7 +3267,7 @@
       "id": "commands.Assembler",
       "kind": "function",
       "title": "Assembler",
-      "source": "src/commands.ts:96",
+      "source": "src/commands.ts:98",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3270,7 +3275,7 @@
           "preparation": "commands.Preparation",
           "assembly": "engine.Assembly",
           "layout": "text.TerminalText",
-          "punctuation": "documents.Punctuation",
+          "punctuation": "documents/language.Punctuation",
           "texts": "std/algebra.Texts",
           "counts": "std/algebra.Counts",
           "messages": "messages.CommandMessages"
@@ -3286,7 +3291,7 @@
       "id": "commands.Audit",
       "kind": "entry",
       "title": "Audit the packages",
-      "source": "src/commands.ts:190",
+      "source": "src/commands.ts:192",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3324,7 +3329,7 @@
       "id": "commands.Build",
       "kind": "entry",
       "title": "Build",
-      "source": "src/commands.ts:107",
+      "source": "src/commands.ts:109",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3355,7 +3360,7 @@
       "id": "commands.BuildComparison",
       "kind": "function",
       "title": "Two builds compared",
-      "source": "src/commands.ts:336",
+      "source": "src/commands.ts:338",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3374,7 +3379,7 @@
       "id": "commands.CommandOrView",
       "kind": "entry",
       "title": "A command of the project, or a view",
-      "source": "src/commands.ts:499",
+      "source": "src/commands.ts:501",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3412,7 +3417,7 @@
       "id": "commands.Deliver",
       "kind": "entry",
       "title": "Deliver",
-      "source": "src/commands.ts:227",
+      "source": "src/commands.ts:229",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3453,7 +3458,7 @@
       "id": "commands.Dev",
       "kind": "entry",
       "title": "Start trame dev",
-      "source": "src/commands.ts:454",
+      "source": "src/commands.ts:456",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3479,7 +3484,7 @@
       "id": "commands.Doctor",
       "kind": "entry",
       "title": "Ask the machine",
-      "source": "src/commands.ts:315",
+      "source": "src/commands.ts:317",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3506,7 +3511,7 @@
       "id": "commands.EmitPayload",
       "kind": "entry",
       "title": "Payload",
-      "source": "src/commands.ts:179",
+      "source": "src/commands.ts:181",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3534,7 +3539,7 @@
       "id": "commands.ExampleRewriting",
       "kind": "function",
       "title": "Rewriting an example",
-      "source": "src/commands.ts:514",
+      "source": "src/commands.ts:516",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3557,7 +3562,7 @@
       "id": "commands.Examples",
       "kind": "entry",
       "title": "Examples",
-      "source": "src/commands.ts:526",
+      "source": "src/commands.ts:528",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3589,7 +3594,7 @@
       "id": "commands.Export",
       "kind": "entry",
       "title": "Export the page",
-      "source": "src/commands.ts:299",
+      "source": "src/commands.ts:301",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3620,7 +3625,7 @@
       "id": "commands.Help",
       "kind": "entry",
       "title": "Help",
-      "source": "src/commands.ts:541",
+      "source": "src/commands.ts:543",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3649,7 +3654,7 @@
       "id": "commands.Init",
       "kind": "entry",
       "title": "Start a project",
-      "source": "src/commands.ts:437",
+      "source": "src/commands.ts:439",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3708,7 +3713,7 @@
     {
       "id": "commands.Plan",
       "kind": "entry",
-      "source": "src/commands.ts:343",
+      "source": "src/commands.ts:345",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3740,7 +3745,7 @@
       "id": "commands.Preparation",
       "kind": "function",
       "title": "Preparation",
-      "source": "src/commands.ts:68",
+      "source": "src/commands.ts:70",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3773,7 +3778,8 @@
           "machine": "engine.MachineOutputs",
           "paths": "architecture.Paths",
           "reading": "architecture.FileReading",
-          "specifiers": "std/system.NodeModuleSpecifiers"
+          "specifiers": "std/system.NodeModuleSpecifiers",
+          "reader": "syntax.SyntaxReader"
         },
         "body": {
           "file": "./code/commands/preparation.ts",
@@ -3786,7 +3792,7 @@
       "id": "commands.ProjectCommands",
       "kind": "function",
       "title": "The project's commands",
-      "source": "src/commands.ts:42",
+      "source": "src/commands.ts:43",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3806,7 +3812,7 @@
       "id": "commands.Publish",
       "kind": "entry",
       "title": "Publish",
-      "source": "src/commands.ts:165",
+      "source": "src/commands.ts:167",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3837,7 +3843,7 @@
       "id": "commands.RecordEvidence",
       "kind": "entry",
       "title": "Record evidence",
-      "source": "src/commands.ts:266",
+      "source": "src/commands.ts:268",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3869,7 +3875,7 @@
       "id": "commands.ReferencesModule",
       "kind": "function",
       "title": "A module of references",
-      "source": "src/commands.ts:423",
+      "source": "src/commands.ts:425",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3898,7 +3904,7 @@
       "id": "commands.Registry",
       "kind": "entry",
       "title": "Fill the registry",
-      "source": "src/commands.ts:408",
+      "source": "src/commands.ts:410",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3930,7 +3936,7 @@
       "id": "commands.Release",
       "kind": "entry",
       "title": "Release a version",
-      "source": "src/commands.ts:282",
+      "source": "src/commands.ts:284",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3983,7 +3989,7 @@
       "id": "commands.RenderView",
       "kind": "function",
       "title": "Render a view",
-      "source": "src/commands.ts:85",
+      "source": "src/commands.ts:87",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4008,7 +4014,7 @@
       "id": "commands.Run",
       "kind": "entry",
       "title": "Run a component",
-      "source": "src/commands.ts:475",
+      "source": "src/commands.ts:477",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4034,7 +4040,7 @@
       "id": "commands.Ship",
       "kind": "entry",
       "title": "Ship",
-      "source": "src/commands.ts:247",
+      "source": "src/commands.ts:249",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4080,7 +4086,7 @@
       "id": "commands.ShowView",
       "kind": "entry",
       "title": "Show a view",
-      "source": "src/commands.ts:485",
+      "source": "src/commands.ts:487",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4104,7 +4110,7 @@
       "id": "commands.TakeSnapshot",
       "kind": "entry",
       "title": "Take the snapshot",
-      "source": "src/commands.ts:154",
+      "source": "src/commands.ts:156",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4134,7 +4140,7 @@
       "id": "commands.TestKinds",
       "kind": "entry",
       "title": "Test the laws",
-      "source": "src/commands.ts:141",
+      "source": "src/commands.ts:143",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4165,7 +4171,7 @@
       "id": "commands.Upgrade",
       "kind": "entry",
       "title": "Upgrade",
-      "source": "src/commands.ts:392",
+      "source": "src/commands.ts:394",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4204,7 +4210,7 @@
       "id": "commands.WriteManifest",
       "kind": "entry",
       "title": "Write the manifest",
-      "source": "src/commands.ts:208",
+      "source": "src/commands.ts:210",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4848,7 +4854,7 @@
       "id": "delivery.BundlerLeading",
       "kind": "decision",
       "title": "How a bundle is led",
-      "source": "src/delivery.ts:49",
+      "source": "src/delivery.ts:50",
       "fields": {
         "owner": "trame",
         "value": {
@@ -4865,7 +4871,7 @@
       "id": "delivery.DeliveredStyle",
       "kind": "syntax",
       "title": "Style of a delivered page",
-      "source": "src/delivery.ts:24",
+      "source": "src/delivery.ts:25",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4947,7 +4953,7 @@
       "id": "delivery.NamesLed",
       "kind": "function",
       "title": "The names a bundle is led by",
-      "source": "src/delivery.ts:65",
+      "source": "src/delivery.ts:66",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5213,10 +5219,22 @@
       "diagnostics": []
     },
     {
+      "id": "documents.DocumentsInOurLanguage",
+      "kind": "binding",
+      "title": "Documents written in Trame's language",
+      "source": "src/documents.ts:68",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "The views speak the engine's language: what renders their documents, on a machine, in the scenarios or in the page, writes its dates, lists and marks."
+      },
+      "diagnostics": []
+    },
+    {
       "id": "documents.LanguageSettings",
       "kind": "decision",
       "title": "Settings of the documents",
-      "source": "src/documents.ts:87",
+      "source": "src/documents.ts:103",
       "fields": {
         "owner": "trame",
         "value": {
@@ -5252,7 +5270,7 @@
       "id": "documents.MermaidFigures",
       "kind": "decision",
       "title": "How Mermaid figures are drawn",
-      "source": "src/documents.ts:109",
+      "source": "src/documents.ts:125",
       "fields": {
         "owner": "trame",
         "value": {
@@ -5289,24 +5307,10 @@
       "diagnostics": []
     },
     {
-      "id": "documents.NumberDisplay",
-      "kind": "decision",
-      "title": "How a number is written",
-      "source": "src/documents.ts:129",
-      "fields": {
-        "owner": "trame",
-        "value": {
-          "base": 10,
-          "decimals": 2
-        }
-      },
-      "diagnostics": []
-    },
-    {
-      "id": "documents.Punctuation",
+      "id": "documents.OurDocumentLanguage",
       "kind": "function",
-      "title": "Punctuation of documents",
-      "source": "src/documents.ts:54",
+      "title": "The documents in Trame's language",
+      "source": "src/documents.ts:58",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5321,7 +5325,7 @@
       "id": "documents.PunctuationOfTheLanguage",
       "kind": "adr",
       "title": "The punctuation is the language's",
-      "source": "src/documents.ts:66",
+      "source": "src/documents.ts:82",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5338,7 +5342,7 @@
       "id": "documents.TextRendering",
       "kind": "decision",
       "title": "Heading levels of Markdown documents",
-      "source": "src/documents.ts:44",
+      "source": "src/documents.ts:48",
       "fields": {
         "owner": "trame",
         "value": {
@@ -5349,27 +5353,10 @@
       "diagnostics": []
     },
     {
-      "id": "documents.Units",
-      "kind": "function",
-      "title": "Values with their units",
-      "source": "src/documents.ts:140",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "deps": {
-          "display": "documents.NumberDisplay",
-          "counts": "std/algebra.Counts",
-          "values": "std/algebra.ValueTypes"
-        },
-        "body": "(function)"
-      },
-      "diagnostics": []
-    },
-    {
       "id": "documents.VisibleText",
       "kind": "function",
       "title": "Visible text",
-      "source": "src/documents.ts:175",
+      "source": "src/documents.ts:146",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5387,7 +5374,7 @@
       "id": "engine.Assembly",
       "kind": "function",
       "title": "Assembly",
-      "source": "src/engine.ts:515",
+      "source": "src/engine.ts:517",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5416,7 +5403,7 @@
       "id": "engine.CompilationApi",
       "kind": "function",
       "title": "Compilation API",
-      "source": "src/engine.ts:394",
+      "source": "src/engine.ts:396",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5429,13 +5416,13 @@
           "counts": "std/algebra.Counts",
           "sequences": "std/algebra.Sequences",
           "texts": "std/algebra.Texts",
-          "punctuation": "documents.Punctuation",
+          "punctuation": "documents/language.Punctuation",
           "ids": "conventions.DocumentIds",
           "layout": "conventions.Layout",
           "uri": "std/web.Uri",
           "messages": "messages.ViewMessages",
           "pipeline": "engine.ShipmentPipeline",
-          "units": "documents.Units"
+          "units": "documents/language.Units"
         },
         "body": {
           "file": "./code/engine/compilation-api.ts",
@@ -5448,7 +5435,7 @@
       "id": "engine.Compiler",
       "kind": "function",
       "title": "Compiler",
-      "source": "src/engine.ts:266",
+      "source": "src/engine.ts:268",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5494,7 +5481,7 @@
       "id": "engine.Cycles",
       "kind": "function",
       "title": "Cycles",
-      "source": "src/engine.ts:119",
+      "source": "src/engine.ts:121",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5512,7 +5499,7 @@
       "id": "engine.DateBundle",
       "kind": "function",
       "title": "Date bundle",
-      "source": "src/engine.ts:464",
+      "source": "src/engine.ts:466",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5537,7 +5524,7 @@
       "id": "engine.DevServer",
       "kind": "function",
       "title": "trame dev server",
-      "source": "src/engine.ts:499",
+      "source": "src/engine.ts:501",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5567,7 +5554,7 @@
           "counts": "std/algebra.Counts",
           "sequences": "std/algebra.Sequences",
           "texts": "std/algebra.Texts",
-          "dates": "messages.Dates",
+          "dates": "documents/language.Dates",
           "language": "messages.Language",
           "messages": "messages.DevMessages"
         },
@@ -5582,7 +5569,7 @@
       "id": "engine.DevService",
       "kind": "decision",
       "title": "What trame dev serves",
-      "source": "src/engine.ts:487",
+      "source": "src/engine.ts:489",
       "fields": {
         "owner": "trame",
         "value": {
@@ -5609,12 +5596,12 @@
       "id": "engine.Differences",
       "kind": "function",
       "title": "Differences",
-      "source": "src/engine.ts:475",
+      "source": "src/engine.ts:477",
       "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
-          "punctuation": "documents.Punctuation",
+          "punctuation": "documents/language.Punctuation",
           "messages": "messages.OutputMessages"
         },
         "body": {
@@ -5628,7 +5615,7 @@
       "id": "engine.EngineFingerprint",
       "kind": "function",
       "title": "The fingerprint of an engine",
-      "source": "src/engine.ts:237",
+      "source": "src/engine.ts:239",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5659,7 +5646,7 @@
       "id": "engine.Fingerprint",
       "kind": "decision",
       "title": "Length of a fingerprint",
-      "source": "src/engine.ts:212",
+      "source": "src/engine.ts:214",
       "fields": {
         "owner": "trame",
         "value": 16
@@ -5670,7 +5657,7 @@
       "id": "engine.Fingerprints",
       "kind": "function",
       "title": "Fingerprints",
-      "source": "src/engine.ts:142",
+      "source": "src/engine.ts:144",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5705,7 +5692,7 @@
       "id": "engine.Generator",
       "kind": "function",
       "title": "Pseudo-random generator",
-      "source": "src/engine.ts:130",
+      "source": "src/engine.ts:132",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5726,7 +5713,7 @@
       "id": "engine.GraphApi",
       "kind": "function",
       "title": "Graph",
-      "source": "src/engine.ts:158",
+      "source": "src/engine.ts:160",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5738,9 +5725,9 @@
           "texts": "std/algebra.Texts",
           "messages": "messages.CompilerMessages",
           "values": "std/algebra.ValueTypes",
-          "lists": "messages.Lists",
-          "dates": "messages.Dates",
-          "punctuation": "documents.Punctuation",
+          "lists": "documents/language.Lists",
+          "dates": "documents/language.Dates",
+          "punctuation": "documents/language.Punctuation",
           "positions": "engine.Positions",
           "references": "engine.References",
           "iso": "std/measures.Iso8601",
@@ -5751,7 +5738,7 @@
           "layout": "conventions.Layout",
           "typescript": "typescript.TypeScript",
           "versions": "packages.VersionOrder",
-          "units": "documents.Units",
+          "units": "documents/language.Units",
           "visible": "documents.VisibleText",
           "fingerprints": "engine.Fingerprints"
         },
@@ -5766,7 +5753,7 @@
       "id": "engine.JudgedHarder",
       "kind": "function",
       "title": "Judged harder",
-      "source": "src/engine.ts:254",
+      "source": "src/engine.ts:256",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5785,7 +5772,7 @@
       "id": "engine.KeptRunsScope",
       "kind": "decision",
       "title": "What tells a project's runs apart",
-      "source": "src/engine.ts:286",
+      "source": "src/engine.ts:288",
       "fields": {
         "owner": "trame",
         "value": {
@@ -5808,7 +5795,7 @@
       "id": "engine.Laws",
       "kind": "function",
       "title": "Laws",
-      "source": "src/engine.ts:314",
+      "source": "src/engine.ts:316",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5855,7 +5842,7 @@
       "id": "engine.LawsAreRequirements",
       "kind": "adr",
       "title": "The laws are requirements",
-      "source": "src/engine.ts:364",
+      "source": "src/engine.ts:366",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5872,7 +5859,7 @@
       "id": "engine.Lock",
       "kind": "function",
       "title": "Lock",
-      "source": "src/engine.ts:422",
+      "source": "src/engine.ts:424",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5899,7 +5886,7 @@
       "id": "engine.MachineOutputs",
       "kind": "function",
       "title": "Machine outputs",
-      "source": "src/engine.ts:409",
+      "source": "src/engine.ts:411",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5922,7 +5909,7 @@
       "id": "engine.PageHistory",
       "kind": "decision",
       "title": "The days of history a page offers",
-      "source": "src/engine.ts:436",
+      "source": "src/engine.ts:438",
       "fields": {
         "owner": "trame",
         "value": {
@@ -5940,7 +5927,7 @@
       "id": "engine.PayloadBuilder",
       "kind": "function",
       "title": "Payload",
-      "source": "src/engine.ts:450",
+      "source": "src/engine.ts:452",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5969,7 +5956,7 @@
       "id": "engine.Positions",
       "kind": "function",
       "title": "Positions",
-      "source": "src/engine.ts:103",
+      "source": "src/engine.ts:105",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5985,7 +5972,7 @@
       "id": "engine.Project",
       "kind": "function",
       "title": "Project",
-      "source": "src/engine.ts:219",
+      "source": "src/engine.ts:221",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -6012,7 +5999,7 @@
       "id": "engine.ProjectRuns",
       "kind": "function",
       "title": "The runs of a project",
-      "source": "src/engine.ts:301",
+      "source": "src/engine.ts:303",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -6036,7 +6023,7 @@
       "id": "engine.References",
       "kind": "function",
       "title": "References",
-      "source": "src/engine.ts:44",
+      "source": "src/engine.ts:46",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -6053,7 +6040,7 @@
       "id": "engine.ShipmentPipeline",
       "kind": "function",
       "title": "A shipment's pipeline",
-      "source": "src/engine.ts:383",
+      "source": "src/engine.ts:385",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -6073,7 +6060,7 @@
       "id": "engine.StaticAnalysis",
       "kind": "function",
       "title": "Static reading",
-      "source": "src/engine.ts:182",
+      "source": "src/engine.ts:184",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -6118,7 +6105,7 @@
       "id": "engine.TheLanguageReceivesTheGraph",
       "kind": "adr",
       "title": "The language receives the graph's values",
-      "source": "src/engine.ts:346",
+      "source": "src/engine.ts:348",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -6135,7 +6122,7 @@
       "id": "engine.TypeScriptOptions",
       "kind": "decision",
       "title": "Options of the static reading",
-      "source": "src/engine.ts:175",
+      "source": "src/engine.ts:177",
       "fields": {
         "owner": "trame",
         "value": {
@@ -6150,7 +6137,7 @@
       "id": "engine.Views",
       "kind": "function",
       "title": "Views",
-      "source": "src/engine.ts:331",
+      "source": "src/engine.ts:333",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -6184,7 +6171,7 @@
       "id": "engine.Wiring",
       "kind": "function",
       "title": "Wiring",
-      "source": "src/engine.ts:201",
+      "source": "src/engine.ts:203",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -6389,7 +6376,7 @@
       "id": "html.AttributePresence",
       "kind": "syntax",
       "title": "Attribute presence",
-      "source": "src/html.ts:566",
+      "source": "src/html.ts:427",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -6439,7 +6426,7 @@
       "id": "html.AttributeSelector",
       "kind": "syntax",
       "title": "Attribute selector",
-      "source": "src/html.ts:544",
+      "source": "src/html.ts:405",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -6499,7 +6486,7 @@
       "id": "html.ClassSelector",
       "kind": "syntax",
       "title": "Class selector",
-      "source": "src/html.ts:526",
+      "source": "src/html.ts:387",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -6545,7 +6532,7 @@
       "id": "html.CssDeclaration",
       "kind": "syntax",
       "title": "Declaration",
-      "source": "src/html.ts:420",
+      "source": "src/html.ts:281",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -6588,7 +6575,7 @@
       "id": "html.CssRule",
       "kind": "syntax",
       "title": "Rule",
-      "source": "src/html.ts:475",
+      "source": "src/html.ts:336",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -6628,275 +6615,10 @@
       "diagnostics": []
     },
     {
-      "id": "html.CssStyleSheets",
-      "kind": "language",
-      "title": "CSS style sheets",
-      "source": "src/html.ts:87",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "tag": "css",
-        "grammar": {
-          "module": "tree-sitter-css/tree-sitter-css.wasm"
-        },
-        "extensions": [
-          ".css"
-        ],
-        "queries": {
-          "values": {
-            "value": "\n(integer_value) @literal.number\n(float_value) @literal.number\n(color_value) @literal.text\n(string_value) @literal.text\n((plain_value) @literal.text (#match? @literal.text \"[0-9]\") (#not-match? @literal.text \"^--\"))",
-            "meaning": "The values written in a style sheet: a number with its unit, a colour, a text; a plain value that holds a digit, which is the rest of a number the grammar cut (12.5px/1.4 reads 12.5, then px/1.4), a variable aside"
-          },
-          "parts": {
-            "value": "\n(color_value) @literal.part\n((plain_value) @literal.part (#match? @literal.part \"[0-9]\") (#not-match? @literal.part \"^--\"))\n(string_value (string_content) @literal.part)\n(string_value (escape_sequence) @literal.escape)",
-            "meaning": "What a text is made of: a colour, a plain value as written, the content of a quoted text and its escape sequences"
-          },
-          "names": {
-            "value": "\n(attribute_selector (string_value) @name)",
-            "meaning": "What is written like a value but names something: the value an attribute selector matches"
-          },
-          "declarations": {
-            "value": "\n((call_expression (function_name) @_function (arguments . (plain_value) @parameter)) (#eq? @_function \"var\"))\n((declaration (property_name) @output) (#match? @output \"^--\"))",
-            "meaning": "What a sheet receives and gives: each variable it uses (var(--x)), each variable it declares (--x: …)"
-          },
-          "globals": {
-            "value": "\n((call_expression (function_name) @global) (#eq? @global \"url\"))\n(import_statement \"@import\" @global)",
-            "meaning": "What reaches outside the sheet: a resource loaded by its address, another sheet imported"
-          },
-          "roles": {
-            "value": "\n(declaration (_) @role.property)\n(call_expression (function_name) @callee (arguments (_) @role.argument))\n(call_expression (arguments (binary_expression (_) @role.arithmetic)))\n(feature_query (_) @role.condition)",
-            "meaning": "The places that give a literal its role (syntax.LiteralRoles): the value of a property, an argument of a function, an operand of a calculation, a condition of a media query"
-          }
-        },
-        "escapes": {
-          "mark": "\\",
-          "single": {},
-          "numeric": [
-            {
-              "prefix": "",
-              "radix": 16,
-              "most": 6,
-              "trailing": [
-                "\r\n",
-                " ",
-                "\t",
-                "\n",
-                "\r",
-                "\f"
-              ]
-            }
-          ]
-        },
-        "examples": [
-          {
-            "code": ".a { margin: 0 -2px; color: #fff; }",
-            "literals": [
-              "0",
-              "-2px",
-              "#fff"
-            ],
-            "values": [
-              0,
-              "-2px",
-              "#fff"
-            ],
-            "roles": [
-              "property value",
-              "property value",
-              "property value"
-            ]
-          },
-          {
-            "code": ".b[aria-pressed=\"true\"] { top: calc(env(x, 0px) + 20px); }",
-            "literals": [
-              "0px",
-              "20px"
-            ],
-            "roles": [
-              "argument of env",
-              "arithmetic"
-            ]
-          },
-          {
-            "code": ".c { font: 12.5px/1.4 var(--font, \"A \\\"B\\\" \\2014 C\"); width: var(--w); }",
-            "literals": [
-              "12.5",
-              "px/1.4",
-              "\"A \\\"B\\\" \\2014 C\""
-            ],
-            "values": [
-              12.5,
-              "px/1.4",
-              "A \"B\" —C"
-            ]
-          },
-          {
-            "code": "@import url(theme.css);\n@media (max-width: 920px) { .d { flex: none; } }\n",
-            "literals": [
-              "920px"
-            ],
-            "roles": [
-              "condition"
-            ],
-            "globals": [
-              "@import",
-              "url"
-            ]
-          },
-          {
-            "code": ".e { --gap: var(--space-md); margin: var(--gap) var(--edge, var(--gap)); }",
-            "literals": [],
-            "parameters": [
-              "--space-md",
-              "--gap",
-              "--edge",
-              "--gap"
-            ],
-            "outputs": [
-              "--gap"
-            ]
-          }
-        ]
-      },
-      "result": {
-        "examples": [
-          {
-            "code": ".a { margin: 0 -2px; color: #fff; }",
-            "held": true,
-            "found": {
-              "literals": [
-                "0",
-                "-2px",
-                "#fff"
-              ],
-              "roles": [
-                "property value",
-                "property value",
-                "property value"
-              ],
-              "values": [
-                0,
-                "-2px",
-                "#fff"
-              ],
-              "imports": [],
-              "globals": [],
-              "entry": false,
-              "parameters": [],
-              "outputs": [],
-              "errors": 0
-            }
-          },
-          {
-            "code": ".b[aria-pressed=\"true\"] { top: calc(env(x, 0px) + 20px); }",
-            "held": true,
-            "found": {
-              "literals": [
-                "0px",
-                "20px"
-              ],
-              "roles": [
-                "argument of env",
-                "arithmetic"
-              ],
-              "values": [
-                "0px",
-                "20px"
-              ],
-              "imports": [],
-              "globals": [],
-              "entry": false,
-              "parameters": [],
-              "outputs": [],
-              "errors": 0
-            }
-          },
-          {
-            "code": ".c { font: 12.5px/1.4 var(--font, \"A \\\"B\\\" \\2014 C\"); width: var(--w); }",
-            "held": true,
-            "found": {
-              "literals": [
-                "12.5",
-                "px/1.4",
-                "\"A \\\"B\\\" \\2014 C\""
-              ],
-              "roles": [
-                "property value",
-                "property value",
-                "argument of var"
-              ],
-              "values": [
-                12.5,
-                "px/1.4",
-                "A \"B\" —C"
-              ],
-              "imports": [],
-              "globals": [],
-              "entry": false,
-              "parameters": [
-                "--font",
-                "--w"
-              ],
-              "outputs": [],
-              "errors": 0
-            }
-          },
-          {
-            "code": "@import url(theme.css);\n@media (max-width: 920px) { .d { flex: none; } }\n",
-            "held": true,
-            "found": {
-              "literals": [
-                "920px"
-              ],
-              "roles": [
-                "condition"
-              ],
-              "values": [
-                "920px"
-              ],
-              "imports": [],
-              "globals": [
-                "@import",
-                "url"
-              ],
-              "entry": false,
-              "parameters": [],
-              "outputs": [],
-              "errors": 0
-            }
-          },
-          {
-            "code": ".e { --gap: var(--space-md); margin: var(--gap) var(--edge, var(--gap)); }",
-            "held": true,
-            "found": {
-              "literals": [],
-              "roles": [],
-              "values": [],
-              "imports": [],
-              "globals": [],
-              "entry": false,
-              "parameters": [
-                "--space-md",
-                "--gap",
-                "--edge",
-                "--gap"
-              ],
-              "outputs": [
-                "--gap"
-              ],
-              "errors": 0
-            }
-          }
-        ],
-        "aside": []
-      },
-      "diagnostics": []
-    },
-    {
       "id": "html.CssVariable",
       "kind": "syntax",
       "title": "Variable",
-      "source": "src/html.ts:455",
+      "source": "src/html.ts:316",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -6946,7 +6668,7 @@
       "id": "html.CustomProperty",
       "kind": "syntax",
       "title": "Custom property",
-      "source": "src/html.ts:436",
+      "source": "src/html.ts:297",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -6995,7 +6717,7 @@
       "id": "html.Doctype",
       "kind": "syntax",
       "title": "DOCTYPE",
-      "source": "src/html.ts:355",
+      "source": "src/html.ts:216",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -7033,7 +6755,7 @@
       "id": "html.EscapedText",
       "kind": "syntax",
       "title": "Escaped text",
-      "source": "src/html.ts:308",
+      "source": "src/html.ts:169",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -7114,7 +6836,7 @@
       "id": "html.HtmlAttributes",
       "kind": "syntax",
       "title": "Attributes",
-      "source": "src/html.ts:194",
+      "source": "src/html.ts:55",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -7190,7 +6912,7 @@
       "id": "html.HtmlBlock",
       "kind": "syntax",
       "title": "Element over several lines",
-      "source": "src/html.ts:336",
+      "source": "src/html.ts:197",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -7254,7 +6976,7 @@
       "id": "html.HtmlElement",
       "kind": "syntax",
       "title": "HTML element",
-      "source": "src/html.ts:271",
+      "source": "src/html.ts:132",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -7297,7 +7019,7 @@
       "id": "html.HtmlEndTag",
       "kind": "syntax",
       "title": "End tag",
-      "source": "src/html.ts:253",
+      "source": "src/html.ts:114",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -7343,7 +7065,7 @@
       "id": "html.HtmlHeading",
       "kind": "syntax",
       "title": "Heading of a rank",
-      "source": "src/html.ts:288",
+      "source": "src/html.ts:149",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -7387,230 +7109,10 @@
       "diagnostics": []
     },
     {
-      "id": "html.HtmlMarkup",
-      "kind": "language",
-      "title": "HTML markup",
-      "source": "src/html.ts:26",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "tag": "html",
-        "grammar": {
-          "module": "tree-sitter-html/tree-sitter-html.wasm"
-        },
-        "extensions": [
-          ".html"
-        ],
-        "queries": {
-          "values": {
-            "value": "\n(quoted_attribute_value) @literal.text\n(attribute (attribute_value) @literal.text)\n(text) @literal.text\n(entity) @literal.text",
-            "meaning": "The values written in markup: the value of an attribute, quoted or not; a text; a character reference on its own, between two texts"
-          },
-          "parts": {
-            "value": "\n(attribute_value) @literal.part\n(text) @literal.part\n(entity) @literal.escape",
-            "meaning": "What a value is made of: an attribute's value as written (its character references included: the grammar does not catch them apart there), a text, a character reference"
-          },
-          "names": {
-            "value": "\n((attribute (attribute_name) @_name) @name (#any-of? @_name \"class\" \"id\" \"for\" \"aria-labelledby\" \"aria-describedby\" \"aria-controls\"))",
-            "meaning": "What is written like a value but names something: a class, an identifier, an attribute that refers to an identifier"
-          },
-          "roles": {
-            "value": "\n(attribute (quoted_attribute_value) @role.attribute)\n(attribute (attribute_value) @role.attribute)\n(element (text) @role.content)\n(element (entity) @role.content)",
-            "meaning": "The places that give a literal its role (syntax.LiteralRoles): the value of an attribute, the content of an element"
-          }
-        },
-        "escapes": {
-          "mark": "&",
-          "single": {
-            "amp;": "&",
-            "lt;": "<",
-            "gt;": ">",
-            "quot;": "\"",
-            "apos;": "'",
-            "nbsp;": " "
-          },
-          "numeric": [
-            {
-              "prefix": "#x",
-              "radix": 16,
-              "close": ";"
-            },
-            {
-              "prefix": "#X",
-              "radix": 16,
-              "close": ";"
-            },
-            {
-              "prefix": "#",
-              "radix": 10,
-              "close": ";"
-            }
-          ],
-          "keepUnknown": true
-        },
-        "examples": [
-          {
-            "code": "<a id=\"Goal\" href=\"#Goal\">Goal</a>",
-            "literals": [
-              "\"#Goal\"",
-              "Goal"
-            ],
-            "values": [
-              "#Goal",
-              "Goal"
-            ],
-            "roles": [
-              "attribute value",
-              "content of an element"
-            ]
-          },
-          {
-            "code": "<p title=\"a &amp; b &eacute;\">T &lt; U &#x2192; V</p>",
-            "literals": [
-              "\"a &amp; b &eacute;\"",
-              "T",
-              "&lt;",
-              "U",
-              "&#x2192;",
-              "V"
-            ],
-            "values": [
-              "a & b &eacute;",
-              "T",
-              "<",
-              "U",
-              "→",
-              "V"
-            ]
-          },
-          {
-            "code": "<button class=\"chip\" aria-pressed=\"true\" hidden>x</button>",
-            "literals": [
-              "\"true\"",
-              "x"
-            ],
-            "roles": [
-              "attribute value",
-              "content of an element"
-            ]
-          },
-          {
-            "code": "<!DOCTYPE html>\n<style>.a { margin: 0 }</style>\n<script>const x = 1</script>\n",
-            "literals": []
-          }
-        ]
-      },
-      "result": {
-        "examples": [
-          {
-            "code": "<a id=\"Goal\" href=\"#Goal\">Goal</a>",
-            "held": true,
-            "found": {
-              "literals": [
-                "\"#Goal\"",
-                "Goal"
-              ],
-              "roles": [
-                "attribute value",
-                "content of an element"
-              ],
-              "values": [
-                "#Goal",
-                "Goal"
-              ],
-              "imports": [],
-              "globals": [],
-              "entry": false,
-              "parameters": [],
-              "outputs": [],
-              "errors": 0
-            }
-          },
-          {
-            "code": "<p title=\"a &amp; b &eacute;\">T &lt; U &#x2192; V</p>",
-            "held": true,
-            "found": {
-              "literals": [
-                "\"a &amp; b &eacute;\"",
-                "T",
-                "&lt;",
-                "U",
-                "&#x2192;",
-                "V"
-              ],
-              "roles": [
-                "attribute value",
-                "content of an element",
-                "content of an element",
-                "content of an element",
-                "content of an element",
-                "content of an element"
-              ],
-              "values": [
-                "a & b &eacute;",
-                "T",
-                "<",
-                "U",
-                "→",
-                "V"
-              ],
-              "imports": [],
-              "globals": [],
-              "entry": false,
-              "parameters": [],
-              "outputs": [],
-              "errors": 0
-            }
-          },
-          {
-            "code": "<button class=\"chip\" aria-pressed=\"true\" hidden>x</button>",
-            "held": true,
-            "found": {
-              "literals": [
-                "\"true\"",
-                "x"
-              ],
-              "roles": [
-                "attribute value",
-                "content of an element"
-              ],
-              "values": [
-                "true",
-                "x"
-              ],
-              "imports": [],
-              "globals": [],
-              "entry": false,
-              "parameters": [],
-              "outputs": [],
-              "errors": 0
-            }
-          },
-          {
-            "code": "<!DOCTYPE html>\n<style>.a { margin: 0 }</style>\n<script>const x = 1</script>\n",
-            "held": true,
-            "found": {
-              "literals": [],
-              "roles": [],
-              "values": [],
-              "imports": [],
-              "globals": [],
-              "entry": false,
-              "parameters": [],
-              "outputs": [],
-              "errors": 0
-            }
-          }
-        ],
-        "aside": []
-      },
-      "diagnostics": []
-    },
-    {
       "id": "html.HtmlStartTag",
       "kind": "syntax",
       "title": "Start tag",
-      "source": "src/html.ts:218",
+      "source": "src/html.ts:79",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -7654,7 +7156,7 @@
       "id": "html.JsonInScript",
       "kind": "syntax",
       "title": "JSON in a script",
-      "source": "src/html.ts:400",
+      "source": "src/html.ts:261",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -7704,7 +7206,7 @@
       "id": "html.MediaFeature",
       "kind": "syntax",
       "title": "Media feature",
-      "source": "src/html.ts:509",
+      "source": "src/html.ts:370",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -7747,7 +7249,7 @@
       "id": "html.MediaRule",
       "kind": "syntax",
       "title": "Media rule",
-      "source": "src/html.ts:491",
+      "source": "src/html.ts:352",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -7795,7 +7297,7 @@
       "id": "html.NegationSelector",
       "kind": "syntax",
       "title": "Negation",
-      "source": "src/html.ts:601",
+      "source": "src/html.ts:462",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -7841,7 +7343,7 @@
       "id": "html.PathData",
       "kind": "syntax",
       "title": "Path data",
-      "source": "src/html.ts:162",
+      "source": "src/html.ts:23",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -7988,7 +7490,7 @@
       "id": "html.ScriptElement",
       "kind": "syntax",
       "title": "Script",
-      "source": "src/html.ts:373",
+      "source": "src/html.ts:234",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -8066,7 +7568,7 @@
       "id": "html.SelectorList",
       "kind": "syntax",
       "title": "Selector list",
-      "source": "src/html.ts:585",
+      "source": "src/html.ts:446",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -8113,7 +7615,7 @@
       "id": "html.SelfClosingTag",
       "kind": "syntax",
       "title": "Self-closing tag",
-      "source": "src/html.ts:235",
+      "source": "src/html.ts:96",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -8170,7 +7672,7 @@
           "reader": "syntax.SyntaxReader",
           "checks": "syntax.BodyChecks",
           "graph": "typescript.TypeScript",
-          "sheets": "html.CssStyleSheets",
+          "sheets": "std/languages.CssStyleSheets",
           "typeScriptWriter": "typescript.TypeScriptWriter",
           "terraform": "terraform.Terraform",
           "modules": "terraform.TerraformModules",
@@ -8716,7 +8218,7 @@
       "id": "markdown.Anchor",
       "kind": "syntax",
       "title": "Anchor",
-      "source": "src/markdown.ts:387",
+      "source": "src/markdown.ts:388",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -8764,7 +8266,7 @@
       "id": "markdown.BacktickString",
       "kind": "syntax",
       "title": "Backtick string",
-      "source": "src/markdown.ts:151",
+      "source": "src/markdown.ts:152",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -8851,7 +8353,7 @@
       "id": "markdown.BlankLine",
       "kind": "syntax",
       "title": "Blank line",
-      "source": "src/markdown.ts:51",
+      "source": "src/markdown.ts:52",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -8975,7 +8477,7 @@
       "id": "markdown.BlockQuote",
       "kind": "syntax",
       "title": "Block quote",
-      "source": "src/markdown.ts:135",
+      "source": "src/markdown.ts:136",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -9016,7 +8518,7 @@
       "id": "markdown.Blocks",
       "kind": "syntax",
       "title": "Sequence of blocks",
-      "source": "src/markdown.ts:71",
+      "source": "src/markdown.ts:72",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -9099,7 +8601,7 @@
       "id": "markdown.CodeBlock",
       "kind": "syntax",
       "title": "Code block",
-      "source": "src/markdown.ts:181",
+      "source": "src/markdown.ts:182",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -9201,7 +8703,7 @@
       "id": "markdown.CodeSpan",
       "kind": "syntax",
       "title": "Code span",
-      "source": "src/markdown.ts:239",
+      "source": "src/markdown.ts:240",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -9286,7 +8788,7 @@
       "id": "markdown.CommonMark",
       "kind": "standard",
       "title": "CommonMark",
-      "source": "src/markdown.ts:19",
+      "source": "src/markdown.ts:20",
       "fields": {
         "owner": "trame",
         "source": "CommonMark Spec 0.31.2 (2024)",
@@ -9316,7 +8818,7 @@
       "id": "markdown.Details",
       "kind": "syntax",
       "title": "Collapsible block",
-      "source": "src/markdown.ts:425",
+      "source": "src/markdown.ts:426",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -9394,7 +8896,7 @@
       "id": "markdown.Emphasis",
       "kind": "syntax",
       "title": "Emphasis",
-      "source": "src/markdown.ts:206",
+      "source": "src/markdown.ts:207",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -9435,7 +8937,7 @@
       "id": "markdown.Gfm",
       "kind": "standard",
       "title": "GitHub Flavored Markdown",
-      "source": "src/markdown.ts:35",
+      "source": "src/markdown.ts:36",
       "fields": {
         "owner": "trame",
         "source": "GitHub Flavored Markdown Spec 0.29-gfm (2019)",
@@ -9453,7 +8955,7 @@
       "id": "markdown.Heading",
       "kind": "syntax",
       "title": "Heading",
-      "source": "src/markdown.ts:98",
+      "source": "src/markdown.ts:99",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -9516,7 +9018,7 @@
       "id": "markdown.Link",
       "kind": "syntax",
       "title": "Link",
-      "source": "src/markdown.ts:267",
+      "source": "src/markdown.ts:268",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -9571,7 +9073,7 @@
       "id": "markdown.ListItem",
       "kind": "syntax",
       "title": "List item",
-      "source": "src/markdown.ts:119",
+      "source": "src/markdown.ts:120",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -9612,7 +9114,7 @@
       "id": "markdown.RelativeReference",
       "kind": "syntax",
       "title": "Relative reference",
-      "source": "src/markdown.ts:289",
+      "source": "src/markdown.ts:290",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -9725,7 +9227,7 @@
       "id": "markdown.Small",
       "kind": "syntax",
       "title": "Small text",
-      "source": "src/markdown.ts:406",
+      "source": "src/markdown.ts:407",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -9768,7 +9270,7 @@
       "id": "markdown.StrongEmphasis",
       "kind": "syntax",
       "title": "Strong emphasis",
-      "source": "src/markdown.ts:222",
+      "source": "src/markdown.ts:223",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -9809,7 +9311,7 @@
       "id": "markdown.Table",
       "kind": "syntax",
       "title": "Table",
-      "source": "src/markdown.ts:370",
+      "source": "src/markdown.ts:371",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -9877,7 +9379,7 @@
       "id": "markdown.TableCell",
       "kind": "syntax",
       "title": "Table cell",
-      "source": "src/markdown.ts:318",
+      "source": "src/markdown.ts:319",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -9919,7 +9421,7 @@
       "id": "markdown.TableDelimiterRow",
       "kind": "syntax",
       "title": "Delimiter row",
-      "source": "src/markdown.ts:352",
+      "source": "src/markdown.ts:353",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -9964,7 +9466,7 @@
       "id": "markdown.TableRow",
       "kind": "syntax",
       "title": "Table row",
-      "source": "src/markdown.ts:336",
+      "source": "src/markdown.ts:337",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -11046,7 +10548,7 @@
       "id": "messages.AdvanceMessages",
       "kind": "catalog",
       "title": "Messages of an advance",
-      "source": "src/messages.ts:958",
+      "source": "src/messages.ts:925",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -11060,7 +10562,7 @@
       "id": "messages.CommandMessages",
       "kind": "catalog",
       "title": "Messages of the commands",
-      "source": "src/messages.ts:454",
+      "source": "src/messages.ts:420",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -11074,12 +10576,12 @@
       "id": "messages.CompilerMessages",
       "kind": "catalog",
       "title": "Messages of the compiler",
-      "source": "src/messages.ts:90",
+      "source": "src/messages.ts:56",
       "fields": {
         "owner": "trame",
         "deps": {
           "language": "messages.Language",
-          "lists": "messages.Lists"
+          "lists": "documents/language.Lists"
         },
         "messages": "(function)"
       },
@@ -11089,7 +10591,7 @@
       "id": "messages.CountsInTheLanguage",
       "kind": "adr",
       "title": "A catalog counts in its language",
-      "source": "src/messages.ts:1047",
+      "source": "src/messages.ts:1014",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -11103,30 +10605,15 @@
       "diagnostics": []
     },
     {
-      "id": "messages.Dates",
-      "kind": "function",
-      "title": "Dates",
-      "source": "src/messages.ts:51",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "deps": {
-          "language": "messages.Language"
-        },
-        "body": "(function)"
-      },
-      "diagnostics": []
-    },
-    {
       "id": "messages.DevMessages",
       "kind": "catalog",
       "title": "Messages of trame dev",
-      "source": "src/messages.ts:430",
+      "source": "src/messages.ts:396",
       "fields": {
         "owner": "trame",
         "deps": {
           "language": "messages.Language",
-          "lists": "messages.Lists"
+          "lists": "documents/language.Lists"
         },
         "messages": "(function)"
       },
@@ -11136,7 +10623,7 @@
       "id": "messages.DriverMessages",
       "kind": "catalog",
       "title": "Messages of the drivers",
-      "source": "src/messages.ts:226",
+      "source": "src/messages.ts:192",
       "fields": {
         "owner": "trame",
         "messages": "(function)"
@@ -11147,7 +10634,7 @@
       "id": "messages.EngineViewWords",
       "kind": "catalog",
       "title": "Words of Trame's views",
-      "source": "src/messages.ts:726",
+      "source": "src/messages.ts:692",
       "fields": {
         "owner": "trame",
         "messages": {
@@ -11161,7 +10648,7 @@
       "id": "messages.KindWords",
       "kind": "catalog",
       "title": "Words of the kinds",
-      "source": "src/messages.ts:706",
+      "source": "src/messages.ts:672",
       "fields": {
         "owner": "trame",
         "messages": {
@@ -11175,7 +10662,7 @@
       "id": "messages.Language",
       "kind": "decision",
       "title": "Language",
-      "source": "src/messages.ts:35",
+      "source": "src/messages.ts:36",
       "fields": {
         "owner": "trame",
         "value": {
@@ -11203,7 +10690,7 @@
       "id": "messages.LawMessages",
       "kind": "catalog",
       "title": "Messages of the laws",
-      "source": "src/messages.ts:274",
+      "source": "src/messages.ts:240",
       "fields": {
         "owner": "trame",
         "messages": "(function)"
@@ -11211,25 +10698,10 @@
       "diagnostics": []
     },
     {
-      "id": "messages.Lists",
-      "kind": "function",
-      "title": "Lists",
-      "source": "src/messages.ts:70",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "deps": {
-          "language": "messages.Language"
-        },
-        "body": "(function)"
-      },
-      "diagnostics": []
-    },
-    {
       "id": "messages.OutputMessages",
       "kind": "catalog",
       "title": "Messages of the outputs",
-      "source": "src/messages.ts:370",
+      "source": "src/messages.ts:336",
       "fields": {
         "owner": "trame",
         "messages": "(function)"
@@ -11240,7 +10712,7 @@
       "id": "messages.PageWords",
       "kind": "catalog",
       "title": "Words of the page",
-      "source": "src/messages.ts:737",
+      "source": "src/messages.ts:703",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -11257,7 +10729,7 @@
       "id": "messages.PlatformMessages",
       "kind": "catalog",
       "title": "Messages of the platform",
-      "source": "src/messages.ts:759",
+      "source": "src/messages.ts:725",
       "fields": {
         "owner": "trame",
         "messages": "(function)"
@@ -11268,7 +10740,7 @@
       "id": "messages.RenderingMessages",
       "kind": "catalog",
       "title": "Messages of the renderers",
-      "source": "src/messages.ts:749",
+      "source": "src/messages.ts:715",
       "fields": {
         "owner": "trame",
         "messages": {
@@ -11282,7 +10754,7 @@
       "id": "messages.ScenarioMessages",
       "kind": "catalog",
       "title": "Messages of the scenarios",
-      "source": "src/messages.ts:788",
+      "source": "src/messages.ts:754",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -11296,7 +10768,7 @@
       "id": "messages.ViewMessages",
       "kind": "catalog",
       "title": "Messages of the views",
-      "source": "src/messages.ts:319",
+      "source": "src/messages.ts:285",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -11310,7 +10782,7 @@
       "id": "messages.ViewWords",
       "kind": "catalog",
       "title": "Words of the views",
-      "source": "src/messages.ts:716",
+      "source": "src/messages.ts:682",
       "fields": {
         "owner": "trame",
         "messages": {
@@ -11324,7 +10796,7 @@
       "id": "packages.ContinuousIntegration",
       "kind": "package",
       "title": "The library of continuous integration",
-      "source": "src/packages.ts:146",
+      "source": "src/packages.ts:148",
       "fields": {
         "owner": "trame",
         "packageName": "ci",
@@ -11339,7 +10811,7 @@
       "id": "packages.CssGrammar",
       "kind": "package",
       "title": "Grammar of CSS",
-      "source": "src/packages.ts:60",
+      "source": "src/packages.ts:62",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -11347,6 +10819,21 @@
         "version": "0.25.0",
         "url": "https://www.npmjs.com/package/tree-sitter-css",
         "declaredEffects": []
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "packages.DocumentRenderers",
+      "kind": "package",
+      "title": "The renderers of documents",
+      "source": "src/packages.ts:202",
+      "fields": {
+        "owner": "trame",
+        "packageName": "documents",
+        "version": "0.1.0",
+        "joins": "library",
+        "from": "path",
+        "at": "libs/documents/releases/0.1.0"
       },
       "diagnostics": []
     },
@@ -11373,7 +10860,7 @@
       "id": "packages.GenericCommands",
       "kind": "package",
       "title": "The commands every project runs",
-      "source": "src/packages.ts:190",
+      "source": "src/packages.ts:192",
       "fields": {
         "owner": "trame",
         "packageName": "commands",
@@ -11388,7 +10875,7 @@
       "id": "packages.HclGrammar",
       "kind": "package",
       "title": "Grammar of HCL",
-      "source": "src/packages.ts:66",
+      "source": "src/packages.ts:68",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -11403,7 +10890,7 @@
       "id": "packages.HtmlGrammar",
       "kind": "package",
       "title": "Grammar of HTML",
-      "source": "src/packages.ts:55",
+      "source": "src/packages.ts:56",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -11418,7 +10905,7 @@
       "id": "packages.Machine",
       "kind": "package",
       "title": "The questions of the machine",
-      "source": "src/packages.ts:180",
+      "source": "src/packages.ts:182",
       "fields": {
         "owner": "trame",
         "packageName": "machine",
@@ -11433,7 +10920,7 @@
       "id": "packages.NodeTypes",
       "kind": "package",
       "title": "Types of Node.js",
-      "source": "src/packages.ts:72",
+      "source": "src/packages.ts:74",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -11450,7 +10937,7 @@
       "id": "packages.NpmLockfile",
       "kind": "standard",
       "title": "npm's lockfile",
-      "source": "src/packages.ts:155",
+      "source": "src/packages.ts:157",
       "fields": {
         "owner": "trame",
         "source": "npm documentation: package-lock.json (lockfileVersion 3: packages, the root project under the key \"\")",
@@ -11472,7 +10959,7 @@
       "id": "packages.PackageAudit",
       "kind": "decision",
       "title": "Audit of the packages",
-      "source": "src/packages.ts:86",
+      "source": "src/packages.ts:88",
       "fields": {
         "owner": "trame",
         "value": {
@@ -11494,7 +10981,7 @@
       "id": "packages.People",
       "kind": "package",
       "title": "The people of the repository",
-      "source": "src/packages.ts:170",
+      "source": "src/packages.ts:172",
       "fields": {
         "owner": "trame",
         "packageName": "team",
@@ -11509,14 +10996,14 @@
       "id": "packages.StandardLibrary",
       "kind": "package",
       "title": "The standard library",
-      "source": "src/packages.ts:136",
+      "source": "src/packages.ts:138",
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.28.0",
+        "version": "0.29.0",
         "joins": "library",
         "from": "path",
-        "at": "std/releases/0.28.0"
+        "at": "std/releases/0.29.0"
       },
       "diagnostics": []
     },
@@ -11576,7 +11063,7 @@
       "id": "packages.VersionOrder",
       "kind": "function",
       "title": "Order of versions",
-      "source": "src/packages.ts:104",
+      "source": "src/packages.ts:106",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -11610,7 +11097,7 @@
       "id": "page.Banner",
       "kind": "syntax",
       "title": "Banner",
-      "source": "src/page.ts:421",
+      "source": "src/page.ts:422",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -11646,7 +11133,7 @@
       "id": "page.Brand",
       "kind": "syntax",
       "title": "Brand",
-      "source": "src/page.ts:245",
+      "source": "src/page.ts:246",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -11723,7 +11210,7 @@
       "id": "page.CompilationState",
       "kind": "syntax",
       "title": "State of the compilation",
-      "source": "src/page.ts:279",
+      "source": "src/page.ts:280",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -11759,7 +11246,7 @@
       "id": "page.DatePicker",
       "kind": "syntax",
       "title": "Dates",
-      "source": "src/page.ts:295",
+      "source": "src/page.ts:296",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -11828,7 +11315,7 @@
       "id": "page.DocumentHead",
       "kind": "syntax",
       "title": "Head of the document",
-      "source": "src/page.ts:464",
+      "source": "src/page.ts:465",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -11920,7 +11407,7 @@
       "id": "page.DocumentPicker",
       "kind": "syntax",
       "title": "Document picker",
-      "source": "src/page.ts:345",
+      "source": "src/page.ts:346",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -11993,7 +11480,7 @@
       "id": "page.FigureMarkers",
       "kind": "syntax",
       "title": "Arrowheads of the figures",
-      "source": "src/page.ts:533",
+      "source": "src/page.ts:534",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -12048,7 +11535,7 @@
       "id": "page.FontLinks",
       "kind": "syntax",
       "title": "Fonts",
-      "source": "src/page.ts:724",
+      "source": "src/page.ts:725",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -12116,7 +11603,7 @@
       "id": "page.Logo",
       "kind": "syntax",
       "title": "Logo",
-      "source": "src/page.ts:200",
+      "source": "src/page.ts:201",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -12203,7 +11690,7 @@
       "id": "page.MachineHighlighting",
       "kind": "decision",
       "title": "Files for tools in the page",
-      "source": "src/page.ts:142",
+      "source": "src/page.ts:143",
       "fields": {
         "owner": "trame",
         "value": {
@@ -12217,7 +11704,7 @@
       "id": "page.MainArea",
       "kind": "syntax",
       "title": "Main area",
-      "source": "src/page.ts:496",
+      "source": "src/page.ts:497",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -12330,7 +11817,7 @@
       "id": "page.NarrowScreenRule",
       "kind": "syntax",
       "title": "Rules of a narrow screen",
-      "source": "src/page.ts:703",
+      "source": "src/page.ts:704",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -12375,7 +11862,7 @@
       "id": "page.NarrowScreenStyle",
       "kind": "stylesheet",
       "title": "Style sheet of a narrow screen",
-      "source": "src/page.ts:877",
+      "source": "src/page.ts:878",
       "fields": {
         "owner": "trame",
         "body": {
@@ -12389,7 +11876,7 @@
       "id": "page.Navigation",
       "kind": "syntax",
       "title": "Navigation",
-      "source": "src/page.ts:327",
+      "source": "src/page.ts:328",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -12435,7 +11922,7 @@
       "id": "page.PackedGraph",
       "kind": "decision",
       "title": "A page carries its graph compressed",
-      "source": "src/page.ts:172",
+      "source": "src/page.ts:173",
       "fields": {
         "owner": "trame",
         "value": {
@@ -12454,7 +11941,7 @@
       "id": "page.Page",
       "kind": "function",
       "title": "Page",
-      "source": "src/page.ts:843",
+      "source": "src/page.ts:844",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -12489,8 +11976,8 @@
           "messages": "messages.OutputMessages",
           "language": "messages.Language",
           "reader": "syntax.SyntaxReader",
-          "markup": "html.HtmlMarkup",
-          "sheets": "html.CssStyleSheets",
+          "markup": "std/languages.HtmlMarkup",
+          "sheets": "std/languages.CssStyleSheets",
           "gnu": "std/text.GnuPositions"
         },
         "body": {
@@ -12504,7 +11991,7 @@
       "id": "page.PageBundle",
       "kind": "decision",
       "title": "Bundle of the page",
-      "source": "src/page.ts:187",
+      "source": "src/page.ts:188",
       "fields": {
         "owner": "trame",
         "value": {
@@ -12520,7 +12007,7 @@
       "id": "page.PageDocument",
       "kind": "syntax",
       "title": "Document of the page",
-      "source": "src/page.ts:782",
+      "source": "src/page.ts:783",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -12677,7 +12164,7 @@
       "id": "page.PageRegions",
       "kind": "decision",
       "title": "Regions of the page",
-      "source": "src/page.ts:115",
+      "source": "src/page.ts:116",
       "fields": {
         "owner": "trame",
         "value": {
@@ -12701,7 +12188,7 @@
       "id": "page.PageScripts",
       "kind": "syntax",
       "title": "Scripts of the page",
-      "source": "src/page.ts:756",
+      "source": "src/page.ts:757",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -12766,7 +12253,7 @@
       "id": "page.PageStyle",
       "kind": "stylesheet",
       "title": "Style sheet of the page",
-      "source": "src/page.ts:865",
+      "source": "src/page.ts:866",
       "fields": {
         "owner": "trame",
         "body": {
@@ -12780,7 +12267,7 @@
       "id": "page.RenderingModes",
       "kind": "vocabulary",
       "title": "The renderings of a document",
-      "source": "src/page.ts:43",
+      "source": "src/page.ts:44",
       "fields": {
         "owner": "trame",
         "words": {
@@ -12795,7 +12282,7 @@
       "id": "page.RenderingToggle",
       "kind": "syntax",
       "title": "Choice of rendering",
-      "source": "src/page.ts:437",
+      "source": "src/page.ts:438",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -12866,7 +12353,7 @@
       "id": "page.Shell",
       "kind": "syntax",
       "title": "Shell",
-      "source": "src/page.ts:568",
+      "source": "src/page.ts:569",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -13051,7 +12538,7 @@
       "id": "page.SideBar",
       "kind": "syntax",
       "title": "Side bar",
-      "source": "src/page.ts:377",
+      "source": "src/page.ts:378",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -13191,7 +12678,7 @@
       "id": "page.StandaloneStyle",
       "kind": "decision",
       "title": "Style of the standalone document",
-      "source": "src/page.ts:156",
+      "source": "src/page.ts:157",
       "fields": {
         "owner": "trame",
         "value": {
@@ -13216,7 +12703,7 @@
       "id": "page.StatusStyle",
       "kind": "syntax",
       "title": "Colours of a status",
-      "source": "src/page.ts:672",
+      "source": "src/page.ts:673",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -13288,7 +12775,7 @@
       "id": "page.StyleThroughVariables",
       "kind": "adr",
       "title": "A style sheet writes no value",
-      "source": "src/page.ts:889",
+      "source": "src/page.ts:890",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -13306,7 +12793,7 @@
       "id": "page.Theme",
       "kind": "syntax",
       "title": "Theme",
-      "source": "src/page.ts:631",
+      "source": "src/page.ts:632",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -13410,7 +12897,7 @@
       "id": "page.ThePage",
       "kind": "decision",
       "title": "The page",
-      "source": "src/page.ts:79",
+      "source": "src/page.ts:80",
       "fields": {
         "owner": "trame",
         "value": {
@@ -13441,7 +12928,7 @@
       "id": "platform.AmendmentsInPlace",
       "kind": "binding",
       "title": "Amendments go in the sources",
-      "source": "src/platform.ts:689",
+      "source": "src/platform.ts:690",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -13457,7 +12944,7 @@
       "id": "platform.CompilerReadsDeclarations",
       "kind": "binding",
       "title": "The TypeScript compiler reads the declarations",
-      "source": "src/platform.ts:574",
+      "source": "src/platform.ts:575",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -13487,7 +12974,7 @@
       "id": "platform.DiskTrees",
       "kind": "implementation",
       "title": "Trees on disk",
-      "source": "src/platform.ts:232",
+      "source": "src/platform.ts:233",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -13507,7 +12994,7 @@
       "id": "platform.DiskWriting",
       "kind": "implementation",
       "title": "System files, for writing",
-      "source": "src/platform.ts:204",
+      "source": "src/platform.ts:205",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -13539,7 +13026,7 @@
       "id": "platform.EngineFilesBesideCode",
       "kind": "binding",
       "title": "The engine's own files sit beside its code",
-      "source": "src/platform.ts:588",
+      "source": "src/platform.ts:589",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -13554,7 +13041,7 @@
       "id": "platform.Esbuild",
       "kind": "implementation",
       "title": "esbuild",
-      "source": "src/platform.ts:181",
+      "source": "src/platform.ts:182",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -13569,7 +13056,7 @@
       "id": "platform.EsbuildBundles",
       "kind": "binding",
       "title": "esbuild bundles the page's program",
-      "source": "src/platform.ts:524",
+      "source": "src/platform.ts:525",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -13585,7 +13072,7 @@
       "id": "platform.ExampleProcess",
       "kind": "function",
       "title": "Example process",
-      "source": "src/platform.ts:275",
+      "source": "src/platform.ts:276",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -13618,7 +13105,7 @@
       "id": "platform.FilesInMemoryOverTheDisk",
       "kind": "binding",
       "title": "Scenarios write in memory, over the disk",
-      "source": "src/platform.ts:445",
+      "source": "src/platform.ts:446",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -13634,7 +13121,7 @@
       "id": "platform.InMemoryScenarios",
       "kind": "binding",
       "title": "Scenarios run in memory",
-      "source": "src/platform.ts:462",
+      "source": "src/platform.ts:463",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -13652,7 +13139,7 @@
       "id": "platform.InPlaceSources",
       "kind": "implementation",
       "title": "Amendments in place",
-      "source": "src/platform.ts:605",
+      "source": "src/platform.ts:606",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -13685,7 +13172,7 @@
       "id": "platform.LinesOnExit",
       "kind": "decision",
       "title": "Lines shown on an exit in test",
-      "source": "src/platform.ts:342",
+      "source": "src/platform.ts:343",
       "fields": {
         "owner": "trame",
         "value": 3
@@ -13696,7 +13183,7 @@
       "id": "platform.LocalPaths",
       "kind": "implementation",
       "title": "Packages by their local path",
-      "source": "src/platform.ts:621",
+      "source": "src/platform.ts:622",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -13718,7 +13205,7 @@
       "id": "platform.LocalRegistry",
       "kind": "implementation",
       "title": "Packages from the local registry",
-      "source": "src/platform.ts:647",
+      "source": "src/platform.ts:648",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -13741,7 +13228,7 @@
       "id": "platform.LocalRegistryPlace",
       "kind": "decision",
       "title": "Where the local registry is",
-      "source": "src/platform.ts:633",
+      "source": "src/platform.ts:634",
       "fields": {
         "owner": "trame",
         "value": {
@@ -13758,7 +13245,7 @@
       "id": "platform.MemoryFiles",
       "kind": "implementation",
       "title": "Files in memory, over the disk",
-      "source": "src/platform.ts:318",
+      "source": "src/platform.ts:319",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -13786,7 +13273,7 @@
       "id": "platform.MemoryHttpServer",
       "kind": "function",
       "title": "A server in memory",
-      "source": "src/platform.ts:332",
+      "source": "src/platform.ts:333",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -13807,7 +13294,7 @@
       "id": "platform.MemoryTemporary",
       "kind": "decision",
       "title": "Temporary directories in memory",
-      "source": "src/platform.ts:310",
+      "source": "src/platform.ts:311",
       "fields": {
         "owner": "trame",
         "value": {
@@ -13820,7 +13307,7 @@
       "id": "platform.MemoryTerminal",
       "kind": "function",
       "title": "Terminal in memory",
-      "source": "src/platform.ts:356",
+      "source": "src/platform.ts:357",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -13840,7 +13327,7 @@
       "id": "platform.NodeCommandLine",
       "kind": "implementation",
       "title": "Command line",
-      "source": "src/platform.ts:261",
+      "source": "src/platform.ts:262",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -13862,7 +13349,7 @@
       "id": "platform.NodeCompression",
       "kind": "implementation",
       "title": "gzip, with Node's zlib",
-      "source": "src/platform.ts:135",
+      "source": "src/platform.ts:136",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -13880,7 +13367,7 @@
       "id": "platform.NodeHashing",
       "kind": "implementation",
       "title": "SHA-256 hashes",
-      "source": "src/platform.ts:126",
+      "source": "src/platform.ts:127",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -13895,7 +13382,7 @@
       "id": "platform.NodeHttpServer",
       "kind": "implementation",
       "title": "Node HTTP server",
-      "source": "src/platform.ts:173",
+      "source": "src/platform.ts:174",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -13910,7 +13397,7 @@
       "id": "platform.NodeMachine",
       "kind": "binding",
       "title": "On a machine, Node.js reads, writes and runs",
-      "source": "src/platform.ts:429",
+      "source": "src/platform.ts:430",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -13940,7 +13427,7 @@
     {
       "id": "platform.NodePlatform",
       "kind": "binding",
-      "source": "src/platform.ts:410",
+      "source": "src/platform.ts:411",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -13957,7 +13444,7 @@
       "id": "platform.NodeProcess",
       "kind": "implementation",
       "title": "Node process",
-      "source": "src/platform.ts:212",
+      "source": "src/platform.ts:213",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -13980,7 +13467,7 @@
       "id": "platform.NodePrograms",
       "kind": "implementation",
       "title": "Node programs",
-      "source": "src/platform.ts:222",
+      "source": "src/platform.ts:223",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -14000,7 +13487,7 @@
       "id": "platform.NodeTerminal",
       "kind": "implementation",
       "title": "Node terminal",
-      "source": "src/platform.ts:241",
+      "source": "src/platform.ts:242",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -14022,7 +13509,7 @@
       "id": "platform.NodeTimer",
       "kind": "implementation",
       "title": "Node timer",
-      "source": "src/platform.ts:165",
+      "source": "src/platform.ts:166",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -14037,7 +13524,7 @@
       "id": "platform.NoInstallsInTest",
       "kind": "implementation",
       "title": "No installer in test",
-      "source": "src/platform.ts:295",
+      "source": "src/platform.ts:296",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -14056,7 +13543,7 @@
       "id": "platform.NoReportsInTest",
       "kind": "function",
       "title": "No registry in test",
-      "source": "src/platform.ts:285",
+      "source": "src/platform.ts:286",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -14068,7 +13555,7 @@
       "id": "platform.NpmInstall",
       "kind": "implementation",
       "title": "npm installs",
-      "source": "src/platform.ts:146",
+      "source": "src/platform.ts:147",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -14089,7 +13576,7 @@
       "id": "platform.NpmReports",
       "kind": "implementation",
       "title": "npm's reports",
-      "source": "src/platform.ts:156",
+      "source": "src/platform.ts:157",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -14097,7 +13584,7 @@
           "npm": "std/system.NpmCli",
           "values": "std/algebra.ValueTypes",
           "counts": "std/algebra.Counts",
-          "punctuation": "documents.Punctuation"
+          "punctuation": "documents/language.Punctuation"
         },
         "body": {
           "file": "./code/platform/npm-reports.ts",
@@ -14110,7 +13597,7 @@
       "id": "platform.PackagesByOrigin",
       "kind": "implementation",
       "title": "Packages by their origin",
-      "source": "src/platform.ts:659",
+      "source": "src/platform.ts:660",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -14129,7 +13616,7 @@
       "id": "platform.PackagesByTheirOrigin",
       "kind": "binding",
       "title": "Each package comes from where its reference says",
-      "source": "src/platform.ts:671",
+      "source": "src/platform.ts:672",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -14146,7 +13633,7 @@
       "id": "platform.PageResources",
       "kind": "implementation",
       "title": "Page resources",
-      "source": "src/platform.ts:190",
+      "source": "src/platform.ts:191",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -14185,7 +13672,7 @@
       "id": "platform.ResultsInTheProcess",
       "kind": "implementation",
       "title": "Results kept in the process",
-      "source": "src/platform.ts:383",
+      "source": "src/platform.ts:384",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -14200,7 +13687,7 @@
       "id": "platform.RunsByWhatTheyRead",
       "kind": "binding",
       "title": "A run is kept while what it reads is as it was",
-      "source": "src/platform.ts:482",
+      "source": "src/platform.ts:483",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -14216,7 +13703,7 @@
       "id": "platform.RunsInTheProcess",
       "kind": "implementation",
       "title": "Runs kept in the process",
-      "source": "src/platform.ts:394",
+      "source": "src/platform.ts:395",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -14231,7 +13718,7 @@
       "id": "platform.RunsKeptInTheProcess",
       "kind": "binding",
       "title": "In the scenarios, runs are kept in the process",
-      "source": "src/platform.ts:510",
+      "source": "src/platform.ts:511",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -14247,7 +13734,7 @@
       "id": "platform.RunsKeptOnDisk",
       "kind": "binding",
       "title": "On a machine, runs are kept on disk",
-      "source": "src/platform.ts:496",
+      "source": "src/platform.ts:497",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -14263,7 +13750,7 @@
       "id": "platform.RunsOnDisk",
       "kind": "implementation",
       "title": "Runs kept on disk",
-      "source": "src/platform.ts:404",
+      "source": "src/platform.ts:405",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -14285,7 +13772,7 @@
       "id": "platform.StoppedClock",
       "kind": "function",
       "title": "Stopped clock",
-      "source": "src/platform.ts:365",
+      "source": "src/platform.ts:366",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -14305,7 +13792,7 @@
       "id": "platform.SystemClock",
       "kind": "implementation",
       "title": "System clock",
-      "source": "src/platform.ts:250",
+      "source": "src/platform.ts:251",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -14336,7 +13823,7 @@
       "id": "platform.TestTime",
       "kind": "decision",
       "title": "Time of the scenarios",
-      "source": "src/platform.ts:349",
+      "source": "src/platform.ts:350",
       "fields": {
         "owner": "trame",
         "value": "08:00:00.000Z"
@@ -14365,7 +13852,7 @@
       "id": "platform.TreeSitterReads",
       "kind": "binding",
       "title": "tree-sitter reads the bodies",
-      "source": "src/platform.ts:540",
+      "source": "src/platform.ts:541",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -14403,7 +13890,7 @@
       "id": "platform.TsxRuns",
       "kind": "binding",
       "title": "tsx runs TypeScript",
-      "source": "src/platform.ts:557",
+      "source": "src/platform.ts:558",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -15646,6 +15133,38 @@
         "fingerprint": "40a6114196329fb9",
         "language": "shared",
         "archive": "83cab083efe384d2"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "releases.G128",
+      "kind": "release",
+      "title": "Generation 128",
+      "source": "src/releases.ts:1899",
+      "fields": {
+        "owner": "trame",
+        "version": "g128",
+        "date": "2026-11-26",
+        "what": "the engine's API gives its reader of languages; a language's reader may be a port",
+        "fingerprint": "137d864134b2044b",
+        "language": "shared",
+        "archive": "059fee84b1865ef7"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "releases.G129",
+      "kind": "release",
+      "title": "Generation 129",
+      "source": "src/releases.ts:1914",
+      "fields": {
+        "owner": "trame",
+        "version": "g129",
+        "date": "2026-11-26",
+        "what": "std's languages read by the engine, the documents' language from libs/documents; a project compiled through the API gives the views back",
+        "fingerprint": "73e039b544e87476",
+        "language": "shared",
+        "archive": "33f89a045e47daa4"
       },
       "diagnostics": []
     },
@@ -17156,7 +16675,7 @@
       "id": "rendering.Common",
       "kind": "function",
       "title": "Common rendering",
-      "source": "src/rendering.ts:51",
+      "source": "src/rendering.ts:53",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -17164,11 +16683,11 @@
           "values": "std/algebra.ValueTypes",
           "syntax": "conventions.ReferenceSyntax",
           "slots": "rendering.SentenceSlots",
-          "dates": "messages.Dates",
-          "lists": "messages.Lists",
+          "dates": "documents/language.Dates",
+          "lists": "documents/language.Lists",
           "texts": "std/algebra.Texts",
           "messages": "messages.RenderingMessages",
-          "units": "documents.Units"
+          "units": "documents/language.Units"
         },
         "body": {
           "file": "./code/rendering/common.ts",
@@ -17181,7 +16700,7 @@
       "id": "rendering.DocumentsInMarkdown",
       "kind": "binding",
       "title": "Documents in Markdown",
-      "source": "src/rendering.ts:348",
+      "source": "src/rendering.ts:350",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -17199,7 +16718,7 @@
       "id": "rendering.FiguresInMermaid",
       "kind": "binding",
       "title": "Figures in Mermaid",
-      "source": "src/rendering.ts:368",
+      "source": "src/rendering.ts:370",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -17217,7 +16736,7 @@
       "id": "rendering.FileFigures",
       "kind": "port",
       "title": "Figures of the documents written as files",
-      "source": "src/rendering.ts:181",
+      "source": "src/rendering.ts:183",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -17228,7 +16747,7 @@
       "id": "rendering.FileRendering",
       "kind": "function",
       "title": "Rendering of the files",
-      "source": "src/rendering.ts:311",
+      "source": "src/rendering.ts:313",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -17251,7 +16770,7 @@
       "id": "rendering.FileSyntax",
       "kind": "port",
       "title": "Syntax of the documents written as files",
-      "source": "src/rendering.ts:164",
+      "source": "src/rendering.ts:166",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -17262,7 +16781,7 @@
       "id": "rendering.HtmlSyntax",
       "kind": "function",
       "title": "HTML writer",
-      "source": "src/rendering.ts:293",
+      "source": "src/rendering.ts:295",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -17274,7 +16793,7 @@
           "element": "html.HtmlElement",
           "heading": "html.HtmlHeading",
           "escape": "html.EscapedText",
-          "punctuation": "documents.Punctuation",
+          "punctuation": "documents/language.Punctuation",
           "slots": "rendering.SentenceSlots",
           "counts": "std/algebra.Counts",
           "texts": "std/algebra.Texts",
@@ -17291,14 +16810,14 @@
       "id": "rendering.MarkdownSyntax",
       "kind": "function",
       "title": "Markdown writer",
-      "source": "src/rendering.ts:256",
+      "source": "src/rendering.ts:258",
       "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
           "figures": "rendering.FileFigures",
           "textRendering": "documents.TextRendering",
-          "punctuation": "documents.Punctuation",
+          "punctuation": "documents/language.Punctuation",
           "blocks": "markdown.Blocks",
           "heading": "markdown.Heading",
           "listItem": "markdown.ListItem",
@@ -17328,7 +16847,7 @@
       "id": "rendering.MeaningThenLook",
       "kind": "adr",
       "title": "Kinds and views say what; renderers say how",
-      "source": "src/rendering.ts:459",
+      "source": "src/rendering.ts:461",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -17344,7 +16863,7 @@
       "id": "rendering.MermaidDiagrams",
       "kind": "function",
       "title": "Mermaid diagrams",
-      "source": "src/rendering.ts:200",
+      "source": "src/rendering.ts:202",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -17364,7 +16883,7 @@
           "ganttTask": "mermaid.GanttTask",
           "milestone": "mermaid.Milestone",
           "counts": "std/algebra.Counts",
-          "dates": "messages.Dates",
+          "dates": "documents/language.Dates",
           "messages": "messages.RenderingMessages"
         },
         "body": {
@@ -17378,7 +16897,7 @@
       "id": "rendering.OneRendererManySyntaxes",
       "kind": "adr",
       "title": "One renderer, its syntax a choice",
-      "source": "src/rendering.ts:473",
+      "source": "src/rendering.ts:475",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -17395,7 +16914,7 @@
       "id": "rendering.PageFigures",
       "kind": "port",
       "title": "Figures of the page",
-      "source": "src/rendering.ts:191",
+      "source": "src/rendering.ts:193",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -17406,7 +16925,7 @@
       "id": "rendering.PageFiguresDrawn",
       "kind": "binding",
       "title": "The page's figures in SVG",
-      "source": "src/rendering.ts:440",
+      "source": "src/rendering.ts:442",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -17423,7 +16942,7 @@
       "id": "rendering.PageInHtml",
       "kind": "binding",
       "title": "The page in HTML",
-      "source": "src/rendering.ts:421",
+      "source": "src/rendering.ts:423",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -17440,7 +16959,7 @@
       "id": "rendering.PageRendering",
       "kind": "function",
       "title": "Rendering in the page",
-      "source": "src/rendering.ts:333",
+      "source": "src/rendering.ts:335",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -17463,7 +16982,7 @@
       "id": "rendering.PageSyntax",
       "kind": "port",
       "title": "Syntax of the page",
-      "source": "src/rendering.ts:176",
+      "source": "src/rendering.ts:178",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -17474,7 +16993,7 @@
       "id": "rendering.PlainTextSyntax",
       "kind": "function",
       "title": "Plain text writer",
-      "source": "src/rendering.ts:275",
+      "source": "src/rendering.ts:277",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -17482,7 +17001,7 @@
           "figures": "rendering.TerminalFigures",
           "layout": "text.TerminalText",
           "columns": "text.TerminalColumns",
-          "punctuation": "documents.Punctuation",
+          "punctuation": "documents/language.Punctuation",
           "cell": "text.PaddedCell",
           "table": "text.Columns",
           "item": "text.ItemLine",
@@ -17503,7 +17022,7 @@
       "id": "rendering.SentenceSlots",
       "kind": "decision",
       "title": "Places in a sentence",
-      "source": "src/rendering.ts:45",
+      "source": "src/rendering.ts:47",
       "fields": {
         "owner": "trame",
         "value": {
@@ -17516,7 +17035,7 @@
       "id": "rendering.SvgFigures",
       "kind": "function",
       "title": "Figures in SVG",
-      "source": "src/rendering.ts:235",
+      "source": "src/rendering.ts:237",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -17537,10 +17056,10 @@
           "declaration": "html.CssDeclaration",
           "escape": "html.EscapedText",
           "common": "rendering.Common",
-          "dates": "messages.Dates",
+          "dates": "documents/language.Dates",
           "words": "messages.PageWords",
           "messages": "messages.RenderingMessages",
-          "punctuation": "documents.Punctuation",
+          "punctuation": "documents/language.Punctuation",
           "iso": "std/measures.Iso8601",
           "counts": "std/algebra.Counts",
           "sequences": "std/algebra.Sequences",
@@ -17557,7 +17076,7 @@
       "id": "rendering.TerminalFigures",
       "kind": "port",
       "title": "Figures of the terminal",
-      "source": "src/rendering.ts:186",
+      "source": "src/rendering.ts:188",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -17568,7 +17087,7 @@
       "id": "rendering.TerminalFiguresAsText",
       "kind": "binding",
       "title": "Figures in the terminal, as text",
-      "source": "src/rendering.ts:405",
+      "source": "src/rendering.ts:407",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -17584,7 +17103,7 @@
       "id": "rendering.TerminalInText",
       "kind": "binding",
       "title": "The terminal in plain text",
-      "source": "src/rendering.ts:387",
+      "source": "src/rendering.ts:389",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -17601,7 +17120,7 @@
       "id": "rendering.TerminalRendering",
       "kind": "function",
       "title": "Rendering in the terminal",
-      "source": "src/rendering.ts:322",
+      "source": "src/rendering.ts:324",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -17624,7 +17143,7 @@
       "id": "rendering.TerminalSyntax",
       "kind": "port",
       "title": "Syntax of the terminal",
-      "source": "src/rendering.ts:170",
+      "source": "src/rendering.ts:172",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -17635,19 +17154,19 @@
       "id": "rendering.TextFigures",
       "kind": "function",
       "title": "Figures as text",
-      "source": "src/rendering.ts:218",
+      "source": "src/rendering.ts:220",
       "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
           "common": "rendering.Common",
           "columns": "text.TerminalColumns",
-          "punctuation": "documents.Punctuation",
+          "punctuation": "documents/language.Punctuation",
           "cell": "text.PaddedCell",
           "table": "text.Columns",
           "branch": "text.TreeBranch",
           "step": "text.PathStep",
-          "dates": "messages.Dates",
+          "dates": "documents/language.Dates",
           "counts": "std/algebra.Counts",
           "sequences": "std/algebra.Sequences",
           "texts": "std/algebra.Texts",
@@ -17664,7 +17183,7 @@
       "id": "scenarios.AddOnsInOrder",
       "kind": "scenario",
       "title": "Add-ons, in the order chosen",
-      "source": "src/scenarios.ts:414",
+      "source": "src/scenarios.ts:416",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -17687,7 +17206,7 @@
       "id": "scenarios.AmendedBodiesRun",
       "kind": "scenario",
       "title": "A body amended runs amended",
-      "source": "src/scenarios.ts:90",
+      "source": "src/scenarios.ts:92",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -17718,7 +17237,7 @@
       "id": "scenarios.AmendedDay",
       "kind": "decision",
       "title": "A day an amendment of a body is in force",
-      "source": "src/scenarios.ts:73",
+      "source": "src/scenarios.ts:75",
       "fields": {
         "owner": "trame",
         "value": {
@@ -17741,7 +17260,7 @@
       "id": "scenarios.BuildLikeBefore",
       "kind": "scenario",
       "title": "The build writes the same documents as the engine in place",
-      "source": "src/scenarios.ts:144",
+      "source": "src/scenarios.ts:146",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -17791,7 +17310,7 @@
       "id": "scenarios.CompileExample",
       "kind": "scenario",
       "title": "The described engine compiles the example",
-      "source": "src/scenarios.ts:42",
+      "source": "src/scenarios.ts:44",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -17833,16 +17352,16 @@
       "id": "scenarios.DocumentWords",
       "kind": "scenario",
       "title": "The documents write in the decided language",
-      "source": "src/scenarios.ts:347",
+      "source": "src/scenarios.ts:349",
       "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
-          "dates": "messages.Dates",
-          "lists": "messages.Lists",
-          "units": "documents.Units",
+          "dates": "documents/language.Dates",
+          "lists": "documents/language.Lists",
+          "units": "documents/language.Units",
           "visible": "documents.VisibleText",
-          "punctuation": "documents.Punctuation",
+          "punctuation": "documents/language.Punctuation",
           "language": "messages.Language",
           "versions": "packages.VersionOrder",
           "data": "scenarios.DocumentWordsData",
@@ -17892,7 +17411,7 @@
       "id": "scenarios.DocumentWordsData",
       "kind": "decision",
       "title": "How the documents write what they show, checked",
-      "source": "src/scenarios.ts:312",
+      "source": "src/scenarios.ts:314",
       "fields": {
         "owner": "trame",
         "value": {
@@ -17982,7 +17501,7 @@
     {
       "id": "scenarios.EngineReckons",
       "kind": "scenario",
-      "source": "src/scenarios.ts:269",
+      "source": "src/scenarios.ts:271",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -18045,7 +17564,7 @@
       "id": "scenarios.ExampleShape",
       "kind": "decision",
       "title": "Shape of the example",
-      "source": "src/scenarios.ts:33",
+      "source": "src/scenarios.ts:35",
       "fields": {
         "owner": "trame",
         "value": {
@@ -18058,7 +17577,7 @@
       "id": "scenarios.ExpectedDifferences",
       "kind": "decision",
       "title": "Expected differences on the example",
-      "source": "src/scenarios.ts:131",
+      "source": "src/scenarios.ts:133",
       "fields": {
         "owner": "trame",
         "value": {}
@@ -18069,7 +17588,7 @@
       "id": "scenarios.ExtensionSamples",
       "kind": "decision",
       "title": "The names the sample add-ons give, and the order a choice gives them in: the second first.",
-      "source": "src/scenarios.ts:375",
+      "source": "src/scenarios.ts:377",
       "fields": {
         "owner": "trame",
         "value": {
@@ -18083,7 +17602,7 @@
       "id": "scenarios.FirstSampleAddOn",
       "kind": "function",
       "title": "The first sample add-on",
-      "source": "src/scenarios.ts:384",
+      "source": "src/scenarios.ts:386",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -18098,7 +17617,7 @@
       "id": "scenarios.JudgingData",
       "kind": "decision",
       "title": "What the scenario of the judgment answers",
-      "source": "src/scenarios.ts:228",
+      "source": "src/scenarios.ts:230",
       "fields": {
         "owner": "trame",
         "value": {
@@ -18112,7 +17631,7 @@
       "id": "scenarios.JudgingHarder",
       "kind": "scenario",
       "title": "A project judges harder, never softer",
-      "source": "src/scenarios.ts:240",
+      "source": "src/scenarios.ts:242",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -18139,7 +17658,7 @@
       "id": "scenarios.KindLaws",
       "kind": "scenario",
       "title": "The laws of the kinds hold",
-      "source": "src/scenarios.ts:113",
+      "source": "src/scenarios.ts:115",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -18165,7 +17684,7 @@
       "id": "scenarios.ReckoningData",
       "kind": "decision",
       "title": "What the engine's reckoning is checked with",
-      "source": "src/scenarios.ts:184",
+      "source": "src/scenarios.ts:186",
       "fields": {
         "owner": "trame",
         "value": {
@@ -18283,7 +17802,7 @@
       "id": "scenarios.SampleAddOns",
       "kind": "port",
       "title": "A sample extension point",
-      "source": "src/scenarios.ts:381",
+      "source": "src/scenarios.ts:383",
       "fields": {
         "owner": "trame",
         "declaredEffects": {
@@ -18297,7 +17816,7 @@
       "id": "scenarios.SampleAddOnsInOrder",
       "kind": "binding",
       "title": "The sample add-ons, second first",
-      "source": "src/scenarios.ts:401",
+      "source": "src/scenarios.ts:403",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -18309,7 +17828,7 @@
       "id": "scenarios.SecondSampleAddOn",
       "kind": "function",
       "title": "The second sample add-on",
-      "source": "src/scenarios.ts:391",
+      "source": "src/scenarios.ts:393",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -18324,7 +17843,7 @@
       "id": "sdlc.AdvanceAGeneration",
       "kind": "entry",
       "title": "Advance",
-      "source": "src/sdlc.ts:812",
+      "source": "src/sdlc.ts:813",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -18359,7 +17878,7 @@
       "id": "sdlc.AdvancedInOneCommand",
       "kind": "scenario",
       "title": "A generation advanced in one command",
-      "source": "src/sdlc.ts:839",
+      "source": "src/sdlc.ts:840",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -18393,7 +17912,7 @@
       "id": "sdlc.AdvanceSample",
       "kind": "decision",
       "title": "Who advances, and what changes",
-      "source": "src/sdlc.ts:828",
+      "source": "src/sdlc.ts:829",
       "fields": {
         "owner": "trame",
         "value": {
@@ -18455,7 +17974,7 @@
       "id": "sdlc.AutoMergeInASession",
       "kind": "binding",
       "title": "GitHub merges once it holds, asked in a session",
-      "source": "src/sdlc.ts:737",
+      "source": "src/sdlc.ts:738",
       "status": "unknown",
       "fields": {
         "owner": "trame",
@@ -18467,7 +17986,7 @@
       "id": "sdlc.AutoMergeOnTheMachine",
       "kind": "binding",
       "title": "GitHub merges once it holds, asked by its command line",
-      "source": "src/sdlc.ts:725",
+      "source": "src/sdlc.ts:726",
       "status": "unknown",
       "fields": {
         "owner": "trame",
@@ -18498,7 +18017,7 @@
         "owner": "trame"
       },
       "result": {
-        "code": "d6d827ff"
+        "code": "1ac154da"
       },
       "diagnostics": []
     },
@@ -18512,7 +18031,7 @@
         "owner": "trame"
       },
       "result": {
-        "code": "9ddb3d9c"
+        "code": "093d7dcb"
       },
       "diagnostics": []
     },
@@ -18520,7 +18039,7 @@
       "id": "sdlc.CommandsOfStd",
       "kind": "binding",
       "title": "The commands Trame takes from std",
-      "source": "src/sdlc.ts:681",
+      "source": "src/sdlc.ts:682",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -18535,7 +18054,7 @@
       "id": "sdlc.CommandsWrittenOnce",
       "kind": "binding",
       "title": "The commands Trame takes from libs/commands",
-      "source": "src/sdlc.ts:697",
+      "source": "src/sdlc.ts:698",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -18570,7 +18089,7 @@
       },
       "result": {
         "path": "out/local/trame-cli.ts",
-        "code": "42c9f4f7"
+        "code": "04ae6372"
       },
       "diagnostics": []
     },
@@ -18624,7 +18143,7 @@
       },
       "result": {
         "path": "trame-page.html",
-        "code": "e1a0a844"
+        "code": "b5586708"
       },
       "diagnostics": []
     },
@@ -18651,7 +18170,7 @@
         "owner": "trame"
       },
       "result": {
-        "code": "c571d09a"
+        "code": "c731f651"
       },
       "diagnostics": []
     },
@@ -18692,7 +18211,7 @@
       "id": "sdlc.HowAGenerationAdvances",
       "kind": "decision",
       "title": "How a generation advances",
-      "source": "src/sdlc.ts:797",
+      "source": "src/sdlc.ts:798",
       "fields": {
         "owner": "trame",
         "value": {
@@ -18899,7 +18418,7 @@
           },
           {
             "node": "scenarios.DocumentWords",
-            "via": "documents.Punctuation",
+            "via": "documents.OurDocumentLanguage",
             "obligation": "sdlc.EngineVerified"
           },
           {
@@ -19167,13 +18686,12 @@
           "doctor.ServerAnswers",
           "doctor.TimerAnswers",
           "doctor.TreesAnswer",
+          "documents.DocumentsInOurLanguage",
           "documents.LanguageSettings",
           "documents.MermaidFigures",
-          "documents.NumberDisplay",
-          "documents.Punctuation",
+          "documents.OurDocumentLanguage",
           "documents.PunctuationOfTheLanguage",
           "documents.TextRendering",
-          "documents.Units",
           "documents.VisibleText",
           "engine.Assembly",
           "engine.CompilationApi",
@@ -19218,7 +18736,6 @@
           "html.ClassSelector",
           "html.CssDeclaration",
           "html.CssRule",
-          "html.CssStyleSheets",
           "html.CssVariable",
           "html.CustomProperty",
           "html.Doctype",
@@ -19228,7 +18745,6 @@
           "html.HtmlElement",
           "html.HtmlEndTag",
           "html.HtmlHeading",
-          "html.HtmlMarkup",
           "html.HtmlStartTag",
           "html.JsonInScript",
           "html.MediaFeature",
@@ -19309,14 +18825,12 @@
           "messages.CommandMessages",
           "messages.CompilerMessages",
           "messages.CountsInTheLanguage",
-          "messages.Dates",
           "messages.DevMessages",
           "messages.DriverMessages",
           "messages.EngineViewWords",
           "messages.KindWords",
           "messages.Language",
           "messages.LawMessages",
-          "messages.Lists",
           "messages.OutputMessages",
           "messages.PageWords",
           "messages.PlatformMessages",
@@ -19326,6 +18840,7 @@
           "messages.ViewWords",
           "packages.ContinuousIntegration",
           "packages.CssGrammar",
+          "packages.DocumentRenderers",
           "packages.EsbuildPackage",
           "packages.GenericCommands",
           "packages.HclGrammar",
@@ -19580,7 +19095,6 @@
           "shipping.ShipOnlyWhatHoldsCriteria",
           "shipping.ShippingRecords",
           "standards.TreeSitterApi",
-          "standards.TreeSitterQueries",
           "standards.TypeScriptApi",
           "syntax.BodyChecks",
           "syntax.Captures",
@@ -19589,6 +19103,7 @@
           "syntax.LiteralRoles",
           "syntax.PredicatesAsTreeSitterReadsThem",
           "syntax.ReadLanguagesAlike",
+          "syntax.StdLanguagesRead",
           "syntax.SyntaxReader",
           "terraform.HclAttribute",
           "terraform.HclComment",
@@ -19687,6 +19202,7 @@
             "team",
             "machine",
             "commands",
+            "documents",
             "reservations",
             "poselia"
           ],
@@ -19790,7 +19306,7 @@
           },
           {
             "node": "messages.CountsInTheLanguage",
-            "via": "messages.Lists",
+            "via": "messages.CompilerMessages",
             "obligation": "sdlc.ArchitectureApplied"
           },
           {
@@ -19979,8 +19495,13 @@
             "obligation": "sdlc.EnginePackagesSafe"
           },
           {
+            "node": "packages.HtmlGrammar",
+            "via": "platform.WebTreeSitter",
+            "obligation": "sdlc.EnginePackagesSafe"
+          },
+          {
             "node": "packages.CssGrammar",
-            "via": "html.CssStyleSheets",
+            "via": "platform.WebTreeSitter",
             "obligation": "sdlc.EnginePackagesSafe"
           },
           {
@@ -19991,11 +19512,6 @@
           {
             "node": "packages.EsbuildPackage",
             "via": "platform.Esbuild",
-            "obligation": "sdlc.EnginePackagesSafe"
-          },
-          {
-            "node": "packages.HtmlGrammar",
-            "via": "html.HtmlMarkup",
             "obligation": "sdlc.EnginePackagesSafe"
           },
           {
@@ -20030,7 +19546,7 @@
           },
           {
             "node": "scenarios.DocumentWords",
-            "via": "messages.Lists",
+            "via": "documents.OurDocumentLanguage",
             "obligation": "sdlc.EngineVerified"
           },
           {
@@ -20334,19 +19850,15 @@
           "platform.RunsOnDisk",
           "conventions.DocComment",
           "messages.Language",
-          "messages.Lists",
+          "documents.OurDocumentLanguage",
           "messages.CompilerMessages",
           "typescript.TypeScriptLibraries",
           "conventions.PreludeApi",
           "engine.StaticAnalysis",
-          "messages.Dates",
-          "documents.Punctuation",
           "documents.LanguageSettings",
           "engine.Generator",
           "product.StructureDraws",
           "packages.VersionOrder",
-          "documents.NumberDisplay",
-          "documents.Units",
           "documents.VisibleText",
           "engine.Fingerprints",
           "engine.GraphApi",
@@ -20360,7 +19872,6 @@
           "syntax.SyntaxReader",
           "messages.DriverMessages",
           "syntax.BodyChecks",
-          "html.CssStyleSheets",
           "conventions.FrozenApi",
           "typescript.ProgramNames",
           "typescript.LineComment",
@@ -20593,7 +20104,6 @@
           "page.FontLinks",
           "html.JsonInScript",
           "page.PageScripts",
-          "html.HtmlMarkup",
           "page.Page",
           "markup.DocumentMarkup",
           "appearance.TimelineDrawing",
@@ -20745,7 +20255,7 @@
       "id": "sdlc.OurCommandsSettled",
       "kind": "scenario",
       "title": "Trame's settings, as std's commands read them",
-      "source": "src/sdlc.ts:763",
+      "source": "src/sdlc.ts:764",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -20815,7 +20325,7 @@
       "id": "sdlc.OurPropagation",
       "kind": "function",
       "title": "How a version is carried across Trame's repository",
-      "source": "src/sdlc.ts:658",
+      "source": "src/sdlc.ts:659",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -20838,7 +20348,7 @@
       "id": "sdlc.OurPullRequests",
       "kind": "function",
       "title": "How Trame's pull requests are opened",
-      "source": "src/sdlc.ts:640",
+      "source": "src/sdlc.ts:641",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -20858,7 +20368,7 @@
       "id": "sdlc.OurSettingsInTheScenarios",
       "kind": "binding",
       "title": "Trame's settings in the scenarios",
-      "source": "src/sdlc.ts:749",
+      "source": "src/sdlc.ts:750",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -20878,7 +20388,7 @@
       },
       "result": {
         "path": "out/browser/page-app.ts",
-        "code": "d01a4a12"
+        "code": "ee6e788d"
       },
       "diagnostics": []
     },
@@ -20936,7 +20446,7 @@
       "kind": "artifact",
       "title": "The pull requests' workflow",
       "source": "src/sdlc.ts:446",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": ".github/workflows/trame-pull-request.yml",
@@ -20946,9 +20456,7 @@
         "path": ".github/workflows/trame-pull-request.yml",
         "code": "b395be3d"
       },
-      "diagnostics": [
-        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.ReadTheRepositorySettings",
@@ -21025,6 +20533,11 @@
             "runners": "RunnersWritten"
           },
           {
+            "name": "documents",
+            "dir": "libs/documents",
+            "runners": "RunnersWritten"
+          },
+          {
             "name": "geometry",
             "dir": "libs/geometry"
           },
@@ -21057,7 +20570,7 @@
         "owner": "trame"
       },
       "result": {
-        "code": "928d3943"
+        "code": "b31042d2"
       },
       "diagnostics": [
         "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
@@ -21174,7 +20687,7 @@
       "id": "sdlc.RepositoryWorkOnAMachine",
       "kind": "binding",
       "title": "The repository's work on a machine",
-      "source": "src/sdlc.ts:713",
+      "source": "src/sdlc.ts:714",
       "status": "unknown",
       "fields": {
         "owner": "trame",
@@ -21187,7 +20700,7 @@
       "kind": "shipment",
       "title": "The files that run it elsewhere",
       "source": "src/sdlc.ts:586",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "repository"
@@ -21200,9 +20713,7 @@
           "sdlc.PullRequestWorkflow"
         ]
       },
-      "diagnostics": [
-        "warning: To ship: The pull requests' workflow is unknown"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.SdlcInMemory",
@@ -21300,7 +20811,7 @@
       },
       "result": {
         "path": "src",
-        "code": "a7689308"
+        "code": "50ca266d"
       },
       "diagnostics": []
     },
@@ -21540,73 +21051,6 @@
       "diagnostics": []
     },
     {
-      "id": "standards.TreeSitterQueries",
-      "kind": "standard",
-      "title": "tree-sitter queries",
-      "source": "src/standards.ts:40",
-      "fields": {
-        "owner": "trame",
-        "source": "tree-sitter, Query Syntax: Predicates and Directives; the predicates evaluated by web-tree-sitter 0.27 (Query.matches, Query.captures)",
-        "url": "https://tree-sitter.github.io/tree-sitter/using-parsers/queries/3-predicates-and-directives.html",
-        "tag": "scheme",
-        "constants": {
-          "eq": {
-            "value": "#eq?",
-            "meaning": "The capture's text equals a string, or another capture's text"
-          },
-          "notEq": {
-            "value": "#not-eq?",
-            "meaning": "The capture's text differs from a string, or from another capture's text"
-          },
-          "anyEq": {
-            "value": "#any-eq?",
-            "meaning": "One of the quantified capture's nodes equals the string"
-          },
-          "anyNotEq": {
-            "value": "#any-not-eq?",
-            "meaning": "One of the quantified capture's nodes differs from the string"
-          },
-          "match": {
-            "value": "#match?",
-            "meaning": "The capture's text matches a regular expression"
-          },
-          "notMatch": {
-            "value": "#not-match?",
-            "meaning": "The capture's text does not match a regular expression"
-          },
-          "anyMatch": {
-            "value": "#any-match?",
-            "meaning": "One of the quantified capture's nodes matches the regular expression"
-          },
-          "anyNotMatch": {
-            "value": "#any-not-match?",
-            "meaning": "One of the quantified capture's nodes does not match the regular expression"
-          },
-          "anyOf": {
-            "value": "#any-of?",
-            "meaning": "The capture's text is one of the strings that follow"
-          },
-          "notAnyOf": {
-            "value": "#not-any-of?",
-            "meaning": "The capture's text is none of the strings that follow"
-          },
-          "is": {
-            "value": "#is?",
-            "meaning": "Asserts a property of the match (kept aside for the reader)"
-          },
-          "isNot": {
-            "value": "#is-not?",
-            "meaning": "Refutes a property of the match (kept aside for the reader)"
-          },
-          "set": {
-            "value": "#set!",
-            "meaning": "Sets a property on the match: a directive, not a filter"
-          }
-        }
-      },
-      "diagnostics": []
-    },
-    {
       "id": "standards.TypeScriptApi",
       "kind": "standard",
       "title": "TypeScript compiler API",
@@ -21628,7 +21072,7 @@
       "id": "syntax.BodyChecks",
       "kind": "function",
       "title": "Checks of a body",
-      "source": "src/syntax.ts:281",
+      "source": "src/syntax.ts:284",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -21650,7 +21094,7 @@
       "id": "syntax.Captures",
       "kind": "standard",
       "title": "Captures",
-      "source": "src/syntax.ts:135",
+      "source": "src/syntax.ts:138",
       "fields": {
         "owner": "trame",
         "source": "Trame, the contract between the language nodes and the syntax reader; local.definition follows tree-sitter's locals convention",
@@ -21756,7 +21200,7 @@
       "id": "syntax.LiteralCategories",
       "kind": "decision",
       "title": "Categories of literals",
-      "source": "src/syntax.ts:225",
+      "source": "src/syntax.ts:228",
       "fields": {
         "owner": "trame",
         "value": {
@@ -21863,7 +21307,7 @@
       "id": "syntax.LiteralDisplay",
       "kind": "decision",
       "title": "How a literal is shown",
-      "source": "src/syntax.ts:248",
+      "source": "src/syntax.ts:251",
       "fields": {
         "owner": "trame",
         "value": {
@@ -21883,7 +21327,7 @@
       "id": "syntax.LiteralRoles",
       "kind": "catalog",
       "title": "Roles of a literal",
-      "source": "src/syntax.ts:172",
+      "source": "src/syntax.ts:175",
       "fields": {
         "owner": "trame",
         "messages": "(function)"
@@ -21894,7 +21338,7 @@
       "id": "syntax.PredicatesAsTreeSitterReadsThem",
       "kind": "adr",
       "title": "tree-sitter says what it keeps aside",
-      "source": "src/syntax.ts:310",
+      "source": "src/syntax.ts:313",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -21912,7 +21356,7 @@
       "id": "syntax.ReadLanguagesAlike",
       "kind": "adr",
       "title": "Every language is read alike, with tree-sitter",
-      "source": "src/syntax.ts:293",
+      "source": "src/syntax.ts:296",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -21926,10 +21370,22 @@
       "diagnostics": []
     },
     {
+      "id": "syntax.StdLanguagesRead",
+      "kind": "binding",
+      "title": "std's languages, read by the engine",
+      "source": "src/syntax.ts:332",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "A language std declares names std's port as its reader: the engine that compiles answers it, here as in any project that imports std."
+      },
+      "diagnostics": []
+    },
+    {
       "id": "syntax.SyntaxReader",
       "kind": "function",
       "title": "Syntax reader",
-      "source": "src/syntax.ts:263",
+      "source": "src/syntax.ts:266",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -21966,7 +21422,7 @@
       "id": "terraform.HclAttribute",
       "kind": "syntax",
       "title": "Attribute",
-      "source": "src/terraform.ts:253",
+      "source": "src/terraform.ts:254",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -22026,7 +21482,7 @@
       "id": "terraform.HclComment",
       "kind": "syntax",
       "title": "Comment",
-      "source": "src/terraform.ts:141",
+      "source": "src/terraform.ts:142",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -22068,7 +21524,7 @@
       "id": "terraform.HclString",
       "kind": "syntax",
       "title": "Text",
-      "source": "src/terraform.ts:160",
+      "source": "src/terraform.ts:161",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -22138,7 +21594,7 @@
       "id": "terraform.HclSyntax",
       "kind": "standard",
       "title": "HCL",
-      "source": "src/terraform.ts:30",
+      "source": "src/terraform.ts:31",
       "fields": {
         "owner": "trame",
         "source": "HCL Native Syntax Specification (hashicorp/hcl v2, hclsyntax/spec.md); Terraform: style conventions (terraform fmt)",
@@ -22188,7 +21644,7 @@
       "id": "terraform.HclValue",
       "kind": "syntax",
       "title": "Value",
-      "source": "src/terraform.ts:210",
+      "source": "src/terraform.ts:211",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -22335,7 +21791,7 @@
       "id": "terraform.ModuleBlock",
       "kind": "syntax",
       "title": "Module call",
-      "source": "src/terraform.ts:272",
+      "source": "src/terraform.ts:273",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -22403,7 +21859,7 @@
       "id": "terraform.Terraform",
       "kind": "language",
       "title": "Terraform",
-      "source": "src/terraform.ts:68",
+      "source": "src/terraform.ts:69",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -22630,7 +22086,7 @@
       "id": "terraform.TerraformModules",
       "kind": "standard",
       "title": "Terraform modules",
-      "source": "src/terraform.ts:51",
+      "source": "src/terraform.ts:52",
       "fields": {
         "owner": "trame",
         "source": "Terraform: Standard Module Structure; Module Blocks (the source meta-argument, local paths)",
@@ -22656,7 +22112,7 @@
       "id": "terraform.TerraformWriter",
       "kind": "function",
       "title": "Terraform writer",
-      "source": "src/terraform.ts:296",
+      "source": "src/terraform.ts:297",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -22675,7 +22131,7 @@
           "counts": "std/algebra.Counts",
           "sequences": "std/algebra.Sequences",
           "texts": "std/algebra.Texts",
-          "dates": "messages.Dates",
+          "dates": "documents/language.Dates",
           "messages": "messages.DriverMessages"
         },
         "body": {
@@ -23231,7 +22687,7 @@
       "id": "typescript.ArrayLiteral",
       "kind": "syntax",
       "title": "List on several lines",
-      "source": "src/typescript.ts:495",
+      "source": "src/typescript.ts:496",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -23302,7 +22758,7 @@
       "id": "typescript.AsExpression",
       "kind": "syntax",
       "title": "Type assertion",
-      "source": "src/typescript.ts:641",
+      "source": "src/typescript.ts:642",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -23350,7 +22806,7 @@
       "id": "typescript.Assignment",
       "kind": "syntax",
       "title": "Assignment",
-      "source": "src/typescript.ts:750",
+      "source": "src/typescript.ts:751",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -23389,7 +22845,7 @@
       "id": "typescript.AsyncBlockFunction",
       "kind": "syntax",
       "title": "Async function of a block",
-      "source": "src/typescript.ts:766",
+      "source": "src/typescript.ts:767",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -23449,7 +22905,7 @@
       "id": "typescript.Await",
       "kind": "syntax",
       "title": "Waiting",
-      "source": "src/typescript.ts:388",
+      "source": "src/typescript.ts:389",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -23495,7 +22951,7 @@
       "id": "typescript.Call",
       "kind": "syntax",
       "title": "Call",
-      "source": "src/typescript.ts:368",
+      "source": "src/typescript.ts:369",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -23563,7 +23019,7 @@
       "id": "typescript.ConstDeclaration",
       "kind": "syntax",
       "title": "Constant",
-      "source": "src/typescript.ts:590",
+      "source": "src/typescript.ts:591",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -23607,7 +23063,7 @@
       "id": "typescript.DefaultImport",
       "kind": "syntax",
       "title": "Default import",
-      "source": "src/typescript.ts:624",
+      "source": "src/typescript.ts:625",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -23647,7 +23103,7 @@
       "id": "typescript.DocBlock",
       "kind": "syntax",
       "title": "Documentation comment",
-      "source": "src/typescript.ts:557",
+      "source": "src/typescript.ts:558",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -23693,7 +23149,7 @@
       "id": "typescript.ExportDeclaration",
       "kind": "syntax",
       "title": "Export",
-      "source": "src/typescript.ts:539",
+      "source": "src/typescript.ts:540",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -23735,7 +23191,7 @@
       "id": "typescript.IfStatement",
       "kind": "syntax",
       "title": "Condition",
-      "source": "src/typescript.ts:714",
+      "source": "src/typescript.ts:715",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -23779,7 +23235,7 @@
       "id": "typescript.InlineArray",
       "kind": "syntax",
       "title": "List on one line",
-      "source": "src/typescript.ts:472",
+      "source": "src/typescript.ts:473",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -23850,7 +23306,7 @@
       "id": "typescript.LineComment",
       "kind": "syntax",
       "title": "Comment",
-      "source": "src/typescript.ts:294",
+      "source": "src/typescript.ts:295",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -23892,7 +23348,7 @@
       "id": "typescript.MemberAccess",
       "kind": "syntax",
       "title": "Property access",
-      "source": "src/typescript.ts:331",
+      "source": "src/typescript.ts:332",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -23940,7 +23396,7 @@
       "id": "typescript.ModuleTitle",
       "kind": "syntax",
       "title": "Title of a module",
-      "source": "src/typescript.ts:575",
+      "source": "src/typescript.ts:576",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -23977,7 +23433,7 @@
       "id": "typescript.NamedImport",
       "kind": "syntax",
       "title": "Import of names",
-      "source": "src/typescript.ts:607",
+      "source": "src/typescript.ts:608",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -24023,7 +23479,7 @@
       "id": "typescript.ObjectBlock",
       "kind": "syntax",
       "title": "Object on several lines",
-      "source": "src/typescript.ts:519",
+      "source": "src/typescript.ts:520",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -24085,7 +23541,7 @@
       "id": "typescript.ObjectLiteral",
       "kind": "syntax",
       "title": "Object",
-      "source": "src/typescript.ts:450",
+      "source": "src/typescript.ts:451",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -24167,7 +23623,7 @@
       "id": "typescript.ObjectType",
       "kind": "syntax",
       "title": "Object type",
-      "source": "src/typescript.ts:677",
+      "source": "src/typescript.ts:678",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -24219,7 +23675,7 @@
       "id": "typescript.OptionalAccess",
       "kind": "syntax",
       "title": "Optional property access",
-      "source": "src/typescript.ts:350",
+      "source": "src/typescript.ts:351",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -24267,7 +23723,7 @@
       "id": "typescript.OptionalPropertySignature",
       "kind": "syntax",
       "title": "Optional property of a type",
-      "source": "src/typescript.ts:659",
+      "source": "src/typescript.ts:660",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -24315,7 +23771,7 @@
       "id": "typescript.Parenthesized",
       "kind": "syntax",
       "title": "Group",
-      "source": "src/typescript.ts:406",
+      "source": "src/typescript.ts:407",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -24356,7 +23812,7 @@
       "id": "typescript.ProgramNames",
       "kind": "decision",
       "title": "Names of a program",
-      "source": "src/typescript.ts:794",
+      "source": "src/typescript.ts:795",
       "fields": {
         "owner": "trame",
         "value": {
@@ -24376,7 +23832,7 @@
       "id": "typescript.Property",
       "kind": "syntax",
       "title": "Property",
-      "source": "src/typescript.ts:423",
+      "source": "src/typescript.ts:424",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -24463,7 +23919,7 @@
       "id": "typescript.StrictInequality",
       "kind": "syntax",
       "title": "Strict inequality",
-      "source": "src/typescript.ts:732",
+      "source": "src/typescript.ts:733",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -24511,7 +23967,7 @@
       "id": "typescript.StringLiteral",
       "kind": "syntax",
       "title": "Text",
-      "source": "src/typescript.ts:312",
+      "source": "src/typescript.ts:313",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -24567,7 +24023,7 @@
       "id": "typescript.TypeScript",
       "kind": "language",
       "title": "TypeScript",
-      "source": "src/typescript.ts:80",
+      "source": "src/typescript.ts:81",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -25056,7 +24512,7 @@
       "id": "typescript.TypeScriptLibraries",
       "kind": "standard",
       "title": "TypeScript's libraries of types",
-      "source": "src/typescript.ts:38",
+      "source": "src/typescript.ts:39",
       "fields": {
         "owner": "trame",
         "source": "TypeScript, the lib option and the declaration files under src/lib of the compiler",
@@ -25078,7 +24534,7 @@
       "id": "typescript.TypeScriptSyntax",
       "kind": "standard",
       "title": "The syntax of the programs Trame writes",
-      "source": "src/typescript.ts:257",
+      "source": "src/typescript.ts:258",
       "fields": {
         "owner": "trame",
         "source": "ECMA-262, ECMAScript 2024 (§ 12 lexical grammar, § 13 expressions, § 14 statements, § 16 modules); TypeScript 5.6 handbook (type assertions, object types, union types)",
@@ -25168,7 +24624,7 @@
       "id": "typescript.TypeScriptWriter",
       "kind": "function",
       "title": "TypeScript writer",
-      "source": "src/typescript.ts:808",
+      "source": "src/typescript.ts:809",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -25209,7 +24665,7 @@
           "reservedWords": "std/ecmascript.EcmaScriptReservedWords",
           "sequences": "std/algebra.Sequences",
           "texts": "std/algebra.Texts",
-          "dates": "messages.Dates",
+          "dates": "documents/language.Dates",
           "messages": "messages.DriverMessages"
         },
         "body": {
@@ -25223,7 +24679,7 @@
       "id": "typescript.UnionType",
       "kind": "syntax",
       "title": "Union type",
-      "source": "src/typescript.ts:696",
+      "source": "src/typescript.ts:697",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -25275,7 +24731,7 @@
       "id": "typescript.WorldGlobals",
       "kind": "vocabulary",
       "title": "Globals that reach outside",
-      "source": "src/typescript.ts:54",
+      "source": "src/typescript.ts:55",
       "fields": {
         "owner": "trame",
         "words": {
@@ -25527,7 +24983,7 @@
     },
     {
       "from": "browser.ExplorerFigures",
-      "to": "documents.Punctuation",
+      "to": "documents/language.Punctuation",
       "kind": "deps"
     },
     {
@@ -25647,7 +25103,7 @@
     },
     {
       "from": "browser.ShowGraph",
-      "to": "documents.Punctuation",
+      "to": "documents/language.Punctuation",
       "kind": "deps"
     },
     {
@@ -26598,6 +26054,11 @@
     {
       "from": "command-scenarios.EngineApiGiven",
       "to": "conventions.Layout",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.EngineApiGiven",
+      "to": "typescript.TypeScript",
       "kind": "deps"
     },
     {
@@ -28892,7 +28353,7 @@
     },
     {
       "from": "commands.Assembler",
-      "to": "documents.Punctuation",
+      "to": "documents/language.Punctuation",
       "kind": "deps"
     },
     {
@@ -30096,6 +29557,11 @@
       "kind": "deps"
     },
     {
+      "from": "commands.Preparation",
+      "to": "syntax.SyntaxReader",
+      "kind": "deps"
+    },
+    {
       "from": "commands.ProjectCommands",
       "to": "product.ExecutableSpecification",
       "kind": "serves"
@@ -31202,7 +30668,7 @@
     },
     {
       "from": "delivery.DeliveredStyle",
-      "to": "html.CssStyleSheets",
+      "to": "std/languages.CssStyleSheets",
       "kind": "language"
     },
     {
@@ -31646,12 +31112,47 @@
       "kind": "deps"
     },
     {
-      "from": "documents.Punctuation",
+      "from": "documents.DocumentsInOurLanguage",
+      "to": "documents.OurDocumentLanguage",
+      "kind": "chooses"
+    },
+    {
+      "from": "documents.DocumentsInOurLanguage",
+      "to": "architecture.Local",
+      "kind": "environments"
+    },
+    {
+      "from": "documents.DocumentsInOurLanguage",
+      "to": "architecture.Session",
+      "kind": "environments"
+    },
+    {
+      "from": "documents.DocumentsInOurLanguage",
+      "to": "architecture.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "documents.DocumentsInOurLanguage",
+      "to": "architecture.Browser",
+      "kind": "environments"
+    },
+    {
+      "from": "documents.DocumentsInOurLanguage",
+      "to": "std/patterns.Strategy",
+      "kind": "follows"
+    },
+    {
+      "from": "documents.DocumentsInOurLanguage",
       "to": "product.SingleSource",
       "kind": "serves"
     },
     {
-      "from": "documents.Punctuation",
+      "from": "documents.OurDocumentLanguage",
+      "to": "documents/language.DocumentLanguage",
+      "kind": "implements"
+    },
+    {
+      "from": "documents.OurDocumentLanguage",
       "to": "messages.Language",
       "kind": "deps"
     },
@@ -31662,33 +31163,13 @@
     },
     {
       "from": "documents.PunctuationOfTheLanguage",
-      "to": "documents.Punctuation",
+      "to": "documents.OurDocumentLanguage",
       "kind": "appliedBy"
     },
     {
       "from": "documents.PunctuationOfTheLanguage",
       "to": "messages.Language",
       "kind": "appliedBy"
-    },
-    {
-      "from": "documents.Units",
-      "to": "product.SingleSource",
-      "kind": "serves"
-    },
-    {
-      "from": "documents.Units",
-      "to": "documents.NumberDisplay",
-      "kind": "deps"
-    },
-    {
-      "from": "documents.Units",
-      "to": "std/algebra.Counts",
-      "kind": "deps"
-    },
-    {
-      "from": "documents.Units",
-      "to": "std/algebra.ValueTypes",
-      "kind": "deps"
     },
     {
       "from": "documents.VisibleText",
@@ -31827,7 +31308,7 @@
     },
     {
       "from": "engine.CompilationApi",
-      "to": "documents.Punctuation",
+      "to": "documents/language.Punctuation",
       "kind": "deps"
     },
     {
@@ -31857,7 +31338,7 @@
     },
     {
       "from": "engine.CompilationApi",
-      "to": "documents.Units",
+      "to": "documents/language.Units",
       "kind": "deps"
     },
     {
@@ -32197,7 +31678,7 @@
     },
     {
       "from": "engine.DevServer",
-      "to": "messages.Dates",
+      "to": "documents/language.Dates",
       "kind": "deps"
     },
     {
@@ -32217,7 +31698,7 @@
     },
     {
       "from": "engine.Differences",
-      "to": "documents.Punctuation",
+      "to": "documents/language.Punctuation",
       "kind": "deps"
     },
     {
@@ -32392,17 +31873,17 @@
     },
     {
       "from": "engine.GraphApi",
-      "to": "messages.Lists",
+      "to": "documents/language.Lists",
       "kind": "deps"
     },
     {
       "from": "engine.GraphApi",
-      "to": "messages.Dates",
+      "to": "documents/language.Dates",
       "kind": "deps"
     },
     {
       "from": "engine.GraphApi",
-      "to": "documents.Punctuation",
+      "to": "documents/language.Punctuation",
       "kind": "deps"
     },
     {
@@ -32457,7 +31938,7 @@
     },
     {
       "from": "engine.GraphApi",
-      "to": "documents.Units",
+      "to": "documents/language.Units",
       "kind": "deps"
     },
     {
@@ -33347,7 +32828,7 @@
     },
     {
       "from": "html.AttributePresence",
-      "to": "html.CssStyleSheets",
+      "to": "std/languages.CssStyleSheets",
       "kind": "language"
     },
     {
@@ -33362,7 +32843,7 @@
     },
     {
       "from": "html.AttributeSelector",
-      "to": "html.CssStyleSheets",
+      "to": "std/languages.CssStyleSheets",
       "kind": "language"
     },
     {
@@ -33377,7 +32858,7 @@
     },
     {
       "from": "html.ClassSelector",
-      "to": "html.CssStyleSheets",
+      "to": "std/languages.CssStyleSheets",
       "kind": "language"
     },
     {
@@ -33392,7 +32873,7 @@
     },
     {
       "from": "html.CssDeclaration",
-      "to": "html.CssStyleSheets",
+      "to": "std/languages.CssStyleSheets",
       "kind": "language"
     },
     {
@@ -33407,7 +32888,7 @@
     },
     {
       "from": "html.CssRule",
-      "to": "html.CssStyleSheets",
+      "to": "std/languages.CssStyleSheets",
       "kind": "language"
     },
     {
@@ -33416,33 +32897,13 @@
       "kind": "deps"
     },
     {
-      "from": "html.CssStyleSheets",
-      "to": "std/html.Css",
-      "kind": "standard"
-    },
-    {
-      "from": "html.CssStyleSheets",
-      "to": "standards.TreeSitterQueries",
-      "kind": "queryLanguage"
-    },
-    {
-      "from": "html.CssStyleSheets",
-      "to": "syntax.SyntaxReader",
-      "kind": "reader"
-    },
-    {
-      "from": "html.CssStyleSheets",
-      "to": "packages.CssGrammar",
-      "kind": "packages"
-    },
-    {
       "from": "html.CssVariable",
       "to": "std/html.Css",
       "kind": "standard"
     },
     {
       "from": "html.CssVariable",
-      "to": "html.CssStyleSheets",
+      "to": "std/languages.CssStyleSheets",
       "kind": "language"
     },
     {
@@ -33457,7 +32918,7 @@
     },
     {
       "from": "html.CustomProperty",
-      "to": "html.CssStyleSheets",
+      "to": "std/languages.CssStyleSheets",
       "kind": "language"
     },
     {
@@ -33477,7 +32938,7 @@
     },
     {
       "from": "html.Doctype",
-      "to": "html.HtmlMarkup",
+      "to": "std/languages.HtmlMarkup",
       "kind": "language"
     },
     {
@@ -33492,7 +32953,7 @@
     },
     {
       "from": "html.EscapedText",
-      "to": "html.HtmlMarkup",
+      "to": "std/languages.HtmlMarkup",
       "kind": "language"
     },
     {
@@ -33507,7 +32968,7 @@
     },
     {
       "from": "html.HtmlAttributes",
-      "to": "html.HtmlMarkup",
+      "to": "std/languages.HtmlMarkup",
       "kind": "language"
     },
     {
@@ -33527,7 +32988,7 @@
     },
     {
       "from": "html.HtmlBlock",
-      "to": "html.HtmlMarkup",
+      "to": "std/languages.HtmlMarkup",
       "kind": "language"
     },
     {
@@ -33552,7 +33013,7 @@
     },
     {
       "from": "html.HtmlElement",
-      "to": "html.HtmlMarkup",
+      "to": "std/languages.HtmlMarkup",
       "kind": "language"
     },
     {
@@ -33577,7 +33038,7 @@
     },
     {
       "from": "html.HtmlEndTag",
-      "to": "html.HtmlMarkup",
+      "to": "std/languages.HtmlMarkup",
       "kind": "language"
     },
     {
@@ -33592,7 +33053,7 @@
     },
     {
       "from": "html.HtmlHeading",
-      "to": "html.HtmlMarkup",
+      "to": "std/languages.HtmlMarkup",
       "kind": "language"
     },
     {
@@ -33606,33 +33067,13 @@
       "kind": "deps"
     },
     {
-      "from": "html.HtmlMarkup",
-      "to": "std/html.Html",
-      "kind": "standard"
-    },
-    {
-      "from": "html.HtmlMarkup",
-      "to": "standards.TreeSitterQueries",
-      "kind": "queryLanguage"
-    },
-    {
-      "from": "html.HtmlMarkup",
-      "to": "syntax.SyntaxReader",
-      "kind": "reader"
-    },
-    {
-      "from": "html.HtmlMarkup",
-      "to": "packages.HtmlGrammar",
-      "kind": "packages"
-    },
-    {
       "from": "html.HtmlStartTag",
       "to": "std/html.Html",
       "kind": "standard"
     },
     {
       "from": "html.HtmlStartTag",
-      "to": "html.HtmlMarkup",
+      "to": "std/languages.HtmlMarkup",
       "kind": "language"
     },
     {
@@ -33667,7 +33108,7 @@
     },
     {
       "from": "html.MediaFeature",
-      "to": "html.CssStyleSheets",
+      "to": "std/languages.CssStyleSheets",
       "kind": "language"
     },
     {
@@ -33682,7 +33123,7 @@
     },
     {
       "from": "html.MediaRule",
-      "to": "html.CssStyleSheets",
+      "to": "std/languages.CssStyleSheets",
       "kind": "language"
     },
     {
@@ -33697,7 +33138,7 @@
     },
     {
       "from": "html.NegationSelector",
-      "to": "html.CssStyleSheets",
+      "to": "std/languages.CssStyleSheets",
       "kind": "language"
     },
     {
@@ -33722,7 +33163,7 @@
     },
     {
       "from": "html.ScriptElement",
-      "to": "html.HtmlMarkup",
+      "to": "std/languages.HtmlMarkup",
       "kind": "language"
     },
     {
@@ -33742,7 +33183,7 @@
     },
     {
       "from": "html.SelectorList",
-      "to": "html.CssStyleSheets",
+      "to": "std/languages.CssStyleSheets",
       "kind": "language"
     },
     {
@@ -33757,7 +33198,7 @@
     },
     {
       "from": "html.SelfClosingTag",
-      "to": "html.HtmlMarkup",
+      "to": "std/languages.HtmlMarkup",
       "kind": "language"
     },
     {
@@ -33792,7 +33233,7 @@
     },
     {
       "from": "languages.Drivers",
-      "to": "html.CssStyleSheets",
+      "to": "std/languages.CssStyleSheets",
       "kind": "deps"
     },
     {
@@ -34022,7 +33463,7 @@
     },
     {
       "from": "markdown.Anchor",
-      "to": "html.HtmlMarkup",
+      "to": "std/languages.HtmlMarkup",
       "kind": "language"
     },
     {
@@ -34137,7 +33578,7 @@
     },
     {
       "from": "markdown.Details",
-      "to": "html.HtmlMarkup",
+      "to": "std/languages.HtmlMarkup",
       "kind": "language"
     },
     {
@@ -34232,7 +33673,7 @@
     },
     {
       "from": "markdown.Small",
-      "to": "html.HtmlMarkup",
+      "to": "std/languages.HtmlMarkup",
       "kind": "language"
     },
     {
@@ -34517,7 +33958,7 @@
     },
     {
       "from": "messages.CompilerMessages",
-      "to": "messages.Lists",
+      "to": "documents/language.Lists",
       "kind": "deps"
     },
     {
@@ -34562,18 +34003,8 @@
     },
     {
       "from": "messages.CountsInTheLanguage",
-      "to": "messages.Lists",
+      "to": "documents/language.Lists",
       "kind": "appliedBy"
-    },
-    {
-      "from": "messages.Dates",
-      "to": "product.SingleSource",
-      "kind": "serves"
-    },
-    {
-      "from": "messages.Dates",
-      "to": "messages.Language",
-      "kind": "deps"
     },
     {
       "from": "messages.DevMessages",
@@ -34587,7 +34018,7 @@
     },
     {
       "from": "messages.DevMessages",
-      "to": "messages.Lists",
+      "to": "documents/language.Lists",
       "kind": "deps"
     },
     {
@@ -34609,16 +34040,6 @@
       "from": "messages.LawMessages",
       "to": "messages.Language",
       "kind": "language"
-    },
-    {
-      "from": "messages.Lists",
-      "to": "product.SingleSource",
-      "kind": "serves"
-    },
-    {
-      "from": "messages.Lists",
-      "to": "messages.Language",
-      "kind": "deps"
     },
     {
       "from": "messages.OutputMessages",
@@ -34676,6 +34097,11 @@
       "kind": "serves"
     },
     {
+      "from": "packages.DocumentRenderers",
+      "to": "product.SingleSource",
+      "kind": "serves"
+    },
+    {
       "from": "packages.GenericCommands",
       "to": "product.SingleSource",
       "kind": "serves"
@@ -34722,7 +34148,7 @@
     },
     {
       "from": "page.Banner",
-      "to": "html.HtmlMarkup",
+      "to": "std/languages.HtmlMarkup",
       "kind": "language"
     },
     {
@@ -34757,7 +34183,7 @@
     },
     {
       "from": "page.Brand",
-      "to": "html.HtmlMarkup",
+      "to": "std/languages.HtmlMarkup",
       "kind": "language"
     },
     {
@@ -34797,7 +34223,7 @@
     },
     {
       "from": "page.CompilationState",
-      "to": "html.HtmlMarkup",
+      "to": "std/languages.HtmlMarkup",
       "kind": "language"
     },
     {
@@ -34832,7 +34258,7 @@
     },
     {
       "from": "page.DatePicker",
-      "to": "html.HtmlMarkup",
+      "to": "std/languages.HtmlMarkup",
       "kind": "language"
     },
     {
@@ -34877,7 +34303,7 @@
     },
     {
       "from": "page.DocumentHead",
-      "to": "html.HtmlMarkup",
+      "to": "std/languages.HtmlMarkup",
       "kind": "language"
     },
     {
@@ -34922,7 +34348,7 @@
     },
     {
       "from": "page.DocumentPicker",
-      "to": "html.HtmlMarkup",
+      "to": "std/languages.HtmlMarkup",
       "kind": "language"
     },
     {
@@ -34962,7 +34388,7 @@
     },
     {
       "from": "page.FigureMarkers",
-      "to": "html.HtmlMarkup",
+      "to": "std/languages.HtmlMarkup",
       "kind": "language"
     },
     {
@@ -35032,7 +34458,7 @@
     },
     {
       "from": "page.FontLinks",
-      "to": "html.HtmlMarkup",
+      "to": "std/languages.HtmlMarkup",
       "kind": "language"
     },
     {
@@ -35057,7 +34483,7 @@
     },
     {
       "from": "page.Logo",
-      "to": "html.HtmlMarkup",
+      "to": "std/languages.HtmlMarkup",
       "kind": "language"
     },
     {
@@ -35112,7 +34538,7 @@
     },
     {
       "from": "page.MainArea",
-      "to": "html.HtmlMarkup",
+      "to": "std/languages.HtmlMarkup",
       "kind": "language"
     },
     {
@@ -35162,7 +34588,7 @@
     },
     {
       "from": "page.NarrowScreenRule",
-      "to": "html.CssStyleSheets",
+      "to": "std/languages.CssStyleSheets",
       "kind": "language"
     },
     {
@@ -35207,7 +34633,7 @@
     },
     {
       "from": "page.Navigation",
-      "to": "html.HtmlMarkup",
+      "to": "std/languages.HtmlMarkup",
       "kind": "language"
     },
     {
@@ -35397,12 +34823,12 @@
     },
     {
       "from": "page.Page",
-      "to": "html.HtmlMarkup",
+      "to": "std/languages.HtmlMarkup",
       "kind": "deps"
     },
     {
       "from": "page.Page",
-      "to": "html.CssStyleSheets",
+      "to": "std/languages.CssStyleSheets",
       "kind": "deps"
     },
     {
@@ -35417,7 +34843,7 @@
     },
     {
       "from": "page.PageDocument",
-      "to": "html.HtmlMarkup",
+      "to": "std/languages.HtmlMarkup",
       "kind": "language"
     },
     {
@@ -35467,7 +34893,7 @@
     },
     {
       "from": "page.PageScripts",
-      "to": "html.HtmlMarkup",
+      "to": "std/languages.HtmlMarkup",
       "kind": "language"
     },
     {
@@ -35562,7 +34988,7 @@
     },
     {
       "from": "page.RenderingToggle",
-      "to": "html.HtmlMarkup",
+      "to": "std/languages.HtmlMarkup",
       "kind": "language"
     },
     {
@@ -35612,7 +35038,7 @@
     },
     {
       "from": "page.Shell",
-      "to": "html.HtmlMarkup",
+      "to": "std/languages.HtmlMarkup",
       "kind": "language"
     },
     {
@@ -35652,7 +35078,7 @@
     },
     {
       "from": "page.SideBar",
-      "to": "html.HtmlMarkup",
+      "to": "std/languages.HtmlMarkup",
       "kind": "language"
     },
     {
@@ -35702,7 +35128,7 @@
     },
     {
       "from": "page.StatusStyle",
-      "to": "html.CssStyleSheets",
+      "to": "std/languages.CssStyleSheets",
       "kind": "language"
     },
     {
@@ -35777,7 +35203,7 @@
     },
     {
       "from": "page.Theme",
-      "to": "html.CssStyleSheets",
+      "to": "std/languages.CssStyleSheets",
       "kind": "language"
     },
     {
@@ -36717,7 +36143,7 @@
     },
     {
       "from": "platform.NpmReports",
-      "to": "documents.Punctuation",
+      "to": "documents/language.Punctuation",
       "kind": "deps"
     },
     {
@@ -37058,6 +36484,16 @@
     {
       "from": "platform.WebTreeSitter",
       "to": "packages.WebTreeSitterPackage",
+      "kind": "packages"
+    },
+    {
+      "from": "platform.WebTreeSitter",
+      "to": "packages.HtmlGrammar",
+      "kind": "packages"
+    },
+    {
+      "from": "platform.WebTreeSitter",
+      "to": "packages.CssGrammar",
       "kind": "packages"
     },
     {
@@ -38141,6 +37577,26 @@
       "kind": "assembledBy"
     },
     {
+      "from": "releases.G128",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G128",
+      "to": "releases.G127",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G129",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G129",
+      "to": "releases.G128",
+      "kind": "assembledBy"
+    },
+    {
       "from": "releases.G13",
       "to": "architecture.TrameCli",
       "kind": "component"
@@ -39112,12 +38568,12 @@
     },
     {
       "from": "rendering.Common",
-      "to": "messages.Dates",
+      "to": "documents/language.Dates",
       "kind": "deps"
     },
     {
       "from": "rendering.Common",
-      "to": "messages.Lists",
+      "to": "documents/language.Lists",
       "kind": "deps"
     },
     {
@@ -39132,7 +38588,7 @@
     },
     {
       "from": "rendering.Common",
-      "to": "documents.Units",
+      "to": "documents/language.Units",
       "kind": "deps"
     },
     {
@@ -39272,7 +38728,7 @@
     },
     {
       "from": "rendering.HtmlSyntax",
-      "to": "documents.Punctuation",
+      "to": "documents/language.Punctuation",
       "kind": "deps"
     },
     {
@@ -39317,7 +38773,7 @@
     },
     {
       "from": "rendering.MarkdownSyntax",
-      "to": "documents.Punctuation",
+      "to": "documents/language.Punctuation",
       "kind": "deps"
     },
     {
@@ -39522,7 +38978,7 @@
     },
     {
       "from": "rendering.MermaidDiagrams",
-      "to": "messages.Dates",
+      "to": "documents/language.Dates",
       "kind": "deps"
     },
     {
@@ -39697,7 +39153,7 @@
     },
     {
       "from": "rendering.PlainTextSyntax",
-      "to": "documents.Punctuation",
+      "to": "documents/language.Punctuation",
       "kind": "deps"
     },
     {
@@ -39832,7 +39288,7 @@
     },
     {
       "from": "rendering.SvgFigures",
-      "to": "messages.Dates",
+      "to": "documents/language.Dates",
       "kind": "deps"
     },
     {
@@ -39847,7 +39303,7 @@
     },
     {
       "from": "rendering.SvgFigures",
-      "to": "documents.Punctuation",
+      "to": "documents/language.Punctuation",
       "kind": "deps"
     },
     {
@@ -39982,7 +39438,7 @@
     },
     {
       "from": "rendering.TextFigures",
-      "to": "documents.Punctuation",
+      "to": "documents/language.Punctuation",
       "kind": "deps"
     },
     {
@@ -40007,7 +39463,7 @@
     },
     {
       "from": "rendering.TextFigures",
-      "to": "messages.Dates",
+      "to": "documents/language.Dates",
       "kind": "deps"
     },
     {
@@ -40357,17 +39813,17 @@
     },
     {
       "from": "scenarios.DocumentWords",
-      "to": "messages.Dates",
+      "to": "documents/language.Dates",
       "kind": "verifies"
     },
     {
       "from": "scenarios.DocumentWords",
-      "to": "messages.Lists",
+      "to": "documents/language.Lists",
       "kind": "verifies"
     },
     {
       "from": "scenarios.DocumentWords",
-      "to": "documents.Units",
+      "to": "documents/language.Units",
       "kind": "verifies"
     },
     {
@@ -40377,7 +39833,7 @@
     },
     {
       "from": "scenarios.DocumentWords",
-      "to": "documents.Punctuation",
+      "to": "documents/language.Punctuation",
       "kind": "verifies"
     },
     {
@@ -40387,22 +39843,27 @@
     },
     {
       "from": "scenarios.DocumentWords",
+      "to": "documents.OurDocumentLanguage",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.DocumentWords",
       "to": "architecture.Test",
       "kind": "env"
     },
     {
       "from": "scenarios.DocumentWords",
-      "to": "messages.Dates",
+      "to": "documents/language.Dates",
       "kind": "deps"
     },
     {
       "from": "scenarios.DocumentWords",
-      "to": "messages.Lists",
+      "to": "documents/language.Lists",
       "kind": "deps"
     },
     {
       "from": "scenarios.DocumentWords",
-      "to": "documents.Units",
+      "to": "documents/language.Units",
       "kind": "deps"
     },
     {
@@ -40412,7 +39873,7 @@
     },
     {
       "from": "scenarios.DocumentWords",
-      "to": "documents.Punctuation",
+      "to": "documents/language.Punctuation",
       "kind": "deps"
     },
     {
@@ -42226,6 +41687,26 @@
       "kind": "appliedBy"
     },
     {
+      "from": "syntax.StdLanguagesRead",
+      "to": "std/engine.ReadByTheEngine",
+      "kind": "chooses"
+    },
+    {
+      "from": "syntax.StdLanguagesRead",
+      "to": "architecture.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "syntax.StdLanguagesRead",
+      "to": "std/patterns.Adapter",
+      "kind": "follows"
+    },
+    {
+      "from": "syntax.StdLanguagesRead",
+      "to": "product.ExecutableSpecification",
+      "kind": "serves"
+    },
+    {
       "from": "syntax.SyntaxReader",
       "to": "product.ExecutableSpecification",
       "kind": "serves"
@@ -42472,7 +41953,7 @@
     },
     {
       "from": "terraform.Terraform",
-      "to": "standards.TreeSitterQueries",
+      "to": "std/languages.TreeSitterQueries",
       "kind": "queryLanguage"
     },
     {
@@ -42562,7 +42043,7 @@
     },
     {
       "from": "terraform.TerraformWriter",
-      "to": "messages.Dates",
+      "to": "documents/language.Dates",
       "kind": "deps"
     },
     {
@@ -43092,7 +42573,7 @@
     },
     {
       "from": "typescript.TypeScript",
-      "to": "standards.TreeSitterQueries",
+      "to": "std/languages.TreeSitterQueries",
       "kind": "queryLanguage"
     },
     {
@@ -43302,7 +42783,7 @@
     },
     {
       "from": "typescript.TypeScriptWriter",
-      "to": "messages.Dates",
+      "to": "documents/language.Dates",
       "kind": "deps"
     },
     {

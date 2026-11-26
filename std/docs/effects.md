@@ -8,7 +8,7 @@
 
 | Severity | Code | What | Where | Owner | Consequence |
 |---|---|---|---|---|---|
-| warning | `not-connected-to-root` | Connected to no root (architecture rule, goal) | [What the platform may do](#PlatformEffects) | to be assigned |  |
+| warning | `not-connected-to-root` | Connected to no root (goal, architecture rule) | [What the platform may do](#PlatformEffects) | to be assigned |  |
 
 ## Vocabulary
 

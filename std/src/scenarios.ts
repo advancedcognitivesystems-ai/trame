@@ -17,7 +17,9 @@ import {
   OpenPullRequest, MergePullRequest, Propagate, PullRequestSettings, PropagationSettings, CommandWords, type PullRequestWay, type Propagation,
 } from "./commands"
 import { BranchesInMemory, BranchesKept, PullRequestsInMemory, PullRequestsKept, type PullRequestOpen } from "./repository"
-import { Strategy } from "./patterns"
+import { Strategy, Adapter } from "./patterns"
+import { ReadByTheEngine, LanguageReading } from "./engine"
+import { HtmlMarkup, CssStyleSheets } from "./languages"
 import { Commands, Effects } from "./effects"
 import { Counts, Sequences } from "./algebra"
 import { ExitStatus } from "./system"
@@ -50,6 +52,20 @@ export const InMemory = binding({
   follows: [Strategy],
   serves: [RealizedOnce],
   context: "A realization kept in memory is what a project's scenarios run in place of the device: it must keep its port's promise.",
+})
+
+/**
+ * Read by the engine that builds
+ * Where the library's build evaluates, its languages (HTML, CSS) are read by the engine that compiles it: their
+ * examples, and what the syntax elements of a library write in them.
+ */
+export const ReadInTheEngine = binding({
+  owner: "trame",
+  chooses: [ReadByTheEngine],
+  environments: [Test],
+  follows: [Adapter],
+  serves: [RealizedOnce],
+  context: "Reading a language is the engine's: the grammar and its reader are the engine's packages, which no library carries.",
 })
 
 /**
@@ -97,6 +113,7 @@ export const ScenarioChecks = catalog({
   language: ScenarioLanguage,
   messages: () => ({
     sameSeedSameDraws: () => "The same seed draws the same numbers, a text the same seed",
+    languageRead: (language: string) => `The engine loads ${language}'s grammar and its queries, which use only the predicates tree-sitter evaluates`,
     otherSeedOthers: () => "Another seed draws others",
     integersWithin: (lo: number, hi: number) => `Integers drawn between ${lo} and ${hi} stay between them, and reach both`,
     weightedByWeight: () => "An element is drawn by its weight: one that weighs nothing never is; nothing from a list that weighs nothing",
@@ -501,5 +518,23 @@ export const ToolingInMemory = scenario({
     check(checks.pageShown(), (await shown.count(page.selector)) === page.count && (await shown.text(page.selector)) === page.text &&
       shown.errors().includes(page.error) && script.clicks().includes(page.selector) &&
       script.choices().some((c) => c.selector === page.selector && c.value === page.text))
+  },
+})
+
+/**
+ * The languages read by the engine
+ * HTML and CSS, read through the port the engine realizes: each grammar loads, and each query uses only the predicates
+ * tree-sitter evaluates (none kept aside, which would let a pattern catch too much).
+ */
+export const LanguagesRead = scenario({
+  owner: "trame",
+  verifies: [ReadByTheEngine],
+  env: Test,
+  deps: { reader: LanguageReading, html: HtmlMarkup, css: CssStyleSheets, counts: Counts, checks: ScenarioChecks },
+  body: ({ reader, html, css, counts, checks }) => async (check) => {
+    for (const language of [html, css]) {
+      const read = await reader.load(language).then(() => counts.isEmpty(reader.aside(language)), () => false)
+      check(checks.languageRead(language.name), read)
+    }
   },
 })

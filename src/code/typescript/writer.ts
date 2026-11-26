@@ -7,7 +7,8 @@
 import { WireMode } from "../../../trame/kernel"
 import type { ProvidedBy } from "../../../trame/kernel"
 import type { Paths, Prelude } from "../../architecture"
-import type { Dates, DriverMessages } from "../../messages"
+import type { DriverMessages } from "../../messages"
+import type { Dates } from "#documents/language"
 import type { Sequences, Texts } from "#std/algebra"
 import type { NodeModuleSpecifiers, NodeProcessApi } from "#std/system"
 import type { FrozenApi, ReferenceSyntax, StepNames, TrameEnvironment } from "../../conventions"
@@ -16,7 +17,7 @@ import type {
   ArrayLiteral, ConstDeclaration, NamedImport, DefaultImport, AsExpression, OptionalPropertySignature, ObjectType, UnionType, IfStatement,
   StrictInequality, Assignment, InlineArray, AsyncBlockFunction,
 } from "../../typescript"
-import type { LanguageDescription } from "../../../kinds/language"
+import type { LanguageDescription } from "../../../trame/kernel"
 import type { Assembly, Emitted } from "../engine/assembly"
 import type { Step } from "../engine/wiring"
 

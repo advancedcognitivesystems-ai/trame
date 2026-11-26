@@ -10,7 +10,7 @@
 
 ### CommonMark
 
-`CommonMark` · `src/markdown.ts:19`
+`CommonMark` · `src/markdown.ts:20`
 
 The Markdown syntax of the documents that Trame writes. The marks that several constructs share are here.
 
@@ -31,7 +31,7 @@ Source: CommonMark Spec 0.31.2 (2024) · `https://spec.commonmark.org/0.31.2/`
 
 ### GitHub Flavored Markdown
 
-`Gfm` · `src/markdown.ts:35`
+`Gfm` · `src/markdown.ts:36`
 
 The extensions of CommonMark that Trame uses: tables.
 
@@ -51,7 +51,7 @@ Source: GitHub Flavored Markdown Spec 0.29-gfm (2019) · `https://github.github.
 
 ### Anchor
 
-`Anchor` · `src/markdown.ts:387` · status: **held**
+`Anchor` · `src/markdown.ts:388` · status: **held**
 
 An empty element that carries an identifier: the target of links to a node or a section.
 
@@ -67,17 +67,17 @@ Section: 4.5.1 The a element; 3.2.6 The id attribute · `https://html.spec.whatw
 | `"Goal"` | `"<a id=\"Goal\"></a>"` | held, read as HTML markup |
 
 - Owner: trame
-- Parameters: `standard` ← [HTML](../std/releases/0.28.0/docs/html.md#Html) · `element` ← [HTML element](html.md#HtmlElement) · `texts` ← [Texts](../std/releases/0.28.0/docs/algebra.md#Texts)
+- Parameters: `standard` ← [HTML](../std/releases/0.29.0/docs/html.md#Html) · `element` ← [HTML element](html.md#HtmlElement) · `texts` ← [Texts](../std/releases/0.29.0/docs/algebra.md#Texts)
 - Body: inline, in the declaration
-- Defined by: [HTML](../std/releases/0.28.0/docs/html.md#Html)
-- Read in: [HTML markup](html.md#HtmlMarkup)
+- Defined by: [HTML](../std/releases/0.29.0/docs/html.md#Html)
+- Read in: [HTML markup](../std/releases/0.29.0/docs/languages.md#HtmlMarkup)
 - Used by: [Markdown writer](rendering.md#MarkdownSyntax)
 
 <a id="BacktickString"></a>
 
 ### Backtick string
 
-`BacktickString` · `src/markdown.ts:151` · status: **held**
+`BacktickString` · `src/markdown.ts:152` · status: **held**
 
 What delimits code: backticks, more of them than in any run in the delimited text, so that the text does not close it.
 
@@ -91,7 +91,7 @@ Section: 6.1 Code spans (backtick string); 4.5 Fenced code blocks · `https://sp
 | ````"```ts\nx\n```", 3```` | `````"````"````` | held |
 
 - Owner: trame
-- Parameters: `standard` ← [CommonMark](#CommonMark) · `counts` ← [Counts](../std/releases/0.28.0/docs/algebra.md#Counts)
+- Parameters: `standard` ← [CommonMark](#CommonMark) · `counts` ← [Counts](../std/releases/0.29.0/docs/algebra.md#Counts)
 - Body: inline, in the declaration
 - Defined by: [CommonMark](#CommonMark)
 - Used by: [Code block](#CodeBlock), [Code span](#CodeSpan)
@@ -100,7 +100,7 @@ Section: 6.1 Code spans (backtick string); 4.5 Fenced code blocks · `https://sp
 
 ### Blank line
 
-`BlankLine` · `src/markdown.ts:51` · status: **held**
+`BlankLine` · `src/markdown.ts:52` · status: **held**
 
 A line with no characters. It closes a block: what follows starts another one (a paragraph, a list, an HTML block). Each block is closed by one; a block left out closes nothing.
 
@@ -119,14 +119,14 @@ Section: 4.9 Blank lines · `https://spec.commonmark.org/0.31.2/#blank-lines`
 - Parameters: `standard` ← [CommonMark](#CommonMark)
 - Body: inline, in the declaration
 - Defined by: [CommonMark](#CommonMark)
-- Refines: [Texts](../std/releases/0.28.0/docs/algebra.md#Texts)
+- Refines: [Texts](../std/releases/0.29.0/docs/algebra.md#Texts)
 - Used by: [Sequence of blocks](#Blocks), [Collapsible block](#Details)
 
 <a id="BlockQuote"></a>
 
 ### Block quote
 
-`BlockQuote` · `src/markdown.ts:135` · status: **held**
+`BlockQuote` · `src/markdown.ts:136` · status: **held**
 
 A greater-than sign, a space, then the quoted text.
 
@@ -150,7 +150,7 @@ Section: 5.1 Block quotes · `https://spec.commonmark.org/0.31.2/#block-quotes`
 
 ### Sequence of blocks
 
-`Blocks` · `src/markdown.ts:71` · status: **held**
+`Blocks` · `src/markdown.ts:72` · status: **held**
 
 The blocks of the document, each closed by a blank line, joined into one text. Several blank lines in a row make only one.
 
@@ -166,7 +166,7 @@ Section: 4.9 Blank lines · `https://spec.commonmark.org/0.31.2/#blank-lines`
 | `[["a","b"]]` | `"a\nb\n"` | held |
 
 - Owner: trame
-- Parameters: `standard` ← [CommonMark](#CommonMark) · `blankLine` ← [Blank line](#BlankLine) · `counts` ← [Counts](../std/releases/0.28.0/docs/algebra.md#Counts)
+- Parameters: `standard` ← [CommonMark](#CommonMark) · `blankLine` ← [Blank line](#BlankLine) · `counts` ← [Counts](../std/releases/0.29.0/docs/algebra.md#Counts)
 - Body: inline, in the declaration
 - Defined by: [CommonMark](#CommonMark)
 - Used by: [Markdown writer](rendering.md#MarkdownSyntax)
@@ -175,7 +175,7 @@ Section: 4.9 Blank lines · `https://spec.commonmark.org/0.31.2/#blank-lines`
 
 ### Code block
 
-`CodeBlock` · `src/markdown.ts:181` · status: **held**
+`CodeBlock` · `src/markdown.ts:182` · status: **held**
 
 A fence of backticks followed by the language, the lines of the code, then the same fence. The fence is longer than any run of backticks in the code: a code block can show another one.
 
@@ -200,7 +200,7 @@ Section: 4.5 Fenced code blocks · `https://spec.commonmark.org/0.31.2/#fenced-c
 
 ### Code span
 
-`CodeSpan` · `src/markdown.ts:239` · status: **held**
+`CodeSpan` · `src/markdown.ts:240` · status: **held**
 
 A name, a path, a value as written in the code: between backticks. A text that contains backticks is delimited by a longer string; if it starts or ends with a backtick, a space separates it (removed when read).
 
@@ -218,7 +218,7 @@ Section: 6.1 Code spans · `https://spec.commonmark.org/0.31.2/#code-spans`
 | `" x "` | ``"`  x  `"`` | held |
 
 - Owner: trame
-- Parameters: `standard` ← [CommonMark](#CommonMark) · `backtickString` ← [Backtick string](#BacktickString) · `texts` ← [Texts](../std/releases/0.28.0/docs/algebra.md#Texts)
+- Parameters: `standard` ← [CommonMark](#CommonMark) · `backtickString` ← [Backtick string](#BacktickString) · `texts` ← [Texts](../std/releases/0.29.0/docs/algebra.md#Texts)
 - Body: inline, in the declaration
 - Defined by: [CommonMark](#CommonMark)
 - Used by: [Lock](engine.md#Lock), [Markdown writer](rendering.md#MarkdownSyntax)
@@ -227,7 +227,7 @@ Section: 6.1 Code spans · `https://spec.commonmark.org/0.31.2/#code-spans`
 
 ### Collapsible block
 
-`Details` · `src/markdown.ts:425` · status: **held**
+`Details` · `src/markdown.ts:426` · status: **held**
 
 A summary that is always visible; the rest unfolds. The summary line is a block of its own, closed by a blank line: the blocks after it are Markdown again.
 
@@ -243,17 +243,17 @@ Section: 4.11.1 The details element; 4.11.2 The summary element · `https://html
 | `"The code", [["x"]]` | `["<details><summary>The code</summary>","","x","","</details>"]` | held, read as HTML markup |
 
 - Owner: trame
-- Parameters: `standard` ← [HTML](../std/releases/0.28.0/docs/html.md#Html) · `startTag` ← [Start tag](html.md#HtmlStartTag) · `endTag` ← [End tag](html.md#HtmlEndTag) · `element` ← [HTML element](html.md#HtmlElement) · `blankLine` ← [Blank line](#BlankLine)
+- Parameters: `standard` ← [HTML](../std/releases/0.29.0/docs/html.md#Html) · `startTag` ← [Start tag](html.md#HtmlStartTag) · `endTag` ← [End tag](html.md#HtmlEndTag) · `element` ← [HTML element](html.md#HtmlElement) · `blankLine` ← [Blank line](#BlankLine)
 - Body: inline, in the declaration
-- Defined by: [HTML](../std/releases/0.28.0/docs/html.md#Html)
-- Read in: [HTML markup](html.md#HtmlMarkup)
+- Defined by: [HTML](../std/releases/0.29.0/docs/html.md#Html)
+- Read in: [HTML markup](../std/releases/0.29.0/docs/languages.md#HtmlMarkup)
 - Used by: [Markdown writer](rendering.md#MarkdownSyntax)
 
 <a id="Emphasis"></a>
 
 ### Emphasis
 
-`Emphasis` · `src/markdown.ts:206` · status: **held**
+`Emphasis` · `src/markdown.ts:207` · status: **held**
 
 The text between two single asterisks.
 
@@ -277,7 +277,7 @@ Section: 6.2 Emphasis · `https://spec.commonmark.org/0.31.2/#emphasis-and-stron
 
 ### Heading
 
-`Heading` · `src/markdown.ts:98` · status: **held**
+`Heading` · `src/markdown.ts:99` · status: **held**
 
 Hash signs, one per level, a space, then the text of the heading.
 
@@ -303,7 +303,7 @@ Section: 4.2 ATX headings · `https://spec.commonmark.org/0.31.2/#atx-headings`
 
 ### Link
 
-`Link` · `src/markdown.ts:267` · status: **held**
+`Link` · `src/markdown.ts:268` · status: **held**
 
 The text of the link between square brackets, then its destination between parentheses.
 
@@ -330,7 +330,7 @@ Section: 6.3 Links · `https://spec.commonmark.org/0.31.2/#links`
 
 ### List item
 
-`ListItem` · `src/markdown.ts:119` · status: **held**
+`ListItem` · `src/markdown.ts:120` · status: **held**
 
 A bullet, a space, then the content of the item.
 
@@ -354,7 +354,7 @@ Section: 5.2 List items · `https://spec.commonmark.org/0.31.2/#list-items`
 
 ### Relative reference
 
-`RelativeReference` · `src/markdown.ts:289` · status: **held**
+`RelativeReference` · `src/markdown.ts:290` · status: **held**
 
 The address of a file from the documents, followed by an anchor; or the anchor alone, in the document itself. A path is given from the project's root: a document reaches another in the same folder by its name, and any other file of the project (the documents of a library) by going up to the root first.
 
@@ -375,16 +375,16 @@ Section: 4.2 Relative reference; 3.5 Fragment; 5.2.4 Remove dot segments · `htt
 | `"../std/docs/index.md"` | `"../../std/docs/index.md"` | held |
 
 - Owner: trame
-- Parameters: `standard` ← [URI](../std/releases/0.28.0/docs/web.md#Uri) · `texts` ← [Texts](../std/releases/0.28.0/docs/algebra.md#Texts) · `layout` ← [Project layout](conventions.md#Layout)
+- Parameters: `standard` ← [URI](../std/releases/0.29.0/docs/web.md#Uri) · `texts` ← [Texts](../std/releases/0.29.0/docs/algebra.md#Texts) · `layout` ← [Project layout](conventions.md#Layout)
 - Body: inline, in the declaration
-- Defined by: [URI](../std/releases/0.28.0/docs/web.md#Uri)
+- Defined by: [URI](../std/releases/0.29.0/docs/web.md#Uri)
 - Used by: [Markdown writer](rendering.md#MarkdownSyntax)
 
 <a id="Small"></a>
 
 ### Small text
 
-`Small` · `src/markdown.ts:406` · status: **held**
+`Small` · `src/markdown.ts:407` · status: **held**
 
 A side note, in small print: the kind of a node under its title, in a figure.
 
@@ -399,17 +399,17 @@ Section: 4.5.4 The small element · `https://html.spec.whatwg.org/multipage/text
 | `"Decision"` | `"<small>Decision</small>"` | held, read as HTML markup |
 
 - Owner: trame
-- Parameters: `standard` ← [HTML](../std/releases/0.28.0/docs/html.md#Html) · `element` ← [HTML element](html.md#HtmlElement)
+- Parameters: `standard` ← [HTML](../std/releases/0.29.0/docs/html.md#Html) · `element` ← [HTML element](html.md#HtmlElement)
 - Body: inline, in the declaration
-- Defined by: [HTML](../std/releases/0.28.0/docs/html.md#Html)
-- Read in: [HTML markup](html.md#HtmlMarkup)
+- Defined by: [HTML](../std/releases/0.29.0/docs/html.md#Html)
+- Read in: [HTML markup](../std/releases/0.29.0/docs/languages.md#HtmlMarkup)
 - Used by: [Mermaid diagrams](rendering.md#MermaidDiagrams)
 
 <a id="StrongEmphasis"></a>
 
 ### Strong emphasis
 
-`StrongEmphasis` · `src/markdown.ts:222` · status: **held**
+`StrongEmphasis` · `src/markdown.ts:223` · status: **held**
 
 The text between two double asterisks: a status, a value to decide.
 
@@ -433,7 +433,7 @@ Section: 6.2 Strong emphasis · `https://spec.commonmark.org/0.31.2/#emphasis-an
 
 ### Table
 
-`Table` · `src/markdown.ts:370` · status: **held**
+`Table` · `src/markdown.ts:371` · status: **held**
 
 The header row, the delimiter row, then one row per record. The cells arrive already written.
 
@@ -453,7 +453,7 @@ Section: 4.10 Tables · `https://github.github.com/gfm/#tables-extension-`
 
 ### Table cell
 
-`TableCell` · `src/markdown.ts:318` · status: **held**
+`TableCell` · `src/markdown.ts:319` · status: **held**
 
 The content of a cell fits on one line, and a pipe in it is escaped.
 
@@ -477,7 +477,7 @@ Section: 4.10 Tables: a pipe in a cell · `https://github.github.com/gfm/#tables
 
 ### Delimiter row
 
-`TableDelimiterRow` · `src/markdown.ts:352` · status: **held**
+`TableDelimiterRow` · `src/markdown.ts:353` · status: **held**
 
 Under the header: dashes for each column, between pipes.
 
@@ -502,7 +502,7 @@ Section: 4.10 Tables: the delimiter row · `https://github.github.com/gfm/#table
 
 ### Table row
 
-`TableRow` · `src/markdown.ts:336` · status: **held**
+`TableRow` · `src/markdown.ts:337` · status: **held**
 
 The cells, separated and bordered by pipes, with a space on each side.
 

@@ -24,9 +24,11 @@ import {
   Prelude, FileReading, Paths, ModuleLoader, TypeScriptCompiler, Hashing, KeptResults, Signatures, Process, Terminal, Clock, Timer,
   HttpServer, KeptRuns, RunStore,
 } from "./architecture"
-import { Language, Dates, Lists, CompilerMessages, LawMessages, ViewMessages, OutputMessages, DevMessages, CommandMessages } from "./messages"
+import { Language, CompilerMessages, LawMessages, ViewMessages, OutputMessages, DevMessages, CommandMessages } from "./messages"
+import { Dates, Lists } from "#documents/language"
 import { Drivers } from "./languages"
-import { Punctuation, LanguageSettings, Units, VisibleText } from "./documents"
+import { LanguageSettings, VisibleText } from "./documents"
+import { Punctuation, Units } from "#documents/language"
 import { CodeSpan } from "./markdown"
 import { CodeLines } from "./text"
 import { Page } from "./page"

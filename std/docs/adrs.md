@@ -2,13 +2,13 @@
 
 *The choices that shape the product without being values, in force on 26 November 2026: why each was taken, what was rejected, and the nodes that apply it.*
 
-> **8 architecture decisions, 6 held by the nodes that apply them**
+> **8 architecture decisions, 7 held by the nodes that apply them**
 
 | Decision | Status | Applied by |
 |---|---|---|
 | [An entry point says who may call it](access.md#SaysItsAudience) | **held** | [Who calls a shipment's programs is identified](obligations.md#Identified) |
 | [A library offers commands, a project chooses them](commands.md#CommandsOfALibrary) | **held** | [The library's commands](commands.md#LibraryCommands), [Merge a pull request](commands.md#MergePullRequest), [Open a pull request](commands.md#OpenPullRequest), [Propagate](commands.md#Propagate), [Command](patterns.md#Command) |
-| [The engine is a provider](engine.md#EngineAsAProvider) | unknown | [A project compiled by the engine that plays the scenario](engine.md#ProjectCompiledHere), [The project the engine prepared](engine.md#ProjectInTheEngine), [The project of a scenario](engine.md#ProjectOfTheScenario), [The project at hand](engine.md#TheProject) |
+| [The engine is a provider](engine.md#EngineAsAProvider) | **held** | [Reading a language](engine.md#LanguageReading), [A project compiled by the engine that plays the scenario](engine.md#ProjectCompiledHere), [The project the engine prepared](engine.md#ProjectInTheEngine), [The project of a scenario](engine.md#ProjectOfTheScenario), [Read by the engine](engine.md#ReadByTheEngine), [The project at hand](engine.md#TheProject) |
 | [A project judges harder than the language, never softer](judgment.md#HarderNeverSofter) | **held** | [As the language says](judgment.md#AsTheLanguageSays), [Every warning an error](judgment.md#EveryWarning), [Hardening](judgment.md#Hardening), [Raising](judgment.md#Raising) |
 | [A component in a browser starts with its page](platform.md#StartsWithThePage) | unknown | [The browser loads the page](platform.md#BrowserLoading), [Loading of a page](platform.md#PageLoading) |
 | [The device's services, as ports](platform.md#DeviceAsPorts) | **held** | [Animation frames](platform.md#AnimationFrames), [The screen kept awake, in memory](platform.md#AwakeInMemory), [The browser's frames](platform.md#BrowserFrames), [The browser's languages](platform.md#BrowserLanguages), [The browser keeps the preferences](platform.md#BrowserPreferences), [The browser's voice](platform.md#BrowserSpeech), [The browser keeps the screen awake](platform.md#BrowserWakeLock), [Languages of the device](platform.md#DeviceLanguages), [Frames turned by hand](platform.md#FramesByHand), [Preferences kept in memory](platform.md#MemoryPreferences), [Preferences](platform.md#PreferencesStore), [Screen kept awake](platform.md#ScreenAwake), [Whether the screen is kept awake](platform.md#ScreenKeptAwake), [What was said](platform.md#SpeechHeard), [Speech](platform.md#SpeechVoice), [Time turned by hand](platform.md#TimeTurned), [A voice that writes down](platform.md#WrittenSpeech) |
@@ -68,9 +68,9 @@ Consequences: The library's component LibraryCommands holds the commands; a proj
 
 ### The engine is a provider
 
-`EngineAsAProvider` · `src/engine.ts:87`
+`EngineAsAProvider` · `src/engine.ts:106` · status: **held**
 
-What a command needs of the engine (the project compiled at a date, with what a view receives; later the evidence, the assembly, the publication, the engine's identity) is a port of the library, realized by an adapter that reads the API the language defines; a command of a library or a project reaches the engine only through them.
+What a command needs of the engine (the project compiled at a date, with what a view receives; a language read; later the evidence, the assembly, the publication, the engine's identity) is a port of the library, realized by an adapter that reads the API the language defines; a command, or a language, of a library or a project reaches the engine only through them.
 
 Context: The engine's commands reached its modules directly; a command of a library or a project could not, and a command moved out of the engine would have lost what it computed with.
 
@@ -83,7 +83,7 @@ Consequences: Every command reaches the engine the same way, through ports versi
 
 - Decided by: trame
 - Serves: [Ports of the platform, realized once](product.md#RealizedOnce)
-- Applied by: [The project at hand](engine.md#TheProject), [The project of a scenario](engine.md#ProjectOfTheScenario), [The project the engine prepared](engine.md#ProjectInTheEngine), [A project compiled by the engine that plays the scenario](engine.md#ProjectCompiledHere)
+- Applied by: [The project at hand](engine.md#TheProject), [The project of a scenario](engine.md#ProjectOfTheScenario), [The project the engine prepared](engine.md#ProjectInTheEngine), [A project compiled by the engine that plays the scenario](engine.md#ProjectCompiledHere), [Reading a language](engine.md#LanguageReading), [Read by the engine](engine.md#ReadByTheEngine)
 
 ## Standard library · Judgment
 

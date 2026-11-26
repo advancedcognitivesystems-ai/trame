@@ -3,6 +3,10 @@
 import { decision } from "../kinds/decision"
 import { fn } from "../kinds/function"
 import { adr } from "../kinds/adr"
+import { binding } from "../kinds/binding"
+import { DocumentLanguage } from "#documents/language"
+import { Strategy } from "#std/patterns"
+import { Local, Session, Test, Browser } from "./architecture"
 import { Language } from "./messages"
 import { UnicodeEscape, EcmaScript } from "#std/ecmascript"
 import { InvisibleCharacters } from "#std/text"
@@ -47,15 +51,27 @@ export const TextRendering = decision<{ titleLevel: number; sectionLevel: number
 })
 
 /**
- * Punctuation of documents
- * The marks of the decided language that separate the parts of a line, the same in every rendering (the terminal,
- * Markdown, the page). How a value reads (a list, a map, a record) is said by the catalog.
+ * The documents in Trame's language
+ * The language the documents are written in (libs/documents' port, since g129): Trame's, with its tag and its marks,
+ * which the views speak; the dates, the lists, the punctuation and the units of the library write in it.
  */
-export const Punctuation = fn({
-  owner: "trame",
-  serves: [SingleSource],
+export const OurDocumentLanguage = fn({
+  owner: "trame", implements: [DocumentLanguage],
   deps: { language: Language },
-  body: ({ language }) => language.punctuation,
+  body: ({ language }) => language,
+})
+
+/**
+ * Documents written in Trame's language
+ * Wherever the engine, its commands and its page run, the documents are written in Trame's language.
+ */
+export const DocumentsInOurLanguage = binding({
+  owner: "trame",
+  chooses: [OurDocumentLanguage],
+  environments: [Local, Session, Test, Browser],
+  follows: [Strategy],
+  serves: [SingleSource],
+  context: "The views speak the engine's language: what renders their documents, on a machine, in the scenarios or in the page, writes its dates, lists and marks.",
 })
 
 /**
@@ -72,7 +88,7 @@ export const PunctuationOfTheLanguage = adr({
     "The marks in every catalog": "the renderers, the page and the views share them: each catalog would repeat them",
   },
   serves: [SingleSource],
-  appliedBy: [Punctuation, Language],
+  appliedBy: [OurDocumentLanguage, Language],
 })
 
 /**
@@ -119,51 +135,6 @@ export const MermaidFigures = decision<FigureDisplay>({
       dateFormat: "YYYY-MM-DD", axisFormat: "%d.%m",
       milestones: ["deadline", "review"],
     },
-  },
-})
-
-/**
- * How a number is written
- * A value of the graph is written in decimal digits, with at most two decimals.
- */
-export const NumberDisplay = decision<{ base: number; decimals: number }>({
-  owner: "trame",
-  value: { base: 10, decimals: 2 },
-})
-
-/**
- * Values with their units
- * A number written in decimal digits; a value of a quantity of the graph in the largest of its units it makes a whole
- * number of, in the words of that unit (since g80). A number of no quantity has no unit: the units the prelude wrote
- * (a duration, a percentage, an amount in francs) are gone since g96, each a quantity of the graph.
- */
-export const Units = fn({
-  owner: "trame",
-  serves: [SingleSource],
-  deps: { display: NumberDisplay, counts: Counts, values: ValueTypes },
-  body: ({ display, counts, values }) => {
-    const scale = Math.pow(display.base, display.decimals)
-    const number = (n: number) => String(Math.round(n * scale) / scale)
-    return {
-      /** A number in decimal digits, at most two decimals; a value that is not a number, as it is. */
-      format: (v: unknown): string => (values.isNumber(v) ? number(v) : String(v)),
-      /**
-       * A number of a quantity of the graph (since g80), given its units from the largest: written in the largest one it
-       * makes a whole number of, in the smallest otherwise, with the words of that unit (its message, when it has one).
-       */
-      inUnits: (v: number, units: readonly (readonly [string, number])[], unitWords: Readonly<Record<string, unknown>>): string => {
-        // Whole in a unit: a whole number once written, and not a value that only rounds to nothing.
-        const fits = units.filter(([, factor]) => {
-          const written = Math.round((v / factor) * scale) / scale
-          return Number.isInteger(written) && (written !== counts.zero || v === counts.zero)
-        })
-        const [chosen] = [...fits, ...[...units].reverse()]
-        if (!chosen) return number(v)
-        const [name, factor] = chosen
-        const write = unitWords[name]
-        return values.isFunction(write) ? String((write as (n: string) => unknown)(number(v / factor))) : number(v / factor)
-      },
-    }
   },
 })
 

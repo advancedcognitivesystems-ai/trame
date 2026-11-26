@@ -434,3 +434,16 @@ export const R0_28_0 = release({
   language: "shared",
   serves: [ChosenCommands, CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
 })
+
+/**
+ * Version 0.29.0
+ */
+export const R0_29_0 = release({
+  owner: "trame",
+  version: "0.29.0",
+  date: "2026-11-26",
+  what: "the languages the engine reads for every project (HTML, CSS), read through the port LanguageReading, which the engine realizes",
+  fingerprint: "2229329d5c9f983b",
+  language: "shared",
+  serves: [ChosenCommands, CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
+})

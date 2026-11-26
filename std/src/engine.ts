@@ -7,7 +7,7 @@
 // commands: what it reaches of the engine is what the ports say. They grow as the engine's commands move out of it.
 
 import { code } from "#trame/kernel"
-import type { CompiledProject, ProjectLayout } from "#trame/kernel"
+import type { CompiledProject, LanguageReader, ProjectLayout } from "#trame/kernel"
 import { port } from "#trame/kinds/port"
 import { implementation } from "#trame/kinds/implementation"
 import { catalog } from "#trame/kinds/catalog"
@@ -79,10 +79,29 @@ export const ProjectCompiledHere = implementation({
 })
 
 /**
+ * Reading a language
+ * The reader of the languages bodies are written in (tree-sitter): it loads a language's grammar, reads an example of
+ * it, and says which predicates of its queries tree-sitter keeps aside. A language node names it as its reader.
+ */
+export const LanguageReading = port<LanguageReader>({ owner: "trame", declaredEffects: ["read", "asynchronous"] })
+
+/**
+ * Read by the engine
+ * A language is read by the engine that compiles the project, with its reader, through the API the language defines
+ * (since g128): in a build, in a library's scenarios, wherever the engine runs. Without an engine, it says so.
+ */
+export const ReadByTheEngine = implementation({
+  owner: "trame", implements: [LanguageReading],
+  deps: { say: EngineWords },
+  body: code.file("./code/engine/read-by-the-engine.ts"),
+})
+
+/**
  * The engine is a provider
- * What a command needs of the engine (the project compiled at a date, with what a view receives; later the evidence,
- * the assembly, the publication, the engine's identity) is a port of the library, realized by an adapter that reads
- * the API the language defines; a command of a library or a project reaches the engine only through them.
+ * What a command needs of the engine (the project compiled at a date, with what a view receives; a language read; later
+ * the evidence, the assembly, the publication, the engine's identity) is a port of the library, realized by an adapter
+ * that reads the API the language defines; a command, or a language, of a library or a project reaches the engine only
+ * through them.
  */
 export const EngineAsAProvider = adr({
   owner: "trame",
@@ -93,5 +112,5 @@ export const EngineAsAProvider = adr({
     "The engine's modules, given as they are": "what a command reads would change with each generation, unseen by the types",
   },
   serves: [RealizedOnce],
-  appliedBy: [TheProject, ProjectOfTheScenario, ProjectInTheEngine, ProjectCompiledHere],
+  appliedBy: [TheProject, ProjectOfTheScenario, ProjectInTheEngine, ProjectCompiledHere, LanguageReading, ReadByTheEngine],
 })

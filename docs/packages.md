@@ -10,7 +10,7 @@
 
 ### npm's lockfile
 
-`NpmLockfile` · `src/packages.ts:155`
+`NpmLockfile` · `src/packages.ts:157`
 
 What npm writes after it installed a project's packages: each package installed, the project's own under the empty key, with the dependencies it names. The manifest compares them with what it wrote (since g100).
 
@@ -31,7 +31,7 @@ Source: npm documentation: package-lock.json (lockfileVersion 3: packages, the r
 
 ### Audit of the packages
 
-`PackageAudit` · `src/packages.ts:86`
+`PackageAudit` · `src/packages.ts:88`
 
 trame audit asks the registry, for each package of the graph, its known vulnerabilities and its latest version, and writes the answers as dated evidence, which the packages read: a package is violated by a vulnerability of the severities counted; it is behind by the releases that break what uses it (majors, or minors under 1.0.0), up to the version it is held below. The value names the file of the evidence and the severities counted; the fields of a package the commands read (PackageField) and the reports (PackageReport) are words of the prelude, which the kind declares.
 
@@ -50,12 +50,12 @@ trame audit asks the registry, for each package of the graph, its known vulnerab
 
 ### Order of versions
 
-`VersionOrder` · `src/packages.ts:104` · status: **held**
+`VersionOrder` · `src/packages.ts:106` · status: **held**
 
 Two versions compared part by part, as numbers, from the major (a part one of them lacks counts as zero): a version is below another if it comes before it. The releases between two versions that break what uses the package are its majors, or its minors while its major is that of initial development. trame audit counts with it; the kind of a package checks with it that a package stays below the version it is held below.
 
 - Owner: trame
-- Parameters: `semver` ← [Semantic versioning](../std/releases/0.28.0/docs/measures.md#SemanticVersioning) · `counts` ← [Counts](../std/releases/0.28.0/docs/algebra.md#Counts)
+- Parameters: `semver` ← [Semantic versioning](../std/releases/0.29.0/docs/measures.md#SemanticVersioning) · `counts` ← [Counts](../std/releases/0.29.0/docs/algebra.md#Counts)
 - Body: inline, in the declaration
 - Serves: [A single source of truth](product.md#SingleSource)
 - Used by: [Audit the packages](commands.md#Audit), [Upgrade](commands.md#Upgrade), [Graph](engine.md#GraphApi), [The documents write in the decided language](scenarios.md#DocumentWords)
@@ -67,7 +67,7 @@ Two versions compared part by part, as numbers, from the major (a part one of th
 
 ### The library of continuous integration
 
-`ContinuousIntegration` · `src/packages.ts:146`
+`ContinuousIntegration` · `src/packages.ts:148`
 
 The writers of the files that run a shipment elsewhere (GitHub Actions) and of the settings of a repository, at the version Trame pins: the workflow that checks each pull request, and the settings of the repository, are written from Trame's graph (D1).
 
@@ -88,7 +88,9 @@ The writers of the files that run a shipment elsewhere (GitHub Actions) and of t
 
 ### Grammar of CSS
 
-`CssGrammar` · `src/packages.ts:60` · status: **held**
+`CssGrammar` · `src/packages.ts:62` · status: **held**
+
+The grammar the engine reads std's CssStyleSheets with (since g129: the language is std's, its grammar the engine's).
 
 - Name: `tree-sitter-css` https://www.npmjs.com/package/tree-sitter-css
 - Version: `0.25.0`
@@ -98,7 +100,28 @@ The writers of the files that run a shipment elsewhere (GitHub Actions) and of t
 - What it may do: none known
 
 - Owner: trame
-- Used by: [CSS style sheets](html.md#CssStyleSheets)
+- Used by: [tree-sitter in WebAssembly](platform.md#WebTreeSitter)
+
+<a id="DocumentRenderers"></a>
+
+### The renderers of documents
+
+`DocumentRenderers` · `src/packages.ts:202`
+
+The language the documents are written in, as a port Trame realizes with its Language, and what writes in it (dates, lists, punctuation, units), at the version Trame uses, by its path in the repository; the renderers follow.
+
+- Name: `documents`
+- Version: `0.1.0`
+- Installed: Not installed in the project: its lockfile lists no documents
+- Vulnerabilities: No report yet: trame audit asks the registry
+- Latest version: No report yet: trame audit asks the registry
+- What it may do: not said: an implementation that imports it cannot promise anything
+- How it joins the graph: `library`
+- Where it comes from: `path`
+- Its path: `libs/documents/releases/0.1.0`
+
+- Owner: trame
+- Serves: [A single source of truth](product.md#SingleSource)
 
 <a id="EsbuildPackage"></a>
 
@@ -122,7 +145,7 @@ Bundles the page's program into one module.
 
 ### The commands every project runs
 
-`GenericCommands` · `src/packages.ts:190`
+`GenericCommands` · `src/packages.ts:192`
 
 The commands written once on std's ports of the engine (plan, so far), which Trame runs in place of the engine's own, at the version it uses, by its path in the repository.
 
@@ -143,7 +166,7 @@ The commands written once on std's ports of the engine (plan, so far), which Tra
 
 ### Grammar of HCL
 
-`HclGrammar` · `src/packages.ts:66` · status: **held**
+`HclGrammar` · `src/packages.ts:68` · status: **held**
 
 The grammar Terraform's modules are read with.
 
@@ -161,7 +184,9 @@ The grammar Terraform's modules are read with.
 
 ### Grammar of HTML
 
-`HtmlGrammar` · `src/packages.ts:55` · status: **held**
+`HtmlGrammar` · `src/packages.ts:56` · status: **held**
+
+The grammar the engine reads std's HtmlMarkup with (since g129: the language is std's, its grammar the engine's).
 
 - Name: `tree-sitter-html` https://www.npmjs.com/package/tree-sitter-html
 - Version: `0.23.2`
@@ -171,13 +196,13 @@ The grammar Terraform's modules are read with.
 - What it may do: none known
 
 - Owner: trame
-- Used by: [HTML markup](html.md#HtmlMarkup)
+- Used by: [tree-sitter in WebAssembly](platform.md#WebTreeSitter)
 
 <a id="Machine"></a>
 
 ### The questions of the machine
 
-`Machine` · `src/packages.ts:180`
+`Machine` · `src/packages.ts:182`
 
 What Trame asks of the machine it runs on besides the engine's own questions (the system, Node's version, Git), at the version it uses, by its path in the repository.
 
@@ -198,7 +223,7 @@ What Trame asks of the machine it runs on besides the engine's own questions (th
 
 ### Types of Node.js
 
-`NodeTypes` · `src/packages.ts:72` · status: **held**
+`NodeTypes` · `src/packages.ts:74` · status: **held**
 
 The declarations of Node's modules, which the compiler reads for the implementations that import them.
 
@@ -217,7 +242,7 @@ The declarations of Node's modules, which the compiler reads for the implementat
 
 ### The people of the repository
 
-`People` · `src/packages.ts:170`
+`People` · `src/packages.ts:172`
 
 Who works on Trame's repository, declared once as actors (C4): every owner of this project names one of them.
 
@@ -238,19 +263,19 @@ Who works on Trame's repository, declared once as actors (C4): every owner of th
 
 ### The standard library
 
-`StandardLibrary` · `src/packages.ts:136`
+`StandardLibrary` · `src/packages.ts:138`
 
 The structures, standards, patterns and ports Trame's graph and its engine build on, at the version Trame pins: std ships its versions apart, and Trame moves to a new one once it is released (E1). Reached by its path in this repository, at the version it froze.
 
 - Name: `std`
-- Version: `0.28.0`
+- Version: `0.29.0`
 - Installed: Not installed in the project: its lockfile lists no std
 - Vulnerabilities: No report yet: trame audit asks the registry
 - Latest version: No report yet: trame audit asks the registry
 - What it may do: not said: an implementation that imports it cannot promise anything
 - How it joins the graph: `library`
 - Where it comes from: `path`
-- Its path: `std/releases/0.28.0`
+- Its path: `std/releases/0.29.0`
 
 - Owner: trame
 - Serves: [A single source of truth](product.md#SingleSource)

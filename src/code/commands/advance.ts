@@ -18,7 +18,7 @@ import type { PackageSource } from "#std/tooling"
 import type { Advancement, AdvanceReport, EnginePin, LanguageSharing, Releases } from "../../generations"
 import type { Columns, TerminalText } from "../../text"
 import type { Counts, Sequences, Texts, ValueTypes } from "#std/algebra"
-import type { LanguageDescription } from "../../../kinds/language"
+import type { LanguageDescription } from "../../../trame/kernel"
 import type { Api as PreparationApi } from "./preparation"
 import type { Api as RecordsApi, GraphRecords, ReleaseRecord } from "./releases"
 import type { Api as ProjectApi } from "../engine/project"
@@ -247,7 +247,10 @@ const body = (deps: Deps): Handler => async (req) => {
   const self2 = await build(candidate, root)
   if (self2 === undefined) return stop()
   save(root, saves.second, self2)
-  const secondAsFirst = !(await trees.differences(tmp, join(saves.candidate, basename(root)), join(saves.second, basename(root))))
+  // What the second assembly writes differently is kept with the other differences, to be read (since g129).
+  const secondDiffers = await trees.differences(tmp, join(saves.candidate, basename(root)), join(saves.second, basename(root)))
+  if (secondDiffers) shown.push(secondDiffers)
+  const secondAsFirst = !secondDiffers
   write(secondAsFirst ? messages.done(messages.identicalToCandidate()) : messages.failed(messages.secondDiffers()))
 
   write(messages.secondReassembles())

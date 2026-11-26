@@ -286,14 +286,21 @@ Function · `Commands` · **held**
 
 ### The engine is a provider
 
-Architecture decision · `EngineAsAProvider`
+Architecture decision · `EngineAsAProvider` · **held**
 
 - Decided by: trame
 - Context: The engine's commands reached its modules directly; a command of a library or a project could not, and a command moved out of the engine would have lost what it computed with.
 - Consequences: Every command reaches the engine the same way, through ports versioned with the library; the API they read is the language's, given by the engine, and it grows with a generation when a command needs more. A library's scenario compiles a project of its own through the engine that plays it.
 - Rejected: A library of contracts, a third place for types the language already defines (what a view receives) and the ports std already holds; The engine's modules, given as they are, what a command reads would change with each generation, unseen by the types
 - Serves: Ports of the platform, realized once
-- Applied by: The project at hand, The project of a scenario, The project the engine prepared, A project compiled by the engine that plays the scenario
+- Applied by: The project at hand, The project of a scenario, The project the engine prepared, A project compiled by the engine that plays the scenario, Reading a language, Read by the engine
+
+### Reading a language
+
+Port · `LanguageReading`
+
+- Owner: trame
+- Declared effects: read, asynchronous
 
 ### The project of a scenario
 
@@ -332,6 +339,15 @@ Implementation · `ProjectInTheEngine`
 - Owner: trame
 - Parameters: { say: engine.EngineWords }
 - Implements: The project at hand
+- Depends on: What the engine's adapters say
+
+### Read by the engine
+
+Implementation · `ReadByTheEngine` · **held**
+
+- Owner: trame
+- Parameters: { say: engine.EngineWords }
+- Implements: Reading a language
 - Depends on: What the engine's adapters say
 
 ## Standard library · HTML and CSS
@@ -423,6 +439,85 @@ Function · `EveryWarning` · **held**
 - Serves: Ports of the platform, realized once
 - Implements: Hardening
 - Depends on: Raising
+
+## Standard library · Languages
+
+### tree-sitter queries
+
+Standard · `TreeSitterQueries`
+
+- Maintained by: trame
+- Source: tree-sitter, Query Syntax: Predicates and Directives; the predicates evaluated by web-tree-sitter 0.27 (Query.matches, Query.captures)
+- Address: https://tree-sitter.github.io/tree-sitter/using-parsers/queries/3-predicates-and-directives.html
+- Named in code blocks: scheme
+- Constants: { eq: { value: #eq?, meaning: The capture's text equals a string, or another capture's text }, notEq: { value: #not-eq?, meaning: The capture's text differs from a string, or from another capture's text }, anyEq: { value: #any-eq?, meaning: One of the quantified capture's nodes equals the string }, anyNotEq: { value: #any-not-eq?, meaning: One of the quantified capture's nodes differs from the string }, match: { value: #match?, meaning: The capture's text matches a regular expression }, notMatch: { value: #not-match?, meaning: The capture's text does not match a regular expression }, anyMatch: { value: #any-match?, meaning: One of the quantified capture's nodes matches the regular expression }, anyNotMatch: { value: #any-not-match?, meaning: One of the quantified capture's nodes does not match the regular expression }, anyOf: { value: #any-of?, meaning: The capture's text is one of the strings that follow }, notAnyOf: { value: #not-any-of?, meaning: The capture's text is none of the strings that follow }, is: { value: #is?, meaning: Asserts a property of the match (kept aside for the reader) }, isNot: { value: #is-not?, meaning: Refutes a property of the match (kept aside for the reader) }, set: { value: #set!, meaning: Sets a property on the match: a directive, not a filter } }
+
+### CSS style sheets
+
+Language · `CssStyleSheets` · **held**
+
+- Owner: trame
+- Named in bodies: css
+- Grammar: { module: tree-sitter-css/tree-sitter-css.wasm, package: tree-sitter-css, version: 0.25.0 }
+- Extensions: .css
+- Queries: { values: { value: 
+(integer_value) @literal.number
+(float_value) @literal.number
+(color_value) @literal.text
+(string_value) @literal.text
+((plain_value) @literal.text (#match? @literal.text "[0-9]") (#not-match? @literal.text "^--")), meaning: The values written in a style sheet: a number with its unit, a colour, a text; a plain value that holds a digit, which is the rest of a number the grammar cut (12.5px/1.4 reads 12.5, then px/1.4), a variable aside }, parts: { value: 
+(color_value) @literal.part
+((plain_value) @literal.part (#match? @literal.part "[0-9]") (#not-match? @literal.part "^--"))
+(string_value (string_content) @literal.part)
+(string_value (escape_sequence) @literal.escape), meaning: What a text is made of: a colour, a plain value as written, the content of a quoted text and its escape sequences }, names: { value: 
+(attribute_selector (string_value) @name), meaning: What is written like a value but names something: the value an attribute selector matches }, declarations: { value: 
+((call_expression (function_name) @_function (arguments . (plain_value) @parameter)) (#eq? @_function "var"))
+((declaration (property_name) @output) (#match? @output "^--")), meaning: What a sheet receives and gives: each variable it uses (var(--x)), each variable it declares (--x: …) }, globals: { value: 
+((call_expression (function_name) @global) (#eq? @global "url"))
+(import_statement "@import" @global), meaning: What reaches outside the sheet: a resource loaded by its address, another sheet imported }, roles: { value: 
+(declaration (_) @role.property)
+(call_expression (function_name) @callee (arguments (_) @role.argument))
+(call_expression (arguments (binary_expression (_) @role.arithmetic)))
+(feature_query (_) @role.condition), meaning: The places that give a literal its role (the engine's roles of a literal): the value of a property, an argument of a function, an operand of a calculation, a condition of a media query } }
+- Escape sequences: { mark: \, single: {  }, numeric: { prefix: , radix: 16, most: 6, trailing: 
+,  , 	, 
+, ,  } }
+- Examples: { code: .a { margin: 0 -2px; color: #fff; }, literals: 0, -2px, #fff, values: 0, -2px, #fff, roles: property value, property value, property value }, { code: .b[aria-pressed="true"] { top: calc(env(x, 0px) + 20px); }, literals: 0px, 20px, roles: argument of env, arithmetic }, { code: .c { font: 12.5px/1.4 var(--font, "A \"B\" \2014 C"); width: var(--w); }, literals: 12.5, px/1.4, "A \"B\" \2014 C", values: 12.5, px/1.4, A "B" —C }, { code: @import url(theme.css);
+@media (max-width: 920px) { .d { flex: none; } }
+, literals: 920px, roles: condition, globals: @import, url }, { code: .e { --gap: var(--space-md); margin: var(--gap) var(--edge, var(--gap)); }, literals: , parameters: --space-md, --gap, --edge, --gap, outputs: --gap }
+- Defined by: CSS
+- Queries written in: tree-sitter queries
+- Read by: Reading a language
+
+### HTML markup
+
+Language · `HtmlMarkup` · **held**
+
+- Owner: trame
+- Named in bodies: html
+- Grammar: { module: tree-sitter-html/tree-sitter-html.wasm, package: tree-sitter-html, version: 0.23.2 }
+- Extensions: .html
+- Queries: { values: { value: 
+(quoted_attribute_value) @literal.text
+(attribute (attribute_value) @literal.text)
+(text) @literal.text
+(entity) @literal.text, meaning: The values written in markup: the value of an attribute, quoted or not; a text; a character reference on its own, between two texts }, parts: { value: 
+(attribute_value) @literal.part
+(text) @literal.part
+(entity) @literal.escape, meaning: What a value is made of: an attribute's value as written (its character references included: the grammar does not catch them apart there), a text, a character reference }, names: { value: 
+((attribute (attribute_name) @_name) @name (#any-of? @_name "class" "id" "for" "aria-labelledby" "aria-describedby" "aria-controls")), meaning: What is written like a value but names something: a class, an identifier, an attribute that refers to an identifier }, roles: { value: 
+(attribute (quoted_attribute_value) @role.attribute)
+(attribute (attribute_value) @role.attribute)
+(element (text) @role.content)
+(element (entity) @role.content), meaning: The places that give a literal its role (the engine's roles of a literal): the value of an attribute, the content of an element } }
+- Escape sequences: { mark: &, single: { amp;: &, lt;: <, gt;: >, quot;: ", apos;: ', nbsp;:   }, numeric: { prefix: #x, radix: 16, close: ; }, { prefix: #X, radix: 16, close: ; }, { prefix: #, radix: 10, close: ; }, keepUnknown: true }
+- Examples: { code: <a id="Goal" href="#Goal">Goal</a>, literals: "#Goal", Goal, values: #Goal, Goal, roles: attribute value, content of an element }, { code: <p title="a &amp; b &eacute;">T &lt; U &#x2192; V</p>, literals: "a &amp; b &eacute;", T, &lt;, U, &#x2192;, V, values: a & b &eacute;, T, <, U, →, V }, { code: <button class="chip" aria-pressed="true" hidden>x</button>, literals: "true", x, roles: attribute value, content of an element }, { code: <!DOCTYPE html>
+<style>.a { margin: 0 }</style>
+<script>const x = 1</script>
+, literals:  }
+- Defined by: HTML
+- Queries written in: tree-sitter queries
+- Read by: Reading a language
 
 ## Standard library · Measures
 
@@ -680,10 +775,10 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 127
+- Version: 129
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../generations/g127
+- Its path: ../generations/g129
 - Serves: Ports of the platform, realized once
 
 ### The people of the repository
@@ -711,7 +806,7 @@ Design pattern · `AbstractFactory`
 
 ### Adapter
 
-Design pattern · `Adapter`
+Design pattern · `Adapter` · **held**
 
 - Maintained by: trame
 - Source: A. Cockburn, Hexagonal architecture (ports and adapters), 2005; Gamma et al., Design Patterns (1994), Adapter
@@ -1291,6 +1386,18 @@ Release · `R0_28_0`
 - Language: shared
 - Serves: Commands chosen, not written again, A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again, Versions that hold
 
+### Version 0.29.0
+
+Release · `R0_29_0`
+
+- Released by: trame
+- Version: 0.29.0
+- Released on: 2026-11-26
+- What changes: the languages the engine reads for every project (HTML, CSS), read through the port LanguageReading, which the engine realizes
+- Fingerprint: 2229329d5c9f983b
+- Language: shared
+- Serves: Commands chosen, not written again, A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again, Versions that hold
+
 ### Version 0.3.0
 
 Release · `R0_3_0`
@@ -1726,6 +1833,17 @@ Technical choice · `LanguageJudgment` · **held**
 - Follows: Strategy
 - Serves: Ports of the platform, realized once
 
+### Read by the engine that builds
+
+Technical choice · `ReadInTheEngine` · **held**
+
+- Decided by: trame
+- Context: Reading a language is the engine's: the grammar and its reader are the engine's packages, which no library carries.
+- Chooses: Read by the engine
+- In: Test
+- Follows: Adapter
+- Serves: Ports of the platform, realized once
+
 ### The scenarios' settings
 
 Technical choice · `ScenarioSettings` · **held**
@@ -1810,6 +1928,16 @@ Scenario · `JudgedStrictly` · **held**
 - Verifies: Every warning an error
 - In: Strict
 - Depends on: Hardening, What the library's scenarios check
+
+### The languages read by the engine
+
+Scenario · `LanguagesRead` · **held**
+
+- Owner: trame
+- Parameters: { reader: engine.LanguageReading, html: languages.HtmlMarkup, css: languages.CssStyleSheets, counts: algebra.Counts, checks: scenarios.ScenarioChecks }
+- Verifies: Read by the engine
+- In: Test
+- Depends on: Reading a language, HTML markup, CSS style sheets, Counts, What the library's scenarios check
 
 ### A pull request merged once it holds
 

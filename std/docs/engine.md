@@ -16,9 +16,9 @@
 
 ### The engine is a provider
 
-`EngineAsAProvider` · `src/engine.ts:87`
+`EngineAsAProvider` · `src/engine.ts:106` · status: **held**
 
-What a command needs of the engine (the project compiled at a date, with what a view receives; later the evidence, the assembly, the publication, the engine's identity) is a port of the library, realized by an adapter that reads the API the language defines; a command of a library or a project reaches the engine only through them.
+What a command needs of the engine (the project compiled at a date, with what a view receives; a language read; later the evidence, the assembly, the publication, the engine's identity) is a port of the library, realized by an adapter that reads the API the language defines; a command, or a language, of a library or a project reaches the engine only through them.
 
 Context: The engine's commands reached its modules directly; a command of a library or a project could not, and a command moved out of the engine would have lost what it computed with.
 
@@ -31,9 +31,29 @@ Consequences: Every command reaches the engine the same way, through ports versi
 
 - Decided by: trame
 - Serves: [Ports of the platform, realized once](product.md#RealizedOnce)
-- Applied by: [The project at hand](#TheProject), [The project of a scenario](#ProjectOfTheScenario), [The project the engine prepared](#ProjectInTheEngine), [A project compiled by the engine that plays the scenario](#ProjectCompiledHere)
+- Applied by: [The project at hand](#TheProject), [The project of a scenario](#ProjectOfTheScenario), [The project the engine prepared](#ProjectInTheEngine), [A project compiled by the engine that plays the scenario](#ProjectCompiledHere), [Reading a language](#LanguageReading), [Read by the engine](#ReadByTheEngine)
 
 ## Ports
+
+<a id="LanguageReading"></a>
+
+### Reading a language
+
+`LanguageReading` · `src/engine.ts:86`
+
+The reader of the languages bodies are written in (tree-sitter): it loads a language's grammar, reads an example of it, and says which predicates of its queries tree-sitter keeps aside. A language node names it as its reader.
+
+| Environment | Answered by | Chosen by |
+|---|---|---|
+| [Strict](scenarios.md#Strict) | none | — |
+| [Test](scenarios.md#Test) | [Read by the engine](#ReadByTheEngine) | [Read by the engine that builds](scenarios.md#ReadInTheEngine) |
+
+- Owner: trame
+- Effects: asynchronous, read
+- Applies: [The engine is a provider](#EngineAsAProvider)
+- Implemented by: [Read by the engine](#ReadByTheEngine)
+- Reads: [CSS style sheets](languages.md#CssStyleSheets), [HTML markup](languages.md#HtmlMarkup)
+- Used by: [The languages read by the engine](scenarios.md#LanguagesRead)
 
 <a id="ProjectOfTheScenario"></a>
 
@@ -91,7 +111,7 @@ The project a command runs for, compiled at the day its command line says: what 
 
 - Owner: trame
 - Written in: [The language the library's commands and tools speak in.](tooling.md#CommandLanguage)
-- Used by: [A project compiled by the engine that plays the scenario](#ProjectCompiledHere), [The project the engine prepared](#ProjectInTheEngine)
+- Used by: [A project compiled by the engine that plays the scenario](#ProjectCompiledHere), [The project the engine prepared](#ProjectInTheEngine), [Read by the engine](#ReadByTheEngine)
 
 ## Implementations
 
@@ -122,3 +142,19 @@ On a machine, a command runs in the engine (std's CommandsInTheEngine): the proj
 - Body: `./code/engine/project-in-the-engine.ts` (typescript)
 - Implements: [The project at hand](#TheProject)
 - Applies: [The engine is a provider](#EngineAsAProvider)
+
+<a id="ReadByTheEngine"></a>
+
+### Read by the engine
+
+`ReadByTheEngine` · `src/engine.ts:93` · status: **held**
+
+A language is read by the engine that compiles the project, with its reader, through the API the language defines (since g128): in a build, in a library's scenarios, wherever the engine runs. Without an engine, it says so.
+
+- Owner: trame
+- Parameters: `say` ← [What the engine's adapters say](#EngineWords)
+- Body: `./code/engine/read-by-the-engine.ts` (typescript)
+- Implements: [Reading a language](#LanguageReading)
+- Applies: [The engine is a provider](#EngineAsAProvider)
+- Verified by: [The languages read by the engine](scenarios.md#LanguagesRead)
+- Chosen by: [Read by the engine that builds](scenarios.md#ReadInTheEngine)

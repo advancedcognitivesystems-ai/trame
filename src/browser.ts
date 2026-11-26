@@ -18,7 +18,7 @@ import { ThePage, PageRegions, RenderingModes, MachineHighlighting, PackedGraph 
 import { Common, SentenceSlots } from "./rendering"
 import { Language, PageWords, RenderingMessages } from "./messages"
 import { DocumentIds } from "./conventions"
-import { Punctuation } from "./documents"
+import { Punctuation } from "#documents/language"
 import { DevService } from "./engine"
 import { UiEvents, CssomView, MediaQueries5, Http, MediaTypes } from "#std/web"
 import { Iso8601 } from "#std/measures"

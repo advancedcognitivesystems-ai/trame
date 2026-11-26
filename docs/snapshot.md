@@ -430,9 +430,9 @@ Architecture decision · `ThePageIsAssembled` · **held**
 Function · `ExplorerFigures` · **held**
 
 - Owner: trame
-- Parameters: { html: std/html.Html, svg: std/html.Svg, aria: std/html.Aria, css: std/html.Css, page: page.ThePage, markup: markup.DocumentMarkup, figures: markup.FigureMarkup, explorer: markup.ExplorerMarkup, drawing: appearance.ExplorerDrawing, element: html.HtmlElement, start: html.HtmlStartTag, empty: html.SelfClosingTag, path: html.PathData, declaration: html.CssDeclaration, escape: html.EscapedText, common: rendering.Common, words: messages.PageWords, messages: messages.RenderingMessages, punctuation: documents.Punctuation, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts }
+- Parameters: { html: std/html.Html, svg: std/html.Svg, aria: std/html.Aria, css: std/html.Css, page: page.ThePage, markup: markup.DocumentMarkup, figures: markup.FigureMarkup, explorer: markup.ExplorerMarkup, drawing: appearance.ExplorerDrawing, element: html.HtmlElement, start: html.HtmlStartTag, empty: html.SelfClosingTag, path: html.PathData, declaration: html.CssDeclaration, escape: html.EscapedText, common: rendering.Common, words: messages.PageWords, messages: messages.RenderingMessages, punctuation: documents/language.Punctuation, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts }
 - Serves: A specification that runs
-- Depends on: The page, Documents in the page, Figures in the page, The explorer of a graph, Drawing of the explorer, HTML element, Start tag, Self-closing tag, Path data, Declaration, Escaped text, Common rendering, Words of the page, Messages of the renderers, Punctuation of documents
+- Depends on: The page, Documents in the page, Figures in the page, The explorer of a graph, Drawing of the explorer, HTML element, Start tag, Self-closing tag, Path data, Declaration, Escaped text, Common rendering, Words of the page, Messages of the renderers
 
 ### Show the graph
 
@@ -440,10 +440,10 @@ Entry point · `ShowGraph` · **held**
 
 - Owner: trame
 - Trigger: { type: load }
-- Parameters: { window: architecture.PageWindow, memory: architecture.PageMemory, feed: architecture.GraphFeed, unpacking: architecture.Decompression, amendments: architecture.PageAmendments, explorer: browser.ExplorerFigures, common: rendering.Common, page: page.ThePage, regions: page.PageRegions, modes: page.RenderingModes, highlighting: page.MachineHighlighting, markup: markup.DocumentMarkup, around: markup.AroundMarkup, explorerMarkup: markup.ExplorerMarkup, drawing: appearance.ExplorerDrawing, ids: conventions.DocumentIds, slots: rendering.SentenceSlots, punctuation: documents.Punctuation, language: messages.Language, html: std/html.Html, aria: std/html.Aria, events: std/web.UiEvents, view: std/web.CssomView, iso: std/measures.Iso8601, file: std/text.TextFile, element: html.HtmlElement, escape: html.EscapedText, attribute: html.AttributeSelector, presence: html.AttributePresence, selectors: html.SelectorList, classSelector: html.ClassSelector, words: messages.PageWords, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts }
+- Parameters: { window: architecture.PageWindow, memory: architecture.PageMemory, feed: architecture.GraphFeed, unpacking: architecture.Decompression, amendments: architecture.PageAmendments, explorer: browser.ExplorerFigures, common: rendering.Common, page: page.ThePage, regions: page.PageRegions, modes: page.RenderingModes, highlighting: page.MachineHighlighting, markup: markup.DocumentMarkup, around: markup.AroundMarkup, explorerMarkup: markup.ExplorerMarkup, drawing: appearance.ExplorerDrawing, ids: conventions.DocumentIds, slots: rendering.SentenceSlots, punctuation: documents/language.Punctuation, language: messages.Language, html: std/html.Html, aria: std/html.Aria, events: std/web.UiEvents, view: std/web.CssomView, iso: std/measures.Iso8601, file: std/text.TextFile, element: html.HtmlElement, escape: html.EscapedText, attribute: html.AttributeSelector, presence: html.AttributePresence, selectors: html.SelectorList, classSelector: html.ClassSelector, words: messages.PageWords, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts }
 - Serves: A specification that runs
 - Part of: The page in a browser
-- Depends on: Window of the page, Memory of the page, Feed of the graph, Decompression, Amendments from the page, Explorer of a graph, Common rendering, The page, Regions of the page, The renderings of a document, Files for tools in the page, Documents in the page, Around the documents, The explorer of a graph, Drawing of the explorer, Names of the documents, Places in a sentence, Punctuation of documents, Language, HTML element, Escaped text, Attribute selector, Attribute presence, Selector list, Class selector, Words of the page
+- Depends on: Window of the page, Memory of the page, Feed of the graph, Decompression, Amendments from the page, Explorer of a graph, Common rendering, The page, Regions of the page, The renderings of a document, Files for tools in the page, Documents in the page, Around the documents, The explorer of a graph, Drawing of the explorer, Names of the documents, Places in a sentence, Language, HTML element, Escaped text, Attribute selector, Attribute presence, Selector list, Class selector, Words of the page
 
 ### Amendments sent to trame dev
 
@@ -702,10 +702,10 @@ Scenario · `DoctorAsks` · **held**
 Scenario · `EngineApiGiven` · **held**
 
 - Owner: trame
-- Parameters: { preparation: commands.Preparation, line: conventions.TrameCommands, layout: conventions.Layout, messages: messages.ScenarioMessages }
+- Parameters: { preparation: commands.Preparation, line: conventions.TrameCommands, layout: conventions.Layout, typescript: typescript.TypeScript, messages: messages.ScenarioMessages }
 - Verifies: Preparation
 - In: Test
-- Depends on: Preparation, Trame's commands, Project layout, Messages of the scenarios
+- Depends on: Preparation, Trame's commands, Project layout, TypeScript, Messages of the scenarios
 
 ### Evidence given for someone
 
@@ -972,9 +972,9 @@ Function · `Amending` · **held**
 Function · `Assembler` · **held**
 
 - Owner: trame
-- Parameters: { preparation: commands.Preparation, assembly: engine.Assembly, layout: text.TerminalText, punctuation: documents.Punctuation, texts: std/algebra.Texts, counts: std/algebra.Counts, messages: messages.CommandMessages }
+- Parameters: { preparation: commands.Preparation, assembly: engine.Assembly, layout: text.TerminalText, punctuation: documents/language.Punctuation, texts: std/algebra.Texts, counts: std/algebra.Counts, messages: messages.CommandMessages }
 - Serves: A specification that runs
-- Depends on: Preparation, Assembly, Terminal text, Punctuation of documents, Messages of the commands
+- Depends on: Preparation, Assembly, Terminal text, Messages of the commands
 
 ### Two builds compared
 
@@ -999,9 +999,9 @@ Function · `ExampleRewriting` · **held**
 Function · `Preparation` · **held**
 
 - Owner: trame
-- Parameters: { line: conventions.TrameCommands, compiler: engine.Compiler, compilationApi: engine.CompilationApi, laws: engine.Laws, views: engine.Views, lock: engine.Lock, common: rendering.Common, terminal: architecture.Terminal, currentProcess: architecture.Process, clock: architecture.Clock, severityOrder: (rule), devPort: product.DevPort, exitStatus: std/system.ExitStatus, layout: text.TerminalText, columns: text.TerminalColumns, cell: text.PaddedCell, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, messages: messages.CommandMessages, projectLayout: conventions.Layout, uri: std/web.Uri, references: engine.References, projectCommands: commands.ProjectCommands, kept: conventions.KeptCommands, machine: engine.MachineOutputs, paths: architecture.Paths, reading: architecture.FileReading, specifiers: std/system.NodeModuleSpecifiers }
+- Parameters: { line: conventions.TrameCommands, compiler: engine.Compiler, compilationApi: engine.CompilationApi, laws: engine.Laws, views: engine.Views, lock: engine.Lock, common: rendering.Common, terminal: architecture.Terminal, currentProcess: architecture.Process, clock: architecture.Clock, severityOrder: (rule), devPort: product.DevPort, exitStatus: std/system.ExitStatus, layout: text.TerminalText, columns: text.TerminalColumns, cell: text.PaddedCell, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, messages: messages.CommandMessages, projectLayout: conventions.Layout, uri: std/web.Uri, references: engine.References, projectCommands: commands.ProjectCommands, kept: conventions.KeptCommands, machine: engine.MachineOutputs, paths: architecture.Paths, reading: architecture.FileReading, specifiers: std/system.NodeModuleSpecifiers, reader: syntax.SyntaxReader }
 - Serves: A specification that runs
-- Depends on: Trame's commands, Compiler, Compilation API, Laws, Views, Lock, Common rendering, Terminal, Process, Clock, Sort problems by severity, Port of trame dev, Terminal text, Columns in the terminal, Padded cell, Messages of the commands, Project layout, References, The project's commands, The commands the engine keeps, Machine outputs, Paths, File reading
+- Depends on: Trame's commands, Compiler, Compilation API, Laws, Views, Lock, Common rendering, Terminal, Process, Clock, Sort problems by severity, Port of trame dev, Terminal text, Columns in the terminal, Padded cell, Messages of the commands, Project layout, References, The project's commands, The commands the engine keeps, Machine outputs, Paths, File reading, Syntax reader
 
 ### The project's commands
 
@@ -1449,7 +1449,6 @@ Syntax element · `DeliveredStyle` · **held**
 - Parameters: { standard: std/html.Css, rule: html.CssRule, property: html.CustomProperty, file: std/text.TextFile, counts: std/algebra.Counts }
 - Examples: { input: { space-sm: 8px, leading: 1.5 }, body { margin: var(--space-sm); }, output: :root { --space-sm: 8px; --leading: 1.5; }
 body { margin: var(--space-sm); } }, { input: , body { margin: 0; }, output: body { margin: 0; } }
-- Read in: CSS style sheets
 - Depends on: Rule, Custom property
 
 ### How a bundle is led
@@ -1602,13 +1601,6 @@ Decision · `MermaidFigures`
 - Decided by: trame
 - Value: { idPrefix: n, directions: { layers: down, tree: down, path: right }, strokes: { computed: dottedOpen, inferred: dotted, winner: thick, support: thick, other: solid }, defaultStatus: neutral, history: { dashes: 4 3 }, inactive: { opacity: 0.5 }, gantt: { dateFormat: YYYY-MM-DD, axisFormat: %d.%m, milestones: deadline, review } }
 
-### How a number is written
-
-Decision · `NumberDisplay`
-
-- Decided by: trame
-- Value: { base: 10, decimals: 2 }
-
 ### Heading levels of Markdown documents
 
 Decision · `TextRendering`
@@ -1625,25 +1617,15 @@ Architecture decision · `PunctuationOfTheLanguage` · **held**
 - Consequences: The Language decision holds the marks of the language with its tag; Punctuation gives those of the language decided to the renderers, the page and, through the engine, to the kinds and the views. Another language is another value of Language, with its catalogs. A sentence keeps its own punctuation: it is in a catalog, written in its language.
 - Rejected: A decision of marks keyed by language tag, two places to change for one language, and a tag written twice; The marks in every catalog, the renderers, the page and the views share them: each catalog would repeat them
 - Serves: A single source of truth
-- Applied by: Punctuation of documents, Language
+- Applied by: The documents in Trame's language, Language
 
-### Punctuation of documents
+### The documents in Trame's language
 
-Function · `Punctuation` · **held**
+Function · `OurDocumentLanguage` · **held**
 
 - Owner: trame
 - Parameters: { language: messages.Language }
-- Serves: A single source of truth
 - Depends on: Language
-
-### Values with their units
-
-Function · `Units` · **held**
-
-- Owner: trame
-- Parameters: { display: documents.NumberDisplay, counts: std/algebra.Counts, values: std/algebra.ValueTypes }
-- Serves: A single source of truth
-- Depends on: How a number is written
 
 ### Visible text
 
@@ -1651,6 +1633,16 @@ Function · `VisibleText` · **held**
 
 - Owner: trame
 - Parameters: { escape: std/ecmascript.UnicodeEscape, invisible: std/text.InvisibleCharacters, ecma: std/ecmascript.EcmaScript, texts: std/algebra.Texts }
+- Serves: A single source of truth
+
+### Documents written in Trame's language
+
+Technical choice · `DocumentsInOurLanguage` · **held**
+
+- Decided by: trame
+- Context: The views speak the engine's language: what renders their documents, on a machine, in the scenarios or in the page, writes its dates, lists and marks.
+- Chooses: The documents in Trame's language
+- In: Local, A session of Claude Code, Test, Browser
 - Serves: A single source of truth
 
 ## Trame · Engine
@@ -1728,9 +1720,9 @@ Function · `Assembly` · **held**
 Function · `CompilationApi` · **held**
 
 - Owner: trame
-- Parameters: { values: std/algebra.ValueTypes, rank: conventions.DefaultRank, positions: engine.Positions, references: engine.References, prelude: architecture.Prelude, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, punctuation: documents.Punctuation, ids: conventions.DocumentIds, layout: conventions.Layout, uri: std/web.Uri, messages: messages.ViewMessages, pipeline: engine.ShipmentPipeline, units: documents.Units }
+- Parameters: { values: std/algebra.ValueTypes, rank: conventions.DefaultRank, positions: engine.Positions, references: engine.References, prelude: architecture.Prelude, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, punctuation: documents/language.Punctuation, ids: conventions.DocumentIds, layout: conventions.Layout, uri: std/web.Uri, messages: messages.ViewMessages, pipeline: engine.ShipmentPipeline, units: documents/language.Units }
 - Serves: A specification that runs
-- Depends on: Default rank, Positions, References, Prelude, Punctuation of documents, Names of the documents, Project layout, Messages of the views, A shipment's pipeline, Values with their units
+- Depends on: Default rank, Positions, References, Prelude, Names of the documents, Project layout, Messages of the views, A shipment's pipeline
 
 ### Compiler
 
@@ -1763,18 +1755,18 @@ Function · `DateBundle` · **held**
 Function · `DevServer` · **held**
 
 - Owner: trame
-- Parameters: { service: engine.DevService, uri: std/web.Uri, line: conventions.TrameCommands, nodeEvents: std/system.NodeEvents, layout: conventions.Layout, http: std/web.Http, mediaTypes: std/web.MediaTypes, events: std/web.ServerSentEvents, terminal: architecture.Terminal, codeLines: text.CodeLines, file: std/text.TextFile, clock: architecture.Clock, timer: architecture.Timer, debounce: product.DevDebounce, httpServer: architecture.HttpServer, reading: architecture.FileReading, paths: architecture.Paths, project: engine.Project, bundle: engine.DateBundle, differences: engine.Differences, page: page.Page, pageRendering: rendering.PageRendering, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, dates: messages.Dates, language: messages.Language, messages: messages.DevMessages }
+- Parameters: { service: engine.DevService, uri: std/web.Uri, line: conventions.TrameCommands, nodeEvents: std/system.NodeEvents, layout: conventions.Layout, http: std/web.Http, mediaTypes: std/web.MediaTypes, events: std/web.ServerSentEvents, terminal: architecture.Terminal, codeLines: text.CodeLines, file: std/text.TextFile, clock: architecture.Clock, timer: architecture.Timer, debounce: product.DevDebounce, httpServer: architecture.HttpServer, reading: architecture.FileReading, paths: architecture.Paths, project: engine.Project, bundle: engine.DateBundle, differences: engine.Differences, page: page.Page, pageRendering: rendering.PageRendering, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, dates: documents/language.Dates, language: messages.Language, messages: messages.DevMessages }
 - Serves: A specification that runs
-- Depends on: What trame dev serves, Trame's commands, Project layout, Terminal, Code lines, Clock, Timer, Debouncing of saves, HTTP server, File reading, Paths, Project, Date bundle, Differences, Page, Rendering in the page, Dates, Language, Messages of trame dev
+- Depends on: What trame dev serves, Trame's commands, Project layout, Terminal, Code lines, Clock, Timer, Debouncing of saves, HTTP server, File reading, Paths, Project, Date bundle, Differences, Page, Rendering in the page, Language, Messages of trame dev
 
 ### Differences
 
 Function · `Differences` · **held**
 
 - Owner: trame
-- Parameters: { punctuation: documents.Punctuation, messages: messages.OutputMessages }
+- Parameters: { punctuation: documents/language.Punctuation, messages: messages.OutputMessages }
 - Serves: A specification that runs
-- Depends on: Punctuation of documents, Messages of the outputs
+- Depends on: Messages of the outputs
 
 ### The fingerprint of an engine
 
@@ -1807,9 +1799,9 @@ Function · `Generator` · **held**
 Function · `GraphApi` · **held**
 
 - Owner: trame
-- Parameters: { prelude: architecture.Prelude, syntax: conventions.ReferenceSyntax, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, messages: messages.CompilerMessages, values: std/algebra.ValueTypes, lists: messages.Lists, dates: messages.Dates, punctuation: documents.Punctuation, positions: engine.Positions, references: engine.References, iso: std/measures.Iso8601, file: std/text.TextFile, settings: documents.LanguageSettings, generator: engine.Generator, structureDraws: product.StructureDraws, layout: conventions.Layout, typescript: typescript.TypeScript, versions: packages.VersionOrder, units: documents.Units, visible: documents.VisibleText, fingerprints: engine.Fingerprints }
+- Parameters: { prelude: architecture.Prelude, syntax: conventions.ReferenceSyntax, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, messages: messages.CompilerMessages, values: std/algebra.ValueTypes, lists: documents/language.Lists, dates: documents/language.Dates, punctuation: documents/language.Punctuation, positions: engine.Positions, references: engine.References, iso: std/measures.Iso8601, file: std/text.TextFile, settings: documents.LanguageSettings, generator: engine.Generator, structureDraws: product.StructureDraws, layout: conventions.Layout, typescript: typescript.TypeScript, versions: packages.VersionOrder, units: documents/language.Units, visible: documents.VisibleText, fingerprints: engine.Fingerprints }
 - Serves: A specification that runs
-- Depends on: Prelude, Trame references, Messages of the compiler, Lists, Dates, Punctuation of documents, Positions, References, Settings of the documents, Pseudo-random generator, Values drawn by the laws of a structure, Project layout, TypeScript, Order of versions, Values with their units, Visible text, Fingerprints
+- Depends on: Prelude, Trame references, Messages of the compiler, Positions, References, Settings of the documents, Pseudo-random generator, Values drawn by the laws of a structure, Project layout, TypeScript, Order of versions, Visible text, Fingerprints
 
 ### Judged harder
 
@@ -1999,7 +1991,6 @@ Syntax element · `AttributePresence` · **held**
 - Parameters: { standard: std/html.Css }
 - Examples: { input: data-ref, output: [data-ref] }
 - Read as: { before: , after:  {} }
-- Read in: CSS style sheets
 
 ### Attribute selector
 
@@ -2012,7 +2003,6 @@ Syntax element · `AttributeSelector` · **held**
 - Parameters: { standard: std/html.Css }
 - Examples: { input: data-theme, dark, output: [data-theme="dark"] }
 - Read as: { before: , after:  {} }
-- Read in: CSS style sheets
 
 ### Class selector
 
@@ -2025,7 +2015,6 @@ Syntax element · `ClassSelector` · **held**
 - Parameters: { standard: std/html.Css }
 - Examples: { input: st-held, output: .st-held }
 - Read as: { before: , after:  {} }
-- Read in: CSS style sheets
 
 ### Declaration
 
@@ -2038,7 +2027,6 @@ Syntax element · `CssDeclaration` · **held**
 - Parameters: { standard: std/html.Css }
 - Examples: { input: color-scheme, dark, output: color-scheme: dark; }
 - Read as: { before: a { , after:  } }
-- Read in: CSS style sheets
 
 ### Rule
 
@@ -2050,7 +2038,6 @@ Syntax element · `CssRule` · **held**
 - Marks: {  }
 - Parameters: { standard: std/html.Css }
 - Examples: { input: body, margin: 0;, output: body { margin: 0; } }
-- Read in: CSS style sheets
 
 ### Variable
 
@@ -2063,7 +2050,6 @@ Syntax element · `CssVariable` · **held**
 - Parameters: { standard: std/html.Css }
 - Examples: { input: accent, output: var(--accent) }
 - Read as: { before: a { color: , after: ; } }
-- Read in: CSS style sheets
 
 ### Custom property
 
@@ -2076,7 +2062,6 @@ Syntax element · `CustomProperty` · **held**
 - Parameters: { standard: std/html.Css, declaration: html.CssDeclaration }
 - Examples: { input: bg, #f3f5f6, output: --bg: #f3f5f6; }
 - Read as: { before: :root { , after:  } }
-- Read in: CSS style sheets
 - Depends on: Declaration
 
 ### DOCTYPE
@@ -2089,7 +2074,6 @@ Syntax element · `Doctype` · **held**
 - Marks: { doctype: { value: <!doctype html>, meaning: The DOCTYPE, in lower case, which HTML allows } }
 - Parameters: { standard: std/html.Html }
 - Examples: { input: , output: <!doctype html> }
-- Read in: HTML markup
 
 ### Escaped text
 
@@ -2102,7 +2086,6 @@ Syntax element · `EscapedText` · **held**
 - Parameters: { standard: std/html.Html }
 - Examples: { input: a < b & "c" > d, output: a &lt; b &amp; &quot;c&quot; &gt; d }, { input: &lt;, output: &amp;lt; }
 - Read as: { before: <p title=", after: "></p> }
-- Read in: HTML markup
 
 ### Attributes
 
@@ -2115,7 +2098,6 @@ Syntax element · `HtmlAttributes` · **held**
 - Parameters: { standard: std/html.Html, texts: std/algebra.Texts }
 - Examples: { input: { id: Goal }, output:  id="Goal" }, { input: { class: banner, hidden: true }, output:  class="banner" hidden }
 - Read as: { before: <a, after: > }
-- Read in: HTML markup
 
 ### Element over several lines
 
@@ -2127,7 +2109,6 @@ Syntax element · `HtmlBlock` · **held**
 - Marks: { indent: { value:   , meaning: Two spaces per level of nesting } }
 - Parameters: { standard: std/html.Html, startTag: html.HtmlStartTag, endTag: html.HtmlEndTag }
 - Examples: { input: main, {  }, <article class="doc" id="doc"></article>, output: <main>,   <article class="doc" id="doc"></article>, </main> }
-- Read in: HTML markup
 - Depends on: Start tag, End tag
 
 ### HTML element
@@ -2140,7 +2121,6 @@ Syntax element · `HtmlElement` · **held**
 - Marks: {  }
 - Parameters: { standard: std/html.Html, startTag: html.HtmlStartTag, endTag: html.HtmlEndTag }
 - Examples: { input: summary, {  }, The code, output: <summary>The code</summary> }
-- Read in: HTML markup
 - Depends on: Start tag, End tag
 
 ### End tag
@@ -2154,7 +2134,6 @@ Syntax element · `HtmlEndTag` · **held**
 - Parameters: { standard: std/html.Html }
 - Examples: { input: details, output: </details> }
 - Read as: { before: <details>, after:  }
-- Read in: HTML markup
 
 ### Heading of a rank
 
@@ -2166,7 +2145,6 @@ Syntax element · `HtmlHeading` · **held**
 - Marks: { prefix: { value: h, meaning: Before the rank of a heading: the name of its element } }
 - Parameters: { standard: std/html.Html, element: html.HtmlElement }
 - Examples: { input: 2, {  }, Cards, output: <h2>Cards</h2> }
-- Read in: HTML markup
 - Depends on: HTML element
 
 ### Start tag
@@ -2179,7 +2157,6 @@ Syntax element · `HtmlStartTag` · **held**
 - Marks: {  }
 - Parameters: { standard: std/html.Html, attributes: html.HtmlAttributes }
 - Examples: { input: a, { id: Goal }, output: <a id="Goal"> }
-- Read in: HTML markup
 - Depends on: Attributes
 
 ### JSON in a script
@@ -2206,7 +2183,6 @@ Syntax element · `MediaFeature` · **held**
 - Parameters: { standard: std/html.Css }
 - Examples: { input: prefers-color-scheme, dark, output: (prefers-color-scheme: dark) }
 - Read as: { before: @media , after:  {} }
-- Read in: CSS style sheets
 
 ### Media rule
 
@@ -2218,7 +2194,6 @@ Syntax element · `MediaRule` · **held**
 - Marks: { keyword: { value: @media, meaning: Opens a media rule } }
 - Parameters: { standard: std/html.Css }
 - Examples: { input: (prefers-color-scheme: dark), body { margin: 0; }, output: @media (prefers-color-scheme: dark) { body { margin: 0; } } }
-- Read in: CSS style sheets
 
 ### Negation
 
@@ -2231,7 +2206,6 @@ Syntax element · `NegationSelector` · **held**
 - Parameters: { standard: std/html.Css }
 - Examples: { input: [data-theme="light"], output: :not([data-theme="light"]) }
 - Read as: { before: , after:  {} }
-- Read in: CSS style sheets
 
 ### Path data
 
@@ -2254,7 +2228,6 @@ Syntax element · `ScriptElement` · **held**
 - Marks: { tag: { value: script, meaning: The element of code run by the page }, endTagOpen: { value: </script, meaning: What would end the element in its text }, escaped: { value: <\/script, meaning: The same text for the code, which no longer ends the element }, everyCase: { value: gi, meaning: Every occurrence, whatever its case }, commentOpen: { value: <!--, meaning: What would let a later start tag of a script swallow the end of the element }, commentEscaped: { value: <\!--, meaning: The same text for the code: a backslash before a character that needs none } }
 - Parameters: { standard: std/html.Html, element: html.HtmlElement }
 - Examples: { input: const s = "</SCRIPT>", output: <script>const s = "<\/script>"</script> }, { input: const s = "<!--", output: <script>const s = "<\!--"</script> }
-- Read in: HTML markup
 - Depends on: HTML element
 
 ### Selector list
@@ -2268,7 +2241,6 @@ Syntax element · `SelectorList` · **held**
 - Parameters: { standard: std/html.Css }
 - Examples: { input: [data-ref], [data-doc], output: [data-ref], [data-doc] }
 - Read as: { before: , after:  {} }
-- Read in: CSS style sheets
 
 ### Self-closing tag
 
@@ -2280,75 +2252,7 @@ Syntax element · `SelfClosingTag` · **held**
 - Marks: { slash: { value: /, meaning: Before the greater-than sign: the element has no content and no end tag } }
 - Parameters: { standard: std/html.Html, attributes: html.HtmlAttributes }
 - Examples: { input: path, { d: M7 5v16 }, output: <path d="M7 5v16"/> }
-- Read in: HTML markup
 - Depends on: Attributes
-
-### CSS style sheets
-
-Language · `CssStyleSheets` · **held**
-
-- Owner: trame
-- Named in bodies: css
-- Grammar: { module: tree-sitter-css/tree-sitter-css.wasm }
-- Extensions: .css
-- Queries: { values: { value: 
-(integer_value) @literal.number
-(float_value) @literal.number
-(color_value) @literal.text
-(string_value) @literal.text
-((plain_value) @literal.text (#match? @literal.text "[0-9]") (#not-match? @literal.text "^--")), meaning: The values written in a style sheet: a number with its unit, a colour, a text; a plain value that holds a digit, which is the rest of a number the grammar cut (12.5px/1.4 reads 12.5, then px/1.4), a variable aside }, parts: { value: 
-(color_value) @literal.part
-((plain_value) @literal.part (#match? @literal.part "[0-9]") (#not-match? @literal.part "^--"))
-(string_value (string_content) @literal.part)
-(string_value (escape_sequence) @literal.escape), meaning: What a text is made of: a colour, a plain value as written, the content of a quoted text and its escape sequences }, names: { value: 
-(attribute_selector (string_value) @name), meaning: What is written like a value but names something: the value an attribute selector matches }, declarations: { value: 
-((call_expression (function_name) @_function (arguments . (plain_value) @parameter)) (#eq? @_function "var"))
-((declaration (property_name) @output) (#match? @output "^--")), meaning: What a sheet receives and gives: each variable it uses (var(--x)), each variable it declares (--x: …) }, globals: { value: 
-((call_expression (function_name) @global) (#eq? @global "url"))
-(import_statement "@import" @global), meaning: What reaches outside the sheet: a resource loaded by its address, another sheet imported }, roles: { value: 
-(declaration (_) @role.property)
-(call_expression (function_name) @callee (arguments (_) @role.argument))
-(call_expression (arguments (binary_expression (_) @role.arithmetic)))
-(feature_query (_) @role.condition), meaning: The places that give a literal its role (syntax.LiteralRoles): the value of a property, an argument of a function, an operand of a calculation, a condition of a media query } }
-- Escape sequences: { mark: \, single: {  }, numeric: { prefix: , radix: 16, most: 6, trailing: 
-,  , 	, 
-, ,  } }
-- Examples: { code: .a { margin: 0 -2px; color: #fff; }, literals: 0, -2px, #fff, values: 0, -2px, #fff, roles: property value, property value, property value }, { code: .b[aria-pressed="true"] { top: calc(env(x, 0px) + 20px); }, literals: 0px, 20px, roles: argument of env, arithmetic }, { code: .c { font: 12.5px/1.4 var(--font, "A \"B\" \2014 C"); width: var(--w); }, literals: 12.5, px/1.4, "A \"B\" \2014 C", values: 12.5, px/1.4, A "B" —C }, { code: @import url(theme.css);
-@media (max-width: 920px) { .d { flex: none; } }
-, literals: 920px, roles: condition, globals: @import, url }, { code: .e { --gap: var(--space-md); margin: var(--gap) var(--edge, var(--gap)); }, literals: , parameters: --space-md, --gap, --edge, --gap, outputs: --gap }
-- Queries written in: tree-sitter queries
-- Read by: Syntax reader
-- Uses: Grammar of CSS
-
-### HTML markup
-
-Language · `HtmlMarkup` · **held**
-
-- Owner: trame
-- Named in bodies: html
-- Grammar: { module: tree-sitter-html/tree-sitter-html.wasm }
-- Extensions: .html
-- Queries: { values: { value: 
-(quoted_attribute_value) @literal.text
-(attribute (attribute_value) @literal.text)
-(text) @literal.text
-(entity) @literal.text, meaning: The values written in markup: the value of an attribute, quoted or not; a text; a character reference on its own, between two texts }, parts: { value: 
-(attribute_value) @literal.part
-(text) @literal.part
-(entity) @literal.escape, meaning: What a value is made of: an attribute's value as written (its character references included: the grammar does not catch them apart there), a text, a character reference }, names: { value: 
-((attribute (attribute_name) @_name) @name (#any-of? @_name "class" "id" "for" "aria-labelledby" "aria-describedby" "aria-controls")), meaning: What is written like a value but names something: a class, an identifier, an attribute that refers to an identifier }, roles: { value: 
-(attribute (quoted_attribute_value) @role.attribute)
-(attribute (attribute_value) @role.attribute)
-(element (text) @role.content)
-(element (entity) @role.content), meaning: The places that give a literal its role (syntax.LiteralRoles): the value of an attribute, the content of an element } }
-- Escape sequences: { mark: &, single: { amp;: &, lt;: <, gt;: >, quot;: ", apos;: ', nbsp;:   }, numeric: { prefix: #x, radix: 16, close: ; }, { prefix: #X, radix: 16, close: ; }, { prefix: #, radix: 10, close: ; }, keepUnknown: true }
-- Examples: { code: <a id="Goal" href="#Goal">Goal</a>, literals: "#Goal", Goal, values: #Goal, Goal, roles: attribute value, content of an element }, { code: <p title="a &amp; b &eacute;">T &lt; U &#x2192; V</p>, literals: "a &amp; b &eacute;", T, &lt;, U, &#x2192;, V, values: a & b &eacute;, T, <, U, →, V }, { code: <button class="chip" aria-pressed="true" hidden>x</button>, literals: "true", x, roles: attribute value, content of an element }, { code: <!DOCTYPE html>
-<style>.a { margin: 0 }</style>
-<script>const x = 1</script>
-, literals:  }
-- Queries written in: tree-sitter queries
-- Read by: Syntax reader
-- Uses: Grammar of HTML
 
 ## Trame · Languages
 
@@ -2368,9 +2272,9 @@ Architecture decision · `ReadBackWhatIsWritten` · **held**
 Function · `Drivers` · **held**
 
 - Owner: trame
-- Parameters: { reader: syntax.SyntaxReader, checks: syntax.BodyChecks, graph: typescript.TypeScript, sheets: html.CssStyleSheets, typeScriptWriter: typescript.TypeScriptWriter, terraform: terraform.Terraform, modules: terraform.TerraformModules, terraformWriter: terraform.TerraformWriter, loader: architecture.ModuleLoader, reading: architecture.FileReading, paths: architecture.Paths, values: std/algebra.ValueTypes, gnu: std/text.GnuPositions, messages: messages.DriverMessages }
+- Parameters: { reader: syntax.SyntaxReader, checks: syntax.BodyChecks, graph: typescript.TypeScript, sheets: std/languages.CssStyleSheets, typeScriptWriter: typescript.TypeScriptWriter, terraform: terraform.Terraform, modules: terraform.TerraformModules, terraformWriter: terraform.TerraformWriter, loader: architecture.ModuleLoader, reading: architecture.FileReading, paths: architecture.Paths, values: std/algebra.ValueTypes, gnu: std/text.GnuPositions, messages: messages.DriverMessages }
 - Serves: A specification that runs
-- Depends on: Syntax reader, Checks of a body, TypeScript, CSS style sheets, TypeScript writer, Terraform, Terraform modules, Terraform writer, Module loader, File reading, Paths, Messages of the drivers
+- Depends on: Syntax reader, Checks of a body, TypeScript, TypeScript writer, Terraform, Terraform modules, Terraform writer, Module loader, File reading, Paths, Messages of the drivers
 
 ## Trame · Laws
 
@@ -2595,7 +2499,6 @@ Syntax element · `Anchor` · **held**
 - Marks: { tag: { value: a, meaning: The link element, here without content }, attribute: { value: id, meaning: The identifier that the fragment of an address targets } }
 - Parameters: { standard: std/html.Html, element: html.HtmlElement, texts: std/algebra.Texts }
 - Examples: { input: Goal, output: <a id="Goal"></a> }
-- Read in: HTML markup
 - Depends on: HTML element
 
 ### Backtick string
@@ -2693,7 +2596,6 @@ Syntax element · `Details` · **held**
 - Marks: { tag: { value: details, meaning: The collapsible block }, summary: { value: summary, meaning: Its summary, always visible } }
 - Parameters: { standard: std/html.Html, startTag: html.HtmlStartTag, endTag: html.HtmlEndTag, element: html.HtmlElement, blankLine: markdown.BlankLine }
 - Examples: { input: The code, x, output: <details><summary>The code</summary>, , x, , </details> }
-- Read in: HTML markup
 - Depends on: Start tag, End tag, HTML element, Blank line
 
 ### Emphasis
@@ -2770,7 +2672,6 @@ Syntax element · `Small` · **held**
 - Marks: { tag: { value: small, meaning: A side note, in small print } }
 - Parameters: { standard: std/html.Html, element: html.HtmlElement }
 - Examples: { input: Decision, output: <small>Decision</small> }
-- Read in: HTML markup
 - Depends on: HTML element
 
 ### Strong emphasis
@@ -3069,25 +2970,7 @@ Architecture decision · `CountsInTheLanguage` · **held**
 - Consequences: A catalog that counts receives the decided language and counts by its plural rules (CLDR, through the platform's Intl), with the forms it writes for each category (one, other, and few or many where a language has them); a catalog of the language written in a file says the language it is written in; lists are joined by Lists, in the decided language; the prelude takes a language wherever it writes words, and has none of its own. The page speaks the decided language until a payload says another.
 - Rejected: The English rule in the prelude, a catalog in French or in Polish would count wrongly; A plural made by adding an s, irregular nouns, and every other language
 - Serves: A single source of truth
-- Applied by: Messages of the compiler, Messages of the views, Messages of trame dev, Messages of the commands, Messages of the scenarios, Messages of an advance, Words of the page, Lists
-
-### Dates
-
-Function · `Dates` · **held**
-
-- Owner: trame
-- Parameters: { language: messages.Language }
-- Serves: A single source of truth
-- Depends on: Language
-
-### Lists
-
-Function · `Lists` · **held**
-
-- Owner: trame
-- Parameters: { language: messages.Language }
-- Serves: A single source of truth
-- Depends on: Language
+- Applied by: Messages of the compiler, Messages of the views, Messages of trame dev, Messages of the commands, Messages of the scenarios, Messages of an advance, Words of the page
 
 ### Messages of an advance
 
@@ -3112,18 +2995,18 @@ Message catalog · `CommandMessages`
 Message catalog · `CompilerMessages`
 
 - Owner: trame
-- Parameters: { language: messages.Language, lists: messages.Lists }
+- Parameters: { language: messages.Language, lists: documents/language.Lists }
 - Written in: Language
-- Depends on: Language, Lists
+- Depends on: Language
 
 ### Messages of trame dev
 
 Message catalog · `DevMessages`
 
 - Owner: trame
-- Parameters: { language: messages.Language, lists: messages.Lists }
+- Parameters: { language: messages.Language, lists: documents/language.Lists }
 - Written in: Language
-- Depends on: Language, Lists
+- Depends on: Language
 
 ### Messages of the drivers
 
@@ -3258,6 +3141,18 @@ Package · `CssGrammar` · **held**
 - In the registry: https://www.npmjs.com/package/tree-sitter-css
 - What it may do: 
 
+### The renderers of documents
+
+Package · `DocumentRenderers`
+
+- Owner: trame
+- Name: documents
+- Version: 0.1.0
+- How it joins the graph: library
+- Where it comes from: path
+- Its path: libs/documents/releases/0.1.0
+- Serves: A single source of truth
+
 ### esbuild
 
 Package · `EsbuildPackage` · **held**
@@ -3342,10 +3237,10 @@ Package · `StandardLibrary`
 
 - Owner: trame
 - Name: std
-- Version: 0.28.0
+- Version: 0.29.0
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: std/releases/0.28.0
+- Its path: std/releases/0.29.0
 - Serves: A single source of truth
 
 ### tsx
@@ -3409,7 +3304,6 @@ Syntax element · `Banner` · **held**
 - Parameters: { standard: page.ThePage, regions: page.PageRegions, html: std/html.Html, element: html.HtmlElement, texts: std/algebra.Texts }
 - Examples: { input: , output: <div class="banner" id="banner" hidden></div> }
 - Defined by: The page
-- Read in: HTML markup
 - Depends on: The page, Regions of the page, HTML element
 
 ### Brand
@@ -3422,7 +3316,6 @@ Syntax element · `Brand` · **held**
 - Parameters: { standard: page.ThePage, html: std/html.Html, commands: conventions.TrameCommands, logo: page.Logo, block: html.HtmlBlock, element: html.HtmlElement }
 - Examples: { input: graph, output: <div class="brand">,   <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true">,     <rect x="0" y="0" width="26" height="26" rx="6" fill="var(--accent-soft)"/>,     <g stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round" fill="none"><path d="M7 5v16M13 5v16M19 5v16"/></g>,     <g stroke="var(--ink)" stroke-width="2.2" stroke-linecap="round" fill="none"><path d="M5 9h3M10 9h6M18 9h3M5 17h3M10 17h6M18 17h3"/></g>,   </svg>,   <div class="brand-name">trame <span>graph</span></div>, </div> }
 - Defined by: The page
-- Read in: HTML markup
 - Depends on: The page, Trame's commands, Logo, Element over several lines, HTML element
 
 ### State of the compilation
@@ -3435,7 +3328,6 @@ Syntax element · `CompilationState` · **held**
 - Parameters: { standard: page.ThePage, regions: page.PageRegions, html: std/html.Html, element: html.HtmlElement, texts: std/algebra.Texts }
 - Examples: { input: , output: <div class="status" id="status"></div> }
 - Defined by: The page
-- Read in: HTML markup
 - Depends on: The page, Regions of the page, HTML element
 
 ### Dates
@@ -3448,7 +3340,6 @@ Syntax element · `DatePicker` · **held**
 - Parameters: { standard: page.ThePage, regions: page.PageRegions, html: std/html.Html, aria: std/html.Aria, block: html.HtmlBlock, element: html.HtmlElement, texts: std/algebra.Texts }
 - Examples: { input: Graph in force on, output: <div>,   <p class="label" id="dates-label">Graph in force on</p>,   <div class="dates" id="dates" role="group" aria-labelledby="dates-label"></div>,   <div class="date-note" id="date-note"></div>, </div> }
 - Defined by: The page
-- Read in: HTML markup
 - Depends on: The page, Regions of the page, Element over several lines, HTML element
 
 ### Head of the document
@@ -3461,7 +3352,6 @@ Syntax element · `DocumentHead` · **held**
 - Parameters: { standard: page.ThePage, regions: page.PageRegions, html: std/html.Html, block: html.HtmlBlock, element: html.HtmlElement, toggle: page.RenderingToggle, texts: std/algebra.Texts }
 - Examples: { input: Rendering, Rendered, Markdown, Text, output: <header class="doc-head">,   <div class="path" id="doc-path"></div>,   <div class="toggle" id="toggle" role="group" aria-label="Rendering">,     <button type="button" id="view-rendered" aria-pressed="true">Rendered</button>,     <button type="button" id="view-markdown" aria-pressed="false">Markdown</button>,     <button type="button" id="view-text" aria-pressed="false">Text</button>,   </div>, </header> }
 - Defined by: The page
-- Read in: HTML markup
 - Depends on: The page, Regions of the page, Element over several lines, HTML element, Choice of rendering
 
 ### Document picker
@@ -3474,7 +3364,6 @@ Syntax element · `DocumentPicker` · **held**
 - Parameters: { standard: page.ThePage, regions: page.PageRegions, html: std/html.Html, block: html.HtmlBlock, element: html.HtmlElement, texts: std/algebra.Texts }
 - Examples: { input: Document, output: <div class="mobile-pick">,   <label class="label" for="doc-select">Document</label>,   <select id="doc-select"></select>, </div> }
 - Defined by: The page
-- Read in: HTML markup
 - Depends on: The page, Regions of the page, Element over several lines, HTML element
 
 ### Arrowheads of the figures
@@ -3487,7 +3376,6 @@ Syntax element · `FigureMarkers` · **held**
 - Parameters: { standard: page.ThePage, svg: std/html.Svg, aria: std/html.Aria, html: std/html.Html, figures: markup.FigureMarkup, drawing: appearance.GraphDrawing, counts: std/algebra.Counts, texts: std/algebra.Texts, block: html.HtmlBlock, element: html.HtmlElement, empty: html.SelfClosingTag, path: html.PathData }
 - Examples: { input: , output: <svg class="figure-defs" width="0" height="0" aria-hidden="true">,   <defs><marker id="arrow-base" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"/></marker><marker id="arrow-to-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow-accent" d="M0,0 L10,5 L0,10 z"/></marker><marker id="arrow-to-bad" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow-bad" d="M0,0 L10,5 L0,10 z"/></marker><marker id="arrow-to-warn" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow-warn" d="M0,0 L10,5 L0,10 z"/></marker></defs>, </svg> }
 - Defined by: The page
-- Read in: HTML markup
 - Depends on: The page, Figures in the page, Drawing of a graph, Element over several lines, HTML element, Self-closing tag, Path data
 
 ### Fonts
@@ -3500,7 +3388,6 @@ Syntax element · `FontLinks` · **held**
 - Marks: { link: { value: link, meaning: A link from the page to a resource }, rel: { value: rel, meaning: What the resource is to the page }, href: { value: href, meaning: Its address }, preconnect: { value: preconnect, meaning: An origin to connect to before it is asked }, stylesheet: { value: stylesheet, meaning: A style sheet of the page }, crossorigin: { value: crossorigin, meaning: Fetched without credentials } }
 - Parameters: { standard: std/html.Html, startTag: html.HtmlStartTag, texts: std/algebra.Texts }
 - Examples: { input: https://fonts.example, https://files.example, https://fonts.example/css, output: <link rel="preconnect" href="https://fonts.example"><link rel="preconnect" href="https://files.example" crossorigin><link rel="stylesheet" href="https://fonts.example/css"> }
-- Read in: HTML markup
 - Depends on: Start tag
 
 ### Logo
@@ -3513,7 +3400,6 @@ Syntax element · `Logo` · **held**
 - Parameters: { standard: page.ThePage, svg: std/html.Svg, aria: std/html.Aria, palette: appearance.Palette, counts: std/algebra.Counts, block: html.HtmlBlock, element: html.HtmlElement, empty: html.SelfClosingTag, variable: html.CssVariable }
 - Examples: { input: , output: <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true">,   <rect x="0" y="0" width="26" height="26" rx="6" fill="var(--accent-soft)"/>,   <g stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round" fill="none"><path d="M7 5v16M13 5v16M19 5v16"/></g>,   <g stroke="var(--ink)" stroke-width="2.2" stroke-linecap="round" fill="none"><path d="M5 9h3M10 9h6M18 9h3M5 17h3M10 17h6M18 17h3"/></g>, </svg> }
 - Defined by: The page
-- Read in: HTML markup
 - Depends on: The page, Palette, Element over several lines, HTML element, Self-closing tag, Variable
 
 ### Main area
@@ -3526,7 +3412,6 @@ Syntax element · `MainArea` · **held**
 - Parameters: { standard: page.ThePage, regions: page.PageRegions, html: std/html.Html, block: html.HtmlBlock, element: html.HtmlElement, banner: page.Banner, head: page.DocumentHead, texts: std/algebra.Texts }
 - Examples: { input: { subtitle: graph, dates: Dates, navigation: Views, document: Document, rendering: Rendering, renderings: Rendered, Markdown, Text }, output: <main>,   <div class="banner" id="banner" hidden></div>,   <header class="doc-head">,     <div class="path" id="doc-path"></div>,     <div class="toggle" id="toggle" role="group" aria-label="Rendering">,       <button type="button" id="view-rendered" aria-pressed="true">Rendered</button>,       <button type="button" id="view-markdown" aria-pressed="false">Markdown</button>,       <button type="button" id="view-text" aria-pressed="false">Text</button>,     </div>,   </header>,   <article class="doc" id="doc"></article>, </main> }
 - Defined by: The page
-- Read in: HTML markup
 - Depends on: The page, Regions of the page, Element over several lines, HTML element, Banner, Head of the document
 
 ### Rules of a narrow screen
@@ -3539,7 +3424,6 @@ Syntax element · `NarrowScreenRule` · **held**
 - Parameters: { standard: page.ThePage, media: html.MediaRule, feature: html.MediaFeature }
 - Examples: { input: 920px, .nav { display: none; }, output: @media (max-width: 920px) { .nav { display: none; } } }
 - Defined by: The page
-- Read in: CSS style sheets
 - Depends on: The page, Media rule, Media feature
 
 ### Navigation
@@ -3552,7 +3436,6 @@ Syntax element · `Navigation` · **held**
 - Parameters: { standard: page.ThePage, regions: page.PageRegions, html: std/html.Html, aria: std/html.Aria, element: html.HtmlElement, texts: std/algebra.Texts }
 - Examples: { input: Documents and views, output: <nav class="nav" id="nav" aria-label="Documents and views"></nav> }
 - Defined by: The page
-- Read in: HTML markup
 - Depends on: The page, Regions of the page, HTML element
 
 ### Document of the page
@@ -3588,7 +3471,6 @@ Syntax element · `PageDocument` · **held**
 <script>start()</script>
  }
 - Defined by: The page
-- Read in: HTML markup
 - Depends on: The page, DOCTYPE, Start tag, End tag, HTML element
 
 ### Scripts of the page
@@ -3601,7 +3483,6 @@ Syntax element · `PageScripts` · **held**
 - Parameters: { standard: page.ThePage, html: std/html.Html, script: html.ScriptElement, json: html.JsonInScript, member: typescript.MemberAccess, assignment: typescript.Assignment, texts: std/algebra.Texts }
 - Examples: { input: start(), H4sIAAAA, true, output: <script>window.TRAME_DEV = true</script><script>window.TRAME_BUNDLE_GZIP = "H4sIAAAA"</script><script type="module">start()</script> }, { input: start(), none, none, output: <script type="module">start()</script> }
 - Defined by: The page
-- Read in: HTML markup
 - Depends on: The page, Script, JSON in a script, Property access, Assignment
 
 ### Choice of rendering
@@ -3614,7 +3495,6 @@ Syntax element · `RenderingToggle` · **held**
 - Parameters: { standard: page.ThePage, modes: page.RenderingModes, regions: page.PageRegions, html: std/html.Html, aria: std/html.Aria, block: html.HtmlBlock, element: html.HtmlElement, sequences: std/algebra.Sequences }
 - Examples: { input: Rendering, Rendered, Markdown, Text, output: <div class="toggle" id="toggle" role="group" aria-label="Rendering">,   <button type="button" id="view-rendered" aria-pressed="true">Rendered</button>,   <button type="button" id="view-markdown" aria-pressed="false">Markdown</button>,   <button type="button" id="view-text" aria-pressed="false">Text</button>, </div> }
 - Defined by: The page
-- Read in: HTML markup
 - Depends on: The page, The renderings of a document, Regions of the page, Element over several lines, HTML element
 
 ### Shell
@@ -3627,7 +3507,6 @@ Syntax element · `Shell` · **held**
 - Parameters: { standard: page.ThePage, html: std/html.Html, block: html.HtmlBlock, side: page.SideBar, main: page.MainArea, markers: page.FigureMarkers }
 - Examples: { input: { subtitle: graph, dates: Dates, navigation: Views, document: Document, rendering: Rendering, renderings: Rendered, Markdown, Text }, output: <div class="app">,   <aside class="side">,     <div class="brand">,       <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true">,         <rect x="0" y="0" width="26" height="26" rx="6" fill="var(--accent-soft)"/>,         <g stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round" fill="none"><path d="M7 5v16M13 5v16M19 5v16"/></g>,         <g stroke="var(--ink)" stroke-width="2.2" stroke-linecap="round" fill="none"><path d="M5 9h3M10 9h6M18 9h3M5 17h3M10 17h6M18 17h3"/></g>,       </svg>,       <div class="brand-name">trame <span>graph</span></div>,     </div>,     <div class="status" id="status"></div>,     <div>,       <p class="label" id="dates-label">Dates</p>,       <div class="dates" id="dates" role="group" aria-labelledby="dates-label"></div>,       <div class="date-note" id="date-note"></div>,     </div>,     <nav class="nav" id="nav" aria-label="Views"></nav>,     <div class="mobile-pick">,       <label class="label" for="doc-select">Document</label>,       <select id="doc-select"></select>,     </div>,   </aside>,   <main>,     <div class="banner" id="banner" hidden></div>,     <header class="doc-head">,       <div class="path" id="doc-path"></div>,       <div class="toggle" id="toggle" role="group" aria-label="Rendering">,         <button type="button" id="view-rendered" aria-pressed="true">Rendered</button>,         <button type="button" id="view-markdown" aria-pressed="false">Markdown</button>,         <button type="button" id="view-text" aria-pressed="false">Text</button>,       </div>,     </header>,     <article class="doc" id="doc"></article>,   </main>,   <svg class="figure-defs" width="0" height="0" aria-hidden="true">,     <defs><marker id="arrow-base" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"/></marker><marker id="arrow-to-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow-accent" d="M0,0 L10,5 L0,10 z"/></marker><marker id="arrow-to-bad" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow-bad" d="M0,0 L10,5 L0,10 z"/></marker><marker id="arrow-to-warn" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow-warn" d="M0,0 L10,5 L0,10 z"/></marker></defs>,   </svg>, </div> }
 - Defined by: The page
-- Read in: HTML markup
 - Depends on: The page, Element over several lines, Side bar, Main area, Arrowheads of the figures
 
 ### Side bar
@@ -3640,7 +3519,6 @@ Syntax element · `SideBar` · **held**
 - Parameters: { standard: page.ThePage, html: std/html.Html, block: html.HtmlBlock, brand: page.Brand, state: page.CompilationState, dates: page.DatePicker, navigation: page.Navigation, picker: page.DocumentPicker }
 - Examples: { input: { subtitle: graph, dates: Dates, navigation: Views, document: Document, rendering: Rendering, renderings: Rendered, Markdown, Text }, output: <aside class="side">,   <div class="brand">,     <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true">,       <rect x="0" y="0" width="26" height="26" rx="6" fill="var(--accent-soft)"/>,       <g stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round" fill="none"><path d="M7 5v16M13 5v16M19 5v16"/></g>,       <g stroke="var(--ink)" stroke-width="2.2" stroke-linecap="round" fill="none"><path d="M5 9h3M10 9h6M18 9h3M5 17h3M10 17h6M18 17h3"/></g>,     </svg>,     <div class="brand-name">trame <span>graph</span></div>,   </div>,   <div class="status" id="status"></div>,   <div>,     <p class="label" id="dates-label">Dates</p>,     <div class="dates" id="dates" role="group" aria-labelledby="dates-label"></div>,     <div class="date-note" id="date-note"></div>,   </div>,   <nav class="nav" id="nav" aria-label="Views"></nav>,   <div class="mobile-pick">,     <label class="label" for="doc-select">Document</label>,     <select id="doc-select"></select>,   </div>, </aside> }
 - Defined by: The page
-- Read in: HTML markup
 - Depends on: The page, Element over several lines, Brand, State of the compilation, Dates, Navigation, Document picker
 
 ### Colours of a status
@@ -3653,7 +3531,6 @@ Syntax element · `StatusStyle` · **held**
 - Parameters: { standard: page.ThePage, css: std/html.Css, svg: std/html.Svg, rule: html.CssRule, declaration: html.CssDeclaration, variable: html.CssVariable, selector: html.ClassSelector }
 - Examples: { input: held, ok-soft, ok, output: .st-held { background: var(--ok-soft); color: var(--ok); }, .fn.st-held rect.box { fill: var(--ok-soft); stroke: var(--ok); } }
 - Defined by: The page
-- Read in: CSS style sheets
 - Depends on: The page, Rule, Declaration, Variable, Class selector
 
 ### Theme
@@ -3666,7 +3543,6 @@ Syntax element · `Theme` · **held**
 - Parameters: { standard: page.ThePage, rule: html.CssRule, media: html.MediaRule, feature: html.MediaFeature, attribute: html.AttributeSelector, negation: html.NegationSelector, property: html.CustomProperty, declaration: html.CssDeclaration }
 - Examples: { input: { bg: #fff }, { bg: #000 }, { font-ui: sans-serif }, { space-sm: 8px }, { radius-md: 6px }, output: :root { --bg: #fff; --font-ui: sans-serif; --space-sm: 8px; --radius-md: 6px; }, @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #000; color-scheme: dark; } }, :root[data-theme="dark"] { --bg: #000; color-scheme: dark; } }
 - Defined by: The page
-- Read in: CSS style sheets
 - Depends on: The page, Rule, Media rule, Media feature, Attribute selector, Negation, Custom property, Declaration
 
 ### Files for tools in the page
@@ -3729,9 +3605,9 @@ Architecture decision · `StyleThroughVariables` · **held**
 Function · `Page` · **held**
 
 - Owner: trame
-- Parameters: { pageBundle: page.PageBundle, standalone: page.StandaloneStyle, encodings: std/system.NodeEncodings, file: std/text.TextFile, palette: appearance.Palette, typography: appearance.Typography, narrowScreen: appearance.NarrowScreen, spacing: appearance.Spacing, radii: appearance.Radii, typeScale: appearance.TypeScale, opacities: appearance.Opacities, strokes: appearance.Strokes, motion: appearance.Motion, pageLayout: appearance.PageLayout, resources: architecture.Resources, reading: architecture.FileReading, bundler: architecture.Bundler, compression: architecture.Compression, shell: page.Shell, theme: page.Theme, statusStyle: page.StatusStyle, narrow: page.NarrowScreenRule, fonts: page.FontLinks, scripts: page.PageScripts, document: page.PageDocument, rule: html.CssRule, declaration: html.CssDeclaration, messages: messages.OutputMessages, language: messages.Language, reader: syntax.SyntaxReader, markup: html.HtmlMarkup, sheets: html.CssStyleSheets, gnu: std/text.GnuPositions }
+- Parameters: { pageBundle: page.PageBundle, standalone: page.StandaloneStyle, encodings: std/system.NodeEncodings, file: std/text.TextFile, palette: appearance.Palette, typography: appearance.Typography, narrowScreen: appearance.NarrowScreen, spacing: appearance.Spacing, radii: appearance.Radii, typeScale: appearance.TypeScale, opacities: appearance.Opacities, strokes: appearance.Strokes, motion: appearance.Motion, pageLayout: appearance.PageLayout, resources: architecture.Resources, reading: architecture.FileReading, bundler: architecture.Bundler, compression: architecture.Compression, shell: page.Shell, theme: page.Theme, statusStyle: page.StatusStyle, narrow: page.NarrowScreenRule, fonts: page.FontLinks, scripts: page.PageScripts, document: page.PageDocument, rule: html.CssRule, declaration: html.CssDeclaration, messages: messages.OutputMessages, language: messages.Language, reader: syntax.SyntaxReader, markup: std/languages.HtmlMarkup, sheets: std/languages.CssStyleSheets, gnu: std/text.GnuPositions }
 - Serves: A specification that runs
-- Depends on: Bundle of the page, Style of the standalone document, Palette, Typography, Narrow screen, Spacing, Radii, Type scale, Opacities, Strokes, Motion, Page layout, Page resources, File reading, Bundler, Compression, Shell, Theme, Colours of a status, Rules of a narrow screen, Fonts, Scripts of the page, Document of the page, Rule, Declaration, Messages of the outputs, Language, Syntax reader, HTML markup, CSS style sheets
+- Depends on: Bundle of the page, Style of the standalone document, Palette, Typography, Narrow screen, Spacing, Radii, Type scale, Opacities, Strokes, Motion, Page layout, Page resources, File reading, Bundler, Compression, Shell, Theme, Colours of a status, Rules of a narrow screen, Fonts, Scripts of the page, Document of the page, Rule, Declaration, Messages of the outputs, Language, Syntax reader
 
 ### Style sheet of a narrow screen
 
@@ -4010,9 +3886,8 @@ Implementation · `NpmInstall` · **held**
 Implementation · `NpmReports` · **held**
 
 - Owner: trame
-- Parameters: { npm: std/system.NpmCli, values: std/algebra.ValueTypes, counts: std/algebra.Counts, punctuation: documents.Punctuation }
+- Parameters: { npm: std/system.NpmCli, values: std/algebra.ValueTypes, counts: std/algebra.Counts, punctuation: documents/language.Punctuation }
 - Implements: Reports on packages
-- Depends on: Punctuation of documents
 
 ### Packages by their origin
 
@@ -4097,7 +3972,7 @@ Implementation · `WebTreeSitter` · **held**
 - Owner: trame
 - Parameters: { messages: messages.PlatformMessages }
 - Implements: Syntax trees
-- Uses: web-tree-sitter
+- Uses: web-tree-sitter, Grammar of HTML, Grammar of CSS
 - Depends on: Messages of the platform
 
 ### Amendments go in the sources
@@ -5104,6 +4979,34 @@ Release · `G127`
 - Language archived: 83cab083efe384d2
 - Releases: Trame on the command line
 - Assembled by: Generation 126
+
+### Generation 128
+
+Release · `G128`
+
+- Released by: trame
+- Version: g128
+- Released on: 2026-11-26
+- What changes: the engine's API gives its reader of languages; a language's reader may be a port
+- Fingerprint: 137d864134b2044b
+- Language: shared
+- Language archived: 059fee84b1865ef7
+- Releases: Trame on the command line
+- Assembled by: Generation 127
+
+### Generation 129
+
+Release · `G129`
+
+- Released by: trame
+- Version: g129
+- Released on: 2026-11-26
+- What changes: std's languages read by the engine, the documents' language from libs/documents; a project compiled through the API gives the views back
+- Fingerprint: 73e039b544e87476
+- Language: shared
+- Language archived: 33f89a045e47daa4
+- Releases: Trame on the command line
+- Assembled by: Generation 128
 
 ### Generation 13
 
@@ -6496,9 +6399,9 @@ Port · `TerminalSyntax`
 Function · `Common` · **held**
 
 - Owner: trame
-- Parameters: { values: std/algebra.ValueTypes, syntax: conventions.ReferenceSyntax, slots: rendering.SentenceSlots, dates: messages.Dates, lists: messages.Lists, texts: std/algebra.Texts, messages: messages.RenderingMessages, units: documents.Units }
+- Parameters: { values: std/algebra.ValueTypes, syntax: conventions.ReferenceSyntax, slots: rendering.SentenceSlots, dates: documents/language.Dates, lists: documents/language.Lists, texts: std/algebra.Texts, messages: messages.RenderingMessages, units: documents/language.Units }
 - Serves: A specification that runs
-- Depends on: Trame references, Places in a sentence, Dates, Lists, Messages of the renderers, Values with their units
+- Depends on: Trame references, Places in a sentence, Messages of the renderers
 
 ### Rendering of the files
 
@@ -6514,30 +6417,30 @@ Function · `FileRendering` · **held**
 Function · `HtmlSyntax` · **held**
 
 - Owner: trame
-- Parameters: { figures: rendering.PageFigures, html: std/html.Html, markup: markup.DocumentMarkup, page: page.ThePage, element: html.HtmlElement, heading: html.HtmlHeading, escape: html.EscapedText, punctuation: documents.Punctuation, slots: rendering.SentenceSlots, counts: std/algebra.Counts, texts: std/algebra.Texts, messages: messages.RenderingMessages }
+- Parameters: { figures: rendering.PageFigures, html: std/html.Html, markup: markup.DocumentMarkup, page: page.ThePage, element: html.HtmlElement, heading: html.HtmlHeading, escape: html.EscapedText, punctuation: documents/language.Punctuation, slots: rendering.SentenceSlots, counts: std/algebra.Counts, texts: std/algebra.Texts, messages: messages.RenderingMessages }
 - Serves: A specification that runs
 - Implements: Syntax of the page
-- Depends on: Figures of the page, Documents in the page, The page, HTML element, Heading of a rank, Escaped text, Punctuation of documents, Places in a sentence, Messages of the renderers
+- Depends on: Figures of the page, Documents in the page, The page, HTML element, Heading of a rank, Escaped text, Places in a sentence, Messages of the renderers
 
 ### Markdown writer
 
 Function · `MarkdownSyntax` · **held**
 
 - Owner: trame
-- Parameters: { figures: rendering.FileFigures, textRendering: documents.TextRendering, punctuation: documents.Punctuation, blocks: markdown.Blocks, heading: markdown.Heading, listItem: markdown.ListItem, blockQuote: markdown.BlockQuote, codeBlock: markdown.CodeBlock, emphasis: markdown.Emphasis, strong: markdown.StrongEmphasis, codeSpan: markdown.CodeSpan, link: markdown.Link, relativeReference: markdown.RelativeReference, tableCell: markdown.TableCell, table: markdown.Table, anchor: markdown.Anchor, details: markdown.Details, counts: std/algebra.Counts, texts: std/algebra.Texts, messages: messages.RenderingMessages }
+- Parameters: { figures: rendering.FileFigures, textRendering: documents.TextRendering, punctuation: documents/language.Punctuation, blocks: markdown.Blocks, heading: markdown.Heading, listItem: markdown.ListItem, blockQuote: markdown.BlockQuote, codeBlock: markdown.CodeBlock, emphasis: markdown.Emphasis, strong: markdown.StrongEmphasis, codeSpan: markdown.CodeSpan, link: markdown.Link, relativeReference: markdown.RelativeReference, tableCell: markdown.TableCell, table: markdown.Table, anchor: markdown.Anchor, details: markdown.Details, counts: std/algebra.Counts, texts: std/algebra.Texts, messages: messages.RenderingMessages }
 - Serves: A specification that runs
 - Implements: Syntax of the documents written as files
-- Depends on: Figures of the documents written as files, Heading levels of Markdown documents, Punctuation of documents, Sequence of blocks, Heading, List item, Block quote, Code block, Emphasis, Strong emphasis, Code span, Link, Relative reference, Table cell, Table, Anchor, Collapsible block, Messages of the renderers
+- Depends on: Figures of the documents written as files, Heading levels of Markdown documents, Sequence of blocks, Heading, List item, Block quote, Code block, Emphasis, Strong emphasis, Code span, Link, Relative reference, Table cell, Table, Anchor, Collapsible block, Messages of the renderers
 
 ### Mermaid diagrams
 
 Function · `MermaidDiagrams` · **held**
 
 - Owner: trame
-- Parameters: { mermaid: mermaid.Mermaid, figures: documents.MermaidFigures, palette: appearance.Palette, small: markdown.Small, flowchart: mermaid.Flowchart, node: mermaid.MermaidNode, subgraph: mermaid.Subgraph, link: mermaid.MermaidLink, classDefinition: mermaid.ClassDefinition, nodeStyle: mermaid.NodeStyle, gantt: mermaid.Gantt, ganttSection: mermaid.GanttSection, ganttTask: mermaid.GanttTask, milestone: mermaid.Milestone, counts: std/algebra.Counts, dates: messages.Dates, messages: messages.RenderingMessages }
+- Parameters: { mermaid: mermaid.Mermaid, figures: documents.MermaidFigures, palette: appearance.Palette, small: markdown.Small, flowchart: mermaid.Flowchart, node: mermaid.MermaidNode, subgraph: mermaid.Subgraph, link: mermaid.MermaidLink, classDefinition: mermaid.ClassDefinition, nodeStyle: mermaid.NodeStyle, gantt: mermaid.Gantt, ganttSection: mermaid.GanttSection, ganttTask: mermaid.GanttTask, milestone: mermaid.Milestone, counts: std/algebra.Counts, dates: documents/language.Dates, messages: messages.RenderingMessages }
 - Serves: A specification that runs
 - Implements: Figures of the documents written as files
-- Depends on: Mermaid, How Mermaid figures are drawn, Palette, Small text, Flowchart, Node, Subgraph, Link, Class definition, Node style, Gantt chart, Section, Task, Milestone, Dates, Messages of the renderers
+- Depends on: Mermaid, How Mermaid figures are drawn, Palette, Small text, Flowchart, Node, Subgraph, Link, Class definition, Node style, Gantt chart, Section, Task, Milestone, Messages of the renderers
 
 ### Rendering in the page
 
@@ -6553,20 +6456,20 @@ Function · `PageRendering` · **held**
 Function · `PlainTextSyntax` · **held**
 
 - Owner: trame
-- Parameters: { figures: rendering.TerminalFigures, layout: text.TerminalText, columns: text.TerminalColumns, punctuation: documents.Punctuation, cell: text.PaddedCell, table: text.Columns, item: text.ItemLine, code: text.CodeLines, lines: text.TerminalLines, counts: std/algebra.Counts, texts: std/algebra.Texts, messages: messages.RenderingMessages }
+- Parameters: { figures: rendering.TerminalFigures, layout: text.TerminalText, columns: text.TerminalColumns, punctuation: documents/language.Punctuation, cell: text.PaddedCell, table: text.Columns, item: text.ItemLine, code: text.CodeLines, lines: text.TerminalLines, counts: std/algebra.Counts, texts: std/algebra.Texts, messages: messages.RenderingMessages }
 - Serves: A specification that runs
 - Implements: Syntax of the terminal
-- Depends on: Figures of the terminal, Terminal text, Columns in the terminal, Punctuation of documents, Padded cell, Columns, Item line, Code lines, Lines of the terminal, Messages of the renderers
+- Depends on: Figures of the terminal, Terminal text, Columns in the terminal, Padded cell, Columns, Item line, Code lines, Lines of the terminal, Messages of the renderers
 
 ### Figures in SVG
 
 Function · `SvgFigures` · **held**
 
 - Owner: trame
-- Parameters: { html: std/html.Html, svg: std/html.Svg, aria: std/html.Aria, css: std/html.Css, markup: markup.DocumentMarkup, figures: markup.FigureMarkup, page: page.ThePage, graph: appearance.GraphDrawing, timeline: appearance.TimelineDrawing, legend: appearance.LegendDrawing, element: html.HtmlElement, empty: html.SelfClosingTag, path: html.PathData, declaration: html.CssDeclaration, escape: html.EscapedText, common: rendering.Common, dates: messages.Dates, words: messages.PageWords, messages: messages.RenderingMessages, punctuation: documents.Punctuation, iso: std/measures.Iso8601, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts }
+- Parameters: { html: std/html.Html, svg: std/html.Svg, aria: std/html.Aria, css: std/html.Css, markup: markup.DocumentMarkup, figures: markup.FigureMarkup, page: page.ThePage, graph: appearance.GraphDrawing, timeline: appearance.TimelineDrawing, legend: appearance.LegendDrawing, element: html.HtmlElement, empty: html.SelfClosingTag, path: html.PathData, declaration: html.CssDeclaration, escape: html.EscapedText, common: rendering.Common, dates: documents/language.Dates, words: messages.PageWords, messages: messages.RenderingMessages, punctuation: documents/language.Punctuation, iso: std/measures.Iso8601, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts }
 - Serves: A specification that runs
 - Implements: Figures of the page
-- Depends on: Documents in the page, Figures in the page, The page, Drawing of a graph, Drawing of a timeline, Legend of a graph, HTML element, Self-closing tag, Path data, Declaration, Escaped text, Common rendering, Dates, Words of the page, Messages of the renderers, Punctuation of documents
+- Depends on: Documents in the page, Figures in the page, The page, Drawing of a graph, Drawing of a timeline, Legend of a graph, HTML element, Self-closing tag, Path data, Declaration, Escaped text, Common rendering, Words of the page, Messages of the renderers
 
 ### Rendering in the terminal
 
@@ -6582,10 +6485,10 @@ Function · `TerminalRendering` · **held**
 Function · `TextFigures` · **held**
 
 - Owner: trame
-- Parameters: { common: rendering.Common, columns: text.TerminalColumns, punctuation: documents.Punctuation, cell: text.PaddedCell, table: text.Columns, branch: text.TreeBranch, step: text.PathStep, dates: messages.Dates, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, messages: messages.RenderingMessages }
+- Parameters: { common: rendering.Common, columns: text.TerminalColumns, punctuation: documents/language.Punctuation, cell: text.PaddedCell, table: text.Columns, branch: text.TreeBranch, step: text.PathStep, dates: documents/language.Dates, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, messages: messages.RenderingMessages }
 - Serves: A specification that runs
 - Implements: Figures of the terminal
-- Depends on: Common rendering, Columns in the terminal, Punctuation of documents, Padded cell, Columns, Tree branch, Path step, Dates, Messages of the renderers
+- Depends on: Common rendering, Columns in the terminal, Padded cell, Columns, Tree branch, Path step, Messages of the renderers
 
 ### Documents in Markdown
 
@@ -6790,10 +6693,10 @@ Scenario · `CompileExample` · **held**
 Scenario · `DocumentWords` · **held**
 
 - Owner: trame
-- Parameters: { dates: messages.Dates, lists: messages.Lists, units: documents.Units, visible: documents.VisibleText, punctuation: documents.Punctuation, language: messages.Language, versions: packages.VersionOrder, data: scenarios.DocumentWordsData, symbols: std/measures.UnitSymbols, texts: std/algebra.Texts, messages: messages.ScenarioMessages }
-- Verifies: Dates, Lists, Values with their units, Visible text, Punctuation of documents, Order of versions
+- Parameters: { dates: documents/language.Dates, lists: documents/language.Lists, units: documents/language.Units, visible: documents.VisibleText, punctuation: documents/language.Punctuation, language: messages.Language, versions: packages.VersionOrder, data: scenarios.DocumentWordsData, symbols: std/measures.UnitSymbols, texts: std/algebra.Texts, messages: messages.ScenarioMessages }
+- Verifies: Visible text, Order of versions, The documents in Trame's language
 - In: Test
-- Depends on: Dates, Lists, Values with their units, Visible text, Punctuation of documents, Language, Order of versions, How the documents write what they show, checked, Messages of the scenarios
+- Depends on: Visible text, Language, Order of versions, How the documents write what they show, checked, Messages of the scenarios
 
 ### EngineReckons
 
@@ -6861,7 +6764,7 @@ Decision · `HowAGenerationAdvances`
 Decision · `MainBranch`
 
 - Decided by: trame
-- Value: { branch: main, checks: trame, std, ci, data, team, machine, commands, reservations, poselia, upToDate: false, approvals: 0, method: merge, autoMerge: true, deletesMerged: true, pages: false }
+- Value: { branch: main, checks: trame, std, ci, data, team, machine, commands, documents, reservations, poselia, upToDate: false, approvals: 0, method: merge, autoMerge: true, deletesMerged: true, pages: false }
 - Rejected: Squashed, a branch would merge as one commit, and the generations it advances are each a commit; An approval required, the person who opens a pull request with their own account cannot approve it; Up to date with main first, each pull request would merge main into itself again, and run its checks again, whenever another one merged; The check of geometry, geometry runs from the registry of a machine, which a runner of GitHub does not have yet; Pages now, the site that gathers Trame's graph and Poselia's preview is still to be decided
 
 ### The machines Trame runs on
@@ -6885,7 +6788,7 @@ Decision · `PullRequestsOnGitHub`
 Decision · `RepositoryProjects`
 
 - Decided by: trame
-- Value: { name: trame, dir: ., runners: RunnersWritten, reads: reservations }, { name: std, dir: std, runners: RunnersWritten }, { name: ci, dir: ci, runners: RunnersWritten }, { name: team, dir: libs/team, runners: RunnersWritten }, { name: data, dir: libs/data, runners: RunnersWritten }, { name: machine, dir: libs/machine, runners: RunnersWritten }, { name: commands, dir: libs/commands, runners: RunnersWritten }, { name: geometry, dir: libs/geometry }, { name: reservations, dir: examples/reservations, runners: RunnersWritten, scenarios: true }, { name: poselia, dir: apps/poselia, runners: RunnersWritten }
+- Value: { name: trame, dir: ., runners: RunnersWritten, reads: reservations }, { name: std, dir: std, runners: RunnersWritten }, { name: ci, dir: ci, runners: RunnersWritten }, { name: team, dir: libs/team, runners: RunnersWritten }, { name: data, dir: libs/data, runners: RunnersWritten }, { name: machine, dir: libs/machine, runners: RunnersWritten }, { name: commands, dir: libs/commands, runners: RunnersWritten }, { name: documents, dir: libs/documents, runners: RunnersWritten }, { name: geometry, dir: libs/geometry }, { name: reservations, dir: examples/reservations, runners: RunnersWritten, scenarios: true }, { name: poselia, dir: apps/poselia, runners: RunnersWritten }
 - Rejected: Found on the disk, by their trame.json, a generation keeps a copy of the example, which is not a project of the repository; In the order they are carried, the order follows from the libraries each one imports; what one reads besides is said
 
 ### The repository left by hand, in the scenario
@@ -7153,7 +7056,7 @@ Artefact · `PageProgram` · **held**
 
 ### The pull requests' workflow
 
-Artefact · `PullRequestWorkflow` · **unknown**
+Artefact · `PullRequestWorkflow` · **held**
 
 - Owner: trame
 - Path: .github/workflows/trame-pull-request.yml
@@ -7257,7 +7160,7 @@ Shipment · `RepositorySet` · **unknown**
 
 ### The files that run it elsewhere
 
-Shipment · `RunnersWritten` · **unknown**
+Shipment · `RunnersWritten` · **held**
 
 - Owner: trame
 - Target: repository
@@ -7418,16 +7321,6 @@ Standard · `TreeSitterApi`
 - Address: https://tree-sitter.github.io/tree-sitter/using-parsers/
 - Constants: { firstRow: { value: 0, meaning: The row tree-sitter gives to the first line of a text }, firstColumn: { value: 0, meaning: The column tree-sitter gives to the first character of a line } }
 
-### tree-sitter queries
-
-Standard · `TreeSitterQueries`
-
-- Maintained by: trame
-- Source: tree-sitter, Query Syntax: Predicates and Directives; the predicates evaluated by web-tree-sitter 0.27 (Query.matches, Query.captures)
-- Address: https://tree-sitter.github.io/tree-sitter/using-parsers/queries/3-predicates-and-directives.html
-- Named in code blocks: scheme
-- Constants: { eq: { value: #eq?, meaning: The capture's text equals a string, or another capture's text }, notEq: { value: #not-eq?, meaning: The capture's text differs from a string, or from another capture's text }, anyEq: { value: #any-eq?, meaning: One of the quantified capture's nodes equals the string }, anyNotEq: { value: #any-not-eq?, meaning: One of the quantified capture's nodes differs from the string }, match: { value: #match?, meaning: The capture's text matches a regular expression }, notMatch: { value: #not-match?, meaning: The capture's text does not match a regular expression }, anyMatch: { value: #any-match?, meaning: One of the quantified capture's nodes matches the regular expression }, anyNotMatch: { value: #any-not-match?, meaning: One of the quantified capture's nodes does not match the regular expression }, anyOf: { value: #any-of?, meaning: The capture's text is one of the strings that follow }, notAnyOf: { value: #not-any-of?, meaning: The capture's text is none of the strings that follow }, is: { value: #is?, meaning: Asserts a property of the match (kept aside for the reader) }, isNot: { value: #is-not?, meaning: Refutes a property of the match (kept aside for the reader) }, set: { value: #set!, meaning: Sets a property on the match: a directive, not a filter } }
-
 ### TypeScript compiler API
 
 Standard · `TypeScriptApi`
@@ -7508,6 +7401,15 @@ Message catalog · `LiteralRoles`
 
 - Owner: trame
 - Written in: Language
+
+### std's languages, read by the engine
+
+Technical choice · `StdLanguagesRead` · **held**
+
+- Decided by: trame
+- Context: A language std declares names std's port as its reader: the engine that compiles answers it, here as in any project that imports std.
+- In: Test
+- Serves: A specification that runs
 
 ## Trame · Terraform
 
@@ -7648,7 +7550,6 @@ output "url" {
 , values: a
 é, 3, roles: element of a list, element of a list }
 - Defined by: HCL
-- Queries written in: tree-sitter queries
 - Read by: Syntax reader
 - Uses: Grammar of HCL
 
@@ -7657,9 +7558,9 @@ output "url" {
 Function · `TerraformWriter` · **held**
 
 - Owner: trame
-- Parameters: { syntax: terraform.HclSyntax, modules: terraform.TerraformModules, layout: conventions.Layout, specifiers: std/system.NodeModuleSpecifiers, comment: terraform.HclComment, text: terraform.HclString, value: terraform.HclValue, attribute: terraform.HclAttribute, block: terraform.ModuleBlock, paths: architecture.Paths, prelude: architecture.Prelude, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, dates: messages.Dates, messages: messages.DriverMessages }
+- Parameters: { syntax: terraform.HclSyntax, modules: terraform.TerraformModules, layout: conventions.Layout, specifiers: std/system.NodeModuleSpecifiers, comment: terraform.HclComment, text: terraform.HclString, value: terraform.HclValue, attribute: terraform.HclAttribute, block: terraform.ModuleBlock, paths: architecture.Paths, prelude: architecture.Prelude, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, dates: documents/language.Dates, messages: messages.DriverMessages }
 - Serves: A specification that runs
-- Depends on: HCL, Terraform modules, Project layout, Comment, Text, Value, Attribute, Module call, Paths, Prelude, Dates, Messages of the drivers
+- Depends on: HCL, Terraform modules, Project layout, Comment, Text, Value, Attribute, Module call, Paths, Prelude, Messages of the drivers
 
 ## Trame · Terminal text
 
@@ -8316,7 +8217,6 @@ fetch(url); Date.now(); new Date(); new Date(t), globals: fetch, Date.now, new D
   on: T;
   in: Node<"c">
 }, literals:  }
-- Queries written in: tree-sitter queries
 - Read by: Syntax reader
 - Watches the globals: Globals that reach outside
 - Uses: Grammar of TypeScript
@@ -8334,6 +8234,6 @@ Decision · `ProgramNames`
 Function · `TypeScriptWriter` · **held**
 
 - Owner: trame
-- Parameters: { language: typescript.TypeScript, syntax: typescript.TypeScriptSyntax, frozen: conventions.FrozenApi, node: std/system.NodeProcessApi, specifiers: std/system.NodeModuleSpecifiers, names: typescript.ProgramNames, stepNames: conventions.StepNames, references: conventions.ReferenceSyntax, comment: typescript.LineComment, text: typescript.StringLiteral, member: typescript.MemberAccess, optional: typescript.OptionalAccess, call: typescript.Call, wait: typescript.Await, group: typescript.Parenthesized, property: typescript.Property, object: typescript.ObjectLiteral, array: typescript.ArrayLiteral, constant: typescript.ConstDeclaration, namedImport: typescript.NamedImport, defaultImport: typescript.DefaultImport, assertion: typescript.AsExpression, optionalProperty: typescript.OptionalPropertySignature, objectType: typescript.ObjectType, union: typescript.UnionType, condition: typescript.IfStatement, differs: typescript.StrictInequality, assignment: typescript.Assignment, inline: typescript.InlineArray, block: typescript.AsyncBlockFunction, environment: conventions.TrameEnvironment, paths: architecture.Paths, prelude: architecture.Prelude, reservedWords: std/ecmascript.EcmaScriptReservedWords, sequences: std/algebra.Sequences, texts: std/algebra.Texts, dates: messages.Dates, messages: messages.DriverMessages }
+- Parameters: { language: typescript.TypeScript, syntax: typescript.TypeScriptSyntax, frozen: conventions.FrozenApi, node: std/system.NodeProcessApi, specifiers: std/system.NodeModuleSpecifiers, names: typescript.ProgramNames, stepNames: conventions.StepNames, references: conventions.ReferenceSyntax, comment: typescript.LineComment, text: typescript.StringLiteral, member: typescript.MemberAccess, optional: typescript.OptionalAccess, call: typescript.Call, wait: typescript.Await, group: typescript.Parenthesized, property: typescript.Property, object: typescript.ObjectLiteral, array: typescript.ArrayLiteral, constant: typescript.ConstDeclaration, namedImport: typescript.NamedImport, defaultImport: typescript.DefaultImport, assertion: typescript.AsExpression, optionalProperty: typescript.OptionalPropertySignature, objectType: typescript.ObjectType, union: typescript.UnionType, condition: typescript.IfStatement, differs: typescript.StrictInequality, assignment: typescript.Assignment, inline: typescript.InlineArray, block: typescript.AsyncBlockFunction, environment: conventions.TrameEnvironment, paths: architecture.Paths, prelude: architecture.Prelude, reservedWords: std/ecmascript.EcmaScriptReservedWords, sequences: std/algebra.Sequences, texts: std/algebra.Texts, dates: documents/language.Dates, messages: messages.DriverMessages }
 - Serves: A specification that runs
-- Depends on: TypeScript, The syntax of the programs Trame writes, The frozen API, Names of a program, Names of steps, Trame references, Comment, Text, Property access, Optional property access, Call, Waiting, Group, Property, Object, List on several lines, Constant, Import of names, Default import, Type assertion, Optional property of a type, Object type, Union type, Condition, Strict inequality, Assignment, List on one line, Async function of a block, Trame's environment, Paths, Prelude, Dates, Messages of the drivers
+- Depends on: TypeScript, The syntax of the programs Trame writes, The frozen API, Names of a program, Names of steps, Trame references, Comment, Text, Property access, Optional property access, Call, Waiting, Group, Property, Object, List on several lines, Constant, Import of names, Default import, Type assertion, Optional property of a type, Object type, Union type, Condition, Strict inequality, Assignment, List on one line, Async function of a block, Trame's environment, Paths, Prelude, Messages of the drivers

@@ -2,12 +2,13 @@
 
 *What answers each port in each environment on 26 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
 
-> **4 technical choices for 22 ports, in 2 environments**
+> **5 technical choices for 23 ports, in 2 environments**
 
 | Port | Test | Strict |
 |---|---|---|
 | [How pull requests are opened](commands.md#PullRequestSettings) | [How the scenarios' pull requests are opened](scenarios.md#ScenarioPullRequests) | — |
 | [How a version is carried](commands.md#PropagationSettings) | [How the scenarios' versions are carried](scenarios.md#ScenarioPropagation) | — |
+| [Reading a language](engine.md#LanguageReading) | [Read by the engine](engine.md#ReadByTheEngine) | — |
 | [Hardening](judgment.md#Hardening) | [As the language says](judgment.md#AsTheLanguageSays) | [Every warning an error](judgment.md#EveryWarning) |
 | [Preferences](platform.md#PreferencesStore) | [Preferences kept in memory](platform.md#MemoryPreferences) | — |
 | [Speech](platform.md#SpeechVoice) | [A voice that writes down](platform.md#WrittenSpeech) | — |
@@ -32,7 +33,7 @@
 | Pattern | Status | Followed by |
 |---|---|---|
 | [Strategy](patterns.md#Strategy) | **held** | [In memory](scenarios.md#InMemory), [Judged as the language says](scenarios.md#LanguageJudgment), [Judged strictly](scenarios.md#StrictJudgment), [The scenarios' settings](scenarios.md#ScenarioSettings) |
-| [Adapter](patterns.md#Adapter) | unknown | — |
+| [Adapter](patterns.md#Adapter) | **held** | [Read by the engine that builds](scenarios.md#ReadInTheEngine) |
 | [Bridge](patterns.md#Bridge) | unknown | — |
 | [Abstract Factory](patterns.md#AbstractFactory) | unknown | — |
 | [Repository](patterns.md#Repository) | unknown | — |
@@ -45,7 +46,7 @@
 
 ### In memory
 
-`InMemory` · `src/scenarios.ts:43` · status: **held**
+`InMemory` · `src/scenarios.ts:45` · status: **held**
 
 In the library's scenarios, each port of a device or of the tooling is answered by its realization kept in memory.
 
@@ -72,11 +73,33 @@ Context: A realization kept in memory is what a project's scenarios run in place
 - Follows: [Strategy](patterns.md#Strategy)
 - Serves: [Ports of the platform, realized once](product.md#RealizedOnce)
 
+<a id="ReadInTheEngine"></a>
+
+### Read by the engine that builds
+
+`ReadInTheEngine` · `src/scenarios.ts:62` · status: **held**
+
+Where the library's build evaluates, its languages (HTML, CSS) are read by the engine that compiles it: their examples, and what the syntax elements of a library write in them.
+
+In [Test](scenarios.md#Test):
+
+| Port | Answered by | Which is |
+|---|---|---|
+| [Reading a language](engine.md#LanguageReading) | [Read by the engine](engine.md#ReadByTheEngine) | an implementation |
+
+Context: Reading a language is the engine's: the grammar and its reader are the engine's packages, which no library carries.
+
+- Decided by: trame
+- Chooses: [Read by the engine](engine.md#ReadByTheEngine)
+- In: [Test](scenarios.md#Test)
+- Follows: [Adapter](patterns.md#Adapter)
+- Serves: [Ports of the platform, realized once](product.md#RealizedOnce)
+
 <a id="LanguageJudgment"></a>
 
 ### Judged as the language says
 
-`LanguageJudgment` · `src/scenarios.ts:59` · status: **held**
+`LanguageJudgment` · `src/scenarios.ts:75` · status: **held**
 
 Where the library's build evaluates, it raises nothing: each problem as the language judges it.
 
@@ -98,7 +121,7 @@ Context: The library raises nothing the language does not: its warnings are poin
 
 ### Judged strictly
 
-`StrictJudgment` · `src/scenarios.ts:78` · status: **held**
+`StrictJudgment` · `src/scenarios.ts:94` · status: **held**
 
 In Strict, every warning is an error.
 
@@ -120,7 +143,7 @@ Context: A project that leaves nothing to watch chooses it; the library plays it
 
 ### The scenarios' settings
 
-`ScenarioSettings` · `src/scenarios.ts:220` · status: **held**
+`ScenarioSettings` · `src/scenarios.ts:237` · status: **held**
 
 Where the library's scenarios run, its commands read the settings the scenarios give.
 

@@ -20,7 +20,7 @@ import type { ThePage, PageRegions, RenderingModes, MachineHighlighting, Renderi
 import type { Language, PageWords } from "../../messages"
 import type { DocumentIds } from "../../conventions"
 import type { SentenceSlots } from "../../rendering"
-import type { Punctuation } from "../../documents"
+import type { Punctuation } from "#documents/language"
 import type { UiEvents, CssomView } from "#std/web"
 import type { Iso8601 } from "#std/measures"
 import type { TextFile } from "#std/text"

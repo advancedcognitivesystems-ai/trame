@@ -3,11 +3,12 @@
 
 import { BlockType, InlineType, OPEN_KEY, Openness, Outcome, ResolutionOutcome, RuleState, Severity, Status, Validity, ValueType, ViewGroup, keyFor, keyOf } from "../../../trame/kernel"
 import type { Block, Document, Inline, Json, KeyOf, NodeRef, ProvidedBy, ResolutionBlock } from "../../../trame/kernel"
-import type { Dates, Lists, RenderingMessages } from "../../messages"
+import type { RenderingMessages } from "../../messages"
+import type { Dates, Lists } from "#documents/language"
 import type { Texts, ValueTypes } from "#std/algebra"
 import type { ReferenceSyntax } from "../../conventions"
 import type { SentenceSlots } from "../../rendering"
-import type { Units } from "../../documents"
+import type { Units } from "#documents/language"
 
 type ValueInline = Extract<Inline, { t: typeof InlineType.value }>
 type ValidityBlock = Extract<Block, { type: "validity" }>

@@ -10,7 +10,7 @@
 
 ### A day an amendment of a body is in force
 
-`AmendedDay` · `src/scenarios.ts:73`
+`AmendedDay` · `src/scenarios.ts:75`
 
 A day of the launch of the example's ultra chargers, when an amendment makes the rule of its refunds otherwise: the rule, its criteria and the amendment, by their references; a reservation on an ultra charger cancelled at the last moment (its price, the lead time in seconds); the component and the environment it is assembled for.
 
@@ -32,7 +32,7 @@ A day of the launch of the example's ultra chargers, when an amendment makes the
 
 ### How the documents write what they show, checked
 
-`DocumentWordsData` · `src/scenarios.ts:312`
+`DocumentWordsData` · `src/scenarios.ts:314`
 
 A day and how it is written in full, short and as its month; three items and the list they make; durations in seconds, a ratio and an amount, with how each is written; a text with a character nobody sees and how it is shown, and a text shown as it is; two versions in order, and a version behind the latest by two major releases, before and after 1.0.
 
@@ -54,7 +54,7 @@ A day and how it is written in full, short and as its month; three items and the
 
 ### Shape of the example
 
-`ExampleShape` · `src/scenarios.ts:33`
+`ExampleShape` · `src/scenarios.ts:35`
 
 How many scenarios the example project holds: the described engine must find them all.
 
@@ -69,7 +69,7 @@ How many scenarios the example project holds: the described engine must find the
 
 ### Expected differences on the example
 
-`ExpectedDifferences` · `src/scenarios.ts:131`
+`ExpectedDifferences` · `src/scenarios.ts:133`
 
 The files of the example that a wanted change of the engine writes differently, with the reason. The scenario "The build writes the same documents" lets them through, and only them; a difference that is not declared here makes it fail. Once the generation that writes them is in place, the list is emptied.
 
@@ -84,7 +84,7 @@ The files of the example that a wanted change of the engine writes differently, 
 
 ### The names the sample add-ons give, and the order a choice gives them in: the second first.
 
-`ExtensionSamples` · `src/scenarios.ts:375`
+`ExtensionSamples` · `src/scenarios.ts:377`
 
 | Case | Value |
 |---|---|
@@ -98,7 +98,7 @@ The files of the example that a wanted change of the engine writes differently, 
 
 ### What the scenario of the judgment answers
 
-`JudgingData` · `src/scenarios.ts:228`
+`JudgingData` · `src/scenarios.ts:230`
 
 What a way of judging that is no severity answers, and the words a way that fails throws.
 
@@ -114,7 +114,7 @@ What a way of judging that is no severity answers, and the words a way that fail
 
 ### What the engine's reckoning is checked with
 
-`ReckoningData` · `src/scenarios.ts:184`
+`ReckoningData` · `src/scenarios.ts:186`
 
 A relation with one cycle, reached again from outside it; two seeds and how many numbers to draw, between which bounds; a reference and a library's module; a value, the same written in another order, and a value changed; a place in a file.
 
@@ -140,7 +140,7 @@ A relation with one cycle, reached again from outside it; two seeds and how many
 
 ### A sample extension point
 
-`SampleAddOns` · `src/scenarios.ts:381`
+`SampleAddOns` · `src/scenarios.ts:383`
 
 What the scenario of extension points wires: every add-on one choice makes in the scenarios' environment, in order.
 
@@ -157,8 +157,9 @@ An extension point: every realization chosen in an environment answers it, in th
 | [A session of Claude Code](architecture.md#Session) | none | — |
 | [Test](architecture.md#Test) | [The second sample add-on](#SecondSampleAddOn), [The first sample add-on](#FirstSampleAddOn) | [The sample add-ons, second first](#SampleAddOnsInOrder), [The sample add-ons, second first](#SampleAddOnsInOrder) |
 | [Test](../libs/commands/releases/0.1.1/docs/scenarios.md#Test) | none | — |
-| [Strict](../std/releases/0.28.0/docs/scenarios.md#Strict) | none | — |
-| [Test](../std/releases/0.28.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.1.0/docs/scenarios.md#Test) | none | — |
+| [Strict](../std/releases/0.29.0/docs/scenarios.md#Strict) | none | — |
+| [Test](../std/releases/0.29.0/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
 - Extension point: true
@@ -171,7 +172,7 @@ An extension point: every realization chosen in an environment answers it, in th
 
 ### The first sample add-on
 
-`FirstSampleAddOn` · `src/scenarios.ts:384` · status: **held**
+`FirstSampleAddOn` · `src/scenarios.ts:386` · status: **held**
 
 - Owner: trame
 - Parameters: `samples` ← [The names the sample add-ons give, and the order a choice gives them in: the second first.](#ExtensionSamples)
@@ -184,7 +185,7 @@ An extension point: every realization chosen in an environment answers it, in th
 
 ### The second sample add-on
 
-`SecondSampleAddOn` · `src/scenarios.ts:391` · status: **held**
+`SecondSampleAddOn` · `src/scenarios.ts:393` · status: **held**
 
 - Owner: trame
 - Parameters: `samples` ← [The names the sample add-ons give, and the order a choice gives them in: the second first.](#ExtensionSamples)
@@ -199,7 +200,7 @@ An extension point: every realization chosen in an environment answers it, in th
 
 ### The sample add-ons, second first
 
-`SampleAddOnsInOrder` · `src/scenarios.ts:401` · status: **held**
+`SampleAddOnsInOrder` · `src/scenarios.ts:403` · status: **held**
 
 In the scenarios, the sample extension point is answered by both add-ons, in the order this choice gives them.
 
@@ -215,7 +216,7 @@ Context: An extension point is answered by every realization one choice makes, i
 - Decided by: trame
 - Chooses: [The second sample add-on](#SecondSampleAddOn), [The first sample add-on](#FirstSampleAddOn)
 - In: [Test](architecture.md#Test)
-- Follows: [Plugin](../std/releases/0.28.0/docs/patterns.md#Plugin)
+- Follows: [Plugin](../std/releases/0.29.0/docs/patterns.md#Plugin)
 
 ## Scenarios
 
@@ -223,7 +224,7 @@ Context: An extension point is answered by every realization one choice makes, i
 
 ### Add-ons, in the order chosen
 
-`AddOnsInOrder` · `src/scenarios.ts:414` · status: **held**
+`AddOnsInOrder` · `src/scenarios.ts:416` · status: **held**
 
 Wired in the scenarios' environment, the sample extension point gives what each add-on the choice makes gives, in the order of the choice (the second first), each whole.
 
@@ -249,7 +250,7 @@ Wired in the scenarios' environment, the sample extension point gives what each 
 
 ### A body amended runs amended
 
-`AmendedBodiesRun` · `src/scenarios.ts:90` · status: **held**
+`AmendedBodiesRun` · `src/scenarios.ts:92` · status: **held**
 
 The example compiled on a day an amendment of a rule's body is in force: the rule called is the rule as amended (a cancellation at the last moment on an ultra charger refunds the whole price) and holds its criteria; its component, assembled that day, composes the rule with that amendment in the program (since g105).
 
@@ -260,14 +261,14 @@ The example compiled on a day an amendment of a rule's body is in force: the rul
 | On 2026-11-15, "cancellation.Refund" is called as its amendment in force makes it, and its criteria hold | passed |
 | Assembled for Local that day, ReservationsApi composes the rule with its amendment | passed |
 
-<details><summary>The code it runs: 39 nodes</summary>
+<details><summary>The code it runs: 40 nodes</summary>
 
-[Cycles](engine.md#Cycles), [References](engine.md#References), [Positions](engine.md#Positions), [Trame's prelude](platform.md#TramePrelude), [tsx loader](platform.md#TsxLoader), [Node paths](platform.md#NodePaths), [Files in memory, over the disk](platform.md#MemoryFiles), [TypeScript compiler](platform.md#RealTypeScript), [Results kept in the process](platform.md#ResultsInTheProcess), [Runs kept in the process](platform.md#RunsInTheProcess), [SHA-256 hashes](platform.md#NodeHashing), [Lists](messages.md#Lists), [Static reading](engine.md#StaticAnalysis), [Project](engine.md#Project), [Dates](messages.md#Dates), [Punctuation of documents](documents.md#Punctuation), [Pseudo-random generator](engine.md#Generator), [Order of versions](packages.md#VersionOrder), [Values with their units](documents.md#Units), [Visible text](documents.md#VisibleText), [Fingerprints](engine.md#Fingerprints), [Graph](engine.md#GraphApi), [tree-sitter in WebAssembly](platform.md#WebTreeSitter), [Syntax reader](syntax.md#SyntaxReader), [Checks of a body](syntax.md#BodyChecks), [TypeScript writer](typescript.md#TypeScriptWriter), [Terraform writer](terraform.md#TerraformWriter), [Drivers](languages.md#Drivers), [Wiring](engine.md#Wiring), [Attribution](shipping.md#Attribution), [The fingerprint of an engine](engine.md#EngineFingerprint), [The runs of a project](engine.md#ProjectRuns), [Packages by their local path](platform.md#LocalPaths), [Packages from the local registry](platform.md#LocalRegistry), [Packages by their origin](platform.md#PackagesByOrigin), [Judged harder](engine.md#JudgedHarder), [Compiler](engine.md#Compiler), [Example process](platform.md#ExampleProcess), [Assembly](engine.md#Assembly)
+[Cycles](engine.md#Cycles), [References](engine.md#References), [Positions](engine.md#Positions), [Trame's prelude](platform.md#TramePrelude), [tsx loader](platform.md#TsxLoader), [Node paths](platform.md#NodePaths), [Files in memory, over the disk](platform.md#MemoryFiles), [TypeScript compiler](platform.md#RealTypeScript), [Results kept in the process](platform.md#ResultsInTheProcess), [Runs kept in the process](platform.md#RunsInTheProcess), [SHA-256 hashes](platform.md#NodeHashing), [The documents in Trame's language](documents.md#OurDocumentLanguage), [Lists](../libs/documents/releases/0.1.0/docs/language.md#Lists), [Static reading](engine.md#StaticAnalysis), [Project](engine.md#Project), [Dates](../libs/documents/releases/0.1.0/docs/language.md#Dates), [Punctuation](../libs/documents/releases/0.1.0/docs/language.md#Punctuation), [Pseudo-random generator](engine.md#Generator), [Order of versions](packages.md#VersionOrder), [Values with their units](../libs/documents/releases/0.1.0/docs/language.md#Units), [Visible text](documents.md#VisibleText), [Fingerprints](engine.md#Fingerprints), [Graph](engine.md#GraphApi), [tree-sitter in WebAssembly](platform.md#WebTreeSitter), [Syntax reader](syntax.md#SyntaxReader), [Checks of a body](syntax.md#BodyChecks), [TypeScript writer](typescript.md#TypeScriptWriter), [Terraform writer](terraform.md#TerraformWriter), [Drivers](languages.md#Drivers), [Wiring](engine.md#Wiring), [Attribution](shipping.md#Attribution), [The fingerprint of an engine](engine.md#EngineFingerprint), [The runs of a project](engine.md#ProjectRuns), [Packages by their local path](platform.md#LocalPaths), [Packages from the local registry](platform.md#LocalRegistry), [Packages by their origin](platform.md#PackagesByOrigin), [Judged harder](engine.md#JudgedHarder), [Compiler](engine.md#Compiler), [Example process](platform.md#ExampleProcess), [Assembly](engine.md#Assembly)
 
 </details>
 
 - Owner: trame
-- Parameters: `compiler` ← [Compiler](engine.md#Compiler) · `currentProcess` ← [Process](architecture.md#Process) · `assembly` ← [Assembly](engine.md#Assembly) · `frozen` ← [The frozen API](conventions.md#FrozenApi) · `given` ← [A day an amendment of a body is in force](#AmendedDay) · `counts` ← [Counts](../std/releases/0.28.0/docs/algebra.md#Counts) · `messages` ← [Messages of the scenarios](messages.md#ScenarioMessages)
+- Parameters: `compiler` ← [Compiler](engine.md#Compiler) · `currentProcess` ← [Process](architecture.md#Process) · `assembly` ← [Assembly](engine.md#Assembly) · `frozen` ← [The frozen API](conventions.md#FrozenApi) · `given` ← [A day an amendment of a body is in force](#AmendedDay) · `counts` ← [Counts](../std/releases/0.29.0/docs/algebra.md#Counts) · `messages` ← [Messages of the scenarios](messages.md#ScenarioMessages)
 - Body: inline, in the declaration
 - Effects: execution, keeps, read
 - Verifies: [Compiler](engine.md#Compiler), [Wiring](engine.md#Wiring), [Assembly](engine.md#Assembly), [TypeScript writer](typescript.md#TypeScriptWriter)
@@ -277,7 +278,7 @@ The example compiled on a day an amendment of a rule's body is in force: the rul
 
 ### The build writes the same documents as the engine in place
 
-`BuildLikeBefore` · `src/scenarios.ts:144` · status: **held**
+`BuildLikeBefore` · `src/scenarios.ts:146` · status: **held**
 
 trame build, run by the described engine on the example, writes character for character what the engine in place wrote (the generation that assembles it): docs/, graph.json, snapshot.json. Only the differences declared as expected pass. What writes them is verified so: the preparation and the compilation the views read, the views, the rendering of the files in Markdown with their figures in Mermaid, the machine outputs, trame.lock read for what is published, on the day the stopped clock shows; written and printed in memory.
 
@@ -291,14 +292,14 @@ trame build, run by the described engine on the example, writes character for ch
 | 30 documents in Markdown, figures included, as the engine in place wrote them | passed |
 | 32 files written, identical to those of the engine in place | passed |
 
-<details><summary>The code it runs: 56 nodes</summary>
+<details><summary>The code it runs: 57 nodes</summary>
 
-[Cycles](engine.md#Cycles), [References](engine.md#References), [Positions](engine.md#Positions), [Trame's prelude](platform.md#TramePrelude), [tsx loader](platform.md#TsxLoader), [Node paths](platform.md#NodePaths), [Files in memory, over the disk](platform.md#MemoryFiles), [TypeScript compiler](platform.md#RealTypeScript), [Results kept in the process](platform.md#ResultsInTheProcess), [Runs kept in the process](platform.md#RunsInTheProcess), [SHA-256 hashes](platform.md#NodeHashing), [Lists](messages.md#Lists), [Static reading](engine.md#StaticAnalysis), [Project](engine.md#Project), [Dates](messages.md#Dates), [Punctuation of documents](documents.md#Punctuation), [Pseudo-random generator](engine.md#Generator), [Order of versions](packages.md#VersionOrder), [Values with their units](documents.md#Units), [Visible text](documents.md#VisibleText), [Fingerprints](engine.md#Fingerprints), [Graph](engine.md#GraphApi), [tree-sitter in WebAssembly](platform.md#WebTreeSitter), [Syntax reader](syntax.md#SyntaxReader), [Checks of a body](syntax.md#BodyChecks), [TypeScript writer](typescript.md#TypeScriptWriter), [Terraform writer](terraform.md#TerraformWriter), [Drivers](languages.md#Drivers), [Wiring](engine.md#Wiring), [Attribution](shipping.md#Attribution), [The fingerprint of an engine](engine.md#EngineFingerprint), [The runs of a project](engine.md#ProjectRuns), [Packages by their local path](platform.md#LocalPaths), [Packages from the local registry](platform.md#LocalRegistry), [Packages by their origin](platform.md#PackagesByOrigin), [Judged harder](engine.md#JudgedHarder), [Compiler](engine.md#Compiler), [A shipment's pipeline](engine.md#ShipmentPipeline), [Compilation API](engine.md#CompilationApi), [Laws](engine.md#Laws), [Views](engine.md#Views), [Lock](engine.md#Lock), [Common rendering](rendering.md#Common), [Terminal in memory](platform.md#MemoryTerminal), [Example process](platform.md#ExampleProcess), [Stopped clock](platform.md#StoppedClock), [The project's commands](commands.md#ProjectCommands), [Machine outputs](engine.md#MachineOutputs), [Preparation](commands.md#Preparation), [Mermaid diagrams](rendering.md#MermaidDiagrams), [Markdown writer](rendering.md#MarkdownSyntax), [Rendering of the files](rendering.md#FileRendering), [Figures as text](rendering.md#TextFigures), [Plain text writer](rendering.md#PlainTextSyntax), [Rendering in the terminal](rendering.md#TerminalRendering), [Build](commands.md#Build)
+[Cycles](engine.md#Cycles), [References](engine.md#References), [Positions](engine.md#Positions), [Trame's prelude](platform.md#TramePrelude), [tsx loader](platform.md#TsxLoader), [Node paths](platform.md#NodePaths), [Files in memory, over the disk](platform.md#MemoryFiles), [TypeScript compiler](platform.md#RealTypeScript), [Results kept in the process](platform.md#ResultsInTheProcess), [Runs kept in the process](platform.md#RunsInTheProcess), [SHA-256 hashes](platform.md#NodeHashing), [The documents in Trame's language](documents.md#OurDocumentLanguage), [Lists](../libs/documents/releases/0.1.0/docs/language.md#Lists), [Static reading](engine.md#StaticAnalysis), [Project](engine.md#Project), [Dates](../libs/documents/releases/0.1.0/docs/language.md#Dates), [Punctuation](../libs/documents/releases/0.1.0/docs/language.md#Punctuation), [Pseudo-random generator](engine.md#Generator), [Order of versions](packages.md#VersionOrder), [Values with their units](../libs/documents/releases/0.1.0/docs/language.md#Units), [Visible text](documents.md#VisibleText), [Fingerprints](engine.md#Fingerprints), [Graph](engine.md#GraphApi), [tree-sitter in WebAssembly](platform.md#WebTreeSitter), [Syntax reader](syntax.md#SyntaxReader), [Checks of a body](syntax.md#BodyChecks), [TypeScript writer](typescript.md#TypeScriptWriter), [Terraform writer](terraform.md#TerraformWriter), [Drivers](languages.md#Drivers), [Wiring](engine.md#Wiring), [Attribution](shipping.md#Attribution), [The fingerprint of an engine](engine.md#EngineFingerprint), [The runs of a project](engine.md#ProjectRuns), [Packages by their local path](platform.md#LocalPaths), [Packages from the local registry](platform.md#LocalRegistry), [Packages by their origin](platform.md#PackagesByOrigin), [Judged harder](engine.md#JudgedHarder), [Compiler](engine.md#Compiler), [A shipment's pipeline](engine.md#ShipmentPipeline), [Compilation API](engine.md#CompilationApi), [Laws](engine.md#Laws), [Views](engine.md#Views), [Lock](engine.md#Lock), [Common rendering](rendering.md#Common), [Terminal in memory](platform.md#MemoryTerminal), [Example process](platform.md#ExampleProcess), [Stopped clock](platform.md#StoppedClock), [The project's commands](commands.md#ProjectCommands), [Machine outputs](engine.md#MachineOutputs), [Preparation](commands.md#Preparation), [Mermaid diagrams](rendering.md#MermaidDiagrams), [Markdown writer](rendering.md#MarkdownSyntax), [Rendering of the files](rendering.md#FileRendering), [Figures as text](rendering.md#TextFigures), [Plain text writer](rendering.md#PlainTextSyntax), [Rendering in the terminal](rendering.md#TerminalRendering), [Build](commands.md#Build)
 
 </details>
 
 - Owner: trame
-- Parameters: `build` ← [Build](commands.md#Build) · `exitStatus` ← [Exit status](../std/releases/0.28.0/docs/system.md#ExitStatus) · `expected` ← [Expected differences on the example](#ExpectedDifferences) · `writeLog` ← [Write log](architecture.md#WriteLog) · `terminalLog` ← [Terminal log](architecture.md#TerminalLog) · `layout` ← [Project layout](conventions.md#Layout) · `reading` ← [File reading](architecture.md#FileReading) · `paths` ← [Paths](architecture.md#Paths) · `currentProcess` ← [Process](architecture.md#Process) · `encodings` ← [Node.js character encodings](../std/releases/0.28.0/docs/system.md#NodeEncodings) · `line` ← [Trame's commands](conventions.md#TrameCommands) · `counts` ← [Counts](../std/releases/0.28.0/docs/algebra.md#Counts) · `commandMessages` ← [Messages of the commands](messages.md#CommandMessages) · `messages` ← [Messages of the scenarios](messages.md#ScenarioMessages)
+- Parameters: `build` ← [Build](commands.md#Build) · `exitStatus` ← [Exit status](../std/releases/0.29.0/docs/system.md#ExitStatus) · `expected` ← [Expected differences on the example](#ExpectedDifferences) · `writeLog` ← [Write log](architecture.md#WriteLog) · `terminalLog` ← [Terminal log](architecture.md#TerminalLog) · `layout` ← [Project layout](conventions.md#Layout) · `reading` ← [File reading](architecture.md#FileReading) · `paths` ← [Paths](architecture.md#Paths) · `currentProcess` ← [Process](architecture.md#Process) · `encodings` ← [Node.js character encodings](../std/releases/0.29.0/docs/system.md#NodeEncodings) · `line` ← [Trame's commands](conventions.md#TrameCommands) · `counts` ← [Counts](../std/releases/0.29.0/docs/algebra.md#Counts) · `commandMessages` ← [Messages of the commands](messages.md#CommandMessages) · `messages` ← [Messages of the scenarios](messages.md#ScenarioMessages)
 - Body: inline, in the declaration
 - Effects: execution, keeps, process, read, terminal, time, write
 - Verifies: [Build](commands.md#Build), [Preparation](commands.md#Preparation), [Compilation API](engine.md#CompilationApi), [Views](engine.md#Views), [Rendering of the files](rendering.md#FileRendering), [Common rendering](rendering.md#Common), [Markdown writer](rendering.md#MarkdownSyntax), [Mermaid diagrams](rendering.md#MermaidDiagrams), [Machine outputs](engine.md#MachineOutputs), [Lock](engine.md#Lock), [Files in memory, over the disk](platform.md#MemoryFiles), [Terminal in memory](platform.md#MemoryTerminal), [Stopped clock](platform.md#StoppedClock)
@@ -309,7 +310,7 @@ trame build, run by the described engine on the example, writes character for ch
 
 ### The described engine compiles the example
 
-`CompileExample` · `src/scenarios.ts:42` · status: **held**
+`CompileExample` · `src/scenarios.ts:44` · status: **held**
 
 The compiler assembled from this graph loads the reservations project (its files read from the disk, its TypeScript run by tsx and checked by the compiler of TypeScript, its declarations read statically) and compiles it at the date of the scenarios: every scenario of the example found, wired and held. Loaded again in the same process, it reads the same: the reading the compiler of TypeScript made is kept, its files unchanged.
 
@@ -323,14 +324,14 @@ The compiler assembled from this graph loads the reservations project (its files
 | The scenarios of the example hold | passed |
 | Loaded again, the example reads the same: what the compiler of TypeScript read is kept | passed |
 
-<details><summary>The code it runs: 39 nodes</summary>
+<details><summary>The code it runs: 40 nodes</summary>
 
-[Cycles](engine.md#Cycles), [References](engine.md#References), [Positions](engine.md#Positions), [Trame's prelude](platform.md#TramePrelude), [tsx loader](platform.md#TsxLoader), [Node paths](platform.md#NodePaths), [Files in memory, over the disk](platform.md#MemoryFiles), [TypeScript compiler](platform.md#RealTypeScript), [Results kept in the process](platform.md#ResultsInTheProcess), [Runs kept in the process](platform.md#RunsInTheProcess), [SHA-256 hashes](platform.md#NodeHashing), [Lists](messages.md#Lists), [Static reading](engine.md#StaticAnalysis), [Project](engine.md#Project), [Dates](messages.md#Dates), [Punctuation of documents](documents.md#Punctuation), [Pseudo-random generator](engine.md#Generator), [Order of versions](packages.md#VersionOrder), [Values with their units](documents.md#Units), [Visible text](documents.md#VisibleText), [Fingerprints](engine.md#Fingerprints), [Graph](engine.md#GraphApi), [tree-sitter in WebAssembly](platform.md#WebTreeSitter), [Syntax reader](syntax.md#SyntaxReader), [Checks of a body](syntax.md#BodyChecks), [TypeScript writer](typescript.md#TypeScriptWriter), [Terraform writer](terraform.md#TerraformWriter), [Drivers](languages.md#Drivers), [Wiring](engine.md#Wiring), [Attribution](shipping.md#Attribution), [The fingerprint of an engine](engine.md#EngineFingerprint), [The runs of a project](engine.md#ProjectRuns), [Packages by their local path](platform.md#LocalPaths), [Packages from the local registry](platform.md#LocalRegistry), [Packages by their origin](platform.md#PackagesByOrigin), [Judged harder](engine.md#JudgedHarder), [Compiler](engine.md#Compiler), [Example process](platform.md#ExampleProcess), [Stopped clock](platform.md#StoppedClock)
+[Cycles](engine.md#Cycles), [References](engine.md#References), [Positions](engine.md#Positions), [Trame's prelude](platform.md#TramePrelude), [tsx loader](platform.md#TsxLoader), [Node paths](platform.md#NodePaths), [Files in memory, over the disk](platform.md#MemoryFiles), [TypeScript compiler](platform.md#RealTypeScript), [Results kept in the process](platform.md#ResultsInTheProcess), [Runs kept in the process](platform.md#RunsInTheProcess), [SHA-256 hashes](platform.md#NodeHashing), [The documents in Trame's language](documents.md#OurDocumentLanguage), [Lists](../libs/documents/releases/0.1.0/docs/language.md#Lists), [Static reading](engine.md#StaticAnalysis), [Project](engine.md#Project), [Dates](../libs/documents/releases/0.1.0/docs/language.md#Dates), [Punctuation](../libs/documents/releases/0.1.0/docs/language.md#Punctuation), [Pseudo-random generator](engine.md#Generator), [Order of versions](packages.md#VersionOrder), [Values with their units](../libs/documents/releases/0.1.0/docs/language.md#Units), [Visible text](documents.md#VisibleText), [Fingerprints](engine.md#Fingerprints), [Graph](engine.md#GraphApi), [tree-sitter in WebAssembly](platform.md#WebTreeSitter), [Syntax reader](syntax.md#SyntaxReader), [Checks of a body](syntax.md#BodyChecks), [TypeScript writer](typescript.md#TypeScriptWriter), [Terraform writer](terraform.md#TerraformWriter), [Drivers](languages.md#Drivers), [Wiring](engine.md#Wiring), [Attribution](shipping.md#Attribution), [The fingerprint of an engine](engine.md#EngineFingerprint), [The runs of a project](engine.md#ProjectRuns), [Packages by their local path](platform.md#LocalPaths), [Packages from the local registry](platform.md#LocalRegistry), [Packages by their origin](platform.md#PackagesByOrigin), [Judged harder](engine.md#JudgedHarder), [Compiler](engine.md#Compiler), [Example process](platform.md#ExampleProcess), [Stopped clock](platform.md#StoppedClock)
 
 </details>
 
 - Owner: trame
-- Parameters: `compiler` ← [Compiler](engine.md#Compiler) · `currentProcess` ← [Process](architecture.md#Process) · `clock` ← [Clock](architecture.md#Clock) · `shape` ← [Shape of the example](#ExampleShape) · `counts` ← [Counts](../std/releases/0.28.0/docs/algebra.md#Counts) · `messages` ← [Messages of the scenarios](messages.md#ScenarioMessages)
+- Parameters: `compiler` ← [Compiler](engine.md#Compiler) · `currentProcess` ← [Process](architecture.md#Process) · `clock` ← [Clock](architecture.md#Clock) · `shape` ← [Shape of the example](#ExampleShape) · `counts` ← [Counts](../std/releases/0.29.0/docs/algebra.md#Counts) · `messages` ← [Messages of the scenarios](messages.md#ScenarioMessages)
 - Body: inline, in the declaration
 - Effects: execution, keeps, read, time
 - Verifies: [Compiler](engine.md#Compiler), [Project](engine.md#Project), [Static reading](engine.md#StaticAnalysis), [Wiring](engine.md#Wiring), [Graph](engine.md#GraphApi), [TypeScript compiler](platform.md#RealTypeScript), [tsx loader](platform.md#TsxLoader), [Trame's prelude](platform.md#TramePrelude), [Files in memory, over the disk](platform.md#MemoryFiles), [Node paths](platform.md#NodePaths), [Example process](platform.md#ExampleProcess), [Results kept in the process](platform.md#ResultsInTheProcess)
@@ -341,7 +342,7 @@ The compiler assembled from this graph loads the reservations project (its files
 
 ### The documents write in the decided language
 
-`DocumentWords` · `src/scenarios.ts:347` · status: **held**
+`DocumentWords` · `src/scenarios.ts:349` · status: **held**
 
 A day is written in full, short and as its month in the decided language; a list joins its items with the words of the language; a value of a quantity takes the largest of its units it is a whole number of, in the words of that unit (a duration in hours, minutes or seconds, a ratio as a percentage: the units of std's Time and Ratio); a text that hides a character is shown with it escaped, another as it is; the marks between parts are those of the language decided; versions are ordered by their numbers, not as texts, and the releases that break what uses a package are counted by major version, or by minor version before 1.0.
 
@@ -358,23 +359,23 @@ A day is written in full, short and as its month in the decided language; a list
 | 1.9.0 comes before 1.10.0 | passed |
 | The releases that break are counted by major version, by minor version before 1.0 | passed |
 
-<details><summary>The code it runs: 6 nodes</summary>
+<details><summary>The code it runs: 7 nodes</summary>
 
-[Dates](messages.md#Dates), [Lists](messages.md#Lists), [Values with their units](documents.md#Units), [Visible text](documents.md#VisibleText), [Punctuation of documents](documents.md#Punctuation), [Order of versions](packages.md#VersionOrder)
+[The documents in Trame's language](documents.md#OurDocumentLanguage), [Dates](../libs/documents/releases/0.1.0/docs/language.md#Dates), [Lists](../libs/documents/releases/0.1.0/docs/language.md#Lists), [Values with their units](../libs/documents/releases/0.1.0/docs/language.md#Units), [Visible text](documents.md#VisibleText), [Punctuation](../libs/documents/releases/0.1.0/docs/language.md#Punctuation), [Order of versions](packages.md#VersionOrder)
 
 </details>
 
 - Owner: trame
-- Parameters: `dates` ← [Dates](messages.md#Dates) · `lists` ← [Lists](messages.md#Lists) · `units` ← [Values with their units](documents.md#Units) · `visible` ← [Visible text](documents.md#VisibleText) · `punctuation` ← [Punctuation of documents](documents.md#Punctuation) · `language` ← [Language](messages.md#Language) · `versions` ← [Order of versions](packages.md#VersionOrder) · `data` ← [How the documents write what they show, checked](#DocumentWordsData) · `symbols` ← [Symbols of units](../std/releases/0.28.0/docs/measures.md#UnitSymbols) · `texts` ← [Texts](../std/releases/0.28.0/docs/algebra.md#Texts) · `messages` ← [Messages of the scenarios](messages.md#ScenarioMessages)
+- Parameters: `dates` ← [Dates](../libs/documents/releases/0.1.0/docs/language.md#Dates) · `lists` ← [Lists](../libs/documents/releases/0.1.0/docs/language.md#Lists) · `units` ← [Values with their units](../libs/documents/releases/0.1.0/docs/language.md#Units) · `visible` ← [Visible text](documents.md#VisibleText) · `punctuation` ← [Punctuation](../libs/documents/releases/0.1.0/docs/language.md#Punctuation) · `language` ← [Language](messages.md#Language) · `versions` ← [Order of versions](packages.md#VersionOrder) · `data` ← [How the documents write what they show, checked](#DocumentWordsData) · `symbols` ← [Symbols of units](../std/releases/0.29.0/docs/measures.md#UnitSymbols) · `texts` ← [Texts](../std/releases/0.29.0/docs/algebra.md#Texts) · `messages` ← [Messages of the scenarios](messages.md#ScenarioMessages)
 - Body: inline, in the declaration
-- Verifies: [Dates](messages.md#Dates), [Lists](messages.md#Lists), [Values with their units](documents.md#Units), [Visible text](documents.md#VisibleText), [Punctuation of documents](documents.md#Punctuation), [Order of versions](packages.md#VersionOrder)
+- Verifies: [Dates](../libs/documents/releases/0.1.0/docs/language.md#Dates), [Lists](../libs/documents/releases/0.1.0/docs/language.md#Lists), [Values with their units](../libs/documents/releases/0.1.0/docs/language.md#Units), [Visible text](documents.md#VisibleText), [Punctuation](../libs/documents/releases/0.1.0/docs/language.md#Punctuation), [Order of versions](packages.md#VersionOrder), [The documents in Trame's language](documents.md#OurDocumentLanguage)
 - In: [Test](architecture.md#Test)
 
 <a id="EngineReckons"></a>
 
 ### EngineReckons
 
-`EngineReckons` · `src/scenarios.ts:269` · status: **held**
+`EngineReckons` · `src/scenarios.ts:271` · status: **held**
 
 **EngineReckons · in [Test](architecture.md#Test)**
 
@@ -407,7 +408,7 @@ A day is written in full, short and as its month in the decided language; a list
 
 ### A project judges harder, never softer
 
-`JudgingHarder` · `src/scenarios.ts:240` · status: **held**
+`JudgingHarder` · `src/scenarios.ts:242` · status: **held**
 
 A way of judging that raises a missing owner to an error and would lower a literal in a body to a warning: the missing owner is an error, raised from a warning; the literal stays an error, and the lowering is said; a problem it leaves is as the language judged it. A way that answers what is no severity, or that fails, is said, and the problems stay as they were.
 
@@ -418,9 +419,9 @@ A way of judging that raises a missing owner to an error and would lower a liter
 | A way of judging raises a problem, never lowers it: the raised keeps the language's severity, the lowered is said | passed |
 | A way of judging that answers no severity, or that fails, is said, and the problems stay as the language judged them | passed |
 
-<details><summary>The code it runs: 2 nodes</summary>
+<details><summary>The code it runs: 3 nodes</summary>
 
-[Lists](messages.md#Lists), [Judged harder](engine.md#JudgedHarder)
+[The documents in Trame's language](documents.md#OurDocumentLanguage), [Lists](../libs/documents/releases/0.1.0/docs/language.md#Lists), [Judged harder](engine.md#JudgedHarder)
 
 </details>
 
@@ -434,7 +435,7 @@ A way of judging that raises a missing owner to an error and would lower a liter
 
 ### The laws of the kinds hold
 
-`KindLaws` · `src/scenarios.ts:113` · status: **held**
+`KindLaws` · `src/scenarios.ts:115` · status: **held**
 
 **The laws of the kinds hold · in [Test](architecture.md#Test)**
 
@@ -442,14 +443,14 @@ A way of judging that raises a missing owner to an error and would lower a liter
 |---|---|
 | 43 kinds out of 43 respect all their laws | passed |
 
-<details><summary>The code it runs: 40 nodes</summary>
+<details><summary>The code it runs: 41 nodes</summary>
 
-[Results kept in the process](platform.md#ResultsInTheProcess), [tree-sitter in WebAssembly](platform.md#WebTreeSitter), [Node paths](platform.md#NodePaths), [Files in memory, over the disk](platform.md#MemoryFiles), [Runs kept in the process](platform.md#RunsInTheProcess), [SHA-256 hashes](platform.md#NodeHashing), [Syntax reader](syntax.md#SyntaxReader), [Checks of a body](syntax.md#BodyChecks), [Trame's prelude](platform.md#TramePrelude), [Dates](messages.md#Dates), [TypeScript writer](typescript.md#TypeScriptWriter), [Terraform writer](terraform.md#TerraformWriter), [tsx loader](platform.md#TsxLoader), [Drivers](languages.md#Drivers), [Pseudo-random generator](engine.md#Generator), [References](engine.md#References), [Project](engine.md#Project), [Lists](messages.md#Lists), [Punctuation of documents](documents.md#Punctuation), [Positions](engine.md#Positions), [Order of versions](packages.md#VersionOrder), [Values with their units](documents.md#Units), [Visible text](documents.md#VisibleText), [Fingerprints](engine.md#Fingerprints), [Graph](engine.md#GraphApi), [Laws](engine.md#Laws), [Cycles](engine.md#Cycles), [TypeScript compiler](platform.md#RealTypeScript), [Static reading](engine.md#StaticAnalysis), [Wiring](engine.md#Wiring), [Attribution](shipping.md#Attribution), [The fingerprint of an engine](engine.md#EngineFingerprint), [The runs of a project](engine.md#ProjectRuns), [Packages by their local path](platform.md#LocalPaths), [Packages from the local registry](platform.md#LocalRegistry), [Packages by their origin](platform.md#PackagesByOrigin), [Judged harder](engine.md#JudgedHarder), [Compiler](engine.md#Compiler), [Example process](platform.md#ExampleProcess), [Stopped clock](platform.md#StoppedClock)
+[Results kept in the process](platform.md#ResultsInTheProcess), [tree-sitter in WebAssembly](platform.md#WebTreeSitter), [Node paths](platform.md#NodePaths), [Files in memory, over the disk](platform.md#MemoryFiles), [Runs kept in the process](platform.md#RunsInTheProcess), [SHA-256 hashes](platform.md#NodeHashing), [Syntax reader](syntax.md#SyntaxReader), [Checks of a body](syntax.md#BodyChecks), [Trame's prelude](platform.md#TramePrelude), [The documents in Trame's language](documents.md#OurDocumentLanguage), [Dates](../libs/documents/releases/0.1.0/docs/language.md#Dates), [TypeScript writer](typescript.md#TypeScriptWriter), [Terraform writer](terraform.md#TerraformWriter), [tsx loader](platform.md#TsxLoader), [Drivers](languages.md#Drivers), [Pseudo-random generator](engine.md#Generator), [References](engine.md#References), [Project](engine.md#Project), [Lists](../libs/documents/releases/0.1.0/docs/language.md#Lists), [Punctuation](../libs/documents/releases/0.1.0/docs/language.md#Punctuation), [Positions](engine.md#Positions), [Order of versions](packages.md#VersionOrder), [Values with their units](../libs/documents/releases/0.1.0/docs/language.md#Units), [Visible text](documents.md#VisibleText), [Fingerprints](engine.md#Fingerprints), [Graph](engine.md#GraphApi), [Laws](engine.md#Laws), [Cycles](engine.md#Cycles), [TypeScript compiler](platform.md#RealTypeScript), [Static reading](engine.md#StaticAnalysis), [Wiring](engine.md#Wiring), [Attribution](shipping.md#Attribution), [The fingerprint of an engine](engine.md#EngineFingerprint), [The runs of a project](engine.md#ProjectRuns), [Packages by their local path](platform.md#LocalPaths), [Packages from the local registry](platform.md#LocalRegistry), [Packages by their origin](platform.md#PackagesByOrigin), [Judged harder](engine.md#JudgedHarder), [Compiler](engine.md#Compiler), [Example process](platform.md#ExampleProcess), [Stopped clock](platform.md#StoppedClock)
 
 </details>
 
 - Owner: trame
-- Parameters: `laws` ← [Laws](engine.md#Laws) · `compiler` ← [Compiler](engine.md#Compiler) · `currentProcess` ← [Process](architecture.md#Process) · `clock` ← [Clock](architecture.md#Clock) · `counts` ← [Counts](../std/releases/0.28.0/docs/algebra.md#Counts) · `messages` ← [Messages of the scenarios](messages.md#ScenarioMessages)
+- Parameters: `laws` ← [Laws](engine.md#Laws) · `compiler` ← [Compiler](engine.md#Compiler) · `currentProcess` ← [Process](architecture.md#Process) · `clock` ← [Clock](architecture.md#Clock) · `counts` ← [Counts](../std/releases/0.29.0/docs/algebra.md#Counts) · `messages` ← [Messages of the scenarios](messages.md#ScenarioMessages)
 - Body: inline, in the declaration
 - Effects: execution, keeps, read, time
 - Verifies: [Laws](engine.md#Laws)

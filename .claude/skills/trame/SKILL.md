@@ -190,6 +190,10 @@ How a version becomes available is declared in the graph, with the kinds `role`,
   (a project the library carries under `src/`, named by its package: `#commands/samples/small`). The commands every
   project runs live in `libs/commands` (`plan` so far), taken by a binding in Local only (`follows: [Command]`); a check
   may run one (`runs: Plan`, g127).
+- Reading a language is the engine's (g128): a `language` node's reader may be std's port `LanguageReading`
+  (`ReadByTheEngine`, chosen where the build evaluates). HTML and CSS are std's (`#std/languages`). The documents'
+  language is `libs/documents`' port `DocumentLanguage`, which a project realizes; `Dates`, `Lists`, `Punctuation`,
+  `Units` come from `#documents/language`.
 - A file that runs a shipment elsewhere (a GitHub workflow, a Bash script) is an `artifact` produced by a writer of `ci`
   (`GitHubWorkflow`, `ShellScript`), naming the shipment it `runs`, its `settings` and what it `publishes`: the graph
   decides what is published and kept, never the writer.

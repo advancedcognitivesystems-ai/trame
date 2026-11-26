@@ -10,7 +10,7 @@
 
 ### HCL
 
-`HclSyntax` · `src/terraform.ts:30`
+`HclSyntax` · `src/terraform.ts:31`
 
 The native syntax of the HashiCorp Configuration Language, which Terraform files are written in: blocks, attributes, expressions, templates. The marks that several constructs share are here, with the layout of the files Trame writes, aligned as terraform fmt aligns them.
 
@@ -28,7 +28,7 @@ Source: HCL Native Syntax Specification (hashicorp/hcl v2, hclsyntax/spec.md); T
 | `quote` | `"` | Opens and closes a quoted template, a block's label |
 
 - Maintained by: trame
-- Refines: [Text file](../std/releases/0.28.0/docs/text.md#TextFile)
+- Refines: [Text file](../std/releases/0.29.0/docs/text.md#TextFile)
 - Defines: [Attribute](#HclAttribute), [Comment](#HclComment), [Text](#HclString), [Value](#HclValue), [Module call](#ModuleBlock)
 - Used by: [Attribute](#HclAttribute), [Comment](#HclComment), [Text](#HclString), [Value](#HclValue), [Module call](#ModuleBlock), [Terraform writer](#TerraformWriter)
 - Defines the language: [Terraform](#Terraform)
@@ -37,7 +37,7 @@ Source: HCL Native Syntax Specification (hashicorp/hcl v2, hclsyntax/spec.md); T
 
 ### Terraform modules
 
-`TerraformModules` · `src/terraform.ts:51`
+`TerraformModules` · `src/terraform.ts:52`
 
 How Terraform lays out a module, and calls one: the file that holds a module's main content, the meta-argument that says where the called module is.
 
@@ -58,7 +58,7 @@ Source: Terraform: Standard Module Structure; Module Blocks (the source meta-arg
 
 ### Attribute
 
-`HclAttribute` · `src/terraform.ts:253` · status: **held**
+`HclAttribute` · `src/terraform.ts:254` · status: **held**
 
 A name, padded to the width of the longest name of its block, an equals sign between spaces, then the value: the equals signs of a block line up, as terraform fmt lines them up.
 
@@ -80,7 +80,7 @@ Section: Structural Elements (attribute definitions); Terraform style convention
 
 ### Comment
 
-`HclComment` · `src/terraform.ts:141` · status: **held**
+`HclComment` · `src/terraform.ts:142` · status: **held**
 
 A number sign, a space, then the text, to the end of the line.
 
@@ -105,7 +105,7 @@ Section: Comments and Whitespace · `https://github.com/hashicorp/hcl/blob/main/
 
 ### Text
 
-`HclString` · `src/terraform.ts:160` · status: **held**
+`HclString` · `src/terraform.ts:161` · status: **held**
 
 A quoted template with no substitution: the text between double quotes, written with the escape sequences the Terraform reader decodes (a quote, a backslash, a line feed…, any other control character in \u form), and with $${ and %%{ where the text holds ${ and %{, so that nothing in it is read as a substitution.
 
@@ -122,7 +122,7 @@ Section: Template Expressions (quoted templates, escape sequences) · `https://g
 | `"a \"b\"\n${c} %{d}"` | `"\"a \\\"b\\\"\\n$${c} %%{d}\""` | held, read as Terraform |
 
 - Owner: trame
-- Parameters: `standard` ← [HCL](#HclSyntax) · `terraform` ← [Terraform](#Terraform) · `ecma` ← [ECMAScript](../std/releases/0.28.0/docs/ecmascript.md#EcmaScript) · `counts` ← [Counts](../std/releases/0.28.0/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/releases/0.28.0/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/releases/0.28.0/docs/algebra.md#Texts)
+- Parameters: `standard` ← [HCL](#HclSyntax) · `terraform` ← [Terraform](#Terraform) · `ecma` ← [ECMAScript](../std/releases/0.29.0/docs/ecmascript.md#EcmaScript) · `counts` ← [Counts](../std/releases/0.29.0/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/releases/0.29.0/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/releases/0.29.0/docs/algebra.md#Texts)
 - Body: inline, in the declaration
 - Read as: { before: x = , after:  }
 - Defined by: [HCL](#HclSyntax)
@@ -133,7 +133,7 @@ Section: Template Expressions (quoted templates, escape sequences) · `https://g
 
 ### Value
 
-`HclValue` · `src/terraform.ts:210` · status: **held**
+`HclValue` · `src/terraform.ts:211` · status: **held**
 
 A value of the graph, written in HCL: a text, a number, true or false, a tuple between brackets, an object between braces (a key that is not an identifier is written as a text), null for nothing.
 
@@ -156,7 +156,7 @@ Section: Expressions (literal values, collection values) · `https://github.com/
 | `null` | `"null"` | held, read as Terraform |
 
 - Owner: trame
-- Parameters: `standard` ← [HCL](#HclSyntax) · `text` ← [Text](#HclString) · `values` ← [Types of values](../std/releases/0.28.0/docs/algebra.md#ValueTypes) · `counts` ← [Counts](../std/releases/0.28.0/docs/algebra.md#Counts)
+- Parameters: `standard` ← [HCL](#HclSyntax) · `text` ← [Text](#HclString) · `values` ← [Types of values](../std/releases/0.29.0/docs/algebra.md#ValueTypes) · `counts` ← [Counts](../std/releases/0.29.0/docs/algebra.md#Counts)
 - Body: inline, in the declaration
 - Read as: { before: x = , after:  }
 - Defined by: [HCL](#HclSyntax)
@@ -167,7 +167,7 @@ Section: Expressions (literal values, collection values) · `https://github.com/
 
 ### Module call
 
-`ModuleBlock` · `src/terraform.ts:272` · status: **held**
+`ModuleBlock` · `src/terraform.ts:273` · status: **held**
 
 The block that calls a module: its type, its label (the name of the node in snake_case, Terraform's convention for names), then its attributes, one per line, indented, between braces.
 
@@ -183,7 +183,7 @@ Section: Structural Elements (blocks); Terraform: Module Blocks · `https://deve
 | `"Cache2Db", []` | `"module \"cache2_db\" {\n}"` | held, read as Terraform |
 
 - Owner: trame
-- Parameters: `standard` ← [HCL](#HclSyntax) · `modules` ← [Terraform modules](#TerraformModules) · `text` ← [Text](#HclString) · `texts` ← [Texts](../std/releases/0.28.0/docs/algebra.md#Texts)
+- Parameters: `standard` ← [HCL](#HclSyntax) · `modules` ← [Terraform modules](#TerraformModules) · `text` ← [Text](#HclString) · `texts` ← [Texts](../std/releases/0.29.0/docs/algebra.md#Texts)
 - Body: inline, in the declaration
 - Defined by: [HCL](#HclSyntax)
 - Read in: [Terraform](#Terraform)
@@ -195,7 +195,7 @@ Section: Structural Elements (blocks); Terraform: Module Blocks · `https://deve
 
 ### Terraform
 
-`Terraform` · `src/terraform.ts:68` · status: **held**
+`Terraform` · `src/terraform.ts:69` · status: **held**
 
 The language of the modules an implementation provisions, read with tree-sitter's HCL grammar in its Terraform variant: the variables a module declares (its parameters), its outputs, the values written in it. A module is named "hcl" in the graph (code.file(path, "hcl")).
 
@@ -272,7 +272,7 @@ Escape sequences open with `\`; named: `\n` "\n", `\r` "\r", `\t` "\t", `\"` "\"
 
 - Owner: trame
 - Defined by: [HCL](#HclSyntax)
-- Queries written in: [tree-sitter queries](standards.md#TreeSitterQueries)
+- Queries written in: [tree-sitter queries](../std/releases/0.29.0/docs/languages.md#TreeSitterQueries)
 - Read by: [Syntax reader](syntax.md#SyntaxReader)
 - Uses: [Grammar of HCL](packages.md#HclGrammar)
 - Used by: [Drivers](languages.md#Drivers), [Text](#HclString)
@@ -284,12 +284,12 @@ Escape sequences open with `\`; named: `\n` "\n", `\r` "\r", `\t` "\t", `\"` "\"
 
 ### Terraform writer
 
-`TerraformWriter` · `src/terraform.ts:296` · status: **held**
+`TerraformWriter` · `src/terraform.ts:297` · status: **held**
 
 Writes the infrastructure of the provisioned implementations of an assembly: the call of each module, with the values of the graph and, beside each one, the node it comes from. What it writes is read back before it is written (Drivers).
 
 - Owner: trame
-- Parameters: `syntax` ← [HCL](#HclSyntax) · `modules` ← [Terraform modules](#TerraformModules) · `layout` ← [Project layout](conventions.md#Layout) · `specifiers` ← [Node.js module specifiers](../std/releases/0.28.0/docs/system.md#NodeModuleSpecifiers) · `comment` ← [Comment](#HclComment) · `text` ← [Text](#HclString) · `value` ← [Value](#HclValue) · `attribute` ← [Attribute](#HclAttribute) · `block` ← [Module call](#ModuleBlock) · `paths` ← [Paths](architecture.md#Paths) · `prelude` ← [Prelude](architecture.md#Prelude) · `counts` ← [Counts](../std/releases/0.28.0/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/releases/0.28.0/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/releases/0.28.0/docs/algebra.md#Texts) · `dates` ← [Dates](messages.md#Dates) · `messages` ← [Messages of the drivers](messages.md#DriverMessages)
+- Parameters: `syntax` ← [HCL](#HclSyntax) · `modules` ← [Terraform modules](#TerraformModules) · `layout` ← [Project layout](conventions.md#Layout) · `specifiers` ← [Node.js module specifiers](../std/releases/0.29.0/docs/system.md#NodeModuleSpecifiers) · `comment` ← [Comment](#HclComment) · `text` ← [Text](#HclString) · `value` ← [Value](#HclValue) · `attribute` ← [Attribute](#HclAttribute) · `block` ← [Module call](#ModuleBlock) · `paths` ← [Paths](architecture.md#Paths) · `prelude` ← [Prelude](architecture.md#Prelude) · `counts` ← [Counts](../std/releases/0.29.0/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/releases/0.29.0/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/releases/0.29.0/docs/algebra.md#Texts) · `dates` ← [Dates](../libs/documents/releases/0.1.0/docs/language.md#Dates) · `messages` ← [Messages of the drivers](messages.md#DriverMessages)
 - Body: `./code/terraform/writer.ts` (typescript)
 - Effects: read
 - Serves: [A specification that runs](product.md#ExecutableSpecification)

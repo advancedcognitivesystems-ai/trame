@@ -1087,6 +1087,7 @@
       "id": "engine.EngineAsAProvider",
       "kind": "adr",
       "title": "The engine is a provider",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "The engine's commands reached its modules directly; a command of a library or a project could not, and a command moved out of the engine would have lost what it computed with.",
@@ -1104,6 +1105,18 @@
       "fields": {
         "owner": "trame",
         "messages": "(function)"
+      }
+    },
+    {
+      "id": "engine.LanguageReading",
+      "kind": "port",
+      "title": "Reading a language",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": [
+          "read",
+          "asynchronous"
+        ]
       }
     },
     {
@@ -1144,6 +1157,22 @@
       "fields": {
         "owner": "trame",
         "declaredEffects": []
+      }
+    },
+    {
+      "id": "engine.ReadByTheEngine",
+      "kind": "implementation",
+      "title": "Read by the engine",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "say": "engine.EngineWords"
+        },
+        "body": {
+          "file": "./code/engine/read-by-the-engine.ts",
+          "language": "typescript"
+        }
       }
     },
     {
@@ -1892,6 +1921,320 @@
       }
     },
     {
+      "id": "languages.CssStyleSheets",
+      "kind": "language",
+      "title": "CSS style sheets",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "tag": "css",
+        "grammar": {
+          "module": "tree-sitter-css/tree-sitter-css.wasm",
+          "package": "tree-sitter-css",
+          "version": "0.25.0"
+        },
+        "extensions": [
+          ".css"
+        ],
+        "queries": {
+          "values": {
+            "value": "\n(integer_value) @literal.number\n(float_value) @literal.number\n(color_value) @literal.text\n(string_value) @literal.text\n((plain_value) @literal.text (#match? @literal.text \"[0-9]\") (#not-match? @literal.text \"^--\"))",
+            "meaning": "The values written in a style sheet: a number with its unit, a colour, a text; a plain value that holds a digit, which is the rest of a number the grammar cut (12.5px/1.4 reads 12.5, then px/1.4), a variable aside"
+          },
+          "parts": {
+            "value": "\n(color_value) @literal.part\n((plain_value) @literal.part (#match? @literal.part \"[0-9]\") (#not-match? @literal.part \"^--\"))\n(string_value (string_content) @literal.part)\n(string_value (escape_sequence) @literal.escape)",
+            "meaning": "What a text is made of: a colour, a plain value as written, the content of a quoted text and its escape sequences"
+          },
+          "names": {
+            "value": "\n(attribute_selector (string_value) @name)",
+            "meaning": "What is written like a value but names something: the value an attribute selector matches"
+          },
+          "declarations": {
+            "value": "\n((call_expression (function_name) @_function (arguments . (plain_value) @parameter)) (#eq? @_function \"var\"))\n((declaration (property_name) @output) (#match? @output \"^--\"))",
+            "meaning": "What a sheet receives and gives: each variable it uses (var(--x)), each variable it declares (--x: …)"
+          },
+          "globals": {
+            "value": "\n((call_expression (function_name) @global) (#eq? @global \"url\"))\n(import_statement \"@import\" @global)",
+            "meaning": "What reaches outside the sheet: a resource loaded by its address, another sheet imported"
+          },
+          "roles": {
+            "value": "\n(declaration (_) @role.property)\n(call_expression (function_name) @callee (arguments (_) @role.argument))\n(call_expression (arguments (binary_expression (_) @role.arithmetic)))\n(feature_query (_) @role.condition)",
+            "meaning": "The places that give a literal its role (the engine's roles of a literal): the value of a property, an argument of a function, an operand of a calculation, a condition of a media query"
+          }
+        },
+        "escapes": {
+          "mark": "\\",
+          "single": {},
+          "numeric": [
+            {
+              "prefix": "",
+              "radix": 16,
+              "most": 6,
+              "trailing": [
+                "\r\n",
+                " ",
+                "\t",
+                "\n",
+                "\r",
+                "\f"
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "code": ".a { margin: 0 -2px; color: #fff; }",
+            "literals": [
+              "0",
+              "-2px",
+              "#fff"
+            ],
+            "values": [
+              0,
+              "-2px",
+              "#fff"
+            ],
+            "roles": [
+              "property value",
+              "property value",
+              "property value"
+            ]
+          },
+          {
+            "code": ".b[aria-pressed=\"true\"] { top: calc(env(x, 0px) + 20px); }",
+            "literals": [
+              "0px",
+              "20px"
+            ],
+            "roles": [
+              "argument of env",
+              "arithmetic"
+            ]
+          },
+          {
+            "code": ".c { font: 12.5px/1.4 var(--font, \"A \\\"B\\\" \\2014 C\"); width: var(--w); }",
+            "literals": [
+              "12.5",
+              "px/1.4",
+              "\"A \\\"B\\\" \\2014 C\""
+            ],
+            "values": [
+              12.5,
+              "px/1.4",
+              "A \"B\" —C"
+            ]
+          },
+          {
+            "code": "@import url(theme.css);\n@media (max-width: 920px) { .d { flex: none; } }\n",
+            "literals": [
+              "920px"
+            ],
+            "roles": [
+              "condition"
+            ],
+            "globals": [
+              "@import",
+              "url"
+            ]
+          },
+          {
+            "code": ".e { --gap: var(--space-md); margin: var(--gap) var(--edge, var(--gap)); }",
+            "literals": [],
+            "parameters": [
+              "--space-md",
+              "--gap",
+              "--edge",
+              "--gap"
+            ],
+            "outputs": [
+              "--gap"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "languages.HtmlMarkup",
+      "kind": "language",
+      "title": "HTML markup",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "tag": "html",
+        "grammar": {
+          "module": "tree-sitter-html/tree-sitter-html.wasm",
+          "package": "tree-sitter-html",
+          "version": "0.23.2"
+        },
+        "extensions": [
+          ".html"
+        ],
+        "queries": {
+          "values": {
+            "value": "\n(quoted_attribute_value) @literal.text\n(attribute (attribute_value) @literal.text)\n(text) @literal.text\n(entity) @literal.text",
+            "meaning": "The values written in markup: the value of an attribute, quoted or not; a text; a character reference on its own, between two texts"
+          },
+          "parts": {
+            "value": "\n(attribute_value) @literal.part\n(text) @literal.part\n(entity) @literal.escape",
+            "meaning": "What a value is made of: an attribute's value as written (its character references included: the grammar does not catch them apart there), a text, a character reference"
+          },
+          "names": {
+            "value": "\n((attribute (attribute_name) @_name) @name (#any-of? @_name \"class\" \"id\" \"for\" \"aria-labelledby\" \"aria-describedby\" \"aria-controls\"))",
+            "meaning": "What is written like a value but names something: a class, an identifier, an attribute that refers to an identifier"
+          },
+          "roles": {
+            "value": "\n(attribute (quoted_attribute_value) @role.attribute)\n(attribute (attribute_value) @role.attribute)\n(element (text) @role.content)\n(element (entity) @role.content)",
+            "meaning": "The places that give a literal its role (the engine's roles of a literal): the value of an attribute, the content of an element"
+          }
+        },
+        "escapes": {
+          "mark": "&",
+          "single": {
+            "amp;": "&",
+            "lt;": "<",
+            "gt;": ">",
+            "quot;": "\"",
+            "apos;": "'",
+            "nbsp;": " "
+          },
+          "numeric": [
+            {
+              "prefix": "#x",
+              "radix": 16,
+              "close": ";"
+            },
+            {
+              "prefix": "#X",
+              "radix": 16,
+              "close": ";"
+            },
+            {
+              "prefix": "#",
+              "radix": 10,
+              "close": ";"
+            }
+          ],
+          "keepUnknown": true
+        },
+        "examples": [
+          {
+            "code": "<a id=\"Goal\" href=\"#Goal\">Goal</a>",
+            "literals": [
+              "\"#Goal\"",
+              "Goal"
+            ],
+            "values": [
+              "#Goal",
+              "Goal"
+            ],
+            "roles": [
+              "attribute value",
+              "content of an element"
+            ]
+          },
+          {
+            "code": "<p title=\"a &amp; b &eacute;\">T &lt; U &#x2192; V</p>",
+            "literals": [
+              "\"a &amp; b &eacute;\"",
+              "T",
+              "&lt;",
+              "U",
+              "&#x2192;",
+              "V"
+            ],
+            "values": [
+              "a & b &eacute;",
+              "T",
+              "<",
+              "U",
+              "→",
+              "V"
+            ]
+          },
+          {
+            "code": "<button class=\"chip\" aria-pressed=\"true\" hidden>x</button>",
+            "literals": [
+              "\"true\"",
+              "x"
+            ],
+            "roles": [
+              "attribute value",
+              "content of an element"
+            ]
+          },
+          {
+            "code": "<!DOCTYPE html>\n<style>.a { margin: 0 }</style>\n<script>const x = 1</script>\n",
+            "literals": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "languages.TreeSitterQueries",
+      "kind": "standard",
+      "title": "tree-sitter queries",
+      "fields": {
+        "owner": "trame",
+        "source": "tree-sitter, Query Syntax: Predicates and Directives; the predicates evaluated by web-tree-sitter 0.27 (Query.matches, Query.captures)",
+        "url": "https://tree-sitter.github.io/tree-sitter/using-parsers/queries/3-predicates-and-directives.html",
+        "tag": "scheme",
+        "constants": {
+          "eq": {
+            "value": "#eq?",
+            "meaning": "The capture's text equals a string, or another capture's text"
+          },
+          "notEq": {
+            "value": "#not-eq?",
+            "meaning": "The capture's text differs from a string, or from another capture's text"
+          },
+          "anyEq": {
+            "value": "#any-eq?",
+            "meaning": "One of the quantified capture's nodes equals the string"
+          },
+          "anyNotEq": {
+            "value": "#any-not-eq?",
+            "meaning": "One of the quantified capture's nodes differs from the string"
+          },
+          "match": {
+            "value": "#match?",
+            "meaning": "The capture's text matches a regular expression"
+          },
+          "notMatch": {
+            "value": "#not-match?",
+            "meaning": "The capture's text does not match a regular expression"
+          },
+          "anyMatch": {
+            "value": "#any-match?",
+            "meaning": "One of the quantified capture's nodes matches the regular expression"
+          },
+          "anyNotMatch": {
+            "value": "#any-not-match?",
+            "meaning": "One of the quantified capture's nodes does not match the regular expression"
+          },
+          "anyOf": {
+            "value": "#any-of?",
+            "meaning": "The capture's text is one of the strings that follow"
+          },
+          "notAnyOf": {
+            "value": "#not-any-of?",
+            "meaning": "The capture's text is none of the strings that follow"
+          },
+          "is": {
+            "value": "#is?",
+            "meaning": "Asserts a property of the match (kept aside for the reader)"
+          },
+          "isNot": {
+            "value": "#is-not?",
+            "meaning": "Refutes a property of the match (kept aside for the reader)"
+          },
+          "set": {
+            "value": "#set!",
+            "meaning": "Sets a property on the match: a directive, not a filter"
+          }
+        }
+      }
+    },
+    {
       "id": "measures.Iso8601",
       "kind": "standard",
       "title": "ISO 8601 dates",
@@ -2296,10 +2639,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "127",
+        "version": "129",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g127"
+        "at": "../generations/g129"
       }
     },
     {
@@ -2331,6 +2674,7 @@
       "id": "patterns.Adapter",
       "kind": "pattern",
       "title": "Adapter",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "source": "A. Cockburn, Hexagonal architecture (ports and adapters), 2005; Gamma et al., Design Patterns (1994), Adapter",
@@ -3050,6 +3394,19 @@
         "date": "2026-11-26",
         "what": "the engine as a provider: the port TheProject, realized in the engine and, in a scenario, by the engine that plays it",
         "fingerprint": "6ec9817f19e1eb38",
+        "language": "shared"
+      }
+    },
+    {
+      "id": "releases.R0_29_0",
+      "kind": "release",
+      "title": "Version 0.29.0",
+      "fields": {
+        "owner": "trame",
+        "version": "0.29.0",
+        "date": "2026-11-26",
+        "what": "the languages the engine reads for every project (HTML, CSS), read through the port LanguageReading, which the engine realizes",
+        "fingerprint": "2229329d5c9f983b",
         "language": "shared"
       }
     },
@@ -4170,6 +4527,23 @@
       }
     },
     {
+      "id": "scenarios.LanguagesRead",
+      "kind": "scenario",
+      "title": "The languages read by the engine",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "reader": "engine.LanguageReading",
+          "html": "languages.HtmlMarkup",
+          "css": "languages.CssStyleSheets",
+          "counts": "algebra.Counts",
+          "checks": "scenarios.ScenarioChecks"
+        },
+        "body": "(function)"
+      }
+    },
+    {
       "id": "scenarios.MergedOnceItHolds",
       "kind": "scenario",
       "title": "A pull request merged once it holds",
@@ -4229,6 +4603,16 @@
           "exit": "system.ExitStatus"
         },
         "body": "(function)"
+      }
+    },
+    {
+      "id": "scenarios.ReadInTheEngine",
+      "kind": "binding",
+      "title": "Read by the engine that builds",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "Reading a language is the engine's: the grammar and its reader are the engine's packages, which no library carries."
       }
     },
     {
@@ -6212,6 +6596,16 @@
       "kind": "appliedBy"
     },
     {
+      "from": "engine.EngineAsAProvider",
+      "to": "engine.LanguageReading",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "engine.EngineAsAProvider",
+      "to": "engine.ReadByTheEngine",
+      "kind": "appliedBy"
+    },
+    {
       "from": "engine.EngineWords",
       "to": "tooling.CommandLanguage",
       "kind": "language"
@@ -6238,6 +6632,16 @@
     },
     {
       "from": "engine.ProjectInTheEngine",
+      "to": "engine.EngineWords",
+      "kind": "deps"
+    },
+    {
+      "from": "engine.ReadByTheEngine",
+      "to": "engine.LanguageReading",
+      "kind": "implements"
+    },
+    {
+      "from": "engine.ReadByTheEngine",
       "to": "engine.EngineWords",
       "kind": "deps"
     },
@@ -6320,6 +6724,36 @@
       "from": "judgment.Raising",
       "to": "product.SharedOperations",
       "kind": "serves"
+    },
+    {
+      "from": "languages.CssStyleSheets",
+      "to": "html.Css",
+      "kind": "standard"
+    },
+    {
+      "from": "languages.CssStyleSheets",
+      "to": "languages.TreeSitterQueries",
+      "kind": "queryLanguage"
+    },
+    {
+      "from": "languages.CssStyleSheets",
+      "to": "engine.LanguageReading",
+      "kind": "reader"
+    },
+    {
+      "from": "languages.HtmlMarkup",
+      "to": "html.Html",
+      "kind": "standard"
+    },
+    {
+      "from": "languages.HtmlMarkup",
+      "to": "languages.TreeSitterQueries",
+      "kind": "queryLanguage"
+    },
+    {
+      "from": "languages.HtmlMarkup",
+      "to": "engine.LanguageReading",
+      "kind": "reader"
     },
     {
       "from": "measures.Iso8601",
@@ -7512,6 +7946,41 @@
       "kind": "serves"
     },
     {
+      "from": "releases.R0_29_0",
+      "to": "product.ChosenCommands",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_29_0",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_29_0",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_29_0",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_29_0",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_29_0",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_29_0",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
       "from": "releases.R0_3_0",
       "to": "product.CitedNotCopied",
       "kind": "serves"
@@ -8332,6 +8801,41 @@
       "kind": "serves"
     },
     {
+      "from": "scenarios.LanguagesRead",
+      "to": "engine.ReadByTheEngine",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.LanguagesRead",
+      "to": "scenarios.Test",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.LanguagesRead",
+      "to": "engine.LanguageReading",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.LanguagesRead",
+      "to": "languages.HtmlMarkup",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.LanguagesRead",
+      "to": "languages.CssStyleSheets",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.LanguagesRead",
+      "to": "algebra.Counts",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.LanguagesRead",
+      "to": "scenarios.ScenarioChecks",
+      "kind": "deps"
+    },
+    {
       "from": "scenarios.MergedOnceItHolds",
       "to": "commands.MergePullRequest",
       "kind": "verifies"
@@ -8535,6 +9039,26 @@
       "from": "scenarios.PullRequestOpened",
       "to": "system.ExitStatus",
       "kind": "deps"
+    },
+    {
+      "from": "scenarios.ReadInTheEngine",
+      "to": "engine.ReadByTheEngine",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.ReadInTheEngine",
+      "to": "scenarios.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "scenarios.ReadInTheEngine",
+      "to": "patterns.Adapter",
+      "kind": "follows"
+    },
+    {
+      "from": "scenarios.ReadInTheEngine",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
     },
     {
       "from": "scenarios.RepositoryInMemoryKeeps",

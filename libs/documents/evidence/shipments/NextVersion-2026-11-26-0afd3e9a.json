@@ -1,0 +1,68 @@
+{
+  "shipment": "sdlc.NextVersion",
+  "title": "The next version",
+  "target": "version",
+  "at": "2026-11-26",
+  "by": "claude",
+  "signature": "attribution",
+  "artifacts": [
+    {
+      "node": "sdlc.TheLibrary",
+      "path": "src",
+      "fingerprint": "c129edb86a12dca60dd21dfcf77b504ac47a7e649c124520e962fb790a76c725"
+    }
+  ],
+  "foundations": {
+    "problems": 0
+  },
+  "obligations": [
+    {
+      "node": "sdlc.TheLibrary",
+      "kind": "artifact",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-26",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "c129edb86a12dca60dd21dfcf77b504ac47a7e649c124520e962fb790a76c725",
+          "code": "636e0cc8",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "ee027dcb6d4b0887",
+          "seal": "351fc1dea9093adfe41ee4418ba278857fec491d2e4ac5b2cdd8e750631cf4e3"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.LanguageWritten",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.CodeVerified",
+      "via": "language.Dates",
+      "outcome": [
+        {
+          "name": "2026-10-17 is written as people read it, long and short, and its month",
+          "status": "passed"
+        },
+        {
+          "name": "Three items are joined by the words of a conjunction, as they are",
+          "status": "passed"
+        },
+        {
+          "name": "The marks between the parts of a line are those of the language of the documents",
+          "status": "passed"
+        },
+        {
+          "name": "A number is written with two decimals at most; a quantity in the largest of its units it makes a whole number of",
+          "status": "passed"
+        }
+      ]
+    }
+  ],
+  "deployed": []
+}

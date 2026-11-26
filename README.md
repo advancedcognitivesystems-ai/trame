@@ -599,7 +599,11 @@ dispatch prepared for a command, another compiled at a date, each with what a vi
 writes it), the engine gives it, and std's port `TheProject` reaches it, realized on a machine by an adapter that reads
 it and, in a scenario, by the engine that plays the scenario compiling a project the library carries in its sources.
 The commands every project runs move onto it into `libs/commands`, one by one: `plan` first, which Trame now runs from
-the library, and which says what the engine's plan said. Governance is rules too: a `rule` applies a requirement of
+the library, and which says what the engine's plan said. Reading a language is the engine's too (since g128): the languages it reads for every
+project (HTML and CSS) are std's, read through std's port `LanguageReading`, so the syntax elements of any library can
+name them and have what they write read back. The renderers of documents go into a library of their own,
+`libs/documents`, which starts with the language the documents are written in: the engine's, as a port Trame realizes,
+with the dates, lists, punctuation and units written in it. Governance is rules too: a `rule` applies a requirement of
 `#std/rules` (`Reaches`, `NeverReaches`, `Linked`, `WithoutEffects`, `WordsOf`) with its parameters, and says why
 through what it serves or the ADR that applies it, instead of hiding a function.
 

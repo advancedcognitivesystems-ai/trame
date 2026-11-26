@@ -675,6 +675,48 @@ Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Ge
 - Released by: trame
 - Releases: [Trame on the command line](architecture.md#TrameCli)
 - Assembled by: [Generation 126](#G126)
+- Assembled: [Generation 128](#G128)
+
+<a id="G128"></a>
+
+### Generation 128
+
+`G128` · `src/releases.ts:1899`
+
+the engine's API gives its reader of languages; a language's reader may be a port
+
+Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Generation 127](#G127).
+
+- Version: `g128`
+- Released on: 26 November 2026
+- Fingerprint: `137d864134b2044b`
+- Language: the repository's, shared
+- Language archived: `059fee84b1865ef7`
+
+- Released by: trame
+- Releases: [Trame on the command line](architecture.md#TrameCli)
+- Assembled by: [Generation 127](#G127)
+- Assembled: [Generation 129](#G129)
+
+<a id="G129"></a>
+
+### Generation 129
+
+`G129` · `src/releases.ts:1914`
+
+std's languages read by the engine, the documents' language from libs/documents; a project compiled through the API gives the views back
+
+Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Generation 128](#G128).
+
+- Version: `g129`
+- Released on: 26 November 2026
+- Fingerprint: `73e039b544e87476`
+- Language: the repository's, shared
+- Language archived: `33f89a045e47daa4`
+
+- Released by: trame
+- Releases: [Trame on the command line](architecture.md#TrameCli)
+- Assembled by: [Generation 128](#G128)
 
 <a id="G13"></a>
 

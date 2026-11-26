@@ -16,11 +16,11 @@ import { PackedGraph } from "./page"
 import { PageLoading } from "#std/platform"
 import { PackageSources } from "#std/tooling"
 import { Http } from "#std/web"
-import { TsxPackage, TypeScriptPackage, NodeTypes, WebTreeSitterPackage, EsbuildPackage, NpmLockfile } from "./packages"
+import { TsxPackage, TypeScriptPackage, NodeTypes, WebTreeSitterPackage, HtmlGrammar, CssGrammar, EsbuildPackage, NpmLockfile } from "./packages"
 import { ExitStatus, NodeArguments, NodeCli, NodeEvents, Posix, NpmCli, NodeModuleSpecifiers, NodeEncodings, NpmManifest } from "#std/system"
 import { Iso8601 } from "#std/measures"
 import { UnifiedDiff, TextFile } from "#std/text"
-import { Punctuation } from "./documents"
+import { Punctuation } from "#documents/language"
 import { PlatformMessages } from "./messages"
 import { Counts, Sequences, Texts, ValueTypes } from "#std/algebra"
 import { TrameCommands, TrameEnvironment, Layout, LanguageNames, KeptCommands } from "./conventions"
@@ -115,7 +115,8 @@ export const RealTypeScript = implementation({
  */
 export const WebTreeSitter = implementation({
   owner: "trame", implements: [SyntaxTrees],
-  packages: [WebTreeSitterPackage],
+  // The grammars of the languages std declares, which the engine reads for every project (since g129).
+  packages: [WebTreeSitterPackage, HtmlGrammar, CssGrammar],
   deps: { messages: PlatformMessages },
   body: code.file("./code/platform/web-tree-sitter.ts"),
 })

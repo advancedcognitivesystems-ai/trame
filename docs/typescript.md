@@ -10,7 +10,7 @@
 
 ### TypeScript's libraries of types
 
-`TypeScriptLibraries` · `src/typescript.ts:38`
+`TypeScriptLibraries` · `src/typescript.ts:39`
 
 The declaration files TypeScript ships with its compiler: those of ECMAScript are named lib.es5.d.ts, lib.es2015.core.d.ts and so on; the others declare what a host gives (lib.dom.d.ts, a browser's; lib.webworker.d.ts, a worker's). A global declared only by ECMAScript's does nothing outside, but for a few members (Math.random, Date.now).
 
@@ -29,7 +29,7 @@ Source: TypeScript, the lib option and the declaration files under src/lib of th
 
 ### The syntax of the programs Trame writes
 
-`TypeScriptSyntax` · `src/typescript.ts:257`
+`TypeScriptSyntax` · `src/typescript.ts:258`
 
 ECMAScript's grammar, and the few constructs of TypeScript an assembled program uses (a type assertion, an object type, a union). The marks that several constructs share are here, with the layout of the programs: a space between tokens where it reads better, two spaces before an element on a line of its own.
 
@@ -57,7 +57,7 @@ Source: ECMA-262, ECMAScript 2024 (§ 12 lexical grammar, § 13 expressions, § 
 | `commentEnd` | `*/` | Closes a multi-line comment (§ 12.4) |
 
 - Maintained by: trame
-- Refines: [Text file](../std/releases/0.28.0/docs/text.md#TextFile)
+- Refines: [Text file](../std/releases/0.29.0/docs/text.md#TextFile)
 - Used by: [Rewriting an example](commands.md#ExampleRewriting), [Start a project](commands.md#Init), [A module of references](commands.md#ReferencesModule), [Static reading](engine.md#StaticAnalysis), [Records of the releases](generations.md#ReleaseRecords), [Amendments in place](platform.md#InPlaceSources), [List on several lines](#ArrayLiteral), [Type assertion](#AsExpression), [Assignment](#Assignment), [Async function of a block](#AsyncBlockFunction), [Waiting](#Await), [Call](#Call), [Constant](#ConstDeclaration), [Default import](#DefaultImport), [Documentation comment](#DocBlock), [Export](#ExportDeclaration), [Condition](#IfStatement), [List on one line](#InlineArray), [Comment](#LineComment), [Property access](#MemberAccess), [Title of a module](#ModuleTitle), [Import of names](#NamedImport), [Object on several lines](#ObjectBlock), [Object](#ObjectLiteral), [Object type](#ObjectType), [Optional property access](#OptionalAccess), [Optional property of a type](#OptionalPropertySignature), [Group](#Parenthesized), [Property](#Property), [Strict inequality](#StrictInequality), [Text](#StringLiteral), [TypeScript writer](#TypeScriptWriter), [Union type](#UnionType)
 - Defines: [List on several lines](#ArrayLiteral), [Type assertion](#AsExpression), [Assignment](#Assignment), [Async function of a block](#AsyncBlockFunction), [Waiting](#Await), [Call](#Call), [Constant](#ConstDeclaration), [Default import](#DefaultImport), [Documentation comment](#DocBlock), [Export](#ExportDeclaration), [Condition](#IfStatement), [List on one line](#InlineArray), [Comment](#LineComment), [Property access](#MemberAccess), [Title of a module](#ModuleTitle), [Import of names](#NamedImport), [Object on several lines](#ObjectBlock), [Object](#ObjectLiteral), [Object type](#ObjectType), [Optional property access](#OptionalAccess), [Optional property of a type](#OptionalPropertySignature), [Group](#Parenthesized), [Property](#Property), [Strict inequality](#StrictInequality), [Text](#StringLiteral), [Union type](#UnionType)
 
@@ -67,7 +67,7 @@ Source: ECMA-262, ECMAScript 2024 (§ 12 lexical grammar, § 13 expressions, § 
 
 ### Globals that reach outside
 
-`WorldGlobals` · `src/typescript.ts:54`
+`WorldGlobals` · `src/typescript.ts:55`
 
 The globals through which a body would touch the world: the network, the process, the time, randomness, storage. Only the kinds that may touch the platform (implementations) use them; the TypeScript queries watch each one.
 
@@ -98,7 +98,7 @@ The globals through which a body would touch the world: the network, the process
 
 ### List on several lines
 
-`ArrayLiteral` · `src/typescript.ts:495` · status: **held**
+`ArrayLiteral` · `src/typescript.ts:496` · status: **held**
 
 An opening bracket, then each element on a line of its own, indented and followed by a comma, then the closing bracket on a line of its own.
 
@@ -126,7 +126,7 @@ Section: 13.2.4 Array initializer · `https://tc39.es/ecma262/2024/#sec-array-in
 
 ### Type assertion
 
-`AsExpression` · `src/typescript.ts:641` · status: **held**
+`AsExpression` · `src/typescript.ts:642` · status: **held**
 
 An expression, the keyword as, then the type the program asserts it has.
 
@@ -152,7 +152,7 @@ Section: TypeScript: type assertions · `https://www.typescriptlang.org/docs/han
 
 ### Assignment
 
-`Assignment` · `src/typescript.ts:750` · status: **held**
+`Assignment` · `src/typescript.ts:751` · status: **held**
 
 A place, an equals sign, then the value it receives.
 
@@ -173,7 +173,7 @@ Section: 13.15 Assignment operators · `https://tc39.es/ecma262/2024/#sec-assign
 
 ### Async function of a block
 
-`AsyncBlockFunction` · `src/typescript.ts:766` · status: **held**
+`AsyncBlockFunction` · `src/typescript.ts:767` · status: **held**
 
 The keyword async, no parameter, an arrow, then a block: each statement on a line of its own, indented, and last the keyword return with the value it gives.
 
@@ -201,7 +201,7 @@ Section: 15.9 Async arrow function definitions · `https://tc39.es/ecma262/2024/
 
 ### Waiting
 
-`Await` · `src/typescript.ts:388` · status: **held**
+`Await` · `src/typescript.ts:389` · status: **held**
 
 The keyword await, a space, then the promise waited for.
 
@@ -227,7 +227,7 @@ Section: 15.8 Async function definitions (AwaitExpression) · `https://tc39.es/e
 
 ### Call
 
-`Call` · `src/typescript.ts:368` · status: **held**
+`Call` · `src/typescript.ts:369` · status: **held**
 
 What is called, then its arguments in parentheses, separated by commas.
 
@@ -250,7 +250,7 @@ Section: 13.3.6 Function calls · `https://tc39.es/ecma262/2024/#sec-function-ca
 
 ### Constant
 
-`ConstDeclaration` · `src/typescript.ts:590` · status: **held**
+`ConstDeclaration` · `src/typescript.ts:591` · status: **held**
 
 The keyword const, the name, an equals sign, then the value.
 
@@ -275,7 +275,7 @@ Section: 14.3.1 Let and const declarations · `https://tc39.es/ecma262/2024/#sec
 
 ### Default import
 
-`DefaultImport` · `src/typescript.ts:624` · status: **held**
+`DefaultImport` · `src/typescript.ts:625` · status: **held**
 
 The keyword import, a name for what the module exports by default, the keyword from, then the module as a text.
 
@@ -296,7 +296,7 @@ Section: 16.2.2 Imports (ImportedDefaultBinding) · `https://tc39.es/ecma262/202
 
 ### Documentation comment
 
-`DocBlock` · `src/typescript.ts:557` · status: **held**
+`DocBlock` · `src/typescript.ts:558` · status: **held**
 
 The opening of a documentation comment on its line, then each line of the text after a space, an asterisk and a space, then the end of the comment after a space: the comment Trame reads a node's title and description from.
 
@@ -321,7 +321,7 @@ Section: 12.4 Comments (MultiLineComment), as JSDoc writes them · `https://tc39
 
 ### Export
 
-`ExportDeclaration` · `src/typescript.ts:539` · status: **held**
+`ExportDeclaration` · `src/typescript.ts:540` · status: **held**
 
 The keyword export, then a declaration: what the module gives to those who import it.
 
@@ -346,7 +346,7 @@ Section: 16.2.3 Exports · `https://tc39.es/ecma262/2024/#sec-exports`
 
 ### Condition
 
-`IfStatement` · `src/typescript.ts:714` · status: **held**
+`IfStatement` · `src/typescript.ts:715` · status: **held**
 
 The keyword if, the condition in parentheses, then the statement it guards.
 
@@ -371,7 +371,7 @@ Section: 14.6 The if statement · `https://tc39.es/ecma262/2024/#sec-if-statemen
 
 ### List on one line
 
-`InlineArray` · `src/typescript.ts:472` · status: **held**
+`InlineArray` · `src/typescript.ts:473` · status: **held**
 
 Its elements between brackets, separated by commas: a short list, a property's value.
 
@@ -399,7 +399,7 @@ Section: 13.2.4 Array initializer · `https://tc39.es/ecma262/2024/#sec-array-in
 
 ### Comment
 
-`LineComment` · `src/typescript.ts:294` · status: **held**
+`LineComment` · `src/typescript.ts:295` · status: **held**
 
 Two slashes, a space, then the text, to the end of the line.
 
@@ -424,7 +424,7 @@ Section: 12.4 Comments (SingleLineComment) · `https://tc39.es/ecma262/2024/#sec
 
 ### Property access
 
-`MemberAccess` · `src/typescript.ts:331` · status: **held**
+`MemberAccess` · `src/typescript.ts:332` · status: **held**
 
 An object, a dot, then the name of the property.
 
@@ -450,7 +450,7 @@ Section: 13.3.2 Property accessors · `https://tc39.es/ecma262/2024/#sec-propert
 
 ### Title of a module
 
-`ModuleTitle` · `src/typescript.ts:575` · status: **held**
+`ModuleTitle` · `src/typescript.ts:576` · status: **held**
 
 A documentation comment on one line, at the very start of a module of the graph: the title its documents take.
 
@@ -471,7 +471,7 @@ Section: 12.4 Comments (MultiLineComment), as JSDoc writes them · `https://tc39
 
 ### Import of names
 
-`NamedImport` · `src/typescript.ts:607` · status: **held**
+`NamedImport` · `src/typescript.ts:608` · status: **held**
 
 The keyword import, the names between braces, the keyword from, then the module as a text.
 
@@ -492,7 +492,7 @@ Section: 16.2.2 Imports (NamedImports) · `https://tc39.es/ecma262/2024/#sec-imp
 
 ### Object on several lines
 
-`ObjectBlock` · `src/typescript.ts:519` · status: **held**
+`ObjectBlock` · `src/typescript.ts:520` · status: **held**
 
 An opening brace, then each property on a line of its own, indented and followed by a comma, then the closing brace on a line of its own.
 
@@ -515,7 +515,7 @@ Section: 13.2.5 Object initializer · `https://tc39.es/ecma262/2024/#sec-object-
 
 ### Object
 
-`ObjectLiteral` · `src/typescript.ts:450` · status: **held**
+`ObjectLiteral` · `src/typescript.ts:451` · status: **held**
 
 Its properties between braces, separated by commas, a space inside each brace; two braces for no property.
 
@@ -528,7 +528,7 @@ Section: 13.2.5 Object initializer · `https://tc39.es/ecma262/2024/#sec-object-
 | `[]` | `"{}"` | held, read as TypeScript |
 
 - Owner: trame
-- Parameters: `standard` ← [The syntax of the programs Trame writes](#TypeScriptSyntax) · `counts` ← [Counts](../std/releases/0.28.0/docs/algebra.md#Counts)
+- Parameters: `standard` ← [The syntax of the programs Trame writes](#TypeScriptSyntax) · `counts` ← [Counts](../std/releases/0.29.0/docs/algebra.md#Counts)
 - Body: inline, in the declaration
 - Read as: { before: (, after: ) }
 - Defined by: [The syntax of the programs Trame writes](#TypeScriptSyntax)
@@ -539,7 +539,7 @@ Section: 13.2.5 Object initializer · `https://tc39.es/ecma262/2024/#sec-object-
 
 ### Object type
 
-`ObjectType` · `src/typescript.ts:677` · status: **held**
+`ObjectType` · `src/typescript.ts:678` · status: **held**
 
 Its properties between braces, separated by semicolons, a space inside each brace.
 
@@ -565,7 +565,7 @@ Section: TypeScript: object types · `https://www.typescriptlang.org/docs/handbo
 
 ### Optional property access
 
-`OptionalAccess` · `src/typescript.ts:350` · status: **held**
+`OptionalAccess` · `src/typescript.ts:351` · status: **held**
 
 An object that may be absent, a question mark and a dot, then the name of the property: nothing when the object is not there.
 
@@ -591,7 +591,7 @@ Section: 13.3.9 Optional chains · `https://tc39.es/ecma262/2024/#sec-optional-c
 
 ### Optional property of a type
 
-`OptionalPropertySignature` · `src/typescript.ts:659` · status: **held**
+`OptionalPropertySignature` · `src/typescript.ts:660` · status: **held**
 
 A name, a question mark, a colon, a space, then the type: the property may be missing.
 
@@ -617,7 +617,7 @@ Section: TypeScript: optional properties · `https://www.typescriptlang.org/docs
 
 ### Group
 
-`Parenthesized` · `src/typescript.ts:406` · status: **held**
+`Parenthesized` · `src/typescript.ts:407` · status: **held**
 
 An expression in parentheses: what follows applies to all of it.
 
@@ -639,7 +639,7 @@ Section: 13.2.9 The grouping operator · `https://tc39.es/ecma262/2024/#sec-grou
 
 ### Property
 
-`Property` · `src/typescript.ts:423` · status: **held**
+`Property` · `src/typescript.ts:424` · status: **held**
 
 A name, a colon, a space, then the value; only the name when the value is a variable of that name. A name that is not an identifier is written as a text.
 
@@ -668,7 +668,7 @@ Section: 13.2.5 Object initializer (PropertyDefinition) · `https://tc39.es/ecma
 
 ### Strict inequality
 
-`StrictInequality` · `src/typescript.ts:732` · status: **held**
+`StrictInequality` · `src/typescript.ts:733` · status: **held**
 
 Two values, and between them the operator that holds when they differ, without conversion.
 
@@ -694,7 +694,7 @@ Section: 13.11 Equality operators · `https://tc39.es/ecma262/2024/#sec-equality
 
 ### Text
 
-`StringLiteral` · `src/typescript.ts:312` · status: **held**
+`StringLiteral` · `src/typescript.ts:313` · status: **held**
 
 A text, between double quotes, escaped as JSON escapes it: since ECMAScript 2019, every JSON text is an ECMAScript expression.
 
@@ -717,7 +717,7 @@ Section: 12.9.4 String literals; 25.5.2 JSON.stringify · `https://tc39.es/ecma2
 
 ### Union type
 
-`UnionType` · `src/typescript.ts:696` · status: **held**
+`UnionType` · `src/typescript.ts:697` · status: **held**
 
 Its types, separated by a vertical bar between spaces: a value of any of them.
 
@@ -745,7 +745,7 @@ Section: TypeScript: union types · `https://www.typescriptlang.org/docs/handboo
 
 ### TypeScript
 
-`TypeScript` · `src/typescript.ts:80` · status: **held**
+`TypeScript` · `src/typescript.ts:81` · status: **held**
 
 The language of the graph, its kinds and its bodies. Read with the tree-sitter grammar for TypeScript: literals, names, imports, roles, the globals that reach outside, the default export, and the inline bodies of declarations.
 
@@ -930,12 +930,12 @@ Escape sequences open with `\`; named: `\0` "\u0000", `\n` "\n", `\t` "\t", `\r`
 | `interface E {   on: T;   in: Node<"c"> }` | literals [] | held |
 
 - Owner: trame
-- Defined by: [ECMAScript](../std/releases/0.28.0/docs/ecmascript.md#EcmaScript)
-- Queries written in: [tree-sitter queries](standards.md#TreeSitterQueries)
+- Defined by: [ECMAScript](../std/releases/0.29.0/docs/ecmascript.md#EcmaScript)
+- Queries written in: [tree-sitter queries](../std/releases/0.29.0/docs/languages.md#TreeSitterQueries)
 - Read by: [Syntax reader](syntax.md#SyntaxReader)
 - Watches the globals: [Globals that reach outside](#WorldGlobals)
 - Uses: [Grammar of TypeScript](packages.md#TypeScriptGrammar)
-- Used by: [A body is read and checked](command-scenarios.md#BodiesReadAndChecked), [The manifest written](command-scenarios.md#ManifestWritten), [A project started](command-scenarios.md#ProjectStarted), [The registry filled](command-scenarios.md#RegistryFilled), [Advance](commands.md#Advance), [Start a project](commands.md#Init), [Release a version](commands.md#Release), [Write the manifest](commands.md#WriteManifest), [Assembly](engine.md#Assembly), [The fingerprint of an engine](engine.md#EngineFingerprint), [Graph](engine.md#GraphApi), [Project](engine.md#Project), [Drivers](languages.md#Drivers), [Page resources](platform.md#PageResources), [tsx loader](platform.md#TsxLoader), [Advance](sdlc.md#AdvanceAGeneration), [How a version is carried across Trame's repository](sdlc.md#OurPropagation), [TypeScript writer](#TypeScriptWriter)
+- Used by: [A body is read and checked](command-scenarios.md#BodiesReadAndChecked), [The engine's API](command-scenarios.md#EngineApiGiven), [The manifest written](command-scenarios.md#ManifestWritten), [A project started](command-scenarios.md#ProjectStarted), [The registry filled](command-scenarios.md#RegistryFilled), [Advance](commands.md#Advance), [Start a project](commands.md#Init), [Release a version](commands.md#Release), [Write the manifest](commands.md#WriteManifest), [Assembly](engine.md#Assembly), [The fingerprint of an engine](engine.md#EngineFingerprint), [Graph](engine.md#GraphApi), [Project](engine.md#Project), [Drivers](languages.md#Drivers), [Page resources](platform.md#PageResources), [tsx loader](platform.md#TsxLoader), [Advance](sdlc.md#AdvanceAGeneration), [How a version is carried across Trame's repository](sdlc.md#OurPropagation), [TypeScript writer](#TypeScriptWriter)
 - Reads the elements: [JSON in a script](html.md#JsonInScript), [List on several lines](#ArrayLiteral), [Type assertion](#AsExpression), [Assignment](#Assignment), [Async function of a block](#AsyncBlockFunction), [Waiting](#Await), [Call](#Call), [Constant](#ConstDeclaration), [Default import](#DefaultImport), [Documentation comment](#DocBlock), [Export](#ExportDeclaration), [Condition](#IfStatement), [List on one line](#InlineArray), [Comment](#LineComment), [Property access](#MemberAccess), [Title of a module](#ModuleTitle), [Import of names](#NamedImport), [Object on several lines](#ObjectBlock), [Object](#ObjectLiteral), [Object type](#ObjectType), [Optional property access](#OptionalAccess), [Optional property of a type](#OptionalPropertySignature), [Group](#Parenthesized), [Property](#Property), [Strict inequality](#StrictInequality), [Text](#StringLiteral), [Union type](#UnionType)
 - Applies: [The graph is written in TypeScript](principles.md#GraphInTypeScript)
 
@@ -945,7 +945,7 @@ Escape sequences open with `\`; named: `\0` "\u0000", `\n` "\n", `\t` "\t", `\r`
 
 ### Names of a program
 
-`ProgramNames` · `src/typescript.ts:794`
+`ProgramNames` · `src/typescript.ts:795`
 
 How the TypeScript writer names what a program declares: the result of the start, the import of a body (the prefix, then the name of the step), the periods of a graph that changes at known dates and the builder of each (the prefix, then its position). A step whose name is taken takes its module as a prefix, as in the plan (StepNames).
 
@@ -967,12 +967,12 @@ How the TypeScript writer names what a program declares: the result of the start
 
 ### TypeScript writer
 
-`TypeScriptWriter` · `src/typescript.ts:808` · status: **held**
+`TypeScriptWriter` · `src/typescript.ts:809` · status: **held**
 
 Writes the program of an assembled component, always frozen, with the syntax elements above: the build order, the implementation chosen for each port and the values of the graph are written in it; it imports only the bodies, the prelude's tooling and the declarations it must read. What it writes is read back before it is written (Drivers).
 
 - Owner: trame
-- Parameters: `language` ← [TypeScript](#TypeScript) · `syntax` ← [The syntax of the programs Trame writes](#TypeScriptSyntax) · `frozen` ← [The frozen API](conventions.md#FrozenApi) · `node` ← [Node.js process and console](../std/releases/0.28.0/docs/system.md#NodeProcessApi) · `specifiers` ← [Node.js module specifiers](../std/releases/0.28.0/docs/system.md#NodeModuleSpecifiers) · `names` ← [Names of a program](#ProgramNames) · `stepNames` ← [Names of steps](conventions.md#StepNames) · `references` ← [Trame references](conventions.md#ReferenceSyntax) · `comment` ← [Comment](#LineComment) · `text` ← [Text](#StringLiteral) · `member` ← [Property access](#MemberAccess) · `optional` ← [Optional property access](#OptionalAccess) · `call` ← [Call](#Call) · `wait` ← [Waiting](#Await) · `group` ← [Group](#Parenthesized) · `property` ← [Property](#Property) · `object` ← [Object](#ObjectLiteral) · `array` ← [List on several lines](#ArrayLiteral) · `constant` ← [Constant](#ConstDeclaration) · `namedImport` ← [Import of names](#NamedImport) · `defaultImport` ← [Default import](#DefaultImport) · `assertion` ← [Type assertion](#AsExpression) · `optionalProperty` ← [Optional property of a type](#OptionalPropertySignature) · `objectType` ← [Object type](#ObjectType) · `union` ← [Union type](#UnionType) · `condition` ← [Condition](#IfStatement) · `differs` ← [Strict inequality](#StrictInequality) · `assignment` ← [Assignment](#Assignment) · `inline` ← [List on one line](#InlineArray) · `block` ← [Async function of a block](#AsyncBlockFunction) · `environment` ← [Trame's environment](conventions.md#TrameEnvironment) · `paths` ← [Paths](architecture.md#Paths) · `prelude` ← [Prelude](architecture.md#Prelude) · `reservedWords` ← [ECMAScript reserved words](../std/releases/0.28.0/docs/ecmascript.md#EcmaScriptReservedWords) · `sequences` ← [Sequences](../std/releases/0.28.0/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/releases/0.28.0/docs/algebra.md#Texts) · `dates` ← [Dates](messages.md#Dates) · `messages` ← [Messages of the drivers](messages.md#DriverMessages)
+- Parameters: `language` ← [TypeScript](#TypeScript) · `syntax` ← [The syntax of the programs Trame writes](#TypeScriptSyntax) · `frozen` ← [The frozen API](conventions.md#FrozenApi) · `node` ← [Node.js process and console](../std/releases/0.29.0/docs/system.md#NodeProcessApi) · `specifiers` ← [Node.js module specifiers](../std/releases/0.29.0/docs/system.md#NodeModuleSpecifiers) · `names` ← [Names of a program](#ProgramNames) · `stepNames` ← [Names of steps](conventions.md#StepNames) · `references` ← [Trame references](conventions.md#ReferenceSyntax) · `comment` ← [Comment](#LineComment) · `text` ← [Text](#StringLiteral) · `member` ← [Property access](#MemberAccess) · `optional` ← [Optional property access](#OptionalAccess) · `call` ← [Call](#Call) · `wait` ← [Waiting](#Await) · `group` ← [Group](#Parenthesized) · `property` ← [Property](#Property) · `object` ← [Object](#ObjectLiteral) · `array` ← [List on several lines](#ArrayLiteral) · `constant` ← [Constant](#ConstDeclaration) · `namedImport` ← [Import of names](#NamedImport) · `defaultImport` ← [Default import](#DefaultImport) · `assertion` ← [Type assertion](#AsExpression) · `optionalProperty` ← [Optional property of a type](#OptionalPropertySignature) · `objectType` ← [Object type](#ObjectType) · `union` ← [Union type](#UnionType) · `condition` ← [Condition](#IfStatement) · `differs` ← [Strict inequality](#StrictInequality) · `assignment` ← [Assignment](#Assignment) · `inline` ← [List on one line](#InlineArray) · `block` ← [Async function of a block](#AsyncBlockFunction) · `environment` ← [Trame's environment](conventions.md#TrameEnvironment) · `paths` ← [Paths](architecture.md#Paths) · `prelude` ← [Prelude](architecture.md#Prelude) · `reservedWords` ← [ECMAScript reserved words](../std/releases/0.29.0/docs/ecmascript.md#EcmaScriptReservedWords) · `sequences` ← [Sequences](../std/releases/0.29.0/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/releases/0.29.0/docs/algebra.md#Texts) · `dates` ← [Dates](../libs/documents/releases/0.1.0/docs/language.md#Dates) · `messages` ← [Messages of the drivers](messages.md#DriverMessages)
 - Body: `./code/typescript/writer.ts` (typescript)
 - Effects: read
 - Serves: [A specification that runs](product.md#ExecutableSpecification)

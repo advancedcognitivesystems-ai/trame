@@ -5,7 +5,7 @@
 
 import type { ProvidedBy } from "../../../trame/kernel"
 import type { RenderingMessages } from "../../messages"
-import type { Punctuation } from "../../documents"
+import type { Punctuation } from "#documents/language"
 import type { DocumentSyntax, FigureSyntax, Written } from "../../rendering"
 import type * as text from "../../text"
 import type { Counts, Texts } from "#std/algebra"

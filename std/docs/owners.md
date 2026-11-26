@@ -4,7 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 6 | 262 |
+| trame | 0 | 0 | 6 | 270 |
 
 <a id="trame"></a>
 
@@ -52,11 +52,13 @@
 | [Commands](effects.md#Commands) | Function | **held** |
 | [Effects](effects.md#Effects) | Vocabulary |  |
 | [What the platform may do](effects.md#PlatformEffects) | Decision |  |
-| [The engine is a provider](engine.md#EngineAsAProvider) | Architecture decision |  |
+| [The engine is a provider](engine.md#EngineAsAProvider) | Architecture decision | **held** |
 | [What the engine's adapters say](engine.md#EngineWords) | Message catalog |  |
+| [Reading a language](engine.md#LanguageReading) | Port |  |
 | [A project compiled by the engine that plays the scenario](engine.md#ProjectCompiledHere) | Implementation |  |
 | [The project the engine prepared](engine.md#ProjectInTheEngine) | Implementation |  |
 | [The project of a scenario](engine.md#ProjectOfTheScenario) | Port |  |
+| [Read by the engine](engine.md#ReadByTheEngine) | Implementation | **held** |
 | [The project at hand](engine.md#TheProject) | Port |  |
 | [WAI-ARIA](html.md#Aria) | Standard |  |
 | [CSS](html.md#Css) | Standard |  |
@@ -67,6 +69,9 @@
 | [Hardening](judgment.md#Hardening) | Port |  |
 | [A project judges harder than the language, never softer](judgment.md#HarderNeverSofter) | Architecture decision | **held** |
 | [Raising](judgment.md#Raising) | Algebraic structure | **held** |
+| [CSS style sheets](languages.md#CssStyleSheets) | Language | **held** |
+| [HTML markup](languages.md#HtmlMarkup) | Language | **held** |
+| [tree-sitter queries](languages.md#TreeSitterQueries) | Standard |  |
 | [ISO 8601 dates](measures.md#Iso8601) | Standard |  |
 | [Language tags](measures.md#LanguageTags) | Standard |  |
 | [Ratio](measures.md#Ratio) | Quantity |  |
@@ -100,7 +105,7 @@
 | [Trame](packages.md#Language) | Package |  |
 | [The people of the repository](packages.md#People) | Package |  |
 | [Abstract Factory](patterns.md#AbstractFactory) | Design pattern |  |
-| [Adapter](patterns.md#Adapter) | Design pattern |  |
+| [Adapter](patterns.md#Adapter) | Design pattern | **held** |
 | [Bridge](patterns.md#Bridge) | Design pattern |  |
 | [Command](patterns.md#Command) | Design pattern |  |
 | [Plugin](patterns.md#Plugin) | Design pattern |  |
@@ -160,6 +165,7 @@
 | [Version 0.26.0](releases.md#R0_26_0) | Release |  |
 | [Version 0.27.0](releases.md#R0_27_0) | Release |  |
 | [Version 0.28.0](releases.md#R0_28_0) | Release |  |
+| [Version 0.29.0](releases.md#R0_29_0) | Release |  |
 | [Version 0.3.0](releases.md#R0_3_0) | Release |  |
 | [Version 0.4.0](releases.md#R0_4_0) | Release |  |
 | [Version 0.5.0](releases.md#R0_5_0) | Release |  |
@@ -208,9 +214,11 @@
 | [Judged as the language says](scenarios.md#JudgedAsTheLanguage) | Scenario | **held** |
 | [Judged strictly](scenarios.md#JudgedStrictly) | Scenario | **held** |
 | [Judged as the language says](scenarios.md#LanguageJudgment) | Technical choice | **held** |
+| [The languages read by the engine](scenarios.md#LanguagesRead) | Scenario | **held** |
 | [A pull request merged once it holds](scenarios.md#MergedOnceItHolds) | Scenario | **held** |
 | [A version carried across the projects](scenarios.md#PropagatedInOrder) | Scenario | **held** |
 | [A pull request opened](scenarios.md#PullRequestOpened) | Scenario | **held** |
+| [Read by the engine that builds](scenarios.md#ReadInTheEngine) | Technical choice | **held** |
 | [A repository kept in memory](scenarios.md#RepositoryInMemoryKeeps) | Scenario | **held** |
 | [What the library's scenarios check](scenarios.md#ScenarioChecks) | Message catalog |  |
 | [What the library's scenarios are given](scenarios.md#ScenarioData) | Decision |  |
@@ -290,4 +298,4 @@
 
 | Severity | Code | What | Where | Owner | Consequence |
 |---|---|---|---|---|---|
-| warning | `not-connected-to-root` | Connected to no root (architecture rule, goal) | [What the platform may do](effects.md#PlatformEffects) | to be assigned |  |
+| warning | `not-connected-to-root` | Connected to no root (goal, architecture rule) | [What the platform may do](effects.md#PlatformEffects) | to be assigned |  |

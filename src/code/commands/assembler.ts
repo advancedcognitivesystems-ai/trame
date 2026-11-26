@@ -7,7 +7,7 @@ import type { Api as PreparationApi, Ctx, Options } from "./preparation"
 import type { Api as AssemblyApi, Assembly, Emitted, Period } from "../engine/assembly"
 import type { Counts, Texts } from "#std/algebra"
 import type { TerminalText } from "../../text"
-import type { Punctuation } from "../../documents"
+import type { Punctuation } from "#documents/language"
 
 export interface Deps {
   preparation: PreparationApi
