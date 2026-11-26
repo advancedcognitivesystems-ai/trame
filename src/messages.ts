@@ -1,11 +1,12 @@
 /** Trame · Messages */
 
-import { code, formatDate, formatDateShort, formatMonth, listParts, ListStyle, plurals } from "../trame/kernel"
+import { code, plurals } from "../trame/kernel"
 import { decision } from "../kinds/decision"
 import { fn } from "../kinds/function"
 import { catalog } from "../kinds/catalog"
 import { adr } from "../kinds/adr"
 import { SingleSource } from "./product"
+import { Lists } from "#documents/language"
 
 /**
  * The marks a language puts between the parts of a line: what separates parts that are not the items of a list (the
@@ -42,41 +43,6 @@ export const Language = decision<{ tag: string; punctuation: Marks }>({
     "French": "the language of the first generations; the workspace and its documents moved to English",
     "Several languages at once": "nothing asks for it yet: each catalog is written in one language, and a second one would be a second set of catalogs",
   },
-})
-
-/**
- * Dates
- * Writes a date of the graph (an ISO day, "2026-10-17") as people read it in the decided language.
- */
-export const Dates = fn({
-  owner: "trame",
-  serves: [SingleSource],
-  deps: { language: Language },
-  body: ({ language }) => ({
-    /** "17 October 2026" */
-    format: (iso: string) => formatDate(iso, language.tag),
-    /** "17 Oct 2026", or "17 Oct" without the year. */
-    formatShort: (iso: string, withYear = false) => formatDateShort(iso, withYear, language.tag),
-    /** "Oct" */
-    month: (iso: string) => formatMonth(iso, language.tag),
-  }),
-})
-
-/**
- * Lists
- * Joins the items of a list as people write it in the decided language: "A, B and C". The items stay as they are (a
- * reference stays a reference); only the words between them are added.
- */
-export const Lists = fn({
-  owner: "trame",
-  serves: [SingleSource],
-  deps: { language: Language },
-  body: ({ language }) => ({
-    /** The items, with the words of a conjunction between them. */
-    conjunction: <T>(items: readonly T[]) => listParts(items, language.tag),
-    /** The items, as a plain enumeration of the language. */
-    enumeration: <T>(items: readonly T[]) => listParts(items, language.tag, ListStyle.enumeration),
-  }),
 })
 
 // The catalogs. Each part of the engine says what it has to say through its own catalog: the code holds no text.

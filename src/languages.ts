@@ -12,7 +12,7 @@ import { SyntaxReader, BodyChecks } from "./syntax"
 import { TypeScript, TypeScriptWriter } from "./typescript"
 import { Terraform, TerraformModules, TerraformWriter } from "./terraform"
 import { Page } from "./page"
-import { CssStyleSheets } from "./html"
+import { CssStyleSheets } from "#std/languages"
 
 // Each language has its module (typescript, terraform, html): how Trame reads it, what Trame writes in it. Here, Drivers
 // binds each language to the reader and the checks of a body, its writer and, for the languages that run, the module

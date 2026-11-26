@@ -4,7 +4,7 @@
 import { BlockType, InlineType, ResolutionOutcome, ViewGroup, DocumentName } from "../../../trame/kernel"
 import type { ProvidedBy, Block, Document, Inline, Payload } from "../../../trame/kernel"
 import type { OutputMessages } from "../../messages"
-import type { Punctuation } from "../../documents"
+import type { Punctuation } from "#documents/language"
 
 export interface Deps {
   punctuation: ProvidedBy<typeof Punctuation>

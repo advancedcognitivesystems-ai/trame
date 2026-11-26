@@ -18,12 +18,14 @@ import { Assembly } from "./engine"
 import { TypeScriptWriter } from "./typescript"
 import { FrozenApi } from "./conventions"
 import { ExitStatus, NodeEncodings } from "#std/system"
-import { CommandMessages, ScenarioMessages, Lists, Dates, Language } from "./messages"
+import { CommandMessages, ScenarioMessages, Language } from "./messages"
+import { Lists, Dates } from "#documents/language"
 import { Counts, Texts } from "#std/algebra"
 import { TrameCommands, Layout } from "./conventions"
 import { RealTypeScript, TsxLoader, TramePrelude, NodePaths, ExampleProcess, MemoryFiles, MemoryTerminal, StoppedClock, ResultsInTheProcess } from "./platform"
 import { FileRendering, Common, MarkdownSyntax, MermaidDiagrams } from "./rendering"
-import { Punctuation, Units, VisibleText } from "./documents"
+import { VisibleText, OurDocumentLanguage } from "./documents"
+import { Punctuation, Units } from "#documents/language"
 import { VersionOrder } from "./packages"
 
 /**
@@ -346,7 +348,7 @@ export const DocumentWordsData = decision<{
  */
 export const DocumentWords = scenario({
   owner: "trame",
-  verifies: [Dates, Lists, Units, VisibleText, Punctuation, VersionOrder],
+  verifies: [Dates, Lists, Units, VisibleText, Punctuation, VersionOrder, OurDocumentLanguage],
   env: Test,
   deps: {
     dates: Dates, lists: Lists, units: Units, visible: VisibleText, punctuation: Punctuation, language: Language, versions: VersionOrder,

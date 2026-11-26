@@ -51,11 +51,13 @@ export const TypeScriptGrammar = pkg({ owner: "trame", packageName: "tree-sitter
 
 /**
  * Grammar of HTML
+ * The grammar the engine reads std's HtmlMarkup with (since g129: the language is std's, its grammar the engine's).
  */
 export const HtmlGrammar = pkg({ owner: "trame", packageName: "tree-sitter-html", version: "0.23.2", url: "https://www.npmjs.com/package/tree-sitter-html", declaredEffects: [] })
 
 /**
  * Grammar of CSS
+ * The grammar the engine reads std's CssStyleSheets with (since g129: the language is std's, its grammar the engine's).
  */
 export const CssGrammar = pkg({ owner: "trame", packageName: "tree-sitter-css", version: "0.25.0", url: "https://www.npmjs.com/package/tree-sitter-css", declaredEffects: [] })
 
@@ -134,7 +136,7 @@ export const VersionOrder = fn({
  * repository, at the version it froze.
  */
 export const StandardLibrary = pkg({
-  owner: "trame", packageName: "std", version: "0.28.0", joins: "library", from: "path", at: "std/releases/0.28.0", serves: [SingleSource],
+  owner: "trame", packageName: "std", version: "0.29.0", joins: "library", from: "path", at: "std/releases/0.29.0", serves: [SingleSource],
 })
 
 /**
@@ -189,5 +191,15 @@ export const Machine = pkg({
  */
 export const GenericCommands = pkg({
   owner: "trame", packageName: "commands", version: "0.1.1", joins: "library", from: "path", at: "libs/commands/releases/0.1.1",
+  serves: [SingleSource],
+})
+
+/**
+ * The renderers of documents
+ * The language the documents are written in, as a port Trame realizes with its Language, and what writes in it
+ * (dates, lists, punctuation, units), at the version Trame uses, by its path in the repository; the renderers follow.
+ */
+export const DocumentRenderers = pkg({
+  owner: "trame", packageName: "documents", version: "0.1.0", joins: "library", from: "path", at: "libs/documents/releases/0.1.0",
   serves: [SingleSource],
 })

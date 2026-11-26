@@ -12,7 +12,7 @@ import type { DocumentMarkup, FigureMarkup, ExplorerMarkup } from "../../markup"
 import type { ExplorerDrawing } from "../../appearance"
 import type { ThePage } from "../../page"
 import type { PageWords, RenderingMessages } from "../../messages"
-import type { Punctuation } from "../../documents"
+import type { Punctuation } from "#documents/language"
 import type { Counts, Sequences, Texts } from "#std/algebra"
 import type { Api as CommonApi } from "./common"
 

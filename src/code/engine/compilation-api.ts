@@ -10,7 +10,7 @@ import type {
 import type { Layout, Prelude } from "../../architecture"
 import type { Uri } from "#std/web"
 import type { ViewMessages } from "../../messages"
-import type { Punctuation, Units } from "../../documents"
+import type { Punctuation, Units } from "#documents/language"
 import type { DocumentIds } from "../../conventions"
 import type { Counts, Sequences, Texts, ValueTypes } from "#std/algebra"
 import type { ClaimRecord, Compiled, Diag, ResolutionRecord } from "./compiler"

@@ -4,8 +4,9 @@
 
 import { DateRole, FigureType, Shape } from "../../../trame/kernel"
 import type { Figure, FigureNode, ProvidedBy } from "../../../trame/kernel"
-import type { Dates, RenderingMessages } from "../../messages"
-import type { Punctuation } from "../../documents"
+import type { RenderingMessages } from "../../messages"
+import type { Dates } from "#documents/language"
+import type { Punctuation } from "#documents/language"
 import type { FigureSyntax } from "../../rendering"
 import type * as text from "../../text"
 import type { Counts, Sequences, Texts } from "#std/algebra"
