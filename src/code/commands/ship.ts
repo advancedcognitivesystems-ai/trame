@@ -110,7 +110,10 @@ const body = (deps: Deps): Handler => async (req) => {
     const known = programs.get(JSON.stringify([component.ref, where?.ref]))
     if (known !== undefined) return known
     if (!where) return refuse(o, [messages.shipmentWithoutEnvironment(found.title)])
-    const { assembly, errors: refused } = await deps.assembler.prepared(o, { c, comp }, component.id, where.id)
+    // A library's component (since g127): by its reference, with the commands the project chose of it there and only those,
+    // as the dispatch assembles it.
+    const chosen = deps.projectCommands.of(c).find((x) => x.component.ref === component.ref)?.chosen?.get(where.id)
+    const { assembly, errors: refused } = await deps.assembler.prepared(o, { c, comp }, component.ref, where.ref, chosen)
     if (!assembly) return refuse(o, [messages.assemblyRefused(), ...refused])
     const { files, errors: emitErrors } = deps.assembly.emitAssembly(assembly)
     if (emitErrors.length) return refuse(o, emitErrors)

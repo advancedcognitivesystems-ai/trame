@@ -181,3 +181,13 @@ export const Machine = pkg({
   owner: "trame", packageName: "machine", version: "0.1.0", joins: "library", from: "path", at: "libs/machine/releases/0.1.0",
   serves: [SingleSource],
 })
+
+/**
+ * The commands every project runs
+ * The commands written once on std's ports of the engine (plan, so far), which Trame runs in place of the engine's own,
+ * at the version it uses, by its path in the repository.
+ */
+export const GenericCommands = pkg({
+  owner: "trame", packageName: "commands", version: "0.1.1", joins: "library", from: "path", at: "libs/commands/releases/0.1.1",
+  serves: [SingleSource],
+})

@@ -8,6 +8,10 @@
       "at": "ci/releases/0.8.0",
       "version": "0.8.0"
     },
+    "commands": {
+      "at": "libs/commands/releases/0.1.1",
+      "version": "0.1.1"
+    },
     "machine": {
       "at": "libs/machine/releases/0.1.0",
       "version": "0.1.0"
