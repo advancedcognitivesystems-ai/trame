@@ -1892,3 +1892,18 @@ export const G127 = release({
   archive: "83cab083efe384d2",
   assembledBy: G126,
 })
+
+/**
+ * Generation 128
+ */
+export const G128 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g128",
+  date: "2026-11-26",
+  what: "the engine's API gives its reader of languages; a language's reader may be a port",
+  fingerprint: "137d864134b2044b",
+  language: "shared",
+  archive: "059fee84b1865ef7",
+  assembledBy: G127,
+})
