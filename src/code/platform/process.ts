@@ -29,19 +29,20 @@ const body: BodyOf<typeof NodeProcess> = ({ argv, node, runner, variables, exit,
   runTs: (file, args) =>
     // The loader resolved from where the engine is installed: the program it runs runs the same from any directory.
     spawn(process.execPath, [node.importFirst, import.meta.resolve(runner), file, ...args], { stdio: node.inherit, env: { ...process.env, NODE_NO_WARNINGS: node.enabled } }),
-  runHere: async (program, args, modules) => {
+  runHere: async (program, args, api) => {
     const url = pathToFileURL(program).href
     let routes = offered.get(url)
     if (routes === undefined) {
       const routed: Route[] = []
-      await withEngine({ offer: (r) => void routed.push(...(r as readonly Route[])), modules }, () => import(url))
+      await withEngine({ offer: (r) => void routed.push(...(r as readonly Route[])), api }, () => import(url))
       routes = routed
       offered.set(url, routes)
     }
     const [name, ...rest] = args
     const route = routes.find((r) => r.trigger.type === TriggerType.command && r.trigger.name === name)
     if (!route) return exit.failure
-    const response = await route.handler({ params: { command: name }, body: { args: rest } })
+    // The engine runs with the API given for this command: the project as the dispatch prepared it this time.
+    const response = await withEngine({ offer: () => undefined, api }, () => route.handler({ params: { command: name }, body: { args: rest } }))
     // What it answers, when it is lines of text, is written on the standard output, as Node's command line does.
     if (Array.isArray(response.body)) for (const line of response.body.filter(values.isText)) console.log(line)
     return response.status ?? exit.success

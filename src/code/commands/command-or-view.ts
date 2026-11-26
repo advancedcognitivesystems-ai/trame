@@ -15,7 +15,6 @@ import type { Api as ProjectCommandsApi } from "./project-commands"
 import type { Api as CompilerApi } from "../engine/compiler"
 import type { Api as ViewsApi } from "../engine/views"
 import type { Counts, Sequences } from "#std/algebra"
-import type { EngineModules } from "../../commands"
 import type { NodeEvents, Posix } from "#std/system"
 import type { TrameCommands } from "../../conventions"
 
@@ -29,8 +28,6 @@ export interface Deps {
   views: ViewsApi
   assembler: AssemblerApi
   projectCommands: ProjectCommandsApi
-  /** The engine's modules, which a program run in the engine's process receives (since g119). */
-  engine: ProvidedBy<typeof EngineModules>
   writing: FileWriting
   paths: Paths
   currentProcess: Process
@@ -97,11 +94,11 @@ const body = (deps: Deps): Handler => async (req) => {
     deps.sequences.removeAt(forwarded, at)
   }
   const [first] = files
-  // In the engine's process (since g119): the program itself, imported with the engine's modules and the project as
-  // the dispatch prepared it.
+  // In the engine's process (since g119): the program itself, imported with the engine's API and the project as the
+  // dispatch prepared it (since g124).
   if (deps.projectCommands.inTheEngine(ctx.c, assembly)) {
     const program = (files.find((f) => !f.launches) ?? first).path
-    return { status: await deps.currentProcess.runHere(program, [name, ...forwarded], { ...deps.engine, prepared: ctx }), body: undefined }
+    return { status: await deps.currentProcess.runHere(program, [name, ...forwarded], preparation.api({ o, ctx })), body: undefined }
   }
   // As its own program: its launcher, which leads the names of packages first (since g99).
   const program = (files.find((f) => f.launches) ?? first).path

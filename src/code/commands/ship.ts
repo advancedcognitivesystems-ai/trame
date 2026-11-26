@@ -24,7 +24,6 @@ import type { Api as SdlcApi, Entry } from "./sdlc-evidence"
 import type { Api as EnginesApi } from "../engine/engine-fingerprint"
 import type { Api as RunPlanApi } from "./run-plan"
 import type { Api as ProjectCommandsApi } from "./project-commands"
-import type { EngineModules } from "../../commands"
 
 export interface Deps {
   /** The status the command returns to the system (POSIX). */
@@ -46,9 +45,8 @@ export interface Deps {
   /** The rule of the requirement "Ship only what holds". */
   holds: (obligations: readonly Status[]) => boolean
   currentProcess: Process
-  /** Whether a program runs in the engine (since g119), and the engine's modules it then receives. */
+  /** Whether a program runs in the engine (since g119): it then receives the engine's API (since g124). */
   projectCommands: ProjectCommandsApi
-  engine: ProvidedBy<typeof EngineModules>
   events: ProvidedBy<typeof NodeEvents>
   reading: FileReading
   writing: FileWriting
@@ -143,8 +141,8 @@ const body = (deps: Deps): Handler => async (req) => {
     const trigger = entry.field(EntryField.trigger) as Trigger | undefined
     const args = [...(trigger?.type === TriggerType.command ? [trigger.name] : []), ...forwarded]
     const made = await assembledProgram(component)
-    // A program whose commands run in the engine (since g119): imported here, with the engine's modules.
-    if (made.inTheEngine) return deps.currentProcess.runHere(made.program, args, { ...deps.engine, prepared: { c, comp } })
+    // A program whose commands run in the engine (since g119): imported here, with the engine's API (since g124).
+    if (made.inTheEngine) return deps.currentProcess.runHere(made.program, args, deps.preparation.api({ o, ctx: { c, comp } }))
     const child = deps.currentProcess.runTs(made.launcher, args)
     return new Promise<number>((end) => child.on(deps.events.exit, (code: number | null) => end(code ?? exitStatus.failure)))
   }

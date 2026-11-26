@@ -12,7 +12,7 @@ import { PayloadBuilder, Differences, Assembly, Project, Compiler, Lock, Referen
 import {
   ShowView, CommandOrView, RenderView, EmitPayload, Assemble, Assembler, TestKinds, TakeSnapshot, Publish, Audit, Release, WriteManifest, Export, Run, Dev,
   Deliver, Ship, RecordEvidence, Doctor, Advance, Build, Plan, Amend, Amending, BuildComparison, Init, ReferencesModule, Registry, Upgrade,
-  ProjectCommands, Help, Examples, ExampleRewriting, Preparation, EngineModules, AddOns,
+  ProjectCommands, Help, Examples, ExampleRewriting, Preparation, AddOns,
 } from "./commands"
 import { DoctorProbe, Asking, ClockAnswers, FilesAnswer, TreesAnswer, ProgramsAnswer, RunsAnswer, ServerAnswers, TimerAnswers, RegistryAnswers, InstallerAnswers } from "./doctor"
 import { SyntaxReader, BodyChecks } from "./syntax"
@@ -1023,7 +1023,7 @@ export const EvidenceForSomeone = scenario({
  */
 export const ProjectCommandRun = scenario({
   owner: "trame",
-  verifies: [CommandOrView, ProjectCommands, Help, EngineModules],
+  verifies: [CommandOrView, ProjectCommands, Help],
   env: Test,
   deps: {
     byName: CommandOrView, help: Help, commands: ProjectCommands, preparation: Preparation, processLog: ProcessLog, terminalLog: TerminalLog,
@@ -1051,6 +1051,29 @@ export const ProjectCommandRun = scenario({
     // Named like a command the engine keeps, it would never run: an error of the graph.
     const { c } = await d.preparation.prepare(d.preparation.options(name, [], line.build))
     check(messages.hiddenCommandRefused(name), d.commands.hidden(c, [name], []).some((x) => x.what === d.said.commandHiddenByEngine(name)))
+  },
+})
+
+/**
+ * The engine's API
+ * What a command reaches of the engine (since g124): the project as the dispatch prepared it, with what a view receives
+ * and the graph as a build writes it; the same project compiled again at a date, as another would be.
+ */
+export const EngineApiGiven = scenario({
+  owner: "trame",
+  verifies: [Preparation],
+  env: Test,
+  deps: { preparation: Preparation, line: TrameCommands, messages: ScenarioMessages },
+  body: (d) => async (check) => {
+    const { preparation, line, messages } = d
+    const o = preparation.options(line.build, [], line.build)
+    const ctx = await preparation.prepare(o)
+    const given = preparation.api({ o, ctx }).prepared()
+    const nodes = (text: string | undefined) => (JSON.parse(text ?? JSON.stringify({ nodes: [] })) as { nodes: unknown[] }).nodes.length
+    // graph.json holds every node, the snapshot what is in force: never more.
+    check(messages.apiGivesThePrepared(), given?.root === o.root && given.today === o.today && nodes(given.written()) >= nodes(given.snapshot()) && given.graph.all().exists())
+    const again = await preparation.api().compile(o.root, o.today)
+    check(messages.apiCompilesAProject(), again.today === o.today && nodes(again.written()) === nodes(given?.written()) && preparation.api().prepared() === undefined)
   },
 })
 
