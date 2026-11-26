@@ -4,8 +4,8 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| Trame's maintainers | 0 | 0 | 3 | 0 |
-| trame | 0 | 0 | 7 | 782 |
+| Trame's maintainers | 0 | 0 | 1 | 0 |
+| trame | 0 | 0 | 3 | 782 |
 
 <a id="Trame's maintainers"></a>
 
@@ -15,8 +15,6 @@
 
 | Severity | Code | What | Where | Owner | Consequence |
 |---|---|---|---|---|---|
-| warning | `check-stale` | Checked on another build of its artefacts, by another version of its program or another engine: to check again | [The machine has what Trame needs](sdlc.md#MachineAsked) | Trame's maintainers |  |
-| warning | `check-awaited` | To run: trame ship runs it on the artefacts it checks | [trame plan runs in the engine](sdlc.md#PlanRunsInTheEngine) | Trame's maintainers |  |
 | warning | `check-stale` | Checked on another build of its artefacts, by another version of its program or another engine: to check again | [The repository is read from GitHub](sdlc.md#RepositoryRead) | Trame's maintainers |  |
 
 <a id="trame"></a>
@@ -25,13 +23,9 @@
 
 | Severity | Code | What | Where | Owner | Consequence |
 |---|---|---|---|---|---|
-| warning | `shipment-awaits` | To ship: The engine is unknown | [Into the main branch](sdlc.md#IntoMain) | trame |  |
-| warning | `shipment-awaits` | To ship: The machine has what Trame needs is unknown | [Into the main branch](sdlc.md#IntoMain) | trame |  |
-| warning | `shipment-awaits` | To ship: trame plan runs in the engine is unknown | [Into the main branch](sdlc.md#IntoMain) | trame |  |
 | warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | trame |  |
 | warning | `shipment-awaits` | To ship: The repository is read from GitHub is unknown | [The repository as decided](sdlc.md#RepositorySet) | trame |  |
 | warning | `shipment-awaits` | To ship: The pull requests' workflow is unknown | [The files that run it elsewhere](sdlc.md#RunnersWritten) | trame |  |
-| warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The engine](sdlc.md#TheEngine) | trame |  |
 
 ### Owns
 
@@ -702,7 +696,7 @@
 | [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws) | Check | **held** |
 | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | Check | **held** |
 | [The commands Trame takes from std](sdlc.md#CommandsOfStd) | Technical choice | **held** |
-| [The commands Trame takes from libs/commands](sdlc.md#CommandsWrittenOnce) | Technical choice | **unknown** |
+| [The commands Trame takes from libs/commands](sdlc.md#CommandsWrittenOnce) | Technical choice | **held** |
 | [Its callers identified](sdlc.md#EngineCallersIdentified) | Obligation |  |
 | [The candidate engine](sdlc.md#EngineCandidate) | Artefact | **held** |
 | [The packages are safe](sdlc.md#EnginePackagesSafe) | Obligation |  |
@@ -714,9 +708,9 @@
 | [What the scenario of the graph page shows](sdlc.md#GraphPageScenarioData) | Decision |  |
 | [What the graph page is asked](sdlc.md#GraphPageSelectors) | Function | **held** |
 | [How a generation advances](sdlc.md#HowAGenerationAdvances) | Decision |  |
-| [Into the main branch](sdlc.md#IntoMain) | Shipment | **unknown** |
+| [Into the main branch](sdlc.md#IntoMain) | Shipment | **held** |
 | [The language serves what it says](sdlc.md#LanguageServed) | Obligation |  |
-| [The machine has what Trame needs](sdlc.md#MachineAsked) | Check | **unknown** |
+| [The machine has what Trame needs](sdlc.md#MachineAsked) | Check | **held** |
 | [How the repository merges into main](sdlc.md#MainBranch) | Decision |  |
 | [Trame's maintainers](sdlc.md#Maintainers) | Role |  |
 | [How a change merges](sdlc.md#MergeMode) | Policy |  |
@@ -725,12 +719,12 @@
 | [Open the graph page](sdlc.md#OpenTheGraphPage) | Entry point | **held** |
 | [Trame's settings, as std's commands read them](sdlc.md#OurCommandsSettled) | Scenario | **held** |
 | [The machines Trame runs on](sdlc.md#OurMachines) | Decision |  |
-| [What the machine runs, for Trame](sdlc.md#OurMachineSettings) | Function | **unknown** |
+| [What the machine runs, for Trame](sdlc.md#OurMachineSettings) | Function | **held** |
 | [How a version is carried across Trame's repository](sdlc.md#OurPropagation) | Function | **held** |
 | [How Trame's pull requests are opened](sdlc.md#OurPullRequests) | Function | **held** |
 | [Trame's settings in the scenarios](sdlc.md#OurSettingsInTheScenarios) | Technical choice | **held** |
 | [The page's program](sdlc.md#PageProgram) | Artefact | **held** |
-| [trame plan runs in the engine](sdlc.md#PlanRunsInTheEngine) | Check | **unknown** |
+| [trame plan runs in the engine](sdlc.md#PlanRunsInTheEngine) | Check | **held** |
 | [How a pull request is checked on GitHub](sdlc.md#PullRequestsOnGitHub) | Decision |  |
 | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **unknown** |
 | [Read the repository's settings](sdlc.md#ReadTheRepositorySettings) | Entry point | **held** |
@@ -745,10 +739,10 @@
 | [What the programs of Trame's SDLC say](sdlc.md#SdlcWords) | Message catalog |  |
 | [How the repository is set](sdlc.md#SettingsMode) | Policy |  |
 | [The repository is set as the graph decides](sdlc.md#SettingTheRepository) | Scenario | **held** |
-| [The engine](sdlc.md#TheEngine) | Artefact | **unknown** |
+| [The engine](sdlc.md#TheEngine) | Artefact | **held** |
 | [Trame's repository](sdlc.md#TheRepository) | Decision |  |
 | [Trame's SDLC](sdlc.md#TrameSdlc) | Component |  |
-| [What the machine must also have](sdlc.md#WhatTheMachineMustHave) | Technical choice | **unknown** |
+| [What the machine must also have](sdlc.md#WhatTheMachineMustHave) | Technical choice | **held** |
 | [Attribution](shipping.md#Attribution) | Function | **held** |
 | [The fingerprint of a program](shipping.md#ProgramBundle) | Decision |  |
 | [Evidence of the SDLC](shipping.md#SdlcEvidence) | Function | **held** |

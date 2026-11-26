@@ -6922,7 +6922,7 @@ Function · `GraphPageSelectors` · **held**
 
 ### What the machine runs, for Trame
 
-Function · `OurMachineSettings` · **unknown**
+Function · `OurMachineSettings` · **held**
 
 - Owner: trame
 - Parameters: { machines: sdlc.OurMachines }
@@ -7026,7 +7026,7 @@ Technical choice · `CommandsOfStd` · **held**
 
 ### The commands Trame takes from libs/commands
 
-Technical choice · `CommandsWrittenOnce` · **unknown**
+Technical choice · `CommandsWrittenOnce` · **held**
 
 - Decided by: trame
 - Context: The engine's commands reached its modules directly: a project could neither choose them nor specialize them, and a command of its own could not compute what they computed.
@@ -7070,7 +7070,7 @@ Technical choice · `SdlcOnTheMachine` · **unknown**
 
 ### What the machine must also have
 
-Technical choice · `WhatTheMachineMustHave` · **unknown**
+Technical choice · `WhatTheMachineMustHave` · **held**
 
 - Decided by: trame
 - Context: On 17 November a machine whose browsers had moved refused the check of the page, and trame doctor said nothing of it; the pull requests and the propagation need Git, and the engine's loader Node 22.
@@ -7163,7 +7163,7 @@ Artefact · `PullRequestWorkflow` · **unknown**
 
 ### The engine
 
-Artefact · `TheEngine` · **unknown**
+Artefact · `TheEngine` · **held**
 
 - Owner: trame
 - Path: src
@@ -7200,7 +7200,7 @@ Check · `GraphPageOpens` · **held**
 
 ### The machine has what Trame needs
 
-Check · `MachineAsked` · **unknown**
+Check · `MachineAsked` · **held**
 
 - Owner: trame
 - Run by the engine's command: doctor
@@ -7209,7 +7209,7 @@ Check · `MachineAsked` · **unknown**
 
 ### trame plan runs in the engine
 
-Check · `PlanRunsInTheEngine` · **unknown**
+Check · `PlanRunsInTheEngine` · **held**
 
 - Owner: trame
 - Signed by: Trame's maintainers
@@ -7224,7 +7224,7 @@ Check · `RepositoryRead` · **unknown**
 
 ### Into the main branch
 
-Shipment · `IntoMain` · **unknown**
+Shipment · `IntoMain` · **held**
 
 - Owner: trame
 - Target: main

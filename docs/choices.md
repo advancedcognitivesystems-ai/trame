@@ -790,7 +790,7 @@ Context: The graph page must be opened as a person opens it: the file exported, 
 
 ### What the machine must also have
 
-`WhatTheMachineMustHave` · `src/sdlc.ts:209` · status: **unknown**
+`WhatTheMachineMustHave` · `src/sdlc.ts:209` · status: **held**
 
 trame doctor asks, besides what the engine asks, what Trame needs of its machine (since g120): the browser the version of Playwright Trame uses drives, installed (std's add-on, with its adapter); a system Trame runs on, Node recent enough and Git installed (libs/machine), as Trame's decision about its machines says.
 
@@ -869,7 +869,7 @@ Context: Opening a pull request and carrying a version across the repository wer
 
 ### The commands Trame takes from libs/commands
 
-`CommandsWrittenOnce` · `src/sdlc.ts:697` · status: **unknown**
+`CommandsWrittenOnce` · `src/sdlc.ts:697` · status: **held**
 
 What a build would change (trame plan) is the library's command, run in the engine's process on the project the engine prepared for it (std's ProjectInTheEngine), in place of the engine's own (g119): the commands of every project, written once on std's ports of the engine.
 

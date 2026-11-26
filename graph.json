@@ -18536,7 +18536,7 @@
       "kind": "binding",
       "title": "The commands Trame takes from libs/commands",
       "source": "src/sdlc.ts:697",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "The engine's commands reached its modules directly: a project could neither choose them nor specialize them, and a command of its own could not compute what they computed.",
@@ -18715,7 +18715,7 @@
       "kind": "shipment",
       "title": "Into the main branch",
       "source": "src/sdlc.ts:419",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "main"
@@ -19643,11 +19643,7 @@
           "typescript.WorldGlobals"
         ]
       },
-      "diagnostics": [
-        "warning: To ship: The engine is unknown",
-        "warning: To ship: The machine has what Trame needs is unknown",
-        "warning: To ship: trame plan runs in the engine is unknown"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.LanguageServed",
@@ -19664,7 +19660,7 @@
       "kind": "check",
       "title": "The machine has what Trame needs",
       "source": "src/sdlc.ts:223",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "command": "doctor"
@@ -19672,9 +19668,7 @@
       "result": {
         "code": "1b5a8d9f"
       },
-      "diagnostics": [
-        "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.MainBranch",
@@ -20807,7 +20801,7 @@
       "kind": "function",
       "title": "What the machine runs, for Trame",
       "source": "src/sdlc.ts:197",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -20893,16 +20887,14 @@
       "kind": "check",
       "title": "trame plan runs in the engine",
       "source": "src/sdlc.ts:233",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame"
       },
       "result": {
         "code": "352d79ea"
       },
-      "diagnostics": [
-        "warning: To run: trame ship runs it on the artefacts it checks"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.PullRequestsOnGitHub",
@@ -21300,7 +21292,7 @@
       "kind": "artifact",
       "title": "The engine",
       "source": "src/sdlc.ts:405",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "src",
@@ -21310,9 +21302,7 @@
         "path": "src",
         "code": "a7689308"
       },
-      "diagnostics": [
-        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.TheRepository",
@@ -21346,7 +21336,7 @@
       "kind": "binding",
       "title": "What the machine must also have",
       "source": "src/sdlc.ts:209",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "On 17 November a machine whose browsers had moved refused the check of the page, and trame doctor said nothing of it; the pull requests and the propagation need Git, and the engine's loader Node 22."

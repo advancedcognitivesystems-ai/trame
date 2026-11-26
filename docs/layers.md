@@ -724,7 +724,7 @@ flowchart TB
     n662["The candidate plays the laws<br/><small>Check</small>"]:::held
     n663["The candidate runs on the machine<br/><small>Check</small>"]:::held
     n664["The commands Trame takes from std<br/><small>Technical choice</small>"]:::held
-    n665["The commands Trame takes from libs/commands<br/><small>Technical choice</small>"]:::unknown
+    n665["The commands Trame takes from libs/commands<br/><small>Technical choice</small>"]:::held
     n666["Its callers identified<br/><small>Obligation</small>"]:::neutral
     n667["The candidate engine<br/><small>Artefact</small>"]:::held
     n668["The packages are safe<br/><small>Obligation</small>"]:::neutral
@@ -736,9 +736,9 @@ flowchart TB
     n674["What the scenario of the graph page shows<br/><small>Decision</small>"]:::neutral
     n675["What the graph page is asked<br/><small>Function</small>"]:::held
     n676["How a generation advances<br/><small>Decision</small>"]:::neutral
-    n677["Into the main branch<br/><small>Shipment</small>"]:::unknown
+    n677["Into the main branch<br/><small>Shipment</small>"]:::held
     n678["The language serves what it says<br/><small>Obligation</small>"]:::neutral
-    n679["The machine has what Trame needs<br/><small>Check</small>"]:::unknown
+    n679["The machine has what Trame needs<br/><small>Check</small>"]:::held
     n680["How the repository merges into main<br/><small>Decision</small>"]:::neutral
     n681["Trame's maintainers<br/><small>Role</small>"]:::neutral
     n682["How a change merges<br/><small>Policy</small>"]:::neutral
@@ -747,12 +747,12 @@ flowchart TB
     n685["Open the graph page<br/><small>Entry point</small>"]:::held
     n686["Trame's settings, as std's commands read them<br/><small>Scenario</small>"]:::held
     n687["The machines Trame runs on<br/><small>Decision</small>"]:::neutral
-    n688["What the machine runs, for Trame<br/><small>Function</small>"]:::unknown
+    n688["What the machine runs, for Trame<br/><small>Function</small>"]:::held
     n689["How a version is carried across Trame's repository<br/><small>Function</small>"]:::held
     n690["How Trame's pull requests are opened<br/><small>Function</small>"]:::held
     n691["Trame's settings in the scenarios<br/><small>Technical choice</small>"]:::held
     n692["The page's program<br/><small>Artefact</small>"]:::held
-    n693["trame plan runs in the engine<br/><small>Check</small>"]:::unknown
+    n693["trame plan runs in the engine<br/><small>Check</small>"]:::held
     n694["How a pull request is checked on GitHub<br/><small>Decision</small>"]:::neutral
     n695["The pull requests' workflow<br/><small>Artefact</small>"]:::unknown
     n696["Read the repository's settings<br/><small>Entry point</small>"]:::held
@@ -767,10 +767,10 @@ flowchart TB
     n705["What the programs of Trame's SDLC say<br/><small>Message catalog</small>"]:::neutral
     n706["How the repository is set<br/><small>Policy</small>"]:::neutral
     n707["The repository is set as the graph decides<br/><small>Scenario</small>"]:::held
-    n708["The engine<br/><small>Artefact</small>"]:::unknown
+    n708["The engine<br/><small>Artefact</small>"]:::held
     n709["Trame's repository<br/><small>Decision</small>"]:::neutral
     n710["Trame's SDLC<br/><small>Component</small>"]:::neutral
-    n711["What the machine must also have<br/><small>Technical choice</small>"]:::unknown
+    n711["What the machine must also have<br/><small>Technical choice</small>"]:::held
   end
   subgraph shipping["Trame · Shipping"]
     n712["Attribution<br/><small>Function</small>"]:::held

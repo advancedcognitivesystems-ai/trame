@@ -2,7 +2,7 @@
 
 *What happened to the project, day by day, the latest first, up to the date of the graph (26 November 2026): the versions released, and the evidence given, each with the node it is about and who gave it.*
 
-> **31 days · 127 versions released · 672 pieces of evidence**
+> **31 days · 127 versions released · 677 pieces of evidence**
 
 ## 26 November 2026
 
@@ -30,8 +30,8 @@
 | Shipped | [The candidate engine](sdlc.md#EngineCandidate) | claude |
 | Built | [The candidate engine](sdlc.md#EngineCandidate) | claude |
 | Shipped | [The candidate engine](sdlc.md#EngineCandidate) | claude |
-| Built | [The candidate engine](sdlc.md#EngineCandidate) | claude |
 | Shipped | [The candidate engine](sdlc.md#EngineCandidate) | claude |
+| Built | [The candidate engine](sdlc.md#EngineCandidate) | claude |
 | Built | [The graph page](sdlc.md#GraphPage) | claude |
 | Shipped | [The graph page](sdlc.md#GraphPage) | claude |
 | Built | [The graph page](sdlc.md#GraphPage) | claude |
@@ -40,10 +40,13 @@
 | Shipped | [The graph page](sdlc.md#GraphPage) | claude |
 | Built | [The graph page](sdlc.md#GraphPage) | claude |
 | Shipped | [The graph page](sdlc.md#GraphPage) | claude |
+| Built | [The graph page](sdlc.md#GraphPage) | claude |
 | Check passed | [The graph page opens](sdlc.md#GraphPageOpens) | claude |
 | Check passed | [The graph page opens](sdlc.md#GraphPageOpens) | claude |
 | Check passed | [The graph page opens](sdlc.md#GraphPageOpens) | claude |
 | Check passed | [The graph page opens](sdlc.md#GraphPageOpens) | claude |
+| Check passed | [The graph page opens](sdlc.md#GraphPageOpens) | claude |
+| Check passed | [The machine has what Trame needs](sdlc.md#MachineAsked) | claude |
 | Shipped | [The next generation](sdlc.md#NextGeneration) | claude |
 | Shipped | [The next generation](sdlc.md#NextGeneration) | claude |
 | Shipped | [The next generation](sdlc.md#NextGeneration) | claude |
@@ -54,6 +57,8 @@
 | Shipped | [The page's program](sdlc.md#PageProgram) | claude |
 | Built | [The page's program](sdlc.md#PageProgram) | claude |
 | Shipped | [The page's program](sdlc.md#PageProgram) | claude |
+| Check passed | [trame plan runs in the engine](sdlc.md#PlanRunsInTheEngine) | claude |
+| Built | [The engine](sdlc.md#TheEngine) | claude |
 
 ## 25 November 2026
 
