@@ -114,9 +114,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "124",
+        "version": "125",
         "joins": "language",
-        "at": "../../generations/g124"
+        "at": "../../generations/g125"
       },
       "diagnostics": []
     },
@@ -160,10 +160,25 @@
       "diagnostics": []
     },
     {
+      "id": "releases.R0_1_0",
+      "kind": "release",
+      "title": "Version 0.1.0",
+      "source": "src/releases.ts:12",
+      "fields": {
+        "owner": "trame",
+        "version": "0.1.0",
+        "date": "2026-11-26",
+        "what": "the commands every project runs, written once on std's ports of the engine: plan",
+        "fingerprint": "492f7f0c05958db9",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "scenarios.CompiledByTheEngine",
       "kind": "binding",
       "title": "Compiled by the engine that plays them",
-      "source": "src/scenarios.ts:50",
+      "source": "src/scenarios.ts:51",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -178,7 +193,7 @@
       "id": "scenarios.PlanAfterTheSameBuild",
       "kind": "scenario",
       "title": "After a build, nothing changes",
-      "source": "src/scenarios.ts:139",
+      "source": "src/scenarios.ts:140",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -205,7 +220,7 @@
       "id": "scenarios.PlanSaysWhatChanges",
       "kind": "scenario",
       "title": "A plan says what a build would change",
-      "source": "src/scenarios.ts:92",
+      "source": "src/scenarios.ts:93",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -237,7 +252,7 @@
       "id": "scenarios.PlanWithoutABuild",
       "kind": "scenario",
       "title": "Without a build, a plan says so",
-      "source": "src/scenarios.ts:124",
+      "source": "src/scenarios.ts:125",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -262,7 +277,7 @@
       "id": "scenarios.PlayedOnASmallProject",
       "kind": "binding",
       "title": "Played on a small project",
-      "source": "src/scenarios.ts:64",
+      "source": "src/scenarios.ts:65",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -274,7 +289,7 @@
       "id": "scenarios.ScenarioWords",
       "kind": "catalog",
       "title": "What the scenarios check",
-      "source": "src/scenarios.ts:76",
+      "source": "src/scenarios.ts:77",
       "fields": {
         "owner": "trame",
         "messages": "(function)"
@@ -285,11 +300,11 @@
       "id": "scenarios.SmallProject",
       "kind": "decision",
       "title": "The small project",
-      "source": "src/scenarios.ts:33",
+      "source": "src/scenarios.ts:34",
       "fields": {
         "owner": "trame",
         "value": {
-          "root": "samples/small",
+          "root": "#commands/samples/small",
           "today": "2026-11-26"
         }
       },
@@ -310,7 +325,7 @@
       "id": "scenarios.TheSmallProject",
       "kind": "function",
       "title": "Which project the scenarios compile",
-      "source": "src/scenarios.ts:39",
+      "source": "src/scenarios.ts:40",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -472,7 +487,7 @@
       "kind": "artifact",
       "title": "The pull requests' workflow",
       "source": "src/sdlc.ts:93",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "../../.github/workflows/commands-pull-request.yml",
@@ -482,9 +497,7 @@
         "path": "../../.github/workflows/commands-pull-request.yml",
         "code": "3b80b5fa"
       },
-      "diagnostics": [
-        "warning: Not built yet: trame ship builds it"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.RequirementsServed",
@@ -501,7 +514,7 @@
       "kind": "shipment",
       "title": "The files that run it elsewhere",
       "source": "src/sdlc.ts:107",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "repository"
@@ -514,9 +527,7 @@
           "sdlc.PullRequestWorkflow"
         ]
       },
-      "diagnostics": [
-        "warning: To ship: The pull requests' workflow is unknown"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.TheLibrary",
@@ -531,10 +542,10 @@
       },
       "result": {
         "path": "src",
-        "code": "1d3a6aae"
+        "code": "83a4dca2"
       },
       "diagnostics": [
-        "warning: Not built yet: trame ship builds it"
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
       ]
     },
     {
@@ -641,6 +652,11 @@
     },
     {
       "from": "packages.StandardLibrary",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_1_0",
       "to": "product.WrittenOnce",
       "kind": "serves"
     },

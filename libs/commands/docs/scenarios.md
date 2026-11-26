@@ -10,13 +10,13 @@
 
 ### The small project
 
-`SmallProject` · `src/scenarios.ts:33`
+`SmallProject` · `src/scenarios.ts:34`
 
-The project the scenarios compile, by its directory in the library, at the day they are played: a goal, the decision that serves it, the requirement that refines it, the person who owns them.
+The project the scenarios compile, at the day they are played: a goal, the requirement that refines it, the decision it reads, the person who owns them. It lies in the library's sources, named by the library's package: a version carries it, and a project that imports the version plays the scenarios on it there.
 
 | Case | Value |
 |---|---|
-| root | samples/small |
+| root | #commands/samples/small |
 | today | 2026-11-26 |
 
 - Decided by: trame
@@ -28,7 +28,7 @@ The project the scenarios compile, by its directory in the library, at the day t
 
 ### Which project the scenarios compile
 
-`TheSmallProject` · `src/scenarios.ts:39` · status: **held**
+`TheSmallProject` · `src/scenarios.ts:40` · status: **held**
 
 The small project, as decided.
 
@@ -45,7 +45,7 @@ The small project, as decided.
 
 ### What the scenarios check
 
-`ScenarioWords` · `src/scenarios.ts:76`
+`ScenarioWords` · `src/scenarios.ts:77`
 
 <details><summary>The messages, in code</summary>
 
@@ -70,7 +70,7 @@ The small project, as decided.
 
 ### Compiled by the engine that plays them
 
-`CompiledByTheEngine` · `src/scenarios.ts:50` · status: **held**
+`CompiledByTheEngine` · `src/scenarios.ts:51` · status: **held**
 
 In the library's scenarios, the project at hand is compiled by the engine that plays them, as on a machine it is compiled by the engine that runs the command.
 
@@ -96,7 +96,7 @@ Context: A command computes from a graph the engine compiled: a graph a scenario
 
 ### Played on a small project
 
-`PlayedOnASmallProject` · `src/scenarios.ts:64` · status: **held**
+`PlayedOnASmallProject` · `src/scenarios.ts:65` · status: **held**
 
 In the library's scenarios, the project at hand is the small project, and the project's files are kept in memory.
 
@@ -136,7 +136,7 @@ Where the library's scenarios run: the small project compiled by the engine, the
 
 ### After a build, nothing changes
 
-`PlanAfterTheSameBuild` · `src/scenarios.ts:139` · status: **held**
+`PlanAfterTheSameBuild` · `src/scenarios.ts:140` · status: **held**
 
 Against the graph a build of the same day wrote, the plan counts nothing and says nothing changes.
 
@@ -163,9 +163,9 @@ Against the graph a build of the same day wrote, the plan counts nothing and say
 
 ### A plan says what a build would change
 
-`PlanSaysWhatChanges` · `src/scenarios.ts:92` · status: **held**
+`PlanSaysWhatChanges` · `src/scenarios.ts:93` · status: **held**
 
-The last build had neither the first node of the graph nor the status of another: the plan names the node added and the status that changes, by their titles, counts them in its first line, and ends with the shipments touched.
+The last build had neither the first node of the graph nor the status of another: the plan names the node added and the status that changes, by their titles, and counts them in its first line.
 
 **A plan says what a build would change · in [Test](#Test)**
 
@@ -191,7 +191,7 @@ The last build had neither the first node of the graph nor the status of another
 
 ### Without a build, a plan says so
 
-`PlanWithoutABuild` · `src/scenarios.ts:124` · status: **held**
+`PlanWithoutABuild` · `src/scenarios.ts:125` · status: **held**
 
 A project that was never built has no graph.json: the plan says there is nothing to compare with, and succeeds.
 

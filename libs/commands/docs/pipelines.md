@@ -31,13 +31,13 @@ flowchart TB
 
 |  | Stage | Step | Run by | Why | Status | Latest evidence |
 |---|---|---|---|---|---|---|
-| 1 | produce | [The commands of every project](sdlc.md#TheLibrary) · `src` | — | — | **unknown** |  |
+| 1 | produce | [The commands of every project](sdlc.md#TheLibrary) · `src` | — | — | **unknown** | 26 November 2026 by claude  |
 | 2 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
-| 3 | prove | [The commands of every project](sdlc.md#TheLibrary) | — | the shipment | **unknown** |  |
+| 3 | prove | [The commands of every project](sdlc.md#TheLibrary) | — | the shipment | **unknown** | 26 November 2026 by claude  |
 | 4 | prove | [After a build, nothing changes](scenarios.md#PlanAfterTheSameBuild) | — | [Its code verified](sdlc.md#CodeVerified) via [Two builds compared](commands.md#BuildComparison) | **held** |  |
 | 5 | prove | [A plan says what a build would change](scenarios.md#PlanSaysWhatChanges) | — | [Its code verified](sdlc.md#CodeVerified) via [Two builds compared](commands.md#BuildComparison) | **held** |  |
 | 6 | prove | [Without a build, a plan says so](scenarios.md#PlanWithoutABuild) | — | [Its code verified](sdlc.md#CodeVerified) via [Plan](commands.md#Plan) | **held** |  |
-| 7 | record | [The next version](sdlc.md#NextVersion) | — | — | **unknown** |  |
+| 7 | record | [The next version](sdlc.md#NextVersion) | — | — | **unknown** | 26 November 2026 by claude `evidence/shipments/NextVersion-2026-11-26-2300ff78.json` |
 
 `trame ship NextVersion --by <name>`
 
@@ -45,15 +45,15 @@ flowchart TB
 
 ## The files that run it elsewhere
 
-> **The files that run it elsewhere does not ship yet: 1 of 2 obligations holds.**
+> **The files that run it elsewhere ships: every obligation holds.**
 
 For the target repository.
 
 ```mermaid
 flowchart TB
-  n0["The pull requests' workflow<br/><small>Artefact</small>"]:::unknown
+  n0["The pull requests' workflow<br/><small>Artefact</small>"]:::held
   n1["A workflow of GitHub Actions<br/><small>Syntax element</small>"]:::held
-  n2["The files that run it elsewhere<br/><small>Shipment</small>"]:::unknown
+  n2["The files that run it elsewhere<br/><small>Shipment</small>"]:::held
   n0 -->|Produced by| n1
   n2 -->|Ships| n0
   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
@@ -67,9 +67,9 @@ flowchart TB
 
 |  | Stage | Step | Run by | Why | Status | Latest evidence |
 |---|---|---|---|---|---|---|
-| 1 | produce | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) · `../../.github/workflows/commands-pull-request.yml` | [A workflow of GitHub Actions](../.trame/ci/docs/github.md#GitHubWorkflow) | — | **unknown** |  |
+| 1 | produce | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) · `../../.github/workflows/commands-pull-request.yml` | [A workflow of GitHub Actions](../.trame/ci/docs/github.md#GitHubWorkflow) | — | **held** | 26 November 2026 by claude  |
 | 2 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
-| 3 | prove | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | — | the shipment | **unknown** |  |
-| 4 | record | [The files that run it elsewhere](sdlc.md#RunnersWritten) | — | — | **unknown** |  |
+| 3 | prove | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | — | the shipment | **held** | 26 November 2026 by claude  |
+| 4 | record | [The files that run it elsewhere](sdlc.md#RunnersWritten) | — | — | **held** | 26 November 2026 by claude `evidence/shipments/RunnersWritten-2026-11-26-d5dcdf71.json` |
 
 `trame ship RunnersWritten --by <name>`

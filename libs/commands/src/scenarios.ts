@@ -27,10 +27,11 @@ export const Test = environment({ owner: "trame", evaluates: true })
 
 /**
  * The small project
- * The project the scenarios compile, by its directory in the library, at the day they are played: a goal, the decision
- * that serves it, the requirement that refines it, the person who owns them.
+ * The project the scenarios compile, at the day they are played: a goal, the requirement that refines it, the decision
+ * it reads, the person who owns them. It lies in the library's sources, named by the library's package: a version
+ * carries it, and a project that imports the version plays the scenarios on it there.
  */
-export const SmallProject = decision<ProjectChosen>({ owner: "trame", value: { root: "samples/small", today: "2026-11-26" } })
+export const SmallProject = decision<ProjectChosen>({ owner: "trame", value: { root: "#commands/samples/small", today: "2026-11-26" } })
 
 /**
  * Which project the scenarios compile

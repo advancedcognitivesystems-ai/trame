@@ -1,7 +1,8 @@
 /** A small project · Product */
 
-// The project the library's scenarios compile (std's ProjectCompiledHere): a goal, the requirement that refines it,
-// the decision it reads, and the person who owns them. It is never built: its graph is what the engine compiles of it.
+// The project the library's scenarios compile (std's ProjectCompiledHere), as #commands/samples/small: a goal, the
+// requirement that refines it, the decision it reads, and the person who owns them. It is never built: its graph is
+// what the engine compiles of it.
 
 import { ActorSort } from "#trame/kernel"
 import { actor } from "#trame/kinds/actor"
