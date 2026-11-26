@@ -10,7 +10,7 @@
 
 ### Style of a delivered page
 
-`DeliveredStyle` · `src/delivery.ts:24` · status: **held**
+`DeliveredStyle` · `src/delivery.ts:25` · status: **held**
 
 The variables the style sheets use, written in the root rule from the values of the decisions they name (each a record of names and values), then the sheets themselves, in the order the delivery names them.
 
@@ -26,10 +26,10 @@ Section: Delivered page
 | `[], ["body { margin: 0; }"]` | `"body { margin: 0; }"` | held, read as CSS style sheets |
 
 - Owner: trame
-- Parameters: `standard` ← [CSS](../std/releases/0.28.0/docs/html.md#Css) · `rule` ← [Rule](html.md#CssRule) · `property` ← [Custom property](html.md#CustomProperty) · `file` ← [Text file](../std/releases/0.28.0/docs/text.md#TextFile) · `counts` ← [Counts](../std/releases/0.28.0/docs/algebra.md#Counts)
+- Parameters: `standard` ← [CSS](../std/releases/0.29.0/docs/html.md#Css) · `rule` ← [Rule](html.md#CssRule) · `property` ← [Custom property](html.md#CustomProperty) · `file` ← [Text file](../std/releases/0.29.0/docs/text.md#TextFile) · `counts` ← [Counts](../std/releases/0.29.0/docs/algebra.md#Counts)
 - Body: inline, in the declaration
-- Defined by: [CSS](../std/releases/0.28.0/docs/html.md#Css)
-- Read in: [CSS style sheets](html.md#CssStyleSheets)
+- Defined by: [CSS](../std/releases/0.29.0/docs/html.md#Css)
+- Read in: [CSS style sheets](../std/releases/0.29.0/docs/languages.md#CssStyleSheets)
 - Used by: [Deliver](commands.md#Deliver)
 - Applies: [A product is delivered by a node of the graph](principles.md#DeliveredByTheGraph)
 
@@ -39,7 +39,7 @@ Section: Delivered page
 
 ### How a bundle is led
 
-`BundlerLeading` · `src/delivery.ts:49`
+`BundlerLeading` · `src/delivery.ts:50`
 
 The name of the plugin that leads esbuild, and the names it is asked about: those of an import map (#trame/kernel, #std/algebra).
 
@@ -58,7 +58,7 @@ The name of the plugin that leads esbuild, and the names it is asked about: thos
 
 ### The names a bundle is led by
 
-`NamesLed` · `src/delivery.ts:65` · status: **held**
+`NamesLed` · `src/delivery.ts:66` · status: **held**
 
 What a bundler is given so that it leads the names of packages as the engine leads Node.js when it runs the graph (since g95): the language to the engine's, a library's name, in the files of the project and of its libraries, to the library the project reads. A library published once is then bundled with the language and the libraries of the project that delivers it, as it runs with them, and a page holds one version of each. It touches nothing: it asks the module loader where a name leads.
 

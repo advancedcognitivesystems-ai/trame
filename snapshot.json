@@ -1190,7 +1190,7 @@
           "common": "rendering.Common",
           "words": "messages.PageWords",
           "messages": "messages.RenderingMessages",
-          "punctuation": "documents.Punctuation",
+          "punctuation": "documents/language.Punctuation",
           "counts": "std/algebra.Counts",
           "sequences": "std/algebra.Sequences",
           "texts": "std/algebra.Texts"
@@ -1229,7 +1229,7 @@
           "drawing": "appearance.ExplorerDrawing",
           "ids": "conventions.DocumentIds",
           "slots": "rendering.SentenceSlots",
-          "punctuation": "documents.Punctuation",
+          "punctuation": "documents/language.Punctuation",
           "language": "messages.Language",
           "html": "std/html.Html",
           "aria": "std/html.Aria",
@@ -2555,7 +2555,7 @@
           "preparation": "commands.Preparation",
           "assembly": "engine.Assembly",
           "layout": "text.TerminalText",
-          "punctuation": "documents.Punctuation",
+          "punctuation": "documents/language.Punctuation",
           "texts": "std/algebra.Texts",
           "counts": "std/algebra.Counts",
           "messages": "messages.CommandMessages"
@@ -4345,6 +4345,16 @@
       }
     },
     {
+      "id": "documents.DocumentsInOurLanguage",
+      "kind": "binding",
+      "title": "Documents written in Trame's language",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "The views speak the engine's language: what renders their documents, on a machine, in the scenarios or in the page, writes its dates, lists and marks."
+      }
+    },
+    {
       "id": "documents.LanguageSettings",
       "kind": "decision",
       "title": "Settings of the documents",
@@ -4417,21 +4427,9 @@
       }
     },
     {
-      "id": "documents.NumberDisplay",
-      "kind": "decision",
-      "title": "How a number is written",
-      "fields": {
-        "owner": "trame",
-        "value": {
-          "base": 10,
-          "decimals": 2
-        }
-      }
-    },
-    {
-      "id": "documents.Punctuation",
+      "id": "documents.OurDocumentLanguage",
       "kind": "function",
-      "title": "Punctuation of documents",
+      "title": "The documents in Trame's language",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4466,21 +4464,6 @@
           "titleLevel": 1,
           "sectionLevel": 2
         }
-      }
-    },
-    {
-      "id": "documents.Units",
-      "kind": "function",
-      "title": "Values with their units",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "deps": {
-          "display": "documents.NumberDisplay",
-          "counts": "std/algebra.Counts",
-          "values": "std/algebra.ValueTypes"
-        },
-        "body": "(function)"
       }
     },
     {
@@ -4542,13 +4525,13 @@
           "counts": "std/algebra.Counts",
           "sequences": "std/algebra.Sequences",
           "texts": "std/algebra.Texts",
-          "punctuation": "documents.Punctuation",
+          "punctuation": "documents/language.Punctuation",
           "ids": "conventions.DocumentIds",
           "layout": "conventions.Layout",
           "uri": "std/web.Uri",
           "messages": "messages.ViewMessages",
           "pipeline": "engine.ShipmentPipeline",
-          "units": "documents.Units"
+          "units": "documents/language.Units"
         },
         "body": {
           "file": "./code/engine/compilation-api.ts",
@@ -4672,7 +4655,7 @@
           "counts": "std/algebra.Counts",
           "sequences": "std/algebra.Sequences",
           "texts": "std/algebra.Texts",
-          "dates": "messages.Dates",
+          "dates": "documents/language.Dates",
           "language": "messages.Language",
           "messages": "messages.DevMessages"
         },
@@ -4715,7 +4698,7 @@
       "fields": {
         "owner": "trame",
         "deps": {
-          "punctuation": "documents.Punctuation",
+          "punctuation": "documents/language.Punctuation",
           "messages": "messages.OutputMessages"
         },
         "body": {
@@ -4829,9 +4812,9 @@
           "texts": "std/algebra.Texts",
           "messages": "messages.CompilerMessages",
           "values": "std/algebra.ValueTypes",
-          "lists": "messages.Lists",
-          "dates": "messages.Dates",
-          "punctuation": "documents.Punctuation",
+          "lists": "documents/language.Lists",
+          "dates": "documents/language.Dates",
+          "punctuation": "documents/language.Punctuation",
           "positions": "engine.Positions",
           "references": "engine.References",
           "iso": "std/measures.Iso8601",
@@ -4842,7 +4825,7 @@
           "layout": "conventions.Layout",
           "typescript": "typescript.TypeScript",
           "versions": "packages.VersionOrder",
-          "units": "documents.Units",
+          "units": "documents/language.Units",
           "visible": "documents.VisibleText",
           "fingerprints": "engine.Fingerprints"
         },
@@ -5560,137 +5543,6 @@
       }
     },
     {
-      "id": "html.CssStyleSheets",
-      "kind": "language",
-      "title": "CSS style sheets",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "tag": "css",
-        "grammar": {
-          "module": "tree-sitter-css/tree-sitter-css.wasm"
-        },
-        "extensions": [
-          ".css"
-        ],
-        "queries": {
-          "values": {
-            "value": "\n(integer_value) @literal.number\n(float_value) @literal.number\n(color_value) @literal.text\n(string_value) @literal.text\n((plain_value) @literal.text (#match? @literal.text \"[0-9]\") (#not-match? @literal.text \"^--\"))",
-            "meaning": "The values written in a style sheet: a number with its unit, a colour, a text; a plain value that holds a digit, which is the rest of a number the grammar cut (12.5px/1.4 reads 12.5, then px/1.4), a variable aside"
-          },
-          "parts": {
-            "value": "\n(color_value) @literal.part\n((plain_value) @literal.part (#match? @literal.part \"[0-9]\") (#not-match? @literal.part \"^--\"))\n(string_value (string_content) @literal.part)\n(string_value (escape_sequence) @literal.escape)",
-            "meaning": "What a text is made of: a colour, a plain value as written, the content of a quoted text and its escape sequences"
-          },
-          "names": {
-            "value": "\n(attribute_selector (string_value) @name)",
-            "meaning": "What is written like a value but names something: the value an attribute selector matches"
-          },
-          "declarations": {
-            "value": "\n((call_expression (function_name) @_function (arguments . (plain_value) @parameter)) (#eq? @_function \"var\"))\n((declaration (property_name) @output) (#match? @output \"^--\"))",
-            "meaning": "What a sheet receives and gives: each variable it uses (var(--x)), each variable it declares (--x: …)"
-          },
-          "globals": {
-            "value": "\n((call_expression (function_name) @global) (#eq? @global \"url\"))\n(import_statement \"@import\" @global)",
-            "meaning": "What reaches outside the sheet: a resource loaded by its address, another sheet imported"
-          },
-          "roles": {
-            "value": "\n(declaration (_) @role.property)\n(call_expression (function_name) @callee (arguments (_) @role.argument))\n(call_expression (arguments (binary_expression (_) @role.arithmetic)))\n(feature_query (_) @role.condition)",
-            "meaning": "The places that give a literal its role (syntax.LiteralRoles): the value of a property, an argument of a function, an operand of a calculation, a condition of a media query"
-          }
-        },
-        "escapes": {
-          "mark": "\\",
-          "single": {},
-          "numeric": [
-            {
-              "prefix": "",
-              "radix": 16,
-              "most": 6,
-              "trailing": [
-                "\r\n",
-                " ",
-                "\t",
-                "\n",
-                "\r",
-                "\f"
-              ]
-            }
-          ]
-        },
-        "examples": [
-          {
-            "code": ".a { margin: 0 -2px; color: #fff; }",
-            "literals": [
-              "0",
-              "-2px",
-              "#fff"
-            ],
-            "values": [
-              0,
-              "-2px",
-              "#fff"
-            ],
-            "roles": [
-              "property value",
-              "property value",
-              "property value"
-            ]
-          },
-          {
-            "code": ".b[aria-pressed=\"true\"] { top: calc(env(x, 0px) + 20px); }",
-            "literals": [
-              "0px",
-              "20px"
-            ],
-            "roles": [
-              "argument of env",
-              "arithmetic"
-            ]
-          },
-          {
-            "code": ".c { font: 12.5px/1.4 var(--font, \"A \\\"B\\\" \\2014 C\"); width: var(--w); }",
-            "literals": [
-              "12.5",
-              "px/1.4",
-              "\"A \\\"B\\\" \\2014 C\""
-            ],
-            "values": [
-              12.5,
-              "px/1.4",
-              "A \"B\" —C"
-            ]
-          },
-          {
-            "code": "@import url(theme.css);\n@media (max-width: 920px) { .d { flex: none; } }\n",
-            "literals": [
-              "920px"
-            ],
-            "roles": [
-              "condition"
-            ],
-            "globals": [
-              "@import",
-              "url"
-            ]
-          },
-          {
-            "code": ".e { --gap: var(--space-md); margin: var(--gap) var(--edge, var(--gap)); }",
-            "literals": [],
-            "parameters": [
-              "--space-md",
-              "--gap",
-              "--edge",
-              "--gap"
-            ],
-            "outputs": [
-              "--gap"
-            ]
-          }
-        ]
-      }
-    },
-    {
       "id": "html.CssVariable",
       "kind": "syntax",
       "title": "Variable",
@@ -6025,120 +5877,6 @@
               "Cards"
             ],
             "output": "<h2>Cards</h2>"
-          }
-        ]
-      }
-    },
-    {
-      "id": "html.HtmlMarkup",
-      "kind": "language",
-      "title": "HTML markup",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "tag": "html",
-        "grammar": {
-          "module": "tree-sitter-html/tree-sitter-html.wasm"
-        },
-        "extensions": [
-          ".html"
-        ],
-        "queries": {
-          "values": {
-            "value": "\n(quoted_attribute_value) @literal.text\n(attribute (attribute_value) @literal.text)\n(text) @literal.text\n(entity) @literal.text",
-            "meaning": "The values written in markup: the value of an attribute, quoted or not; a text; a character reference on its own, between two texts"
-          },
-          "parts": {
-            "value": "\n(attribute_value) @literal.part\n(text) @literal.part\n(entity) @literal.escape",
-            "meaning": "What a value is made of: an attribute's value as written (its character references included: the grammar does not catch them apart there), a text, a character reference"
-          },
-          "names": {
-            "value": "\n((attribute (attribute_name) @_name) @name (#any-of? @_name \"class\" \"id\" \"for\" \"aria-labelledby\" \"aria-describedby\" \"aria-controls\"))",
-            "meaning": "What is written like a value but names something: a class, an identifier, an attribute that refers to an identifier"
-          },
-          "roles": {
-            "value": "\n(attribute (quoted_attribute_value) @role.attribute)\n(attribute (attribute_value) @role.attribute)\n(element (text) @role.content)\n(element (entity) @role.content)",
-            "meaning": "The places that give a literal its role (syntax.LiteralRoles): the value of an attribute, the content of an element"
-          }
-        },
-        "escapes": {
-          "mark": "&",
-          "single": {
-            "amp;": "&",
-            "lt;": "<",
-            "gt;": ">",
-            "quot;": "\"",
-            "apos;": "'",
-            "nbsp;": " "
-          },
-          "numeric": [
-            {
-              "prefix": "#x",
-              "radix": 16,
-              "close": ";"
-            },
-            {
-              "prefix": "#X",
-              "radix": 16,
-              "close": ";"
-            },
-            {
-              "prefix": "#",
-              "radix": 10,
-              "close": ";"
-            }
-          ],
-          "keepUnknown": true
-        },
-        "examples": [
-          {
-            "code": "<a id=\"Goal\" href=\"#Goal\">Goal</a>",
-            "literals": [
-              "\"#Goal\"",
-              "Goal"
-            ],
-            "values": [
-              "#Goal",
-              "Goal"
-            ],
-            "roles": [
-              "attribute value",
-              "content of an element"
-            ]
-          },
-          {
-            "code": "<p title=\"a &amp; b &eacute;\">T &lt; U &#x2192; V</p>",
-            "literals": [
-              "\"a &amp; b &eacute;\"",
-              "T",
-              "&lt;",
-              "U",
-              "&#x2192;",
-              "V"
-            ],
-            "values": [
-              "a & b &eacute;",
-              "T",
-              "<",
-              "U",
-              "→",
-              "V"
-            ]
-          },
-          {
-            "code": "<button class=\"chip\" aria-pressed=\"true\" hidden>x</button>",
-            "literals": [
-              "\"true\"",
-              "x"
-            ],
-            "roles": [
-              "attribute value",
-              "content of an element"
-            ]
-          },
-          {
-            "code": "<!DOCTYPE html>\n<style>.a { margin: 0 }</style>\n<script>const x = 1</script>\n",
-            "literals": []
           }
         ]
       }
@@ -6518,7 +6256,7 @@
           "reader": "syntax.SyntaxReader",
           "checks": "syntax.BodyChecks",
           "graph": "typescript.TypeScript",
-          "sheets": "html.CssStyleSheets",
+          "sheets": "std/languages.CssStyleSheets",
           "typeScriptWriter": "typescript.TypeScriptWriter",
           "terraform": "terraform.Terraform",
           "modules": "terraform.TerraformModules",
@@ -8478,7 +8216,7 @@
         "owner": "trame",
         "deps": {
           "language": "messages.Language",
-          "lists": "messages.Lists"
+          "lists": "documents/language.Lists"
         },
         "messages": "(function)"
       }
@@ -8499,19 +8237,6 @@
       }
     },
     {
-      "id": "messages.Dates",
-      "kind": "function",
-      "title": "Dates",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "deps": {
-          "language": "messages.Language"
-        },
-        "body": "(function)"
-      }
-    },
-    {
       "id": "messages.DevMessages",
       "kind": "catalog",
       "title": "Messages of trame dev",
@@ -8519,7 +8244,7 @@
         "owner": "trame",
         "deps": {
           "language": "messages.Language",
-          "lists": "messages.Lists"
+          "lists": "documents/language.Lists"
         },
         "messages": "(function)"
       }
@@ -8590,19 +8315,6 @@
       "fields": {
         "owner": "trame",
         "messages": "(function)"
-      }
-    },
-    {
-      "id": "messages.Lists",
-      "kind": "function",
-      "title": "Lists",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "deps": {
-          "language": "messages.Language"
-        },
-        "body": "(function)"
       }
     },
     {
@@ -8710,6 +8422,19 @@
         "version": "0.25.0",
         "url": "https://www.npmjs.com/package/tree-sitter-css",
         "declaredEffects": []
+      }
+    },
+    {
+      "id": "packages.DocumentRenderers",
+      "kind": "package",
+      "title": "The renderers of documents",
+      "fields": {
+        "owner": "trame",
+        "packageName": "documents",
+        "version": "0.1.0",
+        "joins": "library",
+        "from": "path",
+        "at": "libs/documents/releases/0.1.0"
       }
     },
     {
@@ -8856,10 +8581,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.28.0",
+        "version": "0.29.0",
         "joins": "library",
         "from": "path",
-        "at": "std/releases/0.28.0"
+        "at": "std/releases/0.29.0"
       }
     },
     {
@@ -9543,8 +9268,8 @@
           "messages": "messages.OutputMessages",
           "language": "messages.Language",
           "reader": "syntax.SyntaxReader",
-          "markup": "html.HtmlMarkup",
-          "sheets": "html.CssStyleSheets",
+          "markup": "std/languages.HtmlMarkup",
+          "sheets": "std/languages.CssStyleSheets",
           "gnu": "std/text.GnuPositions"
         },
         "body": {
@@ -10736,7 +10461,7 @@
           "npm": "std/system.NpmCli",
           "values": "std/algebra.ValueTypes",
           "counts": "std/algebra.Counts",
-          "punctuation": "documents.Punctuation"
+          "punctuation": "documents/language.Punctuation"
         },
         "body": {
           "file": "./code/platform/npm-reports.ts",
@@ -12092,6 +11817,20 @@
       }
     },
     {
+      "id": "releases.G128",
+      "kind": "release",
+      "title": "Generation 128",
+      "fields": {
+        "owner": "trame",
+        "version": "g128",
+        "date": "2026-11-26",
+        "what": "the engine's API gives its reader of languages; a language's reader may be a port",
+        "fingerprint": "137d864134b2044b",
+        "language": "shared",
+        "archive": "059fee84b1865ef7"
+      }
+    },
+    {
       "id": "releases.G13",
       "kind": "release",
       "title": "Generation 13",
@@ -13415,11 +13154,11 @@
           "values": "std/algebra.ValueTypes",
           "syntax": "conventions.ReferenceSyntax",
           "slots": "rendering.SentenceSlots",
-          "dates": "messages.Dates",
-          "lists": "messages.Lists",
+          "dates": "documents/language.Dates",
+          "lists": "documents/language.Lists",
           "texts": "std/algebra.Texts",
           "messages": "messages.RenderingMessages",
-          "units": "documents.Units"
+          "units": "documents/language.Units"
         },
         "body": {
           "file": "./code/rendering/common.ts",
@@ -13513,7 +13252,7 @@
           "element": "html.HtmlElement",
           "heading": "html.HtmlHeading",
           "escape": "html.EscapedText",
-          "punctuation": "documents.Punctuation",
+          "punctuation": "documents/language.Punctuation",
           "slots": "rendering.SentenceSlots",
           "counts": "std/algebra.Counts",
           "texts": "std/algebra.Texts",
@@ -13535,7 +13274,7 @@
         "deps": {
           "figures": "rendering.FileFigures",
           "textRendering": "documents.TextRendering",
-          "punctuation": "documents.Punctuation",
+          "punctuation": "documents/language.Punctuation",
           "blocks": "markdown.Blocks",
           "heading": "markdown.Heading",
           "listItem": "markdown.ListItem",
@@ -13597,7 +13336,7 @@
           "ganttTask": "mermaid.GanttTask",
           "milestone": "mermaid.Milestone",
           "counts": "std/algebra.Counts",
-          "dates": "messages.Dates",
+          "dates": "documents/language.Dates",
           "messages": "messages.RenderingMessages"
         },
         "body": {
@@ -13701,7 +13440,7 @@
           "figures": "rendering.TerminalFigures",
           "layout": "text.TerminalText",
           "columns": "text.TerminalColumns",
-          "punctuation": "documents.Punctuation",
+          "punctuation": "documents/language.Punctuation",
           "cell": "text.PaddedCell",
           "table": "text.Columns",
           "item": "text.ItemLine",
@@ -13752,10 +13491,10 @@
           "declaration": "html.CssDeclaration",
           "escape": "html.EscapedText",
           "common": "rendering.Common",
-          "dates": "messages.Dates",
+          "dates": "documents/language.Dates",
           "words": "messages.PageWords",
           "messages": "messages.RenderingMessages",
-          "punctuation": "documents.Punctuation",
+          "punctuation": "documents/language.Punctuation",
           "iso": "std/measures.Iso8601",
           "counts": "std/algebra.Counts",
           "sequences": "std/algebra.Sequences",
@@ -13845,12 +13584,12 @@
         "deps": {
           "common": "rendering.Common",
           "columns": "text.TerminalColumns",
-          "punctuation": "documents.Punctuation",
+          "punctuation": "documents/language.Punctuation",
           "cell": "text.PaddedCell",
           "table": "text.Columns",
           "branch": "text.TreeBranch",
           "step": "text.PathStep",
-          "dates": "messages.Dates",
+          "dates": "documents/language.Dates",
           "counts": "std/algebra.Counts",
           "sequences": "std/algebra.Sequences",
           "texts": "std/algebra.Texts",
@@ -13969,11 +13708,11 @@
       "fields": {
         "owner": "trame",
         "deps": {
-          "dates": "messages.Dates",
-          "lists": "messages.Lists",
-          "units": "documents.Units",
+          "dates": "documents/language.Dates",
+          "lists": "documents/language.Lists",
+          "units": "documents/language.Units",
           "visible": "documents.VisibleText",
-          "punctuation": "documents.Punctuation",
+          "punctuation": "documents/language.Punctuation",
           "language": "messages.Language",
           "versions": "packages.VersionOrder",
           "data": "scenarios.DocumentWordsData",
@@ -15374,71 +15113,6 @@
       }
     },
     {
-      "id": "standards.TreeSitterQueries",
-      "kind": "standard",
-      "title": "tree-sitter queries",
-      "fields": {
-        "owner": "trame",
-        "source": "tree-sitter, Query Syntax: Predicates and Directives; the predicates evaluated by web-tree-sitter 0.27 (Query.matches, Query.captures)",
-        "url": "https://tree-sitter.github.io/tree-sitter/using-parsers/queries/3-predicates-and-directives.html",
-        "tag": "scheme",
-        "constants": {
-          "eq": {
-            "value": "#eq?",
-            "meaning": "The capture's text equals a string, or another capture's text"
-          },
-          "notEq": {
-            "value": "#not-eq?",
-            "meaning": "The capture's text differs from a string, or from another capture's text"
-          },
-          "anyEq": {
-            "value": "#any-eq?",
-            "meaning": "One of the quantified capture's nodes equals the string"
-          },
-          "anyNotEq": {
-            "value": "#any-not-eq?",
-            "meaning": "One of the quantified capture's nodes differs from the string"
-          },
-          "match": {
-            "value": "#match?",
-            "meaning": "The capture's text matches a regular expression"
-          },
-          "notMatch": {
-            "value": "#not-match?",
-            "meaning": "The capture's text does not match a regular expression"
-          },
-          "anyMatch": {
-            "value": "#any-match?",
-            "meaning": "One of the quantified capture's nodes matches the regular expression"
-          },
-          "anyNotMatch": {
-            "value": "#any-not-match?",
-            "meaning": "One of the quantified capture's nodes does not match the regular expression"
-          },
-          "anyOf": {
-            "value": "#any-of?",
-            "meaning": "The capture's text is one of the strings that follow"
-          },
-          "notAnyOf": {
-            "value": "#not-any-of?",
-            "meaning": "The capture's text is none of the strings that follow"
-          },
-          "is": {
-            "value": "#is?",
-            "meaning": "Asserts a property of the match (kept aside for the reader)"
-          },
-          "isNot": {
-            "value": "#is-not?",
-            "meaning": "Refutes a property of the match (kept aside for the reader)"
-          },
-          "set": {
-            "value": "#set!",
-            "meaning": "Sets a property on the match: a directive, not a filter"
-          }
-        }
-      }
-    },
-    {
       "id": "standards.TypeScriptApi",
       "kind": "standard",
       "title": "TypeScript compiler API",
@@ -15739,6 +15413,16 @@
           "The TypeScript compiler API": "it reads one language, and each other one would need a reader of its own",
           "Regular expressions": "the old Terraform driver: blind to texts, comments and nesting"
         }
+      }
+    },
+    {
+      "id": "syntax.StdLanguagesRead",
+      "kind": "binding",
+      "title": "std's languages, read by the engine",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "A language std declares names std's port as its reader: the engine that compiles answers it, here as in any project that imports std."
       }
     },
     {
@@ -16233,7 +15917,7 @@
           "counts": "std/algebra.Counts",
           "sequences": "std/algebra.Sequences",
           "texts": "std/algebra.Texts",
-          "dates": "messages.Dates",
+          "dates": "documents/language.Dates",
           "messages": "messages.DriverMessages"
         },
         "body": {
@@ -17838,7 +17522,7 @@
           "reservedWords": "std/ecmascript.EcmaScriptReservedWords",
           "sequences": "std/algebra.Sequences",
           "texts": "std/algebra.Texts",
-          "dates": "messages.Dates",
+          "dates": "documents/language.Dates",
           "messages": "messages.DriverMessages"
         },
         "body": {
@@ -18066,11 +17750,6 @@
       "kind": "deps"
     },
     {
-      "from": "browser.ExplorerFigures",
-      "to": "documents.Punctuation",
-      "kind": "deps"
-    },
-    {
       "from": "browser.ShowGraph",
       "to": "product.ExecutableSpecification",
       "kind": "serves"
@@ -18163,11 +17842,6 @@
     {
       "from": "browser.ShowGraph",
       "to": "rendering.SentenceSlots",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.ShowGraph",
-      "to": "documents.Punctuation",
       "kind": "deps"
     },
     {
@@ -20907,11 +20581,6 @@
     },
     {
       "from": "commands.Assembler",
-      "to": "documents.Punctuation",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Assembler",
       "to": "messages.CommandMessages",
       "kind": "deps"
     },
@@ -22637,11 +22306,6 @@
     },
     {
       "from": "delivery.DeliveredStyle",
-      "to": "html.CssStyleSheets",
-      "kind": "language"
-    },
-    {
-      "from": "delivery.DeliveredStyle",
       "to": "html.CssRule",
       "kind": "deps"
     },
@@ -23031,12 +22695,37 @@
       "kind": "deps"
     },
     {
-      "from": "documents.Punctuation",
+      "from": "documents.DocumentsInOurLanguage",
+      "to": "documents.OurDocumentLanguage",
+      "kind": "chooses"
+    },
+    {
+      "from": "documents.DocumentsInOurLanguage",
+      "to": "architecture.Local",
+      "kind": "environments"
+    },
+    {
+      "from": "documents.DocumentsInOurLanguage",
+      "to": "architecture.Session",
+      "kind": "environments"
+    },
+    {
+      "from": "documents.DocumentsInOurLanguage",
+      "to": "architecture.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "documents.DocumentsInOurLanguage",
+      "to": "architecture.Browser",
+      "kind": "environments"
+    },
+    {
+      "from": "documents.DocumentsInOurLanguage",
       "to": "product.SingleSource",
       "kind": "serves"
     },
     {
-      "from": "documents.Punctuation",
+      "from": "documents.OurDocumentLanguage",
       "to": "messages.Language",
       "kind": "deps"
     },
@@ -23047,23 +22736,13 @@
     },
     {
       "from": "documents.PunctuationOfTheLanguage",
-      "to": "documents.Punctuation",
+      "to": "documents.OurDocumentLanguage",
       "kind": "appliedBy"
     },
     {
       "from": "documents.PunctuationOfTheLanguage",
       "to": "messages.Language",
       "kind": "appliedBy"
-    },
-    {
-      "from": "documents.Units",
-      "to": "product.SingleSource",
-      "kind": "serves"
-    },
-    {
-      "from": "documents.Units",
-      "to": "documents.NumberDisplay",
-      "kind": "deps"
     },
     {
       "from": "documents.VisibleText",
@@ -23147,11 +22826,6 @@
     },
     {
       "from": "engine.CompilationApi",
-      "to": "documents.Punctuation",
-      "kind": "deps"
-    },
-    {
-      "from": "engine.CompilationApi",
       "to": "conventions.DocumentIds",
       "kind": "deps"
     },
@@ -23168,11 +22842,6 @@
     {
       "from": "engine.CompilationApi",
       "to": "engine.ShipmentPipeline",
-      "kind": "deps"
-    },
-    {
-      "from": "engine.CompilationApi",
-      "to": "documents.Units",
       "kind": "deps"
     },
     {
@@ -23402,11 +23071,6 @@
     },
     {
       "from": "engine.DevServer",
-      "to": "messages.Dates",
-      "kind": "deps"
-    },
-    {
-      "from": "engine.DevServer",
       "to": "messages.Language",
       "kind": "deps"
     },
@@ -23419,11 +23083,6 @@
       "from": "engine.Differences",
       "to": "product.ExecutableSpecification",
       "kind": "serves"
-    },
-    {
-      "from": "engine.Differences",
-      "to": "documents.Punctuation",
-      "kind": "deps"
     },
     {
       "from": "engine.Differences",
@@ -23512,21 +23171,6 @@
     },
     {
       "from": "engine.GraphApi",
-      "to": "messages.Lists",
-      "kind": "deps"
-    },
-    {
-      "from": "engine.GraphApi",
-      "to": "messages.Dates",
-      "kind": "deps"
-    },
-    {
-      "from": "engine.GraphApi",
-      "to": "documents.Punctuation",
-      "kind": "deps"
-    },
-    {
-      "from": "engine.GraphApi",
       "to": "engine.Positions",
       "kind": "deps"
     },
@@ -23563,11 +23207,6 @@
     {
       "from": "engine.GraphApi",
       "to": "packages.VersionOrder",
-      "kind": "deps"
-    },
-    {
-      "from": "engine.GraphApi",
-      "to": "documents.Units",
       "kind": "deps"
     },
     {
@@ -24261,81 +23900,11 @@
       "kind": "deps"
     },
     {
-      "from": "html.AttributePresence",
-      "to": "html.CssStyleSheets",
-      "kind": "language"
-    },
-    {
-      "from": "html.AttributeSelector",
-      "to": "html.CssStyleSheets",
-      "kind": "language"
-    },
-    {
-      "from": "html.ClassSelector",
-      "to": "html.CssStyleSheets",
-      "kind": "language"
-    },
-    {
-      "from": "html.CssDeclaration",
-      "to": "html.CssStyleSheets",
-      "kind": "language"
-    },
-    {
-      "from": "html.CssRule",
-      "to": "html.CssStyleSheets",
-      "kind": "language"
-    },
-    {
-      "from": "html.CssStyleSheets",
-      "to": "standards.TreeSitterQueries",
-      "kind": "queryLanguage"
-    },
-    {
-      "from": "html.CssStyleSheets",
-      "to": "syntax.SyntaxReader",
-      "kind": "reader"
-    },
-    {
-      "from": "html.CssStyleSheets",
-      "to": "packages.CssGrammar",
-      "kind": "packages"
-    },
-    {
-      "from": "html.CssVariable",
-      "to": "html.CssStyleSheets",
-      "kind": "language"
-    },
-    {
-      "from": "html.CustomProperty",
-      "to": "html.CssStyleSheets",
-      "kind": "language"
-    },
-    {
       "from": "html.CustomProperty",
       "to": "html.CssDeclaration",
       "kind": "deps"
     },
     {
-      "from": "html.Doctype",
-      "to": "html.HtmlMarkup",
-      "kind": "language"
-    },
-    {
-      "from": "html.EscapedText",
-      "to": "html.HtmlMarkup",
-      "kind": "language"
-    },
-    {
-      "from": "html.HtmlAttributes",
-      "to": "html.HtmlMarkup",
-      "kind": "language"
-    },
-    {
-      "from": "html.HtmlBlock",
-      "to": "html.HtmlMarkup",
-      "kind": "language"
-    },
-    {
       "from": "html.HtmlBlock",
       "to": "html.HtmlStartTag",
       "kind": "deps"
@@ -24347,11 +23916,6 @@
     },
     {
       "from": "html.HtmlElement",
-      "to": "html.HtmlMarkup",
-      "kind": "language"
-    },
-    {
-      "from": "html.HtmlElement",
       "to": "html.HtmlStartTag",
       "kind": "deps"
     },
@@ -24359,41 +23923,11 @@
       "from": "html.HtmlElement",
       "to": "html.HtmlEndTag",
       "kind": "deps"
-    },
-    {
-      "from": "html.HtmlEndTag",
-      "to": "html.HtmlMarkup",
-      "kind": "language"
-    },
-    {
-      "from": "html.HtmlHeading",
-      "to": "html.HtmlMarkup",
-      "kind": "language"
     },
     {
       "from": "html.HtmlHeading",
       "to": "html.HtmlElement",
       "kind": "deps"
-    },
-    {
-      "from": "html.HtmlMarkup",
-      "to": "standards.TreeSitterQueries",
-      "kind": "queryLanguage"
-    },
-    {
-      "from": "html.HtmlMarkup",
-      "to": "syntax.SyntaxReader",
-      "kind": "reader"
-    },
-    {
-      "from": "html.HtmlMarkup",
-      "to": "packages.HtmlGrammar",
-      "kind": "packages"
-    },
-    {
-      "from": "html.HtmlStartTag",
-      "to": "html.HtmlMarkup",
-      "kind": "language"
     },
     {
       "from": "html.HtmlStartTag",
@@ -24406,39 +23940,9 @@
       "kind": "language"
     },
     {
-      "from": "html.MediaFeature",
-      "to": "html.CssStyleSheets",
-      "kind": "language"
-    },
-    {
-      "from": "html.MediaRule",
-      "to": "html.CssStyleSheets",
-      "kind": "language"
-    },
-    {
-      "from": "html.NegationSelector",
-      "to": "html.CssStyleSheets",
-      "kind": "language"
-    },
-    {
-      "from": "html.ScriptElement",
-      "to": "html.HtmlMarkup",
-      "kind": "language"
-    },
-    {
       "from": "html.ScriptElement",
       "to": "html.HtmlElement",
       "kind": "deps"
-    },
-    {
-      "from": "html.SelectorList",
-      "to": "html.CssStyleSheets",
-      "kind": "language"
-    },
-    {
-      "from": "html.SelfClosingTag",
-      "to": "html.HtmlMarkup",
-      "kind": "language"
     },
     {
       "from": "html.SelfClosingTag",
@@ -24463,11 +23967,6 @@
     {
       "from": "languages.Drivers",
       "to": "typescript.TypeScript",
-      "kind": "deps"
-    },
-    {
-      "from": "languages.Drivers",
-      "to": "html.CssStyleSheets",
       "kind": "deps"
     },
     {
@@ -24652,11 +24151,6 @@
     },
     {
       "from": "markdown.Anchor",
-      "to": "html.HtmlMarkup",
-      "kind": "language"
-    },
-    {
-      "from": "markdown.Anchor",
       "to": "html.HtmlElement",
       "kind": "deps"
     },
@@ -24734,11 +24228,6 @@
       "from": "markdown.CodeSpan",
       "to": "markdown.BacktickString",
       "kind": "deps"
-    },
-    {
-      "from": "markdown.Details",
-      "to": "html.HtmlMarkup",
-      "kind": "language"
     },
     {
       "from": "markdown.Details",
@@ -24804,11 +24293,6 @@
       "from": "markdown.RelativeReference",
       "to": "conventions.Layout",
       "kind": "deps"
-    },
-    {
-      "from": "markdown.Small",
-      "to": "html.HtmlMarkup",
-      "kind": "language"
     },
     {
       "from": "markdown.Small",
@@ -25086,11 +24570,6 @@
       "kind": "deps"
     },
     {
-      "from": "messages.CompilerMessages",
-      "to": "messages.Lists",
-      "kind": "deps"
-    },
-    {
       "from": "messages.CountsInTheLanguage",
       "to": "product.SingleSource",
       "kind": "serves"
@@ -25131,21 +24610,6 @@
       "kind": "appliedBy"
     },
     {
-      "from": "messages.CountsInTheLanguage",
-      "to": "messages.Lists",
-      "kind": "appliedBy"
-    },
-    {
-      "from": "messages.Dates",
-      "to": "product.SingleSource",
-      "kind": "serves"
-    },
-    {
-      "from": "messages.Dates",
-      "to": "messages.Language",
-      "kind": "deps"
-    },
-    {
       "from": "messages.DevMessages",
       "to": "messages.Language",
       "kind": "language"
@@ -25153,11 +24617,6 @@
     {
       "from": "messages.DevMessages",
       "to": "messages.Language",
-      "kind": "deps"
-    },
-    {
-      "from": "messages.DevMessages",
-      "to": "messages.Lists",
       "kind": "deps"
     },
     {
@@ -25179,16 +24638,6 @@
       "from": "messages.LawMessages",
       "to": "messages.Language",
       "kind": "language"
-    },
-    {
-      "from": "messages.Lists",
-      "to": "product.SingleSource",
-      "kind": "serves"
-    },
-    {
-      "from": "messages.Lists",
-      "to": "messages.Language",
-      "kind": "deps"
     },
     {
       "from": "messages.OutputMessages",
@@ -25246,6 +24695,11 @@
       "kind": "serves"
     },
     {
+      "from": "packages.DocumentRenderers",
+      "to": "product.SingleSource",
+      "kind": "serves"
+    },
+    {
       "from": "packages.GenericCommands",
       "to": "product.SingleSource",
       "kind": "serves"
@@ -25282,11 +24736,6 @@
     },
     {
       "from": "page.Banner",
-      "to": "html.HtmlMarkup",
-      "kind": "language"
-    },
-    {
-      "from": "page.Banner",
       "to": "page.ThePage",
       "kind": "deps"
     },
@@ -25304,11 +24753,6 @@
       "from": "page.Brand",
       "to": "page.ThePage",
       "kind": "standard"
-    },
-    {
-      "from": "page.Brand",
-      "to": "html.HtmlMarkup",
-      "kind": "language"
     },
     {
       "from": "page.Brand",
@@ -25342,11 +24786,6 @@
     },
     {
       "from": "page.CompilationState",
-      "to": "html.HtmlMarkup",
-      "kind": "language"
-    },
-    {
-      "from": "page.CompilationState",
       "to": "page.ThePage",
       "kind": "deps"
     },
@@ -25364,11 +24803,6 @@
       "from": "page.DatePicker",
       "to": "page.ThePage",
       "kind": "standard"
-    },
-    {
-      "from": "page.DatePicker",
-      "to": "html.HtmlMarkup",
-      "kind": "language"
     },
     {
       "from": "page.DatePicker",
@@ -25394,11 +24828,6 @@
       "from": "page.DocumentHead",
       "to": "page.ThePage",
       "kind": "standard"
-    },
-    {
-      "from": "page.DocumentHead",
-      "to": "html.HtmlMarkup",
-      "kind": "language"
     },
     {
       "from": "page.DocumentHead",
@@ -25432,11 +24861,6 @@
     },
     {
       "from": "page.DocumentPicker",
-      "to": "html.HtmlMarkup",
-      "kind": "language"
-    },
-    {
-      "from": "page.DocumentPicker",
       "to": "page.ThePage",
       "kind": "deps"
     },
@@ -25459,11 +24883,6 @@
       "from": "page.FigureMarkers",
       "to": "page.ThePage",
       "kind": "standard"
-    },
-    {
-      "from": "page.FigureMarkers",
-      "to": "html.HtmlMarkup",
-      "kind": "language"
     },
     {
       "from": "page.FigureMarkers",
@@ -25502,11 +24921,6 @@
     },
     {
       "from": "page.FontLinks",
-      "to": "html.HtmlMarkup",
-      "kind": "language"
-    },
-    {
-      "from": "page.FontLinks",
       "to": "html.HtmlStartTag",
       "kind": "deps"
     },
@@ -25514,11 +24928,6 @@
       "from": "page.Logo",
       "to": "page.ThePage",
       "kind": "standard"
-    },
-    {
-      "from": "page.Logo",
-      "to": "html.HtmlMarkup",
-      "kind": "language"
     },
     {
       "from": "page.Logo",
@@ -25557,11 +24966,6 @@
     },
     {
       "from": "page.MainArea",
-      "to": "html.HtmlMarkup",
-      "kind": "language"
-    },
-    {
-      "from": "page.MainArea",
       "to": "page.ThePage",
       "kind": "deps"
     },
@@ -25594,11 +24998,6 @@
       "from": "page.NarrowScreenRule",
       "to": "page.ThePage",
       "kind": "standard"
-    },
-    {
-      "from": "page.NarrowScreenRule",
-      "to": "html.CssStyleSheets",
-      "kind": "language"
     },
     {
       "from": "page.NarrowScreenRule",
@@ -25639,11 +25038,6 @@
       "from": "page.Navigation",
       "to": "page.ThePage",
       "kind": "standard"
-    },
-    {
-      "from": "page.Navigation",
-      "to": "html.HtmlMarkup",
-      "kind": "language"
     },
     {
       "from": "page.Navigation",
@@ -25806,24 +25200,9 @@
       "kind": "deps"
     },
     {
-      "from": "page.Page",
-      "to": "html.HtmlMarkup",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Page",
-      "to": "html.CssStyleSheets",
-      "kind": "deps"
-    },
-    {
       "from": "page.PageDocument",
       "to": "page.ThePage",
       "kind": "standard"
-    },
-    {
-      "from": "page.PageDocument",
-      "to": "html.HtmlMarkup",
-      "kind": "language"
     },
     {
       "from": "page.PageDocument",
@@ -25854,11 +25233,6 @@
       "from": "page.PageScripts",
       "to": "page.ThePage",
       "kind": "standard"
-    },
-    {
-      "from": "page.PageScripts",
-      "to": "html.HtmlMarkup",
-      "kind": "language"
     },
     {
       "from": "page.PageScripts",
@@ -25942,11 +25316,6 @@
     },
     {
       "from": "page.RenderingToggle",
-      "to": "html.HtmlMarkup",
-      "kind": "language"
-    },
-    {
-      "from": "page.RenderingToggle",
       "to": "page.ThePage",
       "kind": "deps"
     },
@@ -25977,11 +25346,6 @@
     },
     {
       "from": "page.Shell",
-      "to": "html.HtmlMarkup",
-      "kind": "language"
-    },
-    {
-      "from": "page.Shell",
       "to": "page.ThePage",
       "kind": "deps"
     },
@@ -26009,11 +25373,6 @@
       "from": "page.SideBar",
       "to": "page.ThePage",
       "kind": "standard"
-    },
-    {
-      "from": "page.SideBar",
-      "to": "html.HtmlMarkup",
-      "kind": "language"
     },
     {
       "from": "page.SideBar",
@@ -26054,11 +25413,6 @@
       "from": "page.StatusStyle",
       "to": "page.ThePage",
       "kind": "standard"
-    },
-    {
-      "from": "page.StatusStyle",
-      "to": "html.CssStyleSheets",
-      "kind": "language"
     },
     {
       "from": "page.StatusStyle",
@@ -26119,11 +25473,6 @@
       "from": "page.Theme",
       "to": "page.ThePage",
       "kind": "standard"
-    },
-    {
-      "from": "page.Theme",
-      "to": "html.CssStyleSheets",
-      "kind": "language"
     },
     {
       "from": "page.Theme",
@@ -26786,11 +26135,6 @@
       "kind": "implements"
     },
     {
-      "from": "platform.NpmReports",
-      "to": "documents.Punctuation",
-      "kind": "deps"
-    },
-    {
       "from": "platform.PackagesByOrigin",
       "to": "platform.LocalPaths",
       "kind": "deps"
@@ -27053,6 +26397,16 @@
     {
       "from": "platform.WebTreeSitter",
       "to": "packages.WebTreeSitterPackage",
+      "kind": "packages"
+    },
+    {
+      "from": "platform.WebTreeSitter",
+      "to": "packages.HtmlGrammar",
+      "kind": "packages"
+    },
+    {
+      "from": "platform.WebTreeSitter",
+      "to": "packages.CssGrammar",
       "kind": "packages"
     },
     {
@@ -28111,6 +27465,16 @@
       "kind": "assembledBy"
     },
     {
+      "from": "releases.G128",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G128",
+      "to": "releases.G127",
+      "kind": "assembledBy"
+    },
+    {
       "from": "releases.G13",
       "to": "architecture.TrameCli",
       "kind": "component"
@@ -29077,22 +28441,7 @@
     },
     {
       "from": "rendering.Common",
-      "to": "messages.Dates",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.Common",
-      "to": "messages.Lists",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.Common",
       "to": "messages.RenderingMessages",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.Common",
-      "to": "documents.Units",
       "kind": "deps"
     },
     {
@@ -29197,11 +28546,6 @@
     },
     {
       "from": "rendering.HtmlSyntax",
-      "to": "documents.Punctuation",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.HtmlSyntax",
       "to": "rendering.SentenceSlots",
       "kind": "deps"
     },
@@ -29228,11 +28572,6 @@
     {
       "from": "rendering.MarkdownSyntax",
       "to": "documents.TextRendering",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.MarkdownSyntax",
-      "to": "documents.Punctuation",
       "kind": "deps"
     },
     {
@@ -29422,11 +28761,6 @@
     },
     {
       "from": "rendering.MermaidDiagrams",
-      "to": "messages.Dates",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.MermaidDiagrams",
       "to": "messages.RenderingMessages",
       "kind": "deps"
     },
@@ -29567,11 +28901,6 @@
     },
     {
       "from": "rendering.PlainTextSyntax",
-      "to": "documents.Punctuation",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.PlainTextSyntax",
       "to": "text.PaddedCell",
       "kind": "deps"
     },
@@ -29672,22 +29001,12 @@
     },
     {
       "from": "rendering.SvgFigures",
-      "to": "messages.Dates",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.SvgFigures",
       "to": "messages.PageWords",
       "kind": "deps"
     },
     {
       "from": "rendering.SvgFigures",
       "to": "messages.RenderingMessages",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.SvgFigures",
-      "to": "documents.Punctuation",
       "kind": "deps"
     },
     {
@@ -29772,11 +29091,6 @@
     },
     {
       "from": "rendering.TextFigures",
-      "to": "documents.Punctuation",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.TextFigures",
       "to": "text.PaddedCell",
       "kind": "deps"
     },
@@ -29793,11 +29107,6 @@
     {
       "from": "rendering.TextFigures",
       "to": "text.PathStep",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.TextFigures",
-      "to": "messages.Dates",
       "kind": "deps"
     },
     {
@@ -30107,27 +29416,7 @@
     },
     {
       "from": "scenarios.DocumentWords",
-      "to": "messages.Dates",
-      "kind": "verifies"
-    },
-    {
-      "from": "scenarios.DocumentWords",
-      "to": "messages.Lists",
-      "kind": "verifies"
-    },
-    {
-      "from": "scenarios.DocumentWords",
-      "to": "documents.Units",
-      "kind": "verifies"
-    },
-    {
-      "from": "scenarios.DocumentWords",
       "to": "documents.VisibleText",
-      "kind": "verifies"
-    },
-    {
-      "from": "scenarios.DocumentWords",
-      "to": "documents.Punctuation",
       "kind": "verifies"
     },
     {
@@ -30137,32 +29426,17 @@
     },
     {
       "from": "scenarios.DocumentWords",
+      "to": "documents.OurDocumentLanguage",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.DocumentWords",
       "to": "architecture.Test",
       "kind": "env"
     },
     {
       "from": "scenarios.DocumentWords",
-      "to": "messages.Dates",
-      "kind": "deps"
-    },
-    {
-      "from": "scenarios.DocumentWords",
-      "to": "messages.Lists",
-      "kind": "deps"
-    },
-    {
-      "from": "scenarios.DocumentWords",
-      "to": "documents.Units",
-      "kind": "deps"
-    },
-    {
-      "from": "scenarios.DocumentWords",
       "to": "documents.VisibleText",
-      "kind": "deps"
-    },
-    {
-      "from": "scenarios.DocumentWords",
-      "to": "documents.Punctuation",
       "kind": "deps"
     },
     {
@@ -31426,6 +30700,16 @@
       "kind": "appliedBy"
     },
     {
+      "from": "syntax.StdLanguagesRead",
+      "to": "architecture.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "syntax.StdLanguagesRead",
+      "to": "product.ExecutableSpecification",
+      "kind": "serves"
+    },
+    {
       "from": "syntax.SyntaxReader",
       "to": "product.ExecutableSpecification",
       "kind": "serves"
@@ -31597,11 +30881,6 @@
     },
     {
       "from": "terraform.Terraform",
-      "to": "standards.TreeSitterQueries",
-      "kind": "queryLanguage"
-    },
-    {
-      "from": "terraform.Terraform",
       "to": "syntax.SyntaxReader",
       "kind": "reader"
     },
@@ -31663,11 +30942,6 @@
     {
       "from": "terraform.TerraformWriter",
       "to": "architecture.Prelude",
-      "kind": "deps"
-    },
-    {
-      "from": "terraform.TerraformWriter",
-      "to": "messages.Dates",
       "kind": "deps"
     },
     {
@@ -32162,11 +31436,6 @@
     },
     {
       "from": "typescript.TypeScript",
-      "to": "standards.TreeSitterQueries",
-      "kind": "queryLanguage"
-    },
-    {
-      "from": "typescript.TypeScript",
       "to": "syntax.SyntaxReader",
       "kind": "reader"
     },
@@ -32343,11 +31612,6 @@
     {
       "from": "typescript.TypeScriptWriter",
       "to": "architecture.Prelude",
-      "kind": "deps"
-    },
-    {
-      "from": "typescript.TypeScriptWriter",
-      "to": "messages.Dates",
       "kind": "deps"
     },
     {

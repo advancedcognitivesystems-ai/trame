@@ -1907,3 +1907,18 @@ export const G128 = release({
   archive: "059fee84b1865ef7",
   assembledBy: G127,
 })
+
+/**
+ * Generation 129
+ */
+export const G129 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g129",
+  date: "2026-11-26",
+  what: "std's languages read by the engine, the documents' language from libs/documents; a project compiled through the API gives the views back",
+  fingerprint: "73e039b544e87476",
+  language: "shared",
+  archive: "33f89a045e47daa4",
+  assembledBy: G128,
+})

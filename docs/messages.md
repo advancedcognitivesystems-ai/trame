@@ -10,7 +10,7 @@
 
 ### Language
 
-`Language` · `src/messages.ts:35`
+`Language` · `src/messages.ts:36`
 
 The language Trame speaks to people: British English. Its messages are written in it, its dates follow it ("17 October 2026"), and so does its punctuation: a middle dot (U+00B7) between parts, a comma between items, a leftwards arrow (U+2190) from a name to what gives it, an aside in parentheses, a semicolon between clauses, a colon after a label, an equals sign between a name and its value, an em dash (U+2014) for nothing. The tag is a BCP 47 language tag, as the platform's date formatting reads it. Another language is another value here, and its catalogs.
 
@@ -21,7 +21,7 @@ The language Trame speaks to people: British English. Its messages are written i
 
 - Decided by: trame
 - Rejected: French, the language of the first generations; the workspace and its documents moved to English; Several languages at once, nothing asks for it yet: each catalog is written in one language, and a second one would be a second set of catalogs
-- Used by: [Show the graph](browser.md#ShowGraph), [Punctuation of documents](documents.md#Punctuation), [trame dev server](engine.md#DevServer), [Payload](engine.md#PayloadBuilder), [Messages of an advance](#AdvanceMessages), [Messages of the commands](#CommandMessages), [Messages of the compiler](#CompilerMessages), [Dates](#Dates), [Messages of trame dev](#DevMessages), [Lists](#Lists), [Words of the page](#PageWords), [Messages of the scenarios](#ScenarioMessages), [Messages of the views](#ViewMessages), [Page](page.md#Page), [The documents write in the decided language](scenarios.md#DocumentWords), [Open the graph page](sdlc.md#OpenTheGraphPage)
+- Used by: [Show the graph](browser.md#ShowGraph), [The documents in Trame's language](documents.md#OurDocumentLanguage), [trame dev server](engine.md#DevServer), [Payload](engine.md#PayloadBuilder), [Messages of an advance](#AdvanceMessages), [Messages of the commands](#CommandMessages), [Messages of the compiler](#CompilerMessages), [Messages of trame dev](#DevMessages), [Words of the page](#PageWords), [Messages of the scenarios](#ScenarioMessages), [Messages of the views](#ViewMessages), [Page](page.md#Page), [The documents write in the decided language](scenarios.md#DocumentWords), [Open the graph page](sdlc.md#OpenTheGraphPage)
 - Applies: [The punctuation is the language's](documents.md#PunctuationOfTheLanguage)
 - Language of: [Messages of an advance](#AdvanceMessages), [Messages of the commands](#CommandMessages), [Messages of the compiler](#CompilerMessages), [Messages of trame dev](#DevMessages), [Messages of the drivers](#DriverMessages), [Words of Trame's views](#EngineViewWords), [Words of the kinds](#KindWords), [Messages of the laws](#LawMessages), [Messages of the outputs](#OutputMessages), [Words of the page](#PageWords), [Messages of the platform](#PlatformMessages), [Messages of the renderers](#RenderingMessages), [Messages of the scenarios](#ScenarioMessages), [Messages of the views](#ViewMessages), [Words of the views](#ViewWords), [What the programs of Trame's SDLC say](sdlc.md#SdlcWords), [Roles of a literal](syntax.md#LiteralRoles)
 
@@ -31,7 +31,7 @@ The language Trame speaks to people: British English. Its messages are written i
 
 ### A catalog counts in its language
 
-`CountsInTheLanguage` · `src/messages.ts:1048` · status: **held**
+`CountsInTheLanguage` · `src/messages.ts:1014` · status: **held**
 
 A count and its noun follow the plural rules of the language the catalog is written in, with the forms the catalog writes for each category; nothing below the catalogs presumes a language.
 
@@ -46,40 +46,7 @@ Consequences: A catalog that counts receives the decided language and counts by 
 
 - Decided by: trame
 - Serves: [A single source of truth](product.md#SingleSource)
-- Applied by: [Messages of the compiler](#CompilerMessages), [Messages of the views](#ViewMessages), [Messages of trame dev](#DevMessages), [Messages of the commands](#CommandMessages), [Messages of the scenarios](#ScenarioMessages), [Messages of an advance](#AdvanceMessages), [Words of the page](#PageWords), [Lists](#Lists)
-
-## Functions
-
-<a id="Dates"></a>
-
-### Dates
-
-`Dates` · `src/messages.ts:51` · status: **held**
-
-Writes a date of the graph (an ISO day, "2026-10-17") as people read it in the decided language.
-
-- Owner: trame
-- Parameters: `language` ← [Language](#Language)
-- Body: inline, in the declaration
-- Serves: [A single source of truth](product.md#SingleSource)
-- Used by: [trame dev server](engine.md#DevServer), [Graph](engine.md#GraphApi), [Common rendering](rendering.md#Common), [Mermaid diagrams](rendering.md#MermaidDiagrams), [Figures in SVG](rendering.md#SvgFigures), [Figures as text](rendering.md#TextFigures), [The documents write in the decided language](scenarios.md#DocumentWords), [Terraform writer](terraform.md#TerraformWriter), [TypeScript writer](typescript.md#TypeScriptWriter)
-- Verified by: [The documents write in the decided language](scenarios.md#DocumentWords)
-
-<a id="Lists"></a>
-
-### Lists
-
-`Lists` · `src/messages.ts:70` · status: **held**
-
-Joins the items of a list as people write it in the decided language: "A, B and C". The items stay as they are (a reference stays a reference); only the words between them are added.
-
-- Owner: trame
-- Parameters: `language` ← [Language](#Language)
-- Body: inline, in the declaration
-- Serves: [A single source of truth](product.md#SingleSource)
-- Used by: [Graph](engine.md#GraphApi), [Messages of the compiler](#CompilerMessages), [Messages of trame dev](#DevMessages), [Common rendering](rendering.md#Common), [The documents write in the decided language](scenarios.md#DocumentWords)
-- Applies: [A catalog counts in its language](#CountsInTheLanguage)
-- Verified by: [The documents write in the decided language](scenarios.md#DocumentWords)
+- Applied by: [Messages of the compiler](#CompilerMessages), [Messages of the views](#ViewMessages), [Messages of trame dev](#DevMessages), [Messages of the commands](#CommandMessages), [Messages of the scenarios](#ScenarioMessages), [Messages of an advance](#AdvanceMessages), [Words of the page](#PageWords), [Lists](../libs/documents/releases/0.1.0/docs/language.md#Lists)
 
 ## Message catalogs
 
@@ -87,7 +54,7 @@ Joins the items of a list as people write it in the decided language: "A, B and 
 
 ### Messages of an advance
 
-`AdvanceMessages` · `src/messages.ts:959`
+`AdvanceMessages` · `src/messages.ts:925`
 
 What trame advance says as it goes, and what a generation says of itself.
 
@@ -186,7 +153,7 @@ What trame advance says as it goes, and what a generation says of itself.
 
 ### Messages of the commands
 
-`CommandMessages` · `src/messages.ts:454`
+`CommandMessages` · `src/messages.ts:420`
 
 What the commands print: summaries, usage, refusals.
 
@@ -447,7 +414,7 @@ What the commands print: summaries, usage, refusals.
 
 ### Messages of the compiler
 
-`CompilerMessages` · `src/messages.ts:90`
+`CompilerMessages` · `src/messages.ts:56`
 
 What the compiler, the wiring and the assembly say: diagnostics on the graph, refusals, errors.
 
@@ -585,7 +552,7 @@ What the compiler, the wiring and the assembly say: diagnostics on the graph, re
 </details>
 
 - Owner: trame
-- Parameters: `language` ← [Language](#Language) · `lists` ← [Lists](#Lists)
+- Parameters: `language` ← [Language](#Language) · `lists` ← [Lists](../libs/documents/releases/0.1.0/docs/language.md#Lists)
 - Written in: [Language](#Language)
 - Used by: [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [Assembly](engine.md#Assembly), [Compiler](engine.md#Compiler), [Graph](engine.md#GraphApi), [Judged harder](engine.md#JudgedHarder), [Static reading](engine.md#StaticAnalysis), [Wiring](engine.md#Wiring)
 - Applies: [A catalog counts in its language](#CountsInTheLanguage), [The words are in catalogs](principles.md#WordsInCatalogs)
@@ -594,7 +561,7 @@ What the compiler, the wiring and the assembly say: diagnostics on the graph, re
 
 ### Messages of trame dev
 
-`DevMessages` · `src/messages.ts:430`
+`DevMessages` · `src/messages.ts:396`
 
 What the dev server prints while it watches the project.
 
@@ -620,7 +587,7 @@ What the dev server prints while it watches the project.
 </details>
 
 - Owner: trame
-- Parameters: `language` ← [Language](#Language) · `lists` ← [Lists](#Lists)
+- Parameters: `language` ← [Language](#Language) · `lists` ← [Lists](../libs/documents/releases/0.1.0/docs/language.md#Lists)
 - Written in: [Language](#Language)
 - Used by: [trame dev server](engine.md#DevServer)
 - Applies: [A catalog counts in its language](#CountsInTheLanguage), [The words are in catalogs](principles.md#WordsInCatalogs)
@@ -629,7 +596,7 @@ What the dev server prints while it watches the project.
 
 ### Messages of the drivers
 
-`DriverMessages` · `src/messages.ts:226`
+`DriverMessages` · `src/messages.ts:192`
 
 What the drivers say about a body: hidden dependencies, access to the platform, a missing file; and the comments of the programs they write.
 
@@ -688,7 +655,7 @@ What the drivers say about a body: hidden dependencies, access to the platform, 
 
 ### Words of Trame's views
 
-`EngineViewWords` · `src/messages.ts:726`
+`EngineViewWords` · `src/messages.ts:692`
 
 What the views of Trame's own graph say: the catalogue of literals, the versions of the engine.
 
@@ -701,7 +668,7 @@ The messages are written in `../engine-views/words.ts`.
 
 ### Words of the kinds
 
-`KindWords` · `src/messages.ts:706`
+`KindWords` · `src/messages.ts:672`
 
 What the kinds say: their labels, the labels of their fields and edges, what their holes say, what they render. The kinds are files of the language, outside the graph: their words are a catalog all the same, which they call; a kind writes no text of its own.
 
@@ -714,7 +681,7 @@ The messages are written in `../kinds/words.ts`.
 
 ### Messages of the laws
 
-`LawMessages` · `src/messages.ts:274`
+`LawMessages` · `src/messages.ts:240`
 
 What the laws of kinds and views report when one does not hold.
 
@@ -770,7 +737,7 @@ What the laws of kinds and views report when one does not hold.
 
 ### Messages of the outputs
 
-`OutputMessages` · `src/messages.ts:370`
+`OutputMessages` · `src/messages.ts:336`
 
 What the machine outputs, the lock, the payload, the date bundle, the differences and the page say.
 
@@ -841,7 +808,7 @@ What the machine outputs, the lock, the payload, the date bundle, the difference
 
 ### Words of the page
 
-`PageWords` · `src/messages.ts:737`
+`PageWords` · `src/messages.ts:703`
 
 What the page says around the documents the engine wrote: the state of the compilation, the dates, the navigation, the banner, the figures, the explorer.
 
@@ -857,7 +824,7 @@ The messages are written in `./code/page/words.ts`.
 
 ### Messages of the platform
 
-`PlatformMessages` · `src/messages.ts:759`
+`PlatformMessages` · `src/messages.ts:725`
 
 What the implementations of the ports say (the command line, the terminal, the processes).
 
@@ -897,7 +864,7 @@ What the implementations of the ports say (the command line, the terminal, the p
 
 ### Messages of the renderers
 
-`RenderingMessages` · `src/messages.ts:749`
+`RenderingMessages` · `src/messages.ts:715`
 
 The words that the renderers add to the intermediate format: labels, notes, the names of statuses and outcomes. Written in a file: the page, which runs in the browser where nothing is wired, reads it too.
 
@@ -912,7 +879,7 @@ The messages are written in `./code/rendering/messages.ts`.
 
 ### Messages of the scenarios
 
-`ScenarioMessages` · `src/messages.ts:788`
+`ScenarioMessages` · `src/messages.ts:754`
 
 The names of the checks that the engine's scenarios make.
 
@@ -1094,7 +1061,7 @@ The names of the checks that the engine's scenarios make.
 
 ### Messages of the views
 
-`ViewMessages` · `src/messages.ts:319`
+`ViewMessages` · `src/messages.ts:285`
 
 What the loading of views and the compilation API say.
 
@@ -1156,7 +1123,7 @@ What the loading of views and the compilation API say.
 
 ### Words of the views
 
-`ViewWords` · `src/messages.ts:716`
+`ViewWords` · `src/messages.ts:682`
 
 What the views say: their titles, their introductions, their headings, what they say of the graph.
 

@@ -24,36 +24,6 @@ Source: tree-sitter, Using Parsers: Point (row, column), counted from zero; web-
 - Maintained by: trame
 - Used by: [Syntax reader](syntax.md#SyntaxReader)
 
-<a id="TreeSitterQueries"></a>
-
-### tree-sitter queries
-
-`TreeSitterQueries` · `src/standards.ts:40`
-
-The language the queries of a language node are written in: patterns of S-expressions, captures named with
-
-Source: tree-sitter, Query Syntax: Predicates and Directives; the predicates evaluated by web-tree-sitter 0.27 (Query.matches, Query.captures) · `https://tree-sitter.github.io/tree-sitter/using-parsers/queries/3-predicates-and-directives.html`
-
-| Constant | Value | Meaning |
-|---|---|---|
-| `eq` | `#eq?` | The capture's text equals a string, or another capture's text |
-| `notEq` | `#not-eq?` | The capture's text differs from a string, or from another capture's text |
-| `anyEq` | `#any-eq?` | One of the quantified capture's nodes equals the string |
-| `anyNotEq` | `#any-not-eq?` | One of the quantified capture's nodes differs from the string |
-| `match` | `#match?` | The capture's text matches a regular expression |
-| `notMatch` | `#not-match?` | The capture's text does not match a regular expression |
-| `anyMatch` | `#any-match?` | One of the quantified capture's nodes matches the regular expression |
-| `anyNotMatch` | `#any-not-match?` | One of the quantified capture's nodes does not match the regular expression |
-| `anyOf` | `#any-of?` | The capture's text is one of the strings that follow |
-| `notAnyOf` | `#not-any-of?` | The capture's text is none of the strings that follow |
-| `is` | `#is?` | Asserts a property of the match (kept aside for the reader) |
-| `isNot` | `#is-not?` | Refutes a property of the match (kept aside for the reader) |
-| `set` | `#set!` | Sets a property on the match: a directive, not a filter |
-
-- Maintained by: trame
-- Named in code blocks: scheme
-- Language of the queries of: [CSS style sheets](html.md#CssStyleSheets), [HTML markup](html.md#HtmlMarkup), [Terraform](terraform.md#Terraform), [TypeScript](typescript.md#TypeScript)
-
 <a id="TypeScriptApi"></a>
 
 ### TypeScript compiler API

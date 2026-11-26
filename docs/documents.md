@@ -10,7 +10,7 @@
 
 ### Settings of the documents
 
-`LanguageSettings` · `src/documents.ts:87`
+`LanguageSettings` · `src/documents.ts:103`
 
 How far the timeline reaches before the first date it shows and after the last one, in days; how many examples, most frequent values and repeated values the catalogue of literals shows, and the categories it leaves out of the repeated values (a separator repeats by nature); how many days before it expires an assumption warns, and before its end an amendment warns its owner, so they prolong it or let it end knowingly; the percentiles a service level objective may hold (below the median, an objective would say that most measures may miss it). The kinds and the views receive them from the engine.
 
@@ -29,7 +29,7 @@ How far the timeline reaches before the first date it shows and after the last o
 
 ### How Mermaid figures are drawn
 
-`MermaidFigures` · `src/documents.ts:109`
+`MermaidFigures` · `src/documents.ts:125`
 
 The reading direction of each shape, the stroke of each edge, the look of a node that is history or not in force, the Gantt chart. The colours of the statuses come from the palette.
 
@@ -46,27 +46,11 @@ The reading direction of each shape, the stroke of each edge, the look of a node
 - Decided by: trame
 - Used by: [Mermaid diagrams](rendering.md#MermaidDiagrams)
 
-<a id="NumberDisplay"></a>
-
-### How a number is written
-
-`NumberDisplay` · `src/documents.ts:129`
-
-A value of the graph is written in decimal digits, with at most two decimals.
-
-| Case | Value |
-|---|---|
-| base | 10 |
-| decimals | 2 |
-
-- Decided by: trame
-- Used by: [Values with their units](#Units)
-
 <a id="TextRendering"></a>
 
 ### Heading levels of Markdown documents
 
-`TextRendering` · `src/documents.ts:44`
+`TextRendering` · `src/documents.ts:48`
 
 The title of a document is a heading of the first level, its sections start at the second; a card is one level under the section that holds it.
 
@@ -84,7 +68,7 @@ The title of a document is a heading of the first level, its sections start at t
 
 ### The punctuation is the language's
 
-`PunctuationOfTheLanguage` · `src/documents.ts:66` · status: **held**
+`PunctuationOfTheLanguage` · `src/documents.ts:82` · status: **held**
 
 The marks between the parts of a line are written in the decided language, with its tag; the renderers, the page, the kinds and the views receive those of the language decided.
 
@@ -99,52 +83,61 @@ Consequences: The Language decision holds the marks of the language with its tag
 
 - Decided by: trame
 - Serves: [A single source of truth](product.md#SingleSource)
-- Applied by: [Punctuation of documents](#Punctuation), [Language](messages.md#Language)
+- Applied by: [The documents in Trame's language](#OurDocumentLanguage), [Language](messages.md#Language)
 
 ## Functions
 
-<a id="Punctuation"></a>
+<a id="OurDocumentLanguage"></a>
 
-### Punctuation of documents
+### The documents in Trame's language
 
-`Punctuation` · `src/documents.ts:54` · status: **held**
+`OurDocumentLanguage` · `src/documents.ts:58` · status: **held**
 
-The marks of the decided language that separate the parts of a line, the same in every rendering (the terminal, Markdown, the page). How a value reads (a list, a map, a record) is said by the catalog.
+The language the documents are written in (libs/documents' port, since g129): Trame's, with its tag and its marks, which the views speak; the dates, the lists, the punctuation and the units of the library write in it.
 
 - Owner: trame
 - Parameters: `language` ← [Language](messages.md#Language)
 - Body: inline, in the declaration
-- Serves: [A single source of truth](product.md#SingleSource)
-- Used by: [Explorer of a graph](browser.md#ExplorerFigures), [Show the graph](browser.md#ShowGraph), [Assembler](commands.md#Assembler), [Compilation API](engine.md#CompilationApi), [Differences](engine.md#Differences), [Graph](engine.md#GraphApi), [npm's reports](platform.md#NpmReports), [HTML writer](rendering.md#HtmlSyntax), [Markdown writer](rendering.md#MarkdownSyntax), [Plain text writer](rendering.md#PlainTextSyntax), [Figures in SVG](rendering.md#SvgFigures), [Figures as text](rendering.md#TextFigures), [The documents write in the decided language](scenarios.md#DocumentWords)
+- Implements: [The language of the documents](../libs/documents/releases/0.1.0/docs/language.md#DocumentLanguage)
+- Chosen by: [Documents written in Trame's language](#DocumentsInOurLanguage)
 - Applies: [The punctuation is the language's](#PunctuationOfTheLanguage)
-- Verified by: [The documents write in the decided language](scenarios.md#DocumentWords)
-
-<a id="Units"></a>
-
-### Values with their units
-
-`Units` · `src/documents.ts:140` · status: **held**
-
-A number written in decimal digits; a value of a quantity of the graph in the largest of its units it makes a whole number of, in the words of that unit (since g80). A number of no quantity has no unit: the units the prelude wrote (a duration, a percentage, an amount in francs) are gone since g96, each a quantity of the graph.
-
-- Owner: trame
-- Parameters: `display` ← [How a number is written](#NumberDisplay) · `counts` ← [Counts](../std/releases/0.28.0/docs/algebra.md#Counts) · `values` ← [Types of values](../std/releases/0.28.0/docs/algebra.md#ValueTypes)
-- Body: inline, in the declaration
-- Serves: [A single source of truth](product.md#SingleSource)
-- Used by: [Compilation API](engine.md#CompilationApi), [Graph](engine.md#GraphApi), [Common rendering](rendering.md#Common), [The documents write in the decided language](scenarios.md#DocumentWords)
 - Verified by: [The documents write in the decided language](scenarios.md#DocumentWords)
 
 <a id="VisibleText"></a>
 
 ### Visible text
 
-`VisibleText` · `src/documents.ts:175` · status: **held**
+`VisibleText` · `src/documents.ts:146` · status: **held**
 
 A text shown so that every character can be seen: in quotes as JSON writes it, the characters JSON leaves as they are written as escapes; or as it is, when nothing in it hides.
 
 - Owner: trame
-- Parameters: `escape` ← [Unicode escape of a text](../std/releases/0.28.0/docs/ecmascript.md#UnicodeEscape) · `invisible` ← [Characters that do not show](../std/releases/0.28.0/docs/text.md#InvisibleCharacters) · `ecma` ← [ECMAScript](../std/releases/0.28.0/docs/ecmascript.md#EcmaScript) · `texts` ← [Texts](../std/releases/0.28.0/docs/algebra.md#Texts)
+- Parameters: `escape` ← [Unicode escape of a text](../std/releases/0.29.0/docs/ecmascript.md#UnicodeEscape) · `invisible` ← [Characters that do not show](../std/releases/0.29.0/docs/text.md#InvisibleCharacters) · `ecma` ← [ECMAScript](../std/releases/0.29.0/docs/ecmascript.md#EcmaScript) · `texts` ← [Texts](../std/releases/0.29.0/docs/algebra.md#Texts)
 - Body: inline, in the declaration
 - Serves: [A single source of truth](product.md#SingleSource)
 - Used by: [Graph](engine.md#GraphApi), [The documents write in the decided language](scenarios.md#DocumentWords)
 - Verified by: [The documents write in the decided language](scenarios.md#DocumentWords)
+
+## Technical choice
+
+<a id="DocumentsInOurLanguage"></a>
+
+### Documents written in Trame's language
+
+`DocumentsInOurLanguage` · `src/documents.ts:68` · status: **held**
+
+Wherever the engine, its commands and its page run, the documents are written in Trame's language.
+
+In [Browser](architecture.md#Browser), [Local](architecture.md#Local), [A session of Claude Code](architecture.md#Session), [Test](architecture.md#Test):
+
+| Port | Answered by | Which is |
+|---|---|---|
+| [The language of the documents](../libs/documents/releases/0.1.0/docs/language.md#DocumentLanguage) | [The documents in Trame's language](#OurDocumentLanguage) | a function |
+
+Context: The views speak the engine's language: what renders their documents, on a machine, in the scenarios or in the page, writes its dates, lists and marks.
+
+- Decided by: trame
+- Chooses: [The documents in Trame's language](#OurDocumentLanguage)
+- In: [Local](architecture.md#Local), [A session of Claude Code](architecture.md#Session), [Test](architecture.md#Test), [Browser](architecture.md#Browser)
+- Follows: [Strategy](../std/releases/0.29.0/docs/patterns.md#Strategy)
+- Serves: [A single source of truth](product.md#SingleSource)
