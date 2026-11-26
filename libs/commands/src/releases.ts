@@ -18,3 +18,16 @@ export const R0_1_0 = release({
   language: "shared",
   serves: [WrittenOnce],
 })
+
+/**
+ * Version 0.1.1
+ */
+export const R0_1_1 = release({
+  owner: "trame",
+  version: "0.1.1",
+  date: "2026-11-26",
+  what: "the small project the scenarios compile lies in the library's sources, named by its package: a version carries it",
+  fingerprint: "7c152c7f2b91e089",
+  language: "shared",
+  serves: [WrittenOnce],
+})

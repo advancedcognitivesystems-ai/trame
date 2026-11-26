@@ -41,9 +41,9 @@ flowchart TB
     n23["The next version<br/><small>Shipment</small>"]:::unknown
     n24["Its packages safe<br/><small>Obligation</small>"]:::neutral
     n25["How a pull request is checked on GitHub<br/><small>Decision</small>"]:::neutral
-    n26["The pull requests' workflow<br/><small>Artefact</small>"]:::held
+    n26["The pull requests' workflow<br/><small>Artefact</small>"]:::unknown
     n27["Its requirements held<br/><small>Obligation</small>"]:::neutral
-    n28["The files that run it elsewhere<br/><small>Shipment</small>"]:::held
+    n28["The files that run it elsewhere<br/><small>Shipment</small>"]:::unknown
     n29["The commands of every project<br/><small>Artefact</small>"]:::unknown
     n30["How a version is made<br/><small>Policy</small>"]:::neutral
   end

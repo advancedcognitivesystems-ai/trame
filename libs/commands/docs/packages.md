@@ -36,13 +36,13 @@ The writers of the files that run a shipment elsewhere (GitHub Actions), at the 
 The language the library is written in, at the generation the repository runs, by its path: the one whose engine gives the API std's ports of the engine read (g124).
 
 - Name: `trame`
-- Version: `125`
+- Version: `126`
 - Installed: Not installed in the project: its lockfile lists no trame
 - Vulnerabilities: No report yet: trame audit asks the registry
 - Latest version: No report yet: trame audit asks the registry
 - What it may do: not said: an implementation that imports it cannot promise anything
 - How it joins the graph: `language`
-- Its path: `../../generations/g125`
+- Its path: `../../generations/g126`
 
 - Owner: trame
 - Serves: [Commands every project runs, written once](product.md#WrittenOnce)
