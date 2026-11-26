@@ -482,6 +482,12 @@ export const CommandMessages = catalog({
     quantitiesRefuse: () => "The quantities refuse the graph: what TypeScript lets through, the units do not",
     textAsCodeRefuses: () => "Code made of a text refuses the graph: what it would do, nobody can read before it runs",
     forgedCommandsRefuse: () => "Commands made by a cast refuse the graph: what a command may do is what made it says",
+    /** A project a command asked the engine to compile, refused (since g124): where, and what refuses it. */
+    projectRefusedHere: (root: string, why: readonly string[]) => `the project at ${root} cannot be compiled: ${why.join("; ")}`,
+    /** A directory without the configuration of a project (since g125). */
+    notAProject: (file: string) => `it has no ${file}: it is no project`,
+    /** A package name the project being compiled does not lead anywhere (since g125). */
+    packageNotLed: (name: string) => `the project being compiled leads no package named ${name}`,
 
     // trame test-kinds
     importsChecked: (refused: number) => `imports · ${refused ? `${refused} refused` : "only the public API is used"}`,
@@ -885,6 +891,9 @@ export const ScenarioMessages = catalog({
     givenForSomeone: (agent: string, person: string) => `Given by ${agent} for ${person} under a delegation of the role: ${person}'s, ${agent} named with it, sealed with the rest`,
     delegationOverRefused: (agent: string) => `Once the delegation is over, ${agent} is refused again`,
     projectCommandRun: (name: string) => `trame ${name} runs the example's command: its component assembled, its program run in the engine's process with the rest of the line`,
+    apiGivesThePrepared: () => "The engine's API gives the project as the dispatch prepared it: its root, its day, what a view receives, graph.json and the snapshot",
+    apiRefusesWhatIsNoProject: (dir: string) => `Asked to compile ${dir}, which has no configuration, the API refuses: it is no project`,
+    apiCompilesAProject: () => "Asked to compile the project at its day, the API gives the same graph, and no project prepared when the dispatch gave none",
     helpListsTheProject: (name: string) => `trame help lists ${name}, with the component that runs it`,
     advanceNeedsAName: () => "trame advance without a name assembles nothing and starts nothing",
     advanceAssemblesThenShips: () => "trame advance assembles the candidate and Trame's SDLC, then starts the candidate on the next generation's shipment with the rest of the line",

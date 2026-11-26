@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 25 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 26 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Standard library · Access
 
@@ -281,6 +281,58 @@ Function · `Commands` · **held**
 - Parameters: { effects: effects.Effects }
 - Serves: Ports of the platform, realized once
 - Depends on: Effects
+
+## Standard library · The engine
+
+### The engine is a provider
+
+Architecture decision · `EngineAsAProvider`
+
+- Decided by: trame
+- Context: The engine's commands reached its modules directly; a command of a library or a project could not, and a command moved out of the engine would have lost what it computed with.
+- Consequences: Every command reaches the engine the same way, through ports versioned with the library; the API they read is the language's, given by the engine, and it grows with a generation when a command needs more. A library's scenario compiles a project of its own through the engine that plays it.
+- Rejected: A library of contracts, a third place for types the language already defines (what a view receives) and the ports std already holds; The engine's modules, given as they are, what a command reads would change with each generation, unseen by the types
+- Serves: Ports of the platform, realized once
+- Applied by: The project at hand, The project of a scenario, The project the engine prepared, A project compiled by the engine that plays the scenario
+
+### The project of a scenario
+
+Port · `ProjectOfTheScenario`
+
+- Owner: trame
+- Declared effects: 
+
+### The project at hand
+
+Port · `TheProject`
+
+- Owner: trame
+- Declared effects: read, asynchronous
+
+### What the engine's adapters say
+
+Message catalog · `EngineWords`
+
+- Owner: trame
+- Written in: The language the library's commands and tools speak in.
+
+### A project compiled by the engine that plays the scenario
+
+Implementation · `ProjectCompiledHere`
+
+- Owner: trame
+- Parameters: { chosen: engine.ProjectOfTheScenario, say: engine.EngineWords }
+- Implements: The project at hand
+- Depends on: The project of a scenario, What the engine's adapters say
+
+### The project the engine prepared
+
+Implementation · `ProjectInTheEngine`
+
+- Owner: trame
+- Parameters: { say: engine.EngineWords }
+- Implements: The project at hand
+- Depends on: What the engine's adapters say
 
 ## Standard library · HTML and CSS
 
@@ -628,10 +680,10 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 123
+- Version: 127
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../generations/g123
+- Its path: ../generations/g127
 - Serves: Ports of the platform, realized once
 
 ### The people of the repository
@@ -1227,6 +1279,18 @@ Release · `R0_27_0`
 - Language: shared
 - Serves: Commands chosen, not written again, A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again, Versions that hold
 
+### Version 0.28.0
+
+Release · `R0_28_0`
+
+- Released by: trame
+- Version: 0.28.0
+- Released on: 2026-11-26
+- What changes: the engine as a provider: the port TheProject, realized in the engine and, in a scenario, by the engine that plays it
+- Fingerprint: 6ec9817f19e1eb38
+- Language: shared
+- Serves: Commands chosen, not written again, A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again, Versions that hold
+
 ### Version 0.3.0
 
 Release · `R0_3_0`
@@ -1819,7 +1883,7 @@ Artefact · `PullRequestWorkflow` · **held**
 
 ### The standard library
 
-Artefact · `TheLibrary` · **held**
+Artefact · `TheLibrary` · **unknown**
 
 - Owner: trame
 - Path: src
@@ -1827,7 +1891,7 @@ Artefact · `TheLibrary` · **held**
 
 ### The next version
 
-Shipment · `NextVersion` · **held**
+Shipment · `NextVersion` · **unknown**
 
 - Owner: trame
 - Target: version

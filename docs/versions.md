@@ -1,8 +1,8 @@
 # Versions
 
-*The releases of the components on 25 November 2026, newest first. A project runs the release its configuration pins.*
+*The releases of the components on 26 November 2026, newest first. A project runs the release its configuration pins.*
 
-> **123 releases of 1 component; 95 releases on a language of their own**
+> **127 releases of 1 component; 95 releases on a language of their own**
 
 ## Trame on the command line
 
@@ -10,6 +10,10 @@ Each release, newest first: what changed, the release that assembled it, and whe
 
 | Release | Released on | What changes | Assembled by | Language |
 |---|---|---|---|---|
+| [Generation 127](releases.md#G127) | 26 November 2026 | trame ship assembles a library's component for a check, by its reference, with the commands the project chose of it | [Generation 126](releases.md#G126) | shared |
+| [Generation 126](releases.md#G126) | 26 November 2026 | a project that lies in the sources of another keeps its runs beside that other: nothing is written into sources | [Generation 125](releases.md#G125) | shared |
+| [Generation 125](releases.md#G125) | 26 November 2026 | the engine's API names a project by its package and a path in it, refuses a directory that is no project, and keeps nothing beside a project it compiles for a scenario | [Generation 124](releases.md#G124) | shared |
+| [Generation 124](releases.md#G124) | 26 November 2026 | the engine gives its API: the project as the dispatch prepared it, another compiled at a date; it runs while it compiles and while a command runs | [Generation 123](releases.md#G123) | shared |
 | [Generation 123](releases.md#G123) | 25 November 2026 | The engine reads std 0.26.0's table of the platform: Node's versions described, for the questions of the machine (E3, part 3) | [Generation 122](releases.md#G122) | shared |
 | [Generation 122](releases.md#G122) | 25 November 2026 | A check runs a command the engine keeps and verifies the project's add-ons to it; trame doctor's questions are add-ons of the engine's own extension point (E3, part 3) | [Generation 121](releases.md#G121) | shared |
 | [Generation 121](releases.md#G121) | 25 November 2026 | The language types a realization of an extension point by its one contract (Realizes, RealizedBy): published with the generation, for the projects run from the registry (E3, part 3) | [Generation 120](releases.md#G120) | shared |

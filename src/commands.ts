@@ -59,27 +59,11 @@ export const AddOns = fn({
 })
 
 /**
- * The engine's modules
- * What the engine gives a program of commands it runs in its own process (E3, since g119): its modules as they run
- * here, the same a command of the engine uses (the compilation and its API, the laws, the views, the lock, the outputs
- * for machines, the page's payload, the assembly, the project's layout, the engine's identity, the wiring, the
- * pipelines, the evidence of the SDLC, the drivers of languages). A command of a project or of a library then works
- * with the graph as freely as the engine's own: the language types what it reads of them.
- */
-export const EngineModules = fn({
-  owner: "trame",
-  serves: [ExecutableSpecification],
-  deps: {
-    compiler: Compiler, compilation: CompilationApi, laws: Laws, views: Views, lock: Lock, machine: MachineOutputs, payload: PayloadBuilder,
-    dates: DateBundle, differences: Differences, dev: DevServer, assembly: Assembly, project: Project, identity: EngineFingerprint, wiring: Wiring,
-    pipeline: ShipmentPipeline, judged: JudgedHarder, references: References, fingerprints: Fingerprints, evidence: SdlcEvidence, drivers: Drivers,
-  },
-  body: (modules) => modules,
-})
-
-/**
  * Preparation
- * Reads the options, checks and compiles the project, refuses cleanly: what all commands share.
+ * Reads the options, checks and compiles the project, refuses cleanly: what all commands share. It gives the engine's
+ * API (since g124), which the language defines: the project as the dispatch prepared it for a command, another project
+ * compiled at a date, each with what a view receives and the graph as a build writes it, and where a project's files
+ * are. The engine is the running one while it compiles: a library's scenario it plays reaches the API then.
  */
 export const Preparation = fn({
   owner: "trame",
@@ -89,7 +73,7 @@ export const Preparation = fn({
     terminal: Terminal, currentProcess: Process, clock: Clock, severityOrder: SeverityOrder, devPort: DevPort, exitStatus: ExitStatus,
     layout: TerminalText, columns: TerminalColumns, cell: PaddedCell,
     counts: Counts, sequences: Sequences, texts: Texts, messages: CommandMessages, projectLayout: Layout, uri: Uri, references: References,
-    projectCommands: ProjectCommands, kept: KeptCommands,
+    projectCommands: ProjectCommands, kept: KeptCommands, machine: MachineOutputs, paths: Paths, reading: FileReading, specifiers: NodeModuleSpecifiers,
   },
   body: code.file<typeof import("./code/commands/preparation").default>("./code/commands/preparation.ts"),
 })
@@ -266,7 +250,7 @@ export const Ship = entryPoint({
   deps: {
     exitStatus: ExitStatus, line: TrameCommands, preparation: Preparation, deliver: Deliver, assembly: Assembly, assembler: Assembler, sdlc: SdlcEvidence, runPlan: ShipmentRunPlan,
     holds: ShipOnlyWhatHolds, bundler: Bundler, led: NamesLed, programBundle: ProgramBundle,
-    currentProcess: Process, projectCommands: ProjectCommands, engine: EngineModules, events: NodeEvents, reading: FileReading, writing: FileWriting, paths: Paths, encodings: NodeEncodings, terminal: Terminal,
+    currentProcess: Process, projectCommands: ProjectCommands, events: NodeEvents, reading: FileReading, writing: FileWriting, paths: Paths, encodings: NodeEncodings, terminal: Terminal,
     sequences: Sequences, counts: Counts, values: ValueTypes, engines: EngineFingerprint, messages: CommandMessages,
   },
   body: code.file<typeof import("./code/commands/ship").default>("./code/commands/ship.ts"),
@@ -517,7 +501,7 @@ export const CommandOrView = entryPoint({
   trigger: command(commandNames.fallback),
   deps: {
     line: TrameCommands, exitStatus: ExitStatus, preparation: Preparation, renderView: RenderView, compiler: Compiler, views: Views,
-    assembler: Assembler, projectCommands: ProjectCommands, engine: EngineModules, writing: FileWriting, paths: Paths, currentProcess: Process, posix: Posix, events: NodeEvents,
+    assembler: Assembler, projectCommands: ProjectCommands, writing: FileWriting, paths: Paths, currentProcess: Process, posix: Posix, events: NodeEvents,
     terminal: Terminal, counts: Counts, sequences: Sequences, messages: CommandMessages,
   },
   body: code.file<typeof import("./code/commands/command-or-view").default>("./code/commands/command-or-view.ts"),

@@ -421,3 +421,16 @@ export const R0_27_0 = release({
   language: "shared",
   serves: [ChosenCommands, CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
 })
+
+/**
+ * Version 0.28.0
+ */
+export const R0_28_0 = release({
+  owner: "trame",
+  version: "0.28.0",
+  date: "2026-11-26",
+  what: "the engine as a provider: the port TheProject, realized in the engine and, in a scenario, by the engine that plays it",
+  fingerprint: "6ec9817f19e1eb38",
+  language: "shared",
+  serves: [ChosenCommands, CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
+})

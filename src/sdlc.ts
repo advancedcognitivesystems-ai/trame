@@ -21,6 +21,8 @@ import {
 import { Adapter, Strategy, Command, Plugin } from "#std/patterns"
 import { SystemSupported, NodeRecentEnough, GitInstalled, WhatTheMachineRuns, type MachineRequired } from "#machine/machine"
 import { OpenPullRequest, MergePullRequest, Propagate, PullRequestSettings, PropagationSettings } from "#std/commands"
+import { ProjectInTheEngine } from "#std/engine"
+import { Plan as PlanWrittenOnce } from "#commands/commands"
 import { GitCliBranches, GitHubCliPullRequests, AutoMergeByGitHubCli, AutoMergeInAClaudeSession } from "#std/repository"
 import { Layout, TrameCommands, TrameEnvironment, ProjectStart } from "./conventions"
 import { TypeScript } from "./typescript"
@@ -224,6 +226,16 @@ export const MachineAsked = check({
 })
 
 /**
+ * trame plan runs in the engine
+ * The library's plan, run by the engine that ships, on the project it prepared: what proves the adapter that reads the
+ * engine's API on a machine (std's ProjectInTheEngine), which no scenario can run (E3, g124).
+ */
+export const PlanRunsInTheEngine = check({
+  owner: "trame", on: [], runs: PlanWrittenOnce, by: Maintainers,
+  verifies: [ProjectInTheEngine],
+})
+
+/**
  * The SDLC in memory
  * In the scenarios, the browser shows the page a scenario writes, and the repository is kept in memory.
  */
@@ -404,7 +416,7 @@ export const MergeMode = policy({ owner: "trame", obligations: [EngineVerified, 
  * A pull request into main: it merges once it holds, as the repository's settings say (D1). The programs of the SDLC
  * it reaches are those of this machine.
  */
-export const IntoMain = shipment({ owner: "trame", target: "main", ships: [TheEngine], requires: [MachineAsked], policy: MergeMode, environment: Local })
+export const IntoMain = shipment({ owner: "trame", target: "main", ships: [TheEngine], requires: [MachineAsked, PlanRunsInTheEngine], policy: MergeMode, environment: Local })
 
 /**
  * How a pull request is checked on GitHub
@@ -451,7 +463,7 @@ export const PullRequestWorkflow = artifact({
 export const MainBranch = decision<RepositorySettings>({
   owner: "trame",
   value: {
-    branch: "main", checks: ["trame", "std", "ci", "data", "team", "machine", "reservations", "poselia"], upToDate: false, approvals: 0,
+    branch: "main", checks: ["trame", "std", "ci", "data", "team", "machine", "commands", "reservations", "poselia"], upToDate: false, approvals: 0,
     method: "merge", autoMerge: true, deletesMerged: true, pages: false,
   },
   rejected: {
@@ -609,6 +621,7 @@ export const RepositoryProjects = decision<readonly RepositoryProject[]>({
     { name: "team", dir: "libs/team", runners: "RunnersWritten" },
     { name: "data", dir: "libs/data", runners: "RunnersWritten" },
     { name: "machine", dir: "libs/machine", runners: "RunnersWritten" },
+    { name: "commands", dir: "libs/commands", runners: "RunnersWritten" },
     { name: "geometry", dir: "libs/geometry" },
     { name: "reservations", dir: "examples/reservations", runners: "RunnersWritten", scenarios: true },
     { name: "poselia", dir: "apps/poselia", runners: "RunnersWritten" },
@@ -673,6 +686,23 @@ export const CommandsOfStd = binding({
   serves: [ExecutableSpecification],
   context: "Opening a pull request and carrying a version across the repository were done by hand, with gh and a loop of trame.sh, differently each time.",
   rejected: { "Commands of Trame's own": "any project of a repository opens pull requests: std writes them once, Trame chooses them" },
+})
+
+/**
+ * The commands Trame takes from libs/commands
+ * What a build would change (trame plan) is the library's command, run in the engine's process on the project the
+ * engine prepared for it (std's ProjectInTheEngine), in place of the engine's own (g119): the commands of every project,
+ * written once on std's ports of the engine.
+ */
+export const CommandsWrittenOnce = binding({
+  owner: "trame",
+  chooses: [PlanWrittenOnce, ProjectInTheEngine],
+  environments: [Local],
+  follows: [Command],
+  serves: [ExecutableSpecification],
+  context: "The engine's commands reached its modules directly: a project could neither choose them nor specialize them, and a command of its own could not compute what they computed.",
+  consequences: "trame plan runs on a machine and in a session alike, chosen for Local only: the dispatch asks for no environment. The engine's plan stays until the generation that removes the commands every project then runs from the library.",
+  rejected: { "The engine's own commands, kept": "they would stay out of reach of every project's choice, and the engine the only one to reach its modules" },
 })
 
 /**

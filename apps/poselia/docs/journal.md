@@ -1,8 +1,20 @@
 # Journal
 
-*What happened to the project, day by day, the latest first, up to the date of the graph (25 November 2026): the versions released, and the evidence given, each with the node it is about and who gave it.*
+*What happened to the project, day by day, the latest first, up to the date of the graph (26 November 2026): the versions released, and the evidence given, each with the node it is about and who gave it.*
 
-> **16 days · 0 versions released · 193 pieces of evidence**
+> **17 days · 0 versions released · 200 pieces of evidence**
+
+## 26 November 2026
+
+| What | Node | By |
+|---|---|---|
+| Built | [The preview's script](sdlc.md#PreviewScript) | claude |
+| Shipped | [The preview's script](sdlc.md#PreviewScript) | claude |
+| Built | [The preview's workflow](sdlc.md#PreviewWorkflow) | claude |
+| Shipped | [The preview's workflow](sdlc.md#PreviewWorkflow) | claude |
+| Built | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
+| Shipped | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
+| Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
 
 ## 25 November 2026
 

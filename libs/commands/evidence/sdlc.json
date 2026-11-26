@@ -1,0 +1,137 @@
+[
+  {
+    "node": "sdlc.NextVersion",
+    "at": "2026-11-26",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "2300ff78",
+    "url": "evidence/shipments/NextVersion-2026-11-26-2300ff78.json",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "568fe2eef808579c522688a6f5b7913276b53f3ada487ded67dfc0bf46336002"
+  },
+  {
+    "node": "sdlc.NextVersion",
+    "at": "2026-11-26",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "2b028498",
+    "url": "evidence/shipments/NextVersion-2026-11-26-2b028498.json",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "966172f6683ed5ef5e901caba890cfb4d795ef20653dd51ae9c87390a01aa482"
+  },
+  {
+    "node": "sdlc.PullRequestWorkflow",
+    "at": "2026-11-26",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "d7d014ce389398f6670d00b63264ad38f705db36b9581570644fa72da0043e9f",
+    "code": "3b80b5fa",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "3152e700c6881d1d",
+    "seal": "5066334d31dbc1ee3ce3bee32b14ad0b1d8c505ea0680eec4ca901dddaf31ccb"
+  },
+  {
+    "node": "sdlc.PullRequestWorkflow",
+    "at": "2026-11-26",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "d7d014ce389398f6670d00b63264ad38f705db36b9581570644fa72da0043e9f",
+    "subject": "sdlc.RunnersWritten",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "1744aa7d1c7ccfb6ab533902598dd4716fa53b361b6a3ba130b7530388a23635"
+  },
+  {
+    "node": "sdlc.RunnersWritten",
+    "at": "2026-11-26",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "30d9f1d8",
+    "url": "evidence/shipments/RunnersWritten-2026-11-26-30d9f1d8.json",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "4edcb59d4ad2005b56f9dbce798c30c519934e776db93957970a65030abf5972"
+  },
+  {
+    "node": "sdlc.RunnersWritten",
+    "at": "2026-11-26",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "d5dcdf71",
+    "url": "evidence/shipments/RunnersWritten-2026-11-26-d5dcdf71.json",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "d75019b629a190316a7be57933789afc8658ba5405f91e38f4e7bdbb92a28bc9"
+  },
+  {
+    "node": "sdlc.RunnersWritten",
+    "at": "2026-11-26",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "2f3df84f",
+    "url": "evidence/shipments/RunnersWritten-2026-11-26-2f3df84f.json",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "069506d3deebadc6fa6f04ad7f355ab9d4ffaa122ed6d0826fa642a94142446d"
+  },
+  {
+    "node": "sdlc.RunnersWritten",
+    "at": "2026-11-26",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "ec569e40",
+    "url": "evidence/shipments/RunnersWritten-2026-11-26-ec569e40.json",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "13678271dfb0192368c0ac108103b24f06da5394c5874408ed5cc056874010cb"
+  },
+  {
+    "node": "sdlc.TheLibrary",
+    "at": "2026-11-26",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "440585b54dad37fd83f2a6a529523e8b4bd6eff94a1fc4bd17f7b483ba28d312",
+    "code": "1d3a6aae",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "aeca17a58384a824",
+    "seal": "8304db77424d01350aa3fab541c24ddce7bcaf6018fc9821da2b2054a5b011a6"
+  },
+  {
+    "node": "sdlc.TheLibrary",
+    "at": "2026-11-26",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "440585b54dad37fd83f2a6a529523e8b4bd6eff94a1fc4bd17f7b483ba28d312",
+    "subject": "sdlc.NextVersion",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "14c33ea862095306a13d3c15bd427ea6a870560f7c85152c487d0cb5760ce8c5"
+  },
+  {
+    "node": "sdlc.TheLibrary",
+    "at": "2026-11-26",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "746135fa4d552f3bc78aa9b66bcf670dab72b3ddc48006f3417603a8cacf262d",
+    "code": "d34bdad7",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "9cff45e26ccf7a54",
+    "seal": "da4c64bdd786a4c182776c2e58eef062afbc010508127877e0dc848692c386cd"
+  },
+  {
+    "node": "sdlc.TheLibrary",
+    "at": "2026-11-26",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "746135fa4d552f3bc78aa9b66bcf670dab72b3ddc48006f3417603a8cacf262d",
+    "subject": "sdlc.NextVersion",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "e82d0525d8f48cb82674292618947cea343922fb317c439c9c9eda6d3832f173"
+  }
+]

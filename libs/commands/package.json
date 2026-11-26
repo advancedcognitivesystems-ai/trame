@@ -1,0 +1,14 @@
+{
+  "imports": {
+    "#ci/*": "./.trame/ci/src/*.ts",
+    "#commands/*": "./src/*.ts",
+    "#std/*": "./.trame/std/src/*.ts",
+    "#team/*": "./.trame/team/src/*.ts",
+    "#trame/kernel": "./.trame/trame/trame/kernel.ts",
+    "#trame/kinds/*": "./.trame/trame/kinds/*.ts"
+  },
+  "type": "module",
+  "dependencies": {
+    "playwright": "1.63.0"
+  }
+}

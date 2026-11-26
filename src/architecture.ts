@@ -178,10 +178,10 @@ export interface Process {
   runTs(file: string, args: string[]): import("node:child_process").ChildProcess
   /**
    * Runs a command of a program in this process (E3, since g119): the program, imported once, offers its commands to
-   * the engine, which gives it its modules; the first argument names the command, which receives the others. What it
-   * answers in lines of text is written out; the status it answers comes back.
+   * the engine; the first argument names the command, which receives the others, the engine running with its API while
+   * it does (since g124). What it answers in lines of text is written out; the status it answers comes back.
    */
-  runHere(program: string, args: readonly string[], modules: unknown): Promise<number>
+  runHere(program: string, args: readonly string[], api: import("../trame/kernel").EngineApi): Promise<number>
   onSignal(signal: "SIGINT" | "SIGTERM", f: () => void): void
 }
 export interface Terminal {

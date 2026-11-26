@@ -1,27 +1,79 @@
-// The engine that runs a program of commands in its own process (E3, since g119).
+// The engine that runs a program of commands in its own process (E3, since g119), and what it gives (since g124).
 //
 // A command is an entry point of a project's graph, or of a library a project chooses it from. Assembled for its
 // environment, its program is imported by the engine that dispatches it, in the engine's process: the program's
-// exposure (std's CommandsInTheEngine) offers its commands to the engine instead of reading Node's command line, and an
-// adapter of the program reaches the engine's modules (compilation, views, laws, lock, assembly, evidence, identity)
-// through the same engine. The engine sets it while the program is imported; a program run alone finds none.
+// exposure (std's CommandsInTheEngine) offers its commands to the engine instead of reading Node's command line. What a
+// command reaches of the engine is its API, which the language defines here, as it defines what a view receives, and
+// which the engine gives: std's ports of the engine's primitives are realized by adapters that read it. The engine is
+// the running one while it imports a program, while it runs one of its commands, and while it compiles a project (the
+// scenarios it plays then reach it too); a program run alone finds none. The API grows as the engine's commands move
+// into libraries, each time with a generation.
 
-/** What the engine gives the program it imports: where its commands go, and the engine's own modules. */
-export interface RunningEngine<Route = unknown, Modules = unknown> {
-  /** Takes the commands the program exposes: the engine runs the one the command line names. */
+import type { Compilation } from "./kernel"
+
+/** Where a project's files are, from its root, as the engine reads and writes them. */
+export interface ProjectLayout {
+  readonly sources: string
+  readonly documents: string
+  readonly documentExtension: string
+  readonly output: string
+  readonly evidence: string
+  readonly configuration: string
+  readonly lock: string
+  /** The graph a build writes for tools, with its history. */
+  readonly graph: string
+  /** The graph a build writes for agents: what is in force. */
+  readonly snapshot: string
+  readonly page: string
+  readonly manifest: string
+  readonly lockfile: string
+}
+
+/** A project compiled at a date. */
+export interface CompiledProject {
+  /** Its root, as the engine found it. */
+  readonly root: string
+  /** The day it is compiled at. */
+  readonly today: string
+  /** What a view receives: the graph, its statuses and issues, the pipelines of its shipments, g.lib. */
+  readonly graph: Compilation
+  /** The graph as a build writes it into graph.json. */
+  written(): string
+  /** The graph as a build writes it into snapshot.json. */
+  snapshot(): string
+}
+
+/** What a command reaches of the engine that runs it (since g124). */
+export interface EngineApi {
+  /** Where a project's files are. */
+  readonly layout: ProjectLayout
+  /** The project the command runs for, compiled at the day its line says, as the dispatch prepared it; none outside a command. */
+  prepared(): CompiledProject | undefined
+  /**
+   * A project compiled at a date, checked as the dispatch checks one, nothing kept beside it; refused with what refuses
+   * it (a directory without a configuration first). Its root is a directory from where the engine runs or, written as a
+   * package's name and a path in it (#commands/samples/small, since g125), in the sources of the package the project
+   * being compiled, or prepared, leads that name to: a library's scenario finds what its version carries.
+   */
+  compile(root: string, today: string): Promise<CompiledProject>
+}
+
+/** The engine that runs a program: where its commands go, and its API. */
+export interface RunningEngine<Route = unknown> {
+  /** Takes the commands the program exposes, while it imports it: the engine runs the one the command line names. */
   offer(routes: readonly Route[]): void
-  /** The engine's modules, as they run in this process. */
-  modules: Modules
+  /** What the program's commands reach of the engine. */
+  api: EngineApi
 }
 
 let running: RunningEngine | undefined
 
-/** The engine importing the program, while it does; nothing when the program runs alone. */
-export function runningEngine<Route = unknown, Modules = unknown>(): RunningEngine<Route, Modules> | undefined {
-  return running as RunningEngine<Route, Modules> | undefined
+/** The engine running in this process, while it does; nothing when a program runs alone. */
+export function runningEngine<Route = unknown>(): RunningEngine<Route> | undefined {
+  return running as RunningEngine<Route> | undefined
 }
 
-/** Runs `f` (the import of a program) with this engine as the one that runs it; the one before comes back after. */
+/** Runs `f` with this engine as the running one (a program imported, a command run, a project compiled); the one before comes back after. */
 export async function withEngine<T>(engine: RunningEngine, f: () => Promise<T>): Promise<T> {
   const before = running
   running = engine

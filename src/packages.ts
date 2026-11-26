@@ -134,7 +134,7 @@ export const VersionOrder = fn({
  * repository, at the version it froze.
  */
 export const StandardLibrary = pkg({
-  owner: "trame", packageName: "std", version: "0.27.0", joins: "library", from: "path", at: "std/releases/0.27.0", serves: [SingleSource],
+  owner: "trame", packageName: "std", version: "0.28.0", joins: "library", from: "path", at: "std/releases/0.28.0", serves: [SingleSource],
 })
 
 /**
@@ -179,5 +179,15 @@ export const People = pkg({
  */
 export const Machine = pkg({
   owner: "trame", packageName: "machine", version: "0.1.0", joins: "library", from: "path", at: "libs/machine/releases/0.1.0",
+  serves: [SingleSource],
+})
+
+/**
+ * The commands every project runs
+ * The commands written once on std's ports of the engine (plan, so far), which Trame runs in place of the engine's own,
+ * at the version it uses, by its path in the repository.
+ */
+export const GenericCommands = pkg({
+  owner: "trame", packageName: "commands", version: "0.1.1", joins: "library", from: "path", at: "libs/commands/releases/0.1.1",
   serves: [SingleSource],
 })

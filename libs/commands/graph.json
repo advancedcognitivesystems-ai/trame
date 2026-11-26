@@ -1,0 +1,1011 @@
+{
+  "generated": "2026-11-26",
+  "nodes": [
+    {
+      "id": "commands.BuildComparison",
+      "kind": "function",
+      "title": "Two builds compared",
+      "source": "src/commands.ts:86",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "say": "commands.CommandWords"
+        },
+        "body": {
+          "file": "./code/comparison.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "commands.Commands",
+      "kind": "component",
+      "title": "The library's commands",
+      "source": "src/commands.ts:26",
+      "fields": {
+        "owner": "trame",
+        "language": "typescript",
+        "deps": {
+          "exposure": "std/tooling.ProgramCommands"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "commands.CommandWords",
+      "kind": "catalog",
+      "title": "What the commands say",
+      "source": "src/commands.ts:45",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "language": "std/tooling.CommandLanguage"
+        },
+        "messages": "(function)"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "commands.Plan",
+      "kind": "entry",
+      "title": "Plan",
+      "source": "src/commands.ts:100",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "trigger": {
+          "type": "command",
+          "name": "plan"
+        },
+        "deps": {
+          "project": "std/engine.TheProject",
+          "files": "std/tooling.Files",
+          "comparison": "commands.BuildComparison",
+          "lines": "commands.TerminalLines",
+          "say": "commands.CommandWords",
+          "exit": "std/system.ExitStatus",
+          "counts": "std/algebra.Counts"
+        },
+        "body": {
+          "file": "./code/plan.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "commands.TerminalLines",
+      "kind": "decision",
+      "title": "How a command writes at a terminal",
+      "source": "src/commands.ts:36",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "indent": "  "
+        },
+        "rejected": {
+          "Tabs": "their width depends on the terminal: what is indented under a line would not line up"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "packages.ContinuousIntegration",
+      "kind": "package",
+      "title": "The library of continuous integration",
+      "source": "src/packages.ts:27",
+      "fields": {
+        "owner": "trame",
+        "packageName": "ci",
+        "version": "0.8.0",
+        "joins": "library",
+        "from": "path",
+        "at": "../../ci/releases/0.8.0"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "packages.Language",
+      "kind": "package",
+      "title": "Trame",
+      "source": "src/packages.ts:13",
+      "fields": {
+        "owner": "trame",
+        "packageName": "trame",
+        "version": "127",
+        "joins": "language",
+        "at": "../../generations/g127"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "packages.People",
+      "kind": "package",
+      "title": "The people of the repository",
+      "source": "src/packages.ts:36",
+      "fields": {
+        "owner": "trame",
+        "packageName": "team",
+        "version": "0.1.0",
+        "joins": "library",
+        "from": "path",
+        "at": "../team/releases/0.1.0"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "packages.StandardLibrary",
+      "kind": "package",
+      "title": "std",
+      "source": "src/packages.ts:20",
+      "fields": {
+        "owner": "trame",
+        "packageName": "std",
+        "version": "0.28.0",
+        "joins": "library",
+        "at": "../../std/releases/0.28.0"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "product.WrittenOnce",
+      "kind": "goal",
+      "title": "Commands every project runs, written once",
+      "source": "src/product.ts:15",
+      "fields": {
+        "owner": "trame"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "releases.R0_1_0",
+      "kind": "release",
+      "title": "Version 0.1.0",
+      "source": "src/releases.ts:12",
+      "fields": {
+        "owner": "trame",
+        "version": "0.1.0",
+        "date": "2026-11-26",
+        "what": "the commands every project runs, written once on std's ports of the engine: plan",
+        "fingerprint": "492f7f0c05958db9",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "releases.R0_1_1",
+      "kind": "release",
+      "title": "Version 0.1.1",
+      "source": "src/releases.ts:25",
+      "fields": {
+        "owner": "trame",
+        "version": "0.1.1",
+        "date": "2026-11-26",
+        "what": "the small project the scenarios compile lies in the library's sources, named by its package: a version carries it",
+        "fingerprint": "7c152c7f2b91e089",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "scenarios.CompiledByTheEngine",
+      "kind": "binding",
+      "title": "Compiled by the engine that plays them",
+      "source": "src/scenarios.ts:51",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "A command computes from a graph the engine compiled: a graph a scenario wrote by hand would check the command against what its author thought the engine gives.",
+        "rejected": {
+          "A graph written by the scenario": "it proves nothing of what the engine gives, which is what the command reads on a machine"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "scenarios.PlanAfterTheSameBuild",
+      "kind": "scenario",
+      "title": "After a build, nothing changes",
+      "source": "src/scenarios.ts:140",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "plan": "commands.Plan",
+          "project": "std/engine.TheProject",
+          "files": "std/tooling.Files",
+          "say": "commands.CommandWords",
+          "checks": "scenarios.ScenarioWords",
+          "exit": "std/system.ExitStatus",
+          "counts": "std/algebra.Counts"
+        },
+        "body": "(function)"
+      },
+      "result": [
+        {
+          "name": "Against the graph a build of the same day wrote, the plan counts nothing and says nothing changes",
+          "status": "passed"
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "scenarios.PlanSaysWhatChanges",
+      "kind": "scenario",
+      "title": "A plan says what a build would change",
+      "source": "src/scenarios.ts:93",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "plan": "commands.Plan",
+          "project": "std/engine.TheProject",
+          "files": "std/tooling.Files",
+          "say": "commands.CommandWords",
+          "lines": "commands.TerminalLines",
+          "checks": "scenarios.ScenarioWords",
+          "exit": "std/system.ExitStatus",
+          "counts": "std/algebra.Counts"
+        },
+        "body": "(function)"
+      },
+      "result": [
+        {
+          "name": "The plan names Ada, which the last build did not have, and counts it in its first line",
+          "status": "passed"
+        },
+        {
+          "name": "The plan names the status of A greeting is short, which the last build did not give",
+          "status": "passed"
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "scenarios.PlanWithoutABuild",
+      "kind": "scenario",
+      "title": "Without a build, a plan says so",
+      "source": "src/scenarios.ts:125",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "plan": "commands.Plan",
+          "project": "std/engine.TheProject",
+          "say": "commands.CommandWords",
+          "checks": "scenarios.ScenarioWords",
+          "exit": "std/system.ExitStatus"
+        },
+        "body": "(function)"
+      },
+      "result": [
+        {
+          "name": "Without graph.json, the plan says there is nothing to compare with, and succeeds",
+          "status": "passed"
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "scenarios.PlayedOnASmallProject",
+      "kind": "binding",
+      "title": "Played on a small project",
+      "source": "src/scenarios.ts:65",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "The library's own project is the one being compiled when its scenarios play: they compile another, small and of the library's own, whose files are read again when they change."
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "scenarios.ScenarioWords",
+      "kind": "catalog",
+      "title": "What the scenarios check",
+      "source": "src/scenarios.ts:77",
+      "fields": {
+        "owner": "trame",
+        "messages": "(function)"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "scenarios.SmallProject",
+      "kind": "decision",
+      "title": "The small project",
+      "source": "src/scenarios.ts:34",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "root": "#commands/samples/small",
+          "today": "2026-11-26"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "scenarios.Test",
+      "kind": "environment",
+      "title": "Test",
+      "source": "src/scenarios.ts:26",
+      "fields": {
+        "owner": "trame",
+        "evaluates": true
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "scenarios.TheSmallProject",
+      "kind": "function",
+      "title": "Which project the scenarios compile",
+      "source": "src/scenarios.ts:40",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "small": "scenarios.SmallProject"
+        },
+        "body": "(function)"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.CallersIdentified",
+      "kind": "obligation",
+      "title": "Its callers identified",
+      "source": "src/sdlc.ts:54",
+      "fields": {
+        "owner": "trame",
+        "gaps": "error"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.CodeVerified",
+      "kind": "obligation",
+      "title": "Its code verified",
+      "source": "src/sdlc.ts:27",
+      "fields": {
+        "owner": "trame",
+        "params": {
+          "kinds": [
+            "function",
+            "entry"
+          ]
+        },
+        "gaps": "error"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.DecisionsApplied",
+      "kind": "obligation",
+      "title": "Its decisions applied",
+      "source": "src/sdlc.ts:41",
+      "fields": {
+        "owner": "trame"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.NextVersion",
+      "kind": "shipment",
+      "title": "The next version",
+      "source": "src/sdlc.ts:68",
+      "status": "unknown",
+      "fields": {
+        "owner": "trame",
+        "target": "version"
+      },
+      "result": {
+        "derived": [
+          {
+            "node": "scenarios.PlanAfterTheSameBuild",
+            "via": "commands.BuildComparison",
+            "obligation": "sdlc.CodeVerified"
+          },
+          {
+            "node": "scenarios.PlanSaysWhatChanges",
+            "via": "commands.BuildComparison",
+            "obligation": "sdlc.CodeVerified"
+          },
+          {
+            "node": "scenarios.PlanWithoutABuild",
+            "via": "commands.Plan",
+            "obligation": "sdlc.CodeVerified"
+          }
+        ],
+        "gaps": [],
+        "preceded": [],
+        "reached": [
+          "sdlc.TheLibrary",
+          "commands.BuildComparison",
+          "commands.Commands",
+          "commands.CommandWords",
+          "commands.Plan",
+          "commands.TerminalLines",
+          "packages.ContinuousIntegration",
+          "packages.Language",
+          "packages.People",
+          "packages.StandardLibrary",
+          "product.WrittenOnce",
+          "scenarios.CompiledByTheEngine",
+          "scenarios.PlanAfterTheSameBuild",
+          "scenarios.PlanSaysWhatChanges",
+          "scenarios.PlanWithoutABuild",
+          "scenarios.PlayedOnASmallProject",
+          "scenarios.ScenarioWords",
+          "scenarios.SmallProject",
+          "scenarios.Test",
+          "scenarios.TheSmallProject",
+          "sdlc.CallersIdentified",
+          "sdlc.CodeVerified",
+          "sdlc.DecisionsApplied",
+          "sdlc.NextVersion",
+          "sdlc.PackagesSafe",
+          "sdlc.PullRequestsOnGitHub",
+          "sdlc.PullRequestWorkflow",
+          "sdlc.RequirementsServed",
+          "sdlc.RunnersWritten",
+          "sdlc.VersionMode"
+        ]
+      },
+      "diagnostics": [
+        "warning: To ship: The commands of every project is unknown"
+      ]
+    },
+    {
+      "id": "sdlc.PackagesSafe",
+      "kind": "obligation",
+      "title": "Its packages safe",
+      "source": "src/sdlc.ts:47",
+      "fields": {
+        "owner": "trame"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.PullRequestsOnGitHub",
+      "kind": "decision",
+      "title": "How a pull request is checked on GitHub",
+      "source": "src/sdlc.ts:76",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "on": {
+            "pullRequests": [
+              "main"
+            ]
+          },
+          "job": "commands",
+          "runsOn": "ubuntu-24.04",
+          "node": 22,
+          "artefacts": {
+            "days": 30
+          },
+          "pullRequest": {
+            "review": false,
+            "merge": "onceItHoldsUnlessDecided"
+          }
+        },
+        "rejected": {
+          "Only when a pull request touches the project": "GitHub keeps a pull request waiting for a check it requires and that never ran",
+          "Merged by GitHub whatever it changes": "what people decided would reach main without a person"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.PullRequestWorkflow",
+      "kind": "artifact",
+      "title": "The pull requests' workflow",
+      "source": "src/sdlc.ts:93",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "path": "../../.github/workflows/commands-pull-request.yml",
+        "media": "application/yaml"
+      },
+      "result": {
+        "path": "../../.github/workflows/commands-pull-request.yml",
+        "code": "3b80b5fa"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.RequirementsServed",
+      "kind": "obligation",
+      "title": "Its requirements held",
+      "source": "src/sdlc.ts:35",
+      "fields": {
+        "owner": "trame"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.RunnersWritten",
+      "kind": "shipment",
+      "title": "The files that run it elsewhere",
+      "source": "src/sdlc.ts:107",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "target": "repository"
+      },
+      "result": {
+        "derived": [],
+        "gaps": [],
+        "preceded": [],
+        "reached": [
+          "sdlc.PullRequestWorkflow"
+        ]
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "sdlc.TheLibrary",
+      "kind": "artifact",
+      "title": "The commands of every project",
+      "source": "src/sdlc.ts:21",
+      "status": "unknown",
+      "fields": {
+        "owner": "trame",
+        "path": "src",
+        "version": true
+      },
+      "result": {
+        "path": "src",
+        "code": "9b9bb10e"
+      },
+      "diagnostics": [
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+      ]
+    },
+    {
+      "id": "sdlc.VersionMode",
+      "kind": "policy",
+      "title": "How a version is made",
+      "source": "src/sdlc.ts:61",
+      "fields": {
+        "owner": "trame"
+      },
+      "diagnostics": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "commands.BuildComparison",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "commands.BuildComparison",
+      "to": "commands.CommandWords",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Commands",
+      "to": "std/tooling.ProgramCommands",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.CommandWords",
+      "to": "std/tooling.CommandLanguage",
+      "kind": "language"
+    },
+    {
+      "from": "commands.CommandWords",
+      "to": "std/tooling.CommandLanguage",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Plan",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "commands.Plan",
+      "to": "commands.Commands",
+      "kind": "in"
+    },
+    {
+      "from": "commands.Plan",
+      "to": "std/access.Anyone",
+      "kind": "for"
+    },
+    {
+      "from": "commands.Plan",
+      "to": "std/engine.TheProject",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Plan",
+      "to": "std/tooling.Files",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Plan",
+      "to": "commands.BuildComparison",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Plan",
+      "to": "commands.TerminalLines",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Plan",
+      "to": "commands.CommandWords",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Plan",
+      "to": "std/system.ExitStatus",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Plan",
+      "to": "std/algebra.Counts",
+      "kind": "deps"
+    },
+    {
+      "from": "packages.ContinuousIntegration",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "packages.Language",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "packages.People",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "packages.StandardLibrary",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_1_0",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_1_1",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "scenarios.CompiledByTheEngine",
+      "to": "std/engine.ProjectCompiledHere",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.CompiledByTheEngine",
+      "to": "scenarios.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "scenarios.CompiledByTheEngine",
+      "to": "std/patterns.Adapter",
+      "kind": "follows"
+    },
+    {
+      "from": "scenarios.CompiledByTheEngine",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "scenarios.PlanAfterTheSameBuild",
+      "to": "commands.Plan",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.PlanAfterTheSameBuild",
+      "to": "commands.BuildComparison",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.PlanAfterTheSameBuild",
+      "to": "std/engine.ProjectCompiledHere",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.PlanAfterTheSameBuild",
+      "to": "scenarios.Test",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.PlanAfterTheSameBuild",
+      "to": "commands.Plan",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PlanAfterTheSameBuild",
+      "to": "std/engine.TheProject",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PlanAfterTheSameBuild",
+      "to": "std/tooling.Files",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PlanAfterTheSameBuild",
+      "to": "commands.CommandWords",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PlanAfterTheSameBuild",
+      "to": "scenarios.ScenarioWords",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PlanAfterTheSameBuild",
+      "to": "std/system.ExitStatus",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PlanAfterTheSameBuild",
+      "to": "std/algebra.Counts",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PlanSaysWhatChanges",
+      "to": "commands.Plan",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.PlanSaysWhatChanges",
+      "to": "commands.BuildComparison",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.PlanSaysWhatChanges",
+      "to": "std/engine.ProjectCompiledHere",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.PlanSaysWhatChanges",
+      "to": "scenarios.TheSmallProject",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.PlanSaysWhatChanges",
+      "to": "scenarios.Test",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.PlanSaysWhatChanges",
+      "to": "commands.Plan",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PlanSaysWhatChanges",
+      "to": "std/engine.TheProject",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PlanSaysWhatChanges",
+      "to": "std/tooling.Files",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PlanSaysWhatChanges",
+      "to": "commands.CommandWords",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PlanSaysWhatChanges",
+      "to": "commands.TerminalLines",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PlanSaysWhatChanges",
+      "to": "scenarios.ScenarioWords",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PlanSaysWhatChanges",
+      "to": "std/system.ExitStatus",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PlanSaysWhatChanges",
+      "to": "std/algebra.Counts",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PlanWithoutABuild",
+      "to": "commands.Plan",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.PlanWithoutABuild",
+      "to": "std/engine.ProjectCompiledHere",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.PlanWithoutABuild",
+      "to": "scenarios.Test",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.PlanWithoutABuild",
+      "to": "commands.Plan",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PlanWithoutABuild",
+      "to": "std/engine.TheProject",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PlanWithoutABuild",
+      "to": "commands.CommandWords",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PlanWithoutABuild",
+      "to": "scenarios.ScenarioWords",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PlanWithoutABuild",
+      "to": "std/system.ExitStatus",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PlayedOnASmallProject",
+      "to": "scenarios.TheSmallProject",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.PlayedOnASmallProject",
+      "to": "std/tooling.FilesInMemory",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.PlayedOnASmallProject",
+      "to": "scenarios.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "scenarios.PlayedOnASmallProject",
+      "to": "std/patterns.Strategy",
+      "kind": "follows"
+    },
+    {
+      "from": "scenarios.PlayedOnASmallProject",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "scenarios.ScenarioWords",
+      "to": "std/tooling.CommandLanguage",
+      "kind": "language"
+    },
+    {
+      "from": "scenarios.TheSmallProject",
+      "to": "std/engine.ProjectOfTheScenario",
+      "kind": "implements"
+    },
+    {
+      "from": "scenarios.TheSmallProject",
+      "to": "scenarios.SmallProject",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.CallersIdentified",
+      "to": "std/obligations.Identified",
+      "kind": "applies"
+    },
+    {
+      "from": "sdlc.CallersIdentified",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "sdlc.CodeVerified",
+      "to": "std/obligations.Verified",
+      "kind": "applies"
+    },
+    {
+      "from": "sdlc.CodeVerified",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "sdlc.DecisionsApplied",
+      "to": "std/obligations.Applied",
+      "kind": "applies"
+    },
+    {
+      "from": "sdlc.DecisionsApplied",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "sdlc.NextVersion",
+      "to": "sdlc.TheLibrary",
+      "kind": "ships"
+    },
+    {
+      "from": "sdlc.NextVersion",
+      "to": "sdlc.VersionMode",
+      "kind": "policy"
+    },
+    {
+      "from": "sdlc.PackagesSafe",
+      "to": "std/obligations.Safe",
+      "kind": "applies"
+    },
+    {
+      "from": "sdlc.PackagesSafe",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "sdlc.PullRequestWorkflow",
+      "to": "ci/github.GitHubWorkflow",
+      "kind": "producedBy"
+    },
+    {
+      "from": "sdlc.PullRequestWorkflow",
+      "to": "sdlc.NextVersion",
+      "kind": "runs"
+    },
+    {
+      "from": "sdlc.PullRequestWorkflow",
+      "to": "sdlc.PullRequestsOnGitHub",
+      "kind": "settings"
+    },
+    {
+      "from": "sdlc.RequirementsServed",
+      "to": "std/obligations.Served",
+      "kind": "applies"
+    },
+    {
+      "from": "sdlc.RequirementsServed",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "sdlc.RunnersWritten",
+      "to": "sdlc.PullRequestWorkflow",
+      "kind": "ships"
+    },
+    {
+      "from": "sdlc.VersionMode",
+      "to": "sdlc.CodeVerified",
+      "kind": "obligations"
+    },
+    {
+      "from": "sdlc.VersionMode",
+      "to": "sdlc.RequirementsServed",
+      "kind": "obligations"
+    },
+    {
+      "from": "sdlc.VersionMode",
+      "to": "sdlc.DecisionsApplied",
+      "kind": "obligations"
+    },
+    {
+      "from": "sdlc.VersionMode",
+      "to": "sdlc.PackagesSafe",
+      "kind": "obligations"
+    },
+    {
+      "from": "sdlc.VersionMode",
+      "to": "sdlc.CallersIdentified",
+      "kind": "obligations"
+    }
+  ],
+  "resolutions": [],
+  "diagnostics": []
+}

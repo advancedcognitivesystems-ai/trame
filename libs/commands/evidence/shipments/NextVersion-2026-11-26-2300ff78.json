@@ -1,0 +1,90 @@
+{
+  "shipment": "sdlc.NextVersion",
+  "title": "The next version",
+  "target": "version",
+  "at": "2026-11-26",
+  "by": "claude",
+  "signature": "attribution",
+  "artifacts": [
+    {
+      "node": "sdlc.TheLibrary",
+      "path": "src",
+      "fingerprint": "440585b54dad37fd83f2a6a529523e8b4bd6eff94a1fc4bd17f7b483ba28d312"
+    }
+  ],
+  "foundations": {
+    "problems": 0
+  },
+  "obligations": [
+    {
+      "node": "sdlc.TheLibrary",
+      "kind": "artifact",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-26",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "440585b54dad37fd83f2a6a529523e8b4bd6eff94a1fc4bd17f7b483ba28d312",
+          "code": "1d3a6aae",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "aeca17a58384a824",
+          "seal": "8304db77424d01350aa3fab541c24ddce7bcaf6018fc9821da2b2054a5b011a6"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.PlanAfterTheSameBuild",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.CodeVerified",
+      "via": "commands.BuildComparison",
+      "outcome": [
+        {
+          "name": "Against the graph a build of the same day wrote, the plan counts nothing and says nothing changes",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.PlanSaysWhatChanges",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.CodeVerified",
+      "via": "commands.BuildComparison",
+      "outcome": [
+        {
+          "name": "The plan names Ada, which the last build did not have, and counts it in its first line",
+          "status": "passed"
+        },
+        {
+          "name": "The plan names the status of A greeting is short, which the last build did not give",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.PlanWithoutABuild",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.CodeVerified",
+      "via": "commands.Plan",
+      "outcome": [
+        {
+          "name": "Without graph.json, the plan says there is nothing to compare with, and succeeds",
+          "status": "passed"
+        }
+      ]
+    }
+  ],
+  "deployed": []
+}

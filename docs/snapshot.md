@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 25 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 26 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Trame · Appearance
 
@@ -697,6 +697,16 @@ Scenario · `DoctorAsks` · **held**
 - In: Test
 - Depends on: Ask the machine, Process log, Terminal log, What the doctor writes, runs and waits for, Trame's commands, Messages of the commands, Messages of the scenarios
 
+### The engine's API
+
+Scenario · `EngineApiGiven` · **held**
+
+- Owner: trame
+- Parameters: { preparation: commands.Preparation, line: conventions.TrameCommands, layout: conventions.Layout, messages: messages.ScenarioMessages }
+- Verifies: Preparation
+- In: Test
+- Depends on: Preparation, Trame's commands, Project layout, Messages of the scenarios
+
 ### Evidence given for someone
 
 Scenario · `EvidenceForSomeone` · **held**
@@ -843,7 +853,7 @@ Scenario · `ProjectCommandRun` · **held**
 
 - Owner: trame
 - Parameters: { byName: commands.CommandOrView, help: commands.Help, commands: commands.ProjectCommands, preparation: commands.Preparation, processLog: architecture.ProcessLog, terminalLog: architecture.TerminalLog, line: conventions.TrameCommands, exitStatus: std/system.ExitStatus, samples: command-scenarios.ProjectSamples, texts: std/algebra.Texts, said: messages.CommandMessages, messages: messages.ScenarioMessages }
-- Verifies: A command of the project, or a view, The project's commands, Help, The engine's modules
+- Verifies: A command of the project, or a view, The project's commands, Help
 - In: Test
 - Depends on: A command of the project, or a view, Help, The project's commands, Preparation, Process log, Terminal log, Trame's commands, What the scenarios ask of those projects, Messages of the commands, Messages of the scenarios
 
@@ -975,15 +985,6 @@ Function · `BuildComparison` · **held**
 - Serves: A specification that runs
 - Depends on: Messages of the commands, Messages of the outputs
 
-### The engine's modules
-
-Function · `EngineModules` · **held**
-
-- Owner: trame
-- Parameters: { compiler: engine.Compiler, compilation: engine.CompilationApi, laws: engine.Laws, views: engine.Views, lock: engine.Lock, machine: engine.MachineOutputs, payload: engine.PayloadBuilder, dates: engine.DateBundle, differences: engine.Differences, dev: engine.DevServer, assembly: engine.Assembly, project: engine.Project, identity: engine.EngineFingerprint, wiring: engine.Wiring, pipeline: engine.ShipmentPipeline, judged: engine.JudgedHarder, references: engine.References, fingerprints: engine.Fingerprints, evidence: shipping.SdlcEvidence, drivers: languages.Drivers }
-- Serves: A specification that runs
-- Depends on: Compiler, Compilation API, Laws, Views, Lock, Machine outputs, Payload, Date bundle, Differences, trame dev server, Assembly, Project, The fingerprint of an engine, Wiring, A shipment's pipeline, Judged harder, References, Fingerprints, Evidence of the SDLC, Drivers
-
 ### Rewriting an example
 
 Function · `ExampleRewriting` · **held**
@@ -998,9 +999,9 @@ Function · `ExampleRewriting` · **held**
 Function · `Preparation` · **held**
 
 - Owner: trame
-- Parameters: { line: conventions.TrameCommands, compiler: engine.Compiler, compilationApi: engine.CompilationApi, laws: engine.Laws, views: engine.Views, lock: engine.Lock, common: rendering.Common, terminal: architecture.Terminal, currentProcess: architecture.Process, clock: architecture.Clock, severityOrder: (rule), devPort: product.DevPort, exitStatus: std/system.ExitStatus, layout: text.TerminalText, columns: text.TerminalColumns, cell: text.PaddedCell, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, messages: messages.CommandMessages, projectLayout: conventions.Layout, uri: std/web.Uri, references: engine.References, projectCommands: commands.ProjectCommands, kept: conventions.KeptCommands }
+- Parameters: { line: conventions.TrameCommands, compiler: engine.Compiler, compilationApi: engine.CompilationApi, laws: engine.Laws, views: engine.Views, lock: engine.Lock, common: rendering.Common, terminal: architecture.Terminal, currentProcess: architecture.Process, clock: architecture.Clock, severityOrder: (rule), devPort: product.DevPort, exitStatus: std/system.ExitStatus, layout: text.TerminalText, columns: text.TerminalColumns, cell: text.PaddedCell, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, messages: messages.CommandMessages, projectLayout: conventions.Layout, uri: std/web.Uri, references: engine.References, projectCommands: commands.ProjectCommands, kept: conventions.KeptCommands, machine: engine.MachineOutputs, paths: architecture.Paths, reading: architecture.FileReading, specifiers: std/system.NodeModuleSpecifiers }
 - Serves: A specification that runs
-- Depends on: Trame's commands, Compiler, Compilation API, Laws, Views, Lock, Common rendering, Terminal, Process, Clock, Sort problems by severity, Port of trame dev, Terminal text, Columns in the terminal, Padded cell, Messages of the commands, Project layout, References, The project's commands, The commands the engine keeps
+- Depends on: Trame's commands, Compiler, Compilation API, Laws, Views, Lock, Common rendering, Terminal, Process, Clock, Sort problems by severity, Port of trame dev, Terminal text, Columns in the terminal, Padded cell, Messages of the commands, Project layout, References, The project's commands, The commands the engine keeps, Machine outputs, Paths, File reading
 
 ### The project's commands
 
@@ -1090,10 +1091,10 @@ Entry point · `CommandOrView` · **held**
 
 - Owner: trame
 - Trigger: { type: command, name: * }
-- Parameters: { line: conventions.TrameCommands, exitStatus: std/system.ExitStatus, preparation: commands.Preparation, renderView: commands.RenderView, compiler: engine.Compiler, views: engine.Views, assembler: commands.Assembler, projectCommands: commands.ProjectCommands, engine: commands.EngineModules, writing: architecture.FileWriting, paths: architecture.Paths, currentProcess: architecture.Process, posix: std/system.Posix, events: std/system.NodeEvents, terminal: architecture.Terminal, counts: std/algebra.Counts, sequences: std/algebra.Sequences, messages: messages.CommandMessages }
+- Parameters: { line: conventions.TrameCommands, exitStatus: std/system.ExitStatus, preparation: commands.Preparation, renderView: commands.RenderView, compiler: engine.Compiler, views: engine.Views, assembler: commands.Assembler, projectCommands: commands.ProjectCommands, writing: architecture.FileWriting, paths: architecture.Paths, currentProcess: architecture.Process, posix: std/system.Posix, events: std/system.NodeEvents, terminal: architecture.Terminal, counts: std/algebra.Counts, sequences: std/algebra.Sequences, messages: messages.CommandMessages }
 - Serves: A specification that runs
 - Part of: Trame on the command line
-- Depends on: Trame's commands, Preparation, Render a view, Compiler, Views, Assembler, The project's commands, The engine's modules, File writing, Paths, Process, Terminal, Messages of the commands
+- Depends on: Trame's commands, Preparation, Render a view, Compiler, Views, Assembler, The project's commands, File writing, Paths, Process, Terminal, Messages of the commands
 
 ### Deliver
 
@@ -1255,10 +1256,10 @@ Entry point · `Ship` · **held**
 
 - Owner: trame
 - Trigger: { type: command, name: ship }
-- Parameters: { exitStatus: std/system.ExitStatus, line: conventions.TrameCommands, preparation: commands.Preparation, deliver: commands.Deliver, assembly: engine.Assembly, assembler: commands.Assembler, sdlc: shipping.SdlcEvidence, runPlan: shipping.ShipmentRunPlan, holds: (rule), bundler: architecture.Bundler, led: delivery.NamesLed, programBundle: shipping.ProgramBundle, currentProcess: architecture.Process, projectCommands: commands.ProjectCommands, engine: commands.EngineModules, events: std/system.NodeEvents, reading: architecture.FileReading, writing: architecture.FileWriting, paths: architecture.Paths, encodings: std/system.NodeEncodings, terminal: architecture.Terminal, sequences: std/algebra.Sequences, counts: std/algebra.Counts, values: std/algebra.ValueTypes, engines: engine.EngineFingerprint, messages: messages.CommandMessages }
+- Parameters: { exitStatus: std/system.ExitStatus, line: conventions.TrameCommands, preparation: commands.Preparation, deliver: commands.Deliver, assembly: engine.Assembly, assembler: commands.Assembler, sdlc: shipping.SdlcEvidence, runPlan: shipping.ShipmentRunPlan, holds: (rule), bundler: architecture.Bundler, led: delivery.NamesLed, programBundle: shipping.ProgramBundle, currentProcess: architecture.Process, projectCommands: commands.ProjectCommands, events: std/system.NodeEvents, reading: architecture.FileReading, writing: architecture.FileWriting, paths: architecture.Paths, encodings: std/system.NodeEncodings, terminal: architecture.Terminal, sequences: std/algebra.Sequences, counts: std/algebra.Counts, values: std/algebra.ValueTypes, engines: engine.EngineFingerprint, messages: messages.CommandMessages }
 - Serves: Ship only what holds
 - Part of: Trame on the command line
-- Depends on: Trame's commands, Preparation, Deliver, Assembly, Assembler, Evidence of the SDLC, The plan of a run elsewhere, Ship only what holds, Bundler, The names a bundle is led by, The fingerprint of a program, Process, The project's commands, The engine's modules, File reading, File writing, Paths, Terminal, The fingerprint of an engine, Messages of the commands
+- Depends on: Trame's commands, Preparation, Deliver, Assembly, Assembler, Evidence of the SDLC, The plan of a run elsewhere, Ship only what holds, Bundler, The names a bundle is led by, The fingerprint of a program, Process, The project's commands, File reading, File writing, Paths, Terminal, The fingerprint of an engine, Messages of the commands
 
 ### Show a view
 
@@ -3267,6 +3268,18 @@ Package · `EsbuildPackage` · **held**
 - In the registry: https://www.npmjs.com/package/esbuild
 - What it may do: read, write, process
 
+### The commands every project runs
+
+Package · `GenericCommands`
+
+- Owner: trame
+- Name: commands
+- Version: 0.1.1
+- How it joins the graph: library
+- Where it comes from: path
+- Its path: libs/commands/releases/0.1.1
+- Serves: A single source of truth
+
 ### Grammar of HCL
 
 Package · `HclGrammar` · **held**
@@ -3329,10 +3342,10 @@ Package · `StandardLibrary`
 
 - Owner: trame
 - Name: std
-- Version: 0.27.0
+- Version: 0.28.0
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: std/releases/0.27.0
+- Its path: std/releases/0.28.0
 - Serves: A single source of truth
 
 ### tsx
@@ -4471,7 +4484,7 @@ Architecture decision · `PreludeLayer` · **held**
 
 ### A version ships through the graph
 
-Architecture decision · `ShippedThroughTheGraph` · **unknown**
+Architecture decision · `ShippedThroughTheGraph` · **held**
 
 - Decided by: trame
 - Context: Two products ship differently (a page placed where it is served, an engine frozen into a generation) and their pipelines lived in scripts and in their authors' heads: nothing said what had been checked, by whom, on which version, nor why a version could go.
@@ -5035,6 +5048,62 @@ Release · `G123`
 - Language archived: 0118572b49b3ed10
 - Releases: Trame on the command line
 - Assembled by: Generation 122
+
+### Generation 124
+
+Release · `G124`
+
+- Released by: trame
+- Version: g124
+- Released on: 2026-11-26
+- What changes: the engine gives its API: the project as the dispatch prepared it, another compiled at a date; it runs while it compiles and while a command runs
+- Fingerprint: 0112be07f77af87b
+- Language: shared
+- Language archived: 7bde1a1bb4e93030
+- Releases: Trame on the command line
+- Assembled by: Generation 123
+
+### Generation 125
+
+Release · `G125`
+
+- Released by: trame
+- Version: g125
+- Released on: 2026-11-26
+- What changes: the engine's API names a project by its package and a path in it, refuses a directory that is no project, and keeps nothing beside a project it compiles for a scenario
+- Fingerprint: 302c35a5994d05a6
+- Language: shared
+- Language archived: 83cab083efe384d2
+- Releases: Trame on the command line
+- Assembled by: Generation 124
+
+### Generation 126
+
+Release · `G126`
+
+- Released by: trame
+- Version: g126
+- Released on: 2026-11-26
+- What changes: a project that lies in the sources of another keeps its runs beside that other: nothing is written into sources
+- Fingerprint: df7157abba49e884
+- Language: shared
+- Language archived: 83cab083efe384d2
+- Releases: Trame on the command line
+- Assembled by: Generation 125
+
+### Generation 127
+
+Release · `G127`
+
+- Released by: trame
+- Version: g127
+- Released on: 2026-11-26
+- What changes: trame ship assembles a library's component for a check, by its reference, with the commands the project chose of it
+- Fingerprint: 40a6114196329fb9
+- Language: shared
+- Language archived: 83cab083efe384d2
+- Releases: Trame on the command line
+- Assembled by: Generation 126
 
 ### Generation 13
 
@@ -6792,7 +6861,7 @@ Decision · `HowAGenerationAdvances`
 Decision · `MainBranch`
 
 - Decided by: trame
-- Value: { branch: main, checks: trame, std, ci, data, team, machine, reservations, poselia, upToDate: false, approvals: 0, method: merge, autoMerge: true, deletesMerged: true, pages: false }
+- Value: { branch: main, checks: trame, std, ci, data, team, machine, commands, reservations, poselia, upToDate: false, approvals: 0, method: merge, autoMerge: true, deletesMerged: true, pages: false }
 - Rejected: Squashed, a branch would merge as one commit, and the generations it advances are each a commit; An approval required, the person who opens a pull request with their own account cannot approve it; Up to date with main first, each pull request would merge main into itself again, and run its checks again, whenever another one merged; The check of geometry, geometry runs from the registry of a machine, which a runner of GitHub does not have yet; Pages now, the site that gathers Trame's graph and Poselia's preview is still to be decided
 
 ### The machines Trame runs on
@@ -6816,7 +6885,7 @@ Decision · `PullRequestsOnGitHub`
 Decision · `RepositoryProjects`
 
 - Decided by: trame
-- Value: { name: trame, dir: ., runners: RunnersWritten, reads: reservations }, { name: std, dir: std, runners: RunnersWritten }, { name: ci, dir: ci, runners: RunnersWritten }, { name: team, dir: libs/team, runners: RunnersWritten }, { name: data, dir: libs/data, runners: RunnersWritten }, { name: machine, dir: libs/machine, runners: RunnersWritten }, { name: geometry, dir: libs/geometry }, { name: reservations, dir: examples/reservations, runners: RunnersWritten, scenarios: true }, { name: poselia, dir: apps/poselia, runners: RunnersWritten }
+- Value: { name: trame, dir: ., runners: RunnersWritten, reads: reservations }, { name: std, dir: std, runners: RunnersWritten }, { name: ci, dir: ci, runners: RunnersWritten }, { name: team, dir: libs/team, runners: RunnersWritten }, { name: data, dir: libs/data, runners: RunnersWritten }, { name: machine, dir: libs/machine, runners: RunnersWritten }, { name: commands, dir: libs/commands, runners: RunnersWritten }, { name: geometry, dir: libs/geometry }, { name: reservations, dir: examples/reservations, runners: RunnersWritten, scenarios: true }, { name: poselia, dir: apps/poselia, runners: RunnersWritten }
 - Rejected: Found on the disk, by their trame.json, a generation keeps a copy of the example, which is not a project of the repository; In the order they are carried, the order follows from the libraries each one imports; what one reads besides is said
 
 ### The repository left by hand, in the scenario
@@ -6955,6 +7024,17 @@ Technical choice · `CommandsOfStd` · **held**
 - In: Local, A session of Claude Code
 - Serves: A specification that runs
 
+### The commands Trame takes from libs/commands
+
+Technical choice · `CommandsWrittenOnce` · **held**
+
+- Decided by: trame
+- Context: The engine's commands reached its modules directly: a project could neither choose them nor specialize them, and a command of its own could not compute what they computed.
+- Consequences: trame plan runs on a machine and in a session alike, chosen for Local only: the dispatch asks for no environment. The engine's plan stays until the generation that removes the commands every project then runs from the library.
+- Rejected: The engine's own commands, kept, they would stay out of reach of every project's choice, and the engine the only one to reach its modules
+- In: Local
+- Serves: A specification that runs
+
 ### Trame's settings in the scenarios
 
 Technical choice · `OurSettingsInTheScenarios` · **held**
@@ -7091,7 +7171,7 @@ Artefact · `TheEngine` · **held**
 
 ### The candidate plays the laws
 
-Check · `CandidateKeepsTheLaws` · **unknown**
+Check · `CandidateKeepsTheLaws` · **held**
 
 - Owner: trame
 - Checks: The candidate engine
@@ -7127,6 +7207,13 @@ Check · `MachineAsked` · **held**
 - Signed by: Trame's maintainers
 - Verifies: What the machine runs, for Trame
 
+### trame plan runs in the engine
+
+Check · `PlanRunsInTheEngine` · **held**
+
+- Owner: trame
+- Signed by: Trame's maintainers
+
 ### The repository is read from GitHub
 
 Check · `RepositoryRead` · **unknown**
@@ -7142,13 +7229,13 @@ Shipment · `IntoMain` · **held**
 - Owner: trame
 - Target: main
 - Ships: The engine
-- Requires: The machine has what Trame needs
+- Requires: The machine has what Trame needs, trame plan runs in the engine
 - Programs assembled for: Local
 - Follows the policy: How a change merges
 
 ### The next generation
 
-Shipment · `NextGeneration` · **unknown**
+Shipment · `NextGeneration` · **held**
 
 - Owner: trame
 - Target: generation

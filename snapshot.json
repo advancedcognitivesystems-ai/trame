@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-25",
+  "at": "2026-11-26",
   "nodes": [
     {
       "id": "appearance.ExplorerDrawing",
@@ -1613,6 +1613,22 @@
       }
     },
     {
+      "id": "command-scenarios.EngineApiGiven",
+      "kind": "scenario",
+      "title": "The engine's API",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "preparation": "commands.Preparation",
+          "line": "conventions.TrameCommands",
+          "layout": "conventions.Layout",
+          "messages": "messages.ScenarioMessages"
+        },
+        "body": "(function)"
+      }
+    },
+    {
       "id": "command-scenarios.EvidenceForSomeone",
       "kind": "scenario",
       "title": "Evidence given for someone",
@@ -2651,7 +2667,6 @@
           "views": "engine.Views",
           "assembler": "commands.Assembler",
           "projectCommands": "commands.ProjectCommands",
-          "engine": "commands.EngineModules",
           "writing": "architecture.FileWriting",
           "paths": "architecture.Paths",
           "currentProcess": "architecture.Process",
@@ -2780,38 +2795,6 @@
           "file": "./code/commands/payload.ts",
           "language": "typescript"
         }
-      }
-    },
-    {
-      "id": "commands.EngineModules",
-      "kind": "function",
-      "title": "The engine's modules",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "deps": {
-          "compiler": "engine.Compiler",
-          "compilation": "engine.CompilationApi",
-          "laws": "engine.Laws",
-          "views": "engine.Views",
-          "lock": "engine.Lock",
-          "machine": "engine.MachineOutputs",
-          "payload": "engine.PayloadBuilder",
-          "dates": "engine.DateBundle",
-          "differences": "engine.Differences",
-          "dev": "engine.DevServer",
-          "assembly": "engine.Assembly",
-          "project": "engine.Project",
-          "identity": "engine.EngineFingerprint",
-          "wiring": "engine.Wiring",
-          "pipeline": "engine.ShipmentPipeline",
-          "judged": "engine.JudgedHarder",
-          "references": "engine.References",
-          "fingerprints": "engine.Fingerprints",
-          "evidence": "shipping.SdlcEvidence",
-          "drivers": "languages.Drivers"
-        },
-        "body": "(function)"
       }
     },
     {
@@ -3040,7 +3023,11 @@
           "uri": "std/web.Uri",
           "references": "engine.References",
           "projectCommands": "commands.ProjectCommands",
-          "kept": "conventions.KeptCommands"
+          "kept": "conventions.KeptCommands",
+          "machine": "engine.MachineOutputs",
+          "paths": "architecture.Paths",
+          "reading": "architecture.FileReading",
+          "specifiers": "std/system.NodeModuleSpecifiers"
         },
         "body": {
           "file": "./code/commands/preparation.ts",
@@ -3306,7 +3293,6 @@
           "programBundle": "shipping.ProgramBundle",
           "currentProcess": "architecture.Process",
           "projectCommands": "commands.ProjectCommands",
-          "engine": "commands.EngineModules",
           "events": "std/system.NodeEvents",
           "reading": "architecture.FileReading",
           "writing": "architecture.FileWriting",
@@ -8742,6 +8728,19 @@
       }
     },
     {
+      "id": "packages.GenericCommands",
+      "kind": "package",
+      "title": "The commands every project runs",
+      "fields": {
+        "owner": "trame",
+        "packageName": "commands",
+        "version": "0.1.1",
+        "joins": "library",
+        "from": "path",
+        "at": "libs/commands/releases/0.1.1"
+      }
+    },
+    {
       "id": "packages.HclGrammar",
       "kind": "package",
       "title": "Grammar of HCL",
@@ -8855,10 +8854,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.27.0",
+        "version": "0.28.0",
         "joins": "library",
         "from": "path",
-        "at": "std/releases/0.27.0"
+        "at": "std/releases/0.28.0"
       }
     },
     {
@@ -11332,7 +11331,7 @@
       "id": "principles.ShippedThroughTheGraph",
       "kind": "adr",
       "title": "A version ships through the graph",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "Two products ship differently (a page placed where it is served, an engine frozen into a generation) and their pipelines lived in scripts and in their authors' heads: nothing said what had been checked, by whom, on which version, nor why a version could go.",
@@ -12032,6 +12031,62 @@
         "fingerprint": "49458fb9c60cfe88",
         "language": "shared",
         "archive": "0118572b49b3ed10"
+      }
+    },
+    {
+      "id": "releases.G124",
+      "kind": "release",
+      "title": "Generation 124",
+      "fields": {
+        "owner": "trame",
+        "version": "g124",
+        "date": "2026-11-26",
+        "what": "the engine gives its API: the project as the dispatch prepared it, another compiled at a date; it runs while it compiles and while a command runs",
+        "fingerprint": "0112be07f77af87b",
+        "language": "shared",
+        "archive": "7bde1a1bb4e93030"
+      }
+    },
+    {
+      "id": "releases.G125",
+      "kind": "release",
+      "title": "Generation 125",
+      "fields": {
+        "owner": "trame",
+        "version": "g125",
+        "date": "2026-11-26",
+        "what": "the engine's API names a project by its package and a path in it, refuses a directory that is no project, and keeps nothing beside a project it compiles for a scenario",
+        "fingerprint": "302c35a5994d05a6",
+        "language": "shared",
+        "archive": "83cab083efe384d2"
+      }
+    },
+    {
+      "id": "releases.G126",
+      "kind": "release",
+      "title": "Generation 126",
+      "fields": {
+        "owner": "trame",
+        "version": "g126",
+        "date": "2026-11-26",
+        "what": "a project that lies in the sources of another keeps its runs beside that other: nothing is written into sources",
+        "fingerprint": "df7157abba49e884",
+        "language": "shared",
+        "archive": "83cab083efe384d2"
+      }
+    },
+    {
+      "id": "releases.G127",
+      "kind": "release",
+      "title": "Generation 127",
+      "fields": {
+        "owner": "trame",
+        "version": "g127",
+        "date": "2026-11-26",
+        "what": "trame ship assembles a library's component for a check, by its reference, with the commands the project chose of it",
+        "fingerprint": "40a6114196329fb9",
+        "language": "shared",
+        "archive": "83cab083efe384d2"
       }
     },
     {
@@ -14419,7 +14474,7 @@
       "id": "sdlc.CandidateKeepsTheLaws",
       "kind": "check",
       "title": "The candidate plays the laws",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame"
       }
@@ -14443,6 +14498,20 @@
         "context": "Opening a pull request and carrying a version across the repository were done by hand, with gh and a loop of trame.sh, differently each time.",
         "rejected": {
           "Commands of Trame's own": "any project of a repository opens pull requests: std writes them once, Trame chooses them"
+        }
+      }
+    },
+    {
+      "id": "sdlc.CommandsWrittenOnce",
+      "kind": "binding",
+      "title": "The commands Trame takes from libs/commands",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "The engine's commands reached its modules directly: a project could neither choose them nor specialize them, and a command of its own could not compute what they computed.",
+        "consequences": "trame plan runs on a machine and in a session alike, chosen for Local only: the dispatch asks for no environment. The engine's plan stays until the generation that removes the commands every project then runs from the library.",
+        "rejected": {
+          "The engine's own commands, kept": "they would stay out of reach of every project's choice, and the engine the only one to reach its modules"
         }
       }
     },
@@ -14619,6 +14688,7 @@
             "data",
             "team",
             "machine",
+            "commands",
             "reservations",
             "poselia"
           ],
@@ -14662,7 +14732,7 @@
       "id": "sdlc.NextGeneration",
       "kind": "shipment",
       "title": "The next generation",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "generation"
@@ -14830,6 +14900,15 @@
       }
     },
     {
+      "id": "sdlc.PlanRunsInTheEngine",
+      "kind": "check",
+      "title": "trame plan runs in the engine",
+      "status": "held",
+      "fields": {
+        "owner": "trame"
+      }
+    },
+    {
       "id": "sdlc.PullRequestsOnGitHub",
       "kind": "decision",
       "title": "How a pull request is checked on GitHub",
@@ -14937,6 +15016,11 @@
           {
             "name": "machine",
             "dir": "libs/machine",
+            "runners": "RunnersWritten"
+          },
+          {
+            "name": "commands",
+            "dir": "libs/commands",
             "runners": "RunnersWritten"
           },
           {
@@ -18835,6 +18919,36 @@
       "kind": "deps"
     },
     {
+      "from": "command-scenarios.EngineApiGiven",
+      "to": "commands.Preparation",
+      "kind": "verifies"
+    },
+    {
+      "from": "command-scenarios.EngineApiGiven",
+      "to": "architecture.Test",
+      "kind": "env"
+    },
+    {
+      "from": "command-scenarios.EngineApiGiven",
+      "to": "commands.Preparation",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.EngineApiGiven",
+      "to": "conventions.TrameCommands",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.EngineApiGiven",
+      "to": "conventions.Layout",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.EngineApiGiven",
+      "to": "messages.ScenarioMessages",
+      "kind": "deps"
+    },
+    {
       "from": "command-scenarios.EvidenceForSomeone",
       "to": "commands.RecordEvidence",
       "kind": "verifies"
@@ -19697,11 +19811,6 @@
     {
       "from": "command-scenarios.ProjectCommandRun",
       "to": "commands.Help",
-      "kind": "verifies"
-    },
-    {
-      "from": "command-scenarios.ProjectCommandRun",
-      "to": "commands.EngineModules",
       "kind": "verifies"
     },
     {
@@ -20991,11 +21100,6 @@
     },
     {
       "from": "commands.CommandOrView",
-      "to": "commands.EngineModules",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.CommandOrView",
       "to": "architecture.FileWriting",
       "kind": "deps"
     },
@@ -21207,111 +21311,6 @@
     {
       "from": "commands.EmitPayload",
       "to": "architecture.Terminal",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.EngineModules",
-      "to": "product.ExecutableSpecification",
-      "kind": "serves"
-    },
-    {
-      "from": "commands.EngineModules",
-      "to": "engine.Compiler",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.EngineModules",
-      "to": "engine.CompilationApi",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.EngineModules",
-      "to": "engine.Laws",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.EngineModules",
-      "to": "engine.Views",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.EngineModules",
-      "to": "engine.Lock",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.EngineModules",
-      "to": "engine.MachineOutputs",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.EngineModules",
-      "to": "engine.PayloadBuilder",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.EngineModules",
-      "to": "engine.DateBundle",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.EngineModules",
-      "to": "engine.Differences",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.EngineModules",
-      "to": "engine.DevServer",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.EngineModules",
-      "to": "engine.Assembly",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.EngineModules",
-      "to": "engine.Project",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.EngineModules",
-      "to": "engine.EngineFingerprint",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.EngineModules",
-      "to": "engine.Wiring",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.EngineModules",
-      "to": "engine.ShipmentPipeline",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.EngineModules",
-      "to": "engine.JudgedHarder",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.EngineModules",
-      "to": "engine.References",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.EngineModules",
-      "to": "engine.Fingerprints",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.EngineModules",
-      "to": "shipping.SdlcEvidence",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.EngineModules",
-      "to": "languages.Drivers",
       "kind": "deps"
     },
     {
@@ -21802,6 +21801,21 @@
     {
       "from": "commands.Preparation",
       "to": "conventions.KeptCommands",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Preparation",
+      "to": "engine.MachineOutputs",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Preparation",
+      "to": "architecture.Paths",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Preparation",
+      "to": "architecture.FileReading",
       "kind": "deps"
     },
     {
@@ -22297,11 +22311,6 @@
     {
       "from": "commands.Ship",
       "to": "commands.ProjectCommands",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Ship",
-      "to": "commands.EngineModules",
       "kind": "deps"
     },
     {
@@ -25225,6 +25234,11 @@
       "kind": "serves"
     },
     {
+      "from": "packages.GenericCommands",
+      "to": "product.SingleSource",
+      "kind": "serves"
+    },
+    {
       "from": "packages.Machine",
       "to": "product.SingleSource",
       "kind": "serves"
@@ -28045,6 +28059,46 @@
       "kind": "assembledBy"
     },
     {
+      "from": "releases.G124",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G124",
+      "to": "releases.G123",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G125",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G125",
+      "to": "releases.G124",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G126",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G126",
+      "to": "releases.G125",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G127",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G127",
+      "to": "releases.G126",
+      "kind": "assembledBy"
+    },
+    {
       "from": "releases.G13",
       "to": "architecture.TrameCli",
       "kind": "component"
@@ -30535,6 +30589,16 @@
       "kind": "serves"
     },
     {
+      "from": "sdlc.CommandsWrittenOnce",
+      "to": "architecture.Local",
+      "kind": "environments"
+    },
+    {
+      "from": "sdlc.CommandsWrittenOnce",
+      "to": "product.ExecutableSpecification",
+      "kind": "serves"
+    },
+    {
       "from": "sdlc.EngineCallersIdentified",
       "to": "product.ExecutableSpecification",
       "kind": "serves"
@@ -30677,6 +30741,11 @@
     {
       "from": "sdlc.IntoMain",
       "to": "sdlc.MachineAsked",
+      "kind": "requires"
+    },
+    {
+      "from": "sdlc.IntoMain",
+      "to": "sdlc.PlanRunsInTheEngine",
       "kind": "requires"
     },
     {
@@ -30978,6 +31047,11 @@
       "from": "sdlc.PageProgram",
       "to": "architecture.Browser",
       "kind": "environment"
+    },
+    {
+      "from": "sdlc.PlanRunsInTheEngine",
+      "to": "sdlc.Maintainers",
+      "kind": "by"
     },
     {
       "from": "sdlc.PullRequestWorkflow",

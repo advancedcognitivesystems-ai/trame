@@ -15,7 +15,7 @@ what the graph guarantees. The README explains why; this file says how.
 | `kinds/`, `views/`, `engine-views/` | The language: what a node can be, which questions are asked of the graph; their words in `words.ts` | you, reviewed |
 | `trame.json` | The project: its libraries (`"libraries"`), the generation it pins (`"engine"`), the kinds and views it carries besides the language's | you |
 | `package.json` | The project as a package: the import map of the language (`#trame/*`) and of its libraries (`#std/*`), the packages of the graph | `trame manifest` |
-| `libs/` | Libraries of a domain (`libs/geometry`: vectors, angles; `libs/data`: the data a product keeps, and its kind `entity`; `libs/team`: the repository's people; `libs/machine`: the questions a project asks of its machine), each a project of its own | you |
+| `libs/` | Libraries of a domain (`libs/geometry`: vectors, angles; `libs/data`: the data a product keeps, and its kind `entity`; `libs/team`: the repository's people; `libs/machine`: the questions a project asks of its machine; `libs/commands`: the commands every project runs, on std's ports of the engine), each a project of its own | you |
 | `std/` | The standard library: a Trame project of its own (structures, standards, patterns) that Trame and the example import | you |
 | `ci/` | The library of writers that run a shipment elsewhere (GitHub Actions, Bash), from the plan the engine computes | you |
 | `docs/`, `graph.json`, `snapshot.json` | What a build writes: documents for people, the graph and its snapshot for tools and agents | the build only |
@@ -32,7 +32,7 @@ Run from the project's directory, through the pinned generation:
 
 ```
 ./trame.sh build                       # compile, check, write docs/ (the summary lists the open issues)
-./trame.sh plan [--at <date>]          # what a build would change against graph.json, written nowhere (g73)
+./trame.sh plan [--at <date>]          # what a build would change against graph.json, written nowhere (g73; in Trame, libs/commands' since g124)
 ./trame.sh build --at 2026-10-27        # the graph as it was that day: evidence counts from the day it was given (g75)
 ./trame.sh test-kinds                  # the laws of the kinds and views
 ./trame.sh view <view> [node|module]   # one view in the terminal: impact, why, history, assembly take a node
@@ -224,6 +224,21 @@ library), and the realizations of its ports in the binding's environments; `tram
 component with the commands chosen there and nothing else. Governance is rules: a `rule` applies a requirement of
 `#std/rules` (`Reaches`, `NeverReaches`, `Linked`, `WithoutEffects`, `WordsOf`) with its `params` (a direction is a word
 of the vocabulary `Directions`: `way: "in"`), and `serves` a goal or is applied by an ADR that says why. A broken rule is an error, unless the rule says `severity: "warning"` while the project gets there.
+
+**The engine is a provider** (E3, g124–g127, std 0.28.0). A command reaches the engine as it reaches GitHub: through
+std's ports of the engine's primitives (`#std/engine`; so far `TheProject`, the project at hand compiled at the day its
+line says: what a view receives, the graph as `graph.json` and `snapshot.json` write it, where its files are), realized
+on a machine by `ProjectInTheEngine`, which reads the API the language defines (`EngineApi`, through the prelude's
+`runningEngine().api`), and in a scenario by `ProjectCompiledHere`, which compiles the project the scenario names
+(`ProjectOfTheScenario`) through the engine that plays it: what a command computes is played on a real graph, only the
+platform in memory. Name that project by its package and a path in it (`#commands/samples/small`, g125): a library's
+scenarios are played again in every project that imports it, from its version, which carries only its sources; the
+project lies under `src/`, and keeps its runs beside the library (g126). The engine runs while it compiles and while a
+command runs; the API grows with a generation when a command needs more. The commands every project runs are written
+once in `libs/commands` (`#commands/*`; `plan` so far): a project takes one by a binding in the environment of its
+machine (`follows: [Command]`, with `ProjectInTheEngine`), and its `trame plan` runs the library's, in the engine's
+process. A check may run such a command (`runs: Plan`, g127: `trame ship` assembles the library's component with the
+commands chosen there): Trame's `PlanRunsInTheEngine` proves `ProjectInTheEngine` in each merge into main.
 
 ## 5. The rules the build enforces
 
@@ -664,6 +679,15 @@ elements), a port answered differently in several environments is answered as in
 - Before g118, an upgrade that moved a project to a generation of the registry (geometry) failed once: the manifest
   was run again by the engine that was leaving. The engine now starts again through the launcher that started it
   (`TRAME_LAUNCHER`), which installs the new generation first.
+- A library's scenarios are played again in each project that imports it, at its version: a scenario that reads a file
+  of the library by a path from where it runs finds nothing there (commands 0.1.0's small project, found empty in
+  Trame). What a scenario reads lies under `src/`, which a version carries, and is named by the library's package.
+- Compiling a project writes its runs beside it (`.trame/runs`): a project a scenario compiles, in a library's sources,
+  wrote into them, and into a version's copy, before g126.
+- A command chosen in two environments (Local and Session) makes the dispatch ask which with `--env`: choose the
+  commands every project runs in one (Local), as Trame does.
+- Before g127, `trame ship` assembled a check's program by the component's own name: a library's component was
+  "unknown". It is now assembled by its reference, with the commands the project chose of it.
 
 ## 10. Reading further
 

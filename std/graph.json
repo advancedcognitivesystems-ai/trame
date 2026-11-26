@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-25",
+  "generated": "2026-11-26",
   "nodes": [
     {
       "id": "access.Anyone",
@@ -1266,6 +1266,95 @@
       "diagnostics": [
         "warning: Connected to no root (architecture rule, goal)"
       ]
+    },
+    {
+      "id": "engine.EngineAsAProvider",
+      "kind": "adr",
+      "title": "The engine is a provider",
+      "source": "src/engine.ts:87",
+      "fields": {
+        "owner": "trame",
+        "context": "The engine's commands reached its modules directly; a command of a library or a project could not, and a command moved out of the engine would have lost what it computed with.",
+        "consequences": "Every command reaches the engine the same way, through ports versioned with the library; the API they read is the language's, given by the engine, and it grows with a generation when a command needs more. A library's scenario compiles a project of its own through the engine that plays it.",
+        "rejected": {
+          "A library of contracts": "a third place for types the language already defines (what a view receives) and the ports std already holds",
+          "The engine's modules, given as they are": "what a command reads would change with each generation, unseen by the types"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "engine.EngineWords",
+      "kind": "catalog",
+      "title": "What the engine's adapters say",
+      "source": "src/engine.ts:49",
+      "fields": {
+        "owner": "trame",
+        "messages": "(function)"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "engine.ProjectCompiledHere",
+      "kind": "implementation",
+      "title": "A project compiled by the engine that plays the scenario",
+      "source": "src/engine.ts:75",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "chosen": "engine.ProjectOfTheScenario",
+          "say": "engine.EngineWords"
+        },
+        "body": {
+          "file": "./code/engine/project-compiled-here.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "engine.ProjectInTheEngine",
+      "kind": "implementation",
+      "title": "The project the engine prepared",
+      "source": "src/engine.ts:63",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "say": "engine.EngineWords"
+        },
+        "body": {
+          "file": "./code/engine/project-in-the-engine.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "engine.ProjectOfTheScenario",
+      "kind": "port",
+      "title": "The project of a scenario",
+      "source": "src/engine.ts:44",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": []
+      },
+      "diagnostics": [
+        "warning: No realization, in any environment"
+      ]
+    },
+    {
+      "id": "engine.TheProject",
+      "kind": "port",
+      "title": "The project at hand",
+      "source": "src/engine.ts:31",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": [
+          "read",
+          "asynchronous"
+        ]
+      },
+      "diagnostics": []
     },
     {
       "id": "html.Aria",
@@ -2622,10 +2711,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "123",
+        "version": "127",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g123"
+        "at": "../generations/g127"
       },
       "diagnostics": []
     },
@@ -3485,6 +3574,21 @@
         "date": "2026-11-25",
         "what": "The family Verified counts a check a command the engine keeps runs (g122)",
         "fingerprint": "8feb27eab07a9b7d",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "releases.R0_28_0",
+      "kind": "release",
+      "title": "Version 0.28.0",
+      "source": "src/releases.ts:428",
+      "fields": {
+        "owner": "trame",
+        "version": "0.28.0",
+        "date": "2026-11-26",
+        "what": "the engine as a provider: the port TheProject, realized in the engine and, in a scenario, by the engine that plays it",
+        "fingerprint": "6ec9817f19e1eb38",
         "language": "shared"
       },
       "diagnostics": []
@@ -5323,7 +5427,7 @@
       "kind": "shipment",
       "title": "The next version",
       "source": "src/sdlc.ts:87",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "version"
@@ -5333,6 +5437,11 @@
           {
             "node": "commands.CommandsOfALibrary",
             "via": "commands.LibraryCommands",
+            "obligation": "sdlc.DecisionsApplied"
+          },
+          {
+            "node": "engine.EngineAsAProvider",
+            "via": "engine.ProjectCompiledHere",
             "obligation": "sdlc.DecisionsApplied"
           },
           {
@@ -5529,6 +5638,12 @@
           "effects.Commands",
           "effects.Effects",
           "effects.PlatformEffects",
+          "engine.EngineAsAProvider",
+          "engine.EngineWords",
+          "engine.ProjectCompiledHere",
+          "engine.ProjectInTheEngine",
+          "engine.ProjectOfTheScenario",
+          "engine.TheProject",
           "html.Aria",
           "html.Css",
           "html.Html",
@@ -5724,7 +5839,9 @@
           "web.WebSpeechApi"
         ]
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: To ship: The standard library is unknown"
+      ]
     },
     {
       "id": "sdlc.PackagesSafe",
@@ -5829,7 +5946,7 @@
       "kind": "artifact",
       "title": "The standard library",
       "source": "src/sdlc.ts:22",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "src",
@@ -5837,9 +5954,11 @@
       },
       "result": {
         "path": "src",
-        "code": "f8ce65e4"
+        "code": "1409ffdd"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+      ]
     },
     {
       "id": "sdlc.VersionMode",
@@ -7458,6 +7577,61 @@
       "kind": "serves"
     },
     {
+      "from": "engine.EngineAsAProvider",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "engine.EngineAsAProvider",
+      "to": "engine.TheProject",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "engine.EngineAsAProvider",
+      "to": "engine.ProjectOfTheScenario",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "engine.EngineAsAProvider",
+      "to": "engine.ProjectInTheEngine",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "engine.EngineAsAProvider",
+      "to": "engine.ProjectCompiledHere",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "engine.EngineWords",
+      "to": "tooling.CommandLanguage",
+      "kind": "language"
+    },
+    {
+      "from": "engine.ProjectCompiledHere",
+      "to": "engine.TheProject",
+      "kind": "implements"
+    },
+    {
+      "from": "engine.ProjectCompiledHere",
+      "to": "engine.ProjectOfTheScenario",
+      "kind": "deps"
+    },
+    {
+      "from": "engine.ProjectCompiledHere",
+      "to": "engine.EngineWords",
+      "kind": "deps"
+    },
+    {
+      "from": "engine.ProjectInTheEngine",
+      "to": "engine.TheProject",
+      "kind": "implements"
+    },
+    {
+      "from": "engine.ProjectInTheEngine",
+      "to": "engine.EngineWords",
+      "kind": "deps"
+    },
+    {
       "from": "html.Aria",
       "to": "product.CitedNotCopied",
       "kind": "serves"
@@ -8689,6 +8863,41 @@
     },
     {
       "from": "releases.R0_27_0",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_28_0",
+      "to": "product.ChosenCommands",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_28_0",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_28_0",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_28_0",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_28_0",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_28_0",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_28_0",
       "to": "product.VersionsThatHold",
       "kind": "serves"
     },

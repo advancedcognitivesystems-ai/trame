@@ -1,8 +1,9 @@
 // What all commands share: reading the options, checking and compiling the project, refusing cleanly.
 // It started as a port of the bootstrap's command line (trame/cli.ts): same options, same order of checks.
 
-import type { AnyNode, Compilation, Document, ProvidedBy, Severity, View } from "../../../trame/kernel"
-import type { Clock, Layout, Process, Terminal } from "../../architecture"
+import { withEngine } from "../../../trame/kernel"
+import type { AnyNode, Compilation, CompiledProject, Document, EngineApi, ProvidedBy, Severity, View } from "../../../trame/kernel"
+import type { Clock, FileReading, Layout, Paths, Process, Terminal } from "../../architecture"
 import type { CommandMessages } from "../../messages"
 import type { Api as CompilerApi, Compiled, Loaded } from "../engine/compiler"
 import type { Api as CompilationApi } from "../engine/compilation-api"
@@ -11,11 +12,13 @@ import type { Api as ViewsApi, ViewFailure } from "../engine/views"
 import type { Api as LockApi } from "../engine/lock"
 import type { Api as CommonApi } from "../rendering/common"
 import type { Counts, Sequences, Texts } from "#std/algebra"
+import type { NodeModuleSpecifiers } from "#std/system"
 import type { TrameCommands } from "../../conventions"
 import type { Uri } from "#std/web"
 import type { References } from "../../engine"
 import type { PaddedCell, TerminalColumns, TerminalText } from "../../text"
 import type { Api as ProjectCommandsApi } from "./project-commands"
+import type { Api as MachineApi } from "../engine/machine"
 
 export interface Deps {
   line: ProvidedBy<typeof TrameCommands>
@@ -46,6 +49,13 @@ export interface Deps {
   references: ProvidedBy<typeof References>
   /** The commands of the project's graph, and those of them that never run (E3, since g116). */
   projectCommands: ProjectCommandsApi
+  /** The graph as a build writes it, for tools and agents: what the engine's API gives of a project (since g124). */
+  machine: MachineApi
+  paths: Paths
+  /** Whether a directory the API is asked to compile holds a project (since g125). */
+  reading: FileReading
+  /** How a project the API is asked to compile is named by a package and a path in it (since g125). */
+  specifiers: ProvidedBy<typeof NodeModuleSpecifiers>
   /** The commands the engine keeps, whatever the project says (since g119): a command of the project never takes their names. */
   kept: readonly string[]
 }
@@ -184,32 +194,42 @@ const body = (deps: Deps) => {
   let handed: { key: string; ctx: Ctx } | undefined
   const keyOf = (o: Options) => JSON.stringify([o.root, o.today])
 
+  /** What refuses a project before it is compiled: its imports, the laws of its kinds and views; then what reading it found. */
+  async function refusals(root: string, today: string): Promise<{ refused: string[]; read?: Loaded }> {
+    await loadKinds(root)
+    await loadViews(root)
+    const imports = checkImports(root)
+    const kindsRefused = printLaws(checkKinds(today), false)
+    const viewsRefused = checkViewDecls()
+    if (imports.length || kindsRefused.length || viewsRefused.length) {
+      return {
+        refused: [
+          ...imports.map((i) => messages.importRefused(i)),
+          ...kindsRefused.map((r) => messages.kindRefused(r.kind.name, r.failures.map((f) => f.law))),
+          ...viewsRefused.map((f) => messages.viewRefused(f.view, f.law, f.example)),
+          ...(kindsRefused.length ? [messages.kindLawDetails()] : []),
+        ],
+      }
+    }
+    const read = await load(root)
+    if (read.typeErrors.length) return { refused: [messages.typeScriptRefuses(), ...read.typeErrors.map((e) => indent + e)] }
+    const mixed = read.quantityErrors ?? []
+    if (mixed.length) return { refused: [messages.quantitiesRefuse(), ...mixed.map((e) => indent + e)] }
+    const madeOfText = read.textAsCode ?? []
+    if (madeOfText.length) return { refused: [messages.textAsCodeRefuses(), ...madeOfText.map((e) => indent + e)] }
+    const forged = read.forgedCommands ?? []
+    if (forged.length) return { refused: [messages.forgedCommandsRefuse(), ...forged.map((e) => indent + e)] }
+    return { refused: [], read }
+  }
+
   /** Imports, laws of kinds and views, TypeScript, compilation, trame.lock. */
   async function prepare(o: Options): Promise<Ctx> {
     const given = handed
     handed = undefined
     if (given?.key === keyOf(o)) return given.ctx
-    await loadKinds(o.root)
-    await loadViews(o.root)
-    const imports = checkImports(o.root)
-    const kindsRefused = printLaws(checkKinds(o.today), false)
-    const viewsRefused = checkViewDecls()
-    if (imports.length || kindsRefused.length || viewsRefused.length) {
-      refuse(o, [
-        ...imports.map((i) => messages.importRefused(i)),
-        ...kindsRefused.map((r) => messages.kindRefused(r.kind.name, r.failures.map((f) => f.law))),
-        ...viewsRefused.map((f) => messages.viewRefused(f.view, f.law, f.example)),
-        ...(kindsRefused.length ? [messages.kindLawDetails()] : []),
-      ])
-    }
-    loaded = await load(o.root)
-    if (loaded.typeErrors.length) refuse(o, [messages.typeScriptRefuses(), ...loaded.typeErrors.map((e) => indent + e)])
-    const mixed = loaded.quantityErrors ?? []
-    if (mixed.length) refuse(o, [messages.quantitiesRefuse(), ...mixed.map((e) => indent + e)])
-    const madeOfText = loaded.textAsCode ?? []
-    if (madeOfText.length) refuse(o, [messages.textAsCodeRefuses(), ...madeOfText.map((e) => indent + e)])
-    const forged = loaded.forgedCommands ?? []
-    if (forged.length) refuse(o, [messages.forgedCommandsRefuse(), ...forged.map((e) => indent + e)])
+    const { refused, read } = await refusals(o.root, o.today)
+    if (!read) refuse(o, refused)
+    loaded = read
     return await at(o, o.today)
   }
 
@@ -219,11 +239,9 @@ const body = (deps: Deps) => {
    */
   async function attempt(o: Options): Promise<Ctx | undefined> {
     try {
-      await loadKinds(o.root)
-      await loadViews(o.root)
-      if (checkImports(o.root).length || checkKinds(o.today).some((r) => r.failures.length) || checkViewDecls().length) return undefined
-      loaded = await load(o.root)
-      if ([loaded.typeErrors, loaded.quantityErrors ?? [], loaded.textAsCode ?? [], loaded.forgedCommands ?? []].some((e) => e.length)) return undefined
+      const { read } = await refusals(o.root, o.today)
+      if (!read) return undefined
+      loaded = read
       return await at(o, o.today)
     } catch {
       return undefined
@@ -237,24 +255,80 @@ const body = (deps: Deps) => {
 
   /** Compiles the already loaded graph at a date, with trame.lock. */
   async function at(o: Options, date: string): Promise<Ctx> {
+    return compiledAt(loaded!, date)
+  }
+
+  /** A graph read, compiled at a date, with trame.lock; the engine running while it is (the scenarios it plays reach it). */
+  async function compiledAt(read: Loaded, date: string, opts: { keep?: boolean } = {}): Promise<Ctx> {
     // A day before today: what was proven then is judged as it was given, the code and the engine of that day unknown.
-    const c = await compileAt(loaded!, date, { asGiven: date < deps.clock.today() })
-    const lockIssues = checkLock(c, o.root)
+    const c = await running(read, () => compileAt(read, date, { asGiven: date < deps.clock.today(), ...opts }))
+    const lockIssues = checkLock(c, read.root)
     const hidden = deps.projectCommands.hidden(c, deps.kept, deps.views.sortedViews().map((v) => v.name))
     c.diags.push(...lockIssues, ...hidden)
     c.diags.sort((a, b) => deps.severityOrder(a.severity) - deps.severityOrder(b.severity))
-    const published = publishedOf(c, o.root)
+    const published = publishedOf(c, read.root)
     c.published = published
     c.lockIssues = lockIssues
     return { c, comp: makeCompilation(c, { published, lockIssues, views: deps.views.sortedViews() }) }
   }
+
+  // The engine's API (since g124): what a command, or a scenario the engine plays, reaches of it ------------------------
+
+  /** A project as the API gives it: what a view receives, and the graph as a build writes it. */
+  const project = (root: string, { c, comp }: Ctx): CompiledProject => ({
+    root, today: c.today, graph: comp, written: () => deps.machine.graphJson(c), snapshot: () => deps.machine.snapshotJson(c),
+  })
+
+  /**
+   * Where a project the API is asked to compile is (since g125): a directory from where the engine runs, or, named by a
+   * package and a path in it (#commands/samples/small), in the sources of the package the project being compiled leads
+   * that name to: its own (its directory's name), or one of its libraries, as it imports it. A library's scenario then
+   * finds what its version carries, wherever the project that plays it imports it.
+   */
+  function located(root: string, compiling: Loaded | undefined): string {
+    const { imports, separator } = deps.specifiers
+    if (!root.startsWith(imports)) return deps.paths.resolve(deps.currentProcess.cwd(), root)
+    const [name, ...inside] = root.slice(imports.length).split(separator)
+    const led = compiling === undefined ? undefined
+      : deps.paths.basename(compiling.root) === name ? compiling.root : compiling.libraries.find((lib) => lib.name === name)?.root
+    if (led === undefined) throw new Error(messages.projectRefusedHere(root, [messages.packageNotLed(name)]))
+    return deps.paths.join(led, deps.projectLayout.sources, ...inside)
+  }
+
+  /**
+   * Another project compiled at a date, the project already read left as it was, nothing kept beside it; refused with
+   * what refuses it, a directory without a configuration first.
+   */
+  async function elsewhere(root: string, today: string, compiling: Loaded | undefined): Promise<CompiledProject> {
+    const at = located(root, compiling)
+    const configuration = deps.projectLayout.configuration
+    if (!deps.reading.existsSync(deps.paths.join(at, configuration))) throw new Error(messages.projectRefusedHere(at, [messages.notAProject(configuration)]))
+    const { refused, read } = await refusals(at, today)
+    if (!read) throw new Error(messages.projectRefusedHere(at, refused))
+    return project(at, await compiledAt(read, today, { keep: false }))
+  }
+
+  /**
+   * The engine's API: the project as the dispatch prepared it for the command, when there is one; the project being
+   * compiled, by whose packages a project to compile may be named.
+   */
+  function api(prepared?: { o: Options; ctx: Ctx }, compiling: Loaded | undefined = loaded): EngineApi {
+    return {
+      layout: deps.projectLayout,
+      prepared: () => (prepared === undefined ? undefined : project(prepared.o.root, prepared.ctx)),
+      compile: (root, today) => elsewhere(root, today, compiling),
+    }
+  }
+
+  /** Runs `f` with this engine running, while it compiles a project: what it compiles reaches the API, no project prepared. */
+  const running = <T>(compiling: Loaded, f: () => Promise<T>) => withEngine({ offer: () => undefined, api: api(undefined, compiling) }, f)
 
   /**
    * The loaded graph compiled at a date with nodes besides its own (an amendment not yet recorded, since g85): what the
    * graph would be, written nowhere. The graph as loaded is left as it was.
    */
   async function alsoWith(o: Options, extra: readonly AnyNode[], date: string): Promise<Ctx> {
-    const c = await compileAt({ ...loaded!, nodes: [...loaded!.nodes, ...extra] }, date)
+    const c = await running(loaded!, () => compileAt({ ...loaded!, nodes: [...loaded!.nodes, ...extra] }, date))
     c.diags.sort((a, b) => deps.severityOrder(a.severity) - deps.severityOrder(b.severity))
     return { c, comp: makeCompilation(c, { published: c.published ?? new Set(), lockIssues: [], views: deps.views.sortedViews() }) }
   }
@@ -294,7 +368,7 @@ const body = (deps: Deps) => {
     return { locate: located, files: new Map(docs.map((d) => [d.id, d.file])) }
   }
 
-  return { options, printLaws, refuse, prepare, attempt, handOver, at, alsoWith, reread, views, renderingContext }
+  return { options, printLaws, refuse, prepare, attempt, handOver, at, alsoWith, reread, views, renderingContext, api }
 }
 
 export type Api = ReturnType<typeof body>

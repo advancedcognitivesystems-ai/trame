@@ -1832,3 +1832,63 @@ export const G123 = release({
   archive: "0118572b49b3ed10",
   assembledBy: G122,
 })
+
+/**
+ * Generation 124
+ */
+export const G124 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g124",
+  date: "2026-11-26",
+  what: "the engine gives its API: the project as the dispatch prepared it, another compiled at a date; it runs while it compiles and while a command runs",
+  fingerprint: "0112be07f77af87b",
+  language: "shared",
+  archive: "7bde1a1bb4e93030",
+  assembledBy: G123,
+})
+
+/**
+ * Generation 125
+ */
+export const G125 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g125",
+  date: "2026-11-26",
+  what: "the engine's API names a project by its package and a path in it, refuses a directory that is no project, and keeps nothing beside a project it compiles for a scenario",
+  fingerprint: "302c35a5994d05a6",
+  language: "shared",
+  archive: "83cab083efe384d2",
+  assembledBy: G124,
+})
+
+/**
+ * Generation 126
+ */
+export const G126 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g126",
+  date: "2026-11-26",
+  what: "a project that lies in the sources of another keeps its runs beside that other: nothing is written into sources",
+  fingerprint: "df7157abba49e884",
+  language: "shared",
+  archive: "83cab083efe384d2",
+  assembledBy: G125,
+})
+
+/**
+ * Generation 127
+ */
+export const G127 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g127",
+  date: "2026-11-26",
+  what: "trame ship assembles a library's component for a check, by its reference, with the commands the project chose of it",
+  fingerprint: "40a6114196329fb9",
+  language: "shared",
+  archive: "83cab083efe384d2",
+  assembledBy: G126,
+})

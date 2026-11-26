@@ -594,7 +594,12 @@ system Trame runs on, Node 22 or later, and Git. The questions that belong to no
 `libs/machine`, which reads what each project requires from its decisions. A library offers commands as it
 offers realizations: std writes `pull-request` and `propagate` once, and a project runs them when a binding of its own
 chooses them, with its decisions as their settings (Trame: its repository, its main branch, the projects of the
-repository). Governance is rules too: a `rule` applies a requirement of
+repository). The engine itself is a provider, as GitHub is (since g124): the language defines its API (the project the
+dispatch prepared for a command, another compiled at a date, each with what a view receives and the graph as a build
+writes it), the engine gives it, and std's port `TheProject` reaches it, realized on a machine by an adapter that reads
+it and, in a scenario, by the engine that plays the scenario compiling a project the library carries in its sources.
+The commands every project runs move onto it into `libs/commands`, one by one: `plan` first, which Trame now runs from
+the library, and which says what the engine's plan said. Governance is rules too: a `rule` applies a requirement of
 `#std/rules` (`Reaches`, `NeverReaches`, `Linked`, `WithoutEffects`, `WordsOf`) with its parameters, and says why
 through what it serves or the ADR that applies it, instead of hiding a function.
 

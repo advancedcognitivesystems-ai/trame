@@ -1,6 +1,6 @@
 # Technical choices
 
-*What answers each port in each environment on 25 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
+*What answers each port in each environment on 26 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
 
 > **4 technical choices for 6 ports, in 3 environments**
 
