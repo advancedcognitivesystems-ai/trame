@@ -1,0 +1,41 @@
+{
+  "shipment": "sdlc.RunnersWritten",
+  "title": "The files that run it elsewhere",
+  "target": "repository",
+  "at": "2026-11-26",
+  "by": "claude",
+  "signature": "attribution",
+  "artifacts": [
+    {
+      "node": "sdlc.PullRequestWorkflow",
+      "path": "../../.github/workflows/documents-pull-request.yml",
+      "fingerprint": "75fc1c56660748fb85e73071680f3e02cec2ab4561a779d7b61735e46ec858f9"
+    }
+  ],
+  "foundations": {
+    "problems": 0
+  },
+  "obligations": [
+    {
+      "node": "sdlc.PullRequestWorkflow",
+      "kind": "artifact",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-26",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "75fc1c56660748fb85e73071680f3e02cec2ab4561a779d7b61735e46ec858f9",
+          "code": "a67406c5",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "ee027dcb6d4b0887",
+          "seal": "d1cf0b7e4567a251e84eab4d9b4f0314a8ea91ca4f5f5708131d93867aba6e92"
+        }
+      ]
+    }
+  ],
+  "deployed": []
+}

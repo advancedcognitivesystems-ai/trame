@@ -1,0 +1,598 @@
+{
+  "at": "2026-11-26",
+  "nodes": [
+    {
+      "id": "language.Dates",
+      "kind": "function",
+      "title": "Dates",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "language": "language.DocumentLanguage"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "language.DocumentLanguage",
+      "kind": "port",
+      "title": "The language of the documents",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": []
+      }
+    },
+    {
+      "id": "language.Lists",
+      "kind": "function",
+      "title": "Lists",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "language": "language.DocumentLanguage"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "language.NumberDisplay",
+      "kind": "decision",
+      "title": "How a number is written",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "base": 10,
+          "decimals": 2
+        }
+      }
+    },
+    {
+      "id": "language.Punctuation",
+      "kind": "function",
+      "title": "Punctuation",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "language": "language.DocumentLanguage"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "language.Units",
+      "kind": "function",
+      "title": "Values with their units",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "display": "language.NumberDisplay",
+          "counts": "std/algebra.Counts",
+          "values": "std/algebra.ValueTypes"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "packages.ContinuousIntegration",
+      "kind": "package",
+      "title": "The library of continuous integration",
+      "fields": {
+        "owner": "trame",
+        "packageName": "ci",
+        "version": "0.8.0",
+        "joins": "library",
+        "from": "path",
+        "at": "../../ci/releases/0.8.0"
+      }
+    },
+    {
+      "id": "packages.Language",
+      "kind": "package",
+      "title": "Trame",
+      "fields": {
+        "owner": "trame",
+        "packageName": "trame",
+        "version": "128",
+        "joins": "language",
+        "at": "../../generations/g128"
+      }
+    },
+    {
+      "id": "packages.People",
+      "kind": "package",
+      "title": "The people of the repository",
+      "fields": {
+        "owner": "trame",
+        "packageName": "team",
+        "version": "0.1.0",
+        "joins": "library",
+        "from": "path",
+        "at": "../team/releases/0.1.0"
+      }
+    },
+    {
+      "id": "packages.StandardLibrary",
+      "kind": "package",
+      "title": "std",
+      "fields": {
+        "owner": "trame",
+        "packageName": "std",
+        "version": "0.29.0",
+        "joins": "library",
+        "at": "../../std/releases/0.29.0"
+      }
+    },
+    {
+      "id": "product.RenderedOnce",
+      "kind": "goal",
+      "title": "Documents rendered once, for every project",
+      "fields": {
+        "owner": "trame"
+      }
+    },
+    {
+      "id": "scenarios.Expected",
+      "kind": "decision",
+      "title": "What the scenarios read and expect",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "day": "2026-10-17",
+          "long": "17 October 2026",
+          "short": "17 Oct",
+          "shortWithYear": "17 Oct 2026",
+          "month": "Oct",
+          "items": [
+            "A",
+            "B",
+            "C"
+          ],
+          "joined": [
+            "A",
+            ", ",
+            "B",
+            " and ",
+            "C"
+          ],
+          "number": 0.666,
+          "written": "0.67",
+          "units": [
+            [
+              "min",
+              60
+            ],
+            [
+              "s",
+              1
+            ]
+          ],
+          "whole": 120,
+          "inLarger": "2",
+          "notWhole": 90,
+          "inSmaller": "90"
+        }
+      }
+    },
+    {
+      "id": "scenarios.InTheScenariosLanguage",
+      "kind": "binding",
+      "title": "The scenarios' language",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "A project writes its documents in the language its engine speaks: the library's scenarios decide one of their own, the one Trame speaks."
+      }
+    },
+    {
+      "id": "scenarios.LanguageWritten",
+      "kind": "scenario",
+      "title": "The language of the documents, written",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "dates": "language.Dates",
+          "lists": "language.Lists",
+          "punctuation": "language.Punctuation",
+          "units": "language.Units",
+          "language": "scenarios.ScenarioLanguage",
+          "expected": "scenarios.Expected",
+          "checks": "scenarios.ScenarioWords"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "scenarios.ScenarioLanguage",
+      "kind": "decision",
+      "title": "The language of the scenarios",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "tag": "en-GB",
+          "punctuation": {
+            "parts": " · ",
+            "items": ", ",
+            "givenBy": " ← ",
+            "opensAside": " (",
+            "closesAside": ")",
+            "clauses": "; ",
+            "introduces": ": ",
+            "equals": " = ",
+            "absent": "—"
+          }
+        }
+      }
+    },
+    {
+      "id": "scenarios.ScenarioWords",
+      "kind": "catalog",
+      "title": "What the scenarios check",
+      "fields": {
+        "owner": "trame",
+        "messages": "(function)"
+      }
+    },
+    {
+      "id": "scenarios.Test",
+      "kind": "environment",
+      "title": "Test",
+      "fields": {
+        "owner": "trame",
+        "evaluates": true
+      }
+    },
+    {
+      "id": "scenarios.WrittenForTheScenarios",
+      "kind": "function",
+      "title": "Written in the language of the scenarios",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "language": "scenarios.ScenarioLanguage"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "sdlc.CodeVerified",
+      "kind": "obligation",
+      "title": "Its code verified",
+      "fields": {
+        "owner": "trame",
+        "params": {
+          "kinds": [
+            "function"
+          ]
+        },
+        "gaps": "error"
+      }
+    },
+    {
+      "id": "sdlc.DecisionsApplied",
+      "kind": "obligation",
+      "title": "Its decisions applied",
+      "fields": {
+        "owner": "trame"
+      }
+    },
+    {
+      "id": "sdlc.NextVersion",
+      "kind": "shipment",
+      "title": "The next version",
+      "status": "unknown",
+      "fields": {
+        "owner": "trame",
+        "target": "version"
+      }
+    },
+    {
+      "id": "sdlc.PackagesSafe",
+      "kind": "obligation",
+      "title": "Its packages safe",
+      "fields": {
+        "owner": "trame"
+      }
+    },
+    {
+      "id": "sdlc.PullRequestsOnGitHub",
+      "kind": "decision",
+      "title": "How a pull request is checked on GitHub",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "on": {
+            "pullRequests": [
+              "main"
+            ]
+          },
+          "job": "documents",
+          "runsOn": "ubuntu-24.04",
+          "node": 22,
+          "artefacts": {
+            "days": 30
+          },
+          "pullRequest": {
+            "review": false,
+            "merge": "onceItHoldsUnlessDecided"
+          }
+        },
+        "rejected": {
+          "Only when a pull request touches the project": "GitHub keeps a pull request waiting for a check it requires and that never ran",
+          "Merged by GitHub whatever it changes": "what people decided would reach main without a person"
+        }
+      }
+    },
+    {
+      "id": "sdlc.PullRequestWorkflow",
+      "kind": "artifact",
+      "title": "The pull requests' workflow",
+      "status": "unknown",
+      "fields": {
+        "owner": "trame",
+        "path": "../../.github/workflows/documents-pull-request.yml",
+        "media": "application/yaml"
+      }
+    },
+    {
+      "id": "sdlc.RequirementsServed",
+      "kind": "obligation",
+      "title": "Its requirements held",
+      "fields": {
+        "owner": "trame"
+      }
+    },
+    {
+      "id": "sdlc.RunnersWritten",
+      "kind": "shipment",
+      "title": "The files that run it elsewhere",
+      "status": "unknown",
+      "fields": {
+        "owner": "trame",
+        "target": "repository"
+      }
+    },
+    {
+      "id": "sdlc.TheLibrary",
+      "kind": "artifact",
+      "title": "The renderers of documents",
+      "status": "unknown",
+      "fields": {
+        "owner": "trame",
+        "path": "src",
+        "version": true
+      }
+    },
+    {
+      "id": "sdlc.VersionMode",
+      "kind": "policy",
+      "title": "How a version is made",
+      "fields": {
+        "owner": "trame"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "from": "language.Dates",
+      "to": "product.RenderedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "language.Dates",
+      "to": "language.DocumentLanguage",
+      "kind": "deps"
+    },
+    {
+      "from": "language.Lists",
+      "to": "product.RenderedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "language.Lists",
+      "to": "language.DocumentLanguage",
+      "kind": "deps"
+    },
+    {
+      "from": "language.Punctuation",
+      "to": "product.RenderedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "language.Punctuation",
+      "to": "language.DocumentLanguage",
+      "kind": "deps"
+    },
+    {
+      "from": "language.Units",
+      "to": "product.RenderedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "language.Units",
+      "to": "language.NumberDisplay",
+      "kind": "deps"
+    },
+    {
+      "from": "packages.ContinuousIntegration",
+      "to": "product.RenderedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "packages.Language",
+      "to": "product.RenderedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "packages.People",
+      "to": "product.RenderedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "packages.StandardLibrary",
+      "to": "product.RenderedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "scenarios.InTheScenariosLanguage",
+      "to": "scenarios.WrittenForTheScenarios",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.InTheScenariosLanguage",
+      "to": "scenarios.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "scenarios.InTheScenariosLanguage",
+      "to": "product.RenderedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "scenarios.LanguageWritten",
+      "to": "language.Dates",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.LanguageWritten",
+      "to": "language.Lists",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.LanguageWritten",
+      "to": "language.Punctuation",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.LanguageWritten",
+      "to": "language.Units",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.LanguageWritten",
+      "to": "scenarios.WrittenForTheScenarios",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.LanguageWritten",
+      "to": "scenarios.Test",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.LanguageWritten",
+      "to": "language.Dates",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.LanguageWritten",
+      "to": "language.Lists",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.LanguageWritten",
+      "to": "language.Punctuation",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.LanguageWritten",
+      "to": "language.Units",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.LanguageWritten",
+      "to": "scenarios.ScenarioLanguage",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.LanguageWritten",
+      "to": "scenarios.Expected",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.LanguageWritten",
+      "to": "scenarios.ScenarioWords",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.WrittenForTheScenarios",
+      "to": "language.DocumentLanguage",
+      "kind": "implements"
+    },
+    {
+      "from": "scenarios.WrittenForTheScenarios",
+      "to": "scenarios.ScenarioLanguage",
+      "kind": "deps"
+    },
+    {
+      "from": "sdlc.CodeVerified",
+      "to": "product.RenderedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "sdlc.DecisionsApplied",
+      "to": "product.RenderedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "sdlc.NextVersion",
+      "to": "sdlc.TheLibrary",
+      "kind": "ships"
+    },
+    {
+      "from": "sdlc.NextVersion",
+      "to": "sdlc.VersionMode",
+      "kind": "policy"
+    },
+    {
+      "from": "sdlc.PackagesSafe",
+      "to": "product.RenderedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "sdlc.PullRequestWorkflow",
+      "to": "sdlc.NextVersion",
+      "kind": "runs"
+    },
+    {
+      "from": "sdlc.PullRequestWorkflow",
+      "to": "sdlc.PullRequestsOnGitHub",
+      "kind": "settings"
+    },
+    {
+      "from": "sdlc.RequirementsServed",
+      "to": "product.RenderedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "sdlc.RunnersWritten",
+      "to": "sdlc.PullRequestWorkflow",
+      "kind": "ships"
+    },
+    {
+      "from": "sdlc.VersionMode",
+      "to": "sdlc.CodeVerified",
+      "kind": "obligations"
+    },
+    {
+      "from": "sdlc.VersionMode",
+      "to": "sdlc.RequirementsServed",
+      "kind": "obligations"
+    },
+    {
+      "from": "sdlc.VersionMode",
+      "to": "sdlc.DecisionsApplied",
+      "kind": "obligations"
+    },
+    {
+      "from": "sdlc.VersionMode",
+      "to": "sdlc.PackagesSafe",
+      "kind": "obligations"
+    }
+  ],
+  "open": []
+}
