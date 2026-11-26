@@ -680,10 +680,10 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 123
+- Version: 127
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../generations/g123
+- Its path: ../generations/g127
 - Serves: Ports of the platform, realized once
 
 ### The people of the repository
@@ -1276,6 +1276,18 @@ Release · `R0_27_0`
 - Released on: 2026-11-25
 - What changes: The family Verified counts a check a command the engine keeps runs (g122)
 - Fingerprint: 8feb27eab07a9b7d
+- Language: shared
+- Serves: Commands chosen, not written again, A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again, Versions that hold
+
+### Version 0.28.0
+
+Release · `R0_28_0`
+
+- Released by: trame
+- Version: 0.28.0
+- Released on: 2026-11-26
+- What changes: the engine as a provider: the port TheProject, realized in the engine and, in a scenario, by the engine that plays it
+- Fingerprint: 6ec9817f19e1eb38
 - Language: shared
 - Serves: Commands chosen, not written again, A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again, Versions that hold
 

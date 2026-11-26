@@ -4,7 +4,7 @@
 
 > **Nothing to report**
 
-## Release
+## Releases
 
 <a id="R0_1_0"></a>
 
@@ -17,6 +17,22 @@ the commands every project runs, written once on std's ports of the engine: plan
 - Version: `0.1.0`
 - Released on: 26 November 2026
 - Fingerprint: `492f7f0c05958db9`
+- Language: the repository's, shared
+
+- Released by: trame
+- Serves: [Commands every project runs, written once](product.md#WrittenOnce)
+
+<a id="R0_1_1"></a>
+
+### Version 0.1.1
+
+`R0_1_1` · `src/releases.ts:25`
+
+the small project the scenarios compile lies in the library's sources, named by its package: a version carries it
+
+- Version: `0.1.1`
+- Released on: 26 November 2026
+- Fingerprint: `7c152c7f2b91e089`
 - Language: the repository's, shared
 
 - Released by: trame

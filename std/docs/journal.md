@@ -2,7 +2,19 @@
 
 *What happened to the project, day by day, the latest first, up to the date of the graph (26 November 2026): the versions released, and the evidence given, each with the node it is about and who gave it.*
 
-> **17 days · 32 versions released · 86 pieces of evidence**
+> **18 days · 33 versions released · 92 pieces of evidence**
+
+## 26 November 2026
+
+| What | Node | By |
+|---|---|---|
+| Released as 0.28.0 | [Version 0.28.0](releases.md#R0_28_0) | trame |
+| Shipped | [The next version](sdlc.md#NextVersion) | claude |
+| Built | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
+| Shipped | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
+| Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
+| Built | [The standard library](sdlc.md#TheLibrary) | claude |
+| Shipped | [The standard library](sdlc.md#TheLibrary) | claude |
 
 ## 25 November 2026
 

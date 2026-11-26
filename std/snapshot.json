@@ -2296,10 +2296,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "123",
+        "version": "127",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g123"
+        "at": "../generations/g127"
       }
     },
     {
@@ -3037,6 +3037,19 @@
         "date": "2026-11-25",
         "what": "The family Verified counts a check a command the engine keeps runs (g122)",
         "fingerprint": "8feb27eab07a9b7d",
+        "language": "shared"
+      }
+    },
+    {
+      "id": "releases.R0_28_0",
+      "kind": "release",
+      "title": "Version 0.28.0",
+      "fields": {
+        "owner": "trame",
+        "version": "0.28.0",
+        "date": "2026-11-26",
+        "what": "the engine as a provider: the port TheProject, realized in the engine and, in a scenario, by the engine that plays it",
+        "fingerprint": "6ec9817f19e1eb38",
         "language": "shared"
       }
     },
@@ -7460,6 +7473,41 @@
     },
     {
       "from": "releases.R0_27_0",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_28_0",
+      "to": "product.ChosenCommands",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_28_0",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_28_0",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_28_0",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_28_0",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_28_0",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_28_0",
       "to": "product.VersionsThatHold",
       "kind": "serves"
     },

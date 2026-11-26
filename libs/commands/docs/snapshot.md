@@ -67,9 +67,9 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 126
+- Version: 127
 - How it joins the graph: language
-- Its path: ../../generations/g126
+- Its path: ../../generations/g127
 - Serves: Commands every project runs, written once
 
 ### The people of the repository
@@ -114,6 +114,18 @@ Release · `R0_1_0`
 - Released on: 2026-11-26
 - What changes: the commands every project runs, written once on std's ports of the engine: plan
 - Fingerprint: 492f7f0c05958db9
+- Language: shared
+- Serves: Commands every project runs, written once
+
+### Version 0.1.1
+
+Release · `R0_1_1`
+
+- Released by: trame
+- Version: 0.1.1
+- Released on: 2026-11-26
+- What changes: the small project the scenarios compile lies in the library's sources, named by its package: a version carries it
+- Fingerprint: 7c152c7f2b91e089
 - Language: shared
 - Serves: Commands every project runs, written once
 
@@ -209,7 +221,7 @@ Decision · `PullRequestsOnGitHub`
 
 ### The pull requests' workflow
 
-Artefact · `PullRequestWorkflow` · **unknown**
+Artefact · `PullRequestWorkflow` · **held**
 
 - Owner: trame
 - Path: ../../.github/workflows/commands-pull-request.yml
@@ -236,7 +248,7 @@ Shipment · `NextVersion` · **unknown**
 
 ### The files that run it elsewhere
 
-Shipment · `RunnersWritten` · **unknown**
+Shipment · `RunnersWritten` · **held**
 
 - Owner: trame
 - Target: repository

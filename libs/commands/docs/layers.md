@@ -22,30 +22,31 @@ flowchart TB
   end
   subgraph releases["Commands · Releases"]
     n10["Version 0.1.0<br/><small>Release</small>"]:::neutral
+    n11["Version 0.1.1<br/><small>Release</small>"]:::neutral
   end
   subgraph scenarios["Commands · Scenarios"]
-    n11["Compiled by the engine that plays them<br/><small>Technical choice</small>"]:::held
-    n12["After a build, nothing changes<br/><small>Scenario</small>"]:::held
-    n13["A plan says what a build would change<br/><small>Scenario</small>"]:::held
-    n14["Without a build, a plan says so<br/><small>Scenario</small>"]:::held
-    n15["Played on a small project<br/><small>Technical choice</small>"]:::held
-    n16["What the scenarios check<br/><small>Message catalog</small>"]:::neutral
-    n17["The small project<br/><small>Decision</small>"]:::neutral
-    n18["Test<br/><small>Environment</small>"]:::neutral
-    n19["Which project the scenarios compile<br/><small>Function</small>"]:::held
+    n12["Compiled by the engine that plays them<br/><small>Technical choice</small>"]:::held
+    n13["After a build, nothing changes<br/><small>Scenario</small>"]:::held
+    n14["A plan says what a build would change<br/><small>Scenario</small>"]:::held
+    n15["Without a build, a plan says so<br/><small>Scenario</small>"]:::held
+    n16["Played on a small project<br/><small>Technical choice</small>"]:::held
+    n17["What the scenarios check<br/><small>Message catalog</small>"]:::neutral
+    n18["The small project<br/><small>Decision</small>"]:::neutral
+    n19["Test<br/><small>Environment</small>"]:::neutral
+    n20["Which project the scenarios compile<br/><small>Function</small>"]:::held
   end
   subgraph sdlc["Commands · SDLC"]
-    n20["Its callers identified<br/><small>Obligation</small>"]:::neutral
-    n21["Its code verified<br/><small>Obligation</small>"]:::neutral
-    n22["Its decisions applied<br/><small>Obligation</small>"]:::neutral
-    n23["The next version<br/><small>Shipment</small>"]:::unknown
-    n24["Its packages safe<br/><small>Obligation</small>"]:::neutral
-    n25["How a pull request is checked on GitHub<br/><small>Decision</small>"]:::neutral
-    n26["The pull requests' workflow<br/><small>Artefact</small>"]:::unknown
-    n27["Its requirements held<br/><small>Obligation</small>"]:::neutral
-    n28["The files that run it elsewhere<br/><small>Shipment</small>"]:::unknown
-    n29["The commands of every project<br/><small>Artefact</small>"]:::unknown
-    n30["How a version is made<br/><small>Policy</small>"]:::neutral
+    n21["Its callers identified<br/><small>Obligation</small>"]:::neutral
+    n22["Its code verified<br/><small>Obligation</small>"]:::neutral
+    n23["Its decisions applied<br/><small>Obligation</small>"]:::neutral
+    n24["The next version<br/><small>Shipment</small>"]:::unknown
+    n25["Its packages safe<br/><small>Obligation</small>"]:::neutral
+    n26["How a pull request is checked on GitHub<br/><small>Decision</small>"]:::neutral
+    n27["The pull requests' workflow<br/><small>Artefact</small>"]:::held
+    n28["Its requirements held<br/><small>Obligation</small>"]:::neutral
+    n29["The files that run it elsewhere<br/><small>Shipment</small>"]:::held
+    n30["The commands of every project<br/><small>Artefact</small>"]:::unknown
+    n31["How a version is made<br/><small>Policy</small>"]:::neutral
   end
   n0 -->|Serves| n9
   n0 -->|Depends on| n2
@@ -59,46 +60,47 @@ flowchart TB
   n7 -->|Serves| n9
   n8 -->|Serves| n9
   n10 -->|Serves| n9
-  n11 -->|In| n18
   n11 -->|Serves| n9
-  n12 -->|Verifies| n3
-  n12 -->|Verifies| n0
-  n12 -->|In| n18
-  n12 -->|Depends on| n3
-  n12 -->|Depends on| n2
-  n12 -->|Depends on| n16
+  n12 -->|In| n19
+  n12 -->|Serves| n9
   n13 -->|Verifies| n3
   n13 -->|Verifies| n0
-  n13 -->|Verifies| n19
-  n13 -->|In| n18
+  n13 -->|In| n19
   n13 -->|Depends on| n3
   n13 -->|Depends on| n2
-  n13 -->|Depends on| n4
-  n13 -->|Depends on| n16
+  n13 -->|Depends on| n17
   n14 -->|Verifies| n3
-  n14 -->|In| n18
+  n14 -->|Verifies| n0
+  n14 -->|Verifies| n20
+  n14 -->|In| n19
   n14 -->|Depends on| n3
   n14 -->|Depends on| n2
-  n14 -->|Depends on| n16
-  n15 -->|Chooses| n19
-  n15 -->|In| n18
-  n15 -->|Serves| n9
-  n19 -->|Depends on| n17
-  n20 -->|Serves| n9
+  n14 -->|Depends on| n4
+  n14 -->|Depends on| n17
+  n15 -->|Verifies| n3
+  n15 -->|In| n19
+  n15 -->|Depends on| n3
+  n15 -->|Depends on| n2
+  n15 -->|Depends on| n17
+  n16 -->|Chooses| n20
+  n16 -->|In| n19
+  n16 -->|Serves| n9
+  n20 -->|Depends on| n18
   n21 -->|Serves| n9
   n22 -->|Serves| n9
-  n23 -->|Ships| n29
-  n23 -->|Follows the policy| n30
-  n24 -->|Serves| n9
-  n26 -->|Runs elsewhere| n23
-  n26 -->|Its writer's settings| n25
-  n27 -->|Serves| n9
-  n28 -->|Ships| n26
-  n30 -->|Its obligations| n21
-  n30 -->|Its obligations| n27
-  n30 -->|Its obligations| n22
-  n30 -->|Its obligations| n24
-  n30 -->|Its obligations| n20
+  n23 -->|Serves| n9
+  n24 -->|Ships| n30
+  n24 -->|Follows the policy| n31
+  n25 -->|Serves| n9
+  n27 -->|Runs elsewhere| n24
+  n27 -->|Its writer's settings| n26
+  n28 -->|Serves| n9
+  n29 -->|Ships| n27
+  n31 -->|Its obligations| n22
+  n31 -->|Its obligations| n28
+  n31 -->|Its obligations| n23
+  n31 -->|Its obligations| n25
+  n31 -->|Its obligations| n21
   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
   classDef blocked fill:#fbf0d9,stroke:#9a6200,color:#17202a
   classDef violated fill:#f9e3e1,stroke:#ad2a22,color:#17202a

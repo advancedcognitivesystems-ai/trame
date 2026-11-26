@@ -406,6 +406,22 @@ The family Verified counts a check a command the engine keeps runs (g122)
 - Released by: trame
 - Serves: [Commands chosen, not written again](product.md#ChosenCommands), [A published value is cited, not copied](product.md#CitedNotCopied), [Known designs, named](product.md#KnownDesigns), [Ports of the platform, realized once](product.md#RealizedOnce), [Shared operations instead of literals](product.md#SharedOperations), [Rules applied, not written again](product.md#SharedRules), [Versions that hold](product.md#VersionsThatHold)
 
+<a id="R0_28_0"></a>
+
+### Version 0.28.0
+
+`R0_28_0` · `src/releases.ts:428`
+
+the engine as a provider: the port TheProject, realized in the engine and, in a scenario, by the engine that plays it
+
+- Version: `0.28.0`
+- Released on: 26 November 2026
+- Fingerprint: `6ec9817f19e1eb38`
+- Language: the repository's, shared
+
+- Released by: trame
+- Serves: [Commands chosen, not written again](product.md#ChosenCommands), [A published value is cited, not copied](product.md#CitedNotCopied), [Known designs, named](product.md#KnownDesigns), [Ports of the platform, realized once](product.md#RealizedOnce), [Shared operations instead of literals](product.md#SharedOperations), [Rules applied, not written again](product.md#SharedRules), [Versions that hold](product.md#VersionsThatHold)
+
 <a id="R0_3_0"></a>
 
 ### Version 0.3.0

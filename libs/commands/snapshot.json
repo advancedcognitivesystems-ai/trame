@@ -101,9 +101,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "126",
+        "version": "127",
         "joins": "language",
-        "at": "../../generations/g126"
+        "at": "../../generations/g127"
       }
     },
     {
@@ -149,6 +149,19 @@
         "date": "2026-11-26",
         "what": "the commands every project runs, written once on std's ports of the engine: plan",
         "fingerprint": "492f7f0c05958db9",
+        "language": "shared"
+      }
+    },
+    {
+      "id": "releases.R0_1_1",
+      "kind": "release",
+      "title": "Version 0.1.1",
+      "fields": {
+        "owner": "trame",
+        "version": "0.1.1",
+        "date": "2026-11-26",
+        "what": "the small project the scenarios compile lies in the library's sources, named by its package: a version carries it",
+        "fingerprint": "7c152c7f2b91e089",
         "language": "shared"
       }
     },
@@ -357,7 +370,7 @@
       "id": "sdlc.PullRequestWorkflow",
       "kind": "artifact",
       "title": "The pull requests' workflow",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "../../.github/workflows/commands-pull-request.yml",
@@ -376,7 +389,7 @@
       "id": "sdlc.RunnersWritten",
       "kind": "shipment",
       "title": "The files that run it elsewhere",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "repository"
@@ -460,6 +473,11 @@
     },
     {
       "from": "releases.R0_1_0",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_1_1",
       "to": "product.WrittenOnce",
       "kind": "serves"
     },
