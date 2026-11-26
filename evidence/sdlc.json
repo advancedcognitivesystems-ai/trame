@@ -7116,6 +7116,17 @@
   {
     "node": "sdlc.EngineCandidate",
     "at": "2026-11-26",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "c250d1cfd123c04b76b7e7f232b70ba5ecd8057a42b33ec76e7c70819b1695bf",
+    "subject": "sdlc.NextGeneration",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "d53b07f56a67668d5dec7cc1aa5dce8d58e70b61849059a66d0b7dc7324fab08"
+  },
+  {
+    "node": "sdlc.EngineCandidate",
+    "at": "2026-11-26",
     "source": "built",
     "value": 1,
     "fingerprint": "c250d1cfd123c04b76b7e7f232b70ba5ecd8057a42b33ec76e7c70819b1695bf",
@@ -7124,17 +7135,6 @@
     "signature": "attribution",
     "engine": "203a6308a3ce37b3",
     "seal": "ea1ba4eae9462895c8cf85650c2378db8d862c80d8bb7c6588542f846fc8efe7"
-  },
-  {
-    "node": "sdlc.EngineCandidate",
-    "at": "2026-11-26",
-    "source": "shipped",
-    "value": 1,
-    "fingerprint": "c250d1cfd123c04b76b7e7f232b70ba5ecd8057a42b33ec76e7c70819b1695bf",
-    "subject": "sdlc.NextGeneration",
-    "by": "claude",
-    "signature": "attribution",
-    "seal": "d53b07f56a67668d5dec7cc1aa5dce8d58e70b61849059a66d0b7dc7324fab08"
   },
   {
     "node": "sdlc.GraphPage",
@@ -7287,6 +7287,18 @@
     "seal": "0ed9cb70b4a61c61ead52b3ae57bcee8fae3cfb407734028fa688e56bb4f6722"
   },
   {
+    "node": "sdlc.GraphPage",
+    "at": "2026-11-26",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "ad5fdf961213eb5e9acfd0d834cb736208b65cde4927649fd063b40099e2a1c6",
+    "code": "b5586708",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "203a6308a3ce37b3",
+    "seal": "a0d582faa593da15125c7520980d188d84a10936837d036cfdd223ac9260840e"
+  },
+  {
     "node": "sdlc.GraphPageOpens",
     "at": "2026-11-26",
     "source": "check",
@@ -7371,16 +7383,28 @@
     "seal": "845e3c173755a1c169bf40b4b9fa431727029c547647b96039c52baedffa599f"
   },
   {
+    "node": "sdlc.GraphPageOpens",
+    "at": "2026-11-26",
+    "source": "check",
+    "value": 1,
+    "fingerprint": "7d3f8054",
+    "code": "c731f651",
+    "engine": "203a6308a3ce37b3",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "418b2f8829f9a99584f1896fefcb5f107da61f37bf9fc2693f7fcb97e9493976"
+  },
+  {
     "node": "sdlc.MachineAsked",
     "at": "2026-11-26",
     "source": "check",
     "value": 1,
     "fingerprint": "7167cad1",
     "code": "1b5a8d9f",
-    "engine": "3152e700c6881d1d",
+    "engine": "203a6308a3ce37b3",
     "by": "claude",
     "signature": "attribution",
-    "seal": "dbac7888ac3fcf383ea73aeb2d9997dbf67ae81b2e6017081e849f351a693149"
+    "seal": "005cc6c321b4d29bae59f07937e8729f3a6e345f537198ad32b1efaabdddf71d"
   },
   {
     "node": "sdlc.NextGeneration",
@@ -7570,10 +7594,10 @@
     "value": 1,
     "fingerprint": "7167cad1",
     "code": "352d79ea",
-    "engine": "3152e700c6881d1d",
+    "engine": "203a6308a3ce37b3",
     "by": "claude",
     "signature": "attribution",
-    "seal": "805907eb406b3b04361ae1dffdc6915c110d6d718e517d4bd57186b658cd6bd0"
+    "seal": "98588fab51f6c9f7c16dc3482d2c8cc280a89ea9db213aac6c45bdb0e3d88d08"
   },
   {
     "node": "sdlc.PullRequestWorkflow",
@@ -7584,8 +7608,8 @@
     "code": "b395be3d",
     "by": "claude",
     "signature": "attribution",
-    "engine": "3152e700c6881d1d",
-    "seal": "f3218b73d7ac97835c26a0ec44f26d964b7c59236c8d5b749eaa7316084215b5"
+    "engine": "203a6308a3ce37b3",
+    "seal": "b3798fab2cafc1493ffb4abec3ed17f5063b6292aff967d12ed810ac0ecdb93e"
   },
   {
     "node": "sdlc.PullRequestWorkflow",
@@ -7610,6 +7634,17 @@
     "seal": "cfd33e6b07f4768b30e1787f5440800adb6016d2850151b75eeb6d28e69eaad7"
   },
   {
+    "node": "sdlc.RunnersWritten",
+    "at": "2026-11-26",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "95660d5b",
+    "url": "evidence/shipments/RunnersWritten-2026-11-26-95660d5b.json",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "531fec65a2692aa35cef8b12347a920f1794ed915e1cc6dd272ba2a2df22130d"
+  },
+  {
     "node": "sdlc.TheEngine",
     "at": "2026-11-26",
     "source": "built",
@@ -7620,5 +7655,17 @@
     "signature": "attribution",
     "engine": "3152e700c6881d1d",
     "seal": "a5a4ad8aa4b3b9b50075006482979b04b88f56b7c56ddd0df49eda81e374fbd5"
+  },
+  {
+    "node": "sdlc.TheEngine",
+    "at": "2026-11-26",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "ab5276ab089a3c4e098e7729f654050963f077f34c9d392edf5c2d261f63f49c",
+    "code": "50ca266d",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "203a6308a3ce37b3",
+    "seal": "a0fa73ccdcbbbcb5b898b4b9db5b2542c536d6b29f270a3d16ec232942641785"
   }
 ]

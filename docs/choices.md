@@ -816,7 +816,7 @@ Context: The graph page must be opened as a person opens it: the file exported, 
 
 ### What the machine must also have
 
-`WhatTheMachineMustHave` · `src/sdlc.ts:209` · status: **unknown**
+`WhatTheMachineMustHave` · `src/sdlc.ts:209` · status: **held**
 
 trame doctor asks, besides what the engine asks, what Trame needs of its machine (since g120): the browser the version of Playwright Trame uses drives, installed (std's add-on, with its adapter); a system Trame runs on, Node recent enough and Git installed (libs/machine), as Trame's decision about its machines says.
 
@@ -865,7 +865,7 @@ Context: A program of the SDLC is code like the engine's: its scenarios play it 
 
 ### The commands Trame takes from std
 
-`CommandsOfStd` · `src/sdlc.ts:681` · status: **held**
+`CommandsOfStd` · `src/sdlc.ts:682` · status: **held**
 
 pull-request, merge and propagate, on the machine and in a session of Claude Code, with Trame's settings.
 
@@ -895,7 +895,7 @@ Context: Opening a pull request and carrying a version across the repository wer
 
 ### The commands Trame takes from libs/commands
 
-`CommandsWrittenOnce` · `src/sdlc.ts:697` · status: **unknown**
+`CommandsWrittenOnce` · `src/sdlc.ts:698` · status: **held**
 
 What a build would change (trame plan) is the library's command, run in the engine's process on the project the engine prepared for it (std's ProjectInTheEngine), in place of the engine's own (g119): the commands of every project, written once on std's ports of the engine.
 
@@ -924,7 +924,7 @@ Consequences: trame plan runs on a machine and in a session alike, chosen for Lo
 
 ### The repository's work on a machine
 
-`RepositoryWorkOnAMachine` · `src/sdlc.ts:713` · status: **unknown**
+`RepositoryWorkOnAMachine` · `src/sdlc.ts:714` · status: **unknown**
 
 Git's command line for the branches, GitHub's for the pull requests, Node to run trame.sh in each project, and the machine's files; on the machine and in a session.
 
@@ -948,7 +948,7 @@ Context: A pull request is opened, and a version carried, from the repository ch
 
 ### GitHub merges once it holds, asked by its command line
 
-`AutoMergeOnTheMachine` · `src/sdlc.ts:725` · status: **unknown**
+`AutoMergeOnTheMachine` · `src/sdlc.ts:726` · status: **unknown**
 
 On a person's machine, gh pr merge --auto: GitHub's GraphQL.
 
@@ -969,7 +969,7 @@ Context: GitHub asks the automatic merge by GraphQL, which GitHub's command line
 
 ### GitHub merges once it holds, asked in a session
 
-`AutoMergeInASession` · `src/sdlc.ts:737` · status: **unknown**
+`AutoMergeInASession` · `src/sdlc.ts:738` · status: **unknown**
 
 In a session of Claude Code, the route of its proxy: GraphQL is refused there.
 
@@ -990,7 +990,7 @@ Context: A session's proxy refuses GitHub's GraphQL, and offers PUT on the pull 
 
 ### Trame's settings in the scenarios
 
-`OurSettingsInTheScenarios` · `src/sdlc.ts:749` · status: **held**
+`OurSettingsInTheScenarios` · `src/sdlc.ts:750` · status: **held**
 
 In the scenarios, std's commands read Trame's settings as on the machine.
 

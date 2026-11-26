@@ -6764,7 +6764,7 @@ Decision · `HowAGenerationAdvances`
 Decision · `MainBranch`
 
 - Decided by: trame
-- Value: { branch: main, checks: trame, std, ci, data, team, machine, commands, reservations, poselia, upToDate: false, approvals: 0, method: merge, autoMerge: true, deletesMerged: true, pages: false }
+- Value: { branch: main, checks: trame, std, ci, data, team, machine, commands, documents, reservations, poselia, upToDate: false, approvals: 0, method: merge, autoMerge: true, deletesMerged: true, pages: false }
 - Rejected: Squashed, a branch would merge as one commit, and the generations it advances are each a commit; An approval required, the person who opens a pull request with their own account cannot approve it; Up to date with main first, each pull request would merge main into itself again, and run its checks again, whenever another one merged; The check of geometry, geometry runs from the registry of a machine, which a runner of GitHub does not have yet; Pages now, the site that gathers Trame's graph and Poselia's preview is still to be decided
 
 ### The machines Trame runs on
@@ -6788,7 +6788,7 @@ Decision · `PullRequestsOnGitHub`
 Decision · `RepositoryProjects`
 
 - Decided by: trame
-- Value: { name: trame, dir: ., runners: RunnersWritten, reads: reservations }, { name: std, dir: std, runners: RunnersWritten }, { name: ci, dir: ci, runners: RunnersWritten }, { name: team, dir: libs/team, runners: RunnersWritten }, { name: data, dir: libs/data, runners: RunnersWritten }, { name: machine, dir: libs/machine, runners: RunnersWritten }, { name: commands, dir: libs/commands, runners: RunnersWritten }, { name: geometry, dir: libs/geometry }, { name: reservations, dir: examples/reservations, runners: RunnersWritten, scenarios: true }, { name: poselia, dir: apps/poselia, runners: RunnersWritten }
+- Value: { name: trame, dir: ., runners: RunnersWritten, reads: reservations }, { name: std, dir: std, runners: RunnersWritten }, { name: ci, dir: ci, runners: RunnersWritten }, { name: team, dir: libs/team, runners: RunnersWritten }, { name: data, dir: libs/data, runners: RunnersWritten }, { name: machine, dir: libs/machine, runners: RunnersWritten }, { name: commands, dir: libs/commands, runners: RunnersWritten }, { name: documents, dir: libs/documents, runners: RunnersWritten }, { name: geometry, dir: libs/geometry }, { name: reservations, dir: examples/reservations, runners: RunnersWritten, scenarios: true }, { name: poselia, dir: apps/poselia, runners: RunnersWritten }
 - Rejected: Found on the disk, by their trame.json, a generation keeps a copy of the example, which is not a project of the repository; In the order they are carried, the order follows from the libraries each one imports; what one reads besides is said
 
 ### The repository left by hand, in the scenario
@@ -6825,7 +6825,7 @@ Function · `GraphPageSelectors` · **held**
 
 ### What the machine runs, for Trame
 
-Function · `OurMachineSettings` · **unknown**
+Function · `OurMachineSettings` · **held**
 
 - Owner: trame
 - Parameters: { machines: sdlc.OurMachines }
@@ -6929,7 +6929,7 @@ Technical choice · `CommandsOfStd` · **held**
 
 ### The commands Trame takes from libs/commands
 
-Technical choice · `CommandsWrittenOnce` · **unknown**
+Technical choice · `CommandsWrittenOnce` · **held**
 
 - Decided by: trame
 - Context: The engine's commands reached its modules directly: a project could neither choose them nor specialize them, and a command of its own could not compute what they computed.
@@ -6973,7 +6973,7 @@ Technical choice · `SdlcOnTheMachine` · **unknown**
 
 ### What the machine must also have
 
-Technical choice · `WhatTheMachineMustHave` · **unknown**
+Technical choice · `WhatTheMachineMustHave` · **held**
 
 - Decided by: trame
 - Context: On 17 November a machine whose browsers had moved refused the check of the page, and trame doctor said nothing of it; the pull requests and the propagation need Git, and the engine's loader Node 22.
@@ -7056,7 +7056,7 @@ Artefact · `PageProgram` · **held**
 
 ### The pull requests' workflow
 
-Artefact · `PullRequestWorkflow` · **unknown**
+Artefact · `PullRequestWorkflow` · **held**
 
 - Owner: trame
 - Path: .github/workflows/trame-pull-request.yml
@@ -7066,7 +7066,7 @@ Artefact · `PullRequestWorkflow` · **unknown**
 
 ### The engine
 
-Artefact · `TheEngine` · **unknown**
+Artefact · `TheEngine` · **held**
 
 - Owner: trame
 - Path: src
@@ -7103,7 +7103,7 @@ Check · `GraphPageOpens` · **held**
 
 ### The machine has what Trame needs
 
-Check · `MachineAsked` · **unknown**
+Check · `MachineAsked` · **held**
 
 - Owner: trame
 - Run by the engine's command: doctor
@@ -7112,7 +7112,7 @@ Check · `MachineAsked` · **unknown**
 
 ### trame plan runs in the engine
 
-Check · `PlanRunsInTheEngine` · **unknown**
+Check · `PlanRunsInTheEngine` · **held**
 
 - Owner: trame
 - Signed by: Trame's maintainers
@@ -7127,7 +7127,7 @@ Check · `RepositoryRead` · **unknown**
 
 ### Into the main branch
 
-Shipment · `IntoMain` · **unknown**
+Shipment · `IntoMain` · **held**
 
 - Owner: trame
 - Target: main
@@ -7160,7 +7160,7 @@ Shipment · `RepositorySet` · **unknown**
 
 ### The files that run it elsewhere
 
-Shipment · `RunnersWritten` · **unknown**
+Shipment · `RunnersWritten` · **held**
 
 - Owner: trame
 - Target: repository

@@ -96,9 +96,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "128",
+        "version": "129",
         "joins": "language",
-        "at": "../../generations/g128"
+        "at": "../../generations/g129"
       }
     },
     {
@@ -132,6 +132,19 @@
       "title": "Documents rendered once, for every project",
       "fields": {
         "owner": "trame"
+      }
+    },
+    {
+      "id": "releases.R0_1_0",
+      "kind": "release",
+      "title": "Version 0.1.0",
+      "fields": {
+        "owner": "trame",
+        "version": "0.1.0",
+        "date": "2026-11-26",
+        "what": "the language of the documents: the port DocumentLanguage, with Dates, Lists, Punctuation and Units over it",
+        "fingerprint": "1bba695ab87a7f69",
+        "language": "shared"
       }
     },
     {
@@ -435,6 +448,11 @@
     },
     {
       "from": "packages.StandardLibrary",
+      "to": "product.RenderedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_1_0",
       "to": "product.RenderedOnce",
       "kind": "serves"
     },

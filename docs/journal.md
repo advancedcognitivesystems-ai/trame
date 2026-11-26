@@ -2,7 +2,7 @@
 
 *What happened to the project, day by day, the latest first, up to the date of the graph (26 November 2026): the versions released, and the evidence given, each with the node it is about and who gave it.*
 
-> **31 days · 129 versions released · 702 pieces of evidence**
+> **31 days · 129 versions released · 706 pieces of evidence**
 
 ## 26 November 2026
 
@@ -42,8 +42,8 @@
 | Built | [The candidate engine](sdlc.md#EngineCandidate) | claude |
 | Built | [The candidate engine](sdlc.md#EngineCandidate) | claude |
 | Shipped | [The candidate engine](sdlc.md#EngineCandidate) | claude |
-| Built | [The candidate engine](sdlc.md#EngineCandidate) | claude |
 | Shipped | [The candidate engine](sdlc.md#EngineCandidate) | claude |
+| Built | [The candidate engine](sdlc.md#EngineCandidate) | claude |
 | Built | [The graph page](sdlc.md#GraphPage) | claude |
 | Shipped | [The graph page](sdlc.md#GraphPage) | claude |
 | Built | [The graph page](sdlc.md#GraphPage) | claude |
@@ -57,6 +57,8 @@
 | Shipped | [The graph page](sdlc.md#GraphPage) | claude |
 | Built | [The graph page](sdlc.md#GraphPage) | claude |
 | Shipped | [The graph page](sdlc.md#GraphPage) | claude |
+| Built | [The graph page](sdlc.md#GraphPage) | claude |
+| Check passed | [The graph page opens](sdlc.md#GraphPageOpens) | claude |
 | Check passed | [The graph page opens](sdlc.md#GraphPageOpens) | claude |
 | Check passed | [The graph page opens](sdlc.md#GraphPageOpens) | claude |
 | Check passed | [The graph page opens](sdlc.md#GraphPageOpens) | claude |
@@ -85,6 +87,8 @@
 | Built | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
 | Shipped | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
 | Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
+| Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
+| Built | [The engine](sdlc.md#TheEngine) | claude |
 | Built | [The engine](sdlc.md#TheEngine) | claude |
 
 ## 25 November 2026

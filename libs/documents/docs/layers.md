@@ -21,26 +21,29 @@ flowchart TB
   subgraph product["Documents · Product"]
     n10["Documents rendered once, for every project<br/><small>Goal</small>"]:::neutral
   end
+  subgraph releases["Documents · Releases"]
+    n11["Version 0.1.0<br/><small>Release</small>"]:::neutral
+  end
   subgraph scenarios["Documents · Scenarios"]
-    n11["What the scenarios read and expect<br/><small>Decision</small>"]:::neutral
-    n12["The scenarios' language<br/><small>Technical choice</small>"]:::held
-    n13["The language of the documents, written<br/><small>Scenario</small>"]:::held
-    n14["The language of the scenarios<br/><small>Decision</small>"]:::neutral
-    n15["What the scenarios check<br/><small>Message catalog</small>"]:::neutral
-    n16["Test<br/><small>Environment</small>"]:::neutral
-    n17["Written in the language of the scenarios<br/><small>Function</small>"]:::held
+    n12["What the scenarios read and expect<br/><small>Decision</small>"]:::neutral
+    n13["The scenarios' language<br/><small>Technical choice</small>"]:::held
+    n14["The language of the documents, written<br/><small>Scenario</small>"]:::held
+    n15["The language of the scenarios<br/><small>Decision</small>"]:::neutral
+    n16["What the scenarios check<br/><small>Message catalog</small>"]:::neutral
+    n17["Test<br/><small>Environment</small>"]:::neutral
+    n18["Written in the language of the scenarios<br/><small>Function</small>"]:::held
   end
   subgraph sdlc["Documents · SDLC"]
-    n18["Its code verified<br/><small>Obligation</small>"]:::neutral
-    n19["Its decisions applied<br/><small>Obligation</small>"]:::neutral
-    n20["The next version<br/><small>Shipment</small>"]:::unknown
-    n21["Its packages safe<br/><small>Obligation</small>"]:::neutral
-    n22["How a pull request is checked on GitHub<br/><small>Decision</small>"]:::neutral
-    n23["The pull requests' workflow<br/><small>Artefact</small>"]:::unknown
-    n24["Its requirements held<br/><small>Obligation</small>"]:::neutral
-    n25["The files that run it elsewhere<br/><small>Shipment</small>"]:::unknown
-    n26["The renderers of documents<br/><small>Artefact</small>"]:::unknown
-    n27["How a version is made<br/><small>Policy</small>"]:::neutral
+    n19["Its code verified<br/><small>Obligation</small>"]:::neutral
+    n20["Its decisions applied<br/><small>Obligation</small>"]:::neutral
+    n21["The next version<br/><small>Shipment</small>"]:::unknown
+    n22["Its packages safe<br/><small>Obligation</small>"]:::neutral
+    n23["How a pull request is checked on GitHub<br/><small>Decision</small>"]:::neutral
+    n24["The pull requests' workflow<br/><small>Artefact</small>"]:::unknown
+    n25["Its requirements held<br/><small>Obligation</small>"]:::neutral
+    n26["The files that run it elsewhere<br/><small>Shipment</small>"]:::unknown
+    n27["The renderers of documents<br/><small>Artefact</small>"]:::unknown
+    n28["How a version is made<br/><small>Policy</small>"]:::neutral
   end
   n0 -->|Serves| n10
   n0 -->|Depends on| n1
@@ -54,37 +57,38 @@ flowchart TB
   n7 -->|Serves| n10
   n8 -->|Serves| n10
   n9 -->|Serves| n10
-  n12 -->|Chooses| n17
-  n12 -->|In| n16
-  n12 -->|Serves| n10
-  n13 -->|Verifies| n0
-  n13 -->|Verifies| n2
-  n13 -->|Verifies| n4
-  n13 -->|Verifies| n5
-  n13 -->|Verifies| n17
-  n13 -->|In| n16
-  n13 -->|Depends on| n0
-  n13 -->|Depends on| n2
-  n13 -->|Depends on| n4
-  n13 -->|Depends on| n5
-  n13 -->|Depends on| n14
-  n13 -->|Depends on| n11
-  n13 -->|Depends on| n15
-  n17 -->|Implements| n1
-  n17 -->|Depends on| n14
-  n18 -->|Serves| n10
+  n11 -->|Serves| n10
+  n13 -->|Chooses| n18
+  n13 -->|In| n17
+  n13 -->|Serves| n10
+  n14 -->|Verifies| n0
+  n14 -->|Verifies| n2
+  n14 -->|Verifies| n4
+  n14 -->|Verifies| n5
+  n14 -->|Verifies| n18
+  n14 -->|In| n17
+  n14 -->|Depends on| n0
+  n14 -->|Depends on| n2
+  n14 -->|Depends on| n4
+  n14 -->|Depends on| n5
+  n14 -->|Depends on| n15
+  n14 -->|Depends on| n12
+  n14 -->|Depends on| n16
+  n18 -->|Implements| n1
+  n18 -->|Depends on| n15
   n19 -->|Serves| n10
-  n20 -->|Ships| n26
-  n20 -->|Follows the policy| n27
-  n21 -->|Serves| n10
-  n23 -->|Runs elsewhere| n20
-  n23 -->|Its writer's settings| n22
-  n24 -->|Serves| n10
-  n25 -->|Ships| n23
-  n27 -->|Its obligations| n18
-  n27 -->|Its obligations| n24
-  n27 -->|Its obligations| n19
-  n27 -->|Its obligations| n21
+  n20 -->|Serves| n10
+  n21 -->|Ships| n27
+  n21 -->|Follows the policy| n28
+  n22 -->|Serves| n10
+  n24 -->|Runs elsewhere| n21
+  n24 -->|Its writer's settings| n23
+  n25 -->|Serves| n10
+  n26 -->|Ships| n24
+  n28 -->|Its obligations| n19
+  n28 -->|Its obligations| n25
+  n28 -->|Its obligations| n20
+  n28 -->|Its obligations| n22
   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
   classDef blocked fill:#fbf0d9,stroke:#9a6200,color:#17202a
   classDef violated fill:#f9e3e1,stroke:#ad2a22,color:#17202a

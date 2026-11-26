@@ -4,7 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 4 | 28 |
+| trame | 0 | 0 | 4 | 29 |
 
 <a id="trame"></a>
 
@@ -13,9 +13,9 @@
 | Severity | Code | What | Where | Owner | Consequence |
 |---|---|---|---|---|---|
 | warning | `shipment-awaits` | To ship: The renderers of documents is unknown | [The next version](sdlc.md#NextVersion) | trame |  |
-| warning | `artifact-not-built` | Not built yet: trame ship builds it | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | trame |  |
+| warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | trame |  |
 | warning | `shipment-awaits` | To ship: The pull requests' workflow is unknown | [The files that run it elsewhere](sdlc.md#RunnersWritten) | trame |  |
-| warning | `artifact-not-built` | Not built yet: trame ship builds it | [The renderers of documents](sdlc.md#TheLibrary) | trame |  |
+| warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The renderers of documents](sdlc.md#TheLibrary) | trame |  |
 
 ### Owns
 
@@ -32,6 +32,7 @@
 | [The people of the repository](packages.md#People) | Package |  |
 | [std](packages.md#StandardLibrary) | Package |  |
 | [Documents rendered once, for every project](product.md#RenderedOnce) | Goal |  |
+| [Version 0.1.0](releases.md#R0_1_0) | Release |  |
 | [What the scenarios read and expect](scenarios.md#Expected) | Decision |  |
 | [The scenarios' language](scenarios.md#InTheScenariosLanguage) | Technical choice | **held** |
 | [The language of the documents, written](scenarios.md#LanguageWritten) | Scenario | **held** |

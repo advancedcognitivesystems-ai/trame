@@ -111,9 +111,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "128",
+        "version": "129",
         "joins": "language",
-        "at": "../../generations/g128"
+        "at": "../../generations/g129"
       },
       "diagnostics": []
     },
@@ -153,6 +153,21 @@
       "source": "src/product.ts:15",
       "fields": {
         "owner": "trame"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "releases.R0_1_0",
+      "kind": "release",
+      "title": "Version 0.1.0",
+      "source": "src/releases.ts:12",
+      "fields": {
+        "owner": "trame",
+        "version": "0.1.0",
+        "date": "2026-11-26",
+        "what": "the language of the documents: the port DocumentLanguage, with Dates, Lists, Punctuation and Units over it",
+        "fingerprint": "1bba695ab87a7f69",
+        "language": "shared"
       },
       "diagnostics": []
     },
@@ -451,7 +466,7 @@
         "code": "a67406c5"
       },
       "diagnostics": [
-        "warning: Not built yet: trame ship builds it"
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
       ]
     },
     {
@@ -499,10 +514,10 @@
       },
       "result": {
         "path": "src",
-        "code": "636e0cc8"
+        "code": "bcb47e10"
       },
       "diagnostics": [
-        "warning: Not built yet: trame ship builds it"
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
       ]
     },
     {
@@ -584,6 +599,11 @@
     },
     {
       "from": "packages.StandardLibrary",
+      "to": "product.RenderedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_1_0",
       "to": "product.RenderedOnce",
       "kind": "serves"
     },

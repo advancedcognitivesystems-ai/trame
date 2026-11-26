@@ -4,13 +4,14 @@
 
 > **4 points to watch · 4 scenario checks passed out of 4**
 
-| Module | Goals | Decisions | Ports | Functions | Message catalogs | Packages | Technical choices | Environments | Scenarios | Artefacts | Shipments | Obligations | Policies | Open issues |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| [Documents · Language](language.md) | 0 | 1 | 1 | 4 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Documents · Packages](packages.md) | 0 | 0 | 0 | 0 | 0 | 4 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Documents · Product](product.md) | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Documents · Scenarios](scenarios.md) | 0 | 2 | 0 | 1 | 1 | 0 | 1 | 1 | 1 | 0 | 0 | 0 | 0 | 0 |
-| [Documents · SDLC](sdlc.md) | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 2 | 4 | 1 | 4 |
+| Module | Goals | Decisions | Ports | Releases | Functions | Message catalogs | Packages | Technical choices | Environments | Scenarios | Artefacts | Shipments | Obligations | Policies | Open issues |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| [Documents · Language](language.md) | 0 | 1 | 1 | 0 | 4 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| [Documents · Packages](packages.md) | 0 | 0 | 0 | 0 | 0 | 0 | 4 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| [Documents · Product](product.md) | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| [Documents · Releases](releases.md) | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| [Documents · Scenarios](scenarios.md) | 0 | 2 | 0 | 0 | 1 | 1 | 0 | 1 | 1 | 1 | 0 | 0 | 0 | 0 | 0 |
+| [Documents · SDLC](sdlc.md) | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 2 | 4 | 1 | 4 |
 
 ## Libraries
 
@@ -27,6 +28,6 @@ The libraries the project imports: their nodes take part in the graph, their doc
 | Severity | Code | What | Where | Owner | Consequence |
 |---|---|---|---|---|---|
 | warning | `shipment-awaits` | To ship: The renderers of documents is unknown | [The next version](sdlc.md#NextVersion) | trame |  |
-| warning | `artifact-not-built` | Not built yet: trame ship builds it | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | trame |  |
+| warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | trame |  |
 | warning | `shipment-awaits` | To ship: The pull requests' workflow is unknown | [The files that run it elsewhere](sdlc.md#RunnersWritten) | trame |  |
-| warning | `artifact-not-built` | Not built yet: trame ship builds it | [The renderers of documents](sdlc.md#TheLibrary) | trame |  |
+| warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The renderers of documents](sdlc.md#TheLibrary) | trame |  |

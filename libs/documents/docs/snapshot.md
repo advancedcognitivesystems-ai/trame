@@ -74,9 +74,9 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 128
+- Version: 129
 - How it joins the graph: language
-- Its path: ../../generations/g128
+- Its path: ../../generations/g129
 - Serves: Documents rendered once, for every project
 
 ### The people of the repository
@@ -109,6 +109,20 @@ Package · `StandardLibrary`
 Goal · `RenderedOnce`
 
 - Owner: trame
+
+## Documents · Releases
+
+### Version 0.1.0
+
+Release · `R0_1_0`
+
+- Released by: trame
+- Version: 0.1.0
+- Released on: 2026-11-26
+- What changes: the language of the documents: the port DocumentLanguage, with Dates, Lists, Punctuation and Units over it
+- Fingerprint: 1bba695ab87a7f69
+- Language: shared
+- Serves: Documents rendered once, for every project
 
 ## Documents · Scenarios
 

@@ -9,9 +9,9 @@
 | Severity | Code | What | Where | Owner | Consequence |
 |---|---|---|---|---|---|
 | warning | `shipment-awaits` | To ship: The renderers of documents is unknown | [The next version](#NextVersion) | trame |  |
-| warning | `artifact-not-built` | Not built yet: trame ship builds it | [The pull requests' workflow](#PullRequestWorkflow) | trame |  |
+| warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The pull requests' workflow](#PullRequestWorkflow) | trame |  |
 | warning | `shipment-awaits` | To ship: The pull requests' workflow is unknown | [The files that run it elsewhere](#RunnersWritten) | trame |  |
-| warning | `artifact-not-built` | Not built yet: trame ship builds it | [The renderers of documents](#TheLibrary) | trame |  |
+| warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The renderers of documents](#TheLibrary) | trame |  |
 
 ## Decision
 
@@ -49,6 +49,10 @@ The workflow that checks a pull request on GitHub, written from the pipeline of 
 - Path: `../../.github/workflows/documents-pull-request.yml`
 - Media type: `application/yaml`
 
+Built 26 November 2026 by claude, fingerprint `75fc1c56660748fb85e73071680f3e02cec2ab4561a779d7b61735e46ec858f9`.
+
+Shipped by [The files that run it elsewhere](#RunnersWritten) 26 November 2026, fingerprint `75fc1c56660748fb85e73071680f3e02cec2ab4561a779d7b61735e46ec858f9`.
+
 - Owner: trame
 - Produced by: [A workflow of GitHub Actions](../.trame/ci/docs/github.md#GitHubWorkflow)
 - Runs elsewhere: [The next version](#NextVersion)
@@ -64,6 +68,10 @@ The workflow that checks a pull request on GitHub, written from the pipeline of 
 The library as its people write it: what a version freezes, and what projects import at that version.
 
 - Path: `src`
+
+Built 26 November 2026 by claude, fingerprint `c129edb86a12dca60dd21dfcf77b504ac47a7e649c124520e962fb790a76c725`.
+
+Shipped by [The next version](#NextVersion) 26 November 2026, fingerprint `c129edb86a12dca60dd21dfcf77b504ac47a7e649c124520e962fb790a76c725`.
 
 - Owner: trame
 - A version of the project: true
@@ -86,7 +94,7 @@ A version of the renderers, for the projects that import it: shipped by trame re
 | [The renderers of documents](#TheLibrary) | **unknown** | shipped |
 | [The language of the documents, written](scenarios.md#LanguageWritten) | **held** | [Its code verified](#CodeVerified), for [Dates](language.md#Dates) |
 
-Not shipped yet.
+Shipped 26 November 2026 by claude; its dossier: `evidence/shipments/NextVersion-2026-11-26-0afd3e9a.json`.
 
 - Owner: trame
 - Ships: [The renderers of documents](#TheLibrary)
@@ -107,7 +115,7 @@ The workflow that checks each pull request, written by trame ship from the graph
 |---|---|---|
 | [The pull requests' workflow](#PullRequestWorkflow) | **unknown** | shipped |
 
-Not shipped yet.
+Shipped 26 November 2026 by claude; its dossier: `evidence/shipments/RunnersWritten-2026-11-26-784a8167.json`.
 
 - Owner: trame
 - Ships: [The pull requests' workflow](#PullRequestWorkflow)

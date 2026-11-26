@@ -14260,7 +14260,7 @@
       "id": "sdlc.CommandsWrittenOnce",
       "kind": "binding",
       "title": "The commands Trame takes from libs/commands",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "The engine's commands reached its modules directly: a project could neither choose them nor specialize them, and a command of its own could not compute what they computed.",
@@ -14404,7 +14404,7 @@
       "id": "sdlc.IntoMain",
       "kind": "shipment",
       "title": "Into the main branch",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "main"
@@ -14422,7 +14422,7 @@
       "id": "sdlc.MachineAsked",
       "kind": "check",
       "title": "The machine has what Trame needs",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "command": "doctor"
@@ -14444,6 +14444,7 @@
             "team",
             "machine",
             "commands",
+            "documents",
             "reservations",
             "poselia"
           ],
@@ -14586,7 +14587,7 @@
       "id": "sdlc.OurMachineSettings",
       "kind": "function",
       "title": "What the machine runs, for Trame",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -14658,7 +14659,7 @@
       "id": "sdlc.PlanRunsInTheEngine",
       "kind": "check",
       "title": "trame plan runs in the engine",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame"
       }
@@ -14700,7 +14701,7 @@
       "id": "sdlc.PullRequestWorkflow",
       "kind": "artifact",
       "title": "The pull requests' workflow",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": ".github/workflows/trame-pull-request.yml",
@@ -14776,6 +14777,11 @@
           {
             "name": "commands",
             "dir": "libs/commands",
+            "runners": "RunnersWritten"
+          },
+          {
+            "name": "documents",
+            "dir": "libs/documents",
             "runners": "RunnersWritten"
           },
           {
@@ -14857,7 +14863,7 @@
       "id": "sdlc.RunnersWritten",
       "kind": "shipment",
       "title": "The files that run it elsewhere",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "repository"
@@ -14926,7 +14932,7 @@
       "id": "sdlc.TheEngine",
       "kind": "artifact",
       "title": "The engine",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "src",
@@ -14960,7 +14966,7 @@
       "id": "sdlc.WhatTheMachineMustHave",
       "kind": "binding",
       "title": "What the machine must also have",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "context": "On 17 November a machine whose browsers had moved refused the check of the page, and trame doctor said nothing of it; the pull requests and the propagation need Git, and the engine's loader Node 22."

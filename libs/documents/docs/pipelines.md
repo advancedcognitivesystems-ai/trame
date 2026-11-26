@@ -29,11 +29,11 @@ flowchart TB
 
 |  | Stage | Step | Run by | Why | Status | Latest evidence |
 |---|---|---|---|---|---|---|
-| 1 | produce | [The renderers of documents](sdlc.md#TheLibrary) · `src` | — | — | **unknown** |  |
+| 1 | produce | [The renderers of documents](sdlc.md#TheLibrary) · `src` | — | — | **unknown** | 26 November 2026 by claude  |
 | 2 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
-| 3 | prove | [The renderers of documents](sdlc.md#TheLibrary) | — | the shipment | **unknown** |  |
+| 3 | prove | [The renderers of documents](sdlc.md#TheLibrary) | — | the shipment | **unknown** | 26 November 2026 by claude  |
 | 4 | prove | [The language of the documents, written](scenarios.md#LanguageWritten) | — | [Its code verified](sdlc.md#CodeVerified) via [Dates](language.md#Dates) | **held** |  |
-| 5 | record | [The next version](sdlc.md#NextVersion) | — | — | **unknown** |  |
+| 5 | record | [The next version](sdlc.md#NextVersion) | — | — | **unknown** | 26 November 2026 by claude `evidence/shipments/NextVersion-2026-11-26-0afd3e9a.json` |
 
 `trame ship NextVersion --by <name>`
 
@@ -63,9 +63,9 @@ flowchart TB
 
 |  | Stage | Step | Run by | Why | Status | Latest evidence |
 |---|---|---|---|---|---|---|
-| 1 | produce | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) · `../../.github/workflows/documents-pull-request.yml` | [A workflow of GitHub Actions](../.trame/ci/docs/github.md#GitHubWorkflow) | — | **unknown** |  |
+| 1 | produce | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) · `../../.github/workflows/documents-pull-request.yml` | [A workflow of GitHub Actions](../.trame/ci/docs/github.md#GitHubWorkflow) | — | **unknown** | 26 November 2026 by claude  |
 | 2 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
-| 3 | prove | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | — | the shipment | **unknown** |  |
-| 4 | record | [The files that run it elsewhere](sdlc.md#RunnersWritten) | — | — | **unknown** |  |
+| 3 | prove | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | — | the shipment | **unknown** | 26 November 2026 by claude  |
+| 4 | record | [The files that run it elsewhere](sdlc.md#RunnersWritten) | — | — | **unknown** | 26 November 2026 by claude `evidence/shipments/RunnersWritten-2026-11-26-784a8167.json` |
 
 `trame ship RunnersWritten --by <name>`
