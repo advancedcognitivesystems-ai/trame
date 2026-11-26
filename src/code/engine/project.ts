@@ -11,7 +11,7 @@ import type { NodeEncodings, NodeModuleSpecifiers } from "#std/system"
 import type { ValueTypes } from "#std/algebra"
 import type { ProvidedBy } from "../../../trame/kernel"
 import type { LanguageNames } from "../../conventions"
-import type { LanguageDescription } from "../../../kinds/language"
+import type { LanguageDescription } from "../../../trame/kernel"
 
 /** A library the project imports: its name in the project's graph, its root (absolute), and its version if frozen. */
 export interface Library {

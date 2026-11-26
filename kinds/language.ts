@@ -1,6 +1,7 @@
 import {
   defineKind, field, edge, optionalEdge, hole, doc, isHole, keysOf, fieldsOf, Status, KindName, EdgeName,
   type Node, type Provides, type Constant, type Inline, type HoleSpec, type View, type Lib, HoleCode,
+  type Grammar, type Escapes, type LanguageDescription, type ExampleReading, type LanguageReader,
 } from "../trame/kernel"
 import { standardFields } from "./standard"
 import { vocabularyFields } from "./vocabulary"
@@ -9,43 +10,9 @@ import words from "./words"
 
 const say = words()
 
-/**
- * A tree-sitter grammar: the module that resolves to its WebAssembly file. The package and its version are those of the
- * language's packages; a language written before packages were nodes names them here.
- */
-export interface Grammar {
-  module: string
-  package?: string
-  version?: string
-}
-
-/**
- * How the escape sequences of a text decode. A sequence opens with the mark; what follows it is either named in `single`
- * (n, t, a line terminator…, the longest that fits), or numeric (a prefix, then digits of a radix: a given number of
- * them, or up to a closing mark, or as many as there are up to a most; a character of `trailing` that follows them
- * belongs to the sequence), or neither: the mark then escapes the character that follows it (\q is q), unless
- * `keepUnknown` says that it stands for itself (HTML: an ampersand that opens no known reference is an ampersand).
- * Some languages also write a text with other sequences (HCL: $${ for ${): `literal`.
- */
-export interface Escapes {
-  mark: string
-  single: Record<string, string>
-  numeric: { prefix: string; radix: number; digits?: number; close?: string; most?: number; trailing?: string[] }[]
-  literal?: Record<string, string>
-  keepUnknown?: boolean
-}
-
-/** What a language gives to those who receive it: its description, as data. */
-export interface LanguageDescription {
-  name: string
-  /** The name bodies give to the language: the language of a file body (code.file), of a component's program. */
-  tag: string
-  grammar: Grammar
-  extensions: string[]
-  /** The queries, by concern (values, names, imports…). */
-  queries: Record<string, string>
-  escapes: Escapes
-}
+// What a language gives, and what its reader gives back, are the language's types since g128: the engine reads a
+// language for whoever asks (std's port LanguageReading), as it compiles a project.
+export type { Grammar, Escapes, LanguageDescription, ExampleReading }
 
 /** What the reader must find in a piece of code: an example of the language. Only what it states is compared. */
 export interface LanguageExample {
@@ -71,27 +38,6 @@ export interface LanguageExample {
    * an example that states them keeps the gap in sight.
    */
   errors?: number
-}
-
-/** What a reader gives back for an example, so that the kind can compare. */
-export interface ExampleReading {
-  literals: string[]
-  roles: string[]
-  values: (string | number)[]
-  imports: { module: string; typeOnly: boolean }[]
-  globals: string[]
-  entry: boolean
-  parameters: string[]
-  outputs: string[]
-  errors: number
-}
-
-/** The reader a language is read by, as the kind sees it once wired. */
-interface Reader {
-  load(language: LanguageDescription): Promise<void>
-  example(language: LanguageDescription, code: string): ExampleReading
-  /** The predicates each query uses that tree-sitter keeps aside, as tree-sitter parsed the query: [query, operator]. */
-  aside(language: LanguageDescription): [string, string][]
 }
 
 interface Result {
@@ -187,7 +133,8 @@ const F = keysOf(fields)
 const edges = {
   [EdgeName.standard]: edge.one([KindName.standard], { label: say.languageDefinedBy(), inverse: say.languageDefinesTheLanguage() }),
   queryLanguage: edge.one([KindName.standard], { label: say.languageQueriesWrittenIn(), inverse: say.languageLanguageOfTheQueriesOf() }),
-  reader: edge.one([KindName.function], { label: say.languageReadBy(), inverse: say.languageReads() }),
+  // A function of the project, or a port (since g128: std's LanguageReading, which the engine realizes).
+  reader: edge.one([KindName.function, KindName.port], { label: say.languageReadBy(), inverse: say.languageReads() }),
   globals: optionalEdge(edge.one([KindName.vocabulary], { label: say.languageWatchesTheGlobals(), inverse: say.languageGlobalsWatchedIn() })),
   [EdgeName.packages]: optionalEdge(edge.many([KindName.package], { label: say.packageUses(), inverse: say.packageUsedBy() })),
 }
@@ -220,11 +167,11 @@ const kind = defineKind({
   /** The examples, read by the language's reader. */
   async evaluate(self, g): Promise<Evaluation> {
     const examples = examplesOf(self.field(F.examples), g.lib)
-    let reader: Reader
+    let reader: LanguageReader
     let language: LanguageDescription
     try {
       const wired = await g.wire([{ name: self.reader.ref, node: self.reader }, { name: self.ref, node: self }], undefined)
-      reader = wired[self.reader.ref] as Reader
+      reader = wired[self.reader.ref] as LanguageReader
       language = wired[self.ref] as LanguageDescription
       await reader.load(language)
     } catch (e) {

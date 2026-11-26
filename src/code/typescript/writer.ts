@@ -16,7 +16,7 @@ import type {
   ArrayLiteral, ConstDeclaration, NamedImport, DefaultImport, AsExpression, OptionalPropertySignature, ObjectType, UnionType, IfStatement,
   StrictInequality, Assignment, InlineArray, AsyncBlockFunction,
 } from "../../typescript"
-import type { LanguageDescription } from "../../../kinds/language"
+import type { LanguageDescription } from "../../../trame/kernel"
 import type { Assembly, Emitted } from "../engine/assembly"
 import type { Step } from "../engine/wiring"
 

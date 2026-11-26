@@ -1057,14 +1057,14 @@ export const ProjectCommandRun = scenario({
 /**
  * The engine's API
  * What a command reaches of the engine (since g124): the project as the dispatch prepared it, with what a view receives
- * and the graph as a build writes it; the same project compiled again at a date, as another would be; a directory that
- * holds no project, refused.
+ * and the graph as a build writes it; the same project compiled again at a date, as another would be; the engine's
+ * reader of languages; a directory that holds no project, refused.
  */
 export const EngineApiGiven = scenario({
   owner: "trame",
   verifies: [Preparation],
   env: Test,
-  deps: { preparation: Preparation, line: TrameCommands, layout: Layout, messages: ScenarioMessages },
+  deps: { preparation: Preparation, line: TrameCommands, layout: Layout, typescript: TypeScript, messages: ScenarioMessages },
   body: (d) => async (check) => {
     const { preparation, line, messages } = d
     const o = preparation.options(line.build, [], line.build)
@@ -1075,6 +1075,10 @@ export const EngineApiGiven = scenario({
     check(messages.apiGivesThePrepared(), given?.root === o.root && given.today === o.today && nodes(given.written()) >= nodes(given.snapshot()) && given.graph.all().exists())
     const again = await preparation.api().compile(o.root, o.today)
     check(messages.apiCompilesAProject(), again.today === o.today && nodes(again.written()) === nodes(given?.written()) && preparation.api().prepared() === undefined)
+    // The engine's reader of languages (since g128): it loads a language the engine reads, and reads its queries.
+    const reader = preparation.api().reader
+    const reads = await reader.load(d.typescript).then(() => Array.isArray(reader.aside(d.typescript)), () => false)
+    check(messages.apiReadsALanguage(d.typescript.name), reads)
     // A directory without a configuration is no project (since g125).
     const refused = await preparation.api().compile(d.layout.documents, o.today).then(() => false, () => true)
     check(messages.apiRefusesWhatIsNoProject(d.layout.documents), refused)

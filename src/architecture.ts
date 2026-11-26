@@ -8,7 +8,7 @@ import { rule } from "../kinds/rule"
 import { fieldsOf, KindName, EdgeName } from "../trame/kernel"
 import { NeverReaches, WithoutEffects, WordsOf } from "#std/rules"
 import { Effects, type Effect } from "#std/effects"
-import type { Grammar } from "../kinds/language"
+import type { Grammar } from "../trame/kernel"
 import { PageLoading } from "#std/platform"
 
 // The contracts: what the engine asks of the platform. Types, not implementations.

@@ -892,6 +892,7 @@ export const ScenarioMessages = catalog({
     delegationOverRefused: (agent: string) => `Once the delegation is over, ${agent} is refused again`,
     projectCommandRun: (name: string) => `trame ${name} runs the example's command: its component assembled, its program run in the engine's process with the rest of the line`,
     apiGivesThePrepared: () => "The engine's API gives the project as the dispatch prepared it: its root, its day, what a view receives, graph.json and the snapshot",
+    apiReadsALanguage: (language: string) => `The API gives the engine's reader of languages: it loads ${language} and reads its queries`,
     apiRefusesWhatIsNoProject: (dir: string) => `Asked to compile ${dir}, which has no configuration, the API refuses: it is no project`,
     apiCompilesAProject: () => "Asked to compile the project at its day, the API gives the same graph, and no project prepared when the dispatch gave none",
     helpListsTheProject: (name: string) => `trame help lists ${name}, with the component that runs it`,

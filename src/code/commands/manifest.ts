@@ -18,7 +18,7 @@ import type { TrameCommands } from "../../conventions"
 import type { TextFile } from "#std/text"
 import type { PackageSource } from "#std/tooling"
 import type { LanguageNames } from "../../conventions"
-import type { LanguageDescription } from "../../../kinds/language"
+import type { LanguageDescription } from "../../../trame/kernel"
 import type { Api as PreparationApi } from "./preparation"
 import type { Api as ProjectApi } from "../engine/project"
 

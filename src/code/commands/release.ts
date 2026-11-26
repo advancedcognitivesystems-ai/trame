@@ -8,7 +8,7 @@
 
 import { ArtifactField, KindName, LanguageUse, Severity, ShipmentEdge, type ProvidedBy } from "../../../trame/kernel"
 import type { Handler } from "../../../kinds/entry-point"
-import type { LanguageDescription } from "../../../kinds/language"
+import type { LanguageDescription } from "../../../trame/kernel"
 import type { Clock, FileReading, FileTrees, FileWriting, Hashing, Layout, Paths, Terminal } from "../../architecture"
 import type { AdvanceMessages, CommandMessages } from "../../messages"
 import type { Releases } from "../../generations"

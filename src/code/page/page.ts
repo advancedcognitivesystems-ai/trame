@@ -9,7 +9,7 @@ import type { Bundler, Compression, FileReading, Palette, Resources, Typography 
 import type { OutputMessages } from "../../messages"
 import type { GnuPositions, TextFile } from "#std/text"
 import type { NodeEncodings } from "#std/system"
-import type { LanguageDescription } from "../../../kinds/language"
+import type { LanguageDescription } from "../../../trame/kernel"
 import type { Api as ReaderApi } from "../syntax/reader"
 import type { CssDeclaration, CssRule } from "../../html"
 import type * as page from "../../page"

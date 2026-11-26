@@ -7,6 +7,7 @@ import { ExecutableSpecification, SingleSource, SeverityOrder, DevPort } from ".
 import { decision } from "../kinds/decision"
 import { TrameCli, Terminal, Process, Clock, FileReading, FileWriting, Paths, Hashing, Programs, FileTrees, PackageReports, PackageInstalls, Bundler, Timer, HttpServer, KeptRuns, AmendmentPlace, Prelude, TypeScriptCompiler } from "./architecture"
 import { Compiler, CompilationApi, Laws, Views, Lock, MachineOutputs, PayloadBuilder, DateBundle, DevServer, Assembly, Fingerprint, References, Project, EngineFingerprint, Wiring, ShipmentPipeline, Differences, JudgedHarder, Fingerprints } from "./engine"
+import { SyntaxReader } from "./syntax"
 import { Page, PageBundle, PageDocument } from "./page"
 import { Html } from "#std/html"
 import { ScriptElement } from "./html"
@@ -62,8 +63,9 @@ export const AddOns = fn({
  * Preparation
  * Reads the options, checks and compiles the project, refuses cleanly: what all commands share. It gives the engine's
  * API (since g124), which the language defines: the project as the dispatch prepared it for a command, another project
- * compiled at a date, each with what a view receives and the graph as a build writes it, and where a project's files
- * are. The engine is the running one while it compiles: a library's scenario it plays reaches the API then.
+ * compiled at a date, each with what a view receives and the graph as a build writes it, where a project's files
+ * are, and the engine's reader of languages (since g128). The engine is the running one while it compiles: a library's
+ * scenario it plays, or a language of a library it reads, reaches the API then.
  */
 export const Preparation = fn({
   owner: "trame",
@@ -73,7 +75,7 @@ export const Preparation = fn({
     terminal: Terminal, currentProcess: Process, clock: Clock, severityOrder: SeverityOrder, devPort: DevPort, exitStatus: ExitStatus,
     layout: TerminalText, columns: TerminalColumns, cell: PaddedCell,
     counts: Counts, sequences: Sequences, texts: Texts, messages: CommandMessages, projectLayout: Layout, uri: Uri, references: References,
-    projectCommands: ProjectCommands, kept: KeptCommands, machine: MachineOutputs, paths: Paths, reading: FileReading, specifiers: NodeModuleSpecifiers,
+    projectCommands: ProjectCommands, kept: KeptCommands, machine: MachineOutputs, paths: Paths, reading: FileReading, specifiers: NodeModuleSpecifiers, reader: SyntaxReader,
   },
   body: code.file<typeof import("./code/commands/preparation").default>("./code/commands/preparation.ts"),
 })

@@ -12,7 +12,7 @@ import type { NodeEncodings } from "#std/system"
 import type { TreeSitterApi } from "../../standards"
 import type { BodySource, Captures, GlobalRead, ImportRead, LiteralCategories, LiteralDisplay, LiteralRead, LiteralRoles, Pattern, Reading } from "../../syntax"
 import type { Counts, Sequences, Texts } from "#std/algebra"
-import type { Escapes, ExampleReading, LanguageDescription } from "../../../kinds/language"
+import type { Escapes, ExampleReading, LanguageDescription } from "../../../trame/kernel"
 
 export interface Deps {
   trees: SyntaxTrees

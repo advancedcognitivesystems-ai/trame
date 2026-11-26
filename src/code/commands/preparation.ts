@@ -2,7 +2,7 @@
 // It started as a port of the bootstrap's command line (trame/cli.ts): same options, same order of checks.
 
 import { withEngine } from "../../../trame/kernel"
-import type { AnyNode, Compilation, CompiledProject, Document, EngineApi, ProvidedBy, Severity, View } from "../../../trame/kernel"
+import type { AnyNode, Compilation, CompiledProject, Document, EngineApi, LanguageReader, ProvidedBy, Severity, View } from "../../../trame/kernel"
 import type { Clock, FileReading, Layout, Paths, Process, Terminal } from "../../architecture"
 import type { CommandMessages } from "../../messages"
 import type { Api as CompilerApi, Compiled, Loaded } from "../engine/compiler"
@@ -56,6 +56,8 @@ export interface Deps {
   reading: FileReading
   /** How a project the API is asked to compile is named by a package and a path in it (since g125). */
   specifiers: ProvidedBy<typeof NodeModuleSpecifiers>
+  /** The engine's reader of languages, which the API gives (since g128). */
+  reader: LanguageReader
   /** The commands the engine keeps, whatever the project says (since g119): a command of the project never takes their names. */
   kept: readonly string[]
 }
@@ -317,6 +319,7 @@ const body = (deps: Deps) => {
       layout: deps.projectLayout,
       prepared: () => (prepared === undefined ? undefined : project(prepared.o.root, prepared.ctx)),
       compile: (root, today) => elsewhere(root, today, compiling),
+      reader: deps.reader,
     }
   }
 
