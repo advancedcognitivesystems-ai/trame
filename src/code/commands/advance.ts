@@ -247,7 +247,10 @@ const body = (deps: Deps): Handler => async (req) => {
   const self2 = await build(candidate, root)
   if (self2 === undefined) return stop()
   save(root, saves.second, self2)
-  const secondAsFirst = !(await trees.differences(tmp, join(saves.candidate, basename(root)), join(saves.second, basename(root))))
+  // What the second assembly writes differently is kept with the other differences, to be read (since g129).
+  const secondDiffers = await trees.differences(tmp, join(saves.candidate, basename(root)), join(saves.second, basename(root)))
+  if (secondDiffers) shown.push(secondDiffers)
+  const secondAsFirst = !secondDiffers
   write(secondAsFirst ? messages.done(messages.identicalToCandidate()) : messages.failed(messages.secondDiffers()))
 
   write(messages.secondReassembles())
