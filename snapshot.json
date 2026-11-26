@@ -12035,6 +12035,20 @@
       }
     },
     {
+      "id": "releases.G125",
+      "kind": "release",
+      "title": "Generation 125",
+      "fields": {
+        "owner": "trame",
+        "version": "g125",
+        "date": "2026-11-26",
+        "what": "the engine's API names a project by its package and a path in it, refuses a directory that is no project, and keeps nothing beside a project it compiles for a scenario",
+        "fingerprint": "302c35a5994d05a6",
+        "language": "shared",
+        "archive": "83cab083efe384d2"
+      }
+    },
+    {
       "id": "releases.G13",
       "kind": "release",
       "title": "Generation 13",
@@ -27983,6 +27997,16 @@
     {
       "from": "releases.G124",
       "to": "releases.G123",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G125",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G125",
+      "to": "releases.G124",
       "kind": "assembledBy"
     },
     {

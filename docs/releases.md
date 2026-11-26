@@ -612,6 +612,27 @@ Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Ge
 - Released by: trame
 - Releases: [Trame on the command line](architecture.md#TrameCli)
 - Assembled by: [Generation 123](#G123)
+- Assembled: [Generation 125](#G125)
+
+<a id="G125"></a>
+
+### Generation 125
+
+`G125` · `src/releases.ts:1854`
+
+the engine's API names a project by its package and a path in it, refuses a directory that is no project, and keeps nothing beside a project it compiles for a scenario
+
+Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Generation 124](#G124).
+
+- Version: `g125`
+- Released on: 26 November 2026
+- Fingerprint: `302c35a5994d05a6`
+- Language: the repository's, shared
+- Language archived: `83cab083efe384d2`
+
+- Released by: trame
+- Releases: [Trame on the command line](architecture.md#TrameCli)
+- Assembled by: [Generation 124](#G124)
 
 <a id="G13"></a>
 

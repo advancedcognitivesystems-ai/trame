@@ -5051,6 +5051,20 @@ Release · `G124`
 - Releases: Trame on the command line
 - Assembled by: Generation 123
 
+### Generation 125
+
+Release · `G125`
+
+- Released by: trame
+- Version: g125
+- Released on: 2026-11-26
+- What changes: the engine's API names a project by its package and a path in it, refuses a directory that is no project, and keeps nothing beside a project it compiles for a scenario
+- Fingerprint: 302c35a5994d05a6
+- Language: shared
+- Language archived: 83cab083efe384d2
+- Releases: Trame on the command line
+- Assembled by: Generation 124
+
 ### Generation 13
 
 Release · `G13`
