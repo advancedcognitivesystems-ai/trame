@@ -175,9 +175,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "129",
+        "version": "130",
         "joins": "language",
-        "at": "../../generations/g129"
+        "at": "../../generations/g130"
       },
       "diagnostics": []
     },
@@ -204,13 +204,11 @@
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.29.0",
+        "version": "0.29.1",
         "joins": "library",
-        "at": "../../std/releases/0.29.0"
+        "at": "../../std/releases/0.29.1"
       },
-      "diagnostics": [
-        "warning: std 0.29.1 is out, the reference names 0.29.0: trame upgrade std moves it"
-      ]
+      "diagnostics": []
     },
     {
       "id": "principles.DescribedOnce",
@@ -549,6 +547,21 @@
         "date": "2026-11-20",
         "what": "Each problem an entity raises has its code (C4): entity-reseeded, entity-key-unknown, entity-field-without-type, entity-owner-field-unknown, entity-migration-undecided; the language's holes now name their code first",
         "fingerprint": "a3754897cae809d3",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "releases.R0_5_1",
+      "kind": "release",
+      "title": "Version 0.5.1",
+      "source": "src/releases.ts:90",
+      "fields": {
+        "owner": "trame",
+        "version": "0.5.1",
+        "date": "2026-11-27",
+        "what": "the decision behind the library's choices for its scenarios",
+        "fingerprint": "bfdc3b283278c278",
         "language": "shared"
       },
       "diagnostics": []
@@ -1171,7 +1184,7 @@
       },
       "result": {
         "path": "src",
-        "code": "f93c5496"
+        "code": "67a036b4"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -2648,6 +2661,11 @@
     },
     {
       "from": "releases.R0_5_0",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_5_1",
       "to": "product.DataDescribedOnce",
       "kind": "serves"
     },

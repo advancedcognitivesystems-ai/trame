@@ -1,6 +1,6 @@
 # Architecture decisions
 
-*The choices that shape the product without being values, in force on 30 October 2026: why each was taken, what was rejected, and the nodes that apply it.*
+*The choices that shape the product without being values, in force on 27 November 2026: why each was taken, what was rejected, and the nodes that apply it.*
 
 > **8 architecture decisions, 4 held by the nodes that apply them**
 
@@ -122,7 +122,7 @@ Consequences: The component runs in a browser; its realizations are the browser'
 
 ### The app is played in memory first
 
-`PlayedInMemoryFirst` · `src/principles.ts:95` · status: **held**
+`PlayedInMemoryFirst` · `src/principles.ts:95` · status: **held** · published
 
 What the app shows, says and keeps is played by scenarios before a browser runs it: a screen that records what it shows, a bowl that records when it sounds, preferences and languages given, frames advanced by hand, speech written.
 
@@ -142,7 +142,7 @@ Consequences: What only a browser or a phone shows (the voice, the screen kept a
 
 ### What the app keeps stays on the device
 
-`KeptOnThePhone` · `src/principles.ts:109` · status: **held**
+`KeptOnThePhone` · `src/principles.ts:109` · status: **held** · published
 
 The person's breath and choices are kept in the device's preferences, under names of the app's own, as the library of data keeps a document; the app adopts its decision: what is kept is described once.
 

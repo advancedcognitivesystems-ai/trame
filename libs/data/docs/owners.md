@@ -4,7 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 3 | 78 |
+| trame | 0 | 0 | 2 | 79 |
 
 <a id="trame"></a>
 
@@ -12,7 +12,6 @@
 
 | Severity | Code | What | Where | Owner | Consequence |
 |---|---|---|---|---|---|
-| warning | `package-newer` | std 0.29.1 is out, the reference names 0.29.0: trame upgrade std moves it | [std](packages.md#stdLibrary) | trame |  |
 | warning | `shipment-awaits` | To ship: The library of data is unknown | [The next version](sdlc.md#NextVersion) | trame |  |
 | warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The library of data](sdlc.md#TheLibrary) | trame |  |
 
@@ -52,6 +51,7 @@
 | [Version 0.3.0](releases.md#R0_3_0) | Release |  |
 | [Version 0.4.0](releases.md#R0_4_0) | Release |  |
 | [Version 0.5.0](releases.md#R0_5_0) | Release |  |
+| [Version 0.5.1](releases.md#R0_5_1) | Release |  |
 | [What the library's scenarios check](scenarios.md#DataChecks) | Message catalog |  |
 | [What the library's scenarios are given](scenarios.md#DataGiven) | Decision |  |
 | [Documents kept in the preferences](scenarios.md#DocumentsKept) | Scenario | **held** |

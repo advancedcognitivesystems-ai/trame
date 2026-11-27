@@ -4,7 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 2 | 31 |
+| trame | 0 | 0 | 2 | 32 |
 
 <a id="trame"></a>
 
@@ -32,6 +32,7 @@
 | [std](packages.md#StandardLibrary) | Package |  |
 | [Documents rendered once, for every project](product.md#RenderedOnce) | Goal |  |
 | [Version 0.1.0](releases.md#R0_1_0) | Release |  |
+| [Version 0.1.1](releases.md#R0_1_1) | Release |  |
 | [What the scenarios read and expect](scenarios.md#Expected) | Decision |  |
 | [The scenarios' language](scenarios.md#InTheScenariosLanguage) | Technical choice | **held** |
 | [The language of the documents, written](scenarios.md#LanguageWritten) | Scenario | **held** |

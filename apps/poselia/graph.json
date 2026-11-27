@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-30",
+  "generated": "2026-11-27",
   "nodes": [
     {
       "id": "app.BrowserScreen",
@@ -4386,14 +4386,12 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "data",
-        "version": "0.5.0",
+        "version": "0.5.1",
         "joins": "library",
         "from": "path",
-        "at": "../../libs/data/releases/0.5.0"
+        "at": "../../libs/data/releases/0.5.1"
       },
-      "diagnostics": [
-        "warning: data 0.5.1 is out, the reference names 0.5.0: trame upgrade data moves it"
-      ]
+      "diagnostics": []
     },
     {
       "id": "packages.Geometry",
@@ -4418,10 +4416,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "trame",
-        "version": "129",
+        "version": "130",
         "joins": "language",
         "from": "path",
-        "at": "../../generations/g129"
+        "at": "../../generations/g130"
       },
       "diagnostics": []
     },
@@ -4448,14 +4446,12 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "std",
-        "version": "0.29.0",
+        "version": "0.29.1",
         "joins": "library",
         "from": "path",
-        "at": "../../std/releases/0.29.0"
+        "at": "../../std/releases/0.29.1"
       },
-      "diagnostics": [
-        "warning: std 0.29.1 is out, the reference names 0.29.0: trame upgrade std moves it"
-      ]
+      "diagnostics": []
     },
     {
       "id": "practice.BreathEasing",
@@ -4841,9 +4837,7 @@
           "An account on a server": "a person would give an address to practise on their mat"
         }
       },
-      "diagnostics": [
-        "error: What the app keeps stays on the device ships, and nothing proves it (What people decided, published)"
-      ]
+      "diagnostics": []
     },
     {
       "id": "principles.LanguageOffered",
@@ -4891,9 +4885,7 @@
           "A browser driven at each build": "slow, and the voice and the wake lock answer only on a device"
         }
       },
-      "diagnostics": [
-        "error: The app is played in memory first ships, and nothing proves it (What people decided, published)"
-      ]
+      "diagnostics": []
     },
     {
       "id": "principles.SaidAloud",
@@ -5763,18 +5755,7 @@
       },
       "result": {
         "derived": [],
-        "gaps": [
-          {
-            "node": "principles.KeptOnThePhone",
-            "obligation": "sdlc.PublishedBeforeMerging",
-            "weight": "error"
-          },
-          {
-            "node": "principles.PlayedInMemoryFirst",
-            "obligation": "sdlc.PublishedBeforeMerging",
-            "weight": "error"
-          }
-        ],
+        "gaps": [],
         "preceded": [],
         "reached": [
           "sdlc.ThePoseliaApp",
@@ -6544,7 +6525,7 @@
       "kind": "artifact",
       "title": "The preview's script",
       "source": "src/sdlc.ts:407",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "path": "scripts/ship-preview.sh",
@@ -6554,16 +6535,14 @@
         "path": "scripts/ship-preview.sh",
         "code": "3ecbf9b8"
       },
-      "diagnostics": [
-        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.PreviewWorkflow",
       "kind": "artifact",
       "title": "The preview's workflow",
       "source": "src/sdlc.ts:392",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "path": "../../.github/workflows/poselia-preview.yml",
@@ -6573,9 +6552,7 @@
         "path": "../../.github/workflows/poselia-preview.yml",
         "code": "a56881d4"
       },
-      "diagnostics": [
-        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.ProductServed",
@@ -6892,10 +6869,11 @@
         "preceded": [
           {
             "node": "sdlc.Preview",
-            "status": "unknown",
+            "status": "held",
             "artifacts": [
               {
-                "node": "sdlc.PageFile"
+                "node": "sdlc.PageFile",
+                "fingerprint": "98e4555892199b51fa3d0f28fbf9d4e6db72aeef6d3a8c22160b095f5fe61d41"
               }
             ]
           }
@@ -7005,7 +6983,6 @@
       },
       "diagnostics": [
         "warning: To ship: Poselia's page is unknown",
-        "warning: To ship: Poselia's page, shipped first by A preview as it is now",
         "warning: To ship: On a phone is unknown",
         "warning: To ship: The page opens is unknown",
         "warning: To ship: The content, reviewed is unknown",
@@ -7061,7 +7038,7 @@
       "kind": "artifact",
       "title": "The pull requests' workflow",
       "source": "src/sdlc.ts:464",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "path": "../../.github/workflows/poselia-pull-request.yml",
@@ -7071,9 +7048,7 @@
         "path": "../../.github/workflows/poselia-pull-request.yml",
         "code": "5e5bc1c6"
       },
-      "diagnostics": [
-        "warning: Not built yet: trame ship builds it"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.RulesHeld",
@@ -7090,7 +7065,7 @@
       "kind": "shipment",
       "title": "The files that run it elsewhere",
       "source": "src/sdlc.ts:479",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "target": "repository"
@@ -7105,11 +7080,7 @@
           "sdlc.PullRequestWorkflow"
         ]
       },
-      "diagnostics": [
-        "warning: To ship: The preview's script is unknown",
-        "warning: To ship: The preview's workflow is unknown",
-        "warning: To ship: The pull requests' workflow is unknown"
-      ]
+      "diagnostics": []
     },
     {
       "id": "sdlc.SdlcChecks",
@@ -7219,10 +7190,10 @@
       },
       "result": {
         "path": "src",
-        "code": "867806eb"
+        "code": "5e09541b"
       },
       "diagnostics": [
-        "warning: Not built yet: trame ship builds it"
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
       ]
     },
     {
@@ -7319,7 +7290,12 @@
         "first": "a2228bee",
         "migrations": [],
         "undecided": [],
-        "kept": []
+        "kept": [
+          {
+            "version": "a2228bee",
+            "at": "2026-11-09"
+          }
+        ]
       },
       "diagnostics": []
     },

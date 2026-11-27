@@ -1,8 +1,8 @@
 # Versions
 
-*The releases of the components on 30 October 2026, newest first. A project runs the release its configuration pins.*
+*The releases of the components on 27 November 2026, newest first. A project runs the release its configuration pins.*
 
-> **129 releases of 1 component; 95 releases on a language of their own**
+> **130 releases of 1 component; 95 releases on a language of their own**
 
 ## Trame on the command line
 
@@ -10,6 +10,7 @@ Each release, newest first: what changed, the release that assembled it, and whe
 
 | Release | Released on | What changes | Assembled by | Language |
 |---|---|---|---|---|
+| [Generation 130](releases.md#G130) | 27 November 2026 | Every choice backed by an architecture decision of its project (choice-unbacked), which may adopt a library's; the engine's plan and amend compare builds with libs/commands' comparison, the copy gone | [Generation 129](releases.md#G129) | shared |
 | [Generation 129](releases.md#G129) | 26 November 2026 | std's languages read by the engine, the documents' language from libs/documents; a project compiled through the API gives the views back | [Generation 128](releases.md#G128) | shared |
 | [Generation 128](releases.md#G128) | 26 November 2026 | the engine's API gives its reader of languages; a language's reader may be a port | [Generation 127](releases.md#G127) | shared |
 | [Generation 127](releases.md#G127) | 26 November 2026 | trame ship assembles a library's component for a check, by its reference, with the commands the project chose of it | [Generation 126](releases.md#G126) | shared |

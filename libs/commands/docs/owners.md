@@ -4,7 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 2 | 34 |
+| trame | 0 | 0 | 2 | 35 |
 
 <a id="trame"></a>
 
@@ -32,6 +32,7 @@
 | [Commands every project runs, written once](product.md#WrittenOnce) | Goal |  |
 | [Version 0.1.0](releases.md#R0_1_0) | Release |  |
 | [Version 0.1.1](releases.md#R0_1_1) | Release |  |
+| [Version 0.1.2](releases.md#R0_1_2) | Release |  |
 | [Compiled by the engine that plays them](scenarios.md#CompiledByTheEngine) | Technical choice | **held** |
 | [After a build, nothing changes](scenarios.md#PlanAfterTheSameBuild) | Scenario | **held** |
 | [A plan says what a build would change](scenarios.md#PlanSaysWhatChanges) | Scenario | **held** |

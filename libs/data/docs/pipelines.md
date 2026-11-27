@@ -36,9 +36,9 @@ flowchart TB
 
 |  | Stage | Step | Run by | Why | Status | Latest evidence |
 |---|---|---|---|---|---|---|
-| 1 | produce | [The library of data](sdlc.md#TheLibrary) · `src` | — | — | **unknown** | 20 November 2026 by claude  |
+| 1 | produce | [The library of data](sdlc.md#TheLibrary) · `src` | — | — | **unknown** | 27 November 2026 by claude  |
 | 2 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
-| 3 | prove | [The library of data](sdlc.md#TheLibrary) | — | the shipment | **unknown** | 20 November 2026 by claude  |
+| 3 | prove | [The library of data](sdlc.md#TheLibrary) | — | the shipment | **unknown** | 27 November 2026 by claude  |
 | 4 | prove | [An entity is described once](principles.md#DescribedOnce) | — | [Its decisions applied](sdlc.md#DecisionsApplied) via [A value of the description it is of](documents.md#Conforms) | **held** |  |
 | 5 | prove | [The library's scenarios keep what they write as a product would](scenarios.md#KeptAsAProductWould) | — | [Its decisions applied](sdlc.md#DecisionsApplied) via [Documents, in memory](scenarios.md#InMemory) | **held** |  |
 | 6 | prove | [Documents kept in the preferences](scenarios.md#DocumentsKept) | — | [Its functions verified](sdlc.md#FunctionsVerified) via [A value of the description it is of](documents.md#Conforms) | **held** |  |
@@ -46,7 +46,7 @@ flowchart TB
 | 8 | prove | [PostgreSQL's statements](scenarios.md#PostgresStatements) | — | [Its functions verified](sdlc.md#FunctionsVerified) via [PostgreSQL's tables](records.md#PostgresTables) | **held** |  |
 | 9 | prove | [Records seeded](scenarios.md#RecordsSeeded) | — | [Its functions verified](sdlc.md#FunctionsVerified) via [The records its entity starts with](records.md#SeedOfTheEntity) | **held** |  |
 | 10 | prove | [What a shipment stores migrates](obligations.md#Migrated) | — | [Its requirements held](sdlc.md#RequirementsServed) via [A value of the description it is of](documents.md#Conforms) | **held** |  |
-| 11 | record | [The next version](sdlc.md#NextVersion) | — | — | **unknown** | 20 November 2026 by claude `evidence/shipments/NextVersion-2026-11-20-6ed99514.json` |
+| 11 | record | [The next version](sdlc.md#NextVersion) | — | — | **unknown** | 27 November 2026 by claude `evidence/shipments/NextVersion-2026-11-27-1741c03f.json` |
 
 `trame ship NextVersion --by <name>`
 
@@ -76,9 +76,9 @@ flowchart TB
 
 |  | Stage | Step | Run by | Why | Status | Latest evidence |
 |---|---|---|---|---|---|---|
-| 1 | produce | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) · `../../.github/workflows/data-pull-request.yml` | [A workflow of GitHub Actions](../.trame/ci/docs/github.md#GitHubWorkflow) | — | **held** | 26 November 2026 by claude  |
+| 1 | produce | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) · `../../.github/workflows/data-pull-request.yml` | [A workflow of GitHub Actions](../.trame/ci/docs/github.md#GitHubWorkflow) | — | **held** | 27 November 2026 by claude  |
 | 2 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
-| 3 | prove | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | — | the shipment | **held** | 26 November 2026 by claude  |
-| 4 | record | [The files that run it elsewhere](sdlc.md#RunnersWritten) | — | — | **held** | 26 November 2026 by claude `evidence/shipments/RunnersWritten-2026-11-26-fe4450fa.json` |
+| 3 | prove | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | — | the shipment | **held** | 27 November 2026 by claude  |
+| 4 | record | [The files that run it elsewhere](sdlc.md#RunnersWritten) | — | — | **held** | 27 November 2026 by claude `evidence/shipments/RunnersWritten-2026-11-27-7bcdfef0.json` |
 
 `trame ship RunnersWritten --by <name>`

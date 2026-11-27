@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-30",
+  "at": "2026-11-27",
   "nodes": [
     {
       "id": "app.BrowserScreen",
@@ -3715,10 +3715,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "data",
-        "version": "0.5.0",
+        "version": "0.5.1",
         "joins": "library",
         "from": "path",
-        "at": "../../libs/data/releases/0.5.0"
+        "at": "../../libs/data/releases/0.5.1"
       }
     },
     {
@@ -3741,10 +3741,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "trame",
-        "version": "129",
+        "version": "130",
         "joins": "language",
         "from": "path",
-        "at": "../../generations/g129"
+        "at": "../../generations/g130"
       }
     },
     {
@@ -3767,10 +3767,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "std",
-        "version": "0.29.0",
+        "version": "0.29.1",
         "joins": "library",
         "from": "path",
-        "at": "../../std/releases/0.29.0"
+        "at": "../../std/releases/0.29.1"
       }
     },
     {
@@ -4933,7 +4933,7 @@
       "id": "sdlc.PreviewScript",
       "kind": "artifact",
       "title": "The preview's script",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "path": "scripts/ship-preview.sh",
@@ -4944,7 +4944,7 @@
       "id": "sdlc.PreviewWorkflow",
       "kind": "artifact",
       "title": "The preview's workflow",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "path": "../../.github/workflows/poselia-preview.yml",
@@ -5030,7 +5030,7 @@
       "id": "sdlc.PullRequestWorkflow",
       "kind": "artifact",
       "title": "The pull requests' workflow",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "path": "../../.github/workflows/poselia-pull-request.yml",
@@ -5049,7 +5049,7 @@
       "id": "sdlc.RunnersWritten",
       "kind": "shipment",
       "title": "The files that run it elsewhere",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "ghalaax",
         "target": "repository"

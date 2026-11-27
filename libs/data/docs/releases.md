@@ -101,3 +101,19 @@ Each problem an entity raises has its code (C4): entity-reseeded, entity-key-unk
 
 - Released by: trame
 - Serves: [Data described once](product.md#DataDescribedOnce)
+
+<a id="R0_5_1"></a>
+
+### Version 0.5.1
+
+`R0_5_1` · `src/releases.ts:90`
+
+the decision behind the library's choices for its scenarios
+
+- Version: `0.5.1`
+- Released on: 27 November 2026
+- Fingerprint: `bfdc3b283278c278`
+- Language: the repository's, shared
+
+- Released by: trame
+- Serves: [Data described once](product.md#DataDescribedOnce)

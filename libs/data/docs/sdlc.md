@@ -47,7 +47,7 @@ The workflow that checks a pull request on GitHub, written from the pipeline of 
 - Path: `../../.github/workflows/data-pull-request.yml`
 - Media type: `application/yaml`
 
-Built 26 November 2026 by claude, fingerprint `ce9a945be172ef688271adbdf5d7678a5cce78c589e48d7a677d339b52cb6aa0`.
+Built 27 November 2026 by claude, fingerprint `ce9a945be172ef688271adbdf5d7678a5cce78c589e48d7a677d339b52cb6aa0`.
 
 Shipped by [The files that run it elsewhere](#RunnersWritten) 19 November 2026, fingerprint `fdd03e46d04a50f0c4cbd7e58160fe589f92183012db0130dd19316d0d5add13`.
 
@@ -60,6 +60,8 @@ Shipped by [The files that run it elsewhere](#RunnersWritten) 24 November 2026, 
 Shipped by [The files that run it elsewhere](#RunnersWritten) 25 November 2026, fingerprint `ce9a945be172ef688271adbdf5d7678a5cce78c589e48d7a677d339b52cb6aa0`.
 
 Shipped by [The files that run it elsewhere](#RunnersWritten) 26 November 2026, fingerprint `ce9a945be172ef688271adbdf5d7678a5cce78c589e48d7a677d339b52cb6aa0`.
+
+Shipped by [The files that run it elsewhere](#RunnersWritten) 27 November 2026, fingerprint `ce9a945be172ef688271adbdf5d7678a5cce78c589e48d7a677d339b52cb6aa0`.
 
 - Owner: trame
 - Produced by: [A workflow of GitHub Actions](../.trame/ci/docs/github.md#GitHubWorkflow)
@@ -77,7 +79,7 @@ The library as its people write it: what a version freezes, and what projects im
 
 - Path: `src`
 
-Built 20 November 2026 by claude, fingerprint `7d7c6579e108fe54c0c0620aa6fc46be541fcfc977216095bf30566ca41603c7`.
+Built 27 November 2026 by claude, fingerprint `fbfd18459b3078c593c232c8b30f1a6f6e657b511851ee4ca9b555aa7df92b75`.
 
 Shipped by [The next version](#NextVersion) 9 November 2026, fingerprint `ea2c3c5d89c39e767980c8639d9f7a092c51b8815e805979d8ea9986c2f31124`.
 
@@ -96,6 +98,8 @@ Shipped by [The next version](#NextVersion) 18 November 2026, fingerprint `0b5c8
 Shipped by [The next version](#NextVersion) 19 November 2026, fingerprint `f220aa964e3fa694a337210119ab502750ebcdff6ae77a5db3780b6ad24d63bf`.
 
 Shipped by [The next version](#NextVersion) 20 November 2026, fingerprint `7d7c6579e108fe54c0c0620aa6fc46be541fcfc977216095bf30566ca41603c7`.
+
+Shipped by [The next version](#NextVersion) 27 November 2026, fingerprint `fbfd18459b3078c593c232c8b30f1a6f6e657b511851ee4ca9b555aa7df92b75`.
 
 - Owner: trame
 - A version of the project: true
@@ -124,7 +128,7 @@ A version of the library of data, for the projects that import it: shipped by tr
 | [Records seeded](scenarios.md#RecordsSeeded) | **held** | [Its functions verified](#FunctionsVerified), for [The records its entity starts with](records.md#SeedOfTheEntity) |
 | [What a shipment stores migrates](obligations.md#Migrated) | **held** | [Its requirements held](#RequirementsServed), for [A value of the description it is of](documents.md#Conforms) |
 
-Shipped 20 November 2026 by claude; its dossier: `evidence/shipments/NextVersion-2026-11-20-6ed99514.json`.
+Shipped 27 November 2026 by claude; its dossier: `evidence/shipments/NextVersion-2026-11-27-1741c03f.json`.
 
 - Owner: trame
 - Ships: [The library of data](#TheLibrary)
@@ -145,7 +149,7 @@ The workflow that checks each pull request, written by trame ship from the graph
 |---|---|---|
 | [The pull requests' workflow](#PullRequestWorkflow) | **held** | shipped |
 
-Shipped 26 November 2026 by claude; its dossier: `evidence/shipments/RunnersWritten-2026-11-26-fe4450fa.json`.
+Shipped 27 November 2026 by claude; its dossier: `evidence/shipments/RunnersWritten-2026-11-27-7bcdfef0.json`.
 
 - Owner: trame
 - Ships: [The pull requests' workflow](#PullRequestWorkflow)

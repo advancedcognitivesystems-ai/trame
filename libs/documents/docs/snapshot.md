@@ -82,9 +82,9 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 129
+- Version: 130
 - How it joins the graph: language
-- Its path: ../../generations/g129
+- Its path: ../../generations/g130
 - Serves: Documents rendered once, for every project
 
 ### The people of the repository
@@ -129,6 +129,18 @@ Release · `R0_1_0`
 - Released on: 2026-11-26
 - What changes: the language of the documents: the port DocumentLanguage, with Dates, Lists, Punctuation and Units over it
 - Fingerprint: 1bba695ab87a7f69
+- Language: shared
+- Serves: Documents rendered once, for every project
+
+### Version 0.1.1
+
+Release · `R0_1_1`
+
+- Released by: trame
+- Version: 0.1.1
+- Released on: 2026-11-27
+- What changes: its own language of words; the decision behind its choices: the documents speak the engine's language
+- Fingerprint: f0c7ad53400d19af
 - Language: shared
 - Serves: Documents rendered once, for every project
 

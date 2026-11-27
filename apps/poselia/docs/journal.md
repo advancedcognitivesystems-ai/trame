@@ -1,8 +1,241 @@
 # Journal
 
-*What happened to the project, day by day, the latest first, up to the date of the graph (30 October 2026): the versions released, and the evidence given, each with the node it is about and who gave it.*
+*What happened to the project, day by day, the latest first, up to the date of the graph (27 November 2026): the versions released, and the evidence given, each with the node it is about and who gave it.*
 
-> **4 days · 0 versions released · 45 pieces of evidence**
+> **18 days · 0 versions released · 208 pieces of evidence**
+
+## 27 November 2026
+
+| What | Node | By |
+|---|---|---|
+| Built | [The preview's script](sdlc.md#PreviewScript) | claude |
+| Shipped | [The preview's script](sdlc.md#PreviewScript) | claude |
+| Built | [The preview's workflow](sdlc.md#PreviewWorkflow) | claude |
+| Shipped | [The preview's workflow](sdlc.md#PreviewWorkflow) | claude |
+| Built | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
+| Shipped | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
+| Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
+
+## 26 November 2026
+
+| What | Node | By |
+|---|---|---|
+| Built | [The preview's script](sdlc.md#PreviewScript) | claude |
+| Shipped | [The preview's script](sdlc.md#PreviewScript) | claude |
+| Built | [The preview's workflow](sdlc.md#PreviewWorkflow) | claude |
+| Shipped | [The preview's workflow](sdlc.md#PreviewWorkflow) | claude |
+| Built | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
+| Shipped | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
+| Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
+| Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
+
+## 25 November 2026
+
+| What | Node | By |
+|---|---|---|
+| Built | [The preview's script](sdlc.md#PreviewScript) | claude |
+| Shipped | [The preview's script](sdlc.md#PreviewScript) | claude |
+| Built | [The preview's workflow](sdlc.md#PreviewWorkflow) | claude |
+| Shipped | [The preview's workflow](sdlc.md#PreviewWorkflow) | claude |
+| Built | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
+| Shipped | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
+| Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
+| Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
+| Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
+| Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
+
+## 24 November 2026
+
+| What | Node | By |
+|---|---|---|
+| Built | [The preview's script](sdlc.md#PreviewScript) | claude |
+| Shipped | [The preview's script](sdlc.md#PreviewScript) | claude |
+| Built | [The preview's workflow](sdlc.md#PreviewWorkflow) | claude |
+| Shipped | [The preview's workflow](sdlc.md#PreviewWorkflow) | claude |
+| Built | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
+| Shipped | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
+| Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
+| Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
+
+## 22 November 2026
+
+| What | Node | By |
+|---|---|---|
+| Built | [The preview's script](sdlc.md#PreviewScript) | claude |
+| Shipped | [The preview's script](sdlc.md#PreviewScript) | claude |
+| Built | [The preview's workflow](sdlc.md#PreviewWorkflow) | claude |
+| Shipped | [The preview's workflow](sdlc.md#PreviewWorkflow) | claude |
+| Built | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
+| Shipped | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
+| Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
+| Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
+
+## 19 November 2026
+
+| What | Node | By |
+|---|---|---|
+| Shipped | [Into the main branch](sdlc.md#IntoMain) | claude |
+| Built | [Poselia's page](sdlc.md#PageFile) | claude |
+| Shipped | [Poselia's page](sdlc.md#PageFile) | claude |
+| Check passed | [The page opens](sdlc.md#PageOpens) | claude |
+| Deployed | [Place the page](sdlc.md#PlaceThePage) | claude |
+| Shipped | [A preview](sdlc.md#Preview) | claude |
+| Built | [The preview's script](sdlc.md#PreviewScript) | claude |
+| Shipped | [The preview's script](sdlc.md#PreviewScript) | claude |
+| Built | [The preview's script](sdlc.md#PreviewScript) | claude |
+| Shipped | [The preview's script](sdlc.md#PreviewScript) | claude |
+| Built | [The preview's workflow](sdlc.md#PreviewWorkflow) | claude |
+| Built | [The preview's workflow](sdlc.md#PreviewWorkflow) | claude |
+| Shipped | [The preview's workflow](sdlc.md#PreviewWorkflow) | claude |
+| Built | [The preview's workflow](sdlc.md#PreviewWorkflow) | claude |
+| Shipped | [The preview's workflow](sdlc.md#PreviewWorkflow) | claude |
+| Built | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
+| Built | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
+| Shipped | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
+| Built | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
+| Shipped | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
+| Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
+| Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
+| Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
+| Built | [Poselia](sdlc.md#ThePoseliaApp) | claude |
+| Shipped | [Poselia](sdlc.md#ThePoseliaApp) | claude |
+| Shipped | [The person's breath, kept](settings.md#Breath) | claude |
+
+## 18 November 2026
+
+| What | Node | By |
+|---|---|---|
+| Built | [Poselia's page](sdlc.md#PageFile) | claude |
+| Shipped | [Poselia's page](sdlc.md#PageFile) | claude |
+| Built | [Poselia's page](sdlc.md#PageFile) | claude |
+| Shipped | [Poselia's page](sdlc.md#PageFile) | claude |
+| Check passed | [The page opens](sdlc.md#PageOpens) | claude |
+| Check passed | [The page opens](sdlc.md#PageOpens) | claude |
+| Deployed | [Place the page](sdlc.md#PlaceThePage) | claude |
+| Deployed | [Place the page](sdlc.md#PlaceThePage) | claude |
+| Shipped | [A preview](sdlc.md#Preview) | claude |
+| Shipped | [A preview](sdlc.md#Preview) | claude |
+| Built | [The preview's script](sdlc.md#PreviewScript) | claude |
+| Shipped | [The preview's script](sdlc.md#PreviewScript) | claude |
+| Built | [The preview's workflow](sdlc.md#PreviewWorkflow) | claude |
+| Shipped | [The preview's workflow](sdlc.md#PreviewWorkflow) | claude |
+| Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
+| Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
+| Shipped | [The person's breath, kept](settings.md#Breath) | claude |
+
+## 12 November 2026
+
+| What | Node | By |
+|---|---|---|
+| Built | [Poselia's page](sdlc.md#PageFile) | claude |
+| Shipped | [Poselia's page](sdlc.md#PageFile) | claude |
+| Check passed | [The page opens](sdlc.md#PageOpens) | claude |
+| Deployed | [Place the page](sdlc.md#PlaceThePage) | claude |
+| Shipped | [A preview](sdlc.md#Preview) | claude |
+| Built | [The preview's script](sdlc.md#PreviewScript) | claude |
+| Shipped | [The preview's script](sdlc.md#PreviewScript) | claude |
+| Built | [The preview's workflow](sdlc.md#PreviewWorkflow) | claude |
+| Shipped | [The preview's workflow](sdlc.md#PreviewWorkflow) | claude |
+| Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
+| Shipped | [The person's breath, kept](settings.md#Breath) | claude |
+
+## 10 November 2026
+
+| What | Node | By |
+|---|---|---|
+| Built | [Poselia's page](sdlc.md#PageFile) | claude |
+| Shipped | [Poselia's page](sdlc.md#PageFile) | claude |
+| Check passed | [The page opens](sdlc.md#PageOpens) | claude |
+| Deployed | [Place the page](sdlc.md#PlaceThePage) | claude |
+| Shipped | [A preview](sdlc.md#Preview) | claude |
+| Built | [The preview's script](sdlc.md#PreviewScript) | claude |
+| Shipped | [The preview's script](sdlc.md#PreviewScript) | claude |
+| Built | [The preview's workflow](sdlc.md#PreviewWorkflow) | claude |
+| Shipped | [The preview's workflow](sdlc.md#PreviewWorkflow) | claude |
+| Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
+| Shipped | [The person's breath, kept](settings.md#Breath) | claude |
+
+## 9 November 2026
+
+| What | Node | By |
+|---|---|---|
+| Built | [Poselia's page](sdlc.md#PageFile) | claude |
+| Shipped | [Poselia's page](sdlc.md#PageFile) | claude |
+| Check passed | [The page opens](sdlc.md#PageOpens) | claude |
+| Deployed | [Place the page](sdlc.md#PlaceThePage) | claude |
+| Shipped | [A preview](sdlc.md#Preview) | claude |
+| Built | [The preview's script](sdlc.md#PreviewScript) | claude |
+| Shipped | [The preview's script](sdlc.md#PreviewScript) | claude |
+| Built | [The preview's workflow](sdlc.md#PreviewWorkflow) | claude |
+| Shipped | [The preview's workflow](sdlc.md#PreviewWorkflow) | claude |
+| Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
+| Shipped | [The person's breath, kept](settings.md#Breath) | claude |
+
+## 8 November 2026
+
+| What | Node | By |
+|---|---|---|
+| Built | [Poselia's page](sdlc.md#PageFile) | claude |
+| Shipped | [Poselia's page](sdlc.md#PageFile) | claude |
+| Check passed | [The page opens](sdlc.md#PageOpens) | claude |
+| Deployed | [Place the page](sdlc.md#PlaceThePage) | claude |
+| Shipped | [A preview](sdlc.md#Preview) | claude |
+| Built | [The preview's script](sdlc.md#PreviewScript) | claude |
+| Shipped | [The preview's script](sdlc.md#PreviewScript) | claude |
+| Built | [The preview's workflow](sdlc.md#PreviewWorkflow) | claude |
+| Shipped | [The preview's workflow](sdlc.md#PreviewWorkflow) | claude |
+| Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
+
+## 4 November 2026
+
+| What | Node | By |
+|---|---|---|
+| Built | [Poselia's page](sdlc.md#PageFile) | claude |
+| Check passed | [The page opens](sdlc.md#PageOpens) | claude |
+| Deployed | [Place the page](sdlc.md#PlaceThePage) | claude |
+| Shipped | [A preview](sdlc.md#Preview) | claude |
+| Shipped | [A preview](sdlc.md#Preview) | claude |
+| Built | [The preview's script](sdlc.md#PreviewScript) | claude |
+| Built | [The preview's workflow](sdlc.md#PreviewWorkflow) | claude |
+| Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
+| Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
+
+## 3 November 2026
+
+| What | Node | By |
+|---|---|---|
+| Built | [Poselia's page](sdlc.md#PageFile) | claude |
+| Built | [Poselia's page](sdlc.md#PageFile) | claude |
+| Check passed | [The page opens](sdlc.md#PageOpens) | claude |
+| Check passed | [The page opens](sdlc.md#PageOpens) | claude |
+| Deployed | [Place the page](sdlc.md#PlaceThePage) | claude |
+| Deployed | [Place the page](sdlc.md#PlaceThePage) | claude |
+| Shipped | [A preview](sdlc.md#Preview) | claude |
+| Shipped | [A preview](sdlc.md#Preview) | claude |
+| Shipped | [A preview](sdlc.md#Preview) | claude |
+| Shipped | [A preview](sdlc.md#Preview) | claude |
+| Built | [The preview's script](sdlc.md#PreviewScript) | claude |
+| Built | [The preview's script](sdlc.md#PreviewScript) | claude |
+| Built | [The preview's workflow](sdlc.md#PreviewWorkflow) | claude |
+| Built | [The preview's workflow](sdlc.md#PreviewWorkflow) | claude |
+| Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
+| Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
+| Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
+| Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
+
+## 2 November 2026
+
+| What | Node | By |
+|---|---|---|
+| Built | [Poselia's page](sdlc.md#PageFile) | claude |
+| Built | [Poselia's page](sdlc.md#PageFile) | claude |
+| Check failed | [The page opens](sdlc.md#PageOpens) | claude |
+| Check passed | [The page opens](sdlc.md#PageOpens) | claude |
+| Deployed | [Place the page](sdlc.md#PlaceThePage) | claude |
+| Shipped | [A preview](sdlc.md#Preview) | claude |
+| Built | [The preview's script](sdlc.md#PreviewScript) | claude |
+| Built | [The preview's workflow](sdlc.md#PreviewWorkflow) | claude |
+| Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
 
 ## 29 October 2026
 

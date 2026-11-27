@@ -127,9 +127,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "129",
+        "version": "130",
         "joins": "language",
-        "at": "../../generations/g129"
+        "at": "../../generations/g130"
       },
       "diagnostics": []
     },
@@ -183,6 +183,21 @@
         "date": "2026-11-26",
         "what": "the language of the documents: the port DocumentLanguage, with Dates, Lists, Punctuation and Units over it",
         "fingerprint": "1bba695ab87a7f69",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "releases.R0_1_1",
+      "kind": "release",
+      "title": "Version 0.1.1",
+      "source": "src/releases.ts:25",
+      "fields": {
+        "owner": "trame",
+        "version": "0.1.1",
+        "date": "2026-11-27",
+        "what": "its own language of words; the decision behind its choices: the documents speak the engine's language",
+        "fingerprint": "f0c7ad53400d19af",
         "language": "shared"
       },
       "diagnostics": []
@@ -549,7 +564,7 @@
       },
       "result": {
         "path": "src",
-        "code": "2f237532"
+        "code": "5e39e664"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -639,6 +654,11 @@
     },
     {
       "from": "releases.R0_1_0",
+      "to": "product.RenderedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_1_1",
       "to": "product.RenderedOnce",
       "kind": "serves"
     },

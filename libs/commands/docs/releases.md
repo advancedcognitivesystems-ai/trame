@@ -37,3 +37,19 @@ the small project the scenarios compile lies in the library's sources, named by 
 
 - Released by: trame
 - Serves: [Commands every project runs, written once](product.md#WrittenOnce)
+
+<a id="R0_1_2"></a>
+
+### Version 0.1.2
+
+`R0_1_2` · `src/releases.ts:38`
+
+its own language of words; the decision behind its choices, which adopts std's: the engine is a provider
+
+- Version: `0.1.2`
+- Released on: 27 November 2026
+- Fingerprint: `29350d242a13f4d9`
+- Language: the repository's, shared
+
+- Released by: trame
+- Serves: [Commands every project runs, written once](product.md#WrittenOnce)

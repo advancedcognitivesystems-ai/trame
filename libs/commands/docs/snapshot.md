@@ -77,9 +77,9 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 129
+- Version: 130
 - How it joins the graph: language
-- Its path: ../../generations/g129
+- Its path: ../../generations/g130
 - Serves: Commands every project runs, written once
 
 ### The people of the repository
@@ -136,6 +136,18 @@ Release · `R0_1_1`
 - Released on: 2026-11-26
 - What changes: the small project the scenarios compile lies in the library's sources, named by its package: a version carries it
 - Fingerprint: 7c152c7f2b91e089
+- Language: shared
+- Serves: Commands every project runs, written once
+
+### Version 0.1.2
+
+Release · `R0_1_2`
+
+- Released by: trame
+- Version: 0.1.2
+- Released on: 2026-11-27
+- What changes: its own language of words; the decision behind its choices, which adopts std's: the engine is a provider
+- Fingerprint: 29350d242a13f4d9
 - Language: shared
 - Serves: Commands every project runs, written once
 

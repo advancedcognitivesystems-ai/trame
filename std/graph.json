@@ -3296,10 +3296,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "129",
+        "version": "130",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g129"
+        "at": "../generations/g130"
       },
       "diagnostics": []
     },
@@ -4190,6 +4190,21 @@
         "date": "2026-11-26",
         "what": "the languages the engine reads for every project (HTML, CSS), read through the port LanguageReading, which the engine realizes",
         "fingerprint": "2229329d5c9f983b",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "releases.R0_29_1",
+      "kind": "release",
+      "title": "Version 0.29.1",
+      "source": "src/releases.ts:454",
+      "fields": {
+        "owner": "trame",
+        "version": "0.29.1",
+        "date": "2026-11-27",
+        "what": "the decision behind the library's choices; the grammars' versions named once, by the engine's packages",
+        "fingerprint": "1e0910d6f1dc66af",
         "language": "shared"
       },
       "diagnostics": []
@@ -6631,7 +6646,7 @@
       },
       "result": {
         "path": "src",
-        "code": "f09da8c6"
+        "code": "b56c0994"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -9660,6 +9675,41 @@
     },
     {
       "from": "releases.R0_29_0",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_29_1",
+      "to": "product.ChosenCommands",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_29_1",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_29_1",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_29_1",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_29_1",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_29_1",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_29_1",
       "to": "product.VersionsThatHold",
       "kind": "serves"
     },

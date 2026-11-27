@@ -599,7 +599,8 @@ dispatch prepared for a command, another compiled at a date, each with what a vi
 writes it), the engine gives it, and std's port `TheProject` reaches it, realized on a machine by an adapter that reads
 it and, in a scenario, by the engine that plays the scenario compiling a project the library carries in its sources.
 The commands every project runs move onto it into `libs/commands`, one by one: `plan` first, which Trame now runs from
-the library, and which says what the engine's plan said. Reading a language is the engine's too (since g128): the languages it reads for every
+the library, and which says what the engine's plan said; code leaves the engine by a move, never a copy, so the engine's
+own `plan` and `amend` compare two builds with the library's comparison until they leave too (g130). Reading a language is the engine's too (since g128): the languages it reads for every
 project (HTML and CSS) are std's, read through std's port `LanguageReading`, so the syntax elements of any library can
 name them and have what they write read back. The renderers of documents go into a library of their own,
 `libs/documents`, which starts with the language the documents are written in: the engine's, as a port Trame realizes,
@@ -788,6 +789,13 @@ in production, each chosen with its SQL dialect as one family (Abstract Factory)
 cancellations as repositories over SQL (functions that ask the dialect, without SQL of their own); a simulated
 provider and a stopped clock where they belong. `docs/choices.md` shows each port by environment, with the choice that
 decides it.
+
+A choice has its reasons (the law of choices, g130): a technical choice that no architecture decision of its project
+applies is warned, so each one is backed by an ADR that says why, with the options it rejected. A project that chooses
+what a library offers often chooses it for the library's reasons: its ADR may adopt the library's (`adopts`), whose
+context and rejected options become the project's, and still applies the project's bindings, which are its evidence. A
+project adopts only a library's decision; its own it applies. Trame backs each of its 35 choices this way, the example and
+Poselia theirs, each published.
 
 ## One renderer, its syntax a choice
 

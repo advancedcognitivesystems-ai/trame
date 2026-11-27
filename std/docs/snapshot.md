@@ -775,10 +775,10 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 129
+- Version: 130
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../generations/g129
+- Its path: ../generations/g130
 - Serves: Ports of the platform, realized once
 
 ### The people of the repository
@@ -1395,6 +1395,18 @@ Release · `R0_29_0`
 - Released on: 2026-11-26
 - What changes: the languages the engine reads for every project (HTML, CSS), read through the port LanguageReading, which the engine realizes
 - Fingerprint: 2229329d5c9f983b
+- Language: shared
+- Serves: Commands chosen, not written again, A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again, Versions that hold
+
+### Version 0.29.1
+
+Release · `R0_29_1`
+
+- Released by: trame
+- Version: 0.29.1
+- Released on: 2026-11-27
+- What changes: the decision behind the library's choices; the grammars' versions named once, by the engine's packages
+- Fingerprint: 1e0910d6f1dc66af
 - Language: shared
 - Serves: Commands chosen, not written again, A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again, Versions that hold
 

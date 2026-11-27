@@ -99,9 +99,9 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 129
+- Version: 130
 - How it joins the graph: language
-- Its path: ../../generations/g129
+- Its path: ../../generations/g130
 - Serves: Data described once
 
 ### The people of the repository
@@ -122,9 +122,9 @@ Package · `stdLibrary`
 
 - Owner: trame
 - Name: std
-- Version: 0.29.0
+- Version: 0.29.1
 - How it joins the graph: library
-- Its path: ../../std/releases/0.29.0
+- Its path: ../../std/releases/0.29.1
 - Serves: Data described once
 
 ## Data · Principles
@@ -312,6 +312,18 @@ Release · `R0_5_0`
 - Released on: 2026-11-20
 - What changes: Each problem an entity raises has its code (C4): entity-reseeded, entity-key-unknown, entity-field-without-type, entity-owner-field-unknown, entity-migration-undecided; the language's holes now name their code first
 - Fingerprint: a3754897cae809d3
+- Language: shared
+- Serves: Data described once
+
+### Version 0.5.1
+
+Release · `R0_5_1`
+
+- Released by: trame
+- Version: 0.5.1
+- Released on: 2026-11-27
+- What changes: the decision behind the library's choices for its scenarios
+- Fingerprint: bfdc3b283278c278
 - Language: shared
 - Serves: Data described once
 

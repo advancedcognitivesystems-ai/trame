@@ -1,6 +1,6 @@
 # Layers
 
-*The graph in force on 30 October 2026, ordered by distance to the goals.*
+*The graph in force on 27 November 2026, ordered by distance to the goals.*
 
 ```mermaid
 flowchart TB
@@ -211,17 +211,17 @@ flowchart TB
     n177["A preview<br/><small>Shipment</small>"]:::unknown
     n178["The way of a preview<br/><small>Policy</small>"]:::neutral
     n179["When the preview runs on GitHub, and what it keeps there<br/><small>Decision</small>"]:::neutral
-    n180["The preview's script<br/><small>Artefact</small>"]:::unknown
-    n181["The preview's workflow<br/><small>Artefact</small>"]:::unknown
+    n180["The preview's script<br/><small>Artefact</small>"]:::held
+    n181["The preview's workflow<br/><small>Artefact</small>"]:::held
     n182["The product holds<br/><small>Obligation</small>"]:::neutral
     n183["The page is checked by programs<br/><small>Obligation</small>"]:::neutral
     n184["The way of a public version<br/><small>Policy</small>"]:::neutral
     n185["A public version<br/><small>Shipment</small>"]:::unknown
     n186["What people decided, published<br/><small>Obligation</small>"]:::neutral
     n187["How a pull request is checked on GitHub<br/><small>Decision</small>"]:::neutral
-    n188["The pull requests' workflow<br/><small>Artefact</small>"]:::unknown
+    n188["The pull requests' workflow<br/><small>Artefact</small>"]:::held
     n189["The rules of the app hold<br/><small>Obligation</small>"]:::neutral
-    n190["The files that run it elsewhere<br/><small>Shipment</small>"]:::unknown
+    n190["The files that run it elsewhere<br/><small>Shipment</small>"]:::held
     n191["What the scenarios of the SDLC check<br/><small>Message catalog</small>"]:::neutral
     n192["The SDLC in memory<br/><small>Technical choice</small>"]:::held
     n193["The SDLC is in the graph<br/><small>Architecture decision</small>"]:::unknown
