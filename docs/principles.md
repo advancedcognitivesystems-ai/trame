@@ -87,7 +87,7 @@ Consequences: A command a library offers changes with a release of the library; 
 - Decided by: trame
 - Serves: [What is generic is written once](product.md#WrittenOnce)
 - Applied by: [The commands Trame takes from std](sdlc.md#CommandsOfStd), [The commands Trame takes from libs/commands](sdlc.md#CommandsWrittenOnce)
-- Adopts: [A library offers commands, a project chooses them](../std/releases/0.29.1/docs/commands.md#CommandsOfALibrary)
+- Adopts: [A library offers commands, a project chooses them](../std/releases/0.30.0/docs/commands.md#CommandsOfALibrary)
 
 <a id="DataAsDatasets"></a>
 
@@ -167,7 +167,7 @@ Consequences: What Trame's commands and std's languages reach of the engine is w
 - Decided by: trame
 - Serves: [What is generic is written once](product.md#WrittenOnce)
 - Applied by: [The commands Trame takes from libs/commands](sdlc.md#CommandsWrittenOnce), [std's languages, read by the engine](syntax.md#StdLanguagesRead)
-- Adopts: [The engine is a provider](../std/releases/0.29.1/docs/engine.md#EngineAsAProvider)
+- Adopts: [The engine is a provider](../std/releases/0.30.0/docs/engine.md#EngineAsAProvider)
 
 <a id="EveryLiteralDeclared"></a>
 
@@ -572,7 +572,7 @@ Consequences: A session of Claude Code merges through its proxy (AutoMergeInASes
 - Decided by: trame
 - Serves: [What is generic is written once](product.md#WrittenOnce)
 - Applied by: [The SDLC on the machine](sdlc.md#SdlcOnTheMachine), [The repository's work on a machine](sdlc.md#RepositoryWorkOnAMachine), [GitHub merges once it holds, asked by its command line](sdlc.md#AutoMergeOnTheMachine), [GitHub merges once it holds, asked in a session](sdlc.md#AutoMergeInASession)
-- Adopts: [The SDLC's tooling is realized once](../std/releases/0.29.1/docs/tooling.md#ToolingAsPorts), [A repository is set by its project's graph](../std/releases/0.29.1/docs/repository.md#RepositoryThroughItsApi)
+- Adopts: [The SDLC's tooling is realized once](../std/releases/0.30.0/docs/tooling.md#ToolingAsPorts), [A repository is set by its project's graph](../std/releases/0.30.0/docs/repository.md#RepositoryThroughItsApi)
 
 <a id="ShippedThroughTheGraph"></a>
 
@@ -616,7 +616,7 @@ Consequences: A binding chooses the realizations of one or more ports in some en
 
 - Decided by: trame
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
-- Applied by: [NodePlatform](platform.md#NodePlatform), [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine), [Scenarios run in memory](platform.md#InMemoryScenarios), [esbuild bundles the page's program](platform.md#EsbuildBundles), [tree-sitter reads the bodies](platform.md#TreeSitterReads), [tsx runs TypeScript](platform.md#TsxRuns), [The TypeScript compiler reads the declarations](platform.md#CompilerReadsDeclarations), [The engine's own files sit beside its code](platform.md#EngineFilesBesideCode), [Documents in Markdown](rendering.md#DocumentsInMarkdown), [Figures in Mermaid](rendering.md#FiguresInMermaid), [The terminal in plain text](rendering.md#TerminalInText), [Figures in the terminal, as text](rendering.md#TerminalFiguresAsText), [The page in HTML](rendering.md#PageInHtml), [The page's figures in SVG](rendering.md#PageFiguresDrawn), [Strategy](../std/releases/0.29.1/docs/patterns.md#Strategy), [Adapter](../std/releases/0.29.1/docs/patterns.md#Adapter), [Bridge](../std/releases/0.29.1/docs/patterns.md#Bridge), [Abstract Factory](../std/releases/0.29.1/docs/patterns.md#AbstractFactory), [Repository](../std/releases/0.29.1/docs/patterns.md#Repository)
+- Applied by: [NodePlatform](platform.md#NodePlatform), [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine), [Scenarios run in memory](platform.md#InMemoryScenarios), [esbuild bundles the page's program](platform.md#EsbuildBundles), [tree-sitter reads the bodies](platform.md#TreeSitterReads), [tsx runs TypeScript](platform.md#TsxRuns), [The TypeScript compiler reads the declarations](platform.md#CompilerReadsDeclarations), [The engine's own files sit beside its code](platform.md#EngineFilesBesideCode), [Documents in Markdown](rendering.md#DocumentsInMarkdown), [Figures in Mermaid](rendering.md#FiguresInMermaid), [The terminal in plain text](rendering.md#TerminalInText), [Figures in the terminal, as text](rendering.md#TerminalFiguresAsText), [The page in HTML](rendering.md#PageInHtml), [The page's figures in SVG](rendering.md#PageFiguresDrawn), [Strategy](../std/releases/0.30.0/docs/patterns.md#Strategy), [Adapter](../std/releases/0.30.0/docs/patterns.md#Adapter), [Bridge](../std/releases/0.30.0/docs/patterns.md#Bridge), [Abstract Factory](../std/releases/0.30.0/docs/patterns.md#AbstractFactory), [Repository](../std/releases/0.30.0/docs/patterns.md#Repository)
 
 <a id="TrameBuildsTrame"></a>
 
@@ -700,7 +700,7 @@ What a part of the product says to people, in a terminal or a document, is writt
 
 Context: Words people read change for reasons code does not know (a clearer phrasing, another language), and they hold literals by nature.
 
-Consequences: A catalog's text is what it declares: it is not a literal to declare. The page, which runs where nothing is wired, calls the renderers' catalog directly. The reader and the checks of a body hold it: a sentence written in a body is a literal, an error.
+Consequences: A catalog's text is what it declares: it is not a literal to declare. The page, which runs where nothing is wired, calls the catalog of libs/documents' renderers directly. The reader and the checks of a body hold it: a sentence written in a body is a literal, an error.
 
 | Rejected | Why |
 |---|---|
@@ -708,4 +708,4 @@ Consequences: A catalog's text is what it declares: it is not a literal to decla
 
 - Decided by: trame
 - Serves: [A single source of truth](product.md#SingleSource)
-- Applied by: [Syntax reader](syntax.md#SyntaxReader), [Checks of a body](syntax.md#BodyChecks), [Messages of the compiler](messages.md#CompilerMessages), [Messages of the drivers](messages.md#DriverMessages), [Messages of the laws](messages.md#LawMessages), [Messages of the views](messages.md#ViewMessages), [Messages of the outputs](messages.md#OutputMessages), [Messages of trame dev](messages.md#DevMessages), [Messages of the commands](messages.md#CommandMessages), [Messages of an advance](messages.md#AdvanceMessages), [Messages of the renderers](messages.md#RenderingMessages), [Messages of the platform](messages.md#PlatformMessages), [Messages of the scenarios](messages.md#ScenarioMessages)
+- Applied by: [Syntax reader](syntax.md#SyntaxReader), [Checks of a body](syntax.md#BodyChecks), [Messages of the compiler](messages.md#CompilerMessages), [Messages of the drivers](messages.md#DriverMessages), [Messages of the laws](messages.md#LawMessages), [Messages of the views](messages.md#ViewMessages), [Messages of the outputs](messages.md#OutputMessages), [Messages of trame dev](messages.md#DevMessages), [Messages of the commands](messages.md#CommandMessages), [Messages of an advance](messages.md#AdvanceMessages), [Messages of the platform](messages.md#PlatformMessages), [Messages of the scenarios](messages.md#ScenarioMessages)

@@ -36,7 +36,7 @@ import { Strategy, Adapter, Bridge, AbstractFactory, Repository } from "#std/pat
 import { DocumentsInMarkdown, FiguresInMermaid, TerminalInText, TerminalFiguresAsText, PageInHtml, PageFiguresDrawn } from "./rendering"
 import { CompileExample, KindLaws, BuildLikeBefore, ExpectedDifferences } from "./scenarios"
 import {
-  CompilerMessages, DriverMessages, LawMessages, ViewMessages, OutputMessages, DevMessages, CommandMessages, AdvanceMessages, RenderingMessages, PlatformMessages,
+  CompilerMessages, DriverMessages, LawMessages, ViewMessages, OutputMessages, DevMessages, CommandMessages, AdvanceMessages, PlatformMessages,
   ScenarioMessages,
 } from "./messages"
 
@@ -468,12 +468,12 @@ export const ActorsDeclared = adr({
 export const WordsInCatalogs = adr({
   owner: "trame",
   context: "Words people read change for reasons code does not know (a clearer phrasing, another language), and they hold literals by nature.",
-  consequences: "A catalog's text is what it declares: it is not a literal to declare. The page, which runs where nothing is wired, calls the renderers' catalog directly. The reader and the checks of a body hold it: a sentence written in a body is a literal, an error.",
+  consequences: "A catalog's text is what it declares: it is not a literal to declare. The page, which runs where nothing is wired, calls the catalog of libs/documents' renderers directly. The reader and the checks of a body hold it: a sentence written in a body is a literal, an error.",
   rejected: { "Texts in the code": "a sentence to change would mean code to change, and no language could replace another" },
   serves: [SingleSource],
   appliedBy: [
     SyntaxReader, BodyChecks,
-    CompilerMessages, DriverMessages, LawMessages, ViewMessages, OutputMessages, DevMessages, CommandMessages, AdvanceMessages, RenderingMessages, PlatformMessages,
+    CompilerMessages, DriverMessages, LawMessages, ViewMessages, OutputMessages, DevMessages, CommandMessages, AdvanceMessages, PlatformMessages,
     ScenarioMessages,
   ],
 })

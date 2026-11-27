@@ -27,6 +27,27 @@ The writers of the files that run a shipment elsewhere (GitHub Actions), at the 
 - Owner: trame
 - Serves: [Commands every project runs, written once](product.md#WrittenOnce)
 
+<a id="Documents"></a>
+
+### The renderers of documents
+
+`Documents` · `src/packages.ts:46`
+
+What writes for people what a command computes (E3): the terminal's text, its lines and their indentation, then the documents a command renders; at the version the library uses, by its path in Trame's repository.
+
+- Name: `documents`
+- Version: `0.2.0`
+- Installed: Not installed in the project: its lockfile lists no documents
+- Vulnerabilities: No report yet: trame audit asks the registry
+- Latest version: No report yet: trame audit asks the registry
+- What it may do: not said: an implementation that imports it cannot promise anything
+- How it joins the graph: `library`
+- Where it comes from: `path`
+- Its path: `../documents/releases/0.2.0`
+
+- Owner: trame
+- Serves: [Commands every project runs, written once](product.md#WrittenOnce)
+
 <a id="Language"></a>
 
 ### Trame
@@ -36,13 +57,13 @@ The writers of the files that run a shipment elsewhere (GitHub Actions), at the 
 The language the library is written in, at the generation the repository runs, by its path: the one whose engine gives the API std's ports of the engine read (g124).
 
 - Name: `trame`
-- Version: `130`
+- Version: `131`
 - Installed: Not installed in the project: its lockfile lists no trame
 - Vulnerabilities: No report yet: trame audit asks the registry
 - Latest version: No report yet: trame audit asks the registry
 - What it may do: not said: an implementation that imports it cannot promise anything
 - How it joins the graph: `language`
-- Its path: `../../generations/g130`
+- Its path: `../../generations/g131`
 
 - Owner: trame
 - Serves: [Commands every project runs, written once](product.md#WrittenOnce)
@@ -77,13 +98,13 @@ Who works on Trame's repository, declared once as actors (C4): every owner of th
 The library the commands are written with: the ports of the engine (the project at hand), of the files and of the program's command line, its structures and standards.
 
 - Name: `std`
-- Version: `0.29.1`
+- Version: `0.30.0`
 - Installed: Not installed in the project: its lockfile lists no std
 - Vulnerabilities: No report yet: trame audit asks the registry
 - Latest version: No report yet: trame audit asks the registry
 - What it may do: not said: an implementation that imports it cannot promise anything
 - How it joins the graph: `library`
-- Its path: `../../std/releases/0.29.1`
+- Its path: `../../std/releases/0.30.0`
 
 - Owner: trame
 - Serves: [Commands every project runs, written once](product.md#WrittenOnce)

@@ -4,29 +4,13 @@
 
 > **Nothing to report**
 
-## Decisions
-
-<a id="TerminalLines"></a>
-
-### How a command writes at a terminal
-
-`TerminalLines` · `src/commands.ts:36`
-
-What belongs to a line is indented under it, by this step: spaces, whose width every terminal draws alike.
-
-| Case | Value |
-|---|---|
-| indent |    |
-
-- Decided by: trame
-- Rejected: Tabs, their width depends on the terminal: what is indented under a line would not line up
-- Used by: [Plan](#Plan), [A plan says what a build would change](scenarios.md#PlanSaysWhatChanges)
+## Decision
 
 <a id="WordsLanguage"></a>
 
 ### The language the commands speak
 
-`WordsLanguage` · `src/commands.ts:47`
+`WordsLanguage` · `src/commands.ts:38`
 
 British English, the language Trame's engine and its documents speak: what a command says sits beside what the engine and the views say, at the same terminal.
 
@@ -45,7 +29,7 @@ British English, the language Trame's engine and its documents speak: what a com
 
 ### The library's commands
 
-`Commands` · `src/commands.ts:26`
+`Commands` · `src/commands.ts:27`
 
 The component whose entry points are the commands the library offers: a program's command line, whose first argument names the command. It names no environment: a project assembles it where its choice holds, in the engine's process.
 
@@ -63,7 +47,7 @@ The component whose entry points are the commands the library offers: a program'
 
 ### Two builds compared
 
-`BuildComparison` · `src/commands.ts:97` · status: **held**
+`BuildComparison` · `src/commands.ts:88` · status: **held**
 
 The nodes added and removed, the statuses that change, the nodes whose fields, result or edges change, the issues raised and resolved, the shipments whose obligations are touched; then said line by line, with the title and the kind of each node as either build knows it.
 
@@ -80,14 +64,14 @@ The nodes added and removed, the statuses that change, the nodes whose fields, r
 
 ### Plan
 
-`Plan` · `src/commands.ts:111` · status: **held**
+`Plan` · `src/commands.ts:102` · status: **held**
 
 trame plan [--at <date>]: what a build would change, written nowhere. The project at hand, compiled by the engine at the day its line says, is compared with graph.json, the last build: the nodes added and removed, the statuses that change, the nodes otherwise changed, the issues raised and resolved, then the shipments touched. Without a build to compare with, it says so.
 
 Triggered by `command plan`
 
 - Owner: trame
-- Parameters: `project` ← [The project at hand](../.trame/std/docs/engine.md#TheProject) · `files` ← [Project files](../.trame/std/docs/tooling.md#Files) · `comparison` ← [Two builds compared](#BuildComparison) · `lines` ← [How a command writes at a terminal](#TerminalLines) · `say` ← [What the commands say](#CommandWords) · `exit` ← [Exit status](../.trame/std/docs/system.md#ExitStatus) · `counts` ← [Counts](../.trame/std/docs/algebra.md#Counts)
+- Parameters: `project` ← [The project at hand](../.trame/std/docs/engine.md#TheProject) · `files` ← [Project files](../.trame/std/docs/tooling.md#Files) · `comparison` ← [Two builds compared](#BuildComparison) · `lines` ← [Terminal text](../.trame/documents/docs/text.md#TerminalText) · `say` ← [What the commands say](#CommandWords) · `exit` ← [Exit status](../.trame/std/docs/system.md#ExitStatus) · `counts` ← [Counts](../.trame/std/docs/algebra.md#Counts)
 - Body: `./code/plan.ts` (typescript)
 - Effects: asynchronous, read
 - Serves: [Commands every project runs, written once](product.md#WrittenOnce)
@@ -102,7 +86,7 @@ Triggered by `command plan`
 
 ### What the commands say
 
-`CommandWords` · `src/commands.ts:56`
+`CommandWords` · `src/commands.ts:47`
 
 <details><summary>The messages, in code</summary>
 

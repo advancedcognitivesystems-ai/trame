@@ -111,13 +111,13 @@ flowchart TB
 | 2 | produce | [The engine](sdlc.md#TheEngine) · `src` | — | — | **unknown** | 26 November 2026 by claude  |
 | 3 | produce | [The graph page](sdlc.md#GraphPage) · `trame-page.html` | [Export the page](commands.md#Export) | — | **held** | 27 November 2026 by claude  |
 | 4 | check | [The machine has what Trame needs](sdlc.md#MachineAsked) | `trame doctor`, signed by [Trame's maintainers](sdlc.md#Maintainers) | — | **unknown** | passed, 26 November 2026 by claude  |
-| 5 | check | [trame plan runs in the engine](sdlc.md#PlanRunsInTheEngine) | [Plan](../libs/commands/releases/0.1.2/docs/commands.md#Plan), signed by [Trame's maintainers](sdlc.md#Maintainers) | — | **unknown** | passed, 26 November 2026 by claude  |
+| 5 | check | [trame plan runs in the engine](sdlc.md#PlanRunsInTheEngine) | [Plan](../libs/commands/releases/0.2.0/docs/commands.md#Plan), signed by [Trame's maintainers](sdlc.md#Maintainers) | — | **unknown** | passed, 26 November 2026 by claude  |
 | 6 | check | [The graph page opens](sdlc.md#GraphPageOpens) | [Open the graph page](sdlc.md#OpenTheGraphPage), signed by [Trame's maintainers](sdlc.md#Maintainers) | — | **held** | passed, 27 November 2026 by claude  |
 | 7 | check | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | [Ask the machine](commands.md#Doctor), signed by [Trame's maintainers](sdlc.md#Maintainers) | — | **held** | passed, 27 November 2026 by claude  |
 | 8 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
 | 9 | prove | [The engine](sdlc.md#TheEngine) | — | the shipment | **unknown** | 26 November 2026 by claude  |
 | 10 | prove | [The machine has what Trame needs](sdlc.md#MachineAsked) | by hand, signed by [Trame's maintainers](sdlc.md#Maintainers) | the shipment | **unknown** | passed, 26 November 2026 by claude  |
-| 11 | prove | [trame plan runs in the engine](sdlc.md#PlanRunsInTheEngine) | [Plan](../libs/commands/releases/0.1.2/docs/commands.md#Plan), signed by [Trame's maintainers](sdlc.md#Maintainers) | the shipment | **unknown** | passed, 26 November 2026 by claude  |
+| 11 | prove | [trame plan runs in the engine](sdlc.md#PlanRunsInTheEngine) | [Plan](../libs/commands/releases/0.2.0/docs/commands.md#Plan), signed by [Trame's maintainers](sdlc.md#Maintainers) | the shipment | **unknown** | passed, 26 November 2026 by claude  |
 | 12 | prove | [Effects come from the vocabulary](architecture.md#KnownEffects) | — | [The rules of the architecture hold](sdlc.md#ArchitectureRuled) | **held** |  |
 | 13 | prove | [Only commands write](architecture.md#OnlyCommandsWrite) | — | [The rules of the architecture hold](sdlc.md#ArchitectureRuled) | **held** |  |
 | 14 | prove | [Rendering does not read the graph](architecture.md#RenderingWithoutGraph) | — | [The rules of the architecture hold](sdlc.md#ArchitectureRuled) | **held** |  |
@@ -223,13 +223,13 @@ flowchart TB
   n37["The laws are requirements<br/><small>Architecture decision</small>"]:::held
   n38["Without evidence, a status is unknown<br/><small>Architecture decision</small>"]:::held
   n39["The source carries the history<br/><small>Architecture decision</small>"]:::held
-  n40["Kinds and views say what; renderers say how<br/><small>Architecture decision</small>"]:::held
-  n41["One output for each reader<br/><small>Architecture decision</small>"]:::held
-  n42["Generations: frozen engines<br/><small>Architecture decision</small>"]:::held
-  n43["Trame builds Trame<br/><small>Architecture decision</small>"]:::held
-  n44["One renderer, its syntax a choice<br/><small>Architecture decision</small>"]:::held
-  n45["A product is delivered by a node of the graph<br/><small>Architecture decision</small>"]:::held
-  n46["A style sheet writes no value<br/><small>Architecture decision</small>"]:::held
+  n40["One output for each reader<br/><small>Architecture decision</small>"]:::held
+  n41["Generations: frozen engines<br/><small>Architecture decision</small>"]:::held
+  n42["Trame builds Trame<br/><small>Architecture decision</small>"]:::held
+  n43["A product is delivered by a node of the graph<br/><small>Architecture decision</small>"]:::held
+  n44["A style sheet writes no value<br/><small>Architecture decision</small>"]:::held
+  n45["Kinds and views say what; renderers say how<br/><small>Architecture decision</small>"]:::held
+  n46["Trame's documents, rendered by the library of documents<br/><small>Architecture decision</small>"]:::held
   n47["The page is assembled<br/><small>Architecture decision</small>"]:::held
   n48["Effects come from the vocabulary<br/><small>Architecture rule</small>"]:::held
   n49["Only commands write<br/><small>Architecture rule</small>"]:::held
@@ -324,9 +324,9 @@ flowchart TB
   n12 -->|Applied by| n50
   n12 -->|Applied by| n49
   n12 -->|Applied by| n48
-  n42 -->|Applied by| n119
-  n42 -->|Applied by| n104
-  n42 -->|Applied by| n77
+  n41 -->|Applied by| n119
+  n41 -->|Applied by| n104
+  n41 -->|Applied by| n77
   n14 -->|Applied by| n107
   n14 -->|Applied by| n119
   n16 -->|Applied by| n108
@@ -334,13 +334,13 @@ flowchart TB
   n31 -->|Applied by| n49
   n26 -->|Applied by| n50
   n18 -->|Applied by| n119
-  n43 -->|Applied by| n119
-  n43 -->|Applied by| n104
-  n43 -->|Applied by| n62
-  n43 -->|Applied by| n77
-  n43 -->|Applied by| n78
+  n42 -->|Applied by| n119
+  n42 -->|Applied by| n104
+  n42 -->|Applied by| n62
+  n42 -->|Applied by| n77
+  n42 -->|Applied by| n78
   n38 -->|Applied by| n78
-  n40 -->|Applied by| n50
+  n45 -->|Applied by| n50
   n6 -->|Checks| n0
   n6 -->|Run by| n7
   n8 -->|Checks| n0
@@ -408,13 +408,13 @@ flowchart TB
 | 36 | prove | [The laws are requirements](engine.md#LawsAreRequirements) | — | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) via [Laws](engine.md#Laws) | **held** |  |
 | 37 | prove | [Without evidence, a status is unknown](principles.md#UnknownWithoutEvidence) | — | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) via [Laws](engine.md#Laws) | **held** |  |
 | 38 | prove | [The source carries the history](principles.md#HistoryInTheSource) | — | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) via [Lock](engine.md#Lock) | **held** |  |
-| 39 | prove | [Kinds and views say what; renderers say how](rendering.md#MeaningThenLook) | — | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) via [Common rendering](rendering.md#Common) | **held** |  |
-| 40 | prove | [One output for each reader](principles.md#OneOutputPerReader) | — | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) via [Machine outputs](engine.md#MachineOutputs) | **held** |  |
-| 41 | prove | [Generations: frozen engines](principles.md#GenerationLayer) | — | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) via [Accept a candidate](generations.md#AcceptCandidate) | **held** |  |
-| 42 | prove | [Trame builds Trame](principles.md#TrameBuildsTrame) | — | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) via [Accept a candidate](generations.md#AcceptCandidate) | **held** |  |
-| 43 | prove | [One renderer, its syntax a choice](rendering.md#OneRendererManySyntaxes) | — | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) via [Rendering of the files](rendering.md#FileRendering) | **held** |  |
-| 44 | prove | [A product is delivered by a node of the graph](principles.md#DeliveredByTheGraph) | — | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) via [Style of a delivered page](delivery.md#DeliveredStyle) | **held** |  |
-| 45 | prove | [A style sheet writes no value](page.md#StyleThroughVariables) | — | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) via [Theme](page.md#Theme) | **held** |  |
+| 39 | prove | [One output for each reader](principles.md#OneOutputPerReader) | — | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) via [Machine outputs](engine.md#MachineOutputs) | **held** |  |
+| 40 | prove | [Generations: frozen engines](principles.md#GenerationLayer) | — | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) via [Accept a candidate](generations.md#AcceptCandidate) | **held** |  |
+| 41 | prove | [Trame builds Trame](principles.md#TrameBuildsTrame) | — | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) via [Accept a candidate](generations.md#AcceptCandidate) | **held** |  |
+| 42 | prove | [A product is delivered by a node of the graph](principles.md#DeliveredByTheGraph) | — | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) via [Style of a delivered page](delivery.md#DeliveredStyle) | **held** |  |
+| 43 | prove | [A style sheet writes no value](page.md#StyleThroughVariables) | — | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) via [Theme](page.md#Theme) | **held** |  |
+| 44 | prove | [Kinds and views say what; renderers say how](rendering.md#MeaningThenLook) | — | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) via [Rendering in the page](rendering.md#PageRendering) | **held** |  |
+| 45 | prove | [Trame's documents, rendered by the library of documents](rendering.md#RenderedByTheLibrary) | — | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) via [Rendering in the page](rendering.md#PageRendering) | **held** |  |
 | 46 | prove | [The page is assembled](browser.md#ThePageIsAssembled) | — | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) via [Explorer of a graph](browser.md#ExplorerFigures) | **held** |  |
 | 47 | prove | [Effects come from the vocabulary](architecture.md#KnownEffects) | — | [The rules of the architecture hold](sdlc.md#ArchitectureRuled) | **held** |  |
 | 48 | prove | [Only commands write](architecture.md#OnlyCommandsWrite) | — | [The rules of the architecture hold](sdlc.md#ArchitectureRuled) | **held** |  |
@@ -456,7 +456,7 @@ flowchart TB
 | 84 | prove | [The engine's API](command-scenarios.md#EngineApiGiven) | — | [The engine is verified](sdlc.md#EngineVerified) via [Preparation](commands.md#Preparation) | **held** |  |
 | 85 | prove | [A value amended](command-scenarios.md#ValueAmended) | — | [The engine is verified](sdlc.md#EngineVerified) via [An amendment prepared](commands.md#Amending) | **held** |  |
 | 86 | prove | [The packages audited](command-scenarios.md#PackagesAudited) | — | [The engine is verified](sdlc.md#EngineVerified) via [Audit the packages](commands.md#Audit) | **held** |  |
-| 87 | prove | [A view in the terminal](command-scenarios.md#ViewsInTheTerminal) | — | [The engine is verified](sdlc.md#EngineVerified) via [Figures as text](rendering.md#TextFigures) | **held** |  |
+| 87 | prove | [A view in the terminal](command-scenarios.md#ViewsInTheTerminal) | — | [The engine is verified](sdlc.md#EngineVerified) via [Render a view](commands.md#RenderView) | **held** |  |
 | 88 | prove | [The page of the graph](command-scenarios.md#PageOfTheGraph) | — | [The engine is verified](sdlc.md#EngineVerified) via [esbuild](platform.md#Esbuild) | **held** |  |
 | 89 | prove | [The page delivered](command-scenarios.md#PageDelivered) | — | [The engine is verified](sdlc.md#EngineVerified) via [The names a bundle is led by](delivery.md#NamesLed) | **held** |  |
 | 90 | prove | [trame dev](command-scenarios.md#DevFollowsTheGraph) | — | [The engine is verified](sdlc.md#EngineVerified) via [Node timer](platform.md#NodeTimer) | **held** |  |
@@ -491,7 +491,7 @@ flowchart TB
 | 119 | prove | [The resolution does not depend on the order](laws.md#OrderFree) | — | [The language serves what it says](sdlc.md#LanguageServed) via [Complete declaration](laws.md#CompleteDeclaration) | **held** |  |
 | 120 | prove | [Without evidence, the status is unknown](laws.md#UnknownWithoutEvidence) | — | [The language serves what it says](sdlc.md#LanguageServed) via [Complete declaration](laws.md#CompleteDeclaration) | **held** |  |
 | 121 | deploy | [Advance](commands.md#Advance) | itself | — | **held** | 27 November 2026 by claude  |
-| 122 | record | [The next generation](sdlc.md#NextGeneration) | — | — | **held** | 27 November 2026 by claude `evidence/shipments/NextGeneration-2026-11-27-e9fb8deb.json` |
+| 122 | record | [The next generation](sdlc.md#NextGeneration) | — | — | **held** | 27 November 2026 by claude `evidence/shipments/NextGeneration-2026-11-27-efaac4ce.json` |
 
 `trame ship NextGeneration --by <name>`
 

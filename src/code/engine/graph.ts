@@ -9,7 +9,7 @@ import type { AnyNode, View, Q, Graph, EdgeInfo, StaticInfo, Evidence, Reach, Se
 import type { CompilerMessages } from "../../messages"
 import type { Dates, Lists } from "#documents/language"
 import type { Layout } from "../../architecture"
-import type { ReferenceSyntax } from "../../conventions"
+import type { ReferenceSyntax } from "#std/engine"
 import type { Counts, Sequences, Texts, ValueTypes } from "#std/algebra"
 import type { LanguageSettings } from "../../documents"
 import type { Punctuation } from "#documents/language"

@@ -10,7 +10,7 @@
 
 ### The page in a browser
 
-`PageApp` · `src/architecture.ts:584`
+`PageApp` · `src/architecture.ts:576`
 
 What runs in the page Trame writes: it shows the documents of the graph at each date, follows trame dev, and explores the figures too large to be read whole. Assembled for the browser like the command line for a machine: the values of the graph are written into its program, and its implementations are the browser's.
 
@@ -18,7 +18,7 @@ What runs in the page Trame writes: it shows the documents of the graph at each 
 
 - Owner: trame
 - Language: typescript
-- Startup: `exposure` ← [Loading of a page](../std/releases/0.29.1/docs/platform.md#PageLoading)
+- Startup: `exposure` ← [Loading of a page](../std/releases/0.30.0/docs/platform.md#PageLoading)
 - Effects: display
 - Deployed in: [Browser](#Browser)
 - Exposes: [Show the graph](browser.md#ShowGraph)
@@ -29,7 +29,7 @@ What runs in the page Trame writes: it shows the documents of the graph at each 
 
 ### Trame on the command line
 
-`TrameCli` · `src/architecture.ts:571`
+`TrameCli` · `src/architecture.ts:563`
 
 The `trame` program: build, views, laws, snapshot, publication, export, dev, assembly.
 
@@ -42,7 +42,7 @@ The `trame` program: build, views, laws, snapshot, publication, export, dev, ass
 - Deployed in: [Local](#Local), [Test](#Test)
 - Exposes: [Advance](commands.md#Advance), [Amend](commands.md#Amend), [Assemble a component](commands.md#Assemble), [Audit the packages](commands.md#Audit), [Build](commands.md#Build), [A command of the project, or a view](commands.md#CommandOrView), [Deliver](commands.md#Deliver), [Start trame dev](commands.md#Dev), [Ask the machine](commands.md#Doctor), [Payload](commands.md#EmitPayload), [Examples](commands.md#Examples), [Export the page](commands.md#Export), [Help](commands.md#Help), [Start a project](commands.md#Init), [Plan a build](commands.md#Plan), [Publish](commands.md#Publish), [Record evidence](commands.md#RecordEvidence), [Fill the registry](commands.md#Registry), [Release a version](commands.md#Release), [Run a component](commands.md#Run), [Ship](commands.md#Ship), [Show a view](commands.md#ShowView), [Take the snapshot](commands.md#TakeSnapshot), [Test the laws](commands.md#TestKinds), [Upgrade](commands.md#Upgrade), [Write the manifest](commands.md#WriteManifest)
 - Applies: [The engine: a graph like any product's](principles.md#EngineLayer)
-- Released as: [Generation 1](releases.md#G1), [Generation 10](releases.md#G10), [Generation 100](releases.md#G100), [Generation 101](releases.md#G101), [Generation 102](releases.md#G102), [Generation 103](releases.md#G103), [Generation 104](releases.md#G104), [Generation 105](releases.md#G105), [Generation 106](releases.md#G106), [Generation 107](releases.md#G107), [Generation 108](releases.md#G108), [Generation 109](releases.md#G109), [Generation 11](releases.md#G11), [Generation 110](releases.md#G110), [Generation 111](releases.md#G111), [Generation 112](releases.md#G112), [Generation 113](releases.md#G113), [Generation 114](releases.md#G114), [Generation 115](releases.md#G115), [Generation 116](releases.md#G116), [Generation 117](releases.md#G117), [Generation 118](releases.md#G118), [Generation 119](releases.md#G119), [Generation 12](releases.md#G12), [Generation 120](releases.md#G120), [Generation 121](releases.md#G121), [Generation 122](releases.md#G122), [Generation 123](releases.md#G123), [Generation 124](releases.md#G124), [Generation 125](releases.md#G125), [Generation 126](releases.md#G126), [Generation 127](releases.md#G127), [Generation 128](releases.md#G128), [Generation 129](releases.md#G129), [Generation 13](releases.md#G13), [Generation 130](releases.md#G130), [Generation 14](releases.md#G14), [Generation 15](releases.md#G15), [Generation 16](releases.md#G16), [Generation 17](releases.md#G17), [Generation 18](releases.md#G18), [Generation 19](releases.md#G19), [Generation 2](releases.md#G2), [Generation 20](releases.md#G20), [Generation 21](releases.md#G21), [Generation 22](releases.md#G22), [Generation 23](releases.md#G23), [Generation 24](releases.md#G24), [Generation 25](releases.md#G25), [Generation 26](releases.md#G26), [Generation 27](releases.md#G27), [Generation 28](releases.md#G28), [Generation 29](releases.md#G29), [Generation 3](releases.md#G3), [Generation 30](releases.md#G30), [Generation 31](releases.md#G31), [Generation 32](releases.md#G32), [Generation 33](releases.md#G33), [Generation 34](releases.md#G34), [Generation 35](releases.md#G35), [Generation 36](releases.md#G36), [Generation 37](releases.md#G37), [Generation 38](releases.md#G38), [Generation 39](releases.md#G39), [Generation 4](releases.md#G4), [Generation 40](releases.md#G40), [Generation 41](releases.md#G41), [Generation 42](releases.md#G42), [Generation 43](releases.md#G43), [Generation 44](releases.md#G44), [Generation 45](releases.md#G45), [Generation 46](releases.md#G46), [Generation 47](releases.md#G47), [Generation 48](releases.md#G48), [Generation 49](releases.md#G49), [Generation 5](releases.md#G5), [Generation 50](releases.md#G50), [Generation 51](releases.md#G51), [Generation 52](releases.md#G52), [Generation 53](releases.md#G53), [Generation 54](releases.md#G54), [Generation 55](releases.md#G55), [Generation 56](releases.md#G56), [Generation 57](releases.md#G57), [Generation 58](releases.md#G58), [Generation 59](releases.md#G59), [Generation 6](releases.md#G6), [Generation 60](releases.md#G60), [Generation 61](releases.md#G61), [Generation 62](releases.md#G62), [Generation 63](releases.md#G63), [Generation 64](releases.md#G64), [Generation 65](releases.md#G65), [Generation 66](releases.md#G66), [Generation 67](releases.md#G67), [Generation 68](releases.md#G68), [Generation 69](releases.md#G69), [Generation 7](releases.md#G7), [Generation 70](releases.md#G70), [Generation 71](releases.md#G71), [Generation 72](releases.md#G72), [Generation 73](releases.md#G73), [Generation 74](releases.md#G74), [Generation 75](releases.md#G75), [Generation 76](releases.md#G76), [Generation 77](releases.md#G77), [Generation 78](releases.md#G78), [Generation 79](releases.md#G79), [Generation 8](releases.md#G8), [Generation 80](releases.md#G80), [Generation 81](releases.md#G81), [Generation 82](releases.md#G82), [Generation 83](releases.md#G83), [Generation 84](releases.md#G84), [Generation 85](releases.md#G85), [Generation 86](releases.md#G86), [Generation 87](releases.md#G87), [Generation 88](releases.md#G88), [Generation 89](releases.md#G89), [Generation 9](releases.md#G9), [Generation 90](releases.md#G90), [Generation 91](releases.md#G91), [Generation 92](releases.md#G92), [Generation 93](releases.md#G93), [Generation 94](releases.md#G94), [Generation 95](releases.md#G95), [Generation 96](releases.md#G96), [Generation 97](releases.md#G97), [Generation 98](releases.md#G98), [Generation 99](releases.md#G99)
+- Released as: [Generation 1](releases.md#G1), [Generation 10](releases.md#G10), [Generation 100](releases.md#G100), [Generation 101](releases.md#G101), [Generation 102](releases.md#G102), [Generation 103](releases.md#G103), [Generation 104](releases.md#G104), [Generation 105](releases.md#G105), [Generation 106](releases.md#G106), [Generation 107](releases.md#G107), [Generation 108](releases.md#G108), [Generation 109](releases.md#G109), [Generation 11](releases.md#G11), [Generation 110](releases.md#G110), [Generation 111](releases.md#G111), [Generation 112](releases.md#G112), [Generation 113](releases.md#G113), [Generation 114](releases.md#G114), [Generation 115](releases.md#G115), [Generation 116](releases.md#G116), [Generation 117](releases.md#G117), [Generation 118](releases.md#G118), [Generation 119](releases.md#G119), [Generation 12](releases.md#G12), [Generation 120](releases.md#G120), [Generation 121](releases.md#G121), [Generation 122](releases.md#G122), [Generation 123](releases.md#G123), [Generation 124](releases.md#G124), [Generation 125](releases.md#G125), [Generation 126](releases.md#G126), [Generation 127](releases.md#G127), [Generation 128](releases.md#G128), [Generation 129](releases.md#G129), [Generation 13](releases.md#G13), [Generation 130](releases.md#G130), [Generation 131](releases.md#G131), [Generation 14](releases.md#G14), [Generation 15](releases.md#G15), [Generation 16](releases.md#G16), [Generation 17](releases.md#G17), [Generation 18](releases.md#G18), [Generation 19](releases.md#G19), [Generation 2](releases.md#G2), [Generation 20](releases.md#G20), [Generation 21](releases.md#G21), [Generation 22](releases.md#G22), [Generation 23](releases.md#G23), [Generation 24](releases.md#G24), [Generation 25](releases.md#G25), [Generation 26](releases.md#G26), [Generation 27](releases.md#G27), [Generation 28](releases.md#G28), [Generation 29](releases.md#G29), [Generation 3](releases.md#G3), [Generation 30](releases.md#G30), [Generation 31](releases.md#G31), [Generation 32](releases.md#G32), [Generation 33](releases.md#G33), [Generation 34](releases.md#G34), [Generation 35](releases.md#G35), [Generation 36](releases.md#G36), [Generation 37](releases.md#G37), [Generation 38](releases.md#G38), [Generation 39](releases.md#G39), [Generation 4](releases.md#G4), [Generation 40](releases.md#G40), [Generation 41](releases.md#G41), [Generation 42](releases.md#G42), [Generation 43](releases.md#G43), [Generation 44](releases.md#G44), [Generation 45](releases.md#G45), [Generation 46](releases.md#G46), [Generation 47](releases.md#G47), [Generation 48](releases.md#G48), [Generation 49](releases.md#G49), [Generation 5](releases.md#G5), [Generation 50](releases.md#G50), [Generation 51](releases.md#G51), [Generation 52](releases.md#G52), [Generation 53](releases.md#G53), [Generation 54](releases.md#G54), [Generation 55](releases.md#G55), [Generation 56](releases.md#G56), [Generation 57](releases.md#G57), [Generation 58](releases.md#G58), [Generation 59](releases.md#G59), [Generation 6](releases.md#G6), [Generation 60](releases.md#G60), [Generation 61](releases.md#G61), [Generation 62](releases.md#G62), [Generation 63](releases.md#G63), [Generation 64](releases.md#G64), [Generation 65](releases.md#G65), [Generation 66](releases.md#G66), [Generation 67](releases.md#G67), [Generation 68](releases.md#G68), [Generation 69](releases.md#G69), [Generation 7](releases.md#G7), [Generation 70](releases.md#G70), [Generation 71](releases.md#G71), [Generation 72](releases.md#G72), [Generation 73](releases.md#G73), [Generation 74](releases.md#G74), [Generation 75](releases.md#G75), [Generation 76](releases.md#G76), [Generation 77](releases.md#G77), [Generation 78](releases.md#G78), [Generation 79](releases.md#G79), [Generation 8](releases.md#G8), [Generation 80](releases.md#G80), [Generation 81](releases.md#G81), [Generation 82](releases.md#G82), [Generation 83](releases.md#G83), [Generation 84](releases.md#G84), [Generation 85](releases.md#G85), [Generation 86](releases.md#G86), [Generation 87](releases.md#G87), [Generation 88](releases.md#G88), [Generation 89](releases.md#G89), [Generation 9](releases.md#G9), [Generation 90](releases.md#G90), [Generation 91](releases.md#G91), [Generation 92](releases.md#G92), [Generation 93](releases.md#G93), [Generation 94](releases.md#G94), [Generation 95](releases.md#G95), [Generation 96](releases.md#G96), [Generation 97](releases.md#G97), [Generation 98](releases.md#G98), [Generation 99](releases.md#G99)
 - Produces: [The candidate engine](sdlc.md#EngineCandidate)
 
 ## Ports
@@ -51,7 +51,7 @@ The `trame` program: build, views, laws, snapshot, publication, export, dev, ass
 
 ### Where an amendment goes
 
-`AmendmentPlace` · `src/architecture.ts:318`
+`AmendmentPlace` · `src/architecture.ts:310`
 
 An amendment written by trame amend or from the page is recorded where the project keeps its amendments: a concept, with its strategies. The first writes it in place, in the sources, beside the node it amends; a pull request will be another.
 
@@ -65,10 +65,10 @@ An amendment written by trame amend or from the page is recorded where the proje
 | [Local](#Local) | [Amendments in place](platform.md#InPlaceSources) | [Amendments go in the sources](platform.md#AmendmentsInPlace) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [Amendments in place](platform.md#InPlaceSources) | [Amendments go in the sources](platform.md#AmendmentsInPlace) |
-| [Test](../libs/commands/releases/0.1.2/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.1.1/docs/scenarios.md#Test) | none | — |
-| [Strict](../std/releases/0.29.1/docs/scenarios.md#Strict) | none | — |
-| [Test](../std/releases/0.29.1/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
+| [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
 - Effects: read, write
@@ -79,7 +79,7 @@ An amendment written by trame amend or from the page is recorded where the proje
 
 ### Bundler
 
-`Bundler` · `src/architecture.ts:454`
+`Bundler` · `src/architecture.ts:446`
 
 Gathers the page's program and what it imports into a single module for the browser.
 
@@ -89,10 +89,10 @@ Gathers the page's program and what it imports into a single module for the brow
 | [Local](#Local) | [esbuild](platform.md#Esbuild) | [esbuild bundles the page's program](platform.md#EsbuildBundles) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [esbuild](platform.md#Esbuild) | [esbuild bundles the page's program](platform.md#EsbuildBundles) |
-| [Test](../libs/commands/releases/0.1.2/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.1.1/docs/scenarios.md#Test) | none | — |
-| [Strict](../std/releases/0.29.1/docs/scenarios.md#Strict) | none | — |
-| [Test](../std/releases/0.29.1/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
+| [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
 - Effects: read
@@ -103,7 +103,7 @@ Gathers the page's program and what it imports into a single module for the brow
 
 ### Clock
 
-`Clock` · `src/architecture.ts:438`
+`Clock` · `src/architecture.ts:430`
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
@@ -111,10 +111,10 @@ Gathers the page's program and what it imports into a single module for the brow
 | [Local](#Local) | [System clock](platform.md#SystemClock) | [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [Stopped clock](platform.md#StoppedClock) | [Scenarios run in memory](platform.md#InMemoryScenarios) |
-| [Test](../libs/commands/releases/0.1.2/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.1.1/docs/scenarios.md#Test) | none | — |
-| [Strict](../std/releases/0.29.1/docs/scenarios.md#Strict) | none | — |
-| [Test](../std/releases/0.29.1/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
+| [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
 - Effects: read, time
@@ -125,7 +125,7 @@ Gathers the page's program and what it imports into a single module for the brow
 
 ### Command line
 
-`CommandLine` · `src/architecture.ts:502`
+`CommandLine` · `src/architecture.ts:494`
 
 Exposes Trame's commands: reads the arguments, calls the command, exits with its code.
 
@@ -135,10 +135,10 @@ Exposes Trame's commands: reads the arguments, calls the command, exits with its
 | [Local](#Local) | [Command line](platform.md#NodeCommandLine) | [NodePlatform](platform.md#NodePlatform) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [Command line](platform.md#NodeCommandLine) | [NodePlatform](platform.md#NodePlatform) |
-| [Test](../libs/commands/releases/0.1.2/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.1.1/docs/scenarios.md#Test) | none | — |
-| [Strict](../std/releases/0.29.1/docs/scenarios.md#Strict) | none | — |
-| [Test](../std/releases/0.29.1/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
+| [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
 - Effects: terminal
@@ -149,7 +149,7 @@ Exposes Trame's commands: reads the arguments, calls the command, exits with its
 
 ### Compression
 
-`Compression` · `src/architecture.ts:473`
+`Compression` · `src/architecture.ts:465`
 
 A text made smaller for a page to carry: the browser decompresses it.
 
@@ -159,10 +159,10 @@ A text made smaller for a page to carry: the browser decompresses it.
 | [Local](#Local) | [gzip, with Node's zlib](platform.md#NodeCompression) | [NodePlatform](platform.md#NodePlatform) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [gzip, with Node's zlib](platform.md#NodeCompression) | [NodePlatform](platform.md#NodePlatform) |
-| [Test](../libs/commands/releases/0.1.2/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.1.1/docs/scenarios.md#Test) | none | — |
-| [Strict](../std/releases/0.29.1/docs/scenarios.md#Strict) | none | — |
-| [Test](../std/releases/0.29.1/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
+| [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
 - Used by: [The page of the graph](command-scenarios.md#PageOfTheGraph), [Page](page.md#Page)
@@ -172,7 +172,7 @@ A text made smaller for a page to carry: the browser decompresses it.
 
 ### Decompression
 
-`Decompression` · `src/architecture.ts:535`
+`Decompression` · `src/architecture.ts:527`
 
 The graph an exported page carries, made whole again by the browser.
 
@@ -182,10 +182,10 @@ The graph an exported page carries, made whole again by the browser.
 | [Local](#Local) | none | — |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | none | — |
-| [Test](../libs/commands/releases/0.1.2/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.1.1/docs/scenarios.md#Test) | none | — |
-| [Strict](../std/releases/0.29.1/docs/scenarios.md#Strict) | none | — |
-| [Test](../std/releases/0.29.1/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
+| [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
 - Implemented by: [The browser's gzip](browser.md#BrowserDecompression)
@@ -195,7 +195,7 @@ The graph an exported page carries, made whole again by the browser.
 
 ### File reading
 
-`FileReading` · `src/architecture.ts:323`
+`FileReading` · `src/architecture.ts:315`
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
@@ -203,10 +203,10 @@ The graph an exported page carries, made whole again by the browser.
 | [Local](#Local) | [System files, for reading](platform.md#DiskReading) | [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [Files in memory, over the disk](platform.md#MemoryFiles) | [Scenarios write in memory, over the disk](platform.md#FilesInMemoryOverTheDisk) |
-| [Test](../libs/commands/releases/0.1.2/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.1.1/docs/scenarios.md#Test) | none | — |
-| [Strict](../std/releases/0.29.1/docs/scenarios.md#Strict) | none | — |
-| [Test](../std/releases/0.29.1/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
+| [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
 - Effects: read
@@ -217,7 +217,7 @@ The graph an exported page carries, made whole again by the browser.
 
 ### File trees
 
-`FileTrees` · `src/architecture.ts:490`
+`FileTrees` · `src/architecture.ts:482`
 
 Copies, links, removes and compares files and directories: what an advance does with documents and generations.
 
@@ -236,10 +236,10 @@ Copies, links, removes and compares files and directories: what an advance does 
 | [Local](#Local) | [Trees on disk](platform.md#DiskTrees) | [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [Files in memory, over the disk](platform.md#MemoryFiles) | [Scenarios write in memory, over the disk](platform.md#FilesInMemoryOverTheDisk) |
-| [Test](../libs/commands/releases/0.1.2/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.1.1/docs/scenarios.md#Test) | none | — |
-| [Strict](../std/releases/0.29.1/docs/scenarios.md#Strict) | none | — |
-| [Test](../std/releases/0.29.1/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
+| [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
 - Effects: process, read, write
@@ -250,7 +250,7 @@ Copies, links, removes and compares files and directories: what an advance does 
 
 ### File writing
 
-`FileWriting` · `src/architecture.ts:328`
+`FileWriting` · `src/architecture.ts:320`
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
@@ -258,10 +258,10 @@ Copies, links, removes and compares files and directories: what an advance does 
 | [Local](#Local) | [System files, for writing](platform.md#DiskWriting) | [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [Files in memory, over the disk](platform.md#MemoryFiles) | [Scenarios write in memory, over the disk](platform.md#FilesInMemoryOverTheDisk) |
-| [Test](../libs/commands/releases/0.1.2/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.1.1/docs/scenarios.md#Test) | none | — |
-| [Strict](../std/releases/0.29.1/docs/scenarios.md#Strict) | none | — |
-| [Test](../std/releases/0.29.1/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
+| [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
 - Effects: write
@@ -272,7 +272,7 @@ Copies, links, removes and compares files and directories: what an advance does 
 
 ### Feed of the graph
 
-`GraphFeed` · `src/architecture.ts:523`
+`GraphFeed` · `src/architecture.ts:515`
 
 The compiled graph the page shows: carried by an exported page, or given by trame dev at each compilation.
 
@@ -288,10 +288,10 @@ The compiled graph the page shows: carried by an exported page, or given by tram
 | [Local](#Local) | none | — |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | none | — |
-| [Test](../libs/commands/releases/0.1.2/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.1.1/docs/scenarios.md#Test) | none | — |
-| [Strict](../std/releases/0.29.1/docs/scenarios.md#Strict) | none | — |
-| [Test](../std/releases/0.29.1/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
+| [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
 - Effects: asynchronous, display, network
@@ -302,7 +302,7 @@ The compiled graph the page shows: carried by an exported page, or given by tram
 
 ### Hashing
 
-`Hashing` · `src/architecture.ts:361`
+`Hashing` · `src/architecture.ts:353`
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
@@ -310,10 +310,10 @@ The compiled graph the page shows: carried by an exported page, or given by tram
 | [Local](#Local) | [SHA-256 hashes](platform.md#NodeHashing) | [NodePlatform](platform.md#NodePlatform) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [SHA-256 hashes](platform.md#NodeHashing) | [NodePlatform](platform.md#NodePlatform) |
-| [Test](../libs/commands/releases/0.1.2/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.1.1/docs/scenarios.md#Test) | none | — |
-| [Strict](../std/releases/0.29.1/docs/scenarios.md#Strict) | none | — |
-| [Test](../std/releases/0.29.1/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
+| [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
 - Used by: [Advance](commands.md#Advance), [Release a version](commands.md#Release), [The fingerprint of an engine](engine.md#EngineFingerprint), [The runs of a project](engine.md#ProjectRuns), [Static reading](engine.md#StaticAnalysis), [Attribution](shipping.md#Attribution), [Evidence of the SDLC](shipping.md#SdlcEvidence), [Syntax reader](syntax.md#SyntaxReader)
@@ -323,7 +323,7 @@ The compiled graph the page shows: carried by an exported page, or given by tram
 
 ### HTTP server
 
-`HttpServer` · `src/architecture.ts:448`
+`HttpServer` · `src/architecture.ts:440`
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
@@ -331,10 +331,10 @@ The compiled graph the page shows: carried by an exported page, or given by tram
 | [Local](#Local) | [Node HTTP server](platform.md#NodeHttpServer) | [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [A server in memory](platform.md#MemoryHttpServer) | [Scenarios run in memory](platform.md#InMemoryScenarios) |
-| [Test](../libs/commands/releases/0.1.2/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.1.1/docs/scenarios.md#Test) | none | — |
-| [Strict](../std/releases/0.29.1/docs/scenarios.md#Strict) | none | — |
-| [Test](../std/releases/0.29.1/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
+| [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
 - Effects: network
@@ -345,7 +345,7 @@ The compiled graph the page shows: carried by an exported page, or given by tram
 
 ### Results kept
 
-`KeptResults` · `src/architecture.ts:395`
+`KeptResults` · `src/architecture.ts:387`
 
 What a computation found, kept under its key while the process runs. Asked again, the computation finds it there and checks that what it read is as it was before giving it: the reading of a program by the compiler of TypeScript, the parsing of a file by tree-sitter. The scenarios load the same projects again and again; each is read once.
 
@@ -355,10 +355,10 @@ What a computation found, kept under its key while the process runs. Asked again
 | [Local](#Local) | [Results kept in the process](platform.md#ResultsInTheProcess) | [NodePlatform](platform.md#NodePlatform) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [Results kept in the process](platform.md#ResultsInTheProcess) | [NodePlatform](platform.md#NodePlatform) |
-| [Test](../libs/commands/releases/0.1.2/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.1.1/docs/scenarios.md#Test) | none | — |
-| [Strict](../std/releases/0.29.1/docs/scenarios.md#Strict) | none | — |
-| [Test](../std/releases/0.29.1/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
+| [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
 - Used by: [Laws](engine.md#Laws), [Static reading](engine.md#StaticAnalysis), [Syntax reader](syntax.md#SyntaxReader)
@@ -368,7 +368,7 @@ What a computation found, kept under its key while the process runs. Asked again
 
 ### Runs kept
 
-`KeptRuns` · `src/architecture.ts:404`
+`KeptRuns` · `src/architecture.ts:396`
 
 What a run found (a scenario played), kept under the fingerprint of what it ran: given back while the code it runs is as it was and, beyond the process, while the engine and the files the project reads are as they were. A build played Poselia's scenarios eleven times and the example's thirty-six; a shipment compiles Trame's graph a dozen times with the same code.
 
@@ -378,10 +378,10 @@ What a run found (a scenario played), kept under the fingerprint of what it ran:
 | [Local](#Local) | [The runs of a project](engine.md#ProjectRuns) | [A run is kept while what it reads is as it was](platform.md#RunsByWhatTheyRead) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [The runs of a project](engine.md#ProjectRuns) | [A run is kept while what it reads is as it was](platform.md#RunsByWhatTheyRead) |
-| [Test](../libs/commands/releases/0.1.2/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.1.1/docs/scenarios.md#Test) | none | — |
-| [Strict](../std/releases/0.29.1/docs/scenarios.md#Strict) | none | — |
-| [Test](../std/releases/0.29.1/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
+| [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
 - Effects: keeps, read
@@ -392,7 +392,7 @@ What a run found (a scenario played), kept under the fingerprint of what it ran:
 
 ### Module loader
 
-`ModuleLoader` · `src/architecture.ts:340`
+`ModuleLoader` · `src/architecture.ts:332`
 
 Runs a module of the graph, of a kind or of a view, and reads what it exports.
 
@@ -408,10 +408,10 @@ Runs a module of the graph, of a kind or of a view, and reads what it exports.
 | [Local](#Local) | [tsx loader](platform.md#TsxLoader) | [tsx runs TypeScript](platform.md#TsxRuns) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [tsx loader](platform.md#TsxLoader) | [tsx runs TypeScript](platform.md#TsxRuns) |
-| [Test](../libs/commands/releases/0.1.2/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.1.1/docs/scenarios.md#Test) | none | — |
-| [Strict](../std/releases/0.29.1/docs/scenarios.md#Strict) | none | — |
-| [Test](../std/releases/0.29.1/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
+| [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
 - Effects: execution, read
@@ -422,7 +422,7 @@ Runs a module of the graph, of a kind or of a view, and reads what it exports.
 
 ### Packages installed
 
-`PackageInstalls` · `src/architecture.ts:467`
+`PackageInstalls` · `src/architecture.ts:459`
 
 Installs the packages a project's manifest names and keeps its lockfile with them, so that what a runner installs from the lockfile is what the manifest says (since g100). A choice of installer: npm first.
 
@@ -432,10 +432,10 @@ Installs the packages a project's manifest names and keeps its lockfile with the
 | [Local](#Local) | [npm installs](platform.md#NpmInstall) | [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [No installer in test](platform.md#NoInstallsInTest) | [Scenarios write in memory, over the disk](platform.md#FilesInMemoryOverTheDisk) |
-| [Test](../libs/commands/releases/0.1.2/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.1.1/docs/scenarios.md#Test) | none | — |
-| [Strict](../std/releases/0.29.1/docs/scenarios.md#Strict) | none | — |
-| [Test](../std/releases/0.29.1/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
+| [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
 - Effects: network, process, write
@@ -446,7 +446,7 @@ Installs the packages a project's manifest names and keeps its lockfile with the
 
 ### Reports on packages
 
-`PackageReports` · `src/architecture.ts:460`
+`PackageReports` · `src/architecture.ts:452`
 
 What the registry says of the packages a project installs: their known vulnerabilities, their latest versions.
 
@@ -456,10 +456,10 @@ What the registry says of the packages a project installs: their known vulnerabi
 | [Local](#Local) | [npm's reports](platform.md#NpmReports) | [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [No registry in test](platform.md#NoReportsInTest) | [Scenarios run in memory](platform.md#InMemoryScenarios) |
-| [Test](../libs/commands/releases/0.1.2/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.1.1/docs/scenarios.md#Test) | none | — |
-| [Strict](../std/releases/0.29.1/docs/scenarios.md#Strict) | none | — |
-| [Test](../std/releases/0.29.1/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
+| [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
 - Effects: network, process
@@ -470,7 +470,7 @@ What the registry says of the packages a project installs: their known vulnerabi
 
 ### Amendments from the page
 
-`PageAmendments` · `src/architecture.ts:529`
+`PageAmendments` · `src/architecture.ts:521`
 
 What a person amends in the page goes to trame dev, which says first what it would change, then records it.
 
@@ -485,10 +485,10 @@ What a person amends in the page goes to trame dev, which says first what it wou
 | [Local](#Local) | none | — |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | none | — |
-| [Test](../libs/commands/releases/0.1.2/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.1.1/docs/scenarios.md#Test) | none | — |
-| [Strict](../std/releases/0.29.1/docs/scenarios.md#Strict) | none | — |
-| [Test](../std/releases/0.29.1/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
+| [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
 - Effects: asynchronous, display, network
@@ -499,7 +499,7 @@ What a person amends in the page goes to trame dev, which says first what it wou
 
 ### Memory of the page
 
-`PageMemory` · `src/architecture.ts:517`
+`PageMemory` · `src/architecture.ts:509`
 
 The document, the rendering and the node the person was on, kept for their next visit.
 
@@ -514,10 +514,10 @@ The document, the rendering and the node the person was on, kept for their next 
 | [Local](#Local) | none | — |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | none | — |
-| [Test](../libs/commands/releases/0.1.2/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.1.1/docs/scenarios.md#Test) | none | — |
-| [Strict](../std/releases/0.29.1/docs/scenarios.md#Strict) | none | — |
-| [Test](../std/releases/0.29.1/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
+| [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
 - Effects: read, write
@@ -528,7 +528,7 @@ The document, the rendering and the node the person was on, kept for their next 
 
 ### Window of the page
 
-`PageWindow` · `src/architecture.ts:511`
+`PageWindow` · `src/architecture.ts:503`
 
 The document the page writes in and hears, and what it asks of the window around it.
 
@@ -538,10 +538,10 @@ The document the page writes in and hears, and what it asks of the window around
 | [Local](#Local) | none | — |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | none | — |
-| [Test](../libs/commands/releases/0.1.2/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.1.1/docs/scenarios.md#Test) | none | — |
-| [Strict](../std/releases/0.29.1/docs/scenarios.md#Strict) | none | — |
-| [Test](../std/releases/0.29.1/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
+| [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
 - Effects: display
@@ -552,7 +552,7 @@ The document the page writes in and hears, and what it asks of the window around
 
 ### Paths
 
-`Paths` · `src/architecture.ts:334`
+`Paths` · `src/architecture.ts:326`
 
 Computations on file paths, without touching the files.
 
@@ -562,10 +562,10 @@ Computations on file paths, without touching the files.
 | [Local](#Local) | [Node paths](platform.md#NodePaths) | [NodePlatform](platform.md#NodePlatform) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [Node paths](platform.md#NodePaths) | [NodePlatform](platform.md#NodePlatform) |
-| [Test](../libs/commands/releases/0.1.2/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.1.1/docs/scenarios.md#Test) | none | — |
-| [Strict](../std/releases/0.29.1/docs/scenarios.md#Strict) | none | — |
-| [Test](../std/releases/0.29.1/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
+| [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
 - Used by: [An advance, in memory](command-scenarios.md#AdvanceInMemory), [A build planned](command-scenarios.md#BuildPlanned), [Declarations published](command-scenarios.md#DeclarationsPublished), [trame dev](command-scenarios.md#DevFollowsTheGraph), [Evidence given for someone](command-scenarios.md#EvidenceForSomeone), [A library released](command-scenarios.md#LibraryReleased), [The manifest written](command-scenarios.md#ManifestWritten), [The packages upgraded](command-scenarios.md#PackagesUpgraded), [The page exported](command-scenarios.md#PageExported), [A project repaired](command-scenarios.md#ProjectRepaired), [A project started](command-scenarios.md#ProjectStarted), [A published value changed](command-scenarios.md#PublishedValueChanged), [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [The snapshot, taken by its command](command-scenarios.md#SnapshotTaken), [Stages shipped in order](command-scenarios.md#StagesShipped), [A value amended](command-scenarios.md#ValueAmended), [Advance](commands.md#Advance), [Amend](commands.md#Amend), [An amendment prepared](commands.md#Amending), [Assemble a component](commands.md#Assemble), [Audit the packages](commands.md#Audit), [Build](commands.md#Build), [A command of the project, or a view](commands.md#CommandOrView), [Deliver](commands.md#Deliver), [Start trame dev](commands.md#Dev), [Examples](commands.md#Examples), [Export the page](commands.md#Export), [Start a project](commands.md#Init), [Plan a build](commands.md#Plan), [Preparation](commands.md#Preparation), [Record evidence](commands.md#RecordEvidence), [Fill the registry](commands.md#Registry), [Release a version](commands.md#Release), [Ship](commands.md#Ship), [Take the snapshot](commands.md#TakeSnapshot), [Upgrade](commands.md#Upgrade), [Write the manifest](commands.md#WriteManifest), [A file written is read back](doctor.md#FilesAnswer), [The installer installs what a manifest names and writes its lockfile](doctor.md#InstallerAnswers), [A program runs with the engine's loader, and prints what it says](doctor.md#ProgramsAnswer), [A run is kept, and given back until a file it read changes](doctor.md#RunsAnswer), [A directory copied is the same as the original](doctor.md#TreesAnswer), [Assembly](engine.md#Assembly), [Compiler](engine.md#Compiler), [trame dev server](engine.md#DevServer), [The fingerprint of an engine](engine.md#EngineFingerprint), [Laws](engine.md#Laws), [Lock](engine.md#Lock), [Project](engine.md#Project), [The runs of a project](engine.md#ProjectRuns), [Static reading](engine.md#StaticAnalysis), [Views](engine.md#Views), [Wiring](engine.md#Wiring), [Drivers](languages.md#Drivers), [Example process](platform.md#ExampleProcess), [Packages by their local path](platform.md#LocalPaths), [Packages from the local registry](platform.md#LocalRegistry), [Files in memory, over the disk](platform.md#MemoryFiles), [No installer in test](platform.md#NoInstallsInTest), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore), [Evidence of the SDLC](shipping.md#SdlcEvidence), [The plan of a run elsewhere](shipping.md#ShipmentRunPlan), [Syntax reader](syntax.md#SyntaxReader), [Terraform writer](terraform.md#TerraformWriter), [TypeScript writer](typescript.md#TypeScriptWriter)
@@ -575,7 +575,7 @@ Computations on file paths, without touching the files.
 
 ### Prelude
 
-`Prelude` · `src/architecture.ts:310`
+`Prelude` · `src/architecture.ts:302`
 
 The registry of nodes and kinds, and the tooling of frozen programs: what the language shares with the engine.
 
@@ -585,10 +585,10 @@ The registry of nodes and kinds, and the tooling of frozen programs: what the la
 | [Local](#Local) | [Trame's prelude](platform.md#TramePrelude) | [The engine's own files sit beside its code](platform.md#EngineFilesBesideCode) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [Trame's prelude](platform.md#TramePrelude) | [The engine's own files sit beside its code](platform.md#EngineFilesBesideCode) |
-| [Test](../libs/commands/releases/0.1.2/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.1.1/docs/scenarios.md#Test) | none | — |
-| [Strict](../std/releases/0.29.1/docs/scenarios.md#Strict) | none | — |
-| [Test](../std/releases/0.29.1/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
+| [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
 - Effects: read
@@ -601,7 +601,7 @@ The registry of nodes and kinds, and the tooling of frozen programs: what the la
 
 ### Process
 
-`Process` · `src/architecture.ts:417`
+`Process` · `src/architecture.ts:409`
 
 The current directory, the environment, and starting other processes.
 
@@ -622,10 +622,10 @@ The current directory, the environment, and starting other processes.
 | [Local](#Local) | [Node process](platform.md#NodeProcess) | [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [Example process](platform.md#ExampleProcess) | [Scenarios run in memory](platform.md#InMemoryScenarios) |
-| [Test](../libs/commands/releases/0.1.2/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.1.1/docs/scenarios.md#Test) | none | — |
-| [Strict](../std/releases/0.29.1/docs/scenarios.md#Strict) | none | — |
-| [Test](../std/releases/0.29.1/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
+| [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
 - Effects: execution, process, read, terminal
@@ -636,7 +636,7 @@ The current directory, the environment, and starting other processes.
 
 ### Process log
 
-`ProcessLog` · `src/architecture.ts:665`
+`ProcessLog` · `src/architecture.ts:657`
 
 In a scenario: where the next commands run, what the programs started answer, and which were started.
 
@@ -646,10 +646,10 @@ In a scenario: where the next commands run, what the programs started answer, an
 | [Local](#Local) | none | — |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [Example process](platform.md#ExampleProcess) | [Scenarios run in memory](platform.md#InMemoryScenarios) |
-| [Test](../libs/commands/releases/0.1.2/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.1.1/docs/scenarios.md#Test) | none | — |
-| [Strict](../std/releases/0.29.1/docs/scenarios.md#Strict) | none | — |
-| [Test](../std/releases/0.29.1/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
+| [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
 - Used by: [An advance, in memory](command-scenarios.md#AdvanceInMemory), [A component run](command-scenarios.md#ComponentRun), [trame dev](command-scenarios.md#DevFollowsTheGraph), [The doctor](command-scenarios.md#DoctorAsks), [A library carries kinds](command-scenarios.md#KindsCarried), [A command of a library the project chooses](command-scenarios.md#LibraryCommandRun), [A library released](command-scenarios.md#LibraryReleased), [The manifest written](command-scenarios.md#ManifestWritten), [The packages audited](command-scenarios.md#PackagesAudited), [The packages upgraded](command-scenarios.md#PackagesUpgraded), [The page delivered](command-scenarios.md#PageDelivered), [The page exported](command-scenarios.md#PageExported), [A command of the project](command-scenarios.md#ProjectCommandRun), [A project repaired](command-scenarios.md#ProjectRepaired), [A project started](command-scenarios.md#ProjectStarted), [The registry filled](command-scenarios.md#RegistryFilled), [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [Stages shipped in order](command-scenarios.md#StagesShipped), [A generation advanced in one command](sdlc.md#AdvancedInOneCommand)
@@ -659,7 +659,7 @@ In a scenario: where the next commands run, what the programs started answer, an
 
 ### Programs
 
-`Programs` · `src/architecture.ts:484`
+`Programs` · `src/architecture.ts:476`
 
 Runs another engine (a frozen generation, a candidate) and reads what it prints.
 
@@ -669,10 +669,10 @@ Runs another engine (a frozen generation, a candidate) and reads what it prints.
 | [Local](#Local) | [Node programs](platform.md#NodePrograms) | [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [Example process](platform.md#ExampleProcess) | [Scenarios run in memory](platform.md#InMemoryScenarios) |
-| [Test](../libs/commands/releases/0.1.2/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.1.1/docs/scenarios.md#Test) | none | — |
-| [Strict](../std/releases/0.29.1/docs/scenarios.md#Strict) | none | — |
-| [Test](../std/releases/0.29.1/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
+| [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
 - Effects: execution, process, read
@@ -683,7 +683,7 @@ Runs another engine (a frozen generation, a candidate) and reads what it prints.
 
 ### Page resources
 
-`Resources` · `src/architecture.ts:478`
+`Resources` · `src/architecture.ts:470`
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
@@ -691,10 +691,10 @@ Runs another engine (a frozen generation, a candidate) and reads what it prints.
 | [Local](#Local) | [Page resources](platform.md#PageResources) | [The engine's own files sit beside its code](platform.md#EngineFilesBesideCode) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [Page resources](platform.md#PageResources) | [The engine's own files sit beside its code](platform.md#EngineFilesBesideCode) |
-| [Test](../libs/commands/releases/0.1.2/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.1.1/docs/scenarios.md#Test) | none | — |
-| [Strict](../std/releases/0.29.1/docs/scenarios.md#Strict) | none | — |
-| [Test](../std/releases/0.29.1/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
+| [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
 - Used by: [Page](page.md#Page)
@@ -704,7 +704,7 @@ Runs another engine (a frozen generation, a candidate) and reads what it prints.
 
 ### Where runs are kept
 
-`RunStore` · `src/architecture.ts:411`
+`RunStore` · `src/architecture.ts:403`
 
 The runs of a project under their keys: in the process (the scenarios of the scenarios, the engine in memory), or on disk beyond it, where the next build, the assembly after it and the generation that rebuilds the same graph find them.
 
@@ -714,10 +714,10 @@ The runs of a project under their keys: in the process (the scenarios of the sce
 | [Local](#Local) | [Runs kept on disk](platform.md#RunsOnDisk) | [On a machine, runs are kept on disk](platform.md#RunsKeptOnDisk) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [Runs kept in the process](platform.md#RunsInTheProcess) | [In the scenarios, runs are kept in the process](platform.md#RunsKeptInTheProcess) |
-| [Test](../libs/commands/releases/0.1.2/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.1.1/docs/scenarios.md#Test) | none | — |
-| [Strict](../std/releases/0.29.1/docs/scenarios.md#Strict) | none | — |
-| [Test](../std/releases/0.29.1/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
+| [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
 - Effects: keeps, read
@@ -728,7 +728,7 @@ The runs of a project under their keys: in the process (the scenarios of the sce
 
 ### Server log
 
-`ServerLog` · `src/architecture.ts:671`
+`ServerLog` · `src/architecture.ts:663`
 
 In a scenario: asks the server started in memory for a path.
 
@@ -738,10 +738,10 @@ In a scenario: asks the server started in memory for a path.
 | [Local](#Local) | none | — |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [A server in memory](platform.md#MemoryHttpServer) | [Scenarios run in memory](platform.md#InMemoryScenarios) |
-| [Test](../libs/commands/releases/0.1.2/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.1.1/docs/scenarios.md#Test) | none | — |
-| [Strict](../std/releases/0.29.1/docs/scenarios.md#Strict) | none | — |
-| [Test](../std/releases/0.29.1/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
+| [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
 - Used by: [trame dev](command-scenarios.md#DevFollowsTheGraph)
@@ -751,7 +751,7 @@ In a scenario: asks the server started in memory for a path.
 
 ### Signatures
 
-`Signatures` · `src/architecture.ts:387`
+`Signatures` · `src/architecture.ts:379`
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
@@ -759,10 +759,10 @@ In a scenario: asks the server started in memory for a path.
 | [Local](#Local) | [Attribution](shipping.md#Attribution) | [Evidence sealed by attribution](shipping.md#SealedByAttribution) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [Attribution](shipping.md#Attribution) | [Evidence sealed by attribution](shipping.md#SealedByAttribution) |
-| [Test](../libs/commands/releases/0.1.2/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.1.1/docs/scenarios.md#Test) | none | — |
-| [Strict](../std/releases/0.29.1/docs/scenarios.md#Strict) | none | — |
-| [Test](../std/releases/0.29.1/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
+| [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
 - Used by: [Evidence given for someone](command-scenarios.md#EvidenceForSomeone), [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [Compiler](engine.md#Compiler), [Evidence of the SDLC](shipping.md#SdlcEvidence)
@@ -772,7 +772,7 @@ In a scenario: asks the server started in memory for a path.
 
 ### Syntax trees
 
-`SyntaxTrees` · `src/architecture.ts:350`
+`SyntaxTrees` · `src/architecture.ts:342`
 
 Parses a text with a tree-sitter grammar, and gives back what queries catch in it, as records. The only place that touches tree-sitter: no node of a tree crosses it.
 
@@ -782,10 +782,10 @@ Parses a text with a tree-sitter grammar, and gives back what queries catch in i
 | [Local](#Local) | [tree-sitter in WebAssembly](platform.md#WebTreeSitter) | [tree-sitter reads the bodies](platform.md#TreeSitterReads) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [tree-sitter in WebAssembly](platform.md#WebTreeSitter) | [tree-sitter reads the bodies](platform.md#TreeSitterReads) |
-| [Test](../libs/commands/releases/0.1.2/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.1.1/docs/scenarios.md#Test) | none | — |
-| [Strict](../std/releases/0.29.1/docs/scenarios.md#Strict) | none | — |
-| [Test](../std/releases/0.29.1/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
+| [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
 - Effects: execution, read
@@ -797,7 +797,7 @@ Parses a text with a tree-sitter grammar, and gives back what queries catch in i
 
 ### Terminal
 
-`Terminal` · `src/architecture.ts:430`
+`Terminal` · `src/architecture.ts:422`
 
 The arguments, the outputs, the exit code.
 
@@ -815,10 +815,10 @@ The arguments, the outputs, the exit code.
 | [Local](#Local) | [Node terminal](platform.md#NodeTerminal) | [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [Terminal in memory](platform.md#MemoryTerminal) | [Scenarios run in memory](platform.md#InMemoryScenarios) |
-| [Test](../libs/commands/releases/0.1.2/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.1.1/docs/scenarios.md#Test) | none | — |
-| [Strict](../std/releases/0.29.1/docs/scenarios.md#Strict) | none | — |
-| [Test](../std/releases/0.29.1/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
+| [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
 - Effects: process, terminal
@@ -829,7 +829,7 @@ The arguments, the outputs, the exit code.
 
 ### Terminal log
 
-`TerminalLog` · `src/architecture.ts:659`
+`TerminalLog` · `src/architecture.ts:651`
 
 What the engine printed, when the terminal is simulated.
 
@@ -839,10 +839,10 @@ What the engine printed, when the terminal is simulated.
 | [Local](#Local) | none | — |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [Terminal in memory](platform.md#MemoryTerminal) | [Scenarios run in memory](platform.md#InMemoryScenarios) |
-| [Test](../libs/commands/releases/0.1.2/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.1.1/docs/scenarios.md#Test) | none | — |
-| [Strict](../std/releases/0.29.1/docs/scenarios.md#Strict) | none | — |
-| [Test](../std/releases/0.29.1/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
+| [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
 - Used by: [An advance, in memory](command-scenarios.md#AdvanceInMemory), [A build planned](command-scenarios.md#BuildPlanned), [The command line](command-scenarios.md#CommandLineChooses), [A component assembled](command-scenarios.md#ComponentAssembled), [Declarations published](command-scenarios.md#DeclarationsPublished), [trame dev](command-scenarios.md#DevFollowsTheGraph), [The doctor](command-scenarios.md#DoctorAsks), [The laws, tested by their command](command-scenarios.md#LawsTested), [A command of a library the project chooses](command-scenarios.md#LibraryCommandRun), [A library released](command-scenarios.md#LibraryReleased), [The packages audited](command-scenarios.md#PackagesAudited), [The page exported](command-scenarios.md#PageExported), [The page of the graph](command-scenarios.md#PageOfTheGraph), [The graph in the intermediate format](command-scenarios.md#PayloadOfTheGraph), [A command of the project](command-scenarios.md#ProjectCommandRun), [A published value changed](command-scenarios.md#PublishedValueChanged), [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [Stages shipped in order](command-scenarios.md#StagesShipped), [A view in the terminal](command-scenarios.md#ViewsInTheTerminal), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore)
@@ -852,7 +852,7 @@ What the engine printed, when the terminal is simulated.
 
 ### Timer
 
-`Timer` · `src/architecture.ts:443`
+`Timer` · `src/architecture.ts:435`
 
 | Environment | Answered by | Chosen by |
 |---|---|---|
@@ -860,10 +860,10 @@ What the engine printed, when the terminal is simulated.
 | [Local](#Local) | [Node timer](platform.md#NodeTimer) | [NodePlatform](platform.md#NodePlatform) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [Node timer](platform.md#NodeTimer) | [NodePlatform](platform.md#NodePlatform) |
-| [Test](../libs/commands/releases/0.1.2/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.1.1/docs/scenarios.md#Test) | none | — |
-| [Strict](../std/releases/0.29.1/docs/scenarios.md#Strict) | none | — |
-| [Test](../std/releases/0.29.1/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
+| [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
 - Effects: time
@@ -874,7 +874,7 @@ What the engine printed, when the terminal is simulated.
 
 ### TypeScript compiler
 
-`TypeScriptCompiler` · `src/architecture.ts:356`
+`TypeScriptCompiler` · `src/architecture.ts:348`
 
 Reads the code of the graph and checks it.
 
@@ -884,10 +884,10 @@ Reads the code of the graph and checks it.
 | [Local](#Local) | [TypeScript compiler](platform.md#RealTypeScript) | [The TypeScript compiler reads the declarations](platform.md#CompilerReadsDeclarations) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [TypeScript compiler](platform.md#RealTypeScript) | [The TypeScript compiler reads the declarations](platform.md#CompilerReadsDeclarations) |
-| [Test](../libs/commands/releases/0.1.2/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.1.1/docs/scenarios.md#Test) | none | — |
-| [Strict](../std/releases/0.29.1/docs/scenarios.md#Strict) | none | — |
-| [Test](../std/releases/0.29.1/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
+| [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
 - Effects: read
@@ -899,7 +899,7 @@ Reads the code of the graph and checks it.
 
 ### Write log
 
-`WriteLog` · `src/architecture.ts:653`
+`WriteLog` · `src/architecture.ts:645`
 
 What the engine wrote, when writing is simulated.
 
@@ -909,10 +909,10 @@ What the engine wrote, when writing is simulated.
 | [Local](#Local) | none | — |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [Files in memory, over the disk](platform.md#MemoryFiles) | [Scenarios write in memory, over the disk](platform.md#FilesInMemoryOverTheDisk) |
-| [Test](../libs/commands/releases/0.1.2/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.1.1/docs/scenarios.md#Test) | none | — |
-| [Strict](../std/releases/0.29.1/docs/scenarios.md#Strict) | none | — |
-| [Test](../std/releases/0.29.1/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
+| [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
 - Used by: [An advance, in memory](command-scenarios.md#AdvanceInMemory), [A build planned](command-scenarios.md#BuildPlanned), [A component assembled](command-scenarios.md#ComponentAssembled), [A component run](command-scenarios.md#ComponentRun), [Declarations published](command-scenarios.md#DeclarationsPublished), [Evidence given for someone](command-scenarios.md#EvidenceForSomeone), [The examples of a project, met](command-scenarios.md#ExamplesMet), [A library released](command-scenarios.md#LibraryReleased), [The manifest written](command-scenarios.md#ManifestWritten), [The packages audited](command-scenarios.md#PackagesAudited), [The packages upgraded](command-scenarios.md#PackagesUpgraded), [The page delivered](command-scenarios.md#PageDelivered), [The page exported](command-scenarios.md#PageExported), [A project repaired](command-scenarios.md#ProjectRepaired), [A project started](command-scenarios.md#ProjectStarted), [The registry filled](command-scenarios.md#RegistryFilled), [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [The snapshot, taken by its command](command-scenarios.md#SnapshotTaken), [A value amended](command-scenarios.md#ValueAmended), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore)
@@ -924,7 +924,7 @@ What the engine wrote, when writing is simulated.
 
 ### Effects come from the vocabulary
 
-`KnownEffects` · `src/architecture.ts:679` · status: **held**
+`KnownEffects` · `src/architecture.ts:671` · status: **held**
 
 A port that declares an effect outside the "Effects" vocabulary, or the effects the language itself reads (LanguageEffect: what is asynchronous), is refused: the rules that read effects would miss it. Every port of the graph is judged, a library's too: its effects reach the components that bind it.
 
@@ -939,14 +939,14 @@ Respected everywhere.
 </details>
 
 - Owner: trame
-- Applies: [Words of a vocabulary](../std/releases/0.29.1/docs/rules.md#WordsOf), [The engine: a graph like any product's](principles.md#EngineLayer), [Code holds no hidden decision](principles.md#NoHiddenDecision)
-- Depends on: [Effects](../std/releases/0.29.1/docs/effects.md#Effects)
+- Applies: [Words of a vocabulary](../std/releases/0.30.0/docs/rules.md#WordsOf), [The engine: a graph like any product's](principles.md#EngineLayer), [Code holds no hidden decision](principles.md#NoHiddenDecision)
+- Depends on: [Effects](../std/releases/0.30.0/docs/effects.md#Effects)
 
 <a id="OnlyCommandsWrite"></a>
 
 ### Only commands write
 
-`OnlyCommandsWrite` · `src/architecture.ts:607` · status: **held**
+`OnlyCommandsWrite` · `src/architecture.ts:599` · status: **held**
 
 The engine computes what to write; only a command writes it to disk: no function of the engine has the effect of writing, its own or through what it depends on.
 
@@ -961,13 +961,13 @@ Respected everywhere.
 </details>
 
 - Owner: trame
-- Applies: [Effects a node may not have](../std/releases/0.29.1/docs/rules.md#WithoutEffects), [The engine: a graph like any product's](principles.md#EngineLayer), [Code holds no hidden decision](principles.md#NoHiddenDecision)
+- Applies: [Effects a node may not have](../std/releases/0.30.0/docs/rules.md#WithoutEffects), [The engine: a graph like any product's](principles.md#EngineLayer), [Code holds no hidden decision](principles.md#NoHiddenDecision)
 
 <a id="RenderingWithoutGraph"></a>
 
 ### Rendering does not read the graph
 
-`RenderingWithoutGraph` · `src/architecture.ts:596` · status: **held**
+`RenderingWithoutGraph` · `src/architecture.ts:588` · status: **held**
 
 A renderer receives only the intermediate format: no function of the module rendering reaches the prelude, even from afar through what it depends on.
 
@@ -982,7 +982,7 @@ Respected everywhere.
 </details>
 
 - Owner: trame
-- Applies: [A node never reaches what it must not](../std/releases/0.29.1/docs/rules.md#NeverReaches), [The page is assembled](browser.md#ThePageIsAssembled), [The engine: a graph like any product's](principles.md#EngineLayer), [The traversal API is the only way to read the graph](principles.md#OneWayToRead), [Kinds and views say what; renderers say how](rendering.md#MeaningThenLook)
+- Applies: [A node never reaches what it must not](../std/releases/0.30.0/docs/rules.md#NeverReaches), [The page is assembled](browser.md#ThePageIsAssembled), [The engine: a graph like any product's](principles.md#EngineLayer), [The traversal API is the only way to read the graph](principles.md#OneWayToRead), [Kinds and views say what; renderers say how](rendering.md#MeaningThenLook)
 - Depends on: [Prelude](#Prelude)
 
 ## Environments
@@ -991,7 +991,7 @@ Respected everywhere.
 
 ### Browser
 
-`Browser` · `src/architecture.ts:565`
+`Browser` · `src/architecture.ts:557`
 
 The browser that opens a page Trame wrote: exported to a file, published, or served by trame dev.
 
@@ -1004,7 +1004,7 @@ The browser that opens a page Trame wrote: exported to a file, published, or ser
 
 ### Local
 
-`Local` · `src/architecture.ts:543`
+`Local` · `src/architecture.ts:535`
 
 The machine where `trame` is started: real files, real terminal, real clock.
 
@@ -1017,7 +1017,7 @@ The machine where `trame` is started: real files, real terminal, real clock.
 
 ### A session of Claude Code
 
-`Session` · `src/architecture.ts:550`
+`Session` · `src/architecture.ts:542`
 
 A machine in Anthropic's cloud where Claude works on Trame's repository: real files and terminal, like Local, but GitHub is reached through a proxy that refuses its GraphQL and offers routes of its own (E3).
 
@@ -1028,7 +1028,7 @@ A machine in Anthropic's cloud where Claude works on Trame's repository: real fi
 
 ### Test
 
-`Test` · `src/architecture.ts:559`
+`Test` · `src/architecture.ts:551`
 
 The scenarios: the engine reads the real files of the example (or of the project a scenario enters), but what it writes is kept in memory over them, what it prints too, and the programs it starts answer what the scenario says. The build evaluates here what needs no environment of its own (the examples of syntax elements and languages): in memory, as scenarios are.
 

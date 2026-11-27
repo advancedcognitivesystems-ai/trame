@@ -4,7 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 2 | 35 |
+| trame | 0 | 0 | 2 | 36 |
 
 <a id="trame"></a>
 
@@ -23,9 +23,9 @@
 | [The library's commands](commands.md#Commands) | Component |  |
 | [What the commands say](commands.md#CommandWords) | Message catalog |  |
 | [Plan](commands.md#Plan) | Entry point | **held** |
-| [How a command writes at a terminal](commands.md#TerminalLines) | Decision |  |
 | [The language the commands speak](commands.md#WordsLanguage) | Decision |  |
 | [The library of continuous integration](packages.md#ContinuousIntegration) | Package |  |
+| [The renderers of documents](packages.md#Documents) | Package |  |
 | [Trame](packages.md#Language) | Package |  |
 | [The people of the repository](packages.md#People) | Package |  |
 | [std](packages.md#StandardLibrary) | Package |  |
@@ -33,6 +33,7 @@
 | [Version 0.1.0](releases.md#R0_1_0) | Release |  |
 | [Version 0.1.1](releases.md#R0_1_1) | Release |  |
 | [Version 0.1.2](releases.md#R0_1_2) | Release |  |
+| [Version 0.2.0](releases.md#R0_2_0) | Release |  |
 | [Compiled by the engine that plays them](scenarios.md#CompiledByTheEngine) | Technical choice | **held** |
 | [After a build, nothing changes](scenarios.md#PlanAfterTheSameBuild) | Scenario | **held** |
 | [A plan says what a build would change](scenarios.md#PlanSaysWhatChanges) | Scenario | **held** |

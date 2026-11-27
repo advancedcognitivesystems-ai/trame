@@ -460,3 +460,16 @@ export const R0_29_1 = release({
   language: "shared",
   serves: [ChosenCommands, CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
 })
+
+/**
+ * Version 0.30.0
+ */
+export const R0_30_0 = release({
+  owner: "trame",
+  version: "0.30.0",
+  date: "2026-11-27",
+  what: "Trame's reference syntax, which the engine gives and renderers read, in the module engine",
+  fingerprint: "a85cd39da95a106b",
+  language: "shared",
+  serves: [ChosenCommands, CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
+})

@@ -8,7 +8,7 @@ import type { Api as PreparationApi } from "./preparation"
 import type { Api as CompilerApi } from "../engine/compiler"
 import type { Api as ViewsApi } from "../engine/views"
 import type { Api as LawsApi } from "../engine/laws"
-import type { PaddedCell, TerminalColumns, TerminalText } from "../../text"
+import type { PaddedCell, TerminalColumns, TerminalText } from "#documents/text"
 
 export interface Deps {
   /** The status the command returns to the system (POSIX). */

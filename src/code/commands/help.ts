@@ -9,7 +9,7 @@ import type { CommandMessages } from "../../messages"
 import type { Api as PreparationApi } from "./preparation"
 import type { Api as ProjectCommandsApi } from "./project-commands"
 import type { Api as ViewsApi } from "../engine/views"
-import type { PaddedCell, TerminalColumns } from "../../text"
+import type { PaddedCell, TerminalColumns } from "#documents/text"
 
 export interface Deps {
   /** The status the command returns to the system (POSIX). */

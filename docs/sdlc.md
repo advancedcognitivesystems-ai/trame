@@ -218,7 +218,7 @@ The programs that check what a generation ships and that the engine does not run
 
 - Owner: trame
 - Language: typescript
-- Startup: `exposure` ← [Commands of a program](../std/releases/0.29.1/docs/tooling.md#ProgramCommands)
+- Startup: `exposure` ← [Commands of a program](../std/releases/0.30.0/docs/tooling.md#ProgramCommands)
 - Effects: terminal
 - Deployed in: [Local](architecture.md#Local)
 - Exposes: [Advance](#AdvanceAGeneration), [Set the repository's settings](#ApplyTheRepositorySettings), [Open the graph page](#OpenTheGraphPage), [Read the repository's settings](#ReadTheRepositorySettings)
@@ -234,7 +234,7 @@ The programs that check what a generation ships and that the engine does not run
 The selectors of what a person sees, from the regions the page declares: the documents of its navigation, the links of the document shown, the nodes of its picker, the entry of the figure of the layers, the picker of documents (what a phone shows in place of the navigation) and the figure's document, and a figure drawn.
 
 - Owner: trame
-- Parameters: `regions` ← [Regions of the page](page.md#PageRegions) · `markup` ← [Documents in the page](markup.md#DocumentMarkup) · `attribute` ← [Attribute selector](html.md#AttributeSelector) · `html` ← [HTML](../std/releases/0.29.1/docs/html.md#Html) · `css` ← [CSS](../std/releases/0.29.1/docs/html.md#Css) · `svg` ← [SVG](../std/releases/0.29.1/docs/html.md#Svg)
+- Parameters: `regions` ← [Regions of the page](page.md#PageRegions) · `markup` ← [Documents in the page](markup.md#DocumentMarkup) · `attribute` ← [Attribute selector](html.md#AttributeSelector) · `html` ← [HTML](../std/releases/0.30.0/docs/html.md#Html) · `css` ← [CSS](../std/releases/0.30.0/docs/html.md#Css) · `svg` ← [SVG](../std/releases/0.30.0/docs/html.md#Svg)
 - Body: inline, in the declaration
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Verified by: [The graph page is opened as a person would](#OpeningTheGraphPage)
@@ -264,10 +264,10 @@ The settings of the questions of the machine: Trame's decision about its machine
 By trame.sh at its root, with the words of Trame's command line, across the repository's projects; the example at the day of the scenarios.
 
 - Owner: trame
-- Parameters: `layout` ← [Project layout](conventions.md#Layout) · `start` ← [How a project starts](conventions.md#ProjectStart) · `typescript` ← [TypeScript](typescript.md#TypeScript) · `posix` ← [POSIX signals and errors](../std/releases/0.29.1/docs/system.md#Posix) · `texts` ← [Texts](../std/releases/0.29.1/docs/algebra.md#Texts) · `line` ← [Trame's commands](conventions.md#TrameCommands) · `variables` ← [Trame's environment](conventions.md#TrameEnvironment) · `day` ← [Day of the scenarios](platform.md#TestDay) · `projects` ← [The repository's projects](#RepositoryProjects)
+- Parameters: `layout` ← [Project layout](conventions.md#Layout) · `start` ← [How a project starts](conventions.md#ProjectStart) · `typescript` ← [TypeScript](typescript.md#TypeScript) · `posix` ← [POSIX signals and errors](../std/releases/0.30.0/docs/system.md#Posix) · `texts` ← [Texts](../std/releases/0.30.0/docs/algebra.md#Texts) · `line` ← [Trame's commands](conventions.md#TrameCommands) · `variables` ← [Trame's environment](conventions.md#TrameEnvironment) · `day` ← [Day of the scenarios](platform.md#TestDay) · `projects` ← [The repository's projects](#RepositoryProjects)
 - Body: inline, in the declaration
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
-- Implements: [How a version is carried](../std/releases/0.29.1/docs/commands.md#PropagationSettings)
+- Implements: [How a version is carried](../std/releases/0.30.0/docs/commands.md#PropagationSettings)
 - Chosen by: [The commands Trame takes from std](#CommandsOfStd), [Trame's settings in the scenarios](#OurSettingsInTheScenarios)
 - Verified by: [Trame's settings, as std's commands read them](#OurCommandsSettled)
 
@@ -283,7 +283,7 @@ Into main, merged as the repository merges them, by GitHub once they hold unless
 - Parameters: `repository` ← [Trame's repository](#TheRepository) · `main` ← [How the repository merges into main](#MainBranch) · `workflow` ← [How a pull request is checked on GitHub](#PullRequestsOnGitHub) · `layout` ← [Project layout](conventions.md#Layout) · `projects` ← [The repository's projects](#RepositoryProjects) · `ways` ← [How a pull request is merged](../ci/releases/0.8.0/docs/github.md#MergeWays)
 - Body: inline, in the declaration
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
-- Implements: [How pull requests are opened](../std/releases/0.29.1/docs/commands.md#PullRequestSettings)
+- Implements: [How pull requests are opened](../std/releases/0.30.0/docs/commands.md#PullRequestSettings)
 - Chosen by: [The commands Trame takes from std](#CommandsOfStd), [Trame's settings in the scenarios](#OurSettingsInTheScenarios)
 - Verified by: [Trame's settings, as std's commands read them](#OurCommandsSettled)
 
@@ -300,12 +300,12 @@ trame advance --by <name> [--accept] [--promote "what changes"]: the generation 
 Triggered by `command advance`
 
 - Owner: trame
-- Parameters: `runs` ← [Programs run](../std/releases/0.29.1/docs/tooling.md#ProgramRuns) · `currentProcess` ← [Process](architecture.md#Process) · `events` ← [Node.js events](../std/releases/0.29.1/docs/system.md#NodeEvents) · `exit` ← [Exit status](../std/releases/0.29.1/docs/system.md#ExitStatus) · `layout` ← [Project layout](conventions.md#Layout) · `line` ← [Trame's commands](conventions.md#TrameCommands) · `advancing` ← [How a generation advances](#HowAGenerationAdvances) · `candidate` ← [The candidate engine](#EngineCandidate) · `typescript` ← [TypeScript](typescript.md#TypeScript) · `names` ← [Names of a program](typescript.md#ProgramNames) · `say` ← [What the programs of Trame's SDLC say](#SdlcWords) · `posix` ← [POSIX signals and errors](../std/releases/0.29.1/docs/system.md#Posix) · `texts` ← [Texts](../std/releases/0.29.1/docs/algebra.md#Texts) · `sequences` ← [Sequences](../std/releases/0.29.1/docs/algebra.md#Sequences)
+- Parameters: `runs` ← [Programs run](../std/releases/0.30.0/docs/tooling.md#ProgramRuns) · `currentProcess` ← [Process](architecture.md#Process) · `events` ← [Node.js events](../std/releases/0.30.0/docs/system.md#NodeEvents) · `exit` ← [Exit status](../std/releases/0.30.0/docs/system.md#ExitStatus) · `layout` ← [Project layout](conventions.md#Layout) · `line` ← [Trame's commands](conventions.md#TrameCommands) · `advancing` ← [How a generation advances](#HowAGenerationAdvances) · `candidate` ← [The candidate engine](#EngineCandidate) · `typescript` ← [TypeScript](typescript.md#TypeScript) · `names` ← [Names of a program](typescript.md#ProgramNames) · `say` ← [What the programs of Trame's SDLC say](#SdlcWords) · `posix` ← [POSIX signals and errors](../std/releases/0.30.0/docs/system.md#Posix) · `texts` ← [Texts](../std/releases/0.30.0/docs/algebra.md#Texts) · `sequences` ← [Sequences](../std/releases/0.30.0/docs/algebra.md#Sequences)
 - Body: `./code/sdlc/advance-a-generation.ts` (typescript)
 - Effects: asynchronous, process, read, terminal, write
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Part of: [Trame's SDLC](#TrameSdlc)
-- For: [The operators](../std/releases/0.29.1/docs/access.md#TheOperators)
+- For: [The operators](../std/releases/0.30.0/docs/access.md#TheOperators)
 - Verified by: [A generation advanced in one command](#AdvancedInOneCommand)
 - Used by: [A generation advanced in one command](#AdvancedInOneCommand)
 
@@ -320,12 +320,12 @@ Sets Trame's repository on GitHub as the graph decides, with the rights of whoev
 Triggered by `command apply-repository-settings`
 
 - Owner: trame
-- Parameters: `repository` ← [A repository on GitHub](../std/releases/0.29.1/docs/repository.md#RepositoryApi) · `name` ← [Trame's repository](#TheRepository) · `settings` ← [How the repository merges into main](#MainBranch) · `compared` ← [A repository compared with its settings](../std/releases/0.29.1/docs/repository.md#RepositoryCompared) · `say` ← [What the programs of Trame's SDLC say](#SdlcWords) · `exit` ← [Exit status](../std/releases/0.29.1/docs/system.md#ExitStatus) · `counts` ← [Counts](../std/releases/0.29.1/docs/algebra.md#Counts)
+- Parameters: `repository` ← [A repository on GitHub](../std/releases/0.30.0/docs/repository.md#RepositoryApi) · `name` ← [Trame's repository](#TheRepository) · `settings` ← [How the repository merges into main](#MainBranch) · `compared` ← [A repository compared with its settings](../std/releases/0.30.0/docs/repository.md#RepositoryCompared) · `say` ← [What the programs of Trame's SDLC say](#SdlcWords) · `exit` ← [Exit status](../std/releases/0.30.0/docs/system.md#ExitStatus) · `counts` ← [Counts](../std/releases/0.30.0/docs/algebra.md#Counts)
 - Body: `./code/sdlc/apply-the-repository-settings.ts` (typescript)
 - Effects: asynchronous, network, process
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Part of: [Trame's SDLC](#TrameSdlc)
-- For: [The operators](../std/releases/0.29.1/docs/access.md#TheOperators)
+- For: [The operators](../std/releases/0.30.0/docs/access.md#TheOperators)
 - Deploys: [The repository as decided](#RepositorySet)
 - Verified by: [The repository is set as the graph decides](#SettingTheRepository)
 - Used by: [The repository is set as the graph decides](#SettingTheRepository)
@@ -341,12 +341,12 @@ Opens the graph page in Chromium without a screen, a phone's width: the navigati
 Triggered by `command open-graph-page`
 
 - Owner: trame
-- Parameters: `browser` ← [Headless browser](../std/releases/0.29.1/docs/tooling.md#HeadlessBrowser) · `page` ← [The graph page](#GraphPage) · `language` ← [Language](messages.md#Language) · `selectors` ← [What the graph page is asked](#GraphPageSelectors) · `opening` ← [How the graph page is opened](#GraphPageOpening) · `say` ← [What the programs of Trame's SDLC say](#SdlcWords) · `exit` ← [Exit status](../std/releases/0.29.1/docs/system.md#ExitStatus) · `counts` ← [Counts](../std/releases/0.29.1/docs/algebra.md#Counts)
+- Parameters: `browser` ← [Headless browser](../std/releases/0.30.0/docs/tooling.md#HeadlessBrowser) · `page` ← [The graph page](#GraphPage) · `language` ← [Language](messages.md#Language) · `selectors` ← [What the graph page is asked](#GraphPageSelectors) · `opening` ← [How the graph page is opened](#GraphPageOpening) · `say` ← [What the programs of Trame's SDLC say](#SdlcWords) · `exit` ← [Exit status](../std/releases/0.30.0/docs/system.md#ExitStatus) · `counts` ← [Counts](../std/releases/0.30.0/docs/algebra.md#Counts)
 - Body: `./code/sdlc/open-the-graph-page.ts` (typescript)
 - Effects: asynchronous, display, network, process, time
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Part of: [Trame's SDLC](#TrameSdlc)
-- For: [The operators](../std/releases/0.29.1/docs/access.md#TheOperators)
+- For: [The operators](../std/releases/0.30.0/docs/access.md#TheOperators)
 - Runs: [The graph page opens](#GraphPageOpens)
 - Verified by: [The graph page is opened as a person would](#OpeningTheGraphPage)
 - Used by: [The graph page is opened as a person would](#OpeningTheGraphPage)
@@ -362,12 +362,12 @@ Reads Trame's repository on GitHub as it is and compares it with the settings th
 Triggered by `command read-repository-settings`
 
 - Owner: trame
-- Parameters: `repository` ← [A repository on GitHub](../std/releases/0.29.1/docs/repository.md#RepositoryApi) · `name` ← [Trame's repository](#TheRepository) · `settings` ← [How the repository merges into main](#MainBranch) · `compared` ← [A repository compared with its settings](../std/releases/0.29.1/docs/repository.md#RepositoryCompared) · `say` ← [What the programs of Trame's SDLC say](#SdlcWords) · `exit` ← [Exit status](../std/releases/0.29.1/docs/system.md#ExitStatus) · `counts` ← [Counts](../std/releases/0.29.1/docs/algebra.md#Counts)
+- Parameters: `repository` ← [A repository on GitHub](../std/releases/0.30.0/docs/repository.md#RepositoryApi) · `name` ← [Trame's repository](#TheRepository) · `settings` ← [How the repository merges into main](#MainBranch) · `compared` ← [A repository compared with its settings](../std/releases/0.30.0/docs/repository.md#RepositoryCompared) · `say` ← [What the programs of Trame's SDLC say](#SdlcWords) · `exit` ← [Exit status](../std/releases/0.30.0/docs/system.md#ExitStatus) · `counts` ← [Counts](../std/releases/0.30.0/docs/algebra.md#Counts)
 - Body: `./code/sdlc/read-the-repository-settings.ts` (typescript)
 - Effects: asynchronous, network, process
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Part of: [Trame's SDLC](#TrameSdlc)
-- For: [The operators](../std/releases/0.29.1/docs/access.md#TheOperators)
+- For: [The operators](../std/releases/0.30.0/docs/access.md#TheOperators)
 - Runs: [The repository is read from GitHub](#RepositoryRead)
 - Verified by: [The repository is set as the graph decides](#SettingTheRepository)
 - Used by: [The repository is set as the graph decides](#SettingTheRepository)
@@ -424,14 +424,14 @@ In [A session of Claude Code](architecture.md#Session):
 
 | Port | Answered by | Which is |
 |---|---|---|
-| [The automatic merge](../std/releases/0.29.1/docs/repository.md#AutoMerge) | [The automatic merge, in a session of Claude Code](../std/releases/0.29.1/docs/repository.md#AutoMergeInAClaudeSession) | an implementation |
+| [The automatic merge](../std/releases/0.30.0/docs/repository.md#AutoMerge) | [The automatic merge, in a session of Claude Code](../std/releases/0.30.0/docs/repository.md#AutoMergeInAClaudeSession) | an implementation |
 
 Context: A session's proxy refuses GitHub's GraphQL, and offers PUT on the pull request's ccr/auto_merge instead.
 
 - Decided by: trame
-- Chooses: [The automatic merge, in a session of Claude Code](../std/releases/0.29.1/docs/repository.md#AutoMergeInAClaudeSession)
+- Chooses: [The automatic merge, in a session of Claude Code](../std/releases/0.30.0/docs/repository.md#AutoMergeInAClaudeSession)
 - In: [A session of Claude Code](architecture.md#Session)
-- Follows: [Adapter](../std/releases/0.29.1/docs/patterns.md#Adapter)
+- Follows: [Adapter](../std/releases/0.30.0/docs/patterns.md#Adapter)
 - Applies: [Trame's SDLC runs with std's tooling](principles.md#SdlcWithStdTooling)
 
 <a id="AutoMergeOnTheMachine"></a>
@@ -446,14 +446,14 @@ In [Local](architecture.md#Local):
 
 | Port | Answered by | Which is |
 |---|---|---|
-| [The automatic merge](../std/releases/0.29.1/docs/repository.md#AutoMerge) | [The automatic merge, by GitHub's command line](../std/releases/0.29.1/docs/repository.md#AutoMergeByGitHubCli) | an implementation |
+| [The automatic merge](../std/releases/0.30.0/docs/repository.md#AutoMerge) | [The automatic merge, by GitHub's command line](../std/releases/0.30.0/docs/repository.md#AutoMergeByGitHubCli) | an implementation |
 
 Context: GitHub asks the automatic merge by GraphQL, which GitHub's command line calls with the token of the person.
 
 - Decided by: trame
-- Chooses: [The automatic merge, by GitHub's command line](../std/releases/0.29.1/docs/repository.md#AutoMergeByGitHubCli)
+- Chooses: [The automatic merge, by GitHub's command line](../std/releases/0.30.0/docs/repository.md#AutoMergeByGitHubCli)
 - In: [Local](architecture.md#Local)
-- Follows: [Adapter](../std/releases/0.29.1/docs/patterns.md#Adapter)
+- Follows: [Adapter](../std/releases/0.30.0/docs/patterns.md#Adapter)
 - Applies: [Trame's SDLC runs with std's tooling](principles.md#SdlcWithStdTooling)
 
 <a id="CommandsOfStd"></a>
@@ -468,11 +468,11 @@ In [Local](architecture.md#Local), [A session of Claude Code](architecture.md#Se
 
 | Port | Answered by | Which is |
 |---|---|---|
-| [How a version is carried](../std/releases/0.29.1/docs/commands.md#PropagationSettings) | [How a version is carried across Trame's repository](#OurPropagation) | a function |
-| [How pull requests are opened](../std/releases/0.29.1/docs/commands.md#PullRequestSettings) | [How Trame's pull requests are opened](#OurPullRequests) | a function |
-| the command merge | [Merge a pull request](../std/releases/0.29.1/docs/commands.md#MergePullRequest) | a command of a library |
-| the command pull-request | [Open a pull request](../std/releases/0.29.1/docs/commands.md#OpenPullRequest) | a command of a library |
-| the command propagate | [Propagate](../std/releases/0.29.1/docs/commands.md#Propagate) | a command of a library |
+| [How a version is carried](../std/releases/0.30.0/docs/commands.md#PropagationSettings) | [How a version is carried across Trame's repository](#OurPropagation) | a function |
+| [How pull requests are opened](../std/releases/0.30.0/docs/commands.md#PullRequestSettings) | [How Trame's pull requests are opened](#OurPullRequests) | a function |
+| the command merge | [Merge a pull request](../std/releases/0.30.0/docs/commands.md#MergePullRequest) | a command of a library |
+| the command pull-request | [Open a pull request](../std/releases/0.30.0/docs/commands.md#OpenPullRequest) | a command of a library |
+| the command propagate | [Propagate](../std/releases/0.30.0/docs/commands.md#Propagate) | a command of a library |
 
 Context: Opening a pull request and carrying a version across the repository were done by hand, with gh and a loop of trame.sh, differently each time.
 
@@ -481,9 +481,9 @@ Context: Opening a pull request and carrying a version across the repository wer
 | Commands of Trame's own | any project of a repository opens pull requests: std writes them once, Trame chooses them |
 
 - Decided by: trame
-- Chooses: [Open a pull request](../std/releases/0.29.1/docs/commands.md#OpenPullRequest), [Merge a pull request](../std/releases/0.29.1/docs/commands.md#MergePullRequest), [Propagate](../std/releases/0.29.1/docs/commands.md#Propagate), [How Trame's pull requests are opened](#OurPullRequests), [How a version is carried across Trame's repository](#OurPropagation)
+- Chooses: [Open a pull request](../std/releases/0.30.0/docs/commands.md#OpenPullRequest), [Merge a pull request](../std/releases/0.30.0/docs/commands.md#MergePullRequest), [Propagate](../std/releases/0.30.0/docs/commands.md#Propagate), [How Trame's pull requests are opened](#OurPullRequests), [How a version is carried across Trame's repository](#OurPropagation)
 - In: [Local](architecture.md#Local), [A session of Claude Code](architecture.md#Session)
-- Follows: [Command](../std/releases/0.29.1/docs/patterns.md#Command)
+- Follows: [Command](../std/releases/0.30.0/docs/patterns.md#Command)
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Applies: [Trame runs the commands libraries offer](principles.md#CommandsFromLibraries)
 
@@ -499,8 +499,8 @@ In [Local](architecture.md#Local):
 
 | Port | Answered by | Which is |
 |---|---|---|
-| the command plan | [Plan](../libs/commands/releases/0.1.2/docs/commands.md#Plan) | a command of a library |
-| [The project at hand](../std/releases/0.29.1/docs/engine.md#TheProject) | [The project the engine prepared](../std/releases/0.29.1/docs/engine.md#ProjectInTheEngine) | an implementation |
+| the command plan | [Plan](../libs/commands/releases/0.2.0/docs/commands.md#Plan) | a command of a library |
+| [The project at hand](../std/releases/0.30.0/docs/engine.md#TheProject) | [The project the engine prepared](../std/releases/0.30.0/docs/engine.md#ProjectInTheEngine) | an implementation |
 
 Context: The engine's commands reached its modules directly: a project could neither choose them nor specialize them, and a command of its own could not compute what they computed.
 
@@ -511,9 +511,9 @@ Consequences: trame plan runs on a machine and in a session alike, chosen for Lo
 | The engine's own commands, kept | they would stay out of reach of every project's choice, and the engine the only one to reach its modules |
 
 - Decided by: trame
-- Chooses: [Plan](../libs/commands/releases/0.1.2/docs/commands.md#Plan), [The project the engine prepared](../std/releases/0.29.1/docs/engine.md#ProjectInTheEngine)
+- Chooses: [Plan](../libs/commands/releases/0.2.0/docs/commands.md#Plan), [The project the engine prepared](../std/releases/0.30.0/docs/engine.md#ProjectInTheEngine)
 - In: [Local](architecture.md#Local)
-- Follows: [Command](../std/releases/0.29.1/docs/patterns.md#Command)
+- Follows: [Command](../std/releases/0.30.0/docs/patterns.md#Command)
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Applies: [Trame runs the commands libraries offer](principles.md#CommandsFromLibraries), [The engine is a provider, for Trame too](principles.md#EngineProvidesForTrame)
 
@@ -529,15 +529,15 @@ In [Test](architecture.md#Test):
 
 | Port | Answered by | Which is |
 |---|---|---|
-| [How a version is carried](../std/releases/0.29.1/docs/commands.md#PropagationSettings) | [How a version is carried across Trame's repository](#OurPropagation) | a function |
-| [How pull requests are opened](../std/releases/0.29.1/docs/commands.md#PullRequestSettings) | [How Trame's pull requests are opened](#OurPullRequests) | a function |
+| [How a version is carried](../std/releases/0.30.0/docs/commands.md#PropagationSettings) | [How a version is carried across Trame's repository](#OurPropagation) | a function |
+| [How pull requests are opened](../std/releases/0.30.0/docs/commands.md#PullRequestSettings) | [How Trame's pull requests are opened](#OurPullRequests) | a function |
 
 Context: What the settings give is played before a command of std reads them on the machine.
 
 - Decided by: trame
 - Chooses: [How Trame's pull requests are opened](#OurPullRequests), [How a version is carried across Trame's repository](#OurPropagation)
 - In: [Test](architecture.md#Test)
-- Follows: [Strategy](../std/releases/0.29.1/docs/patterns.md#Strategy)
+- Follows: [Strategy](../std/releases/0.30.0/docs/patterns.md#Strategy)
 - Applies: [What a command does is played in memory first](principles.md#PlayedInMemoryFirst)
 
 <a id="RepositoryWorkOnAMachine"></a>
@@ -552,17 +552,17 @@ In [Local](architecture.md#Local), [A session of Claude Code](architecture.md#Se
 
 | Port | Answered by | Which is |
 |---|---|---|
-| [The branches](../std/releases/0.29.1/docs/repository.md#Branches) | [Git's branches](../std/releases/0.29.1/docs/repository.md#GitCliBranches) | an implementation |
-| [Pull requests](../std/releases/0.29.1/docs/repository.md#PullRequests) | [GitHub's pull requests, by its command line](../std/releases/0.29.1/docs/repository.md#GitHubCliPullRequests) | an implementation |
-| [Project files](../std/releases/0.29.1/docs/tooling.md#Files) | [The machine's files](../std/releases/0.29.1/docs/tooling.md#MachineFiles) | an implementation |
-| [Programs run](../std/releases/0.29.1/docs/tooling.md#ProgramRuns) | [Programs run by Node](../std/releases/0.29.1/docs/tooling.md#NodeProgramRuns) | an implementation |
+| [The branches](../std/releases/0.30.0/docs/repository.md#Branches) | [Git's branches](../std/releases/0.30.0/docs/repository.md#GitCliBranches) | an implementation |
+| [Pull requests](../std/releases/0.30.0/docs/repository.md#PullRequests) | [GitHub's pull requests, by its command line](../std/releases/0.30.0/docs/repository.md#GitHubCliPullRequests) | an implementation |
+| [Project files](../std/releases/0.30.0/docs/tooling.md#Files) | [The machine's files](../std/releases/0.30.0/docs/tooling.md#MachineFiles) | an implementation |
+| [Programs run](../std/releases/0.30.0/docs/tooling.md#ProgramRuns) | [Programs run by Node](../std/releases/0.30.0/docs/tooling.md#NodeProgramRuns) | an implementation |
 
 Context: A pull request is opened, and a version carried, from the repository checked out, with the rights of whoever runs it.
 
 - Decided by: trame
-- Chooses: [Git's branches](../std/releases/0.29.1/docs/repository.md#GitCliBranches), [GitHub's pull requests, by its command line](../std/releases/0.29.1/docs/repository.md#GitHubCliPullRequests), [Programs run by Node](../std/releases/0.29.1/docs/tooling.md#NodeProgramRuns), [The machine's files](../std/releases/0.29.1/docs/tooling.md#MachineFiles)
+- Chooses: [Git's branches](../std/releases/0.30.0/docs/repository.md#GitCliBranches), [GitHub's pull requests, by its command line](../std/releases/0.30.0/docs/repository.md#GitHubCliPullRequests), [Programs run by Node](../std/releases/0.30.0/docs/tooling.md#NodeProgramRuns), [The machine's files](../std/releases/0.30.0/docs/tooling.md#MachineFiles)
 - In: [Local](architecture.md#Local), [A session of Claude Code](architecture.md#Session)
-- Follows: [Adapter](../std/releases/0.29.1/docs/patterns.md#Adapter)
+- Follows: [Adapter](../std/releases/0.30.0/docs/patterns.md#Adapter)
 - Applies: [Trame's SDLC runs with std's tooling](principles.md#SdlcWithStdTooling)
 
 <a id="SdlcInMemory"></a>
@@ -577,17 +577,17 @@ In [Test](architecture.md#Test):
 
 | Port | Answered by | Which is |
 |---|---|---|
-| [A repository on GitHub](../std/releases/0.29.1/docs/repository.md#RepositoryApi), [The repositories a scenario keeps](../std/releases/0.29.1/docs/repository.md#RepositoryKept) | [A repository kept in memory](../std/releases/0.29.1/docs/repository.md#RepositoryInMemory) | a function |
-| [Browser script](../std/releases/0.29.1/docs/tooling.md#BrowserScripted), [Headless browser](../std/releases/0.29.1/docs/tooling.md#HeadlessBrowser) | [A browser kept in memory](../std/releases/0.29.1/docs/tooling.md#BrowserInMemory) | a function |
-| [Project files](../std/releases/0.29.1/docs/tooling.md#Files), [Files written](../std/releases/0.29.1/docs/tooling.md#FilesKept) | [Files kept in memory](../std/releases/0.29.1/docs/tooling.md#FilesInMemory) | a function |
-| [Programs run](../std/releases/0.29.1/docs/tooling.md#ProgramRuns), [The programs a scenario keeps: the file it says a program writes is written when that program runs.](../std/releases/0.29.1/docs/tooling.md#ProgramRunsKept) | [Programs run in memory](../std/releases/0.29.1/docs/tooling.md#ProgramRunsInMemory) | a function |
+| [A repository on GitHub](../std/releases/0.30.0/docs/repository.md#RepositoryApi), [The repositories a scenario keeps](../std/releases/0.30.0/docs/repository.md#RepositoryKept) | [A repository kept in memory](../std/releases/0.30.0/docs/repository.md#RepositoryInMemory) | a function |
+| [Browser script](../std/releases/0.30.0/docs/tooling.md#BrowserScripted), [Headless browser](../std/releases/0.30.0/docs/tooling.md#HeadlessBrowser) | [A browser kept in memory](../std/releases/0.30.0/docs/tooling.md#BrowserInMemory) | a function |
+| [Project files](../std/releases/0.30.0/docs/tooling.md#Files), [Files written](../std/releases/0.30.0/docs/tooling.md#FilesKept) | [Files kept in memory](../std/releases/0.30.0/docs/tooling.md#FilesInMemory) | a function |
+| [Programs run](../std/releases/0.30.0/docs/tooling.md#ProgramRuns), [The programs a scenario keeps: the file it says a program writes is written when that program runs.](../std/releases/0.30.0/docs/tooling.md#ProgramRunsKept) | [Programs run in memory](../std/releases/0.30.0/docs/tooling.md#ProgramRunsInMemory) | a function |
 
 Context: A program of the SDLC is code like the engine's: its scenarios play it before it runs on a machine.
 
 - Decided by: trame
-- Chooses: [A browser kept in memory](../std/releases/0.29.1/docs/tooling.md#BrowserInMemory), [A repository kept in memory](../std/releases/0.29.1/docs/repository.md#RepositoryInMemory), [Programs run in memory](../std/releases/0.29.1/docs/tooling.md#ProgramRunsInMemory), [Files kept in memory](../std/releases/0.29.1/docs/tooling.md#FilesInMemory)
+- Chooses: [A browser kept in memory](../std/releases/0.30.0/docs/tooling.md#BrowserInMemory), [A repository kept in memory](../std/releases/0.30.0/docs/repository.md#RepositoryInMemory), [Programs run in memory](../std/releases/0.30.0/docs/tooling.md#ProgramRunsInMemory), [Files kept in memory](../std/releases/0.30.0/docs/tooling.md#FilesInMemory)
 - In: [Test](architecture.md#Test)
-- Follows: [Strategy](../std/releases/0.29.1/docs/patterns.md#Strategy)
+- Follows: [Strategy](../std/releases/0.30.0/docs/patterns.md#Strategy)
 - Applies: [What a command does is played in memory first](principles.md#PlayedInMemoryFirst)
 
 <a id="SdlcOnTheMachine"></a>
@@ -602,16 +602,16 @@ In [Local](architecture.md#Local), [A session of Claude Code](architecture.md#Se
 
 | Port | Answered by | Which is |
 |---|---|---|
-| [A repository on GitHub](../std/releases/0.29.1/docs/repository.md#RepositoryApi) | [GitHub's command line](../std/releases/0.29.1/docs/repository.md#GitHubCliRepository) | an implementation |
-| [Commands of a program](../std/releases/0.29.1/docs/tooling.md#ProgramCommands) | [Commands run in the engine](../std/releases/0.29.1/docs/tooling.md#CommandsInTheEngine) | an implementation |
-| [Headless browser](../std/releases/0.29.1/docs/tooling.md#HeadlessBrowser) | [Chromium, driven by Playwright](../std/releases/0.29.1/docs/tooling.md#PlaywrightBrowser) | an implementation |
+| [A repository on GitHub](../std/releases/0.30.0/docs/repository.md#RepositoryApi) | [GitHub's command line](../std/releases/0.30.0/docs/repository.md#GitHubCliRepository) | an implementation |
+| [Commands of a program](../std/releases/0.30.0/docs/tooling.md#ProgramCommands) | [Commands run in the engine](../std/releases/0.30.0/docs/tooling.md#CommandsInTheEngine) | an implementation |
+| [Headless browser](../std/releases/0.30.0/docs/tooling.md#HeadlessBrowser) | [Chromium, driven by Playwright](../std/releases/0.30.0/docs/tooling.md#PlaywrightBrowser) | an implementation |
 
 Context: The graph page must be opened as a person opens it: the file exported, in a real browser; the repository is set and read by GitHub's command line, with the token of whoever runs it.
 
 - Decided by: trame
-- Chooses: [Commands run in the engine](../std/releases/0.29.1/docs/tooling.md#CommandsInTheEngine), [Chromium, driven by Playwright](../std/releases/0.29.1/docs/tooling.md#PlaywrightBrowser), [GitHub's command line](../std/releases/0.29.1/docs/repository.md#GitHubCliRepository)
+- Chooses: [Commands run in the engine](../std/releases/0.30.0/docs/tooling.md#CommandsInTheEngine), [Chromium, driven by Playwright](../std/releases/0.30.0/docs/tooling.md#PlaywrightBrowser), [GitHub's command line](../std/releases/0.30.0/docs/repository.md#GitHubCliRepository)
 - In: [Local](architecture.md#Local), [A session of Claude Code](architecture.md#Session)
-- Follows: [Adapter](../std/releases/0.29.1/docs/patterns.md#Adapter)
+- Follows: [Adapter](../std/releases/0.30.0/docs/patterns.md#Adapter)
 - Applies: [Trame's SDLC runs with std's tooling](principles.md#SdlcWithStdTooling)
 
 <a id="WhatTheMachineMustHave"></a>
@@ -626,18 +626,18 @@ In [Local](architecture.md#Local), [A session of Claude Code](architecture.md#Se
 
 | Port | Answered by | Which is |
 |---|---|---|
-| [What the machine must also have](../std/releases/0.29.1/docs/tooling.md#MachineNeeds) | [Git, installed](../libs/machine/releases/0.1.0/docs/machine.md#GitInstalled) | an implementation |
-| [What the machine must also have](../std/releases/0.29.1/docs/tooling.md#MachineNeeds) | [Node, recent enough](../libs/machine/releases/0.1.0/docs/machine.md#NodeRecentEnough) | an implementation |
-| [What the machine must also have](../std/releases/0.29.1/docs/tooling.md#MachineNeeds) | [The system, one the project runs on](../libs/machine/releases/0.1.0/docs/machine.md#SystemSupported) | an implementation |
+| [What the machine must also have](../std/releases/0.30.0/docs/tooling.md#MachineNeeds) | [Git, installed](../libs/machine/releases/0.1.0/docs/machine.md#GitInstalled) | an implementation |
+| [What the machine must also have](../std/releases/0.30.0/docs/tooling.md#MachineNeeds) | [Node, recent enough](../libs/machine/releases/0.1.0/docs/machine.md#NodeRecentEnough) | an implementation |
+| [What the machine must also have](../std/releases/0.30.0/docs/tooling.md#MachineNeeds) | [The system, one the project runs on](../libs/machine/releases/0.1.0/docs/machine.md#SystemSupported) | an implementation |
 | [What the machine runs](../libs/machine/releases/0.1.0/docs/machine.md#WhatTheMachineRuns) | [What the machine runs, for Trame](#OurMachineSettings) | a function |
-| [What the machine must also have](../std/releases/0.29.1/docs/tooling.md#MachineNeeds) | [Playwright's browser, installed](../std/releases/0.29.1/docs/tooling.md#PlaywrightBrowserInstalled) | an implementation |
+| [What the machine must also have](../std/releases/0.30.0/docs/tooling.md#MachineNeeds) | [Playwright's browser, installed](../std/releases/0.30.0/docs/tooling.md#PlaywrightBrowserInstalled) | an implementation |
 
 Context: On 17 November a machine whose browsers had moved refused the check of the page, and trame doctor said nothing of it; the pull requests and the propagation need Git, and the engine's loader Node 22.
 
 - Decided by: trame
-- Chooses: [Playwright's browser, installed](../std/releases/0.29.1/docs/tooling.md#PlaywrightBrowserInstalled), [The system, one the project runs on](../libs/machine/releases/0.1.0/docs/machine.md#SystemSupported), [Node, recent enough](../libs/machine/releases/0.1.0/docs/machine.md#NodeRecentEnough), [Git, installed](../libs/machine/releases/0.1.0/docs/machine.md#GitInstalled), [What the machine runs, for Trame](#OurMachineSettings)
+- Chooses: [Playwright's browser, installed](../std/releases/0.30.0/docs/tooling.md#PlaywrightBrowserInstalled), [The system, one the project runs on](../libs/machine/releases/0.1.0/docs/machine.md#SystemSupported), [Node, recent enough](../libs/machine/releases/0.1.0/docs/machine.md#NodeRecentEnough), [Git, installed](../libs/machine/releases/0.1.0/docs/machine.md#GitInstalled), [What the machine runs, for Trame](#OurMachineSettings)
 - In: [Local](architecture.md#Local), [A session of Claude Code](architecture.md#Session)
-- Follows: [Plugin](../std/releases/0.29.1/docs/patterns.md#Plugin)
+- Follows: [Plugin](../std/releases/0.30.0/docs/patterns.md#Plugin)
 - Applies: [Every question of the machine is an add-on](principles.md#MachineQuestionsAsAddOns)
 
 ## Scenarios
@@ -659,12 +659,12 @@ Without a name, nothing is assembled; with one, the generation in place assemble
 
 <details><summary>The code it runs: 6 nodes</summary>
 
-[Seeded draws](../std/releases/0.29.1/docs/algorithms.md#SeededDraws), [Files kept in memory](../std/releases/0.29.1/docs/tooling.md#FilesInMemory), [Programs run in memory](../std/releases/0.29.1/docs/tooling.md#ProgramRunsInMemory), [Node paths](platform.md#NodePaths), [Example process](platform.md#ExampleProcess), [Advance](#AdvanceAGeneration)
+[Seeded draws](../std/releases/0.30.0/docs/algorithms.md#SeededDraws), [Files kept in memory](../std/releases/0.30.0/docs/tooling.md#FilesInMemory), [Programs run in memory](../std/releases/0.30.0/docs/tooling.md#ProgramRunsInMemory), [Node paths](platform.md#NodePaths), [Example process](platform.md#ExampleProcess), [Advance](#AdvanceAGeneration)
 
 </details>
 
 - Owner: trame
-- Parameters: `advance` ← [Advance](#AdvanceAGeneration) · `runs` ← [The programs a scenario keeps: the file it says a program writes is written when that program runs.](../std/releases/0.29.1/docs/tooling.md#ProgramRunsKept) · `processLog` ← [Process log](architecture.md#ProcessLog) · `line` ← [Trame's commands](conventions.md#TrameCommands) · `advancing` ← [How a generation advances](#HowAGenerationAdvances) · `sample` ← [Who advances, and what changes](#AdvanceSample) · `names` ← [Names of a program](typescript.md#ProgramNames) · `exit` ← [Exit status](../std/releases/0.29.1/docs/system.md#ExitStatus) · `texts` ← [Texts](../std/releases/0.29.1/docs/algebra.md#Texts) · `messages` ← [Messages of the scenarios](messages.md#ScenarioMessages)
+- Parameters: `advance` ← [Advance](#AdvanceAGeneration) · `runs` ← [The programs a scenario keeps: the file it says a program writes is written when that program runs.](../std/releases/0.30.0/docs/tooling.md#ProgramRunsKept) · `processLog` ← [Process log](architecture.md#ProcessLog) · `line` ← [Trame's commands](conventions.md#TrameCommands) · `advancing` ← [How a generation advances](#HowAGenerationAdvances) · `sample` ← [Who advances, and what changes](#AdvanceSample) · `names` ← [Names of a program](typescript.md#ProgramNames) · `exit` ← [Exit status](../std/releases/0.30.0/docs/system.md#ExitStatus) · `texts` ← [Texts](../std/releases/0.30.0/docs/algebra.md#Texts) · `messages` ← [Messages of the scenarios](messages.md#ScenarioMessages)
 - Body: inline, in the declaration
 - Effects: asynchronous, process, read, terminal, write
 - Verifies: [Advance](#AdvanceAGeneration)
@@ -687,15 +687,15 @@ In memory, the browser shows a page with its documents, a document, its nodes an
 
 <details><summary>The code it runs: 3 nodes</summary>
 
-[A browser kept in memory](../std/releases/0.29.1/docs/tooling.md#BrowserInMemory), [What the graph page is asked](#GraphPageSelectors), [Open the graph page](#OpenTheGraphPage)
+[A browser kept in memory](../std/releases/0.30.0/docs/tooling.md#BrowserInMemory), [What the graph page is asked](#GraphPageSelectors), [Open the graph page](#OpenTheGraphPage)
 
 </details>
 
 - Owner: trame
-- Parameters: `open` ← [Open the graph page](#OpenTheGraphPage) · `script` ← [Browser script](../std/releases/0.29.1/docs/tooling.md#BrowserScripted) · `page` ← [The graph page](#GraphPage) · `selectors` ← [What the graph page is asked](#GraphPageSelectors) · `exit` ← [Exit status](../std/releases/0.29.1/docs/system.md#ExitStatus) · `say` ← [What the programs of Trame's SDLC say](#SdlcWords) · `data` ← [What the scenario of the graph page shows](#GraphPageScenarioData) · `counts` ← [Counts](../std/releases/0.29.1/docs/algebra.md#Counts) · `messages` ← [Messages of the scenarios](messages.md#ScenarioMessages)
+- Parameters: `open` ← [Open the graph page](#OpenTheGraphPage) · `script` ← [Browser script](../std/releases/0.30.0/docs/tooling.md#BrowserScripted) · `page` ← [The graph page](#GraphPage) · `selectors` ← [What the graph page is asked](#GraphPageSelectors) · `exit` ← [Exit status](../std/releases/0.30.0/docs/system.md#ExitStatus) · `say` ← [What the programs of Trame's SDLC say](#SdlcWords) · `data` ← [What the scenario of the graph page shows](#GraphPageScenarioData) · `counts` ← [Counts](../std/releases/0.30.0/docs/algebra.md#Counts) · `messages` ← [Messages of the scenarios](messages.md#ScenarioMessages)
 - Body: inline, in the declaration
 - Effects: asynchronous, display, network, process, time
-- Verifies: [Open the graph page](#OpenTheGraphPage), [What the graph page is asked](#GraphPageSelectors), [A browser kept in memory](../std/releases/0.29.1/docs/tooling.md#BrowserInMemory)
+- Verifies: [Open the graph page](#OpenTheGraphPage), [What the graph page is asked](#GraphPageSelectors), [A browser kept in memory](../std/releases/0.30.0/docs/tooling.md#BrowserInMemory)
 - In: [Test](architecture.md#Test)
 
 <a id="OurCommandsSettled"></a>
@@ -720,7 +720,7 @@ A pull request goes into main, merged as the repository merges, by GitHub once i
 </details>
 
 - Owner: trame
-- Parameters: `pulls` ← [How pull requests are opened](../std/releases/0.29.1/docs/commands.md#PullRequestSettings) · `carried` ← [How a version is carried](../std/releases/0.29.1/docs/commands.md#PropagationSettings) · `repository` ← [Trame's repository](#TheRepository) · `main` ← [How the repository merges into main](#MainBranch) · `projects` ← [The repository's projects](#RepositoryProjects) · `layout` ← [Project layout](conventions.md#Layout) · `line` ← [Trame's commands](conventions.md#TrameCommands) · `day` ← [Day of the scenarios](platform.md#TestDay) · `workflow` ← [How a pull request is checked on GitHub](#PullRequestsOnGitHub) · `messages` ← [Messages of the scenarios](messages.md#ScenarioMessages)
+- Parameters: `pulls` ← [How pull requests are opened](../std/releases/0.30.0/docs/commands.md#PullRequestSettings) · `carried` ← [How a version is carried](../std/releases/0.30.0/docs/commands.md#PropagationSettings) · `repository` ← [Trame's repository](#TheRepository) · `main` ← [How the repository merges into main](#MainBranch) · `projects` ← [The repository's projects](#RepositoryProjects) · `layout` ← [Project layout](conventions.md#Layout) · `line` ← [Trame's commands](conventions.md#TrameCommands) · `day` ← [Day of the scenarios](platform.md#TestDay) · `workflow` ← [How a pull request is checked on GitHub](#PullRequestsOnGitHub) · `messages` ← [Messages of the scenarios](messages.md#ScenarioMessages)
 - Body: inline, in the declaration
 - Verifies: [How Trame's pull requests are opened](#OurPullRequests), [How a version is carried across Trame's repository](#OurPropagation)
 - In: [Test](architecture.md#Test)
@@ -743,12 +743,12 @@ In memory, a repository left by hand is read: it does not hold the settings, and
 
 <details><summary>The code it runs: 4 nodes</summary>
 
-[A repository kept in memory](../std/releases/0.29.1/docs/repository.md#RepositoryInMemory), [A repository compared with its settings](../std/releases/0.29.1/docs/repository.md#RepositoryCompared), [Read the repository's settings](#ReadTheRepositorySettings), [Set the repository's settings](#ApplyTheRepositorySettings)
+[A repository kept in memory](../std/releases/0.30.0/docs/repository.md#RepositoryInMemory), [A repository compared with its settings](../std/releases/0.30.0/docs/repository.md#RepositoryCompared), [Read the repository's settings](#ReadTheRepositorySettings), [Set the repository's settings](#ApplyTheRepositorySettings)
 
 </details>
 
 - Owner: trame
-- Parameters: `read` ← [Read the repository's settings](#ReadTheRepositorySettings) · `apply` ← [Set the repository's settings](#ApplyTheRepositorySettings) · `kept` ← [The repositories a scenario keeps](../std/releases/0.29.1/docs/repository.md#RepositoryKept) · `name` ← [Trame's repository](#TheRepository) · `settings` ← [How the repository merges into main](#MainBranch) · `data` ← [The repository left by hand, in the scenario](#RepositoryScenarioData) · `say` ← [What the programs of Trame's SDLC say](#SdlcWords) · `exit` ← [Exit status](../std/releases/0.29.1/docs/system.md#ExitStatus) · `counts` ← [Counts](../std/releases/0.29.1/docs/algebra.md#Counts) · `messages` ← [Messages of the scenarios](messages.md#ScenarioMessages)
+- Parameters: `read` ← [Read the repository's settings](#ReadTheRepositorySettings) · `apply` ← [Set the repository's settings](#ApplyTheRepositorySettings) · `kept` ← [The repositories a scenario keeps](../std/releases/0.30.0/docs/repository.md#RepositoryKept) · `name` ← [Trame's repository](#TheRepository) · `settings` ← [How the repository merges into main](#MainBranch) · `data` ← [The repository left by hand, in the scenario](#RepositoryScenarioData) · `say` ← [What the programs of Trame's SDLC say](#SdlcWords) · `exit` ← [Exit status](../std/releases/0.30.0/docs/system.md#ExitStatus) · `counts` ← [Counts](../std/releases/0.30.0/docs/algebra.md#Counts) · `messages` ← [Messages of the scenarios](messages.md#ScenarioMessages)
 - Body: inline, in the declaration
 - Effects: asynchronous, network, process
 - Verifies: [Read the repository's settings](#ReadTheRepositorySettings), [Set the repository's settings](#ApplyTheRepositorySettings)
@@ -781,7 +781,7 @@ The program of Trame's command line, assembled from the graph for a machine: wha
 
 - Path: `out/local/trame-cli.ts`
 
-Built 27 November 2026 by claude, fingerprint `d639e2506a4a326ceff8c9833fc696a9f5361b94270f623d05ac3ae669a309eb`.
+Built 27 November 2026 by claude, fingerprint `068fa5579f7f522c42c29fa296f673741d9c1b24d31901552ff47d3981cc77ce`.
 
 Shipped by [The next generation](#NextGeneration) 8 November 2026, fingerprint `7b37d575242fcf8f0998170f818ac1b266c2f3408a5dc31f62eedaf3cbf0f2f4`.
 
@@ -839,6 +839,8 @@ Shipped by [The next generation](#NextGeneration) 26 November 2026, fingerprint 
 
 Shipped by [The next generation](#NextGeneration) 27 November 2026, fingerprint `d639e2506a4a326ceff8c9833fc696a9f5361b94270f623d05ac3ae669a309eb`.
 
+Shipped by [The next generation](#NextGeneration) 27 November 2026, fingerprint `068fa5579f7f522c42c29fa296f673741d9c1b24d31901552ff47d3981cc77ce`.
+
 - Owner: trame
 - Produced by: [Trame on the command line](architecture.md#TrameCli)
 - Used by: [Advance](#AdvanceAGeneration)
@@ -856,7 +858,7 @@ The page trame export writes of Trame's graph, which a browser opens as it is: i
 - Path: `trame-page.html`
 - Media type: `text/html; charset=utf-8`
 
-Built 27 November 2026 by claude, fingerprint `415a6e7e29fadeda10756b26ce6d5555f4ff54a1ba25c0aec7183a4e76e5c9be`.
+Built 27 November 2026 by claude, fingerprint `1c321ed293ef1fe2f28ef1f4231e716e2882e716612bdddfa9e88af90aac0b6b`.
 
 Shipped by [The next generation](#NextGeneration) 8 November 2026, fingerprint `99d138159c0e7fce465ffd74ec828b3cfa1bb501acf7d08ed97f495b21eca67a`.
 
@@ -918,6 +920,10 @@ Shipped by [The next generation](#NextGeneration) 27 November 2026, fingerprint 
 
 Shipped by [The next generation](#NextGeneration) 27 November 2026, fingerprint `415a6e7e29fadeda10756b26ce6d5555f4ff54a1ba25c0aec7183a4e76e5c9be`.
 
+Shipped by [The next generation](#NextGeneration) 27 November 2026, fingerprint `11cdd1354221ca99464023f6018d013453da579ff04b1cf61c2dbb078d0e92c3`.
+
+Shipped by [The next generation](#NextGeneration) 27 November 2026, fingerprint `1c321ed293ef1fe2f28ef1f4231e716e2882e716612bdddfa9e88af90aac0b6b`.
+
 - Owner: trame
 - Produced by: [Export the page](commands.md#Export)
 - Carries: [The page in a browser](architecture.md#PageApp)
@@ -935,7 +941,7 @@ The component that shows the graph page, assembled for the browser where the eng
 
 - Path: `out/browser/page-app.ts`
 
-Built 27 November 2026 by claude, fingerprint `0c7c9f59978a2526d93d1bb815cfc3a717a1da046b91c98fdaad45d851055d34`.
+Built 27 November 2026 by claude, fingerprint `bb363afe69262e314da07d3924ad2b6b93ff6565749761047e589ee1e541b715`.
 
 Shipped by [The next generation](#NextGeneration) 8 November 2026, fingerprint `6416e1b80c44d0c602d83fd12a79c6785cb84f3d295f9795ed017ce759e2af04`.
 
@@ -988,6 +994,8 @@ Shipped by [The next generation](#NextGeneration) 26 November 2026, fingerprint 
 Shipped by [The next generation](#NextGeneration) 26 November 2026, fingerprint `2cee403e6262b0aa7bbe3245a73d360067d9dab09e94b34a94d15e13d0a37d93`.
 
 Shipped by [The next generation](#NextGeneration) 27 November 2026, fingerprint `0c7c9f59978a2526d93d1bb815cfc3a717a1da046b91c98fdaad45d851055d34`.
+
+Shipped by [The next generation](#NextGeneration) 27 November 2026, fingerprint `bb363afe69262e314da07d3924ad2b6b93ff6565749761047e589ee1e541b715`.
 
 - Owner: trame
 - Produced by: [The page in a browser](architecture.md#PageApp)
@@ -1095,7 +1103,7 @@ Passed 27 November 2026 by claude.
 - Checks: [The graph page](#GraphPage)
 - Run by: [Open the graph page](#OpenTheGraphPage)
 - Signed by: [Trame's maintainers](#Maintainers)
-- Verifies: [Show the graph](browser.md#ShowGraph), [Explorer of a graph](browser.md#ExplorerFigures), [The browser loads the page](../std/releases/0.29.1/docs/platform.md#BrowserLoading), [The browser's window](browser.md#BrowserWindow), [Local storage](browser.md#BrowserMemory), [The globals of the page, and trame dev](browser.md#BrowserFeed), [Amendments sent to trame dev](browser.md#BrowserAmendments), [The browser's gzip](browser.md#BrowserDecompression), [Commands run in the engine](../std/releases/0.29.1/docs/tooling.md#CommandsInTheEngine), [Chromium, driven by Playwright](../std/releases/0.29.1/docs/tooling.md#PlaywrightBrowser)
+- Verifies: [Show the graph](browser.md#ShowGraph), [Explorer of a graph](browser.md#ExplorerFigures), [The browser loads the page](../std/releases/0.30.0/docs/platform.md#BrowserLoading), [The browser's window](browser.md#BrowserWindow), [Local storage](browser.md#BrowserMemory), [The globals of the page, and trame dev](browser.md#BrowserFeed), [Amendments sent to trame dev](browser.md#BrowserAmendments), [The browser's gzip](browser.md#BrowserDecompression), [Commands run in the engine](../std/releases/0.30.0/docs/tooling.md#CommandsInTheEngine), [Chromium, driven by Playwright](../std/releases/0.30.0/docs/tooling.md#PlaywrightBrowser)
 
 <a id="MachineAsked"></a>
 
@@ -1112,7 +1120,7 @@ Passed 26 November 2026 by claude.
 - Owner: trame
 - Run by the engine's command: doctor
 - Signed by: [Trame's maintainers](#Maintainers)
-- Verifies: [Playwright's browser, installed](../std/releases/0.29.1/docs/tooling.md#PlaywrightBrowserInstalled), [The system, one the project runs on](../libs/machine/releases/0.1.0/docs/machine.md#SystemSupported), [Node, recent enough](../libs/machine/releases/0.1.0/docs/machine.md#NodeRecentEnough), [Git, installed](../libs/machine/releases/0.1.0/docs/machine.md#GitInstalled), [What the machine runs, for Trame](#OurMachineSettings)
+- Verifies: [Playwright's browser, installed](../std/releases/0.30.0/docs/tooling.md#PlaywrightBrowserInstalled), [The system, one the project runs on](../libs/machine/releases/0.1.0/docs/machine.md#SystemSupported), [Node, recent enough](../libs/machine/releases/0.1.0/docs/machine.md#NodeRecentEnough), [Git, installed](../libs/machine/releases/0.1.0/docs/machine.md#GitInstalled), [What the machine runs, for Trame](#OurMachineSettings)
 - Required by: [Into the main branch](#IntoMain)
 
 <a id="PlanRunsInTheEngine"></a>
@@ -1126,9 +1134,9 @@ The library's plan, run by the engine that ships, on the project it prepared: wh
 Passed 26 November 2026 by claude.
 
 - Owner: trame
-- Run by: [Plan](../libs/commands/releases/0.1.2/docs/commands.md#Plan)
+- Run by: [Plan](../libs/commands/releases/0.2.0/docs/commands.md#Plan)
 - Signed by: [Trame's maintainers](#Maintainers)
-- Verifies: [The project the engine prepared](../std/releases/0.29.1/docs/engine.md#ProjectInTheEngine)
+- Verifies: [The project the engine prepared](../std/releases/0.30.0/docs/engine.md#ProjectInTheEngine)
 - Required by: [Into the main branch](#IntoMain)
 
 <a id="RepositoryRead"></a>
@@ -1144,7 +1152,7 @@ Passed 20 November 2026 by claude.
 - Owner: trame
 - Run by: [Read the repository's settings](#ReadTheRepositorySettings)
 - Signed by: [Trame's maintainers](#Maintainers)
-- Verifies: [GitHub's command line](../std/releases/0.29.1/docs/repository.md#GitHubCliRepository)
+- Verifies: [GitHub's command line](../std/releases/0.30.0/docs/repository.md#GitHubCliRepository)
 - Required by: [The repository as decided](#RepositorySet)
 
 ## Shipments
@@ -1268,13 +1276,13 @@ The engine as the graph describes it now, frozen into the next generation and pi
 | [The laws are requirements](engine.md#LawsAreRequirements) | **held** | [The decisions of the architecture hold](#ArchitectureApplied), for [Laws](engine.md#Laws) |
 | [Without evidence, a status is unknown](principles.md#UnknownWithoutEvidence) | **held** | [The decisions of the architecture hold](#ArchitectureApplied), for [Laws](engine.md#Laws) |
 | [The source carries the history](principles.md#HistoryInTheSource) | **held** | [The decisions of the architecture hold](#ArchitectureApplied), for [Lock](engine.md#Lock) |
-| [Kinds and views say what; renderers say how](rendering.md#MeaningThenLook) | **held** | [The decisions of the architecture hold](#ArchitectureApplied), for [Common rendering](rendering.md#Common) |
 | [One output for each reader](principles.md#OneOutputPerReader) | **held** | [The decisions of the architecture hold](#ArchitectureApplied), for [Machine outputs](engine.md#MachineOutputs) |
 | [Generations: frozen engines](principles.md#GenerationLayer) | **held** | [The decisions of the architecture hold](#ArchitectureApplied), for [Accept a candidate](generations.md#AcceptCandidate) |
 | [Trame builds Trame](principles.md#TrameBuildsTrame) | **held** | [The decisions of the architecture hold](#ArchitectureApplied), for [Accept a candidate](generations.md#AcceptCandidate) |
-| [One renderer, its syntax a choice](rendering.md#OneRendererManySyntaxes) | **held** | [The decisions of the architecture hold](#ArchitectureApplied), for [Rendering of the files](rendering.md#FileRendering) |
 | [A product is delivered by a node of the graph](principles.md#DeliveredByTheGraph) | **held** | [The decisions of the architecture hold](#ArchitectureApplied), for [Style of a delivered page](delivery.md#DeliveredStyle) |
 | [A style sheet writes no value](page.md#StyleThroughVariables) | **held** | [The decisions of the architecture hold](#ArchitectureApplied), for [Theme](page.md#Theme) |
+| [Kinds and views say what; renderers say how](rendering.md#MeaningThenLook) | **held** | [The decisions of the architecture hold](#ArchitectureApplied), for [Rendering in the page](rendering.md#PageRendering) |
+| [Trame's documents, rendered by the library of documents](rendering.md#RenderedByTheLibrary) | **held** | [The decisions of the architecture hold](#ArchitectureApplied), for [Rendering in the page](rendering.md#PageRendering) |
 | [The page is assembled](browser.md#ThePageIsAssembled) | **held** | [The decisions of the architecture hold](#ArchitectureApplied), for [Explorer of a graph](browser.md#ExplorerFigures) |
 | [Effects come from the vocabulary](architecture.md#KnownEffects) | **held** | [The rules of the architecture hold](#ArchitectureRuled) |
 | [Only commands write](architecture.md#OnlyCommandsWrite) | **held** | [The rules of the architecture hold](#ArchitectureRuled) |
@@ -1316,7 +1324,7 @@ The engine as the graph describes it now, frozen into the next generation and pi
 | [The engine's API](command-scenarios.md#EngineApiGiven) | **held** | [The engine is verified](#EngineVerified), for [Preparation](commands.md#Preparation) |
 | [A value amended](command-scenarios.md#ValueAmended) | **held** | [The engine is verified](#EngineVerified), for [An amendment prepared](commands.md#Amending) |
 | [The packages audited](command-scenarios.md#PackagesAudited) | **held** | [The engine is verified](#EngineVerified), for [Audit the packages](commands.md#Audit) |
-| [A view in the terminal](command-scenarios.md#ViewsInTheTerminal) | **held** | [The engine is verified](#EngineVerified), for [Figures as text](rendering.md#TextFigures) |
+| [A view in the terminal](command-scenarios.md#ViewsInTheTerminal) | **held** | [The engine is verified](#EngineVerified), for [Render a view](commands.md#RenderView) |
 | [The page of the graph](command-scenarios.md#PageOfTheGraph) | **held** | [The engine is verified](#EngineVerified), for [esbuild](platform.md#Esbuild) |
 | [The page delivered](command-scenarios.md#PageDelivered) | **held** | [The engine is verified](#EngineVerified), for [The names a bundle is led by](delivery.md#NamesLed) |
 | [trame dev](command-scenarios.md#DevFollowsTheGraph) | **held** | [The engine is verified](#EngineVerified), for [Node timer](platform.md#NodeTimer) |
@@ -1351,7 +1359,7 @@ The engine as the graph describes it now, frozen into the next generation and pi
 | [The resolution does not depend on the order](laws.md#OrderFree) | **held** | [The language serves what it says](#LanguageServed), for [Complete declaration](laws.md#CompleteDeclaration) |
 | [Without evidence, the status is unknown](laws.md#UnknownWithoutEvidence) | **held** | [The language serves what it says](#LanguageServed), for [Complete declaration](laws.md#CompleteDeclaration) |
 
-Shipped 27 November 2026 by claude; its dossier: `evidence/shipments/NextGeneration-2026-11-27-e9fb8deb.json`.
+Shipped 27 November 2026 by claude; its dossier: `evidence/shipments/NextGeneration-2026-11-27-efaac4ce.json`.
 
 - Owner: trame
 - Ships: [The candidate engine](#EngineCandidate), [The page's program](#PageProgram), [The graph page](#GraphPage)
@@ -1419,7 +1427,7 @@ Shipped 26 November 2026 by claude; its dossier: `evidence/shipments/RunnersWrit
 Every ADR a reached node applies holds: an ADR applied only by what proves nothing is a hole to close, not one to leave out of the policy.
 
 - Owner: trame
-- Applies the family: [The decisions a shipment applies hold](../std/releases/0.29.1/docs/obligations.md#Applied)
+- Applies the family: [The decisions a shipment applies hold](../std/releases/0.30.0/docs/obligations.md#Applied)
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - In the policies: [How a generation is made](#GenerationMode)
 
@@ -1432,7 +1440,7 @@ Every ADR a reached node applies holds: an ADR applied only by what proves nothi
 Every rule of Trame's graph holds: none broken.
 
 - Owner: trame
-- Applies the family: [The project's rules hold](../std/releases/0.29.1/docs/obligations.md#Ruled)
+- Applies the family: [The project's rules hold](../std/releases/0.30.0/docs/obligations.md#Ruled)
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - In the policies: [How a generation is made](#GenerationMode), [How a change merges](#MergeMode), [How the repository is set](#SettingsMode)
 
@@ -1453,7 +1461,7 @@ Every check of the candidate a program runs: a generation is advanced by a machi
 </details>
 
 - Owner: trame
-- Applies the family: [The artefacts a shipment ships are checked](../std/releases/0.29.1/docs/obligations.md#Checked)
+- Applies the family: [The artefacts a shipment ships are checked](../std/releases/0.30.0/docs/obligations.md#Checked)
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - In the policies: [How a generation is made](#GenerationMode)
 
@@ -1468,7 +1476,7 @@ Each command is for an audience that carries no identity (whoever is at the term
 A gap it finds is an error of the graph.
 
 - Owner: trame
-- Applies the family: [Who calls a shipment's programs is identified](../std/releases/0.29.1/docs/obligations.md#Identified)
+- Applies the family: [Who calls a shipment's programs is identified](../std/releases/0.30.0/docs/obligations.md#Identified)
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - In the policies: [How a generation is made](#GenerationMode), [How the repository is set](#SettingsMode)
 
@@ -1481,7 +1489,7 @@ A gap it finds is an error of the graph.
 Every package the engine uses is installed at its version, without a known vulnerability.
 
 - Owner: trame
-- Applies the family: [The packages a shipment uses are safe](../std/releases/0.29.1/docs/obligations.md#Safe)
+- Applies the family: [The packages a shipment uses are safe](../std/releases/0.30.0/docs/obligations.md#Safe)
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - In the policies: [How a generation is made](#GenerationMode)
 
@@ -1504,7 +1512,7 @@ A gap it finds is an error of the graph.
 </details>
 
 - Owner: trame
-- Applies the family: [The code a shipment ships is verified](../std/releases/0.29.1/docs/obligations.md#Verified)
+- Applies the family: [The code a shipment ships is verified](../std/releases/0.30.0/docs/obligations.md#Verified)
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - In the policies: [How a generation is made](#GenerationMode), [How a change merges](#MergeMode), [How the repository is set](#SettingsMode)
 
@@ -1517,7 +1525,7 @@ A gap it finds is an error of the graph.
 Every requirement of the goals the reached code serves holds, at any depth.
 
 - Owner: trame
-- Applies the family: [The product a shipment serves holds](../std/releases/0.29.1/docs/obligations.md#Served)
+- Applies the family: [The product a shipment serves holds](../std/releases/0.30.0/docs/obligations.md#Served)
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - In the policies: [How a generation is made](#GenerationMode)
 

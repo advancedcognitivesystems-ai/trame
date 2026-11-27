@@ -7,12 +7,12 @@
 import { BlockType, Nature, Outcome, Severity, Status, Validity, keyOf } from "../../../trame/kernel"
 import type { ProvidedBy } from "../../../trame/kernel"
 import type { Html } from "#std/html"
-import type { HtmlElement, HtmlHeading, EscapedText } from "../../html"
+import type { HtmlElement, HtmlHeading, EscapedText } from "#documents/html"
 import type { DocumentMarkup } from "../../markup"
 import type { ThePage } from "../../page"
 import type { Punctuation } from "#documents/language"
-import type { DocumentSyntax, FigureSyntax, SentenceSlots, Written } from "../../rendering"
-import type { RenderingMessages } from "../../messages"
+import type { DocumentSyntax, FigureSyntax, SentenceSlots, Written } from "#documents/rendering"
+import type { RenderingMessages } from "#documents/rendering"
 import type { Counts, Texts } from "#std/algebra"
 
 type Attributes = Readonly<Record<string, string | true>>

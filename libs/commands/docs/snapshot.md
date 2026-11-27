@@ -4,14 +4,6 @@
 
 ## Commands · Commands
 
-### How a command writes at a terminal
-
-Decision · `TerminalLines`
-
-- Decided by: trame
-- Value: { indent:    }
-- Rejected: Tabs, their width depends on the terminal: what is indented under a line would not line up
-
 ### The language the commands speak
 
 Decision · `WordsLanguage`
@@ -43,10 +35,10 @@ Entry point · `Plan` · **held**
 
 - Owner: trame
 - Trigger: { type: command, name: plan }
-- Parameters: { project: std/engine.TheProject, files: std/tooling.Files, comparison: commands.BuildComparison, lines: commands.TerminalLines, say: commands.CommandWords, exit: std/system.ExitStatus, counts: std/algebra.Counts }
+- Parameters: { project: std/engine.TheProject, files: std/tooling.Files, comparison: commands.BuildComparison, lines: documents/text.TerminalText, say: commands.CommandWords, exit: std/system.ExitStatus, counts: std/algebra.Counts }
 - Serves: Commands every project runs, written once
 - Part of: The library's commands
-- Depends on: Two builds compared, How a command writes at a terminal, What the commands say
+- Depends on: Two builds compared, What the commands say
 
 ### What the commands say
 
@@ -71,15 +63,27 @@ Package · `ContinuousIntegration`
 - Its path: ../../ci/releases/0.8.0
 - Serves: Commands every project runs, written once
 
+### The renderers of documents
+
+Package · `Documents`
+
+- Owner: trame
+- Name: documents
+- Version: 0.2.0
+- How it joins the graph: library
+- Where it comes from: path
+- Its path: ../documents/releases/0.2.0
+- Serves: Commands every project runs, written once
+
 ### Trame
 
 Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 130
+- Version: 131
 - How it joins the graph: language
-- Its path: ../../generations/g130
+- Its path: ../../generations/g131
 - Serves: Commands every project runs, written once
 
 ### The people of the repository
@@ -100,9 +104,9 @@ Package · `StandardLibrary`
 
 - Owner: trame
 - Name: std
-- Version: 0.29.1
+- Version: 0.30.0
 - How it joins the graph: library
-- Its path: ../../std/releases/0.29.1
+- Its path: ../../std/releases/0.30.0
 - Serves: Commands every project runs, written once
 
 ## Commands · Product
@@ -148,6 +152,18 @@ Release · `R0_1_2`
 - Released on: 2026-11-27
 - What changes: its own language of words; the decision behind its choices, which adopts std's: the engine is a provider
 - Fingerprint: 29350d242a13f4d9
+- Language: shared
+- Serves: Commands every project runs, written once
+
+### Version 0.2.0
+
+Release · `R0_2_0`
+
+- Released by: trame
+- Version: 0.2.0
+- Released on: 2026-11-27
+- What changes: Indents with libs/documents' terminal text, its own decision gone; std 0.30.0
+- Fingerprint: 6700afbbbbfb0996
 - Language: shared
 - Serves: Commands every project runs, written once
 
@@ -228,10 +244,10 @@ Scenario · `PlanAfterTheSameBuild` · **held**
 Scenario · `PlanSaysWhatChanges` · **held**
 
 - Owner: trame
-- Parameters: { plan: commands.Plan, project: std/engine.TheProject, files: std/tooling.Files, say: commands.CommandWords, lines: commands.TerminalLines, checks: scenarios.ScenarioWords, exit: std/system.ExitStatus, counts: std/algebra.Counts }
+- Parameters: { plan: commands.Plan, project: std/engine.TheProject, files: std/tooling.Files, say: commands.CommandWords, lines: documents/text.TerminalText, checks: scenarios.ScenarioWords, exit: std/system.ExitStatus, counts: std/algebra.Counts }
 - Verifies: Plan, Two builds compared, Which project the scenarios compile
 - In: Test
-- Depends on: Plan, What the commands say, How a command writes at a terminal, What the scenarios check
+- Depends on: Plan, What the commands say, What the scenarios check
 
 ### Without a build, a plan says so
 

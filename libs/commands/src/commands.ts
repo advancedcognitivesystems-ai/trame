@@ -1,5 +1,6 @@
 /** Commands · Commands */
 
+import { TerminalText } from "#documents/text"
 import { code, plurals } from "#trame/kernel"
 import { component } from "#trame/kinds/component"
 import { entryPoint, command } from "#trame/kinds/entry-point"
@@ -27,16 +28,6 @@ export const Commands = component({
   owner: "trame",
   language: "typescript",
   deps: { exposure: ProgramCommands },
-})
-
-/**
- * How a command writes at a terminal
- * What belongs to a line is indented under it, by this step: spaces, whose width every terminal draws alike.
- */
-export const TerminalLines = decision<{ indent: string }>({
-  owner: "trame",
-  value: { indent: "  " },
-  rejected: { "Tabs": "their width depends on the terminal: what is indented under a line would not line up" },
 })
 
 /**
@@ -113,6 +104,6 @@ export const Plan = entryPoint({
   in: Commands, for: Anyone,
   serves: [WrittenOnce],
   trigger: command("plan"),
-  deps: { project: TheProject, files: Files, comparison: BuildComparison, lines: TerminalLines, say: CommandWords, exit: ExitStatus, counts: Counts },
+  deps: { project: TheProject, files: Files, comparison: BuildComparison, lines: TerminalText, say: CommandWords, exit: ExitStatus, counts: Counts },
   body: code.file("./code/plan.ts"),
 })

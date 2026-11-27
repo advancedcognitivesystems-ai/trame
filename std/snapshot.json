@@ -1176,6 +1176,33 @@
       }
     },
     {
+      "id": "engine.ReferenceSyntax",
+      "kind": "standard",
+      "title": "Trame references",
+      "fields": {
+        "owner": "trame",
+        "source": "Trame, the prelude (trame/kernel.ts: refOf, getPath)",
+        "constants": {
+          "separator": {
+            "value": ".",
+            "meaning": "Separates the module from the identifier, and the steps of a path in a field"
+          },
+          "library": {
+            "value": "/",
+            "meaning": "Separates a library's name from the name of one of its modules, in the graph that imports it"
+          },
+          "wholeNode": {
+            "value": "",
+            "meaning": "The empty path: the whole node, not one of its fields",
+            "refines": {
+              "node": "algebra.Texts",
+              "name": "empty"
+            }
+          }
+        }
+      }
+    },
+    {
       "id": "engine.TheProject",
       "kind": "port",
       "title": "The project at hand",
@@ -2635,10 +2662,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "130",
+        "version": "131",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g130"
+        "at": "../generations/g131"
       }
     },
     {
@@ -3429,6 +3456,19 @@
         "date": "2026-10-26",
         "what": "HTML and CSS: the HTML, WAI-ARIA, SVG and CSS standards move here from Trame, with the elements a page is made of (headings, header, main, footer, nav)",
         "fingerprint": "f69c88114c3c885d",
+        "language": "shared"
+      }
+    },
+    {
+      "id": "releases.R0_30_0",
+      "kind": "release",
+      "title": "Version 0.30.0",
+      "fields": {
+        "owner": "trame",
+        "version": "0.30.0",
+        "date": "2026-11-27",
+        "what": "Trame's reference syntax, which the engine gives and renderers read, in the module engine",
+        "fingerprint": "a85cd39da95a106b",
         "language": "shared"
       }
     },
@@ -6670,6 +6710,11 @@
       "kind": "deps"
     },
     {
+      "from": "engine.ReferenceSyntax",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
       "from": "html.Aria",
       "to": "product.CitedNotCopied",
       "kind": "serves"
@@ -8057,6 +8102,41 @@
     {
       "from": "releases.R0_3_0",
       "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_30_0",
+      "to": "product.ChosenCommands",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_30_0",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_30_0",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_30_0",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_30_0",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_30_0",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_30_0",
+      "to": "product.VersionsThatHold",
       "kind": "serves"
     },
     {
@@ -9838,6 +9918,11 @@
       "from": "web.WebSpeechApi",
       "to": "product.CitedNotCopied",
       "kind": "serves"
+    },
+    {
+      "from": "engine.ReferenceSyntax",
+      "to": "algebra.Texts",
+      "kind": "refines"
     }
   ],
   "open": []

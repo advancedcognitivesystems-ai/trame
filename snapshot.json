@@ -221,79 +221,6 @@
       }
     },
     {
-      "id": "appearance.Palette",
-      "kind": "decision",
-      "title": "Palette",
-      "fields": {
-        "owner": "trame",
-        "value": {
-          "light": {
-            "bg": "#f3f5f6",
-            "panel": "#ffffff",
-            "ink": "#17202a",
-            "muted": "#5a6672",
-            "line": "#d9e0e5",
-            "accent": "#34509a",
-            "accent-soft": "#e5ebf7",
-            "ok": "#26734a",
-            "ok-soft": "#e1f1e7",
-            "warn": "#9a6200",
-            "warn-soft": "#fbf0d9",
-            "bad": "#ad2a22",
-            "bad-soft": "#f9e3e1",
-            "unk": "#65707c",
-            "unk-soft": "#e9edf0",
-            "term-bg": "#121820",
-            "term-ink": "#d8dee5",
-            "term-dim": "#7f8b97"
-          },
-          "dark": {
-            "bg": "#0e1217",
-            "panel": "#151b22",
-            "ink": "#e4e9ee",
-            "muted": "#98a3ae",
-            "line": "#29323c",
-            "accent": "#93abef",
-            "accent-soft": "#1e2a44",
-            "ok": "#7fd19b",
-            "ok-soft": "#173325",
-            "warn": "#f2c063",
-            "warn-soft": "#3a2d12",
-            "bad": "#f08a80",
-            "bad-soft": "#3d1c1a",
-            "unk": "#a5afb9",
-            "unk-soft": "#222a33",
-            "term-bg": "#0a0e13",
-            "term-ink": "#d8dee5",
-            "term-dim": "#7f8b97"
-          },
-          "statuses": {
-            "held": {
-              "fill": "ok-soft",
-              "stroke": "ok"
-            },
-            "blocked": {
-              "fill": "warn-soft",
-              "stroke": "warn"
-            },
-            "violated": {
-              "fill": "bad-soft",
-              "stroke": "bad"
-            },
-            "unknown": {
-              "fill": "unk-soft",
-              "stroke": "unk"
-            },
-            "neutral": {
-              "fill": "panel",
-              "stroke": "muted"
-            }
-          },
-          "ink": "ink"
-        }
-      }
-    },
-    {
       "id": "appearance.Radii",
       "kind": "decision",
       "title": "Radii",
@@ -1181,15 +1108,15 @@
           "figures": "markup.FigureMarkup",
           "explorer": "markup.ExplorerMarkup",
           "drawing": "appearance.ExplorerDrawing",
-          "element": "html.HtmlElement",
-          "start": "html.HtmlStartTag",
-          "empty": "html.SelfClosingTag",
+          "element": "documents/html.HtmlElement",
+          "start": "documents/html.HtmlStartTag",
+          "empty": "documents/html.SelfClosingTag",
           "path": "html.PathData",
           "declaration": "html.CssDeclaration",
-          "escape": "html.EscapedText",
-          "common": "rendering.Common",
+          "escape": "documents/html.EscapedText",
+          "common": "documents/rendering.Common",
           "words": "messages.PageWords",
-          "messages": "messages.RenderingMessages",
+          "messages": "documents/rendering.RenderingMessages",
           "punctuation": "documents/language.Punctuation",
           "counts": "std/algebra.Counts",
           "sequences": "std/algebra.Sequences",
@@ -1218,7 +1145,7 @@
           "unpacking": "architecture.Decompression",
           "amendments": "architecture.PageAmendments",
           "explorer": "browser.ExplorerFigures",
-          "common": "rendering.Common",
+          "common": "documents/rendering.Common",
           "page": "page.ThePage",
           "regions": "page.PageRegions",
           "modes": "page.RenderingModes",
@@ -1228,7 +1155,7 @@
           "explorerMarkup": "markup.ExplorerMarkup",
           "drawing": "appearance.ExplorerDrawing",
           "ids": "conventions.DocumentIds",
-          "slots": "rendering.SentenceSlots",
+          "slots": "documents/rendering.SentenceSlots",
           "punctuation": "documents/language.Punctuation",
           "language": "messages.Language",
           "html": "std/html.Html",
@@ -1237,8 +1164,8 @@
           "view": "std/web.CssomView",
           "iso": "std/measures.Iso8601",
           "file": "std/text.TextFile",
-          "element": "html.HtmlElement",
-          "escape": "html.EscapedText",
+          "element": "documents/html.HtmlElement",
+          "escape": "documents/html.EscapedText",
           "attribute": "html.AttributeSelector",
           "presence": "html.AttributePresence",
           "selectors": "html.SelectorList",
@@ -2437,8 +2364,8 @@
           "diff": "std/text.UnifiedDiff",
           "file": "std/text.TextFile",
           "terminal": "architecture.Terminal",
-          "table": "text.Columns",
-          "columns": "text.TerminalText",
+          "table": "documents/text.Columns",
+          "columns": "documents/text.TerminalText",
           "laws": "messages.CommandMessages",
           "counts": "std/algebra.Counts",
           "sequences": "std/algebra.Sequences",
@@ -2451,7 +2378,7 @@
           "records": "generations.ReleaseRecords",
           "json": "conventions.JsonFormatting",
           "specifiers": "std/system.NodeModuleSpecifiers",
-          "references": "conventions.ReferenceSyntax",
+          "references": "std/engine.ReferenceSyntax",
           "clock": "architecture.Clock",
           "project": "engine.Project",
           "packages": "std/tooling.PackageSources",
@@ -2480,7 +2407,7 @@
           "amending": "commands.Amending",
           "place": "architecture.AmendmentPlace",
           "paths": "architecture.Paths",
-          "text": "text.TerminalText",
+          "text": "documents/text.TerminalText",
           "terminal": "architecture.Terminal",
           "messages": "messages.CommandMessages"
         },
@@ -2554,7 +2481,7 @@
         "deps": {
           "preparation": "commands.Preparation",
           "assembly": "engine.Assembly",
-          "layout": "text.TerminalText",
+          "layout": "documents/text.TerminalText",
           "punctuation": "documents/language.Punctuation",
           "texts": "std/algebra.Texts",
           "counts": "std/algebra.Counts",
@@ -2590,8 +2517,8 @@
           "encodings": "std/system.NodeEncodings",
           "json": "conventions.JsonFormatting",
           "terminal": "architecture.Terminal",
-          "table": "text.Columns",
-          "columns": "text.TerminalText",
+          "table": "documents/text.Columns",
+          "columns": "documents/text.TerminalText",
           "counts": "std/algebra.Counts",
           "values": "std/algebra.ValueTypes",
           "messages": "messages.CommandMessages"
@@ -2618,8 +2545,8 @@
           "layout": "conventions.Layout",
           "preparation": "commands.Preparation",
           "machine": "engine.MachineOutputs",
-          "files": "rendering.FileRendering",
-          "screen": "rendering.TerminalRendering",
+          "files": "documents/rendering.FileRendering",
+          "screen": "documents/rendering.TerminalRendering",
           "writing": "architecture.FileWriting",
           "paths": "architecture.Paths",
           "terminal": "architecture.Terminal",
@@ -2770,8 +2697,8 @@
           "exitStatus": "std/system.ExitStatus",
           "preparation": "commands.Preparation",
           "payload": "engine.PayloadBuilder",
-          "files": "rendering.FileRendering",
-          "screen": "rendering.TerminalRendering",
+          "files": "documents/rendering.FileRendering",
+          "screen": "documents/rendering.TerminalRendering",
           "pageRendering": "rendering.PageRendering",
           "terminal": "architecture.Terminal"
         },
@@ -2878,8 +2805,8 @@
           "projectCommands": "commands.ProjectCommands",
           "views": "engine.Views",
           "terminal": "architecture.Terminal",
-          "cell": "text.PaddedCell",
-          "columns": "text.TerminalColumns",
+          "cell": "documents/text.PaddedCell",
+          "columns": "documents/text.TerminalColumns",
           "messages": "messages.CommandMessages"
         },
         "body": {
@@ -2960,7 +2887,7 @@
         "deps": {
           "exitStatus": "std/system.ExitStatus",
           "layout": "conventions.Layout",
-          "text": "text.TerminalText",
+          "text": "documents/text.TerminalText",
           "preparation": "commands.Preparation",
           "machine": "engine.MachineOutputs",
           "comparison": "commands/commands.BuildComparison",
@@ -2990,16 +2917,16 @@
           "laws": "engine.Laws",
           "views": "engine.Views",
           "lock": "engine.Lock",
-          "common": "rendering.Common",
+          "common": "documents/rendering.Common",
           "terminal": "architecture.Terminal",
           "currentProcess": "architecture.Process",
           "clock": "architecture.Clock",
           "severityOrder": "(function)",
           "devPort": "product.DevPort",
           "exitStatus": "std/system.ExitStatus",
-          "layout": "text.TerminalText",
-          "columns": "text.TerminalColumns",
-          "cell": "text.PaddedCell",
+          "layout": "documents/text.TerminalText",
+          "columns": "documents/text.TerminalColumns",
+          "cell": "documents/text.PaddedCell",
           "counts": "std/algebra.Counts",
           "sequences": "std/algebra.Sequences",
           "texts": "std/algebra.Texts",
@@ -3056,9 +2983,9 @@
           "lock": "engine.Lock",
           "writing": "architecture.FileWriting",
           "terminal": "architecture.Terminal",
-          "layout": "text.TerminalText",
-          "columns": "text.TerminalColumns",
-          "cell": "text.PaddedCell",
+          "layout": "documents/text.TerminalText",
+          "columns": "documents/text.TerminalColumns",
+          "cell": "documents/text.PaddedCell",
           "texts": "std/algebra.Texts",
           "messages": "messages.CommandMessages"
         },
@@ -3173,7 +3100,7 @@
           "layout": "conventions.Layout",
           "project": "engine.Project",
           "machine": "engine.MachineOutputs",
-          "files": "rendering.FileRendering",
+          "files": "documents/rendering.FileRendering",
           "settled": "(function)",
           "names": "libraries.LibraryReleaseNames",
           "releases": "generations.Releases",
@@ -3218,8 +3145,8 @@
           "json": "conventions.JsonFormatting",
           "preparation": "commands.Preparation",
           "views": "engine.Views",
-          "files": "rendering.FileRendering",
-          "screen": "rendering.TerminalRendering",
+          "files": "documents/rendering.FileRendering",
+          "screen": "documents/rendering.TerminalRendering",
           "terminal": "architecture.Terminal",
           "messages": "messages.CommandMessages"
         },
@@ -3335,7 +3262,7 @@
           "layout": "conventions.Layout",
           "preparation": "commands.Preparation",
           "machine": "engine.MachineOutputs",
-          "files": "rendering.FileRendering",
+          "files": "documents/rendering.FileRendering",
           "writing": "architecture.FileWriting",
           "paths": "architecture.Paths",
           "terminal": "architecture.Terminal",
@@ -3365,9 +3292,9 @@
           "views": "engine.Views",
           "laws": "engine.Laws",
           "terminal": "architecture.Terminal",
-          "layout": "text.TerminalText",
-          "columns": "text.TerminalColumns",
-          "cell": "text.PaddedCell",
+          "layout": "documents/text.TerminalText",
+          "columns": "documents/text.TerminalColumns",
+          "cell": "documents/text.PaddedCell",
           "messages": "messages.CommandMessages"
         },
         "body": {
@@ -3717,33 +3644,6 @@
         "rejected": {
           "An empty project": "nothing would say what the project is for, and the first build would have no goal to link anything to",
           "A template project to copy": "a second project to keep in step with the language; what init writes is in the graph"
-        }
-      }
-    },
-    {
-      "id": "conventions.ReferenceSyntax",
-      "kind": "standard",
-      "title": "Trame references",
-      "fields": {
-        "owner": "trame",
-        "source": "Trame, the prelude (trame/kernel.ts: refOf, getPath)",
-        "constants": {
-          "separator": {
-            "value": ".",
-            "meaning": "Separates the module from the identifier, and the steps of a path in a field"
-          },
-          "library": {
-            "value": "/",
-            "meaning": "Separates a library's name from the name of one of its modules, in the graph that imports it"
-          },
-          "wholeNode": {
-            "value": "",
-            "meaning": "The empty path: the whole node, not one of its fields",
-            "refines": {
-              "node": "std/algebra.Texts",
-              "name": "empty"
-            }
-          }
         }
       }
     },
@@ -4373,44 +4273,6 @@
       }
     },
     {
-      "id": "documents.MermaidFigures",
-      "kind": "decision",
-      "title": "How Mermaid figures are drawn",
-      "fields": {
-        "owner": "trame",
-        "value": {
-          "idPrefix": "n",
-          "directions": {
-            "layers": "down",
-            "tree": "down",
-            "path": "right"
-          },
-          "strokes": {
-            "computed": "dottedOpen",
-            "inferred": "dotted",
-            "winner": "thick",
-            "support": "thick",
-            "other": "solid"
-          },
-          "defaultStatus": "neutral",
-          "history": {
-            "dashes": "4 3"
-          },
-          "inactive": {
-            "opacity": "0.5"
-          },
-          "gantt": {
-            "dateFormat": "YYYY-MM-DD",
-            "axisFormat": "%d.%m",
-            "milestones": [
-              "deadline",
-              "review"
-            ]
-          }
-        }
-      }
-    },
-    {
       "id": "documents.OurDocumentLanguage",
       "kind": "function",
       "title": "The documents in Trame's language",
@@ -4435,18 +4297,6 @@
         "rejected": {
           "A decision of marks keyed by language tag": "two places to change for one language, and a tag written twice",
           "The marks in every catalog": "the renderers, the page and the views share them: each catalog would repeat them"
-        }
-      }
-    },
-    {
-      "id": "documents.TextRendering",
-      "kind": "decision",
-      "title": "Heading levels of Markdown documents",
-      "fields": {
-        "owner": "trame",
-        "value": {
-          "titleLevel": 1,
-          "sectionLevel": 2
         }
       }
     },
@@ -4623,7 +4473,7 @@
           "mediaTypes": "std/web.MediaTypes",
           "events": "std/web.ServerSentEvents",
           "terminal": "architecture.Terminal",
-          "codeLines": "text.CodeLines",
+          "codeLines": "documents/text.CodeLines",
           "file": "std/text.TextFile",
           "clock": "architecture.Clock",
           "timer": "architecture.Timer",
@@ -4790,7 +4640,7 @@
         "owner": "trame",
         "deps": {
           "prelude": "architecture.Prelude",
-          "syntax": "conventions.ReferenceSyntax",
+          "syntax": "std/engine.ReferenceSyntax",
           "counts": "std/algebra.Counts",
           "sequences": "std/algebra.Sequences",
           "texts": "std/algebra.Texts",
@@ -4930,7 +4780,7 @@
           "json": "conventions.JsonFormatting",
           "textFile": "std/text.TextFile",
           "references": "engine.References",
-          "codeSpan": "markdown.CodeSpan",
+          "codeSpan": "documents/markdown.CodeSpan",
           "reading": "architecture.FileReading",
           "paths": "architecture.Paths",
           "prelude": "architecture.Prelude",
@@ -5075,7 +4925,7 @@
       "fields": {
         "owner": "trame",
         "deps": {
-          "syntax": "conventions.ReferenceSyntax",
+          "syntax": "std/engine.ReferenceSyntax",
           "libraryOf": "(function)",
           "values": "std/algebra.ValueTypes"
         },
@@ -5212,7 +5062,7 @@
         "owner": "trame",
         "deps": {
           "steps": "conventions.StepNames",
-          "references": "conventions.ReferenceSyntax",
+          "references": "std/engine.ReferenceSyntax",
           "values": "std/algebra.ValueTypes",
           "layout": "conventions.Layout",
           "paths": "architecture.Paths",
@@ -5314,7 +5164,7 @@
         "deps": {
           "releases": "generations.Releases",
           "syntax": "typescript.TypeScriptSyntax",
-          "references": "conventions.ReferenceSyntax",
+          "references": "std/engine.ReferenceSyntax",
           "positions": "std/text.GnuPositions",
           "doc": "typescript.DocBlock",
           "title": "typescript.ModuleTitle",
@@ -5626,114 +5476,6 @@
       }
     },
     {
-      "id": "html.EscapedText",
-      "kind": "syntax",
-      "title": "Escaped text",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "13.1.4 Character references",
-        "url": "https://html.spec.whatwg.org/multipage/syntax.html#character-references",
-        "constants": {
-          "ampersand": {
-            "value": "&",
-            "meaning": "Opens a character reference"
-          },
-          "quotationMark": {
-            "value": "\"",
-            "meaning": "Closes the value of an attribute"
-          },
-          "amp": {
-            "value": "&amp;",
-            "meaning": "The reference written for an ampersand"
-          },
-          "lt": {
-            "value": "&lt;",
-            "meaning": "The reference written for a less-than sign"
-          },
-          "gt": {
-            "value": "&gt;",
-            "meaning": "The reference written for a greater-than sign"
-          },
-          "quot": {
-            "value": "&quot;",
-            "meaning": "The reference written for a quotation mark"
-          }
-        },
-        "deps": {
-          "standard": "std/html.Html"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "a < b & \"c\" > d"
-            ],
-            "output": "a &lt; b &amp; &quot;c&quot; &gt; d"
-          },
-          {
-            "input": [
-              "&lt;"
-            ],
-            "output": "&amp;lt;"
-          }
-        ],
-        "fragment": {
-          "before": "<p title=\"",
-          "after": "\"></p>"
-        }
-      }
-    },
-    {
-      "id": "html.HtmlAttributes",
-      "kind": "syntax",
-      "title": "Attributes",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "13.1.2.3 Attributes",
-        "url": "https://html.spec.whatwg.org/multipage/syntax.html#attributes-2",
-        "constants": {
-          "equals": {
-            "value": "=",
-            "meaning": "Separates the name of an attribute from its value"
-          },
-          "quote": {
-            "value": "\"",
-            "meaning": "Surrounds the value of an attribute"
-          }
-        },
-        "deps": {
-          "standard": "std/html.Html",
-          "texts": "std/algebra.Texts"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              {
-                "id": "Goal"
-              }
-            ],
-            "output": " id=\"Goal\""
-          },
-          {
-            "input": [
-              {
-                "class": "banner",
-                "hidden": true
-              }
-            ],
-            "output": " class=\"banner\" hidden"
-          }
-        ],
-        "fragment": {
-          "before": "<a",
-          "after": ">"
-        }
-      }
-    },
-    {
       "id": "html.HtmlBlock",
       "kind": "syntax",
       "title": "Element over several lines",
@@ -5750,8 +5492,8 @@
         },
         "deps": {
           "standard": "std/html.Html",
-          "startTag": "html.HtmlStartTag",
-          "endTag": "html.HtmlEndTag"
+          "startTag": "documents/html.HtmlStartTag",
+          "endTag": "documents/html.HtmlEndTag"
         },
         "write": "(function)",
         "examples": [
@@ -5768,127 +5510,6 @@
               "  <article class=\"doc\" id=\"doc\"></article>",
               "</main>"
             ]
-          }
-        ]
-      }
-    },
-    {
-      "id": "html.HtmlElement",
-      "kind": "syntax",
-      "title": "HTML element",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "13.1.2 Elements",
-        "url": "https://html.spec.whatwg.org/multipage/syntax.html#elements-2",
-        "constants": {},
-        "deps": {
-          "standard": "std/html.Html",
-          "startTag": "html.HtmlStartTag",
-          "endTag": "html.HtmlEndTag"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "summary",
-              {},
-              "The code"
-            ],
-            "output": "<summary>The code</summary>"
-          }
-        ]
-      }
-    },
-    {
-      "id": "html.HtmlEndTag",
-      "kind": "syntax",
-      "title": "End tag",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "13.1.2.2 End tags",
-        "url": "https://html.spec.whatwg.org/multipage/syntax.html#end-tags",
-        "constants": {
-          "slash": {
-            "value": "/",
-            "meaning": "After the less-than sign: the tag closes the element"
-          }
-        },
-        "deps": {
-          "standard": "std/html.Html"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "details"
-            ],
-            "output": "</details>"
-          }
-        ],
-        "fragment": {
-          "before": "<details>",
-          "after": ""
-        }
-      }
-    },
-    {
-      "id": "html.HtmlHeading",
-      "kind": "syntax",
-      "title": "Heading of a rank",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "4.3.6 The h1, h2, h3, h4, h5, and h6 elements",
-        "url": "https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements",
-        "constants": {
-          "prefix": {
-            "value": "h",
-            "meaning": "Before the rank of a heading: the name of its element"
-          }
-        },
-        "deps": {
-          "standard": "std/html.Html",
-          "element": "html.HtmlElement"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              2,
-              {},
-              "Cards"
-            ],
-            "output": "<h2>Cards</h2>"
-          }
-        ]
-      }
-    },
-    {
-      "id": "html.HtmlStartTag",
-      "kind": "syntax",
-      "title": "Start tag",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "13.1.2.1 Start tags",
-        "url": "https://html.spec.whatwg.org/multipage/syntax.html#start-tags",
-        "constants": {},
-        "deps": {
-          "standard": "std/html.Html",
-          "attributes": "html.HtmlAttributes"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "a",
-              {
-                "id": "Goal"
-              }
-            ],
-            "output": "<a id=\"Goal\">"
           }
         ]
       }
@@ -6146,7 +5767,7 @@
         },
         "deps": {
           "standard": "std/html.Html",
-          "element": "html.HtmlElement"
+          "element": "documents/html.HtmlElement"
         },
         "write": "(function)",
         "examples": [
@@ -6194,39 +5815,6 @@
           "before": "",
           "after": " {}"
         }
-      }
-    },
-    {
-      "id": "html.SelfClosingTag",
-      "kind": "syntax",
-      "title": "Self-closing tag",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "13.1.2.1 Start tags (the self-closing flag of foreign elements)",
-        "url": "https://html.spec.whatwg.org/multipage/syntax.html#start-tags",
-        "constants": {
-          "slash": {
-            "value": "/",
-            "meaning": "Before the greater-than sign: the element has no content and no end tag"
-          }
-        },
-        "deps": {
-          "standard": "std/html.Html",
-          "attributes": "html.HtmlAttributes"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "path",
-              {
-                "d": "M7 5v16"
-              }
-            ],
-            "output": "<path d=\"M7 5v16\"/>"
-          }
-        ]
       }
     },
     {
@@ -6552,824 +6140,6 @@
       }
     },
     {
-      "id": "markdown.Anchor",
-      "kind": "syntax",
-      "title": "Anchor",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "4.5.1 The a element; 3.2.6 The id attribute",
-        "url": "https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element",
-        "constants": {
-          "tag": {
-            "value": "a",
-            "meaning": "The link element, here without content"
-          },
-          "attribute": {
-            "value": "id",
-            "meaning": "The identifier that the fragment of an address targets"
-          }
-        },
-        "deps": {
-          "standard": "std/html.Html",
-          "element": "html.HtmlElement",
-          "texts": "std/algebra.Texts"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "Goal"
-            ],
-            "output": "<a id=\"Goal\"></a>"
-          }
-        ]
-      }
-    },
-    {
-      "id": "markdown.BacktickString",
-      "kind": "syntax",
-      "title": "Backtick string",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "6.1 Code spans (backtick string); 4.5 Fenced code blocks",
-        "url": "https://spec.commonmark.org/0.31.2/#backtick-string",
-        "constants": {},
-        "deps": {
-          "standard": "markdown.CommonMark",
-          "counts": "std/algebra.Counts"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "trame.json",
-              1
-            ],
-            "output": "`"
-          },
-          {
-            "input": [
-              "a`b",
-              1
-            ],
-            "output": "``"
-          },
-          {
-            "input": [
-              "const x = 1",
-              3
-            ],
-            "output": "```"
-          },
-          {
-            "input": [
-              "```ts\nx\n```",
-              3
-            ],
-            "output": "````"
-          }
-        ]
-      }
-    },
-    {
-      "id": "markdown.BlankLine",
-      "kind": "syntax",
-      "title": "Blank line",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "4.9 Blank lines",
-        "url": "https://spec.commonmark.org/0.31.2/#blank-lines",
-        "constants": {
-          "blank": {
-            "value": "",
-            "meaning": "A line containing no characters",
-            "refines": {
-              "node": "std/algebra.Texts",
-              "name": "empty"
-            }
-          }
-        },
-        "deps": {
-          "standard": "markdown.CommonMark"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              [
-                [
-                  "# Title"
-                ],
-                [
-                  "Text",
-                  "More text"
-                ]
-              ]
-            ],
-            "output": [
-              "# Title",
-              "",
-              "Text",
-              "More text",
-              ""
-            ]
-          },
-          {
-            "input": [
-              [
-                [
-                  "a"
-                ],
-                false,
-                [
-                  "b"
-                ]
-              ]
-            ],
-            "output": [
-              "a",
-              "",
-              "b",
-              ""
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "id": "markdown.BlockQuote",
-      "kind": "syntax",
-      "title": "Block quote",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "5.1 Block quotes",
-        "url": "https://spec.commonmark.org/0.31.2/#block-quotes",
-        "constants": {
-          "marker": {
-            "value": ">",
-            "meaning": "Marks a line of a block quote"
-          }
-        },
-        "deps": {
-          "standard": "markdown.CommonMark"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "All of them apply."
-            ],
-            "output": "> All of them apply."
-          }
-        ]
-      }
-    },
-    {
-      "id": "markdown.Blocks",
-      "kind": "syntax",
-      "title": "Sequence of blocks",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "4.9 Blank lines",
-        "url": "https://spec.commonmark.org/0.31.2/#blank-lines",
-        "constants": {
-          "maxBlankLines": {
-            "value": 1,
-            "meaning": "The number of blank lines that separate two blocks, at most"
-          }
-        },
-        "deps": {
-          "standard": "markdown.CommonMark",
-          "blankLine": "markdown.BlankLine",
-          "counts": "std/algebra.Counts"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              [
-                [
-                  "# Title",
-                  ""
-                ],
-                [
-                  "Text"
-                ]
-              ]
-            ],
-            "output": "# Title\n\nText\n"
-          },
-          {
-            "input": [
-              [
-                [
-                  "a",
-                  "b"
-                ]
-              ]
-            ],
-            "output": "a\nb\n"
-          }
-        ]
-      }
-    },
-    {
-      "id": "markdown.CodeBlock",
-      "kind": "syntax",
-      "title": "Code block",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "4.5 Fenced code blocks",
-        "url": "https://spec.commonmark.org/0.31.2/#fenced-code-blocks",
-        "constants": {
-          "length": {
-            "value": 3,
-            "meaning": "A fence has at least three backticks"
-          }
-        },
-        "deps": {
-          "standard": "markdown.CommonMark",
-          "backtickString": "markdown.BacktickString"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "ts",
-              [
-                "const x = 1"
-              ]
-            ],
-            "output": [
-              "```ts",
-              "const x = 1",
-              "```"
-            ]
-          },
-          {
-            "input": [
-              "md",
-              [
-                "```ts",
-                "x",
-                "```"
-              ]
-            ],
-            "output": [
-              "````md",
-              "```ts",
-              "x",
-              "```",
-              "````"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "id": "markdown.CodeSpan",
-      "kind": "syntax",
-      "title": "Code span",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "6.1 Code spans",
-        "url": "https://spec.commonmark.org/0.31.2/#code-spans",
-        "constants": {
-          "minLength": {
-            "value": 1,
-            "meaning": "A single backtick is enough, if the text contains none"
-          }
-        },
-        "deps": {
-          "standard": "markdown.CommonMark",
-          "backtickString": "markdown.BacktickString",
-          "texts": "std/algebra.Texts"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "trame.json"
-            ],
-            "output": "`trame.json`"
-          },
-          {
-            "input": [
-              "a`b"
-            ],
-            "output": "``a`b``"
-          },
-          {
-            "input": [
-              "`written: ${…}`"
-            ],
-            "output": "`` `written: ${…}` ``"
-          },
-          {
-            "input": [
-              " x "
-            ],
-            "output": "`  x  `"
-          }
-        ]
-      }
-    },
-    {
-      "id": "markdown.CommonMark",
-      "kind": "standard",
-      "title": "CommonMark",
-      "fields": {
-        "owner": "trame",
-        "source": "CommonMark Spec 0.31.2 (2024)",
-        "url": "https://spec.commonmark.org/0.31.2/",
-        "constants": {
-          "endOfLine": {
-            "value": "\n",
-            "meaning": "Ends a line (§ 2.1: a line feed, U+000A)"
-          },
-          "space": {
-            "value": " ",
-            "meaning": "Separates a mark from what it introduces (§ 2.1: U+0020)"
-          },
-          "backtick": {
-            "value": "`",
-            "meaning": "Delimits code, inline or in a block (§ 4.5, § 6.1)"
-          },
-          "asterisk": {
-            "value": "*",
-            "meaning": "Delimits emphasis (§ 6.2)"
-          }
-        }
-      }
-    },
-    {
-      "id": "markdown.Details",
-      "kind": "syntax",
-      "title": "Collapsible block",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "4.11.1 The details element; 4.11.2 The summary element",
-        "url": "https://html.spec.whatwg.org/multipage/interactive-elements.html#the-details-element",
-        "constants": {
-          "tag": {
-            "value": "details",
-            "meaning": "The collapsible block"
-          },
-          "summary": {
-            "value": "summary",
-            "meaning": "Its summary, always visible"
-          }
-        },
-        "deps": {
-          "standard": "std/html.Html",
-          "startTag": "html.HtmlStartTag",
-          "endTag": "html.HtmlEndTag",
-          "element": "html.HtmlElement",
-          "blankLine": "markdown.BlankLine"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "The code",
-              [
-                [
-                  "x"
-                ]
-              ]
-            ],
-            "output": [
-              "<details><summary>The code</summary>",
-              "",
-              "x",
-              "",
-              "</details>"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "id": "markdown.Emphasis",
-      "kind": "syntax",
-      "title": "Emphasis",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "6.2 Emphasis",
-        "url": "https://spec.commonmark.org/0.31.2/#emphasis-and-strong-emphasis",
-        "constants": {
-          "count": {
-            "value": 1,
-            "meaning": "One asterisk on each side"
-          }
-        },
-        "deps": {
-          "standard": "markdown.CommonMark"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "The graph in force"
-            ],
-            "output": "*The graph in force*"
-          }
-        ]
-      }
-    },
-    {
-      "id": "markdown.Gfm",
-      "kind": "standard",
-      "title": "GitHub Flavored Markdown",
-      "fields": {
-        "owner": "trame",
-        "source": "GitHub Flavored Markdown Spec 0.29-gfm (2019)",
-        "url": "https://github.github.com/gfm/",
-        "constants": {
-          "pipe": {
-            "value": "|",
-            "meaning": "Separates the cells of a table, and borders each row (§ 4.10)"
-          }
-        }
-      }
-    },
-    {
-      "id": "markdown.Heading",
-      "kind": "syntax",
-      "title": "Heading",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "4.2 ATX headings",
-        "url": "https://spec.commonmark.org/0.31.2/#atx-headings",
-        "constants": {
-          "hash": {
-            "value": "#",
-            "meaning": "Repeated as many times as the level of the heading"
-          },
-          "maxLevel": {
-            "value": 6,
-            "meaning": "The deepest level: beyond six hash signs, the line is no longer a heading"
-          }
-        },
-        "deps": {
-          "standard": "markdown.CommonMark"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              2,
-              "Goals"
-            ],
-            "output": "## Goals"
-          },
-          {
-            "input": [
-              9,
-              "Very deep"
-            ],
-            "output": "###### Very deep"
-          }
-        ]
-      }
-    },
-    {
-      "id": "markdown.Link",
-      "kind": "syntax",
-      "title": "Link",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "6.3 Links",
-        "url": "https://spec.commonmark.org/0.31.2/#links",
-        "constants": {
-          "openText": {
-            "value": "[",
-            "meaning": "Opens the text of the link"
-          },
-          "closeText": {
-            "value": "]",
-            "meaning": "Closes the text of the link"
-          },
-          "openDestination": {
-            "value": "(",
-            "meaning": "Opens the destination"
-          },
-          "closeDestination": {
-            "value": ")",
-            "meaning": "Closes the destination"
-          }
-        },
-        "deps": {
-          "standard": "markdown.CommonMark"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "Goal",
-              "product.md#Goal"
-            ],
-            "output": "[Goal](product.md#Goal)"
-          }
-        ]
-      }
-    },
-    {
-      "id": "markdown.ListItem",
-      "kind": "syntax",
-      "title": "List item",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "5.2 List items",
-        "url": "https://spec.commonmark.org/0.31.2/#list-items",
-        "constants": {
-          "bullet": {
-            "value": "-",
-            "meaning": "Marks an item of an unordered list"
-          }
-        },
-        "deps": {
-          "standard": "markdown.CommonMark"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "Owner: trame"
-            ],
-            "output": "- Owner: trame"
-          }
-        ]
-      }
-    },
-    {
-      "id": "markdown.RelativeReference",
-      "kind": "syntax",
-      "title": "Relative reference",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "4.2 Relative reference; 3.5 Fragment; 5.2.4 Remove dot segments",
-        "url": "https://www.rfc-editor.org/rfc/rfc3986#section-4.2",
-        "constants": {
-          "segment": {
-            "value": "/",
-            "meaning": "Separates the segments of a path"
-          },
-          "fragment": {
-            "value": "#",
-            "meaning": "Introduces the fragment: the anchor, in the target document"
-          },
-          "parent": {
-            "value": "..",
-            "meaning": "The segment that goes up one level: from the documents to the project's root"
-          }
-        },
-        "deps": {
-          "standard": "std/web.Uri",
-          "texts": "std/algebra.Texts",
-          "layout": "conventions.Layout"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "docs/product.md",
-              "Goal"
-            ],
-            "output": "product.md#Goal"
-          },
-          {
-            "input": [
-              null,
-              "Graph"
-            ],
-            "output": "#Graph"
-          },
-          {
-            "input": [
-              "docs/product.md"
-            ],
-            "output": "product.md"
-          },
-          {
-            "input": [
-              "std/docs/algebra.md",
-              "Counts"
-            ],
-            "output": "../std/docs/algebra.md#Counts"
-          },
-          {
-            "input": [
-              "../std/docs/index.md"
-            ],
-            "output": "../../std/docs/index.md"
-          }
-        ]
-      }
-    },
-    {
-      "id": "markdown.Small",
-      "kind": "syntax",
-      "title": "Small text",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "4.5.4 The small element",
-        "url": "https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-small-element",
-        "constants": {
-          "tag": {
-            "value": "small",
-            "meaning": "A side note, in small print"
-          }
-        },
-        "deps": {
-          "standard": "std/html.Html",
-          "element": "html.HtmlElement"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "Decision"
-            ],
-            "output": "<small>Decision</small>"
-          }
-        ]
-      }
-    },
-    {
-      "id": "markdown.StrongEmphasis",
-      "kind": "syntax",
-      "title": "Strong emphasis",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "6.2 Strong emphasis",
-        "url": "https://spec.commonmark.org/0.31.2/#emphasis-and-strong-emphasis",
-        "constants": {
-          "count": {
-            "value": 2,
-            "meaning": "Two asterisks on each side"
-          }
-        },
-        "deps": {
-          "standard": "markdown.CommonMark"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "held"
-            ],
-            "output": "**held**"
-          }
-        ]
-      }
-    },
-    {
-      "id": "markdown.Table",
-      "kind": "syntax",
-      "title": "Table",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "4.10 Tables",
-        "url": "https://github.github.com/gfm/#tables-extension-",
-        "constants": {},
-        "deps": {
-          "standard": "markdown.Gfm",
-          "row": "markdown.TableRow",
-          "delimiterRow": "markdown.TableDelimiterRow"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              [
-                "Name",
-                "Role"
-              ],
-              [
-                [
-                  "Ada",
-                  "author"
-                ]
-              ]
-            ],
-            "output": [
-              "| Name | Role |",
-              "|---|---|",
-              "| Ada | author |"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "id": "markdown.TableCell",
-      "kind": "syntax",
-      "title": "Table cell",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "4.10 Tables: a pipe in a cell",
-        "url": "https://github.github.com/gfm/#tables-extension-",
-        "constants": {
-          "escape": {
-            "value": "\\",
-            "meaning": "Comes before a pipe that belongs to the content"
-          }
-        },
-        "deps": {
-          "standard": "markdown.Gfm",
-          "commonMark": "markdown.CommonMark"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "a | b\nc"
-            ],
-            "output": "a \\| b c"
-          }
-        ]
-      }
-    },
-    {
-      "id": "markdown.TableDelimiterRow",
-      "kind": "syntax",
-      "title": "Delimiter row",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "4.10 Tables: the delimiter row",
-        "url": "https://github.github.com/gfm/#tables-extension-",
-        "constants": {
-          "dash": {
-            "value": "-",
-            "meaning": "Fills the delimiter cell of a column"
-          },
-          "length": {
-            "value": 3,
-            "meaning": "The number of dashes per column"
-          }
-        },
-        "deps": {
-          "standard": "markdown.Gfm"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              3
-            ],
-            "output": "|---|---|---|"
-          }
-        ]
-      }
-    },
-    {
-      "id": "markdown.TableRow",
-      "kind": "syntax",
-      "title": "Table row",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "4.10 Tables: a row",
-        "url": "https://github.github.com/gfm/#tables-extension-",
-        "constants": {},
-        "deps": {
-          "standard": "markdown.Gfm",
-          "commonMark": "markdown.CommonMark"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              [
-                "Name",
-                "Role"
-              ]
-            ],
-            "output": "| Name | Role |"
-          }
-        ]
-      }
-    },
-    {
       "id": "markup.AroundMarkup",
       "kind": "decision",
       "title": "Around the documents",
@@ -7594,581 +6364,6 @@
       }
     },
     {
-      "id": "mermaid.ClassDefinition",
-      "kind": "syntax",
-      "title": "Class definition",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Flowcharts: classes",
-        "url": "https://mermaid.js.org/syntax/flowchart.html#classes",
-        "constants": {
-          "keyword": {
-            "value": "classDef",
-            "meaning": "Defines a class"
-          }
-        },
-        "deps": {
-          "standard": "mermaid.Mermaid",
-          "styleProperties": "mermaid.StyleProperties"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "held",
-              {
-                "fill": "#e1f1e7",
-                "stroke": "#26734a",
-                "textColour": "#17202a"
-              }
-            ],
-            "output": "classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a"
-          }
-        ]
-      }
-    },
-    {
-      "id": "mermaid.Flowchart",
-      "kind": "syntax",
-      "title": "Flowchart",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Flowcharts: direction",
-        "url": "https://mermaid.js.org/syntax/flowchart.html#direction",
-        "constants": {
-          "keyword": {
-            "value": "flowchart",
-            "meaning": "Opens a flowchart"
-          },
-          "down": {
-            "value": "TB",
-            "meaning": "From top to bottom"
-          },
-          "right": {
-            "value": "LR",
-            "meaning": "From left to right"
-          },
-          "up": {
-            "value": "BT",
-            "meaning": "From bottom to top"
-          },
-          "left": {
-            "value": "RL",
-            "meaning": "From right to left"
-          }
-        },
-        "deps": {
-          "standard": "mermaid.Mermaid"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "down",
-              [
-                "n0 --> n1"
-              ]
-            ],
-            "output": [
-              "flowchart TB",
-              "  n0 --> n1"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "id": "mermaid.Gantt",
-      "kind": "syntax",
-      "title": "Gantt chart",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Gantt: syntax, date format, axis format",
-        "url": "https://mermaid.js.org/syntax/gantt.html#syntax",
-        "constants": {
-          "keyword": {
-            "value": "gantt",
-            "meaning": "Opens a Gantt chart"
-          },
-          "dateFormat": {
-            "value": "dateFormat",
-            "meaning": "The format of the dates given to the tasks"
-          },
-          "axisFormat": {
-            "value": "axisFormat",
-            "meaning": "The format of the dates on the axis"
-          },
-          "title": {
-            "value": "title",
-            "meaning": "The title of the chart"
-          }
-        },
-        "deps": {
-          "standard": "mermaid.Mermaid"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "YYYY-MM-DD",
-              "%d.%m",
-              "Around 17 October 2026",
-              [
-                "section Deadlines"
-              ]
-            ],
-            "output": [
-              "gantt",
-              "  dateFormat YYYY-MM-DD",
-              "  axisFormat %d.%m",
-              "  title Around 17 October 2026",
-              "  section Deadlines"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "id": "mermaid.GanttName",
-      "kind": "syntax",
-      "title": "Name in a Gantt chart",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Gantt: syntax (the name of a task comes before the colon)",
-        "url": "https://mermaid.js.org/syntax/gantt.html#syntax",
-        "constants": {
-          "colon": {
-            "value": ":",
-            "meaning": "Separates a name from its data: a name cannot contain one"
-          }
-        },
-        "deps": {
-          "standard": "mermaid.Mermaid"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "Review: committee"
-            ],
-            "output": "Review  committee"
-          }
-        ]
-      }
-    },
-    {
-      "id": "mermaid.GanttSection",
-      "kind": "syntax",
-      "title": "Section",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Gantt: sections",
-        "url": "https://mermaid.js.org/syntax/gantt.html#syntax",
-        "constants": {
-          "keyword": {
-            "value": "section",
-            "meaning": "Opens a section"
-          }
-        },
-        "deps": {
-          "standard": "mermaid.Mermaid",
-          "name": "mermaid.GanttName"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "Period: free",
-              [
-                "In force : 2026-01-01, 2026-12-31"
-              ]
-            ],
-            "output": [
-              "section Period  free",
-              "  In force : 2026-01-01, 2026-12-31"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "id": "mermaid.GanttTask",
-      "kind": "syntax",
-      "title": "Task",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Gantt: task syntax",
-        "url": "https://mermaid.js.org/syntax/gantt.html#syntax",
-        "constants": {
-          "colon": {
-            "value": ":",
-            "meaning": "Separates the name of the task from its data"
-          },
-          "comma": {
-            "value": ",",
-            "meaning": "Separates the data"
-          }
-        },
-        "deps": {
-          "standard": "mermaid.Mermaid",
-          "name": "mermaid.GanttName"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "In force",
-              [
-                "2026-01-01",
-                "2026-12-31"
-              ]
-            ],
-            "output": "In force : 2026-01-01, 2026-12-31"
-          }
-        ]
-      }
-    },
-    {
-      "id": "mermaid.Mermaid",
-      "kind": "standard",
-      "title": "Mermaid",
-      "fields": {
-        "owner": "trame",
-        "source": "Mermaid 11: flowcharts and Gantt charts",
-        "url": "https://mermaid.js.org/intro/syntax-reference.html",
-        "constants": {
-          "indent": {
-            "value": "  ",
-            "meaning": "Shifts a statement inside its block: Mermaid ignores it, it helps reading"
-          },
-          "space": {
-            "value": " ",
-            "meaning": "Separates a keyword from what it introduces"
-          },
-          "quote": {
-            "value": "\"",
-            "meaning": "Surrounds a label"
-          },
-          "language": {
-            "value": "mermaid",
-            "meaning": "The name of the language, in the info string of a code block that carries a diagram (GitHub, GitLab)"
-          }
-        }
-      }
-    },
-    {
-      "id": "mermaid.MermaidLabel",
-      "kind": "syntax",
-      "title": "Label",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Flowcharts: entity codes to escape characters",
-        "url": "https://mermaid.js.org/syntax/flowchart.html#entity-codes-to-escape-characters",
-        "constants": {
-          "entity": {
-            "value": "#quot;",
-            "meaning": "Replaces a quotation mark in a label"
-          }
-        },
-        "deps": {
-          "standard": "mermaid.Mermaid"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "The \"graph\""
-            ],
-            "output": "The #quot;graph#quot;"
-          }
-        ]
-      }
-    },
-    {
-      "id": "mermaid.MermaidLink",
-      "kind": "syntax",
-      "title": "Link",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Flowcharts: links between nodes",
-        "url": "https://mermaid.js.org/syntax/flowchart.html#links-between-nodes",
-        "constants": {
-          "solid": {
-            "value": "-->",
-            "meaning": "Solid stroke, with an arrowhead"
-          },
-          "dotted": {
-            "value": "-.->",
-            "meaning": "Dotted stroke, with an arrowhead"
-          },
-          "dottedOpen": {
-            "value": "-.-",
-            "meaning": "Dotted stroke, without an arrowhead"
-          },
-          "thick": {
-            "value": "==>",
-            "meaning": "Thick stroke, with an arrowhead"
-          },
-          "bar": {
-            "value": "|",
-            "meaning": "Surrounds the text of the link"
-          }
-        },
-        "deps": {
-          "standard": "mermaid.Mermaid",
-          "label": "mermaid.MermaidLabel"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "n0",
-              "n1",
-              "dotted",
-              "Depends on"
-            ],
-            "output": "n0 -.->|Depends on| n1"
-          }
-        ]
-      }
-    },
-    {
-      "id": "mermaid.MermaidNode",
-      "kind": "syntax",
-      "title": "Node",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Flowcharts: a node with text; styling: classes",
-        "url": "https://mermaid.js.org/syntax/flowchart.html#a-node-with-text",
-        "constants": {
-          "open": {
-            "value": "[",
-            "meaning": "Opens the rectangle shape"
-          },
-          "close": {
-            "value": "]",
-            "meaning": "Closes the rectangle shape"
-          },
-          "lineBreak": {
-            "value": "<br/>",
-            "meaning": "Starts a new line in a label"
-          },
-          "classMark": {
-            "value": ":::",
-            "meaning": "Attaches a class to the node"
-          }
-        },
-        "deps": {
-          "standard": "mermaid.Mermaid",
-          "label": "mermaid.MermaidLabel"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "n0",
-              [
-                "Palette",
-                "<small>Decision</small>"
-              ],
-              "held"
-            ],
-            "output": "n0[\"Palette<br/><small>Decision</small>\"]:::held"
-          }
-        ]
-      }
-    },
-    {
-      "id": "mermaid.Milestone",
-      "kind": "syntax",
-      "title": "Milestone",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Gantt: milestones",
-        "url": "https://mermaid.js.org/syntax/gantt.html#milestones",
-        "constants": {
-          "tag": {
-            "value": "milestone",
-            "meaning": "Makes the task a milestone"
-          },
-          "duration": {
-            "value": "0d",
-            "meaning": "No duration"
-          }
-        },
-        "deps": {
-          "standard": "mermaid.Mermaid",
-          "ganttTask": "mermaid.GanttTask"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "Review",
-              "2026-11-01"
-            ],
-            "output": "Review : milestone, 2026-11-01, 0d"
-          }
-        ]
-      }
-    },
-    {
-      "id": "mermaid.NodeStyle",
-      "kind": "syntax",
-      "title": "Node style",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Flowcharts: styling a node",
-        "url": "https://mermaid.js.org/syntax/flowchart.html#styling-a-node",
-        "constants": {
-          "keyword": {
-            "value": "style",
-            "meaning": "Gives a style to nodes"
-          },
-          "comma": {
-            "value": ",",
-            "meaning": "Separates the identifiers of the nodes"
-          }
-        },
-        "deps": {
-          "standard": "mermaid.Mermaid",
-          "styleProperties": "mermaid.StyleProperties"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              [
-                "n1",
-                "n2"
-              ],
-              {
-                "dashes": "4 3"
-              }
-            ],
-            "output": "style n1,n2 stroke-dasharray:4 3"
-          }
-        ]
-      }
-    },
-    {
-      "id": "mermaid.StyleProperties",
-      "kind": "syntax",
-      "title": "Style properties",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Flowcharts: styling and classes",
-        "url": "https://mermaid.js.org/syntax/flowchart.html#styling-and-classes",
-        "constants": {
-          "colon": {
-            "value": ":",
-            "meaning": "Separates the name of a property from its value"
-          },
-          "comma": {
-            "value": ",",
-            "meaning": "Separates two properties"
-          },
-          "fill": {
-            "value": "fill",
-            "meaning": "The background colour"
-          },
-          "stroke": {
-            "value": "stroke",
-            "meaning": "The outline colour"
-          },
-          "textColour": {
-            "value": "color",
-            "meaning": "The colour of the text"
-          },
-          "dashes": {
-            "value": "stroke-dasharray",
-            "meaning": "A dashed outline: the length of a dash, then of the gap"
-          },
-          "opacity": {
-            "value": "opacity",
-            "meaning": "The opacity, from 0 (invisible) to 1"
-          }
-        },
-        "deps": {
-          "standard": "mermaid.Mermaid"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              {
-                "fill": "#ffffff",
-                "stroke": "#5a6672"
-              }
-            ],
-            "output": "fill:#ffffff,stroke:#5a6672"
-          }
-        ]
-      }
-    },
-    {
-      "id": "mermaid.Subgraph",
-      "kind": "syntax",
-      "title": "Subgraph",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Flowcharts: subgraphs",
-        "url": "https://mermaid.js.org/syntax/flowchart.html#subgraphs",
-        "constants": {
-          "start": {
-            "value": "subgraph",
-            "meaning": "Opens the group"
-          },
-          "end": {
-            "value": "end",
-            "meaning": "Closes the group"
-          },
-          "open": {
-            "value": "[",
-            "meaning": "Opens the title"
-          },
-          "close": {
-            "value": "]",
-            "meaning": "Closes the title"
-          }
-        },
-        "deps": {
-          "standard": "mermaid.Mermaid",
-          "label": "mermaid.MermaidLabel"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "engine",
-              "Trame · Engine",
-              [
-                "n0"
-              ]
-            ],
-            "output": [
-              "subgraph engine[\"Trame · Engine\"]",
-              "  n0",
-              "end"
-            ]
-          }
-        ]
-      }
-    },
-    {
       "id": "messages.AdvanceMessages",
       "kind": "catalog",
       "title": "Messages of an advance",
@@ -8335,18 +6530,6 @@
       }
     },
     {
-      "id": "messages.RenderingMessages",
-      "kind": "catalog",
-      "title": "Messages of the renderers",
-      "fields": {
-        "owner": "trame",
-        "messages": {
-          "file": "./code/rendering/messages.ts",
-          "language": "typescript"
-        }
-      }
-    },
-    {
       "id": "messages.ScenarioMessages",
       "kind": "catalog",
       "title": "Messages of the scenarios",
@@ -8415,10 +6598,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "documents",
-        "version": "0.1.1",
+        "version": "0.2.0",
         "joins": "library",
         "from": "path",
-        "at": "libs/documents/releases/0.1.1"
+        "at": "libs/documents/releases/0.2.0"
       }
     },
     {
@@ -8445,10 +6628,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "commands",
-        "version": "0.1.2",
+        "version": "0.2.0",
         "joins": "library",
         "from": "path",
-        "at": "libs/commands/releases/0.1.2"
+        "at": "libs/commands/releases/0.2.0"
       }
     },
     {
@@ -8565,10 +6748,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.29.1",
+        "version": "0.30.0",
         "joins": "library",
         "from": "path",
-        "at": "std/releases/0.29.1"
+        "at": "std/releases/0.30.0"
       }
     },
     {
@@ -8660,7 +6843,7 @@
           "standard": "page.ThePage",
           "regions": "page.PageRegions",
           "html": "std/html.Html",
-          "element": "html.HtmlElement",
+          "element": "documents/html.HtmlElement",
           "texts": "std/algebra.Texts"
         },
         "write": "(function)",
@@ -8696,7 +6879,7 @@
           "commands": "conventions.TrameCommands",
           "logo": "page.Logo",
           "block": "html.HtmlBlock",
-          "element": "html.HtmlElement"
+          "element": "documents/html.HtmlElement"
         },
         "write": "(function)",
         "examples": [
@@ -8731,7 +6914,7 @@
           "standard": "page.ThePage",
           "regions": "page.PageRegions",
           "html": "std/html.Html",
-          "element": "html.HtmlElement",
+          "element": "documents/html.HtmlElement",
           "texts": "std/algebra.Texts"
         },
         "write": "(function)",
@@ -8767,7 +6950,7 @@
           "html": "std/html.Html",
           "aria": "std/html.Aria",
           "block": "html.HtmlBlock",
-          "element": "html.HtmlElement",
+          "element": "documents/html.HtmlElement",
           "texts": "std/algebra.Texts"
         },
         "write": "(function)",
@@ -8814,7 +6997,7 @@
           "regions": "page.PageRegions",
           "html": "std/html.Html",
           "block": "html.HtmlBlock",
-          "element": "html.HtmlElement",
+          "element": "documents/html.HtmlElement",
           "toggle": "page.RenderingToggle",
           "texts": "std/algebra.Texts"
         },
@@ -8874,7 +7057,7 @@
           "regions": "page.PageRegions",
           "html": "std/html.Html",
           "block": "html.HtmlBlock",
-          "element": "html.HtmlElement",
+          "element": "documents/html.HtmlElement",
           "texts": "std/algebra.Texts"
         },
         "write": "(function)",
@@ -8912,8 +7095,8 @@
           "counts": "std/algebra.Counts",
           "texts": "std/algebra.Texts",
           "block": "html.HtmlBlock",
-          "element": "html.HtmlElement",
-          "empty": "html.SelfClosingTag",
+          "element": "documents/html.HtmlElement",
+          "empty": "documents/html.SelfClosingTag",
           "path": "html.PathData"
         },
         "write": "(function)",
@@ -8966,7 +7149,7 @@
         },
         "deps": {
           "standard": "std/html.Html",
-          "startTag": "html.HtmlStartTag",
+          "startTag": "documents/html.HtmlStartTag",
           "texts": "std/algebra.Texts"
         },
         "write": "(function)",
@@ -9024,11 +7207,11 @@
           "standard": "page.ThePage",
           "svg": "std/html.Svg",
           "aria": "std/html.Aria",
-          "palette": "appearance.Palette",
+          "palette": "documents/appearance.Palette",
           "counts": "std/algebra.Counts",
           "block": "html.HtmlBlock",
-          "element": "html.HtmlElement",
-          "empty": "html.SelfClosingTag",
+          "element": "documents/html.HtmlElement",
+          "empty": "documents/html.SelfClosingTag",
           "variable": "html.CssVariable"
         },
         "write": "(function)",
@@ -9081,7 +7264,7 @@
           "regions": "page.PageRegions",
           "html": "std/html.Html",
           "block": "html.HtmlBlock",
-          "element": "html.HtmlElement",
+          "element": "documents/html.HtmlElement",
           "banner": "page.Banner",
           "head": "page.DocumentHead",
           "texts": "std/algebra.Texts"
@@ -9183,7 +7366,7 @@
           "regions": "page.PageRegions",
           "html": "std/html.Html",
           "aria": "std/html.Aria",
-          "element": "html.HtmlElement",
+          "element": "documents/html.HtmlElement",
           "texts": "std/algebra.Texts"
         },
         "write": "(function)",
@@ -9226,7 +7409,7 @@
           "standalone": "page.StandaloneStyle",
           "encodings": "std/system.NodeEncodings",
           "file": "std/text.TextFile",
-          "palette": "appearance.Palette",
+          "palette": "documents/appearance.Palette",
           "typography": "appearance.Typography",
           "narrowScreen": "appearance.NarrowScreen",
           "spacing": "appearance.Spacing",
@@ -9346,9 +7529,9 @@
           "standard": "page.ThePage",
           "htmlNames": "std/html.Html",
           "doctype": "html.Doctype",
-          "startTag": "html.HtmlStartTag",
-          "endTag": "html.HtmlEndTag",
-          "element": "html.HtmlElement",
+          "startTag": "documents/html.HtmlStartTag",
+          "endTag": "documents/html.HtmlEndTag",
+          "element": "documents/html.HtmlElement",
           "file": "std/text.TextFile",
           "texts": "std/algebra.Texts"
         },
@@ -9492,7 +7675,7 @@
           "html": "std/html.Html",
           "aria": "std/html.Aria",
           "block": "html.HtmlBlock",
-          "element": "html.HtmlElement",
+          "element": "documents/html.HtmlElement",
           "sequences": "std/algebra.Sequences"
         },
         "write": "(function)",
@@ -11243,7 +9426,7 @@
       "fields": {
         "owner": "trame",
         "context": "Words people read change for reasons code does not know (a clearer phrasing, another language), and they hold literals by nature.",
-        "consequences": "A catalog's text is what it declares: it is not a literal to declare. The page, which runs where nothing is wired, calls the renderers' catalog directly. The reader and the checks of a body hold it: a sentence written in a body is a literal, an error.",
+        "consequences": "A catalog's text is what it declares: it is not a literal to declare. The page, which runs where nothing is wired, calls the catalog of libs/documents' renderers directly. The reader and the checks of a body hold it: a sentence written in a body is a literal, an error.",
         "rejected": {
           "Texts in the code": "a sentence to change would mean code to change, and no language could replace another"
         }
@@ -11966,6 +10149,20 @@
         "date": "2026-11-27",
         "what": "Every choice backed by an architecture decision of its project (choice-unbacked), which may adopt a library's; the engine's plan and amend compare builds with libs/commands' comparison, the copy gone",
         "fingerprint": "15cd22e74cfcf32d",
+        "language": "shared",
+        "archive": "59658b2c5f486d08"
+      }
+    },
+    {
+      "id": "releases.G131",
+      "kind": "release",
+      "title": "Generation 131",
+      "fields": {
+        "owner": "trame",
+        "version": "g131",
+        "date": "2026-11-27",
+        "what": "The renderers come from libs/documents 0.2.0 (one renderer given a syntax, Markdown with Mermaid, the terminal's text, their words and format decisions, the palette); the page gives the library's renderer its syntax; Trame's reference syntax is std's",
+        "fingerprint": "c7a44d11238f242f",
         "language": "shared",
         "archive": "59658b2c5f486d08"
       }
@@ -13271,29 +11468,6 @@
       }
     },
     {
-      "id": "rendering.Common",
-      "kind": "function",
-      "title": "Common rendering",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "deps": {
-          "values": "std/algebra.ValueTypes",
-          "syntax": "conventions.ReferenceSyntax",
-          "slots": "rendering.SentenceSlots",
-          "dates": "documents/language.Dates",
-          "lists": "documents/language.Lists",
-          "texts": "std/algebra.Texts",
-          "messages": "messages.RenderingMessages",
-          "units": "documents/language.Units"
-        },
-        "body": {
-          "file": "./code/rendering/common.ts",
-          "language": "typescript"
-        }
-      }
-    },
-    {
       "id": "rendering.DocumentsInMarkdown",
       "kind": "binding",
       "title": "Documents in Markdown",
@@ -13326,45 +11500,6 @@
       }
     },
     {
-      "id": "rendering.FileFigures",
-      "kind": "port",
-      "title": "Figures of the documents written as files",
-      "fields": {
-        "owner": "trame",
-        "declaredEffects": []
-      }
-    },
-    {
-      "id": "rendering.FileRendering",
-      "kind": "function",
-      "title": "Rendering of the files",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "deps": {
-          "common": "rendering.Common",
-          "syntax": "rendering.FileSyntax",
-          "values": "std/algebra.ValueTypes",
-          "texts": "std/algebra.Texts",
-          "counts": "std/algebra.Counts",
-          "messages": "messages.RenderingMessages"
-        },
-        "body": {
-          "file": "./code/rendering/document.ts",
-          "language": "typescript"
-        }
-      }
-    },
-    {
-      "id": "rendering.FileSyntax",
-      "kind": "port",
-      "title": "Syntax of the documents written as files",
-      "fields": {
-        "owner": "trame",
-        "declaredEffects": []
-      }
-    },
-    {
       "id": "rendering.HtmlSyntax",
       "kind": "function",
       "title": "HTML writer",
@@ -13376,52 +11511,17 @@
           "html": "std/html.Html",
           "markup": "markup.DocumentMarkup",
           "page": "page.ThePage",
-          "element": "html.HtmlElement",
-          "heading": "html.HtmlHeading",
-          "escape": "html.EscapedText",
+          "element": "documents/html.HtmlElement",
+          "heading": "documents/html.HtmlHeading",
+          "escape": "documents/html.EscapedText",
           "punctuation": "documents/language.Punctuation",
-          "slots": "rendering.SentenceSlots",
+          "slots": "documents/rendering.SentenceSlots",
           "counts": "std/algebra.Counts",
           "texts": "std/algebra.Texts",
-          "messages": "messages.RenderingMessages"
+          "messages": "documents/rendering.RenderingMessages"
         },
         "body": {
           "file": "./code/rendering/html.ts",
-          "language": "typescript"
-        }
-      }
-    },
-    {
-      "id": "rendering.MarkdownSyntax",
-      "kind": "function",
-      "title": "Markdown writer",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "deps": {
-          "figures": "rendering.FileFigures",
-          "textRendering": "documents.TextRendering",
-          "punctuation": "documents/language.Punctuation",
-          "blocks": "markdown.Blocks",
-          "heading": "markdown.Heading",
-          "listItem": "markdown.ListItem",
-          "blockQuote": "markdown.BlockQuote",
-          "codeBlock": "markdown.CodeBlock",
-          "emphasis": "markdown.Emphasis",
-          "strong": "markdown.StrongEmphasis",
-          "codeSpan": "markdown.CodeSpan",
-          "link": "markdown.Link",
-          "relativeReference": "markdown.RelativeReference",
-          "tableCell": "markdown.TableCell",
-          "table": "markdown.Table",
-          "anchor": "markdown.Anchor",
-          "details": "markdown.Details",
-          "counts": "std/algebra.Counts",
-          "texts": "std/algebra.Texts",
-          "messages": "messages.RenderingMessages"
-        },
-        "body": {
-          "file": "./code/rendering/markdown.ts",
           "language": "typescript"
         }
       }
@@ -13437,53 +11537,6 @@
         "consequences": "Three points of extension: a kind says what a node is, a view which question is asked, a syntax in which format the answer comes. Renderers compose the syntax elements of their format and never read the graph.",
         "rejected": {
           "Kinds that write Markdown": "one format only, and the page would have to parse it back"
-        }
-      }
-    },
-    {
-      "id": "rendering.MermaidDiagrams",
-      "kind": "function",
-      "title": "Mermaid diagrams",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "deps": {
-          "mermaid": "mermaid.Mermaid",
-          "figures": "documents.MermaidFigures",
-          "palette": "appearance.Palette",
-          "small": "markdown.Small",
-          "flowchart": "mermaid.Flowchart",
-          "node": "mermaid.MermaidNode",
-          "subgraph": "mermaid.Subgraph",
-          "link": "mermaid.MermaidLink",
-          "classDefinition": "mermaid.ClassDefinition",
-          "nodeStyle": "mermaid.NodeStyle",
-          "gantt": "mermaid.Gantt",
-          "ganttSection": "mermaid.GanttSection",
-          "ganttTask": "mermaid.GanttTask",
-          "milestone": "mermaid.Milestone",
-          "counts": "std/algebra.Counts",
-          "dates": "documents/language.Dates",
-          "messages": "messages.RenderingMessages"
-        },
-        "body": {
-          "file": "./code/rendering/mermaid.ts",
-          "language": "typescript"
-        }
-      }
-    },
-    {
-      "id": "rendering.OneRendererManySyntaxes",
-      "kind": "adr",
-      "title": "One renderer, its syntax a choice",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "context": "Markdown, the terminal and the page each had their renderer: three walks of the same blocks, three ways of saying a status or an overlap, and the page's outside the graph.",
-        "consequences": "The words of a document are said once, by the renderer; a new format is a realization of a syntax port and a choice, without touching the renderer. Syntax and figures vary apart: Markdown with figures as text is two choices, not a new renderer.",
-        "rejected": {
-          "A renderer per format": "the walk and the words repeated, and drifting",
-          "Figures in each syntax": "a syntax and a way of drawing tied together, which no longer vary apart"
         }
       }
     },
@@ -13534,17 +11587,10 @@
       "fields": {
         "owner": "trame",
         "deps": {
-          "common": "rendering.Common",
-          "syntax": "rendering.PageSyntax",
-          "values": "std/algebra.ValueTypes",
-          "texts": "std/algebra.Texts",
-          "counts": "std/algebra.Counts",
-          "messages": "messages.RenderingMessages"
+          "rendering": "documents/rendering.Rendering",
+          "syntax": "rendering.PageSyntax"
         },
-        "body": {
-          "file": "./code/rendering/document.ts",
-          "language": "typescript"
-        }
+        "body": "(function)"
       }
     },
     {
@@ -13557,40 +11603,16 @@
       }
     },
     {
-      "id": "rendering.PlainTextSyntax",
-      "kind": "function",
-      "title": "Plain text writer",
+      "id": "rendering.RenderedByTheLibrary",
+      "kind": "adr",
+      "title": "Trame's documents, rendered by the library of documents",
       "status": "held",
       "fields": {
         "owner": "trame",
-        "deps": {
-          "figures": "rendering.TerminalFigures",
-          "layout": "text.TerminalText",
-          "columns": "text.TerminalColumns",
-          "punctuation": "documents/language.Punctuation",
-          "cell": "text.PaddedCell",
-          "table": "text.Columns",
-          "item": "text.ItemLine",
-          "code": "text.CodeLines",
-          "lines": "text.TerminalLines",
-          "counts": "std/algebra.Counts",
-          "texts": "std/algebra.Texts",
-          "messages": "messages.RenderingMessages"
-        },
-        "body": {
-          "file": "./code/rendering/text.ts",
-          "language": "typescript"
-        }
-      }
-    },
-    {
-      "id": "rendering.SentenceSlots",
-      "kind": "decision",
-      "title": "Places in a sentence",
-      "fields": {
-        "owner": "trame",
-        "value": {
-          "delimiter": "\u0000"
+        "context": "The renderers were the engine's: the commands of every project need them (build, view, snapshot), and a project's own command could not reach them (decided 26 November).",
+        "consequences": "Trame's commands use the library's renderers as they use std's structures; the page's syntax and figures move there with the page.",
+        "rejected": {
+          "Renderers kept in the engine": "a command moved out of the engine would lose what writes its documents"
         }
       }
     },
@@ -13612,15 +11634,15 @@
           "graph": "appearance.GraphDrawing",
           "timeline": "appearance.TimelineDrawing",
           "legend": "appearance.LegendDrawing",
-          "element": "html.HtmlElement",
-          "empty": "html.SelfClosingTag",
+          "element": "documents/html.HtmlElement",
+          "empty": "documents/html.SelfClosingTag",
           "path": "html.PathData",
           "declaration": "html.CssDeclaration",
-          "escape": "html.EscapedText",
-          "common": "rendering.Common",
+          "escape": "documents/html.EscapedText",
+          "common": "documents/rendering.Common",
           "dates": "documents/language.Dates",
           "words": "messages.PageWords",
-          "messages": "messages.RenderingMessages",
+          "messages": "documents/rendering.RenderingMessages",
           "punctuation": "documents/language.Punctuation",
           "iso": "std/measures.Iso8601",
           "counts": "std/algebra.Counts",
@@ -13631,15 +11653,6 @@
           "file": "./code/rendering/svg-figures.ts",
           "language": "typescript"
         }
-      }
-    },
-    {
-      "id": "rendering.TerminalFigures",
-      "kind": "port",
-      "title": "Figures of the terminal",
-      "fields": {
-        "owner": "trame",
-        "declaredEffects": []
       }
     },
     {
@@ -13668,63 +11681,6 @@
         "rejected": {
           "Markdown in the terminal": "its marks are noise when they are not displayed",
           "ANSI colours": "lost in logs and pipes, and the scenarios compare text"
-        }
-      }
-    },
-    {
-      "id": "rendering.TerminalRendering",
-      "kind": "function",
-      "title": "Rendering in the terminal",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "deps": {
-          "common": "rendering.Common",
-          "syntax": "rendering.TerminalSyntax",
-          "values": "std/algebra.ValueTypes",
-          "texts": "std/algebra.Texts",
-          "counts": "std/algebra.Counts",
-          "messages": "messages.RenderingMessages"
-        },
-        "body": {
-          "file": "./code/rendering/document.ts",
-          "language": "typescript"
-        }
-      }
-    },
-    {
-      "id": "rendering.TerminalSyntax",
-      "kind": "port",
-      "title": "Syntax of the terminal",
-      "fields": {
-        "owner": "trame",
-        "declaredEffects": []
-      }
-    },
-    {
-      "id": "rendering.TextFigures",
-      "kind": "function",
-      "title": "Figures as text",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "deps": {
-          "common": "rendering.Common",
-          "columns": "text.TerminalColumns",
-          "punctuation": "documents/language.Punctuation",
-          "cell": "text.PaddedCell",
-          "table": "text.Columns",
-          "branch": "text.TreeBranch",
-          "step": "text.PathStep",
-          "dates": "documents/language.Dates",
-          "counts": "std/algebra.Counts",
-          "sequences": "std/algebra.Sequences",
-          "texts": "std/algebra.Texts",
-          "messages": "messages.RenderingMessages"
-        },
-        "body": {
-          "file": "./code/rendering/text-figures.ts",
-          "language": "typescript"
         }
       }
     },
@@ -16060,343 +14016,6 @@
       }
     },
     {
-      "id": "text.BoxDrawing",
-      "kind": "standard",
-      "title": "Box drawing",
-      "fields": {
-        "owner": "trame",
-        "source": "The Unicode Standard, Version 15.1, code chart Box Drawing (U+2500 to U+257F)",
-        "url": "https://www.unicode.org/charts/PDF/U2500.pdf",
-        "constants": {
-          "vertical": {
-            "value": "│",
-            "meaning": "U+2502 BOX DRAWINGS LIGHT VERTICAL: a line that goes on below"
-          },
-          "verticalAndRight": {
-            "value": "├",
-            "meaning": "U+251C BOX DRAWINGS LIGHT VERTICAL AND RIGHT: a branch, with others below it"
-          },
-          "upAndRight": {
-            "value": "└",
-            "meaning": "U+2514 BOX DRAWINGS LIGHT UP AND RIGHT: the last branch, or a step under the one before"
-          }
-        }
-      }
-    },
-    {
-      "id": "text.CodeLines",
-      "kind": "syntax",
-      "title": "Code lines",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Code",
-        "constants": {
-          "margin": {
-            "value": "    ",
-            "meaning": "Four spaces before each line: two steps of indentation"
-          }
-        },
-        "deps": {
-          "standard": "text.TerminalText",
-          "file": "std/text.TextFile"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "  ",
-              "const a = 1\nexport default a"
-            ],
-            "output": [
-              "      const a = 1",
-              "      export default a"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "id": "text.Columns",
-      "kind": "syntax",
-      "title": "Columns",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Columns",
-        "constants": {},
-        "deps": {
-          "standard": "text.TerminalText",
-          "cell": "text.PaddedCell",
-          "columns": "text.TerminalColumns",
-          "texts": "std/algebra.Texts",
-          "sequences": "std/algebra.Sequences"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              null,
-              [
-                [
-                  "Owner",
-                  "trame"
-                ],
-                [
-                  "Review planned",
-                  "1 March 2027"
-                ]
-              ],
-              "  "
-            ],
-            "output": [
-              "  Owner           trame",
-              "  Review planned  1 March 2027"
-            ]
-          },
-          {
-            "input": [
-              [
-                "Name",
-                "Kind"
-              ],
-              [
-                [
-                  "Text",
-                  "function"
-                ]
-              ],
-              ""
-            ],
-            "output": [
-              "NAME  KIND",
-              "Text  function"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "id": "text.ItemLine",
-      "kind": "syntax",
-      "title": "Item line",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Lists",
-        "constants": {
-          "bullet": {
-            "value": "-",
-            "meaning": "Marks an item of a list"
-          }
-        },
-        "deps": {
-          "standard": "text.TerminalText"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "  ",
-              "Owner: trame"
-            ],
-            "output": "  - Owner: trame"
-          }
-        ]
-      }
-    },
-    {
-      "id": "text.PaddedCell",
-      "kind": "syntax",
-      "title": "Padded cell",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Columns",
-        "constants": {},
-        "deps": {
-          "standard": "text.TerminalText",
-          "columns": "text.TerminalColumns"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "held",
-              8
-            ],
-            "output": "held    "
-          },
-          {
-            "input": [
-              "a long name",
-              4
-            ],
-            "output": "a long name "
-          }
-        ]
-      }
-    },
-    {
-      "id": "text.PathStep",
-      "kind": "syntax",
-      "title": "Path step",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Paths",
-        "constants": {
-          "shift": {
-            "value": "   ",
-            "meaning": "Three spaces per position: the corner of the step before, its space, and one more"
-          }
-        },
-        "deps": {
-          "standard": "text.TerminalText",
-          "box": "text.BoxDrawing"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              0,
-              "serves",
-              "Bookings (goal)"
-            ],
-            "output": "└ serves Bookings (goal)"
-          },
-          {
-            "input": [
-              2,
-              "uses",
-              "Store (port)"
-            ],
-            "output": "      └ uses Store (port)"
-          }
-        ]
-      }
-    },
-    {
-      "id": "text.TerminalColumns",
-      "kind": "decision",
-      "title": "Columns in the terminal",
-      "fields": {
-        "owner": "trame",
-        "value": {
-          "gap": 2,
-          "minimumGap": 1,
-          "widths": {
-            "rank": 9,
-            "severity": 15,
-            "code": 30,
-            "source": 22,
-            "name": 14
-          }
-        }
-      }
-    },
-    {
-      "id": "text.TerminalLines",
-      "kind": "syntax",
-      "title": "Lines of the terminal",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Lines",
-        "constants": {},
-        "deps": {
-          "standard": "text.TerminalText",
-          "file": "std/text.TextFile",
-          "counts": "std/algebra.Counts"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              [
-                "Layers",
-                "",
-                "",
-                "",
-                "rank 1   Goals",
-                "  "
-              ]
-            ],
-            "output": "Layers\n\nrank 1   Goals\n"
-          },
-          {
-            "input": [
-              [
-                "a",
-                "b"
-              ]
-            ],
-            "output": "a\nb\n"
-          }
-        ]
-      }
-    },
-    {
-      "id": "text.TerminalText",
-      "kind": "decision",
-      "title": "Terminal text",
-      "fields": {
-        "owner": "trame",
-        "value": {
-          "space": " ",
-          "indent": "  ",
-          "maxBlankLines": 1
-        },
-        "rejected": {
-          "Markdown": "a terminal does not render it: its marks would be read as they are",
-          "Colours and control sequences": "an output is not always a terminal (a file, a pipe, a test): the text must say everything without them, and it is compared line by line from one generation to the next",
-          "Tabs": "their width depends on the terminal: columns would no longer line up"
-        }
-      }
-    },
-    {
-      "id": "text.TreeBranch",
-      "kind": "syntax",
-      "title": "Tree branch",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Trees",
-        "constants": {},
-        "deps": {
-          "standard": "text.TerminalText",
-          "box": "text.BoxDrawing"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "",
-              false,
-              "serves",
-              "Bookings (goal)"
-            ],
-            "output": {
-              "line": "├ serves Bookings (goal)",
-              "under": "│ "
-            }
-          },
-          {
-            "input": [
-              "│ ",
-              true,
-              "uses",
-              "Store (port)"
-            ],
-            "output": {
-              "line": "│ └ uses Store (port)",
-              "under": "│   "
-            }
-          }
-        ]
-      }
-    },
-    {
       "id": "typescript.ArrayLiteral",
       "kind": "syntax",
       "title": "List on several lines",
@@ -17626,7 +15245,7 @@
           "specifiers": "std/system.NodeModuleSpecifiers",
           "names": "typescript.ProgramNames",
           "stepNames": "conventions.StepNames",
-          "references": "conventions.ReferenceSyntax",
+          "references": "std/engine.ReferenceSyntax",
           "comment": "typescript.LineComment",
           "text": "typescript.StringLiteral",
           "member": "typescript.MemberAccess",
@@ -17839,21 +15458,6 @@
     },
     {
       "from": "browser.ExplorerFigures",
-      "to": "html.HtmlElement",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.ExplorerFigures",
-      "to": "html.HtmlStartTag",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.ExplorerFigures",
-      "to": "html.SelfClosingTag",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.ExplorerFigures",
       "to": "html.PathData",
       "kind": "deps"
     },
@@ -17864,22 +15468,7 @@
     },
     {
       "from": "browser.ExplorerFigures",
-      "to": "html.EscapedText",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.ExplorerFigures",
-      "to": "rendering.Common",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.ExplorerFigures",
       "to": "messages.PageWords",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.ExplorerFigures",
-      "to": "messages.RenderingMessages",
       "kind": "deps"
     },
     {
@@ -17920,11 +15509,6 @@
     {
       "from": "browser.ShowGraph",
       "to": "browser.ExplorerFigures",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.ShowGraph",
-      "to": "rendering.Common",
       "kind": "deps"
     },
     {
@@ -17974,22 +15558,7 @@
     },
     {
       "from": "browser.ShowGraph",
-      "to": "rendering.SentenceSlots",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.ShowGraph",
       "to": "messages.Language",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.ShowGraph",
-      "to": "html.HtmlElement",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.ShowGraph",
-      "to": "html.EscapedText",
       "kind": "deps"
     },
     {
@@ -20319,21 +17888,6 @@
     },
     {
       "from": "command-scenarios.ViewsInTheTerminal",
-      "to": "rendering.TerminalRendering",
-      "kind": "verifies"
-    },
-    {
-      "from": "command-scenarios.ViewsInTheTerminal",
-      "to": "rendering.PlainTextSyntax",
-      "kind": "verifies"
-    },
-    {
-      "from": "command-scenarios.ViewsInTheTerminal",
-      "to": "rendering.TextFigures",
-      "kind": "verifies"
-    },
-    {
-      "from": "command-scenarios.ViewsInTheTerminal",
       "to": "architecture.Test",
       "kind": "env"
     },
@@ -20484,16 +18038,6 @@
     },
     {
       "from": "commands.Advance",
-      "to": "text.Columns",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Advance",
-      "to": "text.TerminalText",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Advance",
       "to": "messages.CommandMessages",
       "kind": "deps"
     },
@@ -20525,11 +18069,6 @@
     {
       "from": "commands.Advance",
       "to": "conventions.JsonFormatting",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Advance",
-      "to": "conventions.ReferenceSyntax",
       "kind": "deps"
     },
     {
@@ -20575,11 +18114,6 @@
     {
       "from": "commands.Amend",
       "to": "architecture.Paths",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Amend",
-      "to": "text.TerminalText",
       "kind": "deps"
     },
     {
@@ -20699,11 +18233,6 @@
     },
     {
       "from": "commands.Assembler",
-      "to": "text.TerminalText",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Assembler",
       "to": "messages.CommandMessages",
       "kind": "deps"
     },
@@ -20769,16 +18298,6 @@
     },
     {
       "from": "commands.Audit",
-      "to": "text.Columns",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Audit",
-      "to": "text.TerminalText",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Audit",
       "to": "messages.CommandMessages",
       "kind": "deps"
     },
@@ -20805,16 +18324,6 @@
     {
       "from": "commands.Build",
       "to": "engine.MachineOutputs",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Build",
-      "to": "rendering.FileRendering",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Build",
-      "to": "rendering.TerminalRendering",
       "kind": "deps"
     },
     {
@@ -21079,16 +18588,6 @@
     },
     {
       "from": "commands.EmitPayload",
-      "to": "rendering.FileRendering",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.EmitPayload",
-      "to": "rendering.TerminalRendering",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.EmitPayload",
       "to": "rendering.PageRendering",
       "kind": "deps"
     },
@@ -21245,16 +18744,6 @@
     {
       "from": "commands.Help",
       "to": "architecture.Terminal",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Help",
-      "to": "text.PaddedCell",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Help",
-      "to": "text.TerminalColumns",
       "kind": "deps"
     },
     {
@@ -21444,11 +18933,6 @@
     },
     {
       "from": "commands.Plan",
-      "to": "text.TerminalText",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Plan",
       "to": "commands.Preparation",
       "kind": "deps"
     },
@@ -21514,11 +18998,6 @@
     },
     {
       "from": "commands.Preparation",
-      "to": "rendering.Common",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Preparation",
       "to": "architecture.Terminal",
       "kind": "deps"
     },
@@ -21540,21 +19019,6 @@
     {
       "from": "commands.Preparation",
       "to": "product.DevPort",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Preparation",
-      "to": "text.TerminalText",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Preparation",
-      "to": "text.TerminalColumns",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Preparation",
-      "to": "text.PaddedCell",
       "kind": "deps"
     },
     {
@@ -21645,21 +19109,6 @@
     {
       "from": "commands.Publish",
       "to": "architecture.Terminal",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Publish",
-      "to": "text.TerminalText",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Publish",
-      "to": "text.TerminalColumns",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Publish",
-      "to": "text.PaddedCell",
       "kind": "deps"
     },
     {
@@ -21859,11 +19308,6 @@
     },
     {
       "from": "commands.Release",
-      "to": "rendering.FileRendering",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Release",
       "to": "libraries.ReleaseIsSettled",
       "kind": "deps"
     },
@@ -21980,16 +19424,6 @@
     {
       "from": "commands.RenderView",
       "to": "engine.Views",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.RenderView",
-      "to": "rendering.FileRendering",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.RenderView",
-      "to": "rendering.TerminalRendering",
       "kind": "deps"
     },
     {
@@ -22174,11 +19608,6 @@
     },
     {
       "from": "commands.TakeSnapshot",
-      "to": "rendering.FileRendering",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.TakeSnapshot",
       "to": "architecture.FileWriting",
       "kind": "deps"
     },
@@ -22230,21 +19659,6 @@
     {
       "from": "commands.TestKinds",
       "to": "architecture.Terminal",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.TestKinds",
-      "to": "text.TerminalText",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.TestKinds",
-      "to": "text.TerminalColumns",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.TestKinds",
-      "to": "text.PaddedCell",
       "kind": "deps"
     },
     {
@@ -23119,11 +20533,6 @@
     },
     {
       "from": "engine.DevServer",
-      "to": "text.CodeLines",
-      "kind": "deps"
-    },
-    {
-      "from": "engine.DevServer",
       "to": "architecture.Clock",
       "kind": "deps"
     },
@@ -23265,11 +20674,6 @@
     {
       "from": "engine.GraphApi",
       "to": "architecture.Prelude",
-      "kind": "deps"
-    },
-    {
-      "from": "engine.GraphApi",
-      "to": "conventions.ReferenceSyntax",
       "kind": "deps"
     },
     {
@@ -23509,11 +20913,6 @@
     },
     {
       "from": "engine.Lock",
-      "to": "markdown.CodeSpan",
-      "kind": "deps"
-    },
-    {
-      "from": "engine.Lock",
       "to": "architecture.FileReading",
       "kind": "deps"
     },
@@ -23686,11 +21085,6 @@
       "from": "engine.References",
       "to": "product.ExecutableSpecification",
       "kind": "serves"
-    },
-    {
-      "from": "engine.References",
-      "to": "conventions.ReferenceSyntax",
-      "kind": "deps"
     },
     {
       "from": "engine.References",
@@ -23894,11 +21288,6 @@
     },
     {
       "from": "engine.Wiring",
-      "to": "conventions.ReferenceSyntax",
-      "kind": "deps"
-    },
-    {
-      "from": "engine.Wiring",
       "to": "conventions.Layout",
       "kind": "deps"
     },
@@ -23945,11 +21334,6 @@
     {
       "from": "generations.ReleaseRecords",
       "to": "typescript.TypeScriptSyntax",
-      "kind": "deps"
-    },
-    {
-      "from": "generations.ReleaseRecords",
-      "to": "conventions.ReferenceSyntax",
       "kind": "deps"
     },
     {
@@ -24013,49 +21397,9 @@
       "kind": "deps"
     },
     {
-      "from": "html.HtmlBlock",
-      "to": "html.HtmlStartTag",
-      "kind": "deps"
-    },
-    {
-      "from": "html.HtmlBlock",
-      "to": "html.HtmlEndTag",
-      "kind": "deps"
-    },
-    {
-      "from": "html.HtmlElement",
-      "to": "html.HtmlStartTag",
-      "kind": "deps"
-    },
-    {
-      "from": "html.HtmlElement",
-      "to": "html.HtmlEndTag",
-      "kind": "deps"
-    },
-    {
-      "from": "html.HtmlHeading",
-      "to": "html.HtmlElement",
-      "kind": "deps"
-    },
-    {
-      "from": "html.HtmlStartTag",
-      "to": "html.HtmlAttributes",
-      "kind": "deps"
-    },
-    {
       "from": "html.JsonInScript",
       "to": "typescript.TypeScript",
       "kind": "language"
-    },
-    {
-      "from": "html.ScriptElement",
-      "to": "html.HtmlElement",
-      "kind": "deps"
-    },
-    {
-      "from": "html.SelfClosingTag",
-      "to": "html.HtmlAttributes",
-      "kind": "deps"
     },
     {
       "from": "languages.Drivers",
@@ -24258,396 +21602,6 @@
       "kind": "accepts"
     },
     {
-      "from": "markdown.Anchor",
-      "to": "html.HtmlElement",
-      "kind": "deps"
-    },
-    {
-      "from": "markdown.BacktickString",
-      "to": "markdown.CommonMark",
-      "kind": "standard"
-    },
-    {
-      "from": "markdown.BacktickString",
-      "to": "markdown.CommonMark",
-      "kind": "deps"
-    },
-    {
-      "from": "markdown.BlankLine",
-      "to": "markdown.CommonMark",
-      "kind": "standard"
-    },
-    {
-      "from": "markdown.BlankLine",
-      "to": "markdown.CommonMark",
-      "kind": "deps"
-    },
-    {
-      "from": "markdown.BlockQuote",
-      "to": "markdown.CommonMark",
-      "kind": "standard"
-    },
-    {
-      "from": "markdown.BlockQuote",
-      "to": "markdown.CommonMark",
-      "kind": "deps"
-    },
-    {
-      "from": "markdown.Blocks",
-      "to": "markdown.CommonMark",
-      "kind": "standard"
-    },
-    {
-      "from": "markdown.Blocks",
-      "to": "markdown.CommonMark",
-      "kind": "deps"
-    },
-    {
-      "from": "markdown.Blocks",
-      "to": "markdown.BlankLine",
-      "kind": "deps"
-    },
-    {
-      "from": "markdown.CodeBlock",
-      "to": "markdown.CommonMark",
-      "kind": "standard"
-    },
-    {
-      "from": "markdown.CodeBlock",
-      "to": "markdown.CommonMark",
-      "kind": "deps"
-    },
-    {
-      "from": "markdown.CodeBlock",
-      "to": "markdown.BacktickString",
-      "kind": "deps"
-    },
-    {
-      "from": "markdown.CodeSpan",
-      "to": "markdown.CommonMark",
-      "kind": "standard"
-    },
-    {
-      "from": "markdown.CodeSpan",
-      "to": "markdown.CommonMark",
-      "kind": "deps"
-    },
-    {
-      "from": "markdown.CodeSpan",
-      "to": "markdown.BacktickString",
-      "kind": "deps"
-    },
-    {
-      "from": "markdown.Details",
-      "to": "html.HtmlStartTag",
-      "kind": "deps"
-    },
-    {
-      "from": "markdown.Details",
-      "to": "html.HtmlEndTag",
-      "kind": "deps"
-    },
-    {
-      "from": "markdown.Details",
-      "to": "html.HtmlElement",
-      "kind": "deps"
-    },
-    {
-      "from": "markdown.Details",
-      "to": "markdown.BlankLine",
-      "kind": "deps"
-    },
-    {
-      "from": "markdown.Emphasis",
-      "to": "markdown.CommonMark",
-      "kind": "standard"
-    },
-    {
-      "from": "markdown.Emphasis",
-      "to": "markdown.CommonMark",
-      "kind": "deps"
-    },
-    {
-      "from": "markdown.Heading",
-      "to": "markdown.CommonMark",
-      "kind": "standard"
-    },
-    {
-      "from": "markdown.Heading",
-      "to": "markdown.CommonMark",
-      "kind": "deps"
-    },
-    {
-      "from": "markdown.Link",
-      "to": "markdown.CommonMark",
-      "kind": "standard"
-    },
-    {
-      "from": "markdown.Link",
-      "to": "markdown.CommonMark",
-      "kind": "deps"
-    },
-    {
-      "from": "markdown.ListItem",
-      "to": "markdown.CommonMark",
-      "kind": "standard"
-    },
-    {
-      "from": "markdown.ListItem",
-      "to": "markdown.CommonMark",
-      "kind": "deps"
-    },
-    {
-      "from": "markdown.RelativeReference",
-      "to": "conventions.Layout",
-      "kind": "deps"
-    },
-    {
-      "from": "markdown.Small",
-      "to": "html.HtmlElement",
-      "kind": "deps"
-    },
-    {
-      "from": "markdown.StrongEmphasis",
-      "to": "markdown.CommonMark",
-      "kind": "standard"
-    },
-    {
-      "from": "markdown.StrongEmphasis",
-      "to": "markdown.CommonMark",
-      "kind": "deps"
-    },
-    {
-      "from": "markdown.Table",
-      "to": "markdown.Gfm",
-      "kind": "standard"
-    },
-    {
-      "from": "markdown.Table",
-      "to": "markdown.Gfm",
-      "kind": "deps"
-    },
-    {
-      "from": "markdown.Table",
-      "to": "markdown.TableRow",
-      "kind": "deps"
-    },
-    {
-      "from": "markdown.Table",
-      "to": "markdown.TableDelimiterRow",
-      "kind": "deps"
-    },
-    {
-      "from": "markdown.TableCell",
-      "to": "markdown.Gfm",
-      "kind": "standard"
-    },
-    {
-      "from": "markdown.TableCell",
-      "to": "markdown.Gfm",
-      "kind": "deps"
-    },
-    {
-      "from": "markdown.TableCell",
-      "to": "markdown.CommonMark",
-      "kind": "deps"
-    },
-    {
-      "from": "markdown.TableDelimiterRow",
-      "to": "markdown.Gfm",
-      "kind": "standard"
-    },
-    {
-      "from": "markdown.TableDelimiterRow",
-      "to": "markdown.Gfm",
-      "kind": "deps"
-    },
-    {
-      "from": "markdown.TableRow",
-      "to": "markdown.Gfm",
-      "kind": "standard"
-    },
-    {
-      "from": "markdown.TableRow",
-      "to": "markdown.Gfm",
-      "kind": "deps"
-    },
-    {
-      "from": "markdown.TableRow",
-      "to": "markdown.CommonMark",
-      "kind": "deps"
-    },
-    {
-      "from": "mermaid.ClassDefinition",
-      "to": "mermaid.Mermaid",
-      "kind": "standard"
-    },
-    {
-      "from": "mermaid.ClassDefinition",
-      "to": "mermaid.Mermaid",
-      "kind": "deps"
-    },
-    {
-      "from": "mermaid.ClassDefinition",
-      "to": "mermaid.StyleProperties",
-      "kind": "deps"
-    },
-    {
-      "from": "mermaid.Flowchart",
-      "to": "mermaid.Mermaid",
-      "kind": "standard"
-    },
-    {
-      "from": "mermaid.Flowchart",
-      "to": "mermaid.Mermaid",
-      "kind": "deps"
-    },
-    {
-      "from": "mermaid.Gantt",
-      "to": "mermaid.Mermaid",
-      "kind": "standard"
-    },
-    {
-      "from": "mermaid.Gantt",
-      "to": "mermaid.Mermaid",
-      "kind": "deps"
-    },
-    {
-      "from": "mermaid.GanttName",
-      "to": "mermaid.Mermaid",
-      "kind": "standard"
-    },
-    {
-      "from": "mermaid.GanttName",
-      "to": "mermaid.Mermaid",
-      "kind": "deps"
-    },
-    {
-      "from": "mermaid.GanttSection",
-      "to": "mermaid.Mermaid",
-      "kind": "standard"
-    },
-    {
-      "from": "mermaid.GanttSection",
-      "to": "mermaid.Mermaid",
-      "kind": "deps"
-    },
-    {
-      "from": "mermaid.GanttSection",
-      "to": "mermaid.GanttName",
-      "kind": "deps"
-    },
-    {
-      "from": "mermaid.GanttTask",
-      "to": "mermaid.Mermaid",
-      "kind": "standard"
-    },
-    {
-      "from": "mermaid.GanttTask",
-      "to": "mermaid.Mermaid",
-      "kind": "deps"
-    },
-    {
-      "from": "mermaid.GanttTask",
-      "to": "mermaid.GanttName",
-      "kind": "deps"
-    },
-    {
-      "from": "mermaid.MermaidLabel",
-      "to": "mermaid.Mermaid",
-      "kind": "standard"
-    },
-    {
-      "from": "mermaid.MermaidLabel",
-      "to": "mermaid.Mermaid",
-      "kind": "deps"
-    },
-    {
-      "from": "mermaid.MermaidLink",
-      "to": "mermaid.Mermaid",
-      "kind": "standard"
-    },
-    {
-      "from": "mermaid.MermaidLink",
-      "to": "mermaid.Mermaid",
-      "kind": "deps"
-    },
-    {
-      "from": "mermaid.MermaidLink",
-      "to": "mermaid.MermaidLabel",
-      "kind": "deps"
-    },
-    {
-      "from": "mermaid.MermaidNode",
-      "to": "mermaid.Mermaid",
-      "kind": "standard"
-    },
-    {
-      "from": "mermaid.MermaidNode",
-      "to": "mermaid.Mermaid",
-      "kind": "deps"
-    },
-    {
-      "from": "mermaid.MermaidNode",
-      "to": "mermaid.MermaidLabel",
-      "kind": "deps"
-    },
-    {
-      "from": "mermaid.Milestone",
-      "to": "mermaid.Mermaid",
-      "kind": "standard"
-    },
-    {
-      "from": "mermaid.Milestone",
-      "to": "mermaid.Mermaid",
-      "kind": "deps"
-    },
-    {
-      "from": "mermaid.Milestone",
-      "to": "mermaid.GanttTask",
-      "kind": "deps"
-    },
-    {
-      "from": "mermaid.NodeStyle",
-      "to": "mermaid.Mermaid",
-      "kind": "standard"
-    },
-    {
-      "from": "mermaid.NodeStyle",
-      "to": "mermaid.Mermaid",
-      "kind": "deps"
-    },
-    {
-      "from": "mermaid.NodeStyle",
-      "to": "mermaid.StyleProperties",
-      "kind": "deps"
-    },
-    {
-      "from": "mermaid.StyleProperties",
-      "to": "mermaid.Mermaid",
-      "kind": "standard"
-    },
-    {
-      "from": "mermaid.StyleProperties",
-      "to": "mermaid.Mermaid",
-      "kind": "deps"
-    },
-    {
-      "from": "mermaid.Subgraph",
-      "to": "mermaid.Mermaid",
-      "kind": "standard"
-    },
-    {
-      "from": "mermaid.Subgraph",
-      "to": "mermaid.Mermaid",
-      "kind": "deps"
-    },
-    {
-      "from": "mermaid.Subgraph",
-      "to": "mermaid.MermaidLabel",
-      "kind": "deps"
-    },
-    {
       "from": "messages.AdvanceMessages",
       "to": "messages.Language",
       "kind": "language"
@@ -24768,11 +21722,6 @@
       "kind": "language"
     },
     {
-      "from": "messages.RenderingMessages",
-      "to": "messages.Language",
-      "kind": "language"
-    },
-    {
       "from": "messages.ScenarioMessages",
       "to": "messages.Language",
       "kind": "language"
@@ -24853,11 +21802,6 @@
       "kind": "deps"
     },
     {
-      "from": "page.Banner",
-      "to": "html.HtmlElement",
-      "kind": "deps"
-    },
-    {
       "from": "page.Brand",
       "to": "page.ThePage",
       "kind": "standard"
@@ -24883,11 +21827,6 @@
       "kind": "deps"
     },
     {
-      "from": "page.Brand",
-      "to": "html.HtmlElement",
-      "kind": "deps"
-    },
-    {
       "from": "page.CompilationState",
       "to": "page.ThePage",
       "kind": "standard"
@@ -24900,11 +21839,6 @@
     {
       "from": "page.CompilationState",
       "to": "page.PageRegions",
-      "kind": "deps"
-    },
-    {
-      "from": "page.CompilationState",
-      "to": "html.HtmlElement",
       "kind": "deps"
     },
     {
@@ -24928,11 +21862,6 @@
       "kind": "deps"
     },
     {
-      "from": "page.DatePicker",
-      "to": "html.HtmlElement",
-      "kind": "deps"
-    },
-    {
       "from": "page.DocumentHead",
       "to": "page.ThePage",
       "kind": "standard"
@@ -24950,11 +21879,6 @@
     {
       "from": "page.DocumentHead",
       "to": "html.HtmlBlock",
-      "kind": "deps"
-    },
-    {
-      "from": "page.DocumentHead",
-      "to": "html.HtmlElement",
       "kind": "deps"
     },
     {
@@ -24980,11 +21904,6 @@
     {
       "from": "page.DocumentPicker",
       "to": "html.HtmlBlock",
-      "kind": "deps"
-    },
-    {
-      "from": "page.DocumentPicker",
-      "to": "html.HtmlElement",
       "kind": "deps"
     },
     {
@@ -25014,22 +21933,7 @@
     },
     {
       "from": "page.FigureMarkers",
-      "to": "html.HtmlElement",
-      "kind": "deps"
-    },
-    {
-      "from": "page.FigureMarkers",
-      "to": "html.SelfClosingTag",
-      "kind": "deps"
-    },
-    {
-      "from": "page.FigureMarkers",
       "to": "html.PathData",
-      "kind": "deps"
-    },
-    {
-      "from": "page.FontLinks",
-      "to": "html.HtmlStartTag",
       "kind": "deps"
     },
     {
@@ -25044,22 +21948,7 @@
     },
     {
       "from": "page.Logo",
-      "to": "appearance.Palette",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Logo",
       "to": "html.HtmlBlock",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Logo",
-      "to": "html.HtmlElement",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Logo",
-      "to": "html.SelfClosingTag",
       "kind": "deps"
     },
     {
@@ -25085,11 +21974,6 @@
     {
       "from": "page.MainArea",
       "to": "html.HtmlBlock",
-      "kind": "deps"
-    },
-    {
-      "from": "page.MainArea",
-      "to": "html.HtmlElement",
       "kind": "deps"
     },
     {
@@ -25158,11 +22042,6 @@
       "kind": "deps"
     },
     {
-      "from": "page.Navigation",
-      "to": "html.HtmlElement",
-      "kind": "deps"
-    },
-    {
       "from": "page.Page",
       "to": "product.ExecutableSpecification",
       "kind": "serves"
@@ -25175,11 +22054,6 @@
     {
       "from": "page.Page",
       "to": "page.StandaloneStyle",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Page",
-      "to": "appearance.Palette",
       "kind": "deps"
     },
     {
@@ -25323,21 +22197,6 @@
       "kind": "deps"
     },
     {
-      "from": "page.PageDocument",
-      "to": "html.HtmlStartTag",
-      "kind": "deps"
-    },
-    {
-      "from": "page.PageDocument",
-      "to": "html.HtmlEndTag",
-      "kind": "deps"
-    },
-    {
-      "from": "page.PageDocument",
-      "to": "html.HtmlElement",
-      "kind": "deps"
-    },
-    {
       "from": "page.PageScripts",
       "to": "page.ThePage",
       "kind": "standard"
@@ -25366,11 +22225,6 @@
       "from": "page.PageScripts",
       "to": "typescript.Assignment",
       "kind": "deps"
-    },
-    {
-      "from": "page.PageStyle",
-      "to": "appearance.Palette",
-      "kind": "variables"
     },
     {
       "from": "page.PageStyle",
@@ -25440,11 +22294,6 @@
     {
       "from": "page.RenderingToggle",
       "to": "html.HtmlBlock",
-      "kind": "deps"
-    },
-    {
-      "from": "page.RenderingToggle",
-      "to": "html.HtmlElement",
       "kind": "deps"
     },
     {
@@ -27374,11 +24223,6 @@
     },
     {
       "from": "principles.WordsInCatalogs",
-      "to": "messages.RenderingMessages",
-      "kind": "appliedBy"
-    },
-    {
-      "from": "principles.WordsInCatalogs",
       "to": "messages.PlatformMessages",
       "kind": "appliedBy"
     },
@@ -27750,6 +24594,16 @@
     {
       "from": "releases.G130",
       "to": "releases.G129",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G131",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G131",
+      "to": "releases.G130",
       "kind": "assembledBy"
     },
     {
@@ -28693,31 +25547,6 @@
       "kind": "assembledBy"
     },
     {
-      "from": "rendering.Common",
-      "to": "product.ExecutableSpecification",
-      "kind": "serves"
-    },
-    {
-      "from": "rendering.Common",
-      "to": "conventions.ReferenceSyntax",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.Common",
-      "to": "rendering.SentenceSlots",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.Common",
-      "to": "messages.RenderingMessages",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.DocumentsInMarkdown",
-      "to": "rendering.MarkdownSyntax",
-      "kind": "chooses"
-    },
-    {
       "from": "rendering.DocumentsInMarkdown",
       "to": "architecture.Local",
       "kind": "environments"
@@ -28734,11 +25563,6 @@
     },
     {
       "from": "rendering.FiguresInMermaid",
-      "to": "rendering.MermaidDiagrams",
-      "kind": "chooses"
-    },
-    {
-      "from": "rendering.FiguresInMermaid",
       "to": "architecture.Local",
       "kind": "environments"
     },
@@ -28751,26 +25575,6 @@
       "from": "rendering.FiguresInMermaid",
       "to": "product.ReplaceableTechnology",
       "kind": "serves"
-    },
-    {
-      "from": "rendering.FileRendering",
-      "to": "product.ExecutableSpecification",
-      "kind": "serves"
-    },
-    {
-      "from": "rendering.FileRendering",
-      "to": "rendering.Common",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.FileRendering",
-      "to": "rendering.FileSyntax",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.FileRendering",
-      "to": "messages.RenderingMessages",
-      "kind": "deps"
     },
     {
       "from": "rendering.HtmlSyntax",
@@ -28798,288 +25602,18 @@
       "kind": "deps"
     },
     {
-      "from": "rendering.HtmlSyntax",
-      "to": "html.HtmlElement",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.HtmlSyntax",
-      "to": "html.HtmlHeading",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.HtmlSyntax",
-      "to": "html.EscapedText",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.HtmlSyntax",
-      "to": "rendering.SentenceSlots",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.HtmlSyntax",
-      "to": "messages.RenderingMessages",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.MarkdownSyntax",
-      "to": "product.ExecutableSpecification",
-      "kind": "serves"
-    },
-    {
-      "from": "rendering.MarkdownSyntax",
-      "to": "rendering.FileSyntax",
-      "kind": "implements"
-    },
-    {
-      "from": "rendering.MarkdownSyntax",
-      "to": "rendering.FileFigures",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.MarkdownSyntax",
-      "to": "documents.TextRendering",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.MarkdownSyntax",
-      "to": "markdown.Blocks",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.MarkdownSyntax",
-      "to": "markdown.Heading",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.MarkdownSyntax",
-      "to": "markdown.ListItem",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.MarkdownSyntax",
-      "to": "markdown.BlockQuote",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.MarkdownSyntax",
-      "to": "markdown.CodeBlock",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.MarkdownSyntax",
-      "to": "markdown.Emphasis",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.MarkdownSyntax",
-      "to": "markdown.StrongEmphasis",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.MarkdownSyntax",
-      "to": "markdown.CodeSpan",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.MarkdownSyntax",
-      "to": "markdown.Link",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.MarkdownSyntax",
-      "to": "markdown.RelativeReference",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.MarkdownSyntax",
-      "to": "markdown.TableCell",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.MarkdownSyntax",
-      "to": "markdown.Table",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.MarkdownSyntax",
-      "to": "markdown.Anchor",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.MarkdownSyntax",
-      "to": "markdown.Details",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.MarkdownSyntax",
-      "to": "messages.RenderingMessages",
-      "kind": "deps"
-    },
-    {
       "from": "rendering.MeaningThenLook",
       "to": "product.ExecutableSpecification",
       "kind": "serves"
-    },
-    {
-      "from": "rendering.MeaningThenLook",
-      "to": "rendering.FileRendering",
-      "kind": "appliedBy"
-    },
-    {
-      "from": "rendering.MeaningThenLook",
-      "to": "rendering.TerminalRendering",
-      "kind": "appliedBy"
     },
     {
       "from": "rendering.MeaningThenLook",
       "to": "rendering.PageRendering",
-      "kind": "appliedBy"
-    },
-    {
-      "from": "rendering.MeaningThenLook",
-      "to": "rendering.Common",
       "kind": "appliedBy"
     },
     {
       "from": "rendering.MeaningThenLook",
       "to": "architecture.RenderingWithoutGraph",
-      "kind": "appliedBy"
-    },
-    {
-      "from": "rendering.MermaidDiagrams",
-      "to": "product.ExecutableSpecification",
-      "kind": "serves"
-    },
-    {
-      "from": "rendering.MermaidDiagrams",
-      "to": "rendering.FileFigures",
-      "kind": "implements"
-    },
-    {
-      "from": "rendering.MermaidDiagrams",
-      "to": "mermaid.Mermaid",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.MermaidDiagrams",
-      "to": "documents.MermaidFigures",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.MermaidDiagrams",
-      "to": "appearance.Palette",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.MermaidDiagrams",
-      "to": "markdown.Small",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.MermaidDiagrams",
-      "to": "mermaid.Flowchart",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.MermaidDiagrams",
-      "to": "mermaid.MermaidNode",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.MermaidDiagrams",
-      "to": "mermaid.Subgraph",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.MermaidDiagrams",
-      "to": "mermaid.MermaidLink",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.MermaidDiagrams",
-      "to": "mermaid.ClassDefinition",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.MermaidDiagrams",
-      "to": "mermaid.NodeStyle",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.MermaidDiagrams",
-      "to": "mermaid.Gantt",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.MermaidDiagrams",
-      "to": "mermaid.GanttSection",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.MermaidDiagrams",
-      "to": "mermaid.GanttTask",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.MermaidDiagrams",
-      "to": "mermaid.Milestone",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.MermaidDiagrams",
-      "to": "messages.RenderingMessages",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.OneRendererManySyntaxes",
-      "to": "product.ReplaceableTechnology",
-      "kind": "serves"
-    },
-    {
-      "from": "rendering.OneRendererManySyntaxes",
-      "to": "rendering.FileRendering",
-      "kind": "appliedBy"
-    },
-    {
-      "from": "rendering.OneRendererManySyntaxes",
-      "to": "rendering.TerminalRendering",
-      "kind": "appliedBy"
-    },
-    {
-      "from": "rendering.OneRendererManySyntaxes",
-      "to": "rendering.PageRendering",
-      "kind": "appliedBy"
-    },
-    {
-      "from": "rendering.OneRendererManySyntaxes",
-      "to": "rendering.DocumentsInMarkdown",
-      "kind": "appliedBy"
-    },
-    {
-      "from": "rendering.OneRendererManySyntaxes",
-      "to": "rendering.FiguresInMermaid",
-      "kind": "appliedBy"
-    },
-    {
-      "from": "rendering.OneRendererManySyntaxes",
-      "to": "rendering.TerminalInText",
-      "kind": "appliedBy"
-    },
-    {
-      "from": "rendering.OneRendererManySyntaxes",
-      "to": "rendering.TerminalFiguresAsText",
-      "kind": "appliedBy"
-    },
-    {
-      "from": "rendering.OneRendererManySyntaxes",
-      "to": "rendering.PageInHtml",
-      "kind": "appliedBy"
-    },
-    {
-      "from": "rendering.OneRendererManySyntaxes",
-      "to": "rendering.PageFiguresDrawn",
       "kind": "appliedBy"
     },
     {
@@ -29129,73 +25663,48 @@
     },
     {
       "from": "rendering.PageRendering",
-      "to": "rendering.Common",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.PageRendering",
       "to": "rendering.PageSyntax",
       "kind": "deps"
     },
     {
-      "from": "rendering.PageRendering",
-      "to": "messages.RenderingMessages",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.PlainTextSyntax",
-      "to": "product.ExecutableSpecification",
+      "from": "rendering.RenderedByTheLibrary",
+      "to": "product.ReplaceableTechnology",
       "kind": "serves"
     },
     {
-      "from": "rendering.PlainTextSyntax",
-      "to": "rendering.TerminalSyntax",
-      "kind": "implements"
+      "from": "rendering.RenderedByTheLibrary",
+      "to": "rendering.PageRendering",
+      "kind": "appliedBy"
     },
     {
-      "from": "rendering.PlainTextSyntax",
-      "to": "rendering.TerminalFigures",
-      "kind": "deps"
+      "from": "rendering.RenderedByTheLibrary",
+      "to": "rendering.DocumentsInMarkdown",
+      "kind": "appliedBy"
     },
     {
-      "from": "rendering.PlainTextSyntax",
-      "to": "text.TerminalText",
-      "kind": "deps"
+      "from": "rendering.RenderedByTheLibrary",
+      "to": "rendering.FiguresInMermaid",
+      "kind": "appliedBy"
     },
     {
-      "from": "rendering.PlainTextSyntax",
-      "to": "text.TerminalColumns",
-      "kind": "deps"
+      "from": "rendering.RenderedByTheLibrary",
+      "to": "rendering.TerminalInText",
+      "kind": "appliedBy"
     },
     {
-      "from": "rendering.PlainTextSyntax",
-      "to": "text.PaddedCell",
-      "kind": "deps"
+      "from": "rendering.RenderedByTheLibrary",
+      "to": "rendering.TerminalFiguresAsText",
+      "kind": "appliedBy"
     },
     {
-      "from": "rendering.PlainTextSyntax",
-      "to": "text.Columns",
-      "kind": "deps"
+      "from": "rendering.RenderedByTheLibrary",
+      "to": "rendering.PageInHtml",
+      "kind": "appliedBy"
     },
     {
-      "from": "rendering.PlainTextSyntax",
-      "to": "text.ItemLine",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.PlainTextSyntax",
-      "to": "text.CodeLines",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.PlainTextSyntax",
-      "to": "text.TerminalLines",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.PlainTextSyntax",
-      "to": "messages.RenderingMessages",
-      "kind": "deps"
+      "from": "rendering.RenderedByTheLibrary",
+      "to": "rendering.PageFiguresDrawn",
+      "kind": "appliedBy"
     },
     {
       "from": "rendering.SvgFigures",
@@ -29239,16 +25748,6 @@
     },
     {
       "from": "rendering.SvgFigures",
-      "to": "html.HtmlElement",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.SvgFigures",
-      "to": "html.SelfClosingTag",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.SvgFigures",
       "to": "html.PathData",
       "kind": "deps"
     },
@@ -29259,30 +25758,10 @@
     },
     {
       "from": "rendering.SvgFigures",
-      "to": "html.EscapedText",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.SvgFigures",
-      "to": "rendering.Common",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.SvgFigures",
       "to": "messages.PageWords",
       "kind": "deps"
     },
     {
-      "from": "rendering.SvgFigures",
-      "to": "messages.RenderingMessages",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.TerminalFiguresAsText",
-      "to": "rendering.TextFigures",
-      "kind": "chooses"
-    },
-    {
       "from": "rendering.TerminalFiguresAsText",
       "to": "architecture.Local",
       "kind": "environments"
@@ -29299,11 +25778,6 @@
     },
     {
       "from": "rendering.TerminalInText",
-      "to": "rendering.PlainTextSyntax",
-      "kind": "chooses"
-    },
-    {
-      "from": "rendering.TerminalInText",
       "to": "architecture.Local",
       "kind": "environments"
     },
@@ -29316,71 +25790,6 @@
       "from": "rendering.TerminalInText",
       "to": "product.ReplaceableTechnology",
       "kind": "serves"
-    },
-    {
-      "from": "rendering.TerminalRendering",
-      "to": "product.ExecutableSpecification",
-      "kind": "serves"
-    },
-    {
-      "from": "rendering.TerminalRendering",
-      "to": "rendering.Common",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.TerminalRendering",
-      "to": "rendering.TerminalSyntax",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.TerminalRendering",
-      "to": "messages.RenderingMessages",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.TextFigures",
-      "to": "product.ExecutableSpecification",
-      "kind": "serves"
-    },
-    {
-      "from": "rendering.TextFigures",
-      "to": "rendering.TerminalFigures",
-      "kind": "implements"
-    },
-    {
-      "from": "rendering.TextFigures",
-      "to": "rendering.Common",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.TextFigures",
-      "to": "text.TerminalColumns",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.TextFigures",
-      "to": "text.PaddedCell",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.TextFigures",
-      "to": "text.Columns",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.TextFigures",
-      "to": "text.TreeBranch",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.TextFigures",
-      "to": "text.PathStep",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.TextFigures",
-      "to": "messages.RenderingMessages",
-      "kind": "deps"
     },
     {
       "from": "scenarios.AddOnsInOrder",
@@ -29485,26 +25894,6 @@
     {
       "from": "scenarios.BuildLikeBefore",
       "to": "engine.Views",
-      "kind": "verifies"
-    },
-    {
-      "from": "scenarios.BuildLikeBefore",
-      "to": "rendering.FileRendering",
-      "kind": "verifies"
-    },
-    {
-      "from": "scenarios.BuildLikeBefore",
-      "to": "rendering.Common",
-      "kind": "verifies"
-    },
-    {
-      "from": "scenarios.BuildLikeBefore",
-      "to": "rendering.MarkdownSyntax",
-      "kind": "verifies"
-    },
-    {
-      "from": "scenarios.BuildLikeBefore",
-      "to": "rendering.MermaidDiagrams",
       "kind": "verifies"
     },
     {
@@ -31218,101 +27607,6 @@
       "kind": "deps"
     },
     {
-      "from": "text.CodeLines",
-      "to": "text.TerminalText",
-      "kind": "standard"
-    },
-    {
-      "from": "text.CodeLines",
-      "to": "text.TerminalText",
-      "kind": "deps"
-    },
-    {
-      "from": "text.Columns",
-      "to": "text.TerminalText",
-      "kind": "standard"
-    },
-    {
-      "from": "text.Columns",
-      "to": "text.TerminalText",
-      "kind": "deps"
-    },
-    {
-      "from": "text.Columns",
-      "to": "text.PaddedCell",
-      "kind": "deps"
-    },
-    {
-      "from": "text.Columns",
-      "to": "text.TerminalColumns",
-      "kind": "deps"
-    },
-    {
-      "from": "text.ItemLine",
-      "to": "text.TerminalText",
-      "kind": "standard"
-    },
-    {
-      "from": "text.ItemLine",
-      "to": "text.TerminalText",
-      "kind": "deps"
-    },
-    {
-      "from": "text.PaddedCell",
-      "to": "text.TerminalText",
-      "kind": "standard"
-    },
-    {
-      "from": "text.PaddedCell",
-      "to": "text.TerminalText",
-      "kind": "deps"
-    },
-    {
-      "from": "text.PaddedCell",
-      "to": "text.TerminalColumns",
-      "kind": "deps"
-    },
-    {
-      "from": "text.PathStep",
-      "to": "text.TerminalText",
-      "kind": "standard"
-    },
-    {
-      "from": "text.PathStep",
-      "to": "text.TerminalText",
-      "kind": "deps"
-    },
-    {
-      "from": "text.PathStep",
-      "to": "text.BoxDrawing",
-      "kind": "deps"
-    },
-    {
-      "from": "text.TerminalLines",
-      "to": "text.TerminalText",
-      "kind": "standard"
-    },
-    {
-      "from": "text.TerminalLines",
-      "to": "text.TerminalText",
-      "kind": "deps"
-    },
-    {
-      "from": "text.TreeBranch",
-      "to": "text.TerminalText",
-      "kind": "standard"
-    },
-    {
-      "from": "text.TreeBranch",
-      "to": "text.TerminalText",
-      "kind": "deps"
-    },
-    {
-      "from": "text.TreeBranch",
-      "to": "text.BoxDrawing",
-      "kind": "deps"
-    },
-    {
       "from": "typescript.ArrayLiteral",
       "to": "typescript.TypeScriptSyntax",
       "kind": "standard"
@@ -31750,11 +28044,6 @@
     {
       "from": "typescript.TypeScriptWriter",
       "to": "conventions.StepNames",
-      "kind": "deps"
-    },
-    {
-      "from": "typescript.TypeScriptWriter",
-      "to": "conventions.ReferenceSyntax",
       "kind": "deps"
     },
     {

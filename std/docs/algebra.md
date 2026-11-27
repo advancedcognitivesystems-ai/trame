@@ -98,6 +98,7 @@ The operations are written in `./code/algebra/texts.ts`.
 - Parameters: `sequences` ← [Sequences](#Sequences)
 - Serves: [Shared operations instead of literals](product.md#SharedOperations)
 - Used by: [Merge a pull request](commands.md#MergePullRequest), [Open a pull request](commands.md#OpenPullRequest), [Propagate](commands.md#Propagate), [The automatic merge, in a session of Claude Code](repository.md#AutoMergeInAClaudeSession), [Git's branches](repository.md#GitCliBranches), [GitHub's pull requests, by its command line](repository.md#GitHubCliPullRequests), [GitHub's command line](repository.md#GitHubCliRepository), [Pull requests kept in memory](repository.md#PullRequestsInMemory), [Files kept in memory](tooling.md#FilesInMemory)
+- Refined by: [Trame references](engine.md#ReferenceSyntax)
 
 <a id="ValueTypes"></a>
 

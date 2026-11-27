@@ -2,27 +2,44 @@
 
 *What happened to the project, day by day, the latest first, up to the date of the graph (27 November 2026): the versions released, and the evidence given, each with the node it is about and who gave it.*
 
-> **32 days · 130 versions released · 722 pieces of evidence**
+> **32 days · 131 versions released · 738 pieces of evidence**
 
 ## 27 November 2026
 
 | What | Node | By |
 |---|---|---|
 | Released as g130 | [Generation 130](releases.md#G130) | trame |
+| Released as g131 | [Generation 131](releases.md#G131) | trame |
+| Deployed | [Advance](commands.md#Advance) | claude |
+| Deployed | [Advance](commands.md#Advance) | claude |
 | Deployed | [Advance](commands.md#Advance) | claude |
 | Deployed | [Advance](commands.md#Advance) | claude |
 | Check passed | [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws) | claude |
+| Check passed | [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws) | claude |
 | Check passed | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | claude |
+| Check passed | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | claude |
+| Built | [The candidate engine](sdlc.md#EngineCandidate) | claude |
+| Shipped | [The candidate engine](sdlc.md#EngineCandidate) | claude |
 | Built | [The candidate engine](sdlc.md#EngineCandidate) | claude |
 | Shipped | [The candidate engine](sdlc.md#EngineCandidate) | claude |
 | Built | [The graph page](sdlc.md#GraphPage) | claude |
 | Shipped | [The graph page](sdlc.md#GraphPage) | claude |
 | Built | [The graph page](sdlc.md#GraphPage) | claude |
 | Shipped | [The graph page](sdlc.md#GraphPage) | claude |
+| Built | [The graph page](sdlc.md#GraphPage) | claude |
+| Shipped | [The graph page](sdlc.md#GraphPage) | claude |
+| Built | [The graph page](sdlc.md#GraphPage) | claude |
+| Shipped | [The graph page](sdlc.md#GraphPage) | claude |
+| Check passed | [The graph page opens](sdlc.md#GraphPageOpens) | claude |
+| Check passed | [The graph page opens](sdlc.md#GraphPageOpens) | claude |
 | Check passed | [The graph page opens](sdlc.md#GraphPageOpens) | claude |
 | Check passed | [The graph page opens](sdlc.md#GraphPageOpens) | claude |
 | Shipped | [The next generation](sdlc.md#NextGeneration) | claude |
 | Shipped | [The next generation](sdlc.md#NextGeneration) | claude |
+| Shipped | [The next generation](sdlc.md#NextGeneration) | claude |
+| Shipped | [The next generation](sdlc.md#NextGeneration) | claude |
+| Built | [The page's program](sdlc.md#PageProgram) | claude |
+| Shipped | [The page's program](sdlc.md#PageProgram) | claude |
 | Built | [The page's program](sdlc.md#PageProgram) | claude |
 | Shipped | [The page's program](sdlc.md#PageProgram) | claude |
 

@@ -5,7 +5,7 @@
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
 | Trame's maintainers | 0 | 0 | 3 | 0 |
-| trame | 0 | 0 | 7 | 788 |
+| trame | 0 | 0 | 7 | 720 |
 
 <a id="Trame's maintainers"></a>
 
@@ -44,7 +44,6 @@
 | [Narrow screen](appearance.md#NarrowScreen) | Decision |  |
 | [Opacities](appearance.md#Opacities) | Decision |  |
 | [Page layout](appearance.md#PageLayout) | Decision |  |
-| [Palette](appearance.md#Palette) | Decision |  |
 | [Radii](appearance.md#Radii) | Decision |  |
 | [Spacing](appearance.md#Spacing) | Decision |  |
 | [Strokes](appearance.md#Strokes) | Decision |  |
@@ -195,7 +194,6 @@
 | [Project layout](conventions.md#Layout) | Decision |  |
 | [The prelude's public API](conventions.md#PreludeApi) | Decision |  |
 | [How a project starts](conventions.md#ProjectStart) | Decision |  |
-| [Trame references](conventions.md#ReferenceSyntax) | Standard |  |
 | [Names of steps](conventions.md#StepNames) | Decision |  |
 | [Trame's commands](conventions.md#TrameCommands) | Standard |  |
 | [Trame's environment](conventions.md#TrameEnvironment) | Standard |  |
@@ -218,10 +216,8 @@
 | [A directory copied is the same as the original](doctor.md#TreesAnswer) | Implementation | **held** |
 | [Documents written in Trame's language](documents.md#DocumentsInOurLanguage) | Technical choice | **held** |
 | [Settings of the documents](documents.md#LanguageSettings) | Decision |  |
-| [How Mermaid figures are drawn](documents.md#MermaidFigures) | Decision |  |
 | [The documents in Trame's language](documents.md#OurDocumentLanguage) | Function | **held** |
 | [The punctuation is the language's](documents.md#PunctuationOfTheLanguage) | Architecture decision | **held** |
-| [Heading levels of Markdown documents](documents.md#TextRendering) | Decision |  |
 | [Visible text](documents.md#VisibleText) | Function | **held** |
 | [Assembly](engine.md#Assembly) | Function | **held** |
 | [Compilation API](engine.md#CompilationApi) | Function | **held** |
@@ -269,13 +265,7 @@
 | [Variable](html.md#CssVariable) | Syntax element | **held** |
 | [Custom property](html.md#CustomProperty) | Syntax element | **held** |
 | [DOCTYPE](html.md#Doctype) | Syntax element | **held** |
-| [Escaped text](html.md#EscapedText) | Syntax element | **held** |
-| [Attributes](html.md#HtmlAttributes) | Syntax element | **held** |
 | [Element over several lines](html.md#HtmlBlock) | Syntax element | **held** |
-| [HTML element](html.md#HtmlElement) | Syntax element | **held** |
-| [End tag](html.md#HtmlEndTag) | Syntax element | **held** |
-| [Heading of a rank](html.md#HtmlHeading) | Syntax element | **held** |
-| [Start tag](html.md#HtmlStartTag) | Syntax element | **held** |
 | [JSON in a script](html.md#JsonInScript) | Syntax element | **held** |
 | [Media feature](html.md#MediaFeature) | Syntax element | **held** |
 | [Media rule](html.md#MediaRule) | Syntax element | **held** |
@@ -283,7 +273,6 @@
 | [Path data](html.md#PathData) | Syntax element | **held** |
 | [Script](html.md#ScriptElement) | Syntax element | **held** |
 | [Selector list](html.md#SelectorList) | Syntax element | **held** |
-| [Self-closing tag](html.md#SelfClosingTag) | Syntax element | **held** |
 | [Drivers](languages.md#Drivers) | Function | **held** |
 | [What a writer writes is read back before it is written](languages.md#ReadBackWhatIsWritten) | Architecture decision | **held** |
 | [Answers without crashing](laws.md#AnswersWithoutCrashing) | Requirement | **held** |
@@ -312,45 +301,10 @@
 | [Names of a library's releases](libraries.md#LibraryReleaseNames) | Decision |  |
 | [A release is settled](libraries.md#ReleaseIsSettled) | Requirement | **held** |
 | [Criteria of a settled release](libraries.md#ReleaseIsSettledCriteria) | Acceptance criteria | **held** |
-| [Anchor](markdown.md#Anchor) | Syntax element | **held** |
-| [Backtick string](markdown.md#BacktickString) | Syntax element | **held** |
-| [Blank line](markdown.md#BlankLine) | Syntax element | **held** |
-| [Block quote](markdown.md#BlockQuote) | Syntax element | **held** |
-| [Sequence of blocks](markdown.md#Blocks) | Syntax element | **held** |
-| [Code block](markdown.md#CodeBlock) | Syntax element | **held** |
-| [Code span](markdown.md#CodeSpan) | Syntax element | **held** |
-| [CommonMark](markdown.md#CommonMark) | Standard |  |
-| [Collapsible block](markdown.md#Details) | Syntax element | **held** |
-| [Emphasis](markdown.md#Emphasis) | Syntax element | **held** |
-| [GitHub Flavored Markdown](markdown.md#Gfm) | Standard |  |
-| [Heading](markdown.md#Heading) | Syntax element | **held** |
-| [Link](markdown.md#Link) | Syntax element | **held** |
-| [List item](markdown.md#ListItem) | Syntax element | **held** |
-| [Relative reference](markdown.md#RelativeReference) | Syntax element | **held** |
-| [Small text](markdown.md#Small) | Syntax element | **held** |
-| [Strong emphasis](markdown.md#StrongEmphasis) | Syntax element | **held** |
-| [Table](markdown.md#Table) | Syntax element | **held** |
-| [Table cell](markdown.md#TableCell) | Syntax element | **held** |
-| [Delimiter row](markdown.md#TableDelimiterRow) | Syntax element | **held** |
-| [Table row](markdown.md#TableRow) | Syntax element | **held** |
 | [Around the documents](markup.md#AroundMarkup) | Decision |  |
 | [Documents in the page](markup.md#DocumentMarkup) | Decision |  |
 | [The explorer of a graph](markup.md#ExplorerMarkup) | Decision |  |
 | [Figures in the page](markup.md#FigureMarkup) | Decision |  |
-| [Class definition](mermaid.md#ClassDefinition) | Syntax element | **held** |
-| [Flowchart](mermaid.md#Flowchart) | Syntax element | **held** |
-| [Gantt chart](mermaid.md#Gantt) | Syntax element | **held** |
-| [Name in a Gantt chart](mermaid.md#GanttName) | Syntax element | **held** |
-| [Section](mermaid.md#GanttSection) | Syntax element | **held** |
-| [Task](mermaid.md#GanttTask) | Syntax element | **held** |
-| [Mermaid](mermaid.md#Mermaid) | Standard |  |
-| [Label](mermaid.md#MermaidLabel) | Syntax element | **held** |
-| [Link](mermaid.md#MermaidLink) | Syntax element | **held** |
-| [Node](mermaid.md#MermaidNode) | Syntax element | **held** |
-| [Milestone](mermaid.md#Milestone) | Syntax element | **held** |
-| [Node style](mermaid.md#NodeStyle) | Syntax element | **held** |
-| [Style properties](mermaid.md#StyleProperties) | Syntax element | **held** |
-| [Subgraph](mermaid.md#Subgraph) | Syntax element | **held** |
 | [Messages of an advance](messages.md#AdvanceMessages) | Message catalog |  |
 | [Messages of the commands](messages.md#CommandMessages) | Message catalog |  |
 | [Messages of the compiler](messages.md#CompilerMessages) | Message catalog |  |
@@ -364,7 +318,6 @@
 | [Messages of the outputs](messages.md#OutputMessages) | Message catalog |  |
 | [Words of the page](messages.md#PageWords) | Message catalog |  |
 | [Messages of the platform](messages.md#PlatformMessages) | Message catalog |  |
-| [Messages of the renderers](messages.md#RenderingMessages) | Message catalog |  |
 | [Messages of the scenarios](messages.md#ScenarioMessages) | Message catalog |  |
 | [Messages of the views](messages.md#ViewMessages) | Message catalog |  |
 | [Words of the views](messages.md#ViewWords) | Message catalog |  |
@@ -558,6 +511,7 @@
 | [Generation 129](releases.md#G129) | Release |  |
 | [Generation 13](releases.md#G13) | Release |  |
 | [Generation 130](releases.md#G130) | Release |  |
+| [Generation 131](releases.md#G131) | Release |  |
 | [Generation 14](releases.md#G14) | Release |  |
 | [Generation 15](releases.md#G15) | Release |  |
 | [Generation 16](releases.md#G16) | Release |  |
@@ -652,31 +606,19 @@
 | [Generation 97](releases.md#G97) | Release |  |
 | [Generation 98](releases.md#G98) | Release |  |
 | [Generation 99](releases.md#G99) | Release |  |
-| [Common rendering](rendering.md#Common) | Function | **held** |
 | [Documents in Markdown](rendering.md#DocumentsInMarkdown) | Technical choice | **held** |
 | [Figures in Mermaid](rendering.md#FiguresInMermaid) | Technical choice | **held** |
-| [Figures of the documents written as files](rendering.md#FileFigures) | Port |  |
-| [Rendering of the files](rendering.md#FileRendering) | Function | **held** |
-| [Syntax of the documents written as files](rendering.md#FileSyntax) | Port |  |
 | [HTML writer](rendering.md#HtmlSyntax) | Function | **held** |
-| [Markdown writer](rendering.md#MarkdownSyntax) | Function | **held** |
 | [Kinds and views say what; renderers say how](rendering.md#MeaningThenLook) | Architecture decision | **held** |
-| [Mermaid diagrams](rendering.md#MermaidDiagrams) | Function | **held** |
-| [One renderer, its syntax a choice](rendering.md#OneRendererManySyntaxes) | Architecture decision | **held** |
 | [Figures of the page](rendering.md#PageFigures) | Port |  |
 | [The page's figures in SVG](rendering.md#PageFiguresDrawn) | Technical choice | **held** |
 | [The page in HTML](rendering.md#PageInHtml) | Technical choice | **held** |
 | [Rendering in the page](rendering.md#PageRendering) | Function | **held** |
 | [Syntax of the page](rendering.md#PageSyntax) | Port |  |
-| [Plain text writer](rendering.md#PlainTextSyntax) | Function | **held** |
-| [Places in a sentence](rendering.md#SentenceSlots) | Decision |  |
+| [Trame's documents, rendered by the library of documents](rendering.md#RenderedByTheLibrary) | Architecture decision | **held** |
 | [Figures in SVG](rendering.md#SvgFigures) | Function | **held** |
-| [Figures of the terminal](rendering.md#TerminalFigures) | Port |  |
 | [Figures in the terminal, as text](rendering.md#TerminalFiguresAsText) | Technical choice | **held** |
 | [The terminal in plain text](rendering.md#TerminalInText) | Technical choice | **held** |
-| [Rendering in the terminal](rendering.md#TerminalRendering) | Function | **held** |
-| [Syntax of the terminal](rendering.md#TerminalSyntax) | Port |  |
-| [Figures as text](rendering.md#TextFigures) | Function | **held** |
 | [Add-ons, in the order chosen](scenarios.md#AddOnsInOrder) | Scenario | **held** |
 | [A body amended runs amended](scenarios.md#AmendedBodiesRun) | Scenario | **held** |
 | [A day an amendment of a body is in force](scenarios.md#AmendedDay) | Decision |  |
@@ -783,16 +725,6 @@
 | [Terraform](terraform.md#Terraform) | Language | **held** |
 | [Terraform modules](terraform.md#TerraformModules) | Standard |  |
 | [Terraform writer](terraform.md#TerraformWriter) | Function | **held** |
-| [Box drawing](text.md#BoxDrawing) | Standard |  |
-| [Code lines](text.md#CodeLines) | Syntax element | **held** |
-| [Columns](text.md#Columns) | Syntax element | **held** |
-| [Item line](text.md#ItemLine) | Syntax element | **held** |
-| [Padded cell](text.md#PaddedCell) | Syntax element | **held** |
-| [Path step](text.md#PathStep) | Syntax element | **held** |
-| [Columns in the terminal](text.md#TerminalColumns) | Decision |  |
-| [Lines of the terminal](text.md#TerminalLines) | Syntax element | **held** |
-| [Terminal text](text.md#TerminalText) | Decision |  |
-| [Tree branch](text.md#TreeBranch) | Syntax element | **held** |
 | [List on several lines](typescript.md#ArrayLiteral) | Syntax element | **held** |
 | [Type assertion](typescript.md#AsExpression) | Syntax element | **held** |
 | [Assignment](typescript.md#Assignment) | Syntax element | **held** |

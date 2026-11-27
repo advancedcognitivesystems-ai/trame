@@ -44,3 +44,16 @@ export const R0_1_2 = release({
   language: "shared",
   serves: [WrittenOnce],
 })
+
+/**
+ * Version 0.2.0
+ */
+export const R0_2_0 = release({
+  owner: "trame",
+  version: "0.2.0",
+  date: "2026-11-27",
+  what: "Indents with libs/documents' terminal text, its own decision gone; std 0.30.0",
+  fingerprint: "6700afbbbbfb0996",
+  language: "shared",
+  serves: [WrittenOnce],
+})

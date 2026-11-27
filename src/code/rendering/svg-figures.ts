@@ -7,17 +7,19 @@
 import { DateRole, EdgeRole, FigureType, Nature, Shape, Status, daysBetween, fullDate, keyOf } from "../../../trame/kernel"
 import type { Figure, FigureEdge, ProvidedBy } from "../../../trame/kernel"
 import type { Aria, Css, Html, Svg } from "#std/html"
-import type { CssDeclaration, EscapedText, HtmlElement, PathData, SelfClosingTag } from "../../html"
+import type { CssDeclaration, PathData } from "../../html"
+import type { EscapedText, HtmlElement, SelfClosingTag } from "#documents/html"
 import type { DocumentMarkup, FigureMarkup } from "../../markup"
 import type { ThePage } from "../../page"
 import type { GraphDrawing, LegendDrawing, TimelineDrawing } from "../../appearance"
 import type { Punctuation } from "#documents/language"
-import type { FigureSyntax } from "../../rendering"
-import type { PageWords, RenderingMessages } from "../../messages"
+import type { FigureSyntax } from "#documents/rendering"
+import type { PageWords } from "../../messages"
+import type { RenderingMessages } from "#documents/rendering"
 import type { Dates } from "#documents/language"
 import type { Iso8601 } from "#std/measures"
 import type { Counts, Sequences, Texts } from "#std/algebra"
-import type { Api as CommonApi } from "./common"
+import type { Api as CommonApi } from "#documents/code/rendering/common"
 
 type GraphFigure = Extract<Figure, { type: typeof FigureType.graph }>
 type TimelineFigure = Extract<Figure, { type: typeof FigureType.timeline }>

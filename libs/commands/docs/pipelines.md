@@ -39,7 +39,7 @@ flowchart TB
 | 5 | prove | [A plan says what a build would change](scenarios.md#PlanSaysWhatChanges) | — | [Its code verified](sdlc.md#CodeVerified) via [Two builds compared](commands.md#BuildComparison) | **held** |  |
 | 6 | prove | [Without a build, a plan says so](scenarios.md#PlanWithoutABuild) | — | [Its code verified](sdlc.md#CodeVerified) via [Plan](commands.md#Plan) | **held** |  |
 | 7 | prove | [A command is played on a real graph](scenarios.md#PlayedOnARealGraph) | — | [Its decisions applied](sdlc.md#DecisionsApplied) via [Compiled by the engine that plays them](scenarios.md#CompiledByTheEngine) | **held** |  |
-| 8 | record | [The next version](sdlc.md#NextVersion) | — | — | **unknown** | 27 November 2026 by claude `evidence/shipments/NextVersion-2026-11-27-791a253d.json` |
+| 8 | record | [The next version](sdlc.md#NextVersion) | — | — | **unknown** | 27 November 2026 by claude `evidence/shipments/NextVersion-2026-11-27-26b52336.json` |
 
 `trame ship NextVersion --by <name>`
 
@@ -72,6 +72,6 @@ flowchart TB
 | 1 | produce | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) · `../../.github/workflows/commands-pull-request.yml` | [A workflow of GitHub Actions](../.trame/ci/docs/github.md#GitHubWorkflow) | — | **held** | 27 November 2026 by claude  |
 | 2 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
 | 3 | prove | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | — | the shipment | **held** | 27 November 2026 by claude  |
-| 4 | record | [The files that run it elsewhere](sdlc.md#RunnersWritten) | — | — | **held** | 27 November 2026 by claude `evidence/shipments/RunnersWritten-2026-11-27-e1e2a100.json` |
+| 4 | record | [The files that run it elsewhere](sdlc.md#RunnersWritten) | — | — | **held** | 27 November 2026 by claude `evidence/shipments/RunnersWritten-2026-11-27-bb33289a.json` |
 
 `trame ship RunnersWritten --by <name>`

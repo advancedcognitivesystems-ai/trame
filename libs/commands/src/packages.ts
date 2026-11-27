@@ -10,14 +10,14 @@ import { WrittenOnce } from "./product"
  * The language the library is written in, at the generation the repository runs, by its path: the one whose engine
  * gives the API std's ports of the engine read (g124).
  */
-export const Language = pkg({ owner: "trame", packageName: "trame", version: "130", joins: "language", at: "../../generations/g130", serves: [WrittenOnce] })
+export const Language = pkg({ owner: "trame", packageName: "trame", version: "131", joins: "language", at: "../../generations/g131", serves: [WrittenOnce] })
 
 /**
  * std
  * The library the commands are written with: the ports of the engine (the project at hand), of the files and of the
  * program's command line, its structures and standards.
  */
-export const StandardLibrary = pkg({ owner: "trame", packageName: "std", version: "0.29.1", joins: "library", at: "../../std/releases/0.29.1", serves: [WrittenOnce] })
+export const StandardLibrary = pkg({ owner: "trame", packageName: "std", version: "0.30.0", joins: "library", at: "../../std/releases/0.30.0", serves: [WrittenOnce] })
 
 /**
  * The library of continuous integration
@@ -35,5 +35,15 @@ export const ContinuousIntegration = pkg({
  */
 export const People = pkg({
   owner: "trame", packageName: "team", version: "0.1.0", joins: "library", from: "path", at: "../team/releases/0.1.0",
+  serves: [WrittenOnce],
+})
+
+/**
+ * The renderers of documents
+ * What writes for people what a command computes (E3): the terminal's text, its lines and their indentation, then the
+ * documents a command renders; at the version the library uses, by its path in Trame's repository.
+ */
+export const Documents = pkg({
+  owner: "trame", packageName: "documents", version: "0.2.0", joins: "library", from: "path", at: "../documents/releases/0.2.0",
   serves: [WrittenOnce],
 })

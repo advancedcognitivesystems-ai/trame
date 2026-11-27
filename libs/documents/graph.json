@@ -2,6 +2,467 @@
   "generated": "2026-11-27",
   "nodes": [
     {
+      "id": "appearance.Palette",
+      "kind": "decision",
+      "title": "Palette",
+      "source": "src/appearance.ts:24",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "light": {
+            "bg": "#f3f5f6",
+            "panel": "#ffffff",
+            "ink": "#17202a",
+            "muted": "#5a6672",
+            "line": "#d9e0e5",
+            "accent": "#34509a",
+            "accent-soft": "#e5ebf7",
+            "ok": "#26734a",
+            "ok-soft": "#e1f1e7",
+            "warn": "#9a6200",
+            "warn-soft": "#fbf0d9",
+            "bad": "#ad2a22",
+            "bad-soft": "#f9e3e1",
+            "unk": "#65707c",
+            "unk-soft": "#e9edf0",
+            "term-bg": "#121820",
+            "term-ink": "#d8dee5",
+            "term-dim": "#7f8b97"
+          },
+          "dark": {
+            "bg": "#0e1217",
+            "panel": "#151b22",
+            "ink": "#e4e9ee",
+            "muted": "#98a3ae",
+            "line": "#29323c",
+            "accent": "#93abef",
+            "accent-soft": "#1e2a44",
+            "ok": "#7fd19b",
+            "ok-soft": "#173325",
+            "warn": "#f2c063",
+            "warn-soft": "#3a2d12",
+            "bad": "#f08a80",
+            "bad-soft": "#3d1c1a",
+            "unk": "#a5afb9",
+            "unk-soft": "#222a33",
+            "term-bg": "#0a0e13",
+            "term-ink": "#d8dee5",
+            "term-dim": "#7f8b97"
+          },
+          "statuses": {
+            "held": {
+              "fill": "ok-soft",
+              "stroke": "ok"
+            },
+            "blocked": {
+              "fill": "warn-soft",
+              "stroke": "warn"
+            },
+            "violated": {
+              "fill": "bad-soft",
+              "stroke": "bad"
+            },
+            "unknown": {
+              "fill": "unk-soft",
+              "stroke": "unk"
+            },
+            "neutral": {
+              "fill": "panel",
+              "stroke": "muted"
+            }
+          },
+          "ink": "ink"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "html.EscapedText",
+      "kind": "syntax",
+      "title": "Escaped text",
+      "source": "src/html.ts:130",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "13.1.4 Character references",
+        "url": "https://html.spec.whatwg.org/multipage/syntax.html#character-references",
+        "constants": {
+          "ampersand": {
+            "value": "&",
+            "meaning": "Opens a character reference"
+          },
+          "quotationMark": {
+            "value": "\"",
+            "meaning": "Closes the value of an attribute"
+          },
+          "amp": {
+            "value": "&amp;",
+            "meaning": "The reference written for an ampersand"
+          },
+          "lt": {
+            "value": "&lt;",
+            "meaning": "The reference written for a less-than sign"
+          },
+          "gt": {
+            "value": "&gt;",
+            "meaning": "The reference written for a greater-than sign"
+          },
+          "quot": {
+            "value": "&quot;",
+            "meaning": "The reference written for a quotation mark"
+          }
+        },
+        "deps": {
+          "standard": "std/html.Html"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "a < b & \"c\" > d"
+            ],
+            "output": "a &lt; b &amp; &quot;c&quot; &gt; d"
+          },
+          {
+            "input": [
+              "&lt;"
+            ],
+            "output": "&amp;lt;"
+          }
+        ],
+        "fragment": {
+          "before": "<p title=\"",
+          "after": "\"></p>"
+        }
+      },
+      "result": [
+        {
+          "input": [
+            "a < b & \"c\" > d"
+          ],
+          "expected": "a &lt; b &amp; &quot;c&quot; &gt; d",
+          "actual": "a &lt; b &amp; &quot;c&quot; &gt; d",
+          "parses": true,
+          "held": true
+        },
+        {
+          "input": [
+            "&lt;"
+          ],
+          "expected": "&amp;lt;",
+          "actual": "&amp;lt;",
+          "parses": true,
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "html.HtmlAttributes",
+      "kind": "syntax",
+      "title": "Attributes",
+      "source": "src/html.ts:16",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "13.1.2.3 Attributes",
+        "url": "https://html.spec.whatwg.org/multipage/syntax.html#attributes-2",
+        "constants": {
+          "equals": {
+            "value": "=",
+            "meaning": "Separates the name of an attribute from its value"
+          },
+          "quote": {
+            "value": "\"",
+            "meaning": "Surrounds the value of an attribute"
+          }
+        },
+        "deps": {
+          "standard": "std/html.Html",
+          "texts": "std/algebra.Texts"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              {
+                "id": "Goal"
+              }
+            ],
+            "output": " id=\"Goal\""
+          },
+          {
+            "input": [
+              {
+                "class": "banner",
+                "hidden": true
+              }
+            ],
+            "output": " class=\"banner\" hidden"
+          }
+        ],
+        "fragment": {
+          "before": "<a",
+          "after": ">"
+        }
+      },
+      "result": [
+        {
+          "input": [
+            {
+              "id": "Goal"
+            }
+          ],
+          "expected": " id=\"Goal\"",
+          "actual": " id=\"Goal\"",
+          "parses": true,
+          "held": true
+        },
+        {
+          "input": [
+            {
+              "class": "banner",
+              "hidden": true
+            }
+          ],
+          "expected": " class=\"banner\" hidden",
+          "actual": " class=\"banner\" hidden",
+          "parses": true,
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "html.HtmlElement",
+      "kind": "syntax",
+      "title": "HTML element",
+      "source": "src/html.ts:93",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "13.1.2 Elements",
+        "url": "https://html.spec.whatwg.org/multipage/syntax.html#elements-2",
+        "constants": {},
+        "deps": {
+          "standard": "std/html.Html",
+          "startTag": "html.HtmlStartTag",
+          "endTag": "html.HtmlEndTag"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "summary",
+              {},
+              "The code"
+            ],
+            "output": "<summary>The code</summary>"
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            "summary",
+            {},
+            "The code"
+          ],
+          "expected": "<summary>The code</summary>",
+          "actual": "<summary>The code</summary>",
+          "parses": true,
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "html.HtmlEndTag",
+      "kind": "syntax",
+      "title": "End tag",
+      "source": "src/html.ts:75",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "13.1.2.2 End tags",
+        "url": "https://html.spec.whatwg.org/multipage/syntax.html#end-tags",
+        "constants": {
+          "slash": {
+            "value": "/",
+            "meaning": "After the less-than sign: the tag closes the element"
+          }
+        },
+        "deps": {
+          "standard": "std/html.Html"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "details"
+            ],
+            "output": "</details>"
+          }
+        ],
+        "fragment": {
+          "before": "<details>",
+          "after": ""
+        }
+      },
+      "result": [
+        {
+          "input": [
+            "details"
+          ],
+          "expected": "</details>",
+          "actual": "</details>",
+          "parses": true,
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "html.HtmlHeading",
+      "kind": "syntax",
+      "title": "Heading of a rank",
+      "source": "src/html.ts:110",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "4.3.6 The h1, h2, h3, h4, h5, and h6 elements",
+        "url": "https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements",
+        "constants": {
+          "prefix": {
+            "value": "h",
+            "meaning": "Before the rank of a heading: the name of its element"
+          }
+        },
+        "deps": {
+          "standard": "std/html.Html",
+          "element": "html.HtmlElement"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              2,
+              {},
+              "Cards"
+            ],
+            "output": "<h2>Cards</h2>"
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            2,
+            {},
+            "Cards"
+          ],
+          "expected": "<h2>Cards</h2>",
+          "actual": "<h2>Cards</h2>",
+          "parses": true,
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "html.HtmlStartTag",
+      "kind": "syntax",
+      "title": "Start tag",
+      "source": "src/html.ts:40",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "13.1.2.1 Start tags",
+        "url": "https://html.spec.whatwg.org/multipage/syntax.html#start-tags",
+        "constants": {},
+        "deps": {
+          "standard": "std/html.Html",
+          "attributes": "html.HtmlAttributes"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "a",
+              {
+                "id": "Goal"
+              }
+            ],
+            "output": "<a id=\"Goal\">"
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            "a",
+            {
+              "id": "Goal"
+            }
+          ],
+          "expected": "<a id=\"Goal\">",
+          "actual": "<a id=\"Goal\">",
+          "parses": true,
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "html.SelfClosingTag",
+      "kind": "syntax",
+      "title": "Self-closing tag",
+      "source": "src/html.ts:57",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "13.1.2.1 Start tags (the self-closing flag of foreign elements)",
+        "url": "https://html.spec.whatwg.org/multipage/syntax.html#start-tags",
+        "constants": {
+          "slash": {
+            "value": "/",
+            "meaning": "Before the greater-than sign: the element has no content and no end tag"
+          }
+        },
+        "deps": {
+          "standard": "std/html.Html",
+          "attributes": "html.HtmlAttributes"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "path",
+              {
+                "d": "M7 5v16"
+              }
+            ],
+            "output": "<path d=\"M7 5v16\"/>"
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            "path",
+            {
+              "d": "M7 5v16"
+            }
+          ],
+          "expected": "<path d=\"M7 5v16\"/>",
+          "actual": "<path d=\"M7 5v16\"/>",
+          "parses": true,
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
       "id": "language.Dates",
       "kind": "function",
       "title": "Dates",
@@ -105,6 +566,2131 @@
       "diagnostics": []
     },
     {
+      "id": "markdown.Anchor",
+      "kind": "syntax",
+      "title": "Anchor",
+      "source": "src/markdown.ts:400",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "4.5.1 The a element; 3.2.6 The id attribute",
+        "url": "https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element",
+        "constants": {
+          "tag": {
+            "value": "a",
+            "meaning": "The link element, here without content"
+          },
+          "attribute": {
+            "value": "id",
+            "meaning": "The identifier that the fragment of an address targets"
+          }
+        },
+        "deps": {
+          "standard": "std/html.Html",
+          "element": "html.HtmlElement",
+          "texts": "std/algebra.Texts"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "Goal"
+            ],
+            "output": "<a id=\"Goal\"></a>"
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            "Goal"
+          ],
+          "expected": "<a id=\"Goal\"></a>",
+          "actual": "<a id=\"Goal\"></a>",
+          "parses": true,
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "markdown.BacktickString",
+      "kind": "syntax",
+      "title": "Backtick string",
+      "source": "src/markdown.ts:151",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "6.1 Code spans (backtick string); 4.5 Fenced code blocks",
+        "url": "https://spec.commonmark.org/0.31.2/#backtick-string",
+        "constants": {},
+        "deps": {
+          "standard": "markdown.CommonMark",
+          "counts": "std/algebra.Counts"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "trame.json",
+              1
+            ],
+            "output": "`"
+          },
+          {
+            "input": [
+              "a`b",
+              1
+            ],
+            "output": "``"
+          },
+          {
+            "input": [
+              "const x = 1",
+              3
+            ],
+            "output": "```"
+          },
+          {
+            "input": [
+              "```ts\nx\n```",
+              3
+            ],
+            "output": "````"
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            "trame.json",
+            1
+          ],
+          "expected": "`",
+          "actual": "`",
+          "held": true
+        },
+        {
+          "input": [
+            "a`b",
+            1
+          ],
+          "expected": "``",
+          "actual": "``",
+          "held": true
+        },
+        {
+          "input": [
+            "const x = 1",
+            3
+          ],
+          "expected": "```",
+          "actual": "```",
+          "held": true
+        },
+        {
+          "input": [
+            "```ts\nx\n```",
+            3
+          ],
+          "expected": "````",
+          "actual": "````",
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "markdown.BlankLine",
+      "kind": "syntax",
+      "title": "Blank line",
+      "source": "src/markdown.ts:51",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "4.9 Blank lines",
+        "url": "https://spec.commonmark.org/0.31.2/#blank-lines",
+        "constants": {
+          "blank": {
+            "value": "",
+            "meaning": "A line containing no characters",
+            "refines": {
+              "node": "std/algebra.Texts",
+              "name": "empty"
+            }
+          }
+        },
+        "deps": {
+          "standard": "markdown.CommonMark"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              [
+                [
+                  "# Title"
+                ],
+                [
+                  "Text",
+                  "More text"
+                ]
+              ]
+            ],
+            "output": [
+              "# Title",
+              "",
+              "Text",
+              "More text",
+              ""
+            ]
+          },
+          {
+            "input": [
+              [
+                [
+                  "a"
+                ],
+                false,
+                [
+                  "b"
+                ]
+              ]
+            ],
+            "output": [
+              "a",
+              "",
+              "b",
+              ""
+            ]
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            [
+              [
+                "# Title"
+              ],
+              [
+                "Text",
+                "More text"
+              ]
+            ]
+          ],
+          "expected": [
+            "# Title",
+            "",
+            "Text",
+            "More text",
+            ""
+          ],
+          "actual": [
+            "# Title",
+            "",
+            "Text",
+            "More text",
+            ""
+          ],
+          "held": true
+        },
+        {
+          "input": [
+            [
+              [
+                "a"
+              ],
+              false,
+              [
+                "b"
+              ]
+            ]
+          ],
+          "expected": [
+            "a",
+            "",
+            "b",
+            ""
+          ],
+          "actual": [
+            "a",
+            "",
+            "b",
+            ""
+          ],
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "markdown.BlockQuote",
+      "kind": "syntax",
+      "title": "Block quote",
+      "source": "src/markdown.ts:135",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "5.1 Block quotes",
+        "url": "https://spec.commonmark.org/0.31.2/#block-quotes",
+        "constants": {
+          "marker": {
+            "value": ">",
+            "meaning": "Marks a line of a block quote"
+          }
+        },
+        "deps": {
+          "standard": "markdown.CommonMark"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "All of them apply."
+            ],
+            "output": "> All of them apply."
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            "All of them apply."
+          ],
+          "expected": "> All of them apply.",
+          "actual": "> All of them apply.",
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "markdown.Blocks",
+      "kind": "syntax",
+      "title": "Sequence of blocks",
+      "source": "src/markdown.ts:71",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "4.9 Blank lines",
+        "url": "https://spec.commonmark.org/0.31.2/#blank-lines",
+        "constants": {
+          "maxBlankLines": {
+            "value": 1,
+            "meaning": "The number of blank lines that separate two blocks, at most"
+          }
+        },
+        "deps": {
+          "standard": "markdown.CommonMark",
+          "blankLine": "markdown.BlankLine",
+          "counts": "std/algebra.Counts"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              [
+                [
+                  "# Title",
+                  ""
+                ],
+                [
+                  "Text"
+                ]
+              ]
+            ],
+            "output": "# Title\n\nText\n"
+          },
+          {
+            "input": [
+              [
+                [
+                  "a",
+                  "b"
+                ]
+              ]
+            ],
+            "output": "a\nb\n"
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            [
+              [
+                "# Title",
+                ""
+              ],
+              [
+                "Text"
+              ]
+            ]
+          ],
+          "expected": "# Title\n\nText\n",
+          "actual": "# Title\n\nText\n",
+          "held": true
+        },
+        {
+          "input": [
+            [
+              [
+                "a",
+                "b"
+              ]
+            ]
+          ],
+          "expected": "a\nb\n",
+          "actual": "a\nb\n",
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "markdown.CodeBlock",
+      "kind": "syntax",
+      "title": "Code block",
+      "source": "src/markdown.ts:181",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "4.5 Fenced code blocks",
+        "url": "https://spec.commonmark.org/0.31.2/#fenced-code-blocks",
+        "constants": {
+          "length": {
+            "value": 3,
+            "meaning": "A fence has at least three backticks"
+          }
+        },
+        "deps": {
+          "standard": "markdown.CommonMark",
+          "backtickString": "markdown.BacktickString"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "ts",
+              [
+                "const x = 1"
+              ]
+            ],
+            "output": [
+              "```ts",
+              "const x = 1",
+              "```"
+            ]
+          },
+          {
+            "input": [
+              "md",
+              [
+                "```ts",
+                "x",
+                "```"
+              ]
+            ],
+            "output": [
+              "````md",
+              "```ts",
+              "x",
+              "```",
+              "````"
+            ]
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            "ts",
+            [
+              "const x = 1"
+            ]
+          ],
+          "expected": [
+            "```ts",
+            "const x = 1",
+            "```"
+          ],
+          "actual": [
+            "```ts",
+            "const x = 1",
+            "```"
+          ],
+          "held": true
+        },
+        {
+          "input": [
+            "md",
+            [
+              "```ts",
+              "x",
+              "```"
+            ]
+          ],
+          "expected": [
+            "````md",
+            "```ts",
+            "x",
+            "```",
+            "````"
+          ],
+          "actual": [
+            "````md",
+            "```ts",
+            "x",
+            "```",
+            "````"
+          ],
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "markdown.CodeSpan",
+      "kind": "syntax",
+      "title": "Code span",
+      "source": "src/markdown.ts:239",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "6.1 Code spans",
+        "url": "https://spec.commonmark.org/0.31.2/#code-spans",
+        "constants": {
+          "minLength": {
+            "value": 1,
+            "meaning": "A single backtick is enough, if the text contains none"
+          }
+        },
+        "deps": {
+          "standard": "markdown.CommonMark",
+          "backtickString": "markdown.BacktickString",
+          "texts": "std/algebra.Texts"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "trame.json"
+            ],
+            "output": "`trame.json`"
+          },
+          {
+            "input": [
+              "a`b"
+            ],
+            "output": "``a`b``"
+          },
+          {
+            "input": [
+              "`written: ${…}`"
+            ],
+            "output": "`` `written: ${…}` ``"
+          },
+          {
+            "input": [
+              " x "
+            ],
+            "output": "`  x  `"
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            "trame.json"
+          ],
+          "expected": "`trame.json`",
+          "actual": "`trame.json`",
+          "held": true
+        },
+        {
+          "input": [
+            "a`b"
+          ],
+          "expected": "``a`b``",
+          "actual": "``a`b``",
+          "held": true
+        },
+        {
+          "input": [
+            "`written: ${…}`"
+          ],
+          "expected": "`` `written: ${…}` ``",
+          "actual": "`` `written: ${…}` ``",
+          "held": true
+        },
+        {
+          "input": [
+            " x "
+          ],
+          "expected": "`  x  `",
+          "actual": "`  x  `",
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "markdown.CommonMark",
+      "kind": "standard",
+      "title": "CommonMark",
+      "source": "src/markdown.ts:19",
+      "fields": {
+        "owner": "trame",
+        "source": "CommonMark Spec 0.31.2 (2024)",
+        "url": "https://spec.commonmark.org/0.31.2/",
+        "constants": {
+          "endOfLine": {
+            "value": "\n",
+            "meaning": "Ends a line (§ 2.1: a line feed, U+000A)"
+          },
+          "space": {
+            "value": " ",
+            "meaning": "Separates a mark from what it introduces (§ 2.1: U+0020)"
+          },
+          "backtick": {
+            "value": "`",
+            "meaning": "Delimits code, inline or in a block (§ 4.5, § 6.1)"
+          },
+          "asterisk": {
+            "value": "*",
+            "meaning": "Delimits emphasis (§ 6.2)"
+          }
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "markdown.Details",
+      "kind": "syntax",
+      "title": "Collapsible block",
+      "source": "src/markdown.ts:438",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "4.11.1 The details element; 4.11.2 The summary element",
+        "url": "https://html.spec.whatwg.org/multipage/interactive-elements.html#the-details-element",
+        "constants": {
+          "tag": {
+            "value": "details",
+            "meaning": "The collapsible block"
+          },
+          "summary": {
+            "value": "summary",
+            "meaning": "Its summary, always visible"
+          }
+        },
+        "deps": {
+          "standard": "std/html.Html",
+          "startTag": "html.HtmlStartTag",
+          "endTag": "html.HtmlEndTag",
+          "element": "html.HtmlElement",
+          "blankLine": "markdown.BlankLine"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "The code",
+              [
+                [
+                  "x"
+                ]
+              ]
+            ],
+            "output": [
+              "<details><summary>The code</summary>",
+              "",
+              "x",
+              "",
+              "</details>"
+            ]
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            "The code",
+            [
+              [
+                "x"
+              ]
+            ]
+          ],
+          "expected": [
+            "<details><summary>The code</summary>",
+            "",
+            "x",
+            "",
+            "</details>"
+          ],
+          "actual": [
+            "<details><summary>The code</summary>",
+            "",
+            "x",
+            "",
+            "</details>"
+          ],
+          "parses": true,
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "markdown.Emphasis",
+      "kind": "syntax",
+      "title": "Emphasis",
+      "source": "src/markdown.ts:206",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "6.2 Emphasis",
+        "url": "https://spec.commonmark.org/0.31.2/#emphasis-and-strong-emphasis",
+        "constants": {
+          "count": {
+            "value": 1,
+            "meaning": "One asterisk on each side"
+          }
+        },
+        "deps": {
+          "standard": "markdown.CommonMark"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "The graph in force"
+            ],
+            "output": "*The graph in force*"
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            "The graph in force"
+          ],
+          "expected": "*The graph in force*",
+          "actual": "*The graph in force*",
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "markdown.Gfm",
+      "kind": "standard",
+      "title": "GitHub Flavored Markdown",
+      "source": "src/markdown.ts:35",
+      "fields": {
+        "owner": "trame",
+        "source": "GitHub Flavored Markdown Spec 0.29-gfm (2019)",
+        "url": "https://github.github.com/gfm/",
+        "constants": {
+          "pipe": {
+            "value": "|",
+            "meaning": "Separates the cells of a table, and borders each row (§ 4.10)"
+          }
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "markdown.Heading",
+      "kind": "syntax",
+      "title": "Heading",
+      "source": "src/markdown.ts:98",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "4.2 ATX headings",
+        "url": "https://spec.commonmark.org/0.31.2/#atx-headings",
+        "constants": {
+          "hash": {
+            "value": "#",
+            "meaning": "Repeated as many times as the level of the heading"
+          },
+          "maxLevel": {
+            "value": 6,
+            "meaning": "The deepest level: beyond six hash signs, the line is no longer a heading"
+          }
+        },
+        "deps": {
+          "standard": "markdown.CommonMark"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              2,
+              "Goals"
+            ],
+            "output": "## Goals"
+          },
+          {
+            "input": [
+              9,
+              "Very deep"
+            ],
+            "output": "###### Very deep"
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            2,
+            "Goals"
+          ],
+          "expected": "## Goals",
+          "actual": "## Goals",
+          "held": true
+        },
+        {
+          "input": [
+            9,
+            "Very deep"
+          ],
+          "expected": "###### Very deep",
+          "actual": "###### Very deep",
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "markdown.Link",
+      "kind": "syntax",
+      "title": "Link",
+      "source": "src/markdown.ts:267",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "6.3 Links",
+        "url": "https://spec.commonmark.org/0.31.2/#links",
+        "constants": {
+          "openText": {
+            "value": "[",
+            "meaning": "Opens the text of the link"
+          },
+          "closeText": {
+            "value": "]",
+            "meaning": "Closes the text of the link"
+          },
+          "openDestination": {
+            "value": "(",
+            "meaning": "Opens the destination"
+          },
+          "closeDestination": {
+            "value": ")",
+            "meaning": "Closes the destination"
+          }
+        },
+        "deps": {
+          "standard": "markdown.CommonMark"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "Goal",
+              "product.md#Goal"
+            ],
+            "output": "[Goal](product.md#Goal)"
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            "Goal",
+            "product.md#Goal"
+          ],
+          "expected": "[Goal](product.md#Goal)",
+          "actual": "[Goal](product.md#Goal)",
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "markdown.ListItem",
+      "kind": "syntax",
+      "title": "List item",
+      "source": "src/markdown.ts:119",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "5.2 List items",
+        "url": "https://spec.commonmark.org/0.31.2/#list-items",
+        "constants": {
+          "bullet": {
+            "value": "-",
+            "meaning": "Marks an item of an unordered list"
+          }
+        },
+        "deps": {
+          "standard": "markdown.CommonMark"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "Owner: trame"
+            ],
+            "output": "- Owner: trame"
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            "Owner: trame"
+          ],
+          "expected": "- Owner: trame",
+          "actual": "- Owner: trame",
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "markdown.RelativeReference",
+      "kind": "syntax",
+      "title": "Relative reference",
+      "source": "src/markdown.ts:291",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "4.2 Relative reference; 3.5 Fragment; 5.2.4 Remove dot segments",
+        "url": "https://www.rfc-editor.org/rfc/rfc3986#section-4.2",
+        "constants": {
+          "segment": {
+            "value": "/",
+            "meaning": "Separates the segments of a path"
+          },
+          "fragment": {
+            "value": "#",
+            "meaning": "Introduces the fragment: the anchor, in the target document"
+          },
+          "parent": {
+            "value": "..",
+            "meaning": "The segment that goes up one level, out of a folder"
+          }
+        },
+        "deps": {
+          "standard": "std/web.Uri",
+          "texts": "std/algebra.Texts",
+          "sequences": "std/algebra.Sequences",
+          "counts": "std/algebra.Counts"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "docs/index.md",
+              "docs/product.md",
+              "Goal"
+            ],
+            "output": "product.md#Goal"
+          },
+          {
+            "input": [
+              "docs/index.md",
+              null,
+              "Graph"
+            ],
+            "output": "#Graph"
+          },
+          {
+            "input": [
+              "docs/index.md",
+              "docs/product.md"
+            ],
+            "output": "product.md"
+          },
+          {
+            "input": [
+              "docs/index.md",
+              "std/docs/algebra.md",
+              "Counts"
+            ],
+            "output": "../std/docs/algebra.md#Counts"
+          },
+          {
+            "input": [
+              "docs/index.md",
+              "../std/docs/index.md"
+            ],
+            "output": "../../std/docs/index.md"
+          },
+          {
+            "input": [
+              "docs/index.md",
+              "src/product.ts"
+            ],
+            "output": "../src/product.ts"
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            "docs/index.md",
+            "docs/product.md",
+            "Goal"
+          ],
+          "expected": "product.md#Goal",
+          "actual": "product.md#Goal",
+          "held": true
+        },
+        {
+          "input": [
+            "docs/index.md",
+            null,
+            "Graph"
+          ],
+          "expected": "#Graph",
+          "actual": "#Graph",
+          "held": true
+        },
+        {
+          "input": [
+            "docs/index.md",
+            "docs/product.md"
+          ],
+          "expected": "product.md",
+          "actual": "product.md",
+          "held": true
+        },
+        {
+          "input": [
+            "docs/index.md",
+            "std/docs/algebra.md",
+            "Counts"
+          ],
+          "expected": "../std/docs/algebra.md#Counts",
+          "actual": "../std/docs/algebra.md#Counts",
+          "held": true
+        },
+        {
+          "input": [
+            "docs/index.md",
+            "../std/docs/index.md"
+          ],
+          "expected": "../../std/docs/index.md",
+          "actual": "../../std/docs/index.md",
+          "held": true
+        },
+        {
+          "input": [
+            "docs/index.md",
+            "src/product.ts"
+          ],
+          "expected": "../src/product.ts",
+          "actual": "../src/product.ts",
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "markdown.Small",
+      "kind": "syntax",
+      "title": "Small text",
+      "source": "src/markdown.ts:419",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "4.5.4 The small element",
+        "url": "https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-small-element",
+        "constants": {
+          "tag": {
+            "value": "small",
+            "meaning": "A side note, in small print"
+          }
+        },
+        "deps": {
+          "standard": "std/html.Html",
+          "element": "html.HtmlElement"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "Decision"
+            ],
+            "output": "<small>Decision</small>"
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            "Decision"
+          ],
+          "expected": "<small>Decision</small>",
+          "actual": "<small>Decision</small>",
+          "parses": true,
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "markdown.StrongEmphasis",
+      "kind": "syntax",
+      "title": "Strong emphasis",
+      "source": "src/markdown.ts:222",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "6.2 Strong emphasis",
+        "url": "https://spec.commonmark.org/0.31.2/#emphasis-and-strong-emphasis",
+        "constants": {
+          "count": {
+            "value": 2,
+            "meaning": "Two asterisks on each side"
+          }
+        },
+        "deps": {
+          "standard": "markdown.CommonMark"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "held"
+            ],
+            "output": "**held**"
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            "held"
+          ],
+          "expected": "**held**",
+          "actual": "**held**",
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "markdown.Table",
+      "kind": "syntax",
+      "title": "Table",
+      "source": "src/markdown.ts:383",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "4.10 Tables",
+        "url": "https://github.github.com/gfm/#tables-extension-",
+        "constants": {},
+        "deps": {
+          "standard": "markdown.Gfm",
+          "row": "markdown.TableRow",
+          "delimiterRow": "markdown.TableDelimiterRow"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              [
+                "Name",
+                "Role"
+              ],
+              [
+                [
+                  "Ada",
+                  "author"
+                ]
+              ]
+            ],
+            "output": [
+              "| Name | Role |",
+              "|---|---|",
+              "| Ada | author |"
+            ]
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            [
+              "Name",
+              "Role"
+            ],
+            [
+              [
+                "Ada",
+                "author"
+              ]
+            ]
+          ],
+          "expected": [
+            "| Name | Role |",
+            "|---|---|",
+            "| Ada | author |"
+          ],
+          "actual": [
+            "| Name | Role |",
+            "|---|---|",
+            "| Ada | author |"
+          ],
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "markdown.TableCell",
+      "kind": "syntax",
+      "title": "Table cell",
+      "source": "src/markdown.ts:331",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "4.10 Tables: a pipe in a cell",
+        "url": "https://github.github.com/gfm/#tables-extension-",
+        "constants": {
+          "escape": {
+            "value": "\\",
+            "meaning": "Comes before a pipe that belongs to the content"
+          }
+        },
+        "deps": {
+          "standard": "markdown.Gfm",
+          "commonMark": "markdown.CommonMark"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "a | b\nc"
+            ],
+            "output": "a \\| b c"
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            "a | b\nc"
+          ],
+          "expected": "a \\| b c",
+          "actual": "a \\| b c",
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "markdown.TableDelimiterRow",
+      "kind": "syntax",
+      "title": "Delimiter row",
+      "source": "src/markdown.ts:365",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "4.10 Tables: the delimiter row",
+        "url": "https://github.github.com/gfm/#tables-extension-",
+        "constants": {
+          "dash": {
+            "value": "-",
+            "meaning": "Fills the delimiter cell of a column"
+          },
+          "length": {
+            "value": 3,
+            "meaning": "The number of dashes per column"
+          }
+        },
+        "deps": {
+          "standard": "markdown.Gfm"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              3
+            ],
+            "output": "|---|---|---|"
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            3
+          ],
+          "expected": "|---|---|---|",
+          "actual": "|---|---|---|",
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "markdown.TableRow",
+      "kind": "syntax",
+      "title": "Table row",
+      "source": "src/markdown.ts:349",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "4.10 Tables: a row",
+        "url": "https://github.github.com/gfm/#tables-extension-",
+        "constants": {},
+        "deps": {
+          "standard": "markdown.Gfm",
+          "commonMark": "markdown.CommonMark"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              [
+                "Name",
+                "Role"
+              ]
+            ],
+            "output": "| Name | Role |"
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            [
+              "Name",
+              "Role"
+            ]
+          ],
+          "expected": "| Name | Role |",
+          "actual": "| Name | Role |",
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "mermaid.ClassDefinition",
+      "kind": "syntax",
+      "title": "Class definition",
+      "source": "src/mermaid.ts:161",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "Flowcharts: classes",
+        "url": "https://mermaid.js.org/syntax/flowchart.html#classes",
+        "constants": {
+          "keyword": {
+            "value": "classDef",
+            "meaning": "Defines a class"
+          }
+        },
+        "deps": {
+          "standard": "mermaid.Mermaid",
+          "styleProperties": "mermaid.StyleProperties"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "held",
+              {
+                "fill": "#e1f1e7",
+                "stroke": "#26734a",
+                "textColour": "#17202a"
+              }
+            ],
+            "output": "classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a"
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            "held",
+            {
+              "fill": "#e1f1e7",
+              "stroke": "#26734a",
+              "textColour": "#17202a"
+            }
+          ],
+          "expected": "classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a",
+          "actual": "classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a",
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "mermaid.Flowchart",
+      "kind": "syntax",
+      "title": "Flowchart",
+      "source": "src/mermaid.ts:45",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "Flowcharts: direction",
+        "url": "https://mermaid.js.org/syntax/flowchart.html#direction",
+        "constants": {
+          "keyword": {
+            "value": "flowchart",
+            "meaning": "Opens a flowchart"
+          },
+          "down": {
+            "value": "TB",
+            "meaning": "From top to bottom"
+          },
+          "right": {
+            "value": "LR",
+            "meaning": "From left to right"
+          },
+          "up": {
+            "value": "BT",
+            "meaning": "From bottom to top"
+          },
+          "left": {
+            "value": "RL",
+            "meaning": "From right to left"
+          }
+        },
+        "deps": {
+          "standard": "mermaid.Mermaid"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "down",
+              [
+                "n0 --> n1"
+              ]
+            ],
+            "output": [
+              "flowchart TB",
+              "  n0 --> n1"
+            ]
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            "down",
+            [
+              "n0 --> n1"
+            ]
+          ],
+          "expected": [
+            "flowchart TB",
+            "  n0 --> n1"
+          ],
+          "actual": [
+            "flowchart TB",
+            "  n0 --> n1"
+          ],
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "mermaid.Gantt",
+      "kind": "syntax",
+      "title": "Gantt chart",
+      "source": "src/mermaid.ts:200",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "Gantt: syntax, date format, axis format",
+        "url": "https://mermaid.js.org/syntax/gantt.html#syntax",
+        "constants": {
+          "keyword": {
+            "value": "gantt",
+            "meaning": "Opens a Gantt chart"
+          },
+          "dateFormat": {
+            "value": "dateFormat",
+            "meaning": "The format of the dates given to the tasks"
+          },
+          "axisFormat": {
+            "value": "axisFormat",
+            "meaning": "The format of the dates on the axis"
+          },
+          "title": {
+            "value": "title",
+            "meaning": "The title of the chart"
+          }
+        },
+        "deps": {
+          "standard": "mermaid.Mermaid"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "YYYY-MM-DD",
+              "%d.%m",
+              "Around 17 October 2026",
+              [
+                "section Deadlines"
+              ]
+            ],
+            "output": [
+              "gantt",
+              "  dateFormat YYYY-MM-DD",
+              "  axisFormat %d.%m",
+              "  title Around 17 October 2026",
+              "  section Deadlines"
+            ]
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            "YYYY-MM-DD",
+            "%d.%m",
+            "Around 17 October 2026",
+            [
+              "section Deadlines"
+            ]
+          ],
+          "expected": [
+            "gantt",
+            "  dateFormat YYYY-MM-DD",
+            "  axisFormat %d.%m",
+            "  title Around 17 October 2026",
+            "  section Deadlines"
+          ],
+          "actual": [
+            "gantt",
+            "  dateFormat YYYY-MM-DD",
+            "  axisFormat %d.%m",
+            "  title Around 17 October 2026",
+            "  section Deadlines"
+          ],
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "mermaid.GanttName",
+      "kind": "syntax",
+      "title": "Name in a Gantt chart",
+      "source": "src/mermaid.ts:223",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "Gantt: syntax (the name of a task comes before the colon)",
+        "url": "https://mermaid.js.org/syntax/gantt.html#syntax",
+        "constants": {
+          "colon": {
+            "value": ":",
+            "meaning": "Separates a name from its data: a name cannot contain one"
+          }
+        },
+        "deps": {
+          "standard": "mermaid.Mermaid"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "Review: committee"
+            ],
+            "output": "Review  committee"
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            "Review: committee"
+          ],
+          "expected": "Review  committee",
+          "actual": "Review  committee",
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "mermaid.GanttSection",
+      "kind": "syntax",
+      "title": "Section",
+      "source": "src/mermaid.ts:239",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "Gantt: sections",
+        "url": "https://mermaid.js.org/syntax/gantt.html#syntax",
+        "constants": {
+          "keyword": {
+            "value": "section",
+            "meaning": "Opens a section"
+          }
+        },
+        "deps": {
+          "standard": "mermaid.Mermaid",
+          "name": "mermaid.GanttName"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "Period: free",
+              [
+                "In force : 2026-01-01, 2026-12-31"
+              ]
+            ],
+            "output": [
+              "section Period  free",
+              "  In force : 2026-01-01, 2026-12-31"
+            ]
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            "Period: free",
+            [
+              "In force : 2026-01-01, 2026-12-31"
+            ]
+          ],
+          "expected": [
+            "section Period  free",
+            "  In force : 2026-01-01, 2026-12-31"
+          ],
+          "actual": [
+            "section Period  free",
+            "  In force : 2026-01-01, 2026-12-31"
+          ],
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "mermaid.GanttTask",
+      "kind": "syntax",
+      "title": "Task",
+      "source": "src/mermaid.ts:256",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "Gantt: task syntax",
+        "url": "https://mermaid.js.org/syntax/gantt.html#syntax",
+        "constants": {
+          "colon": {
+            "value": ":",
+            "meaning": "Separates the name of the task from its data"
+          },
+          "comma": {
+            "value": ",",
+            "meaning": "Separates the data"
+          }
+        },
+        "deps": {
+          "standard": "mermaid.Mermaid",
+          "name": "mermaid.GanttName"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "In force",
+              [
+                "2026-01-01",
+                "2026-12-31"
+              ]
+            ],
+            "output": "In force : 2026-01-01, 2026-12-31"
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            "In force",
+            [
+              "2026-01-01",
+              "2026-12-31"
+            ]
+          ],
+          "expected": "In force : 2026-01-01, 2026-12-31",
+          "actual": "In force : 2026-01-01, 2026-12-31",
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "mermaid.Mermaid",
+      "kind": "standard",
+      "title": "Mermaid",
+      "source": "src/mermaid.ts:11",
+      "fields": {
+        "owner": "trame",
+        "source": "Mermaid 11: flowcharts and Gantt charts",
+        "url": "https://mermaid.js.org/intro/syntax-reference.html",
+        "constants": {
+          "indent": {
+            "value": "  ",
+            "meaning": "Shifts a statement inside its block: Mermaid ignores it, it helps reading"
+          },
+          "space": {
+            "value": " ",
+            "meaning": "Separates a keyword from what it introduces"
+          },
+          "quote": {
+            "value": "\"",
+            "meaning": "Surrounds a label"
+          },
+          "language": {
+            "value": "mermaid",
+            "meaning": "The name of the language, in the info string of a code block that carries a diagram (GitHub, GitLab)"
+          }
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "mermaid.MermaidLabel",
+      "kind": "syntax",
+      "title": "Label",
+      "source": "src/mermaid.ts:29",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "Flowcharts: entity codes to escape characters",
+        "url": "https://mermaid.js.org/syntax/flowchart.html#entity-codes-to-escape-characters",
+        "constants": {
+          "entity": {
+            "value": "#quot;",
+            "meaning": "Replaces a quotation mark in a label"
+          }
+        },
+        "deps": {
+          "standard": "mermaid.Mermaid"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "The \"graph\""
+            ],
+            "output": "The #quot;graph#quot;"
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            "The \"graph\""
+          ],
+          "expected": "The #quot;graph#quot;",
+          "actual": "The #quot;graph#quot;",
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "mermaid.MermaidLink",
+      "kind": "syntax",
+      "title": "Link",
+      "source": "src/mermaid.ts:110",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "Flowcharts: links between nodes",
+        "url": "https://mermaid.js.org/syntax/flowchart.html#links-between-nodes",
+        "constants": {
+          "solid": {
+            "value": "-->",
+            "meaning": "Solid stroke, with an arrowhead"
+          },
+          "dotted": {
+            "value": "-.->",
+            "meaning": "Dotted stroke, with an arrowhead"
+          },
+          "dottedOpen": {
+            "value": "-.-",
+            "meaning": "Dotted stroke, without an arrowhead"
+          },
+          "thick": {
+            "value": "==>",
+            "meaning": "Thick stroke, with an arrowhead"
+          },
+          "bar": {
+            "value": "|",
+            "meaning": "Surrounds the text of the link"
+          }
+        },
+        "deps": {
+          "standard": "mermaid.Mermaid",
+          "label": "mermaid.MermaidLabel"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "n0",
+              "n1",
+              "dotted",
+              "Depends on"
+            ],
+            "output": "n0 -.->|Depends on| n1"
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            "n0",
+            "n1",
+            "dotted",
+            "Depends on"
+          ],
+          "expected": "n0 -.->|Depends on| n1",
+          "actual": "n0 -.->|Depends on| n1",
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "mermaid.MermaidNode",
+      "kind": "syntax",
+      "title": "Node",
+      "source": "src/mermaid.ts:68",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "Flowcharts: a node with text; styling: classes",
+        "url": "https://mermaid.js.org/syntax/flowchart.html#a-node-with-text",
+        "constants": {
+          "open": {
+            "value": "[",
+            "meaning": "Opens the rectangle shape"
+          },
+          "close": {
+            "value": "]",
+            "meaning": "Closes the rectangle shape"
+          },
+          "lineBreak": {
+            "value": "<br/>",
+            "meaning": "Starts a new line in a label"
+          },
+          "classMark": {
+            "value": ":::",
+            "meaning": "Attaches a class to the node"
+          }
+        },
+        "deps": {
+          "standard": "mermaid.Mermaid",
+          "label": "mermaid.MermaidLabel"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "n0",
+              [
+                "Palette",
+                "<small>Decision</small>"
+              ],
+              "held"
+            ],
+            "output": "n0[\"Palette<br/><small>Decision</small>\"]:::held"
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            "n0",
+            [
+              "Palette",
+              "<small>Decision</small>"
+            ],
+            "held"
+          ],
+          "expected": "n0[\"Palette<br/><small>Decision</small>\"]:::held",
+          "actual": "n0[\"Palette<br/><small>Decision</small>\"]:::held",
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "mermaid.Milestone",
+      "kind": "syntax",
+      "title": "Milestone",
+      "source": "src/mermaid.ts:275",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "Gantt: milestones",
+        "url": "https://mermaid.js.org/syntax/gantt.html#milestones",
+        "constants": {
+          "tag": {
+            "value": "milestone",
+            "meaning": "Makes the task a milestone"
+          },
+          "duration": {
+            "value": "0d",
+            "meaning": "No duration"
+          }
+        },
+        "deps": {
+          "standard": "mermaid.Mermaid",
+          "ganttTask": "mermaid.GanttTask"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "Review",
+              "2026-11-01"
+            ],
+            "output": "Review : milestone, 2026-11-01, 0d"
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            "Review",
+            "2026-11-01"
+          ],
+          "expected": "Review : milestone, 2026-11-01, 0d",
+          "actual": "Review : milestone, 2026-11-01, 0d",
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "mermaid.NodeStyle",
+      "kind": "syntax",
+      "title": "Node style",
+      "source": "src/mermaid.ts:179",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "Flowcharts: styling a node",
+        "url": "https://mermaid.js.org/syntax/flowchart.html#styling-a-node",
+        "constants": {
+          "keyword": {
+            "value": "style",
+            "meaning": "Gives a style to nodes"
+          },
+          "comma": {
+            "value": ",",
+            "meaning": "Separates the identifiers of the nodes"
+          }
+        },
+        "deps": {
+          "standard": "mermaid.Mermaid",
+          "styleProperties": "mermaid.StyleProperties"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              [
+                "n1",
+                "n2"
+              ],
+              {
+                "dashes": "4 3"
+              }
+            ],
+            "output": "style n1,n2 stroke-dasharray:4 3"
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            [
+              "n1",
+              "n2"
+            ],
+            {
+              "dashes": "4 3"
+            }
+          ],
+          "expected": "style n1,n2 stroke-dasharray:4 3",
+          "actual": "style n1,n2 stroke-dasharray:4 3",
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "mermaid.StyleProperties",
+      "kind": "syntax",
+      "title": "Style properties",
+      "source": "src/mermaid.ts:135",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "Flowcharts: styling and classes",
+        "url": "https://mermaid.js.org/syntax/flowchart.html#styling-and-classes",
+        "constants": {
+          "colon": {
+            "value": ":",
+            "meaning": "Separates the name of a property from its value"
+          },
+          "comma": {
+            "value": ",",
+            "meaning": "Separates two properties"
+          },
+          "fill": {
+            "value": "fill",
+            "meaning": "The background colour"
+          },
+          "stroke": {
+            "value": "stroke",
+            "meaning": "The outline colour"
+          },
+          "textColour": {
+            "value": "color",
+            "meaning": "The colour of the text"
+          },
+          "dashes": {
+            "value": "stroke-dasharray",
+            "meaning": "A dashed outline: the length of a dash, then of the gap"
+          },
+          "opacity": {
+            "value": "opacity",
+            "meaning": "The opacity, from 0 (invisible) to 1"
+          }
+        },
+        "deps": {
+          "standard": "mermaid.Mermaid"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              {
+                "fill": "#ffffff",
+                "stroke": "#5a6672"
+              }
+            ],
+            "output": "fill:#ffffff,stroke:#5a6672"
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            {
+              "fill": "#ffffff",
+              "stroke": "#5a6672"
+            }
+          ],
+          "expected": "fill:#ffffff,stroke:#5a6672",
+          "actual": "fill:#ffffff,stroke:#5a6672",
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "mermaid.Subgraph",
+      "kind": "syntax",
+      "title": "Subgraph",
+      "source": "src/mermaid.ts:89",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "Flowcharts: subgraphs",
+        "url": "https://mermaid.js.org/syntax/flowchart.html#subgraphs",
+        "constants": {
+          "start": {
+            "value": "subgraph",
+            "meaning": "Opens the group"
+          },
+          "end": {
+            "value": "end",
+            "meaning": "Closes the group"
+          },
+          "open": {
+            "value": "[",
+            "meaning": "Opens the title"
+          },
+          "close": {
+            "value": "]",
+            "meaning": "Closes the title"
+          }
+        },
+        "deps": {
+          "standard": "mermaid.Mermaid",
+          "label": "mermaid.MermaidLabel"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "engine",
+              "Trame · Engine",
+              [
+                "n0"
+              ]
+            ],
+            "output": [
+              "subgraph engine[\"Trame · Engine\"]",
+              "  n0",
+              "end"
+            ]
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            "engine",
+            "Trame · Engine",
+            [
+              "n0"
+            ]
+          ],
+          "expected": [
+            "subgraph engine[\"Trame · Engine\"]",
+            "  n0",
+            "end"
+          ],
+          "actual": [
+            "subgraph engine[\"Trame · Engine\"]",
+            "  n0",
+            "end"
+          ],
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
       "id": "packages.ContinuousIntegration",
       "kind": "package",
       "title": "The library of continuous integration",
@@ -127,9 +2713,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "130",
+        "version": "131",
         "joins": "language",
-        "at": "../../generations/g130"
+        "at": "../../generations/g131"
       },
       "diagnostics": []
     },
@@ -156,9 +2742,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.29.1",
+        "version": "0.30.0",
         "joins": "library",
-        "at": "../../std/releases/0.29.1"
+        "at": "../../std/releases/0.30.0"
       },
       "diagnostics": []
     },
@@ -203,10 +2789,804 @@
       "diagnostics": []
     },
     {
+      "id": "releases.R0_2_0",
+      "kind": "release",
+      "title": "Version 0.2.0",
+      "source": "src/releases.ts:38",
+      "fields": {
+        "owner": "trame",
+        "version": "0.2.0",
+        "date": "2026-11-27",
+        "what": "The renderers: one walk given a syntax, Markdown with Mermaid for files, text for the terminal, the common rendering and its words, the syntax elements of Markdown, Mermaid, the terminal and HTML, the format decisions and the palette",
+        "fingerprint": "85e5bed88e2c5ef3",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "rendering.Common",
+      "kind": "function",
+      "title": "Common rendering",
+      "source": "src/rendering.ts:112",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "values": "std/algebra.ValueTypes",
+          "syntax": "std/engine.ReferenceSyntax",
+          "slots": "rendering.SentenceSlots",
+          "dates": "language.Dates",
+          "lists": "language.Lists",
+          "texts": "std/algebra.Texts",
+          "messages": "rendering.RenderingMessages",
+          "units": "language.Units"
+        },
+        "body": {
+          "file": "./code/rendering/common.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "rendering.FileFigures",
+      "kind": "port",
+      "title": "Figures of the documents written as files",
+      "source": "src/rendering.ts:239",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": []
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "rendering.FileRendering",
+      "kind": "function",
+      "title": "Rendering of the files",
+      "source": "src/rendering.ts:339",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "rendering": "rendering.Rendering",
+          "syntax": "rendering.FileSyntax"
+        },
+        "body": "(function)"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "rendering.FileSyntax",
+      "kind": "port",
+      "title": "Syntax of the documents written as files",
+      "source": "src/rendering.ts:228",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": []
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "rendering.MarkdownSyntax",
+      "kind": "function",
+      "title": "Markdown writer",
+      "source": "src/rendering.ts:289",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "figures": "rendering.FileFigures",
+          "textRendering": "rendering.TextRendering",
+          "punctuation": "language.Punctuation",
+          "blocks": "markdown.Blocks",
+          "heading": "markdown.Heading",
+          "listItem": "markdown.ListItem",
+          "blockQuote": "markdown.BlockQuote",
+          "codeBlock": "markdown.CodeBlock",
+          "emphasis": "markdown.Emphasis",
+          "strong": "markdown.StrongEmphasis",
+          "codeSpan": "markdown.CodeSpan",
+          "link": "markdown.Link",
+          "relativeReference": "markdown.RelativeReference",
+          "tableCell": "markdown.TableCell",
+          "table": "markdown.Table",
+          "anchor": "markdown.Anchor",
+          "details": "markdown.Details",
+          "counts": "std/algebra.Counts",
+          "texts": "std/algebra.Texts",
+          "messages": "rendering.RenderingMessages"
+        },
+        "body": {
+          "file": "./code/rendering/markdown.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "rendering.MermaidDiagrams",
+      "kind": "function",
+      "title": "Mermaid diagrams",
+      "source": "src/rendering.ts:253",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "mermaid": "mermaid.Mermaid",
+          "figures": "rendering.MermaidFigures",
+          "palette": "appearance.Palette",
+          "small": "markdown.Small",
+          "flowchart": "mermaid.Flowchart",
+          "node": "mermaid.MermaidNode",
+          "subgraph": "mermaid.Subgraph",
+          "link": "mermaid.MermaidLink",
+          "classDefinition": "mermaid.ClassDefinition",
+          "nodeStyle": "mermaid.NodeStyle",
+          "gantt": "mermaid.Gantt",
+          "ganttSection": "mermaid.GanttSection",
+          "ganttTask": "mermaid.GanttTask",
+          "milestone": "mermaid.Milestone",
+          "counts": "std/algebra.Counts",
+          "dates": "language.Dates",
+          "messages": "rendering.RenderingMessages"
+        },
+        "body": {
+          "file": "./code/rendering/mermaid.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "rendering.MermaidFigures",
+      "kind": "decision",
+      "title": "How Mermaid figures are drawn",
+      "source": "src/rendering.ts:81",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "idPrefix": "n",
+          "directions": {
+            "layers": "down",
+            "tree": "down",
+            "path": "right"
+          },
+          "strokes": {
+            "computed": "dottedOpen",
+            "inferred": "dotted",
+            "winner": "thick",
+            "support": "thick",
+            "other": "solid"
+          },
+          "defaultStatus": "neutral",
+          "history": {
+            "dashes": "4 3"
+          },
+          "inactive": {
+            "opacity": "0.5"
+          },
+          "gantt": {
+            "dateFormat": "YYYY-MM-DD",
+            "axisFormat": "%d.%m",
+            "milestones": [
+              "deadline",
+              "review"
+            ]
+          }
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "rendering.OneRendererManySyntaxes",
+      "kind": "adr",
+      "title": "One renderer, its syntax a choice",
+      "source": "src/rendering.ts:362",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "Markdown, the terminal and the page each had their renderer: three walks of the same blocks, three ways of saying a status or an overlap, and the page's outside the graph.",
+        "consequences": "The words of a document are said once, by the renderer; a new format is a realization of a syntax port and a choice, without touching the renderer. Syntax and figures vary apart: Markdown with figures as text is two choices, not a new renderer. A project that declares a port of its own for another audience (Trame's page) gives the same renderer its syntax.",
+        "rejected": {
+          "A renderer per format": "the walk and the words repeated, and drifting",
+          "Figures in each syntax": "a syntax and a way of drawing tied together, which no longer vary apart"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "rendering.PlainTextSyntax",
+      "kind": "function",
+      "title": "Plain text writer",
+      "source": "src/rendering.ts:308",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "figures": "rendering.TerminalFigures",
+          "layout": "text.TerminalText",
+          "columns": "text.TerminalColumns",
+          "punctuation": "language.Punctuation",
+          "cell": "text.PaddedCell",
+          "table": "text.Columns",
+          "item": "text.ItemLine",
+          "code": "text.CodeLines",
+          "lines": "text.TerminalLines",
+          "counts": "std/algebra.Counts",
+          "texts": "std/algebra.Texts",
+          "messages": "rendering.RenderingMessages"
+        },
+        "body": {
+          "file": "./code/rendering/text.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "rendering.Rendering",
+      "kind": "function",
+      "title": "The renderer",
+      "source": "src/rendering.ts:328",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "common": "rendering.Common",
+          "values": "std/algebra.ValueTypes",
+          "texts": "std/algebra.Texts",
+          "counts": "std/algebra.Counts",
+          "messages": "rendering.RenderingMessages"
+        },
+        "body": {
+          "file": "./code/rendering/document.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "rendering.RenderingMessages",
+      "kind": "catalog",
+      "title": "Words of the renderers",
+      "source": "src/rendering.ts:102",
+      "fields": {
+        "owner": "trame",
+        "messages": {
+          "file": "./code/rendering/messages.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "rendering.SentenceSlots",
+      "kind": "decision",
+      "title": "Places in a sentence",
+      "source": "src/rendering.ts:43",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "delimiter": "\u0000"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "rendering.TerminalFigures",
+      "kind": "port",
+      "title": "Figures of the terminal",
+      "source": "src/rendering.ts:244",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": []
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "rendering.TerminalRendering",
+      "kind": "function",
+      "title": "Rendering in the terminal",
+      "source": "src/rendering.ts:350",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "rendering": "rendering.Rendering",
+          "syntax": "rendering.TerminalSyntax"
+        },
+        "body": "(function)"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "rendering.TerminalSyntax",
+      "kind": "port",
+      "title": "Syntax of the terminal",
+      "source": "src/rendering.ts:234",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": []
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "rendering.TextFigures",
+      "kind": "function",
+      "title": "Figures as text",
+      "source": "src/rendering.ts:271",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "common": "rendering.Common",
+          "columns": "text.TerminalColumns",
+          "punctuation": "language.Punctuation",
+          "cell": "text.PaddedCell",
+          "table": "text.Columns",
+          "branch": "text.TreeBranch",
+          "step": "text.PathStep",
+          "dates": "language.Dates",
+          "counts": "std/algebra.Counts",
+          "sequences": "std/algebra.Sequences",
+          "texts": "std/algebra.Texts",
+          "messages": "rendering.RenderingMessages"
+        },
+        "body": {
+          "file": "./code/rendering/text-figures.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "rendering.TextRendering",
+      "kind": "decision",
+      "title": "Heading levels of Markdown documents",
+      "source": "src/rendering.ts:50",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "titleLevel": 1,
+          "sectionLevel": 2
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "samples.SampleDocuments",
+      "kind": "decision",
+      "title": "The documents the scenarios render",
+      "source": "src/samples.ts:15",
+      "fields": {
+        "owner": "trame",
+        "value": [
+          {
+            "id": "index",
+            "view": "index",
+            "group": "summary",
+            "title": "A small project",
+            "file": "docs/index.md",
+            "intro": [
+              "What the project is for: ",
+              {
+                "t": "ref",
+                "ref": "product.Fast",
+                "title": "Reservations answered fast"
+              },
+              "."
+            ],
+            "blocks": [
+              {
+                "type": "summary",
+                "content": [
+                  "1 goal, 1 requirement · ",
+                  {
+                    "t": "status",
+                    "status": "held"
+                  }
+                ]
+              },
+              {
+                "type": "section",
+                "title": "What it holds",
+                "id": "holds",
+                "blocks": [
+                  {
+                    "type": "para",
+                    "content": [
+                      "Decided ",
+                      {
+                        "t": "value",
+                        "value": 15,
+                        "unit": "min",
+                        "shownAs": "15 min"
+                      },
+                      ", open ",
+                      {
+                        "t": "value",
+                        "value": null,
+                        "open": "undecided"
+                      },
+                      ", by ",
+                      {
+                        "t": "person",
+                        "name": "karim"
+                      },
+                      " on ",
+                      {
+                        "t": "date",
+                        "date": "2026-11-26"
+                      },
+                      ", in ",
+                      {
+                        "t": "ident",
+                        "text": "src/product.ts:12"
+                      },
+                      "; see ",
+                      {
+                        "t": "doc",
+                        "id": "product",
+                        "title": "Product"
+                      },
+                      " and ",
+                      {
+                        "t": "file",
+                        "path": "src/product.ts",
+                        "title": "its sources"
+                      },
+                      " (",
+                      {
+                        "t": "severity",
+                        "severity": "warning"
+                      },
+                      ")."
+                    ]
+                  },
+                  {
+                    "type": "facts",
+                    "items": [
+                      {
+                        "label": "Owner",
+                        "value": [
+                          {
+                            "t": "person",
+                            "name": "karim"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "Since",
+                        "value": [
+                          {
+                            "t": "date",
+                            "date": "2026-10-30"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "list",
+                    "items": [
+                      [
+                        "A goal"
+                      ],
+                      [
+                        "A requirement that refines it"
+                      ]
+                    ]
+                  },
+                  {
+                    "type": "table",
+                    "head": [
+                      "Node",
+                      "Status"
+                    ],
+                    "rows": [
+                      [
+                        [
+                          {
+                            "t": "ref",
+                            "ref": "product.Fast",
+                            "title": "Reservations answered fast"
+                          }
+                        ],
+                        [
+                          {
+                            "t": "status",
+                            "status": "held"
+                          }
+                        ]
+                      ]
+                    ]
+                  },
+                  {
+                    "type": "code",
+                    "lang": "ts",
+                    "text": "export const Fast = goal({ owner: \"karim\" })",
+                    "source": "src/product.ts:3"
+                  },
+                  {
+                    "type": "checks",
+                    "title": [
+                      "Criteria of ",
+                      {
+                        "t": "ref",
+                        "ref": "product.Answered",
+                        "title": "Answered in time"
+                      }
+                    ],
+                    "items": [
+                      {
+                        "name": "An answer within the minute",
+                        "outcome": "passed"
+                      },
+                      {
+                        "name": "A late answer refused",
+                        "outcome": "failed",
+                        "detail": [
+                          "took 2 min"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "validity",
+                    "state": "in force",
+                    "from": "2026-10-01",
+                    "until": "2026-12-31"
+                  },
+                  {
+                    "type": "details",
+                    "summary": "The code",
+                    "blocks": [
+                      {
+                        "type": "code",
+                        "lang": "ts",
+                        "text": "const x = 1",
+                        "source": "src/product.ts:9"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "issues",
+                "items": [
+                  {
+                    "severity": "error",
+                    "code": "literal-in-body",
+                    "what": "A literal in a body",
+                    "where": {
+                      "ref": "product.Answered",
+                      "title": "Answered in time"
+                    },
+                    "source": "src/product.ts:14",
+                    "owner": "karim"
+                  },
+                  {
+                    "severity": "error",
+                    "raisedFrom": "warning",
+                    "what": "Nothing applies it yet",
+                    "where": "the graph",
+                    "owner": "lea",
+                    "effect": "a wish"
+                  }
+                ]
+              },
+              {
+                "type": "figure",
+                "caption": "The layers of the graph",
+                "figure": {
+                  "type": "graph",
+                  "shape": "layers",
+                  "nodes": [
+                    {
+                      "ref": "product.Fast",
+                      "title": "Reservations answered fast",
+                      "kind": "goal",
+                      "kindLabel": "Goal",
+                      "module": "product",
+                      "status": "held",
+                      "active": true,
+                      "history": false,
+                      "root": true,
+                      "repealed": false,
+                      "open": false,
+                      "layer": 0
+                    },
+                    {
+                      "ref": "product.Answered",
+                      "title": "Answered in time",
+                      "kind": "requirement",
+                      "kindLabel": "Requirement",
+                      "module": "product",
+                      "status": "violated",
+                      "active": true,
+                      "history": false,
+                      "root": false,
+                      "repealed": false,
+                      "open": true,
+                      "layer": 1
+                    }
+                  ],
+                  "edges": [
+                    {
+                      "from": "product.Answered",
+                      "to": "product.Fast",
+                      "label": "refines",
+                      "inverse": "refined by",
+                      "nature": "declared",
+                      "active": true
+                    }
+                  ],
+                  "groups": [
+                    {
+                      "id": "product",
+                      "label": "Product"
+                    }
+                  ]
+                }
+              },
+              {
+                "type": "figure",
+                "caption": "When it holds",
+                "figure": {
+                  "type": "timeline",
+                  "today": "2026-11-26",
+                  "from": "2026-10-01",
+                  "to": "2026-12-31",
+                  "lanes": [
+                    {
+                      "ref": "product.Answered",
+                      "title": "Answered in time",
+                      "kindLabel": "Requirement",
+                      "module": "product",
+                      "active": true,
+                      "periods": [
+                        {
+                          "from": "2026-10-01",
+                          "until": "2026-12-31"
+                        }
+                      ],
+                      "marks": [
+                        {
+                          "date": "2026-12-15",
+                          "label": "Reviewed",
+                          "role": "review"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "id": "product",
+            "view": "module",
+            "group": "module",
+            "title": "Product",
+            "file": "docs/product.md",
+            "blocks": [
+              {
+                "type": "card",
+                "ref": "product.Fast",
+                "id": "Fast",
+                "title": "Reservations answered fast",
+                "module": "product",
+                "kind": "goal",
+                "kindLabel": "Goal",
+                "source": "src/product.ts:3",
+                "status": "held",
+                "history": false,
+                "active": true,
+                "description": "A person who reserves knows at once.",
+                "body": [
+                  {
+                    "type": "para",
+                    "content": [
+                      "Back to ",
+                      {
+                        "t": "doc",
+                        "id": "index",
+                        "title": "the summary"
+                      },
+                      "."
+                    ]
+                  }
+                ],
+                "facts": [
+                  {
+                    "label": "Decided by",
+                    "value": [
+                      {
+                        "t": "person",
+                        "name": "karim"
+                      }
+                    ]
+                  }
+                ],
+                "links": [
+                  {
+                    "label": "refined by",
+                    "nature": "declared",
+                    "active": true,
+                    "targets": [
+                      {
+                        "ref": "product.Answered",
+                        "title": "Answered in time"
+                      }
+                    ]
+                  }
+                ],
+                "resolutions": [],
+                "children": [
+                  {
+                    "ref": "product.Answered",
+                    "body": [
+                      {
+                        "type": "para",
+                        "content": [
+                          "Within the minute."
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "views": []
+              }
+            ]
+          }
+        ]
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "scenarios.DocumentsRendered",
+      "kind": "scenario",
+      "title": "The documents, rendered",
+      "source": "src/scenarios.ts:355",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "files": "rendering.FileRendering",
+          "terminal": "rendering.TerminalRendering",
+          "common": "rendering.Common",
+          "samples": "samples.SampleDocuments",
+          "expected": "scenarios.ExpectedDocuments",
+          "text": "std/text.TextFile",
+          "checks": "scenarios.ScenarioWords"
+        },
+        "body": "(function)"
+      },
+      "result": [
+        {
+          "name": "A small project, written as a file, reads as expected",
+          "status": "passed"
+        },
+        {
+          "name": "A small project, printed at a terminal, reads as expected",
+          "status": "passed"
+        },
+        {
+          "name": "Product, written as a file, reads as expected",
+          "status": "passed"
+        },
+        {
+          "name": "Product, printed at a terminal, reads as expected",
+          "status": "passed"
+        }
+      ],
+      "diagnostics": []
+    },
+    {
       "id": "scenarios.Expected",
       "kind": "decision",
       "title": "What the scenarios read and expect",
-      "source": "src/scenarios.ts:60",
+      "source": "src/scenarios.ts:64",
       "fields": {
         "owner": "trame",
         "value": {
@@ -248,10 +3628,205 @@
       "diagnostics": []
     },
     {
+      "id": "scenarios.ExpectedDocuments",
+      "kind": "decision",
+      "title": "What the scenarios expect",
+      "source": "src/scenarios.ts:201",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "files": {
+            "index": [
+              "# A small project",
+              "",
+              "*What the project is for: [Reservations answered fast](product.md#Fast).*",
+              "",
+              "> **1 goal, 1 requirement · **held****",
+              "",
+              "<a id=\"holds\"></a>",
+              "",
+              "## What it holds",
+              "",
+              "Decided 15 min, open **to be decided**, by karim on 26 November 2026, in `src/product.ts:12`; see [Product](product.md) and [its sources](../src/product.ts) (warning).",
+              "",
+              "- Owner: karim",
+              "- Since: 30 October 2026",
+              "",
+              "- A goal",
+              "- A requirement that refines it",
+              "",
+              "| Node | Status |",
+              "|---|---|",
+              "| [Reservations answered fast](product.md#Fast) | **held** |",
+              "",
+              "```ts",
+              "export const Fast = goal({ owner: \"karim\" })",
+              "```",
+              "",
+              "**Criteria of [Answered in time](product.md#Answered)**",
+              "",
+              "| Criterion | Result |",
+              "|---|---|",
+              "| An answer within the minute | passed |",
+              "| A late answer refused | **failed**: took 2 min |",
+              "",
+              "**In force** since 1 October 2026, until 31 December 2026",
+              "",
+              "<details><summary>The code</summary>",
+              "",
+              "```ts",
+              "const x = 1",
+              "```",
+              "",
+              "</details>",
+              "",
+              "| Severity | Code | What | Where | Owner | Consequence |",
+              "|---|---|---|---|---|---|",
+              "| error | `literal-in-body` | A literal in a body | [Answered in time](product.md#Answered) | karim |  |",
+              "| error, raised from warning |  | Nothing applies it yet | the graph | lea | a wish |",
+              "",
+              "```mermaid",
+              "flowchart TB",
+              "  n0[\"Reservations answered fast<br/><small>Goal</small>\"]:::held",
+              "  n1[\"Answered in time<br/><small>Requirement</small>\"]:::violated",
+              "  n1 -->|refines| n0",
+              "  classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a",
+              "  classDef blocked fill:#fbf0d9,stroke:#9a6200,color:#17202a",
+              "  classDef violated fill:#f9e3e1,stroke:#ad2a22,color:#17202a",
+              "  classDef unknown fill:#e9edf0,stroke:#65707c,color:#17202a",
+              "  classDef neutral fill:#ffffff,stroke:#5a6672,color:#17202a",
+              "```",
+              "",
+              "*The layers of the graph*",
+              "",
+              "```mermaid",
+              "gantt",
+              "  dateFormat YYYY-MM-DD",
+              "  axisFormat %d.%m",
+              "  title Around 26 November 2026",
+              "  section Answered in time",
+              "    In force : 2026-10-01, 2026-12-31",
+              "    Reviewed : milestone, 2026-12-15, 0d",
+              "  section Date of the graph",
+              "    26 November 2026 : milestone, 2026-11-26, 0d",
+              "```",
+              "",
+              "*When it holds*",
+              ""
+            ],
+            "product": [
+              "# Product",
+              "",
+              "<a id=\"Fast\"></a>",
+              "",
+              "## Reservations answered fast",
+              "",
+              "`Fast` · `src/product.ts:3` · status: **held**",
+              "",
+              "A person who reserves knows at once.",
+              "",
+              "Back to [the summary](index.md).",
+              "",
+              "- Decided by: karim",
+              "- refined by: [Answered in time](#Answered)",
+              "",
+              "<a id=\"Answered\"></a>",
+              "",
+              "Within the minute.",
+              ""
+            ]
+          },
+          "terminal": {
+            "index": [
+              "A small project",
+              "What the project is for: Reservations answered fast.",
+              "1 goal, 1 requirement · held",
+              "",
+              "what it holds",
+              "  Decided 15 min, open to be decided, by karim on 26 November 2026, in src/product.ts:12; see Product and its sources (src/product.ts) (warning).",
+              "  Owner  karim",
+              "  Since  30 October 2026",
+              "  - A goal",
+              "  - A requirement that refines it",
+              "  NODE                        STATUS",
+              "  Reservations answered fast  held",
+              "      export const Fast = goal({ owner: \"karim\" })",
+              "  Criteria of Answered in time",
+              "    passed  An answer within the minute",
+              "    failed  A late answer refused (took 2 min)",
+              "  In force since 1 October 2026, until 31 December 2026",
+              "  The code",
+              "        const x = 1",
+              "error          literal-in-body               src/product.ts:14     A literal in a body · karim",
+              "error, raised from warning Nothing applies it yet · lea · a wish",
+              "rank 0   Reservations answered fast",
+              "rank 1   Answered in time",
+              "1 October 2026    start              Answered in time",
+              "26 November 2026  date of the graph",
+              "15 December 2026  reviewed           Answered in time",
+              "31 December 2026  end                Answered in time",
+              ""
+            ],
+            "product": [
+              "Product",
+              "Reservations answered fast",
+              "  goal · Fast · src/product.ts:3 · status held",
+              "  Back to the summary.",
+              "  Decided by  karim",
+              "  refined by  Answered in time",
+              "  Within the minute.",
+              ""
+            ]
+          }
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "scenarios.FiguresInMermaid",
+      "kind": "binding",
+      "title": "Figures in Mermaid",
+      "source": "src/scenarios.ts:149",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "The scenarios play the figures of files the library offers."
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "scenarios.FilesInMarkdown",
+      "kind": "binding",
+      "title": "Files in Markdown",
+      "source": "src/scenarios.ts:136",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "The scenarios play the syntax of files the library offers."
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "scenarios.HowTheScenariosRender",
+      "kind": "adr",
+      "title": "The scenarios render as a project does",
+      "source": "src/scenarios.ts:375",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "A renderer is held to the intermediate format, not to a graph: what a view gives, whatever the project.",
+        "consequences": "A change of the renderers shows in the expected documents, line by line, as a review of the documents of a project would show it.",
+        "rejected": {
+          "A project compiled and its documents rendered": "the views would be played again here, and the API gives no documents yet"
+        }
+      },
+      "diagnostics": []
+    },
+    {
       "id": "scenarios.InTheScenariosLanguage",
       "kind": "binding",
       "title": "The scenarios' language",
-      "source": "src/scenarios.ts:46",
+      "source": "src/scenarios.ts:50",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -260,10 +3835,22 @@
       "diagnostics": []
     },
     {
+      "id": "scenarios.LanguagesRead",
+      "kind": "binding",
+      "title": "Read by the engine",
+      "source": "src/scenarios.ts:188",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "Reading a language is the engine's: the grammar and its reader are the engine's packages, which no library carries."
+      },
+      "diagnostics": []
+    },
+    {
       "id": "scenarios.LanguageWritten",
       "kind": "scenario",
       "title": "The language of the documents, written",
-      "source": "src/scenarios.ts:94",
+      "source": "src/scenarios.ts:100",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -302,7 +3889,7 @@
       "id": "scenarios.ScenarioLanguage",
       "kind": "decision",
       "title": "The language of the scenarios",
-      "source": "src/scenarios.ts:24",
+      "source": "src/scenarios.ts:28",
       "fields": {
         "owner": "trame",
         "value": {
@@ -326,7 +3913,7 @@
       "id": "scenarios.ScenarioWords",
       "kind": "catalog",
       "title": "What the scenarios check",
-      "source": "src/scenarios.ts:78",
+      "source": "src/scenarios.ts:82",
       "fields": {
         "owner": "trame",
         "messages": "(function)"
@@ -334,10 +3921,34 @@
       "diagnostics": []
     },
     {
+      "id": "scenarios.TerminalFiguresAsText",
+      "kind": "binding",
+      "title": "Figures at a terminal, as text",
+      "source": "src/scenarios.ts:175",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "The scenarios play the figures of the terminal the library offers."
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "scenarios.TerminalInText",
+      "kind": "binding",
+      "title": "The terminal in text",
+      "source": "src/scenarios.ts:162",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "The scenarios play the syntax of the terminal the library offers."
+      },
+      "diagnostics": []
+    },
+    {
       "id": "scenarios.Test",
       "kind": "environment",
       "title": "Test",
-      "source": "src/scenarios.ts:18",
+      "source": "src/scenarios.ts:22",
       "fields": {
         "owner": "trame",
         "evaluates": true
@@ -348,7 +3959,7 @@
       "id": "scenarios.TheEnginesLanguage",
       "kind": "adr",
       "title": "The documents speak the engine's language",
-      "source": "src/scenarios.ts:115",
+      "source": "src/scenarios.ts:121",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -364,7 +3975,7 @@
       "id": "scenarios.WrittenForTheScenarios",
       "kind": "function",
       "title": "Written in the language of the scenarios",
-      "source": "src/scenarios.ts:36",
+      "source": "src/scenarios.ts:40",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -419,8 +4030,23 @@
             "obligation": "sdlc.CodeVerified"
           },
           {
+            "node": "scenarios.DocumentsRendered",
+            "via": "rendering.Common",
+            "obligation": "sdlc.CodeVerified"
+          },
+          {
             "node": "scenarios.TheEnginesLanguage",
             "via": "language.Dates",
+            "obligation": "sdlc.DecisionsApplied"
+          },
+          {
+            "node": "rendering.OneRendererManySyntaxes",
+            "via": "rendering.FileRendering",
+            "obligation": "sdlc.DecisionsApplied"
+          },
+          {
+            "node": "scenarios.HowTheScenariosRender",
+            "via": "scenarios.FiguresInMermaid",
             "obligation": "sdlc.DecisionsApplied"
           }
         ],
@@ -428,6 +4054,14 @@
         "preceded": [],
         "reached": [
           "sdlc.TheLibrary",
+          "appearance.Palette",
+          "html.EscapedText",
+          "html.HtmlAttributes",
+          "html.HtmlElement",
+          "html.HtmlEndTag",
+          "html.HtmlHeading",
+          "html.HtmlStartTag",
+          "html.SelfClosingTag",
           "language.Dates",
           "language.DocumentLanguage",
           "language.Lists",
@@ -435,16 +4069,77 @@
           "language.Punctuation",
           "language.Units",
           "language.WordsLanguage",
+          "markdown.Anchor",
+          "markdown.BacktickString",
+          "markdown.BlankLine",
+          "markdown.BlockQuote",
+          "markdown.Blocks",
+          "markdown.CodeBlock",
+          "markdown.CodeSpan",
+          "markdown.CommonMark",
+          "markdown.Details",
+          "markdown.Emphasis",
+          "markdown.Gfm",
+          "markdown.Heading",
+          "markdown.Link",
+          "markdown.ListItem",
+          "markdown.RelativeReference",
+          "markdown.Small",
+          "markdown.StrongEmphasis",
+          "markdown.Table",
+          "markdown.TableCell",
+          "markdown.TableDelimiterRow",
+          "markdown.TableRow",
+          "mermaid.ClassDefinition",
+          "mermaid.Flowchart",
+          "mermaid.Gantt",
+          "mermaid.GanttName",
+          "mermaid.GanttSection",
+          "mermaid.GanttTask",
+          "mermaid.Mermaid",
+          "mermaid.MermaidLabel",
+          "mermaid.MermaidLink",
+          "mermaid.MermaidNode",
+          "mermaid.Milestone",
+          "mermaid.NodeStyle",
+          "mermaid.StyleProperties",
+          "mermaid.Subgraph",
           "packages.ContinuousIntegration",
           "packages.Language",
           "packages.People",
           "packages.StandardLibrary",
           "product.RenderedOnce",
+          "rendering.Common",
+          "rendering.FileFigures",
+          "rendering.FileRendering",
+          "rendering.FileSyntax",
+          "rendering.MarkdownSyntax",
+          "rendering.MermaidDiagrams",
+          "rendering.MermaidFigures",
+          "rendering.OneRendererManySyntaxes",
+          "rendering.PlainTextSyntax",
+          "rendering.Rendering",
+          "rendering.RenderingMessages",
+          "rendering.SentenceSlots",
+          "rendering.TerminalFigures",
+          "rendering.TerminalRendering",
+          "rendering.TerminalSyntax",
+          "rendering.TextFigures",
+          "rendering.TextRendering",
+          "samples.SampleDocuments",
+          "scenarios.DocumentsRendered",
           "scenarios.Expected",
+          "scenarios.ExpectedDocuments",
+          "scenarios.FiguresInMermaid",
+          "scenarios.FilesInMarkdown",
+          "scenarios.HowTheScenariosRender",
           "scenarios.InTheScenariosLanguage",
+          "scenarios.LanguagesRead",
           "scenarios.LanguageWritten",
           "scenarios.ScenarioLanguage",
           "scenarios.ScenarioWords",
+          "scenarios.TerminalFiguresAsText",
+          "scenarios.TerminalInText",
           "scenarios.Test",
           "scenarios.TheEnginesLanguage",
           "scenarios.WrittenForTheScenarios",
@@ -456,7 +4151,17 @@
           "sdlc.PullRequestWorkflow",
           "sdlc.RequirementsServed",
           "sdlc.RunnersWritten",
-          "sdlc.VersionMode"
+          "sdlc.VersionMode",
+          "text.BoxDrawing",
+          "text.CodeLines",
+          "text.Columns",
+          "text.ItemLine",
+          "text.PaddedCell",
+          "text.PathStep",
+          "text.TerminalColumns",
+          "text.TerminalLines",
+          "text.TerminalText",
+          "text.TreeBranch"
         ]
       },
       "diagnostics": [
@@ -564,7 +4269,7 @@
       },
       "result": {
         "path": "src",
-        "code": "5e39e664"
+        "code": "9a384a24"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -579,9 +4284,686 @@
         "owner": "trame"
       },
       "diagnostics": []
+    },
+    {
+      "id": "text.BoxDrawing",
+      "kind": "standard",
+      "title": "Box drawing",
+      "source": "src/text.ts:47",
+      "fields": {
+        "owner": "trame",
+        "source": "The Unicode Standard, Version 15.1, code chart Box Drawing (U+2500 to U+257F)",
+        "url": "https://www.unicode.org/charts/PDF/U2500.pdf",
+        "constants": {
+          "vertical": {
+            "value": "│",
+            "meaning": "U+2502 BOX DRAWINGS LIGHT VERTICAL: a line that goes on below"
+          },
+          "verticalAndRight": {
+            "value": "├",
+            "meaning": "U+251C BOX DRAWINGS LIGHT VERTICAL AND RIGHT: a branch, with others below it"
+          },
+          "upAndRight": {
+            "value": "└",
+            "meaning": "U+2514 BOX DRAWINGS LIGHT UP AND RIGHT: the last branch, or a step under the one before"
+          }
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "text.CodeLines",
+      "kind": "syntax",
+      "title": "Code lines",
+      "source": "src/text.ts:126",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "Code",
+        "constants": {
+          "margin": {
+            "value": "    ",
+            "meaning": "Four spaces before each line: two steps of indentation"
+          }
+        },
+        "deps": {
+          "standard": "text.TerminalText",
+          "file": "std/text.TextFile"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "  ",
+              "const a = 1\nexport default a"
+            ],
+            "output": [
+              "      const a = 1",
+              "      export default a"
+            ]
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            "  ",
+            "const a = 1\nexport default a"
+          ],
+          "expected": [
+            "      const a = 1",
+            "      export default a"
+          ],
+          "actual": [
+            "      const a = 1",
+            "      export default a"
+          ],
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "text.Columns",
+      "kind": "syntax",
+      "title": "Columns",
+      "source": "src/text.ts:84",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "Columns",
+        "constants": {},
+        "deps": {
+          "standard": "text.TerminalText",
+          "cell": "text.PaddedCell",
+          "columns": "text.TerminalColumns",
+          "texts": "std/algebra.Texts",
+          "sequences": "std/algebra.Sequences"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              null,
+              [
+                [
+                  "Owner",
+                  "trame"
+                ],
+                [
+                  "Review planned",
+                  "1 March 2027"
+                ]
+              ],
+              "  "
+            ],
+            "output": [
+              "  Owner           trame",
+              "  Review planned  1 March 2027"
+            ]
+          },
+          {
+            "input": [
+              [
+                "Name",
+                "Kind"
+              ],
+              [
+                [
+                  "Text",
+                  "function"
+                ]
+              ],
+              ""
+            ],
+            "output": [
+              "NAME  KIND",
+              "Text  function"
+            ]
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            null,
+            [
+              [
+                "Owner",
+                "trame"
+              ],
+              [
+                "Review planned",
+                "1 March 2027"
+              ]
+            ],
+            "  "
+          ],
+          "expected": [
+            "  Owner           trame",
+            "  Review planned  1 March 2027"
+          ],
+          "actual": [
+            "  Owner           trame",
+            "  Review planned  1 March 2027"
+          ],
+          "held": true
+        },
+        {
+          "input": [
+            [
+              "Name",
+              "Kind"
+            ],
+            [
+              [
+                "Text",
+                "function"
+              ]
+            ],
+            ""
+          ],
+          "expected": [
+            "NAME  KIND",
+            "Text  function"
+          ],
+          "actual": [
+            "NAME  KIND",
+            "Text  function"
+          ],
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "text.ItemLine",
+      "kind": "syntax",
+      "title": "Item line",
+      "source": "src/text.ts:110",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "Lists",
+        "constants": {
+          "bullet": {
+            "value": "-",
+            "meaning": "Marks an item of a list"
+          }
+        },
+        "deps": {
+          "standard": "text.TerminalText"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "  ",
+              "Owner: trame"
+            ],
+            "output": "  - Owner: trame"
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            "  ",
+            "Owner: trame"
+          ],
+          "expected": "  - Owner: trame",
+          "actual": "  - Owner: trame",
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "text.PaddedCell",
+      "kind": "syntax",
+      "title": "Padded cell",
+      "source": "src/text.ts:65",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "Columns",
+        "constants": {},
+        "deps": {
+          "standard": "text.TerminalText",
+          "columns": "text.TerminalColumns"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "held",
+              8
+            ],
+            "output": "held    "
+          },
+          {
+            "input": [
+              "a long name",
+              4
+            ],
+            "output": "a long name "
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            "held",
+            8
+          ],
+          "expected": "held    ",
+          "actual": "held    ",
+          "held": true
+        },
+        {
+          "input": [
+            "a long name",
+            4
+          ],
+          "expected": "a long name ",
+          "actual": "a long name ",
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "text.PathStep",
+      "kind": "syntax",
+      "title": "Path step",
+      "source": "src/text.ts:193",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "Paths",
+        "constants": {
+          "shift": {
+            "value": "   ",
+            "meaning": "Three spaces per position: the corner of the step before, its space, and one more"
+          }
+        },
+        "deps": {
+          "standard": "text.TerminalText",
+          "box": "text.BoxDrawing"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              0,
+              "serves",
+              "Bookings (goal)"
+            ],
+            "output": "└ serves Bookings (goal)"
+          },
+          {
+            "input": [
+              2,
+              "uses",
+              "Store (port)"
+            ],
+            "output": "      └ uses Store (port)"
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            0,
+            "serves",
+            "Bookings (goal)"
+          ],
+          "expected": "└ serves Bookings (goal)",
+          "actual": "└ serves Bookings (goal)",
+          "held": true
+        },
+        {
+          "input": [
+            2,
+            "uses",
+            "Store (port)"
+          ],
+          "expected": "      └ uses Store (port)",
+          "actual": "      └ uses Store (port)",
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "text.TerminalColumns",
+      "kind": "decision",
+      "title": "Columns in the terminal",
+      "source": "src/text.ts:37",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "gap": 2,
+          "minimumGap": 1,
+          "widths": {
+            "rank": 9,
+            "severity": 15,
+            "code": 30,
+            "source": 22,
+            "name": 14
+          }
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "text.TerminalLines",
+      "kind": "syntax",
+      "title": "Lines of the terminal",
+      "source": "src/text.ts:143",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "Lines",
+        "constants": {},
+        "deps": {
+          "standard": "text.TerminalText",
+          "file": "std/text.TextFile",
+          "counts": "std/algebra.Counts"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              [
+                "Layers",
+                "",
+                "",
+                "",
+                "rank 1   Goals",
+                "  "
+              ]
+            ],
+            "output": "Layers\n\nrank 1   Goals\n"
+          },
+          {
+            "input": [
+              [
+                "a",
+                "b"
+              ]
+            ],
+            "output": "a\nb\n"
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            [
+              "Layers",
+              "",
+              "",
+              "",
+              "rank 1   Goals",
+              "  "
+            ]
+          ],
+          "expected": "Layers\n\nrank 1   Goals\n",
+          "actual": "Layers\n\nrank 1   Goals\n",
+          "held": true
+        },
+        {
+          "input": [
+            [
+              "a",
+              "b"
+            ]
+          ],
+          "expected": "a\nb\n",
+          "actual": "a\nb\n",
+          "held": true
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "text.TerminalText",
+      "kind": "decision",
+      "title": "Terminal text",
+      "source": "src/text.ts:20",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "space": " ",
+          "indent": "  ",
+          "maxBlankLines": 1
+        },
+        "rejected": {
+          "Markdown": "a terminal does not render it: its marks would be read as they are",
+          "Colours and control sequences": "an output is not always a terminal (a file, a pipe, a test): the text must say everything without them, and it is compared line by line from one generation to the next",
+          "Tabs": "their width depends on the terminal: columns would no longer line up"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "text.TreeBranch",
+      "kind": "syntax",
+      "title": "Tree branch",
+      "source": "src/text.ts:171",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "section": "Trees",
+        "constants": {},
+        "deps": {
+          "standard": "text.TerminalText",
+          "box": "text.BoxDrawing"
+        },
+        "write": "(function)",
+        "examples": [
+          {
+            "input": [
+              "",
+              false,
+              "serves",
+              "Bookings (goal)"
+            ],
+            "output": {
+              "line": "├ serves Bookings (goal)",
+              "under": "│ "
+            }
+          },
+          {
+            "input": [
+              "│ ",
+              true,
+              "uses",
+              "Store (port)"
+            ],
+            "output": {
+              "line": "│ └ uses Store (port)",
+              "under": "│   "
+            }
+          }
+        ]
+      },
+      "result": [
+        {
+          "input": [
+            "",
+            false,
+            "serves",
+            "Bookings (goal)"
+          ],
+          "expected": {
+            "line": "├ serves Bookings (goal)",
+            "under": "│ "
+          },
+          "actual": {
+            "line": "├ serves Bookings (goal)",
+            "under": "│ "
+          },
+          "held": true
+        },
+        {
+          "input": [
+            "│ ",
+            true,
+            "uses",
+            "Store (port)"
+          ],
+          "expected": {
+            "line": "│ └ uses Store (port)",
+            "under": "│   "
+          },
+          "actual": {
+            "line": "│ └ uses Store (port)",
+            "under": "│   "
+          },
+          "held": true
+        }
+      ],
+      "diagnostics": []
     }
   ],
   "edges": [
+    {
+      "from": "html.EscapedText",
+      "to": "std/html.Html",
+      "kind": "standard"
+    },
+    {
+      "from": "html.EscapedText",
+      "to": "std/languages.HtmlMarkup",
+      "kind": "language"
+    },
+    {
+      "from": "html.EscapedText",
+      "to": "std/html.Html",
+      "kind": "deps"
+    },
+    {
+      "from": "html.HtmlAttributes",
+      "to": "std/html.Html",
+      "kind": "standard"
+    },
+    {
+      "from": "html.HtmlAttributes",
+      "to": "std/languages.HtmlMarkup",
+      "kind": "language"
+    },
+    {
+      "from": "html.HtmlAttributes",
+      "to": "std/html.Html",
+      "kind": "deps"
+    },
+    {
+      "from": "html.HtmlAttributes",
+      "to": "std/algebra.Texts",
+      "kind": "deps"
+    },
+    {
+      "from": "html.HtmlElement",
+      "to": "std/html.Html",
+      "kind": "standard"
+    },
+    {
+      "from": "html.HtmlElement",
+      "to": "std/languages.HtmlMarkup",
+      "kind": "language"
+    },
+    {
+      "from": "html.HtmlElement",
+      "to": "std/html.Html",
+      "kind": "deps"
+    },
+    {
+      "from": "html.HtmlElement",
+      "to": "html.HtmlStartTag",
+      "kind": "deps"
+    },
+    {
+      "from": "html.HtmlElement",
+      "to": "html.HtmlEndTag",
+      "kind": "deps"
+    },
+    {
+      "from": "html.HtmlEndTag",
+      "to": "std/html.Html",
+      "kind": "standard"
+    },
+    {
+      "from": "html.HtmlEndTag",
+      "to": "std/languages.HtmlMarkup",
+      "kind": "language"
+    },
+    {
+      "from": "html.HtmlEndTag",
+      "to": "std/html.Html",
+      "kind": "deps"
+    },
+    {
+      "from": "html.HtmlHeading",
+      "to": "std/html.Html",
+      "kind": "standard"
+    },
+    {
+      "from": "html.HtmlHeading",
+      "to": "std/languages.HtmlMarkup",
+      "kind": "language"
+    },
+    {
+      "from": "html.HtmlHeading",
+      "to": "std/html.Html",
+      "kind": "deps"
+    },
+    {
+      "from": "html.HtmlHeading",
+      "to": "html.HtmlElement",
+      "kind": "deps"
+    },
+    {
+      "from": "html.HtmlStartTag",
+      "to": "std/html.Html",
+      "kind": "standard"
+    },
+    {
+      "from": "html.HtmlStartTag",
+      "to": "std/languages.HtmlMarkup",
+      "kind": "language"
+    },
+    {
+      "from": "html.HtmlStartTag",
+      "to": "std/html.Html",
+      "kind": "deps"
+    },
+    {
+      "from": "html.HtmlStartTag",
+      "to": "html.HtmlAttributes",
+      "kind": "deps"
+    },
+    {
+      "from": "html.SelfClosingTag",
+      "to": "std/html.Html",
+      "kind": "standard"
+    },
+    {
+      "from": "html.SelfClosingTag",
+      "to": "std/languages.HtmlMarkup",
+      "kind": "language"
+    },
+    {
+      "from": "html.SelfClosingTag",
+      "to": "std/html.Html",
+      "kind": "deps"
+    },
+    {
+      "from": "html.SelfClosingTag",
+      "to": "html.HtmlAttributes",
+      "kind": "deps"
+    },
     {
       "from": "language.Dates",
       "to": "product.RenderedOnce",
@@ -633,6 +5015,481 @@
       "kind": "deps"
     },
     {
+      "from": "markdown.Anchor",
+      "to": "std/html.Html",
+      "kind": "standard"
+    },
+    {
+      "from": "markdown.Anchor",
+      "to": "std/languages.HtmlMarkup",
+      "kind": "language"
+    },
+    {
+      "from": "markdown.Anchor",
+      "to": "std/html.Html",
+      "kind": "deps"
+    },
+    {
+      "from": "markdown.Anchor",
+      "to": "html.HtmlElement",
+      "kind": "deps"
+    },
+    {
+      "from": "markdown.Anchor",
+      "to": "std/algebra.Texts",
+      "kind": "deps"
+    },
+    {
+      "from": "markdown.BacktickString",
+      "to": "markdown.CommonMark",
+      "kind": "standard"
+    },
+    {
+      "from": "markdown.BacktickString",
+      "to": "markdown.CommonMark",
+      "kind": "deps"
+    },
+    {
+      "from": "markdown.BacktickString",
+      "to": "std/algebra.Counts",
+      "kind": "deps"
+    },
+    {
+      "from": "markdown.BlankLine",
+      "to": "markdown.CommonMark",
+      "kind": "standard"
+    },
+    {
+      "from": "markdown.BlankLine",
+      "to": "markdown.CommonMark",
+      "kind": "deps"
+    },
+    {
+      "from": "markdown.BlockQuote",
+      "to": "markdown.CommonMark",
+      "kind": "standard"
+    },
+    {
+      "from": "markdown.BlockQuote",
+      "to": "markdown.CommonMark",
+      "kind": "deps"
+    },
+    {
+      "from": "markdown.Blocks",
+      "to": "markdown.CommonMark",
+      "kind": "standard"
+    },
+    {
+      "from": "markdown.Blocks",
+      "to": "markdown.CommonMark",
+      "kind": "deps"
+    },
+    {
+      "from": "markdown.Blocks",
+      "to": "markdown.BlankLine",
+      "kind": "deps"
+    },
+    {
+      "from": "markdown.Blocks",
+      "to": "std/algebra.Counts",
+      "kind": "deps"
+    },
+    {
+      "from": "markdown.CodeBlock",
+      "to": "markdown.CommonMark",
+      "kind": "standard"
+    },
+    {
+      "from": "markdown.CodeBlock",
+      "to": "markdown.CommonMark",
+      "kind": "deps"
+    },
+    {
+      "from": "markdown.CodeBlock",
+      "to": "markdown.BacktickString",
+      "kind": "deps"
+    },
+    {
+      "from": "markdown.CodeSpan",
+      "to": "markdown.CommonMark",
+      "kind": "standard"
+    },
+    {
+      "from": "markdown.CodeSpan",
+      "to": "markdown.CommonMark",
+      "kind": "deps"
+    },
+    {
+      "from": "markdown.CodeSpan",
+      "to": "markdown.BacktickString",
+      "kind": "deps"
+    },
+    {
+      "from": "markdown.CodeSpan",
+      "to": "std/algebra.Texts",
+      "kind": "deps"
+    },
+    {
+      "from": "markdown.Details",
+      "to": "std/html.Html",
+      "kind": "standard"
+    },
+    {
+      "from": "markdown.Details",
+      "to": "std/languages.HtmlMarkup",
+      "kind": "language"
+    },
+    {
+      "from": "markdown.Details",
+      "to": "std/html.Html",
+      "kind": "deps"
+    },
+    {
+      "from": "markdown.Details",
+      "to": "html.HtmlStartTag",
+      "kind": "deps"
+    },
+    {
+      "from": "markdown.Details",
+      "to": "html.HtmlEndTag",
+      "kind": "deps"
+    },
+    {
+      "from": "markdown.Details",
+      "to": "html.HtmlElement",
+      "kind": "deps"
+    },
+    {
+      "from": "markdown.Details",
+      "to": "markdown.BlankLine",
+      "kind": "deps"
+    },
+    {
+      "from": "markdown.Emphasis",
+      "to": "markdown.CommonMark",
+      "kind": "standard"
+    },
+    {
+      "from": "markdown.Emphasis",
+      "to": "markdown.CommonMark",
+      "kind": "deps"
+    },
+    {
+      "from": "markdown.Heading",
+      "to": "markdown.CommonMark",
+      "kind": "standard"
+    },
+    {
+      "from": "markdown.Heading",
+      "to": "markdown.CommonMark",
+      "kind": "deps"
+    },
+    {
+      "from": "markdown.Link",
+      "to": "markdown.CommonMark",
+      "kind": "standard"
+    },
+    {
+      "from": "markdown.Link",
+      "to": "markdown.CommonMark",
+      "kind": "deps"
+    },
+    {
+      "from": "markdown.ListItem",
+      "to": "markdown.CommonMark",
+      "kind": "standard"
+    },
+    {
+      "from": "markdown.ListItem",
+      "to": "markdown.CommonMark",
+      "kind": "deps"
+    },
+    {
+      "from": "markdown.RelativeReference",
+      "to": "std/web.Uri",
+      "kind": "standard"
+    },
+    {
+      "from": "markdown.RelativeReference",
+      "to": "std/web.Uri",
+      "kind": "deps"
+    },
+    {
+      "from": "markdown.RelativeReference",
+      "to": "std/algebra.Texts",
+      "kind": "deps"
+    },
+    {
+      "from": "markdown.RelativeReference",
+      "to": "std/algebra.Sequences",
+      "kind": "deps"
+    },
+    {
+      "from": "markdown.RelativeReference",
+      "to": "std/algebra.Counts",
+      "kind": "deps"
+    },
+    {
+      "from": "markdown.Small",
+      "to": "std/html.Html",
+      "kind": "standard"
+    },
+    {
+      "from": "markdown.Small",
+      "to": "std/languages.HtmlMarkup",
+      "kind": "language"
+    },
+    {
+      "from": "markdown.Small",
+      "to": "std/html.Html",
+      "kind": "deps"
+    },
+    {
+      "from": "markdown.Small",
+      "to": "html.HtmlElement",
+      "kind": "deps"
+    },
+    {
+      "from": "markdown.StrongEmphasis",
+      "to": "markdown.CommonMark",
+      "kind": "standard"
+    },
+    {
+      "from": "markdown.StrongEmphasis",
+      "to": "markdown.CommonMark",
+      "kind": "deps"
+    },
+    {
+      "from": "markdown.Table",
+      "to": "markdown.Gfm",
+      "kind": "standard"
+    },
+    {
+      "from": "markdown.Table",
+      "to": "markdown.Gfm",
+      "kind": "deps"
+    },
+    {
+      "from": "markdown.Table",
+      "to": "markdown.TableRow",
+      "kind": "deps"
+    },
+    {
+      "from": "markdown.Table",
+      "to": "markdown.TableDelimiterRow",
+      "kind": "deps"
+    },
+    {
+      "from": "markdown.TableCell",
+      "to": "markdown.Gfm",
+      "kind": "standard"
+    },
+    {
+      "from": "markdown.TableCell",
+      "to": "markdown.Gfm",
+      "kind": "deps"
+    },
+    {
+      "from": "markdown.TableCell",
+      "to": "markdown.CommonMark",
+      "kind": "deps"
+    },
+    {
+      "from": "markdown.TableDelimiterRow",
+      "to": "markdown.Gfm",
+      "kind": "standard"
+    },
+    {
+      "from": "markdown.TableDelimiterRow",
+      "to": "markdown.Gfm",
+      "kind": "deps"
+    },
+    {
+      "from": "markdown.TableRow",
+      "to": "markdown.Gfm",
+      "kind": "standard"
+    },
+    {
+      "from": "markdown.TableRow",
+      "to": "markdown.Gfm",
+      "kind": "deps"
+    },
+    {
+      "from": "markdown.TableRow",
+      "to": "markdown.CommonMark",
+      "kind": "deps"
+    },
+    {
+      "from": "mermaid.ClassDefinition",
+      "to": "mermaid.Mermaid",
+      "kind": "standard"
+    },
+    {
+      "from": "mermaid.ClassDefinition",
+      "to": "mermaid.Mermaid",
+      "kind": "deps"
+    },
+    {
+      "from": "mermaid.ClassDefinition",
+      "to": "mermaid.StyleProperties",
+      "kind": "deps"
+    },
+    {
+      "from": "mermaid.Flowchart",
+      "to": "mermaid.Mermaid",
+      "kind": "standard"
+    },
+    {
+      "from": "mermaid.Flowchart",
+      "to": "mermaid.Mermaid",
+      "kind": "deps"
+    },
+    {
+      "from": "mermaid.Gantt",
+      "to": "mermaid.Mermaid",
+      "kind": "standard"
+    },
+    {
+      "from": "mermaid.Gantt",
+      "to": "mermaid.Mermaid",
+      "kind": "deps"
+    },
+    {
+      "from": "mermaid.GanttName",
+      "to": "mermaid.Mermaid",
+      "kind": "standard"
+    },
+    {
+      "from": "mermaid.GanttName",
+      "to": "mermaid.Mermaid",
+      "kind": "deps"
+    },
+    {
+      "from": "mermaid.GanttSection",
+      "to": "mermaid.Mermaid",
+      "kind": "standard"
+    },
+    {
+      "from": "mermaid.GanttSection",
+      "to": "mermaid.Mermaid",
+      "kind": "deps"
+    },
+    {
+      "from": "mermaid.GanttSection",
+      "to": "mermaid.GanttName",
+      "kind": "deps"
+    },
+    {
+      "from": "mermaid.GanttTask",
+      "to": "mermaid.Mermaid",
+      "kind": "standard"
+    },
+    {
+      "from": "mermaid.GanttTask",
+      "to": "mermaid.Mermaid",
+      "kind": "deps"
+    },
+    {
+      "from": "mermaid.GanttTask",
+      "to": "mermaid.GanttName",
+      "kind": "deps"
+    },
+    {
+      "from": "mermaid.MermaidLabel",
+      "to": "mermaid.Mermaid",
+      "kind": "standard"
+    },
+    {
+      "from": "mermaid.MermaidLabel",
+      "to": "mermaid.Mermaid",
+      "kind": "deps"
+    },
+    {
+      "from": "mermaid.MermaidLink",
+      "to": "mermaid.Mermaid",
+      "kind": "standard"
+    },
+    {
+      "from": "mermaid.MermaidLink",
+      "to": "mermaid.Mermaid",
+      "kind": "deps"
+    },
+    {
+      "from": "mermaid.MermaidLink",
+      "to": "mermaid.MermaidLabel",
+      "kind": "deps"
+    },
+    {
+      "from": "mermaid.MermaidNode",
+      "to": "mermaid.Mermaid",
+      "kind": "standard"
+    },
+    {
+      "from": "mermaid.MermaidNode",
+      "to": "mermaid.Mermaid",
+      "kind": "deps"
+    },
+    {
+      "from": "mermaid.MermaidNode",
+      "to": "mermaid.MermaidLabel",
+      "kind": "deps"
+    },
+    {
+      "from": "mermaid.Milestone",
+      "to": "mermaid.Mermaid",
+      "kind": "standard"
+    },
+    {
+      "from": "mermaid.Milestone",
+      "to": "mermaid.Mermaid",
+      "kind": "deps"
+    },
+    {
+      "from": "mermaid.Milestone",
+      "to": "mermaid.GanttTask",
+      "kind": "deps"
+    },
+    {
+      "from": "mermaid.NodeStyle",
+      "to": "mermaid.Mermaid",
+      "kind": "standard"
+    },
+    {
+      "from": "mermaid.NodeStyle",
+      "to": "mermaid.Mermaid",
+      "kind": "deps"
+    },
+    {
+      "from": "mermaid.NodeStyle",
+      "to": "mermaid.StyleProperties",
+      "kind": "deps"
+    },
+    {
+      "from": "mermaid.StyleProperties",
+      "to": "mermaid.Mermaid",
+      "kind": "standard"
+    },
+    {
+      "from": "mermaid.StyleProperties",
+      "to": "mermaid.Mermaid",
+      "kind": "deps"
+    },
+    {
+      "from": "mermaid.Subgraph",
+      "to": "mermaid.Mermaid",
+      "kind": "standard"
+    },
+    {
+      "from": "mermaid.Subgraph",
+      "to": "mermaid.Mermaid",
+      "kind": "deps"
+    },
+    {
+      "from": "mermaid.Subgraph",
+      "to": "mermaid.MermaidLabel",
+      "kind": "deps"
+    },
+    {
       "from": "packages.ContinuousIntegration",
       "to": "product.RenderedOnce",
       "kind": "serves"
@@ -663,6 +5520,666 @@
       "kind": "serves"
     },
     {
+      "from": "releases.R0_2_0",
+      "to": "product.RenderedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "rendering.Common",
+      "to": "product.RenderedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "rendering.Common",
+      "to": "std/algebra.ValueTypes",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.Common",
+      "to": "std/engine.ReferenceSyntax",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.Common",
+      "to": "rendering.SentenceSlots",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.Common",
+      "to": "language.Dates",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.Common",
+      "to": "language.Lists",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.Common",
+      "to": "std/algebra.Texts",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.Common",
+      "to": "rendering.RenderingMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.Common",
+      "to": "language.Units",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.FileRendering",
+      "to": "product.RenderedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "rendering.FileRendering",
+      "to": "rendering.Rendering",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.FileRendering",
+      "to": "rendering.FileSyntax",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.MarkdownSyntax",
+      "to": "product.RenderedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "rendering.MarkdownSyntax",
+      "to": "rendering.FileSyntax",
+      "kind": "implements"
+    },
+    {
+      "from": "rendering.MarkdownSyntax",
+      "to": "rendering.FileFigures",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.MarkdownSyntax",
+      "to": "rendering.TextRendering",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.MarkdownSyntax",
+      "to": "language.Punctuation",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.MarkdownSyntax",
+      "to": "markdown.Blocks",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.MarkdownSyntax",
+      "to": "markdown.Heading",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.MarkdownSyntax",
+      "to": "markdown.ListItem",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.MarkdownSyntax",
+      "to": "markdown.BlockQuote",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.MarkdownSyntax",
+      "to": "markdown.CodeBlock",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.MarkdownSyntax",
+      "to": "markdown.Emphasis",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.MarkdownSyntax",
+      "to": "markdown.StrongEmphasis",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.MarkdownSyntax",
+      "to": "markdown.CodeSpan",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.MarkdownSyntax",
+      "to": "markdown.Link",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.MarkdownSyntax",
+      "to": "markdown.RelativeReference",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.MarkdownSyntax",
+      "to": "markdown.TableCell",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.MarkdownSyntax",
+      "to": "markdown.Table",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.MarkdownSyntax",
+      "to": "markdown.Anchor",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.MarkdownSyntax",
+      "to": "markdown.Details",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.MarkdownSyntax",
+      "to": "std/algebra.Counts",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.MarkdownSyntax",
+      "to": "std/algebra.Texts",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.MarkdownSyntax",
+      "to": "rendering.RenderingMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.MermaidDiagrams",
+      "to": "product.RenderedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "rendering.MermaidDiagrams",
+      "to": "rendering.FileFigures",
+      "kind": "implements"
+    },
+    {
+      "from": "rendering.MermaidDiagrams",
+      "to": "mermaid.Mermaid",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.MermaidDiagrams",
+      "to": "rendering.MermaidFigures",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.MermaidDiagrams",
+      "to": "appearance.Palette",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.MermaidDiagrams",
+      "to": "markdown.Small",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.MermaidDiagrams",
+      "to": "mermaid.Flowchart",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.MermaidDiagrams",
+      "to": "mermaid.MermaidNode",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.MermaidDiagrams",
+      "to": "mermaid.Subgraph",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.MermaidDiagrams",
+      "to": "mermaid.MermaidLink",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.MermaidDiagrams",
+      "to": "mermaid.ClassDefinition",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.MermaidDiagrams",
+      "to": "mermaid.NodeStyle",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.MermaidDiagrams",
+      "to": "mermaid.Gantt",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.MermaidDiagrams",
+      "to": "mermaid.GanttSection",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.MermaidDiagrams",
+      "to": "mermaid.GanttTask",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.MermaidDiagrams",
+      "to": "mermaid.Milestone",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.MermaidDiagrams",
+      "to": "std/algebra.Counts",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.MermaidDiagrams",
+      "to": "language.Dates",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.MermaidDiagrams",
+      "to": "rendering.RenderingMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.OneRendererManySyntaxes",
+      "to": "product.RenderedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "rendering.OneRendererManySyntaxes",
+      "to": "rendering.Rendering",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "rendering.OneRendererManySyntaxes",
+      "to": "rendering.FileRendering",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "rendering.OneRendererManySyntaxes",
+      "to": "rendering.TerminalRendering",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "rendering.OneRendererManySyntaxes",
+      "to": "rendering.MarkdownSyntax",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "rendering.OneRendererManySyntaxes",
+      "to": "rendering.PlainTextSyntax",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "rendering.OneRendererManySyntaxes",
+      "to": "rendering.MermaidDiagrams",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "rendering.OneRendererManySyntaxes",
+      "to": "rendering.TextFigures",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "rendering.PlainTextSyntax",
+      "to": "product.RenderedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "rendering.PlainTextSyntax",
+      "to": "rendering.TerminalSyntax",
+      "kind": "implements"
+    },
+    {
+      "from": "rendering.PlainTextSyntax",
+      "to": "rendering.TerminalFigures",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.PlainTextSyntax",
+      "to": "text.TerminalText",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.PlainTextSyntax",
+      "to": "text.TerminalColumns",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.PlainTextSyntax",
+      "to": "language.Punctuation",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.PlainTextSyntax",
+      "to": "text.PaddedCell",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.PlainTextSyntax",
+      "to": "text.Columns",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.PlainTextSyntax",
+      "to": "text.ItemLine",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.PlainTextSyntax",
+      "to": "text.CodeLines",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.PlainTextSyntax",
+      "to": "text.TerminalLines",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.PlainTextSyntax",
+      "to": "std/algebra.Counts",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.PlainTextSyntax",
+      "to": "std/algebra.Texts",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.PlainTextSyntax",
+      "to": "rendering.RenderingMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.Rendering",
+      "to": "product.RenderedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "rendering.Rendering",
+      "to": "rendering.Common",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.Rendering",
+      "to": "std/algebra.ValueTypes",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.Rendering",
+      "to": "std/algebra.Texts",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.Rendering",
+      "to": "std/algebra.Counts",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.Rendering",
+      "to": "rendering.RenderingMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.RenderingMessages",
+      "to": "language.WordsLanguage",
+      "kind": "language"
+    },
+    {
+      "from": "rendering.TerminalRendering",
+      "to": "product.RenderedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "rendering.TerminalRendering",
+      "to": "rendering.Rendering",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.TerminalRendering",
+      "to": "rendering.TerminalSyntax",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.TextFigures",
+      "to": "product.RenderedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "rendering.TextFigures",
+      "to": "rendering.TerminalFigures",
+      "kind": "implements"
+    },
+    {
+      "from": "rendering.TextFigures",
+      "to": "rendering.Common",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.TextFigures",
+      "to": "text.TerminalColumns",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.TextFigures",
+      "to": "language.Punctuation",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.TextFigures",
+      "to": "text.PaddedCell",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.TextFigures",
+      "to": "text.Columns",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.TextFigures",
+      "to": "text.TreeBranch",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.TextFigures",
+      "to": "text.PathStep",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.TextFigures",
+      "to": "language.Dates",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.TextFigures",
+      "to": "std/algebra.Counts",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.TextFigures",
+      "to": "std/algebra.Sequences",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.TextFigures",
+      "to": "std/algebra.Texts",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.TextFigures",
+      "to": "rendering.RenderingMessages",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.DocumentsRendered",
+      "to": "rendering.Common",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.DocumentsRendered",
+      "to": "rendering.Rendering",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.DocumentsRendered",
+      "to": "rendering.FileRendering",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.DocumentsRendered",
+      "to": "rendering.TerminalRendering",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.DocumentsRendered",
+      "to": "rendering.MarkdownSyntax",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.DocumentsRendered",
+      "to": "rendering.PlainTextSyntax",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.DocumentsRendered",
+      "to": "rendering.MermaidDiagrams",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.DocumentsRendered",
+      "to": "rendering.TextFigures",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.DocumentsRendered",
+      "to": "scenarios.Test",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.DocumentsRendered",
+      "to": "rendering.FileRendering",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.DocumentsRendered",
+      "to": "rendering.TerminalRendering",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.DocumentsRendered",
+      "to": "rendering.Common",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.DocumentsRendered",
+      "to": "samples.SampleDocuments",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.DocumentsRendered",
+      "to": "scenarios.ExpectedDocuments",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.DocumentsRendered",
+      "to": "std/text.TextFile",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.DocumentsRendered",
+      "to": "scenarios.ScenarioWords",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.FiguresInMermaid",
+      "to": "rendering.MermaidDiagrams",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.FiguresInMermaid",
+      "to": "scenarios.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "scenarios.FiguresInMermaid",
+      "to": "std/patterns.Strategy",
+      "kind": "follows"
+    },
+    {
+      "from": "scenarios.FiguresInMermaid",
+      "to": "product.RenderedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "scenarios.FilesInMarkdown",
+      "to": "rendering.MarkdownSyntax",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.FilesInMarkdown",
+      "to": "scenarios.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "scenarios.FilesInMarkdown",
+      "to": "std/patterns.Bridge",
+      "kind": "follows"
+    },
+    {
+      "from": "scenarios.FilesInMarkdown",
+      "to": "std/patterns.Strategy",
+      "kind": "follows"
+    },
+    {
+      "from": "scenarios.FilesInMarkdown",
+      "to": "product.RenderedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "scenarios.HowTheScenariosRender",
+      "to": "product.RenderedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "scenarios.HowTheScenariosRender",
+      "to": "scenarios.FilesInMarkdown",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "scenarios.HowTheScenariosRender",
+      "to": "scenarios.FiguresInMermaid",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "scenarios.HowTheScenariosRender",
+      "to": "scenarios.TerminalInText",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "scenarios.HowTheScenariosRender",
+      "to": "scenarios.TerminalFiguresAsText",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "scenarios.HowTheScenariosRender",
+      "to": "scenarios.LanguagesRead",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "scenarios.HowTheScenariosRender",
+      "to": "std/engine.EngineAsAProvider",
+      "kind": "adopts"
+    },
+    {
       "from": "scenarios.InTheScenariosLanguage",
       "to": "scenarios.WrittenForTheScenarios",
       "kind": "chooses"
@@ -679,6 +6196,26 @@
     },
     {
       "from": "scenarios.InTheScenariosLanguage",
+      "to": "product.RenderedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "scenarios.LanguagesRead",
+      "to": "std/engine.ReadByTheEngine",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.LanguagesRead",
+      "to": "scenarios.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "scenarios.LanguagesRead",
+      "to": "std/patterns.Adapter",
+      "kind": "follows"
+    },
+    {
+      "from": "scenarios.LanguagesRead",
       "to": "product.RenderedOnce",
       "kind": "serves"
     },
@@ -751,6 +6288,51 @@
       "from": "scenarios.ScenarioWords",
       "to": "language.WordsLanguage",
       "kind": "language"
+    },
+    {
+      "from": "scenarios.TerminalFiguresAsText",
+      "to": "rendering.TextFigures",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.TerminalFiguresAsText",
+      "to": "scenarios.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "scenarios.TerminalFiguresAsText",
+      "to": "std/patterns.Strategy",
+      "kind": "follows"
+    },
+    {
+      "from": "scenarios.TerminalFiguresAsText",
+      "to": "product.RenderedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "scenarios.TerminalInText",
+      "to": "rendering.PlainTextSyntax",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.TerminalInText",
+      "to": "scenarios.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "scenarios.TerminalInText",
+      "to": "std/patterns.Bridge",
+      "kind": "follows"
+    },
+    {
+      "from": "scenarios.TerminalInText",
+      "to": "std/patterns.Strategy",
+      "kind": "follows"
+    },
+    {
+      "from": "scenarios.TerminalInText",
+      "to": "product.RenderedOnce",
+      "kind": "serves"
     },
     {
       "from": "scenarios.TheEnginesLanguage",
@@ -881,6 +6463,132 @@
       "from": "sdlc.VersionMode",
       "to": "sdlc.PackagesSafe",
       "kind": "obligations"
+    },
+    {
+      "from": "text.CodeLines",
+      "to": "text.TerminalText",
+      "kind": "standard"
+    },
+    {
+      "from": "text.CodeLines",
+      "to": "text.TerminalText",
+      "kind": "deps"
+    },
+    {
+      "from": "text.CodeLines",
+      "to": "std/text.TextFile",
+      "kind": "deps"
+    },
+    {
+      "from": "text.Columns",
+      "to": "text.TerminalText",
+      "kind": "standard"
+    },
+    {
+      "from": "text.Columns",
+      "to": "text.TerminalText",
+      "kind": "deps"
+    },
+    {
+      "from": "text.Columns",
+      "to": "text.PaddedCell",
+      "kind": "deps"
+    },
+    {
+      "from": "text.Columns",
+      "to": "text.TerminalColumns",
+      "kind": "deps"
+    },
+    {
+      "from": "text.Columns",
+      "to": "std/algebra.Texts",
+      "kind": "deps"
+    },
+    {
+      "from": "text.Columns",
+      "to": "std/algebra.Sequences",
+      "kind": "deps"
+    },
+    {
+      "from": "text.ItemLine",
+      "to": "text.TerminalText",
+      "kind": "standard"
+    },
+    {
+      "from": "text.ItemLine",
+      "to": "text.TerminalText",
+      "kind": "deps"
+    },
+    {
+      "from": "text.PaddedCell",
+      "to": "text.TerminalText",
+      "kind": "standard"
+    },
+    {
+      "from": "text.PaddedCell",
+      "to": "text.TerminalText",
+      "kind": "deps"
+    },
+    {
+      "from": "text.PaddedCell",
+      "to": "text.TerminalColumns",
+      "kind": "deps"
+    },
+    {
+      "from": "text.PathStep",
+      "to": "text.TerminalText",
+      "kind": "standard"
+    },
+    {
+      "from": "text.PathStep",
+      "to": "text.TerminalText",
+      "kind": "deps"
+    },
+    {
+      "from": "text.PathStep",
+      "to": "text.BoxDrawing",
+      "kind": "deps"
+    },
+    {
+      "from": "text.TerminalLines",
+      "to": "text.TerminalText",
+      "kind": "standard"
+    },
+    {
+      "from": "text.TerminalLines",
+      "to": "text.TerminalText",
+      "kind": "deps"
+    },
+    {
+      "from": "text.TerminalLines",
+      "to": "std/text.TextFile",
+      "kind": "deps"
+    },
+    {
+      "from": "text.TerminalLines",
+      "to": "std/algebra.Counts",
+      "kind": "deps"
+    },
+    {
+      "from": "text.TreeBranch",
+      "to": "text.TerminalText",
+      "kind": "standard"
+    },
+    {
+      "from": "text.TreeBranch",
+      "to": "text.TerminalText",
+      "kind": "deps"
+    },
+    {
+      "from": "text.TreeBranch",
+      "to": "text.BoxDrawing",
+      "kind": "deps"
+    },
+    {
+      "from": "markdown.BlankLine",
+      "to": "std/algebra.Texts",
+      "kind": "refines",
+      "inferred": true
     }
   ],
   "resolutions": [],

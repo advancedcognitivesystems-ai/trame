@@ -23,7 +23,8 @@ import { Drivers } from "./languages"
 import { Page } from "./page"
 import { Doctype } from "./html"
 import { NamesLed } from "./delivery"
-import { TerminalRendering, PlainTextSyntax, TextFigures, PageRendering, HtmlSyntax, SvgFigures } from "./rendering"
+import { TerminalRendering, PlainTextSyntax, TextFigures } from "#documents/rendering"
+import { PageRendering, HtmlSyntax, SvgFigures } from "./rendering"
 import {
   WebTreeSitter, Esbuild, NodeCompression, PageResources, StoppedClock, NoReportsInTest, NoInstallsInTest, MemoryHttpServer, NodeTimer, NodeCommandLine, MemoryTerminal,
   NodeHashing, RunsInTheProcess, InPlaceSources,

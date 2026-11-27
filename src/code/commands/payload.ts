@@ -9,7 +9,7 @@ import type { Handler } from "../../../kinds/entry-point"
 import type { Terminal } from "../../architecture"
 import type { Api as PreparationApi, Ctx } from "./preparation"
 import type { Api as PayloadApi } from "../engine/payload"
-import type { Api as RenderingApi } from "../rendering/document"
+import type { Api as RenderingApi } from "#documents/code/rendering/document"
 
 export interface Deps {
   /** The status the command returns to the system (POSIX). */

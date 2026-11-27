@@ -1,5 +1,6 @@
 /** Trame · TypeScript */
 
+import { ReferenceSyntax } from "#std/engine"
 import { TypeScriptGrammar } from "./packages"
 import { code, refines } from "../trame/kernel"
 import { language } from "../kinds/language"
@@ -13,7 +14,7 @@ import { EcmaScript, EcmaScriptReservedWords } from "#std/ecmascript"
 import { TreeSitterQueries } from "#std/languages"
 import { TextFile } from "#std/text"
 import { NodeModuleSpecifiers, NodeProcessApi } from "#std/system"
-import { FrozenApi, ReferenceSyntax, StepNames, TrameEnvironment } from "./conventions"
+import { FrozenApi, StepNames, TrameEnvironment } from "./conventions"
 import { Paths, Prelude } from "./architecture"
 import { Counts, Sequences, Texts } from "#std/algebra"
 import { DriverMessages } from "./messages"

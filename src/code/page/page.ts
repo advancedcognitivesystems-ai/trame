@@ -5,7 +5,8 @@
 
 import { Status } from "../../../trame/kernel"
 import type { ProvidedBy, Bundle, KeyOf } from "../../../trame/kernel"
-import type { Bundler, Compression, FileReading, Palette, Resources, Typography } from "../../architecture"
+import type { Bundler, Compression, FileReading, Resources, Typography } from "../../architecture"
+import type { Colours as Palette } from "#documents/appearance"
 import type { OutputMessages } from "../../messages"
 import type { GnuPositions, TextFile } from "#std/text"
 import type { NodeEncodings } from "#std/system"

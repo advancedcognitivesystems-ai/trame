@@ -10,13 +10,13 @@ import { RenderedOnce } from "./product"
  * The language the library is written in, at the generation the repository runs, by its path: the one whose views give
  * the documents the library renders.
  */
-export const Language = pkg({ owner: "trame", packageName: "trame", version: "130", joins: "language", at: "../../generations/g130", serves: [RenderedOnce] })
+export const Language = pkg({ owner: "trame", packageName: "trame", version: "131", joins: "language", at: "../../generations/g131", serves: [RenderedOnce] })
 
 /**
  * std
  * The library the renderers are written with: its structures, its standards, its patterns.
  */
-export const StandardLibrary = pkg({ owner: "trame", packageName: "std", version: "0.29.1", joins: "library", at: "../../std/releases/0.29.1", serves: [RenderedOnce] })
+export const StandardLibrary = pkg({ owner: "trame", packageName: "std", version: "0.30.0", joins: "library", at: "../../std/releases/0.30.0", serves: [RenderedOnce] })
 
 /**
  * The library of continuous integration

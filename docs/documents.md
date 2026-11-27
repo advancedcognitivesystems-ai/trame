@@ -4,13 +4,13 @@
 
 > **Nothing to report**
 
-## Decisions
+## Decision
 
 <a id="LanguageSettings"></a>
 
 ### Settings of the documents
 
-`LanguageSettings` · `src/documents.ts:103`
+`LanguageSettings` · `src/documents.ts:66`
 
 How far the timeline reaches before the first date it shows and after the last one, in days; how many examples, most frequent values and repeated values the catalogue of literals shows, and the categories it leaves out of the repeated values (a separator repeats by nature); how many days before it expires an assumption warns, and before its end an amendment warns its owner, so they prolong it or let it end knowingly; the percentiles a service level objective may hold (below the median, an objective would say that most measures may miss it). The kinds and the views receive them from the engine.
 
@@ -25,50 +25,13 @@ How far the timeline reaches before the first date it shows and after the last o
 - Decided by: trame
 - Used by: [Graph](engine.md#GraphApi)
 
-<a id="MermaidFigures"></a>
-
-### How Mermaid figures are drawn
-
-`MermaidFigures` · `src/documents.ts:125`
-
-The reading direction of each shape, the stroke of each edge, the look of a node that is history or not in force, the Gantt chart. The colours of the statuses come from the palette.
-
-| Case | Value |
-|---|---|
-| idPrefix | n |
-| directions | { layers: down, tree: down, path: right } |
-| strokes | { computed: dottedOpen, inferred: dotted, winner: thick, support: thick, other: solid } |
-| defaultStatus | neutral |
-| history | { dashes: 4 3 } |
-| inactive | { opacity: 0.5 } |
-| gantt | { dateFormat: YYYY-MM-DD, axisFormat: %d.%m, milestones: deadline, review } |
-
-- Decided by: trame
-- Used by: [Mermaid diagrams](rendering.md#MermaidDiagrams)
-
-<a id="TextRendering"></a>
-
-### Heading levels of Markdown documents
-
-`TextRendering` · `src/documents.ts:48`
-
-The title of a document is a heading of the first level, its sections start at the second; a card is one level under the section that holds it.
-
-| Case | Value |
-|---|---|
-| titleLevel | 1 |
-| sectionLevel | 2 |
-
-- Decided by: trame
-- Used by: [Markdown writer](rendering.md#MarkdownSyntax)
-
 ## Architecture decision
 
 <a id="PunctuationOfTheLanguage"></a>
 
 ### The punctuation is the language's
 
-`PunctuationOfTheLanguage` · `src/documents.ts:82` · status: **held**
+`PunctuationOfTheLanguage` · `src/documents.ts:45` · status: **held**
 
 The marks between the parts of a line are written in the decided language, with its tag; the renderers, the page, the kinds and the views receive those of the language decided.
 
@@ -91,14 +54,14 @@ Consequences: The Language decision holds the marks of the language with its tag
 
 ### The documents in Trame's language
 
-`OurDocumentLanguage` · `src/documents.ts:58` · status: **held**
+`OurDocumentLanguage` · `src/documents.ts:21` · status: **held**
 
 The language the documents are written in (libs/documents' port, since g129): Trame's, with its tag and its marks, which the views speak; the dates, the lists, the punctuation and the units of the library write in it.
 
 - Owner: trame
 - Parameters: `language` ← [Language](messages.md#Language)
 - Body: inline, in the declaration
-- Implements: [The language of the documents](../libs/documents/releases/0.1.1/docs/language.md#DocumentLanguage)
+- Implements: [The language of the documents](../libs/documents/releases/0.2.0/docs/language.md#DocumentLanguage)
 - Chosen by: [Documents written in Trame's language](#DocumentsInOurLanguage)
 - Applies: [The punctuation is the language's](#PunctuationOfTheLanguage)
 - Verified by: [The documents write in the decided language](scenarios.md#DocumentWords)
@@ -107,12 +70,12 @@ The language the documents are written in (libs/documents' port, since g129): Tr
 
 ### Visible text
 
-`VisibleText` · `src/documents.ts:146` · status: **held**
+`VisibleText` · `src/documents.ts:88` · status: **held**
 
 A text shown so that every character can be seen: in quotes as JSON writes it, the characters JSON leaves as they are written as escapes; or as it is, when nothing in it hides.
 
 - Owner: trame
-- Parameters: `escape` ← [Unicode escape of a text](../std/releases/0.29.1/docs/ecmascript.md#UnicodeEscape) · `invisible` ← [Characters that do not show](../std/releases/0.29.1/docs/text.md#InvisibleCharacters) · `ecma` ← [ECMAScript](../std/releases/0.29.1/docs/ecmascript.md#EcmaScript) · `texts` ← [Texts](../std/releases/0.29.1/docs/algebra.md#Texts)
+- Parameters: `escape` ← [Unicode escape of a text](../std/releases/0.30.0/docs/ecmascript.md#UnicodeEscape) · `invisible` ← [Characters that do not show](../std/releases/0.30.0/docs/text.md#InvisibleCharacters) · `ecma` ← [ECMAScript](../std/releases/0.30.0/docs/ecmascript.md#EcmaScript) · `texts` ← [Texts](../std/releases/0.30.0/docs/algebra.md#Texts)
 - Body: inline, in the declaration
 - Serves: [A single source of truth](product.md#SingleSource)
 - Used by: [Graph](engine.md#GraphApi), [The documents write in the decided language](scenarios.md#DocumentWords)
@@ -124,7 +87,7 @@ A text shown so that every character can be seen: in quotes as JSON writes it, t
 
 ### Documents written in Trame's language
 
-`DocumentsInOurLanguage` · `src/documents.ts:68` · status: **held**
+`DocumentsInOurLanguage` · `src/documents.ts:31` · status: **held**
 
 Wherever the engine, its commands and its page run, the documents are written in Trame's language.
 
@@ -132,13 +95,13 @@ In [Browser](architecture.md#Browser), [Local](architecture.md#Local), [A sessio
 
 | Port | Answered by | Which is |
 |---|---|---|
-| [The language of the documents](../libs/documents/releases/0.1.1/docs/language.md#DocumentLanguage) | [The documents in Trame's language](#OurDocumentLanguage) | a function |
+| [The language of the documents](../libs/documents/releases/0.2.0/docs/language.md#DocumentLanguage) | [The documents in Trame's language](#OurDocumentLanguage) | a function |
 
 Context: The views speak the engine's language: what renders their documents, on a machine, in the scenarios or in the page, writes its dates, lists and marks.
 
 - Decided by: trame
 - Chooses: [The documents in Trame's language](#OurDocumentLanguage)
 - In: [Local](architecture.md#Local), [A session of Claude Code](architecture.md#Session), [Test](architecture.md#Test), [Browser](architecture.md#Browser)
-- Follows: [Strategy](../std/releases/0.29.1/docs/patterns.md#Strategy)
+- Follows: [Strategy](../std/releases/0.30.0/docs/patterns.md#Strategy)
 - Serves: [A single source of truth](product.md#SingleSource)
 - Applies: [The punctuation is the language's](#PunctuationOfTheLanguage)

@@ -5,7 +5,7 @@
       "id": "commands.BuildComparison",
       "kind": "function",
       "title": "Two builds compared",
-      "source": "src/commands.ts:97",
+      "source": "src/commands.ts:88",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -23,7 +23,7 @@
       "id": "commands.Commands",
       "kind": "component",
       "title": "The library's commands",
-      "source": "src/commands.ts:26",
+      "source": "src/commands.ts:27",
       "fields": {
         "owner": "trame",
         "language": "typescript",
@@ -37,7 +37,7 @@
       "id": "commands.CommandWords",
       "kind": "catalog",
       "title": "What the commands say",
-      "source": "src/commands.ts:56",
+      "source": "src/commands.ts:47",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -51,7 +51,7 @@
       "id": "commands.Plan",
       "kind": "entry",
       "title": "Plan",
-      "source": "src/commands.ts:111",
+      "source": "src/commands.ts:102",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -63,7 +63,7 @@
           "project": "std/engine.TheProject",
           "files": "std/tooling.Files",
           "comparison": "commands.BuildComparison",
-          "lines": "commands.TerminalLines",
+          "lines": "documents/text.TerminalText",
           "say": "commands.CommandWords",
           "exit": "std/system.ExitStatus",
           "counts": "std/algebra.Counts"
@@ -76,26 +76,10 @@
       "diagnostics": []
     },
     {
-      "id": "commands.TerminalLines",
-      "kind": "decision",
-      "title": "How a command writes at a terminal",
-      "source": "src/commands.ts:36",
-      "fields": {
-        "owner": "trame",
-        "value": {
-          "indent": "  "
-        },
-        "rejected": {
-          "Tabs": "their width depends on the terminal: what is indented under a line would not line up"
-        }
-      },
-      "diagnostics": []
-    },
-    {
       "id": "commands.WordsLanguage",
       "kind": "decision",
       "title": "The language the commands speak",
-      "source": "src/commands.ts:47",
+      "source": "src/commands.ts:38",
       "fields": {
         "owner": "trame",
         "value": {
@@ -123,6 +107,21 @@
       "diagnostics": []
     },
     {
+      "id": "packages.Documents",
+      "kind": "package",
+      "title": "The renderers of documents",
+      "source": "src/packages.ts:46",
+      "fields": {
+        "owner": "trame",
+        "packageName": "documents",
+        "version": "0.2.0",
+        "joins": "library",
+        "from": "path",
+        "at": "../documents/releases/0.2.0"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "packages.Language",
       "kind": "package",
       "title": "Trame",
@@ -130,9 +129,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "130",
+        "version": "131",
         "joins": "language",
-        "at": "../../generations/g130"
+        "at": "../../generations/g131"
       },
       "diagnostics": []
     },
@@ -159,9 +158,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.29.1",
+        "version": "0.30.0",
         "joins": "library",
-        "at": "../../std/releases/0.29.1"
+        "at": "../../std/releases/0.30.0"
       },
       "diagnostics": []
     },
@@ -221,10 +220,25 @@
       "diagnostics": []
     },
     {
+      "id": "releases.R0_2_0",
+      "kind": "release",
+      "title": "Version 0.2.0",
+      "source": "src/releases.ts:51",
+      "fields": {
+        "owner": "trame",
+        "version": "0.2.0",
+        "date": "2026-11-27",
+        "what": "Indents with libs/documents' terminal text, its own decision gone; std 0.30.0",
+        "fingerprint": "6700afbbbbfb0996",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "scenarios.CompiledByTheEngine",
       "kind": "binding",
       "title": "Compiled by the engine that plays them",
-      "source": "src/scenarios.ts:52",
+      "source": "src/scenarios.ts:53",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -239,7 +253,7 @@
       "id": "scenarios.PlanAfterTheSameBuild",
       "kind": "scenario",
       "title": "After a build, nothing changes",
-      "source": "src/scenarios.ts:141",
+      "source": "src/scenarios.ts:142",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -266,7 +280,7 @@
       "id": "scenarios.PlanSaysWhatChanges",
       "kind": "scenario",
       "title": "A plan says what a build would change",
-      "source": "src/scenarios.ts:94",
+      "source": "src/scenarios.ts:95",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -275,7 +289,7 @@
           "project": "std/engine.TheProject",
           "files": "std/tooling.Files",
           "say": "commands.CommandWords",
-          "lines": "commands.TerminalLines",
+          "lines": "documents/text.TerminalText",
           "checks": "scenarios.ScenarioWords",
           "exit": "std/system.ExitStatus",
           "counts": "std/algebra.Counts"
@@ -298,7 +312,7 @@
       "id": "scenarios.PlanWithoutABuild",
       "kind": "scenario",
       "title": "Without a build, a plan says so",
-      "source": "src/scenarios.ts:126",
+      "source": "src/scenarios.ts:127",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -323,7 +337,7 @@
       "id": "scenarios.PlayedOnARealGraph",
       "kind": "adr",
       "title": "A command is played on a real graph",
-      "source": "src/scenarios.ts:165",
+      "source": "src/scenarios.ts:166",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -339,7 +353,7 @@
       "id": "scenarios.PlayedOnASmallProject",
       "kind": "binding",
       "title": "Played on a small project",
-      "source": "src/scenarios.ts:66",
+      "source": "src/scenarios.ts:67",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -351,7 +365,7 @@
       "id": "scenarios.ScenarioWords",
       "kind": "catalog",
       "title": "What the scenarios check",
-      "source": "src/scenarios.ts:78",
+      "source": "src/scenarios.ts:79",
       "fields": {
         "owner": "trame",
         "messages": "(function)"
@@ -362,7 +376,7 @@
       "id": "scenarios.SmallProject",
       "kind": "decision",
       "title": "The small project",
-      "source": "src/scenarios.ts:35",
+      "source": "src/scenarios.ts:36",
       "fields": {
         "owner": "trame",
         "value": {
@@ -376,7 +390,7 @@
       "id": "scenarios.Test",
       "kind": "environment",
       "title": "Test",
-      "source": "src/scenarios.ts:27",
+      "source": "src/scenarios.ts:28",
       "fields": {
         "owner": "trame",
         "evaluates": true
@@ -387,7 +401,7 @@
       "id": "scenarios.TheSmallProject",
       "kind": "function",
       "title": "Which project the scenarios compile",
-      "source": "src/scenarios.ts:41",
+      "source": "src/scenarios.ts:42",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -477,9 +491,9 @@
           "commands.Commands",
           "commands.CommandWords",
           "commands.Plan",
-          "commands.TerminalLines",
           "commands.WordsLanguage",
           "packages.ContinuousIntegration",
+          "packages.Documents",
           "packages.Language",
           "packages.People",
           "packages.StandardLibrary",
@@ -611,7 +625,7 @@
       },
       "result": {
         "path": "src",
-        "code": "e47ba8c6"
+        "code": "23ff5451"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -686,7 +700,7 @@
     },
     {
       "from": "commands.Plan",
-      "to": "commands.TerminalLines",
+      "to": "documents/text.TerminalText",
       "kind": "deps"
     },
     {
@@ -706,6 +720,11 @@
     },
     {
       "from": "packages.ContinuousIntegration",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "packages.Documents",
       "to": "product.WrittenOnce",
       "kind": "serves"
     },
@@ -736,6 +755,11 @@
     },
     {
       "from": "releases.R0_1_2",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_2_0",
       "to": "product.WrittenOnce",
       "kind": "serves"
     },
@@ -861,7 +885,7 @@
     },
     {
       "from": "scenarios.PlanSaysWhatChanges",
-      "to": "commands.TerminalLines",
+      "to": "documents/text.TerminalText",
       "kind": "deps"
     },
     {

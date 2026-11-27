@@ -6,7 +6,7 @@ import type { CommandMessages } from "../../messages"
 import type { Api as PreparationApi, Ctx, Options } from "./preparation"
 import type { Api as AssemblyApi, Assembly, Emitted, Period } from "../engine/assembly"
 import type { Counts, Texts } from "#std/algebra"
-import type { TerminalText } from "../../text"
+import type { TerminalText } from "#documents/text"
 import type { Punctuation } from "#documents/language"
 
 export interface Deps {

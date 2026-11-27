@@ -4,33 +4,36 @@
 // It does not compile the graph at startup. No dated change of the graph after its date reaches it.
 
 import { frozen } from "../../trame/internal"
-import { CommandWords } from "../../libs/commands/releases/0.1.2/src/commands.ts"
-import { Dates, Lists, Punctuation, Units } from "../../libs/documents/releases/0.1.1/src/language.ts"
+import { CommandWords } from "../../libs/commands/releases/0.2.0/src/commands.ts"
+import { EscapedText, HtmlAttributes, HtmlElement, HtmlEndTag, HtmlHeading, HtmlStartTag, SelfClosingTag } from "../../libs/documents/releases/0.2.0/src/html.ts"
+import { Dates, Lists, Punctuation, Units } from "../../libs/documents/releases/0.2.0/src/language.ts"
+import { Anchor, BacktickString, BlankLine, BlockQuote, Blocks, CodeBlock, CodeSpan, Details, Emphasis, Heading, Link, ListItem, RelativeReference, Small, StrongEmphasis, Table, TableCell, TableDelimiterRow, TableRow } from "../../libs/documents/releases/0.2.0/src/markdown.ts"
+import { ClassDefinition, Flowchart, Gantt, GanttName, GanttSection, GanttTask, MermaidLabel, MermaidLink, MermaidNode, Milestone, NodeStyle, StyleProperties, Subgraph } from "../../libs/documents/releases/0.2.0/src/mermaid.ts"
+import { FileRendering, TerminalRendering } from "../../libs/documents/releases/0.2.0/src/rendering.ts"
+import { CodeLines, Columns, ItemLine, PaddedCell, PathStep, TerminalLines, TreeBranch } from "../../libs/documents/releases/0.2.0/src/text.ts"
 import { TrameCli } from "../../src/architecture.ts"
 import { DeliveredStyle } from "../../src/delivery.ts"
 import { Asking, ClockAnswers, FilesAnswer, InstallerAnswers, ProgramsAnswer, RegistryAnswers, RunsAnswer, ServerAnswers, TimerAnswers, TreesAnswer } from "../../src/doctor.ts"
 import { OurDocumentLanguage, VisibleText } from "../../src/documents.ts"
 import { Positions, References } from "../../src/engine.ts"
 import { AcceptCandidate } from "../../src/generations.ts"
-import { AttributeSelector, ClassSelector, CssDeclaration, CssRule, CssVariable, CustomProperty, Doctype, EscapedText, HtmlAttributes, HtmlBlock, HtmlElement, HtmlEndTag, HtmlHeading, HtmlStartTag, JsonInScript, MediaFeature, MediaRule, NegationSelector, PathData, ScriptElement, SelfClosingTag } from "../../src/html.ts"
+import { AttributeSelector, ClassSelector, CssDeclaration, CssRule, CssVariable, CustomProperty, Doctype, HtmlBlock, JsonInScript, MediaFeature, MediaRule, NegationSelector, PathData, ScriptElement } from "../../src/html.ts"
 import { AnswersWithoutCrashing, BlockingHoleHasOwner, ClosedResolution, CompleteDeclaration, CompleteViewDeclaration, HoleHasCode, IntermediateFormatOnly, OrderFree, SameInputSameAnswer, UnknownWithoutEvidence } from "../../src/laws.ts"
 import { LibraryOfAModule, ReleaseIsSettled } from "../../src/libraries.ts"
-import { Anchor, BacktickString, BlankLine, BlockQuote, Blocks, CodeBlock, CodeSpan, Details, Emphasis, Heading, Link, ListItem, RelativeReference, Small, StrongEmphasis, Table, TableCell, TableDelimiterRow, TableRow } from "../../src/markdown.ts"
-import { ClassDefinition, Flowchart, Gantt, GanttName, GanttSection, GanttTask, MermaidLabel, MermaidLink, MermaidNode, Milestone, NodeStyle, StyleProperties, Subgraph } from "../../src/mermaid.ts"
 import { AdvanceMessages, CommandMessages, CompilerMessages, DevMessages, DriverMessages, LawMessages, OutputMessages, PlatformMessages, ViewMessages } from "../../src/messages.ts"
 import { VersionOrder } from "../../src/packages.ts"
 import { Banner, Brand, CompilationState, DatePicker, DocumentHead, DocumentPicker, FigureMarkers, FontLinks, Logo, MainArea, NarrowScreenRule, Navigation, PageDocument, PageScripts, RenderingToggle, Shell, SideBar, StatusStyle, Theme } from "../../src/page.ts"
 import { SeverityOrder } from "../../src/product.ts"
+import { PageRendering } from "../../src/rendering.ts"
 import { ShipOnlyWhatHolds } from "../../src/shipping.ts"
 import { LiteralRoles } from "../../src/syntax.ts"
 import { HclAttribute, HclComment, HclString, HclValue, ModuleBlock } from "../../src/terraform.ts"
-import { CodeLines, Columns, ItemLine, PaddedCell, PathStep, TerminalLines, TreeBranch } from "../../src/text.ts"
 import { ArrayLiteral, AsExpression, Assignment, AsyncBlockFunction, Await, Call, ConstDeclaration, DefaultImport, DocBlock, ExportDeclaration, IfStatement, InlineArray, LineComment, MemberAccess, ModuleTitle, NamedImport, ObjectBlock, ObjectLiteral, ObjectType, OptionalAccess, OptionalPropertySignature, Parenthesized, Property, StrictInequality, StringLiteral, UnionType } from "../../src/typescript.ts"
 import body_nodeTerminal from "../../src/code/platform/terminal.ts"
 import body_nodeCommandLine from "../../src/code/platform/command-line.ts"
-import body_valueTypes from "../../std/releases/0.29.1/src/code/algebra/values.ts"
+import body_valueTypes from "../../std/releases/0.30.0/src/code/algebra/values.ts"
 import body_cycles from "../../src/code/engine/cycles.ts"
-import body_counts from "../../std/releases/0.29.1/src/code/algebra/counts.ts"
+import body_counts from "../../std/releases/0.30.0/src/code/algebra/counts.ts"
 import body_tramePrelude from "../../src/code/platform/prelude.ts"
 import body_tsxLoader from "../../src/code/platform/tsx-loader.ts"
 import body_diskReading from "../../src/code/platform/disk-reading.ts"
@@ -39,8 +42,8 @@ import body_realTypeScript from "../../src/code/platform/typescript.ts"
 import body_resultsInTheProcess from "../../src/code/platform/kept-results.ts"
 import body_project from "../../src/code/engine/project.ts"
 import body_nodeHashing from "../../src/code/platform/hashing.ts"
-import body_sequences from "../../std/releases/0.29.1/src/code/algebra/sequences.ts"
-import body_texts from "../../std/releases/0.29.1/src/code/algebra/texts.ts"
+import body_sequences from "../../std/releases/0.30.0/src/code/algebra/sequences.ts"
+import body_texts from "../../std/releases/0.30.0/src/code/algebra/texts.ts"
 import body_engineFingerprint from "../../src/code/engine/engine-fingerprint.ts"
 import body_runsOnDisk from "../../src/code/platform/runs-on-disk.ts"
 import body_staticAnalysis from "../../src/code/engine/static-analysis.ts"
@@ -68,8 +71,8 @@ import body_compilationApi from "../../src/code/engine/compilation-api.ts"
 import body_laws from "../../src/code/engine/laws.ts"
 import body_views from "../../src/code/engine/views.ts"
 import body_lock from "../../src/code/engine/lock.ts"
-import body_renderingMessages from "../../src/code/rendering/messages.ts"
-import body_common from "../../src/code/rendering/common.ts"
+import body_renderingMessages from "../../libs/documents/releases/0.2.0/src/code/rendering/messages.ts"
+import body_common from "../../libs/documents/releases/0.2.0/src/code/rendering/common.ts"
 import body_nodeProcess from "../../src/code/platform/process.ts"
 import body_systemClock from "../../src/code/platform/system-clock.ts"
 import body_projectCommands from "../../src/code/commands/project-commands.ts"
@@ -78,7 +81,7 @@ import body_preparation from "../../src/code/commands/preparation.ts"
 import body_nodePrograms from "../../src/code/platform/programs.ts"
 import body_releaseRecords from "../../src/code/commands/releases.ts"
 import body_advance from "../../src/code/commands/advance.ts"
-import body_buildComparison from "../../libs/commands/releases/0.1.2/src/code/comparison.ts"
+import body_buildComparison from "../../libs/commands/releases/0.2.0/src/code/comparison.ts"
 import body_amending from "../../src/code/commands/amending.ts"
 import body_inPlaceSources from "../../src/code/platform/in-place-sources.ts"
 import body_amend from "../../src/code/commands/amend.ts"
@@ -87,12 +90,11 @@ import body_assembler from "../../src/code/commands/assembler.ts"
 import body_assemble from "../../src/code/commands/assemble.ts"
 import body_npmReports from "../../src/code/platform/npm-reports.ts"
 import body_audit from "../../src/code/commands/audit.ts"
-import body_mermaidDiagrams from "../../src/code/rendering/mermaid.ts"
-import body_markdownSyntax from "../../src/code/rendering/markdown.ts"
-import body_fileRendering from "../../src/code/rendering/document.ts"
-import body_textFigures from "../../src/code/rendering/text-figures.ts"
-import body_plainTextSyntax from "../../src/code/rendering/text.ts"
-import body_terminalRendering from "../../src/code/rendering/document.ts"
+import body_rendering from "../../libs/documents/releases/0.2.0/src/code/rendering/document.ts"
+import body_mermaidDiagrams from "../../libs/documents/releases/0.2.0/src/code/rendering/mermaid.ts"
+import body_markdownSyntax from "../../libs/documents/releases/0.2.0/src/code/rendering/markdown.ts"
+import body_textFigures from "../../libs/documents/releases/0.2.0/src/code/rendering/text-figures.ts"
+import body_plainTextSyntax from "../../libs/documents/releases/0.2.0/src/code/rendering/text.ts"
 import body_build from "../../src/code/commands/build.ts"
 import body_renderView from "../../src/code/commands/render-view.ts"
 import body_commandOrView from "../../src/code/commands/command-or-view.ts"
@@ -109,7 +111,6 @@ import body_page from "../../src/code/page/page.ts"
 import body_pageWords from "../../src/code/page/words.ts"
 import body_svgFigures from "../../src/code/rendering/svg-figures.ts"
 import body_htmlSyntax from "../../src/code/rendering/html.ts"
-import body_pageRendering from "../../src/code/rendering/document.ts"
 import body_devServer from "../../src/code/engine/dev-server.ts"
 import body_dev from "../../src/code/commands/dev.ts"
 import body_npmInstall from "../../src/code/platform/npm-install.ts"
@@ -478,7 +479,7 @@ const codeSpan = await frozen.body(CodeSpan)({ minLength: 1, standard: commonMar
 const lock = await body_lock({ encodings: nodeEncodings, layout, json: jsonFormatting, textFile, references, codeSpan, reading: frozen.limited(diskReading, ["existsSync","readFileSync"]), paths: frozen.limited(nodePaths, ["join"]), prelude: frozen.limited(tramePrelude, ["internal"]), messages: outputMessages })
 // "Places in a sentence" · decision
 const sentenceSlots = {"delimiter":"\u0000"}
-// "Messages of the renderers" · message catalog
+// "Words of the renderers" · message catalog
 const renderingMessages = await body_renderingMessages({})
 // "Common rendering" · function
 const common = await body_common({ values: valueTypes, syntax: referenceSyntax, slots: sentenceSlots, dates, lists, texts, messages: renderingMessages, units })
@@ -558,6 +559,8 @@ const npmReports = await body_npmReports({ npm: npmCli, values: valueTypes, coun
 const packageAudit = {"evidence":"packages","counted":["moderate","high","critical"]}
 // "Audit the packages" · entry point
 const audit = await body_audit({ exitStatus, preparation, reports: frozen.limited(npmReports, ["audit","outdated"]), audit: packageAudit, layout, reading: frozen.limited(diskReading, ["existsSync","readFileSync"]), writing: frozen.limited(diskWriting, ["mkdirSync","writeFileSync"]), paths: frozen.limited(nodePaths, ["join"]), versions: versionOrder, encodings: nodeEncodings, json: jsonFormatting, terminal: frozen.limited(nodeTerminal, ["write"]), table: columns, columns: terminalText, counts, values: valueTypes, messages: commandMessages })
+// "The renderer" · function
+const rendering = await body_rendering({ common, values: valueTypes, texts, counts, messages: renderingMessages })
 // "Mermaid" · standard
 const mermaid = {"indent":"  ","space":" ","quote":"\"","language":"mermaid"}
 // "How Mermaid figures are drawn" · decision
@@ -625,7 +628,7 @@ const strongEmphasis = await frozen.body(StrongEmphasis)({ count: 2, standard: c
 // "Link" · syntax element
 const link = await frozen.body(Link)({ openText: "[", closeText: "]", openDestination: "(", closeDestination: ")", standard: commonMark })
 // "Relative reference" · syntax element
-const relativeReference = await frozen.body(RelativeReference)({ segment: "/", fragment: "#", parent: "..", standard: uri, texts, layout })
+const relativeReference = await frozen.body(RelativeReference)({ segment: "/", fragment: "#", parent: "..", standard: uri, texts, sequences, counts })
 // "GitHub Flavored Markdown" · standard
 const gfm = {"pipe":"|"}
 // "Table cell" · syntax element
@@ -643,7 +646,7 @@ const details = await frozen.body(Details)({ tag: "details", summary: "summary",
 // "Markdown writer" · function, for "Syntax of the documents written as files"
 const markdownSyntax = await body_markdownSyntax({ figures: frozen.limited(mermaidDiagrams, ["figure"]), textRendering, punctuation, blocks, heading, listItem, blockQuote, codeBlock, emphasis, strong: strongEmphasis, codeSpan, link, relativeReference, tableCell, table, anchor, details, counts, texts, messages: renderingMessages })
 // "Rendering of the files" · function
-const fileRendering = await body_fileRendering({ common, syntax: frozen.limited(markdownSyntax, ["card","checks","code","date","details","doc","document","facts","figure","file","ident","issues","join","list","paragraph","person","ref","resolution","section","severity","start","status","summary","table","text","validity","value","within"]), values: valueTypes, texts, counts, messages: renderingMessages })
+const fileRendering = await frozen.body(FileRendering)({ rendering, syntax: frozen.limited(markdownSyntax, ["text","value","ref","doc","file","status","severity","date","person","ident","start","within","paragraph","facts","list","table","code","checks","validity","details","section","summary","issues","resolution","card","figure","document","join"]) })
 // "Box drawing" · standard
 const boxDrawing = {"vertical":"│","verticalAndRight":"├","upAndRight":"└"}
 // "Tree branch" · syntax element
@@ -661,7 +664,7 @@ const terminalLines = await frozen.body(TerminalLines)({ standard: terminalText,
 // "Plain text writer" · function, for "Syntax of the terminal"
 const plainTextSyntax = await body_plainTextSyntax({ figures: frozen.limited(textFigures, ["figure"]), layout: terminalText, columns: terminalColumns, punctuation, cell: paddedCell, table: columns, item: itemLine, code: codeLines, lines: terminalLines, counts, texts, messages: renderingMessages })
 // "Rendering in the terminal" · function
-const terminalRendering = await body_terminalRendering({ common, syntax: frozen.limited(plainTextSyntax, ["card","checks","code","date","details","doc","document","facts","figure","file","ident","issues","join","list","paragraph","person","ref","resolution","section","severity","start","status","summary","table","text","validity","value","within"]), values: valueTypes, texts, counts, messages: renderingMessages })
+const terminalRendering = await frozen.body(TerminalRendering)({ rendering, syntax: frozen.limited(plainTextSyntax, ["text","value","ref","doc","file","status","severity","date","person","ident","start","within","paragraph","facts","list","table","code","checks","validity","details","section","summary","issues","resolution","card","figure","document","join"]) })
 // "Build" · entry point
 const build = await body_build({ exitStatus, layout, preparation, machine: machineOutputs, files: fileRendering, screen: terminalRendering, writing: frozen.limited(diskWriting, ["mkdirSync","writeFileSync"]), paths: frozen.limited(nodePaths, ["join"]), terminal: frozen.limited(nodeTerminal, ["write"]), messages: commandMessages })
 // "Render a view" · function
@@ -829,7 +832,7 @@ const htmlHeading = await frozen.body(HtmlHeading)({ prefix: "h", standard: html
 // "HTML writer" · function, for "Syntax of the page"
 const htmlSyntax = await body_htmlSyntax({ figures: frozen.limited(svgFigures, ["figure"]), html, markup: documentMarkup, page: thePage, element: htmlElement, heading: htmlHeading, escape: escapedText, punctuation, slots: sentenceSlots, counts, texts, messages: renderingMessages })
 // "Rendering in the page" · function
-const pageRendering = await body_pageRendering({ common, syntax: frozen.limited(htmlSyntax, ["card","checks","code","date","details","doc","document","facts","figure","file","ident","issues","join","list","paragraph","person","ref","resolution","section","severity","start","status","summary","table","text","validity","value","within"]), values: valueTypes, texts, counts, messages: renderingMessages })
+const pageRendering = await frozen.body(PageRendering)({ rendering, syntax: frozen.limited(htmlSyntax, ["text","value","ref","doc","file","status","severity","date","person","ident","start","within","paragraph","facts","list","table","code","checks","validity","details","section","summary","issues","resolution","card","figure","document","join"]) })
 // "Messages of trame dev" · message catalog
 const devMessages = await frozen.body(DevMessages)({ language, lists })
 // "trame dev server" · function

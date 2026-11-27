@@ -284,6 +284,16 @@ Function · `Commands` · **held**
 
 ## Standard library · The engine
 
+### Trame references
+
+Standard · `ReferenceSyntax`
+
+- Maintained by: trame
+- Source: Trame, the prelude (trame/kernel.ts: refOf, getPath)
+- Constants: { separator: { value: ., meaning: Separates the module from the identifier, and the steps of a path in a field }, library: { value: /, meaning: Separates a library's name from the name of one of its modules, in the graph that imports it }, wholeNode: { value: , meaning: The empty path: the whole node, not one of its fields, refines: { node: algebra.Texts, name: empty } } }
+- Serves: A published value is cited, not copied
+- Refines: Texts
+
 ### The engine is a provider
 
 Architecture decision · `EngineAsAProvider` · **held**
@@ -775,10 +785,10 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 130
+- Version: 131
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../generations/g130
+- Its path: ../generations/g131
 - Serves: Ports of the platform, realized once
 
 ### The people of the repository
@@ -1421,6 +1431,18 @@ Release · `R0_3_0`
 - Fingerprint: f69c88114c3c885d
 - Language: shared
 - Serves: A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals
+
+### Version 0.30.0
+
+Release · `R0_30_0`
+
+- Released by: trame
+- Version: 0.30.0
+- Released on: 2026-11-27
+- What changes: Trame's reference syntax, which the engine gives and renderers read, in the module engine
+- Fingerprint: a85cd39da95a106b
+- Language: shared
+- Serves: Commands chosen, not written again, A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again, Versions that hold
 
 ### Version 0.4.0
 

@@ -7,7 +7,7 @@ import type { CommandMessages } from "../../messages"
 import type { Api as PreparationApi } from "./preparation"
 import type { Api as LockApi } from "../engine/lock"
 import type { Texts } from "#std/algebra"
-import type { PaddedCell, TerminalColumns, TerminalText } from "../../text"
+import type { PaddedCell, TerminalColumns, TerminalText } from "#documents/text"
 
 export interface Deps {
   /** The status the command returns to the system (POSIX). */

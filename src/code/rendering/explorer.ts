@@ -7,14 +7,16 @@
 
 import { Status, keyOf, type Figure, type FigureNode, type ProvidedBy } from "../../../trame/kernel"
 import type { Html, Svg, Aria, Css } from "#std/html"
-import type { HtmlElement, HtmlStartTag, SelfClosingTag, PathData, CssDeclaration, EscapedText } from "../../html"
+import type { PathData, CssDeclaration } from "../../html"
+import type { HtmlElement, HtmlStartTag, SelfClosingTag, EscapedText } from "#documents/html"
 import type { DocumentMarkup, FigureMarkup, ExplorerMarkup } from "../../markup"
 import type { ExplorerDrawing } from "../../appearance"
 import type { ThePage } from "../../page"
-import type { PageWords, RenderingMessages } from "../../messages"
+import type { PageWords } from "../../messages"
+import type { RenderingMessages } from "#documents/rendering"
 import type { Punctuation } from "#documents/language"
 import type { Counts, Sequences, Texts } from "#std/algebra"
-import type { Api as CommonApi } from "./common"
+import type { Api as CommonApi } from "#documents/code/rendering/common"
 
 type GraphFigure = Extract<Figure, { type: "graph" }>
 type Attributes = Readonly<Record<string, string | true>>

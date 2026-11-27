@@ -56,7 +56,7 @@
           "project": "std/engine.TheProject",
           "files": "std/tooling.Files",
           "comparison": "commands.BuildComparison",
-          "lines": "commands.TerminalLines",
+          "lines": "documents/text.TerminalText",
           "say": "commands.CommandWords",
           "exit": "std/system.ExitStatus",
           "counts": "std/algebra.Counts"
@@ -64,20 +64,6 @@
         "body": {
           "file": "./code/plan.ts",
           "language": "typescript"
-        }
-      }
-    },
-    {
-      "id": "commands.TerminalLines",
-      "kind": "decision",
-      "title": "How a command writes at a terminal",
-      "fields": {
-        "owner": "trame",
-        "value": {
-          "indent": "  "
-        },
-        "rejected": {
-          "Tabs": "their width depends on the terminal: what is indented under a line would not line up"
         }
       }
     },
@@ -109,15 +95,28 @@
       }
     },
     {
+      "id": "packages.Documents",
+      "kind": "package",
+      "title": "The renderers of documents",
+      "fields": {
+        "owner": "trame",
+        "packageName": "documents",
+        "version": "0.2.0",
+        "joins": "library",
+        "from": "path",
+        "at": "../documents/releases/0.2.0"
+      }
+    },
+    {
       "id": "packages.Language",
       "kind": "package",
       "title": "Trame",
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "130",
+        "version": "131",
         "joins": "language",
-        "at": "../../generations/g130"
+        "at": "../../generations/g131"
       }
     },
     {
@@ -140,9 +139,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.29.1",
+        "version": "0.30.0",
         "joins": "library",
-        "at": "../../std/releases/0.29.1"
+        "at": "../../std/releases/0.30.0"
       }
     },
     {
@@ -193,6 +192,19 @@
       }
     },
     {
+      "id": "releases.R0_2_0",
+      "kind": "release",
+      "title": "Version 0.2.0",
+      "fields": {
+        "owner": "trame",
+        "version": "0.2.0",
+        "date": "2026-11-27",
+        "what": "Indents with libs/documents' terminal text, its own decision gone; std 0.30.0",
+        "fingerprint": "6700afbbbbfb0996",
+        "language": "shared"
+      }
+    },
+    {
       "id": "scenarios.CompiledByTheEngine",
       "kind": "binding",
       "title": "Compiled by the engine that plays them",
@@ -236,7 +248,7 @@
           "project": "std/engine.TheProject",
           "files": "std/tooling.Files",
           "say": "commands.CommandWords",
-          "lines": "commands.TerminalLines",
+          "lines": "documents/text.TerminalText",
           "checks": "scenarios.ScenarioWords",
           "exit": "std/system.ExitStatus",
           "counts": "std/algebra.Counts"
@@ -494,16 +506,16 @@
     },
     {
       "from": "commands.Plan",
-      "to": "commands.TerminalLines",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Plan",
       "to": "commands.CommandWords",
       "kind": "deps"
     },
     {
       "from": "packages.ContinuousIntegration",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "packages.Documents",
       "to": "product.WrittenOnce",
       "kind": "serves"
     },
@@ -534,6 +546,11 @@
     },
     {
       "from": "releases.R0_1_2",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_2_0",
       "to": "product.WrittenOnce",
       "kind": "serves"
     },
@@ -605,11 +622,6 @@
     {
       "from": "scenarios.PlanSaysWhatChanges",
       "to": "commands.CommandWords",
-      "kind": "deps"
-    },
-    {
-      "from": "scenarios.PlanSaysWhatChanges",
-      "to": "commands.TerminalLines",
       "kind": "deps"
     },
     {

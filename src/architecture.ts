@@ -15,14 +15,6 @@ import { PageLoading } from "#std/platform"
 // When Node already has the right type, the contract reuses it (a part of node:fs, node:path…).
 
 /** The colours, by CSS variable name ("ok-soft": the background of what holds). */
-export interface Palette {
-  light: Record<string, string>
-  dark: Record<string, string>
-  /** For each status, by its key in `Status` (and "neutral"), the background colour and the stroke colour, by variable name. */
-  statuses: Record<KeyOf<typeof Status> | "neutral", { fill: string; stroke: string }>
-  /** The colour of the text. */
-  ink: string
-}
 export interface Typography {
   /** By CSS variable name. */
   fonts: Record<string, string>

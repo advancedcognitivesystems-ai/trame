@@ -13,8 +13,8 @@
 
 | Pattern | Status | Followed by |
 |---|---|---|
-| [Strategy](../.trame/std/docs/patterns.md#Strategy) | **held** | [Played on a small project](scenarios.md#PlayedOnASmallProject), [In memory](../.trame/std/docs/scenarios.md#InMemory), [Judged as the language says](../.trame/std/docs/scenarios.md#LanguageJudgment), [Judged strictly](../.trame/std/docs/scenarios.md#StrictJudgment), [The scenarios' settings](../.trame/std/docs/scenarios.md#ScenarioSettings) |
-| [Adapter](../.trame/std/docs/patterns.md#Adapter) | **held** | [Compiled by the engine that plays them](scenarios.md#CompiledByTheEngine), [Read by the engine that builds](../.trame/std/docs/scenarios.md#ReadInTheEngine) |
+| [Strategy](../.trame/std/docs/patterns.md#Strategy) | **held** | [Played on a small project](scenarios.md#PlayedOnASmallProject), [The scenarios' language](../.trame/documents/docs/scenarios.md#InTheScenariosLanguage), [Files in Markdown](../.trame/documents/docs/scenarios.md#FilesInMarkdown), [Figures in Mermaid](../.trame/documents/docs/scenarios.md#FiguresInMermaid), [The terminal in text](../.trame/documents/docs/scenarios.md#TerminalInText), [Figures at a terminal, as text](../.trame/documents/docs/scenarios.md#TerminalFiguresAsText), [In memory](../.trame/std/docs/scenarios.md#InMemory), [Judged as the language says](../.trame/std/docs/scenarios.md#LanguageJudgment), [Judged strictly](../.trame/std/docs/scenarios.md#StrictJudgment), [The scenarios' settings](../.trame/std/docs/scenarios.md#ScenarioSettings) |
+| [Adapter](../.trame/std/docs/patterns.md#Adapter) | **held** | [Compiled by the engine that plays them](scenarios.md#CompiledByTheEngine), [Read by the engine](../.trame/documents/docs/scenarios.md#LanguagesRead), [Read by the engine that builds](../.trame/std/docs/scenarios.md#ReadInTheEngine) |
 
 ## Commands · Scenarios
 
@@ -22,7 +22,7 @@
 
 ### Compiled by the engine that plays them
 
-`CompiledByTheEngine` · `src/scenarios.ts:52` · status: **held**
+`CompiledByTheEngine` · `src/scenarios.ts:53` · status: **held**
 
 In the library's scenarios, the project at hand is compiled by the engine that plays them, as on a machine it is compiled by the engine that runs the command.
 
@@ -49,7 +49,7 @@ Context: A command computes from a graph the engine compiled: a graph a scenario
 
 ### Played on a small project
 
-`PlayedOnASmallProject` · `src/scenarios.ts:66` · status: **held**
+`PlayedOnASmallProject` · `src/scenarios.ts:67` · status: **held**
 
 In the library's scenarios, the project at hand is the small project, and the project's files are kept in memory.
 

@@ -1,5 +1,6 @@
 /** Trame · Generations */
 
+import { ReferenceSyntax } from "#std/engine"
 import { code } from "../trame/kernel"
 import { decision } from "../kinds/decision"
 import { requirement } from "../kinds/requirement"
@@ -7,7 +8,6 @@ import { acceptance } from "../kinds/acceptance"
 import { fn } from "../kinds/function"
 import { ExecutableSpecification } from "./product"
 import { TypeScriptSyntax, DocBlock, ModuleTitle, LineComment, NamedImport, ExportDeclaration, ConstDeclaration, Call, ObjectBlock, Property, StringLiteral, InlineArray } from "./typescript"
-import { ReferenceSyntax } from "./conventions"
 import { GnuPositions } from "#std/text"
 import { Texts, ValueTypes } from "#std/algebra"
 

@@ -8,7 +8,7 @@ import type { FileReading, Layout, Paths, Prelude } from "../../architecture"
 import type { OutputMessages } from "../../messages"
 import type { Compiled, Diag, LockEntry } from "./compiler"
 import type { NodeEncodings } from "#std/system"
-import type { CodeSpan } from "../../markdown"
+import type { CodeSpan } from "#documents/markdown"
 
 export interface Lock {
   /**
