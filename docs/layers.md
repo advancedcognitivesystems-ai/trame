@@ -1,6 +1,6 @@
 # Layers
 
-*The graph in force on 27 November 2026, ordered by distance to the goals.*
+*The graph in force on 30 October 2026, ordered by distance to the goals.*
 
 ```mermaid
 flowchart TB
@@ -502,7 +502,7 @@ flowchart TB
     n450["A key is made of its parts<br/><small>Architecture decision</small>"]:::held
     n451["A library is a Trame project, imported by path<br/><small>Architecture decision</small>"]:::held
     n452["A library is imported by its name<br/><small>Architecture decision</small>"]:::held
-    n453["Every question of the machine is an add-on<br/><small>Architecture decision</small>"]:::held
+    n453["Every question of the machine is an add-on<br/><small>Architecture decision</small>"]:::unknown
     n454["Code holds no hidden decision<br/><small>Architecture decision</small>"]:::held
     n455["The prelude and the compiler know no kind of node<br/><small>Architecture decision</small>"]:::held
     n456["A literal in a kind or a view is an error<br/><small>Architecture decision</small>"]:::held
@@ -743,7 +743,7 @@ flowchart TB
     n681["How a generation advances<br/><small>Decision</small>"]:::neutral
     n682["Into the main branch<br/><small>Shipment</small>"]:::unknown
     n683["The language serves what it says<br/><small>Obligation</small>"]:::neutral
-    n684["The machine has what Trame needs<br/><small>Check</small>"]:::held
+    n684["The machine has what Trame needs<br/><small>Check</small>"]:::unknown
     n685["How the repository merges into main<br/><small>Decision</small>"]:::neutral
     n686["Trame's maintainers<br/><small>Role</small>"]:::neutral
     n687["How a change merges<br/><small>Policy</small>"]:::neutral
@@ -752,21 +752,21 @@ flowchart TB
     n690["Open the graph page<br/><small>Entry point</small>"]:::held
     n691["Trame's settings, as std's commands read them<br/><small>Scenario</small>"]:::held
     n692["The machines Trame runs on<br/><small>Decision</small>"]:::neutral
-    n693["What the machine runs, for Trame<br/><small>Function</small>"]:::held
+    n693["What the machine runs, for Trame<br/><small>Function</small>"]:::unknown
     n694["How a version is carried across Trame's repository<br/><small>Function</small>"]:::held
     n695["How Trame's pull requests are opened<br/><small>Function</small>"]:::held
     n696["Trame's settings in the scenarios<br/><small>Technical choice</small>"]:::held
-    n697["The page's program<br/><small>Artefact</small>"]:::held
+    n697["The page's program<br/><small>Artefact</small>"]:::unknown
     n698["trame plan runs in the engine<br/><small>Check</small>"]:::unknown
     n699["How a pull request is checked on GitHub<br/><small>Decision</small>"]:::neutral
-    n700["The pull requests' workflow<br/><small>Artefact</small>"]:::held
+    n700["The pull requests' workflow<br/><small>Artefact</small>"]:::unknown
     n701["Read the repository's settings<br/><small>Entry point</small>"]:::held
     n702["The repository's projects<br/><small>Decision</small>"]:::neutral
     n703["The repository is read from GitHub<br/><small>Check</small>"]:::unknown
     n704["The repository left by hand, in the scenario<br/><small>Decision</small>"]:::neutral
     n705["The repository as decided<br/><small>Shipment</small>"]:::unknown
     n706["The repository's work on a machine<br/><small>Technical choice</small>"]:::unknown
-    n707["The files that run it elsewhere<br/><small>Shipment</small>"]:::held
+    n707["The files that run it elsewhere<br/><small>Shipment</small>"]:::unknown
     n708["The SDLC in memory<br/><small>Technical choice</small>"]:::held
     n709["The SDLC on the machine<br/><small>Technical choice</small>"]:::unknown
     n710["What the programs of Trame's SDLC say<br/><small>Message catalog</small>"]:::neutral
@@ -775,7 +775,7 @@ flowchart TB
     n713["The engine<br/><small>Artefact</small>"]:::unknown
     n714["Trame's repository<br/><small>Decision</small>"]:::neutral
     n715["Trame's SDLC<br/><small>Component</small>"]:::neutral
-    n716["What the machine must also have<br/><small>Technical choice</small>"]:::held
+    n716["What the machine must also have<br/><small>Technical choice</small>"]:::unknown
   end
   subgraph shipping["Trame · Shipping"]
     n717["Attribution<br/><small>Function</small>"]:::held

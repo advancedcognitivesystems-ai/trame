@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 27 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 30 October 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Trame · Appearance
 
@@ -4318,7 +4318,7 @@ Architecture decision · `LibrariesByName` · **held**
 
 ### Every question of the machine is an add-on
 
-Architecture decision · `MachineQuestionsAsAddOns` · **held**
+Architecture decision · `MachineQuestionsAsAddOns` · **unknown**
 
 - Decided by: trame
 - Context: On 17 November a machine whose browsers had moved refused the check of the page, and trame doctor said nothing of it: what a project needs of its machine was not the engine's to know.
@@ -6904,7 +6904,7 @@ Function · `GraphPageSelectors` · **held**
 
 ### What the machine runs, for Trame
 
-Function · `OurMachineSettings` · **held**
+Function · `OurMachineSettings` · **unknown**
 
 - Owner: trame
 - Parameters: { machines: sdlc.OurMachines }
@@ -7052,7 +7052,7 @@ Technical choice · `SdlcOnTheMachine` · **unknown**
 
 ### What the machine must also have
 
-Technical choice · `WhatTheMachineMustHave` · **held**
+Technical choice · `WhatTheMachineMustHave` · **unknown**
 
 - Decided by: trame
 - Context: On 17 November a machine whose browsers had moved refused the check of the page, and trame doctor said nothing of it; the pull requests and the propagation need Git, and the engine's loader Node 22.
@@ -7126,7 +7126,7 @@ Artefact · `GraphPage` · **unknown**
 
 ### The page's program
 
-Artefact · `PageProgram` · **held**
+Artefact · `PageProgram` · **unknown**
 
 - Owner: trame
 - Path: out/browser/page-app.ts
@@ -7135,7 +7135,7 @@ Artefact · `PageProgram` · **held**
 
 ### The pull requests' workflow
 
-Artefact · `PullRequestWorkflow` · **held**
+Artefact · `PullRequestWorkflow` · **unknown**
 
 - Owner: trame
 - Path: .github/workflows/trame-pull-request.yml
@@ -7182,7 +7182,7 @@ Check · `GraphPageOpens` · **unknown**
 
 ### The machine has what Trame needs
 
-Check · `MachineAsked` · **held**
+Check · `MachineAsked` · **unknown**
 
 - Owner: trame
 - Run by the engine's command: doctor
@@ -7239,7 +7239,7 @@ Shipment · `RepositorySet` · **unknown**
 
 ### The files that run it elsewhere
 
-Shipment · `RunnersWritten` · **held**
+Shipment · `RunnersWritten` · **unknown**
 
 - Owner: trame
 - Target: repository

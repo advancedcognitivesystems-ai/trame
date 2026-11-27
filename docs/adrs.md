@@ -1,8 +1,8 @@
 # Architecture decisions
 
-*The choices that shape the product without being values, in force on 27 November 2026: why each was taken, what was rejected, and the nodes that apply it.*
+*The choices that shape the product without being values, in force on 30 October 2026: why each was taken, what was rejected, and the nodes that apply it.*
 
-> **46 architecture decisions, 39 held by the nodes that apply them**
+> **46 architecture decisions, 38 held by the nodes that apply them**
 
 | Decision | Status | Applied by |
 |---|---|---|
@@ -44,7 +44,7 @@
 | [A run is kept while what it reads is as it was](principles.md#RunsKept) | **unknown** | [A run is kept while what it reads is as it was](platform.md#RunsByWhatTheyRead), [In the scenarios, runs are kept in the process](platform.md#RunsKeptInTheProcess), [On a machine, runs are kept on disk](platform.md#RunsKeptOnDisk) |
 | [Evidence is sealed](principles.md#EvidenceSealed) | **held** | [Evidence sealed by attribution](shipping.md#SealedByAttribution) |
 | [An amendment sits beside the value it changes](principles.md#AmendmentsBesideTheirValue) | **held** | [Amendments go in the sources](platform.md#AmendmentsInPlace) |
-| [Every question of the machine is an add-on](principles.md#MachineQuestionsAsAddOns) | **held** | [What the engine asks the machine](doctor.md#EngineQuestions), [What the machine must also have](sdlc.md#WhatTheMachineMustHave) |
+| [Every question of the machine is an add-on](principles.md#MachineQuestionsAsAddOns) | **unknown** | [What the engine asks the machine](doctor.md#EngineQuestions), [What the machine must also have](sdlc.md#WhatTheMachineMustHave) |
 | [Trame's SDLC runs with std's tooling](principles.md#SdlcWithStdTooling) | **unknown** | [GitHub merges once it holds, asked in a session](sdlc.md#AutoMergeInASession), [GitHub merges once it holds, asked by its command line](sdlc.md#AutoMergeOnTheMachine), [The repository's work on a machine](sdlc.md#RepositoryWorkOnAMachine), [The SDLC on the machine](sdlc.md#SdlcOnTheMachine) |
 | [Trame runs the commands libraries offer](principles.md#CommandsFromLibraries) | **unknown** | [The commands Trame takes from std](sdlc.md#CommandsOfStd), [The commands Trame takes from libs/commands](sdlc.md#CommandsWrittenOnce) |
 | [The engine is a provider, for Trame too](principles.md#EngineProvidesForTrame) | **unknown** | [The commands Trame takes from libs/commands](sdlc.md#CommandsWrittenOnce), [std's languages, read by the engine](syntax.md#StdLanguagesRead) |
@@ -839,7 +839,7 @@ Consequences: Where amendments go is the port Amendments: in the sources now; on
 
 ### Every question of the machine is an add-on
 
-`MachineQuestionsAsAddOns` · `src/principles.ts:558` · status: **held**
+`MachineQuestionsAsAddOns` · `src/principles.ts:558` · status: **unknown**
 
 What trame doctor asks is answered by add-ons (decided 25 November): the engine's own, chosen in its graph and asked always, then the project's, which a provider's adapter or libs/machine offers and the project chooses.
 

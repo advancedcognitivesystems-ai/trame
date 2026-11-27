@@ -1922,3 +1922,18 @@ export const G129 = release({
   archive: "33f89a045e47daa4",
   assembledBy: G128,
 })
+
+/**
+ * Generation 130
+ */
+export const G130 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g130",
+  date: "2026-11-27",
+  what: "Every choice backed by an architecture decision of its project (choice-unbacked), which may adopt a library's; the engine's plan and amend compare builds with libs/commands' comparison, the copy gone",
+  fingerprint: "15cd22e74cfcf32d",
+  language: "shared",
+  archive: "59658b2c5f486d08",
+  assembledBy: G129,
+})
