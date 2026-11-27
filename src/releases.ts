@@ -1952,3 +1952,18 @@ export const G131 = release({
   archive: "59658b2c5f486d08",
   assembledBy: G130,
 })
+
+/**
+ * Generation 132
+ */
+export const G132 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g132",
+  date: "2026-11-27",
+  what: "The engine's API gives a compiled project's documents (the views' documents with where each card is) and one view's document or why there is none; the engine's view answers through it",
+  fingerprint: "c8ae3abb70c8704d",
+  language: "shared",
+  archive: "c4eba3cff58c1b7b",
+  assembledBy: G131,
+})

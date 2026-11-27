@@ -1,6 +1,6 @@
 # Layers
 
-*The graph in force on 27 November 2026, ordered by distance to the goals.*
+*The graph in force on 30 October 2026, ordered by distance to the goals.*
 
 ```mermaid
 flowchart TB
@@ -695,7 +695,7 @@ flowchart TB
     n637["How a version is carried across Trame's repository<br/><small>Function</small>"]:::held
     n638["How Trame's pull requests are opened<br/><small>Function</small>"]:::held
     n639["Trame's settings in the scenarios<br/><small>Technical choice</small>"]:::held
-    n640["The page's program<br/><small>Artefact</small>"]:::held
+    n640["The page's program<br/><small>Artefact</small>"]:::unknown
     n641["trame plan runs in the engine<br/><small>Check</small>"]:::unknown
     n642["How a pull request is checked on GitHub<br/><small>Decision</small>"]:::neutral
     n643["The pull requests' workflow<br/><small>Artefact</small>"]:::unknown

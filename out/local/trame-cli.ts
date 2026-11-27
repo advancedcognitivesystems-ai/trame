@@ -668,7 +668,7 @@ const terminalRendering = await frozen.body(TerminalRendering)({ rendering, synt
 // "Build" · entry point
 const build = await body_build({ exitStatus, layout, preparation, machine: machineOutputs, files: fileRendering, screen: terminalRendering, writing: frozen.limited(diskWriting, ["mkdirSync","writeFileSync"]), paths: frozen.limited(nodePaths, ["join"]), terminal: frozen.limited(nodeTerminal, ["write"]), messages: commandMessages })
 // "Render a view" · function
-const renderView = await body_renderView({ line: trameCommands, json: jsonFormatting, preparation, views, files: fileRendering, screen: terminalRendering, terminal: frozen.limited(nodeTerminal, ["write","writeRaw"]), messages: commandMessages })
+const renderView = await body_renderView({ line: trameCommands, json: jsonFormatting, preparation, views, files: fileRendering, screen: terminalRendering, terminal: frozen.limited(nodeTerminal, ["write","writeRaw"]), texts, messages: commandMessages })
 // "A command of the project, or a view" · entry point
 const commandOrView = await body_commandOrView({ line: trameCommands, exitStatus, preparation, renderView, compiler, views, assembler, projectCommands, writing: frozen.limited(diskWriting, ["mkdirSync","writeFileSync"]), paths: frozen.limited(nodePaths, ["dirname"]), currentProcess: frozen.limited(nodeProcess, ["onSignal","runHere","runTs"]), posix, events: nodeEvents, terminal: frozen.limited(nodeTerminal, ["error"]), counts, sequences, messages: commandMessages })
 // "esbuild" · implementation, for "Bundler"

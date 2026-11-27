@@ -1,11 +1,11 @@
 # Owners
 
-*What each person must decide, settle or watch on 27 November 2026, and what they own.*
+*What each person must decide, settle or watch on 30 October 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
 | Trame's maintainers | 0 | 0 | 6 | 0 |
-| trame | 0 | 0 | 18 | 720 |
+| trame | 0 | 0 | 20 | 720 |
 
 <a id="Trame's maintainers"></a>
 
@@ -18,9 +18,9 @@
 | warning | `check-stale` | Checked on another build of its artefacts, by another version of its program or another engine: to check again | [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws) | Trame's maintainers |  |
 | warning | `check-stale` | Checked on another build of its artefacts, by another version of its program or another engine: to check again | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | Trame's maintainers |  |
 | warning | `check-stale` | Checked on another build of its artefacts, by another version of its program or another engine: to check again | [The graph page opens](sdlc.md#GraphPageOpens) | Trame's maintainers |  |
-| warning | `check-stale` | Checked on another build of its artefacts, by another version of its program or another engine: to check again | [The machine has what Trame needs](sdlc.md#MachineAsked) | Trame's maintainers |  |
-| warning | `check-stale` | Checked on another build of its artefacts, by another version of its program or another engine: to check again | [trame plan runs in the engine](sdlc.md#PlanRunsInTheEngine) | Trame's maintainers |  |
-| warning | `check-stale` | Checked on another build of its artefacts, by another version of its program or another engine: to check again | [The repository is read from GitHub](sdlc.md#RepositoryRead) | Trame's maintainers |  |
+| warning | `check-awaited` | To run: trame ship runs it on the artefacts it checks | [The machine has what Trame needs](sdlc.md#MachineAsked) | Trame's maintainers |  |
+| warning | `check-awaited` | To run: trame ship runs it on the artefacts it checks | [trame plan runs in the engine](sdlc.md#PlanRunsInTheEngine) | Trame's maintainers |  |
+| warning | `check-awaited` | To run: trame ship runs it on the artefacts it checks | [The repository is read from GitHub](sdlc.md#RepositoryRead) | Trame's maintainers |  |
 
 <a id="trame"></a>
 
@@ -37,15 +37,17 @@
 | warning | `shipment-awaits` | To ship: The candidate runs on the machine is unknown | [Into the main branch](sdlc.md#IntoMain) | trame |  |
 | warning | `shipment-awaits` | To ship: The candidate engine is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
 | warning | `shipment-awaits` | To ship: The graph page is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
+| warning | `shipment-awaits` | To ship: The page's program is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
 | warning | `shipment-awaits` | To ship: The page is assembled is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
 | warning | `shipment-awaits` | To ship: The candidate plays the laws is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
 | warning | `shipment-awaits` | To ship: The candidate runs on the machine is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
 | warning | `shipment-awaits` | To ship: The graph page opens is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
-| warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | trame |  |
+| warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The page's program](sdlc.md#PageProgram) | trame |  |
+| warning | `artifact-not-built` | Not built yet: trame ship builds it | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | trame |  |
 | warning | `shipment-awaits` | To ship: The repository is read from GitHub is unknown | [The repository as decided](sdlc.md#RepositorySet) | trame |  |
 | warning | `shipment-awaits` | To ship: The candidate runs on the machine is unknown | [The repository as decided](sdlc.md#RepositorySet) | trame |  |
 | warning | `shipment-awaits` | To ship: The pull requests' workflow is unknown | [The files that run it elsewhere](sdlc.md#RunnersWritten) | trame |  |
-| warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The engine](sdlc.md#TheEngine) | trame |  |
+| warning | `artifact-not-built` | Not built yet: trame ship builds it | [The engine](sdlc.md#TheEngine) | trame |  |
 
 ### Owns
 
@@ -691,7 +693,7 @@
 | [How a version is carried across Trame's repository](sdlc.md#OurPropagation) | Function | **held** |
 | [How Trame's pull requests are opened](sdlc.md#OurPullRequests) | Function | **held** |
 | [Trame's settings in the scenarios](sdlc.md#OurSettingsInTheScenarios) | Technical choice | **held** |
-| [The page's program](sdlc.md#PageProgram) | Artefact | **held** |
+| [The page's program](sdlc.md#PageProgram) | Artefact | **unknown** |
 | [trame plan runs in the engine](sdlc.md#PlanRunsInTheEngine) | Check | **unknown** |
 | [How a pull request is checked on GitHub](sdlc.md#PullRequestsOnGitHub) | Decision |  |
 | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **unknown** |
