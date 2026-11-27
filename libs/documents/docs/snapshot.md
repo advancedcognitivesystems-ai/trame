@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 26 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 27 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Documents · Language
 
@@ -10,6 +10,14 @@ Decision · `NumberDisplay`
 
 - Decided by: trame
 - Value: { base: 10, decimals: 2 }
+
+### The language of the library's words
+
+Decision · `WordsLanguage`
+
+- Decided by: trame
+- Value: { tag: en-GB }
+- Rejected: std's language of its commands, a choice of std's, which may change for std's reasons
 
 ### The language of the documents
 
@@ -74,9 +82,9 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 129
+- Version: 130
 - How it joins the graph: language
-- Its path: ../../generations/g129
+- Its path: ../../generations/g130
 - Serves: Documents rendered once, for every project
 
 ### The people of the repository
@@ -97,9 +105,9 @@ Package · `StandardLibrary`
 
 - Owner: trame
 - Name: std
-- Version: 0.29.0
+- Version: 0.29.1
 - How it joins the graph: library
-- Its path: ../../std/releases/0.29.0
+- Its path: ../../std/releases/0.29.1
 - Serves: Documents rendered once, for every project
 
 ## Documents · Product
@@ -124,6 +132,18 @@ Release · `R0_1_0`
 - Language: shared
 - Serves: Documents rendered once, for every project
 
+### Version 0.1.1
+
+Release · `R0_1_1`
+
+- Released by: trame
+- Version: 0.1.1
+- Released on: 2026-11-27
+- What changes: its own language of words; the decision behind its choices: the documents speak the engine's language
+- Fingerprint: f0c7ad53400d19af
+- Language: shared
+- Serves: Documents rendered once, for every project
+
 ## Documents · Scenarios
 
 ### What the scenarios read and expect
@@ -140,6 +160,17 @@ Decision · `ScenarioLanguage`
 - Decided by: trame
 - Value: { tag: en-GB, punctuation: { parts:  · , items: , , givenBy:  ← , opensAside:  (, closesAside: ), clauses: ; , introduces: : , equals:  = , absent: — } }
 
+### The documents speak the engine's language
+
+Architecture decision · `TheEnginesLanguage` · **held**
+
+- Decided by: trame
+- Context: A document says, in one line, what a view said and what a renderer wrote around it: two languages, or two ways of writing a date, would show in the same sentence.
+- Consequences: The engine's g.lib, the renderers and the page read the same nodes; another language is another realization, with its catalogs.
+- Rejected: The library's own language, fixed, a project whose engine spoke another would get documents in two languages
+- Serves: Documents rendered once, for every project
+- Applied by: Dates, Lists, Punctuation, Values with their units, The scenarios' language
+
 ### Written in the language of the scenarios
 
 Function · `WrittenForTheScenarios` · **held**
@@ -154,6 +185,7 @@ Function · `WrittenForTheScenarios` · **held**
 Message catalog · `ScenarioWords`
 
 - Owner: trame
+- Written in: The language of the library's words
 
 ### The scenarios' language
 
@@ -194,7 +226,7 @@ Decision · `PullRequestsOnGitHub`
 
 ### The pull requests' workflow
 
-Artefact · `PullRequestWorkflow` · **unknown**
+Artefact · `PullRequestWorkflow` · **held**
 
 - Owner: trame
 - Path: ../../.github/workflows/documents-pull-request.yml
@@ -221,7 +253,7 @@ Shipment · `NextVersion` · **unknown**
 
 ### The files that run it elsewhere
 
-Shipment · `RunnersWritten` · **unknown**
+Shipment · `RunnersWritten` · **held**
 
 - Owner: trame
 - Target: repository

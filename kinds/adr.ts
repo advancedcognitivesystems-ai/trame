@@ -18,6 +18,8 @@ const fields = { owner: field.owner(say.adrDecidedBy()), ...reasonFields }
 const edges = {
   [EdgeName.serves]: optionalEdge(edge.many([KindName.goal], { label: say.adrServes(), inverse: say.adrServedBy() })),
   [EdgeName.appliedBy]: optionalEdge(edge.many([AnyTarget], { label: say.adrAppliedBy(), inverse: say.adrApplies() })),
+  /** The architecture decisions of a library this one takes as its own (E3): their reasons are the project's too. */
+  adopts: optionalEdge(edge.many([KindName.adr], { label: say.adrAdopts(), inverse: say.adrAdoptedBy() })),
 }
 const E = keysOf(edges)
 
@@ -50,7 +52,8 @@ export function reasonsOf(self: View, lib: Lib): Block[] {
  * while one does not (evidence awaited). Applied only by what is offered here and chosen nowhere (a library's adapter,
  * its pattern), it has none: it is judged where it is chosen. Applied only by nodes that can never have a status (ports,
  * decisions), nothing can prove it as it is written: an error of the graph. Nothing applying it is a wish, not yet a
- * decision.
+ * decision. A project's decision may adopt a library's (E3): it takes the library's reasons as its own, and applies the
+ * choices it makes with what the library offers; a project's own decision is applied, never adopted.
  */
 const kind = defineKind({
   name: KindName.adr,
@@ -63,9 +66,11 @@ const kind = defineKind({
   changes: { [F.context]: ChangeWay.stated, [F.consequences]: ChangeWay.stated, [F.rejected]: ChangeWay.stated },
 
   holes: (self, g) => {
+    const adoptedOwn = g.from(self).out(E.adopts).nodes().filter((a) => a.library === undefined)
+      .map((a) => hole.error(HoleCode.adoptionNotOfALibrary, say.adrAdoptsOwn(a.title), self.owner))
     const appliers = g.from(self).out(E.appliedBy).nodes()
-    if (g.lib.counts.isEmpty(appliers)) return [hole.warning(HoleCode.adrNotApplied, say.adrNothingAppliesItYetAWish(), self.owner)]
-    return [appliers.every((v) => v.status === undefined && !offered(v)) && hole.error(HoleCode.adrUnprovable, say.adrNothingProvableAppliesIt(), self.owner)]
+    if (g.lib.counts.isEmpty(appliers)) return [...adoptedOwn, hole.warning(HoleCode.adrNotApplied, say.adrNothingAppliesItYetAWish(), self.owner)]
+    return [...adoptedOwn, appliers.every((v) => v.status === undefined && !offered(v)) && hole.error(HoleCode.adrUnprovable, say.adrNothingProvableAppliesIt(), self.owner)]
   },
 
   status(self, g) {
@@ -87,9 +92,11 @@ interface AdrInput {
   rejected?: Record<string, string>
   serves?: readonly Node<"goal">[]
   appliedBy?: readonly Node[]
+  /** A library's architecture decisions this one adopts (E3). */
+  adopts?: readonly Node<"adr">[]
 }
 
-/** `adr({ owner, context, consequences, rejected: { option: "why not" }, serves: [Goal], appliedBy: [Rule, Function] })` */
+/** `adr({ owner, context, consequences, rejected: { option: "why not" }, serves: [Goal], appliedBy: [Rule, Function], adopts: [LibraryAdr] })` */
 export function adr(input: AdrInput): Node<"adr"> {
   return kind(input as never) as never
 }

@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 26 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 27 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Commands · Commands
 
@@ -11,6 +11,14 @@ Decision · `TerminalLines`
 - Decided by: trame
 - Value: { indent:    }
 - Rejected: Tabs, their width depends on the terminal: what is indented under a line would not line up
+
+### The language the commands speak
+
+Decision · `WordsLanguage`
+
+- Decided by: trame
+- Value: { tag: en-GB }
+- Rejected: std's language of its commands, a choice of std's, which may change for std's reasons
 
 ### The library's commands
 
@@ -45,7 +53,9 @@ Entry point · `Plan` · **held**
 Message catalog · `CommandWords`
 
 - Owner: trame
-- Parameters: { language: std/tooling.CommandLanguage }
+- Parameters: { language: commands.WordsLanguage }
+- Written in: The language the commands speak
+- Depends on: The language the commands speak
 
 ## Commands · Packages
 
@@ -67,9 +77,9 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 129
+- Version: 130
 - How it joins the graph: language
-- Its path: ../../generations/g129
+- Its path: ../../generations/g130
 - Serves: Commands every project runs, written once
 
 ### The people of the repository
@@ -90,9 +100,9 @@ Package · `StandardLibrary`
 
 - Owner: trame
 - Name: std
-- Version: 0.29.0
+- Version: 0.29.1
 - How it joins the graph: library
-- Its path: ../../std/releases/0.29.0
+- Its path: ../../std/releases/0.29.1
 - Serves: Commands every project runs, written once
 
 ## Commands · Product
@@ -129,6 +139,18 @@ Release · `R0_1_1`
 - Language: shared
 - Serves: Commands every project runs, written once
 
+### Version 0.1.2
+
+Release · `R0_1_2`
+
+- Released by: trame
+- Version: 0.1.2
+- Released on: 2026-11-27
+- What changes: its own language of words; the decision behind its choices, which adopts std's: the engine is a provider
+- Fingerprint: 29350d242a13f4d9
+- Language: shared
+- Serves: Commands every project runs, written once
+
 ## Commands · Scenarios
 
 ### The small project
@@ -137,6 +159,17 @@ Decision · `SmallProject`
 
 - Decided by: trame
 - Value: { root: #commands/samples/small, today: 2026-11-26 }
+
+### A command is played on a real graph
+
+Architecture decision · `PlayedOnARealGraph` · **held**
+
+- Decided by: trame
+- Context: A command reads what the engine gives (the graph as a build writes it, what a view receives): written by hand, a graph would check the command against what its author thought the engine gives.
+- Consequences: The small project travels with each version, named by the library's package; a project that imports the library plays the scenarios on it there.
+- Rejected: A graph written by the scenario, it proves nothing of what the engine gives, which is what the command reads on a machine
+- Serves: Commands every project runs, written once
+- Applied by: Compiled by the engine that plays them, Played on a small project
 
 ### Which project the scenarios compile
 
@@ -151,6 +184,7 @@ Function · `TheSmallProject` · **held**
 Message catalog · `ScenarioWords`
 
 - Owner: trame
+- Written in: The language the commands speak
 
 ### Compiled by the engine that plays them
 

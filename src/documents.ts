@@ -88,7 +88,7 @@ export const PunctuationOfTheLanguage = adr({
     "The marks in every catalog": "the renderers, the page and the views share them: each catalog would repeat them",
   },
   serves: [SingleSource],
-  appliedBy: [OurDocumentLanguage, Language],
+  appliedBy: [OurDocumentLanguage, DocumentsInOurLanguage, Language],
 })
 
 /**

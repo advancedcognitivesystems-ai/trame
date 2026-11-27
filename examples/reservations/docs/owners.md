@@ -5,7 +5,7 @@
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
 | The operators | 0 | 0 | 2 | 0 |
-| karim | 1 | 0 | 17 | 112 |
+| karim | 1 | 0 | 17 | 119 |
 | lea | 0 | 0 | 1 | 13 |
 
 <a id="The operators"></a>
@@ -127,8 +127,15 @@
 | [Language](messages.md#Language) | Decision |  |
 | [Karim](people.md#Karim) | Actor |  |
 | [The service's team](people.md#ServiceTeam) | Actor |  |
+| [The service judges itself harder than the language](principles.md#JudgedHarder) | Architecture decision | **held** |
+| [What the service keeps is kept in SQL](principles.md#KeptInSql) | Architecture decision | **unknown** |
 | [A cancellation refunds once](principles.md#RefundOnce) | Architecture decision | **held** |
+| [Refunds go through the provider, simulated outside production](principles.md#RefundsThroughTheProvider) | Architecture decision | **unknown** |
+| [The service's SDLC runs with std's tooling and commands](principles.md#SdlcWithStd) | Architecture decision | **unknown** |
 | [Secrets stay out of the graph](principles.md#SecretsOutOfTheGraph) | Architecture decision | **unknown** |
+| [A table starts with reservations only outside production](principles.md#SeededOutsideProduction) | Architecture decision | **unknown** |
+| [The API is served by Node](principles.md#ServedByNode) | Architecture decision | **unknown** |
+| [The time is a port](principles.md#TimeAsAPort) | Architecture decision | **unknown** |
 | [Read a reservation](scenarios.md#ReadScenario) | Scenario | **held** |
 | [A read never writes](scenarios.md#ReadsNeverWrite) | Scenario | **held** |
 | [Cancelling twice refunds only once](scenarios.md#RepeatedCancellationScenario) | Scenario | **held** |

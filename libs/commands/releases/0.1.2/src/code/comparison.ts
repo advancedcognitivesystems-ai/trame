@@ -1,10 +1,10 @@
 // Two builds compared: the nodes added and removed, the statuses that change, the nodes whose fields, result or edges
 // change, the issues raised and resolved, and the shipments whose obligations are touched; then said, line by line.
-// trame plan compares the graph now with graph.json, trame amend with the graph as an amendment would make it. Pure.
+// trame plan compares the graph now with graph.json. Pure.
 
-import { KindName, ShipmentEdge } from "../../../trame/kernel"
-import type { ProvidedBy } from "../../../trame/kernel"
-import type { CommandMessages, OutputMessages } from "../../messages"
+import { KindName, ShipmentEdge } from "#trame/kernel"
+import type { ProvidedBy } from "#trame/kernel"
+import type { CommandWords } from "../commands"
 
 /** A node as graph.json writes it: what a plan compares. */
 export interface Written { id: string; kind: string; title?: string; status?: string; fields?: unknown; result?: unknown; diagnostics?: string[] }
@@ -34,13 +34,11 @@ export interface Plan {
 }
 
 export interface Deps {
-  messages: ProvidedBy<typeof CommandMessages>
-  /** How graph.json writes an issue: the issues of the graph are compared as those of its nodes. */
-  output: ProvidedBy<typeof OutputMessages>
+  say: ProvidedBy<typeof CommandWords>
 }
 
-const body = (deps: Deps) => {
-  const { messages } = deps
+const body = ({ say }: Deps) => {
+  const messages = say
   const same = (a: unknown, b: unknown) => JSON.stringify(a) === JSON.stringify(b)
   const edgesOf = (b: Build) => {
     const of = new Map<string, string[]>()
@@ -60,7 +58,7 @@ const body = (deps: Deps) => {
   }
   const issuesOf = (b: Build): Issue[] => [
     ...b.nodes.flatMap((n) => (n.diagnostics ?? []).map((what) => ({ node: n.id, what }))),
-    ...(b.diagnostics ?? []).map((d) => ({ what: deps.output.diagnostic(d.severity, d.what) })),
+    ...(b.diagnostics ?? []).map((d) => ({ what: say.issue(d.severity, d.what) })),
   ]
 
   function compare(before: Build, now: Build): Plan {
@@ -122,5 +120,4 @@ const body = (deps: Deps) => {
   return { compare, lines, shipments }
 }
 
-export type Api = ReturnType<typeof body>
 export default body

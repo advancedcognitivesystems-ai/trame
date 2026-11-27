@@ -238,7 +238,9 @@ command runs; the API grows with a generation when a command needs more. The com
 once in `libs/commands` (`#commands/*`; `plan` so far): a project takes one by a binding in the environment of its
 machine (`follows: [Command]`, with `ProjectInTheEngine`), and its `trame plan` runs the library's, in the engine's
 process. A check may run such a command (`runs: Plan`, g127: `trame ship` assembles the library's component with the
-commands chosen there): Trame's `PlanRunsInTheEngine` proves `ProjectInTheEngine` in each merge into main.
+commands chosen there): Trame's `PlanRunsInTheEngine` proves `ProjectInTheEngine` in each merge into main. Code leaves
+the engine by a move, never a copy: the engine's own `plan` and `amend` compare two builds with libs/commands'
+`BuildComparison` (g130), the one comparison, until the commands themselves leave.
 
 Reading a language is a primitive of the engine too (g128–g129, std 0.29.0): a `language` node's reader may be std's
 port `LanguageReading`, which `ReadByTheEngine` realizes with the engine's reader (`EngineApi.reader`). The languages the
@@ -311,6 +313,12 @@ November): the common renderer and its syntaxes, the figures, Markdown and Merma
 - **No code made of a text** (since g82): `eval`, `Function`, a value's `constructor` refuse the build, anywhere.
 - **A technology is chosen in one node**: a binding, which follows a pattern (Strategy, Adapter, Bridge, Abstract
   Factory, Repository) and is checked against its shape. Code that uses a port never names what answers it.
+- **Every choice has its reasons** (the law of choices, g130): a binding that no architecture decision of its project
+  applies is warned (`choice-unbacked`). Write the ADR (its context, what it rejected) and list the binding in its
+  `appliedBy`. A choice made with what a library offers may adopt the library's decision (`adopts: [ToolingAsPorts]`,
+  imported by its package): its reasons become the project's, and the project's ADR still applies its own bindings. A
+  project adopts only a library's decision; its own it applies (`adoption-not-of-a-library`). Every project of the
+  repository backs each of its choices; the example's and Poselia's are published.
 - **An extension point takes add-ons** (since g120): a port declared with `extensionPoint<C>({ … })` is answered by every
   realization one choice makes in an environment, in the order that choice writes them (pattern `Plugin`); what depends
   on it receives the list (`readonly C[]`), none when nothing is chosen, each add-on whole, with every effect its
@@ -333,7 +341,8 @@ November): the common renderer and its syntaxes, the figures, Markdown and Merma
 - **Words are in catalogs**, in the language they are written in; a count uses `plurals(language)` with each form
   written; lists use `Lists`; dates use `Dates` (`#documents/language`, since g129). A product in several languages has
   one catalog per language, each translating the first (`translates`), and chooses the catalog of the language it
-  speaks when it runs.
+  speaks when it runs. A library says the language of its own words in a decision of its own (libs/commands' and
+  libs/documents' `WordsLanguage`): a catalog never borrows the language another library decided for its words.
 
 ## 5b. Packages and libraries
 
@@ -711,6 +720,9 @@ elements), a port answered differently in several environments is answered as in
 - Before g129, a project compiled through the engine's API (a library's scenario compiling its small project) left the
   engine with that project's views: a cold build of Trame lost the documents of its own views (literals, versions). The
   API gives the views back.
+
+- A project's decision that adopts a library's names it by its package (`import { CommandsOfALibrary } from
+  "#std/commands"`) and still applies its own bindings: adopting alone backs no choice of the project.
 
 ## 10. Reading further
 

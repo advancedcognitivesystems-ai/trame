@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-26",
+  "at": "2026-11-27",
   "nodes": [
     {
       "id": "packages.ContinuousIntegration",
@@ -21,10 +21,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "129",
+        "version": "130",
         "joins": "language",
         "from": "path",
-        "at": "../../generations/g129"
+        "at": "../../generations/g130"
       }
     },
     {

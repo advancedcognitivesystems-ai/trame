@@ -132,3 +132,14 @@ export const Units = fn({
     }
   },
 })
+
+/**
+ * The language of the library's words
+ * British English: the library's catalogs are written in it, the language Trame's engine speaks; a project that speaks
+ * another translates them, a catalog for each language.
+ */
+export const WordsLanguage = decision<{ tag: string }>({
+  owner: "trame",
+  value: { tag: "en-GB" },
+  rejected: { "std's language of its commands": "a choice of std's, which may change for std's reasons" },
+})

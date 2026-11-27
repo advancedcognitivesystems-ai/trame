@@ -1,10 +1,10 @@
 # Owners
 
-*What each person must decide, settle or watch on 26 November 2026, and what they own.*
+*What each person must decide, settle or watch on 27 November 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 6 | 270 |
+| trame | 0 | 0 | 6 | 272 |
 
 <a id="trame"></a>
 
@@ -166,6 +166,7 @@
 | [Version 0.27.0](releases.md#R0_27_0) | Release |  |
 | [Version 0.28.0](releases.md#R0_28_0) | Release |  |
 | [Version 0.29.0](releases.md#R0_29_0) | Release |  |
+| [Version 0.29.1](releases.md#R0_29_1) | Release |  |
 | [Version 0.3.0](releases.md#R0_3_0) | Release |  |
 | [Version 0.4.0](releases.md#R0_4_0) | Release |  |
 | [Version 0.5.0](releases.md#R0_5_0) | Release |  |
@@ -210,6 +211,7 @@
 | [Commands are made for each effect](scenarios.md#CommandsMade) | Scenario | **held** |
 | [The device, in memory](scenarios.md#DeviceInMemory) | Scenario | **held** |
 | [Seeded draws keep their promise](scenarios.md#DrawsKeepTheirPromise) | Scenario | **held** |
+| [How the library's scenarios run](scenarios.md#HowTheScenariosRun) | Architecture decision | **held** |
 | [In memory](scenarios.md#InMemory) | Technical choice | **held** |
 | [Judged as the language says](scenarios.md#JudgedAsTheLanguage) | Scenario | **held** |
 | [Judged strictly](scenarios.md#JudgedStrictly) | Scenario | **held** |

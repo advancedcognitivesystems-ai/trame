@@ -1,0 +1,41 @@
+{
+  "shipment": "sdlc.IntoMain",
+  "title": "Into the main branch",
+  "target": "main",
+  "at": "2026-11-19",
+  "by": "claude",
+  "signature": "attribution",
+  "artifacts": [
+    {
+      "node": "sdlc.TheService",
+      "path": "src",
+      "fingerprint": "358c08b0eff67cc96409c256be2a483f1199e29b820e648360f5eac02bc46346"
+    }
+  ],
+  "foundations": {
+    "problems": 0
+  },
+  "obligations": [
+    {
+      "node": "sdlc.TheService",
+      "kind": "artifact",
+      "status": "held",
+      "owner": "karim",
+      "evidence": [
+        {
+          "node": "sdlc.TheService",
+          "at": "2026-11-19",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "358c08b0eff67cc96409c256be2a483f1199e29b820e648360f5eac02bc46346",
+          "code": "57098a07",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "987e2ef986dc7b6b",
+          "seal": "9f84f7af7f8850ac34a4d697931d32bf7537aa7d33eb230f16c3d79ed4130e30"
+        }
+      ]
+    }
+  ],
+  "deployed": []
+}

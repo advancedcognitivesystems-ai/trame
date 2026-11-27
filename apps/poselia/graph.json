@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-26",
+  "generated": "2026-11-27",
   "nodes": [
     {
       "id": "app.BrowserScreen",
@@ -4386,10 +4386,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "data",
-        "version": "0.5.0",
+        "version": "0.5.1",
         "joins": "library",
         "from": "path",
-        "at": "../../libs/data/releases/0.5.0"
+        "at": "../../libs/data/releases/0.5.1"
       },
       "diagnostics": []
     },
@@ -4416,10 +4416,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "trame",
-        "version": "129",
+        "version": "130",
         "joins": "language",
         "from": "path",
-        "at": "../../generations/g129"
+        "at": "../../generations/g130"
       },
       "diagnostics": []
     },
@@ -4446,10 +4446,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "std",
-        "version": "0.29.0",
+        "version": "0.29.1",
         "joins": "library",
         "from": "path",
-        "at": "../../std/releases/0.29.0"
+        "at": "../../std/releases/0.29.1"
       },
       "diagnostics": []
     },
@@ -4794,7 +4794,7 @@
       "id": "principles.BreathIsTheClock",
       "kind": "adr",
       "title": "The breath is the clock",
-      "source": "src/principles.ts:36",
+      "source": "src/principles.ts:39",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -4810,7 +4810,7 @@
       "id": "principles.ContentAsData",
       "kind": "adr",
       "title": "The content is data, behind a port",
-      "source": "src/principles.ts:19",
+      "source": "src/principles.ts:22",
       "status": "unknown",
       "fields": {
         "owner": "ghalaax",
@@ -4824,10 +4824,26 @@
       "diagnostics": []
     },
     {
+      "id": "principles.KeptOnThePhone",
+      "kind": "adr",
+      "title": "What the app keeps stays on the device",
+      "source": "src/principles.ts:109",
+      "status": "held",
+      "fields": {
+        "owner": "ghalaax",
+        "context": "The app works offline and asks nobody for an account: what it keeps of a person is a little, and theirs.",
+        "consequences": "A version that changes what is kept migrates it as the entity says; nothing leaves the device.",
+        "rejected": {
+          "An account on a server": "a person would give an address to practise on their mat"
+        }
+      },
+      "diagnostics": []
+    },
+    {
       "id": "principles.LanguageOffered",
       "kind": "adr",
       "title": "The person's language, among those offered",
-      "source": "src/principles.ts:50",
+      "source": "src/principles.ts:53",
       "status": "held",
       "fields": {
         "owner": "ghalaax",
@@ -4843,7 +4859,7 @@
       "id": "principles.PageFirst",
       "kind": "adr",
       "title": "A page first, the phones after",
-      "source": "src/principles.ts:78",
+      "source": "src/principles.ts:81",
       "status": "unknown",
       "fields": {
         "owner": "ghalaax",
@@ -4856,10 +4872,26 @@
       "diagnostics": []
     },
     {
+      "id": "principles.PlayedInMemoryFirst",
+      "kind": "adr",
+      "title": "The app is played in memory first",
+      "source": "src/principles.ts:95",
+      "status": "held",
+      "fields": {
+        "owner": "ghalaax",
+        "context": "A practice lasts minutes and follows the breath: played only in a browser, a mistake in a sequence would be met on the mat.",
+        "consequences": "What only a browser or a phone shows (the voice, the screen kept awake, the frames) is proven by the checks of a shipment.",
+        "rejected": {
+          "A browser driven at each build": "slow, and the voice and the wake lock answer only on a device"
+        }
+      },
+      "diagnostics": []
+    },
+    {
       "id": "principles.SaidAloud",
       "kind": "adr",
       "title": "Said aloud, the screen awake",
-      "source": "src/principles.ts:64",
+      "source": "src/principles.ts:67",
       "status": "unknown",
       "fields": {
         "owner": "ghalaax",
@@ -5847,8 +5879,10 @@
           "practice.PracticeOf",
           "principles.BreathIsTheClock",
           "principles.ContentAsData",
+          "principles.KeptOnThePhone",
           "principles.LanguageOffered",
           "principles.PageFirst",
+          "principles.PlayedInMemoryFirst",
           "principles.SaidAloud",
           "product.BreathOf",
           "product.BreathOfCriteria",
@@ -7156,7 +7190,7 @@
       },
       "result": {
         "path": "src",
-        "code": "25287639"
+        "code": "5e09541b"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -9478,6 +9512,26 @@
       "kind": "appliedBy"
     },
     {
+      "from": "principles.ContentAsData",
+      "to": "app.ContentCarried",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.KeptOnThePhone",
+      "to": "product.BreathSetsThePace",
+      "kind": "serves"
+    },
+    {
+      "from": "principles.KeptOnThePhone",
+      "to": "settings.KeptOnTheDevice",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.KeptOnThePhone",
+      "to": "data/principles.DescribedOnce",
+      "kind": "adopts"
+    },
+    {
       "from": "principles.LanguageOffered",
       "to": "product.InTheirLanguage",
       "kind": "serves"
@@ -9520,6 +9574,21 @@
     {
       "from": "principles.PageFirst",
       "to": "sdlc.PageOpens",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.PageFirst",
+      "to": "app.InTheBrowser",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.PlayedInMemoryFirst",
+      "to": "product.PractiseGuided",
+      "kind": "serves"
+    },
+    {
+      "from": "principles.PlayedInMemoryFirst",
+      "to": "scenarios.InMemory",
       "kind": "appliedBy"
     },
     {
@@ -11235,6 +11304,16 @@
     {
       "from": "sdlc.SdlcInTheGraph",
       "to": "sdlc.RunnersWritten",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "sdlc.SdlcInTheGraph",
+      "to": "sdlc.OnTheMachine",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "sdlc.SdlcInTheGraph",
+      "to": "sdlc.SdlcInMemory",
       "kind": "appliedBy"
     },
     {

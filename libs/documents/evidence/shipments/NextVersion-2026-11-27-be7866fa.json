@@ -1,0 +1,100 @@
+{
+  "shipment": "sdlc.NextVersion",
+  "title": "The next version",
+  "target": "version",
+  "at": "2026-11-27",
+  "by": "claude",
+  "signature": "attribution",
+  "artifacts": [
+    {
+      "node": "sdlc.TheLibrary",
+      "path": "src",
+      "fingerprint": "4eb79cc05608f84449153540ba2754042a886f4e6128cbb950858483608b618e"
+    }
+  ],
+  "foundations": {
+    "problems": 0
+  },
+  "obligations": [
+    {
+      "node": "sdlc.TheLibrary",
+      "kind": "artifact",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-26",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "c129edb86a12dca60dd21dfcf77b504ac47a7e649c124520e962fb790a76c725",
+          "code": "636e0cc8",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "ee027dcb6d4b0887",
+          "seal": "351fc1dea9093adfe41ee4418ba278857fec491d2e4ac5b2cdd8e750631cf4e3"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-26",
+          "source": "shipped",
+          "value": 1,
+          "fingerprint": "c129edb86a12dca60dd21dfcf77b504ac47a7e649c124520e962fb790a76c725",
+          "subject": "sdlc.NextVersion",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "e3752c66b4b914d4bda335aecd81abfa90152a72b93f19909097011b381a4f2e"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-27",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "4eb79cc05608f84449153540ba2754042a886f4e6128cbb950858483608b618e",
+          "code": "2f237532",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "203a6308a3ce37b3",
+          "seal": "8ecec0c6941ddecf37dc8ceebf945f4227d1a877d31fcb2169af60a640b17fc6"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.LanguageWritten",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.CodeVerified",
+      "via": "language.Dates",
+      "outcome": [
+        {
+          "name": "2026-10-17 is written as people read it, long and short, and its month",
+          "status": "passed"
+        },
+        {
+          "name": "Three items are joined by the words of a conjunction, as they are",
+          "status": "passed"
+        },
+        {
+          "name": "The marks between the parts of a line are those of the language of the documents",
+          "status": "passed"
+        },
+        {
+          "name": "A number is written with two decimals at most; a quantity in the largest of its units it makes a whole number of",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.TheEnginesLanguage",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.DecisionsApplied",
+      "via": "language.Dates"
+    }
+  ],
+  "deployed": []
+}

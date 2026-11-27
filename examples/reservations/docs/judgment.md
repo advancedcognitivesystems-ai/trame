@@ -84,6 +84,7 @@ Context: The build of the service evaluates in Test: its way of judging applies 
 - Chooses: [Judged our way](#OurJudgment)
 - In: [Test](infra.md#Test)
 - Follows: [Strategy](../../../std/docs/patterns.md#Strategy)
+- Applies: [The service judges itself harder than the language](principles.md#JudgedHarder)
 
 ## Scenario
 

@@ -5,14 +5,15 @@ import { binding } from "#trame/kinds/binding"
 import { decision } from "#trame/kinds/decision"
 import { catalog } from "#trame/kinds/catalog"
 import { scenario } from "#trame/kinds/scenario"
+import { adr } from "#trame/kinds/adr"
 import { fn } from "#trame/kinds/function"
-import { TheProject, ProjectOfTheScenario, ProjectCompiledHere, type ProjectChosen } from "#std/engine"
-import { Files, FilesInMemory, CommandLanguage } from "#std/tooling"
+import { TheProject, ProjectOfTheScenario, ProjectCompiledHere, EngineAsAProvider, type ProjectChosen } from "#std/engine"
+import { Files, FilesInMemory } from "#std/tooling"
 import { Strategy, Adapter } from "#std/patterns"
 import { ExitStatus } from "#std/system"
 import { Counts } from "#std/algebra"
 import { WrittenOnce } from "./product"
-import { Plan, BuildComparison, CommandWords, TerminalLines } from "./commands"
+import { Plan, BuildComparison, CommandWords, TerminalLines, WordsLanguage } from "./commands"
 import type { Build } from "./code/comparison"
 
 // What the library's commands compute from a graph is played on a real one: a small project of the library's own,
@@ -76,7 +77,7 @@ export const PlayedOnASmallProject = binding({
  */
 export const ScenarioWords = catalog({
   owner: "trame",
-  language: CommandLanguage,
+  language: WordsLanguage,
   messages: () => ({
     planNamesWhatIsNew: (title: string) => `The plan names ${title}, which the last build did not have, and counts it in its first line`,
     planNamesTheStatus: (title: string) => `The plan names the status of ${title}, which the last build did not give`,
@@ -153,4 +154,20 @@ export const PlanAfterTheSameBuild = scenario({
     ]
     check(checks.planAfterTheSameBuild(), answered.status === exit.success && JSON.stringify(answered.body) === JSON.stringify(said))
   },
+})
+
+/**
+ * A command is played on a real graph
+ * What a command computes from a graph is played on one the engine compiles: a small project the library carries in its
+ * sources, compiled by the engine that plays the scenarios, only the platform kept in memory. The library adopts std's
+ * decision that the engine is a provider, reached through std's ports.
+ */
+export const PlayedOnARealGraph = adr({
+  owner: "trame",
+  context: "A command reads what the engine gives (the graph as a build writes it, what a view receives): written by hand, a graph would check the command against what its author thought the engine gives.",
+  consequences: "The small project travels with each version, named by the library's package; a project that imports the library plays the scenarios on it there.",
+  rejected: { "A graph written by the scenario": "it proves nothing of what the engine gives, which is what the command reads on a machine" },
+  serves: [WrittenOnce],
+  adopts: [EngineAsAProvider],
+  appliedBy: [CompiledByTheEngine, PlayedOnASmallProject],
 })

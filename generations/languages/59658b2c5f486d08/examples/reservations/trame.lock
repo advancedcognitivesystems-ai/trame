@@ -1,0 +1,409 @@
+{
+  "published": {
+    "api.FreeCancellationEnd": {
+      "constants": "6a09e667"
+    },
+    "api.LeadTime": {
+      "constants": "6a09e667"
+    },
+    "architecture.CancellationKey": {
+      "statement": "cd673970",
+      "value": "d688acad",
+      "review": "6a09e667",
+      "range": "6a09e667",
+      "rejected": "6a09e667"
+    },
+    "architecture.EffectsFollowTheRequest": {
+      "statement": "8e83342d",
+      "context": "31fe7fff",
+      "consequences": "0b0a5987",
+      "rejected": "6a09e667"
+    },
+    "architecture.HttpPort": {
+      "statement": "be57fcef",
+      "value": "020f653a",
+      "review": "6a09e667",
+      "range": "6a09e667",
+      "rejected": "6a09e667"
+    },
+    "cancellation.AmountWords": {
+      "messages": "e2fe2367"
+    },
+    "cancellation.CancelWithoutStress": {
+      "statement": "78703c9f"
+    },
+    "cancellation.FreeCancellationPeriod": {
+      "statement": "a8565f03",
+      "value": "0fc43e6b",
+      "review": "f4e9d60e",
+      "range": "c54285ad",
+      "rejected": "2d4db6e3"
+    },
+    "cancellation.IdempotentProvider": {
+      "statement": "8882d925",
+      "expires": "a4b6bff3"
+    },
+    "cancellation.ImmediateRefund": {
+      "statement": "7f9c80bb",
+      "signal": "39398e55",
+      "percentile": "addc0c97",
+      "threshold": "f0f96dc5",
+      "window": "944c7382",
+      "source": "6a09e667"
+    },
+    "cancellation.LateFee": {
+      "statement": "d675c584",
+      "value": "b7358c4c",
+      "review": "6a09e667",
+      "range": "6a09e667",
+      "rejected": "4e1b79ee"
+    },
+    "cancellation.Refund": {
+      "statement": "e111e9d1",
+      "body": "0e59b6c0",
+      "constants": "6a09e667",
+      "examples": "6a09e667"
+    },
+    "cancellation.RefundCriteria": {
+      "statement": "46aa015b",
+      "criteria": "d2fa26b6"
+    },
+    "cancellation.SwissFrancs": {
+      "statement": "2b2fb474",
+      "units": "50be9147",
+      "source": "850c1ebc",
+      "url": "22078503"
+    },
+    "committee.UltraLaunch": {
+      "statement": "2bf0d234",
+      "owner": "5498e5ef",
+      "why": "b57eaa5e",
+      "from": "6c077c00",
+      "until": "055fc040",
+      "patch": "3b7d74d1",
+      "amends": "b88c7fa0"
+    },
+    "committee.UltraPeriod": {
+      "statement": "9811a466",
+      "owner": "5498e5ef",
+      "why": "196da264",
+      "from": "622f46c4",
+      "until": "6a09e667",
+      "patch": "97d44ddb",
+      "amends": "60ce9238"
+    },
+    "committee.UltraPeriodApproval": {
+      "owner": "5498e5ef",
+      "why": "d3a1420f",
+      "approves": "0c4e42c7"
+    },
+    "consumer.FullRefundAhead": {
+      "statement": "a38e130d",
+      "body": "ee29b883",
+      "constants": "6a09e667",
+      "examples": "43a2c014"
+    },
+    "consumer.FullRefundAheadCriteria": {
+      "statement": "06cfc624",
+      "criteria": "bd5eedc6"
+    },
+    "consumer.FullRefundNotice": {
+      "statement": "d9ce99ea",
+      "value": "2ad7abed",
+      "review": "6a09e667",
+      "range": "6a09e667",
+      "rejected": "dc97ef07"
+    },
+    "infra.BackupRetention": {
+      "statement": "73520f41",
+      "value": "d9e40d50",
+      "review": "6a09e667",
+      "range": "3ba7feac",
+      "rejected": "6a09e667"
+    },
+    "infra.CancellationRecords": {
+      "constants": "6a09e667"
+    },
+    "infra.CancelledStatus": {
+      "statement": "07d33033",
+      "value": "2e50142c",
+      "review": "6a09e667",
+      "range": "6a09e667",
+      "rejected": "6a09e667"
+    },
+    "infra.DatabaseAddress": {
+      "statement": "da93676e",
+      "value": "079a8f3a",
+      "review": "6a09e667",
+      "range": "6a09e667",
+      "rejected": "6a09e667"
+    },
+    "infra.DatabaseName": {
+      "statement": "e0dd97a7",
+      "value": "f405919c",
+      "review": "6a09e667",
+      "range": "6a09e667",
+      "rejected": "6a09e667"
+    },
+    "infra.DatabaseSize": {
+      "statement": "227db2e5",
+      "value": "c6dcf976",
+      "review": "6a09e667",
+      "range": "6a09e667",
+      "rejected": "6a09e667"
+    },
+    "infra.LocalDatabasePath": {
+      "statement": "614b5708",
+      "value": "bdb696d5",
+      "review": "6a09e667",
+      "range": "6a09e667",
+      "rejected": "6a09e667"
+    },
+    "infra.ProviderUrl": {
+      "statement": "abb0cf4b",
+      "value": "f80f357e",
+      "review": "6a09e667",
+      "range": "6a09e667",
+      "rejected": "6a09e667"
+    },
+    "infra.ReservationRecords": {
+      "constants": "6a09e667"
+    },
+    "infra.ResponseEnding": {
+      "statement": "870026ae",
+      "value": "a776b7d5",
+      "review": "6a09e667",
+      "range": "6a09e667",
+      "rejected": "6a09e667"
+    },
+    "infra.SimulatedPayment": {
+      "constants": "6a09e667"
+    },
+    "infra.SimulatedReference": {
+      "statement": "2229e77c",
+      "value": "79e718f0",
+      "review": "6a09e667",
+      "range": "6a09e667",
+      "rejected": "6a09e667"
+    },
+    "infra.StoppedClock": {
+      "constants": "6a09e667"
+    },
+    "infra.TestInstant": {
+      "statement": "3be24735",
+      "value": "c80dfa43",
+      "review": "6a09e667",
+      "range": "6a09e667",
+      "rejected": "6a09e667"
+    },
+    "judgment.CodesWeRaise": {
+      "statement": "61c0fb2a",
+      "value": "1e856c1c",
+      "review": "6a09e667",
+      "range": "6a09e667",
+      "rejected": "35b33d5f"
+    },
+    "judgment.JudgmentChecks": {
+      "messages": "68ef4c17"
+    },
+    "judgment.OurJudgment": {
+      "constants": "6a09e667"
+    },
+    "legal.FeeCap": {
+      "statement": "cbb7344c",
+      "value": "6a09e667",
+      "review": "6a09e667",
+      "range": "6a09e667",
+      "rejected": "6a09e667"
+    },
+    "legal.FeeCapDecided": {
+      "statement": "4c577a7e",
+      "owner": "05b7abeb",
+      "why": "1a070fb9",
+      "from": "245530f0",
+      "until": "6a09e667",
+      "patch": "640331db",
+      "amends": "8db420ae"
+    },
+    "messages.ApiMessages": {
+      "messages": "a887d548"
+    },
+    "messages.Language": {
+      "statement": "cca5ecd9",
+      "value": "acd6072a",
+      "review": "6a09e667",
+      "range": "6a09e667",
+      "rejected": "6a09e667"
+    },
+    "messages.ScenarioChecks": {
+      "messages": "7f76b3e0"
+    },
+    "people.Karim": {
+      "statement": "709fac47",
+      "handle": "05b7abeb",
+      "sort": "3d33cb82",
+      "identities": "6a09e667",
+      "members": "6a09e667"
+    },
+    "people.Lea": {
+      "statement": "d26050e5",
+      "handle": "5498e5ef",
+      "sort": "3d33cb82",
+      "identities": "6a09e667",
+      "members": "6a09e667"
+    },
+    "people.ServiceTeam": {
+      "statement": "2d995295",
+      "handle": "f405919c",
+      "sort": "f2fcefca",
+      "identities": "6a09e667",
+      "members": "a03edb89"
+    },
+    "principles.JudgedHarder": {
+      "statement": "b7558c3f",
+      "context": "e8c3583e",
+      "consequences": "6a09e667",
+      "rejected": "1ab85eb1"
+    },
+    "principles.KeptInSql": {
+      "statement": "7f8f6e13",
+      "context": "2a557f3e",
+      "consequences": "73d09a65",
+      "rejected": "1ba86066"
+    },
+    "principles.RefundOnce": {
+      "statement": "24745eac",
+      "context": "def9bed8",
+      "consequences": "36391980",
+      "rejected": "186b7bec"
+    },
+    "principles.RefundsThroughTheProvider": {
+      "statement": "d388f679",
+      "context": "06a07375",
+      "consequences": "351cd084",
+      "rejected": "d67f36f5"
+    },
+    "principles.SdlcWithStd": {
+      "statement": "12514505",
+      "context": "5613d75a",
+      "consequences": "6a09e667",
+      "rejected": "7e81d43e"
+    },
+    "principles.SecretsOutOfTheGraph": {
+      "statement": "e40496e5",
+      "context": "355d7751",
+      "consequences": "166a9961",
+      "rejected": "21ecc48e"
+    },
+    "principles.SeededOutsideProduction": {
+      "statement": "a8770705",
+      "context": "6c6efa64",
+      "consequences": "e2c04ef5",
+      "rejected": "79ec9a41"
+    },
+    "principles.ServedByNode": {
+      "statement": "368053d7",
+      "context": "67dd1064",
+      "consequences": "6a09e667",
+      "rejected": "cd3164a5"
+    },
+    "principles.TimeAsAPort": {
+      "statement": "c324c93b",
+      "context": "02d8b8b1",
+      "consequences": "6a09e667",
+      "rejected": "6afea932"
+    },
+    "scenarios.UnknownReservation": {
+      "statement": "82182155",
+      "value": "c02d39e5",
+      "review": "6a09e667",
+      "range": "6a09e667",
+      "rejected": "6a09e667"
+    },
+    "sdlc.HowWeMerge": {
+      "statement": "af9f0cf9",
+      "value": "aa6c54ab",
+      "review": "6a09e667",
+      "range": "6a09e667",
+      "rejected": "1c19d0a8"
+    },
+    "sdlc.Operators": {
+      "people": "6be38b0d",
+      "notAuthor": "6a09e667",
+      "delegations": "d9e202e6"
+    },
+    "sdlc.OurPullRequests": {
+      "constants": "6a09e667"
+    },
+    "sdlc.PullRequestsOnGitHub": {
+      "statement": "c2213f33",
+      "value": "29eda3a0",
+      "review": "6a09e667",
+      "range": "6a09e667",
+      "rejected": "20a27e26"
+    },
+    "standards.PaymentProviderApi": {
+      "statement": "cbab046e",
+      "constants": "5e2cb86a",
+      "source": "2c6b1cf9",
+      "url": "6a09e667"
+    },
+    "standards.RouteSyntax": {
+      "statement": "cd301240",
+      "constants": "4087548a",
+      "source": "de0bfa0e",
+      "url": "6a09e667"
+    },
+    "support.SupportUltraPeriod": {
+      "statement": "9eac1501",
+      "owner": "05b7abeb",
+      "why": "4df6d8c0",
+      "from": "f0594de1",
+      "until": "6a09e667",
+      "patch": "03deb737",
+      "amends": "60ce9238"
+    }
+  },
+  "migrations": [
+    {
+      "at": "2026-10-30",
+      "why": "Units are quantities of the graph (g80): a share of the price is typed with std's Ratio, no longer the prelude's Percent",
+      "nodes": [
+        "cancellation.LateFee",
+        "legal.FeeCap"
+      ]
+    },
+    {
+      "at": "2026-10-30",
+      "why": "Every node has an owner (A6): goals and requirements name theirs",
+      "nodes": [
+        "cancellation.CancelWithoutStress",
+        "cancellation.Refund"
+      ]
+    },
+    {
+      "at": "2026-11-18",
+      "why": "D1 (g108): a publication freezes the parts of a declaration its kind says people decide, not the whole declaration",
+      "nodes": [
+        "cancellation.FreeCancellationPeriod",
+        "cancellation.ImmediateRefund",
+        "cancellation.LateFee",
+        "legal.FeeCap",
+        "cancellation.CancelWithoutStress",
+        "cancellation.IdempotentProvider",
+        "cancellation.Refund",
+        "cancellation.RefundCriteria"
+      ]
+    },
+    {
+      "at": "2026-11-18",
+      "why": "D1: each decided kind says what a publication freezes (a statement, the parts people decide)",
+      "nodes": [
+        "cancellation.FreeCancellationPeriod",
+        "cancellation.ImmediateRefund",
+        "cancellation.LateFee",
+        "legal.FeeCap"
+      ]
+    }
+  ]
+}

@@ -106,6 +106,10 @@ export const HoleCode = {
   // Architecture: ADRs, ports, bindings, components, audiences.
   adrNotApplied: "adr-not-applied",
   adrUnprovable: "adr-unprovable",
+  /** A technical choice no architecture decision of its project applies: code, not yet a decision (the law of choices, E3). */
+  choiceUnbacked: "choice-unbacked",
+  /** An architecture decision that adopts what is no library's architecture decision (E3). */
+  adoptionNotOfALibrary: "adoption-not-of-a-library",
   portUnrealized: "port-unrealized",
   portRealizedTwice: "port-realized-twice",
   /** An extension point whose realizations two choices make in the same environment: their order is ambiguous (since g120). */

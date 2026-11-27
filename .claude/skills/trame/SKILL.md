@@ -96,7 +96,8 @@ The repository's `AGENTS.md` is the full guide; read it first, then keep to this
   which installs the packages when the lockfile disagrees (g100); commit the lockfile, a CI installs with `npm ci`.
 - A choice is a concept: when someone could do it another way, name a port, its strategies (realizations) and the
   binding that says which applies where; a choice of value stays a decision with what it rejected; what nobody would
-  change is just code.
+  change is just code. Every binding is applied by an architecture decision of its project (`choice-unbacked`
+  otherwise, g130), which may adopt a library's decision (`adopts`, a library's only) to take its reasons.
 - A new kind is the last resort: compose the existing kinds first and say what they cannot do; a kind lives in a
   library, never in a product, and comes with an ADR (composing as its rejected option), its laws, its words, an example
   and its documentation. A library carries its kinds and views in `src/kinds` and `src/views` (g104), its words in a

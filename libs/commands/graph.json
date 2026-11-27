@@ -1,11 +1,11 @@
 {
-  "generated": "2026-11-26",
+  "generated": "2026-11-27",
   "nodes": [
     {
       "id": "commands.BuildComparison",
       "kind": "function",
       "title": "Two builds compared",
-      "source": "src/commands.ts:86",
+      "source": "src/commands.ts:97",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -37,11 +37,11 @@
       "id": "commands.CommandWords",
       "kind": "catalog",
       "title": "What the commands say",
-      "source": "src/commands.ts:45",
+      "source": "src/commands.ts:56",
       "fields": {
         "owner": "trame",
         "deps": {
-          "language": "std/tooling.CommandLanguage"
+          "language": "commands.WordsLanguage"
         },
         "messages": "(function)"
       },
@@ -51,7 +51,7 @@
       "id": "commands.Plan",
       "kind": "entry",
       "title": "Plan",
-      "source": "src/commands.ts:100",
+      "source": "src/commands.ts:111",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -92,6 +92,22 @@
       "diagnostics": []
     },
     {
+      "id": "commands.WordsLanguage",
+      "kind": "decision",
+      "title": "The language the commands speak",
+      "source": "src/commands.ts:47",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "tag": "en-GB"
+        },
+        "rejected": {
+          "std's language of its commands": "a choice of std's, which may change for std's reasons"
+        }
+      },
+      "diagnostics": []
+    },
+    {
       "id": "packages.ContinuousIntegration",
       "kind": "package",
       "title": "The library of continuous integration",
@@ -114,9 +130,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "129",
+        "version": "130",
         "joins": "language",
-        "at": "../../generations/g129"
+        "at": "../../generations/g130"
       },
       "diagnostics": []
     },
@@ -143,9 +159,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.29.0",
+        "version": "0.29.1",
         "joins": "library",
-        "at": "../../std/releases/0.29.0"
+        "at": "../../std/releases/0.29.1"
       },
       "diagnostics": []
     },
@@ -190,10 +206,25 @@
       "diagnostics": []
     },
     {
+      "id": "releases.R0_1_2",
+      "kind": "release",
+      "title": "Version 0.1.2",
+      "source": "src/releases.ts:38",
+      "fields": {
+        "owner": "trame",
+        "version": "0.1.2",
+        "date": "2026-11-27",
+        "what": "its own language of words; the decision behind its choices, which adopts std's: the engine is a provider",
+        "fingerprint": "29350d242a13f4d9",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "scenarios.CompiledByTheEngine",
       "kind": "binding",
       "title": "Compiled by the engine that plays them",
-      "source": "src/scenarios.ts:51",
+      "source": "src/scenarios.ts:52",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -208,7 +239,7 @@
       "id": "scenarios.PlanAfterTheSameBuild",
       "kind": "scenario",
       "title": "After a build, nothing changes",
-      "source": "src/scenarios.ts:140",
+      "source": "src/scenarios.ts:141",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -235,7 +266,7 @@
       "id": "scenarios.PlanSaysWhatChanges",
       "kind": "scenario",
       "title": "A plan says what a build would change",
-      "source": "src/scenarios.ts:93",
+      "source": "src/scenarios.ts:94",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -267,7 +298,7 @@
       "id": "scenarios.PlanWithoutABuild",
       "kind": "scenario",
       "title": "Without a build, a plan says so",
-      "source": "src/scenarios.ts:125",
+      "source": "src/scenarios.ts:126",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -289,10 +320,26 @@
       "diagnostics": []
     },
     {
+      "id": "scenarios.PlayedOnARealGraph",
+      "kind": "adr",
+      "title": "A command is played on a real graph",
+      "source": "src/scenarios.ts:165",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "A command reads what the engine gives (the graph as a build writes it, what a view receives): written by hand, a graph would check the command against what its author thought the engine gives.",
+        "consequences": "The small project travels with each version, named by the library's package; a project that imports the library plays the scenarios on it there.",
+        "rejected": {
+          "A graph written by the scenario": "it proves nothing of what the engine gives, which is what the command reads on a machine"
+        }
+      },
+      "diagnostics": []
+    },
+    {
       "id": "scenarios.PlayedOnASmallProject",
       "kind": "binding",
       "title": "Played on a small project",
-      "source": "src/scenarios.ts:65",
+      "source": "src/scenarios.ts:66",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -304,7 +351,7 @@
       "id": "scenarios.ScenarioWords",
       "kind": "catalog",
       "title": "What the scenarios check",
-      "source": "src/scenarios.ts:77",
+      "source": "src/scenarios.ts:78",
       "fields": {
         "owner": "trame",
         "messages": "(function)"
@@ -315,7 +362,7 @@
       "id": "scenarios.SmallProject",
       "kind": "decision",
       "title": "The small project",
-      "source": "src/scenarios.ts:34",
+      "source": "src/scenarios.ts:35",
       "fields": {
         "owner": "trame",
         "value": {
@@ -329,7 +376,7 @@
       "id": "scenarios.Test",
       "kind": "environment",
       "title": "Test",
-      "source": "src/scenarios.ts:26",
+      "source": "src/scenarios.ts:27",
       "fields": {
         "owner": "trame",
         "evaluates": true
@@ -340,7 +387,7 @@
       "id": "scenarios.TheSmallProject",
       "kind": "function",
       "title": "Which project the scenarios compile",
-      "source": "src/scenarios.ts:40",
+      "source": "src/scenarios.ts:41",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -415,6 +462,11 @@
             "node": "scenarios.PlanWithoutABuild",
             "via": "commands.Plan",
             "obligation": "sdlc.CodeVerified"
+          },
+          {
+            "node": "scenarios.PlayedOnARealGraph",
+            "via": "scenarios.CompiledByTheEngine",
+            "obligation": "sdlc.DecisionsApplied"
           }
         ],
         "gaps": [],
@@ -426,6 +478,7 @@
           "commands.CommandWords",
           "commands.Plan",
           "commands.TerminalLines",
+          "commands.WordsLanguage",
           "packages.ContinuousIntegration",
           "packages.Language",
           "packages.People",
@@ -435,6 +488,7 @@
           "scenarios.PlanAfterTheSameBuild",
           "scenarios.PlanSaysWhatChanges",
           "scenarios.PlanWithoutABuild",
+          "scenarios.PlayedOnARealGraph",
           "scenarios.PlayedOnASmallProject",
           "scenarios.ScenarioWords",
           "scenarios.SmallProject",
@@ -557,7 +611,7 @@
       },
       "result": {
         "path": "src",
-        "code": "cb5f7cfb"
+        "code": "e47ba8c6"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -592,12 +646,12 @@
     },
     {
       "from": "commands.CommandWords",
-      "to": "std/tooling.CommandLanguage",
+      "to": "commands.WordsLanguage",
       "kind": "language"
     },
     {
       "from": "commands.CommandWords",
-      "to": "std/tooling.CommandLanguage",
+      "to": "commands.WordsLanguage",
       "kind": "deps"
     },
     {
@@ -677,6 +731,11 @@
     },
     {
       "from": "releases.R0_1_1",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_1_2",
       "to": "product.WrittenOnce",
       "kind": "serves"
     },
@@ -861,6 +920,26 @@
       "kind": "deps"
     },
     {
+      "from": "scenarios.PlayedOnARealGraph",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "scenarios.PlayedOnARealGraph",
+      "to": "scenarios.CompiledByTheEngine",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "scenarios.PlayedOnARealGraph",
+      "to": "scenarios.PlayedOnASmallProject",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "scenarios.PlayedOnARealGraph",
+      "to": "std/engine.EngineAsAProvider",
+      "kind": "adopts"
+    },
+    {
       "from": "scenarios.PlayedOnASmallProject",
       "to": "scenarios.TheSmallProject",
       "kind": "chooses"
@@ -887,7 +966,7 @@
     },
     {
       "from": "scenarios.ScenarioWords",
-      "to": "std/tooling.CommandLanguage",
+      "to": "commands.WordsLanguage",
       "kind": "language"
     },
     {

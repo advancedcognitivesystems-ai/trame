@@ -5,7 +5,7 @@
 // primitive of the engine, as compiling is (ADR "The engine is a provider"): a language here is read through the port
 // LanguageReading, which the engine realizes; a syntax element of any library may then name it, and what it writes is
 // read back by the engine. HTML and CSS came from Trame's graph, whose documents and page write them; the grammars are
-// the engine's packages, named with their versions.
+// the engine's packages, whose versions the engine's graph names (one source: a language here names only the module).
 
 import { language } from "#trame/kinds/language"
 import { standard } from "#trame/kinds/standard"
@@ -55,7 +55,7 @@ export const HtmlMarkup = language({
   standard: Html,
   queryLanguage: TreeSitterQueries,
   reader: LanguageReading,
-  grammar: { module: "tree-sitter-html/tree-sitter-html.wasm", package: "tree-sitter-html", version: "0.23.2" },
+  grammar: { module: "tree-sitter-html/tree-sitter-html.wasm" },
   extensions: [".html"],
   queries: {
     values: {
@@ -115,7 +115,7 @@ export const CssStyleSheets = language({
   standard: Css,
   queryLanguage: TreeSitterQueries,
   reader: LanguageReading,
-  grammar: { module: "tree-sitter-css/tree-sitter-css.wasm", package: "tree-sitter-css", version: "0.25.0" },
+  grammar: { module: "tree-sitter-css/tree-sitter-css.wasm" },
   extensions: [".css"],
   queries: {
     values: {

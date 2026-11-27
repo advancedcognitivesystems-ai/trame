@@ -5,11 +5,11 @@ import { binding } from "#trame/kinds/binding"
 import { decision } from "#trame/kinds/decision"
 import { catalog } from "#trame/kinds/catalog"
 import { scenario } from "#trame/kinds/scenario"
+import { adr } from "#trame/kinds/adr"
 import { fn } from "#trame/kinds/function"
 import { Strategy } from "#std/patterns"
-import { CommandLanguage } from "#std/tooling"
 import { RenderedOnce } from "./product"
-import { DocumentLanguage, Dates, Lists, Punctuation, Units, type WrittenLanguage } from "./language"
+import { DocumentLanguage, Dates, Lists, Punctuation, Units, WordsLanguage, type WrittenLanguage } from "./language"
 
 /**
  * Test
@@ -77,7 +77,7 @@ export const Expected = decision<{
  */
 export const ScenarioWords = catalog({
   owner: "trame",
-  language: CommandLanguage,
+  language: WordsLanguage,
   messages: () => ({
     datesWritten: (day: string) => `${day} is written as people read it, long and short, and its month`,
     listsJoined: () => "Three items are joined by the words of a conjunction, as they are",
@@ -104,4 +104,19 @@ export const LanguageWritten = scenario({
     check(checks.numbersWritten(),
       units.format(x.number) === x.written && units.inUnits(x.whole, x.units, {}) === x.inLarger && units.inUnits(x.notWhole, x.units, {}) === x.inSmaller)
   },
+})
+
+/**
+ * The documents speak the engine's language
+ * The views speak the language of the engine that compiles a graph: what renders their documents writes its dates, its
+ * lists, its marks and its numbers, through a port each project realizes with its decision of the language (Trame with
+ * its own), and the library's scenarios with one decided for them.
+ */
+export const TheEnginesLanguage = adr({
+  owner: "trame",
+  context: "A document says, in one line, what a view said and what a renderer wrote around it: two languages, or two ways of writing a date, would show in the same sentence.",
+  consequences: "The engine's g.lib, the renderers and the page read the same nodes; another language is another realization, with its catalogs.",
+  rejected: { "The library's own language, fixed": "a project whose engine spoke another would get documents in two languages" },
+  serves: [RenderedOnce],
+  appliedBy: [Dates, Lists, Punctuation, Units, InTheScenariosLanguage],
 })

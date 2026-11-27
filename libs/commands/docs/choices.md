@@ -1,6 +1,6 @@
 # Technical choices
 
-*What answers each port in each environment on 26 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
+*What answers each port in each environment on 27 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
 
 > **2 technical choices for 4 ports, in 1 environment**
 
@@ -22,7 +22,7 @@
 
 ### Compiled by the engine that plays them
 
-`CompiledByTheEngine` · `src/scenarios.ts:51` · status: **held**
+`CompiledByTheEngine` · `src/scenarios.ts:52` · status: **held**
 
 In the library's scenarios, the project at hand is compiled by the engine that plays them, as on a machine it is compiled by the engine that runs the command.
 
@@ -43,12 +43,13 @@ Context: A command computes from a graph the engine compiled: a graph a scenario
 - In: [Test](scenarios.md#Test)
 - Follows: [Adapter](../.trame/std/docs/patterns.md#Adapter)
 - Serves: [Commands every project runs, written once](product.md#WrittenOnce)
+- Applies: [A command is played on a real graph](scenarios.md#PlayedOnARealGraph)
 
 <a id="PlayedOnASmallProject"></a>
 
 ### Played on a small project
 
-`PlayedOnASmallProject` · `src/scenarios.ts:65` · status: **held**
+`PlayedOnASmallProject` · `src/scenarios.ts:66` · status: **held**
 
 In the library's scenarios, the project at hand is the small project, and the project's files are kept in memory.
 
@@ -66,3 +67,4 @@ Context: The library's own project is the one being compiled when its scenarios 
 - In: [Test](scenarios.md#Test)
 - Follows: [Strategy](../.trame/std/docs/patterns.md#Strategy)
 - Serves: [Commands every project runs, written once](product.md#WrittenOnce)
+- Applies: [A command is played on a real graph](scenarios.md#PlayedOnARealGraph)

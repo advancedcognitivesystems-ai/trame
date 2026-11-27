@@ -1,6 +1,6 @@
 # Technical choices
 
-*What answers each port in each environment on 26 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
+*What answers each port in each environment on 27 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
 
 > **6 technical choices for 21 ports, in 3 environments**
 
@@ -64,6 +64,7 @@ Context: The first delivery is a page a browser opens as it is; the phones come 
 - Chooses: [The browser loads the page](../.trame/std/docs/platform.md#BrowserLoading), [The browser's screen](app.md#BrowserScreen), [The browser's stage](stage.md#BrowserStage), [The browser's bowl](sound.md#BrowserBowl), [The browser keeps the preferences](../.trame/std/docs/platform.md#BrowserPreferences), [The browser's languages](../.trame/std/docs/platform.md#BrowserLanguages), [The browser's voice](../.trame/std/docs/platform.md#BrowserSpeech), [The browser keeps the screen awake](../.trame/std/docs/platform.md#BrowserWakeLock), [The browser's frames](../.trame/std/docs/platform.md#BrowserFrames)
 - In: [Browser](architecture.md#Browser)
 - Follows: [Adapter](../.trame/std/docs/patterns.md#Adapter)
+- Applies: [A page first, the phones after](principles.md#PageFirst)
 
 <a id="ContentCarried"></a>
 
@@ -89,6 +90,7 @@ Context: An app on the mat works offline; the content is small enough to travel 
 - Chooses: [The content the app carries](app.md#CarriedContent)
 - In: [Browser](architecture.md#Browser), [Test](architecture.md#Test)
 - Follows: [Strategy](../.trame/std/docs/patterns.md#Strategy)
+- Applies: [The content is data, behind a port](principles.md#ContentAsData)
 
 ## Poselia · Scenarios
 
@@ -120,6 +122,7 @@ Consequences: The screen and what records it are chosen together: a scenario rea
 - Chooses: [A screen that records](scenarios.md#RecordedScreen), [A bowl that counts](scenarios.md#RecordedBowl), [Preferences kept in memory](../.trame/std/docs/platform.md#MemoryPreferences), [The device's languages, given](scenarios.md#GivenLanguages), [Frames turned by hand](../.trame/std/docs/platform.md#FramesByHand), [A voice that writes down](../.trame/std/docs/platform.md#WrittenSpeech), [The screen kept awake, in memory](../.trame/std/docs/platform.md#AwakeInMemory)
 - In: [Test](architecture.md#Test)
 - Follows: [Strategy](../.trame/std/docs/patterns.md#Strategy), [Abstract Factory](../.trame/std/docs/patterns.md#AbstractFactory)
+- Applies: [The app is played in memory first](principles.md#PlayedInMemoryFirst)
 
 ## Poselia · SDLC
 
@@ -145,6 +148,7 @@ Context: A check must open the page a person opens: the file delivered, in a rea
 - Chooses: [Node's command line](../.trame/std/docs/tooling.md#NodeProgramCommands), [The machine's files](../.trame/std/docs/tooling.md#MachineFiles), [Chromium, driven by Playwright](../.trame/std/docs/tooling.md#PlaywrightBrowser)
 - In: [A machine](sdlc.md#Machine)
 - Follows: [Adapter](../.trame/std/docs/patterns.md#Adapter)
+- Applies: [The SDLC is in the graph](sdlc.md#SdlcInTheGraph)
 
 <a id="SdlcInMemory"></a>
 
@@ -167,6 +171,7 @@ Context: A program of the SDLC is code like the app's: its scenarios play it bef
 - Chooses: [Files kept in memory](../.trame/std/docs/tooling.md#FilesInMemory), [A browser kept in memory](../.trame/std/docs/tooling.md#BrowserInMemory)
 - In: [Test](architecture.md#Test)
 - Follows: [Strategy](../.trame/std/docs/patterns.md#Strategy)
+- Applies: [The SDLC is in the graph](sdlc.md#SdlcInTheGraph)
 
 ## Poselia · Settings
 
@@ -190,3 +195,4 @@ Context: The app keeps a little on the device, under names of its own: its prefe
 - Chooses: [Documents kept in the preferences](../.trame/data/docs/documents.md#DocumentsInPreferences)
 - In: [Browser](architecture.md#Browser), [Test](architecture.md#Test)
 - Follows: [Strategy](../.trame/std/docs/patterns.md#Strategy)
+- Applies: [What the app keeps stays on the device](principles.md#KeptOnThePhone)

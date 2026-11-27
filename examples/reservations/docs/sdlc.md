@@ -148,6 +148,7 @@ Context: trame ship runs the programs that deploy, and a person their commands, 
 - Chooses: [Commands run in the engine](../../../std/docs/tooling.md#CommandsInTheEngine)
 - In: [Local](infra.md#Local)
 - Follows: [Adapter](../../../std/docs/patterns.md#Adapter)
+- Applies: [The service's SDLC runs with std's tooling and commands](principles.md#SdlcWithStd)
 
 <a id="PullRequestsOpened"></a>
 
@@ -173,6 +174,7 @@ Context: Opening a pull request is the same for every project of a repository on
 - Chooses: [Open a pull request](../../../std/docs/commands.md#OpenPullRequest), [Our pull requests](#OurPullRequests), [Git's branches](../../../std/docs/repository.md#GitCliBranches), [GitHub's pull requests, by its command line](../../../std/docs/repository.md#GitHubCliPullRequests), [The automatic merge, by GitHub's command line](../../../std/docs/repository.md#AutoMergeByGitHubCli)
 - In: [Local](infra.md#Local)
 - Follows: [Command](../../../std/docs/patterns.md#Command)
+- Applies: [The service's SDLC runs with std's tooling and commands](principles.md#SdlcWithStd)
 
 ## Role
 

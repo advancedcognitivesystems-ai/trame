@@ -1,12 +1,12 @@
 # Owners
 
-*What each person must decide, settle or watch on 26 November 2026, and what they own.*
+*What each person must decide, settle or watch on 27 November 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
 | A teacher who practises | 0 | 0 | 4 | 0 |
 | People who try it on a phone | 0 | 0 | 1 | 0 |
-| ghalaax | 0 | 0 | 14 | 224 |
+| ghalaax | 0 | 0 | 14 | 226 |
 
 <a id="A teacher who practises"></a>
 
@@ -187,8 +187,10 @@
 | [A practice](practice.md#PracticeOf) | Function | **held** |
 | [The breath is the clock](principles.md#BreathIsTheClock) | Architecture decision | **held** |
 | [The content is data, behind a port](principles.md#ContentAsData) | Architecture decision | **unknown** |
+| [What the app keeps stays on the device](principles.md#KeptOnThePhone) | Architecture decision | **held** |
 | [The person's language, among those offered](principles.md#LanguageOffered) | Architecture decision | **held** |
 | [A page first, the phones after](principles.md#PageFirst) | Architecture decision | **unknown** |
+| [The app is played in memory first](principles.md#PlayedInMemoryFirst) | Architecture decision | **held** |
 | [Said aloud, the screen awake](principles.md#SaidAloud) | Architecture decision | **unknown** |
 | [The breath of a moment](product.md#BreathOf) | Requirement | **held** |
 | [Criteria of the breath of a moment](product.md#BreathOfCriteria) | Acceptance criteria | **held** |

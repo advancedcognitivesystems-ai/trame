@@ -15,7 +15,23 @@ import { ShipOnlyWhatHolds, SdlcEvidence, ShippingRecords } from "./shipping"
 import { NextGeneration, CandidateKeepsTheLaws } from "./sdlc"
 import { DeliveredStyle } from "./delivery"
 import { AcceptCandidate } from "./generations"
-import { NodePlatform, NodeMachine, InMemoryScenarios, EsbuildBundles, TreeSitterReads, TsxRuns, CompilerReadsDeclarations, EngineFilesBesideCode, PackagesByOrigin } from "./platform"
+import {
+  NodePlatform, NodeMachine, InMemoryScenarios, EsbuildBundles, TreeSitterReads, TsxRuns, CompilerReadsDeclarations, EngineFilesBesideCode, PackagesByOrigin,
+  PackagesByTheirOrigin, FilesInMemoryOverTheDisk, RunsByWhatTheyRead, RunsKeptInTheProcess, RunsKeptOnDisk, AmendmentsInPlace,
+} from "./platform"
+import { EngineQuestions } from "./doctor"
+import { DocumentsInOurLanguage } from "./documents"
+import { StdLanguagesRead } from "./syntax"
+import { SampleAddOnsInOrder } from "./scenarios"
+import { SealedByAttribution } from "./shipping"
+import {
+  SdlcInMemory, OurSettingsInTheScenarios, SdlcOnTheMachine, RepositoryWorkOnAMachine, AutoMergeOnTheMachine, AutoMergeInASession,
+  CommandsOfStd, CommandsWrittenOnce, WhatTheMachineMustHave,
+} from "./sdlc"
+import { EngineAsAProvider } from "#std/engine"
+import { CommandsOfALibrary } from "#std/commands"
+import { ToolingAsPorts } from "#std/tooling"
+import { RepositoryThroughItsApi } from "#std/repository"
 import { Strategy, Adapter, Bridge, AbstractFactory, Repository } from "#std/patterns"
 import { DocumentsInMarkdown, FiguresInMermaid, TerminalInText, TerminalFiguresAsText, PageInHtml, PageFiguresDrawn } from "./rendering"
 import { CompileExample, KindLaws, BuildLikeBefore, ExpectedDifferences } from "./scenarios"
@@ -365,7 +381,7 @@ export const PackagesByName = adr({
     "Trame installed from a registry at once": "a publication at each generation while the language changes with each one; the registry is the second strategy of the same port",
   },
   serves: [WrittenOnce],
-  appliedBy: [Project, WriteManifest, PackagesByOrigin, Advance, Laws, Init],
+  appliedBy: [Project, WriteManifest, PackagesByOrigin, PackagesByTheirOrigin, Advance, Laws, Init],
 })
 
 /**
@@ -460,4 +476,136 @@ export const WordsInCatalogs = adr({
     CompilerMessages, DriverMessages, LawMessages, ViewMessages, OutputMessages, DevMessages, CommandMessages, AdvanceMessages, RenderingMessages, PlatformMessages,
     ScenarioMessages,
   ],
+})
+
+// The decisions behind the choices (E3, the law of choices) -------------------------------------------------------------
+//
+// A technical choice is code, free to change; the decision behind it is an architecture decision of the project that
+// applies it, stated, frozen once the project publishes: its own reasons, or a library's it adopts.
+
+/**
+ * What a command does is played in memory first
+ * Every program Trame runs (the engine's commands, the programs of its SDLC) is played by scenarios before it runs on a
+ * machine: in memory, over the disk as it is, with the doubles a scenario answers (the processes, the server, the
+ * repository, the settings of std's commands, the add-ons in an order of their own).
+ */
+export const PlayedInMemoryFirst = adr({
+  owner: "trame",
+  context: "A command writes files, starts programs and calls GitHub: checked only on a machine, a mistake would be met after it did its harm, and only by whoever runs it.",
+  consequences: "Each port a command touches has a realization in memory, chosen in the environment Test; a scenario reads back what a command wrote. What only a machine can show (a browser, GitHub, the machine's programs) is proven by a check of a shipment.",
+  rejected: {
+    "Scenarios on the disk": "a scenario would leave files behind, and two scenarios would read each other's",
+    "Checks on a machine only": "played at each shipment rather than at each build, by whoever has the machine",
+  },
+  serves: [ExecutableSpecification],
+  appliedBy: [FilesInMemoryOverTheDisk, SdlcInMemory, OurSettingsInTheScenarios, SampleAddOnsInOrder],
+})
+
+/**
+ * A run is kept while what it reads is as it was
+ * A scenario played, the reading of TypeScript, the examples of a syntax element are given back while the code they
+ * wire and the files their project reads are as they were: on disk on a machine, where commands run as separate
+ * processes, in the process in the scenarios, which leave nothing behind.
+ */
+export const RunsKept = adr({
+  owner: "trame",
+  context: "A build of Trame played its scenarios 2,030 times, a hundred of its hundred and forty seconds; a shipment compiled the same graph a dozen times with the same code (g74).",
+  consequences: "A build after a change to one body plays again only the scenarios that wire it. Where a project compiled for a scenario lies in another's sources, its runs are kept beside that other (g126). Deleting the runs only costs time.",
+  rejected: {
+    "Playing every scenario at every compilation": "the same code on the same files gives the same result; a shipment took thirty-six minutes",
+    "A server that keeps them": "one more process to start, for what files under the project do",
+  },
+  serves: [ExecutableSpecification],
+  appliedBy: [RunsByWhatTheyRead, RunsKeptOnDisk, RunsKeptInTheProcess],
+})
+
+/**
+ * Evidence is sealed
+ * Each record of evidence is sealed with what it says (an attribution: its SHA-256), the port Signatures realized so
+ * until keys are decided: a record changed afterwards no longer matches its seal and is not counted.
+ */
+export const EvidenceSealed = adr({
+  owner: "trame",
+  context: "The evidence of the SDLC is a file anyone can edit: a record changed by hand would count as if the engine had written it (g72).",
+  consequences: "A record that no longer matches its seal is an error naming it. How a runner of GitHub signs, and where a person's keys live, are other realizations of the same port, to come with D2.",
+  rejected: {
+    "A key now": "where keys live is a question still open; the seal changes nothing to how a record is given",
+    "No seal, a rule in AGENTS.md": "a rule nobody checks protects nothing",
+  },
+  serves: [ExecutableSpecification],
+  appliedBy: [SealedByAttribution],
+})
+
+/**
+ * An amendment sits beside the value it changes
+ * trame amend, and the page in trame dev, write an amendment into the module that declares the value, after it: whoever
+ * reads the module sees the value and what changed it.
+ */
+export const AmendmentsBesideTheirValue = adr({
+  owner: "trame",
+  context: "Every value of the graph can be amended from the page or the command line (A4); where the amendment goes decides who sees it.",
+  consequences: "Where amendments go is the port Amendments: in the sources now; once the repository is where work is published, another realization.",
+  rejected: { "A file of amendments apart": "the amendment would sit far from the value it changes, where nobody reading the module sees it" },
+  serves: [SingleSource],
+  appliedBy: [AmendmentsInPlace],
+})
+
+/**
+ * Every question of the machine is an add-on
+ * What trame doctor asks is answered by add-ons (decided 25 November): the engine's own, chosen in its graph and asked
+ * always, then the project's, which a provider's adapter or libs/machine offers and the project chooses.
+ */
+export const MachineQuestionsAsAddOns = adr({
+  owner: "trame",
+  context: "On 17 November a machine whose browsers had moved refused the check of the page, and trame doctor said nothing of it: what a project needs of its machine was not the engine's to know.",
+  consequences: "A question lives with what needs it: the engine's with the engine, a provider's with its adapter, a command's with the command, the others in libs/machine. A check that runs doctor proves the project's add-ons.",
+  rejected: { "Every question in the engine": "the engine would ask what only some projects need, and miss what a provider's version needs" },
+  serves: [ExecutableSpecification],
+  appliedBy: [EngineQuestions, WhatTheMachineMustHave],
+})
+
+/**
+ * Trame's SDLC runs with std's tooling
+ * The programs of Trame's SDLC reach files, a browser and GitHub through std's ports, realized once in std: on the
+ * machine by its adapters (the engine's process, the disk, Playwright, GitHub's command line, its automatic merge), in
+ * memory in the scenarios. Trame adopts std's decisions on its tooling and on its repository.
+ */
+export const SdlcWithStdTooling = adr({
+  owner: "trame",
+  context: "Trame's SDLC opens pages, sets its repository and merges pull requests, as every project's does: std realizes each provider once.",
+  consequences: "A session of Claude Code merges through its proxy (AutoMergeInASession), a machine through GitHub's GraphQL (AutoMergeOnTheMachine): two realizations of one port, chosen per environment.",
+  rejected: { "Adapters of Trame's own": "each project would write them again, differently" },
+  serves: [WrittenOnce],
+  adopts: [ToolingAsPorts, RepositoryThroughItsApi],
+  appliedBy: [SdlcOnTheMachine, RepositoryWorkOnAMachine, AutoMergeOnTheMachine, AutoMergeInASession],
+})
+
+/**
+ * Trame runs the commands libraries offer
+ * Opening a pull request, merging it, carrying a version across the repository (std's), what a build would change
+ * (libs/commands'): Trame chooses them, with its decisions as their settings, and adopts the libraries' decision.
+ */
+export const CommandsFromLibraries = adr({
+  owner: "trame",
+  context: "Pull requests and propagations were done by hand, differently each time; the engine's commands reached its modules, out of every project's reach.",
+  consequences: "A command a library offers changes with a release of the library; Trame's settings stay Trame's decisions. Chosen in Local, plan asks for no environment.",
+  rejected: { "Commands of Trame's own": "any project of a repository opens pull requests and plans a build: written once, chosen by each" },
+  serves: [WrittenOnce],
+  adopts: [CommandsOfALibrary],
+  appliedBy: [CommandsOfStd, CommandsWrittenOnce],
+})
+
+/**
+ * The engine is a provider, for Trame too
+ * A command, a language of a library, reach the engine through std's ports of its primitives, which the engine
+ * realizes through its API (E3): Trame adopts std's decision, for the commands it takes and the languages it reads.
+ */
+export const EngineProvidesForTrame = adr({
+  owner: "trame",
+  context: "Trame is the engine's home: its own commands could reach the engine's modules directly, which a project's command cannot.",
+  consequences: "What Trame's commands and std's languages reach of the engine is what any project's reach: the API the language defines.",
+  rejected: { "Direct access for Trame": "the commands written once would not run elsewhere as they run here" },
+  serves: [WrittenOnce],
+  adopts: [EngineAsAProvider],
+  appliedBy: [CommandsWrittenOnce, StdLanguagesRead],
 })

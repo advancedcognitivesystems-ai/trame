@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-26",
+  "at": "2026-11-27",
   "nodes": [
     {
       "id": "appearance.ExplorerDrawing",
@@ -2500,7 +2500,7 @@
         "deps": {
           "preparation": "commands.Preparation",
           "machine": "engine.MachineOutputs",
-          "comparison": "commands.BuildComparison",
+          "comparison": "commands/commands.BuildComparison",
           "prelude": "architecture.Prelude",
           "references": "engine.References",
           "project": "engine.Project",
@@ -2627,23 +2627,6 @@
         },
         "body": {
           "file": "./code/commands/build.ts",
-          "language": "typescript"
-        }
-      }
-    },
-    {
-      "id": "commands.BuildComparison",
-      "kind": "function",
-      "title": "Two builds compared",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "deps": {
-          "messages": "messages.CommandMessages",
-          "output": "messages.OutputMessages"
-        },
-        "body": {
-          "file": "./code/commands/comparison.ts",
           "language": "typescript"
         }
       }
@@ -2966,6 +2949,7 @@
     {
       "id": "commands.Plan",
       "kind": "entry",
+      "title": "Plan a build",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2979,7 +2963,7 @@
           "text": "text.TerminalText",
           "preparation": "commands.Preparation",
           "machine": "engine.MachineOutputs",
-          "comparison": "commands.BuildComparison",
+          "comparison": "commands/commands.BuildComparison",
           "reading": "architecture.FileReading",
           "paths": "architecture.Paths",
           "encodings": "std/system.NodeEncodings",
@@ -8431,10 +8415,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "documents",
-        "version": "0.1.0",
+        "version": "0.1.1",
         "joins": "library",
         "from": "path",
-        "at": "libs/documents/releases/0.1.0"
+        "at": "libs/documents/releases/0.1.1"
       }
     },
     {
@@ -8461,10 +8445,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "commands",
-        "version": "0.1.1",
+        "version": "0.1.2",
         "joins": "library",
         "from": "path",
-        "at": "libs/commands/releases/0.1.1"
+        "at": "libs/commands/releases/0.1.2"
       }
     },
     {
@@ -8581,10 +8565,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.29.0",
+        "version": "0.29.1",
         "joins": "library",
         "from": "path",
-        "at": "std/releases/0.29.0"
+        "at": "std/releases/0.29.1"
       }
     },
     {
@@ -10785,6 +10769,20 @@
       }
     },
     {
+      "id": "principles.AmendmentsBesideTheirValue",
+      "kind": "adr",
+      "title": "An amendment sits beside the value it changes",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "Every value of the graph can be amended from the page or the command line (A4); where the amendment goes decides who sees it.",
+        "consequences": "Where amendments go is the port Amendments: in the sources now; once the repository is where work is published, another realization.",
+        "rejected": {
+          "A file of amendments apart": "the amendment would sit far from the value it changes, where nobody reading the module sees it"
+        }
+      }
+    },
+    {
       "id": "principles.ChangesAreClaims",
       "kind": "adr",
       "title": "A change to a node is a claim",
@@ -10795,6 +10793,20 @@
         "consequences": "The compiler detects overlaps, always records them, and applies what the kind settles; the settlement names the nodes it read. It never depends on the value it settles, nor on the order of the claims.",
         "rejected": {
           "The most recent wins": "it hides disagreements; a kind may choose it where it makes sense"
+        }
+      }
+    },
+    {
+      "id": "principles.CommandsFromLibraries",
+      "kind": "adr",
+      "title": "Trame runs the commands libraries offer",
+      "status": "unknown",
+      "fields": {
+        "owner": "trame",
+        "context": "Pull requests and propagations were done by hand, differently each time; the engine's commands reached its modules, out of every project's reach.",
+        "consequences": "A command a library offers changes with a release of the library; Trame's settings stay Trame's decisions. Chosen in Local, plan asks for no environment.",
+        "rejected": {
+          "Commands of Trame's own": "any project of a repository opens pull requests and plans a build: written once, chosen by each"
         }
       }
     },
@@ -10841,6 +10853,20 @@
       }
     },
     {
+      "id": "principles.EngineProvidesForTrame",
+      "kind": "adr",
+      "title": "The engine is a provider, for Trame too",
+      "status": "unknown",
+      "fields": {
+        "owner": "trame",
+        "context": "Trame is the engine's home: its own commands could reach the engine's modules directly, which a project's command cannot.",
+        "consequences": "What Trame's commands and std's languages reach of the engine is what any project's reach: the API the language defines.",
+        "rejected": {
+          "Direct access for Trame": "the commands written once would not run elsewhere as they run here"
+        }
+      }
+    },
+    {
       "id": "principles.EveryLiteralDeclared",
       "kind": "adr",
       "title": "A literal in a body is an error",
@@ -10852,6 +10878,21 @@
         "rejected": {
           "A list of refused values (0, 1, -1, \"\")": "it said which literals mattered, while every one hides a meaning",
           "A baseline of tolerated literals": "it would never shrink"
+        }
+      }
+    },
+    {
+      "id": "principles.EvidenceSealed",
+      "kind": "adr",
+      "title": "Evidence is sealed",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "The evidence of the SDLC is a file anyone can edit: a record changed by hand would count as if the engine had written it (g72).",
+        "consequences": "A record that no longer matches its seal is an error naming it. How a runner of GitHub signs, and where a person's keys live, are other realizations of the same port, to come with D2.",
+        "rejected": {
+          "A key now": "where keys live is a question still open; the seal changes nothing to how a record is given",
+          "No seal, a rule in AGENTS.md": "a rule nobody checks protects nothing"
         }
       }
     },
@@ -10956,6 +10997,20 @@
       }
     },
     {
+      "id": "principles.MachineQuestionsAsAddOns",
+      "kind": "adr",
+      "title": "Every question of the machine is an add-on",
+      "status": "unknown",
+      "fields": {
+        "owner": "trame",
+        "context": "On 17 November a machine whose browsers had moved refused the check of the page, and trame doctor said nothing of it: what a project needs of its machine was not the engine's to know.",
+        "consequences": "A question lives with what needs it: the engine's with the engine, a provider's with its adapter, a command's with the command, the others in libs/machine. A check that runs doctor proves the project's add-ons.",
+        "rejected": {
+          "Every question in the engine": "the engine would ask what only some projects need, and miss what a provider's version needs"
+        }
+      }
+    },
+    {
       "id": "principles.NoHiddenDecision",
       "kind": "adr",
       "title": "Code holds no hidden decision",
@@ -11041,6 +11096,21 @@
       }
     },
     {
+      "id": "principles.PlayedInMemoryFirst",
+      "kind": "adr",
+      "title": "What a command does is played in memory first",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "A command writes files, starts programs and calls GitHub: checked only on a machine, a mistake would be met after it did its harm, and only by whoever runs it.",
+        "consequences": "Each port a command touches has a realization in memory, chosen in the environment Test; a scenario reads back what a command wrote. What only a machine can show (a browser, GitHub, the machine's programs) is proven by a check of a shipment.",
+        "rejected": {
+          "Scenarios on the disk": "a scenario would leave files behind, and two scenarios would read each other's",
+          "Checks on a machine only": "played at each shipment rather than at each build, by whoever has the machine"
+        }
+      }
+    },
+    {
       "id": "principles.PreludeLayer",
       "kind": "adr",
       "title": "The prelude: the runtime of the language",
@@ -11051,6 +11121,35 @@
         "consequences": "The graph describes the prelude as a port; a body imports only its public API; a frozen program calls only its frozen API. The laws of kinds and views, and every generation that runs on it, protect it.",
         "rejected": {
           "The prelude as nodes": "it is what nodes are made of: the graph cannot produce it"
+        }
+      }
+    },
+    {
+      "id": "principles.RunsKept",
+      "kind": "adr",
+      "title": "A run is kept while what it reads is as it was",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "A build of Trame played its scenarios 2,030 times, a hundred of its hundred and forty seconds; a shipment compiled the same graph a dozen times with the same code (g74).",
+        "consequences": "A build after a change to one body plays again only the scenarios that wire it. Where a project compiled for a scenario lies in another's sources, its runs are kept beside that other (g126). Deleting the runs only costs time.",
+        "rejected": {
+          "Playing every scenario at every compilation": "the same code on the same files gives the same result; a shipment took thirty-six minutes",
+          "A server that keeps them": "one more process to start, for what files under the project do"
+        }
+      }
+    },
+    {
+      "id": "principles.SdlcWithStdTooling",
+      "kind": "adr",
+      "title": "Trame's SDLC runs with std's tooling",
+      "status": "unknown",
+      "fields": {
+        "owner": "trame",
+        "context": "Trame's SDLC opens pages, sets its repository and merges pull requests, as every project's does: std realizes each provider once.",
+        "consequences": "A session of Claude Code merges through its proxy (AutoMergeInASession), a machine through GitHub's GraphQL (AutoMergeOnTheMachine): two realizations of one port, chosen per environment.",
+        "rejected": {
+          "Adapters of Trame's own": "each project would write them again, differently"
         }
       }
     },
@@ -11855,6 +11954,20 @@
         "what": "The `structure` kind and the `algebra` module (Counts, Sequences, Texts), whose laws are played at every compilation; the engine's core writes no 0, 1 or `\"\"` any more",
         "fingerprint": "83bc969f0c085070",
         "language": "own"
+      }
+    },
+    {
+      "id": "releases.G130",
+      "kind": "release",
+      "title": "Generation 130",
+      "fields": {
+        "owner": "trame",
+        "version": "g130",
+        "date": "2026-11-27",
+        "what": "Every choice backed by an architecture decision of its project (choice-unbacked), which may adopt a library's; the engine's plan and amend compare builds with libs/commands' comparison, the copy gone",
+        "fingerprint": "15cd22e74cfcf32d",
+        "language": "shared",
+        "archive": "59658b2c5f486d08"
       }
     },
     {
@@ -14260,7 +14373,7 @@
       "id": "sdlc.CommandsWrittenOnce",
       "kind": "binding",
       "title": "The commands Trame takes from libs/commands",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "The engine's commands reached its modules directly: a project could neither choose them nor specialize them, and a command of its own could not compute what they computed.",
@@ -14404,7 +14517,7 @@
       "id": "sdlc.IntoMain",
       "kind": "shipment",
       "title": "Into the main branch",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "main"
@@ -14422,7 +14535,7 @@
       "id": "sdlc.MachineAsked",
       "kind": "check",
       "title": "The machine has what Trame needs",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "command": "doctor"
@@ -14587,7 +14700,7 @@
       "id": "sdlc.OurMachineSettings",
       "kind": "function",
       "title": "What the machine runs, for Trame",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -14659,7 +14772,7 @@
       "id": "sdlc.PlanRunsInTheEngine",
       "kind": "check",
       "title": "trame plan runs in the engine",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame"
       }
@@ -14701,7 +14814,7 @@
       "id": "sdlc.PullRequestWorkflow",
       "kind": "artifact",
       "title": "The pull requests' workflow",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": ".github/workflows/trame-pull-request.yml",
@@ -14863,7 +14976,7 @@
       "id": "sdlc.RunnersWritten",
       "kind": "shipment",
       "title": "The files that run it elsewhere",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "repository"
@@ -14932,7 +15045,7 @@
       "id": "sdlc.TheEngine",
       "kind": "artifact",
       "title": "The engine",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "src",
@@ -14966,7 +15079,7 @@
       "id": "sdlc.WhatTheMachineMustHave",
       "kind": "binding",
       "title": "What the machine must also have",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "On 17 November a machine whose browsers had moved refused the check of the page, and trame doctor said nothing of it; the pull requests and the propagation need Git, and the engine's loader Node 22."
@@ -20146,11 +20259,6 @@
     },
     {
       "from": "command-scenarios.ValueAmended",
-      "to": "commands.BuildComparison",
-      "kind": "verifies"
-    },
-    {
-      "from": "command-scenarios.ValueAmended",
       "to": "platform.InPlaceSources",
       "kind": "verifies"
     },
@@ -20501,11 +20609,6 @@
     },
     {
       "from": "commands.Amending",
-      "to": "commands.BuildComparison",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Amending",
       "to": "architecture.Prelude",
       "kind": "deps"
     },
@@ -20732,21 +20835,6 @@
     {
       "from": "commands.Build",
       "to": "messages.CommandMessages",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.BuildComparison",
-      "to": "product.ExecutableSpecification",
-      "kind": "serves"
-    },
-    {
-      "from": "commands.BuildComparison",
-      "to": "messages.CommandMessages",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.BuildComparison",
-      "to": "messages.OutputMessages",
       "kind": "deps"
     },
     {
@@ -21367,11 +21455,6 @@
     {
       "from": "commands.Plan",
       "to": "engine.MachineOutputs",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Plan",
-      "to": "commands.BuildComparison",
       "kind": "deps"
     },
     {
@@ -22757,6 +22840,11 @@
     {
       "from": "documents.PunctuationOfTheLanguage",
       "to": "documents.OurDocumentLanguage",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "documents.PunctuationOfTheLanguage",
+      "to": "documents.DocumentsInOurLanguage",
       "kind": "appliedBy"
     },
     {
@@ -26450,6 +26538,16 @@
       "kind": "appliedBy"
     },
     {
+      "from": "principles.AmendmentsBesideTheirValue",
+      "to": "product.SingleSource",
+      "kind": "serves"
+    },
+    {
+      "from": "principles.AmendmentsBesideTheirValue",
+      "to": "platform.AmendmentsInPlace",
+      "kind": "appliedBy"
+    },
+    {
       "from": "principles.ChangesAreClaims",
       "to": "product.SingleSource",
       "kind": "serves"
@@ -26462,6 +26560,21 @@
     {
       "from": "principles.ChangesAreClaims",
       "to": "engine.Laws",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.CommandsFromLibraries",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "principles.CommandsFromLibraries",
+      "to": "sdlc.CommandsOfStd",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.CommandsFromLibraries",
+      "to": "sdlc.CommandsWrittenOnce",
       "kind": "appliedBy"
     },
     {
@@ -26520,6 +26633,21 @@
       "kind": "appliedBy"
     },
     {
+      "from": "principles.EngineProvidesForTrame",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "principles.EngineProvidesForTrame",
+      "to": "sdlc.CommandsWrittenOnce",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.EngineProvidesForTrame",
+      "to": "syntax.StdLanguagesRead",
+      "kind": "appliedBy"
+    },
+    {
       "from": "principles.EveryLiteralDeclared",
       "to": "product.SingleSource",
       "kind": "serves"
@@ -26532,6 +26660,16 @@
     {
       "from": "principles.EveryLiteralDeclared",
       "to": "syntax.SyntaxReader",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.EvidenceSealed",
+      "to": "product.ExecutableSpecification",
+      "kind": "serves"
+    },
+    {
+      "from": "principles.EvidenceSealed",
+      "to": "shipping.SealedByAttribution",
       "kind": "appliedBy"
     },
     {
@@ -26715,6 +26853,21 @@
       "kind": "appliedBy"
     },
     {
+      "from": "principles.MachineQuestionsAsAddOns",
+      "to": "product.ExecutableSpecification",
+      "kind": "serves"
+    },
+    {
+      "from": "principles.MachineQuestionsAsAddOns",
+      "to": "doctor.EngineQuestions",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.MachineQuestionsAsAddOns",
+      "to": "sdlc.WhatTheMachineMustHave",
+      "kind": "appliedBy"
+    },
+    {
       "from": "principles.NoHiddenDecision",
       "to": "product.SingleSource",
       "kind": "serves"
@@ -26856,6 +27009,11 @@
     },
     {
       "from": "principles.PackagesByName",
+      "to": "platform.PackagesByTheirOrigin",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.PackagesByName",
       "to": "commands.Advance",
       "kind": "appliedBy"
     },
@@ -26867,6 +27025,31 @@
     {
       "from": "principles.PackagesByName",
       "to": "commands.Init",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.PlayedInMemoryFirst",
+      "to": "product.ExecutableSpecification",
+      "kind": "serves"
+    },
+    {
+      "from": "principles.PlayedInMemoryFirst",
+      "to": "platform.FilesInMemoryOverTheDisk",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.PlayedInMemoryFirst",
+      "to": "sdlc.SdlcInMemory",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.PlayedInMemoryFirst",
+      "to": "sdlc.OurSettingsInTheScenarios",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.PlayedInMemoryFirst",
+      "to": "scenarios.SampleAddOnsInOrder",
       "kind": "appliedBy"
     },
     {
@@ -26892,6 +27075,51 @@
     {
       "from": "principles.PreludeLayer",
       "to": "engine.Laws",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.RunsKept",
+      "to": "product.ExecutableSpecification",
+      "kind": "serves"
+    },
+    {
+      "from": "principles.RunsKept",
+      "to": "platform.RunsByWhatTheyRead",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.RunsKept",
+      "to": "platform.RunsKeptOnDisk",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.RunsKept",
+      "to": "platform.RunsKeptInTheProcess",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.SdlcWithStdTooling",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "principles.SdlcWithStdTooling",
+      "to": "sdlc.SdlcOnTheMachine",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.SdlcWithStdTooling",
+      "to": "sdlc.RepositoryWorkOnAMachine",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.SdlcWithStdTooling",
+      "to": "sdlc.AutoMergeOnTheMachine",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.SdlcWithStdTooling",
+      "to": "sdlc.AutoMergeInASession",
       "kind": "appliedBy"
     },
     {
@@ -27512,6 +27740,16 @@
     {
       "from": "releases.G13",
       "to": "releases.G12",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G130",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G130",
+      "to": "releases.G129",
       "kind": "assembledBy"
     },
     {

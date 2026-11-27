@@ -1,8 +1,8 @@
 # Architecture decisions
 
-*The choices that shape the product without being values, in force on 26 November 2026: why each was taken, what was rejected, and the nodes that apply it.*
+*The choices that shape the product without being values, in force on 27 November 2026: why each was taken, what was rejected, and the nodes that apply it.*
 
-> **8 architecture decisions, 7 held by the nodes that apply them**
+> **9 architecture decisions, 8 held by the nodes that apply them**
 
 | Decision | Status | Applied by |
 |---|---|---|
@@ -13,6 +13,7 @@
 | [A component in a browser starts with its page](platform.md#StartsWithThePage) | unknown | [The browser loads the page](platform.md#BrowserLoading), [Loading of a page](platform.md#PageLoading) |
 | [The device's services, as ports](platform.md#DeviceAsPorts) | **held** | [Animation frames](platform.md#AnimationFrames), [The screen kept awake, in memory](platform.md#AwakeInMemory), [The browser's frames](platform.md#BrowserFrames), [The browser's languages](platform.md#BrowserLanguages), [The browser keeps the preferences](platform.md#BrowserPreferences), [The browser's voice](platform.md#BrowserSpeech), [The browser keeps the screen awake](platform.md#BrowserWakeLock), [Languages of the device](platform.md#DeviceLanguages), [Frames turned by hand](platform.md#FramesByHand), [Preferences kept in memory](platform.md#MemoryPreferences), [Preferences](platform.md#PreferencesStore), [Screen kept awake](platform.md#ScreenAwake), [Whether the screen is kept awake](platform.md#ScreenKeptAwake), [What was said](platform.md#SpeechHeard), [Speech](platform.md#SpeechVoice), [Time turned by hand](platform.md#TimeTurned), [A voice that writes down](platform.md#WrittenSpeech) |
 | [A repository is set by its project's graph](repository.md#RepositoryThroughItsApi) | **held** | [GitHub's command line](repository.md#GitHubCliRepository), [How GitHub merges a pull request](repository.md#MergeMethods), [A repository on GitHub](repository.md#RepositoryApi), [A repository compared with its settings](repository.md#RepositoryCompared), [A repository kept in memory](repository.md#RepositoryInMemory), [The repositories a scenario keeps](repository.md#RepositoryKept), [The parts of a repository's settings](repository.md#RepositoryParts) |
+| [How the library's scenarios run](scenarios.md#HowTheScenariosRun) | **held** | [In memory](scenarios.md#InMemory), [Judged as the language says](scenarios.md#LanguageJudgment), [Read by the engine that builds](scenarios.md#ReadInTheEngine), [The scenarios' settings](scenarios.md#ScenarioSettings), [Judged strictly](scenarios.md#StrictJudgment) |
 | [The SDLC's tooling is realized once](tooling.md#ToolingAsPorts) | **held** | [A browser kept in memory](tooling.md#BrowserInMemory), [Browser script](tooling.md#BrowserScripted), [Commands run in the engine](tooling.md#CommandsInTheEngine), [Project files](tooling.md#Files), [Files kept in memory](tooling.md#FilesInMemory), [Files written](tooling.md#FilesKept), [Headless browser](tooling.md#HeadlessBrowser), [The machine's files](tooling.md#MachineFiles), [What the machine must also have](tooling.md#MachineNeeds), [Node's command line](tooling.md#NodeProgramCommands), [Where a package comes from](tooling.md#PackageSources), [Chromium, driven by Playwright](tooling.md#PlaywrightBrowser), [Playwright's browser, installed](tooling.md#PlaywrightBrowserInstalled), [Commands of a program](tooling.md#ProgramCommands), [What repairs a project](tooling.md#ProjectRepairs) |
 
 ## Standard library · Access
@@ -172,6 +173,29 @@ Consequences: A project decides its settings (RepositorySettings) and applies th
 - Decided by: trame
 - Serves: [Ports of the platform, realized once](product.md#RealizedOnce)
 - Applied by: [How GitHub merges a pull request](repository.md#MergeMethods), [The parts of a repository's settings](repository.md#RepositoryParts), [A repository compared with its settings](repository.md#RepositoryCompared), [A repository on GitHub](repository.md#RepositoryApi), [GitHub's command line](repository.md#GitHubCliRepository), [The repositories a scenario keeps](repository.md#RepositoryKept), [A repository kept in memory](repository.md#RepositoryInMemory)
+
+## Standard library · Scenarios
+
+<a id="HowTheScenariosRun"></a>
+
+### How the library's scenarios run
+
+`HowTheScenariosRun` · `src/scenarios.ts:550` · status: **held**
+
+Every port the library's code touches is played in memory, by the realizations the library offers for that (they keep their port's promise, as a project's scenarios need); a command's settings are the scenario's own; the library judges as the language says, and plays the strict way of judging through its port in an environment of its own; its languages are read by the engine that builds it, whose grammars no library carries.
+
+Context: The library offers realizations in memory to every project's scenarios: its own scenarios prove that they keep their ports' promises, before any project relies on them.
+
+Consequences: A project that judges harder chooses EveryWarning or one of its own (C4); the library leaves its warnings as points to watch. Reading HTML and CSS needs an engine: the library's build has one.
+
+| Rejected | Why |
+|---|---|
+| Scenarios on the machine | they would touch the disk, a browser and GitHub at each build of the library |
+| Strict judgment for the library itself | a library's warnings are often what its projects decide (a port nobody realizes here) |
+
+- Decided by: trame
+- Serves: [Ports of the platform, realized once](product.md#RealizedOnce)
+- Applied by: [In memory](scenarios.md#InMemory), [The scenarios' settings](scenarios.md#ScenarioSettings), [Judged as the language says](scenarios.md#LanguageJudgment), [Judged strictly](scenarios.md#StrictJudgment), [Read by the engine that builds](scenarios.md#ReadInTheEngine)
 
 ## Standard library · Tooling
 

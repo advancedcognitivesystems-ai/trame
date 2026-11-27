@@ -18,3 +18,16 @@ export const R0_1_0 = release({
   language: "shared",
   serves: [RenderedOnce],
 })
+
+/**
+ * Version 0.1.1
+ */
+export const R0_1_1 = release({
+  owner: "trame",
+  version: "0.1.1",
+  date: "2026-11-27",
+  what: "its own language of words; the decision behind its choices: the documents speak the engine's language",
+  fingerprint: "f0c7ad53400d19af",
+  language: "shared",
+  serves: [RenderedOnce],
+})

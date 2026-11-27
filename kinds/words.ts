@@ -29,6 +29,10 @@ const body = () => ({
   adrAppliedBy: () => "Applied by",
   adrApplies: () => "Applies",
   adrNothingAppliesItYetAWish: () => "Nothing applies it yet: a wish, not a decision",
+  adrAdopts: () => "Adopts",
+  adrAdoptedBy: () => "Adopted by",
+  adrAdoptsOwn: (title: string) => `It adopts ${title}, which is no library's: a project's own decision is applied, not adopted`,
+  bindingUnbacked: () => "No architecture decision of its project applies it: code, not yet a decision (an ADR of the project says why, or adopts a library's)",
   adrNothingProvableAppliesIt: () => "Only nodes that can never have a status apply it: nothing can prove it as it is written",
 
   // amendment --------------------------------------------------------------------------------------------------

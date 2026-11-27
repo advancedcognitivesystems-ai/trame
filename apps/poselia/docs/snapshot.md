@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 26 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 27 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Poselia · The app in a browser
 
@@ -831,10 +831,10 @@ Package · `Data`
 
 - Owner: ghalaax
 - Name: data
-- Version: 0.5.0
+- Version: 0.5.1
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: ../../libs/data/releases/0.5.0
+- Its path: ../../libs/data/releases/0.5.1
 - Serves: Practise yoga on one's own, guided
 
 ### Geometry
@@ -855,10 +855,10 @@ Package · `Language`
 
 - Owner: ghalaax
 - Name: trame
-- Version: 129
+- Version: 130
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../../generations/g129
+- Its path: ../../generations/g130
 - Serves: Practise yoga on one's own, guided
 
 ### The people of the repository
@@ -879,10 +879,10 @@ Package · `StandardLibrary`
 
 - Owner: ghalaax
 - Name: std
-- Version: 0.29.0
+- Version: 0.29.1
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: ../../std/releases/0.29.0
+- Its path: ../../std/releases/0.29.1
 - Serves: Practise yoga on one's own, guided
 
 ## Poselia · Practice
@@ -1028,7 +1028,18 @@ Architecture decision · `ContentAsData` · **unknown**
 - Consequences: Each kind of content is a dataset with its rules and its languages; the app never names where the rows come from, it asks the port. A content pack will carry its version (the fingerprint of its rows) and the version of its schema.
 - Rejected: A node per pose, content would be code, and a friend who checks a cue would read the graph; A server from the start, an app that works offline on the mat comes first
 - Serves: Content checked by people who practise
-- Applied by: Poses, Content
+- Applied by: Poses, Content, Content carried by the app
+
+### What the app keeps stays on the device
+
+Architecture decision · `KeptOnThePhone` · **held**
+
+- Decided by: ghalaax
+- Context: The app works offline and asks nobody for an account: what it keeps of a person is a little, and theirs.
+- Consequences: A version that changes what is kept migrates it as the entity says; nothing leaves the device.
+- Rejected: An account on a server, a person would give an address to practise on their mat
+- Serves: The breath sets the pace
+- Applied by: Kept in the preferences of the device
 
 ### The person's language, among those offered
 
@@ -1050,7 +1061,18 @@ Architecture decision · `PageFirst` · **unknown**
 - Consequences: The component runs in a browser; its realizations are the browser's, and the phones' will be bound in their own environment, without the app changing.
 - Rejected: A native app from the start, two code bases, and nothing to show before the stores
 - Serves: Practise yoga on one's own, guided
-- Applied by: Poselia in a browser, Poselia's page, The page opens
+- Applied by: Poselia in a browser, Poselia's page, The page opens, The browser's realizations
+
+### The app is played in memory first
+
+Architecture decision · `PlayedInMemoryFirst` · **held**
+
+- Decided by: ghalaax
+- Context: A practice lasts minutes and follows the breath: played only in a browser, a mistake in a sequence would be met on the mat.
+- Consequences: What only a browser or a phone shows (the voice, the screen kept awake, the frames) is proven by the checks of a shipment.
+- Rejected: A browser driven at each build, slow, and the voice and the wake lock answer only on a device
+- Serves: Practise yoga on one's own, guided
+- Applied by: The app in memory
 
 ### Said aloud, the screen awake
 
@@ -1324,7 +1346,7 @@ Architecture decision · `SdlcInTheGraph` · **unknown**
 - Consequences: trame ship refuses a version while a check, a review or a scenario does not hold, says whose it is, and keeps the dossier of each version shipped.
 - Rejected: A script of continuous integration beside the graph, the steps and their reasons would live in two places, and the graph would not know what was checked; A review in a pull request, it says neither which rows were seen nor in which language; a change to a row would not undo it
 - Serves: Content checked by people who practise, Practise yoga on one's own, guided
-- Applied by: A preview, A public version, The page opens, On a phone, The content, reviewed, Open the page, Place the page, Code serves the product, Each decision of architecture serves the product, The preview's workflow, The preview's script, The files that run it elsewhere
+- Applied by: A preview, A public version, The page opens, On a phone, The content, reviewed, Open the page, Place the page, Code serves the product, Each decision of architecture serves the product, The preview's workflow, The preview's script, The files that run it elsewhere, On the machine, The SDLC in memory
 
 ### Poselia's SDLC
 

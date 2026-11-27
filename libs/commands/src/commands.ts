@@ -6,7 +6,7 @@ import { entryPoint, command } from "#trame/kinds/entry-point"
 import { fn } from "#trame/kinds/function"
 import { catalog } from "#trame/kinds/catalog"
 import { decision } from "#trame/kinds/decision"
-import { ProgramCommands, Files, CommandLanguage } from "#std/tooling"
+import { ProgramCommands, Files } from "#std/tooling"
 import { TheProject } from "#std/engine"
 import { Anyone } from "#std/access"
 import { ExitStatus } from "#std/system"
@@ -40,12 +40,23 @@ export const TerminalLines = decision<{ indent: string }>({
 })
 
 /**
+ * The language the commands speak
+ * British English, the language Trame's engine and its documents speak: what a command says sits beside what the
+ * engine and the views say, at the same terminal.
+ */
+export const WordsLanguage = decision<{ tag: string }>({
+  owner: "trame",
+  value: { tag: "en-GB" },
+  rejected: { "std's language of its commands": "a choice of std's, which may change for std's reasons" },
+})
+
+/**
  * What the commands say
  */
 export const CommandWords = catalog({
   owner: "trame",
-  language: CommandLanguage,
-  deps: { language: CommandLanguage },
+  language: WordsLanguage,
+  deps: { language: WordsLanguage },
   messages: ({ language }) => {
     const plural = plurals(language.tag)
     return {

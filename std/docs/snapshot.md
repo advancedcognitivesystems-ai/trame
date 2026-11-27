@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 26 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 27 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Standard library · Access
 
@@ -458,7 +458,7 @@ Language · `CssStyleSheets` · **held**
 
 - Owner: trame
 - Named in bodies: css
-- Grammar: { module: tree-sitter-css/tree-sitter-css.wasm, package: tree-sitter-css, version: 0.25.0 }
+- Grammar: { module: tree-sitter-css/tree-sitter-css.wasm }
 - Extensions: .css
 - Queries: { values: { value: 
 (integer_value) @literal.number
@@ -495,7 +495,7 @@ Language · `HtmlMarkup` · **held**
 
 - Owner: trame
 - Named in bodies: html
-- Grammar: { module: tree-sitter-html/tree-sitter-html.wasm, package: tree-sitter-html, version: 0.23.2 }
+- Grammar: { module: tree-sitter-html/tree-sitter-html.wasm }
 - Extensions: .html
 - Queries: { values: { value: 
 (quoted_attribute_value) @literal.text
@@ -775,10 +775,10 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 129
+- Version: 130
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../generations/g129
+- Its path: ../generations/g130
 - Serves: Ports of the platform, realized once
 
 ### The people of the repository
@@ -1398,6 +1398,18 @@ Release · `R0_29_0`
 - Language: shared
 - Serves: Commands chosen, not written again, A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again, Versions that hold
 
+### Version 0.29.1
+
+Release · `R0_29_1`
+
+- Released by: trame
+- Version: 0.29.1
+- Released on: 2026-11-27
+- What changes: the decision behind the library's choices; the grammars' versions named once, by the engine's packages
+- Fingerprint: 1e0910d6f1dc66af
+- Language: shared
+- Serves: Commands chosen, not written again, A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again, Versions that hold
+
 ### Version 0.3.0
 
 Release · `R0_3_0`
@@ -1783,6 +1795,17 @@ Decision · `ScenarioLanguage`
 
 - Decided by: trame
 - Value: { tag: en-GB }
+
+### How the library's scenarios run
+
+Architecture decision · `HowTheScenariosRun` · **held**
+
+- Decided by: trame
+- Context: The library offers realizations in memory to every project's scenarios: its own scenarios prove that they keep their ports' promises, before any project relies on them.
+- Consequences: A project that judges harder chooses EveryWarning or one of its own (C4); the library leaves its warnings as points to watch. Reading HTML and CSS needs an engine: the library's build has one.
+- Rejected: Scenarios on the machine, they would touch the disk, a browser and GitHub at each build of the library; Strict judgment for the library itself, a library's warnings are often what its projects decide (a port nobody realizes here)
+- Serves: Ports of the platform, realized once
+- Applied by: In memory, The scenarios' settings, Judged as the language says, Judged strictly, Read by the engine that builds
 
 ### How the scenarios' versions are carried
 

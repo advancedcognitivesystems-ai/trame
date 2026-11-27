@@ -563,13 +563,6 @@ export const CommandMessages = catalog({
         `${n.resolved} resolved`,
         `against the build of ${since ?? "an unknown date"}, compiled at ${today}`,
       ].join(" · "),
-    planAdded: (title: string, kind: string | undefined) => `+ ${title}${kind ? ` (${kind})` : ""}`,
-    planRemoved: (title: string, kind: string | undefined) => `- ${title}${kind ? ` (${kind})` : ""}`,
-    planStatus: (title: string, from: string | undefined, to: string | undefined) => `~ ${title}: ${from ?? "no status"} → ${to ?? "no status"}`,
-    planChanged: (title: string, what: { fields: boolean; result: boolean; edges: boolean }) =>
-      `≈ ${title}: ${[what.fields && "its fields", what.result && "what it computes", what.edges && "its edges"].filter(Boolean).join(", ")}`,
-    planRaised: (where: string | undefined, issue: string) => `! ${where ? `${where}: ` : "the graph: "}${issue}`,
-    planResolved: (where: string | undefined, issue: string) => `✓ ${where ? `${where}: ` : "the graph: "}${issue}`,
     /** The last line of a plan that changes something. */
     planShipments: (shipments: string[]) =>
       shipments.length ? `shipments touched: ${shipments.join(", ")}` : "no shipment touched",

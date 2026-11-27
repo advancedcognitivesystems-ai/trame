@@ -11,7 +11,8 @@ import type { References } from "../../engine"
 import type { AmendmentNaming } from "../../conventions"
 import type { Api as PreparationApi, Options } from "./preparation"
 import type { Api as MachineApi } from "../engine/machine"
-import type { Api as ComparisonApi, Build } from "./comparison"
+import type { BuildComparison } from "#commands/commands"
+import type { Build } from "#commands/code/comparison"
 import type { Api as ProjectApi } from "../engine/project"
 import type { Counts, ValueTypes } from "#std/algebra"
 import type { NodeModuleSpecifiers } from "#std/system"
@@ -44,7 +45,8 @@ export interface AmendmentPrepared {
 export interface Deps {
   preparation: PreparationApi
   machine: MachineApi
-  comparison: ComparisonApi
+  /** Two builds compared: libs/commands' (since g130), the one comparison. */
+  comparison: ProvidedBy<typeof BuildComparison>
   prelude: Prelude
   references: ProvidedBy<typeof References>
   project: ProjectApi

@@ -291,6 +291,7 @@ Context: In production, the reservations are the drivers': a table starts empty.
 - Chooses: [No records to start with](../../../libs/data/docs/records.md#StartEmpty)
 - In: [Production](#Production)
 - Follows: [Strategy](../../../std/docs/patterns.md#Strategy)
+- Applies: [A table starts with reservations only outside production](principles.md#SeededOutsideProduction)
 
 <a id="FirstReservationsOutsideProduction"></a>
 
@@ -310,6 +311,7 @@ Context: A scenario and a developer need reservations to read and cancel, and th
 - Chooses: [The records its entity starts with](../../../libs/data/docs/records.md#SeedOfTheEntity)
 - In: [Test](#Test), [Local](#Local)
 - Follows: [Strategy](../../../std/docs/patterns.md#Strategy)
+- Applies: [A table starts with reservations only outside production](principles.md#SeededOutsideProduction)
 
 <a id="HttpServerChoice"></a>
 
@@ -333,6 +335,7 @@ Context: The API is a handful of routes: Node's server is enough, and the scenar
 - Chooses: [Node HTTP server](#NodeServer)
 - In: [Test](#Test), [Local](#Local), [Production](#Production)
 - Follows: [Adapter](../../../std/docs/patterns.md#Adapter)
+- Applies: [The API is served by Node](principles.md#ServedByNode)
 
 <a id="KeptAsTables"></a>
 
@@ -360,6 +363,7 @@ Consequences: No statement is written by hand: the dialect writes them from the 
 - Chooses: [Records in SQL](../../../libs/data/docs/records.md#RecordsInSql)
 - In: [Test](#Test), [Local](#Local), [Production](#Production)
 - Follows: [Strategy](../../../std/docs/patterns.md#Strategy)
+- Applies: [What the service keeps is kept in SQL](principles.md#KeptInSql)
 
 <a id="LocalDatabase"></a>
 
@@ -386,6 +390,7 @@ Context: A developer runs the service without installing a database server; the 
 - Chooses: [Local SQLite database](#FileDatabase), [SQLite's tables](../../../libs/data/docs/records.md#SqliteTables)
 - In: [Local](#Local)
 - Follows: [Abstract Factory](../../../std/docs/patterns.md#AbstractFactory)
+- Applies: [What the service keeps is kept in SQL](principles.md#KeptInSql)
 
 <a id="ProductionDatabase"></a>
 
@@ -414,6 +419,7 @@ Consequences: Provisioned by Terraform with the graph's values; its statements c
 - Chooses: [Production Postgres database](#PostgresDatabase), [PostgreSQL's tables](../../../libs/data/docs/records.md#PostgresTables)
 - In: [Production](#Production)
 - Follows: [Abstract Factory](../../../std/docs/patterns.md#AbstractFactory)
+- Applies: [What the service keeps is kept in SQL](principles.md#KeptInSql)
 
 <a id="ProviderApi"></a>
 
@@ -433,6 +439,7 @@ Context: Refunds go through the payment provider, over HTTPS, with an idempotenc
 - Chooses: [Real payment provider](#HttpPayment)
 - In: [Production](#Production)
 - Follows: [Adapter](../../../std/docs/patterns.md#Adapter)
+- Applies: [Refunds go through the provider, simulated outside production](principles.md#RefundsThroughTheProvider)
 
 <a id="RealClock"></a>
 
@@ -452,6 +459,7 @@ Context: Outside the scenarios, the fee is computed at the real instant.
 - Chooses: [System clock](#SystemClock)
 - In: [Local](#Local), [Production](#Production)
 - Follows: [Adapter](../../../std/docs/patterns.md#Adapter)
+- Applies: [The time is a port](principles.md#TimeAsAPort)
 
 <a id="RecordRepositories"></a>
 
@@ -478,6 +486,7 @@ Consequences: The repositories hold no driver and write no SQL: they name the en
 - Chooses: [Reservations as records](#ReservationRecords), [Cancellations as records](#CancellationRecords)
 - In: [Test](#Test), [Local](#Local), [Production](#Production)
 - Follows: [Repository](../../../std/docs/patterns.md#Repository)
+- Applies: [What the service keeps is kept in SQL](principles.md#KeptInSql)
 
 <a id="ScenarioClock"></a>
 
@@ -497,6 +506,7 @@ Context: The cancellation fee depends on the time left before the start: a scena
 - Chooses: [Stopped clock](#StoppedClock)
 - In: [Test](#Test)
 - Follows: [Strategy](../../../std/docs/patterns.md#Strategy)
+- Applies: [The time is a port](principles.md#TimeAsAPort)
 
 <a id="ScenarioDatabase"></a>
 
@@ -523,6 +533,7 @@ Context: Every scenario starts from the initial reservations and leaves nothing 
 - Chooses: [SQLite in memory](../../../libs/data/docs/records.md#SqliteInMemory), [SQLite's tables](../../../libs/data/docs/records.md#SqliteTables)
 - In: [Test](#Test)
 - Follows: [Abstract Factory](../../../std/docs/patterns.md#AbstractFactory)
+- Applies: [What the service keeps is kept in SQL](principles.md#KeptInSql)
 
 <a id="SimulatedProvider"></a>
 
@@ -546,6 +557,7 @@ Context: Refunds must be tried without money moving, and a scenario reads the ca
 - Chooses: [Simulated payment provider](#SimulatedPayment)
 - In: [Test](#Test), [Local](#Local)
 - Follows: [Strategy](../../../std/docs/patterns.md#Strategy)
+- Applies: [Refunds go through the provider, simulated outside production](principles.md#RefundsThroughTheProvider)
 
 ## Environments
 

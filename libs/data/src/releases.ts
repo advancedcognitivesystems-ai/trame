@@ -83,3 +83,16 @@ export const R0_5_0 = release({
   language: "shared",
   serves: [DataDescribedOnce],
 })
+
+/**
+ * Version 0.5.1
+ */
+export const R0_5_1 = release({
+  owner: "trame",
+  version: "0.5.1",
+  date: "2026-11-27",
+  what: "the decision behind the library's choices for its scenarios",
+  fingerprint: "bfdc3b283278c278",
+  language: "shared",
+  serves: [DataDescribedOnce],
+})

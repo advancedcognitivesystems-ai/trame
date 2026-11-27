@@ -2,15 +2,16 @@
 // graph.json, the last build (the comparison is the function "Two builds compared").
 
 import type { Handler } from "../../../kinds/entry-point"
-import type { ProvidedBy } from "../../../trame/kernel"
 import type { FileReading, Layout, Paths, Terminal } from "../../architecture"
 import type { CommandMessages } from "../../messages"
 import type { Api as PreparationApi } from "./preparation"
 import type { Api as MachineApi } from "../engine/machine"
-import type { Api as ComparisonApi, Build } from "./comparison"
+import type { ProvidedBy } from "../../../trame/kernel"
+import type { BuildComparison } from "#commands/commands"
+import type { Build } from "#commands/code/comparison"
 import type { NodeEncodings } from "#std/system"
 
-export type { Plan } from "./comparison"
+export type { Plan } from "#commands/code/comparison"
 
 export interface Deps {
   /** The status the command returns to the system (POSIX). */
@@ -19,7 +20,8 @@ export interface Deps {
   text: { indent: string }
   preparation: PreparationApi
   machine: MachineApi
-  comparison: ComparisonApi
+  /** Two builds compared: libs/commands' (since g130), the one comparison. */
+  comparison: ProvidedBy<typeof BuildComparison>
   reading: FileReading
   paths: Paths
   encodings: ProvidedBy<typeof NodeEncodings>

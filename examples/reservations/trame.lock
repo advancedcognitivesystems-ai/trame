@@ -259,17 +259,59 @@
       "identities": "6a09e667",
       "members": "a03edb89"
     },
+    "principles.JudgedHarder": {
+      "statement": "b7558c3f",
+      "context": "e8c3583e",
+      "consequences": "6a09e667",
+      "rejected": "1ab85eb1"
+    },
+    "principles.KeptInSql": {
+      "statement": "7f8f6e13",
+      "context": "2a557f3e",
+      "consequences": "73d09a65",
+      "rejected": "1ba86066"
+    },
     "principles.RefundOnce": {
       "statement": "24745eac",
       "context": "def9bed8",
       "consequences": "36391980",
       "rejected": "186b7bec"
     },
+    "principles.RefundsThroughTheProvider": {
+      "statement": "d388f679",
+      "context": "06a07375",
+      "consequences": "351cd084",
+      "rejected": "d67f36f5"
+    },
+    "principles.SdlcWithStd": {
+      "statement": "12514505",
+      "context": "5613d75a",
+      "consequences": "6a09e667",
+      "rejected": "7e81d43e"
+    },
     "principles.SecretsOutOfTheGraph": {
       "statement": "e40496e5",
       "context": "355d7751",
       "consequences": "166a9961",
       "rejected": "21ecc48e"
+    },
+    "principles.SeededOutsideProduction": {
+      "statement": "a8770705",
+      "context": "6c6efa64",
+      "consequences": "e2c04ef5",
+      "rejected": "79ec9a41"
+    },
+    "principles.ServedByNode": {
+      "statement": "368053d7",
+      "context": "67dd1064",
+      "consequences": "6a09e667",
+      "rejected": "cd3164a5"
+    },
+    "principles.TimeAsAPort": {
+      "statement": "c324c93b",
+      "context": "02d8b8b1",
+      "consequences": "6a09e667",
+      "rejected": "6afea932"
     },
     "scenarios.UnknownReservation": {
       "statement": "82182155",

@@ -1,6 +1,6 @@
 # Technical choices
 
-*What answers each port in each environment on 26 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
+*What answers each port in each environment on 27 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
 
 > **5 technical choices for 23 ports, in 2 environments**
 
@@ -46,7 +46,7 @@
 
 ### In memory
 
-`InMemory` · `src/scenarios.ts:45` · status: **held**
+`InMemory` · `src/scenarios.ts:46` · status: **held**
 
 In the library's scenarios, each port of a device or of the tooling is answered by its realization kept in memory.
 
@@ -72,12 +72,13 @@ Context: A realization kept in memory is what a project's scenarios run in place
 - In: [Test](scenarios.md#Test)
 - Follows: [Strategy](patterns.md#Strategy)
 - Serves: [Ports of the platform, realized once](product.md#RealizedOnce)
+- Applies: [How the library's scenarios run](scenarios.md#HowTheScenariosRun)
 
 <a id="ReadInTheEngine"></a>
 
 ### Read by the engine that builds
 
-`ReadInTheEngine` · `src/scenarios.ts:62` · status: **held**
+`ReadInTheEngine` · `src/scenarios.ts:63` · status: **held**
 
 Where the library's build evaluates, its languages (HTML, CSS) are read by the engine that compiles it: their examples, and what the syntax elements of a library write in them.
 
@@ -94,12 +95,13 @@ Context: Reading a language is the engine's: the grammar and its reader are the 
 - In: [Test](scenarios.md#Test)
 - Follows: [Adapter](patterns.md#Adapter)
 - Serves: [Ports of the platform, realized once](product.md#RealizedOnce)
+- Applies: [How the library's scenarios run](scenarios.md#HowTheScenariosRun)
 
 <a id="LanguageJudgment"></a>
 
 ### Judged as the language says
 
-`LanguageJudgment` · `src/scenarios.ts:75` · status: **held**
+`LanguageJudgment` · `src/scenarios.ts:76` · status: **held**
 
 Where the library's build evaluates, it raises nothing: each problem as the language judges it.
 
@@ -116,12 +118,13 @@ Context: The library raises nothing the language does not: its warnings are poin
 - In: [Test](scenarios.md#Test)
 - Follows: [Strategy](patterns.md#Strategy)
 - Serves: [Ports of the platform, realized once](product.md#RealizedOnce)
+- Applies: [How the library's scenarios run](scenarios.md#HowTheScenariosRun)
 
 <a id="StrictJudgment"></a>
 
 ### Judged strictly
 
-`StrictJudgment` · `src/scenarios.ts:94` · status: **held**
+`StrictJudgment` · `src/scenarios.ts:95` · status: **held**
 
 In Strict, every warning is an error.
 
@@ -138,12 +141,13 @@ Context: A project that leaves nothing to watch chooses it; the library plays it
 - In: [Strict](scenarios.md#Strict)
 - Follows: [Strategy](patterns.md#Strategy)
 - Serves: [Ports of the platform, realized once](product.md#RealizedOnce)
+- Applies: [How the library's scenarios run](scenarios.md#HowTheScenariosRun)
 
 <a id="ScenarioSettings"></a>
 
 ### The scenarios' settings
 
-`ScenarioSettings` · `src/scenarios.ts:237` · status: **held**
+`ScenarioSettings` · `src/scenarios.ts:238` · status: **held**
 
 Where the library's scenarios run, its commands read the settings the scenarios give.
 
@@ -161,3 +165,4 @@ Context: A command of the library reads its settings through its ports: a scenar
 - In: [Test](scenarios.md#Test)
 - Follows: [Strategy](patterns.md#Strategy)
 - Serves: [Ports of the platform, realized once](product.md#RealizedOnce)
+- Applies: [How the library's scenarios run](scenarios.md#HowTheScenariosRun)

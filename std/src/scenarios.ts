@@ -5,6 +5,7 @@ import { binding } from "#trame/kinds/binding"
 import { decision } from "#trame/kinds/decision"
 import { catalog } from "#trame/kinds/catalog"
 import { scenario } from "#trame/kinds/scenario"
+import { adr } from "#trame/kinds/adr"
 import { SharedOperations, RealizedOnce } from "./product"
 import { SeededDraws } from "./algorithms"
 import {
@@ -537,4 +538,23 @@ export const LanguagesRead = scenario({
       check(checks.languageRead(language.name), read)
     }
   },
+})
+
+/**
+ * How the library's scenarios run
+ * Every port the library's code touches is played in memory, by the realizations the library offers for that (they
+ * keep their port's promise, as a project's scenarios need); a command's settings are the scenario's own; the library
+ * judges as the language says, and plays the strict way of judging through its port in an environment of its own; its
+ * languages are read by the engine that builds it, whose grammars no library carries.
+ */
+export const HowTheScenariosRun = adr({
+  owner: "trame",
+  context: "The library offers realizations in memory to every project's scenarios: its own scenarios prove that they keep their ports' promises, before any project relies on them.",
+  consequences: "A project that judges harder chooses EveryWarning or one of its own (C4); the library leaves its warnings as points to watch. Reading HTML and CSS needs an engine: the library's build has one.",
+  rejected: {
+    "Scenarios on the machine": "they would touch the disk, a browser and GitHub at each build of the library",
+    "Strict judgment for the library itself": "a library's warnings are often what its projects decide (a port nobody realizes here)",
+  },
+  serves: [RealizedOnce],
+  appliedBy: [InMemory, ScenarioSettings, LanguageJudgment, StrictJudgment, ReadInTheEngine],
 })

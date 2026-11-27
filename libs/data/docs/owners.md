@@ -1,10 +1,10 @@
 # Owners
 
-*What each person must decide, settle or watch on 26 November 2026, and what they own.*
+*What each person must decide, settle or watch on 27 November 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 2 | 77 |
+| trame | 0 | 0 | 2 | 79 |
 
 <a id="trame"></a>
 
@@ -51,10 +51,12 @@
 | [Version 0.3.0](releases.md#R0_3_0) | Release |  |
 | [Version 0.4.0](releases.md#R0_4_0) | Release |  |
 | [Version 0.5.0](releases.md#R0_5_0) | Release |  |
+| [Version 0.5.1](releases.md#R0_5_1) | Release |  |
 | [What the library's scenarios check](scenarios.md#DataChecks) | Message catalog |  |
 | [What the library's scenarios are given](scenarios.md#DataGiven) | Decision |  |
 | [Documents kept in the preferences](scenarios.md#DocumentsKept) | Scenario | **held** |
 | [Documents, in memory](scenarios.md#InMemory) | Technical choice | **held** |
+| [The library's scenarios keep what they write as a product would](scenarios.md#KeptAsAProductWould) | Architecture decision | **held** |
 | [PostgreSQL's dialect, read](scenarios.md#PostgresForScenarios) | Technical choice | **held** |
 | [PostgreSQL's statements](scenarios.md#PostgresStatements) | Scenario | **held** |
 | [PostgreSQL's statements](scenarios.md#PostgresStatementsOnly) | Environment |  |
