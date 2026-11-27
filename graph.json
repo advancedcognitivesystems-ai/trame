@@ -1387,7 +1387,7 @@
           "status": "passed"
         },
         {
-          "name": "The candidate is accepted (  ✓ trame runs g132 |   ✓ reservations runs g132 | Advance succeeded.)",
+          "name": "The candidate is accepted (  ✓ trame runs g133 |   ✓ reservations runs g133 | Advance succeeded.)",
           "status": "passed"
         },
         {
@@ -8162,7 +8162,9 @@
         "from": "path",
         "at": "libs/documents/releases/0.2.0"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: documents 0.3.0 is out, the reference names 0.2.0: trame upgrade documents moves it"
+      ]
     },
     {
       "id": "packages.EsbuildPackage",
@@ -12674,6 +12676,22 @@
       "diagnostics": []
     },
     {
+      "id": "releases.G132",
+      "kind": "release",
+      "title": "Generation 132",
+      "source": "src/releases.ts:1959",
+      "fields": {
+        "owner": "trame",
+        "version": "g132",
+        "date": "2026-11-27",
+        "what": "The engine's API gives a compiled project's documents (the views' documents with where each card is) and one view's document or why there is none; the engine's view answers through it",
+        "fingerprint": "c8ae3abb70c8704d",
+        "language": "shared",
+        "archive": "c4eba3cff58c1b7b"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "releases.G14",
       "kind": "release",
       "title": "Generation 14",
@@ -15242,7 +15260,7 @@
         "owner": "trame"
       },
       "result": {
-        "code": "9821c7d4"
+        "code": "158413a0"
       },
       "diagnostics": [
         "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
@@ -15258,7 +15276,7 @@
         "owner": "trame"
       },
       "result": {
-        "code": "8f4860f6"
+        "code": "67a14e22"
       },
       "diagnostics": [
         "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
@@ -15318,7 +15336,7 @@
       },
       "result": {
         "path": "out/local/trame-cli.ts",
-        "code": "09334cb8"
+        "code": "20bcb12c"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -15374,7 +15392,7 @@
       },
       "result": {
         "path": "trame-page.html",
-        "code": "dec5f17e"
+        "code": "e93238ca"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -17943,7 +17961,7 @@
       },
       "result": {
         "path": "src",
-        "code": "fd160677"
+        "code": "e887a3c3"
       },
       "diagnostics": [
         "warning: Not built yet: trame ship builds it"
@@ -33756,6 +33774,16 @@
     {
       "from": "releases.G131",
       "to": "releases.G130",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G132",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G132",
+      "to": "releases.G131",
       "kind": "assembledBy"
     },
     {

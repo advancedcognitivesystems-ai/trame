@@ -10,7 +10,7 @@
 
 ### The language the commands speak
 
-`WordsLanguage` · `src/commands.ts:38`
+`WordsLanguage` · `src/commands.ts:39`
 
 British English, the language Trame's engine and its documents speak: what a command says sits beside what the engine and the views say, at the same terminal.
 
@@ -29,17 +29,17 @@ British English, the language Trame's engine and its documents speak: what a com
 
 ### The library's commands
 
-`Commands` · `src/commands.ts:27`
+`Commands` · `src/commands.ts:28`
 
 The component whose entry points are the commands the library offers: a program's command line, whose first argument names the command. It names no environment: a project assembles it where its choice holds, in the engine's process.
 
-1 entry point: [Plan](#Plan)
+3 entry points: [Build](#Build), [Plan](#Plan), [Snapshot](#Snapshot)
 
 - Owner: trame
 - Language: typescript
 - Startup: `exposure` ← [Commands of a program](../.trame/std/docs/tooling.md#ProgramCommands)
 - Effects: terminal
-- Exposes: [Plan](#Plan)
+- Exposes: [Build](#Build), [Plan](#Plan), [Snapshot](#Snapshot)
 
 ## Function
 
@@ -47,7 +47,7 @@ The component whose entry points are the commands the library offers: a program'
 
 ### Two builds compared
 
-`BuildComparison` · `src/commands.ts:88` · status: **held**
+`BuildComparison` · `src/commands.ts:93` · status: **held**
 
 The nodes added and removed, the statuses that change, the nodes whose fields, result or edges change, the issues raised and resolved, the shipments whose obligations are touched; then said line by line, with the title and the kind of each node as either build knows it.
 
@@ -58,13 +58,33 @@ The nodes added and removed, the statuses that change, the nodes whose fields, r
 - Used by: [Plan](#Plan)
 - Verified by: [After a build, nothing changes](scenarios.md#PlanAfterTheSameBuild), [A plan says what a build would change](scenarios.md#PlanSaysWhatChanges)
 
-## Entry point
+## Entry points
+
+<a id="Build"></a>
+
+### Build
+
+`Build` · `src/commands.ts:123` · status: **held**
+
+trame build [--at <date>]: the documents of the project at hand written for people, its graph for tools and agents. The engine runs the views at the day the line says: each document a view writes as a file is written in the syntax of files (libs/documents), with where each card is; graph.json and snapshot.json as the engine gives them; the summary printed in the syntax of the terminal; then the files written, named.
+
+Triggered by `command build`
+
+- Owner: trame
+- Parameters: `project` ← [The project at hand](../.trame/std/docs/engine.md#TheProject) · `files` ← [Project files](../.trame/std/docs/tooling.md#Files) · `written` ← [Rendering of the files](../.trame/documents/docs/rendering.md#FileRendering) · `printed` ← [Rendering in the terminal](../.trame/documents/docs/rendering.md#TerminalRendering) · `say` ← [What the commands say](#CommandWords) · `exit` ← [Exit status](../.trame/std/docs/system.md#ExitStatus)
+- Body: `./code/build.ts` (typescript)
+- Effects: asynchronous, read, write
+- Serves: [Commands every project runs, written once](product.md#WrittenOnce)
+- Part of: [The library's commands](#Commands)
+- For: [Anyone](../.trame/std/docs/access.md#Anyone)
+- Verified by: [A build writes the documents and the graph](scenarios.md#BuildWritesTheDocuments)
+- Used by: [A build writes the documents and the graph](scenarios.md#BuildWritesTheDocuments)
 
 <a id="Plan"></a>
 
 ### Plan
 
-`Plan` · `src/commands.ts:102` · status: **held**
+`Plan` · `src/commands.ts:107` · status: **held**
 
 trame plan [--at <date>]: what a build would change, written nowhere. The project at hand, compiled by the engine at the day its line says, is compared with graph.json, the last build: the nodes added and removed, the statuses that change, the nodes otherwise changed, the issues raised and resolved, then the shipments touched. Without a build to compare with, it says so.
 
@@ -80,13 +100,33 @@ Triggered by `command plan`
 - Verified by: [After a build, nothing changes](scenarios.md#PlanAfterTheSameBuild), [A plan says what a build would change](scenarios.md#PlanSaysWhatChanges), [Without a build, a plan says so](scenarios.md#PlanWithoutABuild)
 - Used by: [After a build, nothing changes](scenarios.md#PlanAfterTheSameBuild), [A plan says what a build would change](scenarios.md#PlanSaysWhatChanges), [Without a build, a plan says so](scenarios.md#PlanWithoutABuild)
 
+<a id="Snapshot"></a>
+
+### Snapshot
+
+`Snapshot` · `src/commands.ts:137` · status: **held**
+
+trame snapshot [--at <date>]: snapshot.json, the graph in force for agents, at the day the line says; then the documents of the snapshot's view, written in the syntax of files, and the files written, named.
+
+Triggered by `command snapshot`
+
+- Owner: trame
+- Parameters: `project` ← [The project at hand](../.trame/std/docs/engine.md#TheProject) · `files` ← [Project files](../.trame/std/docs/tooling.md#Files) · `written` ← [Rendering of the files](../.trame/documents/docs/rendering.md#FileRendering) · `say` ← [What the commands say](#CommandWords) · `exit` ← [Exit status](../.trame/std/docs/system.md#ExitStatus)
+- Body: `./code/snapshot.ts` (typescript)
+- Effects: asynchronous, read, write
+- Serves: [Commands every project runs, written once](product.md#WrittenOnce)
+- Part of: [The library's commands](#Commands)
+- For: [Anyone](../.trame/std/docs/access.md#Anyone)
+- Verified by: [A snapshot writes the graph in force](scenarios.md#SnapshotTaken)
+- Used by: [A snapshot writes the graph in force](scenarios.md#SnapshotTaken)
+
 ## Message catalog
 
 <a id="CommandWords"></a>
 
 ### What the commands say
 
-`CommandWords` · `src/commands.ts:47`
+`CommandWords` · `src/commands.ts:48`
 
 <details><summary>The messages, in code</summary>
 
@@ -118,6 +158,10 @@ Triggered by `command plan`
       planShipments: (shipments: readonly string[]) => (shipments.length ? `shipments touched: ${shipments.join(", ")}` : "no shipment touched"),
       planNothing: () => "nothing changes: a build would write the same graph",
       planNothingBuilt: (file: string) => `no ${file} to compare with: trame build writes it, and every node would be new`,
+      /** The last line of a build: the files it wrote. */
+      written: (files: readonly string[]) => `written: ${files.join(", ")}`,
+      /** What a snapshot wrote, and the day of the graph it took. */
+      snapshotTaken: (date: string, files: readonly string[]) => `snapshot of ${date} · written: ${files.join(", ")}`,
     }
   }
 ```
@@ -127,4 +171,4 @@ Triggered by `command plan`
 - Owner: trame
 - Parameters: `language` ← [The language the commands speak](#WordsLanguage)
 - Written in: [The language the commands speak](#WordsLanguage)
-- Used by: [Two builds compared](#BuildComparison), [Plan](#Plan), [After a build, nothing changes](scenarios.md#PlanAfterTheSameBuild), [A plan says what a build would change](scenarios.md#PlanSaysWhatChanges), [Without a build, a plan says so](scenarios.md#PlanWithoutABuild)
+- Used by: [Build](#Build), [Two builds compared](#BuildComparison), [Plan](#Plan), [Snapshot](#Snapshot), [A build writes the documents and the graph](scenarios.md#BuildWritesTheDocuments), [After a build, nothing changes](scenarios.md#PlanAfterTheSameBuild), [A plan says what a build would change](scenarios.md#PlanSaysWhatChanges), [Without a build, a plan says so](scenarios.md#PlanWithoutABuild), [A snapshot writes the graph in force](scenarios.md#SnapshotTaken)

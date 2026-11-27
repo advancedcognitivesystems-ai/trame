@@ -4553,6 +4553,20 @@ Release · `G131`
 - Releases: Trame on the command line
 - Assembled by: Generation 130
 
+### Generation 132
+
+Release · `G132`
+
+- Released by: trame
+- Version: g132
+- Released on: 2026-11-27
+- What changes: The engine's API gives a compiled project's documents (the views' documents with where each card is) and one view's document or why there is none; the engine's view answers through it
+- Fingerprint: c8ae3abb70c8704d
+- Language: shared
+- Language archived: c4eba3cff58c1b7b
+- Releases: Trame on the command line
+- Assembled by: Generation 131
+
 ### Generation 14
 
 Release · `G14`

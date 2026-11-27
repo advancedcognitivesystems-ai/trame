@@ -779,6 +779,27 @@ Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Ge
 - Released by: trame
 - Releases: [Trame on the command line](architecture.md#TrameCli)
 - Assembled by: [Generation 130](#G130)
+- Assembled: [Generation 132](#G132)
+
+<a id="G132"></a>
+
+### Generation 132
+
+`G132` · `src/releases.ts:1959`
+
+The engine's API gives a compiled project's documents (the views' documents with where each card is) and one view's document or why there is none; the engine's view answers through it
+
+Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Generation 131](#G131).
+
+- Version: `g132`
+- Released on: 27 November 2026
+- Fingerprint: `c8ae3abb70c8704d`
+- Language: the repository's, shared
+- Language archived: `c4eba3cff58c1b7b`
+
+- Released by: trame
+- Releases: [Trame on the command line](architecture.md#TrameCli)
+- Assembled by: [Generation 131](#G131)
 
 <a id="G14"></a>
 

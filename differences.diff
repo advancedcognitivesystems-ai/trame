@@ -1,0 +1,36 @@
+diff -ru /tmp/lM9rYC/reference/trame/docs/index.md /tmp/lM9rYC/candidate/trame/docs/index.md
+--- /tmp/lM9rYC/reference/trame/docs/index.md	2026-11-27 19:18:14.152550518 +0100
++++ /tmp/lM9rYC/candidate/trame/docs/index.md	2026-11-27 19:20:23.087889518 +0100
+@@ -45,7 +45,7 @@
+ | Library | Modules | Nodes | Open issues |
+ |---|---|---|---|
+ | [ci 0.8.0](../ci/releases/0.8.0/docs/index.md) | Continuous integration · GitHub Actions, Continuous integration · npm, Continuous integration · Packages, Continuous integration · Product, Continuous integration · Releases, Continuous integration · SDLC, Continuous integration · Shell, Continuous integration · YAML | 25 | 4 points to watch |
+-| [commands 0.2.0](../libs/commands/releases/0.2.0/docs/index.md) | Commands · Commands, Commands · Packages, Commands · Product, Commands · Releases, Commands · Scenarios, Commands · SDLC | 35 | 4 points to watch |
++| [commands 0.2.0](../libs/commands/releases/0.2.0/docs/index.md) | Commands · Commands, Commands · Packages, Commands · Product, Commands · Releases, Commands · Scenarios, Commands · SDLC | 35 | 1 error · 4 points to watch |
+ | [documents 0.2.0](../libs/documents/releases/0.2.0/docs/index.md) | Documents · Appearance, Documents · HTML, Documents · Language, Documents · Markdown, Documents · Mermaid, Documents · Packages, Documents · Product, Documents · Releases, Documents · Rendering, Documents · Samples, Documents · Scenarios, Documents · SDLC, Documents · Terminal text | 111 | 4 points to watch |
+ | [machine 0.1.0](../libs/machine/releases/0.1.0/docs/index.md) | Machine · Questions, Machine · Packages, Machine · Product, Machine · SDLC | 19 | 4 points to watch |
+ | [std 0.30.0](../std/releases/0.30.0/docs/index.md) | Standard library · Access, Standard library · Algebra, Standard library · Algorithms, Standard library · Commands, Standard library · ECMAScript, Standard library · Effects, Standard library · The engine, Standard library · HTML and CSS, Standard library · Judgment, Standard library · Languages, Standard library · Measures, Standard library · Obligations, Standard library · Packages, Standard library · Design patterns, Standard library · Platform, Standard library · Product, Standard library · Releases, Standard library · Repositories on GitHub, Standard library · Rules, Standard library · Scenarios, Standard library · SDLC, Standard library · System, Standard library · Text, Standard library · Tooling, Standard library · Web | 273 | 4 points to watch |
+diff -ru /tmp/lM9rYC/reference/trame/graph.json /tmp/lM9rYC/candidate/trame/graph.json
+--- /tmp/lM9rYC/reference/trame/graph.json	2026-11-27 19:18:14.154243949 +0100
++++ /tmp/lM9rYC/candidate/trame/graph.json	2026-11-27 19:20:23.089982427 +0100
+@@ -17545,7 +17545,7 @@
+         "owner": "trame"
+       },
+       "result": {
+-        "code": "da1713f7"
++        "code": "2dc2016c"
+       },
+       "diagnostics": [
+         "warning: To run: trame ship runs it on the artefacts it checks"
+diff -ru /tmp/lM9rYC/reference/trame/terminal.txt /tmp/lM9rYC/candidate/trame/terminal.txt
+--- /tmp/lM9rYC/reference/trame/terminal.txt	2026-11-27 19:18:14.154889833 +0100
++++ /tmp/lM9rYC/candidate/trame/terminal.txt	2026-11-27 19:20:23.090722061 +0100
+@@ -35,7 +35,7 @@
+ libraries
+   LIBRARY          NODES  OPEN ISSUES
+   ci 0.8.0         25     4 points to watch
+-  commands 0.2.0   35     4 points to watch
++  commands 0.2.0   35     1 error · 4 points to watch
+   documents 0.2.0  111    4 points to watch
+   machine 0.1.0    19     4 points to watch
+   std 0.30.0       273    4 points to watch

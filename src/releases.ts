@@ -1967,3 +1967,18 @@ export const G132 = release({
   archive: "c4eba3cff58c1b7b",
   assembledBy: G131,
 })
+
+/**
+ * Generation 133
+ */
+export const G133 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g133",
+  date: "2026-11-27",
+  what: "A component that names no environment is offered to other projects: the project that declares it has nowhere to assemble it, and the engine's command of that name answers there",
+  fingerprint: "03060a6259d03b8e",
+  language: "shared",
+  archive: "c4eba3cff58c1b7b",
+  assembledBy: G132,
+})

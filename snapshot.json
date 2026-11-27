@@ -10169,6 +10169,20 @@
       }
     },
     {
+      "id": "releases.G132",
+      "kind": "release",
+      "title": "Generation 132",
+      "fields": {
+        "owner": "trame",
+        "version": "g132",
+        "date": "2026-11-27",
+        "what": "The engine's API gives a compiled project's documents (the views' documents with where each card is) and one view's document or why there is none; the engine's view answers through it",
+        "fingerprint": "c8ae3abb70c8704d",
+        "language": "shared",
+        "archive": "c4eba3cff58c1b7b"
+      }
+    },
+    {
       "id": "releases.G14",
       "kind": "release",
       "title": "Generation 14",
@@ -24605,6 +24619,16 @@
     {
       "from": "releases.G131",
       "to": "releases.G130",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G132",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G132",
+      "to": "releases.G131",
       "kind": "assembledBy"
     },
     {

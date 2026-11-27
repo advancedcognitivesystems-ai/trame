@@ -5,7 +5,7 @@
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
 | Trame's maintainers | 0 | 0 | 6 | 0 |
-| trame | 0 | 0 | 20 | 720 |
+| trame | 0 | 0 | 21 | 721 |
 
 <a id="Trame's maintainers"></a>
 
@@ -28,6 +28,7 @@
 
 | Severity | Code | What | Where | Owner | Consequence |
 |---|---|---|---|---|---|
+| warning | `package-newer` | documents 0.3.0 is out, the reference names 0.2.0: trame upgrade documents moves it | [The renderers of documents](packages.md#DocumentRenderers) | trame |  |
 | warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The candidate engine](sdlc.md#EngineCandidate) | trame |  |
 | warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The graph page](sdlc.md#GraphPage) | trame |  |
 | warning | `shipment-awaits` | To ship: The engine is unknown | [Into the main branch](sdlc.md#IntoMain) | trame |  |
@@ -528,6 +529,7 @@
 | [Generation 13](releases.md#G13) | Release |  |
 | [Generation 130](releases.md#G130) | Release |  |
 | [Generation 131](releases.md#G131) | Release |  |
+| [Generation 132](releases.md#G132) | Release |  |
 | [Generation 14](releases.md#G14) | Release |  |
 | [Generation 15](releases.md#G15) | Release |  |
 | [Generation 16](releases.md#G16) | Release |  |

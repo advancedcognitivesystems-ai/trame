@@ -36,14 +36,14 @@ The writers of the files that run a shipment elsewhere (GitHub Actions), at the 
 What writes for people what a command computes (E3): the terminal's text, its lines and their indentation, then the documents a command renders; at the version the library uses, by its path in Trame's repository.
 
 - Name: `documents`
-- Version: `0.2.0`
+- Version: `0.3.0`
 - Installed: Not installed in the project: its lockfile lists no documents
 - Vulnerabilities: No report yet: trame audit asks the registry
 - Latest version: No report yet: trame audit asks the registry
 - What it may do: not said: an implementation that imports it cannot promise anything
 - How it joins the graph: `library`
 - Where it comes from: `path`
-- Its path: `../documents/releases/0.2.0`
+- Its path: `../documents/releases/0.3.0`
 
 - Owner: trame
 - Serves: [Commands every project runs, written once](product.md#WrittenOnce)
@@ -57,13 +57,13 @@ What writes for people what a command computes (E3): the terminal's text, its li
 The language the library is written in, at the generation the repository runs, by its path: the one whose engine gives the API std's ports of the engine read (g124).
 
 - Name: `trame`
-- Version: `131`
+- Version: `132`
 - Installed: Not installed in the project: its lockfile lists no trame
 - Vulnerabilities: No report yet: trame audit asks the registry
 - Latest version: No report yet: trame audit asks the registry
 - What it may do: not said: an implementation that imports it cannot promise anything
 - How it joins the graph: `language`
-- Its path: `../../generations/g131`
+- Its path: `../../generations/g132`
 
 - Owner: trame
 - Serves: [Commands every project runs, written once](product.md#WrittenOnce)
