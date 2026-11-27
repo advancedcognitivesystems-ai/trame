@@ -111,13 +111,13 @@ flowchart TB
 | 2 | produce | [The engine](sdlc.md#TheEngine) · `src` | — | — | **unknown** | 26 November 2026 by claude  |
 | 3 | produce | [The graph page](sdlc.md#GraphPage) · `trame-page.html` | [Export the page](commands.md#Export) | — | **unknown** | 27 November 2026 by claude  |
 | 4 | check | [The machine has what Trame needs](sdlc.md#MachineAsked) | `trame doctor`, signed by [Trame's maintainers](sdlc.md#Maintainers) | — | **unknown** | passed, 26 November 2026 by claude  |
-| 5 | check | [trame plan runs in the engine](sdlc.md#PlanRunsInTheEngine) | [Plan](../libs/commands/releases/0.1.2/docs/commands.md#Plan), signed by [Trame's maintainers](sdlc.md#Maintainers) | — | **unknown** | passed, 26 November 2026 by claude  |
+| 5 | check | [trame plan runs in the engine](sdlc.md#PlanRunsInTheEngine) | [Plan](../libs/commands/releases/0.2.0/docs/commands.md#Plan), signed by [Trame's maintainers](sdlc.md#Maintainers) | — | **unknown** | passed, 26 November 2026 by claude  |
 | 6 | check | [The graph page opens](sdlc.md#GraphPageOpens) | [Open the graph page](sdlc.md#OpenTheGraphPage), signed by [Trame's maintainers](sdlc.md#Maintainers) | — | **unknown** | passed, 27 November 2026 by claude  |
 | 7 | check | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | [Ask the machine](commands.md#Doctor), signed by [Trame's maintainers](sdlc.md#Maintainers) | — | **unknown** | passed, 27 November 2026 by claude  |
 | 8 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
 | 9 | prove | [The engine](sdlc.md#TheEngine) | — | the shipment | **unknown** | 26 November 2026 by claude  |
 | 10 | prove | [The machine has what Trame needs](sdlc.md#MachineAsked) | by hand, signed by [Trame's maintainers](sdlc.md#Maintainers) | the shipment | **unknown** | passed, 26 November 2026 by claude  |
-| 11 | prove | [trame plan runs in the engine](sdlc.md#PlanRunsInTheEngine) | [Plan](../libs/commands/releases/0.1.2/docs/commands.md#Plan), signed by [Trame's maintainers](sdlc.md#Maintainers) | the shipment | **unknown** | passed, 26 November 2026 by claude  |
+| 11 | prove | [trame plan runs in the engine](sdlc.md#PlanRunsInTheEngine) | [Plan](../libs/commands/releases/0.2.0/docs/commands.md#Plan), signed by [Trame's maintainers](sdlc.md#Maintainers) | the shipment | **unknown** | passed, 26 November 2026 by claude  |
 | 12 | prove | [Effects come from the vocabulary](architecture.md#KnownEffects) | — | [The rules of the architecture hold](sdlc.md#ArchitectureRuled) | **held** |  |
 | 13 | prove | [Only commands write](architecture.md#OnlyCommandsWrite) | — | [The rules of the architecture hold](sdlc.md#ArchitectureRuled) | **held** |  |
 | 14 | prove | [Rendering does not read the graph](architecture.md#RenderingWithoutGraph) | — | [The rules of the architecture hold](sdlc.md#ArchitectureRuled) | **held** |  |

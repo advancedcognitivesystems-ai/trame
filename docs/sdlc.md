@@ -515,7 +515,7 @@ In [Local](architecture.md#Local):
 
 | Port | Answered by | Which is |
 |---|---|---|
-| the command plan | [Plan](../libs/commands/releases/0.1.2/docs/commands.md#Plan) | a command of a library |
+| the command plan | [Plan](../libs/commands/releases/0.2.0/docs/commands.md#Plan) | a command of a library |
 | [The project at hand](../std/releases/0.30.0/docs/engine.md#TheProject) | [The project the engine prepared](../std/releases/0.30.0/docs/engine.md#ProjectInTheEngine) | an implementation |
 
 Context: The engine's commands reached its modules directly: a project could neither choose them nor specialize them, and a command of its own could not compute what they computed.
@@ -527,7 +527,7 @@ Consequences: trame plan runs on a machine and in a session alike, chosen for Lo
 | The engine's own commands, kept | they would stay out of reach of every project's choice, and the engine the only one to reach its modules |
 
 - Decided by: trame
-- Chooses: [Plan](../libs/commands/releases/0.1.2/docs/commands.md#Plan), [The project the engine prepared](../std/releases/0.30.0/docs/engine.md#ProjectInTheEngine)
+- Chooses: [Plan](../libs/commands/releases/0.2.0/docs/commands.md#Plan), [The project the engine prepared](../std/releases/0.30.0/docs/engine.md#ProjectInTheEngine)
 - In: [Local](architecture.md#Local)
 - Follows: [Command](../std/releases/0.30.0/docs/patterns.md#Command)
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
@@ -1142,7 +1142,7 @@ The library's plan, run by the engine that ships, on the project it prepared: wh
 Passed 26 November 2026 by claude.
 
 - Owner: trame
-- Run by: [Plan](../libs/commands/releases/0.1.2/docs/commands.md#Plan)
+- Run by: [Plan](../libs/commands/releases/0.2.0/docs/commands.md#Plan)
 - Signed by: [Trame's maintainers](#Maintainers)
 - Verifies: [The project the engine prepared](../std/releases/0.30.0/docs/engine.md#ProjectInTheEngine)
 - Required by: [Into the main branch](#IntoMain)

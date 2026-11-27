@@ -190,7 +190,7 @@ export const Machine = pkg({
  * at the version it uses, by its path in the repository.
  */
 export const GenericCommands = pkg({
-  owner: "trame", packageName: "commands", version: "0.1.2", joins: "library", from: "path", at: "libs/commands/releases/0.1.2",
+  owner: "trame", packageName: "commands", version: "0.2.0", joins: "library", from: "path", at: "libs/commands/releases/0.2.0",
   serves: [SingleSource],
 })
 

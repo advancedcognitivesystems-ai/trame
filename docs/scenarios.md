@@ -156,7 +156,7 @@ An extension point: every realization chosen in an environment answers it, in th
 | [Local](architecture.md#Local) | none | — |
 | [A session of Claude Code](architecture.md#Session) | none | — |
 | [Test](architecture.md#Test) | [The second sample add-on](#SecondSampleAddOn), [The first sample add-on](#FirstSampleAddOn) | [The sample add-ons, second first](#SampleAddOnsInOrder), [The sample add-ons, second first](#SampleAddOnsInOrder) |
-| [Test](../libs/commands/releases/0.1.2/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
 | [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
 | [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
 | [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |

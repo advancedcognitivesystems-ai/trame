@@ -13,7 +13,8 @@ import { Strategy, Adapter } from "#std/patterns"
 import { ExitStatus } from "#std/system"
 import { Counts } from "#std/algebra"
 import { WrittenOnce } from "./product"
-import { Plan, BuildComparison, CommandWords, TerminalLines, WordsLanguage } from "./commands"
+import { Plan, BuildComparison, CommandWords, WordsLanguage } from "./commands"
+import { TerminalText } from "#documents/text"
 import type { Build } from "./code/comparison"
 
 // What the library's commands compute from a graph is played on a real one: a small project of the library's own,
@@ -95,7 +96,7 @@ export const PlanSaysWhatChanges = scenario({
   owner: "trame",
   verifies: [Plan, BuildComparison, ProjectCompiledHere, TheSmallProject],
   env: Test,
-  deps: { plan: Plan, project: TheProject, files: Files, say: CommandWords, lines: TerminalLines, checks: ScenarioWords, exit: ExitStatus, counts: Counts },
+  deps: { plan: Plan, project: TheProject, files: Files, say: CommandWords, lines: TerminalText, checks: ScenarioWords, exit: ExitStatus, counts: Counts },
   body: ({ plan, project, files, say, lines, checks, exit, counts }) => async (check) => {
     const compiled = await project.compiled()
     const now = JSON.parse(compiled.written()) as Build

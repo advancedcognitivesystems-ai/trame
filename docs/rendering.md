@@ -61,7 +61,7 @@ Consequences: Trame's commands use the library's renderers as they use std's str
 | [Local](architecture.md#Local) | [Figures in SVG](#SvgFigures) | [The page's figures in SVG](#PageFiguresDrawn) |
 | [A session of Claude Code](architecture.md#Session) | none | — |
 | [Test](architecture.md#Test) | [Figures in SVG](#SvgFigures) | [The page's figures in SVG](#PageFiguresDrawn) |
-| [Test](../libs/commands/releases/0.1.2/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
 | [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
 | [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
 | [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
@@ -84,7 +84,7 @@ What the page shows a document in, formatted: the engine writes it, the page put
 | [Local](architecture.md#Local) | [HTML writer](#HtmlSyntax) | [The page in HTML](#PageInHtml) |
 | [A session of Claude Code](architecture.md#Session) | none | — |
 | [Test](architecture.md#Test) | [HTML writer](#HtmlSyntax) | [The page in HTML](#PageInHtml) |
-| [Test](../libs/commands/releases/0.1.2/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
 | [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
 | [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
 | [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |

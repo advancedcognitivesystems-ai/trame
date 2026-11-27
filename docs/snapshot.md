@@ -2586,10 +2586,10 @@ Package · `GenericCommands`
 
 - Owner: trame
 - Name: commands
-- Version: 0.1.2
+- Version: 0.2.0
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: libs/commands/releases/0.1.2
+- Its path: libs/commands/releases/0.2.0
 - Serves: A single source of truth
 
 ### Grammar of HCL

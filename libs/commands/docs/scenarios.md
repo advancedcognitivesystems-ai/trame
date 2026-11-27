@@ -10,7 +10,7 @@
 
 ### The small project
 
-`SmallProject` · `src/scenarios.ts:35`
+`SmallProject` · `src/scenarios.ts:36`
 
 The project the scenarios compile, at the day they are played: a goal, the requirement that refines it, the decision it reads, the person who owns them. It lies in the library's sources, named by the library's package: a version carries it, and a project that imports the version plays the scenarios on it there.
 
@@ -28,7 +28,7 @@ The project the scenarios compile, at the day they are played: a goal, the requi
 
 ### A command is played on a real graph
 
-`PlayedOnARealGraph` · `src/scenarios.ts:165` · status: **held**
+`PlayedOnARealGraph` · `src/scenarios.ts:166` · status: **held**
 
 What a command computes from a graph is played on one the engine compiles: a small project the library carries in its sources, compiled by the engine that plays the scenarios, only the platform kept in memory. The library adopts std's decision that the engine is a provider, reached through std's ports.
 
@@ -51,7 +51,7 @@ Consequences: The small project travels with each version, named by the library'
 
 ### Which project the scenarios compile
 
-`TheSmallProject` · `src/scenarios.ts:41` · status: **held**
+`TheSmallProject` · `src/scenarios.ts:42` · status: **held**
 
 The small project, as decided.
 
@@ -68,7 +68,7 @@ The small project, as decided.
 
 ### What the scenarios check
 
-`ScenarioWords` · `src/scenarios.ts:78`
+`ScenarioWords` · `src/scenarios.ts:79`
 
 <details><summary>The messages, in code</summary>
 
@@ -93,7 +93,7 @@ The small project, as decided.
 
 ### Compiled by the engine that plays them
 
-`CompiledByTheEngine` · `src/scenarios.ts:52` · status: **held**
+`CompiledByTheEngine` · `src/scenarios.ts:53` · status: **held**
 
 In the library's scenarios, the project at hand is compiled by the engine that plays them, as on a machine it is compiled by the engine that runs the command.
 
@@ -120,7 +120,7 @@ Context: A command computes from a graph the engine compiled: a graph a scenario
 
 ### Played on a small project
 
-`PlayedOnASmallProject` · `src/scenarios.ts:66` · status: **held**
+`PlayedOnASmallProject` · `src/scenarios.ts:67` · status: **held**
 
 In the library's scenarios, the project at hand is the small project, and the project's files are kept in memory.
 
@@ -146,7 +146,7 @@ Context: The library's own project is the one being compiled when its scenarios 
 
 ### Test
 
-`Test` · `src/scenarios.ts:27`
+`Test` · `src/scenarios.ts:28`
 
 Where the library's scenarios run: the small project compiled by the engine, the files kept in memory.
 
@@ -161,7 +161,7 @@ Where the library's scenarios run: the small project compiled by the engine, the
 
 ### After a build, nothing changes
 
-`PlanAfterTheSameBuild` · `src/scenarios.ts:141` · status: **held**
+`PlanAfterTheSameBuild` · `src/scenarios.ts:142` · status: **held**
 
 Against the graph a build of the same day wrote, the plan counts nothing and says nothing changes.
 
@@ -188,7 +188,7 @@ Against the graph a build of the same day wrote, the plan counts nothing and say
 
 ### A plan says what a build would change
 
-`PlanSaysWhatChanges` · `src/scenarios.ts:94` · status: **held**
+`PlanSaysWhatChanges` · `src/scenarios.ts:95` · status: **held**
 
 The last build had neither the first node of the graph nor the status of another: the plan names the node added and the status that changes, by their titles, and counts them in its first line.
 
@@ -206,7 +206,7 @@ The last build had neither the first node of the graph nor the status of another
 </details>
 
 - Owner: trame
-- Parameters: `plan` ← [Plan](commands.md#Plan) · `project` ← [The project at hand](../.trame/std/docs/engine.md#TheProject) · `files` ← [Project files](../.trame/std/docs/tooling.md#Files) · `say` ← [What the commands say](commands.md#CommandWords) · `lines` ← [How a command writes at a terminal](commands.md#TerminalLines) · `checks` ← [What the scenarios check](#ScenarioWords) · `exit` ← [Exit status](../.trame/std/docs/system.md#ExitStatus) · `counts` ← [Counts](../.trame/std/docs/algebra.md#Counts)
+- Parameters: `plan` ← [Plan](commands.md#Plan) · `project` ← [The project at hand](../.trame/std/docs/engine.md#TheProject) · `files` ← [Project files](../.trame/std/docs/tooling.md#Files) · `say` ← [What the commands say](commands.md#CommandWords) · `lines` ← [Terminal text](../.trame/documents/docs/text.md#TerminalText) · `checks` ← [What the scenarios check](#ScenarioWords) · `exit` ← [Exit status](../.trame/std/docs/system.md#ExitStatus) · `counts` ← [Counts](../.trame/std/docs/algebra.md#Counts)
 - Body: inline, in the declaration
 - Effects: asynchronous, read, write
 - Verifies: [Plan](commands.md#Plan), [Two builds compared](commands.md#BuildComparison), [A project compiled by the engine that plays the scenario](../.trame/std/docs/engine.md#ProjectCompiledHere), [Which project the scenarios compile](#TheSmallProject)
@@ -216,7 +216,7 @@ The last build had neither the first node of the graph nor the status of another
 
 ### Without a build, a plan says so
 
-`PlanWithoutABuild` · `src/scenarios.ts:126` · status: **held**
+`PlanWithoutABuild` · `src/scenarios.ts:127` · status: **held**
 
 A project that was never built has no graph.json: the plan says there is nothing to compare with, and succeeds.
 

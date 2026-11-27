@@ -9,11 +9,11 @@ flowchart TB
     n1["The library's commands<br/><small>Component</small>"]:::neutral
     n2["What the commands say<br/><small>Message catalog</small>"]:::neutral
     n3["Plan<br/><small>Entry point</small>"]:::held
-    n4["How a command writes at a terminal<br/><small>Decision</small>"]:::neutral
-    n5["The language the commands speak<br/><small>Decision</small>"]:::neutral
+    n4["The language the commands speak<br/><small>Decision</small>"]:::neutral
   end
   subgraph packages["Commands · Packages"]
-    n6["The library of continuous integration<br/><small>Package</small>"]:::neutral
+    n5["The library of continuous integration<br/><small>Package</small>"]:::neutral
+    n6["The renderers of documents<br/><small>Package</small>"]:::neutral
     n7["Trame<br/><small>Package</small>"]:::neutral
     n8["The people of the repository<br/><small>Package</small>"]:::neutral
     n9["std<br/><small>Package</small>"]:::neutral
@@ -53,13 +53,13 @@ flowchart TB
   end
   n0 -->|Serves| n10
   n0 -->|Depends on| n2
-  n2 -->|Written in| n5
-  n2 -->|Depends on| n5
+  n2 -->|Written in| n4
+  n2 -->|Depends on| n4
   n3 -->|Serves| n10
   n3 -->|Part of| n1
   n3 -->|Depends on| n0
-  n3 -->|Depends on| n4
   n3 -->|Depends on| n2
+  n5 -->|Serves| n10
   n6 -->|Serves| n10
   n7 -->|Serves| n10
   n8 -->|Serves| n10
@@ -81,7 +81,6 @@ flowchart TB
   n16 -->|In| n22
   n16 -->|Depends on| n3
   n16 -->|Depends on| n2
-  n16 -->|Depends on| n4
   n16 -->|Depends on| n20
   n17 -->|Verifies| n3
   n17 -->|In| n22
@@ -94,7 +93,7 @@ flowchart TB
   n19 -->|Chooses| n23
   n19 -->|In| n22
   n19 -->|Serves| n10
-  n20 -->|Written in| n5
+  n20 -->|Written in| n4
   n23 -->|Depends on| n21
   n24 -->|Serves| n10
   n25 -->|Serves| n10

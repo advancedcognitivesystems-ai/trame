@@ -23,9 +23,9 @@
 | [The library's commands](commands.md#Commands) | Component |  |
 | [What the commands say](commands.md#CommandWords) | Message catalog |  |
 | [Plan](commands.md#Plan) | Entry point | **held** |
-| [How a command writes at a terminal](commands.md#TerminalLines) | Decision |  |
 | [The language the commands speak](commands.md#WordsLanguage) | Decision |  |
 | [The library of continuous integration](packages.md#ContinuousIntegration) | Package |  |
+| [The renderers of documents](packages.md#Documents) | Package |  |
 | [Trame](packages.md#Language) | Package |  |
 | [The people of the repository](packages.md#People) | Package |  |
 | [std](packages.md#StandardLibrary) | Package |  |

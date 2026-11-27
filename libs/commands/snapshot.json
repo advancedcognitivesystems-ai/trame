@@ -56,7 +56,7 @@
           "project": "std/engine.TheProject",
           "files": "std/tooling.Files",
           "comparison": "commands.BuildComparison",
-          "lines": "commands.TerminalLines",
+          "lines": "documents/text.TerminalText",
           "say": "commands.CommandWords",
           "exit": "std/system.ExitStatus",
           "counts": "std/algebra.Counts"
@@ -64,20 +64,6 @@
         "body": {
           "file": "./code/plan.ts",
           "language": "typescript"
-        }
-      }
-    },
-    {
-      "id": "commands.TerminalLines",
-      "kind": "decision",
-      "title": "How a command writes at a terminal",
-      "fields": {
-        "owner": "trame",
-        "value": {
-          "indent": "  "
-        },
-        "rejected": {
-          "Tabs": "their width depends on the terminal: what is indented under a line would not line up"
         }
       }
     },
@@ -106,6 +92,19 @@
         "joins": "library",
         "from": "path",
         "at": "../../ci/releases/0.8.0"
+      }
+    },
+    {
+      "id": "packages.Documents",
+      "kind": "package",
+      "title": "The renderers of documents",
+      "fields": {
+        "owner": "trame",
+        "packageName": "documents",
+        "version": "0.2.0",
+        "joins": "library",
+        "from": "path",
+        "at": "../documents/releases/0.2.0"
       }
     },
     {
@@ -140,9 +139,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.29.1",
+        "version": "0.30.0",
         "joins": "library",
-        "at": "../../std/releases/0.29.1"
+        "at": "../../std/releases/0.30.0"
       }
     },
     {
@@ -236,7 +235,7 @@
           "project": "std/engine.TheProject",
           "files": "std/tooling.Files",
           "say": "commands.CommandWords",
-          "lines": "commands.TerminalLines",
+          "lines": "documents/text.TerminalText",
           "checks": "scenarios.ScenarioWords",
           "exit": "std/system.ExitStatus",
           "counts": "std/algebra.Counts"
@@ -494,16 +493,16 @@
     },
     {
       "from": "commands.Plan",
-      "to": "commands.TerminalLines",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Plan",
       "to": "commands.CommandWords",
       "kind": "deps"
     },
     {
       "from": "packages.ContinuousIntegration",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "packages.Documents",
       "to": "product.WrittenOnce",
       "kind": "serves"
     },
@@ -605,11 +604,6 @@
     {
       "from": "scenarios.PlanSaysWhatChanges",
       "to": "commands.CommandWords",
-      "kind": "deps"
-    },
-    {
-      "from": "scenarios.PlanSaysWhatChanges",
-      "to": "commands.TerminalLines",
       "kind": "deps"
     },
     {

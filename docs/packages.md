@@ -150,14 +150,14 @@ Bundles the page's program into one module.
 The commands written once on std's ports of the engine (plan, so far), which Trame runs in place of the engine's own, at the version it uses, by its path in the repository.
 
 - Name: `commands`
-- Version: `0.1.2`
+- Version: `0.2.0`
 - Installed: Not installed in the project: its lockfile lists no commands
 - Vulnerabilities: No report yet: trame audit asks the registry
 - Latest version: No report yet: trame audit asks the registry
 - What it may do: not said: an implementation that imports it cannot promise anything
 - How it joins the graph: `library`
 - Where it comes from: `path`
-- Its path: `libs/commands/releases/0.1.2`
+- Its path: `libs/commands/releases/0.2.0`
 
 - Owner: trame
 - Serves: [A single source of truth](product.md#SingleSource)
