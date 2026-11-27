@@ -1982,3 +1982,18 @@ export const G133 = release({
   archive: "c4eba3cff58c1b7b",
   assembledBy: G132,
 })
+
+/**
+ * Generation 134
+ */
+export const G134 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g134",
+  date: "2026-11-27",
+  what: "A project's command named like a command of the engine it does not keep is asked before a view of that name: libs/commands' snapshot replaces the engine's",
+  fingerprint: "a6aa5835fd172aa0",
+  language: "shared",
+  archive: "c4eba3cff58c1b7b",
+  assembledBy: G133,
+})
