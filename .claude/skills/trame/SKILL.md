@@ -94,6 +94,8 @@ The repository's `AGENTS.md` is the full guide; read it first, then keep to this
   its launcher (`<name>.node.ts`, g99), which leads the names the same way before it runs the program. A reference
   behind the newest version its origin holds is warned: `trame upgrade [package…]` moves it, then runs the manifest,
   which installs the packages when the lockfile disagrees (g100); commit the lockfile, a CI installs with `npm ci`.
+- `trame build` and `trame snapshot` are libs/commands' where a project chooses them (Trame does): they write the
+  documents the engine's API gives (`compiled.documents()`) with libs/documents' renderers.
 - What renders documents is libs/documents' (`#documents/rendering`: `FileRendering`, `TerminalRendering`, `Common`,
   the Markdown, Mermaid and terminal syntax elements, the `Palette`): a command of a project renders with it; a new
   audience is a port of the project given to the library's `Rendering`.

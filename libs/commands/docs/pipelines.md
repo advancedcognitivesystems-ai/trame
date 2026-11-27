@@ -45,7 +45,7 @@ flowchart TB
 | 8 | prove | [A snapshot writes the graph in force](scenarios.md#SnapshotTaken) | — | [Its code verified](sdlc.md#CodeVerified) via [Snapshot](commands.md#Snapshot) | **held** |  |
 | 9 | prove | [A command is played on a real graph](scenarios.md#PlayedOnARealGraph) | — | [Its decisions applied](sdlc.md#DecisionsApplied) via [Compiled by the engine that plays them](scenarios.md#CompiledByTheEngine) | **held** |  |
 | 10 | prove | [A command writes documents as a project does](scenarios.md#WrittenAsAProjectDoes) | — | [Its decisions applied](sdlc.md#DecisionsApplied) via [Files in Markdown, the terminal in text](scenarios.md#DocumentsAsFiles) | **held** |  |
-| 11 | record | [The next version](sdlc.md#NextVersion) | — | — | **unknown** | 27 November 2026 by claude `evidence/shipments/NextVersion-2026-11-27-26b52336.json` |
+| 11 | record | [The next version](sdlc.md#NextVersion) | — | — | **unknown** | 27 November 2026 by claude `evidence/shipments/NextVersion-2026-11-27-b3495299.json` |
 
 `trame ship NextVersion --by <name>`
 
@@ -53,15 +53,15 @@ flowchart TB
 
 ## The files that run it elsewhere
 
-> **The files that run it elsewhere does not ship yet: 1 of 2 obligations holds.**
+> **The files that run it elsewhere ships: every obligation holds.**
 
 For the target repository.
 
 ```mermaid
 flowchart TB
-  n0["The pull requests' workflow<br/><small>Artefact</small>"]:::unknown
+  n0["The pull requests' workflow<br/><small>Artefact</small>"]:::held
   n1["A workflow of GitHub Actions<br/><small>Syntax element</small>"]:::held
-  n2["The files that run it elsewhere<br/><small>Shipment</small>"]:::unknown
+  n2["The files that run it elsewhere<br/><small>Shipment</small>"]:::held
   n0 -->|Produced by| n1
   n2 -->|Ships| n0
   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
@@ -75,9 +75,9 @@ flowchart TB
 
 |  | Stage | Step | Run by | Why | Status | Latest evidence |
 |---|---|---|---|---|---|---|
-| 1 | produce | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) · `../../.github/workflows/commands-pull-request.yml` | [A workflow of GitHub Actions](../.trame/ci/docs/github.md#GitHubWorkflow) | — | **unknown** | 27 November 2026 by claude  |
+| 1 | produce | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) · `../../.github/workflows/commands-pull-request.yml` | [A workflow of GitHub Actions](../.trame/ci/docs/github.md#GitHubWorkflow) | — | **held** | 27 November 2026 by claude  |
 | 2 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
-| 3 | prove | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | — | the shipment | **unknown** | 27 November 2026 by claude  |
-| 4 | record | [The files that run it elsewhere](sdlc.md#RunnersWritten) | — | — | **unknown** | 27 November 2026 by claude `evidence/shipments/RunnersWritten-2026-11-27-bb33289a.json` |
+| 3 | prove | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | — | the shipment | **held** | 27 November 2026 by claude  |
+| 4 | record | [The files that run it elsewhere](sdlc.md#RunnersWritten) | — | — | **held** | 27 November 2026 by claude `evidence/shipments/RunnersWritten-2026-11-27-b810d2eb.json` |
 
 `trame ship RunnersWritten --by <name>`

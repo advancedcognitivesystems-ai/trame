@@ -10,7 +10,7 @@ import { PractiseGuided } from "./product"
  * The language Poselia is written in, at the generation it pins: reached by its path in Trame's repository.
  */
 export const Language = pkg({
-  owner: "ghalaax", packageName: "trame", version: "131", joins: "language", from: "path", at: "../../generations/g131",
+  owner: "ghalaax", packageName: "trame", version: "134", joins: "language", from: "path", at: "../../generations/g134",
   serves: [PractiseGuided],
 })
 

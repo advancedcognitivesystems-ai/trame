@@ -103,9 +103,9 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 133
+- Version: 134
 - How it joins the graph: language
-- Its path: ../../generations/g133
+- Its path: ../../generations/g134
 - Serves: Commands every project runs, written once
 
 ### The people of the repository
@@ -186,6 +186,18 @@ Release · `R0_2_0`
 - Released on: 2026-11-27
 - What changes: Indents with libs/documents' terminal text, its own decision gone; std 0.30.0
 - Fingerprint: 6700afbbbbfb0996
+- Language: shared
+- Serves: Commands every project runs, written once
+
+### Version 0.3.0
+
+Release · `R0_3_0`
+
+- Released by: trame
+- Version: 0.3.0
+- Released on: 2026-11-27
+- What changes: trame build and trame snapshot: the documents the engine's views give, written with libs/documents' renderers; documents 0.3.0, generation 133
+- Fingerprint: f84eccb53ad7bbb8
 - Language: shared
 - Serves: Commands every project runs, written once
 
@@ -351,7 +363,7 @@ Decision · `PullRequestsOnGitHub`
 
 ### The pull requests' workflow
 
-Artefact · `PullRequestWorkflow` · **unknown**
+Artefact · `PullRequestWorkflow` · **held**
 
 - Owner: trame
 - Path: ../../.github/workflows/commands-pull-request.yml
@@ -378,7 +390,7 @@ Shipment · `NextVersion` · **unknown**
 
 ### The files that run it elsewhere
 
-Shipment · `RunnersWritten` · **unknown**
+Shipment · `RunnersWritten` · **held**
 
 - Owner: trame
 - Target: repository

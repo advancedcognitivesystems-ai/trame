@@ -1851,9 +1851,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "132",
+        "version": "134",
         "joins": "language",
-        "at": "../../generations/g132"
+        "at": "../../generations/g134"
       }
     },
     {
@@ -1925,6 +1925,19 @@
         "date": "2026-11-27",
         "what": "The renderers: one walk given a syntax, Markdown with Mermaid for files, text for the terminal, the common rendering and its words, the syntax elements of Markdown, Mermaid, the terminal and HTML, the format decisions and the palette",
         "fingerprint": "85e5bed88e2c5ef3",
+        "language": "shared"
+      }
+    },
+    {
+      "id": "releases.R0_3_0",
+      "kind": "release",
+      "title": "Version 0.3.0",
+      "fields": {
+        "owner": "trame",
+        "version": "0.3.0",
+        "date": "2026-11-27",
+        "what": "The renderers' context is the kernel's places, which the engine's API gives (g132); generation 132",
+        "fingerprint": "70cc1beb5f8ab540",
         "language": "shared"
       }
     },
@@ -3080,7 +3093,7 @@
       "id": "sdlc.PullRequestWorkflow",
       "kind": "artifact",
       "title": "The pull requests' workflow",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "../../.github/workflows/documents-pull-request.yml",
@@ -3099,7 +3112,7 @@
       "id": "sdlc.RunnersWritten",
       "kind": "shipment",
       "title": "The files that run it elsewhere",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "repository"
@@ -3945,6 +3958,11 @@
     },
     {
       "from": "releases.R0_2_0",
+      "to": "product.RenderedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_3_0",
       "to": "product.RenderedOnce",
       "kind": "serves"
     },

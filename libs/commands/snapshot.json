@@ -163,9 +163,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "133",
+        "version": "134",
         "joins": "language",
-        "at": "../../generations/g133"
+        "at": "../../generations/g134"
       }
     },
     {
@@ -250,6 +250,19 @@
         "date": "2026-11-27",
         "what": "Indents with libs/documents' terminal text, its own decision gone; std 0.30.0",
         "fingerprint": "6700afbbbbfb0996",
+        "language": "shared"
+      }
+    },
+    {
+      "id": "releases.R0_3_0",
+      "kind": "release",
+      "title": "Version 0.3.0",
+      "fields": {
+        "owner": "trame",
+        "version": "0.3.0",
+        "date": "2026-11-27",
+        "what": "trame build and trame snapshot: the documents the engine's views give, written with libs/documents' renderers; documents 0.3.0, generation 133",
+        "fingerprint": "f84eccb53ad7bbb8",
         "language": "shared"
       }
     },
@@ -556,7 +569,7 @@
       "id": "sdlc.PullRequestWorkflow",
       "kind": "artifact",
       "title": "The pull requests' workflow",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "../../.github/workflows/commands-pull-request.yml",
@@ -575,7 +588,7 @@
       "id": "sdlc.RunnersWritten",
       "kind": "shipment",
       "title": "The files that run it elsewhere",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "repository"
@@ -714,6 +727,11 @@
     },
     {
       "from": "releases.R0_2_0",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_3_0",
       "to": "product.WrittenOnce",
       "kind": "serves"
     },

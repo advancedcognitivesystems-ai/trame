@@ -7,7 +7,10 @@ engine once every project of the repository runs this library's.
 
 - `src/commands.ts` — the component `Commands` (a program's command line, offered to the engine that runs it) and
   its commands: `Plan` (`trame plan [--at <date>]`: what a build would change against graph.json, written nowhere),
-  with the function `BuildComparison` (two builds compared) and the words they say (`CommandWords`).
+  with the function `BuildComparison` (two builds compared); `Build` (`trame build [--at <date>]`: the documents the
+  views give, written in the syntax of files with libs/documents' renderers, graph.json and snapshot.json, the summary
+  printed) and `Snapshot` (`trame snapshot`: snapshot.json and the snapshot's documents), since 0.3.0, on the
+  documents the engine's API gives (g132); the words they say (`CommandWords`).
 - `src/scenarios.ts` — the commands played on a real graph: `samples/small`, a project of the library's own, compiled
   by the engine that plays the scenarios (std's `ProjectCompiledHere`), the files kept in memory.
 - `src/sdlc.ts` — how a version ships (its code verified by the scenarios, its packages safe), and the workflow that
@@ -21,8 +24,11 @@ files beside it:
 
 ```ts
 export const CommandsWrittenOnce = binding({
-  owner: "…", chooses: [Plan, ProjectInTheEngine], environments: [Local], follows: [Command], …
+  owner: "…", chooses: [Plan, Build, Snapshot, ProjectInTheEngine], environments: [Local], follows: [Command], …
 })
 ```
 
-`trame plan` then runs the library's command, in the engine's process, on the project the engine prepared.
+`trame plan` then runs the library's command, in the engine's process, on the project the engine prepared. `Build`
+and `Snapshot` render with libs/documents: the project chooses the syntaxes of its files and its terminal (Markdown
+and Mermaid, plain text) and realizes the documents' language, as Trame does. In the library itself the component
+names no environment: it is offered, and the engine's commands answer there (g133).

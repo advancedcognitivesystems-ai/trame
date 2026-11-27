@@ -1,0 +1,75 @@
+{
+  "shipment": "sdlc.RunnersWritten",
+  "title": "The files that run it elsewhere",
+  "target": "repository",
+  "at": "2026-11-27",
+  "by": "claude",
+  "signature": "attribution",
+  "artifacts": [
+    {
+      "node": "sdlc.PullRequestWorkflow",
+      "path": "../../.github/workflows/commands-pull-request.yml",
+      "fingerprint": "d7d014ce389398f6670d00b63264ad38f705db36b9581570644fa72da0043e9f"
+    }
+  ],
+  "foundations": {
+    "problems": 0
+  },
+  "obligations": [
+    {
+      "node": "sdlc.PullRequestWorkflow",
+      "kind": "artifact",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-26",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "d7d014ce389398f6670d00b63264ad38f705db36b9581570644fa72da0043e9f",
+          "code": "3b80b5fa",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "203a6308a3ce37b3",
+          "seal": "70d542312c01c3bffe21f44cd5e4231635a38baea6f6e8dd7d96987b47fe1399"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-26",
+          "source": "shipped",
+          "value": 1,
+          "fingerprint": "d7d014ce389398f6670d00b63264ad38f705db36b9581570644fa72da0043e9f",
+          "subject": "sdlc.RunnersWritten",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "1744aa7d1c7ccfb6ab533902598dd4716fa53b361b6a3ba130b7530388a23635"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-27",
+          "source": "shipped",
+          "value": 1,
+          "fingerprint": "d7d014ce389398f6670d00b63264ad38f705db36b9581570644fa72da0043e9f",
+          "subject": "sdlc.RunnersWritten",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "b0dc0910dbbb59a96180b4906ba9f4f283bf2ca80d2af692912f7f163d802207"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-27",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "d7d014ce389398f6670d00b63264ad38f705db36b9581570644fa72da0043e9f",
+          "code": "3b80b5fa",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "cbca529b66a70907",
+          "seal": "a62dffedc4d3d478fa3b62a10a9e5a3d585cabf88907d35edafe1d9e7e894430"
+        }
+      ]
+    }
+  ],
+  "deployed": []
+}

@@ -4,7 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 4 | 44 |
+| trame | 0 | 0 | 2 | 45 |
 
 <a id="trame"></a>
 
@@ -13,8 +13,6 @@
 | Severity | Code | What | Where | Owner | Consequence |
 |---|---|---|---|---|---|
 | warning | `shipment-awaits` | To ship: The commands of every project is unknown | [The next version](sdlc.md#NextVersion) | trame |  |
-| warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | trame |  |
-| warning | `shipment-awaits` | To ship: The pull requests' workflow is unknown | [The files that run it elsewhere](sdlc.md#RunnersWritten) | trame |  |
 | warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The commands of every project](sdlc.md#TheLibrary) | trame |  |
 
 ### Owns
@@ -38,6 +36,7 @@
 | [Version 0.1.1](releases.md#R0_1_1) | Release |  |
 | [Version 0.1.2](releases.md#R0_1_2) | Release |  |
 | [Version 0.2.0](releases.md#R0_2_0) | Release |  |
+| [Version 0.3.0](releases.md#R0_3_0) | Release |  |
 | [A build writes the documents and the graph](scenarios.md#BuildWritesTheDocuments) | Scenario | **held** |
 | [Compiled by the engine that plays them](scenarios.md#CompiledByTheEngine) | Technical choice | **held** |
 | [Files in Markdown, the terminal in text](scenarios.md#DocumentsAsFiles) | Technical choice | **held** |
@@ -60,8 +59,8 @@
 | [The next version](sdlc.md#NextVersion) | Shipment | **unknown** |
 | [Its packages safe](sdlc.md#PackagesSafe) | Obligation |  |
 | [How a pull request is checked on GitHub](sdlc.md#PullRequestsOnGitHub) | Decision |  |
-| [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **unknown** |
+| [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **held** |
 | [Its requirements held](sdlc.md#RequirementsServed) | Obligation |  |
-| [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **unknown** |
+| [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **held** |
 | [The commands of every project](sdlc.md#TheLibrary) | Artefact | **unknown** |
 | [How a version is made](sdlc.md#VersionMode) | Policy |  |

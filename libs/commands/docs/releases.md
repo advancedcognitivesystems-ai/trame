@@ -69,3 +69,19 @@ Indents with libs/documents' terminal text, its own decision gone; std 0.30.0
 
 - Released by: trame
 - Serves: [Commands every project runs, written once](product.md#WrittenOnce)
+
+<a id="R0_3_0"></a>
+
+### Version 0.3.0
+
+`R0_3_0` · `src/releases.ts:64`
+
+trame build and trame snapshot: the documents the engine's views give, written with libs/documents' renderers; documents 0.3.0, generation 133
+
+- Version: `0.3.0`
+- Released on: 27 November 2026
+- Fingerprint: `f84eccb53ad7bbb8`
+- Language: the repository's, shared
+
+- Released by: trame
+- Serves: [Commands every project runs, written once](product.md#WrittenOnce)
