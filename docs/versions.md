@@ -1,8 +1,8 @@
 # Versions
 
-*The releases of the components on 30 October 2026, newest first. A project runs the release its configuration pins.*
+*The releases of the components on 27 November 2026, newest first. A project runs the release its configuration pins.*
 
-> **132 releases of 1 component; 95 releases on a language of their own**
+> **133 releases of 1 component; 95 releases on a language of their own**
 
 ## Trame on the command line
 
@@ -10,6 +10,7 @@ Each release, newest first: what changed, the release that assembled it, and whe
 
 | Release | Released on | What changes | Assembled by | Language |
 |---|---|---|---|---|
+| [Generation 133](releases.md#G133) | 27 November 2026 | A component that names no environment is offered to other projects: the project that declares it has nowhere to assemble it, and the engine's command of that name answers there | [Generation 132](releases.md#G132) | shared |
 | [Generation 132](releases.md#G132) | 27 November 2026 | The engine's API gives a compiled project's documents (the views' documents with where each card is) and one view's document or why there is none; the engine's view answers through it | [Generation 131](releases.md#G131) | shared |
 | [Generation 131](releases.md#G131) | 27 November 2026 | The renderers come from libs/documents 0.2.0 (one renderer given a syntax, Markdown with Mermaid, the terminal's text, their words and format decisions, the palette); the page gives the library's renderer its syntax; Trame's reference syntax is std's | [Generation 130](releases.md#G130) | shared |
 | [Generation 130](releases.md#G130) | 27 November 2026 | Every choice backed by an architecture decision of its project (choice-unbacked), which may adopt a library's; the engine's plan and amend compare builds with libs/commands' comparison, the copy gone | [Generation 129](releases.md#G129) | shared |

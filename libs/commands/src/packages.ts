@@ -10,7 +10,7 @@ import { WrittenOnce } from "./product"
  * The language the library is written in, at the generation the repository runs, by its path: the one whose engine
  * gives the API std's ports of the engine read (g124).
  */
-export const Language = pkg({ owner: "trame", packageName: "trame", version: "132", joins: "language", at: "../../generations/g132", serves: [WrittenOnce] })
+export const Language = pkg({ owner: "trame", packageName: "trame", version: "133", joins: "language", at: "../../generations/g133", serves: [WrittenOnce] })
 
 /**
  * std

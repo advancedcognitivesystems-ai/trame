@@ -857,6 +857,7 @@ export const ScenarioMessages = catalog({
     libraryCommandRun: (name: string) => `trame ${name} runs the library's command the example chose: its component assembled with that command alone, its program run in the engine's process with the rest of the line`,
     helpListsTheLibrary: (name: string) => `trame help lists ${name}, with the library's component that runs it`,
     hiddenCommandRefused: (name: string) => `Were ${name} a command the engine keeps, the project's would never run: an error of the graph`,
+    commandBeforeView: (name: string) => `Were ${name} also the name of a view, the project's command named like the engine's would still be asked first; named like no command of the engine, it would never run`,
     /** A command of the engine the project replaces (since g119). */
     engineCommandReplaced: (name: string) => `Were ${name} also a command of the engine, the project's would run instead, the engine's not`,
     /** A command of the engine the project has none of (since g119). */

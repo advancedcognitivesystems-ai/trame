@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 30 October 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 27 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Trame · Appearance
 
@@ -2564,10 +2564,10 @@ Package · `DocumentRenderers`
 
 - Owner: trame
 - Name: documents
-- Version: 0.2.0
+- Version: 0.3.0
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: libs/documents/releases/0.2.0
+- Its path: libs/documents/releases/0.3.0
 - Serves: A single source of truth
 
 ### esbuild
@@ -2586,10 +2586,10 @@ Package · `GenericCommands`
 
 - Owner: trame
 - Name: commands
-- Version: 0.2.0
+- Version: 0.3.0
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: libs/commands/releases/0.2.0
+- Its path: libs/commands/releases/0.3.0
 - Serves: A single source of truth
 
 ### Grammar of HCL
@@ -4567,6 +4567,20 @@ Release · `G132`
 - Releases: Trame on the command line
 - Assembled by: Generation 131
 
+### Generation 133
+
+Release · `G133`
+
+- Released by: trame
+- Version: g133
+- Released on: 2026-11-27
+- What changes: A component that names no environment is offered to other projects: the project that declares it has nowhere to assemble it, and the engine's command of that name answers there
+- Fingerprint: 03060a6259d03b8e
+- Language: shared
+- Language archived: c4eba3cff58c1b7b
+- Releases: Trame on the command line
+- Assembled by: Generation 132
+
 ### Generation 14
 
 Release · `G14`
@@ -6373,7 +6387,7 @@ Technical choice · `CommandsWrittenOnce` · **unknown**
 
 - Decided by: trame
 - Context: The engine's commands reached its modules directly: a project could neither choose them nor specialize them, and a command of its own could not compute what they computed.
-- Consequences: trame plan runs on a machine and in a session alike, chosen for Local only: the dispatch asks for no environment. The engine's plan stays until the generation that removes the commands every project then runs from the library.
+- Consequences: trame plan, build and snapshot run on a machine and in a session alike, chosen for Local only: the dispatch asks for no environment. The engine's own stay until the generation that removes the commands every project then runs from the library.
 - Rejected: The engine's own commands, kept, they would stay out of reach of every project's choice, and the engine the only one to reach its modules
 - In: Local
 - Serves: A specification that runs

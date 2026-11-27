@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-30",
+  "generated": "2026-11-27",
   "nodes": [
     {
       "id": "appearance.ExplorerDrawing",
@@ -1350,7 +1350,7 @@
       "id": "command-scenarios.AdvanceInMemory",
       "kind": "scenario",
       "title": "An advance, in memory",
-      "source": "src/command-scenarios.ts:1351",
+      "source": "src/command-scenarios.ts:1354",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1387,7 +1387,7 @@
           "status": "passed"
         },
         {
-          "name": "The candidate is accepted (  ✓ trame runs g133 |   ✓ reservations runs g133 | Advance succeeded.)",
+          "name": "The candidate is accepted (  ✓ trame runs g134 |   ✓ reservations runs g134 | Advance succeeded.)",
           "status": "passed"
         },
         {
@@ -1405,7 +1405,7 @@
       "id": "command-scenarios.AdvanceSamples",
       "kind": "decision",
       "title": "What the engines an advance starts answer in a scenario",
-      "source": "src/command-scenarios.ts:1337",
+      "source": "src/command-scenarios.ts:1340",
       "fields": {
         "owner": "trame",
         "value": {
@@ -1809,7 +1809,7 @@
       "id": "command-scenarios.DoctorAsks",
       "kind": "scenario",
       "title": "The doctor",
-      "source": "src/command-scenarios.ts:1310",
+      "source": "src/command-scenarios.ts:1313",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1844,7 +1844,7 @@
       "id": "command-scenarios.EngineApiGiven",
       "kind": "scenario",
       "title": "The engine's API",
-      "source": "src/command-scenarios.ts:1065",
+      "source": "src/command-scenarios.ts:1068",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1921,7 +1921,7 @@
       "id": "command-scenarios.ExampleOutputRewritten",
       "kind": "scenario",
       "title": "An example's output written again",
-      "source": "src/command-scenarios.ts:1145",
+      "source": "src/command-scenarios.ts:1148",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1953,7 +1953,7 @@
       "id": "command-scenarios.ExamplesMet",
       "kind": "scenario",
       "title": "The examples of a project, met",
-      "source": "src/command-scenarios.ts:1162",
+      "source": "src/command-scenarios.ts:1165",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1978,7 +1978,7 @@
       "id": "command-scenarios.KindsCarried",
       "kind": "scenario",
       "title": "A library carries kinds",
-      "source": "src/command-scenarios.ts:1211",
+      "source": "src/command-scenarios.ts:1214",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2045,7 +2045,7 @@
       "id": "command-scenarios.LibraryCommandRun",
       "kind": "scenario",
       "title": "A command of a library the project chooses",
-      "source": "src/command-scenarios.ts:1181",
+      "source": "src/command-scenarios.ts:1184",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2441,6 +2441,10 @@
         {
           "name": "Were prepare-storage a command the engine keeps, the project's would never run: an error of the graph",
           "status": "passed"
+        },
+        {
+          "name": "Were prepare-storage also the name of a view, the project's command named like the engine's would still be asked first; named like no command of the engine, it would never run",
+          "status": "passed"
         }
       ],
       "diagnostics": []
@@ -2710,7 +2714,7 @@
       "id": "command-scenarios.RewritingSamples",
       "kind": "decision",
       "title": "Declarations rewritten",
-      "source": "src/command-scenarios.ts:1106",
+      "source": "src/command-scenarios.ts:1109",
       "fields": {
         "owner": "trame",
         "value": {
@@ -2854,7 +2858,7 @@
       "id": "command-scenarios.StagesShipped",
       "kind": "scenario",
       "title": "Stages shipped in order",
-      "source": "src/command-scenarios.ts:1261",
+      "source": "src/command-scenarios.ts:1264",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -7889,7 +7893,7 @@
       "id": "messages.AdvanceMessages",
       "kind": "catalog",
       "title": "Messages of an advance",
-      "source": "src/messages.ts:909",
+      "source": "src/messages.ts:910",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -7932,7 +7936,7 @@
       "id": "messages.CountsInTheLanguage",
       "kind": "adr",
       "title": "A catalog counts in its language",
-      "source": "src/messages.ts:998",
+      "source": "src/messages.ts:999",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -8157,14 +8161,12 @@
       "fields": {
         "owner": "trame",
         "packageName": "documents",
-        "version": "0.2.0",
+        "version": "0.3.0",
         "joins": "library",
         "from": "path",
-        "at": "libs/documents/releases/0.2.0"
+        "at": "libs/documents/releases/0.3.0"
       },
-      "diagnostics": [
-        "warning: documents 0.3.0 is out, the reference names 0.2.0: trame upgrade documents moves it"
-      ]
+      "diagnostics": []
     },
     {
       "id": "packages.EsbuildPackage",
@@ -8193,10 +8195,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "commands",
-        "version": "0.2.0",
+        "version": "0.3.0",
         "joins": "library",
         "from": "path",
-        "at": "libs/commands/releases/0.2.0"
+        "at": "libs/commands/releases/0.3.0"
       },
       "diagnostics": []
     },
@@ -12692,6 +12694,22 @@
       "diagnostics": []
     },
     {
+      "id": "releases.G133",
+      "kind": "release",
+      "title": "Generation 133",
+      "source": "src/releases.ts:1974",
+      "fields": {
+        "owner": "trame",
+        "version": "g133",
+        "date": "2026-11-27",
+        "what": "A component that names no environment is offered to other projects: the project that declares it has nowhere to assemble it, and the engine's command of that name answers there",
+        "fingerprint": "03060a6259d03b8e",
+        "language": "shared",
+        "archive": "c4eba3cff58c1b7b"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "releases.G14",
       "kind": "release",
       "title": "Generation 14",
@@ -15260,7 +15278,7 @@
         "owner": "trame"
       },
       "result": {
-        "code": "158413a0"
+        "code": "2d0b8b3a"
       },
       "diagnostics": [
         "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
@@ -15276,7 +15294,7 @@
         "owner": "trame"
       },
       "result": {
-        "code": "67a14e22"
+        "code": "2a9089b8"
       },
       "diagnostics": [
         "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
@@ -15306,7 +15324,7 @@
       "fields": {
         "owner": "trame",
         "context": "The engine's commands reached its modules directly: a project could neither choose them nor specialize them, and a command of its own could not compute what they computed.",
-        "consequences": "trame plan runs on a machine and in a session alike, chosen for Local only: the dispatch asks for no environment. The engine's plan stays until the generation that removes the commands every project then runs from the library.",
+        "consequences": "trame plan, build and snapshot run on a machine and in a session alike, chosen for Local only: the dispatch asks for no environment. The engine's own stay until the generation that removes the commands every project then runs from the library.",
         "rejected": {
           "The engine's own commands, kept": "they would stay out of reach of every project's choice, and the engine the only one to reach its modules"
         }
@@ -15336,7 +15354,7 @@
       },
       "result": {
         "path": "out/local/trame-cli.ts",
-        "code": "20bcb12c"
+        "code": "2d7eac79"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -15392,7 +15410,7 @@
       },
       "result": {
         "path": "trame-page.html",
-        "code": "e93238ca"
+        "code": "40f4f810"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -16381,7 +16399,7 @@
         "code": "1b5a8d9f"
       },
       "diagnostics": [
-        "warning: To run: trame ship runs it on the artefacts it checks"
+        "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
       ]
     },
     {
@@ -17529,7 +17547,7 @@
       },
       "result": {
         "path": "out/browser/page-app.ts",
-        "code": "65bd52a9"
+        "code": "d554265c"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -17545,10 +17563,10 @@
         "owner": "trame"
       },
       "result": {
-        "code": "da1713f7"
+        "code": "fa4b4d46"
       },
       "diagnostics": [
-        "warning: To run: trame ship runs it on the artefacts it checks"
+        "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
       ]
     },
     {
@@ -17602,7 +17620,7 @@
         "code": "b395be3d"
       },
       "diagnostics": [
-        "warning: Not built yet: trame ship builds it"
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
       ]
     },
     {
@@ -17720,7 +17738,7 @@
         "code": "b31042d2"
       },
       "diagnostics": [
-        "warning: To run: trame ship runs it on the artefacts it checks"
+        "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
       ]
     },
     {
@@ -17961,10 +17979,10 @@
       },
       "result": {
         "path": "src",
-        "code": "e887a3c3"
+        "code": "8a028a6b"
       },
       "diagnostics": [
-        "warning: Not built yet: trame ship builds it"
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
       ]
     },
     {
@@ -33787,6 +33805,16 @@
       "kind": "assembledBy"
     },
     {
+      "from": "releases.G133",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G133",
+      "to": "releases.G132",
+      "kind": "assembledBy"
+    },
+    {
       "from": "releases.G14",
       "to": "architecture.TrameCli",
       "kind": "component"
@@ -36159,6 +36187,11 @@
     {
       "from": "sdlc.CommandsWrittenOnce",
       "to": "commands/commands.Plan",
+      "kind": "chooses"
+    },
+    {
+      "from": "sdlc.CommandsWrittenOnce",
+      "to": "commands/commands.Build",
       "kind": "chooses"
     },
     {

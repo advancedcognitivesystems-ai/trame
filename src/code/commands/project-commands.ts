@@ -85,15 +85,18 @@ const body = (deps: Deps) => {
 
   /**
    * Each command of the project that never runs: a command the engine keeps or a view answers its name first, or
-   * another command of the project has it. One named like another command of the engine replaces it (since g119).
+   * another command of the project has it. One named like another command of the engine replaces it (since g119), and
+   * is asked before the views (since g134).
    */
-  function hidden(c: Compiled, kept: readonly string[], views: readonly string[]): Diag[] {
+  function hidden(c: Compiled, kept: readonly string[], views: readonly string[], engine: readonly string[]): Diag[] {
     const commands = of(c)
     return commands.flatMap(({ name, entry }): Diag[] => {
       const same = commands.filter((x) => x.name === name)
+      // Named like a command of the engine it does not keep, it is asked first, before any view (since g134: trame
+      // snapshot, a command of the engine and the name of a view, is libs/commands' where a project chose it).
       const what = kept.includes(name)
         ? messages.commandHiddenByEngine(name)
-        : views.includes(name)
+        : views.includes(name) && !engine.includes(name)
           ? messages.commandHiddenByView(name)
           : same.length > deps.counts.one
             ? messages.commandTwice(name, same.map((x) => x.entry.ref))

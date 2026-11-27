@@ -119,6 +119,9 @@ const body = (deps: Deps) => {
   const { locate } = deps.common
   const { terminal, messages } = deps
 
+  /** The commands of the engine, as the last command line read named them: a project's command named like one comes before a view. */
+  let engineCommands: readonly string[] = []
+
   function options(command: string, raw: string[], commands?: string): Options {
     const argv = [...raw]
     /** An option and its value: both leave the arguments; the value is given back. */
@@ -156,10 +159,12 @@ const body = (deps: Deps) => {
     const from = take(line.from)
     const until = take(line.until)
     const source = take(line.source)
+    const engine = deps.texts.optional(commands).split(line.separator).filter(Boolean)
+    if (deps.counts.any(engine)) engineCommands = engine
     return {
       root: deps.currentProcess.cwd(), command, today, format, port, fragment, envName, all, history, accept, promote, migrate,
       by, ...(onBehalf === undefined ? {} : { for: onBehalf }), subject, language, note, url, dryRun, why, from, until, source, args: argv,
-      commands: deps.texts.optional(commands).split(line.separator).filter(Boolean),
+      commands: engine,
     }
   }
 
@@ -265,7 +270,7 @@ const body = (deps: Deps) => {
     // A day before today: what was proven then is judged as it was given, the code and the engine of that day unknown.
     const c = await running(read, () => compileAt(read, date, { asGiven: date < deps.clock.today(), ...opts }))
     const lockIssues = checkLock(c, read.root)
-    const hidden = deps.projectCommands.hidden(c, deps.kept, deps.views.sortedViews().map((v) => v.name))
+    const hidden = deps.projectCommands.hidden(c, deps.kept, deps.views.sortedViews().map((v) => v.name), engineCommands)
     c.diags.push(...lockIssues, ...hidden)
     c.diags.sort((a, b) => deps.severityOrder(a.severity) - deps.severityOrder(b.severity))
     const published = publishedOf(c, read.root)

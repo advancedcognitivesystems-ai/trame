@@ -1,0 +1,238 @@
+{
+  "shipment": "sdlc.NextVersion",
+  "title": "The next version",
+  "target": "version",
+  "at": "2026-11-27",
+  "by": "claude",
+  "signature": "attribution",
+  "artifacts": [
+    {
+      "node": "sdlc.TheLibrary",
+      "path": "src",
+      "fingerprint": "d586dda211403d3ff1b173456e0c7c5ce30b81b49b78b023bbbf32cb0ac14d40"
+    }
+  ],
+  "foundations": {
+    "problems": 0
+  },
+  "obligations": [
+    {
+      "node": "sdlc.TheLibrary",
+      "kind": "artifact",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-26",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "440585b54dad37fd83f2a6a529523e8b4bd6eff94a1fc4bd17f7b483ba28d312",
+          "code": "1d3a6aae",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "aeca17a58384a824",
+          "seal": "8304db77424d01350aa3fab541c24ddce7bcaf6018fc9821da2b2054a5b011a6"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-26",
+          "source": "shipped",
+          "value": 1,
+          "fingerprint": "440585b54dad37fd83f2a6a529523e8b4bd6eff94a1fc4bd17f7b483ba28d312",
+          "subject": "sdlc.NextVersion",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "14c33ea862095306a13d3c15bd427ea6a870560f7c85152c487d0cb5760ce8c5"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-26",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "746135fa4d552f3bc78aa9b66bcf670dab72b3ddc48006f3417603a8cacf262d",
+          "code": "d34bdad7",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "9cff45e26ccf7a54",
+          "seal": "da4c64bdd786a4c182776c2e58eef062afbc010508127877e0dc848692c386cd"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-26",
+          "source": "shipped",
+          "value": 1,
+          "fingerprint": "746135fa4d552f3bc78aa9b66bcf670dab72b3ddc48006f3417603a8cacf262d",
+          "subject": "sdlc.NextVersion",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "e82d0525d8f48cb82674292618947cea343922fb317c439c9c9eda6d3832f173"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-27",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "5dc07eaab63380ad10699314ed08bfa00d0ec47fbe4fb7345f4f7e71a29951df",
+          "code": "bf3a7dd0",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "203a6308a3ce37b3",
+          "seal": "d46017d00a6ce3aa542d94efd8e2f504273dfc7e535e223b42be2da9ea79209c"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-27",
+          "source": "shipped",
+          "value": 1,
+          "fingerprint": "5dc07eaab63380ad10699314ed08bfa00d0ec47fbe4fb7345f4f7e71a29951df",
+          "subject": "sdlc.NextVersion",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "b63e2146cb4bd4f5cd36b4fcaa33f0eb1fad2865ba3b57febd9a76d8227de263"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-27",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "a4e1cc90fe250c32b1af4c5dea86f06c82228e98eef4c9e01a8977583efc0be0",
+          "code": "aea518b9",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "758896ce908b9ecb",
+          "seal": "b9c4c26f9934d549516618c4ead2496875f36d09e31d2b1341e30e5f3e74a788"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-27",
+          "source": "shipped",
+          "value": 1,
+          "fingerprint": "a4e1cc90fe250c32b1af4c5dea86f06c82228e98eef4c9e01a8977583efc0be0",
+          "subject": "sdlc.NextVersion",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "b9982172913721382f1446fee757b690ebd7c499bf0092b98245004d501a9395"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-27",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "d586dda211403d3ff1b173456e0c7c5ce30b81b49b78b023bbbf32cb0ac14d40",
+          "code": "53ae97b7",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "183aaa0b0fdcf54d",
+          "seal": "bb9e7856aac3fe1927e14fac875aadb95a84d49c7906a6eb72710cb75585e70a"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.BuildWritesTheDocuments",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.CodeVerified",
+      "via": "commands.Build",
+      "outcome": [
+        {
+          "name": "A build writes each document a view writes as a file, in the syntax of files, with where each card is",
+          "status": "passed"
+        },
+        {
+          "name": "A build writes graph.json and snapshot.json as the engine gives them",
+          "status": "passed"
+        },
+        {
+          "name": "A build prints the summary in the syntax of the terminal, then names the files it wrote",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.PlanAfterTheSameBuild",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.CodeVerified",
+      "via": "commands.BuildComparison",
+      "outcome": [
+        {
+          "name": "Against the graph a build of the same day wrote, the plan counts nothing and says nothing changes",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.PlanSaysWhatChanges",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.CodeVerified",
+      "via": "commands.BuildComparison",
+      "outcome": [
+        {
+          "name": "The plan names Ada, which the last build did not have, and counts it in its first line",
+          "status": "passed"
+        },
+        {
+          "name": "The plan names the status of A greeting is short, which the last build did not give",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.PlanWithoutABuild",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.CodeVerified",
+      "via": "commands.Plan",
+      "outcome": [
+        {
+          "name": "Without graph.json, the plan says there is nothing to compare with, and succeeds",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.SnapshotTaken",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.CodeVerified",
+      "via": "commands.Snapshot",
+      "outcome": [
+        {
+          "name": "A snapshot writes snapshot.json and the documents of the snapshot's view, then names them with the day",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.PlayedOnARealGraph",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.DecisionsApplied",
+      "via": "scenarios.CompiledByTheEngine"
+    },
+    {
+      "node": "scenarios.WrittenAsAProjectDoes",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.DecisionsApplied",
+      "via": "scenarios.DocumentsAsFiles"
+    }
+  ],
+  "deployed": []
+}

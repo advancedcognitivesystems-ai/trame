@@ -1,6 +1,6 @@
 # Technical choices
 
-*What answers each port in each environment on 30 October 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
+*What answers each port in each environment on 27 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
 
 > **35 technical choices for 64 ports, in 4 environments**
 
@@ -45,11 +45,11 @@
 | [Syntax of the page](rendering.md#PageSyntax) | [HTML writer](rendering.md#HtmlSyntax) | — | [HTML writer](rendering.md#HtmlSyntax) | — |
 | [Figures of the page](rendering.md#PageFigures) | [Figures in SVG](rendering.md#SvgFigures) | — | [Figures in SVG](rendering.md#SvgFigures) | — |
 | [A sample extension point](scenarios.md#SampleAddOns) | — | — | [The first sample add-on](scenarios.md#FirstSampleAddOn), [The second sample add-on](scenarios.md#SecondSampleAddOn) | — |
-| [The language of the documents](../libs/documents/releases/0.2.0/docs/language.md#DocumentLanguage) | [The documents in Trame's language](documents.md#OurDocumentLanguage) | [The documents in Trame's language](documents.md#OurDocumentLanguage) | [The documents in Trame's language](documents.md#OurDocumentLanguage) | [The documents in Trame's language](documents.md#OurDocumentLanguage) |
-| [Syntax of the documents written as files](../libs/documents/releases/0.2.0/docs/rendering.md#FileSyntax) | [Markdown writer](../libs/documents/releases/0.2.0/docs/rendering.md#MarkdownSyntax) | — | [Markdown writer](../libs/documents/releases/0.2.0/docs/rendering.md#MarkdownSyntax) | — |
-| [Syntax of the terminal](../libs/documents/releases/0.2.0/docs/rendering.md#TerminalSyntax) | [Plain text writer](../libs/documents/releases/0.2.0/docs/rendering.md#PlainTextSyntax) | — | [Plain text writer](../libs/documents/releases/0.2.0/docs/rendering.md#PlainTextSyntax) | — |
-| [Figures of the documents written as files](../libs/documents/releases/0.2.0/docs/rendering.md#FileFigures) | [Mermaid diagrams](../libs/documents/releases/0.2.0/docs/rendering.md#MermaidDiagrams) | — | [Mermaid diagrams](../libs/documents/releases/0.2.0/docs/rendering.md#MermaidDiagrams) | — |
-| [Figures of the terminal](../libs/documents/releases/0.2.0/docs/rendering.md#TerminalFigures) | [Figures as text](../libs/documents/releases/0.2.0/docs/rendering.md#TextFigures) | — | [Figures as text](../libs/documents/releases/0.2.0/docs/rendering.md#TextFigures) | — |
+| [The language of the documents](../libs/documents/releases/0.3.0/docs/language.md#DocumentLanguage) | [The documents in Trame's language](documents.md#OurDocumentLanguage) | [The documents in Trame's language](documents.md#OurDocumentLanguage) | [The documents in Trame's language](documents.md#OurDocumentLanguage) | [The documents in Trame's language](documents.md#OurDocumentLanguage) |
+| [Syntax of the documents written as files](../libs/documents/releases/0.3.0/docs/rendering.md#FileSyntax) | [Markdown writer](../libs/documents/releases/0.3.0/docs/rendering.md#MarkdownSyntax) | — | [Markdown writer](../libs/documents/releases/0.3.0/docs/rendering.md#MarkdownSyntax) | — |
+| [Syntax of the terminal](../libs/documents/releases/0.3.0/docs/rendering.md#TerminalSyntax) | [Plain text writer](../libs/documents/releases/0.3.0/docs/rendering.md#PlainTextSyntax) | — | [Plain text writer](../libs/documents/releases/0.3.0/docs/rendering.md#PlainTextSyntax) | — |
+| [Figures of the documents written as files](../libs/documents/releases/0.3.0/docs/rendering.md#FileFigures) | [Mermaid diagrams](../libs/documents/releases/0.3.0/docs/rendering.md#MermaidDiagrams) | — | [Mermaid diagrams](../libs/documents/releases/0.3.0/docs/rendering.md#MermaidDiagrams) | — |
+| [Figures of the terminal](../libs/documents/releases/0.3.0/docs/rendering.md#TerminalFigures) | [Figures as text](../libs/documents/releases/0.3.0/docs/rendering.md#TextFigures) | — | [Figures as text](../libs/documents/releases/0.3.0/docs/rendering.md#TextFigures) | — |
 | [What the machine runs](../libs/machine/releases/0.1.0/docs/machine.md#WhatTheMachineRuns) | [What the machine runs, for Trame](sdlc.md#OurMachineSettings) | [What the machine runs, for Trame](sdlc.md#OurMachineSettings) | — | — |
 | [How pull requests are opened](../std/releases/0.30.0/docs/commands.md#PullRequestSettings) | [How Trame's pull requests are opened](sdlc.md#OurPullRequests) | [How Trame's pull requests are opened](sdlc.md#OurPullRequests) | [How Trame's pull requests are opened](sdlc.md#OurPullRequests) | — |
 | [How a version is carried](../std/releases/0.30.0/docs/commands.md#PropagationSettings) | [How a version is carried across Trame's repository](sdlc.md#OurPropagation) | [How a version is carried across Trame's repository](sdlc.md#OurPropagation) | [How a version is carried across Trame's repository](sdlc.md#OurPropagation) | — |
@@ -73,9 +73,9 @@
 
 | Pattern | Status | Followed by |
 |---|---|---|
-| [Strategy](../std/releases/0.30.0/docs/patterns.md#Strategy) | **held** | [Documents written in Trame's language](documents.md#DocumentsInOurLanguage), [Scenarios run in memory](platform.md#InMemoryScenarios), [A run is kept while what it reads is as it was](platform.md#RunsByWhatTheyRead), [Documents in Markdown](rendering.md#DocumentsInMarkdown), [Figures in Mermaid](rendering.md#FiguresInMermaid), [The terminal in plain text](rendering.md#TerminalInText), [Figures in the terminal, as text](rendering.md#TerminalFiguresAsText), [The page in HTML](rendering.md#PageInHtml), [The page's figures in SVG](rendering.md#PageFiguresDrawn), [The SDLC in memory](sdlc.md#SdlcInMemory), [Trame's settings in the scenarios](sdlc.md#OurSettingsInTheScenarios), [Evidence sealed by attribution](shipping.md#SealedByAttribution), [Played on a small project](../libs/commands/releases/0.2.0/docs/scenarios.md#PlayedOnASmallProject), [The scenarios' language](../libs/documents/releases/0.2.0/docs/scenarios.md#InTheScenariosLanguage), [Files in Markdown](../libs/documents/releases/0.2.0/docs/scenarios.md#FilesInMarkdown), [Figures in Mermaid](../libs/documents/releases/0.2.0/docs/scenarios.md#FiguresInMermaid), [The terminal in text](../libs/documents/releases/0.2.0/docs/scenarios.md#TerminalInText), [Figures at a terminal, as text](../libs/documents/releases/0.2.0/docs/scenarios.md#TerminalFiguresAsText), [In memory](../std/releases/0.30.0/docs/scenarios.md#InMemory), [Judged as the language says](../std/releases/0.30.0/docs/scenarios.md#LanguageJudgment), [Judged strictly](../std/releases/0.30.0/docs/scenarios.md#StrictJudgment), [The scenarios' settings](../std/releases/0.30.0/docs/scenarios.md#ScenarioSettings) |
-| [Adapter](../std/releases/0.30.0/docs/patterns.md#Adapter) | **held** | [The browser runs the page](browser.md#TheBrowserRunsThePage), [NodePlatform](platform.md#NodePlatform), [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine), [Scenarios write in memory, over the disk](platform.md#FilesInMemoryOverTheDisk), [On a machine, runs are kept on disk](platform.md#RunsKeptOnDisk), [In the scenarios, runs are kept in the process](platform.md#RunsKeptInTheProcess), [esbuild bundles the page's program](platform.md#EsbuildBundles), [tree-sitter reads the bodies](platform.md#TreeSitterReads), [tsx runs TypeScript](platform.md#TsxRuns), [The TypeScript compiler reads the declarations](platform.md#CompilerReadsDeclarations), [The engine's own files sit beside its code](platform.md#EngineFilesBesideCode), [Each package comes from where its reference says](platform.md#PackagesByTheirOrigin), [Amendments go in the sources](platform.md#AmendmentsInPlace), [The SDLC on the machine](sdlc.md#SdlcOnTheMachine), [The repository's work on a machine](sdlc.md#RepositoryWorkOnAMachine), [GitHub merges once it holds, asked by its command line](sdlc.md#AutoMergeOnTheMachine), [GitHub merges once it holds, asked in a session](sdlc.md#AutoMergeInASession), [std's languages, read by the engine](syntax.md#StdLanguagesRead), [Compiled by the engine that plays them](../libs/commands/releases/0.2.0/docs/scenarios.md#CompiledByTheEngine), [Read by the engine](../libs/documents/releases/0.2.0/docs/scenarios.md#LanguagesRead), [Read by the engine that builds](../std/releases/0.30.0/docs/scenarios.md#ReadInTheEngine) |
-| [Bridge](../std/releases/0.30.0/docs/patterns.md#Bridge) | **held** | [Documents in Markdown](rendering.md#DocumentsInMarkdown), [The terminal in plain text](rendering.md#TerminalInText), [The page in HTML](rendering.md#PageInHtml), [Files in Markdown](../libs/documents/releases/0.2.0/docs/scenarios.md#FilesInMarkdown), [The terminal in text](../libs/documents/releases/0.2.0/docs/scenarios.md#TerminalInText) |
+| [Strategy](../std/releases/0.30.0/docs/patterns.md#Strategy) | **held** | [Documents written in Trame's language](documents.md#DocumentsInOurLanguage), [Scenarios run in memory](platform.md#InMemoryScenarios), [A run is kept while what it reads is as it was](platform.md#RunsByWhatTheyRead), [Documents in Markdown](rendering.md#DocumentsInMarkdown), [Figures in Mermaid](rendering.md#FiguresInMermaid), [The terminal in plain text](rendering.md#TerminalInText), [Figures in the terminal, as text](rendering.md#TerminalFiguresAsText), [The page in HTML](rendering.md#PageInHtml), [The page's figures in SVG](rendering.md#PageFiguresDrawn), [The SDLC in memory](sdlc.md#SdlcInMemory), [Trame's settings in the scenarios](sdlc.md#OurSettingsInTheScenarios), [Evidence sealed by attribution](shipping.md#SealedByAttribution), [Played on a small project](../libs/commands/releases/0.3.0/docs/scenarios.md#PlayedOnASmallProject), [Files in Markdown, the terminal in text](../libs/commands/releases/0.3.0/docs/scenarios.md#DocumentsAsFiles), [Figures in Mermaid and in text](../libs/commands/releases/0.3.0/docs/scenarios.md#FiguresOfTheDocuments), [In the language of libs/documents' scenarios](../libs/commands/releases/0.3.0/docs/scenarios.md#DocumentsLanguage), [The scenarios' language](../libs/documents/releases/0.3.0/docs/scenarios.md#InTheScenariosLanguage), [Files in Markdown](../libs/documents/releases/0.3.0/docs/scenarios.md#FilesInMarkdown), [Figures in Mermaid](../libs/documents/releases/0.3.0/docs/scenarios.md#FiguresInMermaid), [The terminal in text](../libs/documents/releases/0.3.0/docs/scenarios.md#TerminalInText), [Figures at a terminal, as text](../libs/documents/releases/0.3.0/docs/scenarios.md#TerminalFiguresAsText), [In memory](../std/releases/0.30.0/docs/scenarios.md#InMemory), [Judged as the language says](../std/releases/0.30.0/docs/scenarios.md#LanguageJudgment), [Judged strictly](../std/releases/0.30.0/docs/scenarios.md#StrictJudgment), [The scenarios' settings](../std/releases/0.30.0/docs/scenarios.md#ScenarioSettings) |
+| [Adapter](../std/releases/0.30.0/docs/patterns.md#Adapter) | **held** | [The browser runs the page](browser.md#TheBrowserRunsThePage), [NodePlatform](platform.md#NodePlatform), [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine), [Scenarios write in memory, over the disk](platform.md#FilesInMemoryOverTheDisk), [On a machine, runs are kept on disk](platform.md#RunsKeptOnDisk), [In the scenarios, runs are kept in the process](platform.md#RunsKeptInTheProcess), [esbuild bundles the page's program](platform.md#EsbuildBundles), [tree-sitter reads the bodies](platform.md#TreeSitterReads), [tsx runs TypeScript](platform.md#TsxRuns), [The TypeScript compiler reads the declarations](platform.md#CompilerReadsDeclarations), [The engine's own files sit beside its code](platform.md#EngineFilesBesideCode), [Each package comes from where its reference says](platform.md#PackagesByTheirOrigin), [Amendments go in the sources](platform.md#AmendmentsInPlace), [The SDLC on the machine](sdlc.md#SdlcOnTheMachine), [The repository's work on a machine](sdlc.md#RepositoryWorkOnAMachine), [GitHub merges once it holds, asked by its command line](sdlc.md#AutoMergeOnTheMachine), [GitHub merges once it holds, asked in a session](sdlc.md#AutoMergeInASession), [std's languages, read by the engine](syntax.md#StdLanguagesRead), [Compiled by the engine that plays them](../libs/commands/releases/0.3.0/docs/scenarios.md#CompiledByTheEngine), [Read by the engine](../libs/documents/releases/0.3.0/docs/scenarios.md#LanguagesRead), [Read by the engine that builds](../std/releases/0.30.0/docs/scenarios.md#ReadInTheEngine) |
+| [Bridge](../std/releases/0.30.0/docs/patterns.md#Bridge) | **held** | [Documents in Markdown](rendering.md#DocumentsInMarkdown), [The terminal in plain text](rendering.md#TerminalInText), [The page in HTML](rendering.md#PageInHtml), [Files in Markdown, the terminal in text](../libs/commands/releases/0.3.0/docs/scenarios.md#DocumentsAsFiles), [Files in Markdown](../libs/documents/releases/0.3.0/docs/scenarios.md#FilesInMarkdown), [The terminal in text](../libs/documents/releases/0.3.0/docs/scenarios.md#TerminalInText) |
 | [Abstract Factory](../std/releases/0.30.0/docs/patterns.md#AbstractFactory) | **held** | [NodePlatform](platform.md#NodePlatform), [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine), [Scenarios run in memory](platform.md#InMemoryScenarios) |
 | [Command](../std/releases/0.30.0/docs/patterns.md#Command) | **held** | [The commands Trame takes from std](sdlc.md#CommandsOfStd), [The commands Trame takes from libs/commands](sdlc.md#CommandsWrittenOnce) |
 | [Plugin](../std/releases/0.30.0/docs/patterns.md#Plugin) | **held** | [What the engine asks the machine](doctor.md#EngineQuestions), [The sample add-ons, second first](scenarios.md#SampleAddOnsInOrder), [What the machine must also have](sdlc.md#WhatTheMachineMustHave) |
@@ -163,7 +163,7 @@ In [Browser](architecture.md#Browser), [Local](architecture.md#Local), [A sessio
 
 | Port | Answered by | Which is |
 |---|---|---|
-| [The language of the documents](../libs/documents/releases/0.2.0/docs/language.md#DocumentLanguage) | [The documents in Trame's language](documents.md#OurDocumentLanguage) | a function |
+| [The language of the documents](../libs/documents/releases/0.3.0/docs/language.md#DocumentLanguage) | [The documents in Trame's language](documents.md#OurDocumentLanguage) | a function |
 
 Context: The views speak the engine's language: what renders their documents, on a machine, in the scenarios or in the page, writes its dates, lists and marks.
 
@@ -602,7 +602,7 @@ In [Local](architecture.md#Local), [Test](architecture.md#Test):
 
 | Port | Answered by | Which is |
 |---|---|---|
-| [Syntax of the documents written as files](../libs/documents/releases/0.2.0/docs/rendering.md#FileSyntax) | [Markdown writer](../libs/documents/releases/0.2.0/docs/rendering.md#MarkdownSyntax) | a function |
+| [Syntax of the documents written as files](../libs/documents/releases/0.3.0/docs/rendering.md#FileSyntax) | [Markdown writer](../libs/documents/releases/0.3.0/docs/rendering.md#MarkdownSyntax) | a function |
 
 Context: The documents are read in reviews, in editors, on forges, and compared line by line by the advance: their syntax must be text that every one of them displays.
 
@@ -615,7 +615,7 @@ Consequences: Another syntax for the files is a realization of "Syntax of the do
 | Plain text | no links, no tables, no figures |
 
 - Decided by: trame
-- Chooses: [Markdown writer](../libs/documents/releases/0.2.0/docs/rendering.md#MarkdownSyntax)
+- Chooses: [Markdown writer](../libs/documents/releases/0.3.0/docs/rendering.md#MarkdownSyntax)
 - In: [Local](architecture.md#Local), [Test](architecture.md#Test)
 - Follows: [Bridge](../std/releases/0.30.0/docs/patterns.md#Bridge), [Strategy](../std/releases/0.30.0/docs/patterns.md#Strategy)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
@@ -633,7 +633,7 @@ In [Local](architecture.md#Local), [Test](architecture.md#Test):
 
 | Port | Answered by | Which is |
 |---|---|---|
-| [Figures of the documents written as files](../libs/documents/releases/0.2.0/docs/rendering.md#FileFigures) | [Mermaid diagrams](../libs/documents/releases/0.2.0/docs/rendering.md#MermaidDiagrams) | a function |
+| [Figures of the documents written as files](../libs/documents/releases/0.3.0/docs/rendering.md#FileFigures) | [Mermaid diagrams](../libs/documents/releases/0.3.0/docs/rendering.md#MermaidDiagrams) | a function |
 
 Context: A figure of a document must be drawn by the forges and editors that display the document, and stay text that a review compares.
 
@@ -646,7 +646,7 @@ Consequences: The Markdown writer puts the lines of a figure in a code block, in
 | PlantUML | needs a rendering server |
 
 - Decided by: trame
-- Chooses: [Mermaid diagrams](../libs/documents/releases/0.2.0/docs/rendering.md#MermaidDiagrams)
+- Chooses: [Mermaid diagrams](../libs/documents/releases/0.3.0/docs/rendering.md#MermaidDiagrams)
 - In: [Local](architecture.md#Local), [Test](architecture.md#Test)
 - Follows: [Strategy](../std/releases/0.30.0/docs/patterns.md#Strategy)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
@@ -664,7 +664,7 @@ In [Local](architecture.md#Local), [Test](architecture.md#Test):
 
 | Port | Answered by | Which is |
 |---|---|---|
-| [Syntax of the terminal](../libs/documents/releases/0.2.0/docs/rendering.md#TerminalSyntax) | [Plain text writer](../libs/documents/releases/0.2.0/docs/rendering.md#PlainTextSyntax) | a function |
+| [Syntax of the terminal](../libs/documents/releases/0.3.0/docs/rendering.md#TerminalSyntax) | [Plain text writer](../libs/documents/releases/0.3.0/docs/rendering.md#PlainTextSyntax) | a function |
 
 Context: A terminal shows characters: marks of a syntax (asterisks, pipes, tags) would be noise there.
 
@@ -676,7 +676,7 @@ Consequences: A view printed in Markdown is the --format md option, which render
 | ANSI colours | lost in logs and pipes, and the scenarios compare text |
 
 - Decided by: trame
-- Chooses: [Plain text writer](../libs/documents/releases/0.2.0/docs/rendering.md#PlainTextSyntax)
+- Chooses: [Plain text writer](../libs/documents/releases/0.3.0/docs/rendering.md#PlainTextSyntax)
 - In: [Local](architecture.md#Local), [Test](architecture.md#Test)
 - Follows: [Bridge](../std/releases/0.30.0/docs/patterns.md#Bridge), [Strategy](../std/releases/0.30.0/docs/patterns.md#Strategy)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
@@ -694,7 +694,7 @@ In [Local](architecture.md#Local), [Test](architecture.md#Test):
 
 | Port | Answered by | Which is |
 |---|---|---|
-| [Figures of the terminal](../libs/documents/releases/0.2.0/docs/rendering.md#TerminalFigures) | [Figures as text](../libs/documents/releases/0.2.0/docs/rendering.md#TextFigures) | a function |
+| [Figures of the terminal](../libs/documents/releases/0.3.0/docs/rendering.md#TerminalFigures) | [Figures as text](../libs/documents/releases/0.3.0/docs/rendering.md#TextFigures) | a function |
 
 Context: A terminal draws no diagram: a figure must read as lines.
 
@@ -705,7 +705,7 @@ Consequences: The terminal syntax indents the lines of a figure like any other c
 | Mermaid in the terminal | its source does not read as a figure |
 
 - Decided by: trame
-- Chooses: [Figures as text](../libs/documents/releases/0.2.0/docs/rendering.md#TextFigures)
+- Chooses: [Figures as text](../libs/documents/releases/0.3.0/docs/rendering.md#TextFigures)
 - In: [Local](architecture.md#Local), [Test](architecture.md#Test)
 - Follows: [Strategy](../std/releases/0.30.0/docs/patterns.md#Strategy)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
@@ -916,19 +916,20 @@ In [Local](architecture.md#Local):
 
 | Port | Answered by | Which is |
 |---|---|---|
-| the command plan | [Plan](../libs/commands/releases/0.2.0/docs/commands.md#Plan) | a command of a library |
+| the command build | [Build](../libs/commands/releases/0.3.0/docs/commands.md#Build) | a command of a library |
+| the command plan | [Plan](../libs/commands/releases/0.3.0/docs/commands.md#Plan) | a command of a library |
 | [The project at hand](../std/releases/0.30.0/docs/engine.md#TheProject) | [The project the engine prepared](../std/releases/0.30.0/docs/engine.md#ProjectInTheEngine) | an implementation |
 
 Context: The engine's commands reached its modules directly: a project could neither choose them nor specialize them, and a command of its own could not compute what they computed.
 
-Consequences: trame plan runs on a machine and in a session alike, chosen for Local only: the dispatch asks for no environment. The engine's plan stays until the generation that removes the commands every project then runs from the library.
+Consequences: trame plan, build and snapshot run on a machine and in a session alike, chosen for Local only: the dispatch asks for no environment. The engine's own stay until the generation that removes the commands every project then runs from the library.
 
 | Rejected | Why |
 |---|---|
 | The engine's own commands, kept | they would stay out of reach of every project's choice, and the engine the only one to reach its modules |
 
 - Decided by: trame
-- Chooses: [Plan](../libs/commands/releases/0.2.0/docs/commands.md#Plan), [The project the engine prepared](../std/releases/0.30.0/docs/engine.md#ProjectInTheEngine)
+- Chooses: [Plan](../libs/commands/releases/0.3.0/docs/commands.md#Plan), [Build](../libs/commands/releases/0.3.0/docs/commands.md#Build), [The project the engine prepared](../std/releases/0.30.0/docs/engine.md#ProjectInTheEngine)
 - In: [Local](architecture.md#Local)
 - Follows: [Command](../std/releases/0.30.0/docs/patterns.md#Command)
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
