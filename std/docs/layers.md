@@ -1,6 +1,6 @@
 # Layers
 
-*The graph in force on 26 November 2026, ordered by distance to the goals.*
+*The graph in force on 27 November 2026, ordered by distance to the goals.*
 
 ```mermaid
 flowchart TB
@@ -230,99 +230,100 @@ flowchart TB
     n184["Commands are made for each effect<br/><small>Scenario</small>"]:::held
     n185["The device, in memory<br/><small>Scenario</small>"]:::held
     n186["Seeded draws keep their promise<br/><small>Scenario</small>"]:::held
-    n187["In memory<br/><small>Technical choice</small>"]:::held
-    n188["Judged as the language says<br/><small>Scenario</small>"]:::held
-    n189["Judged strictly<br/><small>Scenario</small>"]:::held
-    n190["Judged as the language says<br/><small>Technical choice</small>"]:::held
-    n191["The languages read by the engine<br/><small>Scenario</small>"]:::held
-    n192["A pull request merged once it holds<br/><small>Scenario</small>"]:::held
-    n193["A version carried across the projects<br/><small>Scenario</small>"]:::held
-    n194["A pull request opened<br/><small>Scenario</small>"]:::held
-    n195["Read by the engine that builds<br/><small>Technical choice</small>"]:::held
-    n196["A repository kept in memory<br/><small>Scenario</small>"]:::held
-    n197["What the library's scenarios check<br/><small>Message catalog</small>"]:::neutral
-    n198["What the library's scenarios are given<br/><small>Decision</small>"]:::neutral
-    n199["The language of the library's scenarios<br/><small>Decision</small>"]:::neutral
-    n200["How the scenarios' versions are carried<br/><small>Function</small>"]:::held
-    n201["How the scenarios' pull requests are opened<br/><small>Function</small>"]:::held
-    n202["The scenarios' settings<br/><small>Technical choice</small>"]:::held
-    n203["Strict<br/><small>Environment</small>"]:::neutral
-    n204["Judged strictly<br/><small>Technical choice</small>"]:::held
-    n205["Test<br/><small>Environment</small>"]:::neutral
-    n206["The tooling, in memory<br/><small>Scenario</small>"]:::held
+    n187["How the library's scenarios run<br/><small>Architecture decision</small>"]:::held
+    n188["In memory<br/><small>Technical choice</small>"]:::held
+    n189["Judged as the language says<br/><small>Scenario</small>"]:::held
+    n190["Judged strictly<br/><small>Scenario</small>"]:::held
+    n191["Judged as the language says<br/><small>Technical choice</small>"]:::held
+    n192["The languages read by the engine<br/><small>Scenario</small>"]:::held
+    n193["A pull request merged once it holds<br/><small>Scenario</small>"]:::held
+    n194["A version carried across the projects<br/><small>Scenario</small>"]:::held
+    n195["A pull request opened<br/><small>Scenario</small>"]:::held
+    n196["Read by the engine that builds<br/><small>Technical choice</small>"]:::held
+    n197["A repository kept in memory<br/><small>Scenario</small>"]:::held
+    n198["What the library's scenarios check<br/><small>Message catalog</small>"]:::neutral
+    n199["What the library's scenarios are given<br/><small>Decision</small>"]:::neutral
+    n200["The language of the library's scenarios<br/><small>Decision</small>"]:::neutral
+    n201["How the scenarios' versions are carried<br/><small>Function</small>"]:::held
+    n202["How the scenarios' pull requests are opened<br/><small>Function</small>"]:::held
+    n203["The scenarios' settings<br/><small>Technical choice</small>"]:::held
+    n204["Strict<br/><small>Environment</small>"]:::neutral
+    n205["Judged strictly<br/><small>Technical choice</small>"]:::held
+    n206["Test<br/><small>Environment</small>"]:::neutral
+    n207["The tooling, in memory<br/><small>Scenario</small>"]:::held
   end
   subgraph sdlc["Standard library · SDLC"]
-    n207["Its callers identified<br/><small>Obligation</small>"]:::neutral
-    n208["Its data reviewed<br/><small>Obligation</small>"]:::neutral
-    n209["Its decisions applied<br/><small>Obligation</small>"]:::neutral
-    n210["Its functions verified<br/><small>Obligation</small>"]:::neutral
-    n211["The next version<br/><small>Shipment</small>"]:::unknown
-    n212["Its packages safe<br/><small>Obligation</small>"]:::neutral
-    n213["How a pull request is checked on GitHub<br/><small>Decision</small>"]:::neutral
-    n214["The pull requests' workflow<br/><small>Artefact</small>"]:::held
-    n215["Its requirements held<br/><small>Obligation</small>"]:::neutral
-    n216["Its rules held<br/><small>Obligation</small>"]:::neutral
-    n217["The files that run it elsewhere<br/><small>Shipment</small>"]:::held
-    n218["The standard library<br/><small>Artefact</small>"]:::unknown
-    n219["How a version is made<br/><small>Policy</small>"]:::neutral
+    n208["Its callers identified<br/><small>Obligation</small>"]:::neutral
+    n209["Its data reviewed<br/><small>Obligation</small>"]:::neutral
+    n210["Its decisions applied<br/><small>Obligation</small>"]:::neutral
+    n211["Its functions verified<br/><small>Obligation</small>"]:::neutral
+    n212["The next version<br/><small>Shipment</small>"]:::unknown
+    n213["Its packages safe<br/><small>Obligation</small>"]:::neutral
+    n214["How a pull request is checked on GitHub<br/><small>Decision</small>"]:::neutral
+    n215["The pull requests' workflow<br/><small>Artefact</small>"]:::held
+    n216["Its requirements held<br/><small>Obligation</small>"]:::neutral
+    n217["Its rules held<br/><small>Obligation</small>"]:::neutral
+    n218["The files that run it elsewhere<br/><small>Shipment</small>"]:::held
+    n219["The standard library<br/><small>Artefact</small>"]:::unknown
+    n220["How a version is made<br/><small>Policy</small>"]:::neutral
   end
   subgraph system["Standard library · System"]
-    n220["Exit status<br/><small>Standard</small>"]:::neutral
-    n221["Node.js process arguments<br/><small>Standard</small>"]:::neutral
-    n222["Node.js command line and child processes<br/><small>Standard</small>"]:::neutral
-    n223["Node.js character encodings<br/><small>Standard</small>"]:::neutral
-    n224["Node.js events<br/><small>Standard</small>"]:::neutral
-    n225["Node.js module specifiers<br/><small>Standard</small>"]:::neutral
-    n226["Node.js process and console<br/><small>Standard</small>"]:::neutral
-    n227["npm's command line<br/><small>Standard</small>"]:::neutral
-    n228["npm's manifest<br/><small>Standard</small>"]:::neutral
-    n229["POSIX signals and errors<br/><small>Standard</small>"]:::neutral
+    n221["Exit status<br/><small>Standard</small>"]:::neutral
+    n222["Node.js process arguments<br/><small>Standard</small>"]:::neutral
+    n223["Node.js command line and child processes<br/><small>Standard</small>"]:::neutral
+    n224["Node.js character encodings<br/><small>Standard</small>"]:::neutral
+    n225["Node.js events<br/><small>Standard</small>"]:::neutral
+    n226["Node.js module specifiers<br/><small>Standard</small>"]:::neutral
+    n227["Node.js process and console<br/><small>Standard</small>"]:::neutral
+    n228["npm's command line<br/><small>Standard</small>"]:::neutral
+    n229["npm's manifest<br/><small>Standard</small>"]:::neutral
+    n230["POSIX signals and errors<br/><small>Standard</small>"]:::neutral
   end
   subgraph text["Standard library · Text"]
-    n230["Positions in a file<br/><small>Standard</small>"]:::neutral
-    n231["Characters that do not show<br/><small>Standard</small>"]:::neutral
-    n232["Text file<br/><small>Standard</small>"]:::neutral
-    n233["Unified differences<br/><small>Standard</small>"]:::neutral
+    n231["Positions in a file<br/><small>Standard</small>"]:::neutral
+    n232["Characters that do not show<br/><small>Standard</small>"]:::neutral
+    n233["Text file<br/><small>Standard</small>"]:::neutral
+    n234["Unified differences<br/><small>Standard</small>"]:::neutral
   end
   subgraph tooling["Standard library · Tooling"]
-    n234["A browser kept in memory<br/><small>Function</small>"]:::held
-    n235["Browser script<br/><small>Port</small>"]:::neutral
-    n236["The language the library's commands and tools speak in.<br/><small>Decision</small>"]:::neutral
-    n237["Commands run in the engine<br/><small>Implementation</small>"]:::neutral
-    n238["Project files<br/><small>Port</small>"]:::neutral
-    n239["Files kept in memory<br/><small>Function</small>"]:::held
-    n240["Files written<br/><small>Port</small>"]:::neutral
-    n241["Headless browser<br/><small>Port</small>"]:::neutral
-    n242["Chromium without a screen<br/><small>Decision</small>"]:::neutral
-    n243["The machine's files<br/><small>Implementation</small>"]:::neutral
-    n244["What the machine must also have<br/><small>Port</small>"]:::neutral
-    n245["Node's command line<br/><small>Implementation</small>"]:::neutral
-    n246["Programs run by Node<br/><small>Implementation</small>"]:::neutral
-    n247["Where a package comes from<br/><small>Vocabulary</small>"]:::neutral
-    n248["Where a package comes from<br/><small>Port</small>"]:::neutral
-    n249["Playwright's API<br/><small>Standard</small>"]:::neutral
-    n250["Chromium, driven by Playwright<br/><small>Implementation</small>"]:::neutral
-    n251["Playwright's browser, installed<br/><small>Implementation</small>"]:::neutral
-    n252["Playwright<br/><small>Package</small>"]:::held
-    n253["Commands of a program<br/><small>Port</small>"]:::neutral
-    n254["Programs run<br/><small>Port</small>"]:::neutral
-    n255["Programs run in memory<br/><small>Function</small>"]:::held
-    n256["The programs a scenario keeps: the file it says a program writes is written when that program runs.<br/><small>Port</small>"]:::neutral
-    n257["What repairs a project<br/><small>Port</small>"]:::neutral
-    n258["The SDLC's tooling is realized once<br/><small>Architecture decision</small>"]:::held
-    n259["What the library's tools say<br/><small>Message catalog</small>"]:::neutral
+    n235["A browser kept in memory<br/><small>Function</small>"]:::held
+    n236["Browser script<br/><small>Port</small>"]:::neutral
+    n237["The language the library's commands and tools speak in.<br/><small>Decision</small>"]:::neutral
+    n238["Commands run in the engine<br/><small>Implementation</small>"]:::neutral
+    n239["Project files<br/><small>Port</small>"]:::neutral
+    n240["Files kept in memory<br/><small>Function</small>"]:::held
+    n241["Files written<br/><small>Port</small>"]:::neutral
+    n242["Headless browser<br/><small>Port</small>"]:::neutral
+    n243["Chromium without a screen<br/><small>Decision</small>"]:::neutral
+    n244["The machine's files<br/><small>Implementation</small>"]:::neutral
+    n245["What the machine must also have<br/><small>Port</small>"]:::neutral
+    n246["Node's command line<br/><small>Implementation</small>"]:::neutral
+    n247["Programs run by Node<br/><small>Implementation</small>"]:::neutral
+    n248["Where a package comes from<br/><small>Vocabulary</small>"]:::neutral
+    n249["Where a package comes from<br/><small>Port</small>"]:::neutral
+    n250["Playwright's API<br/><small>Standard</small>"]:::neutral
+    n251["Chromium, driven by Playwright<br/><small>Implementation</small>"]:::neutral
+    n252["Playwright's browser, installed<br/><small>Implementation</small>"]:::neutral
+    n253["Playwright<br/><small>Package</small>"]:::held
+    n254["Commands of a program<br/><small>Port</small>"]:::neutral
+    n255["Programs run<br/><small>Port</small>"]:::neutral
+    n256["Programs run in memory<br/><small>Function</small>"]:::held
+    n257["The programs a scenario keeps: the file it says a program writes is written when that program runs.<br/><small>Port</small>"]:::neutral
+    n258["What repairs a project<br/><small>Port</small>"]:::neutral
+    n259["The SDLC's tooling is realized once<br/><small>Architecture decision</small>"]:::held
+    n260["What the library's tools say<br/><small>Message catalog</small>"]:::neutral
   end
   subgraph web["Standard library · Web"]
-    n260["CSSOM View<br/><small>Standard</small>"]:::neutral
-    n261["HTTP<br/><small>Standard</small>"]:::neutral
-    n262["Media Queries Level 5<br/><small>Standard</small>"]:::neutral
-    n263["Media types<br/><small>Standard</small>"]:::neutral
-    n264["Screen Wake Lock API<br/><small>Standard</small>"]:::neutral
-    n265["Server-sent events<br/><small>Standard</small>"]:::neutral
-    n266["UI events<br/><small>Standard</small>"]:::neutral
-    n267["URI<br/><small>Standard</small>"]:::neutral
-    n268["Web Audio API<br/><small>Standard</small>"]:::neutral
-    n269["Web Speech API<br/><small>Standard</small>"]:::neutral
+    n261["CSSOM View<br/><small>Standard</small>"]:::neutral
+    n262["HTTP<br/><small>Standard</small>"]:::neutral
+    n263["Media Queries Level 5<br/><small>Standard</small>"]:::neutral
+    n264["Media types<br/><small>Standard</small>"]:::neutral
+    n265["Screen Wake Lock API<br/><small>Standard</small>"]:::neutral
+    n266["Server-sent events<br/><small>Standard</small>"]:::neutral
+    n267["UI events<br/><small>Standard</small>"]:::neutral
+    n268["URI<br/><small>Standard</small>"]:::neutral
+    n269["Web Audio API<br/><small>Standard</small>"]:::neutral
+    n270["Web Speech API<br/><small>Standard</small>"]:::neutral
   end
   n0 -->|Serves| n114
   n1 -->|Serves| n114
@@ -352,8 +353,8 @@ flowchart TB
   n13 -->|Applied by| n16
   n13 -->|Applied by| n18
   n13 -->|Applied by| n84
-  n14 -->|Written in| n236
-  n15 -->|Depends on| n253
+  n14 -->|Written in| n237
+  n15 -->|Depends on| n254
   n16 -->|Serves| n109
   n16 -->|Part of| n15
   n16 -->|For| n2
@@ -361,9 +362,9 @@ flowchart TB
   n16 -->|Depends on| n153
   n16 -->|Depends on| n164
   n16 -->|Depends on| n14
-  n16 -->|Depends on| n220
+  n16 -->|Depends on| n221
   n16 -->|Depends on| n4
-  n16 -->|Depends on| n229
+  n16 -->|Depends on| n230
   n16 -->|Depends on| n6
   n16 -->|Depends on| n7
   n17 -->|Serves| n109
@@ -373,20 +374,20 @@ flowchart TB
   n17 -->|Depends on| n153
   n17 -->|Depends on| n164
   n17 -->|Depends on| n14
-  n17 -->|Depends on| n220
+  n17 -->|Depends on| n221
   n17 -->|Depends on| n4
-  n17 -->|Depends on| n229
+  n17 -->|Depends on| n230
   n17 -->|Depends on| n6
   n18 -->|Serves| n109
   n18 -->|Part of| n15
   n18 -->|For| n2
   n18 -->|Depends on| n19
-  n18 -->|Depends on| n238
-  n18 -->|Depends on| n254
+  n18 -->|Depends on| n239
+  n18 -->|Depends on| n255
   n18 -->|Depends on| n14
-  n18 -->|Depends on| n220
+  n18 -->|Depends on| n221
   n18 -->|Depends on| n5
-  n18 -->|Depends on| n229
+  n18 -->|Depends on| n230
   n18 -->|Depends on| n6
   n21 -->|Serves| n110
   n22 -->|Serves| n110
@@ -403,7 +404,7 @@ flowchart TB
   n29 -->|Applied by| n32
   n29 -->|Applied by| n31
   n29 -->|Applied by| n35
-  n30 -->|Written in| n236
+  n30 -->|Written in| n237
   n32 -->|Implements| n36
   n32 -->|Depends on| n34
   n32 -->|Depends on| n30
@@ -482,13 +483,13 @@ flowchart TB
   n90 -->|Depends on| n54
   n91 -->|Implements| n97
   n92 -->|Implements| n100
-  n92 -->|Depends on| n266
+  n92 -->|Depends on| n267
   n93 -->|Implements| n101
   n94 -->|Implements| n105
   n94 -->|Depends on| n50
-  n94 -->|Depends on| n269
+  n94 -->|Depends on| n270
   n95 -->|Implements| n102
-  n95 -->|Depends on| n264
+  n95 -->|Depends on| n265
   n96 -->|Serves| n112
   n96 -->|Applied by| n101
   n96 -->|Applied by| n93
@@ -712,43 +713,43 @@ flowchart TB
   n151 -->|Depends on| n158
   n151 -->|Depends on| n162
   n151 -->|Depends on| n163
-  n151 -->|Depends on| n222
-  n151 -->|Depends on| n224
-  n151 -->|Depends on| n220
+  n151 -->|Depends on| n223
+  n151 -->|Depends on| n225
+  n151 -->|Depends on| n221
   n152 -->|Implements| n150
   n152 -->|Depends on| n158
   n152 -->|Depends on| n162
   n152 -->|Depends on| n161
-  n152 -->|Depends on| n222
-  n152 -->|Depends on| n224
-  n152 -->|Depends on| n220
+  n152 -->|Depends on| n223
+  n152 -->|Depends on| n225
+  n152 -->|Depends on| n221
   n152 -->|Depends on| n6
   n154 -->|Serves| n112
   n154 -->|Implements| n153
   n154 -->|Implements| n155
   n156 -->|Implements| n153
   n156 -->|Depends on| n157
-  n156 -->|Depends on| n222
-  n156 -->|Depends on| n224
-  n156 -->|Depends on| n220
+  n156 -->|Depends on| n223
+  n156 -->|Depends on| n225
+  n156 -->|Depends on| n221
   n156 -->|Depends on| n6
-  n156 -->|Depends on| n232
+  n156 -->|Depends on| n233
   n157 -->|Serves| n110
   n158 -->|Serves| n110
   n159 -->|Implements| n164
   n159 -->|Depends on| n162
   n159 -->|Depends on| n161
-  n159 -->|Depends on| n222
-  n159 -->|Depends on| n224
-  n159 -->|Depends on| n220
+  n159 -->|Depends on| n223
+  n159 -->|Depends on| n225
+  n159 -->|Depends on| n221
   n159 -->|Depends on| n6
   n159 -->|Depends on| n7
   n159 -->|Depends on| n150
   n160 -->|Implements| n167
   n160 -->|Depends on| n162
-  n160 -->|Depends on| n222
-  n160 -->|Depends on| n224
-  n160 -->|Depends on| n220
+  n160 -->|Depends on| n223
+  n160 -->|Depends on| n225
+  n160 -->|Depends on| n221
   n160 -->|Depends on| n163
   n160 -->|Depends on| n6
   n160 -->|Depends on| n7
@@ -791,16 +792,16 @@ flowchart TB
   n182 -->|Depends on| n4
   n183 -->|Accepts| n182
   n184 -->|Verifies| n26
-  n184 -->|In| n205
+  n184 -->|In| n206
   n184 -->|Depends on| n26
   n184 -->|Depends on| n27
+  n184 -->|Depends on| n199
   n184 -->|Depends on| n198
-  n184 -->|Depends on| n197
   n185 -->|Verifies| n99
   n185 -->|Verifies| n108
   n185 -->|Verifies| n89
   n185 -->|Verifies| n98
-  n185 -->|In| n205
+  n185 -->|In| n206
   n185 -->|Depends on| n101
   n185 -->|Depends on| n105
   n185 -->|Depends on| n104
@@ -808,153 +809,158 @@ flowchart TB
   n185 -->|Depends on| n103
   n185 -->|Depends on| n88
   n185 -->|Depends on| n107
-  n185 -->|Depends on| n198
+  n185 -->|Depends on| n199
   n185 -->|Depends on| n4
-  n185 -->|Depends on| n197
+  n185 -->|Depends on| n198
   n186 -->|Verifies| n11
-  n186 -->|In| n205
+  n186 -->|In| n206
   n186 -->|Depends on| n11
-  n186 -->|Depends on| n198
+  n186 -->|Depends on| n199
   n186 -->|Depends on| n4
-  n186 -->|Depends on| n197
-  n187 -->|Chooses| n99
-  n187 -->|Chooses| n108
-  n187 -->|Chooses| n89
-  n187 -->|Chooses| n98
-  n187 -->|Chooses| n239
-  n187 -->|Chooses| n234
-  n187 -->|Chooses| n169
-  n187 -->|Chooses| n154
-  n187 -->|Chooses| n165
-  n187 -->|Chooses| n255
-  n187 -->|In| n205
-  n187 -->|Follows| n87
+  n186 -->|Depends on| n198
   n187 -->|Serves| n112
-  n188 -->|Verifies| n41
-  n188 -->|In| n205
-  n188 -->|Depends on| n43
-  n188 -->|Depends on| n197
-  n189 -->|Verifies| n42
-  n189 -->|In| n203
+  n187 -->|Applied by| n188
+  n187 -->|Applied by| n203
+  n187 -->|Applied by| n191
+  n187 -->|Applied by| n205
+  n187 -->|Applied by| n196
+  n188 -->|Chooses| n99
+  n188 -->|Chooses| n108
+  n188 -->|Chooses| n89
+  n188 -->|Chooses| n98
+  n188 -->|Chooses| n240
+  n188 -->|Chooses| n235
+  n188 -->|Chooses| n169
+  n188 -->|Chooses| n154
+  n188 -->|Chooses| n165
+  n188 -->|Chooses| n256
+  n188 -->|In| n206
+  n188 -->|Follows| n87
+  n188 -->|Serves| n112
+  n189 -->|Verifies| n41
+  n189 -->|In| n206
   n189 -->|Depends on| n43
-  n189 -->|Depends on| n197
-  n190 -->|Chooses| n41
-  n190 -->|In| n205
-  n190 -->|Follows| n87
-  n190 -->|Serves| n112
-  n191 -->|Verifies| n35
-  n191 -->|In| n205
-  n191 -->|Depends on| n31
-  n191 -->|Depends on| n47
-  n191 -->|Depends on| n46
-  n191 -->|Depends on| n4
-  n191 -->|Depends on| n197
-  n192 -->|Verifies| n16
-  n192 -->|Verifies| n17
-  n192 -->|Verifies| n154
-  n192 -->|Verifies| n165
-  n192 -->|Verifies| n201
-  n192 -->|In| n205
-  n192 -->|Depends on| n17
-  n192 -->|Depends on| n16
-  n192 -->|Depends on| n155
-  n192 -->|Depends on| n166
-  n192 -->|Depends on| n198
-  n192 -->|Depends on| n14
-  n192 -->|Depends on| n197
+  n189 -->|Depends on| n198
+  n190 -->|Verifies| n42
+  n190 -->|In| n204
+  n190 -->|Depends on| n43
+  n190 -->|Depends on| n198
+  n191 -->|Chooses| n41
+  n191 -->|In| n206
+  n191 -->|Follows| n87
+  n191 -->|Serves| n112
+  n192 -->|Verifies| n35
+  n192 -->|In| n206
+  n192 -->|Depends on| n31
+  n192 -->|Depends on| n47
+  n192 -->|Depends on| n46
   n192 -->|Depends on| n4
-  n192 -->|Depends on| n220
-  n193 -->|Verifies| n18
-  n193 -->|Verifies| n255
-  n193 -->|Verifies| n200
-  n193 -->|In| n205
-  n193 -->|Depends on| n18
-  n193 -->|Depends on| n238
-  n193 -->|Depends on| n256
-  n193 -->|Depends on| n198
+  n192 -->|Depends on| n198
+  n193 -->|Verifies| n16
+  n193 -->|Verifies| n17
+  n193 -->|Verifies| n154
+  n193 -->|Verifies| n165
+  n193 -->|Verifies| n202
+  n193 -->|In| n206
+  n193 -->|Depends on| n17
+  n193 -->|Depends on| n16
+  n193 -->|Depends on| n155
+  n193 -->|Depends on| n166
+  n193 -->|Depends on| n199
   n193 -->|Depends on| n14
-  n193 -->|Depends on| n197
+  n193 -->|Depends on| n198
   n193 -->|Depends on| n4
-  n193 -->|Depends on| n5
-  n193 -->|Depends on| n220
-  n194 -->|Verifies| n17
-  n194 -->|Verifies| n154
-  n194 -->|Verifies| n165
+  n193 -->|Depends on| n221
+  n194 -->|Verifies| n18
+  n194 -->|Verifies| n256
   n194 -->|Verifies| n201
-  n194 -->|In| n205
-  n194 -->|Depends on| n17
-  n194 -->|Depends on| n155
-  n194 -->|Depends on| n166
-  n194 -->|Depends on| n198
+  n194 -->|In| n206
+  n194 -->|Depends on| n18
+  n194 -->|Depends on| n239
+  n194 -->|Depends on| n257
+  n194 -->|Depends on| n199
   n194 -->|Depends on| n14
-  n194 -->|Depends on| n197
+  n194 -->|Depends on| n198
   n194 -->|Depends on| n4
-  n194 -->|Depends on| n220
-  n195 -->|Chooses| n35
-  n195 -->|In| n205
-  n195 -->|Follows| n82
-  n195 -->|Serves| n112
-  n196 -->|Verifies| n169
-  n196 -->|Verifies| n168
-  n196 -->|In| n205
-  n196 -->|Depends on| n167
-  n196 -->|Depends on| n170
-  n196 -->|Depends on| n168
-  n196 -->|Depends on| n198
-  n196 -->|Depends on| n197
-  n196 -->|Depends on| n4
-  n197 -->|Written in| n199
-  n200 -->|Serves| n112
-  n200 -->|Implements| n19
-  n200 -->|Depends on| n198
+  n194 -->|Depends on| n5
+  n194 -->|Depends on| n221
+  n195 -->|Verifies| n17
+  n195 -->|Verifies| n154
+  n195 -->|Verifies| n165
+  n195 -->|Verifies| n202
+  n195 -->|In| n206
+  n195 -->|Depends on| n17
+  n195 -->|Depends on| n155
+  n195 -->|Depends on| n166
+  n195 -->|Depends on| n199
+  n195 -->|Depends on| n14
+  n195 -->|Depends on| n198
+  n195 -->|Depends on| n4
+  n195 -->|Depends on| n221
+  n196 -->|Chooses| n35
+  n196 -->|In| n206
+  n196 -->|Follows| n82
+  n196 -->|Serves| n112
+  n197 -->|Verifies| n169
+  n197 -->|Verifies| n168
+  n197 -->|In| n206
+  n197 -->|Depends on| n167
+  n197 -->|Depends on| n170
+  n197 -->|Depends on| n168
+  n197 -->|Depends on| n199
+  n197 -->|Depends on| n198
+  n197 -->|Depends on| n4
+  n198 -->|Written in| n200
   n201 -->|Serves| n112
-  n201 -->|Implements| n20
-  n201 -->|Depends on| n198
-  n202 -->|Chooses| n201
-  n202 -->|Chooses| n200
-  n202 -->|In| n205
-  n202 -->|Follows| n87
+  n201 -->|Implements| n19
+  n201 -->|Depends on| n199
   n202 -->|Serves| n112
-  n204 -->|Chooses| n42
-  n204 -->|In| n203
-  n204 -->|Follows| n87
-  n204 -->|Serves| n112
-  n206 -->|Verifies| n239
-  n206 -->|Verifies| n234
-  n206 -->|In| n205
-  n206 -->|Depends on| n238
-  n206 -->|Depends on| n240
-  n206 -->|Depends on| n241
-  n206 -->|Depends on| n235
-  n206 -->|Depends on| n198
-  n206 -->|Depends on| n197
-  n207 -->|Applies the family| n62
-  n207 -->|Serves| n115
-  n208 -->|Applies the family| n68
+  n202 -->|Implements| n20
+  n202 -->|Depends on| n199
+  n203 -->|Chooses| n202
+  n203 -->|Chooses| n201
+  n203 -->|In| n206
+  n203 -->|Follows| n87
+  n203 -->|Serves| n112
+  n205 -->|Chooses| n42
+  n205 -->|In| n204
+  n205 -->|Follows| n87
+  n205 -->|Serves| n112
+  n207 -->|Verifies| n240
+  n207 -->|Verifies| n235
+  n207 -->|In| n206
+  n207 -->|Depends on| n239
+  n207 -->|Depends on| n241
+  n207 -->|Depends on| n242
+  n207 -->|Depends on| n236
+  n207 -->|Depends on| n199
+  n207 -->|Depends on| n198
+  n208 -->|Applies the family| n62
   n208 -->|Serves| n115
-  n209 -->|Applies the family| n57
+  n209 -->|Applies the family| n68
   n209 -->|Serves| n115
-  n210 -->|Applies the family| n76
+  n210 -->|Applies the family| n57
   n210 -->|Serves| n115
-  n211 -->|Ships| n218
-  n211 -->|Follows the policy| n219
-  n212 -->|Applies the family| n72
-  n212 -->|Serves| n115
-  n214 -->|Runs elsewhere| n211
-  n214 -->|Its writer's settings| n213
-  n215 -->|Applies the family| n74
-  n215 -->|Serves| n115
-  n216 -->|Applies the family| n70
+  n211 -->|Applies the family| n76
+  n211 -->|Serves| n115
+  n212 -->|Ships| n219
+  n212 -->|Follows the policy| n220
+  n213 -->|Applies the family| n72
+  n213 -->|Serves| n115
+  n215 -->|Runs elsewhere| n212
+  n215 -->|Its writer's settings| n214
+  n216 -->|Applies the family| n74
   n216 -->|Serves| n115
-  n217 -->|Ships| n214
-  n219 -->|Its obligations| n210
-  n219 -->|Its obligations| n215
-  n219 -->|Its obligations| n209
-  n219 -->|Its obligations| n216
-  n219 -->|Its obligations| n212
-  n219 -->|Its obligations| n207
-  n219 -->|Its obligations| n208
-  n220 -->|Serves| n110
+  n217 -->|Applies the family| n70
+  n217 -->|Serves| n115
+  n218 -->|Ships| n215
+  n220 -->|Its obligations| n211
+  n220 -->|Its obligations| n216
+  n220 -->|Its obligations| n210
+  n220 -->|Its obligations| n217
+  n220 -->|Its obligations| n213
+  n220 -->|Its obligations| n208
+  n220 -->|Its obligations| n209
   n221 -->|Serves| n110
   n222 -->|Serves| n110
   n223 -->|Serves| n110
@@ -968,61 +974,61 @@ flowchart TB
   n231 -->|Serves| n110
   n232 -->|Serves| n110
   n233 -->|Serves| n110
-  n234 -->|Implements| n241
-  n234 -->|Implements| n235
-  n234 -->|Depends on| n4
-  n237 -->|Implements| n253
-  n237 -->|Depends on| n220
-  n239 -->|Implements| n238
-  n239 -->|Implements| n240
-  n239 -->|Depends on| n11
-  n239 -->|Depends on| n6
-  n243 -->|Implements| n238
-  n243 -->|Depends on| n12
-  n243 -->|Depends on| n223
-  n245 -->|Implements| n253
-  n245 -->|Depends on| n221
-  n245 -->|Depends on| n220
-  n245 -->|Depends on| n7
+  n234 -->|Serves| n110
+  n235 -->|Implements| n242
+  n235 -->|Implements| n236
+  n235 -->|Depends on| n4
+  n238 -->|Implements| n254
+  n238 -->|Depends on| n221
+  n240 -->|Implements| n239
+  n240 -->|Implements| n241
+  n240 -->|Depends on| n11
+  n240 -->|Depends on| n6
+  n244 -->|Implements| n239
+  n244 -->|Depends on| n12
+  n244 -->|Depends on| n224
   n246 -->|Implements| n254
   n246 -->|Depends on| n222
-  n246 -->|Depends on| n224
-  n246 -->|Depends on| n220
-  n246 -->|Depends on| n229
-  n247 -->|Serves| n112
-  n249 -->|Serves| n110
-  n250 -->|Implements| n241
-  n250 -->|Uses| n252
-  n250 -->|Depends on| n242
-  n250 -->|Depends on| n249
-  n250 -->|Depends on| n4
-  n250 -->|Depends on| n54
-  n251 -->|Implements| n244
-  n251 -->|Uses| n252
-  n251 -->|Depends on| n259
-  n255 -->|Serves| n112
-  n255 -->|Implements| n254
-  n255 -->|Implements| n256
-  n255 -->|Depends on| n220
-  n255 -->|Depends on| n238
-  n258 -->|Serves| n112
-  n258 -->|Applied by| n253
-  n258 -->|Applied by| n245
-  n258 -->|Applied by| n237
-  n258 -->|Applied by| n244
-  n258 -->|Applied by| n251
-  n258 -->|Applied by| n257
-  n258 -->|Applied by| n238
-  n258 -->|Applied by| n240
-  n258 -->|Applied by| n243
-  n258 -->|Applied by| n239
-  n258 -->|Applied by| n241
-  n258 -->|Applied by| n250
-  n258 -->|Applied by| n235
-  n258 -->|Applied by| n234
-  n258 -->|Applied by| n248
-  n259 -->|Written in| n236
-  n260 -->|Serves| n110
+  n246 -->|Depends on| n221
+  n246 -->|Depends on| n7
+  n247 -->|Implements| n255
+  n247 -->|Depends on| n223
+  n247 -->|Depends on| n225
+  n247 -->|Depends on| n221
+  n247 -->|Depends on| n230
+  n248 -->|Serves| n112
+  n250 -->|Serves| n110
+  n251 -->|Implements| n242
+  n251 -->|Uses| n253
+  n251 -->|Depends on| n243
+  n251 -->|Depends on| n250
+  n251 -->|Depends on| n4
+  n251 -->|Depends on| n54
+  n252 -->|Implements| n245
+  n252 -->|Uses| n253
+  n252 -->|Depends on| n260
+  n256 -->|Serves| n112
+  n256 -->|Implements| n255
+  n256 -->|Implements| n257
+  n256 -->|Depends on| n221
+  n256 -->|Depends on| n239
+  n259 -->|Serves| n112
+  n259 -->|Applied by| n254
+  n259 -->|Applied by| n246
+  n259 -->|Applied by| n238
+  n259 -->|Applied by| n245
+  n259 -->|Applied by| n252
+  n259 -->|Applied by| n258
+  n259 -->|Applied by| n239
+  n259 -->|Applied by| n241
+  n259 -->|Applied by| n244
+  n259 -->|Applied by| n240
+  n259 -->|Applied by| n242
+  n259 -->|Applied by| n251
+  n259 -->|Applied by| n236
+  n259 -->|Applied by| n235
+  n259 -->|Applied by| n249
+  n260 -->|Written in| n237
   n261 -->|Serves| n110
   n262 -->|Serves| n110
   n263 -->|Serves| n110
@@ -1032,6 +1038,7 @@ flowchart TB
   n267 -->|Serves| n110
   n268 -->|Serves| n110
   n269 -->|Serves| n110
+  n270 -->|Serves| n110
   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
   classDef blocked fill:#fbf0d9,stroke:#9a6200,color:#17202a
   classDef violated fill:#f9e3e1,stroke:#ad2a22,color:#17202a

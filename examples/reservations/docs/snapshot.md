@@ -697,6 +697,27 @@ Actor · `ServiceTeam`
 
 ## Reservations · Principles
 
+### The service judges itself harder than the language
+
+Architecture decision · `JudgedHarder` · **held**
+
+- Decided by: karim
+- Context: Some warnings of the language are, for this service, what a reviewer would refuse: a decision nobody can check against its cap, an audience nobody identifies.
+- Rejected: Every warning an error, the service keeps points to watch that are not faults (an assumption to check by a date)
+- Serves: Cancel without stress
+- Applied by: How the service is judged
+
+### What the service keeps is kept in SQL
+
+Architecture decision · `KeptInSql` · **unknown**
+
+- Decided by: karim
+- Context: A reservation is a row, refunds are many, and several instances of the service write at once in production: a database of SQL keeps them, and finds one by its key.
+- Consequences: Changing the database of an environment is changing its choice; the entities, their migrations and the code that asks for records stay as they are.
+- Rejected: Files of JSON, two instances writing at once would lose a refund; An ORM's models, a second description of what the entities already describe
+- Serves: Cancel without stress
+- Applied by: What the service keeps, as tables, Reservations and cancellations as repositories over the records, A SQLite database in memory for the scenarios, A SQLite file on the developer's machine, Postgres in production
+
 ### A cancellation refunds once
 
 Architecture decision · `RefundOnce` · **held**
@@ -708,6 +729,27 @@ Architecture decision · `RefundOnce` · **held**
 - Serves: Cancel without stress
 - Applied by: Cancel a reservation, Key of a cancellation's refund, Cancelling twice refunds only once
 
+### Refunds go through the provider, simulated outside production
+
+Architecture decision · `RefundsThroughTheProvider` · **unknown**
+
+- Decided by: karim
+- Context: Refunds must be tried, in the scenarios and on a developer's machine, without money moving.
+- Consequences: The simulated provider keeps the calls it received: a scenario checks that a cancellation refunds once (RefundOnce).
+- Rejected: The provider's sandbox everywhere, the scenarios would need the network and the provider's keys
+- Serves: Cancel without stress
+- Applied by: The provider's API in production, A simulated payment provider outside production
+
+### The service's SDLC runs with std's tooling and commands
+
+Architecture decision · `SdlcWithStd` · **unknown**
+
+- Decided by: karim
+- Context: Opening a pull request and running the programs of a shipment are the same for every project of a repository on GitHub.
+- Rejected: Scripts of the service's own, written again in each project, differently
+- Serves: Cancel without stress
+- Applied by: Commands on this machine, Pull requests opened by the library
+
 ### Secrets stay out of the graph
 
 Architecture decision · `SecretsOutOfTheGraph` · **unknown**
@@ -718,6 +760,37 @@ Architecture decision · `SecretsOutOfTheGraph` · **unknown**
 - Rejected: The key as a decision, every document and the page would show it
 - Serves: Cancel without stress
 - Applied by: Real payment provider
+
+### A table starts with reservations only outside production
+
+Architecture decision · `SeededOutsideProduction` · **unknown**
+
+- Decided by: karim
+- Context: The service makes no reservation: it cancels them. A scenario or a developer with an empty table could cancel nothing.
+- Consequences: A seed changed after a deployment is said to its owner: a table made before keeps the reservations it started with.
+- Rejected: A script that fills the database by hand, it would drift from the entity's description, and nobody would know which reservations a scenario reads
+- Serves: Cancel without stress
+- Applied by: The first reservations outside production, Nothing to start with in production
+
+### The API is served by Node
+
+Architecture decision · `ServedByNode` · **unknown**
+
+- Decided by: karim
+- Context: The API is four routes and a health check: what a framework would bring, the service does not need.
+- Rejected: A web framework, a dependency to keep up to date for routing four paths
+- Serves: Cancel without stress
+- Applied by: Node's HTTP server
+
+### The time is a port
+
+Architecture decision · `TimeAsAPort` · **unknown**
+
+- Decided by: karim
+- Context: A scenario that read the system's clock would compute another fee each day it is played.
+- Rejected: Passing the instant to each function, every caller would read the clock itself, each in its own way
+- Serves: Cancel without stress
+- Applied by: A stopped clock in the scenarios, The system clock elsewhere
 
 ## Reservations · Scenarios
 

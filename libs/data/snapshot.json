@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-26",
+  "at": "2026-11-27",
   "nodes": [
     {
       "id": "documents.Conforms",
@@ -624,6 +624,21 @@
       "fields": {
         "owner": "trame",
         "context": "The library's documents are read and written as a product's would be, the device in memory."
+      }
+    },
+    {
+      "id": "scenarios.KeptAsAProductWould",
+      "kind": "adr",
+      "title": "The library's scenarios keep what they write as a product would",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "What a product keeps is migrated, read and checked by the library's code: a double that only remembers would prove nothing of SQL, of a migration or of a seed.",
+        "consequences": "SQLite runs in the scenarios' process; PostgreSQL is only read, its statements compared with what its dialect must write, since no database answers in a build.",
+        "rejected": {
+          "A store that remembers in a map": "it would accept what SQL refuses, and migrate nothing",
+          "A PostgreSQL server for the scenarios": "a process to start and a port to open at each build of every project that imports the library"
+        }
       }
     },
     {
@@ -2014,6 +2029,31 @@
       "from": "scenarios.InMemory",
       "to": "product.DataDescribedOnce",
       "kind": "serves"
+    },
+    {
+      "from": "scenarios.KeptAsAProductWould",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "scenarios.KeptAsAProductWould",
+      "to": "scenarios.InMemory",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "scenarios.KeptAsAProductWould",
+      "to": "scenarios.SqliteForScenarios",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "scenarios.KeptAsAProductWould",
+      "to": "scenarios.SeededForScenarios",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "scenarios.KeptAsAProductWould",
+      "to": "scenarios.PostgresForScenarios",
+      "kind": "appliedBy"
     },
     {
       "from": "scenarios.PostgresForScenarios",

@@ -5,6 +5,7 @@ import { binding } from "#trame/kinds/binding"
 import { decision } from "#trame/kinds/decision"
 import { catalog } from "#trame/kinds/catalog"
 import { scenario } from "#trame/kinds/scenario"
+import { adr } from "#trame/kinds/adr"
 import { MemoryPreferences, PreferencesStore } from "#std/platform"
 import { SymbolsLanguage } from "#std/measures"
 import { Counts } from "#std/algebra"
@@ -300,4 +301,22 @@ export const RecordsSeeded = scenario({
     const found = await Promise.all(seed.map((b) => records.find(book, b.title)))
     check(checks.seeded(), (await records.count(book)) === seed.length && found.every((f, i) => f?.title === seed[i]?.title))
   },
+})
+
+/**
+ * The library's scenarios keep what they write as a product would
+ * Documents in a device's preferences kept in memory, records in an SQLite database in memory, its tables started with
+ * what the entity declares, PostgreSQL's statements read through its dialect's port: the library's code runs against
+ * real engines of storage, and leaves nothing behind.
+ */
+export const KeptAsAProductWould = adr({
+  owner: "trame",
+  context: "What a product keeps is migrated, read and checked by the library's code: a double that only remembers would prove nothing of SQL, of a migration or of a seed.",
+  consequences: "SQLite runs in the scenarios' process; PostgreSQL is only read, its statements compared with what its dialect must write, since no database answers in a build.",
+  rejected: {
+    "A store that remembers in a map": "it would accept what SQL refuses, and migrate nothing",
+    "A PostgreSQL server for the scenarios": "a process to start and a port to open at each build of every project that imports the library",
+  },
+  serves: [DataDescribedOnce],
+  appliedBy: [InMemory, SqliteForScenarios, SeededForScenarios, PostgresForScenarios],
 })

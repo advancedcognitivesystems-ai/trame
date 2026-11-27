@@ -1,17 +1,17 @@
 # Architecture decisions
 
-*The choices that shape the product without being values, in force on 26 November 2026: why each was taken, what was rejected, and the nodes that apply it.*
+*The choices that shape the product without being values, in force on 27 November 2026: why each was taken, what was rejected, and the nodes that apply it.*
 
-> **38 architecture decisions, 38 held by the nodes that apply them**
+> **46 architecture decisions, 39 held by the nodes that apply them**
 
 | Decision | Status | Applied by |
 |---|---|---|
-| [The page is assembled](browser.md#ThePageIsAssembled) | **held** | [Rendering does not read the graph](architecture.md#RenderingWithoutGraph), [Explorer of a graph](browser.md#ExplorerFigures), [Show the graph](browser.md#ShowGraph), [The browser runs the page](browser.md#TheBrowserRunsThePage) |
-| [The punctuation is the language's](documents.md#PunctuationOfTheLanguage) | **held** | [The documents in Trame's language](documents.md#OurDocumentLanguage), [Language](messages.md#Language) |
+| [The page is assembled](browser.md#ThePageIsAssembled) | **unknown** | [Rendering does not read the graph](architecture.md#RenderingWithoutGraph), [Explorer of a graph](browser.md#ExplorerFigures), [Show the graph](browser.md#ShowGraph), [The browser runs the page](browser.md#TheBrowserRunsThePage) |
+| [The punctuation is the language's](documents.md#PunctuationOfTheLanguage) | **held** | [Documents written in Trame's language](documents.md#DocumentsInOurLanguage), [The documents in Trame's language](documents.md#OurDocumentLanguage), [Language](messages.md#Language) |
 | [The language receives the graph's values](engine.md#TheLanguageReceivesTheGraph) | **held** | [Graph](engine.md#GraphApi), [Views](engine.md#Views) |
 | [The laws are requirements](engine.md#LawsAreRequirements) | **held** | [Laws](engine.md#Laws), [Views](engine.md#Views) |
 | [What a writer writes is read back before it is written](languages.md#ReadBackWhatIsWritten) | **held** | [Drivers](languages.md#Drivers), [Page](page.md#Page) |
-| [A catalog counts in its language](messages.md#CountsInTheLanguage) | **held** | [Lists](../libs/documents/releases/0.1.0/docs/language.md#Lists), [Messages of an advance](messages.md#AdvanceMessages), [Messages of the commands](messages.md#CommandMessages), [Messages of the compiler](messages.md#CompilerMessages), [Messages of trame dev](messages.md#DevMessages), [Words of the page](messages.md#PageWords), [Messages of the scenarios](messages.md#ScenarioMessages), [Messages of the views](messages.md#ViewMessages) |
+| [A catalog counts in its language](messages.md#CountsInTheLanguage) | **held** | [Lists](../libs/documents/releases/0.1.1/docs/language.md#Lists), [Messages of an advance](messages.md#AdvanceMessages), [Messages of the commands](messages.md#CommandMessages), [Messages of the compiler](messages.md#CompilerMessages), [Messages of trame dev](messages.md#DevMessages), [Words of the page](messages.md#PageWords), [Messages of the scenarios](messages.md#ScenarioMessages), [Messages of the views](messages.md#ViewMessages) |
 | [A style sheet writes no value](page.md#StyleThroughVariables) | **held** | [Rules of a narrow screen](page.md#NarrowScreenRule), [Style sheet of a narrow screen](page.md#NarrowScreenStyle), [Page](page.md#Page), [Style sheet of the page](page.md#PageStyle), [Theme](page.md#Theme) |
 | [The graph is written in TypeScript](principles.md#GraphInTypeScript) | **held** | [TypeScript compiler](architecture.md#TypeScriptCompiler), [Documentation comment](conventions.md#DocComment), [Static reading](engine.md#StaticAnalysis), [TypeScript](typescript.md#TypeScript) |
 | [The prelude and the compiler know no kind of node](principles.md#NoKindInTheCore) | **held** | [Compiler](engine.md#Compiler), [Laws](engine.md#Laws), [Project](engine.md#Project) |
@@ -26,7 +26,7 @@
 | [A literal in a kind or a view is an error](principles.md#NoLiteralInTheLanguage) | **held** | [Compiler](engine.md#Compiler), [Syntax reader](syntax.md#SyntaxReader) |
 | [A key is made of its parts](principles.md#KeysOfParts) | **held** | [Compilation API](engine.md#CompilationApi), [Compiler](engine.md#Compiler), [Laws](engine.md#Laws), [Payload](engine.md#PayloadBuilder), [Static reading](engine.md#StaticAnalysis) |
 | [Trame builds Trame](principles.md#TrameBuildsTrame) | **held** | [Advance](commands.md#Advance), [Accept a candidate](generations.md#AcceptCandidate), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore), [The described engine compiles the example](scenarios.md#CompileExample), [The laws of the kinds hold](scenarios.md#KindLaws) |
-| [A technology is chosen in one node](principles.md#TechnologyInOneNode) | **held** | [The TypeScript compiler reads the declarations](platform.md#CompilerReadsDeclarations), [The engine's own files sit beside its code](platform.md#EngineFilesBesideCode), [esbuild bundles the page's program](platform.md#EsbuildBundles), [Scenarios run in memory](platform.md#InMemoryScenarios), [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine), [NodePlatform](platform.md#NodePlatform), [tree-sitter reads the bodies](platform.md#TreeSitterReads), [tsx runs TypeScript](platform.md#TsxRuns), [Documents in Markdown](rendering.md#DocumentsInMarkdown), [Figures in Mermaid](rendering.md#FiguresInMermaid), [The page's figures in SVG](rendering.md#PageFiguresDrawn), [The page in HTML](rendering.md#PageInHtml), [Figures in the terminal, as text](rendering.md#TerminalFiguresAsText), [The terminal in plain text](rendering.md#TerminalInText), [Abstract Factory](../std/releases/0.29.0/docs/patterns.md#AbstractFactory), [Adapter](../std/releases/0.29.0/docs/patterns.md#Adapter), [Bridge](../std/releases/0.29.0/docs/patterns.md#Bridge), [Repository](../std/releases/0.29.0/docs/patterns.md#Repository), [Strategy](../std/releases/0.29.0/docs/patterns.md#Strategy) |
+| [A technology is chosen in one node](principles.md#TechnologyInOneNode) | **unknown** | [The TypeScript compiler reads the declarations](platform.md#CompilerReadsDeclarations), [The engine's own files sit beside its code](platform.md#EngineFilesBesideCode), [esbuild bundles the page's program](platform.md#EsbuildBundles), [Scenarios run in memory](platform.md#InMemoryScenarios), [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine), [NodePlatform](platform.md#NodePlatform), [tree-sitter reads the bodies](platform.md#TreeSitterReads), [tsx runs TypeScript](platform.md#TsxRuns), [Documents in Markdown](rendering.md#DocumentsInMarkdown), [Figures in Mermaid](rendering.md#FiguresInMermaid), [The page's figures in SVG](rendering.md#PageFiguresDrawn), [The page in HTML](rendering.md#PageInHtml), [Figures in the terminal, as text](rendering.md#TerminalFiguresAsText), [The terminal in plain text](rendering.md#TerminalInText), [Abstract Factory](../std/releases/0.29.1/docs/patterns.md#AbstractFactory), [Adapter](../std/releases/0.29.1/docs/patterns.md#Adapter), [Bridge](../std/releases/0.29.1/docs/patterns.md#Bridge), [Repository](../std/releases/0.29.1/docs/patterns.md#Repository), [Strategy](../std/releases/0.29.1/docs/patterns.md#Strategy) |
 | [The prelude: the runtime of the language](principles.md#PreludeLayer) | **held** | [Prelude](architecture.md#Prelude), [The frozen API](conventions.md#FrozenApi), [The prelude's public API](conventions.md#PreludeApi), [Laws](engine.md#Laws) |
 | [Kinds and views: the vocabulary, as reviewed files](principles.md#VocabularyLayer) | **held** | [Laws](engine.md#Laws), [Project](engine.md#Project), [Views](engine.md#Views) |
 | [The graph: the description of a product](principles.md#GraphLayer) | **held** | [Build](commands.md#Build), [Compiler](engine.md#Compiler) |
@@ -34,12 +34,20 @@
 | [Generations: frozen engines](principles.md#GenerationLayer) | **held** | [Advance](commands.md#Advance), [Accept a candidate](generations.md#AcceptCandidate), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore), [Expected differences on the example](scenarios.md#ExpectedDifferences) |
 | [A library is a Trame project, imported by path](principles.md#LibrariesAreProjects) | **held** | [Advance](commands.md#Advance), [Compilation API](engine.md#CompilationApi), [Compiler](engine.md#Compiler), [Project](engine.md#Project), [References](engine.md#References), [What belongs to a library](libraries.md#LibraryOfAModule) |
 | [A library is imported by its name](principles.md#LibrariesByName) | **held** | [Release a version](commands.md#Release), [Write the manifest](commands.md#WriteManifest), [Laws](engine.md#Laws), [Project](engine.md#Project), [Names of a library's releases](libraries.md#LibraryReleaseNames), [A release is settled](libraries.md#ReleaseIsSettled) |
-| [A package is used by its name](principles.md#PackagesByName) | **held** | [Advance](commands.md#Advance), [Start a project](commands.md#Init), [Write the manifest](commands.md#WriteManifest), [Laws](engine.md#Laws), [Project](engine.md#Project), [Packages by their origin](platform.md#PackagesByOrigin) |
+| [A package is used by its name](principles.md#PackagesByName) | **held** | [Advance](commands.md#Advance), [Start a project](commands.md#Init), [Write the manifest](commands.md#WriteManifest), [Laws](engine.md#Laws), [Project](engine.md#Project), [Packages by their origin](platform.md#PackagesByOrigin), [Each package comes from where its reference says](platform.md#PackagesByTheirOrigin) |
 | [A product is delivered by a node of the graph](principles.md#DeliveredByTheGraph) | **held** | [Deliver](commands.md#Deliver), [Style of a delivered page](delivery.md#DeliveredStyle) |
 | [The data a product carries is a dataset](principles.md#DataAsDatasets) | **held** | [Fingerprints](engine.md#Fingerprints), [Graph](engine.md#GraphApi) |
-| [A version ships through the graph](principles.md#ShippedThroughTheGraph) | **held** | [Record evidence](commands.md#RecordEvidence), [Ship](commands.md#Ship), [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws), [The next generation](sdlc.md#NextGeneration), [Evidence of the SDLC](shipping.md#SdlcEvidence), [Ship only what holds](shipping.md#ShipOnlyWhatHolds), [Where the SDLC's evidence is kept](shipping.md#ShippingRecords) |
+| [A version ships through the graph](principles.md#ShippedThroughTheGraph) | **unknown** | [Record evidence](commands.md#RecordEvidence), [Ship](commands.md#Ship), [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws), [The next generation](sdlc.md#NextGeneration), [Evidence of the SDLC](shipping.md#SdlcEvidence), [Ship only what holds](shipping.md#ShipOnlyWhatHolds), [Where the SDLC's evidence is kept](shipping.md#ShippingRecords) |
 | [Who acts is declared](principles.md#ActorsDeclared) | **held** | [Start a project](commands.md#Init), [Compiler](engine.md#Compiler) |
 | [The words are in catalogs](principles.md#WordsInCatalogs) | **held** | [Messages of an advance](messages.md#AdvanceMessages), [Messages of the commands](messages.md#CommandMessages), [Messages of the compiler](messages.md#CompilerMessages), [Messages of trame dev](messages.md#DevMessages), [Messages of the drivers](messages.md#DriverMessages), [Messages of the laws](messages.md#LawMessages), [Messages of the outputs](messages.md#OutputMessages), [Messages of the platform](messages.md#PlatformMessages), [Messages of the renderers](messages.md#RenderingMessages), [Messages of the scenarios](messages.md#ScenarioMessages), [Messages of the views](messages.md#ViewMessages), [Checks of a body](syntax.md#BodyChecks), [Syntax reader](syntax.md#SyntaxReader) |
+| [What a command does is played in memory first](principles.md#PlayedInMemoryFirst) | **held** | [Scenarios write in memory, over the disk](platform.md#FilesInMemoryOverTheDisk), [The sample add-ons, second first](scenarios.md#SampleAddOnsInOrder), [Trame's settings in the scenarios](sdlc.md#OurSettingsInTheScenarios), [The SDLC in memory](sdlc.md#SdlcInMemory) |
+| [A run is kept while what it reads is as it was](principles.md#RunsKept) | **unknown** | [A run is kept while what it reads is as it was](platform.md#RunsByWhatTheyRead), [In the scenarios, runs are kept in the process](platform.md#RunsKeptInTheProcess), [On a machine, runs are kept on disk](platform.md#RunsKeptOnDisk) |
+| [Evidence is sealed](principles.md#EvidenceSealed) | **held** | [Evidence sealed by attribution](shipping.md#SealedByAttribution) |
+| [An amendment sits beside the value it changes](principles.md#AmendmentsBesideTheirValue) | **held** | [Amendments go in the sources](platform.md#AmendmentsInPlace) |
+| [Every question of the machine is an add-on](principles.md#MachineQuestionsAsAddOns) | **held** | [What the engine asks the machine](doctor.md#EngineQuestions), [What the machine must also have](sdlc.md#WhatTheMachineMustHave) |
+| [Trame's SDLC runs with std's tooling](principles.md#SdlcWithStdTooling) | **unknown** | [GitHub merges once it holds, asked in a session](sdlc.md#AutoMergeInASession), [GitHub merges once it holds, asked by its command line](sdlc.md#AutoMergeOnTheMachine), [The repository's work on a machine](sdlc.md#RepositoryWorkOnAMachine), [The SDLC on the machine](sdlc.md#SdlcOnTheMachine) |
+| [Trame runs the commands libraries offer](principles.md#CommandsFromLibraries) | **unknown** | [The commands Trame takes from std](sdlc.md#CommandsOfStd), [The commands Trame takes from libs/commands](sdlc.md#CommandsWrittenOnce) |
+| [The engine is a provider, for Trame too](principles.md#EngineProvidesForTrame) | **unknown** | [The commands Trame takes from libs/commands](sdlc.md#CommandsWrittenOnce), [std's languages, read by the engine](syntax.md#StdLanguagesRead) |
 | [Kinds and views say what; renderers say how](rendering.md#MeaningThenLook) | **held** | [Rendering does not read the graph](architecture.md#RenderingWithoutGraph), [Common rendering](rendering.md#Common), [Rendering of the files](rendering.md#FileRendering), [Rendering in the page](rendering.md#PageRendering), [Rendering in the terminal](rendering.md#TerminalRendering) |
 | [One renderer, its syntax a choice](rendering.md#OneRendererManySyntaxes) | **held** | [Documents in Markdown](rendering.md#DocumentsInMarkdown), [Figures in Mermaid](rendering.md#FiguresInMermaid), [Rendering of the files](rendering.md#FileRendering), [The page's figures in SVG](rendering.md#PageFiguresDrawn), [The page in HTML](rendering.md#PageInHtml), [Rendering in the page](rendering.md#PageRendering), [Figures in the terminal, as text](rendering.md#TerminalFiguresAsText), [The terminal in plain text](rendering.md#TerminalInText), [Rendering in the terminal](rendering.md#TerminalRendering) |
 | [Every language is read alike, with tree-sitter](syntax.md#ReadLanguagesAlike) | **held** | [Syntax trees](architecture.md#SyntaxTrees), [Checks of a body](syntax.md#BodyChecks), [Syntax reader](syntax.md#SyntaxReader) |
@@ -51,7 +59,7 @@
 
 ### The page is assembled
 
-`ThePageIsAssembled` · `src/browser.ts:150` · status: **held**
+`ThePageIsAssembled` · `src/browser.ts:150` · status: **unknown**
 
 The page's script was the only code of Trame outside the graph: written by hand, wired by hand, its values written in it. It is now a component assembled for the browser, its entry point and its explorer bodies of the graph.
 
@@ -89,7 +97,7 @@ Consequences: The Language decision holds the marks of the language with its tag
 
 - Decided by: trame
 - Serves: [A single source of truth](product.md#SingleSource)
-- Applied by: [The documents in Trame's language](documents.md#OurDocumentLanguage), [Language](messages.md#Language)
+- Applied by: [The documents in Trame's language](documents.md#OurDocumentLanguage), [Documents written in Trame's language](documents.md#DocumentsInOurLanguage), [Language](messages.md#Language)
 
 ## Trame · Engine
 
@@ -163,7 +171,7 @@ Consequences: Each language has its module (how Trame reads it, what Trame write
 
 ### A catalog counts in its language
 
-`CountsInTheLanguage` · `src/messages.ts:1014` · status: **held**
+`CountsInTheLanguage` · `src/messages.ts:1007` · status: **held**
 
 A count and its noun follow the plural rules of the language the catalog is written in, with the forms the catalog writes for each category; nothing below the catalogs presumes a language.
 
@@ -178,7 +186,7 @@ Consequences: A catalog that counts receives the decided language and counts by 
 
 - Decided by: trame
 - Serves: [A single source of truth](product.md#SingleSource)
-- Applied by: [Messages of the compiler](messages.md#CompilerMessages), [Messages of the views](messages.md#ViewMessages), [Messages of trame dev](messages.md#DevMessages), [Messages of the commands](messages.md#CommandMessages), [Messages of the scenarios](messages.md#ScenarioMessages), [Messages of an advance](messages.md#AdvanceMessages), [Words of the page](messages.md#PageWords), [Lists](../libs/documents/releases/0.1.0/docs/language.md#Lists)
+- Applied by: [Messages of the compiler](messages.md#CompilerMessages), [Messages of the views](messages.md#ViewMessages), [Messages of trame dev](messages.md#DevMessages), [Messages of the commands](messages.md#CommandMessages), [Messages of the scenarios](messages.md#ScenarioMessages), [Messages of an advance](messages.md#AdvanceMessages), [Words of the page](messages.md#PageWords), [Lists](../libs/documents/releases/0.1.1/docs/language.md#Lists)
 
 ## Trame · The page
 
@@ -210,7 +218,7 @@ Consequences: Each family of measures is a decision of appearance, and the theme
 
 ### The graph is written in TypeScript
 
-`GraphInTypeScript` · `src/principles.ts:37` · status: **held**
+`GraphInTypeScript` · `src/principles.ts:53` · status: **held**
 
 A node is an exported constant: its name is its identifier; the first line of its documentation comment is its title, the rest its description. Its fields and edges are typed by its kind.
 
@@ -231,7 +239,7 @@ Consequences: The static reading takes titles, lines, references and type errors
 
 ### The prelude and the compiler know no kind of node
 
-`NoKindInTheCore` · `src/principles.ts:54` · status: **held**
+`NoKindInTheCore` · `src/principles.ts:70` · status: **held**
 
 They know what a kind is: its fields, its edges, a few functions. The vocabulary (goal, decision, port, scenario…) lives in kinds/, as files.
 
@@ -252,7 +260,7 @@ Consequences: A new kind needs no change to the engine; each kind is tried on no
 
 ### The traversal API is the only way to read the graph
 
-`OneWayToRead` · `src/principles.ts:71` · status: **held**
+`OneWayToRead` · `src/principles.ts:87` · status: **held**
 
 Kinds, views and rules read the graph through the queries and the views of nodes the compiler builds; nothing else reaches the raw data.
 
@@ -272,7 +280,7 @@ Consequences: Two moments of the graph: the frozen one, where reading a value be
 
 ### The source carries the history
 
-`HistoryInTheSource` · `src/principles.ts:85` · status: **held**
+`HistoryInTheSource` · `src/principles.ts:101` · status: **held**
 
 A published declaration is never erased: it is amended or repealed, and the graph in force at any date is rebuilt from the source alone.
 
@@ -292,7 +300,7 @@ Consequences: trame publish freezes in trame.lock, part by part, what the kind o
 
 ### A change to a node is a claim
 
-`ChangesAreClaims` · `src/principles.ts:99` · status: **held**
+`ChangesAreClaims` · `src/principles.ts:115` · status: **held**
 
 An amendment claims values of another node, a repeal claims its removal. When two claims overlap, the kind concerned settles them; if it cannot, the value is contested.
 
@@ -312,7 +320,7 @@ Consequences: The compiler detects overlaps, always records them, and applies wh
 
 ### An undecided value blocks; it does not crash
 
-`UndecidedBlocks` · `src/principles.ts:113` · status: **held**
+`UndecidedBlocks` · `src/principles.ts:129` · status: **held**
 
 Reading a value that is not decided, or contested, raises a hole assigned to an owner. What depends on it is blocked and says so.
 
@@ -332,7 +340,7 @@ Consequences: A criterion that reads an undecided value is blocked, a service th
 
 ### Without evidence, a status is unknown
 
-`UnknownWithoutEvidence` · `src/principles.ts:127` · status: **held**
+`UnknownWithoutEvidence` · `src/principles.ts:143` · status: **held**
 
 A node is held or violated only on evidence: a criterion played, a scenario run, a measurement. Otherwise its status is unknown, never held by default.
 
@@ -348,7 +356,7 @@ Consequences: One of the laws of the kinds: the first version of the service lev
 
 ### One output for each reader
 
-`OneOutputPerReader` · `src/principles.ts:140` · status: **held**
+`OneOutputPerReader` · `src/principles.ts:156` · status: **held**
 
 Compiling gives documents and a page for people, a consolidated snapshot without history for agents, and assembled programs for machines.
 
@@ -364,7 +372,7 @@ Consequences: One source, several outputs, each from the same compilation: the d
 
 ### Code holds no hidden decision
 
-`NoHiddenDecision` · `src/principles.ts:153` · status: **held**
+`NoHiddenDecision` · `src/principles.ts:169` · status: **held**
 
 A body receives the world through its parameters only; only implementations touch the platform; a value written in a body is declared in the graph instead, with its meaning, and the text people read is in catalogs.
 
@@ -384,7 +392,7 @@ Consequences: The checks of a body refuse a hidden dependency, an access to the 
 
 ### A literal in a body is an error
 
-`EveryLiteralDeclared` · `src/principles.ts:170` · status: **held**
+`EveryLiteralDeclared` · `src/principles.ts:186` · status: **held**
 
 A value written in a body is declared in the graph instead, with its meaning, and the body receives it as a parameter. The reader sets aside what names something (a key, a module, a type); a catalog's text is what it declares.
 
@@ -405,7 +413,7 @@ Consequences: One error per node, with each place, in every language a driver re
 
 ### A literal in a kind or a view is an error
 
-`NoLiteralInTheLanguage` · `src/principles.ts:187` · status: **held**
+`NoLiteralInTheLanguage` · `src/principles.ts:203` · status: **held**
 
 The language follows the rule of the bodies: a kind or a view the project writes holds no value of its own. What it needs comes from the graph through the engine, and its words from its catalog.
 
@@ -426,7 +434,7 @@ Consequences: Since g53 a file of the language that writes a literal is an error
 
 ### A key is made of its parts
 
-`KeysOfParts` · `src/principles.ts:204` · status: **held**
+`KeysOfParts` · `src/principles.ts:220` · status: **held**
 
 What tells two things apart (an issue, an overlap, a body) is the JSON of its parts, never texts joined with a separator.
 
@@ -446,7 +454,7 @@ Consequences: A record that needs a part carries it (an overlap carries its targ
 
 ### Trame builds Trame
 
-`TrameBuildsTrame` · `src/principles.ts:218` · status: **held**
+`TrameBuildsTrame` · `src/principles.ts:234` · status: **held**
 
 The engine is a graph like any product's, and only a frozen generation compiled from that graph assembles the next one.
 
@@ -466,7 +474,7 @@ Consequences: A capability exists only once it is written in the graph, and serv
 
 ### A technology is chosen in one node
 
-`TechnologyInOneNode` · `src/principles.ts:233` · status: **held**
+`TechnologyInOneNode` · `src/principles.ts:249` · status: **unknown**
 
 What answers a port in an environment is said by a technical choice (a binding), never by the realization itself nor by the code that uses the port. A realization that touches nothing is a function; one that touches the platform is an implementation. The choice names the patterns it follows, and its shape is checked against them.
 
@@ -482,13 +490,13 @@ Consequences: A binding chooses the realizations of one or more ports in some en
 
 - Decided by: trame
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
-- Applied by: [NodePlatform](platform.md#NodePlatform), [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine), [Scenarios run in memory](platform.md#InMemoryScenarios), [esbuild bundles the page's program](platform.md#EsbuildBundles), [tree-sitter reads the bodies](platform.md#TreeSitterReads), [tsx runs TypeScript](platform.md#TsxRuns), [The TypeScript compiler reads the declarations](platform.md#CompilerReadsDeclarations), [The engine's own files sit beside its code](platform.md#EngineFilesBesideCode), [Documents in Markdown](rendering.md#DocumentsInMarkdown), [Figures in Mermaid](rendering.md#FiguresInMermaid), [The terminal in plain text](rendering.md#TerminalInText), [Figures in the terminal, as text](rendering.md#TerminalFiguresAsText), [The page in HTML](rendering.md#PageInHtml), [The page's figures in SVG](rendering.md#PageFiguresDrawn), [Strategy](../std/releases/0.29.0/docs/patterns.md#Strategy), [Adapter](../std/releases/0.29.0/docs/patterns.md#Adapter), [Bridge](../std/releases/0.29.0/docs/patterns.md#Bridge), [Abstract Factory](../std/releases/0.29.0/docs/patterns.md#AbstractFactory), [Repository](../std/releases/0.29.0/docs/patterns.md#Repository)
+- Applied by: [NodePlatform](platform.md#NodePlatform), [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine), [Scenarios run in memory](platform.md#InMemoryScenarios), [esbuild bundles the page's program](platform.md#EsbuildBundles), [tree-sitter reads the bodies](platform.md#TreeSitterReads), [tsx runs TypeScript](platform.md#TsxRuns), [The TypeScript compiler reads the declarations](platform.md#CompilerReadsDeclarations), [The engine's own files sit beside its code](platform.md#EngineFilesBesideCode), [Documents in Markdown](rendering.md#DocumentsInMarkdown), [Figures in Mermaid](rendering.md#FiguresInMermaid), [The terminal in plain text](rendering.md#TerminalInText), [Figures in the terminal, as text](rendering.md#TerminalFiguresAsText), [The page in HTML](rendering.md#PageInHtml), [The page's figures in SVG](rendering.md#PageFiguresDrawn), [Strategy](../std/releases/0.29.1/docs/patterns.md#Strategy), [Adapter](../std/releases/0.29.1/docs/patterns.md#Adapter), [Bridge](../std/releases/0.29.1/docs/patterns.md#Bridge), [Abstract Factory](../std/releases/0.29.1/docs/patterns.md#AbstractFactory), [Repository](../std/releases/0.29.1/docs/patterns.md#Repository)
 
 <a id="PreludeLayer"></a>
 
 ### The prelude: the runtime of the language
 
-`PreludeLayer` · `src/principles.ts:253` · status: **held**
+`PreludeLayer` · `src/principles.ts:269` · status: **held**
 
 trame/ holds the registry of nodes and kinds, the API of kinds, the intermediate format, the vocabularies and formatting. It is written rarely, by hand, and the engine reaches it only through its public API.
 
@@ -508,7 +516,7 @@ Consequences: The graph describes the prelude as a port; a body imports only its
 
 ### Kinds and views: the vocabulary, as reviewed files
 
-`VocabularyLayer` · `src/principles.ts:267` · status: **held**
+`VocabularyLayer` · `src/principles.ts:283` · status: **held**
 
 kinds/ and views/ say what a node can be and which questions are asked of the graph. An LLM proposes them, a person reviews them; typing and the laws protect them.
 
@@ -524,7 +532,7 @@ Consequences: A project names the directories of its kinds and views (trame.json
 
 ### The graph: the description of a product
 
-`GraphLayer` · `src/principles.ts:280` · status: **held**
+`GraphLayer` · `src/principles.ts:296` · status: **held**
 
 src/ holds a product's graph, written by an LLM together with the people who decide. The build protects it: holes, overlaps, criteria, scenarios.
 
@@ -540,7 +548,7 @@ Consequences: Every build checks the whole graph and says what is undecided, con
 
 ### The engine: a graph like any product's
 
-`EngineLayer` · `src/principles.ts:293` · status: **held**
+`EngineLayer` · `src/principles.ts:309` · status: **held**
 
 In Trame's repository, src/ is the engine's graph and src/code/ holds one body per code node, whose dependencies are its parameters. The engine changes only there.
 
@@ -556,7 +564,7 @@ Consequences: The engine is a component (TrameCli) whose commands are entry poin
 
 ### Generations: frozen engines
 
-`GenerationLayer` · `src/principles.ts:306` · status: **held**
+`GenerationLayer` · `src/principles.ts:322` · status: **held**
 
 generations/ holds the engines that were accepted: each one assembled by the one before from the graph of its time, with a copy of that graph, never edited. Only g0 was written by hand.
 
@@ -572,7 +580,7 @@ Consequences: The language (prelude and kinds) stays shared through links until 
 
 ### A library is a Trame project, imported by path
 
-`LibrariesAreProjects` · `src/principles.ts:319` · status: **held**
+`LibrariesAreProjects` · `src/principles.ts:335` · status: **held**
 
 What is generic (structures, standards, design patterns, ports of the platform) lives in libraries: Trame projects with their own graph, documents and laws, which other projects import by name and path.
 
@@ -595,7 +603,7 @@ Consequences: A project names its libraries in its configuration (trame.json, un
 
 ### A library is imported by its name
 
-`LibrariesByName` · `src/principles.ts:338` · status: **held**
+`LibrariesByName` · `src/principles.ts:354` · status: **held**
 
 Code names a library by its name (#std/algebra), never by a path into it; the project's import map, which trame manifest writes from its configuration, says where the name leads: the library as it is, or a version it froze.
 
@@ -619,7 +627,7 @@ Consequences: trame.json names each library by a path, or by a path and a versio
 
 ### A package is used by its name
 
-`PackagesByName` · `src/principles.ts:358` · status: **held**
+`PackagesByName` · `src/principles.ts:374` · status: **held**
 
 Every package names what it uses, the language included: #trame/kernel and #trame/kinds/… as #std/…; where each name leads is the project's import map, and where the package comes from is a port with its strategies.
 
@@ -635,13 +643,13 @@ Consequences: A project names the language as it names a library: its import map
 
 - Decided by: trame
 - Serves: [What is generic is written once](product.md#WrittenOnce)
-- Applied by: [Project](engine.md#Project), [Write the manifest](commands.md#WriteManifest), [Packages by their origin](platform.md#PackagesByOrigin), [Advance](commands.md#Advance), [Laws](engine.md#Laws), [Start a project](commands.md#Init)
+- Applied by: [Project](engine.md#Project), [Write the manifest](commands.md#WriteManifest), [Packages by their origin](platform.md#PackagesByOrigin), [Each package comes from where its reference says](platform.md#PackagesByTheirOrigin), [Advance](commands.md#Advance), [Laws](engine.md#Laws), [Start a project](commands.md#Init)
 
 <a id="DeliveredByTheGraph"></a>
 
 ### A product is delivered by a node of the graph
 
-`DeliveredByTheGraph` · `src/principles.ts:377` · status: **held**
+`DeliveredByTheGraph` · `src/principles.ts:393` · status: **held**
 
 How a component reaches the people who use it is a delivery (kind delivery): the component, the environment it is assembled for, a target, where it is written. trame deliver writes it; a new target is a new word of DeliveryTarget and what trame deliver does for it.
 
@@ -662,7 +670,7 @@ Consequences: The first target is a page a browser opens as it is: the component
 
 ### The data a product carries is a dataset
 
-`DataAsDatasets` · `src/principles.ts:394` · status: **held**
+`DataAsDatasets` · `src/principles.ts:410` · status: **held**
 
 Rows a product carries (an app's poses, its sequences) are a node of the graph: typed rows, the key that names each, the rules each keeps, the languages its texts are written in; a review is evidence tied to what it saw.
 
@@ -684,7 +692,7 @@ Consequences: A dataset (kind dataset) holds its rows as a typed value, so the T
 
 ### A version ships through the graph
 
-`ShippedThroughTheGraph` · `src/principles.ts:415` · status: **held**
+`ShippedThroughTheGraph` · `src/principles.ts:431` · status: **unknown**
 
 What makes a version available is declared in the project's graph: the artefacts it produces and what produces them (kind artifact), the checks a scenario in memory cannot make, run by a program of the SDLC or made by hand and signed by a role (kind check), the reviews and the role that gives them (kinds review and role), and the shipment that requires them and the programs that deploy it (kind shipment). trame ship and trame evidence record what was found, attributed to a person and tied to the fingerprint of what was seen; the next build reads it.
 
@@ -706,7 +714,7 @@ Consequences: A shipment holds when each obligation holds; trame ship builds its
 
 ### Who acts is declared
 
-`ActorsDeclared` · `src/principles.ts:434` · status: **held**
+`ActorsDeclared` · `src/principles.ts:450` · status: **held**
 
 The people, the agents and the machines that act in a project are actors of its graph (kind actor, in the language): a person, a team of actors, an agent that acts for people, a machine. An owner, a role's people, the evidence given name one of them by its handle; a name nobody declares is an error.
 
@@ -728,7 +736,7 @@ Consequences: The language holds the kind actor (its handle, what it is, a team'
 
 ### The words are in catalogs
 
-`WordsInCatalogs` · `src/principles.ts:452` · status: **held**
+`WordsInCatalogs` · `src/principles.ts:468` · status: **held**
 
 What a part of the product says to people, in a terminal or a document, is written in a message catalog, in the decided language; code calls its messages by name.
 
@@ -743,6 +751,172 @@ Consequences: A catalog's text is what it declares: it is not a literal to decla
 - Decided by: trame
 - Serves: [A single source of truth](product.md#SingleSource)
 - Applied by: [Syntax reader](syntax.md#SyntaxReader), [Checks of a body](syntax.md#BodyChecks), [Messages of the compiler](messages.md#CompilerMessages), [Messages of the drivers](messages.md#DriverMessages), [Messages of the laws](messages.md#LawMessages), [Messages of the views](messages.md#ViewMessages), [Messages of the outputs](messages.md#OutputMessages), [Messages of trame dev](messages.md#DevMessages), [Messages of the commands](messages.md#CommandMessages), [Messages of an advance](messages.md#AdvanceMessages), [Messages of the renderers](messages.md#RenderingMessages), [Messages of the platform](messages.md#PlatformMessages), [Messages of the scenarios](messages.md#ScenarioMessages)
+
+<a id="PlayedInMemoryFirst"></a>
+
+### What a command does is played in memory first
+
+`PlayedInMemoryFirst` · `src/principles.ts:492` · status: **held**
+
+Every program Trame runs (the engine's commands, the programs of its SDLC) is played by scenarios before it runs on a machine: in memory, over the disk as it is, with the doubles a scenario answers (the processes, the server, the repository, the settings of std's commands, the add-ons in an order of their own).
+
+Context: A command writes files, starts programs and calls GitHub: checked only on a machine, a mistake would be met after it did its harm, and only by whoever runs it.
+
+Consequences: Each port a command touches has a realization in memory, chosen in the environment Test; a scenario reads back what a command wrote. What only a machine can show (a browser, GitHub, the machine's programs) is proven by a check of a shipment.
+
+| Rejected | Why |
+|---|---|
+| Scenarios on the disk | a scenario would leave files behind, and two scenarios would read each other's |
+| Checks on a machine only | played at each shipment rather than at each build, by whoever has the machine |
+
+- Decided by: trame
+- Serves: [A specification that runs](product.md#ExecutableSpecification)
+- Applied by: [Scenarios write in memory, over the disk](platform.md#FilesInMemoryOverTheDisk), [The SDLC in memory](sdlc.md#SdlcInMemory), [Trame's settings in the scenarios](sdlc.md#OurSettingsInTheScenarios), [The sample add-ons, second first](scenarios.md#SampleAddOnsInOrder)
+
+<a id="RunsKept"></a>
+
+### A run is kept while what it reads is as it was
+
+`RunsKept` · `src/principles.ts:510` · status: **unknown**
+
+A scenario played, the reading of TypeScript, the examples of a syntax element are given back while the code they wire and the files their project reads are as they were: on disk on a machine, where commands run as separate processes, in the process in the scenarios, which leave nothing behind.
+
+Context: A build of Trame played its scenarios 2,030 times, a hundred of its hundred and forty seconds; a shipment compiled the same graph a dozen times with the same code (g74).
+
+Consequences: A build after a change to one body plays again only the scenarios that wire it. Where a project compiled for a scenario lies in another's sources, its runs are kept beside that other (g126). Deleting the runs only costs time.
+
+| Rejected | Why |
+|---|---|
+| Playing every scenario at every compilation | the same code on the same files gives the same result; a shipment took thirty-six minutes |
+| A server that keeps them | one more process to start, for what files under the project do |
+
+- Decided by: trame
+- Serves: [A specification that runs](product.md#ExecutableSpecification)
+- Applied by: [A run is kept while what it reads is as it was](platform.md#RunsByWhatTheyRead), [On a machine, runs are kept on disk](platform.md#RunsKeptOnDisk), [In the scenarios, runs are kept in the process](platform.md#RunsKeptInTheProcess)
+
+<a id="EvidenceSealed"></a>
+
+### Evidence is sealed
+
+`EvidenceSealed` · `src/principles.ts:527` · status: **held**
+
+Each record of evidence is sealed with what it says (an attribution: its SHA-256), the port Signatures realized so until keys are decided: a record changed afterwards no longer matches its seal and is not counted.
+
+Context: The evidence of the SDLC is a file anyone can edit: a record changed by hand would count as if the engine had written it (g72).
+
+Consequences: A record that no longer matches its seal is an error naming it. How a runner of GitHub signs, and where a person's keys live, are other realizations of the same port, to come with D2.
+
+| Rejected | Why |
+|---|---|
+| A key now | where keys live is a question still open; the seal changes nothing to how a record is given |
+| No seal, a rule in AGENTS.md | a rule nobody checks protects nothing |
+
+- Decided by: trame
+- Serves: [A specification that runs](product.md#ExecutableSpecification)
+- Applied by: [Evidence sealed by attribution](shipping.md#SealedByAttribution)
+
+<a id="AmendmentsBesideTheirValue"></a>
+
+### An amendment sits beside the value it changes
+
+`AmendmentsBesideTheirValue` · `src/principles.ts:544` · status: **held**
+
+trame amend, and the page in trame dev, write an amendment into the module that declares the value, after it: whoever reads the module sees the value and what changed it.
+
+Context: Every value of the graph can be amended from the page or the command line (A4); where the amendment goes decides who sees it.
+
+Consequences: Where amendments go is the port Amendments: in the sources now; once the repository is where work is published, another realization.
+
+| Rejected | Why |
+|---|---|
+| A file of amendments apart | the amendment would sit far from the value it changes, where nobody reading the module sees it |
+
+- Decided by: trame
+- Serves: [A single source of truth](product.md#SingleSource)
+- Applied by: [Amendments go in the sources](platform.md#AmendmentsInPlace)
+
+<a id="MachineQuestionsAsAddOns"></a>
+
+### Every question of the machine is an add-on
+
+`MachineQuestionsAsAddOns` · `src/principles.ts:558` · status: **held**
+
+What trame doctor asks is answered by add-ons (decided 25 November): the engine's own, chosen in its graph and asked always, then the project's, which a provider's adapter or libs/machine offers and the project chooses.
+
+Context: On 17 November a machine whose browsers had moved refused the check of the page, and trame doctor said nothing of it: what a project needs of its machine was not the engine's to know.
+
+Consequences: A question lives with what needs it: the engine's with the engine, a provider's with its adapter, a command's with the command, the others in libs/machine. A check that runs doctor proves the project's add-ons.
+
+| Rejected | Why |
+|---|---|
+| Every question in the engine | the engine would ask what only some projects need, and miss what a provider's version needs |
+
+- Decided by: trame
+- Serves: [A specification that runs](product.md#ExecutableSpecification)
+- Applied by: [What the engine asks the machine](doctor.md#EngineQuestions), [What the machine must also have](sdlc.md#WhatTheMachineMustHave)
+
+<a id="SdlcWithStdTooling"></a>
+
+### Trame's SDLC runs with std's tooling
+
+`SdlcWithStdTooling` · `src/principles.ts:573` · status: **unknown**
+
+The programs of Trame's SDLC reach files, a browser and GitHub through std's ports, realized once in std: on the machine by its adapters (the engine's process, the disk, Playwright, GitHub's command line, its automatic merge), in memory in the scenarios. Trame adopts std's decisions on its tooling and on its repository.
+
+Context: Trame's SDLC opens pages, sets its repository and merges pull requests, as every project's does: std realizes each provider once.
+
+Consequences: A session of Claude Code merges through its proxy (AutoMergeInASession), a machine through GitHub's GraphQL (AutoMergeOnTheMachine): two realizations of one port, chosen per environment.
+
+| Rejected | Why |
+|---|---|
+| Adapters of Trame's own | each project would write them again, differently |
+
+- Decided by: trame
+- Serves: [What is generic is written once](product.md#WrittenOnce)
+- Applied by: [The SDLC on the machine](sdlc.md#SdlcOnTheMachine), [The repository's work on a machine](sdlc.md#RepositoryWorkOnAMachine), [GitHub merges once it holds, asked by its command line](sdlc.md#AutoMergeOnTheMachine), [GitHub merges once it holds, asked in a session](sdlc.md#AutoMergeInASession)
+- Adopts: [The SDLC's tooling is realized once](../std/releases/0.29.1/docs/tooling.md#ToolingAsPorts), [A repository is set by its project's graph](../std/releases/0.29.1/docs/repository.md#RepositoryThroughItsApi)
+
+<a id="CommandsFromLibraries"></a>
+
+### Trame runs the commands libraries offer
+
+`CommandsFromLibraries` · `src/principles.ts:588` · status: **unknown**
+
+Opening a pull request, merging it, carrying a version across the repository (std's), what a build would change (libs/commands'): Trame chooses them, with its decisions as their settings, and adopts the libraries' decision.
+
+Context: Pull requests and propagations were done by hand, differently each time; the engine's commands reached its modules, out of every project's reach.
+
+Consequences: A command a library offers changes with a release of the library; Trame's settings stay Trame's decisions. Chosen in Local, plan asks for no environment.
+
+| Rejected | Why |
+|---|---|
+| Commands of Trame's own | any project of a repository opens pull requests and plans a build: written once, chosen by each |
+
+- Decided by: trame
+- Serves: [What is generic is written once](product.md#WrittenOnce)
+- Applied by: [The commands Trame takes from std](sdlc.md#CommandsOfStd), [The commands Trame takes from libs/commands](sdlc.md#CommandsWrittenOnce)
+- Adopts: [A library offers commands, a project chooses them](../std/releases/0.29.1/docs/commands.md#CommandsOfALibrary)
+
+<a id="EngineProvidesForTrame"></a>
+
+### The engine is a provider, for Trame too
+
+`EngineProvidesForTrame` · `src/principles.ts:603` · status: **unknown**
+
+A command, a language of a library, reach the engine through std's ports of its primitives, which the engine realizes through its API (E3): Trame adopts std's decision, for the commands it takes and the languages it reads.
+
+Context: Trame is the engine's home: its own commands could reach the engine's modules directly, which a project's command cannot.
+
+Consequences: What Trame's commands and std's languages reach of the engine is what any project's reach: the API the language defines.
+
+| Rejected | Why |
+|---|---|
+| Direct access for Trame | the commands written once would not run elsewhere as they run here |
+
+- Decided by: trame
+- Serves: [What is generic is written once](product.md#WrittenOnce)
+- Applied by: [The commands Trame takes from libs/commands](sdlc.md#CommandsWrittenOnce), [std's languages, read by the engine](syntax.md#StdLanguagesRead)
+- Adopts: [The engine is a provider](../std/releases/0.29.1/docs/engine.md#EngineAsAProvider)
 
 ## Trame · Rendering
 

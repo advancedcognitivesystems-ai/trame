@@ -511,6 +511,12 @@
       "consequences": "d88d078d",
       "rejected": "5b0f1957"
     },
+    "principles.KeptOnThePhone": {
+      "statement": "f766b030",
+      "context": "8157df6e",
+      "consequences": "c400fbcc",
+      "rejected": "a08e51ce"
+    },
     "principles.LanguageOffered": {
       "statement": "201463fd",
       "context": "2e4a509a",
@@ -522,6 +528,12 @@
       "context": "3dacc4c5",
       "consequences": "7a4be76a",
       "rejected": "bd3dee2c"
+    },
+    "principles.PlayedInMemoryFirst": {
+      "statement": "20f0f65f",
+      "context": "71dea838",
+      "consequences": "2759f780",
+      "rejected": "82e61f26"
     },
     "principles.SaidAloud": {
       "statement": "51545a7c",

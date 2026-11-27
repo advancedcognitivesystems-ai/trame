@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-26",
+  "at": "2026-11-27",
   "nodes": [
     {
       "id": "commands.BuildComparison",
@@ -36,7 +36,7 @@
       "fields": {
         "owner": "trame",
         "deps": {
-          "language": "std/tooling.CommandLanguage"
+          "language": "commands.WordsLanguage"
         },
         "messages": "(function)"
       }
@@ -78,6 +78,20 @@
         },
         "rejected": {
           "Tabs": "their width depends on the terminal: what is indented under a line would not line up"
+        }
+      }
+    },
+    {
+      "id": "commands.WordsLanguage",
+      "kind": "decision",
+      "title": "The language the commands speak",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "tag": "en-GB"
+        },
+        "rejected": {
+          "std's language of its commands": "a choice of std's, which may change for std's reasons"
         }
       }
     },
@@ -126,9 +140,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.29.0",
+        "version": "0.29.1",
         "joins": "library",
-        "at": "../../std/releases/0.29.0"
+        "at": "../../std/releases/0.29.1"
       }
     },
     {
@@ -232,6 +246,20 @@
           "exit": "std/system.ExitStatus"
         },
         "body": "(function)"
+      }
+    },
+    {
+      "id": "scenarios.PlayedOnARealGraph",
+      "kind": "adr",
+      "title": "A command is played on a real graph",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "A command reads what the engine gives (the graph as a build writes it, what a view receives): written by hand, a graph would check the command against what its author thought the engine gives.",
+        "consequences": "The small project travels with each version, named by the library's package; a project that imports the library plays the scenarios on it there.",
+        "rejected": {
+          "A graph written by the scenario": "it proves nothing of what the engine gives, which is what the command reads on a machine"
+        }
       }
     },
     {
@@ -427,6 +455,16 @@
       "kind": "deps"
     },
     {
+      "from": "commands.CommandWords",
+      "to": "commands.WordsLanguage",
+      "kind": "language"
+    },
+    {
+      "from": "commands.CommandWords",
+      "to": "commands.WordsLanguage",
+      "kind": "deps"
+    },
+    {
       "from": "commands.Plan",
       "to": "product.WrittenOnce",
       "kind": "serves"
@@ -587,6 +625,21 @@
       "kind": "deps"
     },
     {
+      "from": "scenarios.PlayedOnARealGraph",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "scenarios.PlayedOnARealGraph",
+      "to": "scenarios.CompiledByTheEngine",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "scenarios.PlayedOnARealGraph",
+      "to": "scenarios.PlayedOnASmallProject",
+      "kind": "appliedBy"
+    },
+    {
       "from": "scenarios.PlayedOnASmallProject",
       "to": "scenarios.TheSmallProject",
       "kind": "chooses"
@@ -600,6 +653,11 @@
       "from": "scenarios.PlayedOnASmallProject",
       "to": "product.WrittenOnce",
       "kind": "serves"
+    },
+    {
+      "from": "scenarios.ScenarioWords",
+      "to": "commands.WordsLanguage",
+      "kind": "language"
     },
     {
       "from": "scenarios.TheSmallProject",

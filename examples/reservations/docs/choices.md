@@ -58,6 +58,7 @@ Context: Every scenario starts from the initial reservations and leaves nothing 
 - Chooses: [SQLite in memory](../../../libs/data/docs/records.md#SqliteInMemory), [SQLite's tables](../../../libs/data/docs/records.md#SqliteTables)
 - In: [Test](infra.md#Test)
 - Follows: [Abstract Factory](../../../std/docs/patterns.md#AbstractFactory)
+- Applies: [What the service keeps is kept in SQL](principles.md#KeptInSql)
 
 <a id="LocalDatabase"></a>
 
@@ -84,6 +85,7 @@ Context: A developer runs the service without installing a database server; the 
 - Chooses: [Local SQLite database](infra.md#FileDatabase), [SQLite's tables](../../../libs/data/docs/records.md#SqliteTables)
 - In: [Local](infra.md#Local)
 - Follows: [Abstract Factory](../../../std/docs/patterns.md#AbstractFactory)
+- Applies: [What the service keeps is kept in SQL](principles.md#KeptInSql)
 
 <a id="ProductionDatabase"></a>
 
@@ -112,6 +114,7 @@ Consequences: Provisioned by Terraform with the graph's values; its statements c
 - Chooses: [Production Postgres database](infra.md#PostgresDatabase), [PostgreSQL's tables](../../../libs/data/docs/records.md#PostgresTables)
 - In: [Production](infra.md#Production)
 - Follows: [Abstract Factory](../../../std/docs/patterns.md#AbstractFactory)
+- Applies: [What the service keeps is kept in SQL](principles.md#KeptInSql)
 
 <a id="KeptAsTables"></a>
 
@@ -139,6 +142,7 @@ Consequences: No statement is written by hand: the dialect writes them from the 
 - Chooses: [Records in SQL](../../../libs/data/docs/records.md#RecordsInSql)
 - In: [Test](infra.md#Test), [Local](infra.md#Local), [Production](infra.md#Production)
 - Follows: [Strategy](../../../std/docs/patterns.md#Strategy)
+- Applies: [What the service keeps is kept in SQL](principles.md#KeptInSql)
 
 <a id="FirstReservationsOutsideProduction"></a>
 
@@ -158,6 +162,7 @@ Context: A scenario and a developer need reservations to read and cancel, and th
 - Chooses: [The records its entity starts with](../../../libs/data/docs/records.md#SeedOfTheEntity)
 - In: [Test](infra.md#Test), [Local](infra.md#Local)
 - Follows: [Strategy](../../../std/docs/patterns.md#Strategy)
+- Applies: [A table starts with reservations only outside production](principles.md#SeededOutsideProduction)
 
 <a id="EmptyInProduction"></a>
 
@@ -177,6 +182,7 @@ Context: In production, the reservations are the drivers': a table starts empty.
 - Chooses: [No records to start with](../../../libs/data/docs/records.md#StartEmpty)
 - In: [Production](infra.md#Production)
 - Follows: [Strategy](../../../std/docs/patterns.md#Strategy)
+- Applies: [A table starts with reservations only outside production](principles.md#SeededOutsideProduction)
 
 <a id="RecordRepositories"></a>
 
@@ -203,6 +209,7 @@ Consequences: The repositories hold no driver and write no SQL: they name the en
 - Chooses: [Reservations as records](infra.md#ReservationRecords), [Cancellations as records](infra.md#CancellationRecords)
 - In: [Test](infra.md#Test), [Local](infra.md#Local), [Production](infra.md#Production)
 - Follows: [Repository](../../../std/docs/patterns.md#Repository)
+- Applies: [What the service keeps is kept in SQL](principles.md#KeptInSql)
 
 <a id="SimulatedProvider"></a>
 
@@ -226,6 +233,7 @@ Context: Refunds must be tried without money moving, and a scenario reads the ca
 - Chooses: [Simulated payment provider](infra.md#SimulatedPayment)
 - In: [Test](infra.md#Test), [Local](infra.md#Local)
 - Follows: [Strategy](../../../std/docs/patterns.md#Strategy)
+- Applies: [Refunds go through the provider, simulated outside production](principles.md#RefundsThroughTheProvider)
 
 <a id="ProviderApi"></a>
 
@@ -245,6 +253,7 @@ Context: Refunds go through the payment provider, over HTTPS, with an idempotenc
 - Chooses: [Real payment provider](infra.md#HttpPayment)
 - In: [Production](infra.md#Production)
 - Follows: [Adapter](../../../std/docs/patterns.md#Adapter)
+- Applies: [Refunds go through the provider, simulated outside production](principles.md#RefundsThroughTheProvider)
 
 <a id="HttpServerChoice"></a>
 
@@ -268,6 +277,7 @@ Context: The API is a handful of routes: Node's server is enough, and the scenar
 - Chooses: [Node HTTP server](infra.md#NodeServer)
 - In: [Test](infra.md#Test), [Local](infra.md#Local), [Production](infra.md#Production)
 - Follows: [Adapter](../../../std/docs/patterns.md#Adapter)
+- Applies: [The API is served by Node](principles.md#ServedByNode)
 
 <a id="ScenarioClock"></a>
 
@@ -287,6 +297,7 @@ Context: The cancellation fee depends on the time left before the start: a scena
 - Chooses: [Stopped clock](infra.md#StoppedClock)
 - In: [Test](infra.md#Test)
 - Follows: [Strategy](../../../std/docs/patterns.md#Strategy)
+- Applies: [The time is a port](principles.md#TimeAsAPort)
 
 <a id="RealClock"></a>
 
@@ -306,6 +317,7 @@ Context: Outside the scenarios, the fee is computed at the real instant.
 - Chooses: [System clock](infra.md#SystemClock)
 - In: [Local](infra.md#Local), [Production](infra.md#Production)
 - Follows: [Adapter](../../../std/docs/patterns.md#Adapter)
+- Applies: [The time is a port](principles.md#TimeAsAPort)
 
 ## Reservations · Judgment
 
@@ -329,6 +341,7 @@ Context: The build of the service evaluates in Test: its way of judging applies 
 - Chooses: [Judged our way](judgment.md#OurJudgment)
 - In: [Test](infra.md#Test)
 - Follows: [Strategy](../../../std/docs/patterns.md#Strategy)
+- Applies: [The service judges itself harder than the language](principles.md#JudgedHarder)
 
 ## Reservations · SDLC
 
@@ -352,6 +365,7 @@ Context: trame ship runs the programs that deploy, and a person their commands, 
 - Chooses: [Commands run in the engine](../../../std/docs/tooling.md#CommandsInTheEngine)
 - In: [Local](infra.md#Local)
 - Follows: [Adapter](../../../std/docs/patterns.md#Adapter)
+- Applies: [The service's SDLC runs with std's tooling and commands](principles.md#SdlcWithStd)
 
 <a id="PullRequestsOpened"></a>
 
@@ -377,3 +391,4 @@ Context: Opening a pull request is the same for every project of a repository on
 - Chooses: [Open a pull request](../../../std/docs/commands.md#OpenPullRequest), [Our pull requests](sdlc.md#OurPullRequests), [Git's branches](../../../std/docs/repository.md#GitCliBranches), [GitHub's pull requests, by its command line](../../../std/docs/repository.md#GitHubCliPullRequests), [The automatic merge, by GitHub's command line](../../../std/docs/repository.md#AutoMergeByGitHubCli)
 - In: [Local](infra.md#Local)
 - Follows: [Command](../../../std/docs/patterns.md#Command)
+- Applies: [The service's SDLC runs with std's tooling and commands](principles.md#SdlcWithStd)

@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 26 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 27 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Data · Documents
 
@@ -323,6 +323,17 @@ Decision · `DataGiven`
 
 - Decided by: trame
 - Value: { book: { title: Middlemarch, pages: 880, shelf: reading }, older: { version: an older version, value: { heading: Middlemarch, pages: 880, shelf: reading, mood: patient }, steps: { op: rename, field: title, from: heading }, { op: drop, field: mood } }, wrong: { title: Middlemarch, pages: eight hundred, shelf: reading }, { title: Middlemarch, pages: 880, shelf: lost }, unknown: a version nobody deployed, table: { version: an older version, fields: { heading: { type: text }, pages: { type: number }, shelf: { type: text }, mood: { type: text } }, key: heading, row: Middlemarch, 880, reading, patient, steps: { op: rename, field: title, from: heading }, { op: drop, field: mood }, { op: add, field: lent }, other: { title: Persuasion, pages: 249, shelf: read }, pages: 250, count: 2, wrong: { title: Lost Illusions, row: Lost Illusions, 780, lost, none }, another: lent_books }, postgres: { create: CREATE TABLE IF NOT EXISTS books (title TEXT PRIMARY KEY, pages DOUBLE PRECISION NOT NULL, shelf TEXT NOT NULL, lent INTEGER), find: SELECT title, pages, shelf, lent FROM books WHERE title = $1, update: UPDATE books SET pages = $1 WHERE title = $2, add: ALTER TABLE books ADD COLUMN lent INTEGER, exists: SELECT table_name FROM information_schema.tables WHERE table_name = $1, field: pages } }
+
+### The library's scenarios keep what they write as a product would
+
+Architecture decision · `KeptAsAProductWould` · **held**
+
+- Decided by: trame
+- Context: What a product keeps is migrated, read and checked by the library's code: a double that only remembers would prove nothing of SQL, of a migration or of a seed.
+- Consequences: SQLite runs in the scenarios' process; PostgreSQL is only read, its statements compared with what its dialect must write, since no database answers in a build.
+- Rejected: A store that remembers in a map, it would accept what SQL refuses, and migrate nothing; A PostgreSQL server for the scenarios, a process to start and a port to open at each build of every project that imports the library
+- Serves: Data described once
+- Applied by: Documents, in memory, SQLite, in memory, Tables seeded, in memory, PostgreSQL's dialect, read
 
 ### What the library's scenarios check
 

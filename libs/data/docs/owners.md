@@ -1,10 +1,10 @@
 # Owners
 
-*What each person must decide, settle or watch on 26 November 2026, and what they own.*
+*What each person must decide, settle or watch on 27 November 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 2 | 77 |
+| trame | 0 | 0 | 3 | 78 |
 
 <a id="trame"></a>
 
@@ -12,6 +12,7 @@
 
 | Severity | Code | What | Where | Owner | Consequence |
 |---|---|---|---|---|---|
+| warning | `package-newer` | std 0.29.1 is out, the reference names 0.29.0: trame upgrade std moves it | [std](packages.md#stdLibrary) | trame |  |
 | warning | `shipment-awaits` | To ship: The library of data is unknown | [The next version](sdlc.md#NextVersion) | trame |  |
 | warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The library of data](sdlc.md#TheLibrary) | trame |  |
 
@@ -55,6 +56,7 @@
 | [What the library's scenarios are given](scenarios.md#DataGiven) | Decision |  |
 | [Documents kept in the preferences](scenarios.md#DocumentsKept) | Scenario | **held** |
 | [Documents, in memory](scenarios.md#InMemory) | Technical choice | **held** |
+| [The library's scenarios keep what they write as a product would](scenarios.md#KeptAsAProductWould) | Architecture decision | **held** |
 | [PostgreSQL's dialect, read](scenarios.md#PostgresForScenarios) | Technical choice | **held** |
 | [PostgreSQL's statements](scenarios.md#PostgresStatements) | Scenario | **held** |
 | [PostgreSQL's statements](scenarios.md#PostgresStatementsOnly) | Environment |  |

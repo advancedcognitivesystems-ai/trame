@@ -5,7 +5,10 @@ import { PractiseGuided, BreathSetsThePace, InTheirLanguage, CheckedContent, Bre
 import { Poses, Languages } from "./content"
 import { ContentSource, PoseliaApp } from "./architecture"
 import { PreferencesStore, DeviceLanguages, SpeechVoice, ScreenAwake } from "#std/platform"
-import { PoseliaPage } from "./app"
+import { PoseliaPage, ContentCarried, InTheBrowser } from "./app"
+import { InMemory } from "./scenarios"
+import { KeptOnTheDevice } from "./settings"
+import { DescribedOnce } from "#data/principles"
 import { PlayPractice, HoldPhases } from "./practice"
 import { PageOpens } from "./sdlc"
 
@@ -25,7 +28,7 @@ export const ContentAsData = adr({
     "A server from the start": "an app that works offline on the mat comes first",
   },
   serves: [CheckedContent],
-  appliedBy: [Poses, ContentSource],
+  appliedBy: [Poses, ContentSource, ContentCarried],
 })
 
 /**
@@ -81,5 +84,34 @@ export const PageFirst = adr({
   consequences: "The component runs in a browser; its realizations are the browser's, and the phones' will be bound in their own environment, without the app changing.",
   rejected: { "A native app from the start": "two code bases, and nothing to show before the stores" },
   serves: [PractiseGuided],
-  appliedBy: [PoseliaApp, PoseliaPage, PageOpens],
+  appliedBy: [PoseliaApp, PoseliaPage, PageOpens, InTheBrowser],
+})
+
+/**
+ * The app is played in memory first
+ * What the app shows, says and keeps is played by scenarios before a browser runs it: a screen that records what it
+ * shows, a bowl that records when it sounds, preferences and languages given, frames advanced by hand, speech written.
+ */
+export const PlayedInMemoryFirst = adr({
+  owner: "ghalaax",
+  context: "A practice lasts minutes and follows the breath: played only in a browser, a mistake in a sequence would be met on the mat.",
+  consequences: "What only a browser or a phone shows (the voice, the screen kept awake, the frames) is proven by the checks of a shipment.",
+  rejected: { "A browser driven at each build": "slow, and the voice and the wake lock answer only on a device" },
+  serves: [PractiseGuided],
+  appliedBy: [InMemory],
+})
+
+/**
+ * What the app keeps stays on the device
+ * The person's breath and choices are kept in the device's preferences, under names of the app's own, as the library
+ * of data keeps a document; the app adopts its decision: what is kept is described once.
+ */
+export const KeptOnThePhone = adr({
+  owner: "ghalaax",
+  context: "The app works offline and asks nobody for an account: what it keeps of a person is a little, and theirs.",
+  consequences: "A version that changes what is kept migrates it as the entity says; nothing leaves the device.",
+  rejected: { "An account on a server": "a person would give an address to practise on their mat" },
+  serves: [BreathSetsThePace],
+  adopts: [DescribedOnce],
+  appliedBy: [KeptOnTheDevice],
 })

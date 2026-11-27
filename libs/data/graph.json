@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-26",
+  "generated": "2026-11-27",
   "nodes": [
     {
       "id": "documents.Conforms",
@@ -208,7 +208,9 @@
         "joins": "library",
         "at": "../../std/releases/0.29.0"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: std 0.29.1 is out, the reference names 0.29.0: trame upgrade std moves it"
+      ]
     },
     {
       "id": "principles.DescribedOnce",
@@ -555,7 +557,7 @@
       "id": "scenarios.DataChecks",
       "kind": "catalog",
       "title": "What the library's scenarios check",
-      "source": "src/scenarios.ts:97",
+      "source": "src/scenarios.ts:98",
       "fields": {
         "owner": "trame",
         "messages": "(function)"
@@ -566,7 +568,7 @@
       "id": "scenarios.DataGiven",
       "kind": "decision",
       "title": "What the library's scenarios are given",
-      "source": "src/scenarios.ts:123",
+      "source": "src/scenarios.ts:124",
       "fields": {
         "owner": "trame",
         "value": {
@@ -680,7 +682,7 @@
       "id": "scenarios.DocumentsKept",
       "kind": "scenario",
       "title": "Documents kept in the preferences",
-      "source": "src/scenarios.ts:186",
+      "source": "src/scenarios.ts:187",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -726,7 +728,7 @@
       "id": "scenarios.InMemory",
       "kind": "binding",
       "title": "Documents, in memory",
-      "source": "src/scenarios.ts:46",
+      "source": "src/scenarios.ts:47",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -735,10 +737,27 @@
       "diagnostics": []
     },
     {
+      "id": "scenarios.KeptAsAProductWould",
+      "kind": "adr",
+      "title": "The library's scenarios keep what they write as a product would",
+      "source": "src/scenarios.ts:312",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "What a product keeps is migrated, read and checked by the library's code: a double that only remembers would prove nothing of SQL, of a migration or of a seed.",
+        "consequences": "SQLite runs in the scenarios' process; PostgreSQL is only read, its statements compared with what its dialect must write, since no database answers in a build.",
+        "rejected": {
+          "A store that remembers in a map": "it would accept what SQL refuses, and migrate nothing",
+          "A PostgreSQL server for the scenarios": "a process to start and a port to open at each build of every project that imports the library"
+        }
+      },
+      "diagnostics": []
+    },
+    {
       "id": "scenarios.PostgresForScenarios",
       "kind": "binding",
       "title": "PostgreSQL's dialect, read",
-      "source": "src/scenarios.ts:85",
+      "source": "src/scenarios.ts:86",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -750,7 +769,7 @@
       "id": "scenarios.PostgresStatements",
       "kind": "scenario",
       "title": "PostgreSQL's statements",
-      "source": "src/scenarios.ts:273",
+      "source": "src/scenarios.ts:274",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -774,7 +793,7 @@
       "id": "scenarios.PostgresStatementsOnly",
       "kind": "environment",
       "title": "PostgreSQL's statements",
-      "source": "src/scenarios.ts:40",
+      "source": "src/scenarios.ts:41",
       "fields": {
         "owner": "trame"
       },
@@ -784,7 +803,7 @@
       "id": "scenarios.RecordsKept",
       "kind": "scenario",
       "title": "Records kept in SQL",
-      "source": "src/scenarios.ts:223",
+      "source": "src/scenarios.ts:224",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -832,7 +851,7 @@
       "id": "scenarios.RecordsSeeded",
       "kind": "scenario",
       "title": "Records seeded",
-      "source": "src/scenarios.ts:293",
+      "source": "src/scenarios.ts:294",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -855,7 +874,7 @@
       "id": "scenarios.SeededForScenarios",
       "kind": "binding",
       "title": "Tables seeded, in memory",
-      "source": "src/scenarios.ts:72",
+      "source": "src/scenarios.ts:73",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -867,7 +886,7 @@
       "id": "scenarios.SeededTables",
       "kind": "environment",
       "title": "Seeded tables",
-      "source": "src/scenarios.ts:34",
+      "source": "src/scenarios.ts:35",
       "fields": {
         "owner": "trame"
       },
@@ -877,7 +896,7 @@
       "id": "scenarios.SqliteForScenarios",
       "kind": "binding",
       "title": "SQLite, in memory",
-      "source": "src/scenarios.ts:59",
+      "source": "src/scenarios.ts:60",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -889,7 +908,7 @@
       "id": "scenarios.Test",
       "kind": "environment",
       "title": "Test",
-      "source": "src/scenarios.ts:28",
+      "source": "src/scenarios.ts:29",
       "fields": {
         "owner": "trame",
         "evaluates": true
@@ -937,6 +956,11 @@
           {
             "node": "principles.DescribedOnce",
             "via": "documents.Conforms",
+            "obligation": "sdlc.DecisionsApplied"
+          },
+          {
+            "node": "scenarios.KeptAsAProductWould",
+            "via": "scenarios.InMemory",
             "obligation": "sdlc.DecisionsApplied"
           },
           {
@@ -999,6 +1023,7 @@
           "scenarios.DataGiven",
           "scenarios.DocumentsKept",
           "scenarios.InMemory",
+          "scenarios.KeptAsAProductWould",
           "scenarios.PostgresForScenarios",
           "scenarios.PostgresStatements",
           "scenarios.PostgresStatementsOnly",
@@ -1146,7 +1171,7 @@
       },
       "result": {
         "path": "src",
-        "code": "87968659"
+        "code": "f93c5496"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -2720,6 +2745,31 @@
       "from": "scenarios.InMemory",
       "to": "product.DataDescribedOnce",
       "kind": "serves"
+    },
+    {
+      "from": "scenarios.KeptAsAProductWould",
+      "to": "product.DataDescribedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "scenarios.KeptAsAProductWould",
+      "to": "scenarios.InMemory",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "scenarios.KeptAsAProductWould",
+      "to": "scenarios.SqliteForScenarios",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "scenarios.KeptAsAProductWould",
+      "to": "scenarios.SeededForScenarios",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "scenarios.KeptAsAProductWould",
+      "to": "scenarios.PostgresForScenarios",
+      "kind": "appliedBy"
     },
     {
       "from": "scenarios.PostgresForScenarios",

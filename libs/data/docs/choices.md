@@ -1,6 +1,6 @@
 # Technical choices
 
-*What answers each port in each environment on 26 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
+*What answers each port in each environment on 27 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
 
 > **4 technical choices for 6 ports, in 3 environments**
 
@@ -24,7 +24,7 @@
 
 ### Documents, in memory
 
-`InMemory` · `src/scenarios.ts:46` · status: **held**
+`InMemory` · `src/scenarios.ts:47` · status: **held**
 
 In the library's scenarios, a document is kept in the preferences of a device kept in memory.
 
@@ -45,12 +45,13 @@ Context: The library's documents are read and written as a product's would be, t
 - In: [Test](scenarios.md#Test)
 - Follows: [Strategy](../.trame/std/docs/patterns.md#Strategy)
 - Serves: [Data described once](product.md#DataDescribedOnce)
+- Applies: [The library's scenarios keep what they write as a product would](scenarios.md#KeptAsAProductWould)
 
 <a id="SqliteForScenarios"></a>
 
 ### SQLite, in memory
 
-`SqliteForScenarios` · `src/scenarios.ts:59` · status: **held**
+`SqliteForScenarios` · `src/scenarios.ts:60` · status: **held**
 
 In the library's scenarios, the records of an entity live in a SQLite database kept in memory.
 
@@ -67,12 +68,13 @@ Context: Records are written, migrated and read by SQLite itself, as a product's
 - In: [Test](scenarios.md#Test), [Seeded tables](scenarios.md#SeededTables)
 - Follows: [Adapter](../.trame/std/docs/patterns.md#Adapter)
 - Serves: [Data described once](product.md#DataDescribedOnce)
+- Applies: [The library's scenarios keep what they write as a product would](scenarios.md#KeptAsAProductWould)
 
 <a id="SeededForScenarios"></a>
 
 ### Tables seeded, in memory
 
-`SeededForScenarios` · `src/scenarios.ts:72` · status: **held**
+`SeededForScenarios` · `src/scenarios.ts:73` · status: **held**
 
 Where the library's scenarios seed their tables, a table created starts with the records its entity declares.
 
@@ -91,12 +93,13 @@ Context: A scenario's database, or a developer's, starts with the records the en
 - In: [Seeded tables](scenarios.md#SeededTables)
 - Follows: [Strategy](../.trame/std/docs/patterns.md#Strategy)
 - Serves: [Data described once](product.md#DataDescribedOnce)
+- Applies: [The library's scenarios keep what they write as a product would](scenarios.md#KeptAsAProductWould)
 
 <a id="PostgresForScenarios"></a>
 
 ### PostgreSQL's dialect, read
 
-`PostgresForScenarios` · `src/scenarios.ts:85` · status: **held**
+`PostgresForScenarios` · `src/scenarios.ts:86` · status: **held**
 
 Where the library's scenarios read PostgreSQL's statements, the dialect of the tables is PostgreSQL's.
 
@@ -113,3 +116,4 @@ Context: What PostgreSQL's tables write is read as a product's tables would ask 
 - In: [PostgreSQL's statements](scenarios.md#PostgresStatementsOnly)
 - Follows: [Strategy](../.trame/std/docs/patterns.md#Strategy)
 - Serves: [Data described once](product.md#DataDescribedOnce)
+- Applies: [The library's scenarios keep what they write as a product would](scenarios.md#KeptAsAProductWould)

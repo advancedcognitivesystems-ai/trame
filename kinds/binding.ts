@@ -42,7 +42,8 @@ export const holdsIn = (g: Graph, binding: View, env: View | undefined) =>
  * never names what answers it, so changing the choice is changing this node. A choice that changes several ports
  * together (a database and its dialect) chooses them in one node. Like an architecture decision, it says why
  * (context), what follows, and what was rejected; it names the patterns it follows, and its shape is checked against
- * them. A realization it chooses is reached through its port, never directly. Its status is that of its realizations:
+ * them. A realization it chooses is reached through its port, never directly. It is code: the decision behind it is an
+ * architecture decision of its project that applies it (E3), without which it is warned. Its status is that of its realizations:
  * violated if one is, held when each one that has a status holds, unknown while one does not (evidence awaited).
  */
 const kind = defineKind({
@@ -59,6 +60,9 @@ const kind = defineKind({
     if (counts.isEmpty(chosen)) out.push(hole.error(HoleCode.bindingChoosesNothing, say.bindingChoosesNothing(), self.owner))
     if (!g.from(self).out(E.environments).exists()) out.push(hole.error(HoleCode.bindingInNoEnvironment, say.bindingHoldsInNoEnvironment(), self.owner))
     if (!g.from(self).out(E.follows).exists()) out.push(hole.warning(HoleCode.bindingWithoutPattern, say.bindingFollowsNoPatternTheShapeOf(), self.owner))
+    // The law of choices (E3): a choice is code, free to change; the decision behind it is an architecture decision of
+    // its project, stated, which applies it (its own reasons, or a library's it adopts).
+    if (!g.from(self).in(EdgeName.appliedBy).where((v) => v.kind === KindName.adr).exists()) out.push(hole.warning(HoleCode.choiceUnbacked, say.bindingUnbacked(), self.owner))
     // A command of a library is chosen to run in the project (E3): a command, a library's, and once by its name.
     const named = new Map<string, View>()
     for (const r of chosen.filter((v) => v.kind === KindName.entry)) {

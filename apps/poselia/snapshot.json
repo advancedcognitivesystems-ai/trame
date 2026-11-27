@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-26",
+  "at": "2026-10-30",
   "nodes": [
     {
       "id": "app.BrowserScreen",
@@ -4036,6 +4036,20 @@
       }
     },
     {
+      "id": "principles.KeptOnThePhone",
+      "kind": "adr",
+      "title": "What the app keeps stays on the device",
+      "status": "held",
+      "fields": {
+        "owner": "ghalaax",
+        "context": "The app works offline and asks nobody for an account: what it keeps of a person is a little, and theirs.",
+        "consequences": "A version that changes what is kept migrates it as the entity says; nothing leaves the device.",
+        "rejected": {
+          "An account on a server": "a person would give an address to practise on their mat"
+        }
+      }
+    },
+    {
       "id": "principles.LanguageOffered",
       "kind": "adr",
       "title": "The person's language, among those offered",
@@ -4060,6 +4074,20 @@
         "consequences": "The component runs in a browser; its realizations are the browser's, and the phones' will be bound in their own environment, without the app changing.",
         "rejected": {
           "A native app from the start": "two code bases, and nothing to show before the stores"
+        }
+      }
+    },
+    {
+      "id": "principles.PlayedInMemoryFirst",
+      "kind": "adr",
+      "title": "The app is played in memory first",
+      "status": "held",
+      "fields": {
+        "owner": "ghalaax",
+        "context": "A practice lasts minutes and follows the breath: played only in a browser, a mistake in a sequence would be met on the mat.",
+        "consequences": "What only a browser or a phone shows (the voice, the screen kept awake, the frames) is proven by the checks of a shipment.",
+        "rejected": {
+          "A browser driven at each build": "slow, and the voice and the wake lock answer only on a device"
         }
       }
     },
@@ -4905,7 +4933,7 @@
       "id": "sdlc.PreviewScript",
       "kind": "artifact",
       "title": "The preview's script",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "path": "scripts/ship-preview.sh",
@@ -4916,7 +4944,7 @@
       "id": "sdlc.PreviewWorkflow",
       "kind": "artifact",
       "title": "The preview's workflow",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "path": "../../.github/workflows/poselia-preview.yml",
@@ -5002,7 +5030,7 @@
       "id": "sdlc.PullRequestWorkflow",
       "kind": "artifact",
       "title": "The pull requests' workflow",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "path": "../../.github/workflows/poselia-pull-request.yml",
@@ -5021,7 +5049,7 @@
       "id": "sdlc.RunnersWritten",
       "kind": "shipment",
       "title": "The files that run it elsewhere",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "ghalaax",
         "target": "repository"
@@ -6996,6 +7024,21 @@
       "kind": "appliedBy"
     },
     {
+      "from": "principles.ContentAsData",
+      "to": "app.ContentCarried",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.KeptOnThePhone",
+      "to": "product.BreathSetsThePace",
+      "kind": "serves"
+    },
+    {
+      "from": "principles.KeptOnThePhone",
+      "to": "settings.KeptOnTheDevice",
+      "kind": "appliedBy"
+    },
+    {
       "from": "principles.LanguageOffered",
       "to": "product.InTheirLanguage",
       "kind": "serves"
@@ -7028,6 +7071,21 @@
     {
       "from": "principles.PageFirst",
       "to": "sdlc.PageOpens",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.PageFirst",
+      "to": "app.InTheBrowser",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.PlayedInMemoryFirst",
+      "to": "product.PractiseGuided",
+      "kind": "serves"
+    },
+    {
+      "from": "principles.PlayedInMemoryFirst",
+      "to": "scenarios.InMemory",
       "kind": "appliedBy"
     },
     {
@@ -8273,6 +8331,16 @@
     {
       "from": "sdlc.SdlcInTheGraph",
       "to": "sdlc.RunnersWritten",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "sdlc.SdlcInTheGraph",
+      "to": "sdlc.OnTheMachine",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "sdlc.SdlcInTheGraph",
+      "to": "sdlc.SdlcInMemory",
       "kind": "appliedBy"
     },
     {

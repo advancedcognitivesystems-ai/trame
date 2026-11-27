@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-26",
+  "at": "2026-11-27",
   "nodes": [
     {
       "id": "access.Anyone",
@@ -1929,9 +1929,7 @@
         "owner": "trame",
         "tag": "css",
         "grammar": {
-          "module": "tree-sitter-css/tree-sitter-css.wasm",
-          "package": "tree-sitter-css",
-          "version": "0.25.0"
+          "module": "tree-sitter-css/tree-sitter-css.wasm"
         },
         "extensions": [
           ".css"
@@ -2062,9 +2060,7 @@
         "owner": "trame",
         "tag": "html",
         "grammar": {
-          "module": "tree-sitter-html/tree-sitter-html.wasm",
-          "package": "tree-sitter-html",
-          "version": "0.23.2"
+          "module": "tree-sitter-html/tree-sitter-html.wasm"
         },
         "extensions": [
           ".html"
@@ -4476,6 +4472,21 @@
           "checks": "scenarios.ScenarioChecks"
         },
         "body": "(function)"
+      }
+    },
+    {
+      "id": "scenarios.HowTheScenariosRun",
+      "kind": "adr",
+      "title": "How the library's scenarios run",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "The library offers realizations in memory to every project's scenarios: its own scenarios prove that they keep their ports' promises, before any project relies on them.",
+        "consequences": "A project that judges harder chooses EveryWarning or one of its own (C4); the library leaves its warnings as points to watch. Reading HTML and CSS needs an engine: the library's build has one.",
+        "rejected": {
+          "Scenarios on the machine": "they would touch the disk, a browser and GitHub at each build of the library",
+          "Strict judgment for the library itself": "a library's warnings are often what its projects decide (a port nobody realizes here)"
+        }
       }
     },
     {
@@ -8674,6 +8685,36 @@
       "from": "scenarios.DrawsKeepTheirPromise",
       "to": "scenarios.ScenarioChecks",
       "kind": "deps"
+    },
+    {
+      "from": "scenarios.HowTheScenariosRun",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "scenarios.HowTheScenariosRun",
+      "to": "scenarios.InMemory",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "scenarios.HowTheScenariosRun",
+      "to": "scenarios.ScenarioSettings",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "scenarios.HowTheScenariosRun",
+      "to": "scenarios.LanguageJudgment",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "scenarios.HowTheScenariosRun",
+      "to": "scenarios.StrictJudgment",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "scenarios.HowTheScenariosRun",
+      "to": "scenarios.ReadInTheEngine",
+      "kind": "appliedBy"
     },
     {
       "from": "scenarios.InMemory",

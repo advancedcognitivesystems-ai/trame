@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-26",
+  "at": "2026-11-27",
   "nodes": [
     {
       "id": "language.Dates",
@@ -77,6 +77,20 @@
       }
     },
     {
+      "id": "language.WordsLanguage",
+      "kind": "decision",
+      "title": "The language of the library's words",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "tag": "en-GB"
+        },
+        "rejected": {
+          "std's language of its commands": "a choice of std's, which may change for std's reasons"
+        }
+      }
+    },
+    {
       "id": "packages.ContinuousIntegration",
       "kind": "package",
       "title": "The library of continuous integration",
@@ -121,9 +135,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.29.0",
+        "version": "0.29.1",
         "joins": "library",
-        "at": "../../std/releases/0.29.0"
+        "at": "../../std/releases/0.29.1"
       }
     },
     {
@@ -260,6 +274,20 @@
       }
     },
     {
+      "id": "scenarios.TheEnginesLanguage",
+      "kind": "adr",
+      "title": "The documents speak the engine's language",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "A document says, in one line, what a view said and what a renderer wrote around it: two languages, or two ways of writing a date, would show in the same sentence.",
+        "consequences": "The engine's g.lib, the renderers and the page read the same nodes; another language is another realization, with its catalogs.",
+        "rejected": {
+          "The library's own language, fixed": "a project whose engine spoke another would get documents in two languages"
+        }
+      }
+    },
+    {
       "id": "scenarios.WrittenForTheScenarios",
       "kind": "function",
       "title": "Written in the language of the scenarios",
@@ -345,7 +373,7 @@
       "id": "sdlc.PullRequestWorkflow",
       "kind": "artifact",
       "title": "The pull requests' workflow",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "../../.github/workflows/documents-pull-request.yml",
@@ -364,7 +392,7 @@
       "id": "sdlc.RunnersWritten",
       "kind": "shipment",
       "title": "The files that run it elsewhere",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "repository"
@@ -535,6 +563,41 @@
       "from": "scenarios.LanguageWritten",
       "to": "scenarios.ScenarioWords",
       "kind": "deps"
+    },
+    {
+      "from": "scenarios.ScenarioWords",
+      "to": "language.WordsLanguage",
+      "kind": "language"
+    },
+    {
+      "from": "scenarios.TheEnginesLanguage",
+      "to": "product.RenderedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "scenarios.TheEnginesLanguage",
+      "to": "language.Dates",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "scenarios.TheEnginesLanguage",
+      "to": "language.Lists",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "scenarios.TheEnginesLanguage",
+      "to": "language.Punctuation",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "scenarios.TheEnginesLanguage",
+      "to": "language.Units",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "scenarios.TheEnginesLanguage",
+      "to": "scenarios.InTheScenariosLanguage",
+      "kind": "appliedBy"
     },
     {
       "from": "scenarios.WrittenForTheScenarios",

@@ -8,6 +8,7 @@ import { decision } from "../kinds/decision"
 import { TrameCli, Terminal, Process, Clock, FileReading, FileWriting, Paths, Hashing, Programs, FileTrees, PackageReports, PackageInstalls, Bundler, Timer, HttpServer, KeptRuns, AmendmentPlace, Prelude, TypeScriptCompiler } from "./architecture"
 import { Compiler, CompilationApi, Laws, Views, Lock, MachineOutputs, PayloadBuilder, DateBundle, DevServer, Assembly, Fingerprint, References, Project, EngineFingerprint, Wiring, ShipmentPipeline, Differences, JudgedHarder, Fingerprints } from "./engine"
 import { SyntaxReader } from "./syntax"
+import { BuildComparison } from "#commands/commands"
 import { Page, PageBundle, PageDocument } from "./page"
 import { Html } from "#std/html"
 import { ScriptElement } from "./html"
@@ -330,18 +331,6 @@ export const Doctor = entryPoint({
  * change, issues raised and resolved, and the shipments whose obligations are touched. A person reads it before
  * building, a review before accepting a change.
  */
-/**
- * Two builds compared
- * The nodes added and removed, the statuses that change, the nodes whose fields, result or edges change, the issues
- * raised and resolved, the shipments touched; then said line by line. What trame plan and trame amend show.
- */
-export const BuildComparison = fn({
-  owner: "trame",
-  serves: [ExecutableSpecification],
-  deps: { messages: CommandMessages, output: OutputMessages },
-  body: code.file<typeof import("./code/commands/comparison").default>("./code/commands/comparison.ts"),
-})
-
 export const Plan = entryPoint({
   owner: "trame", in: TrameCli, for: Anyone, serves: [ExecutableSpecification],
   trigger: command(commandNames.plan),

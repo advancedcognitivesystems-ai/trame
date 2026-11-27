@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 26 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 27 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Trame · Appearance
 
@@ -416,7 +416,7 @@ Environment · `Test`
 
 ### The page is assembled
 
-Architecture decision · `ThePageIsAssembled` · **held**
+Architecture decision · `ThePageIsAssembled` · **unknown**
 
 - Decided by: trame
 - Context: The page's script built by hand what it shared with the engine and wrote its values (classes, identifiers, the explorer's geometry) as literals the catalogue could not see: a change in the graph did not reach it.
@@ -427,7 +427,7 @@ Architecture decision · `ThePageIsAssembled` · **held**
 
 ### Explorer of a graph
 
-Function · `ExplorerFigures` · **held**
+Function · `ExplorerFigures` · **unknown**
 
 - Owner: trame
 - Parameters: { html: std/html.Html, svg: std/html.Svg, aria: std/html.Aria, css: std/html.Css, page: page.ThePage, markup: markup.DocumentMarkup, figures: markup.FigureMarkup, explorer: markup.ExplorerMarkup, drawing: appearance.ExplorerDrawing, element: html.HtmlElement, start: html.HtmlStartTag, empty: html.SelfClosingTag, path: html.PathData, declaration: html.CssDeclaration, escape: html.EscapedText, common: rendering.Common, words: messages.PageWords, messages: messages.RenderingMessages, punctuation: documents/language.Punctuation, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts }
@@ -436,7 +436,7 @@ Function · `ExplorerFigures` · **held**
 
 ### Show the graph
 
-Entry point · `ShowGraph` · **held**
+Entry point · `ShowGraph` · **unknown**
 
 - Owner: trame
 - Trigger: { type: load }
@@ -447,7 +447,7 @@ Entry point · `ShowGraph` · **held**
 
 ### Amendments sent to trame dev
 
-Implementation · `BrowserAmendments` · **held**
+Implementation · `BrowserAmendments` · **unknown**
 
 - Owner: trame
 - Parameters: { page: page.ThePage, service: engine.DevService, http: std/web.Http, media: std/web.MediaTypes }
@@ -456,7 +456,7 @@ Implementation · `BrowserAmendments` · **held**
 
 ### The browser's gzip
 
-Implementation · `BrowserDecompression` · **held**
+Implementation · `BrowserDecompression` · **unknown**
 
 - Owner: trame
 - Parameters: { packing: page.PackedGraph, ecma: std/ecmascript.EcmaScript }
@@ -465,7 +465,7 @@ Implementation · `BrowserDecompression` · **held**
 
 ### The globals of the page, and trame dev
 
-Implementation · `BrowserFeed` · **held**
+Implementation · `BrowserFeed` · **unknown**
 
 - Owner: trame
 - Parameters: { page: page.ThePage, service: engine.DevService, values: std/algebra.ValueTypes }
@@ -474,7 +474,7 @@ Implementation · `BrowserFeed` · **held**
 
 ### Local storage
 
-Implementation · `BrowserMemory` · **held**
+Implementation · `BrowserMemory` · **unknown**
 
 - Owner: trame
 - Parameters: { page: page.ThePage }
@@ -483,7 +483,7 @@ Implementation · `BrowserMemory` · **held**
 
 ### The browser's window
 
-Implementation · `BrowserWindow` · **held**
+Implementation · `BrowserWindow` · **unknown**
 
 - Owner: trame
 - Parameters: { motion: std/web.MediaQueries5, feature: html.MediaFeature, counts: std/algebra.Counts }
@@ -492,7 +492,7 @@ Implementation · `BrowserWindow` · **held**
 
 ### The browser runs the page
 
-Technical choice · `TheBrowserRunsThePage` · **held**
+Technical choice · `TheBrowserRunsThePage` · **unknown**
 
 - Decided by: trame
 - Context: The page's script took what it needed from the browser itself, here and there: the graph could not say what the page asks of the browser, nor try it elsewhere.
@@ -633,9 +633,9 @@ Scenario · `BuildPlanned` · **held**
 
 - Owner: trame
 - Parameters: { build: commands.Build, plan: commands.Plan, writeLog: architecture.WriteLog, terminalLog: architecture.TerminalLog, writing: architecture.FileWriting, currentProcess: architecture.Process, paths: architecture.Paths, layout: conventions.Layout, samples: command-scenarios.PlanSamples, line: conventions.TrameCommands, exitStatus: std/system.ExitStatus, counts: std/algebra.Counts, commands: messages.CommandMessages, messages: messages.ScenarioMessages }
-- Verifies: Plan
+- Verifies: Plan a build
 - In: Test
-- Depends on: Build, Plan, Write log, Terminal log, File writing, Process, Paths, Project layout, What a plan is checked with, Trame's commands, Messages of the commands, Messages of the scenarios
+- Depends on: Build, Plan a build, Write log, Terminal log, File writing, Process, Paths, Project layout, What a plan is checked with, Trame's commands, Messages of the commands, Messages of the scenarios
 
 ### The command line
 
@@ -933,7 +933,7 @@ Scenario · `ValueAmended` · **held**
 
 - Owner: trame
 - Parameters: { amend: commands.Amend, writeLog: architecture.WriteLog, currentProcess: architecture.Process, paths: architecture.Paths, line: conventions.TrameCommands, exitStatus: std/system.ExitStatus, samples: command-scenarios.AmendmentSamples, messages: messages.ScenarioMessages }
-- Verifies: Amend, An amendment prepared, Two builds compared, Amendments in place
+- Verifies: Amend, An amendment prepared, Amendments in place
 - In: Test
 - Depends on: Amend, Write log, Process, Paths, Trame's commands, What an amendment is checked with, Messages of the scenarios
 
@@ -963,9 +963,9 @@ Function · `AddOns` · **held**
 Function · `Amending` · **held**
 
 - Owner: trame
-- Parameters: { preparation: commands.Preparation, machine: engine.MachineOutputs, comparison: commands.BuildComparison, prelude: architecture.Prelude, references: engine.References, project: engine.Project, specifiers: std/system.NodeModuleSpecifiers, layout: conventions.Layout, values: std/algebra.ValueTypes, paths: architecture.Paths, messages: messages.CommandMessages, naming: conventions.AmendmentNaming, counts: std/algebra.Counts }
+- Parameters: { preparation: commands.Preparation, machine: engine.MachineOutputs, comparison: commands/commands.BuildComparison, prelude: architecture.Prelude, references: engine.References, project: engine.Project, specifiers: std/system.NodeModuleSpecifiers, layout: conventions.Layout, values: std/algebra.ValueTypes, paths: architecture.Paths, messages: messages.CommandMessages, naming: conventions.AmendmentNaming, counts: std/algebra.Counts }
 - Serves: A single source of truth
-- Depends on: Preparation, Machine outputs, Two builds compared, Prelude, References, Project, Project layout, Paths, Messages of the commands, How an amendment is named
+- Depends on: Preparation, Machine outputs, Prelude, References, Project, Project layout, Paths, Messages of the commands, How an amendment is named
 
 ### Assembler
 
@@ -975,15 +975,6 @@ Function · `Assembler` · **held**
 - Parameters: { preparation: commands.Preparation, assembly: engine.Assembly, layout: text.TerminalText, punctuation: documents/language.Punctuation, texts: std/algebra.Texts, counts: std/algebra.Counts, messages: messages.CommandMessages }
 - Serves: A specification that runs
 - Depends on: Preparation, Assembly, Terminal text, Messages of the commands
-
-### Two builds compared
-
-Function · `BuildComparison` · **held**
-
-- Owner: trame
-- Parameters: { messages: messages.CommandMessages, output: messages.OutputMessages }
-- Serves: A specification that runs
-- Depends on: Messages of the commands, Messages of the outputs
 
 ### Rewriting an example
 
@@ -1184,16 +1175,16 @@ Entry point · `Init` · **held**
 - Part of: Trame on the command line
 - Depends on: Preparation, Project layout, Project, Prelude, How a project starts, The engine a project runs, File reading, File writing, Paths, JSON formatting, TypeScript, The syntax of the programs Trame writes, Title of a module, Documentation comment, Export, Constant, Call, Object, Property, Text, Import of names, Terminal, Messages of the commands, Process, Trame's commands, A module of references, The language's names, Property access, List on one line, The add-ons of a command the engine keeps, The project's commands
 
-### Plan
+### Plan a build
 
 Entry point · `Plan` · **held**
 
 - Owner: trame
 - Trigger: { type: command, name: plan }
-- Parameters: { exitStatus: std/system.ExitStatus, layout: conventions.Layout, text: text.TerminalText, preparation: commands.Preparation, machine: engine.MachineOutputs, comparison: commands.BuildComparison, reading: architecture.FileReading, paths: architecture.Paths, encodings: std/system.NodeEncodings, terminal: architecture.Terminal, messages: messages.CommandMessages }
+- Parameters: { exitStatus: std/system.ExitStatus, layout: conventions.Layout, text: text.TerminalText, preparation: commands.Preparation, machine: engine.MachineOutputs, comparison: commands/commands.BuildComparison, reading: architecture.FileReading, paths: architecture.Paths, encodings: std/system.NodeEncodings, terminal: architecture.Terminal, messages: messages.CommandMessages }
 - Serves: A specification that runs
 - Part of: Trame on the command line
-- Depends on: Project layout, Terminal text, Preparation, Machine outputs, Two builds compared, File reading, Paths, Terminal, Messages of the commands
+- Depends on: Project layout, Terminal text, Preparation, Machine outputs, File reading, Paths, Terminal, Messages of the commands
 
 ### Publish
 
@@ -1617,7 +1608,7 @@ Architecture decision · `PunctuationOfTheLanguage` · **held**
 - Consequences: The Language decision holds the marks of the language with its tag; Punctuation gives those of the language decided to the renderers, the page and, through the engine, to the kinds and the views. Another language is another value of Language, with its catalogs. A sentence keeps its own punctuation: it is in a catalog, written in its language.
 - Rejected: A decision of marks keyed by language tag, two places to change for one language, and a tag written twice; The marks in every catalog, the renderers, the page and the views share them: each catalog would repeat them
 - Serves: A single source of truth
-- Applied by: The documents in Trame's language, Language
+- Applied by: The documents in Trame's language, Documents written in Trame's language, Language
 
 ### The documents in Trame's language
 
@@ -3147,10 +3138,10 @@ Package · `DocumentRenderers`
 
 - Owner: trame
 - Name: documents
-- Version: 0.1.0
+- Version: 0.1.1
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: libs/documents/releases/0.1.0
+- Its path: libs/documents/releases/0.1.1
 - Serves: A single source of truth
 
 ### esbuild
@@ -3169,10 +3160,10 @@ Package · `GenericCommands`
 
 - Owner: trame
 - Name: commands
-- Version: 0.1.1
+- Version: 0.1.2
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: libs/commands/releases/0.1.1
+- Its path: libs/commands/releases/0.1.2
 - Serves: A single source of truth
 
 ### Grammar of HCL
@@ -3237,10 +3228,10 @@ Package · `StandardLibrary`
 
 - Owner: trame
 - Name: std
-- Version: 0.29.0
+- Version: 0.29.1
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: std/releases/0.29.0
+- Its path: std/releases/0.29.1
 - Serves: A single source of truth
 
 ### tsx
@@ -3729,14 +3720,14 @@ Function · `StoppedClock` · **held**
 
 ### System files, for reading
 
-Implementation · `DiskReading` · **held**
+Implementation · `DiskReading` · **unknown**
 
 - Owner: trame
 - Implements: File reading
 
 ### Trees on disk
 
-Implementation · `DiskTrees` · **held**
+Implementation · `DiskTrees` · **unknown**
 
 - Owner: trame
 - Parameters: { diff: std/text.UnifiedDiff, node: std/system.NodeCli, events: std/system.NodeEvents }
@@ -3744,7 +3735,7 @@ Implementation · `DiskTrees` · **held**
 
 ### System files, for writing
 
-Implementation · `DiskWriting` · **held**
+Implementation · `DiskWriting` · **unknown**
 
 - Owner: trame
 - Implements: File writing
@@ -3818,7 +3809,7 @@ Implementation · `NodeHashing` · **held**
 
 ### Node HTTP server
 
-Implementation · `NodeHttpServer` · **held**
+Implementation · `NodeHttpServer` · **unknown**
 
 - Owner: trame
 - Implements: HTTP server
@@ -3832,7 +3823,7 @@ Implementation · `NodePaths` · **held**
 
 ### Node process
 
-Implementation · `NodeProcess` · **held**
+Implementation · `NodeProcess` · **unknown**
 
 - Owner: trame
 - Parameters: { argv: std/system.NodeArguments, node: std/system.NodeCli, runner: platform.TypeScriptRunner, variables: conventions.TrameEnvironment, exit: std/system.ExitStatus, values: std/algebra.ValueTypes }
@@ -3841,7 +3832,7 @@ Implementation · `NodeProcess` · **held**
 
 ### Node programs
 
-Implementation · `NodePrograms` · **held**
+Implementation · `NodePrograms` · **unknown**
 
 - Owner: trame
 - Parameters: { node: std/system.NodeCli, runner: platform.TypeScriptRunner, events: std/system.NodeEvents }
@@ -3850,7 +3841,7 @@ Implementation · `NodePrograms` · **held**
 
 ### Node terminal
 
-Implementation · `NodeTerminal` · **held**
+Implementation · `NodeTerminal` · **unknown**
 
 - Owner: trame
 - Parameters: { argv: std/system.NodeArguments, exitStatus: std/system.ExitStatus, events: std/system.NodeEvents, posix: std/system.Posix, messages: messages.PlatformMessages }
@@ -3875,7 +3866,7 @@ Implementation · `NoInstallsInTest` · **held**
 
 ### npm installs
 
-Implementation · `NpmInstall` · **held**
+Implementation · `NpmInstall` · **unknown**
 
 - Owner: trame
 - Parameters: { npm: std/system.NpmCli, node: std/system.NodeCli, events: std/system.NodeEvents, exitStatus: std/system.ExitStatus }
@@ -3883,7 +3874,7 @@ Implementation · `NpmInstall` · **held**
 
 ### npm's reports
 
-Implementation · `NpmReports` · **held**
+Implementation · `NpmReports` · **unknown**
 
 - Owner: trame
 - Parameters: { npm: std/system.NpmCli, values: std/algebra.ValueTypes, counts: std/algebra.Counts, punctuation: documents/language.Punctuation }
@@ -3930,7 +3921,7 @@ Implementation · `RunsInTheProcess` · **held**
 
 ### Runs kept on disk
 
-Implementation · `RunsOnDisk` · **held**
+Implementation · `RunsOnDisk` · **unknown**
 
 - Owner: trame
 - Parameters: { layout: conventions.Layout, files: platform.EngineFiles, engines: engine.EngineFingerprint, scope: engine.KeptRunsScope, encodings: std/system.NodeEncodings }
@@ -3939,7 +3930,7 @@ Implementation · `RunsOnDisk` · **held**
 
 ### System clock
 
-Implementation · `SystemClock` · **held**
+Implementation · `SystemClock` · **unknown**
 
 - Owner: trame
 - Parameters: { iso: std/measures.Iso8601, environment: conventions.TrameEnvironment, sequences: std/algebra.Sequences }
@@ -4046,7 +4037,7 @@ Technical choice · `InMemoryScenarios` · **held**
 
 ### On a machine, Node.js reads, writes and runs
 
-Technical choice · `NodeMachine` · **held**
+Technical choice · `NodeMachine` · **unknown**
 
 - Decided by: trame
 - Context: What changes the world (files written, processes, the terminal, the clock) is real only on a machine; the scenarios keep it in memory.
@@ -4106,7 +4097,7 @@ Technical choice · `RunsKeptInTheProcess` · **held**
 
 ### On a machine, runs are kept on disk
 
-Technical choice · `RunsKeptOnDisk` · **held**
+Technical choice · `RunsKeptOnDisk` · **unknown**
 
 - Decided by: trame
 - Context: The commands of a shipment and of an advance run as separate processes, each compiling the same graph: what one played, the next can find only on disk.
@@ -4152,6 +4143,17 @@ Architecture decision · `ActorsDeclared` · **held**
 - Serves: A specification that runs
 - Applied by: Compiler, Start a project
 
+### An amendment sits beside the value it changes
+
+Architecture decision · `AmendmentsBesideTheirValue` · **held**
+
+- Decided by: trame
+- Context: Every value of the graph can be amended from the page or the command line (A4); where the amendment goes decides who sees it.
+- Consequences: Where amendments go is the port Amendments: in the sources now; once the repository is where work is published, another realization.
+- Rejected: A file of amendments apart, the amendment would sit far from the value it changes, where nobody reading the module sees it
+- Serves: A single source of truth
+- Applied by: Amendments go in the sources
+
 ### A change to a node is a claim
 
 Architecture decision · `ChangesAreClaims` · **held**
@@ -4162,6 +4164,17 @@ Architecture decision · `ChangesAreClaims` · **held**
 - Rejected: The most recent wins, it hides disagreements; a kind may choose it where it makes sense
 - Serves: A single source of truth
 - Applied by: Compiler, Laws
+
+### Trame runs the commands libraries offer
+
+Architecture decision · `CommandsFromLibraries` · **unknown**
+
+- Decided by: trame
+- Context: Pull requests and propagations were done by hand, differently each time; the engine's commands reached its modules, out of every project's reach.
+- Consequences: A command a library offers changes with a release of the library; Trame's settings stay Trame's decisions. Chosen in Local, plan asks for no environment.
+- Rejected: Commands of Trame's own, any project of a repository opens pull requests and plans a build: written once, chosen by each
+- Serves: What is generic is written once
+- Applied by: The commands Trame takes from std, The commands Trame takes from libs/commands
 
 ### The data a product carries is a dataset
 
@@ -4195,6 +4208,17 @@ Architecture decision · `EngineLayer` · **held**
 - Serves: A specification that runs
 - Applied by: Trame on the command line, Rendering does not read the graph, Only commands write, Effects come from the vocabulary
 
+### The engine is a provider, for Trame too
+
+Architecture decision · `EngineProvidesForTrame` · **unknown**
+
+- Decided by: trame
+- Context: Trame is the engine's home: its own commands could reach the engine's modules directly, which a project's command cannot.
+- Consequences: What Trame's commands and std's languages reach of the engine is what any project's reach: the API the language defines.
+- Rejected: Direct access for Trame, the commands written once would not run elsewhere as they run here
+- Serves: What is generic is written once
+- Applied by: The commands Trame takes from libs/commands, std's languages, read by the engine
+
 ### A literal in a body is an error
 
 Architecture decision · `EveryLiteralDeclared` · **held**
@@ -4205,6 +4229,17 @@ Architecture decision · `EveryLiteralDeclared` · **held**
 - Rejected: A list of refused values (0, 1, -1, ""), it said which literals mattered, while every one hides a meaning; A baseline of tolerated literals, it would never shrink
 - Serves: A single source of truth
 - Applied by: Compiler, Syntax reader
+
+### Evidence is sealed
+
+Architecture decision · `EvidenceSealed` · **held**
+
+- Decided by: trame
+- Context: The evidence of the SDLC is a file anyone can edit: a record changed by hand would count as if the engine had written it (g72).
+- Consequences: A record that no longer matches its seal is an error naming it. How a runner of GitHub signs, and where a person's keys live, are other realizations of the same port, to come with D2.
+- Rejected: A key now, where keys live is a question still open; the seal changes nothing to how a record is given; No seal, a rule in AGENTS.md, a rule nobody checks protects nothing
+- Serves: A specification that runs
+- Applied by: Evidence sealed by attribution
 
 ### Generations: frozen engines
 
@@ -4281,6 +4316,17 @@ Architecture decision · `LibrariesByName` · **held**
 - Serves: What is generic is written once
 - Applied by: Project, Laws, Write the manifest, Release a version, A release is settled, Names of a library's releases
 
+### Every question of the machine is an add-on
+
+Architecture decision · `MachineQuestionsAsAddOns` · **held**
+
+- Decided by: trame
+- Context: On 17 November a machine whose browsers had moved refused the check of the page, and trame doctor said nothing of it: what a project needs of its machine was not the engine's to know.
+- Consequences: A question lives with what needs it: the engine's with the engine, a provider's with its adapter, a command's with the command, the others in libs/machine. A check that runs doctor proves the project's add-ons.
+- Rejected: Every question in the engine, the engine would ask what only some projects need, and miss what a provider's version needs
+- Serves: A specification that runs
+- Applied by: What the engine asks the machine, What the machine must also have
+
 ### Code holds no hidden decision
 
 Architecture decision · `NoHiddenDecision` · **held**
@@ -4344,7 +4390,18 @@ Architecture decision · `PackagesByName` · **held**
 - Consequences: A project names the language as it names a library: its import map, written by trame manifest, leads #trame/kernel and #trame/kinds/* to the generation it pins, through a link under .trame/ that an advance moves with the pin. Its kinds and views are the language's, from the engine that reads it, and those it names besides. The language's home, Trame's repository, reaches them where they are; the engine leads TypeScript to the files where they are, never through a link (g88). A relative import that leaves its package refuses the build and says the name to write (g89). trame init starts a project already named so. Where a package comes from is std's port PackageSources: a local path now, a registry later.
 - Rejected: Relative paths between packages, they hold only while the packages sit side by side, and a frozen copy reaches whatever is there then; A path mapping in each project's compiler options, the program that runs the graph would not read it; the import map is what Node.js and TypeScript both read; Trame installed from a registry at once, a publication at each generation while the language changes with each one; the registry is the second strategy of the same port
 - Serves: What is generic is written once
-- Applied by: Project, Write the manifest, Packages by their origin, Advance, Laws, Start a project
+- Applied by: Project, Write the manifest, Packages by their origin, Each package comes from where its reference says, Advance, Laws, Start a project
+
+### What a command does is played in memory first
+
+Architecture decision · `PlayedInMemoryFirst` · **held**
+
+- Decided by: trame
+- Context: A command writes files, starts programs and calls GitHub: checked only on a machine, a mistake would be met after it did its harm, and only by whoever runs it.
+- Consequences: Each port a command touches has a realization in memory, chosen in the environment Test; a scenario reads back what a command wrote. What only a machine can show (a browser, GitHub, the machine's programs) is proven by a check of a shipment.
+- Rejected: Scenarios on the disk, a scenario would leave files behind, and two scenarios would read each other's; Checks on a machine only, played at each shipment rather than at each build, by whoever has the machine
+- Serves: A specification that runs
+- Applied by: Scenarios write in memory, over the disk, The SDLC in memory, Trame's settings in the scenarios, The sample add-ons, second first
 
 ### The prelude: the runtime of the language
 
@@ -4357,9 +4414,31 @@ Architecture decision · `PreludeLayer` · **held**
 - Serves: A specification that runs
 - Applied by: Prelude, The prelude's public API, The frozen API, Laws
 
+### A run is kept while what it reads is as it was
+
+Architecture decision · `RunsKept` · **unknown**
+
+- Decided by: trame
+- Context: A build of Trame played its scenarios 2,030 times, a hundred of its hundred and forty seconds; a shipment compiled the same graph a dozen times with the same code (g74).
+- Consequences: A build after a change to one body plays again only the scenarios that wire it. Where a project compiled for a scenario lies in another's sources, its runs are kept beside that other (g126). Deleting the runs only costs time.
+- Rejected: Playing every scenario at every compilation, the same code on the same files gives the same result; a shipment took thirty-six minutes; A server that keeps them, one more process to start, for what files under the project do
+- Serves: A specification that runs
+- Applied by: A run is kept while what it reads is as it was, On a machine, runs are kept on disk, In the scenarios, runs are kept in the process
+
+### Trame's SDLC runs with std's tooling
+
+Architecture decision · `SdlcWithStdTooling` · **unknown**
+
+- Decided by: trame
+- Context: Trame's SDLC opens pages, sets its repository and merges pull requests, as every project's does: std realizes each provider once.
+- Consequences: A session of Claude Code merges through its proxy (AutoMergeInASession), a machine through GitHub's GraphQL (AutoMergeOnTheMachine): two realizations of one port, chosen per environment.
+- Rejected: Adapters of Trame's own, each project would write them again, differently
+- Serves: What is generic is written once
+- Applied by: The SDLC on the machine, The repository's work on a machine, GitHub merges once it holds, asked by its command line, GitHub merges once it holds, asked in a session
+
 ### A version ships through the graph
 
-Architecture decision · `ShippedThroughTheGraph` · **held**
+Architecture decision · `ShippedThroughTheGraph` · **unknown**
 
 - Decided by: trame
 - Context: Two products ship differently (a page placed where it is served, an engine frozen into a generation) and their pipelines lived in scripts and in their authors' heads: nothing said what had been checked, by whom, on which version, nor why a version could go.
@@ -4370,7 +4449,7 @@ Architecture decision · `ShippedThroughTheGraph` · **held**
 
 ### A technology is chosen in one node
 
-Architecture decision · `TechnologyInOneNode` · **held**
+Architecture decision · `TechnologyInOneNode` · **unknown**
 
 - Decided by: trame
 - Context: Each implementation said which environments it served: the choice of a technology was spread over its realizations, nothing said why, and a test double or a repository over a database port had to be declared as if it touched the platform.
@@ -6929,7 +7008,7 @@ Technical choice · `CommandsOfStd` · **held**
 
 ### The commands Trame takes from libs/commands
 
-Technical choice · `CommandsWrittenOnce` · **held**
+Technical choice · `CommandsWrittenOnce` · **unknown**
 
 - Decided by: trame
 - Context: The engine's commands reached its modules directly: a project could neither choose them nor specialize them, and a command of its own could not compute what they computed.
@@ -7029,7 +7108,7 @@ Role · `Maintainers`
 
 ### The candidate engine
 
-Artefact · `EngineCandidate` · **held**
+Artefact · `EngineCandidate` · **unknown**
 
 - Owner: trame
 - Path: out/local/trame-cli.ts
@@ -7037,7 +7116,7 @@ Artefact · `EngineCandidate` · **held**
 
 ### The graph page
 
-Artefact · `GraphPage` · **held**
+Artefact · `GraphPage` · **unknown**
 
 - Owner: trame
 - Path: trame-page.html
@@ -7066,7 +7145,7 @@ Artefact · `PullRequestWorkflow` · **held**
 
 ### The engine
 
-Artefact · `TheEngine` · **held**
+Artefact · `TheEngine` · **unknown**
 
 - Owner: trame
 - Path: src
@@ -7074,7 +7153,7 @@ Artefact · `TheEngine` · **held**
 
 ### The candidate plays the laws
 
-Check · `CandidateKeepsTheLaws` · **held**
+Check · `CandidateKeepsTheLaws` · **unknown**
 
 - Owner: trame
 - Checks: The candidate engine
@@ -7083,7 +7162,7 @@ Check · `CandidateKeepsTheLaws` · **held**
 
 ### The candidate runs on the machine
 
-Check · `CandidateRunsOnTheMachine` · **held**
+Check · `CandidateRunsOnTheMachine` · **unknown**
 
 - Owner: trame
 - Checks: The candidate engine
@@ -7093,7 +7172,7 @@ Check · `CandidateRunsOnTheMachine` · **held**
 
 ### The graph page opens
 
-Check · `GraphPageOpens` · **held**
+Check · `GraphPageOpens` · **unknown**
 
 - Owner: trame
 - Checks: The graph page
@@ -7112,7 +7191,7 @@ Check · `MachineAsked` · **held**
 
 ### trame plan runs in the engine
 
-Check · `PlanRunsInTheEngine` · **held**
+Check · `PlanRunsInTheEngine` · **unknown**
 
 - Owner: trame
 - Signed by: Trame's maintainers
@@ -7127,7 +7206,7 @@ Check · `RepositoryRead` · **unknown**
 
 ### Into the main branch
 
-Shipment · `IntoMain` · **held**
+Shipment · `IntoMain` · **unknown**
 
 - Owner: trame
 - Target: main
@@ -7138,7 +7217,7 @@ Shipment · `IntoMain` · **held**
 
 ### The next generation
 
-Shipment · `NextGeneration` · **held**
+Shipment · `NextGeneration` · **unknown**
 
 - Owner: trame
 - Target: generation

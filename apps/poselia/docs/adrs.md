@@ -1,17 +1,19 @@
 # Architecture decisions
 
-*The choices that shape the product without being values, in force on 26 November 2026: why each was taken, what was rejected, and the nodes that apply it.*
+*The choices that shape the product without being values, in force on 30 October 2026: why each was taken, what was rejected, and the nodes that apply it.*
 
-> **6 architecture decisions, 2 held by the nodes that apply them**
+> **8 architecture decisions, 4 held by the nodes that apply them**
 
 | Decision | Status | Applied by |
 |---|---|---|
-| [The content is data, behind a port](principles.md#ContentAsData) | **unknown** | [Content](architecture.md#ContentSource), [Poses](content.md#Poses) |
+| [The content is data, behind a port](principles.md#ContentAsData) | **unknown** | [Content carried by the app](app.md#ContentCarried), [Content](architecture.md#ContentSource), [Poses](content.md#Poses) |
 | [The breath is the clock](principles.md#BreathIsTheClock) | **held** | [A hold of whole breaths](practice.md#HoldPhases), [The breath of a moment](product.md#BreathOf) |
 | [The person's language, among those offered](principles.md#LanguageOffered) | **held** | [Languages offered](content.md#Languages), [The language of the app](product.md#ChosenLanguage), [Languages of the device](../.trame/std/docs/platform.md#DeviceLanguages), [Preferences](../.trame/std/docs/platform.md#PreferencesStore) |
 | [Said aloud, the screen awake](principles.md#SaidAloud) | **unknown** | [Play a practice](practice.md#PlayPractice), [The phone stays on the mat](product.md#PhoneOnTheMat), [Screen kept awake](../.trame/std/docs/platform.md#ScreenAwake), [Speech](../.trame/std/docs/platform.md#SpeechVoice) |
-| [A page first, the phones after](principles.md#PageFirst) | **unknown** | [Poselia's page](app.md#PoseliaPage), [Poselia in a browser](architecture.md#PoseliaApp), [The page opens](sdlc.md#PageOpens) |
-| [The SDLC is in the graph](sdlc.md#SdlcInTheGraph) | **unknown** | [Each decision of architecture serves the product](sdlc.md#AdrsServeTheProduct), [Code serves the product](sdlc.md#CodeServesTheProduct), [The content, reviewed](sdlc.md#ContentReviewed), [On a phone](sdlc.md#OnAPhone), [Open the page](sdlc.md#OpenThePage), [The page opens](sdlc.md#PageOpens), [Place the page](sdlc.md#PlaceThePage), [A preview](sdlc.md#Preview), [The preview's script](sdlc.md#PreviewScript), [The preview's workflow](sdlc.md#PreviewWorkflow), [A public version](sdlc.md#PublicVersion), [The files that run it elsewhere](sdlc.md#RunnersWritten) |
+| [A page first, the phones after](principles.md#PageFirst) | **unknown** | [The browser's realizations](app.md#InTheBrowser), [Poselia's page](app.md#PoseliaPage), [Poselia in a browser](architecture.md#PoseliaApp), [The page opens](sdlc.md#PageOpens) |
+| [The app is played in memory first](principles.md#PlayedInMemoryFirst) | **held** | [The app in memory](scenarios.md#InMemory) |
+| [What the app keeps stays on the device](principles.md#KeptOnThePhone) | **held** | [Kept in the preferences of the device](settings.md#KeptOnTheDevice) |
+| [The SDLC is in the graph](sdlc.md#SdlcInTheGraph) | **unknown** | [Each decision of architecture serves the product](sdlc.md#AdrsServeTheProduct), [Code serves the product](sdlc.md#CodeServesTheProduct), [The content, reviewed](sdlc.md#ContentReviewed), [On a phone](sdlc.md#OnAPhone), [On the machine](sdlc.md#OnTheMachine), [Open the page](sdlc.md#OpenThePage), [The page opens](sdlc.md#PageOpens), [Place the page](sdlc.md#PlaceThePage), [A preview](sdlc.md#Preview), [The preview's script](sdlc.md#PreviewScript), [The preview's workflow](sdlc.md#PreviewWorkflow), [A public version](sdlc.md#PublicVersion), [The files that run it elsewhere](sdlc.md#RunnersWritten), [The SDLC in memory](sdlc.md#SdlcInMemory) |
 
 ## Poselia · Principles
 
@@ -19,7 +21,7 @@
 
 ### The content is data, behind a port
 
-`ContentAsData` · `src/principles.ts:19` · status: **unknown** · published
+`ContentAsData` · `src/principles.ts:22` · status: **unknown** · published
 
 The poses, the sequences and the exercises are datasets the app reads through one port: its first realization reads the rows the app carries, an update downloaded later will be another.
 
@@ -34,13 +36,13 @@ Consequences: Each kind of content is a dataset with its rules and its languages
 
 - Decided by: ghalaax
 - Serves: [Content checked by people who practise](product.md#CheckedContent)
-- Applied by: [Poses](content.md#Poses), [Content](architecture.md#ContentSource)
+- Applied by: [Poses](content.md#Poses), [Content](architecture.md#ContentSource), [Content carried by the app](app.md#ContentCarried)
 
 <a id="BreathIsTheClock"></a>
 
 ### The breath is the clock
 
-`BreathIsTheClock` · `src/principles.ts:36` · status: **held** · published
+`BreathIsTheClock` · `src/principles.ts:39` · status: **held** · published
 
 A practice is timed by the person's breath, not by seconds: a movement lasts a phase, a hold lasts whole breaths, and each level may set the breath (follow it, impose a ratio, exact timings, or a speed), the most specific winning.
 
@@ -60,7 +62,7 @@ Consequences: The person's pattern (four phases) is kept in the preferences; a h
 
 ### The person's language, among those offered
 
-`LanguageOffered` · `src/principles.ts:50` · status: **held** · published
+`LanguageOffered` · `src/principles.ts:53` · status: **held** · published
 
 Every text of the content is written in each language offered; the app speaks the one the person chose, or the device's, or the first offered; the choice is kept on the device.
 
@@ -80,7 +82,7 @@ Consequences: The languages offered are a decision the datasets read: a text mis
 
 ### Said aloud, the screen awake
 
-`SaidAloud` · `src/principles.ts:64` · status: **unknown** · published
+`SaidAloud` · `src/principles.ts:67` · status: **unknown** · published
 
 The phone stays on the mat: the breath, the cues and the angles are said by the platform's voice, and the screen is kept awake during a practice.
 
@@ -100,7 +102,7 @@ Consequences: A voice port says texts in the chosen language; each kind of sayin
 
 ### A page first, the phones after
 
-`PageFirst` · `src/principles.ts:78` · status: **unknown** · published
+`PageFirst` · `src/principles.ts:81` · status: **unknown** · published
 
 The app is first a page a browser opens as it is (trame deliver), then a web application, then Capacitor around the same page for iPhone and Android.
 
@@ -114,7 +116,48 @@ Consequences: The component runs in a browser; its realizations are the browser'
 
 - Decided by: ghalaax
 - Serves: [Practise yoga on one's own, guided](product.md#PractiseGuided)
-- Applied by: [Poselia in a browser](architecture.md#PoseliaApp), [Poselia's page](app.md#PoseliaPage), [The page opens](sdlc.md#PageOpens)
+- Applied by: [Poselia in a browser](architecture.md#PoseliaApp), [Poselia's page](app.md#PoseliaPage), [The page opens](sdlc.md#PageOpens), [The browser's realizations](app.md#InTheBrowser)
+
+<a id="PlayedInMemoryFirst"></a>
+
+### The app is played in memory first
+
+`PlayedInMemoryFirst` · `src/principles.ts:95` · status: **held**
+
+What the app shows, says and keeps is played by scenarios before a browser runs it: a screen that records what it shows, a bowl that records when it sounds, preferences and languages given, frames advanced by hand, speech written.
+
+Context: A practice lasts minutes and follows the breath: played only in a browser, a mistake in a sequence would be met on the mat.
+
+Consequences: What only a browser or a phone shows (the voice, the screen kept awake, the frames) is proven by the checks of a shipment.
+
+| Rejected | Why |
+|---|---|
+| A browser driven at each build | slow, and the voice and the wake lock answer only on a device |
+
+- Decided by: ghalaax
+- Serves: [Practise yoga on one's own, guided](product.md#PractiseGuided)
+- Applied by: [The app in memory](scenarios.md#InMemory)
+
+<a id="KeptOnThePhone"></a>
+
+### What the app keeps stays on the device
+
+`KeptOnThePhone` · `src/principles.ts:109` · status: **held**
+
+The person's breath and choices are kept in the device's preferences, under names of the app's own, as the library of data keeps a document; the app adopts its decision: what is kept is described once.
+
+Context: The app works offline and asks nobody for an account: what it keeps of a person is a little, and theirs.
+
+Consequences: A version that changes what is kept migrates it as the entity says; nothing leaves the device.
+
+| Rejected | Why |
+|---|---|
+| An account on a server | a person would give an address to practise on their mat |
+
+- Decided by: ghalaax
+- Serves: [The breath sets the pace](product.md#BreathSetsThePace)
+- Applied by: [Kept in the preferences of the device](settings.md#KeptOnTheDevice)
+- Adopts: [An entity is described once](../.trame/data/docs/principles.md#DescribedOnce)
 
 ## Poselia · SDLC
 
@@ -137,4 +180,4 @@ Consequences: trame ship refuses a version while a check, a review or a scenario
 
 - Decided by: ghalaax
 - Serves: [Content checked by people who practise](product.md#CheckedContent), [Practise yoga on one's own, guided](product.md#PractiseGuided)
-- Applied by: [A preview](sdlc.md#Preview), [A public version](sdlc.md#PublicVersion), [The page opens](sdlc.md#PageOpens), [On a phone](sdlc.md#OnAPhone), [The content, reviewed](sdlc.md#ContentReviewed), [Open the page](sdlc.md#OpenThePage), [Place the page](sdlc.md#PlaceThePage), [Code serves the product](sdlc.md#CodeServesTheProduct), [Each decision of architecture serves the product](sdlc.md#AdrsServeTheProduct), [The preview's workflow](sdlc.md#PreviewWorkflow), [The preview's script](sdlc.md#PreviewScript), [The files that run it elsewhere](sdlc.md#RunnersWritten)
+- Applied by: [A preview](sdlc.md#Preview), [A public version](sdlc.md#PublicVersion), [The page opens](sdlc.md#PageOpens), [On a phone](sdlc.md#OnAPhone), [The content, reviewed](sdlc.md#ContentReviewed), [Open the page](sdlc.md#OpenThePage), [Place the page](sdlc.md#PlaceThePage), [Code serves the product](sdlc.md#CodeServesTheProduct), [Each decision of architecture serves the product](sdlc.md#AdrsServeTheProduct), [The preview's workflow](sdlc.md#PreviewWorkflow), [The preview's script](sdlc.md#PreviewScript), [The files that run it elsewhere](sdlc.md#RunnersWritten), [On the machine](sdlc.md#OnTheMachine), [The SDLC in memory](sdlc.md#SdlcInMemory)

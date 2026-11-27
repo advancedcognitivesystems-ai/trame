@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 26 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 27 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Standard library · Access
 
@@ -458,7 +458,7 @@ Language · `CssStyleSheets` · **held**
 
 - Owner: trame
 - Named in bodies: css
-- Grammar: { module: tree-sitter-css/tree-sitter-css.wasm, package: tree-sitter-css, version: 0.25.0 }
+- Grammar: { module: tree-sitter-css/tree-sitter-css.wasm }
 - Extensions: .css
 - Queries: { values: { value: 
 (integer_value) @literal.number
@@ -495,7 +495,7 @@ Language · `HtmlMarkup` · **held**
 
 - Owner: trame
 - Named in bodies: html
-- Grammar: { module: tree-sitter-html/tree-sitter-html.wasm, package: tree-sitter-html, version: 0.23.2 }
+- Grammar: { module: tree-sitter-html/tree-sitter-html.wasm }
 - Extensions: .html
 - Queries: { values: { value: 
 (quoted_attribute_value) @literal.text
@@ -1783,6 +1783,17 @@ Decision · `ScenarioLanguage`
 
 - Decided by: trame
 - Value: { tag: en-GB }
+
+### How the library's scenarios run
+
+Architecture decision · `HowTheScenariosRun` · **held**
+
+- Decided by: trame
+- Context: The library offers realizations in memory to every project's scenarios: its own scenarios prove that they keep their ports' promises, before any project relies on them.
+- Consequences: A project that judges harder chooses EveryWarning or one of its own (C4); the library leaves its warnings as points to watch. Reading HTML and CSS needs an engine: the library's build has one.
+- Rejected: Scenarios on the machine, they would touch the disk, a browser and GitHub at each build of the library; Strict judgment for the library itself, a library's warnings are often what its projects decide (a port nobody realizes here)
+- Serves: Ports of the platform, realized once
+- Applied by: In memory, The scenarios' settings, Judged as the language says, Judged strictly, Read by the engine that builds
 
 ### How the scenarios' versions are carried
 

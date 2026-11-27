@@ -524,7 +524,7 @@ export const SdlcInTheGraph = adr({
   serves: [CheckedContent, PractiseGuided],
   appliedBy: [
     Preview, PublicVersion, PageOpens, OnAPhone, ContentReviewed, OpenThePage, PlaceThePage, CodeServesTheProduct, AdrsServeTheProduct,
-    PreviewWorkflow, PreviewScript, RunnersWritten,
+    PreviewWorkflow, PreviewScript, RunnersWritten, OnTheMachine, SdlcInMemory,
   ],
 })
 

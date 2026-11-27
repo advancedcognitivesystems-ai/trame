@@ -1,10 +1,10 @@
 # Owners
 
-*What each person must decide, settle or watch on 26 November 2026, and what they own.*
+*What each person must decide, settle or watch on 27 November 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 2 | 32 |
+| trame | 0 | 0 | 2 | 34 |
 
 <a id="trame"></a>
 
@@ -24,6 +24,7 @@
 | [What the commands say](commands.md#CommandWords) | Message catalog |  |
 | [Plan](commands.md#Plan) | Entry point | **held** |
 | [How a command writes at a terminal](commands.md#TerminalLines) | Decision |  |
+| [The language the commands speak](commands.md#WordsLanguage) | Decision |  |
 | [The library of continuous integration](packages.md#ContinuousIntegration) | Package |  |
 | [Trame](packages.md#Language) | Package |  |
 | [The people of the repository](packages.md#People) | Package |  |
@@ -35,6 +36,7 @@
 | [After a build, nothing changes](scenarios.md#PlanAfterTheSameBuild) | Scenario | **held** |
 | [A plan says what a build would change](scenarios.md#PlanSaysWhatChanges) | Scenario | **held** |
 | [Without a build, a plan says so](scenarios.md#PlanWithoutABuild) | Scenario | **held** |
+| [A command is played on a real graph](scenarios.md#PlayedOnARealGraph) | Architecture decision | **held** |
 | [Played on a small project](scenarios.md#PlayedOnASmallProject) | Technical choice | **held** |
 | [What the scenarios check](scenarios.md#ScenarioWords) | Message catalog |  |
 | [The small project](scenarios.md#SmallProject) | Decision |  |

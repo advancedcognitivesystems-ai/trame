@@ -1,11 +1,11 @@
 # Owners
 
-*What each person must decide, settle or watch on 26 November 2026, and what they own.*
+*What each person must decide, settle or watch on 27 November 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| Trame's maintainers | 0 | 0 | 1 | 0 |
-| trame | 0 | 0 | 1 | 780 |
+| Trame's maintainers | 0 | 0 | 5 | 0 |
+| trame | 0 | 0 | 15 | 787 |
 
 <a id="Trame's maintainers"></a>
 
@@ -15,6 +15,10 @@
 
 | Severity | Code | What | Where | Owner | Consequence |
 |---|---|---|---|---|---|
+| warning | `check-stale` | Checked on another build of its artefacts, by another version of its program or another engine: to check again | [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws) | Trame's maintainers |  |
+| warning | `check-stale` | Checked on another build of its artefacts, by another version of its program or another engine: to check again | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | Trame's maintainers |  |
+| warning | `check-stale` | Checked on another build of its artefacts, by another version of its program or another engine: to check again | [The graph page opens](sdlc.md#GraphPageOpens) | Trame's maintainers |  |
+| warning | `check-stale` | Checked on another build of its artefacts, by another version of its program or another engine: to check again | [trame plan runs in the engine](sdlc.md#PlanRunsInTheEngine) | Trame's maintainers |  |
 | warning | `check-stale` | Checked on another build of its artefacts, by another version of its program or another engine: to check again | [The repository is read from GitHub](sdlc.md#RepositoryRead) | Trame's maintainers |  |
 
 <a id="trame"></a>
@@ -23,7 +27,21 @@
 
 | Severity | Code | What | Where | Owner | Consequence |
 |---|---|---|---|---|---|
+| warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The candidate engine](sdlc.md#EngineCandidate) | trame |  |
+| warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The graph page](sdlc.md#GraphPage) | trame |  |
+| warning | `shipment-awaits` | To ship: The engine is unknown | [Into the main branch](sdlc.md#IntoMain) | trame |  |
+| warning | `shipment-awaits` | To ship: trame plan runs in the engine is unknown | [Into the main branch](sdlc.md#IntoMain) | trame |  |
+| warning | `shipment-awaits` | To ship: The graph page opens is unknown | [Into the main branch](sdlc.md#IntoMain) | trame |  |
+| warning | `shipment-awaits` | To ship: The candidate runs on the machine is unknown | [Into the main branch](sdlc.md#IntoMain) | trame |  |
+| warning | `shipment-awaits` | To ship: The candidate engine is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
+| warning | `shipment-awaits` | To ship: The graph page is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
+| warning | `shipment-awaits` | To ship: The page is assembled is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
+| warning | `shipment-awaits` | To ship: The candidate plays the laws is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
+| warning | `shipment-awaits` | To ship: The candidate runs on the machine is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
+| warning | `shipment-awaits` | To ship: The graph page opens is unknown | [The next generation](sdlc.md#NextGeneration) | trame |  |
 | warning | `shipment-awaits` | To ship: The repository is read from GitHub is unknown | [The repository as decided](sdlc.md#RepositorySet) | trame |  |
+| warning | `shipment-awaits` | To ship: The candidate runs on the machine is unknown | [The repository as decided](sdlc.md#RepositorySet) | trame |  |
+| warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The engine](sdlc.md#TheEngine) | trame |  |
 
 ### Owns
 
@@ -87,15 +105,15 @@
 | [Trame on the command line](architecture.md#TrameCli) | Component |  |
 | [TypeScript compiler](architecture.md#TypeScriptCompiler) | Port |  |
 | [Write log](architecture.md#WriteLog) | Port |  |
-| [Amendments sent to trame dev](browser.md#BrowserAmendments) | Implementation | **held** |
-| [The browser's gzip](browser.md#BrowserDecompression) | Implementation | **held** |
-| [The globals of the page, and trame dev](browser.md#BrowserFeed) | Implementation | **held** |
-| [Local storage](browser.md#BrowserMemory) | Implementation | **held** |
-| [The browser's window](browser.md#BrowserWindow) | Implementation | **held** |
-| [Explorer of a graph](browser.md#ExplorerFigures) | Function | **held** |
-| [Show the graph](browser.md#ShowGraph) | Entry point | **held** |
-| [The browser runs the page](browser.md#TheBrowserRunsThePage) | Technical choice | **held** |
-| [The page is assembled](browser.md#ThePageIsAssembled) | Architecture decision | **held** |
+| [Amendments sent to trame dev](browser.md#BrowserAmendments) | Implementation | **unknown** |
+| [The browser's gzip](browser.md#BrowserDecompression) | Implementation | **unknown** |
+| [The globals of the page, and trame dev](browser.md#BrowserFeed) | Implementation | **unknown** |
+| [Local storage](browser.md#BrowserMemory) | Implementation | **unknown** |
+| [The browser's window](browser.md#BrowserWindow) | Implementation | **unknown** |
+| [Explorer of a graph](browser.md#ExplorerFigures) | Function | **unknown** |
+| [Show the graph](browser.md#ShowGraph) | Entry point | **unknown** |
+| [The browser runs the page](browser.md#TheBrowserRunsThePage) | Technical choice | **unknown** |
+| [The page is assembled](browser.md#ThePageIsAssembled) | Architecture decision | **unknown** |
 | [An advance, in memory](command-scenarios.md#AdvanceInMemory) | Scenario | **held** |
 | [What the engines an advance starts answer in a scenario](command-scenarios.md#AdvanceSamples) | Decision |  |
 | [What an amendment is checked with](command-scenarios.md#AmendmentSamples) | Decision |  |
@@ -150,7 +168,6 @@
 | [Assembler](commands.md#Assembler) | Function | **held** |
 | [Audit the packages](commands.md#Audit) | Entry point | **held** |
 | [Build](commands.md#Build) | Entry point | **held** |
-| [Two builds compared](commands.md#BuildComparison) | Function | **held** |
 | [A command of the project, or a view](commands.md#CommandOrView) | Entry point | **held** |
 | [Deliver](commands.md#Deliver) | Entry point | **held** |
 | [Start trame dev](commands.md#Dev) | Entry point | **held** |
@@ -161,7 +178,7 @@
 | [Export the page](commands.md#Export) | Entry point | **held** |
 | [Help](commands.md#Help) | Entry point | **held** |
 | [Start a project](commands.md#Init) | Entry point | **held** |
-| [Plan](commands.md#Plan) | Entry point | **held** |
+| [Plan a build](commands.md#Plan) | Entry point | **held** |
 | [Preparation](commands.md#Preparation) | Function | **held** |
 | [The project's commands](commands.md#ProjectCommands) | Function | **held** |
 | [Publish](commands.md#Publish) | Entry point | **held** |
@@ -411,9 +428,9 @@
 | [The page](page.md#ThePage) | Decision |  |
 | [Amendments go in the sources](platform.md#AmendmentsInPlace) | Technical choice | **held** |
 | [The TypeScript compiler reads the declarations](platform.md#CompilerReadsDeclarations) | Technical choice | **held** |
-| [System files, for reading](platform.md#DiskReading) | Implementation | **held** |
-| [Trees on disk](platform.md#DiskTrees) | Implementation | **held** |
-| [System files, for writing](platform.md#DiskWriting) | Implementation | **held** |
+| [System files, for reading](platform.md#DiskReading) | Implementation | **unknown** |
+| [Trees on disk](platform.md#DiskTrees) | Implementation | **unknown** |
+| [System files, for writing](platform.md#DiskWriting) | Implementation | **unknown** |
 | [Where the engine's own files are](platform.md#EngineFiles) | Decision |  |
 | [The engine's own files sit beside its code](platform.md#EngineFilesBesideCode) | Technical choice | **held** |
 | [esbuild](platform.md#Esbuild) | Implementation | **held** |
@@ -434,18 +451,18 @@
 | [Command line](platform.md#NodeCommandLine) | Implementation | **held** |
 | [gzip, with Node's zlib](platform.md#NodeCompression) | Implementation | **held** |
 | [SHA-256 hashes](platform.md#NodeHashing) | Implementation | **held** |
-| [Node HTTP server](platform.md#NodeHttpServer) | Implementation | **held** |
-| [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine) | Technical choice | **held** |
+| [Node HTTP server](platform.md#NodeHttpServer) | Implementation | **unknown** |
+| [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine) | Technical choice | **unknown** |
 | [Node paths](platform.md#NodePaths) | Implementation | **held** |
 | [NodePlatform](platform.md#NodePlatform) | Technical choice | **held** |
-| [Node process](platform.md#NodeProcess) | Implementation | **held** |
-| [Node programs](platform.md#NodePrograms) | Implementation | **held** |
-| [Node terminal](platform.md#NodeTerminal) | Implementation | **held** |
+| [Node process](platform.md#NodeProcess) | Implementation | **unknown** |
+| [Node programs](platform.md#NodePrograms) | Implementation | **unknown** |
+| [Node terminal](platform.md#NodeTerminal) | Implementation | **unknown** |
 | [Node timer](platform.md#NodeTimer) | Implementation | **held** |
 | [No installer in test](platform.md#NoInstallsInTest) | Implementation | **held** |
 | [No registry in test](platform.md#NoReportsInTest) | Function | **held** |
-| [npm installs](platform.md#NpmInstall) | Implementation | **held** |
-| [npm's reports](platform.md#NpmReports) | Implementation | **held** |
+| [npm installs](platform.md#NpmInstall) | Implementation | **unknown** |
+| [npm's reports](platform.md#NpmReports) | Implementation | **unknown** |
 | [Packages by their origin](platform.md#PackagesByOrigin) | Implementation | **held** |
 | [Each package comes from where its reference says](platform.md#PackagesByTheirOrigin) | Technical choice | **held** |
 | [Page resources](platform.md#PageResources) | Implementation | **held** |
@@ -454,10 +471,10 @@
 | [A run is kept while what it reads is as it was](platform.md#RunsByWhatTheyRead) | Technical choice | **held** |
 | [Runs kept in the process](platform.md#RunsInTheProcess) | Implementation | **held** |
 | [In the scenarios, runs are kept in the process](platform.md#RunsKeptInTheProcess) | Technical choice | **held** |
-| [On a machine, runs are kept on disk](platform.md#RunsKeptOnDisk) | Technical choice | **held** |
-| [Runs kept on disk](platform.md#RunsOnDisk) | Implementation | **held** |
+| [On a machine, runs are kept on disk](platform.md#RunsKeptOnDisk) | Technical choice | **unknown** |
+| [Runs kept on disk](platform.md#RunsOnDisk) | Implementation | **unknown** |
 | [Stopped clock](platform.md#StoppedClock) | Function | **held** |
-| [System clock](platform.md#SystemClock) | Implementation | **held** |
+| [System clock](platform.md#SystemClock) | Implementation | **unknown** |
 | [Day of the scenarios](platform.md#TestDay) | Decision |  |
 | [Time of the scenarios](platform.md#TestTime) | Decision |  |
 | [Trame's prelude](platform.md#TramePrelude) | Implementation | **held** |
@@ -467,11 +484,15 @@
 | [Runner of TypeScript](platform.md#TypeScriptRunner) | Decision |  |
 | [tree-sitter in WebAssembly](platform.md#WebTreeSitter) | Implementation | **held** |
 | [Who acts is declared](principles.md#ActorsDeclared) | Architecture decision | **held** |
+| [An amendment sits beside the value it changes](principles.md#AmendmentsBesideTheirValue) | Architecture decision | **held** |
 | [A change to a node is a claim](principles.md#ChangesAreClaims) | Architecture decision | **held** |
+| [Trame runs the commands libraries offer](principles.md#CommandsFromLibraries) | Architecture decision | **unknown** |
 | [The data a product carries is a dataset](principles.md#DataAsDatasets) | Architecture decision | **held** |
 | [A product is delivered by a node of the graph](principles.md#DeliveredByTheGraph) | Architecture decision | **held** |
 | [The engine: a graph like any product's](principles.md#EngineLayer) | Architecture decision | **held** |
+| [The engine is a provider, for Trame too](principles.md#EngineProvidesForTrame) | Architecture decision | **unknown** |
 | [A literal in a body is an error](principles.md#EveryLiteralDeclared) | Architecture decision | **held** |
+| [Evidence is sealed](principles.md#EvidenceSealed) | Architecture decision | **held** |
 | [Generations: frozen engines](principles.md#GenerationLayer) | Architecture decision | **held** |
 | [The graph is written in TypeScript](principles.md#GraphInTypeScript) | Architecture decision | **held** |
 | [The graph: the description of a product](principles.md#GraphLayer) | Architecture decision | **held** |
@@ -479,15 +500,19 @@
 | [A key is made of its parts](principles.md#KeysOfParts) | Architecture decision | **held** |
 | [A library is a Trame project, imported by path](principles.md#LibrariesAreProjects) | Architecture decision | **held** |
 | [A library is imported by its name](principles.md#LibrariesByName) | Architecture decision | **held** |
+| [Every question of the machine is an add-on](principles.md#MachineQuestionsAsAddOns) | Architecture decision | **held** |
 | [Code holds no hidden decision](principles.md#NoHiddenDecision) | Architecture decision | **held** |
 | [The prelude and the compiler know no kind of node](principles.md#NoKindInTheCore) | Architecture decision | **held** |
 | [A literal in a kind or a view is an error](principles.md#NoLiteralInTheLanguage) | Architecture decision | **held** |
 | [One output for each reader](principles.md#OneOutputPerReader) | Architecture decision | **held** |
 | [The traversal API is the only way to read the graph](principles.md#OneWayToRead) | Architecture decision | **held** |
 | [A package is used by its name](principles.md#PackagesByName) | Architecture decision | **held** |
+| [What a command does is played in memory first](principles.md#PlayedInMemoryFirst) | Architecture decision | **held** |
 | [The prelude: the runtime of the language](principles.md#PreludeLayer) | Architecture decision | **held** |
-| [A version ships through the graph](principles.md#ShippedThroughTheGraph) | Architecture decision | **held** |
-| [A technology is chosen in one node](principles.md#TechnologyInOneNode) | Architecture decision | **held** |
+| [A run is kept while what it reads is as it was](principles.md#RunsKept) | Architecture decision | **unknown** |
+| [Trame's SDLC runs with std's tooling](principles.md#SdlcWithStdTooling) | Architecture decision | **unknown** |
+| [A version ships through the graph](principles.md#ShippedThroughTheGraph) | Architecture decision | **unknown** |
+| [A technology is chosen in one node](principles.md#TechnologyInOneNode) | Architecture decision | **unknown** |
 | [Trame builds Trame](principles.md#TrameBuildsTrame) | Architecture decision | **held** |
 | [An undecided value blocks; it does not crash](principles.md#UndecidedBlocks) | Architecture decision | **held** |
 | [Without evidence, a status is unknown](principles.md#UnknownWithoutEvidence) | Architecture decision | **held** |
@@ -689,28 +714,28 @@
 | [GitHub merges once it holds, asked in a session](sdlc.md#AutoMergeInASession) | Technical choice | **unknown** |
 | [GitHub merges once it holds, asked by its command line](sdlc.md#AutoMergeOnTheMachine) | Technical choice | **unknown** |
 | [The candidate is checked by programs](sdlc.md#CandidateChecked) | Obligation |  |
-| [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws) | Check | **held** |
-| [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | Check | **held** |
+| [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws) | Check | **unknown** |
+| [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | Check | **unknown** |
 | [The commands Trame takes from std](sdlc.md#CommandsOfStd) | Technical choice | **held** |
-| [The commands Trame takes from libs/commands](sdlc.md#CommandsWrittenOnce) | Technical choice | **held** |
+| [The commands Trame takes from libs/commands](sdlc.md#CommandsWrittenOnce) | Technical choice | **unknown** |
 | [Its callers identified](sdlc.md#EngineCallersIdentified) | Obligation |  |
-| [The candidate engine](sdlc.md#EngineCandidate) | Artefact | **held** |
+| [The candidate engine](sdlc.md#EngineCandidate) | Artefact | **unknown** |
 | [The packages are safe](sdlc.md#EnginePackagesSafe) | Obligation |  |
 | [The engine is verified](sdlc.md#EngineVerified) | Obligation |  |
 | [How a generation is made](sdlc.md#GenerationMode) | Policy |  |
-| [The graph page](sdlc.md#GraphPage) | Artefact | **held** |
+| [The graph page](sdlc.md#GraphPage) | Artefact | **unknown** |
 | [How the graph page is opened](sdlc.md#GraphPageOpening) | Decision |  |
-| [The graph page opens](sdlc.md#GraphPageOpens) | Check | **held** |
+| [The graph page opens](sdlc.md#GraphPageOpens) | Check | **unknown** |
 | [What the scenario of the graph page shows](sdlc.md#GraphPageScenarioData) | Decision |  |
 | [What the graph page is asked](sdlc.md#GraphPageSelectors) | Function | **held** |
 | [How a generation advances](sdlc.md#HowAGenerationAdvances) | Decision |  |
-| [Into the main branch](sdlc.md#IntoMain) | Shipment | **held** |
+| [Into the main branch](sdlc.md#IntoMain) | Shipment | **unknown** |
 | [The language serves what it says](sdlc.md#LanguageServed) | Obligation |  |
 | [The machine has what Trame needs](sdlc.md#MachineAsked) | Check | **held** |
 | [How the repository merges into main](sdlc.md#MainBranch) | Decision |  |
 | [Trame's maintainers](sdlc.md#Maintainers) | Role |  |
 | [How a change merges](sdlc.md#MergeMode) | Policy |  |
-| [The next generation](sdlc.md#NextGeneration) | Shipment | **held** |
+| [The next generation](sdlc.md#NextGeneration) | Shipment | **unknown** |
 | [The graph page is opened as a person would](sdlc.md#OpeningTheGraphPage) | Scenario | **held** |
 | [Open the graph page](sdlc.md#OpenTheGraphPage) | Entry point | **held** |
 | [Trame's settings, as std's commands read them](sdlc.md#OurCommandsSettled) | Scenario | **held** |
@@ -720,7 +745,7 @@
 | [How Trame's pull requests are opened](sdlc.md#OurPullRequests) | Function | **held** |
 | [Trame's settings in the scenarios](sdlc.md#OurSettingsInTheScenarios) | Technical choice | **held** |
 | [The page's program](sdlc.md#PageProgram) | Artefact | **held** |
-| [trame plan runs in the engine](sdlc.md#PlanRunsInTheEngine) | Check | **held** |
+| [trame plan runs in the engine](sdlc.md#PlanRunsInTheEngine) | Check | **unknown** |
 | [How a pull request is checked on GitHub](sdlc.md#PullRequestsOnGitHub) | Decision |  |
 | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **held** |
 | [Read the repository's settings](sdlc.md#ReadTheRepositorySettings) | Entry point | **held** |
@@ -735,7 +760,7 @@
 | [What the programs of Trame's SDLC say](sdlc.md#SdlcWords) | Message catalog |  |
 | [How the repository is set](sdlc.md#SettingsMode) | Policy |  |
 | [The repository is set as the graph decides](sdlc.md#SettingTheRepository) | Scenario | **held** |
-| [The engine](sdlc.md#TheEngine) | Artefact | **held** |
+| [The engine](sdlc.md#TheEngine) | Artefact | **unknown** |
 | [Trame's repository](sdlc.md#TheRepository) | Decision |  |
 | [Trame's SDLC](sdlc.md#TrameSdlc) | Component |  |
 | [What the machine must also have](sdlc.md#WhatTheMachineMustHave) | Technical choice | **held** |

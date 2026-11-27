@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-26",
+  "generated": "2026-11-27",
   "nodes": [
     {
       "id": "access.Anyone",
@@ -2172,9 +2172,7 @@
         "owner": "trame",
         "tag": "css",
         "grammar": {
-          "module": "tree-sitter-css/tree-sitter-css.wasm",
-          "package": "tree-sitter-css",
-          "version": "0.25.0"
+          "module": "tree-sitter-css/tree-sitter-css.wasm"
         },
         "extensions": [
           ".css"
@@ -2439,9 +2437,7 @@
         "owner": "trame",
         "tag": "html",
         "grammar": {
-          "module": "tree-sitter-html/tree-sitter-html.wasm",
-          "package": "tree-sitter-html",
-          "version": "0.23.2"
+          "module": "tree-sitter-html/tree-sitter-html.wasm"
         },
         "extensions": [
           ".html"
@@ -5344,7 +5340,7 @@
       "id": "scenarios.CommandsMade",
       "kind": "scenario",
       "title": "Commands are made for each effect",
-      "source": "src/scenarios.ts:425",
+      "source": "src/scenarios.ts:426",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5368,7 +5364,7 @@
       "id": "scenarios.DeviceInMemory",
       "kind": "scenario",
       "title": "The device, in memory",
-      "source": "src/scenarios.ts:469",
+      "source": "src/scenarios.ts:470",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5410,7 +5406,7 @@
       "id": "scenarios.DrawsKeepTheirPromise",
       "kind": "scenario",
       "title": "Seeded draws keep their promise",
-      "source": "src/scenarios.ts:441",
+      "source": "src/scenarios.ts:442",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5443,10 +5439,27 @@
       "diagnostics": []
     },
     {
+      "id": "scenarios.HowTheScenariosRun",
+      "kind": "adr",
+      "title": "How the library's scenarios run",
+      "source": "src/scenarios.ts:550",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "The library offers realizations in memory to every project's scenarios: its own scenarios prove that they keep their ports' promises, before any project relies on them.",
+        "consequences": "A project that judges harder chooses EveryWarning or one of its own (C4); the library leaves its warnings as points to watch. Reading HTML and CSS needs an engine: the library's build has one.",
+        "rejected": {
+          "Scenarios on the machine": "they would touch the disk, a browser and GitHub at each build of the library",
+          "Strict judgment for the library itself": "a library's warnings are often what its projects decide (a port nobody realizes here)"
+        }
+      },
+      "diagnostics": []
+    },
+    {
       "id": "scenarios.InMemory",
       "kind": "binding",
       "title": "In memory",
-      "source": "src/scenarios.ts:45",
+      "source": "src/scenarios.ts:46",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5458,7 +5471,7 @@
       "id": "scenarios.JudgedAsTheLanguage",
       "kind": "scenario",
       "title": "Judged as the language says",
-      "source": "src/scenarios.ts:393",
+      "source": "src/scenarios.ts:394",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5480,7 +5493,7 @@
       "id": "scenarios.JudgedStrictly",
       "kind": "scenario",
       "title": "Judged strictly",
-      "source": "src/scenarios.ts:408",
+      "source": "src/scenarios.ts:409",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5502,7 +5515,7 @@
       "id": "scenarios.LanguageJudgment",
       "kind": "binding",
       "title": "Judged as the language says",
-      "source": "src/scenarios.ts:75",
+      "source": "src/scenarios.ts:76",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5514,7 +5527,7 @@
       "id": "scenarios.LanguagesRead",
       "kind": "scenario",
       "title": "The languages read by the engine",
-      "source": "src/scenarios.ts:529",
+      "source": "src/scenarios.ts:530",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5543,7 +5556,7 @@
       "id": "scenarios.MergedOnceItHolds",
       "kind": "scenario",
       "title": "A pull request merged once it holds",
-      "source": "src/scenarios.ts:290",
+      "source": "src/scenarios.ts:291",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5580,7 +5593,7 @@
       "id": "scenarios.PropagatedInOrder",
       "kind": "scenario",
       "title": "A version carried across the projects",
-      "source": "src/scenarios.ts:331",
+      "source": "src/scenarios.ts:332",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5617,7 +5630,7 @@
       "id": "scenarios.PullRequestOpened",
       "kind": "scenario",
       "title": "A pull request opened",
-      "source": "src/scenarios.ts:252",
+      "source": "src/scenarios.ts:253",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5657,7 +5670,7 @@
       "id": "scenarios.ReadInTheEngine",
       "kind": "binding",
       "title": "Read by the engine that builds",
-      "source": "src/scenarios.ts:62",
+      "source": "src/scenarios.ts:63",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5669,7 +5682,7 @@
       "id": "scenarios.RepositoryInMemoryKeeps",
       "kind": "scenario",
       "title": "A repository kept in memory",
-      "source": "src/scenarios.ts:370",
+      "source": "src/scenarios.ts:371",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5699,7 +5712,7 @@
       "id": "scenarios.ScenarioChecks",
       "kind": "catalog",
       "title": "What the library's scenarios check",
-      "source": "src/scenarios.ts:111",
+      "source": "src/scenarios.ts:112",
       "fields": {
         "owner": "trame",
         "messages": "(function)"
@@ -5710,7 +5723,7 @@
       "id": "scenarios.ScenarioData",
       "kind": "decision",
       "title": "What the library's scenarios are given",
-      "source": "src/scenarios.ts:150",
+      "source": "src/scenarios.ts:151",
       "fields": {
         "owner": "trame",
         "value": {
@@ -5906,7 +5919,7 @@
       "id": "scenarios.ScenarioLanguage",
       "kind": "decision",
       "title": "The language of the library's scenarios",
-      "source": "src/scenarios.ts:106",
+      "source": "src/scenarios.ts:107",
       "fields": {
         "owner": "trame",
         "value": {
@@ -5919,7 +5932,7 @@
       "id": "scenarios.ScenarioPropagation",
       "kind": "function",
       "title": "How the scenarios' versions are carried",
-      "source": "src/scenarios.ts:227",
+      "source": "src/scenarios.ts:228",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5934,7 +5947,7 @@
       "id": "scenarios.ScenarioPullRequests",
       "kind": "function",
       "title": "How the scenarios' pull requests are opened",
-      "source": "src/scenarios.ts:217",
+      "source": "src/scenarios.ts:218",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5949,7 +5962,7 @@
       "id": "scenarios.ScenarioSettings",
       "kind": "binding",
       "title": "The scenarios' settings",
-      "source": "src/scenarios.ts:237",
+      "source": "src/scenarios.ts:238",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5961,7 +5974,7 @@
       "id": "scenarios.Strict",
       "kind": "environment",
       "title": "Strict",
-      "source": "src/scenarios.ts:88",
+      "source": "src/scenarios.ts:89",
       "fields": {
         "owner": "trame"
       },
@@ -5971,7 +5984,7 @@
       "id": "scenarios.StrictJudgment",
       "kind": "binding",
       "title": "Judged strictly",
-      "source": "src/scenarios.ts:94",
+      "source": "src/scenarios.ts:95",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5983,7 +5996,7 @@
       "id": "scenarios.Test",
       "kind": "environment",
       "title": "Test",
-      "source": "src/scenarios.ts:39",
+      "source": "src/scenarios.ts:40",
       "fields": {
         "owner": "trame",
         "evaluates": true
@@ -5994,7 +6007,7 @@
       "id": "scenarios.ToolingInMemory",
       "kind": "scenario",
       "title": "The tooling, in memory",
-      "source": "src/scenarios.ts:503",
+      "source": "src/scenarios.ts:504",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -6113,6 +6126,11 @@
           {
             "node": "repository.RepositoryThroughItsApi",
             "via": "repository.GitHubCliRepository",
+            "obligation": "sdlc.DecisionsApplied"
+          },
+          {
+            "node": "scenarios.HowTheScenariosRun",
+            "via": "scenarios.InMemory",
             "obligation": "sdlc.DecisionsApplied"
           },
           {
@@ -6413,6 +6431,7 @@
           "scenarios.CommandsMade",
           "scenarios.DeviceInMemory",
           "scenarios.DrawsKeepTheirPromise",
+          "scenarios.HowTheScenariosRun",
           "scenarios.InMemory",
           "scenarios.JudgedAsTheLanguage",
           "scenarios.JudgedStrictly",
@@ -6612,7 +6631,7 @@
       },
       "result": {
         "path": "src",
-        "code": "d05fed2d"
+        "code": "f09da8c6"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -10338,6 +10357,36 @@
       "from": "scenarios.DrawsKeepTheirPromise",
       "to": "scenarios.ScenarioChecks",
       "kind": "deps"
+    },
+    {
+      "from": "scenarios.HowTheScenariosRun",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "scenarios.HowTheScenariosRun",
+      "to": "scenarios.InMemory",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "scenarios.HowTheScenariosRun",
+      "to": "scenarios.ScenarioSettings",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "scenarios.HowTheScenariosRun",
+      "to": "scenarios.LanguageJudgment",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "scenarios.HowTheScenariosRun",
+      "to": "scenarios.StrictJudgment",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "scenarios.HowTheScenariosRun",
+      "to": "scenarios.ReadInTheEngine",
+      "kind": "appliedBy"
     },
     {
       "from": "scenarios.InMemory",

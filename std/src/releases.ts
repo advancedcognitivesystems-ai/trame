@@ -447,3 +447,16 @@ export const R0_29_0 = release({
   language: "shared",
   serves: [ChosenCommands, CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
 })
+
+/**
+ * Version 0.29.1
+ */
+export const R0_29_1 = release({
+  owner: "trame",
+  version: "0.29.1",
+  date: "2026-11-27",
+  what: "the decision behind the library's choices; the grammars' versions named once, by the engine's packages",
+  fingerprint: "1e0910d6f1dc66af",
+  language: "shared",
+  serves: [ChosenCommands, CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
+})

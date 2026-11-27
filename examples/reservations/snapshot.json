@@ -1143,6 +1143,34 @@
       }
     },
     {
+      "id": "principles.JudgedHarder",
+      "kind": "adr",
+      "title": "The service judges itself harder than the language",
+      "status": "held",
+      "fields": {
+        "owner": "karim",
+        "context": "Some warnings of the language are, for this service, what a reviewer would refuse: a decision nobody can check against its cap, an audience nobody identifies.",
+        "rejected": {
+          "Every warning an error": "the service keeps points to watch that are not faults (an assumption to check by a date)"
+        }
+      }
+    },
+    {
+      "id": "principles.KeptInSql",
+      "kind": "adr",
+      "title": "What the service keeps is kept in SQL",
+      "status": "unknown",
+      "fields": {
+        "owner": "karim",
+        "context": "A reservation is a row, refunds are many, and several instances of the service write at once in production: a database of SQL keeps them, and finds one by its key.",
+        "consequences": "Changing the database of an environment is changing its choice; the entities, their migrations and the code that asks for records stay as they are.",
+        "rejected": {
+          "Files of JSON": "two instances writing at once would lose a refund",
+          "An ORM's models": "a second description of what the entities already describe"
+        }
+      }
+    },
+    {
       "id": "principles.RefundOnce",
       "kind": "adr",
       "title": "A cancellation refunds once",
@@ -1157,6 +1185,33 @@
       }
     },
     {
+      "id": "principles.RefundsThroughTheProvider",
+      "kind": "adr",
+      "title": "Refunds go through the provider, simulated outside production",
+      "status": "unknown",
+      "fields": {
+        "owner": "karim",
+        "context": "Refunds must be tried, in the scenarios and on a developer's machine, without money moving.",
+        "consequences": "The simulated provider keeps the calls it received: a scenario checks that a cancellation refunds once (RefundOnce).",
+        "rejected": {
+          "The provider's sandbox everywhere": "the scenarios would need the network and the provider's keys"
+        }
+      }
+    },
+    {
+      "id": "principles.SdlcWithStd",
+      "kind": "adr",
+      "title": "The service's SDLC runs with std's tooling and commands",
+      "status": "unknown",
+      "fields": {
+        "owner": "karim",
+        "context": "Opening a pull request and running the programs of a shipment are the same for every project of a repository on GitHub.",
+        "rejected": {
+          "Scripts of the service's own": "written again in each project, differently"
+        }
+      }
+    },
+    {
       "id": "principles.SecretsOutOfTheGraph",
       "kind": "adr",
       "title": "Secrets stay out of the graph",
@@ -1167,6 +1222,46 @@
         "consequences": "Without a key in the environment, the real provider makes no call and says why.",
         "rejected": {
           "The key as a decision": "every document and the page would show it"
+        }
+      }
+    },
+    {
+      "id": "principles.SeededOutsideProduction",
+      "kind": "adr",
+      "title": "A table starts with reservations only outside production",
+      "status": "unknown",
+      "fields": {
+        "owner": "karim",
+        "context": "The service makes no reservation: it cancels them. A scenario or a developer with an empty table could cancel nothing.",
+        "consequences": "A seed changed after a deployment is said to its owner: a table made before keeps the reservations it started with.",
+        "rejected": {
+          "A script that fills the database by hand": "it would drift from the entity's description, and nobody would know which reservations a scenario reads"
+        }
+      }
+    },
+    {
+      "id": "principles.ServedByNode",
+      "kind": "adr",
+      "title": "The API is served by Node",
+      "status": "unknown",
+      "fields": {
+        "owner": "karim",
+        "context": "The API is four routes and a health check: what a framework would bring, the service does not need.",
+        "rejected": {
+          "A web framework": "a dependency to keep up to date for routing four paths"
+        }
+      }
+    },
+    {
+      "id": "principles.TimeAsAPort",
+      "kind": "adr",
+      "title": "The time is a port",
+      "status": "unknown",
+      "fields": {
+        "owner": "karim",
+        "context": "A scenario that read the system's clock would compute another fee each day it is played.",
+        "rejected": {
+          "Passing the instant to each function": "every caller would read the clock itself, each in its own way"
         }
       }
     },
@@ -2243,6 +2338,46 @@
       "kind": "serves"
     },
     {
+      "from": "principles.JudgedHarder",
+      "to": "cancellation.CancelWithoutStress",
+      "kind": "serves"
+    },
+    {
+      "from": "principles.JudgedHarder",
+      "to": "judgment.JudgedOurWay",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.KeptInSql",
+      "to": "cancellation.CancelWithoutStress",
+      "kind": "serves"
+    },
+    {
+      "from": "principles.KeptInSql",
+      "to": "infra.KeptAsTables",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.KeptInSql",
+      "to": "infra.RecordRepositories",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.KeptInSql",
+      "to": "infra.ScenarioDatabase",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.KeptInSql",
+      "to": "infra.LocalDatabase",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.KeptInSql",
+      "to": "infra.ProductionDatabase",
+      "kind": "appliedBy"
+    },
+    {
       "from": "principles.RefundOnce",
       "to": "cancellation.CancelWithoutStress",
       "kind": "serves"
@@ -2263,6 +2398,36 @@
       "kind": "appliedBy"
     },
     {
+      "from": "principles.RefundsThroughTheProvider",
+      "to": "cancellation.CancelWithoutStress",
+      "kind": "serves"
+    },
+    {
+      "from": "principles.RefundsThroughTheProvider",
+      "to": "infra.ProviderApi",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.RefundsThroughTheProvider",
+      "to": "infra.SimulatedProvider",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.SdlcWithStd",
+      "to": "cancellation.CancelWithoutStress",
+      "kind": "serves"
+    },
+    {
+      "from": "principles.SdlcWithStd",
+      "to": "sdlc.CommandsOnThisMachine",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.SdlcWithStd",
+      "to": "sdlc.PullRequestsOpened",
+      "kind": "appliedBy"
+    },
+    {
       "from": "principles.SecretsOutOfTheGraph",
       "to": "cancellation.CancelWithoutStress",
       "kind": "serves"
@@ -2270,6 +2435,46 @@
     {
       "from": "principles.SecretsOutOfTheGraph",
       "to": "infra.HttpPayment",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.SeededOutsideProduction",
+      "to": "cancellation.CancelWithoutStress",
+      "kind": "serves"
+    },
+    {
+      "from": "principles.SeededOutsideProduction",
+      "to": "infra.FirstReservationsOutsideProduction",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.SeededOutsideProduction",
+      "to": "infra.EmptyInProduction",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.ServedByNode",
+      "to": "cancellation.CancelWithoutStress",
+      "kind": "serves"
+    },
+    {
+      "from": "principles.ServedByNode",
+      "to": "infra.HttpServerChoice",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.TimeAsAPort",
+      "to": "cancellation.CancelWithoutStress",
+      "kind": "serves"
+    },
+    {
+      "from": "principles.TimeAsAPort",
+      "to": "infra.ScenarioClock",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "principles.TimeAsAPort",
+      "to": "infra.RealClock",
       "kind": "appliedBy"
     },
     {

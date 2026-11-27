@@ -1,12 +1,12 @@
 # Pipelines
 
-*What trame ship runs for each shipment on 26 November 2026, in order, as the engine computes it: its artefacts produced, the checks a program makes, the obligations to prove, the programs that deploy it, the dossier.*
+*What trame ship runs for each shipment on 27 November 2026, in order, as the engine computes it: its artefacts produced, the checks a program makes, the obligations to prove, the programs that deploy it, the dossier.*
 
 <a id="NextVersion"></a>
 
 ## The next version
 
-> **The next version does not ship yet: 4 of 5 obligations hold.**
+> **The next version does not ship yet: 5 of 6 obligations hold.**
 
 For the target version.
 
@@ -18,8 +18,9 @@ flowchart TB
   n1["After a build, nothing changes<br/><small>Scenario</small>"]:::held
   n2["A plan says what a build would change<br/><small>Scenario</small>"]:::held
   n3["Without a build, a plan says so<br/><small>Scenario</small>"]:::held
-  n4["The next version<br/><small>Shipment</small>"]:::unknown
-  n4 -->|Ships| n0
+  n4["A command is played on a real graph<br/><small>Architecture decision</small>"]:::held
+  n5["The next version<br/><small>Shipment</small>"]:::unknown
+  n5 -->|Ships| n0
   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
   classDef blocked fill:#fbf0d9,stroke:#9a6200,color:#17202a
   classDef violated fill:#f9e3e1,stroke:#ad2a22,color:#17202a
@@ -37,7 +38,8 @@ flowchart TB
 | 4 | prove | [After a build, nothing changes](scenarios.md#PlanAfterTheSameBuild) | — | [Its code verified](sdlc.md#CodeVerified) via [Two builds compared](commands.md#BuildComparison) | **held** |  |
 | 5 | prove | [A plan says what a build would change](scenarios.md#PlanSaysWhatChanges) | — | [Its code verified](sdlc.md#CodeVerified) via [Two builds compared](commands.md#BuildComparison) | **held** |  |
 | 6 | prove | [Without a build, a plan says so](scenarios.md#PlanWithoutABuild) | — | [Its code verified](sdlc.md#CodeVerified) via [Plan](commands.md#Plan) | **held** |  |
-| 7 | record | [The next version](sdlc.md#NextVersion) | — | — | **unknown** | 26 November 2026 by claude `evidence/shipments/NextVersion-2026-11-26-2b028498.json` |
+| 7 | prove | [A command is played on a real graph](scenarios.md#PlayedOnARealGraph) | — | [Its decisions applied](sdlc.md#DecisionsApplied) via [Compiled by the engine that plays them](scenarios.md#CompiledByTheEngine) | **held** |  |
+| 8 | record | [The next version](sdlc.md#NextVersion) | — | — | **unknown** | 26 November 2026 by claude `evidence/shipments/NextVersion-2026-11-26-2b028498.json` |
 
 `trame ship NextVersion --by <name>`
 

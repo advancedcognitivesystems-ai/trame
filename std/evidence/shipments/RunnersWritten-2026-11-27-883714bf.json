@@ -1,0 +1,191 @@
+{
+  "shipment": "sdlc.RunnersWritten",
+  "title": "The files that run it elsewhere",
+  "target": "repository",
+  "at": "2026-11-27",
+  "by": "claude",
+  "signature": "attribution",
+  "artifacts": [
+    {
+      "node": "sdlc.PullRequestWorkflow",
+      "path": "../.github/workflows/std-pull-request.yml",
+      "fingerprint": "affe3599c3badf486efd761950bf042e61ac0ad85dab9eefe82a14618e878845"
+    }
+  ],
+  "foundations": {
+    "problems": 0
+  },
+  "obligations": [
+    {
+      "node": "sdlc.PullRequestWorkflow",
+      "kind": "artifact",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-19",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "822da0f07b6f23d43a3f7567285ff69d3934c9fe04db4e84df4ed9e9d8459667",
+          "code": "a0a65958",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "987e2ef986dc7b6b",
+          "seal": "5cc7e91c6f1f2879e3f6efb2e416d41437e11a5ec5ac2eefa46d40951b996f10"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-19",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "822da0f07b6f23d43a3f7567285ff69d3934c9fe04db4e84df4ed9e9d8459667",
+          "code": "7754dfa8",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "987e2ef986dc7b6b",
+          "seal": "7a421f55badda9795b882a1ed416d48689437e7e6b8429a5a7c425f0a9a5ceb2"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-19",
+          "source": "shipped",
+          "value": 1,
+          "fingerprint": "822da0f07b6f23d43a3f7567285ff69d3934c9fe04db4e84df4ed9e9d8459667",
+          "subject": "sdlc.RunnersWritten",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "493cd1f44c0ab331223763f05c10723c34a93ad777c865a96403795958290f9d"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-19",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "7669696240d0f40a2b0fae4d5761a6562c306aee3c1ff2643312942d38a31b14",
+          "code": "d1296f00",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "840e576a3cb8b6d4",
+          "seal": "93a10cd783a6aff1eaeaa5018ef8491ee5249b310198b9abaacf8bf328b43b0d"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-19",
+          "source": "shipped",
+          "value": 1,
+          "fingerprint": "7669696240d0f40a2b0fae4d5761a6562c306aee3c1ff2643312942d38a31b14",
+          "subject": "sdlc.RunnersWritten",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "19ecc3e76907a3d4e9080bcfed8e956fdc1eb40cc160fafa9ab5703092fe0e61"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-22",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "affe3599c3badf486efd761950bf042e61ac0ad85dab9eefe82a14618e878845",
+          "code": "d7aac953",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "473672184a44fd1b",
+          "seal": "86b2dc159e878f4fcc7aabd546d381a48ed455389138312239b525789f99b93a"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-22",
+          "source": "shipped",
+          "value": 1,
+          "fingerprint": "affe3599c3badf486efd761950bf042e61ac0ad85dab9eefe82a14618e878845",
+          "subject": "sdlc.RunnersWritten",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "0a77b1da6b29f99f296454a808049ec774b50bb9b8c8c139419735f815032548"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-24",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "affe3599c3badf486efd761950bf042e61ac0ad85dab9eefe82a14618e878845",
+          "code": "d7aac953",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "ee2fb46b0367efa1",
+          "seal": "843bd5dee8eaaa22f12aebcf99491a82239e578957f5906545b45e8492cb8e6e"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-24",
+          "source": "shipped",
+          "value": 1,
+          "fingerprint": "affe3599c3badf486efd761950bf042e61ac0ad85dab9eefe82a14618e878845",
+          "subject": "sdlc.RunnersWritten",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "2427bc02fb13e8c1e68bcf3b70b231c60a852795f8070c0f08e32f867f51abcf"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-25",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "affe3599c3badf486efd761950bf042e61ac0ad85dab9eefe82a14618e878845",
+          "code": "d7aac953",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "204500887a4c33c3",
+          "seal": "33f39cde054d3ddbd78eb0f9496a0d8a0aa1fe88f2ad562cb2742a7d582bcc0f"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-25",
+          "source": "shipped",
+          "value": 1,
+          "fingerprint": "affe3599c3badf486efd761950bf042e61ac0ad85dab9eefe82a14618e878845",
+          "subject": "sdlc.RunnersWritten",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "2aaa128bf99316d34289a08893e448f79832196f324cfb18337a8dda3eaeca10"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-26",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "affe3599c3badf486efd761950bf042e61ac0ad85dab9eefe82a14618e878845",
+          "code": "d7aac953",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "203a6308a3ce37b3",
+          "seal": "25ade55af6d5832408178c8f5fa43cb561752291fbf3b16ff470273113bef725"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-26",
+          "source": "shipped",
+          "value": 1,
+          "fingerprint": "affe3599c3badf486efd761950bf042e61ac0ad85dab9eefe82a14618e878845",
+          "subject": "sdlc.RunnersWritten",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "273013efd50abbc919f34985f12182257a016c1f2fe5f3f8e4ea3095cfda6443"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-27",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "affe3599c3badf486efd761950bf042e61ac0ad85dab9eefe82a14618e878845",
+          "code": "d7aac953",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "203a6308a3ce37b3",
+          "seal": "4b64fe80bc66c4ea28f4d139efc89d97760dcb8981b6645fa7d5ea3394f5607e"
+        }
+      ]
+    }
+  ],
+  "deployed": []
+}
